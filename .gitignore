@@ -22,6 +22,7 @@
 *.so
 *.so.*
 !/tools/ido5.3_compiler/usr/lib/*.so*
+!/tools/ido5.3_compiler/lib/*.so*
 *.dylib
 
 # Executables
