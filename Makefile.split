@@ -1,0 +1,160 @@
+MUSIC_DIR = music
+
+COURSE_NAMES :=        \
+	mario_raceway      \
+	choco_mountain     \
+	bowsers_castle     \
+	banshee_boardwalk  \
+	yoshi_valley       \
+	frappe_snowland    \
+	koopa_troopa_beach \
+	royal_raceway      \
+	luigi_raceway      \
+	moo_moo_farm       \
+	toads_turnpike     \
+	kalimari_desert    \
+	sherbet_land       \
+	rainbow_road       \
+	wario_stadium      \
+	block_fort         \
+	skyscraper         \
+	double_deck        \
+	dks_jungle_parkway \
+	big_donut
+
+COURSE_DL_NAMES := $(addprefix course_,$(addsuffix _dl,$(COURSE_NAMES)))
+COURSE_DL_MIO0_FILES := $(addprefix $(BUILD_DIR)/bin/,$(addsuffix .mio0,$(COURSE_DL_NAMES)))
+COURSE_DL_MIO0_OBJ_FILES := $(COURSE_DL_MIO0_FILES:.mio0=.mio0.o)
+
+COURSE_VERTEX_NAMES := $(addprefix course_,$(addsuffix _vertex,$(COURSE_NAMES)))
+COURSE_VERTEX_MIO0_FILES := $(addprefix $(BUILD_DIR)/bin/,$(addsuffix .mio0,$(COURSE_VERTEX_NAMES)))
+
+COURSE_MIO0_OBJ_FILES := $(COURSE_DL_MIO0_OBJ_FILES)
+
+OTHER_DATA_MIO0_NAMES := \
+	data_821D10          \
+	data_825800
+
+OTHER_DATA_MIO0_FILES := $(addprefix $(BUILD_DIR)/bin/,$(addsuffix .mio0,$(OTHER_DATA_MIO0_NAMES)))
+
+TEXTURE_DATA_MIO0_NAMES := \
+	common_textures   \
+	texture_68EB50    \
+	texture_68EDA0    \
+	texture_68EFF0    \
+	texture_68F248    \
+	texture_68F4A8    \
+	texture_68F700    \
+	texture_68F96C    \
+	texture_68FBCC    \
+	texture_68FE20    \
+	texture_69004C    \
+	texture_690284    \
+	texture_6904C4    \
+	texture_690708    \
+	texture_690960    \
+	texture_690BBC    \
+	texture_690DF8    \
+	texture_6913CC    \
+	texture_691714    \
+	texture_691AAC    \
+	texture_691D98    \
+	texture_692088    \
+	texture_6923D8    \
+	texture_6925E8    \
+	texture_692888    \
+	texture_692CC0    \
+	texture_69333C    \
+	texture_693790    \
+	texture_693BC4    \
+	texture_693F48    \
+	texture_69429C    \
+	texture_694628    \
+	texture_694990    \
+	texture_694CAC    \
+	texture_694F7C    \
+	texture_695268    \
+	texture_6955AC    \
+	texture_6958C0    \
+	texture_695BA4    \
+	texture_695EE4    \
+	texture_6961E0    \
+	texture_696488    \
+	texture_6967FC    \
+	texture_696BAC    \
+	texture_696E3C    \
+	texture_697138    \
+	texture_69743C    \
+	texture_6977F0    \
+	texture_697B10    \
+	texture_697E80    \
+	texture_69811C    \
+	texture_698378    \
+	texture_69859C    \
+	texture_6987FC    \
+	texture_698A40    \
+	texture_698C60    \
+	texture_698E38    \
+	texture_698FF4    \
+	texture_6991F8    \
+	texture_699500    \
+	texture_699E24    \
+	texture_69A154    \
+	texture_69A4C0    \
+	texture_69F158    \
+	texture_69F390    \
+	texture_69F5E4    \
+	texture_69F9C0    \
+	texture_69FD6C    \
+	texture_69FF30    \
+	texture_6A010C    \
+	texture_6A0350    \
+	texture_ghosts
+
+TEXTURE_DATA_MIO0_FILES := $(addprefix $(BUILD_DIR)/bin/,$(addsuffix .mio0,$(TEXTURE_DATA_MIO0_NAMES)))
+
+STANDALONE_TEXTURE_MIO0_FILES := $(addprefix $(BUILD_DIR)/,$(patsubst %.png,%.mio0,$(wildcard $(TEXTURES_DIR)/standalone/*.png)))
+
+RAW_TEXTURE_FILES := $(addprefix $(BUILD_DIR)/,$(patsubst %.png,%,$(wildcard $(TEXTURES_DIR)/raw/*.png)))
+
+KARTS_DIR := bin/karts
+ALL_KARTS_DIRS := $(wildcard $(KARTS_DIR)/*)
+KART_TEXTURE_MIO0_FILES := $(addprefix $(BUILD_DIR)/,$(patsubst %.bin,%.mio0,$(wildcard $(KARTS_DIR)/*/*.bin)))
+
+MIO0_FILES := $(COURSE_VERTEX_MIO0_FILES) $(OTHER_DATA_MIO0_FILES) $(TEXTURE_DATA_MIO0_FILES) $(STANDALONE_TEXTURE_MIO0_FILES) $(KART_TEXTURE_MIO0_FILES)
+
+MUSIC_FILES = \
+$(MUSIC_DIR)/seq_00.m64 \
+$(MUSIC_DIR)/seq_01.m64 \
+$(MUSIC_DIR)/seq_02.m64 \
+$(MUSIC_DIR)/seq_03.m64 \
+$(MUSIC_DIR)/seq_04.m64 \
+$(MUSIC_DIR)/seq_05.m64 \
+$(MUSIC_DIR)/seq_06.m64 \
+$(MUSIC_DIR)/seq_07.m64 \
+$(MUSIC_DIR)/seq_08.m64 \
+$(MUSIC_DIR)/seq_09.m64 \
+$(MUSIC_DIR)/seq_0A.m64 \
+$(MUSIC_DIR)/seq_0B.m64 \
+$(MUSIC_DIR)/seq_0C.m64 \
+$(MUSIC_DIR)/seq_0D.m64 \
+$(MUSIC_DIR)/seq_0E.m64 \
+$(MUSIC_DIR)/seq_0F.m64 \
+$(MUSIC_DIR)/seq_10.m64 \
+$(MUSIC_DIR)/seq_11.m64 \
+$(MUSIC_DIR)/seq_12.m64 \
+$(MUSIC_DIR)/seq_13.m64 \
+$(MUSIC_DIR)/seq_14.m64 \
+$(MUSIC_DIR)/seq_15.m64 \
+$(MUSIC_DIR)/seq_16.m64 \
+$(MUSIC_DIR)/seq_17.m64 \
+$(MUSIC_DIR)/seq_18.m64 \
+$(MUSIC_DIR)/seq_19.m64 \
+$(MUSIC_DIR)/seq_1A.m64 \
+$(MUSIC_DIR)/seq_1B.m64 \
+$(MUSIC_DIR)/seq_1C.m64 \
+$(MUSIC_DIR)/seq_1D.m64 \
+$(MUSIC_DIR)/seq_1E.m64 \
+$(MUSIC_DIR)/seq_1F.m64 \
+$(MUSIC_DIR)/seq_20.m64 \
+$(MUSIC_DIR)/seq_21.m64
