@@ -64,7 +64,7 @@ SECTIONS
       BUILD_DIR/asm/code_8001F980.o(.text);
       BUILD_DIR/asm/code_80027040.o(.text);
       BUILD_DIR/asm/code_80027D00.o(.text);
-      BUILD_DIR/asm/code_800393C0.o(.text);
+      BUILD_DIR/src/code_800393C0.o(.text);
       BUILD_DIR/asm/code_8003DC40.o(.text);
       BUILD_DIR/asm/code_80040030.o(.text);
       BUILD_DIR/asm/code_800400D0.o(.text);
