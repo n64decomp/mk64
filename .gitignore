@@ -17,10 +17,12 @@
 *.la
 *.lo
 
-# Shared objects (inc. Windows DLLs)
+# Shared objects (inc. Windows DLLs), except those in IDO
 *.dll
 *.so
 *.so.*
+!/tools/ido5.3_compiler/usr/lib/*.so*
+!/tools/ido5.3_compiler/lib/*.so*
 *.dylib
 
 # Executables
