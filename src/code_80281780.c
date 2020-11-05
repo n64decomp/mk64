@@ -54,10 +54,10 @@ extern u16 D_8015F588;
 
 extern s32 D_8015F580;
 
-extern s32 D_00821D10;
-extern s32 D_00825800;
-extern s32 D_00831DC0;
-extern s32 D_00835BA0;
+extern s32 _data_821D10SegmentRomStart;
+extern s32 _data_825800SegmentRomStart;
+extern s32 _course_banshee_boardwalk_dl_mio0SegmentRomStart;
+extern s32 _course_yoshi_valley_dl_mio0SegmentRomStart;
 
 extern s32 D_801625F8;
 extern f32 D_801625FC;
@@ -186,8 +186,8 @@ void *load_ending_sequence_royalraceway(void) {
     gModeSelection = 0;
     load_course(gCurrentCourseId);
     D_8015F730 = (s32) D_8015F728;
-    set_segment_base_addr(0xB, func_802AA88C(&D_00821D10, &D_00825800));
-    set_segment_base_addr(6, func_802AA88C(&D_00831DC0, &D_00835BA0));
+    set_segment_base_addr(0xB, func_802AA88C(&_data_821D10SegmentRomStart, &_data_825800SegmentRomStart));
+    set_segment_base_addr(6, func_802AA88C(&_course_banshee_boardwalk_dl_mio0SegmentRomStart, &_course_yoshi_valley_dl_mio0SegmentRomStart));
     D_8015F8E4 = -2000.0f;
     D_8015F6EA = -0x15A1;
     D_8015F6EE = -0x15A1;

@@ -336,10 +336,10 @@ glabel func_80280420
 /* 123B14 802804D4 3C0E8016 */  lui   $t6, %hi(D_8015F728) # $t6, 0x8016
 /* 123B18 802804D8 8DCEF728 */  lw    $t6, %lo(D_8015F728)($t6)
 /* 123B1C 802804DC 3C018016 */  lui   $at, %hi(D_8015F730) # $at, 0x8016
-/* 123B20 802804E0 3C040082 */  lui   $a0, %hi(D_00821D10) # $a0, 0x82
-/* 123B24 802804E4 3C050082 */  lui   $a1, %hi(D_00825800) # $a1, 0x82
-/* 123B28 802804E8 24A55800 */  addiu $a1, %lo(D_00825800) # addiu $a1, $a1, 0x5800
-/* 123B2C 802804EC 24841D10 */  addiu $a0, %lo(D_00821D10) # addiu $a0, $a0, 0x1d10
+/* 123B20 802804E0 3C040082 */  lui   $a0, %hi(_data_821D10SegmentRomStart) # $a0, 0x82
+/* 123B24 802804E4 3C050082 */  lui   $a1, %hi(_data_825800SegmentRomStart) # $a1, 0x82
+/* 123B28 802804E8 24A55800 */  addiu $a1, %lo(_data_825800SegmentRomStart) # addiu $a1, $a1, 0x5800
+/* 123B2C 802804EC 24841D10 */  addiu $a0, %lo(_data_821D10SegmentRomStart) # addiu $a0, $a0, 0x1d10
 /* 123B30 802804F0 0C0AAA23 */  jal   func_802AA88C
 /* 123B34 802804F4 AC2EF730 */   sw    $t6, %lo(D_8015F730)($at)
 /* 123B38 802804F8 2404000B */  li    $a0, 11

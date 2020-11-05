@@ -184,12 +184,17 @@ SECTIONS
 
    /* TODO: 0x825800 -> 0x8028B230 (0x100) ...
             0x828400 -> 0x8028DE30 (0xD0) */
-   BEGIN_SEG(other_assets, 0x0C000000)
+   BEGIN_SEG(data_821D10, 0x0C000000)
    {
-      BUILD_DIR/data/other_assets.o(.data);
+      BUILD_DIR/data/data_821D10.o(.data);
+   }
+   END_SEG(data_821D10)
+   BEGIN_SEG(data_825800, 0x0C008D80)
+   {
+      BUILD_DIR/data/data_825800.o(.data);
       . = ALIGN(0x10);
    }
-   END_SEG(other_assets)
+   END_SEG(data_825800)
 
    MIO0_SEG(course_mario_raceway_dl)
    MIO0_SEG(course_choco_mountain_dl)

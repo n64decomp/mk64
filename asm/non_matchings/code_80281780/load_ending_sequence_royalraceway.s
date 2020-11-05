@@ -53,20 +53,20 @@ glabel load_ending_sequence_royalraceway
 /* 125074 80281A34 3C188016 */  lui   $t8, %hi(D_8015F728) # $t8, 0x8016
 /* 125078 80281A38 8F18F728 */  lw    $t8, %lo(D_8015F728)($t8)
 /* 12507C 80281A3C 3C018016 */  lui   $at, %hi(D_8015F730) # $at, 0x8016
-/* 125080 80281A40 3C040082 */  lui   $a0, %hi(D_00821D10) # $a0, 0x82
-/* 125084 80281A44 3C050082 */  lui   $a1, %hi(D_00825800) # $a1, 0x82
-/* 125088 80281A48 24A55800 */  addiu $a1, %lo(D_00825800) # addiu $a1, $a1, 0x5800
-/* 12508C 80281A4C 24841D10 */  addiu $a0, %lo(D_00821D10) # addiu $a0, $a0, 0x1d10
+/* 125080 80281A40 3C040082 */  lui   $a0, %hi(_data_821D10SegmentRomStart) # $a0, 0x82
+/* 125084 80281A44 3C050082 */  lui   $a1, %hi(_data_825800SegmentRomStart) # $a1, 0x82
+/* 125088 80281A48 24A55800 */  addiu $a1, %lo(_data_825800SegmentRomStart) # addiu $a1, $a1, 0x5800
+/* 12508C 80281A4C 24841D10 */  addiu $a0, %lo(_data_821D10SegmentRomStart) # addiu $a0, $a0, 0x1d10
 /* 125090 80281A50 0C0AAA23 */  jal   func_802AA88C
 /* 125094 80281A54 AC38F730 */   sw    $t8, %lo(D_8015F730)($at)
 /* 125098 80281A58 2404000B */  li    $a0, 11
 /* 12509C 80281A5C 0C0A9EE5 */  jal   set_segment_base_addr
 /* 1250A0 80281A60 00402825 */   move  $a1, $v0
-/* 1250A4 80281A64 3C040083 */  lui   $a0, %hi(D_00831DC0) # $a0, 0x83
-/* 1250A8 80281A68 3C050083 */  lui   $a1, %hi(D_00835BA0) # $a1, 0x83
-/* 1250AC 80281A6C 24A55BA0 */  addiu $a1, %lo(D_00835BA0) # addiu $a1, $a1, 0x5ba0
+/* 1250A4 80281A64 3C040083 */  lui   $a0, %hi(_course_banshee_boardwalk_dl_mio0SegmentRomStart) # $a0, 0x83
+/* 1250A8 80281A68 3C050083 */  lui   $a1, %hi(_course_yoshi_valley_dl_mio0SegmentRomStart) # $a1, 0x83
+/* 1250AC 80281A6C 24A55BA0 */  addiu $a1, %lo(_course_yoshi_valley_dl_mio0SegmentRomStart) # addiu $a1, $a1, 0x5ba0
 /* 1250B0 80281A70 0C0AAA23 */  jal   func_802AA88C
-/* 1250B4 80281A74 24841DC0 */   addiu $a0, %lo(D_00831DC0) # addiu $a0, $a0, 0x1dc0
+/* 1250B4 80281A74 24841DC0 */   addiu $a0, %lo(_course_banshee_boardwalk_dl_mio0SegmentRomStart) # addiu $a0, $a0, 0x1dc0
 /* 1250B8 80281A78 24040006 */  li    $a0, 6
 /* 1250BC 80281A7C 0C0A9EE5 */  jal   set_segment_base_addr
 /* 1250C0 80281A80 00402825 */   move  $a1, $v0

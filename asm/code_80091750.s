@@ -354,10 +354,10 @@ glabel func_80091B78
 /* 092800 80091C00 3C088016 */   lui   $t0, %hi(D_8015F734) # $t0, 0x8016
 /* 092804 80091C04 8D08F734 */  lw    $t0, %lo(D_8015F734)($t0)
 /* 092808 80091C08 3C018016 */  lui   $at, %hi(D_8015F728) # $at, 0x8016
-/* 09280C 80091C0C 3C040082 */  lui   $a0, %hi(D_00825800) # $a0, 0x82
-/* 092810 80091C10 3C050083 */  lui   $a1, %hi(D_008284D0) # $a1, 0x83
-/* 092814 80091C14 24A584D0 */  addiu $a1, %lo(D_008284D0) # addiu $a1, $a1, -0x7b30
-/* 092818 80091C18 24845800 */  addiu $a0, %lo(D_00825800) # addiu $a0, $a0, 0x5800
+/* 09280C 80091C0C 3C040082 */  lui   $a0, %hi(_data_825800SegmentRomStart) # $a0, 0x82
+/* 092810 80091C10 3C050083 */  lui   $a1, %hi(_course_mario_raceway_dl_mio0SegmentRomStart) # $a1, 0x83
+/* 092814 80091C14 24A584D0 */  addiu $a1, %lo(_course_mario_raceway_dl_mio0SegmentRomStart) # addiu $a1, $a1, -0x7b30
+/* 092818 80091C18 24845800 */  addiu $a0, %lo(_data_825800SegmentRomStart) # addiu $a0, $a0, 0x5800
 /* 09281C 80091C1C 0C0AAA23 */  jal   func_802AA88C
 /* 092820 80091C20 AC28F728 */   sw    $t0, %lo(D_8015F728)($at)
 /* 092824 80091C24 24040006 */  li    $a0, 6
@@ -8414,10 +8414,10 @@ glabel dma_copy_base_729a30
 /* 099C24 80099024 8FB90050 */  lw    $t9, 0x50($sp)
 /* 099C28 80099028 8FA8004C */  lw    $t0, 0x4c($sp)
 /* 099C2C 8009902C 3421FFFF */  ori   $at, (0x00FFFFFF & 0xFFFF) # ori $at, $at, 0xffff
-/* 099C30 80099030 3C180073 */  lui   $t8, %hi(D_00729A30) # $t8, 0x73
+/* 099C30 80099030 3C180073 */  lui   $t8, %hi(_textures_0aSegmentRomStart) # $t8, 0x73
 /* 099C34 80099034 3C098015 */  lui   $t1, %hi(D_8014EF58) # $t1, 0x8015
 /* 099C38 80099038 2529EF58 */  addiu $t1, %lo(D_8014EF58) # addiu $t1, $t1, -0x10a8
-/* 099C3C 8009903C 27189A30 */  addiu $t8, %lo(D_00729A30) # addiu $t8, $t8, -0x65d0
+/* 099C3C 8009903C 27189A30 */  addiu $t8, %lo(_textures_0aSegmentRomStart) # addiu $t8, $t8, -0x65d0
 /* 099C40 80099040 01C17824 */  and   $t7, $t6, $at
 /* 099C44 80099044 01F83821 */  addu  $a3, $t7, $t8
 /* 099C48 80099048 AFA90018 */  sw    $t1, 0x18($sp)
@@ -8450,10 +8450,10 @@ glabel dma_copy_base_7fa3c0
 /* 099CAC 800990AC 8FB90050 */  lw    $t9, 0x50($sp)
 /* 099CB0 800990B0 8FA8004C */  lw    $t0, 0x4c($sp)
 /* 099CB4 800990B4 3421FFFF */  ori   $at, (0x00FFFFFF & 0xFFFF) # ori $at, $at, 0xffff
-/* 099CB8 800990B8 3C180080 */  lui   $t8, %hi(D_007FA3C0) # $t8, 0x80
+/* 099CB8 800990B8 3C180080 */  lui   $t8, %hi(_textures_0bSegmentRomStart) # $t8, 0x80
 /* 099CBC 800990BC 3C098015 */  lui   $t1, %hi(D_8014EF58) # $t1, 0x8015
 /* 099CC0 800990C0 2529EF58 */  addiu $t1, %lo(D_8014EF58) # addiu $t1, $t1, -0x10a8
-/* 099CC4 800990C4 2718A3C0 */  addiu $t8, %lo(D_007FA3C0) # addiu $t8, $t8, -0x5c40
+/* 099CC4 800990C4 2718A3C0 */  addiu $t8, %lo(_textures_0bSegmentRomStart) # addiu $t8, $t8, -0x5c40
 /* 099CC8 800990C8 01C17824 */  and   $t7, $t6, $at
 /* 099CCC 800990CC 01F83821 */  addu  $a3, $t7, $t8
 /* 099CD0 800990D0 AFA90018 */  sw    $t1, 0x18($sp)
@@ -9246,9 +9246,9 @@ glabel func_80099AEC
 /* 09A7B8 80099BB8 8E8C0000 */  lw    $t4, ($s4)
 /* 09A7BC 80099BBC 3C168015 */  lui   $s6, %hi(D_8014EF58) # $s6, 0x8015
 /* 09A7C0 80099BC0 3421FFFF */  ori   $at, (0x00FFFFFF & 0xFFFF) # ori $at, $at, 0xffff
-/* 09A7C4 80099BC4 3C020073 */  lui   $v0, %hi(D_00729A30) # $v0, 0x73
+/* 09A7C4 80099BC4 3C020073 */  lui   $v0, %hi(_textures_0aSegmentRomStart) # $v0, 0x73
 /* 09A7C8 80099BC8 26D6EF58 */  addiu $s6, %lo(D_8014EF58) # addiu $s6, $s6, -0x10a8
-/* 09A7CC 80099BCC 24429A30 */  addiu $v0, %lo(D_00729A30) # addiu $v0, $v0, -0x65d0
+/* 09A7CC 80099BCC 24429A30 */  addiu $v0, %lo(_textures_0aSegmentRomStart) # addiu $v0, $v0, -0x65d0
 /* 09A7D0 80099BD0 01415824 */  and   $t3, $t2, $at
 /* 09A7D4 80099BD4 004B3821 */  addu  $a3, $v0, $t3
 /* 09A7D8 80099BD8 AFA20058 */  sw    $v0, 0x58($sp)
@@ -9510,9 +9510,9 @@ glabel func_80099EC4
 /* 09AB6C 80099F6C 8E690000 */  lw    $t1, ($s3)
 /* 09AB70 80099F70 3C158015 */  lui   $s5, %hi(D_8014EF58) # $s5, 0x8015
 /* 09AB74 80099F74 3421FFFF */  ori   $at, (0x00FFFFFF & 0xFFFF) # ori $at, $at, 0xffff
-/* 09AB78 80099F78 3C1E0073 */  lui   $fp, %hi(D_00729A30) # $fp, 0x73
+/* 09AB78 80099F78 3C1E0073 */  lui   $fp, %hi(_textures_0aSegmentRomStart) # $fp, 0x73
 /* 09AB7C 80099F7C 26B5EF58 */  addiu $s5, %lo(D_8014EF58) # addiu $s5, $s5, -0x10a8
-/* 09AB80 80099F80 27DE9A30 */  addiu $fp, %lo(D_00729A30) # addiu $fp, $fp, -0x65d0
+/* 09AB80 80099F80 27DE9A30 */  addiu $fp, %lo(_textures_0aSegmentRomStart) # addiu $fp, $fp, -0x65d0
 /* 09AB84 80099F84 03214024 */  and   $t0, $t9, $at
 /* 09AB88 80099F88 03C83821 */  addu  $a3, $fp, $t0
 /* 09AB8C 80099F8C AFB50018 */  sw    $s5, 0x18($sp)

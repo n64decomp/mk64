@@ -1787,10 +1787,10 @@ glabel audio_init
 /* 0BCFD4 800BC3D4 8E240000 */  lw    $a0, ($s1)
 /* 0BCFD8 800BC3D8 0C02ED0F */  jal   func_800BB43C
 /* 0BCFDC 800BC3DC 02402825 */   move  $a1, $s2
-/* 0BCFE0 800BC3E0 3C110096 */  lui   $s1, %hi(D_00966260) # $s1, 0x96
+/* 0BCFE0 800BC3E0 3C110096 */  lui   $s1, %hi(_sound_dataSegmentRomStart) # $s1, 0x96
 /* 0BCFE4 800BC3E4 3C12803B */  lui   $s2, %hi(D_803B7070) # $s2, 0x803b
 /* 0BCFE8 800BC3E8 26527070 */  addiu $s2, %lo(D_803B7070) # addiu $s2, $s2, 0x7070
-/* 0BCFEC 800BC3EC 26316260 */  addiu $s1, %lo(D_00966260) # addiu $s1, $s1, 0x6260
+/* 0BCFEC 800BC3EC 26316260 */  addiu $s1, %lo(_sound_dataSegmentRomStart) # addiu $s1, $s1, 0x6260
 /* 0BCFF0 800BC3F0 AE550000 */  sw    $s5, ($s2)
 /* 0BCFF4 800BC3F4 02202025 */  move  $a0, $s1
 /* 0BCFF8 800BC3F8 02A02825 */  move  $a1, $s5
