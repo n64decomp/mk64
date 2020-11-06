@@ -1756,8 +1756,8 @@ glabel audio_init
 /* 0BCF58 800BC358 0C02E803 */  jal   func_800BA00C
 /* 0BCF5C 800BC35C A3190000 */   sb    $t9, ($t8)
 /* 0BCF60 800BC360 3C11803B */  lui   $s1, %hi(D_803B706C) # $s1, 0x803b
-/* 0BCF64 800BC364 3C1200BC */  lui   $s2, %hi(D_00BC5F60) # $s2, 0xbc
-/* 0BCF68 800BC368 26525F60 */  addiu $s2, %lo(D_00BC5F60) # addiu $s2, $s2, 0x5f60
+/* 0BCF64 800BC364 3C1200BC */  lui   $s2, %hi(_sequencesSegmentRomStart) # $s2, 0xbc
+/* 0BCF68 800BC368 26525F60 */  addiu $s2, %lo(_sequencesSegmentRomStart) # addiu $s2, $s2, 0x5f60
 /* 0BCF6C 800BC36C 2631706C */  addiu $s1, %lo(D_803B706C) # addiu $s1, $s1, 0x706c
 /* 0BCF70 800BC370 27B50060 */  addiu $s5, $sp, 0x60
 /* 0BCF74 800BC374 AE350000 */  sw    $s5, ($s1)
@@ -1850,8 +1850,8 @@ glabel audio_init
 /* 0BD0CC 800BC4CC A1690002 */   sb    $t1, 2($t3)
 .L800BC4D0:
 /* 0BD0D0 800BC4D0 3C11803B */  lui   $s1, %hi(D_803B7074) # $s1, 0x803b
-/* 0BD0D4 800BC4D4 3C120098 */  lui   $s2, %hi(D_00979AA0) # $s2, 0x98
-/* 0BD0D8 800BC4D8 26529AA0 */  addiu $s2, %lo(D_00979AA0) # addiu $s2, $s2, -0x6560
+/* 0BD0D4 800BC4D4 3C120098 */  lui   $s2, %hi(_sound_data_2SegmentRomStart) # $s2, 0x98
+/* 0BD0D8 800BC4D8 26529AA0 */  addiu $s2, %lo(_sound_data_2SegmentRomStart) # addiu $s2, $s2, -0x6560
 /* 0BD0DC 800BC4DC 26317074 */  addiu $s1, %lo(D_803B7074) # addiu $s1, $s1, 0x7074
 /* 0BD0E0 800BC4E0 AE350000 */  sw    $s5, ($s1)
 /* 0BD0E4 800BC4E4 02402025 */  move  $a0, $s2
@@ -1881,9 +1881,9 @@ glabel audio_init
 /* 0BD144 800BC544 24050100 */   li    $a1, 256
 /* 0BD148 800BC548 3C03803B */  lui   $v1, %hi(D_803B7078) # $v1, 0x803b
 /* 0BD14C 800BC54C 24637078 */  addiu $v1, %lo(D_803B7078) # addiu $v1, $v1, 0x7078
-/* 0BD150 800BC550 3C0400BF */  lui   $a0, %hi(D_00BE90E0) # $a0, 0xbf
+/* 0BD150 800BC550 3C0400BF */  lui   $a0, %hi(_instrument_setsSegmentRomStart) # $a0, 0xbf
 /* 0BD154 800BC554 AC620000 */  sw    $v0, ($v1)
-/* 0BD158 800BC558 248490E0 */  addiu $a0, %lo(D_00BE90E0) # addiu $a0, $a0, -0x6f20
+/* 0BD158 800BC558 248490E0 */  addiu $a0, %lo(_instrument_setsSegmentRomStart) # addiu $a0, $a0, -0x6f20
 /* 0BD15C 800BC55C 00402825 */  move  $a1, $v0
 /* 0BD160 800BC560 0C02EAA0 */  jal   func_800BAA80
 /* 0BD164 800BC564 24060100 */   li    $a2, 256

@@ -3,7 +3,6 @@
 
 .include "macros.inc"
 
-.data
+.section .data
 
-# 128480-12AAE0 [2660]
-.incbin "bin/mk64.u.128480.bin"
+.incbin "bin/mk64.u.966260.bin" # sound data?

@@ -261,9 +261,25 @@ SECTIONS
 
    BEGIN_SEG(sound_data, 0x0)
    {
-      BUILD_DIR/data/sound_data.o(.data);
+      BUILD_DIR/data/sound_data/sound_data.o(.data);
    }
    END_SEG(sound_data)
+   BEGIN_SEG(sound_data_2, 0x13840)
+   {
+      BUILD_DIR/data/sound_data/sound_data_2.o(.data);
+   }
+   END_SEG(sound_data_2)
+   BEGIN_SEG(sequences, 0x25FD00)
+   {
+      BUILD_DIR/data/sound_data/sequences.o(.data);
+   }
+   END_SEG(sequences)
+   BEGIN_SEG(instrument_sets, 0x282E80)
+   {
+      BUILD_DIR/data/sound_data/instrument_sets.o(.data);
+   }
+   END_SEG(instrument_sets)
+
 
    /* Discard everything not specifically mentioned above. */
    /DISCARD/ :

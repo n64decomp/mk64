@@ -29,7 +29,7 @@ BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)
 # Directories containing source files
 INCLUDE_DIRS := include
 SRC_DIRS := src src/audio
-ASM_DIRS := asm asm/audio data data/courses
+ASM_DIRS := asm asm/audio data data/courses data/sound_data
 
 TEXTURES_DIR = textures
 
