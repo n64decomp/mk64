@@ -5,5 +5,5 @@
 
 .section .data
 
-.incbin "bin/mk64.u.979AA0.bin" # sound data?
+.incbin "bin/mk64.u.979AA0.bin" # Audiotables and data
 

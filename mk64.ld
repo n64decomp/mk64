@@ -259,16 +259,16 @@ SECTIONS
    VERT_SEG(dks_jungle_parkway_vertex, 0x0F000000)
    VERT_SEG(big_donut_vertex, 0x0F000000)
 
-   BEGIN_SEG(sound_data, 0x0)
+   BEGIN_SEG(audio_banks, 0x0)
    {
-      BUILD_DIR/data/sound_data/sound_data.o(.data);
+      BUILD_DIR/data/sound_data/audiobanks.o(.data);
    }
-   END_SEG(sound_data)
-   BEGIN_SEG(sound_data_2, 0x13840)
+   END_SEG(audio_banks)
+   BEGIN_SEG(audio_tables, 0x13840)
    {
-      BUILD_DIR/data/sound_data/sound_data_2.o(.data);
+      BUILD_DIR/data/sound_data/audiotables.o(.data);
    }
-   END_SEG(sound_data_2)
+   END_SEG(audio_tables)
    BEGIN_SEG(sequences, 0x25FD00)
    {
       BUILD_DIR/data/sound_data/sequences.o(.data);

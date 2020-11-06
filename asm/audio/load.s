@@ -1787,10 +1787,10 @@ glabel audio_init
 /* 0BCFD4 800BC3D4 8E240000 */  lw    $a0, ($s1)
 /* 0BCFD8 800BC3D8 0C02ED0F */  jal   func_800BB43C
 /* 0BCFDC 800BC3DC 02402825 */   move  $a1, $s2
-/* 0BCFE0 800BC3E0 3C110096 */  lui   $s1, %hi(_sound_dataSegmentRomStart) # $s1, 0x96
+/* 0BCFE0 800BC3E0 3C110096 */  lui   $s1, %hi(_audio_banksSegmentRomStart) # $s1, 0x96
 /* 0BCFE4 800BC3E4 3C12803B */  lui   $s2, %hi(D_803B7070) # $s2, 0x803b
 /* 0BCFE8 800BC3E8 26527070 */  addiu $s2, %lo(D_803B7070) # addiu $s2, $s2, 0x7070
-/* 0BCFEC 800BC3EC 26316260 */  addiu $s1, %lo(_sound_dataSegmentRomStart) # addiu $s1, $s1, 0x6260
+/* 0BCFEC 800BC3EC 26316260 */  addiu $s1, %lo(_audio_banksSegmentRomStart) # addiu $s1, $s1, 0x6260
 /* 0BCFF0 800BC3F0 AE550000 */  sw    $s5, ($s2)
 /* 0BCFF4 800BC3F4 02202025 */  move  $a0, $s1
 /* 0BCFF8 800BC3F8 02A02825 */  move  $a1, $s5
@@ -1850,8 +1850,8 @@ glabel audio_init
 /* 0BD0CC 800BC4CC A1690002 */   sb    $t1, 2($t3)
 .L800BC4D0:
 /* 0BD0D0 800BC4D0 3C11803B */  lui   $s1, %hi(D_803B7074) # $s1, 0x803b
-/* 0BD0D4 800BC4D4 3C120098 */  lui   $s2, %hi(_sound_data_2SegmentRomStart) # $s2, 0x98
-/* 0BD0D8 800BC4D8 26529AA0 */  addiu $s2, %lo(_sound_data_2SegmentRomStart) # addiu $s2, $s2, -0x6560
+/* 0BD0D4 800BC4D4 3C120098 */  lui   $s2, %hi(_audio_tablesSegmentRomStart) # $s2, 0x98
+/* 0BD0D8 800BC4D8 26529AA0 */  addiu $s2, %lo(_audio_tablesSegmentRomStart) # addiu $s2, $s2, -0x6560
 /* 0BD0DC 800BC4DC 26317074 */  addiu $s1, %lo(D_803B7074) # addiu $s1, $s1, 0x7074
 /* 0BD0E0 800BC4E0 AE350000 */  sw    $s5, ($s1)
 /* 0BD0E4 800BC4E4 02402025 */  move  $a0, $s2

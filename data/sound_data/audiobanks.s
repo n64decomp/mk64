@@ -5,4 +5,4 @@
 
 .section .data
 
-.incbin "bin/mk64.u.966260.bin" # sound data?
+.incbin "bin/mk64.u.966260.bin" # Audiobank data
