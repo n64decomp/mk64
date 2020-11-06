@@ -234,4 +234,7 @@ load: $(TARGET).z64
 
 -include $(DEP_FILES)
 
+# Remove built-in rules, to improve performance
+MAKEFLAGS += --no-builtin-rules
+
 print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true
