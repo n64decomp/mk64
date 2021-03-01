@@ -6,11 +6,6 @@
 .data
 
 .align 2, 0x00
-glabel data_821D10
-.incbin "bin/data_821D10.mio0"
-glabel data_821D10_end
-
-.align 2, 0x00
 glabel data_825800
 .incbin "bin/data_825800.mio0"
 glabel data_825800_end

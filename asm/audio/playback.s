@@ -262,11 +262,11 @@ glabel func_800BC90C
 /* 0BD544 800BC944 00601025 */   move  $v0, $v1
 
 glabel func_800BC948
-/* 0BD548 800BC948 3C0E803B */  lui   $t6, 0x803b
+/* 0BD548 800BC948 3C0E803B */  lui   $t6, %hi(D_803B03C0) # 0x803b
 /* 0BD54C 800BC94C 01C47021 */  addu  $t6, $t6, $a0
-/* 0BD550 800BC950 91CE03C0 */  lbu   $t6, 0x3c0($t6)
+/* 0BD550 800BC950 91CE03C0 */  lbu   $t6, %lo(D_803B03C0)($t6) # 0x3c0($t6)
 /* 0BD554 800BC954 3C011000 */  lui   $at, 0x1000
-/* 0BD558 800BC958 3C19803B */  lui   $t9, 0x803b
+/* 0BD558 800BC958 3C19803B */  lui   $t9, %hi(D_803B7080) # 0x803b
 /* 0BD55C 800BC95C 29CF0002 */  slti  $t7, $t6, 2
 /* 0BD560 800BC960 11E00006 */  beqz  $t7, .L800BC97C
 /* 0BD564 800BC964 00044080 */   sll   $t0, $a0, 2
@@ -277,7 +277,7 @@ glabel func_800BC948
 /* 0BD578 800BC978 00001025 */   move  $v0, $zero
 
 .L800BC97C:
-/* 0BD57C 800BC97C 8F397080 */  lw    $t9, 0x7080($t9)
+/* 0BD57C 800BC97C 8F397080 */  lw    $t9, %lo(D_803B7080)($t9) # 0x7080($t9)
 /* 0BD580 800BC980 01044023 */  subu  $t0, $t0, $a0
 /* 0BD584 800BC984 00084080 */  sll   $t0, $t0, 2
 /* 0BD588 800BC988 03281021 */  addu  $v0, $t9, $t0
@@ -314,11 +314,11 @@ glabel func_800BC948
 /* 0BD5F4 800BC9F4 00000000 */   nop   
 
 glabel func_800BC9F8
-/* 0BD5F8 800BC9F8 3C0E803B */  lui   $t6, 0x803b
+/* 0BD5F8 800BC9F8 3C0E803B */  lui   $t6, %hi(D_803B03C0) # 0x803b
 /* 0BD5FC 800BC9FC 01C47021 */  addu  $t6, $t6, $a0
-/* 0BD600 800BCA00 91CE03C0 */  lbu   $t6, 0x3c0($t6)
+/* 0BD600 800BCA00 91CE03C0 */  lbu   $t6, %lo(D_803B03C0)($t6) # 0x3c0($t6)
 /* 0BD604 800BCA04 3C011000 */  lui   $at, 0x1000
-/* 0BD608 800BCA08 3C19803B */  lui   $t9, 0x803b
+/* 0BD608 800BCA08 3C19803B */  lui   $t9, %hi(D_803B7080) # 0x803b
 /* 0BD60C 800BCA0C 29CF0002 */  slti  $t7, $t6, 2
 /* 0BD610 800BCA10 11E00006 */  beqz  $t7, .L800BCA2C
 /* 0BD614 800BCA14 00044080 */   sll   $t0, $a0, 2
@@ -329,7 +329,7 @@ glabel func_800BC9F8
 /* 0BD628 800BCA28 00001025 */   move  $v0, $zero
 
 .L800BCA2C:
-/* 0BD62C 800BCA2C 8F397080 */  lw    $t9, 0x7080($t9)
+/* 0BD62C 800BCA2C 8F397080 */  lw    $t9, %lo(D_803B7080)($t9) # 0x7080($t9)
 /* 0BD630 800BCA30 01044023 */  subu  $t0, $t0, $a0
 /* 0BD634 800BCA34 00084080 */  sll   $t0, $t0, 2
 /* 0BD638 800BCA38 03281021 */  addu  $v0, $t9, $t0

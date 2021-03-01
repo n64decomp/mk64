@@ -1681,4 +1681,3 @@ glabel gTextureCourseOutlineDksJungleParkway
 .balign 4, 0x00
 glabel gTextureCourseOutlineBigDonut
 .incbin "textures/standalone/course_outline_big_donut.i4.mio0"
-

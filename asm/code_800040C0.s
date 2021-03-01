@@ -433,9 +433,9 @@ glabel thread9_crash_screen
 /* 0052A8 800046A8 27BD0048 */   addiu $sp, $sp, 0x48
 
 glabel func_800046AC
-/* 0052AC 800046AC 3C018016 */  lui   $at, 0x8016
+/* 0052AC 800046AC 3C018016 */  lui   $at, %hi(D_80162D5C) # 0x8016
 /* 0052B0 800046B0 03E00008 */  jr    $ra
-/* 0052B4 800046B4 AC242D5C */   sw    $a0, 0x2d5c($at)
+/* 0052B4 800046B4 AC242D5C */   sw    $a0, %lo(D_80162D5C)($at) # 0x2d5c($at)
 
 glabel create_debug_thread
 /* 0052B8 800046B8 27BDFFE0 */  addiu $sp, $sp, -0x20

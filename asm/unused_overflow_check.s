@@ -10,6 +10,7 @@
 
 .section .text, "ax"
 
+/* Checks for overflow in unsigned shorts after arithmetic */
 /* 006BB0 80005FB0 00853020 */  add   $a2, $a0, $a1
 /* 006BB4 80005FB4 3403FFFF */  li    $v1, 65535
 /* 006BB8 80005FB8 03E00008 */  jr    $ra

@@ -29,8 +29,11 @@ struct VblankHandler
 struct Controller {
     s16 unk0;
     s16 unk2;
-    s16 unk4;
+    u16 unk4; // button held?
     u16 buttonPressed;
+    u16 unk8;
+    u16 padA; // never used?
+    u32 pad; // never used?
 };
 
 struct UnkStruct_800DC5EC {

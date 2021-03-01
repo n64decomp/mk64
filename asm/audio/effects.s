@@ -125,7 +125,7 @@ glabel func_800BDE50
 /* 0BEBE8 800BDFE8 14C9FFBE */  bne   $a2, $t1, .L800BDEE4
 /* 0BEBEC 800BDFEC 24E70004 */   addiu $a3, $a3, 4
 /* 0BEBF0 800BDFF0 03E00008 */  jr    $ra
-/* 0BEBF4 800BDFF4 A0800001 */   sb    $zero, 1($a0)
+/* 0BEBF4 800BDFF4 A0800001 */   sb    $zero, 1($a0)  
 
 glabel func_800BDFF8
 /* 0BEBF8 800BDFF8 27BDFFD0 */  addiu $sp, $sp, -0x30

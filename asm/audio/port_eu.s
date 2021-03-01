@@ -93,15 +93,15 @@ glabel create_next_audio_frame_task
 /* 0CC050 800CB450 00000000 */   nop   
 /* 0CC054 800CB454 0002C082 */  srl   $t8, $v0, 2
 /* 0CC058 800CB458 0010C840 */  sll   $t9, $s0, 1
-/* 0CC05C 800CB45C 3C03803B */  lui   $v1, 0x803b
+/* 0CC05C 800CB45C 3C03803B */  lui   $v1, %hi(D_803B718C) # 0x803b
 /* 0CC060 800CB460 AFD80074 */  sw    $t8, 0x74($fp)
 /* 0CC064 800CB464 00791821 */  addu  $v1, $v1, $t9
-/* 0CC068 800CB468 8463718C */  lh    $v1, 0x718c($v1)
+/* 0CC068 800CB468 8463718C */  lh    $v1, %lo(D_803B718C)($v1) # 0x718c($v1)
 /* 0CC06C 800CB46C 00104080 */  sll   $t0, $s0, 2
-/* 0CC070 800CB470 3C04803B */  lui   $a0, 0x803b
+/* 0CC070 800CB470 3C04803B */  lui   $a0, %hi(D_803B7180) # 0x803b
 /* 0CC074 800CB474 10600004 */  beqz  $v1, .L800CB488
 /* 0CC078 800CB478 00882021 */   addu  $a0, $a0, $t0
-/* 0CC07C 800CB47C 8C847180 */  lw    $a0, 0x7180($a0)
+/* 0CC07C 800CB47C 8C847180 */  lw    $a0, %lo(D_803B7180)($a0) # 0x7180($a0)
 /* 0CC080 800CB480 0C03443C */  jal   osAiSetNextBuffer
 /* 0CC084 800CB484 00032880 */   sll   $a1, $v1, 2
 .L800CB488:
@@ -204,12 +204,12 @@ glabel create_next_audio_frame_task
 /* 0CC1E0 800CB5E0 265270D4 */  addiu $s2, %lo(D_803B70D4) # addiu $s2, $s2, 0x70d4
 /* 0CC1E4 800CB5E4 01CFC021 */  addu  $t8, $t6, $t7
 /* 0CC1E8 800CB5E8 AE580000 */  sw    $t8, ($s2)
-/* 0CC1EC 800CB5EC 3C08803B */  lui   $t0, 0x803b
+/* 0CC1EC 800CB5EC 3C08803B */  lui   $t0, %hi(D_803B70C8) # 0x803b
 /* 0CC1F0 800CB5F0 3C10803B */  lui   $s0, %hi(D_803B70C4) # $s0, 0x803b
 /* 0CC1F4 800CB5F4 0002C880 */  sll   $t9, $v0, 2
 /* 0CC1F8 800CB5F8 8E1070C4 */  lw    $s0, %lo(D_803B70C4)($s0)
 /* 0CC1FC 800CB5FC 01194021 */  addu  $t0, $t0, $t9
-/* 0CC200 800CB600 8D0870C8 */  lw    $t0, 0x70c8($t0)
+/* 0CC200 800CB600 8D0870C8 */  lw    $t0, %lo(D_803B70C8)($t0) # 0x70c8($t0)
 /* 0CC204 800CB604 3C0A803B */  lui   $t2, %hi(D_803B7180) # $t2, 0x803b
 /* 0CC208 800CB608 3C01803B */  lui   $at, %hi(D_803B70D0) # $at, 0x803b
 /* 0CC20C 800CB60C 254A7180 */  addiu $t2, %lo(D_803B7180) # addiu $t2, $t2, 0x7180
@@ -309,7 +309,7 @@ glabel create_next_audio_frame_task
 /* 0CC378 800CB778 2508B830 */  addiu $t0, %lo(aspMainTextStart) # addiu $t0, $t0, -0x47d0
 /* 0CC37C 800CB77C 24091000 */  li    $t1, 4096
 /* 0CC380 800CB780 000C68C0 */  sll   $t5, $t4, 3
-/* 0CC384 800CB784 3C18803B */  lui   $t8, 0x803b
+/* 0CC384 800CB784 3C18803B */  lui   $t8, %hi(D_803B70C8) # 0x803b
 /* 0CC388 800CB788 00107080 */  sll   $t6, $s0, 2
 /* 0CC38C 800CB78C 030EC021 */  addu  $t8, $t8, $t6
 /* 0CC390 800CB790 AC600004 */  sw    $zero, 4($v1)
@@ -323,7 +323,7 @@ glabel create_next_audio_frame_task
 /* 0CC3B0 800CB7B0 AC600024 */  sw    $zero, 0x24($v1)
 /* 0CC3B4 800CB7B4 AC600028 */  sw    $zero, 0x28($v1)
 /* 0CC3B8 800CB7B8 AC60002C */  sw    $zero, 0x2c($v1)
-/* 0CC3BC 800CB7BC 8F1870C8 */  lw    $t8, 0x70c8($t8)
+/* 0CC3BC 800CB7BC 8F1870C8 */  lw    $t8, %lo(D_803B70C8)($t8) # 0x70c8($t8)
 /* 0CC3C0 800CB7C0 3C08800F */  lui   $t0, %hi(D_800EA484) # $t0, 0x800f
 /* 0CC3C4 800CB7C4 AC780030 */  sw    $t8, 0x30($v1)
 /* 0CC3C8 800CB7C8 8FD90070 */  lw    $t9, 0x70($fp)
@@ -368,7 +368,7 @@ glabel func_800CB818
 /* 0CC454 800CB854 10410033 */  beq   $v0, $at, .L800CB924
 /* 0CC458 800CB858 240100F1 */   li    $at, 241
 /* 0CC45C 800CB85C 10410035 */  beq   $v0, $at, .L800CB934
-/* 0CC460 800CB860 3C03803B */   lui   $v1, 0x803b
+/* 0CC460 800CB860 3C03803B */   lui   $v1, %hi(D_803B1658) # 0x803b
 /* 0CC464 800CB864 240100F2 */  li    $at, 242
 /* 0CC468 800CB868 10410046 */  beq   $v0, $at, .L800CB984
 /* 0CC46C 800CB86C 3C03803B */   lui   $v1, %hi(D_803B1658) # $v1, 0x803b

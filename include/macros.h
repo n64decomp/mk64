@@ -61,4 +61,7 @@
 // another way of converting virtual to physical
 #define VIRTUAL_TO_PHYSICAL2(addr)  ((u8 *)(addr) - 0x80000000U)
 
+// aligns an address to the next 16 bytes
+#define ALIGN16(x) (((x) + 0xF) & -0x10)
+
 #endif

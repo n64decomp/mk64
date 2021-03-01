@@ -4476,6 +4476,16 @@ typedef union {
 	 _SHIFTL(sB, 0, 8))						\
 }}
 
+// Current spot for custom raw gDPHalf1 commands
+// that mk64 seems to use
+
+#define gDPHalf1(pkt, data) \
+{ \
+	Gfx *_g = pkt; \
+	_g->words.w0 = _SHIFTL(G_RDPHALF_1, 24, 8);    \
+	_g->words.w1 = data;    \
+}
+
 #define gDPNoParam(pkt, cmd)						\
 {									\
 	Gfx *_g = (Gfx *)(pkt);						\

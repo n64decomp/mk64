@@ -11,6 +11,8 @@ void guPerspectiveF(float mf[4][4], u16 *perspNorm, float fovy, float aspect,
                     float near, float far, float scale);
 void guPerspective(Mtx *m, u16 *perspNorm, float fovy, float aspect, float near,
                    float far, float scale);
+void guFrustum(Mtx *m, float left, float right, float bottom, float top,
+             float near, float far, float scale);
 void guOrtho(Mtx *m, float left, float right, float bottom, float top,
              float near, float far, float scale);
 void guTranslate(Mtx *m, float x, float y, float z);
@@ -21,6 +23,18 @@ void guMtxIdent(Mtx *m);
 void guMtxIdentF(float mf[4][4]);
 void guMtxL2F(float mf[4][4], Mtx *m);
 void guNormalize(float *, float *, float *);
+
+
+void guLookAt(Mtx *,
+		      f32,
+		      f32,
+		      f32,
+		      f32,
+		      f32,
+		      f32,
+		      f32,
+		      f32,
+		      f32);
 
 /* Used only in Fast3DEX2 */
 void guLookAtReflect (Mtx *m, LookAt *l, float xEye, float yEye, float zEye,
