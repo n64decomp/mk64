@@ -17,12 +17,10 @@
 *.la
 *.lo
 
-# Shared objects (inc. Windows DLLs), except those in IDO
+# Shared objects (inc. Windows DLLs)
 *.dll
 *.so
 *.so.*
-!/tools/ido5.3_compiler/usr/lib/*.so*
-!/tools/ido5.3_compiler/lib/*.so*
 *.dylib
 
 # Executables
@@ -50,6 +48,12 @@ doxygen/doxygen/*
 *.z64
 *.map
 .assets-local.txt
+
+# no context header for now, until it's greenlit for the repo
+context_gen_header.h
+tools/m2ctx.py
+# regardless of the above, the context file itself shouldnt be there
+ctx.c
 
 # Assets. Generally ignored, but ones with "custom" in the name are fine.
 /bin/*

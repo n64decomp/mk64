@@ -1403,9 +1403,9 @@ glabel func_800BBDDC
 .L800BBE5C:
 /* 0BCA5C 800BBE5C 306C0001 */  andi  $t4, $v1, 1
 /* 0BCA60 800BBE60 1180001A */  beqz  $t4, .L800BBECC
-/* 0BCA64 800BBE64 3C0D803B */   lui   $t5, 0x803b
+/* 0BCA64 800BBE64 3C0D803B */   lui   $t5, %hi(D_803B03C0) # 0x803b
 /* 0BCA68 800BBE68 01A66821 */  addu  $t5, $t5, $a2
-/* 0BCA6C 800BBE6C 91AD03C0 */  lbu   $t5, 0x3c0($t5)
+/* 0BCA6C 800BBE6C 91AD03C0 */  lbu   $t5, %lo(D_803B03C0)($t5) # 0x3c0($t5)
 /* 0BCA70 800BBE70 24010001 */  li    $at, 1
 /* 0BCA74 800BBE74 00002025 */  move  $a0, $zero
 /* 0BCA78 800BBE78 29AE0002 */  slti  $t6, $t5, 2
@@ -1603,9 +1603,9 @@ glabel audio_init
 /* 0BCD24 800BC124 000178C3 */  sra   $t7, $at, 3
 .L800BC128:
 /* 0BCD28 800BC128 19E0000C */  blez  $t7, .L800BC15C
-/* 0BCD2C 800BC12C 3C04803B */   lui   $a0, 0x803b
-/* 0BCD30 800BC130 3C18803B */  lui   $t8, 0x803b
-/* 0BCD34 800BC134 270271B0 */  addiu $v0, $t8, 0x71b0
+/* 0BCD2C 800BC12C 3C04803B */   lui   $a0, %hi(gGfxSPTaskOutputBufferSize) # 0x803b
+/* 0BCD30 800BC130 3C18803B */  lui   $t8, %hi(D_803B71B0) # 0x803b
+/* 0BCD34 800BC134 270271B0 */  addiu $v0, $t8, %lo(D_803B71B0) # 0x71b0
 /* 0BCD38 800BC138 000FC8C0 */  sll   $t9, $t7, 3
 /* 0BCD3C 800BC13C 03221821 */  addu  $v1, $t9, $v0
 .L800BC140:
@@ -1617,7 +1617,7 @@ glabel audio_init
 /* 0BCD54 800BC154 1420FFFA */  bnez  $at, .L800BC140
 /* 0BCD58 800BC158 AC48FFF8 */   sw    $t0, -8($v0)
 .L800BC15C:
-/* 0BCD5C 800BC15C 2482F780 */  addiu $v0, $a0, -0x880
+/* 0BCD5C 800BC15C 2482F780 */  addiu $v0, $a0, %lo(gGfxSPTaskOutputBufferSize) # -0x880
 /* 0BCD60 800BC160 254A71A0 */  addiu $t2, %lo(D_803B71A0) # addiu $t2, $t2, 0x71a0
 /* 0BCD64 800BC164 01421823 */  subu  $v1, $t2, $v0
 /* 0BCD68 800BC168 000380C2 */  srl   $s0, $v1, 3
@@ -1756,8 +1756,8 @@ glabel audio_init
 /* 0BCF58 800BC358 0C02E803 */  jal   func_800BA00C
 /* 0BCF5C 800BC35C A3190000 */   sb    $t9, ($t8)
 /* 0BCF60 800BC360 3C11803B */  lui   $s1, %hi(D_803B706C) # $s1, 0x803b
-/* 0BCF64 800BC364 3C1200BC */  lui   $s2, %hi(D_00BC5F60) # $s2, 0xbc
-/* 0BCF68 800BC368 26525F60 */  addiu $s2, %lo(D_00BC5F60) # addiu $s2, $s2, 0x5f60
+/* 0BCF64 800BC364 3C1200BC */  lui   $s2, %hi(_sequencesSegmentRomStart) # $s2, 0xbc
+/* 0BCF68 800BC368 26525F60 */  addiu $s2, %lo(_sequencesSegmentRomStart) # addiu $s2, $s2, 0x5f60
 /* 0BCF6C 800BC36C 2631706C */  addiu $s1, %lo(D_803B706C) # addiu $s1, $s1, 0x706c
 /* 0BCF70 800BC370 27B50060 */  addiu $s5, $sp, 0x60
 /* 0BCF74 800BC374 AE350000 */  sw    $s5, ($s1)
@@ -1787,10 +1787,10 @@ glabel audio_init
 /* 0BCFD4 800BC3D4 8E240000 */  lw    $a0, ($s1)
 /* 0BCFD8 800BC3D8 0C02ED0F */  jal   func_800BB43C
 /* 0BCFDC 800BC3DC 02402825 */   move  $a1, $s2
-/* 0BCFE0 800BC3E0 3C110096 */  lui   $s1, %hi(D_00966260) # $s1, 0x96
+/* 0BCFE0 800BC3E0 3C110096 */  lui   $s1, %hi(_audio_banksSegmentRomStart) # $s1, 0x96
 /* 0BCFE4 800BC3E4 3C12803B */  lui   $s2, %hi(D_803B7070) # $s2, 0x803b
 /* 0BCFE8 800BC3E8 26527070 */  addiu $s2, %lo(D_803B7070) # addiu $s2, $s2, 0x7070
-/* 0BCFEC 800BC3EC 26316260 */  addiu $s1, %lo(D_00966260) # addiu $s1, $s1, 0x6260
+/* 0BCFEC 800BC3EC 26316260 */  addiu $s1, %lo(_audio_banksSegmentRomStart) # addiu $s1, $s1, 0x6260
 /* 0BCFF0 800BC3F0 AE550000 */  sw    $s5, ($s2)
 /* 0BCFF4 800BC3F4 02202025 */  move  $a0, $s1
 /* 0BCFF8 800BC3F8 02A02825 */  move  $a1, $s5
@@ -1850,8 +1850,8 @@ glabel audio_init
 /* 0BD0CC 800BC4CC A1690002 */   sb    $t1, 2($t3)
 .L800BC4D0:
 /* 0BD0D0 800BC4D0 3C11803B */  lui   $s1, %hi(D_803B7074) # $s1, 0x803b
-/* 0BD0D4 800BC4D4 3C120098 */  lui   $s2, %hi(D_00979AA0) # $s2, 0x98
-/* 0BD0D8 800BC4D8 26529AA0 */  addiu $s2, %lo(D_00979AA0) # addiu $s2, $s2, -0x6560
+/* 0BD0D4 800BC4D4 3C120098 */  lui   $s2, %hi(_audio_tablesSegmentRomStart) # $s2, 0x98
+/* 0BD0D8 800BC4D8 26529AA0 */  addiu $s2, %lo(_audio_tablesSegmentRomStart) # addiu $s2, $s2, -0x6560
 /* 0BD0DC 800BC4DC 26317074 */  addiu $s1, %lo(D_803B7074) # addiu $s1, $s1, 0x7074
 /* 0BD0E0 800BC4E0 AE350000 */  sw    $s5, ($s1)
 /* 0BD0E4 800BC4E4 02402025 */  move  $a0, $s2
@@ -1881,9 +1881,9 @@ glabel audio_init
 /* 0BD144 800BC544 24050100 */   li    $a1, 256
 /* 0BD148 800BC548 3C03803B */  lui   $v1, %hi(D_803B7078) # $v1, 0x803b
 /* 0BD14C 800BC54C 24637078 */  addiu $v1, %lo(D_803B7078) # addiu $v1, $v1, 0x7078
-/* 0BD150 800BC550 3C0400BF */  lui   $a0, %hi(D_00BE90E0) # $a0, 0xbf
+/* 0BD150 800BC550 3C0400BF */  lui   $a0, %hi(_instrument_setsSegmentRomStart) # $a0, 0xbf
 /* 0BD154 800BC554 AC620000 */  sw    $v0, ($v1)
-/* 0BD158 800BC558 248490E0 */  addiu $a0, %lo(D_00BE90E0) # addiu $a0, $a0, -0x6f20
+/* 0BD158 800BC558 248490E0 */  addiu $a0, %lo(_instrument_setsSegmentRomStart) # addiu $a0, $a0, -0x6f20
 /* 0BD15C 800BC55C 00402825 */  move  $a1, $v0
 /* 0BD160 800BC560 0C02EAA0 */  jal   func_800BAA80
 /* 0BD164 800BC564 24060100 */   li    $a2, 256

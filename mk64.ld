@@ -3,6 +3,8 @@
 
 OUTPUT_ARCH (mips)
 
+#include "include/segments.h"
+
 #define BEGIN_SEG(name, addr) \
     _##name##SegmentStart = ADDR(.name); \
     _##name##SegmentRomStart = __romPos; \
@@ -49,7 +51,7 @@ SECTIONS
    END_SEG(boot)
 
    /* 0x80000400 001000-0D9B70 [D8B70] */
-   BEGIN_SEG(main, 0x80000400) SUBALIGN(16)
+   BEGIN_SEG(main, SEG_MAIN) SUBALIGN(16)
    {
       BUILD_DIR/asm/entry.o(.text);
       BUILD_DIR/src/main.o(.text);
@@ -58,18 +60,18 @@ SECTIONS
       BUILD_DIR/asm/code_800040C0.o(.text);
       BUILD_DIR/asm/code_80004740.o(.text);
       BUILD_DIR/asm/code_80004EF0.o(.text);
-      BUILD_DIR/asm/code_80005FB0.o(.text);
+      BUILD_DIR/asm/unused_overflow_check.o(.text);
       BUILD_DIR/src/code_80005FD0.o(.text);
       BUILD_DIR/asm/code_8001C4D0.o(.text);
       BUILD_DIR/asm/code_8001F980.o(.text);
-      BUILD_DIR/asm/code_80027040.o(.text);
+      BUILD_DIR/src/code_80027040.o(.text);
       BUILD_DIR/asm/code_80027D00.o(.text);
-      BUILD_DIR/asm/code_800393C0.o(.text);
+      BUILD_DIR/src/code_800393C0.o(.text);
       BUILD_DIR/asm/code_8003DC40.o(.text);
       BUILD_DIR/asm/code_80040030.o(.text);
-      BUILD_DIR/asm/code_800400D0.o(.text);
-      BUILD_DIR/asm/code_800405D0.o(.text);
-      BUILD_DIR/asm/code_80040D00.o(.text);
+      BUILD_DIR/asm/mio0_decode.o(.text);
+      BUILD_DIR/asm/tkmk00_decode.o(.text);
+      BUILD_DIR/src/gbiMacro.o(.text);
       BUILD_DIR/asm/code_80040E50.o(.text);
       BUILD_DIR/asm/code_800431B0.o(.text);
       BUILD_DIR/asm/code_80057C60.o(.text);
@@ -90,19 +92,24 @@ SECTIONS
       BUILD_DIR/asm/libultra.o(.text);
       BUILD_DIR/data/rsp.o(.text);
       BUILD_DIR/data/data_0DD0A0.o(.data);
+      BUILD_DIR/src/kart_attributes.inc.o(.data);
+      BUILD_DIR/data/data_0DD0A0_2.o(.rodata);
+      BUILD_DIR/src/code_800029B0.o(.rodata);
+      BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
+      BUILD_DIR/src/data_0DD0A0_3.inc.o(.data);
       BUILD_DIR/data/rsp.o(.data);
       BUILD_DIR/src/audio/data.o(.data);
    }
    END_SEG(main)
 
    /* 0x8028DF00 0F7510-123640 [2C130] */
-   BEGIN_SEG(code_8028DF00, 0x8028DF00)
+   BEGIN_SEG(code_8028DF00, SEG_8028DF00)
    {
       BUILD_DIR/asm/code_8028DF00.o(.text);
       BUILD_DIR/asm/code_80290C20.o(.text);
       BUILD_DIR/asm/code_80296A50.o(.text);
       BUILD_DIR/asm/code_802A3730.o(.text);
-      BUILD_DIR/asm/code_802A7B70.o(.text);
+      BUILD_DIR/src/memory.o(.text);
       BUILD_DIR/asm/code_802B0210.o(.text);
       BUILD_DIR/asm/code_802B4F60.o(.text);
       BUILD_DIR/data/data_121DA0.o(.data);
@@ -110,15 +117,15 @@ SECTIONS
    END_SEG(code_8028DF00)
 
    /* 0x80280000 123640-12AAE0 [74A0] */
-   BEGIN_SEG(code_80280000, 0x80280000)
+   BEGIN_SEG(code_80280000, SEG_80280000)
    {
-      BUILD_DIR/asm/code_80280000.o(.text);
+      BUILD_DIR/src/code_80280000.o(.text);
       BUILD_DIR/asm/code_80280650.o(.text);
-      BUILD_DIR/asm/code_80281610.o(.text);
+      BUILD_DIR/src/code_80281610.o(.text);
       BUILD_DIR/src/code_80281780.o(.text);
-      BUILD_DIR/asm/code_80281C40.o(.text);
+      BUILD_DIR/src/code_80281C40.o(.text);
       BUILD_DIR/asm/code_80281FA0.o(.text);
-      BUILD_DIR/data/data_128480.o(.data);
+      BUILD_DIR/data/data_credits_128480.o(.data);
    }
    END_SEG(code_80280000)
 
@@ -184,12 +191,17 @@ SECTIONS
 
    /* TODO: 0x825800 -> 0x8028B230 (0x100) ...
             0x828400 -> 0x8028DE30 (0xD0) */
-   BEGIN_SEG(other_assets, 0x0C000000)
+   BEGIN_SEG(data_821D10, 0x0C000000)
    {
-      BUILD_DIR/data/other_assets.o(.data);
+      BUILD_DIR/data/data_821D10.o(.data);
+   }
+   END_SEG(data_821D10)
+   BEGIN_SEG(data_825800, 0x0C008D80)
+   {
+      BUILD_DIR/data/data_825800.o(.data);
       . = ALIGN(0x10);
    }
-   END_SEG(other_assets)
+   END_SEG(data_825800)
 
    MIO0_SEG(course_mario_raceway_dl)
    MIO0_SEG(course_choco_mountain_dl)
@@ -254,11 +266,27 @@ SECTIONS
    VERT_SEG(dks_jungle_parkway_vertex, 0x0F000000)
    VERT_SEG(big_donut_vertex, 0x0F000000)
 
-   BEGIN_SEG(sound_data, 0x0)
+   BEGIN_SEG(audio_banks, 0x0)
    {
-      BUILD_DIR/data/sound_data.o(.data);
+      BUILD_DIR/data/sound_data/audiobanks.o(.data);
    }
-   END_SEG(sound_data)
+   END_SEG(audio_banks)
+   BEGIN_SEG(audio_tables, 0x13840)
+   {
+      BUILD_DIR/data/sound_data/audiotables.o(.data);
+   }
+   END_SEG(audio_tables)
+   BEGIN_SEG(sequences, 0x25FD00)
+   {
+      BUILD_DIR/data/sound_data/sequences.o(.data);
+   }
+   END_SEG(sequences)
+   BEGIN_SEG(instrument_sets, 0x282E80)
+   {
+      BUILD_DIR/data/sound_data/instrument_sets.o(.data);
+   }
+   END_SEG(instrument_sets)
+
 
    /* Discard everything not specifically mentioned above. */
    /DISCARD/ :

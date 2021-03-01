@@ -80,8 +80,8 @@ glabel init_game
 /* 001F9C 8000139C 0C0335D4 */  jal   osRecvMesg
 /* 001FA0 800013A0 24060001 */   li    $a2, 1
 /* 001FA4 800013A4 8FA4002C */  lw    $a0, 0x2c($sp)
-/* 001FA8 800013A8 3C058016 */  lui   $a1, %hi(D_8015F728) # $a1, 0x8016
-/* 001FAC 800013AC 8CA5F728 */  lw    $a1, %lo(D_8015F728)($a1)
+/* 001FA8 800013A8 3C058016 */  lui   $a1, %hi(gPrevLoadedAddress) # $a1, 0x8016
+/* 001FAC 800013AC 8CA5F728 */  lw    $a1, %lo(gPrevLoadedAddress)($a1)
 /* 001FB0 800013B0 8C830004 */  lw    $v1, 4($a0)
 /* 001FB4 800013B4 2401FFF0 */  li    $at, -16
 /* 001FB8 800013B8 AFA50038 */  sw    $a1, 0x38($sp)
@@ -92,8 +92,8 @@ glabel init_game
 /* 001FCC 800013CC 8FA50038 */  lw    $a1, 0x38($sp)
 /* 001FD0 800013D0 0C0A9EE5 */  jal   set_segment_base_addr
 /* 001FD4 800013D4 2404000D */   li    $a0, 13
-/* 001FD8 800013D8 3C048016 */  lui   $a0, %hi(D_8015F728) # $a0, 0x8016
-/* 001FDC 800013DC 2484F728 */  addiu $a0, %lo(D_8015F728) # addiu $a0, $a0, -0x8d8
+/* 001FD8 800013D8 3C048016 */  lui   $a0, %hi(gPrevLoadedAddress) # $a0, 0x8016
+/* 001FDC 800013DC 2484F728 */  addiu $a0, %lo(gPrevLoadedAddress) # addiu $a0, $a0, -0x8d8
 /* 001FE0 800013E0 8FA30040 */  lw    $v1, 0x40($sp)
 /* 001FE4 800013E4 8C8E0000 */  lw    $t6, ($a0)
 /* 001FE8 800013E8 8FBF0024 */  lw    $ra, 0x24($sp)

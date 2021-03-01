@@ -123,7 +123,7 @@ void func_80003AFC(void) {
   Draw Profiler Mode 0. This mode renders bars over each other to make it
   easier to see which processes take the longest.
 
-  Two lines were added to this function in Mario Kart 64
+  This function differs from the one in SM64 by two lines
 
   Information:
 

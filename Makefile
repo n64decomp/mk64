@@ -29,7 +29,7 @@ BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)
 # Directories containing source files
 INCLUDE_DIRS := include
 SRC_DIRS := src src/audio
-ASM_DIRS := asm asm/audio data data/courses
+ASM_DIRS := asm asm/audio data data/courses data/sound_data
 
 TEXTURES_DIR = textures
 
@@ -231,6 +231,9 @@ load: $(TARGET).z64
 
 .PHONY: all clean distclean default diff test load
 .SECONDARY:
+
+# Remove built-in rules, to improve performance
+MAKEFLAGS += --no-builtin-rules
 
 -include $(DEP_FILES)
 
