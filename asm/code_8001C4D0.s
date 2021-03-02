@@ -2889,7 +2889,7 @@ glabel func_8001EE98
 /* 01FB2C 8001EF2C 8FAC0038 */   lw    $t4, 0x38($sp) # 0x38($sp)
 /* 01FB30 8001EF30 24010003 */  li    $at, 3
 /* 01FB34 8001EF34 1041002C */  beq   $v0, $at, .L8001EFE8
-/* 01FB38 8001EF38 3C0C800E */   lui   $t4, %hi(D_800DC4DC) # $t4, 0x800e
+/* 01FB38 8001EF38 3C0C800E */   lui   $t4, 0x800e # Possible red herring. Not a pointer.
 /* 01FB3C 8001EF3C 100000CB */  b     .L8001F26C
 /* 01FB40 8001EF40 00000000 */   nop   
 /* 01FB44 8001EF44 958D0000 */  lhu   $t5, ($t4)
