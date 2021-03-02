@@ -14,7 +14,7 @@ glabel func_80000F34
 /* 001B64 80000F64 8C84EF40 */  lw    $a0, %lo(gGfxPool)($a0)
 /* 001B68 80000F68 3C010002 */  lui   $at, (0x00028B20 >> 16) # lui $at, 2
 /* 001B6C 80000F6C 34218B20 */  ori   $at, (0x00028B20 & 0xFFFF) # ori $at, $at, 0x8b20
-/* 001B70 80000F70 0C000310 */  jal   func_80000C40
+/* 001B70 80000F70 0C000310 */  jal   send_display_list
 /* 001B74 80000F74 00812021 */   addu  $a0, $a0, $at
 /* 001B78 80000F78 0C000D54 */  jal   profiler_log_thread5_time
 /* 001B7C 80000F7C 24040003 */   li    $a0, 3

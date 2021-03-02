@@ -17,10 +17,10 @@ glabel func_80001FAC
 /* 002BE8 80001FE8 00003025 */   move  $a2, $zero
 /* 002BEC 80001FEC 2410FFFF */  li    $s0, -1
 /* 002BF0 80001FF0 10500018 */  beq   $v0, $s0, .L80002054
-/* 002BF4 80001FF4 3C16800E */   lui   $s6, %hi(D_800DC4B8) # $s6, 0x800e
+/* 002BF4 80001FF4 3C16800E */   lui   $s6, %hi(sNextDisplaySPTask) # $s6, 0x800e
 /* 002BF8 80001FF8 3C13800E */  lui   $s3, %hi(D_800DC4B4) # $s3, 0x800e
 /* 002BFC 80001FFC 2673C4B4 */  addiu $s3, %lo(D_800DC4B4) # addiu $s3, $s3, -0x3b4c
-/* 002C00 80002000 26D6C4B8 */  addiu $s6, %lo(D_800DC4B8) # addiu $s6, $s6, -0x3b48
+/* 002C00 80002000 26D6C4B8 */  addiu $s6, %lo(sNextDisplaySPTask) # addiu $s6, $s6, -0x3b48
 /* 002C04 80002004 24120002 */  li    $s2, 2
 /* 002C08 80002008 24110001 */  li    $s1, 1
 /* 002C0C 8000200C 8FAE0040 */  lw    $t6, 0x40($sp)
@@ -48,8 +48,8 @@ glabel func_80001FAC
 /* 002C58 80002058 2463C4AC */  addiu $v1, %lo(sCurrentAudioSPTask) # addiu $v1, $v1, -0x3b54
 /* 002C5C 8000205C 8C680000 */  lw    $t0, ($v1)
 /* 002C60 80002060 3C13800E */  lui   $s3, %hi(D_800DC4B4) # $s3, 0x800e
-/* 002C64 80002064 3C16800E */  lui   $s6, %hi(D_800DC4B8) # $s6, 0x800e
-/* 002C68 80002068 26D6C4B8 */  addiu $s6, %lo(D_800DC4B8) # addiu $s6, $s6, -0x3b48
+/* 002C64 80002064 3C16800E */  lui   $s6, %hi(sNextDisplaySPTask) # $s6, 0x800e
+/* 002C68 80002068 26D6C4B8 */  addiu $s6, %lo(sNextDisplaySPTask) # addiu $s6, $s6, -0x3b48
 /* 002C6C 8000206C 15000006 */  bnez  $t0, .L80002088
 /* 002C70 80002070 2673C4B4 */   addiu $s3, %lo(D_800DC4B4) # addiu $s3, $s3, -0x3b4c
 /* 002C74 80002074 8E620000 */  lw    $v0, ($s3)

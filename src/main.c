@@ -45,7 +45,7 @@ extern struct VblankHandler *gVblankHandler2;
 extern const f64 D_800EB640;
 extern struct VblankHandler sSoundVblankHandler;
 extern struct SPTask *D_8015029C;
-extern OSMesgQueue D_8014EF58, D_8014EF88, D_8014EFD0, D_8014EFB8;
+extern OSMesgQueue D_8014EF58, D_8014EF88, D_8014EFD0, gIntrMesgQueue;
 extern OSMesgQueue sSoundMesgQueue;
 extern OSMesg sSoundMesgBuf;
 extern OSMesg D_8014F004, D_8014F058, D_8014F018;
@@ -85,6 +85,8 @@ extern u16 sController1Unplugged;
 
 extern u32 D_801502B4;
 extern u32 D_802F9F80;
+
+extern struct SPTask* sNextDisplaySPTask;
 
 // Declarations (in this file)
 void thread1_idle(void *arg0);
@@ -135,10 +137,10 @@ void thread1_idle(void *arg0) {
 void setup_mesg_queues(void) {
     osCreateMesgQueue(&D_8014EF58, &D_8014F004, 1);
     osCreateMesgQueue(&D_8014EFD0, &D_8014F058, 0x10);
-    osCreateMesgQueue(&D_8014EFB8, &D_8014F018, 0x10);
-    osViSetEvent(&D_8014EFB8, (OSMesg) 0x66, 1);
-    osSetEventMesg(4, &D_8014EFB8, (OSMesg) 0x64);
-    osSetEventMesg(9, &D_8014EFB8, (OSMesg) 0x65);
+    osCreateMesgQueue(&gIntrMesgQueue, &D_8014F018, 0x10);
+    osViSetEvent(&gIntrMesgQueue, (OSMesg) 0x66, 1);
+    osSetEventMesg(4, &gIntrMesgQueue, (OSMesg) 0x64);
+    osSetEventMesg(9, &gIntrMesgQueue, (OSMesg) 0x65);
 }
 
 void start_sptask(s32 taskType) {
@@ -291,20 +293,18 @@ void func_80000C0C(OSMesg arg0) {
 }
 
 // similar to send_display_list from SM64
-#ifdef MIPS_TO_C
-void func_80000C40(struct SPTask *spTask) {
+void send_display_list(struct SPTask *spTask) {
     osWritebackDCacheAll();
-    spTask->state = 0;
+    spTask->state = SPTASK_STATE_NOT_STARTED;
     if (sCurrentDisplaySPTask == NULL) {
         sCurrentDisplaySPTask = spTask;
-        D_800DC4B8 = NULL;
-        osSendMesg(&D_8014EFB8, 0x67, 0, spTask);
+        sNextDisplaySPTask = NULL;
+        osSendMesg(&gIntrMesgQueue, MESG_START_GFX_SPTASK, OS_MESG_NOBLOCK);
     }
-    *(void *)0x800E0000 = spTask;
+    else{
+        sNextDisplaySPTask = spTask;
+    }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/main/func_80000C40.s")
-#endif
 
 void func_80000CA8(void) {
     func_802A7C08();
@@ -353,7 +353,7 @@ void *func_80000E00(void) {
     func_80000CA8();
     func_80000D3C(0);
     func_80000CE8();
-    func_80000C40(gGfxPool + 0x28B20);
+    send_display_list(gGfxPool + 0x28B20);
     D_800DC560 = (u16) (D_800DC560 + 1);
     D_800DC54C = (s32) (D_800DC54C + 1);
     return &D_800DC560;
@@ -388,7 +388,7 @@ void *func_80000F34(void) {
 
     profiler_log_thread5_time(2);
     osRecvMesg(&D_8014EF88, &D_8014F098, 1);
-    func_80000C40(gGfxPool + 0x28B20);
+    send_display_list(gGfxPool + 0x28B20);
     profiler_log_thread5_time(3);
     osRecvMesg(&D_8014EF70, &D_8014F098, 1);
     osViSwapBuffer(((D_800DC55C * 4) + 0x80150000)->unk2A8 | 0x80000000);
@@ -912,7 +912,7 @@ loop_2:
                 D_800DC4B4 = sp40;
             }
         } else {
-            D_800DC4B8 = sp40;
+            sNextDisplaySPTask = sp40;
         }
         temp_ret_2 = osRecvMesg(&D_8014EFD0, &sp40, 0);
         phi_return = temp_ret_2;
@@ -930,11 +930,11 @@ loop_2:
         }
     }
     if (sCurrentDisplaySPTask == 0) {
-        temp_v0_2 = D_800DC4B8;
+        temp_v0_2 = sNextDisplaySPTask;
         phi_return = temp_v0_2;
         if (temp_v0_2 != 0) {
             sCurrentDisplaySPTask = temp_v0_2;
-            D_800DC4B8 = 0;
+            sNextDisplaySPTask = 0;
             phi_return = temp_v0_2;
         }
     }
@@ -1096,7 +1096,7 @@ loop_1:
     // manual work
     while (1) {
         OSMesg msg;
-        osRecvMesg(&D_8014EFB8, &msg, OS_MESG_BLOCK);
+        osRecvMesg(&gIntrMesgQueue, &msg, OS_MESG_BLOCK);
         switch (msg) {
             case MESG_SP_COMPLETE:
                 func_800022DC();

@@ -23,7 +23,7 @@ glabel sCurrentDisplaySPTask
 glabel D_800DC4B4
 .word 0x00000000
 
-glabel D_800DC4B8
+glabel sNextDisplaySPTask
 .word 0x00000000
 
 glabel D_800DC4BC
