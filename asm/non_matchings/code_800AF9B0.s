@@ -3315,14 +3315,14 @@ glabel func_800B28C8
 /* 0B3550 800B2950 A423C648 */  sh    $v1, %lo(D_800DC648)($at)
 /* 0B3554 800B2954 24010003 */  li    $at, 3
 /* 0B3558 800B2958 14410003 */  bne   $v0, $at, .L800B2968
-/* 0B355C 800B295C 3C01800E */   lui   $at, %hi(D_800DC604) # 0x800e
+/* 0B355C 800B295C 3C01800E */   lui   $at, %hi(gIsMirrorMode) # 0x800e
 /* 0B3560 800B2960 03E00008 */  jr    $ra
-/* 0B3564 800B2964 AC23C604 */   sw    $v1, %lo(D_800DC604)($at) # -0x39fc($at)
+/* 0B3564 800B2964 AC23C604 */   sw    $v1, %lo(gIsMirrorMode)($at) # -0x39fc($at)
 
 .L800B2968:
-/* 0B3568 800B2968 3C01800E */  lui   $at, %hi(D_800DC604) # 0x800e
+/* 0B3568 800B2968 3C01800E */  lui   $at, %hi(gIsMirrorMode) # 0x800e
 /* 0B356C 800B296C 03E00008 */  jr    $ra
-/* 0B3570 800B2970 AC20C604 */   sw    $zero, %lo(D_800DC604)($at) # -0x39fc($at)
+/* 0B3570 800B2970 AC20C604 */   sw    $zero, %lo(gIsMirrorMode)($at) # -0x39fc($at)
 
 .L800B2974:
 /* 0B3574 800B2974 3C01800E */  lui   $at, %hi(D_800DC548) # $at, 0x800e
@@ -3331,26 +3331,26 @@ glabel func_800B28C8
 /* 0B3580 800B2980 A423C648 */  sh    $v1, %lo(D_800DC648)($at)
 /* 0B3584 800B2984 24010003 */  li    $at, 3
 /* 0B3588 800B2988 14410003 */  bne   $v0, $at, .L800B2998
-/* 0B358C 800B298C 3C01800E */   lui   $at, %hi(D_800DC604) # 0x800e
+/* 0B358C 800B298C 3C01800E */   lui   $at, %hi(gIsMirrorMode) # 0x800e
 /* 0B3590 800B2990 03E00008 */  jr    $ra
-/* 0B3594 800B2994 AC23C604 */   sw    $v1, %lo(D_800DC604)($at) # -0x39fc($at)
+/* 0B3594 800B2994 AC23C604 */   sw    $v1, %lo(gIsMirrorMode)($at) # -0x39fc($at)
 
 .L800B2998:
-/* 0B3598 800B2998 3C01800E */  lui   $at, %hi(D_800DC604) # 0x800e
+/* 0B3598 800B2998 3C01800E */  lui   $at, %hi(gIsMirrorMode) # 0x800e
 /* 0B359C 800B299C 03E00008 */  jr    $ra
-/* 0B35A0 800B29A0 AC20C604 */   sw    $zero, %lo(D_800DC604)($at) # -0x39fc($at)
+/* 0B35A0 800B29A0 AC20C604 */   sw    $zero, %lo(gIsMirrorMode)($at) # -0x39fc($at)
 
 .L800B29A4:
 /* 0B35A4 800B29A4 3C01800E */  lui   $at, %hi(D_800DC648) # $at, 0x800e
 /* 0B35A8 800B29A8 A423C648 */  sh    $v1, %lo(D_800DC648)($at)
-/* 0B35AC 800B29AC 3C01800E */  lui   $at, %hi(D_800DC604) # 0x800e
+/* 0B35AC 800B29AC 3C01800E */  lui   $at, %hi(gIsMirrorMode) # 0x800e
 /* 0B35B0 800B29B0 03E00008 */  jr    $ra
-/* 0B35B4 800B29B4 AC20C604 */   sw    $zero, %lo(D_800DC604)($at) # -0x39fc($at)
+/* 0B35B4 800B29B4 AC20C604 */   sw    $zero, %lo(gIsMirrorMode)($at) # -0x39fc($at)
 
 .L800B29B8:
 /* 0B35B8 800B29B8 AC23C548 */  sw    $v1, %lo(D_800DC548)($at) # -0x3ab8($at)
-/* 0B35BC 800B29BC 3C01800E */  lui   $at, %hi(D_800DC604) # $at, 0x800e
-/* 0B35C0 800B29C0 AC20C604 */  sw    $zero, %lo(D_800DC604)($at)
+/* 0B35BC 800B29BC 3C01800E */  lui   $at, %hi(gIsMirrorMode) # $at, 0x800e
+/* 0B35C0 800B29C0 AC20C604 */  sw    $zero, %lo(gIsMirrorMode)($at)
 /* 0B35C4 800B29C4 3C01800E */  lui   $at, %hi(D_800DC648) # $at, 0x800e
 /* 0B35C8 800B29C8 10400001 */  beqz  $v0, .L800B29D0
 /* 0B35CC 800B29CC A420C648 */   sh    $zero, %lo(D_800DC648)($at)
@@ -4938,8 +4938,8 @@ glabel L800B4054
 /* 0B4C68 800B4068 1000010A */  b     .L800B4494
 /* 0B4C6C 800B406C 00000000 */   nop   
 glabel L800B4070
-/* 0B4C70 800B4070 3C01800E */  lui   $at, %hi(D_800DC604) # $at, 0x800e
-/* 0B4C74 800B4074 AC20C604 */  sw    $zero, %lo(D_800DC604)($at)
+/* 0B4C70 800B4070 3C01800E */  lui   $at, %hi(gIsMirrorMode) # $at, 0x800e
+/* 0B4C74 800B4074 AC20C604 */  sw    $zero, %lo(gIsMirrorMode)($at)
 /* 0B4C78 800B4078 3C01800E */  lui   $at, %hi(gEnableDebugMode) # $at, 0x800e
 /* 0B4C7C 800B407C 3C028019 */  lui   $v0, %hi(gCupSelection) # $v0, 0x8019
 /* 0B4C80 800B4080 A420C520 */  sh    $zero, %lo(gEnableDebugMode)($at)
@@ -4979,8 +4979,8 @@ glabel L800B4070
 glabel L800B4100
 /* 0B4D00 800B4100 3C01800E */  lui   $at, %hi(gEnableDebugMode) # $at, 0x800e
 /* 0B4D04 800B4104 A420C520 */  sh    $zero, %lo(gEnableDebugMode)($at)
-/* 0B4D08 800B4108 3C01800E */  lui   $at, %hi(D_800DC604) # $at, 0x800e
-/* 0B4D0C 800B410C AC20C604 */  sw    $zero, %lo(D_800DC604)($at)
+/* 0B4D08 800B4108 3C01800E */  lui   $at, %hi(gIsMirrorMode) # $at, 0x800e
+/* 0B4D0C 800B410C AC20C604 */  sw    $zero, %lo(gIsMirrorMode)($at)
 /* 0B4D10 800B4110 3C018019 */  lui   $at, %hi(D_8018EDFC) # $at, 0x8019
 /* 0B4D14 800B4114 0C02D7CC */  jal   func_800B5F30
 /* 0B4D18 800B4118 A020EDFC */   sb    $zero, %lo(D_8018EDFC)($at)

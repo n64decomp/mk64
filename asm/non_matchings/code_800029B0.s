@@ -11,25 +11,25 @@ glabel func_80002A18
 /* 003634 80002A34 24010004 */  li    $at, 4
 /* 003638 80002A38 11E10003 */  beq   $t7, $at, .L80002A48
 /* 00363C 80002A3C AFBF0014 */   sw    $ra, 0x14($sp)
-/* 003640 80002A40 3C01800E */  lui   $at, %hi(D_800DC604) # $at, 0x800e
-/* 003644 80002A44 AC20C604 */  sw    $zero, %lo(D_800DC604)($at)
+/* 003640 80002A40 3C01800E */  lui   $at, %hi(gIsMirrorMode) # $at, 0x800e
+/* 003644 80002A44 AC20C604 */  sw    $zero, %lo(gIsMirrorMode)($at)
 .L80002A48:
-/* 003648 80002A48 3C18800E */  lui   $t8, %hi(D_800DC604) # $t8, 0x800e
-/* 00364C 80002A4C 8F18C604 */  lw    $t8, %lo(D_800DC604)($t8)
-/* 003650 80002A50 3C02800E */  lui   $v0, %hi(D_800DC5A4) # $v0, 0x800e
+/* 003648 80002A48 3C18800E */  lui   $t8, %hi(gIsMirrorMode) # $t8, 0x800e
+/* 00364C 80002A4C 8F18C604 */  lw    $t8, %lo(gIsMirrorMode)($t8)
+/* 003650 80002A50 3C02800E */  lui   $v0, %hi(gCurrentlyLoadedCourseId) # $v0, 0x800e
 /* 003654 80002A54 3C19800E */  lui   $t9, %hi(gModeSelection) # $t9, 0x800e
 /* 003658 80002A58 13000006 */  beqz  $t8, .L80002A74
-/* 00365C 80002A5C 2442C5A4 */   addiu $v0, %lo(D_800DC5A4) # addiu $v0, $v0, -0x3a5c
+/* 00365C 80002A5C 2442C5A4 */   addiu $v0, %lo(gCurrentlyLoadedCourseId) # addiu $v0, $v0, -0x3a5c
 /* 003660 80002A60 3C01BF80 */  li    $at, 0xBF800000 # -1.000000
 /* 003664 80002A64 44812000 */  mtc1  $at, $f4
-/* 003668 80002A68 3C018016 */  lui   $at, %hi(D_8015F784) # $at, 0x8016
+/* 003668 80002A68 3C018016 */  lui   $at, %hi(gCourseDirection) # $at, 0x8016
 /* 00366C 80002A6C 10000005 */  b     .L80002A84
-/* 003670 80002A70 E424F784 */   swc1  $f4, %lo(D_8015F784)($at)
+/* 003670 80002A70 E424F784 */   swc1  $f4, %lo(gCourseDirection)($at)
 .L80002A74:
 /* 003674 80002A74 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 003678 80002A78 44813000 */  mtc1  $at, $f6
-/* 00367C 80002A7C 3C018016 */  lui   $at, %hi(D_8015F784) # $at, 0x8016
-/* 003680 80002A80 E426F784 */  swc1  $f6, %lo(D_8015F784)($at)
+/* 00367C 80002A7C 3C018016 */  lui   $at, %hi(gCourseDirection) # $at, 0x8016
+/* 003680 80002A80 E426F784 */  swc1  $f6, %lo(gCourseDirection)($at)
 .L80002A84:
 /* 003684 80002A84 8F39C53C */  lw    $t9, %lo(gModeSelection)($t9)
 /* 003688 80002A88 3C0E800E */  lui   $t6, %hi(D_800DC530) # $t6, 0x800e
@@ -117,7 +117,7 @@ glabel func_80002A18
 /* 0037C4 80002BC4 2401000A */  li    $at, 10
 /* 0037C8 80002BC8 256CFFF1 */  addiu $t4, $t3, -0xf
 /* 0037CC 80002BCC 448C4000 */  mtc1  $t4, $f8
-/* 0037D0 80002BD0 3C0E800E */  lui   $t6, %hi(D_800DC604) # $t6, 0x800e
+/* 0037D0 80002BD0 3C0E800E */  lui   $t6, %hi(gIsMirrorMode) # $t6, 0x800e
 /* 0037D4 80002BD4 468042A0 */  cvt.s.w $f10, $f8
 /* 0037D8 80002BD8 E46A0004 */  swc1  $f10, 4($v1)
 /* 0037DC 80002BDC 844D0004 */  lh    $t5, 4($v0)
@@ -128,7 +128,7 @@ glabel func_80002A18
 /* 0037F0 80002BF0 8484C5A0 */  lh    $a0, %lo(gCurrentCourseId)($a0)
 /* 0037F4 80002BF4 54810017 */  bnel  $a0, $at, .L80002C54
 /* 0037F8 80002BF8 2401000E */   li    $at, 14
-/* 0037FC 80002BFC 8DCEC604 */  lw    $t6, %lo(D_800DC604)($t6)
+/* 0037FC 80002BFC 8DCEC604 */  lw    $t6, %lo(gIsMirrorMode)($t6)
 /* 003800 80002C00 51C0000B */  beql  $t6, $zero, .L80002C30
 /* 003804 80002C04 84580000 */   lh    $t8, ($v0)
 /* 003808 80002C08 844F0000 */  lh    $t7, ($v0)
@@ -153,8 +153,8 @@ glabel func_80002A18
 /* 003850 80002C50 2401000E */  li    $at, 14
 .L80002C54:
 /* 003854 80002C54 14810016 */  bne   $a0, $at, .L80002CB0
-/* 003858 80002C58 3C19800E */   lui   $t9, %hi(D_800DC604) # $t9, 0x800e
-/* 00385C 80002C5C 8F39C604 */  lw    $t9, %lo(D_800DC604)($t9)
+/* 003858 80002C58 3C19800E */   lui   $t9, %hi(gIsMirrorMode) # $t9, 0x800e
+/* 00385C 80002C5C 8F39C604 */  lw    $t9, %lo(gIsMirrorMode)($t9)
 /* 003860 80002C60 5320000B */  beql  $t9, $zero, .L80002C90
 /* 003864 80002C64 844A0000 */   lh    $t2, ($v0)
 /* 003868 80002C68 84480000 */  lh    $t0, ($v0)
@@ -450,13 +450,13 @@ glabel func_80003040
 /* 003CA0 800030A0 A420C5C8 */  sh    $zero, %lo(D_800DC5C8)($at)
 /* 003CA4 800030A4 3C018015 */  lui   $at, %hi(D_80150110) # $at, 0x8015
 /* 003CA8 800030A8 A4200110 */  sh    $zero, %lo(D_80150110)($at)
-/* 003CAC 800030AC 3C01800E */  lui   $at, %hi(D_800DC604) # $at, 0x800e
-/* 003CB0 800030B0 AC20C604 */  sw    $zero, %lo(D_800DC604)($at)
+/* 003CAC 800030AC 3C01800E */  lui   $at, %hi(gIsMirrorMode) # $at, 0x800e
+/* 003CB0 800030B0 AC20C604 */  sw    $zero, %lo(gIsMirrorMode)($at)
 /* 003CB4 800030B4 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 003CB8 800030B8 44812000 */  mtc1  $at, $f4
-/* 003CBC 800030BC 3C018016 */  lui   $at, %hi(D_8015F784) # $at, 0x8016
+/* 003CBC 800030BC 3C018016 */  lui   $at, %hi(gCourseDirection) # $at, 0x8016
 /* 003CC0 800030C0 8CA5F728 */  lw    $a1, %lo(D_8015F728)($a1)
-/* 003CC4 800030C4 E424F784 */  swc1  $f4, %lo(D_8015F784)($at)
+/* 003CC4 800030C4 E424F784 */  swc1  $f4, %lo(gCourseDirection)($at)
 /* 003CC8 800030C8 3C01800E */  lui   $at, %hi(gPlayerCountSelection1) # $at, 0x800e
 /* 003CCC 800030CC AC39C538 */  sw    $t9, %lo(gPlayerCountSelection1)($at)
 /* 003CD0 800030D0 3C01FFFF */  lui   $at, (0xFFFF7000 >> 16) # lui $at, 0xffff
@@ -514,8 +514,8 @@ glabel L80003180
 /* 003D90 80003190 27A40034 */  addiu $a0, $sp, 0x34
 /* 003D94 80003194 0C0AD4A7 */  jal   load_giant_egg
 /* 003D98 80003198 24060000 */   li    $a2, 0
-/* 003D9C 8000319C 3C018016 */  lui   $at, %hi(D_8015F784) # $at, 0x8016
-/* 003DA0 800031A0 C428F784 */  lwc1  $f8, %lo(D_8015F784)($at)
+/* 003D9C 8000319C 3C018016 */  lui   $at, %hi(gCourseDirection) # $at, 0x8016
+/* 003DA0 800031A0 C428F784 */  lwc1  $f8, %lo(gCourseDirection)($at)
 /* 003DA4 800031A4 C7A60034 */  lwc1  $f6, 0x34($sp)
 /* 003DA8 800031A8 27A40034 */  addiu $a0, $sp, 0x34
 /* 003DAC 800031AC 27A50020 */  addiu $a1, $sp, 0x20

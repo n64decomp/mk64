@@ -73,7 +73,7 @@ void func_802818BC(void) {
 void load_ending_sequence_royalraceway(void) {
     gCurrentCourseId = COURSE_ROYAL_RACEWAY;
     D_800DC5B4 = (u16)1;
-    D_800DC604 = 0;
+    gIsMirrorMode = 0;
     D_80287550 = 0xFFFF;
     D_80287554 = 0;
     func_802A4D18();

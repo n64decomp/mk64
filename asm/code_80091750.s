@@ -13399,14 +13399,14 @@ glabel L8009D50C
 /* 09E348 8009D748 AC27C548 */   sw    $a3, %lo(D_800DC548)($at)
 .L8009D74C:
 /* 09E34C 8009D74C 8F18C548 */  lw    $t8, %lo(D_800DC548)($t8)
-/* 09E350 8009D750 3C01800E */  lui   $at, %hi(D_800DC604)
+/* 09E350 8009D750 3C01800E */  lui   $at, %hi(gIsMirrorMode)
 /* 09E354 8009D754 14F80004 */  bne   $a3, $t8, .L8009D768
 /* 09E358 8009D758 00000000 */   nop   
-/* 09E35C 8009D75C 3C01800E */  lui   $at, %hi(D_800DC604) # $at, 0x800e
+/* 09E35C 8009D75C 3C01800E */  lui   $at, %hi(gIsMirrorMode) # $at, 0x800e
 /* 09E360 8009D760 10000002 */  b     .L8009D76C
-/* 09E364 8009D764 AC25C604 */   sw    $a1, %lo(D_800DC604)($at)
+/* 09E364 8009D764 AC25C604 */   sw    $a1, %lo(gIsMirrorMode)($at)
 .L8009D768:
-/* 09E368 8009D768 AC20C604 */  sw    $zero, %lo(D_800DC604)($at)
+/* 09E368 8009D768 AC20C604 */  sw    $zero, %lo(gIsMirrorMode)($at)
 .L8009D76C:
 /* 09E36C 8009D76C 8FBF0014 */  lw    $ra, 0x14($sp)
 .L8009D770:
