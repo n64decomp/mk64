@@ -25,8 +25,15 @@ extern s32 gPrevLoadedAddress;
 extern s32 gPrevMainThreadTask;
 
 extern s32 gDisplayListHead;
+
+// Remove these externs when BSS finished.
 extern u32 D_8015F724;
-u32 D_802BA278;
+extern u32 D_802BA270;
+extern u32 D_802BA274;
+extern u32 D_802BA278;
+extern u32 D_802BA27C;
+extern u32 D_802BA280;
+
 
 struct MainPoolBlock {
     struct MainPoolBlock *prev;
@@ -57,7 +64,7 @@ void *get_segment_base_addr(s32 segment) {
 s32 lookup_item(u32 segment) {
     return (gSegmentTable[segment >> 0x18] + (segment & 0xFFFFFF)) | 0x80000000;
 }
-/*
+/* From SM64 most likely data memes. Need to finish placing BSS and data for this to match.
 void move_segment_table_to_dmem(void) {
     s32 i;
 

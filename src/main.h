@@ -11,4 +11,8 @@ struct GfxPool {
 
 extern struct GfxPool *gGfxPool;
 
+
+extern struct Controller gControllers[8];
+
+
 #endif

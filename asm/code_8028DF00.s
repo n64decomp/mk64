@@ -11,11 +11,11 @@
 .section .text, "ax"
 
 glabel func_8028DF00
-/* 0F7510 8028DF00 3C0E800F */  lui   $t6, %hi(D_800F6914) # $t6, 0x800f
-/* 0F7514 8028DF04 95CE6914 */  lhu   $t6, %lo(D_800F6914)($t6)
+/* 0F7510 8028DF00 3C0E800F */  lui   $t6, %hi(gControllers+0x04) # $t6, 0x800f
+/* 0F7514 8028DF04 95CE6914 */  lhu   $t6, %lo(gControllers+0x04)($t6)
 /* 0F7518 8028DF08 3C01802C */  lui   $at, %hi(D_802BA044) # $at, 0x802c
-/* 0F751C 8028DF0C 3C02800F */  lui   $v0, %hi(gPlayer2Controller) # $v0, 0x800f
-/* 0F7520 8028DF10 24426920 */  addiu $v0, %lo(gPlayer2Controller) # addiu $v0, $v0, 0x6920
+/* 0F751C 8028DF0C 3C02800F */  lui   $v0, %hi(gControllers+0x10) # $v0, 0x800f
+/* 0F7520 8028DF10 24426920 */  addiu $v0, %lo(gControllers+0x10) # addiu $v0, $v0, 0x6920
 /* 0F7524 8028DF14 A42EA040 */  sh    $t6, %lo(D_802BA040)($at)
 /* 0F7528 8028DF18 944F0004 */  lhu   $t7, 4($v0)
 /* 0F752C 8028DF1C 24420020 */  addiu $v0, $v0, 0x20
@@ -27,23 +27,23 @@ glabel func_8028DF00
 /* 0F7544 8028DF34 A439A046 */   sh    $t9, -0x5fba($at)
 
 glabel func_8028DF38
-/* 0F7548 8028DF38 3C04800F */  lui   $a0, %hi(D_800F6914) # $a0, 0x800f
+/* 0F7548 8028DF38 3C04800F */  lui   $a0, %hi(gControllers+0x04) # $a0, 0x800f
 /* 0F754C 8028DF3C 3C0E802C */  lui   $t6, %hi(D_802BA040) # $t6, 0x802c
 /* 0F7550 8028DF40 85CEA040 */  lh    $t6, %lo(D_802BA040)($t6)
-/* 0F7554 8028DF44 94846914 */  lhu   $a0, %lo(D_800F6914)($a0)
-/* 0F7558 8028DF48 3C01800F */  lui   $at, %hi(D_800F6916) # $at, 0x800f
-/* 0F755C 8028DF4C 3C02800F */  lui   $v0, %hi(gPlayer2Controller) # $v0, 0x800f
+/* 0F7554 8028DF44 94846914 */  lhu   $a0, %lo(gControllers+0x04)($a0)
+/* 0F7558 8028DF48 3C01800F */  lui   $at, %hi(gControllers+0x06) # $at, 0x800f
+/* 0F755C 8028DF4C 3C02800F */  lui   $v0, %hi(gControllers+0x10) # $v0, 0x800f
 /* 0F7560 8028DF50 01C47826 */  xor   $t7, $t6, $a0
 /* 0F7564 8028DF54 01E4C024 */  and   $t8, $t7, $a0
-/* 0F7568 8028DF58 A4386916 */  sh    $t8, %lo(D_800F6916)($at)
+/* 0F7568 8028DF58 A4386916 */  sh    $t8, %lo(gControllers+0x06)($at)
 /* 0F756C 8028DF5C 01C4C826 */  xor   $t9, $t6, $a0
-/* 0F7570 8028DF60 3C01800F */  lui   $at, %hi(D_800F6918) # $at, 0x800f
+/* 0F7570 8028DF60 3C01800F */  lui   $at, %hi(gControllers+0x08) # $at, 0x800f
 /* 0F7574 8028DF64 032E4024 */  and   $t0, $t9, $t6
-/* 0F7578 8028DF68 A4286918 */  sh    $t0, %lo(D_800F6918)($at)
-/* 0F757C 8028DF6C 3C01800F */  lui   $at, %hi(D_800F6914) # $at, 0x800f
+/* 0F7578 8028DF68 A4286918 */  sh    $t0, %lo(gControllers+0x08)($at)
+/* 0F757C 8028DF6C 3C01800F */  lui   $at, %hi(gControllers+0x04) # $at, 0x800f
 /* 0F7580 8028DF70 3C09802C */  lui   $t1, %hi(D_802BA042) # $t1, 0x802c
-/* 0F7584 8028DF74 24426920 */  addiu $v0, %lo(gPlayer2Controller) # addiu $v0, $v0, 0x6920
-/* 0F7588 8028DF78 A42E6914 */  sh    $t6, %lo(D_800F6914)($at)
+/* 0F7584 8028DF74 24426920 */  addiu $v0, %lo(gControllers+0x10) # addiu $v0, $v0, 0x6920
+/* 0F7588 8028DF78 A42E6914 */  sh    $t6, %lo(gControllers+0x04)($at)
 /* 0F758C 8028DF7C 94430004 */  lhu   $v1, 4($v0)
 /* 0F7590 8028DF80 8529A042 */  lh    $t1, %lo(D_802BA042)($t1)
 /* 0F7594 8028DF84 3C0C802C */  lui   $t4, %hi(D_802BA042) # $t4, 0x802c
@@ -1918,8 +1918,8 @@ glabel func_8028F970
 /* 0F8FCC 8028F9BC 0012C900 */   sll   $t9, $s2, 4
 /* 0F8FD0 8028F9C0 3C09800E */  lui   $t1, %hi(D_800DC52C) # $t1, 0x800e
 /* 0F8FD4 8028F9C4 8D29C52C */  lw    $t1, %lo(D_800DC52C)($t1)
-/* 0F8FD8 8028F9C8 3C08800F */  lui   $t0, %hi(gPlayer1Controller) # $t0, 0x800f
-/* 0F8FDC 8028F9CC 25086910 */  addiu $t0, %lo(gPlayer1Controller) # addiu $t0, $t0, 0x6910
+/* 0F8FD8 8028F9C8 3C08800F */  lui   $t0, %hi(gControllers) # $t0, 0x800f
+/* 0F8FDC 8028F9CC 25086910 */  addiu $t0, %lo(gControllers) # addiu $t0, $t0, 0x6910
 /* 0F8FE0 8028F9D0 24010003 */  li    $at, 3
 /* 0F8FE4 8028F9D4 11210017 */  beq   $t1, $at, .L8028FA34
 /* 0F8FE8 8028F9D8 03288021 */   addu  $s0, $t9, $t0

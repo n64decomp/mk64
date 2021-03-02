@@ -11587,9 +11587,9 @@ glabel update_obj_fake_item_box
 /* 10A8E0 802A12D0 02002025 */   move  $a0, $s0
 /* 10A8E4 802A12D4 8FA2002C */  lw    $v0, 0x2c($sp)
 /* 10A8E8 802A12D8 8FAF0074 */  lw    $t7, 0x74($sp)
-/* 10A8EC 802A12DC 3C19800F */  lui   $t9, %hi(gPlayer1Controller) # $t9, 0x800f
+/* 10A8EC 802A12DC 3C19800F */  lui   $t9, %hi(gControllers) # $t9, 0x800f
 /* 10A8F0 802A12E0 944D0000 */  lhu   $t5, ($v0)
-/* 10A8F4 802A12E4 27396910 */  addiu $t9, %lo(gPlayer1Controller) # addiu $t9, $t9, 0x6910
+/* 10A8F4 802A12E4 27396910 */  addiu $t9, %lo(gControllers) # addiu $t9, $t9, 0x6910
 /* 10A8F8 802A12E8 000FC100 */  sll   $t8, $t7, 4
 /* 10A8FC 802A12EC 31AE4000 */  andi  $t6, $t5, 0x4000
 /* 10A900 802A12F0 11C0006D */  beqz  $t6, .L802A14A8

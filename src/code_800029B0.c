@@ -24,6 +24,9 @@ extern struct UnkStruct8015F8D0 D_8015F8D0;
 
 extern struct Controller (*D_800DC4BC)[];
 
+
+
+
 extern s32 D_800DC510;
 extern s16 D_8015F6FE;
 extern s16 D_800DC5B8;
@@ -171,14 +174,14 @@ void func_80002A18(void) {
         func_800CB2C4();
     }
 
-    temp_v0 = *D_800DC4BC;
+    temp_v0 = *D_800DC4BC; // This is likely gControllers
 
     for (tmp = 0; tmp < 7; tmp++, temp_v0++){
         temp_v0->unk0 = 0;
-        temp_v0->unk2 = 0;
+        temp_v0->unk2 = 0; // D_800F6916
         temp_v0->buttonPressed = 0;
-        temp_v0->unk8 = 0;
-        temp_v0->unk4 = 0;
+        temp_v0->unk8 = 0; // D_800F6918
+        temp_v0->unk4 = 0; // D_800F6914
     }
 }
 

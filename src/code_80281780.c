@@ -5,12 +5,13 @@
 
 #include "code_80281780.h"
 
+
 extern s32 gPrevLoadedAddress;
 
 // unk4 is buttonDown?
 void func_80281780(void) {
     if (gEnableDebugMode != 0) {
-        if (D_800DC4BC->unk4 & 0x0F0F) {
+        if (D_800DC4BC->unk4 & 0x0F0F) { // D_800F6914
             if (D_800DC4BC->unk4 & 8) {
                 D_800E86A8[0] = 1;
             }

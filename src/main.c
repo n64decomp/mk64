@@ -24,6 +24,8 @@ void create_debug_thread(void);
 void start_debug_thread(void);
 struct SPTask *create_next_audio_frame_task(void);
 
+
+
 extern s32 D_800DC524;
 extern s32 D_800DC52C;
 extern OSThread D_801524C0;
@@ -35,13 +37,52 @@ extern OSMesgQueue D_8015F460;
 extern OSMesg D_8015F3E0;
 extern s32 D_8000030C;
 extern s32 D_80156820;
-extern struct SPTask *gActiveSPTask;
 extern s16 sNumVBlanks;
 extern f32 D_800DC594;
-extern struct SPTask *sCurrentAudioSPTask;
-extern struct SPTask *sCurrentDisplaySPTask;
+
 extern struct VblankHandler *gVblankHandler1;
 extern struct VblankHandler *gVblankHandler2;
+extern struct SPTask *gActiveSPTask;
+extern struct SPTask *sCurrentAudioSPTask;
+extern struct SPTask *sCurrentDisplaySPTask;
+
+/**
+ * D_800DC4DC generates in the incorrect spot.
+ * KartCoords array is a guess based on the asm, bss, and debugging.
+ * The Controller struct should match but elements after it do not align.
+/*
+struct VblankHandler *gVblankHandler1 = NULL;
+struct VblankHandler *gVblankHandler2 = NULL;
+struct SPTask *gActiveSPTask = NULL;
+struct SPTask *sCurrentAudioSPTask = NULL;
+struct SPTask *sCurrentDisplaySPTask = NULL;
+struct SPTask *D_800DC4B4 = NULL;
+struct SPTask *D_800DC4B8 = NULL;
+
+struct Controller gControllers[8];
+
+struct Controller *D_800DC4BC = &gControllers[0];
+struct Controller *D_800DC4C0 = &gControllers[1];
+struct Controller *D_800DC4C4 = &gControllers[2];
+struct Controller *D_800DC4C8 = &gControllers[3];
+struct Controller *D_800DC4CC = &gControllers[4]; // D_800F6950
+struct Controller *D_800DC4D0 = &gControllers[5];
+struct Controller *D_800DC4D4 = &gControllers[6];
+struct Controller *D_800DC4D8 = &gControllers[7];
+
+struct Unknown_DC4DC *D_800DC4DC = ;
+
+struct KartCoords gCoords[8];
+struct KartCoords *gPlayer1PosX = gCoords[0];
+struct KartCoords *gPlayer1PosX = gCoords[1];
+struct KartCoords *gPlayer1PosX = gCoords[2];
+struct KartCoords *gPlayer1PosX = gCoords[3];
+struct KartCoords *gPlayer1PosX = gCoords[4];
+struct KartCoords *gPlayer1PosX = gCoords[5];
+struct KartCoords *gPlayer1PosX = gCoords[6];
+struct KartCoords *gPlayer1PosX = gCoords[7];
+*/
+
 extern const f64 D_800EB640;
 extern struct VblankHandler sSoundVblankHandler;
 extern struct SPTask *D_8015029C;
@@ -78,6 +119,10 @@ extern u32 gHeapEndPtr;
 extern u32 *D_801978D0;
 
 // Declarations (in this file)
+
+//struct Controller *gControllers = &D_800DC4BC[0]; // = &gControllers[0];
+
+
 void thread1_idle(void *arg0);
 void thread3_video(void *arg0);
 
@@ -213,7 +258,7 @@ void func_80000934(s32 arg0) {
     if (D_801625EA == 0) {
         // potantial sizeof structs?
         temp_v1 = (arg0 * 6) + &D_8014F0F0;
-        temp_v0 = (arg0 * 0x10) + &gPlayer1Controller;
+        temp_v0 = (arg0 * 0x10) + &gControllers;
         temp_v0->unk0 = (s16) temp_v1->unk2;
         temp_v0->unk2 = (s16) temp_v1->unk3;
         temp_t4 = temp_v1->unk0 | 0x2000;

@@ -31989,8 +31989,8 @@ glabel L800ADFA0
 /* 0AEBAC 800ADFAC 8FA50020 */   lw    $a1, 0x20($sp)
 /* 0AEBB0 800ADFB0 3C08800E */  lui   $t0, %hi(D_800DC5FC) # $t0, 0x800e
 /* 0AEBB4 800ADFB4 9508C5FC */  lhu   $t0, %lo(D_800DC5FC)($t0)
-/* 0AEBB8 800ADFB8 3C0B800F */  lui   $t3, %hi(gPlayer1Controller) # $t3, 0x800f
-/* 0AEBBC 800ADFBC 256B6910 */  addiu $t3, %lo(gPlayer1Controller) # addiu $t3, $t3, 0x6910
+/* 0AEBB8 800ADFB8 3C0B800F */  lui   $t3, %hi(gControllers) # $t3, 0x800f
+/* 0AEBBC 800ADFBC 256B6910 */  addiu $t3, %lo(gControllers) # addiu $t3, $t3, 0x6910
 /* 0AEBC0 800ADFC0 00084900 */  sll   $t1, $t0, 4
 /* 0AEBC4 800ADFC4 252AFFF0 */  addiu $t2, $t1, -0x10
 /* 0AEBC8 800ADFC8 014B3021 */  addu  $a2, $t2, $t3

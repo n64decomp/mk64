@@ -5,7 +5,7 @@
 
 .section .data
 
-glabel gVblankHandler1
+glabel gVblankHandler1 # 800DC4A0
 .word 0x00000000
 
 glabel gVblankHandler2
@@ -27,7 +27,7 @@ glabel D_800DC4B8
 .word 0x00000000
 
 glabel D_800DC4BC
-.word gPlayer1Controller
+.word gControllers
 
 glabel D_800DC4C0
 .word gPlayer2Controller
@@ -41,7 +41,7 @@ glabel D_800DC4C8
 glabel D_800DC4CC
 .word D_800F6950
 
-glabel D_800DC4D0 # CHECK ISSUE GP Mode crash after winning race
+glabel D_800DC4D0
 .word D_800F6960
 
 glabel D_800DC4D4
