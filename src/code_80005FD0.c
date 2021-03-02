@@ -2,7 +2,7 @@
 #include <macros.h>
 
 extern u32 func_802B5224(void);
-extern s32 D_800DC604;
+extern s32 gIsMirrorMode;
 
 s16 func_80005FD0(void) {
     s16 temp_ret;
@@ -10,7 +10,7 @@ s16 func_80005FD0(void) {
 
     temp_ret = func_802B5224();
     phi_v1 = temp_ret;
-    if (D_800DC604 != 0) {
+    if (gIsMirrorMode != 0) {
         phi_v1 = -temp_ret;
     }
     return phi_v1;

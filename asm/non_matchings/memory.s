@@ -745,8 +745,8 @@ glabel func_802A86A8
 /* 111CE0 802A86D0 10A00033 */  beqz  $a1, .L802A87A0
 /* 111CE4 802A86D4 00003025 */   move  $a2, $zero
 /* 111CE8 802A86D8 3C09800E */  lui   $t1, %hi(D_800DC608) # $t1, 0x800e
-/* 111CEC 802A86DC 3C08800E */  lui   $t0, %hi(D_800DC604) # $t0, 0x800e
-/* 111CF0 802A86E0 2508C604 */  addiu $t0, %lo(D_800DC604) # addiu $t0, $t0, -0x39fc
+/* 111CEC 802A86DC 3C08800E */  lui   $t0, %hi(gIsMirrorMode) # $t0, 0x800e
+/* 111CF0 802A86E0 2508C604 */  addiu $t0, %lo(gIsMirrorMode) # addiu $t0, $t0, -0x39fc
 /* 111CF4 802A86E4 2529C608 */  addiu $t1, %lo(D_800DC608) # addiu $t1, $t1, -0x39f8
 /* 111CF8 802A86E8 240A00FF */  li    $t2, 255
 .L802A86EC:
@@ -1866,8 +1866,8 @@ glabel func_802A9714
 /* 112D3C 802A972C 91C20000 */  lbu   $v0, ($t6)
 /* 112D40 802A9730 246F0001 */  addiu $t7, $v1, 1
 /* 112D44 802A9734 AD0F0000 */  sw    $t7, ($t0)
-/* 112D48 802A9738 3C18800E */  lui   $t8, %hi(D_800DC604) # $t8, 0x800e
-/* 112D4C 802A973C 8F18C604 */  lw    $t8, %lo(D_800DC604)($t8)
+/* 112D48 802A9738 3C18800E */  lui   $t8, %hi(gIsMirrorMode) # $t8, 0x800e
+/* 112D4C 802A973C 8F18C604 */  lw    $t8, %lo(gIsMirrorMode)($t8)
 /* 112D50 802A9740 3044001F */  andi  $a0, $v0, 0x1f
 /* 112D54 802A9744 00023142 */  srl   $a2, $v0, 5
 /* 112D58 802A9748 1300000D */  beqz  $t8, .L802A9780
@@ -1932,8 +1932,8 @@ glabel func_802A980C
 /* 112E34 802A9824 91C20000 */  lbu   $v0, ($t6)
 /* 112E38 802A9828 246F0001 */  addiu $t7, $v1, 1
 /* 112E3C 802A982C AD6F0000 */  sw    $t7, ($t3)
-/* 112E40 802A9830 3C06800E */  lui   $a2, %hi(D_800DC604) # $a2, 0x800e
-/* 112E44 802A9834 8CC6C604 */  lw    $a2, %lo(D_800DC604)($a2)
+/* 112E40 802A9830 3C06800E */  lui   $a2, %hi(gIsMirrorMode) # $a2, 0x800e
+/* 112E44 802A9834 8CC6C604 */  lw    $a2, %lo(gIsMirrorMode)($a2)
 /* 112E48 802A9838 3C01B100 */  lui   $at, 0xb100
 /* 112E4C 802A983C 3044001F */  andi  $a0, $v0, 0x1f
 /* 112E50 802A9840 10C0000E */  beqz  $a2, .L802A987C
@@ -2040,8 +2040,8 @@ glabel func_802A99A4
 /* 112FCC 802A99BC 91C20000 */  lbu   $v0, ($t6)
 /* 112FD0 802A99C0 246F0001 */  addiu $t7, $v1, 1
 /* 112FD4 802A99C4 AD2F0000 */  sw    $t7, ($t1)
-/* 112FD8 802A99C8 3C18800E */  lui   $t8, %hi(D_800DC604) # $t8, 0x800e
-/* 112FDC 802A99CC 8F18C604 */  lw    $t8, %lo(D_800DC604)($t8)
+/* 112FD8 802A99C8 3C18800E */  lui   $t8, %hi(gIsMirrorMode) # $t8, 0x800e
+/* 112FDC 802A99CC 8F18C604 */  lw    $t8, %lo(gIsMirrorMode)($t8)
 /* 112FE0 802A99D0 3044001F */  andi  $a0, $v0, 0x1f
 /* 112FE4 802A99D4 00023142 */  srl   $a2, $v0, 5
 /* 112FE8 802A99D8 13000016 */  beqz  $t8, .L802A9A34

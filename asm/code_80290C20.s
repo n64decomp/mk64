@@ -131,8 +131,8 @@ glabel load_surface_map
 /* 0FA3D4 80290DC4 3421FFFF */  ori   $at, (0x00FFFFFF & 0xFFFF) # ori $at, $at, 0xffff
 /* 0FA3D8 80290DC8 27BDFFC8 */  addiu $sp, $sp, -0x38
 /* 0FA3DC 80290DCC 0081C824 */  and   $t9, $a0, $at
-/* 0FA3E0 80290DD0 3C0C800E */  lui   $t4, %hi(D_800DC604) # $t4, 0x800e
-/* 0FA3E4 80290DD4 8D8CC604 */  lw    $t4, %lo(D_800DC604)($t4)
+/* 0FA3E0 80290DD0 3C0C800E */  lui   $t4, %hi(gIsMirrorMode) # $t4, 0x800e
+/* 0FA3E4 80290DD4 8D8CC604 */  lw    $t4, %lo(gIsMirrorMode)($t4)
 /* 0FA3E8 80290DD8 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 0FA3EC 80290DDC 3C018000 */  lui   $at, 0x8000
 /* 0FA3F0 80290DE0 03195021 */  addu  $t2, $t8, $t9

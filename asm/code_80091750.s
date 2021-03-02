@@ -331,10 +331,10 @@ glabel func_80091B78
 /* 0927AC 80091BAC 240F0005 */  li    $t7, 5
 /* 0927B0 80091BB0 A02FEDF5 */  sb    $t7, %lo(D_8018EDF5)($at)
 /* 0927B4 80091BB4 3C018019 */  lui   $at, %hi(D_8018EDF6) # $at, 0x8019
-/* 0927B8 80091BB8 3C048015 */  lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0927B8 80091BB8 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0927BC 80091BBC A022EDF6 */  sb    $v0, %lo(D_8018EDF6)($at)
 /* 0927C0 80091BC0 0C0338D0 */  jal   osEepromProbe
-/* 0927C4 80091BC4 2484F0B8 */   addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0927C4 80091BC4 2484F0B8 */   addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0927C8 80091BC8 10400003 */  beqz  $v0, .L80091BD8
 /* 0927CC 80091BCC 00000000 */   nop   
 /* 0927D0 80091BD0 0C02D284 */  jal   func_800B4A10
@@ -452,8 +452,8 @@ glabel func_80091B78
 
 glabel func_80091D74
 /* 092974 80091D74 27BDFF98 */  addiu $sp, $sp, -0x68
-/* 092978 80091D78 3C0E8015 */  lui   $t6, %hi(D_8014F108) # $t6, 0x8015
-/* 09297C 80091D7C 91CEF108 */  lbu   $t6, %lo(D_8014F108)($t6)
+/* 092978 80091D78 3C0E8015 */  lui   $t6, %hi(gControllerBits) # $t6, 0x8015
+/* 09297C 80091D7C 91CEF108 */  lbu   $t6, %lo(gControllerBits)($t6)
 /* 092980 80091D80 AFBF002C */  sw    $ra, 0x2c($sp)
 /* 092984 80091D84 AFB40028 */  sw    $s4, 0x28($sp)
 /* 092988 80091D88 AFB30024 */  sw    $s3, 0x24($sp)
@@ -475,8 +475,8 @@ glabel func_80091D74
 /* 0929C4 80091DC4 00001025 */   move  $v0, $zero
 .L80091DC8:
 /* 0929C8 80091DC8 8F39C4BC */  lw    $t9, %lo(D_800DC4BC)($t9)
-/* 0929CC 80091DCC 3C108015 */  lui   $s0, %hi(D_8014F0B8) # $s0, 0x8015
-/* 0929D0 80091DD0 2610F0B8 */  addiu $s0, %lo(D_8014F0B8) # addiu $s0, $s0, -0xf48
+/* 0929CC 80091DCC 3C108015 */  lui   $s0, %hi(gSIEventMesgQueue) # $s0, 0x8015
+/* 0929D0 80091DD0 2610F0B8 */  addiu $s0, %lo(gSIEventMesgQueue) # addiu $s0, $s0, -0xf48
 /* 0929D4 80091DD4 97280004 */  lhu   $t0, 4($t9)
 /* 0929D8 80091DD8 02002025 */  move  $a0, $s0
 /* 0929DC 80091DDC 31091000 */  andi  $t1, $t0, 0x1000
@@ -697,8 +697,8 @@ glabel func_80091FA4
 /* 092CF4 800920F4 0C027994 */  jal   func_8009E650
 /* 092CF8 800920F8 00003825 */   move  $a3, $zero
 .L800920FC:
-/* 092CFC 800920FC 3C198015 */  lui   $t9, %hi(D_8014F108) # $t9, 0x8015
-/* 092D00 80092100 9339F108 */  lbu   $t9, %lo(D_8014F108)($t9)
+/* 092CFC 800920FC 3C198015 */  lui   $t9, %hi(gControllerBits) # $t9, 0x8015
+/* 092D00 80092100 9339F108 */  lbu   $t9, %lo(gControllerBits)($t9)
 /* 092D04 80092104 3C098019 */  lui   $t1, %hi(D_8018EE08) # $t1, 0x8019
 /* 092D08 80092108 33280001 */  andi  $t0, $t9, 1
 /* 092D0C 8009210C 15000008 */  bnez  $t0, .L80092130
@@ -4019,8 +4019,8 @@ glabel L80094FF0
 /* 095C20 80095020 00003025 */  move  $a2, $zero
 /* 095C24 80095024 0C027994 */  jal   func_8009E650
 /* 095C28 80095028 00003825 */   move  $a3, $zero
-/* 095C2C 8009502C 3C188015 */  lui   $t8, %hi(D_8014F108) # $t8, 0x8015
-/* 095C30 80095030 9318F108 */  lbu   $t8, %lo(D_8014F108)($t8)
+/* 095C2C 8009502C 3C188015 */  lui   $t8, %hi(gControllerBits) # $t8, 0x8015
+/* 095C30 80095030 9318F108 */  lbu   $t8, %lo(gControllerBits)($t8)
 /* 095C34 80095034 24040004 */  li    $a0, 4
 /* 095C38 80095038 00002825 */  move  $a1, $zero
 /* 095C3C 8009503C 33190001 */  andi  $t9, $t8, 1
@@ -13399,14 +13399,14 @@ glabel L8009D50C
 /* 09E348 8009D748 AC27C548 */   sw    $a3, %lo(D_800DC548)($at)
 .L8009D74C:
 /* 09E34C 8009D74C 8F18C548 */  lw    $t8, %lo(D_800DC548)($t8)
-/* 09E350 8009D750 3C01800E */  lui   $at, %hi(D_800DC604)
+/* 09E350 8009D750 3C01800E */  lui   $at, %hi(gIsMirrorMode)
 /* 09E354 8009D754 14F80004 */  bne   $a3, $t8, .L8009D768
 /* 09E358 8009D758 00000000 */   nop   
-/* 09E35C 8009D75C 3C01800E */  lui   $at, %hi(D_800DC604) # $at, 0x800e
+/* 09E35C 8009D75C 3C01800E */  lui   $at, %hi(gIsMirrorMode) # $at, 0x800e
 /* 09E360 8009D760 10000002 */  b     .L8009D76C
-/* 09E364 8009D764 AC25C604 */   sw    $a1, %lo(D_800DC604)($at)
+/* 09E364 8009D764 AC25C604 */   sw    $a1, %lo(gIsMirrorMode)($at)
 .L8009D768:
-/* 09E368 8009D768 AC20C604 */  sw    $zero, %lo(D_800DC604)($at)
+/* 09E368 8009D768 AC20C604 */  sw    $zero, %lo(gIsMirrorMode)($at)
 .L8009D76C:
 /* 09E36C 8009D76C 8FBF0014 */  lw    $ra, 0x14($sp)
 .L8009D770:
@@ -27714,10 +27714,10 @@ glabel L800AA334
 /* 0AB024 800AA424 10000064 */  b     .L800AA5B8
 /* 0AB028 800AA428 AD190004 */   sw    $t9, 4($t0)
 .L800AA42C:
-/* 0AB02C 800AA42C 3C048015 */  lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0AB02C 800AA42C 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0AB030 800AA430 3C058019 */  lui   $a1, %hi(D_8018E868) # $a1, 0x8019
 /* 0AB034 800AA434 24A5E868 */  addiu $a1, %lo(D_8018E868) # addiu $a1, $a1, -0x1798
-/* 0AB038 800AA438 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0AB038 800AA438 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0AB03C 800AA43C 0C0339C8 */  jal   func_800CE720
 /* 0AB040 800AA440 00003025 */   move  $a2, $zero
 /* 0AB044 800AA444 3C03800F */  lui   $v1, %hi(D_800E86F8) # $v1, 0x800f

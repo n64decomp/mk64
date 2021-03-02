@@ -31,15 +31,15 @@ extern s16 D_80152308;
 extern s32 D_802BA038;
 extern s16 D_802BA048;
 
-extern s16 D_800DC5A4;
+extern s16 gCurrentlyLoadedCourseId;
 
-extern f32 D_8015F784;
+extern f32 gCourseDirection;
 
 extern s8 D_8018EDF3;
 
 extern s8 gCupSelection;
 
-extern u32 D_800DC604;
+extern u32 gIsMirrorMode;
 extern u32 D_800DC530;
 extern u32 D_8015F730;
 extern u32 D_8015F734;
@@ -74,7 +74,7 @@ extern u32 *D_0F04F45C;
 extern u32 *D_06009570;
 extern u32 *D_06014330;
 
-extern f32 D_8015F784;
+extern f32 gCourseDirection;
 
 extern u16 D_8015F900;
 
@@ -115,20 +115,20 @@ void func_80002A18(void) {
 
     gPlayerCountSelection1 = D_8018EDF3;
     if (D_800DC50C != 4) {
-        D_800DC604 = 0;
+        gIsMirrorMode = 0;
     }
-    if (D_800DC604 != 0) {
-        D_8015F784 = -1.0f;
+    if (gIsMirrorMode != 0) {
+        gCourseDirection = -1.0f;
     } else {
-        D_8015F784 = 1.0f;
+        gCourseDirection = 1.0f;
     }
     if (gModeSelection == 0) {
         gCurrentCourseId = gCupTrackOrder[gCupSelection][gCourseSelection];
     }
     D_800DC52C = D_800DC530;
-    if (gCurrentCourseId != D_800DC5A4) {
+    if (gCurrentCourseId != gCurrentlyLoadedCourseId) {
         D_80150120 = 0;
-        D_800DC5A4 = gCurrentCourseId;
+        gCurrentlyLoadedCourseId = gCurrentCourseId;
         gPrevLoadedAddress = D_8015F734;
         load_course(gCurrentCourseId);
         func_80295D88();
@@ -155,11 +155,11 @@ void func_80002A18(void) {
         D_8015F8D0.unk4 = (f32) (D_80164490->unk2 - 15);;
         D_8015F8D0.unk8 = D_80164490->unk4;
         if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
-            D_8015F8D0.unk0 = (D_800DC604 != 0) ?
+            D_8015F8D0.unk0 = (gIsMirrorMode != 0) ?
                               D_80164490->unk0 + 138.0f :
                               D_80164490->unk0 - 138.0f;
         } else if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-            D_8015F8D0.unk0 = (D_800DC604 != 0) ?
+            D_8015F8D0.unk0 = (gIsMirrorMode != 0) ?
                               D_80164490->unk0 + 12.0f :
                               D_80164490->unk0 - 12.0f;
         } else {
@@ -239,8 +239,8 @@ void func_80003040(void) {
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
     D_80150110 = 0;
-    D_800DC604 = 0;
-    D_8015F784 = 1.0f;
+    gIsMirrorMode = 0;
+    gCourseDirection = 1.0f;
 
     gPlayerCountSelection1 = 1;
     set_segment_base_addr(0x03, (gPrevLoadedAddress + 0xFFFF7000));
@@ -258,7 +258,7 @@ void func_80003040(void) {
             break;
         case COURSE_YOSHI_VALLEY:
             load_giant_egg(&sp34, -2300.0f, 0.0f, 634.0f);
-            sp34 *= D_8015F784;
+            sp34 *= gCourseDirection;
             func_8029EC88(&sp34, &sp20, &sp28, 9);
             break;
         case COURSE_MOO_MOO_FARM:

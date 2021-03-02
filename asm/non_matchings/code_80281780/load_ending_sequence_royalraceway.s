@@ -5,8 +5,8 @@ glabel load_ending_sequence_royalraceway
 /* 124FB4 80281974 3C01800E */  lui   $at, %hi(D_800DC5B4) # $at, 0x800e
 /* 124FB8 80281978 240F0001 */  li    $t7, 1
 /* 124FBC 8028197C A42FC5B4 */  sh    $t7, %lo(D_800DC5B4)($at)
-/* 124FC0 80281980 3C01800E */  lui   $at, %hi(D_800DC604) # $at, 0x800e
-/* 124FC4 80281984 AC20C604 */  sw    $zero, %lo(D_800DC604)($at)
+/* 124FC0 80281980 3C01800E */  lui   $at, %hi(gIsMirrorMode) # $at, 0x800e
+/* 124FC4 80281984 AC20C604 */  sw    $zero, %lo(gIsMirrorMode)($at)
 /* 124FC8 80281988 3C018028 */  lui   $at, %hi(D_80287550) # $at, 0x8028
 /* 124FCC 8028198C 3418FFFF */  li    $t8, 65535
 /* 124FD0 80281990 27BDFFE8 */  addiu $sp, $sp, -0x18

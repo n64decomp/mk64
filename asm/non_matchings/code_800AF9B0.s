@@ -3315,14 +3315,14 @@ glabel func_800B28C8
 /* 0B3550 800B2950 A423C648 */  sh    $v1, %lo(D_800DC648)($at)
 /* 0B3554 800B2954 24010003 */  li    $at, 3
 /* 0B3558 800B2958 14410003 */  bne   $v0, $at, .L800B2968
-/* 0B355C 800B295C 3C01800E */   lui   $at, %hi(D_800DC604) # 0x800e
+/* 0B355C 800B295C 3C01800E */   lui   $at, %hi(gIsMirrorMode) # 0x800e
 /* 0B3560 800B2960 03E00008 */  jr    $ra
-/* 0B3564 800B2964 AC23C604 */   sw    $v1, %lo(D_800DC604)($at) # -0x39fc($at)
+/* 0B3564 800B2964 AC23C604 */   sw    $v1, %lo(gIsMirrorMode)($at) # -0x39fc($at)
 
 .L800B2968:
-/* 0B3568 800B2968 3C01800E */  lui   $at, %hi(D_800DC604) # 0x800e
+/* 0B3568 800B2968 3C01800E */  lui   $at, %hi(gIsMirrorMode) # 0x800e
 /* 0B356C 800B296C 03E00008 */  jr    $ra
-/* 0B3570 800B2970 AC20C604 */   sw    $zero, %lo(D_800DC604)($at) # -0x39fc($at)
+/* 0B3570 800B2970 AC20C604 */   sw    $zero, %lo(gIsMirrorMode)($at) # -0x39fc($at)
 
 .L800B2974:
 /* 0B3574 800B2974 3C01800E */  lui   $at, %hi(D_800DC548) # $at, 0x800e
@@ -3331,26 +3331,26 @@ glabel func_800B28C8
 /* 0B3580 800B2980 A423C648 */  sh    $v1, %lo(D_800DC648)($at)
 /* 0B3584 800B2984 24010003 */  li    $at, 3
 /* 0B3588 800B2988 14410003 */  bne   $v0, $at, .L800B2998
-/* 0B358C 800B298C 3C01800E */   lui   $at, %hi(D_800DC604) # 0x800e
+/* 0B358C 800B298C 3C01800E */   lui   $at, %hi(gIsMirrorMode) # 0x800e
 /* 0B3590 800B2990 03E00008 */  jr    $ra
-/* 0B3594 800B2994 AC23C604 */   sw    $v1, %lo(D_800DC604)($at) # -0x39fc($at)
+/* 0B3594 800B2994 AC23C604 */   sw    $v1, %lo(gIsMirrorMode)($at) # -0x39fc($at)
 
 .L800B2998:
-/* 0B3598 800B2998 3C01800E */  lui   $at, %hi(D_800DC604) # 0x800e
+/* 0B3598 800B2998 3C01800E */  lui   $at, %hi(gIsMirrorMode) # 0x800e
 /* 0B359C 800B299C 03E00008 */  jr    $ra
-/* 0B35A0 800B29A0 AC20C604 */   sw    $zero, %lo(D_800DC604)($at) # -0x39fc($at)
+/* 0B35A0 800B29A0 AC20C604 */   sw    $zero, %lo(gIsMirrorMode)($at) # -0x39fc($at)
 
 .L800B29A4:
 /* 0B35A4 800B29A4 3C01800E */  lui   $at, %hi(D_800DC648) # $at, 0x800e
 /* 0B35A8 800B29A8 A423C648 */  sh    $v1, %lo(D_800DC648)($at)
-/* 0B35AC 800B29AC 3C01800E */  lui   $at, %hi(D_800DC604) # 0x800e
+/* 0B35AC 800B29AC 3C01800E */  lui   $at, %hi(gIsMirrorMode) # 0x800e
 /* 0B35B0 800B29B0 03E00008 */  jr    $ra
-/* 0B35B4 800B29B4 AC20C604 */   sw    $zero, %lo(D_800DC604)($at) # -0x39fc($at)
+/* 0B35B4 800B29B4 AC20C604 */   sw    $zero, %lo(gIsMirrorMode)($at) # -0x39fc($at)
 
 .L800B29B8:
 /* 0B35B8 800B29B8 AC23C548 */  sw    $v1, %lo(D_800DC548)($at) # -0x3ab8($at)
-/* 0B35BC 800B29BC 3C01800E */  lui   $at, %hi(D_800DC604) # $at, 0x800e
-/* 0B35C0 800B29C0 AC20C604 */  sw    $zero, %lo(D_800DC604)($at)
+/* 0B35BC 800B29BC 3C01800E */  lui   $at, %hi(gIsMirrorMode) # $at, 0x800e
+/* 0B35C0 800B29C0 AC20C604 */  sw    $zero, %lo(gIsMirrorMode)($at)
 /* 0B35C4 800B29C4 3C01800E */  lui   $at, %hi(D_800DC648) # $at, 0x800e
 /* 0B35C8 800B29C8 10400001 */  beqz  $v0, .L800B29D0
 /* 0B35CC 800B29CC A420C648 */   sh    $zero, %lo(D_800DC648)($at)
@@ -4938,8 +4938,8 @@ glabel L800B4054
 /* 0B4C68 800B4068 1000010A */  b     .L800B4494
 /* 0B4C6C 800B406C 00000000 */   nop   
 glabel L800B4070
-/* 0B4C70 800B4070 3C01800E */  lui   $at, %hi(D_800DC604) # $at, 0x800e
-/* 0B4C74 800B4074 AC20C604 */  sw    $zero, %lo(D_800DC604)($at)
+/* 0B4C70 800B4070 3C01800E */  lui   $at, %hi(gIsMirrorMode) # $at, 0x800e
+/* 0B4C74 800B4074 AC20C604 */  sw    $zero, %lo(gIsMirrorMode)($at)
 /* 0B4C78 800B4078 3C01800E */  lui   $at, %hi(gEnableDebugMode) # $at, 0x800e
 /* 0B4C7C 800B407C 3C028019 */  lui   $v0, %hi(gCupSelection) # $v0, 0x8019
 /* 0B4C80 800B4080 A420C520 */  sh    $zero, %lo(gEnableDebugMode)($at)
@@ -4979,8 +4979,8 @@ glabel L800B4070
 glabel L800B4100
 /* 0B4D00 800B4100 3C01800E */  lui   $at, %hi(gEnableDebugMode) # $at, 0x800e
 /* 0B4D04 800B4104 A420C520 */  sh    $zero, %lo(gEnableDebugMode)($at)
-/* 0B4D08 800B4108 3C01800E */  lui   $at, %hi(D_800DC604) # $at, 0x800e
-/* 0B4D0C 800B410C AC20C604 */  sw    $zero, %lo(D_800DC604)($at)
+/* 0B4D08 800B4108 3C01800E */  lui   $at, %hi(gIsMirrorMode) # $at, 0x800e
+/* 0B4D0C 800B410C AC20C604 */  sw    $zero, %lo(gIsMirrorMode)($at)
 /* 0B4D10 800B4110 3C018019 */  lui   $at, %hi(D_8018EDFC) # $at, 0x8019
 /* 0B4D14 800B4114 0C02D7CC */  jal   func_800B5F30
 /* 0B4D18 800B4118 A020EDFC */   sb    $zero, %lo(D_8018EDFC)($at)
@@ -5361,9 +5361,9 @@ glabel func_800B45E0
 /* 0B523C 800B463C 03093021 */  addu  $a2, $t8, $t1
 /* 0B5240 800B4640 00C32823 */  subu  $a1, $a2, $v1
 /* 0B5244 800B4644 000550C2 */  srl   $t2, $a1, 3
-/* 0B5248 800B4648 3C048015 */  lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0B5248 800B4648 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0B524C 800B464C A0C20017 */  sb    $v0, 0x17($a2)
-/* 0B5250 800B4650 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0B5250 800B4650 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0B5254 800B4654 314500FF */  andi  $a1, $t2, 0xff
 /* 0B5258 800B4658 0C034014 */  jal   osEepromLongWrite
 /* 0B525C 800B465C 24070018 */   li    $a3, 24
@@ -5387,9 +5387,9 @@ glabel func_800B4670
 /* 0B529C 800B469C 00CE2823 */  subu  $a1, $a2, $t6
 /* 0B52A0 800B46A0 3C018019 */  lui   $at, %hi(D_8018ED17) # $at, 0x8019
 /* 0B52A4 800B46A4 000578C2 */  srl   $t7, $a1, 3
-/* 0B52A8 800B46A8 3C048015 */  lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0B52A8 800B46A8 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0B52AC 800B46AC A022ED17 */  sb    $v0, %lo(D_8018ED17)($at)
-/* 0B52B0 800B46B0 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0B52B0 800B46B0 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0B52B4 800B46B4 31E500FF */  andi  $a1, $t7, 0xff
 /* 0B52B8 800B46B8 0C034014 */  jal   osEepromLongWrite
 /* 0B52BC 800B46BC 24070008 */   li    $a3, 8
@@ -5634,12 +5634,12 @@ glabel func_800B49E4
 glabel func_800B4A10
 /* 0B5610 800B4A10 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 0B5614 800B4A14 AFBF001C */  sw    $ra, 0x1c($sp)
-/* 0B5618 800B4A18 3C048015 */  lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0B5618 800B4A18 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0B561C 800B4A1C 3C068019 */  lui   $a2, %hi(D_8018EB90) # $a2, 0x8019
 /* 0B5620 800B4A20 AFB10018 */  sw    $s1, 0x18($sp)
 /* 0B5624 800B4A24 AFB00014 */  sw    $s0, 0x14($sp)
 /* 0B5628 800B4A28 24C6EB90 */  addiu $a2, %lo(D_8018EB90) # addiu $a2, $a2, -0x1470
-/* 0B562C 800B4A2C 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0B562C 800B4A2C 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0B5630 800B4A30 00002825 */  move  $a1, $zero
 /* 0B5634 800B4A34 0C034064 */  jal   osEepromLongRead
 /* 0B5638 800B4A38 24070200 */   li    $a3, 512
@@ -5872,9 +5872,9 @@ glabel func_800B4CB4
 /* 0B5970 800B4D70 00CB2823 */  subu  $a1, $a2, $t3
 /* 0B5974 800B4D74 3C018019 */  lui   $at, %hi(D_8018ED17) # $at, 0x8019
 /* 0B5978 800B4D78 000560C2 */  srl   $t4, $a1, 3
-/* 0B597C 800B4D7C 3C048015 */  lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0B597C 800B4D7C 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0B5980 800B4D80 A022ED17 */  sb    $v0, %lo(D_8018ED17)($at)
-/* 0B5984 800B4D84 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0B5984 800B4D84 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0B5988 800B4D88 318500FF */  andi  $a1, $t4, 0xff
 /* 0B598C 800B4D8C 0C034014 */  jal   osEepromLongWrite
 /* 0B5990 800B4D90 24070008 */   li    $a3, 8
@@ -6576,9 +6576,9 @@ glabel func_800B559C
 /* 0B633C 800B573C 02C02025 */   move  $a0, $s6
 /* 0B6340 800B5740 02552823 */  subu  $a1, $s2, $s5
 /* 0B6344 800B5744 000568C2 */  srl   $t5, $a1, 3
-/* 0B6348 800B5748 3C048015 */  lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0B6348 800B5748 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0B634C 800B574C A2420037 */  sb    $v0, 0x37($s2)
-/* 0B6350 800B5750 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0B6350 800B5750 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0B6354 800B5754 31A500FF */  andi  $a1, $t5, 0xff
 /* 0B6358 800B5758 02403025 */  move  $a2, $s2
 /* 0B635C 800B575C 0C034014 */  jal   osEepromLongWrite
@@ -6752,9 +6752,9 @@ glabel func_800B5948
 /* 0B65C0 800B59C0 00C92823 */  subu  $a1, $a2, $t1
 /* 0B65C4 800B59C4 3C018019 */  lui   $at, %hi(D_8018ED8F) # $at, 0x8019
 /* 0B65C8 800B59C8 000550C2 */  srl   $t2, $a1, 3
-/* 0B65CC 800B59CC 3C048015 */  lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0B65CC 800B59CC 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0B65D0 800B59D0 A022ED8F */  sb    $v0, %lo(D_8018ED8F)($at)
-/* 0B65D4 800B59D4 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0B65D4 800B59D4 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0B65D8 800B59D8 314500FF */  andi  $a1, $t2, 0xff
 /* 0B65DC 800B59DC 0C034014 */  jal   osEepromLongWrite
 /* 0B65E0 800B59E0 24070008 */   li    $a3, 8
@@ -6863,8 +6863,8 @@ glabel func_800B5B2C
 /* 0B6748 800B5B48 1000000E */  b     .L800B5B84
 /* 0B674C 800B5B4C 00001025 */   move  $v0, $zero
 .L800B5B50:
-/* 0B6750 800B5B50 3C048015 */  lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
-/* 0B6754 800B5B54 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0B6750 800B5B50 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
+/* 0B6754 800B5B54 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0B6758 800B5B58 0C0338EC */  jal   func_800CE3B0
 /* 0B675C 800B5B5C AFA60020 */   sw    $a2, 0x20($sp)
 /* 0B6760 800B5B60 8FA60020 */  lw    $a2, 0x20($sp)
@@ -6929,13 +6929,13 @@ glabel func_800B5B94
 /* 0B6830 800B5C30 0C02D6CB */  jal   func_800B5B2C
 /* 0B6834 800B5C34 00002025 */   move  $a0, $zero
 /* 0B6838 800B5C38 14400003 */  bnez  $v0, .L800B5C48
-/* 0B683C 800B5C3C 3C048015 */   lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0B683C 800B5C3C 3C048015 */   lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0B6840 800B5C40 10000054 */  b     .L800B5D94
 /* 0B6844 800B5C44 24020001 */   li    $v0, 1
 .L800B5C48:
 /* 0B6848 800B5C48 3C058019 */  lui   $a1, %hi(D_8018E868) # $a1, 0x8019
 /* 0B684C 800B5C4C 24A5E868 */  addiu $a1, %lo(D_8018E868) # addiu $a1, $a1, -0x1798
-/* 0B6850 800B5C50 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0B6850 800B5C50 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0B6854 800B5C54 0C0339C8 */  jal   func_800CE720
 /* 0B6858 800B5C58 00003025 */   move  $a2, $zero
 /* 0B685C 800B5C5C 10400010 */  beqz  $v0, .L800B5CA0
@@ -7076,13 +7076,13 @@ glabel func_800B5DA4
 /* 0B6A38 800B5E38 0C02D6CB */  jal   func_800B5B2C
 /* 0B6A3C 800B5E3C 24040001 */   li    $a0, 1
 /* 0B6A40 800B5E40 14400003 */  bnez  $v0, .L800B5E50
-/* 0B6A44 800B5E44 3C048015 */   lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0B6A44 800B5E44 3C048015 */   lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0B6A48 800B5E48 10000035 */  b     .L800B5F20
 /* 0B6A4C 800B5E4C 24020001 */   li    $v0, 1
 .L800B5E50:
 /* 0B6A50 800B5E50 3C058019 */  lui   $a1, %hi(D_8018E8D0) # $a1, 0x8019
 /* 0B6A54 800B5E54 24A5E8D0 */  addiu $a1, %lo(D_8018E8D0) # addiu $a1, $a1, -0x1730
-/* 0B6A58 800B5E58 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0B6A58 800B5E58 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0B6A5C 800B5E5C 0C0339C8 */  jal   func_800CE720
 /* 0B6A60 800B5E60 24060001 */   li    $a2, 1
 /* 0B6A64 800B5E64 10400010 */  beqz  $v0, .L800B5EA8
@@ -7159,10 +7159,10 @@ glabel func_800B5F30
 /* 0B6B50 800B5F50 0C02D6CB */  jal   func_800B5B2C
 /* 0B6B54 800B5F54 00002025 */   move  $a0, $zero
 /* 0B6B58 800B5F58 10400029 */  beqz  $v0, .L800B6000
-/* 0B6B5C 800B5F5C 3C048015 */   lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0B6B5C 800B5F5C 3C048015 */   lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0B6B60 800B5F60 3C058019 */  lui   $a1, %hi(D_8018E868) # $a1, 0x8019
 /* 0B6B64 800B5F64 24A5E868 */  addiu $a1, %lo(D_8018E868) # addiu $a1, $a1, -0x1798
-/* 0B6B68 800B5F68 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0B6B68 800B5F68 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0B6B6C 800B5F6C 0C0339C8 */  jal   func_800CE720
 /* 0B6B70 800B5F70 00003025 */   move  $a2, $zero
 /* 0B6B74 800B5F74 3C048019 */  lui   $a0, %hi(D_8018E868) # $a0, 0x8019
@@ -7224,10 +7224,10 @@ glabel func_800B6014
 /* 0B6C34 800B6034 0C02D6CB */  jal   func_800B5B2C
 /* 0B6C38 800B6038 24040001 */   li    $a0, 1
 /* 0B6C3C 800B603C 1040000D */  beqz  $v0, .L800B6074
-/* 0B6C40 800B6040 3C048015 */   lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0B6C40 800B6040 3C048015 */   lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0B6C44 800B6044 3C058019 */  lui   $a1, %hi(D_8018E8D0) # $a1, 0x8019
 /* 0B6C48 800B6048 24A5E8D0 */  addiu $a1, %lo(D_8018E8D0) # addiu $a1, $a1, -0x1730
-/* 0B6C4C 800B604C 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0B6C4C 800B604C 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0B6C50 800B6050 0C0339C8 */  jal   func_800CE720
 /* 0B6C54 800B6054 24060001 */   li    $a2, 1
 /* 0B6C58 800B6058 14400004 */  bnez  $v0, .L800B606C
@@ -7992,10 +7992,10 @@ glabel func_800B6A68
 /* 0B7700 800B6B00 0C02D6CB */  jal   func_800B5B2C
 /* 0B7704 800B6B04 00002025 */   move  $a0, $zero
 /* 0B7708 800B6B08 10400034 */  beqz  $v0, .L800B6BDC
-/* 0B770C 800B6B0C 3C048015 */   lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0B770C 800B6B0C 3C048015 */   lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0B7710 800B6B10 3C058019 */  lui   $a1, %hi(D_8018E868) # $a1, 0x8019
 /* 0B7714 800B6B14 24A5E868 */  addiu $a1, %lo(D_8018E868) # addiu $a1, $a1, -0x1798
-/* 0B7718 800B6B18 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0B7718 800B6B18 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0B771C 800B6B1C 0C0339C8 */  jal   func_800CE720
 /* 0B7720 800B6B20 00003025 */   move  $a2, $zero
 /* 0B7724 800B6B24 1440002D */  bnez  $v0, .L800B6BDC
