@@ -187,7 +187,7 @@ void init_controllers(void) {
     osSetEventMesg(5, &gSIEventMesgQueue, (OSMesg) 0x33333333);
     osContInit(&gSIEventMesgQueue, &gControllerBits, &gControllerStatuses);
     if ((gControllerBits & 1) == 0) {
-        D_801625EA = (u16)1;
+        sController1Unplugged = (u16)1;
         return;
     }
     *(void *)0x80160000 = (u16)0;
@@ -210,7 +210,7 @@ void func_80000934(s32 arg0) {
     u16 phi_a0_3;
     u16 phi_a0_4;
 
-    if (D_801625EA == 0) {
+    if (sController1Unplugged == 0) {
         // potantial sizeof structs?
         temp_v1 = (arg0 * 6) + &gControllerPads;
         temp_v0 = (arg0 * 0x10) + &gPlayer1Controller;

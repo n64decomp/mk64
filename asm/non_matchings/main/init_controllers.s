@@ -23,15 +23,15 @@ glabel init_controllers
 /* 0014F8 800008F8 3C0E8015 */  lui   $t6, %hi(gControllerBits) # $t6, 0x8015
 /* 0014FC 800008FC 91CEF108 */  lbu   $t6, %lo(gControllerBits)($t6)
 /* 001500 80000900 24180001 */  li    $t8, 1
-/* 001504 80000904 3C018016 */  lui   $at, %hi(D_801625EA) # 0x8016
+/* 001504 80000904 3C018016 */  lui   $at, %hi(sController1Unplugged) # 0x8016
 /* 001508 80000908 31CF0001 */  andi  $t7, $t6, 1
 /* 00150C 8000090C 15E00004 */  bnez  $t7, .L80000920
 /* 001510 80000910 00000000 */   nop   
-/* 001514 80000914 3C018016 */  lui   $at, %hi(D_801625EA) # $at, 0x8016
+/* 001514 80000914 3C018016 */  lui   $at, %hi(sController1Unplugged) # $at, 0x8016
 /* 001518 80000918 10000002 */  b     .L80000924
-/* 00151C 8000091C A43825EA */   sh    $t8, %lo(D_801625EA)($at)
+/* 00151C 8000091C A43825EA */   sh    $t8, %lo(sController1Unplugged)($at)
 .L80000920:
-/* 001520 80000920 A42025EA */  sh    $zero, %lo(D_801625EA)($at)
+/* 001520 80000920 A42025EA */  sh    $zero, %lo(sController1Unplugged)($at)
 .L80000924:
 /* 001524 80000924 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 001528 80000928 27BD0018 */  addiu $sp, $sp, 0x18

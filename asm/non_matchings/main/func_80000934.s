@@ -1,6 +1,6 @@
 glabel func_80000934
-/* 001534 80000934 3C0E8016 */  lui   $t6, %hi(D_801625EA) # $t6, 0x8016
-/* 001538 80000938 85CE25EA */  lh    $t6, %lo(D_801625EA)($t6)
+/* 001534 80000934 3C0E8016 */  lui   $t6, %hi(sController1Unplugged) # $t6, 0x8016
+/* 001538 80000938 85CE25EA */  lh    $t6, %lo(sController1Unplugged)($t6)
 /* 00153C 8000093C 00047900 */  sll   $t7, $a0, 4
 /* 001540 80000940 3C18800F */  lui   $t8, %hi(gPlayer1Controller) # $t8, 0x800f
 /* 001544 80000944 15C00036 */  bnez  $t6, .L80000A20
