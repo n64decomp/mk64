@@ -331,10 +331,10 @@ glabel func_80091B78
 /* 0927AC 80091BAC 240F0005 */  li    $t7, 5
 /* 0927B0 80091BB0 A02FEDF5 */  sb    $t7, %lo(D_8018EDF5)($at)
 /* 0927B4 80091BB4 3C018019 */  lui   $at, %hi(D_8018EDF6) # $at, 0x8019
-/* 0927B8 80091BB8 3C048015 */  lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0927B8 80091BB8 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0927BC 80091BBC A022EDF6 */  sb    $v0, %lo(D_8018EDF6)($at)
 /* 0927C0 80091BC0 0C0338D0 */  jal   osEepromProbe
-/* 0927C4 80091BC4 2484F0B8 */   addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0927C4 80091BC4 2484F0B8 */   addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0927C8 80091BC8 10400003 */  beqz  $v0, .L80091BD8
 /* 0927CC 80091BCC 00000000 */   nop   
 /* 0927D0 80091BD0 0C02D284 */  jal   func_800B4A10
@@ -475,8 +475,8 @@ glabel func_80091D74
 /* 0929C4 80091DC4 00001025 */   move  $v0, $zero
 .L80091DC8:
 /* 0929C8 80091DC8 8F39C4BC */  lw    $t9, %lo(D_800DC4BC)($t9)
-/* 0929CC 80091DCC 3C108015 */  lui   $s0, %hi(D_8014F0B8) # $s0, 0x8015
-/* 0929D0 80091DD0 2610F0B8 */  addiu $s0, %lo(D_8014F0B8) # addiu $s0, $s0, -0xf48
+/* 0929CC 80091DCC 3C108015 */  lui   $s0, %hi(gSIEventMesgQueue) # $s0, 0x8015
+/* 0929D0 80091DD0 2610F0B8 */  addiu $s0, %lo(gSIEventMesgQueue) # addiu $s0, $s0, -0xf48
 /* 0929D4 80091DD4 97280004 */  lhu   $t0, 4($t9)
 /* 0929D8 80091DD8 02002025 */  move  $a0, $s0
 /* 0929DC 80091DDC 31091000 */  andi  $t1, $t0, 0x1000
@@ -27714,10 +27714,10 @@ glabel L800AA334
 /* 0AB024 800AA424 10000064 */  b     .L800AA5B8
 /* 0AB028 800AA428 AD190004 */   sw    $t9, 4($t0)
 .L800AA42C:
-/* 0AB02C 800AA42C 3C048015 */  lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 0AB02C 800AA42C 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0AB030 800AA430 3C058019 */  lui   $a1, %hi(D_8018E868) # $a1, 0x8019
 /* 0AB034 800AA434 24A5E868 */  addiu $a1, %lo(D_8018E868) # addiu $a1, $a1, -0x1798
-/* 0AB038 800AA438 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 0AB038 800AA438 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0AB03C 800AA43C 0C0339C8 */  jal   func_800CE720
 /* 0AB040 800AA440 00003025 */   move  $a2, $zero
 /* 0AB044 800AA444 3C03800F */  lui   $v1, %hi(D_800E86F8) # $v1, 0x800f
