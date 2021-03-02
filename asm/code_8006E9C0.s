@@ -448,9 +448,9 @@ glabel func_8006F008
 /* 06FC14 8006F014 44812000 */  mtc1  $at, $f4
 /* 06FC18 8006F018 3C028019 */  lui   $v0, %hi(D_8018D01C) # $v0, 0x8019
 /* 06FC1C 8006F01C 2442D01C */  addiu $v0, %lo(D_8018D01C) # addiu $v0, $v0, -0x2fe4
-/* 06FC20 8006F020 3C0E800E */  lui   $t6, %hi(D_800DC604) # $t6, 0x800e
+/* 06FC20 8006F020 3C0E800E */  lui   $t6, %hi(gIsMirrorMode) # $t6, 0x800e
 /* 06FC24 8006F024 E4440000 */  swc1  $f4, ($v0)
-/* 06FC28 8006F028 8DCEC604 */  lw    $t6, %lo(D_800DC604)($t6)
+/* 06FC28 8006F028 8DCEC604 */  lw    $t6, %lo(gIsMirrorMode)($t6)
 /* 06FC2C 8006F02C 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 06FC30 8006F030 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 06FC34 8006F034 11C00005 */  beqz  $t6, .L8006F04C
@@ -935,8 +935,8 @@ glabel L8006F734
 /* 070358 8006F758 2419001F */  li    $t9, 31
 /* 07035C 8006F75C A439D2E8 */  sh    $t9, %lo(D_8018D2E8)($at)
 .L8006F760:
-/* 070360 8006F760 3C09800E */  lui   $t1, %hi(D_800DC604) # $t1, 0x800e
-/* 070364 8006F764 8D29C604 */  lw    $t1, %lo(D_800DC604)($t1)
+/* 070360 8006F760 3C09800E */  lui   $t1, %hi(gIsMirrorMode) # $t1, 0x800e
+/* 070364 8006F764 8D29C604 */  lw    $t1, %lo(gIsMirrorMode)($t1)
 /* 070368 8006F768 3C048019 */  lui   $a0, %hi(D_8018D2E0) # $a0, 0x8019
 /* 07036C 8006F76C 2484D2E0 */  addiu $a0, %lo(D_8018D2E0) # addiu $a0, $a0, -0x2d20
 /* 070370 8006F770 11200006 */  beqz  $t1, .L8006F78C

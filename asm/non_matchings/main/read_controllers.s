@@ -1,17 +1,17 @@
 glabel read_controllers
 /* 001628 80000A28 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 00162C 80000A2C AFBF0014 */  sw    $ra, 0x14($sp)
-/* 001630 80000A30 3C048015 */  lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
+/* 001630 80000A30 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 001634 80000A34 0C03353C */  jal   osContStartReadData
-/* 001638 80000A38 2484F0B8 */   addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
-/* 00163C 80000A3C 3C048015 */  lui   $a0, %hi(D_8014F0B8) # $a0, 0x8015
-/* 001640 80000A40 2484F0B8 */  addiu $a0, %lo(D_8014F0B8) # addiu $a0, $a0, -0xf48
+/* 001638 80000A38 2484F0B8 */   addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
+/* 00163C 80000A3C 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
+/* 001640 80000A40 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 001644 80000A44 27A5001C */  addiu $a1, $sp, 0x1c
 /* 001648 80000A48 0C0335D4 */  jal   osRecvMesg
 /* 00164C 80000A4C 24060001 */   li    $a2, 1
-/* 001650 80000A50 3C048015 */  lui   $a0, %hi(D_8014F0F0) # $a0, 0x8015
+/* 001650 80000A50 3C048015 */  lui   $a0, %hi(gControllerPads) # $a0, 0x8015
 /* 001654 80000A54 0C03356D */  jal   osContGetReadData
-/* 001658 80000A58 2484F0F0 */   addiu $a0, %lo(D_8014F0F0) # addiu $a0, $a0, -0xf10
+/* 001658 80000A58 2484F0F0 */   addiu $a0, %lo(gControllerPads) # addiu $a0, $a0, -0xf10
 /* 00165C 80000A5C 0C00024D */  jal   func_80000934
 /* 001660 80000A60 00002025 */   move  $a0, $zero
 /* 001664 80000A64 0C00024D */  jal   func_80000934

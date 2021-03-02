@@ -151,7 +151,7 @@ glabel gCourseTimer
 glabel gCurrentCourseId
 .hword 0x0000, 0x0000
 
-glabel D_800DC5A4
+glabel gCurrentlyLoadedCourseId
 .hword 0x00ff, 0x0000
 
 glabel D_800DC5A8
@@ -226,7 +226,7 @@ glabel D_800DC5FC
 glabel D_800DC600
 .word 0x8000031c
 
-glabel D_800DC604
+glabel gIsMirrorMode
 .word 0x00000000
 
 glabel D_800DC608

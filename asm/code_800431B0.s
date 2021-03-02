@@ -12822,8 +12822,8 @@ glabel func_8004ED40
 /* 04FA50 8004EE50 00000000 */   nop   
 
 glabel func_8004EE54
-/* 04FA54 8004EE54 3C0E800E */  lui   $t6, %hi(D_800DC604) # $t6, 0x800e
-/* 04FA58 8004EE58 8DCEC604 */  lw    $t6, %lo(D_800DC604)($t6)
+/* 04FA54 8004EE54 3C0E800E */  lui   $t6, %hi(gIsMirrorMode) # $t6, 0x800e
+/* 04FA58 8004EE58 8DCEC604 */  lw    $t6, %lo(gIsMirrorMode)($t6)
 /* 04FA5C 8004EE5C 27BDFFC8 */  addiu $sp, $sp, -0x38
 /* 04FA60 8004EE60 AFBF0034 */  sw    $ra, 0x34($sp)
 /* 04FA64 8004EE64 11C00025 */  beqz  $t6, .L8004EEFC
