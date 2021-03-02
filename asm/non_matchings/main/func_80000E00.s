@@ -29,7 +29,7 @@ glabel func_80000E00
 /* 001A6C 80000E6C 8C84EF40 */  lw    $a0, %lo(gGfxPool)($a0)
 /* 001A70 80000E70 3C010002 */  lui   $at, (0x00028B20 >> 16) # lui $at, 2
 /* 001A74 80000E74 34218B20 */  ori   $at, (0x00028B20 & 0xFFFF) # ori $at, $at, 0x8b20
-/* 001A78 80000E78 0C000310 */  jal   func_80000C40
+/* 001A78 80000E78 0C000310 */  jal   send_display_list
 /* 001A7C 80000E7C 00812021 */   addu  $a0, $a0, $at
 /* 001A80 80000E80 3C02800E */  lui   $v0, %hi(D_800DC560) # $v0, 0x800e
 /* 001A84 80000E84 3C03800E */  lui   $v1, %hi(D_800DC54C) # $v1, 0x800e
