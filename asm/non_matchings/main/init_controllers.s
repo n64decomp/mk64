@@ -14,14 +14,14 @@ glabel init_controllers
 /* 0014D4 800008D4 0C033380 */  jal   osSetEventMesg
 /* 0014D8 800008D8 24040005 */   li    $a0, 5
 /* 0014DC 800008DC 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
-/* 0014E0 800008E0 3C058015 */  lui   $a1, %hi(D_8014F108) # $a1, 0x8015
-/* 0014E4 800008E4 3C068015 */  lui   $a2, %hi(D_8014F0E0) # $a2, 0x8015
-/* 0014E8 800008E8 24C6F0E0 */  addiu $a2, %lo(D_8014F0E0) # addiu $a2, $a2, -0xf20
-/* 0014EC 800008EC 24A5F108 */  addiu $a1, %lo(D_8014F108) # addiu $a1, $a1, -0xef8
+/* 0014E0 800008E0 3C058015 */  lui   $a1, %hi(gControllerBits) # $a1, 0x8015
+/* 0014E4 800008E4 3C068015 */  lui   $a2, %hi(gControllerStatuses) # $a2, 0x8015
+/* 0014E8 800008E8 24C6F0E0 */  addiu $a2, %lo(gControllerStatuses) # addiu $a2, $a2, -0xf20
+/* 0014EC 800008EC 24A5F108 */  addiu $a1, %lo(gControllerBits) # addiu $a1, $a1, -0xef8
 /* 0014F0 800008F0 0C03344C */  jal   osContInit
 /* 0014F4 800008F4 2484F0B8 */   addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
-/* 0014F8 800008F8 3C0E8015 */  lui   $t6, %hi(D_8014F108) # $t6, 0x8015
-/* 0014FC 800008FC 91CEF108 */  lbu   $t6, %lo(D_8014F108)($t6)
+/* 0014F8 800008F8 3C0E8015 */  lui   $t6, %hi(gControllerBits) # $t6, 0x8015
+/* 0014FC 800008FC 91CEF108 */  lbu   $t6, %lo(gControllerBits)($t6)
 /* 001500 80000900 24180001 */  li    $t8, 1
 /* 001504 80000904 3C018016 */  lui   $at, %hi(D_801625EA) # 0x8016
 /* 001508 80000908 31CF0001 */  andi  $t7, $t6, 1

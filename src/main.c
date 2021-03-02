@@ -185,8 +185,8 @@ GLOBAL_ASM("asm/non_matchings/main/func_800006E8.s")
 void init_controllers(void) {
     osCreateMesgQueue(&gSIEventMesgQueue, &gSIEventMesgBuf, 3);
     osSetEventMesg(5, &gSIEventMesgQueue, (OSMesg) 0x33333333);
-    osContInit(&gSIEventMesgQueue, &D_8014F108, &D_8014F0E0);
-    if ((D_8014F108 & 1) == 0) {
+    osContInit(&gSIEventMesgQueue, &gControllerBits, &gControllerStatuses);
+    if ((gControllerBits & 1) == 0) {
         D_801625EA = (u16)1;
         return;
     }
@@ -212,7 +212,7 @@ void func_80000934(s32 arg0) {
 
     if (D_801625EA == 0) {
         // potantial sizeof structs?
-        temp_v1 = (arg0 * 6) + &D_8014F0F0;
+        temp_v1 = (arg0 * 6) + &gControllerPads;
         temp_v0 = (arg0 * 0x10) + &gPlayer1Controller;
         temp_v0->unk0 = (s16) temp_v1->unk2;
         temp_v0->unk2 = (s16) temp_v1->unk3;
@@ -259,7 +259,7 @@ void *read_controllers(void) {
 
     osContStartReadData(&gSIEventMesgQueue);
     osRecvMesg(&gSIEventMesgQueue, &sp1C, 1);
-    osContGetReadData(&D_8014F0F0);
+    osContGetReadData(&gControllerPads);
     func_80000934(0);
     func_80000934(1);
     func_80000934(2);
