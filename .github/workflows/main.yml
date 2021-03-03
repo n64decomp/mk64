@@ -8,34 +8,31 @@ on:
   pull_request:
     branches:
       - master
-env:
-  username: ${{ secrets.DOCKER_USERNAME }}
-  password: ${{ secrets.DOCKER_TOKEN }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
     container:
       image: valandilmk64/mk64-ci:latest
+      credentials:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_TOKEN }}
+
     steps:
       - uses: actions/checkout@v2
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build tools
         run: |
           make -j4 -C tools/
-
       - name: Extract assets
         run: |
           # Link the base roms in the build dir.
           ln -s "/opt/assets/Mario Kart 64 (U) [!].z64" baserom.us.z64
-
           # Verify that no assets were committed to the repo.
           [ -z "$(find {actors,levels,textures}/ -name '*.png')" ]
           [ -z "$(find assets/ -name '*.m64' -or '*.bin')" ]
           [ -z "$(find roms/ -name '*.z64')" ]
           ./extract_assets.py us
-
       - name: Build U source
         run: |
           make -j4 VERSION=us VERBOSE=1 COLOR=0
