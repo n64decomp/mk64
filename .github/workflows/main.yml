@@ -8,18 +8,18 @@ on:
   pull_request:
     branches:
       - master
-
+env:
+  username: ${{ secrets.DOCKER_USERNAME }}
+  password: ${{ secrets.DOCKER_TOKEN }}
 jobs:
   build:
     runs-on: ubuntu-latest
     container:
       image: valandilmk64/mk64-ci:latest
-      credentials:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_TOKEN }}
-
     steps:
       - uses: actions/checkout@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build tools
         run: |
