@@ -13,8 +13,8 @@ glabel func_80000E00
 /* 001A2C 80000E2C 3C010002 */  lui   $at, (0x00028B20 >> 16) # lui $at, 2
 /* 001A30 80000E30 34218B20 */  ori   $at, (0x00028B20 & 0xFFFF) # ori $at, $at, 0x8b20
 /* 001A34 80000E34 00417821 */  addu  $t7, $v0, $at
-/* 001A38 80000E38 3C018015 */  lui   $at, %hi(D_8015029C) # $at, 0x8015
-/* 001A3C 80000E3C AC2F029C */  sw    $t7, %lo(D_8015029C)($at)
+/* 001A38 80000E38 3C018015 */  lui   $at, %hi(gGfxSPTask) # $at, 0x8015
+/* 001A3C 80000E3C AC2F029C */  sw    $t7, %lo(gGfxSPTask)($at)
 /* 001A40 80000E40 3C010001 */  lui   $at, (0x0001A0C0 >> 16) # lui $at, 1
 /* 001A44 80000E44 3421A0C0 */  ori   $at, (0x0001A0C0 & 0xFFFF) # ori $at, $at, 0xa0c0
 /* 001A48 80000E48 0041C021 */  addu  $t8, $v0, $at
