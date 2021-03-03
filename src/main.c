@@ -44,7 +44,7 @@ extern struct VblankHandler *gVblankHandler1;
 extern struct VblankHandler *gVblankHandler2;
 extern const f64 D_800EB640;
 extern struct VblankHandler sSoundVblankHandler;
-extern struct SPTask *D_8015029C;
+extern struct SPTask *gGfxSPTask;
 extern OSMesgQueue D_8014EF58, D_8014EF88, D_8014EFD0, gIntrMesgQueue;
 extern OSMesgQueue sSoundMesgQueue;
 extern OSMesg sSoundMesgBuf;
@@ -157,32 +157,32 @@ void start_sptask(s32 taskType) {
 // Most similar to create_task_structure from SM64, with additional provisions
 // to load both F3DEX and F3DLX, depending on the number of players
 void func_800006E8(void) {
-    D_8015029C->msgqueue = &D_8014EF88;
-    D_8015029C->msg = (OSMesg) 2;
-    D_8015029C->task.t.type = M_GFXTASK;
-    D_8015029C->task.t.flags = (1 << 1);
-    D_8015029C->task.t.ucode_boot = rspbootTextStart;
-    D_8015029C->task.t.ucode_boot_size = ((u8 *) rspbootTextEnd - (u8 *) rspbootTextStart);
+    gGfxSPTask->msgqueue = &D_8014EF88;
+    gGfxSPTask->msg = (OSMesg) 2;
+    gGfxSPTask->task.t.type = M_GFXTASK;
+    gGfxSPTask->task.t.flags = (1 << 1);
+    gGfxSPTask->task.t.ucode_boot = rspbootTextStart;
+    gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspbootTextEnd - (u8 *) rspbootTextStart);
     if (D_800DC50C != 4 || gPlayerCountSelection1 - 1 == 0) {
-        D_8015029C->task.t.ucode = gspF3DEXTextStart;
-        D_8015029C->task.t.ucode_data = gspF3DEXDataStart;
+        gGfxSPTask->task.t.ucode = gspF3DEXTextStart;
+        gGfxSPTask->task.t.ucode_data = gspF3DEXDataStart;
     } else {
-        D_8015029C->task.t.ucode = gspF3DLXTextStart;
-        D_8015029C->task.t.ucode_data = gspF3DLXDataStart;
+        gGfxSPTask->task.t.ucode = gspF3DLXTextStart;
+        gGfxSPTask->task.t.ucode_data = gspF3DLXDataStart;
     }
-    D_8015029C->task.t.flags = 0;
-    D_8015029C->task.t.flags = (1 << 1);
-    D_8015029C->task.t.ucode_size = SP_UCODE_SIZE;
-    D_8015029C->task.t.ucode_data_size = SP_UCODE_DATA_SIZE;
-    D_8015029C->task.t.dram_stack = (u64 *) &gGfxSPTaskStack;
-    D_8015029C->task.t.dram_stack_size = SP_DRAM_STACK_SIZE8;
-    D_8015029C->task.t.output_buff = (u64 *) &gGfxSPTaskOutputBuffer;
-    D_8015029C->task.t.output_buff_size = (u64 *) &gGfxSPTaskOutputBufferSize;
-    D_8015029C->task.t.data_ptr = (u64 *) &gGfxPool->buffer[0x3418];
-    D_8015029C->task.t.data_size = (gDisplayListHead - &gGfxPool->buffer[0x3418]) * sizeof(Gfx);
+    gGfxSPTask->task.t.flags = 0;
+    gGfxSPTask->task.t.flags = (1 << 1);
+    gGfxSPTask->task.t.ucode_size = SP_UCODE_SIZE;
+    gGfxSPTask->task.t.ucode_data_size = SP_UCODE_DATA_SIZE;
+    gGfxSPTask->task.t.dram_stack = (u64 *) &gGfxSPTaskStack;
+    gGfxSPTask->task.t.dram_stack_size = SP_DRAM_STACK_SIZE8;
+    gGfxSPTask->task.t.output_buff = (u64 *) &gGfxSPTaskOutputBuffer;
+    gGfxSPTask->task.t.output_buff_size = (u64 *) &gGfxSPTaskOutputBufferSize;
+    gGfxSPTask->task.t.data_ptr = (u64 *) &gGfxPool->buffer[0x3418];
+    gGfxSPTask->task.t.data_size = (gDisplayListHead - &gGfxPool->buffer[0x3418]) * sizeof(Gfx);
     func_8008C214();
-    D_8015029C->task.t.yield_data_ptr = (u64 *) &gGfxSPTaskYieldBuffer;
-    D_8015029C->task.t.yield_data_size = 0xD00; /* Not equal to OS_YIELD_DATA_SIZE */
+    gGfxSPTask->task.t.yield_data_ptr = (u64 *) &gGfxSPTaskYieldBuffer;
+    gGfxSPTask->task.t.yield_data_size = 0xD00; /* Not equal to OS_YIELD_DATA_SIZE */
 }
 
 void init_controllers(void) {
@@ -342,7 +342,7 @@ GLOBAL_ASM("asm/non_matchings/main/func_80000D3C.s")
 void *func_80000E00(void) {
     gGfxPool = 0x800FD860;
     set_segment_base_addr(1, 0x800FD860);
-    D_8015029C = (s32) (gGfxPool + 0x28B20);
+    gGfxSPTask = (s32) (gGfxPool + 0x28B20);
     gDisplayListHead = (s32) (gGfxPool + 0x1A0C0);
     func_80000CA8();
     func_80000D3C(0);
@@ -366,7 +366,7 @@ s32 func_80000EB4(void) {
     gGfxPool = temp_a1;
     set_segment_base_addr(1, temp_a1);
     gDisplayListHead = (s32) (gGfxPool + 0x1A0C0);
-    D_8015029C = (s32) (gGfxPool + 0x28B20);
+    gGfxSPTask = (s32) (gGfxPool + 0x28B20);
     return gGfxPool;
 }
 #else

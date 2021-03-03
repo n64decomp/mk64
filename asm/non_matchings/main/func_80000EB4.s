@@ -27,7 +27,7 @@ glabel func_80000EB4
 /* 001B18 80000F18 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 001B1C 80000F1C 34218B20 */  ori   $at, (0x00028B20 & 0xFFFF) # ori $at, $at, 0x8b20
 /* 001B20 80000F20 00415021 */  addu  $t2, $v0, $at
-/* 001B24 80000F24 3C018015 */  lui   $at, %hi(D_8015029C) # $at, 0x8015
-/* 001B28 80000F28 AC2A029C */  sw    $t2, %lo(D_8015029C)($at)
+/* 001B24 80000F24 3C018015 */  lui   $at, %hi(gGfxSPTask) # $at, 0x8015
+/* 001B28 80000F28 AC2A029C */  sw    $t2, %lo(gGfxSPTask)($at)
 /* 001B2C 80000F2C 03E00008 */  jr    $ra
 /* 001B30 80000F30 27BD0018 */   addiu $sp, $sp, 0x18

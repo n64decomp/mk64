@@ -1,6 +1,6 @@
 glabel func_800006E8
-/* 0012E8 800006E8 3C028015 */  lui   $v0, %hi(D_8015029C) # $v0, 0x8015
-/* 0012EC 800006EC 2442029C */  addiu $v0, %lo(D_8015029C) # addiu $v0, $v0, 0x29c
+/* 0012E8 800006E8 3C028015 */  lui   $v0, %hi(gGfxSPTask) # $v0, 0x8015
+/* 0012EC 800006EC 2442029C */  addiu $v0, %lo(gGfxSPTask) # addiu $v0, $v0, 0x29c
 /* 0012F0 800006F0 8C4F0000 */  lw    $t7, ($v0)
 /* 0012F4 800006F4 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 0012F8 800006F8 3C0E8015 */  lui   $t6, %hi(D_8014EF88) # $t6, 0x8015
@@ -100,8 +100,8 @@ glabel func_800006E8
 /* 001464 80000864 0018C8C0 */  sll   $t9, $t8, 3
 /* 001468 80000868 0C023085 */  jal   func_8008C214
 /* 00146C 8000086C AD190034 */   sw    $t9, 0x34($t0)
-/* 001470 80000870 3C028015 */  lui   $v0, %hi(D_8015029C) # $v0, 0x8015
-/* 001474 80000874 2442029C */  addiu $v0, %lo(D_8015029C) # addiu $v0, $v0, 0x29c
+/* 001470 80000870 3C028015 */  lui   $v0, %hi(gGfxSPTask) # $v0, 0x8015
+/* 001474 80000874 2442029C */  addiu $v0, %lo(gGfxSPTask) # addiu $v0, $v0, 0x29c
 /* 001478 80000878 8C4A0000 */  lw    $t2, ($v0)
 /* 00147C 8000087C 3C098016 */  lui   $t1, %hi(gGfxSPTaskYieldBuffer) # $t1, 0x8016
 /* 001480 80000880 2529DEE0 */  addiu $t1, %lo(gGfxSPTaskYieldBuffer) # addiu $t1, $t1, -0x2120
