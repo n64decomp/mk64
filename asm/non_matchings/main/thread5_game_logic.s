@@ -50,7 +50,7 @@ glabel thread5_game_logic
 /* 003438 80002838 AC28F8C8 */  sw    $t0, %lo(D_8015F8C8)($at)
 /* 00343C 8000283C 3C018016 */  lui   $at, %hi(D_8015F8CC) # $at, 0x8016
 /* 003440 80002840 2449001C */  addiu $t1, $v0, 0x1c
-/* 003444 80002844 0C000380 */  jal   func_80000E00
+/* 003444 80002844 0C000380 */  jal   rendering_init
 /* 003448 80002848 AC29F8CC */   sw    $t1, %lo(D_8015F8CC)($at)
 /* 00344C 8000284C 0C00028A */  jal   read_controllers
 /* 003450 80002850 00000000 */   nop   
