@@ -642,8 +642,8 @@ glabel func_80020000
 /* 020EC8 800202C8 8FA80038 */   lw    $t0, 0x38($sp)
 /* 020ECC 800202CC 3C18800E */  lui   $t8, %hi(D_800DDB50)
 /* 020ED0 800202D0 0312C021 */  addu  $t8, $t8, $s2
-/* 020ED4 800202D4 3C0E800E */  lui   $t6, %hi(D_800DC560) # $t6, 0x800e
-/* 020ED8 800202D8 95CEC560 */  lhu   $t6, %lo(D_800DC560)($t6)
+/* 020ED4 800202D4 3C0E800E */  lui   $t6, %hi(gFrameBufferIndex) # $t6, 0x800e
+/* 020ED8 800202D8 95CEC560 */  lhu   $t6, %lo(gFrameBufferIndex)($t6)
 /* 020EDC 800202DC 8318DB50 */  lb    $t8, %lo(D_800DDB50)($t8)
 /* 020EE0 800202E0 00121840 */  sll   $v1, $s2, 1
 /* 020EE4 800202E4 00107900 */  sll   $t7, $s0, 4

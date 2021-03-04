@@ -122,13 +122,13 @@ glabel D_800DC544
 glabel D_800DC548
 .word 0x00000000
 
-glabel D_800DC54C
+glabel gGlobalTimer
 .word 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
 glabel D_800DC55C
 .hword 0x0000, 0x0000
 
-glabel D_800DC560
+glabel gFrameBufferIndex
 .hword 0x0000, 0x0000, 0x0000, 0x0000
 
 glabel D_800DC568

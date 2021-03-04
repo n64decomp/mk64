@@ -89,10 +89,10 @@ extern u32 D_802F9F80;
 
 extern struct SPTask* sNextDisplaySPTask;
 
-extern u16 D_800DC560;
+extern u16 gFrameBufferIndex;
 
 extern struct GfxPool gGfxPools[2];
-extern s32 D_800DC54C;
+extern s32 gGlobalTimer;
 
 // Declarations (in this file)
 void thread1_idle(void *arg0);
@@ -351,12 +351,12 @@ void rendering_init(void) {
     func_80000D3C(0);
     func_80000CE8();
     send_display_list(&gGfxPool->spTask);
-    D_800DC560++;
-    D_800DC54C++;
+    gFrameBufferIndex++;
+    gGlobalTimer++;
 }
 
 void config_gfx_pool(void) {
-    gGfxPool = &gGfxPools[D_800DC54C & 1];
+    gGfxPool = &gGfxPools[gGlobalTimer & 1];
     set_segment_base_addr(1, gGfxPool->buffer);
     gDisplayListHead = &gGfxPool->buffer[0x3418];
     gGfxSPTask = &gGfxPool->spTask;
@@ -383,13 +383,13 @@ void *func_80000F34(void) {
     if (3 == (temp_t2 & 0xFFFF)) {
         D_800DC55C = (u16)0U;
     }
-    temp_t5 = D_800DC560 + 1;
-    D_800DC560 = temp_t5;
+    temp_t5 = gFrameBufferIndex + 1;
+    gFrameBufferIndex = temp_t5;
     if (3 == (temp_t5 & 0xFFFF)) {
-        D_800DC560 = (u16)0U;
+        gFrameBufferIndex = (u16)0U;
     }
-    D_800DC54C = (s32) (D_800DC54C + 1);
-    return &D_800DC54C;
+    gGlobalTimer = (s32) (gGlobalTimer + 1);
+    return &gGlobalTimer;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/main/func_80000F34.s")
