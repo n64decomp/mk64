@@ -5,10 +5,10 @@ glabel func_80000EB4
 /* 001AC0 80000EC0 34218B70 */  ori   $at, (0x00028B70 & 0xFFFF) # ori $at, $at, 0x8b70
 /* 001AC4 80000EC4 31CF0001 */  andi  $t7, $t6, 1
 /* 001AC8 80000EC8 01E10019 */  multu $t7, $at
-/* 001ACC 80000ECC 3C198010 */  lui   $t9, %hi(D_800FD860) # $t9, 0x8010
+/* 001ACC 80000ECC 3C198010 */  lui   $t9, %hi(gGfxPools) # $t9, 0x8010
 /* 001AD0 80000ED0 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 001AD4 80000ED4 3C028015 */  lui   $v0, %hi(gGfxPool) # $v0, 0x8015
-/* 001AD8 80000ED8 2739D860 */  addiu $t9, %lo(D_800FD860) # addiu $t9, $t9, -0x27a0
+/* 001AD8 80000ED8 2739D860 */  addiu $t9, %lo(gGfxPools) # addiu $t9, $t9, -0x27a0
 /* 001ADC 80000EDC 2442EF40 */  addiu $v0, %lo(gGfxPool) # addiu $v0, $v0, -0x10c0
 /* 001AE0 80000EE0 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 001AE4 80000EE4 24040001 */  li    $a0, 1

@@ -1,10 +1,10 @@
 glabel func_80000E00
 /* 001A00 80000E00 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 001A04 80000E04 3C028015 */  lui   $v0, %hi(gGfxPool) # $v0, 0x8015
-/* 001A08 80000E08 3C0E8010 */  lui   $t6, %hi(D_800FD860) # 0x8010
+/* 001A08 80000E08 3C0E8010 */  lui   $t6, %hi(gGfxPools) # 0x8010
 /* 001A0C 80000E0C 2442EF40 */  addiu $v0, %lo(gGfxPool) # addiu $v0, $v0, -0x10c0
 /* 001A10 80000E10 AFBF0014 */  sw    $ra, 0x14($sp)
-/* 001A14 80000E14 25C5D860 */  addiu $a1, $t6, %lo(D_800FD860) # -0x27a0
+/* 001A14 80000E14 25C5D860 */  addiu $a1, $t6, %lo(gGfxPools) # -0x27a0
 /* 001A18 80000E18 AC450000 */  sw    $a1, ($v0)
 /* 001A1C 80000E1C 0C0A9EE5 */  jal   set_segment_base_addr
 /* 001A20 80000E20 24040001 */   li    $a0, 1
