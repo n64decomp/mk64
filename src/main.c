@@ -360,7 +360,7 @@ GLOBAL_ASM("asm/non_matchings/main/func_80000E00.s")
 #endif
 
 // likely config_gfx_pool from SM64
-void func_80000EB4(void) {
+void config_gfx_pool(void) {
     gGfxPool = &gGfxPools[D_800DC54C & 1];
     set_segment_base_addr(1, gGfxPool->buffer);
     gDisplayListHead = &gGfxPool->buffer[0x3418];
@@ -1161,7 +1161,7 @@ loop_3:
         func_80002684();
     }
     profiler_log_thread5_time(0);
-    func_80000EB4();
+    config_gfx_pool();
     read_controllers();
     func_80001ECC();
     func_80000CE8();

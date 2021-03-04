@@ -72,7 +72,7 @@ glabel thread5_game_logic
 .L8000288C:
 /* 00348C 8000288C 0C000D54 */  jal   profiler_log_thread5_time
 /* 003490 80002890 00002025 */   move  $a0, $zero
-/* 003494 80002894 0C0003AD */  jal   func_80000EB4
+/* 003494 80002894 0C0003AD */  jal   config_gfx_pool
 /* 003498 80002898 00000000 */   nop   
 /* 00349C 8000289C 0C00028A */  jal   read_controllers
 /* 0034A0 800028A0 00000000 */   nop   
