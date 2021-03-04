@@ -192,7 +192,7 @@ void func_800006E8(void) {
 }
 
 void init_controllers(void) {
-    osCreateMesgQueue(&gSIEventMesgQueue, &gSIEventMesgBuf, ARRAY_COUNT(gSIEventMesgBuf));
+    osCreateMesgQueue(&gSIEventMesgQueue, &gSIEventMesgBuf[0], ARRAY_COUNT(gSIEventMesgBuf));
     osSetEventMesg(OS_EVENT_SI, &gSIEventMesgQueue, (OSMesg) 0x33333333);
     osContInit(&gSIEventMesgQueue, &gControllerBits, &gControllerStatuses);
     if ((gControllerBits & 1) == 0) {
@@ -299,7 +299,7 @@ void send_display_list(struct SPTask *spTask) {
     if (sCurrentDisplaySPTask == NULL) {
         sCurrentDisplaySPTask = spTask;
         sNextDisplaySPTask = NULL;
-        osSendMesg(&gIntrMesgQueue, MESG_START_GFX_SPTASK, OS_MESG_NOBLOCK);
+        osSendMesg(&gIntrMesgQueue, (OSMesg) MESG_START_GFX_SPTASK, OS_MESG_NOBLOCK);
     }
     else{
         sNextDisplaySPTask = spTask;
