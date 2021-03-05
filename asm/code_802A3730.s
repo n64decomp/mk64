@@ -358,11 +358,11 @@ glabel func_802A39E0
 /* 10D238 802A3C28 AC590000 */  sw    $t9, ($v0)
 /* 10D23C 802A3C2C 8C620000 */  lw    $v0, ($v1)
 /* 10D240 802A3C30 3718013F */  ori   $t8, (0xFF10013F & 0xFFFF) # ori $t8, $t8, 0x13f
-/* 10D244 802A3C34 3C0F800E */  lui   $t7, %hi(D_800DC560) # $t7, 0x800e
+/* 10D244 802A3C34 3C0F800E */  lui   $t7, %hi(gFrameBufferIndex) # $t7, 0x800e
 /* 10D248 802A3C38 244E0008 */  addiu $t6, $v0, 8
 /* 10D24C 802A3C3C AC6E0000 */  sw    $t6, ($v1)
 /* 10D250 802A3C40 AC580000 */  sw    $t8, ($v0)
-/* 10D254 802A3C44 95EFC560 */  lhu   $t7, %lo(D_800DC560)($t7)
+/* 10D254 802A3C44 95EFC560 */  lhu   $t7, %lo(gFrameBufferIndex)($t7)
 /* 10D258 802A3C48 3C0E8015 */  lui   $t6, %hi(D_801502A8)
 /* 10D25C 802A3C4C 3C011FFF */  lui   $at, (0x1FFFFFFF >> 16) # lui $at, 0x1fff
 /* 10D260 802A3C50 000FC880 */  sll   $t9, $t7, 2
@@ -464,11 +464,11 @@ glabel func_802A3CB0
 /* 10D3D8 802A3DC8 AC580000 */  sw    $t8, ($v0)
 /* 10D3DC 802A3DCC 8C620000 */  lw    $v0, ($v1)
 /* 10D3E0 802A3DD0 35CE013F */  ori   $t6, (0xFF10013F & 0xFFFF) # ori $t6, $t6, 0x13f
-/* 10D3E4 802A3DD4 3C0F800E */  lui   $t7, %hi(D_800DC560) # $t7, 0x800e
+/* 10D3E4 802A3DD4 3C0F800E */  lui   $t7, %hi(gFrameBufferIndex) # $t7, 0x800e
 /* 10D3E8 802A3DD8 24590008 */  addiu $t9, $v0, 8
 /* 10D3EC 802A3DDC AC790000 */  sw    $t9, ($v1)
 /* 10D3F0 802A3DE0 AC4E0000 */  sw    $t6, ($v0)
-/* 10D3F4 802A3DE4 95EFC560 */  lhu   $t7, %lo(D_800DC560)($t7)
+/* 10D3F4 802A3DE4 95EFC560 */  lhu   $t7, %lo(gFrameBufferIndex)($t7)
 /* 10D3F8 802A3DE8 3C198015 */  lui   $t9, %hi(D_801502A8) # 0x8015
 /* 10D3FC 802A3DEC 000FC080 */  sll   $t8, $t7, 2
 /* 10D400 802A3DF0 0338C821 */  addu  $t9, $t9, $t8
@@ -742,9 +742,9 @@ glabel func_802A41D4
 /* 10D7F4 802A41E4 35EF013F */  ori   $t7, (0xFF10013F & 0xFFFF) # ori $t7, $t7, 0x13f
 /* 10D7F8 802A41E8 244E0008 */  addiu $t6, $v0, 8
 /* 10D7FC 802A41EC AC6E0000 */  sw    $t6, ($v1)
-/* 10D800 802A41F0 3C18800E */  lui   $t8, %hi(D_800DC560) # $t8, 0x800e
+/* 10D800 802A41F0 3C18800E */  lui   $t8, %hi(gFrameBufferIndex) # $t8, 0x800e
 /* 10D804 802A41F4 AC4F0000 */  sw    $t7, ($v0)
-/* 10D808 802A41F8 9718C560 */  lhu   $t8, %lo(D_800DC560)($t8)
+/* 10D808 802A41F8 9718C560 */  lhu   $t8, %lo(gFrameBufferIndex)($t8)
 /* 10D80C 802A41FC 3C0D8015 */  lui   $t5, %hi(D_801502A8) # 0x8015
 /* 10D810 802A4200 3C011FFF */  lui   $at, (0x1FFFFFFF >> 16) # lui $at, 0x1fff
 /* 10D814 802A4204 0018C880 */  sll   $t9, $t8, 2
@@ -841,9 +841,9 @@ glabel func_802A4300
 /* 10D978 802A4368 3739013F */  ori   $t9, (0xFF10013F & 0xFFFF) # ori $t9, $t9, 0x13f
 /* 10D97C 802A436C 24580008 */  addiu $t8, $v0, 8
 /* 10D980 802A4370 AC780000 */  sw    $t8, ($v1)
-/* 10D984 802A4374 3C0E800E */  lui   $t6, %hi(D_800DC560) # $t6, 0x800e
+/* 10D984 802A4374 3C0E800E */  lui   $t6, %hi(gFrameBufferIndex) # $t6, 0x800e
 /* 10D988 802A4378 AC590000 */  sw    $t9, ($v0)
-/* 10D98C 802A437C 95CEC560 */  lhu   $t6, %lo(D_800DC560)($t6)
+/* 10D98C 802A437C 95CEC560 */  lhu   $t6, %lo(gFrameBufferIndex)($t6)
 /* 10D990 802A4380 3C188015 */  lui   $t8, %hi(D_801502A8)
 /* 10D994 802A4384 3C0C1FFF */  lui   $t4, (0x1FFFFFFF >> 16) # lui $t4, 0x1fff
 /* 10D998 802A4388 000E7880 */  sll   $t7, $t6, 2
@@ -2243,9 +2243,9 @@ glabel func_802A5760
 /* 10EE30 802A5820 35CE013F */  ori   $t6, (0xFF10013F & 0xFFFF) # ori $t6, $t6, 0x13f
 /* 10EE34 802A5824 24590008 */  addiu $t9, $v0, 8
 /* 10EE38 802A5828 AC790000 */  sw    $t9, ($v1)
-/* 10EE3C 802A582C 3C0F800E */  lui   $t7, %hi(D_800DC560) # $t7, 0x800e
+/* 10EE3C 802A582C 3C0F800E */  lui   $t7, %hi(gFrameBufferIndex) # $t7, 0x800e
 /* 10EE40 802A5830 AC4E0000 */  sw    $t6, ($v0)
-/* 10EE44 802A5834 95EFC560 */  lhu   $t7, %lo(D_800DC560)($t7)
+/* 10EE44 802A5834 95EFC560 */  lhu   $t7, %lo(gFrameBufferIndex)($t7)
 /* 10EE48 802A5838 3C198015 */  lui   $t9, %hi(D_801502A8) # 0x8015
 /* 10EE4C 802A583C 3C011FFF */  lui   $at, (0x1FFFFFFF >> 16) # lui $at, 0x1fff
 /* 10EE50 802A5840 000FC080 */  sll   $t8, $t7, 2

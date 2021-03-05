@@ -51,14 +51,14 @@ glabel func_80000F34
 /* 001BF8 80000FF8 8C8402A8 */   lw    $a0, %lo(D_801502A8)($a0) # 0x2a8($a0)
 /* 001BFC 80000FFC 96090000 */  lhu   $t1, ($s0)
 /* 001C00 80001000 24030003 */  li    $v1, 3
-/* 001C04 80001004 3C02800E */  lui   $v0, %hi(D_800DC560) # $v0, 0x800e
+/* 001C04 80001004 3C02800E */  lui   $v0, %hi(gFrameBufferIndex) # $v0, 0x800e
 /* 001C08 80001008 252A0001 */  addiu $t2, $t1, 1
 /* 001C0C 8000100C 314BFFFF */  andi  $t3, $t2, 0xffff
 /* 001C10 80001010 146B0002 */  bne   $v1, $t3, .L8000101C
 /* 001C14 80001014 A60A0000 */   sh    $t2, ($s0)
 /* 001C18 80001018 A6000000 */  sh    $zero, ($s0)
 .L8000101C:
-/* 001C1C 8000101C 2442C560 */  addiu $v0, %lo(D_800DC560) # addiu $v0, $v0, -0x3aa0
+/* 001C1C 8000101C 2442C560 */  addiu $v0, %lo(gFrameBufferIndex) # addiu $v0, $v0, -0x3aa0
 /* 001C20 80001020 944C0000 */  lhu   $t4, ($v0)
 /* 001C24 80001024 258D0001 */  addiu $t5, $t4, 1
 /* 001C28 80001028 31AEFFFF */  andi  $t6, $t5, 0xffff
@@ -66,8 +66,8 @@ glabel func_80000F34
 /* 001C30 80001030 A44D0000 */   sh    $t5, ($v0)
 /* 001C34 80001034 A4400000 */  sh    $zero, ($v0)
 .L80001038:
-/* 001C38 80001038 3C02800E */  lui   $v0, %hi(D_800DC54C) # $v0, 0x800e
-/* 001C3C 8000103C 2442C54C */  addiu $v0, %lo(D_800DC54C) # addiu $v0, $v0, -0x3ab4
+/* 001C38 80001038 3C02800E */  lui   $v0, %hi(gGlobalTimer) # $v0, 0x800e
+/* 001C3C 8000103C 2442C54C */  addiu $v0, %lo(gGlobalTimer) # addiu $v0, $v0, -0x3ab4
 /* 001C40 80001040 8C4F0000 */  lw    $t7, ($v0)
 /* 001C44 80001044 8FBF001C */  lw    $ra, 0x1c($sp)
 /* 001C48 80001048 8FB00018 */  lw    $s0, 0x18($sp)

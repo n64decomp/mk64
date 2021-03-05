@@ -3,7 +3,7 @@
 
 #include "types.h"
 
-#define GFX_POOL_SIZE 6400
+#define GFX_POOL_SIZE 20836
 struct GfxPool {
     Gfx buffer[GFX_POOL_SIZE];
     struct SPTask spTask;
