@@ -27,7 +27,7 @@ glabel sNextDisplaySPTask
 .word 0x00000000
 
 glabel D_800DC4BC
-.word gPlayer1Controller
+.word gControllers
 
 glabel D_800DC4C0
 .word gPlayer2Controller

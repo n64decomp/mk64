@@ -26,7 +26,7 @@ extern s32 gPrevMainThreadTask;
 
 extern s32 gDisplayListHead;
 extern u32 D_8015F724;
-u32 D_802BA278;
+extern u32 D_802BA278;
 
 struct MainPoolBlock {
     struct MainPoolBlock *prev;

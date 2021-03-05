@@ -219,7 +219,7 @@ void func_80000934(s32 arg0) {
     if (sController1Unplugged == 0) {
         // potantial sizeof structs?
         temp_v1 = (arg0 * 6) + &gControllerPads;
-        temp_v0 = (arg0 * 0x10) + &gPlayer1Controller;
+        temp_v0 = (arg0 * 0x10) + &gControllers;
         temp_v0->unk0 = (s16) temp_v1->unk2;
         temp_v0->unk2 = (s16) temp_v1->unk3;
         temp_t4 = temp_v1->unk0 | 0x2000;
