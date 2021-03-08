@@ -38,7 +38,14 @@ OUTPUT_ARCH (mips)
       . = ALIGN(0x10); \
    } \
    END_SEG(name)
-
+	
+#define BEGIN_NOLOAD(name) \
+    _##name##SegNoloadStart = ADDR(.name.noload); \
+    .name.noload (NOLOAD) :
+	
+#define END_NOLOAD(name) \
+    _##name##SegNoloadEnd = ADDR(.name.noload) + SIZEOF(.name.noload);
+	
 SECTIONS
 {
    __romPos = 0;
@@ -102,6 +109,26 @@ SECTIONS
    }
    END_SEG(main)
 
+   BEGIN_NOLOAD(main) {
+      BUILD_DIR/src/main.o(.bss);
+
+      BUILD_DIR/asm/bss_main.o(.bss);
+
+      BUILD_DIR/src/profiler.o(.bss);
+      BUILD_DIR/asm/bss_800040C0.o(.bss);
+      BUILD_DIR/asm/bss_80004740.o(.bss);
+      BUILD_DIR/asm/bss_80004EF0.o(.bss);
+      BUILD_DIR/asm/bss_80005FD0.o(.bss);
+      BUILD_DIR/asm/bss_800431B0.o(.bss);
+      BUILD_DIR/asm/bss_MainSeg.o(.bss);
+   }
+   END_NOLOAD(main)
+	
+   _mainSegmentNoloadSize = SIZEOF(.main.noload) + 0x10;
+   
+   _mainSegmentNoloadSizeHi = _mainSegmentNoloadSize >> 16;
+   _mainSegmentNoloadSizeLo = _mainSegmentNoloadSize & 0xFFFF;
+
    /* 0x8028DF00 0F7510-123640 [2C130] */
    BEGIN_SEG(code_8028DF00, SEG_8028DF00)
    {
@@ -115,6 +142,16 @@ SECTIONS
       BUILD_DIR/data/data_121DA0.o(.data);
    }
    END_SEG(code_8028DF00)
+
+   	BEGIN_NOLOAD(code_8028DF00) {
+	     BUILD_DIR/asm/bss_8028DF00.o(.bss);
+	   }
+	   END_NOLOAD(code_8028DF00)
+	
+	   _code_8028DF00SegmentNoloadSize = SIZEOF(.code_8028DF00.noload) + 0x10;
+	   
+	   _code_8028DF00SegmentNoloadSizeHi = _code_8028DF00SegmentNoloadSize >> 16;
+	   _code_8028DF00SegmentNoloadSizeLo = _code_8028DF00SegmentNoloadSize & 0xFFFF;
 
    /* 0x80280000 123640-12AAE0 [74A0] */
    BEGIN_SEG(code_80280000, SEG_80280000)

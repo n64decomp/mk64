@@ -4,7 +4,7 @@
 #include "profiler.h"
 #include "config.h"
 
-extern struct ProfilerFrameData gProfilerFrameData[2];
+struct ProfilerFrameData gProfilerFrameData[2];
 extern u32 D_800DC568;
 extern u32 D_800DC56C;
 extern s16 D_800DC664;
@@ -29,7 +29,6 @@ void profiler_log_thread4_time(void) {
     }
 }
 
-#ifdef NON_MATCHING
 void profiler_log_gfx_time(enum ProfilerGfxEvent eventID) {
     if (eventID == TASKS_QUEUED) {
         D_800DC66C ^= 1;
@@ -37,9 +36,6 @@ void profiler_log_gfx_time(enum ProfilerGfxEvent eventID) {
     }
     gProfilerFrameData[D_800DC66C].gfxTimes[eventID] = osGetTime();
 }
-#else
-GLOBAL_ASM("asm/non_matchings/profiler/profiler_log_gfx_time.s")
-#endif
 
 void profiler_log_vblank_time(void) {
     struct ProfilerFrameData *profiler = &gProfilerFrameData[D_800DC66C];
