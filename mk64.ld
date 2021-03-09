@@ -140,6 +140,8 @@ SECTIONS
       BUILD_DIR/asm/code_802B0210.o(.text);
       BUILD_DIR/asm/code_802B4F60.o(.text);
       BUILD_DIR/data/data_121DA0.o(.data);
+      BUILD_DIR/courses/courseTable.inc.o(.data);
+      BUILD_DIR/data/data_121DA0_2.o(.data);
    }
    END_SEG(code_8028DF00)
 
@@ -282,26 +284,125 @@ SECTIONS
    COURSE_OFFSETS_SEG(course_dks_jungle_parkway_offsets, 0x09000000)
    COURSE_OFFSETS_SEG(course_big_donut_offsets, 0x09000000)
 
-   VERT_SEG(mario_raceway_vertex, 0x0F000000)
-   VERT_SEG(choco_mountain_vertex, 0x0F000000)
-   VERT_SEG(bowsers_castle_vertex, 0x0F000000)
-   VERT_SEG(banshee_boardwalk_vertex, 0x0F000000)
-   VERT_SEG(yoshi_valley_vertex, 0x0F000000)
-   VERT_SEG(frappe_snowland_vertex, 0x0F000000)
-   VERT_SEG(koopa_troopa_beach_vertex, 0x0F000000)
-   VERT_SEG(royal_raceway_vertex, 0x0F000000)
-   VERT_SEG(luigi_raceway_vertex, 0x0F000000)
-   VERT_SEG(moo_moo_farm_vertex, 0x0F000000)
-   VERT_SEG(toads_turnpike_vertex, 0x0F000000)
-   VERT_SEG(kalimari_desert_vertex, 0x0F000000)
-   VERT_SEG(sherbet_land_vertex, 0x0F000000)
-   VERT_SEG(rainbow_road_vertex, 0x0F000000)
-   VERT_SEG(wario_stadium_vertex, 0x0F000000)
-   VERT_SEG(block_fort_vertex, 0x0F000000)
-   VERT_SEG(skyscraper_vertex, 0x0F000000)
-   VERT_SEG(double_deck_vertex, 0x0F000000)
-   VERT_SEG(dks_jungle_parkway_vertex, 0x0F000000)
-   VERT_SEG(big_donut_vertex, 0x0F000000)
+   BEGIN_SEG(mario_raceway_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/flower_cup/mario_raceway/model.inc.mio0.o(.data);       \
+   } \
+   END_SEG(mario_raceway_vertex)
+
+   BEGIN_SEG(choco_mountain_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/flower_cup/choco_mountain/model.inc.mio0.o(.data);      \
+   } \
+   END_SEG(choco_mountain_vertex)
+
+   BEGIN_SEG(bowsers_castle_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/star_cup/bowsers_castle/model.inc.mio0.o(.data);        \
+   } \
+   END_SEG(bowsers_castle_vertex)   
+
+   BEGIN_SEG(banshee_boardwalk_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/special_cup/banshee_boardwalk/model.inc.mio0.o(.data);  \
+   } \
+   END_SEG(banshee_boardwalk_vertex)   
+
+   BEGIN_SEG(yoshi_valley_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/special_cup/yoshi_valley/model.inc.mio0.o(.data);       \
+   } \
+   END_SEG(yoshi_valley_vertex)   
+
+   BEGIN_SEG(frappe_snowland_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/flower_cup/frappe_snowland/model.inc.mio0.o(.data);     \
+   } \
+   END_SEG(frappe_snowland_vertex)   
+
+   BEGIN_SEG(koopa_troopa_beach_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/mushroom_cup/koopa_beach/model.inc.mio0.o(.data);       \
+   } \
+   END_SEG(koopa_troopa_beach_vertex)   
+
+   BEGIN_SEG(royal_raceway_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/star_cup/royal_raceway/model.inc.mio0.o(.data);         \
+   } \
+   END_SEG(royal_raceway_vertex)   
+
+   BEGIN_SEG(luigi_raceway_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/mushroom_cup/luigi_raceway/model.inc.mio0.o(.data);     \
+   } \
+   END_SEG(luigi_raceway_vertex)   
+
+   BEGIN_SEG(moo_moo_farm_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/mushroom_cup/moo_moo_farm/model.inc.mio0.o(.data);      \
+   } \
+   END_SEG(moo_moo_farm_vertex)   
+
+   BEGIN_SEG(toads_turnpike_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/flower_cup/toads_turnpike/model.inc.mio0.o(.data);      \
+   } \
+   END_SEG(toads_turnpike_vertex)   
+
+   BEGIN_SEG(kalimari_desert_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/mushroom_cup/kalimari_desert/model.inc.mio0.o(.data);   \
+   } \
+   END_SEG(kalimari_desert_vertex)   
+
+   BEGIN_SEG(sherbet_land_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/star_cup/sherbet_land/model.inc.mio0.o(.data);          \
+   } \
+   END_SEG(sherbet_land_vertex)   
+
+   BEGIN_SEG(rainbow_road_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/special_cup/rainbow_road/model.inc.mio0.o(.data);       \
+   } \
+   END_SEG(rainbow_road_vertex)   
+
+   BEGIN_SEG(wario_stadium_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/star_cup/wario_stadium/model.inc.mio0.o(.data);         \
+   } \
+   END_SEG(wario_stadium_vertex)   
+
+   BEGIN_SEG(block_fort_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/battle/block_fort/model.inc.mio0.o(.data);              \
+   } \
+   END_SEG(block_fort_vertex)   
+
+   BEGIN_SEG(skyscraper_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/battle/skyscraper/model.inc.mio0.o(.data);              \
+   } \
+   END_SEG(skyscraper_vertex)   
+
+   BEGIN_SEG(double_deck_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/battle/double_deck/model.inc.mio0.o(.data);             \
+   } \
+   END_SEG(double_deck_vertex)   
+
+   BEGIN_SEG(dks_jungle_parkway_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/special_cup/dks_jungle_parkway/model.inc.mio0.o(.data); \
+   } \
+   END_SEG(dks_jungle_parkway_vertex)
+
+   BEGIN_SEG(big_donut_vertex, 0x0F000000) \
+   { \
+      BUILD_DIR/courses/battle/big_donut/model.inc.mio0.o(.data);               \
+   } \
+   END_SEG(big_donut_vertex)
 
    BEGIN_SEG(audio_banks, 0x0)
    {

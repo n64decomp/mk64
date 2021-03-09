@@ -26,8 +26,9 @@ COURSE_DL_NAMES := $(addprefix course_,$(addsuffix _dl,$(COURSE_NAMES)))
 COURSE_DL_MIO0_FILES := $(addprefix $(BUILD_DIR)/bin/,$(addsuffix .mio0,$(COURSE_DL_NAMES)))
 COURSE_DL_MIO0_OBJ_FILES := $(COURSE_DL_MIO0_FILES:.mio0=.mio0.o)
 
-COURSE_VERTEX_NAMES := $(addprefix course_,$(addsuffix _vertex,$(COURSE_NAMES)))
-COURSE_VERTEX_MIO0_FILES := $(addprefix $(BUILD_DIR)/bin/,$(addsuffix .mio0,$(COURSE_VERTEX_NAMES)))
+
+# COURSE_VERTEX_NAMES := $(addprefix course_,$(addsuffix _vertex,$(COURSE_NAMES)))
+# COURSE_VERTEX_MIO0_FILES := $(addprefix $(BUILD_DIR)/bin/,$(addsuffix .mio0,$(COURSE_VERTEX_NAMES)))
 
 COURSE_MIO0_OBJ_FILES := $(COURSE_DL_MIO0_OBJ_FILES)
 
@@ -121,7 +122,7 @@ KARTS_DIR := bin/karts
 ALL_KARTS_DIRS := $(wildcard $(KARTS_DIR)/*)
 KART_TEXTURE_MIO0_FILES := $(addprefix $(BUILD_DIR)/,$(patsubst %.bin,%.mio0,$(wildcard $(KARTS_DIR)/*/*.bin)))
 
-MIO0_FILES := $(COURSE_VERTEX_MIO0_FILES) $(OTHER_DATA_MIO0_FILES) $(TEXTURE_DATA_MIO0_FILES) $(STANDALONE_TEXTURE_MIO0_FILES) $(KART_TEXTURE_MIO0_FILES)
+MIO0_FILES := $(OTHER_DATA_MIO0_FILES) $(TEXTURE_DATA_MIO0_FILES) $(STANDALONE_TEXTURE_MIO0_FILES) $(KART_TEXTURE_MIO0_FILES)
 
 MUSIC_FILES = \
 $(MUSIC_DIR)/seq_00.m64 \
