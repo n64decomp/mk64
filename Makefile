@@ -90,7 +90,6 @@ O_FILES := $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d) $(BUILD_DIR)/$(LD_SCRIPT).d
 ##################### Compiler Options #######################
-IRIX_ROOT := tools/ido5.3_compiler
 
 ifeq ($(shell type mips-linux-gnu-ld >/dev/null 2>/dev/null; echo $$?), 0)
   CROSS := mips-linux-gnu-
@@ -100,16 +99,31 @@ else
   CROSS := mips64-elf-
 endif
 
-# check that either QEMU_IRIX is set or qemu-irix package installed
-ifndef QEMU_IRIX
+# USE_QEMU_IRIX - when ido is selected, select which way to emulate IRIX programs
+#   1 - use qemu-irix
+#   0 - statically recompile the IRIX programs
+USE_QEMU_IRIX ?= 0
+$(eval $(call validate-option,USE_QEMU_IRIX,0 1))
+TOOLS_DIR := tools
+
+ifeq ($(USE_QEMU_IRIX),1)
+  # Verify that qemu-irix exists
   QEMU_IRIX := $(shell which qemu-irix)
   ifeq (, $(QEMU_IRIX))
-    $(error Please install qemu-irix package or set QEMU_IRIX env var to the full qemu-irix binary path)
+    $(error Using the IDO compiler requires qemu-irix. Please install qemu-irix package or set the QEMU_IRIX environment variable to the full qemu-irix binary path)
   endif
 endif
 
+ifeq ($(USE_QEMU_IRIX),1)
+    IRIX_ROOT := $(TOOLS_DIR)/ido5.3_compiler
+      CC      := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/bin/cc
+else
+    IDO_ROOT := tools/ido5.3_recomp
+     CC      := $(IDO_ROOT)/cc
+endif
+
 AS      := $(CROSS)as
-CC      := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/bin/cc
+
 CPP     := cpp -P -Wno-trigraphs
 LD      := $(CROSS)ld
 AR      := $(CROSS)ar
@@ -148,7 +162,6 @@ endif
 ####################### Other Tools #########################
 
 # N64 tools
-TOOLS_DIR = tools
 MIO0TOOL = $(TOOLS_DIR)/mio0
 N64CKSUM = $(TOOLS_DIR)/n64cksum
 N64GRAPHICS = $(TOOLS_DIR)/n64graphics
