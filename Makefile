@@ -256,7 +256,7 @@ $(mushroom_cup)/luigi_raceway/%.inc.mio0.o: courses/mushroom_cup/luigi_raceway/%
 	$(LD) -t -e 0 -Ttext=0F000000 -Map $(mushroom_cup)/luigi_raceway/$*.inc.elf.map -o $(mushroom_cup)/luigi_raceway/$*.inc.elf $(mushroom_cup)/luigi_raceway/$*.inc.o --no-check-sections
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(mushroom_cup)/luigi_raceway/$*.inc.elf $(mushroom_cup)/luigi_raceway/$*.inc.bin
 	$(MIO0TOOL) -c $(mushroom_cup)/luigi_raceway/$*.inc.bin $(mushroom_cup)/luigi_raceway/$*.inc.mio0
-  printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/mushroom_cup/luigi_raceway/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_luigi_raceway_packed\n\n.incbin \"bin/course_luigi_raceway_packed.bin\"\n" > build/us/courses/mushroom_cup/luigi_raceway/model.inc.mio0.s
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/mushroom_cup/luigi_raceway/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_luigi_raceway_packed\n\n.incbin \"bin/course_luigi_raceway_packed.bin\"\n" > build/us/courses/mushroom_cup/luigi_raceway/model.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(mushroom_cup)/luigi_raceway/$*.inc.mio0.o $(mushroom_cup)/luigi_raceway/$*.inc.mio0.s
 
 $(mushroom_cup)/moo_moo_farm/%.inc.mio0.o: courses/mushroom_cup/moo_moo_farm/%.inc.c
