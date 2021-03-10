@@ -256,7 +256,7 @@ $(mushroom_cup)/luigi_raceway/%.inc.mio0.o: courses/mushroom_cup/luigi_raceway/%
 	$(LD) -t -e 0 -Ttext=0F000000 -Map $(mushroom_cup)/luigi_raceway/$*.inc.elf.map -o $(mushroom_cup)/luigi_raceway/$*.inc.elf $(mushroom_cup)/luigi_raceway/$*.inc.o --no-check-sections
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(mushroom_cup)/luigi_raceway/$*.inc.elf $(mushroom_cup)/luigi_raceway/$*.inc.bin
 	$(MIO0TOOL) -c $(mushroom_cup)/luigi_raceway/$*.inc.bin $(mushroom_cup)/luigi_raceway/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.balign 4\n\n.incbin \"build/us/courses/mushroom_cup/luigi_raceway/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_luigi_raceway_packed\n\n.incbin \"bin/course_luigi_raceway_packed.bin\"\n" > build/us/courses/mushroom_cup/luigi_raceway/model.inc.mio0.s
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/mushroom_cup/luigi_raceway/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_luigi_raceway_packed\n\n.incbin \"bin/course_luigi_raceway_packed.bin\"\n" > build/us/courses/mushroom_cup/luigi_raceway/model.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(mushroom_cup)/luigi_raceway/$*.inc.mio0.o $(mushroom_cup)/luigi_raceway/$*.inc.mio0.s
 
 $(mushroom_cup)/moo_moo_farm/%.inc.mio0.o: courses/mushroom_cup/moo_moo_farm/%.inc.c
@@ -396,7 +396,13 @@ $(battle)/skyscraper/%.inc.mio0.o: courses/battle/skyscraper/%.inc.c
 
 
 $(BUILD_DIR)/$(TARGET).elf: $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(LD_COURSE_VERTEX_DEPENDENCIES) undefined_syms.txt
-	$(LD) $(LDFLAGS) -o $@ $(O_FILES)
+	$(LD) $(LDFLAGS) \
+	-R $(mushroom_cup)/luigi_raceway/model.inc.elf -R $(mushroom_cup)/moo_moo_farm/model.inc.elf -R $(mushroom_cup)/koopa_beach/model.inc.elf -R $(mushroom_cup)/kalimari_desert/model.inc.elf \
+	-R $(flower_cup)/toads_turnpike/model.inc.elf -R $(flower_cup)/frappe_snowland/model.inc.elf -R $(flower_cup)/choco_mountain/model.inc.elf -R $(flower_cup)/mario_raceway/model.inc.elf \
+	-R $(star_cup)/wario_stadium/model.inc.elf -R $(star_cup)/sherbet_land/model.inc.elf -R $(star_cup)/royal_raceway/model.inc.elf -R $(star_cup)/bowsers_castle/model.inc.elf \
+	-R $(special_cup)/dks_jungle_parkway/model.inc.elf -R $(special_cup)/yoshi_valley/model.inc.elf -R $(special_cup)/banshee_boardwalk/model.inc.elf -R $(special_cup)/rainbow_road/model.inc.elf \
+	-R $(battle)/double_deck/model.inc.elf -R $(battle)/big_donut/model.inc.elf -R $(battle)/block_fort/model.inc.elf -R $(battle)/skyscraper/model.inc.elf \
+	-o $@ $(O_FILES)
 
 $(BUILD_DIR)/$(TARGET).z64: $(BUILD_DIR)/$(TARGET).elf
 	$(OBJCOPY) $(OBJCOPYFLAGS) $< $(@:.z64=.bin) -O binary
@@ -405,7 +411,7 @@ $(BUILD_DIR)/$(TARGET).z64: $(BUILD_DIR)/$(TARGET).elf
 $(BUILD_DIR)/$(TARGET).hex: $(TARGET).z64
 	xxd $< > $@
 
-$(BUILD_DIR)/$(TARGET).objdump: $(BUILD_DIR)/$(TARGET).elf
+$(BUILD_DIR)/$(TARGET).objdump: $(BUILD_DIR)/$(TARGET).elf 
 	$(OBJDUMP) -D $< > $@
 
 test: $(TARGET).z64
