@@ -669,27 +669,6 @@ D_8028461C = 0x8028461C;
 D_802874A0 = 0x802874A0; /* Very end of data_credits_128480.s unused? */
 D_802874BE = 0x802874BE; /* unused? */
 
-d_course_mario_raceway_vertex = 0x0F000000;
-d_course_moo_moo_farm_vertex = 0x0F000000;
-d_course_luigi_raceway_vertex = 0x0F000000;
-d_course_sherbet_land_vertex = 0x0F000000;
-d_course_kalimari_desert_vertex = 0x0F000000;
-d_course_koopa_troopa_beach_vertex = 0x0F000000;
-d_course_choco_mountain_vertex = 0x0F000000;
-d_course_frappe_snowland_vertex = 0x0F000000;
-d_course_toads_turnpike_vertex = 0x0F000000;
-d_course_banshee_boardwalk_vertex = 0x0F000000;
-d_course_dks_jungle_parkway_vertex = 0x0F000000;
-d_course_rainbow_road_vertex = 0x0F000000;
-d_course_yoshi_valley_vertex = 0x0F000000;
-d_course_bowsers_castle_vertex = 0x0F000000;
-d_course_royal_raceway_vertex = 0x0F000000;
-d_course_wario_stadium_vertex = 0x0F000000;
-d_course_big_donut_vertex = 0x0F000000;
-d_course_block_fort_vertex = 0x0F000000;
-d_course_double_deck_vertex = 0x0F000000;
-d_course_skyscraper_vertex = 0x0F000000;
-
 d_course_luigi_raceway_packed = 0x0F009800;
 d_course_mario_raceway_packed = 0x0F0096f4;
 d_course_choco_mountain_packed = 0x0F00A0B4;
