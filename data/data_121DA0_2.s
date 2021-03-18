@@ -953,4 +953,3 @@ glabel D_802BA020
 
 glabel D_802BA028
 .double 65535.0
-

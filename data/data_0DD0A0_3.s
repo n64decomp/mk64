@@ -3132,7 +3132,7 @@ glabel D_800EE9F0
 .word L80070668, L8007067C, L80070690, L800706A4
 .word L800706B8, L800706CC, L800706E0
 
-glabel D_800EEA2C
+glabel D_800EEA2C   
 .word L800707CC
 .word L80071400, L80070848, L80070AA8, L80070B30
 .word L80070C60, L80070DD8, L80070F10, L80070F8C
@@ -3471,11 +3471,16 @@ glabel D_800EEF68
 .float -1371.0
 
 glabel D_800EEF6C
-
 .word L8007E4B4, L8007E42C, L8007E4B4, L8007E43C
-.word L8007E454, L8007E4A8, L8007E8CC, L8007E8F4
+.word L8007E454, L8007E4A8
+
+glabel D_800EEF84
+.word L8007E8CC, L8007E8F4
 .word L8007E908, L8007E930, L8007E98C, L8007E9B4
-.word L8007EA44, L8007EA80, L8007EB88, L8007E6E0
+.word L8007EA44, L8007EA80, L8007EB88
+
+glabel D_800EEFA8
+.word L8007E6E0
 .word L8007E748, L8007E82C, L8007E844, L8007E85C
 
 glabel D_800EEFBC
@@ -5571,11 +5576,15 @@ glabel D_800F0C9C
 .asciiz "\""
 .balign 4
 
-glabel D_800F0CA0 # TODO # further inspection appears unused
-.word 0x03030302
-.word 0x00020201
-.word 0x03020000
-.word 0x03030200
+# glabel D_800F0C9F begins in the middle of D_800F0C9C.
+# Likely a bit field
+.byte 0x03, 0x03, 0x03, 0x02, 0x00, 0x02, 0x02
+
+glabel D_800F0CA7 # Second OK menu button
+.byte 0x01, 0x03, 0x02, 0x00
+
+glabel D_800F0CAB # Third OK menu button
+.byte 0x00, 0x03, 0x03, 0x02, 0x00
 
 glabel D_800F0CB0
 .double 2147483647.0
@@ -6624,10 +6633,7 @@ glabel D_800F2B5F
 .byte 0x00
 
 glabel D_800F2B60
-.byte 0x01
-
-glabel D_800F2B61 # CHECK ISSUE
-.byte 0x02, 0x01, 0x01, 0x02, 0x01, 0x00, 0x02, 0x02, 0x00, 0x02, 0x00, 0x00
+.byte 0x01, 0x02, 0x01, 0x01, 0x02, 0x01, 0x00, 0x02, 0x02, 0x00, 0x02, 0x00, 0x00
 
 glabel D_800F2B6D
 .byte 0x02, 0x00, 0x00
@@ -6642,7 +6648,7 @@ glabel D_800F2BAB
 .byte 0x00, 0x00, 0x01, 0x06, 0x03
 .byte 0x02, 0x04, 0x05, 0x07
 
-glabel gCupTrackOrder # ISSUE CHECK WRONG PREVIEW TEXTURES
+glabel gCupTrackOrder
 .hword 0x0008, 0x0009, 0x0006, 0x000b # mushroom cup: LR, MMF, KTB, KD
 .hword 0x000a, 0x0005, 0x0001, 0x0000 # flower cup:   TT, FS, CM, MR
 .hword 0x000e, 0x000c, 0x0007, 0x0002 # star cup:     WS, SL, RRy, BC

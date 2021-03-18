@@ -385,4 +385,3 @@ char D_800F3CEC[] = "Inf";
 char D_800F3CF0[] = "0";
 float D_800F3CF4 = 0x00000000; // .word
 double D_800F3CF8 = 100000000.0;
-
