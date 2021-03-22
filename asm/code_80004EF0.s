@@ -13,10 +13,10 @@
 glabel func_80004EF0
 /* 005AF0 80004EF0 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 005AF4 80004EF4 3C028016 */  lui   $v0, %hi(D_80162DA4) # $v0, 0x8016
-/* 005AF8 80004EF8 3C0E802D */  lui   $t6, 0x802d
+/* 005AF8 80004EF8 3C0E802D */  lui   $t6, %hi(D_802D2B80) # 0x802d
 /* 005AFC 80004EFC 24422DA4 */  addiu $v0, %lo(D_80162DA4) # addiu $v0, $v0, 0x2da4
 /* 005B00 80004F00 AFBF0024 */  sw    $ra, 0x24($sp)
-/* 005B04 80004F04 25C42B80 */  addiu $a0, $t6, 0x2b80
+/* 005B04 80004F04 25C42B80 */  addiu $a0, $t6, %lo(D_802D2B80) # 0x2b80
 /* 005B08 80004F08 AC440000 */  sw    $a0, ($v0)
 /* 005B0C 80004F0C 0C0336E0 */  jal   osInvalDCache
 /* 005B10 80004F10 24054000 */   li    $a1, 16384

@@ -5,7 +5,6 @@
 
 .section .data
 
-
 glabel D_802B9140
 .word 0x00000000, 0x00000000, 0x00000000
 

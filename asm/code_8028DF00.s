@@ -13,18 +13,18 @@
 glabel func_8028DF00
 /* 0F7510 8028DF00 3C0E800F */  lui   $t6, %hi(D_800F6914) # $t6, 0x800f
 /* 0F7514 8028DF04 95CE6914 */  lhu   $t6, %lo(D_800F6914)($t6)
-/* 0F7518 8028DF08 3C01802C */  lui   $at, %hi(D_802BA044) # $at, 0x802c
+/* 0F7518 8028DF08 3C01802C */  lui   $at, %hi(D_802BA040) # $at, 0x802c
 /* 0F751C 8028DF0C 3C02800F */  lui   $v0, %hi(gPlayer2Controller) # $v0, 0x800f
 /* 0F7520 8028DF10 24426920 */  addiu $v0, %lo(gPlayer2Controller) # addiu $v0, $v0, 0x6920
 /* 0F7524 8028DF14 A42EA040 */  sh    $t6, %lo(D_802BA040)($at)
 /* 0F7528 8028DF18 944F0004 */  lhu   $t7, 4($v0)
 /* 0F752C 8028DF1C 24420020 */  addiu $v0, $v0, 0x20
-/* 0F7530 8028DF20 A42FA042 */  sh    $t7, %lo(D_802BA042)($at)
+/* 0F7530 8028DF20 A42FA042 */  sh    $t7, %lo(D_802BA040+0x2)($at)
 /* 0F7534 8028DF24 9458FFF4 */  lhu   $t8, -0xc($v0)
-/* 0F7538 8028DF28 A438A044 */  sh    $t8, %lo(D_802BA044)($at)
+/* 0F7538 8028DF28 A438A044 */  sh    $t8, %lo(D_802BA040+0x4)($at)
 /* 0F753C 8028DF2C 94590004 */  lhu   $t9, 4($v0)
 /* 0F7540 8028DF30 03E00008 */  jr    $ra
-/* 0F7544 8028DF34 A439A046 */   sh    $t9, -0x5fba($at)
+/* 0F7544 8028DF34 A439A046 */   sh    $t9, %lo(D_802BA040+0x6)($at)
 
 glabel func_8028DF38
 /* 0F7548 8028DF38 3C04800F */  lui   $a0, %hi(D_800F6914) # $a0, 0x800f
@@ -351,7 +351,7 @@ glabel func_8028E3A0
 /* 0F79E4 8028E3D4 240F0005 */  li    $t7, 5
 /* 0F79E8 8028E3D8 3C018015 */  lui   $at, %hi(D_80150124) # 0x8015
 /* 0F79EC 8028E3DC 03E00008 */  jr    $ra
-/* 0F79F0 8028E3E0 AC2F0124 */   sw    $t7, 0x124($at)
+/* 0F79F0 8028E3E0 AC2F0124 */   sw    $t7, %lo(D_80150124)($at) # 0x124($at)
 
 .L8028E3E4:
 /* 0F79F4 8028E3E4 8C980000 */  lw    $t8, ($a0)
@@ -362,7 +362,7 @@ glabel func_8028E3A0
 /* 0F7A08 8028E3F8 24090004 */  li    $t1, 4
 /* 0F7A0C 8028E3FC 3C018015 */  lui   $at, %hi(D_80150124) # 0x8015
 /* 0F7A10 8028E400 03E00008 */  jr    $ra
-/* 0F7A14 8028E404 AC290124 */   sw    $t1, 0x124($at)
+/* 0F7A14 8028E404 AC290124 */   sw    $t1, %lo(D_80150124)($at) # 0x124($at)
 
 .L8028E408:
 /* 0F7A18 8028E408 2484C544 */  addiu $a0, $a0, %lo(D_800DC544) # -0x3abc

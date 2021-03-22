@@ -555,7 +555,7 @@ glabel func_8029122C
 /* 0FA9E0 802913D0 1000001A */  b     .L8029143C
 /* 0FA9E4 802913D4 AC780004 */   sw    $t8, 4($v1)
 .L802913D8:
-/* 0FA9E8 802913D8 24C60298 */  addiu $a2, $a2, 0x298
+/* 0FA9E8 802913D8 24C60298 */  addiu $a2, $a2, %lo(gDisplayListHead) # 0x298
 /* 0FA9EC 802913DC 8CC30000 */  lw    $v1, ($a2)
 /* 0FA9F0 802913E0 3C0E0103 */  lui   $t6, (0x01030040 >> 16) # lui $t6, 0x103
 /* 0FA9F4 802913E4 3C058015 */  lui   $a1, %hi(gGfxPool) # $a1, 0x8015

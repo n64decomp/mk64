@@ -3132,7 +3132,7 @@ glabel D_800EE9F0
 .word L80070668, L8007067C, L80070690, L800706A4
 .word L800706B8, L800706CC, L800706E0
 
-glabel D_800EEA2C   
+glabel D_800EEA2C
 .word L800707CC
 .word L80071400, L80070848, L80070AA8, L80070B30
 .word L80070C60, L80070DD8, L80070F10, L80070F8C
@@ -5566,7 +5566,7 @@ glabel D_800F0C88 # "2 ｎ ー"
 
 glabel D_800F0C90 # "3 ｒ ー"
 .byte 0x33, 0x20, 0xa3, 0xf2, 0x20, 0xa1, 0xbc, 0x00
-#.balign 4 # Should I add this balign? CHECK
+.balign 4 # Should I add this balign? CHECK
 
 glabel D_800F0C98
 .asciiz "'"
@@ -6633,7 +6633,10 @@ glabel D_800F2B5F
 .byte 0x00
 
 glabel D_800F2B60
-.byte 0x01, 0x02, 0x01, 0x01, 0x02, 0x01, 0x00, 0x02, 0x02, 0x00, 0x02, 0x00, 0x00
+.byte 0x01
+
+glabel D_800F2B61
+.byte 0x02, 0x01, 0x01, 0x02, 0x01, 0x00, 0x02, 0x02, 0x00, 0x02, 0x00, 0x00
 
 glabel D_800F2B6D
 .byte 0x02, 0x00, 0x00
@@ -6654,8 +6657,9 @@ glabel gCupTrackOrder
 .hword 0x000e, 0x000c, 0x0007, 0x0002 # star cup:     WS, SL, RRy, BC
 .hword 0x0012, 0x0004, 0x0003, 0x000d # special cup:  DKJP, YV, BB, RRd
 .hword 0x0013, 0x000f, 0x0011, 0x0010 # battle mode:  BD, BF, DD, Sky
-.hword 0x0100
+.byte 0x01, 0x00
 .byte 0x00
+
 glabel D_800F2BDF
 .byte 0x00, 0x00, 0x01, 0x03, 0x04
 

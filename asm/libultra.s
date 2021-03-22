@@ -3336,7 +3336,7 @@ glabel guRotateF
 /* 0CFA78 800CEE78 C42439E0 */  lwc1  $f4, %lo(D_800F39E0)($at)
 /* 0CFA7C 800CEE7C AFB00018 */  sw    $s0, 0x18($sp)
 /* 0CFA80 800CEE80 00808025 */  move  $s0, $a0
-/* 0CFA84 800CEE84 3C018019 */  li    $at, 0x80190000 # -0.000000
+/* 0CFA84 800CEE84 3C018019 */  lui    $at, %hi(D_801965D0)
 /* 0CFA88 800CEE88 AFBF001C */  sw    $ra, 0x1c($sp)
 /* 0CFA8C 800CEE8C AFA5003C */  sw    $a1, 0x3c($sp)
 /* 0CFA90 800CEE90 AFA60040 */  sw    $a2, 0x40($sp)
@@ -3346,7 +3346,7 @@ glabel guRotateF
 /* 0CFAA0 800CEEA0 27A40040 */  addiu $a0, $sp, 0x40
 /* 0CFAA4 800CEEA4 0C035818 */  jal   guNormalize
 /* 0CFAA8 800CEEA8 E42465D0 */   swc1  $f4, %lo(D_801965D0)($at)
-/* 0CFAAC 800CEEAC 3C018019 */  li    $at, 0x80190000 # -0.000000
+/* 0CFAAC 800CEEAC 3C018019 */  lui    $at, %hi(D_801965D0)
 /* 0CFAB0 800CEEB0 C7AC003C */  lwc1  $f12, 0x3c($sp)
 /* 0CFAB4 800CEEB4 C42665D0 */  lwc1  $f6, %lo(D_801965D0)($at)
 /* 0CFAB8 800CEEB8 46066302 */  mul.s $f12, $f12, $f6

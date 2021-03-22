@@ -2,16 +2,25 @@
 
 .section .bss
 
-.skip 8
+glabel D_801636A0
+.skip 16
+
+glabel D_801636B0
+.skip 252
+
+glabel D_801637AC
+.skip 12
 
 glabel D_801637B8
 .skip 4
 
-glabel D_801637BC
+glabel D_801637BC # CrossingTimer
 .skip 2
 
 glabel D_801637BE
 .skip 2
+
+# START
 
 glabel D_801637C0
 .skip 4
@@ -19,8 +28,10 @@ glabel D_801637C0
 glabel D_801637C4
 .skip 4
 
-glabel D_801637C8
+
+glabel D_801637C8 # ISSUE
 .skip 32
+# END
 
 glabel D_801637E8
 .skip 4
@@ -30,6 +41,13 @@ glabel D_801637EC
 
 glabel D_801637F0
 .skip 36
+
+
+
+
+
+
+
 
 glabel D_80163814
 .skip 4
@@ -2575,6 +2593,7 @@ glabel D_8018EDFB
 glabel D_8018EDFC
 .skip 4
 
+
 glabel D_8018EE00
 .skip 4
 
@@ -2595,6 +2614,7 @@ glabel gCourseSelection # 0x8018EE0B
 
 glabel D_8018EE0C
 .skip 4
+
 glabel D_8018EE10
 .skip 4
 
@@ -2644,22 +2664,7 @@ glabel D_8018FC10
 .skip 16
 
 glabel D_8018FC20
-.skip 993
-
-glabel D_80190001
-.skip 3
-
-glabel D_80190004
-.skip 8
-
-glabel D_8019000C
-.skip 4
-
-glabel D_80190010
-.skip 74
-
-glabel D_8019005A
-.skip 5062
+.skip 6144
 
 glabel D_80191420
 .skip 36
@@ -2882,3 +2887,6 @@ glabel D_8019785C
 
 glabel D_801978C0
 .skip 16
+
+glabel D_801978D0
+.skip 12
