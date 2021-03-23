@@ -8,10 +8,10 @@ glabel D_801636A0
 glabel D_801636B0
 .skip 252
 
-glabel D_801637AC
+glabel D_801637AC # 
 .skip 12
 
-glabel D_801637B8
+glabel D_801637B8 # Crossing activated bit field
 .skip 4
 
 glabel D_801637BC # CrossingTimer
