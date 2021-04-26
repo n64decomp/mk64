@@ -2303,7 +2303,7 @@ glabel func_802A5760
 /* 10EF20 802A5910 8FBF001C */   lw    $ra, 0x1c($sp)
 .L802A5914:
 /* 10EF24 802A5914 0C0A8DCC */  jal   func_802A3730
-/* 10EF28 802A5918 8C84C5F8 */   lw    $a0, -0x3a08($a0)
+/* 10EF28 802A5918 8C84C5F8 */   lw    $a0, %lo(D_800DC5F8)($a0) # -0x3a08($a0)
 /* 10EF2C 802A591C 3C04800E */  lui   $a0, %hi(D_800DC5F8) # $a0, 0x800e
 /* 10EF30 802A5920 0C0A8E78 */  jal   func_802A39E0
 /* 10EF34 802A5924 8C84C5F8 */   lw    $a0, %lo(D_800DC5F8)($a0)

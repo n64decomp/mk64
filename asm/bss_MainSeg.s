@@ -2,12 +2,19 @@
 
 .section .bss
 
-.skip 8
+glabel D_801636A0
+.skip 16
 
-glabel D_801637B8
+glabel D_801636B0
+.skip 252
+
+glabel D_801637AC # 
+.skip 12
+
+glabel D_801637B8 # Crossing activated bit field
 .skip 4
 
-glabel D_801637BC
+glabel D_801637BC # CrossingTimer
 .skip 2
 
 glabel D_801637BE
@@ -173,7 +180,10 @@ glabel D_80164394
 .skip 4
 
 glabel D_80164398
-.skip 24
+.skip 4
+
+glabel D_8016439C
+.skip 20
 
 glabel D_801643B0
 .skip 8
@@ -305,16 +315,7 @@ glabel D_80164658
 .skip 16
 
 glabel D_80164668
-.skip 2
-
-glabel D_8016466A
-.skip 2
-
-glabel D_8016466C
-.skip 2
-
-glabel D_8016466E
-.skip 2
+.skip 8
 
 glabel D_80164670
 .skip 2
@@ -2270,16 +2271,10 @@ glabel D_8018E7E0
 .skip 8
 
 glabel D_8018E7E8
-.skip 2
-
-glabel D_8018E7EA
-.skip 6
+.skip 8
 
 glabel D_8018E7F0
-.skip 2
-
-glabel D_8018E7F2
-.skip 6
+.skip 8
 
 glabel D_8018E7F8
 .skip 2
@@ -2294,10 +2289,7 @@ glabel D_8018E802
 .skip 14
 
 glabel D_8018E810
-.skip 2
-
-glabel D_8018E812
-.skip 6
+.skip 8
 
 glabel D_8018E818
 .skip 2
@@ -2318,16 +2310,7 @@ glabel D_8018E82A
 .skip 14
 
 glabel D_8018E838
-.skip 1
-
-glabel D_8018E839
-.skip 1
-
-glabel D_8018E83A
-.skip 1
-
-glabel D_8018E83B
-.skip 1
+.skip 4
 
 glabel D_8018E83C
 .skip 4
@@ -2595,6 +2578,7 @@ glabel gCourseSelection # 0x8018EE0B
 
 glabel D_8018EE0C
 .skip 4
+
 glabel D_8018EE10
 .skip 4
 
@@ -2644,22 +2628,7 @@ glabel D_8018FC10
 .skip 16
 
 glabel D_8018FC20
-.skip 993
-
-glabel D_80190001
-.skip 3
-
-glabel D_80190004
-.skip 8
-
-glabel D_8019000C
-.skip 4
-
-glabel D_80190010
-.skip 74
-
-glabel D_8019005A
-.skip 5062
+.skip 6144
 
 glabel D_80191420
 .skip 36
@@ -2746,22 +2715,10 @@ glabel D_80195218
 .skip 24
 
 glabel D_80195230
-.skip 2
-
-glabel D_80195232
-.skip 2
-
-glabel D_80195234
-.skip 20
+.skip 24
 
 glabel D_80195248
-.skip 2
-
-glabel D_8019524A
-.skip 2
-
-glabel D_8019524C
-.skip 20
+.skip 24
 
 glabel D_80195260
 .skip 16
@@ -2869,10 +2826,7 @@ glabel D_80197855
 .skip 1
 
 glabel D_80197856
-.skip 1
-
-glabel D_80197857
-.skip 1
+.skip 2
 
 glabel D_80197858
 .skip 4
@@ -2882,3 +2836,6 @@ glabel D_8019785C
 
 glabel D_801978C0
 .skip 16
+
+glabel D_801978D0
+.skip 12

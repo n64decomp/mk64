@@ -239,5 +239,6 @@ glabel D_802B8D68
 .word 0xe6000000, 0x00000000
 glabel D_802B8D70
 .word 0xbb000001, 0xffffffff
+
 glabel D_802B8D78
 .word 0xbb000000, 0x00010001

@@ -39,12 +39,12 @@ glabel func_80002A18
 /* 003698 80002A98 3C0A8019 */  lui   $t2, %hi(gCourseSelection) # $t2, 0x8019
 /* 00369C 80002A9C 814AEE0B */  lb    $t2, %lo(gCourseSelection)($t2)
 /* 0036A0 80002AA0 8108EE09 */  lb    $t0, %lo(gCupSelection)($t0)
-/* 0036A4 80002AA4 3C0D800F */  lui   $t5, 0x800f
+/* 0036A4 80002AA4 3C0D800F */  lui   $t5, %hi(gCupTrackOrder) # 0x800f
 /* 0036A8 80002AA8 000A5840 */  sll   $t3, $t2, 1
 /* 0036AC 80002AAC 000848C0 */  sll   $t1, $t0, 3
 /* 0036B0 80002AB0 012B6021 */  addu  $t4, $t1, $t3
 /* 0036B4 80002AB4 01AC6821 */  addu  $t5, $t5, $t4
-/* 0036B8 80002AB8 85AD2BB4 */  lh    $t5, 0x2bb4($t5)
+/* 0036B8 80002AB8 85AD2BB4 */  lh    $t5, %lo(gCupTrackOrder) # 0x2bb4($t5)
 /* 0036BC 80002ABC 3C01800E */  lui   $at, %hi(gCurrentCourseId) # $at, 0x800e
 /* 0036C0 80002AC0 A42DC5A0 */  sh    $t5, %lo(gCurrentCourseId)($at)
 .L80002AC4:
@@ -251,9 +251,9 @@ glabel func_80002DAC
 /* 0039BC 80002DBC 2DC10013 */  sltiu $at, $t6, 0x13
 /* 0039C0 80002DC0 1020008F */  beqz  $at, .L80003000
 /* 0039C4 80002DC4 000E7080 */   sll   $t6, $t6, 2
-/* 0039C8 80002DC8 3C01800F */  lui   $at, 0x800f
+/* 0039C8 80002DC8 3C01800F */  lui   $at, %hi(D_800EB670) # 0x800f
 /* 0039CC 80002DCC 002E0821 */  addu  $at, $at, $t6
-/* 0039D0 80002DD0 8C2EB670 */  lw    $t6, -0x4990($at)
+/* 0039D0 80002DD0 8C2EB670 */  lw    $t6, %lo(D_800EB670)($at) # -0x4990($at)
 /* 0039D4 80002DD4 01C00008 */  jr    $t6
 /* 0039D8 80002DD8 00000000 */   nop   
 glabel L80002DDC
@@ -470,9 +470,9 @@ glabel func_80003040
 /* 003CF0 800030F0 2F010013 */  sltiu $at, $t8, 0x13
 /* 003CF4 800030F4 1020010C */  beqz  $at, .L80003528
 /* 003CF8 800030F8 0018C080 */   sll   $t8, $t8, 2
-/* 003CFC 800030FC 3C01800F */  lui   $at, 0x800f
+/* 003CFC 800030FC 3C01800F */  lui   $at, %hi(D_800EB6BC) # 0x800f
 /* 003D00 80003100 00380821 */  addu  $at, $at, $t8
-/* 003D04 80003104 8C38B6BC */  lw    $t8, -0x4944($at)
+/* 003D04 80003104 8C38B6BC */  lw    $t8, %lo(D_800EB6BC)($at) # -0x4944($at)
 /* 003D08 80003108 03000008 */  jr    $t8
 /* 003D0C 8000310C 00000000 */   nop   
 glabel L80003110
@@ -752,10 +752,10 @@ glabel L80003528
 .L8000352C:
 /* 00412C 8000352C 3C0C8015 */  lui   $t4, %hi(D_80150110) # $t4, 0x8015
 /* 004130 80003530 958C0110 */  lhu   $t4, %lo(D_80150110)($t4)
-/* 004134 80003534 3C018016 */  lui   $at, 0x8016
+/* 004134 80003534 3C018016 */  lui   $at, %hi(D_8015F900) # 0x8016
 /* 004138 80003538 27BD0040 */  addiu $sp, $sp, 0x40
 /* 00413C 8000353C 03E00008 */  jr    $ra
-/* 004140 80003540 A42CF900 */   sh    $t4, -0x700($at)
+/* 004140 80003540 A42CF900 */   sh    $t4, %lo(D_8015F900)($at) # -0x700($at)
 
 /* 004144 80003544 00000000 */  nop   
 /* 004148 80003548 00000000 */  nop   

@@ -41,7 +41,7 @@ glabel D_800DC4C8
 glabel D_800DC4CC
 .word D_800F6950
 
-glabel D_800DC4D0 # CHECK ISSUE GP Mode crash after winning race
+glabel D_800DC4D0
 .word D_800F6960
 
 glabel D_800DC4D4
@@ -224,7 +224,7 @@ glabel D_800DC5FC
 .hword 0x0000, 0x0000
 
 glabel D_800DC600
-.word 0x8000031c
+.word D_8000031C
 
 glabel gIsMirrorMode
 .word 0x00000000

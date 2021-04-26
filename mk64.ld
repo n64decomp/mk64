@@ -119,7 +119,6 @@ SECTIONS
       BUILD_DIR/asm/bss_80004740.o(.bss);
       BUILD_DIR/asm/bss_80004EF0.o(.bss);
       BUILD_DIR/asm/bss_80005FD0.o(.bss);
-      BUILD_DIR/asm/bss_800431B0.o(.bss);
       BUILD_DIR/asm/bss_MainSeg.o(.bss);
    }
    END_NOLOAD(main)

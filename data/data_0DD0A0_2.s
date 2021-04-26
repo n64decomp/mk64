@@ -3470,23 +3470,15 @@ glabel D_800EA5F0
 
 glabel D_800EA600
 .word 0x00000000
-
-glabel D_800EA604
 .word 0x00000000
-
-glabel D_800EA608
 .word 0x00000000
-
-glabel D_800EA60C
 .word 0x00000000
 
 glabel D_800EA610
 .word 0x00000000
 
-glabel D_800EA614
 .word 0x00000000
 
-glabel D_800EA618
 .word 0x00000000, 0x00000000, 0x00000000, 0x0000320e
 .word 0x00000140, 0x03e52239, 0x0000020d, 0x00000c15
 .word 0x0c150c15, 0x006c02ec, 0x00000200, 0x00000000
@@ -3706,22 +3698,17 @@ glabel D_800EAF80
 glabel D_800EB340
 .word 0x00000000
 
-glabel D_800EB344
 .word 0x00000000
 
-glabel D_800EB348
 .word 0x00000000
 
-glabel D_800EB34C
 .word 0x00000000
 
-glabel D_800EB350
+
 .word 0x00000000
 
-glabel D_800EB354
 .word 0x00000000
 
-glabel D_800EB358
 .word 0x00000000
 
 glabel D_800EB35C
@@ -3833,8 +3820,8 @@ glabel D_800EB5D8
 .balign 4
 glabel D_800EB5E0
 .asciiz "NORTH  "
-
 .balign 4
+
 glabel D_800EB5E8
 .asciiz "WEST   "
 
@@ -3867,3 +3854,4 @@ glabel D_800EB648
 .word L800026B4, L800026CC, L800026E4, L800026FC
 .word L80002714, L8000272C, L8000276C, L8000276C
 .word L8000276C, L8000274C
+glabel D_800EB670

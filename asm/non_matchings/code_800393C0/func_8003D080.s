@@ -605,7 +605,7 @@ glabel func_8003D080
 .L8003D990:
 /* 03E590 8003D990 3C05800E */  lui   $a1, %hi(D_800DDB40) # $a1, 0x800e
 /* 03E594 8003D994 8CA5DB40 */  lw    $a1, %lo(D_800DDB40)($a1)
-/* 03E598 8003D998 8C84C4FC */  lw    $a0, -0x3b04($a0)
+/* 03E598 8003D998 8C84C4FC */  lw    $a0, %lo(D_800DC4FC)($a0) # -0x3b04($a0)
 /* 03E59C 8003D99C 00003025 */  move  $a2, $zero
 /* 03E5A0 8003D9A0 0C00F366 */  jal   func_8003CD98
 /* 03E5A4 8003D9A4 00003825 */   move  $a3, $zero

@@ -37,7 +37,7 @@ glabel func_800BC5D0
 /* 0BD228 800BC628 956B6270 */  lhu   $t3, %lo(gHeadsetPanQuantization)($t3)
 /* 0BD22C 800BC62C 904E0000 */  lbu   $t6, ($v0)
 /* 0BD230 800BC630 00076023 */  negu  $t4, $a3
-/* 0BD234 800BC634 3C0D800F */  lui   $t5, %hi(gHeadsetPanQuantization)
+/* 0BD234 800BC634 3C0D800F */  lui   $t5, %hi(gHeadsetPanQuantization + 0x1e)
 /* 0BD238 800BC638 01AC6821 */  addu  $t5, $t5, $t4
 /* 0BD23C 800BC63C A04B0004 */  sb    $t3, 4($v0)
 /* 0BD240 800BC640 95AD628E */  lhu   $t5, %lo(gHeadsetPanQuantization + 0x1e)($t5)
@@ -895,7 +895,7 @@ glabel func_800BD160
 /* 0BDE10 800BD210 00000000 */  nop   
 /* 0BDE14 800BD214 45000005 */  bc1f  .L800BD22C
 /* 0BDE18 800BD218 00000000 */   nop   
-/* 0BDE1C 800BD21C 3C01800F */  lui   $at, %hi(D_800F2ED0) # $at, 0x800f
+/* 0BDE1C 800BD21C 3C01800F */  lui   $at, %hi(D_800F2ECC) # $at, 0x800f
 /* 0BDE20 800BD220 24030002 */  li    $v1, 2
 /* 0BDE24 800BD224 10000002 */  b     .L800BD230
 /* 0BDE28 800BD228 C4202ECC */   lwc1  $f0, %lo(D_800F2ECC)($at)

@@ -4,9 +4,8 @@
 .include "macros.inc"
 
 .data
-
+#.skip 1000
 .align 2, 0
-
 glabel D_802BA370
 .word 0x00000000, 0x3AC90FD5, 0x3B490FC6, 0x3B96CBC1
 .word 0x3BC90F88, 0x3BFB5330, 0x3C16CB58, 0x3C2FED02
