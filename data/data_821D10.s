@@ -6,6 +6,7 @@
 .data
 
 .align 2, 0x00
+#.skip 1000
 glabel data_821D10
 .incbin "bin/data_821D10.mio0"
 glabel data_821D10_end

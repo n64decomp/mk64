@@ -384,18 +384,18 @@ glabel osCreateViManager
 /* 0CD0DC 800CC4DC 24845200 */  addiu $a0, %lo(D_80195200) # addiu $a0, $a0, 0x5200
 /* 0CD0E0 800CC4E0 0C033358 */  jal   osCreateMesgQueue
 /* 0CD0E4 800CC4E4 24060005 */   li    $a2, 5
-/* 0CD0E8 800CC4E8 3C018019 */  lui   $at, %hi(D_80195234) # $at, 0x8019
+/* 0CD0E8 800CC4E8 3C018019 */  lui   $at, %hi(D_80195230) # $at, 0x8019
 /* 0CD0EC 800CC4EC 240F000D */  li    $t7, 13
 /* 0CD0F0 800CC4F0 A42F5230 */  sh    $t7, %lo(D_80195230)($at)
-/* 0CD0F4 800CC4F4 A0205232 */  sb    $zero, %lo(D_80195232)($at)
-/* 0CD0F8 800CC4F8 AC205234 */  sw    $zero, %lo(D_80195234)($at)
-/* 0CD0FC 800CC4FC 3C018019 */  lui   $at, %hi(D_8019524C) # $at, 0x8019
+/* 0CD0F4 800CC4F4 A0205232 */  sb    $zero, %lo(D_80195230+0x2)($at)
+/* 0CD0F8 800CC4F8 AC205234 */  sw    $zero, %lo(D_80195230+0x4)($at)
+/* 0CD0FC 800CC4FC 3C018019 */  lui   $at, %hi(D_80195248) # $at, 0x8019
 /* 0CD100 800CC500 2418000E */  li    $t8, 14
 /* 0CD104 800CC504 3C058019 */  lui   $a1, %hi(D_80195200) # $a1, 0x8019
 /* 0CD108 800CC508 3C068019 */  lui   $a2, %hi(D_80195230) # $a2, 0x8019
 /* 0CD10C 800CC50C A4385248 */  sh    $t8, %lo(D_80195248)($at)
-/* 0CD110 800CC510 A020524A */  sb    $zero, %lo(D_8019524A)($at)
-/* 0CD114 800CC514 AC20524C */  sw    $zero, %lo(D_8019524C)($at)
+/* 0CD110 800CC510 A020524A */  sb    $zero, %lo(D_80195248+0x2)($at)
+/* 0CD114 800CC514 AC20524C */  sw    $zero, %lo(D_80195248+0x4)($at)
 /* 0CD118 800CC518 24C65230 */  addiu $a2, %lo(D_80195230) # addiu $a2, $a2, 0x5230
 /* 0CD11C 800CC51C 24A55200 */  addiu $a1, %lo(D_80195200) # addiu $a1, $a1, 0x5200
 /* 0CD120 800CC520 0C033380 */  jal   osSetEventMesg
@@ -423,27 +423,27 @@ glabel osCreateViManager
 .L800CC578:
 /* 0CD178 800CC578 0C0346AC */  jal   __osDisableInt
 /* 0CD17C 800CC57C 00000000 */   nop   
-/* 0CD180 800CC580 3C01800F */  lui   $at, %hi(D_800EA60C) # $at, 0x800f
+/* 0CD180 800CC580 3C01800F */  lui   $at, %hi(D_800EA600) # $at, 0x800f
 /* 0CD184 800CC584 3C0C8019 */  lui   $t4, %hi(D_80195200) # $t4, 0x8019
 /* 0CD188 800CC588 3C0B8019 */  lui   $t3, %hi(D_80194050) # $t3, 0x8019
 /* 0CD18C 800CC58C 258C5200 */  addiu $t4, %lo(D_80195200) # addiu $t4, $t4, 0x5200
 /* 0CD190 800CC590 240A0001 */  li    $t2, 1
 /* 0CD194 800CC594 256B4050 */  addiu $t3, %lo(D_80194050) # addiu $t3, $t3, 0x4050
 /* 0CD198 800CC598 AC2AA600 */  sw    $t2, %lo(D_800EA600)($at)
-/* 0CD19C 800CC59C AC2BA604 */  sw    $t3, %lo(D_800EA604)($at)
-/* 0CD1A0 800CC5A0 AC2CA608 */  sw    $t4, %lo(D_800EA608)($at)
-/* 0CD1A4 800CC5A4 AC2CA60C */  sw    $t4, %lo(D_800EA60C)($at)
+/* 0CD19C 800CC59C AC2BA604 */  sw    $t3, %lo(D_800EA600+0x4)($at)
+/* 0CD1A0 800CC5A0 AC2CA608 */  sw    $t4, %lo(D_800EA600+0x8)($at)
+/* 0CD1A4 800CC5A4 AC2CA60C */  sw    $t4, %lo(D_800EA600+0xC)($at)
 /* 0CD1A8 800CC5A8 3C0D8019 */  lui   $t5, %hi(D_80194200) # $t5, 0x8019
 /* 0CD1AC 800CC5AC 8FAF0030 */  lw    $t7, 0x30($sp)
-/* 0CD1B0 800CC5B0 3C01800F */  lui   $at, %hi(D_800EA618) # $at, 0x800f
+/* 0CD1B0 800CC5B0 3C01800F */  lui   $at, %hi(D_800EA610) # $at, 0x800f
 /* 0CD1B4 800CC5B4 25AD4200 */  addiu $t5, %lo(D_80194200) # addiu $t5, $t5, 0x4200
 /* 0CD1B8 800CC5B8 25AE1000 */  addiu $t6, $t5, 0x1000
 /* 0CD1BC 800CC5BC 3C06800D */  lui   $a2, %hi(__osViDevMgrMain) # $a2, 0x800d
 /* 0CD1C0 800CC5C0 3C07800F */  lui   $a3, %hi(D_800EA600) # $a3, 0x800f
 /* 0CD1C4 800CC5C4 AFA2002C */  sw    $v0, 0x2c($sp)
 /* 0CD1C8 800CC5C8 AC20A610 */  sw    $zero, %lo(D_800EA610)($at)
-/* 0CD1CC 800CC5CC AC20A614 */  sw    $zero, %lo(D_800EA614)($at)
-/* 0CD1D0 800CC5D0 AC20A618 */  sw    $zero, %lo(D_800EA618)($at)
+/* 0CD1CC 800CC5CC AC20A614 */  sw    $zero, %lo(D_800EA610+0x4)($at)
+/* 0CD1D0 800CC5D0 AC20A618 */  sw    $zero, %lo(D_800EA610+0x8)($at)
 /* 0CD1D4 800CC5D4 24E7A600 */  addiu $a3, %lo(D_800EA600) # addiu $a3, $a3, -0x5a00
 /* 0CD1D8 800CC5D8 24C6C638 */  addiu $a2, %lo(__osViDevMgrMain) # addiu $a2, $a2, -0x39c8
 /* 0CD1DC 800CC5DC AFAE0010 */  sw    $t6, 0x10($sp)
@@ -848,7 +848,7 @@ glabel osCreatePiManager
 .L800CCBA4:
 /* 0CD7A4 800CCBA4 0C0346AC */  jal   __osDisableInt
 /* 0CD7A8 800CCBA8 00000000 */   nop   
-/* 0CD7AC 800CCBAC 3C01800F */  lui   $at, %hi(D_800EB348) # $at, 0x800f
+/* 0CD7AC 800CCBAC 3C01800F */  lui   $at, %hi(D_800EB340) # $at, 0x800f
 /* 0CD7B0 800CCBB0 8FAB0034 */  lw    $t3, 0x34($sp)
 /* 0CD7B4 800CCBB4 3C0A8019 */  lui   $t2, %hi(D_80195270) # $t2, 0x8019
 /* 0CD7B8 800CCBB8 3C0C8019 */  lui   $t4, %hi(D_80196420) # $t4, 0x8019
@@ -856,12 +856,12 @@ glabel osCreatePiManager
 /* 0CD7C0 800CCBC0 254A5270 */  addiu $t2, %lo(D_80195270) # addiu $t2, $t2, 0x5270
 /* 0CD7C4 800CCBC4 258C6420 */  addiu $t4, %lo(D_80196420) # addiu $t4, $t4, 0x6420
 /* 0CD7C8 800CCBC8 AC29B340 */  sw    $t1, %lo(D_800EB340)($at)
-/* 0CD7CC 800CCBCC AC2AB344 */  sw    $t2, %lo(D_800EB344)($at)
-/* 0CD7D0 800CCBD0 AC2CB34C */  sw    $t4, %lo(D_800EB34C)($at)
+/* 0CD7CC 800CCBCC AC2AB344 */  sw    $t2, %lo(D_800EB340+0x4)($at)
+/* 0CD7D0 800CCBD0 AC2CB34C */  sw    $t4, %lo(D_800EB340+0xC)($at)
 /* 0CD7D4 800CCBD4 3C188019 */  lui   $t8, %hi(D_80195420) # $t8, 0x8019
-/* 0CD7D8 800CCBD8 AC2BB348 */  sw    $t3, %lo(D_800EB348)($at)
+/* 0CD7D8 800CCBD8 AC2BB348 */  sw    $t3, %lo(D_800EB340+0x8)($at)
 /* 0CD7DC 800CCBDC 8FA80030 */  lw    $t0, 0x30($sp)
-/* 0CD7E0 800CCBE0 3C01800F */  lui   $at, %hi(D_800EB358) # $at, 0x800f
+/* 0CD7E0 800CCBE0 3C01800F */  lui   $at, %hi(D_800EB340+0x18) # $at, 0x800f
 /* 0CD7E4 800CCBE4 3C0D8019 */  lui   $t5, %hi(D_80197628) # $t5, 0x8019
 /* 0CD7E8 800CCBE8 3C0E800D */  lui   $t6, %hi(osPiRawStartDma) # $t6, 0x800d
 /* 0CD7EC 800CCBEC 3C0F800D */  lui   $t7, %hi(osEPiRawStartDma) # $t7, 0x800d
@@ -873,9 +873,9 @@ glabel osCreatePiManager
 /* 0CD804 800CCC04 3C06800D */  lui   $a2, %hi(D_800D3170) # $a2, 0x800d
 /* 0CD808 800CCC08 3C07800F */  lui   $a3, %hi(D_800EB340) # $a3, 0x800f
 /* 0CD80C 800CCC0C AFA2002C */  sw    $v0, 0x2c($sp)
-/* 0CD810 800CCC10 AC2DB350 */  sw    $t5, %lo(D_800EB350)($at)
-/* 0CD814 800CCC14 AC2EB354 */  sw    $t6, %lo(D_800EB354)($at)
-/* 0CD818 800CCC18 AC2FB358 */  sw    $t7, %lo(D_800EB358)($at)
+/* 0CD810 800CCC10 AC2DB350 */  sw    $t5, %lo(D_800EB340+0x10)($at)
+/* 0CD814 800CCC14 AC2EB354 */  sw    $t6, %lo(D_800EB340+0x14)($at)
+/* 0CD818 800CCC18 AC2FB358 */  sw    $t7, %lo(D_800EB340+0x18)($at)
 /* 0CD81C 800CCC1C 24E7B340 */  addiu $a3, %lo(D_800EB340) # addiu $a3, $a3, -0x4cc0
 /* 0CD820 800CCC20 24C63170 */  addiu $a2, %lo(D_800D3170) # addiu $a2, $a2, 0x3170
 /* 0CD824 800CCC24 AFB90010 */  sw    $t9, 0x10($sp)
@@ -7245,12 +7245,12 @@ glabel __osTimerServicesInit
 /* 0D3210 800D2610 3C018019 */  lui   $at, %hi(D_80197600) # $at, 0x8019
 /* 0D3214 800D2614 240E0000 */  li    $t6, 0
 /* 0D3218 800D2618 240F0000 */  li    $t7, 0
-/* 0D321C 800D261C AC2F7604 */  sw    $t7, %lo(D_80197604)($at)
+/* 0D321C 800D261C AC2F7604 */  sw    $t7, %lo(D_80197600+0x4)($at)
 /* 0D3220 800D2620 AC2E7600 */  sw    $t6, %lo(D_80197600)($at)
 /* 0D3224 800D2624 3C018019 */  lui   $at, %hi(D_80197608) # $at, 0x8019
 /* 0D3228 800D2628 3C18800F */  lui   $t8, %hi(D_800EB3C0) # $t8, 0x800f
 /* 0D322C 800D262C 8F18B3C0 */  lw    $t8, %lo(D_800EB3C0)($t8)
-/* 0D3230 800D2630 AC207608 */  sw    $zero, %lo(D_80197608)($at)
+/* 0D3230 800D2630 AC207608 */  sw    $zero, %lo(D_80197600+0x8)($at)
 /* 0D3234 800D2634 3C018019 */  lui   $at, %hi(D_8019760C) # $at, 0x8019
 /* 0D3238 800D2638 AC20760C */  sw    $zero, %lo(D_8019760C)($at)
 /* 0D323C 800D263C 3C19800F */  lui   $t9, %hi(D_800EB3C0) # $t9, 0x800f
@@ -8907,8 +8907,8 @@ glabel osPiGetCmdQueue
 /* 0D4974 800D3D74 00001025 */   move  $v0, $zero
 
 .L800D3D78:
-/* 0D4978 800D3D78 3C02800F */  lui   $v0, %hi(D_800EB348) # $v0, 0x800f
-/* 0D497C 800D3D7C 8C42B348 */  lw    $v0, %lo(D_800EB348)($v0)
+/* 0D4978 800D3D78 3C02800F */  lui   $v0, %hi(D_800EB340+0x8) # $v0, 0x800f
+/* 0D497C 800D3D7C 8C42B348 */  lw    $v0, %lo(D_800EB340+0x8)($v0)
 /* 0D4980 800D3D80 03E00008 */  jr    $ra
 /* 0D4984 800D3D84 00000000 */   nop   
 
@@ -13321,13 +13321,13 @@ glabel __osSiDeviceBusy
 /* 0D87C4 800D7BC4 3C018019 */  lui   $at, %hi(D_80197858) # $at, 0x8019
 /* 0D87C8 800D7BC8 24190006 */  li    $t9, 6
 /* 0D87CC 800D7BCC A0397858 */  sb    $t9, %lo(D_80197858)($at)
-/* 0D87D0 800D7BD0 3C018019 */  lui   $at, %hi(D_80197857) # $at, 0x8019
+/* 0D87D0 800D7BD0 3C018019 */  lui   $at, %hi(D_80197856) # $at, 0x8019
 /* 0D87D4 800D7BD4 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 0D87D8 800D7BD8 24080006 */  li    $t0, 6
 /* 0D87DC 800D7BDC 24090002 */  li    $t1, 2
 /* 0D87E0 800D7BE0 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 0D87E4 800D7BE4 A0287856 */  sb    $t0, %lo(D_80197856)($at)
-/* 0D87E8 800D7BE8 A0297857 */  sb    $t1, %lo(D_80197857)($at)
+/* 0D87E8 800D7BE8 A0297857 */  sb    $t1, %lo(D_80197856+0x1)($at)
 /* 0D87EC 800D7BEC 240A0003 */  li    $t2, 3
 /* 0D87F0 800D7BF0 3C0BA460 */  lui   $t3, %hi(D_A4600024) # $t3, 0xa460
 /* 0D87F4 800D7BF4 AD6A0024 */  sw    $t2, %lo(D_A4600024)($t3)
@@ -13338,9 +13338,9 @@ glabel __osSiDeviceBusy
 /* 0D8808 800D7C08 ADAC0028 */  sw    $t4, %lo(D_A4600028)($t5)
 /* 0D880C 800D7C0C 91CE7856 */  lbu   $t6, %lo(D_80197856)($t6)
 /* 0D8810 800D7C10 3C0FA460 */  lui   $t7, %hi(D_A460002C) # $t7, 0xa460
-/* 0D8814 800D7C14 3C188019 */  lui   $t8, %hi(D_80197857) # $t8, 0x8019
+/* 0D8814 800D7C14 3C188019 */  lui   $t8, %hi(D_80197856+0x1) # $t8, 0x8019
 /* 0D8818 800D7C18 ADEE002C */  sw    $t6, %lo(D_A460002C)($t7)
-/* 0D881C 800D7C1C 93187857 */  lbu   $t8, %lo(D_80197857)($t8)
+/* 0D881C 800D7C1C 93187857 */  lbu   $t8, %lo(D_80197856+0x1)($t8)
 /* 0D8820 800D7C20 3C048019 */  lui   $a0, %hi(D_80197850) # $a0, 0x8019
 /* 0D8824 800D7C24 3C19A460 */  lui   $t9, %hi(D_A4600030) # $t9, 0xa460
 /* 0D8828 800D7C28 24847850 */  addiu $a0, %lo(D_80197850) # addiu $a0, $a0, 0x7850

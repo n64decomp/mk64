@@ -1204,7 +1204,7 @@ glabel func_80041D34
 /* 042AB4 80041EB4 1000000C */  b     .L80041EE8
 /* 042AB8 80041EB8 8FBF0024 */   lw    $ra, 0x24($sp)
 .L80041EBC:
-/* 042ABC 80041EBC 8C84EF40 */  lw    $a0, -0x10c0($a0)
+/* 042ABC 80041EBC 8C84EF40 */  lw    $a0, %lo(gGfxPool)($a0) # -0x10c0($a0)
 /* 042AC0 80041EC0 44050000 */  mfc1  $a1, $f0
 /* 042AC4 80041EC4 44067000 */  mfc1  $a2, $f14
 /* 042AC8 80041EC8 44078000 */  mfc1  $a3, $f16

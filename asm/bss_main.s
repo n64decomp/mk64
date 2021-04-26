@@ -125,6 +125,14 @@ glabel D_8014EF70
 glabel D_8014EF88
 .skip 48
 
+
+
+
+
+
+
+
+
 glabel gIntrMesgQueue
 .skip 24
 
@@ -214,6 +222,11 @@ glabel D_80150138
 
 
 
+
+
+
+
+
 glabel D_8015013C
 .skip 12
 
@@ -253,6 +266,14 @@ glabel D_801502B4
 glabel D_801502C0
 .skip 8256
 
+
+
+
+
+
+
+
+
 glabel D_80152300
 .skip 2
 
@@ -274,23 +295,35 @@ glabel D_801524C0
 glabel D_80154670
 .skip 8624
 
+
+
+
+
+
+
+
+
 glabel D_80156820
 .skip 8624
 
 glabel D_801589D0
-.skip 2224
-
-glabel D_80159280
-.skip 6400
+.skip 8624
 
 glabel D_8015AB80
 .skip 5248
+
+
 
 glabel D_8015C000
 .skip 3376
 
 glabel D_8015CD30
 .skip 4528
+
+
+
+
+
 
 glabel gGfxSPTaskYieldBuffer # 0x8015DEE0
 .skip 4352
@@ -554,10 +587,7 @@ glabel D_8015F9BE
 .skip 938
 
 glabel D_8015FD68
-.skip 9665
-
-glabel D_80162329
-.skip 591
+.skip 10256
 
 glabel D_80162578
 .skip 112
@@ -581,4 +611,3 @@ glabel D_801625F8
 .skip 4
 
 glabel D_801625FC
-
