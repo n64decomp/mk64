@@ -100,9 +100,6 @@ extern mk64_Vtx d_course_big_donut_vertex[];
 
 extern struct courseTable gCourseTable[];
 
-
-
-
 /*
 extern mk64_Vtx d_course_mario_raceway_vertex[5757];
 extern mk64_Vtx d_course_choco_mountain_vertex[5560];

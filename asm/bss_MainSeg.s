@@ -20,18 +20,14 @@ glabel D_801637BC # CrossingTimer
 glabel D_801637BE
 .skip 2
 
-# START
-
 glabel D_801637C0
 .skip 4
 
 glabel D_801637C4
 .skip 4
 
-
-glabel D_801637C8 # ISSUE
+glabel D_801637C8
 .skip 32
-# END
 
 glabel D_801637E8
 .skip 4
@@ -41,8 +37,6 @@ glabel D_801637EC
 
 glabel D_801637F0
 .skip 36
-
-
 
 glabel D_80163814
 .skip 4
@@ -2563,7 +2557,6 @@ glabel D_8018EDFB
 
 glabel D_8018EDFC
 .skip 4
-
 
 glabel D_8018EE00
 .skip 4

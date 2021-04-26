@@ -398,7 +398,6 @@ $(battle)/skyscraper/%.inc.mio0.o: courses/battle/skyscraper/%.inc.c
 $(BUILD_DIR)/$(TARGET).elf: $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(LD_COURSE_VERTEX_DEPENDENCIES) undefined_syms.txt
 	$(LD) $(LDFLAGS) -o $@ $(O_FILES)
 
-	
 #	-R $(mushroom_cup)/luigi_raceway/model.inc.elf -R $(mushroom_cup)/moo_moo_farm/model.inc.elf -R $(mushroom_cup)/koopa_beach/model.inc.elf -R $(mushroom_cup)/kalimari_desert/model.inc.elf \
 	-R $(flower_cup)/toads_turnpike/model.inc.elf -R $(flower_cup)/frappe_snowland/model.inc.elf -R $(flower_cup)/choco_mountain/model.inc.elf -R $(flower_cup)/mario_raceway/model.inc.elf \
 	-R $(star_cup)/wario_stadium/model.inc.elf -R $(star_cup)/sherbet_land/model.inc.elf -R $(star_cup)/royal_raceway/model.inc.elf -R $(star_cup)/bowsers_castle/model.inc.elf \
