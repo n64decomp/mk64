@@ -224,7 +224,7 @@ glabel D_800DC5FC
 .hword 0x0000, 0x0000
 
 glabel D_800DC600
-.word D_8000031C
+.word osAppNmiBuffer
 
 glabel gIsMirrorMode
 .word 0x00000000

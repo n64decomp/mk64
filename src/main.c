@@ -34,7 +34,6 @@ extern s32 D_80000300;
 extern s16 D_8015011C;
 extern OSMesgQueue D_8015F460;
 extern OSMesg D_8015F3E0;
-extern s32 D_8000030C;
 extern s32 D_80156820;
 extern struct SPTask *gActiveSPTask;
 extern s16 sNumVBlanks;
@@ -127,7 +126,7 @@ void thread1_idle(void *arg0) {
     osViBlack(TRUE);
     osViSetSpecialFeatures(OS_VI_GAMMA_OFF);
     osCreatePiManager(OS_PRIORITY_PIMGR, &D_8015F460, &D_8015F3E0, 0x20);
-    D_8015011C = (s16) D_8000030C;
+    D_8015011C = (s16) osResetType;
     create_debug_thread();
     start_debug_thread();
     create_thread(&D_80154670, 3, &thread3_video, arg0, &D_80156820, 100);
@@ -399,7 +398,7 @@ void func_8000105C(void) {
     bzero(SEG_80280000, 0xDF00);
     osWritebackDCacheAll();
     dma_copy(SEG_80280000, &_code_80280000SegmentRomStart, ALIGN16((u32)&_code_80280000SegmentRomEnd - (u32)&_code_80280000SegmentRomStart));
-    osInvalCache(SEG_80280000, 0xDF00);
+    osInvalICache(SEG_80280000, 0xDF00);
     osInvalDCache(SEG_80280000, 0xDF00);
 }
 
@@ -407,7 +406,7 @@ void func_800010CC(void) {
     bzero(SEG_8028DF00, 0x2C470);
     osWritebackDCacheAll();
     dma_copy(SEG_8028DF00, &_code_8028DF00SegmentRomStart, ALIGN16((u32)&_code_8028DF00SegmentRomEnd - (u32)&_code_8028DF00SegmentRomStart));
-    osInvalCache(SEG_8028DF00, 0x2C470);
+    osInvalICache(SEG_8028DF00, 0x2C470);
     osInvalDCache(SEG_8028DF00, 0x2C470);
 }
 

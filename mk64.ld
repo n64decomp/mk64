@@ -96,11 +96,18 @@ SECTIONS
       BUILD_DIR/asm/audio/seqplayer.o(.text);
       BUILD_DIR/asm/audio/external.o(.text);
       BUILD_DIR/asm/audio/port_eu.o(.text);
+
+      BUILD_DIR/src/os/osCreateThread.o(.text);
+      BUILD_DIR/src/os/osInitialize.o(.text);
+      BUILD_DIR/src/os/osStartThread.o(.text);
       BUILD_DIR/asm/libultra.o(.text);
+
       BUILD_DIR/data/rsp.o(.text);
       BUILD_DIR/data/data_0DD0A0.o(.data);
       BUILD_DIR/src/kart_attributes.inc.o(.data);
       BUILD_DIR/data/data_0DD0A0_2.o(.rodata);
+      BUILD_DIR/src/os/osInitialize.o(.data);
+      BUILD_DIR/data/data_0DD0A0_2_1.o(.data);
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
       BUILD_DIR/src/data_0DD0A0_3.inc.o(.data);
