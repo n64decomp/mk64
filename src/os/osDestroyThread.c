@@ -13,10 +13,10 @@ void osDestroyThread(OSThread *thread) {
         __osDequeueThread(thread->queue, thread);
     }
 
-    if (D_800EB3AC == thread) {
-        D_800EB3AC = D_800EB3AC->tlnext;
+    if (__osActiveQueue == thread) {
+        __osActiveQueue = __osActiveQueue->tlnext;
     } else {
-        s1 = D_800EB3AC;
+        s1 = __osActiveQueue;
         s2 = s1->tlnext;
         while (s2 != NULL) {
             if (s2 == thread) {

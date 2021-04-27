@@ -27,7 +27,7 @@ extern u32 __osProbeTLB(void *);
 extern int     __osSpDeviceBusy(void);
 
 extern OSThread *__osRunningThread;
-extern OSThread *D_800EB3AC;
+extern OSThread *__osActiveQueue;
 extern OSThread *__osFaultedThread;
 extern OSThread *D_800EB3A8;
 

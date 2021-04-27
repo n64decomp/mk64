@@ -5,7 +5,7 @@
 OSThread *D_800EB3A0 = NULL;
 u32 D_80334894 = -1;
 OSThread *D_800EB3A8 = (OSThread *) &D_800EB3A0;
-OSThread *D_800EB3AC = (OSThread *) &D_800EB3A0;
+OSThread *__osActiveQueue = (OSThread *) &D_800EB3A0;
 OSThread *D_800EB3B0 = NULL;
 u32 D_803348A4 = 0; // UNKNOWN
 

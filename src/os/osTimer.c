@@ -3,13 +3,13 @@
 // TODO: document
 OSTimer D_80365D80;
 OSTimer *D_80334830 = &D_80365D80;
-OSTime _osCurrentTime;
+OSTime __osCurrentTime;
 u32 D_80365DA8;
 u32 __osViIntrCount;
 u32 D_80365DB0;
 
 void __osTimerServicesInit(void) {
-    _osCurrentTime = 0;
+    __osCurrentTime = 0;
     D_80365DA8 = 0;
     __osViIntrCount = 0;
     D_80334830->prev = D_80334830;

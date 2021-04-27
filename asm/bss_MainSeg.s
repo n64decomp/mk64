@@ -2738,12 +2738,14 @@ glabel D_80196420
 glabel D_80196438
 .skip 8
 
-glabel D_80196440
+# seteventmesg bss
+glabel __osEventStateTab
 .skip 128
 
 glabel D_801964C0
 .skip 64
 
+# osContStartReadData bss
 glabel _osContCmdBuf
 .skip 60
 
@@ -2765,12 +2767,14 @@ glabel D_80196568
 glabel D_80196580
 .skip 16
 
-glabel D_80196590
+# osPfsIsPlug bss
+glabel __osPfsPifRam
 .skip 60
 
 glabel D_801965CC
 .skip 4
 
+# guRotateF ?
 glabel D_801965D0
 .skip 16
 
@@ -2780,13 +2784,10 @@ glabel D_801965E0
 glabel D_801975E0
 .skip 32
 
-glabel D_80197600
-.skip 4
+glabel __osCurrentTime
+.skip 8
 
-glabel D_80197604
-.skip 4
-
-glabel D_80197608
+glabel __osBaseCounter
 .skip 4
 
 glabel D_8019760C

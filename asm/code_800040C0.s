@@ -299,7 +299,7 @@ glabel crash_screen_draw_info
 glabel get_faulted_thread
 /* 0050C4 800044C4 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 0050C8 800044C8 AFBF0014 */  sw    $ra, 0x14($sp)
-/* 0050CC 800044CC 0C03384C */  jal   func_800CE130
+/* 0050CC 800044CC 0C03384C */  jal   __osGetCurrFaultedThread
 /* 0050D0 800044D0 00000000 */   nop   
 /* 0050D4 800044D4 8C4E0004 */  lw    $t6, 4($v0)
 /* 0050D8 800044D8 2404FFFF */  li    $a0, -1

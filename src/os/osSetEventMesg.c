@@ -5,7 +5,7 @@ typedef struct OSEventMessageStruct_0_s {
     OSMesg msg;
 } OSEventMessageStruct_0;
 
-OSEventMessageStruct_0 __osEventStateTab[16];
+extern OSEventMessageStruct_0 __osEventStateTab[16];
 
 void osSetEventMesg(OSEvent e, OSMesgQueue *mq, OSMesg msg) {
     register u32 int_disabled;

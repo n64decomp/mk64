@@ -6865,7 +6865,7 @@ glabel func_800B5B2C
 .L800B5B50:
 /* 0B6750 800B5B50 3C048015 */  lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
 /* 0B6754 800B5B54 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
-/* 0B6758 800B5B58 0C0338EC */  jal   func_800CE3B0
+/* 0B6758 800B5B58 0C0338EC */  jal   osPfsIsPlug
 /* 0B675C 800B5B5C AFA60020 */   sw    $a2, 0x20($sp)
 /* 0B6760 800B5B60 8FA60020 */  lw    $a2, 0x20($sp)
 /* 0B6764 800B5B64 93AE001F */  lbu   $t6, 0x1f($sp)

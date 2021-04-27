@@ -3455,13 +3455,3 @@ glabel D_800EA5D8
 
 glabel D_800EA5DC
 .word 0x00000000
-
-# glabel osClockRate
-# .dword 0x0000000003b9aca0
-
-# glabel D_800EA5F0
-# .word 0x00000000
-
-# glabel __OSGlobalIntMask
-# .word 0x003fff01
-

@@ -1,7 +1,7 @@
 #include "libultra_internal.h"
 
 void __osCleanupThread(void);
-extern OSThread *D_800EB3AC;
+extern OSThread *__osActiveQueue;
 
 
 // Don't warn about pointer->u64 cast
@@ -27,9 +27,9 @@ void osCreateThread(OSThread *thread, OSId id, void (*entry)(void *), void *arg,
     thread->state = OS_STATE_STOPPED;
     thread->flags = 0;
     int_disabled = __osDisableInt();
-    thread->tlnext = D_800EB3AC;
+    thread->tlnext = __osActiveQueue;
 
-    D_800EB3AC = thread;
+    __osActiveQueue = thread;
     __osRestoreInt(int_disabled);
 }
 

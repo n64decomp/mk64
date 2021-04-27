@@ -7335,14 +7335,15 @@ glabel D_800F39C0
 .word L800CBE60, L800CBE78, L800CBE90, L800CBEA8
 .word L800CBEC0, L800CBECC, L800CBF08, L800CBEEC
 
+
+# guRotateF rodata
 glabel D_800F39E0
 .float 0.017453292
-
 .balign 16
 
+# guPerspectiveF rodata
 glabel D_800F39F0
 .double 0.017453292222222222
-
 .word 0x00000000, 0x00000000
 
 glabel D_800F3A00

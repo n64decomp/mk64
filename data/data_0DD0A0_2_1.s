@@ -2,16 +2,21 @@
 
 .section .data
 
+# createvimanager .data
+
 glabel D_800EA5F0
 .word 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
-glabel D_800EA600
+glabel viMgrMainArgs
 .word 0, 0, 0, 0
 
 glabel D_800EA610
 .word 0x00000000
 .word 0x00000000
-.word 0x00000000, 0x00000000
+.word 0x00000000
+
+
+.word 0x00000000
 .word 0x00000000, 0x0000320e
 .word 0x00000140, 0x03e52239, 0x0000020d, 0x00000c15
 .word 0x0c150c15, 0x006c02ec, 0x00000200, 0x00000000
@@ -228,7 +233,9 @@ glabel D_800EAF80
 .word 0x002301fd, 0x000b0202, 0x00000002, 0x00001400
 .word 0x02000800, 0x002501ff, 0x000e0204, 0x00000002
 
-glabel D_800EB340
+
+# osPiStartDma .data
+glabel __osPiDevMgr
 .word 0x00000000
 
 .word 0x00000000
@@ -263,7 +270,7 @@ glabel D_800EB3A0
 glabel D_800EB3A8
 .word D_800EB3A0
 
-glabel D_800EB3AC
+glabel __osActiveQueue
 .word D_800EB3A0
 
 glabel D_800EB3B0
@@ -288,7 +295,7 @@ glabel D_800EB400
 glabel D_800EB430
 .word D_800EB3D0
 
-glabel D_800EB434
+glabel __osViNext
 .word D_800EB400
 
 glabel D_800EB438

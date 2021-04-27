@@ -4,7 +4,7 @@
 void __osPackRequestData(u8);
 void __osContGetInitData(u8 *, OSContStatus *);
 
-u32 _osContInitialized = 0; // probably initialized
+u32 _osContInitialized = 0;
 
 extern u64 osClockRate;
 

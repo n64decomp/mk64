@@ -1227,7 +1227,7 @@ glabel func_802A487C
 /* 10DF34 802A4924 E7A40010 */  swc1  $f4, 0x10($sp)
 /* 10DF38 802A4928 E7A00014 */  swc1  $f0, 0x14($sp)
 /* 10DF3C 802A492C E7A60018 */  swc1  $f6, 0x18($sp)
-/* 10DF40 802A4930 0C0338A9 */  jal   guFrustum
+/* 10DF40 802A4930 0C0338A9 */  jal   guOrtho
 /* 10DF44 802A4934 E7A8001C */   swc1  $f8, 0x1c($sp)
 /* 10DF48 802A4938 3C038015 */  lui   $v1, %hi(gDisplayListHead) # $v1, 0x8015
 /* 10DF4C 802A493C 24630298 */  addiu $v1, %lo(gDisplayListHead) # addiu $v1, $v1, 0x298
@@ -1410,7 +1410,7 @@ glabel func_802A4A0C
 /* 10E204 802A4BF4 E7A80010 */  swc1  $f8, 0x10($sp)
 /* 10E208 802A4BF8 E7A00014 */  swc1  $f0, 0x14($sp)
 /* 10E20C 802A4BFC E7AA0018 */  swc1  $f10, 0x18($sp)
-/* 10E210 802A4C00 0C0338A9 */  jal   guFrustum
+/* 10E210 802A4C00 0C0338A9 */  jal   guOrtho
 /* 10E214 802A4C04 E7A6001C */   swc1  $f6, 0x1c($sp)
 /* 10E218 802A4C08 3C038015 */  lui   $v1, %hi(gDisplayListHead) # $v1, 0x8015
 /* 10E21C 802A4C0C 24630298 */  addiu $v1, %lo(gDisplayListHead) # addiu $v1, $v1, 0x298

@@ -1120,7 +1120,7 @@ glabel func_80041D34
 /* 042974 80041D74 E7A20018 */  swc1  $f2, 0x18($sp)
 /* 042978 80041D78 E7A2001C */  swc1  $f2, 0x1c($sp)
 /* 04297C 80041D7C E7AC0014 */  swc1  $f12, 0x14($sp)
-/* 042980 80041D80 0C0338A9 */  jal   guFrustum
+/* 042980 80041D80 0C0338A9 */  jal   guOrtho
 /* 042984 80041D84 E7A00010 */   swc1  $f0, 0x10($sp)
 /* 042988 80041D88 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 04298C 80041D8C 44811000 */  mtc1  $at, $f2
@@ -1155,7 +1155,7 @@ glabel func_80041D34
 /* 0429FC 80041DFC E7AC0014 */  swc1  $f12, 0x14($sp)
 /* 042A00 80041E00 E7A20018 */  swc1  $f2, 0x18($sp)
 /* 042A04 80041E04 E7A2001C */  swc1  $f2, 0x1c($sp)
-/* 042A08 80041E08 0C0338A9 */  jal   guFrustum
+/* 042A08 80041E08 0C0338A9 */  jal   guOrtho
 /* 042A0C 80041E0C 24840140 */   addiu $a0, $a0, 0x140
 /* 042A10 80041E10 10000035 */  b     .L80041EE8
 /* 042A14 80041E14 8FBF0024 */   lw    $ra, 0x24($sp)
@@ -1168,7 +1168,7 @@ glabel func_80041D34
 /* 042A2C 80041E2C E7AC0014 */  swc1  $f12, 0x14($sp)
 /* 042A30 80041E30 E7A20018 */  swc1  $f2, 0x18($sp)
 /* 042A34 80041E34 E7A2001C */  swc1  $f2, 0x1c($sp)
-/* 042A38 80041E38 0C0338A9 */  jal   guFrustum
+/* 042A38 80041E38 0C0338A9 */  jal   guOrtho
 /* 042A3C 80041E3C 24840140 */   addiu $a0, $a0, 0x140
 /* 042A40 80041E40 10000029 */  b     .L80041EE8
 /* 042A44 80041E44 8FBF0024 */   lw    $ra, 0x24($sp)
@@ -1186,7 +1186,7 @@ glabel func_80041D34
 /* 042A70 80041E70 E7AC0014 */  swc1  $f12, 0x14($sp)
 /* 042A74 80041E74 E7A20018 */  swc1  $f2, 0x18($sp)
 /* 042A78 80041E78 E7A2001C */  swc1  $f2, 0x1c($sp)
-/* 042A7C 80041E7C 0C0338A9 */  jal   guFrustum
+/* 042A7C 80041E7C 0C0338A9 */  jal   guOrtho
 /* 042A80 80041E80 24840140 */   addiu $a0, $a0, 0x140
 /* 042A84 80041E84 10000018 */  b     .L80041EE8
 /* 042A88 80041E88 8FBF0024 */   lw    $ra, 0x24($sp)
@@ -1199,7 +1199,7 @@ glabel func_80041D34
 /* 042AA0 80041EA0 E7AC0014 */  swc1  $f12, 0x14($sp)
 /* 042AA4 80041EA4 E7A20018 */  swc1  $f2, 0x18($sp)
 /* 042AA8 80041EA8 E7A2001C */  swc1  $f2, 0x1c($sp)
-/* 042AAC 80041EAC 0C0338A9 */  jal   guFrustum
+/* 042AAC 80041EAC 0C0338A9 */  jal   guOrtho
 /* 042AB0 80041EB0 24840140 */   addiu $a0, $a0, 0x140
 /* 042AB4 80041EB4 1000000C */  b     .L80041EE8
 /* 042AB8 80041EB8 8FBF0024 */   lw    $ra, 0x24($sp)
@@ -1212,7 +1212,7 @@ glabel func_80041D34
 /* 042AD0 80041ED0 E7AC0014 */  swc1  $f12, 0x14($sp)
 /* 042AD4 80041ED4 E7A20018 */  swc1  $f2, 0x18($sp)
 /* 042AD8 80041ED8 E7A2001C */  swc1  $f2, 0x1c($sp)
-/* 042ADC 80041EDC 0C0338A9 */  jal   guFrustum
+/* 042ADC 80041EDC 0C0338A9 */  jal   guOrtho
 /* 042AE0 80041EE0 24840140 */   addiu $a0, $a0, 0x140
 /* 042AE4 80041EE4 8FBF0024 */  lw    $ra, 0x24($sp)
 .L80041EE8:

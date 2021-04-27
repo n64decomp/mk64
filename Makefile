@@ -28,8 +28,8 @@ BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)
 
 # Directories containing source files
 INCLUDE_DIRS := include
-SRC_DIRS := src src/audio src/os courses
-ASM_DIRS := asm asm/audio data data/sound_data
+SRC_DIRS := src src/audio src/os src/os/math courses
+ASM_DIRS := asm asm/audio asm/os data data/sound_data
 COURSE_DIRS :=        \
 	courses/mushroom_cup/luigi_raceway courses/mushroom_cup/koopa_beach        \
 	courses/mushroom_cup/moo_moo_farm courses/mushroom_cup/kalimari_desert courses/flower_cup/toads_turnpike courses/flower_cup/frappe_snowland                     \
@@ -220,6 +220,7 @@ $(BUILD_DIR)/%.mio0.s: $(BUILD_DIR)/%.mio0
 $(BUILD_DIR)/%.o: %.c
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(CC) -c $(CFLAGS) -o $@ $<
+	$(PYTHON) tools/set_o32abi_bit.py $@
 
 $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<

@@ -22,9 +22,7 @@ s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, uintptr_t devAddr, v
     mb->dramAddr = vAddr;
     mb->devAddr = devAddr;
     mb->size = nbytes;
-#if defined(VERSION_EU) || defined(VERSION_SH)
     mb->piHandle = NULL;
-#endif
 
     if (priority == OS_MESG_PRI_HIGH) {
         cmdQueue = osPiGetCmdQueue();

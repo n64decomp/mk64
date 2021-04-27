@@ -1003,7 +1003,7 @@ void *func_800022DC(void) {
     gActiveSPTask = NULL;
     if (temp_a3->unk48 == 2) {
         sp1C = temp_a3;
-        if (func_800CDD60(temp_a3, temp_a3) == 0) {
+        if (osSpTaskYielded(temp_a3, temp_a3) == 0) {
             temp_a3->unk48 = 3;
             profiler_log_gfx_time(1, temp_a3);
         }
