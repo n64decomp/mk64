@@ -12,7 +12,7 @@ typedef struct {
 } exceptionPreamble;
 
 extern u32 D_80194040; // maybe initialized?
-extern s32 D_800D1D90;
+extern s32 __osLeoInterrupt;
 extern u32 D_800EA5F0;
 
 
@@ -69,7 +69,7 @@ void osInitialize(void) {
     };
     if (!((eu_sp34 = HW_REG(ASIC_STATUS, u32)) & _64DD_PRESENT_MASK)) {
         D_800EA5F0 = 1;
-        __osSetHWIntrRoutine(1, &D_800D1D90);
+        __osSetHWIntrRoutine(1, &__osLeoInterrupt);
     } else {
         D_800EA5F0 = 0;
     }

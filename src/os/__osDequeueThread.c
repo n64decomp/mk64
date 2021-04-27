@@ -2,12 +2,12 @@
 
 // these don't feel like they belong here
 // but it makes the most logical since there was printf data before
-OSThread *D_800EB3A0 = NULL;
-u32 D_80334894 = -1;
-OSThread *D_800EB3A8 = (OSThread *) &D_800EB3A0;
-OSThread *__osActiveQueue = (OSThread *) &D_800EB3A0;
-OSThread *D_800EB3B0 = NULL;
-u32 D_803348A4 = 0; // UNKNOWN
+// OSThread *D_800EB3A0 = NULL;
+// u32 D_80334894 = -1;
+// OSThread *__osRunQueue = (OSThread *) &D_800EB3A0;
+// OSThread *__osActiveQueue = (OSThread *) &D_800EB3A0;
+// OSThread *D_800EB3B0 = NULL;
+// u32 D_803348A4 = 0; // UNKNOWN
 
 void __osDequeueThread(OSThread **queue, OSThread *thread) {
     register OSThread **a2;

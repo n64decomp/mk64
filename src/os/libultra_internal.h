@@ -13,7 +13,7 @@
 // Original OSThread_ListHead definitions
 extern OSThread *D_800EB3A0;
 extern OSThread *__osActiveQueue;
-extern OSThread *D_800EB3A8;
+extern OSThread *__osRunQueue;
 extern OSThread *D_800EB3B0;
 
 

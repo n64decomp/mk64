@@ -144,6 +144,28 @@ SECTIONS
       BUILD_DIR/src/os/osPfsSearchFile.o(.text);
       BUILD_DIR/src/os/osPfsDeleteFile.o(.text);
       BUILD_DIR/asm/os/osEeprom.o(.text);
+      BUILD_DIR/src/os/osPfsReadWriteFile.o(.text);
+      BUILD_DIR/src/os/osPfsAllocateFile.o(.text);
+      BUILD_DIR/src/os/osAiSetFrequency.o(.text);
+      BUILD_DIR/src/os/osAiGetLength.o(.text);
+      BUILD_DIR/src/os/osAiSetNextBuffer.o(.text);
+      BUILD_DIR/asm/os/osGetCount.o(.text);
+      BUILD_DIR/asm/os/__osException.o(.text);
+      BUILD_DIR/asm/os/__osDisableInt.o(.text);
+      BUILD_DIR/asm/os/__osRestoreInt.o(.text);
+      BUILD_DIR/src/os/__osDequeueThread.o(.text);
+      BUILD_DIR/asm/os/__osSetSR.o(.text);
+      BUILD_DIR/asm/os/__osGetSR.o(.text);
+      BUILD_DIR/asm/os/__osSetFpcCsr.o(.text);
+      BUILD_DIR/src/os/__osSiRawReadIo.o(.text);
+      BUILD_DIR/src/os/__osSiRawWriteIo.o(.text);
+      BUILD_DIR/asm/os/osWritebackDCache.o(.text);
+      BUILD_DIR/asm/os/osMapTLBRdb.o(.text);
+      BUILD_DIR/src/os/osPiRawReadIo.o(.text);
+      BUILD_DIR/src/os/__osSetHWIntrRoutine.o(.text);
+      BUILD_DIR/asm/os/__osLeoInterrupt.o(.text);
+      BUILD_DIR/src/os/osTimer.o(.text);
+      
 
       BUILD_DIR/asm/libultra.o(.text);
 
@@ -156,6 +178,8 @@ SECTIONS
       BUILD_DIR/src/os/osInitialize.o(.data);
       /*BUILD_DIR/src/os/osCreateViManager.o(.data);*/
       BUILD_DIR/data/data_0DD0A0_2_1.o(.data);
+      BUILD_DIR/src/os/osTimer.o(.data);
+      BUILD_DIR/data/rodata_libultra.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
       BUILD_DIR/src/data_0DD0A0_3.inc.o(.data);
@@ -175,6 +199,8 @@ SECTIONS
       BUILD_DIR/asm/bss_80004EF0.o(.bss);
       BUILD_DIR/asm/bss_80005FD0.o(.bss);
       BUILD_DIR/asm/bss_MainSeg.o(.bss);
+      BUILD_DIR/src/os/osTimer.o(.bss);
+      BUILD_DIR/asm/bss_after_ostimer.o(.bss);
    }
    END_NOLOAD(main)
 	

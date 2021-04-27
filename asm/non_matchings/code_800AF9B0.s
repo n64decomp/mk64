@@ -7265,7 +7265,7 @@ glabel func_800B6088
 /* 0B6CC4 800B60C4 8CA5EB84 */  lw    $a1, %lo(D_8018EB84)($a1)
 /* 0B6CC8 800B60C8 2484E868 */  addiu $a0, %lo(D_8018E868) # addiu $a0, $a0, -0x1798
 /* 0B6CCC 800B60CC AFA30014 */  sw    $v1, 0x14($sp)
-/* 0B6CD0 800B60D0 0C0340F3 */  jal   func_800D03CC
+/* 0B6CD0 800B60D0 0C0340F3 */  jal   osPfsReadWriteFile
 /* 0B6CD4 800B60D4 24060001 */   li    $a2, 1
 /* 0B6CD8 800B60D8 8FBF001C */  lw    $ra, 0x1c($sp)
 /* 0B6CDC 800B60DC 27BD0020 */  addiu $sp, $sp, 0x20
@@ -7376,7 +7376,7 @@ glabel func_800B6178
 /* 0B6E5C 800B625C 2484E868 */  addiu $a0, %lo(D_8018E868) # addiu $a0, $a0, -0x1798
 /* 0B6E60 800B6260 25470100 */  addiu $a3, $t2, 0x100
 /* 0B6E64 800B6264 24060001 */  li    $a2, 1
-/* 0B6E68 800B6268 0C0340F3 */  jal   func_800D03CC
+/* 0B6E68 800B6268 0C0340F3 */  jal   osPfsReadWriteFile
 /* 0B6E6C 800B626C AFAC0014 */   sw    $t4, 0x14($sp)
 /* 0B6E70 800B6270 1440001E */  bnez  $v0, .L800B62EC
 /* 0B6E74 800B6274 00401825 */   move  $v1, $v0
@@ -7592,7 +7592,7 @@ glabel func_800B64EC
 /* 0B7148 800B6548 2484E868 */  addiu $a0, %lo(D_8018E868) # addiu $a0, $a0, -0x1798
 /* 0B714C 800B654C 24E70100 */  addiu $a3, $a3, 0x100
 /* 0B7150 800B6550 00003025 */  move  $a2, $zero
-/* 0B7154 800B6554 0C0340F3 */  jal   func_800D03CC
+/* 0B7154 800B6554 0C0340F3 */  jal   osPfsReadWriteFile
 /* 0B7158 800B6558 AFAF0014 */   sw    $t7, 0x14($sp)
 /* 0B715C 800B655C 1440001D */  bnez  $v0, .L800B65D4
 /* 0B7160 800B6560 AFA20030 */   sw    $v0, 0x30($sp)
@@ -7667,7 +7667,7 @@ glabel func_800B65F4
 /* 0B7254 800B6654 2484E8D0 */  addiu $a0, %lo(D_8018E8D0) # addiu $a0, $a0, -0x1730
 /* 0B7258 800B6658 24E70100 */  addiu $a3, $a3, 0x100
 /* 0B725C 800B665C 00003025 */  move  $a2, $zero
-/* 0B7260 800B6660 0C0340F3 */  jal   func_800D03CC
+/* 0B7260 800B6660 0C0340F3 */  jal   osPfsReadWriteFile
 /* 0B7264 800B6664 AFAF0014 */   sw    $t7, 0x14($sp)
 /* 0B7268 800B6668 1440001F */  bnez  $v0, .L800B66E8
 /* 0B726C 800B666C AFA20034 */   sw    $v0, 0x34($sp)
@@ -7730,7 +7730,7 @@ glabel func_800B6708
 /* 0B7338 800B6738 2484E868 */  addiu $a0, %lo(D_8018E868) # addiu $a0, $a0, -0x1798
 /* 0B733C 800B673C AFAF0014 */  sw    $t7, 0x14($sp)
 /* 0B7340 800B6740 00003025 */  move  $a2, $zero
-/* 0B7344 800B6744 0C0340F3 */  jal   func_800D03CC
+/* 0B7344 800B6744 0C0340F3 */  jal   osPfsReadWriteFile
 /* 0B7348 800B6748 00003825 */   move  $a3, $zero
 /* 0B734C 800B674C 3C118019 */  lui   $s1, %hi(D_8018EE10) # $s1, 0x8019
 /* 0B7350 800B6750 2631EE10 */  addiu $s1, %lo(D_8018EE10) # addiu $s1, $s1, -0x11f0
@@ -7770,7 +7770,7 @@ glabel func_800B6798
 /* 0B73C8 800B67C8 2484E8D0 */  addiu $a0, %lo(D_8018E8D0) # addiu $a0, $a0, -0x1730
 /* 0B73CC 800B67CC 00003025 */  move  $a2, $zero
 /* 0B73D0 800B67D0 00003825 */  move  $a3, $zero
-/* 0B73D4 800B67D4 0C0340F3 */  jal   func_800D03CC
+/* 0B73D4 800B67D4 0C0340F3 */  jal   osPfsReadWriteFile
 /* 0B73D8 800B67D8 AFB20014 */   sw    $s2, 0x14($sp)
 /* 0B73DC 800B67DC 00008025 */  move  $s0, $zero
 /* 0B73E0 800B67E0 24110002 */  li    $s1, 2
@@ -7940,7 +7940,7 @@ glabel func_800B69BC
 /* 0B7644 800B6A44 AFA90010 */  sw    $t1, 0x10($sp)
 /* 0B7648 800B6A48 2484E868 */  addiu $a0, %lo(D_8018E868) # addiu $a0, $a0, -0x1798
 /* 0B764C 800B6A4C 24060001 */  li    $a2, 1
-/* 0B7650 800B6A50 0C0340F3 */  jal   func_800D03CC
+/* 0B7650 800B6A50 0C0340F3 */  jal   osPfsReadWriteFile
 /* 0B7654 800B6A54 AFA80014 */   sw    $t0, 0x14($sp)
 /* 0B7658 800B6A58 8FBF001C */  lw    $ra, 0x1c($sp)
 /* 0B765C 800B6A5C 27BD0030 */  addiu $sp, $sp, 0x30

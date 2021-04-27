@@ -26,12 +26,3 @@ s32 osAiSetFrequency(u32 freq) {
     HW_REG(AI_CONTROL_REG, u32) = 1; // enable dma
     return osViClock / (s32) a1;
 }
-
-#ifndef VERSION_SH
-// put some extra jr $ra's down there please
-static void filler1(void) {
-}
-
-static void filler2(void) {
-}
-#endif

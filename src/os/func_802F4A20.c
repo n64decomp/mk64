@@ -35,6 +35,6 @@ void func_802F4B08(void) {
     sp28->validCount += 1;
     if (sp28->mtqueue->next != NULL) {
         s0 = __osPopThread(&sp28->mtqueue);
-        __osEnqueueThread(&D_800EB3A8, s0);
+        __osEnqueueThread(&__osRunQueue, s0);
     }
 }

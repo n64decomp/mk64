@@ -14,9 +14,9 @@ void osSetThreadPri(OSThread *thread, OSPri pri) {
                 __osEnqueueThread(thread->queue, thread);
             }
         }
-        if (D_800EB3B0->priority < D_800EB3A8->priority) {
+        if (D_800EB3B0->priority < __osRunQueue->priority) {
             D_800EB3B0->state = OS_STATE_RUNNABLE;
-            __osEnqueueAndYield(&D_800EB3A8);
+            __osEnqueueAndYield(&__osRunQueue);
         }
     }
 

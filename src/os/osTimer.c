@@ -1,42 +1,42 @@
 #include "libultra_internal.h"
 
 // TODO: document
-OSTimer D_80365D80;
-OSTimer *D_80334830 = &D_80365D80;
+OSTimer __osBaseTimer;
 OSTime __osCurrentTime;
-u32 D_80365DA8;
+u32 __osBaseCounter;
 u32 __osViIntrCount;
-u32 D_80365DB0;
+u32 __osTimerCounter;
 
+OSTimer *__osTimerList = &__osBaseTimer;
 void __osTimerServicesInit(void) {
     __osCurrentTime = 0;
-    D_80365DA8 = 0;
+    __osBaseCounter = 0;
     __osViIntrCount = 0;
-    D_80334830->prev = D_80334830;
-    D_80334830->next = D_80334830->prev;
-    D_80334830->remaining = 0;
-    D_80334830->interval = D_80334830->remaining;
-    D_80334830->mq = NULL;
-    D_80334830->msg = NULL;
+    __osTimerList->prev = __osTimerList;
+    __osTimerList->next = __osTimerList->prev;
+    __osTimerList->remaining = 0;
+    __osTimerList->interval = __osTimerList->remaining;
+    __osTimerList->mq = NULL;
+    __osTimerList->msg = NULL;
 }
 
 void __osTimerInterrupt(void) {
     OSTimer *sp24;
     u32 sp20;
     u32 sp1c;
-    if (D_80334830->next == D_80334830) {
+    if (__osTimerList->next == __osTimerList) {
         return;
     }
     while (TRUE) {
-        sp24 = D_80334830->next;
-        if (sp24 == D_80334830) {
+        sp24 = __osTimerList->next;
+        if (sp24 == __osTimerList) {
             __osSetCompare(0);
-            D_80365DB0 = 0;
+            __osTimerCounter = 0;
             break;
         }
         sp20 = osGetCount();
-        sp1c = sp20 - D_80365DB0;
-        D_80365DB0 = sp20;
+        sp1c = sp20 - __osTimerCounter;
+        __osTimerCounter = sp20;
         if (sp1c < sp24->remaining) {
             sp24->remaining -= sp1c;
             __osSetTimerIntr(sp24->remaining);
@@ -60,8 +60,8 @@ void __osTimerInterrupt(void) {
 void __osSetTimerIntr(u64 a0) {
     u64 tmp;
     s32 intDisabled = __osDisableInt();
-    D_80365DB0 = osGetCount();
-    tmp = a0 + D_80365DB0;
+    __osTimerCounter = osGetCount();
+    tmp = a0 + __osTimerCounter;
     __osSetCompare(tmp);
     __osRestoreInt(intDisabled);
 }
@@ -71,12 +71,12 @@ u64 __osInsertTimer(OSTimer *a0) {
     u64 sp28;
     s32 intDisabled;
     intDisabled = __osDisableInt();
-    for (sp34 = D_80334830->next, sp28 = a0->remaining; sp34 != D_80334830 && sp28 > sp34->remaining;
+    for (sp34 = __osTimerList->next, sp28 = a0->remaining; sp34 != __osTimerList && sp28 > sp34->remaining;
          sp28 -= sp34->remaining, sp34 = sp34->next) {
         ;
     }
     a0->remaining = sp28;
-    if (sp34 != D_80334830) {
+    if (sp34 != __osTimerList) {
         sp34->remaining -= sp28;
     }
     a0->next = sp34;

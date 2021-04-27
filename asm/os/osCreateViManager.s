@@ -171,13 +171,13 @@ glabel __osViDevMgrMain
 /* 0CD310 800CC710 95F80002 */  lhu   $t8, 2($t7)
 /* 0CD314 800CC714 A4385260 */  sh    $t8, %lo(D_80195260)($at)
 .L800CC718:
-/* 0CD318 800CC718 3C198019 */  lui   $t9, %hi(D_8019760C) # $t9, 0x8019
-/* 0CD31C 800CC71C 8F39760C */  lw    $t9, %lo(D_8019760C)($t9)
+/* 0CD318 800CC718 3C198019 */  lui   $t9, %hi(__osViIntrCount) # $t9, 0x8019
+/* 0CD31C 800CC71C 8F39760C */  lw    $t9, %lo(__osViIntrCount)($t9)
 /* 0CD320 800CC720 8FA90028 */  lw    $t1, 0x28($sp)
-/* 0CD324 800CC724 3C018019 */  lui   $at, %hi(D_8019760C) # $at, 0x8019
+/* 0CD324 800CC724 3C018019 */  lui   $at, %hi(__osViIntrCount) # $at, 0x8019
 /* 0CD328 800CC728 27280001 */  addiu $t0, $t9, 1
 /* 0CD32C 800CC72C 1120000C */  beqz  $t1, .L800CC760
-/* 0CD330 800CC730 AC28760C */   sw    $t0, %lo(D_8019760C)($at)
+/* 0CD330 800CC730 AC28760C */   sw    $t0, %lo(__osViIntrCount)($at)
 /* 0CD334 800CC734 0C034468 */  jal   osGetCount
 /* 0CD338 800CC738 00000000 */   nop   
 /* 0CD33C 800CC73C AFA20024 */  sw    $v0, 0x24($sp)

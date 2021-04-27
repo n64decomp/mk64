@@ -29,7 +29,7 @@ extern int     __osSpDeviceBusy(void);
 extern OSThread *__osRunningThread;
 extern OSThread *__osActiveQueue;
 extern OSThread *__osFaultedThread;
-extern OSThread *D_800EB3A8;
+extern OSThread *__osRunQueue;
 
 extern OSTimer *__osTimerList;
 extern OSTimer __osBaseTimer;

@@ -244,6 +244,7 @@ $(BUILD_DIR)/src/os/ldiv.o:       OPT_FLAGS := -O2
 $(BUILD_DIR)/src/os/string.o:     OPT_FLAGS := -O2
 $(BUILD_DIR)/src/os/gu%.o:        OPT_FLAGS := -O3
 $(BUILD_DIR)/src/os/al%.o:        OPT_FLAGS := -O3
+$(BUILD_DIR)/src/os/__osLeoInterrupt.o:        OPT_FLAGS := -O1
 
 
 #################### Compile course vertex to mio0 #####################
