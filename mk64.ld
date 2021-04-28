@@ -191,9 +191,26 @@ SECTIONS
       BUILD_DIR/src/os/osPfsChecker.o(.text);
       BUILD_DIR/asm/os/contramread.o(.text);
       BUILD_DIR/src/os/guNormalize.o(.text);
-      
-      BUILD_DIR/asm/libultra.o(.text);
-
+      BUILD_DIR/src/os/math/sinf.o(.text);
+      BUILD_DIR/src/os/math/cosf.o(.text);
+      BUILD_DIR/src/os/_Printf.o(.text);
+      BUILD_DIR/src/os/guMtxCatF.o(.text);
+      BUILD_DIR/asm/os/contramwrite.o(.text);
+      BUILD_DIR/src/os/osEepromRead.o(.text);
+      BUILD_DIR/src/os/__osAiDeviceBusy.o(.text);
+      BUILD_DIR/asm/os/osSetIntMask.o(.text);
+      BUILD_DIR/src/os/osDestroyThread.o(.text);
+      BUILD_DIR/src/os/__osSiDeviceBusy.o(.text);
+      BUILD_DIR/src/os/osLeoDiskInit.o(.text);
+      BUILD_DIR/asm/os/__osSetCompare.o(.text);
+      BUILD_DIR/src/os/__osResetGlobalIntMask.o(.text);
+      BUILD_DIR/src/os/__osEPiRawWriteIo.o(.text);
+      BUILD_DIR/src/os/osYieldThread.o(.text);
+      BUILD_DIR/asm/os/__osProbeTLB.o(.text);
+      BUILD_DIR/src/os/crc.o(.text);
+      BUILD_DIR/src/os/string.o(.text);
+      BUILD_DIR/src/os/_Litob.o(.text);
+      BUILD_DIR/src/os/_Ldtob.o(.text);
       BUILD_DIR/src/os/ldiv.o(.text);
 
       BUILD_DIR/data/rsp.o(.text);
@@ -207,11 +224,18 @@ SECTIONS
       BUILD_DIR/src/os/__osViInit.o(.data);
       BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.data);
       BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.data);
+      BUILD_DIR/src/os/_Printf.o(.data);
       BUILD_DIR/data/rodata_libultra.o(.rodata);
+      BUILD_DIR/src/os/_Litob.o(.data);
+      BUILD_DIR/data/rodata_main.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
       BUILD_DIR/src/os/__osDevMgrMain.o(.rodata);
-      BUILD_DIR/data/rodata_libultra_2.o(.rodata);
+      BUILD_DIR/src/os/math/sinf.o(.rodata);
+      BUILD_DIR/src/os/math/cosf.o(.rodata);
+      BUILD_DIR/src/os/_Printf.o(.rodata);
+      BUILD_DIR/asm/os/osSetIntMask.o(.rodata);
+      BUILD_DIR/src/os/_Ldtob.o(.rodata);
       BUILD_DIR/src/data_0DD0A0_3.inc.o(.data);
       BUILD_DIR/data/rsp.o(.data);
       BUILD_DIR/src/audio/data.o(.data);
@@ -234,6 +258,8 @@ SECTIONS
       BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.bss);
       BUILD_DIR/src/os/osEepromWrite.o(.bss);
       BUILD_DIR/asm/bss_after_ostimer.o(.bss);
+      BUILD_DIR/src/os/osLeoDiskInit.o(.bss);
+      BUILD_DIR/asm/bss_after_diskinit.o(.bss);
    }
    END_NOLOAD(main)
 	

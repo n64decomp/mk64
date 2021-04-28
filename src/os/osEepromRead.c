@@ -2,6 +2,9 @@
 
 extern u8 _osLastSentSiCmd;
 
+extern u32 __osEepPifRam[15];
+extern u32 D_8019769C;
+
 typedef struct {
     u16 unk00;
     u8 unk02;
@@ -37,7 +40,7 @@ s32 osEepromRead(OSMesgQueue *mq, u8 address, u8 *buffer) {
     unkStruct2 sp20;
     sp34 = 0;
     sp30 = 0;
-    sp2c = (u8 *) &D_80365E00;
+    sp2c = (u8 *) &__osEepPifRam;
     if (address > 0x40) {
         return -1;
     }
@@ -51,13 +54,13 @@ s32 osEepromRead(OSMesgQueue *mq, u8 address, u8 *buffer) {
         __osEepStatus(mq, &sp28);
     }
     __osPackEepReadData(address);
-    sp34 = __osSiRawStartDma(OS_WRITE, &D_80365E00);
+    sp34 = __osSiRawStartDma(OS_WRITE, &__osEepPifRam);
     osRecvMesg(mq, NULL, OS_MESG_BLOCK);
     for (sp30 = 0; sp30 < 0x10; sp30++) {
-        (D_80365E00)[sp30] = 255;
+        __osEepPifRam[sp30] = 255;
     }
-    D_80365E3C = 0;
-    sp34 = __osSiRawStartDma(OS_READ, D_80365E00);
+    D_8019769C = 0;
+    sp34 = __osSiRawStartDma(OS_READ, __osEepPifRam);
     _osLastSentSiCmd = 4;
     osRecvMesg(mq, NULL, OS_MESG_BLOCK);
     for (sp30 = 0; sp30 < 4; sp30++) {
@@ -78,11 +81,11 @@ s32 __osPackEepReadData(u8 address) {
     u8 *sp14;
     unkStruct2 sp8;
     s32 sp4;
-    sp14 = (u8 *) &D_80365E00;
+    sp14 = (u8 *) &__osEepPifRam;
     for (sp4 = 0; sp4 < 0x10; sp4++) {
-        D_80365E00[sp4] = 255;
+        __osEepPifRam[sp4] = 255;
     }
-    D_80365E3C = 1;
+    D_8019769C = 1;
     sp8.unk00 = 2;
     sp8.unk01 = 8;
     sp8.unk02 = 4;

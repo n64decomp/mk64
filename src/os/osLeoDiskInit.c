@@ -1,3 +1,5 @@
+#define MK64
+
 #include "libultra_internal.h"
 #include "hardware.h"
 
@@ -32,3 +34,5 @@ OSPiHandle *osLeoDiskInit(void) {
     __osRestoreInt(sp1c);
     return &LeoDiskHandle;
 }
+
+#undef MK64

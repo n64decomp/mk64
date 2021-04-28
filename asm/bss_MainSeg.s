@@ -2780,18 +2780,3 @@ glabel D_801965D0
 
 glabel D_801965E0
 .skip 4096
-
-# glabel __osBaseTimer
-# .skip 32
-
-# glabel __osCurrentTime
-# .skip 8
-
-# glabel __osBaseCounter
-# .skip 4
-
-# glabel __osViIntrCount
-# .skip 4
-
-# glabel __osTimerCounter
-# .skip 16

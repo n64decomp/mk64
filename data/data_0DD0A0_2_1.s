@@ -251,7 +251,7 @@ glabel __osPiDevMgr
 
 .word 0x00000000
 
-glabel D_800EB35C
+glabel __osPiTable
 .word 0x00000000
 
 glabel D_800EB360

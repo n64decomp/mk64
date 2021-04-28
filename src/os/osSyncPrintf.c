@@ -10,5 +10,5 @@ void osSyncPrintf(const char *fmt, ...) {
 void func_800CF774(const char *fmt, ...) {
 	va_list args;
 
-    _vprintf(osSyncPrintf, 0, fmt, &args);
+    _Printf(osSyncPrintf, 0, fmt, &args);
 }

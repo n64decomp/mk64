@@ -25,7 +25,7 @@ glabel func_800CF774
 /* 0D0390 800CF790 2484F760 */  addiu $a0, %lo(osSyncPrintf) # addiu $a0, $a0, -0x8a0
 /* 0D0394 800CF794 27A70024 */  addiu $a3, $sp, 0x24
 /* 0D0398 800CF798 8FA60020 */  lw    $a2, 0x20($sp)
-/* 0D039C 800CF79C 0C035AA4 */  jal   _vprintf
+/* 0D039C 800CF79C 0C035AA4 */  jal   _Printf
 /* 0D03A0 800CF7A0 00002825 */   move  $a1, $zero
 /* 0D03A4 800CF7A4 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 0D03A8 800CF7A8 27BD0020 */  addiu $sp, $sp, 0x20

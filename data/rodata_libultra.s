@@ -2,16 +2,6 @@
 
 .section .rodata
 
-glabel D_800EB460
-.word 0x20202020, 0x20202020, 0x20202020, 0x20202020
-.word 0x20202020, 0x20202020, 0x20202020, 0x20202020
-.word 0x00000000
-
-glabel D_800EB484
-.word 0x30303030, 0x30303030, 0x30303030, 0x30303030
-.word 0x30303030, 0x30303030, 0x30303030, 0x30303030
-.word 0x00000000, 0x00000000, 0x00000000
-
 glabel osViModePalLan1
 .word 0x10000000, 0x0000311e, 0x00000140, 0x0404233a
 .word 0x00000271, 0x00150c69, 0x0c6f0c6e, 0x00800300
@@ -33,60 +23,3 @@ glabel osViModeNtscLan1
 .word 0x002501ff, 0x000e0204, 0x00000002, 0x00000280
 .word 0x00000400, 0x002501ff, 0x000e0204, 0x00000002
 
-.balign 4
-glabel D_800EB5A0
-.asciiz "0123456789abcdef"
-
-.balign 4
-glabel D_800EB5B4
-.asciiz "0123456789ABCDEF"
-
-.balign 4
-.word 0x00000000, 0x00000000
-
-.balign 4
-glabel D_800EB5D0
-.asciiz "SOUTH  "
-
-.balign 4
-glabel D_800EB5D8
-.asciiz "EAST   "
-
-.balign 4
-glabel D_800EB5E0
-.asciiz "NORTH  "
-.balign 4
-
-glabel D_800EB5E8
-.asciiz "WEST   "
-
-.balign 4
-glabel D_800EB5F0
-.asciiz "SOUTH  "
-
-.balign 4
-glabel D_800EB5F8
-.double 0.01666666
-
-glabel D_800EB600
-.double 0.01666666
-
-glabel D_800EB608
-.double 0.01666666
-
-glabel D_800EB610
-.double 0.01666666
-
-glabel D_800EB618
-.word L80001F0C, L80001F0C, L80001F0C, L80001F0C
-.word L80001F38, L80001F48, L80001F60, L80001EFC
-.word L80001F60, L80001F58
-
-glabel D_800EB640
-.double 0.01666666
-
-glabel D_800EB648
-.word L800026B4, L800026CC, L800026E4, L800026FC
-.word L80002714, L8000272C, L8000276C, L8000276C
-.word L8000276C, L8000274C
-glabel D_800EB670

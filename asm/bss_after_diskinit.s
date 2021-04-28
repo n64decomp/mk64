@@ -2,5 +2,5 @@
 
 .section .bss
 
-glabel D_801976A0
-.skip 432
+glabel D_801978D0
+.skip 12
