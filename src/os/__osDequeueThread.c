@@ -6,7 +6,7 @@
 // u32 D_80334894 = -1;
 // OSThread *__osRunQueue = (OSThread *) &D_800EB3A0;
 // OSThread *__osActiveQueue = (OSThread *) &D_800EB3A0;
-// OSThread *D_800EB3B0 = NULL;
+// OSThread *__osRunningThread = NULL;
 // u32 D_803348A4 = 0; // UNKNOWN
 
 void __osDequeueThread(OSThread **queue, OSThread *thread) {

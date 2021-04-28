@@ -2,24 +2,6 @@
 
 .section .bss
 
-glabel D_80197620
-.skip 8
-
-glabel D_80197628
-.skip 24
-
-glabel D_80197640
-.skip 8
-
-glabel D_80197648
-.skip 24
-
-glabel D_80197660
-.skip 60
-
-glabel D_8019769C
-.skip 4
-
 glabel D_801976A0
 .skip 432
 

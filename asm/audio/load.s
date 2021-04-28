@@ -1631,8 +1631,8 @@ glabel audio_init
 /* 0BCD84 800BC184 0601FFFA */  bgez  $s0, .L800BC170
 /* 0BCD88 800BC188 24420008 */   addiu $v0, $v0, 8
 .L800BC18C:
-/* 0BCD8C 800BC18C 3C028000 */  lui   $v0, %hi(D_80000300) # $v0, 0x8000
-/* 0BCD90 800BC190 8C420300 */  lw    $v0, %lo(D_80000300)($v0)
+/* 0BCD8C 800BC18C 3C028000 */  lui   $v0, %hi(osTvType) # $v0, 0x8000
+/* 0BCD90 800BC190 8C420300 */  lw    $v0, %lo(osTvType)($v0)
 /* 0BCD94 800BC194 10400007 */  beqz  $v0, .L800BC1B4
 /* 0BCD98 800BC198 24010001 */   li    $at, 1
 /* 0BCD9C 800BC19C 10410015 */  beq   $v0, $at, .L800BC1F4

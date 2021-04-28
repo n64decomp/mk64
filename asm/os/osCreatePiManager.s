@@ -27,8 +27,8 @@ glabel osCreatePiManager
 /* 0CD730 800CCB30 24846420 */  addiu $a0, %lo(D_80196420) # addiu $a0, $a0, 0x6420
 /* 0CD734 800CCB34 0C033358 */  jal   osCreateMesgQueue
 /* 0CD738 800CCB38 24060001 */   li    $a2, 1
-/* 0CD73C 800CCB3C 3C0F800F */  lui   $t7, %hi(D_800EB440) # $t7, 0x800f
-/* 0CD740 800CCB40 8DEFB440 */  lw    $t7, %lo(D_800EB440)($t7)
+/* 0CD73C 800CCB3C 3C0F800F */  lui   $t7, %hi(gOsPiAccessQueueCreated) # $t7, 0x800f
+/* 0CD740 800CCB40 8DEFB440 */  lw    $t7, %lo(gOsPiAccessQueueCreated)($t7)
 /* 0CD744 800CCB44 15E00003 */  bnez  $t7, .L800CCB54
 /* 0CD748 800CCB48 00000000 */   nop   
 /* 0CD74C 800CCB4C 0C034BBC */  jal   __osPiCreateAccessQueue
@@ -71,22 +71,22 @@ glabel osCreatePiManager
 /* 0CD7D8 800CCBD8 AC2BB348 */  sw    $t3, %lo(__osPiDevMgr+0x8)($at)
 /* 0CD7DC 800CCBDC 8FA80030 */  lw    $t0, 0x30($sp)
 /* 0CD7E0 800CCBE0 3C01800F */  lui   $at, %hi(__osPiDevMgr+0x18) # $at, 0x800f
-/* 0CD7E4 800CCBE4 3C0D8019 */  lui   $t5, %hi(D_80197628) # $t5, 0x8019
+/* 0CD7E4 800CCBE4 3C0D8019 */  lui   $t5, %hi(gOsPiMessageQueue) # $t5, 0x8019
 /* 0CD7E8 800CCBE8 3C0E800D */  lui   $t6, %hi(osPiRawStartDma) # $t6, 0x800d
 /* 0CD7EC 800CCBEC 3C0F800D */  lui   $t7, %hi(osEPiRawStartDma) # $t7, 0x800d
 /* 0CD7F0 800CCBF0 27185420 */  addiu $t8, %lo(D_80195420) # addiu $t8, $t8, 0x5420
-/* 0CD7F4 800CCBF4 25AD7628 */  addiu $t5, %lo(D_80197628) # addiu $t5, $t5, 0x7628
+/* 0CD7F4 800CCBF4 25AD7628 */  addiu $t5, %lo(gOsPiMessageQueue) # addiu $t5, $t5, 0x7628
 /* 0CD7F8 800CCBF8 25CE2FB0 */  addiu $t6, %lo(osPiRawStartDma) # addiu $t6, $t6, 0x2fb0
 /* 0CD7FC 800CCBFC 25EF3090 */  addiu $t7, %lo(osEPiRawStartDma) # addiu $t7, $t7, 0x3090
 /* 0CD800 800CCC00 27191000 */  addiu $t9, $t8, 0x1000
-/* 0CD804 800CCC04 3C06800D */  lui   $a2, %hi(D_800D3170) # $a2, 0x800d
+/* 0CD804 800CCC04 3C06800D */  lui   $a2, %hi(__osDevMgrMain) # $a2, 0x800d
 /* 0CD808 800CCC08 3C07800F */  lui   $a3, %hi(__osPiDevMgr) # $a3, 0x800f
 /* 0CD80C 800CCC0C AFA2002C */  sw    $v0, 0x2c($sp)
 /* 0CD810 800CCC10 AC2DB350 */  sw    $t5, %lo(__osPiDevMgr+0x10)($at)
 /* 0CD814 800CCC14 AC2EB354 */  sw    $t6, %lo(__osPiDevMgr+0x14)($at)
 /* 0CD818 800CCC18 AC2FB358 */  sw    $t7, %lo(__osPiDevMgr+0x18)($at)
 /* 0CD81C 800CCC1C 24E7B340 */  addiu $a3, %lo(__osPiDevMgr) # addiu $a3, $a3, -0x4cc0
-/* 0CD820 800CCC20 24C63170 */  addiu $a2, %lo(D_800D3170) # addiu $a2, $a2, 0x3170
+/* 0CD820 800CCC20 24C63170 */  addiu $a2, %lo(__osDevMgrMain) # addiu $a2, $a2, 0x3170
 /* 0CD824 800CCC24 AFB90010 */  sw    $t9, 0x10($sp)
 /* 0CD828 800CCC28 01402025 */  move  $a0, $t2
 /* 0CD82C 800CCC2C 00002825 */  move  $a1, $zero

@@ -8,7 +8,7 @@ s32 osSendMesg(OSMesgQueue *mq, OSMesg msg, s32 flag) {
 
     while (mq->validCount >= mq->msgCount) {
         if (flag == OS_MESG_BLOCK) {
-            D_800EB3B0->state = 8;
+            __osRunningThread->state = 8;
             __osEnqueueAndYield(&mq->fullqueue);
         } else {
             __osRestoreInt(int_disabled);

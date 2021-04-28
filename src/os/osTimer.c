@@ -1,6 +1,5 @@
 #include "libultra_internal.h"
 
-// TODO: document
 OSTimer __osBaseTimer;
 OSTime __osCurrentTime;
 u32 __osBaseCounter;

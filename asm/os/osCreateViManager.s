@@ -115,7 +115,7 @@ glabel __osViDevMgrMain
 /* 0CD240 800CC640 AFA40038 */  sw    $a0, 0x38($sp)
 /* 0CD244 800CC644 AFB00018 */  sw    $s0, 0x18($sp)
 /* 0CD248 800CC648 AFA0002C */  sw    $zero, 0x2c($sp)
-/* 0CD24C 800CC64C 0C034AE0 */  jal   func_800D2B80
+/* 0CD24C 800CC64C 0C034AE0 */  jal   __osViGetCurrentContext
 /* 0CD250 800CC650 AFA00028 */   sw    $zero, 0x28($sp)
 /* 0CD254 800CC654 AFA20034 */  sw    $v0, 0x34($sp)
 /* 0CD258 800CC658 8FAE0034 */  lw    $t6, 0x34($sp)
@@ -154,7 +154,7 @@ glabel __osViDevMgrMain
 /* 0CD2D0 800CC6D0 316CFFFF */  andi  $t4, $t3, 0xffff
 /* 0CD2D4 800CC6D4 15800010 */  bnez  $t4, .L800CC718
 /* 0CD2D8 800CC6D8 A42B5260 */   sh    $t3, %lo(D_80195260)($at)
-/* 0CD2DC 800CC6DC 0C034AE0 */  jal   func_800D2B80
+/* 0CD2DC 800CC6DC 0C034AE0 */  jal   __osViGetCurrentContext
 /* 0CD2E0 800CC6E0 00000000 */   nop   
 /* 0CD2E4 800CC6E4 AFA20034 */  sw    $v0, 0x34($sp)
 /* 0CD2E8 800CC6E8 8FAD0034 */  lw    $t5, 0x34($sp)

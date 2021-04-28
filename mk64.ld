@@ -165,8 +165,33 @@ SECTIONS
       BUILD_DIR/src/os/__osSetHWIntrRoutine.o(.text);
       BUILD_DIR/asm/os/__osLeoInterrupt.o(.text);
       BUILD_DIR/src/os/osTimer.o(.text);
+      BUILD_DIR/src/os/osGetThreadPri.o(.text);
+      BUILD_DIR/src/os/__osViInit.o(.text);
+      BUILD_DIR/src/os/__osViGetCurrentContext.o(.text);
+      BUILD_DIR/src/os/__osViSwapContext.o(.text);
+      BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.text);
+      BUILD_DIR/src/os/osPiRawStartDma.o(.text);
+      BUILD_DIR/src/os/osEPiRawStartDma.o(.text);
+      BUILD_DIR/src/os/__osDevMgrMain.o(.text);
+      BUILD_DIR/asm/os/bcopy.o(.text);
+      BUILD_DIR/src/os/osVirtualToPhysical.o(.text);
+      BUILD_DIR/src/os/__osSpSetStatus.o(.text);
+      BUILD_DIR/src/os/__osSpSetPc.o(.text);
+      BUILD_DIR/src/os/__osSpRawStartDma.o(.text);
+      BUILD_DIR/src/os/__osSpDeviceBusy.o(.text);
+      BUILD_DIR/src/os/osSetTimer.o(.text);
+      BUILD_DIR/src/os/__osSiRawStartDma.o(.text);
+      BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.text);
+      BUILD_DIR/src/os/osJamMesg.o(.text);
+      BUILD_DIR/src/os/osPiGetCmdQueue.o(.text);
+      BUILD_DIR/src/os/__osSpGetStatus.o(.text);
+      BUILD_DIR/src/os/guMtxF2L.o(.text);
+      BUILD_DIR/src/os/osEepromWrite.o(.text);
+      BUILD_DIR/src/os/contpfs.o(.text);
+      BUILD_DIR/src/os/osPfsChecker.o(.text);
+      BUILD_DIR/asm/os/contramread.o(.text);
+      BUILD_DIR/src/os/guNormalize.o(.text);
       
-
       BUILD_DIR/asm/libultra.o(.text);
 
       BUILD_DIR/src/os/ldiv.o(.text);
@@ -179,9 +204,14 @@ SECTIONS
       /*BUILD_DIR/src/os/osCreateViManager.o(.data);*/
       BUILD_DIR/data/data_0DD0A0_2_1.o(.data);
       BUILD_DIR/src/os/osTimer.o(.data);
+      BUILD_DIR/src/os/__osViInit.o(.data);
+      BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.data);
+      BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.data);
       BUILD_DIR/data/rodata_libultra.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
+      BUILD_DIR/src/os/__osDevMgrMain.o(.rodata);
+      BUILD_DIR/data/rodata_libultra_2.o(.rodata);
       BUILD_DIR/src/data_0DD0A0_3.inc.o(.data);
       BUILD_DIR/data/rsp.o(.data);
       BUILD_DIR/src/audio/data.o(.data);
@@ -200,6 +230,9 @@ SECTIONS
       BUILD_DIR/asm/bss_80005FD0.o(.bss);
       BUILD_DIR/asm/bss_MainSeg.o(.bss);
       BUILD_DIR/src/os/osTimer.o(.bss);
+      BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.bss);
+      BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.bss);
+      BUILD_DIR/src/os/osEepromWrite.o(.bss);
       BUILD_DIR/asm/bss_after_ostimer.o(.bss);
    }
    END_NOLOAD(main)

@@ -10,7 +10,7 @@ s32 osRecvMesg(OSMesgQueue *mq, OSMesg *msg, s32 flag) {
             __osRestoreInt(int_disabled);
             return -1;
         }
-        D_800EB3B0->state = OS_STATE_WAITING;
+        __osRunningThread->state = OS_STATE_WAITING;
         __osEnqueueAndYield(&mq->mtqueue);
     }
 

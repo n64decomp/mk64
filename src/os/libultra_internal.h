@@ -14,7 +14,7 @@
 extern OSThread *D_800EB3A0;
 extern OSThread *__osActiveQueue;
 extern OSThread *__osRunQueue;
-extern OSThread *D_800EB3B0;
+extern OSThread *__osRunningThread;
 
 
 // Original EEPROM definitions
@@ -28,11 +28,7 @@ typedef struct {
     OSMesgQueue *eventQueue;
     OSMesgQueue *accessQueue;
     s32 (*dma_func)(s32, u32, void *, size_t);
-#if defined(VERSION_EU) || defined(VERSION_SH)
     s32 (*edma_func)(OSPiHandle*, s32, u32, void *, size_t);
-#else
-    u64 force_align;
-#endif
 } OSMgrArgs;
 
 s32 __osDisableInt(void);

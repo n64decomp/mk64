@@ -1,7 +1,7 @@
 #include "libultra_internal.h"
 
 #if defined(VERSION_EU) || defined(VERSION_SH)
-OSViMode D_80334990 = {
+OSViMode osViModePalLan1 = {
     /*type*/ 16,
     /*comRegs*/
     { /*ctrl*/ 12574,
@@ -35,7 +35,7 @@ OSViMode D_80334990 = {
         /*vIntr*/ 2 } }
 };
 
-OSViMode D_803349E0 = {
+OSViMode osViModeMpalLan1 = {
     /*type*/ 30, //osViModePalLan1
     /*comRegs*/
     { /*ctrl*/ 12574,
@@ -60,7 +60,7 @@ OSViMode D_803349E0 = {
         /*vIntr*/ 2 } }
 };
 
-OSViMode D_80302FD0 = {
+OSViMode osViModeNtscLan1 = {
     /*type*/ 2,
     /*comRegs*/
     { /*ctrl*/ 12574,
@@ -85,7 +85,7 @@ OSViMode D_80302FD0 = {
         /*vIntr*/ 2 } }
 };
 #else
-OSViMode D_80334990 = {
+OSViMode osViModePalLan1 = {
     /*type*/ 2,
     /*comRegs*/
     { /*ctrl*/ 12574,
@@ -110,7 +110,7 @@ OSViMode D_80334990 = {
         /*vIntr*/ 2 } }
 };
 
-OSViMode D_803349E0 = {
+OSViMode osViModeMpalLan1 = {
     /*type*/ 16,
     /*comRegs*/
     { /*ctrl*/ 12574,

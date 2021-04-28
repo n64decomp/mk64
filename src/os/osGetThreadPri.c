@@ -2,7 +2,7 @@
 
 OSPri osGetThreadPri(OSThread *thread) {
     if (thread == NULL) {
-        thread = D_800EB3B0;
+        thread = __osRunningThread;
     }
     return thread->priority;
 }

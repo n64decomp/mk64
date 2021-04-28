@@ -8,7 +8,7 @@ void osDestroyThread(OSThread *thread) {
     int_disabled = __osDisableInt();
 
     if (thread == NULL) {
-        thread = D_800EB3B0;
+        thread = __osRunningThread;
     } else if (thread->state != OS_STATE_STOPPED) {
         __osDequeueThread(thread->queue, thread);
     }
@@ -29,7 +29,7 @@ void osDestroyThread(OSThread *thread) {
         }
     }
 
-    if (thread == D_800EB3B0) {
+    if (thread == __osRunningThread) {
         __osDispatchThread();
     }
 

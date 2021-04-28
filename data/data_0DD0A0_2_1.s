@@ -273,7 +273,7 @@ glabel __osRunQueue
 glabel __osActiveQueue
 .word D_800EB3A0
 
-glabel D_800EB3B0
+glabel __osRunningThread
 .word 0x00000000
 
 glabel D_800EB3B4

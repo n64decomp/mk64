@@ -5,6 +5,8 @@
 
 /* Types */
 
+
+#ifndef MK64
 typedef struct {
 #if !defined(VERSION_EU) && !defined(VERSION_SH)
     u32 errStatus;
@@ -15,6 +17,15 @@ typedef struct {
     u32 C1ErrNum;
     u32 C1ErrSector[4];
 } __OSBlockInfo;
+#else
+typedef struct {
+    void *dramAddr;
+    void *C2Addr;
+    u32 sectorSize;
+    u32 C1ErrNum;
+    u32 C1ErrSector[4];
+} __OSBlockInfo;
+#endif
 
 typedef struct {
     u32 cmdType;       // 0
@@ -22,9 +33,7 @@ typedef struct {
     u16 blockNum;      // 6
     s32 sectorNum;     // 8
     uintptr_t devAddr; // c
-#if defined(VERSION_EU) || defined(VERSION_SH)
-    u32 unk10; //error status added moved to blockinfo
-#endif
+    u32 errStatus; //error status added moved to blockinfo
     u32 bmCtlShadow;        // 10
     u32 seqCtlShadow;       // 14
     __OSBlockInfo block[2]; // 18

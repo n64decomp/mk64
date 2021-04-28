@@ -25,11 +25,11 @@ void osStartThread(OSThread *thread) {
             __osEnqueueThread(&__osRunQueue, (OSThread *) state);
         }
     }
-    if (D_800EB3B0 == NULL) {
+    if (__osRunningThread == NULL) {
         __osDispatchThread();
     } else {
-        if (D_800EB3B0->priority < __osRunQueue->priority) {
-            D_800EB3B0->state = OS_STATE_RUNNABLE;
+        if (__osRunningThread->priority < __osRunQueue->priority) {
+            __osRunningThread->state = OS_STATE_RUNNABLE;
             __osEnqueueAndYield(&__osRunQueue);
         }
     }

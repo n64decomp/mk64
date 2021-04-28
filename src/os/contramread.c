@@ -2,8 +2,10 @@
 #include "PR/rcp.h"
 #include "controller.h"
 
-extern s32 func_8030A5C0(OSMesgQueue *, s32);
+extern s32 func_800CE7D4(OSMesgQueue *, s32);
 void __osPackRamReadData(int channel, u16 address);
+
+extern u32 D_801965CC;
 
 s32 __osContRamRead(OSMesgQueue *mq, int channel, u16 address, u8 *buffer) {
     s32 ret;
@@ -19,7 +21,11 @@ s32 __osContRamRead(OSMesgQueue *mq, int channel, u16 address, u8 *buffer) {
     __osPackRamReadData(channel, address);
     ret = __osSiRawStartDma(OS_WRITE, &__osPfsPifRam);
     osRecvMesg(mq, NULL, OS_MESG_BLOCK);
+    for (i = 0; i < 16; i++) {
+        __osPfsPifRam.ramarray[i] = 0xFF;
+    }
     do {
+        D_801965CC = 0;
         ret = __osSiRawStartDma(OS_READ, &__osPfsPifRam);
         osRecvMesg(mq, NULL, OS_MESG_BLOCK);
         ptr = (u8 *)&__osPfsPifRam;
@@ -34,7 +40,7 @@ s32 __osContRamRead(OSMesgQueue *mq, int channel, u16 address, u8 *buffer) {
             u8 c;
             c = __osContDataCrc((u8*)&ramreadformat.data);
             if (c != ramreadformat.datacrc) {
-                ret = func_8030A5C0(mq, channel);
+                ret = func_800CE7D4(mq, channel);
                 if (ret != 0) {
                     __osSiRelAccess();
                     return ret;
@@ -45,8 +51,10 @@ s32 __osContRamRead(OSMesgQueue *mq, int channel, u16 address, u8 *buffer) {
                     *buffer++ = ramreadformat.data[i];
                 }
             }
-        } else {
-            ret = PFS_ERR_NOPACK;
+        }
+        // diff here somewhere
+        else {
+            ret = 1/* PFS_ERR_NOPACK */;
         }
         if (ret != PFS_ERR_CONTRFAIL) {
             break;

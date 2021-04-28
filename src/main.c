@@ -30,7 +30,6 @@ extern s32 D_800DC52C;
 extern OSThread D_801524C0;
 extern OSThread D_80154670;
 extern OSViMode D_800EA6C0, D_800EAF80;
-extern s32 D_80000300;
 extern s16 D_8015011C;
 extern OSMesgQueue D_8015F460;
 extern OSMesg D_8015F3E0;
@@ -118,7 +117,7 @@ void main_func(void) {
 
 void thread1_idle(void *arg0) {
     osCreateViManager(OS_PRIORITY_VIMGR);
-    if (D_80000300 == 1) {
+    if (osTvType == 1) {
         osViSetMode(&D_800EA6C0);
     } else {
         osViSetMode(&D_800EAF80);
