@@ -18,7 +18,7 @@ glabel func_8000105C
 /* 001C9C 8000109C 0C000456 */  jal   dma_copy
 /* 001CA0 800010A0 3C048028 */   lui   $a0, 0x8028
 /* 001CA4 800010A4 3C048028 */  lui   $a0, 0x8028
-/* 001CA8 800010A8 0C0336C0 */  jal   osInvalCache
+/* 001CA8 800010A8 0C0336C0 */  jal   osInvalICache
 /* 001CAC 800010AC 3405DF00 */   li    $a1, 57088
 /* 001CB0 800010B0 3C048028 */  lui   $a0, 0x8028
 /* 001CB4 800010B4 0C0336E0 */  jal   osInvalDCache

@@ -28,8 +28,8 @@ BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)
 
 # Directories containing source files
 INCLUDE_DIRS := include
-SRC_DIRS := src src/audio courses
-ASM_DIRS := asm asm/audio data data/sound_data
+SRC_DIRS := src src/audio src/os src/os/math courses
+ASM_DIRS := asm asm/audio asm/os data data/sound_data
 COURSE_DIRS :=        \
 	courses/mushroom_cup/luigi_raceway courses/mushroom_cup/koopa_beach        \
 	courses/mushroom_cup/moo_moo_farm courses/mushroom_cup/kalimari_desert courses/flower_cup/toads_turnpike courses/flower_cup/frappe_snowland                     \
@@ -220,6 +220,7 @@ $(BUILD_DIR)/%.mio0.s: $(BUILD_DIR)/%.mio0
 $(BUILD_DIR)/%.o: %.c
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(CC) -c $(CFLAGS) -o $@ $<
+	$(PYTHON) tools/set_o32abi_bit.py $@
 
 $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
@@ -232,6 +233,22 @@ $(GLOBAL_ASM_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(A
 
 $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT) #repeat for other files
 	$(CPP) $(VERSION_CFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
+
+
+#################### Libultra                      #####################
+$(BUILD_DIR)/src/os/%.o:          OPT_FLAGS :=
+$(BUILD_DIR)/src/os/math/%.o:     OPT_FLAGS := -O2
+$(BUILD_DIR)/src/os/math/ll%.o:   OPT_FLAGS :=
+$(BUILD_DIR)/src/os/math/ll%.o:   MIPSISET := -mips3 -32
+$(BUILD_DIR)/src/os/ldiv.o:       OPT_FLAGS := -O2
+$(BUILD_DIR)/src/os/string.o:     OPT_FLAGS := -O2
+$(BUILD_DIR)/src/os/gu%.o:        OPT_FLAGS := -O3
+$(BUILD_DIR)/src/os/al%.o:        OPT_FLAGS := -O3
+$(BUILD_DIR)/src/os/__osLeoInterrupt.o:        OPT_FLAGS := -O1
+$(BUILD_DIR)/src/os/_Printf.o:        OPT_FLAGS := -O3
+$(BUILD_DIR)/src/os/_Litob.o:        OPT_FLAGS := -O3
+$(BUILD_DIR)/src/os/_Ldtob.o:        OPT_FLAGS := -O3
+
 
 #################### Compile course vertex to mio0 #####################
 
@@ -396,7 +413,7 @@ $(battle)/skyscraper/%.inc.mio0.o: courses/battle/skyscraper/%.inc.c
 
 
 $(BUILD_DIR)/$(TARGET).elf: $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(LD_COURSE_VERTEX_DEPENDENCIES) undefined_syms.txt
-	$(LD) $(LDFLAGS) -o $@ $(O_FILES)
+	$(LD) $(LDFLAGS) -o $@
 
 #	-R $(mushroom_cup)/luigi_raceway/model.inc.elf -R $(mushroom_cup)/moo_moo_farm/model.inc.elf -R $(mushroom_cup)/koopa_beach/model.inc.elf -R $(mushroom_cup)/kalimari_desert/model.inc.elf \
 	-R $(flower_cup)/toads_turnpike/model.inc.elf -R $(flower_cup)/frappe_snowland/model.inc.elf -R $(flower_cup)/choco_mountain/model.inc.elf -R $(flower_cup)/mario_raceway/model.inc.elf \

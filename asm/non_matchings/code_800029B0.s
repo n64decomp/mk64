@@ -408,10 +408,10 @@ glabel L80003000
 /* 003C0C 8000300C 00000000 */   nop   
 
 glabel func_80003010
-/* 003C10 80003010 3C038000 */  lui   $v1, %hi(D_8000031C) # $v1, 0x8000
+/* 003C10 80003010 3C038000 */  lui   $v1, %hi(osAppNmiBuffer) # $v1, 0x8000
 /* 003C14 80003014 3C028000 */  lui   $v0, %hi(D_8000035C) # $v0, 0x8000
 /* 003C18 80003018 2442035C */  addiu $v0, %lo(D_8000035C) # addiu $v0, $v0, 0x35c
-/* 003C1C 8000301C 2463031C */  addiu $v1, %lo(D_8000031C) # addiu $v1, $v1, 0x31c
+/* 003C1C 8000301C 2463031C */  addiu $v1, %lo(osAppNmiBuffer) # addiu $v1, $v1, 0x31c
 .L80003020:
 /* 003C20 80003020 24630010 */  addiu $v1, $v1, 0x10
 /* 003C24 80003024 AC60FFF4 */  sw    $zero, -0xc($v1)

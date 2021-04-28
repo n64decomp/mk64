@@ -54,8 +54,6 @@ extern u32 *D_802B91C8;
 
 void load_giant_egg(f32 *, f32, f32, f32);
 
-extern u32 D_8000031C[];
-
 // gfx?
 extern u32 *D_0F04FE28;
 extern u32 *D_0F050118;
@@ -223,7 +221,7 @@ void func_80003010(void) {
     int i;
 
     for (i = 0; i < 16; i++) {
-        D_8000031C[i] = 0;
+        ((u32 *)osAppNmiBuffer)[i] = 0;
     }
 }
 

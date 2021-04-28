@@ -54,6 +54,8 @@ context_gen_header.h
 tools/m2ctx.py
 # regardless of the above, the context file itself shouldnt be there
 ctx.c
+# diff.py -o requires a copy of the build folder
+expected/*
 
 # Assets. Generally ignored, but ones with "custom" in the name are fine.
 /bin/*
