@@ -63,6 +63,7 @@
 "bin/mk64.u.6A0ABC.bin": {"meta":{"size": "0x72304"}, "offsets":{"us":["0x6A0ABC","0x0"]}},
 "bin/mk64.u.724220.bin": {"meta":{"size": "0x5810"}, "offsets":{"us":["0x724220","0x0"]}},
 "bin/data_821D10.bin": {"meta":{"size": "0x8D88"}, "offsets":{"us":["0x821D10","0x0"]}},
+"bin/data_825800.bin": {"meta":{"size": "0x9480"}, "offsets":{"us":["0x825800","0x0"]}},
 "textures/startup_logo/startup_logo.rgba16.png": {"meta":{"dims":[32,32]}, "offsets":{"us":["0x825800", "0x8A48"]}},
 "bin/course_mario_raceway_dl.bin": {"meta":{"size": "0x3150"}, "offsets":{"us":["0x8284D0","0x0"]}},
 "bin/course_choco_mountain_dl.bin": {"meta":{"size": "0x2920"}, "offsets":{"us":["0x82B620","0x0"]}},
