@@ -39,7 +39,7 @@ COURSE_DIRS :=        \
 
 TEXTURES_DIR = textures
 
-ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) $(INCLUDE_DIRS) $(ASM_DIRS) $(ALL_KARTS_DIRS) $(TEXTURES_DIR)/raw $(TEXTURES_DIR)/standalone $(TEXTURES_DIR)/startup_logo)
+ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) $(INCLUDE_DIRS) $(ASM_DIRS) $(ALL_KARTS_DIRS) $(TEXTURES_DIR)/raw $(TEXTURES_DIR)/standalone $(TEXTURES_DIR)/startup_logo $(TEXTURES_DIR)/crash_screen)
 
 ################### Universal Dependencies ###################
 
@@ -217,6 +217,12 @@ $(BUILD_DIR)/%.mio0.o: $(BUILD_DIR)/%.mio0.s
 
 $(BUILD_DIR)/%.mio0.s: $(BUILD_DIR)/%.mio0
 	printf ".section .data\n\n.incbin \"$<\"\n" > $@
+
+$(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/crash_screen/crash_screen_font.ia1.inc.c -g textures/crash_screen/crash_screen_font.ia1.png -f ia1 -s u32
+	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+	$(CC) -c $(CFLAGS) -o $@ $<
+	$(PYTHON) tools/set_o32abi_bit.py $@
 
 $(BUILD_DIR)/src/startup_logo.inc.o: src/startup_logo.inc.c
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/startup_logo/startup_logo.rgba16.inc.c -g textures/startup_logo/startup_logo.rgba16.png -f rgba16 -s u8

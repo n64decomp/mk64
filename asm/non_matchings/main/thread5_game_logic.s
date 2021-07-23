@@ -80,7 +80,7 @@ glabel thread5_game_logic
 /* 0034A8 800028A8 00000000 */   nop   
 /* 0034AC 800028AC 0C00033A */  jal   func_80000CE8
 /* 0034B0 800028B0 00000000 */   nop   
-/* 0034B4 800028B4 0C0003CD */  jal   func_80000F34
+/* 0034B4 800028B4 0C0003CD */  jal   display_and_vsync
 /* 0034B8 800028B8 00000000 */   nop   
 /* 0034BC 800028BC 1000FFEB */  b     .L8000286C
 /* 0034C0 800028C0 00000000 */   nop   
