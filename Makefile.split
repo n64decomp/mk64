@@ -159,3 +159,8 @@ $(MUSIC_DIR)/seq_1E.m64 \
 $(MUSIC_DIR)/seq_1F.m64 \
 $(MUSIC_DIR)/seq_20.m64 \
 $(MUSIC_DIR)/seq_21.m64
+
+
+# SEGMENTED ADDRESSES
+
+$(BUILD_DIR)/src/startup_logo.elf:             SEGMENT_ADDRESS := 0x06000000

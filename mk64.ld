@@ -374,9 +374,9 @@ SECTIONS
       BUILD_DIR/data/data_821D10.o(.data);
    }
    END_SEG(data_821D10)
-   BEGIN_SEG(data_825800, 0x0C008D80)
+   BEGIN_SEG(data_825800, 0x06000000)
    {
-      BUILD_DIR/data/data_825800.o(.data);
+      BUILD_DIR/src/startup_logo.inc.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(data_825800)
