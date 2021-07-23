@@ -241,7 +241,7 @@ glabel gGfxSPTask
 glabel D_801502A0
 .skip 8
 
-glabel D_801502A8
+glabel gPhysicalFramebuffers
 .skip 12
 
 glabel D_801502B4

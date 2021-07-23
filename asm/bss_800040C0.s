@@ -11,7 +11,7 @@ glabel D_80162D40
 glabel D_80162D58
 .skip 4
 
-glabel D_80162D5C
+glabel pFramebuffer
 .skip 4
 
 glabel D_80162D60

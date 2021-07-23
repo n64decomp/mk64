@@ -1,7 +1,7 @@
 glabel thread3_video
 /* 002FE4 800023E4 27BDFFA0 */  addiu $sp, $sp, -0x60
-/* 002FE8 800023E8 3C038015 */  lui   $v1, %hi(D_801502A8) # $v1, 0x8015
-/* 002FEC 800023EC 246302A8 */  addiu $v1, %lo(D_801502A8) # addiu $v1, $v1, 0x2a8
+/* 002FE8 800023E8 3C038015 */  lui   $v1, %hi(gPhysicalFramebuffers) # $v1, 0x8015
+/* 002FEC 800023EC 246302A8 */  addiu $v1, %lo(gPhysicalFramebuffers) # addiu $v1, $v1, 0x2a8
 /* 002FF0 800023F0 3C0E8032 */  lui   $t6, %hi(D_8031F780) # $t6, 0x8032
 /* 002FF4 800023F4 3C0F8034 */  lui   $t7, %hi(D_80344F80) # $t7, 0x8034
 /* 002FF8 800023F8 3C188037 */  lui   $t8, %hi(D_8036A780) # $t8, 0x8037

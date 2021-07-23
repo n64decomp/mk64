@@ -51,6 +51,7 @@
 "textures/raw/ipl3_font_47.ia1.png": {"meta":{"dims":[13,14]}, "offsets":{"us":["0x000FA9","0x0"]}},
 "textures/raw/ipl3_font_48.ia1.png": {"meta":{"dims":[13,14]}, "offsets":{"us":["0x000FC0","0x0"]}},
 "textures/raw/ipl3_font_49.ia1.png": {"meta":{"dims":[13,14]}, "offsets":{"us":["0x000FD7","0x0"]}},
+"textures/crash_screen/crash_screen_font.ia1.png": {"meta":{"dims":[8,136]}, "offsets":{"us":["0x0DD274","0x0"]}},
 "bin/lib/PR/boot/F3D_boot.bin": {"meta":{"size": "0xD0"}, "offsets": {"us":["0x0D9B70", "0x0"]}},
 "bin/lib/PR/f3d/F3DEX.bin": {"meta":{"size": "0x13E0"}, "offsets": {"us":["0x0D9C40", "0x0"]}},
 "bin/lib/PR/f3d/F3DLX.bin": {"meta":{"size": "0x1410"}, "offsets": {"us":["0x0DB020", "0x0"]}},
