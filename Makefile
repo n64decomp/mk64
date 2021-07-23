@@ -206,10 +206,7 @@ $(BUILD_DIR)/%: %.png
 
 $(BUILD_DIR)/textures/%.mio0: $(BUILD_DIR)/textures/%
 	$(MIO0TOOL) -c $< $@
-
-$(BUILD_DIR)/textures/startup_logo/startup_logo.rgba16.inc.c: textures/startup_logo/startup_logo.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/startup_logo/startup_logo.rgba16.inc.c -g textures/startup_logo/startup_logo.rgba16.png -f rgba16 -s u8
-
+	
 #################### Compressed Segments #####################
 
 $(BUILD_DIR)/%.mio0: %.bin
@@ -220,6 +217,12 @@ $(BUILD_DIR)/%.mio0.o: $(BUILD_DIR)/%.mio0.s
 
 $(BUILD_DIR)/%.mio0.s: $(BUILD_DIR)/%.mio0
 	printf ".section .data\n\n.incbin \"$<\"\n" > $@
+
+$(BUILD_DIR)/src/startup_logo.inc.o: src/startup_logo.inc.c
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/startup_logo/startup_logo.rgba16.inc.c -g textures/startup_logo/startup_logo.rgba16.png -f rgba16 -s u8
+	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+	$(CC) -c $(CFLAGS) -o $@ $<
+	$(PYTHON) tools/set_o32abi_bit.py $@
 
 $(BUILD_DIR)/%.o: %.c
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
@@ -417,7 +420,7 @@ $(battle)/skyscraper/%.inc.mio0.o: courses/battle/skyscraper/%.inc.c
 
 # startup_logo.c
 
-$(BUILD_DIR)/src/startup_logo.inc.mio0.o: src/startup_logo.inc.c $(BUILD_DIR)/textures/startup_logo/startup_logo.rgba16.inc.c
+$(BUILD_DIR)/src/startup_logo.inc.mio0.o: src/startup_logo.inc.c
 	$(LD) -t -e 0 -Ttext=06000000 -Map $(BUILD_DIR)/src/startup_logo.inc.elf.map -o $(BUILD_DIR)/src/startup_logo.inc.elf $(BUILD_DIR)/src/startup_logo.inc.o --no-check-sections
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/startup_logo.inc.elf $(BUILD_DIR)/src/startup_logo.inc.bin
 	$(MIO0TOOL) -c $(BUILD_DIR)/src/startup_logo.inc.bin $(BUILD_DIR)/src/startup_logo.inc.mio0
