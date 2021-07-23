@@ -61,6 +61,14 @@ typedef struct {
 
 } mk64_Vtx;
 
+typedef struct {
+    s16        ob[3];    /* x, y, z */
+    s16        tc[2];    /* texture coord */
+    s8        flag[2];  /* unk flag */
+    u8    ca[4];    /* color & alpha */
+
+} mk_Vtx_Logo;
+
 struct courseTable {
      u32 *dlRomStart;     // 0x00 ROM start for segment 6 DL data
      u32 *dlRomEnd;       // 0x04 ROM end for segment 6 DL data
