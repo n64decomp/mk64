@@ -67,7 +67,12 @@ typedef struct {
     s8        flag[2];  /* unk flag */
     u8    ca[4];    /* color & alpha */
 
-} mk_Vtx_Logo;
+} mk_Vtx_Flag;
+
+typedef struct {
+    s8 ob[3];
+    s8 unk;
+} coursePath;
 
 struct courseTable {
      u32 *dlRomStart;     // 0x00 ROM start for segment 6 DL data
