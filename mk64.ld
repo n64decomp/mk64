@@ -374,7 +374,7 @@ SECTIONS
             0x828400 -> 0x8028DE30 (0xD0) */
    BEGIN_SEG(data_821D10, 0x0C000000)
    {
-      BUILD_DIR/data/data_821D10.o(.data);
+      BUILD_DIR/src/trophy_model.inc.mio0.o(.data);
    }
    END_SEG(data_821D10)
    BEGIN_SEG(data_825800, 0x06000000)
