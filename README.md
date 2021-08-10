@@ -4,18 +4,18 @@ MP is currently not functional. PR's accepted. Please open an issue if a bug is 
 Functionally equivallent code is accepted. All code must be inspired from legitimate sources and analysis of the game.
 
 Current progress:  
-Game logic allows all eight players to cross finish line without failing.
-Eighth player is forced to complete the race by turning into a CPU.
+- Game logic allows all eight players to cross finish line without failing.  
+- Eighth player is forced to complete the race by turning into a CPU.  
 
 Todo:  
-Skip certain menu elements
-Pause at end of races until everyone is ready to continue
-Possibly edit ending sequence but it should be okay.
-Make race end regardless of where the eighth player is on the map.
-Prevent character scrolling banner from popping up until all players have finished.
+- Skip certain menu elements  
+- Pause at end of races until everyone is ready to continue  
+- Possibly edit ending sequence but it should be okay.  
+- Make race end regardless of where the eighth player is on the map.  
+-Prevent character scrolling banner from popping up until all players have finished.  
 
 Extras:  
-Possibly balance kart stats
+- Possibly balance kart stats
 
 This repo contains a work-in-progress decompilation of Mario Kart 64 (U). The project pursues historical and educational elements found within the game via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information.
 
