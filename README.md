@@ -12,7 +12,7 @@ Todo:
 - Pause at end of races until everyone is ready to continue  
 - Possibly edit ending sequence but it should be okay.  
 - Make race end regardless of where the eighth player is on the map.  
--Prevent character scrolling banner from popping up until all players have finished.  
+- Prevent character scrolling banner from popping up until all players have finished.  
 
 Extras:  
 - Possibly balance kart stats
