@@ -4,6 +4,7 @@ MP is currently not functional. PR's accepted. Please open an issue if a bug is 
 Functionally equivallent code is accepted. All code must be inspired from legitimate sources and analysis of the game.
 
 Current progress:  
+- Supports up to eight human or computer players in single player GP mode.
 - Game logic allows all eight players to cross finish line without failing.  
 - Eighth player is forced to complete the race by turning into a CPU.  
 
