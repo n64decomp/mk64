@@ -1,6 +1,7 @@
 # Mario Kart 64
 
 MP is currently not functional. PR's accepted. Please open an issue if a bug is found.
+Functionally equivallent code is accepted. All code must be inspired from legitimate sources and analysis of the game.
 
 Current progress:
 Game logic allows all eight players to cross finish line without failing.
@@ -11,6 +12,7 @@ Skip certain menu elements
 Pause at end of races until everyone is ready to continue
 Possibly edit ending sequence but it should be okay.
 Make race end regardless of where the eighth player is on the map.
+Prevent character scrolling banner from popping up until all players have finished.
 
 Extras:
 Possibly balance kart stats
