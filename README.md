@@ -1,4 +1,4 @@
-# Mario Kart 64
+# Mario Kart 64 Multiplayer
 
 MP is currently not functional. PR's accepted. Please open an issue if a bug is found.
 Functionally equivallent code is accepted. All code must be inspired from legitimate sources and analysis of the game.
