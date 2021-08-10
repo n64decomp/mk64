@@ -218,6 +218,7 @@ SECTIONS
       BUILD_DIR/src/crash_screen.o(.data);
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
       BUILD_DIR/src/kart_attributes.inc.o(.data);
+      BUILD_DIR/src/code_8028DF00.o(.data);
       BUILD_DIR/data/data_0DD0A0_2.o(.rodata);
       BUILD_DIR/src/os/osInitialize.o(.data);
       /*BUILD_DIR/src/os/osCreateViManager.o(.data);*/
@@ -274,7 +275,7 @@ SECTIONS
    /* 0x8028DF00 0F7510-123640 [2C130] */
    BEGIN_SEG(code_8028DF00, SEG_8028DF00)
    {
-      BUILD_DIR/asm/code_8028DF00.o(.text);
+      BUILD_DIR/src/code_8028DF00.o(.text);
       BUILD_DIR/asm/code_80290C20.o(.text);
       BUILD_DIR/asm/code_80296A50.o(.text);
       BUILD_DIR/asm/code_802A3730.o(.text);
@@ -284,6 +285,8 @@ SECTIONS
       BUILD_DIR/data/data_121DA0.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);
       BUILD_DIR/data/data_121DA0_2.o(.data);
+      //BUILD_DIR/src/code_8028DF00.o(.rodata);
+      BUILD_DIR/data/data_121DA0_2_1.o(.data);
    }
    END_SEG(code_8028DF00)
 

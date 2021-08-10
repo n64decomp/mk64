@@ -57,7 +57,7 @@ extern u64 gspF3DLXTextStart[], gspF3DLXTextEnd[];
 extern u64 gspF3DEXDataStart[];
 extern u64 gspF3DLXDataStart[];
 
-extern u32 gPlayerCountSelection1;
+extern s32 gPlayerCountSelection1;
 extern u32 D_800DC50C;
 
 extern u32 gGfxSPTaskStack;

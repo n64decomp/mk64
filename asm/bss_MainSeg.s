@@ -170,7 +170,7 @@ glabel D_80164378
 glabel D_80164386
 .skip 10
 
-glabel D_80164390
+glabel lapCount
 .skip 2
 
 glabel D_80164392
