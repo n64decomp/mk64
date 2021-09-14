@@ -214,6 +214,14 @@ SECTIONS
       BUILD_DIR/src/os/ldiv.o(.text);
 
       BUILD_DIR/data/rsp.o(.text);
+
+      BUILD_DIR/src/network/client_messages.o(.text);
+      BUILD_DIR/src/network/game_messages.o(.text);
+      BUILD_DIR/src/network/lan64.o(.text);
+      BUILD_DIR/src/network/message_queue.o(.text);
+      BUILD_DIR/src/network/util.o(.text);
+      BUILD_DIR/src/network/network.o(.text);
+
       BUILD_DIR/data/data_0DD0A0.o(.data);
       BUILD_DIR/src/crash_screen.o(.data);
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
@@ -228,9 +236,12 @@ SECTIONS
       BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.data);
       BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.data);
       BUILD_DIR/src/os/_Printf.o(.data);
+      BUILD_DIR/src/network/network.o(.data);
       BUILD_DIR/data/rodata_libultra.o(.rodata);
       BUILD_DIR/src/os/_Litob.o(.data);
       BUILD_DIR/data/rodata_main.o(.rodata);
+      BUILD_DIR/src/main.o(.rodata);
+      BUILD_DIR/data/rodata_main_2.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
       BUILD_DIR/src/os/__osDevMgrMain.o(.rodata);
@@ -242,6 +253,8 @@ SECTIONS
       BUILD_DIR/src/data_0DD0A0_3.inc.o(.data);
       BUILD_DIR/data/rsp.o(.data);
       BUILD_DIR/src/audio/data.o(.data);
+      BUILD_DIR/src/network/lan64.o(.rodata);
+      BUILD_DIR/src/network/network.o(.rodata);
    }
    END_SEG(main)
 
@@ -264,6 +277,8 @@ SECTIONS
       BUILD_DIR/asm/bss_after_ostimer.o(.bss);
       BUILD_DIR/src/os/osLeoDiskInit.o(.bss);
       BUILD_DIR/asm/bss_after_diskinit.o(.bss);
+      BUILD_DIR/src/network/lan64.o(.bss);
+      BUILD_DIR/src/network/network.o(.bss);
    }
    END_NOLOAD(main)
 	
