@@ -7,7 +7,7 @@ void network_character_select(s32 arg0, s8 arg1, s8 arg2, s8 arg3);
 
 
 struct mp_PlayerData {
-    u8 addr;
+    u32 addr;
     char name;
     u32 player; /* playerStruct */
     s32 index;
