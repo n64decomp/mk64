@@ -3,6 +3,11 @@
 MP is currently not functional. PR's accepted. Please open an issue if a bug is found.
 Functionally equivallent code is accepted. All code must be inspired from legitimate sources and analysis of the game.
 
+Requires:
+https://github.com/Henrik0x7F/lan64/tree/master/n64
+in
+src/network/
+
 Current progress:  
 - Supports up to eight human or computer players in single player GP mode.
 - Game logic allows all eight players to cross finish line without failing.  
