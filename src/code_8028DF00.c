@@ -101,7 +101,7 @@ extern u16 D_8015F894;
 
 // Likely bss memed need to declare controllers likely in main.c
 /*
-extern void func_8028DF00(void) {
+void func_8028DF00(void) {
     struct Controller *controllers = (u16) &D_800F6914[0];
     s32 i;
     for (i = 0; i < 4; i ++) {
