@@ -44,7 +44,7 @@ extern u32 D_800DC530;
 extern u32 D_8015F730;
 extern u32 D_8015F734;
 extern u32 gPrevLoadedAddress;
-extern u32 D_80150120;
+extern s32 D_80150120;
 extern s16 gCupTrackOrder[][4];
 
 void func_800CA008(u8, u8);
