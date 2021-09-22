@@ -85,7 +85,7 @@ SECTIONS
       BUILD_DIR/asm/code_8006E9C0.o(.text);
       BUILD_DIR/asm/code_80071F00.o(.text);
       BUILD_DIR/asm/code_80086E70.o(.text);
-      BUILD_DIR/asm/code_8008C1D0.o(.text);
+      BUILD_DIR/src/code_8008C1D0.o(.text);
       BUILD_DIR/asm/code_80091750.o(.text);
       BUILD_DIR/src/code_800AF9B0.o(.text);
       BUILD_DIR/asm/audio/synthesis.o(.text);
