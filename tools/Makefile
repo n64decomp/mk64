@@ -19,6 +19,9 @@ extract_data_for_mio_SOURCES := extract_data_for_mio.c
 
 all: $(PROGRAMS)
 
+subsystem:
+	$(MAKE) -C ido5.3_recomp
+
 clean:
 	$(RM) $(PROGRAMS)
 
