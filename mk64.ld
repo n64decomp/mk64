@@ -230,6 +230,7 @@ SECTIONS
       BUILD_DIR/data/rodata_libultra.o(.rodata);
       BUILD_DIR/src/os/_Litob.o(.data);
       BUILD_DIR/data/rodata_main.o(.rodata);
+      BUILD_DIR/src/main.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
       BUILD_DIR/src/os/__osDevMgrMain.o(.rodata);
@@ -274,7 +275,7 @@ SECTIONS
    /* 0x8028DF00 0F7510-123640 [2C130] */
    BEGIN_SEG(code_8028DF00, SEG_8028DF00)
    {
-      BUILD_DIR/asm/code_8028DF00.o(.text);
+      BUILD_DIR/src/code_8028DF00.o(.text);
       BUILD_DIR/asm/code_80290C20.o(.text);
       BUILD_DIR/asm/code_80296A50.o(.text);
       BUILD_DIR/asm/code_802A3730.o(.text);
@@ -284,6 +285,8 @@ SECTIONS
       BUILD_DIR/data/data_121DA0.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);
       BUILD_DIR/data/data_121DA0_2.o(.data);
+      //BUILD_DIR/src/code_8028DF00.o(.rodata);
+      BUILD_DIR/data/data_121DA0_2_1.o(.data);
    }
    END_SEG(code_8028DF00)
 
