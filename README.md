@@ -1,6 +1,6 @@
 # Mario Kart 64
 
-This repo contains a work-in-progress decompilation of Mario Kart 64 (U). The project pursues historical and educational elements found within the game via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information.
+This repo contains a work-in-progress decompilation of Mario Kart 64 (U). The project pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information.
 
 It builds the following ROM:
 
@@ -38,7 +38,7 @@ Run the following commands after pulling:
 
 ## Progress
 
-The Mario Kart 64 code-base contains thirty-six C files, around twenty-eight files remain for decompilation. This does not account for other kinds of files such as data. The source is in an experimental 'shiftable' state that may allow modding but glitches and crashes are prevalent and the code-base will alter significantly overtime. As such, feedback that raises awareness of new issues are welcome. Please review issue #1 prior to issue submission to avoid duplicates.
+The Mario Kart 64 code-base contains thirty-five C files, around twenty-eight files remain for decompilation. This does not account for other kinds of files such as data. The source is in a 'shiftable' state that may allow modding but glitches may exist. Keep in-mind the code-base will alter significantly overtime. Feedback that raises awareness of new shift issues are welcome as a comment on issue #6. Note that some segments must be moved manually to prevent them colliding into each other.
 
 ## Project Structure
 	
@@ -55,6 +55,7 @@ The Mario Kart 64 code-base contains thirty-six C files, around twenty-eight fil
 	├── music: sequences
 	├── src: C source code for the game
 	│   └── audio: sample tables
+	│   └── os: libultra
 	├── textures: texture data, bitmaps
 	│   ├── raw: raw textures
   	│   └── standalone: whole textures
