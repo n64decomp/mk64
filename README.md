@@ -38,7 +38,7 @@ Run the following commands after pulling:
 
 ## Progress
 
-The Mario Kart 64 code-base contains thirty-five C files, around twenty-eight files remain for decompilation. This does not account for other kinds of files such as data. The source is in a 'shiftable' state that may allow modding but glitches may exist. Keep in-mind the code-base will alter significantly overtime. Feedback that raises awareness of new shift issues are welcome as a comment on issue #6. Note that some segments must be moved manually to prevent them colliding into each other.
+The Mario Kart 64 code-base contains thirty-five C files, around twenty-seven files remain for decompilation. This does not account for other kinds of files such as data. The source is in a 'shiftable' state that may allow modding but glitches may exist. Keep in-mind the code-base will alter significantly overtime. Feedback that raises awareness of new shift issues are welcome as a comment on issue #6. Note that some segments must be moved manually to prevent them colliding into each other.
 
 ## Project Structure
 	
