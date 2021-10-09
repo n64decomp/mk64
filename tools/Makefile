@@ -2,7 +2,6 @@ CC := gcc
 CFLAGS := -I . -Wall -Wextra -Wno-unused-parameter -pedantic -std=c99 -O2 -s
 PROGRAMS := mio0 n64graphics n64cksum tkmk00 extract_data_for_mio
 
-
 n64graphics_SOURCES := n64graphics.c utils.c
 n64graphics_CFLAGS  := -DN64GRAPHICS_STANDALONE
 
@@ -17,13 +16,14 @@ n64cksum_CFLAGS := -DN64CKSUM_STANDALONE
 
 extract_data_for_mio_SOURCES := extract_data_for_mio.c
 
-all: $(PROGRAMS)
+all: $(PROGRAMS) subsystem
 
 subsystem:
 	$(MAKE) -C ido5.3_recomp
 
 clean:
 	$(RM) $(PROGRAMS)
+	$(MAKE) -C ido5.3_recomp clean
 
 define COMPILE =
 $(1): $($1_SOURCES)
