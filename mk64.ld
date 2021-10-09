@@ -75,7 +75,7 @@ SECTIONS
       BUILD_DIR/asm/code_80027D00.o(.text);
       BUILD_DIR/src/code_800393C0.o(.text);
       BUILD_DIR/asm/code_8003DC40.o(.text);
-      BUILD_DIR/asm/code_80040030.o(.text);
+      BUILD_DIR/asm/unused_mio0_decode.o(.text);
       BUILD_DIR/asm/mio0_decode.o(.text);
       BUILD_DIR/asm/tkmk00_decode.o(.text);
       BUILD_DIR/src/gbiMacro.o(.text);
