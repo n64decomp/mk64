@@ -459,15 +459,16 @@ GLOBAL_ASM("asm/non_matchings/main/dma_copy.s")
 // Resembles setup_game_memory from SM64
 #ifdef NON_MATCHING
 void init_game(void) {
-    s32 sp40;
-    s32 sp38;
+    UNUSED s32 sp38;//0x38(sp)
     u32 *sp2C;
-    s32 temp_a1;
     s32 temp_t7;
+    s32 sp40;
     s32 temp_t2;
+    u32 temp_a1;
+	UNUSED s16 unknown_padding;
 
     func_800010CC();
-    gHeapEndPtr = 0x8028DF00;
+    gHeapEndPtr = SEG_8028DF00;
     set_segment_base_addr(0, 0x80000000);
     func_802A7CF0(&D_801978D0, 0x80242F00);
     func_80000BEC();
@@ -479,14 +480,17 @@ void init_game(void) {
     sp2C = 0x8028DF00 - temp_t2;
     osPiStartDma(&D_8014F0A0, 0, 0, &_common_texturesSegmentRomStart, 0x8028DF00 - temp_t2, temp_t2, &D_8014EF58);
     osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+	
+	
+	//need to match this
+	
     temp_a1 = gPrevLoadedAddress;
-    sp38 = temp_a1;
     sp40 = ALIGN16(sp2C[1]);
     mio0decode(sp2C, temp_a1);
     set_segment_base_addr(0xD, temp_a1);
-    temp_t7 = sp40 + gPrevLoadedAddress;
-    gPrevLoadedAddress = temp_t7;
-    D_8015F734 = temp_t7;
+    
+    gPrevLoadedAddress = gPrevLoadedAddress + sp40;
+    D_8015F734 = gPrevLoadedAddress;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/main/init_game.s")
