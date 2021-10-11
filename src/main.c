@@ -27,9 +27,9 @@ struct SPTask *create_next_audio_frame_task(void);
 
 extern s32 D_800DC524;
 extern s32 D_800DC52C;
-extern OSThread D_801524C0;
-extern OSThread D_80154670;
-extern OSViMode D_800EA6C0, D_800EAF80;
+extern OSThread gIdleThread;
+extern OSThread gVideoThread;
+extern OSViMode gOsViMode_NTSC, gOsViMode_PAL;
 extern s16 D_8015011C;
 extern OSMesgQueue D_8015F460;
 extern OSMesg D_8015F3E0;
@@ -129,16 +129,17 @@ void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, 
 
 void main_func(void) {
     osInitialize();
-    create_thread(&D_801524C0, 1, thread1_idle, NULL, &D_80154670, 100);
-    osStartThread(&D_801524C0);
+	//! Why is this using the gVideoThread as idle stack?
+    create_thread(&gIdleThread, 1, thread1_idle, NULL, &gVideoThread, 100);
+    osStartThread(&gIdleThread);
 }
 
 void thread1_idle(void *arg0) {
     osCreateViManager(OS_PRIORITY_VIMGR);
-    if (osTvType == 1) {
-        osViSetMode(&D_800EA6C0);
+    if (osTvType == TV_TYPE_NTSC) {
+        osViSetMode(&gOsViMode_NTSC);
     } else {
-        osViSetMode(&D_800EAF80);
+        osViSetMode(&gOsViMode_PAL);
     }
     osViBlack(TRUE);
     osViSetSpecialFeatures(OS_VI_GAMMA_OFF);
@@ -146,14 +147,12 @@ void thread1_idle(void *arg0) {
     D_8015011C = (s16) osResetType;
     create_debug_thread();
     start_debug_thread();
-    create_thread(&D_80154670, 3, &thread3_video, arg0, &D_80156820, 100);
-    osStartThread(&D_80154670);
+    create_thread(&gVideoThread, 3, &thread3_video, arg0, &D_80156820, 100);
+    osStartThread(&gVideoThread);
     osSetThreadPri(NULL, 0);
 
     // halt
-    while (1) {
-        ;
-    }
+    while (1);
 }
 
 void setup_mesg_queues(void) {
@@ -339,14 +338,14 @@ void func_80000CE8(void) {
 }
 
 // clear_frame_buffer from SM64, with a few edits
-#ifdef NON_MATCHING
-void func_80000D3C(s32 arg0) {
+//! TODO: Why did void* work for matching
+void *clear_framebuffer(s32 color) {
     gDPPipeSync(gDisplayListHead++);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
 
-    gDPSetFillColor(gDisplayListHead++, arg0);
+    gDPSetFillColor(gDisplayListHead++, color);
     gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH - 1,
                      SCREEN_HEIGHT - 1);
 
@@ -354,9 +353,6 @@ void func_80000D3C(s32 arg0) {
 
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/main/func_80000D3C.s")
-#endif
 
 void rendering_init(void) {
     gGfxPool = &gGfxPools[0];
@@ -364,7 +360,7 @@ void rendering_init(void) {
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = &gGfxPool->buffer[0x3418];
     func_80000CA8();
-    func_80000D3C(0);
+    clear_framebuffer(0);
     func_80000CE8();
     send_display_list(&gGfxPool->spTask);
     sRenderingFramebuffer++;
@@ -498,7 +494,7 @@ GLOBAL_ASM("asm/non_matchings/main/init_game.s")
 
 void func_80001404(void) {
     D_800DC524 = 0;
-    func_80000D3C(0);
+    clear_framebuffer(0);
 }
 
 #ifdef MIPS_TO_C
