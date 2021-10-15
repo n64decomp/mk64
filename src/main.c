@@ -34,7 +34,7 @@ extern OSThread gVideoThread;
 extern u16 D_8015011C;
 extern OSMesgQueue D_8015F460;
 extern OSMesg D_8015F3E0;
-extern s32 D_80156820;
+extern s32 gVideoThreadStack;
 extern struct SPTask *gActiveSPTask;
 extern s16 sNumVBlanks;
 extern f32 D_800DC594;
@@ -148,7 +148,7 @@ void thread1_idle(void *arg0) {
     D_8015011C = (s16) osResetType;
     create_debug_thread();
     start_debug_thread();
-    create_thread(&gVideoThread, 3, &thread3_video, arg0, &D_80156820, 100);
+    create_thread(&gVideoThread, 3, &thread3_video, arg0, &gVideoThreadStack, 100);
     osStartThread(&gVideoThread);
     osSetThreadPri(NULL, 0);
 
@@ -1215,19 +1215,19 @@ void thread5_game_logic(s32 arg0) {
     rendering_init();
     read_controllers();
     func_800C5CB8();
-loop_3:
-    func_800CB2C4();
-    if (D_800DC524 != D_800DC50C) {
-        D_800DC50C = (s32) D_800DC524;
-        func_80002684();
+    while(1) {
+        func_800CB2C4();
+        if (D_800DC524 != D_800DC50C) {
+            D_800DC50C = (s32) D_800DC524;
+            func_80002684();
+        }
+        profiler_log_thread5_time(0);
+        config_gfx_pool();
+        read_controllers();
+        func_80001ECC();
+        func_80000CE8();
+        display_and_vsync();
     }
-    profiler_log_thread5_time(0);
-    config_gfx_pool();
-    read_controllers();
-    func_80001ECC();
-    func_80000CE8();
-    display_and_vsync();
-    goto loop_3;
 }
 
 void thread4_audio(UNUSED s32 arg0) {
