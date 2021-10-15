@@ -13,12 +13,11 @@ typedef struct {
 
 extern u32 D_80194040; // maybe initialized?
 extern s32 __osLeoInterrupt;
-extern u32 D_800EA5F0;
-
 
 u64 osClockRate = 62500000;
 u32 D_800EA5E8 = 0;
 u32 __OSGlobalIntMask = OS_IM_ALL;
+u32 D_800EA5F0 = 0;
 
 #define EXCEPTION_TLB_MISS 0x80000000
 #define EXCEPTION_XTLB_MISS 0x80000080
