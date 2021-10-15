@@ -324,7 +324,6 @@ OSViMode osViModeTable[] = {
           /*vBurst*/ 918020,
           /*vIntr*/ 2 } } },
 
-#if defined(VERSION_JP) || defined(VERSION_EU) || defined(VERSION_SH)
     /*osViModePalLpn1*/
     { /*type*/ 14,
       /*comRegs*/
@@ -773,8 +772,6 @@ OSViMode osViModeTable[] = {
           /*vStart*/ 6226489,
           /*vBurst*/ 852585,
           /*vIntr*/ 2 } } },
-#endif
-#if defined(VERSION_US) || defined(VERSION_EU) || defined (VERSION_SH)
     /*osViModePalLpn1*/
     { /*type*/ 28,
       /*comRegs*/
@@ -1097,5 +1094,4 @@ OSViMode osViModeTable[] = {
           /*vStart*/ 2425343,
           /*vBurst*/ 918020,
           /*vIntr*/ 2 } } }
-#endif
 };
