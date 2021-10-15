@@ -52,7 +52,7 @@ void func_80281D00(void) {
     func_802A53A4();
     func_802A3E3C();
     if (D_80287550 != 0xFFFF) {
-        func_80000D3C(0);
+        clear_framebuffer(0);
         if (D_80287554 >= 4) {
             D_800DC5C0 = 0;
             D_800DC524 = D_80287550;

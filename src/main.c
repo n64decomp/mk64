@@ -30,9 +30,7 @@ extern s32 D_800DC524;
 extern s32 D_800DC52C;
 extern OSThread gIdleThread;
 extern OSThread gVideoThread;
-//extern OSViMode osViModeTable[];
 
-//extern OSViMode gOsViMode_NTSC, gOsViMode_PAL;
 extern u16 D_8015011C;
 extern OSMesgQueue D_8015F460;
 extern OSMesg D_8015F3E0;
