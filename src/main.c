@@ -1,4 +1,5 @@
 #include <ultra64.h>
+#include <PR/os.h>
 #include <macros.h>
 #include "types.h"
 #include "config.h"
@@ -27,10 +28,12 @@ struct SPTask *create_next_audio_frame_task(void);
 
 extern s32 D_800DC524;
 extern s32 D_800DC52C;
-extern OSThread D_801524C0;
-extern OSThread D_80154670;
-extern OSViMode D_800EA6C0, D_800EAF80;
-extern s16 D_8015011C;
+extern OSThread gIdleThread;
+extern OSThread gVideoThread;
+//extern OSViMode osViModeTable[];
+
+//extern OSViMode gOsViMode_NTSC, gOsViMode_PAL;
+extern u16 D_8015011C;
 extern OSMesgQueue D_8015F460;
 extern OSMesg D_8015F3E0;
 extern s32 D_80156820;
@@ -129,16 +132,17 @@ void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, 
 
 void main_func(void) {
     osInitialize();
-    create_thread(&D_801524C0, 1, thread1_idle, NULL, &D_80154670, 100);
-    osStartThread(&D_801524C0);
+	//! Why is this using the gVideoThread as idle stack?
+    create_thread(&gIdleThread, 1, thread1_idle, NULL, &gVideoThread, 100);
+    osStartThread(&gIdleThread);
 }
 
 void thread1_idle(void *arg0) {
     osCreateViManager(OS_PRIORITY_VIMGR);
-    if (osTvType == 1) {
-        osViSetMode(&D_800EA6C0);
+    if (osTvType == TV_TYPE_NTSC) {
+        osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);
     } else {
-        osViSetMode(&D_800EAF80);
+        osViSetMode(&osViModeTable[OS_VI_MPAL_LAN1]);
     }
     osViBlack(TRUE);
     osViSetSpecialFeatures(OS_VI_GAMMA_OFF);
@@ -146,14 +150,12 @@ void thread1_idle(void *arg0) {
     D_8015011C = (s16) osResetType;
     create_debug_thread();
     start_debug_thread();
-    create_thread(&D_80154670, 3, &thread3_video, arg0, &D_80156820, 100);
-    osStartThread(&D_80154670);
+    create_thread(&gVideoThread, 3, &thread3_video, arg0, &D_80156820, 100);
+    osStartThread(&gVideoThread);
     osSetThreadPri(NULL, 0);
 
     // halt
-    while (1) {
-        ;
-    }
+    while (1);
 }
 
 void setup_mesg_queues(void) {
@@ -339,14 +341,14 @@ void func_80000CE8(void) {
 }
 
 // clear_frame_buffer from SM64, with a few edits
-#ifdef NON_MATCHING
-void func_80000D3C(s32 arg0) {
+//! TODO: Why did void* work for matching
+void *clear_framebuffer(s32 color) {
     gDPPipeSync(gDisplayListHead++);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
 
-    gDPSetFillColor(gDisplayListHead++, arg0);
+    gDPSetFillColor(gDisplayListHead++, color);
     gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH - 1,
                      SCREEN_HEIGHT - 1);
 
@@ -354,9 +356,6 @@ void func_80000D3C(s32 arg0) {
 
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/main/func_80000D3C.s")
-#endif
 
 void rendering_init(void) {
     gGfxPool = &gGfxPools[0];
@@ -364,7 +363,7 @@ void rendering_init(void) {
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = &gGfxPool->buffer[0x3418];
     func_80000CA8();
-    func_80000D3C(0);
+    clear_framebuffer(0);
     func_80000CE8();
     send_display_list(&gGfxPool->spTask);
     sRenderingFramebuffer++;
@@ -463,34 +462,39 @@ GLOBAL_ASM("asm/non_matchings/main/dma_copy.s")
 // Resembles setup_game_memory from SM64
 #ifdef NON_MATCHING
 void init_game(void) {
-    s32 sp40;
-    s32 sp38;
+    s32 sp38;//0x38(sp)
     u32 *sp2C;
-    s32 temp_a1;
     s32 temp_t7;
-    s32 temp_t2;
+    s32 sp40;
+    s32 texture_seg;
+    //u32 temp_a1;
+	UNUSED s16 unknown_padding;
 
     func_800010CC();
-    gHeapEndPtr = 0x8028DF00;
+    gHeapEndPtr = SEG_8028DF00;
     set_segment_base_addr(0, 0x80000000);
     func_802A7CF0(&D_801978D0, 0x80242F00);
     func_80000BEC();
-    osInvalDCache(0x802BA370, 0x5810);
-    osPiStartDma(&D_8014F0A0, 0, 0, &_data_802BA370SegmentRomStart, 0x802BA370, 0x5810, &D_8014EF58);
+    osInvalDCache(SEG_802BA370, 0x5810);
+    osPiStartDma(&D_8014F0A0, 0, 0, &_data_802BA370SegmentRomStart, SEG_802BA370, 0x5810, &D_8014EF58);
     osRecvMesg(&D_8014EF58, &D_8014F098, 1);
     set_segment_base_addr(2, func_802A7D70(&_data_segment2SegmentRomStart, &_data_segment2SegmentRomEnd));
-    temp_t2 = ALIGN16((u32)&_common_texturesSegmentRomEnd - (u32)&_common_texturesSegmentRomStart);
-    sp2C = 0x8028DF00 - temp_t2;
-    osPiStartDma(&D_8014F0A0, 0, 0, &_common_texturesSegmentRomStart, 0x8028DF00 - temp_t2, temp_t2, &D_8014EF58);
+    texture_seg = ALIGN16((u32)&_common_texturesSegmentRomEnd - (u32)&_common_texturesSegmentRomStart);
+    sp2C = SEG_8028DF00 - texture_seg;
+    osPiStartDma(&D_8014F0A0, 0, 0, &_common_texturesSegmentRomStart, SEG_8028DF00 - texture_seg, texture_seg, &D_8014EF58);
     osRecvMesg(&D_8014EF58, &D_8014F098, 1);
-    temp_a1 = gPrevLoadedAddress;
-    sp38 = temp_a1;
+	
+	
+	//need to match this
+	
+    sp40 = texture_seg + 4;
     sp40 = ALIGN16(sp2C[1]);
-    mio0decode(sp2C, temp_a1);
-    set_segment_base_addr(0xD, temp_a1);
-    temp_t7 = sp40 + gPrevLoadedAddress;
-    gPrevLoadedAddress = temp_t7;
-    D_8015F734 = temp_t7;
+    sp38 = gPrevLoadedAddress;
+    mio0decode(texture_seg, sp38);
+    set_segment_base_addr(0xD, sp38);
+    
+    gPrevLoadedAddress += sp40;
+    D_8015F734 = gPrevLoadedAddress;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/main/init_game.s")
@@ -498,7 +502,7 @@ GLOBAL_ASM("asm/non_matchings/main/init_game.s")
 
 void func_80001404(void) {
     D_800DC524 = 0;
-    func_80000D3C(0);
+    clear_framebuffer(0);
 }
 
 #ifdef MIPS_TO_C
@@ -1190,8 +1194,12 @@ void func_80002684(void) {
 GLOBAL_ASM("asm/non_matchings/main/func_80002684.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit ffee479fae41a1cdc3e454e9b9d75bbd226a160f
+extern OSMesg* D_8014F008;
+extern OSMesg* D_8014F00C;
+extern s32 D_8014EF48;
+extern s32 D_800DC600;
+extern s32 D_8015F8B8, D_8015F8BC, D_8015F8C0, D_8015F8C4, D_8015F8C8, D_8015F8CC;
+
 void thread5_game_logic(s32 arg0) {
     osCreateMesgQueue(&D_8014EF88, &D_8014F00C, 1);
     osCreateMesgQueue(&D_8014EF70, &D_8014F008, 1);
@@ -1211,7 +1219,7 @@ void thread5_game_logic(s32 arg0) {
     func_800C5CB8();
 loop_3:
     func_800CB2C4();
-    if (D_800DC50C != D_800DC524) {
+    if (D_800DC524 != D_800DC50C) {
         D_800DC50C = (s32) D_800DC524;
         func_80002684();
     }
@@ -1223,9 +1231,6 @@ loop_3:
     display_and_vsync();
     goto loop_3;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/main/thread5_game_logic.s")
-#endif
 
 void thread4_audio(UNUSED s32 arg0) {
     UNUSED u32 unused[3];
