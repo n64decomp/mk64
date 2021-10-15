@@ -1,4 +1,5 @@
 #include "libultra_internal.h"
+#include <macros.h>
 
 #define OS_VI_MANAGER_MESSAGE_BUFF_SIZE 5
 
@@ -15,7 +16,6 @@ extern void __osTimerServicesInit(void);
 extern void __osTimerInterrupt(void);
 extern OSTime __osCurrentTime;
 extern u32 __osBaseCounter;
-extern u32 D_80365DA8;
 extern u32 __osViIntrCount;
 void viMgrMain(void *);
 
@@ -47,9 +47,7 @@ void osCreateViManager(OSPri pri) {
         viMgrMainArgs.eventQueue = &__osViMesgQueue;
         viMgrMainArgs.accessQueue = NULL;
         viMgrMainArgs.dma_func = NULL;
-#if defined(VERSION_EU) || defined(VERSION_SH)
         viMgrMainArgs.edma_func = NULL;
-#endif
 
         osCreateThread(&viMgrThread, 0, viMgrMain, (void *) &viMgrMainArgs, &viMgrStack[0x400], pri);
         __osViInit();
