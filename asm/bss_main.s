@@ -265,13 +265,13 @@ glabel D_80152306
 glabel D_80152308
 .skip 440
 
-glabel D_801524C0
+glabel gIdleThread
 .skip 8624
 
-glabel D_80154670
+glabel gVideoThread
 .skip 8624
 
-glabel D_80156820
+glabel gVideoThreadStack
 .skip 8624
 
 glabel D_801589D0
