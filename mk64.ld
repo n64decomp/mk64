@@ -100,7 +100,8 @@ SECTIONS
       BUILD_DIR/src/os/osCreateThread.o(.text);
       BUILD_DIR/src/os/osInitialize.o(.text);
       BUILD_DIR/src/os/osStartThread.o(.text);
-      BUILD_DIR/asm/os/osCreateViManager.o(.text);
+      BUILD_DIR/src/os/osCreateViManager.o(.text);
+      BUILD_DIR/asm/os/osCreateViManagerPadding.o(.text);
       BUILD_DIR/src/os/osViSetMode.o(.text);
       BUILD_DIR/src/os/osViBlack.o(.text);
       BUILD_DIR/src/os/osViSetSpecialFeatures.o(.text);
@@ -219,8 +220,9 @@ SECTIONS
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
       BUILD_DIR/src/kart_attributes.inc.o(.data);
       BUILD_DIR/data/data_0DD0A0_2.o(.rodata);
-      BUILD_DIR/src/os/osInitialize.o(.data);
-      /*BUILD_DIR/src/os/osCreateViManager.o(.data);*/
+      BUILD_DIR/src/os/osInitialize.o(.data*);
+      BUILD_DIR/src/os/osCreateViManager.o(.data);
+      BUILD_DIR/src/os/osViTable.o(.data);
       BUILD_DIR/data/data_0DD0A0_2_1.o(.data);
       BUILD_DIR/src/os/osTimer.o(.data);
       BUILD_DIR/src/os/__osViInit.o(.data);
@@ -257,6 +259,8 @@ SECTIONS
       BUILD_DIR/asm/bss_80004EF0.o(.bss);
       BUILD_DIR/asm/bss_80005FD0.o(.bss);
       BUILD_DIR/asm/bss_MainSeg.o(.bss);
+      BUILD_DIR/src/os/osCreateViManager.o(.bss);
+      BUILD_DIR/asm/bss_MainSeg_2.o(.bss);
       BUILD_DIR/src/os/osTimer.o(.bss);
       BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.bss);
       BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.bss);

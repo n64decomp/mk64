@@ -271,7 +271,7 @@ glabel gIdleThread
 glabel gVideoThread
 .skip 8624
 
-glabel D_80156820
+glabel gVideoThreadStack
 .skip 8624
 
 glabel D_801589D0

@@ -1,4 +1,5 @@
 #include <ultra64.h>
+#include <PR/os.h>
 #include <macros.h>
 #include "types.h"
 #include "config.h"
@@ -29,11 +30,11 @@ extern s32 D_800DC524;
 extern s32 D_800DC52C;
 extern OSThread gIdleThread;
 extern OSThread gVideoThread;
-extern OSViMode gOsViMode_NTSC, gOsViMode_PAL;
+
 extern u16 D_8015011C;
 extern OSMesgQueue D_8015F460;
 extern OSMesg D_8015F3E0;
-extern s32 D_80156820;
+extern s32 gVideoThreadStack;
 extern struct SPTask *gActiveSPTask;
 extern s16 sNumVBlanks;
 extern f32 D_800DC594;
@@ -137,9 +138,9 @@ void main_func(void) {
 void thread1_idle(void *arg0) {
     osCreateViManager(OS_PRIORITY_VIMGR);
     if (osTvType == TV_TYPE_NTSC) {
-        osViSetMode(&gOsViMode_NTSC);
+        osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);
     } else {
-        osViSetMode(&gOsViMode_PAL);
+        osViSetMode(&osViModeTable[OS_VI_MPAL_LAN1]);
     }
     osViBlack(TRUE);
     osViSetSpecialFeatures(OS_VI_GAMMA_OFF);
@@ -147,7 +148,7 @@ void thread1_idle(void *arg0) {
     D_8015011C = (s16) osResetType;
     create_debug_thread();
     start_debug_thread();
-    create_thread(&gVideoThread, 3, &thread3_video, arg0, &D_80156820, 100);
+    create_thread(&gVideoThread, 3, &thread3_video, arg0, &gVideoThreadStack, 100);
     osStartThread(&gVideoThread);
     osSetThreadPri(NULL, 0);
 
@@ -459,12 +460,12 @@ GLOBAL_ASM("asm/non_matchings/main/dma_copy.s")
 // Resembles setup_game_memory from SM64
 #ifdef NON_MATCHING
 void init_game(void) {
-    UNUSED s32 sp38;//0x38(sp)
+    s32 sp38;//0x38(sp)
     u32 *sp2C;
     s32 temp_t7;
     s32 sp40;
-    s32 temp_t2;
-    u32 temp_a1;
+    s32 texture_seg;
+    //u32 temp_a1;
 	UNUSED s16 unknown_padding;
 
     func_800010CC();
@@ -476,20 +477,21 @@ void init_game(void) {
     osPiStartDma(&D_8014F0A0, 0, 0, &_data_802BA370SegmentRomStart, SEG_802BA370, 0x5810, &D_8014EF58);
     osRecvMesg(&D_8014EF58, &D_8014F098, 1);
     set_segment_base_addr(2, func_802A7D70(&_data_segment2SegmentRomStart, &_data_segment2SegmentRomEnd));
-    temp_t2 = ALIGN16((u32)&_common_texturesSegmentRomEnd - (u32)&_common_texturesSegmentRomStart);
-    sp2C = SEG_8028DF00 - temp_t2;
-    osPiStartDma(&D_8014F0A0, 0, 0, &_common_texturesSegmentRomStart, SEG_8028DF00 - temp_t2, temp_t2, &D_8014EF58);
+    texture_seg = ALIGN16((u32)&_common_texturesSegmentRomEnd - (u32)&_common_texturesSegmentRomStart);
+    sp2C = SEG_8028DF00 - texture_seg;
+    osPiStartDma(&D_8014F0A0, 0, 0, &_common_texturesSegmentRomStart, SEG_8028DF00 - texture_seg, texture_seg, &D_8014EF58);
     osRecvMesg(&D_8014EF58, &D_8014F098, 1);
 	
 	
 	//need to match this
 	
-    temp_a1 = gPrevLoadedAddress;
+    sp40 = texture_seg + 4;
     sp40 = ALIGN16(sp2C[1]);
-    mio0decode(sp2C, temp_a1);
-    set_segment_base_addr(0xD, temp_a1);
+    sp38 = gPrevLoadedAddress;
+    mio0decode(texture_seg, sp38);
+    set_segment_base_addr(0xD, sp38);
     
-    gPrevLoadedAddress = gPrevLoadedAddress + sp40;
+    gPrevLoadedAddress += sp40;
     D_8015F734 = gPrevLoadedAddress;
 }
 #else
@@ -1213,19 +1215,19 @@ void thread5_game_logic(s32 arg0) {
     rendering_init();
     read_controllers();
     func_800C5CB8();
-loop_3:
-    func_800CB2C4();
-    if (D_800DC524 != D_800DC50C) {
-        D_800DC50C = (s32) D_800DC524;
-        func_80002684();
+    while(1) {
+        func_800CB2C4();
+        if (D_800DC524 != D_800DC50C) {
+            D_800DC50C = (s32) D_800DC524;
+            func_80002684();
+        }
+        profiler_log_thread5_time(0);
+        config_gfx_pool();
+        read_controllers();
+        func_80001ECC();
+        func_80000CE8();
+        display_and_vsync();
     }
-    profiler_log_thread5_time(0);
-    config_gfx_pool();
-    read_controllers();
-    func_80001ECC();
-    func_80000CE8();
-    display_and_vsync();
-    goto loop_3;
 }
 
 void thread4_audio(UNUSED s32 arg0) {
