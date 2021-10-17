@@ -5,12 +5,13 @@
 
 
 extern s16 D_802BA040[4];
-extern struct Controller *D_800F6914;
-extern struct Controller *gControllers;
-extern struct Controller *gPlayer2Controller;
-extern struct Controller *gPlayer3Controller;
-extern struct Controller *gPlayer4Controller;
-extern struct Controller *D_800F6950;
+extern struct Controller gControllers[];
+extern struct Controller *D_800DC4BC;
+extern struct Controller *D_800DC4C4;
+extern struct Controller *D_800DC4C8;
+extern struct Controller *D_800DC4CC;
+extern struct Controller *D_800DC4D0;
+extern struct Controller *D_800DC4D4;
 
 extern unsigned char *D_8015F8C4;
 extern unsigned char *D_8015F8C8;
@@ -21,7 +22,7 @@ extern s32 D_8016348C;
 extern s8 gCourseSelection;
 extern s32 D_800DC544;
 
-extern Player D_800F6990[];
+extern Player gPlayers[];
 extern Player D_800DC4E0[];
 extern Player D_800DC4DC[];
 extern s32 lapCount[];
@@ -171,7 +172,7 @@ void func_8028E0F0(void) {
     s16 phi_s2 = 0;
     
     for(i = 0; i < 4; i++) {
-        ply = (Player *)&D_800F6990[i];
+        ply = (Player *)&gPlayers[i];
         if (!(ply->unk_000 & 0x8000)) {
             continue;
         }
@@ -211,11 +212,11 @@ void func_8028E298(u16 arg2) {
     f32 phi_f8;
     u16 phi_a2;
     s32 i;
-    phi_a1 = &D_800F6990;
+    phi_a1 = &gPlayers;
     phi_a0 = 0;
     phi_a2 = arg2;
     for (i = 0; i < 8; i++) {
-        if ((D_800F6990[i].unk_000 & 0x800) == 0) {
+        if ((gPlayers[i].unk_000 & 0x800) == 0) {
             temp_a2 = *(&D_801645B0 + (phi_a0 * 2));
             temp_v1 = phi_a0 * 4;
             temp_v0 = *(&D_801645C8 + (temp_a2 * 2));
@@ -606,7 +607,7 @@ void func_8028EDA8(void) {
     if (D_800DC510 == 2) {
         D_800DC510 = 3;
     }
-    phi_v1 = &D_800F6990;
+    phi_v1 = &gPlayers;
     do {
         temp_v0 = phi_v1->unk0;
         if (((temp_v0 & 0x8000) != 0) && ((temp_v0 & 0x2000) != 0)) {
@@ -635,15 +636,15 @@ GLOBAL_ASM("asm/non_matchings/code_8028DF00/func_8028EDA8.s")
 /*
 f32 func_8028EE8C(s32 i) {
     f32 temp_f14;
-    temp_f14 = D_8015F8D8 - D_800F6990[i].unk_01C;
-    return gCourseTimer - ((D_802B9254 * temp_f14) / (temp_f14 + (D_800F6990[i].unk_028 - D_8015F8D8)));
+    temp_f14 = D_8015F8D8 - gPlayers[i].unk_01C;
+    return gCourseTimer - ((D_802B9254 * temp_f14) / (temp_f14 + (gPlayers[i].unk_028 - D_8015F8D8)));
 }
 */
 
 GLOBAL_ASM("asm/non_matchings/code_8028DF00/func_8028EE8C.s")
 
 void func_8028EEF0(s32 i) {
-    D_800F6990[i].unk_000 |= 0x800;
+    gPlayers[i].unk_000 |= 0x800;
 }
 /*
 
@@ -653,21 +654,21 @@ void func_8028EF28(void) {
     s32 i;
     for(i = 0; i < 8; i++)
     {
-        ply = (Player *)&D_800F6990[i];
-        if ((D_800F6990[i].unk_000 & 0x8000) == 0) {
+        ply = (Player *)&gPlayers[i];
+        if ((gPlayers[i].unk_000 & 0x8000) == 0) {
             continue;
         }
-            if (lapCount[i] < D_800F6990[i].unk_008) {
-                D_800F6990[i].unk_008--;
-            } else if (lapCount[i] > D_800F6990[i].unk_008) {
-                D_800F6990[i].unk_008++;
+            if (lapCount[i] < gPlayers[i].unk_008) {
+                gPlayers[i].unk_008--;
+            } else if (lapCount[i] > gPlayers[i].unk_008) {
+                gPlayers[i].unk_008++;
             }
-            if ((D_800F6990[i].unk_000 & 0x4000) != 0) {
-                if (D_800F6990[i].unk_008 == 3) {
+            if ((gPlayers[i].unk_000 & 0x4000) != 0) {
+                if (gPlayers[i].unk_008 == 3) {
                     func_8028EEF0(i);
 
-                    currentPosition = D_800F6990[i].unk_004;
-                    D_800F6990[i].unk_000 |= 0x1000;
+                    currentPosition = gPlayers[i].unk_004;
+                    gPlayers[i].unk_000 |= 0x1000;
                     if (currentPosition < 4) {
                         D_80150120 = 1;
                     }
@@ -678,7 +679,7 @@ void func_8028EF28(void) {
                     if (gModeSelection == 0 && gPlayerCountSelection1 == 2 && D_802BA048 == 0) {
                         D_802BA048 = 1;
                     }
-                    if ((D_800F6990[i].unk_000 & 0x100) == 0) {
+                    if ((gPlayers[i].unk_000 & 0x100) == 0) {
                         D_800DC510 = 4;
                     }
                     if (gModeSelection == 1) {
@@ -699,8 +700,8 @@ void func_8028EF28(void) {
                                 }
                                 D_800DC510 = 5;
                                 D_8015F8F6[1] = i;
-                                D_800F6990->unk_00C |= 0x200000;
-                                D_800F6990->unk_000 |= 0x1000;
+                                gPlayers->unk_00C |= 0x200000;
+                                gPlayers->unk_000 |= 0x1000;
                                 func_800CA118((u8)i);
                                 break;
                             case 3:
@@ -717,8 +718,8 @@ void func_8028EF28(void) {
                                     if (*(D_8015F8C8 + i * 3 + 2) > 99) {
                                         *(D_8015F8C8 + i * 3 + 2) == 99;
                                     }
-                                    D_800F6990->unk_00C |= 0x200000;
-                                    D_800F6990->unk_000 |= 0x1000;
+                                    gPlayers->unk_00C |= 0x200000;
+                                    gPlayers->unk_000 |= 0x1000;
                                     func_800CA118((u8)i);
                                 }
                                 break;
@@ -732,8 +733,8 @@ void func_8028EF28(void) {
                                 if (currentPosition == 2) {
                                     D_800DC510 = 5;
                                     D_8015F8F6[3] = i;
-                                    D_800F6990->unk_00C |= 0x200000;
-                                    D_800F6990->unk_000 |= 0x1000;
+                                    gPlayers->unk_00C |= 0x200000;
+                                    gPlayers->unk_000 |= 0x1000;
                                     func_800CA118((u8)i);
                                 }
                                 break;
@@ -741,8 +742,8 @@ void func_8028EF28(void) {
 
                     }
 
-                } else if (D_800F6990[i].unk_008 == 2) {
-                    if ((D_800F6990[i].unk_000 & 0x100) == 0) {
+                } else if (gPlayers[i].unk_008 == 2) {
+                    if ((gPlayers[i].unk_000 & 0x100) == 0) {
                         return;
                     }
                     if ((D_802BA032 & 0x4000) == 0) {
@@ -750,7 +751,7 @@ void func_8028EF28(void) {
                         func_800CA49C(i);
                     }
                 }
-            } else if (D_800F6990[i].unk_008 == 3) {
+            } else if (gPlayers[i].unk_008 == 3) {
                 func_8028EEF0(i);
                 if (gModeSelection == 1) {
                     func_80005AE8(ply);
