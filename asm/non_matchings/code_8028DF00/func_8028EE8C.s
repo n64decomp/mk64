@@ -6,8 +6,8 @@ glabel func_8028EE8C
 /* 0F84A8 8028EE98 01C47023 */  subu  $t6, $t6, $a0
 /* 0F84AC 8028EE9C 000E7080 */  sll   $t6, $t6, 2
 /* 0F84B0 8028EEA0 01C47023 */  subu  $t6, $t6, $a0
-/* 0F84B4 8028EEA4 3C0F800F */  lui   $t7, %hi(D_800F6990) # $t7, 0x800f
-/* 0F84B8 8028EEA8 25EF6990 */  addiu $t7, %lo(D_800F6990) # addiu $t7, $t7, 0x6990
+/* 0F84B4 8028EEA4 3C0F800F */  lui   $t7, %hi(gPlayers) # $t7, 0x800f
+/* 0F84B8 8028EEA8 25EF6990 */  addiu $t7, %lo(gPlayers) # addiu $t7, $t7, 0x6990
 /* 0F84BC 8028EEAC 000E70C0 */  sll   $t6, $t6, 3
 /* 0F84C0 8028EEB0 01CF1021 */  addu  $v0, $t6, $t7
 /* 0F84C4 8028EEB4 3C018016 */  lui   $at, %hi(D_8015F8D8) # $at, 0x8016
