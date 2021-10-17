@@ -1,21 +1,21 @@
 glabel func_8028DF38
-/* 0F7548 8028DF38 3C04800F */  lui   $a0, %hi(D_800F6914) # $a0, 0x800f
+/* 0F7548 8028DF38 3C04800F */  lui   $a0, %hi(gControllers+0x4) # $a0, 0x800f
 /* 0F754C 8028DF3C 3C0E802C */  lui   $t6, %hi(D_802BA040) # $t6, 0x802c
 /* 0F7550 8028DF40 85CEA040 */  lh    $t6, %lo(D_802BA040)($t6)
-/* 0F7554 8028DF44 94846914 */  lhu   $a0, %lo(D_800F6914)($a0)
-/* 0F7558 8028DF48 3C01800F */  lui   $at, %hi(D_800F6916) # $at, 0x800f
-/* 0F755C 8028DF4C 3C02800F */  lui   $v0, %hi(gPlayer2Controller) # $v0, 0x800f
+/* 0F7554 8028DF44 94846914 */  lhu   $a0, %lo(gControllers+0x4)($a0)
+/* 0F7558 8028DF48 3C01800F */  lui   $at, %hi(gControllers+0x6) # $at, 0x800f
+/* 0F755C 8028DF4C 3C02800F */  lui   $v0, %hi(gControllers+0x10) # $v0, 0x800f
 /* 0F7560 8028DF50 01C47826 */  xor   $t7, $t6, $a0
 /* 0F7564 8028DF54 01E4C024 */  and   $t8, $t7, $a0
-/* 0F7568 8028DF58 A4386916 */  sh    $t8, %lo(D_800F6916)($at)
+/* 0F7568 8028DF58 A4386916 */  sh    $t8, %lo(gControllers+0x6)($at)
 /* 0F756C 8028DF5C 01C4C826 */  xor   $t9, $t6, $a0
-/* 0F7570 8028DF60 3C01800F */  lui   $at, %hi(D_800F6918) # $at, 0x800f
+/* 0F7570 8028DF60 3C01800F */  lui   $at, %hi(gControllers+0x8) # $at, 0x800f
 /* 0F7574 8028DF64 032E4024 */  and   $t0, $t9, $t6
-/* 0F7578 8028DF68 A4286918 */  sh    $t0, %lo(D_800F6918)($at)
-/* 0F757C 8028DF6C 3C01800F */  lui   $at, %hi(D_800F6914) # $at, 0x800f
+/* 0F7578 8028DF68 A4286918 */  sh    $t0, %lo(gControllers+0x8)($at)
+/* 0F757C 8028DF6C 3C01800F */  lui   $at, %hi(gControllers+0x4) # $at, 0x800f
 /* 0F7580 8028DF70 3C09802C */  lui   $t1, %hi(D_802BA042) # $t1, 0x802c
-/* 0F7584 8028DF74 24426920 */  addiu $v0, %lo(gPlayer2Controller) # addiu $v0, $v0, 0x6920
-/* 0F7588 8028DF78 A42E6914 */  sh    $t6, %lo(D_800F6914)($at)
+/* 0F7584 8028DF74 24426920 */  addiu $v0, %lo(gControllers+0x10) # addiu $v0, $v0, 0x6920
+/* 0F7588 8028DF78 A42E6914 */  sh    $t6, %lo(gControllers+0x4)($at)
 /* 0F758C 8028DF7C 94430004 */  lhu   $v1, 4($v0)
 /* 0F7590 8028DF80 8529A042 */  lh    $t1, %lo(D_802BA042)($t1)
 /* 0F7594 8028DF84 3C0C802C */  lui   $t4, %hi(D_802BA042) # $t4, 0x802c
