@@ -3,7 +3,7 @@ glabel func_8028E298
 /* 0F78AC 8028E29C 44816000 */  mtc1  $at, $f12
 /* 0F78B0 8028E2A0 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 0F78B4 8028E2A4 27BDFFE8 */  addiu $sp, $sp, -0x18
-/* 0F78B8 8028E2A8 3C05800F */  lui   $a1, %hi(D_800F6990) # $a1, 0x800f
+/* 0F78B8 8028E2A8 3C05800F */  lui   $a1, %hi(gPlayers) # $a1, 0x800f
 /* 0F78BC 8028E2AC 3C0D800E */  lui   $t5, %hi(gCourseTimer) # $t5, 0x800e
 /* 0F78C0 8028E2B0 3C0C8016 */  lui   $t4, %hi(D_8015F898) # $t4, 0x8016
 /* 0F78C4 8028E2B4 3C0B8016 */  lui   $t3, %hi(D_801644A8) # $t3, 0x8016
@@ -16,7 +16,7 @@ glabel func_8028E298
 /* 0F78E0 8028E2D0 256B44A8 */  addiu $t3, %lo(D_801644A8) # addiu $t3, $t3, 0x44a8
 /* 0F78E4 8028E2D4 258CF898 */  addiu $t4, %lo(D_8015F898) # addiu $t4, $t4, -0x768
 /* 0F78E8 8028E2D8 25ADC598 */  addiu $t5, %lo(gCourseTimer) # addiu $t5, $t5, -0x3a68
-/* 0F78EC 8028E2DC 24A56990 */  addiu $a1, %lo(D_800F6990) # addiu $a1, $a1, 0x6990
+/* 0F78EC 8028E2DC 24A56990 */  addiu $a1, %lo(gPlayers) # addiu $a1, $a1, 0x6990
 /* 0F78F0 8028E2E0 00002025 */  move  $a0, $zero
 /* 0F78F4 8028E2E4 240A0002 */  li    $t2, 2
 /* 0F78F8 8028E2E8 24070008 */  li    $a3, 8
