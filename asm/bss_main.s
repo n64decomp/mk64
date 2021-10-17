@@ -1,106 +1,6 @@
 .include "macros.inc"
 .section .bss
 
-glabel gControllers # 0x800F6910
-.word 0x00000000
-
-glabel D_800F6914
-.hword 0x0000
-
-glabel D_800F6916
-.hword 0x0000
-
-glabel D_800F6918
-.word 0x00000000
-.word 0x00000000
-
-glabel gPlayer2Controller # 0x800F6920
-.word 0x00000000
-.word 0x00000000
-.word 0x00000000
-.word 0x00000000
-
-glabel gPlayer3Controller # 0x800F6930
-.word 0x00000000
-.word 0x00000000
-.word 0x00000000
-.word 0x00000000
-
-glabel gPlayer4Controller # 0x800F6940
-.word 0x00000000
-.word 0x00000000
-.word 0x00000000
-.word 0x00000000
-
-glabel D_800F6950
-.word 0x00000000
-.word 0x00000000
-.word 0x00000000
-.word 0x00000000
-
-glabel D_800F6960
-.skip 16
-
-glabel D_800F6970
-.skip 16
-
-glabel D_800F6980
-.skip 16
-
-glabel D_800F6990
-.word 0x00000000
-
-glabel D_800F6994
-.skip 16
-
-glabel gPlayer1PosX # 0x800F69A4
-.word 0x00000000
-
-glabel gPlayer1PosY # 0x800F69A8
-.word 0x00000000
-
-glabel gPlayer1PosZ # 0x800F69AC
-.skip 18
-
-glabel gPlayer1Rotation # 0x800F69BE
-.skip 22
-
-glabel D_800F69D4
-.skip 80
-
-glabel D_800F6A24
-.skip 40
-
-glabel D_800F6A4C
-.skip 408
-
-glabel D_800F6BE4
-.skip 2948
-
-glabel D_800F7768
-.skip 3544
-
-glabel D_800F8540
-.skip 3544
-
-glabel D_800F9318
-.skip 3544
-
-glabel D_800FA0F0
-.skip 3544
-
-glabel D_800FAEC8
-.skip 3544
-
-glabel D_800FBCA0
-.skip 3544
-
-glabel D_800FCA78
-.skip 3544
-
-glabel D_800FD850
-.skip 16
-
 glabel gGfxPools
 .skip 10616
 
@@ -271,7 +171,7 @@ glabel gIdleThread
 glabel gVideoThread
 .skip 8624
 
-glabel gVideoThreadStack
+glabel D_80156820
 .skip 8624
 
 glabel D_801589D0
