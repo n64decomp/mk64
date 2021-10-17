@@ -79,10 +79,10 @@ typedef struct {
     /* 0x0098 */ f32 unk_098;
     /* 0x009C */ f32 unk_09C;
     /* 0x00A0 */ f32 unk_0A0;
-    /* 0x00A4 */ f32 unk_0A4;
-    /* 0x00A8 */ s16 unk_0A8;
+    /* 0x00A4 */ f32 posX;
+    /* 0x00A8 */ s16 posY;
     /* 0x00AA */ s16 unk_0AA;
-    /* 0x00AC */ s16 unk_0AC;
+    /* 0x00AC */ s16 posZ;
     /* 0x00AE */ s16 unk_0AE;
     /* 0x00B0 */ s16 unk_0B0;
     /* 0x00B2 */ s16 unk_0B2;
@@ -171,7 +171,7 @@ typedef struct {
     /* 0x01FC */ f32 unk_1FC;
     /* 0x0200 */ s32 unk_200;
     /* 0x0204 */ s16 unk_204;
-    /* 0x0206 */ s16 unk_206;
+    /* 0x0206 */ s16 unk_206; 
     /* 0x0208 */ f32 unk_208;
     /* 0x020C */ f32 unk_20C;
     /* 0x0210 */ f32 unk_210;
