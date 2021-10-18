@@ -3,8 +3,6 @@
 #include "types.h"
 #include "common_structs.h"
 
-
-extern s16 D_802BA040[4];
 extern struct Controller gControllers[];
 extern struct Controller *D_800DC4BC;
 extern struct Controller *D_800DC4C4;
@@ -27,7 +25,6 @@ extern Player D_800DC4E0[];
 extern Player D_800DC4DC[];
 extern s32 lapCount[];
 extern s32 D_80150120;
-extern u16 D_802BA032;
 extern s32 gModeSelection;
 extern s32 gPlayerCountSelection1;
 extern u16 D_802BA048;
@@ -37,7 +34,6 @@ extern s32 D_80150124;
 extern u16 D_800DC5B4;
 extern u16 D_800DC5B0;
 extern u16 D_800DC5B8;
-extern s32 D_802BA038;
 extern s32 D_800E86A0;
 
 extern struct Controller *D_800DC4CC;
@@ -49,7 +45,6 @@ extern u16 D_800DC518;
 extern u16 D_8015011E;
 extern float gCourseTimer;
 extern float D_800DC594;
-extern float D_802BA034;
 extern s32 D_800DC530;
 extern s32 D_8018D2AC;
 extern s32 D_800DC52C;
@@ -100,50 +95,39 @@ extern void func_80005AE8();
 
 extern u16 D_8015F894;
 
+u16 D_802BA030[2];
+
+float D_802BA034;
+
+
+s32 D_802BA038;
+UNUSED s32 D_802BA03C;
+
+
+s16 D_802BA040[4];
+u16 D_802BA048;
+
 // Likely bss memed need to declare controllers likely in main.c
-/*
+
 void func_8028DF00(void) {
-    struct Controller *controllers = (u16) &D_800F6914[0];
+    struct Controller *controllers = &gControllers[0];
     s32 i;
-    for (i = 0; i < 4; i ++) {
-        D_802BA040[i] = controllers->unk4;
+    for (i = 0; i < 4; i++) {
+        D_802BA040[i] = controllers->button;
         controllers++; 
     }
 }
-*/
-GLOBAL_ASM("asm/non_matchings/code_8028DF00/func_8028DF00.s")
-/*
+
 void func_8028DF38(void) {
     struct Controller *controllers = &gControllers[0];
     s32 i;
     for (i = 0; i < 4; i++) {
-        D_800F6916 = (s16) ((D_802BA040 ^ D_800F6914) & D_800F6914);
-        D_800F6918 = (s16) ((D_802BA040 ^ D_800F6914) & D_802BA040);
-        D_800F6914 = (u16) temp_t6;
-
-        gPlayer2Controller.unk6 = (s16) ((D_802BA042[i] ^ gPlayer2Controller.unk4) & gPlayer2Controller.unk4);
-
-        gPlayer2Controller.unk8 = (s16) ((D_802BA042[i] ^ gPlayer2Controller.unk4;) & D_802BA042[i]);
-        temp_v1_2 = gPlayer2Controller.unk14;
-
-
-
-
-        gPlayer2Controller.unk4 = (u16) D_802BA042;
-        temp_v0 = &gPlayer2Controller + 0x20;
-        temp_v0->unk-A = (s16) ((D_802BA044 ^ temp_v1_2) & temp_v1_2);
-        temp_t1 = D_802BA044;
-        temp_v0->unk-8 = (s16) ((temp_t1 ^ temp_v1_2) & temp_t1);
-        temp_v1_3 = temp_v0->unk4;
-        temp_v0->unk-C = (s16) D_802BA044;
-        temp_v0->unk6 = (s16) ((D_802BA046 ^ temp_v1_3) & temp_v1_3);
-        temp_t9 = D_802BA046;
-        temp_v0->unk8 = (s16) ((temp_t9 ^ temp_v1_3) & temp_t9);
-        temp_v0->unk4 = (u16) D_802BA046;
+        controllers->buttonPressed = (controllers->button & (D_802BA040[i] ^ controllers->button));
+        controllers->buttonDepressed = (D_802BA040[i] & (D_802BA040[i] ^ controllers->button));
+        controllers->button = D_802BA040[i];
+        controllers++;
     }
 }
-*/
-GLOBAL_ASM("asm/non_matchings/code_8028DF00/func_8028DF38.s")
 
 void func_8028E028(void) {
 
@@ -166,8 +150,8 @@ void func_8028E028(void) {
 void func_8028E0F0(void) {
     Player *ply;
     s32 i;
-    s16 unk_arr[4];
     s16 unk_arr2[4];
+    s16 unk_arr[4];
     s16 phi_s1 = 0;
     s16 phi_s2 = 0;
     
@@ -181,18 +165,19 @@ void func_8028E0F0(void) {
         }
         if (D_8018D8C0[i] < 0) {
             ply->unk_000 |= 0x800;
-            unk_arr[phi_s1] = (s16) (ply - D_800DC4DC);
+            unk_arr[phi_s2] = (s16) (ply - D_800DC4DC);
+            phi_s2++;
             func_800CA118((u8) i);
         } else {
-            unk_arr2[phi_s2] = (s16) (ply - D_800DC4DC);
-            phi_s2++;
+            unk_arr2[phi_s1] = (s16) (ply - D_800DC4DC);
+            phi_s1++;
         }
     }
-    if (phi_s2 == 1) {
-        D_800DC5E8 = (s32) unk_arr2;
+    if (phi_s1 == 1) {
+        D_800DC5E8 = (s32) unk_arr2[0];
         func_8028E028();
-    } else if (phi_s2 == 0) {
-        D_800DC5E8 = (s32) unk_arr;
+    } else if (phi_s1 == 0) {
+        D_800DC5E8 = (s32) unk_arr[0];
         func_8028E028();
     }
 }
@@ -673,8 +658,8 @@ void func_8028EF28(void) {
                         D_80150120 = 1;
                     }
                     func_800CA118((u8)i);
-                    if ((D_802BA032 & 0x8000) == 0) {
-                        D_802BA032 |= 0x8000;
+                    if ((D_802BA030[1] & 0x8000) == 0) {
+                        D_802BA030[1] |= 0x8000;
                     }
                     if (gModeSelection == 0 && gPlayerCountSelection1 == 2 && D_802BA048 == 0) {
                         D_802BA048 = 1;
@@ -746,8 +731,8 @@ void func_8028EF28(void) {
                     if ((gPlayers[i].unk_000 & 0x100) == 0) {
                         return;
                     }
-                    if ((D_802BA032 & 0x4000) == 0) {
-                        D_802BA032 |= 0x4000;
+                    if ((D_802BA030[1] & 0x4000) == 0) {
+                        D_802BA030[1] |= 0x4000;
                         func_800CA49C(i);
                     }
                 }
