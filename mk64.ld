@@ -296,6 +296,7 @@ SECTIONS
    END_SEG(code_8028DF00)
 
    	BEGIN_NOLOAD(code_8028DF00) {
+	     BUILD_DIR/src/code_8028DF00.o(.bss);
 	     BUILD_DIR/asm/bss_8028DF00.o(.bss);
 	   }
 	   END_NOLOAD(code_8028DF00)
