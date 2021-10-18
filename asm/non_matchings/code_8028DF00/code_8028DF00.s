@@ -695,8 +695,8 @@ glabel L8028FD10
 /* 0F93A0 8028FD90 E4240118 */  swc1  $f4, %lo(D_80150118)($at)
 /* 0F93A4 8028FD94 3C01800E */  lui   $at, %hi(D_800DC518) # $at, 0x800e
 /* 0F93A8 8028FD98 A420C518 */  sh    $zero, %lo(D_800DC518)($at)
-/* 0F93AC 8028FD9C 3C01802C */  lui   $at, %hi(D_802BA032) # $at, 0x802c
-/* 0F93B0 8028FDA0 A420A032 */  sh    $zero, %lo(D_802BA032)($at)
+/* 0F93AC 8028FD9C 3C01802C */  lui   $at, %hi(D_802BA030+0x2) # $at, 0x802c
+/* 0F93B0 8028FDA0 A420A032 */  sh    $zero, %lo(D_802BA030+0x2)($at)
 /* 0F93B4 8028FDA4 3C018015 */  lui   $at, %hi(D_8015011E) # $at, 0x8015
 /* 0F93B8 8028FDA8 A420011E */  sh    $zero, %lo(D_8015011E)($at)
 /* 0F93BC 8028FDAC 3C01800E */  lui   $at, %hi(gCourseTimer) # $at, 0x800e
