@@ -172,11 +172,11 @@ void func_80002A18(void) {
     temp_v0 = *D_800DC4BC;
 
     for (tmp = 0; tmp < 7; tmp++, temp_v0++){
-        temp_v0->unk0 = 0;
-        temp_v0->unk2 = 0;
+        temp_v0->rawStickX = 0;
+        temp_v0->rawStickY = 0;
         temp_v0->buttonPressed = 0;
-        temp_v0->unk8 = 0;
-        temp_v0->unk4 = 0;
+        temp_v0->buttonDepressed = 0;
+        temp_v0->button = 0;
     }
 }
 

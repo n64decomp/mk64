@@ -15,9 +15,9 @@ glabel func_8028EDA8
 /* 0F83E8 8028EDD8 2442C510 */  addiu $v0, %lo(D_800DC510) # addiu $v0, $v0, -0x3af0
 /* 0F83EC 8028EDDC 8C580000 */  lw    $t8, ($v0)
 /* 0F83F0 8028EDE0 24010002 */  li    $at, 2
-/* 0F83F4 8028EDE4 3C03800F */  lui   $v1, %hi(D_800F6990) # $v1, 0x800f
+/* 0F83F4 8028EDE4 3C03800F */  lui   $v1, %hi(gPlayers) # $v1, 0x800f
 /* 0F83F8 8028EDE8 17010003 */  bne   $t8, $at, .L8028EDF8
-/* 0F83FC 8028EDEC 24636990 */   addiu $v1, %lo(D_800F6990) # addiu $v1, $v1, 0x6990
+/* 0F83FC 8028EDEC 24636990 */   addiu $v1, %lo(gPlayers) # addiu $v1, $v1, 0x6990
 /* 0F8400 8028EDF0 24190003 */  li    $t9, 3
 /* 0F8404 8028EDF4 AC590000 */  sw    $t9, ($v0)
 .L8028EDF8:

@@ -5407,9 +5407,9 @@ glabel func_80295BF8
 /* 0FF214 80295C04 01C47023 */  subu  $t6, $t6, $a0
 /* 0FF218 80295C08 000E7080 */  sll   $t6, $t6, 2
 /* 0FF21C 80295C0C 01C47023 */  subu  $t6, $t6, $a0
-/* 0FF220 80295C10 3C0F800F */  lui   $t7, %hi(D_800F6990) # $t7, 0x800f
+/* 0FF220 80295C10 3C0F800F */  lui   $t7, %hi(gPlayers) # $t7, 0x800f
 /* 0FF224 80295C14 27BDFFE0 */  addiu $sp, $sp, -0x20
-/* 0FF228 80295C18 25EF6990 */  addiu $t7, %lo(D_800F6990) # addiu $t7, $t7, 0x6990
+/* 0FF228 80295C18 25EF6990 */  addiu $t7, %lo(gPlayers) # addiu $t7, $t7, 0x6990
 /* 0FF22C 80295C1C 000E70C0 */  sll   $t6, $t6, 3
 /* 0FF230 80295C20 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 0FF234 80295C24 01CF1021 */  addu  $v0, $t6, $t7

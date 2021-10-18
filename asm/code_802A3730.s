@@ -4150,13 +4150,13 @@ glabel func_802A74BC
 /* 110AE0 802A74D0 AFB1000C */  sw    $s1, 0xc($sp)
 /* 110AE4 802A74D4 AFB00008 */  sw    $s0, 8($sp)
 /* 110AE8 802A74D8 3C028016 */  lui   $v0, %hi(D_8015F480) # $v0, 0x8016
-/* 110AEC 802A74DC 3C03800F */  lui   $v1, %hi(D_800F6990) # $v1, 0x800f
+/* 110AEC 802A74DC 3C03800F */  lui   $v1, %hi(gPlayers) # $v1, 0x800f
 /* 110AF0 802A74E0 3C048016 */  lui   $a0, %hi(D_801646F0) # $a0, 0x8016
 /* 110AF4 802A74E4 3C058016 */  lui   $a1, %hi(D_8015F790) # $a1, 0x8016
 /* 110AF8 802A74E8 3C0B800E */  lui   $t3, %hi(D_800DC52C) # $t3, 0x800e
 /* 110AFC 802A74EC 3C08800F */  lui   $t0, %hi(gControllers) # $t0, 0x800f
 /* 110B00 802A74F0 2442F480 */  addiu $v0, %lo(D_8015F480) # addiu $v0, $v0, -0xb80
-/* 110B04 802A74F4 24636990 */  addiu $v1, %lo(D_800F6990) # addiu $v1, $v1, 0x6990
+/* 110B04 802A74F4 24636990 */  addiu $v1, %lo(gPlayers) # addiu $v1, $v1, 0x6990
 /* 110B08 802A74F8 248446F0 */  addiu $a0, %lo(D_801646F0) # addiu $a0, $a0, 0x46f0
 /* 110B0C 802A74FC 24A5F790 */  addiu $a1, %lo(D_8015F790) # addiu $a1, $a1, -0x870
 /* 110B10 802A7500 25086910 */  addiu $t0, %lo(gControllers) # addiu $t0, $t0, 0x6910

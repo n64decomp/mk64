@@ -8,6 +8,7 @@
 #include "memory.h"
 #include "segments.h"
 #include "segment_symbols.h"
+#include "common_structs.h"
 
 // Declarations (not in this file)
 void func_8008C214(void);
@@ -34,14 +35,80 @@ extern OSThread gVideoThread;
 extern u16 D_8015011C;
 extern OSMesgQueue D_8015F460;
 extern OSMesg D_8015F3E0;
-extern s32 gVideoThreadStack;
-extern struct SPTask *gActiveSPTask;
-extern s16 sNumVBlanks;
+extern s32 D_80156820;
 extern f32 D_800DC594;
-extern struct SPTask *sCurrentAudioSPTask;
-extern struct SPTask *sCurrentDisplaySPTask;
-extern struct VblankHandler *gVblankHandler1;
-extern struct VblankHandler *gVblankHandler2;
+
+struct VblankHandler *gVblankHandler1 = NULL;
+struct VblankHandler *gVblankHandler2 = NULL;
+
+struct SPTask *gActiveSPTask = NULL;
+struct SPTask *sCurrentAudioSPTask = NULL;
+struct SPTask* sCurrentDisplaySPTask = NULL;
+struct SPTask* D_800DC4B4 = NULL;
+struct SPTask* sNextDisplaySPTask = NULL;
+
+
+struct Controller gControllers[8];
+struct Controller *D_800DC4BC = &gControllers[0];
+struct Controller *D_800DC4C0 = &gControllers[1];
+struct Controller *D_800DC4C4 = &gControllers[2];
+struct Controller *D_800DC4C8 = &gControllers[3];
+struct Controller *D_800DC4CC = &gControllers[4];
+struct Controller *D_800DC4D0 = &gControllers[5];
+struct Controller *D_800DC4D4 = &gControllers[6];
+struct Controller *D_800DC4D8 = &gControllers[7];
+
+Player gPlayers[8];
+Player *D_800DC4DC = &gPlayers[0];
+Player *D_800DC4E0 = &gPlayers[1];
+Player *D_800DC4E4 = &gPlayers[2];
+Player *D_800DC4E8 = &gPlayers[3];
+Player *D_800DC4EC = &gPlayers[4];
+Player *D_800DC4F0 = &gPlayers[5];
+Player *D_800DC4F4 = &gPlayers[6];
+Player *D_800DC4F8 = &gPlayers[7];
+
+Player *D_800DC4FC = &gPlayers[0];
+Player *D_800DC500 = &gPlayers[1];
+Player *D_800DC504 = &gPlayers[2];
+Player *D_800DC508 = &gPlayers[3];
+
+s32 D_800DC50C = 0xffff;
+u16 D_800DC510 = 0;
+u16 D_800DC514 = 0;
+u16 D_800DC518 = 0;
+u16 D_800DC51C = 0;
+u16 gEnableDebugMode = 0;
+s32 D_800DC524 = 7; 
+UNUSED s32 D_800DC528 = 1;
+s32 D_800DC52C = 0;
+
+s32 D_800DC530[2] = {0};
+s32 gPlayerCountSelection1 = 2;
+s32 gModeSelection = 0;
+s32 D_800DC540 = 0;
+s32 D_800DC544 = 0;
+s32 D_800DC548 = 0;
+s32 gGlobalTimer = 0;
+UNUSED s32 D_800DC550 = 0;
+UNUSED s32 D_800DC554 = 0;
+UNUSED s32 D_800DC558 = 0;
+// Framebuffer rendering values (max 3)
+u16 sRenderedFramebuffer = 0;
+u16 sRenderingFramebuffer = 0;
+UNUSED u16 D_800DC564 = 0;
+s32 D_800DC568 = 0;
+s32 D_800DC56C[8] = {0};
+s16 sNumVBlanks = 0;
+UNUSED s16 D_800DC590 = 0;
+float D_800DC594 = 0.0f;
+float gCourseTimer = 0.0f;
+
+extern u8 gControllerBits;
+extern OSContStatus gControllerStatuses;
+extern u16 sController1Unplugged;
+
+
 extern uintptr_t gPhysicalFramebuffers[3];
 extern const f64 D_800EB640;
 extern struct VblankHandler sSoundVblankHandler;
@@ -57,9 +124,6 @@ extern u64 gspF3DEXTextStart[], gspF3DEXTextEnd[];
 extern u64 gspF3DLXTextStart[], gspF3DLXTextEnd[];
 extern u64 gspF3DEXDataStart[];
 extern u64 gspF3DLXDataStart[];
-
-extern s32 gPlayerCountSelection1;
-extern s32 D_800DC50C;
 
 extern u32 gGfxSPTaskStack;
 extern u64 gGfxSPTaskOutputBuffer[];
@@ -78,11 +142,9 @@ extern OSIoMesg *D_8014F0A0;
 extern u32 gHeapEndPtr;
 extern u32 *D_801978D0;
 
+
 extern OSMesgQueue gSIEventMesgQueue;
 extern OSMesg gSIEventMesgBuf[3];
-extern u8 gControllerBits;
-extern OSContStatus gControllerStatuses;
-extern u16 sController1Unplugged;
 
 extern u32 D_801502B4;
 extern u32 D_802F9F80;
@@ -100,16 +162,8 @@ extern f64 D_800EB610;
 
 extern s16 gCurrentlyLoadedCourseId;
 
-extern struct SPTask* sNextDisplaySPTask;
-
-extern u16 sRenderingFramebuffer;
-
+s32 D_800FD850[4];
 extern struct GfxPool gGfxPools[2];
-extern s32 gGlobalTimer;
-
-// Framebuffer rendering values (max 3)
-extern u16 sRenderedFramebuffer; // = 0;
-extern u16 sRenderingFramebuffer; // = 0;
 
 // Declarations (in this file)
 void thread1_idle(void *arg0);
@@ -148,7 +202,7 @@ void thread1_idle(void *arg0) {
     D_8015011C = (s16) osResetType;
     create_debug_thread();
     start_debug_thread();
-    create_thread(&gVideoThread, 3, &thread3_video, arg0, &gVideoThreadStack, 100);
+    create_thread(&gVideoThread, 3, &thread3_video, arg0, &D_80156820, 100);
     osStartThread(&gVideoThread);
     osSetThreadPri(NULL, 0);
 
@@ -1215,19 +1269,19 @@ void thread5_game_logic(s32 arg0) {
     rendering_init();
     read_controllers();
     func_800C5CB8();
-    while(1) {
-        func_800CB2C4();
-        if (D_800DC524 != D_800DC50C) {
-            D_800DC50C = (s32) D_800DC524;
-            func_80002684();
-        }
-        profiler_log_thread5_time(0);
-        config_gfx_pool();
-        read_controllers();
-        func_80001ECC();
-        func_80000CE8();
-        display_and_vsync();
+loop_3:
+    func_800CB2C4();
+    if (D_800DC524 != D_800DC50C) {
+        D_800DC50C = (s32) D_800DC524;
+        func_80002684();
     }
+    profiler_log_thread5_time(0);
+    config_gfx_pool();
+    read_controllers();
+    func_80001ECC();
+    func_80000CE8();
+    display_and_vsync();
+    goto loop_3;
 }
 
 void thread4_audio(UNUSED s32 arg0) {

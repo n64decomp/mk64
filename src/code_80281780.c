@@ -10,26 +10,26 @@ extern s32 gPrevLoadedAddress;
 // unk4 is buttonDown?
 void func_80281780(void) {
     if (gEnableDebugMode != 0) {
-        if (D_800DC4BC->unk4 & 0x0F0F) {
-            if (D_800DC4BC->unk4 & 8) {
+        if (D_800DC4BC->button & 0x0F0F) {
+            if (D_800DC4BC->button & 8) {
                 D_800E86A8[0] = 1;
             }
-            else if (D_800DC4BC->unk4 & 2) {
+            else if (D_800DC4BC->button & 2) {
                 D_800E86A8[0] = 2;
             }
-            else if (D_800DC4BC->unk4 & 1) {
+            else if (D_800DC4BC->button & 1) {
                 D_800E86A8[0] = 3;
             }
-            else if (D_800DC4BC->unk4 & 4) {
+            else if (D_800DC4BC->button & 4) {
                 D_800E86A8[0] = 4;
             }
-            else if (D_800DC4BC->unk4 & 0x800) {
+            else if (D_800DC4BC->button & 0x800) {
                 D_800E86A8[0] = 5;
             }
-            else if (D_800DC4BC->unk4 & 0x200) {
+            else if (D_800DC4BC->button & 0x200) {
                 D_800E86A8[0] = 6;
             }
-            else if (D_800DC4BC->unk4 & 0x100) {
+            else if (D_800DC4BC->button & 0x100) {
                 D_800E86A8[0] = 7;
             } else {
                 D_800E86A8[0] = 0;
