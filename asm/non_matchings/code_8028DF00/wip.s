@@ -9,12 +9,12 @@ glabel func_8028EF28
 /* 0F8554 8028EF44 AFB30024 */  sw    $s3, 0x24($sp)
 /* 0F8558 8028EF48 AFB20020 */  sw    $s2, 0x20($sp)
 /* 0F855C 8028EF4C 3C10800F */  lui   $s0, %hi(gPlayers) # $s0, 0x800f
-/* 0F8560 8028EF50 3C16802C */  lui   $s6, %hi(D_802BA032) # $s6, 0x802c
+/* 0F8560 8028EF50 3C16802C */  lui   $s6, %hi(D_802BA030+0x2) # $s6, 0x802c
 /* 0F8564 8028EF54 3C17800E */  lui   $s7, %hi(D_800DC510) # $s7, 0x800e
 /* 0F8568 8028EF58 AFBF003C */  sw    $ra, 0x3c($sp)
 /* 0F856C 8028EF5C AFB1001C */  sw    $s1, 0x1c($sp)
 /* 0F8570 8028EF60 26F7C510 */  addiu $s7, %lo(D_800DC510) # addiu $s7, $s7, -0x3af0
-/* 0F8574 8028EF64 26D6A032 */  addiu $s6, %lo(D_802BA032) # addiu $s6, $s6, -0x5fce
+/* 0F8574 8028EF64 26D6A032 */  addiu $s6, %lo(D_802BA030+0x2) # addiu $s6, $s6, -0x5fce
 /* 0F8578 8028EF68 26106990 */  addiu $s0, %lo(gPlayers) # addiu $s0, $s0, 0x6990
 /* 0F857C 8028EF6C 00009025 */  move  $s2, $zero
 /* 0F8580 8028EF70 24130002 */  li    $s3, 2
