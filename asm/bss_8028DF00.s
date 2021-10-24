@@ -2,33 +2,6 @@
 
 .section .bss
 
-glabel D_802BA030
-.skip 2
-
-glabel D_802BA032
-.skip 2
-
-glabel D_802BA034
-.skip 4
-
-glabel D_802BA038
-.skip 8
-
-glabel D_802BA040
-.skip 2
-
-glabel D_802BA042
-.skip 2
-
-glabel D_802BA044
-.skip 2
-
-glabel D_802BA046
-.skip 2
-
-glabel D_802BA048
-.skip 8
-
 glabel D_802BA050
 .skip 4
 
