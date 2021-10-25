@@ -10,10 +10,10 @@ extern s32 gPlayerCountSelection1;
 extern f32 gKartFrictionTable[];
 extern f32 gKartBoundingBoxTable[];
 extern f32 gKartGravityTable[];
-extern f32 gPlayer1PosX;
-extern f32 gPlayer1PosY;
-extern s32 gPlayer1PosZ;
-extern s16 gPlayer1Rotation;
+//extern f32 gPlayer1PosX;
+//extern f32 gPlayer1PosY;
+//extern s32 gPlayer1PosZ;
+//extern s16 gPlayer1Rotation;
 
 extern struct_D_802874D8 D_802874D8;
 extern s16 D_801650D0[4][8];
@@ -58,8 +58,7 @@ extern s32 D_80162DE0;
 extern s32 D_80162DE4;
 extern s32 D_80162DE8;
 extern u16 D_8015F890;
-extern u16 D_80162DD4;
-extern u16 D_80162DD6;
+extern u16 D_80162DD4[];
 extern u16 D_80162DD8;
 extern s16* D_80164550;
 extern f32 D_80165210[];
@@ -92,7 +91,5 @@ extern s32 D_800DDB44;
 extern s32 D_800DDB48;
 extern s32 D_800DDB4C;
 extern s32 D_8016524C;
-extern Player D_800F7768;
-extern Player D_800F8540;
 
 #endif
