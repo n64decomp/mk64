@@ -66,7 +66,7 @@ SECTIONS
       BUILD_DIR/src/profiler.o(.text);
       BUILD_DIR/src/crash_screen.o(.text);
       BUILD_DIR/asm/code_80004740.o(.text);
-      BUILD_DIR/src/code_80004EF0.o(.text);
+      BUILD_DIR/src/staff_ghosts.o(.text);
       BUILD_DIR/asm/unused_overflow_check.o(.text);
       BUILD_DIR/src/code_80005FD0.o(.text);
       BUILD_DIR/asm/code_8001C4D0.o(.text);
@@ -218,7 +218,7 @@ SECTIONS
       BUILD_DIR/src/main.o(.data);
       BUILD_DIR/data/data_0DD0A0.o(.data);
       BUILD_DIR/src/crash_screen.o(.data);
-      BUILD_DIR/src/code_80004EF0.o(.data);
+      BUILD_DIR/src/staff_ghosts.o(.data);
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
       BUILD_DIR/src/kart_attributes.inc.o(.data);
       BUILD_DIR/data/data_0DD0A0_2.o(.rodata);
@@ -258,7 +258,7 @@ SECTIONS
       BUILD_DIR/src/crash_screen.o(.bss);
       BUILD_DIR/asm/bss_800040C0.o(.bss);
       BUILD_DIR/asm/bss_80004740.o(.bss);
-      BUILD_DIR/src/code_80004EF0.o(.bss);
+      BUILD_DIR/src/staff_ghosts.o(.bss);
       BUILD_DIR/asm/bss_80005FD0.o(.bss);
       BUILD_DIR/asm/bss_MainSeg.o(.bss);
       BUILD_DIR/src/os/osCreateViManager.o(.bss);
