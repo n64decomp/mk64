@@ -1,7 +1,7 @@
 .include "macros.inc"
 
 .section .bss
-
+.skip 96
 glabel D_80162E70
 .skip 64
 
