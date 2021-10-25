@@ -2,17 +2,17 @@ glabel thread3_video
 /* 002FE4 800023E4 27BDFFA0 */  addiu $sp, $sp, -0x60
 /* 002FE8 800023E8 3C038015 */  lui   $v1, %hi(gPhysicalFramebuffers) # $v1, 0x8015
 /* 002FEC 800023EC 246302A8 */  addiu $v1, %lo(gPhysicalFramebuffers) # addiu $v1, $v1, 0x2a8
-/* 002FF0 800023F0 3C0E8032 */  lui   $t6, %hi(D_8031F780) # $t6, 0x8032
-/* 002FF4 800023F4 3C0F8034 */  lui   $t7, %hi(D_80344F80) # $t7, 0x8034
-/* 002FF8 800023F8 3C188037 */  lui   $t8, %hi(D_8036A780) # $t8, 0x8037
-/* 002FFC 800023FC 25CEF780 */  addiu $t6, %lo(D_8031F780) # addiu $t6, $t6, -0x880
-/* 003000 80002400 25EF4F80 */  addiu $t7, %lo(D_80344F80) # addiu $t7, $t7, 0x4f80
-/* 003004 80002404 2718A780 */  addiu $t8, %lo(D_8036A780) # addiu $t8, $t8, -0x5880
+/* 002FF0 800023F0 3C0E8032 */  lui   $t6, %hi(gFramebuffer0) # $t6, 0x8032
+/* 002FF4 800023F4 3C0F8034 */  lui   $t7, %hi(gFramebuffer1) # $t7, 0x8034
+/* 002FF8 800023F8 3C188037 */  lui   $t8, %hi(gFramebuffer2) # $t8, 0x8037
+/* 002FFC 800023FC 25CEF780 */  addiu $t6, %lo(gFramebuffer0) # addiu $t6, $t6, -0x880
+/* 003000 80002400 25EF4F80 */  addiu $t7, %lo(gFramebuffer1) # addiu $t7, $t7, 0x4f80
+/* 003004 80002404 2718A780 */  addiu $t8, %lo(gFramebuffer2) # addiu $t8, $t8, -0x5880
 /* 003008 80002408 AC6E0000 */  sw    $t6, ($v1)
 /* 00300C 8000240C AC6F0004 */  sw    $t7, 4($v1)
 /* 003010 80002410 AC780008 */  sw    $t8, 8($v1)
-/* 003014 80002414 3C038037 */  lui   $v1, %hi(D_8036A780) # $v1, 0x8037
-/* 003018 80002418 3C028034 */  lui   $v0, %hi(D_80344F80) # $v0, 0x8034
+/* 003014 80002414 3C038037 */  lui   $v1, %hi(gFramebuffer2) # $v1, 0x8037
+/* 003018 80002418 3C028034 */  lui   $v0, %hi(gFramebuffer1) # $v0, 0x8034
 /* 00301C 8000241C AFBF0034 */  sw    $ra, 0x34($sp)
 /* 003020 80002420 AFB50030 */  sw    $s5, 0x30($sp)
 /* 003024 80002424 AFB4002C */  sw    $s4, 0x2c($sp)
@@ -21,8 +21,8 @@ glabel thread3_video
 /* 003030 80002430 AFB10020 */  sw    $s1, 0x20($sp)
 /* 003034 80002434 AFB0001C */  sw    $s0, 0x1c($sp)
 /* 003038 80002438 AFA40060 */  sw    $a0, 0x60($sp)
-/* 00303C 8000243C 24424F80 */  addiu $v0, %lo(D_80344F80) # addiu $v0, $v0, 0x4f80
-/* 003040 80002440 2463A780 */  addiu $v1, %lo(D_8036A780) # addiu $v1, $v1, -0x5880
+/* 00303C 8000243C 24424F80 */  addiu $v0, %lo(gFramebuffer1) # addiu $v0, $v0, 0x4f80
+/* 003040 80002440 2463A780 */  addiu $v1, %lo(gFramebuffer2) # addiu $v1, $v1, -0x5880
 .L80002444:
 /* 003044 80002444 240A0000 */  li    $t2, 0
 /* 003048 80002448 240B0000 */  li    $t3, 0
