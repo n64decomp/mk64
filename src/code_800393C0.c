@@ -47,18 +47,18 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
             break;
     }
 
-    player->unk_014 = arg2;
+    player->posX = arg2;
     ret = func_802AE1C0(arg2, arg4 + 50.0f, arg3) + player->unk_070;
-    player->unk_01C = arg3;
-    player->unk_018 = ret;
-    player->unk_020 = arg2;
-    player->unk_024 = ret;
+    player->posZ = arg3;
+    player->posY = ret;
+    player->rotX = arg2;
+    player->rotY = ret;
 
     D_80164510[arg1] = ret;
 
 
     player->unk_02C = 0;
-    player->unk_028 = arg3;
+    player->rotZ = arg3;
     player->unk_05C = 1.0f;
     player->unk_058 = 0.0f;
     player->unk_060 = 0.0f;
@@ -114,9 +114,9 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
 
     player->unk_042 = 0;
     player->unk_078 = 0;
-    player->posY = 0;
+    player->unk_0A8 = 0;
     player->unk_0AA = 0;
-    player->posZ = 0;
+    player->unk_0AC = 0;
     player->unk_0AE = 0;
     player->unk_0B0 = 0;
     player->unk_0B2 = 0;
@@ -166,7 +166,7 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
     player->unk_098 = 0.0f;
     player->unk_09C = 0.0f;
     player->unk_0A0 = 0.0f;
-    player->posX = 0.0f;
+    player->unk_0A4 = 0.0f;
     player->unk_0B8 = 0.0f;
     player->unk_0E4 = 0.0f;
     player->unk_0E8 = 0.0f;
@@ -473,12 +473,12 @@ void func_8003A59C(f32 *arg0, f32 *arg1, f32 arg2) {
         spawn_player(D_800DC4E4, 2, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[0], 0x3000);
     } else if (D_8015F890 != 1) {
         spawn_player(D_800DC4FC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], -0x2000);
-        if (D_80162DD4 == 0) {
+        if (D_80162DD4[0] == 0) {
             spawn_player(D_800DC4E0, 1, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE0, -0x1F00);
         } else {
             spawn_player(D_800DC4E0, 1, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], 0x3000);
         }
-        if (D_80162DD6 == 0) {
+        if (D_80162DD4[1] == 0) {
             spawn_player(D_800DC4E4, 2, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE4, -0x1F00);
         } else {
             spawn_player(D_800DC4E4, 2, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[0], 0x3000);
@@ -490,7 +490,7 @@ void func_8003A59C(f32 *arg0, f32 *arg1, f32 arg2) {
         } else {
             spawn_player(D_800DC4E0, 1, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], 0x3000);
         }
-        if (D_80162DD6 == 0) {
+        if (D_80162DD4[1] == 0) {
             spawn_player(D_800DC4E4, 2, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE4, -0x1F00);
         } else {
             spawn_player(D_800DC4E4, 2, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[0], 0x3000);
@@ -1057,7 +1057,7 @@ void func_8003CD98(Player *player, s32 arg1, s8 arg2, s8 arg3) {
 
         D_801650D0[arg3][arg2] = player->unk_244[arg3];
         D_80165110[arg3][arg2] = player->unk_24C[arg3];
-        D_80165150[arg3][arg2] = player->posY;
+        D_80165150[arg3][arg2] = player->unk_0A8;
         D_801651D0[arg3][arg2] = 0;
         func_800267AC(player, arg2, arg3);
     }
@@ -1082,18 +1082,18 @@ void func_8003D080(void) {
                 switch (gModeSelection) {
                     case 0:
                         if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
-                            func_8001C4D0(0.0f, D_800DC4DC->posY, D_8016524C, D_800DC4DC->unk_0BC, 8, 0);
+                            func_8001C4D0(0.0f, D_800DC4DC->unk_0A8, D_8016524C, D_800DC4DC->unk_0BC, 8, 0);
                         } else {
-                            func_8001C4D0((D_80165210[6] + D_80165210[7]) / 2, D_800DC4DC->posY, D_8016524C, D_800DC4DC->unk_0BC, 8, 0);
+                            func_8001C4D0((D_80165210[6] + D_80165210[7]) / 2, D_800DC4DC->unk_0A8, D_8016524C, D_800DC4DC->unk_0BC, 8, 0);
                         }
                         break;
 
                     case 1:
-                        func_8001C4D0(D_800DC4DC->posX, D_800DC4DC->posY, D_8016524C, D_800DC4DC->unk_0BC, 1, 0);
+                        func_8001C4D0(D_800DC4DC->unk_0A4, D_800DC4DC->unk_0A8, D_8016524C, D_800DC4DC->unk_0BC, 1, 0);
                         break;
 
                     default:
-                        func_8001C4D0(D_800DC4DC->posX, D_800DC4DC->posY, D_800DC4DC->posZ, D_800DC4DC->unk_0BC, 10, 0);
+                        func_8001C4D0(D_800DC4DC->unk_0A4, D_800DC4DC->unk_0A8, D_800DC4DC->unk_0AC, D_800DC4DC->unk_0BC, 10, 0);
                         break;
                 }
                 break;
@@ -1102,18 +1102,18 @@ void func_8003D080(void) {
             case 2:
                 switch (gModeSelection) {
                     case 0:
-                        func_8001C4D0(D_800DC4DC->posX, D_800DC4DC->posY, D_800DC4DC->posZ, D_800DC4DC->unk_0BC, 1, 0);
-                        func_8001C4D0(D_800DC4E0->unk_014, D_800DC4E0->unk_018, D_800DC4E0->unk_01C, D_800DC4E0->unk_02E, 1, 1);
+                        func_8001C4D0(D_800DC4DC->unk_0A4, D_800DC4DC->unk_0A8, D_800DC4DC->unk_0AC, D_800DC4DC->unk_0BC, 1, 0);
+                        func_8001C4D0(D_800DC4E0->posX, D_800DC4E0->posY, D_800DC4E0->posZ, D_800DC4E0->unk_02E, 1, 1);
                         break;
 
                     case 3:
-                        func_8001C4D0(D_800DC4DC->posX, D_800DC4DC->posY, D_800DC4DC->posZ, D_800DC4DC->unk_0BC, 9, 0);
-                        func_8001C4D0(D_800DC4E0->unk_014, D_800DC4E0->unk_018, D_800DC4E0->unk_01C, D_800DC4E0->unk_02E, 9, 1);
+                        func_8001C4D0(D_800DC4DC->unk_0A4, D_800DC4DC->unk_0A8, D_800DC4DC->unk_0AC, D_800DC4DC->unk_0BC, 9, 0);
+                        func_8001C4D0(D_800DC4E0->posX, D_800DC4E0->posY, D_800DC4E0->posZ, D_800DC4E0->unk_02E, 9, 1);
                         break;
 
                     default:
-                        func_8001C4D0(D_800DC4DC->posX, D_800DC4DC->posY, D_800DC4DC->posZ, D_800DC4DC->unk_0BC, 1, 0);
-                        func_8001C4D0(D_800DC4E0->unk_014, D_800DC4E0->unk_018, D_800DC4E0->unk_01C, D_800DC4E0->unk_02E, 1, 1);
+                        func_8001C4D0(D_800DC4DC->unk_0A4, D_800DC4DC->unk_0A8, D_800DC4DC->unk_0AC, D_800DC4DC->unk_0BC, 1, 0);
+                        func_8001C4D0(D_800DC4E0->posX, D_800DC4E0->posY, D_800DC4E0->posZ, D_800DC4E0->unk_02E, 1, 1);
                         break;
                 }
                 break;
@@ -1121,23 +1121,23 @@ void func_8003D080(void) {
             case 3:
                 if (gModeSelection == 3) {
                     ptr = &D_800DC4E4;
-                    func_8001C4D0(D_800DC4DC->posX, D_800DC4DC->posY, D_800DC4DC->posZ, D_800DC4DC->unk_0BC, 9, 0);
-                    func_8001C4D0(D_800DC4E0->unk_014, D_800DC4E0->unk_018, D_800DC4E0->unk_01C, D_800DC4E0->unk_02E, 9, 1);
+                    func_8001C4D0(D_800DC4DC->unk_0A4, D_800DC4DC->unk_0A8, D_800DC4DC->unk_0AC, D_800DC4DC->unk_0BC, 9, 0);
+                    func_8001C4D0(D_800DC4E0->posX, D_800DC4E0->posY, D_800DC4E0->posZ, D_800DC4E0->unk_02E, 9, 1);
                     ptr++;
-                    func_8001C4D0(ptr->unk_014, ptr->unk_018, ptr->unk_01C, ptr->unk_02E, 9, 2);
+                    func_8001C4D0(ptr->posX, ptr->posY, ptr->posZ, ptr->unk_02E, 9, 2);
                     ptr++;
                     if (gPlayerCountSelection1 == 4) {
-                        func_8001C4D0(ptr->unk_014, ptr->unk_018, ptr->unk_01C, ptr->unk_02E, 9, 3);
+                        func_8001C4D0(ptr->posX, ptr->posY, ptr->posZ, ptr->unk_02E, 9, 3);
                     }
                 } else {
                     ptr = &D_800DC4E4;
-                    func_8001C4D0(D_800DC4DC->posX, D_800DC4DC->posY, D_800DC4DC->posZ, D_800DC4DC->unk_0BC, 1, 0);
-                    func_8001C4D0(D_800DC4E0->unk_014, D_800DC4E0->unk_018, D_800DC4E0->unk_01C, D_800DC4E0->unk_02E, 1, 1);
+                    func_8001C4D0(D_800DC4DC->unk_0A4, D_800DC4DC->unk_0A8, D_800DC4DC->unk_0AC, D_800DC4DC->unk_0BC, 1, 0);
+                    func_8001C4D0(D_800DC4E0->posX, D_800DC4E0->posY, D_800DC4E0->posZ, D_800DC4E0->unk_02E, 1, 1);
                     ptr++;
-                    func_8001C4D0(ptr->unk_014, ptr->unk_018, ptr->unk_01C, ptr->unk_02E, 1, 2);
+                    func_8001C4D0(ptr->posX, ptr->posY, ptr->posZ, ptr->unk_02E, 1, 2);
                     ptr++;
                     if (gPlayerCountSelection1 == 4) {
-                        func_8001C4D0(ptr->unk_014, ptr->unk_018, ptr->unk_01C, ptr->unk_02E, 1, 3);
+                        func_8001C4D0(ptr->posX, ptr->posY, ptr->posZ, ptr->unk_02E, 1, 3);
                     }
                 }
                 break;
@@ -1145,23 +1145,23 @@ void func_8003D080(void) {
     } else {
         switch (D_800DC52C) {
             case 0:
-                func_8001C4D0(D_800DC4DC->posX, D_800DC4DC->posY, D_800DC4DC->posZ, D_800DC4DC->unk_0BC, 3, 0);
+                func_8001C4D0(D_800DC4DC->unk_0A4, D_800DC4DC->unk_0A8, D_800DC4DC->unk_0AC, D_800DC4DC->unk_0BC, 3, 0);
                 break;
 
             case 1:
             case 2:
-                func_8001C4D0(D_800DC4DC->posX, D_800DC4DC->posY, D_800DC4DC->posZ, D_800DC4DC->unk_0BC, 3, 0);
-                func_8001C4D0(D_800DC4E0->unk_014, D_800DC4E0->unk_018, D_800DC4E0->unk_01C, D_800DC4E0->unk_02E, 3, 1);
+                func_8001C4D0(D_800DC4DC->unk_0A4, D_800DC4DC->unk_0A8, D_800DC4DC->unk_0AC, D_800DC4DC->unk_0BC, 3, 0);
+                func_8001C4D0(D_800DC4E0->posX, D_800DC4E0->posY, D_800DC4E0->posZ, D_800DC4E0->unk_02E, 3, 1);
                 break;
 
             case 3:
                 ptr = &D_800DC4E4;
-                func_8001C4D0(D_800DC4DC->posX, D_800DC4DC->posY, D_800DC4DC->posZ, D_800DC4DC->unk_0BC, 3, 0);
-                func_8001C4D0(D_800DC4E0->unk_014, D_800DC4E0->unk_018, D_800DC4E0->unk_01C, D_800DC4E0->unk_02E, 3, 1);
+                func_8001C4D0(D_800DC4DC->unk_0A4, D_800DC4DC->unk_0A8, D_800DC4DC->unk_0AC, D_800DC4DC->unk_0BC, 3, 0);
+                func_8001C4D0(D_800DC4E0->posX, D_800DC4E0->posY, D_800DC4E0->posZ, D_800DC4E0->unk_02E, 3, 1);
                 ptr++;
-                func_8001C4D0(ptr->unk_014, ptr->unk_018, ptr->unk_01C, ptr->unk_02E, 3, 2);
+                func_8001C4D0(ptr->posX, ptr->posY, ptr->posZ, ptr->unk_02E, 3, 2);
                 ptr++;
-                func_8001C4D0(ptr->unk_014, ptr->unk_018, ptr->unk_01C, ptr->unk_02E, 3, 3);
+                func_8001C4D0(ptr->posX, ptr->posY, ptr->posZ, ptr->unk_02E, 3, 3);
                 break;
         }
     }
@@ -1230,8 +1230,8 @@ void func_8003DB5C(void) {
     Player *player = D_800DC4DC;
     s32 i;
 
-    func_8001C4D0(player->unk_014, player->unk_018, player->unk_01C, player->unk_02E, 3, 0);
-    func_8001C4D0(player->unk_014, player->unk_018, player->unk_01C, player->unk_02E, 3, 1);
+    func_8001C4D0(player->posX, player->posY, player->posZ, player->unk_02E, 3, 0);
+    func_8001C4D0(player->posX, player->posY, player->posZ, player->unk_02E, 3, 1);
     
     for (i = 0; i < 8; i++, player++) {
         func_80027A20(player, i, 1, 0);
