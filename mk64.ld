@@ -66,7 +66,7 @@ SECTIONS
       BUILD_DIR/src/profiler.o(.text);
       BUILD_DIR/src/crash_screen.o(.text);
       BUILD_DIR/asm/code_80004740.o(.text);
-      BUILD_DIR/asm/code_80004EF0.o(.text);
+      BUILD_DIR/src/code_80004EF0.o(.text);
       BUILD_DIR/asm/unused_overflow_check.o(.text);
       BUILD_DIR/src/code_80005FD0.o(.text);
       BUILD_DIR/asm/code_8001C4D0.o(.text);
@@ -218,6 +218,7 @@ SECTIONS
       BUILD_DIR/src/main.o(.data);
       BUILD_DIR/data/data_0DD0A0.o(.data);
       BUILD_DIR/src/crash_screen.o(.data);
+      BUILD_DIR/src/code_80004EF0.o(.data);
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
       BUILD_DIR/src/kart_attributes.inc.o(.data);
       BUILD_DIR/data/data_0DD0A0_2.o(.rodata);
@@ -257,7 +258,7 @@ SECTIONS
       BUILD_DIR/src/crash_screen.o(.bss);
       BUILD_DIR/asm/bss_800040C0.o(.bss);
       BUILD_DIR/asm/bss_80004740.o(.bss);
-      BUILD_DIR/asm/bss_80004EF0.o(.bss);
+      BUILD_DIR/src/code_80004EF0.o(.bss);
       BUILD_DIR/asm/bss_80005FD0.o(.bss);
       BUILD_DIR/asm/bss_MainSeg.o(.bss);
       BUILD_DIR/src/os/osCreateViManager.o(.bss);
@@ -277,12 +278,21 @@ SECTIONS
    _mainSegmentNoloadSizeHi = _mainSegmentNoloadSize >> 16;
    _mainSegmentNoloadSizeLo = _mainSegmentNoloadSize & 0xFFFF;
 
+   . = SEG_FRAMEBUFFERS;
+   BEGIN_NOLOAD(framebuffers)
+   {
+      BUILD_DIR/src/framebuffers.o(.bss*);
+   }
+   END_NOLOAD(framebuffers)
+
+
+
    /* 0x8028DF00 0F7510-123640 [2C130] */
    BEGIN_SEG(code_8028DF00, SEG_8028DF00)
    {
       BUILD_DIR/src/code_8028DF00.o(.text);
       BUILD_DIR/asm/code_80290C20.o(.text);
-      BUILD_DIR/asm/code_80296A50.o(.text);
+      BUILD_DIR/src/code_80296A50.o(.text);
       BUILD_DIR/asm/code_802A3730.o(.text);
       BUILD_DIR/src/memory.o(.text);
       BUILD_DIR/asm/code_802B0210.o(.text);
@@ -296,8 +306,8 @@ SECTIONS
    END_SEG(code_8028DF00)
 
    	BEGIN_NOLOAD(code_8028DF00) {
-	     BUILD_DIR/src/code_8028DF00.o(.bss);
-	     BUILD_DIR/asm/bss_8028DF00.o(.bss);
+        BUILD_DIR/src/code_8028DF00.o(.bss);
+        BUILD_DIR/asm/bss_8028DF00.o(.bss);
 	   }
 	   END_NOLOAD(code_8028DF00)
 	
@@ -341,7 +351,7 @@ SECTIONS
    BEGIN_SEG(kart_textures, 0x0F000000)
    {
       BUILD_DIR/data/kart_textures.o(.data);
-      BUILD_DIR/data/data_63E278.o(.data);
+      BUILD_DIR/courses/staff_ghosts.inc.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(kart_textures)

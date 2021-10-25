@@ -220,7 +220,7 @@ $(BUILD_DIR)/%.mio0.s: $(BUILD_DIR)/%.mio0
 	printf ".section .data\n\n.incbin \"$<\"\n" > $@
 
 $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/crash_screen/crash_screen_font.ia1.inc.c -g textures/crash_screen/crash_screen_font.ia1.png -f ia1 -s u32
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/crash_screen/crash_screen_font.ia1.inc.c -g textures/crash_screen/crash_screen_font.ia1.png -f ia1 -s u8
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
@@ -434,7 +434,14 @@ $(battle)/skyscraper/%.inc.mio0.o: courses/battle/skyscraper/%.inc.c
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/battle/skyscraper/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_skyscraper_packed\n\n.incbin \"bin/course_skyscraper_packed.bin\"\n" > build/us/courses/battle/skyscraper/model.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(battle)/skyscraper/$*.inc.mio0.o $(battle)/skyscraper/$*.inc.mio0.s
 
-####################               #####################
+####################       STAFF GHOSTS        #####################
+
+#$(mushroom_cup)/luigi_raceway/%.inc.mio0.o: courses/mushroom_cup/luigi_raceway/%.inc.c
+#	$(LD) -t -e 0 -Ttext=0F000000 -Map $(mushroom_cup)/luigi_raceway/$*.elf.map -o $(battle)/skyscraper/$*.inc.elf $(battle)/skyscraper/$*.inc.o --no-check-sections
+
+#$(mushroom_cup)/luigi_raceway/%.inc.mio0.o: courses/mushroom_cup/luigi_raceway/%.inc.c
+#	$(LD) -t -e 0 -Ttext=0F000000 -Map $(mushroom_cup)/luigi_raceway/$*.elf.map -o $(battle)/skyscraper/$*.inc.elf $(battle)/skyscraper/$*.inc.o --no-check-sections
+
 
 # startup_logo.c
 
