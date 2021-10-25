@@ -263,7 +263,7 @@ void func_8008C528(Player *player, s8 arg1) {
     player->unk_0F4 = 0.0f;
 
     player->unk_0EC = D_800E3790[temp_v1];
-    player->posY = 0;
+    player->unk_0A8 = 0;
     player->unk_0BC = player->unk_0BC | 0x400;
     player->unk_0BC = player->unk_0BC & ~0x10;
     player->unk_0C0 = 0;
@@ -281,13 +281,13 @@ void func_8008C528(Player *player, s8 arg1) {
 void func_8008C62C(Player *player, s8 arg1) {
 
     func_80031F48(player, 5.0f);
-    player->posY += (s16)0xA0;
+    player->unk_0A8 += (s16)0xA0;
     player->unk_042 += (s16)0x71C;
-    if (player->posY >= 0x2000) {
-        player->posY = 0;
+    if (player->unk_0A8 >= 0x2000) {
+        player->unk_0A8 = 0;
         player->unk_236 = (s16) (player->unk_236 - 1);
         if (player->unk_236 == 0) {
-            player->posY = 0x2000;
+            player->unk_0A8 = 0x2000;
             func_8008C6D0(player, arg1);
             if (gModeSelection == 3) {
                 func_8006B8B4(player, arg1);
@@ -301,7 +301,7 @@ void func_8008C6D0(Player *player, s8 arg1) {
     player->unk_206 = 0;
     player->unk_0C4 = 0;
     player->unk_0BC = (s32) (player->unk_0BC & ~0x400);
-    player->posY = 0;
+    player->unk_0A8 = 0;
     player->unk_0C0 = 0;
     player->unk_07C = 0;
     player->unk_236 = 0;
@@ -364,7 +364,7 @@ void func_8008C8C4(Player *player, s8 arg1) {
     
 
     player->unk_02E = player->unk_0AE;
-    player->posY = 0;
+    player->unk_0A8 = 0;
     player->unk_07C = 0;
     player->unk_0C0 = 0;
     player->unk_0BC &= ~0x800;
