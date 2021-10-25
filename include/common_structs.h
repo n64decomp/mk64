@@ -32,6 +32,79 @@ typedef enum {
     /* 0x15 */ NUM_COURSES
 } COURSES;
 
+typedef enum {
+    A = 0x80,
+    B = 0x40,
+    Z = 0x20,
+    R = 0x10
+} GhostController;
+
+typedef struct {
+    u8 button;
+    s8 frameDuration;
+    s8 stickY;
+    s8 stickX;
+} StaffGhost;
+// 80160ADC Banana's remaining
+typedef struct {
+    s32 unk0;
+    s32 unk2;
+    s32 shellPos1; // BF8 = empty
+    s32 shellPos2; // 422 full
+    s32 shellPos3; // 422C full
+    
+} Item; // Inventory?
+
+typedef struct {
+ // B4 long
+    f32 posX;
+    f32 posY;
+    f32 posZ;
+    f32 unk; // lookat? faceangle?
+    f32 unk1;
+    f32 unk2;
+    f32 angleX;
+    f32 angleY;
+    f32 angleZ;
+    f32 rotX;
+    f32 rotY;
+    f32 rotZ;
+    s32 unk3; // zero
+    s32 unk4; // 0x4119999A
+    s32 unk5; // 0xC20C bit flag?
+    s32 unk6; // 0
+    s32 unk7; // 0
+    s32 unk8; // 0x41F
+    s32 unk9; // 0
+    s32 unk10; // 0
+    s32 unk11; // 0
+    s32 unk12; // 0
+    s32 unk13; // 0x103F7
+    s32 unk14; // 0x05BC00## Surface camera is over? 
+    f32 collisionX;
+    f32 collisionY;
+    f32 collisionZ;
+    f32 unk15;
+    f32 unk16;
+    f32 unk17;
+    f32 unk18;
+    f32 unk19;
+    f32 unk20;
+    f32 unkAngleX;
+    f32 unkAngleY;
+    f32 unkAngleZ;
+    s32 unk21; // zero
+    f32 collision;
+    s32 unk22; // zero
+    s32 unk23; // zero
+    s32 unk24; // zero
+    s32 unk25; // zero
+    s32 unk26; // zero
+    s32 unk27; // 8
+    s32 unk28; // zero
+    s32 unk29; // 422
+} Camera;
+
 typedef struct {
     /* 0x0000 */ u16 unk_000;
     /* 0x0002 */ s16 unk_002;
@@ -41,12 +114,12 @@ typedef struct {
     /* 0x000A */ char unk_00A[0x2];
     /* 0x000C */ s32 unk_00C;
     /* 0x0010 */ char unk_010[0x4];
-    /* 0x0014 */ f32 unk_014;
-    /* 0x0018 */ f32 unk_018;
-    /* 0x001C */ f32 unk_01C;
-    /* 0x0020 */ f32 unk_020;
-    /* 0x0024 */ f32 unk_024;
-    /* 0x0028 */ f32 unk_028;
+    /* 0x0014 */ f32 posX;
+    /* 0x0018 */ f32 posY;
+    /* 0x001C */ f32 posZ;
+    /* 0x0020 */ f32 rotX;
+    /* 0x0024 */ f32 rotY;
+    /* 0x0028 */ f32 rotZ;
     /* 0x002C */ s16 unk_02C;
     /* 0x002E */ s16 unk_02E;
     /* 0x0030 */ s16 unk_030;
@@ -79,10 +152,10 @@ typedef struct {
     /* 0x0098 */ f32 unk_098;
     /* 0x009C */ f32 unk_09C;
     /* 0x00A0 */ f32 unk_0A0;
-    /* 0x00A4 */ f32 posX;
-    /* 0x00A8 */ s16 posY;
+    /* 0x00A4 */ f32 unk_0A4;
+    /* 0x00A8 */ s16 unk_0A8;
     /* 0x00AA */ s16 unk_0AA;
-    /* 0x00AC */ s16 posZ;
+    /* 0x00AC */ s16 unk_0AC;
     /* 0x00AE */ s16 unk_0AE;
     /* 0x00B0 */ s16 unk_0B0;
     /* 0x00B2 */ s16 unk_0B2;
