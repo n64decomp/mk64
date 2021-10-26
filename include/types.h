@@ -113,27 +113,4 @@ extern mk64_Vtx d_course_big_donut_vertex[];
 
 extern struct courseTable gCourseTable[];
 
-/*
-extern mk64_Vtx d_course_mario_raceway_vertex[5757];
-extern mk64_Vtx d_course_choco_mountain_vertex[5560];
-extern mk64_Vtx d_course_bowsers_castle_vertex[9527];
-extern mk64_Vtx d_course_banshee_boardwalk_vertex[4945];
-extern mk64_Vtx d_course_yoshi_valley_vertex[3720];
-extern mk64_Vtx d_course_frappe_snowland_vertex[5529];
-extern mk64_Vtx d_course_koopa_troopa_beach_vertex[9376];
-extern mk64_Vtx d_course_royal_raceway_vertex[8306];
-extern mk64_Vtx d_course_luigi_raceway_vertex[5936];
-extern mk64_Vtx d_course_moo_moo_farm_vertex[7972];
-extern mk64_Vtx d_course_toads_turnpike_vertex[6359];
-extern mk64_Vtx d_course_kalimari_desert_vertex[6393];
-extern mk64_Vtx d_course_sherbet_land_vertex[663];
-extern mk64_Vtx d_course_rainbow_road_vertex[3111];
-extern mk64_Vtx d_course_wario_stadium_vertex[6067];
-extern mk64_Vtx d_course_block_fort_vertex[1088];
-extern mk64_Vtx d_course_skyscraper_vertex[1086];
-extern mk64_Vtx d_course_double_deck_vertex[555];
-extern mk64_Vtx d_course_dks_jungle_parkway_vertex[5679];
-extern mk64_Vtx d_course_big_donut_vertex[1165];
-*/
-
 #endif /* TYPES_H */
