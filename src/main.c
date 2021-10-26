@@ -468,9 +468,6 @@ void dma_copy(u8 *dest, u8 *arg1, u32 size) {
 }
 
 // Resembles setup_game_memory from SM64
-#ifdef NON_MATCHING
-// Two differing words.
-// Likely some arbitrary combination of unused vars.
 void init_game(void) {
     UNUSED u32 pad[2];
     u32 sp2C;
@@ -479,7 +476,6 @@ void init_game(void) {
     s32 sp38;
     UNUSED s32 unknown_padding;
     
-
     func_800010CC();
     gHeapEndPtr = SEG_8028DF00;
     set_segment_base_addr(0, 0x80000000);
@@ -504,9 +500,6 @@ void init_game(void) {
     gPrevLoadedAddress += sp40;
     D_8015F734 = gPrevLoadedAddress;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/main/init_game.s")
-#endif
 
 void func_80001404(void) {
     D_800DC524 = 0;
