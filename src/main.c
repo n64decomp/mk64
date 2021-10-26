@@ -158,7 +158,7 @@ extern u32 D_801502B4;
 extern u32 gZBuffer;
 
 extern s32 gFramebuffer0;
-extern s32 gFramebuffer1[];
+extern s32 gFramebuffer1;
 extern s32 gFramebuffer2;
 
 extern s32 D_8015AB80;
@@ -1089,7 +1089,7 @@ void thread3_video(void *arg0) {
     //phi_v0 = &gFramebuffer1;
 //loop_1:
     // potential unrolled loop?
-    temp_v0 = &gFramebuffer1[0];
+    temp_v0 = &gFramebuffer1;
     for (i = 0; i < gFramebuffer2; i++) {
         temp_v0[i] = 0;
     }
