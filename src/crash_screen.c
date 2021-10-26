@@ -33,70 +33,36 @@ extern void *D_80162D64;
 
 u32 D_800DC670 = 0;
 
-u32 crashScreenFont[34] = {
+u8 crashScreenFont[][8] = {
     #include "textures/crash_screen/crash_screen_font.ia1.inc.c"
 };
+
 u16 D_800DC6FC[10] = {
     32, 2048, 512, 1024, 256, 16, 32, 16384, 32768, 65535
  // 0x0020, 0x0800, 0x0200, 0x0400, 0x0100, 0x0010, 0x0020, 0x4000, 0x8000, 0xffff
 };
-/*
-// similar to sm64's crash_screen_draw_glyph
-void func_800040C0(uintptr_t framebuffer, s32 x, s32 y, u32 glyph) {
-    s32 temp_v0;
-    u32 *data;
-    u16 *ptr;
-    s32 temp_a0;
-    s32 phi_v1;
-    s32 phi_v0;
-    s32 phi_a0;
 
-    //phi_v0 = frameBuffer;
-    //temp_v0 = glyph * 7;
-    
-
-    ptr = framebuffer; //+ y * 320 + x;
-    data = crashScreenFont[glyph * 8];
-    temp_v0 = 0;
-    while(temp_v0 != 8) {
-        phi_v1 = (s32)*data;
-        phi_a0 = 5;
-        for (temp_a0 = 0; temp_a0 >= 0; temp_a0++) {
-        
-            if (phi_v1 & 1) {
-                framebuffer += ((((y +phi_v0) * 320) + x + phi_a0) * 2);
-            }
-            //ptr++;
-            phi_a0--;
-            *data += *data >> 1;
-            //phi_a0 = temp_a0;
-
-        }
-        //phi_v0++;
-        //phi_v0 = temp_v0;
-        data += 1;
-    }
-    
-}
-*/
-/*
-void func_800040C0(s32 x, s32 y, s32 w, s32 h) {
-    u16 *ptr;
+void crash_screen_draw_glyph(u16 *framebuffer, s32 x, s32 y, s32 glyph) {
+    s32 data;
+    s32 ptr;
     s32 i, j;
 
-    ptr = gCrashScreen.framebuffer + gCrashScreen.width * y + x;
-    for (i = 0; i < h; i++) {
-        for (j = 0; j < w; j++) {
-            // 0xe738 = 0b1110011100111000
-            *ptr = ((*ptr & 0xe738) >> 2) | 1;
-            ptr++;
+    for(i = 0; i < 8; i++) {
+
+        data = crashScreenFont[glyph][i];
+        
+        for (j = 5; j >= 0; j--) {
+
+            ptr = (y + i) * 320 + (x + j);
+
+            if (data & 1) {
+                framebuffer[ptr] = 0xffff;
+            }
+            data = data >> 1;
         }
-        ptr += gCrashScreen.width - w;
     }
 }
-*/
 
-GLOBAL_ASM("asm/non_matchings/crash_screen/func_800040C0.s")
 GLOBAL_ASM("asm/non_matchings/crash_screen/crash_screen.s")
 
 /*

@@ -220,7 +220,7 @@ $(BUILD_DIR)/%.mio0.s: $(BUILD_DIR)/%.mio0
 	printf ".section .data\n\n.incbin \"$<\"\n" > $@
 
 $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/crash_screen/crash_screen_font.ia1.inc.c -g textures/crash_screen/crash_screen_font.ia1.png -f ia1 -s u32
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/crash_screen/crash_screen_font.ia1.inc.c -g textures/crash_screen/crash_screen_font.ia1.png -f ia1 -s u8
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
@@ -434,7 +434,7 @@ $(battle)/skyscraper/%.inc.mio0.o: courses/battle/skyscraper/%.inc.c
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/battle/skyscraper/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_skyscraper_packed\n\n.incbin \"bin/course_skyscraper_packed.bin\"\n" > build/us/courses/battle/skyscraper/model.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(battle)/skyscraper/$*.inc.mio0.o $(battle)/skyscraper/$*.inc.mio0.s
 
-####################               #####################
+####################       STAFF GHOSTS        #####################
 
 # startup_logo.c
 
@@ -455,31 +455,8 @@ $(BUILD_DIR)/src/trophy_model.inc.mio0.o: src/trophy_model.inc.c
 	printf ".include \"macros.inc\"\n\n.data\n\n.align 2, 0x00\n\nglabel trophy_model\n\n.incbin \"build/us/src/trophy_model.inc.mio0\"\n" > build/us/src/trophy_model.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.s
 
-#$(BUILD_DIR)/src/trophy_model.inc.bin: src/trophy_model.inc.c
-#	$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/src/trophy_model.inc.elf.map -o $(BUILD_DIR)/src/trophy_model.inc.elf $(BUILD_DIR)/src/trophy_model.inc.o --no-check-sections
-#	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/trophy_model.inc.elf $(BUILD_DIR)/src/trophy_model.inc.bin
-
-#$(BUILD_DIR)/data/trophy_path_data.inc.bin: data/trophy_path_data.inc.s
-#	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/data/trophy_path_data.inc.o data/trophy_path_data.inc.s
-#	$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/data/trophy_path_data.inc.elf.map -o $(BUILD_DIR)/data/trophy_path_data.inc.elf $(BUILD_DIR)/data/trophy_path_data.inc.o --no-check-sections
-#	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/data/trophy_path_data.inc.elf $(BUILD_DIR)/data/trophy_path_data.inc.bin
-
-#$(BUILD_DIR)/src/trophy_model.inc.mio0.o: $(BUILD_DIR)/src/trophy_model.inc.bin $(BUILD_DIR)/data/trophy_path_data.inc.bin
-#	printf ".include \"macros.inc\"\n\n.data\n\n\n\nglabel trophy_model\n\n.incbin \"build/us/src/trophy_model.inc.bin\"\n\n\n\n.incbin \"build/us/data/trophy_path_data.inc.bin\"\n" > build/us/src/trophy_model_combined.inc.s
-#	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/trophy_model_combined.inc.o $(BUILD_DIR)/src/trophy_model_combined.inc.s
-#	$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/src/trophy_model_combined.inc.elf.map -o $(BUILD_DIR)/src/trophy_model_combined.inc.elf $(BUILD_DIR)/src/trophy_model_combined.inc.o --no-check-sections
-#	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/trophy_model_combined.inc.elf $(BUILD_DIR)/src/trophy_model_combined.inc.bin
-#	$(REMOVE_BYTES) $(BUILD_DIR)/src/trophy_model_combined.inc.bin 8
-#	$(MIO0TOOL) -c $(BUILD_DIR)/src/trophy_model_combined.inc.bin $(BUILD_DIR)/src/trophy_model_combined.inc.mio0
-#	printf ".include \"macros.inc\"\n\n.data\n\n.align 2, 0x00\n\nglabel trophy_model\n\n.incbin \"build/us/src/trophy_model_combined.inc.mio0\"\n" > build/us/src/trophy_model.inc.mio0.s
-#	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.s
-
-
-
 $(BUILD_DIR)/$(TARGET).elf: $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(LD_COURSE_VERTEX_DEPENDENCIES) undefined_syms.txt
 	$(LD) $(LDFLAGS) -o $@
-
-#	-R $(mushroom_cup)/luigi_raceway/model.inc.elf -R $(mushroom_cup)/moo_moo_farm/model.inc.elf -R $(mushroom_cup)/koopa_beach/model.inc.elf -R $(mushroom_cup)/kalimari_desert/model.inc.elf \
 	-R $(flower_cup)/toads_turnpike/model.inc.elf -R $(flower_cup)/frappe_snowland/model.inc.elf -R $(flower_cup)/choco_mountain/model.inc.elf -R $(flower_cup)/mario_raceway/model.inc.elf \
 	-R $(star_cup)/wario_stadium/model.inc.elf -R $(star_cup)/sherbet_land/model.inc.elf -R $(star_cup)/royal_raceway/model.inc.elf -R $(star_cup)/bowsers_castle/model.inc.elf \
 	-R $(special_cup)/dks_jungle_parkway/model.inc.elf -R $(special_cup)/yoshi_valley/model.inc.elf -R $(special_cup)/banshee_boardwalk/model.inc.elf -R $(special_cup)/rainbow_road/model.inc.elf \

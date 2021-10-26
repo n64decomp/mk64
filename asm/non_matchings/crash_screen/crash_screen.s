@@ -156,12 +156,12 @@ glabel crash_screen_draw_info
 /* 004F5C 8000435C 2405006C */  li    $a1, 108
 /* 004F60 80004360 00001012 */  mflo  $v0
 /* 004F64 80004364 24500035 */  addiu $s0, $v0, 0x35
-/* 004F68 80004368 0C001030 */  jal   func_800040C0
+/* 004F68 80004368 0C001030 */  jal   crash_screen_draw_glyph
 /* 004F6C 8000436C 02003025 */   move  $a2, $s0
 /* 004F70 80004370 02A02025 */  move  $a0, $s5
 /* 004F74 80004374 24050074 */  li    $a1, 116
 /* 004F78 80004378 02003025 */  move  $a2, $s0
-/* 004F7C 8000437C 0C001030 */  jal   func_800040C0
+/* 004F7C 8000437C 0C001030 */  jal   crash_screen_draw_glyph
 /* 004F80 80004380 24070010 */   li    $a3, 16
 /* 004F84 80004384 26720020 */  addiu $s2, $s3, 0x20
 /* 004F88 80004388 8E5400FC */  lw    $s4, 0xfc($s2)
@@ -170,7 +170,7 @@ glabel crash_screen_draw_info
 /* 004F90 80004390 02A02025 */  move  $a0, $s5
 /* 004F94 80004394 02202825 */  move  $a1, $s1
 /* 004F98 80004398 02003025 */  move  $a2, $s0
-/* 004F9C 8000439C 0C001030 */  jal   func_800040C0
+/* 004F9C 8000439C 0C001030 */  jal   crash_screen_draw_glyph
 /* 004FA0 800043A0 3287000F */   andi  $a3, $s4, 0xf
 /* 004FA4 800043A4 2631FFF8 */  addiu $s1, $s1, -8
 /* 004FA8 800043A8 2A21007C */  slti  $at, $s1, 0x7c
@@ -183,17 +183,17 @@ glabel crash_screen_draw_info
 /* 004FC4 800043C4 00117082 */  srl   $t6, $s1, 2
 /* 004FC8 800043C8 31D1001F */  andi  $s1, $t6, 0x1f
 /* 004FCC 800043CC 02003025 */  move  $a2, $s0
-/* 004FD0 800043D0 0C001030 */  jal   func_800040C0
+/* 004FD0 800043D0 0C001030 */  jal   crash_screen_draw_glyph
 /* 004FD4 800043D4 24070010 */   li    $a3, 16
 /* 004FD8 800043D8 02A02025 */  move  $a0, $s5
 /* 004FDC 800043DC 240500C4 */  li    $a1, 196
 /* 004FE0 800043E0 02003025 */  move  $a2, $s0
-/* 004FE4 800043E4 0C001030 */  jal   func_800040C0
+/* 004FE4 800043E4 0C001030 */  jal   crash_screen_draw_glyph
 /* 004FE8 800043E8 00113902 */   srl   $a3, $s1, 4
 /* 004FEC 800043EC 02A02025 */  move  $a0, $s5
 /* 004FF0 800043F0 240500CC */  li    $a1, 204
 /* 004FF4 800043F4 02003025 */  move  $a2, $s0
-/* 004FF8 800043F8 0C001030 */  jal   func_800040C0
+/* 004FF8 800043F8 0C001030 */  jal   crash_screen_draw_glyph
 /* 004FFC 800043FC 3227000F */   andi  $a3, $s1, 0xf
 /* 005000 80004400 8E5400E4 */  lw    $s4, 0xe4($s2)
 /* 005004 80004404 241100B4 */  li    $s1, 180
@@ -201,7 +201,7 @@ glabel crash_screen_draw_info
 /* 005008 80004408 02A02025 */  move  $a0, $s5
 /* 00500C 8000440C 02202825 */  move  $a1, $s1
 /* 005010 80004410 24060049 */  li    $a2, 73
-/* 005014 80004414 0C001030 */  jal   func_800040C0
+/* 005014 80004414 0C001030 */  jal   crash_screen_draw_glyph
 /* 005018 80004418 3287000F */   andi  $a3, $s4, 0xf
 /* 00501C 8000441C 2631FFF8 */  addiu $s1, $s1, -8
 /* 005020 80004420 2A21007C */  slti  $at, $s1, 0x7c
@@ -226,7 +226,7 @@ glabel crash_screen_draw_info
 /* 005068 80004468 02A02025 */  move  $a0, $s5
 /* 00506C 8000446C 02202825 */  move  $a1, $s1
 /* 005070 80004470 2406005D */  li    $a2, 93
-/* 005074 80004474 0C001030 */  jal   func_800040C0
+/* 005074 80004474 0C001030 */  jal   crash_screen_draw_glyph
 /* 005078 80004478 3287000F */   andi  $a3, $s4, 0xf
 /* 00507C 8000447C 2631FFF8 */  addiu $s1, $s1, -8
 /* 005080 80004480 2A21007C */  slti  $at, $s1, 0x7c

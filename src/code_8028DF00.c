@@ -36,8 +36,6 @@ extern u16 D_800DC5B0;
 extern u16 D_800DC5B8;
 extern s32 D_800E86A0;
 
-extern struct Controller *D_800DC4CC;
-
 extern s32 D_8018EE08;
 extern u16 D_800DC51C;
 extern s32 D_80150118;
@@ -49,7 +47,7 @@ extern s32 D_800DC530;
 extern s32 D_8018D2AC;
 extern s32 D_800DC52C;
 extern s16 gCurrentCourseId;
-extern u16 D_80162DD6;
+extern u16 D_80162DD4[];
 extern u16 D_8015F890;
 extern u32 D_800DC5AC;
 extern u16 gEnableDebugMode;
@@ -106,8 +104,6 @@ UNUSED s32 D_802BA03C;
 
 s16 D_802BA040[4];
 u16 D_802BA048;
-
-// Likely bss memed need to declare controllers likely in main.c
 
 void func_8028DF00(void) {
     struct Controller *controllers = &gControllers[0];
@@ -622,7 +618,7 @@ GLOBAL_ASM("asm/non_matchings/code_8028DF00/func_8028EDA8.s")
 f32 func_8028EE8C(s32 i) {
     f32 temp_f14;
     temp_f14 = D_8015F8D8 - gPlayers[i].unk_01C;
-    return gCourseTimer - ((D_802B9254 * temp_f14) / (temp_f14 + (gPlayers[i].unk_028 - D_8015F8D8)));
+    return gCourseTimer - ((D_802B9254 * temp_f14) / (temp_f14 + (gPlayers[i].rotZ - D_8015F8D8)));
 }
 */
 

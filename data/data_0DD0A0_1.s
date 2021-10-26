@@ -5,15 +5,11 @@
 
 .section .data
 
-#glabel D_800DC6FC
-#.hword 0x0020, 0x0800, 0x0200, 0x0400, 0x0100, 0x0010
-#.hword 0x0020, 0x4000, 0x8000, 0xffff
+#glabel D_800DC710
+#.word D_802D2B80
 
-glabel D_800DC710
-.word D_802D2B80
-
-glabel D_800DC714
-.word D_802DAB80, 0x00000000, 0x00000000
+#glabel D_800DC714
+#.word D_802DAB80, 0x00000000, 0x00000000
 
 glabel D_800DC720
 .word D_0D008F28, D_0D008F80, D_0D008FB8, D_0D009058
@@ -329,7 +325,7 @@ glabel D_800DDB50
 .byte 0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x00, 0x02
 
 glabel D_800DDB58
-.word 0x00000000, D_8031F780, D_80344F80, D_8036A780
+.word 0x00000000, gFramebuffer0, gFramebuffer1, gFramebuffer2
 
 glabel D_800DDB68
 .word D_800ED600, D_800ED608, D_800ED610, D_800ED618
