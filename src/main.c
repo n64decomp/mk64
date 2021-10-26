@@ -472,6 +472,7 @@ void dma_copy(u8 *dest, u8 *arg1, u32 size) {
 // Two differing words.
 // Likely some arbitrary combination of unused vars.
 void init_game(void) {
+    UNUSED u32 pad[2];
     u32 sp2C;
     u32 sp40;
     s32 texture_seg;
