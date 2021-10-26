@@ -10,10 +10,6 @@ extern s32 gPlayerCountSelection1;
 extern f32 gKartFrictionTable[];
 extern f32 gKartBoundingBoxTable[];
 extern f32 gKartGravityTable[];
-//extern f32 gPlayer1PosX;
-//extern f32 gPlayer1PosY;
-//extern s32 gPlayer1PosZ;
-//extern s16 gPlayer1Rotation;
 
 extern struct_D_802874D8 D_802874D8;
 extern s16 D_801650D0[4][8];
