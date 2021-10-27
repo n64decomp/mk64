@@ -218,9 +218,9 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
     D_801652E0[arg1] = 0;
     D_801652C0[arg1] = 0;
     D_80165020[arg1] = 0;
-    D_80165070[arg1].x = 0.0f;
-    D_80165070[arg1].y = 0.0f;
-    D_80165070[arg1].z = 0.0f;
+    D_80165070[arg1][0] = 0.0f;
+    D_80165070[arg1][1] = 0.0f;
+    D_80165070[arg1][2] = 0.0f;
     D_80165280[arg1] = 0.0f;
     D_801652A0[arg1] = 0.0f;
     D_801653E0[arg1] = 0;
