@@ -88,7 +88,7 @@ SECTIONS
       BUILD_DIR/src/code_8008C1D0.o(.text);
       BUILD_DIR/asm/code_80091750.o(.text);
       BUILD_DIR/src/code_800AF9B0.o(.text);
-      BUILD_DIR/asm/audio/synthesis.o(.text);
+      BUILD_DIR/src/synthesis.o(.text);
       BUILD_DIR/asm/audio/heap.o(.text);
       BUILD_DIR/asm/audio/load.o(.text);
       BUILD_DIR/asm/audio/playback.o(.text);
