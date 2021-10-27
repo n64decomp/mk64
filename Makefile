@@ -457,11 +457,6 @@ $(BUILD_DIR)/src/trophy_model.inc.mio0.o: src/trophy_model.inc.c
 
 $(BUILD_DIR)/$(TARGET).elf: $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(LD_COURSE_VERTEX_DEPENDENCIES) undefined_syms.txt
 	$(LD) $(LDFLAGS) -o $@
-	-R $(flower_cup)/toads_turnpike/model.inc.elf -R $(flower_cup)/frappe_snowland/model.inc.elf -R $(flower_cup)/choco_mountain/model.inc.elf -R $(flower_cup)/mario_raceway/model.inc.elf \
-	-R $(star_cup)/wario_stadium/model.inc.elf -R $(star_cup)/sherbet_land/model.inc.elf -R $(star_cup)/royal_raceway/model.inc.elf -R $(star_cup)/bowsers_castle/model.inc.elf \
-	-R $(special_cup)/dks_jungle_parkway/model.inc.elf -R $(special_cup)/yoshi_valley/model.inc.elf -R $(special_cup)/banshee_boardwalk/model.inc.elf -R $(special_cup)/rainbow_road/model.inc.elf \
-	-R $(battle)/double_deck/model.inc.elf -R $(battle)/big_donut/model.inc.elf -R $(battle)/block_fort/model.inc.elf -R $(battle)/skyscraper/model.inc.elf \
-	-o $@ $(O_FILES)
 
 $(BUILD_DIR)/$(TARGET).z64: $(BUILD_DIR)/$(TARGET).elf
 	$(OBJCOPY) $(OBJCOPYFLAGS) $< $(@:.z64=.bin) -O binary
