@@ -88,7 +88,7 @@ SECTIONS
       BUILD_DIR/src/code_8008C1D0.o(.text);
       BUILD_DIR/asm/code_80091750.o(.text);
       BUILD_DIR/src/code_800AF9B0.o(.text);
-      BUILD_DIR/asm/audio/synthesis.o(.text);
+      BUILD_DIR/src/synthesis.o(.text);
       BUILD_DIR/asm/audio/heap.o(.text);
       BUILD_DIR/asm/audio/load.o(.text);
       BUILD_DIR/asm/audio/playback.o(.text);
@@ -262,7 +262,7 @@ SECTIONS
       BUILD_DIR/asm/bss_80005FD0.o(.bss);
       BUILD_DIR/asm/bss_MainSeg.o(.bss);
       BUILD_DIR/src/os/osCreateViManager.o(.bss);
-      BUILD_DIR/asm/bss_MainSeg_2.o(.bss);
+      BUILD_DIR/asm/bss_libultra.o(.bss);
       BUILD_DIR/src/os/osTimer.o(.bss);
       BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.bss);
       BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.bss);
@@ -314,6 +314,14 @@ SECTIONS
 	   
 	   _code_8028DF00SegmentNoloadSizeHi = _code_8028DF00SegmentNoloadSize >> 16;
 	   _code_8028DF00SegmentNoloadSizeLo = _code_8028DF00SegmentNoloadSize & 0xFFFF;
+
+   . = SEG_AUDIO;
+   BEGIN_NOLOAD(audio)
+   {
+      BUILD_DIR/src/synthesis.o(.bss*);
+   }
+   END_NOLOAD(audio)
+
 
    /* 0x80280000 123640-12AAE0 [74A0] */
    BEGIN_SEG(code_80280000, SEG_80280000)
