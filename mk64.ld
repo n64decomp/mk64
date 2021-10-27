@@ -296,7 +296,7 @@ SECTIONS
       BUILD_DIR/asm/code_802A3730.o(.text);
       BUILD_DIR/src/memory.o(.text);
       BUILD_DIR/asm/code_802B0210.o(.text);
-      BUILD_DIR/asm/code_802B4F60.o(.text);
+      BUILD_DIR/src/math_util.o(.text);
       BUILD_DIR/data/data_121DA0.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);
       BUILD_DIR/data/data_121DA0_2.o(.data);

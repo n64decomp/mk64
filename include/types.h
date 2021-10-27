@@ -53,7 +53,33 @@ struct UnkStruct_800DC5EC {
     u16 unk30;
     u16 unk32;
 };
+// math util structs
+struct UnkStruct_802B51E8 {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+};
 
+struct UnkStruct_802B52D8 {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+};
+
+struct UnkStruct_802B52BC {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+};
+
+struct UnkStruct_802B53C8 {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+};
+// end math util structs
 typedef struct {
     s16        ob[3];    /* x, y, z */
     s16        tc[2];    /* texture coord */
