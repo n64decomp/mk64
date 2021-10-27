@@ -36,17 +36,17 @@ glabel func_802B0210
 /* 119878 802B0268 E4A80014 */  swc1  $f8, 0x14($a1)
 /* 11987C 802B026C AFA70018 */  sw    $a3, 0x18($sp)
 /* 119880 802B0270 AFA6001C */  sw    $a2, 0x1c($sp)
-/* 119884 802B0274 0C0AD4B6 */  jal   func_802B52D8
+/* 119884 802B0274 0C0AD4B6 */  jal   vec3f_copy
 /* 119888 802B0278 24E50018 */   addiu $a1, $a3, 0x18
 /* 11988C 802B027C 8FA6001C */  lw    $a2, 0x1c($sp)
 /* 119890 802B0280 8FA70018 */  lw    $a3, 0x18($sp)
 /* 119894 802B0284 24C40024 */  addiu $a0, $a2, 0x24
-/* 119898 802B0288 0C0AD4B6 */  jal   func_802B52D8
+/* 119898 802B0288 0C0AD4B6 */  jal   vec3f_copy
 /* 11989C 802B028C 24E50024 */   addiu $a1, $a3, 0x24
 /* 1198A0 802B0290 8FA6001C */  lw    $a2, 0x1c($sp)
 /* 1198A4 802B0294 8FA70018 */  lw    $a3, 0x18($sp)
 /* 1198A8 802B0298 24C40030 */  addiu $a0, $a2, 0x30
-/* 1198AC 802B029C 0C0AD4B6 */  jal   func_802B52D8
+/* 1198AC 802B029C 0C0AD4B6 */  jal   vec3f_copy
 /* 1198B0 802B02A0 24E50030 */   addiu $a1, $a3, 0x30
 /* 1198B4 802B02A4 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 1198B8 802B02A8 27BD0018 */  addiu $sp, $sp, 0x18
