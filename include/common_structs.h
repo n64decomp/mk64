@@ -3,9 +3,9 @@
 
 #include "ultra64.h"
 
-typedef struct {
-    f32 x, y, z;
- } Vec3f;
+typedef f32 Vec3f[3];
+
+typedef s16 Vec3s[3];
 
 typedef enum {
     /* 0x00 */ COURSE_MARIO_RACEWAY = 0,
