@@ -315,6 +315,14 @@ SECTIONS
 	   _code_8028DF00SegmentNoloadSizeHi = _code_8028DF00SegmentNoloadSize >> 16;
 	   _code_8028DF00SegmentNoloadSizeLo = _code_8028DF00SegmentNoloadSize & 0xFFFF;
 
+   . = SEG_AUDIO;
+   BEGIN_NOLOAD(audio)
+   {
+      BUILD_DIR/src/synthesis.o(.bss*);
+   }
+   END_NOLOAD(audio)
+
+
    /* 0x80280000 123640-12AAE0 [74A0] */
    BEGIN_SEG(code_80280000, SEG_80280000)
    {
