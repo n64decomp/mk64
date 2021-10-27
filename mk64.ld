@@ -262,7 +262,7 @@ SECTIONS
       BUILD_DIR/asm/bss_80005FD0.o(.bss);
       BUILD_DIR/asm/bss_MainSeg.o(.bss);
       BUILD_DIR/src/os/osCreateViManager.o(.bss);
-      BUILD_DIR/asm/bss_MainSeg_2.o(.bss);
+      BUILD_DIR/asm/bss_libultra.o(.bss);
       BUILD_DIR/src/os/osTimer.o(.bss);
       BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.bss);
       BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.bss);
