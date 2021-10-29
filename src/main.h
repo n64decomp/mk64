@@ -2,7 +2,8 @@
 #define MAIN_H
 
 #include "types.h"
-
+// 20836
+// 655
 #define GFX_POOL_SIZE 20836
 struct GfxPool {
     Gfx buffer[GFX_POOL_SIZE];

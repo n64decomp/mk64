@@ -635,7 +635,6 @@ d_course_skyscraper_vertex = 0x0F000000;
 
 
 osTvType = 0x80000300;
-D_8015C000 = 0x8015C000;
 osRomBase = 0x80000308;
 osResetType = 0x8000030C;
 osAppNmiBuffer = 0x8000031C;

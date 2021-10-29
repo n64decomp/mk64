@@ -27,7 +27,7 @@ extern struct Controller (*D_800DC4BC)[];
 extern s32 D_800DC510;
 extern s16 D_8015F6FE;
 extern s16 D_800DC5B8;
-extern s16 D_80152308;
+extern u16 D_80152308;
 extern s32 D_802BA038;
 extern s16 D_802BA048;
 

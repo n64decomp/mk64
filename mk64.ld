@@ -252,7 +252,7 @@ SECTIONS
    BEGIN_NOLOAD(main) {
       BUILD_DIR/src/main.o(.bss);
 
-      BUILD_DIR/asm/bss_main.o(.bss);
+      BUILD_DIR/asm/bss_800029B0.o(.bss);
 
       BUILD_DIR/src/profiler.o(.bss);
       BUILD_DIR/src/crash_screen.o(.bss);

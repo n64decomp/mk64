@@ -309,16 +309,16 @@ glabel D_800DDB24
 glabel D_800DDB30
 .float 0.4, 0.6, 0.275, 0.3
 
-glabel D_800DDB40
+glabel D_800DDB40 # p1 camera struct pointer
 .word D_801646F0
 
-glabel D_800DDB44
+glabel D_800DDB44 # p2 camera struct pointer
 .word D_801647A8
 
-glabel D_800DDB48
+glabel D_800DDB48 # p3 camera struct pointer
 .word D_80164860
 
-glabel D_800DDB4C
+glabel D_800DDB4C # p4 camera struct pointer
 .word D_80164918
 
 glabel D_800DDB50

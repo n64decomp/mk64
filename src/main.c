@@ -26,6 +26,9 @@ void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, 
 void create_debug_thread(void);
 void start_debug_thread(void);
 
+extern void func_80290B14();
+extern void func_80057A50(s32 arg0, s32 arg1, char arg2[8], s16 arg3);
+
 struct SPTask *create_next_audio_frame_task(void);
 
 
@@ -35,13 +38,8 @@ extern void func_802A7CF0(u32 arg0, u32 arg1);
 
 extern s32 D_800DC524;
 extern s32 D_800DC52C;
-extern OSThread gIdleThread;
-extern OSThread gVideoThread;
 
-extern u16 D_8015011C;
-extern OSMesgQueue D_8015F460;
-extern OSMesg D_8015F3E0;
-extern s32 D_80156820;
+
 extern f32 D_800DC594;
 
 struct VblankHandler *gVblankHandler1 = NULL;
@@ -79,6 +77,88 @@ Player *D_800DC500 = &gPlayers[1];
 Player *D_800DC504 = &gPlayers[2];
 Player *D_800DC508 = &gPlayers[3];
 
+s32 D_800FD850[3];
+struct GfxPool gGfxPools[2];
+struct GfxPool *gGfxPool;
+
+s32 gfxPool_padding; // is this necessary?
+struct VblankHandler D_8014EF48;
+struct VblankHandler sSoundVblankHandler;
+OSMesgQueue D_8014EF58, D_8014EF70, D_8014EF88, unused_gMsgQueue, gIntrMesgQueue, D_8014EFD0;
+OSMesgQueue sSoundMesgQueue;
+OSMesg sSoundMesgBuf;
+OSMesg D_8014F004, D_8014F008;
+OSMesg D_8014F00C[1];
+UNUSED OSMesg D_8014F010, D_8014F014;
+OSMesg D_8014F018[16], D_8014F058[16];
+OSMesg D_8014F098;
+OSIoMesg D_8014F0A0;
+OSMesgQueue gSIEventMesgQueue;
+OSMesg gSIEventMesgBuf[3];
+
+OSContStatus gControllerStatuses[4];
+
+OSContPad gControllerPads[4];
+u8 gControllerBits;
+
+u8 D_8014F110[4096];
+u16 D_80150110;
+u16 D_80150112;
+s32 D_80150114;
+s32 D_80150118;
+u16 D_8015011C;
+u16 D_8015011E;
+
+s32 D_80150120;
+s32 D_80150124;
+UNUSED s32 D_80150128;
+UNUSED s32 D_8015012C;
+s32 D_80150130;
+s32 D_80150134;
+s32 D_80150138;
+s32 D_8015013C;
+UNUSED s32 D_80150140;
+UNUSED s32 D_80150144;
+f32 D_80150148;
+f32 D_8015014C;
+f32 D_80150150;
+UNUSED f32 D_80150154;
+
+s32 D_80150158[63];
+uintptr_t gSegmentTable[16];
+Gfx *gDisplayListHead;
+struct SPTask *gGfxSPTask;
+s32 D_801502A0[2];
+uintptr_t gPhysicalFramebuffers[3];
+u32 D_801502B4;
+UNUSED u32 D_801502B8;
+UNUSED u32 D_801502BC; 
+s32 D_801502C0[2064];
+
+u16 D_80152300[4];
+u16 D_80152308;
+
+UNUSED OSThread paddingThread;
+OSThread gIdleThread;
+ALIGNED8 u8 gIdleThreadStack[0x2000]; // Based on sm64 and padding between bss symbols.
+OSThread gVideoThread;
+ALIGNED8 u8 gVideoThreadStack[0x2000];
+OSThread D_80156820;
+ALIGNED8 u8 D_8015680_Stack[0x2000];
+OSThread D_801589D0;
+ALIGNED8 u8 D_801589D0_Stack[0x2000];
+OSThread D_8015AB80;
+ALIGNED8 u8 D_8015AB80_Stack[0x2000];
+OSThread D_8015CD30;
+ALIGNED8 u8 D_8015CD30_Stack[0x1000];
+
+u8 gGfxSPTaskYieldBuffer[4352];
+u32 gGfxSPTaskStack[256];
+OSMesg D_8015F3E0[32];
+OSMesgQueue D_8015F460;
+
+extern s16 sController1Unplugged;
+
 s32 D_800DC50C = 0xffff;
 u16 D_800DC510 = 0;
 u16 D_800DC514 = 0;
@@ -110,20 +190,6 @@ UNUSED s16 D_800DC590 = 0;
 float D_800DC594 = 0.0f;
 float gCourseTimer = 0.0f;
 
-extern u8 gControllerBits;
-extern OSContStatus gControllerStatuses;
-extern u16 sController1Unplugged;
-
-
-extern uintptr_t gPhysicalFramebuffers[3];
-extern const f64 D_800EB640;
-extern struct VblankHandler sSoundVblankHandler;
-extern struct SPTask *gGfxSPTask;
-extern OSMesgQueue D_8014EF58, D_8014EF70, D_8014EF88, D_8014EFD0, gIntrMesgQueue;
-extern OSMesgQueue sSoundMesgQueue;
-extern OSMesg sSoundMesgBuf;
-extern OSMesg D_8014F004, D_8014F058, D_8014F018;
-extern Gfx *gDisplayListHead;
 
 extern u64 rspbootTextStart[], rspbootTextEnd[];
 extern u64 gspF3DEXTextStart[], gspF3DEXTextEnd[];
@@ -131,10 +197,8 @@ extern u64 gspF3DLXTextStart[], gspF3DLXTextEnd[];
 extern u64 gspF3DEXDataStart[];
 extern u64 gspF3DLXDataStart[];
 
-extern u32 gGfxSPTaskStack;
 extern u64 gGfxSPTaskOutputBuffer[];
 extern u32 gGfxSPTaskOutputBufferSize;
-extern u8 gGfxSPTaskYieldBuffer[];
 
 extern u32 gPrevLoadedAddress;
 extern u32 D_8015F734;
@@ -143,35 +207,42 @@ extern u8 _data_segment2SegmentRomEnd[];
 extern u8 _common_texturesSegmentRomStart[];
 extern u8 _common_texturesSegmentRomEnd[];
 extern u8 _data_802BA370SegmentRomStart[];
-extern OSMesg D_8014F098;
-extern OSIoMesg D_8014F0A0;
 extern u32 gHeapEndPtr;
 extern u32 *D_801978D0;
 
 
-extern OSContPad *gControllerPads[4];
-
-extern OSMesgQueue gSIEventMesgQueue;
-extern OSMesg gSIEventMesgBuf[3];
-
-extern u32 D_801502B4;
 extern u32 gZBuffer;
 
-extern s32 gFramebuffer0;
-extern s32 gFramebuffer1;
-extern s32 gFramebuffer2;
+extern u16 gFramebuffer0;
+extern u16 gFramebuffer1;
+extern u16 gFramebuffer2;
 
-extern s32 D_8015AB80;
-extern s32 D_801589D0;
 extern void thread5_game_logic();
 extern void thread4_audio();
-extern s32 D_8015CD30;
-extern f64 D_800EB610;
 
 extern s16 gCurrentlyLoadedCourseId;
+extern s16 gCurrentCourseId;
 
-s32 D_800FD850[4];
-extern struct GfxPool gGfxPools[2];
+extern u16 D_80164AF0;
+extern u16 D_800DC5FC;
+extern u16 D_800DC5C0;
+
+
+extern s32 D_8015F788;
+extern s16 D_801625E8;
+extern struct UnkStruct_800DC5EC *D_800DC5EC;
+//extern struct UnkStruct_800DDB40 *D_800DDB40;
+
+
+extern Camera *D_800DDB40;
+extern Camera *D_800DDB44;
+extern Camera *D_800DDB48;
+extern Camera *D_800DDB4C;
+
+extern u16 D_800DC5B0;
+extern s32 D_800DC5E8;
+
+extern s32 gEnableResourceMeters;
 
 // Declarations (in this file)
 void thread1_idle(void *arg0);
@@ -280,7 +351,6 @@ void init_controllers(void) {
     sController1Unplugged = FALSE;
 }
 
-#ifdef MIPS_TO_C
 void func_80000934(s32 arg0) {
     struct Controller *controller = &gControllers[arg0];
     u16 phi_a0;
@@ -289,16 +359,15 @@ void func_80000934(s32 arg0) {
         return;
     }
 
-    controller->rawStickX = gControllerPads[arg0]->stick_x;
-    controller->rawStickY = gControllerPads[arg0]->stick_y;
+    controller->rawStickX = gControllerPads[arg0].stick_x;
+    controller->rawStickY = gControllerPads[arg0].stick_y;
 
-    if ((gControllerPads[arg0]->button & 4) != 0) {
-        gControllerPads[arg0]->button |= Z_TRIG;
-        gControllerPads[arg0]->button |= Z_TRIG;
+    if ((gControllerPads[arg0].button & 4) != 0) {
+        gControllerPads[arg0].button |= Z_TRIG;
     }
-    controller->buttonPressed = ((gControllerPads[arg0]->button ^ controller->button) & gControllerPads[arg0]->button);
-    controller->buttonDepressed = ((gControllerPads[arg0]->button ^ controller->button) & controller->button);
-    controller->button = &gControllerPads[arg0]->button;
+    controller->buttonPressed = gControllerPads[arg0].button & (gControllerPads[arg0].button ^ controller->button);
+    controller->buttonDepressed = controller->button & (gControllerPads[arg0].button ^ controller->button);
+    controller->button = gControllerPads[arg0].button;
 
     phi_a0 = 0;
     if (controller->rawStickX < -50) {
@@ -317,9 +386,6 @@ void func_80000934(s32 arg0) {
     controller->stickDepressed = controller->stickDirection & (phi_a0 ^ controller->stickDirection);
     controller->stickDirection = phi_a0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/main/func_80000934.s")
-#endif
 
 void read_controllers(void) {
     OSMesg sp1C;
@@ -506,159 +572,103 @@ void func_80001404(void) {
     clear_framebuffer(0);
 }
 
-#ifdef MIPS_TO_C
-// generated by mips_to_c commit cae1414eb1bf34873a831a523692fe29870a6f3b
-void *func_8000142C(void) {
-    s32 temp_s0;
-    s32 temp_s0_2;
-    s32 temp_s0_3;
-    s32 temp_s0_4;
-    void *temp_v0;
-    void *temp_v0_2;
-    s32 phi_s0;
-    s32 phi_s0_2;
-    s32 phi_s0_3;
-    s32 phi_s0_4;
-    u16 phi_a0;
+void func_8000142C(void) {
+    s16 i;
+    s32 pad0;
+    u16 temp_v0;
+    f32 pad = 0;
 
-    D_80150112 = (u16)0;
-    D_80164AF0 = (u16)0;
+    D_80150112 = 0;
+    D_80164AF0 = 0;
     if (D_800DC5FC != 0) {
         func_80290B14();
     }
     if (D_800DC5C0 != 0) {
-        return func_802A38B4();
+        func_802A38B4(); return;
     }
-    if ((s32) sNumVBlanks >= 6) {
-        sNumVBlanks = (u16)5;
+
+    if (sNumVBlanks >= 6) {
+        sNumVBlanks = 5;
     }
-    if ((s32) sNumVBlanks < 0) {
-        sNumVBlanks = (u16)1;
+    if (sNumVBlanks < 0) {
+        sNumVBlanks = 1;
     }
     func_802A4EF4();
-    if (D_800DC52C != 0) {
-        if (D_800DC52C != 1) {
-            if (D_800DC52C != 2) {
-                if (D_800DC52C != 3) {
 
-                } else {
-                    if (3 == *(void *)0x800DC538) {
-                        if (gCurrentCourseId != 2) {
-                            if (gCurrentCourseId != 9) {
-                                if (gCurrentCourseId != 0x10) {
-                                    if (gCurrentCourseId != 0x12) {
-                                        D_80150114 = 2;
-                                    } else {
-block_79:
-                                        D_80150114 = 3;
-                                    }
-                                } else {
-                                    goto block_79;
-                                }
-                            } else {
-                                goto block_79;
-                            }
-                        } else {
-                            goto block_79;
-                        }
-                    } else {
-                        if (*(void *)0x800E0000 != 0xF) {
-                            if (*(void *)0x800E0000 != 0x11) {
-                                if (*(void *)0x800E0000 != 0x12) {
-                                    if (*(void *)0x800E0000 != 0x13) {
-                                        D_80150114 = 3;
-                                    } else {
-block_85:
-                                        D_80150114 = 2;
-                                    }
-                                } else {
-                                    D_80150114 = 4;
-                                }
-                            } else {
-                                goto block_85;
-                            }
-                        } else {
-                            goto block_85;
-                        }
+    switch(D_800DC52C) {
+        case 0:
+            D_80150114 = 2;
+            func_80005F44();
+            if (D_800DC5FC == 0) {
+
+                for (i = 0; i < D_80150114; i++) {
+                    if (D_8015011E) {
+                        gCourseTimer += 0.01666666;
                     }
-                    if (D_800DC5FC == 0) {
-                        if (D_80150114 > 0) {
-                            phi_s0 = 0;
-loop_90:
-                            if (D_8015011E != 0) {
-                                gCourseTimer = (f32) ((f64) gCourseTimer + D_800EB610);
-                            }
-                            func_802909F0();
-                            func_802A0D54();
-                            func_800382DC();
-                            func_8001EE98(D_800DC4FC, D_800DDB40, 0);
-                            func_80029158();
-                            func_8001EE98(D_800DC4E0, D_800DDB44, 1);
-                            func_800291E8();
-                            func_8001EE98(D_800DC4E4, D_800DDB48, 2);
-                            func_800291F0();
-                            func_8001EE98(D_800DC4E8, D_800DDB4C, 3);
-                            func_800291F8();
-                            func_8028F474();
-                            func_80059AC8();
-                            update_simple_objects();
-                            func_802966A0();
-                            func_8028FCBC();
-                            temp_s0 = (s32) ((phi_s0 + 1) << 0x10) >> 0x10;
-                            phi_s0 = temp_s0;
-                            if (temp_s0 < D_80150114) {
-                                goto loop_90;
-                            }
-                        }
-                        func_80022744();
-                    }
-                    func_8005A070();
-                    sNumVBlanks = (u16)0;
-                    profiler_log_thread5_time(1);
-                    func_802A7C08();
-                    func_802A3E3C();
-                    if (D_800DC5B0 != 0) {
-                        func_802A41D4();
-                    }
-                    D_8015F788 = 0;
-                    if (D_800DC5E8 == 0) {
-                        func_802A6BB0();
-                        func_802A6E94();
-                        func_802A7178();
-                        func_802A68CC();
-                    } else {
-                        if (D_800DC5E8 == 1) {
-                            func_802A68CC();
-                            func_802A6E94();
-                            func_802A7178();
-                            func_802A6BB0();
-                        } else {
-                            if (D_800DC5E8 == 2) {
-                                func_802A68CC();
-                                func_802A6BB0();
-                                func_802A7178();
-                                func_802A6E94();
-                            } else {
-                                func_802A68CC();
-                                func_802A6BB0();
-                                func_802A6E94();
-                                func_802A7178();
-                            }
-                        }
-                    }
+                    func_802909F0();
+                    func_802A0D54();
+                    func_800382DC();
+                    func_8001EE98(D_800DC4FC, D_800DDB40, 0);
+                    func_80028F70();
+                    func_8028F474();
+                    func_80059AC8();
+                    update_simple_objects();
+                    func_802966A0();
+                    func_8028FCBC();
+                
                 }
+                func_80022744();
+            }
+            func_8005A070();
+            sNumVBlanks = 0;
+            profiler_log_thread5_time(1);
+            D_8015F788 = 0;
+            func_802A59A4();
+            if (gEnableDebugMode == 0) {
+                D_800DC514 = 0;
             } else {
-                if (*(void *)0x800DC5A0 == 0x12) {
-                    D_80150114 = 3;
+                if (D_800DC514 != 0) {
+
+                    if ((D_800DC4BC->buttonPressed & R_TRIG) &&
+                        (D_800DC4BC->button & A_BUTTON) &&
+                        (D_800DC4BC->button & B_BUTTON)) {
+                            D_800DC514 = 0;
+                    }
+            
+                    temp_v0 = D_800DDB40->rotX;
+                    D_801625E8 = D_800DC5EC->unk38;
+                    if (temp_v0 < 0x2000) {
+                        func_80057A50(40, 100, "SOUTH  ", D_801625E8);
+                    } else if (temp_v0 < 0x6000) {
+                        func_80057A50(40, 100, "EAST   ", D_801625E8);
+                    } else if (temp_v0 < 0xA000) {
+                        func_80057A50(40, 100, "NORTH  ", D_801625E8);
+                    } else if (temp_v0 < 0xE000) {
+                        func_80057A50(40, 100, "WEST   ", D_801625E8);
+                    } else {
+                        func_80057A50(40, 100, "SOUTH  ", D_801625E8);
+                    }
+                    
                 } else {
-                    D_80150114 = 2;
+                    if ((D_800DC4BC->buttonPressed & L_TRIG) &&
+                        (D_800DC4BC->button & A_BUTTON) &&
+                        (D_800DC4BC->button & B_BUTTON)) {
+                            D_800DC514 = 1;
+                    }
                 }
-                if (D_800DC5FC == 0) {
-                    if (D_80150114 > 0) {
-                        phi_s0_2 = 0;
-loop_47:
+            }
+            break;
+
+        case 2:
+            if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+                D_80150114 = 3;
+            } else {
+                D_80150114 = 2;
+            }
+            if (D_800DC5FC == 0) {
+                    for (i = 0; i < D_80150114; i++) {
                         if (D_8015011E != 0) {
-                            gCourseTimer = (f32) ((f64) gCourseTimer + D_800EB600);
+                            gCourseTimer += 0.01666666;
                         }
                         func_802909F0();
                         func_802A0D54();
@@ -672,17 +682,12 @@ loop_47:
                         update_simple_objects();
                         func_802966A0();
                         func_8028FCBC();
-                        temp_s0_2 = (s32) ((phi_s0_2 + 1) << 0x10) >> 0x10;
-                        phi_s0_2 = temp_s0_2;
-                        if (temp_s0_2 < D_80150114) {
-                            goto loop_47;
-                        }
                     }
                     func_80022744();
                 }
                 func_8005A070();
                 profiler_log_thread5_time(1);
-                sNumVBlanks = (u16)0;
+                sNumVBlanks = 0;
                 func_802A7C08();
                 func_802A3E3C();
                 if (D_800DC5B0 != 0) {
@@ -696,38 +701,34 @@ loop_47:
                     func_802A5CB4();
                     func_802A5FAC();
                 }
-            }
-        } else {
-            if (*(void *)0x800DC5A0 == 0x12) {
+            break;
+
+        case 1:
+
+            if (gCurrentCourseId == COURSE_DK_JUNGLE) {
                 D_80150114 = 3;
             } else {
                 D_80150114 = 2;
             }
+
             if (D_800DC5FC == 0) {
-                if (D_80150114 > 0) {
-                    phi_s0_3 = 0;
-loop_63:
-                    if (D_8015011E != 0) {
-                        gCourseTimer = (f32) ((f64) gCourseTimer + D_800EB608);
+                    for (i = 0; i < D_80150114; i++) {
+                        if (D_8015011E != 0) {
+                            gCourseTimer += 0.01666666;
+                        }
+                        func_802909F0();
+                        func_802A0D54();
+                        func_800382DC();
+                        func_8001EE98(D_800DC4FC, D_800DDB40, 0);
+                        func_80029060();
+                        func_8001EE98(D_800DC500, D_800DDB44, 1);
+                        func_80029150();
+                        func_8028F474();
+                        func_80059AC8();
+                        update_simple_objects();
+                        func_802966A0();
+                        func_8028FCBC();
                     }
-                    func_802909F0();
-                    func_802A0D54();
-                    func_800382DC();
-                    func_8001EE98(D_800DC4FC, D_800DDB40, 0);
-                    func_80029060();
-                    func_8001EE98(D_800DC500, D_800DDB44, 1);
-                    func_80029150();
-                    func_8028F474();
-                    func_80059AC8();
-                    update_simple_objects();
-                    func_802966A0();
-                    func_8028FCBC();
-                    temp_s0_3 = (s32) ((phi_s0_3 + 1) << 0x10) >> 0x10;
-                    phi_s0_3 = temp_s0_3;
-                    if (temp_s0_3 < D_80150114) {
-                        goto loop_63;
-                    }
-                }
                 func_80022744();
             }
             profiler_log_thread5_time(1);
@@ -746,129 +747,119 @@ loop_63:
                 func_802A62A4();
                 func_802A65B8();
             }
-        }
-block_104:
-        phi_a0 = gEnableDebugMode;
-    } else {
-        D_80150114 = 2;
-        func_80005F44();
-        if (D_800DC5FC == 0) {
-            if (D_80150114 > 0) {
-                phi_s0_4 = 0;
-loop_16:
-                if (D_8015011E != 0) {
-                    gCourseTimer = (f32) ((f64) gCourseTimer + D_800EB5F8);
+
+            break;
+
+        case 3:
+            if (gPlayerCountSelection1 == 3) {
+                switch(gCurrentCourseId) {
+                    case COURSE_BOWSER_CASTLE:
+                    case COURSE_MOO_MOO_FARM:
+                    case COURSE_SKYSCRAPER:
+                    case COURSE_DK_JUNGLE:
+                        D_80150114 = 3;
+                        break;
+                    default:
+                        D_80150114 = 2;
+                        break;
                 }
-                func_802909F0();
-                func_802A0D54();
-                func_800382DC();
-                func_8001EE98(D_800DC4FC, D_800DDB40, 0);
-                func_80028F70();
-                func_8028F474();
-                func_80059AC8();
-                update_simple_objects();
-                func_802966A0();
-                func_8028FCBC();
-                temp_s0_4 = (s32) ((phi_s0_4 + 1) << 0x10) >> 0x10;
-                phi_s0_4 = temp_s0_4;
-                if (temp_s0_4 < D_80150114) {
-                    goto loop_16;
-                }
-            }
-            func_80022744();
-        }
-        func_8005A070();
-        sNumVBlanks = (u16)0;
-        profiler_log_thread5_time(1);
-        D_8015F788 = 0;
-        func_802A59A4();
-        if (gEnableDebugMode == 0) {
-            D_800DC514 = (u16)0;
-            phi_a0 = gEnableDebugMode;
-        } else {
-            if (D_800DC514 != 0) {
-                if ((D_800DC4BC->unk6 & 0x10) != 0) {
-                    if ((D_800DC4BC->unk4 & 0x8000) != 0) {
-                        if ((D_800DC4BC->unk4 & 0x4000) != 0) {
-                            D_800DC514 = (u16)0U;
-                        }
-                    }
-                }
-                D_801625E8 = (s16) D_800DC5EC->unk38;
-                if ((s32) D_800DDB40->unk26 < 0x2000) {
-                    func_80057A50(0x28, 0x64, &D_800EB5D0, D_801625E8);
-                } else {
-                    if ((s32) D_800DDB40->unk26 < 0x6000) {
-                        func_80057A50(0x28, 0x64, &D_800EB5D8, D_801625E8);
-                    } else {
-                        if ((s32) D_800DDB40->unk26 < 0xA000) {
-                            func_80057A50(0x28, 0x64, &D_800EB5E0, D_801625E8);
-                        } else {
-                            if ((s32) D_800DDB40->unk26 < 0xE000) {
-                                func_80057A50(0x28, 0x64, &D_800EB5E8, D_801625E8);
-                            } else {
-                                func_80057A50(0x28, 0x64, &D_800EB5F0, D_801625E8);
-                            }
-                        }
-                    }
-                }
-                goto block_104;
             } else {
-                phi_a0 = gEnableDebugMode;
-                if (((*(void *)0x800DC4BC)->unk6 & 0x20) != 0) {
-                    phi_a0 = gEnableDebugMode;
-                    if (((*(void *)0x800DC4BC)->unk4 & 0x8000) != 0) {
-                        phi_a0 = gEnableDebugMode;
-                        if (((*(void *)0x800DC4BC)->unk4 & 0x4000) != 0) {
-                            D_800DC514 = (u16)1U;
-                            phi_a0 = gEnableDebugMode;
-                        }
-                    }
+                switch(gCurrentCourseId) {
+                    case COURSE_BLOCK_FORT:
+                    case COURSE_DOUBLE_DECK:
+                    case COURSE_BIG_DONUT:
+                        D_80150114 = 2;
+                        break;
+                    case COURSE_DK_JUNGLE:
+                        D_80150114 = 4;
+                        break;
+                    default:
+                        D_80150114 = 3;
+                        break;
                 }
             }
+            if (D_800DC5FC == 0) {
+                for (i = 0; i < D_80150114; i++) {
+                    if (D_8015011E != 0) {
+                        gCourseTimer += 0.01666666;
+                    }
+                    func_802909F0();
+                    func_802A0D54();
+                    func_800382DC();
+                    func_8001EE98(D_800DC4FC, D_800DDB40, 0);
+                    func_80029158();
+                    func_8001EE98(D_800DC4E0, D_800DDB44, 1);
+                    func_800291E8();
+                    func_8001EE98(D_800DC4E4, D_800DDB48, 2);
+                    func_800291F0();
+                    func_8001EE98(D_800DC4E8, D_800DDB4C, 3);
+                    func_800291F8();
+                    func_8028F474();
+                    func_80059AC8();
+                    update_simple_objects();
+                    func_802966A0();
+                    func_8028FCBC();
+                }
+                func_80022744();
+            }
+        func_8005A070();
+        sNumVBlanks = 0;
+        profiler_log_thread5_time(1);
+        func_802A7C08();
+        func_802A3E3C();
+        if (D_800DC5B0 != 0) {
+            func_802A41D4();
         }
+        D_8015F788 = 0;
+        if (D_800DC5E8 == 0) {
+            func_802A6BB0();
+            func_802A6E94();
+            func_802A7178();
+            func_802A68CC();
+        } else if (D_800DC5E8 == 1) {
+            func_802A68CC();
+            func_802A6E94();
+            func_802A7178();
+            func_802A6BB0();
+        } else if (D_800DC5E8 == 2) {
+            func_802A68CC();
+            func_802A6BB0();
+            func_802A7178();
+            func_802A6E94();
+        } else {
+            func_802A68CC();
+            func_802A6BB0();
+            func_802A6E94();
+            func_802A7178();
+        }
+        break;
     }
-    if (phi_a0 == 0) {
+
+    if (gEnableDebugMode == 0) {
         gEnableResourceMeters = 0;
     } else {
         if (gEnableResourceMeters != 0) {
-            resource_display(phi_a0);
-            if ((D_800DC4BC->unk4 & 0x20) == 0) {
-                if ((D_800DC4BC->unk4 & 0x10) != 0) {
-                    if ((D_800DC4BC->unk6 & 0x4000) != 0) {
-                        gEnableResourceMeters = 0;
-                    }
-                }
+            resource_display();
+            if ((!(D_800DC4BC->button & L_TRIG)) &&
+                (D_800DC4BC->button & R_TRIG) &&
+                (D_800DC4BC->buttonPressed & B_BUTTON)) {
+                    gEnableResourceMeters = 0;
             }
         } else {
-            if ((D_800DC4BC->unk4 & 0x20) == 0) {
-                if ((D_800DC4BC->unk4 & 0x10) != 0) {
-                    if ((D_800DC4BC->unk6 & 0x4000) != 0) {
+            if ((!(D_800DC4BC->button & L_TRIG)) &&
+                (D_800DC4BC->button & R_TRIG) &&
+                (D_800DC4BC->buttonPressed & B_BUTTON)) {
                         gEnableResourceMeters = 1;
-                    }
-                }
             }
         }
     }
     func_802A4300();
     func_800591B4();
     func_80093E20();
-    temp_v0 = gDisplayListHead;
-    gDisplayListHead = (void *) (temp_v0 + 8);
-    temp_v0->unk4 = 0;
-    temp_v0->unk0 = 0xE9000000;
-    temp_v0_2 = gDisplayListHead;
-    gDisplayListHead = (void *) (temp_v0_2 + 8);
-    temp_v0_2->unk4 = 0;
-    temp_v0_2->unk0 = 0xB8000000;
-    return temp_v0_2;
+    gDPFullSync(gDisplayListHead++);
+    gSPEndDisplayList(gDisplayListHead++);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/main/func_8000142C.s")
-#endif
 
-#ifdef MIPS_TO_C
-// Cannot match until data compilable
 void func_80001ECC(void) {
     
     switch (D_800DC50C) {
@@ -892,13 +883,9 @@ void func_80001ECC(void) {
             break;
         case 9:
             func_802802AC();
-            // Duplicate return node #7. Try simplifying control flow for better match
             break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/main/func_80001ECC.s")
-#endif
 
 void interrupt_gfx_sptask(void) {
     if (gActiveSPTask->task.t.type == M_GFXTASK) {
@@ -987,7 +974,7 @@ void start_gfx_sptask(void) {
 
 // Similar to handle_vblank from SM64
 void func_80002168(void) {
-    D_800DC594 += D_800EB640;
+    D_800DC594 += 0.01666666;
     sNumVBlanks++;
 
     func_80001FAC();
@@ -1077,12 +1064,18 @@ void *func_800022DC(void) {
 GLOBAL_ASM("asm/non_matchings/main/func_800022DC.s")
 #endif
 
-#ifdef MIPS_TO_C
+//#ifdef MIPS_TO_C
 // generated by mips_to_c commit cae1414eb1bf34873a831a523692fe29870a6f3b
-/*
-void thread3_video(void *arg0) {
+
+void thread3_video(UNUSED void *arg0) {
+    s32 pad[2];
+    OSMesg msg;
     u64 *temp_v0;
+    OSMesg test;
     s32 i;
+    OSMesg *new_var2;
+    uintptr_t *new_var;
+    
     gPhysicalFramebuffers[0] = (uintptr_t *) &gFramebuffer0;
     gPhysicalFramebuffers[1] = (uintptr_t *) &gFramebuffer1;
     gPhysicalFramebuffers[2] = (uintptr_t *) &gFramebuffer2;
@@ -1090,7 +1083,7 @@ void thread3_video(void *arg0) {
 //loop_1:
     // potential unrolled loop?
     temp_v0 = &gFramebuffer1;
-    for (i = 0; i < gFramebuffer2; i++) {
+    for (i = 0; i < 19200; i++) {
         temp_v0[i] = 0;
     }
 
@@ -1099,24 +1092,23 @@ void thread3_video(void *arg0) {
     //}
     setup_mesg_queues();
     init_game();
-    create_thread(&D_8015AB80, 4, &thread4_audio, 0, &D_8015CD30, 0x14);
+    create_thread(&D_8015CD30, 4, &thread4_audio, 0, &D_8015CD30_Stack, 0x14);
+    osStartThread(&D_8015CD30);
+    create_thread(&D_8015AB80, 5, &thread5_game_logic, 0, &D_8015AB80_Stack, 0xA);
     osStartThread(&D_8015AB80);
-    create_thread(&D_801589D0, 5, &thread5_game_logic, 0, &D_8015AB80, 0xA);
-    osStartThread(&D_801589D0);
 
     // manual work
     while (1) {
-        OSMesg msg;
         osRecvMesg(&gIntrMesgQueue, &msg, OS_MESG_BLOCK);
         switch ((u32) msg) {
+            case MESG_VI_VBLANK:
+                func_80002168();
+                break;
             case MESG_SP_COMPLETE:
                 func_800022DC();
                 break;
             case MESG_DP_COMPLETE:
                 func_80002284();
-                break;
-            case MESG_VI_VBLANK:
-                func_80002168();
                 break;
             case MESG_START_GFX_SPTASK:
                 start_gfx_sptask();
@@ -1124,10 +1116,10 @@ void thread3_video(void *arg0) {
         }
     }
 }
-*/
-#else
-GLOBAL_ASM("asm/non_matchings/main/thread3_video.s")
-#endif
+
+//#else
+//GLOBAL_ASM("asm/non_matchings/main/thread3_video.s")
+//#endif
 
 void func_800025D4(void) {
     func_80091B78();
@@ -1153,7 +1145,7 @@ void func_80002658(void) {
     func_802A4D18();
 }
 
-#ifdef MIPS_TO_C
+//#ifdef MIPS_TO_C
 void func_80002684(void) {
     switch (D_800DC50C) {
         case 0:
@@ -1191,13 +1183,10 @@ void func_80002684(void) {
         }
 }
 
-#else
-GLOBAL_ASM("asm/non_matchings/main/func_80002684.s")
-#endif
+//#else
+//GLOBAL_ASM("asm/non_matchings/main/func_80002684.s")
+//#endif
 
-extern OSMesg* D_8014F008;
-extern OSMesg* D_8014F00C;
-extern s32 D_8014EF48;
 extern s32 D_800DC600;
 extern s32 D_8015F8B8, D_8015F8BC, D_8015F8C0, D_8015F8C4, D_8015F8C8, D_8015F8CC;
 
