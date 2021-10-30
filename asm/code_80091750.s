@@ -464,8 +464,8 @@ glabel func_80091D74
 /* 09299C 80091D9C 10000049 */  b     .L80091EC4
 /* 0929A0 80091DA0 00001025 */   move  $v0, $zero
 .L80091DA4:
-/* 0929A4 80091DA4 3C028015 */  lui   $v0, %hi(D_8014F0E2) # $v0, 0x8015
-/* 0929A8 80091DA8 9042F0E2 */  lbu   $v0, %lo(D_8014F0E2)($v0)
+/* 0929A4 80091DA4 3C028015 */  lui   $v0, %hi(gControllerStatuses+0x2) # $v0, 0x8015
+/* 0929A8 80091DA8 9042F0E2 */  lbu   $v0, %lo(gControllerStatuses+0x2)($v0)
 /* 0929AC 80091DAC 3C19800E */  lui   $t9, %hi(D_800DC4BC) # $t9, 0x800e
 /* 0929B0 80091DB0 2C4F0001 */  sltiu $t7, $v0, 1
 /* 0929B4 80091DB4 31F80001 */  andi  $t8, $t7, 1

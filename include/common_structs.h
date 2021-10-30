@@ -32,6 +32,8 @@ typedef enum {
     /* 0x15 */ NUM_COURSES
 } COURSES;
 
+// This was added as a silly idea:
+// In the data to use "A, B, Z, R" instead of hex numbers.
 typedef enum {
     A = 0x80,
     B = 0x40,
@@ -66,9 +68,9 @@ typedef struct {
     f32 angleX;
     f32 angleY;
     f32 angleZ;
-    f32 rotX;
-    f32 rotY;
-    f32 rotZ;
+    s32 rotX;
+    s32 rotY; // unused?
+    s16 rotZ;
     s32 unk3; // zero
     s32 unk4; // 0x4119999A
     s32 unk5; // 0xC20C bit flag?
@@ -100,8 +102,9 @@ typedef struct {
     s32 unk24; // zero
     s32 unk25; // zero
     s32 unk26; // zero
+    // need another s16 here?
     s32 unk27; // 8
-    s32 unk28; // zero
+    s16 unk28; // zero
     s32 unk29; // 422
 } Camera;
 

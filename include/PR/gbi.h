@@ -1718,6 +1718,7 @@ typedef struct {
  * 64-bit systems, only the 'words' member may be accessed; the rest of the
  * structs don't have matching layouts for now.)
  */
+
 typedef union {
 	Gwords		words;
 #if !defined(F3D_OLD) && IS_BIG_ENDIAN && !IS_64_BIT

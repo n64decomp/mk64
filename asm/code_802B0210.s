@@ -3094,8 +3094,8 @@ glabel func_802B2EBC
 /* 11C520 802B2F10 3C04800F */  lui   $a0, %hi(gPlayers+0xDD8) # $a0, 0x800f
 /* 11C524 802B2F14 3C058010 */  lui   $a1, %hi(gPlayers+0x1BB0) # $a1, 0x8010
 /* 11C528 802B2F18 3C028010 */  lui   $v0, %hi(gPlayers+0x2988) # $v0, 0x8010
-/* 11C52C 802B2F1C 3C078010 */  lui   $a3, %hi(D_801001D8) # $a3, 0x8010
-/* 11C530 802B2F20 24E701D8 */  addiu $a3, %lo(D_801001D8) # addiu $a3, $a3, 0x1d8
+/* 11C52C 802B2F1C 3C078010 */  lui   $a3, %hi(gGfxPools+0x2978) # $a3, 0x8010
+/* 11C530 802B2F20 24E701D8 */  addiu $a3, %lo(gGfxPools+0x2978) # addiu $a3, $a3, 0x1d8
 /* 11C534 802B2F24 24429318 */  addiu $v0, %lo(gPlayers+0x2988) # addiu $v0, $v0, -0x6ce8
 /* 11C538 802B2F28 24A58540 */  addiu $a1, %lo(gPlayers+0x1BB0) # addiu $a1, $a1, -0x7ac0
 /* 11C53C 802B2F2C 24847768 */  addiu $a0, %lo(gPlayers+0xDD8) # addiu $a0, $a0, 0x7768

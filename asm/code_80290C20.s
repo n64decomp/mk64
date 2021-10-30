@@ -3310,8 +3310,8 @@ glabel render_luigi_raceway
 glabel L80293D24
 /* 0FD334 80293D24 0002C880 */  sll   $t9, $v0, 2
 /* 0FD338 80293D28 3C0B8015 */  lui   $t3, %hi(gPhysicalFramebuffers) # 0x8015
-/* 0FD33C 80293D2C 3C0D8015 */  lui   $t5, %hi(D_8015026C) # $t5, 0x8015
-/* 0FD340 80293D30 8DAD026C */  lw    $t5, %lo(D_8015026C)($t5)
+/* 0FD33C 80293D2C 3C0D8015 */  lui   $t5, %hi(gSegmentTable+0x14) # $t5, 0x8015
+/* 0FD340 80293D30 8DAD026C */  lw    $t5, %lo(gSegmentTable+0x14)($t5)
 /* 0FD344 80293D34 01795821 */  addu  $t3, $t3, $t9
 /* 0FD348 80293D38 8D6B02A8 */  lw    $t3, %lo(gPhysicalFramebuffers)($t3) # 0x2a8($t3)
 /* 0FD34C 80293D3C 3C038000 */  lui   $v1, 0x8000
@@ -3331,8 +3331,8 @@ glabel L80293D24
 glabel L80293D74
 /* 0FD384 80293D74 0002C080 */  sll   $t8, $v0, 2
 /* 0FD388 80293D78 3C198015 */  lui   $t9, %hi(gPhysicalFramebuffers) # 0x8015
-/* 0FD38C 80293D7C 3C0C8015 */  lui   $t4, %hi(D_8015026C) # $t4, 0x8015
-/* 0FD390 80293D80 8D8C026C */  lw    $t4, %lo(D_8015026C)($t4)
+/* 0FD38C 80293D7C 3C0C8015 */  lui   $t4, %hi(gSegmentTable+0x14) # $t4, 0x8015
+/* 0FD390 80293D80 8D8C026C */  lw    $t4, %lo(gSegmentTable+0x14)($t4)
 /* 0FD394 80293D84 0338C821 */  addu  $t9, $t9, $t8
 /* 0FD398 80293D88 8F3902A8 */  lw    $t9, %lo(gPhysicalFramebuffers)($t9) # 0x2a8($t9)
 /* 0FD39C 80293D8C 3C010001 */  lui   $at, (0x00010800 >> 16) # lui $at, 1
@@ -3354,8 +3354,8 @@ glabel L80293D74
 glabel L80293DCC
 /* 0FD3DC 80293DCC 00027880 */  sll   $t7, $v0, 2
 /* 0FD3E0 80293DD0 3C188015 */  lui   $t8, %hi(gPhysicalFramebuffers) # 0x8015
-/* 0FD3E4 80293DD4 3C0B8015 */  lui   $t3, %hi(D_8015026C) # $t3, 0x8015
-/* 0FD3E8 80293DD8 8D6B026C */  lw    $t3, %lo(D_8015026C)($t3)
+/* 0FD3E4 80293DD4 3C0B8015 */  lui   $t3, %hi(gSegmentTable+0x14) # $t3, 0x8015
+/* 0FD3E8 80293DD8 8D6B026C */  lw    $t3, %lo(gSegmentTable+0x14)($t3)
 /* 0FD3EC 80293DDC 030FC021 */  addu  $t8, $t8, $t7
 /* 0FD3F0 80293DE0 8F1802A8 */  lw    $t8, %lo(gPhysicalFramebuffers)($t8) # 0x2a8($t8)
 /* 0FD3F4 80293DE4 3C010001 */  lui   $at, (0x00011800 >> 16) # lui $at, 1
@@ -3377,8 +3377,8 @@ glabel L80293DCC
 glabel L80293E24
 /* 0FD434 80293E24 00027080 */  sll   $t6, $v0, 2
 /* 0FD438 80293E28 3C0F8015 */  lui   $t7, %hi(gPhysicalFramebuffers) # 0x8015
-/* 0FD43C 80293E2C 3C198015 */  lui   $t9, %hi(D_8015026C) # $t9, 0x8015
-/* 0FD440 80293E30 8F39026C */  lw    $t9, %lo(D_8015026C)($t9)
+/* 0FD43C 80293E2C 3C198015 */  lui   $t9, %hi(gSegmentTable+0x14) # $t9, 0x8015
+/* 0FD440 80293E30 8F39026C */  lw    $t9, %lo(gSegmentTable+0x14)($t9)
 /* 0FD444 80293E34 01EE7821 */  addu  $t7, $t7, $t6
 /* 0FD448 80293E38 8DEF02A8 */  lw    $t7, %lo(gPhysicalFramebuffers)($t7) # 0x2a8($t7)
 /* 0FD44C 80293E3C 3C010001 */  lui   $at, (0x00012800 >> 16) # lui $at, 1
@@ -3401,8 +3401,8 @@ glabel L80293E24
 glabel L80293E80
 /* 0FD490 80293E80 00026880 */  sll   $t5, $v0, 2
 /* 0FD494 80293E84 3C0E8015 */  lui   $t6, %hi(gPhysicalFramebuffers) # 0x8015
-/* 0FD498 80293E88 3C188015 */  lui   $t8, %hi(D_8015026C) # $t8, 0x8015
-/* 0FD49C 80293E8C 8F18026C */  lw    $t8, %lo(D_8015026C)($t8)
+/* 0FD498 80293E88 3C188015 */  lui   $t8, %hi(gSegmentTable+0x14) # $t8, 0x8015
+/* 0FD49C 80293E8C 8F18026C */  lw    $t8, %lo(gSegmentTable+0x14)($t8)
 /* 0FD4A0 80293E90 01CD7021 */  addu  $t6, $t6, $t5
 /* 0FD4A4 80293E94 8DCE02A8 */  lw    $t6, %lo(gPhysicalFramebuffers)($t6) # 0x2a8($t6)
 /* 0FD4A8 80293E98 3C010001 */  lui   $at, (0x00013800 >> 16) # lui $at, 1
@@ -3424,8 +3424,8 @@ glabel L80293E80
 glabel L80293ED8
 /* 0FD4E8 80293ED8 00026080 */  sll   $t4, $v0, 2
 /* 0FD4EC 80293EDC 3C0D8015 */  lui   $t5, %hi(gPhysicalFramebuffers) # 0x8015
-/* 0FD4F0 80293EE0 3C0F8015 */  lui   $t7, %hi(D_8015026C) # $t7, 0x8015
-/* 0FD4F4 80293EE4 8DEF026C */  lw    $t7, %lo(D_8015026C)($t7)
+/* 0FD4F0 80293EE0 3C0F8015 */  lui   $t7, %hi(gSegmentTable+0x14) # $t7, 0x8015
+/* 0FD4F4 80293EE4 8DEF026C */  lw    $t7, %lo(gSegmentTable+0x14)($t7)
 /* 0FD4F8 80293EE8 01AC6821 */  addu  $t5, $t5, $t4
 /* 0FD4FC 80293EEC 8DAD02A8 */  lw    $t5, %lo(gPhysicalFramebuffers)($t5) # 0x2a8($t5)
 /* 0FD500 80293EF0 3C010001 */  lui   $at, (0x00014800 >> 16) # lui $at, 1
@@ -4431,8 +4431,8 @@ glabel L80294DD8
 /* 0FE3E8 80294DD8 0002C880 */  sll   $t9, $v0, 2
 /* 0FE3EC 80294DDC 3C0E8015 */  lui   $t6, %hi(gPhysicalFramebuffers) # 0x8015
 /* 0FE3F0 80294DE0 01D97021 */  addu  $t6, $t6, $t9
-/* 0FE3F4 80294DE4 3C188015 */  lui   $t8, %hi(D_8015026C) # $t8, 0x8015
-/* 0FE3F8 80294DE8 8F18026C */  lw    $t8, %lo(D_8015026C)($t8)
+/* 0FE3F4 80294DE4 3C188015 */  lui   $t8, %hi(gSegmentTable+0x14) # $t8, 0x8015
+/* 0FE3F8 80294DE8 8F18026C */  lw    $t8, %lo(gSegmentTable+0x14)($t8)
 /* 0FE3FC 80294DEC 8DCE02A8 */  lw    $t6, %lo(gPhysicalFramebuffers)($t6) # 0x2a8($t6)
 /* 0FE400 80294DF0 3C038000 */  lui   $v1, 0x8000
 /* 0FE404 80294DF4 34018800 */  li    $at, 34816
@@ -4452,8 +4452,8 @@ glabel L80294E28
 /* 0FE438 80294E28 00027880 */  sll   $t7, $v0, 2
 /* 0FE43C 80294E2C 3C188015 */  lui   $t8, %hi(gPhysicalFramebuffers) # 0x8015
 /* 0FE440 80294E30 030FC021 */  addu  $t8, $t8, $t7
-/* 0FE444 80294E34 3C0E8015 */  lui   $t6, %hi(D_8015026C) # $t6, 0x8015
-/* 0FE448 80294E38 8DCE026C */  lw    $t6, %lo(D_8015026C)($t6)
+/* 0FE444 80294E34 3C0E8015 */  lui   $t6, %hi(gSegmentTable+0x14) # $t6, 0x8015
+/* 0FE448 80294E38 8DCE026C */  lw    $t6, %lo(gSegmentTable+0x14)($t6)
 /* 0FE44C 80294E3C 8F1802A8 */  lw    $t8, %lo(gPhysicalFramebuffers)($t8) # 0x2a8($t8)
 /* 0FE450 80294E40 3C038000 */  lui   $v1, 0x8000
 /* 0FE454 80294E44 34019800 */  li    $at, 38912
@@ -4474,8 +4474,8 @@ glabel L80294E7C
 /* 0FE48C 80294E7C 0002C880 */  sll   $t9, $v0, 2
 /* 0FE490 80294E80 3C0E8015 */  lui   $t6, %hi(gPhysicalFramebuffers) # 0x8015
 /* 0FE494 80294E84 01D97021 */  addu  $t6, $t6, $t9
-/* 0FE498 80294E88 3C188015 */  lui   $t8, %hi(D_8015026C) # $t8, 0x8015
-/* 0FE49C 80294E8C 8F18026C */  lw    $t8, %lo(D_8015026C)($t8)
+/* 0FE498 80294E88 3C188015 */  lui   $t8, %hi(gSegmentTable+0x14) # $t8, 0x8015
+/* 0FE49C 80294E8C 8F18026C */  lw    $t8, %lo(gSegmentTable+0x14)($t8)
 /* 0FE4A0 80294E90 8DCE02A8 */  lw    $t6, %lo(gPhysicalFramebuffers)($t6) # 0x2a8($t6)
 /* 0FE4A4 80294E94 3C038000 */  lui   $v1, 0x8000
 /* 0FE4A8 80294E98 3401A800 */  li    $at, 43008
@@ -4496,8 +4496,8 @@ glabel L80294ED0
 /* 0FE4E0 80294ED0 00027880 */  sll   $t7, $v0, 2
 /* 0FE4E4 80294ED4 3C188015 */  lui   $t8, %hi(gPhysicalFramebuffers) # 0x8015
 /* 0FE4E8 80294ED8 030FC021 */  addu  $t8, $t8, $t7
-/* 0FE4EC 80294EDC 3C0E8015 */  lui   $t6, %hi(D_8015026C) # $t6, 0x8015
-/* 0FE4F0 80294EE0 8DCE026C */  lw    $t6, %lo(D_8015026C)($t6)
+/* 0FE4EC 80294EDC 3C0E8015 */  lui   $t6, %hi(gSegmentTable+0x14) # $t6, 0x8015
+/* 0FE4F0 80294EE0 8DCE026C */  lw    $t6, %lo(gSegmentTable+0x14)($t6)
 /* 0FE4F4 80294EE4 8F1802A8 */  lw    $t8, %lo(gPhysicalFramebuffers)($t8) # 0x2a8($t8)
 /* 0FE4F8 80294EE8 3C038000 */  lui   $v1, 0x8000
 /* 0FE4FC 80294EEC 3401B800 */  li    $at, 47104
@@ -4519,8 +4519,8 @@ glabel L80294F28
 /* 0FE538 80294F28 0002C880 */  sll   $t9, $v0, 2
 /* 0FE53C 80294F2C 3C0E8015 */  lui   $t6, %hi(gPhysicalFramebuffers) # 0x8015
 /* 0FE540 80294F30 01D97021 */  addu  $t6, $t6, $t9
-/* 0FE544 80294F34 3C188015 */  lui   $t8, %hi(D_8015026C) # $t8, 0x8015
-/* 0FE548 80294F38 8F18026C */  lw    $t8, %lo(D_8015026C)($t8)
+/* 0FE544 80294F34 3C188015 */  lui   $t8, %hi(gSegmentTable+0x14) # $t8, 0x8015
+/* 0FE548 80294F38 8F18026C */  lw    $t8, %lo(gSegmentTable+0x14)($t8)
 /* 0FE54C 80294F3C 8DCE02A8 */  lw    $t6, %lo(gPhysicalFramebuffers)($t6) # 0x2a8($t6)
 /* 0FE550 80294F40 3C038000 */  lui   $v1, 0x8000
 /* 0FE554 80294F44 3401C800 */  li    $at, 51200
@@ -4541,8 +4541,8 @@ glabel L80294F7C
 /* 0FE58C 80294F7C 00027880 */  sll   $t7, $v0, 2
 /* 0FE590 80294F80 3C188015 */  lui   $t8, %hi(gPhysicalFramebuffers) # 0x8015
 /* 0FE594 80294F84 030FC021 */  addu  $t8, $t8, $t7
-/* 0FE598 80294F88 3C0E8015 */  lui   $t6, %hi(D_8015026C) # $t6, 0x8015
-/* 0FE59C 80294F8C 8DCE026C */  lw    $t6, %lo(D_8015026C)($t6)
+/* 0FE598 80294F88 3C0E8015 */  lui   $t6, %hi(gSegmentTable+0x14) # $t6, 0x8015
+/* 0FE59C 80294F8C 8DCE026C */  lw    $t6, %lo(gSegmentTable+0x14)($t6)
 /* 0FE5A0 80294F90 8F1802A8 */  lw    $t8, %lo(gPhysicalFramebuffers)($t8) # 0x2a8($t8)
 /* 0FE5A4 80294F94 3C038000 */  lui   $v1, 0x8000
 /* 0FE5A8 80294F98 3401D800 */  li    $at, 55296

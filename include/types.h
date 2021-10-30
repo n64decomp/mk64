@@ -52,7 +52,25 @@ struct UnkStruct_800DC5EC {
     u16 unk2E;
     u16 unk30;
     u16 unk32;
+    u16 unk34;
+    u16 unk36;
+    s16 unk38;
 };
+
+struct UnkStruct_800DDB40 {
+    u32 unk0;
+    u32 unk4;
+    u32 unk8;
+    u32 unkC;
+    u32 unk10;
+    u32 unk14;
+    u32 unk18;
+    u32 unk1C;
+    u32 unk20;
+    u16 unk24;
+    u16 unk26;
+};
+
 // math util structs
 struct UnkStruct_802B51E8 {
     f32 unk0;
