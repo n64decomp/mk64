@@ -1,6 +1,6 @@
 # Mario Kart 64
 
-This repo contains a work-in-progress decompilation of Mario Kart 64 (U). The project pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information. The project is around 15% complete.
+This repo contains a work-in-progress decompilation of Mario Kart 64 (U). The project pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information. The project is around 7% complete.
 
 It builds the following ROM:
 
@@ -16,6 +16,8 @@ The build system has the following package requirements:
     python3 >= 3.6
     libaudiofile
     qemu-irix
+
+To add submodules run `git submodule update --init --recursive` after cloning.
 
 Debian / Ubuntu
 ```

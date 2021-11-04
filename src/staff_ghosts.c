@@ -470,7 +470,7 @@ void func_8000599C(void) {
     }
 }
 */
-GLOBAL_ASM("asm/non_matchings/code_80004EF0/func_8000599C.s")
+GLOBAL_ASM("asm/non_matchings/staff_ghosts/func_8000599C.s")
 
 // sets player to AI? (unconfirmed)
 void func_80005AE8(Player *ply) {
@@ -562,7 +562,7 @@ void func_80005B18(void) {
 }
 
 #else
-GLOBAL_ASM("asm/non_matchings/code_80004EF0/func_80005B18.s")
+GLOBAL_ASM("asm/non_matchings/staff_ghosts/func_80005B18.s")
 #endif
 
 void func_80005E6C(void) {

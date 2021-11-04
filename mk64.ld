@@ -65,28 +65,28 @@ SECTIONS
       BUILD_DIR/src/code_800029B0.o(.text);
       BUILD_DIR/src/profiler.o(.text);
       BUILD_DIR/src/crash_screen.o(.text);
-      BUILD_DIR/asm/code_80004740.o(.text);
+      BUILD_DIR/src/code_80004740.o(.text);
       BUILD_DIR/src/staff_ghosts.o(.text);
       BUILD_DIR/asm/unused_overflow_check.o(.text);
       BUILD_DIR/src/code_80005FD0.o(.text);
-      BUILD_DIR/asm/code_8001C4D0.o(.text);
-      BUILD_DIR/asm/code_8001F980.o(.text);
+      BUILD_DIR/src/code_8001C4D0.o(.text);
+      BUILD_DIR/src/code_8001F980.o(.text);
       BUILD_DIR/src/code_80027040.o(.text);
-      BUILD_DIR/asm/code_80027D00.o(.text);
+      BUILD_DIR/src/code_80027D00.o(.text);
       BUILD_DIR/src/code_800393C0.o(.text);
-      BUILD_DIR/asm/code_8003DC40.o(.text);
+      BUILD_DIR/src/code_8003DC40.o(.text);
       BUILD_DIR/asm/unused_mio0_decode.o(.text);
       BUILD_DIR/asm/mio0_decode.o(.text);
       BUILD_DIR/asm/tkmk00_decode.o(.text);
       BUILD_DIR/src/gbiMacro.o(.text);
-      BUILD_DIR/asm/code_80040E50.o(.text);
-      BUILD_DIR/asm/code_800431B0.o(.text);
-      BUILD_DIR/asm/code_80057C60.o(.text);
-      BUILD_DIR/asm/code_8006E9C0.o(.text);
-      BUILD_DIR/asm/code_80071F00.o(.text);
-      BUILD_DIR/asm/code_80086E70.o(.text);
+      BUILD_DIR/src/code_80040E50.o(.text);
+      BUILD_DIR/src/code_800431B0.o(.text);
+      BUILD_DIR/src/code_80057C60.o(.text);
+      BUILD_DIR/src/code_8006E9C0.o(.text);
+      BUILD_DIR/src/code_80071F00.o(.text);
+      BUILD_DIR/src/code_80086E70.o(.text);
       BUILD_DIR/src/code_8008C1D0.o(.text);
-      BUILD_DIR/asm/code_80091750.o(.text);
+      BUILD_DIR/src/code_80091750.o(.text);
       BUILD_DIR/src/code_800AF9B0.o(.text);
       BUILD_DIR/src/synthesis.o(.text);
       BUILD_DIR/asm/audio/heap.o(.text);
@@ -291,11 +291,11 @@ SECTIONS
    BEGIN_SEG(code_8028DF00, SEG_8028DF00)
    {
       BUILD_DIR/src/code_8028DF00.o(.text);
-      BUILD_DIR/asm/code_80290C20.o(.text);
+      BUILD_DIR/src/code_80290C20.o(.text);
       BUILD_DIR/src/code_80296A50.o(.text);
-      BUILD_DIR/asm/code_802A3730.o(.text);
+      BUILD_DIR/src/code_802A3730.o(.text);
       BUILD_DIR/src/memory.o(.text);
-      BUILD_DIR/asm/code_802B0210.o(.text);
+      BUILD_DIR/src/code_802B0210.o(.text);
       BUILD_DIR/src/math_util.o(.text);
       BUILD_DIR/data/data_121DA0.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);
@@ -327,11 +327,11 @@ SECTIONS
    BEGIN_SEG(code_80280000, SEG_80280000)
    {
       BUILD_DIR/src/code_80280000.o(.text);
-      BUILD_DIR/asm/code_80280650.o(.text);
+      BUILD_DIR/src/code_80280650.o(.text);
       BUILD_DIR/src/code_80281610.o(.text);
       BUILD_DIR/src/code_80281780.o(.text);
       BUILD_DIR/src/code_80281C40.o(.text);
-      BUILD_DIR/asm/code_80281FA0.o(.text);
+      BUILD_DIR/src/code_80281FA0.o(.text);
       BUILD_DIR/data/data_credits_128480.o(.data);
    }
    END_SEG(code_80280000)

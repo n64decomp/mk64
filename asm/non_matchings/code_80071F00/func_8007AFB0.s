@@ -1,0 +1,38 @@
+glabel func_8007AFB0
+/* 07BBB0 8007AFB0 27BDFFD8 */  addiu $sp, $sp, -0x28
+/* 07BBB4 8007AFB4 00051080 */  sll   $v0, $a1, 2
+/* 07BBB8 8007AFB8 AFA40028 */  sw    $a0, 0x28($sp)
+/* 07BBBC 8007AFBC AFA5002C */  sw    $a1, 0x2c($sp)
+/* 07BBC0 8007AFC0 3C058016 */  lui   $a1, %hi(D_801643BA) # 0x8016
+/* 07BBC4 8007AFC4 3C048016 */  lui   $a0, %hi(D_80164392) # 0x8016
+/* 07BBC8 8007AFC8 AFBF0014 */  sw    $ra, 0x14($sp)
+/* 07BBCC 8007AFCC 00822021 */  addu  $a0, $a0, $v0
+/* 07BBD0 8007AFD0 00A22821 */  addu  $a1, $a1, $v0
+/* 07BBD4 8007AFD4 84A543BA */  lh    $a1, %lo(D_801643BA)($a1) # 0x43ba($a1)
+/* 07BBD8 8007AFD8 0C01EBD0 */  jal   func_8007AF40
+/* 07BBDC 8007AFDC 84844392 */   lh    $a0, %lo(D_80164392)($a0) # 0x4392($a0)
+/* 07BBE0 8007AFE0 8FB8002C */  lw    $t8, 0x2c($sp)
+/* 07BBE4 8007AFE4 3C088019 */  lui   $t0, %hi(D_8018CA70) # $t0, 0x8019
+/* 07BBE8 8007AFE8 2508CA70 */  addiu $t0, %lo(D_8018CA70) # addiu $t0, $t0, -0x3590
+/* 07BBEC 8007AFEC 0018C940 */  sll   $t9, $t8, 5
+/* 07BBF0 8007AFF0 0338C821 */  addu  $t9, $t9, $t8
+/* 07BBF4 8007AFF4 0019C880 */  sll   $t9, $t9, 2
+/* 07BBF8 8007AFF8 03281821 */  addu  $v1, $t9, $t0
+/* 07BBFC 8007AFFC 90640076 */  lbu   $a0, 0x76($v1)
+/* 07BC00 8007B000 00022C00 */  sll   $a1, $v0, 0x10
+/* 07BC04 8007B004 00057C03 */  sra   $t7, $a1, 0x10
+/* 07BC08 8007B008 10800005 */  beqz  $a0, .L8007B020
+/* 07BC0C 8007B00C 01E02825 */   move  $a1, $t7
+/* 07BC10 8007B010 00042C00 */  sll   $a1, $a0, 0x10
+/* 07BC14 8007B014 00054C03 */  sra   $t1, $a1, 0x10
+/* 07BC18 8007B018 01202825 */  move  $a1, $t1
+/* 07BC1C 8007B01C A0600076 */  sb    $zero, 0x76($v1)
+.L8007B020:
+/* 07BC20 8007B020 8FA40028 */  lw    $a0, 0x28($sp)
+/* 07BC24 8007B024 0C01CA6D */  jal   func_800729B4
+/* 07BC28 8007B028 A7A5001A */   sh    $a1, 0x1a($sp)
+/* 07BC2C 8007B02C 8FBF0014 */  lw    $ra, 0x14($sp)
+/* 07BC30 8007B030 87A2001A */  lh    $v0, 0x1a($sp)
+/* 07BC34 8007B034 27BD0028 */  addiu $sp, $sp, 0x28
+/* 07BC38 8007B038 03E00008 */  jr    $ra
+/* 07BC3C 8007B03C 00000000 */   nop   

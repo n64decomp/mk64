@@ -1,0 +1,10 @@
+glabel func_802AF588
+/* 118B98 802AF588 27BDFFE8 */  addiu $sp, $sp, -0x18
+/* 118B9C 802AF58C AFBF0014 */  sw    $ra, 0x14($sp)
+/* 118BA0 802AF590 2405FFFF */  li    $a1, -1
+/* 118BA4 802AF594 0C0ABD76 */  jal   func_802AF5D8
+/* 118BA8 802AF598 240600FF */   li    $a2, 255
+/* 118BAC 802AF59C 8FBF0014 */  lw    $ra, 0x14($sp)
+/* 118BB0 802AF5A0 27BD0018 */  addiu $sp, $sp, 0x18
+/* 118BB4 802AF5A4 03E00008 */  jr    $ra
+/* 118BB8 802AF5A8 00000000 */   nop   
