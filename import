@@ -1,4 +1,4 @@
 #!/bin/bash
 
-python3 tools/decomp-permuter/import.py $1
+python3 tools/decomp-permuter/import.py $1 $2 $3
 
