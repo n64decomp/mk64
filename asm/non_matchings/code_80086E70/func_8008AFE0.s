@@ -1,0 +1,27 @@
+glabel func_8008AFE0
+/* 08BBE0 8008AFE0 44856000 */  mtc1  $a1, $f12
+/* 08BBE4 8008AFE4 27BDFFE8 */  addiu $sp, $sp, -0x18
+/* 08BBE8 8008AFE8 AFA40018 */  sw    $a0, 0x18($sp)
+/* 08BBEC 8008AFEC AFBF0014 */  sw    $ra, 0x14($sp)
+/* 08BBF0 8008AFF0 3C048018 */  lui   $a0, %hi(D_80183DC8) # $a0, 0x8018
+/* 08BBF4 8008AFF4 44056000 */  mfc1  $a1, $f12
+/* 08BBF8 8008AFF8 0C022B74 */  jal   func_8008ADD0
+/* 08BBFC 8008AFFC 24843DC8 */   addiu $a0, %lo(D_80183DC8) # addiu $a0, $a0, 0x3dc8
+/* 08BC00 8008B000 0C022BA7 */  jal   func_8008AE9C
+/* 08BC04 8008B004 8FA40018 */   lw    $a0, 0x18($sp)
+/* 08BC08 8008B008 8FBF0014 */  lw    $ra, 0x14($sp)
+/* 08BC0C 8008B00C 27BD0018 */  addiu $sp, $sp, 0x18
+/* 08BC10 8008B010 03E00008 */  jr    $ra
+/* 08BC14 8008B014 00000000 */   nop   
+
+/* 08BC18 8008B018 03E00008 */  jr    $ra
+/* 08BC1C 8008B01C 00000000 */   nop   
+
+/* 08BC20 8008B020 03E00008 */  jr    $ra
+/* 08BC24 8008B024 00000000 */   nop   
+
+/* 08BC28 8008B028 03E00008 */  jr    $ra
+/* 08BC2C 8008B02C 00000000 */   nop   
+
+/* 08BC30 8008B030 03E00008 */  jr    $ra
+/* 08BC34 8008B034 00000000 */   nop   

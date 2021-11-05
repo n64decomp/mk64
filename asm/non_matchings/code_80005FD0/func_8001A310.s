@@ -1,0 +1,16 @@
+glabel func_8001A310
+/* 01AF10 8001A310 3C0E800E */  lui   $t6, %hi(gCurrentCourseId)
+/* 01AF14 8001A314 85CEC5A0 */  lh    $t6, %lo(gCurrentCourseId)($t6)
+/* 01AF18 8001A318 24010002 */  li    $at, 2
+/* 01AF1C 8001A31C 15C10008 */  bne   $t6, $at, .L8001A340
+/* 01AF20 8001A320 00000000 */   nop   
+/* 01AF24 8001A324 10A00006 */  beqz  $a1, .L8001A340
+/* 01AF28 8001A328 288100E7 */   slti  $at, $a0, 0xe7
+/* 01AF2C 8001A32C 14200004 */  bnez  $at, .L8001A340
+/* 01AF30 8001A330 288101C2 */   slti  $at, $a0, 0x1c2
+/* 01AF34 8001A334 10200002 */  beqz  $at, .L8001A340
+/* 01AF38 8001A338 00000000 */   nop   
+/* 01AF3C 8001A33C 00002825 */  move  $a1, $zero
+.L8001A340:
+/* 01AF40 8001A340 03E00008 */  jr    $ra
+/* 01AF44 8001A344 00A01025 */   move  $v0, $a1

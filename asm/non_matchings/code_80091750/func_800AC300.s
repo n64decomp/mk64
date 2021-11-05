@@ -1,0 +1,11 @@
+glabel func_800AC300
+/* 0ACF00 800AC300 8C8E001C */  lw    $t6, 0x1c($a0)
+/* 0ACF04 800AC304 8C980020 */  lw    $t8, 0x20($a0)
+/* 0ACF08 800AC308 25CF0001 */  addiu $t7, $t6, 1
+/* 0ACF0C 800AC30C 030F082A */  slt   $at, $t8, $t7
+/* 0ACF10 800AC310 10200002 */  beqz  $at, .L800AC31C
+/* 0ACF14 800AC314 AC8F001C */   sw    $t7, 0x1c($a0)
+/* 0ACF18 800AC318 AC800000 */  sw    $zero, ($a0)
+.L800AC31C:
+/* 0ACF1C 800AC31C 03E00008 */  jr    $ra
+/* 0ACF20 800AC320 00000000 */   nop   

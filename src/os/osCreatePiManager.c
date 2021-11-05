@@ -8,12 +8,8 @@ extern OSPiHandle *LeoDiskHandle;
 #endif
 
 OSMgrArgs __osPiDevMgr = { 0 };
-#if defined(VERSION_EU) || defined(VERSION_SH)
 OSPiHandle *__osPiTable = NULL;
-#endif
-#ifdef VERSION_SH
-OSPiHandle *__osCurrentHandle[2] = { &CartRomHandle, &LeoDiskHandle };
-#endif
+
 OSThread piMgrThread;
 u32 piMgrStack[0x400]; // stack bottom
 OSMesgQueue __osPiMesgQueue;
@@ -48,9 +44,7 @@ void osCreatePiManager(OSPri pri, OSMesgQueue *cmdQ, OSMesg *cmdBuf, s32 cmdMsgC
         __osPiDevMgr.eventQueue = &__osPiMesgQueue;
         __osPiDevMgr.accessQueue = &gOsPiMessageQueue;
         __osPiDevMgr.dma_func = osPiRawStartDma;
-#if defined(VERSION_EU) || defined(VERSION_SH)
         __osPiDevMgr.edma_func = osEPiRawStartDma;
-#endif
         osCreateThread(&piMgrThread, 0, __osDevMgrMain, (void *) &__osPiDevMgr, &piMgrStack[0x400], pri);
         osStartThread(&piMgrThread);
         __osRestoreInt(int_disabled);

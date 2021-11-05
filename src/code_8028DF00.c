@@ -21,8 +21,8 @@ extern s8 gCourseSelection;
 extern s32 D_800DC544;
 
 extern Player gPlayers[];
-extern Player D_800DC4E0[];
-extern Player D_800DC4DC[];
+extern Player *D_800DC4E0;
+extern Player *D_800DC4DC;
 extern s32 lapCount[];
 extern s32 D_80150120;
 extern s32 gModeSelection;
@@ -142,7 +142,7 @@ void func_8028E028(void) {
     D_800DC510 = 5;
     D_802BA038 = 10;
 }
-/*
+
 void func_8028E0F0(void) {
     Player *ply;
     s32 i;
@@ -159,6 +159,7 @@ void func_8028E0F0(void) {
         if (ply->unk_000 & 0x800) {
             continue;
         }
+
         if (D_8018D8C0[i] < 0) {
             ply->unk_000 |= 0x800;
             unk_arr[phi_s2] = (s16) (ply - D_800DC4DC);
@@ -177,18 +178,17 @@ void func_8028E0F0(void) {
         func_8028E028();
     }
 }
-*/
-GLOBAL_ASM("asm/non_matchings/code_8028DF00/func_8028E0F0.s")
-
+extern f32 D_8015F898;
+extern u16 D_801645B0[];
+extern u16 D_801645C8;
 /*
 void func_8028E298(u16 arg2) {
-    ? *temp_a1;
+    //? *temp_a1;
     f32 temp_f8;
     s32 temp_a0;
-    s32 temp_v1;
     u16 temp_a2;
-    u16 temp_v0;
-    ? *phi_a1;
+    f32 temp_v0;
+    u16 *phi_a1;
     s32 phi_a0;
     f32 phi_f8;
     u16 phi_a2;
@@ -196,24 +196,35 @@ void func_8028E298(u16 arg2) {
     phi_a1 = &gPlayers;
     phi_a0 = 0;
     phi_a2 = arg2;
+
     for (i = 0; i < 8; i++) {
+
         if ((gPlayers[i].unk_000 & 0x800) == 0) {
-            temp_a2 = *(&D_801645B0 + (phi_a0 * 2));
-            temp_v1 = phi_a0 * 4;
-            temp_v0 = *(&D_801645C8 + (temp_a2 * 2));
-            temp_f8 = (f32) temp_v0;
+            continue;
+        }
+
+            temp_a2 = D_801645B0[i];
+            temp_v0 = phi_a0 * 4;
+            //temp_v0 += D_801645C8[temp_a2];
+
+            temp_v0 = (f32) temp_v0;
             phi_f8 = temp_f8;
+
             if ((s32) temp_v0 < 0) {
                 phi_f8 = temp_f8 + 4294967296.0f;
             }
-            *(&D_8015F898 + temp_v1) = (f32) (gCourseTimer + (((f32) (temp_v0 * (2 - phi_a1->unk8)) + (phi_f8 * (1.0f - *(&D_801644A8 + temp_v1)))) / 15.0f));
-            phi_a2 = temp_a2;
+
+            temp_v0 /= 15.0f;
+            D_8015F898 /= gCourseTimer + temp_v0;
+            
+            //(f32) (gCourseTimer + (((f32) (temp_v0 * (2 - phi_a1->unk8)) + (phi_f8 * (1.0f - *(&D_801644A8 + temp_v1)))) / 15.0f));
+            //phi_a2 = temp_a2;
         }
-        temp_a0 = phi_a0 + 1;
-        temp_a1 = phi_a1 + 0xDD8;
-        phi_a1 = temp_a1;
-        phi_a0 = temp_a0;
-    }
+        //temp_a0 = phi_a0 + 1;
+        //temp_a1 = phi_a1 + 0xDD8;
+        //phi_a1 = temp_a1;
+        //phi_a0 = temp_a0;
+    
     D_8016348C = 1;
     func_800070F4();
 }
@@ -574,41 +585,46 @@ void func_8028EC98(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/code_8028DF00/func_8028EC98.s")
 /*
 void func_8028EDA8(void) {
-    ? *temp_v1;
-    u16 temp_v0;
-    u16 temp_v0_2;
-    u16 temp_v0_3;
-    u16 temp_v0_4;
-    ? *phi_v1;
+    s32 i;
 
     D_8015011E = 0xFFFF;
     if (D_800DC51C == 0) {
         func_8028EC98(gCurrentCourseId);
     }
     if (D_800DC510 == 2) {
+
         D_800DC510 = 3;
+    
+        
+        for (i = 0; i < 8 ;i++) {
+
+            if ((gPlayers[i].unk_000 & 0x8000) == 0) {continue;}
+
+            if (gPlayers[i].unk_000 & 0x2000) {
+                gPlayers[i].unk_000 ^= 0x2000;
+            }
+
+            temp_v0 = phi_v1->unk0;
+            if (((temp_v0 & 0x8000) != 0) && ((temp_v0 & 0x2000) != 0)) {
+                phi_v1->unk0 = (u16) (temp_v0 ^ 0x2000);
+            }
+            temp_v0_2 = phi_v1->unkDD8;
+            if (((temp_v0_2 & 0x8000) != 0) && ((temp_v0_2 & 0x2000) != 0)) {
+                phi_v1->unkDD8 = (u16) (temp_v0_2 ^ 0x2000);
+            }
+            temp_v0_3 = phi_v1->unk1BB0;
+            if (((temp_v0_3 & 0x8000) != 0) && ((temp_v0_3 & 0x2000) != 0)) {
+                phi_v1->unk1BB0 = (u16) (temp_v0_3 ^ 0x2000);
+            }
+            temp_v0_4 = phi_v1->unk2988;
+            if (((temp_v0_4 & 0x8000) != 0) && ((temp_v0_4 & 0x2000) != 0)) {
+                phi_v1->unk2988 = (u16) (temp_v0_4 ^ 0x2000);
+            }
+            temp_v1 = phi_v1 + 0x3760;
+            phi_v1 = temp_v1;
+            
+        }
     }
-    phi_v1 = &gPlayers;
-    do {
-        temp_v0 = phi_v1->unk0;
-        if (((temp_v0 & 0x8000) != 0) && ((temp_v0 & 0x2000) != 0)) {
-            phi_v1->unk0 = (u16) (temp_v0 ^ 0x2000);
-        }
-        temp_v0_2 = phi_v1->unkDD8;
-        if (((temp_v0_2 & 0x8000) != 0) && ((temp_v0_2 & 0x2000) != 0)) {
-            phi_v1->unkDD8 = (u16) (temp_v0_2 ^ 0x2000);
-        }
-        temp_v0_3 = phi_v1->unk1BB0;
-        if (((temp_v0_3 & 0x8000) != 0) && ((temp_v0_3 & 0x2000) != 0)) {
-            phi_v1->unk1BB0 = (u16) (temp_v0_3 ^ 0x2000);
-        }
-        temp_v0_4 = phi_v1->unk2988;
-        if (((temp_v0_4 & 0x8000) != 0) && ((temp_v0_4 & 0x2000) != 0)) {
-            phi_v1->unk2988 = (u16) (temp_v0_4 ^ 0x2000);
-        }
-        temp_v1 = phi_v1 + 0x3760;
-        phi_v1 = temp_v1;
-    } while (temp_v1 != &D_800FD850);
 }
 */
 GLOBAL_ASM("asm/non_matchings/code_8028DF00/func_8028EDA8.s")
@@ -627,36 +643,46 @@ GLOBAL_ASM("asm/non_matchings/code_8028DF00/func_8028EE8C.s")
 void func_8028EEF0(s32 i) {
     gPlayers[i].unk_000 |= 0x800;
 }
-/*
 
+/*
 void func_8028EF28(void) {
     Player *ply;
-    s16 currentPosition;
     s32 i;
+    s16 test;
+    s32 new_var;
+    s16 currentPosition;
+    s32 new_var2;
+    
     for(i = 0; i < 8; i++)
     {
-        ply = (Player *)&gPlayers[i];
+        ply = &gPlayers[i];
+
         if ((gPlayers[i].unk_000 & 0x8000) == 0) {
             continue;
         }
-            if (lapCount[i] < gPlayers[i].unk_008) {
-                gPlayers[i].unk_008--;
-            } else if (lapCount[i] > gPlayers[i].unk_008) {
-                gPlayers[i].unk_008++;
-            }
+
+        if (lapCount[i] < gPlayers[i].unk_008) {
+            gPlayers[i].unk_008--;
+        } else if (lapCount[i] > gPlayers[i].unk_008) {
+            gPlayers[i].unk_008++; 
+
             if ((gPlayers[i].unk_000 & 0x4000) != 0) {
                 if (gPlayers[i].unk_008 == 3) {
                     func_8028EEF0(i);
 
                     currentPosition = gPlayers[i].unk_004;
                     gPlayers[i].unk_000 |= 0x1000;
+
                     if (currentPosition < 4) {
                         D_80150120 = 1;
                     }
-                    func_800CA118((u8)i);
+
+                    func_800CA118(i);
                     if ((D_802BA030[1] & 0x8000) == 0) {
                         D_802BA030[1] |= 0x8000;
                     }
+                    
+
                     if (gModeSelection == 0 && gPlayerCountSelection1 == 2 && D_802BA048 == 0) {
                         D_802BA048 = 1;
                     }
@@ -666,6 +692,8 @@ void func_8028EF28(void) {
                     if (gModeSelection == 1) {
                         func_80005AE8(ply);
                     }
+
+
                     if (gModeSelection == 2) {
                         D_802BA038 = 180;
                         if (currentPosition == 0) {
@@ -680,10 +708,10 @@ void func_8028EF28(void) {
                                     *(D_8015F8C4 + i) = 99;
                                 }
                                 D_800DC510 = 5;
-                                D_8015F8F6[1] = i;
+                                i = D_8015F8F6[1];
                                 gPlayers->unk_00C |= 0x200000;
                                 gPlayers->unk_000 |= 0x1000;
-                                func_800CA118((u8)i);
+                                func_800CA118(i);
                                 break;
                             case 3:
                                 if (currentPosition < 3) {
@@ -701,7 +729,7 @@ void func_8028EF28(void) {
                                     }
                                     gPlayers->unk_00C |= 0x200000;
                                     gPlayers->unk_000 |= 0x1000;
-                                    func_800CA118((u8)i);
+                                    func_800CA118(i);
                                 }
                                 break;
                             case 4:
@@ -716,7 +744,7 @@ void func_8028EF28(void) {
                                     D_8015F8F6[3] = i;
                                     gPlayers->unk_00C |= 0x200000;
                                     gPlayers->unk_000 |= 0x1000;
-                                    func_800CA118((u8)i);
+                                    func_800CA118(i);
                                 }
                                 break;
                         }
@@ -732,12 +760,13 @@ void func_8028EF28(void) {
                         func_800CA49C(i);
                     }
                 }
-            } else if (gPlayers[i].unk_008 == 3) {
-                func_8028EEF0(i);
-                if (gModeSelection == 1) {
-                    func_80005AE8(ply);
-                }
+            } 
+        } else if (gPlayers[i].unk_008 == 3) {
+            func_8028EEF0(i);
+            if (gModeSelection == 1) {
+                func_80005AE8(ply);
             }
+        }
 
         if ((D_802BA048 != 0) && (D_802BA048 != 100)) {
             D_802BA048 = 100;

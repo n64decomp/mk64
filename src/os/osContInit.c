@@ -11,7 +11,7 @@ extern u64 osClockRate;
 // these probably belong in EEPROMlongread or something
 u8 _osLastSentSiCmd;
 u8 _osContNumControllers;
-OSTimer D_80365D28;
+OSTimer D_80196548;
 OSMesgQueue _osContMesgQueue;
 OSMesg _osContMesgBuff[4];
 s32 osContInit(OSMesgQueue *mq, u8 *bitpattern, OSContStatus *status) {
@@ -32,21 +32,13 @@ s32 osContInit(OSMesgQueue *mq, u8 *bitpattern, OSContStatus *status) {
         osRecvMesg(&timerMesgQueue, &mesg, OS_MESG_BLOCK);
     }
     _osContNumControllers = 4; // TODO: figure out what it means
-#if defined(VERSION_EU) || defined(VERSION_SH)
     __osPackRequestData(0);
-#else
-    __osPackRequestData(255);
-#endif
     ret = __osSiRawStartDma(OS_WRITE, _osContCmdBuf);
     osRecvMesg(mq, &mesg, OS_MESG_BLOCK);
     ret = __osSiRawStartDma(OS_READ, _osContCmdBuf);
     osRecvMesg(mq, &mesg, OS_MESG_BLOCK);
     __osContGetInitData(bitpattern, status);
-#if defined(VERSION_EU) || defined(VERSION_SH)
     _osLastSentSiCmd = 0;
-#else
-    _osLastSentSiCmd = 255;
-#endif
     __osSiCreateAccessQueue();
     osCreateMesgQueue(&_osContMesgQueue, _osContMesgBuff, 1);
     return ret;

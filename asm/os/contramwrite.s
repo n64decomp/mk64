@@ -65,9 +65,9 @@ glabel __osContRamWrite
 /* 0D7FBC 800D73BC 29A10010 */  slti  $at, $t5, 0x10
 /* 0D7FC0 800D73C0 1420FFF6 */  bnez  $at, .L800D739C
 /* 0D7FC4 800D73C4 AFAD0058 */   sw    $t5, 0x58($sp)
-/* 0D7FC8 800D73C8 3C018019 */  lui   $at, %hi(D_801965CC) # $at, 0x8019
+/* 0D7FC8 800D73C8 3C018019 */  lui   $at, 0x8019 # $at, 0x8019
 /* 0D7FCC 800D73CC 3C058019 */  lui   $a1, %hi(__osPfsPifRam) # $a1, 0x8019
-/* 0D7FD0 800D73D0 AC2065CC */  sw    $zero, %lo(D_801965CC)($at)
+/* 0D7FD0 800D73D0 AC2065CC */  sw    $zero, 0x65cc($at)
 /* 0D7FD4 800D73D4 24A56590 */  addiu $a1, %lo(__osPfsPifRam) # addiu $a1, $a1, 0x6590
 /* 0D7FD8 800D73D8 0C034EA8 */  jal   __osSiRawStartDma
 /* 0D7FDC 800D73DC 00002025 */   move  $a0, $zero
@@ -181,12 +181,12 @@ glabel __osPackRamWriteData
 /* 0D8164 800D7564 1420FFF7 */  bnez  $at, .L800D7544
 /* 0D8168 800D7568 AFA80018 */   sw    $t0, 0x18($sp)
 /* 0D816C 800D756C 24090001 */  li    $t1, 1
-/* 0D8170 800D7570 3C018019 */  lui   $at, %hi(D_801965CC) # $at, 0x8019
+/* 0D8170 800D7570 3C018019 */  lui   $at, 0x8019 # $at, 0x8019
 /* 0D8174 800D7574 240A00FF */  li    $t2, 255
 /* 0D8178 800D7578 240B0023 */  li    $t3, 35
 /* 0D817C 800D757C 240C0001 */  li    $t4, 1
 /* 0D8180 800D7580 240D0003 */  li    $t5, 3
-/* 0D8184 800D7584 AC2965CC */  sw    $t1, %lo(D_801965CC)($at)
+/* 0D8184 800D7584 AC2965CC */  sw    $t1, 0x65cc($at)
 /* 0D8188 800D7588 A3AA001C */  sb    $t2, 0x1c($sp)
 /* 0D818C 800D758C A3AB001D */  sb    $t3, 0x1d($sp)
 /* 0D8190 800D7590 A3AC001E */  sb    $t4, 0x1e($sp)

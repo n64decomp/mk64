@@ -3,7 +3,7 @@
 extern u64 osClockRate;
 extern u8 D_80365D20;
 extern u8 _osContNumControllers;
-extern OSTimer D_80365D28; // not sure what this is yet
+extern OSTimer D_80196548; // not sure what this is yet
 extern OSMesgQueue _osContMesgQueue;
 extern OSMesg _osContMesgBuff[4];
 
@@ -22,7 +22,7 @@ s32 osEepromLongRead(OSMesgQueue *mq, u8 address, u8 *buffer, int nbytes) {
         nbytes -= 8;
         address += 1;
         buffer += 8;
-        osSetTimer(&D_80365D28, 12000 * osClockRate / 1000000, 0, &_osContMesgQueue, _osContMesgBuff);
+        osSetTimer(&D_80196548, 12000 * osClockRate / 1000000, 0, &_osContMesgQueue, _osContMesgBuff);
         osRecvMesg(&_osContMesgQueue, NULL, OS_MESG_BLOCK);
     }
 

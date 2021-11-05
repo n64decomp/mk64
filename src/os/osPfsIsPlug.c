@@ -3,7 +3,7 @@
 #include "PR/os_pi.h"
 #include "controller.h"
 
-extern OSPifRam __osPfsPifRam;
+OSPifRam __osPfsPifRam;
 
 s32 osPfsIsPlug(OSMesgQueue *queue, u8 *pattern) {
     s32 ret;
