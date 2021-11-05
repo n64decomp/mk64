@@ -1,6 +1,6 @@
 [submodule "autodecompiler"]
 	path = autodecompiler
 	url = https://github.com/farisawan-2000/auto-decompiler
-[submodule "diff"]
-	path = diff
+[submodule "asm-differ"]
+	path = tools/asm-differ
 	url = https://github.com/simonlindholm/asm-differ
