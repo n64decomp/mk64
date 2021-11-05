@@ -4,3 +4,6 @@
 [submodule "asm-differ"]
 	path = tools/asm-differ
 	url = https://github.com/simonlindholm/asm-differ
+[submodule "tools/decomp-permuter"]
+	path = tools/decomp-permuter
+	url = https://github.com/simonlindholm/decomp-permuter
