@@ -5,7 +5,7 @@
 extern s32 func_800CE7D4(OSMesgQueue *, s32);
 void __osPackRamReadData(int channel, u16 address);
 
-extern u32 D_801965CC;
+//u32 D_801965CC;
 
 s32 __osContRamRead(OSMesgQueue *mq, int channel, u16 address, u8 *buffer) {
     s32 ret;
@@ -25,7 +25,7 @@ s32 __osContRamRead(OSMesgQueue *mq, int channel, u16 address, u8 *buffer) {
         __osPfsPifRam.ramarray[i] = 0xFF;
     }
     do {
-        D_801965CC = 0;
+        //D_801965CC = 0;
         ret = __osSiRawStartDma(OS_READ, &__osPfsPifRam);
         osRecvMesg(mq, NULL, OS_MESG_BLOCK);
         ptr = (u8 *)&__osPfsPifRam;

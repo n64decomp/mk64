@@ -182,8 +182,8 @@ glabel L800D1420
 /* 0D202C 800D142C 3C01800F */  lui   $at, %hi(__osHwIntTable) # 0x800f
 /* 0D2030 800D1430 002A0821 */  addu  $at, $at, $t2
 /* 0D2034 800D1434 8C2AB380 */  lw    $t2, %lo(__osHwIntTable)($at) # -0x4c80($at)
-/* 0D2038 800D1438 3C1D8019 */  lui   $sp, %hi(D_801965E0) # $sp, 0x8019
-/* 0D203C 800D143C 27BD65E0 */  addiu $sp, %lo(D_801965E0) # addiu $sp, $sp, 0x65e0
+/* 0D2038 800D1438 3C1D8019 */  lui   $sp, %hi(leoDiskStack) # $sp, 0x8019
+/* 0D203C 800D143C 27BD65E0 */  addiu $sp, %lo(leoDiskStack) # addiu $sp, $sp, 0x65e0
 /* 0D2040 800D1440 24040010 */  li    $a0, 16
 /* 0D2044 800D1444 11400007 */  beqz  $t2, .L800D1464
 /* 0D2048 800D1448 27BD0FF0 */   addiu $sp, $sp, 0xff0

@@ -170,6 +170,7 @@ for line in mapFile:
                 src += size
             
             if (objFile.startswith(tuple(mainSegFiles))):
+                print(size)
                 mainSeg += size
 
             if (objFile.startswith(tuple(seg2Files))):

@@ -4,27 +4,27 @@
 
 # osPiStartDma .data
 
-glabel __osPiDevMgr
-.word 0x00000000
+#glabel __osPiDevMgr
+#.word 0x00000000
 
-.word 0x00000000
+#.word 0x00000000
 
-.word 0x00000000
+#.word 0x00000000
 
-.word 0x00000000
+#.word 0x00000000
 
 
-.word 0x00000000
+#.word 0x00000000
 
-.word 0x00000000
+#.word 0x00000000
 
-.word 0x00000000
+#.word 0x00000000
 
-glabel __osPiTable
-.word 0x00000000
+#glabel __osPiTable
+#.word 0x00000000
 
-glabel D_800EB360
-.word 0x00000000, 0x00000000, 0x00000000, 0x00000000
+#glabel D_800EB360
+#.word 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
 glabel D_800EB370
 .word 0x00000000, 0x00000000, 0x00000000, 0x00000000
