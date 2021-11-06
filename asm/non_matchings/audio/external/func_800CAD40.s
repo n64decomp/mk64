@@ -1,0 +1,40 @@
+glabel func_800CAD40
+/* 0CB940 800CAD40 3C0E800F */  lui   $t6, %hi(D_800EA108) # $t6, 0x800f
+/* 0CB944 800CAD44 91CEA108 */  lbu   $t6, %lo(D_800EA108)($t6)
+/* 0CB948 800CAD48 27BDFFD0 */  addiu $sp, $sp, -0x30
+/* 0CB94C 800CAD4C AFBE0028 */  sw    $fp, 0x28($sp)
+/* 0CB950 800CAD50 03A0F025 */  move  $fp, $sp
+/* 0CB954 800CAD54 AFBF002C */  sw    $ra, 0x2c($sp)
+/* 0CB958 800CAD58 15C00018 */  bnez  $t6, .L800CADBC
+/* 0CB95C 800CAD5C AFA40030 */   sw    $a0, 0x30($sp)
+/* 0CB960 800CAD60 3C02800F */  lui   $v0, %hi(D_800EA170) # $v0, 0x800f
+/* 0CB964 800CAD64 2442A170 */  addiu $v0, %lo(D_800EA170) # addiu $v0, $v0, -0x5e90
+/* 0CB968 800CAD68 904F0000 */  lbu   $t7, ($v0)
+/* 0CB96C 800CAD6C 55E0000F */  bnel  $t7, $zero, .L800CADAC
+/* 0CB970 800CAD70 3C045101 */   lui   $a0, 0x5101
+/* 0CB974 800CAD74 90580001 */  lbu   $t8, 1($v0)
+/* 0CB978 800CAD78 5700000C */  bnel  $t8, $zero, .L800CADAC
+/* 0CB97C 800CAD7C 3C045101 */   lui   $a0, 0x5101
+/* 0CB980 800CAD80 90590002 */  lbu   $t9, 2($v0)
+/* 0CB984 800CAD84 57200009 */  bnel  $t9, $zero, .L800CADAC
+/* 0CB988 800CAD88 3C045101 */   lui   $a0, 0x5101
+/* 0CB98C 800CAD8C 90480003 */  lbu   $t0, 3($v0)
+/* 0CB990 800CAD90 00002025 */  move  $a0, $zero
+/* 0CB994 800CAD94 24050001 */  li    $a1, 1
+/* 0CB998 800CAD98 15000003 */  bnez  $t0, .L800CADA8
+/* 0CB99C 800CAD9C 2406007F */   li    $a2, 127
+/* 0CB9A0 800CADA0 0C030DB1 */  jal   func_800C36C4
+/* 0CB9A4 800CADA4 24070019 */   li    $a3, 25
+.L800CADA8:
+/* 0CB9A8 800CADA8 3C045101 */  lui   $a0, (0x5101C00C >> 16) # lui $a0, 0x5101
+.L800CADAC:
+/* 0CB9AC 800CADAC 0C0315BC */  jal   func_800C56F0
+/* 0CB9B0 800CADB0 3484C00C */   ori   $a0, (0x5101C00C & 0xFFFF) # ori $a0, $a0, 0xc00c
+/* 0CB9B4 800CADB4 3C01800F */  lui   $at, %hi(D_800EA168) # $at, 0x800f
+/* 0CB9B8 800CADB8 A020A168 */  sb    $zero, %lo(D_800EA168)($at)
+.L800CADBC:
+/* 0CB9BC 800CADBC 8FDF002C */  lw    $ra, 0x2c($fp)
+/* 0CB9C0 800CADC0 03C0E825 */  move  $sp, $fp
+/* 0CB9C4 800CADC4 8FDE0028 */  lw    $fp, 0x28($fp)
+/* 0CB9C8 800CADC8 03E00008 */  jr    $ra
+/* 0CB9CC 800CADCC 27BD0030 */   addiu $sp, $sp, 0x30
