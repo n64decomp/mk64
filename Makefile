@@ -73,7 +73,9 @@ MIO0_DIR = bin
 
 # Files with GLOBAL_ASM blocks
 GLOBAL_ASM_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/*.c)
+GLOBAL_ASM_AUDIO_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/audio/*.c)
 GLOBAL_ASM_O_FILES = $(foreach file,$(GLOBAL_ASM_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
+GLOBAL_ASM_AUDIO_O_FILES = $(foreach file,$(GLOBAL_ASM_AUDIO_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
 # GLOBAL_ASM_DEP = $(BUILD_DIR)/src/audio/non_matching_dep
 
 COURSE_ASM_FILES := $(wildcard courses/*/*/packed.s)
@@ -255,6 +257,8 @@ $(BUILD_DIR)/%.o: %.s $(MIO0_FILES) $(RAW_TEXTURE_FILES)
 	$(AS) $(ASFLAGS) -o $@ $<
 
 $(GLOBAL_ASM_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
+
+$(GLOBAL_ASM_AUDIO_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
 $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT) #repeat for other files
 	$(CPP) $(VERSION_CFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<

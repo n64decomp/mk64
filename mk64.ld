@@ -88,14 +88,14 @@ SECTIONS
       BUILD_DIR/src/code_8008C1D0.o(.text);
       BUILD_DIR/src/code_80091750.o(.text);
       BUILD_DIR/src/code_800AF9B0.o(.text);
-      BUILD_DIR/src/synthesis.o(.text);
-      BUILD_DIR/asm/audio/heap.o(.text);
-      BUILD_DIR/asm/audio/load.o(.text);
-      BUILD_DIR/asm/audio/playback.o(.text);
-      BUILD_DIR/asm/audio/effects.o(.text);
-      BUILD_DIR/asm/audio/seqplayer.o(.text);
-      BUILD_DIR/asm/audio/external.o(.text);
-      BUILD_DIR/asm/audio/port_eu.o(.text);
+      BUILD_DIR/src/audio/synthesis.o(.text);
+      BUILD_DIR/src/audio/heap.o(.text);
+      BUILD_DIR/src/audio/load.o(.text);
+      BUILD_DIR/src/audio/playback.o(.text);
+      BUILD_DIR/src/audio/effects.o(.text);
+      BUILD_DIR/src/audio/seqplayer.o(.text);
+      BUILD_DIR/src/audio/external.o(.text);
+      BUILD_DIR/src/audio/port_eu.o(.text);
 
       BUILD_DIR/src/os/osCreateThread.o(.text);
       BUILD_DIR/src/os/osInitialize.o(.text);
@@ -331,7 +331,7 @@ SECTIONS
    . = SEG_AUDIO;
    BEGIN_NOLOAD(audio)
    {
-      BUILD_DIR/src/synthesis.o(.bss*);
+      BUILD_DIR/src/audio/synthesis.o(.bss*);
    }
    END_NOLOAD(audio)
 
