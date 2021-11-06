@@ -1,0 +1,44 @@
+glabel func_800CAFC0
+/* 0CBBC0 800CAFC0 3C0E800F */  lui   $t6, %hi(D_800EA108) # $t6, 0x800f
+/* 0CBBC4 800CAFC4 91CEA108 */  lbu   $t6, %lo(D_800EA108)($t6)
+/* 0CBBC8 800CAFC8 27BDFFD0 */  addiu $sp, $sp, -0x30
+/* 0CBBCC 800CAFCC AFBE0028 */  sw    $fp, 0x28($sp)
+/* 0CBBD0 800CAFD0 03A0F025 */  move  $fp, $sp
+/* 0CBBD4 800CAFD4 AFBF002C */  sw    $ra, 0x2c($sp)
+/* 0CBBD8 800CAFD8 15C0001D */  bnez  $t6, .L800CB050
+/* 0CBBDC 800CAFDC AFA40030 */   sw    $a0, 0x30($sp)
+/* 0CBBE0 800CAFE0 93AF0033 */  lbu   $t7, 0x33($sp)
+/* 0CBBE4 800CAFE4 3C18800F */  lui   $t8, %hi(D_800EA0EC) # $t8, 0x800f
+/* 0CBBE8 800CAFE8 2718A0EC */  addiu $t8, %lo(D_800EA0EC) # addiu $t8, $t8, -0x5f14
+/* 0CBBEC 800CAFEC 01F81821 */  addu  $v1, $t7, $t8
+/* 0CBBF0 800CAFF0 90620000 */  lbu   $v0, ($v1)
+/* 0CBBF4 800CAFF4 24010002 */  li    $at, 2
+/* 0CBBF8 800CAFF8 00002025 */  move  $a0, $zero
+/* 0CBBFC 800CAFFC 10400004 */  beqz  $v0, .L800CB010
+/* 0CBC00 800CB000 24050001 */   li    $a1, 1
+/* 0CBC04 800CB004 14410012 */  bne   $v0, $at, .L800CB050
+/* 0CBC08 800CB008 24190001 */   li    $t9, 1
+/* 0CBC0C 800CB00C A0790000 */  sb    $t9, ($v1)
+.L800CB010:
+/* 0CBC10 800CB010 24060055 */  li    $a2, 85
+/* 0CBC14 800CB014 0C030DB1 */  jal   func_800C36C4
+/* 0CBC18 800CB018 24070005 */   li    $a3, 5
+/* 0CBC1C 800CB01C 3C051900 */  lui   $a1, (0x19009E59 >> 16) # lui $a1, 0x1900
+/* 0CBC20 800CB020 34A59E59 */  ori   $a1, (0x19009E59 & 0xFFFF) # ori $a1, $a1, 0x9e59
+/* 0CBC24 800CB024 0C032418 */  jal   func_800C9060
+/* 0CBC28 800CB028 93C40033 */   lbu   $a0, 0x33($fp)
+/* 0CBC2C 800CB02C 3C050100 */  lui   $a1, (0x0100FA4C >> 16) # lui $a1, 0x100
+/* 0CBC30 800CB030 34A5FA4C */  ori   $a1, (0x0100FA4C & 0xFFFF) # ori $a1, $a1, 0xfa4c
+/* 0CBC34 800CB034 0C0323E0 */  jal   func_800C8F80
+/* 0CBC38 800CB038 93C40033 */   lbu   $a0, 0x33($fp)
+/* 0CBC3C 800CB03C 93C90033 */  lbu   $t1, 0x33($fp)
+/* 0CBC40 800CB040 3C01800F */  lui   $at, %hi(D_800EA170)
+/* 0CBC44 800CB044 24080001 */  li    $t0, 1
+/* 0CBC48 800CB048 00290821 */  addu  $at, $at, $t1
+/* 0CBC4C 800CB04C A028A170 */  sb    $t0, %lo(D_800EA170)($at)
+.L800CB050:
+/* 0CBC50 800CB050 8FDF002C */  lw    $ra, 0x2c($fp)
+/* 0CBC54 800CB054 03C0E825 */  move  $sp, $fp
+/* 0CBC58 800CB058 8FDE0028 */  lw    $fp, 0x28($fp)
+/* 0CBC5C 800CB05C 03E00008 */  jr    $ra
+/* 0CBC60 800CB060 27BD0030 */   addiu $sp, $sp, 0x30

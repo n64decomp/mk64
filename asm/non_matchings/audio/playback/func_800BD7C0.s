@@ -1,0 +1,82 @@
+glabel func_800BD7C0
+/* 0BE3C0 800BD7C0 27BDFFC8 */  addiu $sp, $sp, -0x38
+/* 0BE3C4 800BD7C4 AFBF0014 */  sw    $ra, 0x14($sp)
+/* 0BE3C8 800BD7C8 240EFFFF */  li    $t6, -1
+/* 0BE3CC 800BD7CC AC8E0040 */  sw    $t6, 0x40($a0)
+/* 0BE3D0 800BD7D0 AC850044 */  sw    $a1, 0x44($a0)
+/* 0BE3D4 800BD7D4 8CAF004C */  lw    $t7, 0x4c($a1)
+/* 0BE3D8 800BD7D8 240A0003 */  li    $t2, 3
+/* 0BE3DC 800BD7DC 44802000 */  mtc1  $zero, $f4
+/* 0BE3E0 800BD7E0 91F80005 */  lbu   $t8, 5($t7)
+/* 0BE3E4 800BD7E4 A0980030 */  sb    $t8, 0x30($a0)
+/* 0BE3E8 800BD7E8 90A80000 */  lbu   $t0, ($a1)
+/* 0BE3EC 800BD7EC 8CAB004C */  lw    $t3, 0x4c($a1)
+/* 0BE3F0 800BD7F0 A0AA0002 */  sb    $t2, 2($a1)
+/* 0BE3F4 800BD7F4 35090004 */  ori   $t1, $t0, 4
+/* 0BE3F8 800BD7F8 A0A90000 */  sb    $t1, ($a1)
+/* 0BE3FC 800BD7FC ACA40040 */  sw    $a0, 0x40($a1)
+/* 0BE400 800BD800 AD640038 */  sw    $a0, 0x38($t3)
+/* 0BE404 800BD804 8CAC004C */  lw    $t4, 0x4c($a1)
+/* 0BE408 800BD808 AD85003C */  sw    $a1, 0x3c($t4)
+/* 0BE40C 800BD80C E4A4002C */  swc1  $f4, 0x2c($a1)
+/* 0BE410 800BD810 AFA5003C */  sw    $a1, 0x3c($sp)
+/* 0BE414 800BD814 0C02F2AD */  jal   func_800BCAB4
+/* 0BE418 800BD818 AFA40038 */   sw    $a0, 0x38($sp)
+/* 0BE41C 800BD81C 8FA5003C */  lw    $a1, 0x3c($sp)
+/* 0BE420 800BD820 8FA40038 */  lw    $a0, 0x38($sp)
+/* 0BE424 800BD824 240100FF */  li    $at, 255
+/* 0BE428 800BD828 90A60001 */  lbu   $a2, 1($a1)
+/* 0BE42C 800BD82C 248200B0 */  addiu $v0, $a0, 0xb0
+/* 0BE430 800BD830 54C10004 */  bnel  $a2, $at, .L800BD844
+/* 0BE434 800BD834 8CAE0048 */   lw    $t6, 0x48($a1)
+/* 0BE438 800BD838 8CAD004C */  lw    $t5, 0x4c($a1)
+/* 0BE43C 800BD83C 85A6001C */  lh    $a2, 0x1c($t5)
+/* 0BE440 800BD840 8CAE0048 */  lw    $t6, 0x48($a1)
+.L800BD844:
+/* 0BE444 800BD844 28C10080 */  slti  $at, $a2, 0x80
+/* 0BE448 800BD848 14200005 */  bnez  $at, .L800BD860
+/* 0BE44C 800BD84C AC4E000C */   sw    $t6, 0xc($v0)
+/* 0BE450 800BD850 90580001 */  lbu   $t8, 1($v0)
+/* 0BE454 800BD854 37190002 */  ori   $t9, $t8, 2
+/* 0BE458 800BD858 10000004 */  b     .L800BD86C
+/* 0BE45C 800BD85C A0590001 */   sb    $t9, 1($v0)
+.L800BD860:
+/* 0BE460 800BD860 90480001 */  lbu   $t0, 1($v0)
+/* 0BE464 800BD864 3109FFFD */  andi  $t1, $t0, 0xfffd
+/* 0BE468 800BD868 A0490001 */  sb    $t1, 1($v0)
+.L800BD86C:
+/* 0BE46C 800BD86C 8C4A0000 */  lw    $t2, ($v0)
+/* 0BE470 800BD870 000A6380 */  sll   $t4, $t2, 0xe
+/* 0BE474 800BD874 05830007 */  bgezl $t4, .L800BD894
+/* 0BE478 800BD878 8CAD004C */   lw    $t5, 0x4c($a1)
+/* 0BE47C 800BD87C AFA2001C */  sw    $v0, 0x1c($sp)
+/* 0BE480 800BD880 0C02F458 */  jal   func_800BD160
+/* 0BE484 800BD884 AFA5003C */   sw    $a1, 0x3c($sp)
+/* 0BE488 800BD888 8FA2001C */  lw    $v0, 0x1c($sp)
+/* 0BE48C 800BD88C 8FA5003C */  lw    $a1, 0x3c($sp)
+/* 0BE490 800BD890 8CAD004C */  lw    $t5, 0x4c($a1)
+.L800BD894:
+/* 0BE494 800BD894 904B0000 */  lbu   $t3, ($v0)
+/* 0BE498 800BD898 91AE0006 */  lbu   $t6, 6($t5)
+/* 0BE49C 800BD89C 316CFFFD */  andi  $t4, $t3, 0xfffd
+/* 0BE4A0 800BD8A0 904B0001 */  lbu   $t3, 1($v0)
+/* 0BE4A4 800BD8A4 A04E0002 */  sb    $t6, 2($v0)
+/* 0BE4A8 800BD8A8 8CAF004C */  lw    $t7, 0x4c($a1)
+/* 0BE4AC 800BD8AC 8DF80000 */  lw    $t8, ($t7)
+/* 0BE4B0 800BD8B0 0018C940 */  sll   $t9, $t8, 5
+/* 0BE4B4 800BD8B4 001947C2 */  srl   $t0, $t9, 0x1f
+/* 0BE4B8 800BD8B8 00084840 */  sll   $t1, $t0, 1
+/* 0BE4BC 800BD8BC 312A0002 */  andi  $t2, $t1, 2
+/* 0BE4C0 800BD8C0 014C6825 */  or    $t5, $t2, $t4
+/* 0BE4C4 800BD8C4 A04D0000 */  sb    $t5, ($v0)
+/* 0BE4C8 800BD8C8 8CAE004C */  lw    $t6, 0x4c($a1)
+/* 0BE4CC 800BD8CC 316AFF1F */  andi  $t2, $t3, 0xff1f
+/* 0BE4D0 800BD8D0 91CF0007 */  lbu   $t7, 7($t6)
+/* 0BE4D4 800BD8D4 31F90003 */  andi  $t9, $t7, 3
+/* 0BE4D8 800BD8D8 00194940 */  sll   $t1, $t9, 5
+/* 0BE4DC 800BD8DC 012A6025 */  or    $t4, $t1, $t2
+/* 0BE4E0 800BD8E0 A04C0001 */  sb    $t4, 1($v0)
+/* 0BE4E4 800BD8E4 8FBF0014 */  lw    $ra, 0x14($sp)
+/* 0BE4E8 800BD8E8 27BD0038 */  addiu $sp, $sp, 0x38
+/* 0BE4EC 800BD8EC 03E00008 */  jr    $ra
+/* 0BE4F0 800BD8F0 00000000 */   nop   
