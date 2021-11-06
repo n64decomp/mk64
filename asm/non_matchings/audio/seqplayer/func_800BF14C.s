@@ -1,0 +1,19 @@
+glabel func_800BF14C
+/* 0BFD4C 800BF14C 8C820000 */  lw    $v0, ($a0)
+/* 0BFD50 800BF150 90430000 */  lbu   $v1, ($v0)
+/* 0BFD54 800BF154 244E0001 */  addiu $t6, $v0, 1
+/* 0BFD58 800BF158 AC8E0000 */  sw    $t6, ($a0)
+/* 0BFD5C 800BF15C 306F0080 */  andi  $t7, $v1, 0x80
+/* 0BFD60 800BF160 11E00009 */  beqz  $t7, .L800BF188
+/* 0BFD64 800BF164 00602825 */   move  $a1, $v1
+/* 0BFD68 800BF168 91C80000 */  lbu   $t0, ($t6)
+/* 0BFD6C 800BF16C 00051A00 */  sll   $v1, $a1, 8
+/* 0BFD70 800BF170 30797F00 */  andi  $t9, $v1, 0x7f00
+/* 0BFD74 800BF174 01191825 */  or    $v1, $t0, $t9
+/* 0BFD78 800BF178 3069FFFF */  andi  $t1, $v1, 0xffff
+/* 0BFD7C 800BF17C 25CA0001 */  addiu $t2, $t6, 1
+/* 0BFD80 800BF180 AC8A0000 */  sw    $t2, ($a0)
+/* 0BFD84 800BF184 01201825 */  move  $v1, $t1
+.L800BF188:
+/* 0BFD88 800BF188 03E00008 */  jr    $ra
+/* 0BFD8C 800BF18C 00601025 */   move  $v0, $v1

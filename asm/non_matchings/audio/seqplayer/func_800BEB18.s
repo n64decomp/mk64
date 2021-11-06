@@ -1,0 +1,17 @@
+glabel func_800BEB18
+/* 0BF718 800BEB18 27BDFFE8 */  addiu $sp, $sp, -0x18
+/* 0BF71C 800BEB1C 10800009 */  beqz  $a0, .L800BEB44
+/* 0BF720 800BEB20 AFBF0014 */   sw    $ra, 0x14($sp)
+/* 0BF724 800BEB24 0C02F448 */  jal   func_800BD120
+/* 0BF728 800BEB28 AFA40018 */   sw    $a0, 0x18($sp)
+/* 0BF72C 800BEB2C 8FA40018 */  lw    $a0, 0x18($sp)
+/* 0BF730 800BEB30 908E0000 */  lbu   $t6, ($a0)
+/* 0BF734 800BEB34 31D9FF7F */  andi  $t9, $t6, 0xff7f
+/* 0BF738 800BEB38 37280040 */  ori   $t0, $t9, 0x40
+/* 0BF73C 800BEB3C A0990000 */  sb    $t9, ($a0)
+/* 0BF740 800BEB40 A0880000 */  sb    $t0, ($a0)
+.L800BEB44:
+/* 0BF744 800BEB44 8FBF0014 */  lw    $ra, 0x14($sp)
+/* 0BF748 800BEB48 27BD0018 */  addiu $sp, $sp, 0x18
+/* 0BF74C 800BEB4C 03E00008 */  jr    $ra
+/* 0BF750 800BEB50 00000000 */   nop   

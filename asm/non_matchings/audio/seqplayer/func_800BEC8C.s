@@ -1,0 +1,80 @@
+glabel func_800BEC8C
+/* 0BF88C 800BEC8C 27BDFFC0 */  addiu $sp, $sp, -0x40
+/* 0BF890 800BEC90 AFBE0038 */  sw    $fp, 0x38($sp)
+/* 0BF894 800BEC94 AFB70034 */  sw    $s7, 0x34($sp)
+/* 0BF898 800BEC98 AFB60030 */  sw    $s6, 0x30($sp)
+/* 0BF89C 800BEC9C AFB30024 */  sw    $s3, 0x24($sp)
+/* 0BF8A0 800BECA0 AFB1001C */  sw    $s1, 0x1c($sp)
+/* 0BF8A4 800BECA4 AFA50044 */  sw    $a1, 0x44($sp)
+/* 0BF8A8 800BECA8 30AEFFFF */  andi  $t6, $a1, 0xffff
+/* 0BF8AC 800BECAC 3C17803B */  lui   $s7, %hi(D_803B5EF0) # $s7, 0x803b
+/* 0BF8B0 800BECB0 3C1E803B */  lui   $fp, %hi(D_803B7198) # $fp, 0x803b
+/* 0BF8B4 800BECB4 01C02825 */  move  $a1, $t6
+/* 0BF8B8 800BECB8 00808825 */  move  $s1, $a0
+/* 0BF8BC 800BECBC AFBF003C */  sw    $ra, 0x3c($sp)
+/* 0BF8C0 800BECC0 AFB5002C */  sw    $s5, 0x2c($sp)
+/* 0BF8C4 800BECC4 AFB40028 */  sw    $s4, 0x28($sp)
+/* 0BF8C8 800BECC8 AFB20020 */  sw    $s2, 0x20($sp)
+/* 0BF8CC 800BECCC AFB00018 */  sw    $s0, 0x18($sp)
+/* 0BF8D0 800BECD0 27DE7198 */  addiu $fp, %lo(D_803B7198) # addiu $fp, $fp, 0x7198
+/* 0BF8D4 800BECD4 26F75EF0 */  addiu $s7, %lo(D_803B5EF0) # addiu $s7, $s7, 0x5ef0
+/* 0BF8D8 800BECD8 00009825 */  move  $s3, $zero
+/* 0BF8DC 800BECDC 24160001 */  li    $s6, 1
+.L800BECE0:
+/* 0BF8E0 800BECE0 30AF0001 */  andi  $t7, $a1, 1
+/* 0BF8E4 800BECE4 11E00022 */  beqz  $t7, .L800BED70
+/* 0BF8E8 800BECE8 00A0A825 */   move  $s5, $a1
+/* 0BF8EC 800BECEC 0013C080 */  sll   $t8, $s3, 2
+/* 0BF8F0 800BECF0 02389021 */  addu  $s2, $s1, $t8
+/* 0BF8F4 800BECF4 8E500030 */  lw    $s0, 0x30($s2)
+/* 0BF8F8 800BECF8 02E0A025 */  move  $s4, $s7
+/* 0BF8FC 800BECFC 0217C826 */  xor   $t9, $s0, $s7
+/* 0BF900 800BED00 0019C82B */  sltu  $t9, $zero, $t9
+/* 0BF904 800BED04 16D90007 */  bne   $s6, $t9, .L800BED24
+/* 0BF908 800BED08 00000000 */   nop   
+/* 0BF90C 800BED0C 8E080044 */  lw    $t0, 0x44($s0)
+/* 0BF910 800BED10 16280004 */  bne   $s1, $t0, .L800BED24
+/* 0BF914 800BED14 00000000 */   nop   
+/* 0BF918 800BED18 0C02FAE9 */  jal   func_800BEBA4
+/* 0BF91C 800BED1C 02002025 */   move  $a0, $s0
+/* 0BF920 800BED20 AE000044 */  sw    $zero, 0x44($s0)
+.L800BED24:
+/* 0BF924 800BED24 0C02FB04 */  jal   func_800BEC10
+/* 0BF928 800BED28 00000000 */   nop   
+/* 0BF92C 800BED2C 14540006 */  bne   $v0, $s4, .L800BED48
+/* 0BF930 800BED30 00408025 */   move  $s0, $v0
+/* 0BF934 800BED34 3C010001 */  lui   $at, 1
+/* 0BF938 800BED38 02615021 */  addu  $t2, $s3, $at
+/* 0BF93C 800BED3C AFCA0000 */  sw    $t2, ($fp)
+/* 0BF940 800BED40 1000000B */  b     .L800BED70
+/* 0BF944 800BED44 AE420030 */   sw    $v0, 0x30($s2)
+.L800BED48:
+/* 0BF948 800BED48 0C02FA3C */  jal   func_800BE8F0
+/* 0BF94C 800BED4C 02002025 */   move  $a0, $s0
+/* 0BF950 800BED50 AE500030 */  sw    $s0, 0x30($s2)
+/* 0BF954 800BED54 AE110044 */  sw    $s1, 0x44($s0)
+/* 0BF958 800BED58 922B0005 */  lbu   $t3, 5($s1)
+/* 0BF95C 800BED5C A20B0006 */  sb    $t3, 6($s0)
+/* 0BF960 800BED60 922C0003 */  lbu   $t4, 3($s1)
+/* 0BF964 800BED64 A20C0003 */  sb    $t4, 3($s0)
+/* 0BF968 800BED68 922D0002 */  lbu   $t5, 2($s1)
+/* 0BF96C 800BED6C A20D0002 */  sb    $t5, 2($s0)
+.L800BED70:
+/* 0BF970 800BED70 00152843 */  sra   $a1, $s5, 1
+/* 0BF974 800BED74 26730001 */  addiu $s3, $s3, 1
+/* 0BF978 800BED78 24010010 */  li    $at, 16
+/* 0BF97C 800BED7C 30AEFFFF */  andi  $t6, $a1, 0xffff
+/* 0BF980 800BED80 1661FFD7 */  bne   $s3, $at, .L800BECE0
+/* 0BF984 800BED84 01C02825 */   move  $a1, $t6
+/* 0BF988 800BED88 8FBF003C */  lw    $ra, 0x3c($sp)
+/* 0BF98C 800BED8C 8FB00018 */  lw    $s0, 0x18($sp)
+/* 0BF990 800BED90 8FB1001C */  lw    $s1, 0x1c($sp)
+/* 0BF994 800BED94 8FB20020 */  lw    $s2, 0x20($sp)
+/* 0BF998 800BED98 8FB30024 */  lw    $s3, 0x24($sp)
+/* 0BF99C 800BED9C 8FB40028 */  lw    $s4, 0x28($sp)
+/* 0BF9A0 800BEDA0 8FB5002C */  lw    $s5, 0x2c($sp)
+/* 0BF9A4 800BEDA4 8FB60030 */  lw    $s6, 0x30($sp)
+/* 0BF9A8 800BEDA8 8FB70034 */  lw    $s7, 0x34($sp)
+/* 0BF9AC 800BEDAC 8FBE0038 */  lw    $fp, 0x38($sp)
+/* 0BF9B0 800BEDB0 03E00008 */  jr    $ra
+/* 0BF9B4 800BEDB4 27BD0040 */   addiu $sp, $sp, 0x40
