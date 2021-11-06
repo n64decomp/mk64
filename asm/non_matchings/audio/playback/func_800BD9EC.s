@@ -1,0 +1,24 @@
+glabel func_800BD9EC
+/* 0BE5EC 800BD9EC 27BDFFE0 */  addiu $sp, $sp, -0x20
+/* 0BE5F0 800BD9F0 AFBF0014 */  sw    $ra, 0x14($sp)
+/* 0BE5F4 800BD9F4 AFA40020 */  sw    $a0, 0x20($sp)
+/* 0BE5F8 800BD9F8 AFA50024 */  sw    $a1, 0x24($sp)
+/* 0BE5FC 800BD9FC 8CAF004C */  lw    $t7, 0x4c($a1)
+/* 0BE600 800BDA00 24840030 */  addiu $a0, $a0, 0x30
+/* 0BE604 800BDA04 0C02F5C8 */  jal   func_800BD720
+/* 0BE608 800BDA08 91E50005 */   lbu   $a1, 5($t7)
+/* 0BE60C 800BDA0C 10400008 */  beqz  $v0, .L800BDA30
+/* 0BE610 800BDA10 AFA2001C */   sw    $v0, 0x1c($sp)
+/* 0BE614 800BDA14 00402025 */  move  $a0, $v0
+/* 0BE618 800BDA18 0C02F63D */  jal   func_800BD8F4
+/* 0BE61C 800BDA1C 8FA50024 */   lw    $a1, 0x24($sp)
+/* 0BE620 800BDA20 8FA40020 */  lw    $a0, 0x20($sp)
+/* 0BE624 800BDA24 8FA5001C */  lw    $a1, 0x1c($sp)
+/* 0BE628 800BDA28 0C02FC01 */  jal   func_800BF004
+/* 0BE62C 800BDA2C 24840020 */   addiu $a0, $a0, 0x20
+.L800BDA30:
+/* 0BE630 800BDA30 8FBF0014 */  lw    $ra, 0x14($sp)
+/* 0BE634 800BDA34 8FA2001C */  lw    $v0, 0x1c($sp)
+/* 0BE638 800BDA38 27BD0020 */  addiu $sp, $sp, 0x20
+/* 0BE63C 800BDA3C 03E00008 */  jr    $ra
+/* 0BE640 800BDA40 00000000 */   nop   
