@@ -338,8 +338,8 @@ GLOBAL_ASM("asm/non_matchings/code_8001F980/func_80020000.s")
 ? func_80027560(s32, s8, s8, s8, s32); // extern
 ? func_8006E5AC(Player *, ?, ?); // extern
 extern s32 D_800DDB58;
-extern OSMesgQueue D_8014EF58;
-extern void *D_8014F098;
+extern OSMesgQueue gDmaMesgQueue;
+extern void *gMainReceivedMesg;
 extern ? D_80164AAE;
 extern s16 D_80164AB0;
 extern ? D_80164ABE;
@@ -377,7 +377,7 @@ void func_80020524(void) {
         func_8006E5AC(D_800DC4F4, 6, 0);
         func_8006E5AC(D_800DC4F8, 7, 0);
     }
-    osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
     phi_s0 = 1;
     if (D_800DDB58 >= 2) {
         do {
@@ -391,7 +391,7 @@ void func_80020524(void) {
             temp_v1_3 = temp_s1->unk-2;
             temp_a2 = *(&D_801651D0[temp_v0_3] + (temp_v1_3 * 2));
             mio0decode(D_802DFB80 + (temp_a2 * 0x9200) + (temp_v0_3 * 0x4900) + (temp_v1_3 * 0x920), &D_802BFB80[(temp_a2 << 0x10) + (temp_v0_3 << 0xF) + (temp_v1_3 << 0xC)]);
-            osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
             temp_s0 = phi_s0 + 1;
             phi_s0 = temp_s0;
         } while (temp_s0 < D_800DDB58);
@@ -411,8 +411,8 @@ GLOBAL_ASM("asm/non_matchings/code_8001F980/func_80020524.s")
 ? func_80027560(s32, s8, s8, s8, s32); // extern
 ? func_8006E634(Player *, ?, ?); // extern
 extern s32 D_800DDB58;
-extern OSMesgQueue D_8014EF58;
-extern void *D_8014F098;
+extern OSMesgQueue gDmaMesgQueue;
+extern void *gMainReceivedMesg;
 extern ? D_80164AAE;
 extern s16 D_80164AB0;
 extern ? D_80164ABE;
@@ -450,7 +450,7 @@ void func_8002088C(void) {
         func_8006E634(D_800DC4F4, 6, 1);
         func_8006E634(D_800DC4F8, 7, 1);
     }
-    osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
     phi_s0 = 1;
     if (D_800DDB58 >= 2) {
         do {
@@ -464,7 +464,7 @@ void func_8002088C(void) {
             temp_v1_3 = temp_s1->unk-2;
             temp_a2 = *(&D_801651D0[temp_v0_3] + (temp_v1_3 * 2));
             mio0decode(D_802DFB80 + (temp_a2 * 0x9200) + (temp_v0_3 * 0x4900) + (temp_v1_3 * 0x920), &D_802BFB80[(temp_a2 << 0x10) + (temp_v0_3 << 0xF) + (temp_v1_3 << 0xC)]);
-            osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
             temp_s0 = phi_s0 + 1;
             phi_s0 = temp_s0;
         } while (temp_s0 < D_800DDB58);
@@ -484,8 +484,8 @@ GLOBAL_ASM("asm/non_matchings/code_8001F980/func_8002088C.s")
 ? func_80027560(s32, s8, s8, s8, s32); // extern
 ? func_8006E6BC(Player *, ?, ?); // extern
 extern s32 D_800DDB58;
-extern OSMesgQueue D_8014EF58;
-extern void *D_8014F098;
+extern OSMesgQueue gDmaMesgQueue;
+extern void *gMainReceivedMesg;
 extern ? D_80164AAE;
 extern s16 D_80164AB0;
 extern ? D_80164ABE;
@@ -517,7 +517,7 @@ void func_80020BF4(void) {
     func_8006E6BC(D_800DC4E0, 1, 2);
     func_8006E6BC(D_800DC4E4, 2, 2);
     func_8006E6BC(D_800DC4E8, 3, 2);
-    osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
     phi_s0 = 1;
     if (D_800DDB58 >= 2) {
         do {
@@ -531,7 +531,7 @@ void func_80020BF4(void) {
             temp_v1_3 = temp_s1->unk-2;
             temp_a2 = *(&D_801651D0[temp_v0_3] + (temp_v1_3 * 2));
             mio0decode((D_802DFB80 + (temp_a2 * 0x9200) + (temp_v0_3 * 0x4900) + (temp_v1_3 * 0x920)) - 0x6D80, &D_802BFB80[(temp_a2 << 0x10) + (temp_v0_3 << 0xF) + (temp_v1_3 << 0xC) + 0xFFFF4000]);
-            osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
             temp_s0 = phi_s0 + 1;
             phi_s0 = temp_s0;
         } while (temp_s0 < D_800DDB58);
@@ -551,8 +551,8 @@ GLOBAL_ASM("asm/non_matchings/code_8001F980/func_80020BF4.s")
 ? func_80027560(s32, s8, s8, s8, s32); // extern
 ? func_8006E744(Player *, ?, ?); // extern
 extern s32 D_800DDB58;
-extern OSMesgQueue D_8014EF58;
-extern void *D_8014F098;
+extern OSMesgQueue gDmaMesgQueue;
+extern void *gMainReceivedMesg;
 extern ? D_80164AAE;
 extern s16 D_80164AB0;
 extern ? D_80164ABE;
@@ -584,7 +584,7 @@ void func_80020F1C(void) {
     func_8006E744(D_800DC4E0, 1, 3);
     func_8006E744(D_800DC4E4, 2, 3);
     func_8006E744(D_800DC4E8, 3, 3);
-    osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
     phi_s0 = 1;
     if (D_800DDB58 >= 2) {
         do {
@@ -598,7 +598,7 @@ void func_80020F1C(void) {
             temp_v1_3 = temp_s1->unk-2;
             temp_a2 = *(&D_801651D0[temp_v0_3] + (temp_v1_3 * 2));
             mio0decode((D_802DFB80 + (temp_a2 * 0x9200) + (temp_v0_3 * 0x4900) + (temp_v1_3 * 0x920)) - 0x6D80, &D_802BFB80[(temp_a2 << 0x10) + (temp_v0_3 << 0xF) + (temp_v1_3 << 0xC) + 0xFFFF4000]);
-            osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
             temp_s0 = phi_s0 + 1;
             phi_s0 = temp_s0;
         } while (temp_s0 < D_800DDB58);
@@ -3187,7 +3187,7 @@ GLOBAL_ASM("asm/non_matchings/code_8001F980/func_800262E0.s")
 ? func_80025DE8(Player *, s8, s8, s8); // extern
 ? func_800262E0(Player *, s8, s8, s8); // extern
 ? func_80026B4C(s8, s8, s8); // extern
-extern OSMesgQueue D_8014EF58;
+extern OSMesgQueue gDmaMesgQueue;
 extern ? D_801651D1;
 
 void func_800267AC(Player *player, s8 arg1, s8 arg2) {
@@ -3225,7 +3225,7 @@ void func_800267AC(Player *player, s8 arg1, s8 arg2) {
     } else {
         func_800256F4(player, arg1, arg2, sp2F);
     }
-    osRecvMesg(&D_8014EF58, &sp34, 1);
+    osRecvMesg(&gDmaMesgQueue, &sp34, 1);
     if ((sp28 == (player->unk_002 & sp28)) && (player->unk_0F8 == 9) && ((player->unk_0CA & 1) != 1) && (player->unk_124 <= 30.0f)) {
         func_800262E0(player, arg1, arg2, sp2F);
     }

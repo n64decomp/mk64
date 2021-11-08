@@ -25,6 +25,13 @@ struct VblankHandler
     OSMesg msg;
 };
 
+struct D_80150158 {
+    s16 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+};
+
 struct Controller {
     s16 rawStickX;
     s16 rawStickY;

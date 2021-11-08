@@ -12,6 +12,12 @@ uintptr_t set_segment_base_addr(s32 segment, void *addr);
 void *get_segment_base_addr(s32 segment);
 s32 lookup_item(u32 segment);
 
+struct AllocOnlyPool {
+    s32 totalSpace;
+    s32 usedSpace;
+    u8 *startPtr;
+    u8 *freePtr;
+};
 
 
 #endif // MEMORY_H

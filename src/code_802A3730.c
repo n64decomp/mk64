@@ -1075,7 +1075,7 @@ GLOBAL_ASM("asm/non_matchings/code_802A3730/func_802A52BC.s")
 ? func_802A41D4(); // extern
 ? func_802A487C(? *, struct UnkStruct_800DC5EC *, ?, ?, f32 *); // extern
 ? func_802A4A0C(? *, struct UnkStruct_800DC5EC *, ?, ?, f32 *); // extern
-? func_802A7C08(); // extern
+? move_segment_table_to_dmem(); // extern
 extern ? D_802B8890;
 extern void *gDisplayListHead;
 
@@ -1083,7 +1083,7 @@ void func_802A53A4(void) {
     void *temp_v0;
     void *temp_v0_2;
 
-    func_802A7C08();
+    move_segment_table_to_dmem();
     func_802A3E3C();
     func_802A3730(D_800DC5EC);
     temp_v0 = gDisplayListHead;

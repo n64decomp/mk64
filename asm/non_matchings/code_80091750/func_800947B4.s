@@ -4,7 +4,7 @@ glabel func_800947B4
 /* 0953BC 800947BC AFB10030 */  sw    $s1, 0x30($sp)
 /* 0953C0 800947C0 00808825 */  move  $s1, $a0
 /* 0953C4 800947C4 AFB0002C */  sw    $s0, 0x2c($sp)
-/* 0953C8 800947C8 0C0A9F02 */  jal   func_802A7C08
+/* 0953C8 800947C8 0C0A9F02 */  jal   move_segment_table_to_dmem
 /* 0953CC 800947CC AFA50084 */   sw    $a1, 0x84($sp)
 /* 0953D0 800947D0 3C0142C8 */  li    $at, 0x42C80000 # 100.000000
 /* 0953D4 800947D4 44812000 */  mtc1  $at, $f4

@@ -12,8 +12,8 @@ glabel dma_copy_base_7fa3c0
 /* 099CB0 800990B0 8FA8004C */  lw    $t0, 0x4c($sp)
 /* 099CB4 800990B4 3421FFFF */  ori   $at, (0x00FFFFFF & 0xFFFF) # ori $at, $at, 0xffff
 /* 099CB8 800990B8 3C180080 */  lui   $t8, %hi(_textures_0bSegmentRomStart) # $t8, 0x80
-/* 099CBC 800990BC 3C098015 */  lui   $t1, %hi(D_8014EF58) # $t1, 0x8015
-/* 099CC0 800990C0 2529EF58 */  addiu $t1, %lo(D_8014EF58) # addiu $t1, $t1, -0x10a8
+/* 099CBC 800990BC 3C098015 */  lui   $t1, %hi(gDmaMesgQueue) # $t1, 0x8015
+/* 099CC0 800990C0 2529EF58 */  addiu $t1, %lo(gDmaMesgQueue) # addiu $t1, $t1, -0x10a8
 /* 099CC4 800990C4 2718A3C0 */  addiu $t8, %lo(_textures_0bSegmentRomStart) # addiu $t8, $t8, -0x5c40
 /* 099CC8 800990C8 01C17824 */  and   $t7, $t6, $at
 /* 099CCC 800990CC 01F83821 */  addu  $a3, $t7, $t8
@@ -24,8 +24,8 @@ glabel dma_copy_base_7fa3c0
 /* 099CE0 800990E0 AFB90010 */  sw    $t9, 0x10($sp)
 /* 099CE4 800990E4 0C03370C */  jal   osPiStartDma
 /* 099CE8 800990E8 AFA80014 */   sw    $t0, 0x14($sp)
-/* 099CEC 800990EC 3C048015 */  lui   $a0, %hi(D_8014EF58) # $a0, 0x8015
-/* 099CF0 800990F0 2484EF58 */  addiu $a0, %lo(D_8014EF58) # addiu $a0, $a0, -0x10a8
+/* 099CEC 800990EC 3C048015 */  lui   $a0, %hi(gDmaMesgQueue) # $a0, 0x8015
+/* 099CF0 800990F0 2484EF58 */  addiu $a0, %lo(gDmaMesgQueue) # addiu $a0, $a0, -0x10a8
 /* 099CF4 800990F4 27A5002C */  addiu $a1, $sp, 0x2c
 /* 099CF8 800990F8 0C0335D4 */  jal   osRecvMesg
 /* 099CFC 800990FC 24060001 */   li    $a2, 1

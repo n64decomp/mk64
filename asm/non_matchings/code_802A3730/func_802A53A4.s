@@ -1,7 +1,7 @@
 glabel func_802A53A4
 /* 10E9B4 802A53A4 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 10E9B8 802A53A8 AFBF001C */  sw    $ra, 0x1c($sp)
-/* 10E9BC 802A53AC 0C0A9F02 */  jal   func_802A7C08
+/* 10E9BC 802A53AC 0C0A9F02 */  jal   move_segment_table_to_dmem
 /* 10E9C0 802A53B0 00000000 */   nop   
 /* 10E9C4 802A53B4 0C0A8F8F */  jal   func_802A3E3C
 /* 10E9C8 802A53B8 00000000 */   nop   

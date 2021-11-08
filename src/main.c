@@ -14,7 +14,7 @@
 void func_8008C214(void);
 void func_80091B78(void);
 void func_802A4D18(void);
-void func_802A7C08(void);
+void move_segment_table_to_dmem(void);
 void func_802A3E3C(void);
 void func_802A4160(void);
 void func_802A41D4(void);
@@ -84,15 +84,15 @@ struct GfxPool *gGfxPool;
 s32 gfxPool_padding; // is this necessary?
 struct VblankHandler D_8014EF48;
 struct VblankHandler sSoundVblankHandler;
-OSMesgQueue D_8014EF58, D_8014EF70, D_8014EF88, unused_gMsgQueue, gIntrMesgQueue, D_8014EFD0;
+OSMesgQueue gDmaMesgQueue, D_8014EF70, D_8014EF88, unused_gMsgQueue, gIntrMesgQueue, D_8014EFD0;
 OSMesgQueue sSoundMesgQueue;
 OSMesg sSoundMesgBuf;
 OSMesg D_8014F004, D_8014F008;
 OSMesg D_8014F00C[1];
 UNUSED OSMesg D_8014F010, D_8014F014;
 OSMesg D_8014F018[16], D_8014F058[16];
-OSMesg D_8014F098;
-OSIoMesg D_8014F0A0;
+OSMesg gMainReceivedMesg;
+OSIoMesg gDmaIoMesg;
 OSMesgQueue gSIEventMesgQueue;
 OSMesg gSIEventMesgBuf[3];
 
@@ -124,11 +124,12 @@ f32 D_8015014C;
 f32 D_80150150;
 UNUSED f32 D_80150154;
 
-s32 D_80150158[63];
+struct D_80150158 gD_80150158[16];
 uintptr_t gSegmentTable[16];
 Gfx *gDisplayListHead;
 struct SPTask *gGfxSPTask;
-s32 D_801502A0[2];
+s32 D_801502A0;
+s32 D_801502A4;
 uintptr_t gPhysicalFramebuffers[3];
 u32 D_801502B4;
 UNUSED u32 D_801502B8;
@@ -290,7 +291,7 @@ void thread1_idle(void *arg0) {
 }
 
 void setup_mesg_queues(void) {
-    osCreateMesgQueue(&D_8014EF58, &D_8014F004, 1);
+    osCreateMesgQueue(&gDmaMesgQueue, &D_8014F004, 1);
     osCreateMesgQueue(&D_8014EFD0, &D_8014F058, 0x10);
     osCreateMesgQueue(&gIntrMesgQueue, &D_8014F018, 0x10);
     osViSetEvent(&gIntrMesgQueue, (OSMesg) 0x66, 1);
@@ -430,7 +431,7 @@ void send_display_list(struct SPTask *spTask) {
 }
 
 void func_80000CA8(void) {
-    func_802A7C08();
+    move_segment_table_to_dmem();
     func_802A3E3C();
     func_802A4160();
     func_802A41D4();
@@ -484,13 +485,13 @@ void config_gfx_pool(void) {
 
 void display_and_vsync(void) {
     profiler_log_thread5_time(2);
-    osRecvMesg(&D_8014EF88, &D_8014F098, 1);
+    osRecvMesg(&D_8014EF88, &gMainReceivedMesg, 1);
     send_display_list(&gGfxPool->spTask);
     profiler_log_thread5_time(3);
-    osRecvMesg(&D_8014EF70, &D_8014F098, 1);
+    osRecvMesg(&D_8014EF70, &gMainReceivedMesg, 1);
     osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
     profiler_log_thread5_time(4);
-    osRecvMesg(&D_8014EF70, &D_8014F098, 1);
+    osRecvMesg(&D_8014EF70, &gMainReceivedMesg, 1);
     func_800046AC(gPhysicalFramebuffers[sRenderedFramebuffer]);
     if (++sRenderedFramebuffer == 3) {
         sRenderedFramebuffer = 0;
@@ -521,15 +522,15 @@ void dma_copy(u8 *dest, u8 *arg1, u32 size) {
 
     osInvalDCache(dest, size);
     while(size > 0x100) {
-        osPiStartDma(&D_8014F0A0, 0, 0, (unsigned long)arg1, dest, 0x100, &D_8014EF58);
-        osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+        osPiStartDma(&gDmaIoMesg, 0, 0, arg1, dest, 0x100, &gDmaMesgQueue);
+        osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
         size -= 0x100;
         arg1 += 0x100;
         dest += 0x100;
     }
     if (size != 0) {
-        osPiStartDma(&D_8014F0A0, 0, 0, (unsigned long)arg1, dest, size, &D_8014EF58);
-        osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+        osPiStartDma(&gDmaIoMesg, 0, 0, arg1, dest, size, &gDmaMesgQueue);
+        osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
     }
 }
 
@@ -548,14 +549,14 @@ void init_game(void) {
     func_802A7CF0(&D_801978D0, 0x80242F00);
     func_80000BEC();
     osInvalDCache(SEG_802BA370, 0x5810);
-    osPiStartDma(&D_8014F0A0, 0, 0, &_data_802BA370SegmentRomStart, SEG_802BA370, 0x5810, &D_8014EF58);
-    osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+    osPiStartDma(&gDmaIoMesg, 0, 0, &_data_802BA370SegmentRomStart, SEG_802BA370, 0x5810, &gDmaMesgQueue);
+    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
     set_segment_base_addr(2, func_802A7D70(&_data_segment2SegmentRomStart, &_data_segment2SegmentRomEnd));
     sp2C = (u32)&_common_texturesSegmentRomEnd - (u32)&_common_texturesSegmentRomStart;
     sp2C = ALIGN16(sp2C);
     texture_seg = SEG_8028DF00-sp2C;
-    osPiStartDma(&D_8014F0A0, 0, 0, &_common_texturesSegmentRomStart, texture_seg, sp2C, &D_8014EF58);
-    osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+    osPiStartDma(&gDmaIoMesg, 0, 0, &_common_texturesSegmentRomStart, texture_seg, sp2C, &gDmaMesgQueue);
+    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
 	
     sp40 = *(u32 *)(texture_seg + 4);
     sp40 = ALIGN16(sp40);
@@ -688,7 +689,7 @@ void func_8000142C(void) {
                 func_8005A070();
                 profiler_log_thread5_time(1);
                 sNumVBlanks = 0;
-                func_802A7C08();
+                move_segment_table_to_dmem();
                 func_802A3E3C();
                 if (D_800DC5B0 != 0) {
                     func_802A41D4();
@@ -734,7 +735,7 @@ void func_8000142C(void) {
             profiler_log_thread5_time(1);
             sNumVBlanks = (u16)0;
             func_8005A070();
-            func_802A7C08();
+            move_segment_table_to_dmem();
             func_802A3E3C();
             if (D_800DC5B0 != 0) {
                 func_802A41D4();
@@ -805,7 +806,7 @@ void func_8000142C(void) {
         func_8005A070();
         sNumVBlanks = 0;
         profiler_log_thread5_time(1);
-        func_802A7C08();
+        move_segment_table_to_dmem();
         func_802A3E3C();
         if (D_800DC5B0 != 0) {
             func_802A41D4();

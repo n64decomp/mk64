@@ -311,6 +311,8 @@ SECTIONS
       BUILD_DIR/src/code_802B0210.o(.text);
       BUILD_DIR/src/math_util.o(.text);
       BUILD_DIR/data/data_121DA0.o(.data);
+      BUILD_DIR/src/memory.o(.data);
+      BUILD_DIR/data/data_121DA0_1.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);
       BUILD_DIR/data/data_121DA0_2.o(.data);
       //BUILD_DIR/src/code_8028DF00.o(.rodata);
@@ -320,6 +322,8 @@ SECTIONS
    	BEGIN_NOLOAD(code_8028DF00) {
         BUILD_DIR/src/code_8028DF00.o(.bss);
         BUILD_DIR/asm/bss_8028DF00.o(.bss);
+        BUILD_DIR/src/memory.o(.bss);
+        BUILD_DIR/asm/bss_sptask_audio.o(.bss);
 	   }
 	   END_NOLOAD(code_8028DF00)
 	
