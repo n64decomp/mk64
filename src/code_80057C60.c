@@ -976,7 +976,7 @@ void func_80059C50(void) {
     phi_v0 = &D_8018CF80;
     do {
         temp_v0 = phi_v0 + 2;
-        temp_v0->unk-2 = D_800DC4DC[*phi_a0].unk_254;
+        temp_v0->unk-2 = D_800DC4DC[*phi_a0].characterId;
         phi_a0 += 2;
         phi_v0 = temp_v0;
     } while (temp_v0 < &D_8018CF90);
@@ -1894,23 +1894,23 @@ void func_8005C980(void) {
         temp_v0_2 = phi_a0_2->unk0;
         phi_t0->unk0 = temp_v0_2;
         if (temp_a1 == 0) {
-            *(&D_8018CF80 + phi_v1) = temp_a3[temp_v0_2].unk_254;
+            *(&D_8018CF80 + phi_v1) = temp_a3[temp_v0_2].characterId;
         }
         temp_a2 = phi_a0_2->unk2;
         phi_t0->unk2 = temp_a2;
         if (temp_a1 == 0) {
-            (&D_8018CF80 + phi_v1)->unk2 = temp_a3[temp_a2].unk_254;
+            (&D_8018CF80 + phi_v1)->unk2 = temp_a3[temp_a2].characterId;
         }
         temp_a2_2 = phi_a0_2->unk4;
         phi_t0->unk4 = temp_a2_2;
         if (temp_a1 == 0) {
-            (&D_8018CF80 + phi_v1)->unk4 = temp_a3[temp_a2_2].unk_254;
+            (&D_8018CF80 + phi_v1)->unk4 = temp_a3[temp_a2_2].characterId;
         }
         temp_a2_3 = phi_a0_2->unk6;
         phi_t0->unk6 = temp_a2_3;
         phi_a0_2 += 8;
         if (temp_a1 == 0) {
-            (&D_8018CF80 + phi_v1)->unk6 = temp_a3[temp_a2_3].unk_254;
+            (&D_8018CF80 + phi_v1)->unk6 = temp_a3[temp_a2_3].characterId;
         }
         temp_t0 = phi_t0 + 8;
         phi_t0 = temp_t0;
@@ -2024,7 +2024,7 @@ void func_8005CB60(s32 arg0, s32 arg1) {
                         D_80165658.unk4 = 0;
                         D_80165658.unk0 = 0;
                     }
-                    temp_a1 = D_800DC4DC[arg0].unk_254;
+                    temp_a1 = D_800DC4DC[arg0].characterId;
                     arg0 = temp_a3;
                     sp20 = temp_v1;
                     func_800C90F4(0, (temp_a1 * 0x10) + 0x2900800D, 1, temp_a3);

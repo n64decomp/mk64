@@ -92,7 +92,7 @@ float D_800E25DC[] = {  // Extra
     310.0, 310.0, 314.0, 314.0, 310.0, 310.0, 314.0, 310.0,
 };
 float D_800E25FC[] = { // Battle mode
-    245.0,    245.0,   245.0,    245.0,   245.0,   245.0,   245.0,  245.0,
+    245.0, 245.0, 245.0, 245.0, 245.0, 245.0, 245.0, 245.0,
 };
 
 struct D_800E261C D_800E261C = {
@@ -421,10 +421,10 @@ float gKartTurnSpeedReductionTable1[] = {
 float gKartTable800E36B0[] = {
     2.0,    2.0,    3.0,    3.0,    1.5,    1.5,    3.0,    3.0,
 };
-float gKartHopHeightTable[] = {
+float gKartHopInitialVelocityTable[] = {
     0.93,   0.93,   0.93,   0.93,   0.93,   0.93,   0.93,   0.93,
 };
-float gKartHopFallSpeedTable[] = {
+float gKartHopJerkTable[] = {
     0.03,   0.03,   0.03,   0.03,   0.03,   0.03,   0.03,   0.03,
 };
 float D_800E3710[] = {

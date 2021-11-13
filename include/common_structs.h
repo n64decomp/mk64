@@ -182,9 +182,9 @@ typedef struct {
     /* 0x00E2 */ s16 unk_0E2;
     /* 0x00E4 */ f32 unk_0E4;
     /* 0x00E8 */ f32 unk_0E8;
-    /* 0x00EC */ f32 unk_0EC;
-    /* 0x00F0 */ f32 unk_0F0;
-    /* 0x00F4 */ f32 unk_0F4;
+    /* 0x00EC */ f32 kartHopVelocity;
+    /* 0x00F0 */ f32 kartHopJerk;
+    /* 0x00F4 */ f32 kartHopAcceleration;
     /* 0x00F8 */ char unk_0F8[0x2];
     /* 0x00FA */ s16 unk_0FA;
     /* 0x00FC */ f32 unk_0FC;
@@ -271,7 +271,7 @@ typedef struct {
     /* 0x0240 */ s32 unk_240;
     /* 0x0244 */ u16 unk_244[4];
     /* 0x0244 */ u16 unk_24C[4];
-    /* 0x0254 */ u16 unk_254;
+    /* 0x0254 */ u16 characterId;
     /* 0x0256 */ s16 unk_256;
     /* 0x0258 */ char unk_258[0xB40];
     /* 0x0D98 */ s16 unk_D98;
