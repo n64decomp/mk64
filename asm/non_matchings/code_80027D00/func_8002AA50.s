@@ -2,16 +2,16 @@ glabel func_8002AA50
 /* 02B650 8002AA50 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 02B654 8002AA54 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 02B658 8002AA58 94820254 */  lhu   $v0, 0x254($a0)
-/* 02B65C 8002AA5C 3C01800E */  lui   $at, %hi(gKartHopFallSpeedTable)
+/* 02B65C 8002AA5C 3C01800E */  lui   $at, %hi(gKartHopJerkTable)
 /* 02B660 8002AA60 44803000 */  mtc1  $zero, $f6
 /* 02B664 8002AA64 00027080 */  sll   $t6, $v0, 2
 /* 02B668 8002AA68 002E0821 */  addu  $at, $at, $t6
-/* 02B66C 8002AA6C C42436F0 */  lwc1  $f4, %lo(gKartHopFallSpeedTable)($at)
-/* 02B670 8002AA70 3C01800E */  lui   $at, %hi(gKartHopHeightTable)
+/* 02B66C 8002AA6C C42436F0 */  lwc1  $f4, %lo(gKartHopJerkTable)($at)
+/* 02B670 8002AA70 3C01800E */  lui   $at, %hi(gKartHopInitialVelocityTable)
 /* 02B674 8002AA74 002E0821 */  addu  $at, $at, $t6
 /* 02B678 8002AA78 E48600F4 */  swc1  $f6, 0xf4($a0)
 /* 02B67C 8002AA7C E48400F0 */  swc1  $f4, 0xf0($a0)
-/* 02B680 8002AA80 C42836D0 */  lwc1  $f8, %lo(gKartHopHeightTable)($at)
+/* 02B680 8002AA80 C42836D0 */  lwc1  $f8, %lo(gKartHopInitialVelocityTable)($at)
 /* 02B684 8002AA84 3C014040 */  li    $at, 0x40400000 # 3.000000
 /* 02B688 8002AA88 8C8F00BC */  lw    $t7, 0xbc($a0)
 /* 02B68C 8002AA8C 44815000 */  mtc1  $at, $f10

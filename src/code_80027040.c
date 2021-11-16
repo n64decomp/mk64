@@ -36,13 +36,13 @@ void func_80027040(Player *player, s8 arg1, s8 arg2, s8 arg3, s32 arg4) {
         // temp_v1 = player + (arg2 * 2);
         if (player->unk_244[arg2] == 0) {
             temp_s0 = (arg4 * 0x9200) + (arg3 * 0x4900) + (arg1 * 0x920) + D_802DFB80;
-            osInvalDCache(temp_s0, D_800DDEB0[player->unk_254]);
-            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureTable0[player->unk_254][player->unk_24C[arg2]][player->unk_244[arg2]] & 0xFFFFFF], temp_s0, D_800DDEB0[temp_v0], &gDmaMesgQueue);
+            osInvalDCache(temp_s0, D_800DDEB0[player->characterId]);
+            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]] & 0xFFFFFF], temp_s0, D_800DDEB0[temp_v0], &gDmaMesgQueue);
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
         } else {
             temp_s0 = (arg4 * 0x9200) + (arg3 * 0x4900) + (arg1 * 0x920) + D_802DFB80;
-            osInvalDCache(temp_s0, D_800DDEB0[player->unk_254]);
-            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureTable1[player->unk_254][player->unk_24C[arg2]][player->unk_244[arg2]] & 0xFFFFFF], temp_s0, D_800DDEB0[temp_v0], &gDmaMesgQueue);
+            osInvalDCache(temp_s0, D_800DDEB0[player->characterId]);
+            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureTable1[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]] & 0xFFFFFF], temp_s0, D_800DDEB0[temp_v0], &gDmaMesgQueue);
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
         }
     }
@@ -53,12 +53,12 @@ void func_80027040(Player *player, s8 arg1, s8 arg2, s8 arg3, s32 arg4) {
         ) {
         temp_s0 = (arg4 * 0x9200) + (arg3 * 0x4900) + (arg1 * 0x920) + D_802DFB80;
         osInvalDCache(temp_s0, 0x780);
-        osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureGroup18s[player->unk_254][player->unk_0A8 >> 8] & 0xFFFFFF], temp_s0, 0x900, &gDmaMesgQueue);
+        osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureGroup18s[player->characterId][player->unk_0A8 >> 8] & 0xFFFFFF], temp_s0, 0x900, &gDmaMesgQueue);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
     } else {
         temp_s0 = (arg4 * 0x9200) + (arg3 * 0x4900) + (arg1 * 0x920) + D_802DFB80;
-        osInvalDCache(temp_s0, D_800DDEB0[player->unk_254]);
-        osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureTable0[player->unk_254][player->unk_24C[arg2]][player->unk_244[arg2]] & 0xFFFFFF], temp_s0, D_800DDEB0[temp_v0], &gDmaMesgQueue);
+        osInvalDCache(temp_s0, D_800DDEB0[player->characterId]);
+        osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]] & 0xFFFFFF], temp_s0, D_800DDEB0[temp_v0], &gDmaMesgQueue);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
     }
 }
@@ -151,12 +151,12 @@ void func_80027A20(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     switch(D_800DC52C) {
         case 0: case 1: case 2:
             osInvalDCache(temp_s0, 0x200);
-            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartPalettes[player->unk_254] & 0x00FFFFFF], temp_s0, 0x200, &gDmaMesgQueue);
+            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartPalettes[player->characterId] & 0x00FFFFFF], temp_s0, 0x200, &gDmaMesgQueue);
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
             break;
         case 3:
             osInvalDCache(temp_s0, 0x200);
-            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartPalettes[player->unk_254] & 0x00FFFFFF], temp_s0, 0x200, &gDmaMesgQueue);
+            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartPalettes[player->characterId] & 0x00FFFFFF], temp_s0, 0x200, &gDmaMesgQueue);
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
             break;
         default: break;

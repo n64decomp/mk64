@@ -22,37 +22,37 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
 
     player->unk_000 = 0;
     player->unk_08C = 0;
-    player->unk_254 = arg6;
+    player->characterId = arg6;
     player->unk_0B6 = 0;
-    player->unk_0FC = gKartFrictionTable[player->unk_254];
-    player->unk_070 = gKartBoundingBoxTable[player->unk_254];
-    player->unk_100 = gKartGravityTable[player->unk_254];
+    player->unk_0FC = gKartFrictionTable[player->characterId];
+    player->unk_070 = gKartBoundingBoxTable[player->characterId];
+    player->unk_100 = gKartGravityTable[player->characterId];
 
     switch (gModeSelection) {
         // Mario Grand Prix
         case 0:
         // Versus
         case 2:
-            player->unk_084 = D_800E2400.unk_00[gCCSelection][player->unk_254];
-            player->unk_088 = D_800E24B4.unk_00[gCCSelection][player->unk_254];
-            player->unk_210 = D_800E2568.unk_00[gCCSelection][player->unk_254];
-            player->unk_214 = D_800E261C.unk_00[gCCSelection][player->unk_254];
+            player->unk_084 = D_800E2400.unk_00[gCCSelection][player->characterId];
+            player->unk_088 = D_800E24B4.unk_00[gCCSelection][player->characterId];
+            player->unk_210 = D_800E2568.unk_00[gCCSelection][player->characterId];
+            player->unk_214 = D_800E261C.unk_00[gCCSelection][player->characterId];
             break;
 
         // Time Trial (uses 100CC values)
         case 1:
-            player->unk_084 = D_800E2400.unk_00[1][player->unk_254];
-            player->unk_088 = D_800E24B4.unk_00[1][player->unk_254];
-            player->unk_210 = D_800E2568.unk_00[1][player->unk_254];
-            player->unk_214 = D_800E261C.unk_00[1][player->unk_254];
+            player->unk_084 = D_800E2400.unk_00[1][player->characterId];
+            player->unk_088 = D_800E24B4.unk_00[1][player->characterId];
+            player->unk_210 = D_800E2568.unk_00[1][player->characterId];
+            player->unk_214 = D_800E261C.unk_00[1][player->characterId];
             break;
 
         // Battle
         case 3:
-            player->unk_084 = D_800E2400.unk_00[4][player->unk_254];
-            player->unk_088 = D_800E24B4.unk_00[4][player->unk_254];
-            player->unk_210 = D_800E2568.unk_00[4][player->unk_254];
-            player->unk_214 = D_800E261C.unk_00[4][player->unk_254];
+            player->unk_084 = D_800E2400.unk_00[4][player->characterId];
+            player->unk_088 = D_800E24B4.unk_00[4][player->characterId];
+            player->unk_210 = D_800E2568.unk_00[4][player->characterId];
+            player->unk_214 = D_800E261C.unk_00[4][player->characterId];
             break;
     }
 
@@ -179,9 +179,9 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
     player->unk_0B8 = 0.0f;
     player->unk_0E4 = 0.0f;
     player->unk_0E8 = 0.0f;
-    player->unk_0EC = 0.0f;
-    player->unk_0F0 = 0.0f;
-    player->unk_0F4 = 0.0f;
+    player->kartHopVelocity = 0.0f;
+    player->kartHopJerk = 0.0f;
+    player->kartHopAcceleration = 0.0f;
     player->unk_104 = 0.0f;
     player->unk_108 = 0.0f;
     player->unk_1F8 = 0.0f;

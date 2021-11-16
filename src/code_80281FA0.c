@@ -1172,7 +1172,7 @@ GLOBAL_ASM("asm/non_matchings/code_80281FA0/func_80283B6C.s")
 
 void func_80283BA4(s32 arg0) {
     func_800CA0B8();
-    func_800C90F4(0, (D_800DC4E8->unk_254 * 0x10) + 0x29008004);
+    func_800C90F4(0, (D_800DC4E8->characterId * 0x10) + 0x29008004);
     func_800CA0A0();
 }
 #else
