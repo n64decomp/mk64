@@ -1,6 +1,7 @@
+Progress: 10%
 # Mario Kart 64
 
-This repo contains a work-in-progress decompilation of Mario Kart 64 (U). The project pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. 10% of the source contains matching C. See [progress](#Progress) for more information.
+This repo contains a work-in-progress decompilation of Mario Kart 64 (U). The project pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information.
 
 It builds the following ROM:
 
