@@ -297,7 +297,7 @@ void func_80280B50(void *arg0, ? arg1, s32 arg2, s16 arg3) {
     sp44 = 0;
     sp54 = arg0->unk8;
     sp48 = 0;
-    sp46 = D_800DDB40->unk26;
+    sp46 = camera1->unk26;
     func_80280A28(arg1, &sp4C, temp_a1, arg1);
     temp_v0 = gDisplayListHead;
     gDisplayListHead = temp_v0 + 8;
@@ -553,9 +553,8 @@ GLOBAL_ASM("asm/non_matchings/code_80280650/func_8028118C.s")
 ? func_8028101C(?, s32, ?); // extern
 ? func_8028118C(?, s32, ?); // extern
 ? guLookAtF(? *, s32, s32, s32, f32, f32, f32, f32, f32, f32); // extern
-extern ? D_801646F0;
+extern ? cameras;
 extern f32 D_801646F4;
-extern f32 D_80164700;
 extern s16 D_802874C4;
 extern s32 D_802874E0;
 extern s8 D_802874F5;
@@ -568,7 +567,7 @@ void func_802812C8(void) {
     s32 phi_v0;
     s32 phi_v0_2;
 
-    guLookAtF(&D_80287500, D_801646F0.unk0, D_801646F0.unk4, D_801646F0.unk8, D_801646F0.unkC, D_801646F0.unk10, D_801646F0.unk14, D_801646F0.unk18, D_801646F0.unk1C, D_801646F0.unk20);
+    guLookAtF(&D_80287500, cameras.unk0, cameras.unk4, cameras.unk8, cameras.unkC, cameras.unk10, cameras.unk14, cameras.unk18, cameras.unk1C, cameras.unk20);
     if (D_802874F5 < 3) {
         temp_v0 = D_802874E0;
         phi_v0 = temp_v0;

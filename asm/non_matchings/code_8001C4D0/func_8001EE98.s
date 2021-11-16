@@ -1,7 +1,7 @@
 glabel func_8001EE98
 /* 01FA98 8001EE98 27BDFFC8 */  addiu $sp, $sp, -0x38
-/* 01FA9C 8001EE9C 3C0F800E */  lui   $t7, %hi(D_800DDB40) # $t7, 0x800e
-/* 01FAA0 8001EEA0 8DEFDB40 */  lw    $t7, %lo(D_800DDB40)($t7)
+/* 01FA9C 8001EE9C 3C0F800E */  lui   $t7, %hi(camera1) # $t7, 0x800e
+/* 01FAA0 8001EEA0 8DEFDB40 */  lw    $t7, %lo(camera1)($t7)
 /* 01FAA4 8001EEA4 AFBF0024 */  sw    $ra, 0x24($sp)
 /* 01FAA8 8001EEA8 AFB00020 */  sw    $s0, 0x20($sp)
 /* 01FAAC 8001EEAC AFA40038 */  sw    $a0, 0x38($sp)
@@ -10,23 +10,23 @@ glabel func_8001EE98
 /* 01FAB8 8001EEB8 AFA60040 */   sw    $a2, 0x40($sp)
 /* 01FABC 8001EEBC AFA00034 */  sw    $zero, 0x34($sp)
 .L8001EEC0:
-/* 01FAC0 8001EEC0 3C19800E */  lui   $t9, %hi(D_800DDB44) # $t9, 0x800e
-/* 01FAC4 8001EEC4 8F39DB44 */  lw    $t9, %lo(D_800DDB44)($t9)
+/* 01FAC0 8001EEC0 3C19800E */  lui   $t9, %hi(camera2) # $t9, 0x800e
+/* 01FAC4 8001EEC4 8F39DB44 */  lw    $t9, %lo(camera2)($t9)
 /* 01FAC8 8001EEC8 8FB8003C */  lw    $t8, 0x3c($sp)
 /* 01FACC 8001EECC 8FB00034 */  lw    $s0, 0x34($sp)
 /* 01FAD0 8001EED0 8FA8003C */  lw    $t0, 0x3c($sp)
 /* 01FAD4 8001EED4 17190002 */  bne   $t8, $t9, .L8001EEE0
-/* 01FAD8 8001EED8 3C09800E */   lui   $t1, %hi(D_800DDB48) # $t1, 0x800e
+/* 01FAD8 8001EED8 3C09800E */   lui   $t1, %hi(camera3) # $t1, 0x800e
 /* 01FADC 8001EEDC 24100001 */  li    $s0, 1
 .L8001EEE0:
-/* 01FAE0 8001EEE0 8D29DB48 */  lw    $t1, %lo(D_800DDB48)($t1)
+/* 01FAE0 8001EEE0 8D29DB48 */  lw    $t1, %lo(camera3)($t1)
 /* 01FAE4 8001EEE4 8FAA003C */  lw    $t2, 0x3c($sp)
-/* 01FAE8 8001EEE8 3C0B800E */  lui   $t3, %hi(D_800DDB4C) # $t3, 0x800e
+/* 01FAE8 8001EEE8 3C0B800E */  lui   $t3, %hi(camera4) # $t3, 0x800e
 /* 01FAEC 8001EEEC 15090002 */  bne   $t0, $t1, .L8001EEF8
 /* 01FAF0 8001EEF0 3C02800E */   lui   $v0, %hi(gModeSelection) # $v0, 0x800e
 /* 01FAF4 8001EEF4 24100002 */  li    $s0, 2
 .L8001EEF8:
-/* 01FAF8 8001EEF8 8D6BDB4C */  lw    $t3, %lo(D_800DDB4C)($t3)
+/* 01FAF8 8001EEF8 8D6BDB4C */  lw    $t3, %lo(camera4)($t3)
 /* 01FAFC 8001EEFC 24030001 */  li    $v1, 1
 /* 01FB00 8001EF00 8FAC0038 */  lw    $t4, 0x38($sp)
 /* 01FB04 8001EF04 154B0002 */  bne   $t2, $t3, .L8001EF10

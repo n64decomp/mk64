@@ -8,9 +8,9 @@ glabel func_80055CCC
 /* 0568E4 80055CE4 25085C18 */  addiu $t0, %lo(D_80165C18) # addiu $t0, $t0, 0x5c18
 /* 0568E8 80055CE8 0019C940 */  sll   $t9, $t9, 5
 /* 0568EC 80055CEC 01C57023 */  subu  $t6, $t6, $a1
-/* 0568F0 80055CF0 3C0F800E */  lui   $t7, %hi(D_800DDB40) # $t7, 0x800e
+/* 0568F0 80055CF0 3C0F800E */  lui   $t7, %hi(camera1) # $t7, 0x800e
 /* 0568F4 80055CF4 03288021 */  addu  $s0, $t9, $t0
-/* 0568F8 80055CF8 8DEFDB40 */  lw    $t7, %lo(D_800DDB40)($t7)
+/* 0568F8 80055CF8 8DEFDB40 */  lw    $t7, %lo(camera1)($t7)
 /* 0568FC 80055CFC 860900A6 */  lh    $t1, 0xa6($s0)
 /* 056900 80055D00 000E70C0 */  sll   $t6, $t6, 3
 /* 056904 80055D04 01C57023 */  subu  $t6, $t6, $a1

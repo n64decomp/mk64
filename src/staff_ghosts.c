@@ -57,10 +57,10 @@ extern u8 D_802DAB80[20480];
 u32 *D_800DC710 = &D_802D2B80[0];
 u32 *D_800DC714 = &D_802DAB80[0];
 
-extern OSIoMesg *D_8014F0A0;
+extern OSIoMesg *gDmaIoMesg;
 extern u8 _kart_texturesSegmentRomStart;
-extern OSMesgQueue D_8014EF58;
-extern OSMesg D_8014F098;
+extern OSMesgQueue gDmaMesgQueue;
+extern OSMesg gMainReceivedMesg;
 
 extern s16 gCurrentCourseId;
 extern s32 gModeSelection;
@@ -88,8 +88,8 @@ extern s32 D_80164398;
 void func_80004EF0(void) {
     D_80162DA4 = &D_802D2B80[0];
     osInvalDCache(&D_80162DA4[0], 0x4000);
-    osPiStartDma(&D_8014F0A0, 0, 0, (D_80162DC4 & 0xFFFFFF) + &_kart_texturesSegmentRomStart, D_80162DA4, 0x4000, &D_8014EF58);
-    osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+    osPiStartDma(&gDmaIoMesg, 0, 0, (D_80162DC4 & 0xFFFFFF) + &_kart_texturesSegmentRomStart, D_80162DA4, 0x4000, &gDmaMesgQueue);
+    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
     D_80162D9C =  (*D_80162DA4 & 0xFF0000);
     D_80162DA0 = 0;
 }

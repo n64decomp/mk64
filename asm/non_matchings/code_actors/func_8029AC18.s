@@ -1,6 +1,6 @@
 glabel func_8029AC18
-/* 104228 8029AC18 3C0E800E */  lui   $t6, %hi(D_800DDB40) # $t6, 0x800e
-/* 10422C 8029AC1C 8DCEDB40 */  lw    $t6, %lo(D_800DDB40)($t6)
+/* 104228 8029AC18 3C0E800E */  lui   $t6, %hi(camera1) # $t6, 0x800e
+/* 10422C 8029AC1C 8DCEDB40 */  lw    $t6, %lo(camera1)($t6)
 /* 104230 8029AC20 240100B8 */  li    $at, 184
 /* 104234 8029AC24 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 104238 8029AC28 008E7823 */  subu  $t7, $a0, $t6

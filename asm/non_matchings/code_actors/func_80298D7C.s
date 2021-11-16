@@ -78,9 +78,9 @@ glabel func_80298D7C
 /* 1024B4 80298EA4 241E0006 */  li    $fp, 6
 /* 1024B8 80298EA8 11A10098 */  beq   $t5, $at, .L8029910C
 /* 1024BC 80298EAC 27B700D4 */   addiu $s7, $sp, 0xd4
-/* 1024C0 80298EB0 3C16800E */  lui   $s6, %hi(D_800DDB40) # $s6, 0x800e
+/* 1024C0 80298EB0 3C16800E */  lui   $s6, %hi(camera1) # $s6, 0x800e
 /* 1024C4 80298EB4 4480A000 */  mtc1  $zero, $f20
-/* 1024C8 80298EB8 26D6DB40 */  addiu $s6, %lo(D_800DDB40) # addiu $s6, $s6, -0x24c0
+/* 1024C8 80298EB8 26D6DB40 */  addiu $s6, %lo(camera1) # addiu $s6, $s6, -0x24c0
 /* 1024CC 80298EBC 3C130600 */  lui   $s3, 0x600
 /* 1024D0 80298EC0 86300006 */  lh    $s0, 6($s1)
 .L80298EC4:

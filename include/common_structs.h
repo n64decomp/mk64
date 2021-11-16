@@ -68,8 +68,9 @@ typedef struct {
     f32 angleX;
     f32 angleY;
     f32 angleZ;
-    s32 rotX;
-    s32 rotY; // unused?
+    s16 rotX;
+    s16 rotX2;
+    s16 rotY; // unused?
     s16 rotZ;
     s32 unk3; // zero
     s32 unk4; // 0x4119999A
@@ -97,15 +98,17 @@ typedef struct {
     f32 unkAngleZ;
     s32 unk21; // zero
     f32 collision;
-    s32 unk22; // zero
-    s32 unk23; // zero
-    s32 unk24; // zero
+    f32 unk22; // zero
+    s16 unk23; // confirmed s16
+    s16 unk24; // zero
+    s16 unk24_and_a_half;
     s32 unk25; // zero
     s32 unk26; // zero
     // need another s16 here?
     s32 unk27; // 8
     s16 unk28; // zero
-    s32 unk29; // 422
+    f32 unk29; // 422
+    f32 unk30;
 } Camera;
 
 typedef struct {

@@ -54,10 +54,10 @@ glabel func_80020F1C
 /* 021BEC 80020FEC 24050003 */  li    $a1, 3
 /* 021BF0 80020FF0 0C01B9D1 */  jal   func_8006E744
 /* 021BF4 80020FF4 24060003 */   li    $a2, 3
-/* 021BF8 80020FF8 3C148015 */  lui   $s4, %hi(D_8014EF58) # $s4, 0x8015
-/* 021BFC 80020FFC 3C158015 */  lui   $s5, %hi(D_8014F098) # $s5, 0x8015
-/* 021C00 80021000 26B5F098 */  addiu $s5, %lo(D_8014F098) # addiu $s5, $s5, -0xf68
-/* 021C04 80021004 2694EF58 */  addiu $s4, %lo(D_8014EF58) # addiu $s4, $s4, -0x10a8
+/* 021BF8 80020FF8 3C148015 */  lui   $s4, %hi(gDmaMesgQueue) # $s4, 0x8015
+/* 021BFC 80020FFC 3C158015 */  lui   $s5, %hi(gMainReceivedMesg) # $s5, 0x8015
+/* 021C00 80021000 26B5F098 */  addiu $s5, %lo(gMainReceivedMesg) # addiu $s5, $s5, -0xf68
+/* 021C04 80021004 2694EF58 */  addiu $s4, %lo(gDmaMesgQueue) # addiu $s4, $s4, -0x10a8
 /* 021C08 80021008 02802025 */  move  $a0, $s4
 /* 021C0C 8002100C 02A02825 */  move  $a1, $s5
 /* 021C10 80021010 0C0335D4 */  jal   osRecvMesg

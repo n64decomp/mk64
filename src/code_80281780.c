@@ -5,6 +5,8 @@
 
 #include "code_80281780.h"
 
+extern Camera cameras[];
+
 extern s32 gPrevLoadedAddress;
 
 // unk4 is buttonDown?
@@ -71,6 +73,8 @@ void func_802818BC(void) {
 }
 
 void load_ending_sequence_royalraceway(void) {
+    Camera *camera = &cameras[0];
+
     gCurrentCourseId = COURSE_ROYAL_RACEWAY;
     D_800DC5B4 = (u16)1;
     gIsMirrorMode = 0;
@@ -78,12 +82,12 @@ void load_ending_sequence_royalraceway(void) {
     D_80287554 = 0;
     func_802A4D18();
     func_802A74BC();
-    D_801647A4 = 60.0f;
+    camera->unk30 = 60.0f;
     D_80150130 = 60.0f;
-    D_800DC5EC->unk2C = (u16)0x140;
-    D_800DC5EC->unk2E = (u16)0xF0;
-    D_800DC5EC->unk30 = (u16)0xA0;
-    D_800DC5EC->unk32 = (u16)0x78;
+    D_800DC5EC->screenWidth = 320;
+    D_800DC5EC->screenHeight = 240;
+    D_800DC5EC->screenStartX = 160;
+    D_800DC5EC->screenStartY = 120;
     D_800DC530 = 0;
     gPrevLoadedAddress = (s32) D_8015F734;
     D_800DC52C = 0;

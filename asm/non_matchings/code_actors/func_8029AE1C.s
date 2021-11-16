@@ -11,8 +11,8 @@ glabel func_8029AE1C
 /* 104450 8029AE40 29C10019 */  slti  $at, $t6, 0x19
 /* 104454 8029AE44 14200084 */  bnez  $at, .L8029B058
 .L8029AE48:
-/* 104458 8029AE48 3C0F800E */   lui   $t7, %hi(D_800DDB40) # $t7, 0x800e
-/* 10445C 8029AE4C 8DEFDB40 */  lw    $t7, %lo(D_800DDB40)($t7)
+/* 104458 8029AE48 3C0F800E */   lui   $t7, %hi(camera1) # $t7, 0x800e
+/* 10445C 8029AE4C 8DEFDB40 */  lw    $t7, %lo(camera1)($t7)
 /* 104460 8029AE50 240100B8 */  li    $at, 184
 /* 104464 8029AE54 8FA5013C */  lw    $a1, 0x13c($sp)
 /* 104468 8029AE58 008FC023 */  subu  $t8, $a0, $t7

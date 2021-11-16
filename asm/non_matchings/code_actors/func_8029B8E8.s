@@ -1,6 +1,6 @@
 glabel func_8029B8E8
-/* 104EF8 8029B8E8 3C0E800E */  lui   $t6, %hi(D_800DDB40) # $t6, 0x800e
-/* 104EFC 8029B8EC 8DCEDB40 */  lw    $t6, %lo(D_800DDB40)($t6)
+/* 104EF8 8029B8E8 3C0E800E */  lui   $t6, %hi(camera1) # $t6, 0x800e
+/* 104EFC 8029B8EC 8DCEDB40 */  lw    $t6, %lo(camera1)($t6)
 /* 104F00 8029B8F0 240100B8 */  li    $at, 184
 /* 104F04 8029B8F4 27BDFE88 */  addiu $sp, $sp, -0x178
 /* 104F08 8029B8F8 008E7823 */  subu  $t7, $a0, $t6

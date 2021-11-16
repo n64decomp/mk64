@@ -1,6 +1,6 @@
 glabel func_80297A50
-/* 101060 80297A50 3C0E800E */  lui   $t6, %hi(D_800DDB40) # $t6, 0x800e
-/* 101064 80297A54 8DCEDB40 */  lw    $t6, %lo(D_800DDB40)($t6)
+/* 101060 80297A50 3C0E800E */  lui   $t6, %hi(camera1) # $t6, 0x800e
+/* 101064 80297A54 8DCEDB40 */  lw    $t6, %lo(camera1)($t6)
 /* 101068 80297A58 240100B8 */  li    $at, 184
 /* 10106C 80297A5C 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 101070 80297A60 008E7823 */  subu  $t7, $a0, $t6

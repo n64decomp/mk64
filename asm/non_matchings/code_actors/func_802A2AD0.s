@@ -6,12 +6,12 @@ glabel func_802A2AD0
 /* 10C0F0 802A2AE0 25EF8864 */  addiu $t7, %lo(D_802B8864) # addiu $t7, $t7, -0x779c
 /* 10C0F4 802A2AE4 8DE10000 */  lw    $at, ($t7)
 /* 10C0F8 802A2AE8 27AE0080 */  addiu $t6, $sp, 0x80
-/* 10C0FC 802A2AEC 3C09800E */  lui   $t1, %hi(D_800DDB40) # $t1, 0x800e
+/* 10C0FC 802A2AEC 3C09800E */  lui   $t1, %hi(camera1) # $t1, 0x800e
 /* 10C100 802A2AF0 ADC10000 */  sw    $at, ($t6)
 /* 10C104 802A2AF4 95E10004 */  lhu   $at, 4($t7)
 /* 10C108 802A2AF8 24070000 */  li    $a3, 0
 /* 10C10C 802A2AFC A5C10004 */  sh    $at, 4($t6)
-/* 10C110 802A2B00 8D29DB40 */  lw    $t1, %lo(D_800DDB40)($t1)
+/* 10C110 802A2B00 8D29DB40 */  lw    $t1, %lo(camera1)($t1)
 /* 10C114 802A2B04 240100B8 */  li    $at, 184
 /* 10C118 802A2B08 8FA5008C */  lw    $a1, 0x8c($sp)
 /* 10C11C 802A2B0C 00895023 */  subu  $t2, $a0, $t1

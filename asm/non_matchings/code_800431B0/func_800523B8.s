@@ -6,10 +6,10 @@ glabel func_800523B8
 /* 052FC8 800523C8 3C088016 */  lui   $t0, %hi(D_80165C18) # $t0, 0x8016
 /* 052FCC 800523CC 27BDFFB0 */  addiu $sp, $sp, -0x50
 /* 052FD0 800523D0 000E70C0 */  sll   $t6, $t6, 3
-/* 052FD4 800523D4 3C0F800E */  lui   $t7, %hi(D_800DDB40) # $t7, 0x800e
+/* 052FD4 800523D4 3C0F800E */  lui   $t7, %hi(camera1) # $t7, 0x800e
 /* 052FD8 800523D8 25085C18 */  addiu $t0, %lo(D_80165C18) # addiu $t0, $t0, 0x5c18
 /* 052FDC 800523DC 0019C940 */  sll   $t9, $t9, 5
-/* 052FE0 800523E0 8DEFDB40 */  lw    $t7, %lo(D_800DDB40)($t7)
+/* 052FE0 800523E0 8DEFDB40 */  lw    $t7, %lo(camera1)($t7)
 /* 052FE4 800523E4 01C57023 */  subu  $t6, $t6, $a1
 /* 052FE8 800523E8 03281821 */  addu  $v1, $t9, $t0
 /* 052FEC 800523EC AFBF0034 */  sw    $ra, 0x34($sp)

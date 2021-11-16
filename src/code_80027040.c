@@ -2,9 +2,9 @@
 #include <macros.h>
 #include "common_structs.h"
 
-extern OSIoMesg D_8014F0A0;
-extern OSMesgQueue D_8014EF58;
-extern OSMesg D_8014F098;
+extern OSIoMesg gDmaIoMesg;
+extern OSMesgQueue gDmaMesgQueue;
+extern OSMesg gMainReceivedMesg;
 
 extern u8 _kart_texturesSegmentRomStart[];
 extern u32 gKartPalettes[];
@@ -37,13 +37,13 @@ void func_80027040(Player *player, s8 arg1, s8 arg2, s8 arg3, s32 arg4) {
         if (player->unk_244[arg2] == 0) {
             temp_s0 = (arg4 * 0x9200) + (arg3 * 0x4900) + (arg1 * 0x920) + D_802DFB80;
             osInvalDCache(temp_s0, D_800DDEB0[player->unk_254]);
-            osPiStartDma(&D_8014F0A0, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureTable0[player->unk_254][player->unk_24C[arg2]][player->unk_244[arg2]] & 0xFFFFFF], temp_s0, D_800DDEB0[temp_v0], &D_8014EF58);
-            osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureTable0[player->unk_254][player->unk_24C[arg2]][player->unk_244[arg2]] & 0xFFFFFF], temp_s0, D_800DDEB0[temp_v0], &gDmaMesgQueue);
+            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
         } else {
             temp_s0 = (arg4 * 0x9200) + (arg3 * 0x4900) + (arg1 * 0x920) + D_802DFB80;
             osInvalDCache(temp_s0, D_800DDEB0[player->unk_254]);
-            osPiStartDma(&D_8014F0A0, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureTable1[player->unk_254][player->unk_24C[arg2]][player->unk_244[arg2]] & 0xFFFFFF], temp_s0, D_800DDEB0[temp_v0], &D_8014EF58);
-            osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureTable1[player->unk_254][player->unk_24C[arg2]][player->unk_244[arg2]] & 0xFFFFFF], temp_s0, D_800DDEB0[temp_v0], &gDmaMesgQueue);
+            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
         }
     }
     else if ((temp_v0 & 0x400) == 0x400 ||
@@ -53,13 +53,13 @@ void func_80027040(Player *player, s8 arg1, s8 arg2, s8 arg3, s32 arg4) {
         ) {
         temp_s0 = (arg4 * 0x9200) + (arg3 * 0x4900) + (arg1 * 0x920) + D_802DFB80;
         osInvalDCache(temp_s0, 0x780);
-        osPiStartDma(&D_8014F0A0, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureGroup18s[player->unk_254][player->unk_0A8 >> 8] & 0xFFFFFF], temp_s0, 0x900, &D_8014EF58);
-        osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+        osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureGroup18s[player->unk_254][player->unk_0A8 >> 8] & 0xFFFFFF], temp_s0, 0x900, &gDmaMesgQueue);
+        osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
     } else {
         temp_s0 = (arg4 * 0x9200) + (arg3 * 0x4900) + (arg1 * 0x920) + D_802DFB80;
         osInvalDCache(temp_s0, D_800DDEB0[player->unk_254]);
-        osPiStartDma(&D_8014F0A0, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureTable0[player->unk_254][player->unk_24C[arg2]][player->unk_244[arg2]] & 0xFFFFFF], temp_s0, D_800DDEB0[temp_v0], &D_8014EF58);
-        osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+        osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartTextureTable0[player->unk_254][player->unk_24C[arg2]][player->unk_244[arg2]] & 0xFFFFFF], temp_s0, D_800DDEB0[temp_v0], &gDmaMesgQueue);
+        osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
     }
 }
 #else
@@ -92,14 +92,14 @@ block_6:
             sp30 = temp_v1_2;
             osInvalDCache(temp_s0_4, *(&D_800DDEB0 + (arg0->unk254 * 2)));
             temp_v0 = arg0->unk254;
-            osPiStartDma(&D_8014F0A0, 0, 0, (*(*(*(&gKartTextureTable0 + (temp_v0 * 4)) + (temp_v1_2->unk24C * 4)) + (temp_v1_2->unk244 * 4)) & 0xFFFFFF) + &_kart_texturesSegmentRomStart, temp_s0_4, *(&D_800DDEB0 + (temp_v0 * 2)), &D_8014EF58);
+            osPiStartDma(&gDmaIoMesg, 0, 0, (*(*(*(&gKartTextureTable0 + (temp_v0 * 4)) + (temp_v1_2->unk24C * 4)) + (temp_v1_2->unk244 * 4)) & 0xFFFFFF) + &_kart_texturesSegmentRomStart, temp_s0_4, *(&D_800DDEB0 + (temp_v0 * 2)), &gDmaMesgQueue);
             return;
         }
         temp_s0_3 = (arg4 * 0x9200) + (temp_a3 * 0x4900) + (arg1 * 0x920) + D_802DFB80;
         sp30 = temp_v1_2;
         osInvalDCache(temp_s0_3, *(&D_800DDEB0 + (arg0->unk254 * 2)));
         temp_v0 = arg0->unk254;
-        osPiStartDma(&D_8014F0A0, 0, 0, (*(*(*(&gKartTextureTable1 + (temp_v0 * 4)) + (temp_v1_2->unk24C * 4)) + (temp_v1_2->unk244 * 4)) & 0xFFFFFF) + &_kart_texturesSegmentRomStart, temp_s0_3, *(&D_800DDEB0 + (temp_v0 * 2)), &D_8014EF58);
+        osPiStartDma(&gDmaIoMesg, 0, 0, (*(*(*(&gKartTextureTable1 + (temp_v0 * 4)) + (temp_v1_2->unk24C * 4)) + (temp_v1_2->unk244 * 4)) & 0xFFFFFF) + &_kart_texturesSegmentRomStart, temp_s0_3, *(&D_800DDEB0 + (temp_v0 * 2)), &gDmaMesgQueue);
         return;
     }
     if ((temp_v0 & 0x40) == 0x40) {
@@ -121,7 +121,7 @@ block_6:
 block_13:
         temp_s0_2 = (arg4 * 0x9200) + (temp_a3 * 0x4900) + (arg1 * 0x920) + D_802DFB80;
         osInvalDCache(temp_s0_2, 0x780);
-        osPiStartDma(&D_8014F0A0, 0, 0, (*(*(&gKartTextureGroup18s + (arg0->unk254 * 4)) + ((arg0->unkA8 >> 8) * 4)) & 0xFFFFFF) + &_kart_texturesSegmentRomStart, temp_s0_2, 0x900, &D_8014EF58);
+        osPiStartDma(&gDmaIoMesg, 0, 0, (*(*(&gKartTextureGroup18s + (arg0->unk254 * 4)) + ((arg0->unkA8 >> 8) * 4)) & 0xFFFFFF) + &_kart_texturesSegmentRomStart, temp_s0_2, 0x900, &gDmaMesgQueue);
         return;
     }
     if ((temp_v0 & 0x1000000) == 0x1000000) {
@@ -137,7 +137,7 @@ block_13:
     osInvalDCache(temp_s0, *(&D_800DDEB0 + (arg0->unk254 * 2)));
     temp_v0 = arg0->unk254;
     temp_v1 = arg0 + (arg2 * 2);
-    osPiStartDma(&D_8014F0A0, 0, 0, (*(*(*(&gKartTextureTable0 + (temp_v0 * 4)) + (temp_v1->unk24C * 4)) + (temp_v1->unk244 * 4)) & 0xFFFFFF) + &_kart_texturesSegmentRomStart, temp_s0, *(&D_800DDEB0 + (temp_v0 * 2)), &D_8014EF58);
+    osPiStartDma(&gDmaIoMesg, 0, 0, (*(*(*(&gKartTextureTable0 + (temp_v0 * 4)) + (temp_v1->unk24C * 4)) + (temp_v1->unk244 * 4)) & 0xFFFFFF) + &_kart_texturesSegmentRomStart, temp_s0, *(&D_800DDEB0 + (temp_v0 * 2)), &gDmaMesgQueue);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80027040/func_80027560.s")
@@ -151,13 +151,13 @@ void func_80027A20(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     switch(D_800DC52C) {
         case 0: case 1: case 2:
             osInvalDCache(temp_s0, 0x200);
-            osPiStartDma(&D_8014F0A0, 0, 0, &_kart_texturesSegmentRomStart[gKartPalettes[player->unk_254] & 0x00FFFFFF], temp_s0, 0x200, &D_8014EF58);
-            osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartPalettes[player->unk_254] & 0x00FFFFFF], temp_s0, 0x200, &gDmaMesgQueue);
+            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
             break;
         case 3:
             osInvalDCache(temp_s0, 0x200);
-            osPiStartDma(&D_8014F0A0, 0, 0, &_kart_texturesSegmentRomStart[gKartPalettes[player->unk_254] & 0x00FFFFFF], temp_s0, 0x200, &D_8014EF58);
-            osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartPalettes[player->unk_254] & 0x00FFFFFF], temp_s0, 0x200, &gDmaMesgQueue);
+            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
             break;
         default: break;
     }
@@ -168,11 +168,11 @@ GLOBAL_ASM("asm/non_matchings/code_80027040/func_80027A20.s")
 
 void func_80027BDC(s32 arg0, s32 arg1, void *vAddr, u16 size) {
     osInvalDCache(vAddr, size);
-    osPiStartDma(&D_8014F0A0, 0, 0, &_kart_texturesSegmentRomStart[arg1 & 0x00FFFFFF], vAddr, size, &D_8014EF58);
-    osRecvMesg(&D_8014EF58, &D_8014F098, 1);
+    osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[arg1 & 0x00FFFFFF], vAddr, size, &gDmaMesgQueue);
+    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
 }
 
 void func_80027C74(s32 arg0, s32 arg1, void *vAddr, u16 size) {
     osInvalDCache(vAddr, size);
-    osPiStartDma(&D_8014F0A0, 0, 0, &_kart_texturesSegmentRomStart[arg1 & 0x00FFFFFF], vAddr, size, &D_8014EF58);
+    osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[arg1 & 0x00FFFFFF], vAddr, size, &gDmaMesgQueue);
 }

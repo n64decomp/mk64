@@ -94,24 +94,24 @@ glabel func_80027040
 /* 027DA8 800271A8 3C0100FF */  lui   $at, (0x00FFFFFF >> 16) # lui $at, 0xff
 /* 027DAC 800271AC 954ADEB0 */  lhu   $t2, %lo(D_800DDEB0)($t2)
 /* 027DB0 800271B0 3421FFFF */  ori   $at, (0x00FFFFFF & 0xFFFF) # ori $at, $at, 0xffff
-/* 027DB4 800271B4 3C098015 */  lui   $t1, %hi(D_8014EF58) # $t1, 0x8015
+/* 027DB4 800271B4 3C098015 */  lui   $t1, %hi(gDmaMesgQueue) # $t1, 0x8015
 /* 027DB8 800271B8 3C080014 */  lui   $t0, %hi(_kart_texturesSegmentRomStart) # $t0, 0x14
 /* 027DBC 800271BC 25085470 */  addiu $t0, %lo(_kart_texturesSegmentRomStart) # addiu $t0, $t0, 0x5470
-/* 027DC0 800271C0 2529EF58 */  addiu $t1, %lo(D_8014EF58) # addiu $t1, $t1, -0x10a8
-/* 027DC4 800271C4 3C048015 */  lui   $a0, %hi(D_8014F0A0) # $a0, 0x8015
+/* 027DC0 800271C0 2529EF58 */  addiu $t1, %lo(gDmaMesgQueue) # addiu $t1, $t1, -0x10a8
+/* 027DC4 800271C4 3C048015 */  lui   $a0, %hi(gDmaIoMesg) # $a0, 0x8015
 /* 027DC8 800271C8 01E1C024 */  and   $t8, $t7, $at
 /* 027DCC 800271CC 03083821 */  addu  $a3, $t8, $t0
-/* 027DD0 800271D0 2484F0A0 */  addiu $a0, %lo(D_8014F0A0) # addiu $a0, $a0, -0xf60
+/* 027DD0 800271D0 2484F0A0 */  addiu $a0, %lo(gDmaIoMesg) # addiu $a0, $a0, -0xf60
 /* 027DD4 800271D4 AFA90018 */  sw    $t1, 0x18($sp)
 /* 027DD8 800271D8 AFB00010 */  sw    $s0, 0x10($sp)
 /* 027DDC 800271DC 00002825 */  move  $a1, $zero
 /* 027DE0 800271E0 00003025 */  move  $a2, $zero
 /* 027DE4 800271E4 0C03370C */  jal   osPiStartDma
 /* 027DE8 800271E8 AFAA0014 */   sw    $t2, 0x14($sp)
-/* 027DEC 800271EC 3C048015 */  lui   $a0, %hi(D_8014EF58) # $a0, 0x8015
-/* 027DF0 800271F0 3C058015 */  lui   $a1, %hi(D_8014F098) # $a1, 0x8015
-/* 027DF4 800271F4 24A5F098 */  addiu $a1, %lo(D_8014F098) # addiu $a1, $a1, -0xf68
-/* 027DF8 800271F8 2484EF58 */  addiu $a0, %lo(D_8014EF58) # addiu $a0, $a0, -0x10a8
+/* 027DEC 800271EC 3C048015 */  lui   $a0, %hi(gDmaMesgQueue) # $a0, 0x8015
+/* 027DF0 800271F0 3C058015 */  lui   $a1, %hi(gMainReceivedMesg) # $a1, 0x8015
+/* 027DF4 800271F4 24A5F098 */  addiu $a1, %lo(gMainReceivedMesg) # addiu $a1, $a1, -0xf68
+/* 027DF8 800271F8 2484EF58 */  addiu $a0, %lo(gDmaMesgQueue) # addiu $a0, $a0, -0x10a8
 /* 027DFC 800271FC 0C0335D4 */  jal   osRecvMesg
 /* 027E00 80027200 24060001 */   li    $a2, 1
 /* 027E04 80027204 100000D2 */  b     .L80027550
@@ -162,24 +162,24 @@ glabel func_80027040
 /* 027EB4 800272B4 3C0100FF */  lui   $at, (0x00FFFFFF >> 16) # lui $at, 0xff
 /* 027EB8 800272B8 95EFDEB0 */  lhu   $t7, %lo(D_800DDEB0)($t7)
 /* 027EBC 800272BC 3421FFFF */  ori   $at, (0x00FFFFFF & 0xFFFF) # ori $at, $at, 0xffff
-/* 027EC0 800272C0 3C0E8015 */  lui   $t6, %hi(D_8014EF58) # $t6, 0x8015
+/* 027EC0 800272C0 3C0E8015 */  lui   $t6, %hi(gDmaMesgQueue) # $t6, 0x8015
 /* 027EC4 800272C4 3C0D0014 */  lui   $t5, %hi(_kart_texturesSegmentRomStart) # $t5, 0x14
 /* 027EC8 800272C8 25AD5470 */  addiu $t5, %lo(_kart_texturesSegmentRomStart) # addiu $t5, $t5, 0x5470
-/* 027ECC 800272CC 25CEEF58 */  addiu $t6, %lo(D_8014EF58) # addiu $t6, $t6, -0x10a8
-/* 027ED0 800272D0 3C048015 */  lui   $a0, %hi(D_8014F0A0) # $a0, 0x8015
+/* 027ECC 800272CC 25CEEF58 */  addiu $t6, %lo(gDmaMesgQueue) # addiu $t6, $t6, -0x10a8
+/* 027ED0 800272D0 3C048015 */  lui   $a0, %hi(gDmaIoMesg) # $a0, 0x8015
 /* 027ED4 800272D4 01216024 */  and   $t4, $t1, $at
 /* 027ED8 800272D8 018D3821 */  addu  $a3, $t4, $t5
-/* 027EDC 800272DC 2484F0A0 */  addiu $a0, %lo(D_8014F0A0) # addiu $a0, $a0, -0xf60
+/* 027EDC 800272DC 2484F0A0 */  addiu $a0, %lo(gDmaIoMesg) # addiu $a0, $a0, -0xf60
 /* 027EE0 800272E0 AFAE0018 */  sw    $t6, 0x18($sp)
 /* 027EE4 800272E4 AFB00010 */  sw    $s0, 0x10($sp)
 /* 027EE8 800272E8 00002825 */  move  $a1, $zero
 /* 027EEC 800272EC 00003025 */  move  $a2, $zero
 /* 027EF0 800272F0 0C03370C */  jal   osPiStartDma
 /* 027EF4 800272F4 AFAF0014 */   sw    $t7, 0x14($sp)
-/* 027EF8 800272F8 3C048015 */  lui   $a0, %hi(D_8014EF58) # $a0, 0x8015
-/* 027EFC 800272FC 3C058015 */  lui   $a1, %hi(D_8014F098) # $a1, 0x8015
-/* 027F00 80027300 24A5F098 */  addiu $a1, %lo(D_8014F098) # addiu $a1, $a1, -0xf68
-/* 027F04 80027304 2484EF58 */  addiu $a0, %lo(D_8014EF58) # addiu $a0, $a0, -0x10a8
+/* 027EF8 800272F8 3C048015 */  lui   $a0, %hi(gDmaMesgQueue) # $a0, 0x8015
+/* 027EFC 800272FC 3C058015 */  lui   $a1, %hi(gMainReceivedMesg) # $a1, 0x8015
+/* 027F00 80027300 24A5F098 */  addiu $a1, %lo(gMainReceivedMesg) # addiu $a1, $a1, -0xf68
+/* 027F04 80027304 2484EF58 */  addiu $a0, %lo(gDmaMesgQueue) # addiu $a0, $a0, -0x10a8
 /* 027F08 80027308 0C0335D4 */  jal   osRecvMesg
 /* 027F0C 8002730C 24060001 */   li    $a2, 1
 /* 027F10 80027310 1000008F */  b     .L80027550
@@ -234,25 +234,25 @@ glabel func_80027040
 /* 027FCC 800273CC 8D6E0000 */  lw    $t6, ($t3)
 /* 027FD0 800273D0 3C0100FF */  lui   $at, (0x00FFFFFF >> 16) # lui $at, 0xff
 /* 027FD4 800273D4 3421FFFF */  ori   $at, (0x00FFFFFF & 0xFFFF) # ori $at, $at, 0xffff
-/* 027FD8 800273D8 3C0A8015 */  lui   $t2, %hi(D_8014EF58) # $t2, 0x8015
+/* 027FD8 800273D8 3C0A8015 */  lui   $t2, %hi(gDmaMesgQueue) # $t2, 0x8015
 /* 027FDC 800273DC 3C180014 */  lui   $t8, %hi(_kart_texturesSegmentRomStart) # $t8, 0x14
 /* 027FE0 800273E0 27185470 */  addiu $t8, %lo(_kart_texturesSegmentRomStart) # addiu $t8, $t8, 0x5470
-/* 027FE4 800273E4 254AEF58 */  addiu $t2, %lo(D_8014EF58) # addiu $t2, $t2, -0x10a8
+/* 027FE4 800273E4 254AEF58 */  addiu $t2, %lo(gDmaMesgQueue) # addiu $t2, $t2, -0x10a8
 /* 027FE8 800273E8 24190900 */  li    $t9, 2304
-/* 027FEC 800273EC 3C048015 */  lui   $a0, %hi(D_8014F0A0) # $a0, 0x8015
+/* 027FEC 800273EC 3C048015 */  lui   $a0, %hi(gDmaIoMesg) # $a0, 0x8015
 /* 027FF0 800273F0 01C14024 */  and   $t0, $t6, $at
 /* 027FF4 800273F4 01183821 */  addu  $a3, $t0, $t8
-/* 027FF8 800273F8 2484F0A0 */  addiu $a0, %lo(D_8014F0A0) # addiu $a0, $a0, -0xf60
+/* 027FF8 800273F8 2484F0A0 */  addiu $a0, %lo(gDmaIoMesg) # addiu $a0, $a0, -0xf60
 /* 027FFC 800273FC AFB90014 */  sw    $t9, 0x14($sp)
 /* 028000 80027400 AFAA0018 */  sw    $t2, 0x18($sp)
 /* 028004 80027404 AFB00010 */  sw    $s0, 0x10($sp)
 /* 028008 80027408 00002825 */  move  $a1, $zero
 /* 02800C 8002740C 0C03370C */  jal   osPiStartDma
 /* 028010 80027410 00003025 */   move  $a2, $zero
-/* 028014 80027414 3C048015 */  lui   $a0, %hi(D_8014EF58) # $a0, 0x8015
-/* 028018 80027418 3C058015 */  lui   $a1, %hi(D_8014F098) # $a1, 0x8015
-/* 02801C 8002741C 24A5F098 */  addiu $a1, %lo(D_8014F098) # addiu $a1, $a1, -0xf68
-/* 028020 80027420 2484EF58 */  addiu $a0, %lo(D_8014EF58) # addiu $a0, $a0, -0x10a8
+/* 028014 80027414 3C048015 */  lui   $a0, %hi(gDmaMesgQueue) # $a0, 0x8015
+/* 028018 80027418 3C058015 */  lui   $a1, %hi(gMainReceivedMesg) # $a1, 0x8015
+/* 02801C 8002741C 24A5F098 */  addiu $a1, %lo(gMainReceivedMesg) # addiu $a1, $a1, -0xf68
+/* 028020 80027420 2484EF58 */  addiu $a0, %lo(gDmaMesgQueue) # addiu $a0, $a0, -0x10a8
 /* 028024 80027424 0C0335D4 */  jal   osRecvMesg
 /* 028028 80027428 24060001 */   li    $a2, 1
 /* 02802C 8002742C 10000048 */  b     .L80027550
@@ -308,24 +308,24 @@ glabel func_80027040
 /* 0280F0 800274F0 3C0100FF */  lui   $at, (0x00FFFFFF >> 16) # lui $at, 0xff
 /* 0280F4 800274F4 95CEDEB0 */  lhu   $t6, %lo(D_800DDEB0)($t6)
 /* 0280F8 800274F8 3421FFFF */  ori   $at, (0x00FFFFFF & 0xFFFF) # ori $at, $at, 0xffff
-/* 0280FC 800274FC 3C088015 */  lui   $t0, %hi(D_8014EF58) # $t0, 0x8015
+/* 0280FC 800274FC 3C088015 */  lui   $t0, %hi(gDmaMesgQueue) # $t0, 0x8015
 /* 028100 80027500 3C0F0014 */  lui   $t7, %hi(_kart_texturesSegmentRomStart) # $t7, 0x14
 /* 028104 80027504 25EF5470 */  addiu $t7, %lo(_kart_texturesSegmentRomStart) # addiu $t7, $t7, 0x5470
-/* 028108 80027508 2508EF58 */  addiu $t0, %lo(D_8014EF58) # addiu $t0, $t0, -0x10a8
-/* 02810C 8002750C 3C048015 */  lui   $a0, %hi(D_8014F0A0) # $a0, 0x8015
+/* 028108 80027508 2508EF58 */  addiu $t0, %lo(gDmaMesgQueue) # addiu $t0, $t0, -0x10a8
+/* 02810C 8002750C 3C048015 */  lui   $a0, %hi(gDmaIoMesg) # $a0, 0x8015
 /* 028110 80027510 01A14824 */  and   $t1, $t5, $at
 /* 028114 80027514 012F3821 */  addu  $a3, $t1, $t7
-/* 028118 80027518 2484F0A0 */  addiu $a0, %lo(D_8014F0A0) # addiu $a0, $a0, -0xf60
+/* 028118 80027518 2484F0A0 */  addiu $a0, %lo(gDmaIoMesg) # addiu $a0, $a0, -0xf60
 /* 02811C 8002751C AFA80018 */  sw    $t0, 0x18($sp)
 /* 028120 80027520 AFB00010 */  sw    $s0, 0x10($sp)
 /* 028124 80027524 00002825 */  move  $a1, $zero
 /* 028128 80027528 00003025 */  move  $a2, $zero
 /* 02812C 8002752C 0C03370C */  jal   osPiStartDma
 /* 028130 80027530 AFAE0014 */   sw    $t6, 0x14($sp)
-/* 028134 80027534 3C048015 */  lui   $a0, %hi(D_8014EF58) # $a0, 0x8015
-/* 028138 80027538 3C058015 */  lui   $a1, %hi(D_8014F098) # $a1, 0x8015
-/* 02813C 8002753C 24A5F098 */  addiu $a1, %lo(D_8014F098) # addiu $a1, $a1, -0xf68
-/* 028140 80027540 2484EF58 */  addiu $a0, %lo(D_8014EF58) # addiu $a0, $a0, -0x10a8
+/* 028134 80027534 3C048015 */  lui   $a0, %hi(gDmaMesgQueue) # $a0, 0x8015
+/* 028138 80027538 3C058015 */  lui   $a1, %hi(gMainReceivedMesg) # $a1, 0x8015
+/* 02813C 8002753C 24A5F098 */  addiu $a1, %lo(gMainReceivedMesg) # addiu $a1, $a1, -0xf68
+/* 028140 80027540 2484EF58 */  addiu $a0, %lo(gDmaMesgQueue) # addiu $a0, $a0, -0x10a8
 /* 028144 80027544 0C0335D4 */  jal   osRecvMesg
 /* 028148 80027548 24060001 */   li    $a2, 1
 /* 02814C 8002754C 8FBF002C */  lw    $ra, 0x2c($sp)

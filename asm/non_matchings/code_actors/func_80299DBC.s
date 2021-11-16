@@ -9,8 +9,8 @@ glabel func_80299DBC
 /* 1033E8 80299DD8 304E0800 */  andi  $t6, $v0, 0x800
 /* 1033EC 80299DDC 15C0003A */  bnez  $t6, .L80299EC8
 /* 1033F0 80299DE0 24070000 */   li    $a3, 0
-/* 1033F4 80299DE4 3C0F800E */  lui   $t7, %hi(D_800DDB40) # $t7, 0x800e
-/* 1033F8 80299DE8 8DEFDB40 */  lw    $t7, %lo(D_800DDB40)($t7)
+/* 1033F4 80299DE4 3C0F800E */  lui   $t7, %hi(camera1) # $t7, 0x800e
+/* 1033F8 80299DE8 8DEFDB40 */  lw    $t7, %lo(camera1)($t7)
 /* 1033FC 80299DEC 240100B8 */  li    $at, 184
 /* 103400 80299DF0 94860026 */  lhu   $a2, 0x26($a0)
 /* 103404 80299DF4 008FC023 */  subu  $t8, $a0, $t7

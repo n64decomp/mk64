@@ -46,10 +46,10 @@ glabel func_80099EC4
 /* 09AB64 80099F64 8E590004 */  lw    $t9, 4($s2)
 /* 09AB68 80099F68 3C0100FF */  lui   $at, (0x00FFFFFF >> 16) # lui $at, 0xff
 /* 09AB6C 80099F6C 8E690000 */  lw    $t1, ($s3)
-/* 09AB70 80099F70 3C158015 */  lui   $s5, %hi(D_8014EF58) # $s5, 0x8015
+/* 09AB70 80099F70 3C158015 */  lui   $s5, %hi(gDmaMesgQueue) # $s5, 0x8015
 /* 09AB74 80099F74 3421FFFF */  ori   $at, (0x00FFFFFF & 0xFFFF) # ori $at, $at, 0xffff
 /* 09AB78 80099F78 3C1E0073 */  lui   $fp, %hi(_textures_0aSegmentRomStart) # $fp, 0x73
-/* 09AB7C 80099F7C 26B5EF58 */  addiu $s5, %lo(D_8014EF58) # addiu $s5, $s5, -0x10a8
+/* 09AB7C 80099F7C 26B5EF58 */  addiu $s5, %lo(gDmaMesgQueue) # addiu $s5, $s5, -0x10a8
 /* 09AB80 80099F80 27DE9A30 */  addiu $fp, %lo(_textures_0aSegmentRomStart) # addiu $fp, $fp, -0x65d0
 /* 09AB84 80099F84 03214024 */  and   $t0, $t9, $at
 /* 09AB88 80099F88 03C83821 */  addu  $a3, $fp, $t0

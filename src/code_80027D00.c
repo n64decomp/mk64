@@ -12,7 +12,7 @@ extern Player *D_800DC4F4;
 extern Player *D_800DC4F8;
 extern Player *D_800DC4FC;
 
-extern Camera *D_800DDB40;
+extern Camera *camera1;
 
 s32 func_80027D00(Player *arg0) {
     s32 phi_v1;
@@ -145,7 +145,7 @@ void func_80028864(Player *arg0, s32 arg1, s8 arg2, s8 arg3) {
                 if (temp_v0_2 != 3) {
 
                 } else {
-                    temp_v0_3 = func_8001FB0C(D_800DDB40, D_8016557C, 0.0f);
+                    temp_v0_3 = func_8001FB0C(camera1, D_8016557C, 0.0f);
                     temp_a0 = arg0;
                     sp1E = temp_v0_3;
                     phi_a0 = temp_a0;
@@ -153,7 +153,7 @@ void func_80028864(Player *arg0, s32 arg1, s8 arg2, s8 arg3) {
 
                     } else {
                         arg0 = temp_a0;
-                        temp_v0_4 = func_8001FB0C(temp_a0, (bitwise f32) D_800DDB44, D_8016557C, 0);
+                        temp_v0_4 = func_8001FB0C(temp_a0, (bitwise f32) camera2, D_8016557C, 0);
                         temp_a0_2 = arg0;
                         sp1E = temp_v0_4;
                         phi_a0 = temp_a0_2;
@@ -161,7 +161,7 @@ void func_80028864(Player *arg0, s32 arg1, s8 arg2, s8 arg3) {
 
                         } else {
                             arg0 = temp_a0_2;
-                            temp_v0_5 = func_8001FB0C(temp_a0_2, (bitwise f32) D_800DDB48, D_8016557C, 0);
+                            temp_v0_5 = func_8001FB0C(temp_a0_2, (bitwise f32) camera3, D_8016557C, 0);
                             temp_a0_3 = arg0;
                             sp1E = temp_v0_5;
                             phi_a0 = temp_a0_3;
@@ -169,7 +169,7 @@ void func_80028864(Player *arg0, s32 arg1, s8 arg2, s8 arg3) {
 
                             } else {
                                 arg0 = temp_a0_3;
-                                sp1E = func_8001FB0C(temp_a0_3, (bitwise f32) D_800DDB4C, D_8016557C, 0);
+                                sp1E = func_8001FB0C(temp_a0_3, (bitwise f32) camera4, D_8016557C, 0);
                                 phi_a0 = arg0;
                             }
                         }
@@ -177,7 +177,7 @@ void func_80028864(Player *arg0, s32 arg1, s8 arg2, s8 arg3) {
                     goto block_17;
                 }
             } else {
-                temp_v0_6 = func_8001FB0C(D_800DDB40, D_8016557C, 0.0f);
+                temp_v0_6 = func_8001FB0C(camera1, D_8016557C, 0.0f);
                 temp_a0_4 = arg0;
                 sp1E = temp_v0_6;
                 phi_a0 = temp_a0_4;
@@ -185,13 +185,13 @@ void func_80028864(Player *arg0, s32 arg1, s8 arg2, s8 arg3) {
 
                 } else {
                     arg0 = temp_a0_4;
-                    sp1E = func_8001FB0C(temp_a0_4, (bitwise f32) D_800DDB44, D_8016557C, 0);
+                    sp1E = func_8001FB0C(temp_a0_4, (bitwise f32) camera2, D_8016557C, 0);
                     phi_a0 = arg0;
                 }
                 goto block_17;
             }
         } else {
-            sp1E = func_8001FB0C(D_800DDB40, D_8016557C, 0.0f);
+            sp1E = func_8001FB0C(camera1, D_8016557C, 0.0f);
             phi_a0 = arg0;
 block_17:
         }
@@ -319,26 +319,26 @@ extern s16 D_80164AF0;
 
 void func_80028F70(void) {
     D_80164AF0 = 0;
-    func_80028E70(D_800DC4FC, D_800DDB40, 0, 0);
-    func_80028E70(D_800DC4E0, D_800DDB40, 1, 0);
-    func_80028E70(D_800DC4E4, D_800DDB40, 2, 0);
-    func_80028E70(D_800DC4E8, D_800DDB40, 3, 0);
-    func_80028E70(D_800DC4EC, D_800DDB40, 4, 0);
-    func_80028E70(D_800DC4F0, D_800DDB40, 5, 0);
-    func_80028E70(D_800DC4F4, D_800DDB40, 6, 0);
-    func_80028E70(D_800DC4F8, D_800DDB40, 7, 0);
+    func_80028E70(D_800DC4FC, camera1, 0, 0);
+    func_80028E70(D_800DC4E0, camera1, 1, 0);
+    func_80028E70(D_800DC4E4, camera1, 2, 0);
+    func_80028E70(D_800DC4E8, camera1, 3, 0);
+    func_80028E70(D_800DC4EC, camera1, 4, 0);
+    func_80028E70(D_800DC4F0, camera1, 5, 0);
+    func_80028E70(D_800DC4F4, camera1, 6, 0);
+    func_80028E70(D_800DC4F8, camera1, 7, 0);
 }
 
 void func_80029060(void) {
     D_80164AF0 = 0;
-    func_80028E70(D_800DC4FC, D_800DDB40, 0, 0);
-    func_80028E70(D_800DC4E0, D_800DDB40, 1, 0);
-    func_80028E70(D_800DC4E4, D_800DDB40, 2, 0);
-    func_80028E70(D_800DC4E8, D_800DDB40, 3, 0);
-    func_80028E70(D_800DC4EC, D_800DDB40, 4, 0);
-    func_80028E70(D_800DC4F0, D_800DDB40, 5, 0);
-    func_80028E70(D_800DC4F4, D_800DDB40, 6, 0);
-    func_80028E70(D_800DC4F8, D_800DDB40, 7, 0);
+    func_80028E70(D_800DC4FC, camera1, 0, 0);
+    func_80028E70(D_800DC4E0, camera1, 1, 0);
+    func_80028E70(D_800DC4E4, camera1, 2, 0);
+    func_80028E70(D_800DC4E8, camera1, 3, 0);
+    func_80028E70(D_800DC4EC, camera1, 4, 0);
+    func_80028E70(D_800DC4F0, camera1, 5, 0);
+    func_80028E70(D_800DC4F4, camera1, 6, 0);
+    func_80028E70(D_800DC4F8, camera1, 7, 0);
 }
 
 void func_80029150(void) {
@@ -347,10 +347,10 @@ void func_80029150(void) {
 
 void func_80029158(void) {
     D_80164AF0 = 0;
-    func_80028E70(D_800DC4FC, D_800DDB40, 0, 0);
-    func_80028E70(D_800DC4E0, D_800DDB40, 1, 0);
-    func_80028E70(D_800DC4E4, D_800DDB40, 2, 0);
-    func_80028E70(D_800DC4E8, D_800DDB40, 3, 0);
+    func_80028E70(D_800DC4FC, camera1, 0, 0);
+    func_80028E70(D_800DC4E0, camera1, 1, 0);
+    func_80028E70(D_800DC4E4, camera1, 2, 0);
+    func_80028E70(D_800DC4E8, camera1, 3, 0);
 }
 
 void func_800291E8(void) {

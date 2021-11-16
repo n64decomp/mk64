@@ -116,7 +116,7 @@ void load_surface_map(u32 arg0, void *arg1) {
         }
     }
     arg1->unk36 = phi_a3;
-    if (*(&D_80152300 + (((temp_a2 - D_800DDB40) / 0xB8) * 2)) == 1) {
+    if (*(&D_80152300 + (((temp_a2 - camera1) / 0xB8) * 2)) == 1) {
         sp34 = temp_t1;
         sp22 = phi_a3;
         sp30 = temp_a2;

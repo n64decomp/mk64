@@ -1,8 +1,8 @@
 glabel func_800540CC
 /* 054CCC 800540CC 00057080 */  sll   $t6, $a1, 2
 /* 054CD0 800540D0 01C57023 */  subu  $t6, $t6, $a1
-/* 054CD4 800540D4 3C0F800E */  lui   $t7, %hi(D_800DDB40) # $t7, 0x800e
-/* 054CD8 800540D8 8DEFDB40 */  lw    $t7, %lo(D_800DDB40)($t7)
+/* 054CD4 800540D4 3C0F800E */  lui   $t7, %hi(camera1) # $t7, 0x800e
+/* 054CD8 800540D8 8DEFDB40 */  lw    $t7, %lo(camera1)($t7)
 /* 054CDC 800540DC 000E70C0 */  sll   $t6, $t6, 3
 /* 054CE0 800540E0 01C57023 */  subu  $t6, $t6, $a1
 /* 054CE4 800540E4 000E70C0 */  sll   $t6, $t6, 3

@@ -14,14 +14,14 @@ glabel func_8001F87C
 /* 0204AC 8001F8AC 00403025 */  move  $a2, $v0
 /* 0204B0 8001F8B0 15E0002D */  bnez  $t7, .L8001F968
 /* 0204B4 8001F8B4 24126EC0 */   li    $s2, 28352
-/* 0204B8 8001F8B8 3C108016 */  lui   $s0, %hi(D_801646F0) # $s0, 0x8016
+/* 0204B8 8001F8B8 3C108016 */  lui   $s0, %hi(cameras) # $s0, 0x8016
 /* 0204BC 8001F8BC 3C0C8015 */  lui   $t4, %hi(D_80152300) # $t4, 0x8015
 /* 0204C0 8001F8C0 3C0A8016 */  lui   $t2, %hi(D_80164A28) # $t2, 0x8016
 /* 0204C4 8001F8C4 3C078016 */  lui   $a3, %hi(D_80164A2C) # $a3, 0x8016
 /* 0204C8 8001F8C8 24E74A2C */  addiu $a3, %lo(D_80164A2C) # addiu $a3, $a3, 0x4a2c
 /* 0204CC 8001F8CC 254A4A28 */  addiu $t2, %lo(D_80164A28) # addiu $t2, $t2, 0x4a28
 /* 0204D0 8001F8D0 258C2300 */  addiu $t4, %lo(D_80152300) # addiu $t4, $t4, 0x2300
-/* 0204D4 8001F8D4 261046F0 */  addiu $s0, %lo(D_801646F0) # addiu $s0, $s0, 0x46f0
+/* 0204D4 8001F8D4 261046F0 */  addiu $s0, %lo(cameras) # addiu $s0, $s0, 0x46f0
 /* 0204D8 8001F8D8 241100B8 */  li    $s1, 184
 /* 0204DC 8001F8DC 240D0001 */  li    $t5, 1
 /* 0204E0 8001F8E0 240B0002 */  li    $t3, 2

@@ -3,7 +3,7 @@ glabel func_80094660
 /* 095264 80094664 AFBF0034 */  sw    $ra, 0x34($sp)
 /* 095268 80094668 AFB00030 */  sw    $s0, 0x30($sp)
 /* 09526C 8009466C AFA40058 */  sw    $a0, 0x58($sp)
-/* 095270 80094670 0C0A9F02 */  jal   func_802A7C08
+/* 095270 80094670 0C0A9F02 */  jal   move_segment_table_to_dmem
 /* 095274 80094674 AFA5005C */   sw    $a1, 0x5c($sp)
 /* 095278 80094678 3C108015 */  lui   $s0, %hi(gDisplayListHead) # $s0, 0x8015
 /* 09527C 8009467C 26100298 */  addiu $s0, %lo(gDisplayListHead) # addiu $s0, $s0, 0x298

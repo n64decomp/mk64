@@ -2,6 +2,7 @@
 #define TYPES_H
 
 #include <ultra64.h>
+#include <common_structs.h>
 
 enum SpTaskState {
     SPTASK_STATE_NOT_STARTED,
@@ -25,6 +26,13 @@ struct VblankHandler
     OSMesg msg;
 };
 
+struct D_80150158 {
+    s16 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+};
+
 struct Controller {
     s16 rawStickX;
     s16 rawStickY;
@@ -37,24 +45,22 @@ struct Controller {
 };
 
 struct UnkStruct_800DC5EC {
-    u32 unk0;
-    u32 unk4;
-    u32 unk8;
-    u32 unkC;
-    u32 unk10;
-    u32 unk14;
-    u32 unk18;
-    u32 unk1C;
-    u32 unk20;
-    u32 unk24;
-    u32 unk28;
-    u16 unk2C;
-    u16 unk2E;
-    u16 unk30;
-    u16 unk32;
-    u16 unk34;
-    u16 unk36;
-    s16 unk38;
+    struct Controller *controllers; // gControllers ptr 800F6910
+    Camera *camera; // Player camera ptr
+    Player *player; // Player ptr 800F6990
+    s32 unkC; // unk struct?
+    Vp viewport;
+    s32 pad[2];
+    u32 cameraHeight;
+    s16 screenWidth;
+    s16 screenHeight;
+    s16 screenStartX;
+    s16 screenStartY;
+    s16 unk3C;
+    s16 playerDirection;
+    s16 pathCounter;
+    s16 unk42;
+    s32 pad2;
 };
 
 struct UnkStruct_800DDB40 {

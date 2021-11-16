@@ -12,4 +12,8 @@ struct GfxPool {
 
 extern struct GfxPool *gGfxPool;
 
+extern OSIoMesg gDmaIoMesg;
+extern OSMesg gMainReceivedMesg;
+extern OSMesgQueue gDmaMesgQueue;
+
 #endif

@@ -656,10 +656,10 @@ void func_800C2474(void) {
     s32 phi_v0_4;
 
     D_8018EF10 = 0;
-    D_8018FB98.unk0 = D_800DDB40;
-    D_8018FB98.unk4 = D_800DDB44;
-    D_8018FB98.unk8 = D_800DDB48;
-    D_8018FB98.unkC = D_800DDB4C;
+    D_8018FB98.unk0 = camera1;
+    D_8018FB98.unk4 = camera2;
+    D_8018FB98.unk8 = camera3;
+    D_8018FB98.unkC = camera4;
     D_8018FB91 = 0;
     D_8018FB90 = 1;
     D_800EA0F4 = 0;

@@ -2,8 +2,8 @@ glabel func_8008A454
 /* 08B054 8008A454 00057080 */  sll   $t6, $a1, 2
 /* 08B058 8008A458 01C57023 */  subu  $t6, $t6, $a1
 /* 08B05C 8008A45C 000E70C0 */  sll   $t6, $t6, 3
-/* 08B060 8008A460 3C0F800E */  lui   $t7, %hi(D_800DDB40) # $t7, 0x800e
-/* 08B064 8008A464 8DEFDB40 */  lw    $t7, %lo(D_800DDB40)($t7)
+/* 08B060 8008A460 3C0F800E */  lui   $t7, %hi(camera1) # $t7, 0x800e
+/* 08B064 8008A464 8DEFDB40 */  lw    $t7, %lo(camera1)($t7)
 /* 08B068 8008A468 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 08B06C 8008A46C 01C57023 */  subu  $t6, $t6, $a1
 /* 08B070 8008A470 AFBF0014 */  sw    $ra, 0x14($sp)

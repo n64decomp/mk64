@@ -1720,7 +1720,7 @@ void func_8008A1D0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     u32 temp_v0;
     ? phi_a2;
 
-    sp24 = (arg1 * 0xB8) + D_800DDB40;
+    sp24 = (arg1 * 0xB8) + camera1;
     func_800721E8(0x140000);
     temp_v0 = func_8008896C(arg0, sp24);
     if (temp_v0 < 0x2711) {
@@ -1758,7 +1758,7 @@ u32 func_8008A364(s32 arg0, s32 arg1, u16 arg2, s32 arg3) {
     u16 phi_a2;
     u32 phi_v1;
 
-    sp24 = (arg1 * 0xB8) + D_800DDB40;
+    sp24 = (arg1 * 0xB8) + camera1;
     func_800721E8(0x60000);
     temp_v0 = func_8008896C(arg0, sp24);
     phi_v1 = temp_v0;
@@ -1794,7 +1794,7 @@ GLOBAL_ASM("asm/non_matchings/code_80086E70/func_8008A364.s")
 u32 func_8008896C(s32); // extern
 
 void func_8008A454(s32 arg0, s32 arg1, s32 arg2) {
-    if (func_8008896C((arg1 * 0xB8) + D_800DDB40) < (arg2 * arg2)) {
+    if (func_8008896C((arg1 * 0xB8) + camera1) < (arg2 * arg2)) {
         func_800721C0(arg0, 0x20);
         return;
     }
@@ -1823,7 +1823,7 @@ void func_8008A4CC(s32 arg0) {
 
     func_800721E8(0x70000);
     phi_s2 = 0;
-    phi_s4 = D_800DDB40;
+    phi_s4 = camera1;
     if (gPlayerCountSelection1 > 0) {
         temp_s3 = (arg0 * 0xE0) + &D_80165C18;
         do {
@@ -1868,7 +1868,7 @@ void func_8008A6DC(s32 arg0, f32 arg1) {
     s32 phi_s2;
 
     func_800721E8(0x60000);
-    phi_s1 = D_800DDB40;
+    phi_s1 = camera1;
     phi_s2 = 0;
     if (gPlayerCountSelection1 > 0) {
         temp_f22 = D_800EF4F0;
