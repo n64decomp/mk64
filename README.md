@@ -1,6 +1,6 @@
 # Mario Kart 64
 
-This repo contains a work-in-progress decompilation of Mario Kart 64 (U). The project pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information. The project is around 7% complete.
+This repo contains a work-in-progress decompilation of Mario Kart 64 (U). The project pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. 10% of the source contains matching C. See [progress](#Progress) for more information.
 
 It builds the following ROM:
 
@@ -40,7 +40,7 @@ Run the following commands after pulling:
 
 ## Progress
 
-The Mario Kart 64 code-base contains thirty-five C files, around twenty-five files remain for decompilation. This does not account for other kinds of files such as data. The source is in a 'shiftable' state that may allow modding but glitches may exist. Keep in-mind the code-base will alter significantly overtime. Feedback that raises awareness of new shift issues are welcome as a comment on issue #6. Note that some segments must be moved manually to prevent them colliding into each other.  
+The Mario Kart 64 code-base contains thirty-five C files, around twenty-four files remain for decompilation. This does not account for other kinds of files such as data. The source is in a 'shiftable' state that may allow modding but glitches may exist. Keep in-mind the code-base will alter significantly overtime. Feedback that raises awareness of new shift issues are welcome as a comment on issue #6. Note that some segments must be moved manually to prevent them colliding into each other.  
 
 Some menu textures are compressed using a format called tkmk00. A byte-matching compressor/decompressor does not yet exist.   
 
