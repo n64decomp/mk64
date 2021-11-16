@@ -21,7 +21,7 @@ glabel func_800B28C8
 /* 0B3514 800B2914 804286AD */   lb    $v0, %lo(D_800E86AD)($v0) # -0x7953($v0)
 /* 0B3518 800B2918 24030001 */  li    $v1, 1
 /* 0B351C 800B291C 10A30026 */  beq   $a1, $v1, .L800B29B8
-/* 0B3520 800B2920 3C01800E */   lui   $at, %hi(D_800DC548) # 0x800e
+/* 0B3520 800B2920 3C01800E */   lui   $at, %hi(gCCSelection) # 0x800e
 /* 0B3524 800B2924 24010002 */  li    $at, 2
 /* 0B3528 800B2928 10A10012 */  beq   $a1, $at, .L800B2974
 /* 0B352C 800B292C 24010003 */   li    $at, 3
@@ -31,8 +31,8 @@ glabel func_800B28C8
 /* 0B353C 800B293C 00000000 */   nop   
 
 .L800B2940:
-/* 0B3540 800B2940 3C01800E */  lui   $at, %hi(D_800DC548) # $at, 0x800e
-/* 0B3544 800B2944 AC22C548 */  sw    $v0, %lo(D_800DC548)($at)
+/* 0B3540 800B2940 3C01800E */  lui   $at, %hi(gCCSelection) # $at, 0x800e
+/* 0B3544 800B2944 AC22C548 */  sw    $v0, %lo(gCCSelection)($at)
 /* 0B3548 800B2948 24030001 */  li    $v1, 1
 /* 0B354C 800B294C 3C01800E */  lui   $at, %hi(D_800DC648) # $at, 0x800e
 /* 0B3550 800B2950 A423C648 */  sh    $v1, %lo(D_800DC648)($at)
@@ -48,8 +48,8 @@ glabel func_800B28C8
 /* 0B3570 800B2970 AC20C604 */   sw    $zero, %lo(gIsMirrorMode)($at) # -0x39fc($at)
 
 .L800B2974:
-/* 0B3574 800B2974 3C01800E */  lui   $at, %hi(D_800DC548) # $at, 0x800e
-/* 0B3578 800B2978 AC22C548 */  sw    $v0, %lo(D_800DC548)($at)
+/* 0B3574 800B2974 3C01800E */  lui   $at, %hi(gCCSelection) # $at, 0x800e
+/* 0B3578 800B2978 AC22C548 */  sw    $v0, %lo(gCCSelection)($at)
 /* 0B357C 800B297C 3C01800E */  lui   $at, %hi(D_800DC648) # $at, 0x800e
 /* 0B3580 800B2980 A423C648 */  sh    $v1, %lo(D_800DC648)($at)
 /* 0B3584 800B2984 24010003 */  li    $at, 3
@@ -71,7 +71,7 @@ glabel func_800B28C8
 /* 0B35B4 800B29B4 AC20C604 */   sw    $zero, %lo(gIsMirrorMode)($at) # -0x39fc($at)
 
 .L800B29B8:
-/* 0B35B8 800B29B8 AC23C548 */  sw    $v1, %lo(D_800DC548)($at) # -0x3ab8($at)
+/* 0B35B8 800B29B8 AC23C548 */  sw    $v1, %lo(gCCSelection)($at) # -0x3ab8($at)
 /* 0B35BC 800B29BC 3C01800E */  lui   $at, %hi(gIsMirrorMode) # $at, 0x800e
 /* 0B35C0 800B29C0 AC20C604 */  sw    $zero, %lo(gIsMirrorMode)($at)
 /* 0B35C4 800B29C4 3C01800E */  lui   $at, %hi(D_800DC648) # $at, 0x800e

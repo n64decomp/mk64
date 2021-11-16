@@ -1808,7 +1808,7 @@ block_3:
         temp_a2_2 = sp2E - 0x14;
         func_802832C4(&D_802839E0, arg0, temp_a2_2, temp_a2_2);
     }
-    if (D_800DC548 == 3) {
+    if (gCCSelection == 3) {
         sp2C = *(&D_80286B34 + (D_800DC5E4 * 2));
     }
     if (sp2C == D_802876D2) {

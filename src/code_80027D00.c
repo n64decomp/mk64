@@ -5834,7 +5834,7 @@ void func_80033AE0(void *arg0, void *arg1, s8 arg2) {
     arg0->unkFA = temp_t9;
     if (((sp2D0 >= 0x5A) || (sp2D0 < -0x59)) && ((arg0->unk44 & 0x4000) == 0)) {
         temp_v1_4 = arg0->unkBC;
-        if (((temp_v1_4 & 0x10) == 0) && (D_800DC548 == 2) && (gModeSelection != 3) && ((temp_v1_4 & 8) == 0) && (((arg0->unk94 / 18.0f) * 216.0f) >= 40.0f) && (arg0->unk204 == 0)) {
+        if (((temp_v1_4 & 0x10) == 0) && (gCCSelection == 2) && (gModeSelection != 3) && ((temp_v1_4 & 8) == 0) && (((arg0->unk94 / 18.0f) * 216.0f) >= 40.0f) && (arg0->unk204 == 0)) {
             arg0->unkC = arg0->unkC | 0x80;
         }
     }

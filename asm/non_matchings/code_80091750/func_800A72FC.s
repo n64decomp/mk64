@@ -18,9 +18,9 @@ glabel func_800A72FC
 /* 0A7F3C 800A733C 44815000 */  mtc1  $at, $f10
 /* 0A7F40 800A7340 3C014000 */  li    $at, 0x40000000 # 2.000000
 /* 0A7F44 800A7344 44819000 */  mtc1  $at, $f18
-/* 0A7F48 800A7348 3C08800E */  lui   $t0, %hi(D_800DC548) # $t0, 0x800e
+/* 0A7F48 800A7348 3C08800E */  lui   $t0, %hi(gCCSelection) # $t0, 0x800e
 /* 0A7F4C 800A734C 46143202 */  mul.s $f8, $f6, $f20
-/* 0A7F50 800A7350 8D08C548 */  lw    $t0, %lo(D_800DC548)($t0)
+/* 0A7F50 800A7350 8D08C548 */  lw    $t0, %lo(gCCSelection)($t0)
 /* 0A7F54 800A7354 3C04800E */  lui   $a0, %hi(D_800E76CC)
 /* 0A7F58 800A7358 00084880 */  sll   $t1, $t0, 2
 /* 0A7F5C 800A735C 00892021 */  addu  $a0, $a0, $t1
@@ -62,8 +62,8 @@ glabel func_800A72FC
 /* 0A7FEC 800A73EC 018D2023 */   subu  $a0, $t4, $t5
 /* 0A7FF0 800A73F0 0C024C36 */  jal   set_text_color
 /* 0A7FF4 800A73F4 24040003 */   li    $a0, 3
-/* 0A7FF8 800A73F8 3C09800E */  lui   $t1, %hi(D_800DC548) # $t1, 0x800e
-/* 0A7FFC 800A73FC 8D29C548 */  lw    $t1, %lo(D_800DC548)($t1)
+/* 0A7FF8 800A73F8 3C09800E */  lui   $t1, %hi(gCCSelection) # $t1, 0x800e
+/* 0A7FFC 800A73FC 8D29C548 */  lw    $t1, %lo(gCCSelection)($t1)
 /* 0A8000 800A7400 8FB80038 */  lw    $t8, 0x38($sp)
 /* 0A8004 800A7404 8FA80030 */  lw    $t0, 0x30($sp)
 /* 0A8008 800A7408 3C06800E */  lui   $a2, %hi(D_800E76DC)

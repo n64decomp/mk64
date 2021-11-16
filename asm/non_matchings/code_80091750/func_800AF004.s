@@ -21,10 +21,10 @@ glabel L800AF038
 /* 0AFC4C 800AF04C 14200052 */  bnez  $at, .L800AF198
 /* 0AFC50 800AF050 AE18001C */   sw    $t8, 0x1c($s0)
 /* 0AFC54 800AF054 24080001 */  li    $t0, 1
-/* 0AFC58 800AF058 3C03800E */  lui   $v1, %hi(D_800DC548) # $v1, 0x800e
+/* 0AFC58 800AF058 3C03800E */  lui   $v1, %hi(gCCSelection) # $v1, 0x800e
 /* 0AFC5C 800AF05C AE00001C */  sw    $zero, 0x1c($s0)
 /* 0AFC60 800AF060 AE080004 */  sw    $t0, 4($s0)
-/* 0AFC64 800AF064 2463C548 */  addiu $v1, %lo(D_800DC548) # addiu $v1, $v1, -0x3ab8
+/* 0AFC64 800AF064 2463C548 */  addiu $v1, %lo(gCCSelection) # addiu $v1, $v1, -0x3ab8
 /* 0AFC68 800AF068 80490000 */  lb    $t1, ($v0)
 /* 0AFC6C 800AF06C 8C6B0000 */  lw    $t3, ($v1)
 /* 0AFC70 800AF070 2404012C */  li    $a0, 300

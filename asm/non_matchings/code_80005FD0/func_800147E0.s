@@ -1,6 +1,6 @@
 glabel func_800147E0
-/* 0153E0 800147E0 3C0E800E */  lui   $t6, %hi(D_800DC548)
-/* 0153E4 800147E4 8DCEC548 */  lw    $t6, %lo(D_800DC548)($t6)
+/* 0153E0 800147E0 3C0E800E */  lui   $t6, %hi(gCCSelection)
+/* 0153E4 800147E4 8DCEC548 */  lw    $t6, %lo(gCCSelection)($t6)
 /* 0153E8 800147E8 3C01800F */  lui   $at, %hi(D_800ED1B8)
 /* 0153EC 800147EC D428D1B8 */  ldc1  $f8, %lo(D_800ED1B8)($at)
 /* 0153F0 800147F0 448E2000 */  mtc1  $t6, $f4

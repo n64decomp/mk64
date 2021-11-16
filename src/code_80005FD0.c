@@ -1595,7 +1595,7 @@ void func_80007D04(s32 arg0, void *arg1) {
             phi_at = &D_801634C0 + (arg0 * 2);
             goto block_25;
         }
-        temp_v1_2 = D_800DC548;
+        temp_v1_2 = gCCSelection;
         if (temp_v1_2 != 0) {
             if (temp_v1_2 != 1) {
                 if (temp_v1_2 != 2) {
@@ -1838,7 +1838,7 @@ void func_80008424(s32 arg0, f32 arg1, void *arg2) {
             // Duplicate return node #55. Try simplifying control flow for better match
             return;
         }
-        temp_v0_2 = D_800DC548;
+        temp_v0_2 = gCCSelection;
         phi_f0 = D_800ECF9C;
         if (temp_v0_2 != 0) {
             if (temp_v0_2 != 1) {
@@ -2077,7 +2077,7 @@ extern ? gPlayers;
         } else {
             phi_a0_2 = temp_a3->unk0;
         }
-        temp_lo = (D_800DC548 + 1) * phi_a0_2;
+        temp_lo = (gCCSelection + 1) * phi_a0_2;
         *temp_t4 = temp_lo;
         if ((temp_lo < phi_a1_4) && (((temp_t1->unk94 / 18.0f) * 216.0f) >= 20.0f)) {
             goto block_55;
@@ -3116,16 +3116,16 @@ block_63:
                         temp_v1_3 = (arg0 * 0x10) + &D_801634F8;
                         sp30 = temp_v1_3;
                         temp_t0_2 = sp38 + &D_80163210;
-                        *temp_t0_2 = *segmented_to_virtual_dupe((gCurrentCourseId * 0x10) + (D_800DC548 * 4) + &D_0D0096B8, sp34 + &D_801631E0);
+                        *temp_t0_2 = *segmented_to_virtual_dupe((gCurrentCourseId * 0x10) + (gCCSelection * 4) + &D_0D0096B8, sp34 + &D_801631E0);
                         temp_v1_3->unk4 = -0.5f;
                         phi_t0_2 = temp_t0_2;
                     } else if (*(D_801645E0 + (D_80162FCE * 2)) > 0) {
                         temp_t0_3 = sp38 + &D_80163210;
-                        *temp_t0_3 = *segmented_to_virtual_dupe((gCurrentCourseId * 0x10) + (D_800DC548 * 4) + &D_0D009418, sp34 + &D_801631E0);
+                        *temp_t0_3 = *segmented_to_virtual_dupe((gCurrentCourseId * 0x10) + (gCCSelection * 4) + &D_0D009418, sp34 + &D_801631E0);
                         phi_t0_2 = temp_t0_3;
                     } else {
                         temp_t0_4 = sp38 + &D_80163210;
-                        *temp_t0_4 = *segmented_to_virtual_dupe((gCurrentCourseId * 0x10) + (D_800DC548 * 4) + &D_0D009568, sp34 + &D_801631E0);
+                        *temp_t0_4 = *segmented_to_virtual_dupe((gCurrentCourseId * 0x10) + (gCCSelection * 4) + &D_0D009568, sp34 + &D_801631E0);
                         phi_t0_2 = temp_t0_4;
                     }
                     sp3C = phi_t0_2;
@@ -3345,22 +3345,22 @@ block_63:
                 if ((*sp28 == 1) || (temp_v0_23 = *sp2C, (temp_v0_23 == 1)) || (temp_v0_23 == -1) || ((sp40->unkBC & 0x1000000C) != 0)) {
                     sp20 = temp_t0_6;
                     temp_v1_11 = sp38 + &D_80163028;
-                    *temp_v1_11 = *segmented_to_virtual_dupe((gCurrentCourseId * 0x10) + (D_800DC548 * 4) + &D_0D009418, phi_a1_3);
+                    *temp_v1_11 = *segmented_to_virtual_dupe((gCurrentCourseId * 0x10) + (gCCSelection * 4) + &D_0D009418, phi_a1_3);
                     phi_v1_3 = temp_v1_11;
                 } else {
                     sp20 = temp_t0_6;
                     temp_v1_10 = sp38 + &D_80163028;
-                    *temp_v1_10 = *segmented_to_virtual_dupe((gCurrentCourseId * 0x10) + (D_800DC548 * 4) + &D_0D009568, phi_a1_3);
+                    *temp_v1_10 = *segmented_to_virtual_dupe((gCurrentCourseId * 0x10) + (gCCSelection * 4) + &D_0D009568, phi_a1_3);
                     phi_v1_3 = temp_v1_10;
                 }
                 temp_f0_5 = *(sp38 + &D_80163068);
                 if ((D_800ECFC0 < temp_f0_5) || (temp_f0_5 < D_800ECFC4)) {
                     sp34 = phi_v1_3;
-                    *phi_v1_3 = *segmented_to_virtual_dupe((gCurrentCourseId * 0x10) + (D_800DC548 * 4) + &D_0D009808);
+                    *phi_v1_3 = *segmented_to_virtual_dupe((gCurrentCourseId * 0x10) + (gCCSelection * 4) + &D_0D009808);
                 }
                 if (D_80162FD0 == 1) {
                     sp34 = phi_v1_3;
-                    *phi_v1_3 = *segmented_to_virtual_dupe((gCurrentCourseId * 0x10) + (D_800DC548 * 4) + &D_0D0096B8);
+                    *phi_v1_3 = *segmented_to_virtual_dupe((gCurrentCourseId * 0x10) + (gCCSelection * 4) + &D_0D0096B8);
                 }
                 temp_v0_24 = *sp2C;
                 if ((temp_v0_24 == 2) || (temp_v0_24 == -2) || (temp_v0_24 == 3)) {
@@ -6156,7 +6156,7 @@ void func_8000F628(void) {
         spE4 = phi_t3;
         spE0 = phi_t4;
         spDC = phi_t5;
-        *phi_t2 = *segmented_to_virtual_dupe((phi_v0 * 0x10) + (D_800DC548 * 4) + &D_0D009418);
+        *phi_t2 = *segmented_to_virtual_dupe((phi_v0 * 0x10) + (gCCSelection * 4) + &D_0D009418);
         *phi_t3 = 0;
         *phi_t4 = 0;
         *phi_t5 = 0.0f;
@@ -6345,7 +6345,7 @@ void func_8000F628(void) {
     } while (temp_v1_3 < &D_80164448);
     D_8016347A = 0;
     phi_v1_2 = &D_80162F10;
-    if (D_800DC548 == 3) {
+    if (gCCSelection == 3) {
         D_8016347A = 1;
     }
     phi_v0_5 = &D_80162F50;
@@ -8678,7 +8678,7 @@ void func_800139E4(f32 arg0, f32 arg1, s32 arg2, s32 arg3, void *arg4, s32 arg5)
             }
             temp_v0_2 = phi_s0->unk2E;
             phi_s0->unk24 = (temp_v0_2 - 1) * D_800ED168;
-            if (((D_800DC548 > 0) || (gModeSelection == 1)) && (temp_v0_2 == 2)) {
+            if (((gCCSelection > 0) || (gModeSelection == 1)) && (temp_v0_2 == 2)) {
                 phi_s0->unk20 = arg0;
             } else {
                 phi_s0->unk20 = arg1;
@@ -9123,7 +9123,7 @@ void func_800147E0(void) {
     f64 temp_f0;
     ? phi_a2;
 
-    temp_f0 = (D_800DC548 * D_800ED1B8) / 216.0;
+    temp_f0 = (gCCSelection * D_800ED1B8) / 216.0;
     phi_a2 = 7;
     if (gModeSelection == 1) {
         phi_a2 = 8;
@@ -9191,7 +9191,7 @@ void func_80014934(void) {
     f64 temp_f0;
     ? phi_a2;
 
-    temp_f0 = (D_800DC548 * D_800ED1D0) / 216.0;
+    temp_f0 = (gCCSelection * D_800ED1D0) / 216.0;
     phi_a2 = 7;
     if (gModeSelection == 1) {
         phi_a2 = 8;
@@ -9259,7 +9259,7 @@ void func_80014A88(void) {
     f64 temp_f0;
     ? phi_a2;
 
-    temp_f0 = (D_800DC548 * D_800ED1E8) / 216.0;
+    temp_f0 = (gCCSelection * D_800ED1E8) / 216.0;
     phi_a2 = 7;
     if (gModeSelection == 1) {
         phi_a2 = 8;
@@ -9327,7 +9327,7 @@ void func_80014BDC(void) {
     f64 temp_f0;
     ? phi_a2;
 
-    temp_f0 = (D_800DC548 * D_800ED200) / 216.0;
+    temp_f0 = (gCCSelection * D_800ED200) / 216.0;
     phi_a2 = 7;
     if (gModeSelection == 1) {
         phi_a2 = 8;

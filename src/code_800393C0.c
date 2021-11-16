@@ -29,14 +29,17 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
     player->unk_100 = gKartGravityTable[player->characterId];
 
     switch (gModeSelection) {
+        // Mario Grand Prix
         case 0:
+        // Versus
         case 2:
-            player->unk_084 = D_800E2400.unk_00[D_800DC548][player->characterId];
-            player->unk_088 = D_800E24B4.unk_00[D_800DC548][player->characterId];
-            player->unk_210 = D_800E2568.unk_00[D_800DC548][player->characterId];
-            player->unk_214 = D_800E261C.unk_00[D_800DC548][player->characterId];
+            player->unk_084 = D_800E2400.unk_00[gCCSelection][player->characterId];
+            player->unk_088 = D_800E24B4.unk_00[gCCSelection][player->characterId];
+            player->unk_210 = D_800E2568.unk_00[gCCSelection][player->characterId];
+            player->unk_214 = D_800E261C.unk_00[gCCSelection][player->characterId];
             break;
 
+        // Time Trial (uses 100CC values)
         case 1:
             player->unk_084 = D_800E2400.unk_00[1][player->characterId];
             player->unk_088 = D_800E24B4.unk_00[1][player->characterId];
@@ -44,6 +47,7 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
             player->unk_214 = D_800E261C.unk_00[1][player->characterId];
             break;
 
+        // Battle
         case 3:
             player->unk_084 = D_800E2400.unk_00[4][player->characterId];
             player->unk_088 = D_800E24B4.unk_00[4][player->characterId];

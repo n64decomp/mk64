@@ -6629,7 +6629,7 @@ void func_8007D360(s32 arg0, s32 arg1) {
     temp_s0_2->unkC2 = 0;
     func_8008B80C(arg0, 0, 0, 0);
     temp_s0_2->unkB0 = 0;
-    if (D_800DC548 < 2) {
+    if (gCCSelection < 2) {
         temp_v0_6 = random_int(4);
         temp_f10 = temp_v0_6;
         phi_f10 = temp_f10;
@@ -6711,7 +6711,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007D714.s")
 void func_8007D794(void) {
     s32 temp_v0;
 
-    temp_v0 = D_800DC548;
+    temp_v0 = gCCSelection;
     if (temp_v0 == 0) {
         func_80089A04(0x3F000000, 0x3E4CCCCD);
         return;
@@ -6967,7 +6967,7 @@ void func_8007DDC0(s32 arg0) {
         }
     }
     if (temp_s0->unk4C == 0) {
-        temp_v0_3 = D_800DC548;
+        temp_v0_3 = gCCSelection;
         if ((temp_v0_3 == 0) || (temp_v0_3 == 1) || (temp_v0_3 == 2) || (temp_v0_3 == 3)) {
             sp2C = D_800EEF40;
         }
@@ -7111,7 +7111,7 @@ void func_8007E1F4(s32 arg0) {
         }
     }
     if (temp_s0->unk4C == 0) {
-        temp_v0_3 = D_800DC548;
+        temp_v0_3 = gCCSelection;
         if ((temp_v0_3 == 0) || (temp_v0_3 == 1) || (temp_v0_3 == 2) || (temp_v0_3 == 3)) {
             sp2C = 0x442F0000;
         }
@@ -10987,7 +10987,7 @@ void func_80086700(s32 arg0) {
     void *temp_v1;
     void *phi_v0;
 
-    if (D_800DC548 < 2) {
+    if (gCCSelection < 2) {
         temp_v0 = D_802874F5;
         if (temp_v0 != 0) {
             if (temp_v0 != 1) {

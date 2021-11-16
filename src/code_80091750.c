@@ -7675,7 +7675,7 @@ void func_800A2EB8(void *arg0) {
     set_text_color(5);
     temp_s0_2 = ((func_80093034(*(&D_800E7500 + (gCupSelection * 4))) + 8) * D_800F1C98) / 2.0f;
     temp_f0_3 = D_800F1C9C;
-    draw_text((-(((func_80093034(*(&D_800E76CC + (D_800DC548 * 4))) + 8) * temp_f0_3) / 2.0f) - arg0->unkC) + 0xF5, arg0->unk10 + 0xE1, *(&D_800E7500 + (D_800DC540 * 4)), 0, temp_f0_3, temp_f0_3);
+    draw_text((-(((func_80093034(*(&D_800E76CC + (gCCSelection * 4))) + 8) * temp_f0_3) / 2.0f) - arg0->unkC) + 0xF5, arg0->unk10 + 0xE1, *(&D_800E7500 + (D_800DC540 * 4)), 0, temp_f0_3, temp_f0_3);
     temp_v0 = D_8018EDF3;
     temp_f0_4 = D_800F1CA0;
     draw_text((temp_s0_2 - arg0->unkC) + 0xF5, arg0->unk10 + 0xE1, *(&D_800E76CC + (*(&D_800E86AD + ((temp_v0 * 3) + *(&D_800E86AB + temp_v0))) * 4)), 0, temp_f0_4, temp_f0_4);
@@ -7881,7 +7881,7 @@ void func_800A34A8(void *arg0) {
         set_text_color(5);
         temp_s0_4 = ((func_80093034(*(&D_800E7500 + (gCupSelection * 4))) + 8) * D_800F1CB8) / 2.0f;
         temp_f0_4 = D_800F1CBC;
-        draw_text((-(((func_80093034(*(&D_800E76CC + (D_800DC548 * 4))) + 8) * temp_f0_4) / 2.0f) - arg0->unkC) + 0xE6, arg0->unk10 + 0xE1, *(&D_800E7500 + (D_800DC540 * 4)), 0, temp_f0_4, temp_f0_4);
+        draw_text((-(((func_80093034(*(&D_800E76CC + (gCCSelection * 4))) + 8) * temp_f0_4) / 2.0f) - arg0->unkC) + 0xE6, arg0->unk10 + 0xE1, *(&D_800E7500 + (D_800DC540 * 4)), 0, temp_f0_4, temp_f0_4);
         temp_v0 = D_8018EDF3;
         temp_f0_5 = D_800F1CC0;
         draw_text((temp_s0_4 - arg0->unkC) + 0xE6, arg0->unk10 + 0xE1, *(&D_800E76CC + (*(&D_800E86AD + ((temp_v0 * 3) + *(&D_800E86AB + temp_v0))) * 4)), 0, temp_f0_5, temp_f0_5);
@@ -8492,11 +8492,11 @@ void func_800A5084(void *arg0) {
     gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3, temp_t0 + temp_t4, 0, 0, 0, 0x8C);
     temp_s3 = ((D_800DC530 << 5) + (D_800DC5FC * 8)) - 8 + &D_800E85C0;
     temp_s0 = ((func_80093034(*(&D_800E7500 + (gCupSelection * 4))) * 1.0f) + 10.0f) / 2.0f;
-    temp_s1 = ((func_80093034(*(&D_800E76CC + (D_800DC548 * 4))) * 1.0f) + 10.0f) / 2.0f;
+    temp_s1 = ((func_80093034(*(&D_800E76CC + (gCCSelection * 4))) * 1.0f) + 10.0f) / 2.0f;
     set_text_color(3);
     draw_text(0xA0 - temp_s1, temp_s3->unk2 - 0x32, *(&D_800E7500 + (gCupSelection * 4)), 0, 1.0f, 1.0f);
     set_text_color(3);
-    draw_text(temp_s0 + 0xA0, temp_s3->unk2 - 0x32, *(&D_800E76CC + (D_800DC548 * 4)), 0, 1.0f, 1.0f);
+    draw_text(temp_s0 + 0xA0, temp_s3->unk2 - 0x32, *(&D_800E76CC + (gCCSelection * 4)), 0, 1.0f, 1.0f);
     set_text_color(3);
     draw_text(0xA0, temp_s3->unk2 - 0x1E, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCourseSelection * 2))) * 4)), 0, 1.0f, 1.0f);
     phi_s0 = 0;
@@ -9275,11 +9275,11 @@ void func_800A72FC(void *arg0) {
     s32 sp2C;
 
     sp30 = ((func_80093034(*(&D_800E7500 + (gCupSelection * 4))) * 1.0f) + 10.0f) / 2.0f;
-    sp2C = ((func_80093034(*(&D_800E76CC + (D_800DC548 * 4))) * 1.0f) + 10.0f) / 2.0f;
+    sp2C = ((func_80093034(*(&D_800E76CC + (gCCSelection * 4))) * 1.0f) + 10.0f) / 2.0f;
     set_text_color(3);
     draw_text(arg0->unkC - sp2C, arg0->unk10, *(&D_800E7500 + (gCupSelection * 4)), 0, 1.0f, 1.0f);
     set_text_color(3);
-    draw_text(arg0->unkC + sp30, arg0->unk10, *(&D_800E76DC + (D_800DC548 * 4)), 0, 1.0f, 1.0f);
+    draw_text(arg0->unkC + sp30, arg0->unk10, *(&D_800E76DC + (gCCSelection * 4)), 0, 1.0f, 1.0f);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A72FC.s")
@@ -11281,9 +11281,9 @@ void func_800AB9B0(void *arg0) {
     temp_v0 = gCupSelection;
     if (temp_v0 != arg0->unk1C) {
         arg0->unk1C = temp_v0;
-        temp_v0_2 = func_800B54C0(gCupSelection, D_800DC548);
+        temp_v0_2 = func_800B54C0(gCupSelection, gCCSelection);
         arg0->unk20 = temp_v0_2;
-        func_8009A594(arg0->unk18, 0, segmented_to_virtual_dupe(*(&D_800E7E20 + (((D_800DC548 / 2) * 0x10) + -(temp_v0_2 * 4)))));
+        func_8009A594(arg0->unk18, 0, segmented_to_virtual_dupe(*(&D_800E7E20 + (((gCCSelection / 2) * 0x10) + -(temp_v0_2 * 4)))));
         arg0->unkC = D_800E7268.unk0;
         arg0->unk10 = D_800E7268.unk2;
     }

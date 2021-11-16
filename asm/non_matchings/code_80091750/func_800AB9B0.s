@@ -7,16 +7,16 @@ glabel func_800AB9B0
 /* 0AC5C4 800AB9C4 8C8E001C */  lw    $t6, 0x1c($a0)
 /* 0AC5C8 800AB9C8 80620000 */  lb    $v0, ($v1)
 /* 0AC5CC 800AB9CC 00808025 */  move  $s0, $a0
-/* 0AC5D0 800AB9D0 3C05800E */  lui   $a1, %hi(D_800DC548) # $a1, 0x800e
+/* 0AC5D0 800AB9D0 3C05800E */  lui   $a1, %hi(gCCSelection) # $a1, 0x800e
 /* 0AC5D4 800AB9D4 504E0020 */  beql  $v0, $t6, .L800ABA58
 /* 0AC5D8 800AB9D8 8E020004 */   lw    $v0, 4($s0)
 /* 0AC5DC 800AB9DC AC82001C */  sw    $v0, 0x1c($a0)
-/* 0AC5E0 800AB9E0 8CA5C548 */  lw    $a1, %lo(D_800DC548)($a1)
+/* 0AC5E0 800AB9E0 8CA5C548 */  lw    $a1, %lo(gCCSelection)($a1)
 /* 0AC5E4 800AB9E4 0C02D530 */  jal   func_800B54C0
 /* 0AC5E8 800AB9E8 80640000 */   lb    $a0, ($v1)
 /* 0AC5EC 800AB9EC AE020020 */  sw    $v0, 0x20($s0)
-/* 0AC5F0 800AB9F0 3C0F800E */  lui   $t7, %hi(D_800DC548) # $t7, 0x800e
-/* 0AC5F4 800AB9F4 8DEFC548 */  lw    $t7, %lo(D_800DC548)($t7)
+/* 0AC5F0 800AB9F0 3C0F800E */  lui   $t7, %hi(gCCSelection) # $t7, 0x800e
+/* 0AC5F4 800AB9F4 8DEFC548 */  lw    $t7, %lo(gCCSelection)($t7)
 /* 0AC5F8 800AB9F8 00401825 */  move  $v1, $v0
 /* 0AC5FC 800AB9FC 00034880 */  sll   $t1, $v1, 2
 /* 0AC600 800ABA00 05E10003 */  bgez  $t7, .L800ABA10
