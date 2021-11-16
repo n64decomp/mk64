@@ -5418,7 +5418,7 @@ void func_8004F3E4(s32 arg0) {
                 phi_s0_2 = (temp_s1_2 * 2) + &D_80164360;
                 do {
                     temp_a1 = *phi_s0_2;
-                    func_8004F168(arg0, temp_a1, D_800DC4DC[temp_a1].unk_254);
+                    func_8004F168(arg0, temp_a1, D_800DC4DC[temp_a1].characterId);
                     temp_s0 = phi_s0_2 - 2;
                     phi_s0_2 = temp_s0;
                 } while (temp_s0 >= &D_80164360);
@@ -5440,7 +5440,7 @@ void func_8004F3E4(s32 arg0) {
             phi_v0 = phi_v0_2;
             phi_s1_2 = temp_s1_3;
         } while (temp_s1_3 != 8);
-        func_8004F168(arg0, 0, phi_v0_2->unk_254);
+        func_8004F168(arg0, 0, phi_v0_2->characterId);
         return;
     }
     temp_s1_4 = D_8018D158 - 1;
@@ -5463,7 +5463,7 @@ void func_8004F3E4(s32 arg0) {
             temp_a1_3 = *phi_s0_5;
             temp_v0_3 = &D_800DC4DC[temp_a1_3];
             if ((temp_v0_3->unk_000 & 0x1000) != 0x1000) {
-                func_8004F168(arg0, temp_a1_3, temp_v0_3->unk_254);
+                func_8004F168(arg0, temp_a1_3, temp_v0_3->characterId);
             }
             temp_s0_3 = phi_s0_5 - 2;
             phi_s0_5 = temp_s0_3;
@@ -6040,7 +6040,7 @@ void func_80050320(void) {
                 }
                 temp_v1 = *(temp_v0 + &D_8018CF80);
                 temp_a1 = *(&lapCount + (*(temp_v0 + &D_80164360) * 4));
-                if (temp_v1 == D_800DC4DC->unk_254) {
+                if (temp_v1 == D_800DC4DC->characterId) {
                     func_8004FDB4(*temp_t0, temp_f14, phi_a0, temp_a1, phi_s0, temp_a1, temp_v1, 0xFF, 1, phi_a0, 0);
                 } else {
                     func_8004FDB4(*temp_t0, temp_f14, phi_a0, temp_a1, phi_s0, temp_a1, temp_v1, D_8018D3E0, 0, phi_a0, 0);
@@ -6065,7 +6065,7 @@ void func_80050320(void) {
                 }
                 temp_v0_2 = *((phi_s0_2 * 2) + &D_80164360);
                 temp_a1_2 = *(&lapCount + (temp_v0_2 * 4));
-                temp_v1_2 = D_800DC4DC[temp_v0_2].unk_254;
+                temp_v1_2 = D_800DC4DC[temp_v0_2].characterId;
                 if (temp_v0_2 == 0) {
                     func_8004FDB4(*temp_t0_2, temp_f14_2, phi_a0_2, temp_a1_2, phi_s0_2, temp_a1_2, temp_v1_2, 0xFF, 1, phi_a0_2, 1);
                 } else {
@@ -6283,7 +6283,7 @@ void func_80050E34(s32 arg0, s32 arg1) {
     temp_v0 = &D_800DC4DC[arg0];
     spAC = temp_v0;
     temp_s0 = *(&lapCount + (arg0 * 4));
-    temp_s1 = temp_v0->unk_254;
+    temp_s1 = temp_v0->characterId;
     temp_t5 = *(&D_8018CE24 + (arg0 << 5));
     if (gPlayerCountSelection1 == 1) {
         spC4 = 0x12;

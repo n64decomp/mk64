@@ -257,12 +257,12 @@ void func_8008C528(Player *player, s8 arg1) {
     s32 temp_v1;
     func_8008C354(player, arg1);
     func_8008C310(player);
-    temp_v1 = player->unk_254;
+    temp_v1 = player->characterId;
     player->unk_0C2 = 0;
-    player->unk_0F0 = D_800E37B0[temp_v1];
-    player->unk_0F4 = 0.0f;
+    player->kartHopJerk = D_800E37B0[temp_v1];
+    player->kartHopAcceleration = 0.0f;
 
-    player->unk_0EC = D_800E3790[temp_v1];
+    player->kartHopVelocity = D_800E3790[temp_v1];
     player->unk_0A8 = 0;
     player->unk_0BC = player->unk_0BC | 0x400;
     player->unk_0BC = player->unk_0BC & ~0x10;
@@ -343,7 +343,7 @@ void func_8008C73C(Player *player, s8 arg1, s8 unk3, s8 unk4) {
         D_80165420[arg1++] = 0.0f;
         D_8018D920[D_80165190[0][0]] = 0;
         if (((player->unk_000 & 0x4000) == 0x4000) && ((player->unk_000 & 0x100) != 0x100)) {
-            func_800C90F4(arg1 & 0xFF, (player->unk_254 * 0x10) + 0x29008003, player, player->unk_000);
+            func_800C90F4(arg1 & 0xFF, (player->characterId * 0x10) + 0x29008003, player, player->unk_000);
             return;
         }
         func_800098FC(arg1, player, player, player->unk_000);

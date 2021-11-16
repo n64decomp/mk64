@@ -498,8 +498,8 @@ void func_80005B18(void) {
                 func_800052A4(); //gModeSelection, &D_80162DDC, 3, &D_80162DD4);
                 D_80162DD4 = 0;
                 D_80162DDC = 1;
-                D_80162DE0 = D_800DC4DC->unk_254;
-                D_80162DE8 = D_800DC4DC->unk_254;
+                D_80162DE0 = D_800DC4DC->characterId;
+                D_80162DE8 = D_800DC4DC->characterId;
                 D_80162E00 = 0;
                 D_80162DFC = D_8018CA78;
                 func_80005AE8(D_800DC4E0); // (u16) &D_80162DDC);
@@ -510,10 +510,10 @@ void func_80005B18(void) {
                     D_80162DD0 = D_80162DCC;
                     func_800052A4(); // gModeSelection, &D_80162DDC, 3, &D_80162DD4);
                     D_80162DDC = 1;
-                    D_80162DE0 = D_800DC4DC->unk_254;
+                    D_80162DE0 = D_800DC4DC->characterId;
                     D_80162DFC = D_8018CA78;
                     D_80162E00 = 0;
-                    D_80162DE8 = D_800DC4DC->unk_254;
+                    D_80162DE8 = D_800DC4DC->characterId;
                     func_80005AE8(D_800DC4E0); // (u16) &D_80162DDC);
                     func_80005AE8(D_800DC4E4);
                     return;
@@ -523,7 +523,7 @@ void func_80005B18(void) {
             D_80162D80 = (void *) ((D_80162DC8 << 0xF) + 0x3000 + &D_802BFB80);
             D_80162D84 = D_80162D86;
             D_80162DD0 = D_80162DCC;
-            D_80162DE8 = D_800DC4DC->unk_254;
+            D_80162DE8 = D_800DC4DC->characterId;
             D_80162DD8 = 0;
             D_80162DD4 = 0;
             D_80162DDC = 1;
