@@ -232,13 +232,12 @@ extern u16 D_800DC5C0;
 extern s32 D_8015F788;
 extern s16 D_801625E8;
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
-//extern struct UnkStruct_800DDB40 *D_800DDB40;
 
 
-extern Camera *D_800DDB40;
-extern Camera *D_800DDB44;
-extern Camera *D_800DDB48;
-extern Camera *D_800DDB4C;
+extern Camera *camera1;
+extern Camera *camera2;
+extern Camera *camera3;
+extern Camera *camera4;
 
 extern u16 D_800DC5B0;
 extern s32 D_800DC5E8;
@@ -575,9 +574,9 @@ void func_80001404(void) {
 
 void func_8000142C(void) {
     s16 i;
-    s32 pad0;
+    s32 pad;
     u16 temp_v0;
-    f32 pad = 0;
+    f32 pad2 = 0;
 
     D_80150112 = 0;
     D_80164AF0 = 0;
@@ -609,7 +608,7 @@ void func_8000142C(void) {
                     func_802909F0();
                     func_802A0D54();
                     func_800382DC();
-                    func_8001EE98(D_800DC4FC, D_800DDB40, 0);
+                    func_8001EE98(D_800DC4FC, camera1, 0);
                     func_80028F70();
                     func_8028F474();
                     func_80059AC8();
@@ -636,8 +635,8 @@ void func_8000142C(void) {
                             D_800DC514 = 0;
                     }
             
-                    temp_v0 = D_800DDB40->rotX;
-                    D_801625E8 = D_800DC5EC->unk38;
+                    temp_v0 = camera1->rotX2;
+                    D_801625E8 = D_800DC5EC->pathCounter;
                     if (temp_v0 < 0x2000) {
                         func_80057A50(40, 100, "SOUTH  ", D_801625E8);
                     } else if (temp_v0 < 0x6000) {
@@ -674,9 +673,9 @@ void func_8000142C(void) {
                         func_802909F0();
                         func_802A0D54();
                         func_800382DC();
-                        func_8001EE98(D_800DC4FC, D_800DDB40, 0);
+                        func_8001EE98(D_800DC4FC, camera1, 0);
                         func_80029060();
-                        func_8001EE98(D_800DC500, D_800DDB44, 1);
+                        func_8001EE98(D_800DC500, camera2, 1);
                         func_80029150();
                         func_8028F474();
                         func_80059AC8();
@@ -720,9 +719,9 @@ void func_8000142C(void) {
                         func_802909F0();
                         func_802A0D54();
                         func_800382DC();
-                        func_8001EE98(D_800DC4FC, D_800DDB40, 0);
+                        func_8001EE98(D_800DC4FC, camera1, 0);
                         func_80029060();
-                        func_8001EE98(D_800DC500, D_800DDB44, 1);
+                        func_8001EE98(D_800DC500, camera2, 1);
                         func_80029150();
                         func_8028F474();
                         func_80059AC8();
@@ -787,13 +786,13 @@ void func_8000142C(void) {
                     func_802909F0();
                     func_802A0D54();
                     func_800382DC();
-                    func_8001EE98(D_800DC4FC, D_800DDB40, 0);
+                    func_8001EE98(D_800DC4FC, camera1, 0);
                     func_80029158();
-                    func_8001EE98(D_800DC4E0, D_800DDB44, 1);
+                    func_8001EE98(D_800DC4E0, camera2, 1);
                     func_800291E8();
-                    func_8001EE98(D_800DC4E4, D_800DDB48, 2);
+                    func_8001EE98(D_800DC4E4, camera3, 2);
                     func_800291F0();
-                    func_8001EE98(D_800DC4E8, D_800DDB4C, 3);
+                    func_8001EE98(D_800DC4E8, camera4, 3);
                     func_800291F8();
                     func_8028F474();
                     func_80059AC8();

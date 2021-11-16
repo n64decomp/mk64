@@ -247,11 +247,11 @@ glabel func_80016C3C
 /* 017BDC 80016FDC 000F6880 */  sll   $t5, $t7, 2
 /* 017BE0 80016FE0 01AF6823 */  subu  $t5, $t5, $t7
 /* 017BE4 80016FE4 000D68C0 */  sll   $t5, $t5, 3
-/* 017BE8 80016FE8 3C0E8016 */  lui   $t6, %hi(D_801646F0) # $t6, 0x8016
+/* 017BE8 80016FE8 3C0E8016 */  lui   $t6, %hi(cameras) # $t6, 0x8016
 /* 017BEC 80016FEC 46128382 */  mul.s $f14, $f16, $f18
 /* 017BF0 80016FF0 01AF6823 */  subu  $t5, $t5, $t7
 /* 017BF4 80016FF4 000D68C0 */  sll   $t5, $t5, 3
-/* 017BF8 80016FF8 25CE46F0 */  addiu $t6, %lo(D_801646F0) # addiu $t6, $t6, 0x46f0
+/* 017BF8 80016FF8 25CE46F0 */  addiu $t6, %lo(cameras) # addiu $t6, $t6, 0x46f0
 /* 017BFC 80016FFC 01AE1021 */  addu  $v0, $t5, $t6
 /* 017C00 80017000 E442000C */  swc1  $f2, 0xc($v0)
 /* 017C04 80017004 E44C0014 */  swc1  $f12, 0x14($v0)

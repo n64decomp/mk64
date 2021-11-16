@@ -1,6 +1,6 @@
 glabel func_802A269C
-/* 10BCAC 802A269C 3C0E800E */  lui   $t6, %hi(D_800DDB40) # $t6, 0x800e
-/* 10BCB0 802A26A0 8DCEDB40 */  lw    $t6, %lo(D_800DDB40)($t6)
+/* 10BCAC 802A269C 3C0E800E */  lui   $t6, %hi(camera1) # $t6, 0x800e
+/* 10BCB0 802A26A0 8DCEDB40 */  lw    $t6, %lo(camera1)($t6)
 /* 10BCB4 802A26A4 240100B8 */  li    $at, 184
 /* 10BCB8 802A26A8 27BDFF88 */  addiu $sp, $sp, -0x78
 /* 10BCBC 802A26AC 008E7823 */  subu  $t7, $a0, $t6

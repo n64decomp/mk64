@@ -1,65 +1,65 @@
 .include "macros.inc"
 .section .bss
 
-glabel D_8015F480
-.skip 44
+#glabel D_8015F480
+#.skip 44
 
-glabel D_8015F4AC
-.skip 2
+#glabel D_8015F4AC
+#.skip 2
 
-glabel D_8015F4AE
-.skip 2
+#glabel D_8015F4AE
+#.skip 2
 
-glabel D_8015F4B0
-.skip 2
+#glabel D_8015F4B0
+#.skip 2
 
-glabel D_8015F4B2
-.skip 14
+#glabel D_8015F4B2
+#.skip 14
 
-glabel D_8015F4C0
-.skip 44
+#glabel D_8015F4C0 # 2p wrapper
+#.skip 44
 
-glabel D_8015F4EC
-.skip 2
+#glabel D_8015F4EC
+#.skip 2
 
-glabel D_8015F4EE
-.skip 2
+#glabel D_8015F4EE
+#.skip 2
 
-glabel D_8015F4F0
-.skip 2
+#glabel D_8015F4F0
+#.skip 2
 
-glabel D_8015F4F2
-.skip 14
+#glabel D_8015F4F2
+#.skip 14
 
-glabel D_8015F500
-.skip 44
+#glabel D_8015F500 #3p wrapper
+#.skip 44
 
-glabel D_8015F52C
-.skip 2
+#glabel D_8015F52C
+#.skip 2
 
-glabel D_8015F52E
-.skip 2
+#glabel D_8015F52E
+#.skip 2
 
-glabel D_8015F530
-.skip 2
+#glabel D_8015F530
+#.skip 2
 
-glabel D_8015F532
-.skip 14
+#glabel D_8015F532
+#.skip 14
 
-glabel D_8015F540
-.skip 44
+#glabel D_8015F540 #4p wrapper
+#.skip 44
 
-glabel D_8015F56C
-.skip 2
+#glabel D_8015F56C
+#.skip 2
 
-glabel D_8015F56E
-.skip 2
+#glabel D_8015F56E
+#.skip 2
 
-glabel D_8015F570
-.skip 2
+#glabel D_8015F570
+#.skip 2
 
-glabel D_8015F572
-.skip 14
+#glabel D_8015F572 # end of player wrapper
+#.skip 14
 
 glabel D_8015F580
 .skip 4

@@ -4470,14 +4470,14 @@ void func_80078288(s32 arg0) {
             if (temp_s0->unk8 <= 0.0) {
                 func_80086FD4(arg0);
             }
-            temp_s0->unkB4 = func_800872D8(arg0, D_800DDB40);
+            temp_s0->unkB4 = func_800872D8(arg0, camera1);
             return;
         }
         if (D_800DC50C != 9) {
             sp3A = ((D_800DC4FC->unk_094 / 18.0f) * 216.0f) / 2.0f;
             sp3E = (random_int(0xF) - sp3A) + 0x2D;
             sp3C = random_int(0x12C) + 0x1E;
-            temp_t6 = (((random_int(0x3000) - 0x1800) / ((sp3A / 0xF) + 1)) + D_800DDB40->unk26) & 0xFFFF;
+            temp_t6 = (((random_int(0x3000) - 0x1800) / ((sp3A / 0xF) + 1)) + camera1->unk26) & 0xFFFF;
             temp_a0 = temp_t6;
             sp36 = temp_t6;
             temp_v0_2 = D_800DC4FC;
@@ -4507,15 +4507,15 @@ void func_80078288(s32 arg0) {
             return;
         }
         sp3C = random_int(0x64) + 0x28;
-        temp_t3 = ((random_int(0x3000) + D_800DDB40->unk26) - 0x1800) & 0xFFFF;
+        temp_t3 = ((random_int(0x3000) + camera1->unk26) - 0x1800) & 0xFFFF;
         temp_a0_2 = temp_t3;
         sp36 = temp_t3;
-        temp_v0_5 = D_800DDB40;
+        temp_v0_5 = camera1;
         temp_f2_2 = sp3C;
         temp_s0->unk10 = (func_802B8018(temp_a0_2) * temp_f2_2) + temp_v0_5->unk0;
         sp24 = temp_f2_2;
         temp_s0->unk14 = temp_v0_5->unk4 + D_800EEB68;
-        temp_s0->unk18 = (func_802B8038(sp36) * temp_f2_2) + D_800DDB40->unk8;
+        temp_s0->unk18 = (func_802B8038(sp36) * temp_f2_2) + camera1->unk8;
         temp_s0->unkC4 = random_int(0x400) + 0x100;
         temp_v0_6 = random_int(0x64);
         temp_f8_2 = temp_v0_6;
@@ -6461,7 +6461,7 @@ void func_8007CC00(void) {
             func_8007C684(temp_s2);
             func_8008B78C(temp_s2);
             temp_v0 = temp_s0->unkD1;
-            temp_t4 = (0x8000 - ((temp_v0 * 0xB8) + D_800DDB40)->unk26) & 0xFFFF;
+            temp_t4 = (0x8000 - ((temp_v0 * 0xB8) + camera1)->unk26) & 0xFFFF;
             temp_s1 = temp_t4;
             temp_s3 = &D_800DC4DC[temp_v0];
             temp_f20 = func_802B8038(temp_t4 & 0xFFFF);
@@ -6745,7 +6745,7 @@ s32 func_8007D804(s32 arg0) {
         phi_s0 = 0;
         do {
             phi_s2_2 = phi_s2_3;
-            if (func_8008A140(arg0, phi_s0 + D_800DDB40, 0x4000) != 0) {
+            if (func_8008A140(arg0, phi_s0 + camera1, 0x4000) != 0) {
                 phi_s2_2 = phi_s2_3 + 1;
             }
             temp_s1 = phi_s1 + 1;
@@ -7236,7 +7236,7 @@ s32 func_8007E59C(s32 arg0) {
     s32 phi_v1;
 
     phi_s0 = D_800DC4DC;
-    phi_s1 = D_800DDB40;
+    phi_s1 = camera1;
     phi_s2 = 0;
     phi_v1 = 0;
     if (gPlayerCountSelection1 > 0) {
@@ -8168,7 +8168,7 @@ void func_80080A4C(s32 arg0, s32 arg1) {
     Player *temp_a3;
     void *temp_v0;
 
-    sp1C = (arg1 * 0xB8) + D_800DDB40;
+    sp1C = (arg1 * 0xB8) + camera1;
     temp_a3 = &D_800DC4DC[arg1];
     if (D_800DC530 != 3) {
         sp18 = temp_a3;
@@ -8723,7 +8723,7 @@ void func_80081D34(s32 arg0) {
 
     phi_s1 = D_800DC4DC;
     phi_s2 = 0;
-    phi_s4 = D_800DDB40;
+    phi_s4 = camera1;
     phi_s5 = 0;
     phi_s5_2 = 0;
     if (D_8018D158 > 0) {

@@ -7,8 +7,8 @@ glabel func_8029CA90
 /* 1060B4 8029CAA4 24A50018 */  addiu $a1, $a1, 0x18
 /* 1060B8 8029CAA8 15C00055 */  bnez  $t6, .L8029CC00
 /* 1060BC 8029CAAC 3C0743C8 */   lui   $a3, 0x43c8
-/* 1060C0 8029CAB0 3C0F800E */  lui   $t7, %hi(D_800DDB40) # $t7, 0x800e
-/* 1060C4 8029CAB4 8DEFDB40 */  lw    $t7, %lo(D_800DDB40)($t7)
+/* 1060C0 8029CAB0 3C0F800E */  lui   $t7, %hi(camera1) # $t7, 0x800e
+/* 1060C4 8029CAB4 8DEFDB40 */  lw    $t7, %lo(camera1)($t7)
 /* 1060C8 8029CAB8 240100B8 */  li    $at, 184
 /* 1060CC 8029CABC 94860026 */  lhu   $a2, 0x26($a0)
 /* 1060D0 8029CAC0 008FC023 */  subu  $t8, $a0, $t7

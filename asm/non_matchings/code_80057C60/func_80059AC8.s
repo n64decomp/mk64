@@ -16,10 +16,10 @@ glabel func_80059AC8
 /* 05A700 80059B00 2463D3FC */  addiu $v1, %lo(gRaceFrameCounter) # addiu $v1, $v1, -0x2c04
 /* 05A704 80059B04 8C6F0000 */  lw    $t7, ($v1)
 /* 05A708 80059B08 3C128019 */  lui   $s2, %hi(D_8018CF68) # $s2, 0x8019
-/* 05A70C 80059B0C 3C13800E */  lui   $s3, %hi(D_800DDB40) # $s3, 0x800e
+/* 05A70C 80059B0C 3C13800E */  lui   $s3, %hi(camera1) # $s3, 0x800e
 /* 05A710 80059B10 25F80001 */  addiu $t8, $t7, 1
 /* 05A714 80059B14 AC780000 */  sw    $t8, ($v1)
-/* 05A718 80059B18 2673DB40 */  addiu $s3, %lo(D_800DDB40) # addiu $s3, $s3, -0x24c0
+/* 05A718 80059B18 2673DB40 */  addiu $s3, %lo(camera1) # addiu $s3, $s3, -0x24c0
 /* 05A71C 80059B1C 2652CF68 */  addiu $s2, %lo(D_8018CF68) # addiu $s2, $s2, -0x3098
 /* 05A720 80059B20 00008025 */  move  $s0, $zero
 /* 05A724 80059B24 00008825 */  move  $s1, $zero

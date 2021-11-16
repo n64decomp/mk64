@@ -14,7 +14,7 @@ extern struct Controller *D_800DC4D4;
 extern unsigned char *D_8015F8C4;
 extern unsigned char *D_8015F8C8;
 extern unsigned char *D_8015F8CC;
-extern u8 D_800DC5EB;
+//extern u8 D_800DC5EB;
 extern s16 D_8018D8C0[];
 extern s32 D_8016348C;
 extern s8 gCourseSelection;
@@ -138,7 +138,7 @@ void func_8028E028(void) {
             *(D_8015F8CC + D_800DC5E8) += 1;
             break;
     }
-    func_800CA118(D_800DC5EB);
+    func_800CA118((u8) D_800DC5E8);
     D_800DC510 = 5;
     D_802BA038 = 10;
 }

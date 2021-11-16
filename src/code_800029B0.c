@@ -22,7 +22,7 @@ struct UnkStruct8015F8D0 {
 
 extern struct UnkStruct8015F8D0 D_8015F8D0;
 
-extern struct Controller (*D_800DC4BC)[];
+extern struct Controller *D_800DC4BC[];
 
 extern s32 D_800DC510;
 extern s16 D_8015F6FE;
@@ -92,6 +92,21 @@ extern struct UnkStruct800DC658 D_800DC658;
 
 extern s16 D_800DC5BC, D_800DC5C8;
 extern u16 D_80150110;
+
+
+s32 D_800DC5E0 = 32;
+
+s16 D_800DC5E4 = 0;
+
+// TODO: D_800DC5E8 accessed as word, D_800DC5EB as u8
+s32 D_800DC5E8 = 0;
+
+struct UnkStruct_800DC5EC D_8015F480[4];
+struct UnkStruct_800DC5EC *D_800DC5EC = &D_8015F480[0];
+struct UnkStruct_800DC5EC *D_800DC5F0 = &D_8015F480[1];
+struct UnkStruct_800DC5EC *D_800DC5F4 = &D_8015F480[2];
+struct UnkStruct_800DC5EC *D_800DC5F8 = &D_8015F480[3];
+s16 D_800DC5FC = 0;
 
 void func_800029B0(void) {
     switch(D_800DC5A8) {

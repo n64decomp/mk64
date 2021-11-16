@@ -14,8 +14,8 @@ glabel func_8007D804
 /* 07E434 8007D834 00009025 */  move  $s2, $zero
 /* 07E438 8007D838 19C00012 */  blez  $t6, .L8007D884
 /* 07E43C 8007D83C 00008825 */   move  $s1, $zero
-/* 07E440 8007D840 3C13800E */  lui   $s3, %hi(D_800DDB40) # $s3, 0x800e
-/* 07E444 8007D844 2673DB40 */  addiu $s3, %lo(D_800DDB40) # addiu $s3, $s3, -0x24c0
+/* 07E440 8007D840 3C13800E */  lui   $s3, %hi(camera1) # $s3, 0x800e
+/* 07E444 8007D844 2673DB40 */  addiu $s3, %lo(camera1) # addiu $s3, $s3, -0x24c0
 /* 07E448 8007D848 00008025 */  move  $s0, $zero
 /* 07E44C 8007D84C 8E6F0000 */  lw    $t7, ($s3)
 .L8007D850:

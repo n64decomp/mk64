@@ -5,8 +5,8 @@ glabel func_80054F04
 /* 055B10 80054F10 00047880 */  sll   $t7, $a0, 2
 /* 055B14 80054F14 26940298 */  addiu $s4, %lo(gDisplayListHead) # addiu $s4, $s4, 0x298
 /* 055B18 80054F18 01E47823 */  subu  $t7, $t7, $a0
-/* 055B1C 80054F1C 3C18800E */  lui   $t8, %hi(D_800DDB40) # $t8, 0x800e
-/* 055B20 80054F20 8F18DB40 */  lw    $t8, %lo(D_800DDB40)($t8)
+/* 055B1C 80054F1C 3C18800E */  lui   $t8, %hi(camera1) # $t8, 0x800e
+/* 055B20 80054F20 8F18DB40 */  lw    $t8, %lo(camera1)($t8)
 /* 055B24 80054F24 8E830000 */  lw    $v1, ($s4)
 /* 055B28 80054F28 000F78C0 */  sll   $t7, $t7, 3
 /* 055B2C 80054F2C 01E47823 */  subu  $t7, $t7, $a0

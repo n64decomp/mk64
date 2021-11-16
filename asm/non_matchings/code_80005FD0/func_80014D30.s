@@ -30,8 +30,8 @@ glabel func_80014D30
 /* 0159A0 80014DA0 01445023 */  subu  $t2, $t2, $a0
 /* 0159A4 80014DA4 000A50C0 */  sll   $t2, $t2, 3
 /* 0159A8 80014DA8 46809120 */  cvt.s.w $f4, $f18
-/* 0159AC 80014DAC 3C0C8016 */  lui   $t4, %hi(D_801646F0) # $t4, 0x8016
-/* 0159B0 80014DB0 258C46F0 */  addiu $t4, %lo(D_801646F0) # addiu $t4, $t4, 0x46f0
+/* 0159AC 80014DAC 3C0C8016 */  lui   $t4, %hi(cameras) # $t4, 0x8016
+/* 0159B0 80014DB0 258C46F0 */  addiu $t4, %lo(cameras) # addiu $t4, $t4, 0x46f0
 /* 0159B4 80014DB4 254B0054 */  addiu $t3, $t2, 0x54
 /* 0159B8 80014DB8 016C2021 */  addu  $a0, $t3, $t4
 /* 0159BC 80014DBC 460A4400 */  add.s $f16, $f8, $f10

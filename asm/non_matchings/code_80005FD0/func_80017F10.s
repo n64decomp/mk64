@@ -105,10 +105,10 @@ glabel func_80017F10
 /* 018CA4 800180A4 0018C0C0 */  sll   $t8, $t8, 3
 /* 018CA8 800180A8 E4224658 */  swc1  $f2, %lo(D_80164658)($at)
 /* 018CAC 800180AC 3C018016 */  lui   $at, %hi(D_80164648)
-/* 018CB0 800180B0 3C0F8016 */  lui   $t7, %hi(D_801646F0) # $t7, 0x8016
+/* 018CB0 800180B0 3C0F8016 */  lui   $t7, %hi(cameras) # $t7, 0x8016
 /* 018CB4 800180B4 030EC023 */  subu  $t8, $t8, $t6
 /* 018CB8 800180B8 0018C0C0 */  sll   $t8, $t8, 3
-/* 018CBC 800180BC 25EF46F0 */  addiu $t7, %lo(D_801646F0) # addiu $t7, $t7, 0x46f0
+/* 018CBC 800180BC 25EF46F0 */  addiu $t7, %lo(cameras) # addiu $t7, $t7, 0x46f0
 /* 018CC0 800180C0 00230821 */  addu  $at, $at, $v1
 /* 018CC4 800180C4 030F1021 */  addu  $v0, $t8, $t7
 /* 018CC8 800180C8 E4224648 */  swc1  $f2, %lo(D_80164648)($at)

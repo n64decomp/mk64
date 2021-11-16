@@ -37,8 +37,8 @@ glabel func_8007CC00
 /* 07D888 8007CC88 0C022DE3 */  jal   func_8008B78C
 /* 07D88C 8007CC8C 02402025 */   move  $a0, $s2
 /* 07D890 8007CC90 820200D1 */  lb    $v0, 0xd1($s0)
-/* 07D894 8007CC94 3C09800E */  lui   $t1, %hi(D_800DDB40) # $t1, 0x800e
-/* 07D898 8007CC98 8D29DB40 */  lw    $t1, %lo(D_800DDB40)($t1)
+/* 07D894 8007CC94 3C09800E */  lui   $t1, %hi(camera1) # $t1, 0x800e
+/* 07D898 8007CC98 8D29DB40 */  lw    $t1, %lo(camera1)($t1)
 /* 07D89C 8007CC9C 00570019 */  multu $v0, $s7
 /* 07D8A0 8007CCA0 00024080 */  sll   $t0, $v0, 2
 /* 07D8A4 8007CCA4 01024023 */  subu  $t0, $t0, $v0

@@ -82,10 +82,10 @@ extern s32 D_80165400[];
 extern s32 D_801654A0[];
 extern s32 D_801654C0[];
 extern s16 D_80165300[];
-extern s32 D_800DDB40;
-extern s32 D_800DDB44;
-extern s32 D_800DDB48;
-extern s32 D_800DDB4C;
+extern Camera *camera1;
+extern Camera *camera2;
+extern Camera *camera3;
+extern Camera *camera4;
 extern s32 D_8016524C;
 
 #endif

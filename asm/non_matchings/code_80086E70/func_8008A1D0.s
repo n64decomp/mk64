@@ -2,8 +2,8 @@ glabel func_8008A1D0
 /* 08ADD0 8008A1D0 00057880 */  sll   $t7, $a1, 2
 /* 08ADD4 8008A1D4 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 08ADD8 8008A1D8 01E57823 */  subu  $t7, $t7, $a1
-/* 08ADDC 8008A1DC 3C18800E */  lui   $t8, %hi(D_800DDB40) # $t8, 0x800e
-/* 08ADE0 8008A1E0 8F18DB40 */  lw    $t8, %lo(D_800DDB40)($t8)
+/* 08ADDC 8008A1DC 3C18800E */  lui   $t8, %hi(camera1) # $t8, 0x800e
+/* 08ADE0 8008A1E0 8F18DB40 */  lw    $t8, %lo(camera1)($t8)
 /* 08ADE4 8008A1E4 000F78C0 */  sll   $t7, $t7, 3
 /* 08ADE8 8008A1E8 01E57823 */  subu  $t7, $t7, $a1
 /* 08ADEC 8008A1EC 000F78C0 */  sll   $t7, $t7, 3
@@ -69,8 +69,8 @@ glabel func_8008A1D0
 
 /* 08AECC 8008A2CC 00057080 */  sll   $t6, $a1, 2
 /* 08AED0 8008A2D0 01C57023 */  subu  $t6, $t6, $a1
-/* 08AED4 8008A2D4 3C0F800E */  lui   $t7, %hi(D_800DDB40) # $t7, 0x800e
-/* 08AED8 8008A2D8 8DEFDB40 */  lw    $t7, %lo(D_800DDB40)($t7)
+/* 08AED4 8008A2D4 3C0F800E */  lui   $t7, %hi(camera1) # $t7, 0x800e
+/* 08AED8 8008A2D8 8DEFDB40 */  lw    $t7, %lo(camera1)($t7)
 /* 08AEDC 8008A2DC 000E70C0 */  sll   $t6, $t6, 3
 /* 08AEE0 8008A2E0 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 08AEE4 8008A2E4 01C57023 */  subu  $t6, $t6, $a1

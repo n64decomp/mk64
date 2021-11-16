@@ -101,9 +101,9 @@ glabel func_8006AFD0
 /* 06BD54 8006B154 0327C823 */  subu  $t9, $t9, $a3
 /* 06BD58 8006B158 0019C8C0 */  sll   $t9, $t9, 3
 /* 06BD5C 8006B15C 0327C823 */  subu  $t9, $t9, $a3
-/* 06BD60 8006B160 3C188016 */  lui   $t8, %hi(D_801646F0) # $t8, 0x8016
+/* 06BD60 8006B160 3C188016 */  lui   $t8, %hi(cameras) # $t8, 0x8016
 /* 06BD64 8006B164 0019C8C0 */  sll   $t9, $t9, 3
-/* 06BD68 8006B168 271846F0 */  addiu $t8, %lo(D_801646F0) # addiu $t8, $t8, 0x46f0
+/* 06BD68 8006B168 271846F0 */  addiu $t8, %lo(cameras) # addiu $t8, $t8, 0x46f0
 /* 06BD6C 8006B16C 03381021 */  addu  $v0, $t9, $t8
 /* 06BD70 8006B170 C44E0000 */  lwc1  $f14, ($v0)
 /* 06BD74 8006B174 C44C0008 */  lwc1  $f12, 8($v0)

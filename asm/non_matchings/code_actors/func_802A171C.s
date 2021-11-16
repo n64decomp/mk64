@@ -1,6 +1,6 @@
 glabel func_802A171C
-/* 10AD2C 802A171C 3C0E800E */  lui   $t6, %hi(D_800DDB40) # $t6, 0x800e
-/* 10AD30 802A1720 8DCEDB40 */  lw    $t6, %lo(D_800DDB40)($t6)
+/* 10AD2C 802A171C 3C0E800E */  lui   $t6, %hi(camera1) # $t6, 0x800e
+/* 10AD30 802A1720 8DCEDB40 */  lw    $t6, %lo(camera1)($t6)
 /* 10AD34 802A1724 27BDFE78 */  addiu $sp, $sp, -0x188
 /* 10AD38 802A1728 AFB00020 */  sw    $s0, 0x20($sp)
 /* 10AD3C 802A172C 00808025 */  move  $s0, $a0

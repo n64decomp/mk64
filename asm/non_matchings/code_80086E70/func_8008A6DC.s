@@ -18,8 +18,8 @@ glabel func_8008A6DC
 /* 08B31C 8008A71C 3C16800E */  lui   $s6, %hi(gPlayerCountSelection1) # $s6, 0x800e
 /* 08B320 8008A720 26D6C538 */  addiu $s6, %lo(gPlayerCountSelection1) # addiu $s6, $s6, -0x3ac8
 /* 08B324 8008A724 8ECE0000 */  lw    $t6, ($s6)
-/* 08B328 8008A728 3C11800E */  lui   $s1, %hi(D_800DDB40) # $s1, 0x800e
-/* 08B32C 8008A72C 8E31DB40 */  lw    $s1, %lo(D_800DDB40)($s1)
+/* 08B328 8008A728 3C11800E */  lui   $s1, %hi(camera1) # $s1, 0x800e
+/* 08B32C 8008A72C 8E31DB40 */  lw    $s1, %lo(camera1)($s1)
 /* 08B330 8008A730 19C0002A */  blez  $t6, .L8008A7DC
 /* 08B334 8008A734 00009025 */   move  $s2, $zero
 /* 08B338 8008A738 001078C0 */  sll   $t7, $s0, 3

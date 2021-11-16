@@ -2284,12 +2284,12 @@ typedef union {
 /*
  * r should be one of: FRUSTRATIO_1, FRUSTRATIO_2, FRUSTRATIO_3, ... FRUSTRATIO_6
  */
-#define gSPClipRatio(pkt, r)						\
+#define gSPClipRatio(pkt)						\
 {									\
-	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RNX, FR_NEG_##r);		\
-	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RNY, FR_NEG_##r);		\
-	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RPX, FR_POS_##r);		\
-	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RPY, FR_POS_##r);		\
+	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RNX, FR_NEG_FRUSTRATIO_1);		\
+	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RNY, FR_NEG_FRUSTRATIO_1);		\
+	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RPX, FR_POS_FRUSTRATIO_1);		\
+	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RPY, FR_POS_FRUSTRATIO_1);		\
 }
 
 #define gsSPClipRatio(r)						\

@@ -15,8 +15,8 @@ glabel func_8008A4CC
 /* 08B100 8008A500 3C050007 */   lui   $a1, 7
 /* 08B104 8008A504 3C0E800E */  lui   $t6, %hi(gPlayerCountSelection1) # $t6, 0x800e
 /* 08B108 8008A508 8DCEC538 */  lw    $t6, %lo(gPlayerCountSelection1)($t6)
-/* 08B10C 8008A50C 3C14800E */  lui   $s4, %hi(D_800DDB40) # $s4, 0x800e
-/* 08B110 8008A510 8E94DB40 */  lw    $s4, %lo(D_800DDB40)($s4)
+/* 08B10C 8008A50C 3C14800E */  lui   $s4, %hi(camera1) # $s4, 0x800e
+/* 08B110 8008A510 8E94DB40 */  lw    $s4, %lo(camera1)($s4)
 /* 08B114 8008A514 19C00032 */  blez  $t6, .L8008A5E0
 /* 08B118 8008A518 00009025 */   move  $s2, $zero
 /* 08B11C 8008A51C 001178C0 */  sll   $t7, $s1, 3
@@ -100,8 +100,8 @@ glabel func_8008A4CC
 /* 08B240 8008A640 3C15800E */  lui   $s5, %hi(gPlayerCountSelection1) # $s5, 0x800e
 /* 08B244 8008A644 26B5C538 */  addiu $s5, %lo(gPlayerCountSelection1) # addiu $s5, $s5, -0x3ac8
 /* 08B248 8008A648 8EAE0000 */  lw    $t6, ($s5)
-/* 08B24C 8008A64C 3C10800E */  lui   $s0, %hi(D_800DDB40) # $s0, 0x800e
-/* 08B250 8008A650 8E10DB40 */  lw    $s0, %lo(D_800DDB40)($s0)
+/* 08B24C 8008A64C 3C10800E */  lui   $s0, %hi(camera1) # $s0, 0x800e
+/* 08B250 8008A650 8E10DB40 */  lw    $s0, %lo(camera1)($s0)
 /* 08B254 8008A654 19C00018 */  blez  $t6, .L8008A6B8
 /* 08B258 8008A658 00008825 */   move  $s1, $zero
 /* 08B25C 8008A65C 001278C0 */  sll   $t7, $s2, 3

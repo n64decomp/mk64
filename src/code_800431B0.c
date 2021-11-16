@@ -7124,7 +7124,7 @@ void func_800523B8(s32 arg0, s32 arg1, u32 arg2) {
 
     temp_v1 = (arg0 * 0xE0) + &D_80165C18;
     sp3C = temp_v1;
-    temp_v0 = func_800418AC(temp_v1->unk4, temp_v1->unkC, (arg1 * 0xB8) + D_800DDB40);
+    temp_v0 = func_800418AC(temp_v1->unk4, temp_v1->unkC, (arg1 * 0xB8) + camera1);
     temp_a0 = temp_v1 + 4;
     sp38 = temp_a0;
     temp_v1->unkB4 = temp_v0;
@@ -7203,7 +7203,7 @@ void func_80052590(s32 arg0) {
     s32 *phi_s1_2;
 
     temp_s0 = &D_80165C18 + (D_80183EA0 * 0xE0);
-    temp_s7 = (arg0 * 0xB8) + D_800DDB40;
+    temp_s7 = (arg0 * 0xB8) + camera1;
     func_80046F60(temp_s0->unk60, temp_s0->unk64, 0x20, 0x40, 5);
     D_80183E80.unk0 = temp_s0->unkB2;
     D_80183E80.unk4 = temp_s0->unkB6;
@@ -7574,7 +7574,7 @@ void func_80052F20(s32 arg0) {
     void *temp_v1_2;
     s32 *phi_s2;
 
-    sp44 = (arg0 * 0xB8) + D_800DDB40;
+    sp44 = (arg0 * 0xB8) + camera1;
     func_80046E60(&D_06006D20, &D_06006F20, 0x20, 0x20);
     phi_s2 = &D_8018C3F0;
     do {
@@ -7626,7 +7626,7 @@ void func_8005309C(s32 arg0) {
     s32 *phi_s3;
     s32 phi_s4;
 
-    temp_fp = (arg0 * 0xB8) + D_800DDB40;
+    temp_fp = (arg0 * 0xB8) + camera1;
     phi_s3 = &D_80183EA0;
     phi_s4 = 0;
     do {
@@ -7707,7 +7707,7 @@ void func_800532A4(s32 arg0) {
     temp_t7 = temp_a2 * 0xB8;
     arg0 = temp_a2;
     sp44 = temp_a0;
-    temp_s1 = temp_t7 + D_800DDB40;
+    temp_s1 = temp_t7 + camera1;
     if (func_8007223C(temp_a0, 0x10, temp_a2) != 0) {
         temp_s0 = (sp44 * 0xE0) + &D_80165C18;
         temp_s0->unkB2 = 0;
@@ -7923,7 +7923,7 @@ void func_80053870(s32 arg0) {
     s32 *phi_a3;
     s32 *phi_s3;
 
-    sp84 = (arg0 * 0xB8) + D_800DDB40;
+    sp84 = (arg0 * 0xB8) + camera1;
     if (arg0 == 0) {
         phi_s0 = &D_80183EA0;
         phi_s2 = 0;
@@ -8207,7 +8207,7 @@ void func_800540CC(s32 arg0, s32 arg1) {
     s16 temp_a0;
     void *temp_v1;
 
-    sp2C = (arg1 * 0xB8) + D_800DDB40;
+    sp2C = (arg1 * 0xB8) + camera1;
     if (arg0 != -1) {
         temp_v1 = (arg0 * 0xE0) + &D_80165C18;
         if ((temp_v1->unkA6 >= 2) && (temp_v1->unkD5 == 1) && (D_8018D120 < 0x2EF)) {
@@ -8251,7 +8251,7 @@ void func_800541BC(s32 arg0) {
     s32 *phi_s0_2;
 
     temp_v1 = gDisplayListHead;
-    sp3C = (arg0 * 0xB8) + D_800DDB40;
+    sp3C = (arg0 * 0xB8) + camera1;
     gDisplayListHead = temp_v1 + 8;
     temp_v1->unk0 = 0x6000000;
     temp_v1->unk4 = &D_0D007AE0;
@@ -8297,7 +8297,7 @@ void func_80054324(s32 arg0, s32 arg1) {
     s16 temp_a3;
     void *temp_v1;
 
-    sp2C = (arg1 * 0xB8) + D_800DDB40;
+    sp2C = (arg1 * 0xB8) + camera1;
     if (arg0 != -1) {
         temp_v1 = (arg0 * 0xE0) + &D_80165C18;
         if ((temp_v1->unkA6 >= 2) && (temp_v1->unkD5 == 6) && (D_8018D120 < 0x2EF)) {
@@ -8342,7 +8342,7 @@ void func_80054414(s32 arg0) {
     s32 *phi_s0_2;
 
     temp_v1 = gDisplayListHead;
-    sp3C = (arg0 * 0xB8) + D_800DDB40;
+    sp3C = (arg0 * 0xB8) + camera1;
     gDisplayListHead = temp_v1 + 8;
     temp_v1->unk0 = 0x6000000;
     temp_v1->unk4 = &D_0D007AE0;
@@ -8386,7 +8386,7 @@ void func_8005457C(s32 arg0, s32 arg1) {
     s32 sp34;
     void *temp_s0;
 
-    sp34 = (arg1 * 0xB8) + D_800DDB40;
+    sp34 = (arg1 * 0xB8) + camera1;
     if (D_8018D120 < 0x2EF) {
         temp_s0 = (arg0 * 0xE0) + &D_80165C18;
         if (temp_s0->unkD5 == 9) {
@@ -8522,7 +8522,7 @@ void func_80054938(s32 arg0) {
     s32 *phi_s2;
 
     temp_v1 = gDisplayListHead;
-    sp54 = (arg0 * 0xB8) + D_800DDB40;
+    sp54 = (arg0 * 0xB8) + camera1;
     gDisplayListHead = temp_v1 + 8;
     temp_v1->unk0 = 0x6000000;
     temp_v1->unk4 = &D_0D007AE0;
@@ -8614,7 +8614,7 @@ void func_80054BE8(s32 arg0) {
     gDisplayListHead = temp_v1 + 8;
     temp_v1->unk0 = 0x6000000;
     temp_v1->unk4 = &D_0D007AE0;
-    temp_s5 = (arg0 * 0xB8) + D_800DDB40;
+    temp_s5 = (arg0 * 0xB8) + camera1;
     func_800444B0(D_8018D488, 0x20, 0x20);
     func_8004B35C(0xFF, 0xFF, 0, 0xFF);
     D_80183E80 = 0;
@@ -8648,7 +8648,7 @@ void func_80054D00(s32 arg0, s32 arg1) {
     void *temp_v1;
 
     temp_v1 = (arg0 * 0xE0) + &D_80165C18;
-    sp3C = (arg1 * 0xB8) + D_800DDB40;
+    sp3C = (arg1 * 0xB8) + camera1;
     if (temp_v1->unkA6 >= 3) {
         sp38 = temp_v1;
         func_8008A364(0x2AAB, 0x12C);
@@ -8744,7 +8744,7 @@ void func_80054F04(s32 arg0) {
     s32 *phi_s2;
 
     temp_v1 = gDisplayListHead;
-    sp44 = (arg0 * 0xB8) + D_800DDB40;
+    sp44 = (arg0 * 0xB8) + camera1;
     gDisplayListHead = temp_v1 + 8;
     temp_v1->unk0 = 0x6000000;
     temp_v1->unk4 = &D_0D0079C8;
@@ -8967,7 +8967,7 @@ void func_80055458(s32 arg0, s32 arg1) {
 
     temp_v1 = (arg0 * 0xE0) + &D_80165C18;
     if (temp_v1->unkA6 >= 2) {
-        sp34 = (arg1 * 0xB8) + D_800DDB40;
+        sp34 = (arg1 * 0xB8) + camera1;
         sp30 = temp_v1;
         func_8004A6EC(0x3F000000);
         temp_v1->unkB4 = func_800418AC(temp_v1->unk4, temp_v1->unkC, sp34);
@@ -9020,7 +9020,7 @@ void func_800555BC(s32 arg0, s32 arg1) {
 
     temp_v1 = (arg0 * 0xE0) + &D_80165C18;
     if (temp_v1->unkA6 >= 2) {
-        sp34 = (arg1 * 0xB8) + D_800DDB40;
+        sp34 = (arg1 * 0xB8) + camera1;
         sp30 = temp_v1;
         func_8004A870(0x3F333333);
         temp_v1->unkB4 = func_800418AC(temp_v1->unk4, temp_v1->unkC, sp34);
@@ -9218,7 +9218,7 @@ void func_80055AB8(s32 arg0, s32 arg1) {
     void *temp_v1;
 
     temp_v1 = (arg0 * 0xE0) + &D_80165C18;
-    temp_a2 = (arg1 * 0xB8) + D_800DDB40;
+    temp_a2 = (arg1 * 0xB8) + camera1;
     if (temp_v1->unkA6 >= 2) {
         sp34 = temp_v1;
         sp3C = temp_a2;
@@ -9299,7 +9299,7 @@ void func_80055CCC(s32 arg0, s32 arg1) {
     void *temp_v1_2;
 
     temp_s0 = (arg0 * 0xE0) + &D_80165C18;
-    sp24 = (arg1 * 0xB8) + D_800DDB40;
+    sp24 = (arg1 * 0xB8) + camera1;
     if (temp_s0->unkA6 >= 2) {
         func_8008A454(0x12C);
         func_8004A6EC(arg0, (20.0 / (temp_s0->unk8 - temp_s0->unk44)) + 0.5);
@@ -9488,7 +9488,7 @@ void func_80056188(s32 arg0) {
     void *temp_s0;
     s32 *phi_s2;
 
-    temp_s3 = (arg0 * 0xB8) + D_800DDB40;
+    temp_s3 = (arg0 * 0xB8) + camera1;
     phi_s2 = &D_80183EA0;
     do {
         temp_s1 = *phi_s2;
@@ -9594,7 +9594,7 @@ void func_800563DC(s32 arg0, s32 arg1, ? arg2) {
     D_80183E80.unk0 = 0;
     D_80183E40.unk0 = temp_f12;
     D_80183E40.unk8 = temp_f14;
-    D_80183E80.unk2 = func_800418AC(temp_f12, temp_f14, (arg1 * 0xB8) + D_800DDB40);
+    D_80183E80.unk2 = func_800418AC(temp_f12, temp_f14, (arg1 * 0xB8) + camera1);
     D_80183E80.unk4 = 0x8000;
     func_80042E00(&D_80183E40, &D_80183E80, 0x3E4CCCCD);
     temp_v0_2 = gDisplayListHead;
@@ -9936,7 +9936,7 @@ void func_80057114(s32 arg0) {
     if (D_800DC50C == 5) {
         phi_fp = 0;
     }
-    temp_s7 = (phi_fp * 0xB8) + D_800DDB40;
+    temp_s7 = (phi_fp * 0xB8) + camera1;
     if (phi_fp == 0) {
         phi_s1 = &D_80183DD8;
         phi_s2 = 0;

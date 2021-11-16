@@ -76,8 +76,8 @@ glabel load_surface_map
 /* 0FA4C4 80290EB4 24070003 */   li    $a3, 3
 .L80290EB8:
 /* 0FA4C8 80290EB8 A4A70036 */  sh    $a3, 0x36($a1)
-/* 0FA4CC 80290EBC 3C0D800E */  lui   $t5, %hi(D_800DDB40) # $t5, 0x800e
-/* 0FA4D0 80290EC0 8DADDB40 */  lw    $t5, %lo(D_800DDB40)($t5)
+/* 0FA4CC 80290EBC 3C0D800E */  lui   $t5, %hi(camera1) # $t5, 0x800e
+/* 0FA4D0 80290EC0 8DADDB40 */  lw    $t5, %lo(camera1)($t5)
 /* 0FA4D4 80290EC4 240100B8 */  li    $at, 184
 /* 0FA4D8 80290EC8 3C198015 */  lui   $t9, %hi(D_80152300)
 /* 0FA4DC 80290ECC 00CD7023 */  subu  $t6, $a2, $t5

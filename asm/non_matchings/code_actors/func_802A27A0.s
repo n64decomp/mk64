@@ -9,8 +9,8 @@ glabel func_802A27A0
 /* 10BDCC 802A27BC AFA500A4 */  sw    $a1, 0xa4($sp)
 /* 10BDD0 802A27C0 11C1001B */  beq   $t6, $at, .L802A2830
 /* 10BDD4 802A27C4 AFA700AC */   sw    $a3, 0xac($sp)
-/* 10BDD8 802A27C8 3C0F800E */  lui   $t7, %hi(D_800DDB40) # $t7, 0x800e
-/* 10BDDC 802A27CC 8DEFDB40 */  lw    $t7, %lo(D_800DDB40)($t7)
+/* 10BDD8 802A27C8 3C0F800E */  lui   $t7, %hi(camera1) # $t7, 0x800e
+/* 10BDDC 802A27CC 8DEFDB40 */  lw    $t7, %lo(camera1)($t7)
 /* 10BDE0 802A27D0 240100B8 */  li    $at, 184
 /* 10BDE4 802A27D4 24C50018 */  addiu $a1, $a2, 0x18
 /* 10BDE8 802A27D8 008FC023 */  subu  $t8, $a0, $t7

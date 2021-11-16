@@ -24,8 +24,8 @@ glabel func_80019ED0
 /* 01AB24 80019F24 3C13800E */  lui   $s3, %hi(D_800DC5E8)
 /* 01AB28 80019F28 2673C5E8 */  addiu $s3, %lo(D_800DC5E8) # addiu $s3, $s3, -0x3a18
 /* 01AB2C 80019F2C 8E620000 */  lw    $v0, ($s3)
-/* 01AB30 80019F30 3C0F800E */  lui   $t7, %hi(D_800DDB40)
-/* 01AB34 80019F34 8DEFDB40 */  lw    $t7, %lo(D_800DDB40)($t7)
+/* 01AB30 80019F30 3C0F800E */  lui   $t7, %hi(camera1)
+/* 01AB34 80019F34 8DEFDB40 */  lw    $t7, %lo(camera1)($t7)
 /* 01AB38 80019F38 3C018016 */  lui   $at, %hi(D_80164360) # $at, 0x8016
 /* 01AB3C 80019F3C 3C108016 */  lui   $s0, %hi(D_80164678) # $s0, 0x8016
 /* 01AB40 80019F40 3C128016 */  lui   $s2, %hi(D_80164680) # $s2, 0x8016

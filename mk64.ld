@@ -218,9 +218,14 @@ SECTIONS
       BUILD_DIR/data/rsp.o(.text);
       BUILD_DIR/src/main.o(.data);
       BUILD_DIR/data/data_0DD0A0.o(.data);
+      BUILD_DIR/src/code_800029B0.o(.data);
+
+      BUILD_DIR/data/data_0DD0A0_0.o(.data);
       BUILD_DIR/src/crash_screen.o(.data);
       BUILD_DIR/src/staff_ghosts.o(.data);
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
+      BUILD_DIR/src/code_8001C4D0.o(.data);
+      BUILD_DIR/data/data_0DD0A0_1_1.o(.data);
       BUILD_DIR/src/kart_attributes.inc.o(.data);
       BUILD_DIR/data/data_0DD0A0_2.o(.rodata);
       BUILD_DIR/src/os/osInitialize.o(.data*);
@@ -257,7 +262,7 @@ SECTIONS
 
    BEGIN_NOLOAD(main) {
       BUILD_DIR/src/main.o(.bss);
-
+      BUILD_DIR/src/code_800029B0.o(.bss);
       BUILD_DIR/asm/bss_800029B0.o(.bss);
 
       BUILD_DIR/src/profiler.o(.bss);
@@ -267,6 +272,8 @@ SECTIONS
       BUILD_DIR/src/staff_ghosts.o(.bss);
       BUILD_DIR/asm/bss_80005FD0.o(.bss);
       BUILD_DIR/asm/bss_MainSeg.o(.bss);
+      BUILD_DIR/src/code_8001C4D0.o(.bss);
+      BUILD_DIR/asm/bss_8001C4D0.o(.bss);
       BUILD_DIR/src/os/osCreateViManager.o(.bss);
       BUILD_DIR/src/os/osCreatePiManager.o(.bss);
       BUILD_DIR/src/os/osSetEventMesg.o(.bss);
@@ -311,6 +318,7 @@ SECTIONS
       BUILD_DIR/src/code_802B0210.o(.text);
       BUILD_DIR/src/math_util.o(.text);
       BUILD_DIR/data/data_121DA0.o(.data);
+      BUILD_DIR/src/code_802A3730.o(.data);
       BUILD_DIR/src/memory.o(.data);
       BUILD_DIR/data/data_121DA0_1.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);

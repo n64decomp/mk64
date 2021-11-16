@@ -48,8 +48,8 @@ glabel func_8008BE0C
 /* 08CAC0 8008BEC0 A7A2001E */  sh    $v0, 0x1e($sp)
 /* 08CAC4 8008BEC4 0C0ADF8D */  jal   random_int
 /* 08CAC8 8008BEC8 97A4002A */   lhu   $a0, 0x2a($sp)
-/* 08CACC 8008BECC 3C0F800E */  lui   $t7, %hi(D_800DDB40) # $t7, 0x800e
-/* 08CAD0 8008BED0 8DEFDB40 */  lw    $t7, %lo(D_800DDB40)($t7)
+/* 08CACC 8008BECC 3C0F800E */  lui   $t7, %hi(camera1) # $t7, 0x800e
+/* 08CAD0 8008BED0 8DEFDB40 */  lw    $t7, %lo(camera1)($t7)
 /* 08CAD4 8008BED4 97A8002A */  lhu   $t0, 0x2a($sp)
 /* 08CAD8 8008BED8 8FA40020 */  lw    $a0, 0x20($sp)
 /* 08CADC 8008BEDC 85F80026 */  lh    $t8, 0x26($t7)
