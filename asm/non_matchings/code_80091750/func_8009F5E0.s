@@ -956,8 +956,8 @@ glabel L800A037C
 /* 0A0FB0 800A03B0 0C026306 */  jal   func_80098C18
 /* 0A0FB4 800A03B4 24A7003F */   addiu $a3, $a1, 0x3f
 /* 0A0FB8 800A03B8 AE020000 */  sw    $v0, ($s0)
-/* 0A0FBC 800A03BC 3C09800E */  lui   $t1, %hi(D_800DC548) # $t1, 0x800e
-/* 0A0FC0 800A03C0 8D29C548 */  lw    $t1, %lo(D_800DC548)($t1)
+/* 0A0FBC 800A03BC 3C09800E */  lui   $t1, %hi(gCCSelection) # $t1, 0x800e
+/* 0A0FC0 800A03C0 8D29C548 */  lw    $t1, %lo(gCCSelection)($t1)
 /* 0A0FC4 800A03C4 3C04800F */  lui   $a0, %hi(D_800E8294) # 0x800f
 /* 0A0FC8 800A03C8 00095080 */  sll   $t2, $t1, 2
 /* 0A0FCC 800A03CC 008A2021 */  addu  $a0, $a0, $t2

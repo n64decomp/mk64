@@ -167,8 +167,8 @@ glabel func_8000F628
 /* 0104B8 8000F8B8 8FAD00DC */  lw    $t5, 0xdc($sp)
 /* 0104BC 8000F8BC 8FBF00D8 */  lw    $ra, 0xd8($sp)
 .L8000F8C0:
-/* 0104C0 8000F8C0 3C0F800E */  lui   $t7, %hi(D_800DC548)
-/* 0104C4 8000F8C4 8DEFC548 */  lw    $t7, %lo(D_800DC548)($t7)
+/* 0104C0 8000F8C0 3C0F800E */  lui   $t7, %hi(gCCSelection)
+/* 0104C4 8000F8C4 8DEFC548 */  lw    $t7, %lo(gCCSelection)($t7)
 /* 0104C8 8000F8C8 00027100 */  sll   $t6, $v0, 4
 /* 0104CC 8000F8CC AFBF00D8 */  sw    $ra, 0xd8($sp)
 /* 0104D0 8000F8D0 000FC080 */  sll   $t8, $t7, 2
@@ -569,8 +569,8 @@ glabel func_8000F628
 /* 010AD4 8000FED4 3C028016 */  lui   $v0, %hi(D_8016347A) # $v0, 0x8016
 /* 010AD8 8000FED8 2442347A */  addiu $v0, %lo(D_8016347A) # addiu $v0, $v0, 0x347a
 /* 010ADC 8000FEDC A4400000 */  sh    $zero, ($v0)
-/* 010AE0 8000FEE0 3C0F800E */  lui   $t7, %hi(D_800DC548)
-/* 010AE4 8000FEE4 8DEFC548 */  lw    $t7, %lo(D_800DC548)($t7)
+/* 010AE0 8000FEE0 3C0F800E */  lui   $t7, %hi(gCCSelection)
+/* 010AE4 8000FEE4 8DEFC548 */  lw    $t7, %lo(gCCSelection)($t7)
 /* 010AE8 8000FEE8 24010003 */  li    $at, 3
 /* 010AEC 8000FEEC 3C038016 */  lui   $v1, %hi(D_80162F10) # $v1, 0x8016
 /* 010AF0 8000FEF0 15E10002 */  bne   $t7, $at, .L8000FEFC

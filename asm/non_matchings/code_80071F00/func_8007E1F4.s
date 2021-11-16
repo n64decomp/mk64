@@ -28,10 +28,10 @@ glabel func_8007E1F4
 /* 07EE58 8007E258 26040004 */   addiu $a0, $s0, 4
 .L8007E25C:
 /* 07EE5C 8007E25C 8E0B004C */  lw    $t3, 0x4c($s0)
-/* 07EE60 8007E260 3C02800E */  lui   $v0, %hi(D_800DC548) # $v0, 0x800e
+/* 07EE60 8007E260 3C02800E */  lui   $v0, %hi(gCCSelection) # $v0, 0x800e
 /* 07EE64 8007E264 55600032 */  bnel  $t3, $zero, .L8007E330
 /* 07EE68 8007E268 2404000F */   li    $a0, 15
-/* 07EE6C 8007E26C 8C42C548 */  lw    $v0, %lo(D_800DC548)($v0)
+/* 07EE6C 8007E26C 8C42C548 */  lw    $v0, %lo(gCCSelection)($v0)
 /* 07EE70 8007E270 24010001 */  li    $at, 1
 /* 07EE74 8007E274 50400007 */  beql  $v0, $zero, .L8007E294
 /* 07EE78 8007E278 3C01442F */   lui   $at, 0x442f

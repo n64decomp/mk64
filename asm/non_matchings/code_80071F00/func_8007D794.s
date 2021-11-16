@@ -1,6 +1,6 @@
 glabel func_8007D794
-/* 07E394 8007D794 3C02800E */  lui   $v0, %hi(D_800DC548) # $v0, 0x800e
-/* 07E398 8007D798 8C42C548 */  lw    $v0, %lo(D_800DC548)($v0)
+/* 07E394 8007D794 3C02800E */  lui   $v0, %hi(gCCSelection) # $v0, 0x800e
+/* 07E398 8007D798 8C42C548 */  lw    $v0, %lo(gCCSelection)($v0)
 /* 07E39C 8007D79C 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 07E3A0 8007D7A0 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 07E3A4 8007D7A4 14400007 */  bnez  $v0, .L8007D7C4

@@ -852,7 +852,7 @@ void func_800B28C8(void) {
                 gIsMirrorMode = 0;
                 return;
             }
-            D_800DC548 = temp_v0;
+            gCCSelection = temp_v0;
             D_800DC648 = 1;
             if (temp_v0 == 3) {
                 gIsMirrorMode = 1;
@@ -861,7 +861,7 @@ void func_800B28C8(void) {
             gIsMirrorMode = 0;
             return;
         }
-        D_800DC548 = 1;
+        gCCSelection = 1;
         gIsMirrorMode = 0;
         D_800DC648 = 0;
         if (temp_v0 != 0) {
@@ -869,7 +869,7 @@ void func_800B28C8(void) {
         }
         return;
     }
-    D_800DC548 = temp_v0;
+    gCCSelection = temp_v0;
     D_800DC648 = 1;
     if (temp_v0 == 3) {
         gIsMirrorMode = 1;
@@ -1803,7 +1803,7 @@ void func_800B536C(s32 arg0) {
 
     temp_a2 = arg0;
     if (arg0 >= 0) {
-        temp_v0 = D_800DC548 + 0x180 + &D_8018EB90;
+        temp_v0 = gCCSelection + 0x180 + &D_8018EB90;
         arg0 = temp_a2;
         sp1C = temp_v0;
         temp_v1 = 3 - arg0;

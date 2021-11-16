@@ -3,8 +3,8 @@ glabel func_800B536C
 /* 0B5F70 800B5370 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 0B5F74 800B5374 0480001F */  bltz  $a0, .L800B53F4
 /* 0B5F78 800B5378 00803025 */   move  $a2, $a0
-/* 0B5F7C 800B537C 3C0E800E */  lui   $t6, %hi(D_800DC548) # $t6, 0x800e
-/* 0B5F80 800B5380 8DCEC548 */  lw    $t6, %lo(D_800DC548)($t6)
+/* 0B5F7C 800B537C 3C0E800E */  lui   $t6, %hi(gCCSelection) # $t6, 0x800e
+/* 0B5F80 800B5380 8DCEC548 */  lw    $t6, %lo(gCCSelection)($t6)
 /* 0B5F84 800B5384 3C188019 */  lui   $t8, %hi(D_8018EB90) # $t8, 0x8019
 /* 0B5F88 800B5388 2718EB90 */  addiu $t8, %lo(D_8018EB90) # addiu $t8, $t8, -0x1470
 /* 0B5F8C 800B538C 25CF0180 */  addiu $t7, $t6, 0x180

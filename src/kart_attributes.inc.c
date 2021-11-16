@@ -3,7 +3,7 @@
 #include "types.h"
 #include "kart_attributes.h"
 
-//      Mario  Luigi  Yoshi  Toad   D.K.   Wario  Peach  Bowser
+//  Mario  Luigi  Yoshi  Toad   D.K.   Wario  Peach  Bowser
 float D_800E2360[] = {
     -10.0, -10.0, -10.0, -10.0, -10.0, -10.0, -10.0, -10.0,
 };
@@ -28,7 +28,7 @@ struct D_800E2404 D_800E2404 = {
 struct D_800E2410 D_800E2410 = {
     D_800E23E0,
 };
-//       Mario  Luigi  Yoshi  Toad   D.K.   Wario  Peach  Bowser
+//  Mario  Luigi  Yoshi  Toad   D.K.   Wario  Peach  Bowser
 float D_800E2414[] = {
     28.0,  28.0,  28.0,  28.0,  28.0,  28.0,  28.0,  28.0,
 };
@@ -53,7 +53,7 @@ struct D_800E24B8 D_800E24B8 = {
 struct D_800E24C4 D_800E24C4 = {
     D_800E2494,
 };
-//      Mario   Luigi   Yoshi   Toad    D.K.    Wario   Peach   Bowser
+//  Mario   Luigi   Yoshi   Toad    D.K.    Wario   Peach   Bowser
 float D_800E24C8[] = {
     3364.0, 3364.0, 3457.0, 3457.0, 3364.0, 3364.0, 3457.0, 3364.0,
 };
@@ -92,7 +92,7 @@ float D_800E25DC[] = {  // Extra
     310.0, 310.0, 314.0, 314.0, 310.0, 310.0, 314.0, 310.0,
 };
 float D_800E25FC[] = { // Battle mode
-    245.0,    245.0,   245.0,    245.0,   245.0,   245.0,   245.0,  245.0,
+    245.0, 245.0, 245.0, 245.0, 245.0, 245.0, 245.0, 245.0,
 };
 
 struct D_800E261C D_800E261C = {

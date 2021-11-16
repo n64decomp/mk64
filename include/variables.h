@@ -60,7 +60,7 @@ extern s16* D_80164550;
 extern f32 D_80165210[];
 extern f32 D_80165230[];
 extern struct_D_800E261C D_800E261C;
-extern s32 D_800DC548;
+extern s32 gCCSelection;
 extern f32 D_80164510[];
 extern s32 D_80165420[];
 extern s32 D_80165440[];

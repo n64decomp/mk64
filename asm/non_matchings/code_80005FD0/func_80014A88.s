@@ -1,6 +1,6 @@
 glabel func_80014A88
-/* 015688 80014A88 3C0E800E */  lui   $t6, %hi(D_800DC548)
-/* 01568C 80014A8C 8DCEC548 */  lw    $t6, %lo(D_800DC548)($t6)
+/* 015688 80014A88 3C0E800E */  lui   $t6, %hi(gCCSelection)
+/* 01568C 80014A8C 8DCEC548 */  lw    $t6, %lo(gCCSelection)($t6)
 /* 015690 80014A90 3C01800F */  lui   $at, %hi(D_800ED1E8)
 /* 015694 80014A94 D428D1E8 */  ldc1  $f8, %lo(D_800ED1E8)($at)
 /* 015698 80014A98 448E2000 */  mtc1  $t6, $f4

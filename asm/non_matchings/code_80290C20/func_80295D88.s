@@ -92,8 +92,8 @@ glabel L80295EB0
 /* 0FF4F0 80295EE0 3C01802C */  lui   $at, %hi(D_802B87B4) # $at, 0x802c
 /* 0FF4F4 80295EE4 240A03E8 */  li    $t2, 1000
 /* 0FF4F8 80295EE8 A42A87B4 */  sh    $t2, %lo(D_802B87B4)($at)
-/* 0FF4FC 80295EEC 3C0D800E */  lui   $t5, %hi(D_800DC548) # $t5, 0x800e
-/* 0FF500 80295EF0 8DADC548 */  lw    $t5, %lo(D_800DC548)($t5)
+/* 0FF4FC 80295EEC 3C0D800E */  lui   $t5, %hi(gCCSelection) # $t5, 0x800e
+/* 0FF500 80295EF0 8DADC548 */  lw    $t5, %lo(gCCSelection)($t5)
 /* 0FF504 80295EF4 3C01802C */  lui   $at, %hi(D_802B87D4) # $at, 0x802c
 /* 0FF508 80295EF8 240B071C */  li    $t3, 1820
 /* 0FF50C 80295EFC A42B87D4 */  sh    $t3, %lo(D_802B87D4)($at)

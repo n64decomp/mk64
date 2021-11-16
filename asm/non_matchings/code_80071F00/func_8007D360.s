@@ -171,8 +171,8 @@ glabel func_8007D360
 /* 07E1E8 8007D5E8 0C022E03 */  jal   func_8008B80C
 /* 07E1EC 8007D5EC 24070000 */   li    $a3, 0
 /* 07E1F0 8007D5F0 A60000B0 */  sh    $zero, 0xb0($s0)
-/* 07E1F4 8007D5F4 3C08800E */  lui   $t0, %hi(D_800DC548) # $t0, 0x800e
-/* 07E1F8 8007D5F8 8D08C548 */  lw    $t0, %lo(D_800DC548)($t0)
+/* 07E1F4 8007D5F4 3C08800E */  lui   $t0, %hi(gCCSelection) # $t0, 0x800e
+/* 07E1F8 8007D5F8 8D08C548 */  lw    $t0, %lo(gCCSelection)($t0)
 /* 07E1FC 8007D5FC 29010002 */  slti  $at, $t0, 2
 /* 07E200 8007D600 10200013 */  beqz  $at, .L8007D650
 /* 07E204 8007D604 00000000 */   nop   

@@ -291,8 +291,8 @@ glabel func_800A34A8
 /* 0A44D0 800A38D0 468021A0 */  cvt.s.w $f6, $f4
 /* 0A44D4 800A38D4 3C014000 */  li    $at, 0x40000000 # 2.000000
 /* 0A44D8 800A38D8 44815000 */  mtc1  $at, $f10
-/* 0A44DC 800A38DC 3C18800E */  lui   $t8, %hi(D_800DC548) # $t8, 0x800e
-/* 0A44E0 800A38E0 8F18C548 */  lw    $t8, %lo(D_800DC548)($t8)
+/* 0A44DC 800A38DC 3C18800E */  lui   $t8, %hi(gCCSelection) # $t8, 0x800e
+/* 0A44E0 800A38E0 8F18C548 */  lw    $t8, %lo(gCCSelection)($t8)
 /* 0A44E4 800A38E4 3C12800E */  lui   $s2, %hi(D_800E76CC) # $s2, 0x800e
 /* 0A44E8 800A38E8 46003202 */  mul.s $f8, $f6, $f0
 /* 0A44EC 800A38EC 265276CC */  addiu $s2, %lo(D_800E76CC) # addiu $s2, $s2, 0x76cc

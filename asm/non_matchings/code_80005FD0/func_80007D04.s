@@ -59,8 +59,8 @@ glabel func_80007D04
 /* 0089E4 80007DE4 1000006B */  b     .L80007F94
 /* 0089E8 80007DE8 A42534C0 */   sh    $a1, %lo(D_801634C0)($at) # 0x34c0($at)
 .L80007DEC:
-/* 0089EC 80007DEC 3C03800E */  lui   $v1, %hi(D_800DC548)
-/* 0089F0 80007DF0 8C63C548 */  lw    $v1, %lo(D_800DC548)($v1)
+/* 0089EC 80007DEC 3C03800E */  lui   $v1, %hi(gCCSelection)
+/* 0089F0 80007DF0 8C63C548 */  lw    $v1, %lo(gCCSelection)($v1)
 /* 0089F4 80007DF4 24050003 */  li    $a1, 3
 /* 0089F8 80007DF8 24010001 */  li    $at, 1
 /* 0089FC 80007DFC 1060000A */  beqz  $v1, .L80007E28

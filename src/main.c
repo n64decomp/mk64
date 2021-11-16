@@ -172,10 +172,23 @@ s32 D_800DC52C = 0;
 
 s32 D_800DC530[2] = {0};
 s32 gPlayerCountSelection1 = 2;
+/**
+  * 0 = Mario Grand Prix
+  * 1 = Time Trial
+  * 2 = Versus
+  * 3 = Battle
+**/
 s32 gModeSelection = 0;
 s32 D_800DC540 = 0;
 s32 D_800DC544 = 0;
-s32 D_800DC548 = 0;
+/**
+  * 0 = 50CC
+  * 1 = 100CC
+  * 2 = 150CC
+  * 3 = Extra (a.k.a Mirror)
+  * 4 = Battle
+**/
+s32 gCCSelection = 0;
 s32 gGlobalTimer = 0;
 UNUSED s32 D_800DC550 = 0;
 UNUSED s32 D_800DC554 = 0;

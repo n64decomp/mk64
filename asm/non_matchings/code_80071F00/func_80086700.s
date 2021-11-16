@@ -1,6 +1,6 @@
 glabel func_80086700
-/* 087300 80086700 3C0E800E */  lui   $t6, %hi(D_800DC548) # $t6, 0x800e
-/* 087304 80086704 8DCEC548 */  lw    $t6, %lo(D_800DC548)($t6)
+/* 087300 80086700 3C0E800E */  lui   $t6, %hi(gCCSelection) # $t6, 0x800e
+/* 087304 80086704 8DCEC548 */  lw    $t6, %lo(gCCSelection)($t6)
 /* 087308 80086708 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 08730C 8008670C AFB00018 */  sw    $s0, 0x18($sp)
 /* 087310 80086710 29C10002 */  slti  $at, $t6, 2
