@@ -42,9 +42,9 @@ glabel func_80078A44
 .L80078AE0:
 /* 0796E0 80078AE0 00094880 */  sll   $t1, $t1, 2
 /* 0796E4 80078AE4 1020004E */  beqz  $at, .L80078C20
-/* 0796E8 80078AE8 3C01800F */   lui   $at, %hi(D_800EEB88)
+/* 0796E8 80078AE8 3C01800F */   lui   $at, %hi(jpt_800EEB88)
 /* 0796EC 80078AEC 00290821 */  addu  $at, $at, $t1
-/* 0796F0 80078AF0 8C29EB88 */  lw    $t1, %lo(D_800EEB88)($at)
+/* 0796F0 80078AF0 8C29EB88 */  lw    $t1, %lo(jpt_800EEB88)($at)
 /* 0796F4 80078AF4 01200008 */  jr    $t1
 /* 0796F8 80078AF8 00000000 */   nop   
 glabel L80078AFC
