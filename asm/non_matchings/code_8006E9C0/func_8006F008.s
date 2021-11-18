@@ -51,9 +51,9 @@ glabel func_8006F008
 .L8006F0C8:
 /* 06FCC8 8006F0C8 102001A5 */  beqz  $at, .L8006F760
 /* 06FCCC 8006F0CC 0004C880 */   sll   $t9, $a0, 2
-/* 06FCD0 8006F0D0 3C01800F */  lui   $at, %hi(D_800EE950)
+/* 06FCD0 8006F0D0 3C01800F */  lui   $at, %hi(jpt_800EE950)
 /* 06FCD4 8006F0D4 00390821 */  addu  $at, $at, $t9
-/* 06FCD8 8006F0D8 8C39E950 */  lw    $t9, %lo(D_800EE950)($at)
+/* 06FCD8 8006F0D8 8C39E950 */  lw    $t9, %lo(jpt_800EE950)($at)
 /* 06FCDC 8006F0DC 03200008 */  jr    $t9
 /* 06FCE0 8006F0E0 00000000 */   nop   
 glabel L8006F0E4
