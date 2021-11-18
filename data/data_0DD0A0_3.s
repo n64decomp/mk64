@@ -6786,7 +6786,7 @@ glabel D_800F2E74 # u8* ext_name param to osPfsFindFile
 glabel D_800F2E80
 .float 262159.0
 
-glabel D_800F2E84
+glabel jpt_800F2E84
 .word L800BA210, L800BA1E4, L800BA14C, L800BA094
 .word L800BA050
 
