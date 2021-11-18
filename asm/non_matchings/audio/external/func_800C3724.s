@@ -470,9 +470,9 @@ glabel func_800C3724
 /* 0C49CC 800C3DCC 1020004F */  beqz  $at, .L800C3F0C
 /* 0C49D0 800C3DD0 01403025 */   move  $a2, $t2
 /* 0C49D4 800C3DD4 000D5880 */  sll   $t3, $t5, 2
-/* 0C49D8 800C3DD8 3C01800F */  lui   $at, %hi(D_800F362C)
+/* 0C49D8 800C3DD8 3C01800F */  lui   $at, %hi(jpt_800F362C)
 /* 0C49DC 800C3DDC 002B0821 */  addu  $at, $at, $t3
-/* 0C49E0 800C3DE0 8C2B362C */  lw    $t3, %lo(D_800F362C)($at)
+/* 0C49E0 800C3DE0 8C2B362C */  lw    $t3, %lo(jpt_800F362C)($at)
 /* 0C49E4 800C3DE4 01600008 */  jr    $t3
 /* 0C49E8 800C3DE8 00000000 */   nop   
 glabel L800C3DEC

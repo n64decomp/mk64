@@ -15,9 +15,9 @@ glabel func_800C2A2C
 /* 0C3660 800C2A60 10200273 */  beqz  $at, .L800C3430
 /* 0C3664 800C2A64 31C500FF */   andi  $a1, $t6, 0xff
 /* 0C3668 800C2A68 0018C080 */  sll   $t8, $t8, 2
-/* 0C366C 800C2A6C 3C01800F */  lui   $at, %hi(D_800F35EC)
+/* 0C366C 800C2A6C 3C01800F */  lui   $at, %hi(jpt_800F35EC)
 /* 0C3670 800C2A70 00380821 */  addu  $at, $at, $t8
-/* 0C3674 800C2A74 8C3835EC */  lw    $t8, %lo(D_800F35EC)($at)
+/* 0C3674 800C2A74 8C3835EC */  lw    $t8, %lo(jpt_800F35EC)($at)
 /* 0C3678 800C2A78 03000008 */  jr    $t8
 /* 0C367C 800C2A7C 00000000 */   nop   
 glabel L800C2A80
