@@ -5,9 +5,9 @@ glabel func_800BE5E0
 /* 0BF1EC 800BE5EC 1020009D */  beqz  $at, .L800BE864
 /* 0BF1F0 800BE5F0 00602825 */   move  $a1, $v1
 /* 0BF1F4 800BE5F4 00037080 */  sll   $t6, $v1, 2
-/* 0BF1F8 800BE5F8 3C01800F */  lui   $at, %hi(D_800F2EE0)
+/* 0BF1F8 800BE5F8 3C01800F */  lui   $at, %hi(jpt_800F2EE0)
 /* 0BF1FC 800BE5FC 002E0821 */  addu  $at, $at, $t6
-/* 0BF200 800BE600 8C2E2EE0 */  lw    $t6, %lo(D_800F2EE0)($at)
+/* 0BF200 800BE600 8C2E2EE0 */  lw    $t6, %lo(jpt_800F2EE0)($at)
 /* 0BF204 800BE604 01C00008 */  jr    $t6
 /* 0BF208 800BE608 00000000 */   nop   
 glabel L800BE60C
