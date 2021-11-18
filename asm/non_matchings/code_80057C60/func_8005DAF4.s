@@ -55,9 +55,9 @@ glabel func_8005DAF4
 /* 05E7B8 8005DBB8 2DC1000D */  sltiu $at, $t6, 0xd
 /* 05E7BC 8005DBBC 102003AF */  beqz  $at, .L8005EA7C
 /* 05E7C0 8005DBC0 000E7080 */   sll   $t6, $t6, 2
-/* 05E7C4 8005DBC4 3C01800F */  lui   $at, %hi(D_800EE4B0)
+/* 05E7C4 8005DBC4 3C01800F */  lui   $at, %hi(jpt_800EE4B0)
 /* 05E7C8 8005DBC8 002E0821 */  addu  $at, $at, $t6
-/* 05E7CC 8005DBCC 8C2EE4B0 */  lw    $t6, %lo(D_800EE4B0)($at)
+/* 05E7CC 8005DBCC 8C2EE4B0 */  lw    $t6, %lo(jpt_800EE4B0)($at)
 /* 05E7D0 8005DBD0 01C00008 */  jr    $t6
 /* 05E7D4 8005DBD4 00000000 */   nop   
 glabel L8005DBD8
