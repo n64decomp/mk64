@@ -9,9 +9,9 @@ glabel func_8001A220
 /* 01AE3C 8001A23C 1020002B */  beqz  $at, .L8001A2EC
 /* 01AE40 8001A240 8FA5001C */   lw    $a1, 0x1c($sp)
 /* 01AE44 8001A244 00027080 */  sll   $t6, $v0, 2
-/* 01AE48 8001A248 3C01800F */  lui   $at, %hi(D_800ED36C) # 0x800f
+/* 01AE48 8001A248 3C01800F */  lui   $at, %hi(jpt_800ED36C) # 0x800f
 /* 01AE4C 8001A24C 002E0821 */  addu  $at, $at, $t6
-/* 01AE50 8001A250 8C2ED36C */  lw    $t6, %lo(D_800ED36C)($at) # -0x2c94($at)
+/* 01AE50 8001A250 8C2ED36C */  lw    $t6, %lo(jpt_800ED36C)($at) # -0x2c94($at)
 /* 01AE54 8001A254 01C00008 */  jr    $t6
 /* 01AE58 8001A258 00000000 */   nop   
 glabel L8001A25C

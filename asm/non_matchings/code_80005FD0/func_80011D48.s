@@ -25,9 +25,9 @@ glabel func_80011D48
 /* 0129A4 80011DA4 2D81000B */  sltiu $at, $t4, 0xb
 /* 0129A8 80011DA8 10200021 */  beqz  $at, .L80011E30
 /* 0129AC 80011DAC 000C6080 */   sll   $t4, $t4, 2
-/* 0129B0 80011DB0 3C01800F */  lui   $at, %hi(D_800ED0B4)
+/* 0129B0 80011DB0 3C01800F */  lui   $at, %hi(jpt_800ED0B4)
 /* 0129B4 80011DB4 002C0821 */  addu  $at, $at, $t4
-/* 0129B8 80011DB8 8C2CD0B4 */  lw    $t4, %lo(D_800ED0B4)($at)
+/* 0129B8 80011DB8 8C2CD0B4 */  lw    $t4, %lo(jpt_800ED0B4)($at)
 /* 0129BC 80011DBC 01800008 */  jr    $t4
 /* 0129C0 80011DC0 00000000 */   nop   
 glabel L80011DC4
