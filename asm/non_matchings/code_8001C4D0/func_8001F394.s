@@ -88,9 +88,9 @@ glabel func_8001F394
 /* 0200C0 8001F4C0 102000A6 */  beqz  $at, .L8001F75C
 /* 0200C4 8001F4C4 3C050010 */   lui   $a1, 0x10
 /* 0200C8 8001F4C8 0018C080 */  sll   $t8, $t8, 2
-/* 0200CC 8001F4CC 3C01800F */  lui   $at, %hi(D_800ED5D8)
+/* 0200CC 8001F4CC 3C01800F */  lui   $at, %hi(jpt_800ED5D8)
 /* 0200D0 8001F4D0 00380821 */  addu  $at, $at, $t8
-/* 0200D4 8001F4D4 8C38D5D8 */  lw    $t8, %lo(D_800ED5D8)($at)
+/* 0200D4 8001F4D4 8C38D5D8 */  lw    $t8, %lo(jpt_800ED5D8)($at)
 /* 0200D8 8001F4D8 03000008 */  jr    $t8
 /* 0200DC 8001F4DC 00000000 */   nop   
 glabel L8001F4E0
