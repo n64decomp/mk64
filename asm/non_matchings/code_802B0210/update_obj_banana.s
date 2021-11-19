@@ -18,9 +18,9 @@ glabel update_obj_banana
 /* 11B684 802B2074 10200222 */  beqz  $at, .L802B2900
 /* 11B688 802B2078 01F81021 */   addu  $v0, $t7, $t8
 /* 11B68C 802B207C 0019C880 */  sll   $t9, $t9, 2
-/* 11B690 802B2080 3C01802C */  lui   $at, %hi(D_802B9EC8)
+/* 11B690 802B2080 3C01802C */  lui   $at, %hi(jpt_802B9EC8)
 /* 11B694 802B2084 00390821 */  addu  $at, $at, $t9
-/* 11B698 802B2088 8C399EC8 */  lw    $t9, %lo(D_802B9EC8)($at)
+/* 11B698 802B2088 8C399EC8 */  lw    $t9, %lo(jpt_802B9EC8)($at)
 /* 11B69C 802B208C 03200008 */  jr    $t9
 /* 11B6A0 802B2090 00000000 */   nop   
 glabel L802B2094
