@@ -7,9 +7,9 @@ glabel func_800AF004
 /* 0AFC18 800AF018 2DC10008 */  sltiu $at, $t6, 8
 /* 0AFC1C 800AF01C 1020005E */  beqz  $at, .L800AF198
 /* 0AFC20 800AF020 000E7080 */   sll   $t6, $t6, 2
-/* 0AFC24 800AF024 3C01800F */  lui   $at, %hi(D_800F2A9C)
+/* 0AFC24 800AF024 3C01800F */  lui   $at, %hi(jpt_800F2A9C)
 /* 0AFC28 800AF028 002E0821 */  addu  $at, $at, $t6
-/* 0AFC2C 800AF02C 8C2E2A9C */  lw    $t6, %lo(D_800F2A9C)($at)
+/* 0AFC2C 800AF02C 8C2E2A9C */  lw    $t6, %lo(jpt_800F2A9C)($at)
 /* 0AFC30 800AF030 01C00008 */  jr    $t6
 /* 0AFC34 800AF034 00000000 */   nop   
 glabel L800AF038

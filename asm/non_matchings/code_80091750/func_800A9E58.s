@@ -6,9 +6,9 @@ glabel func_800A9E58
 /* 0AAA68 800A9E68 2DE10008 */  sltiu $at, $t7, 8
 /* 0AAA6C 800A9E6C 10200019 */  beqz  $at, .L800A9ED4
 /* 0AAA70 800A9E70 000F7880 */   sll   $t7, $t7, 2
-/* 0AAA74 800A9E74 3C01800F */  lui   $at, %hi(D_800F2524)
+/* 0AAA74 800A9E74 3C01800F */  lui   $at, %hi(jpt_800F2524)
 /* 0AAA78 800A9E78 002F0821 */  addu  $at, $at, $t7
-/* 0AAA7C 800A9E7C 8C2F2524 */  lw    $t7, %lo(D_800F2524)($at)
+/* 0AAA7C 800A9E7C 8C2F2524 */  lw    $t7, %lo(jpt_800F2524)($at)
 /* 0AAA80 800A9E80 01E00008 */  jr    $t7
 /* 0AAA84 800A9E84 00000000 */   nop   
 glabel L800A9E88
@@ -74,9 +74,9 @@ glabel L800A9EBC
 /* 0AAB5C 800A9F5C 2DC10005 */  sltiu $at, $t6, 5
 /* 0AAB60 800A9F60 10200042 */  beqz  $at, .L800AA06C
 /* 0AAB64 800A9F64 000E7080 */   sll   $t6, $t6, 2
-/* 0AAB68 800A9F68 3C01800F */  lui   $at, %hi(D_800F2544)
+/* 0AAB68 800A9F68 3C01800F */  lui   $at, %hi(jpt_800F2544)
 /* 0AAB6C 800A9F6C 002E0821 */  addu  $at, $at, $t6
-/* 0AAB70 800A9F70 8C2E2544 */  lw    $t6, %lo(D_800F2544)($at)
+/* 0AAB70 800A9F70 8C2E2544 */  lw    $t6, %lo(jpt_800F2544)($at)
 /* 0AAB74 800A9F74 01C00008 */  jr    $t6
 /* 0AAB78 800A9F78 00000000 */   nop   
 glabel L800A9F7C
@@ -150,9 +150,9 @@ glabel L800A9FD8
 /* 0AAC7C 800AA07C 2D610005 */  sltiu $at, $t3, 5
 /* 0AAC80 800AA080 10200038 */  beqz  $at, .L800AA164
 /* 0AAC84 800AA084 000B5880 */   sll   $t3, $t3, 2
-/* 0AAC88 800AA088 3C01800F */  lui   $at, %hi(D_800F2558)
+/* 0AAC88 800AA088 3C01800F */  lui   $at, %hi(jpt_800F2558)
 /* 0AAC8C 800AA08C 002B0821 */  addu  $at, $at, $t3
-/* 0AAC90 800AA090 8C2B2558 */  lw    $t3, %lo(D_800F2558)($at)
+/* 0AAC90 800AA090 8C2B2558 */  lw    $t3, %lo(jpt_800F2558)($at)
 /* 0AAC94 800AA094 01600008 */  jr    $t3
 /* 0AAC98 800AA098 00000000 */   nop   
 glabel L800AA09C
@@ -218,9 +218,9 @@ glabel L800AA09C
 /* 0AAD78 800AA178 2F010005 */  sltiu $at, $t8, 5
 /* 0AAD7C 800AA17C 1020003A */  beqz  $at, .L800AA268
 /* 0AAD80 800AA180 0018C080 */   sll   $t8, $t8, 2
-/* 0AAD84 800AA184 3C01800F */  lui   $at, %hi(D_800F256C)
+/* 0AAD84 800AA184 3C01800F */  lui   $at, %hi(jpt_800F256C)
 /* 0AAD88 800AA188 00380821 */  addu  $at, $at, $t8
-/* 0AAD8C 800AA18C 8C38256C */  lw    $t8, %lo(D_800F256C)($at)
+/* 0AAD8C 800AA18C 8C38256C */  lw    $t8, %lo(jpt_800F256C)($at)
 /* 0AAD90 800AA190 03000008 */  jr    $t8
 /* 0AAD94 800AA194 00000000 */   nop   
 glabel L800AA198

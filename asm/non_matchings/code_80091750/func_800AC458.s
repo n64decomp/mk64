@@ -6,9 +6,9 @@ glabel func_800AC458
 /* 0AD068 800AC468 2C41000E */  sltiu $at, $v0, 0xe
 /* 0AD06C 800AC46C 1020013E */  beqz  $at, .L800AC968
 /* 0AD070 800AC470 00027080 */   sll   $t6, $v0, 2
-/* 0AD074 800AC474 3C01800F */  lui   $at, %hi(D_800F2688)
+/* 0AD074 800AC474 3C01800F */  lui   $at, %hi(jpt_800F2688)
 /* 0AD078 800AC478 002E0821 */  addu  $at, $at, $t6
-/* 0AD07C 800AC47C 8C2E2688 */  lw    $t6, %lo(D_800F2688)($at)
+/* 0AD07C 800AC47C 8C2E2688 */  lw    $t6, %lo(jpt_800F2688)($at)
 /* 0AD080 800AC480 01C00008 */  jr    $t6
 /* 0AD084 800AC484 00000000 */   nop   
 glabel L800AC488

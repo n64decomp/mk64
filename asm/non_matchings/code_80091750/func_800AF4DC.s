@@ -15,9 +15,9 @@ glabel func_800AF4DC
 /* 0B0110 800AF510 10200086 */  beqz  $at, .L800AF72C
 /* 0B0114 800AF514 AC980010 */   sw    $t8, 0x10($a0)
 /* 0B0118 800AF518 0019C880 */  sll   $t9, $t9, 2
-/* 0B011C 800AF51C 3C01800F */  lui   $at, %hi(D_800F2AD0)
+/* 0B011C 800AF51C 3C01800F */  lui   $at, %hi(jpt_800F2AD0)
 /* 0B0120 800AF520 00390821 */  addu  $at, $at, $t9
-/* 0B0124 800AF524 8C392AD0 */  lw    $t9, %lo(D_800F2AD0)($at)
+/* 0B0124 800AF524 8C392AD0 */  lw    $t9, %lo(jpt_800F2AD0)($at)
 /* 0B0128 800AF528 03200008 */  jr    $t9
 /* 0B012C 800AF52C 00000000 */   nop   
 glabel L800AF530

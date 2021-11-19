@@ -8,9 +8,9 @@ glabel func_800A9710
 /* 0AA328 800A9728 10200011 */  beqz  $at, .L800A9770
 /* 0AA32C 800A972C 00803825 */   move  $a3, $a0
 /* 0AA330 800A9730 000F7880 */  sll   $t7, $t7, 2
-/* 0AA334 800A9734 3C01800F */  lui   $at, %hi(D_800F24C8)
+/* 0AA334 800A9734 3C01800F */  lui   $at, %hi(jpt_800F24C8)
 /* 0AA338 800A9738 002F0821 */  addu  $at, $at, $t7
-/* 0AA33C 800A973C 8C2F24C8 */  lw    $t7, %lo(D_800F24C8)($at)
+/* 0AA33C 800A973C 8C2F24C8 */  lw    $t7, %lo(jpt_800F24C8)($at)
 /* 0AA340 800A9740 01E00008 */  jr    $t7
 /* 0AA344 800A9744 00000000 */   nop   
 glabel L800A9748

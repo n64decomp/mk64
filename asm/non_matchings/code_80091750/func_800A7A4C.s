@@ -46,18 +46,18 @@ glabel func_800A7A4C
 /* 0A86EC 800A7AEC 2DC1003F */  sltiu $at, $t6, 0x3f
 /* 0A86F0 800A7AF0 1020019E */  beqz  $at, .L800A816C
 /* 0A86F4 800A7AF4 000E7080 */   sll   $t6, $t6, 2
-/* 0A86F8 800A7AF8 3C01800F */  lui   $at, %hi(D_800F1F38)
+/* 0A86F8 800A7AF8 3C01800F */  lui   $at, %hi(jpt_800F1F38)
 /* 0A86FC 800A7AFC 002E0821 */  addu  $at, $at, $t6
-/* 0A8700 800A7B00 8C2E1F38 */  lw    $t6, %lo(D_800F1F38)($at)
+/* 0A8700 800A7B00 8C2E1F38 */  lw    $t6, %lo(jpt_800F1F38)($at)
 /* 0A8704 800A7B04 01C00008 */  jr    $t6
 /* 0A8708 800A7B08 00000000 */   nop   
 .L800A7B0C:
 /* 0A870C 800A7B0C 2DE10006 */  sltiu $at, $t7, 6
 /* 0A8710 800A7B10 10200196 */  beqz  $at, .L800A816C
 /* 0A8714 800A7B14 000F7880 */   sll   $t7, $t7, 2
-/* 0A8718 800A7B18 3C01800F */  lui   $at, %hi(D_800F2034)
+/* 0A8718 800A7B18 3C01800F */  lui   $at, %hi(jpt_800F2034)
 /* 0A871C 800A7B1C 002F0821 */  addu  $at, $at, $t7
-/* 0A8720 800A7B20 8C2F2034 */  lw    $t7, %lo(D_800F2034)($at)
+/* 0A8720 800A7B20 8C2F2034 */  lw    $t7, %lo(jpt_800F2034)($at)
 /* 0A8724 800A7B24 01E00008 */  jr    $t7
 /* 0A8728 800A7B28 00000000 */   nop   
 .L800A7B2C:
@@ -67,18 +67,18 @@ glabel func_800A7A4C
 /* 0A8738 800A7B38 2F0100BC */  sltiu $at, $t8, 0xbc
 /* 0A873C 800A7B3C 1020018B */  beqz  $at, .L800A816C
 /* 0A8740 800A7B40 0018C080 */   sll   $t8, $t8, 2
-/* 0A8744 800A7B44 3C01800F */  lui   $at, %hi(D_800F204C)
+/* 0A8744 800A7B44 3C01800F */  lui   $at, %hi(jpt_800F204C)
 /* 0A8748 800A7B48 00380821 */  addu  $at, $at, $t8
-/* 0A874C 800A7B4C 8C38204C */  lw    $t8, %lo(D_800F204C)($at)
+/* 0A874C 800A7B4C 8C38204C */  lw    $t8, %lo(jpt_800F204C)($at)
 /* 0A8750 800A7B50 03000008 */  jr    $t8
 /* 0A8754 800A7B54 00000000 */   nop   
 .L800A7B58:
 /* 0A8758 800A7B58 2C410038 */  sltiu $at, $v0, 0x38
 /* 0A875C 800A7B5C 10200183 */  beqz  $at, .L800A816C
 /* 0A8760 800A7B60 0002C880 */   sll   $t9, $v0, 2
-/* 0A8764 800A7B64 3C01800F */  lui   $at, %hi(D_800F233C)
+/* 0A8764 800A7B64 3C01800F */  lui   $at, %hi(jpt_800F233C)
 /* 0A8768 800A7B68 00390821 */  addu  $at, $at, $t9
-/* 0A876C 800A7B6C 8C39233C */  lw    $t9, %lo(D_800F233C)($at)
+/* 0A876C 800A7B6C 8C39233C */  lw    $t9, %lo(jpt_800F233C)($at)
 /* 0A8770 800A7B70 03200008 */  jr    $t9
 /* 0A8774 800A7B74 00000000 */   nop   
 glabel L800A7B78
@@ -241,9 +241,9 @@ glabel L800A7D9C
 /* 0A89A8 800A7DA8 2D010008 */  sltiu $at, $t0, 8
 /* 0A89AC 800A7DAC 102000EF */  beqz  $at, .L800A816C
 /* 0A89B0 800A7DB0 00084080 */   sll   $t0, $t0, 2
-/* 0A89B4 800A7DB4 3C01800F */  lui   $at, %hi(D_800F2440)
+/* 0A89B4 800A7DB4 3C01800F */  lui   $at, %hi(jpt_800F2440)
 /* 0A89B8 800A7DB8 00280821 */  addu  $at, $at, $t0
-/* 0A89BC 800A7DBC 8C282440 */  lw    $t0, %lo(D_800F2440)($at)
+/* 0A89BC 800A7DBC 8C282440 */  lw    $t0, %lo(jpt_800F2440)($at)
 /* 0A89C0 800A7DC0 01000008 */  jr    $t0
 /* 0A89C4 800A7DC4 00000000 */   nop   
 glabel L800A7DC8
@@ -270,9 +270,9 @@ glabel L800A7E00
 /* 0A8A0C 800A7E0C 2D410008 */  sltiu $at, $t2, 8
 /* 0A8A10 800A7E10 1020000C */  beqz  $at, .L800A7E44
 /* 0A8A14 800A7E14 000A5080 */   sll   $t2, $t2, 2
-/* 0A8A18 800A7E18 3C01800F */  lui   $at, %hi(D_800F2460)
+/* 0A8A18 800A7E18 3C01800F */  lui   $at, %hi(jpt_800F2460)
 /* 0A8A1C 800A7E1C 002A0821 */  addu  $at, $at, $t2
-/* 0A8A20 800A7E20 8C2A2460 */  lw    $t2, %lo(D_800F2460)($at)
+/* 0A8A20 800A7E20 8C2A2460 */  lw    $t2, %lo(jpt_800F2460)($at)
 /* 0A8A24 800A7E24 01400008 */  jr    $t2
 /* 0A8A28 800A7E28 00000000 */   nop   
 glabel L800A7E2C
@@ -311,9 +311,9 @@ glabel L800A7E84
 /* 0A8A94 800A7E94 2D810008 */  sltiu $at, $t4, 8
 /* 0A8A98 800A7E98 10200008 */  beqz  $at, .L800A7EBC
 /* 0A8A9C 800A7E9C 000C6080 */   sll   $t4, $t4, 2
-/* 0A8AA0 800A7EA0 3C01800F */  lui   $at, %hi(D_800F2480)
+/* 0A8AA0 800A7EA0 3C01800F */  lui   $at, %hi(jpt_800F2480)
 /* 0A8AA4 800A7EA4 002C0821 */  addu  $at, $at, $t4
-/* 0A8AA8 800A7EA8 8C2C2480 */  lw    $t4, %lo(D_800F2480)($at)
+/* 0A8AA8 800A7EA8 8C2C2480 */  lw    $t4, %lo(jpt_800F2480)($at)
 /* 0A8AAC 800A7EAC 01800008 */  jr    $t4
 /* 0A8AB0 800A7EB0 00000000 */   nop   
 glabel L800A7EB4
