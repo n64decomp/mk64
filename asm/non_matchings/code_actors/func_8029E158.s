@@ -144,9 +144,9 @@ glabel func_8029E158
 /* 1079A0 8029E390 2DC10013 */  sltiu $at, $t6, 0x13
 /* 1079A4 8029E394 10200105 */  beqz  $at, .L8029E7AC
 /* 1079A8 8029E398 000E7080 */   sll   $t6, $t6, 2
-/* 1079AC 8029E39C 3C01802C */  lui   $at, %hi(D_802B97FC)
+/* 1079AC 8029E39C 3C01802C */  lui   $at, %hi(jpt_802B97FC)
 /* 1079B0 8029E3A0 002E0821 */  addu  $at, $at, $t6
-/* 1079B4 8029E3A4 8C2E97FC */  lw    $t6, %lo(D_802B97FC)($at)
+/* 1079B4 8029E3A4 8C2E97FC */  lw    $t6, %lo(jpt_802B97FC)($at)
 /* 1079B8 8029E3A8 01C00008 */  jr    $t6
 /* 1079BC 8029E3AC 00000000 */   nop   
 glabel L8029E3B0
