@@ -170,9 +170,9 @@ glabel render_wario_stadium
 .L80294DBC:
 /* 0FE3CC 80294DBC 10200083 */  beqz  $at, .L80294FCC
 /* 0FE3D0 80294DC0 0003C080 */   sll   $t8, $v1, 2
-/* 0FE3D4 80294DC4 3C01802C */  lui   $at, %hi(D_802B93EC)
+/* 0FE3D4 80294DC4 3C01802C */  lui   $at, %hi(jpt_802B93EC)
 /* 0FE3D8 80294DC8 00380821 */  addu  $at, $at, $t8
-/* 0FE3DC 80294DCC 8C3893EC */  lw    $t8, %lo(D_802B93EC)($at)
+/* 0FE3DC 80294DCC 8C3893EC */  lw    $t8, %lo(jpt_802B93EC)($at)
 /* 0FE3E0 80294DD0 03000008 */  jr    $t8
 /* 0FE3E4 80294DD4 00000000 */   nop   
 glabel L80294DD8

@@ -164,9 +164,9 @@ glabel render_luigi_raceway
 .L80293D08:
 /* 0FD318 80293D08 10200088 */  beqz  $at, .L80293F2C
 /* 0FD31C 80293D0C 0003C080 */   sll   $t8, $v1, 2
-/* 0FD320 80293D10 3C01802C */  lui   $at, %hi(D_802B93D4)
+/* 0FD320 80293D10 3C01802C */  lui   $at, %hi(jpt_802B93D4)
 /* 0FD324 80293D14 00380821 */  addu  $at, $at, $t8
-/* 0FD328 80293D18 8C3893D4 */  lw    $t8, %lo(D_802B93D4)($at)
+/* 0FD328 80293D18 8C3893D4 */  lw    $t8, %lo(jpt_802B93D4)($at)
 /* 0FD32C 80293D1C 03000008 */  jr    $t8
 /* 0FD330 80293D20 00000000 */   nop   
 glabel L80293D24

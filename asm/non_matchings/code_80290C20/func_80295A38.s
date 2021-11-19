@@ -24,9 +24,9 @@ glabel func_80295A38
 /* 0FF09C 80295A8C 2DE10014 */  sltiu $at, $t7, 0x14
 /* 0FF0A0 80295A90 10200054 */  beqz  $at, .L80295BE4
 /* 0FF0A4 80295A94 000F7880 */   sll   $t7, $t7, 2
-/* 0FF0A8 80295A98 3C01802C */  lui   $at, %hi(D_802B9454)
+/* 0FF0A8 80295A98 3C01802C */  lui   $at, %hi(jpt_802B9454)
 /* 0FF0AC 80295A9C 002F0821 */  addu  $at, $at, $t7
-/* 0FF0B0 80295AA0 8C2F9454 */  lw    $t7, %lo(D_802B9454)($at)
+/* 0FF0B0 80295AA0 8C2F9454 */  lw    $t7, %lo(jpt_802B9454)($at)
 /* 0FF0B4 80295AA4 01E00008 */  jr    $t7
 /* 0FF0B8 80295AA8 00000000 */   nop   
 glabel L80295AAC

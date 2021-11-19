@@ -4,9 +4,9 @@ glabel func_8029569C
 /* 0FECB4 802956A4 2DC10014 */  sltiu $at, $t6, 0x14
 /* 0FECB8 802956A8 102000E1 */  beqz  $at, .L80295A30
 /* 0FECBC 802956AC 000E7080 */   sll   $t6, $t6, 2
-/* 0FECC0 802956B0 3C01802C */  lui   $at, %hi(D_802B9404)
+/* 0FECC0 802956B0 3C01802C */  lui   $at, %hi(jpt_802B9404)
 /* 0FECC4 802956B4 002E0821 */  addu  $at, $at, $t6
-/* 0FECC8 802956B8 8C2E9404 */  lw    $t6, %lo(D_802B9404)($at)
+/* 0FECC8 802956B8 8C2E9404 */  lw    $t6, %lo(jpt_802B9404)($at)
 /* 0FECCC 802956BC 01C00008 */  jr    $t6
 /* 0FECD0 802956C0 00000000 */   nop   
 glabel L802956C4
