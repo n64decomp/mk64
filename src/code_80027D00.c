@@ -107,7 +107,7 @@ GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80027DA8.s")
 ? func_800CA30C(s32, s8);                           /* extern */
 extern ? D_80164438;
 extern ? D_80165300;
-static u16 gCurrentCourseId;                        /* type too large by 2; unable to generate initializer */
+u16 gCurrentCourseId;                               /* unable to generate initializer */
 
 void func_80027EDC(u16 *arg0, s8 arg1) {
     s16 *sp1C;

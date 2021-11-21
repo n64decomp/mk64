@@ -365,19 +365,17 @@ GLOBAL_ASM("asm/non_matchings/code_802B0210/func_802B09C0.s")
 ? func_800C9060(s32, ?);                            /* extern */
 ? func_8029E854(void *, s32);                       /* extern */
 ? func_802B0648(void *);                            /* extern */
-? func_802B0788(s16, void *, void *, void *);       /* extern */
-s32 func_802B09C0(s16, void *);                     /* extern */
-? func_802B2914(void *, void *, ?, void *);         /* extern */
-extern s32 D_800DC4DC;
+? func_802B0788(s16, void *, Player *, Player *);   /* extern */
+? func_802B2914(void *, Player *, ?, Player *);     /* extern */
 extern ? D_8015F9B8;
-extern ? gControllers;
-extern ? gPlayers;
 
 void update_obj_banana_bunch(void *arg0) {
     void *sp2C;
     void *sp28;
     void *sp24;
     s16 temp_a0_2;
+    s16 temp_t4;
+    s16 temp_t6;
     s16 temp_v1_2;
     u16 temp_t9;
     u16 temp_v1;
@@ -385,126 +383,124 @@ void update_obj_banana_bunch(void *arg0) {
     void *temp_a1;
     void *temp_a2;
     void *temp_a3;
-    void *temp_a3_2;
     void *temp_t0;
-    void *temp_v0;
     void *phi_v1;
     void *phi_v1_2;
     void *phi_v1_3;
     void *phi_v1_4;
     void *phi_v1_5;
 
+    temp_t6 = arg0->unk10;
     temp_t9 = arg0->unk6;
-    temp_a3 = (arg0->unk10 * 0xDD8) + &gPlayers;
     switch (temp_t9) {
     case 0:
-        func_802B2914(arg0, temp_a3, 0, temp_a3);
+        func_802B2914(arg0, &gPlayers[temp_t6], 0, &gPlayers[temp_t6]);
         arg0->unk4 = 4;
-        arg0->unk6 = 1U;
-        arg0->unk1C = 1U;
+        arg0->unk6 = 1;
+        arg0->unk1C = 1;
         return;
     case 1:
-        arg0->unk4 = (s16) (arg0->unk4 - 1);
+        arg0->unk4 = arg0->unk4 - 1;
         if (arg0->unk4 == 0) {
-            func_802B2914(arg0, temp_a3, 1, temp_a3);
+            func_802B2914(arg0, &gPlayers[temp_t6], 1, &gPlayers[temp_t6]);
             arg0->unk4 = 4;
-            arg0->unk6 = 2U;
-            arg0->unk1C = (u16) ((s16) arg0->unk1C + 1);
+            arg0->unk6 = 2;
+            arg0->unk1C = arg0->unk1C + 1;
             return;
         }
     default:
         return;
     case 2:
-        arg0->unk4 = (s16) (arg0->unk4 - 1);
+        arg0->unk4 = arg0->unk4 - 1;
         if (arg0->unk4 == 0) {
-            func_802B2914(arg0, temp_a3, 2, temp_a3);
+            func_802B2914(arg0, &gPlayers[temp_t6], 2, &gPlayers[temp_t6]);
             arg0->unk4 = 4;
-            arg0->unk6 = 3U;
-            arg0->unk1C = (u16) ((s16) arg0->unk1C + 1);
+            arg0->unk6 = 3;
+            arg0->unk1C = arg0->unk1C + 1;
             return;
         }
         /* Duplicate return node #31. Try simplifying control flow for better match */
         return;
     case 3:
-        arg0->unk4 = (s16) (arg0->unk4 - 1);
+        arg0->unk4 = arg0->unk4 - 1;
         if (arg0->unk4 == 0) {
-            func_802B2914(arg0, temp_a3, 3, temp_a3);
+            func_802B2914(arg0, &gPlayers[temp_t6], 3, &gPlayers[temp_t6]);
             arg0->unk4 = 4;
-            arg0->unk6 = (u16) 4;
-            arg0->unk1C = (u16) ((s16) arg0->unk1C + 1);
+            arg0->unk6 = 4;
+            arg0->unk1C = arg0->unk1C + 1;
             return;
         }
         /* Duplicate return node #31. Try simplifying control flow for better match */
         return;
     case 4:
-        arg0->unk4 = (s16) (arg0->unk4 - 1);
+        arg0->unk4 = arg0->unk4 - 1;
         if (arg0->unk4 == 0) {
-            func_802B2914(arg0, temp_a3, 4, temp_a3);
+            func_802B2914(arg0, &gPlayers[temp_t6], 4, &gPlayers[temp_t6]);
             arg0->unk4 = 4;
-            arg0->unk6 = 5U;
-            arg0->unk1C = (u16) ((s16) arg0->unk1C + 1);
+            arg0->unk6 = 5;
+            arg0->unk1C = arg0->unk1C + 1;
             return;
         }
         /* Duplicate return node #31. Try simplifying control flow for better match */
         return;
     case 5:
-        arg0->unk6 = 6U;
+        arg0->unk6 = 6;
         temp_a0 = &D_8015F9B8 + (arg0->unk12 * 0x70);
-        temp_a0->unk2 = (s16) (temp_a0->unk2 | 0x5000);
+        temp_a0->unk2 = temp_a0->unk2 | 0x5000;
         temp_a1 = &D_8015F9B8 + (arg0->unk14 * 0x70);
-        temp_a1->unk2 = (s16) (temp_a1->unk2 | 0x5000);
+        temp_a1->unk2 = temp_a1->unk2 | 0x5000;
         temp_a2 = &D_8015F9B8 + (arg0->unk16 * 0x70);
-        temp_a2->unk2 = (s16) (temp_a2->unk2 | 0x5000);
-        temp_a3_2 = &D_8015F9B8 + (arg0->unk18 * 0x70);
-        temp_a3_2->unk2 = (s16) (temp_a3_2->unk2 | 0x5000);
+        temp_a2->unk2 = temp_a2->unk2 | 0x5000;
+        temp_a3 = &D_8015F9B8 + (arg0->unk18 * 0x70);
+        temp_a3->unk2 = temp_a3->unk2 | 0x5000;
         temp_t0 = &D_8015F9B8 + (arg0->unk1A * 0x70);
-        temp_t0->unk2 = (s16) (temp_t0->unk2 | 0x5000);
+        temp_t0->unk2 = temp_t0->unk2 | 0x5000;
         return;
     case 6:
-        sp2C = temp_a3;
+        sp2C = &gPlayers[temp_t6];
         sp24 = NULL;
         phi_v1 = sp24;
-        if (func_802B09C0(arg0->unk12, temp_a3) == (void *)1) {
-            phi_v1 = (void *)1;
+        if (func_802B09C0(arg0->unk12, MIPS2C_ERROR(Read from unset register $a1)) == 1) {
+            phi_v1 = 1;
         }
-        sp2C = temp_a3;
+        sp2C = &gPlayers[temp_t6];
         sp24 = phi_v1;
         phi_v1_2 = phi_v1;
-        if (func_802B09C0(arg0->unk14, (void *)1) == (void *)1) {
+        if (func_802B09C0(arg0->unk14, 1) == 1) {
             phi_v1_2 = phi_v1 + 1;
         }
-        sp2C = temp_a3;
+        sp2C = &gPlayers[temp_t6];
         sp24 = phi_v1_2;
         phi_v1_3 = phi_v1_2;
-        if (func_802B09C0(arg0->unk16, (void *)1) == (void *)1) {
+        if (func_802B09C0(arg0->unk16, 1) == 1) {
             phi_v1_3 = phi_v1_2 + 1;
         }
-        sp2C = temp_a3;
+        sp2C = &gPlayers[temp_t6];
         sp24 = phi_v1_3;
         phi_v1_4 = phi_v1_3;
-        if (func_802B09C0(arg0->unk18, (void *)1) == (void *)1) {
+        if (func_802B09C0(arg0->unk18, 1) == 1) {
             phi_v1_4 = phi_v1_3 + 1;
         }
-        sp2C = temp_a3;
+        sp2C = &gPlayers[temp_t6];
         sp24 = phi_v1_4;
         phi_v1_5 = phi_v1_4;
-        if (func_802B09C0(arg0->unk1A, (void *)1) == 1) {
+        if (func_802B09C0(arg0->unk1A, 1) == 1) {
             phi_v1_5 = phi_v1_4 + 1;
         }
         if (phi_v1_5 == 0) {
-            sp2C = temp_a3;
+            sp2C = &gPlayers[temp_t6];
             func_8029E854(arg0, 1);
-            temp_a3->unkC = (s32) (temp_a3->unkC & 0xFFFBFFFF);
+            gPlayers[temp_t6].unk_00C &= 0xFFFBFFFF;
             return;
         }
-        if (((temp_a3->unk0 & 0x4000) != 0) && (temp_v0 = (arg0->unk10 * 0x10) + &gControllers, temp_v1 = temp_v0->unk6, ((temp_v1 & 0x2000) != 0))) {
-            temp_v0->unk6 = (u16) (temp_v1 & 0xDFFF);
-            sp2C = temp_a3;
-            sp28 = temp_v0;
-            func_800C9060(((s32) (temp_a3 - D_800DC4DC) / 3544) & 0xFF, 0x19008012);
-            temp_a0_2 = temp_v0->unk2;
-            if (((s32) temp_a0_2 >= 0x1F) && (temp_v1_2 = temp_v0->unk0, (((s32) temp_v1_2 < 0x28) != 0)) && ((s32) temp_v1_2 >= -0x27)) {
-                func_802B0788(temp_a0_2, arg0, temp_a3, temp_a3);
+        if (((gPlayers[temp_t6].unk_000 & 0x4000) != 0) && (temp_t4 = arg0->unk10, temp_v1 = gControllers[temp_t4].buttonPressed, ((temp_v1 & 0x2000) != 0))) {
+            gControllers[temp_t4].buttonPressed = temp_v1 & 0xDFFF;
+            sp2C = &gPlayers[temp_t6];
+            sp28 = &gControllers[temp_t4];
+            func_800C9060(((&gPlayers[temp_t6] - D_800DC4DC) / 3544) & 0xFF, 0x19008012);
+            temp_a0_2 = gControllers[temp_t4].rawStickY;
+            if ((temp_a0_2 >= 0x1F) && (temp_v1_2 = gControllers[temp_t4].rawStickX, ((temp_v1_2 < 0x28) != 0)) && (temp_v1_2 >= -0x27)) {
+                func_802B0788(temp_a0_2, arg0, &gPlayers[temp_t6], &gPlayers[temp_t6]);
                 return;
             }
             func_802B0648(arg0);
@@ -552,12 +548,9 @@ GLOBAL_ASM("asm/non_matchings/code_802B0210/func_802B0E14.s")
 ? func_800C9060(u8, ?);                             /* extern */
 ? func_800C90F4(u8, s32);                           /* extern */
 ? func_8029E854(void *);                            /* extern */
-s32 func_802B0E14(s16, s16);                        /* extern */
-s32 func_802B19EC(void *, void *, s16, ?);          /* extern */
+s32 func_802B19EC(void *, Player *, s16, ?);        /* extern */
 ? func_802B64C4(f32 *, s16);                        /* extern */
 extern ? D_8015F9B8;
-extern ? gControllers;
-extern ? gPlayers;
 
 void update_obj_triple_shell(void *arg0, s16 arg1) {
     s16 sp4E;
@@ -573,11 +566,12 @@ void update_obj_triple_shell(void *arg0, s16 arg1) {
     f32 temp_f0_2;
     f32 temp_f0_3;
     s16 temp_t0;
+    s16 temp_t7;
     s16 temp_t8;
     s16 temp_v0;
     s16 temp_v1_2;
+    s16 temp_v1_3;
     s16 temp_v1_4;
-    s16 temp_v1_6;
     s32 temp_v1;
     u16 temp_t9;
     void *temp_v0_2;
@@ -586,10 +580,6 @@ void update_obj_triple_shell(void *arg0, s16 arg1) {
     void *temp_v0_5;
     void *temp_v0_6;
     void *temp_v0_7;
-    void *temp_v0_8;
-    void *temp_v1_3;
-    void *temp_v1_5;
-    void *temp_v1_7;
     s16 phi_v1;
     s16 phi_v1_2;
     s16 phi_v1_3;
@@ -603,21 +593,21 @@ void update_obj_triple_shell(void *arg0, s16 arg1) {
     switch (temp_t9) {
     case 0:
         sp4E = temp_t0;
-        if (func_802B19EC(arg0, (temp_t0 * 0xDD8) + &gPlayers, arg1, 0) != -1) {
+        if (func_802B19EC(arg0, &gPlayers[temp_t0], arg1, 0) != -1) {
             func_800C9060(temp_t0 & 0xFF, 0x19008012);
-            arg0->unk4 = (s16) (arg0->unk4 + 1);
+            arg0->unk4 = arg0->unk4 + 1;
         }
-        arg0->unk6 = 1U;
+        arg0->unk6 = 1;
         return;
     case 1:
-        if ((s32) temp_v0 > 0) {
+        if (temp_v0 > 0) {
             if (temp_v1 >= 0xD556) {
                 sp4E = temp_t0;
-                if (func_802B19EC(arg0, (temp_t0 * 0xDD8) + &gPlayers, arg1, 1) != -1) {
+                if (func_802B19EC(arg0, &gPlayers[temp_t0], arg1, 1) != -1) {
                     func_800C9060(temp_t0 & 0xFF, 0x19008012);
-                    arg0->unk4 = (s16) (arg0->unk4 + 1);
+                    arg0->unk4 = arg0->unk4 + 1;
                 }
-                arg0->unk6 = 2U;
+                arg0->unk6 = 2;
                 return;
             }
             /* Duplicate return node #61. Try simplifying control flow for better match */
@@ -625,24 +615,24 @@ void update_obj_triple_shell(void *arg0, s16 arg1) {
         }
         if (temp_v1 < 0x2AAA) {
             sp4E = temp_t0;
-            if (func_802B19EC(arg0, (temp_t0 * 0xDD8) + &gPlayers, arg1, 1) != -1) {
+            if (func_802B19EC(arg0, &gPlayers[temp_t0], arg1, 1) != -1) {
                 func_800C9060(temp_t0 & 0xFF, 0x19008012);
-                arg0->unk4 = (s16) (arg0->unk4 + 1);
+                arg0->unk4 = arg0->unk4 + 1;
             }
-            arg0->unk6 = 2U;
+            arg0->unk6 = 2;
             return;
         }
     default:
         return;
     case 2:
-        if ((s32) temp_v0 > 0) {
+        if (temp_v0 > 0) {
             if ((temp_v1 >= 0x2AAB) && (temp_v1 < 0x31C7)) {
                 sp4E = temp_t0;
-                if (func_802B19EC(arg0, (temp_t0 * 0xDD8) + &gPlayers, arg1, 2) != -1) {
+                if (func_802B19EC(arg0, &gPlayers[temp_t0], arg1, 2) != -1) {
                     func_800C9060(temp_t0 & 0xFF, 0x19008012);
-                    arg0->unk4 = (s16) (arg0->unk4 + 1);
+                    arg0->unk4 = arg0->unk4 + 1;
                 }
-                arg0->unk6 = 3U;
+                arg0->unk6 = 3;
                 return;
             }
             /* Duplicate return node #61. Try simplifying control flow for better match */
@@ -650,29 +640,29 @@ void update_obj_triple_shell(void *arg0, s16 arg1) {
         }
         if ((temp_v1 < 0xD555) && (temp_v1 >= 0xCE39)) {
             sp4E = temp_t0;
-            if (func_802B19EC(arg0, (temp_t0 * 0xDD8) + &gPlayers, arg1, 2) != -1) {
+            if (func_802B19EC(arg0, &gPlayers[temp_t0], arg1, 2) != -1) {
                 func_800C9060(temp_t0 & 0xFF, 0x19008012);
-                arg0->unk4 = (s16) (arg0->unk4 + 1);
+                arg0->unk4 = arg0->unk4 + 1;
             }
-            arg0->unk6 = 3U;
+            arg0->unk6 = 3;
             return;
         }
         /* Duplicate return node #61. Try simplifying control flow for better match */
         return;
     case 3:
-        arg0->unk6 = 4U;
-        temp_v0_2 = &D_8015F9B8 + ((s16) (s32) arg0->unk24 * 0x70);
-        temp_v0_2->unk2 = (s16) (temp_v0_2->unk2 | 0x4000);
-        temp_v0_3 = &D_8015F9B8 + ((s16) (s32) arg0->unk28 * 0x70);
-        temp_v0_3->unk2 = (s16) (temp_v0_3->unk2 | 0x4000);
-        temp_v0_4 = &D_8015F9B8 + ((s16) (s32) arg0->unk2C * 0x70);
-        temp_v0_4->unk2 = (s16) (temp_v0_4->unk2 | 0x4000);
+        arg0->unk6 = 4;
+        temp_v0_2 = &D_8015F9B8 + (arg0->unk24 * 0x70);
+        temp_v0_2->unk2 = temp_v0_2->unk2 | 0x4000;
+        temp_v0_3 = &D_8015F9B8 + (arg0->unk28 * 0x70);
+        temp_v0_3->unk2 = temp_v0_3->unk2 | 0x4000;
+        temp_v0_4 = &D_8015F9B8 + (arg0->unk2C * 0x70);
+        temp_v0_4->unk2 = temp_v0_4->unk2 | 0x4000;
         return;
     case 4:
         sp4E = temp_t0;
         sp32 = 0;
         phi_v1 = sp32;
-        if (func_802B0E14((s16) (s32) arg0->unk24, arg1) == 1) {
+        if (func_802B0E14(arg0->unk24, arg1) == 1) {
             phi_v1 = 1;
         } else {
             arg0->unk24 = -1.0f;
@@ -680,16 +670,16 @@ void update_obj_triple_shell(void *arg0, s16 arg1) {
         sp4E = temp_t0;
         sp32 = phi_v1;
         phi_v1_2 = phi_v1;
-        if (func_802B0E14((s16) (s32) arg0->unk28) == 1) {
-            phi_v1_2 = (s16) (phi_v1 + 1);
+        if (func_802B0E14(arg0->unk28, MIPS2C_ERROR(Read from unset register $a1)) == 1) {
+            phi_v1_2 = phi_v1 + 1;
         } else {
             arg0->unk28 = -1.0f;
         }
         sp4E = temp_t0;
         sp32 = phi_v1_2;
         phi_v1_3 = phi_v1_2;
-        if (func_802B0E14((s16) (s32) arg0->unk2C) == 1) {
-            phi_v1_3 = (s16) (phi_v1_2 + 1);
+        if (func_802B0E14(arg0->unk2C, MIPS2C_ERROR(Read from unset register $a1)) == 1) {
+            phi_v1_3 = phi_v1_2 + 1;
         } else {
             arg0->unk2C = -1.0f;
         }
@@ -697,88 +687,85 @@ void update_obj_triple_shell(void *arg0, s16 arg1) {
             func_8029E854(arg0);
             return;
         }
-        temp_v0_5 = (arg0->unk14 * 0x10) + &gControllers;
-        if ((temp_v0_5->unk6 & 0x2000) != 0) {
-            arg0->unk8 = (f32) (arg0->unk8 + 1.0f);
-            temp_v0_5->unk6 = (u16) (temp_v0_5->unk6 & 0xDFFF);
+        temp_t7 = arg0->unk14;
+        if ((gControllers[temp_t7].buttonPressed & 0x2000) != 0) {
+            arg0->unk8 = arg0->unk8 + 1.0f;
+            gControllers[temp_t7].buttonPressed &= 0xDFFF;
         }
         if (arg0->unk8 > 0.0f) {
             temp_f0 = arg0->unk24;
-            if ((temp_f0 > 0.0f) && ((temp_v0_6 = &D_8015F9B8 + ((s16) (s32) temp_f0 * 0x70), temp_v1_2 = temp_v0_6->unk12, temp_a0 = &sp38, (((s32) temp_v1_2 < 0x38E) != 0)) || ((s32) temp_v1_2 >= -0x38D))) {
-                temp_v1_3 = (temp_t0 * 0xDD8) + &gPlayers;
+            if ((temp_f0 > 0.0f) && ((temp_v0_5 = &D_8015F9B8 + (temp_f0 * 0x70), temp_v1_2 = temp_v0_5->unk12, temp_a0 = &sp38, ((temp_v1_2 < 0x38E) != 0)) || (temp_v1_2 >= -0x38D))) {
                 sp38 = 0.0f;
                 sp3C = 0.0f;
                 sp40 = 8.0f;
-                sp28 = temp_v1_3;
+                sp28 = &gPlayers[temp_t0];
+                sp44 = temp_v0_5;
+                func_802B64C4(temp_a0, gPlayers[temp_t0].unk_02E + gPlayers[temp_t0].unk_0C0);
+                temp_v0_5->unk24 = sp38;
+                temp_v0_5->unk28 = sp3C;
+                temp_v0_5->unk6 = 2;
+                temp_v0_5->unk4 = 0x1E;
+                temp_v0_5->unk2C = sp40;
+                func_800C9060(arg0->unk15, 0x19008004);
+                func_800C90F4(arg0->unk15, (gPlayers[temp_t0].characterId * 0x10) + 0x29008000);
+                if (arg0->unk0 == 0x16) {
+                    func_8000ED80(arg0->unk24);
+                } else {
+                    func_8000EDC8(arg0->unk24);
+                }
+                arg0->unk24 = -1.0f;
+                arg0->unk4 = arg0->unk4 - 1;
+                arg0->unk8 = arg0->unk8 - 1.0f;
+                return;
+            }
+            temp_f0_2 = arg0->unk28;
+            if ((temp_f0_2 > 0.0f) && ((temp_v0_6 = &D_8015F9B8 + (temp_f0_2 * 0x70), temp_v1_3 = temp_v0_6->unk12, ((temp_v1_3 < 0xAA1) != 0)) || (temp_v1_3 >= 0x38F))) {
+                sp38 = 0.0f;
+                sp3C = 0.0f;
+                sp40 = 8.0f;
+                sp28 = &gPlayers[temp_t0];
                 sp44 = temp_v0_6;
-                func_802B64C4(temp_a0, (s16) (temp_v1_3->unk2E + temp_v1_3->unkC0));
+                func_802B64C4(&sp38, gPlayers[temp_t0].unk_02E + gPlayers[temp_t0].unk_0C0);
                 temp_v0_6->unk24 = sp38;
                 temp_v0_6->unk28 = sp3C;
                 temp_v0_6->unk6 = 2;
                 temp_v0_6->unk4 = 0x1E;
                 temp_v0_6->unk2C = sp40;
+                func_800C90F4(arg0->unk15, (gPlayers[temp_t0].characterId * 0x10) + 0x29008000);
                 func_800C9060(arg0->unk15, 0x19008004);
-                func_800C90F4(arg0->unk15, (temp_v1_3->unk254 * 0x10) + 0x29008000);
                 if (arg0->unk0 == 0x16) {
-                    func_8000ED80((s32) arg0->unk24);
+                    func_8000ED80(arg0->unk28);
                 } else {
-                    func_8000EDC8((s32) arg0->unk24);
+                    func_8000EDC8(arg0->unk28);
                 }
-                arg0->unk24 = -1.0f;
-                arg0->unk4 = (s16) (arg0->unk4 - 1);
-                arg0->unk8 = (f32) (arg0->unk8 - 1.0f);
+                arg0->unk28 = -1.0f;
+                arg0->unk4 = arg0->unk4 - 1;
+                arg0->unk8 = arg0->unk8 - 1.0f;
                 return;
             }
-            temp_f0_2 = arg0->unk28;
-            if ((temp_f0_2 > 0.0f) && ((temp_v0_7 = &D_8015F9B8 + ((s16) (s32) temp_f0_2 * 0x70), temp_v1_4 = temp_v0_7->unk12, (((s32) temp_v1_4 < 0xAA1) != 0)) || ((s32) temp_v1_4 >= 0x38F))) {
-                temp_v1_5 = (temp_t0 * 0xDD8) + &gPlayers;
+            temp_f0_3 = arg0->unk2C;
+            if ((temp_f0_3 > 0.0f) && ((temp_v0_7 = &D_8015F9B8 + (temp_f0_3 * 0x70), temp_v1_4 = temp_v0_7->unk12, temp_a0_2 = &sp38, ((temp_v1_4 < -0x38E) != 0)) || (temp_v1_4 >= -0x71B))) {
                 sp38 = 0.0f;
                 sp3C = 0.0f;
                 sp40 = 8.0f;
-                sp28 = temp_v1_5;
+                sp28 = &gPlayers[temp_t0];
                 sp44 = temp_v0_7;
-                func_802B64C4(&sp38, (s16) (temp_v1_5->unk2E + temp_v1_5->unkC0));
+                func_802B64C4(temp_a0_2, gPlayers[temp_t0].unk_02E + gPlayers[temp_t0].unk_0C0);
                 temp_v0_7->unk24 = sp38;
                 temp_v0_7->unk28 = sp3C;
                 temp_v0_7->unk6 = 2;
                 temp_v0_7->unk4 = 0x1E;
                 temp_v0_7->unk2C = sp40;
-                func_800C90F4(arg0->unk15, (temp_v1_5->unk254 * 0x10) + 0x29008000);
                 func_800C9060(arg0->unk15, 0x19008004);
+                func_800C90F4(arg0->unk15, (gPlayers[temp_t0].characterId * 0x10) + 0x29008000);
                 if (arg0->unk0 == 0x16) {
-                    func_8000ED80((s32) arg0->unk28);
+                    func_8000ED80(arg0->unk2C);
                 } else {
-                    func_8000EDC8((s32) arg0->unk28);
-                }
-                arg0->unk28 = -1.0f;
-                arg0->unk4 = (s16) (arg0->unk4 - 1);
-                arg0->unk8 = (f32) (arg0->unk8 - 1.0f);
-                return;
-            }
-            temp_f0_3 = arg0->unk2C;
-            if ((temp_f0_3 > 0.0f) && ((temp_v0_8 = &D_8015F9B8 + ((s16) (s32) temp_f0_3 * 0x70), temp_v1_6 = temp_v0_8->unk12, temp_a0_2 = &sp38, (((s32) temp_v1_6 < -0x38E) != 0)) || ((s32) temp_v1_6 >= -0x71B))) {
-                temp_v1_7 = (temp_t0 * 0xDD8) + &gPlayers;
-                sp38 = 0.0f;
-                sp3C = 0.0f;
-                sp40 = 8.0f;
-                sp28 = temp_v1_7;
-                sp44 = temp_v0_8;
-                func_802B64C4(temp_a0_2, (s16) (temp_v1_7->unk2E + temp_v1_7->unkC0));
-                temp_v0_8->unk24 = sp38;
-                temp_v0_8->unk28 = sp3C;
-                temp_v0_8->unk6 = 2;
-                temp_v0_8->unk4 = 0x1E;
-                temp_v0_8->unk2C = sp40;
-                func_800C9060(arg0->unk15, 0x19008004);
-                func_800C90F4(arg0->unk15, (temp_v1_7->unk254 * 0x10) + 0x29008000);
-                if (arg0->unk0 == 0x16) {
-                    func_8000ED80((s32) arg0->unk2C);
-                } else {
-                    func_8000EDC8((s32) arg0->unk2C);
+                    func_8000EDC8(arg0->unk2C);
                 }
                 arg0->unk2C = -1.0f;
-                arg0->unk4 = (s16) (arg0->unk4 - 1);
-                arg0->unk8 = (f32) (arg0->unk8 - 1.0f);
+                arg0->unk4 = arg0->unk4 - 1;
+                arg0->unk8 = arg0->unk8 - 1.0f;
             }
             /* Duplicate return node #61. Try simplifying control flow for better match */
             return;
@@ -1079,23 +1066,7 @@ GLOBAL_ASM("asm/non_matchings/code_802B0210/func_802B1FFC.s")
 ? func_802B4E30(void *);                            /* extern */
 ? func_802B64C4(f32 *, s16);                        /* extern */
 ? load_giant_egg(f32, f32 *, ?, f32, f32);          /* extern */
-f32 sqrtf(f32, f32);                                /* extern */
-extern void *D_800DC4BC;
-extern s32 D_800DC4DC;
-extern u16 D_800DC51C;
-extern s16 D_8015F6E8;
-extern s16 D_8015F6EA;
-extern s16 D_8015F6EE;
-extern s16 D_8015F6F0;
-extern s16 D_8015F6F2;
 extern ? D_8015F9B8;
-extern ? gControllers;
-extern ? gPlayers;
-static f32 D_802B9EE0 = 0.2f;
-static f32 D_802B9EE4 = 0.15f;
-static f32 D_802B9EE8 = 0.2f;
-static f32 D_802B9EEC = 0.2f;
-static f32 D_802B9EF0 = 0.3f;
 
 void update_obj_banana(void *arg0) {
     void *sp88;
@@ -1142,11 +1113,11 @@ void update_obj_banana(void *arg0) {
     f32 temp_f2_4;
     f32 temp_f2_5;
     s16 temp_a0;
-    s16 temp_v0_2;
+    s16 temp_t6;
+    s16 temp_v0;
     u16 temp_a2;
     u16 temp_t9;
-    void *temp_v0;
-    void *temp_v0_3;
+    void *temp_v0_2;
     f32 phi_f6;
     void *phi_f14;
     void *phi_v1;
@@ -1154,62 +1125,62 @@ void update_obj_banana(void *arg0) {
     f32 phi_f8;
     void *phi_f14_2;
 
+    temp_t6 = arg0->unk10;
     temp_t9 = arg0->unk6;
-    temp_v0 = (arg0->unk10 * 0xDD8) + &gPlayers;
     switch (temp_t9) {
     case 0:
-        temp_f2 = temp_v0->unk14 - arg0->unk18;
-        temp_f14 = temp_v0->unk18 - arg0->unk1C;
+        temp_f2 = gPlayers[temp_t6].posX - arg0->unk18;
+        temp_f14 = gPlayers[temp_t6].posY - arg0->unk1C;
         sp48 = temp_f2;
-        temp_f16 = temp_v0->unk1C - arg0->unk20;
+        temp_f16 = gPlayers[temp_t6].posZ - arg0->unk20;
         sp44 = temp_f14;
-        sp88 = temp_v0;
+        sp88 = &gPlayers[temp_t6];
         sp40 = temp_f16;
         temp_f12 = sqrtf((temp_f2 * temp_f2) + (temp_f14 * temp_f14) + (temp_f16 * temp_f16), temp_f14) / 10.0f;
         phi_f14 = (bitwise void *) temp_f14;
         if (temp_f12 == 0.0f) {
             temp_f0 = D_802B9EE0;
-            arg0->unk18 = (f32) (temp_v0->unk14 + temp_f0);
-            arg0->unk1C = (f32) (temp_v0->unk18 + temp_f0);
-            phi_f6 = temp_v0->unk1C + temp_f0;
+            arg0->unk18 = gPlayers[temp_t6].posX + temp_f0;
+            arg0->unk1C = gPlayers[temp_t6].posY + temp_f0;
+            phi_f6 = gPlayers[temp_t6].posZ + temp_f0;
         } else {
             temp_f14_2 = temp_f14 / temp_f12;
-            arg0->unk18 = (f32) (temp_v0->unk14 - (temp_f2 / temp_f12));
-            arg0->unk1C = (f32) ((temp_v0->unk18 - temp_f14_2) - 2.0f);
-            phi_f6 = temp_v0->unk1C - (temp_f16 / temp_f12);
+            arg0->unk18 = gPlayers[temp_t6].posX - (temp_f2 / temp_f12);
+            arg0->unk1C = (gPlayers[temp_t6].posY - temp_f14_2) - 2.0f;
+            phi_f6 = gPlayers[temp_t6].posZ - (temp_f16 / temp_f12);
             phi_f14 = (bitwise void *) temp_f14_2;
         }
         arg0->unk20 = phi_f6;
-        sp88 = temp_v0;
+        sp88 = &gPlayers[temp_t6];
         func_802ADDC8(temp_f12, phi_f14, arg0 + 0x30, arg0->unkC + 1.0f, arg0->unk18, arg0->unk1C, arg0->unk20);
         func_802B4E30(arg0);
-        if ((temp_v0->unk0 & 0x4000) != 0) {
+        if ((gPlayers[temp_t6].unk_000 & 0x4000) != 0) {
             if (D_800DC51C != 0) {
                 phi_v1 = D_800DC4BC;
             } else {
-                phi_v1 = (arg0->unk10 * 0x10) + &gControllers;
+                phi_v1 = &gControllers[arg0->unk10];
             }
             temp_a2 = phi_v1->unk8;
             if ((temp_a2 & 0x2000) != 0) {
-                phi_v1->unk8 = (u16) (temp_a2 & 0xDFFF);
-                arg0->unk6 = 1U;
+                phi_v1->unk8 = temp_a2 & 0xDFFF;
+                arg0->unk6 = 1;
                 arg0->unk4 = 0xB4;
-                temp_v0->unkC = (s32) (temp_v0->unkC & 0xFFFBFFFF);
+                gPlayers[temp_t6].unk_00C &= 0xFFFBFFFF;
                 sp80 = phi_v1;
-                sp88 = temp_v0;
-                func_800C9060(((s32) (temp_v0 - D_800DC4DC) / 3544) & 0xFF, 0x19008012, temp_a2);
-                temp_f0_2 = (f32) phi_v1->unk2;
-                if ((temp_f0_2 > 30.0f) && (temp_a0 = phi_v1->unk0, (((s32) temp_a0 < 0xA) != 0)) && ((s32) temp_a0 >= -9)) {
-                    temp_f2_2 = temp_v0->unk94;
+                sp88 = &gPlayers[temp_t6];
+                func_800C9060(((&gPlayers[temp_t6] - D_800DC4DC) / 3544) & 0xFF, 0x19008012, temp_a2);
+                temp_f0_2 = phi_v1->unk2;
+                if ((temp_f0_2 > 30.0f) && (temp_a0 = phi_v1->unk0, ((temp_a0 < 0xA) != 0)) && (temp_a0 >= -9)) {
+                    temp_f2_2 = gPlayers[temp_t6].unk_094;
                     temp_f0_3 = ((temp_f0_2 - 30.0f) / 20.0f) + 0.5f;
                     if (temp_f2_2 < 2.0f) {
                         phi_f12 = 4.0f;
                     } else {
                         phi_f12 = (temp_f2_2 * 0.75f) + 3.5f + temp_f0_3;
                     }
-                    sp88 = temp_v0;
+                    sp88 = &gPlayers[temp_t6];
                     load_giant_egg(phi_f12, &sp68, 0, temp_f0_3, phi_f12);
-                    func_802B64C4(&sp68, (s16) (temp_v0->unk2E + temp_v0->unkC0));
+                    func_802B64C4(&sp68, gPlayers[temp_t6].unk_02E + gPlayers[temp_t6].unk_0C0);
                     arg0->unk24 = sp68;
                     arg0->unk28 = sp6C;
                     arg0->unk2C = sp70;
@@ -1226,22 +1197,22 @@ void update_obj_banana(void *arg0) {
     default:
         return;
     case 1:
-        temp_v0_2 = arg0->unk4;
-        if (temp_v0_2 != 0) {
-            arg0->unk4 = (s16) (temp_v0_2 - 1);
+        temp_v0 = arg0->unk4;
+        if (temp_v0 != 0) {
+            arg0->unk4 = temp_v0 - 1;
             if (arg0->unk4 == 0) {
-                arg0->unk2 = (s16) (arg0->unk2 & 0xEFFF);
+                arg0->unk2 = arg0->unk2 & 0xEFFF;
             }
         }
         temp_f0_4 = arg0->unk28;
-        arg0->unk18 = (f32) (arg0->unk18 + arg0->unk24);
-        arg0->unk20 = (f32) (arg0->unk20 + arg0->unk2C);
+        arg0->unk18 = arg0->unk18 + arg0->unk24;
+        arg0->unk20 = arg0->unk20 + arg0->unk2C;
         if (temp_f0_4 > -1.0f) {
-            arg0->unk28 = (f32) (temp_f0_4 - D_802B9EE4);
+            arg0->unk28 = temp_f0_4 - D_802B9EE4;
         }
         temp_f12_2 = arg0->unk20;
-        arg0->unk1C = (f32) (arg0->unk1C + arg0->unk28);
-        if ((temp_f12_2 < (f32) D_8015F6F2) || ((f32) D_8015F6F0 < temp_f12_2) || (temp_f0_5 = arg0->unk18, (temp_f0_5 < (f32) D_8015F6EA)) || ((f32) D_8015F6E8 < temp_f0_5) || (temp_f2_3 = arg0->unk1C, (temp_f2_3 < (f32) D_8015F6EE))) {
+        arg0->unk1C = arg0->unk1C + arg0->unk28;
+        if ((temp_f12_2 < D_8015F6F2) || (D_8015F6F0 < temp_f12_2) || (temp_f0_5 = arg0->unk18, (temp_f0_5 < D_8015F6EA)) || (D_8015F6E8 < temp_f0_5) || (temp_f2_3 = arg0->unk1C, (temp_f2_3 < D_8015F6EE))) {
             func_8029FDC8(temp_f12_2, arg0);
             return;
         }
@@ -1252,11 +1223,11 @@ void update_obj_banana(void *arg0) {
             sp78 = -arg0->unk64;
             sp7C = -arg0->unk68;
             temp_f0_6 = arg0->unk44;
-            arg0->unk18 = (f32) (arg0->unk18 + (sp74 * temp_f0_6));
-            arg0->unk1C = (f32) (arg0->unk1C + (sp78 * temp_f0_6));
-            arg0->unk2 = (s16) (arg0->unk2 & 0xEFFF);
-            arg0->unk6 = 4U;
-            arg0->unk20 = (f32) (arg0->unk20 + (sp7C * temp_f0_6));
+            arg0->unk18 = arg0->unk18 + (sp74 * temp_f0_6);
+            arg0->unk1C = arg0->unk1C + (sp78 * temp_f0_6);
+            arg0->unk2 = arg0->unk2 & 0xEFFF;
+            arg0->unk6 = 4;
+            arg0->unk20 = arg0->unk20 + (sp7C * temp_f0_6);
             return;
         }
         /* Duplicate return node #45. Try simplifying control flow for better match */
@@ -1265,11 +1236,11 @@ void update_obj_banana(void *arg0) {
         sp68 = 0.0f;
         sp6C = 0.0f;
         sp70 = -5.0f;
-        sp88 = temp_v0;
-        func_802B64C4(&sp68, (s16) (temp_v0->unk2E + temp_v0->unkC0));
-        temp_f18 = sp68 + temp_v0->unk14;
-        temp_f0_7 = sp6C + temp_v0->unk18;
-        temp_f10 = sp70 + temp_v0->unk1C;
+        sp88 = &gPlayers[temp_t6];
+        func_802B64C4(&sp68, gPlayers[temp_t6].unk_02E + gPlayers[temp_t6].unk_0C0);
+        temp_f18 = sp68 + gPlayers[temp_t6].posX;
+        temp_f0_7 = sp6C + gPlayers[temp_t6].posY;
+        temp_f10 = sp70 + gPlayers[temp_t6].posZ;
         sp34 = temp_f10;
         temp_f2_4 = temp_f18 - arg0->unk18;
         sp3C = temp_f18;
@@ -1282,38 +1253,38 @@ void update_obj_banana(void *arg0) {
         temp_f0_8 = sqrtf((temp_f2_4 * temp_f2_4) + (temp_f14_3 * temp_f14_3) + (temp_f16_2 * temp_f16_2), temp_f14_3);
         if (temp_f0_8 == 0.0f) {
             temp_f0_9 = D_802B9EE8;
-            arg0->unk18 = (f32) (temp_v0->unk14 + temp_f0_9);
-            arg0->unk1C = (f32) (temp_v0->unk18 + temp_f0_9);
-            arg0->unk20 = (f32) (temp_v0->unk1C + temp_f0_9);
+            arg0->unk18 = gPlayers[temp_t6].posX + temp_f0_9;
+            arg0->unk1C = gPlayers[temp_t6].posY + temp_f0_9;
+            arg0->unk20 = gPlayers[temp_t6].posZ + temp_f0_9;
         } else {
-            arg0->unk18 = (f32) (sp68 + (temp_f18 - (temp_f2_4 / temp_f0_8)));
-            arg0->unk1C = (f32) ((sp38 - (temp_f14_3 / temp_f0_8)) - 2.0f);
-            arg0->unk20 = (f32) (sp34 - (temp_f16_2 / temp_f0_8));
+            arg0->unk18 = sp68 + (temp_f18 - (temp_f2_4 / temp_f0_8));
+            arg0->unk1C = (sp38 - (temp_f14_3 / temp_f0_8)) - 2.0f;
+            arg0->unk20 = sp34 - (temp_f16_2 / temp_f0_8);
         }
         func_802ADDC8((bitwise f32) (arg0 + 0x30), (bitwise void *) (arg0->unkC + 1.0f), (bitwise void *) arg0->unk18, arg0->unk1C, arg0->unk20);
         func_802B4E30(arg0);
         return;
     case 3:
-        temp_v0_3 = (arg0->unk12 * 0x70) + &D_8015F9B8;
-        temp_f2_5 = temp_v0_3->unk18 - arg0->unk18;
-        temp_f14_4 = temp_v0_3->unk1C - arg0->unk1C;
+        temp_v0_2 = (arg0->unk12 * 0x70) + &D_8015F9B8;
+        temp_f2_5 = temp_v0_2->unk18 - arg0->unk18;
+        temp_f14_4 = temp_v0_2->unk1C - arg0->unk1C;
         sp48 = temp_f2_5;
-        temp_f16_3 = temp_v0_3->unk20 - arg0->unk20;
+        temp_f16_3 = temp_v0_2->unk20 - arg0->unk20;
         sp44 = temp_f14_4;
-        sp84 = temp_v0_3;
+        sp84 = temp_v0_2;
         sp40 = temp_f16_3;
         temp_f12_3 = sqrtf((temp_f2_5 * temp_f2_5) + (temp_f14_4 * temp_f14_4) + (temp_f16_3 * temp_f16_3), temp_f14_4) / 5.0f;
         phi_f14_2 = (bitwise void *) temp_f14_4;
         if (temp_f12_3 == 0.0f) {
             temp_f0_10 = D_802B9EEC;
-            arg0->unk18 = (f32) (temp_v0_3->unk18 + temp_f0_10);
-            arg0->unk1C = (f32) (temp_v0_3->unk1C + temp_f0_10);
-            phi_f8 = temp_v0_3->unk20 + temp_f0_10;
+            arg0->unk18 = temp_v0_2->unk18 + temp_f0_10;
+            arg0->unk1C = temp_v0_2->unk1C + temp_f0_10;
+            phi_f8 = temp_v0_2->unk20 + temp_f0_10;
         } else {
             temp_f14_5 = temp_f14_4 / temp_f12_3;
-            arg0->unk18 = (f32) (temp_v0_3->unk18 - (temp_f2_5 / temp_f12_3));
-            arg0->unk1C = (f32) ((temp_v0_3->unk1C - temp_f14_5) - 2.0f);
-            phi_f8 = temp_v0_3->unk20 - (temp_f16_3 / temp_f12_3);
+            arg0->unk18 = temp_v0_2->unk18 - (temp_f2_5 / temp_f12_3);
+            arg0->unk1C = (temp_v0_2->unk1C - temp_f14_5) - 2.0f;
+            phi_f8 = temp_v0_2->unk20 - (temp_f16_3 / temp_f12_3);
             phi_f14_2 = (bitwise void *) temp_f14_5;
         }
         arg0->unk20 = phi_f8;
@@ -1321,15 +1292,15 @@ void update_obj_banana(void *arg0) {
         func_802B4E30(arg0);
         return;
     case 5:
-        arg0->unk28 = (f32) (arg0->unk28 - D_802B9EF0);
+        arg0->unk28 = arg0->unk28 - D_802B9EF0;
         if (arg0->unk28 < -5.0f) {
             arg0->unk28 = -5.0f;
         }
-        arg0->unk4 = (s16) (arg0->unk4 - 1);
-        arg0->unk1C = (f32) (arg0->unk1C + arg0->unk28);
-        arg0->unk10 = (s16) (arg0->unk10 + 0x16C);
-        arg0->unk12 = (s16) (arg0->unk12 - 0x5B0);
-        arg0->unk14 = (s16) (arg0->unk14 + 0x38E);
+        arg0->unk4 = arg0->unk4 - 1;
+        arg0->unk1C = arg0->unk1C + arg0->unk28;
+        arg0->unk10 = arg0->unk10 + 0x16C;
+        arg0->unk12 = arg0->unk12 - 0x5B0;
+        arg0->unk14 = arg0->unk14 + 0x38E;
         if (arg0->unk4 == 0) {
             func_8029E854(arg0);
             return;
@@ -1337,8 +1308,8 @@ void update_obj_banana(void *arg0) {
         /* Duplicate return node #45. Try simplifying control flow for better match */
         return;
     case 4:
-        arg0->unk2 = (s16) (arg0->unk2 | 0xC000);
-        arg0->unk2 = (s16) (arg0->unk2 & 0xEFFF);
+        arg0->unk2 = arg0->unk2 | 0xC000;
+        arg0->unk2 = arg0->unk2 & 0xEFFF;
         /* Duplicate return node #45. Try simplifying control flow for better match */
         return;
     }
@@ -1353,11 +1324,10 @@ GLOBAL_ASM("asm/non_matchings/code_802B0210/update_obj_banana.s")
 s32 func_8029EC88(f32 *, s16 *, f32 *, ?);          /* extern */
 ? func_802AD950(void *, f32, s32, s32, f32, f32, f32, f32); /* extern */
 ? func_802B4E30(void *);                            /* extern */
-? func_802B63B8(f32 *, void *);                     /* extern */
-extern s32 D_800DC4DC;
+? func_802B63B8(f32 *, f32 *);                      /* extern */
 extern ? D_8015F9B8;
 
-void func_802B2914(void *arg0, void *arg1, s16 arg2) {
+void func_802B2914(void *arg0, Player *player, s16 arg2) {
     s16 sp6E;
     f32 sp68;
     f32 sp64;
@@ -1378,34 +1348,34 @@ void func_802B2914(void *arg0, void *arg1, s16 arg2) {
     void *phi_v0;
 
     sp4C = 0.0f;
-    sp50 = -arg1->unk70;
-    sp54 = -(arg1->unk70 + 4.0f);
-    func_802B63B8(&sp4C, arg1 + 0x174);
+    sp50 = -player->unk_070;
+    sp54 = -(player->unk_070 + 4.0f);
+    func_802B63B8(&sp4C, player->unk_174);
     temp_a0 = &sp4C;
     temp_a1 = &sp58;
     temp_a2 = &sp60;
-    sp4C += arg1->unk14;
-    sp50 += arg1->unk18;
-    sp54 += arg1->unk1C;
-    sp60 = arg1->unk34;
-    sp64 = arg1->unk38;
+    sp4C += player->posX;
+    sp50 += player->posY;
+    sp54 += player->posZ;
+    sp60 = player->unk_034;
+    sp64 = player->unk_038;
     sp58 = 0;
     sp5A = 0;
     sp5C = 0;
-    sp68 = arg1->unk3C;
+    sp68 = player->unk_03C;
     temp_v0 = func_8029EC88(temp_a0, temp_a1, temp_a2, 6);
     temp_t6 = temp_v0;
     if (temp_v0 >= 0) {
         temp_lo = temp_t6 * 0x70;
-        sp4C = arg1->unk14;
-        sp50 = arg1->unk18;
+        sp4C = player->posX;
+        sp50 = player->posY;
         temp_s0 = &D_8015F9B8 + temp_lo;
-        sp54 = arg1->unk1C;
+        sp54 = player->posZ;
         sp6E = temp_t6;
         func_802AD950(temp_s0 + 0x30, temp_s0->unkC + 1.0f, temp_s0->unk18, temp_s0->unk1C, temp_s0->unk20, sp4C, sp50, sp54);
         func_802B4E30(temp_s0);
         temp_s0->unk2 = -0x7000;
-        temp_s0->unk10 = (arg1 - D_800DC4DC) / 3544;
+        temp_s0->unk10 = (player - D_800DC4DC) / 3544;
         temp_s0->unk8 = (arg0 - &D_8015F9B8) / 112;
         temp_s0->unk14 = -1;
         temp_s0->unk4 = 0x14;
@@ -1443,8 +1413,8 @@ block_8:
             phi_v0 = &D_8015F9B8 + (arg0->unk18 * 0x70);
             goto block_8;
         }
-        if ((arg1->unk0 & 0x4000) != 0) {
-            func_800C9060(((arg1 - D_800DC4DC) / 3544) & 0xFF, 0x19008012, &D_800DC4DC, 0xDD8);
+        if ((player->unk_000 & 0x4000) != 0) {
+            func_800C9060(((player - D_800DC4DC) / 3544) & 0xFF, 0x19008012, &D_800DC4DC, 0xDD8);
         }
     }
 }
@@ -1627,14 +1597,13 @@ GLOBAL_ASM("asm/non_matchings/code_802B0210/func_802B2EBC.s")
 ? func_802B2C40();                                  /* extern */
 ? func_802B2D70();                                  /* extern */
 ? func_802B2EBC();                                  /* extern */
-extern s32 D_800DC4DC;
 
-void func_802B2FA0(void *arg0) {
+void func_802B2FA0(Player *player) {
     s32 sp1C;
     s16 temp_t9;
 
-    sp1C = (arg0 - D_800DC4DC) / 3544;
-    temp_t9 = arg0->unk10;
+    sp1C = (player - D_800DC4DC) / 3544;
+    temp_t9 = player->unk10;
     switch (temp_t9) {
     case 3:
         func_802B1C9C();
@@ -1652,22 +1621,22 @@ void func_802B2FA0(void *arg0) {
         func_802B17F4();
         break;
     case 12:
-        arg0->unkC = arg0->unkC | 0x200;
+        player->unk_00C |= 0x200;
         break;
     case 13:
-        arg0->unkC = arg0->unkC | 0x200;
+        player->unk_00C |= 0x200;
         break;
     case 14:
-        arg0->unkC = arg0->unkC | 0x200;
+        player->unk_00C |= 0x200;
         break;
     case 15:
-        arg0->unkC = arg0->unkC | 0x200;
+        player->unk_00C |= 0x200;
         break;
     case 11:
-        arg0->unkC = arg0->unkC | 0x800;
+        player->unk_00C |= 0x800;
         break;
     case 10:
-        arg0->unkC = arg0->unkC | 0x2000;
+        player->unk_00C |= 0x2000;
         break;
     case 8:
         func_802B2EBC();
@@ -1746,26 +1715,13 @@ GLOBAL_ASM("asm/non_matchings/code_802B0210/func_802B30EC.s")
 ? func_800C98B8(void *, void *, ?);                 /* extern */
 ? func_8029E854(f32, void *);                       /* extern */
 ? func_8029FDC8(f32, void *);                       /* extern */
-f32 func_802ABE30(f32, f32, f32, u16);              /* extern */
 ? func_802AC098(void *, void *);                    /* extern */
 ? func_802AD950(void *, ?, f32, f32, f32, f32, f32, f32); /* extern */
-? func_802B0210(void *, void *);                    /* extern */
+? func_802B0210(s16 *, void *);                     /* extern */
 ? func_802B4E30(void *);                            /* extern */
-? func_802B63B8(f32 *, f32 *, void *);              /* extern */
+? func_802B63B8(f32 *, f32 *, f32 *);               /* extern */
 ? func_802B64C4(f32 *, s16);                        /* extern */
-f32 func_802B8018(u16);                             /* extern */
-f32 func_802B8038(u16, u16);                        /* extern */
-extern s16 D_8015F6E8;
-extern s16 D_8015F6EA;
-extern s16 D_8015F6EE;
-extern s16 D_8015F6F0;
-extern s16 D_8015F6F2;
 extern ? D_8015F9B8;
-extern ? gControllers;
-extern ? gPlayers;
-static f32 D_802B9F5C = 1.2f;
-static f32 D_802B9F60 = 1.2f;
-static f32 D_802B9F64 = 0.3f;
 
 void update_obj_green_shell(void *arg0) {
     f32 sp80;
@@ -1776,6 +1732,9 @@ void update_obj_green_shell(void *arg0) {
     f32 sp6C;
     f32 sp54;
     void *sp34;
+    Player *temp_s1;
+    Player *temp_s1_2;
+    Player *temp_s1_4;
     f32 temp_f0;
     f32 temp_f0_2;
     f32 temp_f0_3;
@@ -1786,51 +1745,48 @@ void update_obj_green_shell(void *arg0) {
     f32 temp_f2;
     f32 temp_f2_2;
     s16 temp_t4;
+    s16 temp_t9;
+    s16 temp_v0;
     s16 temp_v0_2;
-    s16 temp_v0_3;
     u16 temp_t3;
     u16 temp_v1;
     void *temp_a0;
-    void *temp_s1;
-    void *temp_s1_2;
     void *temp_s1_3;
-    void *temp_s1_4;
-    void *temp_v0;
-    void *temp_v0_4;
+    void *temp_v0_3;
     f32 phi_f2;
     f32 phi_f2_2;
 
     temp_f2 = arg0->unk20;
     temp_f0 = arg0->unk18;
     temp_f12 = arg0->unk1C;
-    if ((temp_f2 < (f32) D_8015F6F2) || ((f32) D_8015F6F0 < temp_f2) || (temp_f0 < (f32) D_8015F6EA) || ((f32) D_8015F6E8 < temp_f0) || (temp_f12 < (f32) D_8015F6EE)) {
+    if ((temp_f2 < D_8015F6F2) || (D_8015F6F0 < temp_f2) || (temp_f0 < D_8015F6EA) || (D_8015F6E8 < temp_f0) || (temp_f12 < D_8015F6EE)) {
         func_8029FDC8(temp_f12, arg0);
     }
     temp_t3 = arg0->unk6;
-    arg0->unk10 = (s16) (arg0->unk10 + 0x71C);
+    arg0->unk10 = arg0->unk10 + 0x71C;
     switch (temp_t3) {
     case 0:
-        temp_s1 = (arg0->unk14 * 0xDD8) + &gPlayers;
-        func_802B0210(temp_s1 + 0x110, arg0 + 0x30);
+        temp_s1 = &gPlayers[arg0->unk14];
+        func_802B0210(&temp_s1->unk_110, arg0 + 0x30);
         sp6C = 0.0f;
-        sp70 = temp_s1->unk70;
-        sp74 = -(temp_s1->unk70 + arg0->unkC + 2.0f);
-        func_802B63B8(&sp6C, temp_s1 + 0x174);
-        arg0->unk18 = (f32) (sp6C + temp_s1->unk14);
-        temp_f14 = temp_s1->unk18 - sp70;
-        arg0->unk20 = (f32) (sp74 + temp_s1->unk1C);
+        sp70 = temp_s1->unk_070;
+        sp74 = -(temp_s1->unk_070 + arg0->unkC + 2.0f);
+        func_802B63B8(&sp6C, temp_s1->unk_174);
+        arg0->unk18 = sp6C + temp_s1->posX;
+        temp_f14 = temp_s1->posY - sp70;
+        arg0->unk20 = sp74 + temp_s1->posZ;
         sp54 = temp_f14;
-        temp_f0_2 = func_802ABE30(arg0->unk18, temp_f14, arg0->unk20, temp_s1->unk11A);
+        temp_f0_2 = func_802ABE30(arg0->unk18, temp_f14, arg0->unk20, temp_s1->unk_11A);
         temp_f2_2 = temp_f14 - temp_f0_2;
         if ((temp_f2_2 < 5.0f) && (temp_f2_2 > -5.0f)) {
-            arg0->unk1C = (f32) (arg0->unkC + temp_f0_2);
+            arg0->unk1C = arg0->unkC + temp_f0_2;
         } else {
             arg0->unk1C = temp_f14;
         }
-        if (((temp_s1->unk0 & 0x4000) != 0) && (temp_v0 = (arg0->unk14 * 0x10) + &gControllers, temp_v1 = temp_v0->unk8, ((temp_v1 & 0x2000) != 0))) {
-            temp_v0->unk8 = (u16) (temp_v1 & 0xDFFF);
-            if ((s32) temp_v0->unk2 < -0x2D) {
-                temp_f0_3 = temp_s1->unk94;
+        if (((temp_s1->unk_000 & 0x4000) != 0) && (temp_t9 = arg0->unk14, temp_v1 = gControllers[temp_t9].buttonDepressed, ((temp_v1 & 0x2000) != 0))) {
+            gControllers[temp_t9].buttonDepressed = temp_v1 & 0xDFFF;
+            if (gControllers[temp_t9].rawStickY < -0x2D) {
+                temp_f0_3 = temp_s1->unk_094;
                 phi_f2 = 8.0f;
                 if (temp_f0_3 > 8.0f) {
                     phi_f2 = temp_f0_3 * D_802B9F5C;
@@ -1838,18 +1794,18 @@ void update_obj_green_shell(void *arg0) {
                 sp6C = 0.0f;
                 sp70 = 0.0f;
                 sp74 = -phi_f2;
-                func_802B64C4(&sp6C, (s16) (temp_s1->unk2E + temp_s1->unkC0));
+                func_802B64C4(&sp6C, temp_s1->unk_02E + temp_s1->unk_0C0);
                 arg0->unk24 = sp6C;
                 arg0->unk28 = sp70;
-                arg0->unk6 = 2U;
+                arg0->unk6 = 2;
                 arg0->unk2C = sp74;
                 func_800C9060(arg0->unk15, 0x19008004);
-                func_800C90F4(arg0->unk15, (temp_s1->unk254 * 0x10) + 0x29008000);
-                func_8000EDC8((s32) (arg0 - &D_8015F9B8) / 112);
+                func_800C90F4(arg0->unk15, (temp_s1->characterId * 0x10) + 0x29008000);
+                func_8000EDC8((arg0 - &D_8015F9B8) / 112);
                 return;
             }
-            arg0->unk6 = 1U;
-            if ((s32) temp_s1->unkC0 > 0) {
+            arg0->unk6 = 1;
+            if (temp_s1->unk_0C0 > 0) {
                 arg0->unk12 = 0x78E3;
                 return;
             }
@@ -1859,29 +1815,29 @@ void update_obj_green_shell(void *arg0) {
     default:
         return;
     case 1:
-        temp_v0_2 = arg0->unk12;
-        temp_s1_2 = (arg0->unk14 * 0xDD8) + &gPlayers;
-        if ((s32) temp_v0_2 > 0) {
-            arg0->unk12 = (s16) (temp_v0_2 - 0xE38);
-            if ((s32) arg0->unk12 < 0) {
-                arg0->unk6 = 2U;
+        temp_v0 = arg0->unk12;
+        temp_s1_2 = &gPlayers[arg0->unk14];
+        if (temp_v0 > 0) {
+            arg0->unk12 = temp_v0 - 0xE38;
+            if (arg0->unk12 < 0) {
+                arg0->unk6 = 2;
                 arg0->unk4 = 0x1E;
                 func_800C9060(arg0->unk15, 0x19008004);
-                func_800C90F4(arg0->unk15, (temp_s1_2->unk254 * 0x10) + 0x29008000);
-                func_8000EDC8((s32) (arg0 - &D_8015F9B8) / 112);
+                func_800C90F4(arg0->unk15, (temp_s1_2->characterId * 0x10) + 0x29008000);
+                func_8000EDC8((arg0 - &D_8015F9B8) / 112);
             }
         } else {
-            arg0->unk12 = (s16) (temp_v0_2 + 0xE38);
-            if ((s32) arg0->unk12 > 0) {
-                arg0->unk6 = 2U;
+            arg0->unk12 = temp_v0 + 0xE38;
+            if (arg0->unk12 > 0) {
+                arg0->unk6 = 2;
                 arg0->unk4 = 0x1E;
                 func_800C9060(arg0->unk15, 0x19008004);
-                func_800C90F4(arg0->unk15, (temp_s1_2->unk254 * 0x10) + 0x29008000);
-                func_8000EDC8((s32) (arg0 - &D_8015F9B8) / 112);
+                func_800C90F4(arg0->unk15, (temp_s1_2->characterId * 0x10) + 0x29008000);
+                func_8000EDC8((arg0 - &D_8015F9B8) / 112);
             }
         }
-        if ((s16) arg0->unk6 == 2) {
-            temp_f0_4 = temp_s1_2->unk94;
+        if (arg0->unk6 == 2) {
+            temp_f0_4 = temp_s1_2->unk_094;
             phi_f2_2 = 8.0f;
             if (temp_f0_4 > 8.0f) {
                 phi_f2_2 = temp_f0_4 * D_802B9F60;
@@ -1889,29 +1845,29 @@ void update_obj_green_shell(void *arg0) {
             sp6C = 0.0f;
             sp70 = 0.0f;
             sp74 = phi_f2_2;
-            func_802B64C4(&sp6C, (s16) (temp_s1_2->unk2E + temp_s1_2->unkC0));
+            func_802B64C4(&sp6C, temp_s1_2->unk_02E + temp_s1_2->unk_0C0);
             arg0->unk24 = sp6C;
             arg0->unk28 = sp70;
             arg0->unk2C = sp74;
             return;
         }
-        sp6C = func_802B8018((u16) arg0->unk12) * 6.0f;
-        sp70 = arg0->unkC - temp_s1_2->unk70;
-        sp74 = func_802B8038((u16) arg0->unk12) * 6.0f;
-        func_802B63B8(&sp6C, temp_s1_2 + 0x174);
-        arg0->unk18 = (f32) (sp6C + temp_s1_2->unk14);
-        arg0->unk1C = (f32) (sp70 + temp_s1_2->unk18);
-        arg0->unk20 = (f32) (sp74 + temp_s1_2->unk1C);
+        sp6C = func_802B8018(arg0->unk12) * 6.0f;
+        sp70 = arg0->unkC - temp_s1_2->unk_070;
+        sp74 = func_802B8038(arg0->unk12, MIPS2C_ERROR(Read from unset register $a1)) * 6.0f;
+        func_802B63B8(&sp6C, temp_s1_2->unk_174);
+        arg0->unk18 = sp6C + temp_s1_2->posX;
+        arg0->unk1C = sp70 + temp_s1_2->posY;
+        arg0->unk20 = sp74 + temp_s1_2->posZ;
         return;
     case 2:
-        temp_v0_3 = arg0->unk4;
-        if ((s32) temp_v0_3 > 0) {
-            arg0->unk4 = (s16) (temp_v0_3 - 1);
+        temp_v0_2 = arg0->unk4;
+        if (temp_v0_2 > 0) {
+            arg0->unk4 = temp_v0_2 - 1;
             if (arg0->unk4 == 0) {
-                arg0->unk2 = (s16) (arg0->unk2 & 0xEFFF);
+                arg0->unk2 = arg0->unk2 & 0xEFFF;
             }
         }
-        arg0->unk28 = (f32) (arg0->unk28 - 0.5f);
+        arg0->unk28 = arg0->unk28 - 0.5f;
         if (arg0->unk28 < -2.0f) {
             arg0->unk28 = -2.0f;
         }
@@ -1919,9 +1875,9 @@ void update_obj_green_shell(void *arg0) {
         sp78 = arg0->unk18;
         sp7C = arg0->unk1C;
         sp80 = arg0->unk20;
-        arg0->unk18 = (f32) (arg0->unk18 + arg0->unk24);
-        arg0->unk1C = (f32) (arg0->unk1C + arg0->unk28);
-        arg0->unk20 = (f32) (arg0->unk20 + arg0->unk2C);
+        arg0->unk18 = arg0->unk18 + arg0->unk24;
+        arg0->unk1C = arg0->unk1C + arg0->unk28;
+        arg0->unk20 = arg0->unk20 + arg0->unk2C;
         sp34 = temp_a0;
         func_802AD950(temp_a0, 0x40800000, arg0->unk18, arg0->unk1C, arg0->unk20, sp78, sp7C, sp80);
         func_802B4E30(arg0);
@@ -1929,42 +1885,42 @@ void update_obj_green_shell(void *arg0) {
         if ((arg0->unk3C < 0.0f) || (arg0->unk40 < 0.0f)) {
             func_802AC098(temp_a0, temp_s1_3);
             func_800C98B8(arg0 + 0x18, temp_s1_3, 0x19008054);
-            arg0->unk2 = (s16) (arg0->unk2 | 0x80);
+            arg0->unk2 = arg0->unk2 | 0x80;
             return;
         }
         /* Duplicate return node #46. Try simplifying control flow for better match */
         return;
     case 4:
-        temp_v0_4 = (arg0->unk4 * 0x70) + &D_8015F9B8;
-        temp_s1_4 = (arg0->unk14 * 0xDD8) + &gPlayers;
-        if (temp_v0_4->unk0 != 0x15) {
+        temp_v0_3 = (arg0->unk4 * 0x70) + &D_8015F9B8;
+        temp_s1_4 = &gPlayers[arg0->unk14];
+        if (temp_v0_3->unk0 != 0x15) {
             func_8029FDC8((bitwise f32) arg0);
             return;
         }
-        temp_t4 = arg0->unk12 + temp_v0_4->unk10;
+        temp_t4 = arg0->unk12 + temp_v0_3->unk10;
         arg0->unk12 = temp_t4;
         sp6C = func_802B8018(temp_t4 & 0xFFFF) * 8.0f;
-        sp70 = arg0->unkC - temp_s1_4->unk70;
-        temp_f18 = func_802B8038((bitwise u16) 8.0f, (u16) arg0->unk12) * 8.0f;
+        sp70 = arg0->unkC - temp_s1_4->unk_070;
+        temp_f18 = func_802B8038(arg0->unk12, MIPS2C_ERROR(Read from unset register $a1)) * 8.0f;
         sp74 = temp_f18;
-        func_802B63B8((bitwise f32 *) 8.0f, &sp6C, temp_s1_4 + 0x174);
+        func_802B63B8((bitwise f32 *) 8.0f, &sp6C, temp_s1_4->unk_174);
         sp78 = arg0->unk18;
         sp7C = arg0->unk1C;
         sp80 = arg0->unk20;
-        arg0->unk18 = (f32) (sp6C + temp_s1_4->unk14);
-        arg0->unk1C = (f32) (sp70 + temp_s1_4->unk18);
-        arg0->unk20 = (f32) (temp_f18 + temp_s1_4->unk1C);
+        arg0->unk18 = sp6C + temp_s1_4->posX;
+        arg0->unk1C = sp70 + temp_s1_4->posY;
+        arg0->unk20 = temp_f18 + temp_s1_4->posZ;
         func_802AD950(arg0 + 0x30, 0x40800000, arg0->unk18, arg0->unk1C, arg0->unk20, sp78, sp7C, sp80);
         func_802B4E30(arg0);
         return;
     case 5:
-        arg0->unk28 = (f32) (arg0->unk28 - D_802B9F64);
+        arg0->unk28 = arg0->unk28 - D_802B9F64;
         if (arg0->unk28 < -5.0f) {
             arg0->unk28 = -5.0f;
         }
-        arg0->unk4 = (s16) (arg0->unk4 - 1);
-        arg0->unk12 = (s16) (arg0->unk12 + 0x5B0);
-        arg0->unk1C = (f32) (arg0->unk1C + arg0->unk28);
+        arg0->unk4 = arg0->unk4 - 1;
+        arg0->unk12 = arg0->unk12 + 0x5B0;
+        arg0->unk1C = arg0->unk1C + arg0->unk28;
         if (arg0->unk4 == 0) {
             func_8029E854(-5.0f, arg0);
         }
@@ -2239,37 +2195,16 @@ GLOBAL_ASM("asm/non_matchings/code_802B0210/func_802B4104.s")
 ? func_800C9D80(void *, void *, ?);                 /* extern */
 ? func_8029E854(f32, void *);                       /* extern */
 ? func_8029FDC8(f32, void *);                       /* extern */
-f32 func_802ABE30(f32, f32, f32, u16);              /* extern */
 ? func_802AD950(void *, ?, f32, f32, f32, f32, f32, f32); /* extern */
-? func_802B0210(void *, void *);                    /* extern */
+? func_802B0210(s16 *, void *);                     /* extern */
 ? func_802B3B44(void *);                            /* extern */
-? func_802B3E7C(void *, void *);                    /* extern */
-s16 func_802B3FD0(void *, void *);                  /* extern */
+? func_802B3E7C(void *, Player *);                  /* extern */
 ? func_802B4104(void *);                            /* extern */
 ? func_802B4E30(void *);                            /* extern */
-? func_802B63B8(f32 *, void *);                     /* extern */
+? func_802B63B8(f32 *, f32 *);                      /* extern */
 ? func_802B64C4(f32 *, s16);                        /* extern */
-f32 func_802B8018(u16);                             /* extern */
-f32 func_802B8038(u16);                             /* extern */
-extern void *D_800DC4BC;
-extern s32 D_800DC4DC;
-extern u16 D_800DC51C;
-extern s16 D_8015F6E8;
-extern s16 D_8015F6EA;
-extern s16 D_8015F6EE;
-extern s16 D_8015F6F0;
-extern s16 D_8015F6F2;
-extern s16 D_8015F8F0;
 extern ? D_8015F9B8;
-extern u16 D_80164430;
 extern ? D_80164438;
-extern ? gControllers;
-extern s32 gModeSelection;
-extern ? gPlayers;
-static f32 D_802B9F94 = 1.2f;
-static f32 D_802B9F98 = 40000.0f;
-static f32 D_802B9F9C = 0.3f;
-static f32 D_802B9FA0 = 40000.0f;
 
 void update_obj_red_blue_shell(void *arg0) {
     f32 sp94;
@@ -2280,6 +2215,9 @@ void update_obj_red_blue_shell(void *arg0) {
     f32 sp40;
     f32 sp3C;
     f32 sp38;
+    Player *temp_s1;
+    Player *temp_s1_2;
+    Player *temp_s1_3;
     f32 *temp_a0;
     f32 temp_f0;
     f32 temp_f0_2;
@@ -2295,7 +2233,10 @@ void update_obj_red_blue_shell(void *arg0) {
     f32 temp_f2_4;
     f32 temp_f2_5;
     f32 temp_f4;
+    s16 temp_t3;
+    s16 temp_t4_2;
     s16 temp_t6;
+    s16 temp_t7;
     s16 temp_v0;
     s16 temp_v0_2;
     s16 temp_v0_3;
@@ -2307,14 +2248,8 @@ void update_obj_red_blue_shell(void *arg0) {
     u16 temp_v1_2;
     u16 temp_v1_3;
     u16 temp_v1_4;
-    void *temp_s1;
-    void *temp_s1_2;
-    void *temp_s1_3;
-    void *temp_s1_4;
-    void *temp_s1_5;
-    void *temp_s1_6;
     void *temp_v0_7;
-    void *phi_v0;
+    struct Controller *phi_v0;
     f32 phi_f0;
     s16 phi_v0_2;
     s16 phi_v0_3;
@@ -2324,45 +2259,45 @@ void update_obj_red_blue_shell(void *arg0) {
     temp_f0 = arg0->unk18;
     temp_f12 = arg0->unk1C;
     sp56 = arg0->unk0;
-    if ((temp_f2 < (f32) D_8015F6F2) || ((f32) D_8015F6F0 < temp_f2) || (temp_f0 < (f32) D_8015F6EA) || ((f32) D_8015F6E8 < temp_f0) || (temp_f12 < (f32) D_8015F6EE)) {
+    if ((temp_f2 < D_8015F6F2) || (D_8015F6F0 < temp_f2) || (temp_f0 < D_8015F6EA) || (D_8015F6E8 < temp_f0) || (temp_f12 < D_8015F6EE)) {
         func_8029FDC8(temp_f12, arg0);
     }
     temp_t4 = arg0->unk6;
-    arg0->unk10 = (s16) (arg0->unk10 + 0x71C);
+    arg0->unk10 = arg0->unk10 + 0x71C;
     switch (temp_t4) {
     case 0:
-        temp_s1 = (arg0->unk14 * 0xDD8) + &gPlayers;
-        func_802B0210(temp_s1 + 0x110, arg0 + 0x30);
+        temp_s1 = &gPlayers[arg0->unk14];
+        func_802B0210(&temp_s1->unk_110, arg0 + 0x30);
         sp8C = 0.0f;
-        sp90 = temp_s1->unk70;
-        temp_f16 = -(temp_s1->unk70 + arg0->unkC + 2.0f);
+        sp90 = temp_s1->unk_070;
+        temp_f16 = -(temp_s1->unk_070 + arg0->unkC + 2.0f);
         sp94 = temp_f16;
-        func_802B63B8(&sp8C, temp_s1 + 0x174);
-        arg0->unk18 = (f32) (sp8C + temp_s1->unk14);
-        temp_f14 = temp_s1->unk18 - sp90;
-        arg0->unk20 = (f32) (temp_f16 + temp_s1->unk1C);
+        func_802B63B8(&sp8C, temp_s1->unk_174);
+        arg0->unk18 = sp8C + temp_s1->posX;
+        temp_f14 = temp_s1->posY - sp90;
+        arg0->unk20 = temp_f16 + temp_s1->posZ;
         sp68 = temp_f14;
-        temp_f0_2 = func_802ABE30(arg0->unk18, temp_f14, arg0->unk20, temp_s1->unk11A);
+        temp_f0_2 = func_802ABE30(arg0->unk18, temp_f14, arg0->unk20, temp_s1->unk_11A);
         temp_f2_2 = temp_f14 - temp_f0_2;
         if ((temp_f2_2 < 5.0f) && (temp_f2_2 > -5.0f)) {
-            arg0->unk1C = (f32) (arg0->unkC + temp_f0_2);
+            arg0->unk1C = arg0->unkC + temp_f0_2;
         } else {
             arg0->unk1C = temp_f14;
         }
-        if ((temp_s1->unk0 & 0x4000) != 0) {
+        if ((temp_s1->unk_000 & 0x4000) != 0) {
             if (D_800DC51C != 0) {
                 goto block_16;
             }
-            phi_v0 = (arg0->unk14 * 0x10) + &gControllers;
+            phi_v0 = &gControllers[arg0->unk14];
         } else {
 block_16:
             phi_v0 = D_800DC4BC;
         }
-        temp_v1 = phi_v0->unk8;
+        temp_v1 = phi_v0->buttonDepressed;
         if ((temp_v1 & 0x2000) != 0) {
-            phi_v0->unk8 = (u16) (temp_v1 & 0xDFFF);
-            arg0->unk6 = 1U;
-            if ((s32) temp_s1->unkC0 > 0) {
+            phi_v0->buttonDepressed = temp_v1 & 0xDFFF;
+            arg0->unk6 = 1;
+            if (temp_s1->unk_0C0 > 0) {
                 arg0->unk12 = 0x78E3;
                 return;
             }
@@ -2373,37 +2308,37 @@ block_16:
         return;
     case 1:
         temp_v0 = arg0->unk12;
-        temp_s1_2 = (arg0->unk14 * 0xDD8) + &gPlayers;
-        if ((s32) temp_v0 > 0) {
-            arg0->unk12 = (s16) (temp_v0 - 0x71C);
-            if ((s32) arg0->unk12 < 0) {
-                arg0->unk6 = 2U;
+        temp_s1_2 = &gPlayers[arg0->unk14];
+        if (temp_v0 > 0) {
+            arg0->unk12 = temp_v0 - 0x71C;
+            if (arg0->unk12 < 0) {
+                arg0->unk6 = 2;
                 func_800C9060(arg0->unk15, 0x19008004);
-                func_800C90F4(arg0->unk15, (temp_s1_2->unk254 * 0x10) + 0x29008000);
+                func_800C90F4(arg0->unk15, (temp_s1_2->characterId * 0x10) + 0x29008000);
                 if (sp56 == 8) {
-                    func_8000ED80((s32) (arg0 - &D_8015F9B8) / 112);
+                    func_8000ED80((arg0 - &D_8015F9B8) / 112);
                 } else {
-                    func_8000EE10((s32) (arg0 - &D_8015F9B8) / 112);
+                    func_8000EE10((arg0 - &D_8015F9B8) / 112);
                     func_800C9D80(arg0 + 0x18, arg0 + 0x24, 0x51018008);
                 }
             }
         } else {
-            arg0->unk12 = (s16) (temp_v0 + 0x71C);
-            if ((s32) arg0->unk12 > 0) {
-                arg0->unk6 = 2U;
+            arg0->unk12 = temp_v0 + 0x71C;
+            if (arg0->unk12 > 0) {
+                arg0->unk6 = 2;
                 func_800C9060(arg0->unk15, 0x19008004);
-                func_800C90F4(arg0->unk15, (temp_s1_2->unk254 * 0x10) + 0x29008000);
+                func_800C90F4(arg0->unk15, (temp_s1_2->characterId * 0x10) + 0x29008000);
                 if (sp56 == 8) {
-                    func_8000ED80((s32) (arg0 - &D_8015F9B8) / 112);
+                    func_8000ED80((arg0 - &D_8015F9B8) / 112);
                 } else {
-                    func_8000EE10((s32) (arg0 - &D_8015F9B8) / 112);
+                    func_8000EE10((arg0 - &D_8015F9B8) / 112);
                     func_800C9D80(arg0 + 0x18, arg0 + 0x24, 0x51018008);
                 }
             }
         }
-        if ((s16) arg0->unk6 == 2) {
+        if (arg0->unk6 == 2) {
             arg0->unk4 = 0x1E;
-            temp_f2_3 = temp_s1_2->unk94;
+            temp_f2_3 = temp_s1_2->unk_094;
             phi_f0 = 8.0f;
             if (temp_f2_3 > 8.0f) {
                 phi_f0 = temp_f2_3 * D_802B9F94;
@@ -2412,96 +2347,96 @@ block_16:
             temp_a0 = &sp8C;
             sp8C = 0.0f;
             sp90 = 0.0f;
-            func_802B64C4(temp_a0, (s16) (temp_s1_2->unk2E + temp_s1_2->unkC0));
+            func_802B64C4(temp_a0, temp_s1_2->unk_02E + temp_s1_2->unk_0C0);
             arg0->unk24 = sp8C;
             arg0->unk28 = sp90;
             arg0->unk2C = sp94;
             return;
         }
-        temp_f10 = func_802B8018((u16) arg0->unk12) * 8.0f;
+        temp_f10 = func_802B8018(arg0->unk12) * 8.0f;
         sp8C = temp_f10;
-        temp_f4 = arg0->unkC - temp_s1_2->unk70;
+        temp_f4 = arg0->unkC - temp_s1_2->unk_070;
         sp90 = temp_f4;
-        sp94 = func_802B8038((u16) arg0->unk12) * 8.0f;
-        func_802B63B8(&sp8C, temp_s1_2 + 0x174);
-        arg0->unk18 = (f32) (temp_f10 + temp_s1_2->unk14);
-        arg0->unk1C = (f32) (temp_f4 + temp_s1_2->unk18);
-        arg0->unk20 = (f32) (sp94 + temp_s1_2->unk1C);
+        sp94 = func_802B8038(arg0->unk12) * 8.0f;
+        func_802B63B8(&sp8C, temp_s1_2->unk_174);
+        arg0->unk18 = temp_f10 + temp_s1_2->posX;
+        arg0->unk1C = temp_f4 + temp_s1_2->posY;
+        arg0->unk20 = sp94 + temp_s1_2->posZ;
         return;
     case 2:
-        arg0->unk4 = (s16) (arg0->unk4 - 1);
-        temp_s1_3 = (arg0->unk14 * 0xDD8) + &gPlayers;
+        temp_t7 = arg0->unk14;
+        arg0->unk4 = arg0->unk4 - 1;
         if (arg0->unk4 == 0) {
-            arg0->unk2 = (s16) (arg0->unk2 & 0xEFFF);
+            arg0->unk2 = arg0->unk2 & 0xEFFF;
             if (arg0->unk0 == 0x2A) {
-                arg0->unk6 = 8U;
-                arg0->unk4 = (s16) D_8015F8F0;
+                arg0->unk6 = 8;
+                arg0->unk4 = D_8015F8F0;
                 arg0->unk8 = 1000.0f;
                 temp_v1_2 = D_80164430;
-                temp_v0_2 = *(&D_80164438 + (((s32) (temp_s1_3 - D_800DC4DC) / 3544) * 2)) + 8;
+                temp_v0_2 = *(&D_80164438 + (((&gPlayers[temp_t7] - D_800DC4DC) / 3544) * 2)) + 8;
                 phi_v0_2 = temp_v0_2;
-                if ((s32) temp_v1_2 < (s32) temp_v0_2) {
-                    phi_v0_2 = (s16) (temp_v0_2 - temp_v1_2);
+                if (temp_v1_2 < temp_v0_2) {
+                    phi_v0_2 = temp_v0_2 - temp_v1_2;
                 }
                 arg0->unk12 = phi_v0_2;
-            } else if (gModeSelection == 3U) {
+            } else if (gModeSelection == 3) {
                 arg0->unk8 = 1000.0f;
-                arg0->unk4 = func_802B3FD0(temp_s1_3, arg0);
-                if ((s32) arg0->unk4 < 0) {
+                arg0->unk4 = func_802B3FD0(&gPlayers[temp_t7], arg0);
+                if (arg0->unk4 < 0) {
                     arg0->unk2 = -0x8000;
                     arg0->unk12 = 0;
                     arg0->unk4 = 0x3C;
-                    arg0->unk6 = 7U;
+                    arg0->unk6 = 7;
                     arg0->unk28 = 3.0f;
                 } else {
-                    arg0->unk6 = 3U;
+                    arg0->unk6 = 3;
                 }
             } else {
-                temp_v0_3 = temp_s1_3->unk4;
+                temp_v0_3 = gPlayers[temp_t7].unk_004;
                 if (temp_v0_3 == 0) {
-                    arg0->unk6 = 4U;
+                    arg0->unk6 = 4;
                     arg0->unk4 = 0x258;
                     temp_v1_3 = D_80164430;
-                    temp_v0_4 = *(&D_80164438 + (((s32) (temp_s1_3 - D_800DC4DC) / 3544) * 2)) + 8;
+                    temp_v0_4 = *(&D_80164438 + (((&gPlayers[temp_t7] - D_800DC4DC) / 3544) * 2)) + 8;
                     phi_v0_3 = temp_v0_4;
-                    if ((s32) temp_v1_3 < (s32) temp_v0_4) {
-                        phi_v0_3 = (s16) (temp_v0_4 - temp_v1_3);
+                    if (temp_v1_3 < temp_v0_4) {
+                        phi_v0_3 = temp_v0_4 - temp_v1_3;
                     }
                     arg0->unk12 = phi_v0_3;
-                } else if ((s32) temp_v0_3 >= 5) {
-                    arg0->unk6 = 5U;
+                } else if (temp_v0_3 >= 5) {
+                    arg0->unk6 = 5;
                     arg0->unk8 = 1000.0f;
                     temp_v1_4 = D_80164430;
-                    temp_v0_5 = *(&D_80164438 + (((s32) (temp_s1_3 - D_800DC4DC) / 3544) * 2)) + 8;
+                    temp_v0_5 = *(&D_80164438 + (((&gPlayers[temp_t7] - D_800DC4DC) / 3544) * 2)) + 8;
                     phi_v0_4 = temp_v0_5;
-                    if ((s32) temp_v1_4 < (s32) temp_v0_5) {
-                        phi_v0_4 = (s16) (temp_v0_5 - temp_v1_4);
+                    if (temp_v1_4 < temp_v0_5) {
+                        phi_v0_4 = temp_v0_5 - temp_v1_4;
                     }
                     arg0->unk12 = phi_v0_4;
-                    arg0->unk4 = (s16) (&D_8015F8F0)[temp_s1_3->unk4].unk-2;
+                    arg0->unk4 = (&D_8015F8F0)[gPlayers[temp_t7].unk_004].unk-2;
                 } else {
-                    arg0->unk6 = 3U;
+                    arg0->unk6 = 3;
                     arg0->unk8 = 1000.0f;
-                    arg0->unk4 = (s16) (&D_8015F8F0)[temp_s1_3->unk4].unk-2;
+                    arg0->unk4 = (&D_8015F8F0)[gPlayers[temp_t7].unk_004].unk-2;
                 }
             }
         }
-        arg0->unk28 = (f32) ((f64) arg0->unk28 - 0.5);
+        arg0->unk28 = arg0->unk28 - 0.5;
         if (arg0->unk28 < -2.0f) {
             arg0->unk28 = -2.0f;
         }
         sp38 = arg0->unk18;
         sp3C = arg0->unk1C;
         sp40 = arg0->unk20;
-        arg0->unk18 = (f32) (arg0->unk18 + arg0->unk24);
-        arg0->unk1C = (f32) (arg0->unk1C + arg0->unk28);
-        arg0->unk20 = (f32) (arg0->unk20 + arg0->unk2C);
+        arg0->unk18 = arg0->unk18 + arg0->unk24;
+        arg0->unk1C = arg0->unk1C + arg0->unk28;
+        arg0->unk20 = arg0->unk20 + arg0->unk2C;
         func_802AD950(arg0 + 0x30, 0x40800000, arg0->unk18, arg0->unk1C, arg0->unk20, sp38, sp3C, sp40);
         func_802B4E30(arg0);
         func_802B4104(arg0);
         return;
     case 3:
-        func_802B3E7C(arg0, (arg0->unk4 * 0xDD8) + &gPlayers);
+        func_802B3E7C(arg0, &gPlayers[arg0->unk4]);
         return;
     case 4:
         func_802B3B44(arg0);
@@ -2511,25 +2446,25 @@ block_16:
                 func_8029FDC8((bitwise f32) arg0);
                 return;
             }
-            arg0->unk4 = (s16) (temp_v0_6 - 1);
+            arg0->unk4 = temp_v0_6 - 1;
             return;
         }
         /* Duplicate return node #73. Try simplifying control flow for better match */
         return;
     case 5:
         func_802B3B44(arg0);
-        temp_s1_4 = (arg0->unk4 * 0xDD8) + &gPlayers;
-        temp_f0_3 = temp_s1_4->unk14 - arg0->unk18;
-        temp_f2_4 = temp_s1_4->unk1C - arg0->unk20;
+        temp_t4_2 = arg0->unk4;
+        temp_f0_3 = gPlayers[temp_t4_2].posX - arg0->unk18;
+        temp_f2_4 = gPlayers[temp_t4_2].posZ - arg0->unk20;
         if (((temp_f0_3 * temp_f0_3) + (temp_f2_4 * temp_f2_4)) < D_802B9F98) {
-            arg0->unk6 = 3U;
+            arg0->unk6 = 3;
             return;
         }
         /* Duplicate return node #73. Try simplifying control flow for better match */
         return;
     case 6:
         temp_v0_7 = (arg0->unk4 * 0x70) + &D_8015F9B8;
-        temp_s1_5 = (arg0->unk14 * 0xDD8) + &gPlayers;
+        temp_s1_3 = &gPlayers[arg0->unk14];
         if (temp_v0_7->unk0 != 0x16) {
             func_8029FDC8((bitwise f32) arg0);
             return;
@@ -2537,26 +2472,26 @@ block_16:
         temp_t6 = arg0->unk12 + temp_v0_7->unk10;
         arg0->unk12 = temp_t6;
         sp8C = func_802B8018(temp_t6 & 0xFFFF) * 8.0f;
-        sp90 = arg0->unkC - temp_s1_5->unk70;
-        sp94 = func_802B8038((u16) arg0->unk12) * 8.0f;
-        func_802B63B8(&sp8C, temp_s1_5 + 0x174);
+        sp90 = arg0->unkC - temp_s1_3->unk_070;
+        sp94 = func_802B8038(arg0->unk12) * 8.0f;
+        func_802B63B8(&sp8C, temp_s1_3->unk_174);
         sp38 = arg0->unk18;
         sp3C = arg0->unk1C;
         sp40 = arg0->unk20;
-        arg0->unk18 = (f32) (sp8C + temp_s1_5->unk14);
-        arg0->unk1C = (f32) (sp90 + temp_s1_5->unk18);
-        arg0->unk20 = (f32) (sp94 + temp_s1_5->unk1C);
+        arg0->unk18 = sp8C + temp_s1_3->posX;
+        arg0->unk1C = sp90 + temp_s1_3->posY;
+        arg0->unk20 = sp94 + temp_s1_3->posZ;
         func_802AD950(arg0 + 0x30, 0x40800000, arg0->unk18, arg0->unk1C, arg0->unk20, sp38, sp3C, sp40);
         func_802B4E30(arg0);
         return;
     case 7:
-        arg0->unk28 = (f32) (arg0->unk28 - D_802B9F9C);
+        arg0->unk28 = arg0->unk28 - D_802B9F9C;
         if (arg0->unk28 < -5.0f) {
             arg0->unk28 = -5.0f;
         }
-        arg0->unk4 = (s16) (arg0->unk4 - 1);
-        arg0->unk12 = (s16) (arg0->unk12 + 0x5B0);
-        arg0->unk1C = (f32) (arg0->unk1C + arg0->unk28);
+        arg0->unk4 = arg0->unk4 - 1;
+        arg0->unk12 = arg0->unk12 + 0x5B0;
+        arg0->unk1C = arg0->unk1C + arg0->unk28;
         if (arg0->unk4 == 0) {
             func_8029E854(-5.0f, arg0);
             return;
@@ -2565,18 +2500,18 @@ block_16:
         return;
     case 8:
         func_802B3B44(arg0);
-        arg0->unk4 = (s16) D_8015F8F0;
-        temp_s1_6 = (D_8015F8F0 * 0xDD8) + &gPlayers;
-        temp_f0_4 = temp_s1_6->unk14 - arg0->unk18;
-        temp_f2_5 = temp_s1_6->unk1C - arg0->unk20;
+        arg0->unk4 = D_8015F8F0;
+        temp_t3 = D_8015F8F0;
+        temp_f0_4 = gPlayers[temp_t3].posX - arg0->unk18;
+        temp_f2_5 = gPlayers[temp_t3].posZ - arg0->unk20;
         if (((temp_f0_4 * temp_f0_4) + (temp_f2_5 * temp_f2_5)) < D_802B9FA0) {
-            arg0->unk6 = 9U;
+            arg0->unk6 = 9;
             return;
         }
         /* Duplicate return node #73. Try simplifying control flow for better match */
         return;
     case 9:
-        func_802B3E7C(arg0, (arg0->unk4 * 0xDD8) + &gPlayers);
+        func_802B3E7C(arg0, &gPlayers[arg0->unk4]);
         /* Duplicate return node #73. Try simplifying control flow for better match */
         return;
     }
