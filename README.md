@@ -24,11 +24,6 @@ Debian / Ubuntu
 ```
 sudo apt install build-essential pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev
 ```
-Download latest package from qemu-irix Releases
-```
-sudo dpkg -i qemu-irix-2.11.0-2169-g32ab296eef_amd64.deb
-```
-(Optional) Clone https://github.com/n64decomp/qemu-irix and follow the install instructions in the README.
 
 ## Building
 
