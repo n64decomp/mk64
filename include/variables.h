@@ -21,7 +21,6 @@ extern struct_D_8018CE10 D_8018CE10[];
 extern struct_D_802DFB80 D_802DFB80[][8];
 extern struct_D_802BFB80 D_802BFB80[][8];
 extern s32 D_800DC52C;
-extern s32 gModeSelection;
 extern s32 D_800DC50C;
 extern s16 D_80165578;
 extern s16 D_8016557A;

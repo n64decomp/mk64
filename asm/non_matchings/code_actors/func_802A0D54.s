@@ -8,10 +8,10 @@ glabel func_802A0D54
 /* 10A37C 802A0D6C AFB20020 */  sw    $s2, 0x20($sp)
 /* 10A380 802A0D70 3C11800F */  lui   $s1, %hi(gPlayers) # $s1, 0x800f
 /* 10A384 802A0D74 3C138016 */  lui   $s3, %hi(D_8015F9B8) # $s3, 0x8016
-/* 10A388 802A0D78 3C168010 */  lui   $s6, %hi(D_800FD850) # $s6, 0x8010
+/* 10A388 802A0D78 3C168010 */  lui   $s6, 0x8010 # fake pointer. Bitflag
 /* 10A38C 802A0D7C AFBF0034 */  sw    $ra, 0x34($sp)
 /* 10A390 802A0D80 AFB00018 */  sw    $s0, 0x18($sp)
-/* 10A394 802A0D84 26D6D850 */  addiu $s6, %lo(D_800FD850) # addiu $s6, $s6, -0x27b0
+/* 10A394 802A0D84 26D6D850 */  addiu $s6, $s6, -0x27b0 # fake pointer
 /* 10A398 802A0D88 2673F9B8 */  addiu $s3, %lo(D_8015F9B8) # addiu $s3, $s3, -0x648
 /* 10A39C 802A0D8C 26316990 */  addiu $s1, %lo(gPlayers) # addiu $s1, $s1, 0x6990
 /* 10A3A0 802A0D90 3C120400 */  lui   $s2, 0x400
