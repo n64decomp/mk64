@@ -26,7 +26,7 @@ void func_80281610(void) {
 // guPerspective params
 extern f32 D_80150130, D_80150148, D_8015014C, D_80150150;
 
-// rodata that has not been found
+// rodata
 extern const f32 D_80286B90, D_80286B94, D_80286B98, D_80286B9C, D_80286BA0;
 
 void func_802816B8(void) {

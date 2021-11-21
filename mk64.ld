@@ -323,7 +323,8 @@ SECTIONS
       BUILD_DIR/data/data_121DA0_1.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);
       BUILD_DIR/data/data_121DA0_2.o(.data);
-      //BUILD_DIR/src/code_8028DF00.o(.rodata);
+      BUILD_DIR/src/code_8028DF00.o(.rodata);
+      BUILD_DIR/data/data_121DA0_2_1.o(.data);
    }
    END_SEG(code_8028DF00)
 
