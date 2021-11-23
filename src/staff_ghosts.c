@@ -195,7 +195,7 @@ void func_800052A4(void) {
 void func_80005310(void) {
 
     // if time trials
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
 
         set_staff_ghost();
 
@@ -208,7 +208,7 @@ void func_80005310(void) {
         D_80162DEC = 0;
         D_80162DF8 = 0;
 
-        if (gModeSelection == 1 && D_800DC52C == 0) {
+        if (gModeSelection == TIME_TRIALS && D_800DC52C == 0) {
 
             if (D_8015F890 == 1) {
                 func_80004FB0();
@@ -488,7 +488,7 @@ void func_80005B18(void) {
     s32 temp_v0;
     u16 *phi_a3;
 
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         temp_v0 = lapCount[0];
         //phi_a3 = &D_80162DD4;
         if ((lapCount[0] == 3) && (D_80162DDC == 0) && D_80162DF8 != 1) {
@@ -548,7 +548,7 @@ void func_80005B18(void) {
         if (D_80162DEC > 100) {
             D_80162DEC = 100;
         }
-        if ((gModeSelection == 1) && (D_800DC52C == 0)) {
+        if ((gModeSelection == TIME_TRIALS) && (D_800DC52C == 0)) {
             if ((D_80162DD4 == 0) && (lapCount[4] != 3)) {
                 func_800057DC(); //gModeSelection, &D_80162DDC, 3, &D_80162DD4);
             }
@@ -567,7 +567,7 @@ GLOBAL_ASM("asm/non_matchings/staff_ghosts/func_80005B18.s")
 #endif
 
 void func_80005E6C(void) {
-    if ((gModeSelection == 1) && (gModeSelection == 1) && (D_800DC52C == 0)) {
+    if ((gModeSelection == TIME_TRIALS) && (gModeSelection == TIME_TRIALS) && (D_800DC52C == 0)) {
         if ((D_80162DD8 == 0) && (D_80164394 != 3)) {
             func_800057DC(); //3
         }

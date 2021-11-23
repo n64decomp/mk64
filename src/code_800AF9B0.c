@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
+#include <defines.h>
 
 u32 func_802A7B70(u16 x);
 extern u32 D_8018EDB8;
@@ -1932,7 +1933,7 @@ void func_800B28C8(void) {
             gIsMirrorMode = 0;
             return;
         }
-        gCCSelection = 1;
+        gCCSelection = CC_100;
         gIsMirrorMode = 0;
         D_800DC648 = 0;
         if (temp_v0 != 0) {
@@ -2501,7 +2502,7 @@ block_22:
             return;
         }
         if ((phi_v1_2 & 0x8000) != 0) {
-            if (gModeSelection != 0) {
+            if (gModeSelection != GRAND_PRIX) {
                 *phi_a1_2 = 2;
                 play_sound2(0x49008001, phi_a1_2);
             } else {
@@ -2719,7 +2720,7 @@ void func_800B3F74(u32 arg0) {
         break;
     case 3:
     case 13:
-        if (gModeSelection == 3) {
+        if (gModeSelection == BATTTLE) {
             gCupSelection = 4;
             D_800DC540 = 4;
             D_8018EDEC = 4;
@@ -2738,7 +2739,7 @@ void func_800B3F74(u32 arg0) {
         }
         play_sound2(0x49009013);
         D_8018EE0A = 0;
-        if (gModeSelection == 0) {
+        if (gModeSelection == GRAND_PRIX) {
             gCourseSelection = 0;
         }
         phi_v0_2 = &D_8018D9C8;

@@ -2,6 +2,7 @@
 #include <macros.h>
 #include "types.h"
 #include "variables.h"
+#include <defines.h>
 
 extern void func_800C8F44(u16 arg0);
 extern u16 D_800DC5A8;
@@ -135,7 +136,7 @@ void func_80002A18(void) {
     } else {
         gCourseDirection = 1.0f;
     }
-    if (gModeSelection == 0) {
+    if (gModeSelection == GRAND_PRIX) {
         gCurrentCourseId = gCupTrackOrder[gCupSelection][gCourseSelection];
     }
     D_800DC52C = D_800DC530;
@@ -164,7 +165,7 @@ void func_80002A18(void) {
     func_80091FA4();
     func_8029E158();
 
-    if (gModeSelection != 3) {
+    if (gModeSelection != BATTTLE) {
         D_8015F8D0.unk4 = (f32) (D_80164490->unk2 - 15);;
         D_8015F8D0.unk8 = D_80164490->unk4;
         if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {

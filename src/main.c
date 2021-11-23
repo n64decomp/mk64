@@ -9,6 +9,7 @@
 #include "segments.h"
 #include "segment_symbols.h"
 #include "common_structs.h"
+#include <defines.h>
 
 // Declarations (not in this file)
 void func_8008C214(void);
@@ -172,23 +173,11 @@ s32 D_800DC52C = 0;
 
 s32 D_800DC530[2] = {0};
 s32 gPlayerCountSelection1 = 2;
-/**
-  * 0 = Mario Grand Prix
-  * 1 = Time Trial
-  * 2 = Versus
-  * 3 = Battle
-**/
-s32 gModeSelection = 0;
+
+s32 gModeSelection = GRAND_PRIX;
 s32 D_800DC540 = 0;
 s32 D_800DC544 = 0;
-/**
-  * 0 = 50CC
-  * 1 = 100CC
-  * 2 = 150CC
-  * 3 = Extra (a.k.a Mirror)
-  * 4 = Battle
-**/
-s32 gCCSelection = 0;
+s32 gCCSelection = CC_50;
 s32 gGlobalTimer = 0;
 UNUSED s32 D_800DC550 = 0;
 UNUSED s32 D_800DC554 = 0;

@@ -5,6 +5,7 @@
 #include <common_structs.h>
 #include <types.h>
 #include <config.h>
+#include <defines.h>
 
 extern Mtx *D_80183D60;
 extern Vp D_802B8880;
@@ -438,7 +439,7 @@ void func_800588F4(s32 arg0) {
     if (D_80165730 != 0) {
         func_80053E6C(arg0);
     }
-    if (gModeSelection == 3) {
+    if (gModeSelection == BATTTLE) {
         func_80056AC0(arg0);
     }
 }
@@ -843,21 +844,21 @@ void func_800591B4(void) {
                 if ((D_800DC51C == 0) && (D_801657E8 != 0)) {
                     if (D_80165800 != 0) {
                         func_8004EE54(0);
-                        if (gModeSelection != 3) {
+                        if (gModeSelection != BATTTLE) {
                             func_8004F020(0);
                         }
                         func_8004F3E4(0);
                     }
                     if ((D_800DC530 == 1) && (D_80165801 != 0)) {
                         func_8004EE54(1);
-                        if (gModeSelection != 3) {
+                        if (gModeSelection != BATTTLE) {
                             func_8004F020(1);
                         }
                         func_8004F3E4(1);
                     }
                 }
             }
-            if ((D_801657E4 != 2) && (gModeSelection == 0) && (D_8018D2BC != 0)) {
+            if ((D_801657E4 != 2) && (gModeSelection == GRAND_PRIX) && (D_8018D2BC != 0)) {
                 func_80050320();
             }
             func_800590D4();
@@ -941,7 +942,7 @@ extern ? D_80165800;
 extern s32 D_8018D188;
 
 void func_80059488(s32 arg0) {
-    if ((gModeSelection != 3) && (*(&D_80165800 + arg0) == 0) && (D_8018D188 != 0)) {
+    if ((gModeSelection != BATTTLE) && (*(&D_80165800 + arg0) == 0) && (D_8018D188 != 0)) {
         func_8004FA78();
         func_8004E78C(arg0);
     }
@@ -1018,7 +1019,7 @@ void func_80059560(s32 arg0) {
     void *temp_v0;
     void *temp_v0_2;
 
-    if (gModeSelection != 3) {
+    if (gModeSelection != BATTTLE) {
         if ((D_801657F8 != 0) && (D_8018D188 != 0)) {
             temp_v0 = (arg0 * 0x84) + &D_8018CA70;
             sp3C = temp_v0;
@@ -1334,7 +1335,7 @@ void func_80059AC8(void) {
             }
         } else if (D_800DC50C != 9) {
             func_80059A88(0);
-            if (gModeSelection == 1) {
+            if (gModeSelection == TIME_TRIALS) {
                 func_8005995C();
             }
         } else {
@@ -1713,14 +1714,14 @@ void func_8005A3C0(s32 arg2) {
                         D_80165800.unk0 = (D_80165800.unk0 + 1) & 1;
                         phi_a1 = 1;
                         phi_a2 = 3;
-                        if (gModeSelection != 3) {
+                        if (gModeSelection != BATTTLE) {
                             D_801657F0 = (D_801657F0 + 1) & 1;
                             phi_a1 = 1;
                             phi_a2 = 3;
                         }
                     }
                 } else if (((D_800DC4BC->buttonPressed & 1) != 0) || ((D_800DC4C0->unk6 & 1) != 0) || (phi_a2 = 3, ((D_800DC4C4->unk6 & 1) != 0))) {
-                    if (gModeSelection != 3) {
+                    if (gModeSelection != BATTTLE) {
                         D_801657F0 = (D_801657F0 + 1) & 1;
                     }
                     D_801657E4 = (D_801657E4 + 1) & 1;
@@ -1729,7 +1730,7 @@ void func_8005A3C0(s32 arg2) {
                 }
             } else {
                 phi_a2 = 3;
-                if (gModeSelection != 3) {
+                if (gModeSelection != BATTTLE) {
                     if ((D_800DC4BC->buttonPressed & 1) != 0) {
                         D_80165800.unk0 = (D_80165800.unk0 + 1) & 1;
                         phi_a1 = 1;
@@ -1836,7 +1837,7 @@ void func_8005A74C(void) {
         if (D_800DC50C != 9) {
             func_8007E1AC();
             func_8007E4C4();
-            if (gModeSelection != 1) {
+            if (gModeSelection != TIME_TRIALS) {
                 func_8007DB44();
             }
             func_8007C340();
@@ -2042,7 +2043,7 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005AAF0.s")
 ? func_8005AA6C(?); // extern
 
 void func_8005AB20(void) {
-    if ((gModeSelection == 0) && (gPlayerCountSelection1 == 1)) {
+    if ((gModeSelection == GRAND_PRIX) && (gPlayerCountSelection1 == 1)) {
         func_8005AA6C(0x14);
     }
 }
@@ -2765,7 +2766,7 @@ block_76:
             phi_v0_3 = D_8018D1CC;
             break;
         case 2:                                     /* switch 2 */
-            if (gModeSelection == 1) {
+            if (gModeSelection == TIME_TRIALS) {
                 D_8018CA70.unk80 = 1;
             }
             D_8018CA70.unk78 = 1;
@@ -3233,7 +3234,7 @@ void func_8005CB60(s32 arg0, s32 arg1) {
                 temp_s0->unk8 = (temp_s0 + (*temp_v1 * 4))->unk14;
             }
             phi_a2 = 1;
-            if (gModeSelection == 1) {
+            if (gModeSelection == TIME_TRIALS) {
                 temp_v0_2 = D_80165638;
                 temp_a0_2 = temp_s0->unkC;
                 if (temp_v0_2 >= temp_a0_2) {
@@ -3308,7 +3309,7 @@ void func_8005CB60(s32 arg0, s32 arg1) {
                     arg0 = phi_a3;
                     func_80079084(phi_a3);
                     func_800C9060(arg0 & 0xFF, 0x1900F015);
-                    if ((gCurrentCourseId == 8) && (D_80165898 == 0) && (gModeSelection != 1)) {
+                    if ((gCurrentCourseId == 8) && (D_80165898 == 0) && (gModeSelection != TIME_TRIALS)) {
                         D_80165898 = 1;
                     }
                 }
@@ -3379,7 +3380,7 @@ extern s32 D_8016439C;
 extern s32 lapCount;
 
 void func_8005D0FC(s32 arg0) {
-    if (gModeSelection != 3) {
+    if (gModeSelection != BATTTLE) {
         if (arg0 != 0) {
             if (arg0 != 1) {
                 if (arg0 != 2) {
@@ -3411,7 +3412,7 @@ extern s32 D_8018D2A4;
 extern s32 D_8018D2BC;
 
 void func_8005D18C(void) {
-    if ((gModeSelection == 0) && (gPlayerCountSelection1 == 1)) {
+    if ((gModeSelection == GRAND_PRIX) && (gPlayerCountSelection1 == 1)) {
         D_801657D8 = 1;
         D_8018D2BC = 0;
         D_8018D2A4 = 0;
@@ -3440,7 +3441,7 @@ void func_8005D1F4(s32 arg0) {
     void *temp_v1;
     ? *phi_a2;
 
-    if (gModeSelection == 2) {
+    if (gModeSelection == VERSUS) {
         temp_v1 = (arg0 * 0x84) + &D_8018CA70;
         temp_v1->unk74 = 0;
         phi_a2 = &D_80163DE8;
@@ -11992,7 +11993,7 @@ void func_8006D474(void *arg0, s8 arg1, s8 arg2) {
             phi_s2 = temp_s2;
         } while (temp_s2 < 0xA);
     }
-    if ((gModeSelection == 3) && ((arg0->unk2 & (2 << sp44)) != 0)) {
+    if ((gModeSelection == BATTTLE) && ((arg0->unk2 & (2 << sp44)) != 0)) {
         func_8006BA94(arg0, arg1, arg2);
     }
 }
@@ -12229,7 +12230,7 @@ void func_8006E420(u16 *arg0, s8 arg1, s8 arg2) {
             temp_s0 = phi_s0 + 1;
             phi_s0 = temp_s0;
         } while (temp_s0 < 0xA);
-        if (gModeSelection == 3) {
+        if (gModeSelection == BATTTLE) {
             func_8006B9CC(arg0, arg1);
         }
     }

@@ -643,7 +643,7 @@ void func_80028864(Player *arg0, s32 arg1, s8 arg2, s8 arg3) {
             phi_a0 = arg0;
 block_17:
         }
-        if ((sp1E == 1) || ((phi_a0->unk_000 & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) || (gModeSelection == 3) || (temp_v0_7 = phi_a0->unk_0CA, ((temp_v0_7 & 2) != 0)) || ((temp_v0_7 & 8) != 0) || (*(&D_801633F8 + (arg2 * 2)) == 1)) {
+        if ((sp1E == 1) || ((phi_a0->unk_000 & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) || (gModeSelection == BATTTLE) || (temp_v0_7 = phi_a0->unk_0CA, ((temp_v0_7 & 2) != 0)) || ((temp_v0_7 & 8) != 0) || (*(&D_801633F8 + (arg2 * 2)) == 1)) {
             temp_t4 = phi_a0->unk_0BC & ~0x1000;
             phi_a0->unk_0BC = temp_t4;
             if (((temp_t4 & 0x80) == 0x80) || ((temp_t4 & 0x40) == 0x40) || ((temp_t4 & 0x400) == 0x400) || ((temp_t4 & 0x4000) == 0x4000) || ((temp_t4 & 0x80000) == 0x80000) || ((temp_t4 & 0x800000) == 0x800000) || ((temp_t4 & 0x1000000) == 0x1000000) || ((temp_t4 & 0x2000000) == 0x2000000) || ((temp_t4 & 0x20000) == 0x20000) || ((phi_a0->unk_044 & 0x800) != 0)) {
@@ -5596,7 +5596,7 @@ void func_80032700(void *arg0) {
     }
     if (D_801656F0 == 1) {
         phi_v0 = 8;
-        if (gModeSelection == 1) {
+        if (gModeSelection == TIME_TRIALS) {
             phi_v0 = 0x14;
         }
         if (((gRaceFrameCounter - D_801652E0[func_80027D00()]) < phi_v0) && ((arg0->unk44 & 0x20) != 0x20)) {
@@ -6282,7 +6282,7 @@ void func_80033AE0(void *arg0, void *arg1, s8 arg2) {
     arg0->unkFA = temp_t9;
     if (((sp2D0 >= 0x5A) || (sp2D0 < -0x59)) && ((arg0->unk44 & 0x4000) == 0)) {
         temp_v1_4 = arg0->unkBC;
-        if (((temp_v1_4 & 0x10) == 0) && (gCCSelection == 2) && (gModeSelection != 3) && ((temp_v1_4 & 8) == 0) && (((arg0->unk94 / 18.0f) * 216.0f) >= 40.0f) && (arg0->unk204 == 0)) {
+        if (((temp_v1_4 & 0x10) == 0) && (gCCSelection == CC_150) && (gModeSelection != BATTTLE) && ((temp_v1_4 & 8) == 0) && (((arg0->unk94 / 18.0f) * 216.0f) >= 40.0f) && (arg0->unk204 == 0)) {
             arg0->unkC = arg0->unkC | 0x80;
         }
     }
@@ -6622,7 +6622,7 @@ block_125:
             arg0->unk78 = phi_t4;
         }
     }
-    if (gModeSelection == 3) {
+    if (gModeSelection == BATTTLE) {
         arg0->unk78 = arg0->unk78 * D_800EDD80;
     }
 }
@@ -7232,7 +7232,7 @@ void func_80037BB4(void *arg0, void *arg1) {
             arg0->unk2E = arg0->unk2E + temp_v0;
         }
         if ((arg0->unk0 & 0x1000) == 0) {
-            if (gModeSelection == 3) {
+            if (gModeSelection == BATTTLE) {
                 func_800378E8(&sp20, arg1);
                 return;
             }
@@ -7246,7 +7246,7 @@ void func_80037BB4(void *arg0, void *arg1) {
         arg0->unk2E = arg0->unk2E + temp_v0;
     }
     if ((arg0->unk0 & 0x1000) == 0) {
-        if (gModeSelection == 3) {
+        if (gModeSelection == BATTTLE) {
             func_80037A4C(&sp20, arg1);
             return;
         }
@@ -7340,7 +7340,7 @@ block_21:
                 func_80030FC8(arg0);
                 func_80030E00(arg0);
             } else {
-                if (gModeSelection == 3) {
+                if (gModeSelection == BATTTLE) {
                     func_80031F48(arg0, 0x40000000);
                 } else {
                     func_80031F48(arg0, 0x3F800000);

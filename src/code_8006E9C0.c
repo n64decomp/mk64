@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
+#include <defines.h>
 
 void func_8006EA5C(void);
 extern s32 D_800DC530;
@@ -635,7 +636,7 @@ void func_8006F8CC(void) {
         D_80165800.unk0 = D_80165800.unk1;
         temp_a0 = D_8018EDF3;
         if (temp_a0 == 4) {
-            if (gModeSelection != 3) {
+            if (gModeSelection != BATTTLE) {
                 D_801657E4 = 1;
                 D_801657F0 = 1;
                 D_801657F8 = 1;
@@ -649,7 +650,7 @@ void func_8006F8CC(void) {
             D_801657E8 = 0;
             D_801657F8 = 1;
         } else if (temp_a0 == 2) {
-            if (gModeSelection != 3) {
+            if (gModeSelection != BATTTLE) {
                 D_80165800.unk1 = 0;
                 D_801657E4 = 1;
                 D_801657F0 = 1;
@@ -814,7 +815,7 @@ void func_8006FA94(void) {
                 if (temp_ra != 4) {
 
                 } else {
-                    if (gModeSelection == 2) {
+                    if (gModeSelection == VERSUS) {
                         D_8018D114 = 0xA;
                         D_8018D178 = 0x1E;
                         D_8018D180 = 0x1E;
@@ -825,7 +826,7 @@ void func_8006FA94(void) {
                     }
                     D_8018D2AC = 0xA;
                 }
-            } else if (gModeSelection == 2) {
+            } else if (gModeSelection == VERSUS) {
                 D_8018D114 = 8;
                 D_8018D178 = 0x64;
                 D_8018D180 = 0x96;
@@ -864,7 +865,7 @@ void func_8006FA94(void) {
                 D_8018D114 = 7;
             }
         }
-    } else if (gModeSelection == 0) {
+    } else if (gModeSelection == GRAND_PRIX) {
         D_8018D114 = 0;
         D_8018D178 = 0x96;
         D_8018D114 = 0xF0;
@@ -1462,7 +1463,7 @@ void func_80070780(void) {
     switch (temp_t6) {
     case 0:
         if (D_800DC50C != 9) {
-            if (gModeSelection == 0) {
+            if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
             phi_s0 = &D_8018C630;
@@ -1677,7 +1678,7 @@ void func_80070780(void) {
         return;
     case 7:
         if (D_800DC50C != 9) {
-            if (gModeSelection == 0) {
+            if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
             phi_s0_3 = &D_8018C630;
@@ -1699,7 +1700,7 @@ void func_80070780(void) {
         return;
     case 8:
         if (D_800DC50C != 9) {
-            if (gModeSelection == 0) {
+            if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
             D_80165898 = 0;
@@ -1725,7 +1726,7 @@ void func_80070780(void) {
         if (D_800DC50C != 9) {
             temp_v0_10 = D_8018EDF3;
             phi_s1_8 = &D_80183EA0;
-            if ((temp_v0_10 == 1) || ((temp_v0_10 == 2) && (gModeSelection == 2))) {
+            if ((temp_v0_10 == 1) || ((temp_v0_10 == 2) && (gModeSelection == VERSUS))) {
                 temp_v0_11 = gCCSelection;
                 if (temp_v0_11 != 0) {
                     if (temp_v0_11 != 1) {
@@ -2217,7 +2218,7 @@ void func_80071A20(void) {
     D_8018CA70.unkDC = 0x7F;
     D_8018CA70.unkDE = 0x101;
     D_8018CA70.unkE4 = 0xDA;
-    if (gModeSelection == 3) {
+    if (gModeSelection == BATTTLE) {
         D_8018CA70.unk44 = 0x5E;
         D_8018CA70.unkC8 = 0xD0;
     }
@@ -2342,7 +2343,7 @@ void func_80071C28(void) {
     D_8018CA70.unk1EC = 0xD4;
     D_8018CA70.unk1F8 = 0xC8;
     D_8018CA70.unk1FA = 0xC0;
-    if (gModeSelection == 3) {
+    if (gModeSelection == BATTTLE) {
         D_8018CA70.unk44 = 0xC8;
         D_8018CA70.unkC8 = 0xC8;
         D_8018CA70.unk14C = 0xB8;
