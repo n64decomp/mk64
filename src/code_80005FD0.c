@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
+#include <defines.h>
 
 extern u32 func_802B5224(void);
 extern s32 gIsMirrorMode;
@@ -167,7 +168,7 @@ s32 func_800061DC(void *arg0, f32 arg1, s32 arg2) {
             do {
                 temp_a2 = phi_a0->unk_000;
                 phi_v1_2 = phi_v1_5;
-                if (((temp_a2 & 0x4000) != 0) && ((temp_a2 & 0x1000) == 0)) {
+                if (((temp_a2 & PLAYER_HUMAN) != 0) && ((temp_a2 & PLAYER_CPU) == 0)) {
                     temp_f12 = phi_a0->posX;
                     temp_f14 = phi_a0->posZ;
                     if (((temp_f12 - arg1) < temp_f0) && (temp_f0 < (temp_f12 + arg1)) && ((temp_f14 - arg1) < temp_f2) && (temp_f2 < (temp_f14 + arg1))) {
