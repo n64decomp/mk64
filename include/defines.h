@@ -15,6 +15,7 @@
 #define PLAYER_CPU                  (1 << 12) // 0x1000
 #define PLAYER_HUMAN                (1 << 14) // 0x4000
 #define PLAYER_INVISIBLE_OR_BOMB    (1 <<  8) // 0x0100
+// unused?
 #define PLAYER_UNKNOWN              (1 << 10) // 0x0400
 
 // Compiles to -0x1000 in diff.py
@@ -24,6 +25,13 @@
 #define TIME_TRIALS 1
 #define VERSUS      2
 #define BATTTLE     3
+
+/**
+ * CC stands for cubic-centimetres.
+ * It measures engine displacement composed from
+ * cylinder volume.
+ * Generally, the main determiner of horsepower output.
+ */
 
 #define CC_50       0
 #define CC_100      1
