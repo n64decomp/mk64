@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <common_structs.h>
+#include <defines.h>
 
 extern Player *D_800DC4DC;
 extern Player *D_800DC4E0;
@@ -585,7 +586,7 @@ void func_80028864(Player *arg0, s32 arg1, s8 arg2, s8 arg3) {
 
     temp_v0 = arg0->unk_000;
     phi_a0 = arg0;
-    if ((temp_v0 & 0x2000) == 0) {
+    if ((temp_v0 & PLAYER_START_SEQUENCE) == 0) {
         temp_v0_2 = D_800DC52C;
         if (temp_v0_2 != 0) {
             if ((temp_v0_2 != 1) && (temp_v0_2 != 2)) {
@@ -642,7 +643,7 @@ void func_80028864(Player *arg0, s32 arg1, s8 arg2, s8 arg3) {
             phi_a0 = arg0;
 block_17:
         }
-        if ((sp1E == 1) || ((phi_a0->unk_000 & 0x100) == 0x100) || (gModeSelection == 3) || (temp_v0_7 = phi_a0->unk_0CA, ((temp_v0_7 & 2) != 0)) || ((temp_v0_7 & 8) != 0) || (*(&D_801633F8 + (arg2 * 2)) == 1)) {
+        if ((sp1E == 1) || ((phi_a0->unk_000 & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) || (gModeSelection == 3) || (temp_v0_7 = phi_a0->unk_0CA, ((temp_v0_7 & 2) != 0)) || ((temp_v0_7 & 8) != 0) || (*(&D_801633F8 + (arg2 * 2)) == 1)) {
             temp_t4 = phi_a0->unk_0BC & ~0x1000;
             phi_a0->unk_0BC = temp_t4;
             if (((temp_t4 & 0x80) == 0x80) || ((temp_t4 & 0x40) == 0x40) || ((temp_t4 & 0x400) == 0x400) || ((temp_t4 & 0x4000) == 0x4000) || ((temp_t4 & 0x80000) == 0x80000) || ((temp_t4 & 0x800000) == 0x800000) || ((temp_t4 & 0x1000000) == 0x1000000) || ((temp_t4 & 0x2000000) == 0x2000000) || ((temp_t4 & 0x20000) == 0x20000) || ((phi_a0->unk_044 & 0x800) != 0)) {

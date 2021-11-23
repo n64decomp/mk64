@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <common_structs.h>
+#include <defines.h>
 
 //f32 D_801646C0;
 //f32 D_801646C4;
@@ -1317,7 +1318,7 @@ void func_8001EE98(void *arg0, s32 arg1, s8 arg2) {
                 *sp2C = 1;
                 phi_v1 = 1;
             }
-        } else if (((D_800DC4DC->unk_000 & 0x800) == 0x800) || (D_800DC51C == 1)) {
+        } else if (((D_800DC4DC->unk_000 & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (D_800DC51C == 1)) {
             D_80152300.unk0 = 3;
             *(&D_80152300 + 2) = 3;
             *(&D_80152300 + 4) = 3;

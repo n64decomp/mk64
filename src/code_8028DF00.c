@@ -3,6 +3,7 @@
 #include <types.h>
 #include <common_structs.h>
 #include <config.h>
+#include <defines.h>
 
 extern Player *D_800DC4E0;
 extern Player *D_800DC4E4;
@@ -178,15 +179,15 @@ void func_8028E0F0(void) {
     
     for(i = 0; i < 4; i++) {
         ply = (Player *)&gPlayers[i];
-        if (!(ply->unk_000 & 0x8000)) {
+        if (!(ply->unk_000 & PLAYER_EXISTS)) {
             continue;
         }
-        if (ply->unk_000 & 0x800) {
+        if (ply->unk_000 & PLAYER_CINEMATIC_MODE) {
             continue;
         }
 
         if (D_8018D8C0[i] < 0) {
-            ply->unk_000 |= 0x800;
+            ply->unk_000 |= PLAYER_CINEMATIC_MODE;
             unk_arr[phi_s2] = (s16) (ply - D_800DC4DC);
             phi_s2++;
             func_800CA118((u8) i);
@@ -215,7 +216,7 @@ void func_8028E298(void) {
 
     for (i = 0; i < 8; i++) {
 
-        if ((gPlayers[i].unk_000 & 0x800)) {
+        if ((gPlayers[i].unk_000 & PLAYER_CINEMATIC_MODE)) {
             continue;
         }
             temp_a2 = D_801645B0[i];
@@ -575,12 +576,13 @@ void func_8028EDA8(void) {
         
     for (i = 0; i < 8; i++) {
 
-        if ((gPlayers[i].unk_000 & 0x8000) == 0) {
+        if ((gPlayers[i].unk_000 & PLAYER_EXISTS) == 0) {
             continue;
         }
 
-        if (gPlayers[i].unk_000 & 0x2000) {
-            gPlayers[i].unk_000 ^= 0x2000;
+        // Sets player to human.
+        if (gPlayers[i].unk_000 & PLAYER_START_SEQUENCE) {
+            gPlayers[i].unk_000 ^= PLAYER_START_SEQUENCE;
         }    
     }
     
@@ -595,7 +597,7 @@ f32 func_8028EE8C(s32 arg0) {
 }
 
 void func_8028EEF0(s32 i) {
-    gPlayers[i].unk_000 |= 0x800;
+    gPlayers[i].unk_000 |= PLAYER_CINEMATIC_MODE;
 }
 
 void func_8028EF28(void) {
@@ -607,7 +609,7 @@ void func_8028EF28(void) {
     {
         ply = &gPlayers[i];
 
-        if ((gPlayers[i].unk_000 & 0x8000) == 0) {
+        if ((gPlayers[i].unk_000 & PLAYER_EXISTS) == 0) {
             continue;
         }
 
@@ -616,27 +618,27 @@ void func_8028EF28(void) {
         } else if (lapCount[i] > gPlayers[i].unk_008) {
             gPlayers[i].unk_008++; 
 
-            if ((gPlayers[i].unk_000 & 0x4000) != 0) {
+            if ((gPlayers[i].unk_000 & PLAYER_HUMAN) != 0) {
                 if (gPlayers[i].unk_008 == 3) {
                     func_8028EEF0(i);
 
                     currentPosition = gPlayers[i].unk_004;
-                    gPlayers[i].unk_000 |= 0x1000;
+                    gPlayers[i].unk_000 |= PLAYER_CPU;
 
                     if (currentPosition < 4) {
                         D_80150120 = 1;
                     }
 
                     func_800CA118((u8)i);
-                    if ((D_802BA032 & 0x8000) == 0) {
-                        D_802BA032 |= 0x8000;
+                    if ((D_802BA032 & PLAYER_EXISTS) == 0) {
+                        D_802BA032 |= PLAYER_EXISTS;
                     }
                     
 
                     if (gModeSelection == 0 && gPlayerCountSelection1 == 2 && D_802BA048 == 0) {
                         D_802BA048 = 1;
                     }
-                    if ((gPlayers[i].unk_000 & 0x100) == 0) {
+                    if ((gPlayers[i].unk_000 & PLAYER_INVISIBLE_OR_BOMB) == 0) {
                         D_800DC510 = 4;
                     }
                     if (gModeSelection == 1) {
@@ -660,7 +662,7 @@ void func_8028EF28(void) {
                                 D_800DC510 = 5;
                                 i = D_8015F8F2[0];
                                 gPlayers[i].unk_00C |= 0x200000;
-                                gPlayers[i].unk_000 |= 0x1000;
+                                gPlayers[i].unk_000 |= PLAYER_CPU;
                                 func_800CA118((u8)i);
                                 break;
                             case 3:
@@ -678,7 +680,7 @@ void func_8028EF28(void) {
                                         *(D_8015F8BC + i * 3 + 2) = 99;
                                     }
                                     gPlayers[i].unk_00C |= 0x200000;
-                                    gPlayers[i].unk_000 |= 0x1000;
+                                    gPlayers[i].unk_000 |= PLAYER_CPU;
                                     func_800CA118((u8)i);
                                 }
                                 break;
@@ -693,7 +695,7 @@ void func_8028EF28(void) {
                                     D_800DC510 = 5;
                                     i = D_8015F8F2[2];
                                     gPlayers[i].unk_00C |= 0x200000;
-                                    gPlayers[i].unk_000 |= 0x1000;
+                                    gPlayers[i].unk_000 |= PLAYER_CPU;
                                     func_800CA118((u8)i);
                                 }
                                 break;
@@ -735,9 +737,9 @@ void func_8028F3F0(void) {
     s16 temp_a0_2;
 
     for (i = 0; i < 8; i++) {
-        if (((gPlayers[i].unk_000 & 0x8000) != 0) &&
-            ((gPlayers[i].unk_000 & 0x800) == 0) &&
-            ((gPlayers[i].unk_000 & 0x100) == 0)) {
+        if (((gPlayers[i].unk_000 & PLAYER_EXISTS) != 0) &&
+            ((gPlayers[i].unk_000 & PLAYER_CINEMATIC_MODE) == 0) &&
+            ((gPlayers[i].unk_000 & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
             temp_a0_2 = D_801643B8[i];
             gPlayers[i].unk_004 = temp_a0_2;
             D_8015F8F0[temp_a0_2] = i;
@@ -939,7 +941,7 @@ void func_8028F970(void) {
         phi_s2 = 0;
 loop_2:
         temp_v0 = phi_s3->unk_000;
-        if (((temp_v0 & 0x4000) != 0) && ((temp_v0 & 0x1000) == 0)) {
+        if (((temp_v0 & PLAYER_HUMAN) != 0) && ((temp_v0 & PLAYER_CPU) == 0)) {
             temp_s0 = &gControllers[phi_s2];
             if (D_800DC52C != 3) {
                 temp_v0_2 = temp_s0->buttonPressed;
@@ -1083,10 +1085,10 @@ void func_8028FCBC(void) {
                 func_8005C64C(&D_8018D2AC);
             }
             for (i = 0; i < 8; i++) {
-                if ((ply->unk_000 & 0x8000) == 0) {
+                if ((ply->unk_000 & PLAYER_EXISTS) == 0) {
                     continue;
                 }
-                ply->unk_000 |= 0x2000;
+                ply->unk_000 |= PLAYER_START_SEQUENCE;
                 ply++;
             }
             D_800DC5B8 = 1;
@@ -1157,7 +1159,7 @@ void func_8028FCBC(void) {
                             break;
                         case 1:
                         case 2:
-                            if (((D_800DC4DC->unk_000 & 0x800) != 0) && ((D_800DC4E0->unk_000 & 0x800) != 0)) {
+                            if (((D_800DC4DC->unk_000 & PLAYER_CINEMATIC_MODE) != 0) && ((D_800DC4E0->unk_000 & PLAYER_CINEMATIC_MODE) != 0)) {
                             
                                 if (D_800DC4DC->unk_004 < D_800DC4E0->unk_004) {
                                     D_800DC5E8 = 1;
@@ -1411,18 +1413,18 @@ void func_802909F0(void) {
     for (i = 0; i < 7; i++) {
         ply = &gPlayers[i];
         //temp_v0 = phi_s1->unk0;
-        if ((ply->unk_000 & 0x8000) &&
+        if ((ply->unk_000 & PLAYER_EXISTS) &&
           (!(ply->unk_0BC & 0x80000000)) &&
-          (!(ply->unk_000 & 0x100)) &&
+          (!(ply->unk_000 & PLAYER_INVISIBLE_OR_BOMB)) &&
           (!(ply->unk_0BC & 0x4000000))) { // && (temp_v0_2 < 8)) {
                     //phi_s0 = (temp_v0_2 * 0xDD8) + &gPlayers;
 
             for (k = i + 1; k < 8; k++) {
                 ply2 = &gPlayers[k];
                 //temp_v0_3 = phi_s0->unk0;
-                if ((ply2->unk_000 & 0x8000) &&
+                if ((ply2->unk_000 & PLAYER_EXISTS) &&
                     (!(ply2->unk_0BC & 0x80000000)) &&
-                    (!(ply2->unk_000 & 0x100)) &&
+                    (!(ply2->unk_000 & PLAYER_INVISIBLE_OR_BOMB)) &&
                     (!(ply2->unk_0BC & 0x4000000))) {
 
                     func_802903D8(ply, ply2);

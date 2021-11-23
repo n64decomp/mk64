@@ -1,5 +1,6 @@
 
 #include "global.h"
+#include <defines.h>
 
 extern s16 D_80165560[];
 extern s32* D_800E3C50[];
@@ -20,7 +21,7 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
     f32 ret;
     s8 idx;
 
-    player->unk_000 = 0;
+    player->unk_000 = PLAYER_INACTIVE;
     player->unk_08C = 0;
     player->characterId = arg6;
     player->unk_0B6 = 0;
@@ -447,62 +448,62 @@ void func_80039F44(f32 *arg0, f32 *arg1, f32 arg2) {
 
     D_8016556E = 0;
     if (D_800DC51C == 1) {
-        spawn_player(D_800DC4FC, 0, arg0[D_80165270[0]], arg1[D_80165270[0]], arg2, 32768.0f, D_800E86A8[0], -0x1000);
-        spawn_player(D_800DC4E0, 1, arg0[D_80165270[1]], arg1[D_80165270[1]], arg2, 32768.0f, D_80165560[0], -0x5000);
-        spawn_player(D_800DC4E4, 2, arg0[D_80165270[2]], arg1[D_80165270[2]], arg2, 32768.0f, D_80165560[1], -0x5000);
-        spawn_player(D_800DC4E8, 3, arg0[D_80165270[3]], arg1[D_80165270[3]], arg2, 32768.0f, D_80165560[2], -0x5000);
-        spawn_player(D_800DC4EC, 4, arg0[D_80165270[4]], arg1[D_80165270[4]], arg2, 32768.0f, D_80165560[3], -0x5000);
-        spawn_player(D_800DC4F0, 5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, D_80165560[4], -0x5000);
-        spawn_player(D_800DC4F4, 6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, D_80165560[5], -0x5000);
-        spawn_player(D_800DC4F8, 7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, D_80165560[6], -0x5000);
+        spawn_player(D_800DC4FC, 0, arg0[D_80165270[0]], arg1[D_80165270[0]], arg2, 32768.0f, D_800E86A8[0], PLAYER_HUMAN_AND_CPU);
+        spawn_player(D_800DC4E0, 1, arg0[D_80165270[1]], arg1[D_80165270[1]], arg2, 32768.0f, D_80165560[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(D_800DC4E4, 2, arg0[D_80165270[2]], arg1[D_80165270[2]], arg2, 32768.0f, D_80165560[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(D_800DC4E8, 3, arg0[D_80165270[3]], arg1[D_80165270[3]], arg2, 32768.0f, D_80165560[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(D_800DC4EC, 4, arg0[D_80165270[4]], arg1[D_80165270[4]], arg2, 32768.0f, D_80165560[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(D_800DC4F0, 5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, D_80165560[4], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(D_800DC4F4, 6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, D_80165560[5], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(D_800DC4F8, 7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, D_80165560[6], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
         D_80164A28 = 0;
     } else {
-        spawn_player(D_800DC4FC, 0, arg0[D_80165270[0]], arg1[D_80165270[0]] + 250.0f, arg2, 32768.0f, D_800E86A8[0], -0x1E00);
-        spawn_player(D_800DC4E0, 1, arg0[D_80165270[1]], arg1[D_80165270[1]] + 250.0f, arg2, 32768.0f, D_80165560[0], -0x4E00);
-        spawn_player(D_800DC4E4, 2, arg0[D_80165270[3]], arg1[D_80165270[2]] + 250.0f, arg2, 32768.0f, D_80165560[1], -0x4E00);
-        spawn_player(D_800DC4E8, 3, arg0[D_80165270[2]], arg1[D_80165270[3]] + 250.0f, arg2, 32768.0f, D_80165560[2], -0x4E00);
-        spawn_player(D_800DC4EC, 4, arg0[D_80165270[5]], arg1[D_80165270[4]] + 250.0f, arg2, 32768.0f, D_80165560[3], -0x4E00);
-        spawn_player(D_800DC4F0, 5, arg0[D_80165270[4]], arg1[D_80165270[5]] + 250.0f, arg2, 32768.0f, D_80165560[4], -0x4E00);
-        spawn_player(D_800DC4F4, 6, arg0[D_80165270[7]], arg1[D_80165270[6]] + 250.0f, arg2, 32768.0f, D_80165560[5], -0x4E00);
-        spawn_player(D_800DC4F8, 7, arg0[D_80165270[6]], arg1[D_80165270[7]] + 250.0f, arg2, 32768.0f, D_80165560[6], -0x4E00);
+        spawn_player(D_800DC4FC, 0, arg0[D_80165270[0]], arg1[D_80165270[0]] + 250.0f, arg2, 32768.0f, D_800E86A8[0], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(D_800DC4E0, 1, arg0[D_80165270[1]], arg1[D_80165270[1]] + 250.0f, arg2, 32768.0f, D_80165560[0], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(D_800DC4E4, 2, arg0[D_80165270[3]], arg1[D_80165270[2]] + 250.0f, arg2, 32768.0f, D_80165560[1], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(D_800DC4E8, 3, arg0[D_80165270[2]], arg1[D_80165270[3]] + 250.0f, arg2, 32768.0f, D_80165560[2], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(D_800DC4EC, 4, arg0[D_80165270[5]], arg1[D_80165270[4]] + 250.0f, arg2, 32768.0f, D_80165560[3], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(D_800DC4F0, 5, arg0[D_80165270[4]], arg1[D_80165270[5]] + 250.0f, arg2, 32768.0f, D_80165560[4], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(D_800DC4F4, 6, arg0[D_80165270[7]], arg1[D_80165270[6]] + 250.0f, arg2, 32768.0f, D_80165560[5], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(D_800DC4F8, 7, arg0[D_80165270[6]], arg1[D_80165270[7]] + 250.0f, arg2, 32768.0f, D_80165560[6], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
         D_80164A28 = 1;
     }
     func_80039AE4();
 }
 
 void func_8003A59C(f32 *arg0, f32 *arg1, f32 arg2) {
-    spawn_player(D_800DC4E8, 3, arg0[2], arg1[2], arg2, 32768.0f, D_800E86A8[0], 0x3000);
-    spawn_player(D_800DC4EC, 4, arg0[3], arg1[3], arg2, 32768.0f, D_800E86A8[0], 0x3000);
-    spawn_player(D_800DC4F0, 5, arg0[4], arg1[4], arg2, 32768.0f, D_800E86A8[0], 0x3000);
-    spawn_player(D_800DC4F4, 6, arg0[5], arg1[5], arg2, 32768.0f, D_800E86A8[0], 0x3000);
-    spawn_player(D_800DC4F8, 7, arg0[6], arg1[6], arg2, 32768.0f, D_800E86A8[0], 0x3000);
+    spawn_player(D_800DC4E8, 3, arg0[2], arg1[2], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4EC, 4, arg0[3], arg1[3], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F0, 5, arg0[4], arg1[4], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F4, 6, arg0[5], arg1[5], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F8, 7, arg0[6], arg1[6], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
     if (D_800DC51C == 1) {
-        spawn_player(D_800DC4FC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], -0x1000);
-        spawn_player(D_800DC4E0, 1, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], 0x3000);
-        spawn_player(D_800DC4E4, 2, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[0], 0x3000);
+        spawn_player(D_800DC4FC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], PLAYER_HUMAN_AND_CPU);
+        spawn_player(D_800DC4E0, 1, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(D_800DC4E4, 2, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
     } else if (D_8015F890 != 1) {
-        spawn_player(D_800DC4FC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], -0x2000);
+        spawn_player(D_800DC4FC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
         if (D_80162DD4[0] == 0) {
-            spawn_player(D_800DC4E0, 1, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE0, -0x1F00);
+            spawn_player(D_800DC4E0, 1, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE0, PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_INVISIBLE_OR_BOMB);
         } else {
-            spawn_player(D_800DC4E0, 1, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], 0x3000);
+            spawn_player(D_800DC4E0, 1, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
         }
         if (D_80162DD4[1] == 0) {
-            spawn_player(D_800DC4E4, 2, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE4, -0x1F00);
+            spawn_player(D_800DC4E4, 2, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE4, PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_INVISIBLE_OR_BOMB);
         } else {
-            spawn_player(D_800DC4E4, 2, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[0], 0x3000);
+            spawn_player(D_800DC4E4, 2, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
         }
     } else {
-        spawn_player(D_800DC4FC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE8, -0x1F00);
+        spawn_player(D_800DC4FC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE8, PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_INVISIBLE_OR_BOMB);
         if (D_80162DD8 == 0) {
-            spawn_player(D_800DC4E0, 1, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE0, -0x1F00);
+            spawn_player(D_800DC4E0, 1, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE0, PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_INVISIBLE_OR_BOMB);
         } else {
-            spawn_player(D_800DC4E0, 1, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], 0x3000);
+            spawn_player(D_800DC4E0, 1, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
         }
         if (D_80162DD4[1] == 0) {
-            spawn_player(D_800DC4E4, 2, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE4, -0x1F00);
+            spawn_player(D_800DC4E4, 2, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE4, PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_INVISIBLE_OR_BOMB);
         } else {
-            spawn_player(D_800DC4E4, 2, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[0], 0x3000);
+            spawn_player(D_800DC4E4, 2, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
         }
     }
     D_80164A28 = 0;
@@ -534,22 +535,22 @@ getRand:
         }
     }
 
-    spawn_player(D_800DC4E4, 2, arg0[D_80165270[2]], arg1[D_80165270[2]], arg2, 32768.0f, D_80165560[0], -0x5000);
-    spawn_player(D_800DC4E8, 3, arg0[D_80165270[3]], arg1[D_80165270[3]], arg2, 32768.0f, D_80165560[1], -0x5000);
-    spawn_player(D_800DC4EC, 4, arg0[D_80165270[4]], arg1[D_80165270[4]], arg2, 32768.0f, D_80165560[2], -0x5000);
-    spawn_player(D_800DC4F0, 5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, D_80165560[3], -0x5000);
-    spawn_player(D_800DC4F4, 6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, D_80165560[4], -0x5000);
-    spawn_player(D_800DC4F8, 7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, D_80165560[5], -0x5000);
+    spawn_player(D_800DC4E4, 2, arg0[D_80165270[2]], arg1[D_80165270[2]], arg2, 32768.0f, D_80165560[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(D_800DC4E8, 3, arg0[D_80165270[3]], arg1[D_80165270[3]], arg2, 32768.0f, D_80165560[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(D_800DC4EC, 4, arg0[D_80165270[4]], arg1[D_80165270[4]], arg2, 32768.0f, D_80165560[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(D_800DC4F0, 5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, D_80165560[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(D_800DC4F4, 6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, D_80165560[4], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(D_800DC4F8, 7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, D_80165560[5], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
     
     if (D_800DC51C == 1) {
-        spawn_player(D_800DC4FC, 0, arg0[D_80165270[0]], arg1[D_80165270[0]], arg2, 32768.0f, D_800E86A8[0], -0x1000);
+        spawn_player(D_800DC4FC, 0, arg0[D_80165270[0]], arg1[D_80165270[0]], arg2, 32768.0f, D_800E86A8[0], PLAYER_HUMAN_AND_CPU);
     } else {
-        spawn_player(D_800DC4FC, 0, arg0[D_80165270[0]], arg1[D_80165270[0]], arg2, 32768.0f, D_800E86A8[0], -0x2000);
+        spawn_player(D_800DC4FC, 0, arg0[D_80165270[0]], arg1[D_80165270[0]], arg2, 32768.0f, D_800E86A8[0], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
     }
     if (D_800DC51C == 1) {
-        spawn_player(D_800DC4E0, 1, arg0[D_80165270[1]], arg1[D_80165270[1]], arg2, 32768.0f, D_800E86A8[1], -0x5000);
+        spawn_player(D_800DC4E0, 1, arg0[D_80165270[1]], arg1[D_80165270[1]], arg2, 32768.0f, D_800E86A8[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
     } else {
-        spawn_player(D_800DC4E0, 1, arg0[D_80165270[1]], arg1[D_80165270[1]], arg2, 32768.0f, D_800E86A8[1], -0x2000);
+        spawn_player(D_800DC4E0, 1, arg0[D_80165270[1]], arg1[D_80165270[1]], arg2, 32768.0f, D_800E86A8[1], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
     }
 
     D_80164A28 = 0;
@@ -557,21 +558,21 @@ getRand:
 }
 
 void func_8003AE24(f32 *arg0, f32 *arg1, f32 arg2) {
-    spawn_player(D_800DC4E4, 2, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[0], 0x3000);
-    spawn_player(D_800DC4E8, 3, arg0[2], arg1[2], arg2, 32768.0f, D_800E86A8[0], 0x3000);
-    spawn_player(D_800DC4EC, 4, arg0[3], arg1[3], arg2, 32768.0f, D_800E86A8[0], 0x3000);
-    spawn_player(D_800DC4F0, 5, arg0[4], arg1[4], arg2, 32768.0f, D_800E86A8[0], 0x3000);
-    spawn_player(D_800DC4F4, 6, arg0[5], arg1[5], arg2, 32768.0f, D_800E86A8[0], 0x3000);
-    spawn_player(D_800DC4F8, 7, arg0[6], arg1[6], arg2, 32768.0f, D_800E86A8[0], 0x3000);
+    spawn_player(D_800DC4E4, 2, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4E8, 3, arg0[2], arg1[2], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4EC, 4, arg0[3], arg1[3], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F0, 5, arg0[4], arg1[4], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F4, 6, arg0[5], arg1[5], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F8, 7, arg0[6], arg1[6], arg2, 32768.0f, D_800E86A8[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
     if (D_800DC51C == 1) {
-        spawn_player(D_800DC4FC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], -0x1000);
+        spawn_player(D_800DC4FC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], PLAYER_HUMAN_AND_CPU);
     } else {
-        spawn_player(D_800DC4FC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], -0x2000);
+        spawn_player(D_800DC4FC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
     }
     if (D_800DC51C == 1) {
-        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[1], -0x1000);
+        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[1], PLAYER_HUMAN_AND_CPU);
     } else {
-        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[1], -0x2000);
+        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[1], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
     }
     D_80164A28 = 0;
     func_80039AE4();
@@ -579,95 +580,95 @@ void func_8003AE24(f32 *arg0, f32 *arg1, f32 arg2) {
 
 void spawn_players_2p_battle(f32 *arg0, f32 *arg1, f32 arg2) {
     if (gCurrentCourseId == COURSE_BIG_DONUT) {
-        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, -16384.0f, D_800E86A8[0], -0x2000);
-        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 16384.0f, D_800E86A8[1], -0x2000);
+        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, -16384.0f, D_800E86A8[0], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 16384.0f, D_800E86A8[1], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
     } else {
-        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], -0x2000);
-        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 0.0f, D_800E86A8[1], -0x2000);
+        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 0.0f, D_800E86A8[1], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
     }
-    spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, 32768.0f, D_800E86A8[2], 0x6000);
-    spawn_player(D_800DC4E8, 3, arg0[3], arg1[3], arg2, 32768.0f, D_800E86A8[3], 0x6000);
-    spawn_player(D_800DC4EC, 4, arg0[4], arg1[4], arg2, 32768.0f, 4, 0x3000);
-    spawn_player(D_800DC4F0, 5, arg0[5], arg1[5], arg2, 32768.0f, 5, 0x3000);
-    spawn_player(D_800DC4F4, 6, arg0[6], arg1[6], arg2, 32768.0f, 6, 0x3000);
-    spawn_player(D_800DC4F8, 7, arg0[0], arg1[0], arg2, 32768.0f, 7, 0x3000);
+    spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, 32768.0f, D_800E86A8[2], PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+    spawn_player(D_800DC4E8, 3, arg0[3], arg1[3], arg2, 32768.0f, D_800E86A8[3], PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+    spawn_player(D_800DC4EC, 4, arg0[4], arg1[4], arg2, 32768.0f, 4, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F0, 5, arg0[5], arg1[5], arg2, 32768.0f, 5, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F4, 6, arg0[6], arg1[6], arg2, 32768.0f, 6, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F8, 7, arg0[0], arg1[0], arg2, 32768.0f, 7, PLAYER_START_SEQUENCE | PLAYER_CPU);
     D_80164A28 = 0;
     func_80039AE4();
 }
 
 void func_8003B318(f32 *arg0, f32 *arg1, f32 arg2) {
-    spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], -0x2000);
-    spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[1], -0x2000);
-    spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, 32768.0f, D_800E86A8[2], -0x2000);
+    spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+    spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[1], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+    spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, 32768.0f, D_800E86A8[2], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
     if (D_800DC51C == 1) {
-        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], -0x1000);
-        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[1], -0x1000);
-        spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, 32768.0f, D_800E86A8[2], -0x1000);
+        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], PLAYER_HUMAN_AND_CPU);
+        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[1], PLAYER_HUMAN_AND_CPU);
+        spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, 32768.0f, D_800E86A8[2], PLAYER_HUMAN_AND_CPU);
     }
 
-    spawn_player(D_800DC4E8, 3, arg0[3], arg1[3], arg2, 32768.0f, 3, 0x3000);
-    spawn_player(D_800DC4EC, 4, arg0[4], arg1[4], arg2, 32768.0f, 4, 0x3000);
-    spawn_player(D_800DC4F0, 5, arg0[5], arg1[5], arg2, 32768.0f, 5, 0x3000);
-    spawn_player(D_800DC4F4, 6, arg0[6], arg1[6], arg2, 32768.0f, 6, 0x3000);
-    spawn_player(D_800DC4F8, 7, arg0[0], arg1[0], arg2, 32768.0f, 7, 0x3000);
+    spawn_player(D_800DC4E8, 3, arg0[3], arg1[3], arg2, 32768.0f, 3, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4EC, 4, arg0[4], arg1[4], arg2, 32768.0f, 4, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F0, 5, arg0[5], arg1[5], arg2, 32768.0f, 5, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F4, 6, arg0[6], arg1[6], arg2, 32768.0f, 6, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F8, 7, arg0[0], arg1[0], arg2, 32768.0f, 7, PLAYER_START_SEQUENCE | PLAYER_CPU);
     D_80164A28 = 0;
     func_80039AE4();
 }
 
 void spawn_players_3p_battle(f32 *arg0, f32 *arg1, f32 arg2) {
     if (gCurrentCourseId == COURSE_BIG_DONUT) {
-        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, -16384.0f, D_800E86A8[0], -0x2000);
-        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 16384.0f, D_800E86A8[1], -0x2000);
-        spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, 0.0f, D_800E86A8[2], -0x2000);
+        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, -16384.0f, D_800E86A8[0], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 16384.0f, D_800E86A8[1], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, 0.0f, D_800E86A8[2], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
     } else {
-        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], -0x2000);
-        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 0.0f, D_800E86A8[1], -0x2000);
-        spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, -16384.0f, D_800E86A8[2], -0x2000);
+        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 0.0f, D_800E86A8[1], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, -16384.0f, D_800E86A8[2], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
     }
-    spawn_player(D_800DC4E8, 3, arg0[3], arg1[3], arg2, 32768.0f, 3, 0x3000);
-    spawn_player(D_800DC4EC, 4, arg0[4], arg1[4], arg2, 32768.0f, 4, 0x3000);
-    spawn_player(D_800DC4F0, 5, arg0[5], arg1[5], arg2, 32768.0f, 5, 0x3000);
-    spawn_player(D_800DC4F4, 6, arg0[6], arg1[6], arg2, 32768.0f, 6, 0x3000);
-    spawn_player(D_800DC4F8, 7, arg0[0], arg1[0], arg2, 32768.0f, 7, 0x3000);
+    spawn_player(D_800DC4E8, 3, arg0[3], arg1[3], arg2, 32768.0f, 3, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4EC, 4, arg0[4], arg1[4], arg2, 32768.0f, 4, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F0, 5, arg0[5], arg1[5], arg2, 32768.0f, 5, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F4, 6, arg0[6], arg1[6], arg2, 32768.0f, 6, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F8, 7, arg0[0], arg1[0], arg2, 32768.0f, 7, PLAYER_START_SEQUENCE | PLAYER_CPU);
     D_80164A28 = 0;
     func_80039AE4();
 }
 
 void func_8003B870(f32 *arg0, f32 *arg1, f32 arg2) {
-    spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], -0x2000);
-    spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[1], -0x2000);
-    spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, 32768.0f, D_800E86A8[2], -0x2000);
-    spawn_player(D_800DC4E8, 3, arg0[3], arg1[3], arg2, 32768.0f, D_800E86A8[3], -0x2000);
+    spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+    spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[1], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+    spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, 32768.0f, D_800E86A8[2], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+    spawn_player(D_800DC4E8, 3, arg0[3], arg1[3], arg2, 32768.0f, D_800E86A8[3], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
     if (D_800DC51C == 1) {
-        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], -0x1000);
-        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[1], -0x1000);
-        spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, 32768.0f, D_800E86A8[2], -0x1000);
-        spawn_player(D_800DC4E8, 3, arg0[3], arg1[3], arg2, 32768.0f, D_800E86A8[3], -0x1000);
+        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], PLAYER_HUMAN_AND_CPU);
+        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 32768.0f, D_800E86A8[1], PLAYER_HUMAN_AND_CPU);
+        spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, 32768.0f, D_800E86A8[2], PLAYER_HUMAN_AND_CPU);
+        spawn_player(D_800DC4E8, 3, arg0[3], arg1[3], arg2, 32768.0f, D_800E86A8[3], PLAYER_HUMAN_AND_CPU);
     }
-    spawn_player(D_800DC4EC, 4, arg0[4], arg1[4], arg2, 32768.0f, 4, 0x3000);
-    spawn_player(D_800DC4F0, 5, arg0[5], arg1[5], arg2, 32768.0f, 5, 0x3000);
-    spawn_player(D_800DC4F4, 6, arg0[6], arg1[6], arg2, 32768.0f, 6, 0x3000);
-    spawn_player(D_800DC4F8, 7, arg0[0], arg1[0], arg2, 32768.0f, 7, 0x3000);
+    spawn_player(D_800DC4EC, 4, arg0[4], arg1[4], arg2, 32768.0f, 4, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F0, 5, arg0[5], arg1[5], arg2, 32768.0f, 5, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F4, 6, arg0[6], arg1[6], arg2, 32768.0f, 6, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F8, 7, arg0[0], arg1[0], arg2, 32768.0f, 7, PLAYER_START_SEQUENCE | PLAYER_CPU);
     D_80164A28 = 0;
     func_80039AE4();
 }
 
 void spawn_players_4p_battle(f32 *arg0, f32 *arg1, f32 arg2) {
     if (gCurrentCourseId == COURSE_BIG_DONUT) {
-        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, -16384.0f, D_800E86A8[0], -0x2000);
-        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 16384.0f, D_800E86A8[1], -0x2000);
-        spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, 0.0f, D_800E86A8[2], -0x2000);
-        spawn_player(D_800DC4E8, 3, arg0[3], arg1[3], arg2, 32768.0f, D_800E86A8[3], -0x2000);
+        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, -16384.0f, D_800E86A8[0], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 16384.0f, D_800E86A8[1], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, 0.0f, D_800E86A8[2], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(D_800DC4E8, 3, arg0[3], arg1[3], arg2, 32768.0f, D_800E86A8[3], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
     } else {
-        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], -0x2000);
-        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 0.0f, D_800E86A8[1], -0x2000);
-        spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, -16384.0f, D_800E86A8[2], -0x2000);
-        spawn_player(D_800DC4E8, 3, arg0[3], arg1[3], arg2, 16384.0f, D_800E86A8[3], -0x2000);
+        spawn_player(D_800DC4DC, 0, arg0[0], arg1[0], arg2, 32768.0f, D_800E86A8[0], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(D_800DC4E0, 1, arg0[1], arg1[1], arg2, 0.0f, D_800E86A8[1], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(D_800DC4E4, 2, arg0[2], arg1[2], arg2, -16384.0f, D_800E86A8[2], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(D_800DC4E8, 3, arg0[3], arg1[3], arg2, 16384.0f, D_800E86A8[3], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
     }
-    spawn_player(D_800DC4EC, 4, arg0[4], arg1[4], arg2, 32768.0f, 4, 0x3000);
-    spawn_player(D_800DC4F0, 5, arg0[5], arg1[5], arg2, 32768.0f, 5, 0x3000);
-    spawn_player(D_800DC4F4, 6, arg0[6], arg1[6], arg2, 32768.0f, 6, 0x3000);
-    spawn_player(D_800DC4F8, 7, arg0[0], arg1[0], arg2, 32768.0f, 7, 0x3000);
+    spawn_player(D_800DC4EC, 4, arg0[4], arg1[4], arg2, 32768.0f, 4, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F0, 5, arg0[5], arg1[5], arg2, 32768.0f, 5, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F4, 6, arg0[6], arg1[6], arg2, 32768.0f, 6, PLAYER_START_SEQUENCE | PLAYER_CPU);
+    spawn_player(D_800DC4F8, 7, arg0[0], arg1[0], arg2, 32768.0f, 7, PLAYER_START_SEQUENCE | PLAYER_CPU);
     D_80164A28 = 0;
     func_80039AE4();
 }
@@ -691,13 +692,13 @@ extern f32 D_800EDE58;
 extern f32 D_800EDE5C;
 
 void func_8003BE30(void) {
-    spawn_player(D_800DC4DC, 0, -2770.774f, -345.187f, D_800EDE20, 0.0f, D_8018D9D0[0], -0x5000);
-    spawn_player(D_800DC4E0, 1, -3691.506f, -6.822f, D_800EDE24, D_800EDE28, D_8018D9D0[1], -0x5000);
-    spawn_player(D_800DC4E4, 2, -3475.028f, -998.485f, D_800EDE2C, D_800EDE30, D_8018D9D0[2], -0x5000);
+    spawn_player(D_800DC4DC, 0, -2770.774f, -345.187f, D_800EDE20, 0.0f, D_8018D9D0[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(D_800DC4E0, 1, -3691.506f, -6.822f, D_800EDE24, D_800EDE28, D_8018D9D0[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(D_800DC4E4, 2, -3475.028f, -998.485f, D_800EDE2C, D_800EDE30, D_8018D9D0[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
     if (D_802874D8.unk_1D >= 3) {
-        spawn_player(D_800DC4E8, 3, -3025.772f, 110.039f, D_800EDE34, D_800EDE38, D_802874D8.unk_1E, -0x5000);
+        spawn_player(D_800DC4E8, 3, -3025.772f, 110.039f, D_800EDE34, D_800EDE38, D_802874D8.unk_1E, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
     } else {
-        spawn_player(D_800DC4E8, 3, -3025.772f, 110.039f, D_800EDE3C, D_800EDE40, D_8018D9D0[3], -0x5000);
+        spawn_player(D_800DC4E8, 3, -3025.772f, 110.039f, D_800EDE3C, D_800EDE40, D_8018D9D0[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
     }
     spawn_player(D_800DC4EC, 4, -2770.774f, -345.187f, D_800EDE44, 0.0f, 0, 0x7000);
     spawn_player(D_800DC4F0, 5, -3691.506f, -6.822f, D_800EDE48, D_800EDE4C, 0, 0x7000);
@@ -1019,14 +1020,14 @@ void func_8003C0F0(void) {
             D_80165230[5] = 130.0f;
             D_80165230[6] = 150.0f;
             D_80165230[7] = 170.0f;
-            spawn_player(D_800DC4FC, 0, D_80165210[0], D_80165230[0], sp5A, 32768.0f, D_800E86A8[0], -0x2000);
-            spawn_player(D_800DC4E0, 1, D_80165210[1], D_80165230[1], sp5A, 32768.0f, 1, -0x5000);
-            spawn_player(D_800DC4E4, 2, D_80165210[2], D_80165230[2], sp5A, 32768.0f, 2, -0x5000);
-            spawn_player(D_800DC4E8, 3, D_80165210[3], D_80165230[3], sp5A, 32768.0f, 3, -0x5000);
-            spawn_player(D_800DC4EC, 4, D_80165210[4], D_80165230[4], sp5A, 32768.0f, 4, -0x5000);
-            spawn_player(D_800DC4F0, 5, D_80165210[5], D_80165230[5], sp5A, 32768.0f, 5, -0x5000);
-            spawn_player(D_800DC4F4, 6, D_80165210[6], D_80165230[6], sp5A, 32768.0f, 6, -0x5000);
-            spawn_player(D_800DC4F8, 7, D_80165210[7], D_80165230[7], sp5A, 32768.0f, 7, -0x5000);
+            spawn_player(D_800DC4FC, 0, D_80165210[0], D_80165230[0], sp5A, 32768.0f, D_800E86A8[0], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+            spawn_player(D_800DC4E0, 1, D_80165210[1], D_80165230[1], sp5A, 32768.0f, 1, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+            spawn_player(D_800DC4E4, 2, D_80165210[2], D_80165230[2], sp5A, 32768.0f, 2, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+            spawn_player(D_800DC4E8, 3, D_80165210[3], D_80165230[3], sp5A, 32768.0f, 3, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+            spawn_player(D_800DC4EC, 4, D_80165210[4], D_80165230[4], sp5A, 32768.0f, 4, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+            spawn_player(D_800DC4F0, 5, D_80165210[5], D_80165230[5], sp5A, 32768.0f, 5, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+            spawn_player(D_800DC4F4, 6, D_80165210[6], D_80165230[6], sp5A, 32768.0f, 6, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+            spawn_player(D_800DC4F8, 7, D_80165210[7], D_80165230[7], sp5A, 32768.0f, 7, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
             D_80164A28 = 0;
             break;
     }
@@ -1045,7 +1046,7 @@ void func_8003CD78(void) {
 }
 
 void func_8003CD98(Player *player, s32 arg1, s8 arg2, s8 arg3) {
-    if (player->unk_000 & 0x8000) {
+    if (player->unk_000 & PLAYER_EXISTS) {
         if (arg3 == 0) {
             func_8002D268(player, arg1, arg3, arg2);
         }

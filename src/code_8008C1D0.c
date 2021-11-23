@@ -3,6 +3,7 @@
 #include "types.h"
 #include "common_structs.h"
 #include "functions.h"
+#include <defines.h>
 
 // external funcs
 extern s32 func_80031F48(Player *player, float arg1);
@@ -269,7 +270,7 @@ void func_8008C528(Player *player, s8 arg1) {
     player->unk_0C0 = 0;
     player->unk_236 = 2;
     player->unk_042 = 0;
-    if (((player->unk_000 & 0x4000) == 0x4000) && ((player->unk_000 & 0x100) != 0x100)) {
+    if (((player->unk_000 & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->unk_000 & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         func_800C90F4( (u8) arg1, (temp_v1 * 0x10) + 0x29008005);
         func_800C9060( (u8) arg1, 0x19009005);
     } else {
