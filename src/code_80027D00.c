@@ -747,8 +747,8 @@ void func_80028E70(void *arg0, s32 arg1, s8 arg2, s8 arg3) {
         }
         func_80027DA8(arg2);
         temp_v0_2 = gModeSelection;
-        if ((temp_v0_2 != 1) && (temp_v0_2 != 2)) {
-            if (temp_v0_2 != 3) {
+        if ((temp_v0_2 != TIME_TRIALS) && (temp_v0_2 != VERSUS)) {
+            if (temp_v0_2 != BATTTLE) {
                 func_80028864(arg0, arg1, arg2, arg3);
                 // Duplicate return node #12. Try simplifying control flow for better match
                 return;
@@ -7500,8 +7500,8 @@ void func_800382DC(void) {
         return;
     }
     temp_v0_2 = gModeSelection;
-    if (temp_v0_2 != 0) {
-        if (temp_v0_2 != 1) {
+    if (temp_v0_2 != GRAND_PRIX) {
+        if (temp_v0_2 != TIME_TRIALS) {
             return;
         }
         if (D_8015F890 != 1) {

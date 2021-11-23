@@ -1274,10 +1274,10 @@ void func_8001EE98(void *arg0, s32 arg1, s8 arg2) {
         phi_s0 = 3;
     }
     temp_v0 = gModeSelection;
-    if (temp_v0 != 0) {
-        if (temp_v0 != 1) {
-            if (temp_v0 != 2) {
-                if (temp_v0 != 3) {
+    if (temp_v0 != GRAND_PRIX) {
+        if (temp_v0 != TIME_TRIALS) {
+            if (temp_v0 != VERSUS) {
+                if (temp_v0 != BATTTLE) {
 
                 } else if ((D_800DC51C == 1) || ((D_8015F894 == 2) && (D_80164A89 == 1))) {
                     if (D_80164A88 == 0) {
@@ -1583,7 +1583,7 @@ void func_8001F87C(s32 arg0) {
     if (D_800DC52C == 0) {
         phi_a2 = D_800DC4DC;
         phi_a1 = 0;
-        if (gModeSelection == 0) {
+        if (gModeSelection == GRAND_PRIX) {
 loop_3:
             temp_v0 = phi_a2->unk_000;
             if (((temp_v0 & 0x200) == 0) && ((temp_v0 & 0x80) == 0)) {
