@@ -18,9 +18,9 @@ glabel func_802A8F80
 /* 1125D0 802A8FC0 10200034 */  beqz  $at, .L802A9094
 /* 1125D4 802A8FC4 AF0D0004 */   sw    $t5, 4($t8)
 /* 1125D8 802A8FC8 000E7080 */  sll   $t6, $t6, 2
-/* 1125DC 802A8FCC 3C01802C */  lui   $at, %hi(D_802B9C30)
+/* 1125DC 802A8FCC 3C01802C */  lui   $at, %hi(jpt_802B9C30)
 /* 1125E0 802A8FD0 002E0821 */  addu  $at, $at, $t6
-/* 1125E4 802A8FD4 8C2E9C30 */  lw    $t6, %lo(D_802B9C30)($at)
+/* 1125E4 802A8FD4 8C2E9C30 */  lw    $t6, %lo(jpt_802B9C30)($at)
 /* 1125E8 802A8FD8 01C00008 */  jr    $t6
 /* 1125EC 802A8FDC 00000000 */   nop   
 glabel L802A8FE0

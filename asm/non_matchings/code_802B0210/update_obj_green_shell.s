@@ -62,9 +62,9 @@ glabel update_obj_green_shell
 /* 11C9BC 802B33AC 102001E0 */  beqz  $at, .L802B3B30
 /* 11C9C0 802B33B0 A60A0010 */   sh    $t2, 0x10($s0)
 /* 11C9C4 802B33B4 000B5880 */  sll   $t3, $t3, 2
-/* 11C9C8 802B33B8 3C01802C */  lui   $at, %hi(D_802B9F44)
+/* 11C9C8 802B33B8 3C01802C */  lui   $at, %hi(jpt_802B9F44)
 /* 11C9CC 802B33BC 002B0821 */  addu  $at, $at, $t3
-/* 11C9D0 802B33C0 8C2B9F44 */  lw    $t3, %lo(D_802B9F44)($at)
+/* 11C9D0 802B33C0 8C2B9F44 */  lw    $t3, %lo(jpt_802B9F44)($at)
 /* 11C9D4 802B33C4 01600008 */  jr    $t3
 /* 11C9D8 802B33C8 00000000 */   nop   
 glabel L802B33CC

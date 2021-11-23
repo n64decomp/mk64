@@ -27,9 +27,9 @@ glabel func_80094C60
 /* 0958C4 80094CC4 2DE1000E */  sltiu $at, $t7, 0xe
 /* 0958C8 80094CC8 10200219 */  beqz  $at, .L80095530
 /* 0958CC 80094CCC 000F7880 */   sll   $t7, $t7, 2
-/* 0958D0 80094CD0 3C01800F */  lui   $at, %hi(D_800F1010)
+/* 0958D0 80094CD0 3C01800F */  lui   $at, %hi(jpt_800F1010)
 /* 0958D4 80094CD4 002F0821 */  addu  $at, $at, $t7
-/* 0958D8 80094CD8 8C2F1010 */  lw    $t7, %lo(D_800F1010)($at)
+/* 0958D8 80094CD8 8C2F1010 */  lw    $t7, %lo(jpt_800F1010)($at)
 /* 0958DC 80094CDC 01E00008 */  jr    $t7
 /* 0958E0 80094CE0 00000000 */   nop   
 glabel L80094CE4

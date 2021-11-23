@@ -23,9 +23,9 @@ glabel func_800C41CC
 /* 0C4E1C 800C421C 1020004C */  beqz  $at, .L800C4350
 /* 0C4E20 800C4220 00001825 */   move  $v1, $zero
 /* 0C4E24 800C4224 0005C080 */  sll   $t8, $a1, 2
-/* 0C4E28 800C4228 3C01800F */  lui   $at, %hi(D_800F364C)
+/* 0C4E28 800C4228 3C01800F */  lui   $at, %hi(jpt_800F364C)
 /* 0C4E2C 800C422C 00380821 */  addu  $at, $at, $t8
-/* 0C4E30 800C4230 8C38364C */  lw    $t8, %lo(D_800F364C)($at)
+/* 0C4E30 800C4230 8C38364C */  lw    $t8, %lo(jpt_800F364C)($at)
 /* 0C4E34 800C4234 03000008 */  jr    $t8
 /* 0C4E38 800C4238 00000000 */   nop   
 glabel L800C423C

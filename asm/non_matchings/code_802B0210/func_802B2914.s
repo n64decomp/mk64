@@ -122,9 +122,9 @@ glabel func_802B2914
 /* 11C0FC 802B2AEC 10200037 */  beqz  $at, .L802B2BCC
 /* 11C100 802B2AF0 A604000A */   sh    $a0, 0xa($s0)
 /* 11C104 802B2AF4 00047880 */  sll   $t7, $a0, 2
-/* 11C108 802B2AF8 3C01802C */  lui   $at, %hi(D_802B9EF4)
+/* 11C108 802B2AF8 3C01802C */  lui   $at, %hi(jpt_802B9EF4)
 /* 11C10C 802B2AFC 002F0821 */  addu  $at, $at, $t7
-/* 11C110 802B2B00 8C2F9EF4 */  lw    $t7, %lo(D_802B9EF4)($at)
+/* 11C110 802B2B00 8C2F9EF4 */  lw    $t7, %lo(jpt_802B9EF4)($at)
 /* 11C114 802B2B04 01E00008 */  jr    $t7
 /* 11C118 802B2B08 00000000 */   nop   
 glabel L802B2B0C

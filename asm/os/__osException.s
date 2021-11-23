@@ -153,9 +153,9 @@ glabel __osException
 /* 0D1FC8 800D13C8 3C01800F */  lui   $at, %hi(D_800F3A00) # 0x800f
 /* 0D1FCC 800D13CC 002A0821 */  addu  $at, $at, $t2
 /* 0D1FD0 800D13D0 902A3A00 */  lbu   $t2, %lo(D_800F3A00)($at) # 0x3a00($at)
-/* 0D1FD4 800D13D4 3C01800F */  lui   $at, %hi(D_800F3A20)
+/* 0D1FD4 800D13D4 3C01800F */  lui   $at, %hi(jpt_800F3A20)
 /* 0D1FD8 800D13D8 002A0821 */  addu  $at, $at, $t2
-/* 0D1FDC 800D13DC 8C2A3A20 */  lw    $t2, %lo(D_800F3A20)($at)
+/* 0D1FDC 800D13DC 8C2A3A20 */  lw    $t2, %lo(jpt_800F3A20)($at)
 /* 0D1FE0 800D13E0 01400008 */  jr    $t2
 /* 0D1FE4 800D13E4 00000000 */   nop   
 glabel L800D13E8

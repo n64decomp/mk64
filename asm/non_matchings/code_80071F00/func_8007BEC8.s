@@ -11,9 +11,9 @@ glabel func_8007BEC8
 /* 07CAEC 8007BEEC 2F010006 */  sltiu $at, $t8, 6
 /* 07CAF0 8007BEF0 1020002B */  beqz  $at, .L8007BFA0
 /* 07CAF4 8007BEF4 0018C080 */   sll   $t8, $t8, 2
-/* 07CAF8 8007BEF8 3C01800F */  lui   $at, %hi(D_800EEE20)
+/* 07CAF8 8007BEF8 3C01800F */  lui   $at, %hi(jpt_800EEE20)
 /* 07CAFC 8007BEFC 00380821 */  addu  $at, $at, $t8
-/* 07CB00 8007BF00 8C38EE20 */  lw    $t8, %lo(D_800EEE20)($at)
+/* 07CB00 8007BF00 8C38EE20 */  lw    $t8, %lo(jpt_800EEE20)($at)
 /* 07CB04 8007BF04 03000008 */  jr    $t8
 /* 07CB08 8007BF08 00000000 */   nop   
 glabel L8007BF0C

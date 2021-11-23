@@ -18,9 +18,9 @@ glabel func_800AA69C
 /* 0AB2D4 800AA6D4 2C610006 */  sltiu $at, $v1, 6
 /* 0AB2D8 800AA6D8 102000EB */  beqz  $at, .L800AAA88
 /* 0AB2DC 800AA6DC 00037080 */   sll   $t6, $v1, 2
-/* 0AB2E0 800AA6E0 3C01800F */  lui   $at, %hi(D_800F25A0)
+/* 0AB2E0 800AA6E0 3C01800F */  lui   $at, %hi(jpt_800F25A0)
 /* 0AB2E4 800AA6E4 002E0821 */  addu  $at, $at, $t6
-/* 0AB2E8 800AA6E8 8C2E25A0 */  lw    $t6, %lo(D_800F25A0)($at)
+/* 0AB2E8 800AA6E8 8C2E25A0 */  lw    $t6, %lo(jpt_800F25A0)($at)
 /* 0AB2EC 800AA6EC 01C00008 */  jr    $t6
 /* 0AB2F0 800AA6F0 00000000 */   nop   
 glabel L800AA6F4

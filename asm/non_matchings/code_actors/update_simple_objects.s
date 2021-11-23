@@ -13,9 +13,9 @@ glabel update_simple_objects
 /* 10CB80 802A3570 2F01002C */  sltiu $at, $t8, 0x2c
 /* 10CB84 802A3574 1020005E */  beqz  $at, .L802A36F0
 /* 10CB88 802A3578 0018C080 */   sll   $t8, $t8, 2
-/* 10CB8C 802A357C 3C01802C */  lui   $at, %hi(D_802B9AF4)
+/* 10CB8C 802A357C 3C01802C */  lui   $at, %hi(jpt_802B9AF4)
 /* 10CB90 802A3580 00380821 */  addu  $at, $at, $t8
-/* 10CB94 802A3584 8C389AF4 */  lw    $t8, %lo(D_802B9AF4)($at)
+/* 10CB94 802A3584 8C389AF4 */  lw    $t8, %lo(jpt_802B9AF4)($at)
 /* 10CB98 802A3588 03000008 */  jr    $t8
 /* 10CB9C 802A358C 00000000 */   nop   
 glabel L802A3590

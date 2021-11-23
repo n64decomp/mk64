@@ -17,9 +17,9 @@ glabel update_obj_triple_shell
 /* 11A4E4 802B0ED4 10200242 */  beqz  $at, .L802B17E0
 /* 11A4E8 802B0ED8 3303FFFF */   andi  $v1, $t8, 0xffff
 /* 11A4EC 802B0EDC 0019C880 */  sll   $t9, $t9, 2
-/* 11A4F0 802B0EE0 3C01802C */  lui   $at, %hi(D_802B9EB4)
+/* 11A4F0 802B0EE0 3C01802C */  lui   $at, %hi(jpt_802B9EB4)
 /* 11A4F4 802B0EE4 00390821 */  addu  $at, $at, $t9
-/* 11A4F8 802B0EE8 8C399EB4 */  lw    $t9, %lo(D_802B9EB4)($at)
+/* 11A4F8 802B0EE8 8C399EB4 */  lw    $t9, %lo(jpt_802B9EB4)($at)
 /* 11A4FC 802B0EEC 03200008 */  jr    $t9
 /* 11A500 802B0EF0 00000000 */   nop   
 glabel L802B0EF4

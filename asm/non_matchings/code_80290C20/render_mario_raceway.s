@@ -93,9 +93,9 @@ glabel render_mario_raceway
 /* 0FBBDC 802925CC 2D810011 */  sltiu $at, $t4, 0x11
 /* 0FBBE0 802925D0 10200063 */  beqz  $at, .L80292760
 /* 0FBBE4 802925D4 000C6080 */   sll   $t4, $t4, 2
-/* 0FBBE8 802925D8 3C01802C */  lui   $at, %hi(D_802B9390)
+/* 0FBBE8 802925D8 3C01802C */  lui   $at, %hi(jpt_802B9390)
 /* 0FBBEC 802925DC 002C0821 */  addu  $at, $at, $t4
-/* 0FBBF0 802925E0 8C2C9390 */  lw    $t4, %lo(D_802B9390)($at)
+/* 0FBBF0 802925E0 8C2C9390 */  lw    $t4, %lo(jpt_802B9390)($at)
 /* 0FBBF4 802925E4 01800008 */  jr    $t4
 /* 0FBBF8 802925E8 00000000 */   nop   
 glabel L802925EC

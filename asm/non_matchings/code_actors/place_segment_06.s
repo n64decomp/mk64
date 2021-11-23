@@ -67,9 +67,9 @@ glabel place_segment_06
 /* 106C94 8029D684 468021A0 */  cvt.s.w $f6, $f4
 /* 106C98 8029D688 1020002C */  beqz  $at, .L8029D73C
 /* 106C9C 8029D68C E7A60090 */   swc1  $f6, 0x90($sp)
-/* 106CA0 8029D690 3C01802C */  lui   $at, %hi(D_802B977C)
+/* 106CA0 8029D690 3C01802C */  lui   $at, %hi(jpt_802B977C)
 /* 106CA4 8029D694 002B0821 */  addu  $at, $at, $t3
-/* 106CA8 8029D698 8C2B977C */  lw    $t3, %lo(D_802B977C)($at)
+/* 106CA8 8029D698 8C2B977C */  lw    $t3, %lo(jpt_802B977C)($at)
 /* 106CAC 8029D69C 01600008 */  jr    $t3
 /* 106CB0 8029D6A0 00000000 */   nop   
 glabel L8029D6A4

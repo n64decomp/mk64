@@ -6,9 +6,9 @@ glabel func_8005A74C
 /* 05B35C 8005A75C 2DC10013 */  sltiu $at, $t6, 0x13
 /* 05B360 8005A760 1020007B */  beqz  $at, .L8005A950
 /* 05B364 8005A764 000E7080 */   sll   $t6, $t6, 2
-/* 05B368 8005A768 3C01800F */  lui   $at, %hi(D_800EE1E4)
+/* 05B368 8005A768 3C01800F */  lui   $at, %hi(jpt_800EE1E4)
 /* 05B36C 8005A76C 002E0821 */  addu  $at, $at, $t6
-/* 05B370 8005A770 8C2EE1E4 */  lw    $t6, %lo(D_800EE1E4)($at)
+/* 05B370 8005A770 8C2EE1E4 */  lw    $t6, %lo(jpt_800EE1E4)($at)
 /* 05B374 8005A774 01C00008 */  jr    $t6
 /* 05B378 8005A778 00000000 */   nop   
 glabel L8005A77C

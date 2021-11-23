@@ -19,9 +19,9 @@ glabel func_800C19D0
 /* 0C2614 800C1A14 10200035 */  beqz  $at, .L800C1AEC
 /* 0C2618 800C1A18 E7A00034 */   swc1  $f0, 0x34($sp)
 /* 0C261C 800C1A1C 000EC080 */  sll   $t8, $t6, 2
-/* 0C2620 800C1A20 3C01800F */  lui   $at, %hi(D_800F35C4)
+/* 0C2620 800C1A20 3C01800F */  lui   $at, %hi(jpt_800F35C4)
 /* 0C2624 800C1A24 00380821 */  addu  $at, $at, $t8
-/* 0C2628 800C1A28 8C3835C4 */  lw    $t8, %lo(D_800F35C4)($at)
+/* 0C2628 800C1A28 8C3835C4 */  lw    $t8, %lo(jpt_800F35C4)($at)
 /* 0C262C 800C1A2C 03000008 */  jr    $t8
 /* 0C2630 800C1A30 00000000 */   nop   
 glabel L800C1A34

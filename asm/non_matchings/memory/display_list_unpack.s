@@ -46,9 +46,9 @@ glabel L802A9B74
 /* 1131A8 802A9B98 5020FFF7 */  beql  $at, $zero, .L802A9B78
 /* 1131AC 802A9B9C 8CE30000 */   lw    $v1, ($a3)
 /* 1131B0 802A9BA0 00046880 */  sll   $t5, $a0, 2
-/* 1131B4 802A9BA4 3C01802C */  lui   $at, %hi(D_802B9C94)
+/* 1131B4 802A9BA4 3C01802C */  lui   $at, %hi(jpt_802B9C94)
 /* 1131B8 802A9BA8 002D0821 */  addu  $at, $at, $t5
-/* 1131BC 802A9BAC 8C2D9C94 */  lw    $t5, %lo(D_802B9C94)($at)
+/* 1131BC 802A9BAC 8C2D9C94 */  lw    $t5, %lo(jpt_802B9C94)($at)
 /* 1131C0 802A9BB0 01A00008 */  jr    $t5
 /* 1131C4 802A9BB4 00000000 */   nop   
 glabel L802A9BB8

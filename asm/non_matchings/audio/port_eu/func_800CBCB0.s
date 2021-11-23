@@ -110,9 +110,9 @@ glabel func_800CBCB0
 /* 0CCA40 800CBE40 2D010008 */  sltiu $at, $t0, 8
 /* 0CCA44 800CBE44 10200030 */  beqz  $at, .L800CBF08
 /* 0CCA48 800CBE48 00084080 */   sll   $t0, $t0, 2
-/* 0CCA4C 800CBE4C 3C01800F */  lui   $at, %hi(D_800F39C0)
+/* 0CCA4C 800CBE4C 3C01800F */  lui   $at, %hi(jpt_800F39C0)
 /* 0CCA50 800CBE50 00280821 */  addu  $at, $at, $t0
-/* 0CCA54 800CBE54 8C2839C0 */  lw    $t0, %lo(D_800F39C0)($at)
+/* 0CCA54 800CBE54 8C2839C0 */  lw    $t0, %lo(jpt_800F39C0)($at)
 /* 0CCA58 800CBE58 01000008 */  jr    $t0
 /* 0CCA5C 800CBE5C 00000000 */   nop   
 glabel L800CBE60

@@ -63,9 +63,9 @@ glabel update_obj_red_blue_shell
 /* 11D914 802B4304 102002C5 */  beqz  $at, .L802B4E1C
 /* 11D918 802B4308 A60B0010 */   sh    $t3, 0x10($s0)
 /* 11D91C 802B430C 000C6080 */  sll   $t4, $t4, 2
-/* 11D920 802B4310 3C01802C */  lui   $at, %hi(D_802B9F6C)
+/* 11D920 802B4310 3C01802C */  lui   $at, %hi(jpt_802B9F6C)
 /* 11D924 802B4314 002C0821 */  addu  $at, $at, $t4
-/* 11D928 802B4318 8C2C9F6C */  lw    $t4, %lo(D_802B9F6C)($at)
+/* 11D928 802B4318 8C2C9F6C */  lw    $t4, %lo(jpt_802B9F6C)($at)
 /* 11D92C 802B431C 01800008 */  jr    $t4
 /* 11D930 802B4320 00000000 */   nop   
 glabel L802B4324

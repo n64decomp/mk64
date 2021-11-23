@@ -53,9 +53,9 @@ glabel func_8029AC18
 /* 1042F4 8029ACE4 2D410008 */  sltiu $at, $t2, 8
 /* 1042F8 8029ACE8 10200045 */  beqz  $at, .L8029AE00
 /* 1042FC 8029ACEC 000A5080 */   sll   $t2, $t2, 2
-/* 104300 8029ACF0 3C01802C */  lui   $at, %hi(D_802B96BC)
+/* 104300 8029ACF0 3C01802C */  lui   $at, %hi(jpt_802B96BC)
 /* 104304 8029ACF4 002A0821 */  addu  $at, $at, $t2
-/* 104308 8029ACF8 8C2A96BC */  lw    $t2, %lo(D_802B96BC)($at)
+/* 104308 8029ACF8 8C2A96BC */  lw    $t2, %lo(jpt_802B96BC)($at)
 /* 10430C 8029ACFC 01400008 */  jr    $t2
 /* 104310 8029AD00 00000000 */   nop   
 glabel L8029AD04

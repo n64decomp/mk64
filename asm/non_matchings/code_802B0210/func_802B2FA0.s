@@ -13,9 +13,9 @@ glabel func_802B2FA0
 /* 11C5DC 802B2FCC 2D01000F */  sltiu $at, $t0, 0xf
 /* 11C5E0 802B2FD0 10200040 */  beqz  $at, .L802B30D4
 /* 11C5E4 802B2FD4 00084080 */   sll   $t0, $t0, 2
-/* 11C5E8 802B2FD8 3C01802C */  lui   $at, %hi(D_802B9F08)
+/* 11C5E8 802B2FD8 3C01802C */  lui   $at, %hi(jpt_802B9F08)
 /* 11C5EC 802B2FDC 00280821 */  addu  $at, $at, $t0
-/* 11C5F0 802B2FE0 8C289F08 */  lw    $t0, %lo(D_802B9F08)($at)
+/* 11C5F0 802B2FE0 8C289F08 */  lw    $t0, %lo(jpt_802B9F08)($at)
 /* 11C5F4 802B2FE4 01000008 */  jr    $t0
 /* 11C5F8 802B2FE8 00000000 */   nop   
 glabel L802B2FEC

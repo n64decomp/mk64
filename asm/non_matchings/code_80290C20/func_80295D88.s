@@ -39,9 +39,9 @@ glabel func_80295D88
 /* 0FF42C 80295E1C 2DE10014 */  sltiu $at, $t7, 0x14
 /* 0FF430 80295E20 1020021B */  beqz  $at, .L80296690
 /* 0FF434 80295E24 000F7880 */   sll   $t7, $t7, 2
-/* 0FF438 80295E28 3C01802C */  lui   $at, %hi(D_802B94A4)
+/* 0FF438 80295E28 3C01802C */  lui   $at, %hi(jpt_802B94A4)
 /* 0FF43C 80295E2C 002F0821 */  addu  $at, $at, $t7
-/* 0FF440 80295E30 8C2F94A4 */  lw    $t7, %lo(D_802B94A4)($at)
+/* 0FF440 80295E30 8C2F94A4 */  lw    $t7, %lo(jpt_802B94A4)($at)
 /* 0FF444 80295E34 01E00008 */  jr    $t7
 /* 0FF448 80295E38 00000000 */   nop   
 glabel L80295E3C
