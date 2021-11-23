@@ -2022,7 +2022,7 @@ extern ? gPlayers;
     *temp_t5 = -1;
     *temp_t4 = -1;
     phi_a1 = arg1;
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         return 1;
     }
     if (arg1 < 0) {
@@ -2540,7 +2540,7 @@ block_25:
                 if (temp_f0_2 < sp38) {
                     temp_t1 = *temp_v0_3 + 1;
                     *temp_v0_3 = temp_t1;
-                    if ((gModeSelection == 0) && (temp_t1 == 5)) {
+                    if ((gModeSelection == GRAND_PRIX) && (temp_t1 == 5)) {
                         phi_v0 = &lapCount;
                         if (*(&D_80164408 + phi_a3_2) == 7) {
                             do {
@@ -2599,7 +2599,7 @@ block_25:
         arg0 = phi_a0_4;
         func_800065D0(phi_a0_4, arg1, &D_80163448);
         phi_a0_5 = (bitwise f32) arg0;
-        if ((gModeSelection == 0) && (D_8018EDF3 == 2) && (arg0 == 0)) {
+        if ((gModeSelection == GRAND_PRIX) && (D_8018EDF3 == 2) && (arg0 == 0)) {
             if (D_80164408 < D_8016440C) {
                 D_80163478 = 0;
             } else {
@@ -2651,7 +2651,7 @@ void func_800097E0(void) {
         return;
     }
     if ((D_8016337C & 1) != 0) {
-        if (gModeSelection == 2) {
+        if (gModeSelection == VERSUS) {
             do {
                 func_8000DF8C(phi_s0_2);
                 temp_s0_2 = phi_s0_2 + 1;
@@ -6041,7 +6041,7 @@ void func_8000F124(void) {
     if (D_800DC51C != 1) {
         phi_s1 = &D_80163348;
         phi_s0 = 0;
-        if (gModeSelection == 0) {
+        if (gModeSelection == GRAND_PRIX) {
             do {
 loop_5:
                 temp_a2 = D_8018EDF3;
@@ -6564,7 +6564,7 @@ void func_8000F628(void) {
         *spD0 = -1;
         *spCC = 0.0f;
         *spC8 = 0.0f;
-        if (gModeSelection == 0) {
+        if (gModeSelection == GRAND_PRIX) {
             temp_v0_2 = *(phi_fp + D_80165270);
             *phi_s4 = temp_v0_2;
             *phi_s6 = temp_v0_2;
@@ -6679,7 +6679,7 @@ void func_8000F628(void) {
     D_801637BC.unk2 = 0;
     if (D_800DC51C == 0) {
         phi_v0_2 = &D_80163344;
-        if (gModeSelection == 0) {
+        if (gModeSelection == GRAND_PRIX) {
             phi_a0 = &D_80163348;
             do {
                 temp_v0_4 = phi_v0_2 + 2;
@@ -6707,7 +6707,7 @@ void func_8000F628(void) {
             temp_s2->unk-2 = 0;
             phi_s2_2 = temp_s2;
         } while (temp_s2 < &D_80163340);
-        if (gModeSelection == 2) {
+        if (gModeSelection == VERSUS) {
             temp_t6 = D_8016479E;
             temp_t8 = (temp_t6 & 0xFFFF) * 2;
             *(&D_80163330 + temp_t8) = 1;
@@ -6744,7 +6744,7 @@ void func_8000F628(void) {
     } while (temp_v1_3 < &D_80164448);
     D_8016347A = 0;
     phi_v1_2 = &D_80162F10;
-    if (gCCSelection == 3) {
+    if (gCCSelection == CC_EXTRA) {
         D_8016347A = 1;
     }
     phi_v0_5 = &D_80162F50;
@@ -8526,7 +8526,7 @@ loop_2:
 
         } else {
             phi_s6_2 = &D_801635A0;
-            if (gModeSelection != 0) {
+            if (gModeSelection != GRAND_PRIX) {
                 do {
                     temp_s6_2 = phi_s6_2 + 0x10C;
                     temp_s6_2->unk-E8 = 1;
@@ -9190,14 +9190,14 @@ void func_800139E4(f32 arg0, f32 arg1, s32 arg2, s32 arg3, void *arg4, s32 arg5)
             phi_s0->unk30 = 0;
             phi_s0->unk31 = 0;
             phi_s0->unkC = temp_v0->unk4;
-            if (gModeSelection == 1) {
+            if (gModeSelection == TIME_TRIALS) {
                 phi_s0->unk2E = phi_s3 % 3;
             } else {
                 phi_s0->unk2E = random_int(3);
             }
             temp_v0_2 = phi_s0->unk2E;
             phi_s0->unk24 = (temp_v0_2 - 1) * D_800ED168;
-            if (((gCCSelection > 0) || (gModeSelection == 1)) && (temp_v0_2 == 2)) {
+            if (((gCCSelection > 0) || (gModeSelection == TIME_TRIALS)) && (temp_v0_2 == 2)) {
                 phi_s0->unk20 = arg0;
             } else {
                 phi_s0->unk20 = arg1;
@@ -9644,7 +9644,7 @@ void func_800147E0(void) {
 
     temp_f0 = (gCCSelection * D_800ED1B8) / 216.0;
     phi_a2 = 7;
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         phi_a2 = 8;
     }
     func_800139E4(temp_f0 + D_800ED1C0, temp_f0 + D_800ED1C8, phi_a2, 0, &D_80163818, D_80164550);
@@ -9712,7 +9712,7 @@ void func_80014934(void) {
 
     temp_f0 = (gCCSelection * D_800ED1D0) / 216.0;
     phi_a2 = 7;
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         phi_a2 = 8;
     }
     func_800139E4(temp_f0 + D_800ED1D8, temp_f0 + D_800ED1E0, phi_a2, 0x4B, &D_80163988, D_80164550);
@@ -9780,7 +9780,7 @@ void func_80014A88(void) {
 
     temp_f0 = (gCCSelection * D_800ED1E8) / 216.0;
     phi_a2 = 7;
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         phi_a2 = 8;
     }
     func_800139E4(temp_f0 + D_800ED1F0, temp_f0 + D_800ED1F8, phi_a2, 0x32, &D_80163AF8, D_80164550);
@@ -9848,7 +9848,7 @@ void func_80014BDC(void) {
 
     temp_f0 = (gCCSelection * D_800ED200) / 216.0;
     phi_a2 = 7;
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         phi_a2 = 8;
     }
     func_800139E4(temp_f0 + D_800ED208, temp_f0 + D_800ED210, phi_a2, 0x19, &D_80163C68, D_80164550);
@@ -12449,7 +12449,7 @@ void func_8001A588(s32 arg0, void *arg1, u16 *arg2, s8 arg3, s32 cameraId) {
     s32 phi_a3;
 
     phi_s0 = arg1->unkAE;
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         phi_s0 = 0;
     }
     func_80019FB4(cameraId);
@@ -12515,7 +12515,7 @@ void func_8001A588(s32 arg0, void *arg1, u16 *arg2, s8 arg3, s32 cameraId) {
             phi_t0 = &D_801646C8;
         }
         phi_a3 = cameraId;
-        if ((gModeSelection != 1) && (cameraId == 1) && ((temp_v0_6 = *phi_t0, (temp_v0_6 == 0x104)) || (temp_v0_6 == 0x105))) {
+        if ((gModeSelection != TIME_TRIALS) && (cameraId == 1) && ((temp_v0_6 = *phi_t0, (temp_v0_6 == 0x104)) || (temp_v0_6 == 0x105))) {
             phi_v1 = 0;
             if (D_8018EDF3 == 2) {
                 func_8001A518(phi_s0, *(&D_801643B8 + (phi_s0 * 4)), 1, cameraId);
@@ -12767,7 +12767,7 @@ void func_8001AC10(s32 playerId, s32 *arg2) {
 
     temp_t9 = (playerId * 0xDD8) + D_800DC4DC;
     sp2C = temp_t9;
-    if ((gModeSelection != 1) && (D_801646CC != 1) && ((*temp_t9 & 0x800) == 0)) {
+    if ((gModeSelection != TIME_TRIALS) && (D_801646CC != 1) && ((*temp_t9 & 0x800) == 0)) {
         temp_s0 = (playerId * 0x10) + &D_801642D8;
         temp_a1 = temp_s0->unk0;
         switch (temp_a1) {                          /* switch 1 */
@@ -13368,7 +13368,7 @@ void func_8001C3C4(void) {
         // Duplicate return node #5. Try simplifying control flow for better match
         return;
     }
-    if (gModeSelection == 2) {
+    if (gModeSelection == VERSUS) {
         func_80057114();
     }
 }

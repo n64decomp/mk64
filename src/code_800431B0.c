@@ -6207,7 +6207,7 @@ void func_800508C0(void) {
     s32 phi_s1_2;
     s32 phi_s2_2;
 
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         phi_s0 = D_80164378;
     } else {
         phi_s0 = D_80164360;
@@ -6584,7 +6584,7 @@ void func_800514BC(void) {
             phi_s1 = temp_s1;
         } while (temp_s1 != phi_s3);
     }
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         func_80050E34(0, D_80164408);
     } else if (gPlayerCountSelection1 == 1) {
         func_80050E34(0, *D_801643B8);

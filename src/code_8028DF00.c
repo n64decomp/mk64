@@ -37,7 +37,6 @@ extern u8 *D_8015F8C4;
 extern u8 *D_8015F8C8;
 extern u8 *D_8015F8CC;
 
-//extern u8 D_800DC5EB;
 extern s16 D_8018D8C0[];
 extern s16 D_8016348C;
 extern s8 gCourseSelection;
@@ -128,8 +127,6 @@ UNUSED s32 D_802BA03C;
 
 s16 D_802BA040[4];
 u16 D_802BA048;
-
-//extern s32 D_8015F8F2;
 
 void func_8028DF00(void) {
     struct Controller *controllers = &gControllers[0];
@@ -306,9 +303,9 @@ void func_8028E438(void) {
                 D_800DC5EC->screenHeight = temp_v0->screenHeight;
                 D_800DC5EC->screenStartX = temp_v0->screenStartX;
                 D_800DC5EC->screenStartY = temp_v0->screenStartY;
-                if (gModeSelection == 3) {
+                if (gModeSelection == BATTTLE) {
                     func_80092604();
-                } else if (gModeSelection == 2) {
+                } else if (gModeSelection == VERSUS) {
                     func_80092604();
                     func_80019DF4();
                 } else {
@@ -331,10 +328,10 @@ void func_8028E678(void) {
         case 0:
             // Unused switch?
             switch(gModeSelection) {
-                case 0:
-                case 2:
+                case GRAND_PRIX:
+                case VERSUS:
                     break;
-                case 1:
+                case TIME_TRIALS:
                     break;
             }
             D_800DC5B8 = 0;
@@ -478,7 +475,7 @@ void func_8028E678(void) {
             if (D_802BA030 == 0) {
                 D_8015F894 = 3;
                 func_80092500();
-                if (gModeSelection == 0) {
+                if (gModeSelection == GRAND_PRIX) {
                     func_80019DE4();
                 } else {
                     func_80019E58();
@@ -635,18 +632,18 @@ void func_8028EF28(void) {
                     }
                     
 
-                    if (gModeSelection == 0 && gPlayerCountSelection1 == 2 && D_802BA048 == 0) {
+                    if (gModeSelection == GRAND_PRIX && gPlayerCountSelection1 == 2 && D_802BA048 == 0) {
                         D_802BA048 = 1;
                     }
                     if ((gPlayers[i].unk_000 & PLAYER_INVISIBLE_OR_BOMB) == 0) {
                         D_800DC510 = 4;
                     }
-                    if (gModeSelection == 1) {
+                    if (gModeSelection == TIME_TRIALS) {
                         func_80005AE8(ply);
                     }
 
 
-                    if (gModeSelection == 2) {
+                    if (gModeSelection == VERSUS) {
                         D_802BA038 = 180;
                         if (currentPosition == 0) {
                             D_800DC5E8 = i;
@@ -714,7 +711,7 @@ void func_8028EF28(void) {
                 }
             } else if (gPlayers[i].unk_008 == 3) {
                 func_8028EEF0(i);
-                if (gModeSelection == 1) {
+                if (gModeSelection == TIME_TRIALS) {
                     func_80005AE8(ply);
                 }
             }
@@ -962,7 +959,7 @@ loop_2:
                 temp_s0->buttonPressed = 0;
                 func_800C9F90(1);
                 D_80162DF0 = 1;
-                if (gModeSelection == 1) {
+                if (gModeSelection == TIME_TRIALS) {
                     temp_a0 = D_800DC4DC;
                     if ((temp_a0->unk_000 & 0x8100) != 0) {
                         func_80005AE8(temp_a0);
@@ -989,7 +986,7 @@ block_20:
         phi_s3 += 0xDD8;
         phi_s2 = temp_s2;
         if (temp_s2 == 4) {
-            if ((gEnableDebugMode != 0) && (gModeSelection != 3)) {
+            if ((gEnableDebugMode != 0) && (gModeSelection != BATTTLE)) {
                 temp_a1 = D_800DC4BC;
                 if ((temp_a1->buttonPressed & 0x800) != 0) {
                     lapCount->unk0 = 2;
@@ -1061,7 +1058,7 @@ void func_8028FCBC(void) {
     switch (D_800DC510) {
         case 0:
             if (D_800DC51C == 0) {
-                if (gModeSelection == 0) {
+                if (gModeSelection == GRAND_PRIX) {
                     func_800C8EF8(11);
                     play_sound2(0x49008018);
                     play_sound2(0x49008019);
@@ -1107,7 +1104,7 @@ void func_8028FCBC(void) {
                 D_800DC5B0 = 0;
                 D_800DC5B8 = 1;
                 func_80078F64();
-                if ((gModeSelection == 1) && (D_80162DD6 == 0)) {
+                if ((gModeSelection == TIME_TRIALS) && (D_80162DD6 == 0)) {
                     phi_v0_4 = 0x1;
                     for (i = 0; i < gCurrentCourseId; i++) {
                         phi_v0_4 <<= 1;
@@ -1133,7 +1130,7 @@ void func_8028FCBC(void) {
             func_8028F4E8();
             break;
         case 3:
-            if (gModeSelection == 3) {
+            if (gModeSelection == BATTTLE) {
                 func_8028E0F0();
             } else {
                 func_8028F3F0();
@@ -1145,7 +1142,7 @@ void func_8028FCBC(void) {
         case 4:
 
             switch(gModeSelection) {
-                case 0:
+                case GRAND_PRIX:
                     func_8028F4E8();
                     func_8028F3F0();
                     func_8028EF28();
@@ -1174,13 +1171,13 @@ void func_8028FCBC(void) {
                             break;
                     }
                     break;
-                case 2:
+                case VERSUS:
                     func_8028F4E8();
                     func_8028F3F0();
                     func_8028EF28();
                     func_8028F970();
                     break;
-                case 1:
+                case TIME_TRIALS:
                     D_802BA038 = 360;
                     if (D_8015F890 != 0) {
                         D_800DC510 = 7;
@@ -1195,7 +1192,7 @@ void func_8028FCBC(void) {
                 D_802BA038--;
             } else {
                 switch(gModeSelection) {
-                    case 0:
+                    case GRAND_PRIX:
                         if (D_80150120 != 0) {
                             func_8028E678();
                         } else if (D_800DC530 == 0) {
@@ -1205,11 +1202,11 @@ void func_8028FCBC(void) {
                             func_8028E438();
                         }
                         break;
-                    case 1:
+                    case TIME_TRIALS:
                         func_8028E678();
                         break;
-                    case 2:
-                    case 3:
+                    case VERSUS:
+                    case BATTTLE:
                         func_8028E438();
                         break;
                 }
@@ -1408,20 +1405,18 @@ void func_802909F0(void) {
     Player *ply2;
     s32 i;
     s32 k;
-    //phi_s1 = &gPlayers;
-    //phi_s5 = 0;
+
     for (i = 0; i < 7; i++) {
         ply = &gPlayers[i];
-        //temp_v0 = phi_s1->unk0;
+
         if ((ply->unk_000 & PLAYER_EXISTS) &&
           (!(ply->unk_0BC & 0x80000000)) &&
           (!(ply->unk_000 & PLAYER_INVISIBLE_OR_BOMB)) &&
-          (!(ply->unk_0BC & 0x4000000))) { // && (temp_v0_2 < 8)) {
-                    //phi_s0 = (temp_v0_2 * 0xDD8) + &gPlayers;
+          (!(ply->unk_0BC & 0x4000000))) {
 
             for (k = i + 1; k < 8; k++) {
                 ply2 = &gPlayers[k];
-                //temp_v0_3 = phi_s0->unk0;
+
                 if ((ply2->unk_000 & PLAYER_EXISTS) &&
                     (!(ply2->unk_0BC & 0x80000000)) &&
                     (!(ply2->unk_000 & PLAYER_INVISIBLE_OR_BOMB)) &&

@@ -4,6 +4,7 @@
 #include "types.h"
 #include <common_structs.h>
 #include "actor_types.h"
+#include <defines.h>
 
 extern Camera *camera1;
 
@@ -855,7 +856,7 @@ block_9:
                 arg0 = temp_a2_2;
                 func_800C9060(temp_f12_2, temp_f14_2, (((temp_t7 + &gPlayers) - D_800DC4DC) / 0xDD8) & 0xFF, 0x19007018, temp_a2_2, &D_800DC4DC);
                 phi_a2_3 = arg0;
-                if (gModeSelection != 0) {
+                if (gModeSelection != GRAND_PRIX) {
                     D_80162DF8 = 1;
                 }
             }
@@ -4375,7 +4376,7 @@ void place_all_item_boxes(u32 arg0) {
 
     temp_s0 = *(&gSegmentTable + ((arg0 >> 0x18) * 4)) + (arg0 & 0xFFFFFF) + 0x80000000;
     phi_s0 = temp_s0;
-    if ((gModeSelection != 1) && (D_800DC648 != 0)) {
+    if ((gModeSelection != TIME_TRIALS) && (D_800DC648 != 0)) {
         load_giant_egg(&sp60, 0, 0, 0);
         temp_v1 = *temp_s0;
         phi_v1 = temp_v1;
@@ -5386,7 +5387,7 @@ extern s32 D_80162DF8;
         } else {
             arg0 = temp_a3;
             func_8008DABC(temp_a3, (temp_a3 - D_800DC4DC) / 0xDD8);
-            if ((gModeSelection == 1) && ((arg0->unk0 & 0x1000) == 0)) {
+            if ((gModeSelection == TIME_TRIALS) && ((arg0->unk0 & 0x1000) == 0)) {
                 D_80162DF8 = 1;
             }
         }
@@ -6123,7 +6124,7 @@ void func_802A0450(Player *player, void *arg1) {
         if (((player->unk_0BC << 0) >= 0) && (temp_a0_5 = player, ((player->unk_000 & 0x100) == 0)) && (player = player, temp_a3 = player, (func_8029FB80(temp_a0_5, arg1, MIPS2C_ERROR(Read from unset register $a2)) == 1))) {
             player = temp_a3;
             func_800C98B8(arg1 + 0x18, arg1 + 0x24, 0x19009005, temp_a3);
-            if ((gModeSelection == 1) && ((player->unk_000 & 0x1000) == 0)) {
+            if ((gModeSelection == TIME_TRIALS) && ((player->unk_000 & 0x1000) == 0)) {
                 D_80162DF8 = 1;
             }
             if ((player->unk_0BC & 0x200) != 0) {
@@ -6501,7 +6502,7 @@ void func_802A14BC(f32 arg0, f32 arg1, f32 arg2) {
     ? sp20;
     f32 *temp_a0;
 
-    if (gModeSelection != 1) {
+    if (gModeSelection != TIME_TRIALS) {
         func_802B52BC(&sp20, 0, 0, 0);
         load_giant_egg(&sp28, 0, 0, 0);
         temp_a0 = &sp34;
@@ -7730,7 +7731,7 @@ void func_802A3008(void *arg0) {
     gDisplayListHead = temp_v0_5 + 8;
     temp_v0_5->unk4 = -1;
     temp_v0_5->unk0 = 0xBB000001;
-    if (gModeSelection != 3) {
+    if (gModeSelection != BATTTLE) {
         func_80297340(sp48, 1.0f, temp_s1);
     }
     D_8015F8E0 = 0;

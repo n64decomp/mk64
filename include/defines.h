@@ -20,4 +20,16 @@
 // Compiles to -0x1000 in diff.py
 #define PLAYER_HUMAN_AND_CPU PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_CPU | PLAYER_START_SEQUENCE
 
+#define GRAND_PRIX  0
+#define TIME_TRIALS 1
+#define VERSUS      2
+#define BATTTLE     3
+
+#define CC_50       0
+#define CC_100      1
+#define CC_150      2
+#define CC_EXTRA    3
+#define CC_BATTLE   4
+
+
 #endif // DEFINES_H

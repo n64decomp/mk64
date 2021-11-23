@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
+#include <defines.h>
 
 GLOBAL_ASM("asm/non_matchings/audio/external/func_800C13F0.s")
 
@@ -4800,7 +4801,7 @@ void func_800C8CCC(void) {
     }
     phi_s0_2 = 0;
     phi_s0_3 = 0;
-    if (gModeSelection == 0) {
+    if (gModeSelection == GRAND_PRIX) {
         do {
             func_800C8770(phi_s0_2 & 0xFF);
             func_800C8C7C(phi_s0_2 & 0xFF);

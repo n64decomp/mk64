@@ -122,7 +122,7 @@ void func_8001C4D0(f32 x, f32 y, f32 z, s16 rot, u32 arg4, s32 cameraId) {
                 if (temp_v0 != 2) {
                     if (temp_v0 != 3) {
 
-                    } else if (gModeSelection == 3) {
+                    } else if (gModeSelection == BATTTLE) {
                         cameras[cameraId].unk4 = (bitwise s32) 0.0f;
                         cameras[cameraId].unk7 = (bitwise s32) 0.0f;
                         cameras[cameraId].unk8 = (bitwise s32) 0.0f;
@@ -140,7 +140,7 @@ void func_8001C4D0(f32 x, f32 y, f32 z, s16 rot, u32 arg4, s32 cameraId) {
                 } else {
                     goto block_7;
                 }
-            } else if (gModeSelection == 3) {
+            } else if (gModeSelection == BATTTLE) {
                 cameras[cameraId].unk4 = (bitwise s32) 0.0f;
                 cameras[cameraId].unk7 = (bitwise s32) 0.0f;
                 cameras[cameraId].unk8 = (bitwise s32) 0.0f;
@@ -157,7 +157,7 @@ void func_8001C4D0(f32 x, f32 y, f32 z, s16 rot, u32 arg4, s32 cameraId) {
             }
         } else {
 block_7:
-            if (gModeSelection == 3) {
+            if (gModeSelection == BATTTLE) {
                 cameras[cameraId].unk4 = (bitwise s32) 0.0f;
                 cameras[cameraId].unk7 = (bitwise s32) 0.0f;
                 cameras[cameraId].unk8 = (bitwise s32) 0.0f;

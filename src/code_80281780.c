@@ -2,6 +2,7 @@
 #include <macros.h>
 #include "types.h"
 #include "variables.h"
+#include <defines.h>
 
 #include "code_80281780.h"
 
@@ -91,7 +92,7 @@ void load_ending_sequence_royalraceway(void) {
     D_800DC530 = 0;
     gPrevLoadedAddress = (s32) D_8015F734;
     D_800DC52C = 0;
-    gModeSelection = 0;
+    gModeSelection = GRAND_PRIX;
     load_course(gCurrentCourseId);
     D_8015F730 = (s32) gPrevLoadedAddress;
     set_segment_base_addr(0xB, func_802AA88C(&_data_821D10SegmentRomStart, &_data_825800SegmentRomStart));
