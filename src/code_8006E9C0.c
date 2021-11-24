@@ -636,7 +636,7 @@ void func_8006F8CC(void) {
         D_80165800.unk0 = D_80165800.unk1;
         temp_a0 = D_8018EDF3;
         if (temp_a0 == 4) {
-            if (gModeSelection != BATTTLE) {
+            if (gModeSelection != BATTLE) {
                 D_801657E4 = 1;
                 D_801657F0 = 1;
                 D_801657F8 = 1;
@@ -650,7 +650,7 @@ void func_8006F8CC(void) {
             D_801657E8 = 0;
             D_801657F8 = 1;
         } else if (temp_a0 == 2) {
-            if (gModeSelection != BATTTLE) {
+            if (gModeSelection != BATTLE) {
                 D_80165800.unk1 = 0;
                 D_801657E4 = 1;
                 D_801657F0 = 1;
@@ -2143,7 +2143,7 @@ void func_80071818(void) {
     D_801657A2 = 0x666;
     if (temp_v1 != GRAND_PRIX) {
         if (temp_v1 != VERSUS) {
-            if (temp_v1 != BATTTLE) {
+            if (temp_v1 != BATTLE) {
                 return;
             }
             goto block_7;
@@ -2217,7 +2217,7 @@ void func_80071A20(void) {
     D_8018CA70.unkDC = 0x7F;
     D_8018CA70.unkDE = 0x101;
     D_8018CA70.unkE4 = 0xDA;
-    if (gModeSelection == BATTTLE) {
+    if (gModeSelection == BATTLE) {
         D_8018CA70.unk44 = 0x5E;
         D_8018CA70.unkC8 = 0xD0;
     }
@@ -2234,7 +2234,7 @@ void func_80071A20(void) {
     D_801657A2 = 0x666;
     if (temp_v0 != GRAND_PRIX) {
         if (temp_v0 != VERSUS) {
-            if (temp_v0 != BATTTLE) {
+            if (temp_v0 != BATTLE) {
                 return;
             }
             goto block_9;
@@ -2342,7 +2342,7 @@ void func_80071C28(void) {
     D_8018CA70.unk1EC = 0xD4;
     D_8018CA70.unk1F8 = 0xC8;
     D_8018CA70.unk1FA = 0xC0;
-    if (gModeSelection == BATTTLE) {
+    if (gModeSelection == BATTLE) {
         D_8018CA70.unk44 = 0xC8;
         D_8018CA70.unkC8 = 0xC8;
         D_8018CA70.unk14C = 0xB8;

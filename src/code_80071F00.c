@@ -6280,7 +6280,7 @@ block_8:
             phi_a1 = &D_801658FD;
         }
         phi_v1 = *((arg0 * 0x64) + sp18 + *phi_a1);
-    } else if (temp_v1 == BATTTLE) {
+    } else if (temp_v1 == BATTLE) {
         phi_v1 = *(D_801658FD + lookup_item(&D_0D008B14));
     } else {
         if (arg1 == 0) {

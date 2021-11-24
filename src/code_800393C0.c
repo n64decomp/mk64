@@ -46,7 +46,7 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
             player->unk_214 = D_800E261C.unk_00[1][player->characterId];
             break;
 
-        case BATTTLE:
+        case BATTLE:
             player->unk_084 = D_800E2400.unk_00[4][player->characterId];
             player->unk_088 = D_800E24B4.unk_00[4][player->characterId];
             player->unk_210 = D_800E2568.unk_00[4][player->characterId];
@@ -293,7 +293,7 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
     func_80295BF8(arg1);
     func_8005D6C0(player);
     func_8006B87C(player, arg1);
-    if (gModeSelection == BATTTLE) {
+    if (gModeSelection == BATTLE) {
         func_8006B7E4(player, arg1);
     }
     func_802B6540(player->unk_150, player->unk_058, player->unk_05C, player->unk_060, player->unk_02E);
@@ -330,7 +330,7 @@ void func_80039AE4(void) {
 
         case 1:
         case 2:
-            if (gModeSelection == BATTTLE) {
+            if (gModeSelection == BATTLE) {
                 D_80165578 = 0x898;
                 D_8016557A = 0;
                 D_8016557C = 0x320;
@@ -356,7 +356,7 @@ void func_80039AE4(void) {
             break;
 
         default:
-            if (gModeSelection == BATTTLE) {
+            if (gModeSelection == BATTLE) {
                 D_80165578 = 0x898;
                 D_8016557A = 0;
                 D_8016557C = 0x320;
@@ -1029,7 +1029,7 @@ void func_8003C0F0(void) {
             break;
     }
 
-    if (gModeSelection != BATTTLE) {
+    if (gModeSelection != BATTLE) {
         func_8000F628();
     }
 }
@@ -1113,7 +1113,7 @@ void func_8003D080(void) {
                         func_8001C4D0(D_800DC4E0->posX, D_800DC4E0->posY, D_800DC4E0->posZ, D_800DC4E0->unk_02E, 1, 1);
                         break;
 
-                    case BATTTLE:
+                    case BATTLE:
                         func_8001C4D0(D_800DC4DC->unk_0A4, D_800DC4DC->unk_0A8, D_800DC4DC->unk_0AC, D_800DC4DC->unk_0BC, 9, 0);
                         func_8001C4D0(D_800DC4E0->posX, D_800DC4E0->posY, D_800DC4E0->posZ, D_800DC4E0->unk_02E, 9, 1);
                         break;
@@ -1126,7 +1126,7 @@ void func_8003D080(void) {
                 break;
 
             case 3:
-                if (gModeSelection == BATTTLE) {
+                if (gModeSelection == BATTLE) {
                     ptr = &D_800DC4E4;
                     func_8001C4D0(D_800DC4DC->unk_0A4, D_800DC4DC->unk_0A8, D_800DC4DC->unk_0AC, D_800DC4DC->unk_0BC, 9, 0);
                     func_8001C4D0(D_800DC4E0->posX, D_800DC4E0->posY, D_800DC4E0->posZ, D_800DC4E0->unk_02E, 9, 1);

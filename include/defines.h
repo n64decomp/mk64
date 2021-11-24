@@ -27,7 +27,7 @@
 #define GRAND_PRIX  0
 #define TIME_TRIALS 1
 #define VERSUS      2
-#define BATTTLE     3
+#define BATTLE      3
 
 /**
  * Options for gCCSelection

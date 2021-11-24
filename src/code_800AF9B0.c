@@ -2406,7 +2406,7 @@ void func_800B3B58(void *arg0, u16 arg1) {
                 if ((phi_a2 & 0x4000) != 0) {
                     temp_v0_2 = gModeSelection;
                     if (temp_v0_2 != GRAND_PRIX) {
-                        if (temp_v0_2 != BATTTLE) {
+                        if (temp_v0_2 != BATTLE) {
                             D_8018EDEC = 2;
                         } else {
                             D_8018EDEC = 4;
@@ -2720,7 +2720,7 @@ void func_800B3F74(u32 arg0) {
         break;
     case 3:
     case 13:
-        if (gModeSelection == BATTTLE) {
+        if (gModeSelection == BATTLE) {
             gCupSelection = 4;
             D_800DC540 = 4;
             D_8018EDEC = 4;

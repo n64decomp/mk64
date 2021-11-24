@@ -7731,7 +7731,7 @@ void func_802A3008(void *arg0) {
     gDisplayListHead = temp_v0_5 + 8;
     temp_v0_5->unk4 = -1;
     temp_v0_5->unk0 = 0xBB000001;
-    if (gModeSelection != BATTTLE) {
+    if (gModeSelection != BATTLE) {
         func_80297340(sp48, 1.0f, temp_s1);
     }
     D_8015F8E0 = 0;

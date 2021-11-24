@@ -455,7 +455,7 @@ void set_places(void) {
     temp_v0 = gModeSelection;
     if ((temp_v0 != GRAND_PRIX) && (temp_v0 != TIME_TRIALS)) {
         if (temp_v0 != VERSUS) {
-            if (temp_v0 != BATTTLE) {
+            if (temp_v0 != BATTLE) {
                 return;
             }
             // Duplicate return node #82. Try simplifying control flow for better match
@@ -978,7 +978,7 @@ void func_800070F4(void) {
     temp_v0 = gModeSelection;
     if ((temp_v0 != GRAND_PRIX) && (temp_v0 != TIME_TRIALS)) {
         if (temp_v0 != VERSUS) {
-            if (temp_v0 != BATTTLE) {
+            if (temp_v0 != BATTLE) {
                 return;
             }
             // Duplicate return node #37. Try simplifying control flow for better match
@@ -3035,7 +3035,7 @@ void func_80009B60(s32 arg0) {
                 temp_v0_5 = gModeSelection;
                 D_80162FD0 = 0;
                 if (temp_v0_5 != GRAND_PRIX) {
-                    if ((temp_v0_5 != TIME_TRIALS) && (temp_v0_5 != VERSUS) && (temp_v0_5 != BATTTLE)) {
+                    if ((temp_v0_5 != TIME_TRIALS) && (temp_v0_5 != VERSUS) && (temp_v0_5 != BATTLE)) {
 
                     }
                 }
@@ -12463,7 +12463,7 @@ void func_8001A588(s32 arg0, void *arg1, u16 *arg2, s8 arg3, s32 cameraId) {
         }
     }
     temp_v0 = gModeSelection;
-    if ((temp_v0 != BATTTLE) && (*(&D_80164680 + (cameraId * 2)) == -1) && ((*arg2 & 0x800) != 0) && (D_801646CC == 0) && (D_801646C8 == 0)) {
+    if ((temp_v0 != BATTLE) && (*(&D_80164680 + (cameraId * 2)) == -1) && ((*arg2 & 0x800) != 0) && (D_801646CC == 0) && (D_801646C8 == 0)) {
         if (temp_v0 == VERSUS) {
             func_8001A220(0, phi_s0, cameraId);
         } else {

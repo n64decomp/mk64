@@ -122,7 +122,7 @@ void func_8001C4D0(f32 x, f32 y, f32 z, s16 rot, u32 arg4, s32 cameraId) {
                 if (temp_v0 != 2) {
                     if (temp_v0 != 3) {
 
-                    } else if (gModeSelection == BATTTLE) {
+                    } else if (gModeSelection == BATTLE) {
                         cameras[cameraId].unk4 = (bitwise s32) 0.0f;
                         cameras[cameraId].unk7 = (bitwise s32) 0.0f;
                         cameras[cameraId].unk8 = (bitwise s32) 0.0f;
@@ -140,7 +140,7 @@ void func_8001C4D0(f32 x, f32 y, f32 z, s16 rot, u32 arg4, s32 cameraId) {
                 } else {
                     goto block_7;
                 }
-            } else if (gModeSelection == BATTTLE) {
+            } else if (gModeSelection == BATTLE) {
                 cameras[cameraId].unk4 = (bitwise s32) 0.0f;
                 cameras[cameraId].unk7 = (bitwise s32) 0.0f;
                 cameras[cameraId].unk8 = (bitwise s32) 0.0f;
@@ -157,7 +157,7 @@ void func_8001C4D0(f32 x, f32 y, f32 z, s16 rot, u32 arg4, s32 cameraId) {
             }
         } else {
 block_7:
-            if (gModeSelection == BATTTLE) {
+            if (gModeSelection == BATTLE) {
                 cameras[cameraId].unk4 = (bitwise s32) 0.0f;
                 cameras[cameraId].unk7 = (bitwise s32) 0.0f;
                 cameras[cameraId].unk8 = (bitwise s32) 0.0f;
@@ -1277,7 +1277,7 @@ void func_8001EE98(void *arg0, s32 arg1, s8 arg2) {
     if (temp_v0 != GRAND_PRIX) {
         if (temp_v0 != TIME_TRIALS) {
             if (temp_v0 != VERSUS) {
-                if (temp_v0 != BATTTLE) {
+                if (temp_v0 != BATTLE) {
 
                 } else if ((D_800DC51C == 1) || ((D_8015F894 == 2) && (D_80164A89 == 1))) {
                     if (D_80164A88 == 0) {

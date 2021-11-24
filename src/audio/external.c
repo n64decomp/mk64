@@ -4079,7 +4079,7 @@ void func_800C76C0(u8 arg0) {
             if (temp_v0 != GRAND_PRIX) {
                 if (temp_v0 != TIME_TRIALS) {
                     if (temp_v0 != VERSUS) {
-                        if (temp_v0 != BATTTLE) {
+                        if (temp_v0 != BATTLE) {
 
                         } else {
                             temp_v0_2 = D_800EA1C0;
@@ -4263,7 +4263,7 @@ block_23:
             if (temp_v0_11 != GRAND_PRIX) {
                 if (temp_v0_11 != TIME_TRIALS) {
                     if (temp_v0_11 != VERSUS) {
-                        if (temp_v0_11 != BATTTLE) {
+                        if (temp_v0_11 != BATTLE) {
 
                         }
                     } else {

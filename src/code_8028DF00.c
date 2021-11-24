@@ -303,7 +303,7 @@ void func_8028E438(void) {
                 D_800DC5EC->screenHeight = temp_v0->screenHeight;
                 D_800DC5EC->screenStartX = temp_v0->screenStartX;
                 D_800DC5EC->screenStartY = temp_v0->screenStartY;
-                if (gModeSelection == BATTTLE) {
+                if (gModeSelection == BATTLE) {
                     func_80092604();
                 } else if (gModeSelection == VERSUS) {
                     func_80092604();
@@ -986,7 +986,7 @@ block_20:
         phi_s3 += 0xDD8;
         phi_s2 = temp_s2;
         if (temp_s2 == 4) {
-            if ((gEnableDebugMode != 0) && (gModeSelection != BATTTLE)) {
+            if ((gEnableDebugMode != 0) && (gModeSelection != BATTLE)) {
                 temp_a1 = D_800DC4BC;
                 if ((temp_a1->buttonPressed & 0x800) != 0) {
                     lapCount->unk0 = 2;
@@ -1130,7 +1130,7 @@ void func_8028FCBC(void) {
             func_8028F4E8();
             break;
         case 3:
-            if (gModeSelection == BATTTLE) {
+            if (gModeSelection == BATTLE) {
                 func_8028E0F0();
             } else {
                 func_8028F3F0();
@@ -1206,7 +1206,7 @@ void func_8028FCBC(void) {
                         func_8028E678();
                         break;
                     case VERSUS:
-                    case BATTTLE:
+                    case BATTLE:
                         func_8028E438();
                         break;
                 }

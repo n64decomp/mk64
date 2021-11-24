@@ -1137,7 +1137,7 @@ void func_8002276C(void) {
                 return;
             }
             temp_v0_2 = gModeSelection;
-            if ((temp_v0_2 == VERSUS) || (temp_v0_2 == BATTTLE)) {
+            if ((temp_v0_2 == VERSUS) || (temp_v0_2 == BATTLE)) {
                 func_80022A98(D_800DC4DC, 0);
                 func_80022A98(D_800DC4E0, 1);
                 func_80022A98(D_800DC4E4, 2);
@@ -1151,7 +1151,7 @@ void func_8002276C(void) {
         temp_v0_3 = gModeSelection;
         if (temp_v0_3 != GRAND_PRIX) {
             if (temp_v0_3 != TIME_TRIALS) {
-                if ((temp_v0_3 != VERSUS) && (temp_v0_3 != BATTTLE)) {
+                if ((temp_v0_3 != VERSUS) && (temp_v0_3 != BATTLE)) {
                     return;
                 }
                 func_80022A98(D_800DC4DC, 0);
@@ -1174,7 +1174,7 @@ void func_8002276C(void) {
     temp_v0_4 = gModeSelection;
     if (temp_v0_4 != GRAND_PRIX) {
         if (temp_v0_4 != TIME_TRIALS) {
-            if ((temp_v0_4 != VERSUS) && (temp_v0_4 != BATTTLE)) {
+            if ((temp_v0_4 != VERSUS) && (temp_v0_4 != BATTLE)) {
                 return;
             }
             func_80022A98(D_800DC4DC, 0);
