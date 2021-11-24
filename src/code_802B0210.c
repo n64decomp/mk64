@@ -2380,7 +2380,7 @@ block_16:
                     phi_v0_2 = temp_v0_2 - temp_v1_2;
                 }
                 arg0->unk12 = phi_v0_2;
-            } else if (gModeSelection == BATTTLE) {
+            } else if (gModeSelection == BATTLE) {
                 arg0->unk8 = 1000.0f;
                 arg0->unk4 = func_802B3FD0(&gPlayers[temp_t7], arg0);
                 if (arg0->unk4 < 0) {

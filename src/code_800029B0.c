@@ -165,7 +165,7 @@ void func_80002A18(void) {
     func_80091FA4();
     func_8029E158();
 
-    if (gModeSelection != BATTTLE) {
+    if (gModeSelection != BATTLE) {
         D_8015F8D0.unk4 = (f32) (D_80164490->unk2 - 15);;
         D_8015F8D0.unk8 = D_80164490->unk4;
         if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {

@@ -6260,7 +6260,7 @@ u8 gen_random_item(s16 arg0, s16 arg1) {
     D_801658FD = (random_int(0x64) + (D_801658FD + D_801658FF) + gRaceFrameCounter) % 0x64;
     temp_v1 = gModeSelection;
     phi_a1 = &D_801658FD;
-    if (temp_v1 == 2) {
+    if (temp_v1 == VERSUS) {
         temp_v0 = gPlayerCountSelection1;
         if (temp_v0 != 2) {
             if (temp_v0 != 3) {
@@ -6280,7 +6280,7 @@ block_8:
             phi_a1 = &D_801658FD;
         }
         phi_v1 = *((arg0 * 0x64) + sp18 + *phi_a1);
-    } else if (temp_v1 == 3) {
+    } else if (temp_v1 == BATTLE) {
         phi_v1 = *(D_801658FD + lookup_item(&D_0D008B14));
     } else {
         if (arg1 == 0) {
@@ -7774,7 +7774,7 @@ void func_8007D360(s32 arg0, s32 arg1) {
     temp_s0_2->unkC2 = 0;
     func_8008B80C(arg0, 0, 0, 0);
     temp_s0_2->unkB0 = 0;
-    if (gCCSelection < 2) {
+    if (gCCSelection < CC_150) {
         temp_v0_6 = random_int(4);
         temp_f10 = temp_v0_6;
         phi_f10 = temp_f10;
@@ -7857,11 +7857,11 @@ void func_8007D794(void) {
     s32 temp_v0;
 
     temp_v0 = gCCSelection;
-    if (temp_v0 == 0) {
+    if (temp_v0 == CC_50) {
         func_80089A04(0x3F000000, 0x3E4CCCCD);
         return;
     }
-    if (temp_v0 == 1) {
+    if (temp_v0 == CC_100) {
         func_80089A04(0x3ECCCCCD, 0x3E19999A);
         return;
     }
@@ -8113,7 +8113,7 @@ void func_8007DDC0(s32 arg0) {
     }
     if (temp_s0->unk4C == 0) {
         temp_v0_3 = gCCSelection;
-        if ((temp_v0_3 == 0) || (temp_v0_3 == 1) || (temp_v0_3 == 2) || (temp_v0_3 == 3)) {
+        if ((temp_v0_3 == CC_50) || (temp_v0_3 == CC_100) || (temp_v0_3 == CC_150) || (temp_v0_3 == CC_EXTRA)) {
             sp2C = D_800EEF40;
         }
         func_8008A6DC(arg0, sp2C);
@@ -8214,7 +8214,7 @@ void func_8007E00C(s32 arg0) {
         arg0 = temp_a2;
         func_8007278C(temp_a0, 0xD2, temp_a2);
         if (D_80165594 == 0) {
-            if (gCCSelection < 2) {
+            if (gCCSelection < CC_150) {
                 func_8007D714(1);
                 func_8007D714(1);
             } else {
@@ -8321,7 +8321,7 @@ void func_8007E1F4(s32 arg0) {
     }
     if (temp_s0->unk4C == 0) {
         temp_v0_3 = gCCSelection;
-        if ((temp_v0_3 == 0) || (temp_v0_3 == 1) || (temp_v0_3 == 2) || (temp_v0_3 == 3)) {
+        if ((temp_v0_3 == CC_50) || (temp_v0_3 == CC_100) || (temp_v0_3 == CC_150) || (temp_v0_3 == CC_EXTRA)) {
             sp2C = 0x442F0000;
         }
         func_8008A6DC(arg0, sp2C);
@@ -8398,7 +8398,7 @@ void func_8007E3EC(s32 arg0) {
     case 4:
         func_8007278C(0xD2);
         if (D_80165598 == 0) {
-            if (gCCSelection < 2) {
+            if (gCCSelection < CC_150) {
                 func_8007D714(2);
                 return;
             }
@@ -13751,7 +13751,7 @@ void func_80086700(s32 arg0) {
     void *temp_v1;
     void *phi_v0;
 
-    if (gCCSelection < 2) {
+    if (gCCSelection < CC_150) {
         temp_v0 = D_802874F5;
         if (temp_v0 != 0) {
             if (temp_v0 != 1) {

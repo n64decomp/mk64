@@ -1926,7 +1926,7 @@ void func_800B28C8(void) {
             }
             gCCSelection = temp_v0;
             D_800DC648 = 1;
-            if (temp_v0 == 3) {
+            if (temp_v0 == CC_EXTRA) {
                 gIsMirrorMode = 1;
                 return;
             }
@@ -1943,7 +1943,7 @@ void func_800B28C8(void) {
     }
     gCCSelection = temp_v0;
     D_800DC648 = 1;
-    if (temp_v0 == 3) {
+    if (temp_v0 == CC_EXTRA) {
         gIsMirrorMode = 1;
         return;
     }
@@ -2405,8 +2405,8 @@ void func_800B3B58(void *arg0, u16 arg1) {
                 }
                 if ((phi_a2 & 0x4000) != 0) {
                     temp_v0_2 = gModeSelection;
-                    if (temp_v0_2 != 0) {
-                        if (temp_v0_2 != 3) {
+                    if (temp_v0_2 != GRAND_PRIX) {
+                        if (temp_v0_2 != BATTLE) {
                             D_8018EDEC = 2;
                         } else {
                             D_8018EDEC = 4;
@@ -2473,7 +2473,7 @@ block_22:
         phi_v1_2 = phi_a2;
         if ((phi_a2 & 0x100) != 0) {
             temp_v0_5 = gCupSelection;
-            if (temp_v0_5 < 3) {
+            if (temp_v0_5 < SPECIAL_CUP) {
                 D_8018EE0A = temp_v0_5;
                 gCupSelection = temp_v0_5 + 1;
                 sp1C = phi_a2;
@@ -2485,7 +2485,7 @@ block_22:
         temp_v0_6 = gCupSelection;
         phi_v0_2 = temp_v0_6;
         phi_a1_2 = &D_8018EDEC;
-        if (((phi_v1_2 & 0x200) != 0) && (temp_v0_6 > 0)) {
+        if (((phi_v1_2 & 0x200) != 0) && (temp_v0_6 > MUSHROOM_CUP)) {
             D_8018EE0A = temp_v0_6;
             gCupSelection = temp_v0_6 - 1;
             sp1C = phi_v1_2;
@@ -2588,7 +2588,7 @@ void func_800B3F74(u32 arg0) {
     case 10:
         gIsMirrorMode = 0;
         gEnableDebugMode = 0;
-        gCupSelection = 0;
+        gCupSelection = MUSHROOM_CUP;
         gCourseSelection = 0;
         D_8018EDF7 = 0;
         if (D_8018EDF3 <= 0) {
@@ -2720,13 +2720,13 @@ void func_800B3F74(u32 arg0) {
         break;
     case 3:
     case 13:
-        if (gModeSelection == BATTTLE) {
+        if (gModeSelection == BATTLE) {
             gCupSelection = 4;
             D_800DC540 = 4;
             D_8018EDEC = 4;
         } else {
-            if (gCupSelection == 4) {
-                gCupSelection = 0;
+            if (gCupSelection == BATTLE_CUP) {
+                gCupSelection = MUSHROOM_CUP;
             }
             D_8018EDEC = 1;
         }

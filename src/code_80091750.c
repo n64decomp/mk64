@@ -2247,7 +2247,7 @@ void func_80094C60(void) {
         case 13:
             func_8009E650(0x25, 0, 0, 2);
             func_8009E650(0x52, 0, 0, 6);
-            if (gModeSelection != BATTTLE) {
+            if (gModeSelection != BATTLE) {
                 func_8009E650(0x53, 0, 0, 4);
                 func_8009E650(0x54, 0, 0, 4);
                 func_8009E650(0x55, 0, 0, 4);
@@ -2269,13 +2269,13 @@ void func_80094C60(void) {
             func_8009E650(0x5E, 0, 0, 8);
             temp_v0 = gModeSelection;
             phi_v0 = temp_v0;
-            if (temp_v0 == 1) {
+            if (temp_v0 == TIME_TRIALS) {
                 func_8009E650(0x65, 0, 0, 8);
                 func_8009E650(0x66, 0, 0, 8);
                 func_8009E650(0x69, 0, 0, 8);
                 phi_v0 = gModeSelection;
             }
-            if (phi_v0 == 0) {
+            if (phi_v0 == GRAND_PRIX) {
                 func_8009E650(0x68, 0, 0, 8);
                 func_8009E650(0x67, 0, 0, 5);
             }
@@ -6546,7 +6546,7 @@ void func_8009CBE4(s32 arg0, s32 arg1, s32 arg2) {
     s32 phi_ra;
 
     temp_v0 = gModeSelection;
-    if ((temp_v0 == 0) || (temp_v0 == 1)) {
+    if ((temp_v0 == GRAND_PRIX) || (temp_v0 == TIME_TRIALS)) {
         temp_v0_4 = arg0 * 8;
         temp_v1_2 = temp_v0_4 + &D_8018E7E8;
         temp_a0_2 = temp_v0_4 + &D_8018E810;
@@ -6690,9 +6690,9 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
     phi_a2 = arg3;
     if (temp_v0 == 5) {
         temp_v1 = gCCSelection;
-        if ((temp_v1 != 2) && (temp_v1 != 3)) {
+        if ((temp_v1 != CC_150) && (temp_v1 != CC_EXTRA)) {
 
-        } else if ((D_802874F5 < 3) && (gCupSelection == 3)) {
+        } else if ((D_802874F5 < 3) && (gCupSelection == SPECIAL_CUP)) {
             phi_a1 = 1;
         }
         if (phi_a1 != 0) {
@@ -6989,7 +6989,7 @@ block_74:
                 gModeSelection = GRAND_PRIX;
             }
         } else {
-            gModeSelection = BATTTLE;
+            gModeSelection = BATTLE;
             if (gPlayerCountSelection1 == 1) {
                 D_8018EDF3 = 2;
                 D_800DC530 = 1;
@@ -7062,7 +7062,7 @@ void func_8009D77C(s32 arg0, s32 arg1, s32 arg2) {
     u32 phi_t2;
 
     temp_v0 = gModeSelection;
-    if ((temp_v0 == 0) || (temp_v0 == 1)) {
+    if ((temp_v0 == GRAND_PRIX) || (temp_v0 == TIME_TRIALS)) {
         temp_v0_4 = arg0 * 8;
         temp_a0_2 = temp_v0_4 + &D_8018E810;
         temp_v1_2 = temp_v0_4 + &D_8018E7E8;
@@ -7158,7 +7158,7 @@ void func_8009D998(s32 arg0) {
     s32 phi_t3;
 
     temp_v0 = gModeSelection;
-    if ((temp_v0 == 0) || (temp_v0 == 1)) {
+    if ((temp_v0 == GRAND_PRIX) || (temp_v0 == TIME_TRIALS)) {
         temp_v0_4 = arg0 * 8;
         temp_v1_2 = temp_v0_4 + &D_8018E7E8;
         temp_a0_2 = temp_v0_4 + &D_8018E810;
@@ -8454,8 +8454,8 @@ loop_3:
             temp_a1_2 = *(&D_800EFD64 + *(&D_800E85F7 + arg0));
             temp_a3 = arg0 - 0xB1;
             phi_v1_4 = 0;
-            if (temp_v0_7 != 2) {
-                if (temp_v0_7 != 3) {
+            if (temp_v0_7 != VERSUS) {
+                if (temp_v0_7 != BATTLE) {
                     phi_a2 = arg0 * 4;
                 } else {
                     temp_t8 = arg0 * 4;
@@ -10212,7 +10212,6 @@ void func_800A1FB0(void *arg0) {
     s16 phi_s2_6;
     void *phi_v1_3;
     s8 phi_v1_4;
-
     gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x140, 0xF0, 0, 0, 0, 0x64);
     temp_v1 = D_8018EDEC;
     phi_v1_4 = temp_v1;
@@ -11601,10 +11600,10 @@ void func_800A4B38(void) {
 
     if (D_800DC5FC != 0) {
         temp_v0 = gModeSelection;
-        if (temp_v0 != 0) {
-            if (temp_v0 != 1) {
-                if (temp_v0 != 2) {
-                    if (temp_v0 != 3) {
+        if (temp_v0 != GRAND_PRIX) {
+            if (temp_v0 != TIME_TRIALS) {
+                if (temp_v0 != VERSUS) {
+                    if (temp_v0 != BATTLE) {
                         return;
                     }
                     func_800A5360();
@@ -11913,10 +11912,10 @@ void func_800A54EC(void) {
         temp_v1_2->unk0 = 0x1030040;
         temp_v1_2->unk4 = (gGfxPool + (D_80164AF0 << 6) + 0xFAC0) & 0x1FFFFFFF;
         D_80164AF0 = D_80164AF0 + 1;
-        if (temp_t2 != 0) {
-            if (temp_t2 != 1) {
-                if (temp_t2 != 2) {
-                    if (temp_t2 != 3) {
+        if (temp_t2 != GRAND_PRIX) {
+            if (temp_t2 != TIME_TRIALS) {
+                if (temp_t2 != VERSUS) {
+                    if (temp_t2 != BATTLE) {
                         phi_v1 = sp4C;
                     } else {
                         phi_v1 = ((D_800DC530 << 5) + (D_800DC5FC * 8)) - 8 + &D_800E8600;
@@ -12576,8 +12575,8 @@ void func_800A69C8(s32 arg0) {
             phi_v1 = 0;
             phi_v1 = 0;
             phi_v1 = 0;
-            if (temp_v0 != 2) {
-                if (temp_v0 != 3) {
+            if (temp_v0 != VERSUS) {
+                if (temp_v0 != BATTLE) {
 
                 } else {
                     if (phi_s0 != D_800DC5E8) {
@@ -12634,8 +12633,8 @@ void func_800A6BEC(s32 arg0) {
     if (temp_v1 > 0) {
         do {
             temp_v0 = gModeSelection;
-            if (temp_v0 != 2) {
-                if (temp_v0 != 3) {
+            if (temp_v0 != VERSUS) {
+                if (temp_v0 != BATTLE) {
 
                 } else {
                     func_800A6D94(3, phi_s0, D_8015F8C8);
@@ -12675,8 +12674,8 @@ void func_800A6CC0(s32 arg0) {
     if (temp_v1 > 0) {
         do {
             temp_v0 = gModeSelection;
-            if (temp_v0 != 2) {
-                if (temp_v0 != 3) {
+            if (temp_v0 != VERSUS) {
+                if (temp_v0 != BATTLE) {
 
                 } else {
                     func_800A6D94(4, phi_s0, D_8015F8CC);
@@ -16809,7 +16808,6 @@ void func_800ACC50(void *arg0) {
     void *phi_a1;
     u16 phi_v1;
     void *phi_a1_2;
-
     temp_t6 = arg0->unk4;
     temp_a1 = arg0;
     switch (temp_t6) {

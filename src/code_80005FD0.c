@@ -453,9 +453,9 @@ void set_places(void) {
     s32 phi_t3_15;
 
     temp_v0 = gModeSelection;
-    if ((temp_v0 != 0) && (temp_v0 != 1)) {
-        if (temp_v0 != 2) {
-            if (temp_v0 != 3) {
+    if ((temp_v0 != GRAND_PRIX) && (temp_v0 != TIME_TRIALS)) {
+        if (temp_v0 != VERSUS) {
+            if (temp_v0 != BATTLE) {
                 return;
             }
             // Duplicate return node #82. Try simplifying control flow for better match
@@ -976,9 +976,9 @@ void func_800070F4(void) {
     s32 phi_a3_6;
 
     temp_v0 = gModeSelection;
-    if ((temp_v0 != 0) && (temp_v0 != 1)) {
-        if (temp_v0 != 2) {
-            if (temp_v0 != 3) {
+    if ((temp_v0 != GRAND_PRIX) && (temp_v0 != TIME_TRIALS)) {
+        if (temp_v0 != VERSUS) {
+            if (temp_v0 != BATTLE) {
                 return;
             }
             // Duplicate return node #37. Try simplifying control flow for better match
@@ -1597,10 +1597,10 @@ void func_80007D04(s32 arg0, void *arg1) {
             goto block_25;
         }
         temp_v1_2 = gCCSelection;
-        if (temp_v1_2 != 0) {
-            if (temp_v1_2 != 1) {
-                if (temp_v1_2 != 2) {
-                    if (temp_v1_2 != 3) {
+        if (temp_v1_2 != CC_50) {
+            if (temp_v1_2 != CC_100) {
+                if (temp_v1_2 != CC_150) {
+                    if (temp_v1_2 != CC_EXTRA) {
                         phi_v0 = 0;
                     } else {
                         phi_v0 = 8;
@@ -1841,10 +1841,10 @@ void func_80008424(s32 arg0, f32 arg1, void *arg2) {
         }
         temp_v0_2 = gCCSelection;
         phi_f0 = D_800ECF9C;
-        if (temp_v0_2 != 0) {
-            if (temp_v0_2 != 1) {
-                if (temp_v0_2 != 2) {
-                    if (temp_v0_2 != 3) {
+        if (temp_v0_2 != CC_50) {
+            if (temp_v0_2 != CC_100) {
+                if (temp_v0_2 != CC_150) {
+                    if (temp_v0_2 != CC_EXTRA) {
 
                     }
                 } else {
@@ -3034,8 +3034,8 @@ void func_80009B60(s32 arg0) {
                 func_800099EC(arg0, sp40);
                 temp_v0_5 = gModeSelection;
                 D_80162FD0 = 0;
-                if (temp_v0_5 != 0) {
-                    if ((temp_v0_5 != 1) && (temp_v0_5 != 2) && (temp_v0_5 != 3)) {
+                if (temp_v0_5 != GRAND_PRIX) {
+                    if ((temp_v0_5 != TIME_TRIALS) && (temp_v0_5 != VERSUS) && (temp_v0_5 != BATTLE)) {
 
                     }
                 }
@@ -9943,7 +9943,7 @@ void func_80014DE4(s32 arg0) {
     temp_v1 = temp_v0 + &D_80164678;
     *temp_v1 = *(&D_80164670 + temp_v0);
     temp_a1 = gModeSelection;
-    if ((temp_a1 != 1) && ((gCourseSelection == 0) || (D_800DC51C == 1))) {
+    if ((temp_a1 != TIME_TRIALS) && ((gCourseSelection == 0) || (D_800DC51C == 1))) {
         goto block_8;
     }
     temp_a2 = *temp_v1;
@@ -9959,7 +9959,7 @@ block_8:
     temp_a2_2->unk0 = 0;
     temp_a2_2->unk2 = 0;
     temp_a2_2->unk4 = 0;
-    if ((temp_a1 == 1) && (D_8018EDFC == 0)) {
+    if ((temp_a1 == TIME_TRIALS) && (D_8018EDFC == 0)) {
         *temp_v1 = 0;
     }
     D_80164668 = 0;
@@ -12463,8 +12463,8 @@ void func_8001A588(s32 arg0, void *arg1, u16 *arg2, s8 arg3, s32 cameraId) {
         }
     }
     temp_v0 = gModeSelection;
-    if ((temp_v0 != 3) && (*(&D_80164680 + (cameraId * 2)) == -1) && ((*arg2 & 0x800) != 0) && (D_801646CC == 0) && (D_801646C8 == 0)) {
-        if (temp_v0 == 2) {
+    if ((temp_v0 != BATTLE) && (*(&D_80164680 + (cameraId * 2)) == -1) && ((*arg2 & 0x800) != 0) && (D_801646CC == 0) && (D_801646C8 == 0)) {
+        if (temp_v0 == VERSUS) {
             func_8001A220(0, phi_s0, cameraId);
         } else {
             func_8001A124(0, phi_s0, cameraId);
@@ -13360,7 +13360,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8001C14C.s")
 extern u16 D_80163E2A;
 
 void func_8001C3C4(void) {
-    if (gCurrentCourseId == 0x14) {
+    if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
         if (D_80163E2A >= 0x10) {
             func_80057114(3);
             return;
