@@ -41,12 +41,12 @@ glabel func_80050320
 /* 050FB8 800503B8 45020035 */  bc1fl .L80050490
 /* 050FBC 800503BC 26100001 */   addiu $s0, $s0, 1
 /* 050FC0 800503C0 C5240000 */  lwc1  $f4, ($t1)
-/* 050FC4 800503C4 3C188019 */  lui   $t8, %hi(D_8018CF80) # $t8, 0x8019
+/* 050FC4 800503C4 3C188019 */  lui   $t8, %hi(gGrandPrixCurrentRaceStandings) # $t8, 0x8019
 /* 050FC8 800503C8 3C198019 */  lui   $t9, %hi(D_8018D028) # $t9, 0x8019
 /* 050FCC 800503CC 460021A1 */  cvt.d.s $f6, $f4
 /* 050FD0 800503D0 2739D028 */  addiu $t9, %lo(D_8018D028) # addiu $t9, $t9, -0x2fd8
 /* 050FD4 800503D4 4634303C */  c.lt.d $f6, $f20
-/* 050FD8 800503D8 2718CF80 */  addiu $t8, %lo(D_8018CF80) # addiu $t8, $t8, -0x3080
+/* 050FD8 800503D8 2718CF80 */  addiu $t8, %lo(gGrandPrixCurrentRaceStandings) # addiu $t8, $t8, -0x3080
 /* 050FDC 800503DC 00583821 */  addu  $a3, $v0, $t8
 /* 050FE0 800503E0 02394021 */  addu  $t0, $s1, $t9
 /* 050FE4 800503E4 45000002 */  bc1f  .L800503F0

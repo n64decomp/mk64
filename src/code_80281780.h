@@ -67,7 +67,7 @@ extern s8 D_800E86A8[];
 extern u16 gEnableDebugMode;
 
 extern void *D_80284ED0;
-extern s8 D_8018D9D0[];
+extern s8 gGrandPrixOverallStandings[8];
 extern s8 D_8018EDF3;
 
 extern s32 _data_821D10SegmentRomStart;

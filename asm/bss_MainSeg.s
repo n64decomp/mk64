@@ -170,6 +170,8 @@ glabel D_80164378
 glabel D_80164386
 .skip 10
 
+# List of s32's, seemingly indexed by player ID
+# Indicates the number of completed laps for that player
 glabel lapCount
 .skip 2
 

@@ -1353,7 +1353,7 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80059AC8.s")
 ? func_8005A3C0(); // extern
 extern s16 D_80164360;
 extern ? D_801643D8;
-extern ? D_8018CF80;
+extern ? gGrandPrixCurrentRaceStandings;
 extern ? D_8018CF90;
 extern ? D_8018CF98;
 
@@ -1368,7 +1368,7 @@ void func_80059C50(void) {
 
     func_8005A3C0();
     phi_a0 = &D_80164360;
-    phi_v0 = &D_8018CF80;
+    phi_v0 = &gGrandPrixCurrentRaceStandings;
     do {
         temp_v0 = phi_v0 + 2;
         temp_v0->unk-2 = D_800DC4DC[*phi_a0].characterId;
@@ -3059,7 +3059,7 @@ extern s16 D_80165794;
 extern ? D_8018CF28;
 extern ? D_8018CF50;
 extern ? D_8018CF60;
-extern ? D_8018CF80;
+extern ? gGrandPrixCurrentRaceStandings;
 extern ? D_8018CF98;
 extern s32 D_8018D314;
 extern s32 D_8018D3E4;
@@ -3112,23 +3112,23 @@ void func_8005C980(void) {
         temp_v0_2 = phi_a0_2->unk0;
         phi_t0->unk0 = temp_v0_2;
         if (temp_a1 == 0) {
-            *(&D_8018CF80 + phi_v1) = temp_a3[temp_v0_2].characterId;
+            *(&gGrandPrixCurrentRaceStandings + phi_v1) = temp_a3[temp_v0_2].characterId;
         }
         temp_a2 = phi_a0_2->unk2;
         phi_t0->unk2 = temp_a2;
         if (temp_a1 == 0) {
-            (&D_8018CF80 + phi_v1)->unk2 = temp_a3[temp_a2].characterId;
+            (&gGrandPrixCurrentRaceStandings + phi_v1)->unk2 = temp_a3[temp_a2].characterId;
         }
         temp_a2_2 = phi_a0_2->unk4;
         phi_t0->unk4 = temp_a2_2;
         if (temp_a1 == 0) {
-            (&D_8018CF80 + phi_v1)->unk4 = temp_a3[temp_a2_2].characterId;
+            (&gGrandPrixCurrentRaceStandings + phi_v1)->unk4 = temp_a3[temp_a2_2].characterId;
         }
         temp_a2_3 = phi_a0_2->unk6;
         phi_t0->unk6 = temp_a2_3;
         phi_a0_2 += 8;
         if (temp_a1 == 0) {
-            (&D_8018CF80 + phi_v1)->unk6 = temp_a3[temp_a2_3].characterId;
+            (&gGrandPrixCurrentRaceStandings + phi_v1)->unk6 = temp_a3[temp_a2_3].characterId;
         }
         temp_t0 = phi_t0 + 8;
         phi_t0 = temp_t0;

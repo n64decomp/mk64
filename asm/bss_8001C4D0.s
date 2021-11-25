@@ -1048,7 +1048,9 @@ glabel D_8018CF68
 glabel D_8018CF78
 .skip 8
 
-glabel D_8018CF80
+# List of half-word character IDs indicating each character's
+# place in the current Grand Prix race's standings
+glabel gGrandPrixCurrentRaceStandings
 .skip 16
 
 glabel D_8018CF90
@@ -1741,10 +1743,15 @@ glabel D_8018D9BC
 glabel D_8018D9C0
 .skip 8
 
-glabel D_8018D9C8
+# List of bytes indexed by character ID
+# Indicates number of Grand Prix points that character
+# has scored
+glabel gCharacterGrandPrixPoints
 .skip 8
 
-glabel D_8018D9D0
+# List of character IDs indicating where each character
+# is in the Grand Prix standings
+glabel gGrandPrixOverallStandings
 .skip 1
 
 glabel D_8018D9D1

@@ -5995,7 +5995,7 @@ GLOBAL_ASM("asm/non_matchings/code_800431B0/func_8004FDB4.s")
 ? func_8004FDB4(f32, f32, s32, s32, s16, s16, s32, s32, s32, s32, s32); // extern
 extern ? D_80164360;
 extern s8 D_801657E2;
-extern ? D_8018CF80;
+extern ? gGrandPrixCurrentRaceStandings;
 extern ? D_8018D028;
 extern f32 D_8018D050;
 extern ? D_8018D078;
@@ -6039,7 +6039,7 @@ void func_80050320(void) {
                 if (*(&D_8018D078 + phi_s1) < 0.0) {
                     phi_a0 = 1;
                 }
-                temp_v1 = *(temp_v0 + &D_8018CF80);
+                temp_v1 = *(temp_v0 + &gGrandPrixCurrentRaceStandings);
                 temp_a1 = *(&lapCount + (*(temp_v0 + &D_80164360) * 4));
                 if (temp_v1 == D_800DC4DC->characterId) {
                     func_8004FDB4(*temp_t0, temp_f14, phi_a0, temp_a1, phi_s0, temp_a1, temp_v1, 0xFF, 1, phi_a0, 0);

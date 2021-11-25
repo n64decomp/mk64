@@ -18,21 +18,21 @@ glabel L800AC488
 /* 0AD094 800AC494 ACF80004 */  sw    $t8, 4($a3)
 /* 0AD098 800AC498 3C028019 */  lui   $v0, %hi(D_8018D9BC) # $v0, 0x8019
 /* 0AD09C 800AC49C 2442D9BC */  addiu $v0, %lo(D_8018D9BC) # addiu $v0, $v0, -0x2644
-/* 0AD0A0 800AC4A0 3C19800F */  lui   $t9, %hi(D_800F0B18) # $t9, 0x800f
-/* 0AD0A4 800AC4A4 83390B18 */  lb    $t9, %lo(D_800F0B18)($t9)
+/* 0AD0A0 800AC4A0 3C19800F */  lui   $t9, %hi(gGrandPrix1stPlacePointReward) # $t9, 0x800f
+/* 0AD0A4 800AC4A4 83390B18 */  lb    $t9, %lo(gGrandPrix1stPlacePointReward)($t9)
 /* 0AD0A8 800AC4A8 8C4A0000 */  lw    $t2, ($v0)
-/* 0AD0AC 800AC4AC 3C0B800F */  lui   $t3, %hi(D_800F0B19) # $t3, 0x800f
-/* 0AD0B0 800AC4B0 3C0D800F */  lui   $t5, %hi(D_800F0B1A) # $t5, 0x800f
+/* 0AD0AC 800AC4AC 3C0B800F */  lui   $t3, %hi(gGrandPrix2ndPlacePointReward) # $t3, 0x800f
+/* 0AD0B0 800AC4B0 3C0D800F */  lui   $t5, %hi(gGrandPrix3rdPlacePointReward) # $t5, 0x800f
 /* 0AD0B4 800AC4B4 A1590000 */  sb    $t9, ($t2)
 /* 0AD0B8 800AC4B8 8C4C0000 */  lw    $t4, ($v0)
-/* 0AD0BC 800AC4BC 816B0B19 */  lb    $t3, %lo(D_800F0B19)($t3)
-/* 0AD0C0 800AC4C0 3C0F800F */  lui   $t7, %hi(D_800F0B1B) # $t7, 0x800f
+/* 0AD0BC 800AC4BC 816B0B19 */  lb    $t3, %lo(gGrandPrix2ndPlacePointReward)($t3)
+/* 0AD0C0 800AC4C0 3C0F800F */  lui   $t7, %hi(gGrandPrix4thPlacePointReward) # $t7, 0x800f
 /* 0AD0C4 800AC4C4 A18B0001 */  sb    $t3, 1($t4)
 /* 0AD0C8 800AC4C8 8C4E0000 */  lw    $t6, ($v0)
-/* 0AD0CC 800AC4CC 81AD0B1A */  lb    $t5, %lo(D_800F0B1A)($t5)
+/* 0AD0CC 800AC4CC 81AD0B1A */  lb    $t5, %lo(gGrandPrix3rdPlacePointReward)($t5)
 /* 0AD0D0 800AC4D0 A1CD0002 */  sb    $t5, 2($t6)
 /* 0AD0D4 800AC4D4 8C580000 */  lw    $t8, ($v0)
-/* 0AD0D8 800AC4D8 81EF0B1B */  lb    $t7, %lo(D_800F0B1B)($t7)
+/* 0AD0D8 800AC4D8 81EF0B1B */  lb    $t7, %lo(gGrandPrix4thPlacePointReward)($t7)
 /* 0AD0DC 800AC4DC A30F0003 */  sb    $t7, 3($t8)
 /* 0AD0E0 800AC4E0 8CF9000C */  lw    $t9, 0xc($a3)
 /* 0AD0E4 800AC4E4 10000120 */  b     .L800AC968
@@ -126,8 +126,8 @@ glabel L800AC5D0
 /* 0AD228 800AC628 2518FFFF */   addiu $t8, $t0, -1
 /* 0AD22C 800AC62C A0D80000 */  sb    $t8, ($a2)
 /* 0AD230 800AC630 854A4360 */  lh    $t2, %lo(D_80164360)($t2) # 0x4360($t2)
-/* 0AD234 800AC634 3C0D8019 */  lui   $t5, %hi(D_8018D9C8) # $t5, 0x8019
-/* 0AD238 800AC638 25ADD9C8 */  addiu $t5, %lo(D_8018D9C8) # addiu $t5, $t5, -0x2638
+/* 0AD234 800AC634 3C0D8019 */  lui   $t5, %hi(gCharacterGrandPrixPoints) # $t5, 0x8019
+/* 0AD238 800AC638 25ADD9C8 */  addiu $t5, %lo(gCharacterGrandPrixPoints) # addiu $t5, $t5, -0x2638
 /* 0AD23C 800AC63C 000A58C0 */  sll   $t3, $t2, 3
 /* 0AD240 800AC640 016A5823 */  subu  $t3, $t3, $t2
 /* 0AD244 800AC644 000B5900 */  sll   $t3, $t3, 4
@@ -259,12 +259,12 @@ glabel L800AC7CC
 /* 0AD410 800AC810 24010003 */  li    $at, 3
 /* 0AD414 800AC814 00002825 */  move  $a1, $zero
 /* 0AD418 800AC818 15A10053 */  bne   $t5, $at, .L800AC968
-/* 0AD41C 800AC81C 3C028019 */   lui   $v0, %hi(D_8018D9D0) # $v0, 0x8019
+/* 0AD41C 800AC81C 3C028019 */   lui   $v0, %hi(gGrandPrixOverallStandings) # $v0, 0x8019
 /* 0AD420 800AC820 3C038019 */  lui   $v1, %hi(D_8018EDF3) # $v1, 0x8019
 /* 0AD424 800AC824 3C048016 */  lui   $a0, %hi(D_80164478) # $a0, 0x8016
 /* 0AD428 800AC828 24844478 */  addiu $a0, %lo(D_80164478) # addiu $a0, $a0, 0x4478
 /* 0AD42C 800AC82C 8063EDF3 */  lb    $v1, %lo(D_8018EDF3)($v1)
-/* 0AD430 800AC830 2442D9D0 */  addiu $v0, %lo(D_8018D9D0) # addiu $v0, $v0, -0x2630
+/* 0AD430 800AC830 2442D9D0 */  addiu $v0, %lo(gGrandPrixOverallStandings) # addiu $v0, $v0, -0x2630
 /* 0AD434 800AC834 24060008 */  li    $a2, 8
 .L800AC838:
 /* 0AD438 800AC838 804E0000 */  lb    $t6, ($v0)

@@ -33,7 +33,7 @@ extern s16 D_80165572;
 extern s16 D_80165580;
 extern s16 D_80165582;
 extern s8 D_800E86A8[4];
-extern s8 D_8018D9D0[4];
+extern s8 gGrandPrixOverallStandings[8];
 extern s16 D_80165270[8];
 extern Player* D_800DC4DC;
 extern Player* D_800DC4E0;

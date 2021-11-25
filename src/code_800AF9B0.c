@@ -2530,8 +2530,8 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B3B58.s")
 ? func_800CA008(?, ?, s32);                         /* extern */
 ? func_800CB2C4();                                  /* extern */
 ? play_sound2(?, s8 *, s8 *, s8);                   /* extern */
-extern ? D_8018D9C8;
-extern ? D_8018D9D0;
+extern ? gCharacterGrandPrixPoints;
+extern ? gGrandPrixOverallStandings;
 static ? D_800F2BDF;                                /* unable to generate initializer; const */
 
 void func_800B3F74(u32 arg0) {
@@ -2742,7 +2742,7 @@ void func_800B3F74(u32 arg0) {
         if (gModeSelection == GRAND_PRIX) {
             gCourseSelection = 0;
         }
-        phi_v0_2 = &D_8018D9C8;
+        phi_v0_2 = &gCharacterGrandPrixPoints;
         do {
             temp_v0_5 = phi_v0_2 + 4;
             temp_v0_5->unk-3 = 0;
@@ -2750,7 +2750,7 @@ void func_800B3F74(u32 arg0) {
             temp_v0_5->unk-1 = 0;
             temp_v0_5->unk-4 = 0;
             phi_v0_2 = temp_v0_5;
-        } while (temp_v0_5 != &D_8018D9D0);
+        } while (temp_v0_5 != &gGrandPrixOverallStandings);
         break;
     }
     func_800B44AC();
