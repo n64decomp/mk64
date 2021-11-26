@@ -19,21 +19,21 @@ glabel L800AD31C
 /* 0ADF28 800AD328 AE180004 */  sw    $t8, 4($s0)
 /* 0ADF2C 800AD32C 3C028019 */  lui   $v0, %hi(D_8018D9BC) # $v0, 0x8019
 /* 0ADF30 800AD330 2442D9BC */  addiu $v0, %lo(D_8018D9BC) # addiu $v0, $v0, -0x2644
-/* 0ADF34 800AD334 3C19800F */  lui   $t9, %hi(gGrandPrix1stPlacePointReward) # $t9, 0x800f
-/* 0ADF38 800AD338 83390B18 */  lb    $t9, %lo(gGrandPrix1stPlacePointReward)($t9)
+/* 0ADF34 800AD334 3C19800F */  lui   $t9, %hi(gGP1stPlaceReward) # $t9, 0x800f
+/* 0ADF38 800AD338 83390B18 */  lb    $t9, %lo(gGP1stPlaceReward)($t9)
 /* 0ADF3C 800AD33C 8C480000 */  lw    $t0, ($v0)
-/* 0ADF40 800AD340 3C09800F */  lui   $t1, %hi(gGrandPrix2ndPlacePointReward) # $t1, 0x800f
-/* 0ADF44 800AD344 3C0B800F */  lui   $t3, %hi(gGrandPrix3rdPlacePointReward) # $t3, 0x800f
+/* 0ADF40 800AD340 3C09800F */  lui   $t1, %hi(gGP2ndPlaceReward) # $t1, 0x800f
+/* 0ADF44 800AD344 3C0B800F */  lui   $t3, %hi(gGP3rdPlaceReward) # $t3, 0x800f
 /* 0ADF48 800AD348 A1190000 */  sb    $t9, ($t0)
 /* 0ADF4C 800AD34C 8C4A0000 */  lw    $t2, ($v0)
-/* 0ADF50 800AD350 81290B19 */  lb    $t1, %lo(gGrandPrix2ndPlacePointReward)($t1)
-/* 0ADF54 800AD354 3C0D800F */  lui   $t5, %hi(gGrandPrix4thPlacePointReward) # $t5, 0x800f
+/* 0ADF50 800AD350 81290B19 */  lb    $t1, %lo(gGP2ndPlaceReward)($t1)
+/* 0ADF54 800AD354 3C0D800F */  lui   $t5, %hi(gGP4thPlaceReward) # $t5, 0x800f
 /* 0ADF58 800AD358 A1490001 */  sb    $t1, 1($t2)
 /* 0ADF5C 800AD35C 8C4C0000 */  lw    $t4, ($v0)
-/* 0ADF60 800AD360 816B0B1A */  lb    $t3, %lo(gGrandPrix3rdPlacePointReward)($t3)
+/* 0ADF60 800AD360 816B0B1A */  lb    $t3, %lo(gGP3rdPlaceReward)($t3)
 /* 0ADF64 800AD364 A18B0002 */  sb    $t3, 2($t4)
 /* 0ADF68 800AD368 8C4E0000 */  lw    $t6, ($v0)
-/* 0ADF6C 800AD36C 81AD0B1B */  lb    $t5, %lo(gGrandPrix4thPlacePointReward)($t5)
+/* 0ADF6C 800AD36C 81AD0B1B */  lb    $t5, %lo(gGP4thPlaceReward)($t5)
 /* 0ADF70 800AD370 A1CD0003 */  sb    $t5, 3($t6)
 /* 0ADF74 800AD374 8E0F000C */  lw    $t7, 0xc($s0)
 /* 0ADF78 800AD378 100002EE */  b     .L800ADF34

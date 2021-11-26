@@ -56,9 +56,9 @@ glabel func_800A34A8
 .L800A357C:
 /* 0A417C 800A357C 0C028E84 */  jal   func_800A3A10
 /* 0A4180 800A3580 27A40080 */   addiu $a0, $sp, 0x80
-/* 0A4184 800A3584 3C048019 */  lui   $a0, %hi(gGrandPrixOverallStandings) # $a0, 0x8019
+/* 0A4184 800A3584 3C048019 */  lui   $a0, %hi(gGPOverallRanks) # $a0, 0x8019
 /* 0A4188 800A3588 0C028E84 */  jal   func_800A3A10
-/* 0A418C 800A358C 2484D9D0 */   addiu $a0, %lo(gGrandPrixOverallStandings) # addiu $a0, $a0, -0x2630
+/* 0A418C 800A358C 2484D9D0 */   addiu $a0, %lo(gGPOverallRanks) # addiu $a0, $a0, -0x2630
 .L800A3590:
 /* 0A4190 800A3590 0C024C36 */  jal   set_text_color
 /* 0A4194 800A3594 24040004 */   li    $a0, 4

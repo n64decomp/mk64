@@ -5380,13 +5380,13 @@ glabel D_800F0B10
 .asciiz "    th"
 
 .balign 4
-glabel gGrandPrix1stPlacePointReward
+glabel gGP1stPlaceReward
 .byte 0x09
-glabel gGrandPrix2ndPlacePointReward
+glabel gGP2ndPlaceReward
 .byte 0x06
-glabel gGrandPrix3rdPlacePointReward
+glabel gGP3rdPlaceReward
 .byte 0x03
-glabel gGrandPrix4thPlacePointReward
+glabel gGP4thPlaceReward
 .byte 0x01
 
 glabel D_800F0B1C

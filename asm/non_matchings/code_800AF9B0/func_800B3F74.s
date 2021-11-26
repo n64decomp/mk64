@@ -350,13 +350,13 @@ glabel L800B43B0
 /* 0B5058 800B4458 3C018019 */  lui   $at, %hi(D_8018EE0A) # $at, 0x8019
 /* 0B505C 800B445C A020EE0A */  sb    $zero, %lo(D_8018EE0A)($at)
 /* 0B5060 800B4460 15C00003 */  bnez  $t6, .L800B4470
-/* 0B5064 800B4464 3C028019 */   lui   $v0, %hi(gCharacterGrandPrixPoints) # $v0, 0x8019
+/* 0B5064 800B4464 3C028019 */   lui   $v0, %hi(gCharacterGPPoints) # $v0, 0x8019
 /* 0B5068 800B4468 3C018019 */  lui   $at, %hi(gCourseSelection) # $at, 0x8019
 /* 0B506C 800B446C A020EE0B */  sb    $zero, %lo(gCourseSelection)($at)
 .L800B4470:
-/* 0B5070 800B4470 3C038019 */  lui   $v1, %hi(gGrandPrixOverallStandings) # $v1, 0x8019
-/* 0B5074 800B4474 2463D9D0 */  addiu $v1, %lo(gGrandPrixOverallStandings) # addiu $v1, $v1, -0x2630
-/* 0B5078 800B4478 2442D9C8 */  addiu $v0, %lo(gCharacterGrandPrixPoints) # addiu $v0, $v0, -0x2638
+/* 0B5070 800B4470 3C038019 */  lui   $v1, %hi(gGPOverallRanks) # $v1, 0x8019
+/* 0B5074 800B4474 2463D9D0 */  addiu $v1, %lo(gGPOverallRanks) # addiu $v1, $v1, -0x2630
+/* 0B5078 800B4478 2442D9C8 */  addiu $v0, %lo(gCharacterGPPoints) # addiu $v0, $v0, -0x2638
 .L800B447C:
 /* 0B507C 800B447C 24420004 */  addiu $v0, $v0, 4
 /* 0B5080 800B4480 A040FFFD */  sb    $zero, -3($v0)

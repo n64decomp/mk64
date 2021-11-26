@@ -6034,7 +6034,7 @@ void func_80050320(void) {
                 if (*(&D_8018D078 + phi_s1) < 0.0) {
                     phi_a0 = 1;
                 }
-                temp_v1 = gGrandPrixCurrentRaceStandings[phi_s0];
+                temp_v1 = gGPCurrentRaceRanks[phi_s0];
                 temp_a1 = lapCount[*((phi_s0 * 2) + &D_80164360)];
                 if (temp_v1 == D_800DC4DC->characterId) {
                     func_8004FDB4(*temp_t0, temp_f14, phi_a0, temp_a1, phi_s0, temp_a1, temp_v1, 0xFF, 1, phi_a0, 0);

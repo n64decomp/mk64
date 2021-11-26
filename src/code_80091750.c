@@ -10833,7 +10833,7 @@ void func_800A34A8(void *arg0) {
             } while (temp_a0 != &D_80164370);
         } else {
             func_800A3A10(&sp80);
-            func_800A3A10(gGrandPrixOverallStandings);
+            func_800A3A10(gGPOverallRanks);
         }
         set_text_color(4);
         func_80093324(arg0->unkC + 0x19, 0x19 - arg0->unk10, "driver's points", 0, 0.8f, 0.8f);
@@ -10940,8 +10940,8 @@ loop_3:
             temp_a3 = phi_a2->unk-1;
             temp_t1 = phi_a2->unk0;
             temp_a1 = phi_a1 - 1;
-            temp_t2 = gCharacterGrandPrixPoints[temp_t1];
-            temp_t0 = gCharacterGrandPrixPoints[temp_a3];
+            temp_t2 = gCharacterGPPoints[temp_t1];
+            temp_t0 = gCharacterGPPoints[temp_a3];
             phi_a1 = temp_a1;
             if (temp_t0 < temp_t2) {
                 phi_a2->unk0 = temp_a3;
@@ -10996,7 +10996,7 @@ void func_800A3ADC(void *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5)
             phi_v0 = arg5 + arg4;
 loop_4:
             phi_v1_2 = phi_v1;
-            if (gCharacterGrandPrixPoints[phi_v0->unk0] == gCharacterGrandPrixPoints[phi_v0->unk-1]) {
+            if (gCharacterGPPoints[phi_v0->unk0] == gCharacterGPPoints[phi_v0->unk-1]) {
                 temp_v1 = phi_v1 - 1;
                 phi_v0 += -1;
                 phi_v1 = temp_v1;
@@ -11012,7 +11012,7 @@ loop_4:
     sp37 = 0;
     func_800939C8(arg1, arg2, &sp35, -4, 0.7f, 0.7f);
     func_80093324(arg1 + 0xA, arg2, *(&D_800E76A8 + (arg3 * 4)), 0, 0.7f, 0.7f);
-    func_800A7894(gCharacterGrandPrixPoints[arg3], &sp34);
+    func_800A7894(gCharacterGPPoints[arg3], &sp34);
     func_800939C8(arg1 + 0x47, arg2, &sp34, 0, 0.7f, 0.7f);
     if ((arg4 < 4) && (arg0->unk4 < 9)) {
         func_800A7894(*(D_8018D9BC + arg4), &sp34);
@@ -16377,10 +16377,10 @@ extern s8 D_8018D9BC;
 extern s8 D_8018D9D8;
 extern s8 D_8018EDF3;
 static s32 D_800DDB24 = 1;
-static s8 gGrandPrix1stPlacePointReward = 9;        /* const */
-static s8 gGrandPrix2ndPlacePointReward = 6;        /* const */
-static s8 gGrandPrix3rdPlacePointReward = 3;        /* const */
-static s8 gGrandPrix4thPlacePointReward = 1;        /* const */
+static s8 gGP1stPlaceReward = 9;        /* const */
+static s8 gGP2ndPlaceReward = 6;        /* const */
+static s8 gGP3rdPlaceReward = 3;        /* const */
+static s8 gGP4thPlaceReward = 1;        /* const */
 
 
 //Something related to the point allotment screens at the end of a grand prix race
@@ -16429,10 +16429,10 @@ s8 *func_800AC458(void *arg0) {
         temp_a3->unkC = -0xA0;
         temp_a3->unk4 = 1;
         // Copy point rewards from data to some temp memory
-        D_8018D9BC->unk0 = gGrandPrix1stPlacePointReward;
-        D_8018D9BC->unk1 = gGrandPrix2ndPlacePointReward;
-        D_8018D9BC->unk2 = gGrandPrix3rdPlacePointReward;
-        D_8018D9BC->unk3 = gGrandPrix4thPlacePointReward;
+        D_8018D9BC->unk0 = gGP1stPlaceReward;
+        D_8018D9BC->unk1 = gGP2ndPlaceReward;
+        D_8018D9BC->unk2 = gGP3rdPlaceReward;
+        D_8018D9BC->unk3 = gGP4thPlaceReward;
         temp_a3->unk20 = temp_a3->unkC;
         return &D_8018D9BC;
     case 1:
@@ -16488,7 +16488,7 @@ s8 *func_800AC458(void *arg0) {
                 temp_t4 = *(&gPlayers->characterId + (*(&D_80164360 + (temp_a1_2 * 2)) * 0xDD8));
                 sp18 = 0;
                 arg0 = temp_a3;
-                gCharacterGrandPrixPoints[temp_t4] += 1;
+                gCharacterGPPoints[temp_t4] += 1;
                 place = temp_a1_2;
                 play_sound2(0x49008017, temp_a1_2, temp_a2_2, temp_a3);
                 phi_a3 = arg0;
@@ -16545,8 +16545,8 @@ s8 *func_800AC458(void *arg0) {
         if (D_8018D9D8 != 0) {
             temp_a3->unk1C = temp_t7 - 5;
         }
-        if ((temp_a3->unk1C <= 0) && (temp_a3->unk4 = 0xA, temp_a3->unk1C = 0, phi_a1 = 0, phi_v0_2 = gGrandPrixOverallStandings, (gCourseSelection == COURSE_BANSHEE_BOARDWALK))) {
-            phi_v0 = gGrandPrixOverallStandings;
+        if ((temp_a3->unk1C <= 0) && (temp_a3->unk4 = 0xA, temp_a3->unk1C = 0, phi_a1 = 0, phi_v0_2 = gGPOverallRanks, (gCourseSelection == COURSE_BANSHEE_BOARDWALK))) {
+            phi_v0 = gGPOverallRanks;
 loop_41:
             if (*(&D_80164478 + (*phi_v0 * 2)) < D_8018EDF3) {
                 return func_800B536C(phi_a1, phi_a1, 8, temp_a3);
@@ -17133,10 +17133,10 @@ void func_800AD2E8(void *arg0) {
         case 0:                                     /* switch 1 */
             arg0->unkC = -0xA0;
             arg0->unk4 = 1;
-            D_8018D9BC->unk0 = gGrandPrix1stPlacePointReward;
-            D_8018D9BC->unk1 = gGrandPrix2ndPlacePointReward;
-            D_8018D9BC->unk2 = gGrandPrix3rdPlacePointReward;
-            D_8018D9BC->unk3 = gGrandPrix4thPlacePointReward;
+            D_8018D9BC->unk0 = gGP1stPlaceReward;
+            D_8018D9BC->unk1 = gGP2ndPlaceReward;
+            D_8018D9BC->unk2 = gGP3rdPlaceReward;
+            D_8018D9BC->unk3 = gGP4thPlaceReward;
             arg0->unk20 = arg0->unkC;
             return;
         case 1:                                     /* switch 1 */
