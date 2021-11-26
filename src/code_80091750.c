@@ -10940,8 +10940,8 @@ loop_3:
             temp_a3 = phi_a2->unk-1;
             temp_t1 = phi_a2->unk0;
             temp_a1 = phi_a1 - 1;
-            temp_t2 = gCharacterGPPoints[temp_t1];
-            temp_t0 = gCharacterGPPoints[temp_a3];
+            temp_t2 = gGPCharacterPoints[temp_t1];
+            temp_t0 = gGPCharacterPoints[temp_a3];
             phi_a1 = temp_a1;
             if (temp_t0 < temp_t2) {
                 phi_a2->unk0 = temp_a3;
@@ -10996,7 +10996,7 @@ void func_800A3ADC(void *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5)
             phi_v0 = arg5 + arg4;
 loop_4:
             phi_v1_2 = phi_v1;
-            if (gCharacterGPPoints[phi_v0->unk0] == gCharacterGPPoints[phi_v0->unk-1]) {
+            if (gGPCharacterPoints[phi_v0->unk0] == gGPCharacterPoints[phi_v0->unk-1]) {
                 temp_v1 = phi_v1 - 1;
                 phi_v0 += -1;
                 phi_v1 = temp_v1;
@@ -11012,7 +11012,7 @@ loop_4:
     sp37 = 0;
     func_800939C8(arg1, arg2, &sp35, -4, 0.7f, 0.7f);
     func_80093324(arg1 + 0xA, arg2, *(&D_800E76A8 + (arg3 * 4)), 0, 0.7f, 0.7f);
-    func_800A7894(gCharacterGPPoints[arg3], &sp34);
+    func_800A7894(gGPCharacterPoints[arg3], &sp34);
     func_800939C8(arg1 + 0x47, arg2, &sp34, 0, 0.7f, 0.7f);
     if ((arg4 < 4) && (arg0->unk4 < 9)) {
         func_800A7894(*(D_8018D9BC + arg4), &sp34);
@@ -16488,7 +16488,7 @@ s8 *func_800AC458(void *arg0) {
                 temp_t4 = *(&gPlayers->characterId + (*(&D_80164360 + (temp_a1_2 * 2)) * 0xDD8));
                 sp18 = 0;
                 arg0 = temp_a3;
-                gCharacterGPPoints[temp_t4] += 1;
+                gGPCharacterPoints[temp_t4] += 1;
                 place = temp_a1_2;
                 play_sound2(0x49008017, temp_a1_2, temp_a2_2, temp_a3);
                 phi_a3 = arg0;

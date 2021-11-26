@@ -126,8 +126,8 @@ glabel L800AC5D0
 /* 0AD228 800AC628 2518FFFF */   addiu $t8, $t0, -1
 /* 0AD22C 800AC62C A0D80000 */  sb    $t8, ($a2)
 /* 0AD230 800AC630 854A4360 */  lh    $t2, %lo(D_80164360)($t2) # 0x4360($t2)
-/* 0AD234 800AC634 3C0D8019 */  lui   $t5, %hi(gCharacterGPPoints) # $t5, 0x8019
-/* 0AD238 800AC638 25ADD9C8 */  addiu $t5, %lo(gCharacterGPPoints) # addiu $t5, $t5, -0x2638
+/* 0AD234 800AC634 3C0D8019 */  lui   $t5, %hi(gGPCharacterPoints) # $t5, 0x8019
+/* 0AD238 800AC638 25ADD9C8 */  addiu $t5, %lo(gGPCharacterPoints) # addiu $t5, $t5, -0x2638
 /* 0AD23C 800AC63C 000A58C0 */  sll   $t3, $t2, 3
 /* 0AD240 800AC640 016A5823 */  subu  $t3, $t3, $t2
 /* 0AD244 800AC644 000B5900 */  sll   $t3, $t3, 4

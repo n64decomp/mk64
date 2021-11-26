@@ -2774,7 +2774,7 @@ void func_800B3F74(u32 arg0) {
         if (gModeSelection == GRAND_PRIX) {
             gCourseSelection = COURSE_MARIO_RACEWAY;
         }
-        phi_v0_2 = gCharacterGPPoints;
+        phi_v0_2 = gGPCharacterPoints;
         do {
             temp_v0_5 = phi_v0_2 + 4;
             temp_v0_5->unk-3 = 0;
