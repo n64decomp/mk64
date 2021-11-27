@@ -55,4 +55,19 @@
 #define SPECIAL_CUP  3
 #define BATTLE_CUP   4
 
+/**
+ * Character IDs
+ * Note that these are not the same as the values
+ * found in gCharacterSelections as those are more
+ * akin to indexes than IDs
+**/
+#define MARIO  0
+#define LUIGI  1
+#define YOSHI  2
+#define TOAD   3
+#define DK     4
+#define WARIO  5
+#define PEACH  6
+#define BOWSER 7
+
 #endif // DEFINES_H

@@ -2530,17 +2530,49 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B3B58.s")
 ? func_800CA008(?, ?, s32);                         /* extern */
 ? func_800CB2C4();                                  /* extern */
 ? play_sound2(?, s8 *, s8 *, s8);                   /* extern */
-extern ? D_8018D9C8;
-extern ? D_8018D9D0;
+extern s32 D_800DC50C;
+extern s32 D_800DC524;
+extern s32 D_800DC530;
+extern s32 D_800DC540;
+extern s16 D_8015F890;
+extern s16 D_8015F892;
+extern s32 D_80162DC8;
+extern s32 D_80162DCC;
+extern s16 D_80162DD4;
+extern s16 D_80162DD8;
+extern s32 D_80162E00;
+extern s16 D_8016556E;
+extern s32 D_8018EDE0;
+extern s8 D_8018EDE8;
+extern s8 D_8018EDE9;
+extern s8 D_8018EDEA;
+extern s8 D_8018EDEB;
+extern s8 D_8018EDEC;
+extern s8 D_8018EDED;
+extern s8 D_8018EDEE;
+extern s8 D_8018EDEF;
+extern s8 D_8018EDF1;
+extern s8 D_8018EDF3;
+extern s8 D_8018EDF7;
+extern s8 D_8018EDFA;
+extern s8 D_8018EDFB;
+extern s8 D_8018EDFC;
+extern s32 D_8018EE00;
+extern s32 D_8018EE04;
+extern s8 D_8018EE08;
+extern s8 D_8018EE0A;
+extern s16 gEnableDebugMode;
+static s8 D_800E86A8 = 0;                           /* const */
 static ? D_800F2BDF;                                /* unable to generate initializer; const */
+s32 gIsMirrorMode = 0;
 
 void func_800B3F74(u32 arg0) {
-    ? *temp_v0_5;
     s32 temp_v0;
     s32 temp_v0_3;
     s32 temp_v0_4;
     s8 *temp_a1;
     s8 *temp_a2;
+    s8 *temp_v0_5;
     s8 temp_a0;
     s8 temp_a3;
     s8 temp_a3_2;
@@ -2551,7 +2583,7 @@ void func_800B3F74(u32 arg0) {
     s8 *phi_a2;
     s8 *phi_a1;
     s32 phi_a0;
-    ? *phi_v0_2;
+    s8 *phi_v0_2;
 
     D_8018EDEF = 1;
     D_8018EE00 = 0;
@@ -2589,7 +2621,7 @@ void func_800B3F74(u32 arg0) {
         gIsMirrorMode = 0;
         gEnableDebugMode = 0;
         gCupSelection = MUSHROOM_CUP;
-        gCourseSelection = 0;
+        gCourseSelection = COURSE_MARIO_RACEWAY;
         D_8018EDF7 = 0;
         if (D_8018EDF3 <= 0) {
             D_8018EDF3 = 1;
@@ -2721,7 +2753,7 @@ void func_800B3F74(u32 arg0) {
     case 3:
     case 13:
         if (gModeSelection == BATTLE) {
-            gCupSelection = 4;
+            gCupSelection = BATTLE_CUP;
             D_800DC540 = 4;
             D_8018EDEC = 4;
         } else {
@@ -2740,9 +2772,9 @@ void func_800B3F74(u32 arg0) {
         play_sound2(0x49009013);
         D_8018EE0A = 0;
         if (gModeSelection == GRAND_PRIX) {
-            gCourseSelection = 0;
+            gCourseSelection = COURSE_MARIO_RACEWAY;
         }
-        phi_v0_2 = &D_8018D9C8;
+        phi_v0_2 = gGPCharacterPoints;
         do {
             temp_v0_5 = phi_v0_2 + 4;
             temp_v0_5->unk-3 = 0;
@@ -2750,7 +2782,7 @@ void func_800B3F74(u32 arg0) {
             temp_v0_5->unk-1 = 0;
             temp_v0_5->unk-4 = 0;
             phi_v0_2 = temp_v0_5;
-        } while (temp_v0_5 != &D_8018D9D0);
+        } while (temp_v0_5 != gGPOverallRanks);
         break;
     }
     func_800B44AC();

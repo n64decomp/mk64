@@ -37,7 +37,7 @@ void func_80281780(void) {
             } else {
                 D_800E86A8[0] = 0;
             }
-            bcopy(&D_80284ED0, &D_8018D9D0, 8);
+            bcopy(&D_80284ED0, &gGPOverallRanks, 8);
         }
     }
 }
@@ -45,7 +45,7 @@ void func_80281780(void) {
 s32 func_80281880(s32 arg0) {
     s32 i;
     for (i = 0; i < 8; i++) {
-        if (D_8018D9D0[i] == D_800E86A8[arg0]) break;
+        if (gGPOverallRanks[i] == D_800E86A8[arg0]) break;
     }
     return i;
 }
