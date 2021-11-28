@@ -3,6 +3,11 @@
 #include <types.h>
 #include <common_structs.h>
 
+// Location based from sm64.
+// This may need to be moved before framebuffers.c
+// If math_util has data that does not line-up with trig_tables.
+#include "trig_tables.inc.c"
+
 f32 func_802B4F60(s32 arg0, f32 arg2, f32 arg3); // static
 f32 func_802B6434(f32, f32, f32 *, f32 *); // static
 s16 func_802B7830(f32 y, f32 x);
