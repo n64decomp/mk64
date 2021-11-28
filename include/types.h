@@ -4,6 +4,8 @@
 #include <ultra64.h>
 #include <common_structs.h>
 
+typedef f32 Mat4[4][4];
+
 enum SpTaskState {
     SPTASK_STATE_NOT_STARTED,
     SPTASK_STATE_RUNNING,

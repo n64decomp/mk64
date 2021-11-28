@@ -1852,9 +1852,9 @@ void update_obj_green_shell(void *arg0) {
             arg0->unk2C = sp74;
             return;
         }
-        sp6C = func_802B8018(arg0->unk12) * 6.0f;
+        sp6C = sins(arg0->unk12) * 6.0f;
         sp70 = arg0->unkC - temp_s1_2->unk_070;
-        sp74 = func_802B8038(arg0->unk12, MIPS2C_ERROR(Read from unset register $a1)) * 6.0f;
+        sp74 = coss(arg0->unk12, MIPS2C_ERROR(Read from unset register $a1)) * 6.0f;
         func_802B63B8(&sp6C, temp_s1_2->unk_174);
         arg0->unk18 = sp6C + temp_s1_2->posX;
         arg0->unk1C = sp70 + temp_s1_2->posY;
@@ -1900,9 +1900,9 @@ void update_obj_green_shell(void *arg0) {
         }
         temp_t4 = arg0->unk12 + temp_v0_3->unk10;
         arg0->unk12 = temp_t4;
-        sp6C = func_802B8018(temp_t4 & 0xFFFF) * 8.0f;
+        sp6C = sins(temp_t4 & 0xFFFF) * 8.0f;
         sp70 = arg0->unkC - temp_s1_4->unk_070;
-        temp_f18 = func_802B8038(arg0->unk12, MIPS2C_ERROR(Read from unset register $a1)) * 8.0f;
+        temp_f18 = coss(arg0->unk12, MIPS2C_ERROR(Read from unset register $a1)) * 8.0f;
         sp74 = temp_f18;
         func_802B63B8((bitwise f32 *) 8.0f, &sp6C, temp_s1_4->unk_174);
         sp78 = arg0->unk18;
@@ -2354,11 +2354,11 @@ block_16:
             arg0->unk2C = sp94;
             return;
         }
-        temp_f10 = func_802B8018(arg0->unk12) * 8.0f;
+        temp_f10 = sins(arg0->unk12) * 8.0f;
         sp8C = temp_f10;
         temp_f4 = arg0->unkC - temp_s1_2->unk_070;
         sp90 = temp_f4;
-        sp94 = func_802B8038(arg0->unk12) * 8.0f;
+        sp94 = coss(arg0->unk12) * 8.0f;
         func_802B63B8(&sp8C, temp_s1_2->unk_174);
         arg0->unk18 = temp_f10 + temp_s1_2->posX;
         arg0->unk1C = temp_f4 + temp_s1_2->posY;
@@ -2472,9 +2472,9 @@ block_16:
         }
         temp_t6 = arg0->unk12 + temp_v0_7->unk10;
         arg0->unk12 = temp_t6;
-        sp8C = func_802B8018(temp_t6 & 0xFFFF) * 8.0f;
+        sp8C = sins(temp_t6 & 0xFFFF) * 8.0f;
         sp90 = arg0->unkC - temp_s1_3->unk_070;
-        sp94 = func_802B8038(arg0->unk12) * 8.0f;
+        sp94 = coss(arg0->unk12) * 8.0f;
         func_802B63B8(&sp8C, temp_s1_3->unk_174);
         sp38 = arg0->unk18;
         sp3C = arg0->unk1C;

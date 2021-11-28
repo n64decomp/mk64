@@ -5,10 +5,10 @@ glabel func_802B59DC
 /* 11EFF8 802B59E8 AFBF001C */  sw    $ra, 0x1c($sp)
 /* 11EFFC 802B59EC 30A4FFFF */  andi  $a0, $a1, 0xffff
 /* 11F000 802B59F0 AFA50034 */  sw    $a1, 0x34($sp)
-/* 11F004 802B59F4 0C0AE006 */  jal   func_802B8018
+/* 11F004 802B59F4 0C0AE006 */  jal   sins
 /* 11F008 802B59F8 AFA40024 */   sw    $a0, 0x24($sp)
 /* 11F00C 802B59FC 8FA40024 */  lw    $a0, 0x24($sp)
-/* 11F010 802B5A00 0C0AE00E */  jal   func_802B8038
+/* 11F010 802B5A00 0C0AE00E */  jal   coss
 /* 11F014 802B5A04 E7A0002C */   swc1  $f0, 0x2c($sp)
 /* 11F018 802B5A08 02002025 */  move  $a0, $s0
 /* 11F01C 802B5A0C 0C0AD4F2 */  jal   func_802B53C8

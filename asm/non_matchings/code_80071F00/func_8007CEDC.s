@@ -215,7 +215,7 @@ glabel L8007D05C
 /* 07DDEC 8007D1EC 01338821 */  addu  $s1, $t1, $s3
 /* 07DDF0 8007D1F0 322AFFFF */  andi  $t2, $s1, 0xffff
 /* 07DDF4 8007D1F4 01408825 */  move  $s1, $t2
-/* 07DDF8 8007D1F8 0C0AE006 */  jal   func_802B8018
+/* 07DDF8 8007D1F8 0C0AE006 */  jal   sins
 /* 07DDFC 8007D1FC 3144FFFF */   andi  $a0, $t2, 0xffff
 /* 07DE00 8007D200 44922000 */  mtc1  $s2, $f4
 /* 07DE04 8007D204 8FCB0000 */  lw    $t3, ($fp)
@@ -228,7 +228,7 @@ glabel L8007D05C
 /* 07DE20 8007D220 E7A20044 */  swc1  $f2, 0x44($sp)
 /* 07DE24 8007D224 E6120014 */  swc1  $f18, 0x14($s0)
 /* 07DE28 8007D228 46083280 */  add.s $f10, $f6, $f8
-/* 07DE2C 8007D22C 0C0AE00E */  jal   func_802B8038
+/* 07DE2C 8007D22C 0C0AE00E */  jal   coss
 /* 07DE30 8007D230 E60A0010 */   swc1  $f10, 0x10($s0)
 /* 07DE34 8007D234 C7A20044 */  lwc1  $f2, 0x44($sp)
 /* 07DE38 8007D238 8FCC0000 */  lw    $t4, ($fp)

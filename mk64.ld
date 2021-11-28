@@ -400,7 +400,7 @@ SECTIONS
    /* 0x802BA370 724220-729A30 [0x5810] */
    BEGIN_SEG(data_802BA370, 0x802BA370)
    {
-      BUILD_DIR/data/game_data_802BA370.o(.data);
+      BUILD_DIR/src/math_util.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(data_802BA370)

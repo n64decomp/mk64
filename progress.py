@@ -221,7 +221,7 @@ mainSegPct = 100 * mainSeg / mainSeg_size
 seg2Pct = 100 * seg2 / seg2_size
 seg3Pct = 100 * seg3 / seg3_size
 
-bytesPerHeartPiece = text_size / 80
+bytesPerHeartPiece = text_size // 80
 
 #if args.format == 'csv':
 #    version = 1

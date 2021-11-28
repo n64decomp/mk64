@@ -4,10 +4,10 @@ glabel func_80041AD8
 /* 0426E0 80041AE0 AFA50024 */  sw    $a1, 0x24($sp)
 /* 0426E4 80041AE4 00803025 */  move  $a2, $a0
 /* 0426E8 80041AE8 AFA60020 */  sw    $a2, 0x20($sp)
-/* 0426EC 80041AEC 0C0AE006 */  jal   func_802B8018
+/* 0426EC 80041AEC 0C0AE006 */  jal   sins
 /* 0426F0 80041AF0 97A40026 */   lhu   $a0, 0x26($sp)
 /* 0426F4 80041AF4 97A40026 */  lhu   $a0, 0x26($sp)
-/* 0426F8 80041AF8 0C0AE00E */  jal   func_802B8038
+/* 0426F8 80041AF8 0C0AE00E */  jal   coss
 /* 0426FC 80041AFC E7A0001C */   swc1  $f0, 0x1c($sp)
 /* 042700 80041B00 8FA60020 */  lw    $a2, 0x20($sp)
 /* 042704 80041B04 C7AC001C */  lwc1  $f12, 0x1c($sp)
