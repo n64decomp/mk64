@@ -70,4 +70,14 @@
 #define PEACH  6
 #define BOWSER 7
 
+/**
+ * Indexes for accessing different Time Trial records
+**/
+#define TIME_TRIAL_3LAP_RECORD_1 0
+#define TIME_TRIAL_3LAP_RECORD_2 1
+#define TIME_TRIAL_3LAP_RECORD_3 2
+#define TIME_TRIAL_3LAP_RECORD_4 3
+#define TIME_TRIAL_3LAP_RECORD_5 4
+#define TIME_TRIAL_1LAP_RECORD   5
+
 #endif // DEFINES_H
