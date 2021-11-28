@@ -161,10 +161,10 @@ glabel func_8002934C
 /* 02A1A0 800295A0 01CFC021 */  addu  $t8, $t6, $t7
 /* 02A1A4 800295A4 03197821 */  addu  $t7, $t8, $t9
 /* 02A1A8 800295A8 31E4FFFF */  andi  $a0, $t7, 0xffff
-/* 02A1AC 800295AC 0C0AE006 */  jal   func_802B8018
+/* 02A1AC 800295AC 0C0AE006 */  jal   sins
 /* 02A1B0 800295B0 AFA40020 */   sw    $a0, 0x20($sp)
 /* 02A1B4 800295B4 8FA40020 */  lw    $a0, 0x20($sp)
-/* 02A1B8 800295B8 0C0AE00E */  jal   func_802B8038
+/* 02A1B8 800295B8 0C0AE00E */  jal   coss
 /* 02A1BC 800295BC E7A00028 */   swc1  $f0, 0x28($sp)
 /* 02A1C0 800295C0 8FA70024 */  lw    $a3, 0x24($sp)
 /* 02A1C4 800295C4 C7A60028 */  lwc1  $f6, 0x28($sp)

@@ -19,17 +19,17 @@ glabel func_802B5D64
 /* 11F3B8 802B5DA8 AFA5005C */  sw    $a1, 0x5c($sp)
 /* 11F3BC 802B5DAC AFA60060 */  sw    $a2, 0x60($sp)
 /* 11F3C0 802B5DB0 02018021 */  addu  $s0, $s0, $at
-/* 11F3C4 802B5DB4 0C0AE006 */  jal   func_802B8018
+/* 11F3C4 802B5DB4 0C0AE006 */  jal   sins
 /* 11F3C8 802B5DB8 AFA40020 */   sw    $a0, 0x20($sp)
 /* 11F3CC 802B5DBC 8FA40020 */  lw    $a0, 0x20($sp)
-/* 11F3D0 802B5DC0 0C0AE00E */  jal   func_802B8038
+/* 11F3D0 802B5DC0 0C0AE00E */  jal   coss
 /* 11F3D4 802B5DC4 E7A00048 */   swc1  $f0, 0x48($sp)
 /* 11F3D8 802B5DC8 97A4005E */  lhu   $a0, 0x5e($sp)
 /* 11F3DC 802B5DCC E7A00044 */  swc1  $f0, 0x44($sp)
-/* 11F3E0 802B5DD0 0C0AE006 */  jal   func_802B8018
+/* 11F3E0 802B5DD0 0C0AE006 */  jal   sins
 /* 11F3E4 802B5DD4 AFA40020 */   sw    $a0, 0x20($sp)
 /* 11F3E8 802B5DD8 8FA40020 */  lw    $a0, 0x20($sp)
-/* 11F3EC 802B5DDC 0C0AE00E */  jal   func_802B8038
+/* 11F3EC 802B5DDC 0C0AE00E */  jal   coss
 /* 11F3F0 802B5DE0 E7A00040 */   swc1  $f0, 0x40($sp)
 /* 11F3F4 802B5DE4 C7AC0044 */  lwc1  $f12, 0x44($sp)
 /* 11F3F8 802B5DE8 C7A40040 */  lwc1  $f4, 0x40($sp)

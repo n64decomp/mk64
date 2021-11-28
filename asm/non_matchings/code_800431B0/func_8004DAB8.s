@@ -56,14 +56,14 @@ glabel func_8004DAB8
 /* 04E788 8004DB88 468025A0 */  cvt.s.w $f22, $f4
 .L8004DB8C:
 /* 04E78C 8004DB8C 3230FFFF */  andi  $s0, $s1, 0xffff
-/* 04E790 8004DB90 0C0AE006 */  jal   func_802B8018
+/* 04E790 8004DB90 0C0AE006 */  jal   sins
 /* 04E794 8004DB94 3204FFFF */   andi  $a0, $s0, 0xffff
 /* 04E798 8004DB98 46140182 */  mul.s $f6, $f0, $f20
 /* 04E79C 8004DB9C 3204FFFF */  andi  $a0, $s0, 0xffff
 /* 04E7A0 8004DBA0 46163200 */  add.s $f8, $f6, $f22
 /* 04E7A4 8004DBA4 4600428D */  trunc.w.s $f10, $f8
 /* 04E7A8 8004DBA8 44165000 */  mfc1  $s6, $f10
-/* 04E7AC 8004DBAC 0C0AE006 */  jal   func_802B8018
+/* 04E7AC 8004DBAC 0C0AE006 */  jal   sins
 /* 04E7B0 8004DBB0 00000000 */   nop   
 /* 04E7B4 8004DBB4 02402025 */  move  $a0, $s2
 /* 04E7B8 8004DBB8 02602825 */  move  $a1, $s3

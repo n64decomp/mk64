@@ -10,10 +10,10 @@ glabel func_802B6A84
 /* 1200B4 802B6AA4 30A4FFFF */  andi  $a0, $a1, 0xffff
 /* 1200B8 802B6AA8 AFA5005C */  sw    $a1, 0x5c($sp)
 /* 1200BC 802B6AAC AFA40034 */  sw    $a0, 0x34($sp)
-/* 1200C0 802B6AB0 0C0AE006 */  jal   func_802B8018
+/* 1200C0 802B6AB0 0C0AE006 */  jal   sins
 /* 1200C4 802B6AB4 AFA60058 */   sw    $a2, 0x58($sp)
 /* 1200C8 802B6AB8 8FA40034 */  lw    $a0, 0x34($sp)
-/* 1200CC 802B6ABC 0C0AE00E */  jal   func_802B8038
+/* 1200CC 802B6ABC 0C0AE00E */  jal   coss
 /* 1200D0 802B6AC0 E7A00054 */   swc1  $f0, 0x54($sp)
 /* 1200D4 802B6AC4 4614A302 */  mul.s $f12, $f20, $f20
 /* 1200D8 802B6AC8 3C013F80 */  li    $at, 0x3F800000 # 1.000000

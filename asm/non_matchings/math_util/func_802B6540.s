@@ -7,10 +7,10 @@ glabel func_802B6540
 /* 11FB64 802B6554 AFA500B4 */  sw    $a1, 0xb4($sp)
 /* 11FB68 802B6558 AFA600B8 */  sw    $a2, 0xb8($sp)
 /* 11FB6C 802B655C AFA700BC */  sw    $a3, 0xbc($sp)
-/* 11FB70 802B6560 0C0AE006 */  jal   func_802B8018
+/* 11FB70 802B6560 0C0AE006 */  jal   sins
 /* 11FB74 802B6564 AFA40038 */   sw    $a0, 0x38($sp)
 /* 11FB78 802B6568 8FA40038 */  lw    $a0, 0x38($sp)
-/* 11FB7C 802B656C 0C0AE00E */  jal   func_802B8038
+/* 11FB7C 802B656C 0C0AE00E */  jal   coss
 /* 11FB80 802B6570 E7A00040 */   swc1  $f0, 0x40($sp)
 /* 11FB84 802B6574 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 11FB88 802B6578 44816000 */  mtc1  $at, $f12

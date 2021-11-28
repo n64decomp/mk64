@@ -12,7 +12,7 @@ glabel func_8001FD78
 /* 0209A0 8001FDA0 01AE2023 */  subu  $a0, $t5, $t6
 /* 0209A4 8001FDA4 2484F8E4 */  addiu $a0, $a0, -0x71c
 /* 0209A8 8001FDA8 308FFFFF */  andi  $t7, $a0, 0xffff
-/* 0209AC 8001FDAC 0C0AE00E */  jal   func_802B8038
+/* 0209AC 8001FDAC 0C0AE00E */  jal   coss
 /* 0209B0 8001FDB0 01E02025 */   move  $a0, $t7
 /* 0209B4 8001FDB4 3C01428C */  li    $at, 0x428C0000 # 70.000000
 /* 0209B8 8001FDB8 44815000 */  mtc1  $at, $f10
@@ -25,7 +25,7 @@ glabel func_8001FD78
 /* 0209D4 8001FDD4 03192023 */  subu  $a0, $t8, $t9
 /* 0209D8 8001FDD8 2484F8E4 */  addiu $a0, $a0, -0x71c
 /* 0209DC 8001FDDC 3088FFFF */  andi  $t0, $a0, 0xffff
-/* 0209E0 8001FDE0 0C0AE006 */  jal   func_802B8018
+/* 0209E0 8001FDE0 0C0AE006 */  jal   sins
 /* 0209E4 8001FDE4 01002025 */   move  $a0, $t0
 /* 0209E8 8001FDE8 3C01428C */  li    $at, 0x428C0000 # 70.000000
 /* 0209EC 8001FDEC 44812000 */  mtc1  $at, $f4
@@ -38,7 +38,7 @@ glabel func_8001FD78
 /* 020A08 8001FE08 012A2023 */  subu  $a0, $t1, $t2
 /* 020A0C 8001FE0C 2484071C */  addiu $a0, $a0, 0x71c
 /* 020A10 8001FE10 308BFFFF */  andi  $t3, $a0, 0xffff
-/* 020A14 8001FE14 0C0AE00E */  jal   func_802B8038
+/* 020A14 8001FE14 0C0AE00E */  jal   coss
 /* 020A18 8001FE18 01602025 */   move  $a0, $t3
 /* 020A1C 8001FE1C 3C01428C */  li    $at, 0x428C0000 # 70.000000
 /* 020A20 8001FE20 44815000 */  mtc1  $at, $f10
@@ -51,7 +51,7 @@ glabel func_8001FD78
 /* 020A3C 8001FE3C 018D2023 */  subu  $a0, $t4, $t5
 /* 020A40 8001FE40 2484071C */  addiu $a0, $a0, 0x71c
 /* 020A44 8001FE44 308EFFFF */  andi  $t6, $a0, 0xffff
-/* 020A48 8001FE48 0C0AE006 */  jal   func_802B8018
+/* 020A48 8001FE48 0C0AE006 */  jal   sins
 /* 020A4C 8001FE4C 01C02025 */   move  $a0, $t6
 /* 020A50 8001FE50 3C01428C */  li    $at, 0x428C0000 # 70.000000
 /* 020A54 8001FE54 44812000 */  mtc1  $at, $f4
@@ -64,7 +64,7 @@ glabel func_8001FD78
 /* 020A70 8001FE70 01F82023 */  subu  $a0, $t7, $t8
 /* 020A74 8001FE74 24841C70 */  addiu $a0, $a0, 0x1c70
 /* 020A78 8001FE78 3099FFFF */  andi  $t9, $a0, 0xffff
-/* 020A7C 8001FE7C 0C0AE00E */  jal   func_802B8038
+/* 020A7C 8001FE7C 0C0AE00E */  jal   coss
 /* 020A80 8001FE80 03202025 */   move  $a0, $t9
 /* 020A84 8001FE84 3C014120 */  li    $at, 0x41200000 # 10.000000
 /* 020A88 8001FE88 44815000 */  mtc1  $at, $f10
@@ -77,7 +77,7 @@ glabel func_8001FD78
 /* 020AA4 8001FEA4 01092023 */  subu  $a0, $t0, $t1
 /* 020AA8 8001FEA8 24841C70 */  addiu $a0, $a0, 0x1c70
 /* 020AAC 8001FEAC 308AFFFF */  andi  $t2, $a0, 0xffff
-/* 020AB0 8001FEB0 0C0AE006 */  jal   func_802B8018
+/* 020AB0 8001FEB0 0C0AE006 */  jal   sins
 /* 020AB4 8001FEB4 01402025 */   move  $a0, $t2
 /* 020AB8 8001FEB8 3C014120 */  li    $at, 0x41200000 # 10.000000
 /* 020ABC 8001FEBC 44812000 */  mtc1  $at, $f4

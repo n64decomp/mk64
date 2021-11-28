@@ -113,7 +113,7 @@ glabel func_800B0004
 /* 0B0DAC 800B01AC 0000C012 */  mflo  $t8
 /* 0B0DB0 800B01B0 01D82023 */  subu  $a0, $t6, $t8
 /* 0B0DB4 800B01B4 3099FFFF */  andi  $t9, $a0, 0xffff
-/* 0B0DB8 800B01B8 0C0AE006 */  jal   func_802B8018
+/* 0B0DB8 800B01B8 0C0AE006 */  jal   sins
 /* 0B0DBC 800B01BC 03202025 */   move  $a0, $t9
 /* 0B0DC0 800B01C0 44903000 */  mtc1  $s0, $f6
 /* 0B0DC4 800B01C4 46140102 */  mul.s $f4, $f0, $f20
@@ -130,7 +130,7 @@ glabel func_800B0004
 /* 0B0DF0 800B01F0 46165402 */  mul.s $f16, $f10, $f22
 /* 0B0DF4 800B01F4 4600848D */  trunc.w.s $f18, $f16
 /* 0B0DF8 800B01F8 44149000 */  mfc1  $s4, $f18
-/* 0B0DFC 800B01FC 0C0AE006 */  jal   func_802B8018
+/* 0B0DFC 800B01FC 0C0AE006 */  jal   sins
 /* 0B0E00 800B0200 00000000 */   nop   
 /* 0B0E04 800B0204 44912000 */  mtc1  $s1, $f4
 /* 0B0E08 800B0208 46140182 */  mul.s $f6, $f0, $f20
