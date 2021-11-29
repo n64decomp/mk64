@@ -70,4 +70,19 @@
 #define PEACH  6
 #define BOWSER 7
 
+/**
+ * Text color options
+ * The 2 cycling options cycle through Blue -> Green -> Red
+ * Cycle 2 appears to be one step ahead of Cycle 1
+ * Other values like 6 and 7 sort of work, they cause rapid
+ * flashing between 2 colors, but also cause individual characters
+ * to be cutoff on their right side
+**/
+#define TEXT_BLUE                   0
+#define TEXT_GREEN                  1
+#define TEXT_RED                    2
+#define TEXT_YELLOW                 3
+#define TEXT_BLUE_GREEN_RED_CYCLE_1 4
+#define TEXT_BLUE_GREEN_RED_CYCLE_2 5
+
 #endif // DEFINES_H

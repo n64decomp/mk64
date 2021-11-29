@@ -1892,7 +1892,7 @@ glabel D_8018E858
 glabel D_8018E85C
 .skip 4
 
-glabel D_8018E860
+glabel gTextColor
 .skip 8
 
 glabel D_8018E868

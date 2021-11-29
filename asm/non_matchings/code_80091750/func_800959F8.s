@@ -1,6 +1,6 @@
 glabel func_800959F8
-/* 0965F8 800959F8 3C028019 */  lui   $v0, %hi(D_8018E860) # $v0, 0x8019
-/* 0965FC 800959FC 8042E860 */  lb    $v0, %lo(D_8018E860)($v0)
+/* 0965F8 800959F8 3C028019 */  lui   $v0, %hi(gTextColor) # $v0, 0x8019
+/* 0965FC 800959FC 8042E860 */  lb    $v0, %lo(gTextColor)($v0)
 /* 096600 80095A00 3C190200 */  lui   $t9, %hi(D_02007BB8) # $t9, 0x200
 /* 096604 80095A04 3C0F800E */  lui   $t7, %hi(gGlobalTimer) # $t7, 0x800e
 /* 096608 80095A08 28410004 */  slti  $at, $v0, 4
