@@ -49,7 +49,7 @@ glabel func_8006801C
 /* 068CD8 800680D8 01CFC821 */  addu  $t9, $t6, $t7
 /* 068CDC 800680DC 03192023 */  subu  $a0, $t8, $t9
 /* 068CE0 800680E0 308EFFFF */  andi  $t6, $a0, 0xffff
-/* 068CE4 800680E4 0C0AE006 */  jal   func_802B8018
+/* 068CE4 800680E4 0C0AE006 */  jal   sins
 /* 068CE8 800680E8 01C02025 */   move  $a0, $t6
 /* 068CEC 800680EC C7A40098 */  lwc1  $f4, 0x98($sp)
 /* 068CF0 800680F0 C6080014 */  lwc1  $f8, 0x14($s0)
@@ -74,7 +74,7 @@ glabel func_8006801C
 /* 068D3C 8006813C 01CFC021 */  addu  $t8, $t6, $t7
 /* 068D40 80068140 03382023 */  subu  $a0, $t9, $t8
 /* 068D44 80068144 308EFFFF */  andi  $t6, $a0, 0xffff
-/* 068D48 80068148 0C0AE00E */  jal   func_802B8038
+/* 068D48 80068148 0C0AE00E */  jal   coss
 /* 068D4C 8006814C 01C02025 */   move  $a0, $t6
 /* 068D50 80068150 C7B20098 */  lwc1  $f18, 0x98($sp)
 /* 068D54 80068154 C606001C */  lwc1  $f6, 0x1c($s0)

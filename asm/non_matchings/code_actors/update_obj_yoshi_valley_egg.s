@@ -6,7 +6,7 @@ glabel update_obj_yoshi_valley_egg
 /* 10121C 80297C0C 25CF005B */  addiu $t7, $t6, 0x5b
 /* 101220 80297C10 A48F0010 */  sh    $t7, 0x10($a0)
 /* 101224 80297C14 AFA50018 */  sw    $a1, 0x18($sp)
-/* 101228 80297C18 0C0AE006 */  jal   func_802B8018
+/* 101228 80297C18 0C0AE006 */  jal   sins
 /* 10122C 80297C1C 31E4FFFF */   andi  $a0, $t7, 0xffff
 /* 101230 80297C20 8FA50018 */  lw    $a1, 0x18($sp)
 /* 101234 80297C24 C4A40008 */  lwc1  $f4, 8($a1)
@@ -14,7 +14,7 @@ glabel update_obj_yoshi_valley_egg
 /* 10123C 80297C2C 94A40010 */  lhu   $a0, 0x10($a1)
 /* 101240 80297C30 46040182 */  mul.s $f6, $f0, $f4
 /* 101244 80297C34 46083280 */  add.s $f10, $f6, $f8
-/* 101248 80297C38 0C0AE00E */  jal   func_802B8038
+/* 101248 80297C38 0C0AE00E */  jal   coss
 /* 10124C 80297C3C E4AA0018 */   swc1  $f10, 0x18($a1)
 /* 101250 80297C40 8FA50018 */  lw    $a1, 0x18($sp)
 /* 101254 80297C44 3C01C040 */  li    $at, 0xC0400000 # -3.000000

@@ -9,10 +9,10 @@ glabel func_8007A778
 /* 07B394 8007A794 01EE8023 */  subu  $s0, $t7, $t6
 /* 07B398 8007A798 3218FFFF */  andi  $t8, $s0, 0xffff
 /* 07B39C 8007A79C 03008025 */  move  $s0, $t8
-/* 07B3A0 8007A7A0 0C0AE00E */  jal   func_802B8038
+/* 07B3A0 8007A7A0 0C0AE00E */  jal   coss
 /* 07B3A4 8007A7A4 3304FFFF */   andi  $a0, $t8, 0xffff
 /* 07B3A8 8007A7A8 E7A00024 */  swc1  $f0, 0x24($sp)
-/* 07B3AC 8007A7AC 0C0AE006 */  jal   func_802B8018
+/* 07B3AC 8007A7AC 0C0AE006 */  jal   sins
 /* 07B3B0 8007A7B0 3204FFFF */   andi  $a0, $s0, 0xffff
 /* 07B3B4 8007A7B4 8FB90030 */  lw    $t9, 0x30($sp)
 /* 07B3B8 8007A7B8 3C098016 */  lui   $t1, %hi(D_80165C18) # $t1, 0x8016
@@ -42,10 +42,10 @@ glabel func_8007A778
 /* 07B418 8007A818 AFA20020 */  sw    $v0, 0x20($sp)
 /* 07B41C 8007A81C 460A3200 */  add.s $f8, $f6, $f10
 /* 07B420 8007A820 46082480 */  add.s $f18, $f4, $f8
-/* 07B424 8007A824 0C0AE006 */  jal   func_802B8018
+/* 07B424 8007A824 0C0AE006 */  jal   sins
 /* 07B428 8007A828 E4520008 */   swc1  $f18, 8($v0)
 /* 07B42C 8007A82C E7A00024 */  swc1  $f0, 0x24($sp)
-/* 07B430 8007A830 0C0AE00E */  jal   func_802B8038
+/* 07B430 8007A830 0C0AE00E */  jal   coss
 /* 07B434 8007A834 3204FFFF */   andi  $a0, $s0, 0xffff
 /* 07B438 8007A838 8FA20020 */  lw    $v0, 0x20($sp)
 /* 07B43C 8007A83C 8FAA0034 */  lw    $t2, 0x34($sp)

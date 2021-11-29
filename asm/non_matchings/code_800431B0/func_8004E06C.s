@@ -46,7 +46,7 @@ glabel func_8004E06C
 /* 04ED14 8004E114 468025A0 */  cvt.s.w $f22, $f4
 .L8004E118:
 /* 04ED18 8004E118 3230FFFF */  andi  $s0, $s1, 0xffff
-/* 04ED1C 8004E11C 0C0AE006 */  jal   func_802B8018
+/* 04ED1C 8004E11C 0C0AE006 */  jal   sins
 /* 04ED20 8004E120 3204FFFF */   andi  $a0, $s0, 0xffff
 /* 04ED24 8004E124 46140182 */  mul.s $f6, $f0, $f20
 /* 04ED28 8004E128 24160001 */  li    $s6, 1
@@ -86,7 +86,7 @@ glabel func_8004E06C
 /* 04EDA8 8004E1A8 00000000 */   nop   
 .L8004E1AC:
 /* 04EDAC 8004E1AC 44CAF800 */  ctc1  $t2, $31
-/* 04EDB0 8004E1B0 0C0AE006 */  jal   func_802B8018
+/* 04EDB0 8004E1B0 0C0AE006 */  jal   sins
 /* 04EDB4 8004E1B4 3204FFFF */   andi  $a0, $s0, 0xffff
 /* 04EDB8 8004E1B8 02402025 */  move  $a0, $s2
 /* 04EDBC 8004E1BC 02602825 */  move  $a1, $s3

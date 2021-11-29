@@ -5141,8 +5141,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80060B14.s")
 ? func_8005D794(void *, void *, f32, f32, f32, s32, s32); // extern
 ? func_8005D7D8(void *, ?, ?); // extern
 ? func_8005D800(void *, ?, ?); // extern
-f32 func_802B8018(s32); // extern
-f32 func_802B8038(s32); // extern
+f32 sins(s32); // extern
+f32 coss(s32); // extern
 extern f64 D_800EE588;
 extern f64 D_800EE590;
 extern f64 D_800EE598;
@@ -5173,8 +5173,8 @@ void func_80060BCC(void *arg0, s16 arg1, s32 arg2, ? arg3) {
             func_8005D800(temp_s1, 0xFFFFFF, 0xFF);
             temp_a0 = (sp54 * 0xB6) & 0xFFFF;
             sp3C = temp_a0;
-            temp_s0->unk530 = (func_802B8038(temp_a0) * D_800EE588) + arg0->unk1C;
-            temp_s0->unk528 = (func_802B8018(temp_a0) * D_800EE590) + arg0->unk14;
+            temp_s0->unk530 = (coss(temp_a0) * D_800EE588) + arg0->unk1C;
+            temp_s0->unk528 = (sins(temp_a0) * D_800EE590) + arg0->unk14;
             temp_s0->unk52C = (arg0->unk18 - arg0->unk70) + sp4C + 2.0f;
             temp_s0->unk540 = sp44 + 1.0f;
             temp_s0->unk534 = (sp48 + 2.0f) / 10.0f;
@@ -5188,8 +5188,8 @@ void func_80060BCC(void *arg0, s16 arg1, s32 arg2, ? arg3) {
             func_8005D800(temp_s1_2, 0xFFFFFF, 0xFF);
             temp_a0_2 = (sp54 * 0xB6) & 0xFFFF;
             sp3C = temp_a0_2;
-            temp_s0_2->unk530 = (func_802B8038(temp_a0_2) * D_800EE598) + arg0->unk1C;
-            temp_s0_2->unk528 = (func_802B8018(temp_a0_2) * D_800EE5A0) + arg0->unk14;
+            temp_s0_2->unk530 = (coss(temp_a0_2) * D_800EE598) + arg0->unk1C;
+            temp_s0_2->unk528 = (sins(temp_a0_2) * D_800EE5A0) + arg0->unk14;
             temp_s0_2->unk52C = (arg0->unk18 - arg0->unk70) + sp4C + 2.0f;
             temp_s0_2->unk540 = sp44 + 1.0f;
             temp_s0_2->unk534 = (sp48 + 2.0f) / 10.0f;
@@ -5206,8 +5206,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80060BCC.s")
 ? func_8005D794(s32, f32, f32, f32, s32, s32); // extern
 ? func_8005D7D8(s32, ?, ?); // extern
 ? func_8005D800(s32, ?, ?); // extern
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern f64 D_800EE5A8;
 extern f64 D_800EE5B0;
 
@@ -5226,8 +5226,8 @@ void func_80060F50(void *arg0, s16 arg1, ? arg2, s8 arg3) {
     } else {
         func_8005D800(temp_s1, 0xFFFFFF, 0xFF);
     }
-    temp_s0->unk260 = (func_802B8038(temp_s0->unk278) * D_800EE5A8) + arg0->unk1C;
-    temp_s0->unk258 = (func_802B8018(temp_s0->unk278) * D_800EE5B0) + arg0->unk14;
+    temp_s0->unk260 = (coss(temp_s0->unk278) * D_800EE5A8) + arg0->unk1C;
+    temp_s0->unk258 = (sins(temp_s0->unk278) * D_800EE5B0) + arg0->unk14;
     temp_s0->unk25C = D_801652A0[arg3];
     arg0->unkDE = arg0->unkDE & 0xFFF7;
 }
@@ -5269,8 +5269,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80061094.s")
 ? func_8005D794(s32, f32, f32, f32, s32, s32); // extern
 ? func_8005D7D8(s32, ?, ?); // extern
 ? func_8005D800(s32, ?, ?); // extern
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 
 void func_80061130(void *arg0, s16 arg1, ? arg2, ? arg3) {
     s32 sp30;
@@ -5283,8 +5283,8 @@ void func_80061130(void *arg0, s16 arg1, ? arg2, ? arg3) {
     func_8005D794(temp_a1, 0.0f, 0.0f, 0.0f, 0, 0);
     func_8005D7D8(sp30, 7, 0x3F19999A);
     func_8005D800(sp30, 0xFFFFFF, 0xD0);
-    temp_s0->unk260 = (func_802B8038(temp_s0->unk278) * 6.0f) + arg0->unk1C;
-    temp_s0->unk258 = (func_802B8018(temp_s0->unk278) * 6.0f) + arg0->unk14;
+    temp_s0->unk260 = (coss(temp_s0->unk278) * 6.0f) + arg0->unk1C;
+    temp_s0->unk258 = (sins(temp_s0->unk278) * 6.0f) + arg0->unk14;
     temp_s0->unk298 = 0;
     temp_s0->unk27C = 0.0f;
     temp_s0->unk25C = arg0->unk18 - 5.0f;
@@ -5467,8 +5467,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800615AC.s")
 ? func_8005D794(void *, s32, f32, f32, f32, s32, s32); // extern
 ? func_8005D7D8(s32, ?, ?); // extern
 ? func_8005D800(s32, ?, ?); // extern
-f32 func_802B8018(s32); // extern
-f32 func_802B8038(s32); // extern
+f32 sins(s32); // extern
+f32 coss(s32); // extern
 
 void func_80061754(void *arg0, s16 arg1, ? arg2, ? arg3) {
     s32 sp54;
@@ -5505,8 +5505,8 @@ void func_80061754(void *arg0, s16 arg1, ? arg2, ? arg3) {
         temp_s0->unkB04 = temp_s0->unkB04 + temp_s1;
     }
     temp_s1_2 = (sp54 * 0xB6) & 0xFFFF;
-    temp_s0->unkAD0 = (func_802B8038(temp_s1_2 & 0xFFFF) * -5.0f) + arg0->unk1C;
-    temp_s0->unkAC8 = (func_802B8018(temp_s1_2 & 0xFFFF) * -5.0f) + arg0->unk14;
+    temp_s0->unkAD0 = (coss(temp_s1_2 & 0xFFFF) * -5.0f) + arg0->unk1C;
+    temp_s0->unkAC8 = (sins(temp_s1_2 & 0xFFFF) * -5.0f) + arg0->unk14;
     temp_s0->unkACC = (arg0->unk18 - arg0->unk70) + sp4C + 2.0f;
     temp_s0->unkAE0 = sp44 + 1.0f;
     temp_s0->unkAD4 = sp48 + 1.0f;
@@ -5539,8 +5539,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006199C.s")
 ? func_8005D794(void *, void *, f32, f32, f32, s32, s32); // extern
 ? func_8005D7D8(void *, ?, ?); // extern
 ? func_8005D800(void *, ?, ?); // extern
-f32 func_802B8018(s32); // extern
-f32 func_802B8038(s32); // extern
+f32 sins(s32); // extern
+f32 coss(s32); // extern
 
 void func_80061A34(void *arg0, s16 arg1, s32 arg2, ? arg3) {
     s32 sp54;
@@ -5567,8 +5567,8 @@ void func_80061A34(void *arg0, s16 arg1, s32 arg2, ? arg3) {
         func_8005D800(temp_s1, 0xFFFFFF, 0xFF);
         temp_a0 = (sp54 * 0xB6) & 0xFFFF;
         sp3C = temp_a0;
-        temp_s0->unkAD0 = (func_802B8038(temp_a0) * -2.0) + arg0->unk1C;
-        temp_s0->unkAC8 = (func_802B8018(temp_a0) * -2.0) + arg0->unk14;
+        temp_s0->unkAD0 = (coss(temp_a0) * -2.0) + arg0->unk1C;
+        temp_s0->unkAC8 = (sins(temp_a0) * -2.0) + arg0->unk14;
         temp_s0->unkACC = (arg0->unk18 - arg0->unk70) + sp4C + 2.0f;
         temp_s0->unkAD4 = (sp48 + 2.0f) / 10.0f;
         return;
@@ -5581,8 +5581,8 @@ void func_80061A34(void *arg0, s16 arg1, s32 arg2, ? arg3) {
         func_8005D800(temp_s1_2, 0xFFFFFF, 0xFF);
         temp_a0_2 = (sp54 * 0xB6) & 0xFFFF;
         sp3C = temp_a0_2;
-        temp_s0_2->unkAD0 = (func_802B8038(temp_a0_2) * -2.0) + arg0->unk1C;
-        temp_s0_2->unkAC8 = (func_802B8018(temp_a0_2) * -2.0) + arg0->unk14;
+        temp_s0_2->unkAD0 = (coss(temp_a0_2) * -2.0) + arg0->unk1C;
+        temp_s0_2->unkAC8 = (sins(temp_a0_2) * -2.0) + arg0->unk14;
         temp_s0_2->unkACC = (arg0->unk18 - arg0->unk70) + sp4C + 2.0f;
         temp_s0_2->unkAD4 = (sp48 + 2.0f) / 10.0f;
     }
@@ -5643,8 +5643,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80061D4C.s")
 ? func_8005D794(void *, void *, f32, f32, f32, s32, s32); // extern
 ? func_8005D7D8(void *, ?, ?); // extern
 ? func_8005D800(void *, ?, ?); // extern
-f32 func_802B8018(s32); // extern
-f32 func_802B8038(s32); // extern
+f32 sins(s32); // extern
+f32 coss(s32); // extern
 
 void func_80061EF4(void *arg0, s16 arg1, s32 arg2, ? arg3) {
     s32 sp48;
@@ -5690,8 +5690,8 @@ void func_80061EF4(void *arg0, s16 arg1, s32 arg2, ? arg3) {
             } else {
                 temp_s0->unkAE8 = temp_s0->unkAE8 - 0x888;
             }
-            temp_s0->unkAD0 = (func_802B8038(((temp_s0->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk1C;
-            temp_s0->unkAC8 = (func_802B8018(((temp_s0->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk14;
+            temp_s0->unkAD0 = (coss(((temp_s0->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk1C;
+            temp_s0->unkAC8 = (sins(((temp_s0->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk14;
             return;
         }
         if ((arg0 + (arg2 * 0x48))->unkAE6 > 0) {
@@ -5707,8 +5707,8 @@ void func_80061EF4(void *arg0, s16 arg1, s32 arg2, ? arg3) {
             } else {
                 temp_s0_2->unkAE8 = temp_s0_2->unkAE8 - 0x888;
             }
-            temp_s0_2->unkAD0 = (func_802B8038(((temp_s0_2->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk1C;
-            temp_s0_2->unkAC8 = (func_802B8018(((temp_s0_2->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk14;
+            temp_s0_2->unkAD0 = (coss(((temp_s0_2->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk1C;
+            temp_s0_2->unkAC8 = (sins(((temp_s0_2->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk14;
         }
         // Duplicate return node #17. Try simplifying control flow for better match
     }
@@ -5722,8 +5722,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80061EF4.s")
 ? func_8005D794(void *, void *, f32, f32, f32, s32, s32); // extern
 ? func_8005D7D8(void *, ?, ?); // extern
 ? func_8005D800(void *, ?, ?); // extern
-f32 func_802B8018(s32); // extern
-f32 func_802B8038(s32); // extern
+f32 sins(s32); // extern
+f32 coss(s32); // extern
 
 void func_800621BC(void *arg0, s16 arg1, s32 arg2, ? arg3) {
     s32 sp48;
@@ -5769,8 +5769,8 @@ void func_800621BC(void *arg0, s16 arg1, s32 arg2, ? arg3) {
             } else {
                 temp_s0->unkAE8 = temp_s0->unkAE8 - 0x888;
             }
-            temp_s0->unkAD0 = (func_802B8038(((temp_s0->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk1C;
-            temp_s0->unkAC8 = (func_802B8018(((temp_s0->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk14;
+            temp_s0->unkAD0 = (coss(((temp_s0->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk1C;
+            temp_s0->unkAC8 = (sins(((temp_s0->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk14;
             return;
         }
         if ((arg0 + (arg2 * 0x48))->unkAE6 > 0) {
@@ -5786,8 +5786,8 @@ void func_800621BC(void *arg0, s16 arg1, s32 arg2, ? arg3) {
             } else {
                 temp_s0_2->unkAE8 = temp_s0_2->unkAE8 - 0x888;
             }
-            temp_s0_2->unkAD0 = (func_802B8038(((temp_s0_2->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk1C;
-            temp_s0_2->unkAC8 = (func_802B8018(((temp_s0_2->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk14;
+            temp_s0_2->unkAD0 = (coss(((temp_s0_2->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk1C;
+            temp_s0_2->unkAC8 = (sins(((temp_s0_2->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk14;
         }
         // Duplicate return node #17. Try simplifying control flow for better match
     }
@@ -6116,8 +6116,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80062AA8.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 
 void func_80062B18(f32 *arg0, f32 *arg1, f32 *arg2, f32 arg3, f32 arg4, f32 arg5, u16 arg6, u16 arg7) {
     f32 sp30;
@@ -6127,18 +6127,18 @@ void func_80062B18(f32 *arg0, f32 *arg1, f32 *arg2, f32 arg3, f32 arg4, f32 arg5
     f32 temp_f20_2;
     f32 temp_f20_3;
 
-    sp28 = func_802B8018(arg7);
-    sp2C = func_802B8038(arg6);
-    sp30 = func_802B8038(arg7 & 0xFFFF);
-    temp_f20 = func_802B8038(arg6 & 0xFFFF);
-    *arg0 = ((arg3 * temp_f20 * sp30) + (arg4 * sp2C * sp28)) - (func_802B8018(arg6 & 0xFFFF) * arg5);
-    temp_f20_2 = func_802B8018(arg7 & 0xFFFF);
-    *arg1 = (func_802B8038(arg7 & 0xFFFF) * arg4) - (arg3 * temp_f20_2);
-    sp28 = func_802B8018(arg7 & 0xFFFF);
-    sp2C = func_802B8018(arg6 & 0xFFFF);
-    sp30 = func_802B8038(arg7 & 0xFFFF);
-    temp_f20_3 = func_802B8018(arg6 & 0xFFFF);
-    *arg2 = (func_802B8038(arg6 & 0xFFFF) * arg5) + ((arg3 * temp_f20_3 * sp30) + (arg4 * sp2C * sp28));
+    sp28 = sins(arg7);
+    sp2C = coss(arg6);
+    sp30 = coss(arg7 & 0xFFFF);
+    temp_f20 = coss(arg6 & 0xFFFF);
+    *arg0 = ((arg3 * temp_f20 * sp30) + (arg4 * sp2C * sp28)) - (sins(arg6 & 0xFFFF) * arg5);
+    temp_f20_2 = sins(arg7 & 0xFFFF);
+    *arg1 = (coss(arg7 & 0xFFFF) * arg4) - (arg3 * temp_f20_2);
+    sp28 = sins(arg7 & 0xFFFF);
+    sp2C = sins(arg6 & 0xFFFF);
+    sp30 = coss(arg7 & 0xFFFF);
+    temp_f20_3 = sins(arg6 & 0xFFFF);
+    *arg2 = (coss(arg6 & 0xFFFF) * arg5) + ((arg3 * temp_f20_3 * sp30) + (arg4 * sp2C * sp28));
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80062B18.s")
@@ -6266,8 +6266,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80062F98.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern f64 D_800EE650;
 extern f64 D_800EE658;
 
@@ -6278,8 +6278,8 @@ void func_800630C0(void *arg0, s16 arg1, s8 arg2, ? arg3) {
     temp_v0 = arg0 + (arg1 * 0x48);
     temp_v0->unk276 = temp_v0->unk276 + 1;
     sp1C = temp_v0;
-    temp_v0->unk260 = (func_802B8038(temp_v0->unk278) * D_800EE650) + arg0->unk1C;
-    temp_v0->unk258 = (func_802B8018(temp_v0->unk278) * D_800EE658) + arg0->unk14;
+    temp_v0->unk260 = (coss(temp_v0->unk278) * D_800EE650) + arg0->unk1C;
+    temp_v0->unk258 = (sins(temp_v0->unk278) * D_800EE658) + arg0->unk14;
     temp_v0->unk25C = D_801652A0[arg2];
     if (temp_v0->unk276 == 0xF) {
         temp_v0->unk274 = 0;
@@ -6328,8 +6328,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800631A8.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 func_802B8018(s32); // extern
-f32 func_802B8038(s32, void *); // extern
+f32 sins(s32); // extern
+f32 coss(s32, void *); // extern
 extern f64 D_800EE660;
 
 void func_80063268(void *arg0, s16 arg1, ? arg2, ? arg3) {
@@ -6347,8 +6347,8 @@ void func_80063268(void *arg0, s16 arg1, ? arg2, ? arg3) {
     temp_v0->unk27C = temp_v0->unk27C + 0.25;
     arg0 = temp_a2;
     sp1C = temp_v0;
-    temp_v0->unk260 = (func_802B8038((temp_v0->unk298 + temp_v0->unk278) & 0xFFFF, temp_a2) * 5.5) + arg0->unk1C;
-    temp_v0->unk258 = (func_802B8018((temp_v0->unk298 + temp_v0->unk278) & 0xFFFF) * 5.5) + arg0->unk14;
+    temp_v0->unk260 = (coss((temp_v0->unk298 + temp_v0->unk278) & 0xFFFF, temp_a2) * 5.5) + arg0->unk1C;
+    temp_v0->unk258 = (sins((temp_v0->unk298 + temp_v0->unk278) & 0xFFFF) * 5.5) + arg0->unk14;
     temp_v0->unk276 = temp_v0->unk276 + 1;
     temp_v0->unk25C = temp_v0->unk27C + (arg0->unk18 - 5.0f);
     temp_v0->unk296 = temp_v0->unk296 - 5;
@@ -6368,8 +6368,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80063268.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern f64 D_800EE668;
 
 void func_80063408(void *arg0, s16 arg1, ? arg2, ? arg3) {
@@ -6378,11 +6378,11 @@ void func_80063408(void *arg0, s16 arg1, ? arg2, ? arg3) {
 
     temp_s0 = arg0 + (arg1 * 0x48);
     if (temp_s0->unk538 == 1) {
-        temp_s0->unk530 = (func_802B8038(temp_s0->unk548) * (temp_s0->unk546 * -7)) + arg0->unk1D0;
-        temp_s0->unk528 = (func_802B8018(temp_s0->unk548) * (temp_s0->unk546 * -7)) + arg0->unk1C8;
+        temp_s0->unk530 = (coss(temp_s0->unk548) * (temp_s0->unk546 * -7)) + arg0->unk1D0;
+        temp_s0->unk528 = (sins(temp_s0->unk548) * (temp_s0->unk546 * -7)) + arg0->unk1C8;
     } else {
-        temp_s0->unk530 = (func_802B8038(temp_s0->unk548) * (temp_s0->unk546 * -7)) + arg0->unk1E8;
-        temp_s0->unk528 = (func_802B8018(temp_s0->unk548) * (temp_s0->unk546 * -7)) + arg0->unk1E0;
+        temp_s0->unk530 = (coss(temp_s0->unk548) * (temp_s0->unk546 * -7)) + arg0->unk1E8;
+        temp_s0->unk528 = (sins(temp_s0->unk548) * (temp_s0->unk546 * -7)) + arg0->unk1E0;
     }
     temp_s0->unk546 = temp_s0->unk546 + 1;
     temp_s0->unk52C = temp_s0->unk52C + 1.0f;
@@ -6411,8 +6411,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80063408.s")
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_80062B18(f32 *, ? *, f32 *, ?, f32, f32, s32, s32); // extern
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern f64 D_800EE670;
 extern f64 D_800EE678;
 
@@ -6430,16 +6430,16 @@ void func_800635D4(void *arg0, s16 arg1, ? arg2, ? arg3) {
             temp_s0->unk528 = arg0->unk1C8 + sp44;
             temp_s0->unk530 = arg0->unk1D0 + sp3C;
         } else {
-            temp_s0->unk530 = (func_802B8038(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f)) + arg0->unk1D0;
-            temp_s0->unk528 = (func_802B8018(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f)) + arg0->unk1C8;
+            temp_s0->unk530 = (coss(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f)) + arg0->unk1D0;
+            temp_s0->unk528 = (sins(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f)) + arg0->unk1C8;
         }
     } else if ((arg0->unkBC * 2) < 0) {
         func_80062B18(&sp44, &sp40, &sp3C, 0x40000000, 0.0f, (-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f, -temp_s0->unk548, arg0->unk206 * -2);
         temp_s0->unk528 = arg0->unk1E0 + sp44;
         temp_s0->unk530 = arg0->unk1E8 + sp3C;
     } else {
-        temp_s0->unk530 = (func_802B8038(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f)) + arg0->unk1E8;
-        temp_s0->unk528 = (func_802B8018(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f)) + arg0->unk1E0;
+        temp_s0->unk530 = (coss(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f)) + arg0->unk1E8;
+        temp_s0->unk528 = (sins(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f)) + arg0->unk1E0;
     }
     temp_s0->unk546 = temp_s0->unk546 + 1;
     temp_s0->unk52C = temp_s0->unk52C + D_800EE670;
@@ -6477,8 +6477,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800635D4.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern f32 D_800EE680;
 extern f32 D_800EE684;
 extern f32 D_800EE688;
@@ -6491,11 +6491,11 @@ void func_800639DC(void *arg0, s16 arg1, ? arg2, ? arg3) {
 
     temp_s0 = arg0 + (arg1 * 0x48);
     if (temp_s0->unk538 == 1) {
-        temp_s0->unk530 = (func_802B8038(temp_s0->unk548) * (D_800EE680 * temp_s0->unk546)) + arg0->unk1D0;
-        temp_s0->unk528 = (func_802B8018(temp_s0->unk548) * (D_800EE684 * temp_s0->unk546)) + arg0->unk1C8;
+        temp_s0->unk530 = (coss(temp_s0->unk548) * (D_800EE680 * temp_s0->unk546)) + arg0->unk1D0;
+        temp_s0->unk528 = (sins(temp_s0->unk548) * (D_800EE684 * temp_s0->unk546)) + arg0->unk1C8;
     } else {
-        temp_s0->unk530 = (func_802B8038(temp_s0->unk548) * (D_800EE688 * temp_s0->unk546)) + arg0->unk1E8;
-        temp_s0->unk528 = (func_802B8018(temp_s0->unk548) * (D_800EE68C * temp_s0->unk546)) + arg0->unk1E0;
+        temp_s0->unk530 = (coss(temp_s0->unk548) * (D_800EE688 * temp_s0->unk546)) + arg0->unk1E8;
+        temp_s0->unk528 = (sins(temp_s0->unk548) * (D_800EE68C * temp_s0->unk546)) + arg0->unk1E0;
     }
     temp_s0->unk546 = temp_s0->unk546 + 1;
     temp_s0->unk52C = temp_s0->unk52C + D_800EE690;
@@ -6528,8 +6528,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800639DC.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern f64 D_800EE6A0;
 extern f64 D_800EE6A8;
 
@@ -6538,11 +6538,11 @@ void func_80063BD4(void *arg0, s16 arg1, ? arg2, ? arg3) {
 
     temp_s0 = arg0 + (arg1 * 0x48);
     if (temp_s0->unk538 == 1) {
-        temp_s0->unk530 = (func_802B8038(temp_s0->unk548) * (temp_s0->unk546 * -2)) + arg0->unk1D0;
-        temp_s0->unk528 = (func_802B8018(temp_s0->unk548) * (temp_s0->unk546 * -2)) + arg0->unk1C8;
+        temp_s0->unk530 = (coss(temp_s0->unk548) * (temp_s0->unk546 * -2)) + arg0->unk1D0;
+        temp_s0->unk528 = (sins(temp_s0->unk548) * (temp_s0->unk546 * -2)) + arg0->unk1C8;
     } else {
-        temp_s0->unk530 = (func_802B8038(temp_s0->unk548) * (temp_s0->unk546 * -2)) + arg0->unk1E8;
-        temp_s0->unk528 = (func_802B8018(temp_s0->unk548) * (temp_s0->unk546 * -2)) + arg0->unk1E0;
+        temp_s0->unk530 = (coss(temp_s0->unk548) * (temp_s0->unk546 * -2)) + arg0->unk1E8;
+        temp_s0->unk528 = (sins(temp_s0->unk548) * (temp_s0->unk546 * -2)) + arg0->unk1E0;
     }
     temp_s0->unk546 = temp_s0->unk546 + 1;
     temp_s0->unk52C = temp_s0->unk52C + D_800EE6A0;
@@ -6560,8 +6560,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80063BD4.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern f64 D_800EE6B0;
 extern f64 D_800EE6B8;
 extern f64 D_800EE6C0;
@@ -6571,11 +6571,11 @@ void func_80063D58(void *arg0, s16 arg1, ? arg2, ? arg3) {
 
     temp_s0 = arg0 + (arg1 * 0x48);
     if (temp_s0->unk538 == 1) {
-        temp_s0->unk530 = (func_802B8038(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 20.0f)) + arg0->unk1D0;
-        temp_s0->unk528 = (func_802B8018(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 20.0f)) + arg0->unk1C8;
+        temp_s0->unk530 = (coss(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 20.0f)) + arg0->unk1D0;
+        temp_s0->unk528 = (sins(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 20.0f)) + arg0->unk1C8;
     } else {
-        temp_s0->unk530 = (func_802B8038(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 20.0f)) + arg0->unk1E8;
-        temp_s0->unk528 = (func_802B8018(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 20.0f)) + arg0->unk1E0;
+        temp_s0->unk530 = (coss(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 20.0f)) + arg0->unk1E8;
+        temp_s0->unk528 = (sins(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 20.0f)) + arg0->unk1E0;
     }
     temp_s0->unk546 = temp_s0->unk546 + 1;
     if (temp_s0->unk546 == 8) {
@@ -6649,8 +6649,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80064184.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern f64 D_800EE6D8;
 extern f64 D_800EE6E0;
 extern f64 D_800EE6E8;
@@ -6664,9 +6664,9 @@ void func_800643A8(void *arg0, s16 arg1, ? arg2, ? arg3) {
 
     temp_v0 = arg0 + (arg1 * 0x48);
     sp1C = temp_v0;
-    temp_v0->unk530 = (func_802B8038(temp_v0->unk548) * (D_800EE6D8 * temp_v0->unk546)) + arg0->unk1C;
+    temp_v0->unk530 = (coss(temp_v0->unk548) * (D_800EE6D8 * temp_v0->unk546)) + arg0->unk1C;
     temp_v1 = temp_v0->unk546;
-    temp_f8 = func_802B8018(temp_v0->unk548);
+    temp_f8 = sins(temp_v0->unk548);
     temp_f18 = temp_v1;
     temp_v0->unk546 = temp_v1 + 1;
     temp_v0->unk528 = (temp_f8 * (D_800EE6E0 * temp_f18)) + arg0->unk14;
@@ -6688,8 +6688,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800643A8.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 func_802B8018(u16, s32); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16, s32); // extern
+f32 coss(u16); // extern
 extern f64 D_800EE6F0;
 extern f64 D_800EE6F8;
 
@@ -6712,9 +6712,9 @@ void func_800644E8(void *arg0, s16 arg1, ? arg2, ? arg3) {
     sp2C = temp_v0->unkAE6;
     sp24 = temp_v0;
     temp_f2 = D_800EE6F0 * sp2C;
-    temp_v0->unkAD0 = (func_802B8038(temp_v0->unkAE8) * temp_f2) + arg0->unk1C;
+    temp_v0->unkAD0 = (coss(temp_v0->unkAE8) * temp_f2) + arg0->unk1C;
     sp18 = temp_f2;
-    temp_f6 = (func_802B8018(temp_v0->unkAE8, sp2C) * temp_f2) + arg0->unk14;
+    temp_f6 = (sins(temp_v0->unkAE8, sp2C) * temp_f2) + arg0->unk14;
     temp_v0->unkAE6 = temp_v0->unkAE6 + 1;
     temp_v0->unkAC8 = temp_f6;
     temp_v0->unkACC = temp_v0->unkAF0 + ((sp2C * temp_f4) - (D_800EE6F8 * (sp2C * sp2C)));
@@ -6736,8 +6736,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800644E8.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern f64 D_800EE700;
 extern f64 D_800EE708;
 
@@ -6759,9 +6759,9 @@ void func_80064664(void *arg0, s16 arg1, ? arg2, ? arg3) {
     sp24 = temp_v0;
     sp2C = temp_v1;
     temp_f2 = D_800EE700 * temp_v1;
-    temp_v0->unkAD0 = (func_802B8038(temp_v0->unkAE8) * temp_f2) + arg0->unk1C;
+    temp_v0->unkAD0 = (coss(temp_v0->unkAE8) * temp_f2) + arg0->unk1C;
     sp18 = temp_f2;
-    temp_f6 = (func_802B8018(temp_v0->unkAE8) * temp_f2) + arg0->unk14;
+    temp_f6 = (sins(temp_v0->unkAE8) * temp_f2) + arg0->unk14;
     temp_v0->unkAE6 = temp_v0->unkAE6 + 1;
     temp_v0->unkAC8 = temp_f6;
     temp_v0->unkACC = temp_v0->unkAF0 + ((temp_v1 * temp_f4) - (D_800EE708 * (temp_v1 * temp_v1)));
@@ -6783,8 +6783,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80064664.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern f64 D_800EE710;
 extern f64 D_800EE718;
 
@@ -6796,9 +6796,9 @@ void func_800647C8(void *arg0, s16 arg1, ? arg2, ? arg3) {
     temp_v0 = arg0 + (arg1 * 0x48);
     temp_v0->unkAE6 = temp_v0->unkAE6 + 1;
     sp1C = temp_v0;
-    temp_v0->unkAD0 = (func_802B8038(temp_v0->unkAE8) * (D_800EE710 * temp_v0->unkAE6)) + arg0->unk1C;
+    temp_v0->unkAD0 = (coss(temp_v0->unkAE8) * (D_800EE710 * temp_v0->unkAE6)) + arg0->unk1C;
     temp_v1 = temp_v0->unkAE6;
-    temp_v0->unkAC8 = (func_802B8018(temp_v0->unkAE8) * (D_800EE718 * temp_v1)) + arg0->unk14;
+    temp_v0->unkAC8 = (sins(temp_v0->unkAE8) * (D_800EE718 * temp_v1)) + arg0->unk14;
     temp_v0->unkACC = arg0->unk74 + 2.0f;
     if (temp_v1 == 0xE) {
         temp_v0->unkAE4 = 0;
@@ -6862,8 +6862,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80064988.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern f64 D_800EE738;
 
 void func_800649F4(void *arg0, s16 arg1, ? arg2, ? arg3) {
@@ -6878,10 +6878,10 @@ void func_800649F4(void *arg0, s16 arg1, ? arg2, ? arg3) {
     sp24 = temp_v0->unkAE0;
     sp20 = temp_v0;
     temp_f2 = -sp24;
-    temp_v0->unkAD0 = (func_802B8038(temp_v0->unkAE8) * (temp_f2 * temp_v0->unkAE6)) + arg0->unk21C;
+    temp_v0->unkAD0 = (coss(temp_v0->unkAE8) * (temp_f2 * temp_v0->unkAE6)) + arg0->unk21C;
     sp1C = temp_f2;
     temp_v1 = temp_v0->unkAE6;
-    temp_v0->unkAC8 = (func_802B8018(temp_v0->unkAE8) * (temp_f2 * temp_v1)) + arg0->unk218;
+    temp_v0->unkAC8 = (sins(temp_v0->unkAE8) * (temp_f2 * temp_v1)) + arg0->unk218;
     temp_v0->unkACC = temp_v0->unkADC + arg0->unk18;
     temp_v0->unkAE6 = temp_v1 + 1;
     temp_v0->unkAD4 = temp_v0->unkAD4 + D_800EE738;
@@ -6903,8 +6903,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800649F4.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern f64 D_800EE740;
 extern f64 D_800EE748;
 
@@ -6920,10 +6920,10 @@ void func_80064B30(void *arg0, s16 arg1, ? arg2, ? arg3) {
     sp24 = temp_v0->unkAE0 * D_800EE740;
     sp20 = temp_v0;
     temp_f2 = -sp24;
-    temp_v0->unkAD0 = (func_802B8038(temp_v0->unkAE8) * (temp_f2 * temp_v0->unkAE6)) + arg0->unk1C;
+    temp_v0->unkAD0 = (coss(temp_v0->unkAE8) * (temp_f2 * temp_v0->unkAE6)) + arg0->unk1C;
     sp1C = temp_f2;
     temp_v1 = temp_v0->unkAE6;
-    temp_v0->unkAC8 = (func_802B8018(temp_v0->unkAE8) * (temp_f2 * temp_v1)) + arg0->unk14;
+    temp_v0->unkAC8 = (sins(temp_v0->unkAE8) * (temp_f2 * temp_v1)) + arg0->unk14;
     temp_v0->unkAE6 = temp_v1 + 1;
     temp_v0->unkACC = temp_v0->unkACC + D_800EE748;
     if (temp_v0->unkAE6 == 0xA) {
@@ -6945,8 +6945,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80064B30.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 func_802B8018(s32); // extern
-f32 func_802B8038(s32, void *); // extern
+f32 sins(s32); // extern
+f32 coss(s32, void *); // extern
 extern f64 D_800EE750;
 
 void func_80064C74(void *arg0, s16 arg1, ? arg2, ? arg3) {
@@ -6967,8 +6967,8 @@ void func_80064C74(void *arg0, s16 arg1, ? arg2, ? arg3) {
     temp_t7 = temp_a2->unkC0;
     arg0 = temp_a2;
     sp1C = temp_v0;
-    temp_v0->unkAD0 = (func_802B8038(((temp_v0->unkAE8 - temp_t5) - temp_t7) & 0xFFFF, temp_a2) * 5.0f) + arg0->unk1C;
-    temp_v0->unkAC8 = (func_802B8018(((temp_v0->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk14;
+    temp_v0->unkAD0 = (coss(((temp_v0->unkAE8 - temp_t5) - temp_t7) & 0xFFFF, temp_a2) * 5.0f) + arg0->unk1C;
+    temp_v0->unkAC8 = (sins(((temp_v0->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk14;
     temp_v0->unkACC = arg0->unk18 - 1.0f;
     temp_v0->unkAE6 = temp_v0->unkAE6 + 1;
     temp_v0->unkAD4 = temp_v0->unkAD4 + D_800EE750;
@@ -8079,8 +8079,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80066998.s")
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_800652D4(f32 *, s16 *, f32); // extern
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern ? D_0D008C78;
 extern ? D_0D008DA0;
 extern ? D_0D008DB8;
@@ -8156,8 +8156,8 @@ void func_80066BAC(void *arg0, ? arg1, s16 arg2, s8 arg3) {
         temp_v0 = arg0 + (arg3 * 2);
         sp24 = temp_ra;
         sp20 = temp_v0;
-        spE4 = (func_802B8038(temp_v0->unk48) * -10.0f) + arg0->unk1C;
-        spDC = (func_802B8018(sp20->unk48) * -10.0f) + arg0->unk14;
+        spE4 = (coss(temp_v0->unk48) * -10.0f) + arg0->unk1C;
+        spDC = (sins(sp20->unk48) * -10.0f) + arg0->unk14;
         if (arg0->unk124 >= 300.0f) {
             spD4 = *(&D_80164714 + (arg3 * 0xB8)) - 0x4000;
         } else {
@@ -8819,8 +8819,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80067964.s")
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_8004B414(s16, s16, s16, ?); // extern
 ? func_800652D4(f32 *, s16 *, f32); // extern
-f32 func_802B8018(s32, s8, s8); // extern
-f32 func_802B8038(s32); // extern
+f32 sins(s32, s8, s8); // extern
+f32 coss(s32); // extern
 extern ? D_0D008DB8;
 extern ? D_0D008E20;
 extern ? D_800E48D4;
@@ -8861,9 +8861,9 @@ void func_80067D3C(void *arg0, s8 arg1, s32 arg2, s8 arg3, f32 arg4, s32 arg5) {
         sp78 = 0;
         sp76 = (arg0 + (arg1 * 2))->unk48;
         sp24 = temp_v0;
-        sp7C = (func_802B8018((0x4000 - (arg0->unk2E + arg0->unkC0)) & 0xFFFF, arg1, arg3) * arg4) + arg0->unk14;
+        sp7C = (sins((0x4000 - (arg0->unk2E + arg0->unkC0)) & 0xFFFF, arg1, arg3) * arg4) + arg0->unk14;
         sp80 = ((arg0->unk18 + arg0->unk70) - (sp + (arg0->unk254 * 4))->unk54) - 2.0f;
-        sp84 = (func_802B8038((0x4000 - (arg0->unk2E + arg0->unkC0)) & 0xFFFF) * arg4) + arg0->unk1C;
+        sp84 = (coss((0x4000 - (arg0->unk2E + arg0->unkC0)) & 0xFFFF) * arg4) + arg0->unk1C;
         func_800652D4(&sp7C, &sp74, temp_v0->unk804 * arg0->unk224);
         temp_v0_2 = gDisplayListHead;
         gDisplayListHead = temp_v0_2 + 8;
@@ -8913,8 +8913,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80067D3C.s")
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_8004B414(s16, s16, s16, ?); // extern
 ? func_800652D4(f32 *, s16 *, f32); // extern
-f32 func_802B8018(s32, s8, s8); // extern
-f32 func_802B8038(s32); // extern
+f32 sins(s32, s8, s8); // extern
+f32 coss(s32); // extern
 extern ? D_0D008DB8;
 extern ? D_0D008E20;
 extern ? D_800E48F4;
@@ -8956,9 +8956,9 @@ void func_8006801C(void *arg0, s8 arg1, s32 arg2, s8 arg3, f32 arg4, s32 arg5) {
         sp78 = 0;
         sp76 = (arg0 + (arg1 * 2))->unk48;
         sp24 = temp_v0;
-        sp7C = (func_802B8018((0x4000 - (arg0->unk2E + arg0->unkC0)) & 0xFFFF, arg1, arg3) * arg4) + arg0->unk14;
+        sp7C = (sins((0x4000 - (arg0->unk2E + arg0->unkC0)) & 0xFFFF, arg1, arg3) * arg4) + arg0->unk14;
         sp80 = ((arg0->unk18 + arg0->unk70) - (sp + (arg0->unk254 * 4))->unk54) - 2.0f;
-        sp84 = (func_802B8038((0x4000 - (arg0->unk2E + arg0->unkC0)) & 0xFFFF) * arg4) + arg0->unk1C;
+        sp84 = (coss((0x4000 - (arg0->unk2E + arg0->unkC0)) & 0xFFFF) * arg4) + arg0->unk1C;
         func_800652D4(&sp7C, &sp74, (temp_v0->unk804 * arg0->unk224) * D_800EE7C8);
         temp_v0_2 = gDisplayListHead;
         gDisplayListHead = temp_v0_2 + 8;
@@ -9007,8 +9007,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006801C.s")
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_800652D4(f32 *, s16 *, f32); // extern
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern ? D_0D008C78;
 extern ? D_0D008C90;
 extern ? D_0D008DA0;
@@ -9066,8 +9066,8 @@ void func_80068310(void *arg0, ? arg1, ? arg2, s8 arg3, s8 arg4) {
         spA0 = temp_v0->unk7FC;
         sp24 = temp_v1;
         sp28 = temp_v0;
-        spA4 = (func_802B8038(temp_v1->unk48) * -10.0f) + arg0->unk1C;
-        temp_f4 = func_802B8018(sp24->unk48) * -10.0f;
+        spA4 = (coss(temp_v1->unk48) * -10.0f) + arg0->unk1C;
+        temp_f4 = sins(sp24->unk48) * -10.0f;
         sp94 = 0;
         temp_a0 = &sp9C;
         sp9C = temp_f4 + arg0->unk14;
@@ -9188,8 +9188,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80068310.s")
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_800652D4(f32 *, s16 *, f32); // extern
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern ? D_0D008C78;
 extern ? D_0D008DA0;
 extern ? D_0D008DB8;
@@ -9241,8 +9241,8 @@ void func_80068724(void *arg0, ? arg1, ? arg2, s8 arg3, s8 arg4) {
         sp88 = arg0->unk18 - 3.0f;
         sp20 = temp_v1;
         sp24 = temp_v0;
-        sp8C = (func_802B8038(temp_v1->unk48) * -10.0f) + arg0->unk1C;
-        temp_f8 = func_802B8018(sp20->unk48) * -10.0f;
+        sp8C = (coss(temp_v1->unk48) * -10.0f) + arg0->unk1C;
+        temp_f8 = sins(sp20->unk48) * -10.0f;
         sp7C = 0;
         temp_a0 = &sp84;
         sp84 = temp_f8 + arg0->unk14;
@@ -9344,8 +9344,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80068724.s")
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_8004B35C(?, ?, ?, ?); // extern
 ? func_800652D4(f32 *, s16 *, f32); // extern
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern ? D_0D008D58;
 extern ? D_0D008DA0;
 extern ? D_800E8B40;
@@ -9387,8 +9387,8 @@ void func_80068AA4(void *arg0, ? arg1, ? arg2, s8 arg3, s8 arg4) {
             sp68 = arg0->unk18 - 3.0f;
             sp24 = temp_v1;
             sp28 = temp_v0;
-            sp6C = (func_802B8038(temp_v1->unk48) * (-2.5 * temp_v0->unk816)) + arg0->unk1C;
-            temp_f18 = func_802B8018(temp_v1->unk48);
+            sp6C = (coss(temp_v1->unk48) * (-2.5 * temp_v0->unk816)) + arg0->unk1C;
+            temp_f18 = sins(temp_v1->unk48);
             temp_a0 = &sp64;
             sp5C = 0;
             sp64 = (temp_f18 * (-2.5 * temp_v0->unk816)) + arg0->unk14;
@@ -9456,8 +9456,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80068AA4.s")
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_800652D4(f32 *, s16 *, f32); // extern
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(u16); // extern
+f32 sins(u16); // extern
+f32 coss(u16); // extern
 extern ? D_0D008C78;
 extern ? D_0D008C90;
 extern ? D_0D008DA0;
@@ -9516,8 +9516,8 @@ void func_80068DA0(void *arg0, ? arg1, ? arg2, s8 arg3, s8 arg4) {
             spA0 = temp_v1->unk7FC + (arg0->unk18 - 3.0f);
             sp28 = temp_v1;
             sp24 = temp_v0;
-            spA4 = (func_802B8038(temp_v0->unk48) * -10.0f) + arg0->unk1C;
-            temp_f16 = func_802B8018(temp_v0->unk48) * -10.0f;
+            spA4 = (coss(temp_v0->unk48) * -10.0f) + arg0->unk1C;
+            temp_f16 = sins(temp_v0->unk48) * -10.0f;
             sp94 = 0;
             temp_a0 = &sp9C;
             sp9C = temp_f16 + arg0->unk14;
@@ -10767,8 +10767,8 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006A7C0.s")
 ? func_80021F84(? *, f32); // extern
 ? func_80022180(void *, ? *); // extern
 ? func_8004B614(s16, s16, s16, s16, s32, s32, s32); // extern
-f32 func_802B8018(u16); // extern
-f32 func_802B8038(s32); // extern
+f32 sins(u16); // extern
+f32 coss(s32); // extern
 extern ? D_0D008C78;
 extern ? D_0D008DB8;
 extern ? D_800E4934;
@@ -10930,12 +10930,12 @@ void func_8006AFD0(void *arg0, s8 arg1, s16 arg2, s8 arg3) {
     sp13C = *(&D_8018D590 + ((arg1 * 0xC) + temp_t7_2));
     temp_t6_2 = arg2 * 2;
     temp_v1_2 = (arg1 * 6) + temp_t6_2 + &D_8018D890;
-    sp12C = -(func_802B8038(temp_a0) * (*temp_v1_2 * 4));
+    sp12C = -(coss(temp_a0) * (*temp_v1_2 * 4));
     sp3C = temp_v1_2;
     sp40 = temp_t6_2;
     sp12E = sp54->unk48;
-    sp58 = func_802B8038(sp46);
-    sp130 = (*(&D_8018D7D0 + ((arg1 * 6) + temp_t6_2)) - (*(&D_8018D860 + ((arg1 * 6) + temp_t6_2)) * sp58)) - (func_802B8018(sp46) * (*sp3C * 8));
+    sp58 = coss(sp46);
+    sp130 = (*(&D_8018D7D0 + ((arg1 * 6) + temp_t6_2)) - (*(&D_8018D860 + ((arg1 * 6) + temp_t6_2)) * sp58)) - (sins(sp46) * (*sp3C * 8));
     func_80021E10(&sp140, &sp134, &sp12C);
     func_80021F84(&sp140, phi_f20_2);
     func_80022180(gGfxPool + (D_80164AF0 << 6) + 0xFAC0, &sp140);

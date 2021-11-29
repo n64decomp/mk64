@@ -2997,8 +2997,8 @@ GLOBAL_ASM("asm/non_matchings/code_8008C1D0/func_80090868.s")
 ? func_8009E088(s8, ?);                             /* extern */
 ? func_800C9018(u8, ?);                             /* extern */
 s32 func_802B5224(f32 *, ? *);                      /* extern */
-f32 func_802B8018(s32);                             /* extern */
-f32 func_802B8038(s32);                             /* extern */
+f32 sins(s32);                             /* extern */
+f32 coss(s32);                             /* extern */
 extern ? D_80004334;
 extern void *D_80164550;
 extern ? D_801652A0;
@@ -3122,8 +3122,8 @@ block_49:
         arg0->unk1C = sp4C;
         temp_v0_5 = arg1 * 0x1C70;
         sp28 = temp_v0_5;
-        arg0->unk1C = (func_802B8038((temp_v0_5 - arg0->unk2E) & 0xFFFF) * -5.0f) + arg0->unk1C;
-        temp_f6 = func_802B8018((temp_v0_5 - arg0->unk2E) & 0xFFFF) * -5.0f;
+        arg0->unk1C = (coss((temp_v0_5 - arg0->unk2E) & 0xFFFF) * -5.0f) + arg0->unk1C;
+        temp_f6 = sins((temp_v0_5 - arg0->unk2E) & 0xFFFF) * -5.0f;
         arg0->unkC6 = arg0->unkC6 + 8;
         arg0->unk14 = temp_f6 + arg0->unk14;
         if (arg0->unkC6 >= 0xF0) {
@@ -3136,8 +3136,8 @@ block_49:
     case 4:
         temp_v0_6 = arg0->unkC8;
         if ((temp_v0_6 == 0x96) || (temp_v0_6 == 0xC8) || (temp_v0_6 == 0xFA)) {
-            arg0->unk1C = (func_802B8038(-arg0->unk2E & 0xFFFF) * -10.0f) + arg0->unk1C;
-            arg0->unk14 = (func_802B8018(-arg0->unk2E & 0xFFFF) * -10.0f) + arg0->unk14;
+            arg0->unk1C = (coss(-arg0->unk2E & 0xFFFF) * -10.0f) + arg0->unk1C;
+            arg0->unk14 = (sins(-arg0->unk2E & 0xFFFF) * -10.0f) + arg0->unk14;
         }
         if (arg0->unkC8 == 0xFC) {
             temp_v0_7 = D_80164550;

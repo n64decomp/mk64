@@ -6,10 +6,10 @@ glabel func_80041BBC
 /* 0427CC 80041BCC AFA40020 */  sw    $a0, 0x20($sp)
 /* 0427D0 80041BD0 AFA50024 */  sw    $a1, 0x24($sp)
 /* 0427D4 80041BD4 97A40026 */  lhu   $a0, 0x26($sp)
-/* 0427D8 80041BD8 0C0AE006 */  jal   func_802B8018
+/* 0427D8 80041BD8 0C0AE006 */  jal   sins
 /* 0427DC 80041BDC AFA60020 */   sw    $a2, 0x20($sp)
 /* 0427E0 80041BE0 97A40026 */  lhu   $a0, 0x26($sp)
-/* 0427E4 80041BE4 0C0AE00E */  jal   func_802B8038
+/* 0427E4 80041BE4 0C0AE00E */  jal   coss
 /* 0427E8 80041BE8 E7A0001C */   swc1  $f0, 0x1c($sp)
 /* 0427EC 80041BEC C7B20028 */  lwc1  $f18, 0x28($sp)
 /* 0427F0 80041BF0 8FA60020 */  lw    $a2, 0x20($sp)
