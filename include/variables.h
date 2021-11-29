@@ -3,13 +3,17 @@
 
 #include "global.h"
 
+extern s32 gCCSelection;
 extern s8 gCourseSelection;
 extern s16 gCurrentCourseId;
-extern s32 gModeSelection;
-extern s32 gPlayerCountSelection1;
+extern s8 gCupSelection;
+extern s8 gHumanPlayerCount;
 extern f32 gKartFrictionTable[];
 extern f32 gKartBoundingBoxTable[];
 extern f32 gKartGravityTable[];
+extern s8 gGPOverallRanks[8];
+extern s32 gModeSelection;
+extern s32 gPlayerCountSelection1;
 
 extern struct_D_802874D8 D_802874D8;
 extern s16 D_801650D0[4][8];
@@ -33,7 +37,6 @@ extern s16 D_80165572;
 extern s16 D_80165580;
 extern s16 D_80165582;
 extern s8 D_800E86A8[4];
-extern s8 gGPOverallRanks[8];
 extern s16 D_80165270[8];
 extern Player* D_800DC4DC;
 extern Player* D_800DC4E0;
@@ -59,7 +62,6 @@ extern s16* D_80164550;
 extern f32 D_80165210[];
 extern f32 D_80165230[];
 extern struct_D_800E261C D_800E261C;
-extern s32 gCCSelection;
 extern f32 D_80164510[];
 extern s32 D_80165420[];
 extern s32 D_80165440[];

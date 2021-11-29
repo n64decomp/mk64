@@ -71,6 +71,15 @@
 #define BOWSER 7
 
 /**
+ * Indexes for accessing Time Trial records
+**/
+#define TIME_TRIAL_3LAP_RECORD_1 0
+#define TIME_TRIAL_3LAP_RECORD_2 1
+#define TIME_TRIAL_3LAP_RECORD_3 2
+#define TIME_TRIAL_3LAP_RECORD_4 3
+#define TIME_TRIAL_3LAP_RECORD_5 4
+#define TIME_TRIAL_1LAP_RECORD   5
+
  * Text color options
  * The 2 cycling options cycle through Blue -> Green -> Red
  * Cycle 2 appears to be one step ahead of Cycle 1

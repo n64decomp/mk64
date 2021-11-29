@@ -298,6 +298,56 @@ typedef struct {
 } Player; // size = 0xDD8
 
 typedef struct {
+    // 6 little endian 3-byte records.
+    // When converted to big endian the bottom 5 nibbles can be interpreted as the centisecond count for that record.
+    // The top nibble is the character ID of the charcter used to set that record
+    // The first 5 records are the top 5 3-lap records
+    // The 6th record is the best 1-lap record
+    u8 records[6][3];
+    // It's unknown what these bytes are used for
+    // Byte 1 might be an indicator that there is a ghost available for that course
+    u8 unknownBytes[6];
+} CourseTimeTrialRecords; // size = 0x18
+
+typedef struct {
+    // Each cup is made up of 4 courses
+    CourseTimeTrialRecords courseRecords[4];
+} CupTimeTrialRecords; // size = 0x60
+
+typedef struct {
+    // There are 4 cups total
+    CupTimeTrialRecords cupRecords[4];
+} AllCourseTimeTrialRecords; // size = 0x180
+
+typedef struct {
+    // Records 0 through 3 are for the first cup's courses
+    // Records 4 through 7 are for the second cup's courses
+    u8 bestThreelaps[8][3];
+    u8 bestSinglelaps[8][3];
+    // It's unknown what these bytes are used for
+    u8 unknownBytes[8];
+} OnlyBestTimeTrialRecords; // size = 0x38
+
+typedef struct {
+    AllCourseTimeTrialRecords allCourseTimeTrialRecords;
+    // GP Points scored for each CC mode
+    // 1st place is 3 points, 2nd is 2, etc.
+    // Lowest dibit is the Mushroom Cup, 2nd dibit is the Flower Cup, etc
+    u8 grandPrixPoints[4];
+    // Its unknown what these bytes are used for
+    // They appear related to the Grand Prix points in some capacity but I can't figure out how
+    u8 unknownBytes1[4];
+    // For some reason there's 2 entries covering 4 cups
+    // Instead of 4 entries, one per cup. Or even just one big entry for all 4 cups
+    // Its also unknown why these are here when they're identical to the values found
+    // in allCourseTimeTrialRecords
+    OnlyBestTimeTrialRecords onlyBestTimeTrialRecords[2];
+    // Its unknown what these bytes are used for, they appear to be identical to
+    // grandPrixPoints and unknownBytes1
+    u8 unknownBytes2[8];
+} SaveData; // size = 0x200
+
+typedef struct {
     /* 0x00 */ char unk_00[0x1D];
     /* 0x1D */ s8 unk_1D;
     /* 0x1E */ s8 unk_1E;
