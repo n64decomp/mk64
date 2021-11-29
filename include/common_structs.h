@@ -322,8 +322,8 @@ typedef struct {
 typedef struct {
     // Records 0 through 3 are for the first cup's courses
     // Records 4 through 7 are for the second cup's courses
-    u8 best3laps[8][3];
-    u8 best1laps[8][3];
+    u8 bestThreelaps[8][3];
+    u8 bestSinglelaps[8][3];
     // It's unknown what these bytes are used for
     u8 unknownBytes[8];
 } OnlyBestTimeTrialRecords; // size = 0x38
@@ -338,7 +338,7 @@ typedef struct {
     // They appear related to the Grand Prix points in some capacity but I can't figure out how
     u8 unknownBytes1[4];
     // For some reason there's 2 entries covering 4 cups
-    // Instead of 4 entires, one per cup. Or even just one big entry for all 4 cups
+    // Instead of 4 entries, one per cup. Or even just one big entry for all 4 cups
     // Its also unknown why these are here when they're identical to the values found
     // in allCourseTimeTrialRecords
     OnlyBestTimeTrialRecords onlyBestTimeTrialRecords[2];
