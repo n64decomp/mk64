@@ -78,11 +78,11 @@
  * flashing between 2 colors, but also cause individual characters
  * to be cutoff on their right side
 **/
-#define TEXT_BLUE        0
-#define TEXT_GREEN       1
-#define TEXT_RED         2
-#define TEXT_YELLOW      3
-#define TEXT_BGR_CYCLE_1 4
-#define TEXT_BGR_CYCLE_2 5
+#define TEXT_BLUE                   0
+#define TEXT_GREEN                  1
+#define TEXT_RED                    2
+#define TEXT_YELLOW                 3
+#define TEXT_BLUE_GREEN_RED_CYCLE_1 4
+#define TEXT_BLUE_GREEN_RED_CYCLE_2 5
 
 #endif // DEFINES_H

@@ -9017,7 +9017,7 @@ void func_8009F5E0(void *arg0) {
                 func_800A15EC(arg0);
                 return;
             case 0x96:                              /* switch 3 */
-                set_text_color(TEXT_BGR_CYCLE_1);
+                set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
                 func_800936B8(arg0->unkC, arg0->unk10, *(&D_800E7500 + (D_800DC540 * 4)), arg0->unk1C, arg0->unk24, 1.0f);
                 return;
             case 0x97:                              /* switch 3 */
@@ -9148,7 +9148,7 @@ void func_8009F5E0(void *arg0) {
                 temp_t2 = (phi_t0 * 0.75f) / 2;
                 temp_t5 = (((0.75f * 2.0f) + 0.5) * 16.0) / 2;
                 gDisplayListHead = draw_box(gDisplayListHead, 0xA0 - temp_t2, 0xB6 - temp_t5, temp_t2 + 0xA0, temp_t5 + 0xB6, 0, 0, 0, 0x96);
-                set_text_color(TEXT_BGR_CYCLE_1);
+                set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
                 sp38 = 0xB4;
                 sp3C = 0xA0 - (1.0f * 0.75f);
                 phi_v0_2 = D_800E77A0;
@@ -9913,7 +9913,7 @@ void func_800A1A20(void *arg0) {
     temp_v0 = D_8018EDF7;
     temp_s1 = *(&gCupTrackOrder + (((temp_v0 / 4) * 8) + ((temp_v0 % 4) * 2)));
     arg0->unkC = 0x14;
-    set_text_color(TEXT_BGR_CYCLE_1);
+    set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     temp_s0 = temp_s1 * 4;
     draw_text(0x69, arg0->unk10 + 0x19, *(&D_800E7574 + temp_s0), 0, 0.75f, 0.75f);
     set_text_color(TEXT_RED);
@@ -10668,7 +10668,7 @@ void func_800A2EB8(void *arg0) {
         phi_s0 = temp_s0;
         phi_s1 = temp_s1;
     } while (temp_s0 < &D_80164370);
-    set_text_color(TEXT_BGR_CYCLE_1);
+    set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     func_80093324(arg0->unkC + 0x1E, arg0->unk10 + 0x19, &D_800F0C1C, 0, 1.0f, 1.0f);
     set_text_color(5);
     temp_f0 = D_800F1C90;
@@ -10831,7 +10831,7 @@ void func_800A34A8(void *arg0) {
             func_800A3A10(&sp80);
             func_800A3A10(gGPOverallRanks);
         }
-        set_text_color(TEXT_BGR_CYCLE_1);
+        set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
         func_80093324(arg0->unkC + 0x19, 0x19 - arg0->unk10, "driver's points", 0, 0.8f, 0.8f);
         set_text_color(5);
         func_80093324(arg0->unkC + 0x36, 0x28 - arg0->unk10, "round", 0, 0.7f, 0.7f);
@@ -11044,7 +11044,7 @@ void func_800A3C84(void *arg0) {
     s32 phi_s0_2;
     s32 phi_s1_2;
 
-    set_text_color(TEXT_BGR_CYCLE_1);
+    set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     temp_f0 = D_800F1CC8;
     draw_text(arg0->unkC + 0x43, arg0->unk10 + 0x19, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCourseSelection * 2))) * 4)), 0, temp_f0, temp_f0);
     set_text_color(TEXT_YELLOW);
@@ -11157,7 +11157,7 @@ void func_800A3E60(void *arg0) {
 
     temp_v0 = arg0->unk4;
     if ((temp_v0 != 0) && (temp_v0 != 0x1F)) {
-        set_text_color(TEXT_BGR_CYCLE_1);
+        set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
         draw_text(arg0->unkC + 0x55, 0x19 - arg0->unk10, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCourseSelection * 2))) * 4)), 0, 0.6f, 0.6f);
         set_text_color(TEXT_YELLOW);
         draw_text(arg0->unkC + 0x55, 0x28 - arg0->unk10, D_800E7730, 0, 0.75f, 0.75f);
@@ -11547,7 +11547,7 @@ void func_800A4A24(void *arg0) {
     temp_f0 = D_800F1DCC;
     temp_t2 = ((func_80093034(&D_800E7780, temp_a1) + 8) * temp_f0) / 2;
     gDisplayListHead = draw_box(gDisplayListHead, temp_t0 - temp_t2, (temp_t1 - (24.0f * temp_f0)) + 4, temp_t2 + temp_t0, temp_t1 + 4, 0, 0, 0, 0x64);
-    set_text_color(TEXT_BGR_CYCLE_1);
+    set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     temp_f0_2 = D_800F1DD0;
     draw_text(arg0->unkC - 3, arg0->unk10, &D_800E7780, 0, temp_f0_2, temp_f0_2);
 }
@@ -12912,7 +12912,7 @@ void func_800A75A0(void *arg0) {
         phi_v0 = 1;
     }
     sp20 = phi_v0;
-    set_text_color(TEXT_BGR_CYCLE_1);
+    set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     temp_f0 = D_800F1F30;
     draw_text(arg0->unkC, arg0->unk10, *(&D_800E7A9C + (phi_v0 * 4)), 0, temp_f0, temp_f0);
 }
