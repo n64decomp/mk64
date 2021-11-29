@@ -19,7 +19,7 @@ glabel func_800A32B4
 /* 0A3EF8 800A32F8 AFA60060 */  sw    $a2, 0x60($sp)
 /* 0A3EFC 800A32FC 02402825 */  move  $a1, $s2
 /* 0A3F00 800A3300 24E40001 */  addiu $a0, $a3, 1
-/* 0A3F04 800A3304 0C029E25 */  jal   func_800A7894
+/* 0A3F04 800A3304 0C029E25 */  jal   convert_number_to_ascii
 /* 0A3F08 800A3308 E7A40050 */   swc1  $f4, 0x50($sp)
 /* 0A3F0C 800A330C 3C01800F */  lui   $at, %hi(D_800F1CA4) # $at, 0x800f
 /* 0A3F10 800A3310 C4341CA4 */  lwc1  $f20, %lo(D_800F1CA4)($at)
@@ -53,7 +53,7 @@ glabel func_800A32B4
 /* 0A3F80 800A3380 460A4403 */  div.s $f16, $f8, $f10
 /* 0A3F84 800A3384 4600848D */  trunc.w.s $f18, $f16
 /* 0A3F88 800A3388 44049000 */  mfc1  $a0, $f18
-/* 0A3F8C 800A338C 0C029E25 */  jal   func_800A7894
+/* 0A3F8C 800A338C 0C029E25 */  jal   convert_number_to_ascii
 /* 0A3F90 800A3390 00000000 */   nop   
 /* 0A3F94 800A3394 26040042 */  addiu $a0, $s0, 0x42
 /* 0A3F98 800A3398 02202825 */  move  $a1, $s1
@@ -70,7 +70,7 @@ glabel func_800A32B4
 /* 0A3FC4 800A33C4 00000000 */  nop   
 /* 0A3FC8 800A33C8 0081001A */  div   $zero, $a0, $at
 /* 0A3FCC 800A33CC 00002010 */  mfhi  $a0
-/* 0A3FD0 800A33D0 0C029E25 */  jal   func_800A7894
+/* 0A3FD0 800A33D0 0C029E25 */  jal   convert_number_to_ascii
 /* 0A3FD4 800A33D4 00000000 */   nop   
 /* 0A3FD8 800A33D8 3C06800F */  lui   $a2, %hi(D_800F0C2C) # $a2, 0x800f
 /* 0A3FDC 800A33DC 24C60C2C */  addiu $a2, %lo(D_800F0C2C) # addiu $a2, $a2, 0xc2c
@@ -100,7 +100,7 @@ glabel func_800A32B4
 /* 0A403C 800A343C 00000000 */  nop   
 /* 0A4040 800A3440 0081001A */  div   $zero, $a0, $at
 /* 0A4044 800A3444 00002010 */  mfhi  $a0
-/* 0A4048 800A3448 0C029E25 */  jal   func_800A7894
+/* 0A4048 800A3448 0C029E25 */  jal   convert_number_to_ascii
 /* 0A404C 800A344C 00000000 */   nop   
 /* 0A4050 800A3450 3C06800F */  lui   $a2, %hi(D_800F0C30) # $a2, 0x800f
 /* 0A4054 800A3454 24C60C30 */  addiu $a2, %lo(D_800F0C30) # addiu $a2, $a2, 0xc30

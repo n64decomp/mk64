@@ -118,7 +118,7 @@ glabel func_800A474C
 /* 0A54E8 800A48E8 00814024 */  and   $t0, $a0, $at
 /* 0A54EC 800A48EC 01002025 */  move  $a0, $t0
 /* 0A54F0 800A48F0 AFA8002C */  sw    $t0, 0x2c($sp)
-/* 0A54F4 800A48F4 0C029E3D */  jal   func_800A78F4
+/* 0A54F4 800A48F4 0C029E3D */  jal   get_time_record_minutes
 /* 0A54F8 800A48F8 27A50038 */   addiu $a1, $sp, 0x38
 /* 0A54FC 800A48FC 8FA40054 */  lw    $a0, 0x54($sp)
 /* 0A5500 800A4900 8FA50058 */  lw    $a1, 0x58($sp)
@@ -138,7 +138,7 @@ glabel func_800A474C
 /* 0A5538 800A4938 0C024CC9 */  jal   func_80093324
 /* 0A553C 800A493C 24840032 */   addiu $a0, $a0, 0x32
 /* 0A5540 800A4940 8FA4002C */  lw    $a0, 0x2c($sp)
-/* 0A5544 800A4944 0C029E51 */  jal   func_800A7944
+/* 0A5544 800A4944 0C029E51 */  jal   get_time_record_seconds
 /* 0A5548 800A4948 27A50038 */   addiu $a1, $sp, 0x38
 /* 0A554C 800A494C 8FA40054 */  lw    $a0, 0x54($sp)
 /* 0A5550 800A4950 8FA50058 */  lw    $a1, 0x58($sp)
@@ -158,7 +158,7 @@ glabel func_800A474C
 /* 0A5588 800A4988 0C024CC9 */  jal   func_80093324
 /* 0A558C 800A498C 24840046 */   addiu $a0, $a0, 0x46
 /* 0A5590 800A4990 8FA4002C */  lw    $a0, 0x2c($sp)
-/* 0A5594 800A4994 0C029E69 */  jal   func_800A79A4
+/* 0A5594 800A4994 0C029E69 */  jal   get_time_record_centiseconds
 /* 0A5598 800A4998 27A50038 */   addiu $a1, $sp, 0x38
 /* 0A559C 800A499C 8FA40054 */  lw    $a0, 0x54($sp)
 /* 0A55A0 800A49A0 8FA50058 */  lw    $a1, 0x58($sp)

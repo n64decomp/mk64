@@ -13,7 +13,7 @@ glabel func_800A3ADC
 /* 0A4708 800A3B08 10200006 */  beqz  $at, .L800A3B24
 /* 0A470C 800A3B0C 27A50034 */   addiu $a1, $sp, 0x34
 /* 0A4710 800A3B10 24840001 */  addiu $a0, $a0, 1
-/* 0A4714 800A3B14 0C029E25 */  jal   func_800A7894
+/* 0A4714 800A3B14 0C029E25 */  jal   convert_number_to_ascii
 /* 0A4718 800A3B18 27A50034 */   addiu $a1, $sp, 0x34
 /* 0A471C 800A3B1C 10000014 */  b     .L800A3B70
 /* 0A4720 800A3B20 00000000 */   nop   
@@ -37,7 +37,7 @@ glabel func_800A3ADC
 /* 0A4760 800A3B60 1460FFF6 */  bnez  $v1, .L800A3B3C
 /* 0A4764 800A3B64 2442FFFF */   addiu $v0, $v0, -1
 .L800A3B68:
-/* 0A4768 800A3B68 0C029E25 */  jal   func_800A7894
+/* 0A4768 800A3B68 0C029E25 */  jal   convert_number_to_ascii
 /* 0A476C 800A3B6C 24640001 */   addiu $a0, $v1, 1
 .L800A3B70:
 /* 0A4770 800A3B70 3C01800F */  lui   $at, %hi(D_800F1CC4) # $at, 0x800f
@@ -69,7 +69,7 @@ glabel func_800A3ADC
 /* 0A47D8 800A3BD8 2508D9C8 */  addiu $t0, %lo(gGPCharacterPoints) # addiu $t0, $t0, -0x2638
 /* 0A47DC 800A3BDC 01095021 */  addu  $t2, $t0, $t1
 /* 0A47E0 800A3BE0 81440000 */  lb    $a0, ($t2)
-/* 0A47E4 800A3BE4 0C029E25 */  jal   func_800A7894
+/* 0A47E4 800A3BE4 0C029E25 */  jal   convert_number_to_ascii
 /* 0A47E8 800A3BE8 27A50034 */   addiu $a1, $sp, 0x34
 /* 0A47EC 800A3BEC 8FA40044 */  lw    $a0, 0x44($sp)
 /* 0A47F0 800A3BF0 8FA50048 */  lw    $a1, 0x48($sp)
@@ -92,7 +92,7 @@ glabel func_800A3ADC
 /* 0A4834 800A3C34 8D6BD9BC */  lw    $t3, %lo(D_8018D9BC)($t3)
 /* 0A4838 800A3C38 27A50034 */  addiu $a1, $sp, 0x34
 /* 0A483C 800A3C3C 01627021 */  addu  $t6, $t3, $v0
-/* 0A4840 800A3C40 0C029E25 */  jal   func_800A7894
+/* 0A4840 800A3C40 0C029E25 */  jal   convert_number_to_ascii
 /* 0A4844 800A3C44 91C40000 */   lbu   $a0, ($t6)
 /* 0A4848 800A3C48 8FA40044 */  lw    $a0, 0x44($sp)
 /* 0A484C 800A3C4C 240F002B */  li    $t7, 43

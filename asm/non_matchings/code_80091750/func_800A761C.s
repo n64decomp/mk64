@@ -73,7 +73,7 @@ glabel func_800A761C
 /* 0A8338 800A7738 0C024DBB */  jal   draw_text
 /* 0A833C 800A773C 03192021 */   addu  $a0, $t8, $t9
 /* 0A8340 800A7740 8FA40038 */  lw    $a0, 0x38($sp)
-/* 0A8344 800A7744 0C029E25 */  jal   func_800A7894
+/* 0A8344 800A7744 0C029E25 */  jal   convert_number_to_ascii
 /* 0A8348 800A7748 27A5003C */   addiu $a1, $sp, 0x3c
 /* 0A834C 800A774C 8E09000C */  lw    $t1, 0xc($s0)
 /* 0A8350 800A7750 8FAA0048 */  lw    $t2, 0x48($sp)

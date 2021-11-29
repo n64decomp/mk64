@@ -26,7 +26,7 @@ glabel func_800A874C
 /* 0A93A4 800A87A4 3421FFFF */  ori   $at, (0x000FFFFF & 0xFFFF) # ori $at, $at, 0xffff
 /* 0A93A8 800A87A8 02418824 */  and   $s1, $s2, $at
 /* 0A93AC 800A87AC 02202025 */  move  $a0, $s1
-/* 0A93B0 800A87B0 0C029E3D */  jal   func_800A78F4
+/* 0A93B0 800A87B0 0C029E3D */  jal   get_time_record_minutes
 /* 0A93B4 800A87B4 27A50058 */   addiu $a1, $sp, 0x58
 /* 0A93B8 800A87B8 3C01800F */  lui   $at, %hi(D_800F24A0) # $at, 0x800f
 /* 0A93BC 800A87BC C43424A0 */  lwc1  $f20, %lo(D_800F24A0)($at)
@@ -52,7 +52,7 @@ glabel func_800A874C
 /* 0A940C 800A880C 0C024CC9 */  jal   func_80093324
 /* 0A9410 800A8810 24A50021 */   addiu $a1, $a1, 0x21
 /* 0A9414 800A8814 02202025 */  move  $a0, $s1
-/* 0A9418 800A8818 0C029E51 */  jal   func_800A7944
+/* 0A9418 800A8818 0C029E51 */  jal   get_time_record_seconds
 /* 0A941C 800A881C 27A50058 */   addiu $a1, $sp, 0x58
 /* 0A9420 800A8820 8E04000C */  lw    $a0, 0xc($s0)
 /* 0A9424 800A8824 8E050010 */  lw    $a1, 0x10($s0)
@@ -74,7 +74,7 @@ glabel func_800A874C
 /* 0A9464 800A8864 0C024CC9 */  jal   func_80093324
 /* 0A9468 800A8868 24A50021 */   addiu $a1, $a1, 0x21
 /* 0A946C 800A886C 02202025 */  move  $a0, $s1
-/* 0A9470 800A8870 0C029E69 */  jal   func_800A79A4
+/* 0A9470 800A8870 0C029E69 */  jal   get_time_record_centiseconds
 /* 0A9474 800A8874 27A50058 */   addiu $a1, $sp, 0x58
 /* 0A9478 800A8878 8E04000C */  lw    $a0, 0xc($s0)
 /* 0A947C 800A887C 8E050010 */  lw    $a1, 0x10($s0)

@@ -8668,9 +8668,9 @@ void *func_8009BC9C(void *, ? *, s32, s32, s32, s32); /* extern */
 ? func_800A75A0(void *);                            /* extern */
 ? func_800A761C(void *);                            /* extern */
 ? func_800A7790(void *);                            /* extern */
-? func_800A78F4(s32, ? *);                          /* extern */
-? func_800A7944(s32, ? *);                          /* extern */
-? func_800A79A4(s32, ? *);                          /* extern */
+? get_time_record_minutes(s32, ? *);                          /* extern */
+? get_time_record_seconds(s32, ? *);                          /* extern */
+? get_time_record_centiseconds(s32, ? *);                          /* extern */
 ? func_800A8270(s32, void *);                       /* extern */
 ? func_800A8564(void *);                            /* extern */
 ? func_800A86E8(void *);                            /* extern */
@@ -9129,13 +9129,13 @@ void func_8009F5E0(void *arg0) {
                 } else {
                     set_text_color(TEXT_YELLOW);
                 }
-                func_800A78F4(temp_v1_4, &sp80);
+                get_time_record_minutes(temp_v1_4, &sp80);
                 func_800939C8(0x77, 0xA0, &sp80, 0, 1.0f, 1.0f);
                 func_80093324(0x8B, 0xA0, "'", 0, 1.0f, 1.0f);
-                func_800A7944(temp_v1_4, &sp80);
+                get_time_record_seconds(temp_v1_4, &sp80);
                 func_800939C8(0x94, 0xA0, &sp80, 0, 1.0f, 1.0f);
                 func_80093324(0xA7, 0xA0, "\"", 0, 1.0f, 1.0f);
-                func_800A79A4(temp_v1_4, &sp80);
+                get_time_record_centiseconds(temp_v1_4, &sp80);
                 func_800939C8(0xB4, 0xA0, &sp80, 0, 1.0f, 1.0f);
                 return;
             case 0x4:                               /* switch 4 */
@@ -10101,7 +10101,7 @@ Gfx *draw_box(Gfx *, ?, ?, ?, s32, s32, s32, s32, s32); /* extern */
 ? func_80092224(s32, s32, ?);                       /* extern */
 ? func_80093324(s16, s16, ? *, ?, f32, f32);        /* extern */
 ? func_800A66A8(void *, s16 *);                     /* extern */
-? func_800A7894(s32, ? *);                          /* extern */
+? convert_number_to_ascii(s32, ? *);                          /* extern */
 ? set_text_color(s32);                              /* extern */
 extern ? D_8018EE10;
 static ? D_800E75C4;                                /* unable to generate initializer; const */
@@ -10374,7 +10374,7 @@ loop_38:
                 set_text_color(TEXT_GREEN);
             }
             temp_s1_4 = phi_s0_9 + 1;
-            func_800A7894(temp_s1_4, &spB8);
+            convert_number_to_ascii(temp_s1_4, &spB8);
             func_80093324(phi_s6, phi_s2_3, &spB9, 0, 0.6f, 0.6f);
             if (phi_s3 == 0x2A) {
                 phi_v1 = (phi_s0_9 << 7) + &D_8018EE10;
@@ -10432,7 +10432,7 @@ loop_58:
                 set_text_color(TEXT_GREEN);
             }
             temp_s1_5 = phi_s0_11 + 1;
-            func_800A7894(temp_s1_5, &spA8);
+            convert_number_to_ascii(temp_s1_5, &spA8);
             func_80093324(phi_s6_2, phi_s2_4, &spA9, 0, 0.6f, 0.6f);
             if (phi_s3_2 == 0x2A) {
                 phi_v1_2 = (phi_s0_11 << 7) + &D_8018EE10;
@@ -10506,7 +10506,7 @@ loop_80:
                 set_text_color(TEXT_GREEN);
             }
             temp_s1_6 = phi_s0_12 + 1;
-            func_800A7894(temp_s1_6, &sp98);
+            convert_number_to_ascii(temp_s1_6, &sp98);
             func_80093324(phi_s6_3, phi_s2_6, &sp99, 0, 0.6f, 0.6f);
             if (phi_s3_4 == 0x2A) {
                 phi_v1_3 = (phi_s0_12 << 7) + &D_8018EE10;
@@ -10610,7 +10610,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A2D1C.s")
 s32 func_80093034(s32); // extern
 ? func_80093324(s32, s32, ? *, ?, f32, f32); // extern
 ? func_800A32B4(s32, s32, s8, s32); // extern
-? func_800A7894(s32, ? *); // extern
+? convert_number_to_ascii(s32, ? *); // extern
 ? set_text_color(s32); // extern
 extern s32 D_800DC540;
 extern ? D_800E7500;
@@ -10668,18 +10668,23 @@ void func_800A2EB8(void *arg0) {
         phi_s0 = temp_s0;
         phi_s1 = temp_s1;
     } while (temp_s0 < &D_80164370);
+    // "Results"
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     func_80093324(arg0->unkC + 0x1E, arg0->unk10 + 0x19, &D_800F0C1C, 0, 1.0f, 1.0f);
+    // "Round"
     set_text_color(5);
     temp_f0 = D_800F1C90;
     func_80093324(arg0->unkC + 0x2C, arg0->unk10 + 0x28, &D_800F0C24, 0, temp_f0, temp_f0);
-    func_800A7894(gCourseSelection + 1, &sp68);
+    // Convert index of current course in the cup order into a round number
+    convert_number_to_ascii(gCourseSelection + 1, &sp68);
+    // Print previously converted round number
     temp_f0_2 = D_800F1C94;
     func_80093324(arg0->unkC + 0x57, arg0->unk10 + 0x28, &sp69, 0, temp_f0_2, temp_f0_2);
     phi_s0_2 = &D_80164360;
     phi_s3 = 0;
     phi_s1_2 = &sp70;
     phi_s2 = 0;
+    // Print rank 1, 2, 3 and 4  3-lap times
     do {
         if (*phi_s0_2 < D_8018EDF3) {
             phi_a0 = gGlobalTimer % 3;
@@ -10698,6 +10703,7 @@ void func_800A2EB8(void *arg0) {
     phi_s3_2 = 0x40;
     phi_s1_3 = &sp74;
     phi_s2_2 = 4;
+    // Print rank 5, 6, 7 and 8  3-lap times
     do {
         if (*phi_s0_3 < D_8018EDF3) {
             phi_a0_2 = gGlobalTimer % 3;
@@ -10712,12 +10718,15 @@ void func_800A2EB8(void *arg0) {
         phi_s1_3 += 1;
         phi_s2_2 = temp_s2_2;
     } while (temp_s2_2 != 8);
+    // Print Cup name
     set_text_color(5);
     temp_s0_2 = ((func_80093034(*(&D_800E7500 + (gCupSelection * 4))) + 8) * D_800F1C98) / 2.0f;
     temp_f0_3 = D_800F1C9C;
+    // Some very complicated way to print the cup name and CC mode
     draw_text((-(((func_80093034(*(&D_800E76CC + (gCCSelection * 4))) + 8) * temp_f0_3) / 2.0f) - arg0->unkC) + 0xF5, arg0->unk10 + 0xE1, *(&D_800E7500 + (D_800DC540 * 4)), 0, temp_f0_3, temp_f0_3);
     temp_v0 = D_8018EDF3;
     temp_f0_4 = D_800F1CA0;
+    // Print CC mode again?
     draw_text((temp_s0_2 - arg0->unkC) + 0xF5, arg0->unk10 + 0xE1, *(&D_800E76CC + (*(&D_800E86AD + ((temp_v0 * 3) + *(&D_800E86AB + temp_v0))) * 4)), 0, temp_f0_4, temp_f0_4);
 }
 #else
@@ -10728,7 +10737,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A2EB8.s")
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_80093324(s32, ?, ? *, ?, f32, f32); // extern
 ? func_800939C8(s32, ?, ? *, ?, f32, f32); // extern
-? func_800A7894(s32, ? *); // extern
+? convert_number_to_ascii(s32, ? *); // extern
 extern ? D_800E76A8;
 extern ? D_800F0C2C;
 extern ? D_800F0C30;
@@ -10748,19 +10757,34 @@ void func_800A32B4(s32 arg0, ? arg1, s32 arg2, s32 arg3) {
 
     temp_f4 = *(&D_8015F898 + (*(&D_80164360 + (arg3 * 2)) * 4));
     sp50 = temp_f4;
-    func_800A7894(arg3 + 1, &sp3C);
+    // Convert arg3 (some index) into a rank string
+    // This is a little wonky.
+    // sp3c becomes "0x30, rank#, \0"
+    convert_number_to_ascii(arg3 + 1, &sp3C);
     temp_f20 = D_800F1CA4;
+    // change the \0 to a "."
     sp3E = 0x2E;
+    // add a new termnitator
     sp3F = 0;
+    // Print rank string
     func_800939C8(arg0 - 1, arg1, &sp3D, -4, temp_f20, temp_f20);
+    // Print character name (arg2 is almost certainly characterId)
     func_80093324(arg0 + 0xA, arg1, *(&D_800E76A8 + (arg2 * 4)), 0, D_800F1CA8, temp_f20);
-    func_800A7894(sp50 / 60.0f, &sp3C);
+    // Get minutes
+    convert_number_to_ascii(sp50 / 60.0f, &sp3C);
+    // Print minutes
     func_800939C8(arg0 + 0x42, arg1, &sp3C, 0, temp_f20, temp_f20);
-    func_800A7894(temp_f4 % 0x3C, &sp3C);
+    // Get seconds
+    convert_number_to_ascii(temp_f4 % 0x3C, &sp3C);
+    // Print '
     func_80093324(arg0 + 0x4E, arg1, &D_800F0C2C, 0, temp_f20, temp_f20);
+    // Print seconds
     func_800939C8(arg0 + 0x56, arg1, &sp3C, 0, temp_f20, temp_f20);
-    func_800A7894((sp50 * 100.0) % 0x64, &sp3C);
+    // Get centiseconds
+    convert_number_to_ascii((sp50 * 100.0) % 0x64, &sp3C);
+    // Print "
     func_80093324(arg0 + 0x62, arg1, &D_800F0C30, 0, temp_f20, temp_f20);
+    // Print centiseconds
     func_800939C8(arg0 + 0x6A, arg1, &sp3C, 0, temp_f20, temp_f20);
 }
 #else
@@ -10774,7 +10798,7 @@ s32 func_80093034(s32);                             /* extern */
 ? func_80093324(s32, s32, ? *, ?, f32, f32);        /* extern */
 ? func_800A3A10(s8 *);                              /* extern */
 ? func_800A3ADC(void *, s32, s32, s8, s32, s8 *);   /* extern */
-? func_800A7894(s32, ? *);                          /* extern */
+? convert_number_to_ascii(s32, ? *);                          /* extern */
 ? set_text_color(s32);                              /* extern */
 extern s32 D_800DC540;
 extern ? D_80164360;
@@ -10831,13 +10855,18 @@ void func_800A34A8(void *arg0) {
             func_800A3A10(&sp80);
             func_800A3A10(gGPOverallRanks);
         }
+        // "Driver's Points"
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
         func_80093324(arg0->unkC + 0x19, 0x19 - arg0->unk10, "driver's points", 0, 0.8f, 0.8f);
+        // "Round"
         set_text_color(5);
         func_80093324(arg0->unkC + 0x36, 0x28 - arg0->unk10, "round", 0, 0.7f, 0.7f);
-        func_800A7894(gCourseSelection + 1, &sp78);
+        // Convert course index to a round number
+        convert_number_to_ascii(gCourseSelection + 1, &sp78);
+        // Print round number
         func_80093324(arg0->unkC + 0x61, 0x28 - arg0->unk10, &sp79, 0, 0.7f, 0.7f);
         phi_s1 = 0;
+        // Print rank 1, 2, 3 and 4 lines
         do {
             temp_v1_2 = arg0->unk4;
             if ((temp_v1_2 != 8) && (temp_v1_2 != 9)) {
@@ -10869,6 +10898,7 @@ void func_800A34A8(void *arg0) {
             phi_s1 = temp_s1;
         } while (temp_s1 < 4);
         phi_s1_2 = 4;
+        // Print rank 5, 6, 7 and 8 lines
         do {
             temp_v1_3 = arg0->unk4;
             if ((temp_v1_3 != 8) && (temp_v1_3 != 9)) {
@@ -10969,7 +10999,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A3A10.s")
 //generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
 ? func_80093324(s32, s32, s8 *, ?, f32, f32);       /* extern */
 ? func_800939C8(s32, s32, s8 *, ?, f32, f32);       /* extern */
-? func_800A7894(s8, s8 *);                          /* extern */
+? convert_number_to_ascii(s8, s8 *);                          /* extern */
 extern s32 D_8018D9BC;
 static ? D_800E76A8;                                /* unable to generate initializer; const */
 
@@ -10984,7 +11014,7 @@ void func_800A3ADC(void *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5)
     s32 phi_v1_2;
 
     if (arg0->unk4 < 9) {
-        func_800A7894(arg4 + 1, &sp34);
+        convert_number_to_ascii(arg4 + 1, &sp34);
     } else {
         phi_v1 = arg4;
         phi_v1_2 = arg4;
@@ -11002,16 +11032,22 @@ loop_4:
                 }
             }
         }
-        func_800A7894(phi_v1_2 + 1, &sp34);
+        convert_number_to_ascii(phi_v1_2 + 1, &sp34);
     }
     sp36 = 0x2E;
     sp37 = 0;
+    // Print rank # + "."
     func_800939C8(arg1, arg2, &sp35, -4, 0.7f, 0.7f);
+    // Print character name
     func_80093324(arg1 + 0xA, arg2, *(&D_800E76A8 + (arg3 * 4)), 0, 0.7f, 0.7f);
-    func_800A7894(gGPCharacterPoints[arg3], &sp34);
+    // Print character's current point count
+    convert_number_to_ascii(gGPCharacterPoints[arg3], &sp34);
     func_800939C8(arg1 + 0x47, arg2, &sp34, 0, 0.7f, 0.7f);
+    // Print "+" + points left to be allocated
+    // Only done for rank 1, 2, 3 and 4
+    // arg4 is almost certainly rank
     if ((arg4 < 4) && (arg0->unk4 < 9)) {
-        func_800A7894(*(D_8018D9BC + arg4), &sp34);
+        convert_number_to_ascii(*(D_8018D9BC + arg4), &sp34);
         sp34 = 0x2B;
         func_80093324(arg1 + 0x5A, arg2, &sp34, 0, 0.7f, 0.7f);
     }
@@ -11084,7 +11120,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A3C84.s")
 ? func_80093358(s32, s32, ? *, ?, f32, f32);        /* extern */
 ? func_800A4550(s32, s32, s32);                     /* extern */
 ? func_800A66A8(void *, s16 *);                     /* extern */
-? func_800A7894(s32, ? *);                          /* extern */
+? convert_number_to_ascii(s32, ? *);                          /* extern */
 ? set_text_color(?);                                /* extern */
 extern ? D_8018EE10;
 static ? D_800E7390;                                /* unable to generate initializer; const */
@@ -11248,7 +11284,7 @@ block_43:
                 func_800921C0(arg0->unk4 - 0x11, phi_s1_3, 1);
                 temp_a0 = phi_s1_3 + 1;
                 sp54 = temp_a0;
-                func_800A7894(temp_a0, &sp60);
+                convert_number_to_ascii(temp_a0, &sp60);
                 func_80093324(0xB1 - arg0->unkC, phi_s0_5, &sp61, 0, 0.6f, 0.6f);
                 if (phi_s2_3->unk4 == 0) {
                     func_80093324(0xBB - arg0->unkC, phi_s0_5, D_800E7A44, 0, 0.45f, 0.45f);
@@ -11357,9 +11393,9 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A3E60.s")
 ? func_80093324(s32, s32, ? *, ?, f32, f32); // extern
 ? func_800936B8(s32, s32, s32, ?, f32, f32); // extern
 ? func_800939C8(s32, s32, ? *, ?, f32, f32); // extern
-? func_800A78F4(s32, ? *); // extern
-? func_800A7944(s32, ? *); // extern
-? func_800A79A4(s32, ? *); // extern
+? get_time_record_minutes(s32, ? *); // extern
+? get_time_record_seconds(s32, ? *); // extern
+? get_time_record_centiseconds(s32, ? *); // extern
 void *func_800AAEF4(?); // extern
 ? set_text_color(s32); // extern
 extern ? D_800E7734;
@@ -11402,18 +11438,27 @@ void func_800A4550(s32 arg0, s32 arg1, s32 arg2) {
         }
     } else {
         phi_a0 = 3;
+        // If 3 lap time is in top 5 times
         if (temp_v0_2->unk1C >= 0) {
             phi_a0 = gGlobalTimer % 3;
         }
     }
     set_text_color(phi_a0);
-    func_800A78F4(sp40, &sp34);
+    // Get minutes
+    get_time_record_minutes(sp40, &sp34);
+    // Print minute
     func_800939C8(arg1 + 0x2C, arg2, &sp34, 0, temp_f20, temp_f20);
+    // '
     func_80093324(arg1 + 0x37, arg2, &D_800F0C4C, 0, temp_f20, temp_f20);
-    func_800A7944(sp40, &sp34);
+    // Get seconds
+    get_time_record_seconds(sp40, &sp34);
+    // Print seconds
     func_800939C8(arg1 + 0x40, arg2, &sp34, 0, temp_f20, temp_f20);
+    // "
     func_80093324(arg1 + 0x4B, arg2, &D_800F0C50, 0, temp_f20, temp_f20);
-    func_800A79A4(sp40, &sp34);
+    // Get milliseconds
+    get_time_record_centiseconds(sp40, &sp34);
+    // Print millisecond
     func_800939C8(arg1 + 0x55, arg2, &sp34, 0, temp_f20, temp_f20);
 }
 #else
@@ -11425,9 +11470,9 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A4550.s")
 ? draw_text(s32, s32, s32, ?, f32, f32); // extern
 ? func_80093324(s32, s32, ? *, ?, f32, f32); // extern
 ? func_800939C8(s32, s32, ? *, ?, f32, f32); // extern
-? func_800A78F4(u32, ? *); // extern
-? func_800A7944(u32, ? *); // extern
-? func_800A79A4(u32, ? *); // extern
+? get_time_record_minutes(u32, ? *); // extern
+? get_time_record_seconds(u32, ? *); // extern
+? get_time_record_centiseconds(u32, ? *); // extern
 void *func_800AAEF4(?); // extern
 u32 func_800B4E24(s32, s8 *); // extern
 u32 func_800B4EB4(s32, s8); // extern
@@ -11498,13 +11543,18 @@ block_21:
     set_text_color(sp40);
     temp_t0 = sp48 & 0xFFFFF;
     sp2C = temp_t0;
-    func_800A78F4(temp_t0, &sp38);
+    get_time_record_minutes(temp_t0, &sp38);
+    // Print minute
     func_800939C8(arg1 + 0x27, arg2, &sp38, 0, temp_f20, temp_f20);
+    // '
     func_80093324(arg1 + 0x32, arg2, &D_800F0C54, 0, temp_f20, temp_f20);
-    func_800A7944(sp2C, &sp38);
+    get_time_record_seconds(sp2C, &sp38);
+    // Print second
     func_800939C8(arg1 + 0x3B, arg2, &sp38, 0, temp_f20, temp_f20);
+    // "
     func_80093324(arg1 + 0x46, arg2, &D_800F0C58, 0, temp_f20, temp_f20);
-    func_800A79A4(sp2C, &sp38);
+    get_time_record_centiseconds(sp2C, &sp38);
+    // Print millisecond
     func_800939C8(arg1 + 0x50, arg2, &sp38, 0, temp_f20, temp_f20);
     if (sp2C < 0x927C0) {
         phi_v0_3 = sp48 >> 0x14;
@@ -11598,9 +11648,9 @@ s32 draw_box(s32, ?, ?, ?, s32, s32, s32, s32, s32); // extern
 ? func_800921C0(s32, s32, ?); // extern
 ? func_80093324(s16, s32, ? *, ?, f32, f32); // extern
 ? func_800939C8(?, ?, ? *, ?, f32, f32); // extern
-? func_800A78F4(s32, ? *); // extern
-? func_800A7944(s32, ? *); // extern
-? func_800A79A4(s32, ? *); // extern
+? get_time_record_minutes(s32, ? *); // extern
+? get_time_record_seconds(s32, ? *); // extern
+? get_time_record_centiseconds(s32, ? *); // extern
 s32 func_800B4E24(?); // extern
 s32 func_800B4F2C(); // extern
 ? set_text_color(?); // extern
@@ -11635,27 +11685,39 @@ void func_800A4BC8(void *arg0) {
     draw_text(0xA0, 0x50, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCourseSelection * 2))) * 4)), 0, 1.0f, 1.0f);
     set_text_color(TEXT_RED);
     temp_f20 = D_800F1DD4;
+    // "Best Records"
     draw_text(0x9D, 0x60, D_800E7728.unk0, 0, temp_f20, temp_f20);
     temp_a0 = func_800B4E24(0) & 0xFFFFF;
     temp_s1 = temp_a0;
-    func_800A78F4(temp_a0, &sp68);
+    // Print minutes
+    get_time_record_minutes(temp_a0, &sp68);
     func_800939C8(0x7F, 0x6D, &sp68, 0, temp_f20, temp_f20);
+    // '
     func_80093324(0x8E, 0x6D, &D_800F0C5C, 0, temp_f20, temp_f20);
-    func_800A7944(temp_s1, &sp68);
+    // Print seconds
+    get_time_record_seconds(temp_s1, &sp68);
     func_800939C8(0x98, 0x6D, &sp68, 0, temp_f20, temp_f20);
+    // "
     func_80093324(0xA7, 0x6D, &D_800F0C60, 0, temp_f20, temp_f20);
-    func_800A79A4(temp_s1, &sp68);
+    // Print centiseconds
+    get_time_record_centiseconds(temp_s1, &sp68);
     func_800939C8(0xB3, 0x6D, &sp68, 0, temp_f20, temp_f20);
+    // "Best Lap"
     draw_text(0x9D, 0x7C, D_800E7728.unk4, 0, temp_f20, temp_f20);
     temp_a0_2 = func_800B4F2C() & 0xFFFFF;
     temp_s1_2 = temp_a0_2;
-    func_800A78F4(temp_a0_2, &sp68);
+    // Print minutes
+    get_time_record_minutes(temp_a0_2, &sp68);
     func_800939C8(0x7F, 0x89, &sp68, 0, temp_f20, temp_f20);
+    // '
     func_80093324(0x8E, 0x89, &D_800F0C64, 0, temp_f20, temp_f20);
-    func_800A7944(temp_s1_2, &sp68);
+    // Print seconds
+    get_time_record_seconds(temp_s1_2, &sp68);
     func_800939C8(0x98, 0x89, &sp68, 0, temp_f20, temp_f20);
+    // "
     func_80093324(0xA7, 0x89, &D_800F0C68, 0, temp_f20, temp_f20);
-    func_800A79A4(temp_s1_2, &sp68);
+    // Print centiseconds
+    get_time_record_centiseconds(temp_s1_2, &sp68);
     func_800939C8(0xB3, 0x89, &sp68, 0, temp_f20, temp_f20);
     phi_s0 = 0;
     phi_s1 = 0;
@@ -11915,10 +11977,10 @@ s32 func_80093034(? *);                             /* extern */
 ? func_80093358(s16, s32, ? *, ?, f32, f32);        /* extern */
 ? func_80093754(?, ?, s32, ?, f32, f32);            /* extern */
 ? func_800A66A8(void *, s16 *);                     /* extern */
-? func_800A7894(s32, ? *);                          /* extern */
-? func_800A78F4(s32, ? *);                          /* extern */
-? func_800A7944(s32, ? *);                          /* extern */
-? func_800A79A4(s32, ? *);                          /* extern */
+? convert_number_to_ascii(s32, ? *);                          /* extern */
+? get_time_record_minutes(s32, ? *);                          /* extern */
+? get_time_record_seconds(s32, ? *);                          /* extern */
+? get_time_record_centiseconds(s32, ? *);                          /* extern */
 s32 func_800B4E24(?);                               /* extern */
 ? set_text_color(?);                                /* extern */
 ? text_draw(?, ?, ? *, ?, f32, f32);                /* extern */
@@ -12043,24 +12105,24 @@ void func_800A5738(void *arg0) {
         func_80093754(0x9D, 0x60, D_800E7728.unk0, 0, 0.8f, 0.8f);
         temp_a0 = func_800B4E24(0) & 0xFFFFF;
         temp_s1_2 = temp_a0;
-        func_800A78F4(temp_a0, &sp84);
+        get_time_record_minutes(temp_a0, &sp84);
         text_draw(0x7F, 0x6D, &sp84, 0, 0.8f, 0.8f);
         func_80093358(0x8E, 0x6D, "'", 0, 0.8f, 0.8f);
-        func_800A7944(temp_s1_2, &sp84);
+        get_time_record_seconds(temp_s1_2, &sp84);
         text_draw(0x98, 0x6D, &sp84, 0, 0.8f, 0.8f);
         func_80093358(0xA7, 0x6D, "\"", 0, 0.8f, 0.8f);
-        func_800A79A4(temp_s1_2, &sp84);
+        get_time_record_centiseconds(temp_s1_2, &sp84);
         text_draw(0xB3, 0x6D, &sp84, 0, 0.8f, 0.8f);
         func_80093754(0x9D, 0x7C, D_800E7728.unk4, 0, 0.8f, 0.8f);
         temp_a0_2 = func_800B4F2C() & 0xFFFFF;
         temp_s1_3 = temp_a0_2;
-        func_800A78F4(temp_a0_2, &sp84);
+        get_time_record_minutes(temp_a0_2, &sp84);
         text_draw(0x7F, 0x89, &sp84, 0, 0.8f, 0.8f);
         func_80093358(0x8E, 0x89, "'", 0, 0.8f, 0.8f);
-        func_800A7944(temp_s1_3, &sp84);
+        get_time_record_seconds(temp_s1_3, &sp84);
         text_draw(0x98, 0x89, &sp84, 0, 0.8f, 0.8f);
         func_80093358(0xA7, 0x89, "\"", 0, 0.8f, 0.8f);
-        func_800A79A4(temp_s1_3, &sp84);
+        get_time_record_centiseconds(temp_s1_3, &sp84);
         text_draw(0xB3, 0x89, &sp84, 0, 0.8f, 0.8f);
         phi_v0 = D_800E775C;
         phi_s1_2 = 0;
@@ -12112,7 +12174,7 @@ block_36:
             func_800921C0(arg0->unk4 - 0x1E, phi_s1_3, 1);
             temp_a0_3 = phi_s1_3 + 1;
             sp54 = temp_a0_3;
-            func_800A7894(temp_a0_3, &sp5C);
+            convert_number_to_ascii(temp_a0_3, &sp5C);
             func_80093324(0x5A - arg0->unkC, phi_s0_4, &sp5D, 0, 0.75f, 0.75f);
             if (phi_s2_2->unk4 == 0) {
                 func_80093324(0x69 - arg0->unkC, phi_s0_4, D_800E7A44, 0, 0.75f, 0.75f);
@@ -12697,7 +12759,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A6D94.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_800A7894(u8, ? *); // extern
+? convert_number_to_ascii(u8, ? *); // extern
 ? set_text_color(s32); // extern
 ? text_draw(s32, s32, ? *, ?, f32, f32); // extern
 extern ? D_800E7300;
@@ -12729,7 +12791,7 @@ void func_800A6E94(s32 arg0, s32 arg1, s32 arg2) {
     text_draw(temp_s0->unk0 + 4, temp_s0->unk2 + 0x5A, &D_800F0C80, 0, temp_f20, temp_f20);
     temp_v0 = (arg1 * 3) + arg2;
     sp30 = temp_v0;
-    func_800A7894(*temp_v0, &sp40);
+    convert_number_to_ascii(*temp_v0, &sp40);
     text_draw(temp_s0->unk0 + 0x2D, temp_s0->unk2 + 0x5A, &sp40, 0, temp_f20, temp_f20);
     if (sp3C == 1) {
         sp38 = 1;
@@ -12740,7 +12802,7 @@ void func_800A6E94(s32 arg0, s32 arg1, s32 arg2) {
     }
     sp38 = sp38;
     text_draw(temp_s0->unk0 + 4, temp_s0->unk2 + 0x69, &D_800F0C88, 0, temp_f20, temp_f20);
-    func_800A7894(sp30->unk1, &sp40);
+    convert_number_to_ascii(sp30->unk1, &sp40);
     text_draw(temp_s0->unk0 + 0x2D, temp_s0->unk2 + 0x69, &sp40, 0, temp_f20, temp_f20);
     if ((sp38 + 1) == sp3C) {
         set_text_color(gGlobalTimer % 3);
@@ -12748,7 +12810,7 @@ void func_800A6E94(s32 arg0, s32 arg1, s32 arg2) {
         set_text_color(TEXT_RED);
     }
     text_draw(temp_s0->unk0 + 4, temp_s0->unk2 + 0x78, &D_800F0C90, 0, temp_f20, temp_f20);
-    func_800A7894(sp30->unk2, &sp40);
+    convert_number_to_ascii(sp30->unk2, &sp40);
     text_draw(temp_s0->unk0 + 0x2D, temp_s0->unk2 + 0x78, &sp40, 0, temp_f20, temp_f20);
 }
 #else
@@ -12925,7 +12987,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A75A0.s")
 ? draw_text(s32, s32, s32, ?, f32, f32); // extern
 s32 func_80093034(s32); // extern
 ? func_800939C8(s32, s32, ? *, ?, f32, f32); // extern
-? func_800A7894(s32, ? *); // extern
+? convert_number_to_ascii(s32, ? *); // extern
 ? func_800A79F4(s32, ? *); // extern
 ? set_text_color(s32); // extern
 extern s32 D_800E7AA4;
@@ -12958,7 +13020,7 @@ void func_800A761C(void *arg0) {
     draw_text(arg0->unkC - sp44, arg0->unk10, D_800E7AA4, 0, temp_f20, temp_f20);
     set_text_color(gGlobalTimer % 3);
     draw_text(arg0->unkC + sp48, arg0->unk10, *sp34, 0, temp_f20, temp_f20);
-    func_800A7894(temp_a0, &sp3C);
+    convert_number_to_ascii(temp_a0, &sp3C);
     func_800939C8((arg0->unkC + sp48) - 0x18, arg0->unk10, &sp3D, 0, 2.0f, 2.0f);
 }
 #else
@@ -13000,74 +13062,80 @@ void func_800A7790(void *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A7790.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_800A7894(s32 arg0, void *arg1) {
-    arg1->unk0 = (arg0 / 0xA) + 0x30;
-    arg1->unk1 = (arg0 % 0xA) + 0x30;
-    arg1->unk2 = 0;
+#if 1
+// Originally func_800A7894
+// Presumes that "number" is a 2 digit number. Convert it to a string
+void convert_number_to_ascii(s32 number, char *buffer) {
+    buffer[0] = (number / 0xA) + 0x30;
+    buffer[1] = (number % 0xA) + 0x30;
+    // Terminator
+    buffer[2] = 0;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A7894.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/convert_number_to_ascii.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_800A78E0(void *arg0) {
-    arg0->unk0 = 0x2D;
-    arg0->unk1 = 0x2D;
-    arg0->unk2 = 0;
+#if 1
+// Originally func_800A78E0
+// MK 64 doesn't show more then 2 digits for any given time
+// (minute, second, centisecond)
+// So, if timeRecord is greater than 10 minutes, just use '-'s
+void write_dashes(char *buffer) {
+    buffer[0] = 0x2D;
+    buffer[1] = 0x2D;
+    // Terminator
+    buffer[2] = 0;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A78E0.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/write_dashes.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_800A7894(s32, s32); // extern
-? func_800A78E0(?, s32); // extern
-
-void func_800A78F4(s32 arg0, ? arg1) {
-    if (arg0 >= 0x927C0) {
-        func_800A78E0(arg1, arg0);
+#if 1
+// Originally func_800A78F4
+// timeRecord is assumed to be measured in centiseconds
+void get_time_record_minutes(s32 timeRecord, char *buffer) {
+    // If timeRecord is greater than 100 minutes, put '-'
+    // in buffer
+    if (timeRecord >= 0x927C0) {
+        write_dashes(buffer);
         return;
     }
-    func_800A7894(arg0 / 0x1770, arg0);
+    convert_number_to_ascii(timeRecord / 0x1770, buffer);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A78F4.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/get_time_record_minutes.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_800A7894(s32, s32); // extern
-? func_800A78E0(?, s32); // extern
-
-void func_800A7944(s32 arg0, ? arg1) {
-    if (arg0 >= 0x927C0) {
-        func_800A78E0(arg1, arg0);
+#if 1
+// Originally func_800A7944
+// timeRecord is assumed to be measured in centiseconds
+void get_time_record_seconds(s32 timeRecord, char *buffer) {
+    // If timeRecord is greater than 100 minutes, put '-'
+    // in buffer
+    if (timeRecord >= 0x927C0) {
+        write_dashes(buffer);
         return;
     }
-    func_800A7894((arg0 / 0x64) % 0x3C, arg0);
+    convert_number_to_ascii((timeRecord / 0x64) % 0x3C, buffer);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A7944.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/get_time_record_seconds.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_800A7894(s32, s32); // extern
-? func_800A78E0(?, s32); // extern
-
-void func_800A79A4(s32 arg0, ? arg1) {
-    if (arg0 >= 0x927C0) {
-        func_800A78E0(arg1, arg0);
+#if 1
+// Originally func_800A79A4
+// timeRecord is assumed to be measured in centiseconds
+void get_time_record_centiseconds(s32 timeRecord, char *buffer) {
+    // If timeRecord is greater than 100 minutes, put '-'
+    // in buffer
+    if (timeRecord >= 0x927C0) {
+        write_dashes(buffer);
         return;
     }
-    func_800A7894(arg0 % 0x64, arg0);
+    convert_number_to_ascii(timeRecord % 0x64, buffer);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A79A4.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/get_time_record_centiseconds.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -13744,9 +13812,9 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A86E8.s")
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_80093324(s32, s32, ? *, ?, f32, f32); // extern
 ? func_800936B8(s32, s32, s32, ?, f32, f32); // extern
-? func_800A78F4(u32, ? *); // extern
-? func_800A7944(u32, ? *); // extern
-? func_800A79A4(u32, ? *); // extern
+? get_time_record_minutes(u32, ? *); // extern
+? get_time_record_seconds(u32, ? *); // extern
+? get_time_record_centiseconds(u32, ? *); // extern
 u32 func_800B4E24(?); // extern
 u32 func_800B4F2C(); // extern
 ? set_text_color(?); // extern
@@ -13772,15 +13840,15 @@ void func_800A874C(void *arg0) {
         phi_v0 = func_800B4F2C();
     }
     temp_s1 = phi_v0 & 0xFFFFF;
-    func_800A78F4(temp_s1, &sp58);
+    get_time_record_minutes(temp_s1, &sp58);
     temp_f20 = D_800F24A0;
     temp_f22 = D_800F24A4;
     text_draw(arg0->unkC + 5, arg0->unk10 + 0x21, &sp58, 0, temp_f20, temp_f22);
     func_80093324(arg0->unkC + 0xE, arg0->unk10 + 0x21, &D_800F0C98, 0, temp_f20, temp_f22);
-    func_800A7944(temp_s1, &sp58);
+    get_time_record_seconds(temp_s1, &sp58);
     text_draw(arg0->unkC + 0x16, arg0->unk10 + 0x21, &sp58, 0, temp_f20, temp_f22);
     func_80093324(arg0->unkC + 0x20, arg0->unk10 + 0x21, &D_800F0C9C, 0, temp_f20, temp_f22);
-    func_800A79A4(temp_s1, &sp58);
+    get_time_record_centiseconds(temp_s1, &sp58);
     text_draw(arg0->unkC + 0x29, arg0->unk10 + 0x21, &sp58, 0, temp_f20, temp_f22);
     if (temp_s1 < 0x927C0) {
         phi_s2 = phi_v0 >> 0x14;

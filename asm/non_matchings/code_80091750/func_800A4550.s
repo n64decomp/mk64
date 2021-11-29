@@ -76,7 +76,7 @@ glabel func_800A4550
 /* 0A5264 800A4664 0C024C36 */  jal   set_text_color
 /* 0A5268 800A4668 00000000 */   nop   
 /* 0A526C 800A466C 8FA40040 */  lw    $a0, 0x40($sp)
-/* 0A5270 800A4670 0C029E3D */  jal   func_800A78F4
+/* 0A5270 800A4670 0C029E3D */  jal   get_time_record_minutes
 /* 0A5274 800A4674 27A50034 */   addiu $a1, $sp, 0x34
 /* 0A5278 800A4678 8FA4004C */  lw    $a0, 0x4c($sp)
 /* 0A527C 800A467C 8FA50050 */  lw    $a1, 0x50($sp)
@@ -96,7 +96,7 @@ glabel func_800A4550
 /* 0A52B4 800A46B4 0C024CC9 */  jal   func_80093324
 /* 0A52B8 800A46B8 24840037 */   addiu $a0, $a0, 0x37
 /* 0A52BC 800A46BC 8FA40040 */  lw    $a0, 0x40($sp)
-/* 0A52C0 800A46C0 0C029E51 */  jal   func_800A7944
+/* 0A52C0 800A46C0 0C029E51 */  jal   get_time_record_seconds
 /* 0A52C4 800A46C4 27A50034 */   addiu $a1, $sp, 0x34
 /* 0A52C8 800A46C8 8FA4004C */  lw    $a0, 0x4c($sp)
 /* 0A52CC 800A46CC 8FA50050 */  lw    $a1, 0x50($sp)
@@ -116,7 +116,7 @@ glabel func_800A4550
 /* 0A5304 800A4704 0C024CC9 */  jal   func_80093324
 /* 0A5308 800A4708 2484004B */   addiu $a0, $a0, 0x4b
 /* 0A530C 800A470C 8FA40040 */  lw    $a0, 0x40($sp)
-/* 0A5310 800A4710 0C029E69 */  jal   func_800A79A4
+/* 0A5310 800A4710 0C029E69 */  jal   get_time_record_centiseconds
 /* 0A5314 800A4714 27A50034 */   addiu $a1, $sp, 0x34
 /* 0A5318 800A4718 8FA4004C */  lw    $a0, 0x4c($sp)
 /* 0A531C 800A471C 8FA50050 */  lw    $a1, 0x50($sp)

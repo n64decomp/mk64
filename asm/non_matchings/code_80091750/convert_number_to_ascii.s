@@ -1,4 +1,5 @@
-glabel func_800A7894
+# Originally func_800A7894
+glabel convert_number_to_ascii
 /* 0A8494 800A7894 2402000A */  li    $v0, 10
 /* 0A8498 800A7898 0082001A */  div   $zero, $a0, $v0
 /* 0A849C 800A789C 00007012 */  mflo  $t6

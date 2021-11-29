@@ -226,7 +226,7 @@ glabel L800A412C
 /* 0A4DAC 800A41AC 2484FFEF */   addiu $a0, $a0, -0x11
 /* 0A4DB0 800A41B0 26240001 */  addiu $a0, $s1, 1
 /* 0A4DB4 800A41B4 AFA40054 */  sw    $a0, 0x54($sp)
-/* 0A4DB8 800A41B8 0C029E25 */  jal   func_800A7894
+/* 0A4DB8 800A41B8 0C029E25 */  jal   convert_number_to_ascii
 /* 0A4DBC 800A41BC 27A50060 */   addiu $a1, $sp, 0x60
 /* 0A4DC0 800A41C0 8E6E000C */  lw    $t6, 0xc($s3)
 /* 0A4DC4 800A41C4 241800B1 */  li    $t8, 177

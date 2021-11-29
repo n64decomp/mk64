@@ -53,7 +53,7 @@ glabel func_800A6E94
 /* 0A7B58 800A6F58 0338C823 */  subu  $t9, $t9, $t8
 /* 0A7B5C 800A6F5C 03281021 */  addu  $v0, $t9, $t0
 /* 0A7B60 800A6F60 90440000 */  lbu   $a0, ($v0)
-/* 0A7B64 800A6F64 0C029E25 */  jal   func_800A7894
+/* 0A7B64 800A6F64 0C029E25 */  jal   convert_number_to_ascii
 /* 0A7B68 800A6F68 AFA20030 */   sw    $v0, 0x30($sp)
 /* 0A7B6C 800A6F6C 86040000 */  lh    $a0, ($s0)
 /* 0A7B70 800A6F70 86050002 */  lh    $a1, 2($s0)
@@ -97,7 +97,7 @@ glabel func_800A6E94
 /* 0A7C00 800A7000 24A50069 */   addiu $a1, $a1, 0x69
 /* 0A7C04 800A7004 8FAA0030 */  lw    $t2, 0x30($sp)
 /* 0A7C08 800A7008 27A50040 */  addiu $a1, $sp, 0x40
-/* 0A7C0C 800A700C 0C029E25 */  jal   func_800A7894
+/* 0A7C0C 800A700C 0C029E25 */  jal   convert_number_to_ascii
 /* 0A7C10 800A7010 91440001 */   lbu   $a0, 1($t2)
 /* 0A7C14 800A7014 86040000 */  lh    $a0, ($s0)
 /* 0A7C18 800A7018 86050002 */  lh    $a1, 2($s0)
@@ -138,7 +138,7 @@ glabel func_800A6E94
 /* 0A7C9C 800A709C 24A50078 */   addiu $a1, $a1, 0x78
 /* 0A7CA0 800A70A0 8FAE0030 */  lw    $t6, 0x30($sp)
 /* 0A7CA4 800A70A4 27A50040 */  addiu $a1, $sp, 0x40
-/* 0A7CA8 800A70A8 0C029E25 */  jal   func_800A7894
+/* 0A7CA8 800A70A8 0C029E25 */  jal   convert_number_to_ascii
 /* 0A7CAC 800A70AC 91C40002 */   lbu   $a0, 2($t6)
 /* 0A7CB0 800A70B0 86040000 */  lh    $a0, ($s0)
 /* 0A7CB4 800A70B4 86050002 */  lh    $a1, 2($s0)
