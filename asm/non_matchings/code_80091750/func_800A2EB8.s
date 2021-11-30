@@ -61,7 +61,7 @@ glabel func_800A2EB8
 /* 0A3BA0 800A2FA0 3C048019 */  lui   $a0, %hi(gCourseSelection) # $a0, 0x8019
 /* 0A3BA4 800A2FA4 8084EE0B */  lb    $a0, %lo(gCourseSelection)($a0)
 /* 0A3BA8 800A2FA8 27A50068 */  addiu $a1, $sp, 0x68
-/* 0A3BAC 800A2FAC 0C029E25 */  jal   func_800A7894
+/* 0A3BAC 800A2FAC 0C029E25 */  jal   convert_number_to_ascii
 /* 0A3BB0 800A2FB0 24840001 */   addiu $a0, $a0, 1
 /* 0A3BB4 800A2FB4 3C01800F */  lui   $at, %hi(D_800F1C94) # $at, 0x800f
 /* 0A3BB8 800A2FB8 C4201C94 */  lwc1  $f0, %lo(D_800F1C94)($at)

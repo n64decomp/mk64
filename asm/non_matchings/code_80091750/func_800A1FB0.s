@@ -399,7 +399,7 @@ glabel L800A23DC
 /* 0A3174 800A2574 26110001 */  addiu $s1, $s0, 1
 .L800A2578:
 /* 0A3178 800A2578 02202025 */  move  $a0, $s1
-/* 0A317C 800A257C 0C029E25 */  jal   func_800A7894
+/* 0A317C 800A257C 0C029E25 */  jal   convert_number_to_ascii
 /* 0A3180 800A2580 27A500B8 */   addiu $a1, $sp, 0xb8
 /* 0A3184 800A2584 02C02025 */  move  $a0, $s6
 /* 0A3188 800A2588 02402825 */  move  $a1, $s2
@@ -592,7 +592,7 @@ glabel L800A26A8
 /* 0A3430 800A2830 26110001 */  addiu $s1, $s0, 1
 .L800A2834:
 /* 0A3434 800A2834 02202025 */  move  $a0, $s1
-/* 0A3438 800A2838 0C029E25 */  jal   func_800A7894
+/* 0A3438 800A2838 0C029E25 */  jal   convert_number_to_ascii
 /* 0A343C 800A283C 02A02825 */   move  $a1, $s5
 /* 0A3440 800A2840 02C02025 */  move  $a0, $s6
 /* 0A3444 800A2844 02402825 */  move  $a1, $s2
@@ -810,7 +810,7 @@ glabel L800A29D0
 /* 0A374C 800A2B4C 26110001 */  addiu $s1, $s0, 1
 .L800A2B50:
 /* 0A3750 800A2B50 02202025 */  move  $a0, $s1
-/* 0A3754 800A2B54 0C029E25 */  jal   func_800A7894
+/* 0A3754 800A2B54 0C029E25 */  jal   convert_number_to_ascii
 /* 0A3758 800A2B58 27A50098 */   addiu $a1, $sp, 0x98
 /* 0A375C 800A2B5C 02C02025 */  move  $a0, $s6
 /* 0A3760 800A2B60 02402825 */  move  $a1, $s2

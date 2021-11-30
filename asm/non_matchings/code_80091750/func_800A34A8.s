@@ -93,7 +93,7 @@ glabel func_800A34A8
 /* 0A4208 800A3608 3C048019 */  lui   $a0, %hi(gCourseSelection) # $a0, 0x8019
 /* 0A420C 800A360C 8084EE0B */  lb    $a0, %lo(gCourseSelection)($a0)
 /* 0A4210 800A3610 27A50078 */  addiu $a1, $sp, 0x78
-/* 0A4214 800A3614 0C029E25 */  jal   func_800A7894
+/* 0A4214 800A3614 0C029E25 */  jal   convert_number_to_ascii
 /* 0A4218 800A3618 24840001 */   addiu $a0, $a0, 1
 /* 0A421C 800A361C 3C01800F */  lui   $at, %hi(D_800F1CB4) # $at, 0x800f
 /* 0A4220 800A3620 C4201CB4 */  lwc1  $f0, %lo(D_800F1CB4)($at)
