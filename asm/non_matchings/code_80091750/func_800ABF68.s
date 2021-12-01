@@ -22,7 +22,7 @@ glabel func_800ABF68
 /* 0ACBB4 800ABFB4 3C04800E */  lui   $a0, %hi(D_800E7524)
 /* 0ACBB8 800ABFB8 0018C880 */  sll   $t9, $t8, 2
 /* 0ACBBC 800ABFBC 00992021 */  addu  $a0, $a0, $t9
-/* 0ACBC0 800ABFC0 0C024C0D */  jal   func_80093034
+/* 0ACBC0 800ABFC0 0C024C0D */  jal   get_string_width
 /* 0ACBC4 800ABFC4 8C847524 */   lw    $a0, %lo(D_800E7524)($a0)
 /* 0ACBC8 800ABFC8 04410003 */  bgez  $v0, .L800ABFD8
 /* 0ACBCC 800ABFCC 00024043 */   sra   $t0, $v0, 1

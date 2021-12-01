@@ -29,15 +29,15 @@ glabel print_text2
 /* 0943F4 800937F4 00809825 */  move  $s3, $a0
 /* 0943F8 800937F8 1320005C */  beqz  $t9, .L8009396C
 /* 0943FC 800937FC 00E0A825 */   move  $s5, $a3
-/* 094400 80093800 3C1E800F */  lui   $fp, %hi(D_800EF690) # $fp, 0x800f
+/* 094400 80093800 3C1E800F */  lui   $fp, %hi(gCharacterWidthMap) # $fp, 0x800f
 /* 094404 80093804 3C17800E */  lui   $s7, %hi(D_800E7E84) # $s7, 0x800e
 /* 094408 80093808 26F77E84 */  addiu $s7, %lo(D_800E7E84) # addiu $s7, $s7, 0x7e84
-/* 09440C 8009380C 27DEF690 */  addiu $fp, %lo(D_800EF690) # addiu $fp, $fp, -0x970
+/* 09440C 8009380C 27DEF690 */  addiu $fp, %lo(gCharacterWidthMap) # addiu $fp, $fp, -0x970
 /* 094410 80093810 C7B8007C */  lwc1  $f24, 0x7c($sp)
 /* 094414 80093814 C7B60078 */  lwc1  $f22, 0x78($sp)
 /* 094418 80093818 8FB60080 */  lw    $s6, 0x80($sp)
 .L8009381C:
-/* 09441C 8009381C 0C024B24 */  jal   func_80092C90
+/* 09441C 8009381C 0C024B24 */  jal   get_ascii_char_width_index
 /* 094420 80093820 02202025 */   move  $a0, $s1
 /* 094424 80093824 04400031 */  bltz  $v0, .L800938EC
 /* 094428 80093828 00408025 */   move  $s0, $v0

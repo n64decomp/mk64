@@ -32,7 +32,7 @@ glabel func_800A5738
 .L800A57AC:
 /* 0A63AC 800A57AC 5320021A */  beql  $t9, $zero, .L800A6018
 /* 0A63B0 800A57B0 8FBF0044 */   lw    $ra, 0x44($sp)
-/* 0A63B4 800A57B4 0C024C0D */  jal   func_80093034
+/* 0A63B4 800A57B4 0C024C0D */  jal   get_string_width
 /* 0A63B8 800A57B8 8E240014 */   lw    $a0, 0x14($s1)
 /* 0A63BC 800A57BC 44822000 */  mtc1  $v0, $f4
 /* 0A63C0 800A57C0 3C01800F */  lui   $at, %hi(D_800F1DD8) # $at, 0x800f

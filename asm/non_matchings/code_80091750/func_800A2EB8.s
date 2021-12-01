@@ -178,7 +178,7 @@ glabel func_800A2EB8
 /* 0A3D54 800A3154 26317500 */  addiu $s1, %lo(D_800E7500) # addiu $s1, $s1, 0x7500
 /* 0A3D58 800A3158 00194080 */  sll   $t0, $t9, 2
 /* 0A3D5C 800A315C 02284821 */  addu  $t1, $s1, $t0
-/* 0A3D60 800A3160 0C024C0D */  jal   func_80093034
+/* 0A3D60 800A3160 0C024C0D */  jal   get_string_width
 /* 0A3D64 800A3164 8D240000 */   lw    $a0, ($t1)
 /* 0A3D68 800A3168 244A0008 */  addiu $t2, $v0, 8
 /* 0A3D6C 800A316C 448A2000 */  mtc1  $t2, $f4
@@ -198,7 +198,7 @@ glabel func_800A2EB8
 /* 0A3DA4 800A31A4 460A4403 */  div.s $f16, $f8, $f10
 /* 0A3DA8 800A31A8 4600848D */  trunc.w.s $f18, $f16
 /* 0A3DAC 800A31AC 44109000 */  mfc1  $s0, $f18
-/* 0A3DB0 800A31B0 0C024C0D */  jal   func_80093034
+/* 0A3DB0 800A31B0 0C024C0D */  jal   get_string_width
 /* 0A3DB4 800A31B4 00000000 */   nop   
 /* 0A3DB8 800A31B8 244F0008 */  addiu $t7, $v0, 8
 /* 0A3DBC 800A31BC 448F2000 */  mtc1  $t7, $f4

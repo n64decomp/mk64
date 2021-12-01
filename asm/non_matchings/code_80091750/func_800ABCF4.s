@@ -21,7 +21,7 @@ glabel func_800ABCF4
 /* 0AC93C 800ABD3C 3C04800E */  lui   $a0, %hi(D_800E7500)
 /* 0AC940 800ABD40 000FC080 */  sll   $t8, $t7, 2
 /* 0AC944 800ABD44 00982021 */  addu  $a0, $a0, $t8
-/* 0AC948 800ABD48 0C024C0D */  jal   func_80093034
+/* 0AC948 800ABD48 0C024C0D */  jal   get_string_width
 /* 0AC94C 800ABD4C 8C847500 */   lw    $a0, %lo(D_800E7500)($a0)
 /* 0AC950 800ABD50 04410003 */  bgez  $v0, .L800ABD60
 /* 0AC954 800ABD54 0002C843 */   sra   $t9, $v0, 1
