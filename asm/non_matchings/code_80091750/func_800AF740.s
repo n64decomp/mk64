@@ -29,7 +29,7 @@ glabel L800AF794
 /* 0B03A8 800AF7A8 008A2021 */  addu  $a0, $a0, $t2
 /* 0B03AC 800AF7AC AE08000C */  sw    $t0, 0xc($s0)
 /* 0B03B0 800AF7B0 AFA30020 */  sw    $v1, 0x20($sp)
-/* 0B03B4 800AF7B4 0C024C0D */  jal   func_80093034
+/* 0B03B4 800AF7B4 0C024C0D */  jal   get_string_width
 /* 0B03B8 800AF7B8 8C8454B0 */   lw    $a0, %lo(D_802854B0)($a0) # 0x54b0($a0)
 /* 0B03BC 800AF7BC 44822000 */  mtc1  $v0, $f4
 /* 0B03C0 800AF7C0 8FA30020 */  lw    $v1, 0x20($sp)

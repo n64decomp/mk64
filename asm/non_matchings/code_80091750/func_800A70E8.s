@@ -11,7 +11,7 @@ glabel func_800A70E8
 /* 0A7D0C 800A710C 15C1004B */  bne   $t6, $at, .L800A723C
 /* 0A7D10 800A7110 3C11800E */   lui   $s1, %hi(D_800E7A34) # $s1, 0x800e
 /* 0A7D14 800A7114 26317A34 */  addiu $s1, %lo(D_800E7A34) # addiu $s1, $s1, 0x7a34
-/* 0A7D18 800A7118 0C024C0D */  jal   func_80093034
+/* 0A7D18 800A7118 0C024C0D */  jal   get_string_width
 /* 0A7D1C 800A711C 8E240000 */   lw    $a0, ($s1)
 /* 0A7D20 800A7120 44822000 */  mtc1  $v0, $f4
 /* 0A7D24 800A7124 3C01800F */  lui   $at, %hi(D_800F1F2C) # $at, 0x800f
@@ -21,7 +21,7 @@ glabel func_800A70E8
 /* 0A7D34 800A7134 46143202 */  mul.s $f8, $f6, $f20
 /* 0A7D38 800A7138 4600428D */  trunc.w.s $f10, $f8
 /* 0A7D3C 800A713C 44105000 */  mfc1  $s0, $f10
-/* 0A7D40 800A7140 0C024C0D */  jal   func_80093034
+/* 0A7D40 800A7140 0C024C0D */  jal   get_string_width
 /* 0A7D44 800A7144 00000000 */   nop   
 /* 0A7D48 800A7148 44828000 */  mtc1  $v0, $f16
 /* 0A7D4C 800A714C 3C118015 */  lui   $s1, %hi(gDisplayListHead) # $s1, 0x8015

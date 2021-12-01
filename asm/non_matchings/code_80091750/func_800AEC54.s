@@ -14,7 +14,7 @@ glabel func_800AEC54
 /* 0AF884 800AEC84 00000000 */   nop   
 glabel L800AEC88
 /* 0AF888 800AEC88 3C04800E */  lui   $a0, %hi(D_800E7780) # $a0, 0x800e
-/* 0AF88C 800AEC8C 0C024C0D */  jal   func_80093034
+/* 0AF88C 800AEC8C 0C024C0D */  jal   get_string_width
 /* 0AF890 800AEC90 24847780 */   addiu $a0, %lo(D_800E7780) # addiu $a0, $a0, 0x7780
 /* 0AF894 800AEC94 04410003 */  bgez  $v0, .L800AECA4
 /* 0AF898 800AEC98 00027843 */   sra   $t7, $v0, 1
@@ -74,7 +74,7 @@ glabel L800AED50
 /* 0AF958 800AED58 0C02A532 */  jal   func_800A94C8
 /* 0AF95C 800AED5C 2406FFFF */   li    $a2, -1
 /* 0AF960 800AED60 3C04800E */  lui   $a0, %hi(D_800E7780) # $a0, 0x800e
-/* 0AF964 800AED64 0C024C0D */  jal   func_80093034
+/* 0AF964 800AED64 0C024C0D */  jal   get_string_width
 /* 0AF968 800AED68 24847780 */   addiu $a0, %lo(D_800E7780) # addiu $a0, $a0, 0x7780
 /* 0AF96C 800AED6C 8E09000C */  lw    $t1, 0xc($s0)
 /* 0AF970 800AED70 252A0014 */  addiu $t2, $t1, 0x14

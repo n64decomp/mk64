@@ -35,7 +35,7 @@ glabel print_text0
 /* 093DB8 800931B8 C7B80080 */  lwc1  $f24, 0x80($sp)
 /* 093DBC 800931BC 8FBE0088 */  lw    $fp, 0x88($sp)
 .L800931C0:
-/* 093DC0 800931C0 0C024B24 */  jal   func_80092C90
+/* 093DC0 800931C0 0C024B24 */  jal   get_character_width_index
 /* 093DC4 800931C4 02202025 */   move  $a0, $s1
 /* 093DC8 800931C8 04400024 */  bltz  $v0, .L8009325C
 /* 093DCC 800931CC 00409825 */   move  $s3, $v0
@@ -67,10 +67,10 @@ glabel print_text0
 /* 093E34 80093234 0C026FBC */  jal   func_8009BEF0
 /* 093E38 80093238 00000000 */   nop   
 /* 093E3C 8009323C 00135040 */  sll   $t2, $s3, 1
-/* 093E40 80093240 3C0B800F */  lui   $t3, %hi(D_800EF690) # 0x800f
+/* 093E40 80093240 3C0B800F */  lui   $t3, %hi(gCharacterWidthMap) # 0x800f
 /* 093E44 80093244 AE820000 */  sw    $v0, ($s4)
 /* 093E48 80093248 016A5821 */  addu  $t3, $t3, $t2
-/* 093E4C 8009324C 856BF690 */  lh    $t3, %lo(D_800EF690)($t3) # -0x970($t3)
+/* 093E4C 8009324C 856BF690 */  lh    $t3, %lo(gCharacterWidthMap)($t3) # -0x970($t3)
 /* 093E50 80093250 024B6021 */  addu  $t4, $s2, $t3
 /* 093E54 80093254 10000012 */  b     .L800932A0
 /* 093E58 80093258 01959021 */   addu  $s2, $t4, $s5

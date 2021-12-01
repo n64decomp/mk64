@@ -25,7 +25,7 @@ glabel func_800A7448
 .L800A74A4:
 /* 0A80A4 800A74A4 3C04800E */  lui   $a0, %hi(D_800E7A88) # $a0, 0x800e
 /* 0A80A8 800A74A8 8C847A88 */  lw    $a0, %lo(D_800E7A88)($a0)
-/* 0A80AC 800A74AC 0C024C0D */  jal   func_80093034
+/* 0A80AC 800A74AC 0C024C0D */  jal   get_string_width
 /* 0A80B0 800A74B0 AFA30038 */   sw    $v1, 0x38($sp)
 /* 0A80B4 800A74B4 244E0005 */  addiu $t6, $v0, 5
 /* 0A80B8 800A74B8 448E2000 */  mtc1  $t6, $f4
@@ -45,7 +45,7 @@ glabel func_800A7448
 /* 0A80F0 800A74F0 460A4403 */  div.s $f16, $f8, $f10
 /* 0A80F4 800A74F4 4600848D */  trunc.w.s $f18, $f16
 /* 0A80F8 800A74F8 44189000 */  mfc1  $t8, $f18
-/* 0A80FC 800A74FC 0C024C0D */  jal   func_80093034
+/* 0A80FC 800A74FC 0C024C0D */  jal   get_string_width
 /* 0A8100 800A7500 AFB80040 */   sw    $t8, 0x40($sp)
 /* 0A8104 800A7504 24490005 */  addiu $t1, $v0, 5
 /* 0A8108 800A7508 44892000 */  mtc1  $t1, $f4

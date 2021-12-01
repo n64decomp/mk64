@@ -10,7 +10,7 @@ glabel func_800A4A24
 /* 0A5644 800A4A44 AFA80038 */  sw    $t0, 0x38($sp)
 /* 0A5648 800A4A48 24847780 */  addiu $a0, %lo(D_800E7780) # addiu $a0, $a0, 0x7780
 /* 0A564C 800A4A4C AFA50040 */  sw    $a1, 0x40($sp)
-/* 0A5650 800A4A50 0C024C0D */  jal   func_80093034
+/* 0A5650 800A4A50 0C024C0D */  jal   get_string_width
 /* 0A5654 800A4A54 AFA90034 */   sw    $t1, 0x34($sp)
 /* 0A5658 800A4A58 24580008 */  addiu $t8, $v0, 8
 /* 0A565C 800A4A5C 44982000 */  mtc1  $t8, $f4

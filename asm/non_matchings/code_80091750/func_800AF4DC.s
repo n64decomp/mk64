@@ -29,7 +29,7 @@ glabel L800AF530
 /* 0B0144 800AF544 008A2021 */  addu  $a0, $a0, $t2
 /* 0B0148 800AF548 AE08000C */  sw    $t0, 0xc($s0)
 /* 0B014C 800AF54C AFA30020 */  sw    $v1, 0x20($sp)
-/* 0B0150 800AF550 0C024C0D */  jal   func_80093034
+/* 0B0150 800AF550 0C024C0D */  jal   get_string_width
 /* 0B0154 800AF554 8C8454B0 */   lw    $a0, %lo(D_802854B0)($a0) # 0x54b0($a0)
 /* 0B0158 800AF558 44822000 */  mtc1  $v0, $f4
 /* 0B015C 800AF55C 8FA30020 */  lw    $v1, 0x20($sp)
