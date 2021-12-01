@@ -35,7 +35,7 @@ glabel print_text0
 /* 093DB8 800931B8 C7B80080 */  lwc1  $f24, 0x80($sp)
 /* 093DBC 800931BC 8FBE0088 */  lw    $fp, 0x88($sp)
 .L800931C0:
-/* 093DC0 800931C0 0C024B24 */  jal   get_character_width_index
+/* 093DC0 800931C0 0C024B24 */  jal   get_ascii_char_width_index
 /* 093DC4 800931C4 02202025 */   move  $a0, $s1
 /* 093DC8 800931C8 04400024 */  bltz  $v0, .L8009325C
 /* 093DCC 800931CC 00409825 */   move  $s3, $v0

@@ -26,7 +26,7 @@ glabel print_text1
 /* 093FEC 800933EC 241EFFFF */  li    $fp, -1
 /* 093FF0 800933F0 2417FFFE */  li    $s7, -2
 .L800933F4:
-/* 093FF4 800933F4 0C024B24 */  jal   get_character_width_index
+/* 093FF4 800933F4 0C024B24 */  jal   get_ascii_char_width_index
 /* 093FF8 800933F8 02002025 */   move  $a0, $s0
 /* 093FFC 800933FC 0440000F */  bltz  $v0, .L8009343C
 /* 094000 80093400 28410030 */   slti  $at, $v0, 0x30
@@ -121,7 +121,7 @@ glabel print_text1
 /* 094138 80093538 5120004A */  beql  $t1, $zero, .L80093664
 /* 09413C 8009353C 8E820000 */   lw    $v0, ($s4)
 .L80093540:
-/* 094140 80093540 0C024B24 */  jal   get_character_width_index
+/* 094140 80093540 0C024B24 */  jal   get_ascii_char_width_index
 /* 094144 80093544 02402025 */   move  $a0, $s2
 /* 094148 80093548 04400027 */  bltz  $v0, .L800935E8
 /* 09414C 8009354C 00408825 */   move  $s1, $v0
