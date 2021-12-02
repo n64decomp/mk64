@@ -30,12 +30,6 @@ jobs:
           make -j4 -C tools/
     - name: Extract assets
       run: |
-        # Link the base roms in the build dir.
-         ln -s "/opt/assets/Mario Kart 64 (U) [!].z64" baserom.us.z64
-         # Verify that no assets were committed to the repo.
-         [ -z "$(find {actors,levels,textures}/ -name '*.png')" ]
-        [ -z "$(find assets/ -name '*.m64' -or '*.bin')" ]
-        [ -z "$(find roms/ -name '*.z64')" ]
         ./extract_assets.py us
     - name: Build U source
       run: |
