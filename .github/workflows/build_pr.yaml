@@ -25,7 +25,6 @@ jobs:
       run: echo ${{ secrets.KEY }} | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in baserom/baserom.us.z64.aes -out baserom.us.z64
 
     - name: Perform make tools
-      uses: actions/checkout@v2
       run: |
           make -j4 -C tools/
     - name: Extract assets
