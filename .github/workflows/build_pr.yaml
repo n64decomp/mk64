@@ -18,7 +18,7 @@ jobs:
     - name: Checkout baserom
       uses: actions/checkout@v2
       with:
-        repository: CoderStig/mk64_priv
+        repository: coderstig/mk64_priv
         token: ${{ secrets.PRIV }}
         path: baserom
     - name: Decrypt baserom
