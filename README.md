@@ -54,7 +54,7 @@ Some menu textures are compressed using a format called tkmk00. A byte-matching 
 	├── lib: SDK library code
 	├── music: sequences
 	├── src: C source code for the game
-	│   └── audio: sample tables
+	│   └── audio: sample tables and audio source
 	│   └── os: libultra
 	├── textures: texture data, bitmaps
 	│   ├── raw: raw textures
