@@ -234,6 +234,17 @@ mk64Code_size = 1025280
 # handwritten is likely 4400 bytes which brings us to the grand total of 53248.
 # for now the total is just a guess. 544 being non_matching funcs.
 # osSyncPrintf and func_800CE720
+#libultra non_matching
+#osSyncPrintf     0x60   96
+#func_800CE720    0x1C0  448
+#guPerspectiveF   0x290 656
+#__osLeoInterrupt 0x880 2176
+#contramread      0x3B0 944
+#contramwrite     0x3B0 944
+
+
+#total 0x1490    5264
+
 libultra_size = 43584 + 5264 # 53248 - 2112 # total - handwritten
 audio_size = 86912
 text_size = mk64Code_size - decompilable
