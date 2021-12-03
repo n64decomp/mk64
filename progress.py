@@ -3,7 +3,7 @@
 import argparse
 import json
 import csv
-#import git
+import git
 import os
 import re
 
@@ -14,6 +14,8 @@ parser.add_argument("-m", "--matching", dest='matching', action='store_true',
 args = parser.parse_args()
 
 NON_MATCHING_PATTERN = r"#ifdef\s+NON_MATCHING.*?#pragma\s+GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\).*?#endif"
+MIPS_TO_C_FUNC_COUNT_PATTERN = r"#ifdef\s+MIPS_TO_C.*?GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\).*?#endif"
+NON_MATCHING_FUNC_COUNT_PATTERN = r"#ifdef\s+NON_MATCHING.*?GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\).*?#endif"
 
 def GetNonMatchingFunctions(files):
     functions = []
@@ -23,6 +25,24 @@ def GetNonMatchingFunctions(files):
             functions += re.findall(NON_MATCHING_PATTERN, f.read(), re.DOTALL)
 
     return functions
+
+def CountMipsToCFunctions(files):
+    functions = []
+
+    for file in files:
+        with open(file) as f:
+            functions += re.findall(MIPS_TO_C_FUNC_COUNT_PATTERN, f.read(), re.DOTALL)
+
+    return functions
+def CountNonMatchingFunctions(files):
+    functions = []
+
+    for file in files:
+        with open(file) as f:
+            functions += re.findall(NON_MATCHING_FUNC_COUNT_PATTERN, f.read(), re.DOTALL)
+
+    return functions
+
 
 def ReadAllLines(fileName):
     lineList = list()
@@ -42,24 +62,24 @@ def GetFiles(path, ext):
     return files
 
 nonMatchingFunctions = GetNonMatchingFunctions(GetFiles("src", ".c")) if not args.matching else []
+TotalMipsToCFunctions = len(CountMipsToCFunctions(GetFiles("src", ".c")) if not args.matching else [])
+TotalNonMatchingFunctions = len(CountNonMatchingFunctions(GetFiles("src", ".c")) if not args.matching else [])
 
 mainSegFiles2 = [
-    "asm/non_matchings/main",          "asm/non_matchings/code_800029B0",
-    "asm/non_matchings/profiler",      "asm/non_matchings/crash_screen",
-    "asm/non_matchings/code_80004740", "asm/non_matchings/staff_ghosts",
-    "asm/non_matchings/code_80005FD0", "asm/non_matchings/code_80005FD0",
+    "asm/non_matchings/crash_screen", "asm/non_matchings/code_80004740",
+    "asm/non_matchings/staff_ghosts", "asm/non_matchings/code_80005FD0",
     "asm/non_matchings/code_8001C4D0", "asm/non_matchings/code_8001F980",
     "asm/non_matchings/code_80027040", "asm/non_matchings/code_80027D00",
     "asm/non_matchings/code_800393C0", "asm/non_matchings/code_8003DC40",
-    "asm/non_matchings/gbiMacro",      "asm/non_matchings/code_80040E50",
-    "asm/non_matchings/code_800431B0", "asm/non_matchings/code_80057C60",
-    "asm/non_matchings/code_8006E9C0", "asm/non_matchings/code_80071F00",
-    "asm/non_matchings/code_80086E70", "asm/non_matchings/code_8008C1D0",
-    "asm/non_matchings/code_80091750", "asm/non_matchings/code_800AF9B0"
+    "asm/non_matchings/code_80040E50", "asm/non_matchings/code_800431B0",
+    "asm/non_matchings/code_80057C60", "asm/non_matchings/code_8006E9C0",
+    "asm/non_matchings/code_80071F00", "asm/non_matchings/code_80086E70",
+    "asm/non_matchings/code_8008C1D0", "asm/non_matchings/code_80091750",
+    "asm/non_matchings/code_800AF9B0"
     ]
 seg2Files2 = [
     "asm/non_matchings/code_8028DF00", "asm/non_matchings/code_80290C20",
-    "asm/non_matchings/code_80296A50", "asm/non_matchings/code_802A3730",
+    "asm/non_matchings/code_actors", "asm/non_matchings/code_802A3730",
     "asm/non_matchings/memory", "asm/non_matchings/code_802B0210",
     "asm/non_matchings/math_util"
 ]
@@ -132,7 +152,7 @@ mainSegFiles = [
     "build/us/src/main",          "build/us/src/code_800029B0",
     "build/us/src/profiler",      "build/us/src/crash_screen",
     "build/us/src/code_80004740", "build/us/src/staff_ghosts",
-    "build/us/src/code_80005FD0", "build/us/src/code_80005FD0",
+    "build/us/src/code_80005FD0",
     "build/us/src/code_8001C4D0", "build/us/src/code_8001F980",
     "build/us/src/code_80027040", "build/us/src/code_80027D00",
     "build/us/src/code_800393C0", "build/us/src/code_8003DC40",
@@ -154,7 +174,10 @@ seg3Files = [
     "build/us/src/code_80281C40", "build/us/src/code_80281FA0"
 ]
 segAudioFiles = [
-    "build/us/src/synthesis"
+    "build/us/src/audio/synthesis", "build/us/src/audio/heap",
+    "build/us/src/audio/load", "build/us/src/audio/playback",
+    "build/us/src/audio/effects", "build/us/src/audio/seqplayer",
+    "build/us/src/audio/external", "build/us/src/audio/port_eu"
 ]
 
 for line in mapFile:
@@ -170,7 +193,6 @@ for line in mapFile:
                 src += size
             
             if (objFile.startswith(tuple(mainSegFiles))):
-                print(size)
                 mainSeg += size
 
             if (objFile.startswith(tuple(seg2Files))):
@@ -192,12 +214,11 @@ nonMatchingSeg3 = GetNonMatchingSize("seg3")
 nonMatchingLibultra = GetNonMatchingSize("os")
 nonMatchingASMAudio = GetNonMatchingSize("audio")
 
+src -= nonMatchingASM
+
 decompilable = src + audio + 448 # 448 = OS func_800CE720
 
-src -= nonMatchingASM
-print("main")
-print(mainSeg)
-print(nonMatchingMain)
+mainSeg += libultra
 mainSeg -= nonMatchingMain
 
 seg2 -= nonMatchingSeg2
@@ -210,9 +231,12 @@ mainSeg_size = 831024
 seg2_size = 174224
 seg3_size = 20032
 mk64Code_size = 1025280
-libultra_size = 53248 - 2112 # total - handwritten
+# handwritten is likely 9120 bytes which brings us to the grand total of 53248.
+# for now the total is just a guess. 544 being non_matching funcs.
+# osSyncPrintf and func_800CE720
+libultra_size = 43584 + 544 # 53248 - 2112 # total - handwritten
 audio_size = 86912
-text_size = (mk64Code_size + libultra_size + audio_size) - decompilable
+text_size = mk64Code_size - decompilable
 
 srcPct = 100 * src / mk64Code_size
 libultraPct = 100 * libultra / libultra_size
@@ -223,25 +247,34 @@ seg3Pct = 100 * seg3 / seg3_size
 
 bytesPerHeartPiece = text_size // 80
 
-#if args.format == 'csv':
-#    version = 1
-#    git_object = git.Repo().head.object
-#    timestamp = str(git_object.committed_date)
-#    git_hash = git_object.hexsha
-#    csv_list = [str(version), timestamp, git_hash, str(code), str(codeSize), str(boot), str(bootSize), str(ovl), str(ovlSize), str(src), str(nonMatchingASM), str(len(nonMatchingFunctions))]
-#    print(",".join(csv_list))
-#elif args.format == 'shield-json':
-#    # https://shields.io/endpoint
-#    print(json.dumps({
-#        "schemaVersion": 1,
-#        "label": "progress",
-#        "message": f"{srcPct:.3g}%",
-#        "color": 'yellow',
-#    }))
-if args.format == 'text':
+if args.format == 'csv':
+    version = 1
+    git_object = git.Repo().head.object
+    timestamp = str(git_object.committed_date)
+    git_hash = git_object.hexsha
+
+    csv_list = [str(version), timestamp, git_hash, 
+        str(text_size), str(mk64Code_size), str(src), str(srcPct),
+        str(audio), str(audio_size), str(audioPct), str(libultra),
+        str(libultra_size), str(libultraPct), str(seg2), str(seg2_size),
+        str(seg2Pct), str(seg3), str(seg3_size), str(seg3Pct),
+        str(TotalNonMatchingFunctions), str(TotalMipsToCFunctions)]
+
+    print(",".join(csv_list))
+elif args.format == 'shield-json':
+    # https://shields.io/endpoint
+    print(json.dumps({
+        "schemaVersion": 1,
+        "label": "progress",
+        "message": f"{srcPct:.3g}%",
+        "color": 'yellow',
+    }))
+elif args.format == 'text':
     adjective = "decompiled" if not args.matching else "matched"
 
-    print(str(text_size) + " total bytes of decompilable code\n")
+    print("Total decompilable bytes remaining: "+str(text_size)+" out of "+str(mk64Code_size)+"\n")
+    print(str(TotalMipsToCFunctions)+" Mips to C functions remain to decomp and")
+    print(str(TotalNonMatchingFunctions)+" non-matching functions."+"\n")
     print(str(src) + " bytes " + adjective + " in game code " + str(srcPct) + "%\n")
     print(str(audio) + "/" + str(audio_size) + " bytes " + adjective + " in audio " + str(audioPct) + "%\n")
     print(str(libultra) + "/" + str(libultra_size) + " bytes " + adjective + " in libultra " + str(libultraPct) + "%\n")
