@@ -273,8 +273,8 @@ elif args.format == 'text':
     adjective = "decompiled" if not args.matching else "matched"
 
     print("Total decompilable bytes remaining: "+str(text_size)+" out of "+str(mk64Code_size)+"\n")
-    print(str(TotalMipsToCFunctions)+" Mips to C functions remain to decomp and")
-    print(str(TotalNonMatchingFunctions)+" non-matching functions."+"\n")
+    print(str(TotalMipsToCFunctions)+" Mips to C functions and")
+    print(str(TotalNonMatchingFunctions)+" non-matching functions remain to decomp."+"\n")
     print(str(src) + " bytes " + adjective + " in game code " + str(srcPct) + "%\n")
     print(str(audio) + "/" + str(audio_size) + " bytes " + adjective + " in audio " + str(audioPct) + "%\n")
     print(str(libultra) + "/" + str(libultra_size) + " bytes " + adjective + " in libultra " + str(libultraPct) + "%\n")
