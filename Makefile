@@ -29,7 +29,7 @@ BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)
 # Directories containing source files
 INCLUDE_DIRS := include
 SRC_DIRS := src src/audio src/os src/os/math courses
-ASM_DIRS := asm asm/audio asm/os data data/sound_data
+ASM_DIRS := asm asm/audio asm/os asm/os/non_matchings data data/sound_data
 COURSE_DIRS :=        \
 	courses/mushroom_cup/luigi_raceway courses/mushroom_cup/koopa_beach        \
 	courses/mushroom_cup/moo_moo_farm courses/mushroom_cup/kalimari_desert courses/flower_cup/toads_turnpike courses/flower_cup/frappe_snowland                     \
