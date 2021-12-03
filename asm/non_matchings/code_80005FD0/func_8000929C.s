@@ -249,10 +249,10 @@ glabel func_8000929C
 /* 00A244 80009644 0C002496 */  jal   func_80009258
 /* 00A248 80009648 A7A80034 */   sh    $t0, 0x34($sp)
 /* 00A24C 8000964C 8FA70030 */  lw    $a3, 0x30($sp)
-/* 00A250 80009650 3C018016 */  lui   $at, %hi(D_8015F898)
+/* 00A250 80009650 3C018016 */  lui   $at, %hi(gTimePlayerLastTouchedFinishLine)
 /* 00A254 80009654 8FA40050 */  lw    $a0, 0x50($sp)
 /* 00A258 80009658 00270821 */  addu  $at, $at, $a3
-/* 00A25C 8000965C E420F898 */  swc1  $f0, %lo(D_8015F898)($at)
+/* 00A25C 8000965C E420F898 */  swc1  $f0, %lo(gTimePlayerLastTouchedFinishLine)($at)
 /* 00A260 80009660 87A80034 */  lh    $t0, 0x34($sp)
 .L80009664:
 /* 00A264 80009664 11000014 */  beqz  $t0, .L800096B8

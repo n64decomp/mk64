@@ -14,6 +14,12 @@ extern f32 gKartGravityTable[];
 extern s8 gGPOverallRanks[8];
 extern s32 gModeSelection;
 extern s32 gPlayerCountSelection1;
+// Indexed by Player ID. Track time in seconds since player has last crossed the finish line
+extern f32 gTimePlayerLastTouchedFinishLine[8]; // D_8015F898
+// Indexed by Player ID. Tracks the percentage of the track has been completed
+extern f32 gTrackCompletionPercentByPlayerId[8]; // D_801644D0
+// Indexed by Rank. Tracks the percentage of the track has been completed
+extern f32 gTrackCompletionPercentByRank[8]; // D_80162FD8
 
 extern struct_D_802874D8 D_802874D8;
 extern s16 D_801650D0[4][8];

@@ -8,10 +8,10 @@ glabel func_8000F628
 /* 010240 8000F640 AFAF00D0 */  sw    $t7, 0xd0($sp)
 /* 010244 8000F644 3C0F8016 */  lui   $t7, %hi(D_80163258) # $t7, 0x8016
 /* 010248 8000F648 3C0E8016 */  lui   $t6, %hi(D_80164408) # $t6, 0x8016
-/* 01024C 8000F64C 3C188016 */  lui   $t8, %hi(D_801644D0) # $t8, 0x8016
-/* 010250 8000F650 3C198016 */  lui   $t9, %hi(D_8015F898) # $t9, 0x8016
-/* 010254 8000F654 2739F898 */  addiu $t9, %lo(D_8015F898) # addiu $t9, $t9, -0x768
-/* 010258 8000F658 271844D0 */  addiu $t8, %lo(D_801644D0) # addiu $t8, $t8, 0x44d0
+/* 01024C 8000F64C 3C188016 */  lui   $t8, %hi(gTrackCompletionPercentByPlayerId) # $t8, 0x8016
+/* 010250 8000F650 3C198016 */  lui   $t9, %hi(gTimePlayerLastTouchedFinishLine) # $t9, 0x8016
+/* 010254 8000F654 2739F898 */  addiu $t9, %lo(gTimePlayerLastTouchedFinishLine) # addiu $t9, $t9, -0x768
+/* 010258 8000F658 271844D0 */  addiu $t8, %lo(gTrackCompletionPercentByPlayerId) # addiu $t8, $t8, 0x44d0
 /* 01025C 8000F65C 25CE4408 */  addiu $t6, %lo(D_80164408) # addiu $t6, $t6, 0x4408
 /* 010260 8000F660 25EF3258 */  addiu $t7, %lo(D_80163258) # addiu $t7, $t7, 0x3258
 /* 010264 8000F664 AFAF00B8 */  sw    $t7, 0xb8($sp)

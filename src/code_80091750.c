@@ -10745,7 +10745,7 @@ extern ? D_800F0C2C;
 extern ? D_800F0C30;
 extern f32 D_800F1CA4;
 extern f32 D_800F1CA8;
-extern ? D_8015F898;
+extern ? gTimePlayerLastTouchedFinishLine;
 extern ? D_80164360;
 
 void func_800A32B4(s32 arg0, ? arg1, s32 arg2, s32 arg3) {
@@ -10757,7 +10757,7 @@ void func_800A32B4(s32 arg0, ? arg1, s32 arg2, s32 arg3) {
     f32 temp_f20;
     f32 temp_f4;
 
-    temp_f4 = *(&D_8015F898 + (*(&D_80164360 + (arg3 * 2)) * 4));
+    temp_f4 = *(&gTimePlayerLastTouchedFinishLine + (*(&D_80164360 + (arg3 * 2)) * 4));
     sp50 = temp_f4;
     // Convert arg3 (some index) into a rank string
     // This is a little wonky.
