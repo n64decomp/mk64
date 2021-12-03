@@ -231,10 +231,10 @@ mainSeg_size = 831024
 seg2_size = 174224
 seg3_size = 20032
 mk64Code_size = 1025280
-# handwritten is likely 9120 bytes which brings us to the grand total of 53248.
+# handwritten is likely 4400 bytes which brings us to the grand total of 53248.
 # for now the total is just a guess. 544 being non_matching funcs.
 # osSyncPrintf and func_800CE720
-libultra_size = 43584 + 544 # 53248 - 2112 # total - handwritten
+libultra_size = 43584 + 5264 # 53248 - 2112 # total - handwritten
 audio_size = 86912
 text_size = mk64Code_size - decompilable
 
