@@ -101,7 +101,7 @@ SECTIONS
       BUILD_DIR/src/os/osInitialize.o(.text);
       BUILD_DIR/src/os/osStartThread.o(.text);
       BUILD_DIR/src/os/osCreateViManager.o(.text);
-      BUILD_DIR/asm/os/osCreateViManagerPadding.o(.text);
+      BUILD_DIR/asm/os/parameters.o(.text);
       BUILD_DIR/src/os/osViSetMode.o(.text);
       BUILD_DIR/src/os/osViBlack.o(.text);
       BUILD_DIR/src/os/osViSetSpecialFeatures.o(.text);
@@ -361,6 +361,19 @@ SECTIONS
       BUILD_DIR/data/data_credits_128480.o(.data);
    }
    END_SEG(code_80280000)
+
+   BEGIN_NOLOAD(code_80280000) {
+      BUILD_DIR/asm/bss_credits.o(.bss);
+   }
+   END_NOLOAD(code_80280000)
+
+   _code_80280000SegmentNoloadSize = SIZEOF(.code_80280000.noload) + 0x10;
+   
+   _code_80280000SegmentNoloadSizeHi = _code_80280000SegmentNoloadSize >> 16;
+   _code_80280000SegmentNoloadSizeLo = _code_80280000SegmentNoloadSize & 0xFFFF;
+
+
+
 
    /* 0x801978D0 12AAE0-132B50 [8070] */
    /* texture tables and DLs, set as segment 0x02 */
