@@ -5,6 +5,7 @@
 # Credits
 # 128480-12AAE0 [2660]
 
+# D_8028461C
 glabel D_80284E40
 .word 0x00FF4080
 .word 0x008040FF
