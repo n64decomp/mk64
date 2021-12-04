@@ -4,10 +4,10 @@ glabel func_800A32B4
 /* 0A3EBC 800A32BC 01EE7821 */  addu  $t7, $t7, $t6
 /* 0A3EC0 800A32C0 85EF4360 */  lh    $t7, %lo(D_80164360)($t7) # 0x4360($t7)
 /* 0A3EC4 800A32C4 27BDFFA8 */  addiu $sp, $sp, -0x58
-/* 0A3EC8 800A32C8 3C018016 */  lui   $at, %hi(D_8015F898)
+/* 0A3EC8 800A32C8 3C018016 */  lui   $at, %hi(gTimePlayerLastTouchedFinishLine)
 /* 0A3ECC 800A32CC 000FC080 */  sll   $t8, $t7, 2
 /* 0A3ED0 800A32D0 00380821 */  addu  $at, $at, $t8
-/* 0A3ED4 800A32D4 C424F898 */  lwc1  $f4, %lo(D_8015F898)($at)
+/* 0A3ED4 800A32D4 C424F898 */  lwc1  $f4, %lo(gTimePlayerLastTouchedFinishLine)($at)
 /* 0A3ED8 800A32D8 AFB20030 */  sw    $s2, 0x30($sp)
 /* 0A3EDC 800A32DC AFB1002C */  sw    $s1, 0x2c($sp)
 /* 0A3EE0 800A32E0 AFB00028 */  sw    $s0, 0x28($sp)

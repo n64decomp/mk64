@@ -55,9 +55,9 @@ glabel func_80009B60
 /* 00A830 80009C30 00270821 */  addu  $at, $at, $a3
 /* 00A834 80009C34 240FFFEC */  li    $t7, -20
 /* 00A838 80009C38 AC2F4450 */  sw    $t7, %lo(D_80164450)($at) # 0x4450($at)
-/* 00A83C 80009C3C 3C018016 */  lui   $at, %hi(D_801644D0)
+/* 00A83C 80009C3C 3C018016 */  lui   $at, %hi(gTrackCompletionPercentByPlayerId)
 /* 00A840 80009C40 00270821 */  addu  $at, $at, $a3
-/* 00A844 80009C44 E42044D0 */  swc1  $f0, %lo(D_801644D0)($at)
+/* 00A844 80009C44 E42044D0 */  swc1  $f0, %lo(gTrackCompletionPercentByPlayerId)($at)
 /* 00A848 80009C48 3C018016 */  lui   $at, %hi(D_801644A8)
 /* 00A84C 80009C4C 00270821 */  addu  $at, $at, $a3
 /* 00A850 80009C50 10000537 */  b     .L8000B130

@@ -40,9 +40,9 @@ glabel func_8005CB60
 /* 05D7F8 8005CBF8 806D0000 */  lb    $t5, ($v1)
 /* 05D7FC 8005CBFC 01A5082A */  slt   $at, $t5, $a1
 /* 05D800 8005CC00 10200120 */  beqz  $at, .L8005D084
-/* 05D804 8005CC04 3C018016 */   lui   $at, %hi(D_8015F898)
+/* 05D804 8005CC04 3C018016 */   lui   $at, %hi(gTimePlayerLastTouchedFinishLine)
 /* 05D808 8005CC08 002F0821 */  addu  $at, $at, $t7
-/* 05D80C 8005CC0C C42AF898 */  lwc1  $f10, %lo(D_8015F898)($at)
+/* 05D80C 8005CC0C C42AF898 */  lwc1  $f10, %lo(gTimePlayerLastTouchedFinishLine)($at)
 /* 05D810 8005CC10 00077940 */  sll   $t7, $a3, 5
 /* 05D814 8005CC14 01E77821 */  addu  $t7, $t7, $a3
 /* 05D818 8005CC18 46005402 */  mul.s $f16, $f10, $f0

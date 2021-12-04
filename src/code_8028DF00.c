@@ -201,7 +201,7 @@ void func_8028E0F0(void) {
         func_8028E028();
     }
 }
-extern f32 D_8015F898[];
+extern f32 gTimePlayerLastTouchedFinishLine[];
 extern u16 D_801645B0[];
 extern u16 D_801645C8[];
 extern f32 D_801644A8[];
@@ -222,7 +222,7 @@ void func_8028E298(void) {
             temp_v0 += D_801645C8[temp_a2] * (1.0f - D_801644A8[i]);
             temp_v0 /= 15.0f;
 
-            D_8015F898[i] = gCourseTimer + temp_v0;
+            gTimePlayerLastTouchedFinishLine[i] = gCourseTimer + temp_v0;
     }
     D_8016348C = 1;
     func_800070F4();
