@@ -38,9 +38,6 @@ glabel D_803AFBC3
 glabel D_803AFBC4
 .skip 4
 
-
-
-
 glabel D_803AFBC8
 .skip 8
 
