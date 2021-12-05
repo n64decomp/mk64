@@ -633,9 +633,6 @@ d_course_double_deck_vertex = 0x0F000000;
 d_course_skyscraper_vertex = 0x0F000000;
 
 
-
-
-
 d_course_luigi_raceway_packed = 0x0F009800;
 d_course_mario_raceway_packed = 0x0F0096f4;
 d_course_choco_mountain_packed = 0x0F00A0B4;
@@ -656,11 +653,6 @@ d_course_dks_jungle_parkway_packed = 0x0f00a45c;
 d_course_big_donut_packed = 0x0f001b84;
 d_course_koopa_troopa_beach_packed = 0x0f00fd78;
 d_course_moo_moo_farm_packed = 0x0f00daec;
-
-
-
-
-
 
 
 D_A4040004 = 0xA4040004;
