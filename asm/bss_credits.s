@@ -2,7 +2,11 @@
 
 .section .bss
 
-.skip 36
+glabel D_802874A0
+.skip 30
+
+glabel D_802874BE
+.skip 6
 
 glabel D_802874C4
 .skip 2
