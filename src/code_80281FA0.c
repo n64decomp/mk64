@@ -533,22 +533,17 @@ extern s32 D_80287818;
 extern s32 D_80287998;
 
 s32 func_80282D90(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    s32 sp24;
-    s32 sp28;
-    s32 temp_a1;
+    s32 res;
 
     func_802832C4(&func_80282434, arg0, 0, 0);
     func_80282C40(&D_80287818, arg1, arg3);
-    
-        func_80282C40(&D_80287998, arg2, arg3);
+    func_80282C40(&D_80287998, arg2, arg3);
 
-        do { 
-            temp_a1 = arg0 + 0x18;
-            sp24 = temp_a1;
-        } while (0);
+    if (0) {}; // debug stub?
 
-        // Needed for matching including the above while loop.
-        sp28 = func_802828C8(arg0 + 0xC, temp_a1, &D_80287818, &D_80287B1C, &D_80287B18); return func_802828C8(arg0, temp_a1, &D_80287998, &D_80287B1C, &D_80287B18) | sp28;
+    res = func_802828C8(arg0 + 0xC, arg0 + 0x18, &D_80287818, &D_80287B1C, &D_80287B18) | 
+          func_802828C8(arg0, arg0 + 0x18, &D_80287998, &D_80287B1C, &D_80287B18);
+    return res;
 }
 
 void func_80282E58(s32 arg0, s32 arg1, s32 arg2) {
