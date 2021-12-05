@@ -219,7 +219,7 @@ $(BUILD_DIR)/%.mio0.o: $(BUILD_DIR)/%.mio0.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.mio0.s: $(BUILD_DIR)/%.mio0
-	printf ".section .data\n\n.incbin \"$<\"\n" > $@
+	printf ".section .data\n\n.balign 4\n\n.incbin \"$<\"\n" > $@
 
 $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/crash_screen/crash_screen_font.ia1.inc.c -g textures/crash_screen/crash_screen_font.ia1.png -f ia1 -s u8
@@ -446,7 +446,7 @@ $(BUILD_DIR)/src/startup_logo.inc.mio0.o: src/startup_logo.inc.c
 	$(LD) -t -e 0 -Ttext=06000000 -Map $(BUILD_DIR)/src/startup_logo.inc.elf.map -o $(BUILD_DIR)/src/startup_logo.inc.elf $(BUILD_DIR)/src/startup_logo.inc.o --no-check-sections
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/startup_logo.inc.elf $(BUILD_DIR)/src/startup_logo.inc.bin
 	$(MIO0TOOL) -c $(BUILD_DIR)/src/startup_logo.inc.bin $(BUILD_DIR)/src/startup_logo.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n.align 2, 0x00\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"build/us/src/startup_logo.inc.mio0\"\n" > build/us/src/startup_logo.inc.mio0.s
+	printf ".include \"macros.inc\"\n\n.data\n\n\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"build/us/src/startup_logo.inc.mio0\"\n" > build/us/src/startup_logo.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/startup_logo.inc.mio0.s
 
 # trophy_model.inc.c
@@ -454,9 +454,8 @@ $(BUILD_DIR)/src/startup_logo.inc.mio0.o: src/startup_logo.inc.c
 $(BUILD_DIR)/src/trophy_model.inc.mio0.o: src/trophy_model.inc.c
 	$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/src/trophy_model.inc.elf.map -o $(BUILD_DIR)/src/trophy_model.inc.elf $(BUILD_DIR)/src/trophy_model.inc.o --no-check-sections
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/trophy_model.inc.elf $(BUILD_DIR)/src/trophy_model.inc.bin
-	#$(REMOVE_BYTES) $(BUILD_DIR)/src/trophy_model.inc.bin 8
 	$(MIO0TOOL) -c $(BUILD_DIR)/src/trophy_model.inc.bin $(BUILD_DIR)/src/trophy_model.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n.align 2, 0x00\n\nglabel trophy_model\n\n.incbin \"build/us/src/trophy_model.inc.mio0\"\n" > build/us/src/trophy_model.inc.mio0.s
+	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel trophy_model\n\n.incbin \"build/us/src/trophy_model.inc.mio0\"\n" > build/us/src/trophy_model.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.s
 
 $(BUILD_DIR)/$(TARGET).elf: $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(LD_COURSE_VERTEX_DEPENDENCIES) undefined_syms.txt
