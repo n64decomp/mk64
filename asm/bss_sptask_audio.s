@@ -38,6 +38,9 @@ glabel D_803AFBC3
 glabel D_803AFBC4
 .skip 4
 
+
+
+
 glabel D_803AFBC8
 .skip 8
 
@@ -321,3 +324,4 @@ glabel D_803B71A0
 .skip 16
 
 glabel D_803B71B0
+

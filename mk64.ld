@@ -225,6 +225,7 @@ SECTIONS
       BUILD_DIR/src/staff_ghosts.o(.data);
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
       BUILD_DIR/src/code_8001C4D0.o(.data);
+      BUILD_DIR/src/code_8001F980.o(.data);
       BUILD_DIR/data/data_0DD0A0_1_1.o(.data);
       BUILD_DIR/src/kart_attributes.inc.o(.data);
       BUILD_DIR/data/data_0DD0A0_2.o(.rodata);
