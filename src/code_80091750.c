@@ -1088,23 +1088,19 @@ UNUSED void func_800930E4(s32 arg0, s32 arg1, s32 *arg2) {
 void func_80099184(s32);
 s32 segmented_to_virtual(u32*);
 Gfx *func_8009BEF0(Gfx*, s32, f32, f32, s32, f32,f32);
-void print_text0(s32, s32, char*, s32, f32, f32, s32);
 void print_text1(s32, s32, char*, s32, f32, f32, s32);
 void print_text2(s32, s32, char*, s32, f32, f32, s32);
-extern s32 D_020077A8[];
-extern s32 D_020077D8[];
+extern Gfx D_020077A8[];
+extern Gfx D_020077D8[];
 extern s32 D_800E7E84[];
 extern Gfx *gDisplayListHead;
 
-#ifdef NON_MATCHING
 // "tracking" is a uniform spacing between all characters in a given word
 void print_text0(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale, s32 arg6) {
     s32 stringWidth = 0;
     s32 characterWidthIndex;
 
-    gDisplayListHead += 1;
-    gDisplayListHead->words.w0 = 0x6000000;
-    gDisplayListHead->words.w1 = &D_020077A8;
+    gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
         do{
             characterWidthIndex = get_ascii_char_width_index(text);
@@ -1117,9 +1113,7 @@ void print_text0(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
                 stringWidth += tracking + 7;
             }
             else{
-                gDisplayListHead += 1;
-                gDisplayListHead->words.w0 = 0x6000000;
-                gDisplayListHead->words.w1 = &D_020077D8;
+                gSPDisplayList(gDisplayListHead++, D_020077D8);
                 return;
             }
             if (characterWidthIndex >= 0x30) {
@@ -1129,13 +1123,8 @@ void print_text0(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
             }
         } while(*text != 0);
     }
-    gDisplayListHead += 1;
-    gDisplayListHead->words.w0 = 0x6000000;
-    gDisplayListHead->words.w1 = &D_020077D8;
+    gSPDisplayList(gDisplayListHead++, D_020077D8);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/print_text0.s")
-#endif
 
 void func_80093324(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale) {
     print_text0(column, row, text, tracking, x_scale, y_scale, 1);
@@ -1148,6 +1137,8 @@ void func_80093358(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f
 #ifdef NON_MATCHING
 // "tracking" is a uniform spacing between all characters in a given word
 void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale, s32 arg6) {
+    s32 temp;
+    s32 temp2;
     s32 stringWidth = 0;
     s32 characterWidthIndex;
 
@@ -1171,33 +1162,58 @@ void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
         } while(*text != 0);
     }
 
-    if ((arg6 == 1) || (arg6 == 3)){
+    // This is close to matching, but I refuse to believe
+    // that its supposed to look this way
+    if (arg6 != 1) {
+        if (arg6 != 2) {
+            if (arg6 != 3) {
+                if (arg6 != 4) {
+                    goto label2;
+                } else {
+                    goto even;
+                }
+            } else {
+                goto odd;
+            }
+        } else {
+            goto even;
+        }
+    } else {
+        goto odd;
+    }
+
+    if (arg6 != 0){
+odd:
         column -= stringWidth;
     }
-    else if ((arg6 == 2) || (arg6 == 4)){
+    else{
+even:
         column -= (stringWidth / 2);
     }
 
-    gDisplayListHead += 1;
-    gDisplayListHead->words.w0 = 0x6000000;
-    gDisplayListHead->words.w1 = &D_020077A8;
-    s32 temp;
+label2:
+    if (arg6 < 3){
+        temp2 = 1;
+    }
+    else{
+        temp2 = 2;
+    }
+
+    gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
         do{
             characterWidthIndex = get_ascii_char_width_index(text);
             if (characterWidthIndex >= 0) {
                 temp = segmented_to_virtual(D_800E7E84[characterWidthIndex]);
                 func_80099184(temp);
-                gDisplayListHead = func_8009BEF0(gDisplayListHead, temp, column, row, arg6 < 3 ? 1 : 2, x_scale, y_scale);
+                gDisplayListHead = func_8009BEF0(gDisplayListHead, temp, column, row, temp2, x_scale, y_scale);
                 column += (gCharacterWidthMap[characterWidthIndex] + tracking) * x_scale;
             }
             else if ((characterWidthIndex != -2) && (characterWidthIndex == -1)) {
                 column += (tracking + 7) * x_scale;
             }
             else{
-                gDisplayListHead += 1;
-                gDisplayListHead->words.w0 = 0x6000000;
-                gDisplayListHead->words.w1 = &D_020077D8;
+                gSPDisplayList(gDisplayListHead++, D_020077D8);
                 return;
             }
             if (characterWidthIndex >= 0x30) {
@@ -1207,9 +1223,7 @@ void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
             }
         } while(*text != 0);
     }
-    gDisplayListHead += 1;
-    gDisplayListHead->words.w0 = 0x6000000;
-    gDisplayListHead->words.w1 = &D_020077D8;
+    gSPDisplayList(gDisplayListHead++, D_020077D8);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/print_text1.s")
@@ -1237,9 +1251,7 @@ void print_text2(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
     s32 characterWidth;
     s32 characterWidthIndex;
 
-    gDisplayListHead += 1;
-    gDisplayListHead->words.w0 = 0x6000000;
-    gDisplayListHead->words.w1 = D_020077A8;
+    gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
         do {
             characterWidthIndex = get_ascii_char_width_index(text);
@@ -1252,15 +1264,13 @@ void print_text2(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
                 } else {
                     characterWidth = 0xC;
                 }
-                column += (s32)((f32)(characterWidth + tracking) * x_scale);
+                column += (s32)((characterWidth + tracking) * x_scale);
             }
             else if ((characterWidth != -2) && (characterWidth == -1)) {
-                column += (s32)((f32)(tracking + 7) * x_scale);
+                column += (s32)((tracking + 7) * x_scale);
             }
             else{
-                gDisplayListHead += 1;
-                gDisplayListHead->words.w0 = 0x6000000;
-                gDisplayListHead->words.w1 = D_020077D8;
+                gSPDisplayList(gDisplayListHead++, D_020077D8);
                 return;
             }
             if (characterWidth >= 0x30) {
@@ -1271,9 +1281,7 @@ void print_text2(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
         } while(*text != 0);
     }
 
-    gDisplayListHead += 1;
-    gDisplayListHead->words.w0 = 0x6000000;
-    gDisplayListHead->words.w1 = D_020077D8;
+    gSPDisplayList(gDisplayListHead++, D_020077D8);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/print_text2.s")
