@@ -1245,7 +1245,6 @@ void func_80093754(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f
     print_text1(column, row, text, tracking, x_scale, y_scale, 4);
 }
 
-#ifdef NON_MATCHING
 void print_text2(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale, s32 arg6) {
     s32 temp_v0_3;
     s32 characterWidth;
@@ -1255,25 +1254,25 @@ void print_text2(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
     if (*text != 0) {
         do {
             characterWidthIndex = get_ascii_char_width_index(text);
-            if (characterWidth >= 0) {
+            if (characterWidthIndex >= 0) {
                 temp_v0_3 = segmented_to_virtual(D_800E7E84[characterWidthIndex]);
                 func_80099184(temp_v0_3);
                 gDisplayListHead = func_8009BEF0(gDisplayListHead, temp_v0_3, column - (gCharacterWidthMap[characterWidthIndex] / 2), row, arg6, x_scale, y_scale);
-                if ((characterWidth >= 0xD5) && (characterWidth < 0xE0)) {
+                if ((characterWidthIndex >= 0xD5) && (characterWidthIndex < 0xE0)) {
                     characterWidth = 0x20;
                 } else {
                     characterWidth = 0xC;
                 }
-                column += (s32)((characterWidth + tracking) * x_scale);
+                column = column + (s32)((characterWidth + tracking) * x_scale);
             }
-            else if ((characterWidth != -2) && (characterWidth == -1)) {
-                column += (s32)((tracking + 7) * x_scale);
+            else if ((characterWidthIndex != -2) && (characterWidthIndex == -1)) {
+                column = column + (s32)((tracking + 7) * x_scale);
             }
             else{
                 gSPDisplayList(gDisplayListHead++, D_020077D8);
                 return;
             }
-            if (characterWidth >= 0x30) {
+            if (characterWidthIndex >= 0x30) {
                 text += 2;
             } else {
                 text += 1;
@@ -1283,9 +1282,6 @@ void print_text2(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
 
     gSPDisplayList(gDisplayListHead++, D_020077D8);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/print_text2.s")
-#endif
 
 void func_800939C8(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale) {
     print_text2(column, row, text, tracking, x_scale, y_scale, 1);
