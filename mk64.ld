@@ -381,6 +381,7 @@ SECTIONS
    BEGIN_SEG(data_segment2, 0x02000000)
    {
       BUILD_DIR/data/data_segment2.o(.data);
+      BUILD_DIR/src/data_segment2.inc.o(.data);
    }
    END_SEG(data_segment2)
 
