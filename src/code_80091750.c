@@ -1137,14 +1137,13 @@ void func_80093358(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f
 #ifdef NON_MATCHING
 // "tracking" is a uniform spacing between all characters in a given word
 void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale, s32 arg6) {
-    s32 temp;
-    s32 temp2;
+    char *temp_string = text;
     s32 stringWidth = 0;
     s32 characterWidthIndex;
 
-    if (*text != 0) {
+    if (*temp_string != 0) {
         do{
-            characterWidthIndex = get_ascii_char_width_index(text);
+            characterWidthIndex = get_ascii_char_width_index(temp_string);
             if (characterWidthIndex >= 0) {
                 stringWidth += ((gCharacterWidthMap[characterWidthIndex] + tracking) * x_scale);
             }
@@ -1155,48 +1154,31 @@ void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
                 return;
             }
             if (characterWidthIndex >= 0x30) {
-                text += 2;
+                temp_string += 2;
             } else {
-                text += 1;
+                temp_string += 1;
             }
-        } while(*text != 0);
+        } while(*temp_string != 0);
     }
 
-    // This is close to matching, but I refuse to believe
-    // that its supposed to look this way
-    if (arg6 != 1) {
-        if (arg6 != 2) {
-            if (arg6 != 3) {
-                if (arg6 != 4) {
-                    goto label2;
-                } else {
-                    goto even;
-                }
-            } else {
-                goto odd;
-            }
-        } else {
-            goto even;
-        }
-    } else {
-        goto odd;
+    switch(arg6) {
+        case 1:
+        case 3:
+            column -= stringWidth;
+            break;
+        case 2:
+        case 4:
+            column -= stringWidth / 2;
+            break;
+        default:
+            break;
     }
 
-    if (arg6 != 0){
-odd:
-        column -= stringWidth;
-    }
-    else{
-even:
-        column -= (stringWidth / 2);
-    }
-
-label2:
     if (arg6 < 3){
-        temp2 = 1;
+        arg6 = 1;
     }
     else{
-        temp2 = 2;
+        arg6 = 2;
     }
 
     gSPDisplayList(gDisplayListHead++, D_020077A8);
@@ -1204,13 +1186,14 @@ label2:
         do{
             characterWidthIndex = get_ascii_char_width_index(text);
             if (characterWidthIndex >= 0) {
-                temp = segmented_to_virtual(D_800E7E84[characterWidthIndex]);
-                func_80099184(temp);
-                gDisplayListHead = func_8009BEF0(gDisplayListHead, temp, column, row, temp2, x_scale, y_scale);
-                column += (gCharacterWidthMap[characterWidthIndex] + tracking) * x_scale;
+                func_80099184(segmented_to_virtual(D_800E7E84[characterWidthIndex]));
+                gDisplayListHead = func_8009BEF0(gDisplayListHead, segmented_to_virtual(D_800E7E84[characterWidthIndex]), column, row, arg6, x_scale, y_scale);
+                column += (gCharacterWidthMap[characterWidthIndex] + tracking);
+                column *= x_scale;
             }
             else if ((characterWidthIndex != -2) && (characterWidthIndex == -1)) {
-                column += (tracking + 7) * x_scale;
+                column += (tracking + 7);
+                column *= x_scale;
             }
             else{
                 gSPDisplayList(gDisplayListHead++, D_020077D8);
