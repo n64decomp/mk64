@@ -40,7 +40,7 @@ extern s8 D_8018EDF3;
 
 extern s8 gCupSelection;
 
-extern u32 gIsMirrorMode;
+
 extern u32 D_800DC530;
 extern u32 D_8015F730;
 extern u32 D_8015F734;
@@ -77,20 +77,6 @@ extern f32 gCourseDirection;
 
 extern u16 D_8015F900;
 
-struct UnkStruct800DC64C {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-};
-extern struct UnkStruct800DC64C D_800DC64C;
-
-struct UnkStruct800DC658 {
-    u16 unk0;
-    u16 unk2;
-    u16 unk4;
-};
-extern struct UnkStruct800DC658 D_800DC658;
-
 extern s16 D_800DC5BC, D_800DC5C8;
 extern u16 D_80150110;
 
@@ -108,6 +94,24 @@ struct UnkStruct_800DC5EC *D_800DC5F0 = &D_8015F480[1];
 struct UnkStruct_800DC5EC *D_800DC5F4 = &D_8015F480[2];
 struct UnkStruct_800DC5EC *D_800DC5F8 = &D_8015F480[3];
 s16 D_800DC5FC = 0;
+u8 *D_800DC600 = &osAppNmiBuffer[0];
+s32 gIsMirrorMode = 0;
+f32 D_800DC608 =  1.0f;
+Lights1 D_800DC610[] = {
+    {
+        {175, 175, 175, 0, 175, 175, 175, 0}, 
+        {255, 255, 255, 0, 255, 255, 255, 0, 0, 0, 120, 0},
+    },
+
+    {
+        {115, 115, 115, 0, 115, 115, 115, 0}, 
+        {255, 255, 255, 0, 255, 255, 255, 0, 0, 0, 120, 0},
+
+    },
+};
+static s32 pad = 0x80000000;
+s16 D_800DC644 = 8;
+s16 D_800DC648 = 1;
 
 void func_800029B0(void) {
     switch(D_800DC5A8) {
@@ -244,11 +248,8 @@ void func_80003010(void) {
 void func_80003040(void) {
     u32 pad[2];
     f32 sp34;
-    struct UnkStruct800DC64C sp28;
-    struct UnkStruct800DC658 sp20;
-
-    sp28 = D_800DC64C;
-    sp20 = D_800DC658;
+    s32 sp28[3] = {0};
+    s16 sp20[3] = {0};
 
     D_800DC5BC = 0;
     D_800DC5C8 = 0;

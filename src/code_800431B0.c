@@ -9560,7 +9560,7 @@ GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80055F48.s")
 ? func_80022180(void *, ? *); // extern
 ? func_800425D0(? *, void *, void *, s32); // extern
 ? func_802B4FF8(? *, ?); // extern
-? func_802B53C8(? *); // extern
+? mtxf_identity(? *); // extern
 extern ? D_0D0077A0;
 extern ? D_80165C18;
 extern s32 D_8018D120;
@@ -9608,7 +9608,7 @@ void func_80055FA0(s32 arg0, ? arg1) {
         gDisplayListHead = temp_v0_6 + 8;
         temp_v0_6->unk0 = 0x1010040;
         temp_v0_6->unk4 = &gGfxPool->buffer[56] & 0x1FFFFFFF;
-        func_802B53C8(&sp40);
+        mtxf_identity(&sp40);
         func_802B4FF8(&sp40, 0);
     }
 }

@@ -102,7 +102,7 @@ glabel func_80055FA0
 /* 056D30 80056130 8D8E0000 */  lw    $t6, ($t4)
 /* 056D34 80056134 25D801C0 */  addiu $t8, $t6, 0x1c0
 /* 056D38 80056138 030DC824 */  and   $t9, $t8, $t5
-/* 056D3C 8005613C 0C0AD4F2 */  jal   func_802B53C8
+/* 056D3C 8005613C 0C0AD4F2 */  jal   mtxf_identity
 /* 056D40 80056140 AC590004 */   sw    $t9, 4($v0)
 /* 056D44 80056144 27A40040 */  addiu $a0, $sp, 0x40
 /* 056D48 80056148 0C0AD3FE */  jal   func_802B4FF8
