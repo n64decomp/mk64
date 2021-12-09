@@ -10,6 +10,7 @@
 #include "segment_symbols.h"
 #include "common_structs.h"
 #include <defines.h>
+#include "framebuffers.h"
 
 // Declarations (not in this file)
 void func_8008C214(void);
@@ -214,11 +215,10 @@ extern u32 gHeapEndPtr;
 extern u32 *D_801978D0;
 
 
-extern u32 gZBuffer;
 
-extern u16 gFramebuffer0;
-extern u16 gFramebuffer1;
-extern u16 gFramebuffer2;
+//extern u16 gFramebuffer0;
+//extern u16 gFramebuffer1;
+//extern u16 gFramebuffer2;
 
 extern void thread5_game_logic();
 extern void thread4_audio();

@@ -1,0 +1,5 @@
+# Optional configuration file for import.py. Put it in the root or in tools/
+# of the repo you are importing from.
+
+[decompme.compilers]
+"tools/ido5.3_recomp/cc" = "ido5.3"

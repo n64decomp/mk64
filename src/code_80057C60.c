@@ -3162,7 +3162,7 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005C980.s")
 ? func_800790B4(s32); // extern
 ? func_800C9060(s32, ?); // extern
 ? func_800C90F4(?, s32, s8, s32); // extern
-extern ? D_8015F898;
+extern ? gTimePlayerLastTouchedFinishLine;
 extern s32 D_80165594;
 extern u32 D_80165638;
 extern u32 D_80165648;
@@ -3217,7 +3217,7 @@ void func_8005CB60(s32 arg0, s32 arg1) {
         phi_v1 = temp_v1;
         phi_t1 = 3;
         if (*temp_v1 < arg1) {
-            temp_f18 = *(&D_8015F898 + (arg0 * 4)) * 100.0f;
+            temp_f18 = *(&gTimePlayerLastTouchedFinishLine + (arg0 * 4)) * 100.0f;
             temp_s0->unk10 = temp_f18;
             (temp_s0 + (*temp_v1 * 4))->unk14 = temp_f18;
             temp_a0 = *temp_v1;

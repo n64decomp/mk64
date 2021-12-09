@@ -101,7 +101,7 @@ SECTIONS
       BUILD_DIR/src/os/osInitialize.o(.text);
       BUILD_DIR/src/os/osStartThread.o(.text);
       BUILD_DIR/src/os/osCreateViManager.o(.text);
-      BUILD_DIR/asm/os/osCreateViManagerPadding.o(.text);
+      BUILD_DIR/asm/os/parameters.o(.text);
       BUILD_DIR/src/os/osViSetMode.o(.text);
       BUILD_DIR/src/os/osViBlack.o(.text);
       BUILD_DIR/src/os/osViSetSpecialFeatures.o(.text);
@@ -131,16 +131,16 @@ SECTIONS
       BUILD_DIR/src/os/osSetTime.o(.text);
       BUILD_DIR/src/os/osEepromProbe.o(.text);
       BUILD_DIR/src/os/osPfsIsPlug.o(.text);
-      BUILD_DIR/asm/os/func_800CE720.o(.text);
+      BUILD_DIR/asm/os/non_matchings/func_800CE720.o(.text);
       BUILD_DIR/src/os/osPfsNumFiles.o(.text);
       BUILD_DIR/src/os/osPfsFileState.o(.text);
       BUILD_DIR/src/os/osPfsFreeBlocks.o(.text);
       BUILD_DIR/src/os/guRotateF.o(.text);
       BUILD_DIR/src/os/guScaleF.o(.text);
-      BUILD_DIR/asm/os/guPerspectiveF.o(.text);
+      BUILD_DIR/asm/os/non_matchings/guPerspectiveF.o(.text);
       BUILD_DIR/src/os/guLookAtF.o(.text);
       BUILD_DIR/src/os/guTranslateF.o(.text);
-      BUILD_DIR/asm/os/osSyncPrintf.o(.text);
+      BUILD_DIR/asm/os/non_matchings/osSyncPrintf.o(.text);
       BUILD_DIR/src/os/guMtxCatL.o(.text);
       BUILD_DIR/src/os/osPfsSearchFile.o(.text);
       BUILD_DIR/src/os/osPfsDeleteFile.o(.text);
@@ -165,7 +165,7 @@ SECTIONS
       BUILD_DIR/asm/os/osMapTLBRdb.o(.text);
       BUILD_DIR/src/os/osPiRawReadIo.o(.text);
       BUILD_DIR/src/os/__osSetHWIntrRoutine.o(.text);
-      BUILD_DIR/asm/os/__osLeoInterrupt.o(.text);
+      BUILD_DIR/asm/os/non_matchings/__osLeoInterrupt.o(.text);
       BUILD_DIR/src/os/osTimer.o(.text);
       BUILD_DIR/src/os/osGetThreadPri.o(.text);
       BUILD_DIR/src/os/__osViInit.o(.text);
@@ -191,13 +191,13 @@ SECTIONS
       BUILD_DIR/src/os/osEepromWrite.o(.text);
       BUILD_DIR/src/os/contpfs.o(.text);
       BUILD_DIR/src/os/osPfsChecker.o(.text);
-      BUILD_DIR/asm/os/contramread.o(.text);
+      BUILD_DIR/asm/os/non_matchings/contramread.o(.text);
       BUILD_DIR/src/os/guNormalize.o(.text);
       BUILD_DIR/src/os/math/sinf.o(.text);
       BUILD_DIR/src/os/math/cosf.o(.text);
       BUILD_DIR/src/os/_Printf.o(.text);
       BUILD_DIR/src/os/guMtxCatF.o(.text);
-      BUILD_DIR/asm/os/contramwrite.o(.text);
+      BUILD_DIR/asm/os/non_matchings/contramwrite.o(.text);
       BUILD_DIR/src/os/osEepromRead.o(.text);
       BUILD_DIR/src/os/__osAiDeviceBusy.o(.text);
       BUILD_DIR/asm/os/osSetIntMask.o(.text);
@@ -225,6 +225,7 @@ SECTIONS
       BUILD_DIR/src/staff_ghosts.o(.data);
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
       BUILD_DIR/src/code_8001C4D0.o(.data);
+      BUILD_DIR/src/code_8001F980.o(.data);
       BUILD_DIR/data/data_0DD0A0_1_1.o(.data);
       BUILD_DIR/src/kart_attributes.inc.o(.data);
       BUILD_DIR/data/data_0DD0A0_2.o(.rodata);
@@ -362,11 +363,25 @@ SECTIONS
    }
    END_SEG(code_80280000)
 
+   BEGIN_NOLOAD(code_80280000) {
+      BUILD_DIR/asm/bss_credits.o(.bss);
+   }
+   END_NOLOAD(code_80280000)
+
+   _code_80280000SegmentNoloadSize = SIZEOF(.code_80280000.noload) + 0x10;
+   
+   _code_80280000SegmentNoloadSizeHi = _code_80280000SegmentNoloadSize >> 16;
+   _code_80280000SegmentNoloadSizeLo = _code_80280000SegmentNoloadSize & 0xFFFF;
+
+
+
+
    /* 0x801978D0 12AAE0-132B50 [8070] */
    /* texture tables and DLs, set as segment 0x02 */
    BEGIN_SEG(data_segment2, 0x02000000)
    {
       BUILD_DIR/data/data_segment2.o(.data);
+      BUILD_DIR/src/data_segment2.inc.o(.data);
    }
    END_SEG(data_segment2)
 

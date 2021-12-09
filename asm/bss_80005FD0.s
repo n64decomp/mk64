@@ -2,6 +2,7 @@
 
 .section .bss
 .skip 96
+
 glabel D_80162E70
 .skip 64
 
@@ -47,7 +48,7 @@ glabel D_80162FCE
 glabel D_80162FD0
 .skip 8
 
-glabel D_80162FD8
+glabel gTrackCompletionPercentByRank
 .skip 32
 
 glabel D_80162FF8

@@ -13,7 +13,6 @@
 
 #.word 0x00000000
 
-
 #.word 0x00000000
 
 #.word 0x00000000
@@ -54,4 +53,3 @@ glabel D_800EB3B4
 # .word __osBaseTimer
 
 # .word 0x00000000, 0x00000000, 0x00000000
-

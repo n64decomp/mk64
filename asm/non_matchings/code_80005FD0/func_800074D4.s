@@ -1,11 +1,11 @@
 glabel func_800074D4
 /* 0080D4 800074D4 27BDFF70 */  addiu $sp, $sp, -0x90
-/* 0080D8 800074D8 3C048016 */  lui   $a0, %hi(D_80162FD8) # $a0, 0x8016
+/* 0080D8 800074D8 3C048016 */  lui   $a0, %hi(gTrackCompletionPercentByRank) # $a0, 0x8016
 /* 0080DC 800074DC 44800000 */  mtc1  $zero, $f0
 /* 0080E0 800074E0 AFB1000C */  sw    $s1, 0xc($sp)
 /* 0080E4 800074E4 AFB00008 */  sw    $s0, 8($sp)
 /* 0080E8 800074E8 240A0008 */  li    $t2, 8
-/* 0080EC 800074EC 24842FD8 */  addiu $a0, %lo(D_80162FD8) # addiu $a0, $a0, 0x2fd8
+/* 0080EC 800074EC 24842FD8 */  addiu $a0, %lo(gTrackCompletionPercentByRank) # addiu $a0, $a0, 0x2fd8
 /* 0080F0 800074F0 24070001 */  li    $a3, 1
 /* 0080F4 800074F4 24020009 */  li    $v0, 9
 .L800074F8:
@@ -26,10 +26,10 @@ glabel func_800074D4
 /* 008130 80007530 3C0F800F */  lui   $t7, %hi(gPlayers) # $t7, 0x800f
 /* 008134 80007534 25EF6990 */  addiu $t7, %lo(gPlayers) # addiu $t7, $t7, 0x6990
 /* 008138 80007538 000E70C0 */  sll   $t6, $t6, 3
-/* 00813C 8000753C 3C0C8016 */  lui   $t4, %hi(D_80162FD8) # $t4, 0x8016
-/* 008140 80007540 3C098016 */  lui   $t1, %hi(D_8015F898) # $t1, 0x8016
-/* 008144 80007544 2529F898 */  addiu $t1, %lo(D_8015F898) # addiu $t1, $t1, -0x768
-/* 008148 80007548 258C2FD8 */  addiu $t4, %lo(D_80162FD8) # addiu $t4, $t4, 0x2fd8
+/* 00813C 8000753C 3C0C8016 */  lui   $t4, %hi(gTrackCompletionPercentByRank) # $t4, 0x8016
+/* 008140 80007540 3C098016 */  lui   $t1, %hi(gTimePlayerLastTouchedFinishLine) # $t1, 0x8016
+/* 008144 80007544 2529F898 */  addiu $t1, %lo(gTimePlayerLastTouchedFinishLine) # addiu $t1, $t1, -0x768
+/* 008148 80007548 258C2FD8 */  addiu $t4, %lo(gTrackCompletionPercentByRank) # addiu $t4, $t4, 0x2fd8
 /* 00814C 8000754C 01CF2021 */  addu  $a0, $t6, $t7
 /* 008150 80007550 00002825 */  move  $a1, $zero
 /* 008154 80007554 24070001 */  li    $a3, 1
@@ -65,10 +65,10 @@ glabel func_800074D4
 /* 0081C0 800075C0 3C0F800F */  lui   $t7, %hi(gPlayers) # $t7, 0x800f
 /* 0081C4 800075C4 25EF6990 */  addiu $t7, %lo(gPlayers) # addiu $t7, $t7, 0x6990
 /* 0081C8 800075C8 000E70C0 */  sll   $t6, $t6, 3
-/* 0081CC 800075CC 3C098016 */  lui   $t1, %hi(D_8015F898) # $t1, 0x8016
-/* 0081D0 800075D0 3C0C8016 */  lui   $t4, %hi(D_80162FD8) # $t4, 0x8016
-/* 0081D4 800075D4 258C2FD8 */  addiu $t4, %lo(D_80162FD8) # addiu $t4, $t4, 0x2fd8
-/* 0081D8 800075D8 2529F898 */  addiu $t1, %lo(D_8015F898) # addiu $t1, $t1, -0x768
+/* 0081CC 800075CC 3C098016 */  lui   $t1, %hi(gTimePlayerLastTouchedFinishLine) # $t1, 0x8016
+/* 0081D0 800075D0 3C0C8016 */  lui   $t4, %hi(gTrackCompletionPercentByRank) # $t4, 0x8016
+/* 0081D4 800075D4 258C2FD8 */  addiu $t4, %lo(gTrackCompletionPercentByRank) # addiu $t4, $t4, 0x2fd8
+/* 0081D8 800075D8 2529F898 */  addiu $t1, %lo(gTimePlayerLastTouchedFinishLine) # addiu $t1, $t1, -0x768
 /* 0081DC 800075DC 01CF2021 */  addu  $a0, $t6, $t7
 /* 0081E0 800075E0 27A60068 */  addiu $a2, $sp, 0x68
 .L800075E4:
@@ -135,8 +135,8 @@ glabel func_800074D4
 /* 0082C4 800076C4 150AFFC7 */  bne   $t0, $t2, .L800075E4
 /* 0082C8 800076C8 24843760 */   addiu $a0, $a0, 0x3760
 .L800076CC:
-/* 0082CC 800076CC 3C0C8016 */  lui   $t4, %hi(D_80162FD8) # $t4, 0x8016
-/* 0082D0 800076D0 258C2FD8 */  addiu $t4, %lo(D_80162FD8) # addiu $t4, $t4, 0x2fd8
+/* 0082CC 800076CC 3C0C8016 */  lui   $t4, %hi(gTrackCompletionPercentByRank) # $t4, 0x8016
+/* 0082D0 800076D0 258C2FD8 */  addiu $t4, %lo(gTrackCompletionPercentByRank) # addiu $t4, $t4, 0x2fd8
 /* 0082D4 800076D4 00004025 */  move  $t0, $zero
 /* 0082D8 800076D8 27A60068 */  addiu $a2, $sp, 0x68
 /* 0082DC 800076DC 240B0008 */  li    $t3, 8
@@ -151,8 +151,8 @@ glabel func_800074D4
 /* 008300 80007700 3C18800F */  lui   $t8, %hi(gPlayers) # $t8, 0x800f
 /* 008304 80007704 27186990 */  addiu $t8, %lo(gPlayers) # addiu $t8, $t8, 0x6990
 /* 008308 80007708 000F78C0 */  sll   $t7, $t7, 3
-/* 00830C 8000770C 3C0D8016 */  lui   $t5, %hi(D_801644D0) # $t5, 0x8016
-/* 008310 80007710 25AD44D0 */  addiu $t5, %lo(D_801644D0) # addiu $t5, $t5, 0x44d0
+/* 00830C 8000770C 3C0D8016 */  lui   $t5, %hi(gTrackCompletionPercentByPlayerId) # $t5, 0x8016
+/* 008310 80007710 25AD44D0 */  addiu $t5, %lo(gTrackCompletionPercentByPlayerId) # addiu $t5, $t5, 0x44d0
 /* 008314 80007714 01F82021 */  addu  $a0, $t7, $t8
 /* 008318 80007718 00002825 */  move  $a1, $zero
 /* 00831C 8000771C 24070001 */  li    $a3, 1
@@ -185,8 +185,8 @@ glabel func_800074D4
 /* 00837C 8000777C 3C18800F */  lui   $t8, %hi(gPlayers) # $t8, 0x800f
 /* 008380 80007780 27186990 */  addiu $t8, %lo(gPlayers) # addiu $t8, $t8, 0x6990
 /* 008384 80007784 000F78C0 */  sll   $t7, $t7, 3
-/* 008388 80007788 3C0D8016 */  lui   $t5, %hi(D_801644D0) # $t5, 0x8016
-/* 00838C 8000778C 25AD44D0 */  addiu $t5, %lo(D_801644D0) # addiu $t5, $t5, 0x44d0
+/* 008388 80007788 3C0D8016 */  lui   $t5, %hi(gTrackCompletionPercentByPlayerId) # $t5, 0x8016
+/* 00838C 8000778C 25AD44D0 */  addiu $t5, %lo(gTrackCompletionPercentByPlayerId) # addiu $t5, $t5, 0x44d0
 /* 008390 80007790 01F82021 */  addu  $a0, $t7, $t8
 .L80007794:
 /* 008394 80007794 94990000 */  lhu   $t9, ($a0)
@@ -256,10 +256,10 @@ glabel func_800074D4
 /* 00847C 8000787C 00E9082A */  slt   $at, $a3, $t1
 /* 008480 80007880 10200040 */  beqz  $at, .L80007984
 /* 008484 80007884 00E01025 */   move  $v0, $a3
-/* 008488 80007888 3C188016 */  lui   $t8, %hi(D_80162FD8) # $t8, 0x8016
+/* 008488 80007888 3C188016 */  lui   $t8, %hi(gTrackCompletionPercentByRank) # $t8, 0x8016
 /* 00848C 8000788C 01276023 */  subu  $t4, $t1, $a3
 /* 008490 80007890 31830001 */  andi  $v1, $t4, 1
-/* 008494 80007894 27182FD8 */  addiu $t8, %lo(D_80162FD8) # addiu $t8, $t8, 0x2fd8
+/* 008494 80007894 27182FD8 */  addiu $t8, %lo(gTrackCompletionPercentByRank) # addiu $t8, $t8, 0x2fd8
 /* 008498 80007898 00082880 */  sll   $a1, $t0, 2
 /* 00849C 8000789C 10600013 */  beqz  $v1, .L800078EC
 /* 0084A0 800078A0 00B82021 */   addu  $a0, $a1, $t8
@@ -283,8 +283,8 @@ glabel func_800074D4
 .L800078E8:
 /* 0084E8 800078E8 10490026 */  beq   $v0, $t1, .L80007984
 .L800078EC:
-/* 0084EC 800078EC 3C0E8016 */   lui   $t6, %hi(D_80162FD8) # $t6, 0x8016
-/* 0084F0 800078F0 25CE2FD8 */  addiu $t6, %lo(D_80162FD8) # addiu $t6, $t6, 0x2fd8
+/* 0084EC 800078EC 3C0E8016 */   lui   $t6, %hi(gTrackCompletionPercentByRank) # $t6, 0x8016
+/* 0084F0 800078F0 25CE2FD8 */  addiu $t6, %lo(gTrackCompletionPercentByRank) # addiu $t6, $t6, 0x2fd8
 /* 0084F4 800078F4 00021880 */  sll   $v1, $v0, 2
 /* 0084F8 800078F8 00097880 */  sll   $t7, $t1, 2
 /* 0084FC 800078FC 01EE8821 */  addu  $s1, $t7, $t6
@@ -340,8 +340,8 @@ glabel func_800074D4
 /* 0085AC 800079AC 00E01025 */   move  $v0, $a3
 /* 0085B0 800079B0 240E0008 */  li    $t6, 8
 /* 0085B4 800079B4 01C76023 */  subu  $t4, $t6, $a3
-/* 0085B8 800079B8 3C0F8016 */  lui   $t7, %hi(D_80162FD8) # $t7, 0x8016
-/* 0085BC 800079BC 25EF2FD8 */  addiu $t7, %lo(D_80162FD8) # addiu $t7, $t7, 0x2fd8
+/* 0085B8 800079B8 3C0F8016 */  lui   $t7, %hi(gTrackCompletionPercentByRank) # $t7, 0x8016
+/* 0085BC 800079BC 25EF2FD8 */  addiu $t7, %lo(gTrackCompletionPercentByRank) # addiu $t7, $t7, 0x2fd8
 /* 0085C0 800079C0 31830001 */  andi  $v1, $t4, 1
 /* 0085C4 800079C4 00082880 */  sll   $a1, $t0, 2
 /* 0085C8 800079C8 10600013 */  beqz  $v1, .L80007A18
@@ -366,8 +366,8 @@ glabel func_800074D4
 .L80007A14:
 /* 008614 80007A14 104B0026 */  beq   $v0, $t3, .L80007AB0
 .L80007A18:
-/* 008618 80007A18 3C198016 */   lui   $t9, %hi(D_80162FD8) # $t9, 0x8016
-/* 00861C 80007A1C 27392FD8 */  addiu $t9, %lo(D_80162FD8) # addiu $t9, $t9, 0x2fd8
+/* 008618 80007A18 3C198016 */   lui   $t9, %hi(gTrackCompletionPercentByRank) # $t9, 0x8016
+/* 00861C 80007A1C 27392FD8 */  addiu $t9, %lo(gTrackCompletionPercentByRank) # addiu $t9, $t9, 0x2fd8
 /* 008620 80007A20 00021880 */  sll   $v1, $v0, 2
 /* 008624 80007A24 000A7080 */  sll   $t6, $t2, 2
 /* 008628 80007A28 01D96821 */  addu  $t5, $t6, $t9

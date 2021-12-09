@@ -106,6 +106,13 @@ struct UnkStruct_802B53C8 {
     f32 unkC;
 };
 // end math util structs
+
+struct UnkStruct_800DDB68 {
+    s32 *D_800ED600; s32 *D_800ED608; s32 *D_800ED610; s32 *D_800ED618;
+    s32 *D_800ED620; s32 *D_800ED628; s32 *D_800ED630; s32 *D_800ED638;
+};
+
+
 typedef struct {
     s16        ob[3];    /* x, y, z */
     s16        tc[2];    /* texture coord */

@@ -190,7 +190,7 @@ glabel D_8015F892
 glabel D_8015F894
 .skip 4
 
-glabel D_8015F898
+glabel gTimePlayerLastTouchedFinishLine
 .skip 32
 
 glabel D_8015F8B8
