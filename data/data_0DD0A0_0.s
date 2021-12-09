@@ -5,38 +5,38 @@
 
 .section .data
 
-glabel D_800DC600
-.word osAppNmiBuffer
+#glabel D_800DC600
+#.word osAppNmiBuffer
 
-glabel gIsMirrorMode
-.word 0x00000000
+#glabel gIsMirrorMode
+#.word 0x00000000
 
-glabel D_800DC608
-.float 1.0
-.word 0x00000000
+#glabel D_800DC608
+#.float 1.0
+#.word 0x00000000
 
-glabel D_800DC610
-.word 0xafafaf00, 0xafafaf00, 0xffffff00, 0xffffff00
-.word 0x00007800, 0x00000000
+#glabel D_800DC610
+#.word 0xafafaf00, 0xafafaf00, 0xff ffff00, 0xffffff00
+#.word 0x00007800, 0x00000000
 
-glabel D_800DC628
-.word 0x73737300, 0x73737300
+#glabel D_800DC628
+#.word 0x73737300, 0x73737300
 
-glabel D_800DC630
-.word 0xffffff00, 0xffffff00, 0x00007800, 0x00000000
-.word 0x80000000
+#glabel D_800DC630
+#.word 0xffffff00, 0xffffff00, 0x00007800, 0x00000000
+#.word 0x80000000
 
-glabel D_800DC644
-.hword 0x0008, 0x0000
+#glabel D_800DC644
+#.hword 0x0008, 0x0000
 
-glabel D_800DC648
-.hword 0x0001, 0x0000
+#glabel D_800DC648
+#.hword 0x0001, 0x0000
 
-glabel D_800DC64C
-.word 0x00000000, 0x00000000, 0x00000000
+#glabel D_800DC64C
+#.word 0x00000000, 0x00000000, 0x00000000
 
-glabel D_800DC658
-.word 0x00000000, 0x00000000
+#glabel D_800DC658
+#.word 0x00000000, 0x00000000
 
 glabel gEnableResourceMeters
 .word 0x00000000

@@ -5,7 +5,7 @@ glabel func_802B5564
 /* 11EB80 802B5570 AFA7003C */  sw    $a3, 0x3c($sp)
 /* 11EB84 802B5574 AFA40030 */  sw    $a0, 0x30($sp)
 /* 11EB88 802B5578 AFA50034 */  sw    $a1, 0x34($sp)
-/* 11EB8C 802B557C 0C0AD4F2 */  jal   func_802B53C8
+/* 11EB8C 802B557C 0C0AD4F2 */  jal   mtxf_identity
 /* 11EB90 802B5580 E7AE0038 */   swc1  $f14, 0x38($sp)
 /* 11EB94 802B5584 C7AE0038 */  lwc1  $f14, 0x38($sp)
 /* 11EB98 802B5588 3C01802C */  lui   $at, %hi(D_802B9FB0)

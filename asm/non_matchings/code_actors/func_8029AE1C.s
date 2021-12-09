@@ -49,20 +49,20 @@ glabel func_8029AE1C
 /* 1044E4 8029AED4 AC4D0004 */  sw    $t5, 4($v0)
 /* 1044E8 8029AED8 AC4C0000 */  sw    $t4, ($v0)
 /* 1044EC 8029AEDC 8E020000 */  lw    $v0, ($s0)
-/* 1044F0 8029AEE0 3C18800E */  lui   $t8, %hi(D_800DC630) # $t8, 0x800e
-/* 1044F4 8029AEE4 2718C630 */  addiu $t8, %lo(D_800DC630) # addiu $t8, $t8, -0x39d0
+/* 1044F0 8029AEE0 3C18800E */  lui   $t8, %hi(D_800DC610+0x20) # $t8, 0x800e
+/* 1044F4 8029AEE4 2718C630 */  addiu $t8, %lo(D_800DC610+0x20) # addiu $t8, $t8, -0x39d0
 /* 1044F8 8029AEE8 244E0008 */  addiu $t6, $v0, 8
 /* 1044FC 8029AEEC AE0E0000 */  sw    $t6, ($s0)
 /* 104500 8029AEF0 35EF0010 */  ori   $t7, (0x03860010 & 0xFFFF) # ori $t7, $t7, 0x10
 /* 104504 8029AEF4 AC4F0000 */  sw    $t7, ($v0)
 /* 104508 8029AEF8 AC580004 */  sw    $t8, 4($v0)
 /* 10450C 8029AEFC 8E020000 */  lw    $v0, ($s0)
-/* 104510 8029AF00 3C0B800E */  lui   $t3, %hi(D_800DC628) # $t3, 0x800e
+/* 104510 8029AF00 3C0B800E */  lui   $t3, %hi(D_800DC610+0x18) # $t3, 0x800e
 /* 104514 8029AF04 3C0A0388 */  lui   $t2, (0x03880010 >> 16) # lui $t2, 0x388
 /* 104518 8029AF08 24590008 */  addiu $t9, $v0, 8
 /* 10451C 8029AF0C AE190000 */  sw    $t9, ($s0)
 /* 104520 8029AF10 354A0010 */  ori   $t2, (0x03880010 & 0xFFFF) # ori $t2, $t2, 0x10
-/* 104524 8029AF14 256BC628 */  addiu $t3, %lo(D_800DC628) # addiu $t3, $t3, -0x39d8
+/* 104524 8029AF14 256BC628 */  addiu $t3, %lo(D_800DC610+0x18) # addiu $t3, $t3, -0x39d8
 /* 104528 8029AF18 AC4B0004 */  sw    $t3, 4($v0)
 /* 10452C 8029AF1C AC4A0000 */  sw    $t2, ($v0)
 /* 104530 8029AF20 8E020000 */  lw    $v0, ($s0)
@@ -106,7 +106,7 @@ glabel func_8029AE1C
 /* 1045C8 8029AFB8 0C0AD4A7 */  jal   load_giant_egg
 /* 1045CC 8029AFBC 3C07C37F */   lui   $a3, 0xc37f
 /* 1045D0 8029AFC0 27A400A0 */  addiu $a0, $sp, 0xa0
-/* 1045D4 8029AFC4 0C0AD548 */  jal   func_802B5520
+/* 1045D4 8029AFC4 0C0AD548 */  jal   mtxf_translate
 /* 1045D8 8029AFC8 27A50120 */   addiu $a1, $sp, 0x120
 /* 1045DC 8029AFCC 27A40060 */  addiu $a0, $sp, 0x60
 /* 1045E0 8029AFD0 27A500E0 */  addiu $a1, $sp, 0xe0

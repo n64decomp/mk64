@@ -11,7 +11,7 @@ glabel func_802B59DC
 /* 11F010 802B5A00 0C0AE00E */  jal   coss
 /* 11F014 802B5A04 E7A0002C */   swc1  $f0, 0x2c($sp)
 /* 11F018 802B5A08 02002025 */  move  $a0, $s0
-/* 11F01C 802B5A0C 0C0AD4F2 */  jal   func_802B53C8
+/* 11F01C 802B5A0C 0C0AD4F2 */  jal   mtxf_identity
 /* 11F020 802B5A10 E7A00028 */   swc1  $f0, 0x28($sp)
 /* 11F024 802B5A14 C7A0002C */  lwc1  $f0, 0x2c($sp)
 /* 11F028 802B5A18 C7A20028 */  lwc1  $f2, 0x28($sp)

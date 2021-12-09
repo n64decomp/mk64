@@ -52,10 +52,10 @@ void func_80280038(void) {
     guPerspective(&gGfxPool->buffer[8], &sp44[37], D_80150130, D_80150148, D_80150150, D_8015014C, 1.0f);
     gDPHalf1(gDisplayListHead++, sp44[37]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[8]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->buffer[56], camera->posX, camera->posY, camera->posZ, camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
+    guLookAt(&gGfxPool->buffer[56], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[56]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     gCurrentCourseId = D_800DC644;
-    func_802B53C8(&sp44);
+    mtxf_identity(&sp44);
     func_802B4FF8(&sp44, 0);
     func_80295A38(D_800DC5EC);
     func_802A3008(D_800DC5EC);
@@ -97,9 +97,9 @@ void func_802802AC(void) {
 
         D_802874FC = 0;
         func_80283648(camera);
-        temp_f12 = camera->unk - camera->posX;
-        temp = camera->unk1 - camera->posY;
-        temp_f14 = camera->unk2 - camera->posZ;
+        temp_f12 = camera->unk - camera->pos[0];
+        temp = camera->unk1 - camera->pos[1];
+        temp_f14 = camera->unk2 - camera->pos[2];
         camera->rotX2 = func_802B7830(temp_f12, temp_f14);
         camera->rotX = func_802B7830(sqrtf((temp_f12 * temp_f12) + (temp_f14 * temp_f14)), temp);
         camera->rotY = 0;
@@ -147,9 +147,9 @@ void func_80280420(void) {
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
     D_8015F580 = gPrevLoadedAddress;
-    camera->posX = 1400.0f;
-    camera->posY = 300.0f;
-    camera->posZ = 1400.0f;
+    camera->pos[0] = 1400.0f;
+    camera->pos[1] = 300.0f;
+    camera->pos[2] = 1400.0f;
     camera->unk = 0.0f;
     camera->unk1 = 0.0f;
     camera->unk2 = 0.0f;
