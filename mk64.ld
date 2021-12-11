@@ -442,6 +442,7 @@ SECTIONS
    BEGIN_SEG(data_821D10, 0x0C000000)
    {
       BUILD_DIR/src/trophy_model.inc.mio0.o(.data);
+      . = ALIGN(0x10);
    }
    END_SEG(data_821D10)
    BEGIN_SEG(data_825800, 0x06000000)
