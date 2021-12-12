@@ -14,14 +14,14 @@ glabel func_800B5948
 /* 0B6578 800B5978 A038ED8A */  sb    $t8, %lo(D_8018ED8A)($at)
 /* 0B657C 800B597C 9339ED13 */  lbu   $t9, %lo(D_8018ED13)($t9)
 /* 0B6580 800B5980 3C018019 */  lui   $at, %hi(D_8018ED8B) # $at, 0x8019
-/* 0B6584 800B5984 3C088019 */  lui   $t0, %hi(D_8018ED14) # $t0, 0x8019
+/* 0B6584 800B5984 3C088019 */  lui   $t0, %hi(gSaveDataSoundMode) # $t0, 0x8019
 /* 0B6588 800B5988 A039ED8B */  sb    $t9, %lo(D_8018ED8B)($at)
-/* 0B658C 800B598C 9108ED14 */  lbu   $t0, %lo(D_8018ED14)($t0)
+/* 0B658C 800B598C 9108ED14 */  lbu   $t0, %lo(gSaveDataSoundMode)($t0)
 /* 0B6590 800B5990 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 0B6594 800B5994 AFBF0014 */  sw    $ra, 0x14($sp)
-/* 0B6598 800B5998 3C018019 */  lui   $at, %hi(D_8018ED8C) # $at, 0x8019
+/* 0B6598 800B5998 3C018019 */  lui   $at, %hi(gSaveDataSoundModeBackup) # $at, 0x8019
 /* 0B659C 800B599C 0C02D67D */  jal   func_800B59F4
-/* 0B65A0 800B59A0 A028ED8C */   sb    $t0, %lo(D_8018ED8C)($at)
+/* 0B65A0 800B59A0 A028ED8C */   sb    $t0, %lo(gSaveDataSoundModeBackup)($at)
 /* 0B65A4 800B59A4 3C018019 */  lui   $at, %hi(D_8018ED8E) # $at, 0x8019
 /* 0B65A8 800B59A8 0C02D6AB */  jal   func_800B5AAC
 /* 0B65AC 800B59AC A022ED8E */   sb    $v0, %lo(D_8018ED8E)($at)

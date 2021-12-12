@@ -1,6 +1,6 @@
 glabel func_8009CE1C
-/* 09DA1C 8009CE1C 3C0E8019 */  lui   $t6, %hi(D_8018EDF2) # $t6, 0x8019
-/* 09DA20 8009CE20 91CEEDF2 */  lbu   $t6, %lo(D_8018EDF2)($t6)
+/* 09DA1C 8009CE1C 3C0E8019 */  lui   $t6, %hi(gSoundMode) # $t6, 0x8019
+/* 09DA20 8009CE20 91CEEDF2 */  lbu   $t6, %lo(gSoundMode)($t6)
 /* 09DA24 8009CE24 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 09DA28 8009CE28 24010003 */  li    $at, 3
 /* 09DA2C 8009CE2C 11C10009 */  beq   $t6, $at, .L8009CE54

@@ -95,4 +95,16 @@
 #define TEXT_BLUE_GREEN_RED_CYCLE_1 4
 #define TEXT_BLUE_GREEN_RED_CYCLE_2 5
 
+
+/**
+ * Sound mode options
+ * Option 2 appears to be unused, as such its probably not
+ * a valid option
+**/
+#define SOUND_STEREO      0
+#define SOUND_HEADPHONES  1
+#define SOUND_UNUSED      2
+#define SOUND_MONO        3
+#define NUM_SOUND_MODES   4
+
 #endif // DEFINES_H

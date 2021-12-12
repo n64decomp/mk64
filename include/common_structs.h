@@ -337,17 +337,21 @@ typedef struct {
     // 1st place is 3 points, 2nd is 2, etc.
     // Lowest dibit is the Mushroom Cup, 2nd dibit is the Flower Cup, etc
     u8 grandPrixPoints[4];
+    u8 soundMode;
     // Its unknown what these bytes are used for
-    // They appear related to the Grand Prix points in some capacity but I can't figure out how
-    u8 unknownBytes1[4];
+    u8 unknownBytes[3];
     // For some reason there's 2 entries covering 4 cups
     // Instead of 4 entries, one per cup. Or even just one big entry for all 4 cups
     // Its also unknown why these are here when they're identical to the values found
     // in allCourseTimeTrialRecords
     OnlyBestTimeTrialRecords onlyBestTimeTrialRecords[2];
-    // Its unknown what these bytes are used for, they appear to be identical to
-    // grandPrixPoints and unknownBytes1
-    u8 unknownBytes2[8];
+    // Its unknown why these last bytes exist as they appear to be copies of
+    // of their non-Backup counterparts.
+    // They could be some form of data coherency. If these don't match the non-Backup
+    // versions that may indicate corrupt save data?
+    u8 grandPrixPointsBackup[4];
+    u8 soundModeBackup;
+    u8 unknownBytesBackup[3];
 } SaveData; // size = 0x200
 
 typedef struct {
