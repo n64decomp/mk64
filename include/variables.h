@@ -6,11 +6,11 @@
 
 extern s32   gCCSelection;
 extern s8    gCourseSelection;
-extern char *gCupNames[];                                 // D_800E7500
+extern char *gCupNames[];                           // D_800E7500
 extern s8    gCupSelection;
 extern s16   gCurrentCourseId;
-extern char *gDebugSoundModeNames[NUM_SOUND_OPTIONS];     // D_800E7700
-extern s16   gGPCurrentRacePlayerIdByRank[8];             // D_80164360
+extern char *gDebugSoundModeNames[NUM_SOUND_MODES]; // D_800E7700
+extern s16   gGPCurrentRacePlayerIdByRank[8];       // D_80164360
 extern s8    gHumanPlayerCount;
 extern f32   gKartFrictionTable[];
 extern f32   gKartBoundingBoxTable[];
@@ -18,16 +18,16 @@ extern f32   gKartGravityTable[];
 extern s8    gGPOverallRanks[8];
 extern s32   gModeSelection;
 extern s32   gPlayerCountSelection1;
-extern u8    gSaveDataSoundMode;                          // D_8018ED14
-extern u8    gSaveDataSoundModeBackup;                    // D_8018ED8C
-extern u8    gSoundMode;                                  // D_8018EDF2
-extern char *gSoundModeNames[NUM_SOUND_OPTIONS];          // D_800E7710
+extern u8    gSaveDataSoundMode;                    // D_8018ED14
+extern u8    gSaveDataSoundModeBackup;              // D_8018ED8C
+extern u8    gSoundMode;                            // D_8018EDF2
+extern char *gSoundModeNames[NUM_SOUND_MODES];      // D_800E7710
 // Indexed by Player ID. Track time in seconds since player has last crossed the finish line
-extern f32 gTimePlayerLastTouchedFinishLine[8];           // D_8015F898
+extern f32 gTimePlayerLastTouchedFinishLine[8];     // D_8015F898
 // Indexed by Player ID. Tracks the percentage of the track has been completed
-extern f32 gTrackCompletionPercentByPlayerId[8];          // D_801644D0
+extern f32 gTrackCompletionPercentByPlayerId[8];    // D_801644D0
 // Indexed by Rank. Tracks the percentage of the track has been completed
-extern f32 gTrackCompletionPercentByRank[8];              // D_80162FD8
+extern f32 gTrackCompletionPercentByRank[8];        // D_80162FD8
 
 extern struct_D_802874D8 D_802874D8;
 extern s16 D_801650D0[4][8];

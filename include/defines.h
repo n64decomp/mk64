@@ -105,6 +105,6 @@
 #define SOUND_HEADPHONES  1
 #define SOUND_UNUSED      2
 #define SOUND_MONO        3
-#define NUM_SOUND_OPTIONS 4
+#define NUM_SOUND_MODES   4
 
 #endif // DEFINES_H
