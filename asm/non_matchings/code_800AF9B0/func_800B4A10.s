@@ -20,10 +20,10 @@ glabel func_800B4A10
 /* 0B5654 800B4A54 00000000 */   nop   
 /* 0B5658 800B4A58 0C02D32D */  jal   func_800B4CB4
 /* 0B565C 800B4A5C 00000000 */   nop   
-/* 0B5660 800B4A60 3C0E8019 */  lui   $t6, %hi(D_8018ED14) # $t6, 0x8019
-/* 0B5664 800B4A64 91CEED14 */  lbu   $t6, %lo(D_8018ED14)($t6)
-/* 0B5668 800B4A68 3C028019 */  lui   $v0, %hi(D_8018EDF2) # $v0, 0x8019
-/* 0B566C 800B4A6C 2442EDF2 */  addiu $v0, %lo(D_8018EDF2) # addiu $v0, $v0, -0x120e
+/* 0B5660 800B4A60 3C0E8019 */  lui   $t6, %hi(gSaveDataSoundMode) # $t6, 0x8019
+/* 0B5664 800B4A64 91CEED14 */  lbu   $t6, %lo(gSaveDataSoundMode)($t6)
+/* 0B5668 800B4A68 3C028019 */  lui   $v0, %hi(gSoundMode) # $v0, 0x8019
+/* 0B566C 800B4A6C 2442EDF2 */  addiu $v0, %lo(gSoundMode) # addiu $v0, $v0, -0x120e
 /* 0B5670 800B4A70 31CF00FF */  andi  $t7, $t6, 0xff
 /* 0B5674 800B4A74 29E10004 */  slti  $at, $t7, 4
 /* 0B5678 800B4A78 14200003 */  bnez  $at, .L800B4A88

@@ -117,23 +117,23 @@ glabel L800B05E0
 .L800B06F8:
 /* 0B12F8 800B06F8 8FAE002C */  lw    $t6, 0x2c($sp)
 .L800B06FC:
-/* 0B12FC 800B06FC 3C038019 */  lui   $v1, %hi(D_8018EDF2) # $v1, 0x8019
-/* 0B1300 800B0700 2463EDF2 */  addiu $v1, %lo(D_8018EDF2) # addiu $v1, $v1, -0x120e
+/* 0B12FC 800B06FC 3C038019 */  lui   $v1, %hi(gSoundMode) # $v1, 0x8019
+/* 0B1300 800B0700 2463EDF2 */  addiu $v1, %lo(gSoundMode) # addiu $v1, $v1, -0x120e
 /* 0B1304 800B0704 11C00014 */  beqz  $t6, .L800B0758
 /* 0B1308 800B0708 00000000 */   nop   
 /* 0B130C 800B070C 90620000 */  lbu   $v0, ($v1)
 /* 0B1310 800B0710 8D0F0004 */  lw    $t7, 4($t0)
-/* 0B1314 800B0714 3C018019 */  lui   $at, %hi(D_8018ED14) # $at, 0x8019
+/* 0B1314 800B0714 3C018019 */  lui   $at, %hi(gSaveDataSoundMode) # $at, 0x8019
 /* 0B1318 800B0718 11E2000F */  beq   $t7, $v0, .L800B0758
 /* 0B131C 800B071C 00000000 */   nop   
-/* 0B1320 800B0720 A022ED14 */  sb    $v0, %lo(D_8018ED14)($at)
+/* 0B1320 800B0720 A022ED14 */  sb    $v0, %lo(gSaveDataSoundMode)($at)
 /* 0B1324 800B0724 AFA50020 */  sw    $a1, 0x20($sp)
 /* 0B1328 800B0728 0C02D19C */  jal   func_800B4670
 /* 0B132C 800B072C AFA80038 */   sw    $t0, 0x38($sp)
 /* 0B1330 800B0730 0C02D652 */  jal   func_800B5948
 /* 0B1334 800B0734 00000000 */   nop   
-/* 0B1338 800B0738 3C038019 */  lui   $v1, %hi(D_8018EDF2) # $v1, 0x8019
-/* 0B133C 800B073C 2463EDF2 */  addiu $v1, %lo(D_8018EDF2) # addiu $v1, $v1, -0x120e
+/* 0B1338 800B0738 3C038019 */  lui   $v1, %hi(gSoundMode) # $v1, 0x8019
+/* 0B133C 800B073C 2463EDF2 */  addiu $v1, %lo(gSoundMode) # addiu $v1, $v1, -0x120e
 /* 0B1340 800B0740 8FA80038 */  lw    $t0, 0x38($sp)
 /* 0B1344 800B0744 90780000 */  lbu   $t8, ($v1)
 /* 0B1348 800B0748 8FA50020 */  lw    $a1, 0x20($sp)
@@ -141,30 +141,30 @@ glabel L800B05E0
 /* 0B1350 800B0750 2529EDEC */  addiu $t1, %lo(D_8018EDEC) # addiu $t1, $t1, -0x1214
 /* 0B1354 800B0754 AD180004 */  sw    $t8, 4($t0)
 .L800B0758:
-/* 0B1358 800B0758 3C038019 */  lui   $v1, %hi(D_8018EDF2) # $v1, 0x8019
+/* 0B1358 800B0758 3C038019 */  lui   $v1, %hi(gSoundMode) # $v1, 0x8019
 /* 0B135C 800B075C 30B94000 */  andi  $t9, $a1, 0x4000
 /* 0B1360 800B0760 13200019 */  beqz  $t9, .L800B07C8
-/* 0B1364 800B0764 2463EDF2 */   addiu $v1, %lo(D_8018EDF2) # addiu $v1, $v1, -0x120e
+/* 0B1364 800B0764 2463EDF2 */   addiu $v1, %lo(gSoundMode) # addiu $v1, $v1, -0x120e
 /* 0B1368 800B0768 0C0278A0 */  jal   func_8009E280
 /* 0B136C 800B076C AFA80038 */   sw    $t0, 0x38($sp)
 /* 0B1370 800B0770 3C044900 */  lui   $a0, (0x49008002 >> 16) # lui $a0, 0x4900
 /* 0B1374 800B0774 0C032384 */  jal   play_sound2
 /* 0B1378 800B0778 34848002 */   ori   $a0, (0x49008002 & 0xFFFF) # ori $a0, $a0, 0x8002
 /* 0B137C 800B077C 8FA80038 */  lw    $t0, 0x38($sp)
-/* 0B1380 800B0780 3C038019 */  lui   $v1, %hi(D_8018EDF2) # $v1, 0x8019
-/* 0B1384 800B0784 2463EDF2 */  addiu $v1, %lo(D_8018EDF2) # addiu $v1, $v1, -0x120e
+/* 0B1380 800B0780 3C038019 */  lui   $v1, %hi(gSoundMode) # $v1, 0x8019
+/* 0B1384 800B0784 2463EDF2 */  addiu $v1, %lo(gSoundMode) # addiu $v1, $v1, -0x120e
 /* 0B1388 800B0788 90620000 */  lbu   $v0, ($v1)
 /* 0B138C 800B078C 8D0A0004 */  lw    $t2, 4($t0)
-/* 0B1390 800B0790 3C018019 */  lui   $at, %hi(D_8018ED14) # $at, 0x8019
+/* 0B1390 800B0790 3C018019 */  lui   $at, %hi(gSaveDataSoundMode) # $at, 0x8019
 /* 0B1394 800B0794 51420303 */  beql  $t2, $v0, .L800B13A4
 /* 0B1398 800B0798 8FBF001C */   lw    $ra, 0x1c($sp)
-/* 0B139C 800B079C A022ED14 */  sb    $v0, %lo(D_8018ED14)($at)
+/* 0B139C 800B079C A022ED14 */  sb    $v0, %lo(gSaveDataSoundMode)($at)
 /* 0B13A0 800B07A0 0C02D19C */  jal   func_800B4670
 /* 0B13A4 800B07A4 AFA80038 */   sw    $t0, 0x38($sp)
 /* 0B13A8 800B07A8 0C02D652 */  jal   func_800B5948
 /* 0B13AC 800B07AC 00000000 */   nop   
-/* 0B13B0 800B07B0 3C038019 */  lui   $v1, %hi(D_8018EDF2) # $v1, 0x8019
-/* 0B13B4 800B07B4 2463EDF2 */  addiu $v1, %lo(D_8018EDF2) # addiu $v1, $v1, -0x120e
+/* 0B13B0 800B07B0 3C038019 */  lui   $v1, %hi(gSoundMode) # $v1, 0x8019
+/* 0B13B4 800B07B4 2463EDF2 */  addiu $v1, %lo(gSoundMode) # addiu $v1, $v1, -0x120e
 /* 0B13B8 800B07B8 8FA80038 */  lw    $t0, 0x38($sp)
 /* 0B13BC 800B07BC 906B0000 */  lbu   $t3, ($v1)
 /* 0B13C0 800B07C0 100002F7 */  b     .L800B13A0
@@ -204,8 +204,8 @@ glabel L800B05E0
 .L800B0838:
 /* 0B1438 800B0838 0C02D12F */  jal   func_800B44BC
 /* 0B143C 800B083C 00000000 */   nop   
-/* 0B1440 800B0840 3C038019 */  lui   $v1, %hi(D_8018EDF2) # $v1, 0x8019
-/* 0B1444 800B0844 2463EDF2 */  addiu $v1, %lo(D_8018EDF2) # addiu $v1, $v1, -0x120e
+/* 0B1440 800B0840 3C038019 */  lui   $v1, %hi(gSoundMode) # $v1, 0x8019
+/* 0B1444 800B0844 2463EDF2 */  addiu $v1, %lo(gSoundMode) # addiu $v1, $v1, -0x120e
 /* 0B1448 800B0848 90620000 */  lbu   $v0, ($v1)
 /* 0B144C 800B084C 24010001 */  li    $at, 1
 /* 0B1450 800B0850 3C044900 */  lui   $a0, 0x4900
