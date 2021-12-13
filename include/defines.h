@@ -107,4 +107,16 @@
 #define SOUND_MONO        3
 #define NUM_SOUND_MODES   4
 
+/**
+ * Title screen demo options
+ * All demos use 100 CC
+**/
+#define DEMO_ONE   0 // Mario,                  Mario Raceway,   Grand Prix
+#define DEMO_TWO   1 // Yoshi DK,               Choco Mountain,  Versus
+#define DEMO_THREE 2 // Luigi,                  Kalamari Desert, Grand Prix
+#define DEMO_FOUR  3 // Wario Yoshi Bowser,     Wario Stadium,   Versus
+#define DEMO_FIVE  4 // Bowser,                 Bowser Castle,   Grand Prix
+#define DEMO_SIX   5 // Mario Luigi Peach Toad, Sherbert Land,   Versus
+#define NUM_DEMOS  6
+
 #endif // DEFINES_H

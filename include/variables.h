@@ -3,11 +3,15 @@
 
 #include "global.h"
 #include "defines.h"
+#include "common_structs.h"
 
 extern s32   gCCSelection;
 extern s8    gCourseSelection;
 extern char *gCupNames[];                           // D_800E7500
 extern s8    gCupSelection;
+// Maps course IDs (as defined in the COURSES enum) to the
+// cup they belong to
+extern u8    gCupSelectionByCourseId[NUM_COURSES];  // D_800E7664
 extern s16   gCurrentCourseId;
 extern char *gDebugSoundModeNames[NUM_SOUND_MODES]; // D_800E7700
 extern s16   gGPCurrentRacePlayerIdByRank[8];       // D_80164360
@@ -17,6 +21,11 @@ extern f32   gKartBoundingBoxTable[];
 extern f32   gKartGravityTable[];
 extern s8    gGPOverallRanks[8];
 extern s32   gModeSelection;
+// Indicates the ID of the next title screen demo that will be played
+extern u8   gNextDemoId;                           // D_800E86BC
+// Maps course IDs (as defined in the COURSES enum) to an index
+// in a given cup's track order
+extern u8    gPerCupIndexByCourseId[NUM_COURSES];   // D_800EFD50
 extern s32   gPlayerCountSelection1;
 extern u8    gSaveDataSoundMode;                    // D_8018ED14
 extern u8    gSaveDataSoundModeBackup;              // D_8018ED8C

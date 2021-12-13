@@ -6478,9 +6478,9 @@ void *func_800AAF30(?, s32, s32);                   /* extern */
 ? func_802903B0();                                  /* extern */
 extern ? D_8018E7AC;
 extern ? D_8018E7B0;
-static ? D_800E7664;                                /* unable to generate initializer; const */
+static ? gCupSelectionByCourseId;                                /* unable to generate initializer; const */
 static ? D_800E86A8;                                /* unable to generate initializer; const */
-static ? D_800EFD50;                                /* unable to generate initializer; const */
+static ? gPerCupIndexByCourseId;                                /* unable to generate initializer; const */
 s16 D_800DC644;                                     /* unable to generate initializer */
 s16 gCurrentCourseId;                               /* unable to generate initializer */
 
@@ -6683,81 +6683,80 @@ block_74:
                 D_800E86A0 += -1;
                 phi_a0 = &D_800E86A0;
                 break;
+            // Setting up game state for title screen demos
             case 2:                                 /* switch 3 */
                 D_800DC51C = 1;
                 D_8018EE08 = 1;
                 D_800DC524 = 4;
                 gCCSelection = CC_100;
-                temp_v1_4 = D_800E86BC;
-                switch (temp_v1_4) {                /* switch 4 */
-                case 0:                             /* switch 4 */
-                    gCurrentCourseId = 0;
+                switch (gNextDemoId) {                /* switch 4 */
+                case DEMO_ONE:                             /* switch 4 */
+                    gCurrentCourseId = COURSE_MARIO_RACEWAY;
                     D_800DC530 = 0;
                     gPlayerCountSelection1 = 1;
                     D_8018EDF3 = 1;
-                    D_800E86A8.unk0 = 0;
+                    D_800E86A8[0] = MARIO;
                     gModeSelection = GRAND_PRIX;
                     break;
-                case 1:                             /* switch 4 */
-                    gCurrentCourseId = 1;
+                case DEMO_TWO:                             /* switch 4 */
+                    gCurrentCourseId = COURSE_CHOCO_MOUNTAIN;
                     D_800DC530 = 1;
                     gPlayerCountSelection1 = 2;
                     D_8018EDF3 = 2;
-                    D_800E86A8.unk0 = 2;
-                    D_800E86A8.unk1 = 4;
+                    D_800E86A8[0] = YOSHI;
+                    D_800E86A8[1] = DK;
                     gModeSelection = VERSUS;
                     phi_a2 = 2;
                     break;
-                case 2:                             /* switch 4 */
-                    gCurrentCourseId = 0xB;
+                case DEMO_THREE:                             /* switch 4 */
+                    gCurrentCourseId = COURSE_KALAMARI_DESERT;
                     D_800DC530 = 0;
                     gPlayerCountSelection1 = 1;
                     D_8018EDF3 = 1;
-                    D_800E86A8.unk0 = 1;
+                    D_800E86A8[0] = LUIGI;
                     gModeSelection = GRAND_PRIX;
                     break;
-                case 3:                             /* switch 4 */
-                    gCurrentCourseId = 0xE;
+                case DEMO_FOUR:                             /* switch 4 */
+                    gCurrentCourseId = COURSE_WARIO_STADIUM;
                     D_800DC530 = 3;
                     gPlayerCountSelection1 = 3;
                     D_8018EDF3 = 3;
-                    D_800E86A8.unk0 = 5;
-                    D_800E86A8.unk1 = 2;
-                    D_800E86A8.unk2 = 7;
+                    D_800E86A8[0] = WARIO;
+                    D_800E86A8[1] = YOSHI;
+                    D_800E86A8[2] = BOWSER;
                     gModeSelection = VERSUS;
                     phi_a2 = 2;
                     break;
-                case 4:                             /* switch 4 */
-                    gCurrentCourseId = 2;
+                case DEMO_FIVE:                             /* switch 4 */
+                    gCurrentCourseId = COURSE_BOWSER_CASTLE;
                     D_800DC530 = 0;
                     gPlayerCountSelection1 = 1;
                     D_8018EDF3 = 1;
-                    D_800E86A8.unk0 = 7;
+                    D_800E86A8[0] = BOWSER;
                     gModeSelection = GRAND_PRIX;
                     phi_a2 = 2;
                     break;
-                case 5:                             /* switch 4 */
-                    gCurrentCourseId = 0xC;
+                case DEMO_SIX:                             /* switch 4 */
+                    gCurrentCourseId = COURSE_SHERBET_LAND;
                     D_800DC530 = 3;
                     gPlayerCountSelection1 = 4;
                     D_8018EDF3 = 4;
-                    D_800E86A8.unk0 = 0;
-                    D_800E86A8.unk1 = 1;
-                    D_800E86A8.unk2 = 6;
-                    D_800E86A8.unk3 = 3;
+                    D_800E86A8[0] = MARIO;
+                    D_800E86A8[1] = LUIGI;
+                    D_800E86A8[2] = PEACH;
+                    D_800E86A8[3] = TOAD;
                     gModeSelection = VERSUS;
                     phi_a2 = 2;
                     break;
                 }
-                D_800E86BC = temp_v1_4 + 1;
-                if (D_800E86BC >= 6) {
-                    D_800E86BC = 0;
+                gNextDemoId += 1;
+                if (gNextDemoId >= NUM_DEMOS) {
+                    gNextDemoId = DEMO_ONE;
                 }
-                temp_a0 = gCurrentCourseId;
-                gCupSelection = *(&D_800E7664 + temp_a0);
+                gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
                 D_800DC540 = gCupSelection;
-                gCourseSelection = *(&D_800EFD50 + temp_a0);
-                phi_a0 = temp_a0;
+                gCourseSelection = gPerCupIndexByCourseId[gCurrentCourseId];
+                phi_a0 = gCurrentCourseId;
                 break;
             case 3:                                 /* switch 3 */
                 temp_v1_5 = D_800E86A0;
@@ -6833,10 +6832,10 @@ block_74:
                 gPlayerCountSelection1 = D_8018EDF3;
             }
         }
-        gCupSelection = *(&D_800E7664 + temp_a0_2);
+        gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
         temp_v1_9 = D_8018EDFA;
         D_800DC540 = gCupSelection;
-        gCourseSelection = *(&D_800EFD50 + temp_a0_2);
+        gCourseSelection = gPerCupIndexByCourseId[gCurrentCourseId];
         if (temp_v1_9 != 1) {
             if (temp_v1_9 != 2) {
                 if (temp_v1_9 != 3) {
