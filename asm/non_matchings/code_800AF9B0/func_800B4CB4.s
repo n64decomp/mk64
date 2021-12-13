@@ -34,12 +34,12 @@ glabel func_800B4CB4
 /* 0B5930 800B4D30 A028ED12 */  sb    $t0, %lo(D_8018ED12)($at)
 /* 0B5934 800B4D34 9129ED8B */  lbu   $t1, %lo(D_8018ED8B)($t1)
 /* 0B5938 800B4D38 3C018019 */  lui   $at, %hi(D_8018ED13) # $at, 0x8019
-/* 0B593C 800B4D3C 3C0A8019 */  lui   $t2, %hi(D_8018ED8C) # $t2, 0x8019
+/* 0B593C 800B4D3C 3C0A8019 */  lui   $t2, %hi(gSaveDataSoundModeBackup) # $t2, 0x8019
 /* 0B5940 800B4D40 A029ED13 */  sb    $t1, %lo(D_8018ED13)($at)
-/* 0B5944 800B4D44 914AED8C */  lbu   $t2, %lo(D_8018ED8C)($t2)
-/* 0B5948 800B4D48 3C018019 */  lui   $at, %hi(D_8018ED14) # $at, 0x8019
+/* 0B5944 800B4D44 914AED8C */  lbu   $t2, %lo(gSaveDataSoundModeBackup)($t2)
+/* 0B5948 800B4D48 3C018019 */  lui   $at, %hi(gSaveDataSoundMode) # $at, 0x8019
 /* 0B594C 800B4D4C 0C02D67D */  jal   func_800B59F4
-/* 0B5950 800B4D50 A02AED14 */   sb    $t2, %lo(D_8018ED14)($at)
+/* 0B5950 800B4D50 A02AED14 */   sb    $t2, %lo(gSaveDataSoundMode)($at)
 /* 0B5954 800B4D54 3C018019 */  lui   $at, %hi(D_8018ED16) # $at, 0x8019
 /* 0B5958 800B4D58 0C02D6AB */  jal   func_800B5AAC
 /* 0B595C 800B4D5C A022ED16 */   sb    $v0, %lo(D_8018ED16)($at)

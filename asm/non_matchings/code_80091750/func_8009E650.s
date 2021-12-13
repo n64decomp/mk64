@@ -1003,8 +1003,8 @@ glabel L8009F430
 /* 0A00F8 8009F4F8 10000035 */  b     .L8009F5D0
 /* 0A00FC 8009F4FC A0400084 */   sb    $zero, 0x84($v0)
 glabel L8009F500
-/* 0A0100 8009F500 3C188019 */  lui   $t8, %hi(D_8018EDF2) # $t8, 0x8019
-/* 0A0104 8009F504 9318EDF2 */  lbu   $t8, %lo(D_8018EDF2)($t8)
+/* 0A0100 8009F500 3C188019 */  lui   $t8, %hi(gSoundMode) # $t8, 0x8019
+/* 0A0104 8009F504 9318EDF2 */  lbu   $t8, %lo(gSoundMode)($t8)
 /* 0A0108 8009F508 10000031 */  b     .L8009F5D0
 /* 0A010C 8009F50C AFF80004 */   sw    $t8, 4($ra)
 glabel L8009F510

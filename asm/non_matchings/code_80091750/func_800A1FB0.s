@@ -77,13 +77,13 @@ glabel L800A2054
 /* 0A2CD0 800A20D0 26100023 */   addiu $s0, $s0, 0x23
 /* 0A2CD4 800A20D4 0C024C36 */  jal   set_text_color
 /* 0A2CD8 800A20D8 24040001 */   li    $a0, 1
-/* 0A2CDC 800A20DC 3C088019 */  lui   $t0, %hi(D_8018EDF2) # $t0, 0x8019
-/* 0A2CE0 800A20E0 9108EDF2 */  lbu   $t0, %lo(D_8018EDF2)($t0)
-/* 0A2CE4 800A20E4 3C06800E */  lui   $a2, %hi(D_800E7710)
+/* 0A2CDC 800A20DC 3C088019 */  lui   $t0, %hi(gSoundMode) # $t0, 0x8019
+/* 0A2CE0 800A20E0 9108EDF2 */  lbu   $t0, %lo(gSoundMode)($t0)
+/* 0A2CE4 800A20E4 3C06800E */  lui   $a2, %hi(gSoundModeNames)
 /* 0A2CE8 800A20E8 240400E6 */  li    $a0, 230
 /* 0A2CEC 800A20EC 00084880 */  sll   $t1, $t0, 2
 /* 0A2CF0 800A20F0 00C93021 */  addu  $a2, $a2, $t1
-/* 0A2CF4 800A20F4 8CC67710 */  lw    $a2, %lo(D_800E7710)($a2)
+/* 0A2CF4 800A20F4 8CC67710 */  lw    $a2, %lo(gSoundModeNames)($a2)
 /* 0A2CF8 800A20F8 24050078 */  li    $a1, 120
 /* 0A2CFC 800A20FC 00003825 */  move  $a3, $zero
 /* 0A2D00 800A2100 E7B60010 */  swc1  $f22, 0x10($sp)

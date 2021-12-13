@@ -607,14 +607,13 @@ void func_800B053C(void *arg0, u16 arg1) {
                 }
             }
             if (sp2C != 0) {
-                temp_v0_2 = D_8018EDF2;
-                if (temp_t0->unk4 != temp_v0_2) {
-                    D_8018ED14 = temp_v0_2;
+                if (temp_t0->unk4 != gSoundMode) {
+                    gSaveDataSoundMode = gSoundMode;
                     sp20 = phi_a1;
                     sp38 = temp_t0;
                     func_800B4670();
                     func_800B5948();
-                    temp_t0->unk4 = D_8018EDF2;
+                    temp_t0->unk4 = gSoundMode;
                     phi_t1 = &D_8018EDEC;
                 }
             }
@@ -622,13 +621,12 @@ void func_800B053C(void *arg0, u16 arg1) {
                 sp38 = temp_t0;
                 func_8009E280();
                 play_sound2(0x49008002);
-                temp_v0_3 = D_8018EDF2;
-                if (temp_t0->unk4 != temp_v0_3) {
-                    D_8018ED14 = temp_v0_3;
+                if (temp_t0->unk4 != gSoundMode) {
+                    gSaveDataSoundMode = gSoundMode;
                     sp38 = temp_t0;
                     func_800B4670();
                     func_800B5948();
-                    temp_t0->unk4 = D_8018EDF2;
+                    temp_t0->unk4 = gSoundMode;
                     return;
                 }
                 /* Duplicate return node #166. Try simplifying control flow for better match */
@@ -716,29 +714,28 @@ void func_800B053C(void *arg0, u16 arg1) {
                         play_sound2(0x4900FF07);
                         return;
                     }
-                    temp_v0_7 = D_8018EDF2;
-                    if (temp_v0_7 < 3) {
-                        D_8018EDF2 = temp_v0_7 + 1;
+                    if (gSoundMode < SOUND_MONO) {
+                        gSoundMode += 1;
                     } else {
-                        D_8018EDF2 = 0;
+                        gSoundMode = SOUND_STEREO;
                     }
-                    if (D_8018EDF2 == 2) {
-                        D_8018EDF2 = 3;
+                    if (gSoundMode == SOUND_UNUSED) {
+                        gSoundMode = SOUND_MONO;
                     }
                     func_800B44BC();
-                    temp_v0_8 = D_8018EDF2;
-                    if (temp_v0_8 != 0) {
-                        if (temp_v0_8 != 1) {
-                            if (temp_v0_8 != 3) {
-                                return;
-                            }
+                    switch(gSoundMode){
+                        case SOUND_STEREO:
+                            play_sound2(0x49008024);
+                            break;
+                        case SOUND_HEADPHONES:
+                            play_sound2(0x49008025);
+                            break;
+                        case SOUND_MONO:
                             play_sound2(0x49008029);
-                            return;
-                        }
-                        play_sound2(0x49008025);
-                        return;
+                            break;
+                        default:
+                            break;
                     }
-                    play_sound2(0x49008024);
                     return;
                 }
                 func_8009E280();
@@ -1768,33 +1765,29 @@ void func_800B20F4(void *arg0, s32 arg1) {
             break;
         case 6:
             if ((sp2E & 0x100) != 0) {
-                temp_v0_7 = D_8018EDF2;
-                temp_t2_2 = temp_v0_7 + 1;
-                if (temp_v0_7 < 3) {
-                    D_8018EDF2 = temp_t2_2;
-                    if ((temp_t2_2 & 0xFF) == 2) {
-                        D_8018EDF2 = 3;
+                if (gSoundMode < SOUND_MONO) {
+                    gSoundMode += 1;
+                    if ((gSoundMode & 0xFF) == SOUND_UNUSED) {
+                        gSoundMode = SOUND_MONO;
                     }
                     sp24 = sp2E;
                     play_sound2(0x49008000);
                     func_800B44BC();
-                    D_8018ED14 = D_8018EDF2;
+                    gSaveDataSoundMode = gSoundMode;
                     func_800B4670();
                     func_800B5948();
                 }
             }
             if ((sp2E & 0x200) != 0) {
-                temp_v0_8 = D_8018EDF2;
-                temp_t7 = temp_v0_8 - 1;
-                if (temp_v0_8 > 0) {
-                    D_8018EDF2 = temp_t7;
-                    if ((temp_t7 & 0xFF) == 2) {
-                        D_8018EDF2 = 1;
+                if (gSoundMode > SOUND_STEREO) {
+                    gSoundMode -= 1;
+                    if ((gSoundMode & 0xFF) == SOUND_UNUSED) {
+                        gSoundMode = SOUND_HEADPHONES;
                     }
                     sp24 = sp2E;
                     play_sound2(0x49008000);
                     func_800B44BC();
-                    D_8018ED14 = D_8018EDF2;
+                    gSaveDataSoundMode = gSoundMode;
                     func_800B4670();
                 }
             }
@@ -2809,15 +2802,13 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B44AC.s")
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_800C3448(s32, s32 *); // extern
 extern s32 D_800F2BE4;
-extern u8 D_8018EDF2;
+extern u8 gSoundMode;
 
 void func_800B44BC(void) {
     s32 sp20;
-    u8 temp_v1;
 
     sp20 = D_800F2BE4;
-    temp_v1 = D_8018EDF2;
-    if ((temp_v1 == 0) || (temp_v1 == 1) || (temp_v1 == 3)) {
+    if ((gSoundMode == SOUND_STEREO) || (gSoundMode == SOUND_HEADPHONES) || (gSoundMode == SOUND_MONO)) {
         func_800C3448(*(&sp20 + temp_v1) | 0xE0000000, &sp20);
     }
 }
@@ -2963,16 +2954,16 @@ extern s8 D_8018ED10;
 extern s8 D_8018ED11;
 extern s8 D_8018ED12;
 extern s8 D_8018ED13;
-extern s8 D_8018ED14;
-extern s8 D_8018EDF2;
+extern s8 gSaveDataSoundMode;
+extern s8 gSoundMode;
 
 void func_800B4820(void) {
     D_8018ED10 = 0;
     D_8018ED11 = 0;
     D_8018ED12 = 0;
     D_8018ED13 = 0;
-    D_8018ED14 = 0;
-    D_8018EDF2 = 0;
+    gSaveDataSoundMode = SOUND_STEREO;
+    gSoundMode = SOUND_STEREO;
     func_800B44BC();
     func_800B4670();
 }
@@ -3047,8 +3038,8 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B49E4.s")
 ? func_800B4A9C(s32); // extern
 ? func_800B4CB4(); // extern
 extern u8 D_8018EB90;
-extern u8 D_8018ED14;
-extern u8 D_8018EDF2;
+extern u8 gSaveDataSoundMode;
+extern u8 gSoundMode;
 extern OSMesgQueue gSIEventMesgQueue;
 
 void func_800B4A10(void) {
@@ -3064,10 +3055,9 @@ void func_800B4A10(void) {
         phi_s0 = temp_s0;
     } while (temp_s0 != 0x10);
     func_800B4CB4();
-    temp_t6 = D_8018ED14;
-    D_8018EDF2 = temp_t6;
-    if ((temp_t6 & 0xFF) >= 4) {
-        D_8018EDF2 = 3;
+    gSoundMode = gSaveDataSoundMode;
+    if ((gSaveDataSoundMode & 0xFF) >= NUM_SOUND_OPTIONS) {
+        gSoundMode = SOUND_MONO;
     }
 }
 #else
@@ -3166,14 +3156,14 @@ extern u8 D_8018ED10;
 extern u8 D_8018ED11;
 extern u8 D_8018ED12;
 extern u8 D_8018ED13;
-extern u8 D_8018ED14;
+extern u8 gSaveDataSoundMode;
 extern u8 D_8018ED16;
 extern u8 D_8018ED17;
 extern u8 D_8018ED88;
 extern u8 D_8018ED89;
 extern u8 D_8018ED8A;
 extern u8 D_8018ED8B;
-extern u8 D_8018ED8C;
+extern u8 gSaveDataSoundModeBackup;
 extern OSMesgQueue gSIEventMesgQueue;
 
 void func_800B4CB4(void) {
@@ -3184,7 +3174,7 @@ void func_800B4CB4(void) {
             D_8018ED11 = D_8018ED89;
             D_8018ED12 = D_8018ED8A;
             D_8018ED13 = D_8018ED8B;
-            D_8018ED14 = D_8018ED8C;
+            gSaveDataSoundMode = gSaveDataSoundModeBackup;
             D_8018ED16 = func_800B59F4();
             D_8018ED17 = func_800B5AAC();
             osEepromLongWrite(&gSIEventMesgQueue, ((&D_8018ED10 - &D_8018EB90) >> 3) & 0xFF, &D_8018ED10, 8);
@@ -3214,18 +3204,15 @@ void func_800B4DCC(void *arg0, u32 arg1, s32 arg2) {
 GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B4DCC.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-// Convert time trial record from its little-endian form to big-endian
+#ifdef NON_MATCHING
+//generated by mips_to_c commit 99fec197b8c557ea7cc0d78f1b263a0de6e59168
 s32 func_800B4DF4(u8 *arg0) {
-    return (arg0[0] + (arg0[1] << 8) + (arg0[2] << 0x10)) & 0xFFFFFF;
+    return ((arg0[1] << 8) + arg0[0] + (arg0[2] << 0x10)) & 0xFFFFFF;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B4DF4.s")
 #endif
 
-#if 1
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 // Get a time trial record, infer course index
 s32 func_800B4E24(s32 recordIndex) {
     return func_800B4DF4(
@@ -3235,12 +3222,7 @@ s32 func_800B4E24(s32 recordIndex) {
         .records[recordIndex]
     );
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B4E24.s")
-#endif
 
-#if 1
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 // Get a time trial record, but take the course index as an argument
 s32 func_800B4EB4(s32 recordIndex, s32 courseIndex) {
     return func_800B4DF4(
@@ -3250,12 +3232,7 @@ s32 func_800B4EB4(s32 recordIndex, s32 courseIndex) {
         .records[recordIndex]
     );
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B4EB4.s")
-#endif
 
-#if 1
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 // Get Best Lap record of the inferred course index
 s32 func_800B4F2C(void) {
     return func_800B4DF4(
@@ -3265,12 +3242,7 @@ s32 func_800B4F2C(void) {
         .records[TIME_TRIAL_1LAP_RECORD]
     );
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B4F2C.s")
-#endif
 
-#if 1
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 // Get the best single lap time record of the given course index
 s32 func_800B4FB0(s32 courseIndex) {
     return func_800B4DF4(
@@ -3280,9 +3252,6 @@ s32 func_800B4FB0(s32 courseIndex) {
         .records[TIME_TRIAL_1LAP_RECORD]
     );
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B4FB0.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
@@ -3540,66 +3509,56 @@ void func_800B5404(s32 arg0, s32 arg1) {
 GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B5404.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_800B54EC(u8, s32); // extern
-extern ? D_8018ED10;
+extern u8 D_8018ED10[4]; // Direct reference to the grandPrixPoints section of save data
+u8 func_800B54EC(s32, s32);
+u8 func_800B5508(s32, s32, s32);
 
-void func_800B54C0(s32 arg1) {
-    func_800B54EC(*(&D_8018ED10 + arg1), arg1);
+// Get Grand Prix points for a given cup and CC mode
+u8 func_800B54C0(s32 cup, s32 cc_mode) {
+    return func_800B54EC(cup, D_8018ED10[cc_mode]);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B54C0.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-s32 func_800B54EC(s32 arg0, s32 arg1) {
-    s32 temp_v1;
+// Get Grand Prix points scored for a given cup
+u8 func_800B54EC(s32 cup, s32 ccGrandPrixPoints) {
+    s32 cup_index = cup * 2;
+    u32 cup_points = ccGrandPrixPoints;
 
-    temp_v1 = arg0 * 2;
-    return ((arg1 & (3 << temp_v1)) >> temp_v1) & 0xFF;
+    cup_points &= (3 << cup_index);
+    cup_points >>= cup_index;
+    cup_points &= 0xFF;
+
+    return cup_points;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B54EC.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-s32 func_800B5508(s32 arg0, s32 arg1, s32 arg2) {
-    s32 temp_v1;
+// Generate a new CC Grand Prix Points entry with points_scored
+// placed in the given cup's location
+u8 func_800B5508(s32 cup, s32 ccGrandPrixPoints, s32 points_scored) {
+    s32 cup_index = cup * 2;
 
-    temp_v1 = arg0 * 2;
-    return ((arg1 & ~(3 << temp_v1)) | (arg2 << temp_v1)) & 0xFF;
+    points_scored <<= cup_index;
+    ccGrandPrixPoints &= ~(3 << cup_index);
+
+    return (ccGrandPrixPoints | points_scored);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B5508.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern ? D_8018ED10;
-
-? func_800B5530(s32 arg0) {
-    if (*(&D_8018ED10 + arg0) == 0xFF) {
+// Check if all 4 cups have gold cups scored
+// for a given CC mode
+s32 func_800B5530(s32 cc_mode) {
+    if (D_8018ED10[cc_mode] == 0xFF) {
         return 1;
     }
     return 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B5530.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_800B5530(?); // extern
-
-void func_800B555C(void) {
-    func_800B5530(2);
+// Check if the 150CC mode has all 4 gold cups
+s32 func_800B555C(void) {
+    return func_800B5530(CC_150);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B555C.s")
-#endif
+
+// Check if the Extra mode has all 4 gold cups
+s32 func_800B557C(void) {
+    return func_800B5530(CC_EXTRA);
+}
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
@@ -3781,12 +3740,12 @@ extern u8 D_8018ED10;
 extern u8 D_8018ED11;
 extern u8 D_8018ED12;
 extern u8 D_8018ED13;
-extern u8 D_8018ED14;
+extern u8 gSaveDataSoundMode;
 extern u8 D_8018ED88;
 extern u8 D_8018ED89;
 extern u8 D_8018ED8A;
 extern u8 D_8018ED8B;
-extern u8 D_8018ED8C;
+extern u8 gSaveDataSoundModeBackup;
 extern s8 D_8018ED8E;
 extern s8 D_8018ED8F;
 extern OSMesgQueue gSIEventMesgQueue;
@@ -3796,7 +3755,7 @@ void func_800B5948(void) {
     D_8018ED89 = D_8018ED11;
     D_8018ED8A = D_8018ED12;
     D_8018ED8B = D_8018ED13;
-    D_8018ED8C = D_8018ED14;
+    gSaveDataSoundModeBackup = gSaveDataSoundMode;
     D_8018ED8E = func_800B59F4();
     D_8018ED8F = func_800B5AAC();
     osEepromLongWrite(&gSIEventMesgQueue, ((&D_8018ED88 - &D_8018EB90) >> 3) & 0xFF, &D_8018ED88, 8);

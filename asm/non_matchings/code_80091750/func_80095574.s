@@ -166,13 +166,13 @@ glabel L8009568C
 /* 0963C8 800957C8 24040050 */  li    $a0, 80
 /* 0963CC 800957CC 0C015DE9 */  jal   debug_print_str2
 /* 0963D0 800957D0 2405008C */   li    $a1, 140
-/* 0963D4 800957D4 3C0E8019 */  lui   $t6, %hi(D_8018EDF2) # $t6, 0x8019
-/* 0963D8 800957D8 91CEEDF2 */  lbu   $t6, %lo(D_8018EDF2)($t6)
-/* 0963DC 800957DC 3C06800E */  lui   $a2, %hi(D_800E7700)
+/* 0963D4 800957D4 3C0E8019 */  lui   $t6, %hi(gSoundMode) # $t6, 0x8019
+/* 0963D8 800957D8 91CEEDF2 */  lbu   $t6, %lo(gSoundMode)($t6)
+/* 0963DC 800957DC 3C06800E */  lui   $a2, %hi(gDebugSoundModeNames)
 /* 0963E0 800957E0 240400AA */  li    $a0, 170
 /* 0963E4 800957E4 000E7880 */  sll   $t7, $t6, 2
 /* 0963E8 800957E8 00CF3021 */  addu  $a2, $a2, $t7
-/* 0963EC 800957EC 8CC67700 */  lw    $a2, %lo(D_800E7700)($a2)
+/* 0963EC 800957EC 8CC67700 */  lw    $a2, %lo(gDebugSoundModeNames)($a2)
 /* 0963F0 800957F0 0C015DE9 */  jal   debug_print_str2
 /* 0963F4 800957F4 2405008C */   li    $a1, 140
 /* 0963F8 800957F8 3C188019 */  lui   $t8, %hi(D_8018EDEF) # $t8, 0x8019

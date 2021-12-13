@@ -1943,7 +1943,7 @@ glabel D_8018ED12
 glabel D_8018ED13
 .skip 1
 
-glabel D_8018ED14
+glabel gSaveDataSoundMode
 .skip 2
 
 glabel D_8018ED16
@@ -1967,7 +1967,7 @@ glabel D_8018ED8A
 glabel D_8018ED8B
 .skip 1
 
-glabel D_8018ED8C
+glabel gSaveDataSoundModeBackup
 .skip 2
 
 glabel D_8018ED8E
@@ -2087,7 +2087,7 @@ glabel gPlayerCountSelection2 # 0x8018EDF0
 glabel D_8018EDF1
 .skip 1
 
-glabel D_8018EDF2
+glabel gSoundMode
 .skip 1
 
 glabel D_8018EDF3
