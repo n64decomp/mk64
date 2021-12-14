@@ -126,8 +126,8 @@ glabel L800AC5D0
 /* 0AD228 800AC628 2518FFFF */   addiu $t8, $t0, -1
 /* 0AD22C 800AC62C A0D80000 */  sb    $t8, ($a2)
 /* 0AD230 800AC630 854A4360 */  lh    $t2, %lo(D_80164360)($t2) # 0x4360($t2)
-/* 0AD234 800AC634 3C0D8019 */  lui   $t5, %hi(gGPCharacterPoints) # $t5, 0x8019
-/* 0AD238 800AC638 25ADD9C8 */  addiu $t5, %lo(gGPCharacterPoints) # addiu $t5, $t5, -0x2638
+/* 0AD234 800AC634 3C0D8019 */  lui   $t5, %hi(gGPPointsByCharacterId) # $t5, 0x8019
+/* 0AD238 800AC638 25ADD9C8 */  addiu $t5, %lo(gGPPointsByCharacterId) # addiu $t5, $t5, -0x2638
 /* 0AD23C 800AC63C 000A58C0 */  sll   $t3, $t2, 3
 /* 0AD240 800AC640 016A5823 */  subu  $t3, $t3, $t2
 /* 0AD244 800AC644 000B5900 */  sll   $t3, $t3, 4
@@ -245,7 +245,7 @@ glabel L800AC7CC
 /* 0AD3DC 800AC7DC ACEF001C */  sw    $t7, 0x1c($a3)
 /* 0AD3E0 800AC7E0 8318D9D8 */  lb    $t8, %lo(D_8018D9D8)($t8)
 /* 0AD3E4 800AC7E4 25EAFFFB */  addiu $t2, $t7, -5
-/* 0AD3E8 800AC7E8 3C0D8019 */  lui   $t5, %hi(gCourseSelection) # $t5, 0x8019
+/* 0AD3E8 800AC7E8 3C0D8019 */  lui   $t5, %hi(gCupTrackSelection) # $t5, 0x8019
 /* 0AD3EC 800AC7EC 53000003 */  beql  $t8, $zero, .L800AC7FC
 /* 0AD3F0 800AC7F0 8CEB001C */   lw    $t3, 0x1c($a3)
 /* 0AD3F4 800AC7F4 ACEA001C */  sw    $t2, 0x1c($a3)
@@ -255,16 +255,16 @@ glabel L800AC7CC
 /* 0AD400 800AC800 8FBF0014 */   lw    $ra, 0x14($sp)
 /* 0AD404 800AC804 ACEC0004 */  sw    $t4, 4($a3)
 /* 0AD408 800AC808 ACE0001C */  sw    $zero, 0x1c($a3)
-/* 0AD40C 800AC80C 81ADEE0B */  lb    $t5, %lo(gCourseSelection)($t5)
+/* 0AD40C 800AC80C 81ADEE0B */  lb    $t5, %lo(gCupTrackSelection)($t5)
 /* 0AD410 800AC810 24010003 */  li    $at, 3
 /* 0AD414 800AC814 00002825 */  move  $a1, $zero
 /* 0AD418 800AC818 15A10053 */  bne   $t5, $at, .L800AC968
-/* 0AD41C 800AC81C 3C028019 */   lui   $v0, %hi(gGPOverallRanks) # $v0, 0x8019
+/* 0AD41C 800AC81C 3C028019 */   lui   $v0, %hi(gCharacterIdByGPOverallRank) # $v0, 0x8019
 /* 0AD420 800AC820 3C038019 */  lui   $v1, %hi(D_8018EDF3) # $v1, 0x8019
 /* 0AD424 800AC824 3C048016 */  lui   $a0, %hi(D_80164478) # $a0, 0x8016
 /* 0AD428 800AC828 24844478 */  addiu $a0, %lo(D_80164478) # addiu $a0, $a0, 0x4478
 /* 0AD42C 800AC82C 8063EDF3 */  lb    $v1, %lo(D_8018EDF3)($v1)
-/* 0AD430 800AC830 2442D9D0 */  addiu $v0, %lo(gGPOverallRanks) # addiu $v0, $v0, -0x2630
+/* 0AD430 800AC830 2442D9D0 */  addiu $v0, %lo(gCharacterIdByGPOverallRank) # addiu $v0, $v0, -0x2630
 /* 0AD434 800AC834 24060008 */  li    $a2, 8
 .L800AC838:
 /* 0AD438 800AC838 804E0000 */  lb    $t6, ($v0)

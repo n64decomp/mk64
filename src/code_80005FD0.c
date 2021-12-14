@@ -9943,7 +9943,7 @@ void func_80014DE4(s32 arg0) {
     temp_v1 = temp_v0 + &D_80164678;
     *temp_v1 = *(&D_80164670 + temp_v0);
     temp_a1 = gModeSelection;
-    if ((temp_a1 != TIME_TRIALS) && ((gCourseSelection == 0) || (D_800DC51C == 1))) {
+    if ((temp_a1 != TIME_TRIALS) && ((gCupTrackSelection == CUP_TRACK_ONE) || (D_800DC51C == 1))) {
         goto block_8;
     }
     temp_a2 = *temp_v1;

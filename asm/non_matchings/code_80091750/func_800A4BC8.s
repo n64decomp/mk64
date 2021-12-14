@@ -26,8 +26,8 @@ glabel func_800A4BC8
 /* 0A5828 800A4C28 0C024C36 */  jal   set_text_color
 /* 0A582C 800A4C2C 24040003 */   li    $a0, 3
 /* 0A5830 800A4C30 3C188019 */  lui   $t8, %hi(gCupSelection) # $t8, 0x8019
-/* 0A5834 800A4C34 3C088019 */  lui   $t0, %hi(gCourseSelection) # $t0, 0x8019
-/* 0A5838 800A4C38 8108EE0B */  lb    $t0, %lo(gCourseSelection)($t0)
+/* 0A5834 800A4C34 3C088019 */  lui   $t0, %hi(gCupTrackSelection) # $t0, 0x8019
+/* 0A5838 800A4C38 8108EE0B */  lb    $t0, %lo(gCupTrackSelection)($t0)
 /* 0A583C 800A4C3C 8318EE09 */  lb    $t8, %lo(gCupSelection)($t8)
 /* 0A5840 800A4C40 3C0B800F */  lui   $t3, %hi(gCupTrackOrder)
 /* 0A5844 800A4C44 00084840 */  sll   $t1, $t0, 1

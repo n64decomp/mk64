@@ -1746,12 +1746,12 @@ glabel D_8018D9C0
 # List of bytes indexed by character ID
 # Indicates number of Grand Prix points that character
 # has scored
-glabel gGPCharacterPoints
+glabel gGPPointsByCharacterId
 .skip 8
 
 # List of character IDs indicating where each character
 # is in the Grand Prix standings
-glabel gGPOverallRanks
+glabel gCharacterIdByGPOverallRank
 .skip 1
 
 glabel D_8018D9D1
@@ -2135,7 +2135,7 @@ glabel gCupSelection # 0x8018EE09
 glabel D_8018EE0A
 .skip 1
 
-glabel gCourseSelection # 0x8018EE0B
+glabel gCupTrackSelection # 0x8018EE0B
 .skip 1
 
 glabel D_8018EE0C

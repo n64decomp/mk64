@@ -408,7 +408,7 @@ void func_80091EE4(void) {
 
     D_800E86F8 = 0;
     if ((D_8018EDFB != 0) && (func_800B5F30() == 0)) {
-        temp_s2 = (gCupSelection * 4) + gCourseSelection;
+        temp_s2 = (gCupSelection * 4) + gCupTrackSelection;
         func_800B6708();
         phi_s0 = 0;
         do {
@@ -6755,7 +6755,7 @@ block_74:
                 }
                 gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
                 D_800DC540 = gCupSelection;
-                gCourseSelection = gPerCupIndexByCourseId[gCurrentCourseId];
+                gCupTrackSelection = gPerCupIndexByCourseId[gCurrentCourseId];
                 phi_a0 = gCurrentCourseId;
                 break;
             case 3:                                 /* switch 3 */
@@ -6835,7 +6835,7 @@ block_74:
         gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
         temp_v1_9 = D_8018EDFA;
         D_800DC540 = gCupSelection;
-        gCourseSelection = gPerCupIndexByCourseId[gCurrentCourseId];
+        gCupTrackSelection = gPerCupIndexByCourseId[gCurrentCourseId];
         if (temp_v1_9 != 1) {
             if (temp_v1_9 != 2) {
                 if (temp_v1_9 != 3) {
@@ -8337,7 +8337,7 @@ block_63:
                 }
             }
             if ((phi_ra->unk1C == 0) || (phi_ra->unk20 != 0)) {
-                func_800B559C((gCupSelection * 4) + gCourseSelection);
+                func_800B559C((gCupSelection * 4) + gCupTrackSelection);
                 return;
             }
             /* Duplicate return node #87. Try simplifying control flow for better match */
@@ -10516,7 +10516,7 @@ void func_800A2EB8(void *arg0) {
     temp_f0 = D_800F1C90;
     func_80093324(arg0->unkC + 0x2C, arg0->unk10 + 0x28, &D_800F0C24, 0, temp_f0, temp_f0);
     // Convert index of current course in the cup order into a round number
-    convert_number_to_ascii(gCourseSelection + 1, &sp68);
+    convert_number_to_ascii(gCupTrackSelection + 1, &sp68);
     // Print previously converted round number
     temp_f0_2 = D_800F1C94;
     func_80093324(arg0->unkC + 0x57, arg0->unk10 + 0x28, &sp69, 0, temp_f0_2, temp_f0_2);
@@ -10693,7 +10693,7 @@ void func_800A34A8(void *arg0) {
             } while (temp_a0 != &D_80164370);
         } else {
             func_800A3A10(&sp80);
-            func_800A3A10(gGPOverallRanks);
+            func_800A3A10(gCharacterIdByGPOverallRank);
         }
         // "Driver's Points"
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
@@ -10702,7 +10702,7 @@ void func_800A34A8(void *arg0) {
         set_text_color(5);
         func_80093324(arg0->unkC + 0x36, 0x28 - arg0->unk10, "round", 0, 0.7f, 0.7f);
         // Convert course index to a round number
-        convert_number_to_ascii(gCourseSelection + 1, &sp78);
+        convert_number_to_ascii(gCupTrackSelection + 1, &sp78);
         // Print round number
         func_80093324(arg0->unkC + 0x61, 0x28 - arg0->unk10, &sp79, 0, 0.7f, 0.7f);
         phi_s1 = 0;
@@ -10806,8 +10806,8 @@ loop_3:
             temp_a3 = phi_a2->unk-1;
             temp_t1 = phi_a2->unk0;
             temp_a1 = phi_a1 - 1;
-            temp_t2 = gGPCharacterPoints[temp_t1];
-            temp_t0 = gGPCharacterPoints[temp_a3];
+            temp_t2 = gGPPointsByCharacterId[temp_t1];
+            temp_t0 = gGPPointsByCharacterId[temp_a3];
             phi_a1 = temp_a1;
             if (temp_t0 < temp_t2) {
                 phi_a2->unk0 = temp_a3;
@@ -10862,7 +10862,7 @@ void func_800A3ADC(void *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5)
             phi_v0 = arg5 + arg4;
 loop_4:
             phi_v1_2 = phi_v1;
-            if (gGPCharacterPoints[phi_v0->unk0] == gGPCharacterPoints[phi_v0->unk-1]) {
+            if (gGPPointsByCharacterId[phi_v0->unk0] == gGPPointsByCharacterId[phi_v0->unk-1]) {
                 temp_v1 = phi_v1 - 1;
                 phi_v0 += -1;
                 phi_v1 = temp_v1;
@@ -10881,7 +10881,7 @@ loop_4:
     // Print character name
     func_80093324(arg1 + 0xA, arg2, *(&D_800E76A8 + (arg3 * 4)), 0, 0.7f, 0.7f);
     // Print character's current point count
-    convert_number_to_ascii(gGPCharacterPoints[arg3], &sp34);
+    convert_number_to_ascii(gGPPointsByCharacterId[arg3], &sp34);
     func_800939C8(arg1 + 0x47, arg2, &sp34, 0, 0.7f, 0.7f);
     // Print "+" + points left to be allocated
     // Only done for rank 1, 2, 3 and 4
@@ -10922,7 +10922,7 @@ void func_800A3C84(void *arg0) {
 
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     temp_f0 = D_800F1CC8;
-    draw_text(arg0->unkC + 0x43, arg0->unk10 + 0x19, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCourseSelection * 2))) * 4)), 0, temp_f0, temp_f0);
+    draw_text(arg0->unkC + 0x43, arg0->unk10 + 0x19, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCupTrackSelection * 2))) * 4)), 0, temp_f0, temp_f0);
     set_text_color(TEXT_YELLOW);
     draw_text(arg0->unkC + 0x46, arg0->unk10 + 0x28, D_800E7730, 0, 0.75f, 0.75f);
     phi_s0 = 0;
@@ -11034,7 +11034,7 @@ void func_800A3E60(void *arg0) {
     temp_v0 = arg0->unk4;
     if ((temp_v0 != 0) && (temp_v0 != 0x1F)) {
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-        draw_text(arg0->unkC + 0x55, 0x19 - arg0->unk10, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCourseSelection * 2))) * 4)), 0, 0.6f, 0.6f);
+        draw_text(arg0->unkC + 0x55, 0x19 - arg0->unk10, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCupTrackSelection * 2))) * 4)), 0, 0.6f, 0.6f);
         set_text_color(TEXT_YELLOW);
         draw_text(arg0->unkC + 0x55, 0x28 - arg0->unk10, D_800E7730, 0, 0.75f, 0.75f);
         phi_s1 = 0;
@@ -11522,7 +11522,7 @@ void func_800A4BC8(void *arg0) {
 
     gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x13F, 0xEF, 0, 0, 0, 0x8C);
     set_text_color(TEXT_YELLOW);
-    draw_text(0xA0, 0x50, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCourseSelection * 2))) * 4)), 0, 1.0f, 1.0f);
+    draw_text(0xA0, 0x50, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCupTrackSelection * 2))) * 4)), 0, 1.0f, 1.0f);
     set_text_color(TEXT_RED);
     temp_f20 = D_800F1DD4;
     // "Best Records"
@@ -11674,7 +11674,7 @@ void func_800A5084(void *arg0) {
     set_text_color(TEXT_YELLOW);
     draw_text(temp_s0 + 0xA0, temp_s3->unk2 - 0x32, *(&D_800E76CC + (gCCSelection * 4)), 0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
-    draw_text(0xA0, temp_s3->unk2 - 0x1E, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCourseSelection * 2))) * 4)), 0, 1.0f, 1.0f);
+    draw_text(0xA0, temp_s3->unk2 - 0x1E, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCupTrackSelection * 2))) * 4)), 0, 1.0f, 1.0f);
     phi_s0 = 0;
     phi_s1 = 0;
     phi_s2 = &D_800E775C;
@@ -11931,7 +11931,7 @@ void func_800A5738(void *arg0) {
     temp_v0->words.w1 = phi_s2 & 0xFF;
     temp_v0->words.w0 = 0xFA000000;
     set_text_color(TEXT_YELLOW);
-    func_80093754(0xA0, 0x50, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCourseSelection * 2))) * 4)), 0, 1.0f, 1.0f);
+    func_80093754(0xA0, 0x50, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCupTrackSelection * 2))) * 4)), 0, 1.0f, 1.0f);
     temp_v1_2 = arg0->unk4;
     switch (temp_v1_2) {                            /* switch 1 */
     case 1:                                         /* switch 1 */
@@ -13769,7 +13769,7 @@ void func_800A8A98(void *arg0) {
     phi_s4 = 0;
     phi_s0 = &D_800E7208;
     do {
-        if ((phi_s4 == gCourseSelection) && (temp_v0_4 = D_8018EDEC, ((temp_v0_4 < 2) == 0)) && (gModeSelection != GRAND_PRIX)) {
+        if ((phi_s4 == gCupTrackSelection) && (temp_v0_4 = D_8018EDEC, ((temp_v0_4 < 2) == 0)) && (gModeSelection != GRAND_PRIX)) {
             if ((temp_v0_4 == 2) || (temp_v0_4 == 4)) {
                 phi_v0 = func_800959A0(gDisplayListHead, phi_s0->unk0 + temp_s2, phi_s0->unk2 + temp_s3, phi_s0->unk8 + temp_s2, phi_s0->unkA + temp_s3);
             } else {
@@ -13919,7 +13919,7 @@ void func_800A8F48(s32 arg0) {
         if (temp_v0 != 2) {
 
         }
-        if (func_800B639C((gCupSelection * 4) + gCourseSelection) >= 0) {
+        if (func_800B639C((gCupSelection * 4) + gCupTrackSelection) >= 0) {
             temp_v0_2 = func_80098FC8(gDisplayListHead, 0x57, 0x70, 0x96, 0x81);
             gDisplayListHead = temp_v0_2;
             gDisplayListHead = func_8009BA74(temp_v0_2, 0x2004A0C, 0x57, 0x70);
@@ -15652,7 +15652,7 @@ void func_800AB314(void *arg0) {
         if (D_8018EDEC != 1) {
             arg0->unk4 = 0;
             arg0->unk20 = 0;
-            if (gCourseSelection == 0) {
+            if (gCupTrackSelection == CUP_TRACK_ONE) {
                 sp24->unk15 = 1;
                 if (arg0->unk1C != 0) {
                     arg0->unk1C = 0;
@@ -15660,7 +15660,7 @@ void func_800AB314(void *arg0) {
             } else {
                 sp24->unk15 = 0;
             }
-            if (gCourseSelection == 1) {
+            if (gCupTrackSelection == CUP_TRACK_TWO) {
                 sp28->unk15 = 1;
                 if (arg0->unk1C != 1) {
                     arg0->unk1C = 1;
@@ -15668,7 +15668,7 @@ void func_800AB314(void *arg0) {
             } else {
                 sp28->unk15 = 0;
             }
-            if (gCourseSelection == 2) {
+            if (gCupTrackSelection == CUP_TRACK_THREE) {
                 sp2C->unk15 = 1;
                 if (arg0->unk1C != 2) {
                     arg0->unk1C = 2;
@@ -15676,7 +15676,7 @@ void func_800AB314(void *arg0) {
             } else {
                 sp2C->unk15 = 0;
             }
-            if (gCourseSelection == 3) {
+            if (gCupTrackSelection == CUP_TRACK_FOUR) {
                 sp30->unk15 = 1;
                 if (arg0->unk1C != 3) {
                     arg0->unk1C = 3;
@@ -16372,7 +16372,7 @@ s8 *func_800AC458(void *arg0) {
                 temp_t4 = *(&gPlayers->characterId + (*(&D_80164360 + (temp_a1_2 * 2)) * 0xDD8));
                 sp18 = 0;
                 arg0 = temp_a3;
-                gGPCharacterPoints[temp_t4] += 1;
+                gGPPointsByCharacterId[temp_t4] += 1;
                 place = temp_a1_2;
                 play_sound2(0x49008017, temp_a1_2, temp_a2_2, temp_a3);
                 phi_a3 = arg0;
@@ -16429,8 +16429,8 @@ s8 *func_800AC458(void *arg0) {
         if (D_8018D9D8 != 0) {
             temp_a3->unk1C = temp_t7 - 5;
         }
-        if ((temp_a3->unk1C <= 0) && (temp_a3->unk4 = 0xA, temp_a3->unk1C = 0, phi_a1 = 0, phi_v0_2 = gGPOverallRanks, (gCourseSelection == COURSE_BANSHEE_BOARDWALK))) {
-            phi_v0 = gGPOverallRanks;
+        if ((temp_a3->unk1C <= 0) && (temp_a3->unk4 = 0xA, temp_a3->unk1C = 0, phi_a1 = 0, phi_v0_2 = gCharacterIdByGPOverallRank, (gCupTrackSelection == CUP_TRACK_FOUR))) {
+            phi_v0 = gCharacterIdByGPOverallRank;
 loop_41:
             if (*(&D_80164478 + (*phi_v0 * 2)) < D_8018EDF3) {
                 return func_800B536C(phi_a1, phi_a1, 8, temp_a3);
@@ -17127,7 +17127,7 @@ block_42:
                                 }
                             } else {
                                 func_800B6708();
-                                arg0->unk4 = func_800B6348((gCupSelection * 4) + gCourseSelection) + 0x11;
+                                arg0->unk4 = func_800B6348((gCupSelection * 4) + gCupTrackSelection) + 0x11;
                                 sp28 = 1;
                                 play_sound2(0x49008001);
                                 phi_v1 = 1;
@@ -17168,7 +17168,7 @@ block_42:
                                 }
                                 if (osPfsFindFile(&D_8018E868, D_800E86F0, D_800E86F4, &D_800F2E64, &D_800F2E74, &D_8018EB84) == 0) {
                                     func_800B6708();
-                                    arg0->unk4 = func_800B6348((gCupSelection * 4) + gCourseSelection) + 0x11;
+                                    arg0->unk4 = func_800B6348((gCupSelection * 4) + gCupTrackSelection) + 0x11;
                                     play_sound2(0x49008001);
                                     return;
                                 }
@@ -17512,7 +17512,7 @@ block_34:
                             }
                         } else {
                             func_800B6708();
-                            arg0->unk4 = func_800B6348((gCupSelection * 4) + gCourseSelection) + 0x1E;
+                            arg0->unk4 = func_800B6348((gCupSelection * 4) + gCupTrackSelection) + 0x1E;
                             phi_v1 = 1;
                         }
                     }
@@ -17554,7 +17554,7 @@ block_34:
                         }
                         if (osPfsFindFile(&D_8018E868, D_800E86F0, D_800E86F4, &D_800F2E64, &D_800F2E74, &D_8018EB84) == 0) {
                             func_800B6708();
-                            arg0->unk4 = func_800B6348((gCupSelection * 4) + gCourseSelection) + 0x1E;
+                            arg0->unk4 = func_800B6348((gCupSelection * 4) + gCupTrackSelection) + 0x1E;
                             play_sound2(0x49008001);
                             return;
                         }
@@ -17609,7 +17609,7 @@ block_49:
     case 30:                                        /* switch 1 */
     case 31:                                        /* switch 1 */
         arg0->unk20 = arg0->unk4 - 0x1E;
-        if (func_800B639C((gCupSelection * 4) + gCourseSelection) != arg0->unk20) {
+        if (func_800B639C((gCupSelection * 4) + gCupTrackSelection) != arg0->unk20) {
             temp_v0_5 = D_800DC4BC;
             temp_a1_2 = temp_v0_5->unk6 | temp_v0_5->unkC;
             phi_a1_2 = temp_a1_2;

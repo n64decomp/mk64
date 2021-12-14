@@ -80,8 +80,8 @@ glabel func_800B3B58
 /* 0B4884 800B3C84 8042EE09 */  lb    $v0, %lo(gCupSelection)($v0)
 /* 0B4888 800B3C88 8FA3001C */  lw    $v1, 0x1c($sp)
 .L800B3C8C:
-/* 0B488C 800B3C8C 3C0F8019 */  lui   $t7, %hi(gCourseSelection) # $t7, 0x8019
-/* 0B4890 800B3C90 81EFEE0B */  lb    $t7, %lo(gCourseSelection)($t7)
+/* 0B488C 800B3C8C 3C0F8019 */  lui   $t7, %hi(gCupTrackSelection) # $t7, 0x8019
+/* 0B4890 800B3C90 81EFEE0B */  lb    $t7, %lo(gCupTrackSelection)($t7)
 /* 0B4894 800B3C94 000270C0 */  sll   $t6, $v0, 3
 /* 0B4898 800B3C98 3C08800F */  lui   $t0, %hi(gCupTrackOrder) # 0x800f
 /* 0B489C 800B3C9C 000FC040 */  sll   $t8, $t7, 1
@@ -139,8 +139,8 @@ glabel func_800B3B58
 .L800B3D60:
 /* 0B4960 800B3D60 13200010 */  beqz  $t9, .L800B3DA4
 /* 0B4964 800B3D64 00C01825 */   move  $v1, $a2
-/* 0B4968 800B3D68 3C048019 */  lui   $a0, %hi(gCourseSelection) # $a0, 0x8019
-/* 0B496C 800B3D6C 2484EE0B */  addiu $a0, %lo(gCourseSelection) # addiu $a0, $a0, -0x11f5
+/* 0B4968 800B3D68 3C048019 */  lui   $a0, %hi(gCupTrackSelection) # $a0, 0x8019
+/* 0B496C 800B3D6C 2484EE0B */  addiu $a0, %lo(gCupTrackSelection) # addiu $a0, $a0, -0x11f5
 /* 0B4970 800B3D70 80820000 */  lb    $v0, ($a0)
 /* 0B4974 800B3D74 28410003 */  slti  $at, $v0, 3
 /* 0B4978 800B3D78 1020000A */  beqz  $at, .L800B3DA4
@@ -155,8 +155,8 @@ glabel func_800B3B58
 /* 0B499C 800B3D9C 24A5EDEC */  addiu $a1, %lo(D_8018EDEC) # addiu $a1, $a1, -0x1214
 /* 0B49A0 800B3DA0 8FA3001C */  lw    $v1, 0x1c($sp)
 .L800B3DA4:
-/* 0B49A4 800B3DA4 3C048019 */  lui   $a0, %hi(gCourseSelection) # $a0, 0x8019
-/* 0B49A8 800B3DA8 2484EE0B */  addiu $a0, %lo(gCourseSelection) # addiu $a0, $a0, -0x11f5
+/* 0B49A4 800B3DA4 3C048019 */  lui   $a0, %hi(gCupTrackSelection) # $a0, 0x8019
+/* 0B49A8 800B3DA8 2484EE0B */  addiu $a0, %lo(gCupTrackSelection) # addiu $a0, $a0, -0x11f5
 /* 0B49AC 800B3DAC 30690800 */  andi  $t1, $v1, 0x800
 /* 0B49B0 800B3DB0 1120000E */  beqz  $t1, .L800B3DEC
 /* 0B49B4 800B3DB4 80820000 */   lb    $v0, ($a0)
@@ -168,10 +168,10 @@ glabel func_800B3B58
 /* 0B49CC 800B3DCC 3C044900 */  lui   $a0, (0x49008000 >> 16) # lui $a0, 0x4900
 /* 0B49D0 800B3DD0 0C032384 */  jal   play_sound2
 /* 0B49D4 800B3DD4 34848000 */   ori   $a0, (0x49008000 & 0xFFFF) # ori $a0, $a0, 0x8000
-/* 0B49D8 800B3DD8 3C028019 */  lui   $v0, %hi(gCourseSelection) # $v0, 0x8019
+/* 0B49D8 800B3DD8 3C028019 */  lui   $v0, %hi(gCupTrackSelection) # $v0, 0x8019
 /* 0B49DC 800B3DDC 3C058019 */  lui   $a1, %hi(D_8018EDEC) # $a1, 0x8019
 /* 0B49E0 800B3DE0 24A5EDEC */  addiu $a1, %lo(D_8018EDEC) # addiu $a1, $a1, -0x1214
-/* 0B49E4 800B3DE4 8042EE0B */  lb    $v0, %lo(gCourseSelection)($v0)
+/* 0B49E4 800B3DE4 8042EE0B */  lb    $v0, %lo(gCupTrackSelection)($v0)
 /* 0B49E8 800B3DE8 8FA3001C */  lw    $v1, 0x1c($sp)
 .L800B3DEC:
 /* 0B49EC 800B3DEC 3C0B8019 */  lui   $t3, %hi(gCupSelection) # $t3, 0x8019

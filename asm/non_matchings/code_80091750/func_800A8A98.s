@@ -37,12 +37,12 @@ glabel func_800A8A98
 /* 0A9724 800A8B24 356BF279 */  ori   $t3, (0xFFFCF279 & 0xFFFF) # ori $t3, $t3, 0xf279
 /* 0A9728 800A8B28 354AFFFF */  ori   $t2, (0xFCFFFFFF & 0xFFFF) # ori $t2, $t2, 0xffff
 /* 0A972C 800A8B2C 3C10800E */  lui   $s0, %hi(D_800E7208) # $s0, 0x800e
-/* 0A9730 800A8B30 3C168019 */  lui   $s6, %hi(gCourseSelection) # $s6, 0x8019
+/* 0A9730 800A8B30 3C168019 */  lui   $s6, %hi(gCupTrackSelection) # $s6, 0x8019
 /* 0A9734 800A8B34 3C178019 */  lui   $s7, %hi(D_8018EDEC) # $s7, 0x8019
 /* 0A9738 800A8B38 3C1E800E */  lui   $fp, %hi(gModeSelection) # $fp, 0x800e
 /* 0A973C 800A8B3C 27DEC53C */  addiu $fp, %lo(gModeSelection) # addiu $fp, $fp, -0x3ac4
 /* 0A9740 800A8B40 26F7EDEC */  addiu $s7, %lo(D_8018EDEC) # addiu $s7, $s7, -0x1214
-/* 0A9744 800A8B44 26D6EE0B */  addiu $s6, %lo(gCourseSelection) # addiu $s6, $s6, -0x11f5
+/* 0A9744 800A8B44 26D6EE0B */  addiu $s6, %lo(gCupTrackSelection) # addiu $s6, $s6, -0x11f5
 /* 0A9748 800A8B48 26107208 */  addiu $s0, %lo(D_800E7208) # addiu $s0, $s0, 0x7208
 /* 0A974C 800A8B4C 0000A025 */  move  $s4, $zero
 /* 0A9750 800A8B50 24150004 */  li    $s5, 4

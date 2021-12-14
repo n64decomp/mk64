@@ -103,8 +103,8 @@ glabel func_800A5738
 /* 0A64B8 800A58B8 0C024C36 */  jal   set_text_color
 /* 0A64BC 800A58BC 24040003 */   li    $a0, 3
 /* 0A64C0 800A58C0 3C188019 */  lui   $t8, %hi(gCupSelection) # $t8, 0x8019
-/* 0A64C4 800A58C4 3C088019 */  lui   $t0, %hi(gCourseSelection) # $t0, 0x8019
-/* 0A64C8 800A58C8 8108EE0B */  lb    $t0, %lo(gCourseSelection)($t0)
+/* 0A64C4 800A58C4 3C088019 */  lui   $t0, %hi(gCupTrackSelection) # $t0, 0x8019
+/* 0A64C8 800A58C8 8108EE0B */  lb    $t0, %lo(gCupTrackSelection)($t0)
 /* 0A64CC 800A58CC 8318EE09 */  lb    $t8, %lo(gCupSelection)($t8)
 /* 0A64D0 800A58D0 3C0B800F */  lui   $t3, %hi(gCupTrackOrder)
 /* 0A64D4 800A58D4 00084840 */  sll   $t1, $t0, 1
