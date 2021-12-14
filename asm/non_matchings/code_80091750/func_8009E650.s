@@ -602,11 +602,11 @@ glabel L8009EF08
 /* 09FB30 8009EF30 8FBF001C */   lw    $ra, 0x1c($sp)
 glabel L8009EF34
 /* 09FB34 8009EF34 8FF90000 */  lw    $t9, ($ra)
-/* 09FB38 8009EF38 3C0F800F */  lui   $t7, %hi(gCupTrackOrder-0xBE) # 0x800f
+/* 09FB38 8009EF38 3C0F800F */  lui   $t7, %hi(gCupCourseOrder-0xBE) # 0x800f
 /* 09FB3C 8009EF3C 3C04800E */  lui   $a0, %hi(D_800E7E34)
 /* 09FB40 8009EF40 00197040 */  sll   $t6, $t9, 1
 /* 09FB44 8009EF44 01EE7821 */  addu  $t7, $t7, $t6
-/* 09FB48 8009EF48 85EF2AF6 */  lh    $t7, %lo(gCupTrackOrder-0xBE)($t7) # 0x2af6($t7)
+/* 09FB48 8009EF48 85EF2AF6 */  lh    $t7, %lo(gCupCourseOrder-0xBE)($t7) # 0x2af6($t7)
 /* 09FB4C 8009EF4C AFBF007C */  sw    $ra, 0x7c($sp)
 /* 09FB50 8009EF50 000FC080 */  sll   $t8, $t7, 2
 /* 09FB54 8009EF54 00982021 */  addu  $a0, $a0, $t8
@@ -775,9 +775,9 @@ glabel L8009F174
 .L8009F1AC:
 /* 09FDAC 8009F1AC 00197040 */  sll   $t6, $t9, 1
 /* 09FDB0 8009F1B0 01EEC021 */  addu  $t8, $t7, $t6
-/* 09FDB4 8009F1B4 3C19800F */  lui   $t9, %hi(gCupTrackOrder)
+/* 09FDB4 8009F1B4 3C19800F */  lui   $t9, %hi(gCupCourseOrder)
 /* 09FDB8 8009F1B8 0338C821 */  addu  $t9, $t9, $t8
-/* 09FDBC 8009F1BC 87392BB4 */  lh    $t9, %lo(gCupTrackOrder)($t9)
+/* 09FDBC 8009F1BC 87392BB4 */  lh    $t9, %lo(gCupCourseOrder)($t9)
 /* 09FDC0 8009F1C0 00197880 */  sll   $t7, $t9, 2
 /* 09FDC4 8009F1C4 008F2021 */  addu  $a0, $a0, $t7
 /* 09FDC8 8009F1C8 0C026449 */  jal   segmented_to_virtual
@@ -803,9 +803,9 @@ glabel L8009F174
 .L8009F214:
 /* 09FE14 8009F214 00197840 */  sll   $t7, $t9, 1
 /* 09FE18 8009F218 030F7021 */  addu  $t6, $t8, $t7
-/* 09FE1C 8009F21C 3C19800F */  lui   $t9, %hi(gCupTrackOrder)
+/* 09FE1C 8009F21C 3C19800F */  lui   $t9, %hi(gCupCourseOrder)
 /* 09FE20 8009F220 032EC821 */  addu  $t9, $t9, $t6
-/* 09FE24 8009F224 87392BB4 */  lh    $t9, %lo(gCupTrackOrder)($t9)
+/* 09FE24 8009F224 87392BB4 */  lh    $t9, %lo(gCupCourseOrder)($t9)
 /* 09FE28 8009F228 0019C080 */  sll   $t8, $t9, 2
 /* 09FE2C 8009F22C 00982021 */  addu  $a0, $a0, $t8
 /* 09FE30 8009F230 0C026449 */  jal   segmented_to_virtual
@@ -965,9 +965,9 @@ glabel L8009F430
 .L8009F468:
 /* 0A0068 8009F468 000EC840 */  sll   $t9, $t6, 1
 /* 0A006C 8009F46C 01F9C021 */  addu  $t8, $t7, $t9
-/* 0A0070 8009F470 3C0E800F */  lui   $t6, %hi(gCupTrackOrder)
+/* 0A0070 8009F470 3C0E800F */  lui   $t6, %hi(gCupCourseOrder)
 /* 0A0074 8009F474 01D87021 */  addu  $t6, $t6, $t8
-/* 0A0078 8009F478 85CE2BB4 */  lh    $t6, %lo(gCupTrackOrder)($t6)
+/* 0A0078 8009F478 85CE2BB4 */  lh    $t6, %lo(gCupCourseOrder)($t6)
 /* 0A007C 8009F47C 000E7880 */  sll   $t7, $t6, 2
 /* 0A0080 8009F480 008F2021 */  addu  $a0, $a0, $t7
 /* 0A0084 8009F484 0C026455 */  jal   segmented_to_virtual_dupe

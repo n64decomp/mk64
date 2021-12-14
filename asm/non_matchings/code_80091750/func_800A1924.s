@@ -33,7 +33,7 @@ glabel func_800A1924
 .L800A19A0:
 /* 0A25A0 800A19A0 3C028019 */  lui   $v0, %hi(D_8018EDF7) # $v0, 0x8019
 /* 0A25A4 800A19A4 8042EDF7 */  lb    $v0, %lo(D_8018EDF7)($v0)
-/* 0A25A8 800A19A8 3C04800F */  lui   $a0, %hi(gCupTrackOrder)
+/* 0A25A8 800A19A8 3C04800F */  lui   $a0, %hi(gCupCourseOrder)
 /* 0A25AC 800A19AC 04410003 */  bgez  $v0, .L800A19BC
 /* 0A25B0 800A19B0 0002C083 */   sra   $t8, $v0, 2
 /* 0A25B4 800A19B4 24410003 */  addiu $at, $v0, 3
@@ -50,7 +50,7 @@ glabel func_800A1924
 /* 0A25D8 800A19D8 03295021 */  addu  $t2, $t9, $t1
 /* 0A25DC 800A19DC 008A2021 */  addu  $a0, $a0, $t2
 /* 0A25E0 800A19E0 0C013BE7 */  jal   func_8004EF9C
-/* 0A25E4 800A19E4 84842BB4 */   lh    $a0, %lo(gCupTrackOrder)($a0)
+/* 0A25E4 800A19E4 84842BB4 */   lh    $a0, %lo(gCupCourseOrder)($a0)
 /* 0A25E8 800A19E8 3C048015 */  lui   $a0, %hi(gDisplayListHead) # $a0, 0x8015
 /* 0A25EC 800A19EC 24840298 */  addiu $a0, %lo(gDisplayListHead) # addiu $a0, $a0, 0x298
 /* 0A25F0 800A19F0 8C820000 */  lw    $v0, ($a0)

@@ -11,12 +11,12 @@ glabel func_800AB290
 /* 0ABEB4 800AB2B4 AC82001C */  sw    $v0, 0x1c($a0)
 /* 0ABEB8 800AB2B8 806F0000 */  lb    $t7, ($v1)
 /* 0ABEBC 800AB2BC 8C990000 */  lw    $t9, ($a0)
-/* 0ABEC0 800AB2C0 3C0A800F */  lui   $t2, %hi(gCupTrackOrder-0xBE) # 0x800f
+/* 0ABEC0 800AB2C0 3C0A800F */  lui   $t2, %hi(gCupCourseOrder-0xBE) # 0x800f
 /* 0ABEC4 800AB2C4 000FC0C0 */  sll   $t8, $t7, 3
 /* 0ABEC8 800AB2C8 00194040 */  sll   $t0, $t9, 1
 /* 0ABECC 800AB2CC 03084821 */  addu  $t1, $t8, $t0
 /* 0ABED0 800AB2D0 01495021 */  addu  $t2, $t2, $t1
-/* 0ABED4 800AB2D4 854A2AF6 */  lh    $t2, %lo(gCupTrackOrder-0xBE)($t2) # 0x2af6($t2)
+/* 0ABED4 800AB2D4 854A2AF6 */  lh    $t2, %lo(gCupCourseOrder-0xBE)($t2) # 0x2af6($t2)
 /* 0ABED8 800AB2D8 3C04800E */  lui   $a0, %hi(D_800E7E34)
 /* 0ABEDC 800AB2DC AFA70018 */  sw    $a3, 0x18($sp)
 /* 0ABEE0 800AB2E0 000A5880 */  sll   $t3, $t2, 2

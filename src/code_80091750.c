@@ -7940,7 +7940,7 @@ static ? D_800E8420;                                /* unable to generate initia
 static ? D_800E85F7;                                /* unable to generate initializer; const */
 static s8 D_800E86A8 = 0;                           /* const */
 static ? D_800EFD64;                                /* unable to generate initializer; const */
-static ? gCupTrackOrder;                            /* unable to generate initializer; const */
+static ? gCupCourseOrder;                            /* unable to generate initializer; const */
 
 void func_8009E650(s32 arg0, s32 arg1, s32 arg2, s8 arg3) {
     void *sp7C;
@@ -8204,7 +8204,7 @@ loop_3:
         case 0x61:                                  /* switch 2 */
         case 0x62:                                  /* switch 2 */
             sp7C = phi_ra;
-            phi_ra->unk18 = func_8009A374(segmented_to_virtual_dupe(*(&D_800E7E34 + (*(&gCupTrackOrder - 0xBE + (phi_ra->unk0 * 2)) * 4)), arg3));
+            phi_ra->unk18 = func_8009A374(segmented_to_virtual_dupe(*(&D_800E7E34 + (*(&gCupCourseOrder - 0xBE + (phi_ra->unk0 * 2)) * 4)), arg3));
             return;
         case 0x5E:                                  /* switch 2 */
             sp7C = phi_ra;
@@ -8277,9 +8277,9 @@ loop_3:
         case 0x8B:                                  /* switch 2 */
             sp7C = phi_ra;
             temp_v0_5 = phi_ra->unk0 - 0x7C;
-            func_800996BC(segmented_to_virtual(*(&D_800E7D74 + (*(&gCupTrackOrder + (((temp_v0_5 / 4) * 8) + ((temp_v0_5 % 4) * 2))) * 4)), arg3), -1);
+            func_800996BC(segmented_to_virtual(*(&D_800E7D74 + (*(&gCupCourseOrder + (((temp_v0_5 / 4) * 8) + ((temp_v0_5 % 4) * 2))) * 4)), arg3), -1);
             temp_v0_6 = phi_ra->unk0 - 0x7C;
-            func_800996BC(segmented_to_virtual(*(&D_800E7DC4 + (*(&gCupTrackOrder + (((temp_v0_6 / 4) * 8) + ((temp_v0_6 % 4) * 2))) * 4))), 0);
+            func_800996BC(segmented_to_virtual(*(&D_800E7DC4 + (*(&gCupCourseOrder + (((temp_v0_6 / 4) * 8) + ((temp_v0_6 % 4) * 2))) * 4))), 0);
             func_800996BC(segmented_to_virtual(&D_02004A0C), 0);
             return;
         case 0xB1:                                  /* switch 2 */
@@ -8345,7 +8345,7 @@ block_63:
         case 0xE6:                                  /* switch 2 */
             temp_v0_8 = D_8018EDF7;
             sp7C = phi_ra;
-            phi_ra->unk18 = func_8009A374(segmented_to_virtual_dupe(*(&D_800E7E34 + (*(&gCupTrackOrder + (((temp_v0_8 / 4) * 8) + ((temp_v0_8 % 4) * 2))) * 4)), arg3));
+            phi_ra->unk18 = func_8009A374(segmented_to_virtual_dupe(*(&D_800E7E34 + (*(&gCupCourseOrder + (((temp_v0_8 / 4) * 8) + ((temp_v0_8 % 4) * 2))) * 4)), arg3));
             phi_ra->unk1C = D_8018EDF7;
             func_800996BC(segmented_to_virtual(&D_02004A0C), 0);
             func_8006EF60();
@@ -9629,7 +9629,7 @@ s32 segmented_to_virtual(? *, s32); // extern
 extern ? D_02004A0C;
 extern ? D_800E7D74;
 extern ? D_800E7DC4;
-extern ? gCupTrackOrder;
+extern ? gCupCourseOrder;
 extern s32 gDisplayListHead;
 
 void func_800A15EC(void *arg0) {
@@ -9643,7 +9643,7 @@ void func_800A15EC(void *arg0) {
     s32 temp_v1_2;
 
     temp_v0 = arg0->unk0 - 0x7C;
-    temp_a1 = *(&gCupTrackOrder + (((temp_v0 / 4) * 8) + ((temp_v0 % 4) * 2))) * 4;
+    temp_a1 = *(&gCupCourseOrder + (((temp_v0 / 4) * 8) + ((temp_v0 % 4) * 2))) * 4;
     sp44 = temp_a1;
     temp_v0_2 = func_8009C204(gDisplayListHead, segmented_to_virtual(*(&D_800E7D74 + temp_a1), temp_a1), arg0->unkC, arg0->unk10, 2);
     gDisplayListHead = temp_v0_2;
@@ -9702,7 +9702,7 @@ void *func_8009BA74(void *, ? *, ?, ?); // extern
 s32 func_800B639C(s8); // extern
 extern ? D_02004A0C;
 extern s8 D_8018EDF7;
-extern ? gCupTrackOrder;
+extern ? gCupCourseOrder;
 extern void *gDisplayListHead;
 
 void func_800A1924(void *arg0) {
@@ -9717,7 +9717,7 @@ void func_800A1924(void *arg0) {
         gDisplayListHead = func_8009BA74(temp_v0, &D_02004A0C, 0x57, 0x84);
     }
     temp_v0_2 = D_8018EDF7;
-    func_8004EF9C(*(&gCupTrackOrder + (((temp_v0_2 / 4) * 8) + ((temp_v0_2 % 4) * 2))));
+    func_8004EF9C(*(&gCupCourseOrder + (((temp_v0_2 / 4) * 8) + ((temp_v0_2 % 4) * 2))));
     temp_v0_3 = gDisplayListHead;
     gDisplayListHead = temp_v0_3 + 8;
     temp_v0_3->unk4 = 0x2000;
@@ -9740,7 +9740,7 @@ extern ? *D_800E772C;
 extern ? D_800E77D8;
 extern ? D_800E77E4;
 extern s8 D_8018EDF7;
-extern ? gCupTrackOrder;
+extern ? gCupCourseOrder;
 
 void func_800A1A20(void *arg0) {
     s16 temp_s1;
@@ -9751,7 +9751,7 @@ void func_800A1A20(void *arg0) {
     s32 phi_s1;
 
     temp_v0 = D_8018EDF7;
-    temp_s1 = *(&gCupTrackOrder + (((temp_v0 / 4) * 8) + ((temp_v0 % 4) * 2)));
+    temp_s1 = *(&gCupCourseOrder + (((temp_v0 / 4) * 8) + ((temp_v0 % 4) * 2)));
     arg0->unkC = 0x14;
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     temp_s0 = temp_s1 * 4;
@@ -9966,7 +9966,7 @@ static ? D_800E7938;                                /* unable to generate initia
 static ? *D_800E7A44 = "NO DATA";                   /* const */
 static ? *D_800E7A48[3] = { "CREATING ", "MARIO KART 64 ", "GAME DATA" }; /* const */
 static ? D_800E7A54;                                /* unable to generate initializer; const */
-static ? gCupTrackOrder;                            /* unable to generate initializer; const */
+static ? gCupCourseOrder;                            /* unable to generate initializer; const */
 
 void func_800A1FB0(void *arg0) {
     s16 spE2;
@@ -10225,7 +10225,7 @@ loop_38:
                 func_80093324(phi_s3, phi_s2_3, D_800E7A44, 0, 0.5f, 0.5f);
             } else {
                 temp_v0 = phi_v1->unk5;
-                func_80093324(phi_s3, phi_s2_3, *(&D_800E75C4 + (*(&gCupTrackOrder + (((temp_v0 / 4) * 8) + ((temp_v0 % 4) * 2))) * 4)), 0, 0.5f, 0.5f);
+                func_80093324(phi_s3, phi_s2_3, *(&D_800E75C4 + (*(&gCupCourseOrder + (((temp_v0 / 4) * 8) + ((temp_v0 % 4) * 2))) * 4)), 0, 0.5f, 0.5f);
             }
             phi_s0_9 = temp_s1_4;
             phi_s2_3 += 0x1E;
@@ -10283,7 +10283,7 @@ loop_58:
                 func_80093324(phi_s3_2, phi_s2_4, D_800E7A44, 0, 0.5f, 0.5f);
             } else {
                 temp_v0_2 = phi_v1_2->unk5;
-                func_80093324(phi_s3_2, phi_s2_4, *(&D_800E75C4 + (*(&gCupTrackOrder + (((temp_v0_2 / 4) * 8) + ((temp_v0_2 % 4) * 2))) * 4)), 0, 0.5f, 0.5f);
+                func_80093324(phi_s3_2, phi_s2_4, *(&D_800E75C4 + (*(&gCupCourseOrder + (((temp_v0_2 / 4) * 8) + ((temp_v0_2 % 4) * 2))) * 4)), 0, 0.5f, 0.5f);
             }
             phi_s0_11 = temp_s1_5;
             phi_s2_4 += 0x1E;
@@ -10357,7 +10357,7 @@ loop_80:
                 func_80093324(phi_s3_4, phi_s2_6, D_800E7A44, 0, 0.5f, 0.5f);
             } else {
                 temp_v0_4 = phi_v1_3->unk5;
-                func_80093324(phi_s3_4, phi_s2_6, *(&D_800E75C4 + (*(&gCupTrackOrder + (((temp_v0_4 / 4) * 8) + ((temp_v0_4 % 4) * 2))) * 4)), 0, 0.5f, 0.5f);
+                func_80093324(phi_s3_4, phi_s2_6, *(&D_800E75C4 + (*(&gCupCourseOrder + (((temp_v0_4 / 4) * 8) + ((temp_v0_4 % 4) * 2))) * 4)), 0, 0.5f, 0.5f);
             }
             phi_s0_12 = temp_s1_6;
             phi_s2_6 += 0x1E;
@@ -10909,7 +10909,7 @@ extern s32 D_800E772C;
 extern s32 D_800E7730;
 extern f32 D_800F1CC8;
 extern s8 gCupSelection;
-extern ? gCupTrackOrder;
+extern ? gCupCourseOrder;
 
 void func_800A3C84(void *arg0) {
     f32 temp_f0;
@@ -10922,7 +10922,7 @@ void func_800A3C84(void *arg0) {
 
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     temp_f0 = D_800F1CC8;
-    draw_text(arg0->unkC + 0x43, arg0->unk10 + 0x19, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCupCourseSelection * 2))) * 4)), 0, temp_f0, temp_f0);
+    draw_text(arg0->unkC + 0x43, arg0->unk10 + 0x19, *(&D_800E7574 + (*(&gCupCourseOrder + ((gCupSelection * 8) + (gCupCourseSelection * 2))) * 4)), 0, temp_f0, temp_f0);
     set_text_color(TEXT_YELLOW);
     draw_text(arg0->unkC + 0x46, arg0->unk10 + 0x28, D_800E7730, 0, 0.75f, 0.75f);
     phi_s0 = 0;
@@ -10980,7 +10980,7 @@ static ? *D_800E7A6C[2] = { "QUIT", "SAVE" };       /* const */
 static ? *D_800E7A74[3] = { "SAVING GHOST DATA", "", "PLEASE WAIT" }; /* const */
 static ? *D_800E7A80[2] = { "UNABLE TO SAVE ", "THE GHOST" }; /* const */
 static ? D_800E7A88;                                /* unable to generate initializer; const */
-static ? gCupTrackOrder;                            /* unable to generate initializer; const */
+static ? gCupCourseOrder;                            /* unable to generate initializer; const */
 
 void func_800A3E60(void *arg0) {
     s16 sp86;
@@ -11034,7 +11034,7 @@ void func_800A3E60(void *arg0) {
     temp_v0 = arg0->unk4;
     if ((temp_v0 != 0) && (temp_v0 != 0x1F)) {
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-        draw_text(arg0->unkC + 0x55, 0x19 - arg0->unk10, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCupCourseSelection * 2))) * 4)), 0, 0.6f, 0.6f);
+        draw_text(arg0->unkC + 0x55, 0x19 - arg0->unk10, *(&D_800E7574 + (*(&gCupCourseOrder + ((gCupSelection * 8) + (gCupCourseSelection * 2))) * 4)), 0, 0.6f, 0.6f);
         set_text_color(TEXT_YELLOW);
         draw_text(arg0->unkC + 0x55, 0x28 - arg0->unk10, D_800E7730, 0, 0.75f, 0.75f);
         phi_s1 = 0;
@@ -11130,7 +11130,7 @@ block_43:
                     func_80093324(0xBB - arg0->unkC, phi_s0_5, D_800E7A44, 0, 0.45f, 0.45f);
                 } else {
                     temp_v0_2 = phi_s2_3->unk5;
-                    func_80093324(0xBB - arg0->unkC, phi_s0_5, *(&D_800E75C4 + (*(&gCupTrackOrder + (((temp_v0_2 / 4) * 8) + ((temp_v0_2 % 4) * 2))) * 4)), 0, 0.45f, 0.45f);
+                    func_80093324(0xBB - arg0->unkC, phi_s0_5, *(&D_800E75C4 + (*(&gCupCourseOrder + (((temp_v0_2 / 4) * 8) + ((temp_v0_2 % 4) * 2))) * 4)), 0, 0.45f, 0.45f);
                 }
                 phi_s1_3 = sp54;
                 phi_s0_5 += 0x1E;
@@ -11505,7 +11505,7 @@ extern ? D_800F0C64;
 extern ? D_800F0C68;
 extern f32 D_800F1DD4;
 extern s8 gCupSelection;
-extern ? gCupTrackOrder;
+extern ? gCupCourseOrder;
 extern s32 gDisplayListHead;
 
 void func_800A4BC8(void *arg0) {
@@ -11522,7 +11522,7 @@ void func_800A4BC8(void *arg0) {
 
     gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x13F, 0xEF, 0, 0, 0, 0x8C);
     set_text_color(TEXT_YELLOW);
-    draw_text(0xA0, 0x50, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCupCourseSelection * 2))) * 4)), 0, 1.0f, 1.0f);
+    draw_text(0xA0, 0x50, *(&D_800E7574 + (*(&gCupCourseOrder + ((gCupSelection * 8) + (gCupCourseSelection * 2))) * 4)), 0, 1.0f, 1.0f);
     set_text_color(TEXT_RED);
     temp_f20 = D_800F1DD4;
     // "Best Records"
@@ -11643,7 +11643,7 @@ extern s32 D_800E775C;
 extern ? D_800E85C0;
 extern ? D_8015F480;
 extern s8 gCupSelection;
-extern ? gCupTrackOrder;
+extern ? gCupCourseOrder;
 extern s32 gDisplayListHead;
 
 void func_800A5084(void *arg0) {
@@ -11674,7 +11674,7 @@ void func_800A5084(void *arg0) {
     set_text_color(TEXT_YELLOW);
     draw_text(temp_s0 + 0xA0, temp_s3->unk2 - 0x32, *(&D_800E76CC + (gCCSelection * 4)), 0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
-    draw_text(0xA0, temp_s3->unk2 - 0x1E, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCupCourseSelection * 2))) * 4)), 0, 1.0f, 1.0f);
+    draw_text(0xA0, temp_s3->unk2 - 0x1E, *(&D_800E7574 + (*(&gCupCourseOrder + ((gCupSelection * 8) + (gCupCourseSelection * 2))) * 4)), 0, 1.0f, 1.0f);
     phi_s0 = 0;
     phi_s1 = 0;
     phi_s2 = &D_800E775C;
@@ -11852,7 +11852,7 @@ static ? *D_800E7A80[2] = { "UNABLE TO SAVE ", "THE GHOST" }; /* const */
 static ? D_800E7A88;                                /* unable to generate initializer; const */
 static s16 D_800E8538;                              /* type too large by 2; unable to generate initializer; const */
 static s16 D_800E853A;                              /* type too large by 2; unable to generate initializer; const */
-static ? gCupTrackOrder;                            /* unable to generate initializer; const */
+static ? gCupCourseOrder;                            /* unable to generate initializer; const */
 
 void func_800A5738(void *arg0) {
     s16 sp9A;
@@ -11931,7 +11931,7 @@ void func_800A5738(void *arg0) {
     temp_v0->words.w1 = phi_s2 & 0xFF;
     temp_v0->words.w0 = 0xFA000000;
     set_text_color(TEXT_YELLOW);
-    func_80093754(0xA0, 0x50, *(&D_800E7574 + (*(&gCupTrackOrder + ((gCupSelection * 8) + (gCupCourseSelection * 2))) * 4)), 0, 1.0f, 1.0f);
+    func_80093754(0xA0, 0x50, *(&D_800E7574 + (*(&gCupCourseOrder + ((gCupSelection * 8) + (gCupCourseSelection * 2))) * 4)), 0, 1.0f, 1.0f);
     temp_v1_2 = arg0->unk4;
     switch (temp_v1_2) {                            /* switch 1 */
     case 1:                                         /* switch 1 */
@@ -12020,7 +12020,7 @@ block_36:
                 func_80093324(0x69 - arg0->unkC, phi_s0_4, D_800E7A44, 0, 0.75f, 0.75f);
             } else {
                 temp_v0_3 = phi_s2_2->unk5;
-                func_80093324(0x69 - arg0->unkC, phi_s0_4, *(&D_800E75C4 + (*(&gCupTrackOrder + (((temp_v0_3 / 4) * 8) + ((temp_v0_3 % 4) * 2))) * 4)), 0, 0.75f, 0.75f);
+                func_80093324(0x69 - arg0->unkC, phi_s0_4, *(&D_800E75C4 + (*(&gCupCourseOrder + (((temp_v0_3 / 4) * 8) + ((temp_v0_3 % 4) * 2))) * 4)), 0, 0.75f, 0.75f);
             }
             phi_s1_3 = sp54;
             phi_s0_4 += 0x14;
@@ -15591,7 +15591,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB260.s")
 s32 segmented_to_virtual_dupe(s32, void *); // extern
 extern ? D_800E7E34;
 extern s8 gCupSelection;
-extern ? gCupTrackOrder;
+extern ? gCupCourseOrder;
 
 void func_800AB290(void *arg0) {
     s16 temp_t2;
@@ -15602,7 +15602,7 @@ void func_800AB290(void *arg0) {
     temp_a3 = arg0;
     if (temp_v0 != arg0->unk1C) {
         arg0->unk1C = temp_v0;
-        temp_t2 = *(&gCupTrackOrder - 0xBE + ((gCupSelection * 8) + (arg0->unk0 * 2)));
+        temp_t2 = *(&gCupCourseOrder - 0xBE + ((gCupSelection * 8) + (arg0->unk0 * 2)));
         arg0 = temp_a3;
         func_8009A594(arg0->unk18, 0, segmented_to_virtual_dupe(*(&D_800E7E34 + (temp_t2 * 4)), temp_a3), arg0);
     }
@@ -17833,7 +17833,7 @@ s32 segmented_to_virtual_dupe(s32, void *); // extern
 extern ? D_800E7E34;
 extern s8 D_8018EDF7;
 extern ? D_8018EE10;
-extern ? gCupTrackOrder;
+extern ? gCupCourseOrder;
 
 void func_800AEDBC(void *arg0) {
     s8 temp_v0;
@@ -17846,7 +17846,7 @@ void func_800AEDBC(void *arg0) {
         arg0->unk1C = temp_v0;
         temp_v0_2 = D_8018EDF7;
         arg0 = temp_a3;
-        func_8009A594(arg0->unk18, 0, segmented_to_virtual_dupe(*(&D_800E7E34 + (*(&gCupTrackOrder + (((temp_v0_2 / 4) * 8) + ((temp_v0_2 % 4) * 2))) * 4)), temp_a3), arg0);
+        func_8009A594(arg0->unk18, 0, segmented_to_virtual_dupe(*(&D_800E7E34 + (*(&gCupCourseOrder + (((temp_v0_2 / 4) * 8) + ((temp_v0_2 % 4) * 2))) * 4)), temp_a3), arg0);
         if (func_800B5B94() == 0) {
             func_800B6708();
             return;

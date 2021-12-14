@@ -2358,7 +2358,7 @@ extern s8 D_8018EDEC;
 extern s32 D_8018EE00;
 extern s8 D_8018EE0A;
 extern s8 gCupSelection;
-extern ? gCupTrackOrder;
+extern ? gCupCourseOrder;
 
 void func_800B3B58(void *arg0, u16 arg1) {
     u16 sp26;
@@ -2445,7 +2445,7 @@ block_22:
                 phi_v0 = gCupCourseSelection;
                 phi_a1 = &D_8018EDEC;
             }
-            gCurrentCourseId = *(&gCupTrackOrder + ((gCupSelection * 8) + (phi_v0 * 2)));
+            gCurrentCourseId = *(&gCupCourseOrder + ((gCupSelection * 8) + (phi_v0 * 2)));
             if ((phi_v1 & 0x4000) != 0) {
                 if (*phi_a1 == 2) {
                     *phi_a1 = 1;
@@ -2491,7 +2491,7 @@ block_22:
             phi_a1_2 = &D_8018EDEC;
         }
         D_800DC540 = phi_v0_2;
-        gCurrentCourseId = *(&gCupTrackOrder + ((phi_v0_2 * 8) + (gCupCourseSelection * 2)));
+        gCurrentCourseId = *(&gCupCourseOrder + ((phi_v0_2 * 8) + (gCupCourseSelection * 2)));
         if ((phi_v1_2 & 0x4000) != 0) {
             func_8009E208();
             play_sound2(0x49008002);
@@ -2504,7 +2504,7 @@ block_22:
             } else {
                 *phi_a1_2 = 3;
                 play_sound2(0x49008001, phi_a1_2);
-                gCurrentCourseId = *(&gCupTrackOrder + (gCupSelection * 8));
+                gCurrentCourseId = *(&gCupCourseOrder + (gCupSelection * 8));
                 D_8018EE00 = 0;
             }
             func_800B44AC();

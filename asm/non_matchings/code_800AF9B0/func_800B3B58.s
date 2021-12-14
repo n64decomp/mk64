@@ -83,12 +83,12 @@ glabel func_800B3B58
 /* 0B488C 800B3C8C 3C0F8019 */  lui   $t7, %hi(gCupCourseSelection) # $t7, 0x8019
 /* 0B4890 800B3C90 81EFEE0B */  lb    $t7, %lo(gCupCourseSelection)($t7)
 /* 0B4894 800B3C94 000270C0 */  sll   $t6, $v0, 3
-/* 0B4898 800B3C98 3C08800F */  lui   $t0, %hi(gCupTrackOrder) # 0x800f
+/* 0B4898 800B3C98 3C08800F */  lui   $t0, %hi(gCupCourseOrder) # 0x800f
 /* 0B489C 800B3C9C 000FC040 */  sll   $t8, $t7, 1
 /* 0B48A0 800B3CA0 01D8C821 */  addu  $t9, $t6, $t8
 /* 0B48A4 800B3CA4 3C01800E */  lui   $at, %hi(D_800DC540) # $at, 0x800e
 /* 0B48A8 800B3CA8 01194021 */  addu  $t0, $t0, $t9
-/* 0B48AC 800B3CAC 85082BB4 */  lh    $t0, %lo(gCupTrackOrder)($t0) # 0x2bb4($t0)
+/* 0B48AC 800B3CAC 85082BB4 */  lh    $t0, %lo(gCupCourseOrder)($t0) # 0x2bb4($t0)
 /* 0B48B0 800B3CB0 AC22C540 */  sw    $v0, %lo(D_800DC540)($at)
 /* 0B48B4 800B3CB4 3C01800E */  lui   $at, %hi(gCurrentCourseId) # $at, 0x800e
 /* 0B48B8 800B3CB8 30694000 */  andi  $t1, $v1, 0x4000
@@ -122,11 +122,11 @@ glabel func_800B3B58
 /* 0B4920 800B3D20 A0AD0000 */   sb    $t5, ($a1)
 /* 0B4924 800B3D24 3C0F8019 */  lui   $t7, %hi(gCupSelection) # $t7, 0x8019
 /* 0B4928 800B3D28 81EFEE09 */  lb    $t7, %lo(gCupSelection)($t7)
-/* 0B492C 800B3D2C 3C18800F */  lui   $t8, %hi(gCupTrackOrder) # 0x800f
+/* 0B492C 800B3D2C 3C18800F */  lui   $t8, %hi(gCupCourseOrder) # 0x800f
 /* 0B4930 800B3D30 3C048019 */  lui   $a0, %hi(D_8018EE00) # $a0, 0x8019
 /* 0B4934 800B3D34 000F70C0 */  sll   $t6, $t7, 3
 /* 0B4938 800B3D38 030EC021 */  addu  $t8, $t8, $t6
-/* 0B493C 800B3D3C 87182BB4 */  lh    $t8, %lo(gCupTrackOrder)($t8) # 0x2bb4($t8)
+/* 0B493C 800B3D3C 87182BB4 */  lh    $t8, %lo(gCupCourseOrder)($t8) # 0x2bb4($t8)
 /* 0B4940 800B3D40 3C01800E */  lui   $at, %hi(gCurrentCourseId) # $at, 0x800e
 /* 0B4944 800B3D44 2484EE00 */  addiu $a0, %lo(D_8018EE00) # addiu $a0, $a0, -0x1200
 /* 0B4948 800B3D48 A438C5A0 */  sh    $t8, %lo(gCurrentCourseId)($at)
@@ -177,11 +177,11 @@ glabel func_800B3B58
 /* 0B49EC 800B3DEC 3C0B8019 */  lui   $t3, %hi(gCupSelection) # $t3, 0x8019
 /* 0B49F0 800B3DF0 816BEE09 */  lb    $t3, %lo(gCupSelection)($t3)
 /* 0B49F4 800B3DF4 00026840 */  sll   $t5, $v0, 1
-/* 0B49F8 800B3DF8 3C0E800F */  lui   $t6, %hi(gCupTrackOrder) # 0x800f
+/* 0B49F8 800B3DF8 3C0E800F */  lui   $t6, %hi(gCupCourseOrder) # 0x800f
 /* 0B49FC 800B3DFC 000B60C0 */  sll   $t4, $t3, 3
 /* 0B4A00 800B3E00 018D7821 */  addu  $t7, $t4, $t5
 /* 0B4A04 800B3E04 01CF7021 */  addu  $t6, $t6, $t7
-/* 0B4A08 800B3E08 85CE2BB4 */  lh    $t6, %lo(gCupTrackOrder)($t6) # 0x2bb4($t6)
+/* 0B4A08 800B3E08 85CE2BB4 */  lh    $t6, %lo(gCupCourseOrder)($t6) # 0x2bb4($t6)
 /* 0B4A0C 800B3E0C 3C01800E */  lui   $at, %hi(gCurrentCourseId) # $at, 0x800e
 /* 0B4A10 800B3E10 30784000 */  andi  $t8, $v1, 0x4000
 /* 0B4A14 800B3E14 13000011 */  beqz  $t8, .L800B3E5C
