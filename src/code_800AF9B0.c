@@ -2425,24 +2425,24 @@ void func_800B3B58(void *arg0, u16 arg1) {
 block_22:
             phi_v1 = phi_a2;
             if ((phi_a2 & 0x400) != 0) {
-                temp_v0_3 = gCupTrackSelection;
+                temp_v0_3 = gCupCourseSelection;
                 if (temp_v0_3 < 3) {
-                    gCupTrackSelection = temp_v0_3 + 1;
+                    gCupCourseSelection = temp_v0_3 + 1;
                     sp1C = phi_a2;
-                    func_800B44AC(&gCupTrackSelection, &D_8018EDEC, phi_a2);
+                    func_800B44AC(&gCupCourseSelection, &D_8018EDEC, phi_a2);
                     play_sound2(0x49008000);
                     phi_v1 = sp1C;
                 }
             }
-            temp_v0_4 = gCupTrackSelection;
+            temp_v0_4 = gCupCourseSelection;
             phi_v0 = temp_v0_4;
             phi_a1 = &D_8018EDEC;
             if (((phi_v1 & 0x800) != 0) && (temp_v0_4 > 0)) {
-                gCupTrackSelection = temp_v0_4 - 1;
+                gCupCourseSelection = temp_v0_4 - 1;
                 sp1C = phi_v1;
-                func_800B44AC(&gCupTrackSelection, &D_8018EDEC);
+                func_800B44AC(&gCupCourseSelection, &D_8018EDEC);
                 play_sound2(0x49008000);
-                phi_v0 = gCupTrackSelection;
+                phi_v0 = gCupCourseSelection;
                 phi_a1 = &D_8018EDEC;
             }
             gCurrentCourseId = *(&gCupTrackOrder + ((gCupSelection * 8) + (phi_v0 * 2)));
@@ -2491,7 +2491,7 @@ block_22:
             phi_a1_2 = &D_8018EDEC;
         }
         D_800DC540 = phi_v0_2;
-        gCurrentCourseId = *(&gCupTrackOrder + ((phi_v0_2 * 8) + (gCupTrackSelection * 2)));
+        gCurrentCourseId = *(&gCupTrackOrder + ((phi_v0_2 * 8) + (gCupCourseSelection * 2)));
         if ((phi_v1_2 & 0x4000) != 0) {
             func_8009E208();
             play_sound2(0x49008002);
@@ -2617,7 +2617,7 @@ void func_800B3F74(u32 arg0) {
         gIsMirrorMode = 0;
         gEnableDebugMode = 0;
         gCupSelection = MUSHROOM_CUP;
-        gCupTrackSelection = CUP_TRACK_ONE;
+        gCupCourseSelection = CUP_COURSE_ONE;
         D_8018EDF7 = 0;
         if (D_8018EDF3 <= 0) {
             D_8018EDF3 = 1;
@@ -2768,7 +2768,7 @@ void func_800B3F74(u32 arg0) {
         play_sound2(0x49009013);
         D_8018EE0A = 0;
         if (gModeSelection == GRAND_PRIX) {
-            gCupTrackSelection = CUP_TRACK_ONE;
+            gCupCourseSelection = CUP_COURSE_ONE;
         }
         phi_v0_2 = gGPPointsByCharacterId;
         do {
@@ -3217,8 +3217,8 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B4DF4.s")
 s32 func_800B4E24(s32 recordIndex) {
     return func_800B4DF4(
         D_8018EB90.allCourseTimeTrialRecords \
-        .cupRecords[(((gCupSelection * 4) + gCupTrackSelection) / 4)] \
-        .courseRecords[(((gCupSelection * 4) + gCupTrackSelection) % 4)] \
+        .cupRecords[(((gCupSelection * 4) + gCupCourseSelection) / 4)] \
+        .courseRecords[(((gCupSelection * 4) + gCupCourseSelection) % 4)] \
         .records[recordIndex]
     );
 }
@@ -3237,8 +3237,8 @@ s32 func_800B4EB4(s32 recordIndex, s32 courseIndex) {
 s32 func_800B4F2C(void) {
     return func_800B4DF4(
         D_8018EB90.allCourseTimeTrialRecords \
-        .cupRecords[(((gCupSelection * 4) + gCupTrackSelection) / 4)] \
-        .courseRecords[(((gCupSelection * 4) + gCupTrackSelection) % 4)] \
+        .cupRecords[(((gCupSelection * 4) + gCupCourseSelection) / 4)] \
+        .courseRecords[(((gCupSelection * 4) + gCupCourseSelection) % 4)] \
         .records[TIME_TRIAL_1LAP_RECORD]
     );
 }
@@ -3285,7 +3285,7 @@ s32 func_800B5020(u32 arg0, s32 arg1) {
     s32 phi_s0_2;
     s32 phi_a0_2;
 
-    temp_v0 = (gCupSelection * 4) + gCupTrackSelection;
+    temp_v0 = (gCupSelection * 4) + gCupCourseSelection;
     temp_s2 = ((temp_v0 / 4) * 0x60) + ((temp_v0 % 4) * 0x18) + &D_8018EB90;
     sp30 = temp_v0;
     phi_s0 = 0;
@@ -3391,7 +3391,7 @@ s32 func_800B5218(void) {
     s32 phi_v0_2;
     s32 phi_a3_2;
 
-    sp38 = (gCupSelection * 4) + gCupTrackSelection;
+    sp38 = (gCupSelection * 4) + gCupCourseSelection;
     sp28 = *D_800E86A8;
     phi_a1 = &D_8018CA74;
     phi_a2 = &D_8018CA70;
@@ -4184,7 +4184,7 @@ s32 func_800B6178(s32 arg0) {
         if (temp_v0_2 == 0) {
             temp_s3->unk4 = 1;
             if (D_800DC50C == 4) {
-                temp_s3->unk5 = (gCupSelection * 4) + gCupTrackSelection;
+                temp_s3->unk5 = (gCupSelection * 4) + gCupCourseSelection;
             }
             temp_s3->unk0 = D_80162DFC;
             temp_s3->unk6 = D_80162DE0;
@@ -4278,7 +4278,7 @@ extern s8 gCupSelection;
     func_80005AE8(D_800DC4E4);
     temp_v0 = (arg0 << 7) + &D_8018EE10;
     phi_s3 = 0;
-    if (((gCupSelection * 4) + gCupTrackSelection) != temp_v0->unk5) {
+    if (((gCupSelection * 4) + gCupCourseSelection) != temp_v0->unk5) {
         phi_s3 = 2;
     } else if (D_80162DFC != temp_v0->unk0) {
         phi_s3 = 3;

@@ -58,8 +58,8 @@ glabel func_800A2EB8
 /* 0A3B94 800A2F94 2484002C */  addiu $a0, $a0, 0x2c
 /* 0A3B98 800A2F98 0C024CC9 */  jal   func_80093324
 /* 0A3B9C 800A2F9C 24A50028 */   addiu $a1, $a1, 0x28
-/* 0A3BA0 800A2FA0 3C048019 */  lui   $a0, %hi(gCupTrackSelection) # $a0, 0x8019
-/* 0A3BA4 800A2FA4 8084EE0B */  lb    $a0, %lo(gCupTrackSelection)($a0)
+/* 0A3BA0 800A2FA0 3C048019 */  lui   $a0, %hi(gCupCourseSelection) # $a0, 0x8019
+/* 0A3BA4 800A2FA4 8084EE0B */  lb    $a0, %lo(gCupCourseSelection)($a0)
 /* 0A3BA8 800A2FA8 27A50068 */  addiu $a1, $sp, 0x68
 /* 0A3BAC 800A2FAC 0C029E25 */  jal   convert_number_to_ascii
 /* 0A3BB0 800A2FB0 24840001 */   addiu $a0, $a0, 1

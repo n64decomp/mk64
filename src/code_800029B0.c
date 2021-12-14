@@ -141,7 +141,7 @@ void func_80002A18(void) {
         gCourseDirection = 1.0f;
     }
     if (gModeSelection == GRAND_PRIX) {
-        gCurrentCourseId = gCupTrackOrder[gCupSelection][gCupTrackSelection];
+        gCurrentCourseId = gCupTrackOrder[gCupSelection][gCupCourseSelection];
     }
     D_800DC52C = D_800DC530;
     if (gCurrentCourseId != gCurrentlyLoadedCourseId) {

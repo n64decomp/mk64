@@ -18,8 +18,8 @@ glabel func_800B63F0
 /* 0B7030 800B6430 8339EE09 */  lb    $t9, %lo(gCupSelection)($t9)
 /* 0B7034 800B6434 2718EE10 */  addiu $t8, %lo(D_8018EE10) # addiu $t8, $t8, -0x11f0
 /* 0B7038 800B6438 001079C0 */  sll   $t7, $s0, 7
-/* 0B703C 800B643C 3C098019 */  lui   $t1, %hi(gCupTrackSelection) # $t1, 0x8019
-/* 0B7040 800B6440 8129EE0B */  lb    $t1, %lo(gCupTrackSelection)($t1)
+/* 0B703C 800B643C 3C098019 */  lui   $t1, %hi(gCupCourseSelection) # $t1, 0x8019
+/* 0B7040 800B6440 8129EE0B */  lb    $t1, %lo(gCupCourseSelection)($t1)
 /* 0B7044 800B6444 01F81021 */  addu  $v0, $t7, $t8
 /* 0B7048 800B6448 804B0005 */  lb    $t3, 5($v0)
 /* 0B704C 800B644C 00194080 */  sll   $t0, $t9, 2

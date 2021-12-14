@@ -2135,7 +2135,7 @@ glabel gCupSelection # 0x8018EE09
 glabel D_8018EE0A
 .skip 1
 
-glabel gCupTrackSelection # 0x8018EE0B
+glabel gCupCourseSelection # 0x8018EE0B
 .skip 1
 
 glabel D_8018EE0C

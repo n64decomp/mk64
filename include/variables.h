@@ -7,7 +7,7 @@
 
 extern s32   gCCSelection;
 extern s8    gCharacterIdByGPOverallRank[8];        // D_8018D9D0
-extern s8    gCupTrackSelection;                    // D_8018EE0B
+extern s8    gCupCourseSelection;                   // D_8018EE0B
 extern char *gCupNames[];                           // D_800E7500
 extern s8    gCupSelection;
 // Maps course IDs (as defined in the COURSES enum) to the

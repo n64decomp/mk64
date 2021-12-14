@@ -406,7 +406,7 @@ void func_80039DA4(void) {
     temp_80039DA4 sp2C = D_800E4360;
     temp_80039DA4 spC = D_800E4380;
 
-    if (((gCupTrackSelection == CUP_TRACK_ONE) && (D_8016556E == 0)) || 
+    if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) || 
         (D_800DC51C == 1) || 
         (D_8018EDEF == 0x40)) {
         for (i = 0; i < 8; i++) {
@@ -421,7 +421,7 @@ void func_80039DA4(void) {
 
 void func_80039F44(f32 *arg0, f32 *arg1, f32 arg2) {
     func_80039DA4();
-    if (((gCupTrackSelection == CUP_TRACK_ONE) && (D_8016556E == 0)) ||
+    if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) ||
         (D_800DC51C == 1) || 
         (D_8018EDEF == 0x40)) {
         s16 rand;
@@ -509,7 +509,7 @@ void func_8003A59C(f32 *arg0, f32 *arg1, f32 arg2) {
 
 void func_8003A9F0(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if ((gCupTrackSelection == CUP_TRACK_ONE) || (D_800DC51C == 1) || (D_8018EDEF == 0x40)) {
+    if ((gCupCourseSelection == CUP_COURSE_ONE) || (D_800DC51C == 1) || (D_8018EDEF == 0x40)) {
         s16 rand;
         s16 i;
 

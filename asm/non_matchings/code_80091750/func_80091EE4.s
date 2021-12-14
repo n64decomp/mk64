@@ -16,8 +16,8 @@ glabel func_80091EE4
 /* 092B1C 80091F1C 1440001A */  bnez  $v0, .L80091F88
 /* 092B20 80091F20 3C0F8019 */   lui   $t7, %hi(gCupSelection) # $t7, 0x8019
 /* 092B24 80091F24 81EFEE09 */  lb    $t7, %lo(gCupSelection)($t7)
-/* 092B28 80091F28 3C198019 */  lui   $t9, %hi(gCupTrackSelection) # $t9, 0x8019
-/* 092B2C 80091F2C 8339EE0B */  lb    $t9, %lo(gCupTrackSelection)($t9)
+/* 092B28 80091F28 3C198019 */  lui   $t9, %hi(gCupCourseSelection) # $t9, 0x8019
+/* 092B2C 80091F2C 8339EE0B */  lb    $t9, %lo(gCupCourseSelection)($t9)
 /* 092B30 80091F30 000FC080 */  sll   $t8, $t7, 2
 /* 092B34 80091F34 0C02D9C2 */  jal   func_800B6708
 /* 092B38 80091F38 03199021 */   addu  $s2, $t8, $t9

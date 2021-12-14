@@ -39,7 +39,7 @@ extern u8 *D_8015F8CC;
 
 extern s16 D_8018D8C0[];
 extern s16 D_8016348C;
-extern s8 gCupTrackSelection;
+extern s8 gCupCourseSelection;
 extern s32 D_800DC544;
 
 extern Player gPlayers[];
@@ -232,16 +232,16 @@ void func_8028E3A0(void) {
 
     if (D_80150120) {
 
-        if (gCupTrackSelection == CUP_TRACK_FOUR) {
+        if (gCupCourseSelection == CUP_COURSE_FOUR) {
             D_80150124 = 5;
         } else {
             D_800DC544++;
-            gCupTrackSelection++;
+            gCupCourseSelection++;
             D_80150124 = 4;
         }
     } else {
         D_800DC544++;
-        gCupTrackSelection++;
+        gCupCourseSelection++;
         D_80150124 = 4;
     }
 }
