@@ -2145,9 +2145,9 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_80094C60.s")
 ? play_sound2(?);                                   /* extern */
 ? print_str_num(?, ?, ? *, s16);                    /* extern */
 static ? D_020076E0;                                /* unable to generate initializer */
-static ? D_800E7614;                                /* unable to generate initializer; const */
-static ? D_800E7688;                                /* unable to generate initializer; const */
-static ? D_800E76EC;                                /* unable to generate initializer; const */
+static ? gDebugCourseNames;                                /* unable to generate initializer; const */
+static ? gDebugCharacterNames;                                /* unable to generate initializer; const */
+static ? gDebugScreenModeNames;                                /* unable to generate initializer; const */
 static ? gDebugSoundModeNames;                                /* unable to generate initializer; const */
 s16 gCurrentCourseId;                               /* unable to generate initializer */
 
@@ -2207,11 +2207,11 @@ void func_80095574(void) {
         } else {
             phi_v0 = 8;
         }
-        debug_print_str2(phi_v0 + 0xB9, 0x6E, *(&D_800E7614 + (temp_a3_2 * 4)), temp_a3_2);
+        debug_print_str2(phi_v0 + 0xB9, 0x6E, gDebugCourseNames[temp_a3_2], temp_a3_2);
         debug_print_str2(0x50, 0x78, "screen_mode");
-        debug_print_str2(0xAA, 0x78, *(&D_800E76EC + (D_8018EDF1 * 4)));
+        debug_print_str2(0xAA, 0x78, *(&gDebugScreenModeNames + (D_8018EDF1 * 4)));
         debug_print_str2(0x50, 0x82, "player");
-        debug_print_str2(0xAA, 0x82, *(&D_800E7688 + (D_800E86A8 * 4)));
+        debug_print_str2(0xAA, 0x82, *(&gDebugCharacterNames + (D_800E86A8 * 4)));
         debug_print_str2(0x50, 0x8C, "sound mode");
         debug_print_str2(0xAA, 0x8C, gDebugSoundModeNames[gSoundMode]);
         if (D_8018EDEF == 7) {
