@@ -344,7 +344,7 @@ s32 D_800F3B1C[] = {
 }; 
 
 
-u16 gCupTrackOrder[] = {  // ISSUE CHECK WRONG PREVIEW TEXTURES
+u16 gCupCourseOrder[] = {  // ISSUE CHECK WRONG PREVIEW TEXTURES
     0x0008, 0x0009, 0x0006, 0x000b, // mushroom cup: LR, MMF, KTB, KD
     0x000a, 0x0005, 0x0001, 0x0000, // flower cup:   TT, FS, CM, MR
     0x000e, 0x000c, 0x0007, 0x0002, // star cup:     WS, SL, RRy, BC

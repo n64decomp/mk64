@@ -75,8 +75,8 @@ glabel L800B4070
 /* 0B4C80 800B4080 A420C520 */  sh    $zero, %lo(gEnableDebugMode)($at)
 /* 0B4C84 800B4084 2442EE09 */  addiu $v0, %lo(gCupSelection) # addiu $v0, $v0, -0x11f7
 /* 0B4C88 800B4088 A0400000 */  sb    $zero, ($v0)
-/* 0B4C8C 800B408C 3C018019 */  lui   $at, %hi(gCourseSelection) # $at, 0x8019
-/* 0B4C90 800B4090 A020EE0B */  sb    $zero, %lo(gCourseSelection)($at)
+/* 0B4C8C 800B408C 3C018019 */  lui   $at, %hi(gCupCourseSelection) # $at, 0x8019
+/* 0B4C90 800B4090 A020EE0B */  sb    $zero, %lo(gCupCourseSelection)($at)
 /* 0B4C94 800B4094 3C048019 */  lui   $a0, %hi(D_8018EDF3) # $a0, 0x8019
 /* 0B4C98 800B4098 3C018019 */  lui   $at, %hi(D_8018EDF7) # $at, 0x8019
 /* 0B4C9C 800B409C 2484EDF3 */  addiu $a0, %lo(D_8018EDF3) # addiu $a0, $a0, -0x120d
@@ -350,13 +350,13 @@ glabel L800B43B0
 /* 0B5058 800B4458 3C018019 */  lui   $at, %hi(D_8018EE0A) # $at, 0x8019
 /* 0B505C 800B445C A020EE0A */  sb    $zero, %lo(D_8018EE0A)($at)
 /* 0B5060 800B4460 15C00003 */  bnez  $t6, .L800B4470
-/* 0B5064 800B4464 3C028019 */   lui   $v0, %hi(gGPCharacterPoints) # $v0, 0x8019
-/* 0B5068 800B4468 3C018019 */  lui   $at, %hi(gCourseSelection) # $at, 0x8019
-/* 0B506C 800B446C A020EE0B */  sb    $zero, %lo(gCourseSelection)($at)
+/* 0B5064 800B4464 3C028019 */   lui   $v0, %hi(gGPPointsByCharacterId) # $v0, 0x8019
+/* 0B5068 800B4468 3C018019 */  lui   $at, %hi(gCupCourseSelection) # $at, 0x8019
+/* 0B506C 800B446C A020EE0B */  sb    $zero, %lo(gCupCourseSelection)($at)
 .L800B4470:
-/* 0B5070 800B4470 3C038019 */  lui   $v1, %hi(gGPOverallRanks) # $v1, 0x8019
-/* 0B5074 800B4474 2463D9D0 */  addiu $v1, %lo(gGPOverallRanks) # addiu $v1, $v1, -0x2630
-/* 0B5078 800B4478 2442D9C8 */  addiu $v0, %lo(gGPCharacterPoints) # addiu $v0, $v0, -0x2638
+/* 0B5070 800B4470 3C038019 */  lui   $v1, %hi(gCharacterIdByGPOverallRank) # $v1, 0x8019
+/* 0B5074 800B4474 2463D9D0 */  addiu $v1, %lo(gCharacterIdByGPOverallRank) # addiu $v1, $v1, -0x2630
+/* 0B5078 800B4478 2442D9C8 */  addiu $v0, %lo(gGPPointsByCharacterId) # addiu $v0, $v0, -0x2638
 .L800B447C:
 /* 0B507C 800B447C 24420004 */  addiu $v0, $v0, 4
 /* 0B5080 800B4480 A040FFFD */  sb    $zero, -3($v0)

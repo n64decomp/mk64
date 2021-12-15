@@ -119,4 +119,10 @@
 #define DEMO_SIX   5 // Mario Luigi Peach Toad, Sherbert Land,   Versus
 #define NUM_DEMOS  6
 
+#define CUP_COURSE_ONE      0
+#define CUP_COURSE_TWO      1
+#define CUP_COURSE_THREE    2
+#define CUP_COURSE_FOUR     3
+#define NUM_COURSES_PER_CUP 4
+
 #endif // DEFINES_H

@@ -186,8 +186,8 @@ glabel L800AE2E8
 /* 0AF0C0 800AE4C0 00000000 */   nop   
 /* 0AF0C4 800AE4C4 3C0B8019 */  lui   $t3, %hi(gCupSelection) # $t3, 0x8019
 /* 0AF0C8 800AE4C8 816BEE09 */  lb    $t3, %lo(gCupSelection)($t3)
-/* 0AF0CC 800AE4CC 3C0D8019 */  lui   $t5, %hi(gCourseSelection) # $t5, 0x8019
-/* 0AF0D0 800AE4D0 81ADEE0B */  lb    $t5, %lo(gCourseSelection)($t5)
+/* 0AF0CC 800AE4CC 3C0D8019 */  lui   $t5, %hi(gCupCourseSelection) # $t5, 0x8019
+/* 0AF0D0 800AE4D0 81ADEE0B */  lb    $t5, %lo(gCupCourseSelection)($t5)
 /* 0AF0D4 800AE4D4 000B6080 */  sll   $t4, $t3, 2
 /* 0AF0D8 800AE4D8 0C02D8D2 */  jal   func_800B6348
 /* 0AF0DC 800AE4DC 018D2021 */   addu  $a0, $t4, $t5
@@ -277,8 +277,8 @@ glabel L800AE59C
 /* 0AF1FC 800AE5FC 00000000 */   nop   
 /* 0AF200 800AE600 3C0E8019 */  lui   $t6, %hi(gCupSelection) # $t6, 0x8019
 /* 0AF204 800AE604 81CEEE09 */  lb    $t6, %lo(gCupSelection)($t6)
-/* 0AF208 800AE608 3C188019 */  lui   $t8, %hi(gCourseSelection) # $t8, 0x8019
-/* 0AF20C 800AE60C 8318EE0B */  lb    $t8, %lo(gCourseSelection)($t8)
+/* 0AF208 800AE608 3C188019 */  lui   $t8, %hi(gCupCourseSelection) # $t8, 0x8019
+/* 0AF20C 800AE60C 8318EE0B */  lb    $t8, %lo(gCupCourseSelection)($t8)
 /* 0AF210 800AE610 000E7880 */  sll   $t7, $t6, 2
 /* 0AF214 800AE614 0C02D8D2 */  jal   func_800B6348
 /* 0AF218 800AE618 01F82021 */   addu  $a0, $t7, $t8
@@ -383,8 +383,8 @@ glabel L800AE788
 /* 0AF38C 800AE78C AE080020 */  sw    $t0, 0x20($s0)
 /* 0AF390 800AE790 3C098019 */  lui   $t1, %hi(gCupSelection) # $t1, 0x8019
 /* 0AF394 800AE794 8129EE09 */  lb    $t1, %lo(gCupSelection)($t1)
-/* 0AF398 800AE798 3C0B8019 */  lui   $t3, %hi(gCourseSelection) # $t3, 0x8019
-/* 0AF39C 800AE79C 816BEE0B */  lb    $t3, %lo(gCourseSelection)($t3)
+/* 0AF398 800AE798 3C0B8019 */  lui   $t3, %hi(gCupCourseSelection) # $t3, 0x8019
+/* 0AF39C 800AE79C 816BEE0B */  lb    $t3, %lo(gCupCourseSelection)($t3)
 /* 0AF3A0 800AE7A0 00095080 */  sll   $t2, $t1, 2
 /* 0AF3A4 800AE7A4 0C02D8E7 */  jal   func_800B639C
 /* 0AF3A8 800AE7A8 014B2021 */   addu  $a0, $t2, $t3

@@ -5,7 +5,7 @@ glabel func_800A15EC
 /* 0A21F8 800A15F8 AFB10034 */  sw    $s1, 0x34($sp)
 /* 0A21FC 800A15FC AFB00030 */  sw    $s0, 0x30($sp)
 /* 0A2200 800A1600 8C820000 */  lw    $v0, ($a0)
-/* 0A2204 800A1604 3C03800F */  lui   $v1, %hi(gCupTrackOrder)
+/* 0A2204 800A1604 3C03800F */  lui   $v1, %hi(gCupCourseOrder)
 /* 0A2208 800A1608 00808025 */  move  $s0, $a0
 /* 0A220C 800A160C 2442FF84 */  addiu $v0, $v0, -0x7c
 /* 0A2210 800A1610 04410003 */  bgez  $v0, .L800A1620
@@ -23,7 +23,7 @@ glabel func_800A15EC
 /* 0A2238 800A1638 0018C840 */  sll   $t9, $t8, 1
 /* 0A223C 800A163C 01F94021 */  addu  $t0, $t7, $t9
 /* 0A2240 800A1640 00681821 */  addu  $v1, $v1, $t0
-/* 0A2244 800A1644 84632BB4 */  lh    $v1, %lo(gCupTrackOrder)($v1)
+/* 0A2244 800A1644 84632BB4 */  lh    $v1, %lo(gCupCourseOrder)($v1)
 /* 0A2248 800A1648 3C04800E */  lui   $a0, %hi(D_800E7D74)
 /* 0A224C 800A164C 00032880 */  sll   $a1, $v1, 2
 /* 0A2250 800A1650 00852021 */  addu  $a0, $a0, $a1

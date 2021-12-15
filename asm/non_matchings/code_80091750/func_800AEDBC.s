@@ -10,7 +10,7 @@ glabel func_800AEDBC
 /* 0AF9DC 800AEDDC 8FBF0014 */   lw    $ra, 0x14($sp)
 /* 0AF9E0 800AEDE0 AC82001C */  sw    $v0, 0x1c($a0)
 /* 0AF9E4 800AEDE4 80620000 */  lb    $v0, ($v1)
-/* 0AF9E8 800AEDE8 3C0A800F */  lui   $t2, %hi(gCupTrackOrder)
+/* 0AF9E8 800AEDE8 3C0A800F */  lui   $t2, %hi(gCupCourseOrder)
 /* 0AF9EC 800AEDEC 3C04800E */  lui   $a0, %hi(D_800E7E34)
 /* 0AF9F0 800AEDF0 04410003 */  bgez  $v0, .L800AEE00
 /* 0AF9F4 800AEDF4 00027883 */   sra   $t7, $v0, 2
@@ -27,7 +27,7 @@ glabel func_800AEDBC
 /* 0AFA18 800AEE18 00194040 */  sll   $t0, $t9, 1
 /* 0AFA1C 800AEE1C 03084821 */  addu  $t1, $t8, $t0
 /* 0AFA20 800AEE20 01495021 */  addu  $t2, $t2, $t1
-/* 0AFA24 800AEE24 854A2BB4 */  lh    $t2, %lo(gCupTrackOrder)($t2)
+/* 0AFA24 800AEE24 854A2BB4 */  lh    $t2, %lo(gCupCourseOrder)($t2)
 /* 0AFA28 800AEE28 AFA70018 */  sw    $a3, 0x18($sp)
 /* 0AFA2C 800AEE2C 000A5880 */  sll   $t3, $t2, 2
 /* 0AFA30 800AEE30 008B2021 */  addu  $a0, $a0, $t3

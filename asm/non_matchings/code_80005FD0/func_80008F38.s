@@ -47,7 +47,7 @@ glabel func_80008F38
 /* 009BE4 80008FE4 46802220 */  cvt.s.w $f8, $f4
 /* 009BE8 80008FE8 46080280 */  add.s $f10, $f0, $f8
 /* 009BEC 80008FEC E42044A8 */  swc1  $f0, %lo(D_801644A8)($at)
-/* 009BF0 80008FF0 3C018016 */  lui   $at, %hi(gTrackCompletionPercentByPlayerId)
+/* 009BF0 80008FF0 3C018016 */  lui   $at, %hi(gCourseCompletionPercentByPlayerId)
 /* 009BF4 80008FF4 00220821 */  addu  $at, $at, $v0
 /* 009BF8 80008FF8 03E00008 */  jr    $ra
-/* 009BFC 80008FFC E42A44D0 */   swc1  $f10, %lo(gTrackCompletionPercentByPlayerId)($at)
+/* 009BFC 80008FFC E42A44D0 */   swc1  $f10, %lo(gCourseCompletionPercentByPlayerId)($at)
