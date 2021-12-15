@@ -281,9 +281,9 @@ glabel L8009D22C
 /* 09DE40 8009D240 A025EE08 */  sb    $a1, %lo(D_8018EE08)($at)
 /* 09DE44 8009D244 3C01800E */  lui   $at, %hi(D_800DC524) # $at, 0x800e
 /* 09DE48 8009D248 AC29C524 */  sw    $t1, %lo(D_800DC524)($at)
-/* 09DE4C 8009D24C 3C04800F */  lui   $a0, %hi(D_800E86BC) # $a0, 0x800f
+/* 09DE4C 8009D24C 3C04800F */  lui   $a0, %hi(gNextDemoId) # $a0, 0x800f
 /* 09DE50 8009D250 3C01800E */  lui   $at, %hi(gCCSelection) # $at, 0x800e
-/* 09DE54 8009D254 248486BC */  addiu $a0, %lo(D_800E86BC) # addiu $a0, $a0, -0x7944
+/* 09DE54 8009D254 248486BC */  addiu $a0, %lo(gNextDemoId) # addiu $a0, $a0, -0x7944
 /* 09DE58 8009D258 AC25C548 */  sw    $a1, %lo(gCCSelection)($at)
 /* 09DE5C 8009D25C 80830000 */  lb    $v1, ($a0)
 /* 09DE60 8009D260 2C610006 */  sltiu $at, $v1, 6
@@ -438,16 +438,16 @@ glabel L8009D414
 .L8009D498:
 /* 09E098 8009D498 3C04800E */  lui   $a0, %hi(gCurrentCourseId) # $a0, 0x800e
 /* 09E09C 8009D49C 8484C5A0 */  lh    $a0, %lo(gCurrentCourseId)($a0)
-/* 09E0A0 8009D4A0 3C0F800E */  lui   $t7, %hi(D_800E7664)
+/* 09E0A0 8009D4A0 3C0F800E */  lui   $t7, %hi(gCupSelectionByCourseId)
 /* 09E0A4 8009D4A4 2442EE09 */  addiu $v0, %lo(gCupSelection) # addiu $v0, $v0, -0x11f7
 /* 09E0A8 8009D4A8 01E47821 */  addu  $t7, $t7, $a0
-/* 09E0AC 8009D4AC 81EF7664 */  lb    $t7, %lo(D_800E7664)($t7)
-/* 09E0B0 8009D4B0 3C19800F */  lui   $t9, %hi(D_800EFD50)
+/* 09E0AC 8009D4AC 81EF7664 */  lb    $t7, %lo(gCupSelectionByCourseId)($t7)
+/* 09E0B0 8009D4B0 3C19800F */  lui   $t9, %hi(gPerCupIndexByCourseId)
 /* 09E0B4 8009D4B4 3C01800E */  lui   $at, %hi(D_800DC540) # $at, 0x800e
 /* 09E0B8 8009D4B8 A04F0000 */  sb    $t7, ($v0)
 /* 09E0BC 8009D4BC 80580000 */  lb    $t8, ($v0)
 /* 09E0C0 8009D4C0 0324C821 */  addu  $t9, $t9, $a0
-/* 09E0C4 8009D4C4 8339FD50 */  lb    $t9, %lo(D_800EFD50)($t9)
+/* 09E0C4 8009D4C4 8339FD50 */  lb    $t9, %lo(gPerCupIndexByCourseId)($t9)
 /* 09E0C8 8009D4C8 AC38C540 */  sw    $t8, %lo(D_800DC540)($at)
 /* 09E0CC 8009D4CC 3C018019 */  lui   $at, %hi(gCourseSelection) # $at, 0x8019
 /* 09E0D0 8009D4D0 1000001A */  b     .L8009D53C
@@ -562,7 +562,7 @@ glabel L8009D50C
 /* 09E250 8009D650 3C04800E */  lui   $a0, %hi(gCurrentCourseId) # $a0, 0x800e
 /* 09E254 8009D654 8484C5A0 */  lh    $a0, %lo(gCurrentCourseId)($a0)
 /* 09E258 8009D658 2401000F */  li    $at, 15
-/* 09E25C 8009D65C 3C19800E */  lui   $t9, %hi(D_800E7664)
+/* 09E25C 8009D65C 3C19800E */  lui   $t9, %hi(gCupSelectionByCourseId)
 /* 09E260 8009D660 1081000A */  beq   $a0, $at, .L8009D68C
 /* 09E264 8009D664 00801825 */   move  $v1, $a0
 /* 09E268 8009D668 24010010 */  li    $at, 16
@@ -602,17 +602,17 @@ glabel L8009D50C
 .L8009D6E4:
 /* 09E2E4 8009D6E4 0324C821 */  addu  $t9, $t9, $a0
 .L8009D6E8:
-/* 09E2E8 8009D6E8 83397664 */  lb    $t9, %lo(D_800E7664)($t9)
+/* 09E2E8 8009D6E8 83397664 */  lb    $t9, %lo(gCupSelectionByCourseId)($t9)
 /* 09E2EC 8009D6EC 3C028019 */  lui   $v0, %hi(gCupSelection) # $v0, 0x8019
 /* 09E2F0 8009D6F0 2442EE09 */  addiu $v0, %lo(gCupSelection) # addiu $v0, $v0, -0x11f7
 /* 09E2F4 8009D6F4 A0590000 */  sb    $t9, ($v0)
 /* 09E2F8 8009D6F8 804E0000 */  lb    $t6, ($v0)
-/* 09E2FC 8009D6FC 3C0F800F */  lui   $t7, %hi(D_800EFD50)
+/* 09E2FC 8009D6FC 3C0F800F */  lui   $t7, %hi(gPerCupIndexByCourseId)
 /* 09E300 8009D700 3C038019 */  lui   $v1, %hi(D_8018EDFA) # $v1, 0x8019
 /* 09E304 8009D704 8063EDFA */  lb    $v1, %lo(D_8018EDFA)($v1)
 /* 09E308 8009D708 3C01800E */  lui   $at, %hi(D_800DC540) # $at, 0x800e
 /* 09E30C 8009D70C 01E47821 */  addu  $t7, $t7, $a0
-/* 09E310 8009D710 81EFFD50 */  lb    $t7, %lo(D_800EFD50)($t7)
+/* 09E310 8009D710 81EFFD50 */  lb    $t7, %lo(gPerCupIndexByCourseId)($t7)
 /* 09E314 8009D714 AC2EC540 */  sw    $t6, %lo(D_800DC540)($at)
 /* 09E318 8009D718 3C018019 */  lui   $at, %hi(gCourseSelection) # $at, 0x8019
 /* 09E31C 8009D71C 10650013 */  beq   $v1, $a1, .L8009D76C
