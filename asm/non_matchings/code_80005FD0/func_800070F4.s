@@ -27,8 +27,8 @@ glabel func_800070F4
 /* 007D4C 8000714C 01404825 */   move  $t1, $t2
 /* 007D50 80007150 3C0F8016 */  lui   $t7, %hi(D_80164360) # $t7, 0x8016
 /* 007D54 80007154 00002080 */  sll   $a0, $zero, 2
-/* 007D58 80007158 3C198016 */  lui   $t9, %hi(gTrackCompletionPercentByRank) # $t9, 0x8016
-/* 007D5C 8000715C 27392FD8 */  addiu $t9, %lo(gTrackCompletionPercentByRank) # addiu $t9, $t9, 0x2fd8
+/* 007D58 80007158 3C198016 */  lui   $t9, %hi(gCourseCompletionPercentByRank) # $t9, 0x8016
+/* 007D5C 8000715C 27392FD8 */  addiu $t9, %lo(gCourseCompletionPercentByRank) # addiu $t9, $t9, 0x2fd8
 /* 007D60 80007160 25EF4360 */  addiu $t7, %lo(D_80164360) # addiu $t7, $t7, 0x4360
 /* 007D64 80007164 00007040 */  sll   $t6, $zero, 1
 /* 007D68 80007168 27B80050 */  addiu $t8, $sp, 0x50
@@ -57,8 +57,8 @@ glabel func_800070F4
 /* 007DBC 800071BC 3C198016 */   lui   $t9, %hi(D_80164360) # $t9, 0x8016
 /* 007DC0 800071C0 27394360 */  addiu $t9, %lo(D_80164360) # addiu $t9, $t9, 0x4360
 /* 007DC4 800071C4 0007C040 */  sll   $t8, $a3, 1
-/* 007DC8 800071C8 3C0F8016 */  lui   $t7, %hi(gTrackCompletionPercentByRank) # $t7, 0x8016
-/* 007DCC 800071CC 25EF2FD8 */  addiu $t7, %lo(gTrackCompletionPercentByRank) # addiu $t7, $t7, 0x2fd8
+/* 007DC8 800071C8 3C0F8016 */  lui   $t7, %hi(gCourseCompletionPercentByRank) # $t7, 0x8016
+/* 007DCC 800071CC 25EF2FD8 */  addiu $t7, %lo(gCourseCompletionPercentByRank) # addiu $t7, $t7, 0x2fd8
 /* 007DD0 800071D0 03194021 */  addu  $t0, $t8, $t9
 /* 007DD4 800071D4 00072080 */  sll   $a0, $a3, 2
 /* 007DD8 800071D8 0006C080 */  sll   $t8, $a2, 2
@@ -112,10 +112,10 @@ glabel func_800070F4
 /* 007E88 80007288 10200040 */  beqz  $at, .L8000738C
 /* 007E8C 8000728C 00A01025 */   move  $v0, $a1
 /* 007E90 80007290 00072080 */  sll   $a0, $a3, 2
-/* 007E94 80007294 3C198016 */  lui   $t9, %hi(gTrackCompletionPercentByRank) # $t9, 0x8016
+/* 007E94 80007294 3C198016 */  lui   $t9, %hi(gCourseCompletionPercentByRank) # $t9, 0x8016
 /* 007E98 80007298 00C54823 */  subu  $t1, $a2, $a1
 /* 007E9C 8000729C 31270001 */  andi  $a3, $t1, 1
-/* 007EA0 800072A0 27392FD8 */  addiu $t9, %lo(gTrackCompletionPercentByRank) # addiu $t9, $t9, 0x2fd8
+/* 007EA0 800072A0 27392FD8 */  addiu $t9, %lo(gCourseCompletionPercentByRank) # addiu $t9, $t9, 0x2fd8
 /* 007EA4 800072A4 10E00013 */  beqz  $a3, .L800072F4
 /* 007EA8 800072A8 00991821 */   addu  $v1, $a0, $t9
 /* 007EAC 800072AC 00053880 */  sll   $a3, $a1, 2
@@ -138,8 +138,8 @@ glabel func_800070F4
 .L800072F0:
 /* 007EF0 800072F0 10460026 */  beq   $v0, $a2, .L8000738C
 .L800072F4:
-/* 007EF4 800072F4 3C188016 */   lui   $t8, %hi(gTrackCompletionPercentByRank) # $t8, 0x8016
-/* 007EF8 800072F8 27182FD8 */  addiu $t8, %lo(gTrackCompletionPercentByRank) # addiu $t8, $t8, 0x2fd8
+/* 007EF4 800072F4 3C188016 */   lui   $t8, %hi(gCourseCompletionPercentByRank) # $t8, 0x8016
+/* 007EF8 800072F8 27182FD8 */  addiu $t8, %lo(gCourseCompletionPercentByRank) # addiu $t8, $t8, 0x2fd8
 /* 007EFC 800072FC 00023880 */  sll   $a3, $v0, 2
 /* 007F00 80007300 00067880 */  sll   $t7, $a2, 2
 /* 007F04 80007304 01F86021 */  addu  $t4, $t7, $t8

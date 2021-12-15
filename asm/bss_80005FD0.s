@@ -48,7 +48,7 @@ glabel D_80162FCE
 glabel D_80162FD0
 .skip 8
 
-glabel gTrackCompletionPercentByRank
+glabel gCourseCompletionPercentByRank
 .skip 32
 
 glabel D_80162FF8

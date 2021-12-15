@@ -241,7 +241,7 @@ glabel D_80164498
 glabel D_801644A8
 .skip 40
 
-glabel gTrackCompletionPercentByPlayerId
+glabel gCourseCompletionPercentByPlayerId
 .skip 40
 
 glabel D_801644F8

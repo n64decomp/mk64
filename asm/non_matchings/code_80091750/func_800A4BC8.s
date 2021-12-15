@@ -26,15 +26,15 @@ glabel func_800A4BC8
 /* 0A5828 800A4C28 0C024C36 */  jal   set_text_color
 /* 0A582C 800A4C2C 24040003 */   li    $a0, 3
 /* 0A5830 800A4C30 3C188019 */  lui   $t8, %hi(gCupSelection) # $t8, 0x8019
-/* 0A5834 800A4C34 3C088019 */  lui   $t0, %hi(gCourseSelection) # $t0, 0x8019
-/* 0A5838 800A4C38 8108EE0B */  lb    $t0, %lo(gCourseSelection)($t0)
+/* 0A5834 800A4C34 3C088019 */  lui   $t0, %hi(gCupCourseSelection) # $t0, 0x8019
+/* 0A5838 800A4C38 8108EE0B */  lb    $t0, %lo(gCupCourseSelection)($t0)
 /* 0A583C 800A4C3C 8318EE09 */  lb    $t8, %lo(gCupSelection)($t8)
-/* 0A5840 800A4C40 3C0B800F */  lui   $t3, %hi(gCupTrackOrder)
+/* 0A5840 800A4C40 3C0B800F */  lui   $t3, %hi(gCupCourseOrder)
 /* 0A5844 800A4C44 00084840 */  sll   $t1, $t0, 1
 /* 0A5848 800A4C48 0018C8C0 */  sll   $t9, $t8, 3
 /* 0A584C 800A4C4C 03295021 */  addu  $t2, $t9, $t1
 /* 0A5850 800A4C50 016A5821 */  addu  $t3, $t3, $t2
-/* 0A5854 800A4C54 856B2BB4 */  lh    $t3, %lo(gCupTrackOrder)($t3)
+/* 0A5854 800A4C54 856B2BB4 */  lh    $t3, %lo(gCupCourseOrder)($t3)
 /* 0A5858 800A4C58 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 0A585C 800A4C5C 44810000 */  mtc1  $at, $f0
 /* 0A5860 800A4C60 3C06800E */  lui   $a2, %hi(D_800E7574)

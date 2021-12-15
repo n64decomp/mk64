@@ -56,9 +56,9 @@ glabel func_800A34A8
 .L800A357C:
 /* 0A417C 800A357C 0C028E84 */  jal   func_800A3A10
 /* 0A4180 800A3580 27A40080 */   addiu $a0, $sp, 0x80
-/* 0A4184 800A3584 3C048019 */  lui   $a0, %hi(gGPOverallRanks) # $a0, 0x8019
+/* 0A4184 800A3584 3C048019 */  lui   $a0, %hi(gCharacterIdByGPOverallRank) # $a0, 0x8019
 /* 0A4188 800A3588 0C028E84 */  jal   func_800A3A10
-/* 0A418C 800A358C 2484D9D0 */   addiu $a0, %lo(gGPOverallRanks) # addiu $a0, $a0, -0x2630
+/* 0A418C 800A358C 2484D9D0 */   addiu $a0, %lo(gCharacterIdByGPOverallRank) # addiu $a0, $a0, -0x2630
 .L800A3590:
 /* 0A4190 800A3590 0C024C36 */  jal   set_text_color
 /* 0A4194 800A3594 24040004 */   li    $a0, 4
@@ -90,8 +90,8 @@ glabel func_800A34A8
 /* 0A41FC 800A35FC 24840036 */  addiu $a0, $a0, 0x36
 /* 0A4200 800A3600 0C024CC9 */  jal   func_80093324
 /* 0A4204 800A3604 01AC2823 */   subu  $a1, $t5, $t4
-/* 0A4208 800A3608 3C048019 */  lui   $a0, %hi(gCourseSelection) # $a0, 0x8019
-/* 0A420C 800A360C 8084EE0B */  lb    $a0, %lo(gCourseSelection)($a0)
+/* 0A4208 800A3608 3C048019 */  lui   $a0, %hi(gCupCourseSelection) # $a0, 0x8019
+/* 0A420C 800A360C 8084EE0B */  lb    $a0, %lo(gCupCourseSelection)($a0)
 /* 0A4210 800A3610 27A50078 */  addiu $a1, $sp, 0x78
 /* 0A4214 800A3614 0C029E25 */  jal   convert_number_to_ascii
 /* 0A4218 800A3618 24840001 */   addiu $a0, $a0, 1

@@ -68,8 +68,8 @@ glabel func_800A8F48
 .L800A9044:
 /* 0A9C44 800A9044 2694EE09 */  addiu $s4, $s4, %lo(gCupSelection) # -0x11f7
 /* 0A9C48 800A9048 82890000 */  lb    $t1, ($s4)
-/* 0A9C4C 800A904C 3C0B8019 */  lui   $t3, %hi(gCourseSelection) # $t3, 0x8019
-/* 0A9C50 800A9050 816BEE0B */  lb    $t3, %lo(gCourseSelection)($t3)
+/* 0A9C4C 800A904C 3C0B8019 */  lui   $t3, %hi(gCupCourseSelection) # $t3, 0x8019
+/* 0A9C50 800A9050 816BEE0B */  lb    $t3, %lo(gCupCourseSelection)($t3)
 /* 0A9C54 800A9054 00095080 */  sll   $t2, $t1, 2
 /* 0A9C58 800A9058 0C02D8E7 */  jal   func_800B639C
 /* 0A9C5C 800A905C 014B2021 */   addu  $a0, $t2, $t3

@@ -3,7 +3,7 @@ glabel func_800A1A20
 /* 0A2624 800A1A24 8042EDF7 */  lb    $v0, %lo(D_8018EDF7)($v0)
 /* 0A2628 800A1A28 27BDFFC8 */  addiu $sp, $sp, -0x38
 /* 0A262C 800A1A2C AFB10028 */  sw    $s1, 0x28($sp)
-/* 0A2630 800A1A30 3C11800F */  lui   $s1, %hi(gCupTrackOrder)
+/* 0A2630 800A1A30 3C11800F */  lui   $s1, %hi(gCupCourseOrder)
 /* 0A2634 800A1A34 AFB30030 */  sw    $s3, 0x30($sp)
 /* 0A2638 800A1A38 00809825 */  move  $s3, $a0
 /* 0A263C 800A1A3C AFBF0034 */  sw    $ra, 0x34($sp)
@@ -25,7 +25,7 @@ glabel func_800A1A20
 /* 0A2674 800A1A74 0018C840 */  sll   $t9, $t8, 1
 /* 0A2678 800A1A78 01F94021 */  addu  $t0, $t7, $t9
 /* 0A267C 800A1A7C 02288821 */  addu  $s1, $s1, $t0
-/* 0A2680 800A1A80 86312BB4 */  lh    $s1, %lo(gCupTrackOrder)($s1)
+/* 0A2680 800A1A80 86312BB4 */  lh    $s1, %lo(gCupCourseOrder)($s1)
 /* 0A2684 800A1A84 24090014 */  li    $t1, 20
 /* 0A2688 800A1A88 AE69000C */  sw    $t1, 0xc($s3)
 /* 0A268C 800A1A8C 0C024C36 */  jal   set_text_color

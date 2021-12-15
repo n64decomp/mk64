@@ -46,7 +46,7 @@ extern u32 D_8015F730;
 extern u32 D_8015F734;
 extern u32 gPrevLoadedAddress;
 extern s32 D_80150120;
-extern s16 gCupTrackOrder[][4];
+extern s16 gCupCourseOrder[][4];
 
 void func_800CA008(u8, u8);
 
@@ -141,7 +141,7 @@ void func_80002A18(void) {
         gCourseDirection = 1.0f;
     }
     if (gModeSelection == GRAND_PRIX) {
-        gCurrentCourseId = gCupTrackOrder[gCupSelection][gCourseSelection];
+        gCurrentCourseId = gCupCourseOrder[gCupSelection][gCupCourseSelection];
     }
     D_800DC52C = D_800DC530;
     if (gCurrentCourseId != gCurrentlyLoadedCourseId) {
