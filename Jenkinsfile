@@ -24,7 +24,7 @@ pipeline {
     }
     stage('Update Progress') {
       steps {
-        progress = sh(script: 'python3 progress.py csv',returnStdout: true).trim()
+        progress = sh(script: 'python3 progress.py badge1',returnStdout: true).trim()
         progressBadge.setStatus(progress)
       }
     }
