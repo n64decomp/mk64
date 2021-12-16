@@ -272,6 +272,9 @@ if args.format == 'csv':
         str(TotalNonMatchingFunctions), str(TotalMipsToCFunctions)]
 
     print(",".join(csv_list))
+elif args.format == 'badge1':
+    print(round(srcPct, 2)+"%")
+    
 elif args.format == 'shield-json':
     # https://shields.io/endpoint
     print(json.dumps({
