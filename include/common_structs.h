@@ -397,8 +397,7 @@ typedef struct {
 } PlayerRelatedFlags;
 
 typedef struct {
-    PlayerRelatedFlags playerRelatedFlags[4];
-    u8 unknownBytes[16];
+    PlayerRelatedFlags playerRelatedFlags[8];
 } struct_D_801653E0;
 
 #endif

@@ -17,7 +17,7 @@ extern Camera *camera4;
 
 //GLOBAL_ASM("asm/non_matchings/code_800393C0/spawn_player.s")
 
-void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, u16 arg6, s16 arg7) {
+void spawn_player(Player *player, s8 playerNumber, f32 arg2, f32 arg3, f32 arg4, f32 arg5, u16 arg6, s16 arg7) {
     f32 ret;
     s8 idx;
 
@@ -61,7 +61,7 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
     player->rotX = arg2;
     player->rotY = ret;
 
-    D_80164510[arg1] = ret;
+    D_80164510[playerNumber] = ret;
 
 
     player->unk_02C = 0;
@@ -76,7 +76,7 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
     player->unk_030 = 0;
     player->unk_0FA = 0;
     player->unk_002 = 0;
-    
+
     player->unk_0BC = 0;
     player->unk_0C0 = 0;
     player->unk_07C = 0;
@@ -103,7 +103,7 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
     player->unk_00C = 0;
     player->unk_0C6 = 0xFF;
 
-    
+
     player->unk_206 = 0;
     player->unk_0C4 = 0;
     player->unk_D98 = 0;
@@ -193,7 +193,7 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
     player->unk_230 = 0.0f;
     player->unk_23C = 0.0f;
 
-    idx = arg1;
+    idx = playerNumber;
 
     D_801650D0[0][idx] = 0;
     D_801650D0[1][idx] = 0;
@@ -219,21 +219,24 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
     D_801654E0[idx] = 0;
     D_80165500[idx] = 0;
     D_80165520[idx] = 0;
-    D_80165540[arg1] = 0;
+    D_80165540[playerNumber] = 0;
     D_8018D900 = 0;
 
-    D_801652E0[arg1] = 0;
-    D_801652C0[arg1] = 0;
-    D_80165020[arg1] = 0;
-    D_80165070[arg1][0] = 0.0f;
-    D_80165070[arg1][1] = 0.0f;
-    D_80165070[arg1][2] = 0.0f;
-    D_80165280[arg1] = 0.0f;
-    D_801652A0[arg1] = 0.0f;
-    D_801653E0[arg1] = 0;
-    D_80165400[arg1] = 0;
-    D_801654A0[arg1] = 0;
-    D_801654C0[arg1] = 0;
+    D_801652E0[playerNumber] = 0;
+    D_801652C0[playerNumber] = 0;
+    D_80165020[playerNumber] = 0;
+    D_80165070[playerNumber][0] = 0.0f;
+    D_80165070[playerNumber][1] = 0.0f;
+    D_80165070[playerNumber][2] = 0.0f;
+    D_80165280[playerNumber] = 0.0f;
+    D_801652A0[playerNumber] = 0.0f;
+    D_801653E0.playerRelatedFlags[playerNumber].unknownBytes[0] = 0;
+    D_801653E0.playerRelatedFlags[playerNumber].unknownBytes[1] = 0;
+    D_801653E0.playerRelatedFlags[playerNumber].unknownBytes[2] = 0;
+    D_801653E0.playerRelatedFlags[playerNumber].playerAccelerationPressed = 0;
+    D_80165400[playerNumber] = 0;
+    D_801654A0[playerNumber] = 0;
+    D_801654C0[playerNumber] = 0;
     D_80165340 = 0;
 
     player->unk_1A4 = 0;
@@ -287,14 +290,14 @@ void spawn_player(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
     player->unk_144 = 0.0f;
     player->unk_148 = 0.0f;
 
-    D_80165300[arg1] = 0;
-    D_8018CE10[arg1].unk_04 = 0.0f;
-    D_8018CE10[arg1].unk_0C = 0.0f;
-    func_80295BF8(arg1);
+    D_80165300[playerNumber] = 0;
+    D_8018CE10[playerNumber].unk_04 = 0.0f;
+    D_8018CE10[playerNumber].unk_0C = 0.0f;
+    func_80295BF8(playerNumber);
     func_8005D6C0(player);
-    func_8006B87C(player, arg1);
+    func_8006B87C(player, playerNumber);
     if (gModeSelection == BATTLE) {
-        func_8006B7E4(player, arg1);
+        func_8006B7E4(player, playerNumber);
     }
     func_802B6540(player->unk_150, player->unk_058, player->unk_05C, player->unk_060, player->unk_02E);
     func_802B6540(player->unk_174, player->unk_058, player->unk_05C, player->unk_060, player->unk_02E);
@@ -406,8 +409,8 @@ void func_80039DA4(void) {
     temp_80039DA4 sp2C = D_800E4360;
     temp_80039DA4 spC = D_800E4380;
 
-    if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) || 
-        (D_800DC51C == 1) || 
+    if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) ||
+        (D_800DC51C == 1) ||
         (D_8018EDEF == 0x40)) {
         for (i = 0; i < 8; i++) {
             D_80165270[i] = sp2C.unk00[i];
@@ -422,7 +425,7 @@ void func_80039DA4(void) {
 void func_80039F44(f32 *arg0, f32 *arg1, f32 arg2) {
     func_80039DA4();
     if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) ||
-        (D_800DC51C == 1) || 
+        (D_800DC51C == 1) ||
         (D_8018EDEF == 0x40)) {
         s16 rand;
         s16 i;
@@ -538,7 +541,7 @@ getRand:
     spawn_player(D_800DC4F0, 5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, D_80165560[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
     spawn_player(D_800DC4F4, 6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, D_80165560[4], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
     spawn_player(D_800DC4F8, 7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, D_80165560[5], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    
+
     if (D_800DC51C == 1) {
         spawn_player(D_800DC4FC, 0, arg0[D_80165270[0]], arg1[D_80165270[0]], arg2, 32768.0f, D_800E86A8[0], PLAYER_HUMAN_AND_CPU);
     } else {
@@ -836,7 +839,7 @@ void func_8003C0F0(void) {
                             D_80165210[2] = D_80165210[4] = D_80165210[6] = sp5E - 0xA;
                             D_80165210[3] = D_80165210[5] = D_80165210[7] = sp5E - 0x1E;
                             D_80165210[1] = sp5E + 0xA;
-                            
+
                             D_80165230[0] = sp5C + 0x1E;
                             D_80165230[1] = sp5C + 0x1E;
                             D_80165230[2] = sp5C + 0x1E;
@@ -878,7 +881,7 @@ void func_8003C0F0(void) {
                     };
                     D_80165210[2] = -200.0f;
                     D_80165230[1] = -200.0f;
-                    
+
                     D_80165210[0] = 0.0f;
                     D_80165210[1] = 0.0f;
                     D_80165230[2] = 0.0f;
@@ -1239,7 +1242,7 @@ void func_8003DB5C(void) {
 
     func_8001C4D0(player->posX, player->posY, player->posZ, player->unk_02E, 3, 0);
     func_8001C4D0(player->posX, player->posY, player->posZ, player->unk_02E, 3, 1);
-    
+
     for (i = 0; i < 8; i++, player++) {
         func_80027A20(player, i, 1, 0);
         func_80027A20(player, i, 1, 1);
