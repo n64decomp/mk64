@@ -3,12 +3,11 @@
 import argparse
 import json
 import csv
-import git
 import os
 import re
 
 parser = argparse.ArgumentParser(description="Computes current progress throughout the whole project.")
-parser.add_argument("format", nargs="?", default="text", choices=["text", "csv", "shield-json"])
+parser.add_argument("format", nargs="?", default="text", choices=["text", "shield-json", "badge1"])
 parser.add_argument("-m", "--matching", dest='matching', action='store_true',
                     help="Output matching progress instead of decompilation progress")
 args = parser.parse_args()
@@ -258,21 +257,21 @@ seg3Pct = 100 * seg3 / seg3_size
 
 bytesPerHeartPiece = text_size // 80
 
-if args.format == 'csv':
-    version = 1
-    git_object = git.Repo().head.object
-    timestamp = str(git_object.committed_date)
-    git_hash = git_object.hexsha
+#if args.format == 'csv':
+#    version = 1
+#    git_object = git.Repo().head.object
+#    timestamp = str(git_object.committed_date)
+#    git_hash = git_object.hexsha
 
-    csv_list = [str(version), timestamp, git_hash, 
-        str(text_size), str(mk64Code_size), str(src), str(srcPct),
-        str(audio), str(audio_size), str(audioPct), str(libultra),
-        str(libultra_size), str(libultraPct), str(seg2), str(seg2_size),
-        str(seg2Pct), str(seg3), str(seg3_size), str(seg3Pct),
-        str(TotalNonMatchingFunctions), str(TotalMipsToCFunctions)]
+#    csv_list = [str(version), timestamp, git_hash, 
+#        str(text_size), str(mk64Code_size), str(src), str(srcPct),
+#        str(audio), str(audio_size), str(audioPct), str(libultra),
+#        str(libultra_size), str(libultraPct), str(seg2), str(seg2_size),
+#        str(seg2Pct), str(seg3), str(seg3_size), str(seg3Pct),
+#        str(TotalNonMatchingFunctions), str(TotalMipsToCFunctions)]
 
-    print(",".join(csv_list))
-elif args.format == 'shield-json':
+#    print(",".join(csv_list))
+if args.format == 'shield-json':
     # https://shields.io/endpoint
     print(json.dumps({
         "schemaVersion": 1,
@@ -280,6 +279,8 @@ elif args.format == 'shield-json':
         "message": f"{srcPct:.3g}%",
         "color": 'yellow',
     }))
+elif args.format  == 'badge1':
+    print(str(round(srcPct, 2))+"%")
 elif args.format == 'text':
     adjective = "decompiled" if not args.matching else "matched"
 
