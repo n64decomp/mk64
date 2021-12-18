@@ -230,10 +230,7 @@ void spawn_player(Player *player, s8 playerNumber, f32 arg2, f32 arg3, f32 arg4,
     D_80165070[playerNumber][2] = 0.0f;
     D_80165280[playerNumber] = 0.0f;
     D_801652A0[playerNumber] = 0.0f;
-    D_801653E0.playerRelatedFlags[playerNumber].unknownBytes[0] = 0;
-    D_801653E0.playerRelatedFlags[playerNumber].unknownBytes[1] = 0;
-    D_801653E0.playerRelatedFlags[playerNumber].unknownBytes[2] = 0;
-    D_801653E0.playerRelatedFlags[playerNumber].playerAccelerationPressed = 0;
+    D_801653E0.playerRelatedFlags[playerNumber] = 0;
     D_80165400[playerNumber] = 0;
     D_801654A0[playerNumber] = 0;
     D_801654C0[playerNumber] = 0;

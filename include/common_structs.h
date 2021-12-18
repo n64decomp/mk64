@@ -392,12 +392,7 @@ typedef struct {
 } struct_D_800E261C;
 
 typedef struct {
-    u8 unknownBytes[3];
-    u8 playerAccelerationPressed; // Changes to 1 when acceleration pressed
-} PlayerRelatedFlags;
-
-typedef struct {
-    PlayerRelatedFlags playerRelatedFlags[8];
+    s32 playerRelatedFlags[8]; // Set to 1 when acceleration is pressed for each player
 } struct_D_801653E0;
 
 #endif
