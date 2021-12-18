@@ -2,6 +2,10 @@ def totalProgBadge = addEmbeddableBadgeConfiguration(id: "totalProgress", subjec
 def gameCodeProgBadge = addEmbeddableBadgeConfiguration(id: "codeProgress", subject: "Game Code Progress")
 def audioProgBadge = addEmbeddableBadgeConfiguration(id: "audioProgress", subject: "Audio Code Progress")
 
+def bytesToDecompile = addEmbeddableBadgeConfiguration(id: "bytesLeft", subject: "Remaining Decompilable Bytes")
+def m2cFuncs = addEmbeddableBadgeConfiguration(id: "m2c", subject: "Remaining Functions")
+def nonmatchingFuncs = addEmbeddableBadgeConfiguration(id: "nonmatching", subject: "Non-matching Functions")
+
 pipeline {
   agent any
   stages {
@@ -41,6 +45,21 @@ pipeline {
             script: "python3 progress.py audioBadge",
             returnStdout: true).trim()
           audioProgBadge.setStatus(progress)
+          
+          progress = sh(
+            script: "python3 progress.py bytesToDecompile",
+            returnStdout: true).trim()
+          bytesToDecompile.setStatus(progress)
+          
+          progress = sh(
+            script: "python3 progress.py m2cFuncs",
+            returnStdout: true).trim()
+          m2cFuncs.setStatus(progress)
+          
+          progress = sh(
+            script: "python3 progress.py nonmatchingFuncs",
+            returnStdout: true).trim()
+          nonmatchingFuncs.setStatus(progress)
         }
       }
     }
