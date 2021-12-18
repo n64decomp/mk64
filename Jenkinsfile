@@ -27,7 +27,7 @@ pipeline {
         script {
           progress = sh(
             script: "python3 progress.py badge1",
-            returnStdOut: true).trim()
+            returnStdout: true).trim()
 
           progressBadge.setStatus(progress)
         }
