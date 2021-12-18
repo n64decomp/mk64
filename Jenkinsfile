@@ -1,4 +1,4 @@
-def progressReport = addEmbeddableBadgeConfiguration(id: "totalProgress", subject: "Total Progress")
+def progressBadge = addEmbeddableBadgeConfiguration(id: "totalProgress", subject: "Total Progress")
 
 pipeline {
   agent any
