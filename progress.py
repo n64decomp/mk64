@@ -7,7 +7,7 @@ import os
 import re
 
 parser = argparse.ArgumentParser(description="Computes current progress throughout the whole project.")
-parser.add_argument("format", nargs="?", default="text", choices=["text", "shield-json", "badge1"])
+parser.add_argument("format", nargs="?", default="text", choices=["text", "shield-json", "totalBadge", "gameBadge", "audioBadge", "bytesToDecompile", "m2cFuncs", "nonmatchingFuncs"])
 parser.add_argument("-m", "--matching", dest='matching', action='store_true',
                     help="Output matching progress instead of decompilation progress")
 args = parser.parse_args()
@@ -279,8 +279,18 @@ if args.format == 'shield-json':
         "message": f"{srcPct:.3g}%",
         "color": 'yellow',
     }))
-elif args.format  == 'badge1':
+elif args.format  == 'totalBadge':
     print(str(round(srcPct, 2))+"%")
+elif args.format == 'gameBadge':
+    print(str(round(srcPct, 2))+"%")
+elif args.format == 'audioBadge':
+    print(str(round(audioPct, 2))+"%")
+elif args.format == 'bytesToDecompile':
+    print(str(text_size)+" of "+str(mk64Code_size)+"\n")
+elif args.format == 'm2cFuncs':
+    print(str(TotalMipsToCFunctions))
+elif args.format == 'nonmatchingFuncs':
+    print(str(TotalNonMatchingFunctions))
 elif args.format == 'text':
     adjective = "decompiled" if not args.matching else "matched"
 
