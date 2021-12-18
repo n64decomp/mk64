@@ -1,4 +1,6 @@
-def progressBadge = addEmbeddableBadgeConfiguration(id: "totalProgress", subject: "Total Progress")
+def totalProgBadge = addEmbeddableBadgeConfiguration(id: "totalProgress", subject: "Total Progress")
+def gameCodeProgBadge = addEmbeddableBadgeConfiguration(id: "codeProgress", subject: "Game Code Progress")
+def audioProgBadge = addEmbeddableBadgeConfiguration(id: "audioProgress", subject: "Audio Code Progress")
 
 pipeline {
   agent any
@@ -26,10 +28,19 @@ pipeline {
       steps {
         script {
           progress = sh(
-            script: "python3 progress.py badge1",
+            script: "python3 progress.py totalBadge",
             returnStdout: true).trim()
-
-          progressBadge.setStatus(progress)
+          totalProgBadge.setStatus(progress)
+          
+          progress = sh(
+            script: "python3 progress.py gameBadge",
+            returnStdout: true).trim()
+          gameCodeProgBadge.setStatus(progress)
+          
+          progress = sh(
+            script: "python3 progress.py audioBadge",
+            returnStdout: true).trim()
+          audioProgBadge.setStatus(progress)
         }
       }
     }
