@@ -1,3 +1,5 @@
+def progressReport = addEmbeddableBadgeConfiguration(id: "totalProgress", subject: "Total Progress")
+
 pipeline {
   agent any
   stages {
@@ -18,6 +20,17 @@ pipeline {
     stage('Build U Source') {
       steps {
         sh 'make -j4 VERSION=us'
+      }
+    }
+    stage('Update progress') {
+      steps {
+        script {
+          progress = sh(
+            script: "python3 progress.py badge1",
+            returnStdOut: true).trim()
+
+          progressBadge.setStatus(progress)
+        }
       }
     }
   }
