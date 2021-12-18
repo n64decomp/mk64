@@ -1,10 +1,10 @@
-def totalProgBadge = addEmbeddableBadgeConfiguration(id: "totalProgress", subject: "Total Progress")
-def gameCodeProgBadge = addEmbeddableBadgeConfiguration(id: "codeProgress", subject: "Game Code Progress")
-def audioProgBadge = addEmbeddableBadgeConfiguration(id: "audioProgress", subject: "Audio Code Progress")
+def totalProgBadge = addEmbeddableBadgeConfiguration(id: "totalProgress", subject: "Total Progress", color: "7d0000")
+def gameCodeProgBadge = addEmbeddableBadgeConfiguration(id: "codeProgress", subject: "Game Code Progress", color: "7d0000")
+def audioProgBadge = addEmbeddableBadgeConfiguration(id: "audioProgress", subject: "Audio Code Progress", color: "7d0000")
 
-def bytesToDecompile = addEmbeddableBadgeConfiguration(id: "bytesLeft", subject: "Remaining Decompilable Bytes")
-def m2cFuncs = addEmbeddableBadgeConfiguration(id: "m2c", subject: "Remaining Functions")
-def nonmatchingFuncs = addEmbeddableBadgeConfiguration(id: "nonmatching", subject: "Non-matching Functions")
+def bytesToDecompile = addEmbeddableBadgeConfiguration(id: "bytesLeft", subject: "Remaining Decompilable Bytes", color: "7d0000")
+def m2cFuncs = addEmbeddableBadgeConfiguration(id: "m2c", subject: "Remaining Functions", color: "7d0000")
+def nonmatchingFuncs = addEmbeddableBadgeConfiguration(id: "nonmatching", subject: "Non-matching Functions", color: "7d0000")
 
 pipeline {
   agent any
