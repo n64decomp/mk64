@@ -29,6 +29,9 @@ pipeline {
       }
     }
     stage('Update progress') {
+      when {
+        branch 'master'
+      }
       steps {
         script {
           progress = sh(
