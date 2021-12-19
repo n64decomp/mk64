@@ -535,12 +535,10 @@ void func_800921C0(s32 test, s32 target, s32 alternative_color) {
     if (test == target) {
         if (func_800B4520() != 0) {
             set_text_color(gGlobalTimer % 3);
-        }
-        else{
+        } else {
             set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
         }
-    }
-    else{
+    } else {
         set_text_color(alternative_color);
     }
 }
@@ -548,8 +546,7 @@ void func_800921C0(s32 test, s32 target, s32 alternative_color) {
 void func_80092224(s32 test, s32 target, s32 alternative_color) {
     if (test == target) {
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-    }
-    else{
+    } else {
         set_text_color(alternative_color);
     }
 }
