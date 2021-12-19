@@ -16,6 +16,7 @@ extern s8    gCupSelection;
 extern u8    gCupSelectionByCourseId[NUM_COURSES];  // D_800E7664
 extern s16   gCurrentCourseId;
 extern char *gDebugSoundModeNames[NUM_SOUND_MODES]; // D_800E7700
+extern s32   gGlobalTimer;                          // D_800DC54C
 extern s8    gGPPointsByCharacterId[8];             // D_8018D9C8
 extern s16   gGPCurrentRacePlayerIdByRank[8];       // D_80164360
 extern s8    gHumanPlayerCount;
