@@ -17,7 +17,7 @@ extern Camera *camera4;
 
 //GLOBAL_ASM("asm/non_matchings/code_800393C0/spawn_player.s")
 
-void spawn_player(Player *player, s8 playerNumber, f32 arg2, f32 arg3, f32 arg4, f32 arg5, u16 arg6, s16 arg7) {
+void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, f32 arg5, u16 arg6, s16 arg7) {
     f32 ret;
     s8 idx;
 
@@ -61,7 +61,7 @@ void spawn_player(Player *player, s8 playerNumber, f32 arg2, f32 arg3, f32 arg4,
     player->rotX = arg2;
     player->rotY = ret;
 
-    D_80164510[playerNumber] = ret;
+    D_80164510[playerIndex] = ret;
 
 
     player->unk_02C = 0;
@@ -193,7 +193,7 @@ void spawn_player(Player *player, s8 playerNumber, f32 arg2, f32 arg3, f32 arg4,
     player->unk_230 = 0.0f;
     player->unk_23C = 0.0f;
 
-    idx = playerNumber;
+    idx = playerIndex;
 
     D_801650D0[0][idx] = 0;
     D_801650D0[1][idx] = 0;
@@ -219,21 +219,21 @@ void spawn_player(Player *player, s8 playerNumber, f32 arg2, f32 arg3, f32 arg4,
     D_801654E0[idx] = 0;
     D_80165500[idx] = 0;
     D_80165520[idx] = 0;
-    D_80165540[playerNumber] = 0;
+    D_80165540[playerIndex] = 0;
     D_8018D900 = 0;
 
-    D_801652E0[playerNumber] = 0;
-    D_801652C0[playerNumber] = 0;
-    D_80165020[playerNumber] = 0;
-    D_80165070[playerNumber][0] = 0.0f;
-    D_80165070[playerNumber][1] = 0.0f;
-    D_80165070[playerNumber][2] = 0.0f;
-    D_80165280[playerNumber] = 0.0f;
-    D_801652A0[playerNumber] = 0.0f;
-    D_801653E0.playerRelatedFlags[playerNumber] = 0;
-    D_80165400[playerNumber] = 0;
-    D_801654A0[playerNumber] = 0;
-    D_801654C0[playerNumber] = 0;
+    D_801652E0[playerIndex] = 0;
+    D_801652C0[playerIndex] = 0;
+    D_80165020[playerIndex] = 0;
+    D_80165070[playerIndex][0] = 0.0f;
+    D_80165070[playerIndex][1] = 0.0f;
+    D_80165070[playerIndex][2] = 0.0f;
+    D_80165280[playerIndex] = 0.0f;
+    D_801652A0[playerIndex] = 0.0f;
+    gPlayerIsAccelerating[playerIndex] = 0;
+    D_80165400[playerIndex] = 0;
+    D_801654A0[playerIndex] = 0;
+    D_801654C0[playerIndex] = 0;
     D_80165340 = 0;
 
     player->unk_1A4 = 0;
@@ -287,14 +287,14 @@ void spawn_player(Player *player, s8 playerNumber, f32 arg2, f32 arg3, f32 arg4,
     player->unk_144 = 0.0f;
     player->unk_148 = 0.0f;
 
-    D_80165300[playerNumber] = 0;
-    D_8018CE10[playerNumber].unk_04 = 0.0f;
-    D_8018CE10[playerNumber].unk_0C = 0.0f;
-    func_80295BF8(playerNumber);
+    D_80165300[playerIndex] = 0;
+    D_8018CE10[playerIndex].unk_04 = 0.0f;
+    D_8018CE10[playerIndex].unk_0C = 0.0f;
+    func_80295BF8(playerIndex);
     func_8005D6C0(player);
-    func_8006B87C(player, playerNumber);
+    func_8006B87C(player, playerIndex);
     if (gModeSelection == BATTLE) {
-        func_8006B7E4(player, playerNumber);
+        func_8006B7E4(player, playerIndex);
     }
     func_802B6540(player->unk_150, player->unk_058, player->unk_05C, player->unk_060, player->unk_02E);
     func_802B6540(player->unk_174, player->unk_058, player->unk_05C, player->unk_060, player->unk_02E);

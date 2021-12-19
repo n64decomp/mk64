@@ -391,8 +391,4 @@ typedef struct {
     f32* unk_00[5];
 } struct_D_800E261C;
 
-typedef struct {
-    s32 playerRelatedFlags[8]; // Set to 1 when acceleration is pressed for each player
-} struct_D_801653E0;
-
 #endif
