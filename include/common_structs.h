@@ -54,7 +54,7 @@ typedef struct {
     s32 shellPos1; // BF8 = empty
     s32 shellPos2; // 422 full
     s32 shellPos3; // 422C full
-    
+
 } Item; // Inventory?
 
 typedef struct {
@@ -84,7 +84,7 @@ typedef struct {
     s32 unk12; // 0
     u16 unk13; // 0x103F7
     u16 unk13_and_a_half;
-    u16 unk14; // 0x05BC00## Surface camera is over? 
+    u16 unk14; // 0x05BC00## Surface camera is over?
     u16 unk14_half;
     f32 collisionX;
     f32 collisionY;
@@ -253,7 +253,7 @@ typedef struct {
     /* 0x01FC */ f32 unk_1FC;
     /* 0x0200 */ s32 unk_200;
     /* 0x0204 */ s16 unk_204;
-    /* 0x0206 */ s16 unk_206; 
+    /* 0x0206 */ s16 unk_206;
     /* 0x0208 */ f32 unk_208;
     /* 0x020C */ f32 unk_20C;
     /* 0x0210 */ f32 unk_210;

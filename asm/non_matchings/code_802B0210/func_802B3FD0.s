@@ -12,7 +12,7 @@ glabel func_802B3FD0
 /* 11D608 802B3FF8 F7B40018 */  sdc1  $f20, 0x18($sp)
 /* 11D60C 802B3FFC 3C01802C */  lui   $at, %hi(D_802B9F68) # $at, 0x802c
 /* 11D610 802B4000 3C10800F */  lui   $s0, %hi(gPlayers) # $s0, 0x800f
-/* 11D614 802B4004 3C158019 */  lui   $s5, %hi(D_8018D8C0) # $s5, 0x8019
+/* 11D614 802B4004 3C158019 */  lui   $s5, %hi(gPlayerBalloonCount) # $s5, 0x8019
 /* 11D618 802B4008 3C16800E */  lui   $s6, %hi(D_800DC4DC) # $s6, 0x800e
 /* 11D61C 802B400C 00809025 */  move  $s2, $a0
 /* 11D620 802B4010 00A09825 */  move  $s3, $a1
@@ -20,7 +20,7 @@ glabel func_802B3FD0
 /* 11D628 802B4018 241EFFFF */  li    $fp, -1
 /* 11D62C 802B401C C4349F68 */  lwc1  $f20, %lo(D_802B9F68)($at)
 /* 11D630 802B4020 26D6C4DC */  addiu $s6, %lo(D_800DC4DC) # addiu $s6, $s6, -0x3b24
-/* 11D634 802B4024 26B5D8C0 */  addiu $s5, %lo(D_8018D8C0) # addiu $s5, $s5, -0x2740
+/* 11D634 802B4024 26B5D8C0 */  addiu $s5, %lo(gPlayerBalloonCount) # addiu $s5, $s5, -0x2740
 /* 11D638 802B4028 26106990 */  addiu $s0, %lo(gPlayers) # addiu $s0, $s0, 0x6990
 /* 11D63C 802B402C 00008825 */  move  $s1, $zero
 /* 11D640 802B4030 24140004 */  li    $s4, 4
@@ -40,7 +40,7 @@ glabel func_802B3FD0
 /* 11D674 802B4064 0C0AD47A */  jal   func_802B51E8
 /* 11D678 802B4068 26650018 */   addiu $a1, $s3, 0x18
 /* 11D67C 802B406C 4614003C */  c.lt.s $f0, $f20
-/* 11D680 802B4070 00000000 */  nop   
+/* 11D680 802B4070 00000000 */  nop
 /* 11D684 802B4074 45020013 */  bc1fl .L802B40C4
 /* 11D688 802B4078 26310001 */   addiu $s1, $s1, 1
 /* 11D68C 802B407C 8EC90000 */  lw    $t1, ($s6)
@@ -52,14 +52,14 @@ glabel func_802B3FD0
 /* 11D6A4 802B4094 000B6403 */  sra   $t4, $t3, 0x10
 /* 11D6A8 802B4098 0180F025 */  move  $fp, $t4
 /* 11D6AC 802B409C 16E00002 */  bnez  $s7, .L802B40A8
-/* 11D6B0 802B40A0 00000000 */   nop   
+/* 11D6B0 802B40A0 00000000 */   nop
 /* 11D6B4 802B40A4 0007000D */  break 7
 .L802B40A8:
 /* 11D6B8 802B40A8 2401FFFF */  li    $at, -1
 /* 11D6BC 802B40AC 16E10004 */  bne   $s7, $at, .L802B40C0
 /* 11D6C0 802B40B0 3C018000 */   lui   $at, 0x8000
 /* 11D6C4 802B40B4 15410002 */  bne   $t2, $at, .L802B40C0
-/* 11D6C8 802B40B8 00000000 */   nop   
+/* 11D6C8 802B40B8 00000000 */   nop
 /* 11D6CC 802B40BC 0006000D */  break 6
 .L802B40C0:
 /* 11D6D0 802B40C0 26310001 */  addiu $s1, $s1, 1

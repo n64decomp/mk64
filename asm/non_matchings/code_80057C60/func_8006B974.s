@@ -2,9 +2,9 @@ glabel func_8006B974
 /* 06C574 8006B974 00057600 */  sll   $t6, $a1, 0x18
 /* 06C578 8006B978 000E7E03 */  sra   $t7, $t6, 0x18
 /* 06C57C 8006B97C 000F4040 */  sll   $t0, $t7, 1
-/* 06C580 8006B980 3C098019 */  lui   $t1, %hi(D_8018D8C0)
+/* 06C580 8006B980 3C098019 */  lui   $t1, %hi(gPlayerBalloonCount)
 /* 06C584 8006B984 01284821 */  addu  $t1, $t1, $t0
-/* 06C588 8006B988 8529D8C0 */  lh    $t1, %lo(D_8018D8C0)($t1)
+/* 06C588 8006B988 8529D8C0 */  lh    $t1, %lo(gPlayerBalloonCount)($t1)
 /* 06C58C 8006B98C 0006C600 */  sll   $t8, $a2, 0x18
 /* 06C590 8006B990 0018CE03 */  sra   $t9, $t8, 0x18
 /* 06C594 8006B994 AFA40000 */  sw    $a0, ($sp)
@@ -21,4 +21,4 @@ glabel func_8006B974
 /* 06C5C0 8006B9C0 A420D5F0 */  sh    $zero, %lo(D_8018D5F0)($at)
 .L8006B9C4:
 /* 06C5C4 8006B9C4 03E00008 */  jr    $ra
-/* 06C5C8 8006B9C8 00000000 */   nop   
+/* 06C5C8 8006B9C8 00000000 */   nop
