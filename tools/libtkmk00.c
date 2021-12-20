@@ -3,6 +3,10 @@
 
 #include "libtkmk00.h"
 #include "utils.h"
+#if defined(_WIN32) || defined(_WIN64)
+#include <io.h>
+#include <fcntl.h>
+#endif
 
 #define TKMK00_VERSION "0.1"
 
