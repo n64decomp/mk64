@@ -4,13 +4,12 @@
 #include <string.h>
 #include <inttypes.h>
 
-#include <algorithm>
 #include <map>
 #include <set>
 #include <vector>
 #include <string>
 
-#include <capstone.h>
+#include <capstone/capstone.h>
 
 #include "elf.h"
 
@@ -20,7 +19,14 @@
 #define TRACE 0
 #endif
 
+#ifndef ugen53
+#define ugen53 0
+#endif
+
 #define LABELS_64_BIT 1
+
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 #define u32be(x) (uint32_t)(((x & 0xff) << 24) + ((x & 0xff00) << 8) + ((x & 0xff0000) >> 8) + ((uint32_t)(x) >> 24))
 #define u16be(x) (uint16_t)(((x & 0xff) << 8) + ((x & 0xff00) >> 8))
@@ -70,8 +76,6 @@ struct Function {
     bool v0_in;
     bool referenced_by_function_pointer;
 };
-
-static bool conservative;
 
 static csh handle;
 
@@ -162,7 +166,7 @@ static const struct {
     {"freopen", "pppp"},
     {"fclose", "ip"},
     {"ftell", "ip"},
-    {"rewind", "vp"},
+    {"rewind", "ip"},
     {"fseek", "ipii"},
     {"lseek", "iiii"},
     {"fflush", "ip"},
@@ -278,31 +282,24 @@ static const struct {
 static void disassemble(void) {
     csh handle;
     cs_insn *disasm;
-    size_t disasm_size = 0;
+    static size_t disasm_size;
     assert(cs_open(CS_ARCH_MIPS, (cs_mode)(CS_MODE_MIPS64 | CS_MODE_BIG_ENDIAN), &handle) == CS_ERR_OK);
     cs_option(handle, CS_OPT_DETAIL, CS_OPT_ON);
-    insns.reserve(1 + text_section_len / sizeof(uint32_t)); // +1 for dummy instruction
-    while (text_section_len > disasm_size * sizeof(uint32_t)) {
-        size_t disasm_len = disasm_size * sizeof(uint32_t);
-        size_t remaining = text_section_len - disasm_len;
-        size_t current_len = std::min<size_t>(remaining, 1024);
-        size_t cur_disasm_size = cs_disasm(handle, &text_section[disasm_len], current_len, text_vaddr + disasm_len, 0, &disasm);
-        disasm_size += cur_disasm_size;
-        for (size_t i = 0; i < cur_disasm_size; i++) {
-            insns.push_back(Insn());
-            Insn& insn = insns.back();
-            insn.id = disasm[i].id;
-            insn.mnemonic = disasm[i].mnemonic;
-            insn.op_str = disasm[i].op_str;
-            if (disasm[i].detail != nullptr && disasm[i].detail->mips.op_count > 0) {
-                insn.op_count = disasm[i].detail->mips.op_count;
-                memcpy(insn.operands, disasm[i].detail->mips.operands, sizeof(insn.operands));
-            }
-            insn.is_jump = cs_insn_group(handle, &disasm[i], MIPS_GRP_JUMP) || insn.id == MIPS_INS_JAL || insn.id == MIPS_INS_BAL || insn.id == MIPS_INS_JALR;
-            insn.linked_insn = -1;
+    disasm_size = cs_disasm(handle, text_section, text_section_len, text_vaddr, 0, &disasm);
+    for (size_t i = 0; i < disasm_size; i++) {
+        insns.push_back(Insn());
+        Insn& insn = insns.back();
+        insn.id = disasm[i].id;
+        insn.mnemonic = disasm[i].mnemonic;
+        insn.op_str = disasm[i].op_str;
+        if (disasm[i].detail != nullptr && disasm[i].detail->mips.op_count > 0) {
+            insn.op_count = disasm[i].detail->mips.op_count;
+            memcpy(insn.operands, disasm[i].detail->mips.operands, sizeof(insn.operands));
         }
-        cs_free(disasm, cur_disasm_size);
+        insn.is_jump = cs_insn_group(handle, &disasm[i], MIPS_GRP_JUMP) || insn.id == MIPS_INS_JAL || insn.id == MIPS_INS_BAL || insn.id == MIPS_INS_JALR;
+        insn.linked_insn = -1;
     }
+    cs_free(disasm, disasm_size);
     cs_close(&handle);
 
     {
@@ -339,7 +336,7 @@ static void link_with_lui(int offset, uint32_t reg, int mem_imm)
 #define MAX_LOOKBACK 128
     // don't attempt to compute addresses for zero offset
     // end search after some sane max number of instructions
-    int end_search = std::max(0, offset - MAX_LOOKBACK);
+    int end_search = MAX(0, offset - MAX_LOOKBACK);
     for (int search = offset - 1; search >= end_search; search--) {
         // use an `if` instead of `case` block to allow breaking out of the `for` loop
         if (insns[search].id == MIPS_INS_LUI) {
@@ -426,7 +423,7 @@ static void link_with_lui(int offset, uint32_t reg, int mem_imm)
 static void link_with_jalr(int offset)
 {
     // end search after some sane max number of instructions
-    int end_search = std::max(0, offset - MAX_LOOKBACK);
+    int end_search = MAX(0, offset - MAX_LOOKBACK);
     for (int search = offset - 1; search >= end_search; search--) {
         if (insns[search].operands[0].reg == MIPS_REG_T9) {
             if (insns[search].id == MIPS_INS_LW || insns[search].id == MIPS_INS_LI) {
@@ -1639,7 +1636,7 @@ static void dump_instr(int i) {
         printf("++cnt; printf(\"pc=0x%08x%s%s\\n\"); ", text_vaddr + i * 4, symbol_name ? " " : "", symbol_name ? symbol_name : "");
     }
     Insn& insn = insns[i];
-    if (!insn.is_jump && !conservative) {
+    if (!insn.is_jump && !ugen53) {
         switch (insn_to_type(insn)) {
             case TYPE_1S:
                 if (!(insn.f_livein & map_reg(insn.operands[0].reg))) {
@@ -2159,6 +2156,12 @@ static void dump_instr(int i) {
             printf("lo = %s * %s;\n", r(insn.operands[0].reg), r(insn.operands[1].reg));
             printf("hi = (uint32_t)((uint64_t)%s * (uint64_t)%s >> 32);\n", r(insn.operands[0].reg), r(insn.operands[1].reg));
             break;
+        case MIPS_INS_SQRT:
+            printf("%s = sqrtf(%s);\n", fr(insn.operands[0].reg), fr(insn.operands[1].reg));
+            break;
+        //case MIPS_INS_FSQRT:
+        //    printf("%s = sqrtf(%s);\n", wr(insn.operands[0].reg), wr(insn.operands[1].reg));
+        //    break;
         case MIPS_INS_NEGU:
             printf("%s = -%s;\n", r(insn.operands[0].reg), r(insn.operands[1].reg));
             break;
@@ -2337,16 +2340,16 @@ static void dump_c(void) {
     uint32_t max_addr = 0;
 
     if (data_section_len > 0) {
-        min_addr = std::min(min_addr, data_vaddr);
-        max_addr = std::max(max_addr, data_vaddr + data_section_len);
+        min_addr = MIN(min_addr, data_vaddr);
+        max_addr = MAX(max_addr, data_vaddr + data_section_len);
     }
     if (rodata_section_len > 0) {
-        min_addr = std::min(min_addr, rodata_vaddr);
-        max_addr = std::max(max_addr, rodata_vaddr + rodata_section_len);
+        min_addr = MIN(min_addr, rodata_vaddr);
+        max_addr = MAX(max_addr, rodata_vaddr + rodata_section_len);
     }
     if (bss_section_len) {
-        min_addr = std::min(min_addr, bss_vaddr);
-        max_addr = std::max(max_addr, bss_vaddr + bss_section_len);
+        min_addr = MIN(min_addr, bss_vaddr);
+        max_addr = MAX(max_addr, bss_vaddr + bss_section_len);
     }
 
     min_addr = min_addr & ~0xfff;
@@ -2357,7 +2360,7 @@ static void dump_c(void) {
     stack_bottom -= 16; // for main's stack frame
 
     printf("#include \"header.h\"\n");
-    if (conservative) {
+    if (ugen53) {
         printf("static uint32_t s0, s1, s2, s3, s4, s5, s6, s7, fp;\n");
     }
     printf("static const uint32_t rodata[] = {\n");
@@ -2485,7 +2488,7 @@ static void dump_c(void) {
         dump_function_signature(f, start_addr);
         printf(" {\n");
         printf("const uint32_t zero = 0;\n");
-        if (!conservative) {
+        if (!ugen53) {
             printf("uint32_t at = 0, v1 = 0, t0 = 0, t1 = 0, t2 = 0,\n");
             printf("t3 = 0, t4 = 0, t5 = 0, t6 = 0, t7 = 0, s0 = 0, s1 = 0, s2 = 0, s3 = 0, s4 = 0, s5 = 0,\n");
             printf("s6 = 0, s7 = 0, t8 = 0, t9 = 0, gp = 0, fp = 0, s8 = 0, ra = 0;\n");
@@ -2910,14 +2913,8 @@ size_t read_file(const char *file_name, uint8_t **data) {
 }
 
 int main(int argc, char *argv[]) {
-    const char *filename = argv[1];
-    if (strcmp(filename, "--conservative") == 0) {
-        conservative = true;
-        filename = argv[2];
-    }
-
     uint8_t *data;
-    size_t len = read_file(filename, &data);
+    size_t len = read_file(argv[1], &data);
     parse_elf(data, len);
     assert(cs_open(CS_ARCH_MIPS, (cs_mode)(CS_MODE_MIPS64 | CS_MODE_BIG_ENDIAN), &handle) == CS_ERR_OK);
     cs_option(handle, CS_OPT_DETAIL, CS_OPT_ON);
