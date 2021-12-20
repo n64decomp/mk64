@@ -99,7 +99,7 @@ extern s16 D_80165020[];
 extern Vec3f D_80165070[];
 extern f32 D_80165280[];
 extern f32 D_801652A0[];
-extern s32 D_801653E0[];
+extern s32 gPlayerIsThrottleActive[];
 extern s32 D_80165400[];
 extern s32 D_801654A0[];
 extern s32 D_801654C0[];

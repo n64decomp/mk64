@@ -163,7 +163,7 @@ glabel D_80165340
 glabel D_801653C0
 .skip 32
 
-glabel D_801653E0
+glabel gPlayerIsThrottleActive
 .skip 32
 
 glabel D_80165400
@@ -1704,7 +1704,8 @@ glabel D_8018D860
 glabel D_8018D890
 .skip 48
 
-glabel D_8018D8C0
+# Indicates how many balloons each player has
+glabel gPlayerBalloonCount
 .skip 16
 
 glabel D_8018D8D0
