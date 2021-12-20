@@ -41,7 +41,7 @@ sudo pacman -S base-devel capstone python
 Install the following AUR packages:
 * [mips64-elf-binutils](https://aur.archlinux.org/packages/mips64-elf-binutils) (AUR)
 
-Review the n64decomp/sm64 readme for instructions to compile  on distributions.
+Review the n64decomp/sm64 readme for instructions to compile in other distributions.
 
 ##### Windows
 
