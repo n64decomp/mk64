@@ -43,7 +43,7 @@
         param[i] = MEM_S8(param##_addr + i); \
     }
 
-#if !defined(IDO53) && !defined(IDO71)
+#if !defined(IDO53) && !defined(IDO71) && !defined(IDO72)
 #define IDO71
 #endif
 
@@ -66,6 +66,15 @@
 #define CTYPE_ADDR 0x0fb4cba0
 #define LIBC_ADDR 0x0fb4c000
 #define LIBC_SIZE 0x3000
+#endif
+
+#ifdef IDO72
+// IDO 7.2
+#define IOB_ADDR   0x0fb49454
+#define ERRNO_ADDR 0x0fb49290
+#define CTYPE_ADDR 0x0fb46db0
+#define LIBC_ADDR  0x0fb46000
+#define LIBC_SIZE  0x4000
 #endif
 
 #define STDIN_ADDR IOB_ADDR
@@ -177,13 +186,13 @@ static char bin_dir[PATH_MAX + 1];
 #endif
 static int g_file_max = 3;
 
-#if defined(__CYGWIN__) || defined(__APPLE__)
+#ifdef __CYGWIN__
 static size_t g_Pagesize;
 #endif
 
 static uint8_t *memory_map(size_t length)
 {
-#if defined(__CYGWIN__) || defined(__APPLE__)
+#ifdef __CYGWIN__
     uint8_t *mem = mmap(0, length, PROT_NONE, MAP_PRIVATE | MAP_ANONYMOUS | MAP_NORESERVE, -1, 0);
     g_Pagesize = sysconf(_SC_PAGESIZE);
     assert(((uintptr_t)mem & (g_Pagesize-1)) == 0);
@@ -201,7 +210,7 @@ static void memory_allocate(uint8_t *mem, uint32_t start, uint32_t end)
 {
     assert(start >= MEM_REGION_START);
     assert(end <= MEM_REGION_START + MEM_REGION_SIZE);
-#if defined(__CYGWIN__) || defined(__APPLE__)
+#ifdef __CYGWIN__
     uintptr_t _start = ((uintptr_t)mem + start) & ~(g_Pagesize-1);
     uintptr_t _end = ((uintptr_t)mem + end + (g_Pagesize-1)) & ~(g_Pagesize-1);
 
@@ -1327,7 +1336,7 @@ int wrapper_ftell(uint8_t *mem, uint32_t fp_addr) {
     return res;
 }
 
-void wrapper_rewind(uint8_t *mem, uint32_t fp_addr) {
+int wrapper_rewind(uint8_t *mem, uint32_t fp_addr) {
     (void)wrapper_fseek(mem, fp_addr, 0, SEEK_SET);
     struct FILE_irix *f = (struct FILE_irix *)&MEM_U32(fp_addr);
     f->_flag &= ~IOERR;
@@ -1778,7 +1787,6 @@ int wrapper_setvbuf(uint8_t *mem, uint32_t fp_addr, uint32_t buf_addr, int mode,
     f->_ptr_addr = buf_addr;
     f->_cnt = 0;
     bufendtab[(fp_addr - IOB_ADDR) / sizeof(struct FILE_irix)] = size;
-    return 0;
 }
 
 int wrapper___semgetc(uint8_t *mem, uint32_t fp_addr) {
@@ -2181,8 +2189,15 @@ int wrapper_pathconf(uint8_t *mem, uint32_t path_addr, int name) {
 }
 
 uint32_t wrapper_getenv(uint8_t *mem, uint32_t name_addr) {
-    // Return null for everything, for now
-    return 0;
+    STRING(name);
+    const char *value = getenv(name);
+    if (value == NULL) {
+        return 0;
+    }
+    size_t value_size = strlen(value) + 1;
+    uint32_t buf_addr = wrapper_malloc(mem, value_size);
+    strcpy1(mem, buf_addr, value);
+    return buf_addr;
 }
 
 uint32_t wrapper_gettxt(uint8_t *mem, uint32_t msgid_addr, uint32_t default_str_addr) {
@@ -2355,7 +2370,19 @@ int wrapper_mkstemp(uint8_t *mem, uint32_t name_addr) {
 
 uint32_t wrapper_tmpfile(uint8_t *mem) {
     // create and fopen a temporary file that is removed when the program exits
-    char name[] = "/tmp/copt_temp_XXXXXX";
+    const char *tmpdir = getenv("TMPDIR");
+    if (tmpdir == NULL) {
+        tmpdir = "/tmp";
+    }
+
+    char name[PATH_MAX + 1] = {0};
+    int n = snprintf(name, sizeof(name), "%s/copt_temp_XXXXXX", tmpdir);
+    if (n < 0 || n >= sizeof(name)) {
+        // This isn't the best errno code, but it is one that can be returned by tmpfile
+        MEM_U32(ERRNO_ADDR) = EACCES;
+        return 0;
+    }
+
     int fd = mkstemp(name);
     if (fd < 0) {
         MEM_U32(ERRNO_ADDR) = errno;
