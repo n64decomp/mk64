@@ -1,5 +1,5 @@
 /* Originally func_80092C90 */
-glabel get_ascii_char_width_index
+glabel char_to_glyph_index
 /* 093890 80092C90 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 093894 80092C94 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 093898 80092C98 80820000 */  lb    $v0, ($a0)
