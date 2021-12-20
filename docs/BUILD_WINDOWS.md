@@ -7,7 +7,7 @@ Please note that this action may impact the security of your system. Prior to pr
 
 ### Preamble
 Any misteps may require a complete uninstall of `MSYS2 MinGW x64` and restarting from the very beginning.  
-It is unknown if Msys MinGW x32 works.
+It is unknown if `MSYS MinGW x32` works.
 
 ### Step 1: Download MSYS2 MinGW x64
 
