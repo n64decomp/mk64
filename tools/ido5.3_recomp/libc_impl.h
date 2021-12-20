@@ -49,7 +49,7 @@ uint32_t wrapper_freopen(uint8_t *mem, uint32_t path_addr, uint32_t mode_addr, u
 int wrapper_fclose(uint8_t *mem, uint32_t fp_addr);
 int wrapper_fflush(uint8_t *mem, uint32_t fp_addr);
 int wrapper_ftell(uint8_t *mem, uint32_t fp_addr);
-void wrapper_rewind(uint8_t *mem, uint32_t fp_addr);
+int wrapper_rewind(uint8_t *mem, uint32_t fp_addr);
 int wrapper_fseek(uint8_t *mem, uint32_t fp_addr, int offset, int origin);
 int wrapper_lseek(uint8_t *mem, int fd, int offset, int whence);
 int wrapper_dup(uint8_t *mem, int fd);
