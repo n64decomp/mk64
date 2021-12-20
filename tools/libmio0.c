@@ -8,7 +8,7 @@
 
 #include "libmio0.h"
 #include "utils.h"
-
+#define ALIGN(VAL_, ALIGNMENT_) (((VAL_) + ((ALIGNMENT_) - 1)) & ~((ALIGNMENT_) - 1))
 // defines
 
 #define MIO0_VERSION "0.1"
@@ -192,7 +192,7 @@ int mio0_decode(const unsigned char *in, unsigned char *out, unsigned int *end)
 
    return bytes_written;
 }
-
+//extern void print_hex(const unsigned char *buf, int length); 
 int mio0_encode(const unsigned char *in, unsigned int length, unsigned char *out)
 {
    unsigned char *bit_buf;
@@ -271,8 +271,10 @@ int mio0_encode(const unsigned char *in, unsigned int length, unsigned char *out
    // compute final sizes and offsets
    // +7 so int division accounts for all bits
    bit_length = ((bit_idx + 7) / 8);
+   
    // compressed data after control bits and aligned to 4-byte boundary
    comp_offset = ALIGN(MIO0_HEADER_LENGTH + bit_length, 4);
+   //printf("%#010x\n", MIO0_HEADER_LENGTH + bit_length);
    uncomp_offset = comp_offset + comp_idx;
    bytes_written = uncomp_offset + uncomp_idx;
 
@@ -282,7 +284,10 @@ int mio0_encode(const unsigned char *in, unsigned int length, unsigned char *out
    write_u32_be(&out[8], comp_offset);
    write_u32_be(&out[12], uncomp_offset);
    // output data
+   memset(&out[MIO0_HEADER_LENGTH], 0, MIO0_HEADER_LENGTH + bit_length);
    memcpy(&out[MIO0_HEADER_LENGTH], bit_buf, bit_length);
+
+   //print_hex(bit_buf, bit_length);
    memcpy(&out[comp_offset], comp_buf, comp_idx);
    memcpy(&out[uncomp_offset], uncomp_buf, uncomp_idx);
 
