@@ -238,6 +238,7 @@ int ia2raw(uint8_t *raw, const ia *img, int width, int height, int depth)
 {
    int size = (width * height * depth + 7) / 8;
    INFO("Converting IA%d %dx%d to raw\n", depth, width, height);
+   memset(raw, 0, size);
 
    switch (depth) {
       case 16:
@@ -290,6 +291,7 @@ int i2raw(uint8_t *raw, const ia *img, int width, int height, int depth)
 {
    int size = (width * height * depth + 7) / 8;
    INFO("Converting I%d %dx%d to raw\n", depth, width, height);
+   memset(raw, 0, size);
 
    switch (depth) {
       case 8:
@@ -849,11 +851,11 @@ int main(int argc, char *argv[])
    if (config.mode == MODE_IMPORT) {
       if (0 == strcmp("-", config.bin_filename)) {
          bin_fp = stdout;
-         } else {
+      } else {
          if (config.bin_truncate) {
-            bin_fp = fopen(config.bin_filename, "w");
+            bin_fp = fopen(config.bin_filename, "wb");
          } else {
-            bin_fp = fopen(config.bin_filename, "r+");
+            bin_fp = fopen(config.bin_filename, "r+b");
          }
       }
       if (!bin_fp) {
@@ -904,9 +906,9 @@ int main(int argc, char *argv[])
             int pal_length;
 
             if (config.pal_truncate) {
-               pal_fp = fopen(config.pal_filename, "w");
+               pal_fp = fopen(config.pal_filename, "wb");
             } else {
-               pal_fp = fopen(config.pal_filename, "r+");
+               pal_fp = fopen(config.pal_filename, "r+b");
             }
             if (!pal_fp) {
                ERROR("Error opening \"%s\"\n", config.pal_filename);
@@ -988,7 +990,7 @@ int main(int argc, char *argv[])
          ERROR("Error: must set position width and height for export\n");
          return EXIT_FAILURE;
       }
-      bin_fp = fopen(config.bin_filename, "r");
+      bin_fp = fopen(config.bin_filename, "rb");
       if (!bin_fp) {
          ERROR("Error opening \"%s\"\n", config.bin_filename);
          return -1;
@@ -1025,7 +1027,7 @@ int main(int argc, char *argv[])
             INFO("Extracting %s offset 0x%X, pal.offset 0x%0X, pal.format %s\n", format2str(&config.format),
                  config.bin_offset, config.pal_offset, format2str(&config.pal_format));
 
-            pal_fp = fopen(config.pal_filename, "r");
+            pal_fp = fopen(config.pal_filename, "rb");
             if (!pal_fp) {
                ERROR("Error opening \"%s\"\n", config.bin_filename);
                return EXIT_FAILURE;
