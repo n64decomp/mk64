@@ -45,7 +45,7 @@ Review the n64decomp/sm64 readme for instructions to compile in other distributi
 
 ##### Windows
 
-Compiling on Windows requires `MSYS2 MinGW x64`. The setup process is a bit involved.  
+Compiling on Windows requires `MSYS2 MinGW x64`. The setup process is a tad intensive.  
 
 [Instructions here](docs/BUILD_WINDOWS.md)
 
