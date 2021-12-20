@@ -163,7 +163,7 @@ glabel D_80165340
 glabel D_801653C0
 .skip 32
 
-glabel gPlayerIsAccelerating
+glabel gPlayerIsThrottleActive
 .skip 32
 
 glabel D_80165400

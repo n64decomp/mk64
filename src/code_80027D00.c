@@ -4683,7 +4683,7 @@ void func_80030C34(s32 arg0) {
     temp_a0 = &D_80165460[phi_v0];
     temp_v0 = &D_80165480[phi_v0];
     if (*temp_a0 == 0) {
-        temp_v0_2 = &gPlayerIsAccelerating[phi_v0];
+        temp_v0_2 = &gPlayerIsThrottleActive[phi_v0];
         if (*temp_v0_2 == 1) {
             temp_a1 = &D_80165420[phi_v0];
             temp_a2 = *temp_a1;
@@ -4775,7 +4775,7 @@ void func_80030E00(s32 arg0) {
     temp_a0 = &D_80165460[phi_v0];
     temp_v0 = &D_80165480[phi_v0];
     if (*temp_a0 == 0) {
-        temp_v0_2 = &gPlayerIsAccelerating[phi_v0];
+        temp_v0_2 = &gPlayerIsThrottleActive[phi_v0];
         temp_a1 = &D_80165420[phi_v0];
         if (*temp_v0_2 == 0) {
             temp_a2 = *temp_a1;

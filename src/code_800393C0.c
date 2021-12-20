@@ -230,7 +230,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     D_80165070[playerIndex][2] = 0.0f;
     D_80165280[playerIndex] = 0.0f;
     D_801652A0[playerIndex] = 0.0f;
-    gPlayerIsAccelerating[playerIndex] = 0;
+    gPlayerIsThrottleActive[playerIndex] = 0;
     D_80165400[playerIndex] = 0;
     D_801654A0[playerIndex] = 0;
     D_801654C0[playerIndex] = 0;

@@ -29,8 +29,8 @@ glabel func_80030C34
 /* 031894 80030C94 24020003 */  li    $v0, 3
 .L80030C98:
 /* 031898 80030C98 8D29C4EC */  lw    $t1, %lo(D_800DC4EC)($t1)
-/* 03189C 80030C9C 3C0F8016 */  lui   $t7, %hi(gPlayerIsAccelerating) # $t7, 0x8016
-/* 0318A0 80030CA0 25EF53E0 */  addiu $t7, %lo(gPlayerIsAccelerating) # addiu $t7, $t7, 0x53e0
+/* 03189C 80030C9C 3C0F8016 */  lui   $t7, %hi(gPlayerIsThrottleActive) # $t7, 0x8016
+/* 0318A0 80030CA0 25EF53E0 */  addiu $t7, %lo(gPlayerIsThrottleActive) # addiu $t7, $t7, 0x53e0
 /* 0318A4 80030CA4 14890002 */  bne   $a0, $t1, .L80030CB0
 /* 0318A8 80030CA8 00000000 */   nop
 /* 0318AC 80030CAC 24020004 */  li    $v0, 4
