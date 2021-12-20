@@ -36,7 +36,7 @@ pacman -S gcc
 Download and run: [get_bin.sh](get_bin.sh)
 
 ### Step 5: Compiling recomp.exe in `MSYS2 MinGW x64`
-In `MSYS2 MinGW x64` run:
+In `MSYS2 MinGW x64` run in `mk64/tools/ido5.3_recomp/`:
 ```
 g++ recomp.cpp -o recomp -g -lcapstone -Dugen53
 ```
@@ -47,7 +47,7 @@ In `MSYS2 MSYS` run:
 make -C tools
 ```
 If the make file is broken then manually compile each executable.
-Generate C file:
+Generate C file in `mk64/tools/ido5.3_recomp/`:
 ```
 ./recomp ~/ido7.1_compiler/usr/lib/as1 > as1_c.c
 ```
@@ -59,6 +59,7 @@ gcc libc_impl.c as1_c.c -o as1 -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
 mk64 requires the following: as1, cc, cfe, copt, ugen, ujoin, uld, umerge, uopt
 
 ### Step 7: Compile mk64 in `MSYS2 MinGW x64`
+In `/mk64/` run:
 ```
 make -j#
 ```
