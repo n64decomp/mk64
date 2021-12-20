@@ -20,13 +20,13 @@ glabel print_text1
 /* 093FD4 800933D4 00C08025 */  move  $s0, $a2
 /* 093FD8 800933D8 11C0002D */  beqz  $t6, .L80093490
 /* 093FDC 800933DC 00008825 */   move  $s1, $zero
-/* 093FE0 800933E0 3C16800F */  lui   $s6, %hi(gCharacterWidthMap) # $s6, 0x800f
-/* 093FE4 800933E4 26D6F690 */  addiu $s6, %lo(gCharacterWidthMap) # addiu $s6, $s6, -0x970
+/* 093FE0 800933E0 3C16800F */  lui   $s6, %hi(gGlyphDisplayWidth) # $s6, 0x800f
+/* 093FE4 800933E4 26D6F690 */  addiu $s6, %lo(gGlyphDisplayWidth) # addiu $s6, $s6, -0x970
 /* 093FE8 800933E8 C7B60080 */  lwc1  $f22, 0x80($sp)
 /* 093FEC 800933EC 241EFFFF */  li    $fp, -1
 /* 093FF0 800933F0 2417FFFE */  li    $s7, -2
 .L800933F4:
-/* 093FF4 800933F4 0C024B24 */  jal   get_ascii_char_width_index
+/* 093FF4 800933F4 0C024B24 */  jal   char_to_glyph_index
 /* 093FF8 800933F8 02002025 */   move  $a0, $s0
 /* 093FFC 800933FC 0440000F */  bltz  $v0, .L8009343C
 /* 094000 80093400 28410030 */   slti  $at, $v0, 0x30
@@ -70,9 +70,9 @@ glabel print_text1
 /* 09408C 8009348C 00000000 */   nop   
 .L80093490:
 /* 094090 80093490 8FA20088 */  lw    $v0, 0x88($sp)
-/* 094094 80093494 3C16800F */  lui   $s6, %hi(gCharacterWidthMap) # $s6, 0x800f
+/* 094094 80093494 3C16800F */  lui   $s6, %hi(gGlyphDisplayWidth) # $s6, 0x800f
 /* 094098 80093498 24010001 */  li    $at, 1
-/* 09409C 8009349C 26D6F690 */  addiu $s6, %lo(gCharacterWidthMap) # addiu $s6, $s6, -0x970
+/* 09409C 8009349C 26D6F690 */  addiu $s6, %lo(gGlyphDisplayWidth) # addiu $s6, $s6, -0x970
 /* 0940A0 800934A0 2417FFFE */  li    $s7, -2
 /* 0940A4 800934A4 241EFFFF */  li    $fp, -1
 /* 0940A8 800934A8 1041000A */  beq   $v0, $at, .L800934D4
@@ -121,13 +121,13 @@ glabel print_text1
 /* 094138 80093538 5120004A */  beql  $t1, $zero, .L80093664
 /* 09413C 8009353C 8E820000 */   lw    $v0, ($s4)
 .L80093540:
-/* 094140 80093540 0C024B24 */  jal   get_ascii_char_width_index
+/* 094140 80093540 0C024B24 */  jal   char_to_glyph_index
 /* 094144 80093544 02402025 */   move  $a0, $s2
 /* 094148 80093548 04400027 */  bltz  $v0, .L800935E8
 /* 09414C 8009354C 00408825 */   move  $s1, $v0
 /* 094150 80093550 8FAC0074 */  lw    $t4, 0x74($sp)
-/* 094154 80093554 3C0B800E */  lui   $t3, %hi(D_800E7E84) # $t3, 0x800e
-/* 094158 80093558 256B7E84 */  addiu $t3, %lo(D_800E7E84) # addiu $t3, $t3, 0x7e84
+/* 094154 80093554 3C0B800E */  lui   $t3, %hi(gGlyphTextureLUT) # $t3, 0x800e
+/* 094158 80093558 256B7E84 */  addiu $t3, %lo(gGlyphTextureLUT) # addiu $t3, $t3, 0x7e84
 /* 09415C 8009355C 448C3000 */  mtc1  $t4, $f6
 /* 094160 80093560 00115080 */  sll   $t2, $s1, 2
 /* 094164 80093564 014B8021 */  addu  $s0, $t2, $t3

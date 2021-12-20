@@ -828,7 +828,7 @@ void func_80092C80(void) {
 // to get a character's width in pixels
 // This technically matches, but due to linker alignment shenanigans actually
 // matching will have to wait
-s32 get_ascii_char_width_index(char *character) {
+s32 char_to_glyph_index(char *character) {
     s32 index = 1;
 
     // Uppercase Letters
@@ -879,6 +879,7 @@ s32 get_ascii_char_width_index(char *character) {
             index = 0x1D;
             break;
         // $
+        // Doesn't appear to have a texture?
         case 0x24:                                  /* switch 2 */
             index = 0x1E;
             break;
@@ -899,6 +900,7 @@ s32 get_ascii_char_width_index(char *character) {
             index = 0x2C;
             break;
         // (
+        // Displayed as "cc"
         case 0x28:                                  /* switch 2 */
             index = 0x2D;
             break;
@@ -914,7 +916,7 @@ s32 get_ascii_char_width_index(char *character) {
     return index;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/get_ascii_char_width_index.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/char_to_glyph_index.s")
 #endif
 
 s32 func_80092DF8(void) {
@@ -1031,22 +1033,22 @@ s32 func_80092EE4(void *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80092EE4.s")
 #endif
 
-extern s16 gCharacterWidthMap[]; // D_800EF690
+extern s16 gGlyphDisplayWidth[]; // D_800EF690
 
 //Originally func_80093034
 s32 get_string_width(char *buffer) {
-    s32 width_index;
+    s32 glyphIndex;
     s32 stringWidth = 0;
 
     if (*buffer != 0) {
         do {
-            width_index = get_ascii_char_width_index(buffer);
-            if (width_index >= 0) {
-                stringWidth += gCharacterWidthMap[width_index];
-            } else if (width_index == -1) {
+            glyphIndex = char_to_glyph_index(buffer);
+            if (glyphIndex >= 0) {
+                stringWidth += gGlyphDisplayWidth[glyphIndex];
+            } else if (glyphIndex == -1) {
                 stringWidth += 7;
             }
-            if (width_index >= 0x30) {
+            if (glyphIndex >= 0x30) {
                 buffer += 2;
             } else {
                 buffer += 1;
@@ -1075,31 +1077,31 @@ void print_text1(s32, s32, char*, s32, f32, f32, s32);
 void print_text2(s32, s32, char*, s32, f32, f32, s32);
 extern Gfx D_020077A8[];
 extern Gfx D_020077D8[];
-extern s32 D_800E7E84[];
+extern s32 gGlyphTextureLUT[];
 extern Gfx *gDisplayListHead;
 
 // "tracking" is a uniform spacing between all characters in a given word
 void print_text0(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale, s32 arg6) {
     s32 stringWidth = 0;
-    s32 characterWidthIndex;
+    s32 glyphIndex;
 
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
         do{
-            characterWidthIndex = get_ascii_char_width_index(text);
-            if (characterWidthIndex >= 0) {
-                func_80099184(segmented_to_virtual(D_800E7E84[characterWidthIndex]));
-                gDisplayListHead = func_8009BEF0(gDisplayListHead, segmented_to_virtual(D_800E7E84[characterWidthIndex]), column + (stringWidth * x_scale), row, arg6, x_scale, y_scale);
-                stringWidth += gCharacterWidthMap[characterWidthIndex] + tracking;
+            glyphIndex = char_to_glyph_index(text);
+            if (glyphIndex >= 0) {
+                func_80099184(segmented_to_virtual(gGlyphTextureLUT[glyphIndex]));
+                gDisplayListHead = func_8009BEF0(gDisplayListHead, segmented_to_virtual(gGlyphTextureLUT[glyphIndex]), column + (stringWidth * x_scale), row, arg6, x_scale, y_scale);
+                stringWidth += gGlyphDisplayWidth[glyphIndex] + tracking;
             }
-            else if ((characterWidthIndex != -2) && (characterWidthIndex == -1)) {
+            else if ((glyphIndex != -2) && (glyphIndex == -1)) {
                 stringWidth += tracking + 7;
             }
             else{
                 gSPDisplayList(gDisplayListHead++, D_020077D8);
                 return;
             }
-            if (characterWidthIndex >= 0x30) {
+            if (glyphIndex >= 0x30) {
                 text += 2;
             } else {
                 text += 1;
@@ -1122,21 +1124,21 @@ void func_80093358(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f
 void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale, s32 arg6) {
     char *temp_string = text;
     s32 stringWidth = 0;
-    s32 characterWidthIndex;
+    s32 glyphIndex;
 
     if (*temp_string != 0) {
         do{
-            characterWidthIndex = get_ascii_char_width_index(temp_string);
-            if (characterWidthIndex >= 0) {
-                stringWidth += ((gCharacterWidthMap[characterWidthIndex] + tracking) * x_scale);
+            glyphIndex = char_to_glyph_index(temp_string);
+            if (glyphIndex >= 0) {
+                stringWidth += ((gGlyphDisplayWidth[glyphIndex] + tracking) * x_scale);
             }
-            else if ((characterWidthIndex != -2) && (characterWidthIndex == -1)) {
+            else if ((glyphIndex != -2) && (glyphIndex == -1)) {
                 stringWidth += ((tracking + 7) * x_scale);
             }
             else{
                 return;
             }
-            if (characterWidthIndex >= 0x30) {
+            if (glyphIndex >= 0x30) {
                 temp_string += 2;
             } else {
                 temp_string += 1;
@@ -1167,14 +1169,14 @@ void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
         do{
-            characterWidthIndex = get_ascii_char_width_index(text);
-            if (characterWidthIndex >= 0) {
-                func_80099184(segmented_to_virtual(D_800E7E84[characterWidthIndex]));
-                gDisplayListHead = func_8009BEF0(gDisplayListHead, segmented_to_virtual(D_800E7E84[characterWidthIndex]), column, row, arg6, x_scale, y_scale);
-                column += (gCharacterWidthMap[characterWidthIndex] + tracking);
+            glyphIndex = char_to_glyph_index(text);
+            if (glyphIndex >= 0) {
+                func_80099184(segmented_to_virtual(gGlyphTextureLUT[glyphIndex]));
+                gDisplayListHead = func_8009BEF0(gDisplayListHead, segmented_to_virtual(gGlyphTextureLUT[glyphIndex]), column, row, arg6, x_scale, y_scale);
+                column += (gGlyphDisplayWidth[glyphIndex] + tracking);
                 column *= x_scale;
             }
-            else if ((characterWidthIndex != -2) && (characterWidthIndex == -1)) {
+            else if ((glyphIndex != -2) && (glyphIndex == -1)) {
                 column += (tracking + 7);
                 column *= x_scale;
             }
@@ -1182,7 +1184,7 @@ void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
                 gSPDisplayList(gDisplayListHead++, D_020077D8);
                 return;
             }
-            if (characterWidthIndex >= 0x30) {
+            if (glyphIndex >= 0x30) {
                 text += 2;
             } else {
                 text += 1;
@@ -1214,31 +1216,31 @@ void func_80093754(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f
 void print_text2(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale, s32 arg6) {
     s32 temp_v0_3;
     s32 characterWidth;
-    s32 characterWidthIndex;
+    s32 glyphIndex;
 
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
         do {
-            characterWidthIndex = get_ascii_char_width_index(text);
-            if (characterWidthIndex >= 0) {
-                temp_v0_3 = segmented_to_virtual(D_800E7E84[characterWidthIndex]);
+            glyphIndex = char_to_glyph_index(text);
+            if (glyphIndex >= 0) {
+                temp_v0_3 = segmented_to_virtual(gGlyphTextureLUT[glyphIndex]);
                 func_80099184(temp_v0_3);
-                gDisplayListHead = func_8009BEF0(gDisplayListHead, temp_v0_3, column - (gCharacterWidthMap[characterWidthIndex] / 2), row, arg6, x_scale, y_scale);
-                if ((characterWidthIndex >= 0xD5) && (characterWidthIndex < 0xE0)) {
+                gDisplayListHead = func_8009BEF0(gDisplayListHead, temp_v0_3, column - (gGlyphDisplayWidth[glyphIndex] / 2), row, arg6, x_scale, y_scale);
+                if ((glyphIndex >= 0xD5) && (glyphIndex < 0xE0)) {
                     characterWidth = 0x20;
                 } else {
                     characterWidth = 0xC;
                 }
                 column = column + (s32)((characterWidth + tracking) * x_scale);
             }
-            else if ((characterWidthIndex != -2) && (characterWidthIndex == -1)) {
+            else if ((glyphIndex != -2) && (glyphIndex == -1)) {
                 column = column + (s32)((tracking + 7) * x_scale);
             }
             else{
                 gSPDisplayList(gDisplayListHead++, D_020077D8);
                 return;
             }
-            if (characterWidthIndex >= 0x30) {
+            if (glyphIndex >= 0x30) {
                 text += 2;
             } else {
                 text += 1;
