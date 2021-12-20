@@ -37,7 +37,7 @@ extern u8 *D_8015F8C4;
 extern u8 *D_8015F8C8;
 extern u8 *D_8015F8CC;
 
-extern s16 D_8018D8C0[];
+extern s16 gPlayerBalloonCount[];
 extern s16 D_8016348C;
 extern s8 gCupCourseSelection;
 extern s32 D_800DC544;
@@ -133,7 +133,7 @@ void func_8028DF00(void) {
     s32 i;
     for (i = 0; i < 4; i++) {
         D_802BA040[i] = controllers->button;
-        controllers++; 
+        controllers++;
     }
 }
 
@@ -168,14 +168,14 @@ void func_8028E028(void) {
 
 void func_8028E0F0(void) {
     Player *ply;
-    s32 i;
+    s32 playerIndex;
     s16 unk_arr2[4];
     s16 unk_arr[4];
     s16 phi_s1 = 0;
     s16 phi_s2 = 0;
-    
-    for(i = 0; i < 4; i++) {
-        ply = (Player *)&gPlayers[i];
+
+    for(playerIndex = 0; playerIndex < 4; playerIndex++) {
+        ply = (Player *)&gPlayers[playerIndex];
         if (!(ply->unk_000 & PLAYER_EXISTS)) {
             continue;
         }
@@ -183,11 +183,12 @@ void func_8028E0F0(void) {
             continue;
         }
 
-        if (D_8018D8C0[i] < 0) {
+        // If player has no balloons left
+        if (gPlayerBalloonCount[playerIndex] < 0) {
             ply->unk_000 |= PLAYER_CINEMATIC_MODE;
             unk_arr[phi_s2] = (s16) (ply - D_800DC4DC);
             phi_s2++;
-            func_800CA118((u8) i);
+            func_800CA118((u8) playerIndex);
         } else {
             unk_arr2[phi_s1] = (s16) (ply - D_800DC4DC);
             phi_s1++;
@@ -217,7 +218,7 @@ void func_8028E298(void) {
             continue;
         }
             temp_a2 = D_801645B0[i];
-            
+
             temp_v0 = ((2 - gPlayers[i].unk_008) * D_801645C8[temp_a2]);
             temp_v0 += D_801645C8[temp_a2] * (1.0f - D_801644A8[i]);
             temp_v0 /= 15.0f;
@@ -360,7 +361,7 @@ void func_8028E678(void) {
                 D_800DC5EC->screenWidth = 160;
                 phi_a0_10++;
             }
-            
+
             if (D_800DC5F0->screenWidth < 160) {
                 D_800DC5F0->screenWidth = 160;
                 phi_a0_10++;
@@ -556,7 +557,7 @@ void func_8028EC98(s32 arg0) {
             func_800C8EAC(25);
             break;
     }
-    
+
 }
 
 void func_8028EDA8(void) {
@@ -570,7 +571,7 @@ void func_8028EDA8(void) {
     if (D_800DC510 == 2) {
         D_800DC510 = 3;
     }
-        
+
     for (i = 0; i < 8; i++) {
 
         if ((gPlayers[i].unk_000 & PLAYER_EXISTS) == 0) {
@@ -580,9 +581,9 @@ void func_8028EDA8(void) {
         // Sets player to human.
         if (gPlayers[i].unk_000 & PLAYER_START_SEQUENCE) {
             gPlayers[i].unk_000 ^= PLAYER_START_SEQUENCE;
-        }    
+        }
     }
-    
+
 }
 
 f32 func_8028EE8C(s32 arg0) {
@@ -613,7 +614,7 @@ void func_8028EF28(void) {
         if (lapCount[i] < gPlayers[i].unk_008) {
             gPlayers[i].unk_008--;
         } else if (lapCount[i] > gPlayers[i].unk_008) {
-            gPlayers[i].unk_008++; 
+            gPlayers[i].unk_008++;
 
             if ((gPlayers[i].unk_000 & PLAYER_HUMAN) != 0) {
                 if (gPlayers[i].unk_008 == 3) {
@@ -630,7 +631,7 @@ void func_8028EF28(void) {
                     if ((D_802BA032 & PLAYER_EXISTS) == 0) {
                         D_802BA032 |= PLAYER_EXISTS;
                     }
-                    
+
 
                     if (gModeSelection == GRAND_PRIX && gPlayerCountSelection1 == 2 && D_802BA048 == 0) {
                         D_802BA048 = 1;
@@ -715,7 +716,7 @@ void func_8028EF28(void) {
                     func_80005AE8(ply);
                 }
             }
-        } 
+        }
     }
     if ((D_802BA048 != 0) && (D_802BA048 != 100)) {
         D_802BA048 = 100;
@@ -1157,7 +1158,7 @@ void func_8028FCBC(void) {
                         case 1:
                         case 2:
                             if (((D_800DC4DC->unk_000 & PLAYER_CINEMATIC_MODE) != 0) && ((D_800DC4E0->unk_000 & PLAYER_CINEMATIC_MODE) != 0)) {
-                            
+
                                 if (D_800DC4DC->unk_004 < D_800DC4E0->unk_004) {
                                     D_800DC5E8 = 1;
                                 } else {

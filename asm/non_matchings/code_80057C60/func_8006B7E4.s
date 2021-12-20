@@ -30,10 +30,10 @@ glabel func_8006B7E4
 /* 06C454 8006B854 83A70027 */   lb    $a3, 0x27($sp)
 /* 06C458 8006B858 83A90027 */  lb    $t1, 0x27($sp)
 /* 06C45C 8006B85C 8FBF001C */  lw    $ra, 0x1c($sp)
-/* 06C460 8006B860 3C018019 */  lui   $at, %hi(D_8018D8C0)
+/* 06C460 8006B860 3C018019 */  lui   $at, %hi(gPlayerBalloonCount)
 /* 06C464 8006B864 00095040 */  sll   $t2, $t1, 1
 /* 06C468 8006B868 002A0821 */  addu  $at, $at, $t2
 /* 06C46C 8006B86C 24080002 */  li    $t0, 2
-/* 06C470 8006B870 A428D8C0 */  sh    $t0, %lo(D_8018D8C0)($at)
+/* 06C470 8006B870 A428D8C0 */  sh    $t0, %lo(gPlayerBalloonCount)($at)
 /* 06C474 8006B874 03E00008 */  jr    $ra
 /* 06C478 8006B878 27BD0020 */   addiu $sp, $sp, 0x20
