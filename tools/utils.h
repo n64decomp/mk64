@@ -66,6 +66,15 @@ typedef struct
    int count;
 } dir_list;
 
+typedef enum
+{
+   ENCODING_RAW,
+   ENCODING_U8,
+   ENCODING_U16,
+   ENCODING_U32,
+   ENCODING_U64,
+} write_encoding;
+
 // global verbosity setting
 extern int g_verbosity;
 
@@ -89,6 +98,7 @@ int is_power2(unsigned int val);
 // fp: file pointer
 // buf: buffer to read bytes from
 // length: length of buffer to print
+int fprint_write_output(FILE *fp, write_encoding, const uint8_t *buf, int length);
 void fprint_hex(FILE *fp, const unsigned char *buf, int length);
 void fprint_hex_source(FILE *fp, const unsigned char *buf, int length);
 extern void print_hex(const unsigned char *buf, int length);
