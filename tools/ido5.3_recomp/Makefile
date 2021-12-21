@@ -9,7 +9,7 @@ acpp: OPT_CFLAGS := -O2
 
 RECOMP := recomp
 
-ugen_c.c: RECOMP_FLAGS := --conservative
+#ugen_c.c: RECOMP_FLAGS := --conservative
 
 all: cc cfe uopt ugen as1 acpp copt ujoin uld umerge usplit err.english.cc
 
@@ -17,7 +17,7 @@ clean:
 	$(RM) cc* cfe* uopt* ugen* as1* acpp* copt* ujoin* uld* umerge* usplit* err.english.cc $(RECOMP) libc_impl.o
 
 $(RECOMP): recomp.cpp
-	$(CXX) $^ -o $@ -std=c++11 -O2 -Wno-switch `pkg-config --cflags --libs capstone`
+	$(CXX) $^ -o $@ -std=c++11 -O2 -Wno-switch `pkg-config --cflags -Dugen53 --libs capstone`
 
 libc_impl.o: libc_impl.c libc_impl.h
 	$(CC) $< -c -fno-strict-aliasing -O2 -DIDO53
@@ -26,10 +26,10 @@ err.english.cc: $(IRIX_ROOT)/usr/lib/err.english.cc
 	cp $^ $@
 
 cc_c.c: $(IRIX_ROOT)/usr/bin/cc $(RECOMP)
-	./$(RECOMP) $(RECOMP_FLAGS) $< > $@
+	./$(RECOMP) $< > $@
 
 %_c.c: $(IRIX_ROOT)/usr/lib/% $(RECOMP)
-	./$(RECOMP) $(RECOMP_FLAGS) $< > $@
+	./$(RECOMP) $< > $@
 
 %: %_c.c libc_impl.o
 	$(CC) libc_impl.o $< -o $@ $(OPT_CFLAGS) -fno-strict-aliasing -lm -no-pie
