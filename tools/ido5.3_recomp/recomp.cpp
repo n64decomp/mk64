@@ -9,7 +9,11 @@
 #include <vector>
 #include <string>
 
+#if defined(_WIN32) || defined(_WIN64)
 #include <capstone/capstone.h>
+#else
+#include <capstone.h>
+#endif
 
 #include "elf.h"
 
@@ -2156,12 +2160,6 @@ static void dump_instr(int i) {
             printf("lo = %s * %s;\n", r(insn.operands[0].reg), r(insn.operands[1].reg));
             printf("hi = (uint32_t)((uint64_t)%s * (uint64_t)%s >> 32);\n", r(insn.operands[0].reg), r(insn.operands[1].reg));
             break;
-        case MIPS_INS_SQRT:
-            printf("%s = sqrtf(%s);\n", fr(insn.operands[0].reg), fr(insn.operands[1].reg));
-            break;
-        //case MIPS_INS_FSQRT:
-        //    printf("%s = sqrtf(%s);\n", wr(insn.operands[0].reg), wr(insn.operands[1].reg));
-        //    break;
         case MIPS_INS_NEGU:
             printf("%s = -%s;\n", r(insn.operands[0].reg), r(insn.operands[1].reg));
             break;
