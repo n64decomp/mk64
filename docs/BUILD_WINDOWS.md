@@ -32,8 +32,9 @@ pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-capstone pkgconf make python3 gi
 pacman -S gcc
 ```
 
-### Step 4: Compile Binutils For mips and Install
-Download and run: [get_bin.sh](get_bin.sh)
+### Step 4: Get Binutils
+Download and install the mips64 tool chain:  
+https://github.com/N64-tools/mips64-gcc-toolchain
 
 ### Step 5: Compiling recomp.exe in `MSYS2 MinGW x64`
 In `MSYS2 MinGW x64` run in `mk64/tools/ido5.3_recomp/`:
