@@ -17,7 +17,7 @@ clean:
 	$(RM) cc* cfe* uopt* ugen* as1* acpp* copt* ujoin* uld* umerge* usplit* err.english.cc $(RECOMP) libc_impl.o
 
 $(RECOMP): recomp.cpp
-	$(CXX) $^ -o $@ -std=c++11 -O2 -Wno-switch `pkg-config --cflags -Dugen53 --libs capstone`
+	$(CXX) $^ -o $@ -std=c++11 -O2 -Wno-switch `pkg-config --cflags --libs capstone -Dugen53`
 
 libc_impl.o: libc_impl.c libc_impl.h
 	$(CC) $< -c -fno-strict-aliasing -O2 -DIDO53
