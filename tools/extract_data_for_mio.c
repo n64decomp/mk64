@@ -4,6 +4,11 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#if defined(_WIN32) || defined(_WIN64)
+#include <io.h>
+#include <fcntl.h>
+#endif
+
 #define EI_DATA 5
 #define EI_NIDENT 16
 
@@ -179,6 +184,17 @@ static bool elf_get_section_range(uint8_t *file, const char *searched_name, uint
     return false;
 }
 
+static FILE *mio0_open_out_file(const char *out_file) {
+   if (strcmp(out_file, "-") == 0) {
+#if defined(_WIN32) || defined(_WIN64)
+      _setmode(_fileno(stdout), _O_BINARY);
+#endif
+      return stdout;
+   } else {
+      return fopen(out_file, "wb");
+   }
+}
+
 int main(int argc, char *argv[]) {
     if (argc < 3) {
         fprintf(stderr, "Usage: %s INFILE OUTFILE\n", argv[0]);
@@ -299,9 +315,11 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    FILE *out = fopen(argv[2], "wb");
+    FILE *out = mio0_open_out_file(argv[2]);
     fwrite(file + data_offset, 1, new_size, out);
-    fclose(out);
+    if (out != stdout) {
+      fclose(out);
+    }
 
     free(file);
     return 0;

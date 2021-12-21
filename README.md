@@ -24,14 +24,30 @@ The build system has the following package requirements:
     binutils-mips >= 2.27
     python3 >= 3.6
     libaudiofile
-    qemu-irix
 
 To add submodules run `git submodule update --init --recursive` after cloning.
 
-Debian / Ubuntu
+##### Debian / Ubuntu
 ```
 sudo apt install build-essential pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev
 ```
+
+##### Arch Linux
+
+To install build dependencies:
+```
+sudo pacman -S base-devel capstone python
+```
+Install the following AUR packages:
+* [mips64-elf-binutils](https://aur.archlinux.org/packages/mips64-elf-binutils) (AUR)
+
+Review the n64decomp/sm64 readme for instructions to compile in other distributions.
+
+##### Windows
+
+Compiling on Windows requires `MSYS2 MinGW x64`. The setup process is a tad intensive.  
+
+[Instructions here](docs/BUILD_WINDOWS.md)
 
 ## Building
 

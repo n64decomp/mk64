@@ -61,24 +61,48 @@ int fprint_write_output(FILE *fp, write_encoding encoding, const uint8_t *raw, i
    int flength = 0;
    const encoding_format *fmt = &enc_fmt[encoding];
    switch (encoding) {
-      case ENCODING_RAW:
-         flength = fwrite(raw, 1, length, fp);
-         break;
-      case ENCODING_U8:
-      case ENCODING_U16:
-      case ENCODING_U32:
-      case ENCODING_U64:
+        case ENCODING_RAW:
+            flength = fwrite(raw, 1, length, fp);
+            break;
+        case ENCODING_U8:
+        case ENCODING_U16:
+        case ENCODING_U32:
+        case ENCODING_U64:
          for (int w = 0; w < length; w += fmt->bytes_per_val) {
             flength += fprintf(fp, "0x");
             for (int b = 0; b < fmt->bytes_per_val; b++) {
-               int off = w + b;
-               flength += fprintf(fp, "%02x", off < length ? raw[off] : 0x00);
+                int off = w + b;
+                flength += fprintf(fp, "%02x", off < length ? raw[off] : 0x00);
             }
             flength += fprintf(fp, "%s%c", fmt->suffix, (w < length - fmt->bytes_per_val) ? ',' : '\n');
-         }
-         break;
+        }
+        break;
+    }
+    return flength;
+}
+
+void fprint_hex(FILE *fp, const unsigned char *buf, int length)
+{
+   int i;
+   for (i = 0; i < length; i++) {
+      fprint_byte(fp, buf[i]);
+      fputc(' ', fp);
    }
-   return flength;
+}
+
+void fprint_hex_source(FILE *fp, const unsigned char *buf, int length)
+{
+   int i;
+   for (i = 0; i < length; i++) {
+      if (i > 0) fputs(", ", fp);
+      fputs("0x", fp);
+      fprint_byte(fp, buf[i]);
+   }
+}
+
+void print_hex(const unsigned char *buf, int length)
+{
+   fprint_hex(stdout, buf, length);
 }
 
 void swap_bytes(unsigned char *data, long length)

@@ -236,9 +236,10 @@ def main():
                         else: # pull directly from same block as CI data
                             pal_offset = int(meta["pal"], 0)
                             pal_input = image[pal_offset : pal_offset + pal_size]
-                        tmp_pal = tempfile.NamedTemporaryFile(prefix="asset_pal")
+                        tmp_pal = tempfile.NamedTemporaryFile(prefix="asset_pal", delete=False)
                         tmp_pal.write(pal_input)
                         tmp_pal.flush()
+                        tmp_pal.close()
                         # append the palette commands
                         cmd.extend([
                             "-c", ci_fmt,
