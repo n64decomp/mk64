@@ -21,7 +21,7 @@ glabel draw_box
 /* 099A44 80098E44 10200004 */  beqz  $at, .L80098E58
 /* 099A48 80098E48 AFAB0040 */   sw    $t3, 0x40($sp)
 /* 099A4C 80098E4C 27A40024 */  addiu $a0, $sp, 0x24
-/* 099A50 80098E50 0C0246D9 */  jal   func_80091B64
+/* 099A50 80098E50 0C0246D9 */  jal   swap_values
 /* 099A54 80098E54 27A5002C */   addiu $a1, $sp, 0x2c
 .L80098E58:
 /* 099A58 80098E58 8FA20030 */  lw    $v0, 0x30($sp)
@@ -30,7 +30,7 @@ glabel draw_box
 /* 099A64 80098E64 004E082A */  slt   $at, $v0, $t6
 /* 099A68 80098E68 50200005 */  beql  $at, $zero, .L80098E80
 /* 099A6C 80098E6C 8FAF0024 */   lw    $t7, 0x24($sp)
-/* 099A70 80098E70 0C0246D9 */  jal   func_80091B64
+/* 099A70 80098E70 0C0246D9 */  jal   swap_values
 /* 099A74 80098E74 27A50030 */   addiu $a1, $sp, 0x30
 /* 099A78 80098E78 8FA20030 */  lw    $v0, 0x30($sp)
 /* 099A7C 80098E7C 8FAF0024 */  lw    $t7, 0x24($sp)
