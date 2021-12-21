@@ -29,7 +29,8 @@ del compile_args[out_ind]
 in_dir = os.path.split(os.path.realpath(in_file))[0]
 opt_flags = [x for x in compile_args if x in ['-g', '-O2', '-framepointer']]
 
-preprocessed_file = tempfile.NamedTemporaryFile(prefix='preprocessed', suffix='.c')
+
+preprocessed_file = tempfile.NamedTemporaryFile(prefix='preprocessed', suffix='.c', delete=False)
 
 subprocess.check_call(asm_processor + opt_flags + [in_file], stdout=preprocessed_file)
 subprocess.check_call(compiler + compile_args + ['-I', in_dir, '-o', out_file, preprocessed_file.name])
