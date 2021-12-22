@@ -87,7 +87,7 @@
 #define GAME_SELECT_MENU_2 11
 #define PLAYER_SELECT_MENU_2 12
 #define MAP_SELECT_MENU_2 13
-#define GAMEPLAY 14
+#define MAX_NUM_MENUS 14
 
 /**
  * Indexes for accessing Time Trial records
