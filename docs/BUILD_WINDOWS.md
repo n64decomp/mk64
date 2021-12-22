@@ -36,6 +36,8 @@ pacman -S gcc
 Download and install the mips64 tool chain:  
 https://github.com/N64-tools/mips64-gcc-toolchain
 
+Merge the inner folders (bin, share, etc.) with the respective folders in `C:\msys64\mingw64\`
+
 ### Step 5: Compiling recomp.exe in `MSYS2 MinGW x64`
 In `MSYS2 MinGW x64` run in `mk64/tools/ido5.3_recomp/`:
 ```
