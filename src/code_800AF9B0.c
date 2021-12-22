@@ -420,9 +420,9 @@ void func_800B0350(void) {
         phi_s0 = 0;
         do {
             if ((func_800B4520() == 0) && (gEnableDebugMode != 0) && ((gControllers[phi_s0].buttonPressed & 0x1000) != 0)) {
-                temp_v0 = D_800E86A0;
-                if ((temp_v0 != 0xB) && (temp_v0 != 0xC)) {
-                    if (temp_v0 == 0xD) {
+                temp_v0 = gMenuSelection;
+                if ((temp_v0 != GAME_SELECT_MENU_2) && (temp_v0 != PLAYER_SELECT_MENU_2)) {
+                    if (temp_v0 == MAP_SELECT_MENU_2) {
                         func_800CA330(0x19);
                         goto block_9;
                     }
@@ -430,44 +430,44 @@ void func_800B0350(void) {
 block_9:
                     play_sound2(0x49008016);
                 }
-                if ((D_800E86A0 != 9) && (D_800E86A0 != 0xA)) {
+                if ((gMenuSelection != CONTROLLER_PAK_MENU) && (gMenuSelection != START_MENU_2)) {
                     func_8009E1C0();
                 }
             }
             osViSetSpecialFeatures(D_800E86E4);
-            temp_t2 = D_800E86A0;
+            temp_t2 = gMenuSelection;
             switch (temp_t2) {
-            case 5:
+            case OPTIONS_MENU:
                 func_800B053C(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
-            case 6:
+            case DATA_MENU:
                 func_800B13B0(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
-            case 7:
+            case COURSE_DATA_MENU:
                 func_800B15AC(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
-            case 8:
+            case LOGO_INTRO_MENU:
                 func_800B1C40(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
-            case 9:
+            case CONTROLLER_PAK_MENU:
                 if (phi_s0 == 0) {
                     func_800B1C90(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 }
                 break;
-            case 0:
-            case 10:
+            case START_MENU:
+            case START_MENU_2:
                 func_800B20F4(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
-            case 1:
-            case 11:
+            case GAME_SELECT_MENU:
+            case GAME_SELECT_MENU_2:
                 func_800B29D8(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
-            case 2:
-            case 12:
+            case PLAYER_SELECT_MENU:
+            case PLAYER_SELECT_MENU_2:
                 func_800B3554(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
-            case 3:
-            case 13:
+            case MAP_SELECT_MENU:
+            case MAP_SELECT_MENU_2:
                 func_800B3B58(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
             }
@@ -2596,24 +2596,24 @@ void func_800B3F74(u32 arg0) {
     D_80162DC8 = 1;
     D_80162DCC = 0;
     switch (arg0) {
-    case 5:
+    case OPTIONS_MENU:
         D_8018EDEC = 0x15;
         break;
-    case 6:
+    case DATA_MENU:
         D_8018EDEC = 1;
         break;
-    case 7:
+    case COURSE_DATA_MENU:
         D_8018EDEC = 0xB;
         break;
-    case 8:
+    case LOGO_INTRO_MENU:
         func_800CA008(0, 0);
         break;
-    case 9:
+    case CONTROLLER_PAK_MENU:
         gPlayerCountSelection2 = 1;
         func_800CA008(0, 0);
         break;
-    case 0:
-    case 10:
+    case START_MENU:
+    case START_MENU_2:
         gIsMirrorMode = 0;
         gEnableDebugMode = 0;
         gCupSelection = MUSHROOM_CUP;
@@ -2632,8 +2632,8 @@ void func_800B3F74(u32 arg0) {
         func_800C8EAC(1);
         D_8018EDFC = 0;
         break;
-    case 1:
-    case 11:
+    case GAME_SELECT_MENU:
+    case GAME_SELECT_MENU_2:
         gEnableDebugMode = 0;
         gIsMirrorMode = 0;
         D_8018EDFC = 0;
@@ -2676,8 +2676,8 @@ void func_800B3F74(u32 arg0) {
             }
         }
         break;
-    case 2:
-    case 12:
+    case PLAYER_SELECT_MENU:
+    case PLAYER_SELECT_MENU_2:
         temp_v0_4 = D_8018EDE0;
         if (temp_v0_4 != 0) {
             if (temp_v0_4 != 1) {
@@ -2746,8 +2746,8 @@ void func_800B3F74(u32 arg0) {
             }
         }
         break;
-    case 3:
-    case 13:
+    case MAP_SELECT_MENU:
+    case MAP_SELECT_MENU_2:
         if (gModeSelection == BATTLE) {
             gCupSelection = BATTLE_CUP;
             D_800DC540 = 4;

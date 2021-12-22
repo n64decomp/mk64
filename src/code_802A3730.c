@@ -22,7 +22,7 @@ void func_802A3E3C();
 extern s32 D_800DC524;
 extern s16 D_800DC5C0;
 extern u16 D_800DC5C4;
-extern s32 D_800E86A0;
+extern s32 gMenuSelection;
 extern s32 D_800E86A4;
 extern s32 D_80150124;
 
@@ -150,18 +150,18 @@ void func_802A38B4(void) {
 
     switch(D_80150124) {
         case 0:
-            if (D_800E86A0 != 8) {
-                D_800E86A0 = 10;
+            if (gMenuSelection != LOGO_INTRO_MENU) {
+                gMenuSelection = START_MENU_2;
             }
             break;
         case 1:
-            D_800E86A0 = 11;
+            gMenuSelection = GAME_SELECT_MENU_2;
             break;
         case 2:
-            D_800E86A0 = 12;
+            gMenuSelection = PLAYER_SELECT_MENU_2;
             break;
         case 3:
-            D_800E86A0 = 13;
+            gMenuSelection = MAP_SELECT_MENU_2;
             break;
     }
 }

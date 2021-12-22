@@ -56,7 +56,7 @@ extern s32 D_80150124;
 extern u16 D_800DC5B4;
 extern u16 D_800DC5B0;
 extern u16 D_800DC5B8;
-extern s32 D_800E86A0;
+extern s32 gMenuSelection;
 
 extern s8 D_8018EE08;
 extern u16 D_800DC51C;
@@ -1038,12 +1038,12 @@ void func_8028FC34(void) {
     D_802BA038--;
     if (D_800DC4CC->buttonPressed != 0) {
         func_8028FBD4();
-        D_800E86A0 = 10;
+        gMenuSelection = START_MENU_2;
         return;
     }
     if (D_802BA038 == 0) {
         func_8028FBD4();
-        D_800E86A0 = 8;
+        gMenuSelection = LOGO_INTRO_MENU;
     }
 }
 extern u16 D_80162DD6;

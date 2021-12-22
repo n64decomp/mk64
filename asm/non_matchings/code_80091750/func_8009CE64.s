@@ -30,7 +30,7 @@ glabel func_8009CE64
 /* 09DAD0 8009CED0 24050001 */  li    $a1, 1
 .L8009CED4:
 /* 09DAD4 8009CED4 10A00008 */  beqz  $a1, .L8009CEF8
-/* 09DAD8 8009CED8 3C04800F */   lui   $a0, %hi(D_800E86A0) # $a0, 0x800f
+/* 09DAD8 8009CED8 3C04800F */   lui   $a0, %hi(gMenuSelection) # $a0, 0x800f
 /* 09DADC 8009CEDC 24180009 */  li    $t8, 9
 /* 09DAE0 8009CEE0 3C018028 */  lui   $at, %hi(D_80287550) # $at, 0x8028
 /* 09DAE4 8009CEE4 AC387550 */  sw    $t8, %lo(D_80287550)($at)
@@ -41,7 +41,7 @@ glabel func_8009CE64
 .L8009CEF8:
 /* 09DAF8 8009CEF8 24050001 */  li    $a1, 1
 /* 09DAFC 8009CEFC 3C018028 */  lui   $at, %hi(D_80287550) # $at, 0x8028
-/* 09DB00 8009CF00 248486A0 */  addiu $a0, %lo(D_800E86A0) # addiu $a0, $a0, -0x7960
+/* 09DB00 8009CF00 248486A0 */  addiu $a0, %lo(gMenuSelection) # addiu $a0, $a0, -0x7960
 /* 09DB04 8009CF04 AC257550 */  sw    $a1, %lo(D_80287550)($at)
 /* 09DB08 8009CF08 240E000B */  li    $t6, 11
 /* 09DB0C 8009CF0C 10000217 */  b     .L8009D76C
@@ -250,8 +250,8 @@ glabel L8009D170
 /* 09DDD4 8009D1D4 03200008 */  jr    $t9
 /* 09DDD8 8009D1D8 00000000 */   nop   
 glabel L8009D1DC
-/* 09DDDC 8009D1DC 3C04800F */  lui   $a0, %hi(D_800E86A0) # $a0, 0x800f
-/* 09DDE0 8009D1E0 248486A0 */  addiu $a0, %lo(D_800E86A0) # addiu $a0, $a0, -0x7960
+/* 09DDDC 8009D1DC 3C04800F */  lui   $a0, %hi(gMenuSelection) # $a0, 0x800f
+/* 09DDE0 8009D1E0 248486A0 */  addiu $a0, %lo(gMenuSelection) # addiu $a0, $a0, -0x7960
 /* 09DDE4 8009D1E4 8C820000 */  lw    $v0, ($a0)
 /* 09DDE8 8009D1E8 24010008 */  li    $at, 8
 /* 09DDEC 8009D1EC 24060002 */  li    $a2, 2
@@ -266,8 +266,8 @@ glabel L8009D1DC
 /* 09DE0C 8009D20C 100000CB */  b     .L8009D53C
 /* 09DE10 8009D210 AC8F0000 */   sw    $t7, ($a0)
 glabel L8009D214
-/* 09DE14 8009D214 3C04800F */  lui   $a0, %hi(D_800E86A0) # $a0, 0x800f
-/* 09DE18 8009D218 248486A0 */  addiu $a0, %lo(D_800E86A0) # addiu $a0, $a0, -0x7960
+/* 09DE14 8009D214 3C04800F */  lui   $a0, %hi(gMenuSelection) # $a0, 0x800f
+/* 09DE18 8009D218 248486A0 */  addiu $a0, %lo(gMenuSelection) # addiu $a0, $a0, -0x7960
 /* 09DE1C 8009D21C 8C980000 */  lw    $t8, ($a0)
 /* 09DE20 8009D220 2719FFFF */  addiu $t9, $t8, -1
 /* 09DE24 8009D224 100000C5 */  b     .L8009D53C
@@ -453,8 +453,8 @@ glabel L8009D414
 /* 09E0D0 8009D4D0 1000001A */  b     .L8009D53C
 /* 09E0D4 8009D4D4 A039EE0B */   sb    $t9, %lo(gCupCourseSelection)($at)
 glabel L8009D4D8
-/* 09E0D8 8009D4D8 3C04800F */  lui   $a0, %hi(D_800E86A0) # $a0, 0x800f
-/* 09E0DC 8009D4DC 248486A0 */  addiu $a0, %lo(D_800E86A0) # addiu $a0, $a0, -0x7960
+/* 09E0D8 8009D4D8 3C04800F */  lui   $a0, %hi(gMenuSelection) # $a0, 0x800f
+/* 09E0DC 8009D4DC 248486A0 */  addiu $a0, %lo(gMenuSelection) # addiu $a0, $a0, -0x7960
 /* 09E0E0 8009D4E0 8C830000 */  lw    $v1, ($a0)
 /* 09E0E4 8009D4E4 24080006 */  li    $t0, 6
 /* 09E0E8 8009D4E8 2401000B */  li    $at, 11
@@ -468,8 +468,8 @@ glabel L8009D4D8
 /* 09E104 8009D504 1000000D */  b     .L8009D53C
 /* 09E108 8009D508 AC8E0000 */   sw    $t6, ($a0)
 glabel L8009D50C
-/* 09E10C 8009D50C 3C04800F */  lui   $a0, %hi(D_800E86A0) # $a0, 0x800f
-/* 09E110 8009D510 248486A0 */  addiu $a0, %lo(D_800E86A0) # addiu $a0, $a0, -0x7960
+/* 09E10C 8009D50C 3C04800F */  lui   $a0, %hi(gMenuSelection) # $a0, 0x800f
+/* 09E110 8009D510 248486A0 */  addiu $a0, %lo(gMenuSelection) # addiu $a0, $a0, -0x7960
 /* 09E114 8009D514 8C830000 */  lw    $v1, ($a0)
 /* 09E118 8009D518 2401000B */  li    $at, 11
 /* 09E11C 8009D51C 240F000B */  li    $t7, 11
@@ -484,11 +484,11 @@ glabel L8009D50C
 /* 09E13C 8009D53C 3C18800F */  lui   $t8, %hi(D_800E86A4) # $t8, 0x800f
 /* 09E140 8009D540 8F1886A4 */  lw    $t8, %lo(D_800E86A4)($t8)
 /* 09E144 8009D544 3C0C800E */  lui   $t4, %hi(gModeSelection) # $t4, 0x800e
-/* 09E148 8009D548 3C02800F */  lui   $v0, %hi(D_800E86A0) # $v0, 0x800f
+/* 09E148 8009D548 3C02800F */  lui   $v0, %hi(gMenuSelection) # $v0, 0x800f
 /* 09E14C 8009D54C 258CC53C */  addiu $t4, %lo(gModeSelection) # addiu $t4, $t4, -0x3ac4
 /* 09E150 8009D550 24050001 */  li    $a1, 1
 /* 09E154 8009D554 17000003 */  bnez  $t8, .L8009D564
-/* 09E158 8009D558 8C4286A0 */   lw    $v0, %lo(D_800E86A0)($v0)
+/* 09E158 8009D558 8C4286A0 */   lw    $v0, %lo(gMenuSelection)($v0)
 /* 09E15C 8009D55C 3C01800F */  lui   $at, %hi(D_800E86A4) # $at, 0x800f
 /* 09E160 8009D560 AC2586A4 */  sw    $a1, %lo(D_800E86A4)($at)
 .L8009D564:

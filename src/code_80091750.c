@@ -223,7 +223,7 @@ s32 func_80091D74(); // extern
 ? func_800C97C4(s32); // extern
 ? func_800C9D0C(s32); // extern
 extern s8 D_800E852C;
-extern s32 D_800E86A0;
+extern s32 gMenuSelection;
 extern s32 D_800E86A4;
 extern s32 D_8018D9B0;
 extern s32 D_8018D9B4;
@@ -260,10 +260,10 @@ void func_80091B78(void) {
             func_800B4A10();
         }
         if (func_80091D74() != 0) {
-            D_800E86A0 = 9;
+            gMenuSelection = CONTROLLER_PAK_MENU;
         }
     }
-    if (D_800E86A0 == 8) {
+    if (gMenuSelection == LOGO_INTRO_MENU) {
         gPrevLoadedAddress = D_8015F734;
         set_segment_base_addr(6, func_802AA88C(&_data_825800SegmentRomStart, &_course_mario_raceway_dl_mio0SegmentRomStart));
     }
@@ -1889,20 +1889,20 @@ void func_80094A64(s32 arg0) {
     func_80092290(5, &D_8018E854, &D_8018E85C);
     func_80099A70();
     func_8009C918();
-    temp_t1 = D_800E86A0;
+    temp_t1 = gMenuSelection;
     switch (temp_t1) {
-    case 10:
+    case START_MENU_2:
         func_80095574();
         func_80093E40();
         break;
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-    case 9:
-    case 11:
-    case 12:
-    case 13:
+    case OPTIONS_MENU:
+    case DATA_MENU:
+    case COURSE_DATA_MENU:
+    case LOGO_INTRO_MENU:
+    case CONTROLLER_PAK_MENU:
+    case GAME_SELECT_MENU_2:
+    case PLAYER_SELECT_MENU_2:
+    case MAP_SELECT_MENU_2:
         func_800A8230();
         func_80099AEC();
         break;
@@ -1949,15 +1949,15 @@ void func_80094C60(void) {
         func_80092258();
         func_800B5F30();
         func_800B6014();
-        func_800B3F74(D_800E86A0);
-        temp_t7 = D_800E86A0;
+        func_800B3F74(gMenuSelection);
+        temp_t7 = gMenuSelection;
         switch (temp_t7) {
-        case 5:
+        case OPTIONS_MENU:
             func_8009E650(0x23, 0, 0, 2);
             func_8009E650(0xF1, 0, 0, 4);
             func_8009E650(0xF0, 0, 0, 2);
             break;
-        case 6:
+        case DATA_MENU:
             func_8009E650(0x23, 0, 0, 2);
             func_8009E650(0x8C, 0, 0, 6);
             func_8009E650(0x7C, 0, 0, 6);
@@ -1978,17 +1978,17 @@ void func_80094C60(void) {
             func_8009E650(0x8B, 0, 0, 6);
             func_8009E650(0x8D, 0, 0, 8);
             break;
-        case 7:
+        case COURSE_DATA_MENU:
             func_8009E650(0xE6, 0, 0, 8);
             func_8009E650(0xE7, 0, 0, 8);
             func_8009E650(0xE8, 0, 0, 8);
             func_8009E650(0xE9, 0, 0, 8);
             func_8009E650(0xEA, 0, 0, 8);
             break;
-        case 8:
+        case LOGO_INTRO_MENU:
             func_8009E650(0xFA, 0, 0, 0);
             break;
-        case 9:
+        case CONTROLLER_PAK_MENU:
             func_8009E650(0xDA, 0, 0, 0);
             func_8009E650(0xD2, 0, 0, 4);
             func_8009E650(0xD4, 0, 0, 6);
@@ -1999,7 +1999,7 @@ void func_80094C60(void) {
             func_8009E650(0xD8, 0, 0, 0xA);
             func_8009E650(0xD9, 0, 0, 0xA);
             break;
-        case 10:
+        case START_MENU_2:
             func_8009E650(2, 0, 0, 4);
             func_8009E650(1, 0, 0, 0);
             func_8009E650(0xFB, 0, 0, 0);
@@ -2012,7 +2012,7 @@ void func_80094C60(void) {
             D_800DC51C = 0;
             D_8018EE08 = 0;
             break;
-        case 11:
+        case GAME_SELECT_MENU_2:
             func_8009E650(0x23, 0, 0, 2);
             func_8009E650(0xA, 0x15E, 0x11, 6);
             func_8009E650(0xE, 0x15E, 0x3E, 6);
@@ -2032,7 +2032,7 @@ void func_80094C60(void) {
             func_8009E650(0x18, 0, 0, 6);
             func_8009E650(0x1B, 0, 0, 0xC);
             break;
-        case 12:
+        case PLAYER_SELECT_MENU_2:
             func_8009E650(0x24, 0, 0, 2);
             func_8009E650(0x2A, 0, 0, 6);
             func_8009E650(0x33, 0, 0, 6);
@@ -2049,7 +2049,7 @@ void func_80094C60(void) {
             func_8009E650(0x36, 0, 0, 0xC);
             func_8009E650(0x37, 0, 0, 0xC);
             break;
-        case 13:
+        case MAP_SELECT_MENU_2:
             func_8009E650(0x25, 0, 0, 2);
             func_8009E650(0x52, 0, 0, 6);
             if (gModeSelection != BATTLE) {
@@ -6502,7 +6502,7 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
             return;
         }
         D_80287550 = 1;
-        D_800E86A0 = 0xB;
+        gMenuSelection = GAME_SELECT_MENU_2;
         return;
     }
     if (temp_v0 == 4) {
@@ -6629,23 +6629,23 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
             temp_t9 = D_8018EDE0;
             switch (temp_t9) {                      /* switch 3 */
             case 0:                                 /* switch 3 */
-                temp_v0_7 = D_800E86A0;
+                temp_v0_7 = gMenuSelection;
                 phi_t7 = temp_v0_7 + 1;
-                phi_a0 = &D_800E86A0;
+                phi_a0 = &gMenuSelection;
                 phi_a2 = 2;
                 phi_a2 = 2;
-                if (temp_v0_7 == 8) {
-                    D_800E86A0 = 0xA;
+                if (temp_v0_7 == LOGO_INTRO_MENU) {
+                    gMenuSelection = START_MENU_2;
                     D_800E86A4 = 2;
                 } else {
 block_74:
-                    D_800E86A0 = phi_t7;
-                    phi_a0 = &D_800E86A0;
+                    gMenuSelection = phi_t7;
+                    phi_a0 = &gMenuSelection;
                 }
                 break;
             case 1:                                 /* switch 3 */
-                D_800E86A0 += -1;
-                phi_a0 = &D_800E86A0;
+                gMenuSelection += -1;
+                phi_a0 = &gMenuSelection;
                 break;
             // Setting up game state for title screen demos
             case 2:                                 /* switch 3 */
@@ -6723,23 +6723,23 @@ block_74:
                 phi_a0 = gCurrentCourseId;
                 break;
             case 3:                                 /* switch 3 */
-                temp_v1_5 = D_800E86A0;
-                phi_a0 = &D_800E86A0;
-                if (temp_v1_5 != 6) {
-                    if (temp_v1_5 == 0xB) {
-                        D_800E86A0 = 6;
+                temp_v1_5 = gMenuSelection;
+                phi_a0 = &gMenuSelection;
+                if (temp_v1_5 != DATA_MENU) {
+                    if (temp_v1_5 == GAME_SELECT_MENU_2) {
+                        gMenuSelection = DATA_MENU;
                     }
                 } else {
-                    D_800E86A0 = 0xB;
+                    gMenuSelection = GAME_SELECT_MENU_2;
                 }
                 break;
             case 4:                                 /* switch 3 */
-                temp_v1_6 = D_800E86A0;
+                temp_v1_6 = gMenuSelection;
                 phi_t7 = 0xB;
-                phi_a0 = &D_800E86A0;
-                if (temp_v1_6 != 5) {
-                    if (temp_v1_6 == 0xB) {
-                        D_800E86A0 = 5;
+                phi_a0 = &gMenuSelection;
+                if (temp_v1_6 != OPTIONS_MENU) {
+                    if (temp_v1_6 == GAME_SELECT_MENU_2) {
+                        gMenuSelection = OPTIONS_MENU;
                     }
                 } else {
                     goto block_74;
@@ -6749,7 +6749,7 @@ block_74:
             if (D_800E86A4 == 0) {
                 D_800E86A4 = 1;
             }
-            if (D_800E86A0 >= 0xE) {
+            if (gMenuSelection >= MAX_NUM_MENUS) {
                 D_800DC524 = 4;
                 if (gModeSelection == TIME_TRIALS) {
                     D_8018EDFB = 1;

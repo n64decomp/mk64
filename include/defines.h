@@ -71,6 +71,25 @@
 #define BOWSER 7
 
 /**
+ * Options for gMenuSelection
+**/
+#define START_MENU 0
+#define GAME_SELECT_MENU 1
+#define PLAYER_SELECT_MENU 2
+#define MAP_SELECT_MENU 3
+#define UNUSED_MENU 4
+#define OPTIONS_MENU 5
+#define DATA_MENU 6
+#define COURSE_DATA_MENU 7
+#define LOGO_INTRO_MENU 8
+#define CONTROLLER_PAK_MENU 9
+#define START_MENU_2 10
+#define GAME_SELECT_MENU_2 11
+#define PLAYER_SELECT_MENU_2 12
+#define MAP_SELECT_MENU_2 13
+#define GAMEPLAY 14
+
+/**
  * Indexes for accessing Time Trial records
 **/
 #define TIME_TRIAL_3LAP_RECORD_1 0
