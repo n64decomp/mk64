@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
+#include <defines.h>
 #include <PR/gu.h>
 
 #include "main.h"
@@ -90,7 +91,7 @@ void func_802802AC(void) {
         gQuitToMenuTransitionCounter--;
         if (gQuitToMenuTransitionCounter == 0) {
             gIsInQuitToMenuTransition = 0;
-            D_800DC524 = 9;
+            D_800DC524 = CREDITS_SEQUENCE;
             D_800DC50C = 255;
         }
     } else {

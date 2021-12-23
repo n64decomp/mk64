@@ -168,7 +168,7 @@ u16 D_800DC514 = 0;
 u16 D_800DC518 = 0;
 u16 D_800DC51C = 0;
 u16 gEnableDebugMode = 0;
-s32 D_800DC524 = 7; 
+s32 D_800DC524 = 7; // = COURSE_DATA_MENU?; 
 UNUSED s32 D_800DC528 = 1;
 s32 D_800DC52C = 0;
 
@@ -320,7 +320,7 @@ void func_800006E8(void) {
     gGfxSPTask->task.t.flags = (1 << 1);
     gGfxSPTask->task.t.ucode_boot = rspbootTextStart;
     gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspbootTextEnd - (u8 *) rspbootTextStart);
-    if (D_800DC50C != 4 || gPlayerCountSelection1 - 1 == 0) {
+    if (D_800DC50C != RACING || gPlayerCountSelection1 - 1 == 0) {
         gGfxSPTask->task.t.ucode = gspF3DEXTextStart;
         gGfxSPTask->task.t.ucode_data = gspF3DEXDataStart;
     } else {
@@ -570,7 +570,7 @@ void init_game(void) {
 }
 
 void func_80001404(void) {
-    D_800DC524 = 0;
+    D_800DC524 = 0; // = START_MENU_FROM_QUIT?
     clear_framebuffer(0);
 }
 

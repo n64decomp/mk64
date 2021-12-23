@@ -199,7 +199,7 @@ void func_800581C8(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[56]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
     func_8001C3C4(0);
-    if (D_800DC50C == 5) {
+    if (D_800DC50C == ENDING_SEQUENCE) {
         func_80055F48(0);
         func_80056160(0);
         func_8005217C(0);
@@ -303,7 +303,7 @@ void func_80058640(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[8]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[56]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    if (D_800DC50C != 5) {
+    if (D_800DC50C != ENDING_SEQUENCE) {
         func_80058B58(0);
     }
 }
@@ -369,7 +369,7 @@ void func_800588F4(s32 arg0) {
         func_80054664(arg0);
         break;
     case 3:
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_800527D8(arg0);
             func_80052590(arg0);
             func_8005217C(arg0);
@@ -378,12 +378,12 @@ void func_800588F4(s32 arg0) {
         break;
     case 4:
         func_80055228(arg0);
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_8005568C(arg0);
         }
         break;
     case 5:
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_8005327C(arg0);
         }
         break;
@@ -409,7 +409,7 @@ void func_800588F4(s32 arg0) {
         }
         break;
     case 9:
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_800550A4(arg0);
         }
         break;
@@ -417,19 +417,19 @@ void func_800588F4(s32 arg0) {
         func_800541BC(arg0);
         break;
     case 12:
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_80052E30(arg0);
         }
         func_8005592C(arg0);
         break;
     case 13:
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_80056188(arg0);
             func_80055C38(arg0);
         }
         break;
     case 18:
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_80054414(arg0);
         }
         break;
@@ -464,7 +464,7 @@ void func_80058B58(s32 arg0) {
         }
         return;// Duplicate return node #9. Try simplifying control flow for better match
     }
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             if ((D_8015F894 == 0) && (gPlayerCountSelection1 == COURSE_CHOCO_MOUNTAIN)) {
                 func_800517C8();
                 //return;
@@ -1333,7 +1333,7 @@ void func_80059AC8(void) {
                 func_80059A88(0);
                 func_80059A88(1);
             }
-        } else if (D_800DC50C != 9) {
+        } else if (D_800DC50C != CREDITS_SEQUENCE) {
             func_80059A88(0);
             if (gModeSelection == TIME_TRIALS) {
                 func_8005995C();
@@ -1833,7 +1833,7 @@ void func_8005A74C(void) {
         func_80076B84();
         break;
     case 3:
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_8007E1AC();
             func_8007E4C4();
             if (gModeSelection != TIME_TRIALS) {
@@ -1845,22 +1845,22 @@ void func_8005A74C(void) {
         break;
     case 4:
         func_80083080();
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_800834B8();
         }
         break;
     case 5:
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_80083D60();
         }
         func_80078838();
         break;
     case 6:
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_80082E5C();
         }
         temp_v0 = D_8018EDF3;
-        if ((temp_v0 == 1) || (temp_v0 == 2) || (D_800DC50C == 9)) {
+        if ((temp_v0 == 1) || (temp_v0 == 2) || (D_800DC50C == CREDITS_SEQUENCE)) {
             func_80082870();
         }
         break;
@@ -1870,7 +1870,7 @@ void func_8005A74C(void) {
         }
         break;
     case 9:
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_800821FC();
         }
         break;
@@ -1878,13 +1878,13 @@ void func_8005A74C(void) {
         func_80075838();
         break;
     case 12:
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_800842C8();
         }
         func_80085214();
         break;
     case 13:
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_800861E0();
             func_80085AA8();
         }
@@ -12222,7 +12222,7 @@ void func_8006E420(u16 *arg0, s8 arg1, s8 arg2) {
         phi_s0 = 0;
         do {
             func_8006CEC0(arg0, phi_s0, arg1, arg2);
-            if (((*arg0 & 0x4000) == 0x4000) || (D_800DC50C == 5)) {
+            if (((*arg0 & 0x4000) == 0x4000) || (D_800DC50C == ENDING_SEQUENCE)) {
                 func_8006C9B8(arg0, phi_s0, arg1, arg2);
             }
             func_8006C6AC(arg0, phi_s0, arg1, arg2);

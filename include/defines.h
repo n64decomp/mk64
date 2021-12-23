@@ -77,17 +77,19 @@
 #define GAME_SELECT_MENU_FROM_QUIT 1
 #define PLAYER_SELECT_MENU_FROM_QUIT 2
 #define COURSE_SELECT_MENU_FROM_QUIT 3
-#define RETRY 4
+#define RACING 4
 #define OPTIONS_MENU 5
+#define ENDING_SEQUENCE 5
 #define DATA_MENU 6
 #define COURSE_DATA_MENU 7
 #define LOGO_INTRO_MENU 8
 #define CONTROLLER_PAK_MENU 9
+#define CREDITS_SEQUENCE 9
 #define START_MENU 10
 #define GAME_SELECT_MENU 11
 #define PLAYER_SELECT_MENU 12
 #define COURSE_SELECT_MENU 13
-#define GAMEPLAY 14
+#define RACING_DUPLICATE 14
 
 /**
  * Indexes for accessing Time Trial records

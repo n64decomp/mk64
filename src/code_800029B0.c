@@ -132,7 +132,7 @@ void func_80002A18(void) {
     int tmp;
 
     gPlayerCountSelection1 = D_8018EDF3;
-    if (D_800DC50C != 4) {
+    if (D_800DC50C != RACING) {
         gIsMirrorMode = 0;
     }
     if (gIsMirrorMode != 0) {

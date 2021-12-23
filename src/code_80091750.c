@@ -1145,6 +1145,7 @@ void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
         arg6 = 2;
     }
 
+
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
         do{
@@ -4672,7 +4673,7 @@ void func_80099AEC(void) {
     s8 phi_s5_2;
     s8 phi_s5_3;
 
-    if (D_800DC50C == 4) {
+    if (D_800DC50C == RACING) {
         sp60 = 0x500;
     } else {
         sp60 = 0x1000;
@@ -6382,7 +6383,7 @@ void func_8009CBE4(s32 arg0, s32 arg1, s32 arg2) {
     sp40 = temp_t4;
     gDisplayListHead = draw_box(gDisplayListHead, phi_t2 - temp_v1_3, phi_t3 - temp_t0, temp_v1_3 + phi_t2, temp_t0 + phi_t3, temp_v0_5->unk0, temp_v0_5->unk2, temp_v0_5->unk4, 0xFF - ((*temp_t4 * 0xFF) / *temp_t9));
     if ((arg1 == 0) && (temp_t6 = *temp_t4 + 1, *temp_t4 = temp_t6, ((temp_t6 < *sp3C) == 0))) {
-        if (D_800DC50C == 4) {
+        if (D_800DC50C == RACING) {
             *(&D_8018E7AC + arg0) = 6;
             return;
         }
@@ -6497,11 +6498,11 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
             phi_a1 = 1;
         }
         if (phi_a1 != 0) {
-            D_80287550 = 9;
+            gMenuSelectionFromEndingSequence = 9;
             D_800DC644 = 8;
             return;
         }
-        D_80287550 = 1;
+        gMenuSelectionFromEndingSequence = 1;
         gMenuSelection = GAME_SELECT_MENU;
         return;
     }
@@ -6651,7 +6652,8 @@ block_74:
             case 2:                                 /* switch 3 */
                 D_800DC51C = 1;
                 D_8018EE08 = 1;
-                D_800DC524 = 4;
+
+                D_800DC524 = RACING;
                 gCCSelection = CC_100;
                 switch (gNextDemoId) {                /* switch 4 */
                 case DEMO_ONE:                             /* switch 4 */
@@ -6749,8 +6751,8 @@ block_74:
             if (D_800E86A4 == 0) {
                 D_800E86A4 = 1;
             }
-            if (gMenuSelection >= GAMEPLAY) {
-                D_800DC524 = 4;
+            if (gMenuSelection >= RACING_DUPLICATE) {
+                D_800DC524 = RACING;
                 if (gModeSelection == TIME_TRIALS) {
                     D_8018EDFB = 1;
                 }
@@ -6762,16 +6764,16 @@ block_74:
         temp_v1_7 = D_8018EDFA;
         if (temp_v1_7 != 1) {
             if ((temp_v1_7 != 2) && (temp_v1_7 != 3)) {
-                D_800DC524 = 4;
+                D_800DC524 = RACING;
                 if (gModeSelection == TIME_TRIALS) {
                     D_8018EDFB = 1;
                 }
             } else {
-                D_800DC524 = 9;
+                D_800DC524 = 9; // = CREDITS_SEQUENCE?
                 D_800DC644 = 8;
             }
         } else {
-            D_800DC524 = 5;
+            D_800DC524 = 5; // = ENDING_SEQUENCE?
         }
         func_8000F124(1, 2);
         if ((D_800DC530 == 3) && ((temp_v1_8 = gModeSelection, (temp_v1_8 == 0)) || (temp_v1_8 == 1))) {
@@ -11304,7 +11306,7 @@ void func_800A474C(s32 arg0, s32 arg1, s32 arg2) {
     u32 phi_v0_2;
     u32 phi_v0_3;
 
-    if (D_800DC50C == 4) {
+    if (D_800DC50C == RACING) {
         sp30 = 0;
     } else {
         sp30 = 1;

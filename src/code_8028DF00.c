@@ -238,12 +238,12 @@ void func_8028E3A0(void) {
         } else {
             D_800DC544++;
             gCupCourseSelection++;
-            gMenuSelectionFromQuit = RETRY;
+            gMenuSelectionFromQuit = RACING;
         }
     } else {
         D_800DC544++;
         gCupCourseSelection++;
-        gMenuSelectionFromQuit = RETRY;
+        gMenuSelectionFromQuit = RACING;
     }
 }
 
@@ -1253,7 +1253,7 @@ void func_80290388(void) {
 void func_802903B0(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    gMenuSelectionFromQuit = RETRY;
+    gMenuSelectionFromQuit = RACING;
 }
 
 #ifdef MIPS_TO_C

@@ -4156,7 +4156,7 @@ s32 func_800B6178(s32 arg0) {
     if ((arg0 != 0) && (arg0 != 1)) {
         return -1;
     }
-    if (D_800DC50C == 4) {
+    if (D_800DC50C == RACING) {
         func_800051C4();
     }
     temp_s3 = (arg0 << 7) + &D_8018EE10;
@@ -4183,7 +4183,7 @@ s32 func_800B6178(s32 arg0) {
         phi_v1 = temp_v0_2;
         if (temp_v0_2 == 0) {
             temp_s3->unk4 = 1;
-            if (D_800DC50C == 4) {
+            if (D_800DC50C == RACING) {
                 temp_s3->unk5 = (gCupSelection * 4) + gCupCourseSelection;
             }
             temp_s3->unk0 = D_80162DFC;

@@ -681,7 +681,7 @@ extern s32 D_800DC530;
 void func_802A4D18(void) {
     f32 phi_f10;
 
-    if (D_800DC50C != 4) {
+    if (D_800DC50C != RACING) {
         D_8015014C = 6800.0f; // D_802B9BB4
         D_80150150 = 3.0f;
     } else {
@@ -867,7 +867,7 @@ void func_802A53A4(void) {
     func_802A41D4();
     if (D_800DC5B4 != 0) {
         func_802A4A0C(&D_802B8890, D_800DC5EC, 0x140, 0xF0, &D_80150130);
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_80057FC4(0);
         }
         func_802A487C(&D_802B8890, D_800DC5EC, 0x140, 0xF0, &D_80150130);
