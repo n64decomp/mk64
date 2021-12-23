@@ -234,7 +234,7 @@ void func_8028E3A0(void) {
     if (D_80150120) {
 
         if (gCupCourseSelection == CUP_COURSE_FOUR) {
-            gMenuSelectionFromQuit = OPTIONS_MENU;
+            gMenuSelectionFromQuit = ENDING_SEQUENCE;
         } else {
             D_800DC544++;
             gCupCourseSelection++;
