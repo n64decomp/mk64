@@ -2079,7 +2079,7 @@ glabel D_8018EDED
 glabel D_8018EDEE
 .skip 1
 
-glabel D_8018EDEF
+glabel gStartMenuDebugRowSelection
 .skip 1
 
 glabel gPlayerCountSelection2 # 0x8018EDF0
@@ -2121,7 +2121,7 @@ glabel D_8018EDFB
 glabel D_8018EDFC
 .skip 4
 
-glabel D_8018EE00
+glabel gStartMenuCounterForDemos
 .skip 4
 
 glabel D_8018EE04

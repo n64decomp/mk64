@@ -233,8 +233,8 @@ glabel L8009D170
 /* 09DD94 8009D194 10000175 */  b     .L8009D76C
 /* 09DD98 8009D198 A1EE0000 */   sb    $t6, ($t7)
 .L8009D19C:
-/* 09DD9C 8009D19C 3C188019 */  lui   $t8, %hi(D_8018EDEF) # $t8, 0x8019
-/* 09DDA0 8009D1A0 8318EDEF */  lb    $t8, %lo(D_8018EDEF)($t8)
+/* 09DD9C 8009D19C 3C188019 */  lui   $t8, %hi(gStartMenuDebugRowSelection) # $t8, 0x8019
+/* 09DDA0 8009D1A0 8318EDEF */  lb    $t8, %lo(gStartMenuDebugRowSelection)($t8)
 /* 09DDA4 8009D1A4 00240821 */  addu  $at, $at, $a0
 /* 09DDA8 8009D1A8 A020E7AC */  sb    $zero, %lo(D_8018E7AC)($at)
 /* 09DDAC 8009D1AC 24010040 */  li    $at, 64

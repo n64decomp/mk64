@@ -138,8 +138,8 @@ glabel func_800B3554
 /* 0B4348 800B3748 AFA6002C */  sw    $a2, 0x2c($sp)
 /* 0B434C 800B374C 0C02D12B */  jal   func_800B44AC
 /* 0B4350 800B3750 AFA70020 */   sw    $a3, 0x20($sp)
-/* 0B4354 800B3754 3C038019 */  lui   $v1, %hi(D_8018EE00) # $v1, 0x8019
-/* 0B4358 800B3758 2463EE00 */  addiu $v1, %lo(D_8018EE00) # addiu $v1, $v1, -0x1200
+/* 0B4354 800B3754 3C038019 */  lui   $v1, %hi(gStartMenuCounterForDemos) # $v1, 0x8019
+/* 0B4358 800B3758 2463EE00 */  addiu $v1, %lo(gStartMenuCounterForDemos) # addiu $v1, $v1, -0x1200
 /* 0B435C 800B375C 8FA6002C */  lw    $a2, 0x2c($sp)
 /* 0B4360 800B3760 8FA70020 */  lw    $a3, 0x20($sp)
 /* 0B4364 800B3764 AC600000 */  sw    $zero, ($v1)
@@ -353,8 +353,8 @@ glabel func_800B3554
 .L800B3A5C:
 /* 0B465C 800B3A5C 15200011 */  bnez  $t1, .L800B3AA4
 /* 0B4660 800B3A60 00603025 */   move  $a2, $v1
-/* 0B4664 800B3A64 3C038019 */  lui   $v1, %hi(D_8018EE00) # $v1, 0x8019
-/* 0B4668 800B3A68 2463EE00 */  addiu $v1, %lo(D_8018EE00) # addiu $v1, $v1, -0x1200
+/* 0B4664 800B3A64 3C038019 */  lui   $v1, %hi(gStartMenuCounterForDemos) # $v1, 0x8019
+/* 0B4668 800B3A68 2463EE00 */  addiu $v1, %lo(gStartMenuCounterForDemos) # addiu $v1, $v1, -0x1200
 /* 0B466C 800B3A6C 8C6A0000 */  lw    $t2, ($v1)
 /* 0B4670 800B3A70 2401003C */  li    $at, 60
 /* 0B4674 800B3A74 3C044900 */  lui   $a0, (0x4900900F >> 16) # lui $a0, 0x4900

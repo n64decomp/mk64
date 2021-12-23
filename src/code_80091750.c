@@ -2130,29 +2130,29 @@ void func_80095574(void) {
     if ((D_8018EE0C < 3) || (D_8018E7B0 != 0)) {
         func_800A8230();
     }
-    temp_v0 = D_8018EDEF;
+    temp_v0 = gStartMenuDebugRowSelection;
     phi_v0_2 = temp_v0;
-    if (temp_v0 >= 2) {
+    if (temp_v0 >= DEBUG_MENU_DEBUG_MODE) {
         load_debug_font();
         debug_print_str2(0x50, 0x64, "debug_mode");
-        temp_t8 = D_8018EDEF;
+        temp_t8 = gStartMenuDebugRowSelection;
         switch (temp_t8) {
-        case 2:
+        case DEBUG_MENU_DEBUG_MODE:
             debug_print_str2(0x46, 0x64, "*");
             break;
-        case 3:
+        case DEBUG_MENU_COURSE:
             debug_print_str2(0x46, 0x6E, "*");
             break;
-        case 4:
+        case DEBUG_MENU_SCREEN_MODE:
             debug_print_str2(0x46, 0x78, "*");
             break;
-        case 5:
+        case DEBUG_MENU_PLAYER:
             debug_print_str2(0x46, 0x82, "*");
             break;
-        case 6:
+        case DEBUG_MENU_SOUND_MODE:
             debug_print_str2(0x46, 0x8C, "*");
             break;
-        case 7:
+        case DEBUG_MENU_GIVE_ALL_GOLD_CUP:
             debug_print_str2(0x46, 0x96, "*");
             break;
         }
@@ -2179,22 +2179,22 @@ void func_80095574(void) {
         debug_print_str2(0xAA, 0x82, *(&gDebugCharacterNames + (D_800E86A8 * 4)));
         debug_print_str2(0x50, 0x8C, "sound mode");
         debug_print_str2(0xAA, 0x8C, gDebugSoundModeNames[gSoundMode]);
-        if (D_8018EDEF == 7) {
+        if (gStartMenuDebugRowSelection == DEBUG_MENU_GIVE_ALL_GOLD_CUP) {
             debug_print_str2(0x50, 0x96, "push b to get all goldcup");
         }
         func_80057778();
-        phi_v0_2 = D_8018EDEF;
+        phi_v0_2 = gStartMenuDebugRowSelection;
     }
-    if (phi_v0_2 == 1) {
-        D_8018EE00 += 1;
+    if (phi_v0_2 == DEBUG_MENU_DISABLED) {
+        gStartMenuCounterForDemos += 1;
     } else {
-        D_8018EE00 = 3;
+        gStartMenuCounterForDemos = 3;
     }
-    temp_v0_2 = D_8018EE00;
+    temp_v0_2 = gStartMenuCounterForDemos;
     phi_v0_3 = temp_v0_2;
     if (temp_v0_2 == 2) {
         play_sound2(0x49009009);
-        phi_v0_3 = D_8018EE00;
+        phi_v0_3 = gStartMenuCounterForDemos;
     }
     if (phi_v0_3 >= 0x12D) {
         func_8009E230();
@@ -6626,7 +6626,7 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
         }
     } else {
         *(&D_8018E7AC + arg0) = 0;
-        if (D_8018EDEF != 0x40) {
+        if (gStartMenuDebugRowSelection != DEBUG_MENU_EXITED) {
             temp_t9 = D_8018EDE0;
             switch (temp_t9) {                      /* switch 3 */
             case 0:                                 /* switch 3 */

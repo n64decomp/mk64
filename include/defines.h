@@ -92,6 +92,18 @@
 #define RACING_DUPLICATE 14
 
 /**
+ * Options for gStartMenuDebugRowSelection
+ */
+#define DEBUG_MENU_DISABLED 1
+#define DEBUG_MENU_DEBUG_MODE 2
+#define DEBUG_MENU_COURSE 3
+#define DEBUG_MENU_SCREEN_MODE 4
+#define DEBUG_MENU_PLAYER 5
+#define DEBUG_MENU_SOUND_MODE 6
+#define DEBUG_MENU_GIVE_ALL_GOLD_CUP 7
+#define DEBUG_MENU_EXITED 64
+
+/**
  * Indexes for accessing Time Trial records
 **/
 #define TIME_TRIAL_3LAP_RECORD_1 0

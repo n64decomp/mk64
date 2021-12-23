@@ -13,8 +13,8 @@ glabel func_80095574
 /* 09619C 8009559C 0C02A08C */  jal   func_800A8230
 /* 0961A0 800955A0 00000000 */   nop   
 .L800955A4:
-/* 0961A4 800955A4 3C028019 */  lui   $v0, %hi(D_8018EDEF) # $v0, 0x8019
-/* 0961A8 800955A8 8042EDEF */  lb    $v0, %lo(D_8018EDEF)($v0)
+/* 0961A4 800955A4 3C028019 */  lui   $v0, %hi(gStartMenuDebugRowSelection) # $v0, 0x8019
+/* 0961A8 800955A8 8042EDEF */  lb    $v0, %lo(gStartMenuDebugRowSelection)($v0)
 /* 0961AC 800955AC 28410002 */  slti  $at, $v0, 2
 /* 0961B0 800955B0 5420009F */  bnel  $at, $zero, .L80095830
 /* 0961B4 800955B4 24010001 */   li    $at, 1
@@ -25,8 +25,8 @@ glabel func_80095574
 /* 0961C8 800955C8 24040050 */  li    $a0, 80
 /* 0961CC 800955CC 0C015DE9 */  jal   debug_print_str2
 /* 0961D0 800955D0 24050064 */   li    $a1, 100
-/* 0961D4 800955D4 3C188019 */  lui   $t8, %hi(D_8018EDEF) # $t8, 0x8019
-/* 0961D8 800955D8 8318EDEF */  lb    $t8, %lo(D_8018EDEF)($t8)
+/* 0961D4 800955D4 3C188019 */  lui   $t8, %hi(gStartMenuDebugRowSelection) # $t8, 0x8019
+/* 0961D8 800955D8 8318EDEF */  lb    $t8, %lo(gStartMenuDebugRowSelection)($t8)
 /* 0961DC 800955DC 2719FFFE */  addiu $t9, $t8, -2
 /* 0961E0 800955E0 2F210006 */  sltiu $at, $t9, 6
 /* 0961E4 800955E4 1020002E */  beqz  $at, .L800956A0
@@ -175,8 +175,8 @@ glabel L8009568C
 /* 0963EC 800957EC 8CC67700 */  lw    $a2, %lo(gDebugSoundModeNames)($a2)
 /* 0963F0 800957F0 0C015DE9 */  jal   debug_print_str2
 /* 0963F4 800957F4 2405008C */   li    $a1, 140
-/* 0963F8 800957F8 3C188019 */  lui   $t8, %hi(D_8018EDEF) # $t8, 0x8019
-/* 0963FC 800957FC 8318EDEF */  lb    $t8, %lo(D_8018EDEF)($t8)
+/* 0963F8 800957F8 3C188019 */  lui   $t8, %hi(gStartMenuDebugRowSelection) # $t8, 0x8019
+/* 0963FC 800957FC 8318EDEF */  lb    $t8, %lo(gStartMenuDebugRowSelection)($t8)
 /* 096400 80095800 24010007 */  li    $at, 7
 /* 096404 80095804 24040050 */  li    $a0, 80
 /* 096408 80095808 17010004 */  bne   $t8, $at, .L8009581C
@@ -187,20 +187,20 @@ glabel L8009568C
 .L8009581C:
 /* 09641C 8009581C 0C015DDE */  jal   func_80057778
 /* 096420 80095820 00000000 */   nop   
-/* 096424 80095824 3C028019 */  lui   $v0, %hi(D_8018EDEF) # $v0, 0x8019
-/* 096428 80095828 8042EDEF */  lb    $v0, %lo(D_8018EDEF)($v0)
+/* 096424 80095824 3C028019 */  lui   $v0, %hi(gStartMenuDebugRowSelection) # $v0, 0x8019
+/* 096428 80095828 8042EDEF */  lb    $v0, %lo(gStartMenuDebugRowSelection)($v0)
 /* 09642C 8009582C 24010001 */  li    $at, 1
 .L80095830:
 /* 096430 80095830 14410007 */  bne   $v0, $at, .L80095850
-/* 096434 80095834 3C038019 */   lui   $v1, %hi(D_8018EE00) # 0x8019
-/* 096438 80095838 3C038019 */  lui   $v1, %hi(D_8018EE00) # $v1, 0x8019
-/* 09643C 8009583C 2463EE00 */  addiu $v1, %lo(D_8018EE00) # addiu $v1, $v1, -0x1200
+/* 096434 80095834 3C038019 */   lui   $v1, %hi(gStartMenuCounterForDemos) # 0x8019
+/* 096438 80095838 3C038019 */  lui   $v1, %hi(gStartMenuCounterForDemos) # $v1, 0x8019
+/* 09643C 8009583C 2463EE00 */  addiu $v1, %lo(gStartMenuCounterForDemos) # addiu $v1, $v1, -0x1200
 /* 096440 80095840 8C790000 */  lw    $t9, ($v1)
 /* 096444 80095844 27280001 */  addiu $t0, $t9, 1
 /* 096448 80095848 10000004 */  b     .L8009585C
 /* 09644C 8009584C AC680000 */   sw    $t0, ($v1)
 .L80095850:
-/* 096450 80095850 2463EE00 */  addiu $v1, $v1, %lo(D_8018EE00) # -0x1200
+/* 096450 80095850 2463EE00 */  addiu $v1, $v1, %lo(gStartMenuCounterForDemos) # -0x1200
 /* 096454 80095854 24090003 */  li    $t1, 3
 /* 096458 80095858 AC690000 */  sw    $t1, ($v1)
 .L8009585C:
@@ -211,8 +211,8 @@ glabel L8009568C
 /* 09646C 8009586C 2841012D */   slti  $at, $v0, 0x12d
 /* 096470 80095870 0C032384 */  jal   play_sound2
 /* 096474 80095874 34849009 */   ori   $a0, (0x49009009 & 0xFFFF) # ori $a0, $a0, 0x9009
-/* 096478 80095878 3C028019 */  lui   $v0, %hi(D_8018EE00) # $v0, 0x8019
-/* 09647C 8009587C 8C42EE00 */  lw    $v0, %lo(D_8018EE00)($v0)
+/* 096478 80095878 3C028019 */  lui   $v0, %hi(gStartMenuCounterForDemos) # $v0, 0x8019
+/* 09647C 8009587C 8C42EE00 */  lw    $v0, %lo(gStartMenuCounterForDemos)($v0)
 /* 096480 80095880 2841012D */  slti  $at, $v0, 0x12d
 .L80095884:
 /* 096484 80095884 14200005 */  bnez  $at, .L8009589C

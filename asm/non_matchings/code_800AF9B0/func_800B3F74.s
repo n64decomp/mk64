@@ -1,9 +1,9 @@
 glabel func_800B3F74
 /* 0B4B74 800B3F74 24030001 */  li    $v1, 1
-/* 0B4B78 800B3F78 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
-/* 0B4B7C 800B3F7C A023EDEF */  sb    $v1, %lo(D_8018EDEF)($at)
-/* 0B4B80 800B3F80 3C018019 */  lui   $at, %hi(D_8018EE00) # $at, 0x8019
-/* 0B4B84 800B3F84 AC20EE00 */  sw    $zero, %lo(D_8018EE00)($at)
+/* 0B4B78 800B3F78 3C018019 */  lui   $at, %hi(gStartMenuDebugRowSelection) # $at, 0x8019
+/* 0B4B7C 800B3F7C A023EDEF */  sb    $v1, %lo(gStartMenuDebugRowSelection)($at)
+/* 0B4B80 800B3F80 3C018019 */  lui   $at, %hi(gStartMenuCounterForDemos) # $at, 0x8019
+/* 0B4B84 800B3F84 AC20EE00 */  sw    $zero, %lo(gStartMenuCounterForDemos)($at)
 /* 0B4B88 800B3F88 3C018019 */  lui   $at, %hi(D_8018EE04) # $at, 0x8019
 /* 0B4B8C 800B3F8C AC20EE04 */  sw    $zero, %lo(D_8018EE04)($at)
 /* 0B4B90 800B3F90 3C018019 */  lui   $at, %hi(D_8018EE08) # $at, 0x8019
