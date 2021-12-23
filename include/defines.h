@@ -71,13 +71,13 @@
 #define BOWSER 7
 
 /**
- * Options for gMenuSelection
+ * Options for gMenuSelection and gMenuSelectionFromQuit
 **/
-#define START_MENU_DUPLICATE 0
-#define GAME_SELECT_MENU_DUPLICATE 1
-#define PLAYER_SELECT_MENU_DUPLICATE 2
-#define COURSE_SELECT_MENU_DUPLICATE 3
-#define UNUSED_MENU 4
+#define START_MENU_FROM_QUIT 0
+#define GAME_SELECT_MENU_FROM_QUIT 1
+#define PLAYER_SELECT_MENU_FROM_QUIT 2
+#define COURSE_SELECT_MENU_FROM_QUIT 3
+#define RETRY 4
 #define OPTIONS_MENU 5
 #define DATA_MENU 6
 #define COURSE_DATA_MENU 7
@@ -87,7 +87,7 @@
 #define GAME_SELECT_MENU 11
 #define PLAYER_SELECT_MENU 12
 #define COURSE_SELECT_MENU 13
-#define MAX_NUM_MENUS 14
+#define GAMEPLAY 14
 
 /**
  * Indexes for accessing Time Trial records

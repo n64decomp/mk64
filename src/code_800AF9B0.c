@@ -454,19 +454,19 @@ block_9:
                     func_800B1C90(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 }
                 break;
-            case START_MENU_DUPLICATE:
+            case START_MENU_FROM_QUIT:
             case START_MENU:
                 func_800B20F4(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
-            case GAME_SELECT_MENU_DUPLICATE:
+            case GAME_SELECT_MENU_FROM_QUIT:
             case GAME_SELECT_MENU:
                 func_800B29D8(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
-            case PLAYER_SELECT_MENU_DUPLICATE:
+            case PLAYER_SELECT_MENU_FROM_QUIT:
             case PLAYER_SELECT_MENU:
                 func_800B3554(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
-            case COURSE_SELECT_MENU_DUPLICATE:
+            case COURSE_SELECT_MENU_FROM_QUIT:
             case COURSE_SELECT_MENU:
                 func_800B3B58(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
@@ -2612,7 +2612,7 @@ void func_800B3F74(u32 arg0) {
         gPlayerCountSelection2 = 1;
         func_800CA008(0, 0);
         break;
-    case START_MENU_DUPLICATE:
+    case START_MENU_FROM_QUIT:
     case START_MENU:
         gIsMirrorMode = 0;
         gEnableDebugMode = 0;
@@ -2632,7 +2632,7 @@ void func_800B3F74(u32 arg0) {
         func_800C8EAC(1);
         D_8018EDFC = 0;
         break;
-    case GAME_SELECT_MENU_DUPLICATE:
+    case GAME_SELECT_MENU_FROM_QUIT:
     case GAME_SELECT_MENU:
         gEnableDebugMode = 0;
         gIsMirrorMode = 0;
@@ -2676,7 +2676,7 @@ void func_800B3F74(u32 arg0) {
             }
         }
         break;
-    case PLAYER_SELECT_MENU_DUPLICATE:
+    case PLAYER_SELECT_MENU_FROM_QUIT:
     case PLAYER_SELECT_MENU:
         temp_v0_4 = D_8018EDE0;
         if (temp_v0_4 != 0) {
@@ -2746,7 +2746,7 @@ void func_800B3F74(u32 arg0) {
             }
         }
         break;
-    case COURSE_SELECT_MENU_DUPLICATE:
+    case COURSE_SELECT_MENU_FROM_QUIT:
     case COURSE_SELECT_MENU:
         if (gModeSelection == BATTLE) {
             gCupSelection = BATTLE_CUP;

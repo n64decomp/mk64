@@ -6749,7 +6749,7 @@ block_74:
             if (D_800E86A4 == 0) {
                 D_800E86A4 = 1;
             }
-            if (gMenuSelection >= MAX_NUM_MENUS) {
+            if (gMenuSelection >= GAMEPLAY) {
                 D_800DC524 = 4;
                 if (gModeSelection == TIME_TRIALS) {
                     D_8018EDFB = 1;

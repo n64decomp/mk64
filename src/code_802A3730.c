@@ -24,7 +24,7 @@ extern s16 D_800DC5C0;
 extern u16 D_800DC5C4;
 extern s32 gMenuSelection;
 extern s32 D_800E86A4;
-extern s32 D_80150124;
+extern s32 gMenuSelectionFromQuit;
 
 extern s32 D_801502B4;
 extern uintptr_t *gPhysicalFramebuffers[];
@@ -142,25 +142,25 @@ void func_802A38B4(void) {
         D_800DC5C4--;
         return;
     }
-    D_800DC524 = D_80150124;
+    D_800DC524 = gMenuSelectionFromQuit;
     D_800DC50C = 255;
     D_800DC5C0 = 0;
     D_800DC5C4 = 0;
     D_800E86A4 = 1;
 
-    switch(D_80150124) {
-        case 0:
+    switch(gMenuSelectionFromQuit) {
+        case START_MENU_FROM_QUIT:
             if (gMenuSelection != LOGO_INTRO_MENU) {
                 gMenuSelection = START_MENU;
             }
             break;
-        case 1:
+        case GAME_SELECT_MENU_FROM_QUIT:
             gMenuSelection = GAME_SELECT_MENU;
             break;
-        case 2:
+        case PLAYER_SELECT_MENU_FROM_QUIT:
             gMenuSelection = PLAYER_SELECT_MENU;
             break;
-        case 3:
+        case COURSE_SELECT_MENU_FROM_QUIT:
             gMenuSelection = COURSE_SELECT_MENU;
             break;
     }

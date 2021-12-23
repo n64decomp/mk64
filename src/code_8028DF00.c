@@ -52,7 +52,7 @@ extern s32 gPlayerCountSelection1;
 extern u16 D_802BA048;
 extern s32 D_800DC510;
 
-extern s32 D_80150124;
+extern s32 gMenuSelectionFromQuit;
 extern u16 D_800DC5B4;
 extern u16 D_800DC5B0;
 extern u16 D_800DC5B8;
@@ -234,16 +234,16 @@ void func_8028E3A0(void) {
     if (D_80150120) {
 
         if (gCupCourseSelection == CUP_COURSE_FOUR) {
-            D_80150124 = 5;
+            gMenuSelectionFromQuit = OPTIONS_MENU;
         } else {
             D_800DC544++;
             gCupCourseSelection++;
-            D_80150124 = 4;
+            gMenuSelectionFromQuit = RETRY;
         }
     } else {
         D_800DC544++;
         gCupCourseSelection++;
-        D_80150124 = 4;
+        gMenuSelectionFromQuit = RETRY;
     }
 }
 
@@ -493,7 +493,7 @@ void func_8028E678(void) {
 }
 
 void func_8028EC38(s32 arg0) {
-    D_80150124 = arg0;
+    gMenuSelectionFromQuit = arg0;
     D_800DC510 = 6;
     func_800CA330(25);
     func_800CA388(25);
@@ -772,7 +772,7 @@ void func_8028F4E8(void) {
 
             func_800CA330(0x19);
             func_800CA388(0x19);
-            D_80150124 = 0;
+            gMenuSelectionFromQuit = START_MENU_FROM_QUIT;
             D_800DC510 = 6;
             D_800DC5B4 = 1;
             D_800DC5B0 = 1;
@@ -1020,7 +1020,7 @@ GLOBAL_ASM("asm/non_matchings/code_8028DF00/func_8028F970.s")
 #endif
 
 void func_8028FBD4(void) {
-    D_80150124 = 0;
+    gMenuSelectionFromQuit = START_MENU_FROM_QUIT;
     D_800DC510 = 6;
     func_800CA330(25);
     func_800CA388(25);
@@ -1229,31 +1229,31 @@ void func_8028FCBC(void) {
 UNUSED void func_80290314(void) {
     D_800DC5C0 = 1;
     D_800DC5C4 = 5;
-    D_80150124 = 0;
+    gMenuSelectionFromQuit = START_MENU_FROM_QUIT;
 }
 
 void func_80290338(void) {
     D_800DC5C0 = 1;
     D_800DC5C4 = 5;
-    D_80150124 = 1;
+    gMenuSelectionFromQuit = GAME_SELECT_MENU_FROM_QUIT;
 }
 
 void func_80290360(void) {
     D_800DC5C0 = 1;
     D_800DC5C4 = 5;
-    D_80150124 = 2;
+    gMenuSelectionFromQuit = PLAYER_SELECT_MENU_FROM_QUIT;
 }
 
 void func_80290388(void) {
     D_800DC5C0 = 1;
     D_800DC5C4 = 5;
-    D_80150124 = 3;
+    gMenuSelectionFromQuit = COURSE_SELECT_MENU_FROM_QUIT;
 }
 
 void func_802903B0(void) {
     D_800DC5C0 = 1;
     D_800DC5C4 = 5;
-    D_80150124 = 4;
+    gMenuSelectionFromQuit = RETRY;
 }
 
 #ifdef MIPS_TO_C
