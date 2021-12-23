@@ -1038,7 +1038,7 @@ void func_8028FC34(void) {
     D_802BA038--;
     if (D_800DC4CC->buttonPressed != 0) {
         func_8028FBD4();
-        gMenuSelection = START_MENU_2;
+        gMenuSelection = START_MENU;
         return;
     }
     if (D_802BA038 == 0) {

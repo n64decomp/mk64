@@ -1891,7 +1891,7 @@ void func_80094A64(s32 arg0) {
     func_8009C918();
     temp_t1 = gMenuSelection;
     switch (temp_t1) {
-    case START_MENU_2:
+    case START_MENU:
         func_80095574();
         func_80093E40();
         break;
@@ -1900,9 +1900,9 @@ void func_80094A64(s32 arg0) {
     case COURSE_DATA_MENU:
     case LOGO_INTRO_MENU:
     case CONTROLLER_PAK_MENU:
-    case GAME_SELECT_MENU_2:
-    case PLAYER_SELECT_MENU_2:
-    case MAP_SELECT_MENU_2:
+    case GAME_SELECT_MENU:
+    case PLAYER_SELECT_MENU:
+    case COURSE_SELECT_MENU:
         func_800A8230();
         func_80099AEC();
         break;
@@ -1999,7 +1999,7 @@ void func_80094C60(void) {
             func_8009E650(0xD8, 0, 0, 0xA);
             func_8009E650(0xD9, 0, 0, 0xA);
             break;
-        case START_MENU_2:
+        case START_MENU:
             func_8009E650(2, 0, 0, 4);
             func_8009E650(1, 0, 0, 0);
             func_8009E650(0xFB, 0, 0, 0);
@@ -2012,7 +2012,7 @@ void func_80094C60(void) {
             D_800DC51C = 0;
             D_8018EE08 = 0;
             break;
-        case GAME_SELECT_MENU_2:
+        case GAME_SELECT_MENU:
             func_8009E650(0x23, 0, 0, 2);
             func_8009E650(0xA, 0x15E, 0x11, 6);
             func_8009E650(0xE, 0x15E, 0x3E, 6);
@@ -2032,7 +2032,7 @@ void func_80094C60(void) {
             func_8009E650(0x18, 0, 0, 6);
             func_8009E650(0x1B, 0, 0, 0xC);
             break;
-        case PLAYER_SELECT_MENU_2:
+        case PLAYER_SELECT_MENU:
             func_8009E650(0x24, 0, 0, 2);
             func_8009E650(0x2A, 0, 0, 6);
             func_8009E650(0x33, 0, 0, 6);
@@ -2049,7 +2049,7 @@ void func_80094C60(void) {
             func_8009E650(0x36, 0, 0, 0xC);
             func_8009E650(0x37, 0, 0, 0xC);
             break;
-        case MAP_SELECT_MENU_2:
+        case COURSE_SELECT_MENU:
             func_8009E650(0x25, 0, 0, 2);
             func_8009E650(0x52, 0, 0, 6);
             if (gModeSelection != BATTLE) {
@@ -6502,7 +6502,7 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
             return;
         }
         D_80287550 = 1;
-        gMenuSelection = GAME_SELECT_MENU_2;
+        gMenuSelection = GAME_SELECT_MENU;
         return;
     }
     if (temp_v0 == 4) {
@@ -6635,7 +6635,7 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
                 phi_a2 = 2;
                 phi_a2 = 2;
                 if (temp_v0_7 == LOGO_INTRO_MENU) {
-                    gMenuSelection = START_MENU_2;
+                    gMenuSelection = START_MENU;
                     D_800E86A4 = 2;
                 } else {
 block_74:
@@ -6726,11 +6726,11 @@ block_74:
                 temp_v1_5 = gMenuSelection;
                 phi_a0 = &gMenuSelection;
                 if (temp_v1_5 != DATA_MENU) {
-                    if (temp_v1_5 == GAME_SELECT_MENU_2) {
+                    if (temp_v1_5 == GAME_SELECT_MENU) {
                         gMenuSelection = DATA_MENU;
                     }
                 } else {
-                    gMenuSelection = GAME_SELECT_MENU_2;
+                    gMenuSelection = GAME_SELECT_MENU;
                 }
                 break;
             case 4:                                 /* switch 3 */
@@ -6738,7 +6738,7 @@ block_74:
                 phi_t7 = 0xB;
                 phi_a0 = &gMenuSelection;
                 if (temp_v1_6 != OPTIONS_MENU) {
-                    if (temp_v1_6 == GAME_SELECT_MENU_2) {
+                    if (temp_v1_6 == GAME_SELECT_MENU) {
                         gMenuSelection = OPTIONS_MENU;
                     }
                 } else {

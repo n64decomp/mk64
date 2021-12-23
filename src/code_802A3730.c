@@ -151,17 +151,17 @@ void func_802A38B4(void) {
     switch(D_80150124) {
         case 0:
             if (gMenuSelection != LOGO_INTRO_MENU) {
-                gMenuSelection = START_MENU_2;
+                gMenuSelection = START_MENU;
             }
             break;
         case 1:
-            gMenuSelection = GAME_SELECT_MENU_2;
+            gMenuSelection = GAME_SELECT_MENU;
             break;
         case 2:
-            gMenuSelection = PLAYER_SELECT_MENU_2;
+            gMenuSelection = PLAYER_SELECT_MENU;
             break;
         case 3:
-            gMenuSelection = MAP_SELECT_MENU_2;
+            gMenuSelection = COURSE_SELECT_MENU;
             break;
     }
 }

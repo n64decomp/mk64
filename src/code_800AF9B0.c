@@ -421,8 +421,8 @@ void func_800B0350(void) {
         do {
             if ((func_800B4520() == 0) && (gEnableDebugMode != 0) && ((gControllers[phi_s0].buttonPressed & 0x1000) != 0)) {
                 temp_v0 = gMenuSelection;
-                if ((temp_v0 != GAME_SELECT_MENU_2) && (temp_v0 != PLAYER_SELECT_MENU_2)) {
-                    if (temp_v0 == MAP_SELECT_MENU_2) {
+                if ((temp_v0 != GAME_SELECT_MENU) && (temp_v0 != PLAYER_SELECT_MENU)) {
+                    if (temp_v0 == COURSE_SELECT_MENU) {
                         func_800CA330(0x19);
                         goto block_9;
                     }
@@ -430,7 +430,7 @@ void func_800B0350(void) {
 block_9:
                     play_sound2(0x49008016);
                 }
-                if ((gMenuSelection != CONTROLLER_PAK_MENU) && (gMenuSelection != START_MENU_2)) {
+                if ((gMenuSelection != CONTROLLER_PAK_MENU) && (gMenuSelection != START_MENU)) {
                     func_8009E1C0();
                 }
             }
@@ -454,20 +454,20 @@ block_9:
                     func_800B1C90(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 }
                 break;
+            case START_MENU_DUPLICATE:
             case START_MENU:
-            case START_MENU_2:
                 func_800B20F4(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
+            case GAME_SELECT_MENU_DUPLICATE:
             case GAME_SELECT_MENU:
-            case GAME_SELECT_MENU_2:
                 func_800B29D8(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
+            case PLAYER_SELECT_MENU_DUPLICATE:
             case PLAYER_SELECT_MENU:
-            case PLAYER_SELECT_MENU_2:
                 func_800B3554(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
-            case MAP_SELECT_MENU:
-            case MAP_SELECT_MENU_2:
+            case COURSE_SELECT_MENU_DUPLICATE:
+            case COURSE_SELECT_MENU:
                 func_800B3B58(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
             }
@@ -2612,8 +2612,8 @@ void func_800B3F74(u32 arg0) {
         gPlayerCountSelection2 = 1;
         func_800CA008(0, 0);
         break;
+    case START_MENU_DUPLICATE:
     case START_MENU:
-    case START_MENU_2:
         gIsMirrorMode = 0;
         gEnableDebugMode = 0;
         gCupSelection = MUSHROOM_CUP;
@@ -2632,8 +2632,8 @@ void func_800B3F74(u32 arg0) {
         func_800C8EAC(1);
         D_8018EDFC = 0;
         break;
+    case GAME_SELECT_MENU_DUPLICATE:
     case GAME_SELECT_MENU:
-    case GAME_SELECT_MENU_2:
         gEnableDebugMode = 0;
         gIsMirrorMode = 0;
         D_8018EDFC = 0;
@@ -2676,8 +2676,8 @@ void func_800B3F74(u32 arg0) {
             }
         }
         break;
+    case PLAYER_SELECT_MENU_DUPLICATE:
     case PLAYER_SELECT_MENU:
-    case PLAYER_SELECT_MENU_2:
         temp_v0_4 = D_8018EDE0;
         if (temp_v0_4 != 0) {
             if (temp_v0_4 != 1) {
@@ -2746,8 +2746,8 @@ void func_800B3F74(u32 arg0) {
             }
         }
         break;
-    case MAP_SELECT_MENU:
-    case MAP_SELECT_MENU_2:
+    case COURSE_SELECT_MENU_DUPLICATE:
+    case COURSE_SELECT_MENU:
         if (gModeSelection == BATTLE) {
             gCupSelection = BATTLE_CUP;
             D_800DC540 = 4;
