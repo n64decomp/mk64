@@ -228,7 +228,7 @@ extern s16 gCurrentCourseId;
 
 extern u16 D_80164AF0;
 extern u16 D_800DC5FC;
-extern u16 D_800DC5C0;
+extern u16 gIsInQuitToMenuTransition;
 
 
 extern s32 D_8015F788;
@@ -585,7 +585,7 @@ void func_8000142C(void) {
     if (D_800DC5FC != 0) {
         func_80290B14();
     }
-    if (D_800DC5C0 != 0) {
+    if (gIsInQuitToMenuTransition != 0) {
         func_802A38B4(); return;
     }
 

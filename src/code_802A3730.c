@@ -20,8 +20,8 @@ extern u16 D_800DC5B0;
 
 void func_802A3E3C();
 extern s32 D_800DC524;
-extern s16 D_800DC5C0;
-extern u16 D_800DC5C4;
+extern s16 gIsInQuitToMenuTransition;
+extern u16 gQuitToMenuTransitionCounter;
 extern s32 gMenuSelection;
 extern s32 D_800E86A4;
 extern s32 gMenuSelectionFromQuit;
@@ -138,14 +138,14 @@ void func_802A38B4(void) {
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
 
-    if (D_800DC5C4 != 0) {
-        D_800DC5C4--;
+    if (gQuitToMenuTransitionCounter != 0) {
+        gQuitToMenuTransitionCounter--;
         return;
     }
     D_800DC524 = gMenuSelectionFromQuit;
     D_800DC50C = 255;
-    D_800DC5C0 = 0;
-    D_800DC5C4 = 0;
+    gIsInQuitToMenuTransition = 0;
+    gQuitToMenuTransitionCounter = 0;
     D_800E86A4 = 1;
 
     switch(gMenuSelectionFromQuit) {

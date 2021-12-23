@@ -18,7 +18,7 @@ extern u16 D_80164AF0;
 extern u32 D_8018D120;
 extern s32 gPrevLoadedAddress;
 
-extern u16 D_800DC5C0, D_800DC5C4;
+extern u16 gIsInQuitToMenuTransition, gQuitToMenuTransitionCounter;
 extern s32 D_802874A0;
 
 extern u16 func_802B7830(f32, f32);
@@ -69,8 +69,8 @@ void func_80280038(void) {
 }
 
 void func_80280268(s32 arg0) {
-    D_800DC5C0 = 1;
-    D_800DC5C4 = 5;
+    gIsInQuitToMenuTransition = 1;
+    gQuitToMenuTransitionCounter = 5;
     D_802874A0 = 1;
     if ((arg0 < 0) || ((arg0 >= 0x14))) {
         arg0 = 0;
@@ -86,10 +86,10 @@ void func_802802AC(void) {
     f32 temp_f14;
 
     D_802874A0 = 0;
-    if (D_800DC5C0 != 0) {
-        D_800DC5C4--;
-        if (D_800DC5C4 == 0) {
-            D_800DC5C0 = 0;
+    if (gIsInQuitToMenuTransition != 0) {
+        gQuitToMenuTransitionCounter--;
+        if (gQuitToMenuTransitionCounter == 0) {
+            gIsInQuitToMenuTransition = 0;
             D_800DC524 = 9;
             D_800DC50C = 255;
         }

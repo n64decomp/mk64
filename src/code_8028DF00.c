@@ -74,7 +74,7 @@ extern u16 D_8015F890;
 extern u32 D_800DC5AC;
 extern u16 gEnableDebugMode;
 extern s32 D_800DC5E8;
-extern u16 D_800DC5C0, D_800DC5C4;
+extern u16 gIsInQuitToMenuTransition, gQuitToMenuTransitionCounter;
 extern s32 D_802B91E0;
 extern s16 D_8015F8F2[];
 
@@ -484,8 +484,8 @@ void func_8028E678(void) {
             }
             break;
         case 4:
-            D_800DC5C0 = 1;
-            D_800DC5C4 = 5;
+            gIsInQuitToMenuTransition = 1;
+            gQuitToMenuTransitionCounter = 5;
             D_800DC510 = 7;
             func_8028E3A0();
             break;
@@ -1217,8 +1217,8 @@ void func_8028FCBC(void) {
         case 6:
             func_8028F8BC();
             if (D_802BA034 <= 0) {
-                D_800DC5C0 = 1;
-                D_800DC5C4 = 5;
+                gIsInQuitToMenuTransition = 1;
+                gQuitToMenuTransitionCounter = 5;
             }
             break;
         case 7:
@@ -1227,32 +1227,32 @@ void func_8028FCBC(void) {
 }
 
 UNUSED void func_80290314(void) {
-    D_800DC5C0 = 1;
-    D_800DC5C4 = 5;
+    gIsInQuitToMenuTransition = 1;
+    gQuitToMenuTransitionCounter = 5;
     gMenuSelectionFromQuit = START_MENU_FROM_QUIT;
 }
 
 void func_80290338(void) {
-    D_800DC5C0 = 1;
-    D_800DC5C4 = 5;
+    gIsInQuitToMenuTransition = 1;
+    gQuitToMenuTransitionCounter = 5;
     gMenuSelectionFromQuit = GAME_SELECT_MENU_FROM_QUIT;
 }
 
 void func_80290360(void) {
-    D_800DC5C0 = 1;
-    D_800DC5C4 = 5;
+    gIsInQuitToMenuTransition = 1;
+    gQuitToMenuTransitionCounter = 5;
     gMenuSelectionFromQuit = PLAYER_SELECT_MENU_FROM_QUIT;
 }
 
 void func_80290388(void) {
-    D_800DC5C0 = 1;
-    D_800DC5C4 = 5;
+    gIsInQuitToMenuTransition = 1;
+    gQuitToMenuTransitionCounter = 5;
     gMenuSelectionFromQuit = COURSE_SELECT_MENU_FROM_QUIT;
 }
 
 void func_802903B0(void) {
-    D_800DC5C0 = 1;
-    D_800DC5C4 = 5;
+    gIsInQuitToMenuTransition = 1;
+    gQuitToMenuTransitionCounter = 5;
     gMenuSelectionFromQuit = RETRY;
 }
 

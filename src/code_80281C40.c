@@ -17,7 +17,7 @@ extern s32 D_802874FC;
 
 extern u32 D_80287550;
 extern s32 D_80287554;
-extern u16 D_800DC5C0;
+extern u16 gIsInQuitToMenuTransition;
 extern u32 D_800DC524;
 extern Gfx D_00284F70[];
 extern Gfx D_00284EE0[];
@@ -56,7 +56,7 @@ void func_80281D00(void) {
     if (D_80287550 != 0xFFFF) {
         clear_framebuffer(0);
         if (D_80287554 >= 4) {
-            D_800DC5C0 = 0;
+            gIsInQuitToMenuTransition = 0;
             D_800DC524 = D_80287550;
         }
         D_80287554++;
