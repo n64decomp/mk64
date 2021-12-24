@@ -108,13 +108,13 @@ glabel func_800B5B94
 /* 0B6914 800B5D14 1000001F */  b     .L800B5D94
 /* 0B6918 800B5D18 24020002 */   li    $v0, 2
 .L800B5D1C:
-/* 0B691C 800B5D1C 3C058019 */  lui   $a1, %hi(D_8018EB80) # $a1, 0x8019
-/* 0B6920 800B5D20 24A5EB80 */  addiu $a1, %lo(D_8018EB80) # addiu $a1, $a1, -0x1480
+/* 0B691C 800B5D1C 3C058019 */  lui   $a1, %hi(gControllerPakPagesFree) # $a1, 0x8019
+/* 0B6920 800B5D20 24A5EB80 */  addiu $a1, %lo(gControllerPakPagesFree) # addiu $a1, $a1, -0x1480
 /* 0B6924 800B5D24 0C033B48 */  jal   osPfsFreeBlocks
 /* 0B6928 800B5D28 2484E868 */   addiu $a0, %lo(D_8018E868) # addiu $a0, $a0, -0x1798
-/* 0B692C 800B5D2C 3C038019 */  lui   $v1, %hi(D_8018EB80) # $v1, 0x8019
+/* 0B692C 800B5D2C 3C038019 */  lui   $v1, %hi(gControllerPakPagesFree) # $v1, 0x8019
 /* 0B6930 800B5D30 10400003 */  beqz  $v0, .L800B5D40
-/* 0B6934 800B5D34 2463EB80 */   addiu $v1, %lo(D_8018EB80) # addiu $v1, $v1, -0x1480
+/* 0B6934 800B5D34 2463EB80 */   addiu $v1, %lo(gControllerPakPagesFree) # addiu $v1, $v1, -0x1480
 /* 0B6938 800B5D38 10000016 */  b     .L800B5D94
 /* 0B693C 800B5D3C 24020002 */   li    $v0, 2
 .L800B5D40:
@@ -126,8 +126,8 @@ glabel func_800B5B94
 /* 0B6950 800B5D50 3C0C8019 */  lui   $t4, %hi(D_8018EB78) # $t4, 0x8019
 /* 0B6954 800B5D54 8D8CEB78 */  lw    $t4, %lo(D_8018EB78)($t4)
 /* 0B6958 800B5D58 8D6BEB7C */  lw    $t3, %lo(D_8018EB7C)($t3)
-/* 0B695C 800B5D5C 3C038019 */  lui   $v1, %hi(D_8018EB80) # $v1, 0x8019
-/* 0B6960 800B5D60 2463EB80 */  addiu $v1, %lo(D_8018EB80) # addiu $v1, $v1, -0x1480
+/* 0B695C 800B5D5C 3C038019 */  lui   $v1, %hi(gControllerPakPagesFree) # $v1, 0x8019
+/* 0B6960 800B5D60 2463EB80 */  addiu $v1, %lo(gControllerPakPagesFree) # addiu $v1, $v1, -0x1480
 /* 0B6964 800B5D64 016C082A */  slt   $at, $t3, $t4
 /* 0B6968 800B5D68 54200004 */  bnel  $at, $zero, .L800B5D7C
 /* 0B696C 800B5D6C 8C6D0000 */   lw    $t5, ($v1)

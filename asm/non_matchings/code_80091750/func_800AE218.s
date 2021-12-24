@@ -298,14 +298,14 @@ glabel L800AE59C
 /* 0AF24C 800AE64C 3C044900 */  lui   $a0, (0x4900FF07 >> 16) # lui $a0, 0x4900
 /* 0AF250 800AE650 0109082A */  slt   $at, $t0, $t1
 /* 0AF254 800AE654 14200006 */  bnez  $at, .L800AE670
-/* 0AF258 800AE658 3C0B8019 */   lui   $t3, %hi(D_8018EB80) # $t3, 0x8019
+/* 0AF258 800AE658 3C0B8019 */   lui   $t3, %hi(gControllerPakPagesFree) # $t3, 0x8019
 /* 0AF25C 800AE65C AE0A0004 */  sw    $t2, 4($s0)
 /* 0AF260 800AE660 0C032384 */  jal   play_sound2
 /* 0AF264 800AE664 3484FF07 */   ori   $a0, (0x4900FF07 & 0xFFFF) # ori $a0, $a0, 0xff07
 /* 0AF268 800AE668 10000176 */  b     .L800AEC44
 /* 0AF26C 800AE66C 8FBF0024 */   lw    $ra, 0x24($sp)
 .L800AE670:
-/* 0AF270 800AE670 8D6BEB80 */  lw    $t3, %lo(D_8018EB80)($t3)
+/* 0AF270 800AE670 8D6BEB80 */  lw    $t3, %lo(gControllerPakPagesFree)($t3)
 /* 0AF274 800AE674 3C044900 */  lui   $a0, (0x4900FF07 >> 16) # lui $a0, 0x4900
 /* 0AF278 800AE678 240D0018 */  li    $t5, 24
 /* 0AF27C 800AE67C 29610079 */  slti  $at, $t3, 0x79

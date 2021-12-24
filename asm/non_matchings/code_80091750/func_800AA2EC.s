@@ -154,12 +154,12 @@ glabel L800AA334
 /* 0AB120 800AA520 AD190004 */   sw    $t9, 4($t0)
 .L800AA524:
 /* 0AB124 800AA524 3C048019 */  lui   $a0, %hi(D_8018E868) # $a0, 0x8019
-/* 0AB128 800AA528 3C058019 */  lui   $a1, %hi(D_8018EB80) # $a1, 0x8019
-/* 0AB12C 800AA52C 24A5EB80 */  addiu $a1, %lo(D_8018EB80) # addiu $a1, $a1, -0x1480
+/* 0AB128 800AA528 3C058019 */  lui   $a1, %hi(gControllerPakPagesFree) # $a1, 0x8019
+/* 0AB12C 800AA52C 24A5EB80 */  addiu $a1, %lo(gControllerPakPagesFree) # addiu $a1, $a1, -0x1480
 /* 0AB130 800AA530 0C033B48 */  jal   osPfsFreeBlocks
 /* 0AB134 800AA534 2484E868 */   addiu $a0, %lo(D_8018E868) # addiu $a0, $a0, -0x1798
-/* 0AB138 800AA538 3C038019 */  lui   $v1, %hi(D_8018EB80) # $v1, 0x8019
-/* 0AB13C 800AA53C 2463EB80 */  addiu $v1, %lo(D_8018EB80) # addiu $v1, $v1, -0x1480
+/* 0AB138 800AA538 3C038019 */  lui   $v1, %hi(gControllerPakPagesFree) # $v1, 0x8019
+/* 0AB13C 800AA53C 2463EB80 */  addiu $v1, %lo(gControllerPakPagesFree) # addiu $v1, $v1, -0x1480
 /* 0AB140 800AA540 10400004 */  beqz  $v0, .L800AA554
 /* 0AB144 800AA544 8FA80028 */   lw    $t0, 0x28($sp)
 /* 0AB148 800AA548 240A0003 */  li    $t2, 3
@@ -174,8 +174,8 @@ glabel L800AA334
 /* 0AB164 800AA564 3C0E8019 */  lui   $t6, %hi(D_8018EB78) # $t6, 0x8019
 /* 0AB168 800AA568 8DCEEB78 */  lw    $t6, %lo(D_8018EB78)($t6)
 /* 0AB16C 800AA56C 8DADEB7C */  lw    $t5, %lo(D_8018EB7C)($t5)
-/* 0AB170 800AA570 3C038019 */  lui   $v1, %hi(D_8018EB80) # $v1, 0x8019
-/* 0AB174 800AA574 2463EB80 */  addiu $v1, %lo(D_8018EB80) # addiu $v1, $v1, -0x1480
+/* 0AB170 800AA570 3C038019 */  lui   $v1, %hi(gControllerPakPagesFree) # $v1, 0x8019
+/* 0AB174 800AA574 2463EB80 */  addiu $v1, %lo(gControllerPakPagesFree) # addiu $v1, $v1, -0x1480
 /* 0AB178 800AA578 01AE082A */  slt   $at, $t5, $t6
 /* 0AB17C 800AA57C 14200004 */  bnez  $at, .L800AA590
 /* 0AB180 800AA580 8FB80028 */   lw    $t8, 0x28($sp)

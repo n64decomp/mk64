@@ -60,8 +60,8 @@ glabel L800B4040
 /* 0B4C4C 800B404C 10000111 */  b     .L800B4494
 /* 0B4C50 800B4050 00000000 */   nop   
 glabel L800B4054
-/* 0B4C54 800B4054 3C018019 */  lui   $at, %hi(gPlayerCountSelection2) # $at, 0x8019
-/* 0B4C58 800B4058 A023EDF0 */  sb    $v1, %lo(gPlayerCountSelection2)($at)
+/* 0B4C54 800B4054 3C018019 */  lui   $at, %hi(gMenuState) # $at, 0x8019
+/* 0B4C58 800B4058 A023EDF0 */  sb    $v1, %lo(gMenuState)($at)
 /* 0B4C5C 800B405C 00002025 */  move  $a0, $zero
 /* 0B4C60 800B4060 0C032802 */  jal   func_800CA008
 /* 0B4C64 800B4064 00002825 */   move  $a1, $zero
