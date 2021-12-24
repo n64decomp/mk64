@@ -69,7 +69,7 @@ extern Player* D_800DC4F4;
 extern Player* D_800DC4F8;
 extern Player* D_800DC4FC;
 extern u16 D_800DC51C;
-extern s8 gStartMenuDebugRowSelection; //D_8018EDEF
+extern s8 gDebugMenuSelection; //D_8018EDEF
 extern s32 D_80164A28;
 extern s32 D_801643B8[];
 extern s16 D_8016556E;

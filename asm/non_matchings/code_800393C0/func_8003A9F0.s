@@ -19,10 +19,10 @@ glabel func_8003A9F0
 /* 03B634 8003AA34 00000000 */   nop   
 /* 03B638 8003AA38 95EFC51C */  lhu   $t7, %lo(D_800DC51C)($t7)
 /* 03B63C 8003AA3C 24010001 */  li    $at, 1
-/* 03B640 8003AA40 3C188019 */  lui   $t8, %hi(gStartMenuDebugRowSelection) # $t8, 0x8019
+/* 03B640 8003AA40 3C188019 */  lui   $t8, %hi(gDebugMenuSelection) # $t8, 0x8019
 /* 03B644 8003AA44 11E10004 */  beq   $t7, $at, .L8003AA58
 /* 03B648 8003AA48 00000000 */   nop   
-/* 03B64C 8003AA4C 8318EDEF */  lb    $t8, %lo(gStartMenuDebugRowSelection)($t8)
+/* 03B64C 8003AA4C 8318EDEF */  lb    $t8, %lo(gDebugMenuSelection)($t8)
 /* 03B650 8003AA50 24010040 */  li    $at, 64
 /* 03B654 8003AA54 17010028 */  bne   $t8, $at, .L8003AAF8
 .L8003AA58:

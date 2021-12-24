@@ -34,10 +34,10 @@ glabel func_8009CE64
 /* 09DADC 8009CEDC 24180009 */  li    $t8, 9
 /* 09DAE0 8009CEE0 3C018028 */  lui   $at, %hi(gMenuSelectionFromEndingSequence) # $at, 0x8028
 /* 09DAE4 8009CEE4 AC387550 */  sw    $t8, %lo(gMenuSelectionFromEndingSequence)($at)
-/* 09DAE8 8009CEE8 3C01800E */  lui   $at, %hi(D_800DC644) # $at, 0x800e
+/* 09DAE8 8009CEE8 3C01800E */  lui   $at, %hi(gCreditsCourseId) # $at, 0x800e
 /* 09DAEC 8009CEEC 24190008 */  li    $t9, 8
 /* 09DAF0 8009CEF0 1000021E */  b     .L8009D76C
-/* 09DAF4 8009CEF4 A439C644 */   sh    $t9, %lo(D_800DC644)($at)
+/* 09DAF4 8009CEF4 A439C644 */   sh    $t9, %lo(gCreditsCourseId)($at)
 .L8009CEF8:
 /* 09DAF8 8009CEF8 24050001 */  li    $a1, 1
 /* 09DAFC 8009CEFC 3C018028 */  lui   $at, %hi(gMenuSelectionFromEndingSequence) # $at, 0x8028
@@ -233,8 +233,8 @@ glabel L8009D170
 /* 09DD94 8009D194 10000175 */  b     .L8009D76C
 /* 09DD98 8009D198 A1EE0000 */   sb    $t6, ($t7)
 .L8009D19C:
-/* 09DD9C 8009D19C 3C188019 */  lui   $t8, %hi(gStartMenuDebugRowSelection) # $t8, 0x8019
-/* 09DDA0 8009D1A0 8318EDEF */  lb    $t8, %lo(gStartMenuDebugRowSelection)($t8)
+/* 09DD9C 8009D19C 3C188019 */  lui   $t8, %hi(gDebugMenuSelection) # $t8, 0x8019
+/* 09DDA0 8009D1A0 8318EDEF */  lb    $t8, %lo(gDebugMenuSelection)($t8)
 /* 09DDA4 8009D1A4 00240821 */  addu  $at, $at, $a0
 /* 09DDA8 8009D1A8 A020E7AC */  sb    $zero, %lo(D_8018E7AC)($at)
 /* 09DDAC 8009D1AC 24010040 */  li    $at, 64
@@ -509,8 +509,8 @@ glabel L8009D50C
 /* 09E194 8009D594 10000075 */  b     .L8009D76C
 /* 09E198 8009D598 A020EE0C */   sb    $zero, %lo(D_8018EE0C)($at)
 .L8009D59C:
-/* 09E19C 8009D59C 3C038019 */  lui   $v1, %hi(gDebugGotoDestination) # $v1, 0x8019
-/* 09E1A0 8009D5A0 8063EDFA */  lb    $v1, %lo(gDebugGotoDestination)($v1)
+/* 09E19C 8009D59C 3C038019 */  lui   $v1, %hi(gDebugGotoScene) # $v1, 0x8019
+/* 09E1A0 8009D5A0 8063EDFA */  lb    $v1, %lo(gDebugGotoScene)($v1)
 /* 09E1A4 8009D5A4 24050001 */  li    $a1, 1
 /* 09E1A8 8009D5A8 24060002 */  li    $a2, 2
 /* 09E1AC 8009D5AC 10650008 */  beq   $v1, $a1, .L8009D5D0
@@ -528,10 +528,10 @@ glabel L8009D50C
 .L8009D5D8:
 /* 09E1D8 8009D5D8 3C01800E */  lui   $at, %hi(D_800DC524) # $at, 0x800e
 /* 09E1DC 8009D5DC AC2EC524 */  sw    $t6, %lo(D_800DC524)($at)
-/* 09E1E0 8009D5E0 3C01800E */  lui   $at, %hi(D_800DC644) # $at, 0x800e
+/* 09E1E0 8009D5E0 3C01800E */  lui   $at, %hi(gCreditsCourseId) # $at, 0x800e
 /* 09E1E4 8009D5E4 240F0008 */  li    $t7, 8
 /* 09E1E8 8009D5E8 10000008 */  b     .L8009D60C
-/* 09E1EC 8009D5EC A42FC644 */   sh    $t7, %lo(D_800DC644)($at)
+/* 09E1EC 8009D5EC A42FC644 */   sh    $t7, %lo(gCreditsCourseId)($at)
 .L8009D5F0:
 /* 09E1F0 8009D5F0 3C01800E */  lui   $at, %hi(D_800DC524) # $at, 0x800e
 /* 09E1F4 8009D5F4 AC29C524 */  sw    $t1, %lo(D_800DC524)($at)
@@ -608,8 +608,8 @@ glabel L8009D50C
 /* 09E2F4 8009D6F4 A0590000 */  sb    $t9, ($v0)
 /* 09E2F8 8009D6F8 804E0000 */  lb    $t6, ($v0)
 /* 09E2FC 8009D6FC 3C0F800F */  lui   $t7, %hi(gPerCupIndexByCourseId)
-/* 09E300 8009D700 3C038019 */  lui   $v1, %hi(gDebugGotoDestination) # $v1, 0x8019
-/* 09E304 8009D704 8063EDFA */  lb    $v1, %lo(gDebugGotoDestination)($v1)
+/* 09E300 8009D700 3C038019 */  lui   $v1, %hi(gDebugGotoScene) # $v1, 0x8019
+/* 09E304 8009D704 8063EDFA */  lb    $v1, %lo(gDebugGotoScene)($v1)
 /* 09E308 8009D708 3C01800E */  lui   $at, %hi(D_800DC540) # $at, 0x800e
 /* 09E30C 8009D70C 01E47821 */  addu  $t7, $t7, $a0
 /* 09E310 8009D710 81EFFD50 */  lb    $t7, %lo(gPerCupIndexByCourseId)($t7)

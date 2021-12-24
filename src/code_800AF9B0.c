@@ -1651,7 +1651,7 @@ void func_800B20F4(void *arg0, s32 arg1) {
         if ((arg1 & 0xFFFF) == 0) {
             D_8018EE04 += 1;
         }
-        temp_t2 = gStartMenuDebugRowSelection;
+        temp_t2 = gDebugMenuSelection;
         switch (temp_t2) {
         case DEBUG_MENU_DISABLED:
             sp28 = 0;
@@ -1673,7 +1673,7 @@ void func_800B20F4(void *arg0, s32 arg1) {
             }
             if ((sp2E & 0x400) != 0) {
                 play_sound2(0x49008000);
-                gStartMenuDebugRowSelection = DEBUG_MENU_COURSE;
+                gDebugMenuSelection = DEBUG_MENU_COURSE;
             }
             break;
         case DEBUG_MENU_COURSE:
@@ -1700,11 +1700,11 @@ void func_800B20F4(void *arg0, s32 arg1) {
             if ((sp2E & 0x800) != 0) {
                 sp24 = sp2E;
                 play_sound2(0x49008000);
-                gStartMenuDebugRowSelection = DEBUG_MENU_DEBUG_MODE;
+                gDebugMenuSelection = DEBUG_MENU_DEBUG_MODE;
             }
             if ((sp2E & 0x400) != 0) {
                 play_sound2(0x49008000);
-                gStartMenuDebugRowSelection = DEBUG_MENU_SCREEN_MODE;
+                gDebugMenuSelection = DEBUG_MENU_SCREEN_MODE;
             }
             break;
         case DEBUG_MENU_SCREEN_MODE:
@@ -1727,12 +1727,12 @@ void func_800B20F4(void *arg0, s32 arg1) {
                 }
             }
             if ((sp2E & 0x800) != 0) {
-                gStartMenuDebugRowSelection = DEBUG_MENU_COURSE;
+                gDebugMenuSelection = DEBUG_MENU_COURSE;
                 sp24 = sp2E;
                 play_sound2(0x49008000);
             }
             if ((sp2E & 0x400) != 0) {
-                gStartMenuDebugRowSelection = DEBUG_MENU_PLAYER;
+                gDebugMenuSelection = DEBUG_MENU_PLAYER;
                 play_sound2(0x49008000);
             }
             break;
@@ -1754,12 +1754,12 @@ void func_800B20F4(void *arg0, s32 arg1) {
                 }
             }
             if ((sp2E & 0x800) != 0) {
-                gStartMenuDebugRowSelection = DEBUG_MENU_SCREEN_MODE;
+                gDebugMenuSelection = DEBUG_MENU_SCREEN_MODE;
                 sp24 = sp2E;
                 play_sound2(0x49008000);
             }
             if ((sp2E & 0x400) != 0) {
-                gStartMenuDebugRowSelection = DEBUG_MENU_SOUND_MODE;
+                gDebugMenuSelection = DEBUG_MENU_SOUND_MODE;
                 play_sound2(0x49008000);
             }
             break;
@@ -1792,18 +1792,18 @@ void func_800B20F4(void *arg0, s32 arg1) {
                 }
             }
             if ((sp2E & 0x800) != 0) {
-                gStartMenuDebugRowSelection = DEBUG_MENU_PLAYER;
+                gDebugMenuSelection = DEBUG_MENU_PLAYER;
                 sp24 = sp2E;
                 play_sound2(0x49008000);
             }
             if ((sp2E & 0x400) != 0) {
-                gStartMenuDebugRowSelection = DEBUG_MENU_GIVE_ALL_GOLD_CUP;
+                gDebugMenuSelection = DEBUG_MENU_GIVE_ALL_GOLD_CUP;
                 play_sound2(0x49008000);
             }
             break;
         case DEBUG_MENU_GIVE_ALL_GOLD_CUP:
             if ((sp2E & 0x800) != 0) {
-                gStartMenuDebugRowSelection = DEBUG_MENU_SOUND_MODE;
+                gDebugMenuSelection = DEBUG_MENU_SOUND_MODE;
                 sp24 = sp2E;
                 play_sound2(0x49008000);
             }
@@ -1851,21 +1851,21 @@ void func_800B20F4(void *arg0, s32 arg1) {
         D_8018EDF3 = *(&D_800F2B58 + D_8018EDF1);
         gPlayerCountSelection1 = D_8018EDF3;
         if (sp28 != 0) {
-            if ((sp2E & 0x9000) != 0) {  // A or Start pressed
+            if ((sp2E & 0x9000) != 0) { // A or Start pressed
                 sp24 = sp2E;
                 func_8009E1C0();
                 func_800CA330(0x19);
-                gStartMenuDebugRowSelection = DEBUG_MENU_EXITED;
+                gDebugMenuSelection = DEBUG_MENU_EXITED;
                 if ((arg0->unk4 & 0x20) != 0) { // L held
                     D_800DC51C = 1;
                 } else {
                     D_800DC51C = 0;
                 }
-                if ((arg0->unk4 & 0x2000) != 0) { // Check if Z is held
+                if ((arg0->unk4 & 0x2000) != 0) { // Z is held
                     if ((sp2E & 0x8000) != 0) { 
-                        gDebugGotoDestination = DEBUG_GOTO_ENDING_SEQUENCE; // Go to ending ceremony if A is not pressed
+                        gDebugGotoScene = DEBUG_GOTO_ENDING_SEQUENCE; // Go to ending ceremony if A is not pressed
                     } else {
-                        gDebugGotoDestination = DEBUG_GOTO_CREDITS_DUPLICATE; // Go to credits (need to button mash A to get here?)
+                        gDebugGotoScene = DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA; // Go to credits, set gCCSelection to CC_EXTRA
                     }
                 }
                 play_sound2(0x49008016);
@@ -1874,13 +1874,13 @@ void func_800B20F4(void *arg0, s32 arg1) {
             if (((sp2E & 0x4000) != 0) && ((arg0->unk4 & 0x2000) != 0)) { // B pressed and Z held
                 func_8009E1C0();
                 func_800CA330(0x19);
-                gStartMenuDebugRowSelection = DEBUG_MENU_EXITED;
-                gDebugGotoDestination = DEBUG_GOTO_CREDITS; // Go to credits
+                gDebugMenuSelection = DEBUG_MENU_EXITED;
+                gDebugGotoScene = DEBUG_GOTO_CREDITS_SEQUENCE_CC_50; // Go to credits, set gCCSelection to CC_50
                 play_sound2(0x49008016);
                 return;
             }
             if ((sp2E & 0x10) != 0) { // R pressed
-                gStartMenuDebugRowSelection = DEBUG_MENU_DISABLED; // Close out of debug menu
+                gDebugMenuSelection = DEBUG_MENU_DISABLED; // Close out of debug menu
                 play_sound2(0x49008001);
             }
             /* Duplicate return node #100. Try simplifying control flow for better match */
@@ -2546,11 +2546,11 @@ extern s8 D_8018EDEB;
 extern s8 D_8018EDEC;
 extern s8 D_8018EDED;
 extern s8 D_8018EDEE;
-extern s8 gStartMenuDebugRowSelection;
+extern s8 gDebugMenuSelection;
 extern s8 D_8018EDF1;
 extern s8 D_8018EDF3;
 extern s8 D_8018EDF7;
-extern s8 gDebugGotoDestination;
+extern s8 gDebugGotoScene;
 extern s8 D_8018EDFB;
 extern s8 D_8018EDFC;
 extern s32 gStartMenuCounterForDemos;
@@ -2581,13 +2581,13 @@ void func_800B3F74(u32 arg0) {
     s32 phi_a0;
     s8 *phi_v0_2;
 
-    gStartMenuDebugRowSelection = DEBUG_MENU_DISABLED;
+    gDebugMenuSelection = DEBUG_MENU_DISABLED;
     gStartMenuCounterForDemos = 0;
     D_8018EE04 = 0;
     D_8018EE08 = 0;
     D_8015F890 = 0;
     D_8015F892 = 0;
-    gDebugGotoDestination = 0;
+    gDebugGotoScene = DEBUG_GOTO_RACING;
     D_8018EDFB = 0;
     D_8016556E = 0;
     D_80162DD4 = 1;

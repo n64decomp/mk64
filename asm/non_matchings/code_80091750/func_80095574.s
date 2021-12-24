@@ -13,8 +13,8 @@ glabel func_80095574
 /* 09619C 8009559C 0C02A08C */  jal   func_800A8230
 /* 0961A0 800955A0 00000000 */   nop   
 .L800955A4:
-/* 0961A4 800955A4 3C028019 */  lui   $v0, %hi(gStartMenuDebugRowSelection) # $v0, 0x8019
-/* 0961A8 800955A8 8042EDEF */  lb    $v0, %lo(gStartMenuDebugRowSelection)($v0)
+/* 0961A4 800955A4 3C028019 */  lui   $v0, %hi(gDebugMenuSelection) # $v0, 0x8019
+/* 0961A8 800955A8 8042EDEF */  lb    $v0, %lo(gDebugMenuSelection)($v0)
 /* 0961AC 800955AC 28410002 */  slti  $at, $v0, 2
 /* 0961B0 800955B0 5420009F */  bnel  $at, $zero, .L80095830
 /* 0961B4 800955B4 24010001 */   li    $at, 1
@@ -25,8 +25,8 @@ glabel func_80095574
 /* 0961C8 800955C8 24040050 */  li    $a0, 80
 /* 0961CC 800955CC 0C015DE9 */  jal   debug_print_str2
 /* 0961D0 800955D0 24050064 */   li    $a1, 100
-/* 0961D4 800955D4 3C188019 */  lui   $t8, %hi(gStartMenuDebugRowSelection) # $t8, 0x8019
-/* 0961D8 800955D8 8318EDEF */  lb    $t8, %lo(gStartMenuDebugRowSelection)($t8)
+/* 0961D4 800955D4 3C188019 */  lui   $t8, %hi(gDebugMenuSelection) # $t8, 0x8019
+/* 0961D8 800955D8 8318EDEF */  lb    $t8, %lo(gDebugMenuSelection)($t8)
 /* 0961DC 800955DC 2719FFFE */  addiu $t9, $t8, -2
 /* 0961E0 800955E0 2F210006 */  sltiu $at, $t9, 6
 /* 0961E4 800955E4 1020002E */  beqz  $at, .L800956A0
@@ -175,8 +175,8 @@ glabel L8009568C
 /* 0963EC 800957EC 8CC67700 */  lw    $a2, %lo(gDebugSoundModeNames)($a2)
 /* 0963F0 800957F0 0C015DE9 */  jal   debug_print_str2
 /* 0963F4 800957F4 2405008C */   li    $a1, 140
-/* 0963F8 800957F8 3C188019 */  lui   $t8, %hi(gStartMenuDebugRowSelection) # $t8, 0x8019
-/* 0963FC 800957FC 8318EDEF */  lb    $t8, %lo(gStartMenuDebugRowSelection)($t8)
+/* 0963F8 800957F8 3C188019 */  lui   $t8, %hi(gDebugMenuSelection) # $t8, 0x8019
+/* 0963FC 800957FC 8318EDEF */  lb    $t8, %lo(gDebugMenuSelection)($t8)
 /* 096400 80095800 24010007 */  li    $at, 7
 /* 096404 80095804 24040050 */  li    $a0, 80
 /* 096408 80095808 17010004 */  bne   $t8, $at, .L8009581C
@@ -187,8 +187,8 @@ glabel L8009568C
 .L8009581C:
 /* 09641C 8009581C 0C015DDE */  jal   func_80057778
 /* 096420 80095820 00000000 */   nop   
-/* 096424 80095824 3C028019 */  lui   $v0, %hi(gStartMenuDebugRowSelection) # $v0, 0x8019
-/* 096428 80095828 8042EDEF */  lb    $v0, %lo(gStartMenuDebugRowSelection)($v0)
+/* 096424 80095824 3C028019 */  lui   $v0, %hi(gDebugMenuSelection) # $v0, 0x8019
+/* 096428 80095828 8042EDEF */  lb    $v0, %lo(gDebugMenuSelection)($v0)
 /* 09642C 8009582C 24010001 */  li    $at, 1
 .L80095830:
 /* 096430 80095830 14410007 */  bne   $v0, $at, .L80095850

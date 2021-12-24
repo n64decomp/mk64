@@ -408,7 +408,7 @@ void func_80039DA4(void) {
 
     if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) ||
         (D_800DC51C == 1) ||
-        (gStartMenuDebugRowSelection == DEBUG_MENU_EXITED)) {
+        (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         for (i = 0; i < 8; i++) {
             D_80165270[i] = sp2C.unk00[i];
         }
@@ -423,7 +423,7 @@ void func_80039F44(f32 *arg0, f32 *arg1, f32 arg2) {
     func_80039DA4();
     if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) ||
         (D_800DC51C == 1) ||
-        (gStartMenuDebugRowSelection == DEBUG_MENU_EXITED)) {
+        (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         s16 rand;
         s16 i;
 
@@ -509,7 +509,7 @@ void func_8003A59C(f32 *arg0, f32 *arg1, f32 arg2) {
 
 void func_8003A9F0(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if ((gCupCourseSelection == CUP_COURSE_ONE) || (D_800DC51C == 1) || (gStartMenuDebugRowSelection == DEBUG_MENU_EXITED)) {
+    if ((gCupCourseSelection == CUP_COURSE_ONE) || (D_800DC51C == 1) || (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         s16 rand;
         s16 i;
 

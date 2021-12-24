@@ -2130,12 +2130,13 @@ void func_80095574(void) {
     if ((D_8018EE0C < 3) || (D_8018E7B0 != 0)) {
         func_800A8230();
     }
-    temp_v0 = gStartMenuDebugRowSelection;
+    temp_v0 = gDebugMenuSelection;
     phi_v0_2 = temp_v0;
     if (temp_v0 >= DEBUG_MENU_DEBUG_MODE) {
         load_debug_font();
         debug_print_str2(0x50, 0x64, "debug_mode");
-        temp_t8 = gStartMenuDebugRowSelection;
+        temp_t8 = gDebugMenuSelection;
+        // Draw asterisk next to selected debug menu option
         switch (temp_t8) {
         case DEBUG_MENU_DEBUG_MODE:
             debug_print_str2(0x46, 0x64, "*");
@@ -2179,11 +2180,11 @@ void func_80095574(void) {
         debug_print_str2(0xAA, 0x82, *(&gDebugCharacterNames + (D_800E86A8 * 4)));
         debug_print_str2(0x50, 0x8C, "sound mode");
         debug_print_str2(0xAA, 0x8C, gDebugSoundModeNames[gSoundMode]);
-        if (gStartMenuDebugRowSelection == DEBUG_MENU_GIVE_ALL_GOLD_CUP) {
+        if (gDebugMenuSelection == DEBUG_MENU_GIVE_ALL_GOLD_CUP) {
             debug_print_str2(0x50, 0x96, "push b to get all goldcup");
         }
         func_80057778();
-        phi_v0_2 = gStartMenuDebugRowSelection;
+        phi_v0_2 = gDebugMenuSelection;
     }
     if (phi_v0_2 == DEBUG_MENU_DISABLED) {
         gStartMenuCounterForDemos += 1;
@@ -6446,7 +6447,7 @@ extern ? D_8018E7B0;
 static ? gCupSelectionByCourseId;                                /* unable to generate initializer; const */
 static ? D_800E86A8;                                /* unable to generate initializer; const */
 static ? gPerCupIndexByCourseId;                                /* unable to generate initializer; const */
-s16 D_800DC644;                                     /* unable to generate initializer */
+s16 gCreditsCourseId;                                     /* unable to generate initializer */
 s16 gCurrentCourseId;                               /* unable to generate initializer */
 
 void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
@@ -6490,7 +6491,7 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
     phi_a2 = arg3;
     phi_a2 = arg3;
     phi_a2 = arg3;
-    if (temp_v0 == 5) {
+    if (temp_v0 == ENDING_SEQUENCE) {
         temp_v1 = gCCSelection;
         if ((temp_v1 != CC_150) && (temp_v1 != CC_EXTRA)) {
 
@@ -6498,15 +6499,15 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
             phi_a1 = 1;
         }
         if (phi_a1 != 0) {
-            gMenuSelectionFromEndingSequence = 9;
-            D_800DC644 = 8;
+            gMenuSelectionFromEndingSequence = CREDITS_SEQUENCE;
+            gCreditsCourseId = COURSE_LUIGI_RACEWAY;
             return;
         }
-        gMenuSelectionFromEndingSequence = 1;
+        gMenuSelectionFromEndingSequence = GAME_SELECT_MENU_FROM_QUIT;
         gMenuSelection = GAME_SELECT_MENU;
         return;
     }
-    if (temp_v0 == 4) {
+    if (temp_v0 == RACING) {
         temp_v0_2 = arg0 + &D_8018E7AC;
         if (*temp_v0_2 == 2) {
             if (temp_v0_2 != &D_8018E7B0) {
@@ -6626,7 +6627,7 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
         }
     } else {
         *(&D_8018E7AC + arg0) = 0;
-        if (gStartMenuDebugRowSelection != DEBUG_MENU_EXITED) {
+        if (gDebugMenuSelection != DEBUG_MENU_EXITED) {
             temp_t9 = D_8018EDE0;
             switch (temp_t9) {                      /* switch 3 */
             case 0:                                 /* switch 3 */
@@ -6761,16 +6762,16 @@ block_74:
             D_8018EE0C = 0;
             return;
         }
-        temp_v1_7 = gDebugGotoDestination;
+        temp_v1_7 = gDebugGotoScene;
         if (temp_v1_7 != DEBUG_GOTO_ENDING_SEQUENCE) {
-            if ((temp_v1_7 != DEBUG_GOTO_CREDITS) && (temp_v1_7 != DEBUG_GOTO_CREDITS_DUPLICATE)) {
+            if ((temp_v1_7 != DEBUG_GOTO_CREDITS_SEQUENCE_CC_50) && (temp_v1_7 != DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA)) {
                 D_800DC524 = RACING;
                 if (gModeSelection == TIME_TRIALS) {
                     D_8018EDFB = 1;
                 }
             } else {
                 D_800DC524 = CREDITS_SEQUENCE;
-                D_800DC644 = 8;
+                gCreditsCourseId = COURSE_LUIGI_RACEWAY;
             }
         } else {
             D_800DC524 = ENDING_SEQUENCE;
@@ -6781,6 +6782,7 @@ block_74:
         }
         temp_a0_2 = gCurrentCourseId;
         if ((temp_a0_2 != 0xF) && (temp_a0_2 != 0x10) && (temp_a0_2 != 0x11) && (temp_a0_2 != 0x13)) {
+            // Selected course is not one of the battle courses
             temp_v0_8 = gModeSelection;
             phi_v0 = temp_v0_8;
             if (temp_v0_8 == 3) {
@@ -6799,12 +6801,12 @@ block_74:
             }
         }
         gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
-        temp_v1_9 = gDebugGotoDestination;
+        temp_v1_9 = gDebugGotoScene;
         D_800DC540 = gCupSelection;
         gCupCourseSelection = gPerCupIndexByCourseId[gCurrentCourseId];
         if (temp_v1_9 != DEBUG_GOTO_ENDING_SEQUENCE) {
-            if (temp_v1_9 != DEBUG_GOTO_CREDITS) {
-                if (temp_v1_9 != DEBUG_GOTO_CREDITS_DUPLICATE) {
+            if (temp_v1_9 != DEBUG_GOTO_CREDITS_SEQUENCE_CC_50) {
+                if (temp_v1_9 != DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA) {
                     if (gCCSelection == CC_EXTRA) {
                         gIsMirrorMode = 1;
                         return;

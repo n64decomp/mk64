@@ -2079,7 +2079,7 @@ glabel D_8018EDED
 glabel D_8018EDEE
 .skip 1
 
-glabel gStartMenuDebugRowSelection
+glabel gDebugMenuSelection
 .skip 1
 
 glabel gPlayerCountSelection2 # 0x8018EDF0
@@ -2112,7 +2112,7 @@ glabel D_8018EDF8
 glabel D_8018EDF9
 .skip 1
 
-glabel gDebugGotoDestination
+glabel gDebugGotoScene
 .skip 1
 
 glabel D_8018EDFB

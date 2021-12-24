@@ -108,11 +108,12 @@
 #define DEBUG_MENU_EXITED 64
 
 /**
- * Options for gDebugGotoDestination
+ * Options for gDebugGotoScene
  */
+#define DEBUG_GOTO_RACING 0
 #define DEBUG_GOTO_ENDING_SEQUENCE 1
-#define DEBUG_GOTO_CREDITS 2
-#define DEBUG_GOTO_CREDITS_DUPLICATE 3
+#define DEBUG_GOTO_CREDITS_SEQUENCE_CC_50 2
+#define DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA 3
 
 /**
  * Indexes for accessing Time Trial records

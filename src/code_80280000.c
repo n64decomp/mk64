@@ -13,7 +13,7 @@ extern Camera cameras[];//, *camera1, *camera2, *camera3, *camera4;
 
 extern f32 D_80150130, D_80150148, D_8015014C, D_80150150;
 
-extern s16 D_800DC644;
+extern s16 gCreditsCourseId;
 extern u16 D_80150112;
 extern u16 D_80164AF0;
 extern u32 D_8018D120;
@@ -55,7 +55,7 @@ void func_80280038(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[8]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     guLookAt(&gGfxPool->buffer[56], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[56]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    gCurrentCourseId = D_800DC644;
+    gCurrentCourseId = gCreditsCourseId;
     mtxf_identity(&sp44);
     func_802B4FF8(&sp44, 0);
     func_80295A38(D_800DC5EC);
@@ -76,7 +76,7 @@ void func_80280268(s32 arg0) {
     if ((arg0 < 0) || ((arg0 >= 0x14))) {
         arg0 = 0;
     }
-    D_800DC644 = arg0;
+    gCreditsCourseId = arg0;
 }
 
 void func_802802AC(void) {
@@ -118,7 +118,7 @@ void func_802802AC(void) {
 void func_80280420(void) {
     Camera *camera = &cameras[0];
 
-    gCurrentCourseId = D_800DC644;
+    gCurrentCourseId = gCreditsCourseId;
     D_800DC5B4 = 1;
     D_800DC518 = 1;
     func_802A4D18();
