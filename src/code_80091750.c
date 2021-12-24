@@ -6761,19 +6761,19 @@ block_74:
             D_8018EE0C = 0;
             return;
         }
-        temp_v1_7 = D_8018EDFA;
-        if (temp_v1_7 != 1) {
-            if ((temp_v1_7 != 2) && (temp_v1_7 != 3)) {
+        temp_v1_7 = gDebugGotoDestination;
+        if (temp_v1_7 != DEBUG_GOTO_ENDING_SEQUENCE) {
+            if ((temp_v1_7 != DEBUG_GOTO_CREDITS) && (temp_v1_7 != DEBUG_GOTO_CREDITS_DUPLICATE)) {
                 D_800DC524 = RACING;
                 if (gModeSelection == TIME_TRIALS) {
                     D_8018EDFB = 1;
                 }
             } else {
-                D_800DC524 = 9; // = CREDITS_SEQUENCE?
+                D_800DC524 = CREDITS_SEQUENCE;
                 D_800DC644 = 8;
             }
         } else {
-            D_800DC524 = 5; // = ENDING_SEQUENCE?
+            D_800DC524 = ENDING_SEQUENCE;
         }
         func_8000F124(1, 2);
         if ((D_800DC530 == 3) && ((temp_v1_8 = gModeSelection, (temp_v1_8 == 0)) || (temp_v1_8 == 1))) {
@@ -6799,12 +6799,12 @@ block_74:
             }
         }
         gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
-        temp_v1_9 = D_8018EDFA;
+        temp_v1_9 = gDebugGotoDestination;
         D_800DC540 = gCupSelection;
         gCupCourseSelection = gPerCupIndexByCourseId[gCurrentCourseId];
-        if (temp_v1_9 != 1) {
-            if (temp_v1_9 != 2) {
-                if (temp_v1_9 != 3) {
+        if (temp_v1_9 != DEBUG_GOTO_ENDING_SEQUENCE) {
+            if (temp_v1_9 != DEBUG_GOTO_CREDITS) {
+                if (temp_v1_9 != DEBUG_GOTO_CREDITS_DUPLICATE) {
                     if (gCCSelection == CC_EXTRA) {
                         gIsMirrorMode = 1;
                         return;

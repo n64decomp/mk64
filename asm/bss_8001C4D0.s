@@ -2112,7 +2112,7 @@ glabel D_8018EDF8
 glabel D_8018EDF9
 .skip 1
 
-glabel D_8018EDFA
+glabel gDebugGotoDestination
 .skip 1
 
 glabel D_8018EDFB

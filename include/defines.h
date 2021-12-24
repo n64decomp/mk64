@@ -71,25 +71,29 @@
 #define BOWSER 7
 
 /**
- * Options for gMenuSelection and gMenuSelectionFromQuit
+ * Options for gMenuSelection
+**/
+#define OPTIONS_MENU 5
+#define DATA_MENU 6
+#define COURSE_DATA_MENU 7
+#define LOGO_INTRO_MENU 8
+#define CONTROLLER_PAK_MENU 9
+#define START_MENU 10
+#define GAME_SELECT_MENU 11
+#define PLAYER_SELECT_MENU 12
+#define COURSE_SELECT_MENU 13
+#define RACING_DUPLICATE 14
+
+/**
+ * Options for gMenuSelectionFromQuit and gMenuSelectionFromEndingSequence
 **/
 #define START_MENU_FROM_QUIT 0
 #define GAME_SELECT_MENU_FROM_QUIT 1
 #define PLAYER_SELECT_MENU_FROM_QUIT 2
 #define COURSE_SELECT_MENU_FROM_QUIT 3
 #define RACING 4
-#define OPTIONS_MENU 5
 #define ENDING_SEQUENCE 5
-#define DATA_MENU 6
-#define COURSE_DATA_MENU 7
-#define LOGO_INTRO_MENU 8
-#define CONTROLLER_PAK_MENU 9
 #define CREDITS_SEQUENCE 9
-#define START_MENU 10
-#define GAME_SELECT_MENU 11
-#define PLAYER_SELECT_MENU 12
-#define COURSE_SELECT_MENU 13
-#define RACING_DUPLICATE 14
 
 /**
  * Options for gStartMenuDebugRowSelection
@@ -102,6 +106,13 @@
 #define DEBUG_MENU_SOUND_MODE 6
 #define DEBUG_MENU_GIVE_ALL_GOLD_CUP 7
 #define DEBUG_MENU_EXITED 64
+
+/**
+ * Options for gDebugGotoDestination
+ */
+#define DEBUG_GOTO_ENDING_SEQUENCE 1
+#define DEBUG_GOTO_CREDITS 2
+#define DEBUG_GOTO_CREDITS_DUPLICATE 3
 
 /**
  * Indexes for accessing Time Trial records

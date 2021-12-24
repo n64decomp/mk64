@@ -504,12 +504,12 @@ glabel L800B2604
 /* 0B340C 800B280C 11800005 */  beqz  $t4, .L800B2824
 /* 0B3410 800B2810 240E0003 */   li    $t6, 3
 /* 0B3414 800B2814 240D0001 */  li    $t5, 1
-/* 0B3418 800B2818 3C018019 */  lui   $at, %hi(D_8018EDFA) # $at, 0x8019
+/* 0B3418 800B2818 3C018019 */  lui   $at, %hi(gDebugGotoDestination) # $at, 0x8019
 /* 0B341C 800B281C 10000003 */  b     .L800B282C
-/* 0B3420 800B2820 A02DEDFA */   sb    $t5, %lo(D_8018EDFA)($at)
+/* 0B3420 800B2820 A02DEDFA */   sb    $t5, %lo(gDebugGotoDestination)($at)
 .L800B2824:
-/* 0B3424 800B2824 3C018019 */  lui   $at, %hi(D_8018EDFA) # $at, 0x8019
-/* 0B3428 800B2828 A02EEDFA */  sb    $t6, %lo(D_8018EDFA)($at)
+/* 0B3424 800B2824 3C018019 */  lui   $at, %hi(gDebugGotoDestination) # $at, 0x8019
+/* 0B3428 800B2828 A02EEDFA */  sb    $t6, %lo(gDebugGotoDestination)($at)
 .L800B282C:
 /* 0B342C 800B282C 0C032384 */  jal   play_sound2
 /* 0B3430 800B2830 34848016 */   ori   $a0, (0x49008016 & 0xFFFF) # ori $a0, $a0, 0x8016
@@ -530,10 +530,10 @@ glabel L800B2604
 /* 0B3468 800B2868 24090040 */  li    $t1, 64
 /* 0B346C 800B286C 3C018019 */  lui   $at, %hi(gStartMenuDebugRowSelection) # $at, 0x8019
 /* 0B3470 800B2870 A029EDEF */  sb    $t1, %lo(gStartMenuDebugRowSelection)($at)
-/* 0B3474 800B2874 3C018019 */  lui   $at, %hi(D_8018EDFA) # $at, 0x8019
+/* 0B3474 800B2874 3C018019 */  lui   $at, %hi(gDebugGotoDestination) # $at, 0x8019
 /* 0B3478 800B2878 240A0002 */  li    $t2, 2
 /* 0B347C 800B287C 3C044900 */  lui   $a0, (0x49008016 >> 16) # lui $a0, 0x4900
-/* 0B3480 800B2880 A02AEDFA */  sb    $t2, %lo(D_8018EDFA)($at)
+/* 0B3480 800B2880 A02AEDFA */  sb    $t2, %lo(gDebugGotoDestination)($at)
 /* 0B3484 800B2884 0C032384 */  jal   play_sound2
 /* 0B3488 800B2888 34848016 */   ori   $a0, (0x49008016 & 0xFFFF) # ori $a0, $a0, 0x8016
 /* 0B348C 800B288C 1000000A */  b     .L800B28B8

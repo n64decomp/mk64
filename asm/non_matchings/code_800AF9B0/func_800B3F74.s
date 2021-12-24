@@ -12,8 +12,8 @@ glabel func_800B3F74
 /* 0B4B9C 800B3F9C A420F890 */  sh    $zero, %lo(D_8015F890)($at)
 /* 0B4BA0 800B3FA0 3C018016 */  lui   $at, %hi(D_8015F892) # $at, 0x8016
 /* 0B4BA4 800B3FA4 A420F892 */  sh    $zero, %lo(D_8015F892)($at)
-/* 0B4BA8 800B3FA8 3C018019 */  lui   $at, %hi(D_8018EDFA) # $at, 0x8019
-/* 0B4BAC 800B3FAC A020EDFA */  sb    $zero, %lo(D_8018EDFA)($at)
+/* 0B4BA8 800B3FA8 3C018019 */  lui   $at, %hi(gDebugGotoDestination) # $at, 0x8019
+/* 0B4BAC 800B3FAC A020EDFA */  sb    $zero, %lo(gDebugGotoDestination)($at)
 /* 0B4BB0 800B3FB0 3C018019 */  lui   $at, %hi(D_8018EDFB) # $at, 0x8019
 /* 0B4BB4 800B3FB4 A020EDFB */  sb    $zero, %lo(D_8018EDFB)($at)
 /* 0B4BB8 800B3FB8 3C018016 */  lui   $at, %hi(D_8016556E) # $at, 0x8016
