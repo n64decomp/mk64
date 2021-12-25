@@ -19,11 +19,11 @@ glabel func_80094C60
 /* 0958A4 80094CA4 00000000 */   nop   
 /* 0958A8 80094CA8 0C02D805 */  jal   func_800B6014
 /* 0958AC 80094CAC 00000000 */   nop   
-/* 0958B0 80094CB0 3C04800F */  lui   $a0, %hi(D_800E86A0) # $a0, 0x800f
+/* 0958B0 80094CB0 3C04800F */  lui   $a0, %hi(gMenuSelection) # $a0, 0x800f
 /* 0958B4 80094CB4 0C02CFDD */  jal   func_800B3F74
-/* 0958B8 80094CB8 8C8486A0 */   lw    $a0, %lo(D_800E86A0)($a0)
-/* 0958BC 80094CBC 3C0F800F */  lui   $t7, %hi(D_800E86A0) # $t7, 0x800f
-/* 0958C0 80094CC0 8DEF86A0 */  lw    $t7, %lo(D_800E86A0)($t7)
+/* 0958B8 80094CB8 8C8486A0 */   lw    $a0, %lo(gMenuSelection)($a0)
+/* 0958BC 80094CBC 3C0F800F */  lui   $t7, %hi(gMenuSelection) # $t7, 0x800f
+/* 0958C0 80094CC0 8DEF86A0 */  lw    $t7, %lo(gMenuSelection)($t7)
 /* 0958C4 80094CC4 2DE1000E */  sltiu $at, $t7, 0xe
 /* 0958C8 80094CC8 10200219 */  beqz  $at, .L80095530
 /* 0958CC 80094CCC 000F7880 */   sll   $t7, $t7, 2

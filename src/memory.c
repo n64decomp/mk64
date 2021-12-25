@@ -1758,7 +1758,7 @@ void load_course(s32 arg0) {
         gHeapEndPtr = 0x8028DF00;
     }
     set_segment_base_addr(9, func_802A7D70(temp_a2, temp_v0->offsetRomEnd, temp_a2));
-    if (D_800DC50C != 5) {
+    if (D_800DC50C != ENDING_SEQUENCE) {
         set_segment_base_addr(6, func_802AA88C(sp48, sp44));
     }
     sp18 = gPrevLoadedAddress;

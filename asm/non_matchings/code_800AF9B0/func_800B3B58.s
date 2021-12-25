@@ -123,12 +123,12 @@ glabel func_800B3B58
 /* 0B4924 800B3D24 3C0F8019 */  lui   $t7, %hi(gCupSelection) # $t7, 0x8019
 /* 0B4928 800B3D28 81EFEE09 */  lb    $t7, %lo(gCupSelection)($t7)
 /* 0B492C 800B3D2C 3C18800F */  lui   $t8, %hi(gCupCourseOrder) # 0x800f
-/* 0B4930 800B3D30 3C048019 */  lui   $a0, %hi(D_8018EE00) # $a0, 0x8019
+/* 0B4930 800B3D30 3C048019 */  lui   $a0, %hi(gStartMenuCounterForDemos) # $a0, 0x8019
 /* 0B4934 800B3D34 000F70C0 */  sll   $t6, $t7, 3
 /* 0B4938 800B3D38 030EC021 */  addu  $t8, $t8, $t6
 /* 0B493C 800B3D3C 87182BB4 */  lh    $t8, %lo(gCupCourseOrder)($t8) # 0x2bb4($t8)
 /* 0B4940 800B3D40 3C01800E */  lui   $at, %hi(gCurrentCourseId) # $at, 0x800e
-/* 0B4944 800B3D44 2484EE00 */  addiu $a0, %lo(D_8018EE00) # addiu $a0, $a0, -0x1200
+/* 0B4944 800B3D44 2484EE00 */  addiu $a0, %lo(gStartMenuCounterForDemos) # addiu $a0, $a0, -0x1200
 /* 0B4948 800B3D48 A438C5A0 */  sh    $t8, %lo(gCurrentCourseId)($at)
 /* 0B494C 800B3D4C AC800000 */  sw    $zero, ($a0)
 .L800B3D50:
@@ -214,15 +214,15 @@ glabel func_800B3B58
 /* 0B4A74 800B3E74 34848001 */   ori   $a0, (0x49008001 & 0xFFFF) # ori $a0, $a0, 0x8001
 /* 0B4A78 800B3E78 0C02D12B */  jal   func_800B44AC
 /* 0B4A7C 800B3E7C 00000000 */   nop   
-/* 0B4A80 800B3E80 3C048019 */  lui   $a0, %hi(D_8018EE00) # $a0, 0x8019
-/* 0B4A84 800B3E84 2484EE00 */  addiu $a0, %lo(D_8018EE00) # addiu $a0, $a0, -0x1200
+/* 0B4A80 800B3E80 3C048019 */  lui   $a0, %hi(gStartMenuCounterForDemos) # $a0, 0x8019
+/* 0B4A84 800B3E84 2484EE00 */  addiu $a0, %lo(gStartMenuCounterForDemos) # addiu $a0, $a0, -0x1200
 /* 0B4A88 800B3E88 10000036 */  b     .L800B3F64
 /* 0B4A8C 800B3E8C AC800000 */   sw    $zero, ($a0)
 .L800B3E90:
 /* 0B4A90 800B3E90 15600013 */  bnez  $t3, .L800B3EE0
 /* 0B4A94 800B3E94 00C01825 */   move  $v1, $a2
-/* 0B4A98 800B3E98 3C048019 */  lui   $a0, %hi(D_8018EE00) # $a0, 0x8019
-/* 0B4A9C 800B3E9C 2484EE00 */  addiu $a0, %lo(D_8018EE00) # addiu $a0, $a0, -0x1200
+/* 0B4A98 800B3E98 3C048019 */  lui   $a0, %hi(gStartMenuCounterForDemos) # $a0, 0x8019
+/* 0B4A9C 800B3E9C 2484EE00 */  addiu $a0, %lo(gStartMenuCounterForDemos) # addiu $a0, $a0, -0x1200
 /* 0B4AA0 800B3EA0 8C8C0000 */  lw    $t4, ($a0)
 /* 0B4AA4 800B3EA4 2401003C */  li    $at, 60
 /* 0B4AA8 800B3EA8 258D0001 */  addiu $t5, $t4, 1

@@ -79,8 +79,8 @@ glabel func_80094A64
 /* 095798 80094B98 00000000 */   nop   
 /* 09579C 80094B9C 0C027246 */  jal   func_8009C918
 /* 0957A0 80094BA0 00000000 */   nop   
-/* 0957A4 80094BA4 3C09800F */  lui   $t1, %hi(D_800E86A0) # $t1, 0x800f
-/* 0957A8 80094BA8 8D2986A0 */  lw    $t1, %lo(D_800E86A0)($t1)
+/* 0957A4 80094BA4 3C09800F */  lui   $t1, %hi(gMenuSelection) # $t1, 0x800f
+/* 0957A8 80094BA8 8D2986A0 */  lw    $t1, %lo(gMenuSelection)($t1)
 /* 0957AC 80094BAC 252AFFFB */  addiu $t2, $t1, -5
 /* 0957B0 80094BB0 2D410009 */  sltiu $at, $t2, 9
 /* 0957B4 80094BB4 10200010 */  beqz  $at, .L80094BF8

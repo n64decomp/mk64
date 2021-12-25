@@ -223,7 +223,7 @@ s32 func_80091D74(); // extern
 ? func_800C97C4(s32); // extern
 ? func_800C9D0C(s32); // extern
 extern s8 D_800E852C;
-extern s32 D_800E86A0;
+extern s32 gMenuSelection;
 extern s32 D_800E86A4;
 extern s32 D_8018D9B0;
 extern s32 D_8018D9B4;
@@ -260,10 +260,10 @@ void func_80091B78(void) {
             func_800B4A10();
         }
         if (func_80091D74() != 0) {
-            D_800E86A0 = 9;
+            gMenuSelection = CONTROLLER_PAK_MENU;
         }
     }
-    if (D_800E86A0 == 8) {
+    if (gMenuSelection == LOGO_INTRO_MENU) {
         gPrevLoadedAddress = D_8015F734;
         set_segment_base_addr(6, func_802AA88C(&_data_825800SegmentRomStart, &_course_mario_raceway_dl_mio0SegmentRomStart));
     }
@@ -1145,6 +1145,7 @@ void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
         arg6 = 2;
     }
 
+
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
         do{
@@ -1889,20 +1890,20 @@ void func_80094A64(s32 arg0) {
     func_80092290(5, &D_8018E854, &D_8018E85C);
     func_80099A70();
     func_8009C918();
-    temp_t1 = D_800E86A0;
+    temp_t1 = gMenuSelection;
     switch (temp_t1) {
-    case 10:
+    case START_MENU:
         func_80095574();
         func_80093E40();
         break;
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-    case 9:
-    case 11:
-    case 12:
-    case 13:
+    case OPTIONS_MENU:
+    case DATA_MENU:
+    case COURSE_DATA_MENU:
+    case LOGO_INTRO_MENU:
+    case CONTROLLER_PAK_MENU:
+    case GAME_SELECT_MENU:
+    case PLAYER_SELECT_MENU:
+    case COURSE_SELECT_MENU:
         func_800A8230();
         func_80099AEC();
         break;
@@ -1949,15 +1950,15 @@ void func_80094C60(void) {
         func_80092258();
         func_800B5F30();
         func_800B6014();
-        func_800B3F74(D_800E86A0);
-        temp_t7 = D_800E86A0;
+        func_800B3F74(gMenuSelection);
+        temp_t7 = gMenuSelection;
         switch (temp_t7) {
-        case 5:
+        case OPTIONS_MENU:
             func_8009E650(0x23, 0, 0, 2);
             func_8009E650(0xF1, 0, 0, 4);
             func_8009E650(0xF0, 0, 0, 2);
             break;
-        case 6:
+        case DATA_MENU:
             func_8009E650(0x23, 0, 0, 2);
             func_8009E650(0x8C, 0, 0, 6);
             func_8009E650(0x7C, 0, 0, 6);
@@ -1978,17 +1979,17 @@ void func_80094C60(void) {
             func_8009E650(0x8B, 0, 0, 6);
             func_8009E650(0x8D, 0, 0, 8);
             break;
-        case 7:
+        case COURSE_DATA_MENU:
             func_8009E650(0xE6, 0, 0, 8);
             func_8009E650(0xE7, 0, 0, 8);
             func_8009E650(0xE8, 0, 0, 8);
             func_8009E650(0xE9, 0, 0, 8);
             func_8009E650(0xEA, 0, 0, 8);
             break;
-        case 8:
+        case LOGO_INTRO_MENU:
             func_8009E650(0xFA, 0, 0, 0);
             break;
-        case 9:
+        case CONTROLLER_PAK_MENU:
             func_8009E650(0xDA, 0, 0, 0);
             func_8009E650(0xD2, 0, 0, 4);
             func_8009E650(0xD4, 0, 0, 6);
@@ -1999,7 +2000,7 @@ void func_80094C60(void) {
             func_8009E650(0xD8, 0, 0, 0xA);
             func_8009E650(0xD9, 0, 0, 0xA);
             break;
-        case 10:
+        case START_MENU:
             func_8009E650(2, 0, 0, 4);
             func_8009E650(1, 0, 0, 0);
             func_8009E650(0xFB, 0, 0, 0);
@@ -2012,7 +2013,7 @@ void func_80094C60(void) {
             D_800DC51C = 0;
             D_8018EE08 = 0;
             break;
-        case 11:
+        case GAME_SELECT_MENU:
             func_8009E650(0x23, 0, 0, 2);
             func_8009E650(0xA, 0x15E, 0x11, 6);
             func_8009E650(0xE, 0x15E, 0x3E, 6);
@@ -2032,7 +2033,7 @@ void func_80094C60(void) {
             func_8009E650(0x18, 0, 0, 6);
             func_8009E650(0x1B, 0, 0, 0xC);
             break;
-        case 12:
+        case PLAYER_SELECT_MENU:
             func_8009E650(0x24, 0, 0, 2);
             func_8009E650(0x2A, 0, 0, 6);
             func_8009E650(0x33, 0, 0, 6);
@@ -2049,7 +2050,7 @@ void func_80094C60(void) {
             func_8009E650(0x36, 0, 0, 0xC);
             func_8009E650(0x37, 0, 0, 0xC);
             break;
-        case 13:
+        case COURSE_SELECT_MENU:
             func_8009E650(0x25, 0, 0, 2);
             func_8009E650(0x52, 0, 0, 6);
             if (gModeSelection != BATTLE) {
@@ -2129,29 +2130,30 @@ void func_80095574(void) {
     if ((D_8018EE0C < 3) || (D_8018E7B0 != 0)) {
         func_800A8230();
     }
-    temp_v0 = D_8018EDEF;
+    temp_v0 = gDebugMenuSelection;
     phi_v0_2 = temp_v0;
-    if (temp_v0 >= 2) {
+    if (temp_v0 >= DEBUG_MENU_DEBUG_MODE) {
         load_debug_font();
         debug_print_str2(0x50, 0x64, "debug_mode");
-        temp_t8 = D_8018EDEF;
+        temp_t8 = gDebugMenuSelection;
+        // Draw asterisk next to selected debug menu option
         switch (temp_t8) {
-        case 2:
+        case DEBUG_MENU_DEBUG_MODE:
             debug_print_str2(0x46, 0x64, "*");
             break;
-        case 3:
+        case DEBUG_MENU_COURSE:
             debug_print_str2(0x46, 0x6E, "*");
             break;
-        case 4:
+        case DEBUG_MENU_SCREEN_MODE:
             debug_print_str2(0x46, 0x78, "*");
             break;
-        case 5:
+        case DEBUG_MENU_PLAYER:
             debug_print_str2(0x46, 0x82, "*");
             break;
-        case 6:
+        case DEBUG_MENU_SOUND_MODE:
             debug_print_str2(0x46, 0x8C, "*");
             break;
-        case 7:
+        case DEBUG_MENU_GIVE_ALL_GOLD_CUP:
             debug_print_str2(0x46, 0x96, "*");
             break;
         }
@@ -2178,22 +2180,22 @@ void func_80095574(void) {
         debug_print_str2(0xAA, 0x82, *(&gDebugCharacterNames + (D_800E86A8 * 4)));
         debug_print_str2(0x50, 0x8C, "sound mode");
         debug_print_str2(0xAA, 0x8C, gDebugSoundModeNames[gSoundMode]);
-        if (D_8018EDEF == 7) {
+        if (gDebugMenuSelection == DEBUG_MENU_GIVE_ALL_GOLD_CUP) {
             debug_print_str2(0x50, 0x96, "push b to get all goldcup");
         }
         func_80057778();
-        phi_v0_2 = D_8018EDEF;
+        phi_v0_2 = gDebugMenuSelection;
     }
-    if (phi_v0_2 == 1) {
-        D_8018EE00 += 1;
+    if (phi_v0_2 == DEBUG_MENU_DISABLED) {
+        gStartMenuCounterForDemos += 1;
     } else {
-        D_8018EE00 = 3;
+        gStartMenuCounterForDemos = 3;
     }
-    temp_v0_2 = D_8018EE00;
+    temp_v0_2 = gStartMenuCounterForDemos;
     phi_v0_3 = temp_v0_2;
     if (temp_v0_2 == 2) {
         play_sound2(0x49009009);
-        phi_v0_3 = D_8018EE00;
+        phi_v0_3 = gStartMenuCounterForDemos;
     }
     if (phi_v0_3 >= 0x12D) {
         func_8009E230();
@@ -4672,7 +4674,7 @@ void func_80099AEC(void) {
     s8 phi_s5_2;
     s8 phi_s5_3;
 
-    if (D_800DC50C == 4) {
+    if (D_800DC50C == RACING) {
         sp60 = 0x500;
     } else {
         sp60 = 0x1000;
@@ -6382,7 +6384,7 @@ void func_8009CBE4(s32 arg0, s32 arg1, s32 arg2) {
     sp40 = temp_t4;
     gDisplayListHead = draw_box(gDisplayListHead, phi_t2 - temp_v1_3, phi_t3 - temp_t0, temp_v1_3 + phi_t2, temp_t0 + phi_t3, temp_v0_5->unk0, temp_v0_5->unk2, temp_v0_5->unk4, 0xFF - ((*temp_t4 * 0xFF) / *temp_t9));
     if ((arg1 == 0) && (temp_t6 = *temp_t4 + 1, *temp_t4 = temp_t6, ((temp_t6 < *sp3C) == 0))) {
-        if (D_800DC50C == 4) {
+        if (D_800DC50C == RACING) {
             *(&D_8018E7AC + arg0) = 6;
             return;
         }
@@ -6445,7 +6447,7 @@ extern ? D_8018E7B0;
 static ? gCupSelectionByCourseId;                                /* unable to generate initializer; const */
 static ? D_800E86A8;                                /* unable to generate initializer; const */
 static ? gPerCupIndexByCourseId;                                /* unable to generate initializer; const */
-s16 D_800DC644;                                     /* unable to generate initializer */
+s16 gCreditsCourseId;                                     /* unable to generate initializer */
 s16 gCurrentCourseId;                               /* unable to generate initializer */
 
 void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
@@ -6489,7 +6491,7 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
     phi_a2 = arg3;
     phi_a2 = arg3;
     phi_a2 = arg3;
-    if (temp_v0 == 5) {
+    if (temp_v0 == ENDING_SEQUENCE) {
         temp_v1 = gCCSelection;
         if ((temp_v1 != CC_150) && (temp_v1 != CC_EXTRA)) {
 
@@ -6497,15 +6499,15 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
             phi_a1 = 1;
         }
         if (phi_a1 != 0) {
-            D_80287550 = 9;
-            D_800DC644 = 8;
+            gMenuSelectionFromEndingSequence = CREDITS_SEQUENCE;
+            gCreditsCourseId = COURSE_LUIGI_RACEWAY;
             return;
         }
-        D_80287550 = 1;
-        D_800E86A0 = 0xB;
+        gMenuSelectionFromEndingSequence = GAME_SELECT_MENU_FROM_QUIT;
+        gMenuSelection = GAME_SELECT_MENU;
         return;
     }
-    if (temp_v0 == 4) {
+    if (temp_v0 == RACING) {
         temp_v0_2 = arg0 + &D_8018E7AC;
         if (*temp_v0_2 == 2) {
             if (temp_v0_2 != &D_8018E7B0) {
@@ -6625,33 +6627,34 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
         }
     } else {
         *(&D_8018E7AC + arg0) = 0;
-        if (D_8018EDEF != 0x40) {
+        if (gDebugMenuSelection != DEBUG_MENU_EXITED) {
             temp_t9 = D_8018EDE0;
             switch (temp_t9) {                      /* switch 3 */
             case 0:                                 /* switch 3 */
-                temp_v0_7 = D_800E86A0;
+                temp_v0_7 = gMenuSelection;
                 phi_t7 = temp_v0_7 + 1;
-                phi_a0 = &D_800E86A0;
+                phi_a0 = &gMenuSelection;
                 phi_a2 = 2;
                 phi_a2 = 2;
-                if (temp_v0_7 == 8) {
-                    D_800E86A0 = 0xA;
+                if (temp_v0_7 == LOGO_INTRO_MENU) {
+                    gMenuSelection = START_MENU;
                     D_800E86A4 = 2;
                 } else {
 block_74:
-                    D_800E86A0 = phi_t7;
-                    phi_a0 = &D_800E86A0;
+                    gMenuSelection = phi_t7;
+                    phi_a0 = &gMenuSelection;
                 }
                 break;
             case 1:                                 /* switch 3 */
-                D_800E86A0 += -1;
-                phi_a0 = &D_800E86A0;
+                gMenuSelection += -1;
+                phi_a0 = &gMenuSelection;
                 break;
             // Setting up game state for title screen demos
             case 2:                                 /* switch 3 */
                 D_800DC51C = 1;
                 D_8018EE08 = 1;
-                D_800DC524 = 4;
+
+                D_800DC524 = RACING;
                 gCCSelection = CC_100;
                 switch (gNextDemoId) {                /* switch 4 */
                 case DEMO_ONE:                             /* switch 4 */
@@ -6723,23 +6726,23 @@ block_74:
                 phi_a0 = gCurrentCourseId;
                 break;
             case 3:                                 /* switch 3 */
-                temp_v1_5 = D_800E86A0;
-                phi_a0 = &D_800E86A0;
-                if (temp_v1_5 != 6) {
-                    if (temp_v1_5 == 0xB) {
-                        D_800E86A0 = 6;
+                temp_v1_5 = gMenuSelection;
+                phi_a0 = &gMenuSelection;
+                if (temp_v1_5 != DATA_MENU) {
+                    if (temp_v1_5 == GAME_SELECT_MENU) {
+                        gMenuSelection = DATA_MENU;
                     }
                 } else {
-                    D_800E86A0 = 0xB;
+                    gMenuSelection = GAME_SELECT_MENU;
                 }
                 break;
             case 4:                                 /* switch 3 */
-                temp_v1_6 = D_800E86A0;
+                temp_v1_6 = gMenuSelection;
                 phi_t7 = 0xB;
-                phi_a0 = &D_800E86A0;
-                if (temp_v1_6 != 5) {
-                    if (temp_v1_6 == 0xB) {
-                        D_800E86A0 = 5;
+                phi_a0 = &gMenuSelection;
+                if (temp_v1_6 != OPTIONS_MENU) {
+                    if (temp_v1_6 == GAME_SELECT_MENU) {
+                        gMenuSelection = OPTIONS_MENU;
                     }
                 } else {
                     goto block_74;
@@ -6749,8 +6752,8 @@ block_74:
             if (D_800E86A4 == 0) {
                 D_800E86A4 = 1;
             }
-            if (D_800E86A0 >= 0xE) {
-                D_800DC524 = 4;
+            if (gMenuSelection >= RACING_DUPLICATE) {
+                D_800DC524 = RACING;
                 if (gModeSelection == TIME_TRIALS) {
                     D_8018EDFB = 1;
                 }
@@ -6759,19 +6762,19 @@ block_74:
             D_8018EE0C = 0;
             return;
         }
-        temp_v1_7 = D_8018EDFA;
-        if (temp_v1_7 != 1) {
-            if ((temp_v1_7 != 2) && (temp_v1_7 != 3)) {
-                D_800DC524 = 4;
+        temp_v1_7 = gDebugGotoScene;
+        if (temp_v1_7 != DEBUG_GOTO_ENDING_SEQUENCE) {
+            if ((temp_v1_7 != DEBUG_GOTO_CREDITS_SEQUENCE_CC_50) && (temp_v1_7 != DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA)) {
+                D_800DC524 = RACING;
                 if (gModeSelection == TIME_TRIALS) {
                     D_8018EDFB = 1;
                 }
             } else {
-                D_800DC524 = 9;
-                D_800DC644 = 8;
+                D_800DC524 = CREDITS_SEQUENCE;
+                gCreditsCourseId = COURSE_LUIGI_RACEWAY;
             }
         } else {
-            D_800DC524 = 5;
+            D_800DC524 = ENDING_SEQUENCE;
         }
         func_8000F124(1, 2);
         if ((D_800DC530 == 3) && ((temp_v1_8 = gModeSelection, (temp_v1_8 == 0)) || (temp_v1_8 == 1))) {
@@ -6779,6 +6782,7 @@ block_74:
         }
         temp_a0_2 = gCurrentCourseId;
         if ((temp_a0_2 != 0xF) && (temp_a0_2 != 0x10) && (temp_a0_2 != 0x11) && (temp_a0_2 != 0x13)) {
+            // Selected course is not one of the battle courses
             temp_v0_8 = gModeSelection;
             phi_v0 = temp_v0_8;
             if (temp_v0_8 == 3) {
@@ -6797,12 +6801,12 @@ block_74:
             }
         }
         gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
-        temp_v1_9 = D_8018EDFA;
+        temp_v1_9 = gDebugGotoScene;
         D_800DC540 = gCupSelection;
         gCupCourseSelection = gPerCupIndexByCourseId[gCurrentCourseId];
-        if (temp_v1_9 != 1) {
-            if (temp_v1_9 != 2) {
-                if (temp_v1_9 != 3) {
+        if (temp_v1_9 != DEBUG_GOTO_ENDING_SEQUENCE) {
+            if (temp_v1_9 != DEBUG_GOTO_CREDITS_SEQUENCE_CC_50) {
+                if (temp_v1_9 != DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA) {
                     if (gCCSelection == CC_EXTRA) {
                         gIsMirrorMode = 1;
                         return;
@@ -11304,7 +11308,7 @@ void func_800A474C(s32 arg0, s32 arg1, s32 arg2) {
     u32 phi_v0_2;
     u32 phi_v0_3;
 
-    if (D_800DC50C == 4) {
+    if (D_800DC50C == RACING) {
         sp30 = 0;
     } else {
         sp30 = 1;
