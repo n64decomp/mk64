@@ -65,6 +65,86 @@ struct UnkStruct_800DC5EC {
     s32 pad2;
 };
 
+struct UnkStruct_80280658 {
+    s32 unk0;
+    s16 unk4;
+    s16 unk6;
+    s8 unk8;
+    s8 unk9;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    struct UnkStruct_80280658_2 *unk28;
+    s32 unk2C;
+    s32 unk30;
+    f32 unk34;
+    f32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+};
+
+struct UnkStruct_80280658_2 {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s8 unk8;
+    s8 unk9;
+    s8 unkA;
+    f32 unkC;
+};
+
+struct UnkStruct_8028088C {
+    s32 unk0;
+    s16 unk4;
+    s16 unk6;
+    s8 unk8;
+    s8 unk9;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    struct UnkStruct_80280658_2 *unk28;
+    s16 unk2C;
+    s16 unk2E;
+    s16 unk30;
+    s16 unk32;
+    s16 unk34;
+    s16 unk36;
+    s32 unk38;
+    s32 unk3C;
+};
+
+// Camera path struct? Or something like that. For GP race won scene?
+struct UnkStruct_80287500 {
+    Vec3f unk0; // xyz coordinates?
+    f32 unkC;
+    f32 unk10;
+    f32 unk14; // rotation?
+    s32 unk18;
+    s32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    f32 unk34;
+    s32 unk38;
+};
+
 struct UnkStruct_800DDB40 {
     u32 unk0;
     u32 unk4;
