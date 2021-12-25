@@ -11221,7 +11221,7 @@ extern s32 D_8018D4BC;
 extern s32 D_8018D4C0;
 extern s32 *gDisplayListHead;
 
-void func_8006BB34(void *arg0, s32 arg1, s16 arg2, s16 arg3) {
+void func_8006BB34(struct UnkStruct_8028088C arg0*, s32 arg1, s16 arg2, s16 arg3) {
     ? sp108;
     f32 sp104;
     f32 sp100;
