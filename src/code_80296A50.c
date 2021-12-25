@@ -431,7 +431,7 @@ void func_80297340(void *arg0) {
     void *temp_v0_6;
 
     sp36 = D_8015F8D0.unk8;
-    if ((D_800DC50C != 9) && (mtxf_translate(&sp38, &D_8015F8D0), (func_802B4FF8(&sp38, 0) != 0))) {
+    if ((D_800DC50C != CREDITS_SEQUENCE) && (mtxf_translate(&sp38, &D_8015F8D0), (func_802B4FF8(&sp38, 0) != 0))) {
         if (sp36 < arg0->unk8) {
             if (D_800DC5BC != 0) {
                 temp_v0 = gDisplayListHead;
@@ -1447,7 +1447,7 @@ void func_80298D7C(void *arg0, ? *arg1, ? arg2) {
     sp88.unk0 = D_802B87E0.unk0;
     sp88.unk4 = D_802B87E0.unk4;
     phi_s1 = temp_s1;
-    if (D_800DC50C == 9) {
+    if (D_800DC50C == CREDITS_SEQUENCE) {
         phi_f22 = D_802B9650;
     } else {
         phi_f22 = D_802B9654;
@@ -4322,7 +4322,7 @@ void place_segment_06(u32 arg0) {
                 break;
             }
             temp_s0 = &D_8015F9B8 + (func_8029EC88(&sp8C, &sp78, &sp80, phi_s2) * 0x70);
-            if (D_800DC50C == 9) {
+            if (D_800DC50C == CREDITS_SEQUENCE) {
                 func_802976D8(temp_s0 + 0x10);
             } else {
                 temp_s1 = temp_s0 + 0x30;
@@ -7279,7 +7279,7 @@ void func_802A27A0(void *arg0, ? *arg1, void *arg2, u16 arg3) {
     void *temp_v0_5;
     f32 phi_f2;
 
-    if (D_800DC50C != 9) {
+    if (D_800DC50C != CREDITS_SEQUENCE) {
         temp_f0 = func_802B80D0(arg2 + 0x18, arg0->unk26, 0x43480000, (&D_80150130)[(arg0 - camera1) / 0xB8], D_802B9A2C);
         phi_f2 = temp_f0;
         if (temp_f0 < 0.0f) {

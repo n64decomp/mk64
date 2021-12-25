@@ -20,11 +20,11 @@ extern u16 D_800DC5B0;
 
 void func_802A3E3C();
 extern s32 D_800DC524;
-extern s16 D_800DC5C0;
-extern u16 D_800DC5C4;
-extern s32 D_800E86A0;
+extern s16 gIsInQuitToMenuTransition;
+extern u16 gQuitToMenuTransitionCounter;
+extern s32 gMenuSelection;
 extern s32 D_800E86A4;
-extern s32 D_80150124;
+extern s32 gMenuSelectionFromQuit;
 
 extern s32 D_801502B4;
 extern uintptr_t *gPhysicalFramebuffers[];
@@ -138,30 +138,30 @@ void func_802A38B4(void) {
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
 
-    if (D_800DC5C4 != 0) {
-        D_800DC5C4--;
+    if (gQuitToMenuTransitionCounter != 0) {
+        gQuitToMenuTransitionCounter--;
         return;
     }
-    D_800DC524 = D_80150124;
+    D_800DC524 = gMenuSelectionFromQuit;
     D_800DC50C = 255;
-    D_800DC5C0 = 0;
-    D_800DC5C4 = 0;
+    gIsInQuitToMenuTransition = 0;
+    gQuitToMenuTransitionCounter = 0;
     D_800E86A4 = 1;
 
-    switch(D_80150124) {
-        case 0:
-            if (D_800E86A0 != 8) {
-                D_800E86A0 = 10;
+    switch(gMenuSelectionFromQuit) {
+        case START_MENU_FROM_QUIT:
+            if (gMenuSelection != LOGO_INTRO_MENU) {
+                gMenuSelection = START_MENU;
             }
             break;
-        case 1:
-            D_800E86A0 = 11;
+        case GAME_SELECT_MENU_FROM_QUIT:
+            gMenuSelection = GAME_SELECT_MENU;
             break;
-        case 2:
-            D_800E86A0 = 12;
+        case PLAYER_SELECT_MENU_FROM_QUIT:
+            gMenuSelection = PLAYER_SELECT_MENU;
             break;
-        case 3:
-            D_800E86A0 = 13;
+        case COURSE_SELECT_MENU_FROM_QUIT:
+            gMenuSelection = COURSE_SELECT_MENU;
             break;
     }
 }
@@ -681,7 +681,7 @@ extern s32 D_800DC530;
 void func_802A4D18(void) {
     f32 phi_f10;
 
-    if (D_800DC50C != 4) {
+    if (D_800DC50C != RACING) {
         D_8015014C = 6800.0f; // D_802B9BB4
         D_80150150 = 3.0f;
     } else {
@@ -867,7 +867,7 @@ void func_802A53A4(void) {
     func_802A41D4();
     if (D_800DC5B4 != 0) {
         func_802A4A0C(&D_802B8890, D_800DC5EC, 0x140, 0xF0, &D_80150130);
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_80057FC4(0);
         }
         func_802A487C(&D_802B8890, D_800DC5EC, 0x140, 0xF0, &D_80150130);

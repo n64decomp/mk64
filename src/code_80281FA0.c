@@ -837,7 +837,7 @@ void func_80283430(void) {
         phi_s0 = temp_s0;
     } while (temp_s0 != &D_80287824);
     D_802856C0 = 0.0f;
-    if (D_800DC50C == 5) {
+    if (D_800DC50C == ENDING_SEQUENCE) {
         D_802856B0 = 120.0f;
         D_802856B4 = 12.0f;
         D_802856B8 = 120.0f;
@@ -944,7 +944,7 @@ s32 func_80283648(? *arg0) {
         arg0->unk20 = sins((bitwise f32) sp6C) * -sp38;
         func_80282008(arg0, &D_802876EC);
         func_80282008(sp34, &D_802876E0);
-        if ((D_800DC50C == 9) && (gIsMirrorMode != 0)) {
+        if ((D_800DC50C == CREDITS_SEQUENCE) && (gIsMirrorMode != 0)) {
             arg0->unk0 = -arg0->unk0;
             arg0->unkC = -arg0->unkC;
         }

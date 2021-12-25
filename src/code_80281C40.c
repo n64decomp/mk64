@@ -15,9 +15,9 @@ struct UnkStruct80287560 {
 extern struct UnkStruct80287560 D_80287560[];
 extern s32 D_802874FC;
 
-extern u32 D_80287550;
+extern u32 gMenuSelectionFromEndingSequence;
 extern s32 D_80287554;
-extern u16 D_800DC5C0;
+extern u16 gIsInQuitToMenuTransition;
 extern u32 D_800DC524;
 extern Gfx D_00284F70[];
 extern Gfx D_00284EE0[];
@@ -53,11 +53,11 @@ void func_80281D00(void) {
 
     func_802A53A4();
     func_802A3E3C();
-    if (D_80287550 != 0xFFFF) {
+    if (gMenuSelectionFromEndingSequence != 0xFFFF) {
         clear_framebuffer(0);
         if (D_80287554 >= 4) {
-            D_800DC5C0 = 0;
-            D_800DC524 = D_80287550;
+            gIsInQuitToMenuTransition = 0;
+            D_800DC524 = gMenuSelectionFromEndingSequence;
         }
         D_80287554++;
         return;

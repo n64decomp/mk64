@@ -7,10 +7,10 @@ glabel func_800B0350
 /* 0B0F64 800B0364 AFB1001C */  sw    $s1, 0x1c($sp)
 /* 0B0F68 800B0368 15C0006E */  bnez  $t6, .L800B0524
 /* 0B0F6C 800B036C AFB00018 */   sw    $s0, 0x18($sp)
-/* 0B0F70 800B0370 3C12800F */  lui   $s2, %hi(D_800E86A0) # $s2, 0x800f
+/* 0B0F70 800B0370 3C12800F */  lui   $s2, %hi(gMenuSelection) # $s2, 0x800f
 /* 0B0F74 800B0374 3C11800F */  lui   $s1, %hi(gControllers) # $s1, 0x800f
 /* 0B0F78 800B0378 26316910 */  addiu $s1, %lo(gControllers) # addiu $s1, $s1, 0x6910
-/* 0B0F7C 800B037C 265286A0 */  addiu $s2, %lo(D_800E86A0) # addiu $s2, $s2, -0x7960
+/* 0B0F7C 800B037C 265286A0 */  addiu $s2, %lo(gMenuSelection) # addiu $s2, $s2, -0x7960
 /* 0B0F80 800B0380 00008025 */  move  $s0, $zero
 .L800B0384:
 /* 0B0F84 800B0384 0C02D148 */  jal   func_800B4520

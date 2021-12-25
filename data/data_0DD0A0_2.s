@@ -2279,7 +2279,7 @@ glabel D_800E8688
 .word 0x28281400 # light brightness (stops)
 .word 0x00000000, 0x00000000, 0x00000000
 
-glabel D_800E86A0 # menu counter
+glabel gMenuSelection # menu counter
 .word 0x00000008
 
 glabel D_800E86A4 # on change menu?
