@@ -493,7 +493,7 @@ void display_and_vsync(void) {
     osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
     profiler_log_thread5_time(4);
     osRecvMesg(&D_8014EF70, &gMainReceivedMesg, 1);
-    func_800046AC(gPhysicalFramebuffers[sRenderedFramebuffer]);
+    crash_screen_set_framebuffer(gPhysicalFramebuffers[sRenderedFramebuffer]);
     if (++sRenderedFramebuffer == 3) {
         sRenderedFramebuffer = 0;
     }
