@@ -1449,16 +1449,16 @@ void func_800B1C90(void *arg0, s32 arg1) {
 
     sp36 = arg0->unk6 | arg0->unkC;
     if (func_800B4520() == 0) {
-        temp_t9 = gPlayerCountSelection2;
+        temp_t9 = gMenuState;
         switch (temp_t9) {
         case 1:
             if ((sp36 & 0x9000) != 0) {
-                gPlayerCountSelection2 = 5;
+                gMenuState = 5;
                 play_sound2(0x49008001);
                 return;
             }
             if ((sp36 & 0x300) != 0) {
-                gPlayerCountSelection2 = 2;
+                gMenuState = 2;
                 play_sound2(0x49008000);
                 return;
             }
@@ -1472,7 +1472,7 @@ void func_800B1C90(void *arg0, s32 arg1) {
                 return;
             }
             if ((sp36 & 0x300) != 0) {
-                gPlayerCountSelection2 = 1;
+                gMenuState = 1;
                 play_sound2(0x49008000);
                 return;
             }
@@ -1480,8 +1480,8 @@ void func_800B1C90(void *arg0, s32 arg1) {
             return;
         case 5:
             if ((sp36 & 0x9000) != 0) {
-                if (*(&D_8018EB38 + ((*(&D_800E86C6 + D_800E86C0) - 1) * 4)) == 0) {
-                    gPlayerCountSelection2 = 4;
+                if (*(&D_8018EB38 + ((*(&D_800E86C6 + gControllerPakSelectedTableRow) - 1) * 4)) == 0) {
+                    gMenuState = 4;
                     play_sound2(0x49008001);
                     return;
                 }
@@ -1490,7 +1490,7 @@ void func_800B1C90(void *arg0, s32 arg1) {
             }
             if ((sp36 & 0x4000) != 0) {
                 if (*D_800E86D0 == 0) {
-                    gPlayerCountSelection2 = 1;
+                    gMenuState = 1;
                     play_sound2(0x49008002);
                     return;
                 }
@@ -1499,10 +1499,10 @@ void func_800B1C90(void *arg0, s32 arg1) {
             }
             if ((sp36 & 0x800) != 0) {
                 if (*D_800E86D0 == 0) {
-                    D_800E86C0 += -1;
-                    if (D_800E86C0 < 0) {
-                        D_800E86C0 = 0;
-                        if (*(&D_800E86C6 + D_800E86C0) != 1) {
+                    gControllerPakSelectedTableRow += -1;
+                    if (gControllerPakSelectedTableRow < 0) {
+                        gControllerPakSelectedTableRow = 0;
+                        if (*(&D_800E86C6 + gControllerPakSelectedTableRow) != 1) {
                             *D_800E86D0 = 2;
                             play_sound2(0x49008000);
                             return;
@@ -1517,10 +1517,10 @@ void func_800B1C90(void *arg0, s32 arg1) {
                 return;
             }
             if (((sp36 & 0x400) != 0) && (*D_800E86D0 == 0)) {
-                D_800E86C0 += 1;
-                if (D_800E86C0 >= 5) {
-                    D_800E86C0 = 4;
-                    if (*(&D_800E86C6 + D_800E86C0) != 0x10) {
+                gControllerPakSelectedTableRow += 1;
+                if (gControllerPakSelectedTableRow >= 5) {
+                    gControllerPakSelectedTableRow = 4;
+                    if (*(&D_800E86C6 + gControllerPakSelectedTableRow) != 0x10) {
                         *D_800E86D0 = 1;
                         play_sound2(0x49008000);
                         return;
@@ -1535,12 +1535,12 @@ void func_800B1C90(void *arg0, s32 arg1) {
             return;
         case 4:
             if ((sp36 & 0xD000) != 0) {
-                gPlayerCountSelection2 = 5;
+                gMenuState = 5;
                 play_sound2(0x49008002);
                 return;
             }
             if ((sp36 & 0x300) != 0) {
-                gPlayerCountSelection2 = 3;
+                gMenuState = 3;
                 play_sound2(0x49008000);
                 return;
             }
@@ -1548,27 +1548,27 @@ void func_800B1C90(void *arg0, s32 arg1) {
             return;
         case 3:
             if ((sp36 & 0x9000) != 0) {
-                gPlayerCountSelection2 = 6;
+                gMenuState = 6;
                 play_sound2(0x49008001);
                 return;
             }
             if ((sp36 & 0x4000) != 0) {
-                gPlayerCountSelection2 = 5;
+                gMenuState = 5;
                 play_sound2(0x49008002);
                 return;
             }
             if ((sp36 & 0x300) != 0) {
-                gPlayerCountSelection2 = 4;
+                gMenuState = 4;
                 play_sound2(0x49008000);
                 return;
             }
             /* Duplicate return node #49. Try simplifying control flow for better match */
             return;
         case 6:
-            gPlayerCountSelection2 = 7;
+            gMenuState = 7;
             return;
         case 7:
-            temp_t0 = *(&D_800E86C6 + D_800E86C0) - 1;
+            temp_t0 = *(&D_800E86C6 + gControllerPakSelectedTableRow) - 1;
             temp_v1 = (temp_t0 << 5) + &D_8018E938;
             sp20 = temp_v1;
             sp2C = temp_t0;
@@ -1576,24 +1576,24 @@ void func_800B1C90(void *arg0, s32 arg1) {
             if (temp_v0 != 0) {
                 if (temp_v0 != 1) {
                     if (temp_v0 != 2) {
-                        gPlayerCountSelection2 = 8;
+                        gMenuState = 8;
                         return;
                     }
-                    gPlayerCountSelection2 = 0xA;
+                    gMenuState = 0xA;
                     return;
                 }
-                gPlayerCountSelection2 = 9;
+                gMenuState = 9;
                 return;
             }
             *(&D_8018EB38 + (temp_t0 * 4)) = -1;
-            D_8018EB80 = D_8018EB80 + (((temp_v1->unk0 + 0xFF) >> 8) & 0xFF);
-            gPlayerCountSelection2 = 5;
+            gControllerPakNumPagesFree = gControllerPakNumPagesFree + (((temp_v1->unk0 + 0xFF) >> 8) & 0xFF);
+            gMenuState = 5;
             return;
         case 8:
         case 9:
         case 10:
             if ((sp36 & 0x9000) != 0) {
-                gPlayerCountSelection2 = 5;
+                gMenuState = 5;
             }
             /* Duplicate return node #49. Try simplifying control flow for better match */
             return;
@@ -2609,7 +2609,7 @@ void func_800B3F74(u32 arg0) {
         func_800CA008(0, 0);
         break;
     case CONTROLLER_PAK_MENU:
-        gPlayerCountSelection2 = 1;
+        gMenuState = 1;
         func_800CA008(0, 0);
         break;
     case START_MENU_FROM_QUIT:
@@ -3841,7 +3841,7 @@ extern u8 D_800F2E74;
 extern OSPfs D_8018E868;
 extern s32 D_8018EB78;
 extern s32 D_8018EB7C;
-extern s32 D_8018EB80;
+extern s32 gControllerPakNumPagesFree;
 extern s32 D_8018EB84;
 extern ? gSIEventMesgQueue;
 
@@ -3902,10 +3902,10 @@ block_17:
         if (osPfsNumFiles(&D_8018E868, &D_8018EB78, &D_8018EB7C) != 0) {
             return 2;
         }
-        if (osPfsFreeBlocks(&D_8018E868, &D_8018EB80) != 0) {
+        if (osPfsFreeBlocks(&D_8018E868, &gControllerPakNumPagesFree) != 0) {
             return 2;
         }
-        D_8018EB80 = D_8018EB80 >> 8;
+        gControllerPakNumPagesFree = gControllerPakNumPagesFree >> 8;
         goto block_27;
     }
 block_27:
@@ -3913,7 +3913,7 @@ block_27:
         return 4;
     }
     phi_v0_2 = 4;
-    if (D_8018EB80 >= 0x79) {
+    if (gControllerPakNumPagesFree >= 0x79) {
         phi_v0_2 = -1;
     }
     return phi_v0_2;
@@ -4015,7 +4015,7 @@ extern s8 D_800E86F8;
 extern OSPfs D_8018E868;
 extern s32 D_8018EB78;
 extern s32 D_8018EB7C;
-extern s32 D_8018EB80;
+extern s32 gControllerPakNumPagesFree;
 extern ? gSIEventMesgQueue;
 
 s32 func_800B5F30(void) {
@@ -4030,11 +4030,11 @@ s32 func_800B5F30(void) {
             D_800E86F8 = 0;
             return -2;
         }
-        if (osPfsFreeBlocks(&D_8018E868, &D_8018EB80) != 0) {
+        if (osPfsFreeBlocks(&D_8018E868, &gControllerPakNumPagesFree) != 0) {
             D_800E86F8 = 0;
             return -3;
         }
-        D_8018EB80 = D_8018EB80 >> 8;
+        gControllerPakNumPagesFree = gControllerPakNumPagesFree >> 8;
         if (sp1C == 0) {
             D_800E86F8 = 1;
         }

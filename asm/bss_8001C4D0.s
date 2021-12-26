@@ -1917,7 +1917,7 @@ glabel D_8018EB78
 glabel D_8018EB7C
 .skip 4
 
-glabel D_8018EB80
+glabel gControllerPakNumPagesFree
 .skip 4
 
 glabel D_8018EB84
@@ -2082,7 +2082,7 @@ glabel D_8018EDEE
 glabel gDebugMenuSelection
 .skip 1
 
-glabel gPlayerCountSelection2 # 0x8018EDF0
+glabel gMenuState # 0x8018EDF0
 .skip 1
 
 glabel D_8018EDF1

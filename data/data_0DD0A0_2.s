@@ -2306,7 +2306,7 @@ glabel D_800E86B0
 glabel gNextDemoId
 .byte 0x00, 0x00, 0x00, 0x00
 
-glabel D_800E86C0
+glabel gControllerPakSelectedTableRow
 .byte 0x00, 0x00, 0x00, 0x00
 
 glabel D_800E86C4

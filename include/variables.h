@@ -7,6 +7,8 @@
 
 extern s32   gCCSelection;
 extern s8    gCharacterIdByGPOverallRank[8];        // D_8018D9D0
+extern s32   gControllerPakNumPagesFree;            // D_8018EB80
+extern s8    gControllerPakSelectedTableRow;        // D_800E86C0
 extern f32   gCourseCompletionPercentByPlayerId[8]; // D_801644D0
 extern f32   gCourseCompletionPercentByRank[8];     // D_80162FD8
 extern s8    gCupCourseSelection;                   // D_8018EE0B
@@ -23,6 +25,7 @@ extern s8    gHumanPlayerCount;
 extern f32   gKartFrictionTable[];
 extern f32   gKartBoundingBoxTable[];
 extern f32   gKartGravityTable[];
+extern s8    gMenuState;                            // D_8018EDF0
 extern s32   gModeSelection;
 // Indicates the ID of the next title screen demo that will be played
 extern u8    gNextDemoId;                           // D_800E86BC
@@ -31,11 +34,14 @@ extern u8    gPerCupIndexByCourseId[NUM_COURSES];   // D_800EFD50
 extern s32   gPlayerCountSelection1;
 extern u8    gSaveDataSoundMode;                    // D_8018ED14
 extern u8    gSaveDataSoundModeBackup;              // D_8018ED8C
+extern u32   gSegmentTable[16];                     // D_80150258
 extern u8    gSoundMode;                            // D_8018EDF2
 extern char *gSoundModeNames[NUM_SOUND_MODES];      // D_800E7710
 // Indexed by Player ID. Track time in seconds since player has last crossed the finish line
 extern f32   gTimePlayerLastTouchedFinishLine[8];   // D_8015F898
 
+extern struct_8018D9E0_entry D_8018D9E0[32];        // D_8018D9E0
+extern struct_8018DEE0_entry D_8018DEE0[16];        // D_8018DEE0
 extern struct_D_802874D8 D_802874D8;
 extern s16 D_801650D0[4][8];
 extern s16 D_80165110[4][8];

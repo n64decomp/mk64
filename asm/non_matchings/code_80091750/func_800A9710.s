@@ -1,6 +1,6 @@
 glabel func_800A9710
-/* 0AA310 800A9710 3C0E8019 */  lui   $t6, %hi(gPlayerCountSelection2) # $t6, 0x8019
-/* 0AA314 800A9714 81CEEDF0 */  lb    $t6, %lo(gPlayerCountSelection2)($t6)
+/* 0AA310 800A9710 3C0E8019 */  lui   $t6, %hi(gMenuState) # $t6, 0x8019
+/* 0AA314 800A9714 81CEEDF0 */  lb    $t6, %lo(gMenuState)($t6)
 /* 0AA318 800A9718 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 0AA31C 800A971C AFBF0014 */  sw    $ra, 0x14($sp)
 /* 0AA320 800A9720 25CFFFFD */  addiu $t7, $t6, -3

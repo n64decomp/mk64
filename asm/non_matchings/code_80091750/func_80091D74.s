@@ -77,8 +77,8 @@ glabel func_80091D74
 /* 092A84 80091E84 26310004 */  addiu $s1, $s1, 4
 /* 092A88 80091E88 1613FFF8 */  bne   $s0, $s3, .L80091E6C
 /* 092A8C 80091E8C AE22FFFC */   sw    $v0, -4($s1)
-/* 092A90 80091E90 3C108019 */  lui   $s0, %hi(D_8018EB80) # $s0, 0x8019
-/* 092A94 80091E94 2610EB80 */  addiu $s0, %lo(D_8018EB80) # addiu $s0, $s0, -0x1480
+/* 092A90 80091E90 3C108019 */  lui   $s0, %hi(gControllerPakNumPagesFree) # $s0, 0x8019
+/* 092A94 80091E94 2610EB80 */  addiu $s0, %lo(gControllerPakNumPagesFree) # addiu $s0, $s0, -0x1480
 /* 092A98 80091E98 02002825 */  move  $a1, $s0
 /* 092A9C 80091E9C 0C033B48 */  jal   osPfsFreeBlocks
 /* 092AA0 80091EA0 02802025 */   move  $a0, $s4
