@@ -362,14 +362,14 @@ glabel L800AD764
 /* 0AE414 800AD814 3C044900 */  lui   $a0, (0x4900FF07 >> 16) # lui $a0, 0x4900
 /* 0AE418 800AD818 0319082A */  slt   $at, $t8, $t9
 /* 0AE41C 800AD81C 14200006 */  bnez  $at, .L800AD838
-/* 0AE420 800AD820 3C098019 */   lui   $t1, %hi(gControllerPakPagesFree) # $t1, 0x8019
+/* 0AE420 800AD820 3C098019 */   lui   $t1, %hi(gControllerPakNumPagesFree) # $t1, 0x8019
 /* 0AE424 800AD824 AE080004 */  sw    $t0, 4($s0)
 /* 0AE428 800AD828 0C032384 */  jal   play_sound2
 /* 0AE42C 800AD82C 3484FF07 */   ori   $a0, (0x4900FF07 & 0xFFFF) # ori $a0, $a0, 0xff07
 /* 0AE430 800AD830 100001C1 */  b     .L800ADF38
 /* 0AE434 800AD834 8FBF0024 */   lw    $ra, 0x24($sp)
 .L800AD838:
-/* 0AE438 800AD838 8D29EB80 */  lw    $t1, %lo(gControllerPakPagesFree)($t1)
+/* 0AE438 800AD838 8D29EB80 */  lw    $t1, %lo(gControllerPakNumPagesFree)($t1)
 /* 0AE43C 800AD83C 3C044900 */  lui   $a0, (0x4900FF07 >> 16) # lui $a0, 0x4900
 /* 0AE440 800AD840 240B000E */  li    $t3, 14
 /* 0AE444 800AD844 29210079 */  slti  $at, $t1, 0x79

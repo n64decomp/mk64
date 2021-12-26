@@ -1586,7 +1586,7 @@ void func_800B1C90(void *arg0, s32 arg1) {
                 return;
             }
             *(&D_8018EB38 + (temp_t0 * 4)) = -1;
-            gControllerPakPagesFree = gControllerPakPagesFree + (((temp_v1->unk0 + 0xFF) >> 8) & 0xFF);
+            gControllerPakNumPagesFree = gControllerPakNumPagesFree + (((temp_v1->unk0 + 0xFF) >> 8) & 0xFF);
             gMenuState = 5;
             return;
         case 8:
@@ -3841,7 +3841,7 @@ extern u8 D_800F2E74;
 extern OSPfs D_8018E868;
 extern s32 D_8018EB78;
 extern s32 D_8018EB7C;
-extern s32 gControllerPakPagesFree;
+extern s32 gControllerPakNumPagesFree;
 extern s32 D_8018EB84;
 extern ? gSIEventMesgQueue;
 
@@ -3902,10 +3902,10 @@ block_17:
         if (osPfsNumFiles(&D_8018E868, &D_8018EB78, &D_8018EB7C) != 0) {
             return 2;
         }
-        if (osPfsFreeBlocks(&D_8018E868, &gControllerPakPagesFree) != 0) {
+        if (osPfsFreeBlocks(&D_8018E868, &gControllerPakNumPagesFree) != 0) {
             return 2;
         }
-        gControllerPakPagesFree = gControllerPakPagesFree >> 8;
+        gControllerPakNumPagesFree = gControllerPakNumPagesFree >> 8;
         goto block_27;
     }
 block_27:
@@ -3913,7 +3913,7 @@ block_27:
         return 4;
     }
     phi_v0_2 = 4;
-    if (gControllerPakPagesFree >= 0x79) {
+    if (gControllerPakNumPagesFree >= 0x79) {
         phi_v0_2 = -1;
     }
     return phi_v0_2;
@@ -4015,7 +4015,7 @@ extern s8 D_800E86F8;
 extern OSPfs D_8018E868;
 extern s32 D_8018EB78;
 extern s32 D_8018EB7C;
-extern s32 gControllerPakPagesFree;
+extern s32 gControllerPakNumPagesFree;
 extern ? gSIEventMesgQueue;
 
 s32 func_800B5F30(void) {
@@ -4030,11 +4030,11 @@ s32 func_800B5F30(void) {
             D_800E86F8 = 0;
             return -2;
         }
-        if (osPfsFreeBlocks(&D_8018E868, &gControllerPakPagesFree) != 0) {
+        if (osPfsFreeBlocks(&D_8018E868, &gControllerPakNumPagesFree) != 0) {
             D_800E86F8 = 0;
             return -3;
         }
-        gControllerPakPagesFree = gControllerPakPagesFree >> 8;
+        gControllerPakNumPagesFree = gControllerPakNumPagesFree >> 8;
         if (sp1C == 0) {
             D_800E86F8 = 1;
         }

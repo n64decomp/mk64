@@ -275,14 +275,14 @@ glabel L800B1FF4
 /* 0B2C8C 800B208C 240BFFFF */  li    $t3, -1
 /* 0B2C90 800B2090 AC2BEB38 */  sw    $t3, %lo(D_8018EB38)($at) # -0x14c8($at)
 /* 0B2C94 800B2094 8C6E0000 */  lw    $t6, ($v1)
-/* 0B2C98 800B2098 3C0D8019 */  lui   $t5, %hi(gControllerPakPagesFree) # $t5, 0x8019
-/* 0B2C9C 800B209C 8DADEB80 */  lw    $t5, %lo(gControllerPakPagesFree)($t5)
+/* 0B2C98 800B2098 3C0D8019 */  lui   $t5, %hi(gControllerPakNumPagesFree) # $t5, 0x8019
+/* 0B2C9C 800B209C 8DADEB80 */  lw    $t5, %lo(gControllerPakNumPagesFree)($t5)
 /* 0B2CA0 800B20A0 25CF00FF */  addiu $t7, $t6, 0xff
 /* 0B2CA4 800B20A4 000FC202 */  srl   $t8, $t7, 8
 /* 0B2CA8 800B20A8 331900FF */  andi  $t9, $t8, 0xff
-/* 0B2CAC 800B20AC 3C018019 */  lui   $at, %hi(gControllerPakPagesFree) # $at, 0x8019
+/* 0B2CAC 800B20AC 3C018019 */  lui   $at, %hi(gControllerPakNumPagesFree) # $at, 0x8019
 /* 0B2CB0 800B20B0 01B95021 */  addu  $t2, $t5, $t9
-/* 0B2CB4 800B20B4 AC2AEB80 */  sw    $t2, %lo(gControllerPakPagesFree)($at)
+/* 0B2CB4 800B20B4 AC2AEB80 */  sw    $t2, %lo(gControllerPakNumPagesFree)($at)
 /* 0B2CB8 800B20B8 240B0005 */  li    $t3, 5
 /* 0B2CBC 800B20BC 10000009 */  b     .L800B20E4
 /* 0B2CC0 800B20C0 A12B0000 */   sb    $t3, ($t1)

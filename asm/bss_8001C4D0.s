@@ -1917,7 +1917,7 @@ glabel D_8018EB78
 glabel D_8018EB7C
 .skip 4
 
-glabel gControllerPakPagesFree
+glabel gControllerPakNumPagesFree
 .skip 4
 
 glabel D_8018EB84

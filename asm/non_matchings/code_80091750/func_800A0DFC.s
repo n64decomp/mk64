@@ -5,11 +5,11 @@ glabel func_800A0DFC
 /* 0A1A08 800A0E08 AFB00018 */  sw    $s0, 0x18($sp)
 /* 0A1A0C 800A0E0C AFB20020 */  sw    $s2, 0x20($sp)
 /* 0A1A10 800A0E10 AFB1001C */  sw    $s1, 0x1c($sp)
-/* 0A1A14 800A0E14 3C108019 */  lui   $s0, %hi(gControllerPakPagesFree) # $s0, 0x8019
+/* 0A1A14 800A0E14 3C108019 */  lui   $s0, %hi(gControllerPakNumPagesFree) # $s0, 0x8019
 /* 0A1A18 800A0E18 3C138015 */  lui   $s3, %hi(gDisplayListHead) # $s3, 0x8015
 /* 0A1A1C 800A0E1C 3C14800E */  lui   $s4, %hi(D_800E7D0C) # $s4, 0x800e
 /* 0A1A20 800A0E20 AFBF002C */  sw    $ra, 0x2c($sp)
-/* 0A1A24 800A0E24 8E10EB80 */  lw    $s0, %lo(gControllerPakPagesFree)($s0)
+/* 0A1A24 800A0E24 8E10EB80 */  lw    $s0, %lo(gControllerPakNumPagesFree)($s0)
 /* 0A1A28 800A0E28 24110110 */  li    $s1, 272
 /* 0A1A2C 800A0E2C 26947D0C */  addiu $s4, %lo(D_800E7D0C) # addiu $s4, $s4, 0x7d0c
 /* 0A1A30 800A0E30 26730298 */  addiu $s3, %lo(gDisplayListHead) # addiu $s3, $s3, 0x298

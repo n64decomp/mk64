@@ -1,4 +1,4 @@
-glabel func_8009A6D4
+glabel func_8009A6D4 #UNUSED
 /* 09B2D4 8009A6D4 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 09B2D8 8009A6D8 AFB30028 */  sw    $s3, 0x28($sp)
 /* 09B2DC 8009A6DC AFB10020 */  sw    $s1, 0x20($sp)

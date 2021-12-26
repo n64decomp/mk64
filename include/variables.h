@@ -7,7 +7,7 @@
 
 extern s32   gCCSelection;
 extern s8    gCharacterIdByGPOverallRank[8];        // D_8018D9D0
-extern s32   gControllerPakPagesFree;               // D_8018EB80
+extern s32   gControllerPakNumPagesFree;            // D_8018EB80
 extern s8    gControllerPakSelectedTableRow;        // D_800E86C0
 extern f32   gCourseCompletionPercentByPlayerId[8]; // D_801644D0
 extern f32   gCourseCompletionPercentByRank[8];     // D_80162FD8
