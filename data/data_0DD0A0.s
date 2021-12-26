@@ -29,10 +29,10 @@ glabel D_800DC5B8
 glabel D_800DC5BC
 .hword 0x0000, 0x0000
 
-glabel D_800DC5C0
+glabel gIsInQuitToMenuTransition
 .hword 0x0000, 0x0000
 
-glabel D_800DC5C4
+glabel gQuitToMenuTransitionCounter
 .hword 0x0000, 0x0000
 
 glabel D_800DC5C8

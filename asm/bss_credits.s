@@ -53,7 +53,7 @@ glabel D_80287500
 glabel D_80287540
 .skip 16
 
-glabel D_80287550
+glabel gMenuSelectionFromEndingSequence
 .skip 4
 
 glabel D_80287554

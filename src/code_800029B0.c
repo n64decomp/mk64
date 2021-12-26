@@ -110,7 +110,7 @@ Lights1 D_800DC610[] = {
     },
 };
 static s32 pad = 0x80000000;
-s16 D_800DC644 = 8;
+s16 gCreditsCourseId = COURSE_LUIGI_RACEWAY;
 s16 D_800DC648 = 1;
 
 void func_800029B0(void) {
@@ -132,7 +132,7 @@ void func_80002A18(void) {
     int tmp;
 
     gPlayerCountSelection1 = D_8018EDF3;
-    if (D_800DC50C != 4) {
+    if (D_800DC50C != RACING) {
         gIsMirrorMode = 0;
     }
     if (gIsMirrorMode != 0) {

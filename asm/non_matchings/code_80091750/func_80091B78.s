@@ -28,11 +28,11 @@ glabel func_80091B78
 /* 0927DC 80091BDC 00000000 */   nop   
 /* 0927E0 80091BE0 10400003 */  beqz  $v0, .L80091BF0
 /* 0927E4 80091BE4 24180009 */   li    $t8, 9
-/* 0927E8 80091BE8 3C01800F */  lui   $at, %hi(D_800E86A0) # $at, 0x800f
-/* 0927EC 80091BEC AC3886A0 */  sw    $t8, %lo(D_800E86A0)($at)
+/* 0927E8 80091BE8 3C01800F */  lui   $at, %hi(gMenuSelection) # $at, 0x800f
+/* 0927EC 80091BEC AC3886A0 */  sw    $t8, %lo(gMenuSelection)($at)
 .L80091BF0:
-/* 0927F0 80091BF0 3C19800F */  lui   $t9, %hi(D_800E86A0) # $t9, 0x800f
-/* 0927F4 80091BF4 8F3986A0 */  lw    $t9, %lo(D_800E86A0)($t9)
+/* 0927F0 80091BF0 3C19800F */  lui   $t9, %hi(gMenuSelection) # $t9, 0x800f
+/* 0927F4 80091BF4 8F3986A0 */  lw    $t9, %lo(gMenuSelection)($t9)
 /* 0927F8 80091BF8 24110008 */  li    $s1, 8
 /* 0927FC 80091BFC 1639000C */  bne   $s1, $t9, .L80091C30
 /* 092800 80091C00 3C088016 */   lui   $t0, %hi(D_8015F734) # $t0, 0x8016

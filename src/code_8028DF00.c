@@ -52,11 +52,11 @@ extern s32 gPlayerCountSelection1;
 extern u16 D_802BA048;
 extern s32 D_800DC510;
 
-extern s32 D_80150124;
+extern s32 gMenuSelectionFromQuit;
 extern u16 D_800DC5B4;
 extern u16 D_800DC5B0;
 extern u16 D_800DC5B8;
-extern s32 D_800E86A0;
+extern s32 gMenuSelection;
 
 extern s8 D_8018EE08;
 extern u16 D_800DC51C;
@@ -74,7 +74,7 @@ extern u16 D_8015F890;
 extern u32 D_800DC5AC;
 extern u16 gEnableDebugMode;
 extern s32 D_800DC5E8;
-extern u16 D_800DC5C0, D_800DC5C4;
+extern u16 gIsInQuitToMenuTransition, gQuitToMenuTransitionCounter;
 extern s32 D_802B91E0;
 extern s16 D_8015F8F2[];
 
@@ -234,16 +234,16 @@ void func_8028E3A0(void) {
     if (D_80150120) {
 
         if (gCupCourseSelection == CUP_COURSE_FOUR) {
-            D_80150124 = 5;
+            gMenuSelectionFromQuit = ENDING_SEQUENCE;
         } else {
             D_800DC544++;
             gCupCourseSelection++;
-            D_80150124 = 4;
+            gMenuSelectionFromQuit = RACING;
         }
     } else {
         D_800DC544++;
         gCupCourseSelection++;
-        D_80150124 = 4;
+        gMenuSelectionFromQuit = RACING;
     }
 }
 
@@ -484,8 +484,8 @@ void func_8028E678(void) {
             }
             break;
         case 4:
-            D_800DC5C0 = 1;
-            D_800DC5C4 = 5;
+            gIsInQuitToMenuTransition = 1;
+            gQuitToMenuTransitionCounter = 5;
             D_800DC510 = 7;
             func_8028E3A0();
             break;
@@ -493,7 +493,7 @@ void func_8028E678(void) {
 }
 
 void func_8028EC38(s32 arg0) {
-    D_80150124 = arg0;
+    gMenuSelectionFromQuit = arg0;
     D_800DC510 = 6;
     func_800CA330(25);
     func_800CA388(25);
@@ -772,7 +772,7 @@ void func_8028F4E8(void) {
 
             func_800CA330(0x19);
             func_800CA388(0x19);
-            D_80150124 = 0;
+            gMenuSelectionFromQuit = START_MENU_FROM_QUIT;
             D_800DC510 = 6;
             D_800DC5B4 = 1;
             D_800DC5B0 = 1;
@@ -1020,7 +1020,7 @@ GLOBAL_ASM("asm/non_matchings/code_8028DF00/func_8028F970.s")
 #endif
 
 void func_8028FBD4(void) {
-    D_80150124 = 0;
+    gMenuSelectionFromQuit = START_MENU_FROM_QUIT;
     D_800DC510 = 6;
     func_800CA330(25);
     func_800CA388(25);
@@ -1038,12 +1038,12 @@ void func_8028FC34(void) {
     D_802BA038--;
     if (D_800DC4CC->buttonPressed != 0) {
         func_8028FBD4();
-        D_800E86A0 = 10;
+        gMenuSelection = START_MENU;
         return;
     }
     if (D_802BA038 == 0) {
         func_8028FBD4();
-        D_800E86A0 = 8;
+        gMenuSelection = LOGO_INTRO_MENU;
     }
 }
 extern u16 D_80162DD6;
@@ -1217,8 +1217,8 @@ void func_8028FCBC(void) {
         case 6:
             func_8028F8BC();
             if (D_802BA034 <= 0) {
-                D_800DC5C0 = 1;
-                D_800DC5C4 = 5;
+                gIsInQuitToMenuTransition = 1;
+                gQuitToMenuTransitionCounter = 5;
             }
             break;
         case 7:
@@ -1227,33 +1227,33 @@ void func_8028FCBC(void) {
 }
 
 UNUSED void func_80290314(void) {
-    D_800DC5C0 = 1;
-    D_800DC5C4 = 5;
-    D_80150124 = 0;
+    gIsInQuitToMenuTransition = 1;
+    gQuitToMenuTransitionCounter = 5;
+    gMenuSelectionFromQuit = START_MENU_FROM_QUIT;
 }
 
 void func_80290338(void) {
-    D_800DC5C0 = 1;
-    D_800DC5C4 = 5;
-    D_80150124 = 1;
+    gIsInQuitToMenuTransition = 1;
+    gQuitToMenuTransitionCounter = 5;
+    gMenuSelectionFromQuit = GAME_SELECT_MENU_FROM_QUIT;
 }
 
 void func_80290360(void) {
-    D_800DC5C0 = 1;
-    D_800DC5C4 = 5;
-    D_80150124 = 2;
+    gIsInQuitToMenuTransition = 1;
+    gQuitToMenuTransitionCounter = 5;
+    gMenuSelectionFromQuit = PLAYER_SELECT_MENU_FROM_QUIT;
 }
 
 void func_80290388(void) {
-    D_800DC5C0 = 1;
-    D_800DC5C4 = 5;
-    D_80150124 = 3;
+    gIsInQuitToMenuTransition = 1;
+    gQuitToMenuTransitionCounter = 5;
+    gMenuSelectionFromQuit = COURSE_SELECT_MENU_FROM_QUIT;
 }
 
 void func_802903B0(void) {
-    D_800DC5C0 = 1;
-    D_800DC5C4 = 5;
-    D_80150124 = 4;
+    gIsInQuitToMenuTransition = 1;
+    gQuitToMenuTransitionCounter = 5;
+    gMenuSelectionFromQuit = RACING;
 }
 
 #ifdef MIPS_TO_C
