@@ -247,6 +247,8 @@ SECTIONS
       BUILD_DIR/src/main.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
+      BUILD_DIR/src/code_80057C60.o(.rodata);
+      BUILD_DIR/data/data_0DD0A0_3_0.o(.rodata);
       BUILD_DIR/src/os/guRotateF.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3_1.o(.rodata);
       BUILD_DIR/src/os/__osDevMgrMain.o(.rodata);
