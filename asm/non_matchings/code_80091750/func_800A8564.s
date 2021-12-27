@@ -14,8 +14,8 @@ glabel func_800A8564
 /* 0A9194 800A8594 10000051 */  b     .L800A86DC
 /* 0A9198 800A8598 8FBF002C */   lw    $ra, 0x2c($sp)
 .L800A859C:
-/* 0A919C 800A859C 3C028019 */  lui   $v0, %hi(D_8018EDED) # $v0, 0x8019
-/* 0A91A0 800A85A0 8042EDED */  lb    $v0, %lo(D_8018EDED)($v0)
+/* 0A919C 800A859C 3C028019 */  lui   $v0, %hi(gGameMenuSelectionDepth) # $v0, 0x8019
+/* 0A91A0 800A85A0 8042EDED */  lb    $v0, %lo(gGameMenuSelectionDepth)($v0)
 /* 0A91A4 800A85A4 3C040200 */  lui   $a0, %hi(D_0200487C) # $a0, 0x200
 /* 0A91A8 800A85A8 24010006 */  li    $at, 6
 /* 0A91AC 800A85AC 10410004 */  beq   $v0, $at, .L800A85C0

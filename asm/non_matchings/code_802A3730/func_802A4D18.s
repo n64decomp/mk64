@@ -93,8 +93,8 @@ glabel L802A4E28
 /* 10E474 802A4E64 3C018015 */  lui   $at, %hi(D_80150150) # $at, 0x8015
 /* 10E478 802A4E68 E42A0150 */  swc1  $f10, %lo(D_80150150)($at)
 .L802A4E6C:
-/* 10E47C 802A4E6C 3C02800E */  lui   $v0, %hi(D_800DC530) # $v0, 0x800e
-/* 10E480 802A4E70 8C42C530 */  lw    $v0, %lo(D_800DC530)($v0)
+/* 10E47C 802A4E6C 3C02800E */  lui   $v0, %hi(gScreenModeSelection) # $v0, 0x800e
+/* 10E480 802A4E70 8C42C530 */  lw    $v0, %lo(gScreenModeSelection)($v0)
 /* 10E484 802A4E74 3C01802C */  lui   $at, %hi(D_802B9C1C)
 /* 10E488 802A4E78 1040000A */  beqz  $v0, .L802A4EA4
 /* 10E48C 802A4E7C 00000000 */   nop   

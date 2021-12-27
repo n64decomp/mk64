@@ -6589,7 +6589,7 @@ block_74:
                 switch (gNextDemoId) {                /* switch 4 */
                 case DEMO_ONE:                             /* switch 4 */
                     gCurrentCourseId = COURSE_MARIO_RACEWAY;
-                    D_800DC530 = 0;
+                    gScreenModeSelection = SCREEN_MODE_1P;
                     gPlayerCountSelection1 = 1;
                     D_8018EDF3 = 1;
                     D_800E86A8[0] = MARIO;
@@ -6597,7 +6597,7 @@ block_74:
                     break;
                 case DEMO_TWO:                             /* switch 4 */
                     gCurrentCourseId = COURSE_CHOCO_MOUNTAIN;
-                    D_800DC530 = 1;
+                    gScreenModeSelection = SCREEN_MODE_2P_UD;
                     gPlayerCountSelection1 = 2;
                     D_8018EDF3 = 2;
                     D_800E86A8[0] = YOSHI;
@@ -6607,7 +6607,7 @@ block_74:
                     break;
                 case DEMO_THREE:                             /* switch 4 */
                     gCurrentCourseId = COURSE_KALAMARI_DESERT;
-                    D_800DC530 = 0;
+                    gScreenModeSelection = SCREEN_MODE_1P;
                     gPlayerCountSelection1 = 1;
                     D_8018EDF3 = 1;
                     D_800E86A8[0] = LUIGI;
@@ -6615,7 +6615,7 @@ block_74:
                     break;
                 case DEMO_FOUR:                             /* switch 4 */
                     gCurrentCourseId = COURSE_WARIO_STADIUM;
-                    D_800DC530 = 3;
+                    gScreenModeSelection = SCREEN_MODE_3P_4P;
                     gPlayerCountSelection1 = 3;
                     D_8018EDF3 = 3;
                     D_800E86A8[0] = WARIO;
@@ -6626,7 +6626,7 @@ block_74:
                     break;
                 case DEMO_FIVE:                             /* switch 4 */
                     gCurrentCourseId = COURSE_BOWSER_CASTLE;
-                    D_800DC530 = 0;
+                    gScreenModeSelection = SCREEN_MODE_1P;
                     gPlayerCountSelection1 = 1;
                     D_8018EDF3 = 1;
                     D_800E86A8[0] = BOWSER;
@@ -6635,7 +6635,7 @@ block_74:
                     break;
                 case DEMO_SIX:                             /* switch 4 */
                     gCurrentCourseId = COURSE_SHERBET_LAND;
-                    D_800DC530 = 3;
+                    gScreenModeSelection = SCREEN_MODE_3P_4P;
                     gPlayerCountSelection1 = 4;
                     D_8018EDF3 = 4;
                     D_800E86A8[0] = MARIO;
@@ -6707,7 +6707,7 @@ block_74:
             D_800DC524 = ENDING_SEQUENCE;
         }
         func_8000F124(1, 2);
-        if ((D_800DC530 == 3) && ((temp_v1_8 = gModeSelection, (temp_v1_8 == 0)) || (temp_v1_8 == 1))) {
+        if ((gScreenModeSelection == SCREEN_MODE_3P_4P) && ((temp_v1_8 = gModeSelection, (temp_v1_8 == 0)) || (temp_v1_8 == 1))) {
             gModeSelection = VERSUS;
         }
         temp_a0_2 = gCurrentCourseId;
@@ -6726,7 +6726,7 @@ block_74:
             gModeSelection = BATTLE;
             if (gPlayerCountSelection1 == 1) {
                 D_8018EDF3 = 2;
-                D_800DC530 = 1;
+                gScreenModeSelection = SCREEN_MODE_2P_UD;
                 gPlayerCountSelection1 = D_8018EDF3;
             }
         }
@@ -8427,7 +8427,7 @@ void *segmented_to_virtual(segment_address_t);              /* extern */
 extern s32 D_800DC540;
 extern s32 D_800DC548;
 extern ? D_8018EDE8;
-extern s8 D_8018EDED;
+extern s8 gGameMenuSelectionDepth;
 extern s8 D_8018EDF3;
 extern s8 D_802874F6;
 extern ? gCharacterSelections;
@@ -8703,9 +8703,9 @@ void func_8009F5E0(void *arg0) {
                 func_800A143C(arg0, spAC);
                 return;
             case 0x8C:                              /* switch 3 */
-                temp_v0_4 = D_8018EDED;
-                if ((temp_v0_4 >= 5) && (spAC == (temp_t0 - spA8))) {
-                    if (temp_v0_4 >= 6) {
+                temp_v0_4 = gGameMenuSelectionDepth;
+                if ((temp_v0_4 >= GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION) && (spAC == (temp_t0 - spA8))) {
+                    if (temp_v0_4 >= CONFIRMATION_SELECTION) {
                         temp_a1_2 = arg0->unkC;
                         temp_a2_3 = arg0->unk10;
                         phi_v0 = func_80098C18(gDisplayListHead, temp_a1_2, temp_a2_3, temp_a1_2 + 0x3F, temp_a2_3 + 0x11, 0xFF, 0xF9, 0xDC, 0xFF);
@@ -8918,7 +8918,7 @@ void func_8009F5E0(void *arg0) {
                 phi_v1_2 = temp_v1_5;
                 if (temp_v1_5 < 0x20) {
                     temp_t9 = (temp_v1_5 * 0x3A) / 64;
-                    if ((temp_t0 - 0xF) == D_8018EDED) {
+                    if ((temp_t0 - 0xF) == gGameMenuSelectionDepth) {
                         temp_v0_9 = arg0->unkC;
                         temp_v1_6 = arg0->unk10;
                         gDisplayListHead = func_800959CC(gDisplayListHead, temp_v0_9 + temp_t9, temp_v1_6, (temp_v0_9 - temp_t9) + 0x39, temp_v1_6 + 0x12);
@@ -8990,9 +8990,9 @@ block_58:
                     break;
                 }
                 if (phi_a2_2 != -1) {
-                    temp_v0_12 = D_8018EDED;
-                    if ((temp_v0_12 >= 5) && (phi_a2_2 == (arg0->unk0 - phi_a1))) {
-                        if (temp_v0_12 >= 6) {
+                    temp_v0_12 = gGameMenuSelectionDepth;
+                    if ((temp_v0_12 >= GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION) && (phi_a2_2 == (arg0->unk0 - phi_a1))) {
+                        if (temp_v0_12 >= CONFIRMATION_SELECTION) {
                             temp_a1_5 = arg0->unkC;
                             temp_a2_8 = arg0->unk10;
                             phi_v0_3 = func_80098C18(gDisplayListHead, temp_a1_5, temp_a2_8, temp_a1_5 + 0x3F, temp_a2_8 + 0x11, 0xFF, 0xF9, 0xDC, 0xFF);
@@ -9168,7 +9168,7 @@ void func_800A0AD0(struct_8018D9E0_entry *unused) {
     struct_8018D9E0_entry *temp_t1;
     // Find struct_8018D9E0_entry with a type/id of 0xDA
     temp_t1 = func_800AAEF4(0xDA);
-    if ((gMenuState != 1) && (gMenuState != 2))
+    if ((gControllerPakMenuSelection != CONTROLLER_PAK_MENU_SELECT_RECORD) && (gControllerPakMenuSelection != CONTROLLER_PAK_MENU_END))
     {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, temp_t1->unk20, 0x00, 0xFF);
         gDisplayListHead = func_8009BA74(gDisplayListHead, &D_02001874, 0x24, (gControllerPakSelectedTableRow * 0xA) + 0x7C);
@@ -9283,7 +9283,7 @@ void *func_800AAEF4(?); // extern
 extern ? D_0200184C;
 extern ? D_800E7278;
 extern void *gDisplayListHead;
-extern s8 gMenuState;
+extern s8 gControllerPakMenuSelection;
 
 void func_800A0EB8(s32 arg0, s32 arg1) {
     s8 temp_v0;
@@ -9294,15 +9294,15 @@ void func_800A0EB8(s32 arg0, s32 arg1) {
 
     temp_t3 = func_800AAEF4(0xDA);
     if (arg1 == 0) {
-        if (gMenuState == 2) {
+        if (gControllerPakMenuSelection == CONTROLLER_PAK_MENU_END) {
             phi_t1 = 1;
         } else {
             phi_t1 = 0;
         }
         goto block_7;
     }
-    temp_v0 = gMenuState;
-    if ((temp_v0 == 3) || (temp_v0 == 4)) {
+    temp_v0 = gControllerPakMenuSelection;
+    if ((temp_v0 == CONTROLLER_PAK_MENU_ERASE) || (temp_v0 == CONTROLLER_PAK_MENU_QUIT)) {
         phi_t1 = ((arg1 * 2) + temp_v0) - 3;
 block_7:
         temp_t0 = gDisplayListHead;
@@ -11474,7 +11474,7 @@ void func_800A4EF8(void *arg0) {
     temp_t3 = temp_v0->unk2C / 2;
     temp_t4 = temp_v0->unk2E / 2;
     gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3, temp_t0 + temp_t4, 0, 0, 0, 0x8C);
-    temp_s3 = ((D_800DC530 << 5) + (D_800DC5FC * 8)) - 8 + &D_800E8540;
+    temp_s3 = ((gScreenModeSelection << 5) + (D_800DC5FC * 8)) - 8 + &D_800E8540;
     phi_a1 = 0;
     phi_s2 = 0;
     do {
@@ -11535,7 +11535,7 @@ void func_800A5084(void *arg0) {
     temp_t3 = temp_v0->unk2C / 2;
     temp_t4 = temp_v0->unk2E / 2;
     gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3, temp_t0 + temp_t4, 0, 0, 0, 0x8C);
-    temp_s3 = ((D_800DC530 << 5) + (D_800DC5FC * 8)) - 8 + &D_800E85C0;
+    temp_s3 = ((gScreenModeSelection << 5) + (D_800DC5FC * 8)) - 8 + &D_800E85C0;
     temp_s0 = ((get_string_width(*(&D_800E7500 + (gCupSelection * 4))) * 1.0f) + 10.0f) / 2.0f;
     temp_s1 = ((get_string_width(*(&D_800E76CC + (gCCSelection * 4))) * 1.0f) + 10.0f) / 2.0f;
     set_text_color(TEXT_YELLOW);
@@ -11590,7 +11590,7 @@ void func_800A5360(void *arg0) {
     temp_t3 = temp_v0->unk2C / 2;
     temp_t4 = temp_v0->unk2E / 2;
     gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3, temp_t0 + temp_t4, 0, 0, 0, 0x8C);
-    temp_s3 = ((D_800DC530 << 5) + (D_800DC5FC * 8)) - 8 + &D_800E8600;
+    temp_s3 = ((gScreenModeSelection << 5) + (D_800DC5FC * 8)) - 8 + &D_800E8600;
     phi_a1 = 0;
     phi_s2 = 0;
     do {
@@ -11657,16 +11657,16 @@ void func_800A54EC(void) {
                     if (temp_t2 != BATTLE) {
                         phi_v1 = sp4C;
                     } else {
-                        phi_v1 = ((D_800DC530 << 5) + (D_800DC5FC * 8)) - 8 + &D_800E8600;
+                        phi_v1 = ((gScreenModeSelection << 5) + (D_800DC5FC * 8)) - 8 + &D_800E8600;
                     }
                 } else {
-                    phi_v1 = ((D_800DC530 << 5) + (D_800DC5FC * 8)) - 8 + &D_800E8540;
+                    phi_v1 = ((gScreenModeSelection << 5) + (D_800DC5FC * 8)) - 8 + &D_800E8540;
                 }
             } else {
                 phi_v1 = &D_800E8538;
             }
         } else {
-            phi_v1 = ((D_800DC530 << 5) + (D_800DC5FC * 8)) - 8 + &D_800E85C0;
+            phi_v1 = ((gScreenModeSelection << 5) + (D_800DC5FC * 8)) - 8 + &D_800E85C0;
         }
         sp50 = phi_v1->unk0 - 8;
         sp52 = (phi_v1->unk2 + ((sp48->unk4 - *(&D_800F0B50 + temp_t2)) * 0xD)) - 8;
@@ -13153,18 +13153,18 @@ block_7:
                     break;
                 case 0x10:                          /* switch 4 */
                 case 0x11:                          /* switch 4 */
-                    temp_t9 = D_8018EDED;
-                    switch (temp_t9) {              /* switch 5 */
-                    case 1:                         /* switch 5 */
-                    case 2:                         /* switch 5 */
-                    case 3:                         /* switch 5 */
+                    temp_t9 = gGameMenuSelectionDepth;
+                    switch (temp_t9) {                                   /* switch 5 */
+                    case OPTIONS_SELECTION:                              /* switch 5 */
+                    case DATA_SELECTION:                                 /* switch 5 */
+                    case PLAYER_AMOUNT_SELECTION:                        /* switch 5 */
                         func_800A9B9C(phi_s1);
                         break;
-                    case 4:                         /* switch 5 */
-                    case 5:                         /* switch 5 */
-                    case 6:                         /* switch 5 */
-                    case 7:                         /* switch 5 */
-                    case 8:                         /* switch 5 */
+                    case GAME_MODE_SELECTION:                            /* switch 5 */
+                    case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:  /* switch 5 */
+                    case CONFIRMATION_SELECTION:                         /* switch 5 */
+                    case CONFIRMATION_SELECTION_FROM_BACK_OUT:           /* switch 5 */
+                    case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:       /* switch 5 */
                         func_800A9C40(phi_s1);
                         break;
                     }
@@ -13177,18 +13177,18 @@ block_7:
                 case 0xC:                           /* switch 4 */
                 case 0xD:                           /* switch 4 */
                 case 0xE:                           /* switch 4 */
-                    temp_t1 = D_8018EDED;
-                    switch (temp_t1) {              /* switch 6 */
-                    case 1:                         /* switch 6 */
-                    case 2:                         /* switch 6 */
-                    case 3:                         /* switch 6 */
+                    temp_t1 = gGameMenuSelectionDepth;
+                    switch (temp_t1) {                                   /* switch 6 */
+                    case OPTIONS_SELECTION:                              /* switch 6 */
+                    case DATA_SELECTION:                                 /* switch 6 */
+                    case PLAYER_AMOUNT_SELECTION:                        /* switch 6 */
                         func_800A9B9C(phi_s1);
                         break;
-                    case 4:                         /* switch 6 */
-                    case 5:                         /* switch 6 */
-                    case 6:                         /* switch 6 */
-                    case 7:                         /* switch 6 */
-                    case 8:                         /* switch 6 */
+                    case GAME_MODE_SELECTION:                            /* switch 6 */
+                    case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:  /* switch 6 */
+                    case CONFIRMATION_SELECTION:                         /* switch 6 */
+                    case CONFIRMATION_SELECTION_FROM_BACK_OUT:           /* switch 6 */
+                    case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:       /* switch 6 */
                         func_800A9C40(phi_s1);
                         break;
                     }
@@ -13307,7 +13307,7 @@ void *func_80098C18(void *, s32, s32, s32, s32, s32, s32, s32, s32); // extern
 void *func_80098FC8(void *, s32, s32, s32, s32); // extern
 extern ? D_800E86AC;
 extern ? D_800F2B60;
-extern s8 D_8018EDED;
+extern s8 gGameMenuSelectionDepth;
 extern void *gDisplayListHead;
 
 void func_800A8270(s32 arg0, void *arg1) {
@@ -13355,10 +13355,10 @@ void func_800A8270(s32 arg0, void *arg1) {
         temp_s3 = temp_t1 + temp_t6;
         phi_s3 = temp_s3;
         if ((arg0 + 1) == D_8018EDF3) {
-            temp_v0_4 = D_8018EDED;
+            temp_v0_4 = gGameMenuSelectionDepth;
             temp_s3_2 = temp_t1 + temp_t6;
             phi_s3 = temp_s3_2;
-            if ((temp_v0_4 == 1) || (temp_v0_4 == 2) || (temp_v0_4 == 3)) {
+            if ((temp_v0_4 == OPTIONS_SELECTION) || (temp_v0_4 == DATA_SELECTION) || (temp_v0_4 == PLAYER_AMOUNT_SELECTION)) {
                 temp_s4_2 = (temp_t1 - temp_t6) + 0x3F;
                 phi_v0 = func_800959A0(gDisplayListHead, temp_s3_2, temp_s0, temp_s4_2, temp_s0 + 0x35);
                 phi_s4 = temp_s4_2;
@@ -13380,7 +13380,7 @@ void func_800A8270(s32 arg0, void *arg1) {
         phi_s0 = temp_s0 + 0x41;
         if (*temp_s7 >= 0) {
             do {
-                if ((phi_s2 == *(arg0 + &D_800E86AC)) && ((arg0 + 1) == D_8018EDF3) && (temp_v0_5 = D_8018EDED, ((temp_v0_5 < 4) == 0))) {
+                if ((phi_s2 == *(arg0 + &D_800E86AC)) && ((arg0 + 1) == D_8018EDF3) && (temp_v0_5 = gGameMenuSelectionDepth, ((temp_v0_5 < GAME_MODE_SELECTION) == 0))) {
                     if (temp_v0_5 == 4) {
                         phi_v0_2 = func_800959A0(gDisplayListHead, phi_s3, phi_s0, phi_s4, phi_s0 + 0x11);
                     } else {
@@ -13410,7 +13410,7 @@ extern ? D_0200487C;
 extern ? D_02004B74;
 extern ? D_02004E80;
 extern s8 D_8018EDEC;
-extern s8 D_8018EDED;
+extern s8 gGameMenuSelectionDepth;
 extern s8 D_8018EDEE;
 extern s32 gDisplayListHead;
 
@@ -13452,10 +13452,10 @@ void func_800A8564(void *arg0) {
         }
         goto block_12;
     }
-    temp_v0_3 = D_8018EDED;
+    temp_v0_3 = gGameMenuSelectionDepth;
     phi_a0 = &D_0200487C;
     phi_a0 = &D_0200487C;
-    if ((temp_v0_3 == 6) || (temp_v0_3 == 7)) {
+    if ((temp_v0_3 == CONFIRMATION_SELECTION) || (temp_v0_3 == CONFIRMATION_SELECTION_FROM_BACK_OUT)) {
 block_11:
         phi_a1 = 1;
     }
@@ -14107,22 +14107,22 @@ void func_800A9710(void *arg0) {
     s8 temp_t6;
     s32 phi_v0;
 
-    switch (gMenuState) {
-    case 3:
-    case 4:
+    switch (gControllerPakMenuSelection) {
+    case CONTROLLER_PAK_MENU_ERASE:
+    case CONTROLLER_PAK_MENU_QUIT:
         phi_v0 = 1;
         break;
-    case 6:
-    case 7:
+    case CONTROLLER_PAK_MENU_GO_TO_ERASING:
+    case CONTROLLER_PAK_MENU_ERASING:
         phi_v0 = 5;
         break;
-    case 8:
+    case CONTROLLER_PAK_MENU_ERASE_ERROR_NOT_ERASED:
         phi_v0 = 2;
         break;
-    case 9:
+    case CONTROLLER_PAK_MENU_ERASE_ERROR_NO_PAK:
         phi_v0 = 3;
         break;
-    case 10:
+    case CONTROLLER_PAK_MENU_ERASE_ERROR_PAK_CHANGED:
         phi_v0 = 4;
         break;
     default:
@@ -14294,7 +14294,7 @@ extern ? D_800F0C9C;
 extern ? D_800F0CA7;
 extern ? D_800F0CAB;
 extern s8 D_8018EDEC;
-extern s8 D_8018EDED;
+extern s8 gGameMenuSelectionDepth;
 extern s8 D_8018EDEE;
 
 void func_800A9A98(void *arg0) {
@@ -14317,7 +14317,7 @@ void func_800A9A98(void *arg0) {
             phi_v0 = *(&D_800F0CA7 + D_8018EDEE);
         }
     } else {
-        phi_v0 = *(&D_800F0C9C + 3 + D_8018EDED);
+        phi_v0 = *(&D_800F0C9C + 3 + gGameMenuSelectionDepth);
     }
     if (phi_v0 != 0) {
         if (phi_v0 != 1) {
@@ -14424,8 +14424,8 @@ void func_800A9C40(void *arg0) {
         arg0->unk4 = 1;
     case 1:
         func_800AA280();
-        temp_v0 = D_8018EDED;
-        if ((temp_v0 == 7) || (temp_v0 == 8)) {
+        temp_v0 = gGameMenuSelectionDepth;
+        if ((temp_v0 == CONFIRMATION_SELECTION_FROM_BACK_OUT) || (temp_v0 == TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT)) {
             arg0->unk1C = 0x20;
             return;
         }
@@ -14468,8 +14468,8 @@ void func_800A9D5C(void *arg0) {
     temp_t1 = arg0->unk4;
     switch (temp_t1) {
     case 2:
-        temp_v0 = D_8018EDED;
-        if ((temp_v0 == 7) || (temp_v0 == 8)) {
+        temp_v0 = gGameMenuSelectionDepth;
+        if ((temp_v0 == CONFIRMATION_SELECTION_FROM_BACK_OUT) || (temp_v0 == TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT)) {
             arg0->unkC = 0x80;
             arg0->unk10 = 0x3E;
             return;
@@ -14560,7 +14560,7 @@ block_5:
             if (temp_v1 != 2) {
                 return;
             }
-            temp_t9 = D_8018EDED;
+            temp_t9 = gGameMenuSelectionDepth;
             switch (temp_t9) {                      /* switch 4 */
                 if ((temp_a1 != sp20) && (temp_a1 != sp1C)) {
                     arg0->unk15 = 0;
@@ -14583,7 +14583,7 @@ block_5:
                 goto block_37;
             }
         } else {
-            temp_t2 = D_8018EDED;
+            temp_t2 = gGameMenuSelectionDepth;
             switch (temp_t2) {                      /* switch 3 */
                 if ((temp_a1 != sp20) && (temp_a1 != sp1C)) {
                     arg0->unk15 = 0;
@@ -14620,11 +14620,11 @@ block_37:
             return;
         }
         arg0->unk20 = temp_a2;
-        temp_t5 = D_8018EDED;
+        temp_t5 = gGameMenuSelectionDepth;
         switch (temp_t5) {                          /* switch 2 */
-        case 4:                                     /* switch 2 */
-        case 5:                                     /* switch 2 */
-        case 6:                                     /* switch 2 */
+        case GAME_MODE_SELECTION:                                     /* switch 2 */
+        case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:                                     /* switch 2 */
+        case CONFIRMATION_SELECTION:                                     /* switch 2 */
             arg0->unk15 = 1;
             temp_v0_4 = func_800AAE68(arg0, temp_a1, temp_a2);
             arg0->unkC = temp_v0_4->unkC;
@@ -14632,8 +14632,8 @@ block_37:
             arg0->unk4 = 1;
             arg0->unk10 = (*(&D_800E86AB + D_8018EDF3) * 0x12) + temp_v0_4->unk10 + 0x41;
             return;
-        case 7:                                     /* switch 2 */
-        case 8:                                     /* switch 2 */
+        case CONFIRMATION_SELECTION_FROM_BACK_OUT:                                     /* switch 2 */
+        case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:                                     /* switch 2 */
             temp_v0_5 = func_800AAE68(arg0, temp_a1, temp_a2);
             temp_v1_4 = (arg0->unk0 * 8) + -(sp24 * 8) + &D_800E70E8;
             arg0->unkC = temp_v0_5->unkC + temp_v1_4->unk0;
@@ -14657,15 +14657,15 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A9E58.s")
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_800A91D8(s16, s16); // extern
 extern ? D_800E70A0;
-extern s8 D_8018EDED;
+extern s8 gGameMenuSelectionDepth;
 
 void func_800AA280(void *arg0) {
     s8 temp_v1;
     void *temp_v0;
 
-    temp_v1 = D_8018EDED;
+    temp_v1 = gGameMenuSelectionDepth;
     temp_v0 = (arg0->unk0 * 8) - 0x50 + &D_800E70A0;
-    if ((temp_v1 == 7) || (temp_v1 == 8)) {
+    if ((temp_v1 == CONFIRMATION_SELECTION_FROM_BACK_OUT) || (temp_v1 == TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT)) {
         arg0->unkC = temp_v0->unk0;
         arg0->unk10 = temp_v0->unk2;
         return;
@@ -14699,19 +14699,19 @@ void func_800AA2EC(void *arg0) {
     s8 temp_v0;
     s32 phi_t1;
 
-    temp_t6 = D_8018EDED;
+    temp_t6 = gGameMenuSelectionDepth;
     phi_t1 = 0;
     switch (temp_t6) {
-    case 1:
-    case 2:
-    case 3:
-    case 4:
+    case OPTIONS_SELECTION:
+    case DATA_SELECTION:
+    case PLAYER_AMOUNT_SELECTION:
+    case GAME_MODE_SELECTION:
         arg0->unk4 = 0;
         return;
-    case 5:
-    case 6:
-    case 7:
-    case 8:
+    case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:
+    case CONFIRMATION_SELECTION:
+    case CONFIRMATION_SELECTION_FROM_BACK_OUT:
+    case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:
         if ((arg0->unk4 == 0) && (temp_v0 = D_8018EDF3, (temp_v0 == 1)) && (*(&D_800E86AB + temp_v0) == 1)) {
             if (D_800E86F8 != 0) {
                 sp20 = 0;
@@ -15069,7 +15069,7 @@ void func_800AAC18(void *arg0) {
             temp_v0 = func_800AAFCC(temp_a0, temp_a1, MIPS2C_ERROR(Read from unset register $a2), temp_a3);
             temp_a3_2 = arg0;
             if (temp_v0 >= 0) {
-                temp_t0 = (D_800DC530 << 5) + (temp_v0 * 8) + &D_800E7188;
+                temp_t0 = (gScreenModeSelection << 5) + (temp_v0 * 8) + &D_800E7188;
                 temp_a3_2->unkC = temp_t0->unk0;
                 temp_a3_2->unk4 = 2;
                 temp_a3_2->unk8 = 2;
@@ -15094,7 +15094,7 @@ void func_800AAC18(void *arg0) {
             temp_v0_3 = func_800AAFCC(temp_a1, temp_a1, 2, temp_a3);
             phi_a3 = arg0;
             if (temp_v0_3 >= 0) {
-                sp18 = (D_800DC530 << 5) + (temp_v0_3 * 8) + &D_800E7188;
+                sp18 = (gScreenModeSelection << 5) + (temp_v0_3 * 8) + &D_800E7188;
             }
             phi_v1 = arg0->unk4;
             phi_t0 = sp18;

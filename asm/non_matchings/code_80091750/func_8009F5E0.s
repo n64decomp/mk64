@@ -525,7 +525,7 @@ glabel L8009FD58
 glabel L8009FD90
 /* 0A0990 8009FD90 8E23001C */  lw    $v1, 0x1c($s1)
 /* 0A0994 8009FD94 2506FFF1 */  addiu $a2, $t0, -0xf
-/* 0A0998 8009FD98 3C098019 */  lui   $t1, %hi(D_8018EDED) # $t1, 0x8019
+/* 0A0998 8009FD98 3C098019 */  lui   $t1, %hi(gGameMenuSelectionDepth) # $t1, 0x8019
 /* 0A099C 8009FD9C 28610020 */  slti  $at, $v1, 0x20
 /* 0A09A0 8009FDA0 50200030 */  beql  $at, $zero, .L8009FE64
 /* 0A09A4 8009FDA4 2518FFF6 */   addiu $t8, $t0, -0xa
@@ -534,7 +534,7 @@ glabel L8009FD90
 /* 0A09B0 8009FDB0 00084080 */  sll   $t0, $t0, 2
 /* 0A09B4 8009FDB4 01034021 */  addu  $t0, $t0, $v1
 /* 0A09B8 8009FDB8 00084040 */  sll   $t0, $t0, 1
-/* 0A09BC 8009FDBC 8129EDED */  lb    $t1, %lo(D_8018EDED)($t1)
+/* 0A09BC 8009FDBC 8129EDED */  lb    $t1, %lo(gGameMenuSelectionDepth)($t1)
 /* 0A09C0 8009FDC0 05010003 */  bgez  $t0, .L8009FDD0
 /* 0A09C4 8009FDC4 0008C983 */   sra   $t9, $t0, 6
 /* 0A09C8 8009FDC8 2501003F */  addiu $at, $t0, 0x3f
@@ -681,8 +681,8 @@ glabel L8009FF90
 .L8009FFCC:
 /* 0A0BCC 8009FFCC 2401FFFF */  li    $at, -1
 /* 0A0BD0 8009FFD0 10C1023C */  beq   $a2, $at, .L800A08C4
-/* 0A0BD4 8009FFD4 3C028019 */   lui   $v0, %hi(D_8018EDED) # $v0, 0x8019
-/* 0A0BD8 8009FFD8 8042EDED */  lb    $v0, %lo(D_8018EDED)($v0)
+/* 0A0BD4 8009FFD4 3C028019 */   lui   $v0, %hi(gGameMenuSelectionDepth) # $v0, 0x8019
+/* 0A0BD8 8009FFD8 8042EDED */  lb    $v0, %lo(gGameMenuSelectionDepth)($v0)
 /* 0A0BDC 8009FFDC 240E0001 */  li    $t6, 1
 /* 0A0BE0 8009FFE0 240F00FF */  li    $t7, 255
 /* 0A0BE4 8009FFE4 28410005 */  slti  $at, $v0, 5
@@ -986,8 +986,8 @@ glabel L800A0404
 /* 0A1020 800A0420 10000129 */  b     .L800A08C8
 /* 0A1024 800A0424 8FBF0034 */   lw    $ra, 0x34($sp)
 glabel L800A0428
-/* 0A1028 800A0428 3C028019 */  lui   $v0, %hi(D_8018EDED) # $v0, 0x8019
-/* 0A102C 800A042C 8042EDED */  lb    $v0, %lo(D_8018EDED)($v0)
+/* 0A1028 800A0428 3C028019 */  lui   $v0, %hi(gGameMenuSelectionDepth) # $v0, 0x8019
+/* 0A102C 800A042C 8042EDED */  lb    $v0, %lo(gGameMenuSelectionDepth)($v0)
 /* 0A1030 800A0430 8FAB00A8 */  lw    $t3, 0xa8($sp)
 /* 0A1034 800A0434 240D0001 */  li    $t5, 1
 /* 0A1038 800A0438 28410005 */  slti  $at, $v0, 5

@@ -23,8 +23,8 @@ glabel func_800A9D5C
 /* 0AA9A8 800A9DA8 01200008 */  jr    $t1
 /* 0AA9AC 800A9DAC 00000000 */   nop   
 glabel L800A9DB0
-/* 0AA9B0 800A9DB0 3C028019 */  lui   $v0, %hi(D_8018EDED) # $v0, 0x8019
-/* 0AA9B4 800A9DB4 8042EDED */  lb    $v0, %lo(D_8018EDED)($v0)
+/* 0AA9B0 800A9DB0 3C028019 */  lui   $v0, %hi(gGameMenuSelectionDepth) # $v0, 0x8019
+/* 0AA9B4 800A9DB4 8042EDED */  lb    $v0, %lo(gGameMenuSelectionDepth)($v0)
 /* 0AA9B8 800A9DB8 24010007 */  li    $at, 7
 /* 0AA9BC 800A9DBC 240A0080 */  li    $t2, 128
 /* 0AA9C0 800A9DC0 10410004 */  beq   $v0, $at, .L800A9DD4

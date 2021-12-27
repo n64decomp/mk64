@@ -48,8 +48,8 @@ glabel L80295E3C
 /* 0FF44C 80295E3C 3C040700 */  lui   $a0, (0x07001140 >> 16) # lui $a0, 0x700
 /* 0FF450 80295E40 0C0ABD62 */  jal   func_802AF588
 /* 0FF454 80295E44 34841140 */   ori   $a0, (0x07001140 & 0xFFFF) # ori $a0, $a0, 0x1140
-/* 0FF458 80295E48 3C18800E */  lui   $t8, %hi(D_800DC530) # $t8, 0x800e
-/* 0FF45C 80295E4C 8F18C530 */  lw    $t8, %lo(D_800DC530)($t8)
+/* 0FF458 80295E48 3C18800E */  lui   $t8, %hi(gScreenModeSelection) # $t8, 0x800e
+/* 0FF45C 80295E4C 8F18C530 */  lw    $t8, %lo(gScreenModeSelection)($t8)
 /* 0FF460 80295E50 17000005 */  bnez  $t8, .L80295E68
 /* 0FF464 80295E54 3C040700 */   lui   $a0, (0x070008E8 >> 16) # lui $a0, 0x700
 /* 0FF468 80295E58 0C0ABD62 */  jal   func_802AF588

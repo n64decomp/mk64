@@ -96,7 +96,34 @@
 #define CREDITS_SEQUENCE 9
 
 /**
- * Options for gStartMenuDebugRowSelection
+ * Options for gGameMenuSelectionDepth
+**/
+#define BLANK_GAME_MENU 0
+#define OPTIONS_SELECTION 1
+#define DATA_SELECTION 2
+#define PLAYER_AMOUNT_SELECTION 3
+#define GAME_MODE_SELECTION 4
+#define GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION 5 // Selecting CC for GP and Versus, Selection "Begin" or "Data" for Time Trials. Unused for Battle
+#define CONFIRMATION_SELECTION 6
+#define CONFIRMATION_SELECTION_FROM_BACK_OUT 7
+#define TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT 8
+
+/**
+ * Options for gControllerPakMenuSelection
+**/
+#define CONTROLLER_PAK_MENU_SELECT_RECORD 1
+#define CONTROLLER_PAK_MENU_END 2
+#define CONTROLLER_PAK_MENU_ERASE 3
+#define CONTROLLER_PAK_MENU_QUIT 4
+#define CONTROLLER_PAK_MENU_TABLE_GAME_DATA 5
+#define CONTROLLER_PAK_MENU_GO_TO_ERASING 6
+#define CONTROLLER_PAK_MENU_ERASING 7
+#define CONTROLLER_PAK_MENU_ERASE_ERROR_NOT_ERASED 8
+#define CONTROLLER_PAK_MENU_ERASE_ERROR_NO_PAK 9
+#define CONTROLLER_PAK_MENU_ERASE_ERROR_PAK_CHANGED 10
+
+/**
+ * Options for gDebugMenuSelection
  */
 #define DEBUG_MENU_DISABLED 1
 #define DEBUG_MENU_DEBUG_MODE 2
@@ -114,6 +141,15 @@
 #define DEBUG_GOTO_ENDING_SEQUENCE 1
 #define DEBUG_GOTO_CREDITS_SEQUENCE_CC_50 2
 #define DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA 3
+
+/**
+ * Options for gScreenModeSelection
+ */
+#define SCREEN_MODE_1P 0
+#define SCREEN_MODE_2P_UD 1
+#define SCREEN_MODE_2P_LR 2
+#define SCREEN_MODE_3P_4P 3
+#define NUM_SCREEN_MODES 4
 
 /**
  * Indexes for accessing Time Trial records
@@ -139,7 +175,6 @@
 #define TEXT_YELLOW                 3
 #define TEXT_BLUE_GREEN_RED_CYCLE_1 4
 #define TEXT_BLUE_GREEN_RED_CYCLE_2 5
-
 
 /**
  * Sound mode options

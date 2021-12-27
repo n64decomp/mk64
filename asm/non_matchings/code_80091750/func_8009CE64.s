@@ -301,8 +301,8 @@ glabel L8009D280
 /* 09DE8C 8009D28C 3C0A800E */  lui   $t2, %hi(gPlayerCountSelection1) # $t2, 0x800e
 /* 09DE90 8009D290 3C0B8019 */  lui   $t3, %hi(D_8018EDF3) # $t3, 0x8019
 /* 09DE94 8009D294 3C0C800E */  lui   $t4, %hi(gModeSelection) # $t4, 0x800e
-/* 09DE98 8009D298 3C0D800E */  lui   $t5, %hi(D_800DC530) # $t5, 0x800e
-/* 09DE9C 8009D29C 25ADC530 */  addiu $t5, %lo(D_800DC530) # addiu $t5, $t5, -0x3ad0
+/* 09DE98 8009D298 3C0D800E */  lui   $t5, %hi(gScreenModeSelection) # $t5, 0x800e
+/* 09DE9C 8009D29C 25ADC530 */  addiu $t5, %lo(gScreenModeSelection) # addiu $t5, $t5, -0x3ad0
 /* 09DEA0 8009D2A0 258CC53C */  addiu $t4, %lo(gModeSelection) # addiu $t4, $t4, -0x3ac4
 /* 09DEA4 8009D2A4 256BEDF3 */  addiu $t3, %lo(D_8018EDF3) # addiu $t3, $t3, -0x120d
 /* 09DEA8 8009D2A8 254AC538 */  addiu $t2, %lo(gPlayerCountSelection1) # addiu $t2, $t2, -0x3ac8
@@ -321,8 +321,8 @@ glabel L8009D2C8
 /* 09DED8 8009D2D8 3C0A800E */  lui   $t2, %hi(gPlayerCountSelection1) # $t2, 0x800e
 /* 09DEDC 8009D2DC 3C0B8019 */  lui   $t3, %hi(D_8018EDF3) # $t3, 0x8019
 /* 09DEE0 8009D2E0 3C0C800E */  lui   $t4, %hi(gModeSelection) # $t4, 0x800e
-/* 09DEE4 8009D2E4 3C0D800E */  lui   $t5, %hi(D_800DC530) # $t5, 0x800e
-/* 09DEE8 8009D2E8 25ADC530 */  addiu $t5, %lo(D_800DC530) # addiu $t5, $t5, -0x3ad0
+/* 09DEE4 8009D2E4 3C0D800E */  lui   $t5, %hi(gScreenModeSelection) # $t5, 0x800e
+/* 09DEE8 8009D2E8 25ADC530 */  addiu $t5, %lo(gScreenModeSelection) # addiu $t5, $t5, -0x3ad0
 /* 09DEEC 8009D2EC 258CC53C */  addiu $t4, %lo(gModeSelection) # addiu $t4, $t4, -0x3ac4
 /* 09DEF0 8009D2F0 256BEDF3 */  addiu $t3, %lo(D_8018EDF3) # addiu $t3, $t3, -0x120d
 /* 09DEF4 8009D2F4 254AC538 */  addiu $t2, %lo(gPlayerCountSelection1) # addiu $t2, $t2, -0x3ac8
@@ -342,8 +342,8 @@ glabel L8009D318
 /* 09DF28 8009D328 3C0A800E */  lui   $t2, %hi(gPlayerCountSelection1) # $t2, 0x800e
 /* 09DF2C 8009D32C 3C0B8019 */  lui   $t3, %hi(D_8018EDF3) # $t3, 0x8019
 /* 09DF30 8009D330 3C0C800E */  lui   $t4, %hi(gModeSelection) # $t4, 0x800e
-/* 09DF34 8009D334 3C0D800E */  lui   $t5, %hi(D_800DC530) # $t5, 0x800e
-/* 09DF38 8009D338 25ADC530 */  addiu $t5, %lo(D_800DC530) # addiu $t5, $t5, -0x3ad0
+/* 09DF34 8009D334 3C0D800E */  lui   $t5, %hi(gScreenModeSelection) # $t5, 0x800e
+/* 09DF38 8009D338 25ADC530 */  addiu $t5, %lo(gScreenModeSelection) # addiu $t5, $t5, -0x3ad0
 /* 09DF3C 8009D33C 258CC53C */  addiu $t4, %lo(gModeSelection) # addiu $t4, $t4, -0x3ac4
 /* 09DF40 8009D340 256BEDF3 */  addiu $t3, %lo(D_8018EDF3) # addiu $t3, $t3, -0x120d
 /* 09DF44 8009D344 254AC538 */  addiu $t2, %lo(gPlayerCountSelection1) # addiu $t2, $t2, -0x3ac8
@@ -364,8 +364,8 @@ glabel L8009D364
 /* 09DF7C 8009D37C 3C0A800E */  lui   $t2, %hi(gPlayerCountSelection1) # $t2, 0x800e
 /* 09DF80 8009D380 3C0B8019 */  lui   $t3, %hi(D_8018EDF3) # $t3, 0x8019
 /* 09DF84 8009D384 3C0C800E */  lui   $t4, %hi(gModeSelection) # $t4, 0x800e
-/* 09DF88 8009D388 3C0D800E */  lui   $t5, %hi(D_800DC530) # $t5, 0x800e
-/* 09DF8C 8009D38C 25ADC530 */  addiu $t5, %lo(D_800DC530) # addiu $t5, $t5, -0x3ad0
+/* 09DF88 8009D388 3C0D800E */  lui   $t5, %hi(gScreenModeSelection) # $t5, 0x800e
+/* 09DF8C 8009D38C 25ADC530 */  addiu $t5, %lo(gScreenModeSelection) # addiu $t5, $t5, -0x3ad0
 /* 09DF90 8009D390 258CC53C */  addiu $t4, %lo(gModeSelection) # addiu $t4, $t4, -0x3ac4
 /* 09DF94 8009D394 256BEDF3 */  addiu $t3, %lo(D_8018EDF3) # addiu $t3, $t3, -0x120d
 /* 09DF98 8009D398 254AC538 */  addiu $t2, %lo(gPlayerCountSelection1) # addiu $t2, $t2, -0x3ac8
@@ -387,8 +387,8 @@ glabel L8009D3C4
 /* 09DFD4 8009D3D4 3C0A800E */  lui   $t2, %hi(gPlayerCountSelection1) # $t2, 0x800e
 /* 09DFD8 8009D3D8 3C0B8019 */  lui   $t3, %hi(D_8018EDF3) # $t3, 0x8019
 /* 09DFDC 8009D3DC 3C0C800E */  lui   $t4, %hi(gModeSelection) # $t4, 0x800e
-/* 09DFE0 8009D3E0 3C0D800E */  lui   $t5, %hi(D_800DC530) # $t5, 0x800e
-/* 09DFE4 8009D3E4 25ADC530 */  addiu $t5, %lo(D_800DC530) # addiu $t5, $t5, -0x3ad0
+/* 09DFE0 8009D3E0 3C0D800E */  lui   $t5, %hi(gScreenModeSelection) # $t5, 0x800e
+/* 09DFE4 8009D3E4 25ADC530 */  addiu $t5, %lo(gScreenModeSelection) # addiu $t5, $t5, -0x3ad0
 /* 09DFE8 8009D3E8 258CC53C */  addiu $t4, %lo(gModeSelection) # addiu $t4, $t4, -0x3ac4
 /* 09DFEC 8009D3EC 256BEDF3 */  addiu $t3, %lo(D_8018EDF3) # addiu $t3, $t3, -0x120d
 /* 09DFF0 8009D3F0 254AC538 */  addiu $t2, %lo(gPlayerCountSelection1) # addiu $t2, $t2, -0x3ac8
@@ -409,8 +409,8 @@ glabel L8009D414
 /* 09E028 8009D428 3C0A800E */  lui   $t2, %hi(gPlayerCountSelection1) # $t2, 0x800e
 /* 09E02C 8009D42C 3C0B8019 */  lui   $t3, %hi(D_8018EDF3) # $t3, 0x8019
 /* 09E030 8009D430 3C0C800E */  lui   $t4, %hi(gModeSelection) # $t4, 0x800e
-/* 09E034 8009D434 3C0D800E */  lui   $t5, %hi(D_800DC530) # $t5, 0x800e
-/* 09E038 8009D438 25ADC530 */  addiu $t5, %lo(D_800DC530) # addiu $t5, $t5, -0x3ad0
+/* 09E034 8009D434 3C0D800E */  lui   $t5, %hi(gScreenModeSelection) # $t5, 0x800e
+/* 09E038 8009D438 25ADC530 */  addiu $t5, %lo(gScreenModeSelection) # addiu $t5, $t5, -0x3ad0
 /* 09E03C 8009D43C 258CC53C */  addiu $t4, %lo(gModeSelection) # addiu $t4, $t4, -0x3ac4
 /* 09E040 8009D440 256BEDF3 */  addiu $t3, %lo(D_8018EDF3) # addiu $t3, $t3, -0x120d
 /* 09E044 8009D444 254AC538 */  addiu $t2, %lo(gPlayerCountSelection1) # addiu $t2, $t2, -0x3ac8
@@ -543,8 +543,8 @@ glabel L8009D50C
 .L8009D60C:
 /* 09E20C 8009D60C 0C003C49 */  jal   func_8000F124
 /* 09E210 8009D610 00000000 */   nop   
-/* 09E214 8009D614 3C0D800E */  lui   $t5, %hi(D_800DC530) # $t5, 0x800e
-/* 09E218 8009D618 25ADC530 */  addiu $t5, %lo(D_800DC530) # addiu $t5, $t5, -0x3ad0
+/* 09E214 8009D614 3C0D800E */  lui   $t5, %hi(gScreenModeSelection) # $t5, 0x800e
+/* 09E218 8009D618 25ADC530 */  addiu $t5, %lo(gScreenModeSelection) # addiu $t5, $t5, -0x3ad0
 /* 09E21C 8009D61C 8DB90000 */  lw    $t9, ($t5)
 /* 09E220 8009D620 24070003 */  li    $a3, 3
 /* 09E224 8009D624 3C0C800E */  lui   $t4, %hi(gModeSelection) # $t4, 0x800e

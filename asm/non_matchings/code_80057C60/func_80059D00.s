@@ -9,10 +9,10 @@ glabel func_80059D00
 /* 05A91C 80059D1C 00000000 */   nop   
 /* 05A920 80059D20 3C0E8016 */  lui   $t6, %hi(D_801657AE) # $t6, 0x8016
 /* 05A924 80059D24 81CE57AE */  lb    $t6, %lo(D_801657AE)($t6)
-/* 05A928 80059D28 3C02800E */  lui   $v0, %hi(D_800DC530) # $v0, 0x800e
+/* 05A928 80059D28 3C02800E */  lui   $v0, %hi(gScreenModeSelection) # $v0, 0x800e
 /* 05A92C 80059D2C 55C000CD */  bnel  $t6, $zero, .L8005A064
 /* 05A930 80059D30 8FBF0014 */   lw    $ra, 0x14($sp)
-/* 05A934 80059D34 8C42C530 */  lw    $v0, %lo(D_800DC530)($v0)
+/* 05A934 80059D34 8C42C530 */  lw    $v0, %lo(gScreenModeSelection)($v0)
 /* 05A938 80059D38 24010001 */  li    $at, 1
 /* 05A93C 80059D3C 10400009 */  beqz  $v0, .L80059D64
 /* 05A940 80059D40 00000000 */   nop   

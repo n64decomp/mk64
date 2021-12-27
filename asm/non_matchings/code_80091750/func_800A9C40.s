@@ -42,8 +42,8 @@ glabel L800A9CA4
 glabel L800A9CD0
 /* 0AA8D0 800A9CD0 0C02A8A0 */  jal   func_800AA280
 /* 0AA8D4 800A9CD4 AFA40018 */   sw    $a0, 0x18($sp)
-/* 0AA8D8 800A9CD8 3C028019 */  lui   $v0, %hi(D_8018EDED) # $v0, 0x8019
-/* 0AA8DC 800A9CDC 8042EDED */  lb    $v0, %lo(D_8018EDED)($v0)
+/* 0AA8D8 800A9CD8 3C028019 */  lui   $v0, %hi(gGameMenuSelectionDepth) # $v0, 0x8019
+/* 0AA8DC 800A9CDC 8042EDED */  lb    $v0, %lo(gGameMenuSelectionDepth)($v0)
 /* 0AA8E0 800A9CE0 24010007 */  li    $at, 7
 /* 0AA8E4 800A9CE4 8FA40018 */  lw    $a0, 0x18($sp)
 /* 0AA8E8 800A9CE8 10410004 */  beq   $v0, $at, .L800A9CFC

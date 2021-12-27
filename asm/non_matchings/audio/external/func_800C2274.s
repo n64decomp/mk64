@@ -21,8 +21,8 @@ glabel func_800C2274
 /* 0C2EC0 800C22C0 AFA40048 */  sw    $a0, 0x48($sp)
 /* 0C2EC4 800C22C4 13200062 */  beqz  $t9, .L800C2450
 /* 0C2EC8 800C22C8 2406000F */   li    $a2, 15
-/* 0C2ECC 800C22CC 3C02800E */  lui   $v0, %hi(D_800DC530) # $v0, 0x800e
-/* 0C2ED0 800C22D0 8C42C530 */  lw    $v0, %lo(D_800DC530)($v0)
+/* 0C2ECC 800C22CC 3C02800E */  lui   $v0, %hi(gScreenModeSelection) # $v0, 0x800e
+/* 0C2ED0 800C22D0 8C42C530 */  lw    $v0, %lo(gScreenModeSelection)($v0)
 /* 0C2ED4 800C22D4 00074880 */  sll   $t1, $a3, 2
 /* 0C2ED8 800C22D8 01274821 */  addu  $t1, $t1, $a3
 /* 0C2EDC 800C22DC 10400010 */  beqz  $v0, .L800C2320
