@@ -65,6 +65,86 @@ struct UnkStruct_800DC5EC {
     s32 pad2;
 };
 
+struct UnkStruct_80280658 {
+    s32 unk0;
+    s16 unk4;
+    s16 unk6;
+    s8 unk8;
+    s8 unk9;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    struct UnkStruct_80280658_2 *unk28;
+    s32 unk2C;
+    s32 unk30;
+    f32 unk34;
+    f32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+};
+
+struct UnkStruct_80280658_2 {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s8 unk8;
+    s8 unk9;
+    s8 unkA;
+    f32 unkC;
+};
+
+struct UnkStruct_8028088C {
+    s32 unk0;
+    s16 unk4;
+    s16 unk6;
+    s8 unk8;
+    s8 unk9;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    struct UnkStruct_80280658_2 *unk28;
+    s16 unk2C;
+    s16 unk2E;
+    s16 unk30;
+    s16 unk32;
+    s16 unk34;
+    s16 unk36;
+    s32 unk38;
+    s32 unk3C;
+};
+
+// Camera path struct? Or something like that. For GP race won scene?
+struct UnkStruct_80287500 {
+    Vec3f unk0; // xyz coordinates?
+    f32 unkC;
+    f32 unk10;
+    f32 unk14; // rotation?
+    s32 unk18;
+    s32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    f32 unk34;
+    s32 unk38;
+};
+
 struct UnkStruct_800DDB40 {
     u32 unk0;
     u32 unk4;
@@ -106,6 +186,63 @@ struct UnkStruct_802B53C8 {
     f32 unkC;
 };
 // end math util structs
+
+struct UnkStruct8008A890 {
+ // B4 long
+    Vec3f pos;
+    //f32 posY;
+    //f32 posZ;
+    f32 unk; // lookat? faceangle?
+    f32 unk1;
+    f32 unk2;
+    f32 angleX;
+    f32 angleY;
+    f32 angleZ;
+    s16 rotX;
+    s16 rotX2;
+    s16 rotY; // unused?
+    s16 rotZ;
+    s32 unk3; // zero
+    s32 unk4; // 0x4119999A
+    s32 unk5; // 0xC20C bit flag?
+    s32 unk6; // 0
+    s32 unk7; // 0
+    s32 unk8; // 0x41F
+    s32 unk9; // 0
+    s32 unk10; // 0
+    s32 unk11; // 0
+    s32 unk12; // 0
+    u16 unk13; // 0x103F7
+    u16 unk13_and_a_half;
+    u16 unk14; // 0x05BC00## Surface camera is over?
+    u16 unk14_half;
+    u16 collisionX;
+    u16 value;
+    u16 collisionY;
+    f32 collisionZ;
+    f32 unk15;
+    f32 unk16;
+    f32 unk17;
+    f32 unk18;
+    f32 unk19;
+    f32 unk20;
+    f32 unkAngleX;
+    f32 unkAngleY;
+    f32 unkAngleZ;
+    s32 unk21; // zero
+    f32 collision;
+    f32 unk22; // zero
+    s16 unk23; // confirmed s16
+    s16 unk24; // zero
+    s16 unk24_and_a_half;
+    s32 unk25; // zero
+    s32 unk26; // zero
+    // need another s16 here?
+    s32 unk27; // 8
+    s16 unk28; // zero
+    f32 unk29; // 422
+    f32 unk30;
+};
 
 struct UnkStruct_800DDB68 {
     s32 *D_800ED600; s32 *D_800ED608; s32 *D_800ED610; s32 *D_800ED618;

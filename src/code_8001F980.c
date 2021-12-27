@@ -854,7 +854,7 @@ void func_80021B0C(void) {
         func_8006E7CC(D_800DC4F4, 6, 0);
         func_8006E7CC(D_800DC4F8, 7, 0);
     }
-    if (D_800DC50C == 5) {
+    if (D_800DC50C == ENDING_SEQUENCE) {
         temp_a0 = D_800DC4DC;
         if ((temp_a0->unk_044 & 0x2000) != 0) {
             func_80024374(temp_a0, 0, 0);

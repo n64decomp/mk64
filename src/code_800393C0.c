@@ -303,7 +303,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
 void func_80039AE4(void) {
     switch (D_800DC52C) {
         case 0:
-            if (D_800DC50C == 5) {
+            if (D_800DC50C == ENDING_SEQUENCE) {
                 D_80165578 = 0x898;
                 D_8016557A = 0;
                 D_8016557C = 0x384;
@@ -408,7 +408,7 @@ void func_80039DA4(void) {
 
     if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) ||
         (D_800DC51C == 1) ||
-        (D_8018EDEF == 0x40)) {
+        (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         for (i = 0; i < 8; i++) {
             D_80165270[i] = sp2C.unk00[i];
         }
@@ -423,7 +423,7 @@ void func_80039F44(f32 *arg0, f32 *arg1, f32 arg2) {
     func_80039DA4();
     if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) ||
         (D_800DC51C == 1) ||
-        (D_8018EDEF == 0x40)) {
+        (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         s16 rand;
         s16 i;
 
@@ -509,7 +509,7 @@ void func_8003A59C(f32 *arg0, f32 *arg1, f32 arg2) {
 
 void func_8003A9F0(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if ((gCupCourseSelection == CUP_COURSE_ONE) || (D_800DC51C == 1) || (D_8018EDEF == 0x40)) {
+    if ((gCupCourseSelection == CUP_COURSE_ONE) || (D_800DC51C == 1) || (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         s16 rand;
         s16 i;
 
@@ -1078,7 +1078,7 @@ void func_8003D080(void) {
     Player* ptr;
 
     func_8005D290();
-    if (D_800DC50C == 5) {
+    if (D_800DC50C == ENDING_SEQUENCE) {
         func_8003CD78();
     } else {
         func_8003C0F0();

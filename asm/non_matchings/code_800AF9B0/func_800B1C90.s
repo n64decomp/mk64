@@ -9,8 +9,8 @@ glabel func_800B1C90
 /* 0B28AC 800B1CAC A7B80036 */   sh    $t8, 0x36($sp)
 /* 0B28B0 800B1CB0 1440010C */  bnez  $v0, .L800B20E4
 /* 0B28B4 800B1CB4 97A30036 */   lhu   $v1, 0x36($sp)
-/* 0B28B8 800B1CB8 3C098019 */  lui   $t1, %hi(gPlayerCountSelection2) # $t1, 0x8019
-/* 0B28BC 800B1CBC 2529EDF0 */  addiu $t1, %lo(gPlayerCountSelection2) # addiu $t1, $t1, -0x1210
+/* 0B28B8 800B1CB8 3C098019 */  lui   $t1, %hi(gMenuState) # $t1, 0x8019
+/* 0B28BC 800B1CBC 2529EDF0 */  addiu $t1, %lo(gMenuState) # addiu $t1, $t1, -0x1210
 /* 0B28C0 800B1CC0 81390000 */  lb    $t9, ($t1)
 /* 0B28C4 800B1CC4 272AFFFF */  addiu $t2, $t9, -1
 /* 0B28C8 800B1CC8 2D41000A */  sltiu $at, $t2, 0xa
@@ -68,8 +68,8 @@ glabel L800B1D84
 /* 0B2984 800B1D84 306A9000 */  andi  $t2, $v1, 0x9000
 /* 0B2988 800B1D88 11400015 */  beqz  $t2, .L800B1DE0
 /* 0B298C 800B1D8C 00601025 */   move  $v0, $v1
-/* 0B2990 800B1D90 3C02800F */  lui   $v0, %hi(D_800E86C0) # $v0, 0x800f
-/* 0B2994 800B1D94 244286C0 */  addiu $v0, %lo(D_800E86C0) # addiu $v0, $v0, -0x7940
+/* 0B2990 800B1D90 3C02800F */  lui   $v0, %hi(gControllerPakSelectedTableRow) # $v0, 0x800f
+/* 0B2994 800B1D94 244286C0 */  addiu $v0, %lo(gControllerPakSelectedTableRow) # addiu $v0, $v0, -0x7940
 /* 0B2998 800B1D98 804B0000 */  lb    $t3, ($v0)
 /* 0B299C 800B1D9C 3C08800F */  lui   $t0, %hi(D_800E86C6) # 0x800f
 /* 0B29A0 800B1DA0 3C0D8019 */  lui   $t5, %hi(D_8018EB38) # 0x8019
@@ -108,8 +108,8 @@ glabel L800B1D84
 /* 0B2A1C 800B1E1C 3C03800F */   lui   $v1, %hi(D_800E86D0) # $v1, 0x800f
 /* 0B2A20 800B1E20 246386D0 */  addiu $v1, %lo(D_800E86D0) # addiu $v1, $v1, -0x7930
 /* 0B2A24 800B1E24 806B0000 */  lb    $t3, ($v1)
-/* 0B2A28 800B1E28 3C02800F */  lui   $v0, %hi(D_800E86C0) # $v0, 0x800f
-/* 0B2A2C 800B1E2C 244286C0 */  addiu $v0, %lo(D_800E86C0) # addiu $v0, $v0, -0x7940
+/* 0B2A28 800B1E28 3C02800F */  lui   $v0, %hi(gControllerPakSelectedTableRow) # $v0, 0x800f
+/* 0B2A2C 800B1E2C 244286C0 */  addiu $v0, %lo(gControllerPakSelectedTableRow) # addiu $v0, $v0, -0x7940
 /* 0B2A30 800B1E30 556000AD */  bnel  $t3, $zero, .L800B20E8
 /* 0B2A34 800B1E34 8FBF001C */   lw    $ra, 0x1c($sp)
 /* 0B2A38 800B1E38 804C0000 */  lb    $t4, ($v0)
@@ -144,8 +144,8 @@ glabel L800B1D84
 /* 0B2AA4 800B1EA4 3C03800F */   lui   $v1, %hi(D_800E86D0) # $v1, 0x800f
 /* 0B2AA8 800B1EA8 246386D0 */  addiu $v1, %lo(D_800E86D0) # addiu $v1, $v1, -0x7930
 /* 0B2AAC 800B1EAC 806B0000 */  lb    $t3, ($v1)
-/* 0B2AB0 800B1EB0 3C02800F */  lui   $v0, %hi(D_800E86C0) # $v0, 0x800f
-/* 0B2AB4 800B1EB4 244286C0 */  addiu $v0, %lo(D_800E86C0) # addiu $v0, $v0, -0x7940
+/* 0B2AB0 800B1EB0 3C02800F */  lui   $v0, %hi(gControllerPakSelectedTableRow) # $v0, 0x800f
+/* 0B2AB4 800B1EB4 244286C0 */  addiu $v0, %lo(gControllerPakSelectedTableRow) # addiu $v0, $v0, -0x7940
 /* 0B2AB8 800B1EB8 5560008B */  bnel  $t3, $zero, .L800B20E8
 /* 0B2ABC 800B1EBC 8FBF001C */   lw    $ra, 0x1c($sp)
 /* 0B2AC0 800B1EC0 804C0000 */  lb    $t4, ($v0)
@@ -233,8 +233,8 @@ glabel L800B1FE8
 /* 0B2BEC 800B1FEC 1000003D */  b     .L800B20E4
 /* 0B2BF0 800B1FF0 A12D0000 */   sb    $t5, ($t1)
 glabel L800B1FF4
-/* 0B2BF4 800B1FF4 3C02800F */  lui   $v0, %hi(D_800E86C0) # $v0, 0x800f
-/* 0B2BF8 800B1FF8 244286C0 */  addiu $v0, %lo(D_800E86C0) # addiu $v0, $v0, -0x7940
+/* 0B2BF4 800B1FF4 3C02800F */  lui   $v0, %hi(gControllerPakSelectedTableRow) # $v0, 0x800f
+/* 0B2BF8 800B1FF8 244286C0 */  addiu $v0, %lo(gControllerPakSelectedTableRow) # addiu $v0, $v0, -0x7940
 /* 0B2BFC 800B1FFC 804E0000 */  lb    $t6, ($v0)
 /* 0B2C00 800B2000 3C08800F */  lui   $t0, %hi(D_800E86C6) # 0x800f
 /* 0B2C04 800B2004 3C188019 */  lui   $t8, %hi(D_8018E938) # $t8, 0x8019
@@ -254,8 +254,8 @@ glabel L800B1FF4
 /* 0B2C3C 800B203C AFA8002C */  sw    $t0, 0x2c($sp)
 /* 0B2C40 800B2040 0C033E90 */  jal   osPfsDeleteFile
 /* 0B2C44 800B2044 2484E868 */   addiu $a0, %lo(D_8018E868) # addiu $a0, $a0, -0x1798
-/* 0B2C48 800B2048 3C098019 */  lui   $t1, %hi(gPlayerCountSelection2) # $t1, 0x8019
-/* 0B2C4C 800B204C 2529EDF0 */  addiu $t1, %lo(gPlayerCountSelection2) # addiu $t1, $t1, -0x1210
+/* 0B2C48 800B2048 3C098019 */  lui   $t1, %hi(gMenuState) # $t1, 0x8019
+/* 0B2C4C 800B204C 2529EDF0 */  addiu $t1, %lo(gMenuState) # addiu $t1, $t1, -0x1210
 /* 0B2C50 800B2050 8FA30020 */  lw    $v1, 0x20($sp)
 /* 0B2C54 800B2054 1040000A */  beqz  $v0, .L800B2080
 /* 0B2C58 800B2058 8FA8002C */   lw    $t0, 0x2c($sp)
@@ -275,14 +275,14 @@ glabel L800B1FF4
 /* 0B2C8C 800B208C 240BFFFF */  li    $t3, -1
 /* 0B2C90 800B2090 AC2BEB38 */  sw    $t3, %lo(D_8018EB38)($at) # -0x14c8($at)
 /* 0B2C94 800B2094 8C6E0000 */  lw    $t6, ($v1)
-/* 0B2C98 800B2098 3C0D8019 */  lui   $t5, %hi(D_8018EB80) # $t5, 0x8019
-/* 0B2C9C 800B209C 8DADEB80 */  lw    $t5, %lo(D_8018EB80)($t5)
+/* 0B2C98 800B2098 3C0D8019 */  lui   $t5, %hi(gControllerPakNumPagesFree) # $t5, 0x8019
+/* 0B2C9C 800B209C 8DADEB80 */  lw    $t5, %lo(gControllerPakNumPagesFree)($t5)
 /* 0B2CA0 800B20A0 25CF00FF */  addiu $t7, $t6, 0xff
 /* 0B2CA4 800B20A4 000FC202 */  srl   $t8, $t7, 8
 /* 0B2CA8 800B20A8 331900FF */  andi  $t9, $t8, 0xff
-/* 0B2CAC 800B20AC 3C018019 */  lui   $at, %hi(D_8018EB80) # $at, 0x8019
+/* 0B2CAC 800B20AC 3C018019 */  lui   $at, %hi(gControllerPakNumPagesFree) # $at, 0x8019
 /* 0B2CB0 800B20B0 01B95021 */  addu  $t2, $t5, $t9
-/* 0B2CB4 800B20B4 AC2AEB80 */  sw    $t2, %lo(D_8018EB80)($at)
+/* 0B2CB4 800B20B4 AC2AEB80 */  sw    $t2, %lo(gControllerPakNumPagesFree)($at)
 /* 0B2CB8 800B20B8 240B0005 */  li    $t3, 5
 /* 0B2CBC 800B20BC 10000009 */  b     .L800B20E4
 /* 0B2CC0 800B20C0 A12B0000 */   sb    $t3, ($t1)

@@ -1,9 +1,9 @@
 glabel func_800B3F74
 /* 0B4B74 800B3F74 24030001 */  li    $v1, 1
-/* 0B4B78 800B3F78 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
-/* 0B4B7C 800B3F7C A023EDEF */  sb    $v1, %lo(D_8018EDEF)($at)
-/* 0B4B80 800B3F80 3C018019 */  lui   $at, %hi(D_8018EE00) # $at, 0x8019
-/* 0B4B84 800B3F84 AC20EE00 */  sw    $zero, %lo(D_8018EE00)($at)
+/* 0B4B78 800B3F78 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
+/* 0B4B7C 800B3F7C A023EDEF */  sb    $v1, %lo(gDebugMenuSelection)($at)
+/* 0B4B80 800B3F80 3C018019 */  lui   $at, %hi(gStartMenuCounterForDemos) # $at, 0x8019
+/* 0B4B84 800B3F84 AC20EE00 */  sw    $zero, %lo(gStartMenuCounterForDemos)($at)
 /* 0B4B88 800B3F88 3C018019 */  lui   $at, %hi(D_8018EE04) # $at, 0x8019
 /* 0B4B8C 800B3F8C AC20EE04 */  sw    $zero, %lo(D_8018EE04)($at)
 /* 0B4B90 800B3F90 3C018019 */  lui   $at, %hi(D_8018EE08) # $at, 0x8019
@@ -12,8 +12,8 @@ glabel func_800B3F74
 /* 0B4B9C 800B3F9C A420F890 */  sh    $zero, %lo(D_8015F890)($at)
 /* 0B4BA0 800B3FA0 3C018016 */  lui   $at, %hi(D_8015F892) # $at, 0x8016
 /* 0B4BA4 800B3FA4 A420F892 */  sh    $zero, %lo(D_8015F892)($at)
-/* 0B4BA8 800B3FA8 3C018019 */  lui   $at, %hi(D_8018EDFA) # $at, 0x8019
-/* 0B4BAC 800B3FAC A020EDFA */  sb    $zero, %lo(D_8018EDFA)($at)
+/* 0B4BA8 800B3FA8 3C018019 */  lui   $at, %hi(gDebugGotoScene) # $at, 0x8019
+/* 0B4BAC 800B3FAC A020EDFA */  sb    $zero, %lo(gDebugGotoScene)($at)
 /* 0B4BB0 800B3FB0 3C018019 */  lui   $at, %hi(D_8018EDFB) # $at, 0x8019
 /* 0B4BB4 800B3FB4 A020EDFB */  sb    $zero, %lo(D_8018EDFB)($at)
 /* 0B4BB8 800B3FB8 3C018016 */  lui   $at, %hi(D_8016556E) # $at, 0x8016
@@ -60,8 +60,8 @@ glabel L800B4040
 /* 0B4C4C 800B404C 10000111 */  b     .L800B4494
 /* 0B4C50 800B4050 00000000 */   nop   
 glabel L800B4054
-/* 0B4C54 800B4054 3C018019 */  lui   $at, %hi(gPlayerCountSelection2) # $at, 0x8019
-/* 0B4C58 800B4058 A023EDF0 */  sb    $v1, %lo(gPlayerCountSelection2)($at)
+/* 0B4C54 800B4054 3C018019 */  lui   $at, %hi(gMenuState) # $at, 0x8019
+/* 0B4C58 800B4058 A023EDF0 */  sb    $v1, %lo(gMenuState)($at)
 /* 0B4C5C 800B405C 00002025 */  move  $a0, $zero
 /* 0B4C60 800B4060 0C032802 */  jal   func_800CA008
 /* 0B4C64 800B4064 00002825 */   move  $a1, $zero

@@ -26,7 +26,7 @@
 #.word 0xffffff00, 0xffffff00, 0x00007800, 0x00000000
 #.word 0x80000000
 
-#glabel D_800DC644
+#glabel gCreditsCourseId
 #.hword 0x0008, 0x0000
 
 #glabel D_800DC648

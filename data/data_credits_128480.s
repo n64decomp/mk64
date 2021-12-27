@@ -6,11 +6,11 @@
 # 128480-12AAE0 [2660]
 
 # D_8028461C
-glabel D_80284E40
-.word 0x00FF4080
-.word 0x008040FF
-.word 0x0040FF40
-.word 0x00FFFF40
+#glabel D_80284E40
+#.word 0x00FF4080
+#.word 0x008040FF
+#.word 0x0040FF40
+#.word 0x00FFFF40
 
 glabel D_80284E50
 .word 0x007F2040

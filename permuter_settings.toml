@@ -3,3 +3,8 @@
 
 [decompme.compilers]
 "tools/ido5.3_recomp/cc" = "ido5.3"
+
+[preserve_macros]
+"gs?DP.*" = "void"
+"gs?SP.*" = "void"
+"G_.*" = "int"

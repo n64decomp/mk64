@@ -2420,7 +2420,7 @@ block_29:
         func_802AF8BC(0x7002068, -0x6A, 0xFF, 0xFF, 0xFF);
         func_802AF8BC(0x7001E18, -0x6A, 0xFF, 0xFF, 0xFF);
         func_802AF8BC(0x7001318, -1, 0xFF, 0xFF, 0);
-        if (D_800DC50C != 9) {
+        if (D_800DC50C != CREDITS_SEQUENCE) {
             func_802AF8BC(0x7001FB8, -0x6A, 0xFF, 0xFF, 0xFF);
             return;
         }

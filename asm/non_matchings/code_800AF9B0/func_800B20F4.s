@@ -13,7 +13,7 @@ glabel func_800B20F4
 /* 0B2D20 800B2120 0C02D148 */  jal   func_800B4520
 /* 0B2D24 800B2124 A7B9002E */   sh    $t9, 0x2e($sp)
 /* 0B2D28 800B2128 144001E2 */  bnez  $v0, .L800B28B4
-/* 0B2D2C 800B212C 3C0A8019 */   lui   $t2, %hi(D_8018EDEF) # $t2, 0x8019
+/* 0B2D2C 800B212C 3C0A8019 */   lui   $t2, %hi(gDebugMenuSelection) # $t2, 0x8019
 /* 0B2D30 800B2130 16000005 */  bnez  $s0, .L800B2148
 /* 0B2D34 800B2134 3C028019 */   lui   $v0, %hi(D_8018EE04) # $v0, 0x8019
 /* 0B2D38 800B2138 2442EE04 */  addiu $v0, %lo(D_8018EE04) # addiu $v0, $v0, -0x11fc
@@ -21,7 +21,7 @@ glabel func_800B20F4
 /* 0B2D40 800B2140 25090001 */  addiu $t1, $t0, 1
 /* 0B2D44 800B2144 AC490000 */  sw    $t1, ($v0)
 .L800B2148:
-/* 0B2D48 800B2148 814AEDEF */  lb    $t2, %lo(D_8018EDEF)($t2)
+/* 0B2D48 800B2148 814AEDEF */  lb    $t2, %lo(gDebugMenuSelection)($t2)
 /* 0B2D4C 800B214C 3C028019 */  lui   $v0, %hi(D_8018EE04) # $v0, 0x8019
 /* 0B2D50 800B2150 2442EE04 */  addiu $v0, %lo(D_8018EE04) # addiu $v0, $v0, -0x11fc
 /* 0B2D54 800B2154 254BFFFF */  addiu $t3, $t2, -1
@@ -83,8 +83,8 @@ glabel L800B21CC
 /* 0B2E20 800B2220 0C032384 */  jal   play_sound2
 /* 0B2E24 800B2224 34848000 */   ori   $a0, (0x49008000 & 0xFFFF) # ori $a0, $a0, 0x8000
 /* 0B2E28 800B2228 24090003 */  li    $t1, 3
-/* 0B2E2C 800B222C 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
-/* 0B2E30 800B2230 A029EDEF */  sb    $t1, %lo(D_8018EDEF)($at)
+/* 0B2E2C 800B222C 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
+/* 0B2E30 800B2230 A029EDEF */  sb    $t1, %lo(gDebugMenuSelection)($at)
 .L800B2234:
 /* 0B2E34 800B2234 3C028019 */  lui   $v0, %hi(D_8018EDF1) # $v0, 0x8019
 /* 0B2E38 800B2238 1000014D */  b     .L800B2770
@@ -135,9 +135,9 @@ glabel L800B2240
 /* 0B2ED8 800B22D8 0C032384 */  jal   play_sound2
 /* 0B2EDC 800B22DC AFA30024 */   sw    $v1, 0x24($sp)
 /* 0B2EE0 800B22E0 24180002 */  li    $t8, 2
-/* 0B2EE4 800B22E4 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
+/* 0B2EE4 800B22E4 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
 /* 0B2EE8 800B22E8 8FA30024 */  lw    $v1, 0x24($sp)
-/* 0B2EEC 800B22EC A038EDEF */  sb    $t8, %lo(D_8018EDEF)($at)
+/* 0B2EEC 800B22EC A038EDEF */  sb    $t8, %lo(gDebugMenuSelection)($at)
 .L800B22F0:
 /* 0B2EF0 800B22F0 30790400 */  andi  $t9, $v1, 0x400
 /* 0B2EF4 800B22F4 13200006 */  beqz  $t9, .L800B2310
@@ -145,8 +145,8 @@ glabel L800B2240
 /* 0B2EFC 800B22FC 0C032384 */  jal   play_sound2
 /* 0B2F00 800B2300 34848000 */   ori   $a0, (0x49008000 & 0xFFFF) # ori $a0, $a0, 0x8000
 /* 0B2F04 800B2304 24080004 */  li    $t0, 4
-/* 0B2F08 800B2308 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
-/* 0B2F0C 800B230C A028EDEF */  sb    $t0, %lo(D_8018EDEF)($at)
+/* 0B2F08 800B2308 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
+/* 0B2F0C 800B230C A028EDEF */  sb    $t0, %lo(gDebugMenuSelection)($at)
 .L800B2310:
 /* 0B2F10 800B2310 3C028019 */  lui   $v0, %hi(D_8018EDF1) # $v0, 0x8019
 /* 0B2F14 800B2314 10000116 */  b     .L800B2770
@@ -198,9 +198,9 @@ glabel L800B231C
 /* 0B2FC0 800B23C0 30790800 */  andi  $t9, $v1, 0x800
 /* 0B2FC4 800B23C4 13200008 */  beqz  $t9, .L800B23E8
 /* 0B2FC8 800B23C8 24080003 */   li    $t0, 3
-/* 0B2FCC 800B23CC 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
+/* 0B2FCC 800B23CC 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
 /* 0B2FD0 800B23D0 3C044900 */  lui   $a0, (0x49008000 >> 16) # lui $a0, 0x4900
-/* 0B2FD4 800B23D4 A028EDEF */  sb    $t0, %lo(D_8018EDEF)($at)
+/* 0B2FD4 800B23D4 A028EDEF */  sb    $t0, %lo(gDebugMenuSelection)($at)
 /* 0B2FD8 800B23D8 34848000 */  ori   $a0, (0x49008000 & 0xFFFF) # ori $a0, $a0, 0x8000
 /* 0B2FDC 800B23DC 0C032384 */  jal   play_sound2
 /* 0B2FE0 800B23E0 AFA30024 */   sw    $v1, 0x24($sp)
@@ -209,9 +209,9 @@ glabel L800B231C
 /* 0B2FE8 800B23E8 30690400 */  andi  $t1, $v1, 0x400
 /* 0B2FEC 800B23EC 11200006 */  beqz  $t1, .L800B2408
 /* 0B2FF0 800B23F0 240A0005 */   li    $t2, 5
-/* 0B2FF4 800B23F4 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
+/* 0B2FF4 800B23F4 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
 /* 0B2FF8 800B23F8 3C044900 */  lui   $a0, (0x49008000 >> 16) # lui $a0, 0x4900
-/* 0B2FFC 800B23FC A02AEDEF */  sb    $t2, %lo(D_8018EDEF)($at)
+/* 0B2FFC 800B23FC A02AEDEF */  sb    $t2, %lo(gDebugMenuSelection)($at)
 /* 0B3000 800B2400 0C032384 */  jal   play_sound2
 /* 0B3004 800B2404 34848000 */   ori   $a0, (0x49008000 & 0xFFFF) # ori $a0, $a0, 0x8000
 .L800B2408:
@@ -253,9 +253,9 @@ glabel L800B2414
 /* 0B3088 800B2488 306F0800 */  andi  $t7, $v1, 0x800
 /* 0B308C 800B248C 11E00008 */  beqz  $t7, .L800B24B0
 /* 0B3090 800B2490 24180004 */   li    $t8, 4
-/* 0B3094 800B2494 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
+/* 0B3094 800B2494 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
 /* 0B3098 800B2498 3C044900 */  lui   $a0, (0x49008000 >> 16) # lui $a0, 0x4900
-/* 0B309C 800B249C A038EDEF */  sb    $t8, %lo(D_8018EDEF)($at)
+/* 0B309C 800B249C A038EDEF */  sb    $t8, %lo(gDebugMenuSelection)($at)
 /* 0B30A0 800B24A0 34848000 */  ori   $a0, (0x49008000 & 0xFFFF) # ori $a0, $a0, 0x8000
 /* 0B30A4 800B24A4 0C032384 */  jal   play_sound2
 /* 0B30A8 800B24A8 AFA30024 */   sw    $v1, 0x24($sp)
@@ -264,9 +264,9 @@ glabel L800B2414
 /* 0B30B0 800B24B0 30790400 */  andi  $t9, $v1, 0x400
 /* 0B30B4 800B24B4 13200006 */  beqz  $t9, .L800B24D0
 /* 0B30B8 800B24B8 24080006 */   li    $t0, 6
-/* 0B30BC 800B24BC 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
+/* 0B30BC 800B24BC 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
 /* 0B30C0 800B24C0 3C044900 */  lui   $a0, (0x49008000 >> 16) # lui $a0, 0x4900
-/* 0B30C4 800B24C4 A028EDEF */  sb    $t0, %lo(D_8018EDEF)($at)
+/* 0B30C4 800B24C4 A028EDEF */  sb    $t0, %lo(gDebugMenuSelection)($at)
 /* 0B30C8 800B24C8 0C032384 */  jal   play_sound2
 /* 0B30CC 800B24CC 34848000 */   ori   $a0, (0x49008000 & 0xFFFF) # ori $a0, $a0, 0x8000
 .L800B24D0:
@@ -334,9 +334,9 @@ glabel L800B24DC
 /* 0B31B0 800B25B0 30690800 */  andi  $t1, $v1, 0x800
 /* 0B31B4 800B25B4 11200008 */  beqz  $t1, .L800B25D8
 /* 0B31B8 800B25B8 240A0005 */   li    $t2, 5
-/* 0B31BC 800B25BC 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
+/* 0B31BC 800B25BC 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
 /* 0B31C0 800B25C0 3C044900 */  lui   $a0, (0x49008000 >> 16) # lui $a0, 0x4900
-/* 0B31C4 800B25C4 A02AEDEF */  sb    $t2, %lo(D_8018EDEF)($at)
+/* 0B31C4 800B25C4 A02AEDEF */  sb    $t2, %lo(gDebugMenuSelection)($at)
 /* 0B31C8 800B25C8 34848000 */  ori   $a0, (0x49008000 & 0xFFFF) # ori $a0, $a0, 0x8000
 /* 0B31CC 800B25CC 0C032384 */  jal   play_sound2
 /* 0B31D0 800B25D0 AFA30024 */   sw    $v1, 0x24($sp)
@@ -345,9 +345,9 @@ glabel L800B24DC
 /* 0B31D8 800B25D8 306B0400 */  andi  $t3, $v1, 0x400
 /* 0B31DC 800B25DC 11600006 */  beqz  $t3, .L800B25F8
 /* 0B31E0 800B25E0 240C0007 */   li    $t4, 7
-/* 0B31E4 800B25E4 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
+/* 0B31E4 800B25E4 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
 /* 0B31E8 800B25E8 3C044900 */  lui   $a0, (0x49008000 >> 16) # lui $a0, 0x4900
-/* 0B31EC 800B25EC A02CEDEF */  sb    $t4, %lo(D_8018EDEF)($at)
+/* 0B31EC 800B25EC A02CEDEF */  sb    $t4, %lo(gDebugMenuSelection)($at)
 /* 0B31F0 800B25F0 0C032384 */  jal   play_sound2
 /* 0B31F4 800B25F4 34848000 */   ori   $a0, (0x49008000 & 0xFFFF) # ori $a0, $a0, 0x8000
 .L800B25F8:
@@ -357,11 +357,11 @@ glabel L800B24DC
 glabel L800B2604
 /* 0B3204 800B2604 97A3002E */  lhu   $v1, 0x2e($sp)
 /* 0B3208 800B2608 240E0006 */  li    $t6, 6
-/* 0B320C 800B260C 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
+/* 0B320C 800B260C 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
 /* 0B3210 800B2610 306D0800 */  andi  $t5, $v1, 0x800
 /* 0B3214 800B2614 11A00006 */  beqz  $t5, .L800B2630
 /* 0B3218 800B2618 3C044900 */   lui   $a0, (0x49008000 >> 16) # lui $a0, 0x4900
-/* 0B321C 800B261C A02EEDEF */  sb    $t6, %lo(D_8018EDEF)($at)
+/* 0B321C 800B261C A02EEDEF */  sb    $t6, %lo(gDebugMenuSelection)($at)
 /* 0B3220 800B2620 34848000 */  ori   $a0, (0x49008000 & 0xFFFF) # ori $a0, $a0, 0x8000
 /* 0B3224 800B2624 0C032384 */  jal   play_sound2
 /* 0B3228 800B2628 AFA30024 */   sw    $v1, 0x24($sp)
@@ -481,8 +481,8 @@ glabel L800B2604
 /* 0B33B8 800B27B8 24040019 */   li    $a0, 25
 /* 0B33BC 800B27BC 8FA20030 */  lw    $v0, 0x30($sp)
 /* 0B33C0 800B27C0 24180040 */  li    $t8, 64
-/* 0B33C4 800B27C4 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
-/* 0B33C8 800B27C8 A038EDEF */  sb    $t8, %lo(D_8018EDEF)($at)
+/* 0B33C4 800B27C4 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
+/* 0B33C8 800B27C8 A038EDEF */  sb    $t8, %lo(gDebugMenuSelection)($at)
 /* 0B33CC 800B27CC 94590004 */  lhu   $t9, 4($v0)
 /* 0B33D0 800B27D0 8FA30024 */  lw    $v1, 0x24($sp)
 /* 0B33D4 800B27D4 3C01800E */  lui   $at, %hi(D_800DC51C) # 0x800e
@@ -504,12 +504,12 @@ glabel L800B2604
 /* 0B340C 800B280C 11800005 */  beqz  $t4, .L800B2824
 /* 0B3410 800B2810 240E0003 */   li    $t6, 3
 /* 0B3414 800B2814 240D0001 */  li    $t5, 1
-/* 0B3418 800B2818 3C018019 */  lui   $at, %hi(D_8018EDFA) # $at, 0x8019
+/* 0B3418 800B2818 3C018019 */  lui   $at, %hi(gDebugGotoScene) # $at, 0x8019
 /* 0B341C 800B281C 10000003 */  b     .L800B282C
-/* 0B3420 800B2820 A02DEDFA */   sb    $t5, %lo(D_8018EDFA)($at)
+/* 0B3420 800B2820 A02DEDFA */   sb    $t5, %lo(gDebugGotoScene)($at)
 .L800B2824:
-/* 0B3424 800B2824 3C018019 */  lui   $at, %hi(D_8018EDFA) # $at, 0x8019
-/* 0B3428 800B2828 A02EEDFA */  sb    $t6, %lo(D_8018EDFA)($at)
+/* 0B3424 800B2824 3C018019 */  lui   $at, %hi(gDebugGotoScene) # $at, 0x8019
+/* 0B3428 800B2828 A02EEDFA */  sb    $t6, %lo(gDebugGotoScene)($at)
 .L800B282C:
 /* 0B342C 800B282C 0C032384 */  jal   play_sound2
 /* 0B3430 800B2830 34848016 */   ori   $a0, (0x49008016 & 0xFFFF) # ori $a0, $a0, 0x8016
@@ -528,12 +528,12 @@ glabel L800B2604
 /* 0B3460 800B2860 0C0328CC */  jal   func_800CA330
 /* 0B3464 800B2864 24040019 */   li    $a0, 25
 /* 0B3468 800B2868 24090040 */  li    $t1, 64
-/* 0B346C 800B286C 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
-/* 0B3470 800B2870 A029EDEF */  sb    $t1, %lo(D_8018EDEF)($at)
-/* 0B3474 800B2874 3C018019 */  lui   $at, %hi(D_8018EDFA) # $at, 0x8019
+/* 0B346C 800B286C 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
+/* 0B3470 800B2870 A029EDEF */  sb    $t1, %lo(gDebugMenuSelection)($at)
+/* 0B3474 800B2874 3C018019 */  lui   $at, %hi(gDebugGotoScene) # $at, 0x8019
 /* 0B3478 800B2878 240A0002 */  li    $t2, 2
 /* 0B347C 800B287C 3C044900 */  lui   $a0, (0x49008016 >> 16) # lui $a0, 0x4900
-/* 0B3480 800B2880 A02AEDFA */  sb    $t2, %lo(D_8018EDFA)($at)
+/* 0B3480 800B2880 A02AEDFA */  sb    $t2, %lo(gDebugGotoScene)($at)
 /* 0B3484 800B2884 0C032384 */  jal   play_sound2
 /* 0B3488 800B2888 34848016 */   ori   $a0, (0x49008016 & 0xFFFF) # ori $a0, $a0, 0x8016
 /* 0B348C 800B288C 1000000A */  b     .L800B28B8
@@ -543,9 +543,9 @@ glabel L800B2604
 .L800B2898:
 /* 0B3498 800B2898 11600006 */  beqz  $t3, .L800B28B4
 /* 0B349C 800B289C 240C0001 */   li    $t4, 1
-/* 0B34A0 800B28A0 3C018019 */  lui   $at, %hi(D_8018EDEF) # $at, 0x8019
+/* 0B34A0 800B28A0 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
 /* 0B34A4 800B28A4 3C044900 */  lui   $a0, (0x49008001 >> 16) # lui $a0, 0x4900
-/* 0B34A8 800B28A8 A02CEDEF */  sb    $t4, %lo(D_8018EDEF)($at)
+/* 0B34A8 800B28A8 A02CEDEF */  sb    $t4, %lo(gDebugMenuSelection)($at)
 /* 0B34AC 800B28AC 0C032384 */  jal   play_sound2
 /* 0B34B0 800B28B0 34848001 */   ori   $a0, (0x49008001 & 0xFFFF) # ori $a0, $a0, 0x8001
 .L800B28B4:

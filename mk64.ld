@@ -247,6 +247,8 @@ SECTIONS
       BUILD_DIR/src/main.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
+      BUILD_DIR/src/code_80057C60.o(.rodata);
+      BUILD_DIR/data/data_0DD0A0_3_0.o(.rodata);
       BUILD_DIR/src/os/guRotateF.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3_1.o(.rodata);
       BUILD_DIR/src/os/__osDevMgrMain.o(.rodata);
@@ -268,7 +270,6 @@ SECTIONS
 
       BUILD_DIR/src/profiler.o(.bss);
       BUILD_DIR/src/crash_screen.o(.bss);
-      BUILD_DIR/asm/bss_800040C0.o(.bss);
       BUILD_DIR/asm/bss_80004740.o(.bss);
       BUILD_DIR/src/staff_ghosts.o(.bss);
       BUILD_DIR/asm/bss_80005FD0.o(.bss);
@@ -359,6 +360,7 @@ SECTIONS
       BUILD_DIR/src/code_80281780.o(.text);
       BUILD_DIR/src/code_80281C40.o(.text);
       BUILD_DIR/src/code_80281FA0.o(.text);
+      BUILD_DIR/src/code_80280650.o(.data);
       BUILD_DIR/data/data_credits_128480.o(.data);
    }
    END_SEG(code_80280000)

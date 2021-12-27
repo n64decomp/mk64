@@ -391,4 +391,67 @@ typedef struct {
     f32* unk_00[5];
 } struct_D_800E261C;
 
+typedef struct {
+    /* 0x00 */ s32 type; // id maybe?
+    /* 0x04 */ s32 unk4; // sound mode, maybe some other stuff
+    /* 0x08 */ s32 unk8; // This is used but I can't tell what for
+    /* 0x0C */ s32 column;
+    /* 0x10 */ s32 row;
+    /* 0x14 */ u8  priority; // priority/depth/z-level. Higher values are drawn on top of lower values
+                             // If equal, later entries in D_8018D9E0 are on top
+    /* 0x15 */ u8  visible; // active? If 1 its displayed, if 0 its not
+    // These seem to be generic space available for use by the struct, no 1 purpose for any given member
+    /* 0x16 */ s16 unk16; // Potentially unused
+    /* 0x18 */ s32 D_8018DEE0_index; // Index in D_8018DEE0, an array of some other struct type
+    /* 0x1C */ s32 unk1C; // Multi use. Sometimes cup selection, sometimes course index.
+    /* 0x20 */ s32 unk20; // Multi use, hard to tell what for though. Sometimes a random number, sometimes GP points
+    /* 0x24 */ s32 unk24; // Multi use, x scaling for some things, rotation multiplier for the question box in some menus, probably some other things
+} struct_8018D9E0_entry; // size = 0x28
+
+// Top byte is used as an index to gSegmentTable
+// The rest of the bytes are used as an offset
+typedef u32 segment_address_t;
+
+// Every Mk64_Texture must be followed by either another Mk64_Texture or an Mk64_Texture sized block of zero's
+typedef struct {
+    /* 0x00 */ s16 type;
+    /* 0x02 */ s16 unused1;
+    /* 0x04 */ segment_address_t textureData; // After converting to a virtual address, this should point actual texture data (i.e. something in texture_data_2.s)
+    /* 0x08 */ s16 width;
+    /* 0x0A */ s16 height;
+    /* 0x0C */ s16 dX;
+    /* 0x0D */ s16 dY;
+    /* 0x10 */ s16 size; // This size is NOT equal to width*height. Its likely the size of the compressed texture
+    /* 0x12 */ s16 unused2;
+} Mk64_Texture; // size = 0x14
+
+/**
+ * A series of Mk64_Textures can be chained back-to-back in memroy to create an easily accessible group
+ * This group must still be ended by an Mk64_Texture sized block of zero's
+ * See D_020015CC in data_segment2.s for an example
+ */
+typedef Mk64_Texture *Mk64_Texture_Group;
+
+// Every Mk64_Animation_Part must be followed by either another Mk64_Animation_Part or an Mk64_Animation_Part sized block of zero's
+typedef struct {
+    /* 0x00 */ segment_address_t mk64Texture; // After converting to a virtual address, this should point to an Mk64_Texture
+    /* 0x04 */ s32 frame_length;
+} Mk64_Animation_Part; // size = 0x8
+
+/**
+ * A series of Mk64_Animation_Parts can be chained back-to-back to create an easily accesssible "animation"
+ * This "animation" must still be ended an Mk64_Animation_Part sized block of zero's
+ * See D_02006718 in data_segment2.s for an example
+ */
+typedef Mk64_Animation_Part *Mk64_Animation;
+
+typedef struct {
+    /* 0x00 */ Mk64_Animation textureSequence;
+    /* 0x04 */ s32 sequenceIndex;    // Index in textureSequence that the animation is currently on
+    /* 0x08 */ s32 frameCountDown;   // Frames left for the given animation part
+    /* 0x0C */ u32 visible;          // visbile if 0x80000000, otherwise invisbile AND paused
+    /* 0x10 */ s32 D_8018E118_index; // Don't know what D_8018E118 tracks
+    /* 0x14 */ s32 unk14;            // Flip flops between 0 and 1, use unknown
+} struct_8018DEE0_entry; // size = 0x18
+
 #endif

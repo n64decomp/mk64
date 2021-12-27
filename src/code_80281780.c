@@ -79,7 +79,7 @@ void load_ending_sequence_royalraceway(void) {
     gCurrentCourseId = COURSE_ROYAL_RACEWAY;
     D_800DC5B4 = (u16)1;
     gIsMirrorMode = 0;
-    D_80287550 = 0xFFFF;
+    gMenuSelectionFromEndingSequence = 0xFFFF;
     D_80287554 = 0;
     func_802A4D18();
     func_802A74BC();
