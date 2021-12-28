@@ -2838,14 +2838,14 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B4520.s")
 #endif
 
 void func_800B45E0(s32 arg0) {
-    CourseTimeTrialRecords* temp_a2;
+    CourseTimeTrialRecords* courseTimeTrialRecordsPtr;
     u8* saveDataPtr;
     saveDataPtr = &D_8018EB90;
-    saveDataPtr += ((arg0 / 4) * 0x60) +  ((arg0 % 4) * 0x18);
+    saveDataPtr += ((arg0 / 4) * sizeof(CupTimeTrialRecords)) +  ((arg0 % 4) * sizeof(CourseTimeTrialRecords));
 
-    temp_a2 = (CourseTimeTrialRecords*) (saveDataPtr);
-    temp_a2->unknownBytes[5] = func_800B4874();
-    osEepromLongWrite(&gSIEventMesgQueue, ((u32) ((u32)temp_a2 - (u32)&D_8018EB90) >> 3), temp_a2, 0x18);
+    courseTimeTrialRecordsPtr = (CourseTimeTrialRecords*) (saveDataPtr);
+    courseTimeTrialRecordsPtr->unknownBytes[5] = func_800B4874();
+    osEepromLongWrite(&gSIEventMesgQueue, ((u32)courseTimeTrialRecordsPtr - (u32)&D_8018EB90) >> 3, courseTimeTrialRecordsPtr, sizeof(CourseTimeTrialRecords));
 }
 
 void func_800B4670(void) {
