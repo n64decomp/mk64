@@ -21,7 +21,7 @@ glabel func_800A474C
 /* 0A5390 800A4790 8FA80030 */   lw    $t0, 0x30($sp)
 /* 0A5394 800A4794 8FB90030 */  lw    $t9, 0x30($sp)
 /* 0A5398 800A4798 8FA40050 */  lw    $a0, 0x50($sp)
-/* 0A539C 800A479C 3C058019 */  lui   $a1, %hi(D_8018EDF7) # $a1, 0x8019
+/* 0A539C 800A479C 3C058019 */  lui   $a1, %hi(gTimeTrialDataCourseIndex) # $a1, 0x8019
 /* 0A53A0 800A47A0 17200005 */  bnez  $t9, .L800A47B8
 /* 0A53A4 800A47A4 00000000 */   nop   
 /* 0A53A8 800A47A8 0C02D389 */  jal   func_800B4E24
@@ -30,7 +30,7 @@ glabel func_800A474C
 /* 0A53B4 800A47B4 AFA20048 */   sw    $v0, 0x48($sp)
 .L800A47B8:
 /* 0A53B8 800A47B8 0C02D3AD */  jal   func_800B4EB4
-/* 0A53BC 800A47BC 80A5EDF7 */   lb    $a1, %lo(D_8018EDF7)($a1)
+/* 0A53BC 800A47BC 80A5EDF7 */   lb    $a1, %lo(gTimeTrialDataCourseIndex)($a1)
 /* 0A53C0 800A47C0 AFA20048 */  sw    $v0, 0x48($sp)
 .L800A47C4:
 /* 0A53C4 800A47C4 0C024C36 */  jal   set_text_color
@@ -39,7 +39,7 @@ glabel func_800A474C
 /* 0A53D0 800A47D0 8FA90050 */   lw    $t1, 0x50($sp)
 /* 0A53D4 800A47D4 8FA80030 */  lw    $t0, 0x30($sp)
 .L800A47D8:
-/* 0A53D8 800A47D8 3C048019 */  lui   $a0, %hi(D_8018EDF7) # $a0, 0x8019
+/* 0A53D8 800A47D8 3C048019 */  lui   $a0, %hi(gTimeTrialDataCourseIndex) # $a0, 0x8019
 /* 0A53DC 800A47DC 15000005 */  bnez  $t0, .L800A47F4
 /* 0A53E0 800A47E0 00000000 */   nop   
 /* 0A53E4 800A47E4 0C02D3CB */  jal   func_800B4F2C
@@ -48,7 +48,7 @@ glabel func_800A474C
 /* 0A53F0 800A47F0 AFA20048 */   sw    $v0, 0x48($sp)
 .L800A47F4:
 /* 0A53F4 800A47F4 0C02D3EC */  jal   func_800B4FB0
-/* 0A53F8 800A47F8 8084EDF7 */   lb    $a0, %lo(D_8018EDF7)($a0)
+/* 0A53F8 800A47F8 8084EDF7 */   lb    $a0, %lo(gTimeTrialDataCourseIndex)($a0)
 /* 0A53FC 800A47FC AFA20048 */  sw    $v0, 0x48($sp)
 .L800A4800:
 /* 0A5400 800A4800 8FA90050 */  lw    $t1, 0x50($sp)

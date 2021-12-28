@@ -1,8 +1,8 @@
 glabel func_800A1BE0
 /* 0A27E0 800A1BE0 27BDFF70 */  addiu $sp, $sp, -0x90
 /* 0A27E4 800A1BE4 AFB70044 */  sw    $s7, 0x44($sp)
-/* 0A27E8 800A1BE8 3C178019 */  lui   $s7, %hi(D_8018EDF7) # $s7, 0x8019
-/* 0A27EC 800A1BEC 26F7EDF7 */  addiu $s7, %lo(D_8018EDF7) # addiu $s7, $s7, -0x1209
+/* 0A27E8 800A1BE8 3C178019 */  lui   $s7, %hi(gTimeTrialDataCourseIndex) # $s7, 0x8019
+/* 0A27EC 800A1BEC 26F7EDF7 */  addiu $s7, %lo(gTimeTrialDataCourseIndex) # addiu $s7, $s7, -0x1209
 /* 0A27F0 800A1BF0 82E20000 */  lb    $v0, ($s7)
 /* 0A27F4 800A1BF4 AFB5003C */  sw    $s5, 0x3c($sp)
 /* 0A27F8 800A1BF8 AFB30034 */  sw    $s3, 0x34($sp)
