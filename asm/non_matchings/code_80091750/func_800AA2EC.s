@@ -1,6 +1,6 @@
 glabel func_800AA2EC
-/* 0AAEEC 800AA2EC 3C0E8019 */  lui   $t6, %hi(gGameMenuSelectionDepth) # $t6, 0x8019
-/* 0AAEF0 800AA2F0 81CEEDED */  lb    $t6, %lo(gGameMenuSelectionDepth)($t6)
+/* 0AAEEC 800AA2EC 3C0E8019 */  lui   $t6, %hi(gMainMenuSelectionDepth) # $t6, 0x8019
+/* 0AAEF0 800AA2F0 81CEEDED */  lb    $t6, %lo(gMainMenuSelectionDepth)($t6)
 /* 0AAEF4 800AA2F4 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 0AAEF8 800AA2F8 AFBF001C */  sw    $ra, 0x1c($sp)
 /* 0AAEFC 800AA2FC 25CFFFFF */  addiu $t7, $t6, -1

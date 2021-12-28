@@ -2073,7 +2073,7 @@ glabel D_8018EDEB
 glabel D_8018EDEC
 .skip 1
 
-glabel gGameMenuSelectionDepth
+glabel gMainMenuSelectionDepth
 .skip 1
 
 glabel D_8018EDEE

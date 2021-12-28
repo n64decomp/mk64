@@ -136,18 +136,18 @@ glabel L800B4100
 .L800B4168:
 /* 0B4D68 800B4168 3C028019 */  lui   $v0, %hi(D_8018EDE0) # $v0, 0x8019
 /* 0B4D6C 800B416C 8C42EDE0 */  lw    $v0, %lo(D_8018EDE0)($v0)
-/* 0B4D70 800B4170 3C058019 */  lui   $a1, %hi(gGameMenuSelectionDepth) # $a1, 0x8019
-/* 0B4D74 800B4174 24A5EDED */  addiu $a1, %lo(gGameMenuSelectionDepth) # addiu $a1, $a1, -0x1213
+/* 0B4D70 800B4170 3C058019 */  lui   $a1, %hi(gMainMenuSelectionDepth) # $a1, 0x8019
+/* 0B4D74 800B4174 24A5EDED */  addiu $a1, %lo(gMainMenuSelectionDepth) # addiu $a1, $a1, -0x1213
 /* 0B4D78 800B4178 1040000B */  beqz  $v0, .L800B41A8
 /* 0B4D7C 800B417C 24060003 */   li    $a2, 3
 /* 0B4D80 800B4180 10430019 */  beq   $v0, $v1, .L800B41E8
-/* 0B4D84 800B4184 3C058019 */   lui   $a1, %hi(gGameMenuSelectionDepth) # 0x8019
+/* 0B4D84 800B4184 3C058019 */   lui   $a1, %hi(gMainMenuSelectionDepth) # 0x8019
 /* 0B4D88 800B4188 24060003 */  li    $a2, 3
 /* 0B4D8C 800B418C 1046001A */  beq   $v0, $a2, .L800B41F8
-/* 0B4D90 800B4190 3C058019 */   lui   $a1, %hi(gGameMenuSelectionDepth) # 0x8019
+/* 0B4D90 800B4190 3C058019 */   lui   $a1, %hi(gMainMenuSelectionDepth) # 0x8019
 /* 0B4D94 800B4194 24080004 */  li    $t0, 4
 /* 0B4D98 800B4198 10480022 */  beq   $v0, $t0, .L800B4224
-/* 0B4D9C 800B419C 3C058019 */   lui   $a1, %hi(gGameMenuSelectionDepth) # 0x8019
+/* 0B4D9C 800B419C 3C058019 */   lui   $a1, %hi(gMainMenuSelectionDepth) # 0x8019
 /* 0B4DA0 800B41A0 100000BC */  b     .L800B4494
 /* 0B4DA4 800B41A4 00000000 */   nop   
 .L800B41A8:
@@ -169,12 +169,12 @@ glabel L800B4100
 /* 0B4DE0 800B41E0 100000AC */  b     .L800B4494
 /* 0B4DE4 800B41E4 ACA00000 */   sw    $zero, ($a1)
 .L800B41E8:
-/* 0B4DE8 800B41E8 24A5EDED */  addiu $a1, $a1, %lo(gGameMenuSelectionDepth) # -0x1213
+/* 0B4DE8 800B41E8 24A5EDED */  addiu $a1, $a1, %lo(gMainMenuSelectionDepth) # -0x1213
 /* 0B4DEC 800B41EC 240A0007 */  li    $t2, 7
 /* 0B4DF0 800B41F0 100000A8 */  b     .L800B4494
 /* 0B4DF4 800B41F4 A0AA0000 */   sb    $t2, ($a1)
 .L800B41F8:
-/* 0B4DF8 800B41F8 24A5EDED */  addiu $a1, $a1, %lo(gGameMenuSelectionDepth) # -0x1213
+/* 0B4DF8 800B41F8 24A5EDED */  addiu $a1, $a1, %lo(gMainMenuSelectionDepth) # -0x1213
 /* 0B4DFC 800B41FC 80A20000 */  lb    $v0, ($a1)
 /* 0B4E00 800B4200 24010002 */  li    $at, 2
 /* 0B4E04 800B4204 10430005 */  beq   $v0, $v1, .L800B421C
@@ -187,7 +187,7 @@ glabel L800B4100
 /* 0B4E1C 800B421C 1000009D */  b     .L800B4494
 /* 0B4E20 800B4220 A0A60000 */   sb    $a2, ($a1)
 .L800B4224:
-/* 0B4E24 800B4224 24A5EDED */  addiu $a1, $a1, %lo(gGameMenuSelectionDepth) # -0x1213
+/* 0B4E24 800B4224 24A5EDED */  addiu $a1, $a1, %lo(gMainMenuSelectionDepth) # -0x1213
 /* 0B4E28 800B4228 1000009A */  b     .L800B4494
 /* 0B4E2C 800B422C A0A60000 */   sb    $a2, ($a1)
 glabel L800B4230

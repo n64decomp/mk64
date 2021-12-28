@@ -340,10 +340,10 @@ void func_8028E678(void) {
                 case SCREEN_MODE_1P:
                     D_8015F894 = 1;
                     break;
-                case SCREEN_MODE_2P_UD:
+                case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
                     D_8015F894 = 5;
                     break;
-                case SCREEN_MODE_2P_LR:
+                case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                     D_8015F894 = 6;
                     break;
             }
@@ -505,7 +505,7 @@ void func_8028EC38(s32 arg0) {
 
 void func_8028EC98(s32 arg0) {
 
-    if (gScreenModeSelection == SCREEN_MODE_3P_4P) {
+    if (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) {
         return;
     }
 
@@ -1155,8 +1155,8 @@ void func_8028FCBC(void) {
                             D_800DC510 = 5;
                             func_8028E298();
                             break;
-                        case SCREEN_MODE_2P_UD:
-                        case SCREEN_MODE_2P_LR:
+                        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+                        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                             if (((D_800DC4DC->unk_000 & PLAYER_CINEMATIC_MODE) != 0) && ((D_800DC4E0->unk_000 & PLAYER_CINEMATIC_MODE) != 0)) {
 
                                 if (D_800DC4DC->unk_004 < D_800DC4E0->unk_004) {
@@ -1235,7 +1235,7 @@ UNUSED void func_80290314(void) {
 void func_80290338(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    gMenuSelectionFromQuit = GAME_SELECT_MENU_FROM_QUIT;
+    gMenuSelectionFromQuit = MAIN_MENU_FROM_QUIT;
 }
 
 void func_80290360(void) {

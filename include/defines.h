@@ -79,7 +79,7 @@
 #define LOGO_INTRO_MENU 8
 #define CONTROLLER_PAK_MENU 9
 #define START_MENU 10
-#define GAME_SELECT_MENU 11
+#define MAIN_MENU 11
 #define PLAYER_SELECT_MENU 12
 #define COURSE_SELECT_MENU 13
 #define RACING_DUPLICATE 14
@@ -88,7 +88,7 @@
  * Options for gMenuSelectionFromQuit and gMenuSelectionFromEndingSequence
 **/
 #define START_MENU_FROM_QUIT 0
-#define GAME_SELECT_MENU_FROM_QUIT 1
+#define MAIN_MENU_FROM_QUIT 1
 #define PLAYER_SELECT_MENU_FROM_QUIT 2
 #define COURSE_SELECT_MENU_FROM_QUIT 3
 #define RACING 4
@@ -96,16 +96,16 @@
 #define CREDITS_SEQUENCE 9
 
 /**
- * Options for gGameMenuSelectionDepth
+ * Options for gMainMenuSelectionDepth
 **/
-#define BLANK_GAME_MENU 0
+#define BLANK_MAIN_MENU 0
 #define OPTIONS_SELECTION 1
 #define DATA_SELECTION 2
-#define PLAYER_AMOUNT_SELECTION 3
+#define PLAYER_NUM_SELECTION 3
 #define GAME_MODE_SELECTION 4
-#define GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION 5 // Selecting CC for GP and Versus, Selection "Begin" or "Data" for Time Trials. Unused for Battle
-#define CONFIRMATION_SELECTION 6
-#define CONFIRMATION_SELECTION_FROM_BACK_OUT 7
+#define GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION 5 // Selecting CC for GP and Versus. Selecting "Begin" or "Data" for Time Trials. Unused for Battle
+#define CONFIRM_OK_SELECTION 6
+#define CONFIRM_OK_SELECTION_FROM_BACK_OUT 7
 #define TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT 8
 
 /**
@@ -146,9 +146,9 @@
  * Options for gScreenModeSelection
  */
 #define SCREEN_MODE_1P 0
-#define SCREEN_MODE_2P_UD 1
-#define SCREEN_MODE_2P_LR 2
-#define SCREEN_MODE_3P_4P 3
+#define SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL 1
+#define SCREEN_MODE_2P_SPLITSCREEN_VERTICAL 2
+#define SCREEN_MODE_3P_4P_SPLITSCREEN 3
 #define NUM_SCREEN_MODES 4
 
 /**

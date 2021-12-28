@@ -742,7 +742,7 @@ void func_800591B4(void) {
                         }
                         func_8004F3E4(0);
                     }
-                    if ((gScreenModeSelection == SCREEN_MODE_2P_UD) && (D_80165801 != 0)) {
+                    if ((gScreenModeSelection == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL) && (D_80165801 != 0)) {
                         func_8004EE54(1);
                         if (gModeSelection != BATTLE) {
                             func_8004F020(1);
@@ -1105,15 +1105,15 @@ void func_80059AC8(void) {
                     func_80059820(0);
                 }
                 break;
-            case SCREEN_MODE_2P_LR:
+            case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                 func_80059A88(0);
                 func_80059A88(1);
                 break;
-            case SCREEN_MODE_2P_UD:
+            case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
                 func_80059A88(0);
                 func_80059A88(1);
                 break;
-            case SCREEN_MODE_3P_4P:
+            case SCREEN_MODE_3P_4P_SPLITSCREEN:
                 func_80059A88(0);
                 func_80059A88(1);
                 func_80059A88(2);

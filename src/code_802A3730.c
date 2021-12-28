@@ -154,8 +154,8 @@ void func_802A38B4(void) {
                 gMenuSelection = START_MENU;
             }
             break;
-        case GAME_SELECT_MENU_FROM_QUIT:
-            gMenuSelection = GAME_SELECT_MENU;
+        case MAIN_MENU_FROM_QUIT:
+            gMenuSelection = MAIN_MENU;
             break;
         case PLAYER_SELECT_MENU_FROM_QUIT:
             gMenuSelection = PLAYER_SELECT_MENU;

@@ -2,8 +2,8 @@ glabel func_800AA280
 /* 0AAE80 800AA280 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 0AAE84 800AA284 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 0AAE88 800AA288 8C8E0000 */  lw    $t6, ($a0)
-/* 0AAE8C 800AA28C 3C038019 */  lui   $v1, %hi(gGameMenuSelectionDepth) # $v1, 0x8019
-/* 0AAE90 800AA290 8063EDED */  lb    $v1, %lo(gGameMenuSelectionDepth)($v1)
+/* 0AAE8C 800AA28C 3C038019 */  lui   $v1, %hi(gMainMenuSelectionDepth) # $v1, 0x8019
+/* 0AAE90 800AA290 8063EDED */  lb    $v1, %lo(gMainMenuSelectionDepth)($v1)
 /* 0AAE94 800AA294 3C19800E */  lui   $t9, %hi(D_800E70A0) # $t9, 0x800e
 /* 0AAE98 800AA298 000E78C0 */  sll   $t7, $t6, 3
 /* 0AAE9C 800AA29C 25F8FFB0 */  addiu $t8, $t7, -0x50

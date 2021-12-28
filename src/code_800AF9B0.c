@@ -421,7 +421,7 @@ void func_800B0350(void) {
         do {
             if ((func_800B4520() == 0) && (gEnableDebugMode != 0) && ((gControllers[phi_s0].buttonPressed & 0x1000) != 0)) {
                 temp_v0 = gMenuSelection;
-                if ((temp_v0 != GAME_SELECT_MENU) && (temp_v0 != PLAYER_SELECT_MENU)) {
+                if ((temp_v0 != MAIN_MENU) && (temp_v0 != PLAYER_SELECT_MENU)) {
                     if (temp_v0 == COURSE_SELECT_MENU) {
                         func_800CA330(0x19);
                         goto block_9;
@@ -458,8 +458,8 @@ block_9:
             case START_MENU:
                 func_800B20F4(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
-            case GAME_SELECT_MENU_FROM_QUIT:
-            case GAME_SELECT_MENU:
+            case MAIN_MENU_FROM_QUIT:
+            case MAIN_MENU:
                 func_800B29D8(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
             case PLAYER_SELECT_MENU_FROM_QUIT:
@@ -2037,13 +2037,13 @@ void func_800B29D8(void *arg0, u16 arg1) {
     sp2E = phi_v1;
     arg1 &= 0xFFFF;
     if (func_800B4520(arg0) == 0) {
-        temp_t4 = gGameMenuSelectionDepth;
+        temp_t4 = gMainMenuSelectionDepth;
         switch (temp_t4) {
-        case BLANK_GAME_MENU:
+        case BLANK_MAIN_MENU:
             temp_t5 = D_8018EDF3;
             phi_v1_3 = &D_800F2B70 + ((temp_t5 * 0xC) + (*(&D_800E86AB + temp_t5) * 4));
             break;
-        case PLAYER_AMOUNT_SELECTION:
+        case PLAYER_NUM_SELECTION:
             phi_a2 = phi_v1;
             if ((phi_v1 & 0x100) != 0) {
                 temp_v0 = D_8018EDF3;
@@ -2057,14 +2057,14 @@ void func_800B29D8(void *arg0, u16 arg1) {
             }
             temp_v0_2 = D_8018EDF3;
             phi_v0 = temp_v0_2;
-            phi_t0 = &gGameMenuSelectionDepth;
+            phi_t0 = &gMainMenuSelectionDepth;
             if (((phi_a2 & 0x200) != 0) && (temp_v0_2 >= 2)) {
                 D_8018EDF3 = temp_v0_2 - 1;
                 sp1C = phi_a2;
                 func_800B44AC();
                 play_sound2(0x49008000);
                 phi_v0 = D_8018EDF3;
-                phi_t0 = &gGameMenuSelectionDepth;
+                phi_t0 = &gMainMenuSelectionDepth;
             }
             gPlayerCountSelection1 = phi_v0;
             phi_a0 = &gPlayerCountSelection1;
@@ -2074,10 +2074,10 @@ void func_800B29D8(void *arg0, u16 arg1) {
                     if ((phi_v0 != 3) && (phi_v0 != 4)) {
 
                     } else {
-                        gScreenModeSelection = SCREEN_MODE_3P_4P;
+                        gScreenModeSelection = SCREEN_MODE_3P_4P_SPLITSCREEN;
                     }
                 } else {
-                    gScreenModeSelection = SCREEN_MODE_2P_UD;
+                    gScreenModeSelection = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
                 }
             } else {
                 gScreenModeSelection = SCREEN_MODE_1P;
@@ -2123,7 +2123,7 @@ void func_800B29D8(void *arg0, u16 arg1) {
                     play_sound2(0x49008000);
                 }
             }
-            phi_t0_2 = &gGameMenuSelectionDepth;
+            phi_t0_2 = &gMainMenuSelectionDepth;
             if ((phi_v1 & 0x800) != 0) {
                 temp_v1_2 = D_8018EDF3 + &D_800E86AC;
                 temp_a0_2 = temp_v1_2->unk-1;
@@ -2132,11 +2132,11 @@ void func_800B29D8(void *arg0, u16 arg1) {
                     sp1C = phi_v1;
                     func_800B44AC(temp_a0_2);
                     play_sound2(0x49008000);
-                    phi_t0_2 = &gGameMenuSelectionDepth;
+                    phi_t0_2 = &gMainMenuSelectionDepth;
                 }
             }
             if ((phi_v1 & 0x4000) != 0) {
-                *phi_t0_2 = PLAYER_AMOUNT_SELECTION;
+                *phi_t0_2 = PLAYER_NUM_SELECTION;
                 func_800B44AC(3);
                 play_sound2(0x49008002);
                 temp_t6_2 = D_8018EDF3;
@@ -2150,9 +2150,9 @@ void func_800B29D8(void *arg0, u16 arg1) {
                         if (temp_v1_3 != 1) {
                             if (temp_v1_3 != 2) {
                                 if (temp_v1_3 != 3) {
-                                    *phi_t0_2 = CONFIRMATION_SELECTION;
+                                    *phi_t0_2 = CONFIRM_OK_SELECTION;
                                 } else {
-                                    *phi_t0_2 = CONFIRMATION_SELECTION;
+                                    *phi_t0_2 = CONFIRM_OK_SELECTION;
                                     play_sound2(0x4900900D);
                                 }
                             } else {
@@ -2233,7 +2233,7 @@ block_64:
             temp_a0_7 = *(&D_800E86AB + temp_v0_9);
             temp_a1 = *(&D_800E86AD + ((temp_v0_9 * 3) + temp_a0_7));
             if ((phi_v1 & 0x4000) != 0) {
-                gGameMenuSelectionDepth = GAME_MODE_SELECTION;
+                gMainMenuSelectionDepth = GAME_MODE_SELECTION;
                 func_800B44AC(temp_a0_7, temp_a1, phi_v1);
                 play_sound2(0x49008002);
                 temp_t5_2 = D_8018EDF3;
@@ -2246,7 +2246,7 @@ block_64:
                     func_8009E258();
                     play_sound2(0x49009011);
                 } else {
-                    gGameMenuSelectionDepth = CONFIRMATION_SELECTION;
+                    gMainMenuSelectionDepth = CONFIRM_OK_SELECTION;
                     play_sound2(0x49008001, temp_a1);
                     gStartMenuCounterForDemos = 0;
                 }
@@ -2256,8 +2256,8 @@ block_64:
                 phi_v1_3 = &D_800F2B70 + ((temp_v0_9 * 0xC) + (temp_a0_7 * 4));
             }
             break;
-        case CONFIRMATION_SELECTION:
-        case CONFIRMATION_SELECTION_FROM_BACK_OUT:
+        case CONFIRM_OK_SELECTION:
+        case CONFIRM_OK_SELECTION_FROM_BACK_OUT:
             if ((arg1 == 0) && ((temp_t7_5 = gStartMenuCounterForDemos + 1, gStartMenuCounterForDemos = temp_t7_5, (temp_t7_5 == 0x3C)) || ((temp_t7_5 % 300) == 0))) {
                 sp1C = phi_v1;
                 play_sound2(0x4900900F, arg1, phi_v1);
@@ -2269,9 +2269,9 @@ block_64:
                     if (temp_v1_7 != 3) {
 
                     }
-                    gGameMenuSelectionDepth = GAME_MODE_SELECTION;
+                    gMainMenuSelectionDepth = GAME_MODE_SELECTION;
                 } else {
-                    gGameMenuSelectionDepth = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
+                    gMainMenuSelectionDepth = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
                 }
                 func_800B44AC();
                 play_sound2(0x49008002);
@@ -2544,7 +2544,7 @@ extern s8 D_8018EDE9;
 extern s8 D_8018EDEA;
 extern s8 D_8018EDEB;
 extern s8 D_8018EDEC;
-extern s8 gGameMenuSelectionDepth;
+extern s8 gMainMenuSelectionDepth;
 extern s8 D_8018EDEE;
 extern s8 gDebugMenuSelection;
 extern s8 D_8018EDF1;
@@ -2632,8 +2632,8 @@ void func_800B3F74(u32 arg0) {
         func_800C8EAC(1);
         D_8018EDFC = 0;
         break;
-    case GAME_SELECT_MENU_FROM_QUIT:
-    case GAME_SELECT_MENU:
+    case MAIN_MENU_FROM_QUIT:
+    case MAIN_MENU:
         gEnableDebugMode = 0;
         gIsMirrorMode = 0;
         D_8018EDFC = 0;
@@ -2653,22 +2653,22 @@ void func_800B3F74(u32 arg0) {
                     if (temp_v0 != 4) {
 
                     } else {
-                        gGameMenuSelectionDepth = PLAYER_AMOUNT_SELECTION;
+                        gMainMenuSelectionDepth = PLAYER_NUM_SELECTION;
                     }
                 } else {
-                    temp_v0_2 = gGameMenuSelectionDepth;
+                    temp_v0_2 = gMainMenuSelectionDepth;
                     if ((temp_v0_2 != OPTIONS_SELECTION) && (temp_v0_2 != DATA_SELECTION)) {
-                        gGameMenuSelectionDepth = TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT;
+                        gMainMenuSelectionDepth = TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT;
                     } else {
-                        gGameMenuSelectionDepth = PLAYER_AMOUNT_SELECTION;
+                        gMainMenuSelectionDepth = PLAYER_NUM_SELECTION;
                     }
                 }
             } else {
-                gGameMenuSelectionDepth = CONFIRMATION_SELECTION_FROM_BACK_OUT;
+                gMainMenuSelectionDepth = CONFIRM_OK_SELECTION_FROM_BACK_OUT;
             }
         } else {
-            gGameMenuSelectionDepth = PLAYER_AMOUNT_SELECTION;
-            func_800C8EAC(2, &gGameMenuSelectionDepth, 3);
+            gMainMenuSelectionDepth = PLAYER_NUM_SELECTION;
+            func_800C8EAC(2, &gMainMenuSelectionDepth, 3);
             temp_v0_3 = gScreenModeSelection;
             D_8018EDF3 = 1;
             if ((temp_v0_3 >= NUM_SCREEN_MODES) || (temp_v0_3 < SCREEN_MODE_1P)) {
