@@ -70,9 +70,9 @@ extern u16 D_8015F890;
 extern s32 lapCount[];
 extern s32 D_8018CA78;
 
-extern Player *D_800DC4DC;
-extern Player* D_800DC4E0;
-extern Player *D_800DC4E4;
+extern Player *gPlayerOne;
+extern Player* gPlayerTwo;
+extern Player *gPlayerThree;
 
 extern struct Controller *D_800DC4D0;
 extern struct Controller *D_800DC4D4;
@@ -108,7 +108,7 @@ void func_80004FF8(void) {
 }
 /**
  * Activates staff ghost if time trial lap time is lower enough
- * 
+ *
  */
 void set_staff_ghost(void) {
     u32 temp_v0; // Appears to be player total lap time.
@@ -164,7 +164,7 @@ s32 func_800051C4(void) {
         // func_80040174 in mio0_decode.s
         func_80040174(D_80162D80, (D_80162D84 * 4) + 0x20, D_800DC710);
         phi_v0 = mio0encode(D_800DC710, (D_80162D84 * 4) + 0x20, D_800DC714);
-        return phi_v0 + 0x1e;   
+        return phi_v0 + 0x1e;
     }
 }
 
@@ -202,7 +202,7 @@ void func_80005310(void) {
         if (D_80162DC0 != gCurrentCourseId) {
             D_80162DD4 = 1;
         }
-        
+
         D_80162DC0 = (u16) gCurrentCourseId;
         D_80162DF0 = 0;
         D_80162DEC = 0;
@@ -246,7 +246,7 @@ s32 func_8000546C(void) {
     s16 phi_v0 = 0;
 
     if (D_80162DB0 >= 0x1000) {
-        D_800DC4DC->unk_000 = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_CPU;
+        gPlayerOne->unk_000 = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_CPU;
         return;
     }
 
@@ -261,7 +261,7 @@ s32 func_8000546C(void) {
 
     temp_a1 = (u32) (temp_a0 & 0xFF00) >> 8;
     D_800DC4D8->rawStickX = phi_v1;
-    
+
     if (temp_a1 < 0x80U) {
         phi_v1 = (s16) (temp_a1 & 0xFF);
     } else {
@@ -304,7 +304,7 @@ void func_8000561C(void) {
     s16 phi_a2 = 0;
 
     if (D_80162DA0 >= 0x1000) {
-        func_80005AE8(D_800DC4E4);
+        func_80005AE8(gPlayerThree);
         return;
     }
     temp_a0 = D_80162DA4[D_80162DA0];
@@ -361,7 +361,7 @@ void func_800057DC(void) {
     s16 phi_a2 = 0;
 
     if (D_80162D90 >= 0x1000) {
-        func_80005AE8(D_800DC4E0);
+        func_80005AE8(gPlayerTwo);
         return;
     }
     temp_a0 = D_80162D94[D_80162D90];
@@ -429,9 +429,9 @@ void func_8000599C(void) {
     }
     temp_v1 &= 0xff;
     temp_v2 &= 0xff << 8;
-    //temp_v1 = D_800DC4DC->unk_0CA;
-    
-    
+    //temp_v1 = gPlayerOne->unk_0CA;
+
+
     //if (((temp_v1 & 2) != 0) || ((temp_v1 & 8) != 0)) {
 
     //}
@@ -475,7 +475,7 @@ GLOBAL_ASM("asm/non_matchings/staff_ghosts/func_8000599C.s")
 
 // sets player to AI? (unconfirmed)
 void func_80005AE8(Player *ply) {
-    if (((ply->unk_000 & PLAYER_INVISIBLE_OR_BOMB) != 0) && (ply != D_800DC4DC)) {
+    if (((ply->unk_000 & PLAYER_INVISIBLE_OR_BOMB) != 0) && (ply != gPlayerOne)) {
         ply->unk_000 = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_CPU;
     }
 }
@@ -499,39 +499,39 @@ void func_80005B18(void) {
                 func_800052A4(); //gModeSelection, &D_80162DDC, 3, &D_80162DD4);
                 D_80162DD4 = 0;
                 D_80162DDC = 1;
-                D_80162DE0 = D_800DC4DC->characterId;
-                D_80162DE8 = D_800DC4DC->characterId;
+                D_80162DE0 = gPlayerOne->characterId;
+                D_80162DE8 = gPlayerOne->characterId;
                 D_80162E00 = 0;
                 D_80162DFC = D_8018CA78;
-                func_80005AE8(D_800DC4E0); // (u16) &D_80162DDC);
-                func_80005AE8(D_800DC4E4);
-            
+                func_80005AE8(gPlayerTwo); // (u16) &D_80162DDC);
+                func_80005AE8(gPlayerThree);
+
             } else {
                 if (lapCount[4] != 3) {
                     D_80162DD0 = D_80162DCC;
                     func_800052A4(); // gModeSelection, &D_80162DDC, 3, &D_80162DD4);
                     D_80162DDC = 1;
-                    D_80162DE0 = D_800DC4DC->characterId;
+                    D_80162DE0 = gPlayerOne->characterId;
                     D_80162DFC = D_8018CA78;
                     D_80162E00 = 0;
-                    D_80162DE8 = D_800DC4DC->characterId;
-                    func_80005AE8(D_800DC4E0); // (u16) &D_80162DDC);
-                    func_80005AE8(D_800DC4E4);
+                    D_80162DE8 = gPlayerOne->characterId;
+                    func_80005AE8(gPlayerTwo); // (u16) &D_80162DDC);
+                    func_80005AE8(gPlayerThree);
                     return;
-                    
+
                 }
             }
             D_80162D80 = (void *) ((D_80162DC8 << 0xF) + 0x3000 + &D_802BFB80);
             D_80162D84 = D_80162D86;
             D_80162DD0 = D_80162DCC;
-            D_80162DE8 = D_800DC4DC->characterId;
+            D_80162DE8 = gPlayerOne->characterId;
             D_80162DD8 = 0;
             D_80162DD4 = 0;
             D_80162DDC = 1;
-            func_80005AE8(D_800DC4E0); // (u16) &D_80162DDC, 3, &D_80162DD4);
-            func_80005AE8(D_800DC4E4);
-                    
-            
+            func_80005AE8(gPlayerTwo); // (u16) &D_80162DDC, 3, &D_80162DD4);
+            func_80005AE8(gPlayerThree);
+
+
             return;
         }
         if ((lapCount[0] == 3) && (D_80162DDC == 0) && (D_80162DF8 == 1)) {
@@ -539,9 +539,9 @@ void func_80005B18(void) {
             D_80162D84 = D_80162D86;
             D_80162DDC = 1;
         }
-        if (( D_800DC4DC->unk_000 & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) {
-            func_80005AE8(D_800DC4E0); // (u16) &D_80162DDC, 3, phi_a3);
-            func_80005AE8(D_800DC4E4);
+        if (( gPlayerOne->unk_000 & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) {
+            func_80005AE8(gPlayerTwo); // (u16) &D_80162DDC, 3, phi_a3);
+            func_80005AE8(gPlayerThree);
             return;
         };
         D_80162DEC++;
@@ -555,7 +555,7 @@ void func_80005B18(void) {
             if ((D_80162DD6 == 0) && (3 != lapCount[8])) {
                 func_8000561C();
             }
-            if (( D_800DC4DC->unk_000 & PLAYER_CINEMATIC_MODE) == 0) {
+            if (( gPlayerOne->unk_000 & PLAYER_CINEMATIC_MODE) == 0) {
                 func_8000599C();
             }
         }
@@ -574,12 +574,12 @@ void func_80005E6C(void) {
         if ((D_80162DD6 == 0) && (D_80164398 != 3)) {
             func_8000561C(); //2
         }
-        if ((D_800DC4DC->unk_000 & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {
+        if ((gPlayerOne->unk_000 & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {
             func_8000546C(); //1
             return;
         }
-        func_80005AE8(D_800DC4E0);
-        func_80005AE8(D_800DC4E4);
+        func_80005AE8(gPlayerTwo);
+        func_80005AE8(gPlayerThree);
     }
 }
 

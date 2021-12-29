@@ -3,10 +3,10 @@
 #include <types.h>
 #include <common_structs.h>
 
-extern Player *D_800DC4DC;
-extern Player *D_800DC4E0;
-extern Player *D_800DC4E4;
-extern Player *D_800DC4E8;
+extern Player *gPlayerOne;
+extern Player *gPlayerTwo;
+extern Player *gPlayerThree;
+extern Player *gPlayerFour;
 
 s32 func_802832C4(s32, s32, s16, s16);
 
@@ -541,7 +541,7 @@ s32 func_80282D90(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 
     if (0) {}; // debug stub?
 
-    res = func_802828C8(arg0 + 0xC, arg0 + 0x18, &D_80287818, &D_80287B1C, &D_80287B18) | 
+    res = func_802828C8(arg0 + 0xC, arg0 + 0x18, &D_80287818, &D_80287B1C, &D_80287B18) |
           func_802828C8(arg0, arg0 + 0x18, &D_80287998, &D_80287B1C, &D_80287B18);
     return res;
 }
@@ -1033,7 +1033,7 @@ void func_80283B6C(s32 arg0) {
 
 void func_80283BA4(s32 arg0) {
     func_800CA0B8();
-    func_800C90F4(0, (D_800DC4E8->characterId * 0x10) + 0x29008004);
+    func_800C90F4(0, (gPlayerFour->characterId * 0x10) + 0x29008004);
     func_800CA0A0();
 }
 
@@ -1107,7 +1107,7 @@ void func_80283EA0(s32 arg0) {
 }
 
 void func_80283ED0(Vec3f arg0) {
-    func_80282008(arg0, &D_800DC4E0->posX);
+    func_80282008(arg0, &gPlayerTwo->posX);
 }
 
 #ifdef MIPS_TO_C
@@ -1115,9 +1115,9 @@ void func_80283ED0(Vec3f arg0) {
 ? func_802821A0(f32, f32, ?); // extern
 
 void func_80283EF8(s32 arg0) {
-    func_802821A0(D_800DC4E0->posX, 0.12f);
-    func_802821A0((bitwise f32) (arg0 + 4), D_800DC4E0->posY, 0x3DF5C28F);
-    func_802821A0((bitwise f32) (arg0 + 8), D_800DC4E0->posZ, 0x3DF5C28F);
+    func_802821A0(gPlayerTwo->posX, 0.12f);
+    func_802821A0((bitwise f32) (arg0 + 4), gPlayerTwo->posY, 0x3DF5C28F);
+    func_802821A0((bitwise f32) (arg0 + 8), gPlayerTwo->posZ, 0x3DF5C28F);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80281FA0/func_80283EF8.s")
@@ -1132,7 +1132,7 @@ void func_80283F6C(s32 arg0) {
 }
 
 void func_80283FCC(Vec3f arg0) {
-    func_80282008(arg0, &D_800DC4E4->posX);
+    func_80282008(arg0, &gPlayerThree->posX);
 }
 
 #ifdef MIPS_TO_C
@@ -1140,9 +1140,9 @@ void func_80283FCC(Vec3f arg0) {
 //? func_802821A0(f32, f32, ?); // extern
 
 void func_80283FF4(f32 arg0) {
-    func_802821A0(D_800DC4E4->posX, 0.12f);
-    func_802821A0(arg0 + 4, D_800DC4E4->posY, 0x3DF5C28F);
-    func_802821A0(arg0 + 8, D_800DC4E4->posZ, 0x3DF5C28F);
+    func_802821A0(gPlayerThree->posX, 0.12f);
+    func_802821A0(arg0 + 4, gPlayerThree->posY, 0x3DF5C28F);
+    func_802821A0(arg0 + 8, gPlayerThree->posZ, 0x3DF5C28F);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80281FA0/func_80283FF4.s")
@@ -1242,7 +1242,7 @@ extern s8 D_802874F5;
 
 void func_80284308(void *arg0) {
     s32 sp30;
-    Player *player = &D_800DC4DC;
+    Player *player = &gPlayerOne;
     f32 temp_f0;
     f32 temp_f12;
     f32 temp_f2;
@@ -1255,7 +1255,7 @@ void func_80284308(void *arg0) {
     func_802832C4(&func_80283A54, arg0, 0x8C, 0x8C);
     func_80282D90(arg0, &D_802858E0, &D_802858F8, 0);
     temp_v0 = *(sp30 + (D_802874F5 * 4));
-    //player = D_800DC4DC;
+    //player = gPlayerOne;
     temp_f0 = temp_v0->unk14 - player->posX;
     temp_f12 = temp_v0->unk1C - player->posZ;
     temp_f2 = temp_v0->unk18 - player->posY;
@@ -1349,12 +1349,12 @@ void func_802846E4(void *arg0) {
 
     func_80282D90(arg0, &D_80285CB0, &D_80285CE0, 0);
     temp_f0 = D_8028747C;
-    arg0->unkC = arg0->unkC + (D_800DC4E8->posX - temp_f0);
-    arg0->unk10 = arg0->unk10 + (D_800DC4E8->posY - -29.0f);
-    arg0->unk14 = arg0->unk14 + (D_800DC4E8->posZ - -97.0f);
-    arg0->unk0 = arg0->unk0 + (D_800DC4E8->posX - temp_f0);
-    arg0->unk4 = arg0->unk4 + (D_800DC4E8->posY - -29.0f);
-    arg0->unk8 = arg0->unk8 + (D_800DC4E8->posZ - -97.0f);
+    arg0->unkC = arg0->unkC + (gPlayerFour->posX - temp_f0);
+    arg0->unk10 = arg0->unk10 + (gPlayerFour->posY - -29.0f);
+    arg0->unk14 = arg0->unk14 + (gPlayerFour->posZ - -97.0f);
+    arg0->unk0 = arg0->unk0 + (gPlayerFour->posX - temp_f0);
+    arg0->unk4 = arg0->unk4 + (gPlayerFour->posY - -29.0f);
+    arg0->unk8 = arg0->unk8 + (gPlayerFour->posZ - -97.0f);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80281FA0/func_802846E4.s")

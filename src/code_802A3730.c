@@ -104,10 +104,10 @@ void func_802A3730(struct UnkStruct_800DC5EC *arg0) {
 
     screenWidth /= 4;
     screenHeight /= 4;
-    
+
     screenStartX /= 4;
     screenStartY /= 4;
-    
+
     lrx = screenStartX + screenWidth;
     if (lrx > SCREEN_WIDTH) {
         lrx = SCREEN_WIDTH;
@@ -119,7 +119,7 @@ void func_802A3730(struct UnkStruct_800DC5EC *arg0) {
     }
     ulx = 0;
     uly = 0;
-    
+
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
 }
 
@@ -200,7 +200,7 @@ void func_802A39E0(struct UnkStruct_800DC5EC *arg0) {
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
 
     gDPFillRectangle(gDisplayListHead++, ulx, uly, lrx - 1, lry -1);
-    
+
     gDPPipeSync(gDisplayListHead++);
     gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer])); // 0x1FFFFFFF
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
@@ -256,7 +256,7 @@ UNUSED void func_802A40DC(void) {}
 UNUSED s32 func_802A40E4(void) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_800DC5EC->viewport));
     gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
-    gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | 
+    gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE |
         G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH | G_CLIPPING);
 }
 
@@ -287,7 +287,7 @@ void func_802A4300(void) {
 
     if ( D_800DC52C  == 0) {
         return;
-    } 
+    }
     if (D_800DC5B0 != 0) {
         return;
     }
@@ -314,7 +314,7 @@ void func_802A4300(void) {
     }
     gDPPipeSync(gDisplayListHead++);
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
-    
+
 }
 
 extern s32 D_801625EC;
@@ -570,7 +570,7 @@ void func_802A4A0C(Vtx *arg0, struct UnkStruct_800DC5EC *arg1, s32 arg2, s32 arg
 /*
         temp_v0_8->unk4 = arg0 + 0x40;
         temp_v0_8->unk0 = 0x400103F;
- 
+
         temp_v0_9->unk4 = 0x20604;
         temp_v0_9->unk0 = 0xB1000602;
         */
@@ -763,22 +763,22 @@ extern f32 D_80150130;
 void func_802A4EF4(void) {
     switch(D_800DC52C) {
         case 0:
-            func_8001F394(D_800DC4DC, &D_80150130);
+            func_8001F394(gPlayerOne, &D_80150130);
             break;
- 
+
         case 2:
-            func_8001F394(D_800DC4DC, &D_80150130);
-            func_8001F394(D_800DC4E0, &D_80150134);
+            func_8001F394(gPlayerOne, &D_80150130);
+            func_8001F394(gPlayerTwo, &D_80150134);
             break;
         case 1:
-            func_8001F394(D_800DC4DC, &D_80150130);
-            func_8001F394(D_800DC4E0, &D_80150134);
+            func_8001F394(gPlayerOne, &D_80150130);
+            func_8001F394(gPlayerTwo, &D_80150134);
             break;
         case 3:
-            func_8001F394(D_800DC4DC, &D_80150130);
-            func_8001F394(D_800DC4E0, &D_80150134);
-            func_8001F394(D_800DC4E4, &D_80150138);
-            func_8001F394(D_800DC4E8, &D_8015013C);
+            func_8001F394(gPlayerOne, &D_80150130);
+            func_8001F394(gPlayerTwo, &D_80150134);
+            func_8001F394(gPlayerThree, &D_80150138);
+            func_8001F394(gPlayerFour, &D_8015013C);
             break;
     }
 }
@@ -810,7 +810,7 @@ void func_802A50EC(void) {
 
     gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
-    
+
     func_802A39E0(D_800DC5EC);
     if (D_800DC5B4 != 0) {
         func_802A4A0C(&D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130);
@@ -828,7 +828,7 @@ void func_802A51D4(void) {
 
     gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
-    
+
     if (D_800DC5B4 != 0) {
         func_802A4A0C(&D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130);
         func_80057FC4(3);
@@ -949,11 +949,11 @@ void func_802A5760(void) {
         gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 
         func_802A3730(D_800DC5F8);
-        
+
     } else {
         func_802A3730(D_800DC5F8);
         func_802A39E0(D_800DC5F8);
-        
+
         if (D_800DC5B4 != 0) {
             func_802A4A0C(&D_802B8A10, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &D_8015013C);
             func_80057FC4(11);
@@ -987,8 +987,8 @@ void func_802A59A4(void) {
     gDPHalf1(gDisplayListHead++, spAA[23]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[8]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-    guLookAt(&gGfxPool->buffer[56], camera->pos[0], camera->pos[1], camera->pos[2], 
-             camera->unk, camera->unk1, camera->unk2, camera->angleX, 
+    guLookAt(&gGfxPool->buffer[56], camera->pos[0], camera->pos[1], camera->pos[2],
+             camera->unk, camera->unk1, camera->unk2, camera->angleX,
              camera->angleY, camera->angleZ);
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[56]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
@@ -1048,7 +1048,7 @@ void func_802A5CB4(void) {
     }
     func_80295A38(D_800DC5EC);
     if (D_800DC5C8 == 1) {
-        
+
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[56]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
         mtxf_identity(sp58);
@@ -1086,9 +1086,9 @@ void func_802A5FAC(void) {
     gDPHalf1(gDisplayListHead++, sp9A[17]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[16]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     guLookAt(&gGfxPool->buffer[64], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
-    
+
     //D_801647A8, D_801647AC, D_801647B0, D_801647B4, D_801647B8, D_801647BC, D_801647C0, D_801647C4, D_801647C8);
-    
+
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[64]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(sp58);
@@ -1134,7 +1134,7 @@ void func_802A62A4(void) {
     gDPHalf1(gDisplayListHead++, sp9A[17]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[8]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     guLookAt(&gGfxPool->buffer[56], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
-    
+
     if (D_800DC5C8 == 0) {
 
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[56]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
@@ -1182,7 +1182,7 @@ void func_802A65B8(void) {
     gDPHalf1(gDisplayListHead++, sp9A[17]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[16]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     guLookAt(&gGfxPool->buffer[64], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
-    
+
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[64]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(sp58);
@@ -1228,7 +1228,7 @@ void func_802A68CC(void) {
     gDPHalf1(gDisplayListHead++, sp9A[17]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[8]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     guLookAt(&gGfxPool->buffer[56], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
-    
+
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[56]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(&sp58);
@@ -1273,7 +1273,7 @@ void func_802A6BB0(void) {
     guPerspective(&gGfxPool->buffer[16], &sp9A[17], D_80150134, D_80150148, D_80150150, D_8015014C, 1.0f);
     gDPHalf1(gDisplayListHead++, sp9A[17]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[16]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    
+
     guLookAt(&gGfxPool->buffer[64], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[64]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
@@ -1417,7 +1417,7 @@ void func_802A74BC(void) {
     Camera *camera = &cameras[0];
     struct Controller *controller = &gControllers[0];
 
-    // struct? size = 0x10. unk++ doesn't work cause s32 too small. 
+    // struct? size = 0x10. unk++ doesn't work cause s32 too small.
     s32 *unk = &D_8015F790[0];
     s32 i;
 
@@ -1429,7 +1429,7 @@ void func_802A74BC(void) {
         wrapper->screenWidth = 4;
         wrapper->screenHeight = 4;
         wrapper->pathCounter = 1;
-        
+
 
         switch(D_800DC52C) {
             case 0:

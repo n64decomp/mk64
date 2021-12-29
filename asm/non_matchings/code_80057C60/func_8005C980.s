@@ -1,8 +1,8 @@
 glabel func_8005C980
 /* 05D580 8005C980 27BDFFF8 */  addiu $sp, $sp, -8
 /* 05D584 8005C984 8FA60000 */  lw    $a2, ($sp)
-/* 05D588 8005C988 3C07800E */  lui   $a3, %hi(D_800DC4DC) # $a3, 0x800e
-/* 05D58C 8005C98C 8CE7C4DC */  lw    $a3, %lo(D_800DC4DC)($a3)
+/* 05D588 8005C988 3C07800E */  lui   $a3, %hi(gPlayerOne) # $a3, 0x800e
+/* 05D58C 8005C98C 8CE7C4DC */  lw    $a3, %lo(gPlayerOne)($a3)
 /* 05D590 8005C990 000670C0 */  sll   $t6, $a2, 3
 /* 05D594 8005C994 01C67023 */  subu  $t6, $t6, $a2
 /* 05D598 8005C998 000E7100 */  sll   $t6, $t6, 4

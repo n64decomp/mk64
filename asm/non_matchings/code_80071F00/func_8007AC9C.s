@@ -18,8 +18,8 @@ glabel func_8007AC9C
 /* 07B8DC 8007ACDC 03288821 */  addu  $s1, $t9, $t0
 /* 07B8E0 8007ACE0 862900A4 */  lh    $t1, 0xa4($s1)
 /* 07B8E4 8007ACE4 000E7080 */  sll   $t6, $t6, 2
-/* 07B8E8 8007ACE8 3C0F800E */  lui   $t7, %hi(D_800DC4DC) # $t7, 0x800e
-/* 07B8EC 8007ACEC 8DEFC4DC */  lw    $t7, %lo(D_800DC4DC)($t7)
+/* 07B8E8 8007ACE8 3C0F800E */  lui   $t7, %hi(gPlayerOne) # $t7, 0x800e
+/* 07B8EC 8007ACEC 8DEFC4DC */  lw    $t7, %lo(gPlayerOne)($t7)
 /* 07B8F0 8007ACF0 01C47023 */  subu  $t6, $t6, $a0
 /* 07B8F4 8007ACF4 000E70C0 */  sll   $t6, $t6, 3
 /* 07B8F8 8007ACF8 2401000F */  li    $at, 15

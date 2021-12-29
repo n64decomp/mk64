@@ -6,7 +6,7 @@ glabel func_80089CBC
 /* 08A8CC 80089CCC AFBF0044 */  sw    $ra, 0x44($sp)
 /* 08A8D0 80089CD0 AFB7003C */  sw    $s7, 0x3c($sp)
 /* 08A8D4 80089CD4 AFB20028 */  sw    $s2, 0x28($sp)
-/* 08A8D8 80089CD8 3C10800E */  lui   $s0, %hi(D_800DC4DC) # $s0, 0x800e
+/* 08A8D8 80089CD8 3C10800E */  lui   $s0, %hi(gPlayerOne) # $s0, 0x800e
 /* 08A8DC 80089CDC 00809025 */  move  $s2, $a0
 /* 08A8E0 80089CE0 AFBE0040 */  sw    $fp, 0x40($sp)
 /* 08A8E4 80089CE4 AFB60038 */  sw    $s6, 0x38($sp)
@@ -15,7 +15,7 @@ glabel func_80089CBC
 /* 08A8F0 80089CF0 AFB3002C */  sw    $s3, 0x2c($sp)
 /* 08A8F4 80089CF4 AFB10024 */  sw    $s1, 0x24($sp)
 /* 08A8F8 80089CF8 0000B825 */  move  $s7, $zero
-/* 08A8FC 80089CFC 8E10C4DC */  lw    $s0, %lo(D_800DC4DC)($s0)
+/* 08A8FC 80089CFC 8E10C4DC */  lw    $s0, %lo(gPlayerOne)($s0)
 /* 08A900 80089D00 0C01C88F */  jal   func_8007223C
 /* 08A904 80089D04 24050200 */   li    $a1, 512
 /* 08A908 80089D08 10400035 */  beqz  $v0, .L80089DE0
@@ -66,7 +66,7 @@ glabel func_80089CBC
 /* 08A9B8 80089DB8 50400004 */  beql  $v0, $zero, .L80089DCC
 /* 08A9BC 80089DBC 8FD80000 */   lw    $t8, ($fp)
 /* 08A9C0 80089DC0 0C01C860 */  jal   func_80072180
-/* 08A9C4 80089DC4 00000000 */   nop   
+/* 08A9C4 80089DC4 00000000 */   nop
 .L80089DC8:
 /* 08A9C8 80089DC8 8FD80000 */  lw    $t8, ($fp)
 .L80089DCC:
@@ -96,14 +96,14 @@ glabel func_80089CBC
 /* 08AA20 80089E20 AFBF0034 */  sw    $ra, 0x34($sp)
 /* 08AA24 80089E24 AFB60030 */  sw    $s6, 0x30($sp)
 /* 08AA28 80089E28 AFB40028 */  sw    $s4, 0x28($sp)
-/* 08AA2C 80089E2C 3C10800E */  lui   $s0, %hi(D_800DC4DC) # $s0, 0x800e
+/* 08AA2C 80089E2C 3C10800E */  lui   $s0, %hi(gPlayerOne) # $s0, 0x800e
 /* 08AA30 80089E30 0080A025 */  move  $s4, $a0
 /* 08AA34 80089E34 AFB5002C */  sw    $s5, 0x2c($sp)
 /* 08AA38 80089E38 AFB30024 */  sw    $s3, 0x24($sp)
 /* 08AA3C 80089E3C AFB20020 */  sw    $s2, 0x20($sp)
 /* 08AA40 80089E40 AFB1001C */  sw    $s1, 0x1c($sp)
 /* 08AA44 80089E44 0000B025 */  move  $s6, $zero
-/* 08AA48 80089E48 8E10C4DC */  lw    $s0, %lo(D_800DC4DC)($s0)
+/* 08AA48 80089E48 8E10C4DC */  lw    $s0, %lo(gPlayerOne)($s0)
 /* 08AA4C 80089E4C 0C01C88F */  jal   func_8007223C
 /* 08AA50 80089E50 24050200 */   li    $a1, 512
 /* 08AA54 80089E54 10400028 */  beqz  $v0, .L80089EF8

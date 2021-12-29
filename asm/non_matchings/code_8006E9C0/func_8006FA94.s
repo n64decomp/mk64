@@ -2,9 +2,9 @@ glabel func_8006FA94
 /* 070694 8006FA94 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 070698 8006FA98 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 07069C 8006FA9C 0C01BE33 */  jal   func_8006F8CC
-/* 0706A0 8006FAA0 00000000 */   nop   
+/* 0706A0 8006FAA0 00000000 */   nop
 /* 0706A4 8006FAA4 0C01BC02 */  jal   func_8006F008
-/* 0706A8 8006FAA8 00000000 */   nop   
+/* 0706A8 8006FAA8 00000000 */   nop
 /* 0706AC 8006FAAC 24040000 */  li    $a0, 0
 /* 0706B0 8006FAB0 0C0338C4 */  jal   osSetTime
 /* 0706B4 8006FAB4 24050000 */   li    $a1, 0
@@ -114,7 +114,7 @@ glabel func_8006FA94
 /* 070848 8006FC48 24010001 */  li    $at, 1
 /* 07084C 8006FC4C 3C02800E */  lui   $v0, %hi(gModeSelection) # 0x800e
 /* 070850 8006FC50 15E10029 */  bne   $t7, $at, .L8006FCF8
-/* 070854 8006FC54 00000000 */   nop   
+/* 070854 8006FC54 00000000 */   nop
 /* 070858 8006FC58 3C02800E */  lui   $v0, %hi(gModeSelection) # $v0, 0x800e
 /* 07085C 8006FC5C 8C42C53C */  lw    $v0, %lo(gModeSelection)($v0)
 /* 070860 8006FC60 3C018019 */  lui   $at, %hi(D_8018D114) # $at, 0x8019
@@ -372,7 +372,7 @@ glabel func_8006FA94
 /* 070C1C 8007001C A429D18C */  sh    $t1, %lo(D_8018D18C)($at)
 /* 070C20 80070020 85EFD18C */  lh    $t7, %lo(D_8018D18C)($t7)
 /* 070C24 80070024 3C018019 */  lui   $at, %hi(D_8018D184) # $at, 0x8019
-/* 070C28 80070028 3C02800E */  lui   $v0, %hi(D_800DC4DC) # $v0, 0x800e
+/* 070C28 80070028 3C02800E */  lui   $v0, %hi(gPlayerOne) # $v0, 0x800e
 /* 070C2C 8007002C A42FD184 */  sh    $t7, %lo(D_8018D184)($at)
 /* 070C30 80070030 3C018019 */  lui   $at, %hi(D_8018D16C) # $at, 0x8019
 /* 070C34 80070034 A42FD16C */  sh    $t7, %lo(D_8018D16C)($at)
@@ -388,7 +388,7 @@ glabel func_8006FA94
 /* 070C5C 8007005C 3C088019 */  lui   $t0, %hi(D_8018CF28) # $t0, 0x8019
 /* 070C60 80070060 44811000 */  mtc1  $at, $f2
 /* 070C64 80070064 44800000 */  mtc1  $zero, $f0
-/* 070C68 80070068 8C42C4DC */  lw    $v0, %lo(D_800DC4DC)($v0)
+/* 070C68 80070068 8C42C4DC */  lw    $v0, %lo(gPlayerOne)($v0)
 /* 070C6C 8007006C 2508CF28 */  addiu $t0, %lo(D_8018CF28) # addiu $t0, $t0, -0x30d8
 /* 070C70 80070070 24E7CF50 */  addiu $a3, %lo(D_8018CF50) # addiu $a3, $a3, -0x30b0
 /* 070C74 80070074 2463CE10 */  addiu $v1, %lo(D_8018CE10) # addiu $v1, $v1, -0x31f0
@@ -444,4 +444,4 @@ glabel func_8006FA94
 /* 070D38 80070138 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 070D3C 8007013C 27BD0018 */  addiu $sp, $sp, 0x18
 /* 070D40 80070140 03E00008 */  jr    $ra
-/* 070D44 80070144 00000000 */   nop   
+/* 070D44 80070144 00000000 */   nop

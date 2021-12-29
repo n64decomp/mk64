@@ -498,7 +498,7 @@ void update_obj_banana_bunch(void *arg0) {
             gControllers[temp_t4].buttonPressed = temp_v1 & 0xDFFF;
             sp2C = &gPlayers[temp_t6];
             sp28 = &gControllers[temp_t4];
-            func_800C9060(((&gPlayers[temp_t6] - D_800DC4DC) / 3544) & 0xFF, 0x19008012);
+            func_800C9060(((&gPlayers[temp_t6] - gPlayerOne) / 3544) & 0xFF, 0x19008012);
             temp_a0_2 = gControllers[temp_t4].rawStickY;
             if ((temp_a0_2 >= 0x1F) && (temp_v1_2 = gControllers[temp_t4].rawStickX, ((temp_v1_2 < 0x28) != 0)) && (temp_v1_2 >= -0x27)) {
                 func_802B0788(temp_a0_2, arg0, &gPlayers[temp_t6], &gPlayers[temp_t6]);
@@ -808,7 +808,7 @@ s16 func_802B17F4(void *arg0) {
     }
     temp_v1 = (temp_v0 * 0x70) + &D_8015F9B8;
     temp_v1->unk6 = 0;
-    temp_v1->unk10 = (arg0 - D_800DC4DC) / 0xDD8;
+    temp_v1->unk10 = (arg0 - gPlayerOne) / 0xDD8;
     arg0->unkC = arg0->unkC | 0x40000;
     return temp_v0;
 }
@@ -847,7 +847,7 @@ s16 func_802B18E4(s32 arg0, s16 arg1) {
     temp_v1->unk6 = 0;
     temp_v1->unk10 = 0x5B0;
     temp_v1->unk12 = -0x8000;
-    temp_v1->unk14 = (arg0 - D_800DC4DC) / 0xDD8;
+    temp_v1->unk14 = (arg0 - gPlayerOne) / 0xDD8;
     temp_v1->unk4 = 0;
     temp_v1->unk8 = 0.0f;
     return temp_v0;
@@ -918,7 +918,7 @@ extern ? D_802B918C;
     }
     temp_s0->unk10 = 0;
     temp_s0->unk12 = -0x8000;
-    temp_s0->unk14 = (arg1 - D_800DC4DC) / 0xDD8;
+    temp_s0->unk14 = (arg1 - gPlayerOne) / 0xDD8;
     temp_s0->unk4 = (arg0 - &D_8015F9B8) / 0x70;
     temp_s0->unk8 = arg3;
     (arg0 + (arg3 * 4))->unk24 = (temp_s0 - &D_8015F9B8) / 0x70;
@@ -980,7 +980,7 @@ s16 func_802B1C9C(void *arg0) {
     temp_s0->unk6 = 0;
     temp_s0->unk10 = 0;
     temp_s0->unk12 = -0x8000;
-    temp_s0->unk14 = (arg0 - D_800DC4DC) / 0xDD8;
+    temp_s0->unk14 = (arg0 - gPlayerOne) / 0xDD8;
     return sp3E;
 }
 #else
@@ -1039,7 +1039,7 @@ s16 func_802B1E48(void *arg0) {
     temp_s0->unk6 = 0;
     temp_s0->unk10 = 0;
     temp_s0->unk12 = arg0->unk2E - 0x8000;
-    temp_s0->unk14 = (arg0 - D_800DC4DC) / 0xDD8;
+    temp_s0->unk14 = (arg0 - gPlayerOne) / 0xDD8;
     return sp3E;
 }
 #else
@@ -1169,7 +1169,7 @@ void update_obj_banana(void *arg0) {
                 gPlayers[temp_t6].unk_00C &= 0xFFFBFFFF;
                 sp80 = phi_v1;
                 sp88 = &gPlayers[temp_t6];
-                func_800C9060(((&gPlayers[temp_t6] - D_800DC4DC) / 3544) & 0xFF, 0x19008012, temp_a2);
+                func_800C9060(((&gPlayers[temp_t6] - gPlayerOne) / 3544) & 0xFF, 0x19008012, temp_a2);
                 temp_f0_2 = phi_v1->unk2;
                 if ((temp_f0_2 > 30.0f) && (temp_a0 = phi_v1->unk0, ((temp_a0 < 0xA) != 0)) && (temp_a0 >= -9)) {
                     temp_f2_2 = gPlayers[temp_t6].unk_094;
@@ -1376,7 +1376,7 @@ void func_802B2914(void *arg0, Player *player, s16 arg2) {
         func_802AD950(temp_s0 + 0x30, temp_s0->unkC + 1.0f, temp_s0->unk18, temp_s0->unk1C, temp_s0->unk20, sp4C, sp50, sp54);
         func_802B4E30(temp_s0);
         temp_s0->unk2 = -0x7000;
-        temp_s0->unk10 = (player - D_800DC4DC) / 3544;
+        temp_s0->unk10 = (player - gPlayerOne) / 3544;
         temp_s0->unk8 = (arg0 - &D_8015F9B8) / 112;
         temp_s0->unk14 = -1;
         temp_s0->unk4 = 0x14;
@@ -1415,7 +1415,7 @@ block_8:
             goto block_8;
         }
         if ((player->unk_000 & PLAYER_HUMAN) != 0) {
-            func_800C9060(((player - D_800DC4DC) / 3544) & 0xFF, 0x19008012, &D_800DC4DC, 0xDD8);
+            func_800C9060(((player - gPlayerOne) / 3544) & 0xFF, 0x19008012, &gPlayerOne, 0xDD8);
         }
     }
 }
@@ -1467,7 +1467,7 @@ s16 func_802B2C40(void *arg0) {
     }
     temp_v1 = (temp_v0 * 0x70) + &D_8015F9B8;
     temp_v1->unk6 = 0;
-    temp_v1->unk24 = (arg0 - D_800DC4DC) / 0xDD8;
+    temp_v1->unk24 = (arg0 - gPlayerOne) / 0xDD8;
     arg0->unkC = arg0->unkC | 0x40000;
     return temp_v0;
 }
@@ -1499,7 +1499,7 @@ s16 func_802B2D70(void *arg0) {
     s32 temp_t0;
     void *temp_v1;
 
-    temp_t0 = ((arg0 - D_800DC4DC) / 0xDD8) & 0xFFFF;
+    temp_t0 = ((arg0 - gPlayerOne) / 0xDD8) & 0xFFFF;
     if (temp_t0 >= 8) {
         return -1;
     }
@@ -1556,7 +1556,7 @@ void func_802B2EBC(u16 *arg0) {
     phi_a2 = temp_a2;
     if ((*temp_a2 & 0x4000) != 0) {
         arg0 = temp_a2;
-        func_800CAB4C(((temp_a2 - D_800DC4DC) / 0xDD8) & 0xFF);
+        func_800CAB4C(((temp_a2 - gPlayerOne) / 0xDD8) & 0xFF);
         phi_a2 = arg0;
     }
     phi_v1 = &gPlayers;
@@ -1603,7 +1603,7 @@ void func_802B2FA0(Player *player) {
     s32 sp1C;
     s16 temp_t9;
 
-    sp1C = (player - D_800DC4DC) / 3544;
+    sp1C = (player - gPlayerOne) / 3544;
     temp_t9 = player->unk10;
     switch (temp_t9) {
     case 3:
@@ -1683,11 +1683,11 @@ void func_802B30EC(void) {
         if (func_800910E4(phi_s0) == 0) {
             temp_v0 = phi_s0->unk0;
             if ((temp_v0 & 0x100) != 0) {
-                if (((phi_s0 - D_800DC4E0) / 0xDD8) == 0) {
+                if (((phi_s0 - gPlayerTwo) / 0xDD8) == 0) {
                     phi_s1 = D_800DC4D0;
-                } else if (((phi_s0 - D_800DC4E4) / 0xDD8) == 0) {
+                } else if (((phi_s0 - gPlayerThree) / 0xDD8) == 0) {
                     phi_s1 = D_800DC4D4;
-                } else if (((phi_s0 - D_800DC4DC) / 0xDD8) == 0) {
+                } else if (((phi_s0 - gPlayerOne) / 0xDD8) == 0) {
                     phi_s1 = D_800DC4D8;
                 }
             }
@@ -2148,7 +2148,7 @@ s16 func_802B3FD0(s32 arg0, s32 arg1) {
         if (((*phi_s0 & 0x8000) != 0) && (phi_s0 != arg0) && (*(&gPlayerBalloonCount + (phi_s1 * 2)) >= 0)) {
             temp_f0 = func_802B51E8(phi_s0 + 0x14, arg1 + 0x18);
             if (temp_f0 < phi_f20) {
-                phi_fp = (phi_s0 - D_800DC4DC) / 0xDD8;
+                phi_fp = (phi_s0 - gPlayerOne) / 0xDD8;
                 phi_f20 = temp_f0;
             }
         }
@@ -2374,7 +2374,7 @@ block_16:
                 arg0->unk4 = D_8015F8F0;
                 arg0->unk8 = 1000.0f;
                 temp_v1_2 = D_80164430;
-                temp_v0_2 = *(&D_80164438 + (((&gPlayers[temp_t7] - D_800DC4DC) / 3544) * 2)) + 8;
+                temp_v0_2 = *(&D_80164438 + (((&gPlayers[temp_t7] - gPlayerOne) / 3544) * 2)) + 8;
                 phi_v0_2 = temp_v0_2;
                 if (temp_v1_2 < temp_v0_2) {
                     phi_v0_2 = temp_v0_2 - temp_v1_2;
@@ -2398,7 +2398,7 @@ block_16:
                     arg0->unk6 = 4;
                     arg0->unk4 = 0x258;
                     temp_v1_3 = D_80164430;
-                    temp_v0_4 = *(&D_80164438 + (((&gPlayers[temp_t7] - D_800DC4DC) / 3544) * 2)) + 8;
+                    temp_v0_4 = *(&D_80164438 + (((&gPlayers[temp_t7] - gPlayerOne) / 3544) * 2)) + 8;
                     phi_v0_3 = temp_v0_4;
                     if (temp_v1_3 < temp_v0_4) {
                         phi_v0_3 = temp_v0_4 - temp_v1_3;
@@ -2408,7 +2408,7 @@ block_16:
                     arg0->unk6 = 5;
                     arg0->unk8 = 1000.0f;
                     temp_v1_4 = D_80164430;
-                    temp_v0_5 = *(&D_80164438 + (((&gPlayers[temp_t7] - D_800DC4DC) / 3544) * 2)) + 8;
+                    temp_v0_5 = *(&D_80164438 + (((&gPlayers[temp_t7] - gPlayerOne) / 3544) * 2)) + 8;
                     phi_v0_4 = temp_v0_5;
                     if (temp_v1_4 < temp_v0_5) {
                         phi_v0_4 = temp_v0_5 - temp_v1_4;
