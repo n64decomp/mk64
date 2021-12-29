@@ -1,6 +1,6 @@
 glabel func_800ABB24
-/* 0AC724 800ABB24 3C028019 */  lui   $v0, %hi(D_8018EDF7) # $v0, 0x8019
-/* 0AC728 800ABB28 8042EDF7 */  lb    $v0, %lo(D_8018EDF7)($v0)
+/* 0AC724 800ABB24 3C028019 */  lui   $v0, %hi(gDataMenuSelection) # $v0, 0x8019
+/* 0AC728 800ABB28 8042EDF7 */  lb    $v0, %lo(gDataMenuSelection)($v0)
 /* 0AC72C 800ABB2C 3C18800E */  lui   $t8, %hi(D_800E7430) # $t8, 0x800e
 /* 0AC730 800ABB30 27187430 */  addiu $t8, %lo(D_800E7430) # addiu $t8, $t8, 0x7430
 /* 0AC734 800ABB34 04410003 */  bgez  $v0, .L800ABB44

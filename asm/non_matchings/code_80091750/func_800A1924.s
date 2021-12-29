@@ -7,9 +7,9 @@ glabel func_800A1924
 /* 0A2538 800A1938 24060084 */  li    $a2, 132
 /* 0A253C 800A193C 0C0269DB */  jal   func_8009A76C
 /* 0A2540 800A1940 2407FFFF */   li    $a3, -1
-/* 0A2544 800A1944 3C048019 */  lui   $a0, %hi(D_8018EDF7) # $a0, 0x8019
+/* 0A2544 800A1944 3C048019 */  lui   $a0, %hi(gDataMenuSelection) # $a0, 0x8019
 /* 0A2548 800A1948 0C02D8E7 */  jal   func_800B639C
-/* 0A254C 800A194C 8084EDF7 */   lb    $a0, %lo(D_8018EDF7)($a0)
+/* 0A254C 800A194C 8084EDF7 */   lb    $a0, %lo(gDataMenuSelection)($a0)
 /* 0A2550 800A1950 04400013 */  bltz  $v0, .L800A19A0
 /* 0A2554 800A1954 3C048015 */   lui   $a0, %hi(gDisplayListHead) # $a0, 0x8015
 /* 0A2558 800A1958 240F0095 */  li    $t7, 149
@@ -31,8 +31,8 @@ glabel func_800A1924
 /* 0A2598 800A1998 3C018015 */  lui   $at, %hi(gDisplayListHead) # $at, 0x8015
 /* 0A259C 800A199C AC220298 */  sw    $v0, %lo(gDisplayListHead)($at)
 .L800A19A0:
-/* 0A25A0 800A19A0 3C028019 */  lui   $v0, %hi(D_8018EDF7) # $v0, 0x8019
-/* 0A25A4 800A19A4 8042EDF7 */  lb    $v0, %lo(D_8018EDF7)($v0)
+/* 0A25A0 800A19A0 3C028019 */  lui   $v0, %hi(gDataMenuSelection) # $v0, 0x8019
+/* 0A25A4 800A19A4 8042EDF7 */  lb    $v0, %lo(gDataMenuSelection)($v0)
 /* 0A25A8 800A19A8 3C04800F */  lui   $a0, %hi(gCupCourseOrder)
 /* 0A25AC 800A19AC 04410003 */  bgez  $v0, .L800A19BC
 /* 0A25B0 800A19B0 0002C083 */   sra   $t8, $v0, 2

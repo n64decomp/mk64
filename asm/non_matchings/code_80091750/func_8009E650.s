@@ -947,8 +947,8 @@ glabel L8009F388
 /* 0A0028 8009F428 1000006A */  b     .L8009F5D4
 /* 0A002C 8009F42C 8FBF001C */   lw    $ra, 0x1c($sp)
 glabel L8009F430
-/* 0A0030 8009F430 3C028019 */  lui   $v0, %hi(D_8018EDF7) # $v0, 0x8019
-/* 0A0034 8009F434 8042EDF7 */  lb    $v0, %lo(D_8018EDF7)($v0)
+/* 0A0030 8009F430 3C028019 */  lui   $v0, %hi(gDataMenuSelection) # $v0, 0x8019
+/* 0A0034 8009F434 8042EDF7 */  lb    $v0, %lo(gDataMenuSelection)($v0)
 /* 0A0038 8009F438 3C04800E */  lui   $a0, %hi(D_800E7E34)
 /* 0A003C 8009F43C AFBF007C */  sw    $ra, 0x7c($sp)
 /* 0A0040 8009F440 04410003 */  bgez  $v0, .L8009F450
@@ -975,10 +975,10 @@ glabel L8009F430
 /* 0A008C 8009F48C 0C0268DD */  jal   func_8009A374
 /* 0A0090 8009F490 00402025 */   move  $a0, $v0
 /* 0A0094 8009F494 8FBF007C */  lw    $ra, 0x7c($sp)
-/* 0A0098 8009F498 3C198019 */  lui   $t9, %hi(D_8018EDF7) # $t9, 0x8019
+/* 0A0098 8009F498 3C198019 */  lui   $t9, %hi(gDataMenuSelection) # $t9, 0x8019
 /* 0A009C 8009F49C 3C040200 */  lui   $a0, %hi(D_02004A0C) # $a0, 0x200
 /* 0A00A0 8009F4A0 AFE20018 */  sw    $v0, 0x18($ra)
-/* 0A00A4 8009F4A4 8339EDF7 */  lb    $t9, %lo(D_8018EDF7)($t9)
+/* 0A00A4 8009F4A4 8339EDF7 */  lb    $t9, %lo(gDataMenuSelection)($t9)
 /* 0A00A8 8009F4A8 24844A0C */  addiu $a0, %lo(D_02004A0C) # addiu $a0, $a0, 0x4a0c
 /* 0A00AC 8009F4AC AFF9001C */  sw    $t9, 0x1c($ra)
 /* 0A00B0 8009F4B0 0C026449 */  jal   segmented_to_virtual

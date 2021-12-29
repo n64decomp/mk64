@@ -1,7 +1,7 @@
 glabel func_800AEDBC
 /* 0AF9BC 800AEDBC 27BDFFE8 */  addiu $sp, $sp, -0x18
-/* 0AF9C0 800AEDC0 3C038019 */  lui   $v1, %hi(D_8018EDF7) # $v1, 0x8019
-/* 0AF9C4 800AEDC4 2463EDF7 */  addiu $v1, %lo(D_8018EDF7) # addiu $v1, $v1, -0x1209
+/* 0AF9C0 800AEDC0 3C038019 */  lui   $v1, %hi(gDataMenuSelection) # $v1, 0x8019
+/* 0AF9C4 800AEDC4 2463EDF7 */  addiu $v1, %lo(gDataMenuSelection) # addiu $v1, $v1, -0x1209
 /* 0AF9C8 800AEDC8 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 0AF9CC 800AEDCC 8C8E001C */  lw    $t6, 0x1c($a0)
 /* 0AF9D0 800AEDD0 80620000 */  lb    $v0, ($v1)

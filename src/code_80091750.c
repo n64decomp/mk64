@@ -8241,10 +8241,10 @@ block_63:
             /* Duplicate return node #87. Try simplifying control flow for better match */
             return;
         case 0xE6:                                  /* switch 2 */
-            temp_v0_8 = D_8018EDF7;
+            temp_v0_8 = gDataMenuSelection;
             sp7C = phi_ra;
             phi_ra->unk18 = func_8009A374(segmented_to_virtual_dupe(*(&D_800E7E34 + (*(&gCupCourseOrder + (((temp_v0_8 / 4) * 8) + ((temp_v0_8 % 4) * 2))) * 4))));
-            phi_ra->unk1C = D_8018EDF7;
+            phi_ra->unk1C = gDataMenuSelection;
             func_800996BC(segmented_to_virtual(&D_02004A0C), 0);
             func_8006EF60();
             if (func_800B5B94() == 0) {
@@ -9570,7 +9570,7 @@ void *func_800959A0(void *, ?, ?, ?, s32); // extern
 void *func_8009BA74(void *, ? *, ?, ?); // extern
 s32 func_800B639C(s8); // extern
 extern ? D_02004A0C;
-extern s8 D_8018EDF7;
+extern s8 gDataMenuSelection;
 extern ? gCupCourseOrder;
 extern void *gDisplayListHead;
 
@@ -9580,12 +9580,12 @@ void func_800A1924(void *arg0) {
     void *temp_v0_3;
 
     func_8009A76C(arg0->unk18, 0x17, 0x84, -1);
-    if (func_800B639C(D_8018EDF7) >= 0) {
+    if (func_800B639C(gDataMenuSelection) >= 0) {
         temp_v0 = func_800959A0(gDisplayListHead, 0x57, 0x84, 0x96, 0x95);
         gDisplayListHead = temp_v0;
         gDisplayListHead = func_8009BA74(temp_v0, &D_02004A0C, 0x57, 0x84);
     }
-    temp_v0_2 = D_8018EDF7;
+    temp_v0_2 = gDataMenuSelection;
     func_8004EF9C(*(&gCupCourseOrder + (((temp_v0_2 / 4) * 8) + ((temp_v0_2 % 4) * 2))));
     temp_v0_3 = gDisplayListHead;
     gDisplayListHead = temp_v0_3 + 8;
@@ -9608,7 +9608,7 @@ extern ? *D_800E7728;
 extern ? *D_800E772C;
 extern ? D_800E77D8;
 extern ? D_800E77E4;
-extern s8 D_8018EDF7;
+extern s8 gDataMenuSelection;
 extern ? gCupCourseOrder;
 
 void func_800A1A20(void *arg0) {
@@ -9619,7 +9619,7 @@ void func_800A1A20(void *arg0) {
     s32 phi_s0;
     s32 phi_s1;
 
-    temp_v0 = D_8018EDF7;
+    temp_v0 = gDataMenuSelection;
     temp_s1 = *(&gCupCourseOrder + (((temp_v0 / 4) * 8) + ((temp_v0 % 4) * 2)));
     arg0->unkC = 0x14;
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
@@ -9657,8 +9657,8 @@ s32 func_800B639C(s8); // extern
 extern s32 D_800E7834;
 extern f32 D_800F1B54;
 extern ? D_8018EB90;
-extern s8 D_8018EDF7;
-extern s8 D_8018EDF8;
+extern s8 gDataMenuSelection;
+extern s8 gCourseRecordsMenuSelection;
 extern void *gDisplayListHead;
 
 void func_800A1BE0(s32 arg0) {
@@ -9674,21 +9674,21 @@ void func_800A1BE0(s32 arg0) {
     s32 *phi_s3;
     ? phi_s2;
 
-    temp_v0 = D_8018EDF7;
+    temp_v0 = gDataMenuSelection;
     temp_f20 = D_800F1B54;
     phi_s0 = 0;
     phi_s4 = 0x3F;
     phi_s3 = &D_800E7834;
     do {
         phi_s1 = 0;
-        if (phi_s0 == D_8018EDF8) {
+        if (phi_s0 == gCourseRecordsMenuSelection) {
             phi_s2 = TEXT_BLUE_GREEN_RED_CYCLE_2;
         } else {
             phi_s2 = TEXT_GREEN;
             if (phi_s0 != 1) {
                 if (phi_s0 != 2) {
 
-                } else if (func_800B639C(D_8018EDF7) < 0) {
+                } else if (func_800B639C(gDataMenuSelection) < 0) {
                     goto block_9;
                 }
             } else if ((((temp_v0 / 4) * 0x60) + ((temp_v0 % 4) * 0x18) + &D_8018EB90)->unk12 == 0) {
@@ -9713,7 +9713,7 @@ block_9:
         phi_s3 += 4;
     } while (temp_s0 != 3);
     sp78 = 0x1F;
-    sp7A = (D_8018EDF8 * 0xD) + 0x3A;
+    sp7A = (gCourseRecordsMenuSelection * 0xD) + 0x3A;
     func_800A66A8(arg0, &sp78);
 }
 #else
@@ -9728,7 +9728,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A1BE0.s")
 extern s32 D_800E7840;
 extern ? D_800E7848;
 extern f32 D_800F1B58;
-extern s8 D_8018EDF8;
+extern s8 gCourseRecordsMenuSelection;
 extern s8 D_8018EDF9;
 
 void func_800A1DE0(s32 arg0) {
@@ -9749,7 +9749,7 @@ void func_800A1DE0(s32 arg0) {
     phi_s0 = 0x3C;
     phi_s1 = 0;
     do {
-        func_80093324(0x1B, phi_s0, (&D_800E7848 + (D_8018EDF8 * 0xC) + phi_s1)->unk-C, 0, temp_f20, temp_f20);
+        func_80093324(0x1B, phi_s0, (&D_800E7848 + (gCourseRecordsMenuSelection * 0xC) + phi_s1)->unk-C, 0, temp_f20, temp_f20);
         temp_s0 = phi_s0 + 0xD;
         phi_s0 = temp_s0;
         phi_s1 += 4;
@@ -11193,7 +11193,7 @@ extern ? D_800E7744;
 extern ? D_800F0C54;
 extern ? D_800F0C58;
 extern f32 D_800F1DC8;
-extern s8 D_8018EDF7;
+extern s8 gDataMenuSelection;
 extern s32 gGlobalTimer;
 
 void func_800A474C(s32 arg0, s32 arg1, s32 arg2) {
@@ -11216,17 +11216,17 @@ void func_800A474C(s32 arg0, s32 arg1, s32 arg2) {
     }
     if (arg0 < 5) {
         if (sp30 == 0) {
-            phi_v0 = func_800B4E24(arg0, &D_8018EDF7);
+            phi_v0 = func_800B4E24(arg0, &gDataMenuSelection);
         } else {
-            phi_v0 = func_800B4EB4(arg0, D_8018EDF7);
+            phi_v0 = func_800B4EB4(arg0, gDataMenuSelection);
         }
         sp48 = phi_v0;
         set_text_color(TEXT_GREEN);
     } else {
         if (sp30 == 0) {
-            phi_v0_2 = func_800B4F2C(&D_8018EDF7);
+            phi_v0_2 = func_800B4F2C(&gDataMenuSelection);
         } else {
-            phi_v0_2 = func_800B4FB0(D_8018EDF7);
+            phi_v0_2 = func_800B4FB0(gDataMenuSelection);
         }
         sp48 = phi_v0_2;
     }
@@ -15806,14 +15806,14 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ABAE8.s")
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 extern ? D_800E7430;
-extern s8 D_8018EDF7;
+extern s8 gDataMenuSelection;
 
 void func_800ABB24(void *arg0) {
     s32 temp_t7;
     s8 temp_v0;
     void *temp_v1;
 
-    temp_v0 = D_8018EDF7;
+    temp_v0 = gDataMenuSelection;
     temp_v1 = ((temp_v0 / 4) * 8) + &D_800E7430;
     arg0->unkC = temp_v1->unk0 - 2;
     temp_t7 = arg0->unk1C + 0x10;
@@ -17695,7 +17695,7 @@ s32 func_800B5B94(); // extern
 ? func_800B6708(); // extern
 void *segmented_to_virtual_dupe(segment_address_t); // extern
 extern ? D_800E7E34;
-extern s8 D_8018EDF7;
+extern s8 gDataMenuSelection;
 extern ? D_8018EE10;
 extern ? gCupCourseOrder;
 
@@ -17704,11 +17704,11 @@ void func_800AEDBC(void *arg0) {
     s8 temp_v0_2;
     void *temp_a3;
 
-    temp_v0 = D_8018EDF7;
+    temp_v0 = gDataMenuSelection;
     temp_a3 = arg0;
     if (temp_v0 != arg0->unk1C) {
         arg0->unk1C = temp_v0;
-        temp_v0_2 = D_8018EDF7;
+        temp_v0_2 = gDataMenuSelection;
         arg0 = temp_a3;
         func_8009A594(arg0->unk18, 0, segmented_to_virtual_dupe(*(&D_800E7E34 + (*(&gCupCourseOrder + (((temp_v0_2 / 4) * 8) + ((temp_v0_2 % 4) * 2))) * 4))), arg0);
         if (func_800B5B94() == 0) {
