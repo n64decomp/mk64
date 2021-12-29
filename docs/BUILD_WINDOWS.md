@@ -50,8 +50,9 @@ mk64 requires the following compiler binaries: `as1, cc, cfe, copt, ugen, ujoin,
 
 In `MSYS2 MSYS` run in the directory `mk64/tools/ido5.3_recomp/`:
 ```
-./recomp ~/ido5.3_compiler/usr/lib/as1 > as1_c.c
+./recomp ../ido5.3_compiler/usr/lib/as1 > as1_c.c
 ```
+If you get an assertion failed error. Then the directory to the compiler is incorrect.
 ### Step 7: Compile the generated C files
 In `MSYS2 MSYS` run in the directory `mk64/tools/ido5.3_recomp/`:
 ```
