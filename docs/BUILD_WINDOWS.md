@@ -43,12 +43,12 @@ In `MSYS2 MinGW x64` run in `mk64/tools/ido5.3_recomp/`:
 g++ recomp.cpp -o recomp -g -lcapstone -Dugen53
 ```
 
-### Step 6: Compiling the recomp compiler in `MSYS2 MSYS`
+### Step 6: Generate Recomp Source Files in `MSYS2 MinGW x64`
 
 Generate the .c files which will compile into the recomp binaries.
 mk64 requires the following compiler binaries: `as1, cc, cfe, copt, ugen, ujoin, uld, umerge, uopt`
 
-In `MSYS2 MSYS` run in the directory `mk64/tools/ido5.3_recomp/`:
+In `MSYS2 MinGW x64` run in the directory `mk64/tools/ido5.3_recomp/`:
 ```
 ./recomp ../ido5.3_compiler/usr/lib/as1 > as1_c.c
 ```
@@ -57,7 +57,7 @@ The binary for cc is in `/ido5.3_compiler/usr/bin/` so do:
 ```
 ./recomp ../ido5.3_compiler/usr/bin/cc > cc_c.c
 ```
-### Step 7: Compile the generated C files
+### Step 7: Compiling the recomp compiler in `MSYS2 MSYS`
 In `MSYS2 MSYS` run in the directory `mk64/tools/ido5.3_recomp/`:
 ```
 gcc libc_impl.c as1_c.c -o as1 -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
