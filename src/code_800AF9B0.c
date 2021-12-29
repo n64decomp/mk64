@@ -2862,12 +2862,10 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B4560.s")
 #endif
 
 void func_800B45E0(s32 arg0) {
-    CourseTimeTrialRecords* courseTimeTrialRecordsPtr;
-    u8* saveDataPtr;
-    saveDataPtr = &D_8018EB90;
-    saveDataPtr += ((arg0 / 4) * sizeof(CupTimeTrialRecords)) +  ((arg0 % 4) * sizeof(CourseTimeTrialRecords));
+    CourseTimeTrialRecords* courseTimeTrialRecordsPtr = &D_8018EB90.allCourseTimeTrialRecords \
+                                                        .cupRecords[arg0 / 4] \
+                                                        .courseRecords[arg0 % 4];
 
-    courseTimeTrialRecordsPtr = (CourseTimeTrialRecords*) (saveDataPtr);
     courseTimeTrialRecordsPtr->unknownBytes[5] = func_800B4874();
     osEepromLongWrite(&gSIEventMesgQueue, ((u32)courseTimeTrialRecordsPtr - (u32)&D_8018EB90) >> 3, courseTimeTrialRecordsPtr, sizeof(CourseTimeTrialRecords));
 }
@@ -2960,9 +2958,11 @@ s32 func_800B4874(s32 arg0) {
     s32 temp_a0;
     s32 temp_a1;
     s32 temp_v1;
-    u8* courseTimeTrialRecordsPtr;
+    u8* records = &D_8018EB90.allCourseTimeTrialRecords \
+                  .cupRecords[arg0 / 4] \
+                  .courseRecords[arg0 % 4] \
+                  .records;
 
-    courseTimeTrialRecordsPtr = (((u8*) &D_8018EB90) + (arg0 / 4) * 0x60) + ((arg0 % 4) * 0x18);
     temp_v1 = 0;
     temp_a1 = 0;
     while (temp_a1 < 7)
@@ -2970,7 +2970,7 @@ s32 func_800B4874(s32 arg0) {
         temp_a0 = 0;
         while (temp_a0 < 3)
         {
-            temp_v1 += ((s32) *(courseTimeTrialRecordsPtr + 3*temp_a1 + temp_a0) * (temp_a0 + 1)) + temp_a1;
+            temp_v1 += (*((records + 3*temp_a1 + temp_a0)) * (temp_a0 + 1)) + temp_a1;
             ++temp_a0;
         }
         ++temp_a1;
