@@ -7,8 +7,8 @@ glabel func_8007B34C
 /* 07BF60 8007B360 3C19800E */  lui   $t9, %hi(gPlayerOne) # $t9, 0x800e
 /* 07BF64 8007B364 8F39C4DC */  lw    $t9, %lo(gPlayerOne)($t9)
 /* 07BF68 8007B368 0018C080 */  sll   $t8, $t8, 2
-/* 07BF6C 8007B36C 3C0A800E */  lui   $t2, %hi(D_800DC4BC) # $t2, 0x800e
-/* 07BF70 8007B370 8D4AC4BC */  lw    $t2, %lo(D_800DC4BC)($t2)
+/* 07BF6C 8007B36C 3C0A800E */  lui   $t2, %hi(gControllerOne) # $t2, 0x800e
+/* 07BF70 8007B370 8D4AC4BC */  lw    $t2, %lo(gControllerOne)($t2)
 /* 07BF74 8007B374 0304C023 */  subu  $t8, $t8, $a0
 /* 07BF78 8007B378 0018C0C0 */  sll   $t8, $t8, 3
 /* 07BF7C 8007B37C 00044900 */  sll   $t1, $a0, 4

@@ -12141,7 +12141,7 @@ void func_80019FB4(s32 arg0) {
     struct Controller *temp_v0;
     s32 phi_v1;
 
-    temp_v0 = &D_800DC4BC[arg0];
+    temp_v0 = &gControllerOne[arg0];
     temp_v1 = arg0 * 4;
     temp_a1 = temp_v1 + &D_801645D0;
     phi_v1 = temp_v1;

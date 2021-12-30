@@ -120,7 +120,7 @@ glabel L802B4324
 /* 11D9F4 802B43E4 46007081 */  sub.s $f2, $f14, $f0
 /* 11D9F8 802B43E8 3C01C0A0 */  li    $at, 0xC0A00000 # -5.000000
 /* 11D9FC 802B43EC 3C08800E */  lui   $t0, %hi(D_800DC51C) # $t0, 0x800e
-/* 11DA00 802B43F0 3C02800E */  lui   $v0, %hi(D_800DC4BC) # 0x800e
+/* 11DA00 802B43F0 3C02800E */  lui   $v0, %hi(gControllerOne) # 0x800e
 /* 11DA04 802B43F4 4606103C */  c.lt.s $f2, $f6
 /* 11DA08 802B43F8 240E0001 */  li    $t6, 1
 /* 11DA0C 802B43FC 4502000C */  bc1fl .L802B4430
@@ -142,11 +142,11 @@ glabel L802B4324
 /* 11DA48 802B4438 1320000D */  beqz  $t9, .L802B4470
 /* 11DA4C 802B443C 00000000 */   nop
 /* 11DA50 802B4440 9508C51C */  lhu   $t0, %lo(D_800DC51C)($t0)
-/* 11DA54 802B4444 3C02800E */  lui   $v0, %hi(D_800DC4BC) # $v0, 0x800e
+/* 11DA54 802B4444 3C02800E */  lui   $v0, %hi(gControllerOne) # $v0, 0x800e
 /* 11DA58 802B4448 51000004 */  beql  $t0, $zero, .L802B445C
 /* 11DA5C 802B444C 86090014 */   lh    $t1, 0x14($s0)
 /* 11DA60 802B4450 10000008 */  b     .L802B4474
-/* 11DA64 802B4454 8C42C4BC */   lw    $v0, %lo(D_800DC4BC)($v0)
+/* 11DA64 802B4454 8C42C4BC */   lw    $v0, %lo(gControllerOne)($v0)
 /* 11DA68 802B4458 86090014 */  lh    $t1, 0x14($s0)
 .L802B445C:
 /* 11DA6C 802B445C 3C0B800F */  lui   $t3, %hi(gControllers) # $t3, 0x800f
@@ -155,7 +155,7 @@ glabel L802B4324
 /* 11DA78 802B4468 10000002 */  b     .L802B4474
 /* 11DA7C 802B446C 014B1021 */   addu  $v0, $t2, $t3
 .L802B4470:
-/* 11DA80 802B4470 8C42C4BC */  lw    $v0, %lo(D_800DC4BC)($v0) # -0x3b44($v0)
+/* 11DA80 802B4470 8C42C4BC */  lw    $v0, %lo(gControllerOne)($v0) # -0x3b44($v0)
 .L802B4474:
 /* 11DA84 802B4474 94430008 */  lhu   $v1, 8($v0)
 /* 11DA88 802B4478 306C2000 */  andi  $t4, $v1, 0x2000

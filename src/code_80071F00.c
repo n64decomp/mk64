@@ -6562,7 +6562,7 @@ void func_8007B34C(s32 playerId) {
     sp38 = (playerId * 0xDD8) + gPlayerOne;
     sp40 = 0;
     temp_s0 = *(&D_80183E88 + (playerId * 4));
-    if ((((playerId * 0x10) + D_800DC4BC)->unk6 & 0x2000) != 0) {
+    if ((((playerId * 0x10) + gControllerOne)->unk6 & 0x2000) != 0) {
         sp40 = 1;
     }
     if (D_80165888 != 0) {

@@ -12,12 +12,12 @@ glabel func_802B30EC
 /* 11C724 802B3114 3C12800F */  lui   $s2, %hi(gControllers) # $s2, 0x800f
 /* 11C728 802B3118 3C14800F */  lui   $s4, %hi(gControllers+0x40) # $s4, 0x800f
 /* 11C72C 802B311C 3C15800E */  lui   $s5, %hi(gPlayerTwo) # $s5, 0x800e
-/* 11C730 802B3120 3C16800E */  lui   $s6, %hi(D_800DC4D0) # $s6, 0x800e
+/* 11C730 802B3120 3C16800E */  lui   $s6, %hi(gControllerSix) # $s6, 0x800e
 /* 11C734 802B3124 3C1E800E */  lui   $fp, %hi(gPlayerThree) # $fp, 0x800e
 /* 11C738 802B3128 AFBF003C */  sw    $ra, 0x3c($sp)
 /* 11C73C 802B312C AFB1001C */  sw    $s1, 0x1c($sp)
 /* 11C740 802B3130 27DEC4E4 */  addiu $fp, %lo(gPlayerThree) # addiu $fp, $fp, -0x3b1c
-/* 11C744 802B3134 26D6C4D0 */  addiu $s6, %lo(D_800DC4D0) # addiu $s6, $s6, -0x3b30
+/* 11C744 802B3134 26D6C4D0 */  addiu $s6, %lo(gControllerSix) # addiu $s6, $s6, -0x3b30
 /* 11C748 802B3138 26B5C4E0 */  addiu $s5, %lo(gPlayerTwo) # addiu $s5, $s5, -0x3b20
 /* 11C74C 802B313C 26946950 */  addiu $s4, %lo(gControllers+0x40) # addiu $s4, $s4, 0x6950
 /* 11C750 802B3140 26526910 */  addiu $s2, %lo(gControllers) # addiu $s2, $s2, 0x6910
@@ -72,9 +72,9 @@ glabel func_802B30EC
 .L802B31F0:
 /* 11C800 802B31F0 15400004 */  bnez  $t2, .L802B3204
 /* 11C804 802B31F4 00000000 */   nop
-/* 11C808 802B31F8 3C11800E */  lui   $s1, %hi(D_800DC4D4) # $s1, 0x800e
+/* 11C808 802B31F8 3C11800E */  lui   $s1, %hi(gControllerSeven) # $s1, 0x800e
 /* 11C80C 802B31FC 10000012 */  b     .L802B3248
-/* 11C810 802B3200 8E31C4D4 */   lw    $s1, %lo(D_800DC4D4)($s1)
+/* 11C810 802B3200 8E31C4D4 */   lw    $s1, %lo(gControllerSeven)($s1)
 .L802B3204:
 /* 11C814 802B3204 8D6BC4DC */  lw    $t3, %lo(gPlayerOne)($t3)
 /* 11C818 802B3208 020B6023 */  subu  $t4, $s0, $t3
@@ -93,8 +93,8 @@ glabel func_802B30EC
 .L802B3238:
 /* 11C848 802B3238 55A00004 */  bnel  $t5, $zero, .L802B324C
 /* 11C84C 802B323C 304E4000 */   andi  $t6, $v0, 0x4000
-/* 11C850 802B3240 3C11800E */  lui   $s1, %hi(D_800DC4D8) # $s1, 0x800e
-/* 11C854 802B3244 8E31C4D8 */  lw    $s1, %lo(D_800DC4D8)($s1)
+/* 11C850 802B3240 3C11800E */  lui   $s1, %hi(gControllerEight) # $s1, 0x800e
+/* 11C854 802B3244 8E31C4D8 */  lw    $s1, %lo(gControllerEight)($s1)
 .L802B3248:
 /* 11C858 802B3248 304E4000 */  andi  $t6, $v0, 0x4000
 .L802B324C:

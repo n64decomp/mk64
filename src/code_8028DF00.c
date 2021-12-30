@@ -17,12 +17,12 @@ extern struct Camera *camera3;
 extern struct Camera *camera4;
 
 extern struct Controller gControllers[];
-extern struct Controller *D_800DC4BC;
-extern struct Controller *D_800DC4C4;
-extern struct Controller *D_800DC4C8;
-extern struct Controller *D_800DC4CC;
-extern struct Controller *D_800DC4D0;
-extern struct Controller *D_800DC4D4;
+extern struct Controller *gControllerOne;
+extern struct Controller *gControllerThree;
+extern struct Controller *gControllerFour;
+extern struct Controller *gControllerFive;
+extern struct Controller *gControllerSix;
+extern struct Controller *gControllerSeven;
 
 extern struct UnkStruct_800DC5EC D_8015F480[];
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
@@ -765,10 +765,10 @@ void func_8028F474(void) {
 
 void func_8028F4E8(void) {
     if (gEnableDebugMode != 0) {
-        if (((D_800DC4CC->button & 0x10) != 0) &&
-            ((D_800DC4CC->button & 0x20) != 0) &&
-            ((D_800DC4CC->button & 0x8000) != 0) &&
-            ((D_800DC4CC->button & 0x4000) != 0)) {
+        if (((gControllerFive->button & 0x10) != 0) &&
+            ((gControllerFive->button & 0x20) != 0) &&
+            ((gControllerFive->button & 0x8000) != 0) &&
+            ((gControllerFive->button & 0x4000) != 0)) {
 
             func_800CA330(0x19);
             func_800CA388(0x19);
@@ -956,7 +956,7 @@ loop_2:
             }
             if (((temp_s0->buttonPressed & 0x1000) != 0) && (temp_v0_3 = temp_s0->button, ((temp_v0_3 & 0x10) == 0)) && ((temp_v0_3 & 0x20) == 0)) {
                 func_8028DF00();
-                D_800DC5FC = (s16) (((s32) (temp_s0 - D_800DC4BC) >> 4) + 1);
+                D_800DC5FC = (s16) (((s32) (temp_s0 - gControllerOne) >> 4) + 1);
                 temp_s0->buttonPressed = 0;
                 func_800C9F90(1);
                 D_80162DF0 = 1;
@@ -988,7 +988,7 @@ block_20:
         phi_s2 = temp_s2;
         if (temp_s2 == 4) {
             if ((gEnableDebugMode != 0) && (gModeSelection != BATTLE)) {
-                temp_a1 = D_800DC4BC;
+                temp_a1 = gControllerOne;
                 if ((temp_a1->buttonPressed & 0x800) != 0) {
                     lapCount->unk0 = 2;
                 }
@@ -1036,7 +1036,7 @@ void func_8028FC34(void) {
         return;
     }
     D_802BA038--;
-    if (D_800DC4CC->buttonPressed != 0) {
+    if (gControllerFive->buttonPressed != 0) {
         func_8028FBD4();
         gMenuSelection = START_MENU;
         return;
@@ -1125,7 +1125,7 @@ void func_8028FCBC(void) {
             if (D_800DC51C != 0) {
                 func_8028EDA8();
             }
-            if ((gEnableDebugMode != 0) && ((D_800DC4CC->buttonPressed & 0x2000) != 0)) {
+            if ((gEnableDebugMode != 0) && ((gControllerFive->buttonPressed & 0x2000) != 0)) {
                 func_8028EDA8();
             }
             func_8028F4E8();

@@ -64,8 +64,8 @@ glabel func_8028F970
 /* 0F9068 8028FA58 26520001 */   addiu $s2, $s2, 1
 /* 0F906C 8028FA5C 0C0A37C0 */  jal   func_8028DF00
 /* 0F9070 8028FA60 00000000 */   nop
-/* 0F9074 8028FA64 3C0B800E */  lui   $t3, %hi(D_800DC4BC) # $t3, 0x800e
-/* 0F9078 8028FA68 8D6BC4BC */  lw    $t3, %lo(D_800DC4BC)($t3)
+/* 0F9074 8028FA64 3C0B800E */  lui   $t3, %hi(gControllerOne) # $t3, 0x800e
+/* 0F9078 8028FA68 8D6BC4BC */  lw    $t3, %lo(gControllerOne)($t3)
 /* 0F907C 8028FA6C 3C01800E */  lui   $at, %hi(D_800DC5FC) # $at, 0x800e
 /* 0F9080 8028FA70 24040001 */  li    $a0, 1
 /* 0F9084 8028FA74 020B6023 */  subu  $t4, $s0, $t3
@@ -121,10 +121,10 @@ glabel func_8028F970
 /* 0F913C 8028FB2C 8FBF0024 */   lw    $ra, 0x24($sp)
 /* 0F9140 8028FB30 8DADC53C */  lw    $t5, %lo(gModeSelection)($t5)
 /* 0F9144 8028FB34 24010003 */  li    $at, 3
-/* 0F9148 8028FB38 3C05800E */  lui   $a1, %hi(D_800DC4BC) # $a1, 0x800e
+/* 0F9148 8028FB38 3C05800E */  lui   $a1, %hi(gControllerOne) # $a1, 0x800e
 /* 0F914C 8028FB3C 51A1001F */  beql  $t5, $at, .L8028FBBC
 /* 0F9150 8028FB40 8FBF0024 */   lw    $ra, 0x24($sp)
-/* 0F9154 8028FB44 8CA5C4BC */  lw    $a1, %lo(D_800DC4BC)($a1)
+/* 0F9154 8028FB44 8CA5C4BC */  lw    $a1, %lo(gControllerOne)($a1)
 /* 0F9158 8028FB48 3C028016 */  lui   $v0, %hi(lapCount) # $v0, 0x8016
 /* 0F915C 8028FB4C 24424390 */  addiu $v0, %lo(lapCount) # addiu $v0, $v0, 0x4390
 /* 0F9160 8028FB50 94A40006 */  lhu   $a0, 6($a1)

@@ -23,7 +23,7 @@ struct UnkStruct8015F8D0 {
 
 extern struct UnkStruct8015F8D0 D_8015F8D0;
 
-extern struct Controller *D_800DC4BC[];
+extern struct Controller *gControllerOne[];
 
 extern s32 D_800DC510;
 extern s16 D_8015F6FE;
@@ -99,12 +99,12 @@ s32 gIsMirrorMode = 0;
 f32 D_800DC608 =  1.0f;
 Lights1 D_800DC610[] = {
     {
-        {175, 175, 175, 0, 175, 175, 175, 0}, 
+        {175, 175, 175, 0, 175, 175, 175, 0},
         {255, 255, 255, 0, 255, 255, 255, 0, 0, 0, 120, 0},
     },
 
     {
-        {115, 115, 115, 0, 115, 115, 115, 0}, 
+        {115, 115, 115, 0, 115, 115, 115, 0},
         {255, 255, 255, 0, 255, 255, 255, 0, 0, 0, 120, 0},
 
     },
@@ -128,7 +128,7 @@ void func_800029B0(void) {
 }
 
 void func_80002A18(void) {
-    struct Controller *temp_v0;
+    struct Controller *currentController;
     int tmp;
 
     gPlayerCountSelection1 = D_8018EDF3;
@@ -189,14 +189,14 @@ void func_80002A18(void) {
         func_800CB2C4();
     }
 
-    temp_v0 = *D_800DC4BC;
+    currentController = *gControllerOne;
 
-    for (tmp = 0; tmp < 7; tmp++, temp_v0++){
-        temp_v0->rawStickX = 0;
-        temp_v0->rawStickY = 0;
-        temp_v0->buttonPressed = 0;
-        temp_v0->buttonDepressed = 0;
-        temp_v0->button = 0;
+    for (tmp = 0; tmp < 7; tmp++, currentController++){
+        currentController->rawStickX = 0;
+        currentController->rawStickY = 0;
+        currentController->buttonPressed = 0;
+        currentController->buttonDepressed = 0;
+        currentController->button = 0;
     }
 }
 

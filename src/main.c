@@ -55,14 +55,14 @@ struct SPTask* sNextDisplaySPTask = NULL;
 
 
 struct Controller gControllers[8];
-struct Controller *D_800DC4BC = &gControllers[0];
-struct Controller *D_800DC4C0 = &gControllers[1];
-struct Controller *D_800DC4C4 = &gControllers[2];
-struct Controller *D_800DC4C8 = &gControllers[3];
-struct Controller *D_800DC4CC = &gControllers[4];
-struct Controller *D_800DC4D0 = &gControllers[5];
-struct Controller *D_800DC4D4 = &gControllers[6];
-struct Controller *D_800DC4D8 = &gControllers[7];
+struct Controller *gControllerOne = &gControllers[0];   // 0x800DC4BC
+struct Controller *gControllerTwo = &gControllers[1];   // 0x800DC4C0
+struct Controller *gControllerThree = &gControllers[2]; // 0x800DC4C4
+struct Controller *gControllerFour = &gControllers[3];  // 0x800DC4C8
+struct Controller *gControllerFive = &gControllers[4];  // 0x800DC4CC
+struct Controller *gControllerSix = &gControllers[5];   // 0x800DC4D0
+struct Controller *gControllerSeven = &gControllers[6]; // 0x800DC4D4
+struct Controller *gControllerEight = &gControllers[7]; // 0x800DC4D8
 
 Player gPlayers[8];
 Player *gPlayerOne = &gPlayers[0];   // 0x800DC4DC
@@ -399,12 +399,12 @@ void read_controllers(void) {
     func_80000934(1);
     func_80000934(2);
     func_80000934(3);
-    D_800DC4CC->button = (s16) (((D_800DC4BC->button | D_800DC4C0->button) | D_800DC4C4->button) | D_800DC4C8->button);
-    D_800DC4CC->buttonPressed = (s16) (((D_800DC4BC->buttonPressed | D_800DC4C0->buttonPressed) | D_800DC4C4->buttonPressed) | D_800DC4C8->buttonPressed);
-    D_800DC4CC->buttonDepressed = (s16) (((D_800DC4BC->buttonDepressed | D_800DC4C0->buttonDepressed) | D_800DC4C4->buttonDepressed) | D_800DC4C8->buttonDepressed);
-    D_800DC4CC->stickDirection = (s16) (((D_800DC4BC->stickDirection | D_800DC4C0->stickDirection) | D_800DC4C4->stickDirection) | D_800DC4C8->stickDirection);
-    D_800DC4CC->stickPressed = (s16) (((D_800DC4BC->stickPressed | D_800DC4C0->stickPressed) | D_800DC4C4->stickPressed) | D_800DC4C8->stickPressed);
-    D_800DC4CC->stickDepressed = (s16) (((D_800DC4BC->stickDepressed | D_800DC4C0->stickDepressed) | D_800DC4C4->stickDepressed) | D_800DC4C8->stickDepressed);
+    gControllerFive->button = (s16) (((gControllerOne->button | gControllerTwo->button) | gControllerThree->button) | gControllerFour->button);
+    gControllerFive->buttonPressed = (s16) (((gControllerOne->buttonPressed | gControllerTwo->buttonPressed) | gControllerThree->buttonPressed) | gControllerFour->buttonPressed);
+    gControllerFive->buttonDepressed = (s16) (((gControllerOne->buttonDepressed | gControllerTwo->buttonDepressed) | gControllerThree->buttonDepressed) | gControllerFour->buttonDepressed);
+    gControllerFive->stickDirection = (s16) (((gControllerOne->stickDirection | gControllerTwo->stickDirection) | gControllerThree->stickDirection) | gControllerFour->stickDirection);
+    gControllerFive->stickPressed = (s16) (((gControllerOne->stickPressed | gControllerTwo->stickPressed) | gControllerThree->stickPressed) | gControllerFour->stickPressed);
+    gControllerFive->stickDepressed = (s16) (((gControllerOne->stickDepressed | gControllerTwo->stickDepressed) | gControllerThree->stickDepressed) | gControllerFour->stickDepressed);
 }
 
 void func_80000BEC(void) {
@@ -631,9 +631,9 @@ void func_8000142C(void) {
             } else {
                 if (D_800DC514 != 0) {
 
-                    if ((D_800DC4BC->buttonPressed & R_TRIG) &&
-                        (D_800DC4BC->button & A_BUTTON) &&
-                        (D_800DC4BC->button & B_BUTTON)) {
+                    if ((gControllerOne->buttonPressed & R_TRIG) &&
+                        (gControllerOne->button & A_BUTTON) &&
+                        (gControllerOne->button & B_BUTTON)) {
                             D_800DC514 = 0;
                     }
 
@@ -652,9 +652,9 @@ void func_8000142C(void) {
                     }
 
                 } else {
-                    if ((D_800DC4BC->buttonPressed & L_TRIG) &&
-                        (D_800DC4BC->button & A_BUTTON) &&
-                        (D_800DC4BC->button & B_BUTTON)) {
+                    if ((gControllerOne->buttonPressed & L_TRIG) &&
+                        (gControllerOne->button & A_BUTTON) &&
+                        (gControllerOne->button & B_BUTTON)) {
                             D_800DC514 = 1;
                     }
                 }
@@ -842,15 +842,15 @@ void func_8000142C(void) {
     } else {
         if (gEnableResourceMeters != 0) {
             resource_display();
-            if ((!(D_800DC4BC->button & L_TRIG)) &&
-                (D_800DC4BC->button & R_TRIG) &&
-                (D_800DC4BC->buttonPressed & B_BUTTON)) {
+            if ((!(gControllerOne->button & L_TRIG)) &&
+                (gControllerOne->button & R_TRIG) &&
+                (gControllerOne->buttonPressed & B_BUTTON)) {
                     gEnableResourceMeters = 0;
             }
         } else {
-            if ((!(D_800DC4BC->button & L_TRIG)) &&
-                (D_800DC4BC->button & R_TRIG) &&
-                (D_800DC4BC->buttonPressed & B_BUTTON)) {
+            if ((!(gControllerOne->button & L_TRIG)) &&
+                (gControllerOne->button & R_TRIG) &&
+                (gControllerOne->buttonPressed & B_BUTTON)) {
                         gEnableResourceMeters = 1;
             }
         }

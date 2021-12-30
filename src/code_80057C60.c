@@ -979,9 +979,9 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80059820.s")
 #endif
 
 extern u8 D_801658FF;
-extern struct Controller *D_800DC4BC;
+extern struct Controller *gControllerOne;
 void func_800598D4(s32 arg0) {
-    struct Controller *controller = &D_800DC4BC[arg0];
+    struct Controller *controller = &gControllerOne[arg0];
 
     if ((controller->button & 0x8000) != 0) {
         D_801658FF++;
@@ -1486,7 +1486,7 @@ void func_8005A3C0(s32 arg2) {
                 if (temp_v0_2 != 3) {
                     if (temp_v0_2 != 4) {
                         phi_a2 = 3;
-                    } else if (((D_800DC4BC->buttonPressed & 1) != 0) || ((D_800DC4C0->buttonPressed & 1) != 0) || ((D_800DC4C4->buttonPressed & 1) != 0) || (phi_a2 = 3, ((D_800DC4C8->buttonPressed & 1) != 0))) {
+                    } else if (((gControllerOne->buttonPressed & 1) != 0) || ((gControllerTwo->buttonPressed & 1) != 0) || ((gControllerThree->buttonPressed & 1) != 0) || (phi_a2 = 3, ((gControllerFour->buttonPressed & 1) != 0))) {
                         D_801657E4 = (D_801657E4 + 1) & 1;
                         D_801657F8 = (D_801657F8 + 1) & 1;
                         D_80165800.unk0 = (D_80165800.unk0 + 1) & 1;
@@ -1498,7 +1498,7 @@ void func_8005A3C0(s32 arg2) {
                             phi_a2 = 3;
                         }
                     }
-                } else if (((D_800DC4BC->buttonPressed & 1) != 0) || ((D_800DC4C0->buttonPressed & 1) != 0) || (phi_a2 = 3, ((D_800DC4C4->buttonPressed & 1) != 0))) {
+                } else if (((gControllerOne->buttonPressed & 1) != 0) || ((gControllerTwo->buttonPressed & 1) != 0) || (phi_a2 = 3, ((gControllerThree->buttonPressed & 1) != 0))) {
                     if (gModeSelection != BATTLE) {
                         D_801657F0 = (D_801657F0 + 1) & 1;
                     }
@@ -1509,11 +1509,11 @@ void func_8005A3C0(s32 arg2) {
             } else {
                 phi_a2 = 3;
                 if (gModeSelection != BATTLE) {
-                    if ((D_800DC4BC->buttonPressed & 1) != 0) {
+                    if ((gControllerOne->buttonPressed & 1) != 0) {
                         D_80165800.unk0 = (D_80165800.unk0 + 1) & 1;
                         phi_a1 = 1;
                     }
-                    if ((D_800DC4C0->buttonPressed & 1) != 0) {
+                    if ((gControllerTwo->buttonPressed & 1) != 0) {
                         D_80165800.unk1 = (D_80165800.unk1 + 1) & 1;
                         phi_a1 = 1;
                     }
@@ -1529,7 +1529,7 @@ void func_8005A3C0(s32 arg2) {
                     }
                 }
             }
-        } else if ((D_800DC4BC->buttonPressed & 1) != 0) {
+        } else if ((gControllerOne->buttonPressed & 1) != 0) {
             D_801657E4 += 1;
             if (D_801657E4 >= 3) {
                 D_801657E4 = 0;

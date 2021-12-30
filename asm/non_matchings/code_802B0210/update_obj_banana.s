@@ -105,12 +105,12 @@ glabel L802B2094
 /* 11B7D4 802B21C4 512001CF */  beql  $t1, $zero, .L802B2904
 /* 11B7D8 802B21C8 8FBF0024 */   lw    $ra, 0x24($sp)
 /* 11B7DC 802B21CC 954AC51C */  lhu   $t2, %lo(D_800DC51C)($t2)
-/* 11B7E0 802B21D0 3C03800E */  lui   $v1, %hi(D_800DC4BC) # $v1, 0x800e
+/* 11B7E0 802B21D0 3C03800E */  lui   $v1, %hi(gControllerOne) # $v1, 0x800e
 /* 11B7E4 802B21D4 24180001 */  li    $t8, 1
 /* 11B7E8 802B21D8 11400003 */  beqz  $t2, .L802B21E8
 /* 11B7EC 802B21DC 241900B4 */   li    $t9, 180
 /* 11B7F0 802B21E0 10000006 */  b     .L802B21FC
-/* 11B7F4 802B21E4 8C63C4BC */   lw    $v1, %lo(D_800DC4BC)($v1)
+/* 11B7F4 802B21E4 8C63C4BC */   lw    $v1, %lo(gControllerOne)($v1)
 .L802B21E8:
 /* 11B7F8 802B21E8 860B0010 */  lh    $t3, 0x10($s0)
 /* 11B7FC 802B21EC 3C0D800F */  lui   $t5, %hi(gControllers) # $t5, 0x800f

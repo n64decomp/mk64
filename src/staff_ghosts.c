@@ -74,10 +74,10 @@ extern Player *gPlayerOne;
 extern Player* gPlayerTwo;
 extern Player *gPlayerThree;
 
-extern struct Controller *D_800DC4D0;
-extern struct Controller *D_800DC4D4;
-extern struct Controller *D_800DC4D8;
-extern struct Controller *D_800DC4BC;
+extern struct Controller *gControllerSix;
+extern struct Controller *gControllerSeven;
+extern struct Controller *gControllerEight;
+extern struct Controller *gControllerOne;
 
 extern StaffGhost *d_mario_raceway_staff_ghost;
 extern StaffGhost *d_royal_raceway_staff_ghost;
@@ -260,14 +260,14 @@ s32 func_8000546C(void) {
     }
 
     temp_a1 = (u32) (temp_a0 & 0xFF00) >> 8;
-    D_800DC4D8->rawStickX = phi_v1;
+    gControllerEight->rawStickX = phi_v1;
 
     if (temp_a1 < 0x80U) {
         phi_v1 = (s16) (temp_a1 & 0xFF);
     } else {
         phi_v1 = (s16) (temp_a1 | (~0xFF));
     }
-    D_800DC4D8->rawStickY = phi_v1;
+    gControllerEight->rawStickY = phi_v1;
     if (temp_a0 & 0x80000000) {
         phi_v0 |= A_BUTTON;
     }
@@ -280,12 +280,12 @@ s32 func_8000546C(void) {
     if (temp_a0 & 0x10000000) {
         phi_v0 |= R_TRIG;
     }
-    temp_v1 = D_800DC4D8->buttonPressed & 0x1F0F;
-    D_800DC4D8->buttonPressed = (phi_v0 & (phi_v0 ^ D_80162DA8)) | temp_v1;
-    temp_v1 = D_800DC4D8->buttonDepressed & 0x1F0F;
-    D_800DC4D8->buttonDepressed = (D_80162DA8 & (phi_v0 ^ D_80162DA8)) | temp_v1;
+    temp_v1 = gControllerEight->buttonPressed & 0x1F0F;
+    gControllerEight->buttonPressed = (phi_v0 & (phi_v0 ^ D_80162DA8)) | temp_v1;
+    temp_v1 = gControllerEight->buttonDepressed & 0x1F0F;
+    gControllerEight->buttonDepressed = (D_80162DA8 & (phi_v0 ^ D_80162DA8)) | temp_v1;
     D_80162DA8 = phi_v0;
-    D_800DC4D8->button = phi_v0;
+    gControllerEight->button = phi_v0;
 
     if (D_80162DAC == 0) {
         D_80162DB0++;
@@ -316,14 +316,14 @@ void func_8000561C(void) {
     }
 
     temp_v0 = (u32) (temp_a0 & 0xFF00) >> 8;
-    D_800DC4D4->rawStickX = phi_v1;
+    gControllerSeven->rawStickX = phi_v1;
 
     if (temp_v0 < 0x80U) {
         phi_v1 = (s16) (temp_v0 & 0xFF);
     } else {
         phi_v1 = (s16) (temp_v0 | (~0xFF));
     }
-    D_800DC4D4->rawStickY = phi_v1;
+    gControllerSeven->rawStickY = phi_v1;
 
     if (temp_a0 & 0x80000000) {
         phi_a2 = A_BUTTON;
@@ -338,12 +338,12 @@ void func_8000561C(void) {
         phi_a2 |= R_TRIG;
     }
 
-    temp_v1 = D_800DC4D4->buttonPressed & 0x1F0F;
-    D_800DC4D4->buttonPressed = (phi_a2 & (phi_a2 ^ D_80162D98)) | temp_v1;
-    temp_v1 = D_800DC4D4->buttonDepressed & 0x1F0F;
-    D_800DC4D4->buttonDepressed = (D_80162D98 & (phi_a2 ^ D_80162D98)) | temp_v1;
+    temp_v1 = gControllerSeven->buttonPressed & 0x1F0F;
+    gControllerSeven->buttonPressed = (phi_a2 & (phi_a2 ^ D_80162D98)) | temp_v1;
+    temp_v1 = gControllerSeven->buttonDepressed & 0x1F0F;
+    gControllerSeven->buttonDepressed = (D_80162D98 & (phi_a2 ^ D_80162D98)) | temp_v1;
     D_80162D98 = phi_a2;
-    D_800DC4D4->button = phi_a2;
+    gControllerSeven->button = phi_a2;
     if (D_80162D9C == 0) {
         D_80162DA0++;
         D_80162D9C = (s32) (D_80162DA4[D_80162DA0] & 0xFF0000);
@@ -374,7 +374,7 @@ void func_800057DC(void) {
 
     temp_v0 = (u32) (temp_a0 & 0xFF00) >> 8;
 
-    D_800DC4D0->rawStickX = phi_v1;
+    gControllerSix->rawStickX = phi_v1;
 
     if (temp_v0 < 0x80U) {
         phi_v1 = (s16) (temp_v0 & 0xFF);
@@ -382,7 +382,7 @@ void func_800057DC(void) {
         phi_v1 = (s16) (temp_v0 | (~0xFF));
     }
 
-    D_800DC4D0->rawStickY = phi_v1;
+    gControllerSix->rawStickY = phi_v1;
 
     if (temp_a0 & 0x80000000) {
         phi_a2 |= A_BUTTON;
@@ -396,13 +396,13 @@ void func_800057DC(void) {
     if (temp_a0 & 0x10000000) {
         phi_a2 |= R_TRIG;
     }
-    temp_v1 = D_800DC4D0->buttonPressed & 0x1F0F;
-    D_800DC4D0->buttonPressed = (phi_a2 & (phi_a2 ^ D_80162D88)) | temp_v1;
+    temp_v1 = gControllerSix->buttonPressed & 0x1F0F;
+    gControllerSix->buttonPressed = (phi_a2 & (phi_a2 ^ D_80162D88)) | temp_v1;
 
-    temp_v1 = D_800DC4D0->buttonDepressed & 0x1F0F;
-    D_800DC4D0->buttonDepressed = (D_80162D88 & (phi_a2 ^ D_80162D88)) | temp_v1;
+    temp_v1 = gControllerSix->buttonDepressed & 0x1F0F;
+    gControllerSix->buttonDepressed = (D_80162D88 & (phi_a2 ^ D_80162D88)) | temp_v1;
     D_80162D88 = phi_a2;
-    D_800DC4D0->button = phi_a2;
+    gControllerSix->button = phi_a2;
 
     if (D_80162D8C == 0) {
         D_80162D90++;
@@ -435,7 +435,7 @@ void func_8000599C(void) {
     //if (((temp_v1 & 2) != 0) || ((temp_v1 & 8) != 0)) {
 
     //}
-    temp_a2 = D_800DC4BC->button;
+    temp_a2 = gControllerOne->button;
     phi_a3 = 0;
     if (temp_a2 & A_BUTTON) {
         phi_a3 |= 0x80000000;
@@ -451,8 +451,8 @@ void func_8000599C(void) {
     }
     phi_a3 |= temp_v1;
     phi_a3 |= temp_v2;
-    temp_v0 = (D_800DC4BC->rawStickY & 0xFF) << 8;
-    temp_a3 = phi_a3 | (D_800DC4BC->rawStickX & 0xFF) | temp_v0;
+    temp_v0 = (gControllerOne->rawStickY & 0xFF) << 8;
+    temp_a3 = phi_a3 | (gControllerOne->rawStickX & 0xFF) | temp_v0;
     temp_a0_2 = &D_80162DBC[D_80162DB8];;
     if (*D_80162DBC == -1) {
         *temp_t0 = temp_a3;
