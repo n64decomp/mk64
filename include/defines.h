@@ -170,4 +170,9 @@
 #define CUP_COURSE_FOUR     3
 #define NUM_COURSES_PER_CUP 4
 
+/**
+ * Max representable time, 100 minutes measured in centiseconds
+ */
+#define MAX_TIME 0x927C0
+
 #endif // DEFINES_H
