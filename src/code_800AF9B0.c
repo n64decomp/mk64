@@ -55,7 +55,7 @@ extern s8          D_8018EDE7;
 extern s8          D_8018EDEC;
 extern s8          gDataMenuSelection; // D_8018EDF7
 extern s8          gCourseRecordsMenuSelection; // D_8018EDF8
-extern s32         gStartMenuCounterForDemos; // D_8018EE00
+extern s32         gMenuTimingCounter; // D_8018EE00
 extern s8          gCupSelection; // D_8018EE09
 extern s8          D_8018EE0A;
 extern s8          gCupCourseSelection; // D_8018EE0B
@@ -2193,7 +2193,7 @@ void func_800B29D8(void *arg0, u16 arg1) {
                     }
                     func_800B44AC();
                     temp_t7_2 = D_8018EDF3;
-                    gStartMenuCounterForDemos = 0;
+                    gMenuTimingCounter = 0;
                     phi_v1_3 = &D_800F2B70 + ((temp_t7_2 * 0xC) + (*(&D_800E86AB + temp_t7_2) * 4));
                 } else {
                     phi_v1_3 = &D_800F2B70 + ((temp_v0_4 * 0xC) + (temp_a0_3 * 4));
@@ -2202,7 +2202,7 @@ void func_800B29D8(void *arg0, u16 arg1) {
             break;
         case 5:
         case 8:
-            if ((arg1 == 0) && ((temp_t7_3 = gStartMenuCounterForDemos + 1, gStartMenuCounterForDemos = temp_t7_3, (temp_t7_3 == 0x64)) || ((temp_t7_3 % 300) == 0)) && ((temp_v0_5 = D_8018EDF3, temp_v1_4 = *(&D_800F2B70 + ((temp_v0_5 * 0xC) + (*(&D_800E86AB + temp_v0_5) * 4))), (temp_v1_4 == 0)) || (temp_v1_4 == 2))) {
+            if ((arg1 == 0) && ((temp_t7_3 = gMenuTimingCounter + 1, gMenuTimingCounter = temp_t7_3, (temp_t7_3 == 0x64)) || ((temp_t7_3 % 300) == 0)) && ((temp_v0_5 = D_8018EDF3, temp_v1_4 = *(&D_800F2B70 + ((temp_v0_5 * 0xC) + (*(&D_800E86AB + temp_v0_5) * 4))), (temp_v1_4 == 0)) || (temp_v1_4 == 2))) {
                 sp1C = phi_v1;
                 play_sound2(0x4900900E, arg1, phi_v1);
             }
@@ -2272,7 +2272,7 @@ block_64:
                 } else {
                     D_8018EDED = 6;
                     play_sound2(0x49008001, temp_a1);
-                    gStartMenuCounterForDemos = 0;
+                    gMenuTimingCounter = 0;
                 }
                 temp_t7_4 = D_8018EDF3;
                 phi_v1_3 = &D_800F2B70 + ((temp_t7_4 * 0xC) + (*(&D_800E86AB + temp_t7_4) * 4));
@@ -2282,7 +2282,7 @@ block_64:
             break;
         case 6:
         case 7:
-            if ((arg1 == 0) && ((temp_t7_5 = gStartMenuCounterForDemos + 1, gStartMenuCounterForDemos = temp_t7_5, (temp_t7_5 == 0x3C)) || ((temp_t7_5 % 300) == 0))) {
+            if ((arg1 == 0) && ((temp_t7_5 = gMenuTimingCounter + 1, gMenuTimingCounter = temp_t7_5, (temp_t7_5 == 0x3C)) || ((temp_t7_5 % 300) == 0))) {
                 sp1C = phi_v1;
                 play_sound2(0x4900900F, arg1, phi_v1);
             }
@@ -2300,7 +2300,7 @@ block_64:
                 func_800B44AC();
                 play_sound2(0x49008002);
                 temp_t7_6 = D_8018EDF3;
-                gStartMenuCounterForDemos = 0;
+                gMenuTimingCounter = 0;
                 phi_v1_3 = &D_800F2B70 + ((temp_t7_6 * 0xC) + (*(&D_800E86AB + temp_t7_6) * 4));
             } else if ((phi_v1 & 0x8000) != 0) {
                 func_8009E1C0();
@@ -2399,7 +2399,7 @@ void func_800B3B58(struct Controller *arg0, u16 arg1) {
                     D_8018EDEC = 3;
                     play_sound2(0x49008001);
                     gCurrentCourseId = gCupCourseOrder[gCupSelection][CUP_COURSE_ONE];
-                    gStartMenuCounterForDemos = 0;
+                    gMenuTimingCounter = 0;
                 }
                 func_800B44AC();
             }
@@ -2432,12 +2432,12 @@ void func_800B3B58(struct Controller *arg0, u16 arg1) {
                 D_8018EDEC = 3;
                 play_sound2(0x49008001);
                 func_800B44AC();
-                gStartMenuCounterForDemos = 0;
+                gMenuTimingCounter = 0;
             }
             break;
         case 3:
             
-            if ((arg1 == 0) && ((++gStartMenuCounterForDemos == 0x3C) || ((gStartMenuCounterForDemos % 300) == 0))) {
+            if ((arg1 == 0) && ((++gMenuTimingCounter == 0x3C) || ((gMenuTimingCounter % 300) == 0))) {
                 play_sound2(0x4900900F);
             }
 
@@ -2505,7 +2505,7 @@ extern s8 gDataMenuSelection;
 extern s8 gDebugGotoScene;
 extern s8 D_8018EDFB;
 extern s8 D_8018EDFC;
-extern s32 gStartMenuCounterForDemos;
+extern s32 gMenuTimingCounter;
 extern s32 D_8018EE04;
 extern s8 D_8018EE08;
 extern s8 D_8018EE0A;
@@ -2534,7 +2534,7 @@ void func_800B3F74(u32 arg0) {
     s8 *phi_v0_2;
 
     gDebugMenuSelection = DEBUG_MENU_DISABLED;
-    gStartMenuCounterForDemos = 0;
+    gMenuTimingCounter = 0;
     D_8018EE04 = 0;
     D_8018EE08 = 0;
     D_8015F890 = 0;

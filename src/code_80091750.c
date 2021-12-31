@@ -2187,15 +2187,15 @@ void func_80095574(void) {
         phi_v0_2 = gDebugMenuSelection;
     }
     if (phi_v0_2 == DEBUG_MENU_DISABLED) {
-        gStartMenuCounterForDemos += 1;
+        gMenuTimingCounter += 1;
     } else {
-        gStartMenuCounterForDemos = 3;
+        gMenuTimingCounter = 3;
     }
-    temp_v0_2 = gStartMenuCounterForDemos;
+    temp_v0_2 = gMenuTimingCounter;
     phi_v0_3 = temp_v0_2;
     if (temp_v0_2 == 2) {
         play_sound2(0x49009009);
-        phi_v0_3 = gStartMenuCounterForDemos;
+        phi_v0_3 = gMenuTimingCounter;
     }
     if (phi_v0_3 >= 0x12D) {
         func_8009E230();

@@ -192,15 +192,15 @@ glabel L8009568C
 /* 09642C 8009582C 24010001 */  li    $at, 1
 .L80095830:
 /* 096430 80095830 14410007 */  bne   $v0, $at, .L80095850
-/* 096434 80095834 3C038019 */   lui   $v1, %hi(gStartMenuCounterForDemos) # 0x8019
-/* 096438 80095838 3C038019 */  lui   $v1, %hi(gStartMenuCounterForDemos) # $v1, 0x8019
-/* 09643C 8009583C 2463EE00 */  addiu $v1, %lo(gStartMenuCounterForDemos) # addiu $v1, $v1, -0x1200
+/* 096434 80095834 3C038019 */   lui   $v1, %hi(gMenuTimingCounter) # 0x8019
+/* 096438 80095838 3C038019 */  lui   $v1, %hi(gMenuTimingCounter) # $v1, 0x8019
+/* 09643C 8009583C 2463EE00 */  addiu $v1, %lo(gMenuTimingCounter) # addiu $v1, $v1, -0x1200
 /* 096440 80095840 8C790000 */  lw    $t9, ($v1)
 /* 096444 80095844 27280001 */  addiu $t0, $t9, 1
 /* 096448 80095848 10000004 */  b     .L8009585C
 /* 09644C 8009584C AC680000 */   sw    $t0, ($v1)
 .L80095850:
-/* 096450 80095850 2463EE00 */  addiu $v1, $v1, %lo(gStartMenuCounterForDemos) # -0x1200
+/* 096450 80095850 2463EE00 */  addiu $v1, $v1, %lo(gMenuTimingCounter) # -0x1200
 /* 096454 80095854 24090003 */  li    $t1, 3
 /* 096458 80095858 AC690000 */  sw    $t1, ($v1)
 .L8009585C:
@@ -211,8 +211,8 @@ glabel L8009568C
 /* 09646C 8009586C 2841012D */   slti  $at, $v0, 0x12d
 /* 096470 80095870 0C032384 */  jal   play_sound2
 /* 096474 80095874 34849009 */   ori   $a0, (0x49009009 & 0xFFFF) # ori $a0, $a0, 0x9009
-/* 096478 80095878 3C028019 */  lui   $v0, %hi(gStartMenuCounterForDemos) # $v0, 0x8019
-/* 09647C 8009587C 8C42EE00 */  lw    $v0, %lo(gStartMenuCounterForDemos)($v0)
+/* 096478 80095878 3C028019 */  lui   $v0, %hi(gMenuTimingCounter) # $v0, 0x8019
+/* 09647C 8009587C 8C42EE00 */  lw    $v0, %lo(gMenuTimingCounter)($v0)
 /* 096480 80095880 2841012D */  slti  $at, $v0, 0x12d
 .L80095884:
 /* 096484 80095884 14200005 */  bnez  $at, .L8009589C
