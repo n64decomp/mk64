@@ -1056,7 +1056,7 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B053C.s")
 s32 func_800B4520(u16); // extern
 ? play_sound2(?, s8 *); // extern
 extern s8 D_8018EDEC;
-extern s8 D_8018EDF7;
+extern s8 gTimeTrialDataCourseIndex;
 extern s8 D_8018EDF8;
 
 void func_800B13B0(void *arg0, ? arg1) {
@@ -1079,29 +1079,29 @@ void func_800B13B0(void *arg0, ? arg1) {
     if (func_800B4520(phi_a1) == 0) {
         if (D_8018EDEC == 1) {
             if ((phi_a1 & 0x400) != 0) {
-                temp_v0 = D_8018EDF7;
+                temp_v0 = gTimeTrialDataCourseIndex;
                 if ((temp_v0 % 4) != 3) {
-                    D_8018EDF7 = temp_v0 + 1;
+                    gTimeTrialDataCourseIndex = temp_v0 + 1;
                     sp18 = phi_a1;
-                    play_sound2(0x49008000, &D_8018EDF7);
+                    play_sound2(0x49008000, &gTimeTrialDataCourseIndex);
                 }
             }
             if ((phi_a1 & 0x800) != 0) {
-                temp_v0_2 = D_8018EDF7;
+                temp_v0_2 = gTimeTrialDataCourseIndex;
                 if ((temp_v0_2 & 3) != 0) {
-                    D_8018EDF7 = temp_v0_2 - 1;
+                    gTimeTrialDataCourseIndex = temp_v0_2 - 1;
                     sp18 = phi_a1;
-                    play_sound2(0x49008000, &D_8018EDF7);
+                    play_sound2(0x49008000, &gTimeTrialDataCourseIndex);
                 }
             }
-            phi_a1_2 = &D_8018EDF7;
+            phi_a1_2 = &gTimeTrialDataCourseIndex;
             if ((phi_a1 & 0x100) != 0) {
-                temp_v0_3 = D_8018EDF7;
+                temp_v0_3 = gTimeTrialDataCourseIndex;
                 if ((temp_v0_3 / 4) != 3) {
-                    D_8018EDF7 = temp_v0_3 + 4;
+                    gTimeTrialDataCourseIndex = temp_v0_3 + 4;
                     sp18 = phi_a1;
-                    play_sound2(0x49008000, &D_8018EDF7);
-                    phi_a1_2 = &D_8018EDF7;
+                    play_sound2(0x49008000, &gTimeTrialDataCourseIndex);
+                    phi_a1_2 = &gTimeTrialDataCourseIndex;
                 }
             }
             if ((phi_a1 & 0x200) != 0) {
@@ -1154,7 +1154,7 @@ extern f64 D_800F2DA8;
 extern f64 D_800F2DB0;
 extern ? D_8018EB90;
 extern s8 D_8018EDEC;
-extern s8 D_8018EDF7;
+extern s8 gTimeTrialDataCourseIndex;
 extern s8 D_8018EDF8;
 extern s8 D_8018EDF9;
 
@@ -1257,7 +1257,7 @@ void func_800B15AC(void *arg0, ? arg1) {
                         if (temp_v0_4 != 2) {
 
                         } else {
-                            temp_v0_5 = func_800B639C(D_8018EDF7, 0, temp_a2, sp18);
+                            temp_v0_5 = func_800B639C(gTimeTrialDataCourseIndex, 0, temp_a2, sp18);
                             phi_a1 = temp_v0_5;
                             if (temp_v0_5 >= 0) {
                                 sp20 = temp_v0_5;
@@ -1276,8 +1276,8 @@ void func_800B15AC(void *arg0, ? arg1) {
                             }
                         }
                     } else {
-                        func_800B4728(D_8018EDF7, 0, temp_a2, sp18);
-                        func_800B559C(D_8018EDF7);
+                        func_800B4728(gTimeTrialDataCourseIndex, 0, temp_a2, sp18);
+                        func_800B559C(gTimeTrialDataCourseIndex);
                         play_sound2(0x4900801D);
                         phi_a1 = -1;
                     }
@@ -1297,24 +1297,24 @@ void func_800B15AC(void *arg0, ? arg1) {
         }
         phi_a3 = phi_v1;
         if ((phi_v1 & 0x200) != 0) {
-            temp_a1_2 = D_8018EDF7;
-            if (temp_a1_2 > 0) {
-                D_8018EDF7 = temp_a1_2 - 1;
+            temp_a1_2 = gTimeTrialDataCourseIndex;
+            if (temp_a1_2 > TIME_TRIAL_DATA_LUIGI_RACEWAY) {
+                gTimeTrialDataCourseIndex = temp_a1_2 - 1;
                 sp18 = phi_v1;
                 play_sound2(0x49008000, temp_a1_2);
                 phi_a3 = sp18;
             }
         }
         if ((phi_a3 & 0x100) != 0) {
-            temp_a1_3 = D_8018EDF7;
-            if (temp_a1_3 < 0xF) {
-                D_8018EDF7 = temp_a1_3 + 1;
+            temp_a1_3 = gTimeTrialDataCourseIndex;
+            if (temp_a1_3 < TIME_TRIAL_DATA_RAINBOW_ROAD) {
+                gTimeTrialDataCourseIndex = temp_a1_3 + 1;
                 sp18 = phi_a3;
                 play_sound2(0x49008000, temp_a1_3);
             }
         }
         sp18 = phi_a3;
-        temp_a1_4 = D_8018EDF7;
+        temp_a1_4 = gTimeTrialDataCourseIndex;
         temp_a2_2 = func_800AAEF4(0xE8);
         temp_t4 = ((temp_a1_4 / 4) * 0x60) + ((temp_a1_4 % 4) * 0x18);
         if (D_8018EDF8 == 2) {
@@ -1361,7 +1361,7 @@ void func_800B15AC(void *arg0, ? arg1) {
                 if ((temp_v0_10 == 1) && ((temp_t4 + &D_8018EB90)->unk12 == 0)) {
                     *phi_v1_2 = temp_v0_10 + 1;
                 }
-                if ((*phi_v1_2 == 2) && (sp28 = temp_a2_2, sp18 = phi_a3, sp24 = temp_t4 + &D_8018EB90, phi_a3_2 = phi_a3, phi_a2 = temp_a2_2, phi_v1_3 = &D_8018EDF8, (func_800B639C(D_8018EDF7) < 0))) {
+                if ((*phi_v1_2 == 2) && (sp28 = temp_a2_2, sp18 = phi_a3, sp24 = temp_t4 + &D_8018EB90, phi_a3_2 = phi_a3, phi_a2 = temp_a2_2, phi_v1_3 = &D_8018EDF8, (func_800B639C(gTimeTrialDataCourseIndex) < 0))) {
                     if ((temp_t4 + &D_8018EB90)->unk12 == 0) {
                         D_8018EDF8 = 0;
                     } else {
@@ -2549,7 +2549,7 @@ extern s8 D_8018EDEE;
 extern s8 gDebugMenuSelection;
 extern s8 D_8018EDF1;
 extern s8 D_8018EDF3;
-extern s8 D_8018EDF7;
+extern s8 gTimeTrialDataCourseIndex;
 extern s8 gDebugGotoScene;
 extern s8 D_8018EDFB;
 extern s8 D_8018EDFC;
@@ -2618,7 +2618,7 @@ void func_800B3F74(u32 arg0) {
         gEnableDebugMode = 0;
         gCupSelection = MUSHROOM_CUP;
         gCupCourseSelection = CUP_COURSE_ONE;
-        D_8018EDF7 = 0;
+        gTimeTrialDataCourseIndex = TIME_TRIAL_DATA_LUIGI_RACEWAY;
         if (D_8018EDF3 <= 0) {
             D_8018EDF3 = 1;
         }
@@ -3092,7 +3092,7 @@ void func_800B4A9C(s32 arg0) {
     s32 phi_a3;
     s32 phi_a3_2;
 
-    if ((func_800B4EB4(0, arg0) & 0xFFFFF) < 0x927C0) {
+    if ((func_800B4EB4(0, arg0) & 0xFFFFF) < MAX_TIME) {
         *(&D_8018EBA2 + (((arg0 / 4) * 0x60) + ((arg0 % 4) * 0x18))) = 1;
     }
     temp_t2 = ((arg0 / 4) * 0x60) + ((arg0 % 4) * 0x18) + &D_8018EB90;

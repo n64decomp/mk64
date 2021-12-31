@@ -78,9 +78,9 @@ glabel L800B4070
 /* 0B4C8C 800B408C 3C018019 */  lui   $at, %hi(gCupCourseSelection) # $at, 0x8019
 /* 0B4C90 800B4090 A020EE0B */  sb    $zero, %lo(gCupCourseSelection)($at)
 /* 0B4C94 800B4094 3C048019 */  lui   $a0, %hi(D_8018EDF3) # $a0, 0x8019
-/* 0B4C98 800B4098 3C018019 */  lui   $at, %hi(D_8018EDF7) # $at, 0x8019
+/* 0B4C98 800B4098 3C018019 */  lui   $at, %hi(gTimeTrialDataCourseIndex) # $at, 0x8019
 /* 0B4C9C 800B409C 2484EDF3 */  addiu $a0, %lo(D_8018EDF3) # addiu $a0, $a0, -0x120d
-/* 0B4CA0 800B40A0 A020EDF7 */  sb    $zero, %lo(D_8018EDF7)($at)
+/* 0B4CA0 800B40A0 A020EDF7 */  sb    $zero, %lo(gTimeTrialDataCourseIndex)($at)
 /* 0B4CA4 800B40A4 80870000 */  lb    $a3, ($a0)
 /* 0B4CA8 800B40A8 24080004 */  li    $t0, 4
 /* 0B4CAC 800B40AC 3C19800F */  lui   $t9, %hi(D_800F2BDF) # 0x800f
