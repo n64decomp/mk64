@@ -128,7 +128,7 @@ void func_800029B0(void) {
 }
 
 void func_80002A18(void) {
-    struct Controller *currentController;
+    struct Controller *controller;
     int tmp;
 
     gPlayerCountSelection1 = D_8018EDF3;
@@ -189,14 +189,14 @@ void func_80002A18(void) {
         func_800CB2C4();
     }
 
-    currentController = *gControllerOne;
+    controller = *gControllerOne;
 
-    for (tmp = 0; tmp < 7; tmp++, currentController++){
-        currentController->rawStickX = 0;
-        currentController->rawStickY = 0;
-        currentController->buttonPressed = 0;
-        currentController->buttonDepressed = 0;
-        currentController->button = 0;
+    for (tmp = 0; tmp < 7; tmp++, controller++){
+        controller->rawStickX = 0;
+        controller->rawStickY = 0;
+        controller->buttonPressed = 0;
+        controller->buttonDepressed = 0;
+        controller->button = 0;
     }
 }
 
