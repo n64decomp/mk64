@@ -2103,7 +2103,7 @@ glabel D_8018EDF5
 glabel D_8018EDF6
 .skip 1
 
-glabel D_8018EDF7
+glabel gTimeTrialDataCourseIndex
 .skip 1
 
 glabel D_8018EDF8
