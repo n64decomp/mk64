@@ -37,8 +37,8 @@ glabel func_800B15AC
 .L800B1634:
 /* 0B2234 800B1634 1180000C */  beqz  $t4, .L800B1668
 /* 0B2238 800B1638 00603825 */   move  $a3, $v1
-/* 0B223C 800B163C 3C028019 */  lui   $v0, %hi(gDataMenuSelection) # $v0, 0x8019
-/* 0B2240 800B1640 2442EDF7 */  addiu $v0, %lo(gDataMenuSelection) # addiu $v0, $v0, -0x1209
+/* 0B223C 800B163C 3C028019 */  lui   $v0, %hi(gTimeTrialDataCourseIndex) # $v0, 0x8019
+/* 0B2240 800B1640 2442EDF7 */  addiu $v0, %lo(gTimeTrialDataCourseIndex) # addiu $v0, $v0, -0x1209
 /* 0B2244 800B1644 80450000 */  lb    $a1, ($v0)
 /* 0B2248 800B1648 3C044900 */  lui   $a0, (0x49008000 >> 16) # lui $a0, 0x4900
 /* 0B224C 800B164C 34848000 */  ori   $a0, (0x49008000 & 0xFFFF) # ori $a0, $a0, 0x8000
@@ -49,10 +49,10 @@ glabel func_800B15AC
 /* 0B2260 800B1660 AFA30018 */   sw    $v1, 0x18($sp)
 /* 0B2264 800B1664 8FA70018 */  lw    $a3, 0x18($sp)
 .L800B1668:
-/* 0B2268 800B1668 3C028019 */  lui   $v0, %hi(gDataMenuSelection) # $v0, 0x8019
+/* 0B2268 800B1668 3C028019 */  lui   $v0, %hi(gTimeTrialDataCourseIndex) # $v0, 0x8019
 /* 0B226C 800B166C 30EE0100 */  andi  $t6, $a3, 0x100
 /* 0B2270 800B1670 11C0000B */  beqz  $t6, .L800B16A0
-/* 0B2274 800B1674 2442EDF7 */   addiu $v0, %lo(gDataMenuSelection) # addiu $v0, $v0, -0x1209
+/* 0B2274 800B1674 2442EDF7 */   addiu $v0, %lo(gTimeTrialDataCourseIndex) # addiu $v0, $v0, -0x1209
 /* 0B2278 800B1678 80450000 */  lb    $a1, ($v0)
 /* 0B227C 800B167C 3C044900 */  lui   $a0, (0x49008000 >> 16) # lui $a0, 0x4900
 /* 0B2280 800B1680 34848000 */  ori   $a0, (0x49008000 & 0xFFFF) # ori $a0, $a0, 0x8000
@@ -67,8 +67,8 @@ glabel func_800B15AC
 /* 0B22A0 800B16A0 240400E8 */  li    $a0, 232
 /* 0B22A4 800B16A4 0C02ABBD */  jal   func_800AAEF4
 /* 0B22A8 800B16A8 AFA70018 */   sw    $a3, 0x18($sp)
-/* 0B22AC 800B16AC 3C058019 */  lui   $a1, %hi(gDataMenuSelection) # $a1, 0x8019
-/* 0B22B0 800B16B0 80A5EDF7 */  lb    $a1, %lo(gDataMenuSelection)($a1)
+/* 0B22AC 800B16AC 3C058019 */  lui   $a1, %hi(gTimeTrialDataCourseIndex) # $a1, 0x8019
+/* 0B22B0 800B16B0 80A5EDF7 */  lb    $a1, %lo(gTimeTrialDataCourseIndex)($a1)
 /* 0B22B4 800B16B4 3C038019 */  lui   $v1, %hi(gCourseRecordsMenuSelection) # $v1, 0x8019
 /* 0B22B8 800B16B8 2463EDF8 */  addiu $v1, %lo(gCourseRecordsMenuSelection) # addiu $v1, $v1, -0x1208
 /* 0B22BC 800B16BC 806E0000 */  lb    $t6, ($v1)
@@ -178,7 +178,7 @@ glabel func_800B15AC
 /* 0B243C 800B183C A06A0000 */  sb    $t2, ($v1)
 /* 0B2440 800B1840 80620000 */  lb    $v0, ($v1)
 /* 0B2444 800B1844 24010002 */  li    $at, 2
-/* 0B2448 800B1848 3C048019 */  lui   $a0, %hi(gDataMenuSelection)
+/* 0B2448 800B1848 3C048019 */  lui   $a0, %hi(gTimeTrialDataCourseIndex)
 /* 0B244C 800B184C 15220007 */  bne   $t1, $v0, .L800B186C
 /* 0B2450 800B1850 00000000 */   nop   
 /* 0B2454 800B1854 91190012 */  lbu   $t9, 0x12($t0)
@@ -190,7 +190,7 @@ glabel func_800B15AC
 .L800B186C:
 /* 0B246C 800B186C 54410015 */  bnel  $v0, $at, .L800B18C4
 /* 0B2470 800B1870 3C044900 */   lui   $a0, (0x49008000 >> 16) # $a0, 0x4900
-/* 0B2474 800B1874 8084EDF7 */  lb    $a0, %lo(gDataMenuSelection)($a0)
+/* 0B2474 800B1874 8084EDF7 */  lb    $a0, %lo(gTimeTrialDataCourseIndex)($a0)
 /* 0B2478 800B1878 AFA60028 */  sw    $a2, 0x28($sp)
 /* 0B247C 800B187C AFA70018 */  sw    $a3, 0x18($sp)
 /* 0B2480 800B1880 0C02D8E7 */  jal   func_800B639C
@@ -385,17 +385,17 @@ glabel func_800B15AC
 /* 0B2744 800B1B44 00002825 */  move  $a1, $zero
 /* 0B2748 800B1B48 24010002 */  li    $at, 2
 /* 0B274C 800B1B4C 10490005 */  beq   $v0, $t1, .L800B1B64
-/* 0B2750 800B1B50 3C048019 */   lui   $a0, %hi(gDataMenuSelection)
+/* 0B2750 800B1B50 3C048019 */   lui   $a0, %hi(gTimeTrialDataCourseIndex)
 /* 0B2754 800B1B54 1041000D */  beq   $v0, $at, .L800B1B8C
-/* 0B2758 800B1B58 3C048019 */   lui   $a0, %hi(gDataMenuSelection) # $a0, 0x8019
+/* 0B2758 800B1B58 3C048019 */   lui   $a0, %hi(gTimeTrialDataCourseIndex) # $a0, 0x8019
 /* 0B275C 800B1B5C 10000026 */  b     .L800B1BF8
 /* 0B2760 800B1B60 24AC0001 */   addiu $t4, $a1, 1
 .L800B1B64:
 /* 0B2764 800B1B64 0C02D1CA */  jal   func_800B4728
-/* 0B2768 800B1B68 8084EDF7 */   lb    $a0, %lo(gDataMenuSelection)($a0)
-/* 0B276C 800B1B6C 3C048019 */  lui   $a0, %hi(gDataMenuSelection) # $a0, 0x8019
+/* 0B2768 800B1B68 8084EDF7 */   lb    $a0, %lo(gTimeTrialDataCourseIndex)($a0)
+/* 0B276C 800B1B6C 3C048019 */  lui   $a0, %hi(gTimeTrialDataCourseIndex) # $a0, 0x8019
 /* 0B2770 800B1B70 0C02D567 */  jal   func_800B559C
-/* 0B2774 800B1B74 8084EDF7 */   lb    $a0, %lo(gDataMenuSelection)($a0)
+/* 0B2774 800B1B74 8084EDF7 */   lb    $a0, %lo(gTimeTrialDataCourseIndex)($a0)
 /* 0B2778 800B1B78 3C044900 */  lui   $a0, (0x4900801D >> 16) # $a0, 0x4900
 /* 0B277C 800B1B7C 0C032384 */  jal   play_sound2
 /* 0B2780 800B1B80 3484801D */   ori   $a0, (0x4900801D & 0xFFFF) # ori $a0, $a0, 0x801d
@@ -403,7 +403,7 @@ glabel func_800B15AC
 /* 0B2788 800B1B88 2405FFFF */   li    $a1, -1
 .L800B1B8C:
 /* 0B278C 800B1B8C 0C02D8E7 */  jal   func_800B639C
-/* 0B2790 800B1B90 8084EDF7 */   lb    $a0, %lo(gDataMenuSelection)($a0)
+/* 0B2790 800B1B90 8084EDF7 */   lb    $a0, %lo(gTimeTrialDataCourseIndex)($a0)
 /* 0B2794 800B1B94 04400017 */  bltz  $v0, .L800B1BF4
 /* 0B2798 800B1B98 00402825 */   move  $a1, $v0
 /* 0B279C 800B1B9C 00402025 */  move  $a0, $v0

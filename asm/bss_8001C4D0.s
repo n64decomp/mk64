@@ -2103,7 +2103,7 @@ glabel D_8018EDF5
 glabel D_8018EDF6
 .skip 1
 
-glabel gDataMenuSelection
+glabel gTimeTrialDataCourseIndex
 .skip 1
 
 glabel gCourseRecordsMenuSelection
