@@ -7429,7 +7429,7 @@ s16 func_8007C9F8(void) {
     }
     if (temp_v0 == 2) {
         if (gModeSelection == GRAND_PRIX) {
-            if (D_801643B8->unk0 < D_801643B8->unk4) {
+            if (gPlayerPositions->unk0 < gPlayerPositions->unk4) {
                 return 0;
             }
             return 1;

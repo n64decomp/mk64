@@ -242,7 +242,7 @@ extern Camera *camera3;
 extern Camera *camera4;
 
 extern u16 D_800DC5B0;
-extern s32 D_800DC5E8;
+extern s32 gWinningPlayerIndex;
 
 extern s32 gEnableResourceMeters;
 
@@ -696,7 +696,7 @@ void func_8000142C(void) {
                     func_802A41D4();
                 }
                 D_8015F788 = 0;
-                if (D_800DC5E8 == 0) {
+                if (gWinningPlayerIndex == 0) {
                     func_802A5FAC();
                     func_802A5CB4();
                 } else {
@@ -742,7 +742,7 @@ void func_8000142C(void) {
                 func_802A41D4();
             }
             D_8015F788 = 0;
-            if (D_800DC5E8 == 0) {
+            if (gWinningPlayerIndex == 0) {
                 func_802A65B8();
                 func_802A62A4();
             } else {
@@ -813,17 +813,17 @@ void func_8000142C(void) {
             func_802A41D4();
         }
         D_8015F788 = 0;
-        if (D_800DC5E8 == 0) {
+        if (gWinningPlayerIndex == 0) {
             func_802A6BB0();
             func_802A6E94();
             func_802A7178();
             func_802A68CC();
-        } else if (D_800DC5E8 == 1) {
+        } else if (gWinningPlayerIndex == 1) {
             func_802A68CC();
             func_802A6E94();
             func_802A7178();
             func_802A6BB0();
-        } else if (D_800DC5E8 == 2) {
+        } else if (gWinningPlayerIndex == 2) {
             func_802A68CC();
             func_802A6BB0();
             func_802A7178();

@@ -2371,7 +2371,7 @@ block_16:
             arg0->unk2 = arg0->unk2 & 0xEFFF;
             if (arg0->unk0 == 0x2A) {
                 arg0->unk6 = 8;
-                arg0->unk4 = D_8015F8F0;
+                arg0->unk4 = gPlayerPositionLookup;
                 arg0->unk8 = 1000.0f;
                 temp_v1_2 = D_80164430;
                 temp_v0_2 = *(&D_80164438 + (((&gPlayers[temp_t7] - gPlayerOne) / 3544) * 2)) + 8;
@@ -2414,11 +2414,11 @@ block_16:
                         phi_v0_4 = temp_v0_5 - temp_v1_4;
                     }
                     arg0->unk12 = phi_v0_4;
-                    arg0->unk4 = (&D_8015F8F0)[gPlayers[temp_t7].unk_004].unk-2;
+                    arg0->unk4 = (&gPlayerPositionLookup)[gPlayers[temp_t7].unk_004].unk-2;
                 } else {
                     arg0->unk6 = 3;
                     arg0->unk8 = 1000.0f;
-                    arg0->unk4 = (&D_8015F8F0)[gPlayers[temp_t7].unk_004].unk-2;
+                    arg0->unk4 = (&gPlayerPositionLookup)[gPlayers[temp_t7].unk_004].unk-2;
                 }
             }
         }
@@ -2501,8 +2501,8 @@ block_16:
         return;
     case 8:
         func_802B3B44(arg0);
-        arg0->unk4 = D_8015F8F0;
-        temp_t3 = D_8015F8F0;
+        arg0->unk4 = gPlayerPositionLookup;
+        temp_t3 = gPlayerPositionLookup;
         temp_f0_4 = gPlayers[temp_t3].posX - arg0->unk18;
         temp_f2_5 = gPlayers[temp_t3].posZ - arg0->unk20;
         if (((temp_f0_4 * temp_f0_4) + (temp_f2_5 * temp_f2_5)) < D_802B9FA0) {

@@ -85,8 +85,8 @@ s32 D_800DC5E0 = 32;
 
 s16 D_800DC5E4 = 0;
 
-// TODO: D_800DC5E8 accessed as word, D_800DC5EB as u8
-s32 D_800DC5E8 = 0;
+// TODO: gWinningPlayerIndex (D_800DC5E8) accessed as word, D_800DC5EB as u8
+s32 gWinningPlayerIndex = 0;
 
 struct UnkStruct_800DC5EC D_8015F480[4];
 struct UnkStruct_800DC5EC *D_800DC5EC = &D_8015F480[0];

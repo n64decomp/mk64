@@ -3997,7 +3997,7 @@ s32 func_800C3508(?); // extern
 ? func_800C9A88(u8); // extern
 ? func_800C9D0C(u8); // extern
 ? func_800CA414(?, ?); // extern
-extern s32 D_800DC5E8;
+extern s32 gWinningPlayerIndex;
 extern ? D_800E9E74;
 extern ? D_800E9E94;
 extern ? D_800E9EA4;
@@ -4092,14 +4092,14 @@ void func_800C76C0(u8 arg0) {
                                         func_800C9018(arg0, 0x1008026);
                                         func_800C8EF8(0x17);
                                         *(&D_800EA0EC + arg0) = 2;
-                                        func_800C90F4(arg0, (*(&gPlayers + 0x254 + (D_800DC5E8 * 0xDD8)) * 0x10) + 0x2900800D);
+                                        func_800C90F4(arg0, (*(&gPlayers + 0x254 + (gWinningPlayerIndex * 0xDD8)) * 0x10) + 0x2900800D);
                                     }
                                 } else if ((D_800EA0EC.unk0 == 1) && (D_800EA0EC.unk1 == 1) && (D_800EA0EC.unk2 == 1)) {
                                     func_800C5278(5);
                                     func_800C9018(arg0, 0x1008026);
                                     func_800C8EF8(0x17);
                                     *(&D_800EA0EC + arg0) = 2;
-                                    func_800C90F4(arg0, (*(&gPlayers + 0x254 + (D_800DC5E8 * 0xDD8)) * 0x10) + 0x2900800D);
+                                    func_800C90F4(arg0, (*(&gPlayers + 0x254 + (gWinningPlayerIndex * 0xDD8)) * 0x10) + 0x2900800D);
                                 }
                             } else {
                                 func_800C3448(0x100100FF);
@@ -4108,7 +4108,7 @@ void func_800C76C0(u8 arg0) {
                                 func_800C9018(arg0, 0x100F926);
                                 func_800C8EF8(0x17);
                                 *(&D_800EA0EC + arg0) = 2;
-                                func_800C90F4(arg0, (*(&gPlayers + 0x254 + (D_800DC5E8 * 0xDD8)) * 0x10) + 0x2900800D);
+                                func_800C90F4(arg0, (*(&gPlayers + 0x254 + (gWinningPlayerIndex * 0xDD8)) * 0x10) + 0x2900800D);
                             }
                         }
                     } else {

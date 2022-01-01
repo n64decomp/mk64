@@ -14,28 +14,29 @@ extern s32 gPrevLoadedAddress;
 void func_80281780(void) {
     if (gEnableDebugMode != 0) {
         if (gControllerOne->button & 0x0F0F) {
-            if (gControllerOne->button & 8) {
-                D_800E86A8[0] = 1;
+            // Allows to switch character in debug mode?
+            if (gControllerOne->button & U_CBUTTONS) {
+                D_800E86A8[0] = LUIGI;
             }
-            else if (gControllerOne->button & 2) {
-                D_800E86A8[0] = 2;
+            else if (gControllerOne->button & L_CBUTTONS) {
+                D_800E86A8[0] = YOSHI;
             }
-            else if (gControllerOne->button & 1) {
-                D_800E86A8[0] = 3;
+            else if (gControllerOne->button & R_CBUTTONS) {
+                D_800E86A8[0] = TOAD;
             }
-            else if (gControllerOne->button & 4) {
-                D_800E86A8[0] = 4;
+            else if (gControllerOne->button & D_CBUTTONS) {
+                D_800E86A8[0] = DK;
             }
-            else if (gControllerOne->button & 0x800) {
-                D_800E86A8[0] = 5;
+            else if (gControllerOne->button & U_JPAD) {
+                D_800E86A8[0] = WARIO;
             }
-            else if (gControllerOne->button & 0x200) {
-                D_800E86A8[0] = 6;
+            else if (gControllerOne->button & L_JPAD) {
+                D_800E86A8[0] = PEACH;
             }
-            else if (gControllerOne->button & 0x100) {
-                D_800E86A8[0] = 7;
+            else if (gControllerOne->button & R_JPAD) {
+                D_800E86A8[0] = BOWSER;
             } else {
-                D_800E86A8[0] = 0;
+                D_800E86A8[0] = MARIO;
             }
             bcopy(&D_80284ED0, &gCharacterIdByGPOverallRank, 8);
         }

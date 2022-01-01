@@ -414,7 +414,7 @@ void func_80039DA4(void) {
         }
     } else {
         for (i = 0; i < 8; i++) {
-            D_80165270[i] = spC.unk00[D_801643B8[i]];
+            D_80165270[i] = spC.unk00[gPlayerPositions[i]];
         }
     }
 }

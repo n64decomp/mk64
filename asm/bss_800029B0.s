@@ -229,7 +229,7 @@ glabel D_8015F8E4
 glabel D_8015F8E8
 .skip 8
 
-glabel D_8015F8F0
+glabel gPlayerPositionLookup
 .skip 2
 
 glabel D_8015F8F2

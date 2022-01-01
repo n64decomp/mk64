@@ -1,6 +1,6 @@
 glabel func_800A6D94
-/* 0A7994 800A6D94 3C0F800E */  lui   $t7, %hi(D_800DC5E8) # $t7, 0x800e
-/* 0A7998 800A6D98 8DEFC5E8 */  lw    $t7, %lo(D_800DC5E8)($t7)
+/* 0A7994 800A6D94 3C0F800E */  lui   $t7, %hi(gWinningPlayerIndex) # $t7, 0x800e
+/* 0A7998 800A6D98 8DEFC5E8 */  lw    $t7, %lo(gWinningPlayerIndex)($t7)
 /* 0A799C 800A6D9C 27BDFFC0 */  addiu $sp, $sp, -0x40
 /* 0A79A0 800A6DA0 AFBF001C */  sw    $ra, 0x1c($sp)
 /* 0A79A4 800A6DA4 AFA40040 */  sw    $a0, 0x40($sp)
@@ -25,7 +25,7 @@ glabel func_800A6D94
 /* 0A79E8 800A6DE8 0081001A */  div   $zero, $a0, $at
 /* 0A79EC 800A6DEC 00002010 */  mfhi  $a0
 /* 0A79F0 800A6DF0 0C024C36 */  jal   set_text_color
-/* 0A79F4 800A6DF4 00000000 */   nop   
+/* 0A79F4 800A6DF4 00000000 */   nop
 /* 0A79F8 800A6DF8 8FA40024 */  lw    $a0, 0x24($sp)
 .L800A6DFC:
 /* 0A79FC 800A6DFC 0C029E7D */  jal   func_800A79F4
@@ -61,8 +61,8 @@ glabel func_800A6D94
 /* 0A7A74 800A6E74 4600218D */  trunc.w.s $f6, $f4
 /* 0A7A78 800A6E78 44043000 */  mfc1  $a0, $f6
 /* 0A7A7C 800A6E7C 0C024E7F */  jal   text_draw
-/* 0A7A80 800A6E80 00000000 */   nop   
+/* 0A7A80 800A6E80 00000000 */   nop
 /* 0A7A84 800A6E84 8FBF001C */  lw    $ra, 0x1c($sp)
 /* 0A7A88 800A6E88 27BD0040 */  addiu $sp, $sp, 0x40
 /* 0A7A8C 800A6E8C 03E00008 */  jr    $ra
-/* 0A7A90 800A6E90 00000000 */   nop   
+/* 0A7A90 800A6E90 00000000 */   nop

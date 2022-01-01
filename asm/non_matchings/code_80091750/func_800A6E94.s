@@ -1,9 +1,9 @@
 glabel func_800A6E94
 /* 0A7A94 800A6E94 27BDFFB0 */  addiu $sp, $sp, -0x50
 /* 0A7A98 800A6E98 00057880 */  sll   $t7, $a1, 2
-/* 0A7A9C 800A6E9C 3C188016 */  lui   $t8, %hi(D_801643B8)
+/* 0A7A9C 800A6E9C 3C188016 */  lui   $t8, %hi(gPlayerPositions)
 /* 0A7AA0 800A6EA0 030FC021 */  addu  $t8, $t8, $t7
-/* 0A7AA4 800A6EA4 8F1843B8 */  lw    $t8, %lo(D_801643B8)($t8)
+/* 0A7AA4 800A6EA4 8F1843B8 */  lw    $t8, %lo(gPlayerPositions)($t8)
 /* 0A7AA8 800A6EA8 AFBF002C */  sw    $ra, 0x2c($sp)
 /* 0A7AAC 800A6EAC AFB00028 */  sw    $s0, 0x28($sp)
 /* 0A7AB0 800A6EB0 F7B40020 */  sdc1  $f20, 0x20($sp)
@@ -18,7 +18,7 @@ glabel func_800A6E94
 /* 0A7AD4 800A6ED4 0081001A */  div   $zero, $a0, $at
 /* 0A7AD8 800A6ED8 00002010 */  mfhi  $a0
 /* 0A7ADC 800A6EDC 0C024C36 */  jal   set_text_color
-/* 0A7AE0 800A6EE0 00000000 */   nop   
+/* 0A7AE0 800A6EE0 00000000 */   nop
 /* 0A7AE4 800A6EE4 10000004 */  b     .L800A6EF8
 /* 0A7AE8 800A6EE8 8FA90050 */   lw    $t1, 0x50($sp)
 .L800A6EEC:
@@ -68,7 +68,7 @@ glabel func_800A6E94
 /* 0A7B94 800A6F94 24020001 */  li    $v0, 1
 /* 0A7B98 800A6F98 00002025 */  move  $a0, $zero
 /* 0A7B9C 800A6F9C 1449000B */  bne   $v0, $t1, .L800A6FCC
-/* 0A7BA0 800A6FA0 00000000 */   nop   
+/* 0A7BA0 800A6FA0 00000000 */   nop
 /* 0A7BA4 800A6FA4 3C04800E */  lui   $a0, %hi(gGlobalTimer) # $a0, 0x800e
 /* 0A7BA8 800A6FA8 8C84C54C */  lw    $a0, %lo(gGlobalTimer)($a0)
 /* 0A7BAC 800A6FAC 24010003 */  li    $at, 3
@@ -76,7 +76,7 @@ glabel func_800A6E94
 /* 0A7BB4 800A6FB4 0081001A */  div   $zero, $a0, $at
 /* 0A7BB8 800A6FB8 00002010 */  mfhi  $a0
 /* 0A7BBC 800A6FBC 0C024C36 */  jal   set_text_color
-/* 0A7BC0 800A6FC0 00000000 */   nop   
+/* 0A7BC0 800A6FC0 00000000 */   nop
 /* 0A7BC4 800A6FC4 10000004 */  b     .L800A6FD8
 /* 0A7BC8 800A6FC8 8FA20038 */   lw    $v0, 0x38($sp)
 .L800A6FCC:
@@ -113,13 +113,13 @@ glabel func_800A6E94
 /* 0A7C40 800A7040 3C04800E */  lui   $a0, %hi(gGlobalTimer) # $a0, 0x800e
 /* 0A7C44 800A7044 24420001 */  addiu $v0, $v0, 1
 /* 0A7C48 800A7048 144C0009 */  bne   $v0, $t4, .L800A7070
-/* 0A7C4C 800A704C 00000000 */   nop   
+/* 0A7C4C 800A704C 00000000 */   nop
 /* 0A7C50 800A7050 8C84C54C */  lw    $a0, %lo(gGlobalTimer)($a0)
 /* 0A7C54 800A7054 24010003 */  li    $at, 3
 /* 0A7C58 800A7058 0081001A */  div   $zero, $a0, $at
 /* 0A7C5C 800A705C 00002010 */  mfhi  $a0
 /* 0A7C60 800A7060 0C024C36 */  jal   set_text_color
-/* 0A7C64 800A7064 00000000 */   nop   
+/* 0A7C64 800A7064 00000000 */   nop
 /* 0A7C68 800A7068 10000004 */  b     .L800A707C
 /* 0A7C6C 800A706C 86040000 */   lh    $a0, ($s0)
 .L800A7070:
