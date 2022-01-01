@@ -1889,7 +1889,7 @@ void func_800B20F4(void *arg0, s32 arg1) {
                     D_800DC51C = 0;
                 }
                 if ((arg0->unk4 & 0x2000) != 0) { // Z is held
-                    if ((sp2E & 0x8000) != 0) { 
+                    if ((sp2E & 0x8000) != 0) {
                         gDebugGotoScene = DEBUG_GOTO_ENDING_SEQUENCE; // Go to ending ceremony if A is not pressed
                     } else {
                         gDebugGotoScene = DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA; // Go to credits, set gCCSelection to CC_EXTRA
@@ -4136,7 +4136,7 @@ extern s8 gCupSelection;
 
     func_800051C4();
     D_80162DD6 = 1;
-    func_80005AE8(D_800DC4E4);
+    func_80005AE8(gPlayerThree);
     temp_v0 = (arg0 << 7) + &D_8018EE10;
     phi_s3 = 0;
     if (((gCupSelection * 4) + gCupCourseSelection) != temp_v0->unk5) {

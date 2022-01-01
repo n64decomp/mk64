@@ -11,7 +11,7 @@ glabel func_800ACC50
 /* 0AD874 800ACC74 002E0821 */  addu  $at, $at, $t6
 /* 0AD878 800ACC78 8C2E26D8 */  lw    $t6, %lo(jpt_800F26D8)($at)
 /* 0AD87C 800ACC7C 01C00008 */  jr    $t6
-/* 0AD880 800ACC80 00000000 */   nop   
+/* 0AD880 800ACC80 00000000 */   nop
 glabel L800ACC84
 /* 0AD884 800ACC84 8CAF001C */  lw    $t7, 0x1c($a1)
 /* 0AD888 800ACC88 24080001 */  li    $t0, 1
@@ -80,8 +80,8 @@ glabel L800ACD68
 /* 0AD96C 800ACD6C AFA50020 */   sw    $a1, 0x20($sp)
 /* 0AD970 800ACD70 1440006E */  bnez  $v0, .L800ACF2C
 /* 0AD974 800ACD74 8FA50020 */   lw    $a1, 0x20($sp)
-/* 0AD978 800ACD78 3C02800E */  lui   $v0, %hi(D_800DC4CC) # $v0, 0x800e
-/* 0AD97C 800ACD7C 8C42C4CC */  lw    $v0, %lo(D_800DC4CC)($v0)
+/* 0AD978 800ACD78 3C02800E */  lui   $v0, %hi(gControllerFive) # $v0, 0x800e
+/* 0AD97C 800ACD7C 8C42C4CC */  lw    $v0, %lo(gControllerFive)($v0)
 /* 0AD980 800ACD80 94430006 */  lhu   $v1, 6($v0)
 /* 0AD984 800ACD84 944C000C */  lhu   $t4, 0xc($v0)
 /* 0AD988 800ACD88 006C2025 */  or    $a0, $v1, $t4
@@ -104,20 +104,20 @@ glabel L800ACD68
 /* 0AD9CC 800ACDCC 3C014010 */  li    $at, 0x40100000 # 2.250000
 /* 0AD9D0 800ACDD0 240FFFFF */  li    $t7, -1
 /* 0AD9D4 800ACDD4 46002021 */  cvt.d.s $f0, $f4
-/* 0AD9D8 800ACDD8 3C18800E */  lui   $t8, %hi(D_800DC4CC) # $t8, 0x800e
+/* 0AD9D8 800ACDD8 3C18800E */  lui   $t8, %hi(gControllerFive) # $t8, 0x800e
 /* 0AD9DC 800ACDDC 4626003C */  c.lt.d $f0, $f6
-/* 0AD9E0 800ACDE0 00000000 */  nop   
+/* 0AD9E0 800ACDE0 00000000 */  nop
 /* 0AD9E4 800ACDE4 45020008 */  bc1fl .L800ACE08
 /* 0AD9E8 800ACDE8 ACAF0008 */   sw    $t7, 8($a1)
 /* 0AD9EC 800ACDEC 44814800 */  mtc1  $at, $f9
 /* 0AD9F0 800ACDF0 44804000 */  mtc1  $zero, $f8
-/* 0AD9F4 800ACDF4 00000000 */  nop   
+/* 0AD9F4 800ACDF4 00000000 */  nop
 /* 0AD9F8 800ACDF8 46280280 */  add.d $f10, $f0, $f8
 /* 0AD9FC 800ACDFC 46205420 */  cvt.s.d $f16, $f10
 /* 0ADA00 800ACE00 E4B00024 */  swc1  $f16, 0x24($a1)
 /* 0ADA04 800ACE04 ACAF0008 */  sw    $t7, 8($a1)
 .L800ACE08:
-/* 0ADA08 800ACE08 8F18C4CC */  lw    $t8, %lo(D_800DC4CC)($t8)
+/* 0ADA08 800ACE08 8F18C4CC */  lw    $t8, %lo(gControllerFive)($t8)
 /* 0ADA0C 800ACE0C 97030006 */  lhu   $v1, 6($t8)
 /* 0ADA10 800ACE10 9719000C */  lhu   $t9, 0xc($t8)
 /* 0ADA14 800ACE14 00792025 */  or    $a0, $v1, $t9
@@ -142,20 +142,20 @@ glabel L800ACD68
 /* 0ADA58 800ACE58 3C014010 */  li    $at, 0x40100000 # 2.250000
 /* 0ADA5C 800ACE5C 240A0001 */  li    $t2, 1
 /* 0ADA60 800ACE60 46009021 */  cvt.d.s $f0, $f18
-/* 0ADA64 800ACE64 3C0B800E */  lui   $t3, %hi(D_800DC4CC) # $t3, 0x800e
+/* 0ADA64 800ACE64 3C0B800E */  lui   $t3, %hi(gControllerFive) # $t3, 0x800e
 /* 0ADA68 800ACE68 4624003C */  c.lt.d $f0, $f4
-/* 0ADA6C 800ACE6C 00000000 */  nop   
+/* 0ADA6C 800ACE6C 00000000 */  nop
 /* 0ADA70 800ACE70 45020008 */  bc1fl .L800ACE94
 /* 0ADA74 800ACE74 ACAA0008 */   sw    $t2, 8($a1)
 /* 0ADA78 800ACE78 44813800 */  mtc1  $at, $f7
 /* 0ADA7C 800ACE7C 44803000 */  mtc1  $zero, $f6
-/* 0ADA80 800ACE80 00000000 */  nop   
+/* 0ADA80 800ACE80 00000000 */  nop
 /* 0ADA84 800ACE84 46260200 */  add.d $f8, $f0, $f6
 /* 0ADA88 800ACE88 462042A0 */  cvt.s.d $f10, $f8
 /* 0ADA8C 800ACE8C E4AA0024 */  swc1  $f10, 0x24($a1)
 /* 0ADA90 800ACE90 ACAA0008 */  sw    $t2, 8($a1)
 .L800ACE94:
-/* 0ADA94 800ACE94 8D6BC4CC */  lw    $t3, %lo(D_800DC4CC)($t3)
+/* 0ADA94 800ACE94 8D6BC4CC */  lw    $t3, %lo(gControllerFive)($t3)
 /* 0ADA98 800ACE98 95630006 */  lhu   $v1, 6($t3)
 .L800ACE9C:
 /* 0ADA9C 800ACE9C 306C9000 */  andi  $t4, $v1, 0x9000
@@ -188,12 +188,12 @@ glabel L800ACD68
 /* 0ADAFC 800ACEFC 46008021 */  cvt.d.s $f0, $f16
 /* 0ADB00 800ACF00 3C014010 */  li    $at, 0x40100000 # 2.250000
 /* 0ADB04 800ACF04 4632003C */  c.lt.d $f0, $f18
-/* 0ADB08 800ACF08 00000000 */  nop   
+/* 0ADB08 800ACF08 00000000 */  nop
 /* 0ADB0C 800ACF0C 45020008 */  bc1fl .L800ACF30
 /* 0ADB10 800ACF10 8FBF001C */   lw    $ra, 0x1c($sp)
 /* 0ADB14 800ACF14 44812800 */  mtc1  $at, $f5
 /* 0ADB18 800ACF18 44802000 */  mtc1  $zero, $f4
-/* 0ADB1C 800ACF1C 00000000 */  nop   
+/* 0ADB1C 800ACF1C 00000000 */  nop
 /* 0ADB20 800ACF20 46240180 */  add.d $f6, $f0, $f4
 /* 0ADB24 800ACF24 46203220 */  cvt.s.d $f8, $f6
 /* 0ADB28 800ACF28 E4A80024 */  swc1  $f8, 0x24($a1)
@@ -204,4 +204,4 @@ glabel L800ACF2C
 /* 0ADB30 800ACF30 8FB00018 */  lw    $s0, 0x18($sp)
 /* 0ADB34 800ACF34 27BD0020 */  addiu $sp, $sp, 0x20
 /* 0ADB38 800ACF38 03E00008 */  jr    $ra
-/* 0ADB3C 800ACF3C 00000000 */   nop   
+/* 0ADB3C 800ACF3C 00000000 */   nop

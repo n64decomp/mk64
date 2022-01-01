@@ -34,23 +34,23 @@ glabel func_80020BF4
 /* 021874 80020C74 00193E03 */  sra   $a3, $t9, 0x18
 /* 021878 80020C78 0C009D58 */  jal   func_80027560
 /* 02187C 80020C7C AFAE0010 */   sw    $t6, 0x10($sp)
-/* 021880 80020C80 3C04800E */  lui   $a0, %hi(D_800DC4FC) # $a0, 0x800e
-/* 021884 80020C84 8C84C4FC */  lw    $a0, %lo(D_800DC4FC)($a0)
+/* 021880 80020C80 3C04800E */  lui   $a0, %hi(gPlayerOneCopy) # $a0, 0x800e
+/* 021884 80020C84 8C84C4FC */  lw    $a0, %lo(gPlayerOneCopy)($a0)
 /* 021888 80020C88 00002825 */  move  $a1, $zero
 /* 02188C 80020C8C 0C01B9AF */  jal   func_8006E6BC
 /* 021890 80020C90 24060002 */   li    $a2, 2
-/* 021894 80020C94 3C04800E */  lui   $a0, %hi(D_800DC4E0) # $a0, 0x800e
-/* 021898 80020C98 8C84C4E0 */  lw    $a0, %lo(D_800DC4E0)($a0)
+/* 021894 80020C94 3C04800E */  lui   $a0, %hi(gPlayerTwo) # $a0, 0x800e
+/* 021898 80020C98 8C84C4E0 */  lw    $a0, %lo(gPlayerTwo)($a0)
 /* 02189C 80020C9C 24050001 */  li    $a1, 1
 /* 0218A0 80020CA0 0C01B9AF */  jal   func_8006E6BC
 /* 0218A4 80020CA4 24060002 */   li    $a2, 2
-/* 0218A8 80020CA8 3C04800E */  lui   $a0, %hi(D_800DC4E4) # $a0, 0x800e
-/* 0218AC 80020CAC 8C84C4E4 */  lw    $a0, %lo(D_800DC4E4)($a0)
+/* 0218A8 80020CA8 3C04800E */  lui   $a0, %hi(gPlayerThree) # $a0, 0x800e
+/* 0218AC 80020CAC 8C84C4E4 */  lw    $a0, %lo(gPlayerThree)($a0)
 /* 0218B0 80020CB0 24050002 */  li    $a1, 2
 /* 0218B4 80020CB4 0C01B9AF */  jal   func_8006E6BC
 /* 0218B8 80020CB8 24060002 */   li    $a2, 2
-/* 0218BC 80020CBC 3C04800E */  lui   $a0, %hi(D_800DC4E8) # $a0, 0x800e
-/* 0218C0 80020CC0 8C84C4E8 */  lw    $a0, %lo(D_800DC4E8)($a0)
+/* 0218BC 80020CBC 3C04800E */  lui   $a0, %hi(gPlayerFour) # $a0, 0x800e
+/* 0218C0 80020CC0 8C84C4E8 */  lw    $a0, %lo(gPlayerFour)($a0)
 /* 0218C4 80020CC4 24050003 */  li    $a1, 3
 /* 0218C8 80020CC8 0C01B9AF */  jal   func_8006E6BC
 /* 0218CC 80020CCC 24060002 */   li    $a2, 2
@@ -146,7 +146,7 @@ glabel func_80020BF4
 /* 021A30 80020E30 00198403 */  sra   $s0, $t9, 0x10
 /* 021A34 80020E34 0202082A */  slt   $at, $s0, $v0
 /* 021A38 80020E38 1420FFB6 */  bnez  $at, .L80020D14
-/* 021A3C 80020E3C 00000000 */   nop   
+/* 021A3C 80020E3C 00000000 */   nop
 .L80020E40:
 /* 021A40 80020E40 00023840 */  sll   $a3, $v0, 1
 /* 021A44 80020E44 3C038016 */  lui   $v1, %hi(D_80164ABE) # 0x8016

@@ -93,17 +93,17 @@ glabel func_802B1E48
 /* 11B5C0 802B1FB0 A6000010 */  sh    $zero, 0x10($s0)
 /* 11B5C4 802B1FB4 862E002E */  lh    $t6, 0x2e($s1)
 /* 11B5C8 802B1FB8 24018000 */  li    $at, -32768
-/* 11B5CC 802B1FBC 3C0B800E */  lui   $t3, %hi(D_800DC4DC) # $t3, 0x800e
+/* 11B5CC 802B1FBC 3C0B800E */  lui   $t3, %hi(gPlayerOne) # $t3, 0x800e
 /* 11B5D0 802B1FC0 01C1C821 */  addu  $t9, $t6, $at
 /* 11B5D4 802B1FC4 A6190012 */  sh    $t9, 0x12($s0)
-/* 11B5D8 802B1FC8 8D6BC4DC */  lw    $t3, %lo(D_800DC4DC)($t3)
+/* 11B5D8 802B1FC8 8D6BC4DC */  lw    $t3, %lo(gPlayerOne)($t3)
 /* 11B5DC 802B1FCC 24010DD8 */  li    $at, 3544
 /* 11B5E0 802B1FD0 87A2003E */  lh    $v0, 0x3e($sp)
 /* 11B5E4 802B1FD4 022B5023 */  subu  $t2, $s1, $t3
 /* 11B5E8 802B1FD8 0141001A */  div   $zero, $t2, $at
 /* 11B5EC 802B1FDC 00004012 */  mflo  $t0
 /* 11B5F0 802B1FE0 A6080014 */  sh    $t0, 0x14($s0)
-/* 11B5F4 802B1FE4 00000000 */  nop   
+/* 11B5F4 802B1FE4 00000000 */  nop
 .L802B1FE8:
 /* 11B5F8 802B1FE8 8FBF002C */  lw    $ra, 0x2c($sp)
 /* 11B5FC 802B1FEC 8FB00024 */  lw    $s0, 0x24($sp)

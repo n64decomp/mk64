@@ -4119,7 +4119,7 @@ extern Gfx D_0D007EB8[];
 extern Gfx D_0D008108[];
 
 void func_8004C364(s32 arg0, s32 arg1, u32 arg2, u32 arg3, s32 arg4) {
-    
+
     gSPDisplayList(gDisplayListHead++, D_0D008108);
     gSPDisplayList(gDisplayListHead++, D_0D007EF8);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
@@ -5220,7 +5220,7 @@ void func_8004F168(s32 arg0, s32 arg1, s32 arg2) {
     s32 temp_t0;
     s32 temp_v0;
 
-    temp_v1 = &D_800DC4DC[arg1];
+    temp_v1 = &gPlayerOne[arg1];
     temp_t0 = arg0 * 2;
     if ((temp_v1->unk_000 & PLAYER_EXISTS) != 0) {
         temp_f0 = D_8018D2A0;
@@ -5294,7 +5294,7 @@ void func_8004F3E4(s32 arg0) {
                 phi_v1 = temp_v1;
                 if (temp_v1 > 0) {
                     do {
-                        temp_v0_2 = phi_s0 + D_800DC4DC;
+                        temp_v0_2 = phi_s0 + gPlayerOne;
                         if ((temp_v0_2->unk0 & 0x40) == 0) {
                             func_8004F168(arg0, phi_s1, temp_v0_2->unk254);
                             phi_v1 = gPlayerCountSelection1;
@@ -5312,7 +5312,7 @@ void func_8004F3E4(s32 arg0) {
                 phi_s0_2 = (temp_s1_2 * 2) + &D_80164360;
                 do {
                     temp_a1 = *phi_s0_2;
-                    func_8004F168(arg0, temp_a1, D_800DC4DC[temp_a1].characterId);
+                    func_8004F168(arg0, temp_a1, gPlayerOne[temp_a1].characterId);
                     temp_s0 = phi_s0_2 - 2;
                     phi_s0_2 = temp_s0;
                 } while (temp_s0 >= &D_80164360);
@@ -5322,12 +5322,12 @@ void func_8004F3E4(s32 arg0) {
             return;
         }
         phi_s0_3 = 0;
-        phi_v0 = D_800DC4DC;
+        phi_v0 = gPlayerOne;
         do {
             phi_v0_2 = phi_v0;
             if ((*(phi_s0_3 + phi_v0) & 0x100) == 0x100) {
                 func_8004F168(arg0, phi_s1_2, 8);
-                phi_v0_2 = D_800DC4DC;
+                phi_v0_2 = gPlayerOne;
             }
             temp_s1_3 = phi_s1_2 + 1;
             phi_s0_3 += 0xDD8;
@@ -5343,7 +5343,7 @@ void func_8004F3E4(s32 arg0) {
         phi_s0_4 = (temp_s1_4 * 2) + &D_80164360;
         do {
             temp_a1_2 = *phi_s0_4;
-            if ((D_800DC4DC[temp_a1_2].unk_000 & 0x1000) != 0) {
+            if ((gPlayerOne[temp_a1_2].unk_000 & 0x1000) != 0) {
                 func_8004F168(arg0, temp_a1_2, 8);
             }
             temp_s0_2 = phi_s0_4 - 2;
@@ -5355,7 +5355,7 @@ void func_8004F3E4(s32 arg0) {
         phi_s0_5 = (phi_s1_3 * 2) + &D_80164360;
         do {
             temp_a1_3 = *phi_s0_5;
-            temp_v0_3 = &D_800DC4DC[temp_a1_3];
+            temp_v0_3 = &gPlayerOne[temp_a1_3];
             if ((temp_v0_3->unk_000 & 0x1000) != 0x1000) {
                 func_8004F168(arg0, temp_a1_3, temp_v0_3->characterId);
             }
@@ -5929,7 +5929,7 @@ void func_80050320(void) {
                 }
                 temp_v1 = gGPCurrentRaceRanks[phi_s0];
                 temp_a1 = lapCount[*((phi_s0 * 2) + &D_80164360)];
-                if (temp_v1 == D_800DC4DC->characterId) {
+                if (temp_v1 == gPlayerOne->characterId) {
                     func_8004FDB4(*temp_t0, temp_f14, phi_a0, temp_a1, phi_s0, temp_a1, temp_v1, 0xFF, 1, phi_a0, 0);
                 } else {
                     func_8004FDB4(*temp_t0, temp_f14, phi_a0, temp_a1, phi_s0, temp_a1, temp_v1, D_8018D3E0, 0, phi_a0, 0);
@@ -5954,7 +5954,7 @@ void func_80050320(void) {
                 }
                 temp_v0 = *((phi_s0_2 * 2) + &D_80164360);
                 temp_a1_2 = lapCount[temp_v0];
-                temp_v1_2 = D_800DC4DC[temp_v0].characterId;
+                temp_v1_2 = gPlayerOne[temp_v0].characterId;
                 if (temp_v0 == 0) {
                     func_8004FDB4(*temp_t0_2, temp_f14_2, phi_a0_2, temp_a1_2, phi_s0_2, temp_a1_2, temp_v1_2, 0xFF, 1, phi_a0_2, 1);
                 } else {
@@ -6259,7 +6259,7 @@ void func_80050E34(s32 arg0, s32 arg1) {
     void *temp_v0_9;
     void *phi_s1;
 
-    temp_v0 = &D_800DC4DC[arg0];
+    temp_v0 = &gPlayerOne[arg0];
     spAC = temp_v0;
     temp_s0 = *(&lapCount + (arg0 * 4));
     temp_s1 = temp_v0->characterId;
@@ -6412,7 +6412,7 @@ void func_80050E34(s32 arg0, s32 arg1) {
     gDisplayListHead = temp_v0_26 + 8;
     temp_v0_26->unk0 = 0x6000000;
     temp_v0_26->unk4 = &D_0D006950;
-    if ((spAC == D_800DC4DC) && (gScreenModeSelection == SCREEN_MODE_1P)) {
+    if ((spAC == gPlayerOne) && (gScreenModeSelection == SCREEN_MODE_1P)) {
         temp_v0_27 = gDisplayListHead;
         gDisplayListHead = temp_v0_27 + 8;
         temp_v0_27->unk4 = &D_0D007A40;
@@ -6463,7 +6463,7 @@ void func_800514BC(void) {
         phi_s2 = (temp_s0 * 2) + &D_80164360;
         do {
             temp_a0 = *phi_s2;
-            if (((D_800DC4DC[temp_a0].unk_000 & 0x8000) != 0) && ((temp_a0 != 0) || (gPlayerCountSelection1 != 1))) {
+            if (((gPlayerOne[temp_a0].unk_000 & 0x8000) != 0) && ((temp_a0 != 0) || (gPlayerCountSelection1 != 1))) {
                 func_80050E34(temp_a0, phi_s0);
             }
             temp_s1 = phi_s1 + 1;
@@ -7262,7 +7262,7 @@ extern ? D_80183E80;
 void func_8005285C(s32 arg0) {
     Player *temp_v0;
 
-    temp_v0 = &D_800DC4DC[arg0];
+    temp_v0 = &gPlayerOne[arg0];
     D_80183E40.unk0 = temp_v0->posX;
     D_80183E40.unk4 = temp_v0->posY;
     D_80183E80.unk0 = 0;
@@ -7472,7 +7472,7 @@ void func_80052D70(s32 arg0) {
     Player *sp20;
     Player *temp_v1;
 
-    temp_v1 = &D_800DC4DC[arg0];
+    temp_v1 = &gPlayerOne[arg0];
     sp20 = temp_v1;
     if (func_80072320(*(&D_80183DB8 + (arg0 * 4)), 8) != 0) {
         D_80183E40.unk0 = temp_v1->posX;
@@ -9747,7 +9747,7 @@ void func_800568A0(s32 arg0, s32 arg1) {
     D_80183E50.unk0 = temp_v0->unk4;
     D_80183E50.unk4 = temp_v0->unk44 + D_800EE088;
     D_80183E50.unk8 = temp_v0->unkC;
-    func_80042A20(&sp30, &D_800DC4DC[arg1].unk_140, &D_80183E50, 0, 0.5f);
+    func_80042A20(&sp30, &gPlayerOne[arg1].unk_140, &D_80183E50, 0, 0.5f);
     func_80022180(gGfxPool + (D_8018D120 << 6) + 0x2C0, &sp30, &D_8018D120);
     temp_v0_2 = gDisplayListHead;
     gDisplayListHead = temp_v0_2 + 8;
@@ -9837,7 +9837,7 @@ void func_80056AC0(s32 arg0) {
         temp_v1 = &D_80165C18 + (temp_s0 * 0xE0);
         if (temp_v1->unkA6 != 0) {
             temp_s1 = temp_v1->unkA0;
-            temp_v0 = &D_800DC4DC[phi_s2];
+            temp_v0 = &gPlayerOne[phi_s2];
             temp_v1->unk4 = temp_v0->posX;
             temp_v1->unk8 = temp_v0->posY - 2.0;
             temp_v1->unkC = temp_v0->posZ;

@@ -951,7 +951,7 @@ void func_8006FA94(void) {
     phi_v1_2 = D_8018CE10;
     phi_a0_2 = 0;
     phi_a3 = &D_8018CF50;
-    phi_v0 = D_800DC4DC;
+    phi_v0 = gPlayerOne;
     phi_t0 = &D_8018CF28;
     do {
         phi_a1_2->unk0 = -32.0f;

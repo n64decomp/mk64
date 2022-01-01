@@ -3,46 +3,47 @@
 #include <common_structs.h>
 #include <defines.h>
 
-extern Player *D_800DC4DC;
-extern Player *D_800DC4E0;
-extern Player *D_800DC4E4;
-extern Player *D_800DC4E8;
-extern Player *D_800DC4EC;
-extern Player *D_800DC4F0;
-extern Player *D_800DC4F4;
-extern Player *D_800DC4F8;
-extern Player *D_800DC4FC;
+extern Player *gPlayerOne;
+extern Player *gPlayerTwo;
+extern Player *gPlayerThree;
+extern Player *gPlayerFour;
+extern Player *gPlayerFive;
+extern Player *gPlayerSix;
+extern Player *gPlayerSeven;
+extern Player *gPlayerEight;
+extern Player *gPlayerOneCopy;
 
 extern Camera *camera1;
 
-s32 func_80027D00(Player *arg0) {
-    s32 phi_v1;
+// func_80027D00
+s32 get_player_index_for_player(Player *player) {
+    s32 index;
 
-    if (arg0 == D_800DC4DC) {
-        phi_v1 = 0;
+    if (player == gPlayerOne) {
+        index = 0;
     }
-    if (arg0 == D_800DC4E0) {
-        phi_v1 = 1;
+    if (player == gPlayerTwo) {
+        index = 1;
     }
-    if (arg0 == D_800DC4E4) {
-        phi_v1 = 2;
+    if (player == gPlayerThree) {
+        index = 2;
     }
-    if (arg0 == D_800DC4E8) {
-        phi_v1 = 3;
+    if (player == gPlayerFour) {
+        index = 3;
     }
-    if (arg0 == D_800DC4EC) {
-        phi_v1 = 4;
+    if (player == gPlayerFive) {
+        index = 4;
     }
-    if (arg0 == D_800DC4F0) {
-        phi_v1 = 5;
+    if (player == gPlayerSix) {
+        index = 5;
     }
-    if (arg0 == D_800DC4F4) {
-        phi_v1 = 6;
+    if (player == gPlayerSeven) {
+        index = 6;
     }
-    if (arg0 == D_800DC4F8) {
-        phi_v1 = 7;
+    if (player == gPlayerEight) {
+        index = 7;
     }
-    return phi_v1;
+    return index;
 }
 
 #ifdef MIPS_TO_C
@@ -80,7 +81,7 @@ void func_80027DA8(u16 *arg0, s8 arg1) {
     }
     temp_v0_2 = *temp_a2;
     if ((temp_v0_2 & 0x10) != 0x10) {
-        if ((D_8018D168 == 1) && (temp_a2 == D_800DC4DC)) {
+        if ((D_8018D168 == 1) && (temp_a2 == gPlayerOne)) {
             arg0 = temp_a2;
             func_800C94A4(arg1 & 0xFF, arg1, temp_a2);
             *arg0 = *arg0 | 0x10;
@@ -767,26 +768,26 @@ extern s16 D_80164AF0;
 
 void func_80028F70(void) {
     D_80164AF0 = 0;
-    func_80028E70(D_800DC4FC, camera1, 0, 0);
-    func_80028E70(D_800DC4E0, camera1, 1, 0);
-    func_80028E70(D_800DC4E4, camera1, 2, 0);
-    func_80028E70(D_800DC4E8, camera1, 3, 0);
-    func_80028E70(D_800DC4EC, camera1, 4, 0);
-    func_80028E70(D_800DC4F0, camera1, 5, 0);
-    func_80028E70(D_800DC4F4, camera1, 6, 0);
-    func_80028E70(D_800DC4F8, camera1, 7, 0);
+    func_80028E70(gPlayerOneCopy, camera1, 0, 0);
+    func_80028E70(gPlayerTwo, camera1, 1, 0);
+    func_80028E70(gPlayerThree, camera1, 2, 0);
+    func_80028E70(gPlayerFour, camera1, 3, 0);
+    func_80028E70(gPlayerFive, camera1, 4, 0);
+    func_80028E70(gPlayerSix, camera1, 5, 0);
+    func_80028E70(gPlayerSeven, camera1, 6, 0);
+    func_80028E70(gPlayerEight, camera1, 7, 0);
 }
 
 void func_80029060(void) {
     D_80164AF0 = 0;
-    func_80028E70(D_800DC4FC, camera1, 0, 0);
-    func_80028E70(D_800DC4E0, camera1, 1, 0);
-    func_80028E70(D_800DC4E4, camera1, 2, 0);
-    func_80028E70(D_800DC4E8, camera1, 3, 0);
-    func_80028E70(D_800DC4EC, camera1, 4, 0);
-    func_80028E70(D_800DC4F0, camera1, 5, 0);
-    func_80028E70(D_800DC4F4, camera1, 6, 0);
-    func_80028E70(D_800DC4F8, camera1, 7, 0);
+    func_80028E70(gPlayerOneCopy, camera1, 0, 0);
+    func_80028E70(gPlayerTwo, camera1, 1, 0);
+    func_80028E70(gPlayerThree, camera1, 2, 0);
+    func_80028E70(gPlayerFour, camera1, 3, 0);
+    func_80028E70(gPlayerFive, camera1, 4, 0);
+    func_80028E70(gPlayerSix, camera1, 5, 0);
+    func_80028E70(gPlayerSeven, camera1, 6, 0);
+    func_80028E70(gPlayerEight, camera1, 7, 0);
 }
 
 void func_80029150(void) {
@@ -795,10 +796,10 @@ void func_80029150(void) {
 
 void func_80029158(void) {
     D_80164AF0 = 0;
-    func_80028E70(D_800DC4FC, camera1, 0, 0);
-    func_80028E70(D_800DC4E0, camera1, 1, 0);
-    func_80028E70(D_800DC4E4, camera1, 2, 0);
-    func_80028E70(D_800DC4E8, camera1, 3, 0);
+    func_80028E70(gPlayerOneCopy, camera1, 0, 0);
+    func_80028E70(gPlayerTwo, camera1, 1, 0);
+    func_80028E70(gPlayerThree, camera1, 2, 0);
+    func_80028E70(gPlayerFour, camera1, 3, 0);
 }
 
 void func_800291E8(void) {
@@ -1425,7 +1426,7 @@ void func_8002A79C(void *arg0, s8 arg1) {
             // Duplicate return node #12. Try simplifying control flow for better match
             return;
         }
-        if (arg0 == D_800DC4DC) {
+        if (arg0 == gPlayerOne) {
             func_800C9250(arg1 & 0xFF, arg1, 0x100);
             return;
         }
@@ -2233,7 +2234,7 @@ void func_8002BF4C(void *arg0, u8 arg1) {
         arg0->unkBC = arg0->unkBC & 0xFFDFFFFF;
         return;
     }
-    phi_s0 = D_800DC4DC;
+    phi_s0 = gPlayerOne;
     phi_s1 = 0;
     if ((arg0->unkBC & 0x200000) == 0x200000) {
         arg0->unkE2 = arg0->unkE2 - 1;
@@ -3410,7 +3411,7 @@ GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002D268.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-s32 func_80027D00(); // extern
+s32 get_player_index_for_player(); // extern
 
 void func_8002E4C4(void *arg0) {
     s32 sp1C;
@@ -3418,7 +3419,7 @@ void func_8002E4C4(void *arg0) {
     f32 temp_f2;
     s32 temp_v0;
 
-    temp_v0 = func_80027D00();
+    temp_v0 = get_player_index_for_player();
     sp1C = temp_v0;
     arg0->unkF0 = 0.0f;
     arg0->unkF4 = 0.0f;
@@ -4655,29 +4656,29 @@ void func_80030C34(s32 arg0) {
     s32 phi_v0;
     s32 phi_a2;
 
-    if (arg0 == D_800DC4DC) {
+    if (arg0 == gPlayerOne) {
         sp4 = 0;
     }
     phi_v0 = sp4;
-    if (arg0 == D_800DC4E0) {
+    if (arg0 == gPlayerTwo) {
         phi_v0 = 1;
     }
-    if (arg0 == D_800DC4E4) {
+    if (arg0 == gPlayerThree) {
         phi_v0 = 2;
     }
-    if (arg0 == D_800DC4E8) {
+    if (arg0 == gPlayerFour) {
         phi_v0 = 3;
     }
-    if (arg0 == D_800DC4EC) {
+    if (arg0 == gPlayerFive) {
         phi_v0 = 4;
     }
-    if (arg0 == D_800DC4F0) {
+    if (arg0 == gPlayerSix) {
         phi_v0 = 5;
     }
-    if (arg0 == D_800DC4F4) {
+    if (arg0 == gPlayerSeven) {
         phi_v0 = 6;
     }
-    if (arg0 == D_800DC4F8) {
+    if (arg0 == gPlayerEight) {
         phi_v0 = 7;
     }
     temp_a0 = &D_80165460[phi_v0];
@@ -4747,29 +4748,29 @@ void func_80030E00(s32 arg0) {
     s32 phi_v0;
     s32 phi_a2;
 
-    if (arg0 == D_800DC4DC) {
+    if (arg0 == gPlayerOne) {
         sp4 = 0;
     }
     phi_v0 = sp4;
-    if (arg0 == D_800DC4E0) {
+    if (arg0 == gPlayerTwo) {
         phi_v0 = 1;
     }
-    if (arg0 == D_800DC4E4) {
+    if (arg0 == gPlayerThree) {
         phi_v0 = 2;
     }
-    if (arg0 == D_800DC4E8) {
+    if (arg0 == gPlayerFour) {
         phi_v0 = 3;
     }
-    if (arg0 == D_800DC4EC) {
+    if (arg0 == gPlayerFive) {
         phi_v0 = 4;
     }
-    if (arg0 == D_800DC4F0) {
+    if (arg0 == gPlayerSix) {
         phi_v0 = 5;
     }
-    if (arg0 == D_800DC4F4) {
+    if (arg0 == gPlayerSeven) {
         phi_v0 = 6;
     }
-    if (arg0 == D_800DC4F8) {
+    if (arg0 == gPlayerEight) {
         phi_v0 = 7;
     }
     temp_a0 = &D_80165460[phi_v0];
@@ -4824,7 +4825,7 @@ GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80030E00.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-s8 func_80027D00(); // extern
+s8 get_player_index_for_player(); // extern
 ? func_8008F104(f32, f64, void *, s8); // extern
 extern f64 D_800ED9D8;
 extern f64 D_800ED9E0;
@@ -4943,7 +4944,7 @@ void func_80030FC8(void *arg0) {
     f32 phi_f12_3;
     f64 phi_f14;
 
-    temp_v0 = func_80027D00();
+    temp_v0 = get_player_index_for_player();
     temp_a0 = arg0;
     if (D_80165460[temp_v0] == 0) {
         temp_f0 = temp_a0->unk9C;
@@ -5163,7 +5164,7 @@ GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80030FC8.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-s8 func_80027D00(); // extern
+s8 get_player_index_for_player(); // extern
 ? func_8008F104(void *, s8); // extern
 extern f64 D_800EDAF8;
 
@@ -5174,7 +5175,7 @@ void func_80031F48(void *arg0, f32 arg1) {
     void *temp_a0;
 
     temp_a0 = arg0;
-    temp_a1 = func_80027D00();
+    temp_a1 = get_player_index_for_player();
     temp_a0->unk9C = temp_a0->unk9C - arg1;
     if (temp_a0->unk9C <= 0.0f) {
         temp_a0->unk9C = 0.0f;
@@ -5218,29 +5219,29 @@ void func_80032050(s32 arg0) {
     s32 phi_v0;
     s32 phi_a2;
 
-    if (arg0 == D_800DC4DC) {
+    if (arg0 == gPlayerOne) {
         sp4 = 0;
     }
     phi_v0 = sp4;
-    if (arg0 == D_800DC4E0) {
+    if (arg0 == gPlayerTwo) {
         phi_v0 = 1;
     }
-    if (arg0 == D_800DC4E4) {
+    if (arg0 == gPlayerThree) {
         phi_v0 = 2;
     }
-    if (arg0 == D_800DC4E8) {
+    if (arg0 == gPlayerFour) {
         phi_v0 = 3;
     }
-    if (arg0 == D_800DC4EC) {
+    if (arg0 == gPlayerFive) {
         phi_v0 = 4;
     }
-    if (arg0 == D_800DC4F0) {
+    if (arg0 == gPlayerSix) {
         phi_v0 = 5;
     }
-    if (arg0 == D_800DC4F4) {
+    if (arg0 == gPlayerSeven) {
         phi_v0 = 6;
     }
-    if (arg0 == D_800DC4F8) {
+    if (arg0 == gPlayerEight) {
         phi_v0 = 7;
     }
     temp_a0 = &D_80165520[phi_v0];
@@ -5310,29 +5311,29 @@ void func_8003221C(s32 arg0) {
     s32 phi_v0;
     s32 phi_a2;
 
-    if (arg0 == D_800DC4DC) {
+    if (arg0 == gPlayerOne) {
         sp4 = 0;
     }
     phi_v0 = sp4;
-    if (arg0 == D_800DC4E0) {
+    if (arg0 == gPlayerTwo) {
         phi_v0 = 1;
     }
-    if (arg0 == D_800DC4E4) {
+    if (arg0 == gPlayerThree) {
         phi_v0 = 2;
     }
-    if (arg0 == D_800DC4E8) {
+    if (arg0 == gPlayerFour) {
         phi_v0 = 3;
     }
-    if (arg0 == D_800DC4EC) {
+    if (arg0 == gPlayerFive) {
         phi_v0 = 4;
     }
-    if (arg0 == D_800DC4F0) {
+    if (arg0 == gPlayerSix) {
         phi_v0 = 5;
     }
-    if (arg0 == D_800DC4F4) {
+    if (arg0 == gPlayerSeven) {
         phi_v0 = 6;
     }
-    if (arg0 == D_800DC4F8) {
+    if (arg0 == gPlayerEight) {
         phi_v0 = 7;
     }
     temp_a0 = &D_80165520[phi_v0];
@@ -5405,29 +5406,29 @@ void func_800323E4(void *arg0) {
     f32 phi_f2_2;
 
     phi_f2_2 = 0.0f;
-    if (arg0 == D_800DC4DC) {
+    if (arg0 == gPlayerOne) {
         sp24 = 0;
     }
     phi_v1 = sp24;
-    if (arg0 == D_800DC4E0) {
+    if (arg0 == gPlayerTwo) {
         phi_v1 = 1;
     }
-    if (arg0 == D_800DC4E4) {
+    if (arg0 == gPlayerThree) {
         phi_v1 = 2;
     }
-    if (arg0 == D_800DC4E8) {
+    if (arg0 == gPlayerFour) {
         phi_v1 = 3;
     }
-    if (arg0 == D_800DC4EC) {
+    if (arg0 == gPlayerFive) {
         phi_v1 = 4;
     }
-    if (arg0 == D_800DC4F0) {
+    if (arg0 == gPlayerSix) {
         phi_v1 = 5;
     }
-    if (arg0 == D_800DC4F4) {
+    if (arg0 == gPlayerSeven) {
         phi_v1 = 6;
     }
-    if (arg0 == D_800DC4F8) {
+    if (arg0 == gPlayerEight) {
         phi_v1 = 7;
     }
     temp_t5 = arg0->unkBC | 1;
@@ -5481,7 +5482,7 @@ GLOBAL_ASM("asm/non_matchings/code_80027D00/func_800323E4.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-s32 func_80027D00(); // extern
+s32 get_player_index_for_player(); // extern
 extern f64 D_800EDB10;
 extern f64 D_800EDB18;
 extern f64 D_800EDB20;
@@ -5599,7 +5600,7 @@ void func_80032700(void *arg0) {
         if (gModeSelection == TIME_TRIALS) {
             phi_v0 = 0x14;
         }
-        if (((gRaceFrameCounter - D_801652E0[func_80027D00()]) < phi_v0) && ((arg0->unk44 & 0x20) != 0x20)) {
+        if (((gRaceFrameCounter - D_801652E0[get_player_index_for_player()]) < phi_v0) && ((arg0->unk44 & 0x20) != 0x20)) {
             arg0->unkC = arg0->unkC | 0x2000000;
         } else if ((arg0->unk214 * D_800EDB90) <= arg0->unk9C) {
             temp_v0 = arg0->unkC;
@@ -5653,7 +5654,7 @@ GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80032CB0.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_80027D00(); // extern
+? get_player_index_for_player(); // extern
 extern f64 D_800EDBA8;
 extern f64 D_800EDBB0;
 extern f64 D_800EDBB8;
@@ -5709,7 +5710,7 @@ void func_80032D94(void *arg0) {
     f32 phi_f12;
     f32 phi_f12_2;
 
-    func_80027D00();
+    get_player_index_for_player();
     temp_f0 = arg0->unk9C;
     phi_f0 = temp_f0;
     if ((temp_f0 >= 0.0) && (temp_f0 < (arg0->unk214 * D_800EDBA8))) {
@@ -7460,12 +7461,12 @@ GLOBAL_ASM("asm/non_matchings/code_80027D00/func_800381AC.s")
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_800381AC(Player *, struct Controller *, ?); // extern
-extern struct Controller *D_800DC4C0;
-extern struct Controller *D_800DC4C4;
-extern struct Controller *D_800DC4C8;
-extern struct Controller *D_800DC4D0;
-extern struct Controller *D_800DC4D4;
-extern struct Controller *D_800DC4D8;
+extern struct Controller *gControllerTwo;
+extern struct Controller *gControllerThree;
+extern struct Controller *gControllerFour;
+extern struct Controller *gControllerSix;
+extern struct Controller *gControllerSeven;
+extern struct Controller *gControllerEight;
 
 void func_800382DC(void) {
     Player *temp_a0;
@@ -7486,17 +7487,17 @@ void func_800382DC(void) {
             if (temp_v0 != 3) {
                 return;
             }
-            func_800381AC(D_800DC4DC, D_800DC4BC, 0);
-            func_800381AC(D_800DC4E0, D_800DC4C0, 1);
-            func_800381AC(D_800DC4E4, D_800DC4C4, 2);
+            func_800381AC(gPlayerOne, gControllerOne, 0);
+            func_800381AC(gPlayerTwo, gControllerTwo, 1);
+            func_800381AC(gPlayerThree, gControllerThree, 2);
             if (gPlayerCountSelection1 == 4) {
-                func_800381AC(D_800DC4E8, D_800DC4C8, 3);
+                func_800381AC(gPlayerFour, gControllerFour, 3);
             }
             // Duplicate return node #27. Try simplifying control flow for better match
             return;
         }
-        func_800381AC(D_800DC4DC, D_800DC4BC, 0);
-        func_800381AC(D_800DC4E0, D_800DC4C0, 1);
+        func_800381AC(gPlayerOne, gControllerOne, 0);
+        func_800381AC(gPlayerTwo, gControllerTwo, 1);
         return;
     }
     temp_v0_2 = gModeSelection;
@@ -7505,39 +7506,39 @@ void func_800382DC(void) {
             return;
         }
         if (D_8015F890 != 1) {
-            func_800381AC(D_800DC4DC, D_800DC4BC, 0);
-            temp_a0 = D_800DC4E0;
+            func_800381AC(gPlayerOne, gControllerOne, 0);
+            temp_a0 = gPlayerTwo;
             temp_v0_3 = temp_a0->unk_000;
             if (((temp_v0_3 & 0x100) == 0x100) && ((temp_v0_3 & 0x800) != 0x800)) {
-                func_800381AC(temp_a0, D_800DC4D0, 1);
+                func_800381AC(temp_a0, gControllerSix, 1);
             }
-            temp_a0_2 = D_800DC4E4;
+            temp_a0_2 = gPlayerThree;
             temp_v0_4 = temp_a0_2->unk_000;
             if (((temp_v0_4 & 0x100) == 0x100) && ((temp_v0_4 & 0x800) != 0x800)) {
-                func_800381AC(temp_a0_2, D_800DC4D4, 2);
+                func_800381AC(temp_a0_2, gControllerSeven, 2);
                 return;
             }
             // Duplicate return node #27. Try simplifying control flow for better match
             return;
         }
-        temp_a0_3 = D_800DC4DC;
+        temp_a0_3 = gPlayerOne;
         if ((temp_a0_3->unk_000 & 0x800) != 0x800) {
-            func_800381AC(temp_a0_3, D_800DC4D8, 0);
+            func_800381AC(temp_a0_3, gControllerEight, 0);
         }
-        temp_a0_4 = D_800DC4E0;
+        temp_a0_4 = gPlayerTwo;
         temp_v0_5 = temp_a0_4->unk_000;
         if (((temp_v0_5 & 0x100) == 0x100) && ((temp_v0_5 & 0x800) != 0x800)) {
-            func_800381AC(temp_a0_4, D_800DC4D0, 1);
+            func_800381AC(temp_a0_4, gControllerSix, 1);
         }
-        temp_a0_5 = D_800DC4E4;
+        temp_a0_5 = gPlayerThree;
         temp_v0_6 = temp_a0_5->unk_000;
         if (((temp_v0_6 & 0x100) == 0x100) && ((temp_v0_6 & 0x800) != 0x800)) {
-            func_800381AC(temp_a0_5, D_800DC4D4, 2);
+            func_800381AC(temp_a0_5, gControllerSeven, 2);
             return;
         }
         return;
     }
-    func_800381AC(D_800DC4DC, D_800DC4BC, 0);
+    func_800381AC(gPlayerOne, gControllerOne, 0);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_800382DC.s")

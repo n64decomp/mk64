@@ -1254,7 +1254,7 @@ void func_80089020(s32 arg0, f32 *arg1) {
     } else {
         phi_f2 = -temp_f0;
     }
-    if ((D_800DC4DC[arg0].unk_0BC & 0xC0) != 0) {
+    if ((gPlayerOne[arg0].unk_0BC & 0xC0) != 0) {
         if (gCurrentCourseId == 0xC) {
             temp_f0_2 = phi_f2;
             if (temp_f0_2 <= 0.5) {
@@ -1342,7 +1342,7 @@ f32 func_8008933C(void *arg0, s32 arg1, f32 arg2, f32 arg3) {
     void *temp_v0;
     f32 phi_f2;
 
-    temp_v1 = &D_8018CE10[(arg0 - D_800DC4DC) / 0xDD8];
+    temp_v1 = &D_8018CE10[(arg0 - gPlayerOne) / 0xDD8];
     phi_f2 = 0.0f;
     if (temp_v1->unk1E == 0) {
         arg0->unk46 = arg0->unk46 | 2;
@@ -1381,7 +1381,7 @@ f32 func_8008933C(Player *, s32, s32, s32); // extern
 void func_80089474(s32 arg0, u8 arg1, s32 arg2, s32 arg3, s32 arg4) {
     Player *sp18;
 
-    sp18 = &D_800DC4DC[arg1];
+    sp18 = &gPlayerOne[arg1];
     if (func_8007223C(0x4000000) != 0) {
         func_80072180();
     }
@@ -1414,7 +1414,7 @@ void func_80089820(s32 arg0, ? arg1, f32 arg2, ? arg3) {
     Player *phi_s0;
     s32 phi_s1;
 
-    temp_s0 = D_800DC4DC;
+    temp_s0 = gPlayerOne;
     func_800721E8(0x2000000);
     if (func_8007223C(arg0, 0x200) != 0) {
         phi_s1 = 0;
@@ -1465,7 +1465,7 @@ void func_80089A04(s32 arg0, ? arg1, f32 arg2) {
     Player *phi_s0;
     s32 phi_s1;
 
-    temp_s0 = D_800DC4DC;
+    temp_s0 = gPlayerOne;
     if (func_8007223C(0x200) != 0) {
         phi_s1 = 0;
         if (D_8018D158 > 0) {
@@ -1508,7 +1508,7 @@ s32 func_80089B50(s32 arg0) {
     s32 phi_s2;
 
     sp40 = 0;
-    temp_s0 = D_800DC4DC;
+    temp_s0 = gPlayerOne;
     phi_s1 = 0;
     if (func_8007223C(0x200) != 0) {
         phi_s2 = 0;
@@ -1559,7 +1559,7 @@ extern s32 D_8018D158;
     ? phi_s7;
     ? phi_s7_2;
 
-    temp_s0 = D_800DC4DC;
+    temp_s0 = gPlayerOne;
     phi_s7 = 0;
     phi_s7_2 = 0;
     if (func_8007223C(0x200) != 0) {
@@ -1609,7 +1609,7 @@ extern s32 D_8018D158;
     ? phi_s7;
     ? phi_s7_2;
 
-    temp_s0 = D_800DC4DC;
+    temp_s0 = gPlayerOne;
     phi_s7 = 0;
     phi_s7_2 = 0;
     if (func_8007223C(0x200) != 0) {
@@ -2614,8 +2614,8 @@ void func_8008BE0C(s32 arg0, s16 arg1, u16 arg2) {
     temp_v0 = (arg0 * 0xE0) + &D_80165C18;
     sp1C = temp_v0;
     sp18 = temp_f2;
-    temp_v0->unk10 = temp_f6 + D_800DC4FC->posX;
-    temp_v0->unk18 = (coss(arg2) * temp_f2) + D_800DC4FC->posZ;
+    temp_v0->unk10 = temp_f6 + gPlayerOneCopy->posX;
+    temp_v0->unk18 = (coss(arg2) * temp_f2) + gPlayerOneCopy->posZ;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80086E70/func_8008BE0C.s")

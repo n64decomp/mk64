@@ -62,7 +62,7 @@ extern s32 D_00835BA0;
 extern s32 D_801625F8;
 extern f32 D_801625FC;
 
-extern struct Controller *D_800DC4BC;
+extern struct Controller *gControllerOne;
 extern s8 D_800E86A8[];
 extern u16 gEnableDebugMode;
 

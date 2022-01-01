@@ -51,11 +51,11 @@ glabel func_8001C14C
 /* 01CE08 8001C208 3C013FF0 */  li    $at, 0x3FF00000 # 1.875000
 .L8001C20C:
 /* 01CE0C 8001C20C 3C1E8016 */  lui   $fp, %hi(D_80163484) # $fp, 0x8016
-/* 01CE10 8001C210 3C14800E */  lui   $s4, %hi(D_800DC4DC)
+/* 01CE10 8001C210 3C14800E */  lui   $s4, %hi(gPlayerOne)
 /* 01CE14 8001C214 4481A800 */  mtc1  $at, $f21
 /* 01CE18 8001C218 4480A000 */  mtc1  $zero, $f20
 /* 01CE1C 8001C21C 27DE3484 */  addiu $fp, %lo(D_80163484) # addiu $fp, $fp, 0x3484
-/* 01CE20 8001C220 2694C4DC */  addiu $s4, %lo(D_800DC4DC) # addiu $s4, $s4, -0x3b24
+/* 01CE20 8001C220 2694C4DC */  addiu $s4, %lo(gPlayerOne) # addiu $s4, $s4, -0x3b24
 /* 01CE24 8001C224 00008825 */  move  $s1, $zero
 /* 01CE28 8001C228 3C150100 */  lui   $s5, 0x100
 /* 01CE2C 8001C22C 24130003 */  li    $s3, 3
@@ -94,7 +94,7 @@ glabel func_8001C14C
 /* 01CEA8 8001C2A8 46128100 */  add.s $f4, $f16, $f18
 /* 01CEAC 8001C2AC 460021A1 */  cvt.d.s $f6, $f4
 /* 01CEB0 8001C2B0 4634303C */  c.lt.d $f6, $f20
-/* 01CEB4 8001C2B4 00000000 */  nop   
+/* 01CEB4 8001C2B4 00000000 */  nop
 /* 01CEB8 8001C2B8 45020032 */  bc1fl .L8001C384
 /* 01CEBC 8001C2BC 26310001 */   addiu $s1, $s1, 1
 /* 01CEC0 8001C2C0 5233001E */  beql  $s1, $s3, .L8001C33C
@@ -103,7 +103,7 @@ glabel func_8001C14C
 /* 01CECC 8001C2CC 306ADFFF */  andi  $t2, $v1, 0xdfff
 /* 01CED0 8001C2D0 34692000 */  ori   $t1, $v1, 0x2000
 /* 01CED4 8001C2D4 15000003 */  bnez  $t0, .L8001C2E4
-/* 01CED8 8001C2D8 3C0E800E */   lui   $t6, %hi(D_800DC4E0)
+/* 01CED8 8001C2D8 3C0E800E */   lui   $t6, %hi(gPlayerTwo)
 /* 01CEDC 8001C2DC 10000002 */  b     .L8001C2E8
 /* 01CEE0 8001C2E0 A6090000 */   sh    $t1, ($s0)
 .L8001C2E4:
@@ -114,13 +114,13 @@ glabel func_8001C14C
 /* 01CEF0 8001C2F0 318D2000 */  andi  $t5, $t4, 0x2000
 /* 01CEF4 8001C2F4 51A00023 */  beql  $t5, $zero, .L8001C384
 /* 01CEF8 8001C2F8 26310001 */   addiu $s1, $s1, 1
-/* 01CEFC 8001C2FC 8DCEC4E0 */  lw    $t6, %lo(D_800DC4E0)($t6)
-/* 01CF00 8001C300 3C19800E */  lui   $t9, %hi(D_800DC4E4)
+/* 01CEFC 8001C2FC 8DCEC4E0 */  lw    $t6, %lo(gPlayerTwo)($t6)
+/* 01CF00 8001C300 3C19800E */  lui   $t9, %hi(gPlayerThree)
 /* 01CF04 8001C304 95CF0000 */  lhu   $t7, ($t6)
 /* 01CF08 8001C308 31F82000 */  andi  $t8, $t7, 0x2000
 /* 01CF0C 8001C30C 5300001D */  beql  $t8, $zero, .L8001C384
 /* 01CF10 8001C310 26310001 */   addiu $s1, $s1, 1
-/* 01CF14 8001C314 8F39C4E4 */  lw    $t9, %lo(D_800DC4E4)($t9)
+/* 01CF14 8001C314 8F39C4E4 */  lw    $t9, %lo(gPlayerThree)($t9)
 /* 01CF18 8001C318 3C018016 */  lui   $at, %hi(D_80163480) # $at, 0x8016
 /* 01CF1C 8001C31C 97280000 */  lhu   $t0, ($t9)
 /* 01CF20 8001C320 31092000 */  andi  $t1, $t0, 0x2000
@@ -155,7 +155,7 @@ glabel func_8001C14C
 .L8001C384:
 /* 01CF84 8001C384 24010004 */  li    $at, 4
 /* 01CF88 8001C388 1621FFA9 */  bne   $s1, $at, .L8001C230
-/* 01CF8C 8001C38C 00000000 */   nop   
+/* 01CF8C 8001C38C 00000000 */   nop
 .L8001C390:
 /* 01CF90 8001C390 8FBF0044 */  lw    $ra, 0x44($sp)
 /* 01CF94 8001C394 D7B40018 */  ldc1  $f20, 0x18($sp)

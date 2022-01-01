@@ -15,14 +15,14 @@ glabel func_8002BF4C
 /* 02CB80 8002BF80 46062203 */  div.s $f8, $f4, $f6
 /* 02CB84 8002BF84 3C014248 */  li    $at, 0x42480000 # 50.000000
 /* 02CB88 8002BF88 44819000 */  mtc1  $at, $f18
-/* 02CB8C 8002BF8C 3C02800E */  lui   $v0, %hi(D_800DC4DC) # $v0, 0x800e
+/* 02CB8C 8002BF8C 3C02800E */  lui   $v0, %hi(gPlayerOne) # $v0, 0x800e
 /* 02CB90 8002BF90 00809025 */  move  $s2, $a0
-/* 02CB94 8002BF94 8C42C4DC */  lw    $v0, %lo(D_800DC4DC)($v0)
+/* 02CB94 8002BF94 8C42C4DC */  lw    $v0, %lo(gPlayerOne)($v0)
 /* 02CB98 8002BF98 00003025 */  move  $a2, $zero
 /* 02CB9C 8002BF9C 3C01FFDF */  lui   $at, (0xFFDFFFFF >> 16) # lui $at, 0xffdf
 /* 02CBA0 8002BFA0 460A4402 */  mul.s $f16, $f8, $f10
 /* 02CBA4 8002BFA4 4612803C */  c.lt.s $f16, $f18
-/* 02CBA8 8002BFA8 00000000 */  nop   
+/* 02CBA8 8002BFA8 00000000 */  nop
 /* 02CBAC 8002BFAC 45020008 */  bc1fl .L8002BFD0
 /* 02CBB0 8002BFB0 8E5800BC */   lw    $t8, 0xbc($s2)
 /* 02CBB4 8002BFB4 8C8E00BC */  lw    $t6, 0xbc($a0)
@@ -75,7 +75,7 @@ glabel func_8002BF4C
 /* 02CC64 8002C064 865900E2 */  lh    $t9, 0xe2($s2)
 /* 02CC68 8002C068 2B21003D */  slti  $at, $t9, 0x3d
 /* 02CC6C 8002C06C 14200020 */  bnez  $at, .L8002C0F0
-/* 02CC70 8002C070 00000000 */   nop   
+/* 02CC70 8002C070 00000000 */   nop
 /* 02CC74 8002C074 8E4800BC */  lw    $t0, 0xbc($s2)
 /* 02CC78 8002C078 96420000 */  lhu   $v0, ($s2)
 /* 02CC7C 8002C07C 3C010020 */  lui   $at, 0x20

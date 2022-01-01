@@ -8,8 +8,8 @@ glabel func_802846E4
 /* 127D3C 802846FC AFA40018 */  sw    $a0, 0x18($sp)
 /* 127D40 80284700 0C0A0B64 */  jal   func_80282D90
 /* 127D44 80284704 00003825 */   move  $a3, $zero
-/* 127D48 80284708 3C02800E */  lui   $v0, %hi(D_800DC4E8) # $v0, 0x800e
-/* 127D4C 8028470C 2442C4E8 */  addiu $v0, %lo(D_800DC4E8) # addiu $v0, $v0, -0x3b18
+/* 127D48 80284708 3C02800E */  lui   $v0, %hi(gPlayerFour) # $v0, 0x800e
+/* 127D4C 8028470C 2442C4E8 */  addiu $v0, %lo(gPlayerFour) # addiu $v0, $v0, -0x3b18
 /* 127D50 80284710 8C4E0000 */  lw    $t6, ($v0)
 /* 127D54 80284714 3C018028 */  lui   $at, %hi(D_8028747C) # $at, 0x8028
 /* 127D58 80284718 C420747C */  lwc1  $f0, %lo(D_8028747C)($at)
@@ -56,4 +56,4 @@ glabel func_802846E4
 /* 127DFC 802847BC 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 127E00 802847C0 27BD0018 */  addiu $sp, $sp, 0x18
 /* 127E04 802847C4 03E00008 */  jr    $ra
-/* 127E08 802847C8 00000000 */   nop   
+/* 127E08 802847C8 00000000 */   nop
