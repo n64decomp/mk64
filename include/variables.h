@@ -25,7 +25,7 @@ extern s8    gHumanPlayerCount;
 extern f32   gKartFrictionTable[];
 extern f32   gKartBoundingBoxTable[];
 extern f32   gKartGravityTable[];
-extern s8    gMenuState;                            // D_8018EDF0
+extern s8    gControllerPakMenuSelection;           // D_8018EDF0
 extern s32   gModeSelection;
 // Indicates the ID of the next title screen demo that will be played
 extern u8    gNextDemoId;                           // D_800E86BC

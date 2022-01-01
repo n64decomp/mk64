@@ -65,7 +65,7 @@ extern u16 D_800DC518;
 extern u16 D_8015011E;
 extern float gCourseTimer;
 extern float D_800DC594;
-extern s32 D_800DC530;
+extern s32 gScreenModeSelection;
 extern s32 D_8018D2AC;
 extern s32 D_800DC52C;
 extern s16 gCurrentCourseId;
@@ -336,14 +336,14 @@ void func_8028E678(void) {
                     break;
             }
             D_800DC5B8 = 0;
-            switch(D_800DC530) {
-                case 0:
+            switch(gScreenModeSelection) {
+                case SCREEN_MODE_1P:
                     D_8015F894 = 1;
                     break;
-                case 1:
+                case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
                     D_8015F894 = 5;
                     break;
-                case 2:
+                case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                     D_8015F894 = 6;
                     break;
             }
@@ -505,7 +505,7 @@ void func_8028EC38(s32 arg0) {
 
 void func_8028EC98(s32 arg0) {
 
-    if (D_800DC530 == 3) {
+    if (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) {
         return;
     }
 
@@ -1079,7 +1079,7 @@ void func_8028FCBC(void) {
             D_800DC5B4 = 1;
             D_802BA034 = 0.008f;
             D_8015F894 = 0;
-            if (D_800DC530 != 0) {
+            if (gScreenModeSelection != SCREEN_MODE_1P) {
                 func_8005C64C(&D_8018D2AC);
             }
             for (i = 0; i < 8; i++) {
@@ -1149,14 +1149,14 @@ void func_8028FCBC(void) {
                     func_8028EF28();
                     func_8028F970();
 
-                    switch(D_800DC530) {
-                        case 0:
+                    switch(gScreenModeSelection) {
+                        case SCREEN_MODE_1P:
                             D_802BA038 = 690;
                             D_800DC510 = 5;
                             func_8028E298();
                             break;
-                        case 1:
-                        case 2:
+                        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+                        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                             if (((D_800DC4DC->unk_000 & PLAYER_CINEMATIC_MODE) != 0) && ((D_800DC4E0->unk_000 & PLAYER_CINEMATIC_MODE) != 0)) {
 
                                 if (D_800DC4DC->unk_004 < D_800DC4E0->unk_004) {
@@ -1196,7 +1196,7 @@ void func_8028FCBC(void) {
                     case GRAND_PRIX:
                         if (D_80150120 != 0) {
                             func_8028E678();
-                        } else if (D_800DC530 == 0) {
+                        } else if (gScreenModeSelection == SCREEN_MODE_1P) {
                             func_80092564();
                             D_800DC510 = 7;
                         } else {
@@ -1235,7 +1235,7 @@ UNUSED void func_80290314(void) {
 void func_80290338(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    gMenuSelectionFromQuit = GAME_SELECT_MENU_FROM_QUIT;
+    gMenuSelectionFromQuit = MAIN_MENU_FROM_QUIT;
 }
 
 void func_80290360(void) {

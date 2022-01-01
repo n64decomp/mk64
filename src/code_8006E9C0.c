@@ -3,24 +3,24 @@
 #include <defines.h>
 
 void func_8006EA5C(void);
-extern s32 D_800DC530;
+extern s32 gScreenModeSelection;
 
 void func_8006E9C0(void) {
 
     func_8006EA5C();
     func_8006FA94();
 
-    switch (D_800DC530) {
-        case 0: 
+    switch (gScreenModeSelection) {
+        case SCREEN_MODE_1P: 
             func_80071428();
             break;
-        case 2:
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             func_80071818();
             break;
-        case 1:
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             func_80071A20();
             break;
-        case 3:
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
             func_80071C28();
             break;
     }
@@ -837,7 +837,7 @@ void func_8006FA94(void) {
                 D_8018D180 = 0x96;
                 D_8018D2AC = 0x3C;
             }
-        } else if (D_800DC530 == 1) {
+        } else if (gScreenModeSelection == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL) {
             temp_v0 = gModeSelection;
             if (temp_v0 == GRAND_PRIX) {
                 D_8018D114 = 2;
