@@ -2073,7 +2073,7 @@ glabel D_8018EDEB
 glabel D_8018EDEC
 .skip 1
 
-glabel D_8018EDED
+glabel gMainMenuSelectionDepth
 .skip 1
 
 glabel D_8018EDEE
@@ -2082,7 +2082,7 @@ glabel D_8018EDEE
 glabel gDebugMenuSelection
 .skip 1
 
-glabel gMenuState # 0x8018EDF0
+glabel gControllerPakMenuSelection # 0x8018EDF0
 .skip 1
 
 glabel D_8018EDF1

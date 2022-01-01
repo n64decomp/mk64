@@ -88,8 +88,8 @@ glabel func_800532A4
 /* 053FF0 800533F0 0C012171 */  jal   func_800485C4
 /* 053FF4 800533F4 AFB90028 */   sw    $t9, 0x28($sp)
 .L800533F8:
-/* 053FF8 800533F8 3C08800E */  lui   $t0, %hi(D_800DC530) # $t0, 0x800e
-/* 053FFC 800533FC 8D08C530 */  lw    $t0, %lo(D_800DC530)($t0)
+/* 053FF8 800533F8 3C08800E */  lui   $t0, %hi(gScreenModeSelection) # $t0, 0x800e
+/* 053FFC 800533FC 8D08C530 */  lw    $t0, %lo(gScreenModeSelection)($t0)
 /* 054000 80053400 3C028019 */  lui   $v0, %hi(D_8018CF14) # $v0, 0x8019
 /* 054004 80053404 55000023 */  bnel  $t0, $zero, .L80053494
 /* 054008 80053408 8FBF003C */   lw    $ra, 0x3c($sp)
