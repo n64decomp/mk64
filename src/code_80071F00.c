@@ -4942,7 +4942,7 @@ extern ? D_80183DB8;
 void func_80078F64(void) {
     s32 temp_v0;
 
-    temp_v0 = D_800DC530;
+    temp_v0 = gScreenModeSelection;
     if (temp_v0 != 0) {
         if (temp_v0 != 1) {
             if (temp_v0 != 2) {
@@ -10023,7 +10023,7 @@ void func_80080A4C(s32 arg0, s32 arg1) {
 
     sp1C = (arg1 * 0xB8) + camera1;
     temp_a3 = &D_800DC4DC[arg1];
-    if (D_800DC530 != 3) {
+    if (gScreenModeSelection != 3) {
         sp18 = temp_a3;
         if ((func_80072320(0x10, temp_a3) != 0) && (func_80088A58(arg0, temp_a3, 0x43FA0000, temp_a3) != 0)) {
             func_8001CA10(sp1C);

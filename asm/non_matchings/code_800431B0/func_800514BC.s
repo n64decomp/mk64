@@ -1,7 +1,7 @@
 glabel func_800514BC
 /* 0520BC 800514BC 27BDFFC8 */  addiu $sp, $sp, -0x38
-/* 0520C0 800514C0 3C0E800E */  lui   $t6, %hi(D_800DC530) # $t6, 0x800e
-/* 0520C4 800514C4 8DCEC530 */  lw    $t6, %lo(D_800DC530)($t6)
+/* 0520C0 800514C0 3C0E800E */  lui   $t6, %hi(gScreenModeSelection) # $t6, 0x800e
+/* 0520C4 800514C4 8DCEC530 */  lw    $t6, %lo(gScreenModeSelection)($t6)
 /* 0520C8 800514C8 AFBF0034 */  sw    $ra, 0x34($sp)
 /* 0520CC 800514CC AFB70030 */  sw    $s7, 0x30($sp)
 /* 0520D0 800514D0 AFB6002C */  sw    $s6, 0x2c($sp)

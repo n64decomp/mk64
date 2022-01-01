@@ -475,7 +475,7 @@ void func_800B0350(void) {
         do {
             if ((func_800B4520() == 0) && (gEnableDebugMode != 0) && ((gControllers[phi_s0].buttonPressed & 0x1000) != 0)) {
                 temp_v0 = gMenuSelection;
-                if ((temp_v0 != GAME_SELECT_MENU) && (temp_v0 != PLAYER_SELECT_MENU)) {
+                if ((temp_v0 != MAIN_MENU) && (temp_v0 != PLAYER_SELECT_MENU)) {
                     if (temp_v0 == COURSE_SELECT_MENU) {
                         func_800CA330(0x19);
                         goto block_9;
@@ -512,8 +512,8 @@ block_9:
             case START_MENU:
                 func_800B20F4(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
-            case GAME_SELECT_MENU_FROM_QUIT:
-            case GAME_SELECT_MENU:
+            case MAIN_MENU_FROM_QUIT:
+            case MAIN_MENU:
                 func_800B29D8(&gControllers[phi_s0], phi_s0 & 0xFFFF);
                 break;
             case PLAYER_SELECT_MENU_FROM_QUIT:
@@ -1476,22 +1476,22 @@ void func_800B1C90(void *arg0, s32 arg1) {
 
     sp36 = arg0->unk6 | arg0->unkC;
     if (func_800B4520() == 0) {
-        temp_t9 = gMenuState;
+        temp_t9 = gControllerPakMenuSelection;
         switch (temp_t9) {
-        case 1:
+        case CONTROLLER_PAK_MENU_SELECT_RECORD:
             if ((sp36 & 0x9000) != 0) {
-                gMenuState = 5;
+                gControllerPakMenuSelection = CONTROLLER_PAK_MENU_TABLE_GAME_DATA;
                 play_sound2(0x49008001);
                 return;
             }
             if ((sp36 & 0x300) != 0) {
-                gMenuState = 2;
+                gControllerPakMenuSelection = CONTROLLER_PAK_MENU_END;
                 play_sound2(0x49008000);
                 return;
             }
             /* Duplicate return node #49. Try simplifying control flow for better match */
             return;
-        case 2:
+        case CONTROLLER_PAK_MENU_END:
             if ((sp36 & 0x9000) != 0) {
                 play_sound2(0x49008001);
                 func_8009E1C0();
@@ -1499,16 +1499,16 @@ void func_800B1C90(void *arg0, s32 arg1) {
                 return;
             }
             if ((sp36 & 0x300) != 0) {
-                gMenuState = 1;
+                gControllerPakMenuSelection = CONTROLLER_PAK_MENU_SELECT_RECORD;
                 play_sound2(0x49008000);
                 return;
             }
             /* Duplicate return node #49. Try simplifying control flow for better match */
             return;
-        case 5:
+        case CONTROLLER_PAK_MENU_TABLE_GAME_DATA:
             if ((sp36 & 0x9000) != 0) {
                 if (*(&D_8018EB38 + ((*(&D_800E86C6 + gControllerPakSelectedTableRow) - 1) * 4)) == 0) {
-                    gMenuState = 4;
+                    gControllerPakMenuSelection = CONTROLLER_PAK_MENU_QUIT;
                     play_sound2(0x49008001);
                     return;
                 }
@@ -1517,7 +1517,7 @@ void func_800B1C90(void *arg0, s32 arg1) {
             }
             if ((sp36 & 0x4000) != 0) {
                 if (*D_800E86D0 == 0) {
-                    gMenuState = 1;
+                    gControllerPakMenuSelection = CONTROLLER_PAK_MENU_SELECT_RECORD;
                     play_sound2(0x49008002);
                     return;
                 }
@@ -1560,67 +1560,67 @@ void func_800B1C90(void *arg0, s32 arg1) {
             }
             /* Duplicate return node #49. Try simplifying control flow for better match */
             return;
-        case 4:
+        case CONTROLLER_PAK_MENU_QUIT:
             if ((sp36 & 0xD000) != 0) {
-                gMenuState = 5;
+                gControllerPakMenuSelection = CONTROLLER_PAK_MENU_TABLE_GAME_DATA;
                 play_sound2(0x49008002);
                 return;
             }
             if ((sp36 & 0x300) != 0) {
-                gMenuState = 3;
+                gControllerPakMenuSelection = CONTROLLER_PAK_MENU_ERASE;
                 play_sound2(0x49008000);
                 return;
             }
             /* Duplicate return node #49. Try simplifying control flow for better match */
             return;
-        case 3:
+        case CONTROLLER_PAK_MENU_ERASE:
             if ((sp36 & 0x9000) != 0) {
-                gMenuState = 6;
+                gControllerPakMenuSelection = CONTROLLER_PAK_MENU_GO_TO_ERASING;
                 play_sound2(0x49008001);
                 return;
             }
             if ((sp36 & 0x4000) != 0) {
-                gMenuState = 5;
+                gControllerPakMenuSelection = CONTROLLER_PAK_MENU_TABLE_GAME_DATA;
                 play_sound2(0x49008002);
                 return;
             }
             if ((sp36 & 0x300) != 0) {
-                gMenuState = 4;
+                gControllerPakMenuSelection = CONTROLLER_PAK_MENU_QUIT;
                 play_sound2(0x49008000);
                 return;
             }
             /* Duplicate return node #49. Try simplifying control flow for better match */
             return;
-        case 6:
-            gMenuState = 7;
+        case CONTROLLER_PAK_MENU_GO_TO_ERASING:
+            gControllerPakMenuSelection = CONTROLLER_PAK_MENU_ERASING;
             return;
-        case 7:
+        case CONTROLLER_PAK_MENU_ERASING:
             temp_t0 = *(&D_800E86C6 + gControllerPakSelectedTableRow) - 1;
             temp_v1 = (temp_t0 << 5) + &D_8018E938;
             sp20 = temp_v1;
             sp2C = temp_t0;
             temp_v0 = osPfsDeleteFile(&D_8018E868, temp_v1->unk8, temp_v1->unk4, temp_v1 + 0xE, temp_v1 + 0xA);
             if (temp_v0 != 0) {
-                if (temp_v0 != 1) {
-                    if (temp_v0 != 2) {
-                        gMenuState = 8;
+                if (temp_v0 != PFS_ERR_NOPACK) {
+                    if (temp_v0 != PFS_ERR_NEW_PACK) {
+                        gControllerPakMenuSelection = CONTROLLER_PAK_MENU_ERASE_ERROR_NOT_ERASED;
                         return;
                     }
-                    gMenuState = 0xA;
+                    gControllerPakMenuSelection = CONTROLLER_PAK_MENU_ERASE_ERROR_PAK_CHANGED;
                     return;
                 }
-                gMenuState = 9;
+                gControllerPakMenuSelection = CONTROLLER_PAK_MENU_ERASE_ERROR_NO_PAK;
                 return;
             }
             *(&D_8018EB38 + (temp_t0 * 4)) = -1;
             gControllerPakNumPagesFree = gControllerPakNumPagesFree + (((temp_v1->unk0 + 0xFF) >> 8) & 0xFF);
-            gMenuState = 5;
+            gControllerPakMenuSelection = CONTROLLER_PAK_MENU_TABLE_GAME_DATA;
             return;
-        case 8:
-        case 9:
-        case 10:
+        case CONTROLLER_PAK_MENU_ERASE_ERROR_NOT_ERASED:
+        case CONTROLLER_PAK_MENU_ERASE_ERROR_NO_PAK:
+        case CONTROLLER_PAK_MENU_ERASE_ERROR_PAK_CHANGED:
             if ((sp36 & 0x9000) != 0) {
-                gMenuState = 5;
+                gControllerPakMenuSelection = CONTROLLER_PAK_MENU_TABLE_GAME_DATA;
             }
             /* Duplicate return node #49. Try simplifying control flow for better match */
             return;
@@ -1741,7 +1741,7 @@ void func_800B20F4(void *arg0, s32 arg1) {
                     D_8018EDF1 = temp_v0_3 + 1;
                     sp24 = sp2E;
                     play_sound2(0x49008000);
-                    D_800DC530 = *(&D_800F2B50 + D_8018EDF1);
+                    gScreenModeSelection = *(&D_800F2B50 + D_8018EDF1);
                 }
             }
             if ((sp2E & 0x200) != 0) {
@@ -1750,7 +1750,7 @@ void func_800B20F4(void *arg0, s32 arg1) {
                     D_8018EDF1 = temp_v0_4 - 1;
                     sp24 = sp2E;
                     play_sound2(0x49008000);
-                    D_800DC530 = *(&D_800F2B50 + D_8018EDF1);
+                    gScreenModeSelection = *(&D_800F2B50 + D_8018EDF1);
                 }
             }
             if ((sp2E & 0x800) != 0) {
@@ -2064,13 +2064,13 @@ void func_800B29D8(void *arg0, u16 arg1) {
     sp2E = phi_v1;
     arg1 &= 0xFFFF;
     if (func_800B4520(arg0) == 0) {
-        temp_t4 = D_8018EDED;
+        temp_t4 = gMainMenuSelectionDepth;
         switch (temp_t4) {
-        case 0:
+        case BLANK_MAIN_MENU:
             temp_t5 = D_8018EDF3;
             phi_v1_3 = &D_800F2B70 + ((temp_t5 * 0xC) + (*(&D_800E86AB + temp_t5) * 4));
             break;
-        case 3:
+        case PLAYER_NUM_SELECTION:
             phi_a2 = phi_v1;
             if ((phi_v1 & 0x100) != 0) {
                 temp_v0 = D_8018EDF3;
@@ -2084,14 +2084,14 @@ void func_800B29D8(void *arg0, u16 arg1) {
             }
             temp_v0_2 = D_8018EDF3;
             phi_v0 = temp_v0_2;
-            phi_t0 = &D_8018EDED;
+            phi_t0 = &gMainMenuSelectionDepth;
             if (((phi_a2 & 0x200) != 0) && (temp_v0_2 >= 2)) {
                 D_8018EDF3 = temp_v0_2 - 1;
                 sp1C = phi_a2;
                 func_800B44AC();
                 play_sound2(0x49008000);
                 phi_v0 = D_8018EDF3;
-                phi_t0 = &D_8018EDED;
+                phi_t0 = &gMainMenuSelectionDepth;
             }
             gPlayerCountSelection1 = phi_v0;
             phi_a0 = &gPlayerCountSelection1;
@@ -2101,13 +2101,13 @@ void func_800B29D8(void *arg0, u16 arg1) {
                     if ((phi_v0 != 3) && (phi_v0 != 4)) {
 
                     } else {
-                        D_800DC530 = 3;
+                        gScreenModeSelection = SCREEN_MODE_3P_4P_SPLITSCREEN;
                     }
                 } else {
-                    D_800DC530 = 1;
+                    gScreenModeSelection = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
                 }
             } else {
-                D_800DC530 = 0;
+                gScreenModeSelection = SCREEN_MODE_1P;
             }
             if ((phi_a2 & 0x4000) != 0) {
                 func_8009E0F0(0x14);
@@ -2117,19 +2117,19 @@ void func_800B29D8(void *arg0, u16 arg1) {
                 temp_t7 = D_8018EDF3;
                 phi_v1_3 = &D_800F2B70 + ((temp_t7 * 0xC) + (*(&D_800E86AB + temp_t7) * 4));
             } else if ((phi_a2 & 0x8000) != 0) {
-                *phi_t0 = 4;
+                *phi_t0 = GAME_MODE_SELECTION;
                 func_800B44AC(phi_a0);
                 play_sound2(0x49008001);
                 temp_t4_2 = D_8018EDF3;
                 phi_v1_3 = &D_800F2B70 + ((temp_t4_2 * 0xC) + (*(&D_800E86AB + temp_t4_2) * 4));
             } else if ((phi_a2 & 0x20) != 0) {
-                *phi_t0 = 1;
+                *phi_t0 = OPTIONS_SELECTION;
                 func_8009E280(phi_a0);
                 play_sound2(0x49009010);
                 temp_t1 = D_8018EDF3;
                 phi_v1_3 = &D_800F2B70 + ((temp_t1 * 0xC) + (*(&D_800E86AB + temp_t1) * 4));
             } else if ((phi_a2 & 0x10) != 0) {
-                *phi_t0 = 2;
+                *phi_t0 = DATA_SELECTION;
                 func_8009E258(phi_a0);
                 play_sound2(0x49009011);
                 temp_t6 = D_8018EDF3;
@@ -2138,7 +2138,7 @@ void func_800B29D8(void *arg0, u16 arg1) {
                 phi_v1_3 = &D_800F2B70 + ((phi_v0 * 0xC) + (*(&D_800E86AB + phi_v0) * 4));
             }
             break;
-        case 4:
+        case GAME_MODE_SELECTION:
             if ((phi_v1 & 0x400) != 0) {
                 temp_v0_3 = D_8018EDF3;
                 temp_v1 = temp_v0_3 + &D_800E86AC;
@@ -2150,7 +2150,7 @@ void func_800B29D8(void *arg0, u16 arg1) {
                     play_sound2(0x49008000);
                 }
             }
-            phi_t0_2 = &D_8018EDED;
+            phi_t0_2 = &gMainMenuSelectionDepth;
             if ((phi_v1 & 0x800) != 0) {
                 temp_v1_2 = D_8018EDF3 + &D_800E86AC;
                 temp_a0_2 = temp_v1_2->unk-1;
@@ -2159,11 +2159,11 @@ void func_800B29D8(void *arg0, u16 arg1) {
                     sp1C = phi_v1;
                     func_800B44AC(temp_a0_2);
                     play_sound2(0x49008000);
-                    phi_t0_2 = &D_8018EDED;
+                    phi_t0_2 = &gMainMenuSelectionDepth;
                 }
             }
             if ((phi_v1 & 0x4000) != 0) {
-                *phi_t0_2 = 3;
+                *phi_t0_2 = PLAYER_NUM_SELECTION;
                 func_800B44AC(3);
                 play_sound2(0x49008002);
                 temp_t6_2 = D_8018EDF3;
@@ -2177,21 +2177,21 @@ void func_800B29D8(void *arg0, u16 arg1) {
                         if (temp_v1_3 != 1) {
                             if (temp_v1_3 != 2) {
                                 if (temp_v1_3 != 3) {
-                                    *phi_t0_2 = 6;
+                                    *phi_t0_2 = CONFIRM_OK_SELECTION;
                                 } else {
-                                    *phi_t0_2 = 6;
+                                    *phi_t0_2 = CONFIRM_OK_SELECTION;
                                     play_sound2(0x4900900D);
                                 }
                             } else {
-                                *phi_t0_2 = 5;
+                                *phi_t0_2 = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
                                 play_sound2(0x4900900C);
                             }
                         } else {
-                            *phi_t0_2 = 5;
+                            *phi_t0_2 = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
                             play_sound2(0x4900900B);
                         }
                     } else {
-                        *phi_t0_2 = 5;
+                        *phi_t0_2 = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
                         play_sound2(0x4900900A);
                     }
                     func_800B44AC();
@@ -2203,8 +2203,8 @@ void func_800B29D8(void *arg0, u16 arg1) {
                 }
             }
             break;
-        case 5:
-        case 8:
+        case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:
+        case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:
             if ((arg1 == 0) && ((temp_t7_3 = gMenuTimingCounter + 1, gMenuTimingCounter = temp_t7_3, (temp_t7_3 == 0x64)) || ((temp_t7_3 % 300) == 0)) && ((temp_v0_5 = D_8018EDF3, temp_v1_4 = *(&D_800F2B70 + ((temp_v0_5 * 0xC) + (*(&D_800E86AB + temp_v0_5) * 4))), (temp_v1_4 == 0)) || (temp_v1_4 == 2))) {
                 sp1C = phi_v1;
                 play_sound2(0x4900900E, arg1, phi_v1);
@@ -2260,7 +2260,7 @@ block_64:
             temp_a0_7 = *(&D_800E86AB + temp_v0_9);
             temp_a1 = *(&D_800E86AD + ((temp_v0_9 * 3) + temp_a0_7));
             if ((phi_v1 & 0x4000) != 0) {
-                D_8018EDED = 4;
+                gMainMenuSelectionDepth = GAME_MODE_SELECTION;
                 func_800B44AC(temp_a0_7, temp_a1, phi_v1);
                 play_sound2(0x49008002);
                 temp_t5_2 = D_8018EDF3;
@@ -2273,7 +2273,7 @@ block_64:
                     func_8009E258();
                     play_sound2(0x49009011);
                 } else {
-                    D_8018EDED = 6;
+                    gMainMenuSelectionDepth = CONFIRM_OK_SELECTION;
                     play_sound2(0x49008001, temp_a1);
                     gMenuTimingCounter = 0;
                 }
@@ -2283,8 +2283,8 @@ block_64:
                 phi_v1_3 = &D_800F2B70 + ((temp_v0_9 * 0xC) + (temp_a0_7 * 4));
             }
             break;
-        case 6:
-        case 7:
+        case CONFIRM_OK_SELECTION:
+        case CONFIRM_OK_SELECTION_FROM_BACK_OUT:
             if ((arg1 == 0) && ((temp_t7_5 = gMenuTimingCounter + 1, gMenuTimingCounter = temp_t7_5, (temp_t7_5 == 0x3C)) || ((temp_t7_5 % 300) == 0))) {
                 sp1C = phi_v1;
                 play_sound2(0x4900900F, arg1, phi_v1);
@@ -2296,9 +2296,9 @@ block_64:
                     if (temp_v1_7 != 3) {
 
                     }
-                    D_8018EDED = 4;
+                    gMainMenuSelectionDepth = GAME_MODE_SELECTION;
                 } else {
-                    D_8018EDED = 5;
+                    gMainMenuSelectionDepth = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
                 }
                 func_800B44AC();
                 play_sound2(0x49008002);
@@ -2316,8 +2316,8 @@ block_64:
                 phi_v1_3 = &D_800F2B70 + ((temp_t4_3 * 0xC) + (*(&D_800E86AB + temp_t4_3) * 4));
             }
             break;
-        case 1:
-        case 2:
+        case OPTIONS_SELECTION:
+        case DATA_SELECTION:
             temp_t2 = D_8018EDF3;
             phi_v1_3 = &D_800F2B70 + ((temp_t2 * 0xC) + (*(&D_800E86AB + temp_t2) * 4));
             break;
@@ -2483,7 +2483,7 @@ void func_800B3B58(struct Controller *arg0, u16 arg1) {
 ? play_sound2(?, s8 *, s8 *, s8);                   /* extern */
 extern s32 D_800DC50C;
 extern s32 D_800DC524;
-extern s32 D_800DC530;
+extern s32 gScreenModeSelection;
 extern s32 D_800DC540;
 extern s16 D_8015F890;
 extern s16 D_8015F892;
@@ -2499,7 +2499,7 @@ extern s8 D_8018EDE9;
 extern s8 D_8018EDEA;
 extern s8 D_8018EDEB;
 extern s8 D_8018EDEC;
-extern s8 D_8018EDED;
+extern s8 gMainMenuSelectionDepth;
 extern s8 D_8018EDEE;
 extern s8 gDebugMenuSelection;
 extern s8 D_8018EDF1;
@@ -2564,7 +2564,7 @@ void func_800B3F74(u32 arg0) {
         func_800CA008(0, 0);
         break;
     case CONTROLLER_PAK_MENU:
-        gMenuState = 1;
+        gControllerPakMenuSelection = CONTROLLER_PAK_MENU_SELECT_RECORD;
         func_800CA008(0, 0);
         break;
     case START_MENU_FROM_QUIT:
@@ -2587,8 +2587,8 @@ void func_800B3F74(u32 arg0) {
         func_800C8EAC(1);
         D_8018EDFC = 0;
         break;
-    case GAME_SELECT_MENU_FROM_QUIT:
-    case GAME_SELECT_MENU:
+    case MAIN_MENU_FROM_QUIT:
+    case MAIN_MENU:
         gEnableDebugMode = 0;
         gIsMirrorMode = 0;
         D_8018EDFC = 0;
@@ -2608,26 +2608,26 @@ void func_800B3F74(u32 arg0) {
                     if (temp_v0 != 4) {
 
                     } else {
-                        D_8018EDED = 3;
+                        gMainMenuSelectionDepth = PLAYER_NUM_SELECTION;
                     }
                 } else {
-                    temp_v0_2 = D_8018EDED;
-                    if ((temp_v0_2 != 1) && (temp_v0_2 != 2)) {
-                        D_8018EDED = 8;
+                    temp_v0_2 = gMainMenuSelectionDepth;
+                    if ((temp_v0_2 != OPTIONS_SELECTION) && (temp_v0_2 != DATA_SELECTION)) {
+                        gMainMenuSelectionDepth = TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT;
                     } else {
-                        D_8018EDED = 3;
+                        gMainMenuSelectionDepth = PLAYER_NUM_SELECTION;
                     }
                 }
             } else {
-                D_8018EDED = 7;
+                gMainMenuSelectionDepth = CONFIRM_OK_SELECTION_FROM_BACK_OUT;
             }
         } else {
-            D_8018EDED = 3;
-            func_800C8EAC(2, &D_8018EDED, 3);
-            temp_v0_3 = D_800DC530;
+            gMainMenuSelectionDepth = PLAYER_NUM_SELECTION;
+            func_800C8EAC(2, &gMainMenuSelectionDepth, 3);
+            temp_v0_3 = gScreenModeSelection;
             D_8018EDF3 = 1;
-            if ((temp_v0_3 >= 4) || (temp_v0_3 < 0)) {
-                D_800DC530 = 0;
+            if ((temp_v0_3 >= NUM_SCREEN_MODES) || (temp_v0_3 < SCREEN_MODE_1P)) {
+                gScreenModeSelection = SCREEN_MODE_1P;
             }
         }
         break;

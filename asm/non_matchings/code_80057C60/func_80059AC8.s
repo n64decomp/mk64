@@ -35,8 +35,8 @@ glabel func_80059AC8
 /* 05A748 80059B48 263100B8 */  addiu $s1, $s1, 0xb8
 /* 05A74C 80059B4C 1614FFF7 */  bne   $s0, $s4, .L80059B2C
 /* 05A750 80059B50 26520002 */   addiu $s2, $s2, 2
-/* 05A754 80059B54 3C02800E */  lui   $v0, %hi(D_800DC530) # $v0, 0x800e
-/* 05A758 80059B58 8C42C530 */  lw    $v0, %lo(D_800DC530)($v0)
+/* 05A754 80059B54 3C02800E */  lui   $v0, %hi(gScreenModeSelection) # $v0, 0x800e
+/* 05A758 80059B58 8C42C530 */  lw    $v0, %lo(gScreenModeSelection)($v0)
 /* 05A75C 80059B5C 24010001 */  li    $at, 1
 /* 05A760 80059B60 3C08800E */  lui   $t0, %hi(D_800DC50C) # $t0, 0x800e
 /* 05A764 80059B64 10400009 */  beqz  $v0, .L80059B8C

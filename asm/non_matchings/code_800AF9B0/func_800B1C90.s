@@ -9,8 +9,8 @@ glabel func_800B1C90
 /* 0B28AC 800B1CAC A7B80036 */   sh    $t8, 0x36($sp)
 /* 0B28B0 800B1CB0 1440010C */  bnez  $v0, .L800B20E4
 /* 0B28B4 800B1CB4 97A30036 */   lhu   $v1, 0x36($sp)
-/* 0B28B8 800B1CB8 3C098019 */  lui   $t1, %hi(gMenuState) # $t1, 0x8019
-/* 0B28BC 800B1CBC 2529EDF0 */  addiu $t1, %lo(gMenuState) # addiu $t1, $t1, -0x1210
+/* 0B28B8 800B1CB8 3C098019 */  lui   $t1, %hi(gControllerPakMenuSelection) # $t1, 0x8019
+/* 0B28BC 800B1CBC 2529EDF0 */  addiu $t1, %lo(gControllerPakMenuSelection) # addiu $t1, $t1, -0x1210
 /* 0B28C0 800B1CC0 81390000 */  lb    $t9, ($t1)
 /* 0B28C4 800B1CC4 272AFFFF */  addiu $t2, $t9, -1
 /* 0B28C8 800B1CC8 2D41000A */  sltiu $at, $t2, 0xa
@@ -254,8 +254,8 @@ glabel L800B1FF4
 /* 0B2C3C 800B203C AFA8002C */  sw    $t0, 0x2c($sp)
 /* 0B2C40 800B2040 0C033E90 */  jal   osPfsDeleteFile
 /* 0B2C44 800B2044 2484E868 */   addiu $a0, %lo(D_8018E868) # addiu $a0, $a0, -0x1798
-/* 0B2C48 800B2048 3C098019 */  lui   $t1, %hi(gMenuState) # $t1, 0x8019
-/* 0B2C4C 800B204C 2529EDF0 */  addiu $t1, %lo(gMenuState) # addiu $t1, $t1, -0x1210
+/* 0B2C48 800B2048 3C098019 */  lui   $t1, %hi(gControllerPakMenuSelection) # $t1, 0x8019
+/* 0B2C4C 800B204C 2529EDF0 */  addiu $t1, %lo(gControllerPakMenuSelection) # addiu $t1, $t1, -0x1210
 /* 0B2C50 800B2050 8FA30020 */  lw    $v1, 0x20($sp)
 /* 0B2C54 800B2054 1040000A */  beqz  $v0, .L800B2080
 /* 0B2C58 800B2058 8FA8002C */   lw    $t0, 0x2c($sp)

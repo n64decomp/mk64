@@ -48,8 +48,8 @@ glabel func_800A5360
 /* 0A6010 800A5410 0C02637E */  jal   draw_box
 /* 0A6014 800A5414 010C3023 */   subu  $a2, $t0, $t4
 /* 0A6018 800A5418 AE220000 */  sw    $v0, ($s1)
-/* 0A601C 800A541C 3C0F800E */  lui   $t7, %hi(D_800DC530) # $t7, 0x800e
-/* 0A6020 800A5420 8DF8C530 */  lw    $t8, %lo(D_800DC530)($t7)
+/* 0A601C 800A541C 3C0F800E */  lui   $t7, %hi(gScreenModeSelection) # $t7, 0x800e
+/* 0A6020 800A5420 8DF8C530 */  lw    $t8, %lo(gScreenModeSelection)($t7)
 /* 0A6024 800A5424 960B0000 */  lhu   $t3, ($s0)
 /* 0A6028 800A5428 3C0F800F */  lui   $t7, %hi(D_800E8600) # $t7, 0x800f
 /* 0A602C 800A542C 0018C940 */  sll   $t9, $t8, 5
