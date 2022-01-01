@@ -2,13 +2,13 @@ glabel func_80059C50
 /* 05A850 80059C50 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 05A854 80059C54 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 05A858 80059C58 0C0168F0 */  jal   func_8005A3C0
-/* 05A85C 80059C5C 00000000 */   nop   
+/* 05A85C 80059C5C 00000000 */   nop
 /* 05A860 80059C60 3C048016 */  lui   $a0, %hi(D_80164360) # $a0, 0x8016
 /* 05A864 80059C64 3C028019 */  lui   $v0, %hi(gGPCurrentRaceRanks) # $v0, 0x8019
-/* 05A868 80059C68 3C07800E */  lui   $a3, %hi(D_800DC4DC) # $a3, 0x800e
+/* 05A868 80059C68 3C07800E */  lui   $a3, %hi(gPlayerOne) # $a3, 0x800e
 /* 05A86C 80059C6C 3C068019 */  lui   $a2, %hi(D_8018CF90) # $a2, 0x8019
 /* 05A870 80059C70 24C6CF90 */  addiu $a2, %lo(D_8018CF90) # addiu $a2, $a2, -0x3070
-/* 05A874 80059C74 8CE7C4DC */  lw    $a3, %lo(D_800DC4DC)($a3)
+/* 05A874 80059C74 8CE7C4DC */  lw    $a3, %lo(gPlayerOne)($a3)
 /* 05A878 80059C78 2442CF80 */  addiu $v0, %lo(gGPCurrentRaceRanks) # addiu $v0, $v0, -0x3080
 /* 05A87C 80059C7C 24844360 */  addiu $a0, %lo(D_80164360) # addiu $a0, $a0, 0x4360
 /* 05A880 80059C80 24050DD8 */  li    $a1, 3544
@@ -44,4 +44,4 @@ glabel func_80059C50
 /* 05A8F0 80059CF0 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 05A8F4 80059CF4 27BD0018 */  addiu $sp, $sp, 0x18
 /* 05A8F8 80059CF8 03E00008 */  jr    $ra
-/* 05A8FC 80059CFC 00000000 */   nop   
+/* 05A8FC 80059CFC 00000000 */   nop

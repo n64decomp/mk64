@@ -3,8 +3,8 @@ glabel func_8007F6C4
 /* 0802C8 8007F6C8 01E57823 */  subu  $t7, $t7, $a1
 /* 0802CC 8007F6CC 000F7900 */  sll   $t7, $t7, 4
 /* 0802D0 8007F6D0 01E57823 */  subu  $t7, $t7, $a1
-/* 0802D4 8007F6D4 3C18800E */  lui   $t8, %hi(D_800DC4DC) # $t8, 0x800e
-/* 0802D8 8007F6D8 8F18C4DC */  lw    $t8, %lo(D_800DC4DC)($t8)
+/* 0802D4 8007F6D4 3C18800E */  lui   $t8, %hi(gPlayerOne) # $t8, 0x800e
+/* 0802D8 8007F6D8 8F18C4DC */  lw    $t8, %lo(gPlayerOne)($t8)
 /* 0802DC 8007F6DC 000F7880 */  sll   $t7, $t7, 2
 /* 0802E0 8007F6E0 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 0802E4 8007F6E4 01E57823 */  subu  $t7, $t7, $a1

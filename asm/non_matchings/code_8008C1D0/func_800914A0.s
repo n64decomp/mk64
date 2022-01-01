@@ -1,6 +1,6 @@
 glabel func_800914A0
-/* 0920A0 800914A0 3C0E800E */  lui   $t6, %hi(D_800DC4FC) # $t6, 0x800e
-/* 0920A4 800914A4 8DCEC4FC */  lw    $t6, %lo(D_800DC4FC)($t6)
+/* 0920A0 800914A0 3C0E800E */  lui   $t6, %hi(gPlayerOneCopy) # $t6, 0x800e
+/* 0920A4 800914A4 8DCEC4FC */  lw    $t6, %lo(gPlayerOneCopy)($t6)
 /* 0920A8 800914A8 3C048015 */  lui   $a0, %hi(D_80152308) # $a0, 0x8015
 /* 0920AC 800914AC 24842308 */  addiu $a0, %lo(D_80152308) # addiu $a0, $a0, 0x2308
 /* 0920B0 800914B0 95CF0006 */  lhu   $t7, 6($t6)
@@ -15,4 +15,4 @@ glabel func_800914A0
 /* 0920D4 800914D4 A4990000 */  sh    $t9, ($a0)
 .L800914D8:
 /* 0920D8 800914D8 03E00008 */  jr    $ra
-/* 0920DC 800914DC 00000000 */   nop   
+/* 0920DC 800914DC 00000000 */   nop

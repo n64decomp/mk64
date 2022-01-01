@@ -8,12 +8,12 @@ glabel func_8007E59C
 /* 07F1B4 8007E5B4 AFB00018 */  sw    $s0, 0x18($sp)
 /* 07F1B8 8007E5B8 AFB30024 */  sw    $s3, 0x24($sp)
 /* 07F1BC 8007E5BC AFB20020 */  sw    $s2, 0x20($sp)
-/* 07F1C0 8007E5C0 3C10800E */  lui   $s0, %hi(D_800DC4DC) # $s0, 0x800e
+/* 07F1C0 8007E5C0 3C10800E */  lui   $s0, %hi(gPlayerOne) # $s0, 0x800e
 /* 07F1C4 8007E5C4 3C11800E */  lui   $s1, %hi(camera1) # $s1, 0x800e
 /* 07F1C8 8007E5C8 00809825 */  move  $s3, $a0
 /* 07F1CC 8007E5CC AFBF002C */  sw    $ra, 0x2c($sp)
 /* 07F1D0 8007E5D0 00001825 */  move  $v1, $zero
-/* 07F1D4 8007E5D4 8E10C4DC */  lw    $s0, %lo(D_800DC4DC)($s0)
+/* 07F1D4 8007E5D4 8E10C4DC */  lw    $s0, %lo(gPlayerOne)($s0)
 /* 07F1D8 8007E5D8 8E31DB40 */  lw    $s1, %lo(camera1)($s1)
 /* 07F1DC 8007E5DC 19C0000E */  blez  $t6, .L8007E618
 /* 07F1E0 8007E5E0 00009025 */   move  $s2, $zero

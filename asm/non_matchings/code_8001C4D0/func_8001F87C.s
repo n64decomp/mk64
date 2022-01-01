@@ -2,12 +2,12 @@ glabel func_8001F87C
 /* 02047C 8001F87C 3C0E800E */  lui   $t6, %hi(D_800DC52C) # $t6, 0x800e
 /* 020480 8001F880 8DCEC52C */  lw    $t6, %lo(D_800DC52C)($t6)
 /* 020484 8001F884 27BDFFF0 */  addiu $sp, $sp, -0x10
-/* 020488 8001F888 3C02800E */  lui   $v0, %hi(D_800DC4DC) # $v0, 0x800e
+/* 020488 8001F888 3C02800E */  lui   $v0, %hi(gPlayerOne) # $v0, 0x800e
 /* 02048C 8001F88C AFB2000C */  sw    $s2, 0xc($sp)
 /* 020490 8001F890 AFB10008 */  sw    $s1, 8($sp)
 /* 020494 8001F894 AFB00004 */  sw    $s0, 4($sp)
 /* 020498 8001F898 15C00033 */  bnez  $t6, .L8001F968
-/* 02049C 8001F89C 8C42C4DC */   lw    $v0, %lo(D_800DC4DC)($v0)
+/* 02049C 8001F89C 8C42C4DC */   lw    $v0, %lo(gPlayerOne)($v0)
 /* 0204A0 8001F8A0 3C0F800E */  lui   $t7, %hi(gModeSelection) # $t7, 0x800e
 /* 0204A4 8001F8A4 8DEFC53C */  lw    $t7, %lo(gModeSelection)($t7)
 /* 0204A8 8001F8A8 00002825 */  move  $a1, $zero
@@ -36,7 +36,7 @@ glabel func_8001F87C
 /* 020500 8001F900 5720001A */  bnel  $t9, $zero, .L8001F96C
 /* 020504 8001F904 8FB00004 */   lw    $s0, 4($sp)
 /* 020508 8001F908 14A30004 */  bne   $a1, $v1, .L8001F91C
-/* 02050C 8001F90C 00000000 */   nop   
+/* 02050C 8001F90C 00000000 */   nop
 /* 020510 8001F910 8CEE0000 */  lw    $t6, ($a3)
 /* 020514 8001F914 25CF0001 */  addiu $t7, $t6, 1
 /* 020518 8001F918 ACEF0000 */  sw    $t7, ($a3)

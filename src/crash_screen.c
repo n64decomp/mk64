@@ -19,7 +19,7 @@ void crash_screen_set_framebuffer(s32 arg0); // static
 void *get_faulted_thread(); // static
 void start_debug_thread(); // static
 void thread9_crash_screen(s32 arg0); // static
-extern void *D_800DC4BC;
+extern void *gControllerOne;
 extern s32 D_800DC670;
 
 extern ? D_800DC6FC;
@@ -45,7 +45,7 @@ extern void osSetEventMesg(OSEvent, OSMesgQueue *, OSMesg);
 extern s32 osRecvMesg(OSMesgQueue *, OSMesg *, s32);
 extern void read_controllers();
 
-extern struct Controller *D_800DC4BC;
+extern struct Controller *gControllerOne;
 
 
 u32 D_800DC670 = 0;
@@ -67,7 +67,7 @@ void crash_screen_draw_glyph(u16 *framebuffer, s32 x, s32 y, s32 glyph) {
     for(i = 0; i < 8; i++) {
 
         data = crashScreenFont[glyph][i];
-        
+
         for (j = 5; j >= 0; j--) {
 
             ptr = (y + i) * 320 + (x + j);
@@ -341,7 +341,7 @@ void thread9_crash_screen(UNUSED s32 arg0) {
     if (D_800DC670 == 0) {
         crash_screen_draw_square(pFramebuffer, D_80162D64);
         do {
-        //temp_v0_2 = D_800DC4BC->buttonPressed;
+        //temp_v0_2 = gControllerOne->buttonPressed;
     //loop_4:
             do {
                 read_controllers();
@@ -384,7 +384,7 @@ loop_1:
         do {
 loop_4:
             read_controllers();
-            temp_v0_2 = D_800DC4BC->unk6;
+            temp_v0_2 = gControllerOne->unk6;
             if (temp_v0_2 == 0) {
                 goto loop_4;
             }

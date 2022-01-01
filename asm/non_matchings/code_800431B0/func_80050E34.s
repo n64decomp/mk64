@@ -3,8 +3,8 @@ glabel func_80050E34
 /* 051A38 80050E38 01C47023 */  subu  $t6, $t6, $a0
 /* 051A3C 80050E3C 000E7100 */  sll   $t6, $t6, 4
 /* 051A40 80050E40 01C47023 */  subu  $t6, $t6, $a0
-/* 051A44 80050E44 3C0F800E */  lui   $t7, %hi(D_800DC4DC) # $t7, 0x800e
-/* 051A48 80050E48 8DEFC4DC */  lw    $t7, %lo(D_800DC4DC)($t7)
+/* 051A44 80050E44 3C0F800E */  lui   $t7, %hi(gPlayerOne) # $t7, 0x800e
+/* 051A48 80050E48 8DEFC4DC */  lw    $t7, %lo(gPlayerOne)($t7)
 /* 051A4C 80050E4C 000E7080 */  sll   $t6, $t6, 2
 /* 051A50 80050E50 01C47023 */  subu  $t6, $t6, $a0
 /* 051A54 80050E54 27BDFF28 */  addiu $sp, $sp, -0xd8
@@ -381,8 +381,8 @@ glabel func_80050E34
 /* 051FF0 800513F0 3C180600 */  lui   $t8, 0x600
 /* 051FF4 800513F4 AC580000 */  sw    $t8, ($v0)
 /* 051FF8 800513F8 AC590004 */  sw    $t9, 4($v0)
-/* 051FFC 800513FC 3C0F800E */  lui   $t7, %hi(D_800DC4DC) # $t7, 0x800e
-/* 052000 80051400 8DEFC4DC */  lw    $t7, %lo(D_800DC4DC)($t7)
+/* 051FFC 800513FC 3C0F800E */  lui   $t7, %hi(gPlayerOne) # $t7, 0x800e
+/* 052000 80051400 8DEFC4DC */  lw    $t7, %lo(gPlayerOne)($t7)
 /* 052004 80051404 8FAE00AC */  lw    $t6, 0xac($sp)
 /* 052008 80051408 3C18800E */  lui   $t8, %hi(gScreenModeSelection) # $t8, 0x800e
 /* 05200C 8005140C 55CF0027 */  bnel  $t6, $t7, .L800514AC

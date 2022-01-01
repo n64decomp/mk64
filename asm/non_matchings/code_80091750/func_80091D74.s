@@ -14,22 +14,22 @@ glabel func_80091D74
 .L80091DA4:
 /* 0929A4 80091DA4 3C028015 */  lui   $v0, %hi(gControllerStatuses+0x2) # $v0, 0x8015
 /* 0929A8 80091DA8 9042F0E2 */  lbu   $v0, %lo(gControllerStatuses+0x2)($v0)
-/* 0929AC 80091DAC 3C19800E */  lui   $t9, %hi(D_800DC4BC) # $t9, 0x800e
+/* 0929AC 80091DAC 3C19800E */  lui   $t9, %hi(gControllerOne) # $t9, 0x800e
 /* 0929B0 80091DB0 2C4F0001 */  sltiu $t7, $v0, 1
 /* 0929B4 80091DB4 31F80001 */  andi  $t8, $t7, 1
 /* 0929B8 80091DB8 13000003 */  beqz  $t8, .L80091DC8
-/* 0929BC 80091DBC 00000000 */   nop   
+/* 0929BC 80091DBC 00000000 */   nop
 /* 0929C0 80091DC0 10000040 */  b     .L80091EC4
 /* 0929C4 80091DC4 00001025 */   move  $v0, $zero
 .L80091DC8:
-/* 0929C8 80091DC8 8F39C4BC */  lw    $t9, %lo(D_800DC4BC)($t9)
+/* 0929C8 80091DC8 8F39C4BC */  lw    $t9, %lo(gControllerOne)($t9)
 /* 0929CC 80091DCC 3C108015 */  lui   $s0, %hi(gSIEventMesgQueue) # $s0, 0x8015
 /* 0929D0 80091DD0 2610F0B8 */  addiu $s0, %lo(gSIEventMesgQueue) # addiu $s0, $s0, -0xf48
 /* 0929D4 80091DD4 97280004 */  lhu   $t0, 4($t9)
 /* 0929D8 80091DD8 02002025 */  move  $a0, $s0
 /* 0929DC 80091DDC 31091000 */  andi  $t1, $t0, 0x1000
 /* 0929E0 80091DE0 15200003 */  bnez  $t1, .L80091DF0
-/* 0929E4 80091DE4 00000000 */   nop   
+/* 0929E4 80091DE4 00000000 */   nop
 /* 0929E8 80091DE8 10000036 */  b     .L80091EC4
 /* 0929EC 80091DEC 00001025 */   move  $v0, $zero
 .L80091DF0:

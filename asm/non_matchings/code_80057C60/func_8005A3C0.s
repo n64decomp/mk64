@@ -17,25 +17,25 @@ glabel func_8005A3C0
 /* 05AFFC 8005A3FC 24040001 */  li    $a0, 1
 /* 05B000 8005A400 24010002 */  li    $at, 2
 /* 05B004 8005A404 1044000B */  beq   $v0, $a0, .L8005A434
-/* 05B008 8005A408 3C0F800E */   lui   $t7, %hi(D_800DC4BC) # $t7, 0x800e
+/* 05B008 8005A408 3C0F800E */   lui   $t7, %hi(gControllerOne) # $t7, 0x800e
 /* 05B00C 8005A40C 10410037 */  beq   $v0, $at, .L8005A4EC
 /* 05B010 8005A410 3C0A800E */   lui   $t2, %hi(gModeSelection) # $t2, 0x800e
 /* 05B014 8005A414 24060003 */  li    $a2, 3
 /* 05B018 8005A418 10460064 */  beq   $v0, $a2, .L8005A5AC
-/* 05B01C 8005A41C 3C18800E */   lui   $t8, %hi(D_800DC4BC) # $t8, 0x800e
+/* 05B01C 8005A41C 3C18800E */   lui   $t8, %hi(gControllerOne) # $t8, 0x800e
 /* 05B020 8005A420 24010004 */  li    $at, 4
 /* 05B024 8005A424 10410084 */  beq   $v0, $at, .L8005A638
-/* 05B028 8005A428 3C0C800E */   lui   $t4, %hi(D_800DC4BC)
+/* 05B028 8005A428 3C0C800E */   lui   $t4, %hi(gControllerOne)
 /* 05B02C 8005A42C 100000B3 */  b     .L8005A6FC
-/* 05B030 8005A430 00000000 */   nop   
+/* 05B030 8005A430 00000000 */   nop
 .L8005A434:
-/* 05B034 8005A434 8DEFC4BC */  lw    $t7, %lo(D_800DC4BC)($t7)
+/* 05B034 8005A434 8DEFC4BC */  lw    $t7, %lo(gControllerOne)($t7)
 /* 05B038 8005A438 3C038016 */  lui   $v1, %hi(D_801657E4) # $v1, 0x8016
 /* 05B03C 8005A43C 246357E4 */  addiu $v1, %lo(D_801657E4) # addiu $v1, $v1, 0x57e4
 /* 05B040 8005A440 95F80006 */  lhu   $t8, 6($t7)
 /* 05B044 8005A444 33190001 */  andi  $t9, $t8, 1
 /* 05B048 8005A448 132000AC */  beqz  $t9, .L8005A6FC
-/* 05B04C 8005A44C 00000000 */   nop   
+/* 05B04C 8005A44C 00000000 */   nop
 /* 05B050 8005A450 80680000 */  lb    $t0, ($v1)
 /* 05B054 8005A454 24050001 */  li    $a1, 1
 /* 05B058 8005A458 25090001 */  addiu $t1, $t0, 1
@@ -81,23 +81,23 @@ glabel func_8005A3C0
 .L8005A4EC:
 /* 05B0EC 8005A4EC 8D4AC53C */  lw    $t2, %lo(gModeSelection)($t2)
 /* 05B0F0 8005A4F0 24060003 */  li    $a2, 3
-/* 05B0F4 8005A4F4 3C0B800E */  lui   $t3, %hi(D_800DC4BC) # $t3, 0x800e
+/* 05B0F4 8005A4F4 3C0B800E */  lui   $t3, %hi(gControllerOne) # $t3, 0x800e
 /* 05B0F8 8005A4F8 10CA0080 */  beq   $a2, $t2, .L8005A6FC
-/* 05B0FC 8005A4FC 3C19800E */   lui   $t9, %hi(D_800DC4C0) # $t9, 0x800e
-/* 05B100 8005A500 8D6BC4BC */  lw    $t3, %lo(D_800DC4BC)($t3)
+/* 05B0FC 8005A4FC 3C19800E */   lui   $t9, %hi(gControllerTwo) # $t9, 0x800e
+/* 05B100 8005A500 8D6BC4BC */  lw    $t3, %lo(gControllerOne)($t3)
 /* 05B104 8005A504 3C028016 */  lui   $v0, %hi(D_80165800) # $v0, 0x8016
 /* 05B108 8005A508 24425800 */  addiu $v0, %lo(D_80165800) # addiu $v0, $v0, 0x5800
 /* 05B10C 8005A50C 956C0006 */  lhu   $t4, 6($t3)
 /* 05B110 8005A510 318D0001 */  andi  $t5, $t4, 1
 /* 05B114 8005A514 11A00006 */  beqz  $t5, .L8005A530
-/* 05B118 8005A518 00000000 */   nop   
+/* 05B118 8005A518 00000000 */   nop
 /* 05B11C 8005A51C 804E0000 */  lb    $t6, ($v0)
 /* 05B120 8005A520 00802825 */  move  $a1, $a0
 /* 05B124 8005A524 25CF0001 */  addiu $t7, $t6, 1
 /* 05B128 8005A528 31F80001 */  andi  $t8, $t7, 1
 /* 05B12C 8005A52C A0580000 */  sb    $t8, ($v0)
 .L8005A530:
-/* 05B130 8005A530 8F39C4C0 */  lw    $t9, %lo(D_800DC4C0)($t9)
+/* 05B130 8005A530 8F39C4C0 */  lw    $t9, %lo(gControllerTwo)($t9)
 /* 05B134 8005A534 3C028016 */  lui   $v0, %hi(D_80165800) # $v0, 0x8016
 /* 05B138 8005A538 24425800 */  addiu $v0, %lo(D_80165800) # addiu $v0, $v0, 0x5800
 /* 05B13C 8005A53C 97280006 */  lhu   $t0, 6($t9)
@@ -113,12 +113,12 @@ glabel func_8005A3C0
 /* 05B164 8005A564 804D0000 */  lb    $t5, ($v0)
 .L8005A568:
 /* 05B168 8005A568 11A00008 */  beqz  $t5, .L8005A58C
-/* 05B16C 8005A56C 00000000 */   nop   
+/* 05B16C 8005A56C 00000000 */   nop
 /* 05B170 8005A570 804E0001 */  lb    $t6, 1($v0)
 /* 05B174 8005A574 3C028016 */  lui   $v0, %hi(D_801657F0) # $v0, 0x8016
 /* 05B178 8005A578 244257F0 */  addiu $v0, %lo(D_801657F0) # addiu $v0, $v0, 0x57f0
 /* 05B17C 8005A57C 11C00003 */  beqz  $t6, .L8005A58C
-/* 05B180 8005A580 00000000 */   nop   
+/* 05B180 8005A580 00000000 */   nop
 /* 05B184 8005A584 10000004 */  b     .L8005A598
 /* 05B188 8005A588 A0400000 */   sb    $zero, ($v0)
 .L8005A58C:
@@ -128,30 +128,30 @@ glabel func_8005A3C0
 .L8005A598:
 /* 05B198 8005A598 95EFC51C */  lhu   $t7, %lo(D_800DC51C)($t7)
 /* 05B19C 8005A59C 11E00057 */  beqz  $t7, .L8005A6FC
-/* 05B1A0 8005A5A0 00000000 */   nop   
+/* 05B1A0 8005A5A0 00000000 */   nop
 /* 05B1A4 8005A5A4 10000055 */  b     .L8005A6FC
 /* 05B1A8 8005A5A8 A0400000 */   sb    $zero, ($v0)
 .L8005A5AC:
-/* 05B1AC 8005A5AC 8F18C4BC */  lw    $t8, %lo(D_800DC4BC)($t8)
+/* 05B1AC 8005A5AC 8F18C4BC */  lw    $t8, %lo(gControllerOne)($t8)
 /* 05B1B0 8005A5B0 3C038016 */  lui   $v1, %hi(D_801657E4) # $v1, 0x8016
-/* 05B1B4 8005A5B4 3C09800E */  lui   $t1, %hi(D_800DC4C0) # $t1, 0x800e
+/* 05B1B4 8005A5B4 3C09800E */  lui   $t1, %hi(gControllerTwo) # $t1, 0x800e
 /* 05B1B8 8005A5B8 97190006 */  lhu   $t9, 6($t8)
 /* 05B1BC 8005A5BC 3C0F800E */  lui   $t7, %hi(gModeSelection) # $t7, 0x800e
 /* 05B1C0 8005A5C0 246357E4 */  addiu $v1, %lo(D_801657E4) # addiu $v1, $v1, 0x57e4
 /* 05B1C4 8005A5C4 33280001 */  andi  $t0, $t9, 1
 /* 05B1C8 8005A5C8 1500000C */  bnez  $t0, .L8005A5FC
-/* 05B1CC 8005A5CC 00000000 */   nop   
-/* 05B1D0 8005A5D0 8D29C4C0 */  lw    $t1, %lo(D_800DC4C0)($t1)
-/* 05B1D4 8005A5D4 3C0C800E */  lui   $t4, %hi(D_800DC4C4) # $t4, 0x800e
+/* 05B1CC 8005A5CC 00000000 */   nop
+/* 05B1D0 8005A5D0 8D29C4C0 */  lw    $t1, %lo(gControllerTwo)($t1)
+/* 05B1D4 8005A5D4 3C0C800E */  lui   $t4, %hi(gControllerThree) # $t4, 0x800e
 /* 05B1D8 8005A5D8 952A0006 */  lhu   $t2, 6($t1)
 /* 05B1DC 8005A5DC 314B0001 */  andi  $t3, $t2, 1
 /* 05B1E0 8005A5E0 15600006 */  bnez  $t3, .L8005A5FC
-/* 05B1E4 8005A5E4 00000000 */   nop   
-/* 05B1E8 8005A5E8 8D8CC4C4 */  lw    $t4, %lo(D_800DC4C4)($t4)
+/* 05B1E4 8005A5E4 00000000 */   nop
+/* 05B1E8 8005A5E8 8D8CC4C4 */  lw    $t4, %lo(gControllerThree)($t4)
 /* 05B1EC 8005A5EC 958D0006 */  lhu   $t5, 6($t4)
 /* 05B1F0 8005A5F0 31AE0001 */  andi  $t6, $t5, 1
 /* 05B1F4 8005A5F4 11C00041 */  beqz  $t6, .L8005A6FC
-/* 05B1F8 8005A5F8 00000000 */   nop   
+/* 05B1F8 8005A5F8 00000000 */   nop
 .L8005A5FC:
 /* 05B1FC 8005A5FC 8DEFC53C */  lw    $t7, %lo(gModeSelection)($t7)
 /* 05B200 8005A600 3C028016 */  lui   $v0, %hi(D_801657F0) # $v0, 0x8016
@@ -170,7 +170,7 @@ glabel func_8005A3C0
 /* 05B230 8005A630 10000032 */  b     .L8005A6FC
 /* 05B234 8005A634 A06B0000 */   sb    $t3, ($v1)
 .L8005A638:
-/* 05B238 8005A638 8D8CC4BC */  lw    $t4, %lo(D_800DC4BC)($t4)
+/* 05B238 8005A638 8D8CC4BC */  lw    $t4, %lo(gControllerOne)($t4)
 /* 05B23C 8005A63C 3C028016 */  lui   $v0, %hi(D_80165800) # $v0, 0x8016
 /* 05B240 8005A640 3C038016 */  lui   $v1, %hi(D_801657E4) # $v1, 0x8016
 /* 05B244 8005A644 958D0006 */  lhu   $t5, 6($t4)
@@ -178,20 +178,20 @@ glabel func_8005A3C0
 /* 05B24C 8005A64C 24425800 */  addiu $v0, %lo(D_80165800) # addiu $v0, $v0, 0x5800
 /* 05B250 8005A650 31AE0001 */  andi  $t6, $t5, 1
 /* 05B254 8005A654 15C00011 */  bnez  $t6, .L8005A69C
-/* 05B258 8005A658 3C0F800E */   lui   $t7, %hi(D_800DC4C0) # $t7, 0x800e
-/* 05B25C 8005A65C 8DEFC4C0 */  lw    $t7, %lo(D_800DC4C0)($t7)
-/* 05B260 8005A660 3C08800E */  lui   $t0, %hi(D_800DC4C4) # $t0, 0x800e
+/* 05B258 8005A658 3C0F800E */   lui   $t7, %hi(gControllerTwo) # $t7, 0x800e
+/* 05B25C 8005A65C 8DEFC4C0 */  lw    $t7, %lo(gControllerTwo)($t7)
+/* 05B260 8005A660 3C08800E */  lui   $t0, %hi(gControllerThree) # $t0, 0x800e
 /* 05B264 8005A664 95F80006 */  lhu   $t8, 6($t7)
 /* 05B268 8005A668 33190001 */  andi  $t9, $t8, 1
 /* 05B26C 8005A66C 1720000B */  bnez  $t9, .L8005A69C
-/* 05B270 8005A670 00000000 */   nop   
-/* 05B274 8005A674 8D08C4C4 */  lw    $t0, %lo(D_800DC4C4)($t0)
-/* 05B278 8005A678 3C0B800E */  lui   $t3, %hi(D_800DC4C8) # $t3, 0x800e
+/* 05B270 8005A670 00000000 */   nop
+/* 05B274 8005A674 8D08C4C4 */  lw    $t0, %lo(gControllerThree)($t0)
+/* 05B278 8005A678 3C0B800E */  lui   $t3, %hi(gControllerFour) # $t3, 0x800e
 /* 05B27C 8005A67C 95090006 */  lhu   $t1, 6($t0)
 /* 05B280 8005A680 312A0001 */  andi  $t2, $t1, 1
 /* 05B284 8005A684 15400005 */  bnez  $t2, .L8005A69C
-/* 05B288 8005A688 00000000 */   nop   
-/* 05B28C 8005A68C 8D6BC4C8 */  lw    $t3, %lo(D_800DC4C8)($t3)
+/* 05B288 8005A688 00000000 */   nop
+/* 05B28C 8005A68C 8D6BC4C8 */  lw    $t3, %lo(gControllerFour)($t3)
 /* 05B290 8005A690 956C0006 */  lhu   $t4, 6($t3)
 /* 05B294 8005A694 318D0001 */  andi  $t5, $t4, 1
 /* 05B298 8005A698 11A00018 */  beqz  $t5, .L8005A6FC
@@ -230,4 +230,4 @@ glabel func_8005A3C0
 .L8005A710:
 /* 05B310 8005A710 27BD0018 */  addiu $sp, $sp, 0x18
 /* 05B314 8005A714 03E00008 */  jr    $ra
-/* 05B318 8005A718 00000000 */   nop   
+/* 05B318 8005A718 00000000 */   nop

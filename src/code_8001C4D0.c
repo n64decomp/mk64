@@ -17,9 +17,9 @@ Camera *camera4 = &cameras[3];
 //s32 test;
 
 
-extern Player *D_800DC4E0;
-extern Player *D_800DC4E4;
-extern Player *D_800DC4E8;
+extern Player *gPlayerTwo;
+extern Player *gPlayerThree;
+extern Player *gPlayerFour;
 
 
 #ifdef MIPS_TO_C
@@ -113,7 +113,7 @@ void func_8001C4D0(f32 x, f32 y, f32 z, s16 rot, u32 arg4, s32 cameraId) {
         *(&D_80164498 + temp_t6_2) = 0.0f;
         cameras[cameraId].unk24_and_a_half = 0;
         cameras[cameraId].unk22 = 0.0f;
-        temp_v1 = D_800DC4DC + (cameraId * 0xDD8);
+        temp_v1 = gPlayerOne + (cameraId * 0xDD8);
         cameras[cameraId].unk2C = temp_v1->unk2E;
         cameras[cameraId].unk28 = temp_v1->unk2E;
         temp_v0 = D_800DC52C;
@@ -233,13 +233,13 @@ void func_8001CA10(Camera *camera) {
 void func_8001CA24(Player *arg0, f32 arg1) {
     Camera *camera = &cameras[0];
 
-    if (arg0 == D_800DC4E0) {
+    if (arg0 == gPlayerTwo) {
         camera += 1;
     }
-    if (arg0 == D_800DC4E4) {
+    if (arg0 == gPlayerThree) {
         camera += 2;
     }
-    if (arg0 == D_800DC4E8) {
+    if (arg0 == gPlayerFour) {
         camera += 3;
     }
     camera->unk24_and_a_half = 0;
@@ -1318,7 +1318,7 @@ void func_8001EE98(void *arg0, s32 arg1, s8 arg2) {
                 *sp2C = 1;
                 phi_v1 = 1;
             }
-        } else if (((D_800DC4DC->unk_000 & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (D_800DC51C == 1)) {
+        } else if (((gPlayerOne->unk_000 & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (D_800DC51C == 1)) {
             D_80152300.unk0 = 3;
             *(&D_80152300 + 2) = 3;
             *(&D_80152300 + 4) = 3;
@@ -1412,16 +1412,16 @@ void func_8001F394(Player *player, f32 *arg1) {
     f32 phi_f2;
     f32 phi_f0;
 
-    if (player == D_800DC4DC) {
+    if (player == gPlayerOne) {
         playerId = 0;
     }
-    if (player == D_800DC4E0) {
+    if (player == gPlayerTwo) {
         playerId = 1;
     }
-    if (player == D_800DC4E4) {
+    if (player == gPlayerThree) {
         playerId = 2;
     }
-    if (player == D_800DC4E8) {
+    if (player == gPlayerFour) {
         playerId = 3;
     }
     temp_t3 = playerId * 4;
@@ -1581,7 +1581,7 @@ void func_8001F87C(s32 arg0) {
     s32 phi_a1;
 
     if (D_800DC52C == 0) {
-        phi_a2 = D_800DC4DC;
+        phi_a2 = gPlayerOne;
         phi_a1 = 0;
         if (gModeSelection == GRAND_PRIX) {
 loop_3:

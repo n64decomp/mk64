@@ -1,8 +1,8 @@
 glabel func_8005995C
-/* 05A55C 8005995C 3C02800E */  lui   $v0, %hi(D_800DC4DC) # $v0, 0x800e
+/* 05A55C 8005995C 3C02800E */  lui   $v0, %hi(gPlayerOne) # $v0, 0x800e
 /* 05A560 80059960 3C078019 */  lui   $a3, %hi(D_8018CA70) # $a3, 0x8019
 /* 05A564 80059964 3C058016 */  lui   $a1, %hi(D_80165890) # $a1, 0x8016
-/* 05A568 80059968 8C42C4DC */  lw    $v0, %lo(D_800DC4DC)($v0)
+/* 05A568 80059968 8C42C4DC */  lw    $v0, %lo(gPlayerOne)($v0)
 /* 05A56C 8005996C 24A55890 */  addiu $a1, %lo(D_80165890) # addiu $a1, $a1, 0x5890
 /* 05A570 80059970 24E7CA70 */  addiu $a3, %lo(D_8018CA70) # addiu $a3, $a3, -0x3590
 /* 05A574 80059974 00001825 */  move  $v1, $zero

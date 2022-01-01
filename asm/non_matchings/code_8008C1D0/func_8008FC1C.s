@@ -6,7 +6,7 @@ glabel func_8008FC1C
 /* 09082C 8008FC2C 31CF0040 */  andi  $t7, $t6, 0x40
 /* 090830 8008FC30 51E00009 */  beql  $t7, $zero, .L8008FC58
 /* 090834 8008FC34 8FBF0014 */   lw    $ra, 0x14($sp)
-/* 090838 8008FC38 0C009F40 */  jal   func_80027D00
+/* 090838 8008FC38 0C009F40 */  jal   get_player_index_for_player
 /* 09083C 8008FC3C AFA50018 */   sw    $a1, 0x18($sp)
 /* 090840 8008FC40 8FA50018 */  lw    $a1, 0x18($sp)
 /* 090844 8008FC44 24187000 */  li    $t8, 28672
@@ -17,4 +17,4 @@ glabel func_8008FC1C
 .L8008FC58:
 /* 090858 8008FC58 27BD0018 */  addiu $sp, $sp, 0x18
 /* 09085C 8008FC5C 03E00008 */  jr    $ra
-/* 090860 8008FC60 00000000 */   nop   
+/* 090860 8008FC60 00000000 */   nop
