@@ -54,6 +54,7 @@
 #define STAR_CUP     2
 #define SPECIAL_CUP  3
 #define BATTLE_CUP   4
+#define NUM_CUPS     5
 
 /**
  * Character IDs
@@ -204,5 +205,10 @@
 #define CUP_COURSE_THREE    2
 #define CUP_COURSE_FOUR     3
 #define NUM_COURSES_PER_CUP 4
+
+/**
+ * Max representable time, 100 minutes measured in centiseconds
+ */
+#define MAX_TIME 0x927C0
 
 #endif // DEFINES_H

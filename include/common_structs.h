@@ -32,6 +32,26 @@ typedef enum {
     /* 0x15 */ NUM_COURSES
 } COURSES;
 
+typedef enum {
+    /* 0x00 */ TIME_TRIAL_DATA_LUIGI_RACEWAY,
+    /* 0x01 */ TIME_TRIAL_DATA_MOO_MOO_FARM,
+    /* 0x02 */ TIME_TRIAL_DATA_KOOPA_BEACH,
+    /* 0x03 */ TIME_TRIAL_DATA_KALAMARI_DESERT,
+    /* 0x04 */ TIME_TRIAL_DATA_TOADS_TURNPIKE,
+    /* 0x05 */ TIME_TRIAL_DATA_FRAPPE_SNOWLAND,
+    /* 0x06 */ TIME_TRIAL_DATA_CHOCO_MOUNTAIN,
+    /* 0x07 */ TIME_TRIAL_DATA_MARIO_RACEWAY,
+    /* 0x08 */ TIME_TRIAL_DATA_WARIO_STADIUM,
+    /* 0x09 */ TIME_TRIAL_DATA_SHERBET_LAND,
+    /* 0x0A */ TIME_TRIAL_DATA_ROYAL_RACEWAY,
+    /* 0x0B */ TIME_TRIAL_DATA_BOWSER_CASTLE,
+    /* 0x0C */ TIME_TRIAL_DATA_DK_JUNGLE,
+    /* 0x0D */ TIME_TRIAL_DATA_YOSHI_VALLEY,
+    /* 0x0E */ TIME_TRIAL_DATA_BANSHEE_BOARDWALK,
+    /* 0x0F */ TIME_TRIAL_DATA_RAINBOW_ROAD,
+    /* 0x10 */ NUM_TIME_TRIAL_DATA
+} TIME_TRIAL_DATA_INDEX;
+
 // This was added as a silly idea:
 // In the data to use "A, B, Z, R" instead of hex numbers.
 typedef enum {
@@ -453,5 +473,12 @@ typedef struct {
     /* 0x10 */ s32 D_8018E118_index; // Don't know what D_8018E118 tracks
     /* 0x14 */ s32 unk14;            // Flip flops between 0 and 1, use unknown
 } struct_8018DEE0_entry; // size = 0x18
+
+typedef struct {
+    /* 0x00 */ u16 red;
+    /* 0x02 */ u16 green;
+    /* 0x04 */ u16 blue;
+    /* 0x06 */ u16 alpha;
+} RGBA16; // size = 0x08
 
 #endif

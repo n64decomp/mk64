@@ -11,10 +11,10 @@ glabel func_800A1DE0
 /* 0A2A04 800A1E04 0C024C36 */  jal   set_text_color
 /* 0A2A08 800A1E08 24040001 */   li    $a0, 1
 /* 0A2A0C 800A1E0C 3C01800F */  lui   $at, %hi(D_800F1B58) # $at, 0x800f
-/* 0A2A10 800A1E10 3C138019 */  lui   $s3, %hi(D_8018EDF8) # $s3, 0x8019
+/* 0A2A10 800A1E10 3C138019 */  lui   $s3, %hi(gCourseRecordsMenuSelection) # $s3, 0x8019
 /* 0A2A14 800A1E14 3C12800E */  lui   $s2, %hi(D_800E7848) # $s2, 0x800e
 /* 0A2A18 800A1E18 26527848 */  addiu $s2, %lo(D_800E7848) # addiu $s2, $s2, 0x7848
-/* 0A2A1C 800A1E1C 2673EDF8 */  addiu $s3, %lo(D_8018EDF8) # addiu $s3, $s3, -0x1208
+/* 0A2A1C 800A1E1C 2673EDF8 */  addiu $s3, %lo(gCourseRecordsMenuSelection) # addiu $s3, $s3, -0x1208
 /* 0A2A20 800A1E20 C4341B58 */  lwc1  $f20, %lo(D_800F1B58)($at)
 /* 0A2A24 800A1E24 00008825 */  move  $s1, $zero
 /* 0A2A28 800A1E28 2410003C */  li    $s0, 60

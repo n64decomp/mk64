@@ -2,8 +2,8 @@ glabel func_800B3F74
 /* 0B4B74 800B3F74 24030001 */  li    $v1, 1
 /* 0B4B78 800B3F78 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
 /* 0B4B7C 800B3F7C A023EDEF */  sb    $v1, %lo(gDebugMenuSelection)($at)
-/* 0B4B80 800B3F80 3C018019 */  lui   $at, %hi(gStartMenuCounterForDemos) # $at, 0x8019
-/* 0B4B84 800B3F84 AC20EE00 */  sw    $zero, %lo(gStartMenuCounterForDemos)($at)
+/* 0B4B80 800B3F80 3C018019 */  lui   $at, %hi(gMenuTimingCounter) # $at, 0x8019
+/* 0B4B84 800B3F84 AC20EE00 */  sw    $zero, %lo(gMenuTimingCounter)($at)
 /* 0B4B88 800B3F88 3C018019 */  lui   $at, %hi(D_8018EE04) # $at, 0x8019
 /* 0B4B8C 800B3F8C AC20EE04 */  sw    $zero, %lo(D_8018EE04)($at)
 /* 0B4B90 800B3F90 3C018019 */  lui   $at, %hi(D_8018EE08) # $at, 0x8019
@@ -78,9 +78,9 @@ glabel L800B4070
 /* 0B4C8C 800B408C 3C018019 */  lui   $at, %hi(gCupCourseSelection) # $at, 0x8019
 /* 0B4C90 800B4090 A020EE0B */  sb    $zero, %lo(gCupCourseSelection)($at)
 /* 0B4C94 800B4094 3C048019 */  lui   $a0, %hi(D_8018EDF3) # $a0, 0x8019
-/* 0B4C98 800B4098 3C018019 */  lui   $at, %hi(D_8018EDF7) # $at, 0x8019
+/* 0B4C98 800B4098 3C018019 */  lui   $at, %hi(gTimeTrialDataCourseIndex) # $at, 0x8019
 /* 0B4C9C 800B409C 2484EDF3 */  addiu $a0, %lo(D_8018EDF3) # addiu $a0, $a0, -0x120d
-/* 0B4CA0 800B40A0 A020EDF7 */  sb    $zero, %lo(D_8018EDF7)($at)
+/* 0B4CA0 800B40A0 A020EDF7 */  sb    $zero, %lo(gTimeTrialDataCourseIndex)($at)
 /* 0B4CA4 800B40A4 80870000 */  lb    $a3, ($a0)
 /* 0B4CA8 800B40A8 24080004 */  li    $t0, 4
 /* 0B4CAC 800B40AC 3C19800F */  lui   $t9, %hi(D_800F2BDF) # 0x800f
