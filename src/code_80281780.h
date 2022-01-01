@@ -23,7 +23,7 @@ extern s16 gCurrentCourseId;
 extern u16 D_800DC5B4;
 
 extern s32 gIsMirrorMode;
-extern s32 D_800DC530;
+extern s32 gScreenModeSelection;
 extern s32 D_800DC52C;
 extern s32 gModeSelection;
 extern u16 D_800DC5BC;

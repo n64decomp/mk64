@@ -1,6 +1,6 @@
 glabel func_80078F64
-/* 079B64 80078F64 3C02800E */  lui   $v0, %hi(D_800DC530) # $v0, 0x800e
-/* 079B68 80078F68 8C42C530 */  lw    $v0, %lo(D_800DC530)($v0)
+/* 079B64 80078F64 3C02800E */  lui   $v0, %hi(gScreenModeSelection) # $v0, 0x800e
+/* 079B68 80078F68 8C42C530 */  lw    $v0, %lo(gScreenModeSelection)($v0)
 /* 079B6C 80078F6C 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 079B70 80078F70 AFBF001C */  sw    $ra, 0x1c($sp)
 /* 079B74 80078F74 1040000C */  beqz  $v0, .L80078FA8

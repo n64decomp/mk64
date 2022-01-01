@@ -210,10 +210,10 @@ void func_80291198(void) {
     gSPDisplayList(gDisplayListHead++, 0x07001140);
 }
 
-extern s32 D_800DC530;
+extern s32 gScreenModeSelection;
 
 void func_802911C4(void) {
-    if (D_800DC530 == 0) {
+    if (gScreenModeSelection == SCREEN_MODE_1P) {
         gSPDisplayList(gDisplayListHead++, 0x070008E8);
     } else {
         gSPDisplayList(gDisplayListHead++, 0x07002D68);
@@ -2306,7 +2306,7 @@ void func_80295D88(void) {
     switch (temp_t7) {
     case 0:
         func_802AF588(0x7001140);
-        if (D_800DC530 == 0) {
+        if (gScreenModeSelection == SCREEN_MODE_1P) {
             func_802AF588(0x70008E8);
         } else {
             func_802AF588(0x7002D68);

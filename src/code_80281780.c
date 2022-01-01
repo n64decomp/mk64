@@ -89,7 +89,7 @@ void load_ending_sequence_royalraceway(void) {
     D_800DC5EC->screenHeight = 240;
     D_800DC5EC->screenStartX = 160;
     D_800DC5EC->screenStartY = 120;
-    D_800DC530 = 0;
+    gScreenModeSelection = SCREEN_MODE_1P;
     gPrevLoadedAddress = (s32) D_8015F734;
     D_800DC52C = 0;
     gModeSelection = GRAND_PRIX;

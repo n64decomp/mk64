@@ -384,10 +384,10 @@ glabel func_80050E34
 /* 051FFC 800513FC 3C0F800E */  lui   $t7, %hi(gPlayerOne) # $t7, 0x800e
 /* 052000 80051400 8DEFC4DC */  lw    $t7, %lo(gPlayerOne)($t7)
 /* 052004 80051404 8FAE00AC */  lw    $t6, 0xac($sp)
-/* 052008 80051408 3C18800E */  lui   $t8, %hi(D_800DC530) # $t8, 0x800e
+/* 052008 80051408 3C18800E */  lui   $t8, %hi(gScreenModeSelection) # $t8, 0x800e
 /* 05200C 8005140C 55CF0027 */  bnel  $t6, $t7, .L800514AC
 /* 052010 80051410 8FBF002C */   lw    $ra, 0x2c($sp)
-/* 052014 80051414 8F18C530 */  lw    $t8, %lo(D_800DC530)($t8)
+/* 052014 80051414 8F18C530 */  lw    $t8, %lo(gScreenModeSelection)($t8)
 /* 052018 80051418 3C0F0D00 */  lui   $t7, %hi(D_0D007A40) # $t7, 0xd00
 /* 05201C 8005141C 25EF7A40 */  addiu $t7, %lo(D_0D007A40) # addiu $t7, $t7, 0x7a40
 /* 052020 80051420 17000021 */  bnez  $t8, .L800514A8

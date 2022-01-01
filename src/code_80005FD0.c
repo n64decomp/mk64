@@ -8518,7 +8518,7 @@ loop_2:
         phi_fp = temp_fp;
         phi_s7_2 += 0x10C;
     } while (temp_fp < 2);
-    temp_v0_2 = D_800DC530;
+    temp_v0_2 = gScreenModeSelection;
     phi_s6_3 = &D_801635A0;
     phi_a2 = &D_801635A0;
     if (temp_v0_2 != 0) {

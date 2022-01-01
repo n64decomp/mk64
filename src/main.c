@@ -172,7 +172,7 @@ s32 D_800DC524 = 7; // = COURSE_DATA_MENU?;
 UNUSED s32 D_800DC528 = 1;
 s32 D_800DC52C = 0;
 
-s32 D_800DC530[2] = {0};
+s32 gScreenModeSelection[2] = {0};
 s32 gPlayerCountSelection1 = 2;
 
 s32 gModeSelection = GRAND_PRIX;

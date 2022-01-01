@@ -41,7 +41,7 @@ extern s8 D_8018EDF3;
 extern s8 gCupSelection;
 
 
-extern u32 D_800DC530;
+extern u32 gScreenModeSelection;
 extern u32 D_8015F730;
 extern u32 D_8015F734;
 extern u32 gPrevLoadedAddress;
@@ -143,7 +143,7 @@ void func_80002A18(void) {
     if (gModeSelection == GRAND_PRIX) {
         gCurrentCourseId = gCupCourseOrder[gCupSelection][gCupCourseSelection];
     }
-    D_800DC52C = D_800DC530;
+    D_800DC52C = gScreenModeSelection;
     if (gCurrentCourseId != gCurrentlyLoadedCourseId) {
         D_80150120 = 0;
         gCurrentlyLoadedCourseId = gCurrentCourseId;

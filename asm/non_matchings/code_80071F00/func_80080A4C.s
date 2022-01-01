@@ -8,8 +8,8 @@ glabel func_80080A4C
 /* 081664 80080A64 8DEFDB40 */  lw    $t7, %lo(camera1)($t7)
 /* 081668 80080A68 000E70C0 */  sll   $t6, $t6, 3
 /* 08166C 80080A6C 0325C823 */  subu  $t9, $t9, $a1
-/* 081670 80080A70 3C09800E */  lui   $t1, %hi(D_800DC530) # $t1, 0x800e
-/* 081674 80080A74 8D29C530 */  lw    $t1, %lo(D_800DC530)($t1)
+/* 081670 80080A70 3C09800E */  lui   $t1, %hi(gScreenModeSelection) # $t1, 0x800e
+/* 081674 80080A74 8D29C530 */  lw    $t1, %lo(gScreenModeSelection)($t1)
 /* 081678 80080A78 01C57023 */  subu  $t6, $t6, $a1
 /* 08167C 80080A7C 0019C880 */  sll   $t9, $t9, 2
 /* 081680 80080A80 3C08800E */  lui   $t0, %hi(gPlayerOne) # $t0, 0x800e

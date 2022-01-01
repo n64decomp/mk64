@@ -77,7 +77,7 @@ glabel func_8006FA94
 /* 0707C0 8006FBC0 03E01025 */   move  $v0, $ra
 /* 0707C4 8006FBC4 24030002 */  li    $v1, 2
 /* 0707C8 8006FBC8 1043001E */  beq   $v0, $v1, .L8006FC44
-/* 0707CC 8006FBCC 3C0F800E */   lui   $t7, %hi(D_800DC530) # 0x800e
+/* 0707CC 8006FBCC 3C0F800E */   lui   $t7, %hi(gScreenModeSelection) # 0x800e
 /* 0707D0 8006FBD0 24010003 */  li    $at, 3
 /* 0707D4 8006FBD4 1041005A */  beq   $v0, $at, .L8006FD40
 /* 0707D8 8006FBD8 3C0E800E */   lui   $t6, %hi(gModeSelection) # 0x800e
@@ -110,7 +110,7 @@ glabel func_8006FA94
 /* 07083C 8006FC3C 10000072 */  b     .L8006FE08
 /* 070840 8006FC40 240C0008 */   li    $t4, 8
 .L8006FC44:
-/* 070844 8006FC44 8DEFC530 */  lw    $t7, %lo(D_800DC530)($t7) # -0x3ad0($t7)
+/* 070844 8006FC44 8DEFC530 */  lw    $t7, %lo(gScreenModeSelection)($t7) # -0x3ad0($t7)
 /* 070848 8006FC48 24010001 */  li    $at, 1
 /* 07084C 8006FC4C 3C02800E */  lui   $v0, %hi(gModeSelection) # 0x800e
 /* 070850 8006FC50 15E10029 */  bne   $t7, $at, .L8006FCF8

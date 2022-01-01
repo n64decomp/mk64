@@ -2,8 +2,8 @@ glabel func_800B3F74
 /* 0B4B74 800B3F74 24030001 */  li    $v1, 1
 /* 0B4B78 800B3F78 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
 /* 0B4B7C 800B3F7C A023EDEF */  sb    $v1, %lo(gDebugMenuSelection)($at)
-/* 0B4B80 800B3F80 3C018019 */  lui   $at, %hi(gStartMenuCounterForDemos) # $at, 0x8019
-/* 0B4B84 800B3F84 AC20EE00 */  sw    $zero, %lo(gStartMenuCounterForDemos)($at)
+/* 0B4B80 800B3F80 3C018019 */  lui   $at, %hi(gMenuTimingCounter) # $at, 0x8019
+/* 0B4B84 800B3F84 AC20EE00 */  sw    $zero, %lo(gMenuTimingCounter)($at)
 /* 0B4B88 800B3F88 3C018019 */  lui   $at, %hi(D_8018EE04) # $at, 0x8019
 /* 0B4B8C 800B3F8C AC20EE04 */  sw    $zero, %lo(D_8018EE04)($at)
 /* 0B4B90 800B3F90 3C018019 */  lui   $at, %hi(D_8018EE08) # $at, 0x8019
@@ -60,8 +60,8 @@ glabel L800B4040
 /* 0B4C4C 800B404C 10000111 */  b     .L800B4494
 /* 0B4C50 800B4050 00000000 */   nop   
 glabel L800B4054
-/* 0B4C54 800B4054 3C018019 */  lui   $at, %hi(gMenuState) # $at, 0x8019
-/* 0B4C58 800B4058 A023EDF0 */  sb    $v1, %lo(gMenuState)($at)
+/* 0B4C54 800B4054 3C018019 */  lui   $at, %hi(gControllerPakMenuSelection) # $at, 0x8019
+/* 0B4C58 800B4058 A023EDF0 */  sb    $v1, %lo(gControllerPakMenuSelection)($at)
 /* 0B4C5C 800B405C 00002025 */  move  $a0, $zero
 /* 0B4C60 800B4060 0C032802 */  jal   func_800CA008
 /* 0B4C64 800B4064 00002825 */   move  $a1, $zero
@@ -78,9 +78,9 @@ glabel L800B4070
 /* 0B4C8C 800B408C 3C018019 */  lui   $at, %hi(gCupCourseSelection) # $at, 0x8019
 /* 0B4C90 800B4090 A020EE0B */  sb    $zero, %lo(gCupCourseSelection)($at)
 /* 0B4C94 800B4094 3C048019 */  lui   $a0, %hi(D_8018EDF3) # $a0, 0x8019
-/* 0B4C98 800B4098 3C018019 */  lui   $at, %hi(D_8018EDF7) # $at, 0x8019
+/* 0B4C98 800B4098 3C018019 */  lui   $at, %hi(gTimeTrialDataCourseIndex) # $at, 0x8019
 /* 0B4C9C 800B409C 2484EDF3 */  addiu $a0, %lo(D_8018EDF3) # addiu $a0, $a0, -0x120d
-/* 0B4CA0 800B40A0 A020EDF7 */  sb    $zero, %lo(D_8018EDF7)($at)
+/* 0B4CA0 800B40A0 A020EDF7 */  sb    $zero, %lo(gTimeTrialDataCourseIndex)($at)
 /* 0B4CA4 800B40A4 80870000 */  lb    $a3, ($a0)
 /* 0B4CA8 800B40A8 24080004 */  li    $t0, 4
 /* 0B4CAC 800B40AC 3C19800F */  lui   $t9, %hi(D_800F2BDF) # 0x800f
@@ -136,26 +136,26 @@ glabel L800B4100
 .L800B4168:
 /* 0B4D68 800B4168 3C028019 */  lui   $v0, %hi(D_8018EDE0) # $v0, 0x8019
 /* 0B4D6C 800B416C 8C42EDE0 */  lw    $v0, %lo(D_8018EDE0)($v0)
-/* 0B4D70 800B4170 3C058019 */  lui   $a1, %hi(D_8018EDED) # $a1, 0x8019
-/* 0B4D74 800B4174 24A5EDED */  addiu $a1, %lo(D_8018EDED) # addiu $a1, $a1, -0x1213
+/* 0B4D70 800B4170 3C058019 */  lui   $a1, %hi(gMainMenuSelectionDepth) # $a1, 0x8019
+/* 0B4D74 800B4174 24A5EDED */  addiu $a1, %lo(gMainMenuSelectionDepth) # addiu $a1, $a1, -0x1213
 /* 0B4D78 800B4178 1040000B */  beqz  $v0, .L800B41A8
 /* 0B4D7C 800B417C 24060003 */   li    $a2, 3
 /* 0B4D80 800B4180 10430019 */  beq   $v0, $v1, .L800B41E8
-/* 0B4D84 800B4184 3C058019 */   lui   $a1, %hi(D_8018EDED) # 0x8019
+/* 0B4D84 800B4184 3C058019 */   lui   $a1, %hi(gMainMenuSelectionDepth) # 0x8019
 /* 0B4D88 800B4188 24060003 */  li    $a2, 3
 /* 0B4D8C 800B418C 1046001A */  beq   $v0, $a2, .L800B41F8
-/* 0B4D90 800B4190 3C058019 */   lui   $a1, %hi(D_8018EDED) # 0x8019
+/* 0B4D90 800B4190 3C058019 */   lui   $a1, %hi(gMainMenuSelectionDepth) # 0x8019
 /* 0B4D94 800B4194 24080004 */  li    $t0, 4
 /* 0B4D98 800B4198 10480022 */  beq   $v0, $t0, .L800B4224
-/* 0B4D9C 800B419C 3C058019 */   lui   $a1, %hi(D_8018EDED) # 0x8019
+/* 0B4D9C 800B419C 3C058019 */   lui   $a1, %hi(gMainMenuSelectionDepth) # 0x8019
 /* 0B4DA0 800B41A0 100000BC */  b     .L800B4494
 /* 0B4DA4 800B41A4 00000000 */   nop   
 .L800B41A8:
 /* 0B4DA8 800B41A8 A0A60000 */  sb    $a2, ($a1)
 /* 0B4DAC 800B41AC 0C0323AB */  jal   func_800C8EAC
 /* 0B4DB0 800B41B0 24040002 */   li    $a0, 2
-/* 0B4DB4 800B41B4 3C05800E */  lui   $a1, %hi(D_800DC530) # $a1, 0x800e
-/* 0B4DB8 800B41B8 24A5C530 */  addiu $a1, %lo(D_800DC530) # addiu $a1, $a1, -0x3ad0
+/* 0B4DB4 800B41B4 3C05800E */  lui   $a1, %hi(gScreenModeSelection) # $a1, 0x800e
+/* 0B4DB8 800B41B8 24A5C530 */  addiu $a1, %lo(gScreenModeSelection) # addiu $a1, $a1, -0x3ad0
 /* 0B4DBC 800B41BC 8CA20000 */  lw    $v0, ($a1)
 /* 0B4DC0 800B41C0 3C048019 */  lui   $a0, %hi(D_8018EDF3) # $a0, 0x8019
 /* 0B4DC4 800B41C4 2484EDF3 */  addiu $a0, %lo(D_8018EDF3) # addiu $a0, $a0, -0x120d
@@ -169,12 +169,12 @@ glabel L800B4100
 /* 0B4DE0 800B41E0 100000AC */  b     .L800B4494
 /* 0B4DE4 800B41E4 ACA00000 */   sw    $zero, ($a1)
 .L800B41E8:
-/* 0B4DE8 800B41E8 24A5EDED */  addiu $a1, $a1, %lo(D_8018EDED) # -0x1213
+/* 0B4DE8 800B41E8 24A5EDED */  addiu $a1, $a1, %lo(gMainMenuSelectionDepth) # -0x1213
 /* 0B4DEC 800B41EC 240A0007 */  li    $t2, 7
 /* 0B4DF0 800B41F0 100000A8 */  b     .L800B4494
 /* 0B4DF4 800B41F4 A0AA0000 */   sb    $t2, ($a1)
 .L800B41F8:
-/* 0B4DF8 800B41F8 24A5EDED */  addiu $a1, $a1, %lo(D_8018EDED) # -0x1213
+/* 0B4DF8 800B41F8 24A5EDED */  addiu $a1, $a1, %lo(gMainMenuSelectionDepth) # -0x1213
 /* 0B4DFC 800B41FC 80A20000 */  lb    $v0, ($a1)
 /* 0B4E00 800B4200 24010002 */  li    $at, 2
 /* 0B4E04 800B4204 10430005 */  beq   $v0, $v1, .L800B421C
@@ -187,7 +187,7 @@ glabel L800B4100
 /* 0B4E1C 800B421C 1000009D */  b     .L800B4494
 /* 0B4E20 800B4220 A0A60000 */   sb    $a2, ($a1)
 .L800B4224:
-/* 0B4E24 800B4224 24A5EDED */  addiu $a1, $a1, %lo(D_8018EDED) # -0x1213
+/* 0B4E24 800B4224 24A5EDED */  addiu $a1, $a1, %lo(gMainMenuSelectionDepth) # -0x1213
 /* 0B4E28 800B4228 1000009A */  b     .L800B4494
 /* 0B4E2C 800B422C A0A60000 */   sb    $a2, ($a1)
 glabel L800B4230

@@ -2073,7 +2073,7 @@ glabel D_8018EDEB
 glabel D_8018EDEC
 .skip 1
 
-glabel D_8018EDED
+glabel gMainMenuSelectionDepth
 .skip 1
 
 glabel D_8018EDEE
@@ -2082,7 +2082,7 @@ glabel D_8018EDEE
 glabel gDebugMenuSelection
 .skip 1
 
-glabel gMenuState # 0x8018EDF0
+glabel gControllerPakMenuSelection # 0x8018EDF0
 .skip 1
 
 glabel D_8018EDF1
@@ -2103,10 +2103,10 @@ glabel D_8018EDF5
 glabel D_8018EDF6
 .skip 1
 
-glabel D_8018EDF7
+glabel gTimeTrialDataCourseIndex
 .skip 1
 
-glabel D_8018EDF8
+glabel gCourseRecordsMenuSelection
 .skip 1
 
 glabel D_8018EDF9
@@ -2121,7 +2121,7 @@ glabel D_8018EDFB
 glabel D_8018EDFC
 .skip 4
 
-glabel gStartMenuCounterForDemos
+glabel gMenuTimingCounter
 .skip 4
 
 glabel D_8018EE04

@@ -6412,7 +6412,7 @@ void func_80050E34(s32 arg0, s32 arg1) {
     gDisplayListHead = temp_v0_26 + 8;
     temp_v0_26->unk0 = 0x6000000;
     temp_v0_26->unk4 = &D_0D006950;
-    if ((spAC == gPlayerOne) && (D_800DC530 == 0)) {
+    if ((spAC == gPlayerOne) && (gScreenModeSelection == SCREEN_MODE_1P)) {
         temp_v0_27 = gDisplayListHead;
         gDisplayListHead = temp_v0_27 + 8;
         temp_v0_27->unk4 = &D_0D007A40;
@@ -6449,7 +6449,7 @@ void func_800514BC(void) {
     s32 phi_s0;
     s32 phi_s1;
 
-    if (D_800DC530 == 0) {
+    if (gScreenModeSelection == SCREEN_MODE_1P) {
         func_800508C0();
     }
     phi_s3 = 8;
@@ -7705,7 +7705,7 @@ void func_800532A4(s32 arg0) {
             temp_v0_2 = temp_s0->unkD9;
             func_800485C4(temp_s1_2, temp_s0 + 0xB2, temp_s0->unk0, temp_s0->unkA0, temp_s0->unk60, temp_s0->unk64, temp_s0->unk74, temp_v0_2, temp_v1_2, temp_v0_2, temp_v1_2 / 2);
         }
-        if (D_800DC530 == 0) {
+        if (gScreenModeSelection == SCREEN_MODE_1P) {
             temp_v0_3 = D_8018CF14;
             temp_f0 = temp_s0->unk4 - temp_v0_3->unk0;
             temp_f2 = temp_s0->unkC - temp_v0_3->unk8;

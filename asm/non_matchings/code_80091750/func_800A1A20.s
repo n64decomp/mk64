@@ -1,6 +1,6 @@
 glabel func_800A1A20
-/* 0A2620 800A1A20 3C028019 */  lui   $v0, %hi(D_8018EDF7) # $v0, 0x8019
-/* 0A2624 800A1A24 8042EDF7 */  lb    $v0, %lo(D_8018EDF7)($v0)
+/* 0A2620 800A1A20 3C028019 */  lui   $v0, %hi(gTimeTrialDataCourseIndex) # $v0, 0x8019
+/* 0A2624 800A1A24 8042EDF7 */  lb    $v0, %lo(gTimeTrialDataCourseIndex)($v0)
 /* 0A2628 800A1A28 27BDFFC8 */  addiu $sp, $sp, -0x38
 /* 0A262C 800A1A2C AFB10028 */  sw    $s1, 0x28($sp)
 /* 0A2630 800A1A30 3C11800F */  lui   $s1, %hi(gCupCourseOrder)

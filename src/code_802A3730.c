@@ -154,8 +154,8 @@ void func_802A38B4(void) {
                 gMenuSelection = START_MENU;
             }
             break;
-        case GAME_SELECT_MENU_FROM_QUIT:
-            gMenuSelection = GAME_SELECT_MENU;
+        case MAIN_MENU_FROM_QUIT:
+            gMenuSelection = MAIN_MENU;
             break;
         case PLAYER_SELECT_MENU_FROM_QUIT:
             gMenuSelection = PLAYER_SELECT_MENU;
@@ -677,7 +677,7 @@ void func_802A4A0C(Vtx *arg0, void *arg1, ? arg2, ? arg3) {
 */
 
 #ifdef MIPS_TO_C
-extern s32 D_800DC530;
+extern s32 gScreenModeSelection;
 void func_802A4D18(void) {
     f32 phi_f10;
 
@@ -734,7 +734,7 @@ void func_802A4D18(void) {
         }
     }
 
-    switch(D_800DC530) {
+    switch(gScreenModeSelection) {
         case 0:
             D_80150148 = 1.3333333730697632f; // D_802B9C1C
             break;
