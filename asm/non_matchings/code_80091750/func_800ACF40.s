@@ -116,10 +116,10 @@ glabel L800AD01C
 /* 0ADCF0 800AD0F0 0C032893 */  jal   func_800CA24C
 /* 0ADCF4 800AD0F4 AFA40024 */   sw    $a0, 0x24($sp)
 /* 0ADCF8 800AD0F8 8FA60038 */  lw    $a2, 0x38($sp)
-/* 0ADCFC 800AD0FC 3C05800F */  lui   $a1, %hi(D_800E86A8) # 0x800f
+/* 0ADCFC 800AD0FC 3C05800F */  lui   $a1, %hi(gCharacterSelections) # 0x800f
 /* 0ADD00 800AD100 3C012900 */  lui   $at, (0x29008007 >> 16) # lui $at, 0x2900
 /* 0ADD04 800AD104 00A62821 */  addu  $a1, $a1, $a2
-/* 0ADD08 800AD108 80A586A8 */  lb    $a1, %lo(D_800E86A8)($a1) # -0x7958($a1)
+/* 0ADD08 800AD108 80A586A8 */  lb    $a1, %lo(gCharacterSelections)($a1) # -0x7958($a1)
 /* 0ADD0C 800AD10C 34218007 */  ori   $at, (0x29008007 & 0xFFFF) # ori $at, $at, 0x8007
 /* 0ADD10 800AD110 8FA40024 */  lw    $a0, 0x24($sp)
 /* 0ADD14 800AD114 00055100 */  sll   $t2, $a1, 4

@@ -64,7 +64,7 @@ extern s16 D_80165570;
 extern s16 D_80165572;
 extern s16 D_80165580;
 extern s16 D_80165582;
-extern s8 D_800E86A8[4];
+extern s8 gCharacterSelections[4]; // D_800E86A8
 extern s16 D_80165270[8];
 extern Player* gPlayerOne;
 extern Player* gPlayerTwo;

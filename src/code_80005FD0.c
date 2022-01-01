@@ -6049,7 +6049,7 @@ loop_5:
                 phi_a1_2 = 0;
                 phi_a1_5 = 0;
                 if (temp_a2 < 3) {
-                    phi_v0_2 = D_800E86A8;
+                    phi_v0_2 = gCharacterSelections;
                     if (temp_a2 > 0) {
                         if (temp_a2 > 0) {
                             do {
@@ -6059,7 +6059,7 @@ loop_5:
                                     phi_a1_5 = 1;
                                 }
                                 phi_a1_2 = phi_a1_5;
-                            } while (temp_v0_2 < &D_800E86A8[temp_a2]);
+                            } while (temp_v0_2 < &gCharacterSelections[temp_a2]);
                         }
                         temp_a3 = phi_s0 & 3;
                         phi_a0 = 0;

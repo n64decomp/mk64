@@ -2177,7 +2177,7 @@ void func_80095574(void) {
         debug_print_str2(0x50, 0x78, "screen_mode");
         debug_print_str2(0xAA, 0x78, *(&gDebugScreenModeNames + (D_8018EDF1 * 4)));
         debug_print_str2(0x50, 0x82, "player");
-        debug_print_str2(0xAA, 0x82, *(&gDebugCharacterNames + (D_800E86A8 * 4)));
+        debug_print_str2(0xAA, 0x82, *(&gDebugCharacterNames + (gCharacterSelections * 4)));
         debug_print_str2(0x50, 0x8C, "sound mode");
         debug_print_str2(0xAA, 0x8C, gDebugSoundModeNames[gSoundMode]);
         if (gDebugMenuSelection == DEBUG_MENU_GIVE_ALL_GOLD_CUP) {
@@ -6375,7 +6375,7 @@ void *func_800AAF30(?, s32, s32);                   /* extern */
 extern ? D_8018E7AC;
 extern ? D_8018E7B0;
 static ? gCupSelectionByCourseId;                                /* unable to generate initializer; const */
-static ? D_800E86A8;                                /* unable to generate initializer; const */
+static ? gCharacterSelections;                                /* unable to generate initializer; const */
 static ? gPerCupIndexByCourseId;                                /* unable to generate initializer; const */
 s16 gCreditsCourseId;                                     /* unable to generate initializer */
 s16 gCurrentCourseId;                               /* unable to generate initializer */
@@ -6592,7 +6592,7 @@ block_74:
                     gScreenModeSelection = SCREEN_MODE_1P;
                     gPlayerCountSelection1 = 1;
                     D_8018EDF3 = 1;
-                    D_800E86A8[0] = MARIO;
+                    gCharacterSelections[0] = MARIO;
                     gModeSelection = GRAND_PRIX;
                     break;
                 case DEMO_TWO:                             /* switch 4 */
@@ -6600,8 +6600,8 @@ block_74:
                     gScreenModeSelection = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
                     gPlayerCountSelection1 = 2;
                     D_8018EDF3 = 2;
-                    D_800E86A8[0] = YOSHI;
-                    D_800E86A8[1] = DK;
+                    gCharacterSelections[0] = YOSHI;
+                    gCharacterSelections[1] = DK;
                     gModeSelection = VERSUS;
                     phi_a2 = 2;
                     break;
@@ -6610,7 +6610,7 @@ block_74:
                     gScreenModeSelection = SCREEN_MODE_1P;
                     gPlayerCountSelection1 = 1;
                     D_8018EDF3 = 1;
-                    D_800E86A8[0] = LUIGI;
+                    gCharacterSelections[0] = LUIGI;
                     gModeSelection = GRAND_PRIX;
                     break;
                 case DEMO_FOUR:                             /* switch 4 */
@@ -6618,9 +6618,9 @@ block_74:
                     gScreenModeSelection = SCREEN_MODE_3P_4P_SPLITSCREEN;
                     gPlayerCountSelection1 = 3;
                     D_8018EDF3 = 3;
-                    D_800E86A8[0] = WARIO;
-                    D_800E86A8[1] = YOSHI;
-                    D_800E86A8[2] = BOWSER;
+                    gCharacterSelections[0] = WARIO;
+                    gCharacterSelections[1] = YOSHI;
+                    gCharacterSelections[2] = BOWSER;
                     gModeSelection = VERSUS;
                     phi_a2 = 2;
                     break;
@@ -6629,7 +6629,7 @@ block_74:
                     gScreenModeSelection = SCREEN_MODE_1P;
                     gPlayerCountSelection1 = 1;
                     D_8018EDF3 = 1;
-                    D_800E86A8[0] = BOWSER;
+                    gCharacterSelections[0] = BOWSER;
                     gModeSelection = GRAND_PRIX;
                     phi_a2 = 2;
                     break;
@@ -6638,10 +6638,10 @@ block_74:
                     gScreenModeSelection = SCREEN_MODE_3P_4P_SPLITSCREEN;
                     gPlayerCountSelection1 = 4;
                     D_8018EDF3 = 4;
-                    D_800E86A8[0] = MARIO;
-                    D_800E86A8[1] = LUIGI;
-                    D_800E86A8[2] = PEACH;
-                    D_800E86A8[3] = TOAD;
+                    gCharacterSelections[0] = MARIO;
+                    gCharacterSelections[1] = LUIGI;
+                    gCharacterSelections[2] = PEACH;
+                    gCharacterSelections[3] = TOAD;
                     gModeSelection = VERSUS;
                     phi_a2 = 2;
                     break;
@@ -7836,7 +7836,7 @@ static ? D_800E8294;                                /* unable to generate initia
 static ? D_800E8320;                                /* unable to generate initializer; const */
 static ? D_800E8420;                                /* unable to generate initializer; const */
 static ? D_800E85F7;                                /* unable to generate initializer; const */
-static s8 D_800E86A8 = 0;                           /* const */
+static s8 gCharacterSelections = 0;                           /* const */
 static ? D_800EFD64;                                /* unable to generate initializer; const */
 static ? gCupCourseOrder;                            /* unable to generate initializer; const */
 
@@ -8226,7 +8226,7 @@ block_63:
             return;
         case 0xBB:                                  /* switch 2 */
             sp7C = phi_ra;
-            phi_ra->unk1C = func_800B5020(D_8018CA78, D_800E86A8, arg2);
+            phi_ra->unk1C = func_800B5020(D_8018CA78, gCharacterSelections, arg2);
             phi_ra->unk20 = func_800B5218();
             if (D_80162DD4 != 1) {
                 sp7C = phi_ra;
@@ -8430,7 +8430,7 @@ extern ? D_8018EDE8;
 extern s8 gMainMenuSelectionDepth;
 extern s8 D_8018EDF3;
 extern s8 D_802874F6;
-extern ? gCharacterSelections;
+extern ? gCharacterGridSelections;
 extern void *gDisplayListHead;
 extern s32 gGfxPool;
 extern s32 gGlobalTimer;
@@ -8472,7 +8472,7 @@ static ? D_800E817C;                                /* unable to generate initia
 static ? D_800E824C;                                /* unable to generate initializer; const */
 static ? D_800E8254;                                /* unable to generate initializer; const */
 static ? D_800E8294;                                /* unable to generate initializer; const */
-static ? D_800E86A8;                                /* unable to generate initializer; const */
+static ? gCharacterSelections;                                /* unable to generate initializer; const */
 static ? D_800E86AB;                                /* unable to generate initializer; const */
 static ? D_800E86AD;                                /* unable to generate initializer; const */
 static ? D_800EFD64;                                /* unable to generate initializer; const */
@@ -8780,7 +8780,7 @@ void func_8009F5E0(void *arg0) {
             case 0xB4:                              /* switch 3 */
                 temp_v0_6 = temp_t0 - 0xB1;
                 if (arg0->unk4 != 0) {
-                    temp_a2_5 = *(&D_800EFD64 + *(&D_800E86A8 + temp_v0_6));
+                    temp_a2_5 = *(&D_800EFD64 + *(&gCharacterSelections + temp_v0_6));
                     spA8 = temp_v0_6;
                     gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual(*(&D_800E7D54 + (temp_a2_5 * 4))), arg0->unkC, arg0->unk10);
                     func_8009A7EC(arg0->unk18, arg0->unkC, arg0->unk10, spA8, arg0->unk1C);
@@ -9023,7 +9023,7 @@ block_58:
             case 0x36:                              /* switch 4 */
             case 0x37:                              /* switch 4 */
                 temp_a1_7 = temp_t0 - 0x34;
-                if (*(&gCharacterSelections + temp_a1_7) != 0) {
+                if (*(&gCharacterGridSelections + temp_a1_7) != 0) {
                     if (*(&D_8018EDE8 + temp_a1_7) == 0) {
                         phi_a2_3 = 0xFF;
                     } else {
@@ -15012,14 +15012,14 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AAC18.s")
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_800AAF94(s32); // extern
-extern ? gCharacterSelections;
+extern ? gCharacterGridSelections;
 
 void func_800AADD4(void *arg0) {
     s32 temp_v0;
 
     temp_v0 = arg0->unk0 - 0x34;
     arg0->unk14 = 0xE - (temp_v0 * 2);
-    func_800AAF94(*(&gCharacterSelections + temp_v0) - 1);
+    func_800AAF94(*(&gCharacterGridSelections + temp_v0) - 1);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AADD4.s")
@@ -15168,7 +15168,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AAF94.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern s8 gCharacterSelections;
+extern s8 gCharacterGridSelections;
 
 s32 func_800AAFCC(s32 arg0) {
     s32 temp_v1;
@@ -15177,7 +15177,7 @@ s32 func_800AAFCC(s32 arg0) {
     s32 phi_v0;
     s32 phi_v1_2;
 
-    phi_a2 = &gCharacterSelections;
+    phi_a2 = &gCharacterGridSelections;
     phi_v1 = 0;
     phi_v0 = 0;
 loop_1:
@@ -16555,7 +16555,7 @@ static ? D_800E8380;                                /* unable to generate initia
 static ? D_800E83A0;                                /* unable to generate initializer; const */
 static ? D_800E8440;                                /* unable to generate initializer; const */
 static ? D_800E85F7;                                /* unable to generate initializer; const */
-static ? D_800E86A8;                                /* unable to generate initializer; const */
+static ? gCharacterSelections;                                /* unable to generate initializer; const */
 static ? D_800EFD64;                                /* unable to generate initializer; const */
 
 void func_800ACF40(void *arg0) {
@@ -16616,7 +16616,7 @@ block_11:
             temp_a0 = temp_a2 & 0xFF;
             sp24 = temp_a0;
             func_800CA24C(temp_a0);
-            func_800C90F4(temp_a0, (*(&D_800E86A8 + temp_a2) * 0x10) + 0x29008007, temp_a2);
+            func_800C90F4(temp_a0, (*(&gCharacterSelections + temp_a2) * 0x10) + 0x29008007, temp_a2);
             return;
         }
         /* Duplicate return node #18. Try simplifying control flow for better match */

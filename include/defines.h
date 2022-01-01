@@ -59,7 +59,7 @@
 /**
  * Character IDs
  * Note that these are not the same as the values
- * found in gCharacterSelections as those are more
+ * found in gCharacterGridSelections as those are more
  * akin to indexes than IDs
 **/
 #define MARIO  0

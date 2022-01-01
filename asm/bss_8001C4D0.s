@@ -2046,7 +2046,7 @@ glabel D_8018EDDC
 glabel D_8018EDE0
 .skip 4
 
-glabel gCharacterSelections # 0x8018EDE4
+glabel gCharacterGridSelections # 0x8018EDE4
 .skip 1
 
 glabel D_8018EDE5
