@@ -69,8 +69,8 @@ glabel func_800B15AC
 /* 0B22A8 800B16A8 AFA70018 */   sw    $a3, 0x18($sp)
 /* 0B22AC 800B16AC 3C058019 */  lui   $a1, %hi(gTimeTrialDataCourseIndex) # $a1, 0x8019
 /* 0B22B0 800B16B0 80A5EDF7 */  lb    $a1, %lo(gTimeTrialDataCourseIndex)($a1)
-/* 0B22B4 800B16B4 3C038019 */  lui   $v1, %hi(D_8018EDF8) # $v1, 0x8019
-/* 0B22B8 800B16B8 2463EDF8 */  addiu $v1, %lo(D_8018EDF8) # addiu $v1, $v1, -0x1208
+/* 0B22B4 800B16B4 3C038019 */  lui   $v1, %hi(gCourseRecordsMenuSelection) # $v1, 0x8019
+/* 0B22B8 800B16B8 2463EDF8 */  addiu $v1, %lo(gCourseRecordsMenuSelection) # addiu $v1, $v1, -0x1208
 /* 0B22BC 800B16BC 806E0000 */  lb    $t6, ($v1)
 /* 0B22C0 800B16C0 3C0D8019 */  lui   $t5, %hi(D_8018EB90) # $t5, 0x8019
 /* 0B22C4 800B16C4 25ADEB90 */  addiu $t5, %lo(D_8018EB90) # addiu $t5, $t5, -0x1470
@@ -102,8 +102,8 @@ glabel func_800B15AC
 /* 0B2324 800B1724 AFA70018 */  sw    $a3, 0x18($sp)
 /* 0B2328 800B1728 0C02D8E7 */  jal   func_800B639C
 /* 0B232C 800B172C AFA80024 */   sw    $t0, 0x24($sp)
-/* 0B2330 800B1730 3C038019 */  lui   $v1, %hi(D_8018EDF8) # $v1, 0x8019
-/* 0B2334 800B1734 2463EDF8 */  addiu $v1, %lo(D_8018EDF8) # addiu $v1, $v1, -0x1208
+/* 0B2330 800B1730 3C038019 */  lui   $v1, %hi(gCourseRecordsMenuSelection) # $v1, 0x8019
+/* 0B2334 800B1734 2463EDF8 */  addiu $v1, %lo(gCourseRecordsMenuSelection) # addiu $v1, $v1, -0x1208
 /* 0B2338 800B1738 8FA60028 */  lw    $a2, 0x28($sp)
 /* 0B233C 800B173C 8FA70018 */  lw    $a3, 0x18($sp)
 /* 0B2340 800B1740 04410004 */  bgez  $v0, .L800B1754
@@ -148,8 +148,8 @@ glabel func_800B15AC
 /* 0B23D0 800B17D0 3C01800F */  lui   $at, %hi(D_800F2D90)
 /* 0B23D4 800B17D4 D4262D90 */  ldc1  $f6, %lo(D_800F2D90)($at)
 /* 0B23D8 800B17D8 C4C40024 */  lwc1  $f4, 0x24($a2)
-/* 0B23DC 800B17DC 3C038019 */  lui   $v1, %hi(D_8018EDF8) # $v1, 0x8019
-/* 0B23E0 800B17E0 2463EDF8 */  addiu $v1, %lo(D_8018EDF8) # addiu $v1, $v1, -0x1208
+/* 0B23DC 800B17DC 3C038019 */  lui   $v1, %hi(gCourseRecordsMenuSelection) # $v1, 0x8019
+/* 0B23E0 800B17E0 2463EDF8 */  addiu $v1, %lo(gCourseRecordsMenuSelection) # addiu $v1, $v1, -0x1208
 /* 0B23E4 800B17E4 46002021 */  cvt.d.s $f0, $f4
 /* 0B23E8 800B17E8 8FA70018 */  lw    $a3, 0x18($sp)
 /* 0B23EC 800B17EC 4626003C */  c.lt.d $f0, $f6
@@ -195,8 +195,8 @@ glabel func_800B15AC
 /* 0B247C 800B187C AFA70018 */  sw    $a3, 0x18($sp)
 /* 0B2480 800B1880 0C02D8E7 */  jal   func_800B639C
 /* 0B2484 800B1884 AFA80024 */   sw    $t0, 0x24($sp)
-/* 0B2488 800B1888 3C038019 */  lui   $v1, %hi(D_8018EDF8) # $v1, 0x8019
-/* 0B248C 800B188C 2463EDF8 */  addiu $v1, %lo(D_8018EDF8) # addiu $v1, $v1, -0x1208
+/* 0B2488 800B1888 3C038019 */  lui   $v1, %hi(gCourseRecordsMenuSelection) # $v1, 0x8019
+/* 0B248C 800B188C 2463EDF8 */  addiu $v1, %lo(gCourseRecordsMenuSelection) # addiu $v1, $v1, -0x1208
 /* 0B2490 800B1890 8FA60028 */  lw    $a2, 0x28($sp)
 /* 0B2494 800B1894 8FA70018 */  lw    $a3, 0x18($sp)
 /* 0B2498 800B1898 8FA80024 */  lw    $t0, 0x24($sp)
@@ -221,8 +221,8 @@ glabel func_800B15AC
 /* 0B24D8 800B18D8 3C01800F */  lui   $at, %hi(D_800F2D98)
 /* 0B24DC 800B18DC D4242D98 */  ldc1  $f4, %lo(D_800F2D98)($at)
 /* 0B24E0 800B18E0 C4D20024 */  lwc1  $f18, 0x24($a2)
-/* 0B24E4 800B18E4 3C038019 */  lui   $v1, %hi(D_8018EDF8) # $v1, 0x8019
-/* 0B24E8 800B18E8 2463EDF8 */  addiu $v1, %lo(D_8018EDF8) # addiu $v1, $v1, -0x1208
+/* 0B24E4 800B18E4 3C038019 */  lui   $v1, %hi(gCourseRecordsMenuSelection) # $v1, 0x8019
+/* 0B24E8 800B18E8 2463EDF8 */  addiu $v1, %lo(gCourseRecordsMenuSelection) # addiu $v1, $v1, -0x1208
 /* 0B24EC 800B18EC 46009021 */  cvt.d.s $f0, $f18
 /* 0B24F0 800B18F0 8FA70018 */  lw    $a3, 0x18($sp)
 /* 0B24F4 800B18F4 4624003C */  c.lt.d $f0, $f4
@@ -377,8 +377,8 @@ glabel func_800B15AC
 /* 0B2724 800B1B24 53000043 */  beql  $t8, $zero, .L800B1C34
 /* 0B2728 800B1B28 8FBF0014 */   lw    $ra, 0x14($sp)
 /* 0B272C 800B1B2C 806A0000 */  lb    $t2, ($v1)
-/* 0B2730 800B1B30 3C038019 */  lui   $v1, %hi(D_8018EDF8) # $v1, 0x8019
-/* 0B2734 800B1B34 2463EDF8 */  addiu $v1, %lo(D_8018EDF8) # addiu $v1, $v1, -0x1208
+/* 0B2730 800B1B30 3C038019 */  lui   $v1, %hi(gCourseRecordsMenuSelection) # $v1, 0x8019
+/* 0B2734 800B1B34 2463EDF8 */  addiu $v1, %lo(gCourseRecordsMenuSelection) # addiu $v1, $v1, -0x1208
 /* 0B2738 800B1B38 11400034 */  beqz  $t2, .L800B1C0C
 /* 0B273C 800B1B3C 3C044900 */   lui   $a0, (0x49008002 >> 16)
 /* 0B2740 800B1B40 80620000 */  lb    $v0, ($v1)

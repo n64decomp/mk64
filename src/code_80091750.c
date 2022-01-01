@@ -2187,15 +2187,15 @@ void func_80095574(void) {
         phi_v0_2 = gDebugMenuSelection;
     }
     if (phi_v0_2 == DEBUG_MENU_DISABLED) {
-        gStartMenuCounterForDemos += 1;
+        gMenuTimingCounter += 1;
     } else {
-        gStartMenuCounterForDemos = 3;
+        gMenuTimingCounter = 3;
     }
-    temp_v0_2 = gStartMenuCounterForDemos;
+    temp_v0_2 = gMenuTimingCounter;
     phi_v0_3 = temp_v0_2;
     if (temp_v0_2 == 2) {
         play_sound2(0x49009009);
-        phi_v0_3 = gStartMenuCounterForDemos;
+        phi_v0_3 = gMenuTimingCounter;
     }
     if (phi_v0_3 >= 0x12D) {
         func_8009E230();
@@ -9621,7 +9621,7 @@ extern s32 D_800E7834;
 extern f32 D_800F1B54;
 extern ? D_8018EB90;
 extern s8 gTimeTrialDataCourseIndex;
-extern s8 D_8018EDF8;
+extern s8 gCourseRecordsMenuSelection;
 extern void *gDisplayListHead;
 
 void func_800A1BE0(s32 arg0) {
@@ -9644,7 +9644,7 @@ void func_800A1BE0(s32 arg0) {
     phi_s3 = &D_800E7834;
     do {
         phi_s1 = 0;
-        if (phi_s0 == D_8018EDF8) {
+        if (phi_s0 == gCourseRecordsMenuSelection) {
             phi_s2 = TEXT_BLUE_GREEN_RED_CYCLE_2;
         } else {
             phi_s2 = TEXT_GREEN;
@@ -9676,7 +9676,7 @@ block_9:
         phi_s3 += 4;
     } while (temp_s0 != 3);
     sp78 = 0x1F;
-    sp7A = (D_8018EDF8 * 0xD) + 0x3A;
+    sp7A = (gCourseRecordsMenuSelection * 0xD) + 0x3A;
     func_800A66A8(arg0, &sp78);
 }
 #else
@@ -9691,7 +9691,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A1BE0.s")
 extern s32 D_800E7840;
 extern ? D_800E7848;
 extern f32 D_800F1B58;
-extern s8 D_8018EDF8;
+extern s8 gCourseRecordsMenuSelection;
 extern s8 D_8018EDF9;
 
 void func_800A1DE0(s32 arg0) {
@@ -9712,7 +9712,7 @@ void func_800A1DE0(s32 arg0) {
     phi_s0 = 0x3C;
     phi_s1 = 0;
     do {
-        func_80093324(0x1B, phi_s0, (&D_800E7848 + (D_8018EDF8 * 0xC) + phi_s1)->unk-C, 0, temp_f20, temp_f20);
+        func_80093324(0x1B, phi_s0, (&D_800E7848 + (gCourseRecordsMenuSelection * 0xC) + phi_s1)->unk-C, 0, temp_f20, temp_f20);
         temp_s0 = phi_s0 + 0xD;
         phi_s0 = temp_s0;
         phi_s1 += 4;

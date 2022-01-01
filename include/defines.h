@@ -54,6 +54,7 @@
 #define STAR_CUP     2
 #define SPECIAL_CUP  3
 #define BATTLE_CUP   4
+#define NUM_CUPS     5
 
 /**
  * Character IDs
