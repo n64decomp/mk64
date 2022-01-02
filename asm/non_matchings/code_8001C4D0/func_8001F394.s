@@ -103,7 +103,7 @@ glabel L8001F4E0
 /* 0200F8 8001F4F8 3C063E4C */  lui   $a2, (0x3E4CCCCD >> 16) # $a2, 0x3e4c
 /* 0200FC 8001F4FC 34C6CCCD */  ori   $a2, (0x3E4CCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 020100 8001F500 3C0541A0 */  lui   $a1, 0x41a0
-/* 020104 8001F504 0C008973 */  jal   func_800225CC
+/* 020104 8001F504 0C008973 */  jal   move_f32_towards
 /* 020108 8001F508 AFA7001C */   sw    $a3, 0x1c($sp)
 /* 02010C 8001F50C 44806000 */  mtc1  $zero, $f12
 /* 020110 8001F510 10000092 */  b     .L8001F75C
@@ -138,7 +138,7 @@ glabel L8001F54C
 /* 020178 8001F578 3C063E4C */  lui   $a2, (0x3E4CCCCD >> 16) # $a2, 0x3e4c
 /* 02017C 8001F57C 34C6CCCD */  ori   $a2, (0x3E4CCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 020180 8001F580 3C054100 */  lui   $a1, 0x4100
-/* 020184 8001F584 0C008973 */  jal   func_800225CC
+/* 020184 8001F584 0C008973 */  jal   move_f32_towards
 /* 020188 8001F588 AFA7001C */   sw    $a3, 0x1c($sp)
 /* 02018C 8001F58C 44806000 */  mtc1  $zero, $f12
 /* 020190 8001F590 10000072 */  b     .L8001F75C
@@ -175,7 +175,7 @@ glabel L8001F5DC
 /* 020200 8001F600 3C0541A0 */   lui   $a1, 0x41a0
 /* 020204 8001F604 3C063DCC */  lui   $a2, (0x3DCCCCCD >> 16) # $a2, 0x3dcc
 /* 020208 8001F608 34C6CCCD */  ori   $a2, (0x3DCCCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
-/* 02020C 8001F60C 0C008973 */  jal   func_800225CC
+/* 02020C 8001F60C 0C008973 */  jal   move_f32_towards
 /* 020210 8001F610 AFA7001C */   sw    $a3, 0x1c($sp)
 /* 020214 8001F614 44806000 */  mtc1  $zero, $f12
 /* 020218 8001F618 10000050 */  b     .L8001F75C
@@ -208,8 +208,8 @@ glabel L8001F654
 /* 020278 8001F678 3C0541C8 */  lui   $a1, 0x41c8
 /* 02027C 8001F67C AFA7001C */  sw    $a3, 0x1c($sp)
 /* 020280 8001F680 44061000 */  mfc1  $a2, $f2
-/* 020284 8001F684 0C008973 */  jal   func_800225CC
-/* 020288 8001F688 00000000 */   nop
+/* 020284 8001F684 0C008973 */  jal   move_f32_towards
+/* 020288 8001F688 00000000 */   nop   
 /* 02028C 8001F68C 44806000 */  mtc1  $zero, $f12
 /* 020290 8001F690 10000032 */  b     .L8001F75C
 /* 020294 8001F694 8FA7001C */   lw    $a3, 0x1c($sp)
@@ -246,7 +246,7 @@ glabel L8001F6D8
 /* 020300 8001F700 3C063E4C */   lui   $a2, (0x3E4CCCCD >> 16) # lui $a2, 0x3e4c
 /* 020304 8001F704 34C6CCCD */  ori   $a2, (0x3E4CCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 020308 8001F708 3C054190 */  lui   $a1, 0x4190
-/* 02030C 8001F70C 0C008973 */  jal   func_800225CC
+/* 02030C 8001F70C 0C008973 */  jal   move_f32_towards
 /* 020310 8001F710 AFA7001C */   sw    $a3, 0x1c($sp)
 /* 020314 8001F714 44806000 */  mtc1  $zero, $f12
 /* 020318 8001F718 10000010 */  b     .L8001F75C
