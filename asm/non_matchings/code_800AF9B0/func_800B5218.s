@@ -76,7 +76,7 @@ glabel func_800B5218
 /* 0B5F2C 800B532C 2444000F */  addiu $a0, $v0, 0xf
 /* 0B5F30 800B5330 AFA20020 */  sw    $v0, 0x20($sp)
 /* 0B5F34 800B5334 8FA60028 */  lw    $a2, 0x28($sp)
-/* 0B5F38 800B5338 0C02D373 */  jal   func_800B4DCC
+/* 0B5F38 800B5338 0C02D373 */  jal   write_time_trial_record
 /* 0B5F3C 800B533C AFA70024 */   sw    $a3, 0x24($sp)
 /* 0B5F40 800B5340 8FA20020 */  lw    $v0, 0x20($sp)
 /* 0B5F44 800B5344 240D0001 */  li    $t5, 1

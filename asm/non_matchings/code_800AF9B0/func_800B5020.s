@@ -118,7 +118,7 @@ glabel func_800B5020
 .L800B51D0:
 /* 0B5DD0 800B51D0 00E02025 */  move  $a0, $a3
 /* 0B5DD4 800B51D4 02A02825 */  move  $a1, $s5
-/* 0B5DD8 800B51D8 0C02D373 */  jal   func_800B4DCC
+/* 0B5DD8 800B51D8 0C02D373 */  jal   write_time_trial_record
 /* 0B5DDC 800B51DC 8FA60044 */   lw    $a2, 0x44($sp)
 /* 0B5DE0 800B51E0 240B0001 */  li    $t3, 1
 /* 0B5DE4 800B51E4 A24B0012 */  sb    $t3, 0x12($s2)
