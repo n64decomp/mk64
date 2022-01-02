@@ -1,4 +1,4 @@
-glabel func_8009E650
+glabel add_8018D9E0_entry
 /* 09F250 8009E650 27BDFF80 */  addiu $sp, $sp, -0x80
 /* 09F254 8009E654 AFBF001C */  sw    $ra, 0x1c($sp)
 /* 09F258 8009E658 AFA7008C */  sw    $a3, 0x8c($sp)
