@@ -111,7 +111,7 @@ Lights1 D_800DC610[] = {
 };
 static s32 pad = 0x80000000;
 s16 gCreditsCourseId = COURSE_LUIGI_RACEWAY;
-s16 D_800DC648 = 1;
+s16 gPlaceItemBoxes = 1;
 
 void func_800029B0(void) {
     switch(D_800DC5A8) {

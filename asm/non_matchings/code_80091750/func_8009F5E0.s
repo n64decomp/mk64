@@ -597,10 +597,10 @@ glabel L8009FD90
 glabel L8009FE9C
 /* 0A0A9C 8009FE9C 3C028019 */  lui   $v0, %hi(D_8018EDF3) # $v0, 0x8019
 /* 0A0AA0 8009FEA0 8042EDF3 */  lb    $v0, %lo(D_8018EDF3)($v0)
-/* 0A0AA4 8009FEA4 3C03800F */  lui   $v1, %hi(D_800E86AB) # 0x800f
-/* 0A0AA8 8009FEA8 3C06800F */  lui   $a2, %hi(D_800E86AD) # 0x800f
+/* 0A0AA4 8009FEA4 3C03800F */  lui   $v1, %hi(gGameTypeRowSelectionForNumPlayers) # 0x800f
+/* 0A0AA8 8009FEA8 3C06800F */  lui   $a2, %hi(gGameTypeSubMenuRowSelectionForNumPlayers) # 0x800f
 /* 0A0AAC 8009FEAC 00621821 */  addu  $v1, $v1, $v0
-/* 0A0AB0 8009FEB0 806386AB */  lb    $v1, %lo(D_800E86AB)($v1) # -0x7955($v1)
+/* 0A0AB0 8009FEB0 806386AB */  lb    $v1, %lo(gGameTypeRowSelectionForNumPlayers)($v1) # -0x7955($v1)
 /* 0A0AB4 8009FEB4 00026880 */  sll   $t5, $v0, 2
 /* 0A0AB8 8009FEB8 00025880 */  sll   $t3, $v0, 2
 /* 0A0ABC 8009FEBC 01A26823 */  subu  $t5, $t5, $v0
@@ -608,15 +608,15 @@ glabel L8009FE9C
 /* 0A0AC4 8009FEC4 01625823 */  subu  $t3, $t3, $v0
 /* 0A0AC8 8009FEC8 00037080 */  sll   $t6, $v1, 2
 /* 0A0ACC 8009FECC 01AE7821 */  addu  $t7, $t5, $t6
-/* 0A0AD0 8009FED0 3C05800F */  lui   $a1, %hi(D_800F2B70) # 0x800f
+/* 0A0AD0 8009FED0 3C05800F */  lui   $a1, %hi(gGameModeFromNumPlayersAndGameTypeRowSelection) # 0x800f
 /* 0A0AD4 8009FED4 2518FFEE */  addiu $t8, $t0, -0x12
 /* 0A0AD8 8009FED8 01636021 */  addu  $t4, $t3, $v1
 /* 0A0ADC 8009FEDC 00CC3021 */  addu  $a2, $a2, $t4
 /* 0A0AE0 8009FEE0 00AF2821 */  addu  $a1, $a1, $t7
 /* 0A0AE4 8009FEE4 2F010008 */  sltiu $at, $t8, 8
-/* 0A0AE8 8009FEE8 80C686AD */  lb    $a2, %lo(D_800E86AD)($a2) # -0x7953($a2)
+/* 0A0AE8 8009FEE8 80C686AD */  lb    $a2, %lo(gGameTypeSubMenuRowSelectionForNumPlayers)($a2) # -0x7953($a2)
 /* 0A0AEC 8009FEEC 10200037 */  beqz  $at, .L8009FFCC
-/* 0A0AF0 8009FEF0 8CA52B70 */   lw    $a1, %lo(D_800F2B70)($a1) # 0x2b70($a1)
+/* 0A0AF0 8009FEF0 8CA52B70 */   lw    $a1, %lo(gGameModeFromNumPlayersAndGameTypeRowSelection)($a1) # 0x2b70($a1)
 /* 0A0AF4 8009FEF4 0018C080 */  sll   $t8, $t8, 2
 /* 0A0AF8 8009FEF8 3C01800F */  lui   $at, %hi(jpt_800F1AD0)
 /* 0A0AFC 8009FEFC 00380821 */  addu  $at, $at, $t8

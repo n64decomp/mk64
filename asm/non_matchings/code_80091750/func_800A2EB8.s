@@ -228,15 +228,15 @@ glabel func_800A2EB8
 /* 0A3E1C 800A321C 0C024DBB */  jal   draw_text
 /* 0A3E20 800A3220 248400F5 */   addiu $a0, $a0, 0xf5
 /* 0A3E24 800A3224 82E20000 */  lb    $v0, ($s7)
-/* 0A3E28 800A3228 3C0F800F */  lui   $t7, %hi(D_800E86AB) # 0x800f
-/* 0A3E2C 800A322C 3C19800F */  lui   $t9, %hi(D_800E86AD) # 0x800f
+/* 0A3E28 800A3228 3C0F800F */  lui   $t7, %hi(gGameTypeRowSelectionForNumPlayers) # 0x800f
+/* 0A3E2C 800A322C 3C19800F */  lui   $t9, %hi(gGameTypeSubMenuRowSelectionForNumPlayers) # 0x800f
 /* 0A3E30 800A3230 01E27821 */  addu  $t7, $t7, $v0
-/* 0A3E34 800A3234 81EF86AB */  lb    $t7, %lo(D_800E86AB)($t7) # -0x7955($t7)
+/* 0A3E34 800A3234 81EF86AB */  lb    $t7, %lo(gGameTypeRowSelectionForNumPlayers)($t7) # -0x7955($t7)
 /* 0A3E38 800A3238 00027080 */  sll   $t6, $v0, 2
 /* 0A3E3C 800A323C 01C27023 */  subu  $t6, $t6, $v0
 /* 0A3E40 800A3240 01CFC021 */  addu  $t8, $t6, $t7
 /* 0A3E44 800A3244 0338C821 */  addu  $t9, $t9, $t8
-/* 0A3E48 800A3248 833986AD */  lb    $t9, %lo(D_800E86AD)($t9) # -0x7953($t9)
+/* 0A3E48 800A3248 833986AD */  lb    $t9, %lo(gGameTypeSubMenuRowSelectionForNumPlayers)($t9) # -0x7953($t9)
 /* 0A3E4C 800A324C 8E8D000C */  lw    $t5, 0xc($s4)
 /* 0A3E50 800A3250 3C01800F */  lui   $at, %hi(D_800F1CA0) # $at, 0x800f
 /* 0A3E54 800A3254 C4201CA0 */  lwc1  $f0, %lo(D_800F1CA0)($at)
