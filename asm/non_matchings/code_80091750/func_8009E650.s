@@ -852,8 +852,8 @@ glabel L8009F264
 /* 09FECC 8009F2CC 10000009 */  b     .L8009F2F4
 /* 09FED0 8009F2D0 24030001 */   li    $v1, 1
 .L8009F2D4:
-/* 09FED4 8009F2D4 3C0F800E */  lui   $t7, %hi(gWinningPlayerIndex) # $t7, 0x800e
-/* 09FED8 8009F2D8 8DEFC5E8 */  lw    $t7, %lo(gWinningPlayerIndex)($t7)
+/* 09FED4 8009F2D4 3C0F800E */  lui   $t7, %hi(gPlayerWinningIndex) # $t7, 0x800e
+/* 09FED8 8009F2D8 8DEFC5E8 */  lw    $t7, %lo(gPlayerWinningIndex)($t7)
 /* 09FEDC 8009F2DC 8FAE0080 */  lw    $t6, 0x80($sp)
 /* 09FEE0 8009F2E0 0006C080 */  sll   $t8, $a2, 2
 /* 09FEE4 8009F2E4 25F900B1 */  addiu $t9, $t7, 0xb1

@@ -73,7 +73,7 @@ extern u16 D_80162DD4[];
 extern u16 D_8015F890;
 extern u32 D_800DC5AC;
 extern u16 gEnableDebugMode;
-extern s32 gWinningPlayerIndex;
+extern s32 gPlayerWinningIndex;
 extern u16 gIsInQuitToMenuTransition, gQuitToMenuTransitionCounter;
 extern s32 D_802B91E0;
 extern s16 D_8015F8F2[];
@@ -152,16 +152,16 @@ void func_8028E028(void) {
 
     switch(gPlayerCountSelection1) {
         case 2:
-            *(D_8015F8C4 + gWinningPlayerIndex) += 1;
+            *(D_8015F8C4 + gPlayerWinningIndex) += 1;
             break;
         case 3:
-            *(D_8015F8C8 + gWinningPlayerIndex) += 1;
+            *(D_8015F8C8 + gPlayerWinningIndex) += 1;
             break;
         case 4:
-            *(D_8015F8CC + gWinningPlayerIndex) += 1;
+            *(D_8015F8CC + gPlayerWinningIndex) += 1;
             break;
     }
-    func_800CA118((u8) gWinningPlayerIndex);
+    func_800CA118((u8) gPlayerWinningIndex);
     D_800DC510 = 5;
     D_802BA038 = 10;
 }
@@ -195,10 +195,10 @@ void update_player_battle_status(void) {
         }
     }
     if (aliveCounter == 1) {
-        gWinningPlayerIndex = (s32) playersAlive[0];
+        gPlayerWinningIndex = (s32) playersAlive[0];
         func_8028E028();
     } else if (aliveCounter == 0) {
-        gWinningPlayerIndex = (s32) playersDead[0];
+        gPlayerWinningIndex = (s32) playersDead[0];
         func_8028E028();
     }
 }
@@ -249,7 +249,7 @@ void func_8028E3A0(void) {
 }
 
 void func_8028E438(void) {
-    struct UnkStruct_800DC5EC *temp_v0 = &D_8015F480[gWinningPlayerIndex];
+    struct UnkStruct_800DC5EC *temp_v0 = &D_8015F480[gPlayerWinningIndex];
     s32 phi_v1_4;
 
     D_800DC5B0 = 1;
@@ -648,7 +648,7 @@ void func_8028EF28(void) {
                     if (gModeSelection == VERSUS) {
                         D_802BA038 = 180;
                         if (currentPosition == 0) {
-                            gWinningPlayerIndex = i;
+                            gPlayerWinningIndex = i;
                         }
                         switch(gPlayerCountSelection1) {
                             case 2:
@@ -729,7 +729,7 @@ void func_8028F3E8(void) {
 
 }
 extern s32 gPlayerPositions[]; // D_801643B8 (position for each player)
-extern s16 gPlayerPositionLookup[]; // D_8015F8F0 (player index at each position)
+extern s16 gPlayerPositionLUT[]; // D_8015F8F0 (player index at each position)
 
 // func_8028F3F0
 void update_race_position_data(void) {
@@ -742,7 +742,7 @@ void update_race_position_data(void) {
             ((gPlayers[i].unk_000 & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
             position = gPlayerPositions[i];
             gPlayers[i].unk_004 = position;
-            gPlayerPositionLookup[position] = i;
+            gPlayerPositionLUT[position] = i;
         }
     }
 }
@@ -1163,9 +1163,9 @@ void func_8028FCBC(void) {
 
 
                                 if (gPlayerOne->unk_004 < gPlayerTwo->unk_004) {
-                                    gWinningPlayerIndex = 1;
+                                    gPlayerWinningIndex = 1;
                                 } else {
-                                    gWinningPlayerIndex = 0;
+                                    gPlayerWinningIndex = 0;
                                 }
 
                                 func_8028E298();

@@ -55,8 +55,8 @@ glabel func_800A69C8
 /* 0A7690 800A6A90 10000009 */  b     .L800A6AB8
 /* 0A7694 800A6A94 0330A021 */   addu  $s4, $t9, $s0
 .L800A6A98:
-/* 0A7698 800A6A98 3C08800E */  lui   $t0, %hi(gWinningPlayerIndex) # $t0, 0x800e
-/* 0A769C 800A6A9C 8D08C5E8 */  lw    $t0, %lo(gWinningPlayerIndex)($t0)
+/* 0A7698 800A6A98 3C08800E */  lui   $t0, %hi(gPlayerWinningIndex) # $t0, 0x800e
+/* 0A769C 800A6A9C 8D08C5E8 */  lw    $t0, %lo(gPlayerWinningIndex)($t0)
 /* 0A76A0 800A6AA0 3C098016 */  lui   $t1, %hi(D_8015F8C4) # $t1, 0x8016
 /* 0A76A4 800A6AA4 12080002 */  beq   $s0, $t0, .L800A6AB0
 /* 0A76A8 800A6AA8 00000000 */   nop

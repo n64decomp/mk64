@@ -65,7 +65,7 @@ glabel L800AD01C
 /* 0ADC30 800AD030 00065880 */   sll   $t3, $a2, 2
 /* 0ADC34 800AD034 24010003 */  li    $at, 3
 /* 0ADC38 800AD038 1041000A */  beq   $v0, $at, .L800AD064
-/* 0ADC3C 800AD03C 3C0D800E */   lui   $t5, %hi(gWinningPlayerIndex) # $t5, 0x800e
+/* 0ADC3C 800AD03C 3C0D800E */   lui   $t5, %hi(gPlayerWinningIndex) # $t5, 0x800e
 /* 0ADC40 800AD040 1000000C */  b     .L800AD074
 /* 0ADC44 800AD044 00000000 */   nop
 .L800AD048:
@@ -77,7 +77,7 @@ glabel L800AD01C
 /* 0ADC5C 800AD05C 10000005 */  b     .L800AD074
 /* 0ADC60 800AD060 24030001 */   li    $v1, 1
 .L800AD064:
-/* 0ADC64 800AD064 8DADC5E8 */  lw    $t5, %lo(gWinningPlayerIndex)($t5)
+/* 0ADC64 800AD064 8DADC5E8 */  lw    $t5, %lo(gPlayerWinningIndex)($t5)
 /* 0ADC68 800AD068 10CD0002 */  beq   $a2, $t5, .L800AD074
 /* 0ADC6C 800AD06C 00000000 */   nop
 /* 0ADC70 800AD070 24030001 */  li    $v1, 1

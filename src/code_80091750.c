@@ -8195,7 +8195,7 @@ loop_3:
                     temp_t8 = arg0 * 4;
                     phi_a2 = temp_t8;
                     phi_a2 = temp_t8;
-                    if (arg0 != (gWinningPlayerIndex + 0xB1)) {
+                    if (arg0 != (gPlayerWinningIndex + 0xB1)) {
                         goto block_63;
                     }
                 }
@@ -12242,7 +12242,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A66A8.s")
 ? func_800A79F4(u8, ? *); // extern
 ? set_text_color(s32); // extern
 ? text_draw(s32, s32, ? *, ?, f32, f32); // extern
-extern s32 gWinningPlayerIndex;
+extern s32 gPlayerWinningIndex;
 extern ? D_800E7300;
 extern s16 D_800E7302;
 extern ? D_800E7380;
@@ -12281,7 +12281,7 @@ void func_800A69C8(s32 arg0) {
                 if (temp_v0 != BATTLE) {
 
                 } else {
-                    if (phi_s0 != gWinningPlayerIndex) {
+                    if (phi_s0 != gPlayerWinningIndex) {
                         phi_v1 = 1;
                     }
                     phi_s4 = D_8015F8C4 + phi_s0;
@@ -12402,7 +12402,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A6CC0.s")
 ? func_800A79F4(s32, ? *); // extern
 ? set_text_color(s32); // extern
 ? text_draw(s32, s32, ? *, ?, f32, f32); // extern
-extern s32 gWinningPlayerIndex;
+extern s32 gPlayerWinningIndex;
 extern ? D_800E7300;
 
 void func_800A6D94(s32 arg0, s32 arg1, s32 arg2) {
@@ -12412,7 +12412,7 @@ void func_800A6D94(s32 arg0, s32 arg1, s32 arg2) {
     s32 phi_v0;
 
     phi_v0 = 0;
-    if (arg1 != gWinningPlayerIndex) {
+    if (arg1 != gPlayerWinningIndex) {
         phi_v0 = 1;
     }
     sp24 = *(arg2 + arg1);
@@ -16602,7 +16602,7 @@ void func_800ACF40(void *arg0) {
         if (temp_v0_3 != 2) {
             if (temp_v0_3 != 3) {
 
-            } else if (temp_a2 != gWinningPlayerIndex) {
+            } else if (temp_a2 != gPlayerWinningIndex) {
                 goto block_11;
             }
         } else if (*(&gPlayerPositions + (temp_a2 * 4)) != 0) {

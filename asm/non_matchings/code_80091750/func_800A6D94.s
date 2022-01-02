@@ -1,6 +1,6 @@
 glabel func_800A6D94
-/* 0A7994 800A6D94 3C0F800E */  lui   $t7, %hi(gWinningPlayerIndex) # $t7, 0x800e
-/* 0A7998 800A6D98 8DEFC5E8 */  lw    $t7, %lo(gWinningPlayerIndex)($t7)
+/* 0A7994 800A6D94 3C0F800E */  lui   $t7, %hi(gPlayerWinningIndex) # $t7, 0x800e
+/* 0A7998 800A6D98 8DEFC5E8 */  lw    $t7, %lo(gPlayerWinningIndex)($t7)
 /* 0A799C 800A6D9C 27BDFFC0 */  addiu $sp, $sp, -0x40
 /* 0A79A0 800A6DA0 AFBF001C */  sw    $ra, 0x1c($sp)
 /* 0A79A4 800A6DA4 AFA40040 */  sw    $a0, 0x40($sp)
