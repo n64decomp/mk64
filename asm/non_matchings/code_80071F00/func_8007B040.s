@@ -97,12 +97,12 @@ glabel func_8007B040
 /* 07BDA0 8007B1A0 01993821 */  addu  $a3, $t4, $t9
 /* 07BDA4 8007B1A4 0303C023 */  subu  $t8, $t8, $v1
 /* 07BDA8 8007B1A8 0018C100 */  sll   $t8, $t8, 4
-/* 07BDAC 8007B1AC 3C19800E */  lui   $t9, %hi(D_800DC4DC) # $t9, 0x800e
+/* 07BDAC 8007B1AC 3C19800E */  lui   $t9, %hi(gPlayerOne) # $t9, 0x800e
 /* 07BDB0 8007B1B0 A0E300D1 */  sb    $v1, 0xd1($a3)
 /* 07BDB4 8007B1B4 0303C023 */  subu  $t8, $t8, $v1
 /* 07BDB8 8007B1B8 A4E800A2 */  sh    $t0, 0xa2($a3)
 /* 07BDBC 8007B1BC A0E800D2 */  sb    $t0, 0xd2($a3)
-/* 07BDC0 8007B1C0 8F39C4DC */  lw    $t9, %lo(D_800DC4DC)($t9)
+/* 07BDC0 8007B1C0 8F39C4DC */  lw    $t9, %lo(gPlayerOne)($t9)
 /* 07BDC4 8007B1C4 3C068018 */  lui   $a2, %hi(D_80183E88) # 0x8018
 /* 07BDC8 8007B1C8 0018C080 */  sll   $t8, $t8, 2
 /* 07BDCC 8007B1CC 00037880 */  sll   $t7, $v1, 2

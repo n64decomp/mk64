@@ -29,10 +29,10 @@ glabel func_8004F3E4
 /* 05004C 8004F44C 2631FFFF */  addiu $s1, $s1, -1
 /* 050050 8004F450 0620001A */  bltz  $s1, .L8004F4BC
 /* 050054 8004F454 00117040 */   sll   $t6, $s1, 1
-/* 050058 8004F458 3C12800E */  lui   $s2, %hi(D_800DC4DC) # $s2, 0x800e
+/* 050058 8004F458 3C12800E */  lui   $s2, %hi(gPlayerOne) # $s2, 0x800e
 /* 05005C 8004F45C 3C118016 */  lui   $s1, %hi(D_80164360) # $s1, 0x8016
 /* 050060 8004F460 26314360 */  addiu $s1, %lo(D_80164360) # addiu $s1, $s1, 0x4360
-/* 050064 8004F464 2652C4DC */  addiu $s2, %lo(D_800DC4DC) # addiu $s2, $s2, -0x3b24
+/* 050064 8004F464 2652C4DC */  addiu $s2, %lo(gPlayerOne) # addiu $s2, $s2, -0x3b24
 /* 050068 8004F468 01CF8021 */  addu  $s0, $t6, $t7
 /* 05006C 8004F46C 24130DD8 */  li    $s3, 3544
 /* 050070 8004F470 86050000 */  lh    $a1, ($s0)
@@ -57,8 +57,8 @@ glabel func_8004F3E4
 /* 0500B4 8004F4B4 8E31D158 */  lw    $s1, %lo(D_8018D158)($s1)
 /* 0500B8 8004F4B8 2631FFFF */  addiu $s1, $s1, -1
 .L8004F4BC:
-/* 0500BC 8004F4BC 3C12800E */  lui   $s2, %hi(D_800DC4DC) # $s2, 0x800e
-/* 0500C0 8004F4C0 2652C4DC */  addiu $s2, %lo(D_800DC4DC) # addiu $s2, $s2, -0x3b24
+/* 0500BC 8004F4BC 3C12800E */  lui   $s2, %hi(gPlayerOne) # $s2, 0x800e
+/* 0500C0 8004F4C0 2652C4DC */  addiu $s2, %lo(gPlayerOne) # addiu $s2, $s2, -0x3b24
 /* 0500C4 8004F4C4 06200063 */  bltz  $s1, .L8004F654
 /* 0500C8 8004F4C8 24130DD8 */   li    $s3, 3544
 /* 0500CC 8004F4CC 00115840 */  sll   $t3, $s1, 1
@@ -76,7 +76,7 @@ glabel func_8004F3E4
 /* 0500F8 8004F4F8 944F0000 */  lhu   $t7, ($v0)
 /* 0500FC 8004F4FC 31F81000 */  andi  $t8, $t7, 0x1000
 /* 050100 8004F500 12380003 */  beq   $s1, $t8, .L8004F510
-/* 050104 8004F504 00000000 */   nop   
+/* 050104 8004F504 00000000 */   nop
 /* 050108 8004F508 0C013C5A */  jal   func_8004F168
 /* 05010C 8004F50C 94460254 */   lhu   $a2, 0x254($v0)
 .L8004F510:
@@ -89,8 +89,8 @@ glabel func_8004F3E4
 /* 050128 8004F528 1000004B */  b     .L8004F658
 /* 05012C 8004F52C 8FBF002C */   lw    $ra, 0x2c($sp)
 .L8004F530:
-/* 050130 8004F530 3C02800E */  lui   $v0, %hi(D_800DC4DC) # $v0, 0x800e
-/* 050134 8004F534 8C42C4DC */  lw    $v0, %lo(D_800DC4DC)($v0)
+/* 050130 8004F530 3C02800E */  lui   $v0, %hi(gPlayerOne) # $v0, 0x800e
+/* 050134 8004F534 8C42C4DC */  lw    $v0, %lo(gPlayerOne)($v0)
 /* 050138 8004F538 00008025 */  move  $s0, $zero
 /* 05013C 8004F53C 24130008 */  li    $s3, 8
 /* 050140 8004F540 24120100 */  li    $s2, 256
@@ -104,8 +104,8 @@ glabel func_8004F3E4
 /* 05015C 8004F55C 26310001 */   addiu $s1, $s1, 1
 /* 050160 8004F560 0C013C5A */  jal   func_8004F168
 /* 050164 8004F564 02603025 */   move  $a2, $s3
-/* 050168 8004F568 3C02800E */  lui   $v0, %hi(D_800DC4DC) # $v0, 0x800e
-/* 05016C 8004F56C 8C42C4DC */  lw    $v0, %lo(D_800DC4DC)($v0)
+/* 050168 8004F568 3C02800E */  lui   $v0, %hi(gPlayerOne) # $v0, 0x800e
+/* 05016C 8004F56C 8C42C4DC */  lw    $v0, %lo(gPlayerOne)($v0)
 /* 050170 8004F570 26310001 */  addiu $s1, $s1, 1
 .L8004F574:
 /* 050174 8004F574 1633FFF3 */  bne   $s1, $s3, .L8004F544
@@ -123,10 +123,10 @@ glabel func_8004F3E4
 /* 0501A0 8004F5A0 2631FFFF */  addiu $s1, $s1, -1
 /* 0501A4 8004F5A4 0620002B */  bltz  $s1, .L8004F654
 /* 0501A8 8004F5A8 00115840 */   sll   $t3, $s1, 1
-/* 0501AC 8004F5AC 3C12800E */  lui   $s2, %hi(D_800DC4DC) # $s2, 0x800e
+/* 0501AC 8004F5AC 3C12800E */  lui   $s2, %hi(gPlayerOne) # $s2, 0x800e
 /* 0501B0 8004F5B0 3C118016 */  lui   $s1, %hi(D_80164360) # $s1, 0x8016
 /* 0501B4 8004F5B4 26314360 */  addiu $s1, %lo(D_80164360) # addiu $s1, $s1, 0x4360
-/* 0501B8 8004F5B8 2652C4DC */  addiu $s2, %lo(D_800DC4DC) # addiu $s2, $s2, -0x3b24
+/* 0501B8 8004F5B8 2652C4DC */  addiu $s2, %lo(gPlayerOne) # addiu $s2, $s2, -0x3b24
 /* 0501BC 8004F5BC 016C8021 */  addu  $s0, $t3, $t4
 /* 0501C0 8004F5C0 24130DD8 */  li    $s3, 3544
 /* 0501C4 8004F5C4 86050000 */  lh    $a1, ($s0)
@@ -149,8 +149,8 @@ glabel func_8004F3E4
 /* 050200 8004F600 00008825 */  move  $s1, $zero
 /* 050204 8004F604 00008025 */  move  $s0, $zero
 /* 050208 8004F608 18600012 */  blez  $v1, .L8004F654
-/* 05020C 8004F60C 3C12800E */   lui   $s2, %hi(D_800DC4DC) # $s2, 0x800e
-/* 050210 8004F610 2652C4DC */  addiu $s2, %lo(D_800DC4DC) # addiu $s2, $s2, -0x3b24
+/* 05020C 8004F60C 3C12800E */   lui   $s2, %hi(gPlayerOne) # $s2, 0x800e
+/* 050210 8004F610 2652C4DC */  addiu $s2, %lo(gPlayerOne) # addiu $s2, $s2, -0x3b24
 .L8004F614:
 /* 050214 8004F614 8E580000 */  lw    $t8, ($s2)
 /* 050218 8004F618 02802025 */  move  $a0, $s4

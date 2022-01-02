@@ -13,13 +13,13 @@ glabel func_802B3FD0
 /* 11D60C 802B3FFC 3C01802C */  lui   $at, %hi(D_802B9F68) # $at, 0x802c
 /* 11D610 802B4000 3C10800F */  lui   $s0, %hi(gPlayers) # $s0, 0x800f
 /* 11D614 802B4004 3C158019 */  lui   $s5, %hi(gPlayerBalloonCount) # $s5, 0x8019
-/* 11D618 802B4008 3C16800E */  lui   $s6, %hi(D_800DC4DC) # $s6, 0x800e
+/* 11D618 802B4008 3C16800E */  lui   $s6, %hi(gPlayerOne) # $s6, 0x800e
 /* 11D61C 802B400C 00809025 */  move  $s2, $a0
 /* 11D620 802B4010 00A09825 */  move  $s3, $a1
 /* 11D624 802B4014 AFBF0044 */  sw    $ra, 0x44($sp)
 /* 11D628 802B4018 241EFFFF */  li    $fp, -1
 /* 11D62C 802B401C C4349F68 */  lwc1  $f20, %lo(D_802B9F68)($at)
-/* 11D630 802B4020 26D6C4DC */  addiu $s6, %lo(D_800DC4DC) # addiu $s6, $s6, -0x3b24
+/* 11D630 802B4020 26D6C4DC */  addiu $s6, %lo(gPlayerOne) # addiu $s6, $s6, -0x3b24
 /* 11D634 802B4024 26B5D8C0 */  addiu $s5, %lo(gPlayerBalloonCount) # addiu $s5, $s5, -0x2740
 /* 11D638 802B4028 26106990 */  addiu $s0, %lo(gPlayers) # addiu $s0, $s0, 0x6990
 /* 11D63C 802B402C 00008825 */  move  $s1, $zero

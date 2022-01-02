@@ -6,8 +6,8 @@ glabel func_800797AC
 /* 07A3BC 800797BC 3C19800E */  lui   $t9, %hi(gCurrentCourseId) # $t9, 0x800e
 /* 07A3C0 800797C0 8739C5A0 */  lh    $t9, %lo(gCurrentCourseId)($t9)
 /* 07A3C4 800797C4 000F7880 */  sll   $t7, $t7, 2
-/* 07A3C8 800797C8 3C18800E */  lui   $t8, %hi(D_800DC4DC) # $t8, 0x800e
-/* 07A3CC 800797CC 8F18C4DC */  lw    $t8, %lo(D_800DC4DC)($t8)
+/* 07A3C8 800797C8 3C18800E */  lui   $t8, %hi(gPlayerOne) # $t8, 0x800e
+/* 07A3CC 800797CC 8F18C4DC */  lw    $t8, %lo(gPlayerOne)($t8)
 /* 07A3D0 800797D0 00047080 */  sll   $t6, $a0, 2
 /* 07A3D4 800797D4 3C068018 */  lui   $a2, %hi(D_80183DB8) # 0x8018
 /* 07A3D8 800797D8 01E47823 */  subu  $t7, $t7, $a0
@@ -46,4 +46,4 @@ glabel func_800797AC
 /* 07A450 80079850 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 07A454 80079854 27BD0020 */  addiu $sp, $sp, 0x20
 /* 07A458 80079858 03E00008 */  jr    $ra
-/* 07A45C 8007985C 00000000 */   nop   
+/* 07A45C 8007985C 00000000 */   nop
