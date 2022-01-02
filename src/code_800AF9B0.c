@@ -51,7 +51,6 @@ extern s8          D_8018ED16;
 extern s8          D_8018ED17;
 extern u32         D_8018EDB8;
 extern u32         D_8018EDBC;
-extern s8          gCharacterGridSelections; // D_8018EDE4
 extern s8          D_8018EDE5;
 extern s8          D_8018EDE6;
 extern s8          D_8018EDE7;
@@ -2334,7 +2333,7 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B29D8.s")
 #endif
 
 s32 func_800B34E8(s32 arg0) {
-    if (arg0 == gCharacterGridSelections) {
+    if (arg0 == gCharacterGridSelections[0]) {
         return 0;
     }
     if (arg0 == D_8018EDE5) {
