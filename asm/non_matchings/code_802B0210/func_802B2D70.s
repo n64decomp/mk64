@@ -1,6 +1,6 @@
 glabel func_802B2D70
-/* 11C380 802B2D70 3C0E800E */  lui   $t6, %hi(D_800DC4DC) # $t6, 0x800e
-/* 11C384 802B2D74 8DCEC4DC */  lw    $t6, %lo(D_800DC4DC)($t6)
+/* 11C380 802B2D70 3C0E800E */  lui   $t6, %hi(gPlayerOne) # $t6, 0x800e
+/* 11C384 802B2D74 8DCEC4DC */  lw    $t6, %lo(gPlayerOne)($t6)
 /* 11C388 802B2D78 24010DD8 */  li    $at, 3544
 /* 11C38C 802B2D7C 27BDFF98 */  addiu $sp, $sp, -0x68
 /* 11C390 802B2D80 008E1023 */  subu  $v0, $a0, $t6
@@ -84,4 +84,4 @@ glabel func_802B2D70
 /* 11C4BC 802B2EAC 8FB00018 */  lw    $s0, 0x18($sp)
 /* 11C4C0 802B2EB0 27BD0068 */  addiu $sp, $sp, 0x68
 /* 11C4C4 802B2EB4 03E00008 */  jr    $ra
-/* 11C4C8 802B2EB8 00000000 */   nop   
+/* 11C4C8 802B2EB8 00000000 */   nop

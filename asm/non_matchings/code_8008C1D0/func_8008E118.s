@@ -131,7 +131,7 @@ glabel func_8008E118
 /* 08EF0C 8008E30C 3C053F33 */  lui   $a1, (0x3F333333 >> 16) # lui $a1, 0x3f33
 /* 08EF10 8008E310 3C063DCC */  lui   $a2, (0x3DCCCCCD >> 16) # lui $a2, 0x3dcc
 /* 08EF14 8008E314 34C6CCCD */  ori   $a2, (0x3DCCCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
-/* 08EF18 8008E318 0C008973 */  jal   func_800225CC
+/* 08EF18 8008E318 0C008973 */  jal   move_f32_towards
 /* 08EF1C 8008E31C 34A53333 */   ori   $a1, (0x3F333333 & 0xFFFF) # ori $a1, $a1, 0x3333
 /* 08EF20 8008E320 960E0254 */  lhu   $t6, 0x254($s0)
 /* 08EF24 8008E324 3C01800E */  lui   $at, %hi(gKartBoundingBoxTable)
@@ -147,7 +147,7 @@ glabel func_8008E118
 /* 08EF4C 8008E34C 26040070 */  addiu $a0, $s0, 0x70
 /* 08EF50 8008E350 462042A0 */  cvt.s.d $f10, $f8
 /* 08EF54 8008E354 44055000 */  mfc1  $a1, $f10
-/* 08EF58 8008E358 0C008973 */  jal   func_800225CC
+/* 08EF58 8008E358 0C008973 */  jal   move_f32_towards
 /* 08EF5C 8008E35C 00000000 */   nop   
 /* 08EF60 8008E360 10000013 */  b     .L8008E3B0
 /* 08EF64 8008E364 8FBF001C */   lw    $ra, 0x1c($sp)

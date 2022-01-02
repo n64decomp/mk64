@@ -34,47 +34,47 @@ glabel func_80020524
 /* 0211A4 800205A4 01E03025 */  move  $a2, $t7
 /* 0211A8 800205A8 0C009D58 */  jal   func_80027560
 /* 0211AC 800205AC AFAC0010 */   sw    $t4, 0x10($sp)
-/* 0211B0 800205B0 3C04800E */  lui   $a0, %hi(D_800DC4FC) # $a0, 0x800e
-/* 0211B4 800205B4 8C84C4FC */  lw    $a0, %lo(D_800DC4FC)($a0)
+/* 0211B0 800205B0 3C04800E */  lui   $a0, %hi(gPlayerOneCopy) # $a0, 0x800e
+/* 0211B4 800205B4 8C84C4FC */  lw    $a0, %lo(gPlayerOneCopy)($a0)
 /* 0211B8 800205B8 00002825 */  move  $a1, $zero
 /* 0211BC 800205BC 0C01B96B */  jal   func_8006E5AC
 /* 0211C0 800205C0 00003025 */   move  $a2, $zero
-/* 0211C4 800205C4 3C04800E */  lui   $a0, %hi(D_800DC4E0) # $a0, 0x800e
-/* 0211C8 800205C8 8C84C4E0 */  lw    $a0, %lo(D_800DC4E0)($a0)
+/* 0211C4 800205C4 3C04800E */  lui   $a0, %hi(gPlayerTwo) # $a0, 0x800e
+/* 0211C8 800205C8 8C84C4E0 */  lw    $a0, %lo(gPlayerTwo)($a0)
 /* 0211CC 800205CC 24050001 */  li    $a1, 1
 /* 0211D0 800205D0 0C01B96B */  jal   func_8006E5AC
 /* 0211D4 800205D4 00003025 */   move  $a2, $zero
-/* 0211D8 800205D8 3C04800E */  lui   $a0, %hi(D_800DC4E4) # $a0, 0x800e
-/* 0211DC 800205DC 8C84C4E4 */  lw    $a0, %lo(D_800DC4E4)($a0)
+/* 0211D8 800205D8 3C04800E */  lui   $a0, %hi(gPlayerThree) # $a0, 0x800e
+/* 0211DC 800205DC 8C84C4E4 */  lw    $a0, %lo(gPlayerThree)($a0)
 /* 0211E0 800205E0 24050002 */  li    $a1, 2
 /* 0211E4 800205E4 0C01B96B */  jal   func_8006E5AC
 /* 0211E8 800205E8 00003025 */   move  $a2, $zero
-/* 0211EC 800205EC 3C04800E */  lui   $a0, %hi(D_800DC4E8) # $a0, 0x800e
-/* 0211F0 800205F0 8C84C4E8 */  lw    $a0, %lo(D_800DC4E8)($a0)
+/* 0211EC 800205EC 3C04800E */  lui   $a0, %hi(gPlayerFour) # $a0, 0x800e
+/* 0211F0 800205F0 8C84C4E8 */  lw    $a0, %lo(gPlayerFour)($a0)
 /* 0211F4 800205F4 24050003 */  li    $a1, 3
 /* 0211F8 800205F8 0C01B96B */  jal   func_8006E5AC
 /* 0211FC 800205FC 00003025 */   move  $a2, $zero
 /* 021200 80020600 3C0D800E */  lui   $t5, %hi(D_800DC52C) # $t5, 0x800e
 /* 021204 80020604 8DADC52C */  lw    $t5, %lo(D_800DC52C)($t5)
 /* 021208 80020608 24010003 */  li    $at, 3
-/* 02120C 8002060C 3C04800E */  lui   $a0, %hi(D_800DC4EC) # $a0, 0x800e
+/* 02120C 8002060C 3C04800E */  lui   $a0, %hi(gPlayerFive) # $a0, 0x800e
 /* 021210 80020610 11A10013 */  beq   $t5, $at, .L80020660
 /* 021214 80020614 24050004 */   li    $a1, 4
-/* 021218 80020618 8C84C4EC */  lw    $a0, %lo(D_800DC4EC)($a0)
+/* 021218 80020618 8C84C4EC */  lw    $a0, %lo(gPlayerFive)($a0)
 /* 02121C 8002061C 0C01B96B */  jal   func_8006E5AC
 /* 021220 80020620 00003025 */   move  $a2, $zero
-/* 021224 80020624 3C04800E */  lui   $a0, %hi(D_800DC4F0) # $a0, 0x800e
-/* 021228 80020628 8C84C4F0 */  lw    $a0, %lo(D_800DC4F0)($a0)
+/* 021224 80020624 3C04800E */  lui   $a0, %hi(gPlayerSix) # $a0, 0x800e
+/* 021228 80020628 8C84C4F0 */  lw    $a0, %lo(gPlayerSix)($a0)
 /* 02122C 8002062C 24050005 */  li    $a1, 5
 /* 021230 80020630 0C01B96B */  jal   func_8006E5AC
 /* 021234 80020634 00003025 */   move  $a2, $zero
-/* 021238 80020638 3C04800E */  lui   $a0, %hi(D_800DC4F4) # $a0, 0x800e
-/* 02123C 8002063C 8C84C4F4 */  lw    $a0, %lo(D_800DC4F4)($a0)
+/* 021238 80020638 3C04800E */  lui   $a0, %hi(gPlayerSeven) # $a0, 0x800e
+/* 02123C 8002063C 8C84C4F4 */  lw    $a0, %lo(gPlayerSeven)($a0)
 /* 021240 80020640 24050006 */  li    $a1, 6
 /* 021244 80020644 0C01B96B */  jal   func_8006E5AC
 /* 021248 80020648 00003025 */   move  $a2, $zero
-/* 02124C 8002064C 3C04800E */  lui   $a0, %hi(D_800DC4F8) # $a0, 0x800e
-/* 021250 80020650 8C84C4F8 */  lw    $a0, %lo(D_800DC4F8)($a0)
+/* 02124C 8002064C 3C04800E */  lui   $a0, %hi(gPlayerEight) # $a0, 0x800e
+/* 021250 80020650 8C84C4F8 */  lw    $a0, %lo(gPlayerEight)($a0)
 /* 021254 80020654 24050007 */  li    $a1, 7
 /* 021258 80020658 0C01B96B */  jal   func_8006E5AC
 /* 02125C 8002065C 00003025 */   move  $a2, $zero
@@ -167,7 +167,7 @@ glabel func_80020524
 /* 0213B0 800207B0 000D8403 */  sra   $s0, $t5, 0x10
 /* 0213B4 800207B4 0202082A */  slt   $at, $s0, $v0
 /* 0213B8 800207B8 1420FFBA */  bnez  $at, .L800206A4
-/* 0213BC 800207BC 00000000 */   nop   
+/* 0213BC 800207BC 00000000 */   nop
 .L800207C0:
 /* 0213C0 800207C0 00023840 */  sll   $a3, $v0, 1
 /* 0213C4 800207C4 3C038016 */  lui   $v1, %hi(D_80164ABE) # 0x8016

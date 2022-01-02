@@ -1,53 +1,53 @@
 glabel func_80032050
-/* 032C50 80032050 3C0E800E */  lui   $t6, %hi(D_800DC4DC) # $t6, 0x800e
-/* 032C54 80032054 8DCEC4DC */  lw    $t6, %lo(D_800DC4DC)($t6)
+/* 032C50 80032050 3C0E800E */  lui   $t6, %hi(gPlayerOne) # $t6, 0x800e
+/* 032C54 80032054 8DCEC4DC */  lw    $t6, %lo(gPlayerOne)($t6)
 /* 032C58 80032058 27BDFFF8 */  addiu $sp, $sp, -8
-/* 032C5C 8003205C 3C0F800E */  lui   $t7, %hi(D_800DC4E0) # $t7, 0x800e
+/* 032C5C 8003205C 3C0F800E */  lui   $t7, %hi(gPlayerTwo) # $t7, 0x800e
 /* 032C60 80032060 148E0002 */  bne   $a0, $t6, .L8003206C
-/* 032C64 80032064 3C18800E */   lui   $t8, %hi(D_800DC4E4) # $t8, 0x800e
+/* 032C64 80032064 3C18800E */   lui   $t8, %hi(gPlayerThree) # $t8, 0x800e
 /* 032C68 80032068 AFA00004 */  sw    $zero, 4($sp)
 .L8003206C:
-/* 032C6C 8003206C 8DEFC4E0 */  lw    $t7, %lo(D_800DC4E0)($t7)
+/* 032C6C 8003206C 8DEFC4E0 */  lw    $t7, %lo(gPlayerTwo)($t7)
 /* 032C70 80032070 8FA20004 */  lw    $v0, 4($sp)
-/* 032C74 80032074 3C19800E */  lui   $t9, %hi(D_800DC4E8) # $t9, 0x800e
+/* 032C74 80032074 3C19800E */  lui   $t9, %hi(gPlayerFour) # $t9, 0x800e
 /* 032C78 80032078 148F0002 */  bne   $a0, $t7, .L80032084
-/* 032C7C 8003207C 3C09800E */   lui   $t1, %hi(D_800DC4EC) # $t1, 0x800e
+/* 032C7C 8003207C 3C09800E */   lui   $t1, %hi(gPlayerFive) # $t1, 0x800e
 /* 032C80 80032080 24020001 */  li    $v0, 1
 .L80032084:
-/* 032C84 80032084 8F18C4E4 */  lw    $t8, %lo(D_800DC4E4)($t8)
-/* 032C88 80032088 3C0A800E */  lui   $t2, %hi(D_800DC4F0) # $t2, 0x800e
-/* 032C8C 8003208C 3C0B800E */  lui   $t3, %hi(D_800DC4F4) # $t3, 0x800e
+/* 032C84 80032084 8F18C4E4 */  lw    $t8, %lo(gPlayerThree)($t8)
+/* 032C88 80032088 3C0A800E */  lui   $t2, %hi(gPlayerSix) # $t2, 0x800e
+/* 032C8C 8003208C 3C0B800E */  lui   $t3, %hi(gPlayerSeven) # $t3, 0x800e
 /* 032C90 80032090 14980002 */  bne   $a0, $t8, .L8003209C
-/* 032C94 80032094 3C0C800E */   lui   $t4, %hi(D_800DC4F8) # $t4, 0x800e
+/* 032C94 80032094 3C0C800E */   lui   $t4, %hi(gPlayerEight) # $t4, 0x800e
 /* 032C98 80032098 24020002 */  li    $v0, 2
 .L8003209C:
-/* 032C9C 8003209C 8F39C4E8 */  lw    $t9, %lo(D_800DC4E8)($t9)
+/* 032C9C 8003209C 8F39C4E8 */  lw    $t9, %lo(gPlayerFour)($t9)
 /* 032CA0 800320A0 3C0D8016 */  lui   $t5, %hi(D_80165520) # $t5, 0x8016
 /* 032CA4 800320A4 25AD5520 */  addiu $t5, %lo(D_80165520) # addiu $t5, $t5, 0x5520
 /* 032CA8 800320A8 14990002 */  bne   $a0, $t9, .L800320B4
-/* 032CAC 800320AC 00000000 */   nop   
+/* 032CAC 800320AC 00000000 */   nop
 /* 032CB0 800320B0 24020003 */  li    $v0, 3
 .L800320B4:
-/* 032CB4 800320B4 8D29C4EC */  lw    $t1, %lo(D_800DC4EC)($t1)
+/* 032CB4 800320B4 8D29C4EC */  lw    $t1, %lo(gPlayerFive)($t1)
 /* 032CB8 800320B8 3C0F8016 */  lui   $t7, %hi(D_801654A0) # $t7, 0x8016
 /* 032CBC 800320BC 25EF54A0 */  addiu $t7, %lo(D_801654A0) # addiu $t7, $t7, 0x54a0
 /* 032CC0 800320C0 14890002 */  bne   $a0, $t1, .L800320CC
-/* 032CC4 800320C4 00000000 */   nop   
+/* 032CC4 800320C4 00000000 */   nop
 /* 032CC8 800320C8 24020004 */  li    $v0, 4
 .L800320CC:
-/* 032CCC 800320CC 8D4AC4F0 */  lw    $t2, %lo(D_800DC4F0)($t2)
+/* 032CCC 800320CC 8D4AC4F0 */  lw    $t2, %lo(gPlayerSix)($t2)
 /* 032CD0 800320D0 3C098016 */  lui   $t1, %hi(D_801654E0) # $t1, 0x8016
 /* 032CD4 800320D4 252954E0 */  addiu $t1, %lo(D_801654E0) # addiu $t1, $t1, 0x54e0
 /* 032CD8 800320D8 148A0002 */  bne   $a0, $t2, .L800320E4
-/* 032CDC 800320DC 00000000 */   nop   
+/* 032CDC 800320DC 00000000 */   nop
 /* 032CE0 800320E0 24020005 */  li    $v0, 5
 .L800320E4:
-/* 032CE4 800320E4 8D6BC4F4 */  lw    $t3, %lo(D_800DC4F4)($t3)
+/* 032CE4 800320E4 8D6BC4F4 */  lw    $t3, %lo(gPlayerSeven)($t3)
 /* 032CE8 800320E8 148B0002 */  bne   $a0, $t3, .L800320F4
-/* 032CEC 800320EC 00000000 */   nop   
+/* 032CEC 800320EC 00000000 */   nop
 /* 032CF0 800320F0 24020006 */  li    $v0, 6
 .L800320F4:
-/* 032CF4 800320F4 8D8CC4F8 */  lw    $t4, %lo(D_800DC4F8)($t4)
+/* 032CF4 800320F4 8D8CC4F8 */  lw    $t4, %lo(gPlayerEight)($t4)
 /* 032CF8 800320F8 3C0B8016 */  lui   $t3, %hi(D_80165540) # $t3, 0x8016
 /* 032CFC 800320FC 256B5540 */  addiu $t3, %lo(D_80165540) # addiu $t3, $t3, 0x5540
 /* 032D00 80032100 548C0003 */  bnel  $a0, $t4, .L80032110

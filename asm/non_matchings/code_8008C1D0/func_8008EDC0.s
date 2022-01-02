@@ -23,7 +23,7 @@ glabel func_8008EDC0
 /* 08FA10 8008EE10 3C063C23 */   lui   $a2, 0x3c23
 /* 08FA14 8008EE14 24E40080 */  addiu $a0, $a3, 0x80
 /* 08FA18 8008EE18 24050000 */  li    $a1, 0
-/* 08FA1C 8008EE1C 0C008973 */  jal   func_800225CC
+/* 08FA1C 8008EE1C 0C008973 */  jal   move_f32_towards
 /* 08FA20 8008EE20 AFA70018 */   sw    $a3, 0x18($sp)
 /* 08FA24 8008EE24 10000006 */  b     .L8008EE40
 /* 08FA28 8008EE28 8FA70018 */   lw    $a3, 0x18($sp)
@@ -31,7 +31,7 @@ glabel func_8008EDC0
 /* 08FA2C 8008EE2C 3C063C23 */  lui   $a2, (0x3C23D70A >> 16) # lui $a2, 0x3c23
 .L8008EE30:
 /* 08FA30 8008EE30 34C6D70A */  ori   $a2, (0x3C23D70A & 0xFFFF) # ori $a2, $a2, 0xd70a
-/* 08FA34 8008EE34 0C008973 */  jal   func_800225CC
+/* 08FA34 8008EE34 0C008973 */  jal   move_f32_towards
 /* 08FA38 8008EE38 AFA70018 */   sw    $a3, 0x18($sp)
 /* 08FA3C 8008EE3C 8FA70018 */  lw    $a3, 0x18($sp)
 .L8008EE40:

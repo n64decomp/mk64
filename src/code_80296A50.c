@@ -815,7 +815,7 @@ void update_obj_kiwano_fruit(void *arg0) {
         arg0->unk6 = 1;
         arg0->unk24 = 80.0f;
 block_9:
-        temp_v0 = D_80164490 + (*(&D_80164438 + (((((temp_t7 + &gPlayers) - D_800DC4DC) / 0xDD8) & 0xFFFF) * 2)) * 8);
+        temp_v0 = D_80164490 + (*(&D_80164438 + (((((temp_t7 + &gPlayers) - gPlayerOne) / 0xDD8) & 0xFFFF) * 2)) * 8);
         temp_f2 = (temp_t7 + &gPlayers)->unk14 - temp_v0->unk0;
         arg0 = phi_a2;
         sp20 = temp_f2;
@@ -844,7 +844,7 @@ block_9:
             temp_v0_2 = (temp_t7 + &gPlayers)->unkBC;
             if ((temp_v0_2 & 0x200) != 0) {
                 arg0 = temp_a2_2;
-                func_800C9060(temp_f12, temp_f14_2, (((temp_t7 + &gPlayers) - D_800DC4DC) / 0xDD8) & 0xFF, 0x1900A052, temp_a2_2, &D_800DC4DC);
+                func_800C9060(temp_f12, temp_f14_2, (((temp_t7 + &gPlayers) - gPlayerOne) / 0xDD8) & 0xFF, 0x1900A052, temp_a2_2, &gPlayerOne);
                 phi_a2_3 = arg0;
             } else {
                 temp_f12_2 = D_802B961C;
@@ -854,7 +854,7 @@ block_9:
                 (temp_t7 + &gPlayers)->unk34 = (temp_t7 + &gPlayers)->unk34 - (temp_f2_2 * temp_f12_2);
                 (temp_t7 + &gPlayers)->unk3C = (temp_t7 + &gPlayers)->unk3C - (temp_f14_2 * temp_f12_2);
                 arg0 = temp_a2_2;
-                func_800C9060(temp_f12_2, temp_f14_2, (((temp_t7 + &gPlayers) - D_800DC4DC) / 0xDD8) & 0xFF, 0x19007018, temp_a2_2, &D_800DC4DC);
+                func_800C9060(temp_f12_2, temp_f14_2, (((temp_t7 + &gPlayers) - gPlayerOne) / 0xDD8) & 0xFF, 0x19007018, temp_a2_2, &gPlayerOne);
                 phi_a2_3 = arg0;
                 if (gModeSelection != GRAND_PRIX) {
                     D_80162DF8 = 1;
@@ -889,7 +889,7 @@ extern void func_800C9D80(f32 *arg0, f32 *arg1, s32 arg2); // extern
 
 void update_obj_train_engine(struct choochooTrain *arg0) {
     arg0->unk6 -= 0x666;
-    
+
     if (arg0->unk8 != 0.0f) {
         arg0->unk8 = 0.0f;
         func_800C9D80(&arg0->unk18, &arg0->unk24, 0x51018000);
@@ -1323,11 +1323,11 @@ loop_2:
         if (func_8029EEB8(arg0, temp_a1, 0x40A00000, 0x42200000, D_802B964C) == 1) {
             if ((arg0->unkBC & 0x200) != 0) {
                 func_800C98B8(arg0 + 0x14, arg0 + 0x34, 0x19018010);
-                func_800C90F4(((arg0 - D_800DC4DC) / 0xDD8) & 0xFF, (arg0->unk254 * 0x10) + 0x2900800D);
+                func_800C90F4(((arg0 - gPlayerOne) / 0xDD8) & 0xFF, (arg0->unk254 * 0x10) + 0x2900800D);
                 phi_s0->unk6 = phi_s0->unk6 | 0x400;
             }
             if ((arg0->unk0 & 0x100) == 0) {
-                func_800C9060(((arg0 - D_800DC4DC) / 0xDD8) & 0xFF, 0x19007018);
+                func_800C9060(((arg0 - gPlayerOne) / 0xDD8) & 0xFF, 0x19007018);
                 return;
             }
             // Duplicate return node #8. Try simplifying control flow for better match
@@ -5277,11 +5277,11 @@ extern f32 D_802B989C;
             if ((arg0->unkBC & 0x200) != 0) {
                 arg1->unk2 = arg1->unk2 | 0x400;
                 func_800C98B8(arg0 + 0x14, arg0 + 0x34, 0x19018010);
-                func_800C90F4(((arg0 - D_800DC4DC) / 0xDD8) & 0xFF, (arg0->unk254 * 0x10) + 0x2900800D);
+                func_800C90F4(((arg0 - gPlayerOne) / 0xDD8) & 0xFF, (arg0->unk254 * 0x10) + 0x2900800D);
                 return 1;
             }
             if ((temp_v0 & 0x100) == 0) {
-                func_800C9060(((arg0 - D_800DC4DC) / 0xDD8) & 0xFF, 0x1900701A);
+                func_800C9060(((arg0 - gPlayerOne) / 0xDD8) & 0xFF, 0x1900701A);
             }
             goto block_6;
         }
@@ -5312,11 +5312,11 @@ s32 func_8029EEB8(void *, f32, f32, f32); // extern
             if ((arg0->unkBC & 0x200) != 0) {
                 arg1->unk2 = arg1->unk2 | 0x400;
                 func_800C98B8(arg0 + 0x14, arg0 + 0x34, 0x1901A24A);
-                func_800C90F4(((arg0 - D_800DC4DC) / 0xDD8) & 0xFF, (arg0->unk254 * 0x10) + 0x2900800D);
+                func_800C90F4(((arg0 - gPlayerOne) / 0xDD8) & 0xFF, (arg0->unk254 * 0x10) + 0x2900800D);
                 return 1;
             }
             if ((temp_v0 & 0x100) == 0) {
-                func_800C9060(((arg0 - D_800DC4DC) / 0xDD8) & 0xFF, 0x1900A052);
+                func_800C9060(((arg0 - gPlayerOne) / 0xDD8) & 0xFF, 0x1900A052);
             }
             goto block_6;
         }
@@ -5383,16 +5383,16 @@ extern s32 D_80162DF8;
             arg1->unk28 = 8.0f;
             arg0 = temp_a3;
             func_800C98B8(temp_a3 + 0x14, temp_a3 + 0x34, 0x19018010, temp_a3);
-            func_800C90F4(((arg0 - D_800DC4DC) / 0xDD8) & 0xFF, (arg0->unk254 * 0x10) + 0x2900800D);
+            func_800C90F4(((arg0 - gPlayerOne) / 0xDD8) & 0xFF, (arg0->unk254 * 0x10) + 0x2900800D);
         } else {
             arg0 = temp_a3;
-            func_8008DABC(temp_a3, (temp_a3 - D_800DC4DC) / 0xDD8);
+            func_8008DABC(temp_a3, (temp_a3 - gPlayerOne) / 0xDD8);
             if ((gModeSelection == TIME_TRIALS) && ((arg0->unk0 & 0x1000) == 0)) {
                 D_80162DF8 = 1;
             }
         }
     } else {
-        func_8008DABC(temp_a3, (temp_a3 - D_800DC4DC) / 0xDD8);
+        func_8008DABC(temp_a3, (temp_a3 - gPlayerOne) / 0xDD8);
     }
     return 1;
 }
@@ -5510,7 +5510,7 @@ extern f32 D_802B98A8;
             arg1->unk2 = arg1->unk2 | 0x400;
             arg0 = temp_a3;
             func_800C98B8(temp_a0_2, temp_a1, 0x19018010, temp_a3);
-            func_800C90F4(((arg0 - D_800DC4DC) / 0xDD8) & 0xFF, (arg0->unk254 * 0x10) + 0x2900800D);
+            func_800C90F4(((arg0 - gPlayerOne) / 0xDD8) & 0xFF, (arg0->unk254 * 0x10) + 0x2900800D);
             goto block_36;
         }
         if ((temp_v0 & 0x100) == 0) {
@@ -5518,7 +5518,7 @@ extern f32 D_802B98A8;
             sp4C = temp_f14;
             sp40 = temp_f16_2;
             sp54 = temp_f18;
-            func_800C9060(((temp_a3 - D_800DC4DC) / 0xDD8) & 0xFF, 0x19007018);
+            func_800C9060(((temp_a3 - gPlayerOne) / 0xDD8) & 0xFF, 0x19007018);
             phi_a3 = arg0;
         }
         goto block_23;
@@ -6007,7 +6007,7 @@ void func_802A0450(Player *player, void *arg1) {
     Player *phi_v0;
 
     temp_t2 = arg1->unk0;
-    temp_t0 = (player - D_800DC4DC) / 3544;
+    temp_t0 = (player - gPlayerOne) / 3544;
     switch (temp_t2) {
     case 9:
         if (((player->unk_0BC << 0) >= 0) && ((player->unk_000 & 0x100) == 0)) {
@@ -6131,7 +6131,7 @@ void func_802A0450(Player *player, void *arg1) {
                 arg1->unk28 = 10.0f;
                 return;
             }
-            func_8008DABC(player, (player - D_800DC4DC) / 3544);
+            func_8008DABC(player, (player - gPlayerOne) / 3544);
             return;
         }
         /* Duplicate return node #90. Try simplifying control flow for better match */
@@ -6176,7 +6176,7 @@ block_75:
             arg1->unk2 = -0x8000;
             arg1->unk4 = 0;
             if ((player->unk_000 & 0x4000) != 0) {
-                func_8007ABFC((player - D_800DC4DC) / 3544, 7);
+                func_8007ABFC((player - gPlayerOne) / 3544, 7);
                 return;
             }
             /* Duplicate return node #90. Try simplifying control flow for better match */
@@ -6197,7 +6197,7 @@ block_89:
             arg1->unk2 = -0x8000;
             arg1->unk4 = 0;
             if ((player->unk_000 & 0x4000) != 0) {
-                func_8007ABFC((player - D_800DC4DC) / 3544, 0);
+                func_8007ABFC((player - gPlayerOne) / 3544, 0);
                 return;
             }
             /* Duplicate return node #90. Try simplifying control flow for better match */
@@ -6479,7 +6479,7 @@ block_11:
         sp2C = temp_v0_4;
         func_802A1064(arg0, temp_a1);
         temp_v0_4->unkC = temp_v0_4->unkC & 0xFFFBFFFF;
-        func_800C9060(((temp_v0_4 - D_800DC4DC) / 0xDD8) & 0xFF, 0x19008012);
+        func_800C9060(((temp_v0_4 - gPlayerOne) / 0xDD8) & 0xFF, 0x19008012);
     }
 }
 #else

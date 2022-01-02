@@ -14,8 +14,8 @@ glabel func_8007A88C
 /* 07B4BC 8007A8BC 01194021 */  addu  $t0, $t0, $t9
 /* 07B4C0 8007A8C0 85085CBE */  lh    $t0, %lo(D_80165CBE)($t0) # 0x5cbe($t0)
 /* 07B4C4 8007A8C4 000F7880 */  sll   $t7, $t7, 2
-/* 07B4C8 8007A8C8 3C18800E */  lui   $t8, %hi(D_800DC4DC) # $t8, 0x800e
-/* 07B4CC 8007A8CC 8F18C4DC */  lw    $t8, %lo(D_800DC4DC)($t8)
+/* 07B4C8 8007A8C8 3C18800E */  lui   $t8, %hi(gPlayerOne) # $t8, 0x800e
+/* 07B4CC 8007A8CC 8F18C4DC */  lw    $t8, %lo(gPlayerOne)($t8)
 /* 07B4D0 8007A8D0 01E47823 */  subu  $t7, $t7, $a0
 /* 07B4D4 8007A8D4 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 07B4D8 8007A8D8 000F78C0 */  sll   $t7, $t7, 3
@@ -27,10 +27,10 @@ glabel func_8007A88C
 /* 07B4F0 8007A8F0 05430004 */  bgezl $t2, .L8007A904
 /* 07B4F4 8007A8F4 8FBF0014 */   lw    $ra, 0x14($sp)
 /* 07B4F8 8007A8F8 0C01E439 */  jal   func_800790E4
-/* 07B4FC 8007A8FC 00000000 */   nop   
+/* 07B4FC 8007A8FC 00000000 */   nop
 .L8007A900:
 /* 07B500 8007A900 8FBF0014 */  lw    $ra, 0x14($sp)
 .L8007A904:
 /* 07B504 8007A904 27BD0018 */  addiu $sp, $sp, 0x18
 /* 07B508 8007A908 03E00008 */  jr    $ra
-/* 07B50C 8007A90C 00000000 */   nop   
+/* 07B50C 8007A90C 00000000 */   nop

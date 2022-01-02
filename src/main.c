@@ -55,29 +55,29 @@ struct SPTask* sNextDisplaySPTask = NULL;
 
 
 struct Controller gControllers[8];
-struct Controller *D_800DC4BC = &gControllers[0];
-struct Controller *D_800DC4C0 = &gControllers[1];
-struct Controller *D_800DC4C4 = &gControllers[2];
-struct Controller *D_800DC4C8 = &gControllers[3];
-struct Controller *D_800DC4CC = &gControllers[4];
-struct Controller *D_800DC4D0 = &gControllers[5];
-struct Controller *D_800DC4D4 = &gControllers[6];
-struct Controller *D_800DC4D8 = &gControllers[7];
+struct Controller *gControllerOne = &gControllers[0];   // 0x800DC4BC
+struct Controller *gControllerTwo = &gControllers[1];   // 0x800DC4C0
+struct Controller *gControllerThree = &gControllers[2]; // 0x800DC4C4
+struct Controller *gControllerFour = &gControllers[3];  // 0x800DC4C8
+struct Controller *gControllerFive = &gControllers[4];  // 0x800DC4CC
+struct Controller *gControllerSix = &gControllers[5];   // 0x800DC4D0
+struct Controller *gControllerSeven = &gControllers[6]; // 0x800DC4D4
+struct Controller *gControllerEight = &gControllers[7]; // 0x800DC4D8
 
 Player gPlayers[8];
-Player *D_800DC4DC = &gPlayers[0];
-Player *D_800DC4E0 = &gPlayers[1];
-Player *D_800DC4E4 = &gPlayers[2];
-Player *D_800DC4E8 = &gPlayers[3];
-Player *D_800DC4EC = &gPlayers[4];
-Player *D_800DC4F0 = &gPlayers[5];
-Player *D_800DC4F4 = &gPlayers[6];
-Player *D_800DC4F8 = &gPlayers[7];
+Player *gPlayerOne = &gPlayers[0];   // 0x800DC4DC
+Player *gPlayerTwo = &gPlayers[1];   // 0x800DC4E0
+Player *gPlayerThree = &gPlayers[2]; // 0x800DC4E4
+Player *gPlayerFour = &gPlayers[3];  // 0x800DC4E8
+Player *gPlayerFive = &gPlayers[4];  // 0x800DC4EC
+Player *gPlayerSix = &gPlayers[5];   // 0x800DC4F0
+Player *gPlayerSeven = &gPlayers[6]; // 0x800DC4F4
+Player *gPlayerEight = &gPlayers[7]; // 0x800DC4F8
 
-Player *D_800DC4FC = &gPlayers[0];
-Player *D_800DC500 = &gPlayers[1];
-Player *D_800DC504 = &gPlayers[2];
-Player *D_800DC508 = &gPlayers[3];
+Player *gPlayerOneCopy = &gPlayers[0];   // 0x800DC4FC
+Player *gPlayerTwoCopy = &gPlayers[1];   // 0x800DC500
+Player *gPlayerThreeCopy = &gPlayers[2]; // 0x800DC504
+Player *gPlayerFourCopy = &gPlayers[3];  // 0x800DC508
 
 s32 D_800FD850[3];
 struct GfxPool gGfxPools[2];
@@ -135,7 +135,7 @@ s32 D_801502A4;
 uintptr_t gPhysicalFramebuffers[3];
 u32 D_801502B4;
 UNUSED u32 D_801502B8;
-UNUSED u32 D_801502BC; 
+UNUSED u32 D_801502BC;
 s32 D_801502C0[2064];
 
 u16 D_80152300[4];
@@ -168,7 +168,7 @@ u16 D_800DC514 = 0;
 u16 D_800DC518 = 0;
 u16 D_800DC51C = 0;
 u16 gEnableDebugMode = 0;
-s32 D_800DC524 = 7; // = COURSE_DATA_MENU?; 
+s32 D_800DC524 = 7; // = COURSE_DATA_MENU?;
 UNUSED s32 D_800DC528 = 1;
 s32 D_800DC52C = 0;
 
@@ -399,12 +399,12 @@ void read_controllers(void) {
     func_80000934(1);
     func_80000934(2);
     func_80000934(3);
-    D_800DC4CC->button = (s16) (((D_800DC4BC->button | D_800DC4C0->button) | D_800DC4C4->button) | D_800DC4C8->button);
-    D_800DC4CC->buttonPressed = (s16) (((D_800DC4BC->buttonPressed | D_800DC4C0->buttonPressed) | D_800DC4C4->buttonPressed) | D_800DC4C8->buttonPressed);
-    D_800DC4CC->buttonDepressed = (s16) (((D_800DC4BC->buttonDepressed | D_800DC4C0->buttonDepressed) | D_800DC4C4->buttonDepressed) | D_800DC4C8->buttonDepressed);
-    D_800DC4CC->stickDirection = (s16) (((D_800DC4BC->stickDirection | D_800DC4C0->stickDirection) | D_800DC4C4->stickDirection) | D_800DC4C8->stickDirection);
-    D_800DC4CC->stickPressed = (s16) (((D_800DC4BC->stickPressed | D_800DC4C0->stickPressed) | D_800DC4C4->stickPressed) | D_800DC4C8->stickPressed);
-    D_800DC4CC->stickDepressed = (s16) (((D_800DC4BC->stickDepressed | D_800DC4C0->stickDepressed) | D_800DC4C4->stickDepressed) | D_800DC4C8->stickDepressed);
+    gControllerFive->button = (s16) (((gControllerOne->button | gControllerTwo->button) | gControllerThree->button) | gControllerFour->button);
+    gControllerFive->buttonPressed = (s16) (((gControllerOne->buttonPressed | gControllerTwo->buttonPressed) | gControllerThree->buttonPressed) | gControllerFour->buttonPressed);
+    gControllerFive->buttonDepressed = (s16) (((gControllerOne->buttonDepressed | gControllerTwo->buttonDepressed) | gControllerThree->buttonDepressed) | gControllerFour->buttonDepressed);
+    gControllerFive->stickDirection = (s16) (((gControllerOne->stickDirection | gControllerTwo->stickDirection) | gControllerThree->stickDirection) | gControllerFour->stickDirection);
+    gControllerFive->stickPressed = (s16) (((gControllerOne->stickPressed | gControllerTwo->stickPressed) | gControllerThree->stickPressed) | gControllerFour->stickPressed);
+    gControllerFive->stickDepressed = (s16) (((gControllerOne->stickDepressed | gControllerTwo->stickDepressed) | gControllerThree->stickDepressed) | gControllerFour->stickDepressed);
 }
 
 void func_80000BEC(void) {
@@ -543,7 +543,7 @@ void init_game(void) {
     s32 texture_seg;
     s32 sp38;
     UNUSED s32 unknown_padding;
-    
+
     func_800010CC();
     gHeapEndPtr = SEG_8028DF00;
     set_segment_base_addr(0, 0x80000000);
@@ -558,13 +558,13 @@ void init_game(void) {
     texture_seg = SEG_8028DF00-sp2C;
     osPiStartDma(&gDmaIoMesg, 0, 0, &_common_texturesSegmentRomStart, texture_seg, sp2C, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
-	
+
     sp40 = *(u32 *)(texture_seg + 4);
     sp40 = ALIGN16(sp40);
     sp38 = gPrevLoadedAddress;
     mio0decode(texture_seg, sp38);
     set_segment_base_addr(0xD, sp38);
-    
+
     gPrevLoadedAddress += sp40;
     D_8015F734 = gPrevLoadedAddress;
 }
@@ -610,14 +610,14 @@ void func_8000142C(void) {
                     func_802909F0();
                     func_802A0D54();
                     func_800382DC();
-                    func_8001EE98(D_800DC4FC, camera1, 0);
+                    func_8001EE98(gPlayerOneCopy, camera1, 0);
                     func_80028F70();
                     func_8028F474();
                     func_80059AC8();
                     update_simple_objects();
                     func_802966A0();
                     func_8028FCBC();
-                
+
                 }
                 func_80022744();
             }
@@ -631,12 +631,12 @@ void func_8000142C(void) {
             } else {
                 if (D_800DC514 != 0) {
 
-                    if ((D_800DC4BC->buttonPressed & R_TRIG) &&
-                        (D_800DC4BC->button & A_BUTTON) &&
-                        (D_800DC4BC->button & B_BUTTON)) {
+                    if ((gControllerOne->buttonPressed & R_TRIG) &&
+                        (gControllerOne->button & A_BUTTON) &&
+                        (gControllerOne->button & B_BUTTON)) {
                             D_800DC514 = 0;
                     }
-            
+
                     temp_v0 = camera1->rotX2;
                     D_801625E8 = D_800DC5EC->pathCounter;
                     if (temp_v0 < 0x2000) {
@@ -650,11 +650,11 @@ void func_8000142C(void) {
                     } else {
                         func_80057A50(40, 100, "SOUTH  ", D_801625E8);
                     }
-                    
+
                 } else {
-                    if ((D_800DC4BC->buttonPressed & L_TRIG) &&
-                        (D_800DC4BC->button & A_BUTTON) &&
-                        (D_800DC4BC->button & B_BUTTON)) {
+                    if ((gControllerOne->buttonPressed & L_TRIG) &&
+                        (gControllerOne->button & A_BUTTON) &&
+                        (gControllerOne->button & B_BUTTON)) {
                             D_800DC514 = 1;
                     }
                 }
@@ -675,9 +675,9 @@ void func_8000142C(void) {
                         func_802909F0();
                         func_802A0D54();
                         func_800382DC();
-                        func_8001EE98(D_800DC4FC, camera1, 0);
+                        func_8001EE98(gPlayerOneCopy, camera1, 0);
                         func_80029060();
-                        func_8001EE98(D_800DC500, camera2, 1);
+                        func_8001EE98(gPlayerTwoCopy, camera2, 1);
                         func_80029150();
                         func_8028F474();
                         func_80059AC8();
@@ -721,9 +721,9 @@ void func_8000142C(void) {
                         func_802909F0();
                         func_802A0D54();
                         func_800382DC();
-                        func_8001EE98(D_800DC4FC, camera1, 0);
+                        func_8001EE98(gPlayerOneCopy, camera1, 0);
                         func_80029060();
-                        func_8001EE98(D_800DC500, camera2, 1);
+                        func_8001EE98(gPlayerTwoCopy, camera2, 1);
                         func_80029150();
                         func_8028F474();
                         func_80059AC8();
@@ -788,13 +788,13 @@ void func_8000142C(void) {
                     func_802909F0();
                     func_802A0D54();
                     func_800382DC();
-                    func_8001EE98(D_800DC4FC, camera1, 0);
+                    func_8001EE98(gPlayerOneCopy, camera1, 0);
                     func_80029158();
-                    func_8001EE98(D_800DC4E0, camera2, 1);
+                    func_8001EE98(gPlayerTwo, camera2, 1);
                     func_800291E8();
-                    func_8001EE98(D_800DC4E4, camera3, 2);
+                    func_8001EE98(gPlayerThree, camera3, 2);
                     func_800291F0();
-                    func_8001EE98(D_800DC4E8, camera4, 3);
+                    func_8001EE98(gPlayerFour, camera4, 3);
                     func_800291F8();
                     func_8028F474();
                     func_80059AC8();
@@ -842,15 +842,15 @@ void func_8000142C(void) {
     } else {
         if (gEnableResourceMeters != 0) {
             resource_display();
-            if ((!(D_800DC4BC->button & L_TRIG)) &&
-                (D_800DC4BC->button & R_TRIG) &&
-                (D_800DC4BC->buttonPressed & B_BUTTON)) {
+            if ((!(gControllerOne->button & L_TRIG)) &&
+                (gControllerOne->button & R_TRIG) &&
+                (gControllerOne->buttonPressed & B_BUTTON)) {
                     gEnableResourceMeters = 0;
             }
         } else {
-            if ((!(D_800DC4BC->button & L_TRIG)) &&
-                (D_800DC4BC->button & R_TRIG) &&
-                (D_800DC4BC->buttonPressed & B_BUTTON)) {
+            if ((!(gControllerOne->button & L_TRIG)) &&
+                (gControllerOne->button & R_TRIG) &&
+                (gControllerOne->buttonPressed & B_BUTTON)) {
                         gEnableResourceMeters = 1;
             }
         }
@@ -863,7 +863,7 @@ void func_8000142C(void) {
 }
 
 void func_80001ECC(void) {
-    
+
     switch (D_800DC50C) {
         case 7:
             func_80001404();
@@ -906,7 +906,7 @@ void func_80001FAC(void) {
             case 2:
                 D_800DC4B4 = sp40;
                 break;
-            case 1: 
+            case 1:
                 sNextDisplaySPTask = sp40;
                 break;
         }
@@ -1025,7 +1025,7 @@ void thread3_video(UNUSED void *arg0) {
     u64 *temp_v0;
     s32 i;
     s32 pad2[2];
-    
+
     gPhysicalFramebuffers[0] = (uintptr_t *) &gFramebuffer0;
     gPhysicalFramebuffers[1] = (uintptr_t *) &gFramebuffer1;
     gPhysicalFramebuffers[2] = (uintptr_t *) &gFramebuffer2;
