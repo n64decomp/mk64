@@ -163,7 +163,7 @@ s32 func_800061DC(void *arg0, f32 arg1, s32 arg2) {
     phi_v1_10 = arg2;
     if (D_800DC51C == 0) {
         temp_v0_2 = D_8018EDF3;
-        phi_a0 = D_800DC4DC;
+        phi_a0 = gPlayerOne;
         if (temp_v0_2 > 0) {
             do {
                 temp_a2 = phi_a0->unk_000;
@@ -5488,7 +5488,7 @@ void func_8000DF8C(s32 arg0, f32 arg1, s32 arg2, s32 arg3) {
         if ((sp4C != 0) && (sp4C != 4)) {
             if (gCurrentCourseId == 0x14) {
                 if (D_8016347E == 1) {
-                    temp_v0 = D_800DC4E8;
+                    temp_v0 = gPlayerFour;
                     temp_f0 = temp_f22 - temp_v0->unk14;
                     temp_f2 = temp_f20 - temp_v0->unk18;
                     temp_f12 = temp_f24 - temp_v0->unk1C;
@@ -6533,7 +6533,7 @@ void func_8000F628(void) {
         *phi_t0 = 0;
         *phi_t1 = 0;
         temp_v0 = gCurrentCourseId;
-        sp104 = phi_s7 + D_800DC4DC;
+        sp104 = phi_s7 + gPlayerOne;
         phi_v0 = temp_v0;
         if (temp_v0 < 0x14) {
             spD8 = phi_ra;
@@ -8042,7 +8042,7 @@ void func_80011E38(s32 arg0) {
     u16 temp_v0;
 
     temp_v0 = *(&D_801632E8 + (arg0 * 2));
-    temp_a1 = &D_800DC4DC[arg0];
+    temp_a1 = &gPlayerOne[arg0];
     if (temp_v0 != 0) {
         if (temp_v0 != 1) {
             if (temp_v0 != 2) {
@@ -10170,7 +10170,7 @@ void func_80015314(s32 arg0, ? arg1, s32 arg2) {
     Player *temp_a1;
     void *temp_a0;
 
-    temp_a1 = &D_800DC4DC[arg0];
+    temp_a1 = &gPlayerOne[arg0];
     temp_a0 = camera1 + (arg2 * 0xB8);
     temp_a0->unk2C = temp_a1->unk_02E;
     func_80015390(temp_a0, temp_a1, 0, arg0);
@@ -10201,7 +10201,7 @@ void func_80015390(void *arg0, ? arg1, ? arg2) {
     s32 temp_v0_2;
     s16 phi_a2;
 
-    temp_s1 = &D_800DC4DC[arg0->unkAE];
+    temp_s1 = &gPlayerOne[arg0->unkAE];
     temp_v0 = temp_s1->unk_078;
     if (temp_v0 == 0) {
         phi_a2 = 0x64;
@@ -10367,7 +10367,7 @@ void func_8001577C(void *arg0, ? arg1, ? arg2, s32 arg3) {
     sp3C = temp_t1;
     sp74 = temp_v1;
     sp44 = temp_a1;
-    temp_s2 = &D_800DC4DC[temp_v1];
+    temp_s2 = &gPlayerOne[temp_v1];
     *temp_t0 = func_8000D33C(arg0->unk0, arg0->unk4, temp_a1, arg0->unk8, *temp_t0, temp_a1);
     temp_t2 = *(&D_80164438 + temp_t1);
     temp_t3 = *temp_t0;
@@ -10568,7 +10568,7 @@ void func_80015C94(void *arg0, ? arg1, ? arg2, s32 arg3) {
     temp_t1 = *(&D_801645B0 + temp_s1);
     temp_v0 = arg3 * 2;
     temp_a1 = temp_v0 + &D_80164668;
-    spA0 = &D_800DC4DC[temp_v1];
+    spA0 = &gPlayerOne[temp_v1];
     sp58 = temp_a1;
     sp5C = temp_v0;
     sp9C = temp_v1;
@@ -11359,7 +11359,7 @@ void func_800188F4(void *arg0, ? arg1, ? arg2, s32 arg3) {
     f32 *phi_v1;
     f32 phi_f18;
 
-    spA0 = D_800DC4DC;
+    spA0 = gPlayerOne;
     temp_a1 = arg0->unkAE;
     temp_v0 = temp_a1 * 2;
     temp_t7 = *(&D_801645B0 + temp_v0);
@@ -11653,7 +11653,7 @@ void func_8001933C(void *arg0, ? arg1, ? arg2, s32 arg3) {
     sp3C = temp_t2;
     sp7C = temp_v1;
     sp48 = temp_a1;
-    temp_s2 = &D_800DC4DC[temp_v1];
+    temp_s2 = &gPlayerOne[temp_v1];
     *temp_t0 = func_8000D33C(arg0->unk0, arg0->unk4, temp_a1, arg0->unk8, *temp_t0, 0);
     temp_t3 = *temp_t0;
     sp96 = temp_t3;
@@ -12141,7 +12141,7 @@ void func_80019FB4(s32 arg0) {
     struct Controller *temp_v0;
     s32 phi_v1;
 
-    temp_v0 = &D_800DC4BC[arg0];
+    temp_v0 = &gControllerOne[arg0];
     temp_v1 = arg0 * 4;
     temp_a1 = temp_v1 + &D_801645D0;
     phi_v1 = temp_v1;
@@ -12765,7 +12765,7 @@ void func_8001AC10(s32 playerId, s32 *arg2) {
     s32 phi_v1;
     s16 phi_v0;
 
-    temp_t9 = (playerId * 0xDD8) + D_800DC4DC;
+    temp_t9 = (playerId * 0xDD8) + gPlayerOne;
     sp2C = temp_t9;
     if ((gModeSelection != TIME_TRIALS) && (D_801646CC != 1) && ((*temp_t9 & 0x800) == 0)) {
         temp_s0 = (playerId * 0x10) + &D_801642D8;
@@ -13242,7 +13242,7 @@ void func_8001BE78(void) {
     phi_v0 = &D_80163410;
     phi_fp = &D_80164590;
     do {
-        temp_s1 = phi_s5 + D_800DC4DC;
+        temp_s1 = phi_s5 + gPlayerOne;
         temp_s1->unk0 = temp_s1->unk0 & 0xDFFF;
         *phi_s6 = phi_s2;
         phi_s4->unkC = 0.0f;

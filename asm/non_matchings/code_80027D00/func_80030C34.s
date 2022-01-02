@@ -1,53 +1,53 @@
 glabel func_80030C34
-/* 031834 80030C34 3C0E800E */  lui   $t6, %hi(D_800DC4DC) # $t6, 0x800e
-/* 031838 80030C38 8DCEC4DC */  lw    $t6, %lo(D_800DC4DC)($t6)
+/* 031834 80030C34 3C0E800E */  lui   $t6, %hi(gPlayerOne) # $t6, 0x800e
+/* 031838 80030C38 8DCEC4DC */  lw    $t6, %lo(gPlayerOne)($t6)
 /* 03183C 80030C3C 27BDFFF8 */  addiu $sp, $sp, -8
-/* 031840 80030C40 3C0F800E */  lui   $t7, %hi(D_800DC4E0) # $t7, 0x800e
+/* 031840 80030C40 3C0F800E */  lui   $t7, %hi(gPlayerTwo) # $t7, 0x800e
 /* 031844 80030C44 148E0002 */  bne   $a0, $t6, .L80030C50
-/* 031848 80030C48 3C18800E */   lui   $t8, %hi(D_800DC4E4) # $t8, 0x800e
+/* 031848 80030C48 3C18800E */   lui   $t8, %hi(gPlayerThree) # $t8, 0x800e
 /* 03184C 80030C4C AFA00004 */  sw    $zero, 4($sp)
 .L80030C50:
-/* 031850 80030C50 8DEFC4E0 */  lw    $t7, %lo(D_800DC4E0)($t7)
+/* 031850 80030C50 8DEFC4E0 */  lw    $t7, %lo(gPlayerTwo)($t7)
 /* 031854 80030C54 8FA20004 */  lw    $v0, 4($sp)
-/* 031858 80030C58 3C19800E */  lui   $t9, %hi(D_800DC4E8) # $t9, 0x800e
+/* 031858 80030C58 3C19800E */  lui   $t9, %hi(gPlayerFour) # $t9, 0x800e
 /* 03185C 80030C5C 148F0002 */  bne   $a0, $t7, .L80030C68
-/* 031860 80030C60 3C09800E */   lui   $t1, %hi(D_800DC4EC) # $t1, 0x800e
+/* 031860 80030C60 3C09800E */   lui   $t1, %hi(gPlayerFive) # $t1, 0x800e
 /* 031864 80030C64 24020001 */  li    $v0, 1
 .L80030C68:
-/* 031868 80030C68 8F18C4E4 */  lw    $t8, %lo(D_800DC4E4)($t8)
-/* 03186C 80030C6C 3C0A800E */  lui   $t2, %hi(D_800DC4F0) # $t2, 0x800e
-/* 031870 80030C70 3C0B800E */  lui   $t3, %hi(D_800DC4F4) # $t3, 0x800e
+/* 031868 80030C68 8F18C4E4 */  lw    $t8, %lo(gPlayerThree)($t8)
+/* 03186C 80030C6C 3C0A800E */  lui   $t2, %hi(gPlayerSix) # $t2, 0x800e
+/* 031870 80030C70 3C0B800E */  lui   $t3, %hi(gPlayerSeven) # $t3, 0x800e
 /* 031874 80030C74 14980002 */  bne   $a0, $t8, .L80030C80
-/* 031878 80030C78 3C0C800E */   lui   $t4, %hi(D_800DC4F8) # $t4, 0x800e
+/* 031878 80030C78 3C0C800E */   lui   $t4, %hi(gPlayerEight) # $t4, 0x800e
 /* 03187C 80030C7C 24020002 */  li    $v0, 2
 .L80030C80:
-/* 031880 80030C80 8F39C4E8 */  lw    $t9, %lo(D_800DC4E8)($t9)
+/* 031880 80030C80 8F39C4E8 */  lw    $t9, %lo(gPlayerFour)($t9)
 /* 031884 80030C84 3C0D8016 */  lui   $t5, %hi(D_80165460) # $t5, 0x8016
 /* 031888 80030C88 25AD5460 */  addiu $t5, %lo(D_80165460) # addiu $t5, $t5, 0x5460
 /* 03188C 80030C8C 14990002 */  bne   $a0, $t9, .L80030C98
 /* 031890 80030C90 00000000 */   nop
 /* 031894 80030C94 24020003 */  li    $v0, 3
 .L80030C98:
-/* 031898 80030C98 8D29C4EC */  lw    $t1, %lo(D_800DC4EC)($t1)
+/* 031898 80030C98 8D29C4EC */  lw    $t1, %lo(gPlayerFive)($t1)
 /* 03189C 80030C9C 3C0F8016 */  lui   $t7, %hi(gPlayerIsThrottleActive) # $t7, 0x8016
 /* 0318A0 80030CA0 25EF53E0 */  addiu $t7, %lo(gPlayerIsThrottleActive) # addiu $t7, $t7, 0x53e0
 /* 0318A4 80030CA4 14890002 */  bne   $a0, $t1, .L80030CB0
 /* 0318A8 80030CA8 00000000 */   nop
 /* 0318AC 80030CAC 24020004 */  li    $v0, 4
 .L80030CB0:
-/* 0318B0 80030CB0 8D4AC4F0 */  lw    $t2, %lo(D_800DC4F0)($t2)
+/* 0318B0 80030CB0 8D4AC4F0 */  lw    $t2, %lo(gPlayerSix)($t2)
 /* 0318B4 80030CB4 3C098016 */  lui   $t1, %hi(D_80165420) # $t1, 0x8016
 /* 0318B8 80030CB8 25295420 */  addiu $t1, %lo(D_80165420) # addiu $t1, $t1, 0x5420
 /* 0318BC 80030CBC 148A0002 */  bne   $a0, $t2, .L80030CC8
 /* 0318C0 80030CC0 00000000 */   nop
 /* 0318C4 80030CC4 24020005 */  li    $v0, 5
 .L80030CC8:
-/* 0318C8 80030CC8 8D6BC4F4 */  lw    $t3, %lo(D_800DC4F4)($t3)
+/* 0318C8 80030CC8 8D6BC4F4 */  lw    $t3, %lo(gPlayerSeven)($t3)
 /* 0318CC 80030CCC 148B0002 */  bne   $a0, $t3, .L80030CD8
 /* 0318D0 80030CD0 00000000 */   nop
 /* 0318D4 80030CD4 24020006 */  li    $v0, 6
 .L80030CD8:
-/* 0318D8 80030CD8 8D8CC4F8 */  lw    $t4, %lo(D_800DC4F8)($t4)
+/* 0318D8 80030CD8 8D8CC4F8 */  lw    $t4, %lo(gPlayerEight)($t4)
 /* 0318DC 80030CDC 3C0B8016 */  lui   $t3, %hi(D_80165480) # $t3, 0x8016
 /* 0318E0 80030CE0 256B5480 */  addiu $t3, %lo(D_80165480) # addiu $t3, $t3, 0x5480
 /* 0318E4 80030CE4 548C0003 */  bnel  $a0, $t4, .L80030CF4

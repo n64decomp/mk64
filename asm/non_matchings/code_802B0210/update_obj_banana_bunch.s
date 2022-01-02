@@ -22,7 +22,7 @@ glabel update_obj_banana_bunch
 /* 11A088 802B0A78 00390821 */  addu  $at, $at, $t9
 /* 11A08C 802B0A7C 8C399E98 */  lw    $t9, %lo(jpt_802B9E98)($at)
 /* 11A090 802B0A80 03200008 */  jr    $t9
-/* 11A094 802B0A84 00000000 */   nop   
+/* 11A094 802B0A84 00000000 */   nop
 glabel L802B0A88
 /* 11A098 802B0A88 02002025 */  move  $a0, $s0
 /* 11A09C 802B0A8C 00E02825 */  move  $a1, $a3
@@ -224,13 +224,13 @@ glabel L802B0C70
 /* 11A37C 802B0D6C 000C6900 */  sll   $t5, $t4, 4
 /* 11A380 802B0D70 01AE1021 */  addu  $v0, $t5, $t6
 /* 11A384 802B0D74 94430006 */  lhu   $v1, 6($v0)
-/* 11A388 802B0D78 3C19800E */  lui   $t9, %hi(D_800DC4DC) # $t9, 0x800e
+/* 11A388 802B0D78 3C19800E */  lui   $t9, %hi(gPlayerOne) # $t9, 0x800e
 /* 11A38C 802B0D7C 24010DD8 */  li    $at, 3544
 /* 11A390 802B0D80 306F2000 */  andi  $t7, $v1, 0x2000
 /* 11A394 802B0D84 11E0001E */  beqz  $t7, .L802B0E00
 /* 11A398 802B0D88 3078DFFF */   andi  $t8, $v1, 0xdfff
 /* 11A39C 802B0D8C A4580006 */  sh    $t8, 6($v0)
-/* 11A3A0 802B0D90 8F39C4DC */  lw    $t9, %lo(D_800DC4DC)($t9)
+/* 11A3A0 802B0D90 8F39C4DC */  lw    $t9, %lo(gPlayerOne)($t9)
 /* 11A3A4 802B0D94 3C051900 */  lui   $a1, (0x19008012 >> 16) # lui $a1, 0x1900
 /* 11A3A8 802B0D98 34A58012 */  ori   $a1, (0x19008012 & 0xFFFF) # ori $a1, $a1, 0x8012
 /* 11A3AC 802B0D9C 00F92023 */  subu  $a0, $a3, $t9
@@ -245,7 +245,7 @@ glabel L802B0C70
 /* 11A3D0 802B0DC0 84440002 */  lh    $a0, 2($v0)
 /* 11A3D4 802B0DC4 2881001F */  slti  $at, $a0, 0x1f
 /* 11A3D8 802B0DC8 1420000B */  bnez  $at, .L802B0DF8
-/* 11A3DC 802B0DCC 00000000 */   nop   
+/* 11A3DC 802B0DCC 00000000 */   nop
 /* 11A3E0 802B0DD0 84430000 */  lh    $v1, ($v0)
 /* 11A3E4 802B0DD4 28610028 */  slti  $at, $v1, 0x28
 /* 11A3E8 802B0DD8 10200007 */  beqz  $at, .L802B0DF8
@@ -265,4 +265,4 @@ glabel L802B0C70
 /* 11A414 802B0E04 8FB00018 */  lw    $s0, 0x18($sp)
 /* 11A418 802B0E08 27BD0038 */  addiu $sp, $sp, 0x38
 /* 11A41C 802B0E0C 03E00008 */  jr    $ra
-/* 11A420 802B0E10 00000000 */   nop   
+/* 11A420 802B0E10 00000000 */   nop

@@ -1,6 +1,6 @@
 glabel func_80019FB4
-/* 01ABB4 80019FB4 3C0F800E */  lui   $t7, %hi(D_800DC4BC)
-/* 01ABB8 80019FB8 8DEFC4BC */  lw    $t7, %lo(D_800DC4BC)($t7)
+/* 01ABB4 80019FB4 3C0F800E */  lui   $t7, %hi(gControllerOne)
+/* 01ABB8 80019FB8 8DEFC4BC */  lw    $t7, %lo(gControllerOne)($t7)
 /* 01ABBC 80019FBC 00047100 */  sll   $t6, $a0, 4
 /* 01ABC0 80019FC0 3C088016 */  lui   $t0, %hi(D_801645D0) # $t0, 0x8016
 /* 01ABC4 80019FC4 01CF1021 */  addu  $v0, $t6, $t7
@@ -66,4 +66,4 @@ glabel func_80019FB4
 /* 01AC94 8001A094 00230821 */  addu  $at, $at, $v1
 /* 01AC98 8001A098 AC204628 */  sw    $zero, %lo(D_80164628)($at) # 0x4628($at)
 /* 01AC9C 8001A09C 03E00008 */  jr    $ra
-/* 01ACA0 8001A0A0 00000000 */   nop   
+/* 01ACA0 8001A0A0 00000000 */   nop
