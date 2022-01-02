@@ -32,7 +32,7 @@ glabel L800ACC84
 /* 0AD8C0 800ACCC0 000B3E03 */  sra   $a3, $t3, 0x18
 /* 0AD8C4 800ACCC4 260400B1 */  addiu $a0, $s0, 0xb1
 /* 0AD8C8 800ACCC8 00002825 */  move  $a1, $zero
-/* 0AD8CC 800ACCCC 0C027994 */  jal   func_8009E650
+/* 0AD8CC 800ACCCC 0C027994 */  jal   add_8018D9E0_entry
 /* 0AD8D0 800ACCD0 00003025 */   move  $a2, $zero
 /* 0AD8D4 800ACCD4 3C0D8019 */  lui   $t5, %hi(D_8018EDF3) # $t5, 0x8019
 /* 0AD8D8 800ACCD8 81ADEDF3 */  lb    $t5, %lo(D_8018EDF3)($t5)

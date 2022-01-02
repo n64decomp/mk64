@@ -21,7 +21,7 @@ glabel L800AD1D8
 /* 0ADDEC 800AD1EC 240400BB */  li    $a0, 187
 /* 0ADDF0 800AD1F0 00002825 */  move  $a1, $zero
 /* 0ADDF4 800AD1F4 00003025 */  move  $a2, $zero
-/* 0ADDF8 800AD1F8 0C027994 */  jal   func_8009E650
+/* 0ADDF8 800AD1F8 0C027994 */  jal   add_8018D9E0_entry
 /* 0ADDFC 800AD1FC 00003825 */   move  $a3, $zero
 /* 0ADE00 800AD200 10000035 */  b     .L800AD2D8
 /* 0ADE04 800AD204 8FBF001C */   lw    $ra, 0x1c($sp)
@@ -60,7 +60,7 @@ glabel L800AD254
 /* 0ADE7C 800AD27C 00002825 */  move  $a1, $zero
 /* 0ADE80 800AD280 00003025 */  move  $a2, $zero
 /* 0ADE84 800AD284 00003825 */  move  $a3, $zero
-/* 0ADE88 800AD288 0C027994 */  jal   func_8009E650
+/* 0ADE88 800AD288 0C027994 */  jal   add_8018D9E0_entry
 /* 0ADE8C 800AD28C AE0F001C */   sw    $t7, 0x1c($s0)
 /* 0ADE90 800AD290 10000011 */  b     .L800AD2D8
 /* 0ADE94 800AD294 8FBF001C */   lw    $ra, 0x1c($sp)
