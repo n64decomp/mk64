@@ -5,11 +5,11 @@
 #include <config.h>
 #include <defines.h>
 
-extern Player *D_800DC4E0;
-extern Player *D_800DC4E4;
-extern Player *D_800DC4E8;
-extern Player *D_800DC4FC;
-extern Player *D_800DC500;
+extern Player *gPlayerTwo;
+extern Player *gPlayerThree;
+extern Player *gPlayerFour;
+extern Player *gPlayerOneCopy;
+extern Player *gPlayerTwoCopy;
 
 extern struct Camera *camera1;
 extern struct Camera *camera2;
@@ -17,12 +17,12 @@ extern struct Camera *camera3;
 extern struct Camera *camera4;
 
 extern struct Controller gControllers[];
-extern struct Controller *D_800DC4BC;
-extern struct Controller *D_800DC4C4;
-extern struct Controller *D_800DC4C8;
-extern struct Controller *D_800DC4CC;
-extern struct Controller *D_800DC4D0;
-extern struct Controller *D_800DC4D4;
+extern struct Controller *gControllerOne;
+extern struct Controller *gControllerThree;
+extern struct Controller *gControllerFour;
+extern struct Controller *gControllerFive;
+extern struct Controller *gControllerSix;
+extern struct Controller *gControllerSeven;
 
 extern struct UnkStruct_800DC5EC D_8015F480[];
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
@@ -43,8 +43,8 @@ extern s8 gCupCourseSelection;
 extern s32 D_800DC544;
 
 extern Player gPlayers[];
-extern Player *D_800DC4E0;
-extern Player *D_800DC4DC;
+extern Player *gPlayerTwo;
+extern Player *gPlayerOne;
 extern s32 lapCount[];
 extern s32 D_80150120;
 extern s32 gModeSelection;
@@ -65,7 +65,7 @@ extern u16 D_800DC518;
 extern u16 D_8015011E;
 extern float gCourseTimer;
 extern float D_800DC594;
-extern s32 D_800DC530;
+extern s32 gScreenModeSelection;
 extern s32 D_8018D2AC;
 extern s32 D_800DC52C;
 extern s16 gCurrentCourseId;
@@ -73,7 +73,7 @@ extern u16 D_80162DD4[];
 extern u16 D_8015F890;
 extern u32 D_800DC5AC;
 extern u16 gEnableDebugMode;
-extern s32 D_800DC5E8;
+extern s32 gPlayerWinningIndex;
 extern u16 gIsInQuitToMenuTransition, gQuitToMenuTransitionCounter;
 extern s32 D_802B91E0;
 extern s16 D_8015F8F2[];
@@ -102,8 +102,8 @@ extern void func_80078F64();
 extern void func_800925A0();
 extern void func_8028F4E8();
 extern void func_8028EDA8();
-extern void func_8028E0F0();
-extern void func_8028F3F0();
+extern void update_player_battle_status();
+extern void update_race_position_data();
 extern void func_8028F970();
 extern void func_8028E298();
 extern void func_80092564();
@@ -152,29 +152,30 @@ void func_8028E028(void) {
 
     switch(gPlayerCountSelection1) {
         case 2:
-            *(D_8015F8C4 + D_800DC5E8) += 1;
+            *(D_8015F8C4 + gPlayerWinningIndex) += 1;
             break;
         case 3:
-            *(D_8015F8C8 + D_800DC5E8) += 1;
+            *(D_8015F8C8 + gPlayerWinningIndex) += 1;
             break;
         case 4:
-            *(D_8015F8CC + D_800DC5E8) += 1;
+            *(D_8015F8CC + gPlayerWinningIndex) += 1;
             break;
     }
-    func_800CA118((u8) D_800DC5E8);
+    func_800CA118((u8) gPlayerWinningIndex);
     D_800DC510 = 5;
     D_802BA038 = 10;
 }
 
-void func_8028E0F0(void) {
+// func_8028E0F0
+void update_player_battle_status(void) {
     Player *ply;
     s32 playerIndex;
-    s16 unk_arr2[4];
-    s16 unk_arr[4];
-    s16 phi_s1 = 0;
-    s16 phi_s2 = 0;
+    s16 playersAlive[4];
+    s16 playersDead[4];
+    s16 aliveCounter = 0;
+    s16 deadCounter = 0;
 
-    for(playerIndex = 0; playerIndex < 4; playerIndex++) {
+    for (playerIndex = 0; playerIndex < 4; playerIndex++) {
         ply = (Player *)&gPlayers[playerIndex];
         if (!(ply->unk_000 & PLAYER_EXISTS)) {
             continue;
@@ -182,26 +183,26 @@ void func_8028E0F0(void) {
         if (ply->unk_000 & PLAYER_CINEMATIC_MODE) {
             continue;
         }
-
         // If player has no balloons left
         if (gPlayerBalloonCount[playerIndex] < 0) {
             ply->unk_000 |= PLAYER_CINEMATIC_MODE;
-            unk_arr[phi_s2] = (s16) (ply - D_800DC4DC);
-            phi_s2++;
-            func_800CA118((u8) playerIndex);
+            playersDead[deadCounter] = (s16) (ply - gPlayerOne);
+            deadCounter++;
+            func_800CA118((u8) playerIndex); // play sad character sound?
         } else {
-            unk_arr2[phi_s1] = (s16) (ply - D_800DC4DC);
-            phi_s1++;
+            playersAlive[aliveCounter] = (s16) (ply - gPlayerOne);
+            aliveCounter++;
         }
     }
-    if (phi_s1 == 1) {
-        D_800DC5E8 = (s32) unk_arr2[0];
+    if (aliveCounter == 1) {
+        gPlayerWinningIndex = (s32) playersAlive[0];
         func_8028E028();
-    } else if (phi_s1 == 0) {
-        D_800DC5E8 = (s32) unk_arr[0];
+    } else if (aliveCounter == 0) {
+        gPlayerWinningIndex = (s32) playersDead[0];
         func_8028E028();
     }
 }
+
 extern f32 gTimePlayerLastTouchedFinishLine[];
 extern u16 D_801645B0[];
 extern u16 D_801645C8[];
@@ -248,7 +249,7 @@ void func_8028E3A0(void) {
 }
 
 void func_8028E438(void) {
-    struct UnkStruct_800DC5EC *temp_v0 = &D_8015F480[D_800DC5E8];
+    struct UnkStruct_800DC5EC *temp_v0 = &D_8015F480[gPlayerWinningIndex];
     s32 phi_v1_4;
 
     D_800DC5B0 = 1;
@@ -336,14 +337,14 @@ void func_8028E678(void) {
                     break;
             }
             D_800DC5B8 = 0;
-            switch(D_800DC530) {
-                case 0:
+            switch(gScreenModeSelection) {
+                case SCREEN_MODE_1P:
                     D_8015F894 = 1;
                     break;
-                case 1:
+                case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
                     D_8015F894 = 5;
                     break;
-                case 2:
+                case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                     D_8015F894 = 6;
                     break;
             }
@@ -505,7 +506,7 @@ void func_8028EC38(s32 arg0) {
 
 void func_8028EC98(s32 arg0) {
 
-    if (D_800DC530 == 3) {
+    if (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) {
         return;
     }
 
@@ -647,7 +648,7 @@ void func_8028EF28(void) {
                     if (gModeSelection == VERSUS) {
                         D_802BA038 = 180;
                         if (currentPosition == 0) {
-                            D_800DC5E8 = i;
+                            gPlayerWinningIndex = i;
                         }
                         switch(gPlayerCountSelection1) {
                             case 2:
@@ -727,20 +728,21 @@ void func_8028EF28(void) {
 void func_8028F3E8(void) {
 
 }
-extern s32 D_801643B8[];
-extern s16 D_8015F8F0[];
+extern s32 gPlayerPositions[]; // D_801643B8 (position for each player)
+extern s16 gPlayerPositionLUT[]; // D_8015F8F0 (player index at each position)
 
-void func_8028F3F0(void) {
+// func_8028F3F0
+void update_race_position_data(void) {
     s16 i;
-    s16 temp_a0_2;
+    s16 position;
 
     for (i = 0; i < 8; i++) {
         if (((gPlayers[i].unk_000 & PLAYER_EXISTS) != 0) &&
             ((gPlayers[i].unk_000 & PLAYER_CINEMATIC_MODE) == 0) &&
             ((gPlayers[i].unk_000 & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
-            temp_a0_2 = D_801643B8[i];
-            gPlayers[i].unk_004 = temp_a0_2;
-            D_8015F8F0[temp_a0_2] = i;
+            position = gPlayerPositions[i];
+            gPlayers[i].unk_004 = position;
+            gPlayerPositionLUT[position] = i;
         }
     }
 }
@@ -765,10 +767,10 @@ void func_8028F474(void) {
 
 void func_8028F4E8(void) {
     if (gEnableDebugMode != 0) {
-        if (((D_800DC4CC->button & 0x10) != 0) &&
-            ((D_800DC4CC->button & 0x20) != 0) &&
-            ((D_800DC4CC->button & 0x8000) != 0) &&
-            ((D_800DC4CC->button & 0x4000) != 0)) {
+        if (((gControllerFive->button & 0x10) != 0) &&
+            ((gControllerFive->button & 0x20) != 0) &&
+            ((gControllerFive->button & 0x8000) != 0) &&
+            ((gControllerFive->button & 0x4000) != 0)) {
 
             func_800CA330(0x19);
             func_800CA388(0x19);
@@ -956,20 +958,20 @@ loop_2:
             }
             if (((temp_s0->buttonPressed & 0x1000) != 0) && (temp_v0_3 = temp_s0->button, ((temp_v0_3 & 0x10) == 0)) && ((temp_v0_3 & 0x20) == 0)) {
                 func_8028DF00();
-                D_800DC5FC = (s16) (((s32) (temp_s0 - D_800DC4BC) >> 4) + 1);
+                D_800DC5FC = (s16) (((s32) (temp_s0 - gControllerOne) >> 4) + 1);
                 temp_s0->buttonPressed = 0;
                 func_800C9F90(1);
                 D_80162DF0 = 1;
                 if (gModeSelection == TIME_TRIALS) {
-                    temp_a0 = D_800DC4DC;
+                    temp_a0 = gPlayerOne;
                     if ((temp_a0->unk_000 & 0x8100) != 0) {
                         func_80005AE8(temp_a0);
                     }
-                    temp_a0_2 = D_800DC4E0;
+                    temp_a0_2 = gPlayerTwo;
                     if ((temp_a0_2->unk_000 & 0x8100) != 0) {
                         func_80005AE8(temp_a0_2);
                     }
-                    temp_a0_3 = D_800DC4E4;
+                    temp_a0_3 = gPlayerThree;
                     if ((temp_a0_3->unk_000 & 0x8100) != 0) {
                         func_80005AE8(temp_a0_3);
                         return;
@@ -988,7 +990,7 @@ block_20:
         phi_s2 = temp_s2;
         if (temp_s2 == 4) {
             if ((gEnableDebugMode != 0) && (gModeSelection != BATTLE)) {
-                temp_a1 = D_800DC4BC;
+                temp_a1 = gControllerOne;
                 if ((temp_a1->buttonPressed & 0x800) != 0) {
                     lapCount->unk0 = 2;
                 }
@@ -1036,7 +1038,7 @@ void func_8028FC34(void) {
         return;
     }
     D_802BA038--;
-    if (D_800DC4CC->buttonPressed != 0) {
+    if (gControllerFive->buttonPressed != 0) {
         func_8028FBD4();
         gMenuSelection = START_MENU;
         return;
@@ -1079,7 +1081,7 @@ void func_8028FCBC(void) {
             D_800DC5B4 = 1;
             D_802BA034 = 0.008f;
             D_8015F894 = 0;
-            if (D_800DC530 != 0) {
+            if (gScreenModeSelection != SCREEN_MODE_1P) {
                 func_8005C64C(&D_8018D2AC);
             }
             for (i = 0; i < 8; i++) {
@@ -1125,16 +1127,16 @@ void func_8028FCBC(void) {
             if (D_800DC51C != 0) {
                 func_8028EDA8();
             }
-            if ((gEnableDebugMode != 0) && ((D_800DC4CC->buttonPressed & 0x2000) != 0)) {
+            if ((gEnableDebugMode != 0) && ((gControllerFive->buttonPressed & 0x2000) != 0)) {
                 func_8028EDA8();
             }
             func_8028F4E8();
             break;
         case 3:
             if (gModeSelection == BATTLE) {
-                func_8028E0F0();
+                update_player_battle_status();
             } else {
-                func_8028F3F0();
+                update_race_position_data();
                 func_8028EF28();
             }
             func_8028F4E8();
@@ -1145,24 +1147,25 @@ void func_8028FCBC(void) {
             switch(gModeSelection) {
                 case GRAND_PRIX:
                     func_8028F4E8();
-                    func_8028F3F0();
+                    update_race_position_data();
                     func_8028EF28();
                     func_8028F970();
 
-                    switch(D_800DC530) {
-                        case 0:
+                    switch(gScreenModeSelection) {
+                        case SCREEN_MODE_1P:
                             D_802BA038 = 690;
                             D_800DC510 = 5;
                             func_8028E298();
                             break;
-                        case 1:
-                        case 2:
-                            if (((D_800DC4DC->unk_000 & PLAYER_CINEMATIC_MODE) != 0) && ((D_800DC4E0->unk_000 & PLAYER_CINEMATIC_MODE) != 0)) {
+                        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+                        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+                            if (((gPlayerOne->unk_000 & PLAYER_CINEMATIC_MODE) != 0) && ((gPlayerTwo->unk_000 & PLAYER_CINEMATIC_MODE) != 0)) {
 
-                                if (D_800DC4DC->unk_004 < D_800DC4E0->unk_004) {
-                                    D_800DC5E8 = 1;
+
+                                if (gPlayerOne->unk_004 < gPlayerTwo->unk_004) {
+                                    gPlayerWinningIndex = 1;
                                 } else {
-                                    D_800DC5E8 = 0;
+                                    gPlayerWinningIndex = 0;
                                 }
 
                                 func_8028E298();
@@ -1174,7 +1177,7 @@ void func_8028FCBC(void) {
                     break;
                 case VERSUS:
                     func_8028F4E8();
-                    func_8028F3F0();
+                    update_race_position_data();
                     func_8028EF28();
                     func_8028F970();
                     break;
@@ -1196,7 +1199,7 @@ void func_8028FCBC(void) {
                     case GRAND_PRIX:
                         if (D_80150120 != 0) {
                             func_8028E678();
-                        } else if (D_800DC530 == 0) {
+                        } else if (gScreenModeSelection == SCREEN_MODE_1P) {
                             func_80092564();
                             D_800DC510 = 7;
                         } else {
@@ -1235,7 +1238,7 @@ UNUSED void func_80290314(void) {
 void func_80290338(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    gMenuSelectionFromQuit = GAME_SELECT_MENU_FROM_QUIT;
+    gMenuSelectionFromQuit = MAIN_MENU_FROM_QUIT;
 }
 
 void func_80290360(void) {
@@ -1316,7 +1319,7 @@ void func_802903D8(u16 *arg0, u16 *arg1) {
             if ((arg1->unk0 & 0x40) != 0) {
                 func_8008FC1C(temp_f0_2, temp_a2, temp_a3);
                 func_8008FC1C((bitwise f32) arg1);
-                func_800C9060(((s32) (arg1 - D_800DC4DC) / 0xDD8) & 0xFF, 6.643295e-24f, arg1);
+                func_800C9060(((s32) (arg1 - gPlayerOne) / 0xDD8) & 0xFF, 6.643295e-24f, arg1);
                 return;
             }
             temp_a0 = temp_a3;
@@ -1325,7 +1328,7 @@ void func_802903D8(u16 *arg0, u16 *arg1) {
             arg0 = temp_a3;
             arg1 = temp_a2;
             func_8008FC1C(temp_f0_2, temp_a0, temp_a2, temp_a3);
-            func_800C9060(((s32) (arg1 - D_800DC4DC) / 0xDD8) & 0xFF, 6.643295e-24f, arg1);
+            func_800C9060(((s32) (arg1 - gPlayerOne) / 0xDD8) & 0xFF, 6.643295e-24f, arg1);
             phi_a3 = arg0;
             phi_a2 = arg1;
             goto block_8;
@@ -1336,7 +1339,7 @@ void func_802903D8(u16 *arg0, u16 *arg1) {
             temp_a3->unkC = (s32) (temp_a3->unkC | 0x400000);
             arg0 = temp_a3;
             func_8008FC1C(temp_f0_2, temp_a2, temp_a2, temp_a3);
-            func_800C9060(((s32) (arg0 - D_800DC4DC) / 0xDD8) & 0xFF, 6.643295e-24f);
+            func_800C9060(((s32) (arg0 - gPlayerOne) / 0xDD8) & 0xFF, 6.643295e-24f);
             return;
         }
 block_8:
@@ -1388,11 +1391,11 @@ block_8:
             phi_a2->unk1C = (f32) (phi_a2->unk1C + (sp68 * temp_f0_5 * 0.5f));
         }
         if ((phi_a3->unk0 & 0x4000) != 0) {
-            func_800C9060((bitwise s32) 0.5f, sqrtf(temp_f0), (u16 *) (((s32) (phi_a3 - D_800DC4DC) / 0xDD8) & 0xFF), 0x19008001, phi_a2, phi_a3);
+            func_800C9060((bitwise s32) 0.5f, sqrtf(temp_f0), (u16 *) (((s32) (phi_a3 - gPlayerOne) / 0xDD8) & 0xFF), 0x19008001, phi_a2, phi_a3);
             return;
         }
         if ((phi_a2->unk0 & 0x4000) != 0) {
-            func_800C9060((bitwise s32) 0.5f, sqrtf(temp_f0), (u16 *) (((s32) (phi_a2 - D_800DC4DC) / 0xDD8) & 0xFF), 0x19008001, phi_a2, phi_a3);
+            func_800C9060((bitwise s32) 0.5f, sqrtf(temp_f0), (u16 *) (((s32) (phi_a2 - gPlayerOne) / 0xDD8) & 0xFF), 0x19008001, phi_a2, phi_a3);
         }
         // Duplicate return node #24. Try simplifying control flow for better match
     }
@@ -1436,18 +1439,18 @@ void func_80290B14(void) {
 
     switch(D_800DC52C) {
         case 0:
-            func_8001EE98(D_800DC4FC, camera1, 0);
+            func_8001EE98(gPlayerOneCopy, camera1, 0);
             break;
         case 1:
         case 2:
-            func_8001EE98(D_800DC4FC, camera1, 0);
-            func_8001EE98(D_800DC500, camera2, 1);
+            func_8001EE98(gPlayerOneCopy, camera1, 0);
+            func_8001EE98(gPlayerTwoCopy, camera2, 1);
             break;
         case 3:
-            func_8001EE98(D_800DC4FC, camera1, 0);
-            func_8001EE98(D_800DC4E0, camera2, 1);
-            func_8001EE98(D_800DC4E4, camera3, 2);
-            func_8001EE98(D_800DC4E8, camera4, 3);
+            func_8001EE98(gPlayerOneCopy, camera1, 0);
+            func_8001EE98(gPlayerTwo, camera2, 1);
+            func_8001EE98(gPlayerThree, camera3, 2);
+            func_8001EE98(gPlayerFour, camera4, 3);
             break;
     }
 }

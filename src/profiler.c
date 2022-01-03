@@ -221,7 +221,7 @@ void draw_profiler_mode_0(void) {
     draw_reference_profiler_bars();
 }
 
-extern struct Controller *D_800DC4BC;
+extern struct Controller *gControllerOne;
 
 // Similar to draw_screen_borders from SM64, with a hint of draw_profiler
 void resource_display(void) {
@@ -231,7 +231,7 @@ void resource_display(void) {
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
     gDPSetFillColor(gDisplayListHead++, GPACK_RGBA5551(0, 0, 0, 0) << 16 | GPACK_RGBA5551(0, 0, 0, 0));
 
-    if ((D_800DC4BC->buttonPressed & 0x20) != 0) {
+    if ((gControllerOne->buttonPressed & 0x20) != 0) {
         D_800DC664 ^= 1;
     }
     draw_profiler_mode_0();

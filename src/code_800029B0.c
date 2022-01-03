@@ -23,7 +23,7 @@ struct UnkStruct8015F8D0 {
 
 extern struct UnkStruct8015F8D0 D_8015F8D0;
 
-extern struct Controller *D_800DC4BC[];
+extern struct Controller *gControllerOne[];
 
 extern s32 D_800DC510;
 extern s16 D_8015F6FE;
@@ -41,7 +41,7 @@ extern s8 D_8018EDF3;
 extern s8 gCupSelection;
 
 
-extern u32 D_800DC530;
+extern u32 gScreenModeSelection;
 extern u32 D_8015F730;
 extern u32 D_8015F734;
 extern u32 gPrevLoadedAddress;
@@ -85,8 +85,8 @@ s32 D_800DC5E0 = 32;
 
 s16 D_800DC5E4 = 0;
 
-// TODO: D_800DC5E8 accessed as word, D_800DC5EB as u8
-s32 D_800DC5E8 = 0;
+// TODO: gPlayerWinningIndex (D_800DC5E8) accessed as word, D_800DC5EB as u8
+s32 gPlayerWinningIndex = 0;
 
 struct UnkStruct_800DC5EC D_8015F480[4];
 struct UnkStruct_800DC5EC *D_800DC5EC = &D_8015F480[0];
@@ -99,12 +99,12 @@ s32 gIsMirrorMode = 0;
 f32 D_800DC608 =  1.0f;
 Lights1 D_800DC610[] = {
     {
-        {175, 175, 175, 0, 175, 175, 175, 0}, 
+        {175, 175, 175, 0, 175, 175, 175, 0},
         {255, 255, 255, 0, 255, 255, 255, 0, 0, 0, 120, 0},
     },
 
     {
-        {115, 115, 115, 0, 115, 115, 115, 0}, 
+        {115, 115, 115, 0, 115, 115, 115, 0},
         {255, 255, 255, 0, 255, 255, 255, 0, 0, 0, 120, 0},
 
     },
@@ -128,7 +128,7 @@ void func_800029B0(void) {
 }
 
 void func_80002A18(void) {
-    struct Controller *temp_v0;
+    struct Controller *controller;
     int tmp;
 
     gPlayerCountSelection1 = D_8018EDF3;
@@ -143,7 +143,7 @@ void func_80002A18(void) {
     if (gModeSelection == GRAND_PRIX) {
         gCurrentCourseId = gCupCourseOrder[gCupSelection][gCupCourseSelection];
     }
-    D_800DC52C = D_800DC530;
+    D_800DC52C = gScreenModeSelection;
     if (gCurrentCourseId != gCurrentlyLoadedCourseId) {
         D_80150120 = 0;
         gCurrentlyLoadedCourseId = gCurrentCourseId;
@@ -189,14 +189,14 @@ void func_80002A18(void) {
         func_800CB2C4();
     }
 
-    temp_v0 = *D_800DC4BC;
+    controller = *gControllerOne;
 
-    for (tmp = 0; tmp < 7; tmp++, temp_v0++){
-        temp_v0->rawStickX = 0;
-        temp_v0->rawStickY = 0;
-        temp_v0->buttonPressed = 0;
-        temp_v0->buttonDepressed = 0;
-        temp_v0->button = 0;
+    for (tmp = 0; tmp < 7; tmp++, controller++){
+        controller->rawStickX = 0;
+        controller->rawStickY = 0;
+        controller->buttonPressed = 0;
+        controller->buttonDepressed = 0;
+        controller->button = 0;
     }
 }
 

@@ -15,7 +15,7 @@ glabel func_8008D4B4
 /* 08E0E4 8008D4E4 24E40080 */  addiu $a0, $a3, 0x80
 /* 08E0E8 8008D4E8 3C0543C8 */  lui   $a1, 0x43c8
 /* 08E0EC 8008D4EC 3C063F00 */  lui   $a2, 0x3f00
-/* 08E0F0 8008D4F0 0C008973 */  jal   func_800225CC
+/* 08E0F0 8008D4F0 0C008973 */  jal   move_f32_towards
 /* 08E0F4 8008D4F4 AFA70018 */   sw    $a3, 0x18($sp)
 /* 08E0F8 8008D4F8 10000007 */  b     .L8008D518
 /* 08E0FC 8008D4FC 8FA70018 */   lw    $a3, 0x18($sp)
@@ -23,7 +23,7 @@ glabel func_8008D4B4
 /* 08E100 8008D500 3C063DCC */  lui   $a2, (0x3DCCCCCD >> 16) # lui $a2, 0x3dcc
 /* 08E104 8008D504 34C6CCCD */  ori   $a2, (0x3DCCCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 08E108 8008D508 24050000 */  li    $a1, 0
-/* 08E10C 8008D50C 0C008973 */  jal   func_800225CC
+/* 08E10C 8008D50C 0C008973 */  jal   move_f32_towards
 /* 08E110 8008D510 AFA70018 */   sw    $a3, 0x18($sp)
 /* 08E114 8008D514 8FA70018 */  lw    $a3, 0x18($sp)
 .L8008D518:

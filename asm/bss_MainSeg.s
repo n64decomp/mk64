@@ -8,7 +8,7 @@ glabel D_801636A0
 glabel D_801636B0
 .skip 252
 
-glabel D_801637AC # 
+glabel D_801637AC #
 .skip 12
 
 glabel D_801637B8 # Crossing activated bit field
@@ -190,7 +190,7 @@ glabel D_8016439C
 glabel D_801643B0
 .skip 8
 
-glabel D_801643B8
+glabel gPlayerPositions
 .skip 2
 
 glabel D_801643BA

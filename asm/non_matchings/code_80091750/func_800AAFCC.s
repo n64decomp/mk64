@@ -1,9 +1,9 @@
 glabel func_800AAFCC
 /* 0ABBCC 800AAFCC 24850001 */  addiu $a1, $a0, 1
-/* 0ABBD0 800AAFD0 3C068019 */  lui   $a2, %hi(gCharacterSelections) # $a2, 0x8019
+/* 0ABBD0 800AAFD0 3C068019 */  lui   $a2, %hi(gCharacterGridSelections) # $a2, 0x8019
 /* 0ABBD4 800AAFD4 00001825 */  move  $v1, $zero
 /* 0ABBD8 800AAFD8 00001025 */  move  $v0, $zero
-/* 0ABBDC 800AAFDC 24C6EDE4 */  addiu $a2, %lo(gCharacterSelections) # addiu $a2, $a2, -0x121c
+/* 0ABBDC 800AAFDC 24C6EDE4 */  addiu $a2, %lo(gCharacterGridSelections) # addiu $a2, $a2, -0x121c
 /* 0ABBE0 800AAFE0 24040004 */  li    $a0, 4
 .L800AAFE4:
 /* 0ABBE4 800AAFE4 80CE0000 */  lb    $t6, ($a2)
@@ -24,4 +24,4 @@ glabel func_800AAFCC
 /* 0ABC14 800AB014 2402FFFF */  li    $v0, -1
 .L800AB018:
 /* 0ABC18 800AB018 03E00008 */  jr    $ra
-/* 0ABC1C 800AB01C 00000000 */   nop   
+/* 0ABC1C 800AB01C 00000000 */   nop

@@ -130,7 +130,7 @@ glabel func_8001CA78
 /* 01D868 8001CC68 E7B00044 */  swc1  $f16, 0x44($sp)
 /* 01D86C 8001CC6C 46044280 */  add.s $f10, $f8, $f4
 /* 01D870 8001CC70 460A3480 */  add.s $f18, $f6, $f10
-/* 01D874 8001CC74 0C008973 */  jal   func_800225CC
+/* 01D874 8001CC74 0C008973 */  jal   move_f32_towards
 /* 01D878 8001CC78 E7B20048 */   swc1  $f18, 0x48($sp)
 /* 01D87C 8001CC7C C7AE004C */  lwc1  $f14, 0x4c($sp)
 /* 01D880 8001CC80 C6000000 */  lwc1  $f0, ($s0)

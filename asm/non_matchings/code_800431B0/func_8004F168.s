@@ -3,8 +3,8 @@ glabel func_8004F168
 /* 04FD6C 8004F16C 01C57023 */  subu  $t6, $t6, $a1
 /* 04FD70 8004F170 000E7100 */  sll   $t6, $t6, 4
 /* 04FD74 8004F174 01C57023 */  subu  $t6, $t6, $a1
-/* 04FD78 8004F178 3C0F800E */  lui   $t7, %hi(D_800DC4DC) # $t7, 0x800e
-/* 04FD7C 8004F17C 8DEFC4DC */  lw    $t7, %lo(D_800DC4DC)($t7)
+/* 04FD78 8004F178 3C0F800E */  lui   $t7, %hi(gPlayerOne) # $t7, 0x800e
+/* 04FD7C 8004F17C 8DEFC4DC */  lw    $t7, %lo(gPlayerOne)($t7)
 /* 04FD80 8004F180 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 04FD84 8004F184 000E7080 */  sll   $t6, $t6, 2
 /* 04FD88 8004F188 01C57023 */  subu  $t6, $t6, $a1
@@ -76,9 +76,9 @@ glabel func_8004F168
 /* 04FE88 8004F288 1101003F */  beq   $t0, $at, .L8004F388
 /* 04FE8C 8004F28C 00192C03 */   sra   $a1, $t9, 0x10
 /* 04FE90 8004F290 00074880 */  sll   $t1, $a3, 2
-/* 04FE94 8004F294 3C188016 */  lui   $t8, %hi(D_801643B8)
+/* 04FE94 8004F294 3C188016 */  lui   $t8, %hi(gPlayerPositions)
 /* 04FE98 8004F298 0309C021 */  addu  $t8, $t8, $t1
-/* 04FE9C 8004F29C 8F1843B8 */  lw    $t8, %lo(D_801643B8)($t8)
+/* 04FE9C 8004F29C 8F1843B8 */  lw    $t8, %lo(gPlayerPositions)($t8)
 /* 04FEA0 8004F2A0 3C02800E */  lui   $v0, %hi(gModeSelection) # $v0, 0x800e
 /* 04FEA4 8004F2A4 3C073F80 */  lui   $a3, 0x3f80
 /* 04FEA8 8004F2A8 1700001F */  bnez  $t8, .L8004F328
@@ -140,9 +140,9 @@ glabel func_8004F168
 /* 04FF84 8004F384 8FBF002C */   lw    $ra, 0x2c($sp)
 .L8004F388:
 /* 04FF88 8004F388 00075880 */  sll   $t3, $a3, 2
-/* 04FF8C 8004F38C 3C0D8016 */  lui   $t5, %hi(D_801643B8)
+/* 04FF8C 8004F38C 3C0D8016 */  lui   $t5, %hi(gPlayerPositions)
 /* 04FF90 8004F390 01AB6821 */  addu  $t5, $t5, $t3
-/* 04FF94 8004F394 8DAD43B8 */  lw    $t5, %lo(D_801643B8)($t5)
+/* 04FF94 8004F394 8DAD43B8 */  lw    $t5, %lo(gPlayerPositions)($t5)
 /* 04FF98 8004F398 24070008 */  li    $a3, 8
 /* 04FF9C 8004F39C 24060008 */  li    $a2, 8
 /* 04FFA0 8004F3A0 15A00009 */  bnez  $t5, .L8004F3C8
@@ -164,4 +164,4 @@ glabel func_8004F168
 .L8004F3D8:
 /* 04FFD8 8004F3D8 27BD0030 */  addiu $sp, $sp, 0x30
 /* 04FFDC 8004F3DC 03E00008 */  jr    $ra
-/* 04FFE0 8004F3E0 00000000 */   nop   
+/* 04FFE0 8004F3E0 00000000 */   nop

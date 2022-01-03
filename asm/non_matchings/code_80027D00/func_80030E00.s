@@ -1,53 +1,53 @@
 glabel func_80030E00
-/* 031A00 80030E00 3C0E800E */  lui   $t6, %hi(D_800DC4DC) # $t6, 0x800e
-/* 031A04 80030E04 8DCEC4DC */  lw    $t6, %lo(D_800DC4DC)($t6)
+/* 031A00 80030E00 3C0E800E */  lui   $t6, %hi(gPlayerOne) # $t6, 0x800e
+/* 031A04 80030E04 8DCEC4DC */  lw    $t6, %lo(gPlayerOne)($t6)
 /* 031A08 80030E08 27BDFFF8 */  addiu $sp, $sp, -8
-/* 031A0C 80030E0C 3C0F800E */  lui   $t7, %hi(D_800DC4E0) # $t7, 0x800e
+/* 031A0C 80030E0C 3C0F800E */  lui   $t7, %hi(gPlayerTwo) # $t7, 0x800e
 /* 031A10 80030E10 148E0002 */  bne   $a0, $t6, .L80030E1C
-/* 031A14 80030E14 3C18800E */   lui   $t8, %hi(D_800DC4E4) # $t8, 0x800e
+/* 031A14 80030E14 3C18800E */   lui   $t8, %hi(gPlayerThree) # $t8, 0x800e
 /* 031A18 80030E18 AFA00004 */  sw    $zero, 4($sp)
 .L80030E1C:
-/* 031A1C 80030E1C 8DEFC4E0 */  lw    $t7, %lo(D_800DC4E0)($t7)
+/* 031A1C 80030E1C 8DEFC4E0 */  lw    $t7, %lo(gPlayerTwo)($t7)
 /* 031A20 80030E20 8FA20004 */  lw    $v0, 4($sp)
-/* 031A24 80030E24 3C19800E */  lui   $t9, %hi(D_800DC4E8) # $t9, 0x800e
+/* 031A24 80030E24 3C19800E */  lui   $t9, %hi(gPlayerFour) # $t9, 0x800e
 /* 031A28 80030E28 148F0002 */  bne   $a0, $t7, .L80030E34
-/* 031A2C 80030E2C 3C09800E */   lui   $t1, %hi(D_800DC4EC) # $t1, 0x800e
+/* 031A2C 80030E2C 3C09800E */   lui   $t1, %hi(gPlayerFive) # $t1, 0x800e
 /* 031A30 80030E30 24020001 */  li    $v0, 1
 .L80030E34:
-/* 031A34 80030E34 8F18C4E4 */  lw    $t8, %lo(D_800DC4E4)($t8)
-/* 031A38 80030E38 3C0A800E */  lui   $t2, %hi(D_800DC4F0) # $t2, 0x800e
-/* 031A3C 80030E3C 3C0B800E */  lui   $t3, %hi(D_800DC4F4) # $t3, 0x800e
+/* 031A34 80030E34 8F18C4E4 */  lw    $t8, %lo(gPlayerThree)($t8)
+/* 031A38 80030E38 3C0A800E */  lui   $t2, %hi(gPlayerSix) # $t2, 0x800e
+/* 031A3C 80030E3C 3C0B800E */  lui   $t3, %hi(gPlayerSeven) # $t3, 0x800e
 /* 031A40 80030E40 14980002 */  bne   $a0, $t8, .L80030E4C
-/* 031A44 80030E44 3C0C800E */   lui   $t4, %hi(D_800DC4F8) # $t4, 0x800e
+/* 031A44 80030E44 3C0C800E */   lui   $t4, %hi(gPlayerEight) # $t4, 0x800e
 /* 031A48 80030E48 24020002 */  li    $v0, 2
 .L80030E4C:
-/* 031A4C 80030E4C 8F39C4E8 */  lw    $t9, %lo(D_800DC4E8)($t9)
+/* 031A4C 80030E4C 8F39C4E8 */  lw    $t9, %lo(gPlayerFour)($t9)
 /* 031A50 80030E50 3C0D8016 */  lui   $t5, %hi(D_80165460) # $t5, 0x8016
 /* 031A54 80030E54 25AD5460 */  addiu $t5, %lo(D_80165460) # addiu $t5, $t5, 0x5460
 /* 031A58 80030E58 14990002 */  bne   $a0, $t9, .L80030E64
 /* 031A5C 80030E5C 00000000 */   nop
 /* 031A60 80030E60 24020003 */  li    $v0, 3
 .L80030E64:
-/* 031A64 80030E64 8D29C4EC */  lw    $t1, %lo(D_800DC4EC)($t1)
+/* 031A64 80030E64 8D29C4EC */  lw    $t1, %lo(gPlayerFive)($t1)
 /* 031A68 80030E68 3C0F8016 */  lui   $t7, %hi(gPlayerIsThrottleActive) # $t7, 0x8016
 /* 031A6C 80030E6C 25EF53E0 */  addiu $t7, %lo(gPlayerIsThrottleActive) # addiu $t7, $t7, 0x53e0
 /* 031A70 80030E70 14890002 */  bne   $a0, $t1, .L80030E7C
 /* 031A74 80030E74 00000000 */   nop
 /* 031A78 80030E78 24020004 */  li    $v0, 4
 .L80030E7C:
-/* 031A7C 80030E7C 8D4AC4F0 */  lw    $t2, %lo(D_800DC4F0)($t2)
+/* 031A7C 80030E7C 8D4AC4F0 */  lw    $t2, %lo(gPlayerSix)($t2)
 /* 031A80 80030E80 3C098016 */  lui   $t1, %hi(D_80165420) # $t1, 0x8016
 /* 031A84 80030E84 24080001 */  li    $t0, 1
 /* 031A88 80030E88 148A0002 */  bne   $a0, $t2, .L80030E94
 /* 031A8C 80030E8C 25295420 */   addiu $t1, %lo(D_80165420) # addiu $t1, $t1, 0x5420
 /* 031A90 80030E90 24020005 */  li    $v0, 5
 .L80030E94:
-/* 031A94 80030E94 8D6BC4F4 */  lw    $t3, %lo(D_800DC4F4)($t3)
+/* 031A94 80030E94 8D6BC4F4 */  lw    $t3, %lo(gPlayerSeven)($t3)
 /* 031A98 80030E98 148B0002 */  bne   $a0, $t3, .L80030EA4
 /* 031A9C 80030E9C 00000000 */   nop
 /* 031AA0 80030EA0 24020006 */  li    $v0, 6
 .L80030EA4:
-/* 031AA4 80030EA4 8D8CC4F8 */  lw    $t4, %lo(D_800DC4F8)($t4)
+/* 031AA4 80030EA4 8D8CC4F8 */  lw    $t4, %lo(gPlayerEight)($t4)
 /* 031AA8 80030EA8 3C0B8016 */  lui   $t3, %hi(D_80165480) # $t3, 0x8016
 /* 031AAC 80030EAC 256B5480 */  addiu $t3, %lo(D_80165480) # addiu $t3, $t3, 0x5480
 /* 031AB0 80030EB0 548C0003 */  bnel  $a0, $t4, .L80030EC0

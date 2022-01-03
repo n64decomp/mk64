@@ -28,14 +28,14 @@ glabel func_8001D53C
 /* 01E19C 8001D59C 3C063D75 */  lui   $a2, (0x3D75C28F >> 16) # lui $a2, 0x3d75
 /* 01E1A0 8001D5A0 34C6C28F */  ori   $a2, (0x3D75C28F & 0xFFFF) # ori $a2, $a2, 0xc28f
 /* 01E1A4 8001D5A4 260400A0 */  addiu $a0, $s0, 0xa0
-/* 01E1A8 8001D5A8 0C008973 */  jal   func_800225CC
+/* 01E1A8 8001D5A8 0C008973 */  jal   move_f32_towards
 /* 01E1AC 8001D5AC 3C0541A0 */   lui   $a1, 0x41a0
 /* 01E1B0 8001D5B0 10000006 */  b     .L8001D5CC
 /* 01E1B4 8001D5B4 87A200B6 */   lh    $v0, 0xb6($sp)
 .L8001D5B8:
 /* 01E1B8 8001D5B8 4405A000 */  mfc1  $a1, $f20
 /* 01E1BC 8001D5BC 3C063D75 */  lui   $a2, (0x3D75C28F >> 16) # lui $a2, 0x3d75
-/* 01E1C0 8001D5C0 0C008973 */  jal   func_800225CC
+/* 01E1C0 8001D5C0 0C008973 */  jal   move_f32_towards
 /* 01E1C4 8001D5C4 34C6C28F */   ori   $a2, (0x3D75C28F & 0xFFFF) # ori $a2, $a2, 0xc28f
 /* 01E1C8 8001D5C8 87A200B6 */  lh    $v0, 0xb6($sp)
 .L8001D5CC:

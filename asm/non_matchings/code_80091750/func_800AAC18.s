@@ -26,8 +26,8 @@ glabel L800AAC50
 /* 0AB874 800AAC74 8FA50024 */  lw    $a1, 0x24($sp)
 /* 0AB878 800AAC78 04400052 */  bltz  $v0, .L800AADC4
 /* 0AB87C 800AAC7C 8FA70030 */   lw    $a3, 0x30($sp)
-/* 0AB880 800AAC80 3C18800E */  lui   $t8, %hi(D_800DC530) # $t8, 0x800e
-/* 0AB884 800AAC84 8F19C530 */  lw    $t9, %lo(D_800DC530)($t8)
+/* 0AB880 800AAC80 3C18800E */  lui   $t8, %hi(gScreenModeSelection) # $t8, 0x800e
+/* 0AB884 800AAC84 8F19C530 */  lw    $t9, %lo(gScreenModeSelection)($t8)
 /* 0AB888 800AAC88 000250C0 */  sll   $t2, $v0, 3
 /* 0AB88C 800AAC8C 3C0C800E */  lui   $t4, %hi(D_800E7188) # $t4, 0x800e
 /* 0AB890 800AAC90 00194940 */  sll   $t1, $t9, 5
@@ -74,8 +74,8 @@ glabel L800AAD14
 /* 0AB928 800AAD28 24060002 */  li    $a2, 2
 /* 0AB92C 800AAD2C 0440000A */  bltz  $v0, .L800AAD58
 /* 0AB930 800AAD30 8FA70030 */   lw    $a3, 0x30($sp)
-/* 0AB934 800AAD34 3C0B800E */  lui   $t3, %hi(D_800DC530) # $t3, 0x800e
-/* 0AB938 800AAD38 8D6CC530 */  lw    $t4, %lo(D_800DC530)($t3)
+/* 0AB934 800AAD34 3C0B800E */  lui   $t3, %hi(gScreenModeSelection) # $t3, 0x800e
+/* 0AB938 800AAD38 8D6CC530 */  lw    $t4, %lo(gScreenModeSelection)($t3)
 /* 0AB93C 800AAD3C 000270C0 */  sll   $t6, $v0, 3
 /* 0AB940 800AAD40 3C18800E */  lui   $t8, %hi(D_800E7188) # $t8, 0x800e
 /* 0AB944 800AAD44 000C6940 */  sll   $t5, $t4, 5

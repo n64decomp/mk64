@@ -13,29 +13,30 @@ extern s32 gPrevLoadedAddress;
 // unk4 is buttonDown?
 void func_80281780(void) {
     if (gEnableDebugMode != 0) {
-        if (D_800DC4BC->button & 0x0F0F) {
-            if (D_800DC4BC->button & 8) {
-                D_800E86A8[0] = 1;
+        if (gControllerOne->button & 0x0F0F) {
+            // Allows to switch character in debug mode?
+            if (gControllerOne->button & U_CBUTTONS) {
+                gCharacterSelections[0] = LUIGI;
             }
-            else if (D_800DC4BC->button & 2) {
-                D_800E86A8[0] = 2;
+            else if (gControllerOne->button & L_CBUTTONS) {
+                gCharacterSelections[0] = YOSHI;
             }
-            else if (D_800DC4BC->button & 1) {
-                D_800E86A8[0] = 3;
+            else if (gControllerOne->button & R_CBUTTONS) {
+                gCharacterSelections[0] = TOAD;
             }
-            else if (D_800DC4BC->button & 4) {
-                D_800E86A8[0] = 4;
+            else if (gControllerOne->button & D_CBUTTONS) {
+                gCharacterSelections[0] = DK;
             }
-            else if (D_800DC4BC->button & 0x800) {
-                D_800E86A8[0] = 5;
+            else if (gControllerOne->button & U_JPAD) {
+                gCharacterSelections[0] = WARIO;
             }
-            else if (D_800DC4BC->button & 0x200) {
-                D_800E86A8[0] = 6;
+            else if (gControllerOne->button & L_JPAD) {
+                gCharacterSelections[0] = PEACH;
             }
-            else if (D_800DC4BC->button & 0x100) {
-                D_800E86A8[0] = 7;
+            else if (gControllerOne->button & R_JPAD) {
+                gCharacterSelections[0] = BOWSER;
             } else {
-                D_800E86A8[0] = 0;
+                gCharacterSelections[0] = MARIO;
             }
             bcopy(&D_80284ED0, &gCharacterIdByGPOverallRank, 8);
         }
@@ -45,7 +46,7 @@ void func_80281780(void) {
 s32 func_80281880(s32 arg0) {
     s32 i;
     for (i = 0; i < 8; i++) {
-        if (gCharacterIdByGPOverallRank[i] == D_800E86A8[arg0]) break;
+        if (gCharacterIdByGPOverallRank[i] == gCharacterSelections[arg0]) break;
     }
     return i;
 }
@@ -58,17 +59,17 @@ void func_802818BC(void) {
 
     if (D_8018EDF3 != 2) {
         D_802874D8.unk_1D = func_80281880(0);
-        D_802874D8.unk_1E = D_800E86A8[0];
+        D_802874D8.unk_1E = gCharacterSelections[0];
         return;
     }
     // weird pattern but if it matches it matches
     temp_v0 = sp1C = func_80281880(0);
     temp_v0_2 = func_80281880(1);
     if (sp1C < temp_v0_2) {
-        D_802874D8.unk_1E = D_800E86A8[0];
+        D_802874D8.unk_1E = gCharacterSelections[0];
         D_802874D8.unk_1D = temp_v0;
     } else {
-        D_802874D8.unk_1E = D_800E86A8[1];
+        D_802874D8.unk_1E = gCharacterSelections[1];
         D_802874D8.unk_1D = temp_v0_2;
     }
 }
@@ -89,7 +90,7 @@ void load_ending_sequence_royalraceway(void) {
     D_800DC5EC->screenHeight = 240;
     D_800DC5EC->screenStartX = 160;
     D_800DC5EC->screenStartY = 120;
-    D_800DC530 = 0;
+    gScreenModeSelection = SCREEN_MODE_1P;
     gPrevLoadedAddress = (s32) D_8015F734;
     D_800DC52C = 0;
     gModeSelection = GRAND_PRIX;

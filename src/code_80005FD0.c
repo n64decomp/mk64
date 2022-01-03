@@ -163,7 +163,7 @@ s32 func_800061DC(void *arg0, f32 arg1, s32 arg2) {
     phi_v1_10 = arg2;
     if (D_800DC51C == 0) {
         temp_v0_2 = D_8018EDF3;
-        phi_a0 = D_800DC4DC;
+        phi_a0 = gPlayerOne;
         if (temp_v0_2 > 0) {
             do {
                 temp_a2 = phi_a0->unk_000;
@@ -653,7 +653,7 @@ block_34:
             phi_t3 = phi_t1_3;
         } while (phi_t1_3 != sp30);
     }
-    phi_v1_5 = D_801643B8;
+    phi_v1_5 = gPlayerPositions;
     phi_v0_5 = &D_801643E0;
     phi_t1_4 = 1;
     phi_t1_7 = 1;
@@ -676,7 +676,7 @@ block_34:
             do {
                 temp_v1_7 = *phi_v0_6;
                 temp_t2_3 = phi_t2_6 + 2;
-                D_801643B8[temp_v1_7] = phi_t3_3;
+                gPlayerPositions[temp_v1_7] = phi_t3_3;
                 temp_t2_3->unk-2 = temp_v1_7;
                 phi_t3_3 = phi_t1_4;
                 phi_v0_6 += 4;
@@ -697,16 +697,16 @@ block_50:
                 temp_v1_8 = *phi_v0_7;
                 temp_t2_4 = phi_t2_7 + 8;
                 temp_v0_10 = phi_v0_7 + 0x10;
-                D_801643B8[temp_v1_8] = phi_t3_4;
+                gPlayerPositions[temp_v1_8] = phi_t3_4;
                 temp_a1_6 = temp_v0_10->unk-C;
                 temp_t2_4->unk-8 = temp_v1_8;
-                D_801643B8[temp_a1_6] = phi_t1_5;
+                gPlayerPositions[temp_a1_6] = phi_t1_5;
                 temp_a3 = temp_v0_10->unk-8;
                 temp_t3_3 = phi_t3_4 + 4;
-                D_801643B8[temp_a3] = phi_t3_4 + 2;
+                gPlayerPositions[temp_a3] = phi_t3_4 + 2;
                 temp_t0_4 = temp_v0_10->unk-4;
                 temp_t2_4->unk-6 = temp_a1_6;
-                D_801643B8[temp_t0_4] = phi_t3_4 + 3;
+                gPlayerPositions[temp_t0_4] = phi_t3_4 + 3;
                 temp_t2_4->unk-4 = temp_a3;
                 temp_t2_4->unk-2 = temp_t0_4;
                 phi_t3_4 = temp_t3_3;
@@ -1110,7 +1110,7 @@ block_21:
             phi_a3 = phi_a1_2;
         } while (phi_a1_2 != temp_t0_2);
     }
-    phi_v1_3 = D_801643B8;
+    phi_v1_3 = gPlayerPositions;
     phi_v0_3 = &D_801643E0;
     do {
         temp_v1_4 = phi_v1_3 + 4;
@@ -1127,7 +1127,7 @@ block_21:
             do {
                 temp_v1_5 = *phi_v0_4;
                 temp_t0_3 = phi_t0_3 + 2;
-                D_801643B8[temp_v1_5] = phi_a3_3;
+                gPlayerPositions[temp_v1_5] = phi_a3_3;
                 temp_t0_3->unk-2 = temp_v1_5;
                 phi_a3_3 = phi_a1_3;
                 phi_v0_4 += 4;
@@ -1148,16 +1148,16 @@ block_35:
                 temp_v1_6 = *phi_v0_5;
                 temp_t0_4 = phi_t0_4 + 8;
                 temp_v0_9 = phi_v0_5 + 0x10;
-                D_801643B8[temp_v1_6] = phi_a3_4;
+                gPlayerPositions[temp_v1_6] = phi_a3_4;
                 temp_a0_9 = temp_v0_9->unk-C;
                 temp_t0_4->unk-8 = temp_v1_6;
-                D_801643B8[temp_a0_9] = phi_a1_4;
+                gPlayerPositions[temp_a0_9] = phi_a1_4;
                 temp_t1_3 = temp_v0_9->unk-8;
                 temp_a3_3 = phi_a3_4 + 4;
-                D_801643B8[temp_t1_3] = phi_a3_4 + 2;
+                gPlayerPositions[temp_t1_3] = phi_a3_4 + 2;
                 temp_t2_6 = temp_v0_9->unk-4;
                 temp_t0_4->unk-6 = temp_a0_9;
-                D_801643B8[temp_t2_6] = phi_a3_4 + 3;
+                gPlayerPositions[temp_t2_6] = phi_a3_4 + 3;
                 temp_t0_4->unk-4 = temp_t1_3;
                 temp_t0_4->unk-2 = temp_t2_6;
                 phi_a3_4 = temp_a3_3;
@@ -1495,7 +1495,7 @@ block_55:
             phi_t0_4 = phi_a3_3;
         } while (phi_a3_3 != 7);
     }
-    phi_v1_3 = D_801643B8;
+    phi_v1_3 = gPlayerPositions;
     phi_v0_10 = &D_801643E0;
     do {
         temp_v1_13 = phi_v1_3 + 4;
@@ -1510,16 +1510,16 @@ block_55:
         temp_v1_14 = *phi_v0_11;
         temp_v0_10 = phi_v0_11 + 0x10;
         temp_a0_3 = phi_a0_4 + 8;
-        D_801643B8[temp_v1_14] = phi_t0_5;
+        gPlayerPositions[temp_v1_14] = phi_t0_5;
         temp_a1_3 = temp_v0_10->unk-C;
         temp_a0_3->unk-8 = temp_v1_14;
-        D_801643B8[temp_a1_3] = phi_a3_4;
+        gPlayerPositions[temp_a1_3] = phi_a3_4;
         temp_a2 = temp_v0_10->unk-8;
         temp_t0_9 = phi_t0_5 + 4;
-        D_801643B8[temp_a2] = phi_t0_5 + 2;
+        gPlayerPositions[temp_a2] = phi_t0_5 + 2;
         temp_t1 = temp_v0_10->unk-4;
         temp_a0_3->unk-6 = temp_a1_3;
-        D_801643B8[temp_t1] = phi_t0_5 + 3;
+        gPlayerPositions[temp_t1] = phi_t0_5 + 3;
         temp_a0_3->unk-4 = temp_a2;
         temp_a0_3->unk-2 = temp_t1;
         phi_t0_5 = temp_t0_9;
@@ -1587,8 +1587,8 @@ void func_80007D04(s32 arg0, void *arg1) {
     temp_a3 = arg0;
     temp_t1 = (&D_80164450 + (temp_v1 * 4))->unk2;
     temp_t2 = (&D_80164450 + (arg0 * 4))->unk2;
-    if (D_801643B8[arg0] < 2) {
-        if (((temp_t2 - temp_t1) >= 0x191) && (D_801643B8[temp_v1].unk2 >= 6)) {
+    if (gPlayerPositions[arg0] < 2) {
+        if (((temp_t2 - temp_t1) >= 0x191) && (gPlayerPositions[temp_v1].unk2 >= 6)) {
             arg1->unkBC = arg1->unkBC & 0xFFDFFFFF;
             arg0 = temp_a3;
             func_80030FC8(arg1, arg1, temp_a3);
@@ -2097,17 +2097,17 @@ extern ? gPlayers;
         temp_a0 = phi_a0_3 + 2;
         phi_a0_3 = temp_a0;
         phi_v0 = phi_v0_2;
-        if (D_801643B8[*phi_a0_3] < arg2) {
+        if (gPlayerPositions[*phi_a0_3] < arg2) {
             phi_v0 = phi_v0_2 + 1;
         }
         phi_v0_2 = phi_v0;
     } while (temp_a0 < &D_80163348);
     temp_t1_2 = D_8018EDF3;
-    phi_v1 = D_801643B8;
+    phi_v1 = gPlayerPositions;
     phi_a0_4 = 0;
     phi_a0_7 = 0;
     if (temp_t1_2 > 0) {
-        sp4 = &D_801643B8[temp_t1_2];
+        sp4 = &gPlayerPositions[temp_t1_2];
         do {
             phi_a0_6 = phi_a0_7;
             if (*phi_v1 < arg2) {
@@ -2727,10 +2727,10 @@ void func_800099EC(s32 arg0, ? arg1) {
         phi_s0 = 0;
         phi_a0 = temp_a0;
         if (temp_a0 > 0) {
-            phi_s2 = D_801643B8;
+            phi_s2 = gPlayerPositions;
             phi_s1 = 0;
             do {
-                temp_v0 = D_801643B8[arg0];
+                temp_v0 = gPlayerPositions[arg0];
                 temp_v1 = *phi_s2;
                 if ((temp_v0 < temp_v1) && (temp_v0 == *(&D_801643E0 + phi_s1)) && (temp_v1 == *(&D_801643E0 + (arg0 * 4)))) {
                     func_800C92CC(arg0 & 0xFF, 0x2900800D);
@@ -3109,7 +3109,7 @@ block_63:
                         return;
                     }
                     temp_v0_9 = D_8018EDF3;
-                    if ((temp_v0_9 > 0) && (temp_v0_9 < 3) && (phi_t1_2 == *(&D_80163330 + phi_t0)) && (*(&D_8016334C + phi_t0) < *(D_801643B8 + sp38))) {
+                    if ((temp_v0_9 > 0) && (temp_v0_9 < 3) && (phi_t1_2 == *(&D_80163330 + phi_t0)) && (*(&D_8016334C + phi_t0) < *(gPlayerPositions + sp38))) {
                         temp_t0 = sp38 + &D_80163210;
                         *temp_t0 = D_800ECFB4;
                         phi_t0_2 = temp_t0;
@@ -5488,7 +5488,7 @@ void func_8000DF8C(s32 arg0, f32 arg1, s32 arg2, s32 arg3) {
         if ((sp4C != 0) && (sp4C != 4)) {
             if (gCurrentCourseId == 0x14) {
                 if (D_8016347E == 1) {
-                    temp_v0 = D_800DC4E8;
+                    temp_v0 = gPlayerFour;
                     temp_f0 = temp_f22 - temp_v0->unk14;
                     temp_f2 = temp_f20 - temp_v0->unk18;
                     temp_f12 = temp_f24 - temp_v0->unk1C;
@@ -6049,7 +6049,7 @@ loop_5:
                 phi_a1_2 = 0;
                 phi_a1_5 = 0;
                 if (temp_a2 < 3) {
-                    phi_v0_2 = D_800E86A8;
+                    phi_v0_2 = gCharacterSelections;
                     if (temp_a2 > 0) {
                         if (temp_a2 > 0) {
                             do {
@@ -6059,7 +6059,7 @@ loop_5:
                                     phi_a1_5 = 1;
                                 }
                                 phi_a1_2 = phi_a1_5;
-                            } while (temp_v0_2 < &D_800E86A8[temp_a2]);
+                            } while (temp_v0_2 < &gCharacterSelections[temp_a2]);
                         }
                         temp_a3 = phi_s0 & 3;
                         phi_a0 = 0;
@@ -6521,7 +6521,7 @@ void func_8000F628(void) {
     phi_t5 = &D_80163178;
     phi_s0 = 0;
     phi_fp = 0;
-    phi_s4 = D_801643B8;
+    phi_s4 = gPlayerPositions;
     phi_s6 = &D_801643E0;
     phi_s1 = &gPlayers;
     phi_s5 = &D_801634F8;
@@ -6533,7 +6533,7 @@ void func_8000F628(void) {
         *phi_t0 = 0;
         *phi_t1 = 0;
         temp_v0 = gCurrentCourseId;
-        sp104 = phi_s7 + D_800DC4DC;
+        sp104 = phi_s7 + gPlayerOne;
         phi_v0 = temp_v0;
         if (temp_v0 < 0x14) {
             spD8 = phi_ra;
@@ -6731,7 +6731,7 @@ void func_8000F628(void) {
         }
     }
     phi_v0_4 = &D_801645B0;
-    phi_s4_2 = D_801643B8;
+    phi_s4_2 = gPlayerPositions;
     phi_v1 = &D_80164438;
     do {
         temp_v1_3 = phi_v1 + 2;
@@ -8042,7 +8042,7 @@ void func_80011E38(s32 arg0) {
     u16 temp_v0;
 
     temp_v0 = *(&D_801632E8 + (arg0 * 2));
-    temp_a1 = &D_800DC4DC[arg0];
+    temp_a1 = &gPlayerOne[arg0];
     if (temp_v0 != 0) {
         if (temp_v0 != 1) {
             if (temp_v0 != 2) {
@@ -8518,7 +8518,7 @@ loop_2:
         phi_fp = temp_fp;
         phi_s7_2 += 0x10C;
     } while (temp_fp < 2);
-    temp_v0_2 = D_800DC530;
+    temp_v0_2 = gScreenModeSelection;
     phi_s6_3 = &D_801635A0;
     phi_a2 = &D_801635A0;
     if (temp_v0_2 != 0) {
@@ -10170,7 +10170,7 @@ void func_80015314(s32 arg0, ? arg1, s32 arg2) {
     Player *temp_a1;
     void *temp_a0;
 
-    temp_a1 = &D_800DC4DC[arg0];
+    temp_a1 = &gPlayerOne[arg0];
     temp_a0 = camera1 + (arg2 * 0xB8);
     temp_a0->unk2C = temp_a1->unk_02E;
     func_80015390(temp_a0, temp_a1, 0, arg0);
@@ -10201,7 +10201,7 @@ void func_80015390(void *arg0, ? arg1, ? arg2) {
     s32 temp_v0_2;
     s16 phi_a2;
 
-    temp_s1 = &D_800DC4DC[arg0->unkAE];
+    temp_s1 = &gPlayerOne[arg0->unkAE];
     temp_v0 = temp_s1->unk_078;
     if (temp_v0 == 0) {
         phi_a2 = 0x64;
@@ -10367,7 +10367,7 @@ void func_8001577C(void *arg0, ? arg1, ? arg2, s32 arg3) {
     sp3C = temp_t1;
     sp74 = temp_v1;
     sp44 = temp_a1;
-    temp_s2 = &D_800DC4DC[temp_v1];
+    temp_s2 = &gPlayerOne[temp_v1];
     *temp_t0 = func_8000D33C(arg0->unk0, arg0->unk4, temp_a1, arg0->unk8, *temp_t0, temp_a1);
     temp_t2 = *(&D_80164438 + temp_t1);
     temp_t3 = *temp_t0;
@@ -10568,7 +10568,7 @@ void func_80015C94(void *arg0, ? arg1, ? arg2, s32 arg3) {
     temp_t1 = *(&D_801645B0 + temp_s1);
     temp_v0 = arg3 * 2;
     temp_a1 = temp_v0 + &D_80164668;
-    spA0 = &D_800DC4DC[temp_v1];
+    spA0 = &gPlayerOne[temp_v1];
     sp58 = temp_a1;
     sp5C = temp_v0;
     sp9C = temp_v1;
@@ -11359,7 +11359,7 @@ void func_800188F4(void *arg0, ? arg1, ? arg2, s32 arg3) {
     f32 *phi_v1;
     f32 phi_f18;
 
-    spA0 = D_800DC4DC;
+    spA0 = gPlayerOne;
     temp_a1 = arg0->unkAE;
     temp_v0 = temp_a1 * 2;
     temp_t7 = *(&D_801645B0 + temp_v0);
@@ -11653,7 +11653,7 @@ void func_8001933C(void *arg0, ? arg1, ? arg2, s32 arg3) {
     sp3C = temp_t2;
     sp7C = temp_v1;
     sp48 = temp_a1;
-    temp_s2 = &D_800DC4DC[temp_v1];
+    temp_s2 = &gPlayerOne[temp_v1];
     *temp_t0 = func_8000D33C(arg0->unk0, arg0->unk4, temp_a1, arg0->unk8, *temp_t0, 0);
     temp_t3 = *temp_t0;
     sp96 = temp_t3;
@@ -12076,7 +12076,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80019E58.s")
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_80015314(s32, ?, s32); // extern
-extern s32 D_800DC5E8;
+extern s32 gPlayerWinningIndex;
 extern s16 D_80164360;
 extern ? D_80164670;
 extern s16 D_80164678;
@@ -12103,7 +12103,7 @@ void func_80019ED0(void) {
         phi_s0 = temp_s0;
         phi_v0 = temp_v0;
     } while (temp_s0 < &D_80164680);
-    temp_v0_2 = D_800DC5E8;
+    temp_v0_2 = gPlayerWinningIndex;
     D_80164360 = temp_v0_2;
     camera1->unkAE = temp_v0_2;
     phi_s2 = &D_80164680;
@@ -12111,7 +12111,7 @@ void func_80019ED0(void) {
     phi_s0_2 = &D_80164678;
     do {
         *phi_s2 = 0;
-        func_80015314(D_800DC5E8, 0, phi_s1);
+        func_80015314(gPlayerWinningIndex, 0, phi_s1);
         temp_s1 = phi_s1 + 1;
         temp_s0_2 = phi_s0_2 + 2;
         temp_s0_2->unk-2 = 1;
@@ -12141,7 +12141,7 @@ void func_80019FB4(s32 arg0) {
     struct Controller *temp_v0;
     s32 phi_v1;
 
-    temp_v0 = &D_800DC4BC[arg0];
+    temp_v0 = &gControllerOne[arg0];
     temp_v1 = arg0 * 4;
     temp_a1 = temp_v1 + &D_801645D0;
     phi_v1 = temp_v1;
@@ -12209,7 +12209,7 @@ extern ? D_80164680;
 void func_8001A124(s32 arg0, s32 arg1) {
     s32 temp_v0;
 
-    temp_v0 = D_801643B8[arg0];
+    temp_v0 = gPlayerPositions[arg0];
     if (temp_v0 != 0) {
         if ((temp_v0 != 1) && (temp_v0 != 2) && (temp_v0 != 3)) {
             if (random_int(0x64) < 0x32) {
@@ -12417,7 +12417,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8001A518.s")
 ? func_8001A3D8(s32, ?, s16, s32);                  /* extern */
 ? func_8001A450(s32, s32, s32, s32);                /* extern */
 ? func_8001A518(s32, s32, ?, s32);                  /* extern */
-extern ? D_801643B8;
+extern ? gPlayerPositions;
 extern ? D_80164680;
 extern ? D_801646C0;
 extern ? D_801646D0;
@@ -12511,14 +12511,14 @@ void func_8001A588(s32 arg0, void *arg1, u16 *arg2, s8 arg3, s32 cameraId) {
             D_801646C8 = 0;
         }
         if ((cameraId == 0) && ((temp_v0_5 = D_801646C8, (temp_v0_5 == 0xA)) || (temp_v0_5 == 0xB))) {
-            func_8001A518(phi_s0, *(&D_801643B8 + (phi_s0 * 4)), 0, cameraId);
+            func_8001A518(phi_s0, *(&gPlayerPositions + (phi_s0 * 4)), 0, cameraId);
             phi_t0 = &D_801646C8;
         }
         phi_a3 = cameraId;
         if ((gModeSelection != TIME_TRIALS) && (cameraId == 1) && ((temp_v0_6 = *phi_t0, (temp_v0_6 == 0x104)) || (temp_v0_6 == 0x105))) {
             phi_v1 = 0;
             if (D_8018EDF3 == 2) {
-                func_8001A518(phi_s0, *(&D_801643B8 + (phi_s0 * 4)), 1, cameraId);
+                func_8001A518(phi_s0, *(&gPlayerPositions + (phi_s0 * 4)), 1, cameraId);
             } else {
                 sp44 = phi_s0;
 loop_34:
@@ -12722,7 +12722,7 @@ s32 random_int(?, s16);                             /* extern */
 extern ? D_8015F9B8;
 extern ? D_801631E0;
 extern ? D_801642D8;
-extern ? D_801643B8;
+extern ? gPlayerPositions;
 extern ? D_80164438;
 extern ? D_80164450;
 extern ? D_80164550;
@@ -12765,7 +12765,7 @@ void func_8001AC10(s32 playerId, s32 *arg2) {
     s32 phi_v1;
     s16 phi_v0;
 
-    temp_t9 = (playerId * 0xDD8) + D_800DC4DC;
+    temp_t9 = (playerId * 0xDD8) + gPlayerOne;
     sp2C = temp_t9;
     if ((gModeSelection != TIME_TRIALS) && (D_801646CC != 1) && ((*temp_t9 & 0x800) == 0)) {
         temp_s0 = (playerId * 0x10) + &D_801642D8;
@@ -12775,7 +12775,7 @@ void func_8001AC10(s32 playerId, s32 *arg2) {
             temp_s0->unk2 = -1;
             temp_v0 = playerId * 4;
             if ((((playerId * 0x14) + 0x64) < *(&D_80164450 + temp_v0)) && (temp_s0->unk4 >= 0x259) && (temp_s0->unk6 < 3) && (temp_v1 = lapCount[playerId], ((temp_v1 < 3) != 0))) {
-                func_8001AB74(playerId, temp_s0, func_8007AF78(temp_v1, (&D_801643B8 + temp_v0)->unk2, &D_801643B8));
+                func_8001AB74(playerId, temp_s0, func_8007AF78(temp_v1, (&gPlayerPositions + temp_v0)->unk2, &gPlayerPositions));
             } else {
                 func_8001ABE0(playerId, temp_s0);
             }
@@ -12783,7 +12783,7 @@ void func_8001AC10(s32 playerId, s32 *arg2) {
 block_194:
             break;
         case 1:                                     /* switch 1 */
-            if ((lapCount[playerId] > 0) && (temp_v1_2 = D_80163478, temp_a0 = *(&D_801643B8 + (temp_v1_2 * 4)), ((temp_a0 < *(&D_801643B8 + (playerId * 4))) != 0)) && (temp_a0 == 0)) {
+            if ((lapCount[playerId] > 0) && (temp_v1_2 = D_80163478, temp_a0 = *(&gPlayerPositions + (temp_v1_2 * 4)), ((temp_a0 < *(&gPlayerPositions + (playerId * 4))) != 0)) && (temp_a0 == 0)) {
                 temp_v0_2 = sp2C->unk254;
                 if (temp_v0_2 != 4) {
                     if (temp_v0_2 != 6) {
@@ -12797,7 +12797,7 @@ block_194:
                     temp_s0->unk0 = 0x22;
                 }
             } else if (temp_a1 == 1) {
-                temp_s0->unk2 = func_802B2D70(sp2C, temp_a1, &D_801643B8);
+                temp_s0->unk2 = func_802B2D70(sp2C, temp_a1, &gPlayerPositions);
                 temp_v1_3 = temp_s0->unk2;
                 if ((temp_v1_3 >= 0) && (temp_v1_3 < 0x64)) {
                     sp2C->unkC = sp2C->unkC | 0x40000;
@@ -13242,7 +13242,7 @@ void func_8001BE78(void) {
     phi_v0 = &D_80163410;
     phi_fp = &D_80164590;
     do {
-        temp_s1 = phi_s5 + D_800DC4DC;
+        temp_s1 = phi_s5 + gPlayerOne;
         temp_s1->unk0 = temp_s1->unk0 & 0xDFFF;
         *phi_s6 = phi_s2;
         phi_s4->unkC = 0.0f;

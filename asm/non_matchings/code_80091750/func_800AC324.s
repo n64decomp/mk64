@@ -56,7 +56,7 @@ glabel func_800AC324
 /* 0ACFEC 800AC3EC AE0D0004 */  sw    $t5, 4($s0)
 /* 0ACFF0 800AC3F0 00003025 */  move  $a2, $zero
 /* 0ACFF4 800AC3F4 00003825 */  move  $a3, $zero
-/* 0ACFF8 800AC3F8 0C027994 */  jal   func_8009E650
+/* 0ACFF8 800AC3F8 0C027994 */  jal   add_8018D9E0_entry
 /* 0ACFFC 800AC3FC AE0E001C */   sw    $t6, 0x1c($s0)
 /* 0AD000 800AC400 10000011 */  b     .L800AC448
 /* 0AD004 800AC404 8FBF001C */   lw    $ra, 0x1c($sp)

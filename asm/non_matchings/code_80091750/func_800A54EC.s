@@ -86,17 +86,17 @@ glabel func_800A54EC
 /* 0A623C 800A563C 3C03800F */   lui   $v1, %hi(D_800E8538) # 0x800f
 /* 0A6240 800A5640 24010002 */  li    $at, 2
 /* 0A6244 800A5644 11410008 */  beq   $t2, $at, .L800A5668
-/* 0A6248 800A5648 3C0D800E */   lui   $t5, %hi(D_800DC530) # $t5, 0x800e
+/* 0A6248 800A5648 3C0D800E */   lui   $t5, %hi(gScreenModeSelection) # $t5, 0x800e
 /* 0A624C 800A564C 24010003 */  li    $at, 3
 /* 0A6250 800A5650 1141001A */  beq   $t2, $at, .L800A56BC
-/* 0A6254 800A5654 3C0C800E */   lui   $t4, %hi(D_800DC530)
+/* 0A6254 800A5654 3C0C800E */   lui   $t4, %hi(gScreenModeSelection)
 /* 0A6258 800A5658 10000021 */  b     .L800A56E0
 /* 0A625C 800A565C 8FA3004C */   lw    $v1, 0x4c($sp)
 .L800A5660:
 /* 0A6260 800A5660 1000001F */  b     .L800A56E0
 /* 0A6264 800A5664 24638538 */   addiu $v1, $v1, %lo(D_800E8538) # -0x7ac8
 .L800A5668:
-/* 0A6268 800A5668 8DAFC530 */  lw    $t7, %lo(D_800DC530)($t5)
+/* 0A6268 800A5668 8DAFC530 */  lw    $t7, %lo(gScreenModeSelection)($t5)
 /* 0A626C 800A566C 95790000 */  lhu   $t9, ($t3)
 /* 0A6270 800A5670 000FC140 */  sll   $t8, $t7, 5
 /* 0A6274 800A5674 001970C0 */  sll   $t6, $t9, 3
@@ -107,8 +107,8 @@ glabel func_800A54EC
 /* 0A6288 800A5688 10000015 */  b     .L800A56E0
 /* 0A628C 800A568C 01AF1821 */   addu  $v1, $t5, $t7
 .L800A5690:
-/* 0A6290 800A5690 3C19800E */  lui   $t9, %hi(D_800DC530) # $t9, 0x800e
-/* 0A6294 800A5694 8F38C530 */  lw    $t8, %lo(D_800DC530)($t9)
+/* 0A6290 800A5690 3C19800E */  lui   $t9, %hi(gScreenModeSelection) # $t9, 0x800e
+/* 0A6294 800A5694 8F38C530 */  lw    $t8, %lo(gScreenModeSelection)($t9)
 /* 0A6298 800A5698 956C0000 */  lhu   $t4, ($t3)
 /* 0A629C 800A569C 00187140 */  sll   $t6, $t8, 5
 /* 0A62A0 800A56A0 000C68C0 */  sll   $t5, $t4, 3
@@ -119,7 +119,7 @@ glabel func_800A54EC
 /* 0A62B4 800A56B4 1000000A */  b     .L800A56E0
 /* 0A62B8 800A56B8 03381821 */   addu  $v1, $t9, $t8
 .L800A56BC:
-/* 0A62BC 800A56BC 8D8EC530 */  lw    $t6, %lo(D_800DC530)($t4)
+/* 0A62BC 800A56BC 8D8EC530 */  lw    $t6, %lo(gScreenModeSelection)($t4)
 /* 0A62C0 800A56C0 956F0000 */  lhu   $t7, ($t3)
 /* 0A62C4 800A56C4 000E6940 */  sll   $t5, $t6, 5
 /* 0A62C8 800A56C8 000FC8C0 */  sll   $t9, $t7, 3

@@ -13,7 +13,7 @@ glabel func_800B3554
 /* 0B4180 800B3580 03001825 */   move  $v1, $t8
 /* 0B4184 800B3584 33081000 */  andi  $t0, $t8, 0x1000
 /* 0B4188 800B3588 11000004 */  beqz  $t0, .L800B359C
-/* 0B418C 800B358C 00000000 */   nop   
+/* 0B418C 800B358C 00000000 */   nop
 /* 0B4190 800B3590 37038000 */  ori   $v1, $t8, 0x8000
 /* 0B4194 800B3594 3069FFFF */  andi  $t1, $v1, 0xffff
 /* 0B4198 800B3598 01201825 */  move  $v1, $t1
@@ -33,13 +33,13 @@ glabel func_800B3554
 /* 0B41CC 800B35CC 24010003 */  li    $at, 3
 /* 0B41D0 800B35D0 10410122 */  beq   $v0, $at, .L800B3A5C
 /* 0B41D4 800B35D4 97AA0046 */   lhu   $t2, 0x46($sp)
-/* 0B41D8 800B35D8 3C038019 */  lui   $v1, %hi(gCharacterSelections) # 0x8019
+/* 0B41D8 800B35D8 3C038019 */  lui   $v1, %hi(gCharacterGridSelections) # 0x8019
 /* 0B41DC 800B35DC 006A1821 */  addu  $v1, $v1, $t2
 /* 0B41E0 800B35E0 10000150 */  b     .L800B3B24
-/* 0B41E4 800B35E4 8063EDE4 */   lb    $v1, %lo(gCharacterSelections)($v1) # -0x121c($v1)
+/* 0B41E4 800B35E4 8063EDE4 */   lb    $v1, %lo(gCharacterGridSelections)($v1) # -0x121c($v1)
 .L800B35E8:
-/* 0B41E8 800B35E8 3C108019 */  lui   $s0, %hi(gCharacterSelections) # $s0, 0x8019
-/* 0B41EC 800B35EC 2610EDE4 */  addiu $s0, %lo(gCharacterSelections) # addiu $s0, $s0, -0x121c
+/* 0B41E8 800B35E8 3C108019 */  lui   $s0, %hi(gCharacterGridSelections) # $s0, 0x8019
+/* 0B41EC 800B35EC 2610EDE4 */  addiu $s0, %lo(gCharacterGridSelections) # addiu $s0, $s0, -0x121c
 /* 0B41F0 800B35F0 020B6021 */  addu  $t4, $s0, $t3
 /* 0B41F4 800B35F4 AFAC0028 */  sw    $t4, 0x28($sp)
 /* 0B41F8 800B35F8 818E0000 */  lb    $t6, ($t4)
@@ -50,7 +50,7 @@ glabel func_800B3554
 /* 0B420C 800B360C 51E0014E */  beql  $t7, $zero, .L800B3B48
 /* 0B4210 800B3610 8FBF001C */   lw    $ra, 0x1c($sp)
 /* 0B4214 800B3614 0C027882 */  jal   func_8009E208
-/* 0B4218 800B3618 00000000 */   nop   
+/* 0B4218 800B3618 00000000 */   nop
 /* 0B421C 800B361C 3C044900 */  lui   $a0, (0x49008002 >> 16) # lui $a0, 0x4900
 /* 0B4220 800B3620 0C032384 */  jal   play_sound2
 /* 0B4224 800B3624 34848002 */   ori   $a0, (0x49008002 & 0xFFFF) # ori $a0, $a0, 0x8002
@@ -66,7 +66,7 @@ glabel func_800B3554
 /* 0B4248 800B3648 3C044900 */  lui   $a0, (0x49008002 >> 16) # lui $a0, 0x4900
 /* 0B424C 800B364C 34848002 */  ori   $a0, (0x49008002 & 0xFFFF) # ori $a0, $a0, 0x8002
 /* 0B4250 800B3650 11000006 */  beqz  $t0, .L800B366C
-/* 0B4254 800B3654 00000000 */   nop   
+/* 0B4254 800B3654 00000000 */   nop
 /* 0B4258 800B3658 A0E00000 */  sb    $zero, ($a3)
 /* 0B425C 800B365C 0C032384 */  jal   play_sound2
 /* 0B4260 800B3660 AFA6002C */   sw    $a2, 0x2c($sp)
@@ -138,8 +138,8 @@ glabel func_800B3554
 /* 0B4348 800B3748 AFA6002C */  sw    $a2, 0x2c($sp)
 /* 0B434C 800B374C 0C02D12B */  jal   func_800B44AC
 /* 0B4350 800B3750 AFA70020 */   sw    $a3, 0x20($sp)
-/* 0B4354 800B3754 3C038019 */  lui   $v1, %hi(gStartMenuCounterForDemos) # $v1, 0x8019
-/* 0B4358 800B3758 2463EE00 */  addiu $v1, %lo(gStartMenuCounterForDemos) # addiu $v1, $v1, -0x1200
+/* 0B4354 800B3754 3C038019 */  lui   $v1, %hi(gMenuTimingCounter) # $v1, 0x8019
+/* 0B4358 800B3758 2463EE00 */  addiu $v1, %lo(gMenuTimingCounter) # addiu $v1, $v1, -0x1200
 /* 0B435C 800B375C 8FA6002C */  lw    $a2, 0x2c($sp)
 /* 0B4360 800B3760 8FA70020 */  lw    $a3, 0x20($sp)
 /* 0B4364 800B3764 AC600000 */  sw    $zero, ($v1)
@@ -283,7 +283,7 @@ glabel func_800B3554
 /* 0B4560 800B3960 13010078 */  beq   $t8, $at, .L800B3B44
 /* 0B4564 800B3964 2B01000A */   slti  $at, $t8, 0xa
 /* 0B4568 800B3968 1420FFEC */  bnez  $at, .L800B391C
-/* 0B456C 800B396C 00000000 */   nop   
+/* 0B456C 800B396C 00000000 */   nop
 /* 0B4570 800B3970 10000075 */  b     .L800B3B48
 /* 0B4574 800B3974 8FBF001C */   lw    $ra, 0x1c($sp)
 .L800B3978:
@@ -317,7 +317,7 @@ glabel func_800B3554
 /* 0B45DC 800B39DC 5161005A */  beql  $t3, $at, .L800B3B48
 /* 0B45E0 800B39E0 8FBF001C */   lw    $ra, 0x1c($sp)
 /* 0B45E4 800B39E4 0561FFED */  bgez  $t3, .L800B399C
-/* 0B45E8 800B39E8 00000000 */   nop   
+/* 0B45E8 800B39E8 00000000 */   nop
 /* 0B45EC 800B39EC 10000056 */  b     .L800B3B48
 /* 0B45F0 800B39F0 8FBF001C */   lw    $ra, 0x1c($sp)
 .L800B39F4:
@@ -325,7 +325,7 @@ glabel func_800B3554
 /* 0B45F8 800B39F8 30C20400 */   andi  $v0, $a2, 0x400
 /* 0B45FC 800B39FC 28610005 */  slti  $at, $v1, 5
 /* 0B4600 800B3A00 14200004 */  bnez  $at, .L800B3A14
-/* 0B4604 800B3A04 00000000 */   nop   
+/* 0B4604 800B3A04 00000000 */   nop
 /* 0B4608 800B3A08 2470FFFC */  addiu $s0, $v1, -4
 /* 0B460C 800B3A0C 00106E00 */  sll   $t5, $s0, 0x18
 /* 0B4610 800B3A10 000D8603 */  sra   $s0, $t5, 0x18
@@ -333,7 +333,7 @@ glabel func_800B3554
 /* 0B4614 800B3A14 10400006 */  beqz  $v0, .L800B3A30
 /* 0B4618 800B3A18 28610005 */   slti  $at, $v1, 5
 /* 0B461C 800B3A1C 10200004 */  beqz  $at, .L800B3A30
-/* 0B4620 800B3A20 00000000 */   nop   
+/* 0B4620 800B3A20 00000000 */   nop
 /* 0B4624 800B3A24 24700004 */  addiu $s0, $v1, 4
 /* 0B4628 800B3A28 00107E00 */  sll   $t7, $s0, 0x18
 /* 0B462C 800B3A2C 000F8603 */  sra   $s0, $t7, 0x18
@@ -353,8 +353,8 @@ glabel func_800B3554
 .L800B3A5C:
 /* 0B465C 800B3A5C 15200011 */  bnez  $t1, .L800B3AA4
 /* 0B4660 800B3A60 00603025 */   move  $a2, $v1
-/* 0B4664 800B3A64 3C038019 */  lui   $v1, %hi(gStartMenuCounterForDemos) # $v1, 0x8019
-/* 0B4668 800B3A68 2463EE00 */  addiu $v1, %lo(gStartMenuCounterForDemos) # addiu $v1, $v1, -0x1200
+/* 0B4664 800B3A64 3C038019 */  lui   $v1, %hi(gMenuTimingCounter) # $v1, 0x8019
+/* 0B4668 800B3A68 2463EE00 */  addiu $v1, %lo(gMenuTimingCounter) # addiu $v1, $v1, -0x1200
 /* 0B466C 800B3A6C 8C6A0000 */  lw    $t2, ($v1)
 /* 0B4670 800B3A70 2401003C */  li    $at, 60
 /* 0B4674 800B3A74 3C044900 */  lui   $a0, (0x4900900F >> 16) # lui $a0, 0x4900
@@ -386,38 +386,38 @@ glabel func_800B3554
 /* 0B46D4 800B3AD4 0C032384 */  jal   play_sound2
 /* 0B46D8 800B3AD8 34848002 */   ori   $a0, (0x49008002 & 0xFFFF) # ori $a0, $a0, 0x8002
 /* 0B46DC 800B3ADC 97B90046 */  lhu   $t9, 0x46($sp)
-/* 0B46E0 800B3AE0 3C038019 */  lui   $v1, %hi(gCharacterSelections) # 0x8019
+/* 0B46E0 800B3AE0 3C038019 */  lui   $v1, %hi(gCharacterGridSelections) # 0x8019
 /* 0B46E4 800B3AE4 00791821 */  addu  $v1, $v1, $t9
 /* 0B46E8 800B3AE8 1000000E */  b     .L800B3B24
-/* 0B46EC 800B3AEC 8063EDE4 */   lb    $v1, %lo(gCharacterSelections)($v1) # -0x121c($v1)
+/* 0B46EC 800B3AEC 8063EDE4 */   lb    $v1, %lo(gCharacterGridSelections)($v1) # -0x121c($v1)
 .L800B3AF0:
 /* 0B46F0 800B3AF0 51000009 */  beql  $t0, $zero, .L800B3B18
 /* 0B46F4 800B3AF4 97A90046 */   lhu   $t1, 0x46($sp)
 /* 0B46F8 800B3AF8 0C027870 */  jal   func_8009E1C0
-/* 0B46FC 800B3AFC 00000000 */   nop   
+/* 0B46FC 800B3AFC 00000000 */   nop
 /* 0B4700 800B3B00 3C044900 */  lui   $a0, (0x49008016 >> 16) # lui $a0, 0x4900
 /* 0B4704 800B3B04 0C032384 */  jal   play_sound2
 /* 0B4708 800B3B08 34848016 */   ori   $a0, (0x49008016 & 0xFFFF) # ori $a0, $a0, 0x8016
 /* 0B470C 800B3B0C 0C003C49 */  jal   func_8000F124
-/* 0B4710 800B3B10 00000000 */   nop   
+/* 0B4710 800B3B10 00000000 */   nop
 /* 0B4714 800B3B14 97A90046 */  lhu   $t1, 0x46($sp)
 .L800B3B18:
-/* 0B4718 800B3B18 3C038019 */  lui   $v1, %hi(gCharacterSelections) # 0x8019
+/* 0B4718 800B3B18 3C038019 */  lui   $v1, %hi(gCharacterGridSelections) # 0x8019
 /* 0B471C 800B3B1C 00691821 */  addu  $v1, $v1, $t1
-/* 0B4720 800B3B20 8063EDE4 */  lb    $v1, %lo(gCharacterSelections)($v1) # -0x121c($v1)
+/* 0B4720 800B3B20 8063EDE4 */  lb    $v1, %lo(gCharacterGridSelections)($v1) # -0x121c($v1)
 .L800B3B24:
 /* 0B4724 800B3B24 10600007 */  beqz  $v1, .L800B3B44
 /* 0B4728 800B3B28 3C0A800F */   lui   $t2, %hi(D_800F2BAB) # 0x800f
 /* 0B472C 800B3B2C 97AB0046 */  lhu   $t3, 0x46($sp)
 /* 0B4730 800B3B30 01435021 */  addu  $t2, $t2, $v1
 /* 0B4734 800B3B34 814A2BAB */  lb    $t2, %lo(D_800F2BAB)($t2) # 0x2bab($t2)
-/* 0B4738 800B3B38 3C01800F */  lui   $at, %hi(D_800E86A8) # 0x800f
+/* 0B4738 800B3B38 3C01800F */  lui   $at, %hi(gCharacterSelections) # 0x800f
 /* 0B473C 800B3B3C 002B0821 */  addu  $at, $at, $t3
-/* 0B4740 800B3B40 A02A86A8 */  sb    $t2, %lo(D_800E86A8)($at) # -0x7958($at)
+/* 0B4740 800B3B40 A02A86A8 */  sb    $t2, %lo(gCharacterSelections)($at) # -0x7958($at)
 .L800B3B44:
 /* 0B4744 800B3B44 8FBF001C */  lw    $ra, 0x1c($sp)
 .L800B3B48:
 /* 0B4748 800B3B48 8FB00018 */  lw    $s0, 0x18($sp)
 /* 0B474C 800B3B4C 27BD0040 */  addiu $sp, $sp, 0x40
 /* 0B4750 800B3B50 03E00008 */  jr    $ra
-/* 0B4754 800B3B54 00000000 */   nop   
+/* 0B4754 800B3B54 00000000 */   nop

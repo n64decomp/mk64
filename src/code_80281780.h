@@ -23,7 +23,7 @@ extern s16 gCurrentCourseId;
 extern u16 D_800DC5B4;
 
 extern s32 gIsMirrorMode;
-extern s32 D_800DC530;
+extern s32 gScreenModeSelection;
 extern s32 D_800DC52C;
 extern s32 gModeSelection;
 extern u16 D_800DC5BC;
@@ -62,8 +62,8 @@ extern s32 D_00835BA0;
 extern s32 D_801625F8;
 extern f32 D_801625FC;
 
-extern struct Controller *D_800DC4BC;
-extern s8 D_800E86A8[];
+extern struct Controller *gControllerOne;
+extern s8 gCharacterSelections[];
 extern u16 gEnableDebugMode;
 
 extern void *D_80284ED0;
