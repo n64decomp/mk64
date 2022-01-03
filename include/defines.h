@@ -207,6 +207,26 @@
 #define NUM_COURSES_PER_CUP 4
 
 /**
+ * Item IDs
+**/
+#define NO_ITEM             0
+#define BANANA              1
+#define BANANA_BUNCH        2
+#define GREEN_SHELL         3
+#define TRIPLE_GREEN_SHELL  4
+#define RED_SHELL           5
+#define TRIPLE_RED_SHELL    6
+#define BLUE_SHELL          7
+#define THUNDERBOLT         8
+#define FAKE_ITEM_BOX       9
+#define STARMAN             10
+#define BOO                 11
+#define MUSHROOM            12
+#define DOUBLE_MUSHROOM     13
+#define SUPER_MUSHROOM      14
+#define GOLD_MUSHROOM       15
+
+/**
  * Max representable time, 100 minutes measured in centiseconds
  */
 #define MAX_TIME 0x927C0
