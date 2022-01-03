@@ -481,4 +481,15 @@ typedef struct {
     /* 0x06 */ u16 alpha;
 } RGBA16; // size = 0x08
 
+typedef struct {
+    /* 0x00 */ segment_address_t textureData;
+    /**
+     * Its hard to tell what exactly what this is meant to be,
+     * but it appears to be used as some sort of offset/index from the address stored in D_8018D9B0.
+     * This value is (roughly) the sum of (width * height) of the
+     * textures in all the previous entries in D_8018E118
+     */
+    /* 0x04 */ s32 offset;
+} struct_8018E118_entry; // size = 0x08
+
 #endif

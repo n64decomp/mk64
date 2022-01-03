@@ -35,8 +35,8 @@ glabel func_8009A478
 /* 09B0EC 8009A4EC AC790004 */  sw    $t9, 4($v1)
 /* 09B0F0 8009A4F0 AC600008 */  sw    $zero, 8($v1)
 /* 09B0F4 8009A4F4 AC68000C */  sw    $t0, 0xc($v1)
-/* 09B0F8 8009A4F8 3C098019 */  lui   $t1, %hi(D_8018E758) # $t1, 0x8019
-/* 09B0FC 8009A4FC 8D29E758 */  lw    $t1, %lo(D_8018E758)($t1)
+/* 09B0F8 8009A4F8 3C098019 */  lui   $t1, %hi(gNumD_8018E118Entries) # $t1, 0x8019
+/* 09B0FC 8009A4FC 8D29E758 */  lw    $t1, %lo(gNumD_8018E118Entries)($t1)
 /* 09B100 8009A500 00003025 */  move  $a2, $zero
 /* 09B104 8009A504 AC690010 */  sw    $t1, 0x10($v1)
 /* 09B108 8009A508 8C4A0000 */  lw    $t2, ($v0)
