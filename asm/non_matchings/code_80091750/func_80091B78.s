@@ -21,7 +21,7 @@ glabel func_80091B78
 /* 0927C4 80091BC4 2484F0B8 */   addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
 /* 0927C8 80091BC8 10400003 */  beqz  $v0, .L80091BD8
 /* 0927CC 80091BCC 00000000 */   nop   
-/* 0927D0 80091BD0 0C02D284 */  jal   func_800B4A10
+/* 0927D0 80091BD0 0C02D284 */  jal   load_save_data
 /* 0927D4 80091BD4 00000000 */   nop   
 .L80091BD8:
 /* 0927D8 80091BD8 0C02475D */  jal   func_80091D74

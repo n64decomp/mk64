@@ -40,9 +40,9 @@ glabel func_800B5404
 /* 0B6094 800B5494 0C02D542 */  jal   func_800B5508
 /* 0B6098 800B5498 8FA60030 */   lw    $a2, 0x30($sp)
 /* 0B609C 800B549C 8FA30018 */  lw    $v1, 0x18($sp)
-/* 0B60A0 800B54A0 0C02D19C */  jal   func_800B4670
+/* 0B60A0 800B54A0 0C02D19C */  jal   write_save_data_grand_prix_points_and_sound_mode
 /* 0B60A4 800B54A4 A0620000 */   sb    $v0, ($v1)
-/* 0B60A8 800B54A8 0C02D652 */  jal   func_800B5948
+/* 0B60A8 800B54A8 0C02D652 */  jal   update_save_data_backup
 /* 0B60AC 800B54AC 00000000 */   nop   
 .L800B54B0:
 /* 0B60B0 800B54B0 8FBF0014 */  lw    $ra, 0x14($sp)

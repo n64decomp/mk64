@@ -6,9 +6,10 @@
 #include "global.h"
 #include "common_structs.h"
 
-void func_8009E1C0();
-void func_8009E208();
-void func_8009E258();
+void func_8009E1C0(void);
+void func_8009E1E4(void);
+void func_8009E208(void);
+void func_8009E258(void);
 void func_800B053C(struct Controller*, u16);
 void func_800B13B0(struct Controller*, u16);
 void func_800B15AC(struct Controller*, u16);
@@ -21,20 +22,26 @@ void func_800B3B58(struct Controller*, u16);
 void func_800B44AC(void);
 void func_800B44BC(void);
 s32  func_800B4520(void);
-void func_800B4670(void);
-void func_800B4728(s32 arg0);
-void func_800B4820(void);
-s32  func_800B492C(void);
-s32  func_800B49E4(void);
+void write_save_data_grand_prix_points_and_sound_mode(void);
+void func_800B4728(s32);
+void reset_save_data_grand_prix_points_and_sound_mode(void);
+s32  func_800B4874(s32);
+s32  compute_save_data_checksum_1(void);
+s32  compute_save_data_checksum_2(void);
+void func_800B4A9C(s32);
+void validate_save_data(void);
 u8   func_800B54EC(s32, s32);
 u8   func_800B5508(s32, s32, s32);
-void func_800B559C(s32 arg0);
-void func_800B5948(void);
-s32  func_800B59F4();
-s32  func_800B5AAC();
+void func_800B559C(s32);
+void update_save_data_backup(void);
+s32  compute_save_data_checksum_backup_1(void);
+s32  compute_save_data_checksum_backup_2(void);
+void func_800B69BC(s32);
 void play_sound2(s32);
 void func_800CA330(s32);
-u32  func_802A7B70(u16 x);
+void func_800CA388(s32);
+s32  func_800CE720(OSMesgQueue*, OSPfs*, s32);
+u32  func_802A7B70(u16);
 
 extern u16         gEnableDebugMode; // D_800DC520
 extern s32         gCCSelection; // D_800DC538
@@ -73,11 +80,11 @@ extern u8          D_8018ED10[4]; // Direct reference to the grandPrixPoints sec
 extern u8          D_8018ED11;
 extern u8          D_8018ED12;
 extern u8          D_8018ED13;
-extern s8          D_8018ED16;
-extern s8          D_8018ED17;
+extern u8          D_8018ED16; // D_8018EB90.checksum[1]
+extern u8          D_8018ED17; // D_8018EB90.checksum[2]
 extern u8          D_8018ED4E; // D_8018EB90.onlyBestTimeTrialRecords[0].unknownBytes[6]
-extern u8          D_8018ED8E; // D_8018EB90.unknownBytesBackup[1]
-extern u8          D_8018ED8F; // D_8018EB90.unknownBytesBackup[2]
+extern u8          D_8018ED8E; // D_8018EB90.checksumBackup[1]
+extern u8          D_8018ED8F; // D_8018EB90.checksumBackup[2]
 extern u32         D_8018EDB8;
 extern u32         D_8018EDBC;
 extern s8          D_8018EDE5;
@@ -543,9 +550,9 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B0350.s")
 ? func_8009E280();                                  /* extern */
 void *func_800AAEF4(?);                             /* extern */
 ? func_800B44BC();                                  /* extern */
-? func_800B4670();                                  /* extern */
+? write_save_data_grand_prix_points_and_sound_mode();                                  /* extern */
 ? func_800B46D0(?, u16);                            /* extern */
-? func_800B5948();                                  /* extern */
+? update_save_data_backup();                                  /* extern */
 ? func_800B6088(s32);                               /* extern */
 ? func_800B6708();                                  /* extern */
 ? func_800B6798();                                  /* extern */
@@ -669,8 +676,8 @@ void func_800B053C(void *arg0, u16 arg1) {
                     gSaveDataSoundMode = gSoundMode;
                     sp20 = phi_a1;
                     sp38 = temp_t0;
-                    func_800B4670();
-                    func_800B5948();
+                    write_save_data_grand_prix_points_and_sound_mode();
+                    update_save_data_backup();
                     temp_t0->unk4 = gSoundMode;
                     phi_t1 = &D_8018EDEC;
                 }
@@ -682,8 +689,8 @@ void func_800B053C(void *arg0, u16 arg1) {
                 if (temp_t0->unk4 != gSoundMode) {
                     gSaveDataSoundMode = gSoundMode;
                     sp38 = temp_t0;
-                    func_800B4670();
-                    func_800B5948();
+                    write_save_data_grand_prix_points_and_sound_mode();
+                    update_save_data_backup();
                     temp_t0->unk4 = gSoundMode;
                     return;
                 }
@@ -1108,7 +1115,7 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B053C.s")
 #endif
 
 // Handle navigating the data menu interface
-void func_800B13B0(struct Controller *controller, u16 arg1) {
+void func_800B13B0(struct Controller *controller, UNUSED u16 arg1) {
     u16 buttonAndStickPress = (controller->buttonPressed | controller->stickPressed);
 
     // Make pressing Start have the same effect as pressing A
@@ -1441,7 +1448,7 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B15AC.s")
 #endif
 
 // Handle controller input during the logo screen
-void func_800B1C40(struct Controller *arg0, u16 arg1) {
+void func_800B1C40(struct Controller *arg0, UNUSED u16 arg1) {
     u16 sp1E = arg0->buttonPressed | arg0->stickPressed;
 
     if ((func_800B4520() == 0) && (sp1E != 0)) {
@@ -1600,10 +1607,10 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B1C90.s")
 //generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
 ? func_8009E1C0();                                  /* extern */
 ? func_800B44BC();                                  /* extern */
-? func_800B4670();                                  /* extern */
-? func_800B4820();                                  /* extern */
+? write_save_data_grand_prix_points_and_sound_mode();                                  /* extern */
+? reset_save_data_grand_prix_points_and_sound_mode();                                  /* extern */
 ? func_800B5404(s32, s32);                          /* extern */
-? func_800B5948();                                  /* extern */
+? update_save_data_backup();                                  /* extern */
 ? func_800CA330(?);                                 /* extern */
 ? play_sound2(?, s32);                              /* extern */
 static ? D_800F2B50;                                /* unable to generate initializer; const */
@@ -1764,8 +1771,8 @@ void func_800B20F4(void *arg0, s32 arg1) {
                     play_sound2(0x49008000);
                     func_800B44BC();
                     gSaveDataSoundMode = gSoundMode;
-                    func_800B4670();
-                    func_800B5948();
+                    write_save_data_grand_prix_points_and_sound_mode();
+                    update_save_data_backup();
                 }
             }
             if ((sp2E & 0x200) != 0) {
@@ -1778,7 +1785,7 @@ void func_800B20F4(void *arg0, s32 arg1) {
                     play_sound2(0x49008000);
                     func_800B44BC();
                     gSaveDataSoundMode = gSoundMode;
-                    func_800B4670();
+                    write_save_data_grand_prix_points_and_sound_mode();
                 }
             }
             if ((sp2E & 0x800) != 0) {
@@ -1808,7 +1815,7 @@ void func_800B20F4(void *arg0, s32 arg1) {
                 } while (temp_a1 < 0x10);
                 play_sound2(0x49008001, temp_a1);
             } else if ((sp2E & 0x20) != 0) {
-                func_800B4820();
+                reset_save_data_grand_prix_points_and_sound_mode();
                 phi_a1_2 = 0;
                 phi_s0_2 = 0;
                 do {
@@ -1819,7 +1826,7 @@ void func_800B20F4(void *arg0, s32 arg1) {
                 } while (temp_a1_2 < 0x10);
                 play_sound2(0x49008001, temp_a1_2);
             } else if ((sp2E & 0x200) != 0) {
-                func_800B4820();
+                reset_save_data_grand_prix_points_and_sound_mode();
                 phi_a1_3 = 0;
                 phi_s0_3 = 0;
                 do {
@@ -2742,13 +2749,13 @@ void func_800B45E0(s32 arg0) {
                                                         .cupRecords[arg0 / 4] \
                                                         .courseRecords[arg0 % 4];
 
-    courseTimeTrialRecordsPtr->unknownBytes[5] = func_800B4874();
+    courseTimeTrialRecordsPtr->unknownBytes[5] = func_800B4874(arg0);
     osEepromLongWrite(&gSIEventMesgQueue, ((u32)courseTimeTrialRecordsPtr - (u32)&D_8018EB90) >> 3, (u8*) courseTimeTrialRecordsPtr, sizeof(CourseTimeTrialRecords));
 }
 
-void func_800B4670(void) {
-    D_8018ED16 = func_800B492C();
-    D_8018ED17 = func_800B49E4();
+void write_save_data_grand_prix_points_and_sound_mode(void) {
+    D_8018ED16 = compute_save_data_checksum_1();
+    D_8018ED17 = compute_save_data_checksum_2();
     osEepromLongWrite(&gSIEventMesgQueue, (((u32)&D_8018ED10 - (u32)&D_8018EB90) >> 3), (u8*) &D_8018ED10, 8);
 }
 
@@ -2763,8 +2770,8 @@ void func_800B46D0(void) {
         temp_s0 = phi_s0 + 1;
         phi_s0 = temp_s0;
     } while (phi_s0 != 0x10);
-    func_800B4820();
-    func_800B5948();
+    reset_save_data_grand_prix_points_and_sound_mode();
+    update_save_data_backup();
 }
 
 void func_800B4728(s32 arg0) {
@@ -2794,7 +2801,7 @@ void func_800B4728(s32 arg0) {
     func_800B45E0(arg0);
 }
 
-void func_800B4820(void) {
+void reset_save_data_grand_prix_points_and_sound_mode(void) {
     D_8018ED10[0] = 0;
     D_8018ED11 = 0;
     D_8018ED12 = 0;
@@ -2802,7 +2809,7 @@ void func_800B4820(void) {
     gSaveDataSoundMode = SOUND_STEREO;
     gSoundMode = SOUND_STEREO;
     func_800B44BC();
-    func_800B4670();
+    write_save_data_grand_prix_points_and_sound_mode();
 }
 
 s32 func_800B4874(s32 arg0) {
@@ -2834,7 +2841,7 @@ s32 func_800B4874(s32 arg0) {
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 extern u8 D_8018ED10;
 
-s32 func_800B492C(void) {
+s32 compute_save_data_checksum_1(void) {
     void *temp_a0;
 
     temp_a0 = &D_8018ED10 + 1;
@@ -2844,21 +2851,15 @@ s32 func_800B492C(void) {
 GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B492C.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern u8 D_8018ED16;
-
-s32 func_800B49E4(void) {
-    return ((D_8018ED16 + 0x5A) % 0x100) & 0xFF;
+s32 compute_save_data_checksum_2(void) {
+    s32 tmp = D_8018ED16 + 90;
+    return (tmp % 256) & 0xFF;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B49E4.s")
-#endif
 
-void func_800B4A10(void) {
+void load_save_data(void) {
     s32 temp_s0;
 
-    osEepromLongRead(&gSIEventMesgQueue, 0, (u8*) &D_8018EB90, 0x200); //0x200: sizeof(SaveData)?
+    osEepromLongRead(&gSIEventMesgQueue, 0, (u8*) &D_8018EB90, sizeof(SaveData));
     temp_s0 = 0;
     while (temp_s0 < 16) // 16: 4 cup records * 4 course records?
     {
@@ -2866,7 +2867,7 @@ void func_800B4A10(void) {
         ++temp_s0;
     }
 
-    func_800B4CB4();
+    validate_save_data();
 
     gSoundMode = gSaveDataSoundMode;
     if (gSoundMode >= NUM_SOUND_MODES) {
@@ -2954,13 +2955,13 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B4A9C.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_800B4820(); // extern
-s32 func_800B492C(); // extern
-s32 func_800B49E4(); // extern
-? func_800B5948(); // extern
-u8 func_800B59F4(); // extern
-u8 func_800B5AAC(); // extern
-s32 func_800B5AD8(); // extern
+? reset_save_data_grand_prix_points_and_sound_mode(); // extern
+s32 compute_save_data_checksum_1(); // extern
+s32 compute_save_data_checksum_2(); // extern
+? update_save_data_backup(); // extern
+u8 compute_save_data_checksum_backup_1(); // extern
+u8 compute_save_data_checksum_backup_2(); // extern
+s32 validate_save_data_checksum_backup(); // extern
 extern ? D_8018EB90;
 extern u8 D_8018ED10;
 extern u8 D_8018ED11;
@@ -2976,24 +2977,26 @@ extern u8 D_8018ED8B;
 extern u8 gSaveDataSoundModeBackup;
 extern OSMesgQueue gSIEventMesgQueue;
 
-void func_800B4CB4(void) {
-    if ((D_8018ED16 != func_800B492C()) || (D_8018ED17 != func_800B49E4())) {
-        func_800B4820();
-        if (func_800B5AD8() == 0) {
+void validate_save_data(void) {
+    if ((D_8018ED16 != compute_save_data_checksum_1()) || (D_8018ED17 != compute_save_data_checksum_2())) {
+        // Invalid data in save data grand prix points and sound mode
+        reset_save_data_grand_prix_points_and_sound_mode();
+        if (validate_save_data_checksum_backup() == 0) {
+            // Backup has valid data. Copy to main save data
             D_8018ED10 = D_8018ED88;
             D_8018ED11 = D_8018ED89;
             D_8018ED12 = D_8018ED8A;
             D_8018ED13 = D_8018ED8B;
             gSaveDataSoundMode = gSaveDataSoundModeBackup;
-            D_8018ED16 = func_800B59F4();
-            D_8018ED17 = func_800B5AAC();
+            D_8018ED16 = compute_save_data_checksum_backup_1();
+            D_8018ED17 = compute_save_data_checksum_backup_2();
             osEepromLongWrite(&gSIEventMesgQueue, ((&D_8018ED10 - &D_8018EB90) >> 3) & 0xFF, &D_8018ED10, 8);
         }
-        func_800B5948();
+        update_save_data_backup();
         return;
     }
-    if (func_800B5AD8() != 0) {
-        func_800B5948();
+    if (validate_save_data_checksum_backup() != 0) {
+        update_save_data_backup();
     }
 }
 #else
@@ -3256,18 +3259,18 @@ void func_800B536C(s32 arg0) {
         tmp2 = 3 - arg0;
         if ((arg0 < 3) && (tmp < (3-arg0)))  {
             *points = func_800B5508(gCupSelection, *points, tmp2);
-            func_800B4670();
-            func_800B5948();
+            write_save_data_grand_prix_points_and_sound_mode();
+            update_save_data_backup();
         }
     }
 }
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_800B4670(); // extern
+? write_save_data_grand_prix_points_and_sound_mode(); // extern
 s32 func_800B54EC(s32, u8, s32, void *); // extern
 u8 func_800B5508(s32, u8, s32, void *); // extern
-? func_800B5948(); // extern
+? update_save_data_backup(); // extern
 extern ? D_8018EB90;
 
 void func_800B5404(s32 arg0, s32 arg1) {
@@ -3295,8 +3298,8 @@ void func_800B5404(s32 arg0, s32 arg1) {
                 temp_v1_2 = temp_a3 + 0x180;
                 sp18 = temp_v1_2;
                 *temp_v1_2 = func_800B5508(temp_a0, *temp_v1_2, sp30, temp_a3);
-                func_800B4670();
-                func_800B5948();
+                write_save_data_grand_prix_points_and_sound_mode();
+                update_save_data_backup();
             }
         }
     }
@@ -3517,10 +3520,11 @@ extern ? D_8018EB90;
 GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B58C4.s")
 #endif
 
+
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-s8 func_800B59F4(); // extern
-s8 func_800B5AAC(); // extern
+s8 compute_save_data_checksum_backup_1(); // extern
+s8 compute_save_data_checksum_backup_2(); // extern
 extern ? D_8018EB90;
 extern u8 D_8018ED10;
 extern u8 D_8018ED11;
@@ -3536,14 +3540,14 @@ extern s8 D_8018ED8E;
 extern s8 D_8018ED8F;
 extern OSMesgQueue gSIEventMesgQueue;
 
-void func_800B5948(void) {
+void update_save_data_backup(void) {
     D_8018ED88 = D_8018ED10;
     D_8018ED89 = D_8018ED11;
     D_8018ED8A = D_8018ED12;
     D_8018ED8B = D_8018ED13;
     gSaveDataSoundModeBackup = gSaveDataSoundMode;
-    D_8018ED8E = func_800B59F4();
-    D_8018ED8F = func_800B5AAC();
+    D_8018ED8E = compute_save_data_checksum_backup_1();
+    D_8018ED8F = compute_save_data_checksum_backup_2();
     osEepromLongWrite(&gSIEventMesgQueue, ((&D_8018ED88 - &D_8018EB90) >> 3) & 0xFF, &D_8018ED88, 8);
 }
 #else
@@ -3554,7 +3558,7 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B5948.s")
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 extern u8 D_8018ED88;
 
-s32 func_800B59F4(void) {
+s32 compute_save_data_checksum_backup_1(void) {
     void *temp_a0;
 
     temp_a0 = &D_8018ED88 + 1;
@@ -3564,14 +3568,14 @@ s32 func_800B59F4(void) {
 GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B59F4.s")
 #endif
 
-s32 func_800B5AAC(void) {
+s32 compute_save_data_checksum_backup_2(void) {
     s32 tmp = D_8018ED8E + 90;
     return (tmp % 256) & 0xFF;
 }
 
-s32 func_800B5AD8(void)
+s32 validate_save_data_checksum_backup(void)
 {
-    if ((D_8018ED8E != (func_800B59F4() ^ 0)) || (D_8018ED8F != (func_800B5AAC() ^ 0))) {
+    if ((D_8018ED8E != (compute_save_data_checksum_backup_1() ^ 0)) || (D_8018ED8F != (compute_save_data_checksum_backup_2() ^ 0))) {
         return 1;
     }
 
@@ -3580,7 +3584,7 @@ s32 func_800B5AD8(void)
 
 s32 func_800B5B2C(s32 arg0) {
     u8 sp1F;
-    s32 phi_v0;
+    UNUSED s32 phi_v0;
 
     if ((arg0 >= 4) || (arg0 < 0)) {
         return 0;
@@ -4309,7 +4313,7 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B69BC.s")
 #endif
 
 s32 func_800B6A68(void) {
-    s32 pad;
+    UNUSED s32 pad;
     s32 sp30;
     s32 temp_s0;
 

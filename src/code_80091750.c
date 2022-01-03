@@ -219,7 +219,7 @@ s32 func_80091D74(); // extern
 ? func_80094C60(); // extern
 ? func_800AF9B0(); // extern
 ? func_800B44BC(); // extern
-? func_800B4A10(); // extern
+? load_save_data(); // extern
 ? func_800C97C4(s32); // extern
 ? func_800C9D0C(s32); // extern
 extern s8 D_800E852C;
@@ -257,7 +257,7 @@ void func_80091B78(void) {
         D_8018EDF5 = 5;
         D_8018EDF6 = 0xA;
         if (osEepromProbe(&gSIEventMesgQueue) != 0) {
-            func_800B4A10();
+            load_save_data();
         }
         if (func_80091D74() != 0) {
             gMenuSelection = CONTROLLER_PAK_MENU;
