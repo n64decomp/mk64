@@ -63,7 +63,7 @@ extern s32 D_801625F8;
 extern f32 D_801625FC;
 
 extern struct Controller *gControllerOne;
-extern s8 D_800E86A8[];
+extern s8 gCharacterSelections[];
 extern u16 gEnableDebugMode;
 
 extern void *D_80284ED0;

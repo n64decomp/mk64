@@ -4981,7 +4981,7 @@ void func_8004E800(s32 arg0) {
             func_8004A384(temp_v0->unk66 + temp_v0->unk62, temp_v0->unk68 + temp_v0->unk64, 0, temp_v0->unk4, 0xFF, *(&D_800E55F8 + (temp_v1 * 4)), 0, 0xFF, (temp_v1 << 0xC) + &D_0D00D258, &D_0D0068F0, 0x80, 0x40, 0x80, 0x40);
             return;
         }
-        func_8004A384(temp_v0->unk66 + temp_v0->unk62, temp_v0->unk68 + temp_v0->unk64, 0, temp_v0->unk4, 0xFF, *(&D_800E55F8 + (D_80165594 * 4)), 0, 0xFF, (D_801643B8[arg0] << 0xC) + &D_0D00D258, &D_0D0068F0, 0x80, 0x40, 0x80, 0x40);
+        func_8004A384(temp_v0->unk66 + temp_v0->unk62, temp_v0->unk68 + temp_v0->unk64, 0, temp_v0->unk4, 0xFF, *(&D_800E55F8 + (D_80165594 * 4)), 0, 0xFF, (gPlayerPositions[arg0] << 0xC) + &D_0D00D258, &D_0D0068F0, 0x80, 0x40, 0x80, 0x40);
         // Duplicate return node #4. Try simplifying control flow for better match
     }
 }
@@ -5005,11 +5005,11 @@ void func_8004E998(s32 arg0) {
     temp_v0 = (arg0 * 0x84) + &D_8018CA70;
     if (temp_v0->unk81 != 0) {
         if (temp_v0->unk71 != 3) {
-            temp_v1 = D_801643B8[arg0];
+            temp_v1 = gPlayerPositions[arg0];
             func_8004A384(temp_v0->unk66 + temp_v0->unk62, temp_v0->unk68 + temp_v0->unk64, 0, temp_v0->unk4, 0xFF, *(&D_800E5618 + (temp_v1 * 4)), 0, 0xFF, (temp_v1 << 0xB) + &D_0D015258, &D_0D006030, 0x40, 0x40, 0x40, 0x40);
             return;
         }
-        func_8004A384(temp_v0->unk66 + temp_v0->unk62, temp_v0->unk68 + temp_v0->unk64, 0, temp_v0->unk4, 0xFF, *(&D_800E5618 + (D_80165598 * 4)), 0, 0xFF, (D_801643B8[arg0] << 0xB) + &D_0D015258, &D_0D006030, 0x40, 0x40, 0x40, 0x40);
+        func_8004A384(temp_v0->unk66 + temp_v0->unk62, temp_v0->unk68 + temp_v0->unk64, 0, temp_v0->unk4, 0xFF, *(&D_800E5618 + (D_80165598 * 4)), 0, 0xFF, (gPlayerPositions[arg0] << 0xB) + &D_0D015258, &D_0D006030, 0x40, 0x40, 0x40, 0x40);
         // Duplicate return node #4. Try simplifying control flow for better match
     }
 }
@@ -5228,14 +5228,14 @@ void func_8004F168(s32 arg0, s32 arg1, s32 arg2) {
         temp_a0 = ((*(&D_8018D2C0 + temp_t0) + D_8018D2F0) - (D_8018D2B0 / 2)) + D_8018D2E0 + (temp_v1->posX * temp_f0);
         temp_a1 = ((*(&D_8018D2D8 + temp_t0) + D_8018D2F8) - (D_8018D2B8 / 2)) + D_8018D2E8 + temp_f12;
         if (arg2 != 8) {
-            if ((D_801643B8[arg1] == 0) && (temp_v0 = gModeSelection, (temp_v0 != BATTLE)) && (temp_v0 != TIME_TRIALS)) {
+            if ((gPlayerPositions[arg1] == 0) && (temp_v0 = gModeSelection, (temp_v0 != BATTLE)) && (temp_v0 != TIME_TRIALS)) {
                 func_80046424(temp_f12, temp_a0, temp_a1, (temp_v1->unk_02E + 0x8000) & 0xFFFF, 0x3F800000, (arg2 << 7) + &D_0D02CCD8, &D_0D005470, 8, 8, 8, 8);
                 return;
             }
             func_800463B0(temp_f12, temp_a0, temp_a1, (temp_v1->unk_02E + 0x8000) & 0xFFFF, 0x3F800000, (arg2 << 7) + &D_0D02CCD8, &D_0D005470, 8, 8, 8, 8);
             return;
         }
-        if (D_801643B8[arg1] == 0) {
+        if (gPlayerPositions[arg1] == 0) {
             func_8004C450(temp_f12, temp_a0, temp_a1, 8, 8, &D_0D02D0D8);
             return;
         }
@@ -6026,7 +6026,7 @@ extern ? lapCount;
     }
     if (gPlayerCountSelection1 == 1) {
         *arg1 = 0x20;
-        *arg2 = (D_801643B8[temp_t6] * 0x14) + 0x20;
+        *arg2 = (gPlayerPositions[temp_t6] * 0x14) + 0x20;
         return 0;
     }
     *arg1 = *(&D_801644A8 + temp_t0) * 260.0f;
@@ -6475,7 +6475,7 @@ void func_800514BC(void) {
     if (gModeSelection == TIME_TRIALS) {
         func_80050E34(0, D_80164408);
     } else if (gPlayerCountSelection1 == 1) {
-        func_80050E34(0, *D_801643B8);
+        func_80050E34(0, *gPlayerPositions);
     }
     temp_v1 = gDisplayListHead;
     gDisplayListHead = temp_v1 + 8;

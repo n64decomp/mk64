@@ -696,7 +696,7 @@ glabel L8003C98C
 /* 03D738 8003CB38 44812000 */  mtc1  $at, $f4
 /* 03D73C 8003CB3C E628000C */  swc1  $f8, 0xc($s1)
 /* 03D740 8003CB40 3C014700 */  li    $at, 0x47000000 # 32768.000000
-/* 03D744 8003CB44 3C0A800F */  lui   $t2, %hi(D_800E86A8) # $t2, 0x800f
+/* 03D744 8003CB44 3C0A800F */  lui   $t2, %hi(gCharacterSelections) # $t2, 0x800f
 /* 03D748 8003CB48 E62A0010 */  swc1  $f10, 0x10($s1)
 /* 03D74C 8003CB4C E6300014 */  swc1  $f16, 0x14($s1)
 /* 03D750 8003CB50 E6000014 */  swc1  $f0, 0x14($s0)
@@ -704,7 +704,7 @@ glabel L8003C98C
 /* 03D758 8003CB58 E6000004 */  swc1  $f0, 4($s0)
 /* 03D75C 8003CB5C E6320018 */  swc1  $f18, 0x18($s1)
 /* 03D760 8003CB60 E624001C */  swc1  $f4, 0x1c($s1)
-/* 03D764 8003CB64 814A86A8 */  lb    $t2, %lo(D_800E86A8)($t2)
+/* 03D764 8003CB64 814A86A8 */  lb    $t2, %lo(gCharacterSelections)($t2)
 /* 03D768 8003CB68 44814000 */  mtc1  $at, $f8
 /* 03D76C 8003CB6C 3C04800E */  lui   $a0, %hi(gPlayerOneCopy) # $a0, 0x800e
 /* 03D770 8003CB70 240BE000 */  li    $t3, -8192

@@ -11,7 +11,7 @@ void func_8006E9C0(void) {
     func_8006FA94();
 
     switch (gScreenModeSelection) {
-        case SCREEN_MODE_1P: 
+        case SCREEN_MODE_1P:
             func_80071428();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
@@ -1981,7 +1981,7 @@ void func_80071428(void) {
     D_8018CA70.unk44 = -0x20;
     D_8018CA70.unk46 = 0;
     D_8018CA70.unk48 = 0;
-    D_8018CA70.unk6A = *D_801643B8;
+    D_8018CA70.unk6A = *gPlayerPositions;
     func_8006EE7C(D_80183E88);
     phi_f0 = 35.0f;
     phi_a1 = &D_8018D050;
@@ -2133,8 +2133,8 @@ void func_80071818(void) {
     D_8018CA70.unkE4 = 0x28;
     func_8006EE7C(D_80183E8C);
     D_8018CA70.unk88 = 0.5f;
-    D_8018CA70.unk6A = D_801643B8->unk0;
-    D_8018CA70.unkEE = D_801643B8->unk4;
+    D_8018CA70.unk6A = gPlayerPositions->unk0;
+    D_8018CA70.unkEE = gPlayerPositions->unk4;
     D_8018CA70.unk4 = D_8018CA70.unk88;
     D_8018D3C4 = 0x1E;
     D_8018D3BC = 0x18;
@@ -2222,8 +2222,8 @@ void func_80071A20(void) {
         D_8018CA70.unkC8 = 0xD0;
     }
     D_8018CA70.unk88 = 0.5f;
-    D_8018CA70.unk6A = D_801643B8->unk0;
-    D_8018CA70.unkEE = D_801643B8->unk4;
+    D_8018CA70.unk6A = gPlayerPositions->unk0;
+    D_8018CA70.unkEE = gPlayerPositions->unk4;
     D_8018CA70.unk4 = D_8018CA70.unk88;
     func_8006EE7C(D_80183E88, 0x34, 0xEA, 0x101);
     func_8006EE7C(D_80183E8C);
@@ -2353,10 +2353,10 @@ void func_80071C28(void) {
     D_8018CA70.unk10C = temp_f0;
     D_8018CA70.unk88 = temp_f0;
     D_8018CA70.unk4 = temp_f0;
-    D_8018CA70.unk6A = D_801643B8->unk0;
-    D_8018CA70.unkEE = D_801643B8->unk4;
-    D_8018CA70.unk172 = D_801643B8->unk8;
-    D_8018CA70.unk1F6 = D_801643B8->unkC;
+    D_8018CA70.unk6A = gPlayerPositions->unk0;
+    D_8018CA70.unkEE = gPlayerPositions->unk4;
+    D_8018CA70.unk172 = gPlayerPositions->unk8;
+    D_8018CA70.unk1F6 = gPlayerPositions->unkC;
     func_8006EE7C(D_80183E88, 0x36, 0x50, 0x3C);
     func_8006EE7C(D_80183E8C);
     func_8006EE7C(D_80183E90);

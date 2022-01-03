@@ -73,7 +73,7 @@ extern u16 D_80162DD4[];
 extern u16 D_8015F890;
 extern u32 D_800DC5AC;
 extern u16 gEnableDebugMode;
-extern s32 D_800DC5E8;
+extern s32 gPlayerWinningIndex;
 extern u16 gIsInQuitToMenuTransition, gQuitToMenuTransitionCounter;
 extern s32 D_802B91E0;
 extern s16 D_8015F8F2[];
@@ -102,8 +102,8 @@ extern void func_80078F64();
 extern void func_800925A0();
 extern void func_8028F4E8();
 extern void func_8028EDA8();
-extern void func_8028E0F0();
-extern void func_8028F3F0();
+extern void update_player_battle_status();
+extern void update_race_position_data();
 extern void func_8028F970();
 extern void func_8028E298();
 extern void func_80092564();
@@ -152,29 +152,30 @@ void func_8028E028(void) {
 
     switch(gPlayerCountSelection1) {
         case 2:
-            *(D_8015F8C4 + D_800DC5E8) += 1;
+            *(D_8015F8C4 + gPlayerWinningIndex) += 1;
             break;
         case 3:
-            *(D_8015F8C8 + D_800DC5E8) += 1;
+            *(D_8015F8C8 + gPlayerWinningIndex) += 1;
             break;
         case 4:
-            *(D_8015F8CC + D_800DC5E8) += 1;
+            *(D_8015F8CC + gPlayerWinningIndex) += 1;
             break;
     }
-    func_800CA118((u8) D_800DC5E8);
+    func_800CA118((u8) gPlayerWinningIndex);
     D_800DC510 = 5;
     D_802BA038 = 10;
 }
 
-void func_8028E0F0(void) {
+// func_8028E0F0
+void update_player_battle_status(void) {
     Player *ply;
     s32 playerIndex;
-    s16 unk_arr2[4];
-    s16 unk_arr[4];
-    s16 phi_s1 = 0;
-    s16 phi_s2 = 0;
+    s16 playersAlive[4];
+    s16 playersDead[4];
+    s16 aliveCounter = 0;
+    s16 deadCounter = 0;
 
-    for(playerIndex = 0; playerIndex < 4; playerIndex++) {
+    for (playerIndex = 0; playerIndex < 4; playerIndex++) {
         ply = (Player *)&gPlayers[playerIndex];
         if (!(ply->unk_000 & PLAYER_EXISTS)) {
             continue;
@@ -182,26 +183,26 @@ void func_8028E0F0(void) {
         if (ply->unk_000 & PLAYER_CINEMATIC_MODE) {
             continue;
         }
-
         // If player has no balloons left
         if (gPlayerBalloonCount[playerIndex] < 0) {
             ply->unk_000 |= PLAYER_CINEMATIC_MODE;
-            unk_arr[phi_s2] = (s16) (ply - gPlayerOne);
-            phi_s2++;
-            func_800CA118((u8) playerIndex);
+            playersDead[deadCounter] = (s16) (ply - gPlayerOne);
+            deadCounter++;
+            func_800CA118((u8) playerIndex); // play sad character sound?
         } else {
-            unk_arr2[phi_s1] = (s16) (ply - gPlayerOne);
-            phi_s1++;
+            playersAlive[aliveCounter] = (s16) (ply - gPlayerOne);
+            aliveCounter++;
         }
     }
-    if (phi_s1 == 1) {
-        D_800DC5E8 = (s32) unk_arr2[0];
+    if (aliveCounter == 1) {
+        gPlayerWinningIndex = (s32) playersAlive[0];
         func_8028E028();
-    } else if (phi_s1 == 0) {
-        D_800DC5E8 = (s32) unk_arr[0];
+    } else if (aliveCounter == 0) {
+        gPlayerWinningIndex = (s32) playersDead[0];
         func_8028E028();
     }
 }
+
 extern f32 gTimePlayerLastTouchedFinishLine[];
 extern u16 D_801645B0[];
 extern u16 D_801645C8[];
@@ -248,7 +249,7 @@ void func_8028E3A0(void) {
 }
 
 void func_8028E438(void) {
-    struct UnkStruct_800DC5EC *temp_v0 = &D_8015F480[D_800DC5E8];
+    struct UnkStruct_800DC5EC *temp_v0 = &D_8015F480[gPlayerWinningIndex];
     s32 phi_v1_4;
 
     D_800DC5B0 = 1;
@@ -647,7 +648,7 @@ void func_8028EF28(void) {
                     if (gModeSelection == VERSUS) {
                         D_802BA038 = 180;
                         if (currentPosition == 0) {
-                            D_800DC5E8 = i;
+                            gPlayerWinningIndex = i;
                         }
                         switch(gPlayerCountSelection1) {
                             case 2:
@@ -727,20 +728,21 @@ void func_8028EF28(void) {
 void func_8028F3E8(void) {
 
 }
-extern s32 D_801643B8[];
-extern s16 D_8015F8F0[];
+extern s32 gPlayerPositions[]; // D_801643B8 (position for each player)
+extern s16 gPlayerPositionLUT[]; // D_8015F8F0 (player index at each position)
 
-void func_8028F3F0(void) {
+// func_8028F3F0
+void update_race_position_data(void) {
     s16 i;
-    s16 temp_a0_2;
+    s16 position;
 
     for (i = 0; i < 8; i++) {
         if (((gPlayers[i].unk_000 & PLAYER_EXISTS) != 0) &&
             ((gPlayers[i].unk_000 & PLAYER_CINEMATIC_MODE) == 0) &&
             ((gPlayers[i].unk_000 & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
-            temp_a0_2 = D_801643B8[i];
-            gPlayers[i].unk_004 = temp_a0_2;
-            D_8015F8F0[temp_a0_2] = i;
+            position = gPlayerPositions[i];
+            gPlayers[i].unk_004 = position;
+            gPlayerPositionLUT[position] = i;
         }
     }
 }
@@ -1132,9 +1134,9 @@ void func_8028FCBC(void) {
             break;
         case 3:
             if (gModeSelection == BATTLE) {
-                func_8028E0F0();
+                update_player_battle_status();
             } else {
-                func_8028F3F0();
+                update_race_position_data();
                 func_8028EF28();
             }
             func_8028F4E8();
@@ -1145,7 +1147,7 @@ void func_8028FCBC(void) {
             switch(gModeSelection) {
                 case GRAND_PRIX:
                     func_8028F4E8();
-                    func_8028F3F0();
+                    update_race_position_data();
                     func_8028EF28();
                     func_8028F970();
 
@@ -1161,9 +1163,9 @@ void func_8028FCBC(void) {
 
 
                                 if (gPlayerOne->unk_004 < gPlayerTwo->unk_004) {
-                                    D_800DC5E8 = 1;
+                                    gPlayerWinningIndex = 1;
                                 } else {
-                                    D_800DC5E8 = 0;
+                                    gPlayerWinningIndex = 0;
                                 }
 
                                 func_8028E298();
@@ -1175,7 +1177,7 @@ void func_8028FCBC(void) {
                     break;
                 case VERSUS:
                     func_8028F4E8();
-                    func_8028F3F0();
+                    update_race_position_data();
                     func_8028EF28();
                     func_8028F970();
                     break;

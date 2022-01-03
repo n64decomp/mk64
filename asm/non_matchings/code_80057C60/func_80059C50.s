@@ -24,10 +24,10 @@ glabel func_80059C50
 /* 05A8A4 80059CA4 1420FFF7 */  bnez  $at, .L80059C84
 /* 05A8A8 80059CA8 A458FFFE */   sh    $t8, -2($v0)
 /* 05A8AC 80059CAC 3C038019 */  lui   $v1, %hi(D_8018CF98) # $v1, 0x8019
-/* 05A8B0 80059CB0 3C028016 */  lui   $v0, %hi(D_801643B8) # $v0, 0x8016
+/* 05A8B0 80059CB0 3C028016 */  lui   $v0, %hi(gPlayerPositions) # $v0, 0x8016
 /* 05A8B4 80059CB4 3C048016 */  lui   $a0, %hi(D_801643D8) # $a0, 0x8016
 /* 05A8B8 80059CB8 248443D8 */  addiu $a0, %lo(D_801643D8) # addiu $a0, $a0, 0x43d8
-/* 05A8BC 80059CBC 244243B8 */  addiu $v0, %lo(D_801643B8) # addiu $v0, $v0, 0x43b8
+/* 05A8BC 80059CBC 244243B8 */  addiu $v0, %lo(gPlayerPositions) # addiu $v0, $v0, 0x43b8
 /* 05A8C0 80059CC0 2463CF98 */  addiu $v1, %lo(D_8018CF98) # addiu $v1, $v1, -0x3068
 .L80059CC4:
 /* 05A8C4 80059CC4 8C480004 */  lw    $t0, 4($v0)
