@@ -1,6 +1,6 @@
 glabel func_8009B8C4
-/* 09C4C4 8009B8C4 3C058019 */  lui   $a1, %hi(D_8018E758) # $a1, 0x8019
-/* 09C4C8 8009B8C8 8CA5E758 */  lw    $a1, %lo(D_8018E758)($a1)
+/* 09C4C4 8009B8C4 3C058019 */  lui   $a1, %hi(gNumD_8018E118Entries) # $a1, 0x8019
+/* 09C4C8 8009B8C8 8CA5E758 */  lw    $a1, %lo(gNumD_8018E118Entries)($a1)
 /* 09C4CC 8009B8CC 27BDFFF0 */  addiu $sp, $sp, -0x10
 /* 09C4D0 8009B8D0 00001025 */  move  $v0, $zero
 /* 09C4D4 8009B8D4 18A0000E */  blez  $a1, .L8009B910

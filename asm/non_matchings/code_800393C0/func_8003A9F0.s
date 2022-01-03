@@ -26,8 +26,8 @@ glabel func_8003A9F0
 /* 03B650 8003AA50 24010040 */  li    $at, 64
 /* 03B654 8003AA54 17010028 */  bne   $t8, $at, .L8003AAF8
 .L8003AA58:
-/* 03B658 8003AA58 3C11800F */   lui   $s1, %hi(D_800E86A8) # $s1, 0x800f
-/* 03B65C 8003AA5C 263186A8 */  addiu $s1, %lo(D_800E86A8) # addiu $s1, $s1, -0x7958
+/* 03B658 8003AA58 3C11800F */   lui   $s1, %hi(gCharacterSelections) # $s1, 0x800f
+/* 03B65C 8003AA5C 263186A8 */  addiu $s1, %lo(gCharacterSelections) # addiu $s1, $s1, -0x7958
 .L8003AA60:
 /* 03B660 8003AA60 0C0ADF8D */  jal   random_int
 /* 03B664 8003AA64 24040007 */   li    $a0, 7
@@ -84,10 +84,10 @@ glabel func_8003A9F0
 /* 03B720 8003AB20 8D060000 */  lw    $a2, ($t0)
 /* 03B724 8003AB24 4481A000 */  mtc1  $at, $f20
 /* 03B728 8003AB28 860A0000 */  lh    $t2, ($s0)
-/* 03B72C 8003AB2C 3C11800F */  lui   $s1, %hi(D_800E86A8) # $s1, 0x800f
+/* 03B72C 8003AB2C 3C11800F */  lui   $s1, %hi(gCharacterSelections) # $s1, 0x800f
 /* 03B730 8003AB30 3C04800E */  lui   $a0, %hi(gPlayerThree) # $a0, 0x800e
 /* 03B734 8003AB34 240BB000 */  li    $t3, -20480
-/* 03B738 8003AB38 263186A8 */  addiu $s1, %lo(D_800E86A8) # addiu $s1, $s1, -0x7958
+/* 03B738 8003AB38 263186A8 */  addiu $s1, %lo(gCharacterSelections) # addiu $s1, $s1, -0x7958
 /* 03B73C 8003AB3C AFAB001C */  sw    $t3, 0x1c($sp)
 /* 03B740 8003AB40 8C84C4E4 */  lw    $a0, %lo(gPlayerThree)($a0)
 /* 03B744 8003AB44 E7B60010 */  swc1  $f22, 0x10($sp)

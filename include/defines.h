@@ -65,8 +65,8 @@
 /**
  * Character IDs
  * Note that these are not the same as the values
- * found in gCharacterSelections as those are more
- * akin to indexes than IDs
+ * found in gCharacterGridSelections as those are
+ * ordered by table
 **/
 #define MARIO  0
 #define LUIGI  1

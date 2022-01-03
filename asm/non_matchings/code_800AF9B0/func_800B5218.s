@@ -3,8 +3,8 @@ glabel func_800B5218
 /* 0B5E1C 800B521C 81CEEE09 */  lb    $t6, %lo(gCupSelection)($t6)
 /* 0B5E20 800B5220 3C188019 */  lui   $t8, %hi(gCupCourseSelection) # $t8, 0x8019
 /* 0B5E24 800B5224 8318EE0B */  lb    $t8, %lo(gCupCourseSelection)($t8)
-/* 0B5E28 800B5228 3C09800F */  lui   $t1, %hi(D_800E86A8) # $t1, 0x800f
-/* 0B5E2C 800B522C 812986A8 */  lb    $t1, %lo(D_800E86A8)($t1)
+/* 0B5E28 800B5228 3C09800F */  lui   $t1, %hi(gCharacterSelections) # $t1, 0x800f
+/* 0B5E2C 800B522C 812986A8 */  lb    $t1, %lo(gCharacterSelections)($t1)
 /* 0B5E30 800B5230 27BDFFB8 */  addiu $sp, $sp, -0x48
 /* 0B5E34 800B5234 000E7880 */  sll   $t7, $t6, 2
 /* 0B5E38 800B5238 3C058019 */  lui   $a1, %hi(D_8018CA74) # $a1, 0x8019
@@ -65,7 +65,7 @@ glabel func_800B5218
 /* 0B5F04 800B5304 04610004 */  bgez  $v1, .L800B5318
 /* 0B5F08 800B5308 30690003 */   andi  $t1, $v1, 3
 /* 0B5F0C 800B530C 11200002 */  beqz  $t1, .L800B5318
-/* 0B5F10 800B5310 00000000 */   nop   
+/* 0B5F10 800B5310 00000000 */   nop
 /* 0B5F14 800B5314 2529FFFC */  addiu $t1, -4
 .L800B5318:
 /* 0B5F18 800B5318 00095080 */  sll   $t2, $t1, 2
@@ -89,4 +89,4 @@ glabel func_800B5218
 /* 0B5F5C 800B535C 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 0B5F60 800B5360 27BD0048 */  addiu $sp, $sp, 0x48
 /* 0B5F64 800B5364 03E00008 */  jr    $ra
-/* 0B5F68 800B5368 00000000 */   nop   
+/* 0B5F68 800B5368 00000000 */   nop

@@ -1785,7 +1785,7 @@ glabel D_8018E060
 glabel D_8018E0E8
 .skip 40
 
-glabel D_8018E110
+glabel gD_8018E118TotalSize
 .skip 8
 
 glabel D_8018E118
@@ -1797,7 +1797,7 @@ glabel D_8018E11C
 glabel D_8018E124
 .skip 1588
 
-glabel D_8018E758
+glabel gNumD_8018E118Entries
 .skip 4
 
 glabel D_8018E75C
@@ -2046,7 +2046,7 @@ glabel D_8018EDDC
 glabel D_8018EDE0
 .skip 4
 
-glabel gCharacterSelections # 0x8018EDE4
+glabel gCharacterGridSelections # 0x8018EDE4
 .skip 1
 
 glabel D_8018EDE5

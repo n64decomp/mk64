@@ -1,8 +1,8 @@
 glabel func_8001A124
 /* 01AD24 8001A124 00047080 */  sll   $t6, $a0, 2
-/* 01AD28 8001A128 3C028016 */  lui   $v0, %hi(D_801643B8)
+/* 01AD28 8001A128 3C028016 */  lui   $v0, %hi(gPlayerPositions)
 /* 01AD2C 8001A12C 004E1021 */  addu  $v0, $v0, $t6
-/* 01AD30 8001A130 8C4243B8 */  lw    $v0, %lo(D_801643B8)($v0)
+/* 01AD30 8001A130 8C4243B8 */  lw    $v0, %lo(gPlayerPositions)($v0)
 /* 01AD34 8001A134 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 01AD38 8001A138 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 01AD3C 8001A13C 1040000B */  beqz  $v0, .L8001A16C
@@ -16,7 +16,7 @@ glabel func_8001A124
 /* 01AD5C 8001A15C 10410017 */  beq   $v0, $at, .L8001A1BC
 /* 01AD60 8001A160 24040064 */   li    $a0, 100
 /* 01AD64 8001A164 1000001A */  b     .L8001A1D0
-/* 01AD68 8001A168 00000000 */   nop   
+/* 01AD68 8001A168 00000000 */   nop
 .L8001A16C:
 /* 01AD6C 8001A16C 0C0ADF8D */  jal   random_int
 /* 01AD70 8001A170 AFA5001C */   sw    $a1, 0x1c($sp)
@@ -37,7 +37,7 @@ glabel func_8001A124
 /* 01ADA8 8001A1A8 A4394680 */  sh    $t9, %lo(D_80164680)($at) # 0x4680($at)
 .L8001A1AC:
 /* 01ADAC 8001A1AC 0C03289C */  jal   func_800CA270
-/* 01ADB0 8001A1B0 00000000 */   nop   
+/* 01ADB0 8001A1B0 00000000 */   nop
 /* 01ADB4 8001A1B4 10000017 */  b     .L8001A214
 /* 01ADB8 8001A1B8 8FBF0014 */   lw    $ra, 0x14($sp)
 .L8001A1BC:
@@ -69,4 +69,4 @@ glabel func_8001A124
 .L8001A214:
 /* 01AE14 8001A214 27BD0018 */  addiu $sp, $sp, 0x18
 /* 01AE18 8001A218 03E00008 */  jr    $ra
-/* 01AE1C 8001A21C 00000000 */   nop   
+/* 01AE1C 8001A21C 00000000 */   nop

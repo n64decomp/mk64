@@ -2285,7 +2285,7 @@ glabel gMenuSelection # menu counter
 glabel D_800E86A4 # on change menu?
 .word 0x00000000
 
-glabel D_800E86A8
+glabel gCharacterSelections
 .byte 0x00
 glabel D_800E86A9
 .byte 0x01
