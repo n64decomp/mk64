@@ -64,7 +64,7 @@ extern s16 D_80165570;
 extern s16 D_80165572;
 extern s16 D_80165580;
 extern s16 D_80165582;
-extern s8 D_800E86A8[4];
+extern s8 gCharacterSelections[4]; // D_800E86A8
 extern s16 D_80165270[8];
 extern Player* gPlayerOne;
 extern Player* gPlayerTwo;
@@ -76,9 +76,9 @@ extern Player* gPlayerSeven;
 extern Player* gPlayerEight;
 extern Player* gPlayerOneCopy;
 extern u16 D_800DC51C;
-extern s8 gDebugMenuSelection; //D_8018EDEF
+extern s8 gDebugMenuSelection; // D_8018EDEF
 extern s32 D_80164A28;
-extern s32 D_801643B8[];
+extern s32 gPlayerPositions[]; // D_801643B8
 extern s16 D_8016556E;
 extern s32 D_80162DE0;
 extern s32 D_80162DE4;

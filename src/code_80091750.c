@@ -2177,7 +2177,7 @@ void func_80095574(void) {
         debug_print_str2(0x50, 0x78, "screen_mode");
         debug_print_str2(0xAA, 0x78, *(&gDebugScreenModeNames + (D_8018EDF1 * 4)));
         debug_print_str2(0x50, 0x82, "player");
-        debug_print_str2(0xAA, 0x82, *(&gDebugCharacterNames + (D_800E86A8 * 4)));
+        debug_print_str2(0xAA, 0x82, *(&gDebugCharacterNames + (gCharacterSelections * 4)));
         debug_print_str2(0x50, 0x8C, "sound mode");
         debug_print_str2(0xAA, 0x8C, gDebugSoundModeNames[gSoundMode]);
         if (gDebugMenuSelection == DEBUG_MENU_GIVE_ALL_GOLD_CUP) {
@@ -6375,7 +6375,7 @@ void *func_800AAF30(?, s32, s32);                   /* extern */
 extern ? D_8018E7AC;
 extern ? D_8018E7B0;
 static ? gCupSelectionByCourseId;                                /* unable to generate initializer; const */
-static ? D_800E86A8;                                /* unable to generate initializer; const */
+static ? gCharacterSelections;                                /* unable to generate initializer; const */
 static ? gPerCupIndexByCourseId;                                /* unable to generate initializer; const */
 s16 gCreditsCourseId;                                     /* unable to generate initializer */
 s16 gCurrentCourseId;                               /* unable to generate initializer */
@@ -6592,7 +6592,7 @@ block_74:
                     gScreenModeSelection = SCREEN_MODE_1P;
                     gPlayerCountSelection1 = 1;
                     D_8018EDF3 = 1;
-                    D_800E86A8[0] = MARIO;
+                    gCharacterSelections[0] = MARIO;
                     gModeSelection = GRAND_PRIX;
                     break;
                 case DEMO_TWO:                             /* switch 4 */
@@ -6600,8 +6600,8 @@ block_74:
                     gScreenModeSelection = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
                     gPlayerCountSelection1 = 2;
                     D_8018EDF3 = 2;
-                    D_800E86A8[0] = YOSHI;
-                    D_800E86A8[1] = DK;
+                    gCharacterSelections[0] = YOSHI;
+                    gCharacterSelections[1] = DK;
                     gModeSelection = VERSUS;
                     phi_a2 = 2;
                     break;
@@ -6610,7 +6610,7 @@ block_74:
                     gScreenModeSelection = SCREEN_MODE_1P;
                     gPlayerCountSelection1 = 1;
                     D_8018EDF3 = 1;
-                    D_800E86A8[0] = LUIGI;
+                    gCharacterSelections[0] = LUIGI;
                     gModeSelection = GRAND_PRIX;
                     break;
                 case DEMO_FOUR:                             /* switch 4 */
@@ -6618,9 +6618,9 @@ block_74:
                     gScreenModeSelection = SCREEN_MODE_3P_4P_SPLITSCREEN;
                     gPlayerCountSelection1 = 3;
                     D_8018EDF3 = 3;
-                    D_800E86A8[0] = WARIO;
-                    D_800E86A8[1] = YOSHI;
-                    D_800E86A8[2] = BOWSER;
+                    gCharacterSelections[0] = WARIO;
+                    gCharacterSelections[1] = YOSHI;
+                    gCharacterSelections[2] = BOWSER;
                     gModeSelection = VERSUS;
                     phi_a2 = 2;
                     break;
@@ -6629,7 +6629,7 @@ block_74:
                     gScreenModeSelection = SCREEN_MODE_1P;
                     gPlayerCountSelection1 = 1;
                     D_8018EDF3 = 1;
-                    D_800E86A8[0] = BOWSER;
+                    gCharacterSelections[0] = BOWSER;
                     gModeSelection = GRAND_PRIX;
                     phi_a2 = 2;
                     break;
@@ -6638,10 +6638,10 @@ block_74:
                     gScreenModeSelection = SCREEN_MODE_3P_4P_SPLITSCREEN;
                     gPlayerCountSelection1 = 4;
                     D_8018EDF3 = 4;
-                    D_800E86A8[0] = MARIO;
-                    D_800E86A8[1] = LUIGI;
-                    D_800E86A8[2] = PEACH;
-                    D_800E86A8[3] = TOAD;
+                    gCharacterSelections[0] = MARIO;
+                    gCharacterSelections[1] = LUIGI;
+                    gCharacterSelections[2] = PEACH;
+                    gCharacterSelections[3] = TOAD;
                     gModeSelection = VERSUS;
                     phi_a2 = 2;
                     break;
@@ -7759,7 +7759,7 @@ extern ? D_02007280;
 extern ? D_02007458;
 extern ? D_02007468;
 extern ? D_02007640;
-extern s32 D_800DC5E8;
+extern s32 gPlayerWinningIndex;
 extern u16 D_80162DD4;
 extern ? D_801640F4;
 extern s32 D_8018CA78;
@@ -8016,7 +8016,7 @@ static u32 D_800E8420[8] = {
     (u32) &D_02006CB0,
 }; /* const */
 static ? D_800E85F7;                                /* unable to generate initializer; const */
-static s8 D_800E86A8 = 0;                           /* const */
+static s8 gCharacterSelections = 0;                           /* const */
 static ? D_800EFD64;                                /* unable to generate initializer; const */
 s16 gCupCourseOrder[5][4];                          /* unable to generate initializer; const */
 
@@ -8410,7 +8410,7 @@ loop_3:
                 temp_t8 = type * 4;
                 phi_a2 = (struct _struct_D_800E8234_0x8 *) temp_t8;
                 phi_a2 = (struct _struct_D_800E8234_0x8 *) temp_t8;
-                if (type != (D_800DC5E8 + 0xB1)) {
+                if (type != (gPlayerWinningIndex + 0xB1)) {
 
                 }
             }
@@ -8579,7 +8579,7 @@ extern ? D_8018EDE8;
 extern s8 gMainMenuSelectionDepth;
 extern s8 D_8018EDF3;
 extern s8 D_802874F6;
-extern ? gCharacterSelections;
+extern ? gCharacterGridSelections;
 extern void *gDisplayListHead;
 extern s32 gGfxPool;
 extern s32 gGlobalTimer;
@@ -8621,7 +8621,7 @@ static ? D_800E817C;                                /* unable to generate initia
 static ? D_800E824C;                                /* unable to generate initializer; const */
 static ? D_800E8254;                                /* unable to generate initializer; const */
 static ? D_800E8294;                                /* unable to generate initializer; const */
-static ? D_800E86A8;                                /* unable to generate initializer; const */
+static ? gCharacterSelections;                                /* unable to generate initializer; const */
 static ? D_800E86AB;                                /* unable to generate initializer; const */
 static ? D_800E86AD;                                /* unable to generate initializer; const */
 static ? D_800EFD64;                                /* unable to generate initializer; const */
@@ -8929,7 +8929,7 @@ void func_8009F5E0(void *arg0) {
             case 0xB4:                              /* switch 3 */
                 temp_v0_6 = temp_t0 - 0xB1;
                 if (arg0->unk4 != 0) {
-                    temp_a2_5 = *(&D_800EFD64 + *(&D_800E86A8 + temp_v0_6));
+                    temp_a2_5 = *(&D_800EFD64 + *(&gCharacterSelections + temp_v0_6));
                     spA8 = temp_v0_6;
                     gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual(*(&D_800E7D54 + (temp_a2_5 * 4))), arg0->unkC, arg0->unk10);
                     func_8009A7EC(arg0->unk18, arg0->unkC, arg0->unk10, spA8, arg0->unk1C);
@@ -9172,7 +9172,7 @@ block_58:
             case 0x36:                              /* switch 4 */
             case 0x37:                              /* switch 4 */
                 temp_a1_7 = temp_t0 - 0x34;
-                if (*(&gCharacterSelections + temp_a1_7) != 0) {
+                if (*(&gCharacterGridSelections + temp_a1_7) != 0) {
                     if (*(&D_8018EDE8 + temp_a1_7) == 0) {
                         phi_a2_3 = 0xFF;
                     } else {
@@ -12391,7 +12391,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A66A8.s")
 ? func_800A79F4(u8, ? *); // extern
 ? set_text_color(s32); // extern
 ? text_draw(s32, s32, ? *, ?, f32, f32); // extern
-extern s32 D_800DC5E8;
+extern s32 gPlayerWinningIndex;
 extern ? D_800E7300;
 extern s16 D_800E7302;
 extern ? D_800E7380;
@@ -12430,13 +12430,13 @@ void func_800A69C8(s32 arg0) {
                 if (temp_v0 != BATTLE) {
 
                 } else {
-                    if (phi_s0 != D_800DC5E8) {
+                    if (phi_s0 != gPlayerWinningIndex) {
                         phi_v1 = 1;
                     }
                     phi_s4 = D_8015F8C4 + phi_s0;
                 }
             } else {
-                if (D_801643B8[phi_s0] != 0) {
+                if (gPlayerPositions[phi_s0] != 0) {
                     phi_v1 = 1;
                 }
                 phi_s4 = D_8015F8B8 + phi_s0;
@@ -12551,7 +12551,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A6CC0.s")
 ? func_800A79F4(s32, ? *); // extern
 ? set_text_color(s32); // extern
 ? text_draw(s32, s32, ? *, ?, f32, f32); // extern
-extern s32 D_800DC5E8;
+extern s32 gPlayerWinningIndex;
 extern ? D_800E7300;
 
 void func_800A6D94(s32 arg0, s32 arg1, s32 arg2) {
@@ -12561,7 +12561,7 @@ void func_800A6D94(s32 arg0, s32 arg1, s32 arg2) {
     s32 phi_v0;
 
     phi_v0 = 0;
-    if (arg1 != D_800DC5E8) {
+    if (arg1 != gPlayerWinningIndex) {
         phi_v0 = 1;
     }
     sp24 = *(arg2 + arg1);
@@ -12600,7 +12600,7 @@ void func_800A6E94(s32 arg0, s32 arg1, s32 arg2) {
     u8 *temp_v0;
     void *temp_s0;
 
-    temp_t8 = D_801643B8[arg1];
+    temp_t8 = gPlayerPositions[arg1];
     sp3C = temp_t8;
     if (temp_t8 == 0) {
         set_text_color(gGlobalTimer % 3);
@@ -15161,14 +15161,14 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AAC18.s")
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_800AAF94(s32); // extern
-extern ? gCharacterSelections;
+extern ? gCharacterGridSelections;
 
 void func_800AADD4(void *arg0) {
     s32 temp_v0;
 
     temp_v0 = arg0->unk0 - 0x34;
     arg0->unk14 = 0xE - (temp_v0 * 2);
-    func_800AAF94(*(&gCharacterSelections + temp_v0) - 1);
+    func_800AAF94(*(&gCharacterGridSelections + temp_v0) - 1);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AADD4.s")
@@ -15317,7 +15317,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AAF94.s")
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern s8 gCharacterSelections;
+extern s8 gCharacterGridSelections;
 
 s32 func_800AAFCC(s32 arg0) {
     s32 temp_v1;
@@ -15326,7 +15326,7 @@ s32 func_800AAFCC(s32 arg0) {
     s32 phi_v0;
     s32 phi_v1_2;
 
-    phi_a2 = &gCharacterSelections;
+    phi_a2 = &gCharacterGridSelections;
     phi_v1 = 0;
     phi_v0 = 0;
 loop_1:
@@ -16696,7 +16696,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ACC50.s")
 void *func_800AAEF4(?, s8, s32);                    /* extern */
 ? func_800C90F4(s32, s32, s32);                     /* extern */
 ? func_800CA24C(s32);                               /* extern */
-extern ? D_801643B8;
+extern ? gPlayerPositions;
 extern ? D_8018DEE4;
 static ? D_800E72F8;                                /* unable to generate initializer; const */
 static ? D_800E7300;                                /* unable to generate initializer; const */
@@ -16704,7 +16704,7 @@ static ? D_800E8380;                                /* unable to generate initia
 static ? D_800E83A0;                                /* unable to generate initializer; const */
 static ? D_800E8440;                                /* unable to generate initializer; const */
 static ? D_800E85F7;                                /* unable to generate initializer; const */
-static ? D_800E86A8;                                /* unable to generate initializer; const */
+static ? gCharacterSelections;                                /* unable to generate initializer; const */
 static ? D_800EFD64;                                /* unable to generate initializer; const */
 
 void func_800ACF40(void *arg0) {
@@ -16751,10 +16751,10 @@ void func_800ACF40(void *arg0) {
         if (temp_v0_3 != 2) {
             if (temp_v0_3 != 3) {
 
-            } else if (temp_a2 != D_800DC5E8) {
+            } else if (temp_a2 != gPlayerWinningIndex) {
                 goto block_11;
             }
-        } else if (*(&D_801643B8 + (temp_a2 * 4)) != 0) {
+        } else if (*(&gPlayerPositions + (temp_a2 * 4)) != 0) {
 block_11:
             phi_v1 = 1;
         }
@@ -16765,7 +16765,7 @@ block_11:
             temp_a0 = temp_a2 & 0xFF;
             sp24 = temp_a0;
             func_800CA24C(temp_a0);
-            func_800C90F4(temp_a0, (*(&D_800E86A8 + temp_a2) * 0x10) + 0x29008007, temp_a2);
+            func_800C90F4(temp_a0, (*(&gCharacterSelections + temp_a2) * 0x10) + 0x29008007, temp_a2);
             return;
         }
         /* Duplicate return node #18. Try simplifying control flow for better match */

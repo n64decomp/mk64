@@ -6,7 +6,7 @@
 #include "global.h"
 #include "common_structs.h"
 
-void func_8009E1C0(); 
+void func_8009E1C0();
 void func_8009E208();
 void func_8009E258();
 void func_800B44AC(void);
@@ -51,7 +51,7 @@ extern s8          D_8018ED16;
 extern s8          D_8018ED17;
 extern u32         D_8018EDB8;
 extern u32         D_8018EDBC;
-extern s8          gCharacterSelections; // D_8018EDE4
+extern s8          gCharacterGridSelections; // D_8018EDE4
 extern s8          D_8018EDE5;
 extern s8          D_8018EDE6;
 extern s8          D_8018EDE7;
@@ -1106,12 +1106,12 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B053C.s")
 // Handle navigating the data menu interface
 void func_800B13B0(struct Controller *controller, s32 arg1) {
     u16 buttonAndStickPress = (controller->buttonPressed | controller->stickPressed);
-    
+
     // Make pressing Start have the same effect as pressing A
     if ((gEnableDebugMode == 0) && ((buttonAndStickPress & 0x1000) != 0)) {
         buttonAndStickPress |= 0x8000;
     }
-    
+
     if (func_800B4520() == 0) {
         if (D_8018EDEC == 1) {
             // If DPad/Stick down pressed, move selection down if not already in bottom row
@@ -1154,7 +1154,7 @@ void func_800B13B0(struct Controller *controller, s32 arg1) {
                 func_8009E1C0();
                 play_sound2(0x49008016);
             }
-        } 
+        }
         // If D_8018EDEC != 1 and A pressed, go to main menu
         // (Will D_8018EDEC ever not equal 1 when entering the data menu?)
         else if ((buttonAndStickPress & 0x8000) != 0) {
@@ -1765,17 +1765,17 @@ void func_800B20F4(void *arg0, s32 arg1) {
             break;
         case DEBUG_MENU_PLAYER:
             if ((sp2E & 0x100) != 0) {
-                temp_v0_5 = D_800E86A8;
+                temp_v0_5 = gCharacterSelections;
                 if (temp_v0_5 < 7) {
-                    D_800E86A8 = temp_v0_5 + 1;
+                    gCharacterSelections = temp_v0_5 + 1;
                     sp24 = sp2E;
                     play_sound2(0x49008000);
                 }
             }
             if ((sp2E & 0x200) != 0) {
-                temp_v0_6 = D_800E86A8;
+                temp_v0_6 = gCharacterSelections;
                 if (temp_v0_6 > 0) {
-                    D_800E86A8 = temp_v0_6 - 1;
+                    gCharacterSelections = temp_v0_6 - 1;
                     sp24 = sp2E;
                     play_sound2(0x49008000);
                 }
@@ -2334,7 +2334,7 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B29D8.s")
 #endif
 
 s32 func_800B34E8(s32 arg0) {
-    if (arg0 == gCharacterSelections) {
+    if (arg0 == gCharacterGridSelections) {
         return 0;
     }
     if (arg0 == D_8018EDE5) {
@@ -2439,12 +2439,12 @@ void func_800B3B58(struct Controller *arg0, u16 arg1) {
             }
             break;
         case 3:
-            
+
             if ((arg1 == 0) && ((++gMenuTimingCounter == 0x3C) || ((gMenuTimingCounter % 300) == 0))) {
                 play_sound2(0x4900900F);
             }
 
-            if ((buttonAndStickPress & 0x4000) != 0) { 
+            if ((buttonAndStickPress & 0x4000) != 0) {
                 switch(gModeSelection)
                 {
                     case GRAND_PRIX:
@@ -2457,7 +2457,7 @@ void func_800B3B58(struct Controller *arg0, u16 arg1) {
                         D_8018EDEC = 2;
                         break;
                 }
-                
+
                 func_800B44AC();
                 play_sound2(0x49008002);
                 return;
@@ -2513,7 +2513,7 @@ extern s32 D_8018EE04;
 extern s8 D_8018EE08;
 extern s8 D_8018EE0A;
 extern s16 gEnableDebugMode;
-static s8 D_800E86A8 = 0;                           /* const */
+static s8 gCharacterSelections = 0;                           /* const */
 static ? D_800F2BDF;                                /* unable to generate initializer; const */
 s32 gIsMirrorMode = 0;
 
@@ -2666,8 +2666,8 @@ void func_800B3F74(u32 arg0) {
             if (D_800DC50C == 0) {
                 temp_a3_2 = D_8018EDF3;
                 phi_v1 = 0;
-                phi_v0 = &gCharacterSelections;
-                phi_a2 = &D_800E86A8;
+                phi_v0 = &gCharacterGridSelections;
+                phi_a2 = &gCharacterSelections;
                 phi_a1 = &D_8018EDE8;
                 do {
                     phi_a0 = phi_v1 + 1;
@@ -2950,7 +2950,7 @@ void func_800B4A10(void) {
     }
 
     func_800B4CB4();
- 
+
     gSoundMode = gSaveDataSoundMode;
     if (gSoundMode >= NUM_SOUND_MODES) {
         gSoundMode = SOUND_MONO;
@@ -3285,7 +3285,7 @@ s32 func_800B5218(void) {
     s32 phi_a3_2;
 
     sp38 = (gCupSelection * 4) + gCupCourseSelection;
-    sp28 = *D_800E86A8;
+    sp28 = *gCharacterSelections;
     phi_a1 = &D_8018CA74;
     phi_a2 = &D_8018CA70;
     phi_v0 = 1;
