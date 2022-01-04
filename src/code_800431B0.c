@@ -7514,7 +7514,7 @@ void func_80052E30(s32 arg0) {
     D_80183E80.unk0 = 0;
     D_80183E80.unk2 = 0;
     D_80183E80.unk4 = 0;
-    if (D_8018EDF3 == 1) {
+    if (D_8018EDF3 == ONE_PLAYERS_SELECTED) {
         phi_s0 = 0;
         if (gPlayerCountSelection1 > 0) {
             do {

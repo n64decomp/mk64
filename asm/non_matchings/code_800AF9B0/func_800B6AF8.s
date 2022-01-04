@@ -1,7 +1,7 @@
 glabel func_8800B6AF8
 /* 0B76F8 800B6AF8 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 0B76FC 800B6AFC AFBF001C */  sw    $ra, 0x1c($sp)
-/* 0B7700 800B6B00 0C02D6CB */  jal   func_800B5B2C
+/* 0B7700 800B6B00 0C02D6CB */  jal   check_for_controller_pak
 /* 0B7704 800B6B04 00002025 */   move  $a0, $zero
 /* 0B7708 800B6B08 10400034 */  beqz  $v0, .L800B6BDC
 /* 0B770C 800B6B0C 3C048015 */   lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015

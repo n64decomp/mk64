@@ -77,7 +77,7 @@ glabel L800AA334
 /* 0AB004 800AA404 80780000 */  lb    $t8, ($v1)
 /* 0AB008 800AA408 17000055 */  bnez  $t8, .L800AA560
 /* 0AB00C 800AA40C 00000000 */   nop   
-/* 0AB010 800AA410 0C02D6CB */  jal   func_800B5B2C
+/* 0AB010 800AA410 0C02D6CB */  jal   check_for_controller_pak
 /* 0AB014 800AA414 00002025 */   move  $a0, $zero
 /* 0AB018 800AA418 14400004 */  bnez  $v0, .L800AA42C
 /* 0AB01C 800AA41C 8FA80028 */   lw    $t0, 0x28($sp)

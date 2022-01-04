@@ -57,7 +57,7 @@ void func_802818BC(void) {
     s32 sp1C;
     s32 temp_v0_2;
 
-    if (D_8018EDF3 != 2) {
+    if (D_8018EDF3 != TWO_PLAYERS_SELECTED) {
         D_802874D8.unk_1D = func_80281880(0);
         D_802874D8.unk_1E = gCharacterSelections[0];
         return;
