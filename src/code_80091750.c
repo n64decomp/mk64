@@ -8579,10 +8579,10 @@ static ? D_800E824C;                                /* unable to generate initia
 static ? D_800E8254;                                /* unable to generate initializer; const */
 static ? D_800E8294;                                /* unable to generate initializer; const */
 static ? gCharacterSelections;                                /* unable to generate initializer; const */
-static ? gGameTypeRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
-static ? gGameTypeSubMenuRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
+static ? gGameModeRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
+static ? gGameModeSubMenuRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
 static ? D_800EFD64;                                /* unable to generate initializer; const */
-static ? gGameModeFromNumPlayersAndGameTypeRowSelection;                                /* unable to generate initializer; const */
+static ? gGameModeFromNumPlayersAndRowSelection;                                /* unable to generate initializer; const */
 
 void func_8009F5E0(void *arg0) {
     s32 spAC;
@@ -9049,9 +9049,9 @@ void func_8009F5E0(void *arg0) {
             case 0x18:                              /* switch 4 */
             case 0x19:                              /* switch 4 */
                 temp_v0_11 = D_8018EDF3;
-                temp_v1_7 = *(&gGameTypeRowSelectionForNumPlayers + temp_v0_11);
-                temp_a2_7 = *(&gGameTypeSubMenuRowSelectionForNumPlayers + ((temp_v0_11 * 3) + temp_v1_7));
-                temp_a1_4 = *(&gGameModeFromNumPlayersAndGameTypeRowSelection + ((temp_v0_11 * 0xC) + (temp_v1_7 * 4)));
+                temp_v1_7 = *(&gGameModeRowSelectionForNumPlayers + temp_v0_11);
+                temp_a2_7 = *(&gGameModeSubMenuRowSelectionForNumPlayers + ((temp_v0_11 * 3) + temp_v1_7));
+                temp_a1_4 = *(&gGameModeFromNumPlayersAndRowSelection + ((temp_v0_11 * 0xC) + (temp_v1_7 * 4)));
                 phi_a2 = temp_a2_7;
                 phi_a2_2 = temp_a2_7;
                 phi_a1 = temp_a1_4;
@@ -10392,8 +10392,8 @@ s32 get_string_width(s32); // extern
 extern s32 D_800DC540;
 extern ? D_800E7500;
 extern ? D_800E76CC;
-extern ? gGameTypeRowSelectionForNumPlayers;
-extern ? gGameTypeSubMenuRowSelectionForNumPlayers;
+extern ? gGameModeRowSelectionForNumPlayers;
+extern ? gGameModeSubMenuRowSelectionForNumPlayers;
 extern ? D_800F0C1C;
 extern ? D_800F0C24;
 extern f32 D_800F1C90;
@@ -10504,7 +10504,7 @@ void func_800A2EB8(void *arg0) {
     temp_v0 = D_8018EDF3;
     temp_f0_4 = D_800F1CA0;
     // Print CC mode again?
-    draw_text((temp_s0_2 - arg0->unkC) + 0xF5, arg0->unk10 + 0xE1, *(&D_800E76CC + (*(&gGameTypeSubMenuRowSelectionForNumPlayers + ((temp_v0 * 3) + *(&gGameTypeRowSelectionForNumPlayers + temp_v0))) * 4)), 0, temp_f0_4, temp_f0_4);
+    draw_text((temp_s0_2 - arg0->unkC) + 0xF5, arg0->unk10 + 0xE1, *(&D_800E76CC + (*(&gGameModeSubMenuRowSelectionForNumPlayers + ((temp_v0 * 3) + *(&gGameModeRowSelectionForNumPlayers + temp_v0))) * 4)), 0, temp_f0_4, temp_f0_4);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A2EB8.s")
@@ -10584,8 +10584,8 @@ extern ? D_80164478;
 extern s8 D_8018EDF3;
 static ? D_800E7500;                                /* unable to generate initializer; const */
 static ? D_800E76CC;                                /* unable to generate initializer; const */
-static ? gGameTypeRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
-static ? gGameTypeSubMenuRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
+static ? gGameModeRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
+static ? gGameModeSubMenuRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
 
 void func_800A34A8(void *arg0) {
     s8 sp80;
@@ -10707,7 +10707,7 @@ void func_800A34A8(void *arg0) {
         temp_s0_2 = ((get_string_width(*(&D_800E7500 + (gCupSelection * 4))) + 8) * 0.6f) / 2.0f;
         draw_text((-(((get_string_width(*(&D_800E76CC + (gCCSelection * 4))) + 8) * 0.6f) / 2.0f) - arg0->unkC) + 0xE6, arg0->unk10 + 0xE1, *(&D_800E7500 + (D_800DC540 * 4)), 0, 0.6f, 0.6f);
         temp_v0 = D_8018EDF3;
-        draw_text((temp_s0_2 - arg0->unkC) + 0xE6, arg0->unk10 + 0xE1, *(&D_800E76CC + (*(&gGameTypeSubMenuRowSelectionForNumPlayers + ((temp_v0 * 3) + *(&gGameTypeRowSelectionForNumPlayers + temp_v0))) * 4)), 0, 0.6f, 0.6f);
+        draw_text((temp_s0_2 - arg0->unkC) + 0xE6, arg0->unk10 + 0xE1, *(&D_800E76CC + (*(&gGameModeSubMenuRowSelectionForNumPlayers + ((temp_v0 * 3) + *(&gGameModeRowSelectionForNumPlayers + temp_v0))) * 4)), 0, 0.6f, 0.6f);
     }
 }
 #else
@@ -14493,8 +14493,8 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A9D5C.s")
 ? func_800A91D8(void *, s32, s32);                  /* extern */
 ? func_800A92E8(void *, s32);                       /* extern */
 static ? D_800E70E8;                                /* unable to generate initializer; const */
-static ? gGameTypeRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
-static ? gGameModeFromNumPlayersAndGameTypeRowSelection;                                /* unable to generate initializer; const */
+static ? gGameModeRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
+static ? gGameModeFromNumPlayersAndRowSelection;                                /* unable to generate initializer; const */
 
 void func_800A9E58(void *arg0) {
     void *sp2C;
@@ -14549,8 +14549,8 @@ block_5:
     }
     temp_v0 = D_8018EDF3;
     temp_v1 = arg0->unk4;
-    temp_a2 = *(&gGameTypeRowSelectionForNumPlayers + temp_v0);
-    temp_a1 = *(&gGameModeFromNumPlayersAndGameTypeRowSelection + ((temp_v0 * 0xC) + (temp_a2 * 4)));
+    temp_a2 = *(&gGameModeRowSelectionForNumPlayers + temp_v0);
+    temp_a1 = *(&gGameModeFromNumPlayersAndRowSelection + ((temp_v0 * 0xC) + (temp_a2 * 4)));
     if (temp_v1 != 0) {
         if (temp_v1 != 1) {
             if (temp_v1 != 2) {
@@ -14571,7 +14571,7 @@ block_5:
                 arg0->unkC = temp_a1_2;
                 arg0->unk10 = temp_v0_2->unk10 + arg0->unk1C;
                 sp2C = temp_v0_2;
-                func_800A91D8(arg0, temp_a1_2, (*(&gGameTypeRowSelectionForNumPlayers + D_8018EDF3) * 0x12) + temp_v0_2->unk10 + temp_v1_2->unk2);
+                func_800A91D8(arg0, temp_a1_2, (*(&gGameModeRowSelectionForNumPlayers + D_8018EDF3) * 0x12) + temp_v0_2->unk10 + temp_v1_2->unk2);
                 arg0->unk1C = arg0->unk10 - sp2C->unk10;
                 return;
             default:                                /* switch 4 */
@@ -14626,14 +14626,14 @@ block_37:
             arg0->unkC = temp_v0_4->unkC;
             arg0->unk1C = 0;
             arg0->unk4 = 1;
-            arg0->unk10 = (*(&gGameTypeRowSelectionForNumPlayers + D_8018EDF3) * 0x12) + temp_v0_4->unk10 + 0x41;
+            arg0->unk10 = (*(&gGameModeRowSelectionForNumPlayers + D_8018EDF3) * 0x12) + temp_v0_4->unk10 + 0x41;
             return;
         case CONFIRM_OK_SELECTION_FROM_BACK_OUT:                                     /* switch 2 */
         case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:                                     /* switch 2 */
             temp_v0_5 = func_800AAE68(arg0, temp_a1, temp_a2);
             temp_v1_4 = (arg0->unk0 * 8) + -(sp24 * 8) + &D_800E70E8;
             arg0->unkC = temp_v0_5->unkC + temp_v1_4->unk0;
-            temp_t5_2 = (*(&gGameTypeRowSelectionForNumPlayers + D_8018EDF3) * 0x12) + temp_v0_5->unk10 + temp_v1_4->unk2;
+            temp_t5_2 = (*(&gGameModeRowSelectionForNumPlayers + D_8018EDF3) * 0x12) + temp_v0_5->unk10 + temp_v1_4->unk2;
             arg0->unk10 = temp_t5_2;
             arg0->unk1C = temp_t5_2 - temp_v0_5->unk10;
             arg0->unk15 = 1;
@@ -14682,7 +14682,7 @@ s32 osPfsNumFiles(? *, s32 *, s32 *);               /* extern */
 extern ? D_8018E868;
 extern ? D_8018EB84;
 extern ? gSIEventMesgQueue;
-static ? gGameTypeRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
+static ? gGameModeRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
 static ? D_800F2E64;                                /* unable to generate initializer; const */
 static ? D_800F2E74;                                /* unable to generate initializer; const */
 u16 D_800E86F0;                                     /* unable to generate initializer; const */
@@ -14708,7 +14708,7 @@ void func_800AA2EC(void *arg0) {
     case CONFIRM_OK_SELECTION:
     case CONFIRM_OK_SELECTION_FROM_BACK_OUT:
     case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:
-        if ((arg0->unk4 == 0) && (temp_v0 = D_8018EDF3, (temp_v0 == 1)) && (*(&gGameTypeRowSelectionForNumPlayers + temp_v0) == 1)) {
+        if ((arg0->unk4 == 0) && (temp_v0 = D_8018EDF3, (temp_v0 == 1)) && (*(&gGameModeRowSelectionForNumPlayers + temp_v0) == 1)) {
             if (D_800E86F8 != 0) {
                 sp20 = 0;
                 temp_v0_2 = osPfsFindFile(&D_8018E868, D_800E86F0, D_800E86F4, &D_800F2E64, &D_800F2E74, &D_8018EB84);

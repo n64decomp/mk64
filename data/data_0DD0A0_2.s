@@ -2291,13 +2291,13 @@ glabel D_800E86A9
 .byte 0x01
 glabel D_800E86AA
 .byte 0x02
-glabel gGameTypeRowSelectionForNumPlayers
+glabel gGameModeRowSelectionForNumPlayers
 .byte 0x03
 
 glabel D_800E86AC
 .byte 0x00
 
-glabel gGameTypeSubMenuRowSelectionForNumPlayers
+glabel gGameModeSubMenuRowSelectionForNumPlayers
 .byte 0x00, 0x00, 0x00
 
 glabel D_800E86B0
