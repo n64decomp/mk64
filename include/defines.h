@@ -223,8 +223,8 @@
 #define BOO                 11
 #define MUSHROOM            12
 #define DOUBLE_MUSHROOM     13
-#define SUPER_MUSHROOM      14
-#define GOLD_MUSHROOM       15
+#define TRIPLE_MUSHROOM     14
+#define SUPER_MUSHROOM      15
 
 /**
  * Max representable time, 100 minutes measured in centiseconds
