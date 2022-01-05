@@ -1,53 +1,10 @@
 #include <ultra64.h>
 #include <macros.h>
 #include "types.h"
-#include "common_structs.h"
 #include "functions.h"
+#include "variables.h"
+#include "code_8008C1D0.h"
 #include <defines.h>
-
-// external funcs
-extern s32 func_80031F48(Player *player, float arg1);
-extern s32 func_8006B8B4();
-extern s32 gModeSelection;
-extern s16 D_80165190[4][8];
-extern f32 D_80165280[];
-extern s32 D_80165420[];
-extern s32 D_80165440[];
-extern s32 D_80165460[];
-extern s32 D_80165480[];
-// unk extern
-extern s32 D_8018D920[];
-
-
-
-
-
-// this file funcs
-extern s32 func_8008D0E4(); // static
-extern s32 func_8008D3B0(); // static
-extern s32 func_8008D554(); // static
-extern s32 func_8008D760(); // static
-extern s32 func_8008D97C(); // static
-extern s32 func_8008E884(); // static
-extern s32 func_8008EC34(); // static
-extern s32 func_8008EEC4(); // static
-extern s32 func_8008F0E8(void *); // static
-extern s32 func_8008F3E0(void *); // static
-extern s32 func_8008F5A4(void *, s8); // static
-extern s32 func_8008FEDC(void *, s8); // static
-
-extern void func_8008C8C4(Player *player, s8 arg1);
-extern void func_8008C6D0(Player *player, s8 arg1);
-extern void func_800C90F4();
-extern void func_800C9060();
-extern void func_800098FC();
-
-extern f32 D_800E37B0[];
-extern f32 D_800E3790[];
-extern u16 D_800DC51C;
-
-// bss
-extern s32 gPlayerPositions[];
 
 UNUSED void func_unnamed(void) {
 

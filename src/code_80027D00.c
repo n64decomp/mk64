@@ -1,19 +1,8 @@
 #include <ultra64.h>
 #include <macros.h>
-#include <common_structs.h>
 #include <defines.h>
-
-extern Player *gPlayerOne;
-extern Player *gPlayerTwo;
-extern Player *gPlayerThree;
-extern Player *gPlayerFour;
-extern Player *gPlayerFive;
-extern Player *gPlayerSix;
-extern Player *gPlayerSeven;
-extern Player *gPlayerEight;
-extern Player *gPlayerOneCopy;
-
-extern Camera *camera1;
+#include "variables.h"
+#include "code_80027D00.h"
 
 // func_80027D00
 s32 get_player_index_for_player(Player *player) {
@@ -763,8 +752,6 @@ void func_80028E70(void *arg0, s32 arg1, s8 arg2, s8 arg3) {
 #else
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80028E70.s")
 #endif
-
-extern s16 D_80164AF0;
 
 void func_80028F70(void) {
     D_80164AF0 = 0;
