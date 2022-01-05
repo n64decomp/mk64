@@ -5,62 +5,8 @@
 #include <types.h>
 #include "global.h"
 #include "common_structs.h"
-
-void func_8009E1C0();
-void func_8009E208();
-void func_8009E258();
-void func_800B44AC(void);
-void func_800B44BC(void);
-s32  func_800B4520(void);
-void func_800B4670(void);
-void func_800B4728(s32 arg0);
-void func_800B4820(void);
-s32  func_800B492C(void);
-s32  func_800B49E4(void);
-void func_800B559C(s32 arg0);
-void func_800B5948(void);
-void play_sound2(s32);
-void func_800CA330(s32);
-u32  func_802A7B70(u16 x);
-
-extern u16         gEnableDebugMode; // D_800DC520
-extern s32         gModeSelection; // D_800DC53C
-extern s32         D_800DC540;
-extern s16         gCurrentCourseId; // D_800DC5A0
-extern u16         D_800E86F0;
-extern s32         D_800E86F4;
-extern s8          D_800E86F8;
-extern s8          D_800E86FC;
-extern s16         gCupCourseOrder[NUM_CUPS][NUM_COURSES_PER_CUP]; // D_800F2BB4
-extern u8          D_800F2E64;
-extern u8          D_800F2E74;
-extern OSMesgQueue gSIEventMesgQueue; // D_8014F0B8
-extern s32         D_8018E7A8;
-extern s8          D_8018E7B0;
-extern OSPfs       D_8018E868;
-extern OSPfs       D_8018E8D0;
-extern s32         D_8018EB78;
-extern s32         D_8018EB7C;
-extern s32         D_8018EB84;
-extern SaveData    D_8018EB90;
-extern u8          D_8018ED10[4]; // Direct reference to the grandPrixPoints section of save data
-extern u8          D_8018ED11;
-extern u8          D_8018ED12;
-extern u8          D_8018ED13;
-extern s8          D_8018ED16;
-extern s8          D_8018ED17;
-extern u32         D_8018EDB8;
-extern u32         D_8018EDBC;
-extern s8          D_8018EDE5;
-extern s8          D_8018EDE6;
-extern s8          D_8018EDE7;
-extern s8          D_8018EDEC;
-extern s8          gTimeTrialDataCourseIndex; // D_8018EDF7
-extern s8          gCourseRecordsMenuSelection; // D_8018EDF8
-extern s32         gMenuTimingCounter; // D_8018EE00
-extern s8          gCupSelection; // D_8018EE09
-extern s8          D_8018EE0A;
-extern s8          gCupCourseSelection; // D_8018EE0B
+#include "code_80091750.h"
+#include "code_800AF9B0.h"
 
 void func_800AF9B0(void) {
     D_8018EDB8 = func_802A7B70(7680);
@@ -2799,7 +2745,7 @@ void func_800B45E0(s32 arg0) {
                                                         .cupRecords[arg0 / 4] \
                                                         .courseRecords[arg0 % 4];
 
-    courseTimeTrialRecordsPtr->unknownBytes[5] = func_800B4874();
+    courseTimeTrialRecordsPtr->unknownBytes[5] = func_800B4874(arg0);
     osEepromLongWrite(&gSIEventMesgQueue, ((u32)courseTimeTrialRecordsPtr - (u32)&D_8018EB90) >> 3, (u8*) courseTimeTrialRecordsPtr, sizeof(CourseTimeTrialRecords));
 }
 
@@ -3400,9 +3346,6 @@ void func_800B5404(s32 arg0, s32 arg1) {
 #else
 GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B5404.s")
 #endif
-
-u8 func_800B54EC(s32, s32);
-u8 func_800B5508(s32, s32, s32);
 
 // Get Grand Prix points for a given cup and CC mode
 u8 func_800B54C0(s32 cup, s32 cc_mode) {
