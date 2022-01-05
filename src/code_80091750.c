@@ -1,6 +1,8 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
+#include "code_80091750.h"
+#include "code_800AF9B0.h"
 #include "variables.h"
 
 f64 exponent_by_squaring(f64 base, s32 exponent) {
@@ -496,14 +498,9 @@ void func_80092148(void) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80092148.s")
 #endif
 
-extern s8 D_8018D9D9;
-
 void func_800921B4(void) {
     D_8018D9D9 = 0;
 }
-
-void set_text_color(s32);
-extern s32 func_800B4520();
 
 void func_800921C0(s32 test, s32 target, s32 alternative_color) {
     if (test == target) {
@@ -627,7 +624,6 @@ void func_80092290(s32 arg0, s32 *arg1, s32 *arg2, s32 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80092290.s")
 #endif
 
-extern s32 gModeSelection;
 void func_80092500(void) {
 
     switch(gModeSelection) {
@@ -794,8 +790,6 @@ void func_80092688(void) {
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80092688.s")
 #endif
-
-extern s8 D_8018ED91;
 
 void func_80092C80(void) {
     D_8018ED91 = 1;
@@ -1012,8 +1006,6 @@ s32 func_80092EE4(void *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80092EE4.s")
 #endif
 
-extern s16 gGlyphDisplayWidth[]; // D_800EF690
-
 //Originally func_80093034
 s32 get_string_width(char *buffer) {
     s32 glyphIndex;
@@ -1037,27 +1029,14 @@ s32 get_string_width(char *buffer) {
     return stringWidth;
 }
 
-extern s8 gTextColor;
-
 void set_text_color(s32 arg0) {
     gTextColor = arg0;
 }
 
-void func_80093324(s32, s32, char*, s32, f32, f32);
 UNUSED void func_800930E4(s32 arg0, s32 arg1, s32 *arg2) {
     set_text_color(TEXT_BLUE);
     func_80093324(arg0, arg1, arg2, 0, 1.0, 1.0);
 }
-
-void func_80099184(s32);
-void *segmented_to_virtual(segment_address_t);
-Gfx *func_8009BEF0(Gfx*, s32, f32, f32, s32, f32,f32);
-void print_text1(s32, s32, char*, s32, f32, f32, s32);
-void print_text2(s32, s32, char*, s32, f32, f32, s32);
-extern Gfx D_020077A8[];
-extern Gfx D_020077D8[];
-extern s32 gGlyphTextureLUT[];
-extern Gfx *gDisplayListHead;
 
 // "tracking" is a uniform spacing between all characters in a given word
 void print_text0(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale, s32 arg6) {
@@ -4163,9 +4142,6 @@ void *func_800987D0(void *arg0, u32 arg1, u32 arg2, u32 arg3, u32 arg4, s32 arg5
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800987D0.s")
 #endif
 
-extern Gfx D_02008030[];
-extern Gfx D_02008058[];
-
 Gfx *func_80098C18(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32 red, s32 green, u32 blue, s32 alpha) {
     red &= 0xFF;
     green &= 0xFF;
@@ -4202,7 +4178,6 @@ Gfx *func_80098C18(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32
     return displayListHead;
 }
 
-extern Gfx D_02008008[];
 Gfx *draw_box(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32 red, s32 green, s32 blue, s32 alpha) {
     Gfx *temp_a0;
     Gfx *temp_v1;
@@ -5047,9 +5022,6 @@ UNUSED void func_8009A6D4(void) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009A6D4.s")
 #endif
 
-segment_address_t func_8009A878(struct_8018DEE0_entry *); // extern
-s32 func_8009C434(s32, struct_8018DEE0_entry *, s32, s32, s32); // extern
-
 void func_8009A76C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     struct_8018DEE0_entry *temp = &D_8018DEE0[arg0];
     if (temp->visible & 0x80000000) {
@@ -5057,9 +5029,6 @@ void func_8009A76C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
         gDisplayListHead = func_8009C434(gDisplayListHead, temp, arg1, arg2, arg3);
     }
 }
-
-void func_8009A944(struct_8018DEE0_entry *, s32); // extern
-s32 func_8009C708(s32, struct_8018DEE0_entry *, s32, s32, s32, s32); // extern
 
 void func_8009A7EC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     struct_8018DEE0_entry *temp = &D_8018DEE0[arg0];
@@ -9247,10 +9216,6 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A095C.s")
 #ifdef NON_MATCHING
 // Non-matching due to the constants 9 and 0xA being saved to the wrong registers
 // Same functionality, but doesn't match byte for byte :/
-Gfx *func_8009BA74(Gfx *, s32*, s32, s32); // extern
-extern s32 D_0200157C;
-extern s8 D_800E86D0[20];
-
 void func_800A09E0(struct_8018D9E0_entry *arg0) {
     s32 table_row, x = 0x20, y;
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 319, 194);
@@ -9266,9 +9231,6 @@ void func_800A09E0(struct_8018D9E0_entry *arg0) {
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A09E0.s")
 #endif
-
-struct_8018D9E0_entry *func_800AAEF4(s32); // extern
-extern s32 D_02001874;
 
 void func_800A0AD0(struct_8018D9E0_entry *unused) {
     struct_8018D9E0_entry *temp_t1;
@@ -9469,9 +9431,6 @@ to all jump sources and move the label, or add a nop to the delay slot).
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A10CC.s")
 #endif
 
-extern RGBA16 D_800E74A8[5];
-extern Mk64_Texture_Group *D_800E82B4[5];
-
 void func_800A11D0(struct_8018D9E0_entry *arg0, s32 arg1, s32 arg2) {
     RGBA16 *temp_v1;
 
@@ -9649,8 +9608,6 @@ void func_800A1780(void *arg0) {
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A1780.s")
 #endif
-
-extern Gfx D_02004A0C[];
 
 void func_800A1924(struct_8018D9E0_entry *arg0) {
     func_8009A76C(arg0->D_8018DEE0_index, 0x17, 0x84, -1);
@@ -12660,10 +12617,6 @@ void func_800A7258(struct_8018D9E0_entry *arg0) {
     }
 }
 
-extern char *D_800E76CC[4];
-extern char *D_800E76DC[4];
-extern char *D_800E7500[9];
-
 // Podium scene, top line
 void func_800A72FC(struct_8018D9E0_entry *arg0) {
     s32 pad;
@@ -12675,10 +12628,6 @@ void func_800A72FC(struct_8018D9E0_entry *arg0) {
     set_text_color(TEXT_YELLOW);
     draw_text(arg0->column + cupNameLength, arg0->row, D_800E76DC[gCCSelection], 0, 1, 1);
 }
-
-extern s8 D_802874F5;
-extern char *D_800E7A88[4];
-extern char *D_800E7A98;
 
 void func_800A7448(struct_8018D9E0_entry *arg0) {
     s32 pad;
@@ -12697,9 +12646,6 @@ void func_800A7448(struct_8018D9E0_entry *arg0) {
         draw_text(arg0->column + sp40, arg0->row, D_800E7A88[thing + 1], 0, 0.75f, 0.75f);
     }
 }
-
-extern char *D_800E7A9C[2];
-extern f32 D_800F1F30;
 
 void func_800A75A0(struct_8018D9E0_entry *arg0) {
     s32 pad;
@@ -13730,23 +13676,12 @@ void func_800A8CA4(void *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A8CA4.s")
 #endif
 
-extern char *D_800E77A8;
-extern char *D_800E77AC;
-extern char *D_800E77B0;
-extern f32 D_800F24A8;
-extern f32 D_800F24AC;
-extern f32 D_800F24B0;
-extern f32 D_800F24B4;
-
 void func_800A8E14(struct_8018D9E0_entry *unused) {
     set_text_color(TEXT_YELLOW);
     draw_text(0x98, 0x44, D_800E77A8, 0, 1.0f, 1.0f);
     func_80093324(0x17, 0x58, D_800E77AC, 0, D_800F24A8, D_800F24AC);
     func_80093324(0x17, 0x6A, D_800E77B0, 0, D_800F24B0, D_800F24B4);
 }
-
-extern char *D_800E7678[];
-extern f32 D_800F24B8;
 
 void func_800A8EC0(struct_8018D9E0_entry *arg0) {
     if (arg0->unk20 != 0) {
@@ -14074,8 +14009,6 @@ void func_800A94C8(void *arg0, s32 arg1, s32 arg2) {
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A94C8.s")
 #endif
-
-extern f64 D_800F24C0;
 
 void func_800A954C(struct_8018D9E0_entry *arg0) {
     // Cycle lasts 26 (0x1A) frames
@@ -15114,8 +15047,6 @@ block_13:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AAC18.s")
 #endif
 
-void func_800AAF94(struct_8018D9E0_entry*, s32);
-
 void func_800AADD4(struct_8018D9E0_entry *arg0) {
     s32 playerId;
     s8 characterSelectionIndex;
@@ -15240,8 +15171,6 @@ loop_1:
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AAF30.s")
 #endif
-
-extern struct_8018D9E0_entry *func_800AAEB4(s32);
 
 void func_800AAF94(struct_8018D9E0_entry *arg0, s32 arg1) {
     struct_8018D9E0_entry *temp_v0;
