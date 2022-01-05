@@ -398,6 +398,12 @@ typedef struct {
     char unk_10[0x10];
 } struct_D_8018CE10; // size = 0x20
 
+typedef struct
+{ 
+    // Something related to time trial ghost data?
+    char unk_00[0x80];
+} struct_8018EE10_entry;
+
 typedef struct {
     char unk_00[0x920];
 } struct_D_802DFB80; // size = 0x920

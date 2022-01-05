@@ -135,5 +135,6 @@ extern s32         gMenuTimingCounter; // D_8018EE00
 extern s8          gCupSelection; // D_8018EE09
 extern s8          D_8018EE0A;
 extern s8          gCupCourseSelection; // D_8018EE0B
+extern struct_8018EE10_entry D_8018EE10[];
 
 #endif
