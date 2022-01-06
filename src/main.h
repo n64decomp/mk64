@@ -2,13 +2,14 @@
 #define MAIN_H
 
 #include "types.h"
-// 20836
-// 655
-#define GFX_POOL_SIZE 20836
+
+#define MTX_POOL_SIZE 0x0683
+#define GFX_POOL_SIZE 0x1D4C
 struct GfxPool {
-    Gfx buffer[GFX_POOL_SIZE];
-    struct SPTask spTask;
-};
+    /* 0x00000 */ Mtx matrixPool[MTX_POOL_SIZE];
+    /* 0x1A0C0 */ Gfx gfxPool[GFX_POOL_SIZE];
+    /* 0x28B20 */ struct SPTask spTask;
+}; // size = 0x28B70
 
 extern struct GfxPool *gGfxPool;
 

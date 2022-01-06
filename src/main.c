@@ -335,8 +335,8 @@ void func_800006E8(void) {
     gGfxSPTask->task.t.dram_stack_size = SP_DRAM_STACK_SIZE8;
     gGfxSPTask->task.t.output_buff = (u64 *) &gGfxSPTaskOutputBuffer;
     gGfxSPTask->task.t.output_buff_size = (u64 *) &gGfxSPTaskOutputBufferSize;
-    gGfxSPTask->task.t.data_ptr = (u64 *) &gGfxPool->buffer[0x3418];
-    gGfxSPTask->task.t.data_size = (gDisplayListHead - &gGfxPool->buffer[0x3418]) * sizeof(Gfx);
+    gGfxSPTask->task.t.data_ptr = (u64 *) gGfxPool->gfxPool;
+    gGfxSPTask->task.t.data_size = (gDisplayListHead - gGfxPool->gfxPool) * sizeof(Gfx);
     func_8008C214();
     gGfxSPTask->task.t.yield_data_ptr = (u64 *) &gGfxSPTaskYieldBuffer;
     gGfxSPTask->task.t.yield_data_size = 0xD00; /* Not equal to OS_YIELD_DATA_SIZE */
@@ -466,9 +466,9 @@ void *clear_framebuffer(s32 color) {
 
 void rendering_init(void) {
     gGfxPool = &gGfxPools[0];
-    set_segment_base_addr(1, gGfxPool->buffer);
+    set_segment_base_addr(1, gGfxPool);
     gGfxSPTask = &gGfxPool->spTask;
-    gDisplayListHead = &gGfxPool->buffer[0x3418];
+    gDisplayListHead = gGfxPool->gfxPool;
     func_80000CA8();
     clear_framebuffer(0);
     func_80000CE8();
@@ -479,8 +479,8 @@ void rendering_init(void) {
 
 void config_gfx_pool(void) {
     gGfxPool = &gGfxPools[gGlobalTimer & 1];
-    set_segment_base_addr(1, gGfxPool->buffer);
-    gDisplayListHead = &gGfxPool->buffer[0x3418];
+    set_segment_base_addr(1, gGfxPool);
+    gDisplayListHead = gGfxPool->gfxPool;
     gGfxSPTask = &gGfxPool->spTask;
 }
 
