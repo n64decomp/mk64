@@ -128,9 +128,9 @@ glabel L800B05E0
 /* 0B131C 800B071C 00000000 */   nop   
 /* 0B1320 800B0720 A022ED14 */  sb    $v0, %lo(gSaveDataSoundMode)($at)
 /* 0B1324 800B0724 AFA50020 */  sw    $a1, 0x20($sp)
-/* 0B1328 800B0728 0C02D19C */  jal   func_800B4670
+/* 0B1328 800B0728 0C02D19C */  jal   write_save_data_grand_prix_points_and_sound_mode
 /* 0B132C 800B072C AFA80038 */   sw    $t0, 0x38($sp)
-/* 0B1330 800B0730 0C02D652 */  jal   func_800B5948
+/* 0B1330 800B0730 0C02D652 */  jal   update_save_data_backup
 /* 0B1334 800B0734 00000000 */   nop   
 /* 0B1338 800B0738 3C038019 */  lui   $v1, %hi(gSoundMode) # $v1, 0x8019
 /* 0B133C 800B073C 2463EDF2 */  addiu $v1, %lo(gSoundMode) # addiu $v1, $v1, -0x120e
@@ -159,9 +159,9 @@ glabel L800B05E0
 /* 0B1394 800B0794 51420303 */  beql  $t2, $v0, .L800B13A4
 /* 0B1398 800B0798 8FBF001C */   lw    $ra, 0x1c($sp)
 /* 0B139C 800B079C A022ED14 */  sb    $v0, %lo(gSaveDataSoundMode)($at)
-/* 0B13A0 800B07A0 0C02D19C */  jal   func_800B4670
+/* 0B13A0 800B07A0 0C02D19C */  jal   write_save_data_grand_prix_points_and_sound_mode
 /* 0B13A4 800B07A4 AFA80038 */   sw    $t0, 0x38($sp)
-/* 0B13A8 800B07A8 0C02D652 */  jal   func_800B5948
+/* 0B13A8 800B07A8 0C02D652 */  jal   update_save_data_backup
 /* 0B13AC 800B07AC 00000000 */   nop   
 /* 0B13B0 800B07B0 3C038019 */  lui   $v1, %hi(gSoundMode) # $v1, 0x8019
 /* 0B13B4 800B07B4 2463EDF2 */  addiu $v1, %lo(gSoundMode) # addiu $v1, $v1, -0x120e

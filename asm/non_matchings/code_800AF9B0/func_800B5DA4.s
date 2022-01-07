@@ -40,7 +40,7 @@ glabel func_800B5DA4
 .L800B5E30:
 /* 0B6A30 800B5E30 5440003C */  bnel  $v0, $zero, .L800B5F24
 /* 0B6A34 800B5E34 8FBF001C */   lw    $ra, 0x1c($sp)
-/* 0B6A38 800B5E38 0C02D6CB */  jal   func_800B5B2C
+/* 0B6A38 800B5E38 0C02D6CB */  jal   check_for_controller_pak
 /* 0B6A3C 800B5E3C 24040001 */   li    $a0, 1
 /* 0B6A40 800B5E40 14400003 */  bnez  $v0, .L800B5E50
 /* 0B6A44 800B5E44 3C048015 */   lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015

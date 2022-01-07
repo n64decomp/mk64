@@ -299,9 +299,9 @@ glabel L800B24DC
 /* 0B3130 800B2530 00000000 */   nop
 /* 0B3134 800B2534 920D0000 */  lbu   $t5, ($s0)
 /* 0B3138 800B2538 3C018019 */  lui   $at, %hi(gSaveDataSoundMode) # $at, 0x8019
-/* 0B313C 800B253C 0C02D19C */  jal   func_800B4670
+/* 0B313C 800B253C 0C02D19C */  jal   write_save_data_grand_prix_points_and_sound_mode
 /* 0B3140 800B2540 A02DED14 */   sb    $t5, %lo(gSaveDataSoundMode)($at)
-/* 0B3144 800B2544 0C02D652 */  jal   func_800B5948
+/* 0B3144 800B2544 0C02D652 */  jal   update_save_data_backup
 /* 0B3148 800B2548 00000000 */   nop
 /* 0B314C 800B254C 8FA30024 */  lw    $v1, 0x24($sp)
 .L800B2550:
@@ -327,7 +327,7 @@ glabel L800B24DC
 /* 0B3198 800B2598 00000000 */   nop
 /* 0B319C 800B259C 92080000 */  lbu   $t0, ($s0)
 /* 0B31A0 800B25A0 3C018019 */  lui   $at, %hi(gSaveDataSoundMode) # $at, 0x8019
-/* 0B31A4 800B25A4 0C02D19C */  jal   func_800B4670
+/* 0B31A4 800B25A4 0C02D19C */  jal   write_save_data_grand_prix_points_and_sound_mode
 /* 0B31A8 800B25A8 A028ED14 */   sb    $t0, %lo(gSaveDataSoundMode)($at)
 /* 0B31AC 800B25AC 8FA30024 */  lw    $v1, 0x24($sp)
 .L800B25B0:
@@ -389,7 +389,7 @@ glabel L800B2604
 .L800B2678:
 /* 0B3278 800B2678 13200016 */  beqz  $t9, .L800B26D4
 /* 0B327C 800B267C 30690200 */   andi  $t1, $v1, 0x200
-/* 0B3280 800B2680 0C02D208 */  jal   func_800B4820
+/* 0B3280 800B2680 0C02D208 */  jal   reset_save_data_grand_prix_points_and_sound_mode
 /* 0B3284 800B2684 00000000 */   nop
 /* 0B3288 800B2688 00008025 */  move  $s0, $zero
 /* 0B328C 800B268C 00002825 */  move  $a1, $zero
@@ -415,7 +415,7 @@ glabel L800B2604
 .L800B26D4:
 /* 0B32D4 800B26D4 11200022 */  beqz  $t1, .L800B2760
 /* 0B32D8 800B26D8 3C028019 */   lui   $v0, %hi(D_8018EDF1) # 0x8019
-/* 0B32DC 800B26DC 0C02D208 */  jal   func_800B4820
+/* 0B32DC 800B26DC 0C02D208 */  jal   reset_save_data_grand_prix_points_and_sound_mode
 /* 0B32E0 800B26E0 00000000 */   nop
 /* 0B32E4 800B26E4 00008025 */  move  $s0, $zero
 /* 0B32E8 800B26E8 00002825 */  move  $a1, $zero

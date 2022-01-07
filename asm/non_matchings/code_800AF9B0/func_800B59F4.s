@@ -1,4 +1,4 @@
-glabel func_800B59F4
+glabel compute_save_data_checksum_backup_1
 /* 0B65F4 800B59F4 3C0E8019 */  lui   $t6, %hi(D_8018ED88) # $t6, 0x8019
 /* 0B65F8 800B59F8 24020001 */  li    $v0, 1
 /* 0B65FC 800B59FC 25CEED88 */  addiu $t6, %lo(D_8018ED88) # addiu $t6, $t6, -0x1278

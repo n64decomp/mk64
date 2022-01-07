@@ -358,20 +358,19 @@ typedef struct {
     // Lowest dibit is the Mushroom Cup, 2nd dibit is the Flower Cup, etc
     u8 grandPrixPoints[4];
     u8 soundMode;
-    // Its unknown what these bytes are used for
-    u8 unknownBytes[3];
+    // It's unknown what the first byte is used for
+    u8 checksum[3];
     // For some reason there's 2 entries covering 4 cups
     // Instead of 4 entries, one per cup. Or even just one big entry for all 4 cups
     // Its also unknown why these are here when they're identical to the values found
     // in allCourseTimeTrialRecords
     OnlyBestTimeTrialRecords onlyBestTimeTrialRecords[2];
-    // Its unknown why these last bytes exist as they appear to be copies of
-    // of their non-Backup counterparts.
-    // They could be some form of data coherency. If these don't match the non-Backup
-    // versions that may indicate corrupt save data?
+    // If checksum[1] or checksum[2] does not match their expected value,
+    // the grandPrixPoints and soundMode are reset. Then if the backup data's
+    // checksums are valid, copy the backup data to the main data.
     u8 grandPrixPointsBackup[4];
     u8 soundModeBackup;
-    u8 unknownBytesBackup[3];
+    u8 checksumBackup[3];
 } SaveData; // size = 0x200
 
 typedef struct {
@@ -398,6 +397,12 @@ typedef struct {
     f32 unk_0C;
     char unk_10[0x10];
 } struct_D_8018CE10; // size = 0x20
+
+typedef struct
+{ 
+    // Something related to time trial ghost data?
+    char unk_00[0x80];
+} struct_8018EE10_entry;
 
 typedef struct {
     char unk_00[0x920];

@@ -29,7 +29,7 @@
 #glabel gCreditsCourseId
 #.hword 0x0008, 0x0000
 
-#glabel D_800DC648
+#glabel gPlaceItemBoxes
 #.hword 0x0001, 0x0000
 
 #glabel D_800DC64C
