@@ -2434,7 +2434,7 @@ void func_800B3F74(u32 arg0) {
             D_8018EDF3 = ONE_PLAYERS_SELECTED;
         }
         phi_a3 = D_8018EDF3;
-        if (D_8018EDF3 >= SELELECTED_PLAYER_DEFINES_TOTAL) {
+        if (D_8018EDF3 >= SELECTED_PLAYER_DEFINES_TOTAL) {
             D_8018EDF3 = FOUR_PLAYERS_SELECTED;
             phi_a3 = D_8018EDF3;
         }

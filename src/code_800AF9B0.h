@@ -82,8 +82,8 @@ extern s32         D_800DC540;
 extern s16         gCurrentCourseId; // D_800DC5A0
 extern s32         gIsMirrorMode; // D_800DC5F4
 extern s16         gPlaceItemBoxes; // D_800DC638
-extern s8          gGameModeRowSelectionForNumPlayers[SELELECTED_PLAYER_DEFINES_TOTAL]; // D_800E869B. 0-4 players, game type row selected for each player amoun
-extern s8          gGameModeSubMenuRowSelectionForNumPlayers[SELELECTED_PLAYER_DEFINES_TOTAL][MAX_NUM_MAIN_MENU_GAME_TYPES]; // D_800E869D. 0-4 players, 3 possible game types per player amouunt
+extern s8          gGameModeRowSelectionForNumPlayers[SELECTED_PLAYER_DEFINES_TOTAL]; // D_800E869B. 0-4 players, game type row selected for each player amoun
+extern s8          gGameModeSubMenuRowSelectionForNumPlayers[SELECTED_PLAYER_DEFINES_TOTAL][MAX_NUM_MAIN_MENU_GAME_TYPES]; // D_800E869D. 0-4 players, 3 possible game types per player amouunt
 extern s32         D_800E86A4;
 extern s8          gDisplayedControllerPakTableRows[5]; // D_800E86C6
 extern s32         D_800E86E4;
@@ -91,7 +91,7 @@ extern u16         D_800E86F0;
 extern s32         D_800E86F4;
 extern s8          D_800E86F8;
 extern s8          D_800E86FC;
-extern s32         gGameModeFromNumPlayersAndRowSelection[SELELECTED_PLAYER_DEFINES_TOTAL][MAX_NUM_MAIN_MENU_GAME_TYPES]; // D_800F2B60. 0-4 players, 3 possible game types per player amount
+extern s32         gGameModeFromNumPlayersAndRowSelection[SELECTED_PLAYER_DEFINES_TOTAL][MAX_NUM_MAIN_MENU_GAME_TYPES]; // D_800F2B60. 0-4 players, 3 possible game types per player amount
 extern s16         gCupCourseOrder[NUM_CUPS][NUM_COURSES_PER_CUP]; // D_800F2BB4
 extern u8          D_800F2E60[];
 extern u8          D_800F2E64;

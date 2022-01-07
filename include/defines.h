@@ -26,7 +26,7 @@
 #define TWO_PLAYERS_SELECTED 2
 #define THREE_PLAYERS_SELECTED 3
 #define FOUR_PLAYERS_SELECTED 4
-#define SELELECTED_PLAYER_DEFINES_TOTAL 5
+#define SELECTED_PLAYER_DEFINES_TOTAL 5
 
 // 2P Game has Grand Prix, VS, and Battle as available game types
 #define MAX_NUM_MAIN_MENU_GAME_TYPES 3
