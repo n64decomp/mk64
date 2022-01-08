@@ -401,8 +401,15 @@ typedef struct {
 typedef struct
 { 
     // Something related to time trial ghost data?
-    char unk_00[0x80];
-} struct_8018EE10_entry;
+    /* 0x00 */ s32 unk_00;
+    /* 0x04 */ u8  unk_04;
+    /* 0x05 */ s8  unk_05;
+    /* 0x06 */ u8  unk_06;
+    /* 0x07 */ u8  unk_07;
+    /* 0x08 */ s8  unk_08[0x77];
+    /* 0x7F */ s8  unk_7F;
+} struct_8018EE10_entry; // size = 0x80
+
 
 typedef struct {
     char unk_00[0x920];

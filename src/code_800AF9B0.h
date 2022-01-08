@@ -58,8 +58,14 @@ s32  validate_save_data_checksum_backup();
 s32  func_800B5B2C(s32);
 s32  func_800B5F30();
 s32  func_800B6014();
+u8   func_800B60E8(s32);
+s32  func_800B6828(s32);
 void func_800B69BC(s32);
 s32  func_800B6A68();
+
+// staff_ghosts.c
+s32  func_800051C4();
+void func_80005AE8(Player*);
 
 // audio/external.c
 void play_sound2(s32);
@@ -97,6 +103,9 @@ extern u8          D_800F2E60[];
 extern u8          D_800F2E64;
 extern u8          D_800F2E74;
 extern OSMesgQueue gSIEventMesgQueue; // D_8014F0B8
+extern u16         D_80162DD6;
+extern s32         D_80162DE0;
+extern s32         D_80162DFC;
 extern s32         D_8018E7A8;
 extern s8          D_8018E7B0;
 extern OSPfs       D_8018E868;
