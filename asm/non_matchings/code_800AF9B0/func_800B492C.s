@@ -1,4 +1,4 @@
-glabel func_800B492C
+glabel compute_save_data_checksum_1
 /* 0B552C 800B492C 3C0E8019 */  lui   $t6, %hi(D_8018ED10) # $t6, 0x8019
 /* 0B5530 800B4930 24020001 */  li    $v0, 1
 /* 0B5534 800B4934 25CEED10 */  addiu $t6, %lo(D_8018ED10) # addiu $t6, $t6, -0x12f0

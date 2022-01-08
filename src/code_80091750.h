@@ -55,6 +55,7 @@ Gfx *func_8009BA74(Gfx *, Mk64_Texture*, s32, s32);
 s32  func_8009C434(s32, struct_8018DEE0_entry*, s32, s32, s32);
 s32  func_8009C708(s32, struct_8018DEE0_entry *, s32, s32, s32, s32);
 void func_8009E1C0();
+void func_8009E1E4(void);
 void func_8009E208();
 void func_8009E258();
 void func_800A0AD0(struct_8018D9E0_entry*);

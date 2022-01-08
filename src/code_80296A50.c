@@ -4348,7 +4348,7 @@ GLOBAL_ASM("asm/non_matchings/code_actors/place_segment_06.s")
 s16 func_8029EC88(f32 *, s16 *, ? *, ?); // extern
 ? load_giant_egg(? *, ?, ?, ?); // extern
 s16 random_u16(); // extern
-extern s16 D_800DC648;
+extern s16 gPlaceItemBoxes;
 extern ? D_8015F9B8;
 extern f32 gCourseDirection;
 extern ? gSegmentTable;
@@ -4376,7 +4376,7 @@ void place_all_item_boxes(u32 arg0) {
 
     temp_s0 = *(&gSegmentTable + ((arg0 >> 0x18) * 4)) + (arg0 & 0xFFFFFF) + 0x80000000;
     phi_s0 = temp_s0;
-    if ((gModeSelection != TIME_TRIALS) && (D_800DC648 != 0)) {
+    if ((gModeSelection != TIME_TRIALS) && (gPlaceItemBoxes != 0)) {
         load_giant_egg(&sp60, 0, 0, 0);
         temp_v1 = *temp_s0;
         phi_v1 = temp_v1;

@@ -42,7 +42,7 @@ glabel func_800B5B94
 .L800B5C28:
 /* 0B6828 800B5C28 14400048 */  bnez  $v0, .L800B5D4C
 /* 0B682C 800B5C2C 00000000 */   nop   
-/* 0B6830 800B5C30 0C02D6CB */  jal   func_800B5B2C
+/* 0B6830 800B5C30 0C02D6CB */  jal   check_for_controller_pak
 /* 0B6834 800B5C34 00002025 */   move  $a0, $zero
 /* 0B6838 800B5C38 14400003 */  bnez  $v0, .L800B5C48
 /* 0B683C 800B5C3C 3C048015 */   lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015

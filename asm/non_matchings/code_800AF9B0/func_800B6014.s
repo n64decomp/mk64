@@ -8,7 +8,7 @@ glabel func_800B6014
 /* 0B6C2C 800B602C 10000012 */  b     .L800B6078
 /* 0B6C30 800B6030 2402FFFC */   li    $v0, -4
 .L800B6034:
-/* 0B6C34 800B6034 0C02D6CB */  jal   func_800B5B2C
+/* 0B6C34 800B6034 0C02D6CB */  jal   check_for_controller_pak
 /* 0B6C38 800B6038 24040001 */   li    $a0, 1
 /* 0B6C3C 800B603C 1040000D */  beqz  $v0, .L800B6074
 /* 0B6C40 800B6040 3C048015 */   lui   $a0, %hi(gSIEventMesgQueue) # $a0, 0x8015
