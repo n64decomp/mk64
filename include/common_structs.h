@@ -407,7 +407,7 @@ typedef struct
     /* 0x06 */ u8  unk_06;
     /* 0x07 */ u8  unk_07;
     /* 0x08 */ s8  unk_08[0x77];
-    /* 0x7F */ s8  unk_7F;
+    /* 0x7F */ u8  unk_7F;
 } struct_8018EE10_entry; // size = 0x80
 
 typedef struct {
