@@ -2,6 +2,7 @@
 #define CODE_80091750_H
 
 #include "common_structs.h"
+#include "main.h"
 
 /* Function Prototypes */
 
@@ -41,6 +42,9 @@ void func_80093E20();
 void func_80093E40();
 void func_80093F10();
 void func_800940EC(s32);
+void func_800942D0();
+void func_80094660(struct GfxPool*, s32);
+void func_800947B4(struct GfxPool*, s32);
 void func_80094A64(Mtx*);
 void func_80094C60();
 void func_80095574();
@@ -112,10 +116,13 @@ extern Gfx D_020077A8[];
 extern Gfx D_020077D8[];
 extern Gfx D_02007F18[];
 extern Gfx D_02007F48[];
+extern Gfx D_02007F60[];
+extern Gfx D_02007FC8[];
 extern Gfx D_02008008[];
 extern Gfx D_02008030[];
 extern Gfx D_02008058[];
 
+extern Gfx D_06009410[];
 
 extern s16 gGlyphDisplayWidth[]; // D_800EF690
 extern RGBA16 D_800E74A8[5];
@@ -131,6 +138,8 @@ extern char *D_800E7A98;
 extern char *D_800E7A9C[2];
 extern s32 gGlyphTextureLUT[]; // D_800E7E84
 extern Mk64_Texture_Group *D_800E82B4[5];
+extern f32 D_800E8530;
+extern f32 D_800E8534;
 extern s8  D_800E86D0[20];
 extern f32 D_800F1F30;
 extern f32 D_800F24A8;
@@ -150,6 +159,14 @@ extern s32 D_8018E850;
 extern s32 D_8018E854;
 extern s32 D_8018E858;
 extern s32 D_8018E85C;
+extern s32 D_8018EDC0;
+extern f32 D_8018EDC4;
+extern f32 D_8018EDC8;
+extern f32 D_8018EDCC;
+extern f32 D_8018EDD0;
+extern f32 D_8018EDD4;
+extern f32 D_8018EDD8;
+extern f32 D_8018EDDC;
 extern s8  D_802874F5;
 
 #endif
