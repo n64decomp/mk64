@@ -714,20 +714,20 @@ void func_80041D34(void) {
                 if (temp_v0 != 3) {
                     return;
                 }
-                guOrtho(&gGfxPool->buffer[40], 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+                guOrtho(&gGfxPool->gfxPool[40], 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
                 return;
             }
-            guOrtho(&gGfxPool->buffer[40], 0.0f, 160.0f, 120.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+            guOrtho(&gGfxPool->gfxPool[40], 0.0f, 160.0f, 120.0f, 0.0f, -1.0f, 1.0f, 1.0f);
             return;
         }
         if (D_801658FE == 0) {
-            guOrtho(&gGfxPool->buffer[40], 0.0f, 320.0f, 120.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+            guOrtho(&gGfxPool->gfxPool[40], 0.0f, 320.0f, 120.0f, 0.0f, -1.0f, 1.0f, 1.0f);
             return;
         }
-        guOrtho(&gGfxPool->buffer[40], 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+        guOrtho(&gGfxPool->gfxPool[40], 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
         return;
     }
-    guOrtho(&gGfxPool->buffer[40], 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+    guOrtho(&gGfxPool->gfxPool[40], 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80040E50/func_80041D34.s")
@@ -735,7 +735,7 @@ GLOBAL_ASM("asm/non_matchings/code_80040E50/func_80041D34.s")
 
 void func_80041EF4(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->matrixPool[5]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[5]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 }
 
 #ifdef MIPS_TO_C

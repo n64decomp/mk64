@@ -200,15 +200,15 @@ void func_80280A28(s32 arg0, s32 arg1, f32 arg2) {
     sp20[6] = D_80287500->unk0[2] * arg2;
     sp20[7] = D_80287500->unk18 * arg2;
     sp20[8] = D_80287500->unk28 * arg2;
-    func_80022180(arg2, &gGfxPool->buffer[D_80164AF0] + 0xFAC0, &sp20);
+    func_80022180(arg2, &gGfxPool->gfxPool[D_80164AF0] + 0xFAC0, &sp20);
 
-    gSPMatrix(gDisplayListHead, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[D_80164AF0 << 6] + 0xFAC0), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead, VIRTUAL_TO_PHYSICAL(&gGfxPool->gfxPool[D_80164AF0 << 6] + 0xFAC0), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
 
     //temp_v1 = gDisplayListHead;
     //gDisplayListHead = temp_v1 + 8;
     //temp_v1->words.w0 = 0x01020040;
-    //temp_v1->words.w1 = VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[D_80164AF0 << 6] + 0xFAC0);
+    //temp_v1->words.w1 = VIRTUAL_TO_PHYSICAL(&gGfxPool->gfxPool[D_80164AF0 << 6] + 0xFAC0);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80280650/func_80280A28.s")

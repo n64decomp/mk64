@@ -9476,11 +9476,11 @@ void func_80055FA0(s32 arg0, ? arg1) {
         temp_v0 = gDisplayListHead;
         gDisplayListHead = temp_v0 + 8;
         temp_v0->unk0 = 0x1030040;
-        temp_v0->unk4 = &gGfxPool->buffer[8] & 0x1FFFFFFF;
+        temp_v0->unk4 = &gGfxPool->gfxPool[8] & 0x1FFFFFFF;
         temp_v0_2 = gDisplayListHead;
         gDisplayListHead = temp_v0_2 + 8;
         temp_v0_2->unk0 = 0x1020040;
-        temp_v0_2->unk4 = &gGfxPool->buffer[56] & 0x1FFFFFFF;
+        temp_v0_2->unk4 = &gGfxPool->gfxPool[56] & 0x1FFFFFFF;
         sp20 = temp_t0;
         func_800425D0(&sp80, temp_t0 + 4, temp_t0 + 0xBE, temp_t0->unk0);
         func_80022180(gGfxPool + (D_8018D120 << 6) + 0x2C0, &sp80);
@@ -9500,7 +9500,7 @@ void func_80055FA0(s32 arg0, ? arg1) {
         temp_v0_6 = gDisplayListHead;
         gDisplayListHead = temp_v0_6 + 8;
         temp_v0_6->unk0 = 0x1010040;
-        temp_v0_6->unk4 = &gGfxPool->buffer[56] & 0x1FFFFFFF;
+        temp_v0_6->unk4 = &gGfxPool->gfxPool[56] & 0x1FFFFFFF;
         mtxf_identity(&sp40);
         func_802B4FF8(&sp40, 0);
     }
