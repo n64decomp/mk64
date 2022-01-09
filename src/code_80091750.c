@@ -384,7 +384,7 @@ void func_80091EE4(void) {
         func_800B6708();
         
         for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
-            if ((D_8018EE10[temp_s0].unk_04 != 0) && (temp_s2 == D_8018EE10[temp_s0].unk_05)) {
+            if ((D_8018EE10[temp_s0].ghostDataSaved != 0) && (temp_s2 == D_8018EE10[temp_s0].courseIndex)) {
                 func_800B64EC(temp_s0);
                 temp_s0 = 2;
                 D_8018EDFB = 0;

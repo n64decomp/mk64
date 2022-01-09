@@ -3687,12 +3687,12 @@ s32 func_800B6014(void) {
     return -1;
 }
 
-void func_800B6088(s32 arg0) {
+s32 func_800B6088(s32 arg0) {
     struct_8018EE10_entry* temp_v1;
 
     temp_v1 = &D_8018EE10[arg0];
-    temp_v1->unk_7F = func_800B6828(arg0); // compute checksum?
-    osPfsReadWriteFile(&D_8018E868, D_8018EB84, PFS_WRITE, arg0 * 0x80 /* 0x80 == sizeof(struct_8018EE10_entry) */, sizeof(struct_8018EE10_entry), (u8*) temp_v1);
+    temp_v1->checksum = func_800B6828(arg0);
+    return osPfsReadWriteFile(&D_8018E868, D_8018EB84, PFS_WRITE, arg0 * 0x80 /* 0x80 == sizeof(struct_8018EE10_entry) */, sizeof(struct_8018EE10_entry), (u8*) temp_v1);
 }
 
 #ifdef MIPS_TO_C
@@ -3825,20 +3825,20 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B6178.s")
 #endif
 
 s32 func_800B6348(s32 arg0) {
-    if ((D_8018EE10[0].unk_04 != 0) && (arg0 == D_8018EE10[0].unk_05)) {
+    if ((D_8018EE10[0].ghostDataSaved != 0) && (arg0 == D_8018EE10[0].courseIndex)) {
         return 0;
     }
-    if ((D_8018EE10[1].unk_04 != 0) && (arg0 == D_8018EE10[1].unk_05)) {
+    if ((D_8018EE10[1].ghostDataSaved != 0) && (arg0 == D_8018EE10[1].courseIndex)) {
         return 1;
     }
     return 0;
 }
 
 s32 func_800B639C(s32 arg0) {
-    if ((D_8018EE10[0].unk_04 != 0) && (arg0 == D_8018EE10[0].unk_05)) {
+    if ((D_8018EE10[0].ghostDataSaved != 0) && (arg0 == D_8018EE10[0].courseIndex)) {
         return 0;
     }
-    if ((D_8018EE10[1].unk_04 != 0) && (arg0 == D_8018EE10[1].unk_05)) {
+    if ((D_8018EE10[1].ghostDataSaved != 0) && (arg0 == D_8018EE10[1].courseIndex)) {
         return 1;
     }
     return -1;
@@ -3854,12 +3854,12 @@ s32 func_800B63F0(s32 arg0) {
     func_80005AE8(gPlayerThree);
    
     phi_s3 = 0;
-    if (((gCupSelection * 4) + gCupCourseSelection) != D_8018EE10[arg0].unk_05) {
+    if (((gCupSelection * 4) + gCupCourseSelection) != D_8018EE10[arg0].courseIndex) {
         phi_s3 = 2;
     } else if (D_80162DFC != D_8018EE10[arg0].unk_00) {
         phi_s3 = 3;
     } else {
-        if (D_80162DE0 !=  D_8018EE10[arg0].unk_06) {
+        if (D_80162DE0 !=  (u8) D_8018EE10[arg0].characterId) {
             phi_s3 = 4;
         } else {
             temp_s0 = 0;
@@ -3897,7 +3897,7 @@ s32 func_800B64EC(s32 arg0) {
         phi_s1 = (u8 *) &D_8018EE10[arg0]; temp_s0 = 0; while (1) {
 
             if (phi_s1[7] != func_800B60E8(temp_s0)) {
-                D_8018EE10[arg0].unk_04 = 0;
+                D_8018EE10[arg0].ghostDataSaved = 0;
                 return -2;
             }
 
@@ -3905,7 +3905,7 @@ s32 func_800B64EC(s32 arg0) {
             if ((++temp_s0) == 0x3C) {
                 func_8000522C();
                 D_80162DD4[0] = 0;
-                D_80162DE0 = (s32) D_8018EE10[arg0].unk_06;
+                D_80162DE0 = (s32) D_8018EE10[arg0].characterId;
                 D_80162DFC = D_8018EE10[arg0].unk_00;
                 break;
             }
@@ -3972,8 +3972,8 @@ void func_800B6708(void) {
     osPfsReadWriteFile(&D_8018E868, D_8018EB84, PFS_READ, 0, 0x100 /*  2*sizeof(struct_8018EE10_entry) ? */, (u8*) &D_8018EE10);
  
     for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
-        if (D_8018EE10[temp_s0].unk_7F != func_800B6828(temp_s0)) {
-            D_8018EE10[temp_s0].unk_04 = 0;
+        if (D_8018EE10[temp_s0].checksum != func_800B6828(temp_s0)) {
+            D_8018EE10[temp_s0].ghostDataSaved = 0;
         }
     }
 }
@@ -3987,11 +3987,11 @@ void func_800B6798(void) {
     osPfsReadWriteFile(&D_8018E8D0, D_8018EB88, PFS_READ, 0, 0x100 /*  2*sizeof(struct_8018EE10_entry) ? */, tmp);
 
     for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
-        // if (D_8018D9C0[temp_s0]->unk_7F != func_800B68F4(temp_s0)) {
-        //     D_8018D9C0[temp_s0]->unk_04 = 0;
+        // if (D_8018D9C0[temp_s0]->checksum != func_800B68F4(temp_s0)) {
+        //     D_8018D9C0[temp_s0]->ghostDataSaved = 0;
         // }
-        if ( ((struct_8018EE10_entry*) (tmp + (temp_s0 << 7)))->unk_7F != func_800B68F4(temp_s0)) {
-            ((struct_8018EE10_entry*) (tmp + (temp_s0 << 7)))->unk_04 = 0;
+        if ( ((struct_8018EE10_entry*) (tmp + (temp_s0 << 7)))->checksum != func_800B68F4(temp_s0)) {
+            ((struct_8018EE10_entry*) (tmp + (temp_s0 << 7)))->ghostDataSaved = 0;
         }
     }
 }

@@ -402,12 +402,12 @@ typedef struct
 { 
     // Something related to time trial ghost data?
     /* 0x00 */ s32 unk_00;
-    /* 0x04 */ u8  unk_04;
-    /* 0x05 */ s8  unk_05;
-    /* 0x06 */ u8  unk_06;
+    /* 0x04 */ u8  ghostDataSaved;
+    /* 0x05 */ s8  courseIndex;
+    /* 0x06 */ u8  characterId;
     /* 0x07 */ u8  unk_07;
     /* 0x08 */ s8  unk_08[0x77];
-    /* 0x7F */ u8  unk_7F;
+    /* 0x7F */ u8  checksum;
 } struct_8018EE10_entry; // size = 0x80
 
 typedef struct {
