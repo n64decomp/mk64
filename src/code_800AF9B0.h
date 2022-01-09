@@ -145,6 +145,7 @@ extern u8          gSoundMode; // D_8018EDF2
 extern s8          D_8018EDF3;
 extern s8          gTimeTrialDataCourseIndex; // D_8018EDF7
 extern s8          gCourseRecordsMenuSelection; // D_8018EDF8
+extern s8          D_8018EDFB;
 extern s32         gMenuTimingCounter; // D_8018EE00
 extern s8          gCupSelection; // D_8018EE09
 extern s8          D_8018EE0A;

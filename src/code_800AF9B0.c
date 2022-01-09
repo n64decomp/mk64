@@ -3881,8 +3881,7 @@ s32 func_800B63F0(s32 arg0) {
     return phi_s3;
 }
 
-s32 func_800B64EC(s32 arg0)
-{
+s32 func_800B64EC(s32 arg0) {
     s32 temp_s0;
     s32 temp_v0;
     u8 *phi_s1;
