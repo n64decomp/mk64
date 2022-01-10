@@ -84,6 +84,8 @@ extern Player* gPlayerOneCopy;
 
 extern SaveData D_8018EB90;
 
+extern Mtx D_80183D60;
+
 extern struct_D_800E261C D_800E261C;
 extern struct_D_8018CE10 D_8018CE10[];
 extern struct_D_802874D8 D_802874D8;
@@ -95,6 +97,8 @@ extern struct GfxPool *gGfxPool; // D_8014EF40
 extern Vec3f D_80165070[];
 
 extern Vp D_802B8880[];
+
+extern Gfx  D_0D0077A0[];
 
 extern u16  D_800DC51C;
 extern s32  D_800DC52C;
@@ -155,6 +159,8 @@ extern s16  D_8016557C;
 extern s16  D_8016557E;
 extern s16  D_80165580;
 extern s16  D_80165582;
+
+extern s8   D_801658FE;
 
 extern s32  D_8018D120;
 extern s32  D_8018D900;
