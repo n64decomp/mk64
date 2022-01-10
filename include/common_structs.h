@@ -159,7 +159,7 @@ typedef struct {
     /* 0x0040 */ char unk_040[0x2];
     /* 0x0042 */ s16 unk_042;
     /* 0x0044 */ s16 unk_044;
-    /* 0x0046 */ s16 unk_046;
+    /* 0x0046 */ u16 unk_046;
     /* 0x0048 */ char unk_048[0x10];
     /* 0x0058 */ f32 unk_058;
     /* 0x005C */ f32 unk_05C;
@@ -189,7 +189,7 @@ typedef struct {
     /* 0x00B0 */ s16 unk_0B0;
     /* 0x00B2 */ s16 unk_0B2;
     /* 0x00B4 */ s16 unk_0B4;
-    /* 0x00B6 */ s16 unk_0B6;
+    /* 0x00B6 */ u16 unk_0B6;
     /* 0x00B8 */ f32 unk_0B8;
     /* 0x00BC */ s32 unk_0BC;
     /* 0x00C0 */ s16 unk_0C0;
