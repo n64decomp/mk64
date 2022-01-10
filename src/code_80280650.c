@@ -185,11 +185,8 @@ extern struct UnkStruct_80287500 *D_80287500;
 void func_80280A28(s32 arg0, s32 arg1, f32 arg2) {
 
     f32 sp20[14];
-    //f32 temp_f12;
     Gfx *temp_v1;
 
-    //temp_f12 = arg2;
-    //arg2 = temp_f12;
     func_80021E10(arg2, &sp20, arg0, arg1);
     sp20[0] = D_80287500->unk0[0] * arg2;
     sp20[1] = D_80287500->unk10 * arg2;
@@ -200,15 +197,9 @@ void func_80280A28(s32 arg0, s32 arg1, f32 arg2) {
     sp20[6] = D_80287500->unk0[2] * arg2;
     sp20[7] = D_80287500->unk18 * arg2;
     sp20[8] = D_80287500->unk28 * arg2;
-    func_80022180(arg2, &gGfxPool->buffer[D_80164AF0] + 0xFAC0, &sp20);
+    func_80022180(arg2, &gGfxPool->mtxPool[D_80164AF0 + 0x3EB], &sp20);
 
-    gSPMatrix(gDisplayListHead, VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[D_80164AF0 << 6] + 0xFAC0), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-
-
-    //temp_v1 = gDisplayListHead;
-    //gDisplayListHead = temp_v1 + 8;
-    //temp_v1->words.w0 = 0x01020040;
-    //temp_v1->words.w1 = VIRTUAL_TO_PHYSICAL(&gGfxPool->buffer[D_80164AF0 << 6] + 0xFAC0);
+    gSPMatrix(gDisplayListHead, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80280650/func_80280A28.s")
