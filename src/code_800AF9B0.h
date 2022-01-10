@@ -14,6 +14,7 @@ union GrandPrixPointsUnion
 /* Function Prototypes */
 
 void func_800AF9B0();
+void func_800B0004();
 void func_800B053C(struct Controller*, u16);
 void func_800B13B0(struct Controller*, u16);
 void func_800B15AC(struct Controller*, u16);
@@ -58,8 +59,16 @@ s32  validate_save_data_checksum_backup();
 s32  func_800B5B2C(s32);
 s32  func_800B5F30();
 s32  func_800B6014();
+u8   func_800B60E8(s32);
+u8   func_800B6828(s32);
+u8   func_800B68F4(s32); 
 void func_800B69BC(s32);
 s32  func_800B6A68();
+
+// staff_ghosts.c
+s32  func_800051C4();
+void func_8000522C();
+void func_80005AE8(Player*);
 
 // audio/external.c
 void play_sound2(s32);
@@ -82,6 +91,7 @@ extern s32         D_800DC540;
 extern s16         gCurrentCourseId; // D_800DC5A0
 extern s32         gIsMirrorMode; // D_800DC5F4
 extern s16         gPlaceItemBoxes; // D_800DC638
+extern u32*        D_800DC714;
 extern s8          gGameModeRowSelectionForNumPlayers[SELECTED_PLAYER_DEFINES_TOTAL]; // D_800E869B. 0-4 players, game type row selected for each player amoun
 extern s8          gGameModeSubMenuRowSelectionForNumPlayers[SELECTED_PLAYER_DEFINES_TOTAL][MAX_NUM_MAIN_MENU_GAME_TYPES]; // D_800E869D. 0-4 players, 3 possible game types per player amouunt
 extern s32         D_800E86A4;
@@ -97,6 +107,10 @@ extern u8          D_800F2E60[];
 extern u8          D_800F2E64;
 extern u8          D_800F2E74;
 extern OSMesgQueue gSIEventMesgQueue; // D_8014F0B8
+extern u16         D_80162DD6;
+extern s32         D_80162DE0;
+extern s32         D_80162DFC;
+extern struct_8018EE10_entry* D_8018D9C0;
 extern s32         D_8018E7A8;
 extern s8          D_8018E7B0;
 extern OSPfs       D_8018E868;
@@ -106,6 +120,7 @@ extern s32         D_8018EB38[16];
 extern s32         D_8018EB78;
 extern s32         D_8018EB7C;
 extern s32         D_8018EB84;
+extern s32         D_8018EB88;
 extern SaveData    D_8018EB90;
 extern union GrandPrixPointsUnion D_8018ED10; // Direct reference to the grandPrixPoints section of save data
 extern u8          D_8018ED11;
@@ -131,6 +146,7 @@ extern u8          gSoundMode; // D_8018EDF2
 extern s8          D_8018EDF3;
 extern s8          gTimeTrialDataCourseIndex; // D_8018EDF7
 extern s8          gCourseRecordsMenuSelection; // D_8018EDF8
+extern s8          D_8018EDFB;
 extern s32         gMenuTimingCounter; // D_8018EE00
 extern s8          gCupSelection; // D_8018EE09
 extern s8          D_8018EE0A;
