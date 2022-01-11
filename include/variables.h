@@ -103,6 +103,7 @@ extern Gfx  D_0D0077A0[];
 extern u16  D_800DC51C;
 extern s32  D_800DC52C;
 extern s32  D_800DC50C;
+extern u16  D_800DC5FC;
 
 extern u16  D_8015F890;
 
