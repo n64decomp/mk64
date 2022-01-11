@@ -3824,7 +3824,7 @@ void *func_800987D0(void *arg0, u32 arg1, u32 arg2, u32 arg3, u32 arg4, s32 arg5
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800987D0.s")
 #endif
 
-Gfx *func_80098C18(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32 red, s32 green, u32 blue, s32 alpha) {
+Gfx *func_80098C18(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32 red, s32 green, s32 blue, s32 alpha) {
     red &= 0xFF;
     green &= 0xFF;
     blue &= 0xFF;
@@ -3854,7 +3854,7 @@ Gfx *func_80098C18(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32
         lry = 0xEF;
     }
     gSPDisplayList(displayListHead++, D_02008030);
-    gDPSetFillColor(displayListHead++, (GPACK_RGBA5551(red, green, blue, alpha) << 0x10 | GPACK_RGBA5551(red, green, blue, alpha)));
+    gDPSetFillColor(displayListHead++, (GPACK_RGBA5551(red, green, (u32)blue, alpha) << 0x10 | GPACK_RGBA5551(red, green, (u32)blue, alpha)));
     gDPFillRectangle(displayListHead++, ulx, uly, lrx, lry);
     gSPDisplayList(displayListHead++, D_02008058);
     return displayListHead;

@@ -48,7 +48,7 @@ void func_800947B4(struct GfxPool*, s32);
 void func_80094A64(Mtx*);
 void func_80094C60();
 void func_80095574();
-Gfx *func_80098C18(Gfx*, s32, s32, s32, s32, s32, s32, u32, s32);
+Gfx *func_80098C18(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *draw_box(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *func_80098FC8(Gfx*, s32, s32, s32, s32);
 void func_80099110();
