@@ -105,6 +105,8 @@ void func_800AADD4(struct_8018D9E0_entry*);
 void func_800AAE18(struct_8018D9E0_entry*);
 struct_8018D9E0_entry *func_800AAEB4(s32);
 struct_8018D9E0_entry *func_800AAEF4(s32);
+struct_8018D9E0_entry *func_800AAF30(s32);
+s32 func_800AAF70(s32);
 void func_800AAF94(struct_8018D9E0_entry*, s32);
 
 // code_80057C60.c
