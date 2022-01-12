@@ -163,7 +163,7 @@ s32 func_800061DC(void *arg0, f32 arg1, s32 arg2) {
     if (D_800DC51C == 0) {
         temp_v0_2 = D_8018EDF3;
         phi_a0 = gPlayerOne;
-        if (temp_v0_2 > 0) {
+        if (temp_v0_2 > ZERO_PLAYERS_SELECTED) {
             do {
                 temp_a2 = phi_a0->unk_000;
                 phi_v1_2 = phi_v1_5;
@@ -2105,7 +2105,7 @@ extern ? gPlayers;
     phi_v1 = gPlayerPositions;
     phi_a0_4 = 0;
     phi_a0_7 = 0;
-    if (temp_t1_2 > 0) {
+    if (temp_t1_2 > ZERO_PLAYERS_SELECTED) {
         sp4 = &gPlayerPositions[temp_t1_2];
         do {
             phi_a0_6 = phi_a0_7;
@@ -2598,7 +2598,7 @@ block_25:
         arg0 = phi_a0_4;
         func_800065D0(phi_a0_4, arg1, &D_80163448);
         phi_a0_5 = (bitwise f32) arg0;
-        if ((gModeSelection == GRAND_PRIX) && (D_8018EDF3 == 2) && (arg0 == 0)) {
+        if ((gModeSelection == GRAND_PRIX) && (D_8018EDF3 == TWO_PLAYERS_SELECTED) && (arg0 == 0)) {
             if (D_80164408 < D_8016440C) {
                 D_80163478 = 0;
             } else {
@@ -2725,7 +2725,7 @@ void func_800099EC(s32 arg0, ? arg1) {
         temp_a0 = D_8018EDF3;
         phi_s0 = 0;
         phi_a0 = temp_a0;
-        if (temp_a0 > 0) {
+        if (temp_a0 > ZERO_PLAYERS_SELECTED) {
             phi_s2 = gPlayerPositions;
             phi_s1 = 0;
             do {
@@ -3108,7 +3108,7 @@ block_63:
                         return;
                     }
                     temp_v0_9 = D_8018EDF3;
-                    if ((temp_v0_9 > 0) && (temp_v0_9 < 3) && (phi_t1_2 == *(&D_80163330 + phi_t0)) && (*(&D_8016334C + phi_t0) < *(gPlayerPositions + sp38))) {
+                    if ((temp_v0_9 > ZERO_PLAYERS_SELECTED) && (temp_v0_9 < THREE_PLAYERS_SELECTED) && (phi_t1_2 == *(&D_80163330 + phi_t0)) && (*(&D_8016334C + phi_t0) < *(gPlayerPositions + sp38))) {
                         temp_t0 = sp38 + &D_80163210;
                         *temp_t0 = D_800ECFB4;
                         phi_t0_2 = temp_t0;
@@ -5504,7 +5504,7 @@ void func_8000DF8C(s32 arg0, f32 arg1, s32 arg2, s32 arg3) {
                 temp_v1 = D_8018EDF3;
                 phi_a0 = 0;
                 phi_v1 = temp_v1;
-                if (temp_v1 > 0) {
+                if (temp_v1 > ZERO_PLAYERS_SELECTED) {
                     phi_v0 = gPlayers;
                     phi_a2 = 0x80000000;
                     phi_a3 = 5;
@@ -6047,10 +6047,10 @@ loop_5:
                 *phi_s1 = random_int(8);
                 phi_a1_2 = 0;
                 phi_a1_5 = 0;
-                if (temp_a2 < 3) {
+                if (temp_a2 < THREE_PLAYERS_SELECTED) {
                     phi_v0_2 = gCharacterSelections;
-                    if (temp_a2 > 0) {
-                        if (temp_a2 > 0) {
+                    if (temp_a2 > ZERO_PLAYERS_SELECTED) {
+                        if (temp_a2 > ZERO_PLAYERS_SELECTED) {
                             do {
                                 temp_v0_2 = phi_v0_2 + 1;
                                 phi_v0_2 = temp_v0_2;
@@ -8914,7 +8914,7 @@ void func_800132F4(void) {
         phi_a1->unk1E = -1;
         phi_a1->unkC = temp_a2->unk2;
         phi_v1 += 0xB4;
-        if (D_8018EDF3 >= 3) {
+        if (D_8018EDF3 >= THREE_PLAYERS_SELECTED) {
             phi_a1->unk0 = 0;
         } else {
             phi_a1->unk0 = 1;
@@ -13117,7 +13117,7 @@ void func_8001A588(s32 arg0, void *arg1, u16 *arg2, s8 arg3, s32 cameraId) {
         phi_a3 = cameraId;
         if ((gModeSelection != TIME_TRIALS) && (cameraId == 1) && ((temp_v0_6 = *phi_t0, (temp_v0_6 == 0x104)) || (temp_v0_6 == 0x105))) {
             phi_v1 = 0;
-            if (D_8018EDF3 == 2) {
+            if (D_8018EDF3 == TWO_PLAYERS_SELECTED) {
                 func_8001A518(phi_s0, *(&gPlayerPositions + (phi_s0 * 4)), 1, cameraId);
             } else {
                 sp44 = phi_s0;

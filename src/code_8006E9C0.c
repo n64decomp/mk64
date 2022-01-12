@@ -546,17 +546,17 @@ block_26:
         D_8018D2E0 = D_8018D2B0 - D_8018D2E0;
     }
     temp_v0 = D_8018EDF3;
-    if (temp_v0 == 4) {
+    if (temp_v0 == FOUR_PLAYERS_SELECTED) {
         phi_v1->unk0 = 0xA0;
         phi_t0->unk0 = 0x78;
         return;
     }
-    if (temp_v0 == 3) {
+    if (temp_v0 == THREE_PLAYERS_SELECTED) {
         phi_v1->unk0 = 0xEB;
         phi_t0->unk0 = 0xAF;
         return;
     }
-    if (temp_v0 == 2) {
+    if (temp_v0 == TWO_PLAYERS_SELECTED) {
         if (gCurrentCourseId != 0xA) {
             phi_v1->unk2 = 0x109;
             phi_v1->unk0 = phi_v1->unk2;
@@ -635,7 +635,7 @@ void func_8006F8CC(void) {
         D_801657E8 = 1;
         D_80165800.unk0 = D_80165800.unk1;
         temp_a0 = D_8018EDF3;
-        if (temp_a0 == 4) {
+        if (temp_a0 == FOUR_PLAYERS_SELECTED) {
             if (gModeSelection != BATTLE) {
                 D_801657E4 = 1;
                 D_801657F0 = 1;
@@ -646,10 +646,10 @@ void func_8006F8CC(void) {
                 D_801657F8 = 0;
                 D_80165800.unk0 = D_80165800.unk1;
             }
-        } else if (temp_a0 == 3) {
+        } else if (temp_a0 == THREE_PLAYERS_SELECTED) {
             D_801657E8 = 0;
             D_801657F8 = 1;
-        } else if (temp_a0 == 2) {
+        } else if (temp_a0 == TWO_PLAYERS_SELECTED) {
             if (gModeSelection != BATTLE) {
                 D_80165800.unk1 = 0;
                 D_801657E4 = 1;
@@ -809,10 +809,10 @@ void func_8006FA94(void) {
     D_80165658.unk0 = 0;
     temp_ra = D_8018EDF3;
     D_801658BC = D_801658C6;
-    if (temp_ra != 1) {
-        if (temp_ra != 2) {
-            if (temp_ra != 3) {
-                if (temp_ra != 4) {
+    if (temp_ra != ONE_PLAYERS_SELECTED) {
+        if (temp_ra != TWO_PLAYERS_SELECTED) {
+            if (temp_ra != THREE_PLAYERS_SELECTED) {
+                if (temp_ra != FOUR_PLAYERS_SELECTED) {
 
                 } else {
                     if (gModeSelection == VERSUS) {
@@ -1243,7 +1243,7 @@ void func_8007055C(void) {
     case 5:
         phi_s4 = 0x19;
         phi_s0 = 0;
-        if (D_8018EDF3 == 1) {
+        if (D_8018EDF3 == ONE_PLAYERS_SELECTED) {
             phi_s4 = 0x32;
         }
         phi_s1 = 0;
@@ -1303,7 +1303,7 @@ extern s16 D_80165748;
 
 void func_80070714(void) {
     D_80165730 = 1;
-    if (D_8018EDF3 == 1) {
+    if (D_8018EDF3 == ONE_PLAYERS_SELECTED) {
         D_80165738 = 0x64;
         D_80165740 = 0x3C;
         D_80165748 = 0x1E;
@@ -1725,7 +1725,7 @@ void func_80070780(void) {
         if (D_800DC50C != CREDITS_SEQUENCE) {
             temp_v0_10 = D_8018EDF3;
             phi_s1_8 = &D_80183EA0;
-            if ((temp_v0_10 == 1) || ((temp_v0_10 == 2) && (gModeSelection == VERSUS))) {
+            if ((temp_v0_10 == ONE_PLAYERS_SELECTED) || ((temp_v0_10 == TWO_PLAYERS_SELECTED) && (gModeSelection == VERSUS))) {
                 temp_v0_11 = gCCSelection;
                 if (temp_v0_11 != CC_50) {
                     if (temp_v0_11 != CC_100) {

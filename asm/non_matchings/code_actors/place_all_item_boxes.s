@@ -27,8 +27,8 @@ glabel place_all_item_boxes
 /* 106EA4 8029D894 F7B60020 */  sdc1  $f22, 0x20($sp)
 /* 106EA8 8029D898 11010049 */  beq   $t0, $at, .L8029D9C0
 /* 106EAC 8029D89C F7B40018 */   sdc1  $f20, 0x18($sp)
-/* 106EB0 8029D8A0 3C09800E */  lui   $t1, %hi(D_800DC648) # $t1, 0x800e
-/* 106EB4 8029D8A4 8529C648 */  lh    $t1, %lo(D_800DC648)($t1)
+/* 106EB0 8029D8A0 3C09800E */  lui   $t1, %hi(gPlaceItemBoxes) # $t1, 0x800e
+/* 106EB4 8029D8A4 8529C648 */  lh    $t1, %lo(gPlaceItemBoxes)($t1)
 /* 106EB8 8029D8A8 51200046 */  beql  $t1, $zero, .L8029D9C4
 /* 106EBC 8029D8AC 8FBF004C */   lw    $ra, 0x4c($sp)
 /* 106EC0 8029D8B0 44800000 */  mtc1  $zero, $f0

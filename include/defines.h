@@ -21,6 +21,16 @@
 // Compiles to -0x1000 in diff.py
 #define PLAYER_HUMAN_AND_CPU PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_CPU | PLAYER_START_SEQUENCE
 
+#define ZERO_PLAYERS_SELECTED 0
+#define ONE_PLAYERS_SELECTED 1
+#define TWO_PLAYERS_SELECTED 2
+#define THREE_PLAYERS_SELECTED 3
+#define FOUR_PLAYERS_SELECTED 4
+#define SELECTED_PLAYER_DEFINES_TOTAL 5
+
+// 2P Game has Grand Prix, VS, and Battle as available game types
+#define MAX_NUM_MAIN_MENU_GAME_TYPES 3
+
 /**
  * Options for gModeSelection
 **/

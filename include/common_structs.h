@@ -159,7 +159,7 @@ typedef struct {
     /* 0x0040 */ char unk_040[0x2];
     /* 0x0042 */ s16 unk_042;
     /* 0x0044 */ s16 unk_044;
-    /* 0x0046 */ s16 unk_046;
+    /* 0x0046 */ u16 unk_046;
     /* 0x0048 */ char unk_048[0x10];
     /* 0x0058 */ f32 unk_058;
     /* 0x005C */ f32 unk_05C;
@@ -189,7 +189,7 @@ typedef struct {
     /* 0x00B0 */ s16 unk_0B0;
     /* 0x00B2 */ s16 unk_0B2;
     /* 0x00B4 */ s16 unk_0B4;
-    /* 0x00B6 */ s16 unk_0B6;
+    /* 0x00B6 */ u16 unk_0B6;
     /* 0x00B8 */ f32 unk_0B8;
     /* 0x00BC */ s32 unk_0BC;
     /* 0x00C0 */ s16 unk_0C0;
@@ -358,20 +358,19 @@ typedef struct {
     // Lowest dibit is the Mushroom Cup, 2nd dibit is the Flower Cup, etc
     u8 grandPrixPoints[4];
     u8 soundMode;
-    // Its unknown what these bytes are used for
-    u8 unknownBytes[3];
+    // It's unknown what the first byte is used for
+    u8 checksum[3];
     // For some reason there's 2 entries covering 4 cups
     // Instead of 4 entries, one per cup. Or even just one big entry for all 4 cups
     // Its also unknown why these are here when they're identical to the values found
     // in allCourseTimeTrialRecords
     OnlyBestTimeTrialRecords onlyBestTimeTrialRecords[2];
-    // Its unknown why these last bytes exist as they appear to be copies of
-    // of their non-Backup counterparts.
-    // They could be some form of data coherency. If these don't match the non-Backup
-    // versions that may indicate corrupt save data?
+    // If checksum[1] or checksum[2] does not match their expected value,
+    // the grandPrixPoints and soundMode are reset. Then if the backup data's
+    // checksums are valid, copy the backup data to the main data.
     u8 grandPrixPointsBackup[4];
     u8 soundModeBackup;
-    u8 unknownBytesBackup[3];
+    u8 checksumBackup[3];
 } SaveData; // size = 0x200
 
 typedef struct {
@@ -398,6 +397,18 @@ typedef struct {
     f32 unk_0C;
     char unk_10[0x10];
 } struct_D_8018CE10; // size = 0x20
+
+typedef struct
+{ 
+    // Something related to time trial ghost data?
+    /* 0x00 */ s32 unk_00;
+    /* 0x04 */ u8  ghostDataSaved;
+    /* 0x05 */ s8  courseIndex;
+    /* 0x06 */ u8  characterId;
+    /* 0x07 */ u8  unk_07;
+    /* 0x08 */ s8  unk_08[0x77];
+    /* 0x7F */ u8  checksum;
+} struct_8018EE10_entry; // size = 0x80
 
 typedef struct {
     char unk_00[0x920];
