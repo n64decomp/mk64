@@ -110,6 +110,12 @@ void func_800AAF94(struct_8018D9E0_entry*, s32);
 // code_80057C60.c
 void func_80057CE4();
 
+/* File specific defines */
+
+#define D_8018D9E0_SIZE 0x20
+#define D_8018DEE0_SIZE 0x10
+#define D_8018E118_SIZE 0xC8
+
 /* This is where I'd put my static data, if I had any */
 
 extern Mk64_Texture D_0200157C;
@@ -160,9 +166,9 @@ extern f32 D_800F24B8;
 extern f64 D_800F24C0;
 extern s32 D_80165754;
 extern s8  D_8018D9D9;
-extern struct_8018D9E0_entry D_8018D9E0[32];  // D_8018D9E0
-extern struct_8018DEE0_entry D_8018DEE0[16];  // D_8018DEE0
-extern struct_8018E118_entry D_8018E118[200]; // D_8018E118
+extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE]; // D_8018D9E0
+extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE]; // D_8018DEE0
+extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE]; // D_8018E118
 extern s8  gTextColor; // D_8018E860
 extern s8  D_8018ED91;
 extern s32 D_8018E850;
