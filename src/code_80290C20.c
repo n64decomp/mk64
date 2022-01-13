@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
+#include <common_structs.h>
 #include <defines.h>
 #include <types.h>
 
@@ -13,6 +14,9 @@ extern s32 gPrevLoadedAddress;
 extern u16 sRenderedFramebuffer;
 extern uintptr_t *gPhysicalFramebuffers[];
 extern uintptr_t gSegmentTable[];
+
+extern void func_802AAAAC(Player *);
+extern Player gPlayers[];
 
 s32 func_80290C20(Camera *camera) {
     if (camera->unk14 == 0) {
@@ -1070,8 +1074,8 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPPipeSync(gDisplayListHead++);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-    
-    
+
+
 
     switch (sp22) {
         case 1:
@@ -1249,7 +1253,7 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
             sp20 = temp_t0;
             func_802911C4();
         }
-        
+
     case 10:
         if (temp_t0 != 2) {
             func_80291198();
@@ -1345,7 +1349,7 @@ extern Gfx choco_mountain_dls[];
 
 void render_choco_mountain(struct UnkStruct_800DC5EC *arg0) {
     s32 pad[13];
-    
+
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
@@ -1357,7 +1361,7 @@ void render_choco_mountain(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCycleType(gDisplayListHead++, G_CYC_2CYCLE);
     gDPSetFogColor(gDisplayListHead++, D_801625EC, D_801625F4, D_801625F0, 0xFF);
     gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
-    
+
     gDPPipeSync(gDisplayListHead++);
     gSPSetGeometryMode(gDisplayListHead++, G_FOG);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATERGB, G_CC_PASS2);
@@ -1371,7 +1375,7 @@ void render_choco_mountain(struct UnkStruct_800DC5EC *arg0) {
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
     load_surface_map(&choco_mountain_dls, arg0);
-    
+
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_PASS2);
@@ -1402,7 +1406,7 @@ void render_bowsers_castle(struct UnkStruct_800DC5EC *arg0) {
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    
+
     D_802B87BC++;
     if (D_802B87BC > 255) {
         D_802B87BC = 0;
@@ -1429,9 +1433,9 @@ void render_banshee_boardwalk(struct UnkStruct_800DC5EC *arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
     gSPDisplayList(gDisplayListHead++, 0x07007228);
-    
+
     gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
-    
+
     gDPPipeSync(gDisplayListHead++);
 
     gSPClearGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BOTH | G_FOG |
@@ -1538,7 +1542,7 @@ void render_royal_raceway(struct UnkStruct_800DC5EC *arg0) {
     if (func_80290C20(arg0->camera) == 1) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-        gSPDisplayList(gDisplayListHead++, 0x0700B030);    
+        gSPDisplayList(gDisplayListHead++, 0x0700B030);
     }
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
@@ -1584,7 +1588,7 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC *arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
     load_surface_map(&luigi_raceway_dls, arg0);
-    
+
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     gSPDisplayList(gDisplayListHead++, 0x070000E0);
     gSPDisplayList(gDisplayListHead++, 0x07000068);
@@ -1655,9 +1659,9 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, 0x07004DF8);
     gSPDisplayList(gDisplayListHead++, 0x07005640);
     gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
-    
+
     load_surface_map(&moo_moo_farm_dls, arg0);
-    
+
     if ((temp_s0 < 14) && (temp_s0 > 10)) {
         if ((temp_s1 == 2) || (temp_s1 == 3) || (temp_s1 == 1)) {
             gSPDisplayList(gDisplayListHead++, D_06013FF8);
@@ -1732,7 +1736,7 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC *arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_FOG);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_PASS2);
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2);
-    
+
     load_surface_map(&toads_turnpike_dls, arg0);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2);
@@ -1922,7 +1926,7 @@ GLOBAL_ASM("asm/non_matchings/code_80290C20/render_wario_stadium.s")
 #endif
 
 void render_block_fort(struct UnkStruct_800DC5EC *arg0) {
-    
+
     func_802B5D64(&D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -1964,7 +1968,7 @@ extern s16 D_802B87D0;
 extern Gfx dks_jungle_parkway_dls[];
 
 void render_dks_jungle_parkway(struct UnkStruct_800DC5EC *arg0) {
-    
+
     func_802B5D64(&D_800DC610, D_802B87D4, 0, 1);
     func_802B5D64(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
 
@@ -1982,7 +1986,7 @@ void render_dks_jungle_parkway(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     load_surface_map(&dks_jungle_parkway_dls, arg0);
-    
+
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 
 }
@@ -2177,30 +2181,18 @@ void func_80295A38(struct UnkStruct_800DC5EC *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80290C20/func_80295A38.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_802AAAAC(void *); // extern
-extern ? gPlayers;
-
-void func_80295BF8(s32 arg0) {
-    void *sp18;
-    void *temp_v0;
-
-    temp_v0 = (arg0 * 0xDD8) + &gPlayers;
-    sp18 = temp_v0;
-    func_802AAAAC(temp_v0 + 0x110);
-    temp_v0->unk1BD = 0;
-    temp_v0->unk1A5 = 0;
-    temp_v0->unk1ED = 0;
-    temp_v0->unk1D5 = 0;
-    temp_v0->unk1BE = 0x1388;
-    temp_v0->unk1A6 = 0x1388;
-    temp_v0->unk1EE = 0x1388;
-    temp_v0->unk1D6 = 0x1388;
+void func_80295BF8(s32 playerIndex) {
+    Player* player = &gPlayers[playerIndex];
+    func_802AAAAC(&player->unk_110);
+    player->unk_1BD = 0;
+    player->unk_1A5 = 0;
+    player->unk_1ED = 0;
+    player->unk_1D5 = 0;
+    player->unk_1BE = 0x1388;
+    player->unk_1A6 = 0x1388;
+    player->unk_1EE = 0x1388;
+    player->unk_1D6 = 0x1388;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80290C20/func_80295BF8.s")
-#endif
 
 
 extern void func_802AF314(u16 *, s16 *, s16 *, s16 *);
