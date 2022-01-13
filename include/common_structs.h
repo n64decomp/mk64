@@ -142,7 +142,6 @@ typedef struct {
     /* 0x000A */ char unk_00A[0x2];
     /* 0x000C */ s32 unk_00C;
     /* 0x0010 */ char unk_010[0x4];
-
     /* 0x0014 */ f32 posX;
     /* 0x0018 */ f32 posY;
     /* 0x001C */ f32 posZ;
@@ -172,14 +171,14 @@ typedef struct {
     /* 0x0078 */ s16 unk_078;
     /* 0x007A */ s16 unk_07A;
     /* 0x007C */ s32 unk_07C;
-    /* 0x0080 */ f32 unk_080;
+    /* 0x0080 */ f32 boostVelocity;
     /* 0x0084 */ f32 unk_084;
     /* 0x0088 */ f32 unk_088;
     /* 0x008C */ f32 unk_08C;
     /* 0x0090 */ f32 unk_090;
     /* 0x0094 */ f32 unk_094;
     /* 0x0098 */ f32 unk_098;
-    /* 0x009C */ f32 unk_09C;
+    /* 0x009C */ f32 velocity;
     /* 0x00A0 */ f32 unk_0A0;
     /* 0x00A4 */ f32 unk_0A4;
     /* 0x00A8 */ s16 unk_0A8;
@@ -199,7 +198,7 @@ typedef struct {
     /* 0x00C8 */ s16 unk_0C8;
     /* 0x00CA */ s16 unk_0CA;
     /* 0x00CC */ char unk_0CC[0x10];
-    /* 0x00DC */ s16 unk_0DC;
+    /* 0x00DC */ s16 boostTimer;
     /* 0x00DE */ s16 unk_0DE;
     /* 0x00E0 */ s16 unk_0E0;
     /* 0x00E2 */ s16 unk_0E2;
@@ -277,7 +276,7 @@ typedef struct {
     /* 0x0208 */ f32 unk_208;
     /* 0x020C */ f32 unk_20C;
     /* 0x0210 */ f32 unk_210;
-    /* 0x0214 */ f32 unk_214;
+    /* 0x0214 */ f32 maxVelocity;
     /* 0x0218 */ f32 unk_218;
     /* 0x021C */ f32 unk_21C;
     /* 0x0220 */ s16 unk_220;
