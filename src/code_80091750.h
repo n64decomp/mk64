@@ -48,7 +48,7 @@ void func_800947B4(struct GfxPool*, s32);
 void func_80094A64(Mtx*);
 void func_80094C60();
 void func_80095574();
-Gfx *func_80098C18(Gfx*, s32, s32, s32, s32, s32, s32, u32, s32);
+Gfx *func_80098C18(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *draw_box(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *func_80098FC8(Gfx*, s32, s32, s32, s32);
 void func_80099110();
@@ -62,14 +62,12 @@ void func_80099AEC();
 void func_80099E54();
 void func_80099E60(Mk64_Texture *, s32, s32);
 void func_80099EC4();
+void func_80099A70();
 void func_8009A594(s32, s32, segment_address_t);
 void func_8009A640(s32, s32, s32, segment_address_t);
-void func_80099A70();
-segment_address_t func_8009A878(struct_8018DEE0_entry*);
-void func_800A54EC();
 void func_8009A76C(s32, s32, s32, s32);
 void func_8009A7EC(s32, s32, s32, s32, s32);
-void func_800A8250();
+segment_address_t func_8009A878(struct_8018DEE0_entry*);
 void func_8009A944(struct_8018DEE0_entry*, s32);
 Gfx *func_8009BA74(Gfx *, Mk64_Texture*, s32, s32);
 s32  func_8009C434(s32, struct_8018DEE0_entry*, s32, s32, s32);
@@ -81,6 +79,13 @@ void func_8009E258();
 void func_800A0AD0(struct_8018D9E0_entry*);
 void func_800A11D0(struct_8018D9E0_entry*, s32, s32);
 void func_800A1924(struct_8018D9E0_entry*);
+void func_800A4B38(struct_8018D9E0_entry*);
+void func_800A4BC8(struct_8018D9E0_entry*);
+void func_800A4EF8(struct_8018D9E0_entry*);
+void func_800A5084(struct_8018D9E0_entry*);
+void func_800A5360(struct_8018D9E0_entry*);
+void func_800A54EC();
+void func_800A6034(struct_8018D9E0_entry*);
 void func_800A7258(struct_8018D9E0_entry*);
 void func_800A72FC(struct_8018D9E0_entry*);
 void func_800A7448(struct_8018D9E0_entry*);
@@ -91,6 +96,7 @@ void get_time_record_minutes(s32, char*);
 void get_time_record_seconds(s32 , char*);
 void get_time_record_centiseconds(s32, char*);
 void func_800A8230();
+void func_800A8250();
 void func_800A86E8(struct_8018D9E0_entry*);
 void func_800A8E14(struct_8018D9E0_entry*);
 void func_800A8EC0(struct_8018D9E0_entry*);
@@ -99,10 +105,18 @@ void func_800AADD4(struct_8018D9E0_entry*);
 void func_800AAE18(struct_8018D9E0_entry*);
 struct_8018D9E0_entry *func_800AAEB4(s32);
 struct_8018D9E0_entry *func_800AAEF4(s32);
+struct_8018D9E0_entry *func_800AAF30(s32);
+s32 func_800AAF70(s32);
 void func_800AAF94(struct_8018D9E0_entry*, s32);
 
 // code_80057C60.c
 void func_80057CE4();
+
+/* File specific defines */
+
+#define D_8018D9E0_SIZE 0x20
+#define D_8018DEE0_SIZE 0x10
+#define D_8018E118_SIZE 0xC8
 
 /* This is where I'd put my static data, if I had any */
 
@@ -127,6 +141,7 @@ extern Gfx D_06009410[];
 extern s16 gGlyphDisplayWidth[]; // D_800EF690
 extern RGBA16 D_800E74A8[5];
 extern char *D_800E7500[9];
+extern char *D_800E7524[];
 extern char *D_800E7678[];
 extern char *D_800E76CC[4];
 extern char *D_800E76DC[4];
@@ -141,6 +156,9 @@ extern Mk64_Texture_Group *D_800E82B4[5];
 extern f32 D_800E8530;
 extern f32 D_800E8534;
 extern s8  D_800E86D0[20];
+extern f32 D_800F1F04;
+extern f32 D_800F1F08;
+extern f32 D_800F1F0C;
 extern f32 D_800F1F30;
 extern f32 D_800F24A8;
 extern f32 D_800F24AC;
@@ -150,9 +168,9 @@ extern f32 D_800F24B8;
 extern f64 D_800F24C0;
 extern s32 D_80165754;
 extern s8  D_8018D9D9;
-extern struct_8018D9E0_entry D_8018D9E0[32];  // D_8018D9E0
-extern struct_8018DEE0_entry D_8018DEE0[16];  // D_8018DEE0
-extern struct_8018E118_entry D_8018E118[200]; // D_8018E118
+extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE]; // D_8018D9E0
+extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE]; // D_8018DEE0
+extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE]; // D_8018E118
 extern s8  gTextColor; // D_8018E860
 extern s8  D_8018ED91;
 extern s32 D_8018E850;

@@ -100,9 +100,11 @@ extern Vp D_802B8880[];
 
 extern Gfx  D_0D0077A0[];
 
+extern s32  D_800DC50C;
 extern u16  D_800DC51C;
 extern s32  D_800DC52C;
-extern s32  D_800DC50C;
+extern s32  D_800DC540;
+extern u16  D_800DC5FC;
 
 extern u16  D_8015F890;
 
@@ -112,9 +114,9 @@ extern s32  D_80162DE0;
 extern s32  D_80162DE4;
 extern s32  D_80162DE8;
 
-extern s32  D_80164A28;
 extern f32  D_80164510[];
 extern s16* D_80164550;
+extern s32  D_80164A28;
 extern s16  D_80164AF0;
 
 extern s16  D_80165020[];
@@ -159,6 +161,8 @@ extern s16  D_8016557C;
 extern s16  D_8016557E;
 extern s16  D_80165580;
 extern s16  D_80165582;
+
+extern s8   D_801657E8;
 
 extern s8   D_801658FE;
 
