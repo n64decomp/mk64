@@ -8,10 +8,10 @@ glabel func_8006A50C
 /* 06B124 8006A524 000E7880 */  sll   $t7, $t6, 2
 /* 06B128 8006A528 01EE7823 */  subu  $t7, $t7, $t6
 /* 06B12C 8006A52C 000F7840 */  sll   $t7, $t7, 1
-/* 06B130 8006A530 3C198019 */  lui   $t9, %hi(D_8018D5F0) # $t9, 0x8019
+/* 06B130 8006A530 3C198019 */  lui   $t9, %hi(gPlayerBalloonStatus) # $t9, 0x8019
 /* 06B134 8006A534 00051040 */  sll   $v0, $a1, 1
 /* 06B138 8006A538 01E2C021 */  addu  $t8, $t7, $v0
-/* 06B13C 8006A53C 2739D5F0 */  addiu $t9, %lo(D_8018D5F0) # addiu $t9, $t9, -0x2a10
+/* 06B13C 8006A53C 2739D5F0 */  addiu $t9, %lo(gPlayerBalloonStatus) # addiu $t9, $t9, -0x2a10
 /* 06B140 8006A540 03194021 */  addu  $t0, $t8, $t9
 /* 06B144 8006A544 A5000000 */  sh    $zero, ($t0)
 /* 06B148 8006A548 000E4880 */  sll   $t1, $t6, 2

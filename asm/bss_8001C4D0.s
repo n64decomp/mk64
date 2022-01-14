@@ -1668,7 +1668,7 @@ glabel D_8018D530
 glabel D_8018D590
 .skip 96
 
-glabel D_8018D5F0
+glabel gPlayerBalloonStatus
 .skip 48
 
 glabel D_8018D620

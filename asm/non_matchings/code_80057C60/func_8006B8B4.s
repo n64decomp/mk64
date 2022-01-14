@@ -16,8 +16,8 @@ glabel func_8006B8B4
 /* 06C4EC 8006B8EC 032EC823 */  subu  $t9, $t9, $t6
 /* 06C4F0 8006B8F0 0019C840 */  sll   $t9, $t9, 1
 /* 06C4F4 8006B8F4 00074040 */  sll   $t0, $a3, 1
-/* 06C4F8 8006B8F8 3C0A8019 */  lui   $t2, %hi(D_8018D5F0) # $t2, 0x8019
-/* 06C4FC 8006B8FC 254AD5F0 */  addiu $t2, %lo(D_8018D5F0) # addiu $t2, $t2, -0x2a10
+/* 06C4F8 8006B8F8 3C0A8019 */  lui   $t2, %hi(gPlayerBalloonStatus) # $t2, 0x8019
+/* 06C4FC 8006B8FC 254AD5F0 */  addiu $t2, %lo(gPlayerBalloonStatus) # addiu $t2, $t2, -0x2a10
 /* 06C500 8006B900 03284821 */  addu  $t1, $t9, $t0
 /* 06C504 8006B904 012A1021 */  addu  $v0, $t1, $t2
 /* 06C508 8006B908 944B0000 */  lhu   $t3, ($v0)
