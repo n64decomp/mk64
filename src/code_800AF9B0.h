@@ -141,7 +141,6 @@ extern u32         D_8018EDBC;
 extern s8          D_8018EDE5;
 extern s8          D_8018EDE6;
 extern s8          D_8018EDE7;
-extern s8          D_8018EDEC;
 extern u8          gSoundMode; // D_8018EDF2
 extern s8          D_8018EDF3;
 extern s8          gTimeTrialDataCourseIndex; // D_8018EDF7
