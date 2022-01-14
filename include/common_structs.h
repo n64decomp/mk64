@@ -178,7 +178,7 @@ typedef struct {
     /* 0x0090 */ f32 unk_090;
     /* 0x0094 */ f32 unk_094;
     /* 0x0098 */ f32 unk_098;
-    /* 0x009C */ f32 velocity;
+    /* 0x009C */ f32 unk_09C;
     /* 0x00A0 */ f32 unk_0A0;
     /* 0x00A4 */ f32 unk_0A4;
     /* 0x00A8 */ s16 unk_0A8;
@@ -199,7 +199,7 @@ typedef struct {
     /* 0x00CA */ s16 unk_0CA;
     /* 0x00CC */ char unk_0CC[0x10];
     /* 0x00DC */ s16 boostTimer;
-    /* 0x00DE */ s16 unk_0DE;
+    /* 0x00DE */ u16 unk_0DE;
     /* 0x00E0 */ s16 unk_0E0;
     /* 0x00E2 */ s16 unk_0E2;
     /* 0x00E4 */ f32 unk_0E4;
@@ -239,7 +239,7 @@ typedef struct {
     /* 0x0198 */ f32 unk_198;
     /* 0x019C */ f32 unk_19C;
     /* 0x01A0 */ f32 unk_1A0;
-    /* 0x01A4 */ s8 unk_1A4;
+    /* 0x01A4 */ s8 frontLeftTireTerrain;
     /* 0x01A5 */ s8 unk_1A5;
     /* 0x01A6 */ s16 unk_1A6;
     /* 0x01A8 */ f32 unk_1A8;
@@ -247,7 +247,7 @@ typedef struct {
     /* 0x01B0 */ f32 unk_1B0;
     /* 0x01B4 */ f32 unk_1B4;
     /* 0x01B8 */ f32 unk_1B8;
-    /* 0x01BC */ s8 unk_1BC;
+    /* 0x01BC */ s8 frontRightTireTerrain;
     /* 0x01BD */ s8 unk_1BD;
     /* 0x01BE */ s16 unk_1BE;
     /* 0x01C0 */ f32 unk_1C0;
@@ -255,7 +255,7 @@ typedef struct {
     /* 0x01C8 */ f32 unk_1C8;
     /* 0x01CC */ f32 unk_1CC;
     /* 0x01D0 */ f32 unk_1D0;
-    /* 0x01D4 */ s8 unk_1D4;
+    /* 0x01D4 */ s8 backLeftTireTerrain;
     /* 0x01D5 */ s8 unk_1D5;
     /* 0x01D6 */ s16 unk_1D6;
     /* 0x01D8 */ f32 unk_1D8;
@@ -263,7 +263,7 @@ typedef struct {
     /* 0x01E0 */ f32 unk_1E0;
     /* 0x01E4 */ f32 unk_1E4;
     /* 0x01E8 */ f32 unk_1E8;
-    /* 0x01EC */ s8 unk_1EC;
+    /* 0x01EC */ s8 backRightTireTerrain;
     /* 0x01ED */ s8 unk_1ED;
     /* 0x01EE */ s16 unk_1EE;
     /* 0x01F0 */ f32 unk_1F0;
@@ -276,7 +276,7 @@ typedef struct {
     /* 0x0208 */ f32 unk_208;
     /* 0x020C */ f32 unk_20C;
     /* 0x0210 */ f32 unk_210;
-    /* 0x0214 */ f32 maxVelocity;
+    /* 0x0214 */ f32 unk_214;
     /* 0x0218 */ f32 unk_218;
     /* 0x021C */ f32 unk_21C;
     /* 0x0220 */ s16 unk_220;

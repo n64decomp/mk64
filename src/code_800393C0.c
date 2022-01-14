@@ -35,7 +35,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
             player->unk_084 = D_800E2400.unk_00[gCCSelection][player->characterId];
             player->unk_088 = D_800E24B4.unk_00[gCCSelection][player->characterId];
             player->unk_210 = D_800E2568.unk_00[gCCSelection][player->characterId];
-            player->maxVelocity = D_800E261C.unk_00[gCCSelection][player->characterId];
+            player->unk_214 = D_800E261C.unk_00[gCCSelection][player->characterId];
             break;
 
         // Uses 100CC values
@@ -43,14 +43,14 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
             player->unk_084 = D_800E2400.unk_00[1][player->characterId];
             player->unk_088 = D_800E24B4.unk_00[1][player->characterId];
             player->unk_210 = D_800E2568.unk_00[1][player->characterId];
-            player->maxVelocity = D_800E261C.unk_00[1][player->characterId];
+            player->unk_214 = D_800E261C.unk_00[1][player->characterId];
             break;
 
         case BATTLE:
             player->unk_084 = D_800E2400.unk_00[4][player->characterId];
             player->unk_088 = D_800E24B4.unk_00[4][player->characterId];
             player->unk_210 = D_800E2568.unk_00[4][player->characterId];
-            player->maxVelocity = D_800E261C.unk_00[4][player->characterId];
+            player->unk_214 = D_800E261C.unk_00[4][player->characterId];
             break;
     }
 
@@ -95,7 +95,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->unk_0E8 = 0.0f;
     player->unk_0A0 = 0.0f;
     player->unk_104 = 0.0f;
-    player->velocity = 0.0f;
+    player->unk_09C = 0.0f;
     player->unk_20C = 0.0f;
     player->unk_DAC = 0.0f;
     player->unk_044 = 0;
@@ -171,7 +171,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->unk_090 = 0.0f;
     player->unk_094 = 0.0f;
     player->unk_098 = 0.0f;
-    player->velocity = 0.0f;
+    player->unk_09C = 0.0f;
     player->unk_0A0 = 0.0f;
     player->unk_0A4 = 0.0f;
     player->unk_0B8 = 0.0f;
@@ -220,7 +220,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     D_80165500[idx] = 0;
     D_80165520[idx] = 0;
     D_80165540[playerIndex] = 0;
-    D_8018D900 = 0;
+    D_8018D900[0] = 0;
 
     D_801652E0[playerIndex] = 0;
     D_801652C0[playerIndex] = 0;
@@ -236,10 +236,10 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     D_801654C0[playerIndex] = 0;
     D_80165340 = 0;
 
-    player->unk_1A4 = 0;
-    player->unk_1BC = 0;
-    player->unk_1D4 = 0;
-    player->unk_1EC = 0;
+    player->frontLeftTireTerrain = 0;
+    player->frontRightTireTerrain = 0;
+    player->backLeftTireTerrain = 0;
+    player->backRightTireTerrain = 0;
     player->unk_1A5 = 0;
     player->unk_1BD = 0;
     player->unk_1D5 = 0;

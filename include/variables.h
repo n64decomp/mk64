@@ -164,6 +164,6 @@ extern s16  D_80165582;
 extern s8   D_801658FE;
 
 extern s32  D_8018D120;
-extern s32  D_8018D900;
+extern s32  D_8018D900[];
 
 #endif
