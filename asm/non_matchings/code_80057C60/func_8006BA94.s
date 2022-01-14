@@ -2,8 +2,8 @@ glabel func_8006BA94
 /* 06C694 8006BA94 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 06C698 8006BA98 AFA50024 */  sw    $a1, 0x24($sp)
 /* 06C69C 8006BA9C 83AE0027 */  lb    $t6, 0x27($sp)
-/* 06C6A0 8006BAA0 3C188019 */  lui   $t8, %hi(D_8018D5F0) # $t8, 0x8019
-/* 06C6A4 8006BAA4 2718D5F0 */  addiu $t8, %lo(D_8018D5F0) # addiu $t8, $t8, -0x2a10
+/* 06C6A0 8006BAA0 3C188019 */  lui   $t8, %hi(gPlayerBalloonStatus) # $t8, 0x8019
+/* 06C6A4 8006BAA4 2718D5F0 */  addiu $t8, %lo(gPlayerBalloonStatus) # addiu $t8, $t8, -0x2a10
 /* 06C6A8 8006BAA8 000E7880 */  sll   $t7, $t6, 2
 /* 06C6AC 8006BAAC 01EE7823 */  subu  $t7, $t7, $t6
 /* 06C6B0 8006BAB0 000F7840 */  sll   $t7, $t7, 1
@@ -41,4 +41,4 @@ glabel func_8006BA94
 /* 06C724 8006BB24 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 06C728 8006BB28 27BD0020 */  addiu $sp, $sp, 0x20
 /* 06C72C 8006BB2C 03E00008 */  jr    $ra
-/* 06C730 8006BB30 00000000 */   nop   
+/* 06C730 8006BB30 00000000 */   nop

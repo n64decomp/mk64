@@ -237,6 +237,13 @@
 #define ITEM_SUPER_MUSHROOM      15
 
 /**
+ * Balloon status
+**/
+#define BALLOON_STATUS_GONE       0
+#define BALLOON_STATUS_PRESENT    1
+#define BALLOON_STATUS_DEPARTING  2
+
+/**
  * Max representable time, 100 minutes measured in centiseconds
  */
 #define MAX_TIME 0x927C0
