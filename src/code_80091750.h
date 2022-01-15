@@ -163,6 +163,7 @@ extern char *D_800E77AC;
 extern char *D_800E77B0;
 extern char *D_800E77D8;
 extern char *D_800E77E4[0x14];
+extern char *D_800E7860[2];
 extern char *D_800E7A88[4];
 extern char *D_800E7A98;
 extern char *D_800E7A9C[2];
