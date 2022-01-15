@@ -25,11 +25,9 @@ extern Camera *camera4;
 
 
 extern void func_80020000(Player *, Camera *, u8, u8);
-extern void func_80020000(Player*, Camera*, u8, u8);
 extern void func_8002088C();
 extern void func_80020F1C();
 extern void func_80021244(Player *, u8, u8);
-extern void func_80021244(Player*, u8, u8);
 extern void func_80022BC4(Player*, s8, s32);
 extern void func_80022DB4(Player*, s8, s32);
 extern void func_800235AC(Player*, s8);
