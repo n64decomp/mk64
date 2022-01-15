@@ -47,6 +47,7 @@ void func_800947B4(struct GfxPool*, s32);
 void func_80094A64(Mtx*);
 void func_80094C60();
 void func_80095574();
+Gfx *func_800959A0(Gfx*, s32, s32, s32, s32);
 Gfx *func_80098C18(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *draw_box(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *func_80098FC8(Gfx*, s32, s32, s32, s32);
@@ -54,6 +55,7 @@ void func_80099110();
 void func_80099184(s32);
 void *segmented_to_virtual(segment_address_t);
 void *segmented_to_virtual_dupe(segment_address_t);
+Gfx *func_8009C204(Gfx*, Mk64_Texture*, s32, s32, s32);
 void func_8009CA2C();
 void func_8009CA6C(s32);
 void func_80099A94(Mk64_Texture *, s32);
@@ -79,6 +81,7 @@ void func_8009E258();
 void add_8018D9E0_entry(s32, s32, s32, s8);
 void func_800A0AD0(struct_8018D9E0_entry*);
 void func_800A11D0(struct_8018D9E0_entry*, s32, s32);
+void func_800A15EC(struct_8018D9E0_entry*);
 void func_800A1924(struct_8018D9E0_entry*);
 void func_800A4B38(struct_8018D9E0_entry*);
 void func_800A4BC8(struct_8018D9E0_entry*);
@@ -125,8 +128,9 @@ void func_80057CE4();
 
 extern Mk64_Texture D_0200157C;
 extern Mk64_Texture D_02001874;
+extern Mk64_Texture D_02001FA4;
+extern Mk64_Texture D_02004A0C;
 
-extern Gfx D_02004A0C[];
 extern Gfx D_02007650[];
 extern Gfx D_020076B0[];
 extern Gfx D_020077A8[];
@@ -143,6 +147,7 @@ extern Gfx D_06009410[];
 
 extern s16 gGlyphDisplayWidth[]; // D_800EF690
 extern RGBA16 D_800E74A8[5];
+extern RGBA16 D_800E74D0[3];
 extern char *D_800E7500[9];
 extern char *D_800E7524[];
 extern char *D_800E7678[];
@@ -154,6 +159,8 @@ extern char *D_800E77B0;
 extern char *D_800E7A88[4];
 extern char *D_800E7A98;
 extern char *D_800E7A9C[2];
+extern Mk64_Texture *D_800E7D74[0x14];
+extern Mk64_Texture *D_800E7DC4[0x17];
 extern Mk64_Animation_Part *D_800E7E34[0x14];
 extern s32 gGlyphTextureLUT[]; // D_800E7E84
 extern Mk64_Texture_Group *D_800E82B4[5];
