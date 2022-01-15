@@ -155,7 +155,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->unk_064 = 0.0f;
     player->unk_068 = 0.0f;
     player->unk_06C = 0.0f;
-    player->boostVelocity = 0.0f;
+    player->boostPower = 0.0f;
     player->unk_D9C = 0.0f;
     player->unk_DA0 = 0.0f;
     player->unk_DA8 = 0.0f;
@@ -236,10 +236,10 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     D_801654C0[playerIndex] = 0;
     D_80165340 = 0;
 
-    player->frontLeftTireTerrain = 0;
-    player->frontRightTireTerrain = 0;
-    player->backLeftTireTerrain = 0;
-    player->backRightTireTerrain = 0;
+    player->frontLeftTyreSurface = 0;
+    player->frontRightTyreSurface = 0;
+    player->backLeftTyreSurface = 0;
+    player->backRightTyreSurface = 0;
     player->unk_1A5 = 0;
     player->unk_1BD = 0;
     player->unk_1D5 = 0;
