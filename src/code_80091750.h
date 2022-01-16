@@ -2,6 +2,7 @@
 #define CODE_80091750_H
 
 #include "common_structs.h"
+#include "textures.h"
 #include "main.h"
 
 /* Function Prototypes */
@@ -53,15 +54,15 @@ Gfx *draw_box(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *func_80098FC8(Gfx*, s32, s32, s32, s32);
 void func_80099110();
 void func_80099184(s32);
-void *segmented_to_virtual(segment_address_t);
-void *segmented_to_virtual_dupe(segment_address_t);
-Gfx *func_8009C204(Gfx*, Mk64_Texture*, s32, s32, s32);
+void *segmented_to_virtual(void*);
+void *segmented_to_virtual_dupe(void*);
+Gfx *func_8009C204(Gfx*, Mk64Texture*, s32, s32, s32);
 void func_8009CA2C();
 void func_8009CA6C(s32);
-void func_80099A94(Mk64_Texture *, s32);
+void func_80099A94(Mk64Texture *, s32);
 void func_80099AEC();
 void func_80099E54();
-void func_80099E60(Mk64_Texture *, s32, s32);
+void func_80099E60(Mk64Texture *, s32, s32);
 void func_80099EC4();
 void func_80099A70();
 void func_8009A594(s32, s32, segment_address_t);
@@ -70,7 +71,7 @@ void func_8009A76C(s32, s32, s32, s32);
 void func_8009A7EC(s32, s32, s32, s32, s32);
 void func_8009A878(struct_8018DEE0_entry*);
 void func_8009A944(struct_8018DEE0_entry*, s32);
-Gfx *func_8009BA74(Gfx *, Mk64_Texture*, s32, s32);
+Gfx *func_8009BA74(Gfx *, Mk64Texture*, s32, s32);
 Gfx *func_8009BEF0(Gfx*, s32, f32, f32, s32, f32,f32);
 Gfx *func_8009C434(Gfx*, struct_8018DEE0_entry*, s32, s32, s32);
 Gfx *func_8009C708(Gfx*, struct_8018DEE0_entry *, s32, s32, s32, s32);
@@ -130,11 +131,6 @@ void func_80057CE4();
 
 /* This is where I'd put my static data, if I had any */
 
-extern Mk64_Texture D_0200157C;
-extern Mk64_Texture D_02001874;
-extern Mk64_Texture D_02001FA4;
-extern Mk64_Texture D_02004A0C;
-
 extern Gfx D_02007650[];
 extern Gfx D_020076B0[];
 extern Gfx D_020077A8[];
@@ -170,11 +166,11 @@ extern char *D_800E7860[2];
 extern char *D_800E7A88[4];
 extern char *D_800E7A98;
 extern char *D_800E7A9C[2];
-extern Mk64_Texture *D_800E7D74[0x14];
-extern Mk64_Texture *D_800E7DC4[0x17];
-extern Mk64_Animation_Part *D_800E7E34[0x14];
+extern Mk64Texture *D_800E7D74[0x14];
+extern Mk64Texture *D_800E7DC4[0x17];
+extern Mk64Animation *D_800E7E34[0x14];
 extern s32 gGlyphTextureLUT[]; // D_800E7E84
-extern Mk64_Texture_Group *D_800E82B4[5];
+extern Mk64Texture *D_800E82B4[5];
 extern f32 D_800E8530;
 extern f32 D_800E8534;
 extern s8  D_800E86D0[20];
