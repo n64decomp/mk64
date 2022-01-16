@@ -142,7 +142,6 @@ typedef struct {
     /* 0x000A */ char unk_00A[0x2];
     /* 0x000C */ s32 unk_00C;
     /* 0x0010 */ char unk_010[0x4];
-
     /* 0x0014 */ f32 posX;
     /* 0x0018 */ f32 posY;
     /* 0x001C */ f32 posZ;
@@ -172,7 +171,7 @@ typedef struct {
     /* 0x0078 */ s16 unk_078;
     /* 0x007A */ s16 unk_07A;
     /* 0x007C */ s32 unk_07C;
-    /* 0x0080 */ f32 unk_080;
+    /* 0x0080 */ f32 boostPower;
     /* 0x0084 */ f32 unk_084;
     /* 0x0088 */ f32 unk_088;
     /* 0x008C */ f32 unk_08C;
@@ -199,8 +198,8 @@ typedef struct {
     /* 0x00C8 */ s16 unk_0C8;
     /* 0x00CA */ s16 unk_0CA;
     /* 0x00CC */ char unk_0CC[0x10];
-    /* 0x00DC */ s16 unk_0DC;
-    /* 0x00DE */ s16 unk_0DE;
+    /* 0x00DC */ s16 boostTimer;
+    /* 0x00DE */ u16 unk_0DE;
     /* 0x00E0 */ s16 unk_0E0;
     /* 0x00E2 */ s16 unk_0E2;
     /* 0x00E4 */ f32 unk_0E4;
@@ -240,7 +239,7 @@ typedef struct {
     /* 0x0198 */ f32 unk_198;
     /* 0x019C */ f32 unk_19C;
     /* 0x01A0 */ f32 unk_1A0;
-    /* 0x01A4 */ s8 unk_1A4;
+    /* 0x01A4 */ s8 frontLeftTyreSurface;
     /* 0x01A5 */ s8 unk_1A5;
     /* 0x01A6 */ s16 unk_1A6;
     /* 0x01A8 */ f32 unk_1A8;
@@ -248,7 +247,7 @@ typedef struct {
     /* 0x01B0 */ f32 unk_1B0;
     /* 0x01B4 */ f32 unk_1B4;
     /* 0x01B8 */ f32 unk_1B8;
-    /* 0x01BC */ s8 unk_1BC;
+    /* 0x01BC */ s8 frontRightTyreSurface;
     /* 0x01BD */ s8 unk_1BD;
     /* 0x01BE */ s16 unk_1BE;
     /* 0x01C0 */ f32 unk_1C0;
@@ -256,7 +255,7 @@ typedef struct {
     /* 0x01C8 */ f32 unk_1C8;
     /* 0x01CC */ f32 unk_1CC;
     /* 0x01D0 */ f32 unk_1D0;
-    /* 0x01D4 */ s8 unk_1D4;
+    /* 0x01D4 */ s8 backLeftTyreSurface;
     /* 0x01D5 */ s8 unk_1D5;
     /* 0x01D6 */ s16 unk_1D6;
     /* 0x01D8 */ f32 unk_1D8;
@@ -264,7 +263,7 @@ typedef struct {
     /* 0x01E0 */ f32 unk_1E0;
     /* 0x01E4 */ f32 unk_1E4;
     /* 0x01E8 */ f32 unk_1E8;
-    /* 0x01EC */ s8 unk_1EC;
+    /* 0x01EC */ s8 backRightTyreSurface;
     /* 0x01ED */ s8 unk_1ED;
     /* 0x01EE */ s16 unk_1EE;
     /* 0x01F0 */ f32 unk_1F0;
