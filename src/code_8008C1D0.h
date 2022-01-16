@@ -25,8 +25,10 @@ void func_8008F5A4(Player*, s8);
 void func_8008F86C(Player*, s8);
 void func_8008FDA8(Player*, s8);
 void func_8008FEDC(Player*, s8);
+void func_8008FF08(Player*, s8);
 void func_8008C8C4(Player*, s8);
 void func_8008C6D0(Player*, s8);
+void func_8008D9C0(Player*); 
 void func_80090778(Player*);
 void func_80090868(Player*);
 void func_800098FC(u32, Player*);
@@ -66,13 +68,19 @@ extern f32 D_800E37D0[];
 extern f32 D_800E37F0[];
 extern f32 D_800EF568;
 extern f32 D_800EF56C;
+extern f64 D_800EF570;
+extern f32 D_800EF578;
+extern f64 D_800EF580;
 extern f64 D_800EF588;
 extern f64 D_800EF5A0;
 extern f64 D_800EF5A8;
 extern u16 D_80152308;
 extern u16 D_8015F6F8;
+extern u16 D_80164438[];
+extern u16 D_801645C8;
 extern s16 D_80165190[4][8];
 extern f32 D_80165280[];
+extern s16 D_80165320[];
 extern s32 D_80165420[];
 extern s32 D_80165440[];
 extern s32 D_80165460[];
@@ -82,7 +90,6 @@ extern s16 D_8018D920[];
 extern s32 D_8018D930[];
 extern s32 D_8018D950[];
 extern s32 D_8018D970[];
-
-
+extern s32 D_8018D990[];
 
 #endif
