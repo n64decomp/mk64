@@ -10,6 +10,7 @@ void func_8008C354(Player*, s8);
 void func_8008C528(Player*, s8);
 void func_8008C62C(Player*, s8);
 void func_8008C6D0(Player*, s8);
+void func_8008C73C(Player*, s8);
 void func_8008D0E4(Player*, s8);
 void func_8008D3B0(Player*, s8);
 void func_8008D554(Player*);
@@ -37,18 +38,20 @@ void func_800569F4(s32);
 void func_80056A40(s32, s32);
 void func_80056A94(s32, Player*);
 // code_80057C60
-void func_8006B8B4(Player*, s8); 
+void func_8006B8B4(Player*, s8);
 // code_80027D00.c
 s32  func_80031F48(Player*, float);
 // audio/external.c
-void func_800C90F4(s32, s32);
-void func_800C9060();
-void func_800C9250(s32);
+void func_800C90F4(u8, s32);
+void func_800C9060(u8, s32);
+void func_800C9250(u8);
+void func_800CA24C(u8);
 void func_800CA59C(u8);
 void func_800CA730(u8);
-void func_800CA984(s32); 
+void func_800CA984(u8);
 void func_800CAACC(u8);
 void func_800CAFC0(u8);
+void func_800CB064(u8);
 
 /* This is where I'd put my static data, if I had any */
 
@@ -65,6 +68,9 @@ extern f32 D_800EF568;
 extern f32 D_800EF56C;
 extern f64 D_800EF588;
 extern f64 D_800EF5A0;
+extern f64 D_800EF5A8;
+extern u16 D_80152308;
+extern u16 D_8015F6F8;
 extern s16 D_80165190[4][8];
 extern f32 D_80165280[];
 extern s32 D_80165420[];
@@ -76,6 +82,7 @@ extern s16 D_8018D920[];
 extern s32 D_8018D930[];
 extern s32 D_8018D950[];
 extern s32 D_8018D970[];
+
 
 
 #endif
