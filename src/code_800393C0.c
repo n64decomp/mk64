@@ -132,7 +132,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->unk_0C2 = 0;
     player->unk_0C8 = 0;
     player->unk_0CA = 0;
-    player->unk_0DC = 0;
+    player->boostTimer = 0;
     player->unk_0DE = 0;
     player->unk_0E0 = 0;
     player->unk_0E2 = 0;
@@ -155,7 +155,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->unk_064 = 0.0f;
     player->unk_068 = 0.0f;
     player->unk_06C = 0.0f;
-    player->unk_080 = 0.0f;
+    player->boostPower = 0.0f;
     player->unk_D9C = 0.0f;
     player->unk_DA0 = 0.0f;
     player->unk_DA8 = 0.0f;
@@ -220,7 +220,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     D_80165500[idx] = 0;
     D_80165520[idx] = 0;
     D_80165540[playerIndex] = 0;
-    D_8018D900 = 0;
+    D_8018D900[0] = 0;
 
     D_801652E0[playerIndex] = 0;
     D_801652C0[playerIndex] = 0;
@@ -236,10 +236,10 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     D_801654C0[playerIndex] = 0;
     D_80165340 = 0;
 
-    player->unk_1A4 = 0;
-    player->unk_1BC = 0;
-    player->unk_1D4 = 0;
-    player->unk_1EC = 0;
+    player->frontLeftTyreSurface = 0;
+    player->frontRightTyreSurface = 0;
+    player->backLeftTyreSurface = 0;
+    player->backRightTyreSurface = 0;
     player->unk_1A5 = 0;
     player->unk_1BD = 0;
     player->unk_1D5 = 0;
