@@ -10,3 +10,5 @@
 "G_.*" = "int"
 "VIRTUAL_.*" = "unsigned int"
 "PHYSICAL_.*" = "unsigned int"
+"TIME_TRIAL_.*" = "int"
+"TEXT_.*" = "int"

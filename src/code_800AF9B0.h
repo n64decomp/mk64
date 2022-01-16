@@ -34,6 +34,7 @@ void func_800B46D0();
 void func_800B4728(s32);
 void reset_save_data_grand_prix_points_and_sound_mode();
 s32  func_800B4874(s32);
+s32  func_800B639C(s32);
 s32  compute_save_data_checksum_1();
 s32  compute_save_data_checksum_2();
 void func_800B4A10();
@@ -102,7 +103,6 @@ extern s32         D_800E86F4;
 extern s8          D_800E86F8;
 extern s8          D_800E86FC;
 extern s32         gGameModeFromNumPlayersAndRowSelection[SELECTED_PLAYER_DEFINES_TOTAL][MAX_NUM_MAIN_MENU_GAME_TYPES]; // D_800F2B60. 0-4 players, 3 possible game types per player amount
-extern s16         gCupCourseOrder[NUM_CUPS][NUM_COURSES_PER_CUP]; // D_800F2BB4
 extern u8          D_800F2E60[];
 extern u8          D_800F2E64;
 extern u8          D_800F2E74;
@@ -141,7 +141,6 @@ extern u32         D_8018EDBC;
 extern s8          D_8018EDE5;
 extern s8          D_8018EDE6;
 extern s8          D_8018EDE7;
-extern s8          D_8018EDEC;
 extern u8          gSoundMode; // D_8018EDF2
 extern s8          D_8018EDF3;
 extern s8          gTimeTrialDataCourseIndex; // D_8018EDF7
