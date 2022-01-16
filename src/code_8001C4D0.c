@@ -107,7 +107,7 @@ void func_8001C4D0(f32 x, f32 y, f32 z, s16 rot, u32 arg4, s32 cameraId) {
         *(&D_80164A90 + temp_t6_2) = 0.0f;
         *(&D_80164AA0 + temp_t6_2) = 0.0f;
         temp_t3 = temp_t6_2 + &D_80164A78;
-        *temp_t3 = *(&D_800DDB30 + (D_800DC52C * 4));
+        *temp_t3 = *(&D_800DDB30 + (gActiveScreenMode * 4));
         *(&D_80164A18 + temp_t6_2) = 0;
         *(&D_80164A08 + temp_t6_2) = 0;
         *(&D_80164498 + temp_t6_2) = 0.0f;
@@ -116,7 +116,7 @@ void func_8001C4D0(f32 x, f32 y, f32 z, s16 rot, u32 arg4, s32 cameraId) {
         temp_v1 = gPlayerOne + (cameraId * 0xDD8);
         cameras[cameraId].unk2C = temp_v1->unk2E;
         cameras[cameraId].unk28 = temp_v1->unk2E;
-        temp_v0 = D_800DC52C;
+        temp_v0 = gActiveScreenMode;
         if (temp_v0 != 0) {
             if (temp_v0 != 1) {
                 if (temp_v0 != 2) {
@@ -464,7 +464,7 @@ void func_8001CCEC(void *arg0, void *arg1, void *arg2, f32 *arg3, f32 *arg4, f32
         move_f32_towards((bitwise f32) temp_a0_4, 0.0f, 0x3DCCCCCD);
         temp_v1_3 = temp_s2_2 + &D_80164A78;
         *temp_v1_3 = *temp_v1_3 - D_800ED558;
-        temp_f0_4 = *(&D_800DDB30 + (D_800DC52C * 4));
+        temp_f0_4 = *(&D_800DDB30 + (gActiveScreenMode * 4));
         phi_s2 = temp_s2_2;
         phi_v1_2 = temp_v1_3;
         if (*temp_v1_3 <= temp_f0_4) {
@@ -472,7 +472,7 @@ void func_8001CCEC(void *arg0, void *arg1, void *arg2, f32 *arg3, f32 *arg4, f32
         }
     }
     if ((arg0->unkCA & 0x100) == 0x100) {
-        temp_v0_2 = D_800DC52C;
+        temp_v0_2 = gActiveScreenMode;
         if ((temp_v0_2 == 1) || (temp_v0_2 == 2) || (temp_v0_2 == 3)) {
             temp_a0_9 = phi_s2 + &D_80164A90;
             sp38 = temp_a0_9;
@@ -811,7 +811,7 @@ void func_8001D944(void *arg0, void *arg1, void *arg2, f32 *arg3, f32 *arg4, f32
         move_f32_towards((bitwise f32) temp_a0_4, 0.0f, 0x3DCCCCCD);
         temp_v0_3 = temp_s2_2 + &D_80164A78;
         *temp_v0_3 = *temp_v0_3 - D_800ED5B0;
-        temp_f0_4 = *(&D_800DDB30 + (D_800DC52C * 4));
+        temp_f0_4 = *(&D_800DDB30 + (gActiveScreenMode * 4));
         phi_s2 = temp_s2_2;
         phi_v0_2 = temp_v0_3;
         if (*temp_v0_3 <= temp_f0_4) {
@@ -1532,7 +1532,7 @@ block_51:
         }
         break;
     }
-    temp_v0_4 = D_800DC52C;
+    temp_v0_4 = gActiveScreenMode;
     if (temp_v0_4 != 0) {
         if ((temp_v0_4 != 1) && (temp_v0_4 != 2) && (temp_v0_4 != 3)) {
             phi_f2 = sp34;
@@ -1580,7 +1580,7 @@ void func_8001F87C(s32 arg0) {
     Player *phi_a2;
     s32 phi_a1;
 
-    if (D_800DC52C == 0) {
+    if (gActiveScreenMode == 0) {
         phi_a2 = gPlayerOne;
         phi_a1 = 0;
         if (gModeSelection == GRAND_PRIX) {

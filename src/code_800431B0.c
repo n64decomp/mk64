@@ -6454,7 +6454,7 @@ void func_800514BC(void) {
     }
     phi_s3 = 8;
     phi_s1 = 0;
-    if ((gPlayerCountSelection1 == 2) && (D_800DC52C == 2)) {
+    if ((gPlayerCountSelection1 == 2) && (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL)) {
         phi_s3 = 0;
     }
     temp_s0 = phi_s3 - 1;

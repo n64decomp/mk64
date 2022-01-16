@@ -130,7 +130,7 @@ void func_80280420(void) {
     D_800DC5EC->screenStartX = 160;
     D_800DC5EC->screenStartY = 120;
     gScreenModeSelection = SCREEN_MODE_1P;
-    D_800DC52C = 0;
+    gActiveScreenMode = SCREEN_MODE_1P;
     gPrevLoadedAddress = D_8015F734;
     load_course(gCurrentCourseId);
     D_8015F730 = gPrevLoadedAddress;

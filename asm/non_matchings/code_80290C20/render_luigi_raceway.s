@@ -126,8 +126,8 @@ glabel render_luigi_raceway
 /* 0FD28C 80293C7C 24190048 */  li    $t9, 72
 /* 0FD290 80293C80 AD180000 */  sw    $t8, ($t0)
 /* 0FD294 80293C84 AD390000 */  sw    $t9, ($t1)
-/* 0FD298 80293C88 3C0B800E */  lui   $t3, %hi(D_800DC52C) # $t3, 0x800e
-/* 0FD29C 80293C8C 8D6BC52C */  lw    $t3, %lo(D_800DC52C)($t3)
+/* 0FD298 80293C88 3C0B800E */  lui   $t3, %hi(gActiveScreenMode) # $t3, 0x800e
+/* 0FD29C 80293C8C 8D6BC52C */  lw    $t3, %lo(gActiveScreenMode)($t3)
 /* 0FD2A0 80293C90 97A20022 */  lhu   $v0, 0x22($sp)
 /* 0FD2A4 80293C94 156000A5 */  bnez  $t3, .L80293F2C
 /* 0FD2A8 80293C98 2841000A */   slti  $at, $v0, 0xa
@@ -168,7 +168,7 @@ glabel render_luigi_raceway
 /* 0FD324 80293D14 00380821 */  addu  $at, $at, $t8
 /* 0FD328 80293D18 8C3893D4 */  lw    $t8, %lo(jpt_802B93D4)($at)
 /* 0FD32C 80293D1C 03000008 */  jr    $t8
-/* 0FD330 80293D20 00000000 */   nop   
+/* 0FD330 80293D20 00000000 */   nop
 glabel L80293D24
 /* 0FD334 80293D24 0002C880 */  sll   $t9, $v0, 2
 /* 0FD338 80293D28 3C0B8015 */  lui   $t3, %hi(gPhysicalFramebuffers) # 0x8015
@@ -310,4 +310,4 @@ glabel L80293ED8
 .L80293F30:
 /* 0FD540 80293F30 27BD0028 */  addiu $sp, $sp, 0x28
 /* 0FD544 80293F34 03E00008 */  jr    $ra
-/* 0FD548 80293F38 00000000 */   nop   
+/* 0FD548 80293F38 00000000 */   nop

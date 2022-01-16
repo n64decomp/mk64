@@ -2956,7 +2956,7 @@ block_9:
                 *phi_v0 = 0x6000000;
                 phi_a1 = 0x6000000;
             }
-            if (D_800DC52C == 0) {
+            if (gActiveScreenMode == 0) {
                 if (temp_f2 < D_802B96E4) {
                     temp_v0_7 = gDisplayListHead;
                     gDisplayListHead = temp_v0_7 + 8;
@@ -3027,7 +3027,7 @@ void func_8029B2E4(void *arg0, s32 arg1) {
     temp_f0 = func_802B80D0(temp_a1, arg0->unk26, 0x451C4000, (&D_80150130)[(arg0 - camera1) / 0xB8], D_802B96F0);
     temp_f2 = temp_f0;
     if (!(temp_f0 < 0.0f) && (temp_v0 = gDisplayListHead, gDisplayListHead = temp_v0 + 8, temp_v0->unk4 = -1, temp_v0->unk0 = 0xBB000001, temp_v0_2 = gDisplayListHead, gDisplayListHead = temp_v0_2 + 8, temp_v0_2->unk4 = 0x20000, temp_v0_2->unk0 = 0xB6000000, sp44 = temp_f2, func_802B5F74(&spC8, temp_a1, arg1 + 0x10), (func_802B4FF8(&spC8, 0) != 0))) {
-        if (D_800DC52C == 0) {
+        if (gActiveScreenMode == 0) {
             if (temp_f2 < D_802B96F4) {
                 temp_v0_3 = gDisplayListHead;
                 gDisplayListHead = temp_v0_3 + 8;
@@ -3104,7 +3104,7 @@ void func_8029B4E0(void *arg0, s32 arg1) {
     temp_f0 = func_802B80D0(temp_a1, arg0->unk26, 0x451C4000, (&D_80150130)[(arg0 - camera1) / 0xB8], D_802B9700);
     temp_f2 = temp_f0;
     if (!(temp_f0 < 0.0f) && (temp_v0 = gDisplayListHead, gDisplayListHead = temp_v0 + 8, temp_v0->unk4 = -1, temp_v0->unk0 = 0xBB000001, temp_v0_2 = gDisplayListHead, gDisplayListHead = temp_v0_2 + 8, temp_v0_2->unk4 = 0x20000, temp_v0_2->unk0 = 0xB6000000, sp44 = temp_f2, func_802B5F74(&spC8, temp_a1, arg1 + 0x10), func_802B5F00(&spC8, 0x3DCCCCCD), (func_802B4FF8(&spC8, 0) != 0))) {
-        if (D_800DC52C == 0) {
+        if (gActiveScreenMode == 0) {
             if (temp_f2 < D_802B9704) {
                 temp_v0_3 = gDisplayListHead;
                 gDisplayListHead = temp_v0_3 + 8;
@@ -3180,7 +3180,7 @@ void func_8029B6EC(void *arg0, s32 arg1) {
     temp_f0 = func_802B80D0(temp_a1, arg0->unk26, 0x451C4000, (&D_80150130)[(arg0 - camera1) / 0xB8], D_802B9710);
     temp_f2 = temp_f0;
     if (!(temp_f0 < 0.0f) && (temp_v0 = gDisplayListHead, gDisplayListHead = temp_v0 + 8, temp_v0->unk4 = -1, temp_v0->unk0 = 0xBB000001, temp_v0_2 = gDisplayListHead, gDisplayListHead = temp_v0_2 + 8, temp_v0_2->unk4 = 0x20000, temp_v0_2->unk0 = 0xB6000000, sp44 = temp_f2, func_802B5F74(&spC8, temp_a1, arg1 + 0x10), (func_802B4FF8(&spC8, 0) != 0))) {
-        if (D_800DC52C == 0) {
+        if (gActiveScreenMode == 0) {
             if (temp_f2 < D_802B9714) {
                 temp_v0_3 = gDisplayListHead;
                 gDisplayListHead = temp_v0_3 + 8;

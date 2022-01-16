@@ -93,9 +93,9 @@ glabel L8001C524
 /* 01D238 8001C638 E5400000 */  swc1  $f0, ($t2)
 /* 01D23C 8001C63C E4204A90 */  swc1  $f0, %lo(D_80164A90)($at)
 /* 01D240 8001C640 3C018016 */  lui   $at, %hi(D_80164AA0)
-/* 01D244 8001C644 3C04800E */  lui   $a0, %hi(D_800DC52C) # $a0, 0x800e
+/* 01D244 8001C644 3C04800E */  lui   $a0, %hi(gActiveScreenMode) # $a0, 0x800e
 /* 01D248 8001C648 002E0821 */  addu  $at, $at, $t6
-/* 01D24C 8001C64C 2484C52C */  addiu $a0, %lo(D_800DC52C) # addiu $a0, $a0, -0x3ad4
+/* 01D24C 8001C64C 2484C52C */  addiu $a0, %lo(gActiveScreenMode) # addiu $a0, $a0, -0x3ad4
 /* 01D250 8001C650 E4204AA0 */  swc1  $f0, %lo(D_80164AA0)($at)
 /* 01D254 8001C654 8C8C0000 */  lw    $t4, ($a0)
 /* 01D258 8001C658 3C01800E */  lui   $at, %hi(D_800DDB30)

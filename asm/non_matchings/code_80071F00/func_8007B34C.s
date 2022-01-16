@@ -60,8 +60,8 @@ glabel L8007B41C
 /* 07C028 8007B428 1000015C */  b     .L8007B99C
 /* 07C02C 8007B42C 02002025 */   move  $a0, $s0
 glabel L8007B430
-/* 07C030 8007B430 3C02800E */  lui   $v0, %hi(D_800DC52C) # $v0, 0x800e
-/* 07C034 8007B434 8C42C52C */  lw    $v0, %lo(D_800DC52C)($v0)
+/* 07C030 8007B430 3C02800E */  lui   $v0, %hi(gActiveScreenMode) # $v0, 0x800e
+/* 07C034 8007B434 8C42C52C */  lw    $v0, %lo(gActiveScreenMode)($v0)
 /* 07C038 8007B438 8FA90048 */  lw    $t1, 0x48($sp)
 /* 07C03C 8007B43C 24010003 */  li    $at, 3
 /* 07C040 8007B440 14400014 */  bnez  $v0, .L8007B494
@@ -246,8 +246,8 @@ glabel L8007B6D4
 /* 07C2E0 8007B6E0 100000AE */  b     .L8007B99C
 /* 07C2E4 8007B6E4 02002025 */   move  $a0, $s0
 glabel L8007B6E8
-/* 07C2E8 8007B6E8 3C02800E */  lui   $v0, %hi(D_800DC52C) # $v0, 0x800e
-/* 07C2EC 8007B6EC 8C42C52C */  lw    $v0, %lo(D_800DC52C)($v0)
+/* 07C2E8 8007B6E8 3C02800E */  lui   $v0, %hi(gActiveScreenMode) # $v0, 0x800e
+/* 07C2EC 8007B6EC 8C42C52C */  lw    $v0, %lo(gActiveScreenMode)($v0)
 /* 07C2F0 8007B6F0 8FAE0048 */  lw    $t6, 0x48($sp)
 /* 07C2F4 8007B6F4 24010003 */  li    $at, 3
 /* 07C2F8 8007B6F8 14400010 */  bnez  $v0, .L8007B73C

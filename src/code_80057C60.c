@@ -10685,7 +10685,7 @@ void func_8006AFD0(void *arg0, s8 arg1, s16 arg2, s8 arg3) {
         temp_v0_2 = (arg3 * 0xB8) + &cameras;
         temp_f20 = arg0->unk14 - temp_v0_2->unk0;
         temp_f0 = arg0->unk1C - temp_v0_2->unk8;
-        if (D_800DC52C != 3) {
+        if (gActiveScreenMode != 3) {
             sp11C = temp_t1;
             phi_f20 = sqrtf((temp_f20 * temp_f20) + (temp_f0 * temp_f0)) / 300.0f;
         } else {
@@ -11477,7 +11477,7 @@ void func_8006CEC0(void *arg0, s16 arg1, s8 arg2, s8 arg3) {
             goto block_22;
         }
 block_22:
-        temp_v0_4 = D_800DC52C;
+        temp_v0_4 = gActiveScreenMode;
         if (temp_v0_4 != 0) {
             if ((temp_v0_4 != 1) && (temp_v0_4 != 2) && (temp_v0_4 != 3)) {
                 return;
@@ -11621,14 +11621,14 @@ void func_8006D474(void *arg0, s8 arg1, s8 arg2) {
             if (temp_v0_2 != 1) {
                 if (temp_v0_2 != 6) {
 
-                } else if (D_800DC52C == 3) {
+                } else if (gActiveScreenMode == 3) {
                     if (arg2 == arg1) {
                         func_80066BAC(arg0, arg1, phi_s2, arg2);
                     }
                 } else if (arg2 == arg1) {
                     func_80066BAC(arg0, arg1, phi_s2, arg2);
                 }
-            } else if (D_800DC52C == 3) {
+            } else if (gActiveScreenMode == 3) {
                 if (arg2 == arg1) {
                     func_8006538C(arg0, arg1, phi_s2, arg2);
                 }
@@ -11639,56 +11639,56 @@ void func_8006D474(void *arg0, s8 arg1, s8 arg2) {
             switch (temp_t8_2) {                    /* switch 1 */
             case 1:                                 /* switch 1 */
             case 9:                                 /* switch 1 */
-                if (D_800DC52C == 0) {
+                if (gActiveScreenMode == 0) {
                     func_800691B8(arg0, arg1, phi_s2, arg2);
                 } else if (arg2 == arg1) {
                     func_800691B8(arg0, arg1, phi_s2, arg2);
                 }
                 break;
             case 2:                                 /* switch 1 */
-                if (D_800DC52C == 0) {
+                if (gActiveScreenMode == 0) {
                     func_800696CC(arg0, arg1, phi_s2, arg2, temp_s5->unkAD4);
                 } else if (arg2 == arg1) {
                     func_800696CC(arg0, arg1, phi_s2, arg2, temp_s5->unkAD4);
                 }
                 break;
             case 3:                                 /* switch 1 */
-                if (D_800DC52C == 0) {
+                if (gActiveScreenMode == 0) {
                     func_80067280(arg0, arg1, phi_s2, arg2);
                 } else if (arg2 == arg1) {
                     func_80067280(arg0, arg1, phi_s2, arg2);
                 }
                 break;
             case 4:                                 /* switch 1 */
-                if (D_800DC52C == 0) {
+                if (gActiveScreenMode == 0) {
                     func_80069444(arg0, arg1, phi_s2, arg2);
                 } else if (arg2 == arg1) {
                     func_80069444(arg0, arg1, phi_s2, arg2);
                 }
                 break;
             case 5:                                 /* switch 1 */
-                if (D_800DC52C == 0) {
+                if (gActiveScreenMode == 0) {
                     func_80069938(arg0, arg1, phi_s2, arg2);
                 } else if (arg2 == arg1) {
                     func_80069938(arg0, arg1, phi_s2, arg2);
                 }
                 break;
             case 6:                                 /* switch 1 */
-                if (D_800DC52C == 0) {
+                if (gActiveScreenMode == 0) {
                     func_80069BA8(arg0, arg1, phi_s2, arg2);
                 } else if (arg2 == arg1) {
                     func_80069BA8(arg0, arg1, phi_s2, arg2);
                 }
                 break;
             case 7:                                 /* switch 1 */
-                if (D_800DC52C == 0) {
+                if (gActiveScreenMode == 0) {
                     func_80069DB8(arg0, arg1, phi_s2, arg2);
                 } else if (arg2 == arg1) {
                     func_80069DB8(arg0, arg1, phi_s2, arg2);
                 }
                 break;
             case 8:                                 /* switch 1 */
-                if (D_800DC52C == 0) {
+                if (gActiveScreenMode == 0) {
                     func_80067604(arg0, arg1, phi_s2, arg2);
                 } else if (arg2 == arg1) {
                     func_80067604(arg0, arg1, phi_s2, arg2);
@@ -11698,7 +11698,7 @@ void func_8006D474(void *arg0, s8 arg1, s8 arg2) {
             temp_t6 = temp_s5->unk53A;
             switch (temp_t6) {                      /* switch 2 */
             case 1:                                 /* switch 2 */
-                if (D_800DC52C == 3) {
+                if (gActiveScreenMode == 3) {
                     if (arg2 == arg1) {
                         func_80065AB0(arg0, arg1, phi_s2, arg2);
                     }
@@ -11710,7 +11710,7 @@ void func_8006D474(void *arg0, s8 arg1, s8 arg2) {
             case 3:                                 /* switch 2 */
             case 4:                                 /* switch 2 */
             case 5:                                 /* switch 2 */
-                if (D_800DC52C == 3) {
+                if (gActiveScreenMode == 3) {
                     if (arg2 == arg1) {
                         func_80065F0C(arg0, arg1, phi_s2, arg2);
                     }
@@ -11719,7 +11719,7 @@ void func_8006D474(void *arg0, s8 arg1, s8 arg2) {
                 }
                 break;
             case 9:                                 /* switch 2 */
-                if (D_800DC52C == 3) {
+                if (gActiveScreenMode == 3) {
                     if (arg2 == arg1) {
                         func_800664E0(arg0, arg1, phi_s2, arg2);
                     }
@@ -11728,7 +11728,7 @@ void func_8006D474(void *arg0, s8 arg1, s8 arg2) {
                 }
                 break;
             case 11:                                /* switch 2 */
-                if (D_800DC52C == 3) {
+                if (gActiveScreenMode == 3) {
                     if (arg2 == arg1) {
                         func_8006A01C(arg0, arg1, phi_s2, arg2);
                     }
@@ -11802,7 +11802,7 @@ void func_8006DD3C(void *arg0, s8 arg1, s8 arg2) {
                 if (temp_v0_2 == 5) {
                     func_8006A280(arg0, arg1, phi_s0, arg2);
                 }
-            } else if (D_800DC52C == 3) {
+            } else if (gActiveScreenMode == 3) {
                 if (arg2 == arg1) {
                     func_80066998(arg0, arg1, phi_s0, arg2);
                 }
@@ -11857,7 +11857,7 @@ void func_8006E058(void) {
     s32 temp_v0_5;
     s32 phi_v0;
 
-    temp_v0 = D_800DC52C;
+    temp_v0 = gActiveScreenMode;
     if (temp_v0 != 0) {
         if ((temp_v0 != 1) && (temp_v0 != 2)) {
             if (temp_v0 != 3) {

@@ -14,7 +14,7 @@ extern u32 *D_802F1F80;
 extern u32 *D_802DFB80;
 
 extern s16 D_800DDEB0[];
-extern s32 D_800DC52C;
+extern s32 gActiveScreenMode;
 
 // Structured like a 3D pointer array
 extern u32 ***gKartTextureTable0, ***gKartTextureTable1, **gKartTextureGroup18s;
@@ -148,7 +148,7 @@ GLOBAL_ASM("asm/non_matchings/code_80027040/func_80027560.s")
 void func_80027A20(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     void *temp_s0 = (arg3 << 0xE) + (arg2 << 0xC) + (arg1 << 9) + (s32)&D_802F1F80;
 
-    switch(D_800DC52C) {
+    switch(gActiveScreenMode) {
         case 0: case 1: case 2:
             osInvalDCache(temp_s0, 0x200);
             osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[gKartPalettes[player->characterId] & 0x00FFFFFF], temp_s0, 0x200, &gDmaMesgQueue);

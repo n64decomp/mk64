@@ -39,7 +39,7 @@ extern s32 func_802A7D70(u8 *arg0, u8 *arg1);
 extern void func_802A7CF0(u32 arg0, u32 arg1);
 
 extern s32 D_800DC524;
-extern s32 D_800DC52C;
+extern s32 gActiveScreenMode;
 
 
 extern f32 D_800DC594;
@@ -170,7 +170,7 @@ u16 D_800DC51C = 0;
 u16 gEnableDebugMode = 0;
 s32 D_800DC524 = 7; // = COURSE_DATA_MENU?;
 UNUSED s32 D_800DC528 = 1;
-s32 D_800DC52C = 0;
+s32 gActiveScreenMode = SCREEN_MODE_1P;
 
 s32 gScreenModeSelection[2] = {0};
 s32 gPlayerCountSelection1 = 2;
@@ -597,7 +597,7 @@ void func_8000142C(void) {
     }
     func_802A4EF4();
 
-    switch(D_800DC52C) {
+    switch(gActiveScreenMode) {
         case 0:
             D_80150114 = 2;
             func_80005F44();
@@ -1063,25 +1063,25 @@ void thread3_video(UNUSED void *arg0) {
 
 void func_800025D4(void) {
     func_80091B78();
-    D_800DC52C = 0;
+    gActiveScreenMode = SCREEN_MODE_1P;
     func_802A4D18();
 }
 
 void func_80002600(void) {
     func_80091B78();
-    D_800DC52C = 0;
+    gActiveScreenMode = SCREEN_MODE_1P;
     func_802A4D18();
 }
 
 void func_8000262C(void) {
     func_80091B78();
-    D_800DC52C = 0;
+    gActiveScreenMode = SCREEN_MODE_1P;
     func_802A4D18();
 }
 
 void func_80002658(void) {
     func_80091B78();
-    D_800DC52C = 0;
+    gActiveScreenMode = SCREEN_MODE_1P;
     func_802A4D18();
 }
 

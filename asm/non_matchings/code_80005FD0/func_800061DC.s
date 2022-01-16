@@ -1,6 +1,6 @@
 glabel func_800061DC
-/* 006DDC 800061DC 3C02800E */  lui   $v0, %hi(D_800DC52C)
-/* 006DE0 800061E0 8C42C52C */  lw    $v0, %lo(D_800DC52C)($v0)
+/* 006DDC 800061DC 3C02800E */  lui   $v0, %hi(gActiveScreenMode)
+/* 006DE0 800061E0 8C42C52C */  lw    $v0, %lo(gActiveScreenMode)($v0)
 /* 006DE4 800061E4 27BDFFF0 */  addiu $sp, $sp, -0x10
 /* 006DE8 800061E8 F7B40008 */  sdc1  $f20, 8($sp)
 /* 006DEC 800061EC 4485A000 */  mtc1  $a1, $f20

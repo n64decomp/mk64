@@ -449,7 +449,7 @@ block_9:
     temp_t7 = gCurrentCourseId;
     switch (temp_t7) {                              /* switch 1 */
     case 2:                                         /* switch 1 */
-        if ((D_800DC52C == 0) && (sp21A >= 6) && (sp21A < 0xA) && ((sp21A != 9) || ((sp218 >= 0xA000) && (sp218 < 0xE001)))) {
+        if ((gActiveScreenMode == 0) && (sp21A >= 6) && (sp21A < 0xA) && ((sp21A != 9) || ((sp218 >= 0xA000) && (sp218 < 0xE001)))) {
             temp_v1_9 = gDisplayListHead;
             gDisplayListHead = temp_v1_9 + 8;
             temp_v1_9->words.w1 = &D_06009228;
@@ -1566,7 +1566,7 @@ extern Gfx luigi_raceway_dls[];
 
 extern s32 D_800DC5DC;
 extern s32 D_800DC5E0;
-extern s32 D_800DC52C;
+extern s32 gActiveScreenMode;
 extern s16 D_802B87D8;
 
 void render_luigi_raceway(struct UnkStruct_800DC5EC *arg0) {
@@ -1595,7 +1595,7 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC *arg0) {
 
     D_800DC5DC = 88;
     D_800DC5E0 = 72;
-    if ((D_800DC52C == 0) && (sp22 >= 10) && (sp22 < 17)) {
+    if ((gActiveScreenMode == 0) && (sp22 >= 10) && (sp22 < 17)) {
 
         phi_v0 = sRenderedFramebuffer - 1;
 
@@ -1884,7 +1884,7 @@ void render_wario_stadium(void *arg0) {
     temp_v0_14->words.w0 = 0xB7000000;
     D_800DC5DC = 0x58;
     D_800DC5E0 = 0x48;
-    if (D_800DC52C == 0) {
+    if (gActiveScreenMode == 0) {
         temp_v0_15 = sRenderedFramebuffer - 1;
         phi_v0 = temp_v0_15;
         if (temp_v0_15 < 0) {

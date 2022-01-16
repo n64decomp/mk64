@@ -1,7 +1,7 @@
 glabel func_802A7728
 /* 110D38 802A7728 27BDFFC8 */  addiu $sp, $sp, -0x38
-/* 110D3C 802A772C 3C0E800E */  lui   $t6, %hi(D_800DC52C) # $t6, 0x800e
-/* 110D40 802A7730 8DCEC52C */  lw    $t6, %lo(D_800DC52C)($t6)
+/* 110D3C 802A772C 3C0E800E */  lui   $t6, %hi(gActiveScreenMode) # $t6, 0x800e
+/* 110D40 802A7730 8DCEC52C */  lw    $t6, %lo(gActiveScreenMode)($t6)
 /* 110D44 802A7734 24010003 */  li    $at, 3
 /* 110D48 802A7738 AFBF0034 */  sw    $ra, 0x34($sp)
 /* 110D4C 802A773C AFB40030 */  sw    $s4, 0x30($sp)
@@ -37,7 +37,7 @@ glabel func_802A7728
 .L802A77AC:
 /* 110DBC 802A77AC 28410003 */  slti  $at, $v0, 3
 /* 110DC0 802A77B0 14200002 */  bnez  $at, .L802A77BC
-/* 110DC4 802A77B4 00000000 */   nop   
+/* 110DC4 802A77B4 00000000 */   nop
 /* 110DC8 802A77B8 00001025 */  move  $v0, $zero
 .L802A77BC:
 /* 110DCC 802A77BC 3C098015 */  lui   $t1, %hi(gPhysicalFramebuffers) # $t1, 0x8015

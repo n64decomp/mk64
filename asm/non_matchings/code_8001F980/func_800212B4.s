@@ -69,8 +69,8 @@ glabel func_800212B4
 /* 021FC0 800213C0 24060003 */  li    $a2, 3
 /* 021FC4 800213C4 0C008000 */  jal   func_80020000
 /* 021FC8 800213C8 00003825 */   move  $a3, $zero
-/* 021FCC 800213CC 3C19800E */  lui   $t9, %hi(D_800DC52C) # $t9, 0x800e
-/* 021FD0 800213D0 8F39C52C */  lw    $t9, %lo(D_800DC52C)($t9)
+/* 021FCC 800213CC 3C19800E */  lui   $t9, %hi(gActiveScreenMode) # $t9, 0x800e
+/* 021FD0 800213D0 8F39C52C */  lw    $t9, %lo(gActiveScreenMode)($t9)
 /* 021FD4 800213D4 24010003 */  li    $at, 3
 /* 021FD8 800213D8 3C04800E */  lui   $a0, %hi(gPlayerFive) # $a0, 0x800e
 /* 021FDC 800213DC 1321001B */  beq   $t9, $at, .L8002144C
@@ -122,8 +122,8 @@ glabel func_800212B4
 /* 022090 80021490 24050003 */  li    $a1, 3
 /* 022094 80021494 0C008491 */  jal   func_80021244
 /* 022098 80021498 00003025 */   move  $a2, $zero
-/* 02209C 8002149C 3C18800E */  lui   $t8, %hi(D_800DC52C) # $t8, 0x800e
-/* 0220A0 800214A0 8F18C52C */  lw    $t8, %lo(D_800DC52C)($t8)
+/* 02209C 8002149C 3C18800E */  lui   $t8, %hi(gActiveScreenMode) # $t8, 0x800e
+/* 0220A0 800214A0 8F18C52C */  lw    $t8, %lo(gActiveScreenMode)($t8)
 /* 0220A4 800214A4 24010003 */  li    $at, 3
 /* 0220A8 800214A8 3C04800E */  lui   $a0, %hi(gPlayerFive) # $a0, 0x800e
 /* 0220AC 800214AC 13010013 */  beq   $t8, $at, .L800214FC
@@ -175,8 +175,8 @@ glabel func_800212B4
 /* 02215C 8002155C 24050003 */  li    $a1, 3
 /* 022160 80021560 0C01B96B */  jal   func_8006E5AC
 /* 022164 80021564 00003025 */   move  $a2, $zero
-/* 022168 80021568 3C0F800E */  lui   $t7, %hi(D_800DC52C) # $t7, 0x800e
-/* 02216C 8002156C 8DEFC52C */  lw    $t7, %lo(D_800DC52C)($t7)
+/* 022168 80021568 3C0F800E */  lui   $t7, %hi(gActiveScreenMode) # $t7, 0x800e
+/* 02216C 8002156C 8DEFC52C */  lw    $t7, %lo(gActiveScreenMode)($t7)
 /* 022170 80021570 24010003 */  li    $at, 3
 /* 022174 80021574 3C04800E */  lui   $a0, %hi(gPlayerFive) # $a0, 0x800e
 /* 022178 80021578 11E10013 */  beq   $t7, $at, .L800215C8
