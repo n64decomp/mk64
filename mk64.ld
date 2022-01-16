@@ -257,7 +257,6 @@ SECTIONS
       BUILD_DIR/src/os/_Printf.o(.rodata);
       BUILD_DIR/asm/os/osSetIntMask.o(.rodata);
       BUILD_DIR/src/os/_Ldtob.o(.rodata);
-      BUILD_DIR/src/data_0DD0A0_3.inc.o(.data);
       BUILD_DIR/data/rsp.o(.data);
       BUILD_DIR/src/audio/data.o(.data);
    }
