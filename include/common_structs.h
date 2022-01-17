@@ -452,15 +452,15 @@ typedef struct {
     /* 0x0D */ s16 dY;
     /* 0x10 */ s16 size; // This size is NOT equal to width*height. Its likely the size of the compressed texture
     /* 0x12 */ s16 unused2;
-} Mk64Texture; // size = 0x14
+} mkTexture; // size = 0x14
 
 typedef struct {
-    /* 0x00 */ Mk64Texture *mk64Texture; // This should be interpreted as a segmented address
+    /* 0x00 */ mkTexture *mk64Texture; // This should be interpreted as a segmented address
     /* 0x04 */ s32 frame_length;
-} Mk64Animation; // size = 0x8
+} mkAnimation; // size = 0x8
 
 typedef struct {
-    /* 0x00 */ Mk64Animation *textureSequence;
+    /* 0x00 */ mkAnimation *textureSequence;
     /* 0x04 */ s32 sequenceIndex;    // Index in textureSequence that the animation is currently on
     /* 0x08 */ s32 frameCountDown;   // Frames left for the given animation part
     /* 0x0C */ u32 visible;          // visbile if 0x80000000, otherwise invisbile AND paused
