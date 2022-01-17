@@ -1,6 +1,6 @@
 glabel func_8001F87C
-/* 02047C 8001F87C 3C0E800E */  lui   $t6, %hi(D_800DC52C) # $t6, 0x800e
-/* 020480 8001F880 8DCEC52C */  lw    $t6, %lo(D_800DC52C)($t6)
+/* 02047C 8001F87C 3C0E800E */  lui   $t6, %hi(gActiveScreenMode) # $t6, 0x800e
+/* 020480 8001F880 8DCEC52C */  lw    $t6, %lo(gActiveScreenMode)($t6)
 /* 020484 8001F884 27BDFFF0 */  addiu $sp, $sp, -0x10
 /* 020488 8001F888 3C02800E */  lui   $v0, %hi(gPlayerOne) # $v0, 0x800e
 /* 02048C 8001F88C AFB2000C */  sw    $s2, 0xc($sp)

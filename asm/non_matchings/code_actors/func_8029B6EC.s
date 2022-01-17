@@ -56,19 +56,19 @@ glabel func_8029B6EC
 /* 104DD4 8029B7C4 24630298 */  addiu $v1, %lo(gDisplayListHead) # addiu $v1, $v1, 0x298
 /* 104DD8 8029B7C8 10400043 */  beqz  $v0, .L8029B8D8
 /* 104DDC 8029B7CC C7A20044 */   lwc1  $f2, 0x44($sp)
-/* 104DE0 8029B7D0 3C0F800E */  lui   $t7, %hi(D_800DC52C) # $t7, 0x800e
-/* 104DE4 8029B7D4 8DEFC52C */  lw    $t7, %lo(D_800DC52C)($t7)
+/* 104DE0 8029B7D0 3C0F800E */  lui   $t7, %hi(gActiveScreenMode) # $t7, 0x800e
+/* 104DE4 8029B7D4 8DEFC52C */  lw    $t7, %lo(gActiveScreenMode)($t7)
 /* 104DE8 8029B7D8 3C01802C */  lui   $at, %hi(D_802B971C)
 /* 104DEC 8029B7DC 15E00028 */  bnez  $t7, .L8029B880
-/* 104DF0 8029B7E0 00000000 */   nop   
+/* 104DF0 8029B7E0 00000000 */   nop
 /* 104DF4 8029B7E4 3C01802C */  lui   $at, %hi(D_802B9714) # $at, 0x802c
 /* 104DF8 8029B7E8 C42A9714 */  lwc1  $f10, %lo(D_802B9714)($at)
 /* 104DFC 8029B7EC 3C190600 */  lui   $t9, 0x600
 /* 104E00 8029B7F0 3C01802C */  lui   $at, %hi(D_802B9718) # $at, 0x802c
 /* 104E04 8029B7F4 460A103C */  c.lt.s $f2, $f10
-/* 104E08 8029B7F8 00000000 */  nop   
+/* 104E08 8029B7F8 00000000 */  nop
 /* 104E0C 8029B7FC 45000009 */  bc1f  .L8029B824
-/* 104E10 8029B800 00000000 */   nop   
+/* 104E10 8029B800 00000000 */   nop
 /* 104E14 8029B804 8C620000 */  lw    $v0, ($v1)
 /* 104E18 8029B808 3C090900 */  lui   $t1, %hi(toads_turnpike_dl_6) # $t1, 0x900
 /* 104E1C 8029B80C 252902A0 */  addiu $t1, %lo(toads_turnpike_dl_6) # addiu $t1, $t1, 0x2a0
@@ -82,7 +82,7 @@ glabel func_8029B6EC
 /* 104E38 8029B828 3C0B0600 */  lui   $t3, 0x600
 /* 104E3C 8029B82C 3C0E0600 */  lui   $t6, 0x600
 /* 104E40 8029B830 4610103C */  c.lt.s $f2, $f16
-/* 104E44 8029B834 00000000 */  nop   
+/* 104E44 8029B834 00000000 */  nop
 /* 104E48 8029B838 4502000A */  bc1fl .L8029B864
 /* 104E4C 8029B83C 8C620000 */   lw    $v0, ($v1)
 /* 104E50 8029B840 8C620000 */  lw    $v0, ($v1)
@@ -107,7 +107,7 @@ glabel func_8029B6EC
 /* 104E94 8029B884 3C190600 */  lui   $t9, 0x600
 /* 104E98 8029B888 3C0B0600 */  lui   $t3, 0x600
 /* 104E9C 8029B88C 4612103C */  c.lt.s $f2, $f18
-/* 104EA0 8029B890 00000000 */  nop   
+/* 104EA0 8029B890 00000000 */  nop
 /* 104EA4 8029B894 4502000A */  bc1fl .L8029B8C0
 /* 104EA8 8029B898 8C620000 */   lw    $v0, ($v1)
 /* 104EAC 8029B89C 8C620000 */  lw    $v0, ($v1)
@@ -130,4 +130,4 @@ glabel func_8029B6EC
 /* 104EE8 8029B8D8 8FBF001C */  lw    $ra, 0x1c($sp)
 /* 104EEC 8029B8DC 27BD0120 */  addiu $sp, $sp, 0x120
 /* 104EF0 8029B8E0 03E00008 */  jr    $ra
-/* 104EF4 8029B8E4 00000000 */   nop   
+/* 104EF4 8029B8E4 00000000 */   nop

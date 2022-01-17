@@ -137,7 +137,7 @@ s32 func_800061DC(void *arg0, f32 arg1, s32 arg2) {
     s32 phi_v1_9;
     s32 phi_v1_10;
 
-    temp_v0 = D_800DC52C;
+    temp_v0 = gActiveScreenMode;
     temp_f0 = arg0->unk0;
     temp_f2 = arg0->unk8;
     if (temp_v0 != 0) {

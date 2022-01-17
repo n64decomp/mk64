@@ -137,8 +137,8 @@ glabel render_wario_stadium
 /* 0FE354 80294D44 240E0048 */  li    $t6, 72
 /* 0FE358 80294D48 AD590000 */  sw    $t9, ($t2)
 /* 0FE35C 80294D4C AD6E0000 */  sw    $t6, ($t3)
-/* 0FE360 80294D50 3C0F800E */  lui   $t7, %hi(D_800DC52C) # $t7, 0x800e
-/* 0FE364 80294D54 8DEFC52C */  lw    $t7, %lo(D_800DC52C)($t7)
+/* 0FE360 80294D50 3C0F800E */  lui   $t7, %hi(gActiveScreenMode) # $t7, 0x800e
+/* 0FE364 80294D54 8DEFC52C */  lw    $t7, %lo(gActiveScreenMode)($t7)
 /* 0FE368 80294D58 3C04802C */  lui   $a0, %hi(D_802B87D8) # $a0, 0x802c
 /* 0FE36C 80294D5C 3C02800E */  lui   $v0, %hi(sRenderedFramebuffer) # $v0, 0x800e
 /* 0FE370 80294D60 15E0009A */  bnez  $t7, .L80294FCC
@@ -174,7 +174,7 @@ glabel render_wario_stadium
 /* 0FE3D8 80294DC8 00380821 */  addu  $at, $at, $t8
 /* 0FE3DC 80294DCC 8C3893EC */  lw    $t8, %lo(jpt_802B93EC)($at)
 /* 0FE3E0 80294DD0 03000008 */  jr    $t8
-/* 0FE3E4 80294DD4 00000000 */   nop   
+/* 0FE3E4 80294DD4 00000000 */   nop
 glabel L80294DD8
 /* 0FE3E8 80294DD8 0002C880 */  sll   $t9, $v0, 2
 /* 0FE3EC 80294DDC 3C0E8015 */  lui   $t6, %hi(gPhysicalFramebuffers) # 0x8015
@@ -311,4 +311,4 @@ glabel L80294F7C
 .L80294FD0:
 /* 0FE5E0 80294FD0 27BD0020 */  addiu $sp, $sp, 0x20
 /* 0FE5E4 80294FD4 03E00008 */  jr    $ra
-/* 0FE5E8 80294FD8 00000000 */   nop   
+/* 0FE5E8 80294FD8 00000000 */   nop

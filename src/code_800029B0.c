@@ -143,7 +143,7 @@ void func_80002A18(void) {
     if (gModeSelection == GRAND_PRIX) {
         gCurrentCourseId = gCupCourseOrder[gCupSelection][gCupCourseSelection];
     }
-    D_800DC52C = gScreenModeSelection;
+    gActiveScreenMode = gScreenModeSelection;
     if (gCurrentCourseId != gCurrentlyLoadedCourseId) {
         D_80150120 = 0;
         gCurrentlyLoadedCourseId = gCurrentCourseId;

@@ -154,7 +154,7 @@
 #define DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA 3
 
 /**
- * Options for gScreenModeSelection
+ * Options for gScreenModeSelection and gActiveScreenMode
  */
 #define SCREEN_MODE_1P 0
 #define SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL 1

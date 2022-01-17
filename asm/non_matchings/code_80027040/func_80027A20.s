@@ -1,7 +1,7 @@
 glabel func_80027A20
 /* 028620 80027A20 27BDFFD0 */  addiu $sp, $sp, -0x30
-/* 028624 80027A24 3C02800E */  lui   $v0, %hi(D_800DC52C) # $v0, 0x800e
-/* 028628 80027A28 8C42C52C */  lw    $v0, %lo(D_800DC52C)($v0)
+/* 028624 80027A24 3C02800E */  lui   $v0, %hi(gActiveScreenMode) # $v0, 0x800e
+/* 028628 80027A28 8C42C52C */  lw    $v0, %lo(gActiveScreenMode)($v0)
 /* 02862C 80027A2C AFA60038 */  sw    $a2, 0x38($sp)
 /* 028630 80027A30 AFA7003C */  sw    $a3, 0x3c($sp)
 /* 028634 80027A34 00067600 */  sll   $t6, $a2, 0x18
@@ -112,4 +112,4 @@ glabel func_80027A20
 /* 0287CC 80027BCC 8FB00028 */  lw    $s0, 0x28($sp)
 /* 0287D0 80027BD0 27BD0030 */  addiu $sp, $sp, 0x30
 /* 0287D4 80027BD4 03E00008 */  jr    $ra
-/* 0287D8 80027BD8 00000000 */   nop   
+/* 0287D8 80027BD8 00000000 */   nop

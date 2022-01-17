@@ -285,7 +285,7 @@ void func_802A41D4(void) {
 
 void func_802A4300(void) {
 
-    if ( D_800DC52C  == 0) {
+    if (gActiveScreenMode == SCREEN_MODE_1P) {
         return;
     }
     if (D_800DC5B0 != 0) {
@@ -300,14 +300,14 @@ void func_802A4300(void) {
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     gDPPipeSync(gDisplayListHead++);
 
-    switch(D_800DC52C) {
-        case 2:
+    switch(gActiveScreenMode) {
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             gDPFillRectangle(gDisplayListHead++, 157, 0, 159, 239);
             break;
-        case 1:
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             gDPFillRectangle(gDisplayListHead++, 0, 119, 319, 121);
             break;
-        case 3:
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
             gDPFillRectangle(gDisplayListHead++, 157, 0, 159, 239);
             gDPFillRectangle(gDisplayListHead++, 0, 119, 319, 121);
             break;
@@ -761,7 +761,7 @@ extern f32 D_8015013C;
 extern f32 D_80150130;
 
 void func_802A4EF4(void) {
-    switch(D_800DC52C) {
+    switch(gActiveScreenMode) {
         case 0:
             func_8001F394(gPlayerOne, &D_80150130);
             break;
@@ -1431,7 +1431,7 @@ void func_802A74BC(void) {
         wrapper->pathCounter = 1;
 
 
-        switch(D_800DC52C) {
+        switch(gActiveScreenMode) {
             case 0:
                 if (i == 0) {
                     wrapper->screenStartX = 160;
@@ -1583,7 +1583,7 @@ extern u16 sRenderedFramebuffer;
 void func_802A7728(void) {
     s16 temp_v0;
 
-    if (D_800DC52C == 3) {
+    if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
         D_800DC5DC = 0;
     } else {
         D_800DC5DC = 128;
@@ -1606,7 +1606,7 @@ void func_802A7728(void) {
 void func_802A7940(void) {
     s16 temp_v0;
 
-    if (D_800DC52C == 3) {
+    if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
         D_800DC5DC = 0;
     } else {
         D_800DC5DC = 128;

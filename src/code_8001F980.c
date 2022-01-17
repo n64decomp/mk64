@@ -5,7 +5,7 @@
 #include "framebuffers.h"
 
 extern s32 D_800ED600, D_800ED608, D_800ED610, D_800ED618, D_800ED620, D_800ED628, D_800ED630;
-extern s32 D_800DC52C;
+extern s32 gActiveScreenMode;
 extern s32 D_800DDB58[];
 extern s32 D_800ED638;
 extern s32 D_80164A28;
@@ -136,7 +136,7 @@ u16 func_8001FB0C(void *arg0, void *arg1, f32 arg2, f32 arg3) {
     s32 temp_v0;
     s16 phi_v0;
 
-    temp_v0 = D_800DC52C;
+    temp_v0 = gActiveScreenMode;
     sp40 = 0;
     if (temp_v0 != 0) {
         if ((temp_v0 != 1) && (temp_v0 != 2)) {
@@ -416,7 +416,7 @@ void func_80020524(void) {
     func_8006E5AC(gPlayerTwo, 1, 0);
     func_8006E5AC(gPlayerThree, 2, 0);
     func_8006E5AC(gPlayerFour, 3, 0);
-    if (D_800DC52C != 3) {
+    if (gActiveScreenMode != 3) {
         func_8006E5AC(gPlayerFive, 4, 0);
         func_8006E5AC(gPlayerSix, 5, 0);
         func_8006E5AC(gPlayerSeven, 6, 0);
@@ -489,7 +489,7 @@ void func_8002088C(void) {
     func_8006E634(gPlayerTwo, 1, 1);
     func_8006E634(gPlayerThree, 2, 1);
     func_8006E634(gPlayerFour, 3, 1);
-    if (D_800DC52C != 3) {
+    if (gActiveScreenMode != 3) {
         func_8006E634(gPlayerFive, 4, 1);
         func_8006E634(gPlayerSix, 5, 1);
         func_8006E634(gPlayerSeven, 6, 1);
@@ -711,7 +711,7 @@ void func_800212B4(void) {
     func_80020000(gPlayerTwo, camera1, 1, 0);
     func_80020000(gPlayerThree, camera1, 2, 0);
     func_80020000(gPlayerFour, camera1, 3, 0);
-    if (D_800DC52C != 3) {
+    if (gActiveScreenMode != 3) {
         func_80020000(gPlayerFive, camera1, 4, 0);
         func_80020000(gPlayerSix, camera1, 5, 0);
         func_80020000(gPlayerSeven, camera1, 6, 0);
@@ -721,7 +721,7 @@ void func_800212B4(void) {
     func_80021244(gPlayerTwo, 1, 0);
     func_80021244(gPlayerThree, 2, 0);
     func_80021244(gPlayerFour, 3, 0);
-    if (D_800DC52C != 3) {
+    if (gActiveScreenMode != 3) {
         func_80021244(gPlayerFive, 4, 0);
         func_80021244(gPlayerSix, 5, 0);
         func_80021244(gPlayerSeven, 6, 0);
@@ -734,7 +734,7 @@ void func_800212B4(void) {
         func_8006E5AC(gPlayerTwo, 1, 0);
         func_8006E5AC(gPlayerThree, 2, 0);
         func_8006E5AC(gPlayerFour, 3, 0);
-        if (D_800DC52C != 3) {
+        if (gActiveScreenMode != 3) {
             func_8006E5AC(gPlayerFive, 4, 0);
             func_8006E5AC(gPlayerSix, 5, 0);
             func_8006E5AC(gPlayerSeven, 6, 0);
@@ -753,7 +753,7 @@ void func_800215DC(void) {
     func_80020000(gPlayerTwo, camera2, 1, 1);
     func_80020000(gPlayerThree, camera2, 2, 1);
     func_80020000(gPlayerFour, camera2, 3, 1);
-    if (D_800DC52C != 3) {
+    if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
         func_80020000(gPlayerFive, camera2, 4, 1);
         func_80020000(gPlayerSix, camera2, 5, 1);
         func_80020000(gPlayerSeven, camera2, 6, 1);
@@ -763,7 +763,7 @@ void func_800215DC(void) {
     func_80021244(gPlayerTwo, 1, 1);
     func_80021244(gPlayerThree, 2, 1);
     func_80021244(gPlayerFour, 3, 1);
-    if (D_800DC52C != 3) {
+    if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
         func_80021244(gPlayerFive, 4, 1);
         func_80021244(gPlayerSix, 5, 1);
         func_80021244(gPlayerSeven, 6, 1);
@@ -776,7 +776,7 @@ void func_800215DC(void) {
         func_8006E634(gPlayerTwo, 1, 1);
         func_8006E634(gPlayerThree, 2, 1);
         func_8006E634(gPlayerFour, 3, 1);
-        if (D_800DC52C != 3) {
+        if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
             func_8006E634(gPlayerFive, 4, 1);
             func_8006E634(gPlayerSix, 5, 1);
             func_8006E634(gPlayerSeven, 6, 1);
@@ -854,7 +854,7 @@ void func_80021B0C(void) {
     func_8006E7CC(gPlayerTwo, 1, 0);
     func_8006E7CC(gPlayerThree, 2, 0);
     func_8006E7CC(gPlayerFour, 3, 0);
-    if (D_800DC52C != 3) {
+    if (gActiveScreenMode != 3) {
         func_8006E7CC(gPlayerFive, 4, 0);
         func_8006E7CC(gPlayerSix, 5, 0);
         func_8006E7CC(gPlayerSeven, 6, 0);
@@ -888,7 +888,7 @@ void func_80021C78(void) {
     func_8006E848(gPlayerTwo, 1, 1);
     func_8006E848(gPlayerThree, 2, 1);
     func_8006E848(gPlayerFour, 3, 1);
-    if (D_800DC52C != 3) {
+    if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
         func_8006E848(gPlayerFive, 4, 1);
         func_8006E848(gPlayerSix, 5, 1);
         func_8006E848(gPlayerSeven, 6, 1);
@@ -1107,7 +1107,7 @@ void func_8002276C(void) {
     s32 temp_v0_5;
     s32 phi_v0;
 
-    temp_v0 = D_800DC52C;
+    temp_v0 = gActiveScreenMode;
     if (temp_v0 != 0) {
         if ((temp_v0 != 1) && (temp_v0 != 2)) {
             if (temp_v0 != 3) {

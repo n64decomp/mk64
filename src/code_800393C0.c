@@ -301,8 +301,8 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
 }
 
 void func_80039AE4(void) {
-    switch (D_800DC52C) {
-        case 0:
+    switch (gActiveScreenMode) {
+        case SCREEN_MODE_1P:
             if (D_800DC50C == ENDING_SEQUENCE) {
                 D_80165578 = 0x898;
                 D_8016557A = 0;
@@ -328,8 +328,8 @@ void func_80039AE4(void) {
             }
             break;
 
-        case 1:
-        case 2:
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             if (gModeSelection == BATTLE) {
                 D_80165578 = 0x898;
                 D_8016557A = 0;
@@ -763,7 +763,7 @@ void func_8003C0F0(void) {
         case COURSE_RAINBOW_ROAD:
         case COURSE_WARIO_STADIUM:
         case COURSE_DK_JUNGLE:
-            switch (D_800DC52C) {
+            switch (gActiveScreenMode) {
                 case 0:
                     switch (gModeSelection) {
                         case GRAND_PRIX:
@@ -857,7 +857,7 @@ void func_8003C0F0(void) {
             break;
 
         case COURSE_BLOCK_FORT:
-            switch (D_800DC52C) {
+            switch (gActiveScreenMode) {
                 case 1:
                 case 2:
                     temp = 5;
@@ -896,7 +896,7 @@ void func_8003C0F0(void) {
             break;
 
         case COURSE_SKYSCRAPER:
-            switch (D_800DC52C) {
+            switch (gActiveScreenMode) {
                 case 1:
                 case 2:
                     temp = 0x1E0;
@@ -933,7 +933,7 @@ void func_8003C0F0(void) {
             break;
 
         case COURSE_DOUBLE_DECK:
-            switch (D_800DC52C) {
+            switch (gActiveScreenMode) {
                 case 1:
                 case 2:
                     temp = 0x37;
@@ -970,7 +970,7 @@ void func_8003C0F0(void) {
             break;
 
         case COURSE_BIG_DONUT:
-            switch (D_800DC52C) {
+            switch (gActiveScreenMode) {
                 case 1:
                 case 2:
                     temp = 0xC8;
@@ -1084,7 +1084,7 @@ void func_8003D080(void) {
         func_8003C0F0();
     }
     if (D_800DC51C == 0) {
-        switch (D_800DC52C) {
+        switch (gActiveScreenMode) {
             case 0:
                 switch (gModeSelection) {
                     case GRAND_PRIX:
@@ -1150,7 +1150,7 @@ void func_8003D080(void) {
                 break;
         }
     } else {
-        switch (D_800DC52C) {
+        switch (gActiveScreenMode) {
             case 0:
                 func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 3, 0);
                 break;
@@ -1173,7 +1173,7 @@ void func_8003D080(void) {
         }
     }
 
-    switch (D_800DC52C) {
+    switch (gActiveScreenMode) {
         case 0:
             func_8003CD98(gPlayerTwo, camera1, 0, 0); // sic
             func_8003CD98(gPlayerTwo, camera1, 1, 0);
