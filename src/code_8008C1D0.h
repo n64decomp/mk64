@@ -74,6 +74,8 @@ extern f64 D_800EF580;
 extern f64 D_800EF588;
 extern f64 D_800EF5A0;
 extern f64 D_800EF5A8;
+extern f32 D_800EF678;
+extern f32 D_800EF67C;
 extern u16 D_80152308;
 extern u16 D_8015F6F8;
 extern u16 D_80164438[];
