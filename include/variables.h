@@ -73,6 +73,7 @@ extern Camera *camera2;
 extern Camera *camera3;
 extern Camera *camera4;
 
+extern Player gPlayers[8];
 extern Player* gPlayerOne;
 extern Player* gPlayerTwo;
 extern Player* gPlayerThree;
