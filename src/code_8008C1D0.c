@@ -3,6 +3,7 @@
 #include "types.h"
 #include "functions.h"
 #include "variables.h"
+#include "kart_attributes.h"
 #include "code_8008C1D0.h"
 #include "code_80027D00.h"
 #include <defines.h>
@@ -1374,7 +1375,7 @@ void func_8008EEE4(Player* player, s8 arg1) {
 }
 
 void func_8008F008(Player* player) {
-    player->unk_09C = D_800E261C.unk_00[0][player->characterId];
+    player->unk_09C = D_800E261C[0][player->characterId];
 
     if ( ( *((u16*) player->unk_0F8) != 0xFC) && ((player->unk_0BC & 8) != 8)) {
         move_f32_towards(&player->boostPower, 0, 1.0f);
