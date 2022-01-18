@@ -32,4 +32,14 @@ extern f32 gCosineTable[];
 
 #define sqr(x) ((x) * (x))
 
+void mtxf_identity(Mat4);
+void func_802B5398(Mat4, Mat4, s32);
+void func_802B5450(Mat4, Mat4, Mat4);
+void func_802B54EC(Mat4, Mat4, Mat4);
+void mtxf_translate(Mat4, Vec3f);
+void func_802B5F00(Mat4, f32);
+void func_802B71CC(Mat4, Mat4, Mat4);
+f32 sins(u16);
+f32 coss(u16);
+
 #endif // MATH_UTIL_H
