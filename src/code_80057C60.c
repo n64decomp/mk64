@@ -6,6 +6,45 @@
 #include <types.h>
 #include <config.h>
 #include <defines.h>
+#include "code_80040E50.h"
+
+void func_8001C3C4(s32);
+void func_8004E638(s32);
+void func_8004E78C(s32);
+void func_8004E800(s32);
+void func_8004E998(s32);
+void func_8004EB30(s32);
+void func_8004EB38(s32);
+void func_8004ED40(s32);
+void func_8004EE54(s32);
+void func_8004F020(s32);
+void func_8004F3E4(s32);
+void func_8004FA78(s32);
+void func_80050320(void);
+void func_800514BC(void);
+void func_800517C8(void);
+void func_80051EBC(void);
+void func_80051EF8(void);
+void func_80051F9C(void);
+void func_80052044(void);
+void func_80052080(void);
+void func_80052C60(void);
+void func_800532A4(s32);
+void func_80054BE8(s32);
+void func_80055F48(s32);
+void func_80056160(s32);
+void func_80059360(void);
+void func_80059560(s32);
+void func_80059820(s32);
+void func_8005995C(void);
+void func_8005A71C(void);
+void func_8006AFD0(s32, s32, s32, s32);
+void func_8006E420(Player*, s32, s32);
+void func_8007A948(s32);
+void func_8007BB9C(s32);
+void func_800892E0(s32);
+void func_8008C1D8(s32);
+void func_802A3730(struct UnkStruct_800DC5EC*);
 
 extern Mtx *D_80183D60;
 extern Vp D_802B8880;
@@ -14,7 +53,6 @@ extern struct GfxPool *gGfxPool;
 extern s32 gPlayerCountSelection1;
 extern s16 gCurrentCourseId;
 
-extern void func_802A3730(struct UnkStruct_800DC5EC*);
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
 extern struct UnkStruct_800DC5EC *D_800DC5F0;
 extern struct UnkStruct_800DC5EC *D_800DC5F4;
@@ -23,7 +61,17 @@ extern s32 D_8018D21C;
 extern u16 gPlayerBalloonStatus[8][3]; // 0x8018D5F0
 extern s16 gPlayerBalloonCount[];
 
-void func_8006AFD0(s32, s32, s32, s32);
+extern s32 gActiveScreenMode;
+extern s32 gModeSelection;
+extern s32 gPlayerCountSelection1;
+extern Player* gPlayerEight;
+extern Player* gPlayerFive;
+extern Player* gPlayerFour;
+extern Player* gPlayerOne;
+extern Player* gPlayerSeven;
+extern Player* gPlayerSix;
+extern Player* gPlayerThree;
+extern Player* gPlayerTwo;
 
 // UI Code?
 void func_80057C60(void) {
@@ -89,7 +137,7 @@ extern u8 D_0D0076F8;
 extern s8 D_801657C8;
 extern s8 D_801657B0;
 void func_80057FC4(u32 arg0) {
-    Gfx *temp_v1;
+    UNUSED Gfx *temp_v1;
 
 
     if ((D_801657B0 != 0)) {
@@ -129,7 +177,7 @@ void func_80058394();
 void func_8005845C();
 
 void func_80058090(u32 arg0) {
-    Gfx *temp_v1;
+    UNUSED Gfx *temp_v1;
 
     if (D_801657B0 != 0) {
         return;
@@ -247,7 +295,7 @@ void func_800587A4();                       /* extern */
 void func_8005884C();                       /* extern */
 
 void func_80058538(u32 arg0) {
-    Gfx *temp_v1;
+    UNUSED Gfx *temp_v1;
 
     if (D_801657B0 != 0) {
         return;
@@ -352,15 +400,15 @@ extern s8 D_80165898;
 void func_800588F4(s32 arg0) {
 
     switch (gCurrentCourseId) {
-        case 0:
+        case COURSE_MARIO_RACEWAY:
             break;
-        case 1:
+        case COURSE_CHOCO_MOUNTAIN:
             break;
-        case 2:
+        case COURSE_BOWSER_CASTLE:
             func_80053870(arg0);
             func_80054664(arg0);
             break;
-        case 3:
+        case COURSE_BANSHEE_BOARDWALK:
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_800527D8(arg0);
                 func_80052590(arg0);
@@ -368,18 +416,18 @@ void func_800588F4(s32 arg0) {
                 func_800524B4(arg0);
             }
             break;
-        case 4:
+        case COURSE_YOSHI_VALLEY:
             func_80055228(arg0);
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_8005568C(arg0);
             }
             break;
-        case 5:
+        case COURSE_FRAPPE_SNOWLAND:
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_8005327C(arg0);
             }
             break;
-        case 6:
+        case COURSE_KOOPA_BEACH:
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_80055528(arg0);
             }
@@ -392,59 +440,59 @@ void func_800588F4(s32 arg0) {
                 func_80055380(arg0);
             }
             break;
-        case 7:
+        case COURSE_ROYAL_RACEWAY:
             break;
-        case 8:
+        case COURSE_LUIGI_RACEWAY:
             if (D_80165898 != 0) {
                 func_80055E68(arg0);
             }
             break;
-        case 9:
+        case COURSE_MOO_MOO_FARM:
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_800550A4(arg0);
             }
             break;
-        case 10:
+        case COURSE_TOADS_TURNPIKE:
             break;
-        case 11:
+        case COURSE_KALAMARI_DESERT:
             func_800541BC(arg0);
             break;
-        case 12:
+        case COURSE_SHERBET_LAND:
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_80052E30(arg0);
             }
             func_8005592C(arg0);
             break;
-        case 13:
+        case COURSE_RAINBOW_ROAD:
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_80056188(arg0);
                 func_80055C38(arg0);
             }
             break;
-        case 14:
+        case COURSE_WARIO_STADIUM:
             break;
-        case 15:
+        case COURSE_BLOCK_FORT:
             break;
-        case 16:
+        case COURSE_SKYSCRAPER:
             break;
-        case 17:
+        case COURSE_DOUBLE_DECK:
             break;
-        case 18:
+        case COURSE_DK_JUNGLE:
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_80054414(arg0);
             }
             break;
-        }
+    }
 
-        func_80054938(arg0);
-        func_80051638(arg0);
+    func_80054938(arg0);
+    func_80051638(arg0);
 
-        if (D_80165730 != 0) {
-            func_80053E6C(arg0);
-        }
-        if (gModeSelection == BATTLE) {
-            func_80056AC0(arg0);
-        }
+    if (D_80165730 != 0) {
+        func_80053E6C(arg0);
+    }
+    if (gModeSelection == BATTLE) {
+        func_80056AC0(arg0);
+    }
 }
 
 extern u16 D_8015F894;
@@ -826,7 +874,7 @@ extern s32 D_8018D188;
 
 void func_80059488(s32 arg0) {
     if ((gModeSelection != BATTLE) && (*(&D_80165800 + arg0) == 0) && (D_8018D188 != 0)) {
-        func_8004FA78();
+        func_8004FA78(arg0);
         func_8004E78C(arg0);
     }
     func_8004E638(arg0);
@@ -1054,7 +1102,7 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005995C.s")
 #endif
 
 void func_80059A88(s32 arg0) {
-    func_80059820();
+    func_80059820(arg0);
     if (D_800DC51C == 0) {
         func_8007A948(arg0);
         func_8007BB9C(arg0);
@@ -1068,7 +1116,7 @@ void func_80059A88(s32 arg0) {
 //? func_80059A88(?); // extern
 //? func_8005A71C(); // extern
 //? func_800892E0(s32); // extern
-s32 func_8008A890(struct UnkStruct8008A890*); // extern
+s32 func_8008A890(Camera*); // extern
 //? func_8008C1D8(? *); // extern
 extern u16 D_800DC5FC;
 extern s32 D_80165678;
@@ -1079,14 +1127,14 @@ extern Camera *camera1;
 // unused?
 void func_80059AC8(void) {
     //s32 temp_s0;
-    s32 temp_v0;
+    UNUSED s32 temp_v0;
     s16 *phi_s2;
     s32 phi_s0;
 
     if (D_800DC5FC == 0) {
-        func_8008C1D8(&D_80165678);
+        func_8008C1D8((s32) &D_80165678);
         gRaceFrameCounter++;
-        phi_s2 = &D_8018CF68;
+        phi_s2 = (s16*) &D_8018CF68;
         phi_s0 = 0;
         //phi_s1 = 0;
         for (phi_s0 = 0; phi_s0 != 8; phi_s0++) {
@@ -10862,7 +10910,7 @@ void func_8006B7E4(Player *player, s32 arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006B7E4.s")
 #endif
 
-void func_8006B87C(s32 arg0, s8 playerIndex) {
+void func_8006B87C(UNUSED s32 arg0, s8 playerIndex) {
     gPlayerBalloonStatus[playerIndex][0] = BALLOON_STATUS_GONE;
     gPlayerBalloonStatus[playerIndex][1] = BALLOON_STATUS_GONE;
     gPlayerBalloonStatus[playerIndex][2] = BALLOON_STATUS_GONE;
@@ -10906,7 +10954,7 @@ void func_8006B8B4(s32 arg0, s8 playerIndex) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006B8B4.s")
 #endif
 
-void func_8006B974(s32 arg0, s8 playerIndex, s8 balloonIndex) {
+void func_8006B974(UNUSED s32 arg0, s8 playerIndex, s8 balloonIndex) {
     if (gPlayerBalloonCount[playerIndex] >= 0) {
         gPlayerBalloonStatus[playerIndex][balloonIndex] = BALLOON_STATUS_GONE;
     }
@@ -11842,113 +11890,99 @@ void func_8006DD3C(void *arg0, s8 arg1, s8 arg2) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006DD3C.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8006E420(Player *, ?, ?); // extern
-
 void func_8006E058(void) {
-    Player *temp_a0;
-    Player *temp_a0_2;
-    Player *temp_a0_3;
-    s32 temp_v0;
-    s32 temp_v0_2;
-    s32 temp_v0_3;
-    s32 temp_v0_4;
-    s32 temp_v0_5;
-    s32 phi_v0;
-
-    temp_v0 = gActiveScreenMode;
-    if (temp_v0 != 0) {
-        if ((temp_v0 != 1) && (temp_v0 != 2)) {
-            if (temp_v0 != 3) {
-                return;
-            }
-            temp_v0_2 = gModeSelection;
-            if ((temp_v0_2 == VERSUS) || (temp_v0_2 == BATTLE)) {
-                func_8006E420(gPlayerOne, 0, 0);
-                func_8006E420(gPlayerTwo, 1, 0);
-                func_8006E420(gPlayerThree, 2, 0);
-                if (gPlayerCountSelection1 == 4) {
-                    func_8006E420(gPlayerFour, 3, 0);
-                }
-            }
-            // Duplicate return node #32. Try simplifying control flow for better match
-            return;
-        }
-        temp_v0_3 = gModeSelection;
-        if (temp_v0_3 != GRAND_PRIX) {
-            if (temp_v0_3 != TIME_TRIALS) {
-                if ((temp_v0_3 != VERSUS) && (temp_v0_3 != BATTLE)) {
-                    return;
-                }
-                func_8006E420(gPlayerOne, 0, 0);
-                func_8006E420(gPlayerTwo, 1, 0);
-                return;
-            }
-            func_8006E420(gPlayerOne, 0, 0);
-            temp_a0 = gPlayerTwo;
-            if ((temp_a0->unk_000 & 0x8000) == 0x8000) {
-                func_8006E420(temp_a0, 1, 0);
-                return;
-            }
-            // Duplicate return node #32. Try simplifying control flow for better match
-            return;
-        }
-        func_8006E420(gPlayerOne, 0, 0);
-        func_8006E420(gPlayerTwo, 1, 0);
-        func_8006E420(gPlayerThree, 2, 0);
-        func_8006E420(gPlayerFour, 3, 0);
-        func_8006E420(gPlayerFive, 4, 0);
-        func_8006E420(gPlayerSix, 5, 0);
-        func_8006E420(gPlayerSeven, 6, 0);
-        func_8006E420(gPlayerEight, 7, 0);
-        return;
-    }
-    temp_v0_4 = gModeSelection;
-    if (temp_v0_4 != GRAND_PRIX) {
-        if (temp_v0_4 != TIME_TRIALS) {
-            if ((temp_v0_4 != VERSUS) && (temp_v0_4 != BATTLE)) {
-                return;
-            }
+    switch (gActiveScreenMode) { 
+    case SCREEN_MODE_1P:
+        switch (gModeSelection) {
+        case GRAND_PRIX:
             func_8006E420(gPlayerOne, 0, 0);
             func_8006E420(gPlayerTwo, 1, 0);
-            temp_v0_5 = gPlayerCountSelection1;
-            phi_v0 = temp_v0_5;
-            if (temp_v0_5 >= 3) {
+            func_8006E420(gPlayerThree, 2, 0);
+            func_8006E420(gPlayerFour, 3, 0);
+            func_8006E420(gPlayerFive, 4, 0);
+            func_8006E420(gPlayerSix, 5, 0);
+            func_8006E420(gPlayerSeven, 6, 0);
+            func_8006E420(gPlayerEight, 7, 0);
+
+            break;
+        case TIME_TRIALS:
+            func_8006E420(gPlayerOne, 0, 0);
+
+            if ((gPlayerTwo->unk_000 & 0x100) == 0x100) {
+                func_8006E420(gPlayerTwo, 1, 0);
+            }
+           
+            if ((gPlayerThree->unk_000 & 0x100) == 0x100) {
                 func_8006E420(gPlayerThree, 2, 0);
-                phi_v0 = gPlayerCountSelection1;
+                break;
             }
-            if (phi_v0 == 4) {
+
+            break;
+        case VERSUS:
+        case BATTLE:
+            func_8006E420(gPlayerOne, 0, 0);
+            func_8006E420(gPlayerTwo, 1, 0);
+       
+            if (gPlayerCountSelection1 >= 3) {
+                func_8006E420(gPlayerThree, 2, 0);
+            }
+
+            if (gPlayerCountSelection1 == 4) {
                 func_8006E420(gPlayerFour, 3, 0);
-                return;
+                break;
             }
-            // Duplicate return node #32. Try simplifying control flow for better match
-            return;
+
+            break;
         }
-        func_8006E420(gPlayerOne, 0, 0);
-        temp_a0_2 = gPlayerTwo;
-        if ((temp_a0_2->unk_000 & 0x100) == 0x100) {
-            func_8006E420(temp_a0_2, 1, 0);
+
+        break;
+    case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+    case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+        switch (gModeSelection) {     
+        case GRAND_PRIX:
+            func_8006E420(gPlayerOne, 0, 0);
+            func_8006E420(gPlayerTwo, 1, 0);
+            func_8006E420(gPlayerThree, 2, 0);
+            func_8006E420(gPlayerFour, 3, 0);
+            func_8006E420(gPlayerFive, 4, 0);
+            func_8006E420(gPlayerSix, 5, 0);
+            func_8006E420(gPlayerSeven, 6, 0);
+            func_8006E420(gPlayerEight, 7, 0);
+
+            break;
+        case VERSUS:           
+        case BATTLE:
+            func_8006E420(gPlayerOne, 0, 0);
+            func_8006E420(gPlayerTwo, 1, 0);
+
+            break;
+        case TIME_TRIALS:
+            func_8006E420(gPlayerOne, 0, 0);
+            
+            if ((gPlayerTwo->unk_000 & 0x8000) == 0x8000) {
+                func_8006E420(gPlayerTwo, 1, 0);
+                break;
+            }
+
+            break;
         }
-        temp_a0_3 = gPlayerThree;
-        if ((temp_a0_3->unk_000 & 0x100) == 0x100) {
-            func_8006E420(temp_a0_3, 2, 0);
-            return;
+
+        break;
+    case SCREEN_MODE_3P_4P_SPLITSCREEN:
+        if ((VERSUS == gModeSelection) || (BATTLE == gModeSelection)) {
+            func_8006E420(gPlayerOne, 0, 0);
+            func_8006E420(gPlayerTwo, 1, 0);
+            func_8006E420(gPlayerThree, 2, 0);
+
+            if (gPlayerCountSelection1 == 4) {
+                func_8006E420(gPlayerFour, 3, 0);
+            }
         }
-        return;
+
+        break;
     }
-    func_8006E420(gPlayerOne, 0, 0);
-    func_8006E420(gPlayerTwo, 1, 0);
-    func_8006E420(gPlayerThree, 2, 0);
-    func_8006E420(gPlayerFour, 3, 0);
-    func_8006E420(gPlayerFive, 4, 0);
-    func_8006E420(gPlayerSix, 5, 0);
-    func_8006E420(gPlayerSeven, 6, 0);
-    func_8006E420(gPlayerEight, 7, 0);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006E058.s")
-#endif
+
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
