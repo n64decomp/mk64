@@ -73,6 +73,7 @@ extern Camera *camera2;
 extern Camera *camera3;
 extern Camera *camera4;
 
+extern Player gPlayers[8];
 extern Player* gPlayerOne;
 extern Player* gPlayerTwo;
 extern Player* gPlayerThree;
@@ -105,6 +106,8 @@ extern u16  D_800DC51C;
 extern s32  gActiveScreenMode; // D_800DC52C
 extern s32  D_800DC540;
 extern u16  D_800DC5FC;
+
+extern u16  D_80150112;
 
 extern u16  D_8015F890;
 
