@@ -448,41 +448,25 @@ typedef struct {
 // The rest of the bytes are used as an offset
 typedef u32 segment_address_t;
 
-// Every Mk64_Texture must be followed by either another Mk64_Texture or an Mk64_Texture sized block of zero's
 typedef struct {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 unused1;
-    /* 0x04 */ segment_address_t textureData; // After converting to a virtual address, this should point actual texture data (i.e. something in texture_data_2.s)
+    /* 0x04 */ u64 *textureData; // This should be interpreted as a segmented address
     /* 0x08 */ s16 width;
     /* 0x0A */ s16 height;
     /* 0x0C */ s16 dX;
     /* 0x0D */ s16 dY;
     /* 0x10 */ s16 size; // This size is NOT equal to width*height. Its likely the size of the compressed texture
     /* 0x12 */ s16 unused2;
-} Mk64_Texture; // size = 0x14
+} MkTexture; // size = 0x14
 
-/**
- * A series of Mk64_Textures can be chained back-to-back in memroy to create an easily accessible group
- * This group must still be ended by an Mk64_Texture sized block of zero's
- * See D_020015CC in data_segment2.s for an example
- */
-typedef Mk64_Texture *Mk64_Texture_Group;
-
-// Every Mk64_Animation_Part must be followed by either another Mk64_Animation_Part or an Mk64_Animation_Part sized block of zero's
 typedef struct {
-    /* 0x00 */ segment_address_t mk64Texture; // After converting to a virtual address, this should point to an Mk64_Texture
+    /* 0x00 */ MkTexture *mk64Texture; // This should be interpreted as a segmented address
     /* 0x04 */ s32 frame_length;
-} Mk64_Animation_Part; // size = 0x8
-
-/**
- * A series of Mk64_Animation_Parts can be chained back-to-back to create an easily accesssible "animation"
- * This "animation" must still be ended an Mk64_Animation_Part sized block of zero's
- * See D_02006718 in data_segment2.s for an example
- */
-typedef Mk64_Animation_Part *Mk64_Animation;
+} MkAnimation; // size = 0x8
 
 typedef struct {
-    /* 0x00 */ Mk64_Animation textureSequence;
+    /* 0x00 */ MkAnimation *textureSequence;
     /* 0x04 */ s32 sequenceIndex;    // Index in textureSequence that the animation is currently on
     /* 0x08 */ s32 frameCountDown;   // Frames left for the given animation part
     /* 0x0C */ u32 visible;          // visbile if 0x80000000, otherwise invisbile AND paused
@@ -498,7 +482,7 @@ typedef struct {
 } RGBA16; // size = 0x08
 
 typedef struct {
-    /* 0x00 */ segment_address_t textureData;
+    /* 0x00 */ u64 *textureData; // This should be interpreted as a segmented address
     /**
      * Its hard to tell what exactly what this is meant to be,
      * but it appears to be used as some sort of offset/index from the address stored in D_8018D9B0.
