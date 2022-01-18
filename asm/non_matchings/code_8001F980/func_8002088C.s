@@ -54,8 +54,8 @@ glabel func_8002088C
 /* 02155C 8002095C 24050003 */  li    $a1, 3
 /* 021560 80020960 0C01B98D */  jal   func_8006E634
 /* 021564 80020964 24060001 */   li    $a2, 1
-/* 021568 80020968 3C0D800E */  lui   $t5, %hi(D_800DC52C) # $t5, 0x800e
-/* 02156C 8002096C 8DADC52C */  lw    $t5, %lo(D_800DC52C)($t5)
+/* 021568 80020968 3C0D800E */  lui   $t5, %hi(gActiveScreenMode) # $t5, 0x800e
+/* 02156C 8002096C 8DADC52C */  lw    $t5, %lo(gActiveScreenMode)($t5)
 /* 021570 80020970 24010003 */  li    $at, 3
 /* 021574 80020974 3C04800E */  lui   $a0, %hi(gPlayerFive) # $a0, 0x800e
 /* 021578 80020978 11A10013 */  beq   $t5, $at, .L800209C8

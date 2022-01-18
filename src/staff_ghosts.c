@@ -65,7 +65,7 @@ extern OSMesg gMainReceivedMesg;
 
 extern s16 gCurrentCourseId;
 extern s32 gModeSelection;
-extern s32 D_800DC52C;
+extern s32 gActiveScreenMode;
 extern u16 D_8015F890;
 extern s32 lapCount[];
 extern s32 D_8018CA78;
@@ -208,7 +208,7 @@ void func_80005310(void) {
         D_80162DEC = 0;
         D_80162DF8 = 0;
 
-        if (gModeSelection == TIME_TRIALS && D_800DC52C == 0) {
+        if (gModeSelection == TIME_TRIALS && gActiveScreenMode == SCREEN_MODE_1P) {
 
             if (D_8015F890 == 1) {
                 func_80004FB0();
@@ -548,7 +548,7 @@ void func_80005B18(void) {
         if (D_80162DEC > 100) {
             D_80162DEC = 100;
         }
-        if ((gModeSelection == TIME_TRIALS) && (D_800DC52C == 0)) {
+        if ((gModeSelection == TIME_TRIALS) && (gActiveScreenMode == 0)) {
             if ((D_80162DD4 == 0) && (lapCount[4] != 3)) {
                 func_800057DC(); //gModeSelection, &D_80162DDC, 3, &D_80162DD4);
             }
@@ -567,7 +567,7 @@ GLOBAL_ASM("asm/non_matchings/staff_ghosts/func_80005B18.s")
 #endif
 
 void func_80005E6C(void) {
-    if ((gModeSelection == TIME_TRIALS) && (gModeSelection == TIME_TRIALS) && (D_800DC52C == 0)) {
+    if ((gModeSelection == TIME_TRIALS) && (gModeSelection == TIME_TRIALS) && (gActiveScreenMode == SCREEN_MODE_1P)) {
         if ((D_80162DD8 == 0) && (D_80164394 != 3)) {
             func_800057DC(); //3
         }

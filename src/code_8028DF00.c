@@ -67,7 +67,7 @@ extern float gCourseTimer;
 extern float D_800DC594;
 extern s32 gScreenModeSelection;
 extern s32 D_8018D2AC;
-extern s32 D_800DC52C;
+extern s32 gActiveScreenMode;
 extern s16 gCurrentCourseId;
 extern u16 D_80162DD4[];
 extern u16 D_8015F890;
@@ -300,7 +300,7 @@ void func_8028E438(void) {
             D_80150148 = (f32) ((f32) temp_v0->screenWidth / (f32) temp_v0->screenHeight);
             if (phi_v1_4 == 4) {
                 D_8015F894 = 2;
-                D_800DC52C = 0;
+                gActiveScreenMode = 0;
                 D_800DC5EC->screenWidth = temp_v0->screenWidth;
                 D_800DC5EC->screenHeight = temp_v0->screenHeight;
                 D_800DC5EC->screenStartX = temp_v0->screenStartX;
@@ -435,7 +435,7 @@ void func_8028E678(void) {
                 D_800DC5F0->screenStartX = D_800DC5EC->screenStartX;
                 D_800DC5F0->screenStartY = D_800DC5EC->screenStartY;
 
-                D_800DC52C = 2;
+                gActiveScreenMode = 2;
                 D_80150148 = 1.33333337;
                 gPlayerCountSelection1 = 2;
                 func_8003DB5C();
@@ -804,7 +804,7 @@ void func_8028F588(void) {
     s16 phi_v0_7;
     s16 phi_v0_8;
 
-    temp_v0 = D_800DC52C;
+    temp_v0 = gActiveScreenMode;
     if (temp_v0 != 0) {
         if (temp_v0 != 1) {
             if (temp_v0 != 2) {
@@ -943,7 +943,7 @@ loop_2:
         temp_v0 = phi_s3->unk_000;
         if (((temp_v0 & PLAYER_HUMAN) != 0) && ((temp_v0 & PLAYER_CPU) == 0)) {
             temp_s0 = &gControllers[phi_s2];
-            if (D_800DC52C != 3) {
+            if (gActiveScreenMode != 3) {
                 temp_v0_2 = temp_s0->buttonPressed;
                 if (((temp_v0_2 & 0x20) != 0) && ((temp_s0->button & 0x10) == 0)) {
                     temp_s0->buttonPressed = temp_v0_2 & 0xFFDF;
@@ -1096,7 +1096,7 @@ void func_8028FCBC(void) {
         case 1:
             func_8028F914();
             if (D_802BA034 == 1.0f) {
-                if (D_800DC52C != 0) {
+                if (gActiveScreenMode != 0) {
                     if (gCurrentCourseId == COURSE_LUIGI_RACEWAY) {
                         func_802A7940();
                     } else if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
@@ -1437,7 +1437,7 @@ void func_80290B14(void) {
 
     func_80059C50();
 
-    switch(D_800DC52C) {
+    switch(gActiveScreenMode) {
         case 0:
             func_8001EE98(gPlayerOneCopy, camera1, 0);
             break;

@@ -6576,7 +6576,7 @@ void func_8007B34C(s32 playerId) {
         func_8007B254(temp_s0, playerId);
         break;
     case 0x2:
-        temp_v0 = D_800DC52C;
+        temp_v0 = gActiveScreenMode;
         if (temp_v0 == 0) {
             temp_v1 = (playerId * 0x84) + &D_8018CA70;
             sp28 = temp_v1;
@@ -6640,7 +6640,7 @@ void func_8007B34C(s32 playerId) {
         func_8007278C(temp_s0, 0x14);
         break;
     case 0xB:
-        temp_v0_2 = D_800DC52C;
+        temp_v0_2 = gActiveScreenMode;
         if (temp_v0_2 == 0) {
             if (func_8004106C((playerId * 0x84) + 0x48 + &D_8018CA70, 0, 4) != 0) {
                 func_80072488(temp_s0);

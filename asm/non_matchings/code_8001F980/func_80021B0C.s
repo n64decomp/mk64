@@ -21,8 +21,8 @@ glabel func_80021B0C
 /* 022758 80021B58 24050003 */  li    $a1, 3
 /* 02275C 80021B5C 0C01B9F3 */  jal   func_8006E7CC
 /* 022760 80021B60 00003025 */   move  $a2, $zero
-/* 022764 80021B64 3C0E800E */  lui   $t6, %hi(D_800DC52C) # $t6, 0x800e
-/* 022768 80021B68 8DCEC52C */  lw    $t6, %lo(D_800DC52C)($t6)
+/* 022764 80021B64 3C0E800E */  lui   $t6, %hi(gActiveScreenMode) # $t6, 0x800e
+/* 022768 80021B68 8DCEC52C */  lw    $t6, %lo(gActiveScreenMode)($t6)
 /* 02276C 80021B6C 24010003 */  li    $at, 3
 /* 022770 80021B70 3C04800E */  lui   $a0, %hi(gPlayerFive) # $a0, 0x800e
 /* 022774 80021B74 11C10013 */  beq   $t6, $at, .L80021BC4

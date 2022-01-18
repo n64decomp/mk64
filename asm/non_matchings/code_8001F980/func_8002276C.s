@@ -1,6 +1,6 @@
 glabel func_8002276C
-/* 02336C 8002276C 3C02800E */  lui   $v0, %hi(D_800DC52C) # $v0, 0x800e
-/* 023370 80022770 8C42C52C */  lw    $v0, %lo(D_800DC52C)($v0)
+/* 02336C 8002276C 3C02800E */  lui   $v0, %hi(gActiveScreenMode) # $v0, 0x800e
+/* 023370 80022770 8C42C52C */  lw    $v0, %lo(gActiveScreenMode)($v0)
 /* 023374 80022774 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 023378 80022778 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 02337C 8002277C 1040000B */  beqz  $v0, .L800227AC

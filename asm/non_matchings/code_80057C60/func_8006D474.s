@@ -24,8 +24,8 @@ glabel func_8006D474
 /* 06E0CC 8006D4CC 00809825 */  move  $s3, $a0
 /* 06E0D0 8006D4D0 144A01C3 */  bne   $v0, $t2, .L8006DBE0
 /* 06E0D4 8006D4D4 01E08025 */   move  $s0, $t7
-/* 06E0D8 8006D4D8 3C14800E */  lui   $s4, %hi(D_800DC52C) # $s4, 0x800e
-/* 06E0DC 8006D4DC 2694C52C */  addiu $s4, %lo(D_800DC52C) # addiu $s4, $s4, -0x3ad4
+/* 06E0D8 8006D4D8 3C14800E */  lui   $s4, %hi(gActiveScreenMode) # $s4, 0x800e
+/* 06E0DC 8006D4DC 2694C52C */  addiu $s4, %lo(gActiveScreenMode) # addiu $s4, $s4, -0x3ad4
 /* 06E0E0 8006D4E0 00009025 */  move  $s2, $zero
 /* 06E0E4 8006D4E4 24160003 */  li    $s6, 3
 /* 06E0E8 8006D4E8 001258C0 */  sll   $t3, $s2, 3
@@ -75,7 +75,7 @@ glabel func_8006D474
 /* 06E18C 8006D58C 8E890000 */  lw    $t1, ($s4)
 .L8006D590:
 /* 06E190 8006D590 16C9000F */  bne   $s6, $t1, .L8006D5D0
-/* 06E194 8006D594 00000000 */   nop   
+/* 06E194 8006D594 00000000 */   nop
 /* 06E198 8006D598 16110019 */  bne   $s0, $s1, .L8006D600
 /* 06E19C 8006D59C 02602025 */   move  $a0, $s3
 /* 06E1A0 8006D5A0 00112E00 */  sll   $a1, $s1, 0x18
@@ -114,7 +114,7 @@ glabel func_8006D474
 /* 06E218 8006D618 00280821 */  addu  $at, $at, $t0
 /* 06E21C 8006D61C 8C28E8E4 */  lw    $t0, %lo(jpt_800EE8E4)($at)
 /* 06E220 8006D620 01000008 */  jr    $t0
-/* 06E224 8006D624 00000000 */   nop   
+/* 06E224 8006D624 00000000 */   nop
 glabel L8006D628
 /* 06E228 8006D628 8E990000 */  lw    $t9, ($s4)
 /* 06E22C 8006D62C 00112E00 */  sll   $a1, $s1, 0x18
@@ -376,7 +376,7 @@ glabel L8006D964
 /* 06E5E8 8006D9E8 002F0821 */  addu  $at, $at, $t7
 /* 06E5EC 8006D9EC 8C2FE908 */  lw    $t7, %lo(jpt_800EE908)($at)
 /* 06E5F0 8006D9F0 01E00008 */  jr    $t7
-/* 06E5F4 8006D9F4 00000000 */   nop   
+/* 06E5F4 8006D9F4 00000000 */   nop
 glabel L8006D9F8
 /* 06E5F8 8006D9F8 8E980000 */  lw    $t8, ($s4)
 /* 06E5FC 8006D9FC 00112E00 */  sll   $a1, $s1, 0x18
@@ -473,7 +473,7 @@ glabel L8006DAE0
 glabel L8006DB54
 /* 06E754 8006DB54 8E880000 */  lw    $t0, ($s4)
 /* 06E758 8006DB58 16C8000F */  bne   $s6, $t0, .L8006DB98
-/* 06E75C 8006DB5C 00000000 */   nop   
+/* 06E75C 8006DB5C 00000000 */   nop
 /* 06E760 8006DB60 16110019 */  bne   $s0, $s1, .L8006DBC8
 /* 06E764 8006DB64 02602025 */   move  $a0, $s3
 /* 06E768 8006DB68 00112E00 */  sll   $a1, $s1, 0x18

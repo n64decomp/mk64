@@ -107,8 +107,8 @@ glabel func_8006AFD0
 /* 06BD6C 8006B16C 03381021 */  addu  $v0, $t9, $t8
 /* 06BD70 8006B170 C44E0000 */  lwc1  $f14, ($v0)
 /* 06BD74 8006B174 C44C0008 */  lwc1  $f12, 8($v0)
-/* 06BD78 8006B178 3C0E800E */  lui   $t6, %hi(D_800DC52C) # $t6, 0x800e
-/* 06BD7C 8006B17C 8DCEC52C */  lw    $t6, %lo(D_800DC52C)($t6)
+/* 06BD78 8006B178 3C0E800E */  lui   $t6, %hi(gActiveScreenMode) # $t6, 0x800e
+/* 06BD7C 8006B17C 8DCEC52C */  lw    $t6, %lo(gActiveScreenMode)($t6)
 /* 06BD80 8006B180 460E9501 */  sub.s $f20, $f18, $f14
 /* 06BD84 8006B184 24010003 */  li    $at, 3
 /* 06BD88 8006B188 11C1000B */  beq   $t6, $at, .L8006B1B8
@@ -139,9 +139,9 @@ glabel func_8006AFD0
 /* 06BDE4 8006B1E4 4600A021 */  cvt.d.s $f0, $f20
 /* 06BDE8 8006B1E8 3C01800F */  lui   $at, %hi(D_800EE850) # $at, 0x800f
 /* 06BDEC 8006B1EC 4620803E */  c.le.d $f16, $f0
-/* 06BDF0 8006B1F0 00000000 */  nop   
+/* 06BDF0 8006B1F0 00000000 */  nop
 /* 06BDF4 8006B1F4 45000003 */  bc1f  .L8006B204
-/* 06BDF8 8006B1F8 00000000 */   nop   
+/* 06BDF8 8006B1F8 00000000 */   nop
 /* 06BDFC 8006B1FC C434E850 */  lwc1  $f20, %lo(D_800EE850)($at)
 /* 06BE00 8006B200 4600A021 */  cvt.d.s $f0, $f20
 .L8006B204:
@@ -149,7 +149,7 @@ glabel func_8006AFD0
 /* 06BE08 8006B208 D432E858 */  ldc1  $f18, %lo(D_800EE858)($at)
 /* 06BE0C 8006B20C 3C01800F */  lui   $at, %hi(D_800EE860) # $at, 0x800f
 /* 06BE10 8006B210 4632003E */  c.le.d $f0, $f18
-/* 06BE14 8006B214 00000000 */  nop   
+/* 06BE14 8006B214 00000000 */  nop
 /* 06BE18 8006B218 45020003 */  bc1fl .L8006B228
 /* 06BE1C 8006B21C 87A2018A */   lh    $v0, 0x18a($sp)
 /* 06BE20 8006B220 C434E860 */  lwc1  $f20, %lo(D_800EE860)($at)
@@ -205,7 +205,7 @@ glabel func_8006AFD0
 /* 06BEE0 8006B2E0 46009107 */  neg.s $f4, $f18
 /* 06BEE4 8006B2E4 4600218D */  trunc.w.s $f6, $f4
 /* 06BEE8 8006B2E8 44183000 */  mfc1  $t8, $f6
-/* 06BEEC 8006B2EC 00000000 */  nop   
+/* 06BEEC 8006B2EC 00000000 */  nop
 /* 06BEF0 8006B2F0 A7B8012C */  sh    $t8, 0x12c($sp)
 /* 06BEF4 8006B2F4 85CF0048 */  lh    $t7, 0x48($t6)
 /* 06BEF8 8006B2F8 AFA3003C */  sw    $v1, 0x3c($sp)

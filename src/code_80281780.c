@@ -92,7 +92,7 @@ void load_ending_sequence_royalraceway(void) {
     D_800DC5EC->screenStartY = 120;
     gScreenModeSelection = SCREEN_MODE_1P;
     gPrevLoadedAddress = (s32) D_8015F734;
-    D_800DC52C = 0;
+    gActiveScreenMode = SCREEN_MODE_1P;
     gModeSelection = GRAND_PRIX;
     load_course(gCurrentCourseId);
     D_8015F730 = (s32) gPrevLoadedAddress;

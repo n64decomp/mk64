@@ -20,8 +20,8 @@ glabel func_8028F970
 /* 0F8FC4 8028F9B4 30581000 */   andi  $t8, $v0, 0x1000
 /* 0F8FC8 8028F9B8 17000054 */  bnez  $t8, .L8028FB0C
 /* 0F8FCC 8028F9BC 0012C900 */   sll   $t9, $s2, 4
-/* 0F8FD0 8028F9C0 3C09800E */  lui   $t1, %hi(D_800DC52C) # $t1, 0x800e
-/* 0F8FD4 8028F9C4 8D29C52C */  lw    $t1, %lo(D_800DC52C)($t1)
+/* 0F8FD0 8028F9C0 3C09800E */  lui   $t1, %hi(gActiveScreenMode) # $t1, 0x800e
+/* 0F8FD4 8028F9C4 8D29C52C */  lw    $t1, %lo(gActiveScreenMode)($t1)
 /* 0F8FD8 8028F9C8 3C08800F */  lui   $t0, %hi(gControllers) # $t0, 0x800f
 /* 0F8FDC 8028F9CC 25086910 */  addiu $t0, %lo(gControllers) # addiu $t0, $t0, 0x6910
 /* 0F8FE0 8028F9D0 24010003 */  li    $at, 3

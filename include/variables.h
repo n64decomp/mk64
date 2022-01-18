@@ -104,7 +104,7 @@ extern Gfx  D_0D0077A0[];
 
 extern s32  D_800DC50C;
 extern u16  D_800DC51C;
-extern s32  D_800DC52C;
+extern s32  gActiveScreenMode; // D_800DC52C
 extern s32  D_800DC540;
 extern u16  D_800DC5FC;
 

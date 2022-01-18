@@ -172,7 +172,7 @@ glabel func_80005B18
 /* 0069B0 80005DB0 8C4A0000 */  lw    $t2, ($v0)
 .L80005DB4:
 /* 0069B4 80005DB4 240D0064 */  li    $t5, 100
-/* 0069B8 80005DB8 3C0E800E */  lui   $t6, %hi(D_800DC52C) # $t6, 0x800e
+/* 0069B8 80005DB8 3C0E800E */  lui   $t6, %hi(gActiveScreenMode) # $t6, 0x800e
 /* 0069BC 80005DBC 254B0001 */  addiu $t3, $t2, 1
 /* 0069C0 80005DC0 29610065 */  slti  $at, $t3, 0x65
 /* 0069C4 80005DC4 14200002 */  bnez  $at, .L80005DD0
@@ -181,7 +181,7 @@ glabel func_80005B18
 .L80005DD0:
 /* 0069D0 80005DD0 54640023 */  bnel  $v1, $a0, .L80005E60
 /* 0069D4 80005DD4 8FBF0014 */   lw    $ra, 0x14($sp)
-/* 0069D8 80005DD8 8DCEC52C */  lw    $t6, %lo(D_800DC52C)($t6)
+/* 0069D8 80005DD8 8DCEC52C */  lw    $t6, %lo(gActiveScreenMode)($t6)
 /* 0069DC 80005DDC 3C078016 */  lui   $a3, %hi(D_80162DD4) # $a3, 0x8016
 /* 0069E0 80005DE0 24E72DD4 */  addiu $a3, %lo(D_80162DD4) # addiu $a3, $a3, 0x2dd4
 /* 0069E4 80005DE4 55C0001E */  bnel  $t6, $zero, .L80005E60
