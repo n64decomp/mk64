@@ -1,13 +1,10 @@
-
 #include "global.h"
 #include <defines.h>
+#include "kart_attributes.h"
 
 extern s16 D_80165560[];
 extern s32* D_800E3C50[];
 extern u16* D_800E3890[];
-extern struct_D_800E261C D_800E2400;
-extern struct_D_800E261C D_800E24B4;
-extern struct_D_800E261C D_800E2568;
 extern s16 D_80165340;
 
 extern Camera *camera1;
@@ -32,25 +29,25 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     switch (gModeSelection) {
         case GRAND_PRIX:
         case VERSUS:
-            player->unk_084 = D_800E2400.unk_00[gCCSelection][player->characterId];
-            player->unk_088 = D_800E24B4.unk_00[gCCSelection][player->characterId];
-            player->unk_210 = D_800E2568.unk_00[gCCSelection][player->characterId];
-            player->unk_214 = D_800E261C.unk_00[gCCSelection][player->characterId];
+            player->unk_084 = D_800E2400[gCCSelection][player->characterId];
+            player->unk_088 = D_800E24B4[gCCSelection][player->characterId];
+            player->unk_210 = D_800E2568[gCCSelection][player->characterId];
+            player->unk_214 = D_800E261C[gCCSelection][player->characterId];
             break;
 
         // Uses 100CC values
         case TIME_TRIALS:
-            player->unk_084 = D_800E2400.unk_00[1][player->characterId];
-            player->unk_088 = D_800E24B4.unk_00[1][player->characterId];
-            player->unk_210 = D_800E2568.unk_00[1][player->characterId];
-            player->unk_214 = D_800E261C.unk_00[1][player->characterId];
+            player->unk_084 = D_800E2400[1][player->characterId];
+            player->unk_088 = D_800E24B4[1][player->characterId];
+            player->unk_210 = D_800E2568[1][player->characterId];
+            player->unk_214 = D_800E261C[1][player->characterId];
             break;
 
         case BATTLE:
-            player->unk_084 = D_800E2400.unk_00[4][player->characterId];
-            player->unk_088 = D_800E24B4.unk_00[4][player->characterId];
-            player->unk_210 = D_800E2568.unk_00[4][player->characterId];
-            player->unk_214 = D_800E261C.unk_00[4][player->characterId];
+            player->unk_084 = D_800E2400[4][player->characterId];
+            player->unk_088 = D_800E24B4[4][player->characterId];
+            player->unk_210 = D_800E2568[4][player->characterId];
+            player->unk_214 = D_800E261C[4][player->characterId];
             break;
     }
 

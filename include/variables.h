@@ -87,7 +87,6 @@ extern SaveData D_8018EB90;
 
 extern Mtx D_80183D60;
 
-extern struct_D_800E261C D_800E261C;
 extern struct_D_8018CE10 D_8018CE10[];
 extern struct_D_802874D8 D_802874D8;
 extern struct_D_802DFB80 D_802DFB80[][8];

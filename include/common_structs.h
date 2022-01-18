@@ -418,10 +418,6 @@ typedef struct {
 } struct_D_802BFB80;
 
 typedef struct {
-    f32* unk_00[5];
-} struct_D_800E261C;
-
-typedef struct {
     /* 0x00 */ s32 type; // id maybe?
     /* 0x04 */ s32 unk4; // sound mode, maybe some other stuff
     /* 0x08 */ s32 unk8; // This is used but I can't tell what for
