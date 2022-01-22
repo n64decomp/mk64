@@ -6,6 +6,91 @@
 #include <types.h>
 #include <config.h>
 #include <defines.h>
+#include "code_80040E50.h"
+
+void func_8001C3C4(s32);
+void func_80041D34(void);
+void func_8004E638(s32);
+void func_8004E78C(s32);
+void func_8004E800(s32);
+void func_8004E998(s32);
+void func_8004EB30(s32);
+void func_8004EB38(s32);
+void func_8004ED40(s32);
+void func_8004EE54(s32);
+void func_8004F020(s32);
+void func_8004F3E4(s32);
+void func_8004FA78(s32);
+void func_80050320(void);
+void func_800514BC(void);
+void func_800517C8(void);
+void func_80051EBC(void);
+void func_80051EF8(void);
+void func_80051F9C(void);
+void func_80052044(void);
+void func_80052080(void);
+void func_80052C60(void);
+void func_800532A4(s32);
+void func_80054BE8(s32);
+void func_80055F48(s32);
+void func_80056160(s32);
+void func_80059360(void);
+void func_80059560(s32);
+void func_80059820(s32);
+void func_8005995C(void);
+void func_80059D00(void);
+void func_8005A14C(s32);
+void func_8005A380(void);
+void func_8005A3C0(void);
+void func_8005A71C(void);
+void func_8005A74C(void);
+void func_8005A99C(void);
+void func_8005AA34(void);
+void func_8005B914(void);
+void func_8005C360(f32);
+void func_8005C728(void);
+void func_8005CB60(s32, s32);
+void func_8005D0FC(s32);
+void func_8005D1F4(s32);
+void func_80062B18(f32*, f32*, f32*, f32, f32, f32, u16, u16);
+void func_80066998(Player*, s8, s16, s8);
+void func_80067964(Player*, s8, s32, s8, s32);
+void func_80067D3C(Player*, s8, s32, s32, f32, s32);
+void func_8006801C(Player*, s8, s32, s32, f32, s32);
+void func_80068310(Player*, s8, s32, s8, s32);
+void func_80068724(Player*, s8, s32, s8, s32);
+void func_80068AA4(Player*, s8, s32, s8, s32);
+void func_80068DA0(Player*, s8, s32, s8, s32);
+void func_8006A280(Player*, s8, s16, s8);
+void func_800658A0(Player*, s8, s16, s8);
+void func_8006B9CC(Player*, s8);
+void func_8006AFD0(Player*, s16, s8, s8);
+void func_8006C6AC(Player*, s16, s8, s8);
+void func_8006C9B8(Player*, s16, s8, s8);
+void func_8006CEC0(Player*, s16, s8, s8);
+void func_8006D194(Player*, s8, s8);
+void func_8006D474(Player*, s8, s8);
+void func_8006DC54(Player*, s8, s8);
+void func_8006DD3C(Player*, s8, s8);
+void func_8006E420(Player*, s8, s8);
+void func_800744CC(void);
+void func_80077640(void);
+void func_80078C70(s32);
+void func_8007A948(s32);
+void func_8007AA44(s32);
+void func_8007BB9C(s32);
+void func_8007C2F8(s32);
+void func_80081210(void);
+void func_80086604(void);
+void func_80086D80(void);
+void func_800892E0(s32);
+void func_8008C1D8(s32*);
+void func_8008C1E0(s32*, s32*);
+void func_8008C204(void);
+void func_802A3730(struct UnkStruct_800DC5EC*);
+
+f32 coss(u16);
+f32 sins(u16);
 
 extern Mtx *D_80183D60;
 extern Vp D_802B8880;
@@ -14,7 +99,6 @@ extern struct GfxPool *gGfxPool;
 extern s32 gPlayerCountSelection1;
 extern s16 gCurrentCourseId;
 
-extern void func_802A3730(struct UnkStruct_800DC5EC*);
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
 extern struct UnkStruct_800DC5EC *D_800DC5F0;
 extern struct UnkStruct_800DC5EC *D_800DC5F4;
@@ -23,7 +107,94 @@ extern s32 D_8018D21C;
 extern u16 gPlayerBalloonStatus[8][3]; // 0x8018D5F0
 extern s16 gPlayerBalloonCount[];
 
-void func_8006AFD0(s32, s32, s32, s32);
+extern Player* gPlayerOneCopy;
+extern u16 D_800DC5FC;
+extern f64 D_800EE648;
+extern f64 D_800EE650;
+extern f64 D_800EE658;
+extern f64 D_800EE660;
+extern f64 D_800EE668;
+extern f64 D_800EE670;
+extern f64 D_800EE678;
+extern f32 D_800EE680;
+extern f32 D_800EE684;
+extern f32 D_800EE688;
+extern f32 D_800EE68C;
+extern f64 D_800EE690;
+extern f64 D_800EE698;
+extern f64 D_800EE6A0;
+extern f64 D_800EE6A8;
+extern f64 D_800EE6B0;
+extern f64 D_800EE6B8;
+extern f64 D_800EE6C0;
+extern f64 D_800EE6D8;
+extern f64 D_800EE6E0;
+extern f64 D_800EE6E8;
+extern f64 D_800EE700;
+extern f64 D_800EE708;
+extern f64 D_800EE710;
+extern f64 D_800EE718;
+extern f64 D_800EE720;
+extern f64 D_800EE728;
+extern f64 D_800EE730;
+extern f64 D_800EE738;
+extern f64 D_800EE740;
+extern f64 D_800EE748;
+extern f64 D_800EE750;
+extern f64 D_800EE758;
+extern f64 D_800EE760;
+extern f64 D_800EE768;
+extern f64 D_800EE770;
+extern f64 D_800EE778;
+extern f32 D_800EE780;
+extern f64 D_800EE788;
+extern f64 D_800EE790;
+extern f64 D_800EE798;
+extern f64 D_800EE7A0;
+extern f64 D_800EE7A8;
+extern f32 D_800EE7B0;
+extern f64 D_800EE7B8;
+extern f32 D_800EE948;
+extern f32 D_800EE94C;
+extern s32 lapCount;
+extern s32 D_80164394;
+extern s32 D_80164398;
+extern s32 D_8016439C;
+extern s32 gPlayerPositions;
+extern f32 D_801652A0[];
+extern s32 D_801655C0;
+extern s32 D_801655F0;
+extern s32 D_80165678;
+extern s8  D_801657AE;
+extern s8  D_801657D8;
+extern s8  D_801657E8;
+extern s8  D_8018CAE0;
+extern s32 D_8018D120;
+extern s32 D_8018D170;
+extern s32 D_8018D178;
+extern s32 D_8018D188;
+extern s32 D_8018D190;
+extern s32 D_8018D1A0;
+extern s32 D_8018D1B4;
+extern s32 D_8018D1D4;
+extern s32 D_8018D1CC;
+extern s32 D_8018D1FC;
+extern s32 D_8018D204;
+extern s32 D_8018D2A4;
+extern s32 D_8018D2BC;
+extern s32 D_8018D480;
+extern s32 D_8018D484;
+extern s32 gActiveScreenMode;
+extern s32 gModeSelection;
+extern s32 gPlayerCountSelection1;
+extern Player* gPlayerEight;
+extern Player* gPlayerFive;
+extern Player* gPlayerFour;
+extern Player* gPlayerOne;
+extern Player* gPlayerSeven;
+extern Player* gPlayerSix;
+extern Player* gPlayerThree;
+extern Player* gPlayerTwo;
 
 // UI Code?
 void func_80057C60(void) {
@@ -89,7 +260,7 @@ extern u8 D_0D0076F8;
 extern s8 D_801657C8;
 extern s8 D_801657B0;
 void func_80057FC4(u32 arg0) {
-    Gfx *temp_v1;
+    UNUSED Gfx *temp_v1;
 
 
     if ((D_801657B0 != 0)) {
@@ -129,7 +300,7 @@ void func_80058394();
 void func_8005845C();
 
 void func_80058090(u32 arg0) {
-    Gfx *temp_v1;
+    UNUSED Gfx *temp_v1;
 
     if (D_801657B0 != 0) {
         return;
@@ -247,7 +418,7 @@ void func_800587A4();                       /* extern */
 void func_8005884C();                       /* extern */
 
 void func_80058538(u32 arg0) {
-    Gfx *temp_v1;
+    UNUSED Gfx *temp_v1;
 
     if (D_801657B0 != 0) {
         return;
@@ -352,15 +523,15 @@ extern s8 D_80165898;
 void func_800588F4(s32 arg0) {
 
     switch (gCurrentCourseId) {
-        case 0:
+        case COURSE_MARIO_RACEWAY:
             break;
-        case 1:
+        case COURSE_CHOCO_MOUNTAIN:
             break;
-        case 2:
+        case COURSE_BOWSER_CASTLE:
             func_80053870(arg0);
             func_80054664(arg0);
             break;
-        case 3:
+        case COURSE_BANSHEE_BOARDWALK:
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_800527D8(arg0);
                 func_80052590(arg0);
@@ -368,18 +539,18 @@ void func_800588F4(s32 arg0) {
                 func_800524B4(arg0);
             }
             break;
-        case 4:
+        case COURSE_YOSHI_VALLEY:
             func_80055228(arg0);
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_8005568C(arg0);
             }
             break;
-        case 5:
+        case COURSE_FRAPPE_SNOWLAND:
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_8005327C(arg0);
             }
             break;
-        case 6:
+        case COURSE_KOOPA_BEACH:
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_80055528(arg0);
             }
@@ -392,59 +563,59 @@ void func_800588F4(s32 arg0) {
                 func_80055380(arg0);
             }
             break;
-        case 7:
+        case COURSE_ROYAL_RACEWAY:
             break;
-        case 8:
+        case COURSE_LUIGI_RACEWAY:
             if (D_80165898 != 0) {
                 func_80055E68(arg0);
             }
             break;
-        case 9:
+        case COURSE_MOO_MOO_FARM:
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_800550A4(arg0);
             }
             break;
-        case 10:
+        case COURSE_TOADS_TURNPIKE:
             break;
-        case 11:
+        case COURSE_KALAMARI_DESERT:
             func_800541BC(arg0);
             break;
-        case 12:
+        case COURSE_SHERBET_LAND:
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_80052E30(arg0);
             }
             func_8005592C(arg0);
             break;
-        case 13:
+        case COURSE_RAINBOW_ROAD:
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_80056188(arg0);
                 func_80055C38(arg0);
             }
             break;
-        case 14:
+        case COURSE_WARIO_STADIUM:
             break;
-        case 15:
+        case COURSE_BLOCK_FORT:
             break;
-        case 16:
+        case COURSE_SKYSCRAPER:
             break;
-        case 17:
+        case COURSE_DOUBLE_DECK:
             break;
-        case 18:
+        case COURSE_DK_JUNGLE:
             if (D_800DC50C != CREDITS_SEQUENCE) {
                 func_80054414(arg0);
             }
             break;
-        }
+    }
 
-        func_80054938(arg0);
-        func_80051638(arg0);
+    func_80054938(arg0);
+    func_80051638(arg0);
 
-        if (D_80165730 != 0) {
-            func_80053E6C(arg0);
-        }
-        if (gModeSelection == BATTLE) {
-            func_80056AC0(arg0);
-        }
+    if (D_80165730 != 0) {
+        func_80053E6C(arg0);
+    }
+    if (gModeSelection == BATTLE) {
+        func_80056AC0(arg0);
+    }
 }
 
 extern u16 D_8015F894;
@@ -826,7 +997,7 @@ extern s32 D_8018D188;
 
 void func_80059488(s32 arg0) {
     if ((gModeSelection != BATTLE) && (*(&D_80165800 + arg0) == 0) && (D_8018D188 != 0)) {
-        func_8004FA78();
+        func_8004FA78(arg0);
         func_8004E78C(arg0);
     }
     func_8004E638(arg0);
@@ -1054,7 +1225,7 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005995C.s")
 #endif
 
 void func_80059A88(s32 arg0) {
-    func_80059820();
+    func_80059820(arg0);
     if (D_800DC51C == 0) {
         func_8007A948(arg0);
         func_8007BB9C(arg0);
@@ -1068,7 +1239,7 @@ void func_80059A88(s32 arg0) {
 //? func_80059A88(?); // extern
 //? func_8005A71C(); // extern
 //? func_800892E0(s32); // extern
-s32 func_8008A890(struct UnkStruct8008A890*); // extern
+s32 func_8008A890(Camera*); // extern
 //? func_8008C1D8(? *); // extern
 extern u16 D_800DC5FC;
 extern s32 D_80165678;
@@ -1079,14 +1250,14 @@ extern Camera *camera1;
 // unused?
 void func_80059AC8(void) {
     //s32 temp_s0;
-    s32 temp_v0;
+    UNUSED s32 temp_v0;
     s16 *phi_s2;
     s32 phi_s0;
 
     if (D_800DC5FC == 0) {
         func_8008C1D8(&D_80165678);
         gRaceFrameCounter++;
-        phi_s2 = &D_8018CF68;
+        phi_s2 = (s16*) &D_8018CF68;
         phi_s0 = 0;
         //phi_s1 = 0;
         for (phi_s0 = 0; phi_s0 != 8; phi_s0++) {
@@ -1175,110 +1346,15 @@ void func_80059C50(void) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80059C50.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_80059820(?); // extern
-? func_800598D4(?); // extern
-? func_8005A380(); // extern
-? func_8005A3C0(); // extern
-? func_8005A74C(); // extern
-? func_8005A99C(); // extern
-? func_8005B914(); // extern
-? func_8005C360(f32); // extern
-? func_8005D0FC(?); // extern
-? func_8005D1F4(?); // extern
-? func_800744CC(); // extern
-? func_80078C70(?); // extern
-? func_8007AA44(?); // extern
-extern s8 D_801657AE;
-extern s8 D_8018CAE0;
-extern s32 D_8018D214;
-
 void func_80059D00(void) {
-    s32 temp_v0;
-
+    
     func_8005A99C();
     func_8005A3C0();
     func_8005A380();
-    if (D_801657AE == 0) {
-        temp_v0 = gScreenModeSelection;
-        if (temp_v0 != 0) {
-            if (temp_v0 != 1) {
-                if (temp_v0 != 2) {
-                    if (temp_v0 != 3) {
 
-                    } else {
-                        func_800598D4(0);
-                        func_800598D4(1);
-                        func_800598D4(2);
-                        func_800598D4(3);
-                        func_80059820(0);
-                        func_8005D0FC(0);
-                        if (D_800DC51C == 0) {
-                            func_8007AA44(0);
-                        }
-                        func_8005D1F4(0);
-                        func_80059820(1);
-                        func_8005D0FC(1);
-                        if (D_800DC51C == 0) {
-                            func_8007AA44(1);
-                        }
-                        func_8005D1F4(1);
-                        func_80059820(2);
-                        func_8005D0FC(2);
-                        if (D_800DC51C == 0) {
-                            func_8007AA44(2);
-                        }
-                        func_8005D1F4(2);
-                        if (gPlayerCountSelection1 == 4) {
-                            func_80059820(3);
-                            func_8005D0FC(3);
-                            if ((D_800DC51C == 0) && (gPlayerCountSelection1 == 4)) {
-                                func_8007AA44(3);
-                            }
-                            func_8005D1F4(3);
-                        }
-                        func_8005A74C();
-                    }
-                } else {
-                    func_800598D4(0);
-                    func_800598D4(1);
-                    func_80059820(0);
-                    func_8005D0FC(0);
-                    if (D_800DC51C == 0) {
-                        func_8007AA44(0);
-                    }
-                    func_80078C70(1);
-                    func_8005D1F4(0);
-                    func_80059820(1);
-                    func_8005D0FC(1);
-                    if (D_800DC51C == 0) {
-                        func_8007AA44(1);
-                    }
-                    func_80078C70(2);
-                    func_8005D1F4(1);
-                    func_8005A74C();
-                }
-            } else {
-                func_800598D4(0);
-                func_800598D4(1);
-                func_80059820(0);
-                func_8005D0FC(0);
-                if (D_800DC51C == 0) {
-                    func_8007AA44(0);
-                }
-                func_80078C70(3);
-                func_8005D1F4(0);
-                func_80059820(1);
-                func_8005D0FC(1);
-                if (D_800DC51C == 0) {
-                    func_8007AA44(1);
-                }
-                func_80078C70(4);
-                func_8005D1F4(1);
-                func_8005A74C();
-            }
-        } else {
+    if (D_801657AE == 0) {
+        switch (gScreenModeSelection) {  
+        case SCREEN_MODE_1P:
             func_800598D4(0);
             if (D_8018D214 == 0) {
                 func_80059820(0);
@@ -1298,51 +1374,96 @@ void func_80059D00(void) {
                 func_80078C70(2);
             }
             func_8005A74C();
+            break;
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+            func_800598D4(0);
+            func_800598D4(1);
+            func_80059820(0);
+            func_8005D0FC(0);
+            if (D_800DC51C == 0) {
+                func_8007AA44(0);
+            }
+            func_80078C70(1);
+            func_8005D1F4(0);
+            func_80059820(1);
+            func_8005D0FC(1);
+            if (D_800DC51C == 0) {
+                func_8007AA44(1);
+            }
+            func_80078C70(2);
+            func_8005D1F4(1);
+            func_8005A74C();
+            break;
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+            func_800598D4(0);
+            func_800598D4(1);
+            func_80059820(0);
+            func_8005D0FC(0);
+            if (D_800DC51C == 0) {
+                func_8007AA44(0);
+            }
+            func_80078C70(3);
+            func_8005D1F4(0);
+            func_80059820(1);
+            func_8005D0FC(1);
+            if (D_800DC51C == 0) {
+                func_8007AA44(1);
+            }
+            func_80078C70(4);
+            func_8005D1F4(1);
+            func_8005A74C();
+            break;
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
+            func_800598D4(0);
+            func_800598D4(1);
+            func_800598D4(2);
+            func_800598D4(3);
+            func_80059820(0);
+            func_8005D0FC(0);
+            if (D_800DC51C == 0) {
+                func_8007AA44(0);
+            }
+            func_8005D1F4(0);
+            func_80059820(1);
+            func_8005D0FC(1);
+            if (D_800DC51C == 0) {
+                func_8007AA44(1);
+            }
+            func_8005D1F4(1);
+            func_80059820(2);
+            func_8005D0FC(2);
+            if (D_800DC51C == 0) {
+                func_8007AA44(2);
+            }
+            func_8005D1F4(2);
+            if (gPlayerCountSelection1 == 4) {
+                func_80059820(3);
+                func_8005D0FC(3);
+                if ((D_800DC51C == 0) && (gPlayerCountSelection1 == 4)) {
+                    func_8007AA44(3);
+                }
+                func_8005D1F4(3);
+            }
+            func_8005A74C();
+            break;
         }
         func_800744CC();
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80059D00.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_80041D34(); // extern
-? func_80059820(?); // extern
-? func_80059D00(); // extern
-? func_8005A74C(); // extern
-? func_8005C728(); // extern
-? func_80077640(); // extern
-? func_80078C70(?); // extern
-? func_8007C2F8(?); // extern
-? func_80086604(); // extern
-? func_80086D80(); // extern
-? func_8008C1D8(? *); // extern
-? func_8008C1E0(? *, ? *); // extern
-? func_8008C204(); // extern
-extern u16 D_800DC5FC;
-extern s32 D_801655C0;
-extern ? D_801655F0;
-extern ? D_80165678;
-extern s32 D_8018D120;
 
 void func_8005A070(void) {
-    s32 temp_v0;
-
     func_8008C1D8(&D_80165678);
     D_8018D120 = 0;
     D_801655C0 = 0;
     func_80041D34();
     if (D_800DC5FC == 0) {
         func_8005C728();
-        temp_v0 = D_800DC50C;
-        if (temp_v0 == 5) {
+        if (D_800DC50C == ENDING_SEQUENCE) {
             func_80086604();
             func_80086D80();
             func_8007C2F8(1);
             func_80077640();
-        } else if (temp_v0 == 9) {
+        } else if (D_800DC50C == CREDITS_SEQUENCE) {
             func_80059820(0);
             func_80078C70(0);
             func_8005A74C();
@@ -1353,9 +1474,6 @@ void func_8005A070(void) {
     func_8008C204();
     func_8008C1E0(&D_80165678, &D_801655F0);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005A070.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
@@ -1441,24 +1559,12 @@ block_5:
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005A14C.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8005A14C(s32); // extern
-
 void func_8005A380(void) {
     s32 temp_s0;
-    s32 phi_s0;
-
-    phi_s0 = 0;
-    do {
-        func_8005A14C(phi_s0);
-        temp_s0 = phi_s0 + 1;
-        phi_s0 = temp_s0;
-    } while (temp_s0 != 8);
+    for (temp_s0 = 0; temp_s0 < 8; ++temp_s0) {
+        func_8005A14C(temp_s0);
+    }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005A380.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
@@ -1564,18 +1670,11 @@ void func_8005A3C0(s32 arg2) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005A3C0.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_80081210(); // extern
-
 void func_8005A71C(void) {
     if (gCurrentCourseId == 2) {
         func_80081210();
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005A71C.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
@@ -1688,150 +1787,69 @@ void func_8005A74C(void) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005A74C.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8005AA34(); // extern
-extern s8 D_801657E8;
-extern s32 D_8018D170;
-extern s32 D_8018D178;
-extern s32 D_8018D188;
-extern s32 D_8018D190;
-extern s32 D_8018D204;
-
 void func_8005A99C(void) {
-    s32 temp_v0;
-    s32 temp_v0_2;
-    s32 phi_v0;
-
     if (D_8018D170 == 0) {
-        temp_v0 = D_8018D178;
-        if (temp_v0 == 0) {
-            temp_v0_2 = gPlayerCountSelection1;
-            phi_v0 = temp_v0_2;
-            if (temp_v0_2 == 1) {
+        if (D_8018D178 == 0) {
+            if (gPlayerCountSelection1 == 1) {
                 func_8005AA34();
-                phi_v0 = gPlayerCountSelection1;
             }
-            if (phi_v0 == 3) {
+            if (gPlayerCountSelection1 == 3) {
                 D_801657E8 = 1;
             }
-            D_8018D188 = 1;
-            D_8018D170 = 1;
-            D_8018D190 = 1;
+            D_8018D188 = (s32) 1;
+            D_8018D170 = (s32) 1;
+            D_8018D190 = (s32) 1;
             D_8018D204 = 0;
             return;
         }
-        D_8018D178 = temp_v0 - 1;
-        // Duplicate return node #8. Try simplifying control flow for better match
+        --D_8018D178;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005A99C.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern s32 D_8018D1A0;
-extern s32 D_8018D1CC;
 
 void func_8005AA34(void) {
     D_8018D1CC = 1;
     D_8018D1A0 = 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005AA34.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern s32 D_8018D1A0;
-extern s32 D_8018D1CC;
 
 void func_8005AA4C(void) {
-    D_8018D1CC = D_8018D1CC + 1;
+    ++D_8018D1CC;
     D_8018D1A0 = 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005AA4C.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern s32 D_8018D1A0;
-extern s32 D_8018D1CC;
 
 void func_8005AA6C(s32 arg0) {
     D_8018D1CC = arg0;
     D_8018D1A0 = 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005AA6C.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern s32 D_8018D1A0;
-extern s32 D_8018D1CC;
 
 void func_8005AA80(void) {
     D_8018D1CC = 0;
     D_8018D1A0 = 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005AA80.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8005AA4C(); // extern
-extern s32 D_8018D1A0;
-extern s32 D_8018D1D4;
 
 void func_8005AA94(s32 arg0) {
-    s32 temp_t9;
-
     if (D_8018D1A0 == 0) {
         D_8018D1D4 = arg0;
         D_8018D1A0 = 1;
     }
-    temp_t9 = D_8018D1D4 - 1;
-    D_8018D1D4 = temp_t9;
-    if (temp_t9 < 0) {
+
+    --D_8018D1D4;
+    if (D_8018D1D4 < 0) {
         D_8018D1A0 = 0;
         func_8005AA4C();
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005AA94.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8005AA4C(); // extern
-extern s32 D_8018D1A0;
-extern s32 D_8018D1B4;
 
 void func_8005AAF0(void) {
     D_8018D1B4 = 1;
     D_8018D1A0 = 0;
     func_8005AA4C();
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005AAF0.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8005AA6C(?); // extern
 
 void func_8005AB20(void) {
-    if ((gModeSelection == GRAND_PRIX) && (gPlayerCountSelection1 == 1)) {
+    if ((gModeSelection == 0) && (gPlayerCountSelection1 == 1)) {
         func_8005AA6C(0x14);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005AB20.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
@@ -2707,31 +2725,25 @@ void func_8005C674(s8 arg0, s16 *arg1, s16 *arg2, s16 *arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005C674.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_8005C6B4(s8 arg0, s16 *arg1, s16 *arg2, s16 *arg3) {
-    if (arg0 != 0) {
-        if (arg0 != 1) {
-            if (arg0 != 2) {
-                return;
-            }
-            *arg1 = 0x40;
-            *arg2 = 0x40;
-            *arg3 = 0xFF;
-            return;
-        }
+void func_8005C6B4(s8 arg0, s16* arg1, s16* arg2, s16* arg3) {
+    switch (arg0) {
+    case 0:
+        *arg1 = 0xFF;
+        *arg2 = 0x40;
+        *arg3 = 0x40;
+        break;
+    case 1:
         *arg1 = 0xFF;
         *arg2 = 0xFF;
         *arg3 = 0x40;
-        return;
+        break;
+    case 2:
+        *arg1 = 0x40;
+        *arg2 = 0x40;
+        *arg3 = 0xFF;
+        break;
     }
-    *arg1 = 0xFF;
-    *arg2 = 0x40;
-    *arg3 = 0x40;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005C6B4.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
@@ -3153,61 +3165,37 @@ void func_8005CB60(s32 arg0, s32 arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005CB60.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8005CB60(s32); // extern
-extern s32 D_80164394;
-extern s32 D_80164398;
-extern s32 D_8016439C;
-extern s32 lapCount;
-
 void func_8005D0FC(s32 arg0) {
     if (gModeSelection != BATTLE) {
-        if (arg0 != 0) {
-            if (arg0 != 1) {
-                if (arg0 != 2) {
-                    if (arg0 != 3) {
-                        return;
-                    }
-                    func_8005CB60(D_8016439C);
-                    // Duplicate return node #10. Try simplifying control flow for better match
-                    return;
-                }
-                func_8005CB60(D_80164398);
-                return;
-            }
-            func_8005CB60(D_80164394);
-            return;
+        switch (arg0) {                             /* irregular */
+        case 0:
+            func_8005CB60(arg0, lapCount);
+            break;
+        case 1:
+            func_8005CB60(arg0, D_80164394);
+            break;
+        case 2:
+            func_8005CB60(arg0, D_80164398);
+            break;
+        case 3:
+            func_8005CB60(arg0, D_8016439C);
+            break;
         }
-        func_8005CB60(lapCount);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005D0FC.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern s8 D_801657D8;
-extern s32 D_8018D1FC;
-extern s32 D_8018D2A4;
-extern s32 D_8018D2BC;
 
 void func_8005D18C(void) {
-    if ((gModeSelection == GRAND_PRIX) && (gPlayerCountSelection1 == 1)) {
+    if ((gModeSelection == GRAND_PRIX) && (gPlayerCountSelection1 == TIME_TRIALS)) {
         D_801657D8 = 1;
         D_8018D2BC = 0;
         D_8018D2A4 = 0;
-        if (*gPlayerPositions >= 4) {
+        if (gPlayerPositions >= 4) {
             D_8018D1FC = 1;
             D_8018D2A4 = 1;
             D_8018D2BC = 1;
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005D18C.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
@@ -6014,371 +6002,292 @@ void func_80062C74(void *arg0, s16 arg1, ? arg2, ? arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80062C74.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern f64 D_800EE648;
-
-void func_80062F98(void *arg0, s16 arg1, s8 arg2, ? arg3) {
+void func_80062F98(Player* arg0, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     f32 temp_f0;
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg1 * 0x48);
-    temp_f0 = temp_v0->unk540 / 10.0f;
-    temp_v0->unk546 = temp_v0->unk546 + 1;
-    temp_v0->unk52C = temp_v0->unk52C + temp_f0;
-    if ((arg0->unkCA & 1) == 1) {
-        temp_v0->unk52C = temp_v0->unk52C + (temp_f0 + D_800EE648);
-        if ((temp_v0->unk546 == 0x10) || ((D_801652A0[arg2] - temp_v0->unk52C) < 3.0f)) {
-            temp_v0->unk544 = 0;
-            temp_v0->unk546 = 0;
-            temp_v0->unk53A = 0;
-            return;
+    
+    temp_f0 = arg0->unk_258[10 + arg1].unk_018 / 10.0f;
+    ++arg0->unk_258[10 + arg1].unk_01E;
+    arg0->unk_258[10 + arg1].unk_004 += temp_f0;
+    if ((arg0->unk_0CA & 1) == 1) {
+        arg0->unk_258[10 + arg1].unk_004 += (temp_f0 + D_800EE648);
+        if ((arg0->unk_258[10 + arg1].unk_01E == 0x10) || ((D_801652A0[arg2] - arg0->unk_258[10 + arg1].unk_004) < 3.0f)) {
+            arg0->unk_258[10 + arg1].unk_01C = 0;
+            arg0->unk_258[10 + arg1].unk_01E = 0;
+            arg0->unk_258[10 + arg1].unk_012 = 0;
         }
-        // Duplicate return node #7. Try simplifying control flow for better match
-        return;
-    }
-    if ((temp_v0->unk546 == 0xA) || ((D_801652A0[arg2] - temp_v0->unk52C) < 3.0f)) {
-        temp_v0->unk544 = 0;
-        temp_v0->unk546 = 0;
-        temp_v0->unk53A = 0;
+    } else if ((arg0->unk_258[10 + arg1].unk_01E == 0xA) || ((D_801652A0[arg2] - arg0->unk_258[10 + arg1].unk_004) < 3.0f)) {
+        arg0->unk_258[10 + arg1].unk_01C = 0;
+        arg0->unk_258[10 + arg1].unk_01E = 0;
+        arg0->unk_258[10 + arg1].unk_012 = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80062F98.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 sins(u16); // extern
-f32 coss(u16); // extern
-extern f64 D_800EE650;
-extern f64 D_800EE658;
-
-void func_800630C0(void *arg0, s16 arg1, s8 arg2, ? arg3) {
-    void *sp1C;
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg1 * 0x48);
-    temp_v0->unk276 = temp_v0->unk276 + 1;
-    sp1C = temp_v0;
-    temp_v0->unk260 = (coss(temp_v0->unk278) * D_800EE650) + arg0->unk1C;
-    temp_v0->unk258 = (sins(temp_v0->unk278) * D_800EE658) + arg0->unk14;
-    temp_v0->unk25C = D_801652A0[arg2];
-    if (temp_v0->unk276 == 0xF) {
-        temp_v0->unk274 = 0;
-        temp_v0->unk276 = 0;
-        temp_v0->unk26A = 0;
+void func_800630C0(Player* arg0, s16 arg1, s8 arg2, UNUSED s8 arg3) {
+    ++arg0->unk_258[arg1].unk_01E;
+    arg0->unk_258[arg1].unk_008 = coss(arg0->unk_258[arg1].unk_020) * D_800EE650 + arg0->posZ;
+    arg0->unk_258[arg1].unk_000 = sins(arg0->unk_258[arg1].unk_020) * D_800EE658 + arg0->posX;
+    arg0->unk_258[arg1].unk_004 = D_801652A0[arg2];
+    if (arg0->unk_258[arg1].unk_01E == 15) {
+        arg0->unk_258[arg1].unk_01C = 0;
+        arg0->unk_258[arg1].unk_01E = 0;
+        arg0->unk_258[arg1].unk_012 = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800630C0.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_800631A8(s32 arg0, s16 arg1, ? arg2, ? arg3) {
-    s16 temp_v1;
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg1 * 0x48);
-    temp_v0->unk276 = temp_v0->unk276 + 1;
-    temp_v1 = temp_v0->unk276;
-    if (temp_v1 < 9) {
-        if ((temp_v1 & 1) != 0) {
-            temp_v0->unk290 = 8;
+void func_800631A8(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
+    ++arg0->unk_258[arg1].unk_01E;
+    if ((s32) arg0->unk_258[arg1].unk_01E < 9) {
+        if ((arg0->unk_258[arg1].unk_01E & 1) != 0) {
+            arg0->unk_258[arg1].unk_038 = 8;
         } else {
-            goto block_10;
+            arg0->unk_258[arg1].unk_038 = 0;
         }
-    } else if (((temp_v1 & 1) != 0) || ((temp_v1 >= 9) && (temp_v1 < 0xC))) {
-        temp_v0->unk290 = 0xFF;
-    } else if ((temp_v1 & 2) != 0) {
-        temp_v0->unk290 = 8;
+    } else if (((arg0->unk_258[arg1].unk_01E & 1) != 0) || ((arg0->unk_258[arg1].unk_01E >= 9) && (arg0->unk_258[arg1].unk_01E < 12))) {
+        arg0->unk_258[arg1].unk_038 = 0xFF;
+    } else if ((arg0->unk_258[arg1].unk_01E & 2) != 0) {
+        arg0->unk_258[arg1].unk_038 = 8;
     } else {
-block_10:
-        temp_v0->unk290 = 0;
+        arg0->unk_258[arg1].unk_038 = 0;
     }
-    temp_v0->unk292 = 0;
-    temp_v0->unk294 = 0;
-    if (temp_v0->unk276 >= 0x19) {
-        temp_v0->unk274 = 0;
-        temp_v0->unk276 = 0;
-        temp_v0->unk26A = 0;
+    arg0->unk_258[arg1].unk_03A = 0;
+    arg0->unk_258[arg1].unk_03C = 0;
+    if ((s32) arg0->unk_258[arg1].unk_01E >= 0x19) {
+        arg0->unk_258[arg1].unk_01C = 0;
+        arg0->unk_258[arg1].unk_01E = 0;
+        arg0->unk_258[arg1].unk_012 = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800631A8.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 sins(s32); // extern
-f32 coss(s32, void *); // extern
-extern f64 D_800EE660;
-
-void func_80063268(void *arg0, s16 arg1, ? arg2, ? arg3) {
-    void *sp1C;
-    void *temp_a2;
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg1 * 0x48);
-    temp_a2 = arg0;
-    if (temp_v0->unk276 >= 0x1E) {
-        temp_v0->unk298 = temp_v0->unk298 + 0x1FFE;
+void func_80063268(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
+    if (arg0->unk_258[arg1].unk_01E >= 0x1E) {
+        arg0->unk_258[arg1].unk_040 += 0x1FFE;
     } else {
-        temp_v0->unk298 = temp_v0->unk298 + 0x1554;
+        arg0->unk_258[arg1].unk_040 += 0x1554;
     }
-    temp_v0->unk27C = temp_v0->unk27C + 0.25;
-    arg0 = temp_a2;
-    sp1C = temp_v0;
-    temp_v0->unk260 = (coss((temp_v0->unk298 + temp_v0->unk278) & 0xFFFF, temp_a2) * 5.5) + arg0->unk1C;
-    temp_v0->unk258 = (sins((temp_v0->unk298 + temp_v0->unk278) & 0xFFFF) * 5.5) + arg0->unk14;
-    temp_v0->unk276 = temp_v0->unk276 + 1;
-    temp_v0->unk25C = temp_v0->unk27C + (arg0->unk18 - 5.0f);
-    temp_v0->unk296 = temp_v0->unk296 - 5;
-    temp_v0->unk264 = temp_v0->unk264 + D_800EE660;
-    if (temp_v0->unk296 <= 0) {
-        temp_v0->unk296 = 0;
+
+    arg0->unk_258[arg1].unk_024 += 0.25;
+    arg0->unk_258[arg1].unk_008 = (coss((arg0->unk_258[arg1].unk_020 + arg0->unk_258[arg1].unk_040)) * 5.5) + arg0->posZ;
+    arg0->unk_258[arg1].unk_000 = (sins((arg0->unk_258[arg1].unk_020 + arg0->unk_258[arg1].unk_040)) * 5.5) + arg0->posX;
+    arg0->unk_258[arg1].unk_004 = (arg0->unk_258[arg1].unk_024 + (arg0->posY - 5.0f));
+    ++arg0->unk_258[arg1].unk_01E;
+    arg0->unk_258[arg1].unk_00C += D_800EE660;
+    arg0->unk_258[arg1].unk_03E -= 5;
+
+    if ((s32) arg0->unk_258[arg1].unk_03E <= 0) {
+        arg0->unk_258[arg1].unk_03E = 0;
     }
-    if (temp_v0->unk276 >= 0x28) {
-        temp_v0->unk274 = 0;
-        temp_v0->unk276 = 0;
-        temp_v0->unk26A = 0;
+
+    if ((s32) arg0->unk_258[arg1].unk_01E >= 0x28) {
+        arg0->unk_258[arg1].unk_01C = 0;
+        arg0->unk_258[arg1].unk_01E = 0;
+        arg0->unk_258[arg1].unk_012 = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80063268.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 sins(u16); // extern
-f32 coss(u16); // extern
-extern f64 D_800EE668;
-
-void func_80063408(void *arg0, s16 arg1, ? arg2, ? arg3) {
-    s32 temp_v1;
-    void *temp_s0;
-
-    temp_s0 = arg0 + (arg1 * 0x48);
-    if (temp_s0->unk538 == 1) {
-        temp_s0->unk530 = (coss(temp_s0->unk548) * (temp_s0->unk546 * -7)) + arg0->unk1D0;
-        temp_s0->unk528 = (sins(temp_s0->unk548) * (temp_s0->unk546 * -7)) + arg0->unk1C8;
+void func_80063408(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
+    if (arg0->unk_258[10 + arg1].unk_010 == 1) {
+        arg0->unk_258[10 + arg1].unk_008 = (arg0->unk_258[10 + arg1].unk_01E * -7) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1D0;
+        arg0->unk_258[10 + arg1].unk_000 = (arg0->unk_258[10 + arg1].unk_01E * -7) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1C8;
     } else {
-        temp_s0->unk530 = (coss(temp_s0->unk548) * (temp_s0->unk546 * -7)) + arg0->unk1E8;
-        temp_s0->unk528 = (sins(temp_s0->unk548) * (temp_s0->unk546 * -7)) + arg0->unk1E0;
+        arg0->unk_258[10 + arg1].unk_008 = (arg0->unk_258[10 + arg1].unk_01E * -7) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E8;
+        arg0->unk_258[10 + arg1].unk_000 = (arg0->unk_258[10 + arg1].unk_01E * -7) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E0;
     }
-    temp_s0->unk546 = temp_s0->unk546 + 1;
-    temp_s0->unk52C = temp_s0->unk52C + 1.0f;
-    temp_v1 = arg0->unkBC;
-    if (((temp_v1 & 0x80) != 0) || ((temp_v1 & 0x40) != 0)) {
-        temp_s0->unk544 = 0;
-        temp_s0->unk546 = 0;
+
+    ++arg0->unk_258[10 + arg1].unk_01E;
+    arg0->unk_258[10 + arg1].unk_004 += 1.0f;
+
+    if (((arg0->unk_0BC & 0x80) != 0) || ((arg0->unk_0BC & 0x40) != 0)) {
+        arg0->unk_258[10 + arg1].unk_01C = 0;
+        arg0->unk_258[10 + arg1].unk_01E = 0;
     }
-    if (temp_s0->unk546 == 8) {
-        temp_s0->unk546 = 0;
-        temp_s0->unk544 = 0;
-        temp_s0->unk53A = 0;
+
+    if (arg0->unk_258[10 + arg1].unk_01E == 8) {
+        arg0->unk_258[10 + arg1].unk_01E = 0;
+        arg0->unk_258[10 + arg1].unk_01C = 0;
+        arg0->unk_258[10 + arg1].unk_012 = 0;
     }
-    temp_s0->unk534 = temp_s0->unk534 + D_800EE668;
-    if (temp_s0->unk546 >= 4) {
-        temp_s0->unk566 = temp_s0->unk566 - 0x10;
+
+    arg0->unk_258[10 + arg1].unk_00C += D_800EE668;
+    if (arg0->unk_258[10 + arg1].unk_01E >= 4) {
+        arg0->unk_258[10 + arg1].unk_03E -= 16;
     }
-    if (temp_s0->unk566 <= 0) {
-        temp_s0->unk566 = 0;
+
+    if (arg0->unk_258[10 + arg1].unk_03E <= 0) {
+        arg0->unk_258[10 + arg1].unk_03E = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80063408.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_80062B18(f32 *, ? *, f32 *, ?, f32, f32, s32, s32); // extern
-f32 sins(u16); // extern
-f32 coss(u16); // extern
-extern f64 D_800EE670;
-extern f64 D_800EE678;
-
-void func_800635D4(void *arg0, s16 arg1, ? arg2, ? arg3) {
+void func_800635D4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     f32 sp44;
-    ? sp40;
+    f32 sp40;
     f32 sp3C;
-    s32 temp_v1;
-    void *temp_s0;
 
-    temp_s0 = arg0 + (arg1 * 0x48);
-    if (temp_s0->unk538 == 1) {
-        if ((arg0->unkBC * 2) < 0) {
-            func_80062B18(&sp44, &sp40, &sp3C, 0xC0000000, 0.0f, (-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f, -temp_s0->unk548, arg0->unk206 * -2);
-            temp_s0->unk528 = arg0->unk1C8 + sp44;
-            temp_s0->unk530 = arg0->unk1D0 + sp3C;
+    if (arg0->unk_258[10 + arg1].unk_010 == 1) {
+        if ((arg0->unk_0BC * 2) < 0) {
+            func_80062B18(&sp44, &sp40, &sp3C, -2.0f, 0.0f, (-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16, -arg0->unk_258[10 + arg1].unk_020, 2 * -arg0->unk_206);
+            arg0->unk_258[10 + arg1].unk_000 = arg0->unk_1C8 + sp44;
+            arg0->unk_258[10 + arg1].unk_008 = arg0->unk_1D0 + sp3C;
         } else {
-            temp_s0->unk530 = (coss(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f)) + arg0->unk1D0;
-            temp_s0->unk528 = (sins(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f)) + arg0->unk1C8;
+            arg0->unk_258[10 + arg1].unk_008 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1D0;
+            arg0->unk_258[10 + arg1].unk_000 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1C8;
         }
-    } else if ((arg0->unkBC * 2) < 0) {
-        func_80062B18(&sp44, &sp40, &sp3C, 0x40000000, 0.0f, (-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f, -temp_s0->unk548, arg0->unk206 * -2);
-        temp_s0->unk528 = arg0->unk1E0 + sp44;
-        temp_s0->unk530 = arg0->unk1E8 + sp3C;
+    } else if ((arg0->unk_0BC * 2) < 0) {
+        func_80062B18(&sp44, &sp40, &sp3C, 2.0f, 0.0f,  (-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16, - arg0->unk_258[10 + arg1].unk_020,  2 * -arg0->unk_206);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->unk_1E0 + sp44;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->unk_1E8 + sp3C;
     } else {
-        temp_s0->unk530 = (coss(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f)) + arg0->unk1E8;
-        temp_s0->unk528 = (sins(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 16.0f)) + arg0->unk1E0;
+        arg0->unk_258[10 + arg1].unk_008 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E8;
+        arg0->unk_258[10 + arg1].unk_000 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E0;
     }
-    temp_s0->unk546 = temp_s0->unk546 + 1;
-    temp_s0->unk52C = temp_s0->unk52C + D_800EE670;
-    temp_v1 = arg0->unkBC;
-    if (((temp_v1 & 0x80) != 0) || ((temp_v1 & 0x40) != 0)) {
-        temp_s0->unk544 = 0;
-        temp_s0->unk546 = 0;
+
+    ++arg0->unk_258[10 + arg1].unk_01E;
+    arg0->unk_258[10 + arg1].unk_004 += D_800EE670;
+    if (((arg0->unk_0BC & 0x80) != 0) || ((arg0->unk_0BC & 0x40) != 0)) {
+        arg0->unk_258[10 + arg1].unk_01C = 0;
+        arg0->unk_258[10 + arg1].unk_01E = 0;
     }
-    if (temp_s0->unk546 == 8) {
-        temp_s0->unk544 = 0;
-        temp_s0->unk546 = 0;
-        temp_s0->unk53A = 0;
+
+    if (arg0->unk_258[10 + arg1].unk_01E == 8) {
+        arg0->unk_258[10 + arg1].unk_01C = 0;
+        arg0->unk_258[10 + arg1].unk_01E = 0;
+        arg0->unk_258[10 + arg1].unk_012 = 0;
     }
-    temp_s0->unk534 = temp_s0->unk534 + D_800EE678;
-    if (temp_s0->unk568 == 0) {
-        if (temp_s0->unk546 >= 4) {
-            temp_s0->unk566 = temp_s0->unk566 - 0xC;
+
+    arg0->unk_258[10 + arg1].unk_00C += D_800EE678;
+    if (arg0->unk_258[10 + arg1].unk_040 == 0) {
+        if (arg0->unk_258[10 + arg1].unk_01E >= 4) {
+            arg0->unk_258[10 + arg1].unk_03E -= 12;
         }
-        if (temp_s0->unk566 <= 0) {
-            goto block_20;
+        if (arg0->unk_258[10 + arg1].unk_03E <= 0) {
+            arg0->unk_258[10 + arg1].unk_03E = 0;
         }
     } else {
-        if (temp_s0->unk546 >= 4) {
-            temp_s0->unk566 = temp_s0->unk566 - 0x10;
+        if (arg0->unk_258[10 + arg1].unk_01E >= 4) {
+            arg0->unk_258[10 + arg1].unk_03E -= 16;
         }
-        if (temp_s0->unk566 <= 0) {
-block_20:
-            temp_s0->unk566 = 0;
+        if (arg0->unk_258[10 + arg1].unk_03E <= 0) {
+            arg0->unk_258[10 + arg1].unk_03E = 0;
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800635D4.s")
-#endif
+
+void func_800639DC(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
+    if (arg0->unk_258[10 + arg1].unk_010 == 1) {
+        arg0->unk_258[10 + arg1].unk_008 = (D_800EE680 * arg0->unk_258[10 + arg1].unk_01E) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1D0;
+        arg0->unk_258[10 + arg1].unk_000 = (D_800EE684 * arg0->unk_258[10 + arg1].unk_01E) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1C8;
+    } else {
+        arg0->unk_258[10 + arg1].unk_008 = (D_800EE688 * arg0->unk_258[10 + arg1].unk_01E) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E8;
+        arg0->unk_258[10 + arg1].unk_000 = (D_800EE68C * arg0->unk_258[10 + arg1].unk_01E) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E0;
+    }
+    ++arg0->unk_258[10 + arg1].unk_01E;
+    arg0->unk_258[10 + arg1].unk_004 += D_800EE690;
+    if (arg0->unk_258[10 + arg1].unk_01E == 8) {
+        arg0->unk_258[10 + arg1].unk_01C = 0;
+        arg0->unk_258[10 + arg1].unk_01E = 0;
+        arg0->unk_258[10 + arg1].unk_012 = 0;
+    }
+
+    arg0->unk_258[10 + arg1].unk_00C += D_800EE698;
+    if (arg0->unk_258[10 + arg1].unk_040 == 0) {
+        if ((s32) arg0->unk_258[10 + arg1].unk_01E >= 4) {
+            --arg0->unk_258[10 + arg1].unk_03E;
+        }
+        if ((s32) arg0->unk_258[10 + arg1].unk_03E <= 0) {
+            arg0->unk_258[10 + arg1].unk_03E = 0;
+        }
+    } else {
+        if ((s32) arg0->unk_258[10 + arg1].unk_01E >= 4) {
+            arg0->unk_258[10 + arg1].unk_03E -= 16;
+        }
+        if ((s32) arg0->unk_258[10 + arg1].unk_03E <= 0) {
+
+            arg0->unk_258[10 + arg1].unk_03E = 0;
+        }
+    }
+}
+
+void func_80063BD4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
+    if (arg0->unk_258[10 + arg1].unk_010 == 1) {
+        arg0->unk_258[10 + arg1].unk_008 = (-2 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1D0);
+        arg0->unk_258[10 + arg1].unk_000 = (-2 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1C8);
+    } else {
+        arg0->unk_258[10 + arg1].unk_008 = (-2 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E8);
+        arg0->unk_258[10 + arg1].unk_000 = (-2 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E0);
+    }
+
+    ++arg0->unk_258[10 + arg1].unk_01E;
+    arg0->unk_258[10 + arg1].unk_004 += D_800EE6A0;
+    if (arg0->unk_258[10 + arg1].unk_01E == 8) {
+        arg0->unk_258[10 + arg1].unk_01C = 0;
+        arg0->unk_258[10 + arg1].unk_01E = 0;
+        arg0->unk_258[10 + arg1].unk_012 = 0;
+    }
+
+    arg0->unk_258[10 + arg1].unk_018 = 2.0f;
+    arg0->unk_258[10 + arg1].unk_00C -= D_800EE6A8;
+}
+
+void func_80063D58(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
+    if (arg0->unk_258[10 + arg1].unk_010 == 1) {
+        arg0->unk_258[10 + arg1].unk_008 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1D0;
+        arg0->unk_258[10 + arg1].unk_000 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1C8;
+    } else {
+        arg0->unk_258[10 + arg1].unk_008 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E8;
+        arg0->unk_258[10 + arg1].unk_000 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E0;
+    }
+
+    ++arg0->unk_258[10 + arg1].unk_01E;
+    if (arg0->unk_258[10 + arg1].unk_01E == 8) {
+        arg0->unk_258[10 + arg1].unk_01E = 0;
+        arg0->unk_258[10 + arg1].unk_01C = 0;
+        arg0->unk_258[10 + arg1].unk_012 = 0;
+    }
+
+    arg0->unk_258[10 + arg1].unk_00C += D_800EE6B0;
+    if (arg0->unk_258[10 + arg1].unk_01E >= 4) {
+        arg0->unk_258[10 + arg1].unk_03E -= 18;
+        arg0->unk_258[10 + arg1].unk_004 -= D_800EE6B8;
+    } else {
+        arg0->unk_258[10 + arg1].unk_004 += D_800EE6C0;
+    }
+    
+    if (arg0->unk_258[10 + arg1].unk_03E <= 0) {
+        arg0->unk_258[10 + arg1].unk_03E = 0;
+    }
+}
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 sins(u16); // extern
-f32 coss(u16); // extern
-extern f32 D_800EE680;
-extern f32 D_800EE684;
-extern f32 D_800EE688;
-extern f32 D_800EE68C;
-extern f64 D_800EE690;
-extern f64 D_800EE698;
+? func_80062B18(f32 *, f32 *, f32 *, ?, f32, f32, s32, s32); // extern
 
-void func_800639DC(void *arg0, s16 arg1, ? arg2, ? arg3) {
-    void *temp_s0;
+// Separated from asm in code_80057C60/func_80063D58.s
+UNUSED void func_80063FBC(void *arg0, s16 arg1, ? arg2, ? arg3) {
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    void *sp30;
+    void *temp_v0;
 
-    temp_s0 = arg0 + (arg1 * 0x48);
-    if (temp_s0->unk538 == 1) {
-        temp_s0->unk530 = (coss(temp_s0->unk548) * (D_800EE680 * temp_s0->unk546)) + arg0->unk1D0;
-        temp_s0->unk528 = (sins(temp_s0->unk548) * (D_800EE684 * temp_s0->unk546)) + arg0->unk1C8;
+    temp_v0 = arg0 + (arg1 * 0x48);
+    if (temp_v0->unk538 == 1) {
+        sp30 = temp_v0;
+        func_80062B18(&sp3C, &sp34, &sp38, 0x40400000, 0.0f, (f32) (-5.5 - (f64) ((f32) temp_v0->unk546 * (((arg0->unk94 / 18.0f) * 216.0f) / 15.0f))), -(s32) temp_v0->unk548, 0);
     } else {
-        temp_s0->unk530 = (coss(temp_s0->unk548) * (D_800EE688 * temp_s0->unk546)) + arg0->unk1E8;
-        temp_s0->unk528 = (sins(temp_s0->unk548) * (D_800EE68C * temp_s0->unk546)) + arg0->unk1E0;
+        sp30 = temp_v0;
+        func_80062B18(&sp3C, &sp34, &sp38, 0xC0400000, 0.0f, (f32) (-5.5 - (f64) ((f32) temp_v0->unk546 * (((arg0->unk94 / 18.0f) * 216.0f) / 15.0f))), -(s32) temp_v0->unk548, 0);
     }
-    temp_s0->unk546 = temp_s0->unk546 + 1;
-    temp_s0->unk52C = temp_s0->unk52C + D_800EE690;
-    if (temp_s0->unk546 == 8) {
-        temp_s0->unk544 = 0;
-        temp_s0->unk546 = 0;
-        temp_s0->unk53A = 0;
-    }
-    temp_s0->unk534 = temp_s0->unk534 + D_800EE698;
-    if (temp_s0->unk568 == 0) {
-        if (temp_s0->unk546 >= 4) {
-            temp_s0->unk566 = temp_s0->unk566 - 1;
-        }
-        if (temp_s0->unk566 <= 0) {
-            goto block_13;
-        }
-    } else {
-        if (temp_s0->unk546 >= 4) {
-            temp_s0->unk566 = temp_s0->unk566 - 0x10;
-        }
-        if (temp_s0->unk566 <= 0) {
-block_13:
-            temp_s0->unk566 = 0;
-        }
+    sp30->unk528 = (f32) (arg0->unk14 + sp3C);
+    sp30->unk530 = (f32) (arg0->unk1C + sp38);
+    sp30->unk546 = (s16) (sp30->unk546 + 1);
+    sp30->unk52C = (f32) ((arg0->unk18 - arg0->unk70) + sp34);
+    if (sp30->unk546 == 6) {
+        sp30->unk544 = 0;
+        sp30->unk546 = 0;
+        sp30->unk53A = 0;
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800639DC.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 sins(u16); // extern
-f32 coss(u16); // extern
-extern f64 D_800EE6A0;
-extern f64 D_800EE6A8;
-
-void func_80063BD4(void *arg0, s16 arg1, ? arg2, ? arg3) {
-    void *temp_s0;
-
-    temp_s0 = arg0 + (arg1 * 0x48);
-    if (temp_s0->unk538 == 1) {
-        temp_s0->unk530 = (coss(temp_s0->unk548) * (temp_s0->unk546 * -2)) + arg0->unk1D0;
-        temp_s0->unk528 = (sins(temp_s0->unk548) * (temp_s0->unk546 * -2)) + arg0->unk1C8;
-    } else {
-        temp_s0->unk530 = (coss(temp_s0->unk548) * (temp_s0->unk546 * -2)) + arg0->unk1E8;
-        temp_s0->unk528 = (sins(temp_s0->unk548) * (temp_s0->unk546 * -2)) + arg0->unk1E0;
-    }
-    temp_s0->unk546 = temp_s0->unk546 + 1;
-    temp_s0->unk52C = temp_s0->unk52C + D_800EE6A0;
-    if (temp_s0->unk546 == 8) {
-        temp_s0->unk544 = 0;
-        temp_s0->unk546 = 0;
-        temp_s0->unk53A = 0;
-    }
-    temp_s0->unk540 = 2.0f;
-    temp_s0->unk534 = temp_s0->unk534 - D_800EE6A8;
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80063BD4.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 sins(u16); // extern
-f32 coss(u16); // extern
-extern f64 D_800EE6B0;
-extern f64 D_800EE6B8;
-extern f64 D_800EE6C0;
-
-void func_80063D58(void *arg0, s16 arg1, ? arg2, ? arg3) {
-    void *temp_s0;
-
-    temp_s0 = arg0 + (arg1 * 0x48);
-    if (temp_s0->unk538 == 1) {
-        temp_s0->unk530 = (coss(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 20.0f)) + arg0->unk1D0;
-        temp_s0->unk528 = (sins(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 20.0f)) + arg0->unk1C8;
-    } else {
-        temp_s0->unk530 = (coss(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 20.0f)) + arg0->unk1E8;
-        temp_s0->unk528 = (sins(temp_s0->unk548) * ((-temp_s0->unk546 * (arg0->unk94 / 18.0f) * 216.0f) / 20.0f)) + arg0->unk1E0;
-    }
-    temp_s0->unk546 = temp_s0->unk546 + 1;
-    if (temp_s0->unk546 == 8) {
-        temp_s0->unk546 = 0;
-        temp_s0->unk544 = 0;
-        temp_s0->unk53A = 0;
-    }
-    temp_s0->unk534 = temp_s0->unk534 + D_800EE6B0;
-    if (temp_s0->unk546 >= 4) {
-        temp_s0->unk566 = temp_s0->unk566 - 0x12;
-        temp_s0->unk52C = temp_s0->unk52C - D_800EE6B8;
-    } else {
-        temp_s0->unk52C = temp_s0->unk52C + D_800EE6C0;
-    }
-    if (temp_s0->unk566 <= 0) {
-        temp_s0->unk566 = 0;
-    }
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80063D58.s")
+GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80063FBC.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -6430,44 +6339,24 @@ void func_80064184(void *arg0, s16 arg1, s8 arg2, ? arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80064184.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 sins(u16); // extern
-f32 coss(u16); // extern
-extern f64 D_800EE6D8;
-extern f64 D_800EE6E0;
-extern f64 D_800EE6E8;
+void func_800643A8(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
+    arg0->unk_258[10 + arg1].unk_008 = (D_800EE6D8 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->posZ);
+    arg0->unk_258[10 + arg1].unk_000 = (D_800EE6E0 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->posX);
+    arg0->unk_258[10 + arg1].unk_004 = arg0->unk_258[10 + arg1].unk_004 + 0.5;
 
-void func_800643A8(void *arg0, s16 arg1, ? arg2, ? arg3) {
-    void *sp1C;
-    f64 temp_f18;
-    f64 temp_f8;
-    s16 temp_v1;
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg1 * 0x48);
-    sp1C = temp_v0;
-    temp_v0->unk530 = (coss(temp_v0->unk548) * (D_800EE6D8 * temp_v0->unk546)) + arg0->unk1C;
-    temp_v1 = temp_v0->unk546;
-    temp_f8 = sins(temp_v0->unk548);
-    temp_f18 = temp_v1;
-    temp_v0->unk546 = temp_v1 + 1;
-    temp_v0->unk528 = (temp_f8 * (D_800EE6E0 * temp_f18)) + arg0->unk14;
-    temp_v0->unk52C = temp_v0->unk52C + 0.5;
-    if (temp_v0->unk546 == 0xA) {
-        temp_v0->unk544 = 0;
-        temp_v0->unk546 = 0;
-        temp_v0->unk53A = 0;
+    ++arg0->unk_258[10 + arg1].unk_01E;
+    if (arg0->unk_258[10 + arg1].unk_01E == 10) {
+        arg0->unk_258[10 + arg1].unk_01C = 0;
+        arg0->unk_258[10 + arg1].unk_01E = 0;
+        arg0->unk_258[10 + arg1].unk_012 = 0;
     }
-    temp_v0->unk566 = temp_v0->unk566 - 8;
-    temp_v0->unk534 = temp_v0->unk534 + D_800EE6E8;
-    if (temp_v0->unk566 <= 0) {
-        temp_v0->unk566 = 0;
+    
+    arg0->unk_258[10 + arg1].unk_00C += D_800EE6E8;
+    arg0->unk_258[10 + arg1].unk_03E -= 8;
+    if ( arg0->unk_258[10 + arg1].unk_03E <= 0) {
+        arg0->unk_258[10 + arg1].unk_03E = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800643A8.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
@@ -6564,385 +6453,235 @@ void func_80064664(void *arg0, s16 arg1, ? arg2, ? arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80064664.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 sins(u16); // extern
-f32 coss(u16); // extern
-extern f64 D_800EE710;
-extern f64 D_800EE718;
+void func_800647C8(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
-void func_800647C8(void *arg0, s16 arg1, ? arg2, ? arg3) {
-    void *sp1C;
-    s16 temp_v1;
-    void *temp_v0;
+    ++arg0->unk_258[30 + arg1].unk_01E;
+    arg0->unk_258[30 + arg1].unk_008 = ((D_800EE710 * (arg0->unk_258[30 + arg1].unk_01E)) * coss(arg0->unk_258[30 + arg1].unk_020)) + arg0->posZ;
+    arg0->unk_258[30 + arg1].unk_000 = ((D_800EE718 * (arg0->unk_258[30 + arg1].unk_01E)) * sins(arg0->unk_258[30 + arg1].unk_020) +  arg0->posX);
+    arg0->unk_258[30 + arg1].unk_004 =  (arg0->unk_074 + 2.0f);
 
-    temp_v0 = arg0 + (arg1 * 0x48);
-    temp_v0->unkAE6 = temp_v0->unkAE6 + 1;
-    sp1C = temp_v0;
-    temp_v0->unkAD0 = (coss(temp_v0->unkAE8) * (D_800EE710 * temp_v0->unkAE6)) + arg0->unk1C;
-    temp_v1 = temp_v0->unkAE6;
-    temp_v0->unkAC8 = (sins(temp_v0->unkAE8) * (D_800EE718 * temp_v1)) + arg0->unk14;
-    temp_v0->unkACC = arg0->unk74 + 2.0f;
-    if (temp_v1 == 0xE) {
-        temp_v0->unkAE4 = 0;
-        temp_v0->unkAE6 = 0;
-        temp_v0->unkADA = 0;
+    if (arg0->unk_258[30 + arg1].unk_01E == 14) {
+        arg0->unk_258[30 + arg1].unk_01C = 0;
+        arg0->unk_258[30 + arg1].unk_01E = 0;
+        arg0->unk_258[30 + arg1].unk_012 = 0;
     }
-    temp_v0->unkB06 = temp_v0->unkB06 - 0xC;
-    if (temp_v0->unkB06 <= 0) {
-        temp_v0->unkB06 = 0;
+
+    arg0->unk_258[30 + arg1].unk_03E -= 12;
+    if (arg0->unk_258[30 + arg1].unk_03E <= 0) {
+       arg0->unk_258[30 + arg1].unk_03E = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800647C8.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern f64 D_800EE720;
-extern f64 D_800EE728;
-
-void func_800648E4(s32 arg0, s16 arg1, ? arg2, ? arg3) {
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg1 * 0x48);
-    temp_v0->unkAE6 = temp_v0->unkAE6 + 1;
-    temp_v0->unkAD4 = temp_v0->unkAD4 - D_800EE720;
-    temp_v0->unkB06 = temp_v0->unkB06 - 0xC;
-    temp_v0->unkACC = temp_v0->unkACC + D_800EE728;
-    if (temp_v0->unkB06 <= 0) {
-        temp_v0->unkB06 = 0;
+void func_800648E4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
+    ++arg0->unk_258[30 + arg1].unk_01E;
+    arg0->unk_258[30 + arg1].unk_00C -=  D_800EE720;
+    arg0->unk_258[30 + arg1].unk_004 += D_800EE728;
+    arg0->unk_258[30 + arg1].unk_03E -= 12;
+    
+    if (arg0->unk_258[30 + arg1].unk_03E <= 0) {
+        arg0->unk_258[30 + arg1].unk_03E = 0;
     }
-    if (temp_v0->unkAE6 == 0xA) {
-        temp_v0->unkAE4 = 0;
-        temp_v0->unkAE6 = 0;
-        temp_v0->unkADA = 0;
+    
+    if (arg0->unk_258[30 + arg1].unk_01E == 10) {
+        arg0->unk_258[30 + arg1].unk_01C = 0;
+        arg0->unk_258[30 + arg1].unk_01E = 0;
+        arg0->unk_258[30 + arg1].unk_012 = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800648E4.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern f64 D_800EE730;
+void func_80064988(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
+    ++arg0->unk_258[30 + arg1].unk_01E;
+    arg0->unk_258[30 + arg1].unk_004 -= D_800EE730;
 
-void func_80064988(s32 arg0, s16 arg1, ? arg2, ? arg3) {
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg1 * 0x48);
-    temp_v0->unkAE6 = temp_v0->unkAE6 + 1;
-    temp_v0->unkACC = temp_v0->unkACC - D_800EE730;
-    if (temp_v0->unkAE6 == 0xA) {
-        temp_v0->unkAE4 = 0;
-        temp_v0->unkAE6 = 0;
-        temp_v0->unkADA = 0;
+    if (arg0->unk_258[30 + arg1].unk_01E == 10) {
+        arg0->unk_258[30 + arg1].unk_01C = 0;
+        arg0->unk_258[30 + arg1].unk_01E = 0;
+        arg0->unk_258[30 + arg1].unk_012 = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80064988.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 sins(u16); // extern
-f32 coss(u16); // extern
-extern f64 D_800EE738;
+void func_800649F4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
+    f32 temp;
+    temp = arg0->unk_258[30 + arg1].unk_018;
+   
+    arg0->unk_258[30 + arg1].unk_008 = ((-temp * arg0->unk_258[30 + arg1].unk_01E) * (coss(arg0->unk_258[30 + arg1].unk_020) ) + arg0->unk_21C);
+    arg0->unk_258[30 + arg1].unk_000 = ((-temp * arg0->unk_258[30 + arg1].unk_01E) * (sins(arg0->unk_258[30 + arg1].unk_020)) + arg0->unk_218);
+    arg0->unk_258[30 + arg1].unk_004 = (arg0->unk_258[30 + arg1].unk_014 + arg0->posY);
+    arg0->unk_258[30 + arg1].unk_00C += D_800EE738;
 
-void func_800649F4(void *arg0, s16 arg1, ? arg2, ? arg3) {
-    f32 sp24;
-    void *sp20;
-    f32 sp1C;
-    f32 temp_f2;
-    s16 temp_v1;
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg1 * 0x48);
-    sp24 = temp_v0->unkAE0;
-    sp20 = temp_v0;
-    temp_f2 = -sp24;
-    temp_v0->unkAD0 = (coss(temp_v0->unkAE8) * (temp_f2 * temp_v0->unkAE6)) + arg0->unk21C;
-    sp1C = temp_f2;
-    temp_v1 = temp_v0->unkAE6;
-    temp_v0->unkAC8 = (sins(temp_v0->unkAE8) * (temp_f2 * temp_v1)) + arg0->unk218;
-    temp_v0->unkACC = temp_v0->unkADC + arg0->unk18;
-    temp_v0->unkAE6 = temp_v1 + 1;
-    temp_v0->unkAD4 = temp_v0->unkAD4 + D_800EE738;
-    if (temp_v0->unkAE6 == 0xC) {
-        temp_v0->unkAE6 = 0;
-        temp_v0->unkAE4 = 0;
-        temp_v0->unkADA = 0;
+    ++arg0->unk_258[30 + arg1].unk_01E;
+    if (arg0->unk_258[30 + arg1].unk_01E == 12) {
+        arg0->unk_258[30 + arg1].unk_01E = 0;
+        arg0->unk_258[30 + arg1].unk_01C = 0;
+        arg0->unk_258[30 + arg1].unk_012 = 0;
     }
-    if (temp_v0->unkAE6 >= 9) {
-        temp_v0->unkB06 = temp_v0->unkB06 - 0x10;
-        if (temp_v0->unkB06 <= 0) {
-            temp_v0->unkB06 = 0;
+    
+    if (arg0->unk_258[30 + arg1].unk_01E >= 9) {
+        arg0->unk_258[30 + arg1].unk_03E -= 0x10;
+        if (arg0->unk_258[30 + arg1].unk_03E <= 0) {
+            arg0->unk_258[30 + arg1].unk_03E = 0;
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800649F4.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 sins(u16); // extern
-f32 coss(u16); // extern
-extern f64 D_800EE740;
-extern f64 D_800EE748;
+void func_80064B30(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
+    f32 temp;
+    temp = arg0->unk_258[30 + arg1].unk_018 * D_800EE740;
 
-void func_80064B30(void *arg0, s16 arg1, ? arg2, ? arg3) {
-    f32 sp24;
-    void *sp20;
-    f32 sp1C;
-    f32 temp_f2;
-    s16 temp_v1;
-    void *temp_v0;
+    arg0->unk_258[30 + arg1].unk_008 = ((-temp * arg0->unk_258[30 + arg1].unk_01E) * (coss(arg0->unk_258[30 + arg1].unk_020)) + arg0->posZ);
+    arg0->unk_258[30 + arg1].unk_000 = ((-temp * arg0->unk_258[30 + arg1].unk_01E) * (sins(arg0->unk_258[30 + arg1].unk_020)) + arg0->posX);
+    arg0->unk_258[30 + arg1].unk_004 += D_800EE748;
 
-    temp_v0 = arg0 + (arg1 * 0x48);
-    sp24 = temp_v0->unkAE0 * D_800EE740;
-    sp20 = temp_v0;
-    temp_f2 = -sp24;
-    temp_v0->unkAD0 = (coss(temp_v0->unkAE8) * (temp_f2 * temp_v0->unkAE6)) + arg0->unk1C;
-    sp1C = temp_f2;
-    temp_v1 = temp_v0->unkAE6;
-    temp_v0->unkAC8 = (sins(temp_v0->unkAE8) * (temp_f2 * temp_v1)) + arg0->unk14;
-    temp_v0->unkAE6 = temp_v1 + 1;
-    temp_v0->unkACC = temp_v0->unkACC + D_800EE748;
-    if (temp_v0->unkAE6 == 0xA) {
-        temp_v0->unkAE6 = 0;
-        temp_v0->unkAE4 = 0;
-        temp_v0->unkADA = 0;
+    ++arg0->unk_258[30 + arg1].unk_01E;
+    if (arg0->unk_258[30 + arg1].unk_01E == 10) {
+        arg0->unk_258[30 + arg1].unk_01E = 0;
+        arg0->unk_258[30 + arg1].unk_01C = 0;
+        arg0->unk_258[30 + arg1].unk_012 = 0;
     }
-    temp_v0->unkB00 = temp_v0->unkB00 + 0x71C;
-    if (temp_v0->unkAE6 >= 6) {
-        temp_v0->unkB06 = temp_v0->unkB06 - 0x10;
-        if (temp_v0->unkB06 <= 0) {
-            temp_v0->unkB06 = 0;
+    
+    arg0->unk_258[30 + arg1].unk_038 += 1820;
+    if (arg0->unk_258[30 + arg1].unk_01E >= 6) {
+        arg0->unk_258[30 + arg1].unk_03E -= 16;
+        if (arg0->unk_258[30 + arg1].unk_03E <= 0) {
+            arg0->unk_258[30 + arg1].unk_03E = 0;
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80064B30.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-f32 sins(s32); // extern
-f32 coss(s32, void *); // extern
-extern f64 D_800EE750;
+void func_80064C74(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
-void func_80064C74(void *arg0, s16 arg1, ? arg2, ? arg3) {
-    void *sp1C;
-    s16 temp_t5;
-    s16 temp_t7;
-    void *temp_a2;
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg1 * 0x48);
-    temp_a2 = arg0;
-    if (temp_v0->unkAD8 == 1) {
-        temp_v0->unkAE8 = temp_v0->unkAE8 + 0x888;
+    if (arg0->unk_258[30 + arg1].unk_010 == 1) {
+        arg0->unk_258[30 + arg1].unk_020 += 2184;
     } else {
-        temp_v0->unkAE8 = temp_v0->unkAE8 - 0x888;
+        arg0->unk_258[30 + arg1].unk_020 -= 2184;
     }
-    temp_t5 = temp_a2->unk2E;
-    temp_t7 = temp_a2->unkC0;
-    arg0 = temp_a2;
-    sp1C = temp_v0;
-    temp_v0->unkAD0 = (coss(((temp_v0->unkAE8 - temp_t5) - temp_t7) & 0xFFFF, temp_a2) * 5.0f) + arg0->unk1C;
-    temp_v0->unkAC8 = (sins(((temp_v0->unkAE8 - arg0->unk2E) - arg0->unkC0) & 0xFFFF) * 5.0f) + arg0->unk14;
-    temp_v0->unkACC = arg0->unk18 - 1.0f;
-    temp_v0->unkAE6 = temp_v0->unkAE6 + 1;
-    temp_v0->unkAD4 = temp_v0->unkAD4 + D_800EE750;
-    if (temp_v0->unkAE6 == 0xA) {
-        temp_v0->unkAE6 = 0;
-        temp_v0->unkAE4 = 0;
-        temp_v0->unkADA = 0;
+    
+    arg0->unk_258[30 + arg1].unk_008 = (coss(arg0->unk_258[30 + arg1].unk_020 - arg0->unk_02E - arg0->unk_0C0) * 5.0f) + arg0->posZ;
+    arg0->unk_258[30 + arg1].unk_000 = (sins(arg0->unk_258[30 + arg1].unk_020 - arg0->unk_02E - arg0->unk_0C0) * 5.0f) + arg0->posX;
+    arg0->unk_258[30 + arg1].unk_004 = arg0->posY - 1.0f;
+    arg0->unk_258[30 + arg1].unk_00C += D_800EE750;
+    ++arg0->unk_258[30 + arg1].unk_01E;
+
+    if (arg0->unk_258[30 + arg1].unk_01E == 10) {
+        arg0->unk_258[30 + arg1].unk_01E = 0;
+        arg0->unk_258[30 + arg1].unk_01C = 0;
+        arg0->unk_258[30 + arg1].unk_012 = 0;
     }
-    if (temp_v0->unkAE6 >= 5) {
-        temp_v0->unkB06 = temp_v0->unkB06 - 0x14;
-        if (temp_v0->unkB06 <= 0) {
-            temp_v0->unkB06 = 0;
+    if (arg0->unk_258[30 + arg1].unk_01E >= 5) {
+        arg0->unk_258[30 + arg1].unk_03E -= 20;
+        if (arg0->unk_258[30 + arg1].unk_03E <= 0) {
+            arg0->unk_258[30 + arg1].unk_03E = 0;
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80064C74.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern f64 D_800EE758;
+void func_80064DEC(Player* arg0, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
 
-void func_80064DEC(void *arg0, ? arg1, ? arg2, s8 arg3) {
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg3 * 0x48);
-    temp_v0->unk816 = temp_v0->unk816 + 1;
-    temp_v0->unk7FC = arg0->unk18;
-    if (temp_v0->unk816 == 9) {
-        arg0->unkB6 = arg0->unkB6 & 0xFFBF;
-        temp_v0->unk814 = 0;
-        temp_v0->unk816 = 0;
-        temp_v0->unk80A = 0;
+    arg0->unk_258[20 + arg3].unk_004 = arg0->posY;
+    ++arg0->unk_258[20 + arg3].unk_01E;
+    
+    if (arg0->unk_258[20 + arg3].unk_01E == 9) {
+        arg0->unk_0B6 &= ~0x0040;
+        arg0->unk_258[20 + arg3].unk_01C = 0;
+        arg0->unk_258[20 + arg3].unk_01E = 0;
+        arg0->unk_258[20 + arg3].unk_012 = 0;
     }
-    temp_v0->unk804 = temp_v0->unk804 + D_800EE758;
-    if (temp_v0->unk804 >= 2.5) {
-        temp_v0->unk804 = 2.5f;
+    
+    arg0->unk_258[20 + arg3].unk_00C += D_800EE758;
+    if (arg0->unk_258[20 + arg3].unk_00C >= (f64) 2.5) {
+        arg0->unk_258[20 + arg3].unk_00C = 2.5f;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80064DEC.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern f64 D_800EE760;
-extern f64 D_800EE768;
-
-void func_80064EA4(void *arg0, ? arg1, ? arg2, s8 arg3) {
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg3 * 0x48);
-    temp_v0->unk816 = temp_v0->unk816 + 1;
-    if (temp_v0->unk816 < 4) {
-        temp_v0->unk804 = temp_v0->unk804 + D_800EE760;
-        if (temp_v0->unk804 >= 3.5) {
-            temp_v0->unk804 = 3.5f;
-            return;
+void func_80064EA4(Player* arg0, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+    ++arg0->unk_258[20 + arg3].unk_01E;
+    if (arg0->unk_258[20 + arg3].unk_01E < 4) {
+        arg0->unk_258[20 + arg3].unk_00C += D_800EE760;
+        if (arg0->unk_258[20 + arg3].unk_00C >= 3.5) {
+            arg0->unk_258[20 + arg3].unk_00C = 3.5f;
         }
-        // Duplicate return node #5. Try simplifying control flow for better match
-        return;
-    }
-    temp_v0->unk804 = temp_v0->unk804 - D_800EE768;
-    if (temp_v0->unk804 <= 0.0f) {
-        arg0->unkB6 = arg0->unkB6 & 0xEFFF;
-        temp_v0->unk814 = 0;
-        temp_v0->unk816 = 0;
-        temp_v0->unk80A = 0;
-    }
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80064EA4.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern f64 D_800EE770;
-extern f64 D_800EE778;
-extern f32 D_800EE780;
-
-void func_80064F88(void *arg0, ? arg1, ? arg2, s8 arg3) {
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg3 * 0x48);
-    temp_v0->unk816 = temp_v0->unk816 + 1;
-    temp_v0->unk804 = temp_v0->unk804 + D_800EE770;
-    if (D_800EE778 <= temp_v0->unk804) {
-        temp_v0->unk804 = D_800EE780;
-    }
-    if (temp_v0->unk816 >= 0xC) {
-        arg0->unkB6 = arg0->unkB6 & 0xF7FF;
-        temp_v0->unk814 = 0;
-        temp_v0->unk816 = 0;
-        temp_v0->unk80A = 0;
-    }
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80064F88.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern f64 D_800EE788;
-extern f64 D_800EE790;
-
-void func_80065030(void *arg0, ? arg1, ? arg2, s8 arg3) {
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg3 * 0x48);
-    temp_v0->unk816 = temp_v0->unk816 + 1;
-    temp_v0->unk7FC = temp_v0->unk7FC + D_800EE788;
-    temp_v0->unk804 = temp_v0->unk804 + D_800EE790;
-    if (temp_v0->unk804 >= 1.5) {
-        temp_v0->unk804 = 1.5f;
-    }
-    if (temp_v0->unk816 >= 0xC) {
-        arg0->unkB6 = arg0->unkB6 & 0xFEFF;
-        temp_v0->unk814 = 0;
-        temp_v0->unk816 = 0;
-        temp_v0->unk80A = 0;
-    }
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80065030.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern f64 D_800EE798;
-
-void func_800650FC(void *arg0, ? arg1, ? arg2, s8 arg3) {
-    s32 temp_v1;
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg3 * 0x48);
-    temp_v0->unk800 = arg0->unk1C;
-    temp_v0->unk7F8 = arg0->unk14;
-    temp_v0->unk7FC = arg0->unk18 + 4.0f;
-    if ((arg0->unkBC & 0x80) == 0x80) {
-        temp_v0->unk818 = temp_v0->unk818 + 0x127C;
     } else {
-        temp_v0->unk818 = temp_v0->unk818 - 0x127C;
-    }
-    temp_v1 = arg0->unkBC;
-    if (((temp_v1 & 0x80) != 0x80) && ((temp_v1 & 0x40) != 0x40)) {
-        temp_v0->unk814 = 0;
-        temp_v0->unk816 = 0;
-        temp_v0->unk80A = 0;
-    }
-    temp_v0->unk804 = temp_v0->unk804 + D_800EE798;
-    if (temp_v0->unk804 >= 1.5) {
-        temp_v0->unk804 = 1.5f;
-    }
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800650FC.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern f64 D_800EE7A0;
-extern f64 D_800EE7A8;
-extern f32 D_800EE7B0;
-extern f64 D_800EE7B8;
-
-void func_800651F4(void *arg0, ? arg1, ? arg2, s8 arg3) {
-    void *temp_v0;
-
-    temp_v0 = arg0 + (arg3 * 0x48);
-    temp_v0->unk816 = temp_v0->unk816 + 1;
-    if (temp_v0->unk816 < 8) {
-        temp_v0->unk804 = temp_v0->unk804 + D_800EE7A0;
-        if (D_800EE7A8 <= temp_v0->unk804) {
-            temp_v0->unk804 = D_800EE7B0;
-            return;
+        arg0->unk_258[20 + arg3].unk_00C -= D_800EE768;
+        if (arg0->unk_258[20 + arg3].unk_00C <= 0.0f) {
+            arg0->unk_0B6 &= ~0x1000;
+            arg0->unk_258[20 + arg3].unk_01C = 0;
+            arg0->unk_258[20 + arg3].unk_01E = 0;
+            arg0->unk_258[20 + arg3].unk_012 = 0;
         }
-        // Duplicate return node #5. Try simplifying control flow for better match
-        return;
-    }
-    temp_v0->unk804 = temp_v0->unk804 - D_800EE7B8;
-    if (temp_v0->unk804 <= 0.0f) {
-        arg0->unkB6 = arg0->unkB6 & 0xFFDF;
-        temp_v0->unk814 = 0;
-        temp_v0->unk816 = 0;
-        temp_v0->unk80A = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800651F4.s")
-#endif
+
+void func_80064F88(Player* arg0, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+    ++arg0->unk_258[20 + arg3].unk_01E;
+    arg0->unk_258[20 + arg3].unk_00C += D_800EE770;
+    
+    if (D_800EE778 <= arg0->unk_258[20 + arg3].unk_00C) {
+        arg0->unk_258[20 + arg3].unk_00C = D_800EE780;
+    }
+    if (arg0->unk_258[20 + arg3].unk_01E >= 12) {
+        arg0->unk_0B6 &= ~0x0800;
+        arg0->unk_258[20 + arg3].unk_01C = 0;
+        arg0->unk_258[20 + arg3].unk_01E = 0;
+        arg0->unk_258[20 + arg3].unk_012 = 0;
+    }
+}
+
+void func_80065030(Player* arg0, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+    ++arg0->unk_258[20 + arg3].unk_01E;
+
+    arg0->unk_258[20 + arg3].unk_004 += D_800EE788;
+    arg0->unk_258[20 + arg3].unk_00C += D_800EE790;
+    if (arg0->unk_258[20 + arg3].unk_00C >= (f64) 1.5) {
+        arg0->unk_258[20 + arg3].unk_00C = 1.5f;
+    }
+    
+    if (arg0->unk_258[20 + arg3].unk_01E >= 12) {
+        arg0->unk_0B6 &= ~0x0100;
+        arg0->unk_258[20 + arg3].unk_01C = 0;
+        arg0->unk_258[20 + arg3].unk_01E = 0;
+        arg0->unk_258[20 + arg3].unk_012 = 0;
+    }
+}
+
+void func_800650FC(Player* arg0, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+    arg0->unk_258[20 + arg3].unk_008 = (f32) arg0->posZ;
+    arg0->unk_258[20 + arg3].unk_000 = (f32) arg0->posX;
+    arg0->unk_258[20 + arg3].unk_004 = (f32) (arg0->posY + 4.0f);
+    if ((arg0->unk_0BC & 0x80) == 0x80) {
+        arg0->unk_258[20 + arg3].unk_020 += 4732;
+    } else {
+         arg0->unk_258[20 + arg3].unk_020 -= 4732;
+    }
+ 
+    if (((arg0->unk_0BC & 0x80) != 0x80) && ((arg0->unk_0BC & 0x40) != 0x40)) {
+        arg0->unk_258[20 + arg3].unk_01C = 0;
+        arg0->unk_258[20 + arg3].unk_01E = 0;
+        arg0->unk_258[20 + arg3].unk_012 = 0;
+    }
+
+    arg0->unk_258[20 + arg3].unk_00C += D_800EE798;
+    if (arg0->unk_258[20 + arg3].unk_00C >= 1.5) {
+        arg0->unk_258[20 + arg3].unk_00C = 1.5f;
+    }
+}
+
+void func_800651F4(Player* arg0, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+    ++arg0->unk_258[20 + arg3].unk_01E;
+    if (arg0->unk_258[20 + arg3].unk_01E < 8) {
+        arg0->unk_258[20 + arg3].unk_00C += D_800EE7A0;
+        if (D_800EE7A8 <= arg0->unk_258[20 + arg3].unk_00C) {
+            arg0->unk_258[20 + arg3].unk_00C = D_800EE7B0;
+        }
+    } else {
+        arg0->unk_258[20 + arg3].unk_00C -= D_800EE7B8;
+        if (arg0->unk_258[20 + arg3].unk_00C <= 0.0f) {
+            arg0->unk_0B6 &= ~0x0020;
+            arg0->unk_258[20 + arg3].unk_01C = 0;
+            arg0->unk_258[20 + arg3].unk_01E = 0;
+            arg0->unk_258[20 + arg3].unk_012 = 0;
+        }
+    }
+}
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
@@ -10862,7 +10601,7 @@ void func_8006B7E4(Player *player, s32 arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006B7E4.s")
 #endif
 
-void func_8006B87C(s32 arg0, s8 playerIndex) {
+void func_8006B87C(UNUSED s32 arg0, s8 playerIndex) {
     gPlayerBalloonStatus[playerIndex][0] = BALLOON_STATUS_GONE;
     gPlayerBalloonStatus[playerIndex][1] = BALLOON_STATUS_GONE;
     gPlayerBalloonStatus[playerIndex][2] = BALLOON_STATUS_GONE;
@@ -10906,7 +10645,7 @@ void func_8006B8B4(s32 arg0, s8 playerIndex) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006B8B4.s")
 #endif
 
-void func_8006B974(s32 arg0, s8 playerIndex, s8 balloonIndex) {
+void func_8006B974(UNUSED s32 arg0, s8 playerIndex, s8 balloonIndex) {
     if (gPlayerBalloonCount[playerIndex] >= 0) {
         gPlayerBalloonStatus[playerIndex][balloonIndex] = BALLOON_STATUS_GONE;
     }
@@ -10940,7 +10679,7 @@ void func_8006B9CC(s32 arg0, s8 arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006B9CC.s")
 #endif
 
-void func_8006BA94(s32 arg0, s8 playerIndex, s8 arg2) {
+void func_8006BA94(Player* arg0, s8 playerIndex, s8 arg2) {
     if (gPlayerBalloonStatus[playerIndex][0] != BALLOON_STATUS_GONE) {
         func_8006AFD0(arg0, playerIndex, 0, arg2);
     }
@@ -11749,91 +11488,63 @@ void func_8006D474(void *arg0, s8 arg1, s8 arg2) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006D474.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_800658A0(void *, s8, s16, s8); // extern
-
-void func_8006DC54(void *arg0, s8 arg1, s8 arg2) {
+void func_8006DC54(Player* arg0, s8 arg1, s8 arg2) {
     s16 temp_s0;
     s32 temp_v0;
-    s16 phi_s0;
 
     temp_v0 = 8 << (arg2 * 4);
-    if (temp_v0 == (arg0->unk2 & temp_v0)) {
-        phi_s0 = 0;
-        do {
-            if ((arg0 + (phi_s0 * 0x48))->unk26A == 7) {
-                func_800658A0(arg0, arg1, phi_s0, arg2);
+    if (temp_v0 == (arg0->unk_002 & temp_v0)) {
+        for (temp_s0 = 0; temp_s0 < 10; ++temp_s0) {
+            if (arg0->unk_258[temp_s0].unk_012 == 7) {
+                func_800658A0(arg0, arg1, temp_s0, arg2);
             }
-            temp_s0 = phi_s0 + 1;
-            phi_s0 = temp_s0;
-        } while (temp_s0 < 0xA);
+        }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006DC54.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
-? func_80066998(void *, s8, s16, s8);               /* extern */
-? func_80067964(void *, s8, s32, s8, s32);          /* extern */
-? func_80067D3C(void *, s8, s32, ?, f32, s32);      /* extern */
-? func_8006801C(void *, s8, s32, ?, f32, s32);      /* extern */
-? func_80068310(void *, s8, s32, s8, s32);          /* extern */
-? func_80068724(void *, s8, s32, s8, s32);          /* extern */
-? func_80068AA4(void *, s8, s32, s8, s32);          /* extern */
-? func_80068DA0(void *, s8, s32, s8, s32);          /* extern */
-? func_8006A280(void *, s8, s16, s8);               /* extern */
-
-void func_8006DD3C(void *arg0, s8 arg1, s8 arg2) {
+#ifdef NEEDS_RODATA
+void func_8006DD3C(Player* arg0, s8 arg1, s8 arg2) {
     s16 temp_s0;
     s32 temp_v0;
-    u16 temp_t9;
-    u16 temp_v0_2;
-    s16 phi_s0;
 
     temp_v0 = 8 << (arg2 * 4);
-    if (temp_v0 == (arg0->unk2 & temp_v0)) {
-        phi_s0 = 0;
-        do {
-            temp_v0_2 = (arg0 + (phi_s0 * 0x48))->unk26A;
-            if (temp_v0_2 != 3) {
-                if (temp_v0_2 == 5) {
-                    func_8006A280(arg0, arg1, phi_s0, arg2);
+    if (temp_v0 == (arg0->unk_002 & temp_v0)) {
+        for (temp_s0 = 0; temp_s0 < 10; ++temp_s0) {
+            temp_v0 = arg0->unk_258[temp_s0].unk_012;
+            if (temp_v0 != 3) {
+                if (temp_v0 == 5) {
+                    func_8006A280(arg0, arg1, temp_s0, arg2);
                 }
             } else if (gActiveScreenMode == 3) {
                 if (arg2 == arg1) {
-                    func_80066998(arg0, arg1, phi_s0, arg2);
+                    func_80066998(arg0, arg1, temp_s0, arg2);
                 }
             } else {
-                func_80066998(arg0, arg1, phi_s0, arg2);
+                func_80066998(arg0, arg1, temp_s0, arg2);
             }
-            temp_s0 = phi_s0 + 1;
-            phi_s0 = temp_s0;
-        } while (temp_s0 < 0xA);
-        if (((arg0->unk0 & 0x4000) == 0x4000) && (arg2 == arg1)) {
-            temp_t9 = arg0->unk80A;
-            switch (temp_t9) {
+        }
+
+        if (((arg0->unk_000 & 0x4000) == 0x4000) && (arg2 == arg1)) {
+            switch (arg0->unk_258[20].unk_012) {
             case 2:
-                func_80068310(arg0, arg1, arg0->unk804, arg2, 0);
+                func_80068310(arg0, arg1, arg0->unk_258[20].unk_00C, arg2, 0);
                 break;
             case 3:
-                func_80067964(arg0, arg1, arg0->unk804, arg2, 0);
+                func_80067964(arg0, arg1, arg0->unk_258[20].unk_00C, arg2, 0);
                 break;
             case 4:
-                func_80068724(arg0, arg1, arg0->unk804, arg2, 0);
+                func_80068724(arg0, arg1, arg0->unk_258[20].unk_00C, arg2, 0);
                 break;
             case 5:
-                func_80068AA4(arg0, arg1, arg0->unk804, arg2, 0);
+                func_80068AA4(arg0, arg1, arg0->unk_258[20].unk_00C, arg2, 0);
                 break;
             case 6:
-                func_80068DA0(arg0, arg1, arg0->unk804, arg2, 0);
+                func_80068DA0(arg0, arg1, arg0->unk_258[20].unk_00C, arg2, 0);
                 break;
             }
-            if (arg0->unk852 == 5) {
-                func_80067D3C(arg0, arg2, D_8018D480, 1, 1.6f, 0xFFFFFF);
-                func_8006801C(arg0, arg2, D_8018D484, 1, 1.6f, 0xFF);
+            if (arg0->unk_258[21].unk_012 == 5) {
+                func_80067D3C(arg0, arg2, D_8018D480, 1, D_800EE948, 0xFFFFFF);
+                func_8006801C(arg0, arg2, D_8018D484, 1, D_800EE94C, 0xFF);
             }
         }
     }
@@ -11842,327 +11553,218 @@ void func_8006DD3C(void *arg0, s8 arg1, s8 arg2) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006DD3C.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8006E420(Player *, ?, ?); // extern
-
 void func_8006E058(void) {
-    Player *temp_a0;
-    Player *temp_a0_2;
-    Player *temp_a0_3;
-    s32 temp_v0;
-    s32 temp_v0_2;
-    s32 temp_v0_3;
-    s32 temp_v0_4;
-    s32 temp_v0_5;
-    s32 phi_v0;
-
-    temp_v0 = gActiveScreenMode;
-    if (temp_v0 != 0) {
-        if ((temp_v0 != 1) && (temp_v0 != 2)) {
-            if (temp_v0 != 3) {
-                return;
-            }
-            temp_v0_2 = gModeSelection;
-            if ((temp_v0_2 == VERSUS) || (temp_v0_2 == BATTLE)) {
-                func_8006E420(gPlayerOne, 0, 0);
-                func_8006E420(gPlayerTwo, 1, 0);
-                func_8006E420(gPlayerThree, 2, 0);
-                if (gPlayerCountSelection1 == 4) {
-                    func_8006E420(gPlayerFour, 3, 0);
-                }
-            }
-            // Duplicate return node #32. Try simplifying control flow for better match
-            return;
-        }
-        temp_v0_3 = gModeSelection;
-        if (temp_v0_3 != GRAND_PRIX) {
-            if (temp_v0_3 != TIME_TRIALS) {
-                if ((temp_v0_3 != VERSUS) && (temp_v0_3 != BATTLE)) {
-                    return;
-                }
-                func_8006E420(gPlayerOne, 0, 0);
-                func_8006E420(gPlayerTwo, 1, 0);
-                return;
-            }
-            func_8006E420(gPlayerOne, 0, 0);
-            temp_a0 = gPlayerTwo;
-            if ((temp_a0->unk_000 & 0x8000) == 0x8000) {
-                func_8006E420(temp_a0, 1, 0);
-                return;
-            }
-            // Duplicate return node #32. Try simplifying control flow for better match
-            return;
-        }
-        func_8006E420(gPlayerOne, 0, 0);
-        func_8006E420(gPlayerTwo, 1, 0);
-        func_8006E420(gPlayerThree, 2, 0);
-        func_8006E420(gPlayerFour, 3, 0);
-        func_8006E420(gPlayerFive, 4, 0);
-        func_8006E420(gPlayerSix, 5, 0);
-        func_8006E420(gPlayerSeven, 6, 0);
-        func_8006E420(gPlayerEight, 7, 0);
-        return;
-    }
-    temp_v0_4 = gModeSelection;
-    if (temp_v0_4 != GRAND_PRIX) {
-        if (temp_v0_4 != TIME_TRIALS) {
-            if ((temp_v0_4 != VERSUS) && (temp_v0_4 != BATTLE)) {
-                return;
-            }
+    switch (gActiveScreenMode) { 
+    case SCREEN_MODE_1P:
+        switch (gModeSelection) {
+        case GRAND_PRIX:
             func_8006E420(gPlayerOne, 0, 0);
             func_8006E420(gPlayerTwo, 1, 0);
-            temp_v0_5 = gPlayerCountSelection1;
-            phi_v0 = temp_v0_5;
-            if (temp_v0_5 >= 3) {
+            func_8006E420(gPlayerThree, 2, 0);
+            func_8006E420(gPlayerFour, 3, 0);
+            func_8006E420(gPlayerFive, 4, 0);
+            func_8006E420(gPlayerSix, 5, 0);
+            func_8006E420(gPlayerSeven, 6, 0);
+            func_8006E420(gPlayerEight, 7, 0);
+
+            break;
+        case TIME_TRIALS:
+            func_8006E420(gPlayerOne, 0, 0);
+
+            if ((gPlayerTwo->unk_000 & 0x100) == 0x100) {
+                func_8006E420(gPlayerTwo, 1, 0);
+            }
+           
+            if ((gPlayerThree->unk_000 & 0x100) == 0x100) {
                 func_8006E420(gPlayerThree, 2, 0);
-                phi_v0 = gPlayerCountSelection1;
+                break;
             }
-            if (phi_v0 == 4) {
+
+            break;
+        case VERSUS:
+        case BATTLE:
+            func_8006E420(gPlayerOne, 0, 0);
+            func_8006E420(gPlayerTwo, 1, 0);
+       
+            if (gPlayerCountSelection1 >= 3) {
+                func_8006E420(gPlayerThree, 2, 0);
+            }
+
+            if (gPlayerCountSelection1 == 4) {
                 func_8006E420(gPlayerFour, 3, 0);
-                return;
+                break;
             }
-            // Duplicate return node #32. Try simplifying control flow for better match
-            return;
+
+            break;
         }
-        func_8006E420(gPlayerOne, 0, 0);
-        temp_a0_2 = gPlayerTwo;
-        if ((temp_a0_2->unk_000 & 0x100) == 0x100) {
-            func_8006E420(temp_a0_2, 1, 0);
+
+        break;
+    case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+    case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+        switch (gModeSelection) {     
+        case GRAND_PRIX:
+            func_8006E420(gPlayerOne, 0, 0);
+            func_8006E420(gPlayerTwo, 1, 0);
+            func_8006E420(gPlayerThree, 2, 0);
+            func_8006E420(gPlayerFour, 3, 0);
+            func_8006E420(gPlayerFive, 4, 0);
+            func_8006E420(gPlayerSix, 5, 0);
+            func_8006E420(gPlayerSeven, 6, 0);
+            func_8006E420(gPlayerEight, 7, 0);
+
+            break;
+        case VERSUS:           
+        case BATTLE:
+            func_8006E420(gPlayerOne, 0, 0);
+            func_8006E420(gPlayerTwo, 1, 0);
+
+            break;
+        case TIME_TRIALS:
+            func_8006E420(gPlayerOne, 0, 0);
+            
+            if ((gPlayerTwo->unk_000 & 0x8000) == 0x8000) {
+                func_8006E420(gPlayerTwo, 1, 0);
+                break;
+            }
+
+            break;
         }
-        temp_a0_3 = gPlayerThree;
-        if ((temp_a0_3->unk_000 & 0x100) == 0x100) {
-            func_8006E420(temp_a0_3, 2, 0);
-            return;
+
+        break;
+    case SCREEN_MODE_3P_4P_SPLITSCREEN:
+        if ((VERSUS == gModeSelection) || (BATTLE == gModeSelection)) {
+            func_8006E420(gPlayerOne, 0, 0);
+            func_8006E420(gPlayerTwo, 1, 0);
+            func_8006E420(gPlayerThree, 2, 0);
+
+            if (gPlayerCountSelection1 == 4) {
+                func_8006E420(gPlayerFour, 3, 0);
+            }
         }
-        return;
+
+        break;
     }
-    func_8006E420(gPlayerOne, 0, 0);
-    func_8006E420(gPlayerTwo, 1, 0);
-    func_8006E420(gPlayerThree, 2, 0);
-    func_8006E420(gPlayerFour, 3, 0);
-    func_8006E420(gPlayerFive, 4, 0);
-    func_8006E420(gPlayerSix, 5, 0);
-    func_8006E420(gPlayerSeven, 6, 0);
-    func_8006E420(gPlayerEight, 7, 0);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006E058.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8006B9CC(u16 *, s8); // extern
-? func_8006C6AC(u16 *, s16, s8, s8); // extern
-? func_8006C9B8(u16 *, s16, s8, s8); // extern
-? func_8006CEC0(u16 *, s16, s8, s8); // extern
-? func_8006D194(s8, s8); // extern
-
-void func_8006E420(u16 *arg0, s8 arg1, s8 arg2) {
+void func_8006E420(Player* player, s8 arg1, s8 arg2) {
     s16 temp_s0;
-    u16 temp_v0;
-    s16 phi_s0;
 
-    temp_v0 = *arg0;
-    if ((temp_v0 & 0x8000) == 0x8000) {
-        if ((temp_v0 & 0x4000) == 0x4000) {
-            func_8006D194(arg1, arg2);
+    if ((player->unk_000 & 0x8000) == 0x8000) {
+        if ((player->unk_000 & 0x4000) == 0x4000) {
+            func_8006D194(player, arg1, arg2);
         }
-        phi_s0 = 0;
-        do {
-            func_8006CEC0(arg0, phi_s0, arg1, arg2);
-            if (((*arg0 & 0x4000) == 0x4000) || (D_800DC50C == ENDING_SEQUENCE)) {
-                func_8006C9B8(arg0, phi_s0, arg1, arg2);
+   
+        for (temp_s0 = 0; temp_s0 < 10; ++temp_s0)
+        {
+            func_8006CEC0(player, temp_s0, arg1, arg2);
+            if (((player->unk_000 & 0x4000) == 0x4000) || (D_800DC50C == ENDING_SEQUENCE)) {
+                func_8006C9B8(player, temp_s0, arg1, arg2);
             }
-            func_8006C6AC(arg0, phi_s0, arg1, arg2);
-            temp_s0 = phi_s0 + 1;
-            phi_s0 = temp_s0;
-        } while (temp_s0 < 0xA);
+            func_8006C6AC(player, temp_s0, arg1, arg2);
+        }
+
         if (gModeSelection == BATTLE) {
-            func_8006B9CC(arg0, arg1);
+            func_8006B9CC(player, arg1);
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006E420.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8006D474(s8, s8); // extern
-? func_8006DC54(void *, s8, s8); // extern
-
-void func_8006E5AC(void *arg0, s8 arg1, s8 arg2) {
-    if ((arg0->unk0 & 0x8000) == 0x8000) {
-        if ((arg0->unkBC & 0x80000000) == 0x80000000) {
+void func_8006E5AC(Player* player, s8 arg1, s8 arg2) {
+    if ((player->unk_000 & 0x8000) == 0x8000) {
+        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
-                func_8006D474(arg1, arg2);
-                goto block_5;
+                func_8006D474(player, arg1, arg2);
             }
         } else {
-            func_8006D474(arg1, arg2);
-block_5:
+            func_8006D474(player, arg1, arg2);
         }
-        func_8006DC54(arg0, arg1, arg2);
+        func_8006DC54(player, arg1, arg2);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006E5AC.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8006D474(s8, s8); // extern
-? func_8006DC54(void *, s8, s8); // extern
-
-void func_8006E634(void *arg0, s8 arg1, s8 arg2) {
-    if ((arg0->unk0 & 0x8000) == 0x8000) {
-        if ((arg0->unkBC & 0x80000000) == 0x80000000) {
+void func_8006E634(Player* player, s8 arg1, s8 arg2) {
+    if ((player->unk_000 & 0x8000) == 0x8000) {
+        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
-                func_8006D474(arg1, arg2);
-                goto block_5;
+                func_8006D474(player, arg1, arg2);
             }
         } else {
-            func_8006D474(arg1, arg2);
-block_5:
+            func_8006D474(player, arg1, arg2);
         }
-        func_8006DC54(arg0, arg1, arg2);
+        func_8006DC54(player, arg1, arg2);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006E634.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8006D474(s8, s8); // extern
-? func_8006DC54(void *, s8, s8); // extern
-
-void func_8006E6BC(void *arg0, s8 arg1, s8 arg2) {
-    if ((arg0->unk0 & 0x8000) == 0x8000) {
-        if ((arg0->unkBC & 0x80000000) == 0x80000000) {
+void func_8006E6BC(Player* player, s8 arg1, s8 arg2) {
+    if ((player->unk_000 & 0x8000) == 0x8000) {
+        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
-                func_8006D474(arg1, arg2);
-                goto block_5;
+                func_8006D474(player, arg1, arg2);
             }
         } else {
-            func_8006D474(arg1, arg2);
-block_5:
+            func_8006D474(player, arg1, arg2);
         }
-        func_8006DC54(arg0, arg1, arg2);
+        func_8006DC54(player, arg1, arg2);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006E6BC.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8006D474(s8, s8); // extern
-? func_8006DC54(void *, s8, s8); // extern
-
-void func_8006E744(void *arg0, s8 arg1, s8 arg2) {
-    if ((arg0->unk0 & 0x8000) == 0x8000) {
-        if ((arg0->unkBC & 0x80000000) == 0x80000000) {
+void func_8006E744(Player* player, s8 arg1, s8 arg2) {
+    if ((player->unk_000 & 0x8000) == 0x8000) {
+        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
-                func_8006D474(arg1, arg2);
-                goto block_5;
+                func_8006D474(player, arg1, arg2);
             }
         } else {
-            func_8006D474(arg1, arg2);
-block_5:
+            func_8006D474(player, arg1, arg2);
         }
-        func_8006DC54(arg0, arg1, arg2);
+        func_8006DC54(player, arg1, arg2);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006E744.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8006DD3C(s8, s8); // extern
-
-void func_8006E7CC(void *arg0, s8 arg1, s8 arg2) {
-    if ((arg0->unk0 & 0x8000) == 0x8000) {
-        if ((arg0->unkBC & 0x80000000) == 0x80000000) {
+void func_8006E7CC(Player* player, s8 arg1, s8 arg2) {
+    if ((player->unk_000 & 0x8000) == 0x8000) {
+        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
-                func_8006DD3C(arg1, arg2);
-                return;
+                func_8006DD3C(player, arg1, arg2);
             }
-            // Duplicate return node #5. Try simplifying control flow for better match
-            return;
+        } else {
+            func_8006DD3C(player, arg1, arg2);
         }
-        func_8006DD3C(arg1, arg2);
-        // Duplicate return node #5. Try simplifying control flow for better match
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006E7CC.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8006DD3C(s8, s8); // extern
-
-void func_8006E848(void *arg0, s8 arg1, s8 arg2) {
-    if ((arg0->unk0 & 0x8000) == 0x8000) {
-        if ((arg0->unkBC & 0x80000000) == 0x80000000) {
+void func_8006E848(Player* player, s8 arg1, s8 arg2) {
+    if ((player->unk_000 & 0x8000) == 0x8000) {
+        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
-                func_8006DD3C(arg1, arg2);
-                return;
+                func_8006DD3C(player, arg1, arg2);
             }
-            // Duplicate return node #5. Try simplifying control flow for better match
-            return;
+        } else {
+            func_8006DD3C(player, arg1, arg2);
         }
-        func_8006DD3C(arg1, arg2);
-        // Duplicate return node #5. Try simplifying control flow for better match
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006E848.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8006DD3C(s8, s8); // extern
-
-void func_8006E8C4(void *arg0, s8 arg1, s8 arg2) {
-    if ((arg0->unk0 & 0x8000) == 0x8000) {
-        if ((arg0->unkBC & 0x80000000) == 0x80000000) {
+void func_8006E8C4(Player* player, s8 arg1, s8 arg2) {
+    if ((player->unk_000 & 0x8000) == 0x8000) {
+        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
-                func_8006DD3C(arg1, arg2);
-                return;
+                func_8006DD3C(player, arg1, arg2);
             }
-            // Duplicate return node #5. Try simplifying control flow for better match
-            return;
+        } else {
+            func_8006DD3C(player, arg1, arg2);
         }
-        func_8006DD3C(arg1, arg2);
-        // Duplicate return node #5. Try simplifying control flow for better match
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006E8C4.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8006DD3C(s8, s8); // extern
-
-void func_8006E940(void *arg0, s8 arg1, s8 arg2) {
-    if ((arg0->unk0 & 0x8000) == 0x8000) {
-        if ((arg0->unkBC & 0x80000000) == 0x80000000) {
+void func_8006E940(Player* player, s8 arg1, s8 arg2) {
+    if ((player->unk_000 & 0x8000) == 0x8000) {
+        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
-                func_8006DD3C(arg1, arg2);
-                return;
+                func_8006DD3C(player, arg1, arg2);
             }
-            // Duplicate return node #5. Try simplifying control flow for better match
-            return;
+        } else {
+            func_8006DD3C(player, arg1, arg2);
         }
-        func_8006DD3C(arg1, arg2);
-        // Duplicate return node #5. Try simplifying control flow for better match
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006E940.s")
-#endif

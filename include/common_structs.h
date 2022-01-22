@@ -134,12 +134,40 @@ typedef struct {
 } Camera;
 
 typedef struct {
-    s16 unk_000[0x24];
+    /* 0x00 */ f32 unk_000;
+    /* 0x04 */ f32 unk_004;
+    /* 0x08 */ f32 unk_008;
+    /* 0x0C */ f32 unk_00C;
+    /* 0x10 */ u16 unk_010;
+    /* 0x12 */ u16 unk_012;
+    /* 0x14 */ f32 unk_014;
+    /* 0x18 */ f32 unk_018;
+    /* 0x1C */ s16 unk_01C;
+    /* 0x1E */ s16 unk_01E;
+    /* 0x20 */ s16 unk_020;
+    /* 0x22 */ s16 unk_022;
+    /* 0x24 */ f32 unk_024;
+    /* 0x28 */ s16 unk_028;
+    /* 0x2A */ s16 unk_02A;
+    /* 0x2C */ s16 unk_02C;
+    /* 0x2E */ s16 unk_02E;
+    /* 0x30 */ s16 unk_030;
+    /* 0x32 */ s16 unk_032;
+    /* 0x34 */ s16 unk_034;
+    /* 0x36 */ s16 unk_036;
+    /* 0x38 */ s16 unk_038;
+    /* 0x3A */ s16 unk_03A;
+    /* 0x3C */ s16 unk_03C;
+    /* 0x3E */ s16 unk_03E;
+    /* 0x40 */ s16 unk_040;
+    /* 0x42 */ s16 unk_042;
+    /* 0x44 */ s16 unk_044;
+    /* 0x46 */ s16 unk_046;
 } UnkPlayerStruct258; // size = 0x48
 
 typedef struct {
     /* 0x0000 */ u16 unk_000;
-    /* 0x0002 */ s16 unk_002;
+    /* 0x0002 */ u16 unk_002;
     /* 0x0004 */ s16 unk_004; // currentPosition
     /* 0x0006 */ u16 unk_006;
     /* 0x0008 */ s16 unk_008; // lapCount?
