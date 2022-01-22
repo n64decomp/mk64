@@ -79,44 +79,44 @@ typedef struct {
 
 typedef struct {
  // B4 long
-    Vec3f pos;
+ /* 0x00 */ Vec3f pos;
     //f32 posY;
     //f32 posZ;
-    f32 unk; // lookat? faceangle?
-    f32 unk1;
-    f32 unk2;
-    f32 angleX;
-    f32 angleY;
-    f32 angleZ;
-    s16 rotX;
-    s16 rotX2;
-    s16 rotY; // unused?
-    s16 rotZ;
-    s32 unk3; // zero
-    s32 unk4; // 0x4119999A
-    s32 unk5; // 0xC20C bit flag?
-    s32 unk6; // 0
-    s32 unk7; // 0
-    s32 unk8; // 0x41F
-    s32 unk9; // 0
-    s32 unk10; // 0
-    s32 unk11; // 0
-    s32 unk12; // 0
-    u16 unk13; // 0x103F7
-    u16 unk13_and_a_half;
-    u16 unk14; // 0x05BC00## Surface camera is over?
-    u16 unk14_half;
-    f32 collisionX;
-    f32 collisionY;
-    f32 collisionZ;
-    f32 unk15;
-    f32 unk16;
-    f32 unk17;
-    f32 unk18;
-    f32 unk19;
-    f32 unk20;
-    f32 unkAngleX;
-    f32 unkAngleY;
+ /* 0x0C */   f32 unk; // lookat? faceangle?
+ /* 0x10 */   f32 unk1;
+ /* 0x14 */   f32 unk2;
+ /* 0x18 */   f32 angleX;
+ /* 0x1C */   f32 angleY;
+ /* 0x20 */   f32 angleZ;
+ /* 0x24 */   s16 rotX;
+ /* 0x26 */   s16 rotX2;
+ /* 0x28 */   s16 rotY; // unused?
+ /* 0x2A */   s16 rotZ;
+ /* 0x2C */   s32 unk3; // zero
+ /* 0x30 */   s32 unk4; // 0x4119999A
+ /* 0x34 */   s32 unk5; // 0xC20C bit flag?
+ /* 0x38 */   s32 unk6; // 0
+ /* 0x3C */   s32 unk7; // 0
+ /* 0x40 */   s32 unk8; // 0x41F
+ /* 0x44 */   s32 unk9; // 0
+ /* 0x48 */   s32 unk10; // 0
+ /* 0x4C */   s32 unk11; // 0
+ /* 0x50 */   s32 unk12; // 0
+ /* 0x54 */   u16 unk13; // 0x103F7
+ /* 0x56 */   u16 unk13_and_a_half;
+ /* 0x58 */   u16 unk14; // 0x05BC00## Surface camera is over?
+ /* 0x5A */   u16 unk14_half;
+ /* 0x5C */   f32 collisionX;
+ /* 0x60 */   f32 collisionY;
+ /* 0x64 */   f32 collisionZ;
+ /* 0x00 */   f32 unk15;
+ /* 0x00 */   f32 unk16;
+ /* 0x00 */   f32 unk17;
+ /* 0x00 */   f32 unk18;
+ /* 0x00 */   f32 unk19;
+ /* 0x00 */   f32 unk20;
+ /* 0x00 */   f32 unkAngleX;
+ /* 0x00 */   f32 unkAngleY;
     f32 unkAngleZ;
     s32 unk21; // zero
     f32 collision;
@@ -134,12 +134,40 @@ typedef struct {
 } Camera;
 
 typedef struct {
-    s16 unk_000[0x24];
+    /* 0x00 */ f32 unk_000;
+    /* 0x04 */ f32 unk_004;
+    /* 0x08 */ f32 unk_008;
+    /* 0x0C */ f32 unk_00C;
+    /* 0x10 */ u16 unk_010;
+    /* 0x12 */ u16 unk_012;
+    /* 0x14 */ f32 unk_014;
+    /* 0x18 */ f32 unk_018;
+    /* 0x1C */ s16 unk_01C;
+    /* 0x1E */ s16 unk_01E;
+    /* 0x20 */ s16 unk_020;
+    /* 0x22 */ s16 unk_022;
+    /* 0x24 */ f32 unk_024;
+    /* 0x28 */ s16 unk_028;
+    /* 0x2A */ s16 unk_02A;
+    /* 0x2C */ s16 unk_02C;
+    /* 0x2E */ s16 unk_02E;
+    /* 0x30 */ s16 unk_030;
+    /* 0x32 */ s16 unk_032;
+    /* 0x34 */ s16 unk_034;
+    /* 0x36 */ s16 unk_036;
+    /* 0x38 */ s16 unk_038;
+    /* 0x3A */ s16 unk_03A;
+    /* 0x3C */ s16 unk_03C;
+    /* 0x3E */ s16 unk_03E;
+    /* 0x40 */ s16 unk_040;
+    /* 0x42 */ s16 unk_042;
+    /* 0x44 */ s16 unk_044;
+    /* 0x46 */ s16 unk_046;
 } UnkPlayerStruct258; // size = 0x48
 
 typedef struct {
     /* 0x0000 */ u16 unk_000;
-    /* 0x0002 */ s16 unk_002;
+    /* 0x0002 */ u16 unk_002;
     /* 0x0004 */ s16 unk_004; // currentPosition
     /* 0x0006 */ u16 unk_006;
     /* 0x0008 */ s16 unk_008; // lapCount?
