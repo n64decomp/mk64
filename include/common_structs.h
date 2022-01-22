@@ -79,44 +79,44 @@ typedef struct {
 
 typedef struct {
  // B4 long
- /* 0x00 */ Vec3f pos;
+    Vec3f pos;
     //f32 posY;
     //f32 posZ;
- /* 0x0C */   f32 unk; // lookat? faceangle?
- /* 0x10 */   f32 unk1;
- /* 0x14 */   f32 unk2;
- /* 0x18 */   f32 angleX;
- /* 0x1C */   f32 angleY;
- /* 0x20 */   f32 angleZ;
- /* 0x24 */   s16 rotX;
- /* 0x26 */   s16 rotX2;
- /* 0x28 */   s16 rotY; // unused?
- /* 0x2A */   s16 rotZ;
- /* 0x2C */   s32 unk3; // zero
- /* 0x30 */   s32 unk4; // 0x4119999A
- /* 0x34 */   s32 unk5; // 0xC20C bit flag?
- /* 0x38 */   s32 unk6; // 0
- /* 0x3C */   s32 unk7; // 0
- /* 0x40 */   s32 unk8; // 0x41F
- /* 0x44 */   s32 unk9; // 0
- /* 0x48 */   s32 unk10; // 0
- /* 0x4C */   s32 unk11; // 0
- /* 0x50 */   s32 unk12; // 0
- /* 0x54 */   u16 unk13; // 0x103F7
- /* 0x56 */   u16 unk13_and_a_half;
- /* 0x58 */   u16 unk14; // 0x05BC00## Surface camera is over?
- /* 0x5A */   u16 unk14_half;
- /* 0x5C */   f32 collisionX;
- /* 0x60 */   f32 collisionY;
- /* 0x64 */   f32 collisionZ;
- /* 0x00 */   f32 unk15;
- /* 0x00 */   f32 unk16;
- /* 0x00 */   f32 unk17;
- /* 0x00 */   f32 unk18;
- /* 0x00 */   f32 unk19;
- /* 0x00 */   f32 unk20;
- /* 0x00 */   f32 unkAngleX;
- /* 0x00 */   f32 unkAngleY;
+    f32 unk; // lookat? faceangle?
+    f32 unk1;
+    f32 unk2;
+    f32 angleX;
+    f32 angleY;
+    f32 angleZ;
+    s16 rotX;
+    s16 rotX2;
+    s16 rotY; // unused?
+    s16 rotZ;
+    s32 unk3; // zero
+    s32 unk4; // 0x4119999A
+    s32 unk5; // 0xC20C bit flag?
+    s32 unk6; // 0
+    s32 unk7; // 0
+    s32 unk8; // 0x41F
+    s32 unk9; // 0
+    s32 unk10; // 0
+    s32 unk11; // 0
+    s32 unk12; // 0
+    u16 unk13; // 0x103F7
+    u16 unk13_and_a_half;
+    u16 unk14; // 0x05BC00## Surface camera is over?
+    u16 unk14_half;
+    f32 collisionX;
+    f32 collisionY;
+    f32 collisionZ;
+    f32 unk15;
+    f32 unk16;
+    f32 unk17;
+    f32 unk18;
+    f32 unk19;
+    f32 unk20;
+    f32 unkAngleX;
+    f32 unkAngleY;
     f32 unkAngleZ;
     s32 unk21; // zero
     f32 collision;
