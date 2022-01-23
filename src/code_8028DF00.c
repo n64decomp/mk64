@@ -45,7 +45,7 @@ extern s32 D_800DC544;
 extern Player gPlayers[];
 extern Player *gPlayerTwo;
 extern Player *gPlayerOne;
-extern s32 lapCount[];
+extern s32 gLapCountByPlayerId[];
 extern s32 D_80150120;
 extern s32 gModeSelection;
 extern s32 gPlayerCountSelection1;
@@ -206,7 +206,7 @@ void update_player_battle_status(void) {
 extern f32 gTimePlayerLastTouchedFinishLine[];
 extern u16 D_801645B0[];
 extern u16 D_801645C8[];
-extern f32 D_801644A8[];
+extern f32 gLapCompletionPercentByPlayerId[];
 
 void func_8028E298(void) {
     f32 temp_v0;
@@ -220,8 +220,8 @@ void func_8028E298(void) {
         }
             temp_a2 = D_801645B0[i];
 
-            temp_v0 = ((2 - gPlayers[i].unk_008) * D_801645C8[temp_a2]);
-            temp_v0 += D_801645C8[temp_a2] * (1.0f - D_801644A8[i]);
+            temp_v0 = ((2 - gPlayers[i].lapCount) * D_801645C8[temp_a2]);
+            temp_v0 += D_801645C8[temp_a2] * (1.0f - gLapCompletionPercentByPlayerId[i]);
             temp_v0 /= 15.0f;
 
             gTimePlayerLastTouchedFinishLine[i] = gCourseTimer + temp_v0;
@@ -612,16 +612,16 @@ void func_8028EF28(void) {
             continue;
         }
 
-        if (lapCount[i] < gPlayers[i].unk_008) {
-            gPlayers[i].unk_008--;
-        } else if (lapCount[i] > gPlayers[i].unk_008) {
-            gPlayers[i].unk_008++;
+        if (gLapCountByPlayerId[i] < gPlayers[i].lapCount) {
+            gPlayers[i].lapCount--;
+        } else if (gLapCountByPlayerId[i] > gPlayers[i].lapCount) {
+            gPlayers[i].lapCount++;
 
             if ((gPlayers[i].unk_000 & PLAYER_HUMAN) != 0) {
-                if (gPlayers[i].unk_008 == 3) {
+                if (gPlayers[i].lapCount == 3) {
                     func_8028EEF0(i);
 
-                    currentPosition = gPlayers[i].unk_004;
+                    currentPosition = gPlayers[i].currentRank;
                     gPlayers[i].unk_000 |= PLAYER_CPU;
 
                     if (currentPosition < 4) {
@@ -702,7 +702,7 @@ void func_8028EF28(void) {
 
                     }
 
-                } else if (gPlayers[i].unk_008 == 2) {
+                } else if (gPlayers[i].lapCount == 2) {
                     if ((gPlayers[i].unk_000 & 0x100) != 0) {
                         return;
                     }
@@ -711,7 +711,7 @@ void func_8028EF28(void) {
                         func_800CA49C((u8)i);
                     }
                 }
-            } else if (gPlayers[i].unk_008 == 3) {
+            } else if (gPlayers[i].lapCount == 3) {
                 func_8028EEF0(i);
                 if (gModeSelection == TIME_TRIALS) {
                     func_80005AE8(ply);
@@ -741,7 +741,7 @@ void update_race_position_data(void) {
             ((gPlayers[i].unk_000 & PLAYER_CINEMATIC_MODE) == 0) &&
             ((gPlayers[i].unk_000 & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
             position = gPlayerPositions[i];
-            gPlayers[i].unk_004 = position;
+            gPlayers[i].currentRank = position;
             gPlayerPositionLUT[position] = i;
         }
     }
@@ -992,23 +992,23 @@ block_20:
             if ((gEnableDebugMode != 0) && (gModeSelection != BATTLE)) {
                 temp_a1 = gControllerOne;
                 if ((temp_a1->buttonPressed & 0x800) != 0) {
-                    lapCount->unk0 = 2;
+                    gLapCountByPlayerId->unk0 = 2;
                 }
                 phi_a0 = temp_a1->buttonPressed;
                 if ((temp_a1->buttonPressed & 0x100) != 0) {
-                    lapCount->unk0 = 2;
-                    lapCount->unk4 = 2;
+                    gLapCountByPlayerId->unk0 = 2;
+                    gLapCountByPlayerId->unk4 = 2;
                     phi_a0 = temp_a1->buttonPressed;
                 }
                 if ((phi_a0 & 0x400) != 0) {
-                    lapCount->unk0 = 2;
-                    lapCount->unk4 = 2;
-                    lapCount->unk8 = 2;
-                    lapCount->unkC = 2;
-                    lapCount->unk10 = 2;
-                    lapCount->unk14 = 2;
-                    lapCount->unk18 = 2;
-                    lapCount->unk1C = 2;
+                    gLapCountByPlayerId->unk0 = 2;
+                    gLapCountByPlayerId->unk4 = 2;
+                    gLapCountByPlayerId->unk8 = 2;
+                    gLapCountByPlayerId->unkC = 2;
+                    gLapCountByPlayerId->unk10 = 2;
+                    gLapCountByPlayerId->unk14 = 2;
+                    gLapCountByPlayerId->unk18 = 2;
+                    gLapCountByPlayerId->unk1C = 2;
                 }
             }
             // Duplicate return node #29. Try simplifying control flow for better match
@@ -1162,7 +1162,7 @@ void func_8028FCBC(void) {
                             if (((gPlayerOne->unk_000 & PLAYER_CINEMATIC_MODE) != 0) && ((gPlayerTwo->unk_000 & PLAYER_CINEMATIC_MODE) != 0)) {
 
 
-                                if (gPlayerOne->unk_004 < gPlayerTwo->unk_004) {
+                                if (gPlayerOne->currentRank < gPlayerTwo->currentRank) {
                                     gPlayerWinningIndex = 1;
                                 } else {
                                     gPlayerWinningIndex = 0;

@@ -110,12 +110,12 @@ glabel func_8000929C
 .L8000943C:
 /* 00A03C 8000943C C426CFA8 */  lwc1  $f6, %lo(D_800ECFA8)($at)
 /* 00A040 80009440 00045080 */  sll   $t2, $a0, 2
-/* 00A044 80009444 3C0B8016 */  lui   $t3, %hi(lapCount) # 0x8016
+/* 00A044 80009444 3C0B8016 */  lui   $t3, %hi(gLapCountByPlayerId) # 0x8016
 /* 00A048 80009448 4606603C */  c.lt.s $f12, $f6
 /* 00A04C 8000944C 016A5821 */  addu  $t3, $t3, $t2
 /* 00A050 80009450 45000028 */  bc1f  .L800094F4
 /* 00A054 80009454 00000000 */   nop   
-/* 00A058 80009458 8D6B4390 */  lw    $t3, %lo(lapCount)($t3) # 0x4390($t3)
+/* 00A058 80009458 8D6B4390 */  lw    $t3, %lo(gLapCountByPlayerId)($t3) # 0x4390($t3)
 /* 00A05C 8000945C 29610002 */  slti  $at, $t3, 2
 /* 00A060 80009460 10200024 */  beqz  $at, .L800094F4
 /* 00A064 80009464 00000000 */   nop   
@@ -141,12 +141,12 @@ glabel func_8000929C
 .L800094B0:
 /* 00A0B0 800094B0 C42ACFAC */  lwc1  $f10, %lo(D_800ECFAC)($at)
 /* 00A0B4 800094B4 00046880 */  sll   $t5, $a0, 2
-/* 00A0B8 800094B8 3C0E8016 */  lui   $t6, %hi(lapCount) # 0x8016
+/* 00A0B8 800094B8 3C0E8016 */  lui   $t6, %hi(gLapCountByPlayerId) # 0x8016
 /* 00A0BC 800094BC 460C503C */  c.lt.s $f10, $f12
 /* 00A0C0 800094C0 01CD7021 */  addu  $t6, $t6, $t5
 /* 00A0C4 800094C4 4500000B */  bc1f  .L800094F4
 /* 00A0C8 800094C8 00000000 */   nop   
-/* 00A0CC 800094CC 8DCE4390 */  lw    $t6, %lo(lapCount)($t6) # 0x4390($t6)
+/* 00A0CC 800094CC 8DCE4390 */  lw    $t6, %lo(gLapCountByPlayerId)($t6) # 0x4390($t6)
 /* 00A0D0 800094D0 29C10002 */  slti  $at, $t6, 2
 /* 00A0D4 800094D4 10200007 */  beqz  $at, .L800094F4
 /* 00A0D8 800094D8 00000000 */   nop   
@@ -178,8 +178,8 @@ glabel func_8000929C
 /* 00A134 80009534 4500004B */  bc1f  .L80009664
 /* 00A138 80009538 00000000 */   nop   
 /* 00A13C 8000953C 4604003C */  c.lt.s $f0, $f4
-/* 00A140 80009540 3C188016 */  lui   $t8, %hi(lapCount) # $t8, 0x8016
-/* 00A144 80009544 27184390 */  addiu $t8, %lo(lapCount) # addiu $t8, $t8, 0x4390
+/* 00A140 80009540 3C188016 */  lui   $t8, %hi(gLapCountByPlayerId) # $t8, 0x8016
+/* 00A144 80009544 27184390 */  addiu $t8, %lo(gLapCountByPlayerId) # addiu $t8, $t8, 0x4390
 /* 00A148 80009548 00F81021 */  addu  $v0, $a3, $t8
 /* 00A14C 8000954C 45000045 */  bc1f  .L80009664
 /* 00A150 80009550 00000000 */   nop   
@@ -196,9 +196,9 @@ glabel func_8000929C
 /* 00A17C 8000957C 01876021 */  addu  $t4, $t4, $a3
 /* 00A180 80009580 8D8C4408 */  lw    $t4, %lo(D_80164408)($t4) # 0x4408($t4)
 /* 00A184 80009584 24010007 */  li    $at, 7
-/* 00A188 80009588 3C028016 */  lui   $v0, %hi(lapCount) # $v0, 0x8016
+/* 00A188 80009588 3C028016 */  lui   $v0, %hi(gLapCountByPlayerId) # $v0, 0x8016
 /* 00A18C 8000958C 15810011 */  bne   $t4, $at, .L800095D4
-/* 00A190 80009590 24424390 */   addiu $v0, %lo(lapCount) # addiu $v0, $v0, 0x4390
+/* 00A190 80009590 24424390 */   addiu $v0, %lo(gLapCountByPlayerId) # addiu $v0, $v0, 0x4390
 /* 00A194 80009594 3C038016 */  lui   $v1, %hi(D_801643B0) # $v1, 0x8016
 /* 00A198 80009598 246343B0 */  addiu $v1, %lo(D_801643B0) # addiu $v1, $v1, 0x43b0
 .L8000959C:
@@ -265,8 +265,8 @@ glabel func_8000929C
 /* 00A280 80009680 4502000E */  bc1fl .L800096BC
 /* 00A284 80009684 C7AA0044 */   lwc1  $f10, 0x44($sp)
 /* 00A288 80009688 4608003C */  c.lt.s $f0, $f8
-/* 00A28C 8000968C 3C0A8016 */  lui   $t2, %hi(lapCount) # $t2, 0x8016
-/* 00A290 80009690 254A4390 */  addiu $t2, %lo(lapCount) # addiu $t2, $t2, 0x4390
+/* 00A28C 8000968C 3C0A8016 */  lui   $t2, %hi(gLapCountByPlayerId) # $t2, 0x8016
+/* 00A290 80009690 254A4390 */  addiu $t2, %lo(gLapCountByPlayerId) # addiu $t2, $t2, 0x4390
 /* 00A294 80009694 00EA1021 */  addu  $v0, $a3, $t2
 /* 00A298 80009698 45020008 */  bc1fl .L800096BC
 /* 00A29C 8000969C C7AA0044 */   lwc1  $f10, 0x44($sp)

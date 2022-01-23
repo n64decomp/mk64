@@ -2184,14 +2184,15 @@ GLOBAL_ASM("asm/non_matchings/code_80290C20/func_80295A38.s")
 void func_80295BF8(s32 playerIndex) {
     Player* player = &gPlayers[playerIndex];
     func_802AAAAC(&player->unk_110);
-    player->unk_1BD = 0;
-    player->unk_1A5 = 0;
-    player->unk_1ED = 0;
-    player->unk_1D5 = 0;
-    player->unk_1BE = 0x1388;
-    player->unk_1A6 = 0x1388;
-    player->unk_1EE = 0x1388;
-    player->unk_1D6 = 0x1388;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].unk_0D = 0.0f;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].unk_0D  = 0.0f;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].unk_0D  = 0.0f;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].unk_0D   = 0.0f;
+
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].tileIndex = 0x1388;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].tileIndex  = 0x1388;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].tileIndex  = 0x1388;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].tileIndex   = 0x1388;
 }
 
 

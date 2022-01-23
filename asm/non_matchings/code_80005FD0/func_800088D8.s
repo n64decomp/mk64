@@ -91,10 +91,10 @@ glabel func_800088D8
 /* 009624 80008A24 50200016 */  beql  $at, $zero, .L80008A80
 /* 009628 80008A28 84E40000 */   lh    $a0, ($a3)
 /* 00962C 80008A2C 84E20000 */  lh    $v0, ($a3)
-/* 009630 80008A30 3C018016 */  lui   $at, %hi(D_801644A8)
+/* 009630 80008A30 3C018016 */  lui   $at, %hi(gLapCompletionPercentByPlayerId)
 /* 009634 80008A34 00280821 */  addu  $at, $at, $t0
 /* 009638 80008A38 84E30010 */  lh    $v1, 0x10($a3)
-/* 00963C 80008A3C C42044A8 */  lwc1  $f0, %lo(D_801644A8)($at)
+/* 00963C 80008A3C C42044A8 */  lwc1  $f0, %lo(gLapCompletionPercentByPlayerId)($at)
 /* 009640 80008A40 44822000 */  mtc1  $v0, $f4
 /* 009644 80008A44 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 009648 80008A48 44814000 */  mtc1  $at, $f8
@@ -170,10 +170,10 @@ glabel func_800088D8
 /* 00974C 80008B4C 10200015 */  beqz  $at, .L80008BA4
 /* 009750 80008B50 3C0F800E */   lui   $t7, %hi(gCCSelection)
 /* 009754 80008B54 84E20000 */  lh    $v0, ($a3)
-/* 009758 80008B58 3C018016 */  lui   $at, %hi(D_801644A8)
+/* 009758 80008B58 3C018016 */  lui   $at, %hi(gLapCompletionPercentByPlayerId)
 /* 00975C 80008B5C 00280821 */  addu  $at, $at, $t0
 /* 009760 80008B60 84E30010 */  lh    $v1, 0x10($a3)
-/* 009764 80008B64 C42044A8 */  lwc1  $f0, %lo(D_801644A8)($at)
+/* 009764 80008B64 C42044A8 */  lwc1  $f0, %lo(gLapCompletionPercentByPlayerId)($at)
 /* 009768 80008B68 44829000 */  mtc1  $v0, $f18
 /* 00976C 80008B6C 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 009770 80008B70 44814000 */  mtc1  $at, $f8
@@ -308,10 +308,10 @@ glabel func_800088D8
 /* 00993C 80008D3C 0009C040 */  sll   $t8, $t1, 1
 /* 009940 80008D40 00F83021 */  addu  $a2, $a3, $t8
 /* 009944 80008D44 84C20000 */  lh    $v0, ($a2)
-/* 009948 80008D48 3C018016 */  lui   $at, %hi(D_801644A8)
+/* 009948 80008D48 3C018016 */  lui   $at, %hi(gLapCompletionPercentByPlayerId)
 /* 00994C 80008D4C 00280821 */  addu  $at, $at, $t0
 /* 009950 80008D50 84C30010 */  lh    $v1, 0x10($a2)
-/* 009954 80008D54 C42044A8 */  lwc1  $f0, %lo(D_801644A8)($at)
+/* 009954 80008D54 C42044A8 */  lwc1  $f0, %lo(gLapCompletionPercentByPlayerId)($at)
 /* 009958 80008D58 44825000 */  mtc1  $v0, $f10
 /* 00995C 80008D5C 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 009960 80008D60 44814000 */  mtc1  $at, $f8

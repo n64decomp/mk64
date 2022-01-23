@@ -5,6 +5,8 @@
 #include "defines.h"
 #include "common_structs.h"
 
+extern s32   gActiveScreenMode; // D_800DC52C
+
 extern s32   gCCSelection;                          // D_800DC548
 extern s8    gCharacterIdByGPOverallRank[8];        // D_8018D9D0
 extern s8    gCharacterGridSelections[4];           // D_8018EDE4
@@ -43,6 +45,9 @@ extern f32   gKartFrictionTable[];
 extern f32   gKartBoundingBoxTable[];
 extern f32   gKartGravityTable[];
 
+extern f32   gLapCompletionPercentByPlayerId[8]; // D_801644A8
+extern s32   gLapCountByPlayerId[8];             // D_80164390
+
 extern s32   gMenuTimingCounter; // D_8018EE00
 extern s32   gMenuSelection;     // D_800E86A0
 extern s32   gModeSelection;     // D_800DC53C
@@ -59,6 +64,7 @@ extern s32   gPlayerPositions[];                  // D_801643B8
 
 extern u8    gSaveDataSoundMode;               // D_8018ED14
 extern u8    gSaveDataSoundModeBackup;         // D_8018ED8C
+//extern u32   gScreenModeSelection;             // D_800DC530
 extern u32   gSegmentTable[16];                // D_80150258
 extern OSMesgQueue gSIEventMesgQueue;          // D_8014F0B8
 extern u8    gSoundMode;                       // D_8018EDF2
@@ -86,7 +92,7 @@ extern Player* gPlayerOneCopy;
 
 extern SaveData D_8018EB90;
 
-extern Mtx D_80183D60;
+extern Mtx D_80183D60[];
 
 extern struct_D_8018CE10 D_8018CE10[];
 extern struct_D_802874D8 D_802874D8;
@@ -103,7 +109,6 @@ extern Gfx  D_0D0077A0[];
 
 extern s32  D_800DC50C;
 extern u16  D_800DC51C;
-extern s32  gActiveScreenMode; // D_800DC52C
 extern s32  D_800DC540;
 extern u16  D_800DC5FC;
 

@@ -3,12 +3,12 @@ glabel func_8005A14C
 /* 05AD50 8005A150 01C47023 */  subu  $t6, $t6, $a0
 /* 05AD54 8005A154 000E7100 */  sll   $t6, $t6, 4
 /* 05AD58 8005A158 0004C880 */  sll   $t9, $a0, 2
-/* 05AD5C 8005A15C 3C098016 */  lui   $t1, %hi(lapCount)
+/* 05AD5C 8005A15C 3C098016 */  lui   $t1, %hi(gLapCountByPlayerId)
 /* 05AD60 8005A160 01C47023 */  subu  $t6, $t6, $a0
 /* 05AD64 8005A164 3C0F800E */  lui   $t7, %hi(gPlayerOne) # $t7, 0x800e
 /* 05AD68 8005A168 01394821 */  addu  $t1, $t1, $t9
 /* 05AD6C 8005A16C 8DEFC4DC */  lw    $t7, %lo(gPlayerOne)($t7)
-/* 05AD70 8005A170 8D294390 */  lw    $t1, %lo(lapCount)($t1)
+/* 05AD70 8005A170 8D294390 */  lw    $t1, %lo(gLapCountByPlayerId)($t1)
 /* 05AD74 8005A174 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 05AD78 8005A178 000E7080 */  sll   $t6, $t6, 2
 /* 05AD7C 8005A17C 01C47023 */  subu  $t6, $t6, $a0

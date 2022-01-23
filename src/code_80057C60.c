@@ -2,11 +2,12 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <main.h>
-#include <common_structs.h>
-#include <types.h>
+#include <variables.h>
 #include <config.h>
 #include <defines.h>
+#include "code_80057C60.h"
 #include "code_80040E50.h"
+#include "math_util.h"
 
 void func_8001C3C4(s32);
 void func_80041D34(void);
@@ -34,45 +35,6 @@ void func_800532A4(s32);
 void func_80054BE8(s32);
 void func_80055F48(s32);
 void func_80056160(s32);
-void func_80059360(void);
-void func_80059560(s32);
-void func_80059820(s32);
-void func_8005995C(void);
-void func_80059D00(void);
-void func_8005A14C(s32);
-void func_8005A380(void);
-void func_8005A3C0(void);
-void func_8005A71C(void);
-void func_8005A74C(void);
-void func_8005A99C(void);
-void func_8005AA34(void);
-void func_8005B914(void);
-void func_8005C360(f32);
-void func_8005C728(void);
-void func_8005CB60(s32, s32);
-void func_8005D0FC(s32);
-void func_8005D1F4(s32);
-void func_80062B18(f32*, f32*, f32*, f32, f32, f32, u16, u16);
-void func_80066998(Player*, s8, s16, s8);
-void func_80067964(Player*, s8, s32, s8, s32);
-void func_80067D3C(Player*, s8, s32, s32, f32, s32);
-void func_8006801C(Player*, s8, s32, s32, f32, s32);
-void func_80068310(Player*, s8, s32, s8, s32);
-void func_80068724(Player*, s8, s32, s8, s32);
-void func_80068AA4(Player*, s8, s32, s8, s32);
-void func_80068DA0(Player*, s8, s32, s8, s32);
-void func_8006A280(Player*, s8, s16, s8);
-void func_800658A0(Player*, s8, s16, s8);
-void func_8006B9CC(Player*, s8);
-void func_8006AFD0(Player*, s16, s8, s8);
-void func_8006C6AC(Player*, s16, s8, s8);
-void func_8006C9B8(Player*, s16, s8, s8);
-void func_8006CEC0(Player*, s16, s8, s8);
-void func_8006D194(Player*, s8, s8);
-void func_8006D474(Player*, s8, s8);
-void func_8006DC54(Player*, s8, s8);
-void func_8006DD3C(Player*, s8, s8);
-void func_8006E420(Player*, s8, s8);
 void func_800744CC(void);
 void func_80077640(void);
 void func_80078C70(s32);
@@ -89,118 +51,11 @@ void func_8008C1E0(s32*, s32*);
 void func_8008C204(void);
 void func_802A3730(struct UnkStruct_800DC5EC*);
 
-f32 coss(u16);
-f32 sins(u16);
-
-extern Mtx *D_80183D60;
-extern Vp D_802B8880;
-extern Gfx *gDisplayListHead;
-extern struct GfxPool *gGfxPool;
-extern s32 gPlayerCountSelection1;
-extern s16 gCurrentCourseId;
-
-extern struct UnkStruct_800DC5EC *D_800DC5EC;
-extern struct UnkStruct_800DC5EC *D_800DC5F0;
-extern struct UnkStruct_800DC5EC *D_800DC5F4;
-extern struct UnkStruct_800DC5EC *D_800DC5F8;
-extern s32 D_8018D21C;
-extern u16 gPlayerBalloonStatus[8][3]; // 0x8018D5F0
-extern s16 gPlayerBalloonCount[];
-
-extern Player* gPlayerOneCopy;
-extern u16 D_800DC5FC;
-extern f64 D_800EE648;
-extern f64 D_800EE650;
-extern f64 D_800EE658;
-extern f64 D_800EE660;
-extern f64 D_800EE668;
-extern f64 D_800EE670;
-extern f64 D_800EE678;
-extern f32 D_800EE680;
-extern f32 D_800EE684;
-extern f32 D_800EE688;
-extern f32 D_800EE68C;
-extern f64 D_800EE690;
-extern f64 D_800EE698;
-extern f64 D_800EE6A0;
-extern f64 D_800EE6A8;
-extern f64 D_800EE6B0;
-extern f64 D_800EE6B8;
-extern f64 D_800EE6C0;
-extern f64 D_800EE6D8;
-extern f64 D_800EE6E0;
-extern f64 D_800EE6E8;
-extern f64 D_800EE700;
-extern f64 D_800EE708;
-extern f64 D_800EE710;
-extern f64 D_800EE718;
-extern f64 D_800EE720;
-extern f64 D_800EE728;
-extern f64 D_800EE730;
-extern f64 D_800EE738;
-extern f64 D_800EE740;
-extern f64 D_800EE748;
-extern f64 D_800EE750;
-extern f64 D_800EE758;
-extern f64 D_800EE760;
-extern f64 D_800EE768;
-extern f64 D_800EE770;
-extern f64 D_800EE778;
-extern f32 D_800EE780;
-extern f64 D_800EE788;
-extern f64 D_800EE790;
-extern f64 D_800EE798;
-extern f64 D_800EE7A0;
-extern f64 D_800EE7A8;
-extern f32 D_800EE7B0;
-extern f64 D_800EE7B8;
-extern f32 D_800EE948;
-extern f32 D_800EE94C;
-extern s32 lapCount;
-extern s32 D_80164394;
-extern s32 D_80164398;
-extern s32 D_8016439C;
-extern s32 gPlayerPositions;
-extern f32 D_801652A0[];
-extern s32 D_801655C0;
-extern s32 D_801655F0;
-extern s32 D_80165678;
-extern s8  D_801657AE;
-extern s8  D_801657D8;
-extern s8  D_801657E8;
-extern s8  D_8018CAE0;
-extern s32 D_8018D120;
-extern s32 D_8018D170;
-extern s32 D_8018D178;
-extern s32 D_8018D188;
-extern s32 D_8018D190;
-extern s32 D_8018D1A0;
-extern s32 D_8018D1B4;
-extern s32 D_8018D1D4;
-extern s32 D_8018D1CC;
-extern s32 D_8018D1FC;
-extern s32 D_8018D204;
-extern s32 D_8018D2A4;
-extern s32 D_8018D2BC;
-extern s32 D_8018D480;
-extern s32 D_8018D484;
-extern s32 gActiveScreenMode;
-extern s32 gModeSelection;
-extern s32 gPlayerCountSelection1;
-extern Player* gPlayerEight;
-extern Player* gPlayerFive;
-extern Player* gPlayerFour;
-extern Player* gPlayerOne;
-extern Player* gPlayerSeven;
-extern Player* gPlayerSix;
-extern Player* gPlayerThree;
-extern Player* gPlayerTwo;
-
 // UI Code?
 void func_80057C60(void) {
-    gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_802B8880));
+    gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_80183D60), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_80183D60), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 }
 
 void func_80057CE4(void) {
@@ -294,10 +149,6 @@ void func_80057FC4(u32 arg0) {
 }
 
 extern s32 D_8018D22C;
-void func_800581C8();
-void func_800582CC();
-void func_80058394();
-void func_8005845C();
 
 void func_80058090(u32 arg0) {
     UNUSED Gfx *temp_v1;
@@ -354,7 +205,6 @@ void func_80058090(u32 arg0) {
 }
 
 void func_8005217C(s32);
-void func_800588F4(s32 arg0);
 extern s32 D_800DC50C;
 extern u16 D_800DC51C;
 void func_800581C8(void) {
@@ -412,11 +262,6 @@ void func_8005845C(void) {
     func_800588F4(3);
 }
 
-void func_80058640();                       /* extern */
-void func_800586FC();                       /* extern */
-void func_800587A4();                       /* extern */
-void func_8005884C();                       /* extern */
-
 void func_80058538(u32 arg0) {
     UNUSED Gfx *temp_v1;
 
@@ -459,8 +304,6 @@ void func_80058538(u32 arg0) {
             break;
     }
 }
-
-void func_80058B58();
 
 void func_80058640(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
@@ -515,7 +358,6 @@ void func_80055C38(s32);
 void func_80055E68(s32);
 void func_80056188(s32);
 void func_80056AC0(s32);
-extern s32 gModeSelection;
 extern s16 D_80165730;
 extern s8 D_8018EDF3;
 extern s8 D_80165898;
@@ -643,16 +485,6 @@ void func_80058BF4(void) {
     gSPDisplayList(gDisplayListHead++, &D_0D0076F8);
 }
 
-void func_80058F48(void);
-void func_80059358(void);
-void func_800593F0(void);
-void func_800594F0(void);
-void func_80059528(void);
-void func_800596A8(void);
-void func_80059710(void);
-void func_80059750(void);
-void func_800597B8(void);
-
 void func_80058C20(u32 arg0) {
 
     D_8018D21C = arg0;
@@ -720,15 +552,6 @@ void func_80058C20(u32 arg0) {
         }
     }
 }
-
-void func_800593F8(void);
-void func_80058F78(void);
-void func_800594F8(void);
-void func_80059530(void);
-void func_800596D8(void);
-void func_80059718(void);
-void func_80059780(void);
-void func_800597E8(void);
 
 void func_80058DB4(u32 arg0) {
 
@@ -895,8 +718,6 @@ extern s8 D_80165800;
 extern s8 D_80165801;
 extern s32 D_8018D188;
 extern s32 D_8018D2BC;
-
-extern s32 gScreenModeSelection;
 
 void func_800591B4(void) {
 
@@ -1484,7 +1305,7 @@ void func_8005A070(void) {
 extern f32 D_800EE1E0;
 extern ? D_80165C18;
 extern ? D_8018CE24;
-extern ? lapCount;
+extern ? gLapCountByPlayerId;
 
 void func_8005A14C(s32 arg0) {
     s32 sp2C;
@@ -1498,7 +1319,7 @@ void func_8005A14C(s32 arg0) {
     void *phi_s0;
 
     temp_t0 = &gPlayerOne[arg0];
-    sp28 = *(&lapCount + (arg0 * 4));
+    sp28 = *(&gLapCountByPlayerId + (arg0 * 4));
     temp_a3 = *(&D_8018CE24 + (arg0 << 5));
     if ((temp_t0->unk_000 & 0x8000) != 0) {
         if ((temp_t0->unk_0BC & 0x204C0) != 0) {
@@ -2481,7 +2302,7 @@ void func_8005B914(void) {
             func_8005AA94(0x82);
             goto block_76;
         case 0x80:                                  /* switch 1 */
-            if (gPlayerPositions < 4) {
+            if (gPlayerPositions[0] < 4) {
                 func_8005AA6C(0x8C);
             } else {
                 func_8005AA6C(0x82);
@@ -3169,7 +2990,7 @@ void func_8005D0FC(s32 arg0) {
     if (gModeSelection != BATTLE) {
         switch (arg0) {                             /* irregular */
         case 0:
-            func_8005CB60(arg0, lapCount);
+            func_8005CB60(arg0, gLapCountByPlayerId[0]);
             break;
         case 1:
             func_8005CB60(arg0, D_80164394);
@@ -3189,7 +3010,7 @@ void func_8005D18C(void) {
         D_801657D8 = 1;
         D_8018D2BC = 0;
         D_8018D2A4 = 0;
-        if (gPlayerPositions >= 4) {
+        if (gPlayerPositions[0] >= 4) {
             D_8018D1FC = 1;
             D_8018D2A4 = 1;
             D_8018D2BC = 1;
@@ -3500,57 +3321,56 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005D82C.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8005D794(void *, void *, f32, f32, ?32, s32, s32); // extern
-? func_8005D7D8(void *, ?, ?); // extern
-? func_8005D800(void *, ?, ?); // extern
+//generated by mips_to_c commit 792017ad9d422c2467bd42686f383a5c41f41c75
+? func_8005D794(Player *, f32, f32, f32, f32, s32, s32); /* extern */
+? func_8005D7D8(Player *, ?, ?);                    /* extern */
+? func_8005D800(Player *, ?, ?);                    /* extern */
 
-void func_8005D898(void *arg0, s16 arg1, ? arg2, ? arg3) {
+void func_8005D898(Player *player, s32 arg1, s8 arg2, s32 arg3) {
+    Player *temp_s1;
+    Player *temp_s1_2;
     s32 temp_lo;
-    void *temp_s1;
-    void *temp_s1_2;
     void *temp_s2;
     void *temp_s2_2;
-    void *phi_s1;
+    Player *phi_s1;
     s32 phi_v0;
     s32 phi_v0_2;
     void *phi_s2;
 
-    if (arg0->unkC0 >= 0) {
-        temp_s2 = arg0 + (arg1 * 0x48);
+    if ((s32) player->unk_0C0 >= 0) {
+        temp_s2 = player + ((s16) arg1 * 0x48);
         temp_s1 = temp_s2 + 0x528;
-        func_8005D794(temp_s1, arg0->unk1C8, arg0->unk1D8 + 2.0f, arg0->unk1D0, arg0->unk1D4, 1);
+        func_8005D794(temp_s1, player->boundingBoxCorners[2].cornerX, player->boundingBoxCorners[2].cornerGroundY + 2.0f, player->boundingBoxCorners[2].cornerZ, (bitwise f32) player->boundingBoxCorners[2].surfaceType, 1);
         phi_s1 = temp_s1;
         phi_s2 = temp_s2;
     } else {
-        temp_s2_2 = arg0 + (arg1 * 0x48);
+        temp_s2_2 = player + ((s16) arg1 * 0x48);
         temp_s1_2 = temp_s2_2 + 0x528;
-        func_8005D794(arg0, temp_s1_2, arg0->unk1E0, arg0->unk1F0 + 2.0f, arg0->unk1E8, arg0->unk1EC, 0);
+        func_8005D794(player, (bitwise f32) temp_s1_2, player->boundingBoxCorners[3].cornerX, player->boundingBoxCorners[3].cornerGroundY + 2.0f, player->boundingBoxCorners[3].cornerZ, (s32) player->boundingBoxCorners[3].surfaceType, 0);
         phi_s1 = temp_s1_2;
         phi_s2 = temp_s2_2;
     }
-    temp_lo = arg0->unkC0 / 0xB6;
+    temp_lo = (s32) player->unk_0C0 / 182;
     if ((temp_lo >= 7) || (temp_lo < -6)) {
         func_8005D7D8(phi_s1, 1, 0x3EB33333);
-        if (arg0->unk22A == 0) {
+        if (player->unk_22A == 0) {
             func_8005D800(phi_s1, 0xFFFFFF, 0x70);
         }
-        phi_v0 = arg0->unk22A;
-        if (arg0->unk22A == 1) {
+        phi_v0 = (s32) player->unk_22A;
+        if (player->unk_22A == 1) {
             func_8005D800(phi_s1, 0xFFFF00, 0x70);
-            phi_v0 = arg0->unk22A;
+            phi_v0 = (s32) player->unk_22A;
         }
         phi_v0_2 = phi_v0;
         if (phi_v0 >= 2) {
             func_8005D800(phi_s1, 0xFF9600, 0x70);
-            phi_v0_2 = arg0->unk22A;
+            phi_v0_2 = (s32) player->unk_22A;
         }
         if (phi_v0_2 >= 2) {
             phi_s2->unk568 = 2;
             return;
         }
-        phi_s2->unk568 = phi_v0_2;
-        // Duplicate return node #14. Try simplifying control flow for better match
+        phi_s2->unk568 = (s16) phi_v0_2;
     }
 }
 #else
@@ -3588,16 +3408,17 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005DAD8.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
-? func_8005D794(f32, f32, void *, void *, f32, f32, f32, s32, s32); /* extern */
+//generated by mips_to_c commit 792017ad9d422c2467bd42686f383a5c41f41c75
+? func_8005D794(f32, f32, Player *, void *, f32, f32, f32, s32, s32); /* extern */
 ? func_8005D7D8(void *, ?, ?);                      /* extern */
 ? func_8005D800(void *, ?, ?);                      /* extern */
 ? func_8005D82C(void *, ?, ?);                      /* extern */
 ? func_8005DAD8(void *, ?, ?, ?);                   /* extern */
+s16 random_int(u16);                                /* extern */
+static u16 D_800E483E;                              /* unable to generate initializer; const */
 s16 gCurrentCourseId;                               /* unable to generate initializer */
-u16 D_800E483E;                                     /* unable to generate initializer; const */
 
-void func_8005DAF4(void *arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_8005DAF4(Player *player, s32 arg1, s8 arg2, s32 arg3) {
     s32 sp48;
     s32 sp44;
     f32 sp40;
@@ -3668,37 +3489,39 @@ void func_8005DAF4(void *arg0, s16 arg1, s32 arg2, s32 arg3) {
     s16 phi_v1_8;
     s16 phi_v1_9;
     s16 phi_v1_10;
+    s16 phi_t0;
     s16 phi_v0;
     void *phi_s2;
 
     sp48 = 0xFF;
     temp_v0 = random_int(D_800E483E);
+    phi_t0 = (s16) arg1;
     phi_t1 = 0xFF;
     if ((temp_v0 == 0) || (temp_v0 == 4)) {
         sp44 = 1;
-        sp3C = arg0->unk1D8 + 2.0f;
-        sp40 = arg0->unk1C8;
-        sp38 = arg0->unk1D0;
-        phi_t1 = arg0->unk1D4;
+        sp3C = player->boundingBoxCorners[2].cornerGroundY + 2.0f;
+        sp40 = player->boundingBoxCorners[2].cornerX;
+        sp38 = player->boundingBoxCorners[2].cornerZ;
+        phi_t1 = (s32) player->boundingBoxCorners[2].surfaceType;
     }
     phi_f12 = sp3C;
     phi_f14 = sp38;
     phi_f2 = sp40;
     phi_t3 = sp44;
     if ((temp_v0 == 2) || (temp_v0 == 6)) {
-        phi_t1 = arg0->unk1EC;
-        phi_f12 = arg0->unk1F0 + 2.0f;
-        phi_f14 = arg0->unk1E8;
-        phi_f2 = arg0->unk1E0;
+        phi_t1 = (s32) player->boundingBoxCorners[3].surfaceType;
+        phi_f12 = player->boundingBoxCorners[3].cornerGroundY + 2.0f;
+        phi_f14 = player->boundingBoxCorners[3].cornerZ;
+        phi_f2 = player->boundingBoxCorners[3].cornerX;
         phi_t3 = 0;
     }
     switch (phi_t1) {
     case 2:
-        if ((arg1 == 0) && ((temp_v0_2 = arg0 + (arg2 * 0x48), (temp_v0_2->unk546 > 0)) || (temp_v0_2->unk544 == 0))) {
-            if (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f) {
-                temp_s2 = arg0 + (arg1 * 0x48);
+        if (((s16) arg1 == 0) && ((temp_v0_2 = player + (arg2 * 0x48), ((s32) temp_v0_2->unk546 > 0)) || (temp_v0_2->unk544 == 0))) {
+            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                temp_s2 = player + ((s16) arg1 * 0x48);
                 temp_s0 = temp_s2 + 0x528;
-                func_8005D794(phi_f12, phi_f14, arg0, temp_s0, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+                func_8005D794(phi_f12, phi_f14, player, temp_s0, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
                 func_8005D7D8(temp_s0, 2, 0x3EEB851F);
                 temp_v1 = gCurrentCourseId;
                 phi_v1 = temp_v1;
@@ -3730,13 +3553,13 @@ void func_8005DAF4(void *arg0, s16 arg1, s32 arg2, s32 arg3) {
                 if (phi_v1_5 == 0x12) {
                     func_8005DAD8(temp_s0, 0xB, 0, 0x80);
                 }
-                phi_v0 = random_int(0x10);
+                phi_v0 = random_int(0x10U);
                 goto block_105;
             }
-        } else if (((arg0 + (arg2 * 0x48))->unk546 > 0) && (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f)) {
-            temp_s2_2 = arg0 + (arg1 * 0x48);
+        } else if (((s32) (player + (arg2 * 0x48))->unk546 > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            temp_s2_2 = player + ((s16) arg1 * 0x48);
             temp_s0_2 = temp_s2_2 + 0x528;
-            func_8005D794(phi_f12, phi_f14, arg0, temp_s0_2, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+            func_8005D794(phi_f12, phi_f14, player, temp_s0_2, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
             func_8005D7D8(temp_s0_2, 2, 0x3EEB851F);
             temp_v1_2 = gCurrentCourseId;
             phi_v1_6 = temp_v1_2;
@@ -3768,188 +3591,184 @@ void func_8005DAF4(void *arg0, s16 arg1, s32 arg2, s32 arg3) {
             if (phi_v1_10 == 0x12) {
                 func_8005DAD8(temp_s0_2, 0xB, 0, 0x80);
             }
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
 block_105:
             phi_s2->unk562 = phi_v0;
         }
     default:
         return;
     case 8:
-        if ((arg1 == 0) && ((temp_v0_3 = arg0 + (arg2 * 0x48), (temp_v0_3->unk546 > 0)) || (temp_v0_3->unk544 == 0))) {
-            if (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f) {
-                temp_s2_3 = arg0 + (arg1 * 0x48);
+        if (((s16) arg1 == 0) && ((temp_v0_3 = player + (arg2 * 0x48), ((s32) temp_v0_3->unk546 > 0)) || (temp_v0_3->unk544 == 0))) {
+            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                temp_s2_3 = player + ((s16) arg1 * 0x48);
                 temp_s0_3 = temp_s2_3 + 0x528;
-                func_8005D794(phi_f12, phi_f14, arg0, temp_s0_3, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+                func_8005D794(phi_f12, phi_f14, player, temp_s0_3, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
                 func_8005D7D8(temp_s0_3, 3, 0x3F800000);
                 func_8005D800(temp_s0_3, 0xFFFFFF, 0xFF);
-                temp_v1_3 = arg1 * 8;
-                temp_s2_3->unk560 = temp_s2_3->unk560 - temp_v1_3;
-                temp_s2_3->unk562 = temp_s2_3->unk562 - temp_v1_3;
-                temp_s2_3->unk564 = temp_s2_3->unk564 - temp_v1_3;
+                temp_v1_3 = (s16) arg1 * 8;
+                temp_s2_3->unk560 = (s16) (temp_s2_3->unk560 - temp_v1_3);
+                temp_s2_3->unk562 = (s16) (temp_s2_3->unk562 - temp_v1_3);
+                temp_s2_3->unk564 = (s16) (temp_s2_3->unk564 - temp_v1_3);
+                phi_t0 = (s16) arg1;
             }
-        } else if (((arg0 + (arg2 * 0x48))->unk546 > 0) && (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f)) {
-            temp_s2_4 = arg0 + (arg1 * 0x48);
+        } else if (((s32) (player + (arg2 * 0x48))->unk546 > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            temp_s2_4 = player + ((s16) arg1 * 0x48);
             temp_s0_4 = temp_s2_4 + 0x528;
-            func_8005D794(phi_f12, phi_f14, arg0, temp_s0_4, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+            func_8005D794(phi_f12, phi_f14, player, temp_s0_4, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
             func_8005D7D8(temp_s0_4, 3, 0x3F800000);
             func_8005D800(temp_s0_4, 0xFFFFFF, 0xFF);
-            temp_v1_4 = arg1 * 8;
-            temp_s2_4->unk560 = temp_s2_4->unk560 - temp_v1_4;
-            temp_s2_4->unk562 = temp_s2_4->unk562 - temp_v1_4;
-            temp_s2_4->unk564 = temp_s2_4->unk564 - temp_v1_4;
+            temp_v1_4 = (s16) arg1 * 8;
+            temp_s2_4->unk560 = (s16) (temp_s2_4->unk560 - temp_v1_4);
+            temp_s2_4->unk562 = (s16) (temp_s2_4->unk562 - temp_v1_4);
+            temp_s2_4->unk564 = (s16) (temp_s2_4->unk564 - temp_v1_4);
+            phi_t0 = (s16) arg1;
         }
-        temp_s2_5 = arg0 + (arg1 * 0x48);
-        temp_s2_5->unk52C = temp_s2_5->unk52C - 1.5;
+        temp_s2_5 = player + (phi_t0 * 0x48);
+        temp_s2_5->unk52C = (f32) ((f64) temp_s2_5->unk52C - 1.5);
         return;
     case 7:
-        if ((arg1 == 0) && ((temp_v0_4 = arg0 + (arg2 * 0x48), (temp_v0_4->unk546 > 0)) || (temp_v0_4->unk544 == 0))) {
-            if (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f) {
-                temp_s2_6 = arg0 + (arg1 * 0x48);
+        if (((s16) arg1 == 0) && ((temp_v0_4 = player + (arg2 * 0x48), ((s32) temp_v0_4->unk546 > 0)) || (temp_v0_4->unk544 == 0))) {
+            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                temp_s2_6 = player + ((s16) arg1 * 0x48);
                 temp_s0_5 = temp_s2_6 + 0x528;
-                func_8005D794(phi_f12, phi_f14, arg0, temp_s0_5, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+                func_8005D794(phi_f12, phi_f14, player, temp_s0_5, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
                 func_8005D7D8(temp_s0_5, 2, 0x3EEB851F);
                 func_8005DAD8(temp_s0_5, 2, 1, 0xA8);
-                phi_v0 = random_int(0x10);
+                phi_v0 = random_int(0x10U);
                 phi_s2 = temp_s2_6;
                 goto block_105;
             }
-        } else if (((arg0 + (arg2 * 0x48))->unk546 > 0) && (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f)) {
-            temp_s2_7 = arg0 + (arg1 * 0x48);
+        } else if (((s32) (player + (arg2 * 0x48))->unk546 > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            temp_s2_7 = player + ((s16) arg1 * 0x48);
             temp_s0_6 = temp_s2_7 + 0x528;
-            func_8005D794(phi_f12, phi_f14, arg0, temp_s0_6, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+            func_8005D794(phi_f12, phi_f14, player, temp_s0_6, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
             func_8005D7D8(temp_s0_6, 2, 0x3EEB851F);
             func_8005DAD8(temp_s0_6, 2, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_7;
             goto block_105;
         }
-        /* Duplicate return node #106. Try simplifying control flow for better match */
-        return;
+        break;
     case 3:
-        if ((arg1 == 0) && ((temp_v0_5 = arg0 + (arg2 * 0x48), (temp_v0_5->unk546 > 0)) || (temp_v0_5->unk544 == 0))) {
-            if (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f) {
-                temp_s2_8 = arg0 + (arg1 * 0x48);
+        if (((s16) arg1 == 0) && ((temp_v0_5 = player + (arg2 * 0x48), ((s32) temp_v0_5->unk546 > 0)) || (temp_v0_5->unk544 == 0))) {
+            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                temp_s2_8 = player + ((s16) arg1 * 0x48);
                 temp_s0_7 = temp_s2_8 + 0x528;
-                func_8005D794(phi_f12, phi_f14, arg0, temp_s0_7, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+                func_8005D794(phi_f12, phi_f14, player, temp_s0_7, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
                 func_8005D7D8(temp_s0_7, 2, 0x3EEB851F);
                 func_8005DAD8(temp_s0_7, 3, 1, 0xA8);
-                phi_v0 = random_int(0x10);
+                phi_v0 = random_int(0x10U);
                 phi_s2 = temp_s2_8;
                 goto block_105;
             }
-        } else if (((arg0 + (arg2 * 0x48))->unk546 > 0) && (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f)) {
-            temp_s2_9 = arg0 + (arg1 * 0x48);
+        } else if (((s32) (player + (arg2 * 0x48))->unk546 > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            temp_s2_9 = player + ((s16) arg1 * 0x48);
             temp_s0_8 = temp_s2_9 + 0x528;
-            func_8005D794(phi_f12, phi_f14, arg0, temp_s0_8, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+            func_8005D794(phi_f12, phi_f14, player, temp_s0_8, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
             func_8005D7D8(temp_s0_8, 2, 0x3EEB851F);
             func_8005DAD8(temp_s0_8, 3, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_9;
             goto block_105;
         }
-        /* Duplicate return node #106. Try simplifying control flow for better match */
-        return;
+        break;
     case 10:
-        if ((arg1 == 0) && ((temp_v0_6 = arg0 + (arg2 * 0x48), (temp_v0_6->unk546 > 0)) || (temp_v0_6->unk544 == 0))) {
-            if (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f) {
-                temp_s2_10 = arg0 + (arg1 * 0x48);
+        if (((s16) arg1 == 0) && ((temp_v0_6 = player + (arg2 * 0x48), ((s32) temp_v0_6->unk546 > 0)) || (temp_v0_6->unk544 == 0))) {
+            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                temp_s2_10 = player + ((s16) arg1 * 0x48);
                 temp_s0_9 = temp_s2_10 + 0x528;
-                func_8005D794(phi_f12, phi_f14, arg0, temp_s0_9, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+                func_8005D794(phi_f12, phi_f14, player, temp_s0_9, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
                 func_8005D7D8(temp_s0_9, 2, 0x3EEB851F);
                 func_8005DAD8(temp_s0_9, 4, 1, 0xA8);
-                phi_v0 = random_int(0x10);
+                phi_v0 = random_int(0x10U);
                 phi_s2 = temp_s2_10;
                 goto block_105;
             }
-        } else if (((arg0 + (arg2 * 0x48))->unk546 > 0) && (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f)) {
-            temp_s2_11 = arg0 + (arg1 * 0x48);
+        } else if (((s32) (player + (arg2 * 0x48))->unk546 > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            temp_s2_11 = player + ((s16) arg1 * 0x48);
             temp_s0_10 = temp_s2_11 + 0x528;
-            func_8005D794(phi_f12, phi_f14, arg0, temp_s0_10, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+            func_8005D794(phi_f12, phi_f14, player, temp_s0_10, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
             func_8005D7D8(temp_s0_10, 2, 0x3EEB851F);
             func_8005DAD8(temp_s0_10, 4, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_11;
             goto block_105;
         }
-        /* Duplicate return node #106. Try simplifying control flow for better match */
-        return;
+        break;
     case 13:
-        if ((arg1 == 0) && ((temp_v0_7 = arg0 + (arg2 * 0x48), (temp_v0_7->unk546 > 0)) || (temp_v0_7->unk544 == 0))) {
-            if (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f) {
-                temp_s2_12 = arg0 + (arg1 * 0x48);
+        if (((s16) arg1 == 0) && ((temp_v0_7 = player + (arg2 * 0x48), ((s32) temp_v0_7->unk546 > 0)) || (temp_v0_7->unk544 == 0))) {
+            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                temp_s2_12 = player + ((s16) arg1 * 0x48);
                 temp_s0_11 = temp_s2_12 + 0x528;
-                func_8005D794(phi_f12, phi_f14, arg0, temp_s0_11, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+                func_8005D794(phi_f12, phi_f14, player, temp_s0_11, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
                 func_8005D7D8(temp_s0_11, 2, 0x3EEB851F);
                 func_8005DAD8(temp_s0_11, 5, 1, 0xA8);
-                phi_v0 = random_int(0x10);
+                phi_v0 = random_int(0x10U);
                 phi_s2 = temp_s2_12;
                 goto block_105;
             }
-        } else if (((arg0 + (arg2 * 0x48))->unk546 > 0) && (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f)) {
-            temp_s2_13 = arg0 + (arg1 * 0x48);
+        } else if (((s32) (player + (arg2 * 0x48))->unk546 > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            temp_s2_13 = player + ((s16) arg1 * 0x48);
             temp_s0_12 = temp_s2_13 + 0x528;
-            func_8005D794(phi_f12, phi_f14, arg0, temp_s0_12, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+            func_8005D794(phi_f12, phi_f14, player, temp_s0_12, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
             func_8005D7D8(temp_s0_12, 2, 0x3EEB851F);
             func_8005D82C(temp_s0_12, 0xFFA54F, 0xAF);
             func_8005DAD8(temp_s0_12, 5, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_13;
             goto block_105;
         }
-        /* Duplicate return node #106. Try simplifying control flow for better match */
-        return;
+        break;
     case 5:
     case 11:
-        if ((arg1 == 0) && ((temp_v0_8 = arg0 + (arg2 * 0x48), (temp_v0_8->unk546 > 0)) || (temp_v0_8->unk544 == 0))) {
-            if (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f) {
-                temp_s2_14 = arg0 + (arg1 * 0x48);
+        if (((s16) arg1 == 0) && ((temp_v0_8 = player + (arg2 * 0x48), ((s32) temp_v0_8->unk546 > 0)) || (temp_v0_8->unk544 == 0))) {
+            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                temp_s2_14 = player + ((s16) arg1 * 0x48);
                 temp_s0_13 = temp_s2_14 + 0x528;
-                func_8005D794(phi_f12, phi_f14, arg0, temp_s0_13, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+                func_8005D794(phi_f12, phi_f14, player, temp_s0_13, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
                 func_8005D7D8(temp_s0_13, 2, 0x3EEB851F);
                 func_8005DAD8(temp_s0_13, 6, 1, 0xA8);
-                phi_v0 = random_int(0x10);
+                phi_v0 = random_int(0x10U);
                 phi_s2 = temp_s2_14;
                 goto block_105;
             }
-        } else if (((arg0 + (arg2 * 0x48))->unk546 > 0) && (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f)) {
-            temp_s2_15 = arg0 + (arg1 * 0x48);
+        } else if (((s32) (player + (arg2 * 0x48))->unk546 > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            temp_s2_15 = player + ((s16) arg1 * 0x48);
             temp_s0_14 = temp_s2_15 + 0x528;
-            func_8005D794(phi_f12, phi_f14, arg0, temp_s0_14, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+            func_8005D794(phi_f12, phi_f14, player, temp_s0_14, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
             func_8005D7D8(temp_s0_14, 2, 0x3EEB851F);
             func_8005DAD8(temp_s0_14, 6, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_15;
             goto block_105;
         }
-        /* Duplicate return node #106. Try simplifying control flow for better match */
-        return;
+        break;
     case 1:
     case 4:
     case 6:
-        if ((arg1 == 0) && ((temp_v0_9 = arg0 + (arg2 * 0x48), (temp_v0_9->unk546 > 0)) || (temp_v0_9->unk544 == 0))) {
-            temp_f0 = arg0->unk94;
-            if (((((temp_f0 / 18.0f) * 216.0f) >= 30.0f) && ((temp_lo = arg0->unkC0 / 182, ((temp_lo < 0x15) == 0)) || (temp_lo < -0x14))) || ((arg0->unk22C - temp_f0) >= 0.04)) {
-                temp_s2_16 = arg0 + (arg1 * 0x48);
+        if (((s16) arg1 == 0) && ((temp_v0_9 = player + (arg2 * 0x48), ((s32) temp_v0_9->unk546 > 0)) || (temp_v0_9->unk544 == 0))) {
+            temp_f0 = player->unk_094;
+            if (((((temp_f0 / 18.0f) * 216.0f) >= 30.0f) && ((temp_lo = (s32) player->unk_0C0 / 182, ((temp_lo < 0x15) == 0)) || (temp_lo < -0x14))) || ((f64) (player->unk_22C - temp_f0) >= 0.04)) {
+                temp_s2_16 = player + ((s16) arg1 * 0x48);
                 temp_s0_15 = temp_s2_16 + 0x528;
-                func_8005D794(phi_f12, phi_f14, arg0, temp_s0_15, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+                func_8005D794(phi_f12, phi_f14, player, temp_s0_15, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
                 func_8005D7D8(temp_s0_15, 2, 0x3EEB851F);
                 func_8005DAD8(temp_s0_15, 0, 0, 0x80);
-                phi_v0 = random_int(0x10);
+                phi_v0 = random_int(0x10U);
                 phi_s2 = temp_s2_16;
                 goto block_105;
             }
-        } else if (((arg0 + (arg2 * 0x48))->unk546 > 0) && (((temp_f0_2 = arg0->unk94, (((temp_f0_2 / 18.0f) * 216.0f) >= 30.0f)) && ((temp_lo_2 = arg0->unkC0 / 182, ((temp_lo_2 < 0x15) == 0)) || (temp_lo_2 < -0x14))) || ((arg0->unk22C - temp_f0_2) >= 0.04))) {
-            temp_s2_17 = arg0 + (arg1 * 0x48);
+        } else if (((s32) (player + (arg2 * 0x48))->unk546 > 0) && (((temp_f0_2 = player->unk_094, (((temp_f0_2 / 18.0f) * 216.0f) >= 30.0f)) && ((temp_lo_2 = (s32) player->unk_0C0 / 182, ((temp_lo_2 < 0x15) == 0)) || (temp_lo_2 < -0x14))) || ((f64) (player->unk_22C - temp_f0_2) >= 0.04))) {
+            temp_s2_17 = player + ((s16) arg1 * 0x48);
             temp_s0_16 = temp_s2_17 + 0x528;
-            func_8005D794(phi_f12, phi_f14, arg0, temp_s0_16, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
+            func_8005D794(phi_f12, phi_f14, player, temp_s0_16, phi_f2, phi_f12, phi_f14, phi_t1, phi_t3);
             func_8005D7D8(temp_s0_16, 2, 0x3EEB851F);
             func_8005DAD8(temp_s0_16, 0, 0, 0x80);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_17;
             goto block_105;
         }
-        /* Duplicate return node #106. Try simplifying control flow for better match */
-        return;
+        break;
     }
 }
 #else
@@ -3957,13 +3776,14 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005DAF4.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_8005D794(f32, f32, void *, void *, f32, f32, f32, s32, s32); // extern
-? func_8005D7D8(void *, ?, ?); // extern
-? func_8005D800(void *, ?, ?); // extern
-extern u16 D_800E4842;
+//generated by mips_to_c commit 792017ad9d422c2467bd42686f383a5c41f41c75
+? func_8005D794(f32, f32, Player *, void *, f32, f32, f32, s32, s32); /* extern */
+? func_8005D7D8(void *, ?, ?);                      /* extern */
+? func_8005D800(void *, ?, ?);                      /* extern */
+s32 random_int(u16);                                /* extern */
+static u16 D_800E4842;                              /* unable to generate initializer; const */
 
-void func_8005EA94(void *arg0, s16 arg1, s32 arg2, s8 arg3) {
+void func_8005EA94(Player *player, s16 arg1, s32 arg2, s8 arg3) {
     s32 sp48;
     s32 sp44;
     f32 sp40;
@@ -3986,12 +3806,12 @@ void func_8005EA94(void *arg0, s16 arg1, s32 arg2, s8 arg3) {
     temp_v0 = random_int(D_800E4842);
     phi_t0 = 0xFF;
     if ((temp_v0 == 0) || (temp_v0 == 8)) {
-        temp_f0 = arg0->unk1D8;
-        if ((D_801652A0[arg3] - temp_f0) >= 3.5) {
+        temp_f0 = player->boundingBoxCorners[2].cornerGroundY;
+        if ((f64) (D_801652A0[arg3] - temp_f0) >= 3.5) {
             sp44 = 1;
-            sp40 = arg0->unk1C8;
+            sp40 = player->boundingBoxCorners[2].cornerX;
             sp3C = temp_f0 + 2.0f;
-            sp38 = arg0->unk1D0;
+            sp38 = player->boundingBoxCorners[2].cornerZ;
             phi_t0 = 0;
         }
     }
@@ -4000,36 +3820,31 @@ void func_8005EA94(void *arg0, s16 arg1, s32 arg2, s8 arg3) {
     phi_f2 = sp40;
     phi_t1 = sp44;
     if ((temp_v0 == 2) || (temp_v0 == 6)) {
-        temp_f0_2 = arg0->unk1F0;
-        if ((D_801652A0[arg3] - temp_f0_2) >= 3.5) {
+        temp_f0_2 = player->boundingBoxCorners[3].cornerGroundY;
+        if ((f64) (D_801652A0[arg3] - temp_f0_2) >= 3.5) {
             phi_t0 = 0;
             phi_f12 = temp_f0_2 + 2.0f;
-            phi_f14 = arg0->unk1E8;
-            phi_f2 = arg0->unk1E0;
+            phi_f14 = player->boundingBoxCorners[3].cornerZ;
+            phi_f2 = player->boundingBoxCorners[3].cornerX;
             phi_t1 = 0;
         }
     }
     if (phi_t0 == 0) {
-        if ((arg1 == 0) && ((temp_v0_2 = arg0 + (arg2 * 0x48), (temp_v0_2->unk546 > 0)) || (temp_v0_2->unk544 == 0))) {
-            if (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f) {
-                temp_a1 = arg0 + (arg1 * 0x48) + 0x528;
+        if ((arg1 == 0) && ((temp_v0_2 = player + (arg2 * 0x48), ((s32) temp_v0_2->unk546 > 0)) || (temp_v0_2->unk544 == 0))) {
+            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                temp_a1 = player + (arg1 * 0x48) + 0x528;
                 sp34 = temp_a1;
-                func_8005D794(phi_f12, phi_f14, arg0, temp_a1, phi_f2, phi_f12, phi_f14, phi_t0, phi_t1);
+                func_8005D794(phi_f12, phi_f14, player, temp_a1, phi_f2, phi_f12, phi_f14, phi_t0, phi_t1);
                 func_8005D7D8(sp34, 9, 0x3F4CCCCD);
                 func_8005D800(sp34, 0xFFFFFF, 0xAF);
-                return;
             }
-            // Duplicate return node #17. Try simplifying control flow for better match
-            return;
-        }
-        if (((arg0 + (arg2 * 0x48))->unk546 > 0) && (((arg0->unk94 / 18.0f) * 216.0f) >= 10.0f)) {
-            temp_a1_2 = arg0 + (arg1 * 0x48) + 0x528;
+        } else if (((s32) (player + (arg2 * 0x48))->unk546 > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            temp_a1_2 = player + (arg1 * 0x48) + 0x528;
             sp34 = temp_a1_2;
-            func_8005D794(phi_f12, phi_f14, arg0, temp_a1_2, phi_f2, phi_f12, phi_f14, phi_t0, phi_t1);
+            func_8005D794(phi_f12, phi_f14, player, temp_a1_2, phi_f2, phi_f12, phi_f14, phi_t0, phi_t1);
             func_8005D7D8(sp34, 9, 0x3F4CCCCD);
             func_8005D800(sp34, 0xFFFFFF, 0xAF);
         }
-        // Duplicate return node #17. Try simplifying control flow for better match
     }
 }
 #else
@@ -4037,15 +3852,16 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005EA94.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
-? func_8005D794(f32, void *, void *, f32, f32, f32, s32, s32); /* extern */
+//generated by mips_to_c commit 792017ad9d422c2467bd42686f383a5c41f41c75
+? func_8005D794(f32, Player *, void *, f32, f32, f32, s32, s32); /* extern */
 ? func_8005D7D8(void *, ?, ?);                      /* extern */
 ? func_8005D800(void *, ?, ?);                      /* extern */
 ? func_8005DAD8(void *, ?, ?, ?);                   /* extern */
+s16 random_int(u16);                                /* extern */
+static u16 D_800E4846;                              /* unable to generate initializer; const */
 s16 gCurrentCourseId;                               /* unable to generate initializer */
-u16 D_800E4846;                                     /* unable to generate initializer; const */
 
-void func_8005ED48(void *arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_8005ED48(Player *player, s16 arg1, s32 arg2, s32 arg3) {
     s32 sp48;
     s32 sp44;
     f32 sp40;
@@ -4120,28 +3936,28 @@ void func_8005ED48(void *arg0, s16 arg1, s32 arg2, s32 arg3) {
     phi_t2 = 0xFF;
     if ((temp_v0 == 2) || (temp_v0 == 4)) {
         sp44 = 1;
-        sp3C = arg0->unk1D8 + 2.0f;
-        sp40 = arg0->unk1C8;
-        sp38 = arg0->unk1D0;
-        phi_t2 = arg0->unk1D4;
+        sp3C = player->boundingBoxCorners[2].cornerGroundY + 2.0f;
+        sp40 = player->boundingBoxCorners[2].cornerX;
+        sp38 = player->boundingBoxCorners[2].cornerZ;
+        phi_t2 = (s32) player->boundingBoxCorners[2].surfaceType;
     }
     phi_f12 = sp38;
     phi_f0 = sp40;
     phi_f2 = sp3C;
     phi_t3 = sp44;
     if ((temp_v0 == 0) || (temp_v0 == 6)) {
-        phi_t2 = arg0->unk1EC;
-        phi_f12 = arg0->unk1E8;
-        phi_f0 = arg0->unk1E0;
-        phi_f2 = arg0->unk1F0 + 2.0f;
+        phi_t2 = (s32) player->boundingBoxCorners[3].surfaceType;
+        phi_f12 = player->boundingBoxCorners[3].cornerZ;
+        phi_f0 = player->boundingBoxCorners[3].cornerX;
+        phi_f2 = player->boundingBoxCorners[3].cornerGroundY + 2.0f;
         phi_t3 = 0;
     }
     switch (phi_t2) {
     case 2:
-        if ((arg1 == 0) && ((temp_v0_2 = arg0 + (arg2 * 0x48), (temp_v0_2->unk546 > 0)) || (temp_v0_2->unk544 == 0))) {
-            temp_s2 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_2 = player + (arg2 * 0x48), ((s32) temp_v0_2->unk546 > 0)) || (temp_v0_2->unk544 == 0))) {
+            temp_s2 = player + (arg1 * 0x48);
             temp_s0 = temp_s2 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0, 5, 0x3EEB851F);
             temp_v1 = gCurrentCourseId;
             phi_v1 = temp_v1;
@@ -4173,13 +3989,13 @@ void func_8005ED48(void *arg0, s16 arg1, s32 arg2, s32 arg3) {
             if (phi_v1_5 == 0x12) {
                 func_8005DAD8(temp_s0, 0xB, 0, 0x80);
             }
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             goto block_83;
         }
-        if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_2 = arg0 + (arg1 * 0x48);
+        if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_2 = player + (arg1 * 0x48);
             temp_s0_2 = temp_s2_2 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_2, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_2, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_2, 5, 0x3EEB851F);
             temp_v1_2 = gCurrentCourseId;
             phi_v1_6 = temp_v1_2;
@@ -4211,178 +4027,172 @@ void func_8005ED48(void *arg0, s16 arg1, s32 arg2, s32 arg3) {
             if (phi_v1_10 == 0x12) {
                 func_8005DAD8(temp_s0_2, 0xB, 0, 0x80);
             }
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
 block_83:
             phi_s2->unk562 = phi_v0;
         }
     default:
         return;
     case 8:
-        if ((arg1 == 0) && ((temp_v0_3 = arg0 + (arg2 * 0x48), (temp_v0_3->unk546 > 0)) || (temp_v0_3->unk544 == 0))) {
-            temp_s2_3 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_3 = player + (arg2 * 0x48), ((s32) temp_v0_3->unk546 > 0)) || (temp_v0_3->unk544 == 0))) {
+            temp_s2_3 = player + (arg1 * 0x48);
             temp_s0_3 = temp_s2_3 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_3, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_3, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_3, 5, 0x3DCCCCCD);
             func_8005D800(temp_s0_3, 0xFFFFFF, 0xFF);
             temp_v1_3 = arg1 * 8;
-            temp_s2_3->unk560 = temp_s2_3->unk560 - temp_v1_3;
-            temp_s2_3->unk562 = temp_s2_3->unk562 - temp_v1_3;
-            temp_s2_3->unk564 = temp_s2_3->unk564 - temp_v1_3;
-        } else if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_4 = arg0 + (arg1 * 0x48);
+            temp_s2_3->unk560 = (s16) (temp_s2_3->unk560 - temp_v1_3);
+            temp_s2_3->unk562 = (s16) (temp_s2_3->unk562 - temp_v1_3);
+            temp_s2_3->unk564 = (s16) (temp_s2_3->unk564 - temp_v1_3);
+        } else if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_4 = player + (arg1 * 0x48);
             temp_s0_4 = temp_s2_4 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_4, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_4, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_4, 5, 0x3DCCCCCD);
             func_8005D800(temp_s0_4, 0xFFFFFF, 0xFF);
             temp_v1_4 = arg1 * 8;
-            temp_s2_4->unk560 = temp_s2_4->unk560 - temp_v1_4;
-            temp_s2_4->unk562 = temp_s2_4->unk562 - temp_v1_4;
-            temp_s2_4->unk564 = temp_s2_4->unk564 - temp_v1_4;
+            temp_s2_4->unk560 = (s16) (temp_s2_4->unk560 - temp_v1_4);
+            temp_s2_4->unk562 = (s16) (temp_s2_4->unk562 - temp_v1_4);
+            temp_s2_4->unk564 = (s16) (temp_s2_4->unk564 - temp_v1_4);
         }
-        temp_s2_5 = arg0 + (arg1 * 0x48);
-        temp_s2_5->unk52C = temp_s2_5->unk52C - 1.5;
+        temp_s2_5 = player + (arg1 * 0x48);
+        temp_s2_5->unk52C = (f32) ((f64) temp_s2_5->unk52C - 1.5);
         return;
     case 7:
-        if ((arg1 == 0) && ((temp_v0_4 = arg0 + (arg2 * 0x48), (temp_v0_4->unk546 > 0)) || (temp_v0_4->unk544 == 0))) {
-            temp_s2_6 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_4 = player + (arg2 * 0x48), ((s32) temp_v0_4->unk546 > 0)) || (temp_v0_4->unk544 == 0))) {
+            temp_s2_6 = player + (arg1 * 0x48);
             temp_s0_5 = temp_s2_6 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_5, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_5, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_5, 5, 0x3EEB851F);
             func_8005DAD8(temp_s0_5, 2, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_6;
             goto block_83;
         }
-        if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_7 = arg0 + (arg1 * 0x48);
+        if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_7 = player + (arg1 * 0x48);
             temp_s0_6 = temp_s2_7 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_6, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_6, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_6, 5, 0x3EEB851F);
             func_8005DAD8(temp_s0_6, 2, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_7;
             goto block_83;
         }
-        /* Duplicate return node #84. Try simplifying control flow for better match */
-        return;
+        break;
     case 3:
-        if ((arg1 == 0) && ((temp_v0_5 = arg0 + (arg2 * 0x48), (temp_v0_5->unk546 > 0)) || (temp_v0_5->unk544 == 0))) {
-            temp_s2_8 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_5 = player + (arg2 * 0x48), ((s32) temp_v0_5->unk546 > 0)) || (temp_v0_5->unk544 == 0))) {
+            temp_s2_8 = player + (arg1 * 0x48);
             temp_s0_7 = temp_s2_8 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_7, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_7, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_7, 5, 0x3EEB851F);
             func_8005DAD8(temp_s0_7, 3, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_8;
             goto block_83;
         }
-        if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_9 = arg0 + (arg1 * 0x48);
+        if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_9 = player + (arg1 * 0x48);
             temp_s0_8 = temp_s2_9 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_8, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_8, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_8, 5, 0x3EEB851F);
             func_8005DAD8(temp_s0_8, 3, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_9;
             goto block_83;
         }
-        /* Duplicate return node #84. Try simplifying control flow for better match */
-        return;
+        break;
     case 10:
-        if ((arg1 == 0) && ((temp_v0_6 = arg0 + (arg2 * 0x48), (temp_v0_6->unk546 > 0)) || (temp_v0_6->unk544 == 0))) {
-            temp_s2_10 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_6 = player + (arg2 * 0x48), ((s32) temp_v0_6->unk546 > 0)) || (temp_v0_6->unk544 == 0))) {
+            temp_s2_10 = player + (arg1 * 0x48);
             temp_s0_9 = temp_s2_10 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_9, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_9, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_9, 5, 0x3EEB851F);
             func_8005DAD8(temp_s0_9, 4, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_10;
             goto block_83;
         }
-        if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_11 = arg0 + (arg1 * 0x48);
+        if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_11 = player + (arg1 * 0x48);
             temp_s0_10 = temp_s2_11 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_10, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_10, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_10, 5, 0x3EEB851F);
             func_8005DAD8(temp_s0_10, 4, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_11;
             goto block_83;
         }
-        /* Duplicate return node #84. Try simplifying control flow for better match */
-        return;
+        break;
     case 13:
-        if ((arg1 == 0) && ((temp_v0_7 = arg0 + (arg2 * 0x48), (temp_v0_7->unk546 > 0)) || (temp_v0_7->unk544 == 0))) {
-            temp_s2_12 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_7 = player + (arg2 * 0x48), ((s32) temp_v0_7->unk546 > 0)) || (temp_v0_7->unk544 == 0))) {
+            temp_s2_12 = player + (arg1 * 0x48);
             temp_s0_11 = temp_s2_12 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_11, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_11, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_11, 5, 0x3EEB851F);
             func_8005DAD8(temp_s0_11, 5, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_12;
             goto block_83;
         }
-        if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_13 = arg0 + (arg1 * 0x48);
+        if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_13 = player + (arg1 * 0x48);
             temp_s0_12 = temp_s2_13 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_12, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_12, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_12, 5, 0x3EEB851F);
             func_8005DAD8(temp_s0_12, 5, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_13;
             goto block_83;
         }
-        /* Duplicate return node #84. Try simplifying control flow for better match */
-        return;
+        break;
     case 5:
     case 11:
-        if ((arg1 == 0) && ((temp_v0_8 = arg0 + (arg2 * 0x48), (temp_v0_8->unk546 > 0)) || (temp_v0_8->unk544 == 0))) {
-            temp_s2_14 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_8 = player + (arg2 * 0x48), ((s32) temp_v0_8->unk546 > 0)) || (temp_v0_8->unk544 == 0))) {
+            temp_s2_14 = player + (arg1 * 0x48);
             temp_s0_13 = temp_s2_14 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_13, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_13, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_13, 5, 0x3EEB851F);
             func_8005DAD8(temp_s0_13, 6, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_14;
             goto block_83;
         }
-        if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_15 = arg0 + (arg1 * 0x48);
+        if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_15 = player + (arg1 * 0x48);
             temp_s0_14 = temp_s2_15 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_14, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_14, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_14, 5, 0x3EEB851F);
             func_8005DAD8(temp_s0_14, 6, 1, 0xA8);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_15;
             goto block_83;
         }
-        /* Duplicate return node #84. Try simplifying control flow for better match */
-        return;
+        break;
     case 1:
     case 4:
     case 6:
-        if ((arg1 == 0) && ((temp_v0_9 = arg0 + (arg2 * 0x48), (temp_v0_9->unk546 > 0)) || (temp_v0_9->unk544 == 0))) {
-            temp_s2_16 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_9 = player + (arg2 * 0x48), ((s32) temp_v0_9->unk546 > 0)) || (temp_v0_9->unk544 == 0))) {
+            temp_s2_16 = player + (arg1 * 0x48);
             temp_s0_15 = temp_s2_16 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_15, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_15, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_15, 5, 0x3EEB851F);
             func_8005DAD8(temp_s0_15, 0, 0, 0x80);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_16;
             goto block_83;
         }
-        if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_17 = arg0 + (arg1 * 0x48);
+        if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_17 = player + (arg1 * 0x48);
             temp_s0_16 = temp_s2_17 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_16, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
+            func_8005D794(phi_f12, player, temp_s0_16, phi_f0, phi_f2, phi_f12, phi_t2, phi_t3);
             func_8005D7D8(temp_s0_16, 5, 0x3EEB851F);
             func_8005DAD8(temp_s0_16, 0, 0, 0x80);
-            phi_v0 = random_int(0x10);
+            phi_v0 = random_int(0x10U);
             phi_s2 = temp_s2_17;
             goto block_83;
         }
-        /* Duplicate return node #84. Try simplifying control flow for better match */
-        return;
+        break;
     }
 }
 #else
@@ -4390,15 +4200,15 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005ED48.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
-? func_8005D794(f32, void *, void *, f32, f32, f32, s32, s32); /* extern */
+//generated by mips_to_c commit 792017ad9d422c2467bd42686f383a5c41f41c75
+? func_8005D794(f32, Player *, void *, f32, f32, f32, s32, s32); /* extern */
 ? func_8005D7D8(void *, ?, ?);                      /* extern */
 ? func_8005D800(void *, ?, ?);                      /* extern */
 ? func_8005DAD8(void *, ?, ?, ?);                   /* extern */
 s16 random_int(?);                                  /* extern */
 s16 gCurrentCourseId;                               /* unable to generate initializer */
 
-void func_8005F90C(void *arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_8005F90C(Player *player, s16 arg1, s32 arg2, s32 arg3) {
     s16 temp_v1;
     s16 temp_v1_2;
     s32 temp_t2;
@@ -4463,24 +4273,24 @@ void func_8005F90C(void *arg0, s16 arg1, s32 arg2, s32 arg3) {
     void *phi_s2;
 
     phi_t1 = 0;
-    if ((arg0->unkBC & 0x80) == 0x80) {
-        phi_v0 = arg0->unk1D4;
-        phi_f12 = arg0->unk1C;
-        phi_f0 = arg0->unk14;
-        phi_f2 = arg0->unk18 - arg0->unk70;
+    if ((player->unk_0BC & 0x80) == 0x80) {
+        phi_v0 = (s32) player->boundingBoxCorners[2].surfaceType;
+        phi_f12 = player->posZ;
+        phi_f0 = player->posX;
+        phi_f2 = player->posY - player->unk_070;
         phi_t1 = 1;
     } else {
-        phi_v0 = arg0->unk1EC;
-        phi_f12 = arg0->unk1C;
-        phi_f0 = arg0->unk14;
-        phi_f2 = arg0->unk18 - arg0->unk70;
+        phi_v0 = (s32) player->boundingBoxCorners[3].surfaceType;
+        phi_f12 = player->posZ;
+        phi_f0 = player->posX;
+        phi_f2 = player->posY - player->unk_070;
     }
     switch (phi_v0) {
     case 2:
-        if ((arg1 == 0) && ((temp_v0 = arg0 + (arg2 * 0x48), (temp_v0->unk546 > 0)) || (temp_v0->unk544 == 0))) {
-            temp_s2 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0 = player + (arg2 * 0x48), ((s32) temp_v0->unk546 > 0)) || (temp_v0->unk544 == 0))) {
+            temp_s2 = player + (arg1 * 0x48);
             temp_s0 = temp_s2 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0, 4, 0x3EEB851F);
             temp_v1 = gCurrentCourseId;
             phi_v1 = temp_v1;
@@ -4515,10 +4325,10 @@ void func_8005F90C(void *arg0, s16 arg1, s32 arg2, s32 arg3) {
             phi_v0_2 = random_int(0x10);
             goto block_80;
         }
-        if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_2 = arg0 + (arg1 * 0x48);
+        if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_2 = player + (arg1 * 0x48);
             temp_s0_2 = temp_s2_2 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_2, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_2, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_2, 4, 0x3EEB851F);
             temp_v1_2 = gCurrentCourseId;
             phi_v1_6 = temp_v1_2;
@@ -4557,171 +4367,165 @@ block_80:
     default:
         return;
     case 8:
-        if ((arg1 == 0) && ((temp_v0_2 = arg0 + (arg2 * 0x48), (temp_v0_2->unk546 > 0)) || (temp_v0_2->unk544 == 0))) {
-            temp_s2_3 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_2 = player + (arg2 * 0x48), ((s32) temp_v0_2->unk546 > 0)) || (temp_v0_2->unk544 == 0))) {
+            temp_s2_3 = player + (arg1 * 0x48);
             temp_s0_3 = temp_s2_3 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_3, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_3, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_3, 4, 0x3DCCCCCD);
             func_8005D800(temp_s0_3, 0xFFFFFF, 0xFF);
             temp_t6 = arg1 * 8;
-            temp_s2_3->unk560 = temp_s2_3->unk560 - temp_t6;
-            temp_s2_3->unk562 = temp_s2_3->unk562 - temp_t6;
-            temp_s2_3->unk564 = temp_s2_3->unk564 - temp_t6;
-        } else if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_4 = arg0 + (arg1 * 0x48);
+            temp_s2_3->unk560 = (s16) (temp_s2_3->unk560 - temp_t6);
+            temp_s2_3->unk562 = (s16) (temp_s2_3->unk562 - temp_t6);
+            temp_s2_3->unk564 = (s16) (temp_s2_3->unk564 - temp_t6);
+        } else if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_4 = player + (arg1 * 0x48);
             temp_s0_4 = temp_s2_4 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_4, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_4, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_4, 4, 0x3DCCCCCD);
             func_8005D800(temp_s0_4, 0xFFFFFF, 0xFF);
             temp_t2 = arg1 * 8;
-            temp_s2_4->unk560 = temp_s2_4->unk560 - temp_t2;
-            temp_s2_4->unk562 = temp_s2_4->unk562 - temp_t2;
-            temp_s2_4->unk564 = temp_s2_4->unk564 - temp_t2;
+            temp_s2_4->unk560 = (s16) (temp_s2_4->unk560 - temp_t2);
+            temp_s2_4->unk562 = (s16) (temp_s2_4->unk562 - temp_t2);
+            temp_s2_4->unk564 = (s16) (temp_s2_4->unk564 - temp_t2);
         }
-        temp_s2_5 = arg0 + (arg1 * 0x48);
-        temp_s2_5->unk52C = temp_s2_5->unk52C - 1.5;
+        temp_s2_5 = player + (arg1 * 0x48);
+        temp_s2_5->unk52C = (f32) ((f64) temp_s2_5->unk52C - 1.5);
         return;
     case 7:
-        if ((arg1 == 0) && ((temp_v0_3 = arg0 + (arg2 * 0x48), (temp_v0_3->unk546 > 0)) || (temp_v0_3->unk544 == 0))) {
-            temp_s2_6 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_3 = player + (arg2 * 0x48), ((s32) temp_v0_3->unk546 > 0)) || (temp_v0_3->unk544 == 0))) {
+            temp_s2_6 = player + (arg1 * 0x48);
             temp_s0_5 = temp_s2_6 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_5, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_5, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_5, 4, 0x3EEB851F);
             func_8005DAD8(temp_s0_5, 2, 1, 0xA8);
             phi_v0_2 = random_int(0x10);
             phi_s2 = temp_s2_6;
             goto block_80;
         }
-        if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_7 = arg0 + (arg1 * 0x48);
+        if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_7 = player + (arg1 * 0x48);
             temp_s0_6 = temp_s2_7 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_6, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_6, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_6, 4, 0x3EEB851F);
             func_8005DAD8(temp_s0_6, 2, 1, 0xA8);
             phi_v0_2 = random_int(0x10);
             phi_s2 = temp_s2_7;
             goto block_80;
         }
-        /* Duplicate return node #81. Try simplifying control flow for better match */
-        return;
+        break;
     case 3:
-        if ((arg1 == 0) && ((temp_v0_4 = arg0 + (arg2 * 0x48), (temp_v0_4->unk546 > 0)) || (temp_v0_4->unk544 == 0))) {
-            temp_s2_8 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_4 = player + (arg2 * 0x48), ((s32) temp_v0_4->unk546 > 0)) || (temp_v0_4->unk544 == 0))) {
+            temp_s2_8 = player + (arg1 * 0x48);
             temp_s0_7 = temp_s2_8 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_7, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_7, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_7, 4, 0x3EEB851F);
             func_8005DAD8(temp_s0_7, 3, 1, 0xA8);
             phi_v0_2 = random_int(0x10);
             phi_s2 = temp_s2_8;
             goto block_80;
         }
-        if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_9 = arg0 + (arg1 * 0x48);
+        if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_9 = player + (arg1 * 0x48);
             temp_s0_8 = temp_s2_9 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_8, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_8, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_8, 4, 0x3EEB851F);
             func_8005DAD8(temp_s0_8, 3, 1, 0xA8);
             phi_v0_2 = random_int(0x10);
             phi_s2 = temp_s2_9;
             goto block_80;
         }
-        /* Duplicate return node #81. Try simplifying control flow for better match */
-        return;
+        break;
     case 10:
-        if ((arg1 == 0) && ((temp_v0_5 = arg0 + (arg2 * 0x48), (temp_v0_5->unk546 > 0)) || (temp_v0_5->unk544 == 0))) {
-            temp_s2_10 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_5 = player + (arg2 * 0x48), ((s32) temp_v0_5->unk546 > 0)) || (temp_v0_5->unk544 == 0))) {
+            temp_s2_10 = player + (arg1 * 0x48);
             temp_s0_9 = temp_s2_10 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_9, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_9, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_9, 4, 0x3EEB851F);
             func_8005DAD8(temp_s0_9, 4, 1, 0xA8);
             phi_v0_2 = random_int(0x10);
             phi_s2 = temp_s2_10;
             goto block_80;
         }
-        if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_11 = arg0 + (arg1 * 0x48);
+        if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_11 = player + (arg1 * 0x48);
             temp_s0_10 = temp_s2_11 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_10, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_10, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_10, 4, 0x3EEB851F);
             func_8005DAD8(temp_s0_10, 4, 1, 0xA8);
             phi_v0_2 = random_int(0x10);
             phi_s2 = temp_s2_11;
             goto block_80;
         }
-        /* Duplicate return node #81. Try simplifying control flow for better match */
-        return;
+        break;
     case 13:
-        if ((arg1 == 0) && ((temp_v0_6 = arg0 + (arg2 * 0x48), (temp_v0_6->unk546 > 0)) || (temp_v0_6->unk544 == 0))) {
-            temp_s2_12 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_6 = player + (arg2 * 0x48), ((s32) temp_v0_6->unk546 > 0)) || (temp_v0_6->unk544 == 0))) {
+            temp_s2_12 = player + (arg1 * 0x48);
             temp_s0_11 = temp_s2_12 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_11, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_11, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_11, 4, 0x3EEB851F);
             func_8005DAD8(temp_s0_11, 5, 1, 0xA8);
             phi_v0_2 = random_int(0x10);
             phi_s2 = temp_s2_12;
             goto block_80;
         }
-        if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_13 = arg0 + (arg1 * 0x48);
+        if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_13 = player + (arg1 * 0x48);
             temp_s0_12 = temp_s2_13 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_12, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_12, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_12, 4, 0x3EEB851F);
             func_8005DAD8(temp_s0_12, 5, 1, 0xA8);
             phi_v0_2 = random_int(0x10);
             phi_s2 = temp_s2_13;
             goto block_80;
         }
-        /* Duplicate return node #81. Try simplifying control flow for better match */
-        return;
+        break;
     case 5:
     case 11:
-        if ((arg1 == 0) && ((temp_v0_7 = arg0 + (arg2 * 0x48), (temp_v0_7->unk546 > 0)) || (temp_v0_7->unk544 == 0))) {
-            temp_s2_14 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_7 = player + (arg2 * 0x48), ((s32) temp_v0_7->unk546 > 0)) || (temp_v0_7->unk544 == 0))) {
+            temp_s2_14 = player + (arg1 * 0x48);
             temp_s0_13 = temp_s2_14 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_13, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_13, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_13, 4, 0x3EEB851F);
             func_8005DAD8(temp_s0_13, 6, 1, 0xA8);
             phi_v0_2 = random_int(0x10);
             phi_s2 = temp_s2_14;
             goto block_80;
         }
-        if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_15 = arg0 + (arg1 * 0x48);
+        if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_15 = player + (arg1 * 0x48);
             temp_s0_14 = temp_s2_15 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_14, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_14, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_14, 4, 0x3EEB851F);
             func_8005DAD8(temp_s0_14, 6, 1, 0xA8);
             phi_v0_2 = random_int(0x10);
             phi_s2 = temp_s2_15;
             goto block_80;
         }
-        /* Duplicate return node #81. Try simplifying control flow for better match */
-        return;
+        break;
     case 1:
     case 4:
     case 6:
-        if ((arg1 == 0) && ((temp_v0_8 = arg0 + (arg2 * 0x48), (temp_v0_8->unk546 > 0)) || (temp_v0_8->unk544 == 0))) {
-            temp_s2_16 = arg0 + (arg1 * 0x48);
+        if ((arg1 == 0) && ((temp_v0_8 = player + (arg2 * 0x48), ((s32) temp_v0_8->unk546 > 0)) || (temp_v0_8->unk544 == 0))) {
+            temp_s2_16 = player + (arg1 * 0x48);
             temp_s0_15 = temp_s2_16 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_15, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_15, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_15, 4, 0x3EEB851F);
             func_8005DAD8(temp_s0_15, 0, 0, 0x80);
             phi_v0_2 = random_int(0x10);
             phi_s2 = temp_s2_16;
             goto block_80;
         }
-        if ((arg0 + (arg2 * 0x48))->unk546 > 0) {
-            temp_s2_17 = arg0 + (arg1 * 0x48);
+        if ((s32) (player + (arg2 * 0x48))->unk546 > 0) {
+            temp_s2_17 = player + (arg1 * 0x48);
             temp_s0_16 = temp_s2_17 + 0x528;
-            func_8005D794(phi_f12, arg0, temp_s0_16, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
+            func_8005D794(phi_f12, player, temp_s0_16, phi_f0, phi_f2, phi_f12, phi_v0, phi_t1);
             func_8005D7D8(temp_s0_16, 4, 0x3EEB851F);
             func_8005DAD8(temp_s0_16, 0, 0, 0x80);
             phi_v0_2 = random_int(0x10);
             phi_s2 = temp_s2_17;
             goto block_80;
         }
-        /* Duplicate return node #81. Try simplifying control flow for better match */
-        return;
+        break;
     }
 }
 #else
@@ -6086,11 +5890,11 @@ void func_80063268(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_80063408(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
-        arg0->unk_258[10 + arg1].unk_008 = (arg0->unk_258[10 + arg1].unk_01E * -7) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1D0;
-        arg0->unk_258[10 + arg1].unk_000 = (arg0->unk_258[10 + arg1].unk_01E * -7) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1C8;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + (arg0->unk_258[10 + arg1].unk_01E * -7) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + (arg0->unk_258[10 + arg1].unk_01E * -7) * sins(arg0->unk_258[10 + arg1].unk_020);
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = (arg0->unk_258[10 + arg1].unk_01E * -7) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E8;
-        arg0->unk_258[10 + arg1].unk_000 = (arg0->unk_258[10 + arg1].unk_01E * -7) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E0;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + (arg0->unk_258[10 + arg1].unk_01E * -7) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + (arg0->unk_258[10 + arg1].unk_01E * -7) * sins(arg0->unk_258[10 + arg1].unk_020);
     }
 
     ++arg0->unk_258[10 + arg1].unk_01E;
@@ -6125,19 +5929,19 @@ void func_800635D4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
         if ((arg0->unk_0BC * 2) < 0) {
             func_80062B18(&sp44, &sp40, &sp3C, -2.0f, 0.0f, (-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16, -arg0->unk_258[10 + arg1].unk_020, 2 * -arg0->unk_206);
-            arg0->unk_258[10 + arg1].unk_000 = arg0->unk_1C8 + sp44;
-            arg0->unk_258[10 + arg1].unk_008 = arg0->unk_1D0 + sp3C;
+            arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + sp44;
+            arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + sp3C;
         } else {
-            arg0->unk_258[10 + arg1].unk_008 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1D0;
-            arg0->unk_258[10 + arg1].unk_000 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1C8;
+            arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * coss(arg0->unk_258[10 + arg1].unk_020);
+            arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * sins(arg0->unk_258[10 + arg1].unk_020);
         }
     } else if ((arg0->unk_0BC * 2) < 0) {
         func_80062B18(&sp44, &sp40, &sp3C, 2.0f, 0.0f,  (-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16, - arg0->unk_258[10 + arg1].unk_020,  2 * -arg0->unk_206);
-        arg0->unk_258[10 + arg1].unk_000 = arg0->unk_1E0 + sp44;
-        arg0->unk_258[10 + arg1].unk_008 = arg0->unk_1E8 + sp3C;
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + sp44;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + sp3C;
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E8;
-        arg0->unk_258[10 + arg1].unk_000 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E0;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * sins(arg0->unk_258[10 + arg1].unk_020);
     }
 
     ++arg0->unk_258[10 + arg1].unk_01E;
@@ -6173,11 +5977,11 @@ void func_800635D4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_800639DC(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
-        arg0->unk_258[10 + arg1].unk_008 = (D_800EE680 * arg0->unk_258[10 + arg1].unk_01E) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1D0;
-        arg0->unk_258[10 + arg1].unk_000 = (D_800EE684 * arg0->unk_258[10 + arg1].unk_01E) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1C8;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + (D_800EE680 * arg0->unk_258[10 + arg1].unk_01E) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + (D_800EE684 * arg0->unk_258[10 + arg1].unk_01E) * sins(arg0->unk_258[10 + arg1].unk_020);
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = (D_800EE688 * arg0->unk_258[10 + arg1].unk_01E) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E8;
-        arg0->unk_258[10 + arg1].unk_000 = (D_800EE68C * arg0->unk_258[10 + arg1].unk_01E) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E0;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + (D_800EE688 * arg0->unk_258[10 + arg1].unk_01E) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + (D_800EE68C * arg0->unk_258[10 + arg1].unk_01E) * sins(arg0->unk_258[10 + arg1].unk_020);
     }
     ++arg0->unk_258[10 + arg1].unk_01E;
     arg0->unk_258[10 + arg1].unk_004 += D_800EE690;
@@ -6208,11 +6012,11 @@ void func_800639DC(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_80063BD4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
-        arg0->unk_258[10 + arg1].unk_008 = (-2 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1D0);
-        arg0->unk_258[10 + arg1].unk_000 = (-2 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1C8);
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + (-2 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020));
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + (-2 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020));
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = (-2 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E8);
-        arg0->unk_258[10 + arg1].unk_000 = (-2 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E0);
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + (-2 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020));
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + (-2 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020));
     }
 
     ++arg0->unk_258[10 + arg1].unk_01E;
@@ -6229,11 +6033,11 @@ void func_80063BD4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_80063D58(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
-        arg0->unk_258[10 + arg1].unk_008 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1D0;
-        arg0->unk_258[10 + arg1].unk_000 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1C8;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * sins(arg0->unk_258[10 + arg1].unk_020);
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E8;
-        arg0->unk_258[10 + arg1].unk_000 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->unk_1E0;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * sins(arg0->unk_258[10 + arg1].unk_020);
     }
 
     ++arg0->unk_258[10 + arg1].unk_01E;
@@ -10601,7 +10405,7 @@ void func_8006B7E4(Player *player, s32 arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006B7E4.s")
 #endif
 
-void func_8006B87C(UNUSED s32 arg0, s8 playerIndex) {
+void func_8006B87C(UNUSED Player *player, s8 playerIndex) {
     gPlayerBalloonStatus[playerIndex][0] = BALLOON_STATUS_GONE;
     gPlayerBalloonStatus[playerIndex][1] = BALLOON_STATUS_GONE;
     gPlayerBalloonStatus[playerIndex][2] = BALLOON_STATUS_GONE;

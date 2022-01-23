@@ -17,13 +17,13 @@ glabel func_80050320
 /* 050F5C 8005035C 3C128019 */  lui   $s2, %hi(D_8018D050) # $s2, 0x8019
 /* 050F60 80050360 3C178019 */  lui   $s7, %hi(D_8018D3E0) # $s7, 0x8019
 /* 050F64 80050364 3C15800E */  lui   $s5, %hi(gPlayerOne) # $s5, 0x800e
-/* 050F68 80050368 3C148016 */  lui   $s4, %hi(lapCount) # $s4, 0x8016
+/* 050F68 80050368 3C148016 */  lui   $s4, %hi(gLapCountByPlayerId) # $s4, 0x8016
 /* 050F6C 8005036C 3C138019 */  lui   $s3, %hi(D_8018D078) # $s3, 0x8019
 /* 050F70 80050370 4480B000 */  mtc1  $zero, $f22
 /* 050F74 80050374 4480A800 */  mtc1  $zero, $f21
 /* 050F78 80050378 4480A000 */  mtc1  $zero, $f20
 /* 050F7C 8005037C 2673D078 */  addiu $s3, %lo(D_8018D078) # addiu $s3, $s3, -0x2f88
-/* 050F80 80050380 26944390 */  addiu $s4, %lo(lapCount) # addiu $s4, $s4, 0x4390
+/* 050F80 80050380 26944390 */  addiu $s4, %lo(gLapCountByPlayerId) # addiu $s4, $s4, 0x4390
 /* 050F84 80050384 26B5C4DC */  addiu $s5, %lo(gPlayerOne) # addiu $s5, $s5, -0x3b24
 /* 050F88 80050388 26F7D3E0 */  addiu $s7, %lo(D_8018D3E0) # addiu $s7, $s7, -0x2c20
 /* 050F8C 8005038C 2652D050 */  addiu $s2, %lo(D_8018D050) # addiu $s2, $s2, -0x2fb0
@@ -103,13 +103,13 @@ glabel func_80050320
 .L800504A4:
 /* 0510A4 800504A4 3C128019 */  lui   $s2, %hi(D_8018D050) # $s2, 0x8019
 /* 0510A8 800504A8 3C15800E */  lui   $s5, %hi(gPlayerOne) # $s5, 0x800e
-/* 0510AC 800504AC 3C148016 */  lui   $s4, %hi(lapCount) # $s4, 0x8016
+/* 0510AC 800504AC 3C148016 */  lui   $s4, %hi(gLapCountByPlayerId) # $s4, 0x8016
 /* 0510B0 800504B0 3C138019 */  lui   $s3, %hi(D_8018D078) # $s3, 0x8019
 /* 0510B4 800504B4 4480B000 */  mtc1  $zero, $f22
 /* 0510B8 800504B8 4480A800 */  mtc1  $zero, $f21
 /* 0510BC 800504BC 4480A000 */  mtc1  $zero, $f20
 /* 0510C0 800504C0 2673D078 */  addiu $s3, %lo(D_8018D078) # addiu $s3, $s3, -0x2f88
-/* 0510C4 800504C4 26944390 */  addiu $s4, %lo(lapCount) # addiu $s4, $s4, 0x4390
+/* 0510C4 800504C4 26944390 */  addiu $s4, %lo(gLapCountByPlayerId) # addiu $s4, $s4, 0x4390
 /* 0510C8 800504C8 26B5C4DC */  addiu $s5, %lo(gPlayerOne) # addiu $s5, $s5, -0x3b24
 /* 0510CC 800504CC 2652D050 */  addiu $s2, %lo(D_8018D050) # addiu $s2, $s2, -0x2fb0
 /* 0510D0 800504D0 00008025 */  move  $s0, $zero

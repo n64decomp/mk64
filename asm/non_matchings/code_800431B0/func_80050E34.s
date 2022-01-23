@@ -13,7 +13,7 @@ glabel func_80050E34
 /* 051A60 80050E60 3C0E800E */  lui   $t6, %hi(gPlayerCountSelection1) # $t6, 0x800e
 /* 051A64 80050E64 8DCEC538 */  lw    $t6, %lo(gPlayerCountSelection1)($t6)
 /* 051A68 80050E68 AFB00024 */  sw    $s0, 0x24($sp)
-/* 051A6C 80050E6C 3C108016 */  lui   $s0, %hi(lapCount) # 0x8016
+/* 051A6C 80050E6C 3C108016 */  lui   $s0, %hi(gLapCountByPlayerId) # 0x8016
 /* 051A70 80050E70 0004C080 */  sll   $t8, $a0, 2
 /* 051A74 80050E74 0004C940 */  sll   $t9, $a0, 5
 /* 051A78 80050E78 3C0D8019 */  lui   $t5, %hi(D_8018CE24) # 0x8019
@@ -25,7 +25,7 @@ glabel func_80050E34
 /* 051A90 80050E90 01B96821 */  addu  $t5, $t5, $t9
 /* 051A94 80050E94 24010001 */  li    $at, 1
 /* 051A98 80050E98 00803825 */  move  $a3, $a0
-/* 051A9C 80050E9C 8E104390 */  lw    $s0, %lo(lapCount)($s0) # 0x4390($s0)
+/* 051A9C 80050E9C 8E104390 */  lw    $s0, %lo(gLapCountByPlayerId)($s0) # 0x4390($s0)
 /* 051AA0 80050EA0 94510254 */  lhu   $s1, 0x254($v0)
 /* 051AA4 80050EA4 15C10004 */  bne   $t6, $at, .L80050EB8
 /* 051AA8 80050EA8 8DADCE24 */   lw    $t5, %lo(D_8018CE24)($t5) # -0x31dc($t5)
