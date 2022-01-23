@@ -5,6 +5,8 @@
 #include "defines.h"
 #include "common_structs.h"
 
+extern s32   gActiveScreenMode; // D_800DC52C
+
 extern s32   gCCSelection;                          // D_800DC548
 extern s8    gCharacterIdByGPOverallRank[8];        // D_8018D9D0
 extern s8    gCharacterGridSelections[4];           // D_8018EDE4
@@ -44,6 +46,7 @@ extern f32   gKartBoundingBoxTable[];
 extern f32   gKartGravityTable[];
 
 extern f32   gLapCompletionPercentByPlayerId[8]; // D_801644A8
+extern s32   gLapCountByPlayerId[8];             // 
 
 extern s32   gMenuTimingCounter; // D_8018EE00
 extern s32   gMenuSelection;     // D_800E86A0
@@ -88,7 +91,7 @@ extern Player* gPlayerOneCopy;
 
 extern SaveData D_8018EB90;
 
-extern Mtx D_80183D60;
+extern Mtx D_80183D60[];
 
 extern struct_D_8018CE10 D_8018CE10[];
 extern struct_D_802874D8 D_802874D8;
@@ -105,7 +108,6 @@ extern Gfx  D_0D0077A0[];
 
 extern s32  D_800DC50C;
 extern u16  D_800DC51C;
-extern s32  gActiveScreenMode; // D_800DC52C
 extern s32  D_800DC540;
 extern u16  D_800DC5FC;
 

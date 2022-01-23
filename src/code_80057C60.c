@@ -2,8 +2,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <main.h>
-#include <common_structs.h>
-#include <types.h>
+#include <variables.h>
 #include <config.h>
 #include <defines.h>
 #include "code_80040E50.h"
@@ -92,8 +91,6 @@ void func_802A3730(struct UnkStruct_800DC5EC*);
 f32 coss(u16);
 f32 sins(u16);
 
-extern Mtx *D_80183D60;
-extern Vp D_802B8880;
 extern Gfx *gDisplayListHead;
 extern struct GfxPool *gGfxPool;
 extern s32 gPlayerCountSelection1;
@@ -160,7 +157,6 @@ extern s32 lapCount;
 extern s32 D_80164394;
 extern s32 D_80164398;
 extern s32 D_8016439C;
-extern s32 gPlayerPositions;
 extern f32 D_801652A0[];
 extern s32 D_801655C0;
 extern s32 D_801655F0;
@@ -199,9 +195,9 @@ extern Player* gPlayerTwo;
 
 // UI Code?
 void func_80057C60(void) {
-    gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_802B8880));
+    gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_80183D60), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_80183D60), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 }
 
 void func_80057CE4(void) {
@@ -2482,7 +2478,7 @@ void func_8005B914(void) {
             func_8005AA94(0x82);
             goto block_76;
         case 0x80:                                  /* switch 1 */
-            if (gPlayerPositions < 4) {
+            if (gPlayerPositions[0] < 4) {
                 func_8005AA6C(0x8C);
             } else {
                 func_8005AA6C(0x82);
@@ -3190,7 +3186,7 @@ void func_8005D18C(void) {
         D_801657D8 = 1;
         D_8018D2BC = 0;
         D_8018D2A4 = 0;
-        if (gPlayerPositions >= 4) {
+        if (gPlayerPositions[0] >= 4) {
             D_8018D1FC = 1;
             D_8018D2A4 = 1;
             D_8018D2BC = 1;
@@ -6070,11 +6066,11 @@ void func_80063268(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_80063408(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
-        arg0->unk_258[10 + arg1].unk_008 = (arg0->unk_258[10 + arg1].unk_01E * -7) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[2].cornerZ;
-        arg0->unk_258[10 + arg1].unk_000 = (arg0->unk_258[10 + arg1].unk_01E * -7) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[2].cornerX;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + (arg0->unk_258[10 + arg1].unk_01E * -7) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + (arg0->unk_258[10 + arg1].unk_01E * -7) * sins(arg0->unk_258[10 + arg1].unk_020);
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = (arg0->unk_258[10 + arg1].unk_01E * -7) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[3].cornerZ;
-        arg0->unk_258[10 + arg1].unk_000 = (arg0->unk_258[10 + arg1].unk_01E * -7) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[3].cornerX;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + (arg0->unk_258[10 + arg1].unk_01E * -7) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + (arg0->unk_258[10 + arg1].unk_01E * -7) * sins(arg0->unk_258[10 + arg1].unk_020);
     }
 
     ++arg0->unk_258[10 + arg1].unk_01E;
@@ -6109,19 +6105,19 @@ void func_800635D4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
         if ((arg0->unk_0BC * 2) < 0) {
             func_80062B18(&sp44, &sp40, &sp3C, -2.0f, 0.0f, (-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16, -arg0->unk_258[10 + arg1].unk_020, 2 * -arg0->unk_206);
-            arg0->unk_258[10 + arg1].unk_000 = arg0->unk_1C8 + sp44;
-            arg0->unk_258[10 + arg1].unk_008 = arg0->unk_1D0 + sp3C;
+            arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + sp44;
+            arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + sp3C;
         } else {
-            arg0->unk_258[10 + arg1].unk_008 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[2].cornerZ;
-            arg0->unk_258[10 + arg1].unk_000 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[2].cornerX;
+            arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * coss(arg0->unk_258[10 + arg1].unk_020);
+            arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * sins(arg0->unk_258[10 + arg1].unk_020);
         }
     } else if ((arg0->unk_0BC * 2) < 0) {
         func_80062B18(&sp44, &sp40, &sp3C, 2.0f, 0.0f,  (-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16, - arg0->unk_258[10 + arg1].unk_020,  2 * -arg0->unk_206);
-        arg0->unk_258[10 + arg1].unk_000 = arg0->unk_1E0 + sp44;
-        arg0->unk_258[10 + arg1].unk_008 = arg0->unk_1E8 + sp3C;
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + sp44;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + sp3C;
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[3].cornerZ;
-        arg0->unk_258[10 + arg1].unk_000 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[3].cornerX;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * sins(arg0->unk_258[10 + arg1].unk_020);
     }
 
     ++arg0->unk_258[10 + arg1].unk_01E;
@@ -6157,11 +6153,11 @@ void func_800635D4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_800639DC(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
-        arg0->unk_258[10 + arg1].unk_008 = (D_800EE680 * arg0->unk_258[10 + arg1].unk_01E) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[2].cornerZ;
-        arg0->unk_258[10 + arg1].unk_000 = (D_800EE684 * arg0->unk_258[10 + arg1].unk_01E) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[2].cornerX;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + (D_800EE680 * arg0->unk_258[10 + arg1].unk_01E) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + (D_800EE684 * arg0->unk_258[10 + arg1].unk_01E) * sins(arg0->unk_258[10 + arg1].unk_020);
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = (D_800EE688 * arg0->unk_258[10 + arg1].unk_01E) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[3].cornerZ;
-        arg0->unk_258[10 + arg1].unk_000 = (D_800EE68C * arg0->unk_258[10 + arg1].unk_01E) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[3].cornerX;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + (D_800EE688 * arg0->unk_258[10 + arg1].unk_01E) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + (D_800EE68C * arg0->unk_258[10 + arg1].unk_01E) * sins(arg0->unk_258[10 + arg1].unk_020);
     }
     ++arg0->unk_258[10 + arg1].unk_01E;
     arg0->unk_258[10 + arg1].unk_004 += D_800EE690;
@@ -6192,11 +6188,11 @@ void func_800639DC(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_80063BD4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
-        arg0->unk_258[10 + arg1].unk_008 = (-2 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[2].cornerZ);
-        arg0->unk_258[10 + arg1].unk_000 = (-2 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[2].cornerX);
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + (-2 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020));
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + (-2 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020));
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = (-2 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[3].cornerZ);
-        arg0->unk_258[10 + arg1].unk_000 = (-2 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[3].cornerX);
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + (-2 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020));
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + (-2 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020));
     }
 
     ++arg0->unk_258[10 + arg1].unk_01E;
@@ -6213,11 +6209,11 @@ void func_80063BD4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_80063D58(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
-        arg0->unk_258[10 + arg1].unk_008 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[2].cornerZ;
-        arg0->unk_258[10 + arg1].unk_000 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[2].cornerX;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * sins(arg0->unk_258[10 + arg1].unk_020);
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[3].cornerZ;
-        arg0->unk_258[10 + arg1].unk_000 = ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->boundingBoxCorners[3].cornerX;
+        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * sins(arg0->unk_258[10 + arg1].unk_020);
     }
 
     ++arg0->unk_258[10 + arg1].unk_01E;
@@ -6237,6 +6233,7 @@ void func_80063D58(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     
     if (arg0->unk_258[10 + arg1].unk_03E <= 0) {
         arg0->unk_258[10 + arg1].unk_03E = 0;
+    }
 }
 
 #ifdef MIPS_TO_C
@@ -10584,7 +10581,7 @@ void func_8006B7E4(Player *player, s32 arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006B7E4.s")
 #endif
 
-void func_8006B87C(UNUSED s32 arg0, s8 playerIndex) {
+void func_8006B87C(UNUSED Player *player, s8 playerIndex) {
     gPlayerBalloonStatus[playerIndex][0] = BALLOON_STATUS_GONE;
     gPlayerBalloonStatus[playerIndex][1] = BALLOON_STATUS_GONE;
     gPlayerBalloonStatus[playerIndex][2] = BALLOON_STATUS_GONE;
