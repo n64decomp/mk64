@@ -46,7 +46,7 @@ extern f32   gKartBoundingBoxTable[];
 extern f32   gKartGravityTable[];
 
 extern f32   gLapCompletionPercentByPlayerId[8]; // D_801644A8
-extern s32   gLapCountByPlayerId[8];             // 
+extern s32   gLapCountByPlayerId[8];             // D_80164390
 
 extern s32   gMenuTimingCounter; // D_8018EE00
 extern s32   gMenuSelection;     // D_800E86A0
@@ -64,6 +64,7 @@ extern s32   gPlayerPositions[];                  // D_801643B8
 
 extern u8    gSaveDataSoundMode;               // D_8018ED14
 extern u8    gSaveDataSoundModeBackup;         // D_8018ED8C
+//extern u32   gScreenModeSelection;             // D_800DC530
 extern u32   gSegmentTable[16];                // D_80150258
 extern OSMesgQueue gSIEventMesgQueue;          // D_8014F0B8
 extern u8    gSoundMode;                       // D_8018EDF2

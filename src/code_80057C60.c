@@ -5,7 +5,9 @@
 #include <variables.h>
 #include <config.h>
 #include <defines.h>
+#include "code_80057C60.h"
 #include "code_80040E50.h"
+#include "math_util.h"
 
 void func_8001C3C4(s32);
 void func_80041D34(void);
@@ -33,45 +35,6 @@ void func_800532A4(s32);
 void func_80054BE8(s32);
 void func_80055F48(s32);
 void func_80056160(s32);
-void func_80059360(void);
-void func_80059560(s32);
-void func_80059820(s32);
-void func_8005995C(void);
-void func_80059D00(void);
-void func_8005A14C(s32);
-void func_8005A380(void);
-void func_8005A3C0(void);
-void func_8005A71C(void);
-void func_8005A74C(void);
-void func_8005A99C(void);
-void func_8005AA34(void);
-void func_8005B914(void);
-void func_8005C360(f32);
-void func_8005C728(void);
-void func_8005CB60(s32, s32);
-void func_8005D0FC(s32);
-void func_8005D1F4(s32);
-void func_80062B18(f32*, f32*, f32*, f32, f32, f32, u16, u16);
-void func_80066998(Player*, s8, s16, s8);
-void func_80067964(Player*, s8, s32, s8, s32);
-void func_80067D3C(Player*, s8, s32, s32, f32, s32);
-void func_8006801C(Player*, s8, s32, s32, f32, s32);
-void func_80068310(Player*, s8, s32, s8, s32);
-void func_80068724(Player*, s8, s32, s8, s32);
-void func_80068AA4(Player*, s8, s32, s8, s32);
-void func_80068DA0(Player*, s8, s32, s8, s32);
-void func_8006A280(Player*, s8, s16, s8);
-void func_800658A0(Player*, s8, s16, s8);
-void func_8006B9CC(Player*, s8);
-void func_8006AFD0(Player*, s16, s8, s8);
-void func_8006C6AC(Player*, s16, s8, s8);
-void func_8006C9B8(Player*, s16, s8, s8);
-void func_8006CEC0(Player*, s16, s8, s8);
-void func_8006D194(Player*, s8, s8);
-void func_8006D474(Player*, s8, s8);
-void func_8006DC54(Player*, s8, s8);
-void func_8006DD3C(Player*, s8, s8);
-void func_8006E420(Player*, s8, s8);
 void func_800744CC(void);
 void func_80077640(void);
 void func_80078C70(s32);
@@ -87,111 +50,6 @@ void func_8008C1D8(s32*);
 void func_8008C1E0(s32*, s32*);
 void func_8008C204(void);
 void func_802A3730(struct UnkStruct_800DC5EC*);
-
-f32 coss(u16);
-f32 sins(u16);
-
-extern Gfx *gDisplayListHead;
-extern struct GfxPool *gGfxPool;
-extern s32 gPlayerCountSelection1;
-extern s16 gCurrentCourseId;
-
-extern struct UnkStruct_800DC5EC *D_800DC5EC;
-extern struct UnkStruct_800DC5EC *D_800DC5F0;
-extern struct UnkStruct_800DC5EC *D_800DC5F4;
-extern struct UnkStruct_800DC5EC *D_800DC5F8;
-extern s32 D_8018D21C;
-extern u16 gPlayerBalloonStatus[8][3]; // 0x8018D5F0
-extern s16 gPlayerBalloonCount[];
-
-extern Player* gPlayerOneCopy;
-extern u16 D_800DC5FC;
-extern f64 D_800EE648;
-extern f64 D_800EE650;
-extern f64 D_800EE658;
-extern f64 D_800EE660;
-extern f64 D_800EE668;
-extern f64 D_800EE670;
-extern f64 D_800EE678;
-extern f32 D_800EE680;
-extern f32 D_800EE684;
-extern f32 D_800EE688;
-extern f32 D_800EE68C;
-extern f64 D_800EE690;
-extern f64 D_800EE698;
-extern f64 D_800EE6A0;
-extern f64 D_800EE6A8;
-extern f64 D_800EE6B0;
-extern f64 D_800EE6B8;
-extern f64 D_800EE6C0;
-extern f64 D_800EE6D8;
-extern f64 D_800EE6E0;
-extern f64 D_800EE6E8;
-extern f64 D_800EE700;
-extern f64 D_800EE708;
-extern f64 D_800EE710;
-extern f64 D_800EE718;
-extern f64 D_800EE720;
-extern f64 D_800EE728;
-extern f64 D_800EE730;
-extern f64 D_800EE738;
-extern f64 D_800EE740;
-extern f64 D_800EE748;
-extern f64 D_800EE750;
-extern f64 D_800EE758;
-extern f64 D_800EE760;
-extern f64 D_800EE768;
-extern f64 D_800EE770;
-extern f64 D_800EE778;
-extern f32 D_800EE780;
-extern f64 D_800EE788;
-extern f64 D_800EE790;
-extern f64 D_800EE798;
-extern f64 D_800EE7A0;
-extern f64 D_800EE7A8;
-extern f32 D_800EE7B0;
-extern f64 D_800EE7B8;
-extern f32 D_800EE948;
-extern f32 D_800EE94C;
-extern s32 lapCount;
-extern s32 D_80164394;
-extern s32 D_80164398;
-extern s32 D_8016439C;
-extern f32 D_801652A0[];
-extern s32 D_801655C0;
-extern s32 D_801655F0;
-extern s32 D_80165678;
-extern s8  D_801657AE;
-extern s8  D_801657D8;
-extern s8  D_801657E8;
-extern s8  D_8018CAE0;
-extern s32 D_8018D120;
-extern s32 D_8018D170;
-extern s32 D_8018D178;
-extern s32 D_8018D188;
-extern s32 D_8018D190;
-extern s32 D_8018D1A0;
-extern s32 D_8018D1B4;
-extern s32 D_8018D1D4;
-extern s32 D_8018D1CC;
-extern s32 D_8018D1FC;
-extern s32 D_8018D204;
-extern s32 D_8018D2A4;
-extern s32 D_8018D2BC;
-extern s32 D_8018D480;
-extern s32 D_8018D484;
-extern s32 gActiveScreenMode;
-extern s32 gModeSelection;
-extern s32 gPlayerCountSelection1;
-extern s32 gLapCountByPlayerId[];
-extern Player* gPlayerEight;
-extern Player* gPlayerFive;
-extern Player* gPlayerFour;
-extern Player* gPlayerOne;
-extern Player* gPlayerSeven;
-extern Player* gPlayerSix;
-extern Player* gPlayerThree;
-extern Player* gPlayerTwo;
 
 // UI Code?
 void func_80057C60(void) {
@@ -291,10 +149,6 @@ void func_80057FC4(u32 arg0) {
 }
 
 extern s32 D_8018D22C;
-void func_800581C8();
-void func_800582CC();
-void func_80058394();
-void func_8005845C();
 
 void func_80058090(u32 arg0) {
     UNUSED Gfx *temp_v1;
@@ -351,7 +205,6 @@ void func_80058090(u32 arg0) {
 }
 
 void func_8005217C(s32);
-void func_800588F4(s32 arg0);
 extern s32 D_800DC50C;
 extern u16 D_800DC51C;
 void func_800581C8(void) {
@@ -409,11 +262,6 @@ void func_8005845C(void) {
     func_800588F4(3);
 }
 
-void func_80058640();                       /* extern */
-void func_800586FC();                       /* extern */
-void func_800587A4();                       /* extern */
-void func_8005884C();                       /* extern */
-
 void func_80058538(u32 arg0) {
     UNUSED Gfx *temp_v1;
 
@@ -456,8 +304,6 @@ void func_80058538(u32 arg0) {
             break;
     }
 }
-
-void func_80058B58();
 
 void func_80058640(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
@@ -512,7 +358,6 @@ void func_80055C38(s32);
 void func_80055E68(s32);
 void func_80056188(s32);
 void func_80056AC0(s32);
-extern s32 gModeSelection;
 extern s16 D_80165730;
 extern s8 D_8018EDF3;
 extern s8 D_80165898;
@@ -640,16 +485,6 @@ void func_80058BF4(void) {
     gSPDisplayList(gDisplayListHead++, &D_0D0076F8);
 }
 
-void func_80058F48(void);
-void func_80059358(void);
-void func_800593F0(void);
-void func_800594F0(void);
-void func_80059528(void);
-void func_800596A8(void);
-void func_80059710(void);
-void func_80059750(void);
-void func_800597B8(void);
-
 void func_80058C20(u32 arg0) {
 
     D_8018D21C = arg0;
@@ -717,15 +552,6 @@ void func_80058C20(u32 arg0) {
         }
     }
 }
-
-void func_800593F8(void);
-void func_80058F78(void);
-void func_800594F8(void);
-void func_80059530(void);
-void func_800596D8(void);
-void func_80059718(void);
-void func_80059780(void);
-void func_800597E8(void);
 
 void func_80058DB4(u32 arg0) {
 
@@ -892,8 +718,6 @@ extern s8 D_80165800;
 extern s8 D_80165801;
 extern s32 D_8018D188;
 extern s32 D_8018D2BC;
-
-extern s32 gScreenModeSelection;
 
 void func_800591B4(void) {
 
