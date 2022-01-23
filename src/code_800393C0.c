@@ -79,7 +79,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->unk_07C = 0;
     player->unk_07A = 0;
     player->unk_006 = 0;
-    player->unk_008 = -1;
+    player->lapCount = -1;
     player->unk_08C = 0.0f;
     player->unk_090 = 0.0f;
     player->unk_094 = 0.0f;

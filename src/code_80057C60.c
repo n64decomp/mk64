@@ -187,6 +187,7 @@ extern s32 D_8018D484;
 extern s32 gActiveScreenMode;
 extern s32 gModeSelection;
 extern s32 gPlayerCountSelection1;
+extern s32 gLapCountByPlayerId[];
 extern Player* gPlayerEight;
 extern Player* gPlayerFive;
 extern Player* gPlayerFour;
@@ -1484,7 +1485,7 @@ void func_8005A070(void) {
 extern f32 D_800EE1E0;
 extern ? D_80165C18;
 extern ? D_8018CE24;
-extern ? lapCount;
+extern ? gLapCountByPlayerId;
 
 void func_8005A14C(s32 arg0) {
     s32 sp2C;
@@ -1498,7 +1499,7 @@ void func_8005A14C(s32 arg0) {
     void *phi_s0;
 
     temp_t0 = &gPlayerOne[arg0];
-    sp28 = *(&lapCount + (arg0 * 4));
+    sp28 = *(&gLapCountByPlayerId + (arg0 * 4));
     temp_a3 = *(&D_8018CE24 + (arg0 << 5));
     if ((temp_t0->unk_000 & 0x8000) != 0) {
         if ((temp_t0->unk_0BC & 0x204C0) != 0) {
@@ -3169,7 +3170,7 @@ void func_8005D0FC(s32 arg0) {
     if (gModeSelection != BATTLE) {
         switch (arg0) {                             /* irregular */
         case 0:
-            func_8005CB60(arg0, lapCount);
+            func_8005CB60(arg0, gLapCountByPlayerId[0]);
             break;
         case 1:
             func_8005CB60(arg0, D_80164394);

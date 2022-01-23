@@ -43,6 +43,8 @@ extern f32   gKartFrictionTable[];
 extern f32   gKartBoundingBoxTable[];
 extern f32   gKartGravityTable[];
 
+extern f32   gLapCompletionPercentByPlayerId[8]; // D_801644A8
+
 extern s32   gMenuTimingCounter; // D_8018EE00
 extern s32   gMenuSelection;     // D_800E86A0
 extern s32   gModeSelection;     // D_800DC53C

@@ -1,9 +1,9 @@
 glabel func_80050644
 /* 051244 80050644 308EFFFF */  andi  $t6, $a0, 0xffff
 /* 051248 80050648 000E4080 */  sll   $t0, $t6, 2
-/* 05124C 8005064C 3C078016 */  lui   $a3, %hi(lapCount) # 0x8016
+/* 05124C 8005064C 3C078016 */  lui   $a3, %hi(gLapCountByPlayerId) # 0x8016
 /* 051250 80050650 00E83821 */  addu  $a3, $a3, $t0
-/* 051254 80050654 8CE74390 */  lw    $a3, %lo(lapCount)($a3) # 0x4390($a3)
+/* 051254 80050654 8CE74390 */  lw    $a3, %lo(gLapCountByPlayerId)($a3) # 0x4390($a3)
 /* 051258 80050658 AFA40000 */  sw    $a0, ($sp)
 /* 05125C 8005065C 00001825 */  move  $v1, $zero
 /* 051260 80050660 28E10003 */  slti  $at, $a3, 3
@@ -15,9 +15,9 @@ glabel func_80050644
 /* 051278 80050678 15E1002A */  bne   $t7, $at, .L80050724
 /* 05127C 8005067C 00000000 */   nop
 /* 051280 80050680 04E0000A */  bltz  $a3, .L800506AC
-/* 051284 80050684 3C018016 */   lui   $at, %hi(D_801644A8)
+/* 051284 80050684 3C018016 */   lui   $at, %hi(gLapCompletionPercentByPlayerId)
 /* 051288 80050688 00280821 */  addu  $at, $at, $t0
-/* 05128C 8005068C C42444A8 */  lwc1  $f4, %lo(D_801644A8)($at)
+/* 05128C 8005068C C42444A8 */  lwc1  $f4, %lo(gLapCompletionPercentByPlayerId)($at)
 /* 051290 80050690 3C014468 */  li    $at, 0x44680000 # 928.000000
 /* 051294 80050694 44813000 */  mtc1  $at, $f6
 /* 051298 80050698 00000000 */  nop
@@ -65,9 +65,9 @@ glabel func_80050644
 
 .L80050724:
 /* 051324 80050724 04E0000A */  bltz  $a3, .L80050750
-/* 051328 80050728 3C018016 */   lui   $at, %hi(D_801644A8)
+/* 051328 80050728 3C018016 */   lui   $at, %hi(gLapCompletionPercentByPlayerId)
 /* 05132C 8005072C 00280821 */  addu  $at, $at, $t0
-/* 051330 80050730 C43044A8 */  lwc1  $f16, %lo(D_801644A8)($at)
+/* 051330 80050730 C43044A8 */  lwc1  $f16, %lo(gLapCompletionPercentByPlayerId)($at)
 /* 051334 80050734 3C014382 */  li    $at, 0x43820000 # 260.000000
 /* 051338 80050738 44819000 */  mtc1  $at, $f18
 /* 05133C 8005073C 00000000 */  nop
@@ -100,9 +100,9 @@ glabel func_80050644
 /* 05139C 8005079C ACCB0000 */   sw    $t3, ($a2)
 
 .L800507A0:
-/* 0513A0 800507A0 3C018016 */  lui   $at, %hi(D_801644A8)
+/* 0513A0 800507A0 3C018016 */  lui   $at, %hi(gLapCompletionPercentByPlayerId)
 /* 0513A4 800507A4 00280821 */  addu  $at, $at, $t0
-/* 0513A8 800507A8 C42844A8 */  lwc1  $f8, %lo(D_801644A8)($at)
+/* 0513A8 800507A8 C42844A8 */  lwc1  $f8, %lo(gLapCompletionPercentByPlayerId)($at)
 /* 0513AC 800507AC 3C014382 */  li    $at, 0x43820000 # 260.000000
 /* 0513B0 800507B0 44815000 */  mtc1  $at, $f10
 /* 0513B4 800507B4 00000000 */  nop

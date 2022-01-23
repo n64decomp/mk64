@@ -58,10 +58,10 @@ glabel func_80009B60
 /* 00A83C 80009C3C 3C018016 */  lui   $at, %hi(gCourseCompletionPercentByPlayerId)
 /* 00A840 80009C40 00270821 */  addu  $at, $at, $a3
 /* 00A844 80009C44 E42044D0 */  swc1  $f0, %lo(gCourseCompletionPercentByPlayerId)($at)
-/* 00A848 80009C48 3C018016 */  lui   $at, %hi(D_801644A8)
+/* 00A848 80009C48 3C018016 */  lui   $at, %hi(gLapCompletionPercentByPlayerId)
 /* 00A84C 80009C4C 00270821 */  addu  $at, $at, $a3
 /* 00A850 80009C50 10000537 */  b     .L8000B130
-/* 00A854 80009C54 E42044A8 */   swc1  $f0, %lo(D_801644A8)($at)
+/* 00A854 80009C54 E42044A8 */   swc1  $f0, %lo(gLapCompletionPercentByPlayerId)($at)
 .L80009C58:
 /* 00A858 80009C58 00D81021 */  addu  $v0, $a2, $t8
 /* 00A85C 80009C5C A4400000 */  sh    $zero, ($v0)

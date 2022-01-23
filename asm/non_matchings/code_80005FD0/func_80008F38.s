@@ -1,10 +1,10 @@
 glabel func_80008F38
 /* 009B38 80008F38 3C068016 */  lui   $a2, %hi(D_801645C8) # $a2, 0x8016
 /* 009B3C 80008F3C 00041080 */  sll   $v0, $a0, 2
-/* 009B40 80008F40 3C038016 */  lui   $v1, %hi(lapCount) # 0x8016
+/* 009B40 80008F40 3C038016 */  lui   $v1, %hi(gLapCountByPlayerId) # 0x8016
 /* 009B44 80008F44 24C645C8 */  addiu $a2, %lo(D_801645C8) # addiu $a2, $a2, 0x45c8
 /* 009B48 80008F48 00621821 */  addu  $v1, $v1, $v0
-/* 009B4C 80008F4C 8C634390 */  lw    $v1, %lo(lapCount)($v1) # 0x4390($v1)
+/* 009B4C 80008F4C 8C634390 */  lw    $v1, %lo(gLapCountByPlayerId)($v1) # 0x4390($v1)
 /* 009B50 80008F50 94CE0000 */  lhu   $t6, ($a2)
 /* 009B54 80008F54 00042840 */  sll   $a1, $a0, 1
 /* 009B58 80008F58 3C088016 */  lui   $t0, %hi(D_80164438) # 0x8016
@@ -42,11 +42,11 @@ glabel func_80008F38
 .L80008FD4:
 /* 009BD4 80008FD4 46103003 */  div.s $f0, $f6, $f16
 /* 009BD8 80008FD8 44832000 */  mtc1  $v1, $f4
-/* 009BDC 80008FDC 3C018016 */  lui   $at, %hi(D_801644A8)
+/* 009BDC 80008FDC 3C018016 */  lui   $at, %hi(gLapCompletionPercentByPlayerId)
 /* 009BE0 80008FE0 00220821 */  addu  $at, $at, $v0
 /* 009BE4 80008FE4 46802220 */  cvt.s.w $f8, $f4
 /* 009BE8 80008FE8 46080280 */  add.s $f10, $f0, $f8
-/* 009BEC 80008FEC E42044A8 */  swc1  $f0, %lo(D_801644A8)($at)
+/* 009BEC 80008FEC E42044A8 */  swc1  $f0, %lo(gLapCompletionPercentByPlayerId)($at)
 /* 009BF0 80008FF0 3C018016 */  lui   $at, %hi(gCourseCompletionPercentByPlayerId)
 /* 009BF4 80008FF4 00220821 */  addu  $at, $at, $v0
 /* 009BF8 80008FF8 03E00008 */  jr    $ra
