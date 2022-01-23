@@ -233,44 +233,54 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     D_801654C0[playerIndex] = 0;
     D_80165340 = 0;
 
-    player->frontLeftTyreSurface = 0;
-    player->frontRightTyreSurface = 0;
-    player->backLeftTyreSurface = 0;
-    player->backRightTyreSurface = 0;
-    player->unk_1A5 = 0;
-    player->unk_1BD = 0;
-    player->unk_1D5 = 0;
-    player->unk_1ED = 0;
-    player->unk_1A6 = 0;
-    player->unk_1BE = 0;
-    player->unk_1D6 = 0;
-    player->unk_1EE = 0;
-    player->unk_1C4 = 0;
-    player->unk_1AC = 0;
-    player->unk_1DC = 0;
-    player->unk_1F4 = 0;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].surfaceType  = 0;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].surfaceType = 0;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceType   = 0;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceType  = 0;
+
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].unk_0D  = 0;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].unk_0D = 0;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].unk_0D   = 0;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].unk_0D  = 0;
+
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].tileIndex  = 0;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].tileIndex = 0;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].tileIndex   = 0;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].tileIndex  = 0;
+
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].unk_14 = 0;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].unk_14  = 0;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].unk_14   = 0;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].unk_14  = 0;
+
     player->unk_110 = 0;
     player->unk_112 = 0;
     player->unk_114 = 0;
     player->unk_116 = 0;
     player->unk_118 = 0;
     player->unk_11A = 0;
-    player->unk_198 = 0.0f;
-    player->unk_19C = 0.0f;
-    player->unk_1A0 = 0.0f;
-    player->unk_1B0 = 0.0f;
-    player->unk_1B4 = 0.0f;
-    player->unk_1B8 = 0.0f;
-    player->unk_1C8 = 0.0f;
-    player->unk_1CC = 0.0f;
-    player->unk_1D0 = 0.0f;
-    player->unk_1E0 = 0.0f;
-    player->unk_1E4 = 0.0f;
-    player->unk_1E8 = 0.0f;
-    player->unk_1A8 = 0.0f;
-    player->unk_1C0 = 0.0f;
-    player->unk_1D8 = 0.0f;
-    player->unk_1F0 = 0.0f;
+
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerX = 0.0f;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerY = 0.0f;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerZ = 0.0f;
+
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerX = 0.0f;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerY = 0.0f;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerZ = 0.0f;
+
+    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerX = 0.0f;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerY = 0.0f;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerZ = 0.0f;
+
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerX = 0.0f;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerY = 0.0f;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerZ = 0.0f;
+
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerGroundY  = 0.0f;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerGroundY = 0.0f;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerGroundY   = 0.0f;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerGroundY  = 0.0f;
+
     player->unk_11C = 0.0f;
     player->unk_120 = 0.0f;
     player->unk_124 = 0.0f;
