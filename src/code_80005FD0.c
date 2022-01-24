@@ -1968,7 +1968,7 @@ extern ? D_80164376;
 extern s16 D_80164386;
 extern ? D_801643BA;
 extern ? D_80164450;
-extern ? D_801644A8;
+extern ? gLapCompletionPercentByPlayerId;
 extern ? D_80164538;
 extern u16 D_801645C8;
 extern ? gPlayers;
@@ -2048,7 +2048,7 @@ extern ? gPlayers;
                 phi_a1_2 = -temp_a2;
             }
             if (temp_t2 < 0x18) {
-                temp_f0 = *(&D_801644A8 + temp_t0);
+                temp_f0 = *(&gLapCompletionPercentByPlayerId + temp_t0);
                 phi_a0 = (temp_a3->unk10 * temp_f0) + (temp_a3->unk0 * (1.0f - temp_f0));
             } else {
                 phi_a0 = temp_a3->unk0;
@@ -2072,7 +2072,7 @@ extern ? gPlayers;
             phi_a1_4 = -phi_a1_3;
         }
         if (temp_t2 < 0x18) {
-            temp_f0_2 = *(&D_801644A8 + temp_t0);
+            temp_f0_2 = *(&gLapCompletionPercentByPlayerId + temp_t0);
             phi_a0_2 = (temp_a3->unk10 * temp_f0_2) + (temp_a3->unk0 * (1.0f - temp_f0_2));
         } else {
             phi_a0_2 = temp_a3->unk0;
@@ -2129,7 +2129,7 @@ extern ? gPlayers;
     }
     if (temp_t2 < 0x18) {
         temp_a2_2 = temp_a3 + (phi_t1 * 2);
-        temp_f0_3 = *(&D_801644A8 + temp_t0);
+        temp_f0_3 = *(&gLapCompletionPercentByPlayerId + temp_t0);
         phi_a0_5 = (temp_a2_2->unk10 * temp_f0_3) + (temp_a2_2->unk0 * (1.0f - temp_f0_3));
     } else {
         phi_a0_5 = *(temp_a3 + (phi_t1 * 2));
@@ -2226,11 +2226,11 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80008E58.s")
 extern s16 D_80162FCE;
 extern ? D_80164438;
 extern ? D_80164450;
-extern ? D_801644A8;
+extern ? gLapCompletionPercentByPlayerId;
 extern ? gCourseCompletionPercentByPlayerId;
 extern ? D_801645B0;
 extern u16 D_801645C8;
-extern ? lapCount;
+extern ? gLapCountByPlayerId;
 
 void func_80008F38(s32 arg0) {
     f32 temp_f0;
@@ -2245,7 +2245,7 @@ void func_80008F38(s32 arg0) {
     f32 phi_f16;
 
     temp_v0 = arg0 * 4;
-    temp_v1 = *(&lapCount + temp_v0);
+    temp_v1 = *(&gLapCountByPlayerId + temp_v0);
     temp_a1 = arg0 * 2;
     temp_t0 = *(&D_80164438 + temp_a1);
     temp_f6 = temp_t0;
@@ -2261,7 +2261,7 @@ void func_80008F38(s32 arg0) {
         phi_f16 = temp_f16 + 4294967296.0f;
     }
     temp_f0 = phi_f6 / phi_f16;
-    *(&D_801644A8 + temp_v0) = temp_f0;
+    *(&gLapCompletionPercentByPlayerId + temp_v0) = temp_f0;
     *(&gCourseCompletionPercentByPlayerId + temp_v0) = temp_f0 + temp_v1;
 }
 #else
@@ -2418,7 +2418,7 @@ extern s32 D_80164408;
 extern s32 D_8016440C;
 extern ? D_80164438;
 extern ? D_801645C8;
-extern ? lapCount;
+extern ? gLapCountByPlayerId;
 
 void func_8000929C(s32 arg0, void *arg1) {
     f32 sp4C;
@@ -2505,7 +2505,7 @@ void func_8000929C(s32 arg0, void *arg1) {
                 if (arg1->unk14 < 300.0f) {
                     phi_v1 = 1;
                     phi_t0 = 1;
-                } else if ((arg1->unk14 < D_800ECFA8) && (*(&lapCount + (phi_a0 * 4)) < 2) && (phi_a3_2 = phi_a0 * 4, (D_801634EC == 1))) {
+                } else if ((arg1->unk14 < D_800ECFA8) && (*(&gLapCountByPlayerId + (phi_a0 * 4)) < 2) && (phi_a3_2 = phi_a0 * 4, (D_801634EC == 1))) {
                     phi_v1 = 1;
                     phi_t0 = 1;
                 } else {
@@ -2517,7 +2517,7 @@ void func_8000929C(s32 arg0, void *arg1) {
                     phi_v1 = 1;
                     phi_t0 = 1;
                 } else {
-                    if ((D_800ECFAC < arg1->unk14) && (*(&lapCount + (phi_a0 * 4)) < 2) && (D_801634EC == 1)) {
+                    if ((D_800ECFAC < arg1->unk14) && (*(&gLapCountByPlayerId + (phi_a0 * 4)) < 2) && (D_801634EC == 1)) {
                         phi_v1 = 1;
                         phi_t0 = 1;
                     }
@@ -2535,12 +2535,12 @@ block_25:
         if (phi_v1 != 0) {
             temp_f0_2 = D_8016344C;
             if (sp44 <= temp_f0_2) {
-                temp_v0_3 = phi_a3_2 + &lapCount;
+                temp_v0_3 = phi_a3_2 + &gLapCountByPlayerId;
                 if (temp_f0_2 < sp38) {
                     temp_t1 = *temp_v0_3 + 1;
                     *temp_v0_3 = temp_t1;
                     if ((gModeSelection == GRAND_PRIX) && (temp_t1 == 5)) {
-                        phi_v0 = &lapCount;
+                        phi_v0 = &gLapCountByPlayerId;
                         if (*(&D_80164408 + phi_a3_2) == 7) {
                             do {
                                 temp_v0_4 = phi_v0 + 0x10;
@@ -2575,7 +2575,7 @@ block_25:
         if (phi_t0 != 0) {
             temp_f0_3 = D_8016344C;
             if (sp38 <= temp_f0_3) {
-                temp_v0_5 = phi_a3_2 + &lapCount;
+                temp_v0_5 = phi_a3_2 + &gLapCountByPlayerId;
                 if (temp_f0_3 < sp44) {
                     arg0 = phi_a0_2;
                     *temp_v0_5 = *temp_v0_5 - 1;
@@ -2844,7 +2844,7 @@ extern ? D_80163504;
 extern u16 D_80164430;
 extern ? D_80164438;
 extern ? D_80164450;
-extern ? D_801644A8;
+extern ? gLapCompletionPercentByPlayerId;
 extern ? D_801644D0;
 extern ? D_80164590;
 extern ? D_801645B0;
@@ -2967,7 +2967,7 @@ void func_80009B60(s32 arg0) {
         if ((temp_v1->unk0 & 0x8000) == 0) {
             *(&D_80164450 + temp_a3) = -0x14;
             *(&gCourseCompletionPercentByPlayerId + temp_a3) = -1000.0f;
-            *(&D_801644A8 + temp_a3) = -1000.0f;
+            *(&gLapCompletionPercentByPlayerId + temp_a3) = -1000.0f;
             return;
         }
         temp_v0_2 = temp_a2 + &D_801633E0;
@@ -6370,7 +6370,7 @@ extern s16 D_8016479E;
 extern ? D_801647A8;
 extern s8 D_8018EE08;
 extern ? gPlayers;
-extern s32 lapCount;
+extern s32 gLapCountByPlayerId;
 
 void func_8000F628(void) {
     void *sp104;
@@ -6480,7 +6480,7 @@ void func_8000F628(void) {
     s16 phi_s1_5;
 
     spD4 = &D_80163210;
-    spD0 = &lapCount;
+    spD0 = &gLapCountByPlayerId;
     spB8 = &D_80163258;
     spBC = &D_80164408;
     spCC = &gCourseCompletionPercentByPlayerId;
@@ -13374,7 +13374,7 @@ void func_8001AC10(s32 playerId, s32 *arg2) {
         case 0:                                     /* switch 1 */
             temp_s0->unk2 = -1;
             temp_v0 = playerId * 4;
-            if ((((playerId * 0x14) + 0x64) < *(&D_80164450 + temp_v0)) && (temp_s0->unk4 >= 0x259) && (temp_s0->unk6 < 3) && (temp_v1 = lapCount[playerId], ((temp_v1 < 3) != 0))) {
+            if ((((playerId * 0x14) + 0x64) < *(&D_80164450 + temp_v0)) && (temp_s0->unk4 >= 0x259) && (temp_s0->unk6 < 3) && (temp_v1 = gLapCountByPlayerId[playerId], ((temp_v1 < 3) != 0))) {
                 func_8001AB74(playerId, temp_s0, func_8007AF78(temp_v1, (&gPlayerPositions + temp_v0)->unk2, &gPlayerPositions));
             } else {
                 func_8001ABE0(playerId, temp_s0);
@@ -13383,7 +13383,7 @@ void func_8001AC10(s32 playerId, s32 *arg2) {
 block_194:
             break;
         case 1:                                     /* switch 1 */
-            if ((lapCount[playerId] > 0) && (temp_v1_2 = D_80163478, temp_a0 = *(&gPlayerPositions + (temp_v1_2 * 4)), ((temp_a0 < *(&gPlayerPositions + (playerId * 4))) != 0)) && (temp_a0 == 0)) {
+            if ((gLapCountByPlayerId[playerId] > 0) && (temp_v1_2 = D_80163478, temp_a0 = *(&gPlayerPositions + (temp_v1_2 * 4)), ((temp_a0 < *(&gPlayerPositions + (playerId * 4))) != 0)) && (temp_a0 == 0)) {
                 temp_v0_2 = sp2C->unk254;
                 if (temp_v0_2 != 4) {
                     if (temp_v0_2 != 6) {

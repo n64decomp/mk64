@@ -52,6 +52,31 @@ typedef enum {
     /* 0x10 */ NUM_TIME_TRIAL_DATA
 } TIME_TRIAL_DATA_INDEX;
 
+enum SURFACE_TYPE {
+    /* 0x00 */ AIRBORNE,
+    /* 0x01 */ PAVEMENT, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
+    /* 0x02 */ SAND_ONE, // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert on course, Choco Mountain, Wario Stadium, DK Jungle on course, Yoshi Valley
+    /* 0x03 */ SAND_TWO, // Koopa Troopa Beach light color, Royal Raceway
+    /* 0x04 */ STONE_TWO, // Royal Raceway castle entrance, Bowser's Castle
+    /* 0x05 */ SNOW_ONE, // Frappe Snowland on course, Sherber Land tunnel
+    /* 0x06 */ STONE_ONE, // Royal Raceway castle bridges (even the wooden one), Banshee's Boardwalk, Big Donut
+    /* 0x07 */ SAND_FIVE, // Mario Raceway
+    /* 0x08 */ GRASS, // Luigi's Raceway, Mario Raceway, Royal Raceway, Bowser's Castle, DK Jungle, Yoshi Valley
+    /* 0x09 */ ICE, // Sherbert Land
+    /* 0x0A */ SAND_THREE, // Koop Troopa Beach dark color
+    /* 0x0B */ SNOW_TWO, // Frappe Snowland off course
+    /* 0x0C */ CLIFF, // Koopa Troopa Beach, Choco Mountain
+    /* 0x0D */ SAND_FOUR, // Kalimari Desert off course
+    /* 0x0E */ TRAIN_TRACK, // Kalimari Desert
+    /* 0x0F */ DIRT, // DK Jungle cave
+    /* 0x10 */ WOOD_TWO, // Bowser's Castle bridge 2, DK Jungle bridge
+    /* 0x11 */ WOOD_ONE, // Frappe Snowland bridge, Bowser's Castle bridge 1,3, Yoshi Valley bridge 2
+    /* 0xFC */ BOOST_PAD_TWO = 0xFC, // DK Jungle
+    /* 0xFD */ OUT_OF_BOUNDS, // DK Jungle river island
+    /* 0xFE */ BOOST_PAD_ONE, // Royal Raceway
+    /* 0xFF */ RAMP // Koopa Troopa beach
+};
+
 // This was added as a silly idea:
 // In the data to use "A, B, Z, R" instead of hex numbers.
 typedef enum {
@@ -166,11 +191,32 @@ typedef struct {
 } UnkPlayerStruct258; // size = 0x48
 
 typedef struct {
+    /* 0x00 */ f32 cornerX;
+    /* 0x04 */ f32 cornerY;
+    /* 0x08 */ f32 cornerZ;
+    // Type of surface the corner is above
+    /* 0x0C */ u8  surfaceType;
+    /* 0x0D */ u8  unk_0D;
+    // Don't know if "tile" is right the right term
+    // D_8015F580 is a pointer to an array of "tile" structs. This is an index to that array
+    /* 0x0E */ u16 tileIndex;
+    // cornerX/Y/Z place the corner "in the air" as it were, this member indicates the Y position of the corner's "on the ground" sibling
+    // On flat ground this value should be cornerY - gKartBoundingBoxTable[characterId]
+    /* 0x10 */ f32 cornerGroundY;
+    /* 0x14 */ s32 unk_14;
+} KartBoundingBoxCorner; // size = 0x18
+
+#define FRONT_LEFT_TYRE  0
+#define FRONT_RIGHT_TYRE 1
+#define BACK_LEFT_TYRE   2
+#define BACK_RIGHT_TYRE  3
+
+typedef struct {
     /* 0x0000 */ u16 unk_000;
     /* 0x0002 */ u16 unk_002;
-    /* 0x0004 */ s16 unk_004; // currentPosition
+    /* 0x0004 */ s16 currentRank;
     /* 0x0006 */ u16 unk_006;
-    /* 0x0008 */ s16 unk_008; // lapCount?
+    /* 0x0008 */ s16 lapCount;
     /* 0x000A */ char unk_00A[0x2];
     /* 0x000C */ s32 unk_00C;
     /* 0x0010 */ s16 unk_010;
@@ -269,38 +315,7 @@ typedef struct {
     /* 0x014C */ char unk_14C[0x4];
     /* 0x0150 */ f32 unk_150[9];
     /* 0x0174 */ f32 unk_174[9];
-    /* 0x0198 */ f32 unk_198;
-    /* 0x019C */ f32 unk_19C;
-    /* 0x01A0 */ f32 unk_1A0;
-    /* 0x01A4 */ u8 frontLeftTyreSurface;
-    /* 0x01A5 */ s8 unk_1A5;
-    /* 0x01A6 */ s16 unk_1A6;
-    /* 0x01A8 */ f32 unk_1A8;
-    /* 0x01AC */ s32 unk_1AC;
-    /* 0x01B0 */ f32 unk_1B0;
-    /* 0x01B4 */ f32 unk_1B4;
-    /* 0x01B8 */ f32 unk_1B8;
-    /* 0x01BC */ u8 frontRightTyreSurface;
-    /* 0x01BD */ s8 unk_1BD;
-    /* 0x01BE */ s16 unk_1BE;
-    /* 0x01C0 */ f32 unk_1C0;
-    /* 0x01C4 */ s32 unk_1C4;
-    /* 0x01C8 */ f32 unk_1C8;
-    /* 0x01CC */ f32 unk_1CC;
-    /* 0x01D0 */ f32 unk_1D0;
-    /* 0x01D4 */ u8 backLeftTyreSurface;
-    /* 0x01D5 */ s8 unk_1D5;
-    /* 0x01D6 */ s16 unk_1D6;
-    /* 0x01D8 */ f32 unk_1D8;
-    /* 0x01DC */ s32 unk_1DC;
-    /* 0x01E0 */ f32 unk_1E0;
-    /* 0x01E4 */ f32 unk_1E4;
-    /* 0x01E8 */ f32 unk_1E8;
-    /* 0x01EC */ u8 backRightTyreSurface;
-    /* 0x01ED */ s8 unk_1ED;
-    /* 0x01EE */ s16 unk_1EE;
-    /* 0x01F0 */ f32 unk_1F0;
-    /* 0x01F4 */ s32 unk_1F4;
+    /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];
     /* 0x01F8 */ f32 unk_1F8;
     /* 0x01FC */ f32 unk_1FC;
     /* 0x0200 */ s32 unk_200;

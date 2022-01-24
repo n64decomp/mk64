@@ -172,7 +172,7 @@ glabel D_80164386
 
 # List of s32's, seemingly indexed by player ID
 # Indicates the number of completed laps for that player
-glabel lapCount
+glabel gLapCountByPlayerId
 .skip 2
 
 glabel D_80164392
@@ -238,7 +238,7 @@ glabel D_80164490
 glabel D_80164498
 .skip 16
 
-glabel D_801644A8
+glabel gLapCompletionPercentByPlayerId
 .skip 40
 
 glabel gCourseCompletionPercentByPlayerId

@@ -1,8 +1,8 @@
 glabel func_8000F628
 /* 010228 8000F628 27BDFEE0 */  addiu $sp, $sp, -0x120
 /* 01022C 8000F62C 3C0E8016 */  lui   $t6, %hi(D_80163210) # $t6, 0x8016
-/* 010230 8000F630 3C0F8016 */  lui   $t7, %hi(lapCount) # $t7, 0x8016
-/* 010234 8000F634 25EF4390 */  addiu $t7, %lo(lapCount) # addiu $t7, $t7, 0x4390
+/* 010230 8000F630 3C0F8016 */  lui   $t7, %hi(gLapCountByPlayerId) # $t7, 0x8016
+/* 010234 8000F634 25EF4390 */  addiu $t7, %lo(gLapCountByPlayerId) # addiu $t7, $t7, 0x4390
 /* 010238 8000F638 25CE3210 */  addiu $t6, %lo(D_80163210) # addiu $t6, $t6, 0x3210
 /* 01023C 8000F63C AFAE00D4 */  sw    $t6, 0xd4($sp)
 /* 010240 8000F640 AFAF00D0 */  sw    $t7, 0xd0($sp)

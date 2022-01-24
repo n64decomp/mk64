@@ -67,7 +67,7 @@ extern s16 gCurrentCourseId;
 extern s32 gModeSelection;
 extern s32 gActiveScreenMode;
 extern u16 D_8015F890;
-extern s32 lapCount[];
+extern s32 gLapCountByPlayerId[];
 extern s32 D_8018CA78;
 
 extern Player *gPlayerOne;
@@ -489,9 +489,9 @@ void func_80005B18(void) {
     u16 *phi_a3;
 
     if (gModeSelection == TIME_TRIALS) {
-        temp_v0 = lapCount[0];
+        temp_v0 = gLapCountByPlayerId[0];
         //phi_a3 = &D_80162DD4;
-        if ((lapCount[0] == 3) && (D_80162DDC == 0) && D_80162DF8 != 1) {
+        if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && D_80162DF8 != 1) {
             //if (D_80162DF8 != 1) {
 
             if (D_80162DD4 == 1) {
@@ -507,7 +507,7 @@ void func_80005B18(void) {
                 func_80005AE8(gPlayerThree);
 
             } else {
-                if (lapCount[4] != 3) {
+                if (gLapCountByPlayerId[4] != 3) {
                     D_80162DD0 = D_80162DCC;
                     func_800052A4(); // gModeSelection, &D_80162DDC, 3, &D_80162DD4);
                     D_80162DDC = 1;
@@ -534,7 +534,7 @@ void func_80005B18(void) {
 
             return;
         }
-        if ((lapCount[0] == 3) && (D_80162DDC == 0) && (D_80162DF8 == 1)) {
+        if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (D_80162DF8 == 1)) {
             D_80162D80 = (void *) ((D_80162DC8 << 0xF) + 0x3000 + &D_802BFB80);
             D_80162D84 = D_80162D86;
             D_80162DDC = 1;
@@ -549,10 +549,10 @@ void func_80005B18(void) {
             D_80162DEC = 100;
         }
         if ((gModeSelection == TIME_TRIALS) && (gActiveScreenMode == 0)) {
-            if ((D_80162DD4 == 0) && (lapCount[4] != 3)) {
+            if ((D_80162DD4 == 0) && (gLapCountByPlayerId[4] != 3)) {
                 func_800057DC(); //gModeSelection, &D_80162DDC, 3, &D_80162DD4);
             }
-            if ((D_80162DD6 == 0) && (3 != lapCount[8])) {
+            if ((D_80162DD6 == 0) && (3 != gLapCountByPlayerId[8])) {
                 func_8000561C();
             }
             if (( gPlayerOne->unk_000 & PLAYER_CINEMATIC_MODE) == 0) {
