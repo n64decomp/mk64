@@ -204,7 +204,7 @@ typedef struct {
     // On flat ground this value should be cornerY - gKartBoundingBoxTable[characterId]
     /* 0x10 */ f32 cornerGroundY;
     /* 0x14 */ s32 unk_14;
-} kartBoundingBoxCorner; // size = 0x18
+} KartBoundingBoxCorner; // size = 0x18
 
 #define FRONT_LEFT_TYRE  0
 #define FRONT_RIGHT_TYRE 1
@@ -315,7 +315,7 @@ typedef struct {
     /* 0x014C */ char unk_14C[0x4];
     /* 0x0150 */ f32 unk_150[9];
     /* 0x0174 */ f32 unk_174[9];
-    /* 0x0198 */ kartBoundingBoxCorner boundingBoxCorners[4];
+    /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];
     /* 0x01F8 */ f32 unk_1F8;
     /* 0x01FC */ f32 unk_1FC;
     /* 0x0200 */ s32 unk_200;
