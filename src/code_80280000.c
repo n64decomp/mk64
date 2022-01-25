@@ -18,6 +18,8 @@ extern u16 D_80150112;
 extern u16 D_80164AF0;
 extern u32 D_8018D120;
 extern s32 gPrevLoadedAddress;
+extern mk64_surface_map_ram (*D_8015F580)[];
+extern u16 D_8015F588; // Number of entires in D_8015F580
 
 extern u16 gIsInQuitToMenuTransition, gQuitToMenuTransitionCounter;
 extern s32 D_802874A0;

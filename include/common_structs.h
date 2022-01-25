@@ -191,18 +191,71 @@ typedef struct {
 } UnkPlayerStruct258; // size = 0x48
 
 typedef struct {
+    s16        ob[3];    /* x, y, z */
+    s16        tc[2];    /* texture coord */
+    u8    ca[4];    /* color & alpha */
+
+} mk64_Vtx;
+
+typedef struct {
+    s16        ob[3];    /* x, y, z */
+    s16        tc[2];    /* texture coord */
+    s8        flag[2];  /* unk flag */
+    u8    ca[4];    /* color & alpha */
+
+} mk_Vtx_Flag;
+
+/*
+This struct has been copied (with only minor modifications) from
+https://github.com/micro500/mariokart64/wiki/Surface-Map
+on January 23rd, 2022
+The original author is assumed to be RenaKunisaki
+*/
+typedef struct {
+    /* 0x00 */ u16 flags;
+        // Top bytes is a collections of flags, bottom byte is of unknown purpose
+        //bit 7: 1 = only tangible if landed on, not if driven onto?
+        //       very weird. game crashes sometimes when playing with this.
+        //bit 6: 1 = Lakitu can drop you here (XXX verify)
+        //bit 4: 1 = out of bounds
+        //bit 3: 1 = player tumbles upon contact (may fall right through)
+    /* 0x02 */ u16 surfaceType;
+    /* 0x04 */ s16 vtx3[3]; //X, Y, Z of poly's third vertex
+    /* 0x0A */ s16 vtx2[3]; //X, Y, Z of poly's second vertex
+    /* 0x10 */ mk_Vtx_Flag *vtxs[3]; //pointer to the 3 vertices of this poly
+        //unsure why this exists along with a copy of two of the vertices.
+        //both are involved in hit detection.
+    /* 0x1C */ f32 height;
+        //normally 0; read at 0x802AB1A4. this value is added to the height Lakitu
+        //drops you at. changing it seems to make the surface intangible.
+    /* 0x20 */ f32 gravity;
+        //normally 1. The height Lakitu drops you off at is divided by this value
+        //(before adding the value at 0x1C), although if set to zero, he just tries
+        //to drop you at about the height of the finish line banner. Changing it
+        //has various unusual effects, making the polygon intangible or
+        //significantly reducing the gravity above it, probably depending on its Y
+        //position.
+    /* 0x24 */ f32 rotation; //normally about -0.001. no idea what this actually is.
+    /* 0x28 */ f32 height2; //changes Y position of all vertices (but not graphics or
+        //Lakitu drop position). Normally set to (track_height * -1) + about 6.
+} mk64_surface_map_ram; // size = 0x2C
+
+typedef struct {
     /* 0x00 */ f32 cornerX;
     /* 0x04 */ f32 cornerY;
     /* 0x08 */ f32 cornerZ;
     // Type of surface the corner is above
     /* 0x0C */ u8  surfaceType;
-    /* 0x0D */ u8  unk_0D;
+    // Close to being a copy of the top byte of the surface_map "flag" member
+    /* 0x0D */ u8  surfaceFlags;
     // Don't know if "tile" is right the right term
     // D_8015F580 is a pointer to an array of "tile" structs. This is an index to that array
-    /* 0x0E */ u16 tileIndex;
+    /* 0x0E */ u16 surfaceMapIndex;
     // cornerX/Y/Z place the corner "in the air" as it were, this member indicates the Y position of the corner's "on the ground" sibling
     // On flat ground this value should be cornerY - gKartBoundingBoxTable[characterId]
     /* 0x10 */ f32 cornerGroundY;
+    // Something lighting related. 1 when in a shaded region, 2 when in a tree's shadow
+    // 3 when getting crushed by a whomp, but curiously only the front left tyre will ever have this value
     /* 0x14 */ s32 unk_14;
 } kartBoundingBoxCorner; // size = 0x18
 

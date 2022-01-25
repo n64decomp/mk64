@@ -2184,15 +2184,15 @@ GLOBAL_ASM("asm/non_matchings/code_80290C20/func_80295A38.s")
 void func_80295BF8(s32 playerIndex) {
     Player* player = &gPlayers[playerIndex];
     func_802AAAAC(&player->unk_110);
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].unk_0D = 0.0f;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].unk_0D  = 0.0f;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].unk_0D  = 0.0f;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].unk_0D   = 0.0f;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].surfaceFlags = 0;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].surfaceFlags  = 0;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceFlags  = 0;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceFlags   = 0;
 
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].tileIndex = 0x1388;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].tileIndex  = 0x1388;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].tileIndex  = 0x1388;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].tileIndex   = 0x1388;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].surfaceMapIndex = 0x1388;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].surfaceMapIndex  = 0x1388;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceMapIndex  = 0x1388;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceMapIndex   = 0x1388;
 }
 
 
