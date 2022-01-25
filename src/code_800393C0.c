@@ -238,15 +238,15 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceType   = 0;
     player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceType  = 0;
 
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].unk_0D  = 0;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].unk_0D = 0;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].unk_0D   = 0;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].unk_0D  = 0;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].surfaceFlags  = 0;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].surfaceFlags = 0;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceFlags   = 0;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceFlags  = 0;
 
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].tileIndex  = 0;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].tileIndex = 0;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].tileIndex   = 0;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].tileIndex  = 0;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].surfaceMapIndex  = 0;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].surfaceMapIndex = 0;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceMapIndex   = 0;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceMapIndex  = 0;
 
     player->boundingBoxCorners[FRONT_RIGHT_TYRE].unk_14 = 0;
     player->boundingBoxCorners[FRONT_LEFT_TYRE].unk_14  = 0;
