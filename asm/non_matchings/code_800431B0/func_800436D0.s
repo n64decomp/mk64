@@ -1,3 +1,4 @@
+glabel func_800436D0
 /* 0442D0 800436D0 44876000 */  mtc1  $a3, $f12
 /* 0442D4 800436D4 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 0442D8 800436D8 AFBF0014 */  sw    $ra, 0x14($sp)
