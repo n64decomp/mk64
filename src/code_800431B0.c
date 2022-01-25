@@ -109,9 +109,168 @@ void func_800435A0(? arg2, s32 arg3, s32 arg4) {
 GLOBAL_ASM("asm/non_matchings/code_800431B0/func_800435A0.s")
 #endif
 
-// 4 unused funcs
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80043668.s")
+#ifdef MIPS_TO_C
+UNUSED void func_80043668(? arg2, s32 arg3) {
+    void* temp_v0;
+    void* temp_v0_2;
 
+    func_80042E00(arg2, arg2);
+    temp_v0 = gDisplayListHead;
+    gDisplayListHead = temp_v0 + 8;
+    temp_v0->unk4 = &D_0D0078A0;
+    temp_v0->unk0 = 0x06000000;
+    temp_v0_2 = gDisplayListHead;
+    gDisplayListHead = temp_v0_2 + 8;
+    temp_v0_2->unk0 = 0x06000000;
+    temp_v0_2->unk4 = arg3;
+}
+#else
+GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80043668.s")
+#endif
+
+#ifdef MIPS_TO_C
+UNUSED void func_800436D0(s32 arg2, ? arg3, s32 arg4) {
+    void* temp_v0;
+    void* temp_v0_2;
+    void* temp_v0_3;
+
+    func_80042330(arg3, arg2 & 0xFFFF, arg3);
+    temp_v0 = gDisplayListHead;
+    gDisplayListHead = temp_v0 + 8;
+    temp_v0->unk4 = &D_0D0078A0;
+    temp_v0->unk0 = 0x06000000;
+    temp_v0_2 = gDisplayListHead;
+    gDisplayListHead = temp_v0_2 + 8;
+    temp_v0_2->unk0 = 0x04000C2F;
+    temp_v0_2->unk4 = arg4;
+    temp_v0_3 = gDisplayListHead;
+    gDisplayListHead = temp_v0_3 + 8;
+    temp_v0_3->unk4 = &D_0D006930;
+    temp_v0_3->unk0 = 0x06000000;
+}
+#else
+GLOBAL_ASM("asm/non_matchings/code_800431B0/func_800436D0.s")
+#endif
+    
+#ifdef MIPS_TO_C
+UNUSED void func_80043764(s32 arg2, ? arg3, s32 arg4) {
+    void* temp_v0;
+    void* temp_v0_2;
+    void* temp_v0_3;
+
+    func_80042330(arg3, arg2 & 0xFFFF, arg3);
+    temp_v0 = gDisplayListHead;
+    gDisplayListHead = temp_v0 + 8;
+    temp_v0->unk4 = &D_0D0078A0;
+    temp_v0->unk0 = 0x06000000;
+    temp_v0_2 = gDisplayListHead;
+    gDisplayListHead = temp_v0_2 + 8;
+    temp_v0_2->unk0 = 0x0400103F;
+    temp_v0_2->unk4 = arg4;
+    temp_v0_3 = gDisplayListHead;
+    gDisplayListHead = temp_v0_3 + 8;
+    temp_v0_3->unk4 = &D_0D006940;
+    temp_v0_3->unk0 = 0x06000000;
+}
+#else
+GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80043764.s")
+#endif
+    
+#ifdef MIPS_TO_C
+UNUSED void func_800437F8(s32 arg2, ? arg3, void* arg4, s32 arg5) {
+    void* temp_v0;
+    void* temp_v0_2;
+    void* temp_v0_3;
+    void* temp_v0_4;
+
+    func_80042330(arg3, arg2 & 0xFFFF, arg3);
+    temp_v0 = gDisplayListHead;
+    gDisplayListHead = temp_v0 + 8;
+    temp_v0->unk4 = &D_0D0078A0;
+    temp_v0->unk0 = 0x06000000;
+    temp_v0_2 = gDisplayListHead;
+    gDisplayListHead = temp_v0_2 + 8;
+    temp_v0_2->unk0 = 0xB900031D;
+    temp_v0_2->unk4 = 0x504340;
+    arg4->unkF = (s8) arg5;
+    arg4->unk1F = (s8) arg5;
+    arg4->unk2F = (s8) arg5;
+    arg4->unk3F = (s8) arg5;
+    temp_v0_3 = gDisplayListHead;
+    gDisplayListHead = temp_v0_3 + 8;
+    temp_v0_3->unk4 = arg4;
+    temp_v0_3->unk0 = 0x0400103F;
+    temp_v0_4 = gDisplayListHead;
+    gDisplayListHead = temp_v0_4 + 8;
+    temp_v0_4->unk4 = &D_0D006940;
+    temp_v0_4->unk0 = 0x06000000;
+}
+#else
+GLOBAL_ASM("asm/non_matchings/code_800431B0/func_800437F8.s")
+#endif
+
+#ifdef MIPS_TO_C
+UNUSED void func_800438C4(s32 arg2, ? arg3, void* arg4, s32 arg5) {
+    void* temp_v0;
+    void* temp_v0_2;
+    void* temp_v0_3;
+    void* temp_v0_4;
+
+    arg4->unk10 = (s16) arg5;
+    arg4->unk20 = (s16) arg5;
+    func_80042330(arg3, arg2 & 0xFFFF, arg3);
+    temp_v0 = gDisplayListHead;
+    gDisplayListHead = temp_v0 + 8;
+    temp_v0->unk4 = &D_0D0078A0;
+    temp_v0->unk0 = 0x06000000;
+    temp_v0_2 = gDisplayListHead;
+    gDisplayListHead = temp_v0_2 + 8;
+    temp_v0_2->unk0 = 0xB900031D;
+    temp_v0_2->unk4 = 0x504340;
+    temp_v0_3 = gDisplayListHead;
+    gDisplayListHead = temp_v0_3 + 8;
+    temp_v0_3->unk0 = 0x0400103F;
+    temp_v0_3->unk4 = arg4;
+    temp_v0_4 = gDisplayListHead;
+    gDisplayListHead = temp_v0_4 + 8;
+    temp_v0_4->unk4 = &D_0D006940;
+    temp_v0_4->unk0 = 0x06000000;
+}
+#else
+GLOBAL_ASM("asm/non_matchings/code_800431B0/func_800438C4.s")
+#endif
+
+#ifdef MIPS_TO_C
+UNUSED void func_8004398C(s32 arg2, ? arg3, void* arg4, s32 arg5) {
+    void* temp_v0;
+    void* temp_v0_2;
+    void* temp_v0_3;
+    void* temp_v0_4;
+
+    arg4->unk0 = (s16) arg5;
+    arg4->unk30 = (s16) arg5;
+    func_80042330(arg3, arg2 & 0xFFFF, arg3);
+    temp_v0 = gDisplayListHead;
+    gDisplayListHead = temp_v0 + 8;
+    temp_v0->unk4 = &D_0D0078A0;
+    temp_v0->unk0 = 0x06000000;
+    temp_v0_2 = gDisplayListHead;
+    gDisplayListHead = temp_v0_2 + 8;
+    temp_v0_2->unk0 = 0xB900031D;
+    temp_v0_2->unk4 = 0x504340;
+    temp_v0_3 = gDisplayListHead;
+    gDisplayListHead = temp_v0_3 + 8;
+    temp_v0_3->unk0 = 0x0400103F;
+    temp_v0_3->unk4 = arg4;
+    temp_v0_4 = gDisplayListHead;
+    gDisplayListHead = temp_v0_4 + 8;
+    temp_v0_4->unk4 = &D_0D006940;
+    temp_v0_4->unk0 = 0x06000000;
+}
+#else
+GLOBAL_ASM("asm/non_matchings/code_800431B0/func_8004398C.s")
+#endif
+    
 s32 func_80043A54(s32 arg0) {
     s32 temp_a1;
     s32 phi_v0;
