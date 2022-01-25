@@ -257,7 +257,7 @@ typedef struct {
     // Something lighting related. 1 when in a shaded region, 2 when in a tree's shadow
     // 3 when getting crushed by a whomp, but curiously only the front left tyre will ever have this value
     /* 0x14 */ s32 unk_14;
-} kartBoundingBoxCorner; // size = 0x18
+} KartBoundingBoxCorner; // size = 0x18
 
 #define FRONT_LEFT_TYRE  0
 #define FRONT_RIGHT_TYRE 1
@@ -368,7 +368,7 @@ typedef struct {
     /* 0x014C */ char unk_14C[0x4];
     /* 0x0150 */ f32 unk_150[9];
     /* 0x0174 */ f32 unk_174[9];
-    /* 0x0198 */ kartBoundingBoxCorner boundingBoxCorners[4];
+    /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];
     /* 0x01F8 */ f32 unk_1F8;
     /* 0x01FC */ f32 unk_1FC;
     /* 0x0200 */ s32 unk_200;

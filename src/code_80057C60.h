@@ -3,6 +3,43 @@
 
 #include "common_structs.h"
 
+void func_8001C3C4(s32);
+
+void func_80041D34(void);
+
+void func_8004E638(s32);
+void func_8004E78C(s32);
+void func_8004E800(s32);
+void func_8004E998(s32);
+void func_8004EB30(s32);
+void func_8004EB38(s32);
+void func_8004ED40(s32);
+void func_8004EE54(s32);
+
+void func_8004F020(s32);
+void func_8004F3E4(s32);
+void func_8004FA78(s32);
+
+void func_80050320(void);
+
+void func_800514BC(void);
+void func_800517C8(void);
+void func_80051EBC(void);
+void func_80051EF8(void);
+void func_80051F9C(void);
+
+void func_80052044(void);
+void func_80052080(void);
+void func_80052C60(void);
+
+void func_800532A4(s32);
+
+void func_80054BE8(s32);
+
+void func_80055F48(s32);
+
+void func_80056160(s32);
+
 void func_80057C60();
 void func_80057CE4();
 void func_80057DD0();
@@ -121,6 +158,7 @@ void func_80068AA4(Player*, s8, s32, s8, s32);
 void func_80068DA0(Player*, s8, s32, s8, s32);
 
 void func_8006A280(Player*, s8, s16, s8);
+void func_8006A7C0(Player*, f32, f32, s8, s8);
 void func_8006AFD0(Player*, s16, s8, s8);
 
 void func_8006B87C(Player*, s8);
@@ -148,6 +186,33 @@ void func_8006E848(Player*, s8, s8);
 void func_8006E8C4(Player*, s8, s8);
 void func_8006E940(Player*, s8, s8);
 
+void func_800744CC(void);
+void func_80077640(void);
+
+void func_80078C70(s32);
+
+void func_8007A948(s32);
+void func_8007AA44(s32);
+
+void func_8007BB9C(s32);
+
+void func_8007C2F8(s32);
+
+void func_80081210(void);
+
+void func_80086604(void);
+void func_80086D80(void);
+
+void func_800892E0(s32);
+
+void func_8008C1D8(s32*);
+void func_8008C1E0(s32*, s32*);
+void func_8008C204(void);
+
+void func_802A3730(struct UnkStruct_800DC5EC*);
+
+
+
 extern u16 gPlayerBalloonStatus[8][3]; // D_8018D5F0
 extern s16 gPlayerBalloonCount[];      // D_8018D8C0
 extern u32 gScreenModeSelection;       // D_800DC530
@@ -158,7 +223,13 @@ extern struct UnkStruct_800DC5EC *D_800DC5F4;
 extern struct UnkStruct_800DC5EC *D_800DC5F8;
 
 extern u16 D_800DC5FC;
-
+extern f64 D_800EE5A8;
+extern f64 D_800EE5B0;
+extern f32 D_800EE5FC;
+extern f32 D_800EE600;
+extern f32 D_800EE604;
+extern f32 D_800EE608;
+extern f32 D_800EE60C;
 extern f64 D_800EE648;
 extern f64 D_800EE650;
 extern f64 D_800EE658;
@@ -177,6 +248,8 @@ extern f64 D_800EE6A8;
 extern f64 D_800EE6B0;
 extern f64 D_800EE6B8;
 extern f64 D_800EE6C0;
+extern f64 D_800EE6C8;
+extern f64 D_800EE6D0;
 extern f64 D_800EE6D8;
 extern f64 D_800EE6E0;
 extern f64 D_800EE6E8;
