@@ -50,9 +50,6 @@ extern u16 D_8015F6F0;
 extern s32 D_8015F59C;
 extern s32 D_8015F5A0;
 extern s32 D_8015F58C;
-extern u16 D_8015F588;
-
-extern s32 D_8015F580;
 
 extern s32 D_00821D10;
 extern s32 D_00825800;

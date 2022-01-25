@@ -101,6 +101,9 @@ extern struct_D_802BFB80 D_802BFB80[][8];
 
 extern struct GfxPool *gGfxPool; // D_8014EF40
 
+extern mk64_surface_map_ram (*D_8015F580)[]; // Pointer to a list of surface_map entries
+extern u16 D_8015F588; // Number of entires in D_8015F580
+
 extern Vec3f D_80165070[];
 
 extern Vp D_802B8880[];
