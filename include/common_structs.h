@@ -491,6 +491,35 @@ typedef struct {
     char unk_32[0xE]; // guessed
 } struct_D_801650D0;
 
+typedef struct
+{
+    /* 0x00 */ s8  unk_000[0x50];
+    /* 0x50 */ s32 unk_050;
+    /* 0x54 */ s32 unk_054;
+    /* 0x58 */ s32 unk_058;
+    /* 0x5C */ s32 unk_05C;
+    /* 0x60 */ s8  unk_060[0x24];
+    /* 0x84 */ s16 unk_084[0x11];
+    /* 0xA6 */ s16 unk_0A6;
+    /* 0xA8 */ s8  unk_0A8[0x23];
+    /* 0xCB */ s8  unk_0CB;
+    /* 0xCC */ s8  unk_0CC;
+    /* 0xCD */ s8  unk_0CD;
+    /* 0xCE */ s8  unk_0CE;
+    /* 0xCF */ s8  unk_0CF;
+    /* 0xD0 */ s8  unk_0D0;
+    /* 0xD1 */ s8  unk_0D1;
+    /* 0xD2 */ s8  unk_0D2;
+    /* 0xD3 */ s8  unk_0D3;
+    /* 0xD4 */ s8  unk_0D4;
+    /* 0xD5 */ s8  unk_0D5;
+    /* 0xD6 */ s8  unk_0D6;
+    /* 0xD7 */ u8  unk_0D7;
+    /* 0xD8 */ s8  unk_0D8;
+    /* 0xD9 */ s8  unk_0D9;
+    /* 0xDA */ s8  unk_0DA[0x6];
+} struct_80165C18_entry; // size = 0xE0
+
 typedef struct {
     char unk_00[0x4];
     f32 unk_04;
