@@ -495,7 +495,7 @@ typedef struct
 {
     /* 0x00 */ f32 unk_000;
     /* 0x04 */ s8  unk_004[0x24];
-    /* 0x2C */ f32 unk_028;
+    /* 0x28 */ f32 unk_028;
     /* 0x2C */ f32 unk_02C;
     /* 0x30 */ f32 unk_030;
     /* 0x34 */ f32 unk_034;
@@ -529,15 +529,15 @@ typedef struct
     /* 0xB0 */ s16 unk_0B4;
     /* 0xB0 */ s16 unk_0B6;
     /* 0xB0 */ s8  unk_0B8[0x8];
-    /* 0xCA */ s16 unk_0C0;
-    /* 0xCA */ s8  unk_0C2;
-    /* 0xCA */ s8  unk_0C3;
-    /* 0xCA */ s8  unk_0C4;
-    /* 0xCA */ s8  unk_0C5;
-    /* 0xCA */ s8  unk_0C6;
-    /* 0xCA */ s8  unk_0C7;
-    /* 0xCA */ s8  unk_0C8;
-    /* 0xCA */ s8  unk_0C9;
+    /* 0xC0 */ s16 unk_0C0;
+    /* 0xC2 */ s8  unk_0C2;
+    /* 0xC3 */ s8  unk_0C3;
+    /* 0xC4 */ s8  unk_0C4;
+    /* 0xC5 */ s8  unk_0C5;
+    /* 0xC6 */ s8  unk_0C6;
+    /* 0xC7 */ s8  unk_0C7;
+    /* 0xC8 */ s8  unk_0C8;
+    /* 0xC9 */ s8  unk_0C9;
     /* 0xCA */ s8  unk_0CA;
     /* 0xCB */ s8  unk_0CB;
     /* 0xCC */ s8  unk_0CC;
