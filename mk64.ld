@@ -140,7 +140,7 @@ SECTIONS
       BUILD_DIR/asm/os/non_matchings/guPerspectiveF.o(.text);
       BUILD_DIR/src/os/guLookAtF.o(.text);
       BUILD_DIR/src/os/guTranslateF.o(.text);
-      BUILD_DIR/asm/os/non_matchings/osSyncPrintf.o(.text);
+      BUILD_DIR/src/os/osSyncPrintf.o(.text);
       BUILD_DIR/src/os/guMtxCatL.o(.text);
       BUILD_DIR/src/os/osPfsSearchFile.o(.text);
       BUILD_DIR/src/os/osPfsDeleteFile.o(.text);
