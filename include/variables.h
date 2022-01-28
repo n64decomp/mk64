@@ -92,6 +92,8 @@ extern Player* gPlayerOneCopy;
 
 extern SaveData D_8018EB90;
 
+extern struct_8018CA70_entry D_8018CA70[];
+
 extern Mtx D_80183D60[];
 
 extern struct_D_8018CE10 D_8018CE10[];
