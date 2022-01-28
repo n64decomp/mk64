@@ -655,4 +655,85 @@ typedef struct {
     /* 0x04 */ s32 offset;
 } struct_8018E118_entry; // size = 0x08
 
+// Something related to human players
+// Also might be used for the camera during the post race screens
+typedef struct {
+    /* 0x00 */ f32 unknownScaling; // Looks to be some type of scaling, unknown use
+    /* 0x04 */ f32 rankScaling; // Scaling done on the rank text in the bottom left corner of the screen
+    // All time measurements are in centiseconds
+    /* 0x08 */ u32 someTimer; // The someTimers seem to always have the same value, the total time since race start
+    /* 0x0C */ u32 someTimer1;
+    /* 0x10 */ u32 timeLastTouchedFinishLine; // Sum of time of all completed laps
+    // Times at which each lap was completed
+    /* 0x14 */ u32 lap1CompletionTime;
+    /* 0x18 */ u32 lap2CompletionTime;
+    /* 0x1C */ u32 lap3CompletionTime;
+    // Time each lap took to complete
+    /* 0x20 */ u32 lap1Duration;
+    /* 0x24 */ u32 lap2Duration;
+    /* 0x28 */ u32 lap3Duration;
+    // Integer parts of the player's X/Y/X coordinates
+    /* 0x2C */ s32 posXInt;
+    /* 0x30 */ s32 posYInt;
+    /* 0x34 */ s32 posZInt;
+    /* 0x38 */ s32 unk_38;
+    // Timer for how long the on screen should blink on lap completion
+    // Blinking occurs as long as this is a non-zero value.
+    // Other on screen effects may override the blinking
+    /* 0x3C */ s16 blinkTimer;
+    /* 0x3E */ s16 speedometerX;
+    /* 0x40 */ s16 speedometerY;
+    /* 0x42 */ s16 itemBoxX;
+    /* 0x44 */ s16 itemBoxY;
+    /* 0x46 */ s16 slideItemBoxX;
+    /* 0x48 */ s16 slideItemBoxY;
+    // These 2 s16's have values, but I have yet to identify any places that read them
+    /* 0x4A */ s16 unk_4A;
+    /* 0x4C */ s16 unk_4C;
+    /* 0x4E */ s16 timerX; // X coordinate of the on screen timer
+    // These 4 X coordinates are "slide" values
+    /* 0x50 */ s16 lap1CompletionTimeX; // Pulls double-duty as timerAfterImage1X
+    /* 0x52 */ s16 lap2CompletionTimeX; // Pulls double-duty as timerAfterImage2X
+    /* 0x54 */ s16 lap3CompletionTimeX;
+    /* 0x56 */ s16 totalTimeX;
+    /* 0x58 */ s16 timerY; // Y coordinate of the on screen timer (used as Y coordinate for lap completion times in post-race screen)
+    /* 0x5A */ s16 lapX; // X coordinate of the on screen lap counter
+    // 0x5C and 0x5E seem to be relative to lapX
+    /* 0x5C */ s16 lapAfterImage1X;
+    /* 0x5E */ s16 lapAfterImage2X;
+    /* 0x60 */ s16 lapY; // Y coordinate of the on screen lap counter
+    /* 0x62 */ s16 rankX; // X coordinate of the on screen rank indicator
+    /* 0x64 */ s16 rankY; // Y coordinate of the on screen rank indicator
+    /* 0x66 */ s16 slideRankX; // Adds with the other rankX, used during post race screen to make the rank "slide" into place
+    /* 0x68 */ s16 slideRankY; // Adds with the other rankY, used during post race screen to make the rank "slide" into place
+    /* 0x6A */ s16 stagingPosition; // Position to take during race staging
+    // These s16's occasionally have values, but I have yet to identify any places that read them
+    // They appear to have values when in 3/4 player split screen mode, otherwise they're 0
+    /* 0x6C */ s16 unk_6C;
+    /* 0x6E */ s16 unk_6E;
+    /* 0x70 */ s8 raceCompleteBool; // Indicates if race is over?
+    /* 0x71 */ s8 lapCount; // This increases to 3 when a race is over, while alsoLapCount stays at 2
+    /* 0x72 */ s8 alsoLapCount;
+    // Related to the timer blinking on lap completion
+    // If blinkTimer is counting down:
+    //     0: Show timer
+    //     1: Hide timer
+    //     2: ? Seems to be a transition state, never lasts a long enough for blinkTimer to tick
+    /* 0x73 */ s8 blinkState;
+    /* 0x74 */ s8 unk_74;
+    /* 0x75 */ s8 unk_75;
+    /* 0x76 */ s16 itemOverride; // Something related to item generation. If non-zero, it determines the item you get
+    // 0x78 to 0x7F appear to be some type of "state" trackers for the lap and timer text during a race start
+    // When a race starts those texts (and their afterimages) slide in and "bounce" a bit. These states control the bouncing (somehow)
+    /* 0x78 */ s8 unk_78;
+    /* 0x79 */ s8 unk_79;
+    /* 0x7A */ s8 unk_7A;
+    /* 0x7B */ s8 unk_7B;
+    /* 0x7C */ s8 unk_7C;
+    /* 0x7D */ s8 unk_7D;
+    /* 0x7E */ s8 unk_7E;
+    /* 0x7F */ s8 unk_7F;
+    /* 0x80 */ s32 unk_80;
+} struct_8018CA70_entry; // size = 0x84
+
 #endif
