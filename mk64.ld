@@ -137,7 +137,7 @@ SECTIONS
       BUILD_DIR/src/os/osPfsFreeBlocks.o(.text);
       BUILD_DIR/src/os/guRotateF.o(.text);
       BUILD_DIR/src/os/guScaleF.o(.text);
-      BUILD_DIR/asm/os/non_matchings/guPerspectiveF.o(.text);
+      BUILD_DIR/src/os/guPerspectiveF.o(.text);
       BUILD_DIR/src/os/guLookAtF.o(.text);
       BUILD_DIR/src/os/guTranslateF.o(.text);
       BUILD_DIR/src/os/osSyncPrintf.o(.text);
@@ -250,6 +250,7 @@ SECTIONS
       BUILD_DIR/src/code_80057C60.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3_0.o(.rodata);
       BUILD_DIR/src/os/guRotateF.o(.rodata);
+      BUILD_DIR/src/os/guPerspectiveF.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3_1.o(.rodata);
       BUILD_DIR/src/os/__osDevMgrMain.o(.rodata);
       BUILD_DIR/src/os/math/sinf.o(.rodata);
