@@ -191,13 +191,13 @@ SECTIONS
       BUILD_DIR/src/os/osEepromWrite.o(.text);
       BUILD_DIR/src/os/contpfs.o(.text);
       BUILD_DIR/src/os/osPfsChecker.o(.text);
-      BUILD_DIR/asm/os/non_matchings/contramread.o(.text);
+      BUILD_DIR/src/os/contramread.o(.text);
       BUILD_DIR/src/os/guNormalize.o(.text);
       BUILD_DIR/src/os/math/sinf.o(.text);
       BUILD_DIR/src/os/math/cosf.o(.text);
       BUILD_DIR/src/os/_Printf.o(.text);
       BUILD_DIR/src/os/guMtxCatF.o(.text);
-      BUILD_DIR/asm/os/non_matchings/contramwrite.o(.text);
+      BUILD_DIR/src/os/contramwrite.o(.text);
       BUILD_DIR/src/os/osEepromRead.o(.text);
       BUILD_DIR/src/os/__osAiDeviceBusy.o(.text);
       BUILD_DIR/asm/os/osSetIntMask.o(.text);
