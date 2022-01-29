@@ -1,7 +1,7 @@
 #include "libultra_internal.h"
 #include "libc/stdarg.h"
 
-s32 osSyncPrintf(s32 arg0, s32 arg1, s32 arg2) {
+char *osSyncPrintf(char *arg0, const char *arg1, size_t size) {
     // ifdef'd formatting code?
     return (1);
 }
