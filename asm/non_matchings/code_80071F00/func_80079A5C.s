@@ -38,7 +38,7 @@ glabel func_80079A5C
 .L80079AE8:
 /* 07A6E8 80079AE8 3C0540A0 */  lui   $a1, 0x40a0
 /* 07A6EC 80079AEC 3C063F80 */  lui   $a2, 0x3f80
-/* 07A6F0 80079AF0 0C0103CB */  jal   func_80040F2C
+/* 07A6F0 80079AF0 0C0103CB */  jal   f32_step_down_towards
 /* 07A6F4 80079AF4 AFA70018 */   sw    $a3, 0x18($sp)
 /* 07A6F8 80079AF8 1040000D */  beqz  $v0, .L80079B30
 /* 07A6FC 80079AFC 8FA70018 */   lw    $a3, 0x18($sp)
@@ -49,7 +49,7 @@ glabel func_80079A5C
 .L80079B10:
 /* 07A710 80079B10 3C0542C8 */  lui   $a1, 0x42c8
 /* 07A714 80079B14 3C063F80 */  lui   $a2, 0x3f80
-/* 07A718 80079B18 0C0103B8 */  jal   func_80040EE0
+/* 07A718 80079B18 0C0103B8 */  jal   f32_step_up_towards
 /* 07A71C 80079B1C AFA70018 */   sw    $a3, 0x18($sp)
 /* 07A720 80079B20 10400003 */  beqz  $v0, .L80079B30
 /* 07A724 80079B24 8FA70018 */   lw    $a3, 0x18($sp)

@@ -188,7 +188,7 @@ glabel func_80089020
 .L800892C4:
 /* 089EC4 800892C4 44060000 */  mfc1  $a2, $f0
 .L800892C8:
-/* 089EC8 800892C8 0C0104EE */  jal   func_800413B8
+/* 089EC8 800892C8 0C0104EE */  jal   f32_step_towards
 /* 089ECC 800892CC 00E02025 */   move  $a0, $a3
 /* 089ED0 800892D0 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 089ED4 800892D4 27BD0018 */  addiu $sp, $sp, 0x18

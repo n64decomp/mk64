@@ -38,11 +38,11 @@ glabel L80076A5C
 /* 07765C 80076A5C 3C063D4C */  lui   $a2, (0x3D4CCCCD >> 16) # lui $a2, 0x3d4c
 /* 077660 80076A60 34C6CCCD */  ori   $a2, (0x3D4CCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 077664 80076A64 02002025 */  move  $a0, $s0
-/* 077668 80076A68 0C0104EE */  jal   func_800413B8
+/* 077668 80076A68 0C0104EE */  jal   f32_step_towards
 /* 07766C 80076A6C 3C054000 */   lui   $a1, 0x4000
 /* 077670 80076A70 260400A4 */  addiu $a0, $s0, 0xa4
 /* 077674 80076A74 00002825 */  move  $a1, $zero
-/* 077678 80076A78 0C0104A2 */  jal   func_80041288
+/* 077678 80076A78 0C0104A2 */  jal   s16_step_towards
 /* 07767C 80076A7C 24060018 */   li    $a2, 24
 /* 077680 80076A80 861900AE */  lh    $t9, 0xae($s0)
 /* 077684 80076A84 02202025 */  move  $a0, $s1
