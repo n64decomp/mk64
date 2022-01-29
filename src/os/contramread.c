@@ -25,7 +25,6 @@ s32 __osContRamRead(OSMesgQueue *mq, int channel, u16 address, u8 *buffer) {
             __osPfsPifRam.ramarray[i] = 0xFF;
         }
         __osPfsPifRam.pifstatus = 0;
-        //channel = 0;
         ret = __osSiRawStartDma(OS_READ, &__osPfsPifRam);
         osRecvMesg(mq, NULL, OS_MESG_BLOCK);
         ptr = (u8 *)&__osPfsPifRam;
@@ -52,10 +51,6 @@ s32 __osContRamRead(OSMesgQueue *mq, int channel, u16 address, u8 *buffer) {
                 }
             }
         }
-        // diff here somewhere
-        //else {
-        //    ret = 1/* PFS_ERR_NOPACK */;
-        //}
         if (ret != PFS_ERR_CONTRFAIL) {
             break;
         }
