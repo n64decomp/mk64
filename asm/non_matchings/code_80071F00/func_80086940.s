@@ -29,7 +29,7 @@ glabel L800869A0
 /* 0875A4 800869A4 3C063A83 */  lui   $a2, (0x3A83126F >> 16) # lui $a2, 0x3a83
 /* 0875A8 800869A8 34C6126F */  ori   $a2, (0x3A83126F & 0xFFFF) # ori $a2, $a2, 0x126f
 /* 0875AC 800869AC 34A5CCCD */  ori   $a1, (0x3CCCCCCD & 0xFFFF) # ori $a1, $a1, 0xcccd
-/* 0875B0 800869B0 0C0104EE */  jal   func_800413B8
+/* 0875B0 800869B0 0C0104EE */  jal   f32_step_towards
 /* 0875B4 800869B4 02002025 */   move  $a0, $s0
 /* 0875B8 800869B8 3C063DCC */  lui   $a2, (0x3DCCCCCD >> 16) # lui $a2, 0x3dcc
 /* 0875BC 800869BC 34C6CCCD */  ori   $a2, (0x3DCCCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
@@ -129,7 +129,7 @@ glabel L80086AFC
 /* 087720 80086B20 3C06BC23 */  lui   $a2, (0xBC23D70A >> 16) # lui $a2, 0xbc23
 /* 087724 80086B24 45000003 */  bc1f  .L80086B34
 /* 087728 80086B28 00000000 */   nop   
-/* 08772C 80086B2C 0C0104EE */  jal   func_800413B8
+/* 08772C 80086B2C 0C0104EE */  jal   f32_step_towards
 /* 087730 80086B30 34C6D70A */   ori   $a2, (0xBC23D70A & 0xFFFF) # ori $a2, $a2, 0xd70a
 .L80086B34:
 /* 087734 80086B34 0C021DF1 */  jal   func_800877C4

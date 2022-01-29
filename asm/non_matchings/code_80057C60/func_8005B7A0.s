@@ -16,22 +16,22 @@ glabel func_8005B7A0
 /* 05C3D8 8005B7D8 F7B40018 */  sdc1  $f20, 0x18($sp)
 /* 05C3DC 8005B7DC 2484CAC0 */  addiu $a0, %lo(D_8018CAC0) # addiu $a0, $a0, -0x3540
 /* 05C3E0 8005B7E0 240500E4 */  li    $a1, 228
-/* 05C3E4 8005B7E4 0C0104A2 */  jal   func_80041288
+/* 05C3E4 8005B7E4 0C0104A2 */  jal   s16_step_towards
 /* 05C3E8 8005B7E8 24060010 */   li    $a2, 16
 /* 05C3EC 8005B7EC 3C048019 */  lui   $a0, %hi(D_8018CAC2) # $a0, 0x8019
 /* 05C3F0 8005B7F0 2484CAC2 */  addiu $a0, %lo(D_8018CAC2) # addiu $a0, $a0, -0x353e
 /* 05C3F4 8005B7F4 240500E4 */  li    $a1, 228
-/* 05C3F8 8005B7F8 0C0104A2 */  jal   func_80041288
+/* 05C3F8 8005B7F8 0C0104A2 */  jal   s16_step_towards
 /* 05C3FC 8005B7FC 24060010 */   li    $a2, 16
 /* 05C400 8005B800 3C048019 */  lui   $a0, %hi(D_8018CAC4) # $a0, 0x8019
 /* 05C404 8005B804 2484CAC4 */  addiu $a0, %lo(D_8018CAC4) # addiu $a0, $a0, -0x353c
 /* 05C408 8005B808 240500E4 */  li    $a1, 228
-/* 05C40C 8005B80C 0C0104A2 */  jal   func_80041288
+/* 05C40C 8005B80C 0C0104A2 */  jal   s16_step_towards
 /* 05C410 8005B810 24060010 */   li    $a2, 16
 /* 05C414 8005B814 3C048019 */  lui   $a0, %hi(D_8018CAC6) # $a0, 0x8019
 /* 05C418 8005B818 2484CAC6 */  addiu $a0, %lo(D_8018CAC6) # addiu $a0, $a0, -0x353a
 /* 05C41C 8005B81C 240500E4 */  li    $a1, 228
-/* 05C420 8005B820 0C0104A2 */  jal   func_80041288
+/* 05C420 8005B820 0C0104A2 */  jal   s16_step_towards
 /* 05C424 8005B824 24060010 */   li    $a2, 16
 /* 05C428 8005B828 3C01C200 */  li    $at, 0xC2000000 # -32.000000
 /* 05C42C 8005B82C 4481C000 */  mtc1  $at, $f24
@@ -60,7 +60,7 @@ glabel func_8005B7A0
 /* 05C484 8005B884 45020012 */  bc1fl .L8005B8D0
 /* 05C488 8005B888 26310004 */   addiu $s1, $s1, 4
 /* 05C48C 8005B88C 8E650000 */  lw    $a1, ($s3)
-/* 05C490 8005B890 0C0104EE */  jal   func_800413B8
+/* 05C490 8005B890 0C0104EE */  jal   f32_step_towards
 /* 05C494 8005B894 8E860000 */   lw    $a2, ($s4)
 /* 05C498 8005B898 C6400000 */  lwc1  $f0, ($s2)
 /* 05C49C 8005B89C C6660000 */  lwc1  $f6, ($s3)

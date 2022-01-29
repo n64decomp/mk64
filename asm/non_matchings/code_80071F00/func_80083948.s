@@ -57,7 +57,7 @@ glabel L80083A0C
 /* 08460C 80083A0C 3C063E4C */  lui   $a2, (0x3E4CCCCD >> 16) # lui $a2, 0x3e4c
 /* 084610 80083A10 34C6CCCD */  ori   $a2, (0x3E4CCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 084614 80083A14 2624002C */  addiu $a0, $s1, 0x2c
-/* 084618 80083A18 0C0103B8 */  jal   func_80040EE0
+/* 084618 80083A18 0C0103B8 */  jal   f32_step_up_towards
 /* 08461C 80083A1C 24050000 */   li    $a1, 0
 /* 084620 80083A20 10400006 */  beqz  $v0, .L80083A3C
 /* 084624 80083A24 02002025 */   move  $a0, $s0

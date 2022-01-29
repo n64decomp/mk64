@@ -182,13 +182,13 @@ glabel L8007FDE0
 /* 0809E4 8007FDE4 24640030 */  addiu $a0, $v1, 0x30
 /* 0809E8 8007FDE8 3C064000 */  lui   $a2, 0x4000
 /* 0809EC 8007FDEC 44050000 */  mfc1  $a1, $f0
-/* 0809F0 8007FDF0 0C0104EE */  jal   func_800413B8
+/* 0809F0 8007FDF0 0C0104EE */  jal   f32_step_towards
 /* 0809F4 8007FDF4 AFA30018 */   sw    $v1, 0x18($sp)
 /* 0809F8 8007FDF8 44800000 */  mtc1  $zero, $f0
 /* 0809FC 8007FDFC 8FA30018 */  lw    $v1, 0x18($sp)
 /* 080A00 8007FE00 3C0640A0 */  lui   $a2, 0x40a0
 /* 080A04 8007FE04 44050000 */  mfc1  $a1, $f0
-/* 080A08 8007FE08 0C0104EE */  jal   func_800413B8
+/* 080A08 8007FE08 0C0104EE */  jal   f32_step_towards
 /* 080A0C 8007FE0C 24640028 */   addiu $a0, $v1, 0x28
 /* 080A10 8007FE10 8FA30018 */  lw    $v1, 0x18($sp)
 /* 080A14 8007FE14 44805800 */  mtc1  $zero, $f11
