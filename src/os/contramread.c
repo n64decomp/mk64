@@ -5,8 +5,6 @@
 extern s32 func_800CE7D4(OSMesgQueue *, s32);
 void __osPackRamReadData(int channel, u16 address);
 
-//u32 D_801965CC;
-
 s32 __osContRamRead(OSMesgQueue *mq, int channel, u16 address, u8 *buffer) {
     s32 ret;
     int i;
@@ -21,11 +19,13 @@ s32 __osContRamRead(OSMesgQueue *mq, int channel, u16 address, u8 *buffer) {
     __osPackRamReadData(channel, address);
     ret = __osSiRawStartDma(OS_WRITE, &__osPfsPifRam);
     osRecvMesg(mq, NULL, OS_MESG_BLOCK);
-    for (i = 0; i < 16; i++) {
-        __osPfsPifRam.ramarray[i] = 0xFF;
-    }
     do {
-        //D_801965CC = 0;
+        
+        for (i = 0; i < 16; i++) {
+            __osPfsPifRam.ramarray[i] = 0xFF;
+        }
+        __osPfsPifRam.pifstatus = 0;
+        //channel = 0;
         ret = __osSiRawStartDma(OS_READ, &__osPfsPifRam);
         osRecvMesg(mq, NULL, OS_MESG_BLOCK);
         ptr = (u8 *)&__osPfsPifRam;
@@ -53,9 +53,9 @@ s32 __osContRamRead(OSMesgQueue *mq, int channel, u16 address, u8 *buffer) {
             }
         }
         // diff here somewhere
-        else {
-            ret = 1/* PFS_ERR_NOPACK */;
-        }
+        //else {
+        //    ret = 1/* PFS_ERR_NOPACK */;
+        //}
         if (ret != PFS_ERR_CONTRFAIL) {
             break;
         }
