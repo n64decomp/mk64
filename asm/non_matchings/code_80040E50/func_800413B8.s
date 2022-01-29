@@ -1,4 +1,4 @@
-glabel func_800413B8
+glabel f32_step_towards
 /* 041FB8 800413B8 44856000 */  mtc1  $a1, $f12
 /* 041FBC 800413BC C4800000 */  lwc1  $f0, ($a0)
 /* 041FC0 800413C0 44867000 */  mtc1  $a2, $f14

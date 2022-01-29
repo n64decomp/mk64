@@ -62,7 +62,7 @@ glabel func_8005A14C
 /* 05AE34 8005A234 34A5999A */  ori   $a1, (0x3E99999A & 0xFFFF) # ori $a1, $a1, 0x999a
 /* 05AE38 8005A238 02002025 */  move  $a0, $s0
 /* 05AE3C 8005A23C AFA7002C */  sw    $a3, 0x2c($sp)
-/* 05AE40 8005A240 0C0104EE */  jal   func_800413B8
+/* 05AE40 8005A240 0C0104EE */  jal   f32_step_towards
 /* 05AE44 8005A244 AFA80024 */   sw    $t0, 0x24($sp)
 /* 05AE48 8005A248 10000009 */  b     .L8005A270
 /* 05AE4C 8005A24C 8FA80024 */   lw    $t0, 0x24($sp)
@@ -72,7 +72,7 @@ glabel func_8005A14C
 /* 05AE58 8005A258 34C6D70A */  ori   $a2, (0x3CA3D70A & 0xFFFF) # ori $a2, $a2, 0xd70a
 /* 05AE5C 8005A25C 34A5999A */  ori   $a1, (0x3F19999A & 0xFFFF) # ori $a1, $a1, 0x999a
 /* 05AE60 8005A260 AFA7002C */  sw    $a3, 0x2c($sp)
-/* 05AE64 8005A264 0C0104EE */  jal   func_800413B8
+/* 05AE64 8005A264 0C0104EE */  jal   f32_step_towards
 /* 05AE68 8005A268 AFA80024 */   sw    $t0, 0x24($sp)
 /* 05AE6C 8005A26C 8FA80024 */  lw    $t0, 0x24($sp)
 .L8005A270:
@@ -85,12 +85,12 @@ glabel func_8005A14C
 /* 05AE88 8005A288 260400BE */  addiu $a0, $s0, 0xbe
 /* 05AE8C 8005A28C 24050C00 */  li    $a1, 3072
 /* 05AE90 8005A290 24060100 */  li    $a2, 256
-/* 05AE94 8005A294 0C01040A */  jal   func_80041028
+/* 05AE94 8005A294 0C01040A */  jal   u16_step_up_towards
 /* 05AE98 8005A298 AFA80024 */   sw    $t0, 0x24($sp)
 /* 05AE9C 8005A29C 10000004 */  b     .L8005A2B0
 /* 05AEA0 8005A2A0 8FA80024 */   lw    $t0, 0x24($sp)
 .L8005A2A4:
-/* 05AEA4 8005A2A4 0C01042F */  jal   func_800410BC
+/* 05AEA4 8005A2A4 0C01042F */  jal   u16_step_down_towards
 /* 05AEA8 8005A2A8 AFA80024 */   sw    $t0, 0x24($sp)
 /* 05AEAC 8005A2AC 8FA80024 */  lw    $t0, 0x24($sp)
 .L8005A2B0:
@@ -110,7 +110,7 @@ glabel func_8005A14C
 /* 05AEE4 8005A2E4 8FA80024 */   lw    $t0, 0x24($sp)
 .L8005A2E8:
 /* 05AEE8 8005A2E8 3C063F80 */  lui   $a2, 0x3f80
-/* 05AEEC 8005A2EC 0C0104EE */  jal   func_800413B8
+/* 05AEEC 8005A2EC 0C0104EE */  jal   f32_step_towards
 /* 05AEF0 8005A2F0 AFA80024 */   sw    $t0, 0x24($sp)
 /* 05AEF4 8005A2F4 8FA80024 */  lw    $t0, 0x24($sp)
 .L8005A2F8:

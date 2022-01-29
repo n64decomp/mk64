@@ -709,7 +709,7 @@ glabel L8005C290
 /* 05CEFC 8005C2FC 8C460000 */  lw    $a2, ($v0)
 /* 05CF00 8005C300 AFA20020 */  sw    $v0, 0x20($sp)
 /* 05CF04 8005C304 AFA30018 */  sw    $v1, 0x18($sp)
-/* 05CF08 8005C308 0C0104EE */  jal   func_800413B8
+/* 05CF08 8005C308 0C0104EE */  jal   f32_step_towards
 /* 05CF0C 8005C30C AFA4001C */   sw    $a0, 0x1c($sp)
 /* 05CF10 8005C310 8FA30018 */  lw    $v1, 0x18($sp)
 /* 05CF14 8005C314 8FA4001C */  lw    $a0, 0x1c($sp)

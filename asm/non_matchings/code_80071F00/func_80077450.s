@@ -28,7 +28,7 @@ glabel func_80077450
 /* 0780B0 800774B0 3C063C23 */  lui   $a2, (0x3C23D70A >> 16) # lui $a2, 0x3c23
 /* 0780B4 800774B4 34C6D70A */  ori   $a2, (0x3C23D70A & 0xFFFF) # ori $a2, $a2, 0xd70a
 /* 0780B8 800774B8 34A5CCCD */  ori   $a1, (0x3DCCCCCD & 0xFFFF) # ori $a1, $a1, 0xcccd
-/* 0780BC 800774BC 0C0103B8 */  jal   func_80040EE0
+/* 0780BC 800774BC 0C0103B8 */  jal   f32_step_up_towards
 /* 0780C0 800774C0 AFA70040 */   sw    $a3, 0x40($sp)
 /* 0780C4 800774C4 8618008E */  lh    $t8, 0x8e($s0)
 /* 0780C8 800774C8 C6080008 */  lwc1  $f8, 8($s0)

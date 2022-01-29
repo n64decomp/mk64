@@ -38,7 +38,7 @@ glabel L800855BC
 /* 0861BC 800855BC 3C063D4C */  lui   $a2, (0x3D4CCCCD >> 16) # lui $a2, 0x3d4c
 /* 0861C0 800855C0 34C6CCCD */  ori   $a2, (0x3D4CCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 0861C4 800855C4 2604003C */  addiu $a0, $s0, 0x3c
-/* 0861C8 800855C8 0C0104EE */  jal   func_800413B8
+/* 0861C8 800855C8 0C0104EE */  jal   f32_step_towards
 /* 0861CC 800855CC 24050000 */   li    $a1, 0
 /* 0861D0 800855D0 C610003C */  lwc1  $f16, 0x3c($s0)
 /* 0861D4 800855D4 44805800 */  mtc1  $zero, $f11
@@ -62,7 +62,7 @@ glabel L80085614
 /* 086214 80085614 3C063D4C */  lui   $a2, (0x3D4CCCCD >> 16) # lui $a2, 0x3d4c
 /* 086218 80085618 34C6CCCD */  ori   $a2, (0x3D4CCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 08621C 8008561C 2604003C */  addiu $a0, $s0, 0x3c
-/* 086220 80085620 0C0104EE */  jal   func_800413B8
+/* 086220 80085620 0C0104EE */  jal   f32_step_towards
 /* 086224 80085624 3C053F80 */   lui   $a1, 0x3f80
 /* 086228 80085628 C604003C */  lwc1  $f4, 0x3c($s0)
 /* 08622C 8008562C 3C013FF0 */  li    $at, 0x3FF00000 # 1.875000
@@ -87,7 +87,7 @@ glabel L80085670
 /* 086270 80085670 3C063D4C */  lui   $a2, (0x3D4CCCCD >> 16) # lui $a2, 0x3d4c
 /* 086274 80085674 34C6CCCD */  ori   $a2, (0x3D4CCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 086278 80085678 2604003C */  addiu $a0, $s0, 0x3c
-/* 08627C 8008567C 0C0104EE */  jal   func_800413B8
+/* 08627C 8008567C 0C0104EE */  jal   f32_step_towards
 /* 086280 80085680 24050000 */   li    $a1, 0
 /* 086284 80085684 C60A003C */  lwc1  $f10, 0x3c($s0)
 /* 086288 80085688 44808800 */  mtc1  $zero, $f17
@@ -105,7 +105,7 @@ glabel L800856B4
 /* 0862B4 800856B4 3C063D4C */  lui   $a2, (0x3D4CCCCD >> 16) # lui $a2, 0x3d4c
 /* 0862B8 800856B8 34C6CCCD */  ori   $a2, (0x3D4CCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 0862BC 800856BC 2604003C */  addiu $a0, $s0, 0x3c
-/* 0862C0 800856C0 0C0104EE */  jal   func_800413B8
+/* 0862C0 800856C0 0C0104EE */  jal   f32_step_towards
 /* 0862C4 800856C4 3C05BF80 */   lui   $a1, 0xbf80
 /* 0862C8 800856C8 C606003C */  lwc1  $f6, 0x3c($s0)
 /* 0862CC 800856CC 3C01BFF0 */  li    $at, 0xBFF00000 # -1.875000
@@ -130,7 +130,7 @@ glabel L80085710
 /* 086310 80085710 3C063D4C */  lui   $a2, (0x3D4CCCCD >> 16) # lui $a2, 0x3d4c
 /* 086314 80085714 34C6CCCD */  ori   $a2, (0x3D4CCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 086318 80085718 2604003C */  addiu $a0, $s0, 0x3c
-/* 08631C 8008571C 0C0104EE */  jal   func_800413B8
+/* 08631C 8008571C 0C0104EE */  jal   f32_step_towards
 /* 086320 80085720 24050000 */   li    $a1, 0
 /* 086324 80085724 02202025 */  move  $a0, $s1
 /* 086328 80085728 0C021C18 */  jal   func_80087060

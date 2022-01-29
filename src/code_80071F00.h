@@ -3,8 +3,8 @@
 
 #include "common_structs.h"
 
-s32  func_80040EE0(f32*, f32, f32);
-s32  func_8004106C(s16*, s16, s16);
+s32  f32_step_up_towards(f32*, f32, f32);
+s32  s16_step_down_towards(s16*, s16, s16);
 void func_80041480(s16*, s16, s16, s16*);
 s32  func_80072044(s32*, s32*, s32);
 void func_800721C0(s32, s32);
