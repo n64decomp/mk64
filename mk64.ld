@@ -131,7 +131,7 @@ SECTIONS
       BUILD_DIR/src/os/osSetTime.o(.text);
       BUILD_DIR/src/os/osEepromProbe.o(.text);
       BUILD_DIR/src/os/osPfsIsPlug.o(.text);
-      BUILD_DIR/asm/os/non_matchings/func_800CE720.o(.text);
+      BUILD_DIR/src/os/osPfsInit.o(.text);
       BUILD_DIR/src/os/osPfsNumFiles.o(.text);
       BUILD_DIR/src/os/osPfsFileState.o(.text);
       BUILD_DIR/src/os/osPfsFreeBlocks.o(.text);

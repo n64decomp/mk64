@@ -77,7 +77,7 @@ void func_800CA330(s32);
 void func_800CA388(s32);
 
 // os
-s32  func_800CE720(OSMesgQueue*, OSPfs*, s32);
+s32  osPfsInit(OSMesgQueue*, OSPfs*, s32);
 
 // memory.c
 u32  func_802A7B70(u16);

@@ -2,7 +2,7 @@
 #include "PR/rcp.h"
 #include "controller.h"
 
-extern s32 func_800CE7D4(OSMesgQueue *, s32);
+extern s32 __osPfsGetStatus(OSMesgQueue *, s32);
 void __osPackRamWriteData(int channel, u16 address, u8 *buffer);
 
 s32 __osContRamWrite(OSMesgQueue *mq, int channel, u16 address, u8 *buffer, int force) {
@@ -42,7 +42,7 @@ s32 __osContRamWrite(OSMesgQueue *mq, int channel, u16 address, u8 *buffer, int 
         ret = CHNL_ERR(ramreadformat);
         if (ret == 0) {
             if (__osContDataCrc(buffer) != ramreadformat.datacrc) {
-                ret = func_800CE7D4(mq, channel);
+                ret = __osPfsGetStatus(mq, channel);
                 if (ret != 0) {
                     __osSiRelAccess();
                     return ret;
