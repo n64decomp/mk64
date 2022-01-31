@@ -131,7 +131,7 @@ SECTIONS
       BUILD_DIR/src/os/osSetTime.o(.text);
       BUILD_DIR/src/os/osEepromProbe.o(.text);
       BUILD_DIR/src/os/osPfsIsPlug.o(.text);
-      BUILD_DIR/asm/os/non_matchings/func_800CE720.o(.text);
+      BUILD_DIR/src/os/osPfsInit.o(.text);
       BUILD_DIR/src/os/osPfsNumFiles.o(.text);
       BUILD_DIR/src/os/osPfsFileState.o(.text);
       BUILD_DIR/src/os/osPfsFreeBlocks.o(.text);
@@ -140,7 +140,7 @@ SECTIONS
       BUILD_DIR/src/os/guPerspectiveF.o(.text);
       BUILD_DIR/src/os/guLookAtF.o(.text);
       BUILD_DIR/src/os/guTranslateF.o(.text);
-      BUILD_DIR/asm/os/non_matchings/osSyncPrintf.o(.text);
+      BUILD_DIR/src/os/osSyncPrintf.o(.text);
       BUILD_DIR/src/os/guMtxCatL.o(.text);
       BUILD_DIR/src/os/osPfsSearchFile.o(.text);
       BUILD_DIR/src/os/osPfsDeleteFile.o(.text);
@@ -191,13 +191,13 @@ SECTIONS
       BUILD_DIR/src/os/osEepromWrite.o(.text);
       BUILD_DIR/src/os/contpfs.o(.text);
       BUILD_DIR/src/os/osPfsChecker.o(.text);
-      BUILD_DIR/asm/os/non_matchings/contramread.o(.text);
+      BUILD_DIR/src/os/contramread.o(.text);
       BUILD_DIR/src/os/guNormalize.o(.text);
       BUILD_DIR/src/os/math/sinf.o(.text);
       BUILD_DIR/src/os/math/cosf.o(.text);
       BUILD_DIR/src/os/_Printf.o(.text);
       BUILD_DIR/src/os/guMtxCatF.o(.text);
-      BUILD_DIR/asm/os/non_matchings/contramwrite.o(.text);
+      BUILD_DIR/src/os/contramwrite.o(.text);
       BUILD_DIR/src/os/osEepromRead.o(.text);
       BUILD_DIR/src/os/__osAiDeviceBusy.o(.text);
       BUILD_DIR/asm/os/osSetIntMask.o(.text);

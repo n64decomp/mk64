@@ -15,7 +15,7 @@ glabel func_800B6014
 /* 0B6C44 800B6044 3C058019 */  lui   $a1, %hi(D_8018E8D0) # $a1, 0x8019
 /* 0B6C48 800B6048 24A5E8D0 */  addiu $a1, %lo(D_8018E8D0) # addiu $a1, $a1, -0x1730
 /* 0B6C4C 800B604C 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
-/* 0B6C50 800B6050 0C0339C8 */  jal   func_800CE720
+/* 0B6C50 800B6050 0C0339C8 */  jal   osPfsInit
 /* 0B6C54 800B6054 24060001 */   li    $a2, 1
 /* 0B6C58 800B6058 14400004 */  bnez  $v0, .L800B606C
 /* 0B6C5C 800B605C 00401825 */   move  $v1, $v0

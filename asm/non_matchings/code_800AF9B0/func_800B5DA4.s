@@ -50,7 +50,7 @@ glabel func_800B5DA4
 /* 0B6A50 800B5E50 3C058019 */  lui   $a1, %hi(D_8018E8D0) # $a1, 0x8019
 /* 0B6A54 800B5E54 24A5E8D0 */  addiu $a1, %lo(D_8018E8D0) # addiu $a1, $a1, -0x1730
 /* 0B6A58 800B5E58 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
-/* 0B6A5C 800B5E5C 0C0339C8 */  jal   func_800CE720
+/* 0B6A5C 800B5E5C 0C0339C8 */  jal   osPfsInit
 /* 0B6A60 800B5E60 24060001 */   li    $a2, 1
 /* 0B6A64 800B5E64 10400010 */  beqz  $v0, .L800B5EA8
 /* 0B6A68 800B5E68 24180001 */   li    $t8, 1

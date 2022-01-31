@@ -89,7 +89,7 @@ glabel L800AA334
 /* 0AB030 800AA430 3C058019 */  lui   $a1, %hi(D_8018E868) # $a1, 0x8019
 /* 0AB034 800AA434 24A5E868 */  addiu $a1, %lo(D_8018E868) # addiu $a1, $a1, -0x1798
 /* 0AB038 800AA438 2484F0B8 */  addiu $a0, %lo(gSIEventMesgQueue) # addiu $a0, $a0, -0xf48
-/* 0AB03C 800AA43C 0C0339C8 */  jal   func_800CE720
+/* 0AB03C 800AA43C 0C0339C8 */  jal   osPfsInit
 /* 0AB040 800AA440 00003025 */   move  $a2, $zero
 /* 0AB044 800AA444 3C03800F */  lui   $v1, %hi(D_800E86F8) # $v1, 0x800f
 /* 0AB048 800AA448 246386F8 */  addiu $v1, %lo(D_800E86F8) # addiu $v1, $v1, -0x7908

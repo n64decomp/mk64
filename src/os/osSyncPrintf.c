@@ -1,14 +1,14 @@
 #include "libultra_internal.h"
 #include "libc/stdarg.h"
 
-// neither function matches
-
-void osSyncPrintf(const char *fmt, ...) {
-    if (1);
+char *osSyncPrintf(char *arg0, const char *arg1, size_t size) {
+    // ifdef'd formatting code?
+    return (1);
 }
 
-void func_800CF774(const char *fmt, ...) {
-	va_list args;
-
-    _Printf(osSyncPrintf, 0, fmt, &args);
+void rmonPrintf(const char *fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  _Printf(osSyncPrintf, NULL, fmt, args);
+  va_end(args);
 }
