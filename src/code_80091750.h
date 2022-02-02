@@ -5,6 +5,60 @@
 #include "textures.h"
 #include "main.h"
 
+/* File specific types */
+
+typedef struct {
+    /* 0x00 */ s32 type; // id maybe?
+    /* 0x04 */ s32 unk4; // sound mode, maybe some other stuff
+    /* 0x08 */ s32 unk8; // This is used but I can't tell what for
+    /* 0x0C */ s32 column;
+    /* 0x10 */ s32 row;
+    /* 0x14 */ u8  priority; // priority/depth/z-level. Higher values are drawn on top of lower values
+                             // If equal, later entries in D_8018D9E0 are on top
+    /* 0x15 */ u8  visible; // active? If 1 its displayed, if 0 its not
+    // These seem to be generic space available for use by the struct, no 1 purpose for any given member
+    /* 0x16 */ s16 unk16; // Potentially unused
+    /* 0x18 */ s32 D_8018DEE0_index; // Index in D_8018DEE0, an array of some other struct type
+    /* 0x1C */ s32 unk1C; // Multi use. Sometimes cup selection, sometimes course index.
+    /* 0x20 */ s32 unk20; // Multi use, hard to tell what for though. Sometimes a random number, sometimes GP points
+    /* 0x24 */ f32 unk24; // Multi use, x scaling for some things, rotation multiplier for the question box in some menus, probably some other things
+} struct_8018D9E0_entry; // size = 0x28
+
+typedef struct {
+    /* 0x00 */ MkAnimation *textureSequence;
+    /* 0x04 */ s32 sequenceIndex;    // Index in textureSequence that the animation is currently on
+    /* 0x08 */ s32 frameCountDown;   // Frames left for the given animation part
+    /* 0x0C */ u32 visible;          // visbile if 0x80000000, otherwise invisbile AND paused
+    /* 0x10 */ s32 D_8018E118_index; // Don't know what D_8018E118 tracks
+    /* 0x14 */ s32 unk14;            // Flip flops between 0 and 1, use unknown
+} struct_8018DEE0_entry; // size = 0x18
+
+typedef struct {
+    /* 0x00 */ u64 *textureData; // This should be interpreted as a segmented address
+    /**
+     * Its hard to tell what exactly what this is meant to be,
+     * but it appears to be used as some sort of offset/index from the address stored in D_8018D9B0.
+     * This value is (roughly) the sum of (width * height) of the
+     * textures in all the previous entries in D_8018E118
+     */
+    /* 0x04 */ s32 offset;
+} struct_8018E118_entry; // size = 0x08
+
+// In some way dictates how the text is written during the credit sequence
+typedef struct {
+    // Scaling factor that affects the x/y scaling and tracking of printed text
+    /* 0x00 */ f32 textScaling;
+    // Column to start sliding in from
+    /* 0x04 */ s16 startingColumn;
+    /* 0x06 */ s16 row;
+    // Extra distance added to the destination column
+    /* 0x08 */ s16 columnExtra;
+    /* 0x0A */ s16 unknown; // No idea what this is for, has a value but never seems to be read
+    /* 0x0C */ s8 slideDirection; // 0 for slide right, 1 for slide left. May have other uses/effects
+    /* 0x0D */ s8 textColor;
+    /* 0x0E */ s16 padding; // Always seems to be 0, never read (that I can see)
+} struct_802850C0_entry; // size = 0x10
+
 /* Function Prototypes */
 
 f64 exponent_by_squaring(f64, s32);
@@ -65,8 +119,8 @@ void func_80099E54();
 void func_80099E60(MkTexture *, s32, s32);
 void func_80099EC4();
 void func_80099A70();
-void func_8009A594(s32, s32, segment_address_t);
-void func_8009A640(s32, s32, s32, segment_address_t);
+void func_8009A594(s32, s32, MkAnimation*);
+void func_8009A640(s32, s32, s32, MkAnimation*);
 void func_8009A76C(s32, s32, s32, s32);
 void func_8009A7EC(s32, s32, s32, s32, s32);
 void func_8009A878(struct_8018DEE0_entry*);
@@ -119,6 +173,9 @@ struct_8018D9E0_entry *func_800AAF30(s32);
 s32 func_800AAF70(s32);
 void func_800AAF94(struct_8018D9E0_entry*, s32);
 void func_800AC978(struct_8018D9E0_entry*);
+void func_800AF480(struct_8018D9E0_entry*);
+void func_800AF4DC(struct_8018D9E0_entry*);
+void func_800AF740(struct_8018D9E0_entry*);
 
 // code_80057C60.c
 void func_80057CE4();
@@ -128,6 +185,7 @@ void func_80057CE4();
 #define D_8018D9E0_SIZE 0x20
 #define D_8018DEE0_SIZE 0x10
 #define D_8018E118_SIZE 0xC8
+#define D_802850C0_SIZE 0x3F
 
 /* This is where I'd put my static data, if I had any */
 
@@ -189,8 +247,11 @@ extern s32 D_80165754;
 extern s8  D_8018D9D9;
 extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE]; // D_8018D9E0
 extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE]; // D_8018DEE0
+extern s32 gD_8018E118TotalSize;                          // D_8018E110
 extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE]; // D_8018E118
-extern s8  gTextColor; // D_8018E860
+extern s32 gNumD_8018E118Entries;                         // D_8018E758
+extern struct_802850C0_entry D_802850C0[D_802850C0_SIZE]; // D_802850C0
+extern s8  gTextColor;                                    // D_8018E860
 extern s8  D_8018ED91;
 extern s32 D_8018E850;
 extern s32 D_8018E854;

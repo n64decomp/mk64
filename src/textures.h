@@ -1,7 +1,24 @@
 #ifndef TEXTURES_H
 #define TEXTURES_H
 
-#include "common_structs.h"
+#include "PR/ultratypes.h"
+
+typedef struct {
+    /* 0x00 */ s16 type;
+    /* 0x02 */ s16 unused1;
+    /* 0x04 */ u64 *textureData; // This should be interpreted as a segmented address
+    /* 0x08 */ s16 width;
+    /* 0x0A */ s16 height;
+    /* 0x0C */ s16 dX;
+    /* 0x0D */ s16 dY;
+    /* 0x10 */ s16 size; // This size is NOT equal to width*height. Its likely the size of the compressed texture
+    /* 0x12 */ s16 unused2;
+} MkTexture; // size = 0x14
+
+typedef struct {
+    /* 0x00 */ MkTexture *mk64Texture; // This should be interpreted as a segmented address
+    /* 0x04 */ s32 frame_length;
+} MkAnimation; // size = 0x8
 
 extern MkTexture   D_02000000[2];
 extern MkTexture   D_02000028[2];

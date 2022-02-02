@@ -26,7 +26,6 @@ extern s8    gCupSelection;                         // D_8018EE09
 extern u8    gCupSelectionByCourseId[NUM_COURSES];  // D_800E7664
 extern s16   gCurrentCourseId;                      // D_800DC5A0
 
-extern s32   gD_8018E118TotalSize;                  // D_8018E110
 extern s8    gDebugMenuSelection;                   // D_8018EDEF
 extern char *gDebugSoundModeNames[NUM_SOUND_MODES]; // D_800E7700
 extern Gfx  *gDisplayListHead;                      // D_80150298
@@ -54,7 +53,6 @@ extern s32   gModeSelection;     // D_800DC53C
 
 // Indicates the ID of the next title screen demo that will be played
 extern u8    gNextDemoId;           // D_800E86BC
-extern s32   gNumD_8018E118Entries; // D_8018E758
 
 // Maps course IDs (as defined in the COURSES enum) to an index in a given cup's track order
 extern u8    gPerCupIndexByCourseId[NUM_COURSES]; // D_800EFD50
