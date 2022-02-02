@@ -591,69 +591,11 @@ typedef struct {
 } struct_D_802BFB80;
 
 typedef struct {
-    /* 0x00 */ s32 type; // id maybe?
-    /* 0x04 */ s32 unk4; // sound mode, maybe some other stuff
-    /* 0x08 */ s32 unk8; // This is used but I can't tell what for
-    /* 0x0C */ s32 column;
-    /* 0x10 */ s32 row;
-    /* 0x14 */ u8  priority; // priority/depth/z-level. Higher values are drawn on top of lower values
-                             // If equal, later entries in D_8018D9E0 are on top
-    /* 0x15 */ u8  visible; // active? If 1 its displayed, if 0 its not
-    // These seem to be generic space available for use by the struct, no 1 purpose for any given member
-    /* 0x16 */ s16 unk16; // Potentially unused
-    /* 0x18 */ s32 D_8018DEE0_index; // Index in D_8018DEE0, an array of some other struct type
-    /* 0x1C */ s32 unk1C; // Multi use. Sometimes cup selection, sometimes course index.
-    /* 0x20 */ s32 unk20; // Multi use, hard to tell what for though. Sometimes a random number, sometimes GP points
-    /* 0x24 */ s32 unk24; // Multi use, x scaling for some things, rotation multiplier for the question box in some menus, probably some other things
-} struct_8018D9E0_entry; // size = 0x28
-
-// Top byte is used as an index to gSegmentTable
-// The rest of the bytes are used as an offset
-typedef u32 segment_address_t;
-
-typedef struct {
-    /* 0x00 */ s16 type;
-    /* 0x02 */ s16 unused1;
-    /* 0x04 */ u64 *textureData; // This should be interpreted as a segmented address
-    /* 0x08 */ s16 width;
-    /* 0x0A */ s16 height;
-    /* 0x0C */ s16 dX;
-    /* 0x0D */ s16 dY;
-    /* 0x10 */ s16 size; // This size is NOT equal to width*height. Its likely the size of the compressed texture
-    /* 0x12 */ s16 unused2;
-} MkTexture; // size = 0x14
-
-typedef struct {
-    /* 0x00 */ MkTexture *mk64Texture; // This should be interpreted as a segmented address
-    /* 0x04 */ s32 frame_length;
-} MkAnimation; // size = 0x8
-
-typedef struct {
-    /* 0x00 */ MkAnimation *textureSequence;
-    /* 0x04 */ s32 sequenceIndex;    // Index in textureSequence that the animation is currently on
-    /* 0x08 */ s32 frameCountDown;   // Frames left for the given animation part
-    /* 0x0C */ u32 visible;          // visbile if 0x80000000, otherwise invisbile AND paused
-    /* 0x10 */ s32 D_8018E118_index; // Don't know what D_8018E118 tracks
-    /* 0x14 */ s32 unk14;            // Flip flops between 0 and 1, use unknown
-} struct_8018DEE0_entry; // size = 0x18
-
-typedef struct {
     /* 0x00 */ u16 red;
     /* 0x02 */ u16 green;
     /* 0x04 */ u16 blue;
     /* 0x06 */ u16 alpha;
 } RGBA16; // size = 0x08
-
-typedef struct {
-    /* 0x00 */ u64 *textureData; // This should be interpreted as a segmented address
-    /**
-     * Its hard to tell what exactly what this is meant to be,
-     * but it appears to be used as some sort of offset/index from the address stored in D_8018D9B0.
-     * This value is (roughly) the sum of (width * height) of the
-     * textures in all the previous entries in D_8018E118
-     */
-    /* 0x04 */ s32 offset;
-} struct_8018E118_entry; // size = 0x08
 
 // Something related to human players
 // Also might be used for the camera during the post race screens
