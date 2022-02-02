@@ -20,13 +20,13 @@ glabel func_80095BD0
 /* 096818 80095C18 0441000B */  bgez  $v0, .L80095C48
 /* 09681C 80095C1C AFB90028 */   sw    $t9, 0x28($sp)
 /* 096820 80095C20 3C04800F */  lui   $a0, %hi(D_800F0BCC) # $a0, 0x800f
-/* 096824 80095C24 0C033DDD */  jal   func_800CF774
+/* 096824 80095C24 0C033DDD */  jal   rmonPrintf
 /* 096828 80095C28 24840BCC */   addiu $a0, %lo(D_800F0BCC) # addiu $a0, $a0, 0xbcc
 /* 09682C 80095C2C 10000007 */  b     .L80095C4C
 /* 096830 80095C30 C7A4004C */   lwc1  $f4, 0x4c($sp)
 .L80095C34:
 /* 096834 80095C34 3C04800F */  lui   $a0, %hi(D_800F0BEC) # $a0, 0x800f
-/* 096838 80095C38 0C033DDD */  jal   func_800CF774
+/* 096838 80095C38 0C033DDD */  jal   rmonPrintf
 /* 09683C 80095C3C 24840BEC */   addiu $a0, %lo(D_800F0BEC) # addiu $a0, $a0, 0xbec
 /* 096840 80095C40 1000006E */  b     .L80095DFC
 /* 096844 80095C44 02001025 */   move  $v0, $s0
