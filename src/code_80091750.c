@@ -3,6 +3,7 @@
 #include <defines.h>
 #include "code_80091750.h"
 #include "code_800AF9B0.h"
+#include "credits_01.h"
 #include "variables.h"
 // TODO: Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
