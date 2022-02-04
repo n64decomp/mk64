@@ -362,6 +362,8 @@ SECTIONS
       BUILD_DIR/src/code_80281FA0.o(.text);
       BUILD_DIR/src/code_80280650.o(.data);
       BUILD_DIR/data/data_credits_128480.o(.data);
+      BUILD_DIR/src/credits_01.inc.o(.data);
+      BUILD_DIR/data/data_credits_128480_1.o(.data);
    }
    END_SEG(code_80280000)
 

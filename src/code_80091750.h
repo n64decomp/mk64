@@ -44,21 +44,6 @@ typedef struct {
     /* 0x04 */ s32 offset;
 } struct_8018E118_entry; // size = 0x08
 
-// In some way dictates how the text is written during the credit sequence
-typedef struct {
-    // Scaling factor that affects the x/y scaling and tracking of printed text
-    /* 0x00 */ f32 textScaling;
-    // Column to start sliding in from
-    /* 0x04 */ s16 startingColumn;
-    /* 0x06 */ s16 row;
-    // Extra distance added to the destination column
-    /* 0x08 */ s16 columnExtra;
-    /* 0x0A */ s16 unknown; // No idea what this is for, has a value but never seems to be read
-    /* 0x0C */ s8 slideDirection; // 0 for slide right, 1 for slide left. May have other uses/effects
-    /* 0x0D */ s8 textColor;
-    /* 0x0E */ s16 padding; // Always seems to be 0, never read (that I can see)
-} struct_802850C0_entry; // size = 0x10
-
 /* Function Prototypes */
 
 f64 exponent_by_squaring(f64, s32);
@@ -185,7 +170,6 @@ void func_80057CE4();
 #define D_8018D9E0_SIZE 0x20
 #define D_8018DEE0_SIZE 0x10
 #define D_8018E118_SIZE 0xC8
-#define D_802850C0_SIZE 0x3F
 
 /* This is where I'd put my static data, if I had any */
 
@@ -250,7 +234,6 @@ extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE]; // D_8018DEE0
 extern s32 gD_8018E118TotalSize;                          // D_8018E110
 extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE]; // D_8018E118
 extern s32 gNumD_8018E118Entries;                         // D_8018E758
-extern struct_802850C0_entry D_802850C0[D_802850C0_SIZE]; // D_802850C0
 extern s8  gTextColor;                                    // D_8018E860
 extern s8  D_8018ED91;
 extern s32 D_8018E850;

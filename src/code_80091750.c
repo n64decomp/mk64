@@ -3,6 +3,7 @@
 #include <defines.h>
 #include "code_80091750.h"
 #include "code_800AF9B0.h"
+#include "credits_01.h"
 #include "variables.h"
 // TODO: Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
@@ -794,18 +795,19 @@ s32 char_to_glyph_index(char *character) {
         index = -1;
     // Interpreting characters as signed numbers, so check if the character is "negative"
     } else if (*character < 0) {
+        // Handling katakana characters
         switch (*character) {                          /* switch 1 */
-        case -92:                                   /* switch 1 */
+        case 0xA4:                                   /* switch 1 */
             // WARNING: Not sure about the arguments to the following 3 functions, its not clear
             // what they exepct
             index = func_80092E1C(character + 1);
             break;
-        case -91:                                   /* switch 1 */
+        case 0xA5:                                   /* switch 1 */
             index = func_80092DF8(character + 1);
             break;
-        case -85:                                   /* switch 1 */
-        case -93:                                   /* switch 1 */
-        case -95:                                   /* switch 1 */
+        case 0xAB:                                   /* switch 1 */
+        case 0xA3:                                   /* switch 1 */
+        case 0xA1:                                   /* switch 1 */
             index = func_80092EE4(character);
             break;
         }
