@@ -76,6 +76,9 @@ void func_80093754(s32, s32, char*, s32, f32, f32);
 void print_text2(s32, s32, char*, s32, f32, f32, s32);
 void func_800939C8(s32, s32, char*, s32, f32, f32);
 void text_draw(s32, s32, char*, s32, f32, f32);
+void func_80093C1C(s32);
+void func_80093C88();
+void func_80093C90();
 void func_80093C98(s32);
 void func_80093E20();
 void func_80093E40();
@@ -145,7 +148,6 @@ void get_time_record_seconds(s32 , char*);
 void get_time_record_centiseconds(s32, char*);
 void func_800A8230();
 void func_800A8250();
-void func_800AB290(struct_8018D9E0_entry*);
 void func_800A86E8(struct_8018D9E0_entry*);
 void func_800A8E14(struct_8018D9E0_entry*);
 void func_800A8EC0(struct_8018D9E0_entry*);
@@ -157,7 +159,12 @@ struct_8018D9E0_entry *func_800AAEF4(s32);
 struct_8018D9E0_entry *func_800AAF30(s32);
 s32 func_800AAF70(s32);
 void func_800AAF94(struct_8018D9E0_entry*, s32);
+void func_800AB260(struct_8018D9E0_entry*);
+void func_800AB290(struct_8018D9E0_entry*);
 void func_800AC978(struct_8018D9E0_entry*);
+void func_800AEE90(struct_8018D9E0_entry*);
+void func_800AEEBC(struct_8018D9E0_entry*);
+void func_800AEEE8(struct_8018D9E0_entry*);
 void func_800AF480(struct_8018D9E0_entry*);
 void func_800AF4DC(struct_8018D9E0_entry*);
 void func_800AF740(struct_8018D9E0_entry*);
@@ -172,18 +179,6 @@ void func_80057CE4();
 #define D_8018E118_SIZE 0xC8
 
 /* This is where I'd put my static data, if I had any */
-
-extern Gfx D_02007650[];
-extern Gfx D_020076B0[];
-extern Gfx D_020077A8[];
-extern Gfx D_020077D8[];
-extern Gfx D_02007F18[];
-extern Gfx D_02007F48[];
-extern Gfx D_02007F60[];
-extern Gfx D_02007FC8[];
-extern Gfx D_02008008[];
-extern Gfx D_02008030[];
-extern Gfx D_02008058[];
 
 extern Gfx D_06009410[];
 

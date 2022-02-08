@@ -2,39 +2,7 @@
 #include <types.h>
 #include <PR/ultratypes.h>
 #include <PR/gbi.h>
-
-extern mk_Vtx_Flag D_02007BB8[];
-extern s32 D_800E84C0[];
-extern mk_Vtx_Flag D_02007BD8[];
-extern mk_Vtx_Flag D_02007BF8[];
-extern mk_Vtx_Flag D_02007C18[];
-extern mk_Vtx_Flag D_02007C38[];
-extern mk_Vtx_Flag D_02007C58[];
-extern mk_Vtx_Flag D_02007C78[];
-extern mk_Vtx_Flag D_02007C98[];
-extern mk_Vtx_Flag D_02007CB8[];
-extern mk_Vtx_Flag D_02007CD8[];
-extern mk_Vtx_Flag D_02007CF8[];
-extern mk_Vtx_Flag D_02007D18[];
-extern mk_Vtx_Flag D_02007D38[];
-extern mk_Vtx_Flag D_02007D58[];
-extern mk_Vtx_Flag D_02007D78[];
-extern mk_Vtx_Flag D_02007D98[];
-extern mk_Vtx_Flag D_02007DB8[];
-extern mk_Vtx_Flag D_02007DD8[];
-extern mk_Vtx_Flag D_02007DF8[];
-extern mk_Vtx_Flag D_02007E18[];
-extern mk_Vtx_Flag D_02007E38[];
-extern mk_Vtx_Flag D_02007E58[];
-extern mk_Vtx_Flag D_02007E78[];
-extern mk_Vtx_Flag D_02007E98[];
-extern mk_Vtx_Flag D_02007EB8[];
-extern mk_Vtx_Flag D_02007ED8[];
-extern mk_Vtx_Flag D_02007EF8[];
-
-extern Gfx D_060093F8[];
-
-extern Gfx D_0D006940[];
+#include "data_segment2.h"
 
 Gfx D_02007650[] = {
     gsDPPipeSync(),
