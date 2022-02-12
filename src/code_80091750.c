@@ -14780,6 +14780,17 @@ loop_3:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AAEB4.s")
 #endif
 
+/**
+ * @bug
+ * `arg0` is the desired "type" of the 8018D9E0 entry to
+ * search for. If no entry with that "type" is found, this
+ * function will enter a `while(1)` loop, hard-locking the
+ * game.
+ * 
+ * In practice this never appears to happen, but that is
+ * probably as much a matter of luck as it is good
+ * reasoning on the original author(s) part.
+**/
 struct_8018D9E0_entry *find_8018D9E0_entry_dupe(s32 arg0) {
     struct_8018D9E0_entry *entry = D_8018D9E0;
     for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
