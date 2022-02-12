@@ -1,7 +1,7 @@
 glabel func_800925CC
 /* 0931CC 800925CC 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 0931D0 800925D0 AFBF0014 */  sw    $ra, 0x14($sp)
-/* 0931D4 800925D4 0C02ABBD */  jal   func_800AAEF4
+/* 0931D4 800925D4 0C02ABBD */  jal   find_8018D9E0_entry_dupe
 /* 0931D8 800925D8 240400AF */   li    $a0, 175
 /* 0931DC 800925DC 8C4E0004 */  lw    $t6, 4($v0)
 /* 0931E0 800925E0 24010002 */  li    $at, 2
