@@ -190,20 +190,14 @@ typedef struct {
     /* 0x46 */ s16 unk_046;
 } UnkPlayerStruct258; // size = 0x48
 
+// This struct is almost identical to the GBI Vtx_t type,
+// except that its missing the "flag" member.
 typedef struct {
     s16        ob[3];    /* x, y, z */
     s16        tc[2];    /* texture coord */
     u8    ca[4];    /* color & alpha */
 
 } mk64_Vtx;
-
-typedef struct {
-    s16        ob[3];    /* x, y, z */
-    s16        tc[2];    /* texture coord */
-    s8        flag[2];  /* unk flag */
-    u8    ca[4];    /* color & alpha */
-
-} mk_Vtx_Flag;
 
 /*
 This struct has been copied (with only minor modifications) from
@@ -222,7 +216,7 @@ typedef struct {
     /* 0x02 */ u16 surfaceType;
     /* 0x04 */ s16 vtx3[3]; //X, Y, Z of poly's third vertex
     /* 0x0A */ s16 vtx2[3]; //X, Y, Z of poly's second vertex
-    /* 0x10 */ mk_Vtx_Flag *vtxs[3]; //pointer to the 3 vertices of this poly
+    /* 0x10 */ Vtx *vtxs[3]; //pointer to the 3 vertices of this poly
         //unsure why this exists along with a copy of two of the vertices.
         //both are involved in hit detection.
     /* 0x1C */ f32 height;
