@@ -91,7 +91,7 @@ glabel L800AD01C
 /* 0ADC8C 800AD08C 14200040 */  bnez  $at, .L800AD190
 /* 0ADC90 800AD090 AE0F0020 */   sw    $t7, 0x20($s0)
 /* 0ADC94 800AD094 AFA50034 */  sw    $a1, 0x34($sp)
-/* 0ADC98 800AD098 0C02ABBD */  jal   func_800AAEF4
+/* 0ADC98 800AD098 0C02ABBD */  jal   find_8018D9E0_entry_dupe
 /* 0ADC9C 800AD09C AFA60038 */   sw    $a2, 0x38($sp)
 /* 0ADCA0 800AD0A0 8C590004 */  lw    $t9, 4($v0)
 /* 0ADCA4 800AD0A4 8FA50034 */  lw    $a1, 0x34($sp)

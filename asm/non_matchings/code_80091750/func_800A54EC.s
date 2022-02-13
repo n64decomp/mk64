@@ -8,7 +8,7 @@ glabel func_800A54EC
 /* 0A6104 800A5504 3C0A800E */   lui   $t2, %hi(gModeSelection) # $t2, 0x800e
 /* 0A6108 800A5508 8D4AC53C */  lw    $t2, %lo(gModeSelection)($t2)
 /* 0A610C 800A550C 240400C7 */  li    $a0, 199
-/* 0A6110 800A5510 0C02ABCC */  jal   func_800AAF30
+/* 0A6110 800A5510 0C02ABCC */  jal   find_8018D9E0_entry
 /* 0A6114 800A5514 AFAA0040 */   sw    $t2, 0x40($sp)
 /* 0A6118 800A5518 3C088015 */  lui   $t0, %hi(gDisplayListHead) # $t0, 0x8015
 /* 0A611C 800A551C 25080298 */  addiu $t0, %lo(gDisplayListHead) # addiu $t0, $t0, 0x298

@@ -22,7 +22,7 @@ glabel func_800B053C
 /* 0B1188 800B0588 14400385 */  bnez  $v0, .L800B13A0
 /* 0B118C 800B058C 97A6003E */   lhu   $a2, 0x3e($sp)
 /* 0B1190 800B0590 240400F0 */  li    $a0, 240
-/* 0B1194 800B0594 0C02ABBD */  jal   func_800AAEF4
+/* 0B1194 800B0594 0C02ABBD */  jal   find_8018D9E0_entry_dupe
 /* 0B1198 800B0598 A7A6003E */   sh    $a2, 0x3e($sp)
 /* 0B119C 800B059C 3C098019 */  lui   $t1, %hi(D_8018EDEC) # $t1, 0x8019
 /* 0B11A0 800B05A0 2529EDEC */  addiu $t1, %lo(D_8018EDEC) # addiu $t1, $t1, -0x1214

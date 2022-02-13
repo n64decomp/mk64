@@ -65,7 +65,7 @@ glabel func_800B15AC
 /* 0B229C 800B169C 8FA70018 */  lw    $a3, 0x18($sp)
 .L800B16A0:
 /* 0B22A0 800B16A0 240400E8 */  li    $a0, 232
-/* 0B22A4 800B16A4 0C02ABBD */  jal   func_800AAEF4
+/* 0B22A4 800B16A4 0C02ABBD */  jal   find_8018D9E0_entry_dupe
 /* 0B22A8 800B16A8 AFA70018 */   sw    $a3, 0x18($sp)
 /* 0B22AC 800B16AC 3C058019 */  lui   $a1, %hi(gTimeTrialDataCourseIndex) # $a1, 0x8019
 /* 0B22B0 800B16B0 80A5EDF7 */  lb    $a1, %lo(gTimeTrialDataCourseIndex)($a1)
@@ -290,7 +290,7 @@ glabel func_800B15AC
 /* 0B25D8 800B19D8 8FBF0014 */   lw    $ra, 0x14($sp)
 .L800B19DC:
 /* 0B25DC 800B19DC 00603825 */  move  $a3, $v1
-/* 0B25E0 800B19E0 0C02ABBD */  jal   func_800AAEF4
+/* 0B25E0 800B19E0 0C02ABBD */  jal   find_8018D9E0_entry_dupe
 /* 0B25E4 800B19E4 AFA30018 */   sw    $v1, 0x18($sp)
 /* 0B25E8 800B19E8 8FA70018 */  lw    $a3, 0x18($sp)
 /* 0B25EC 800B19EC 3C038019 */  lui   $v1, %hi(D_8018EDF9) # $v1, 0x8019

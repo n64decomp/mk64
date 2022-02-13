@@ -9,7 +9,7 @@ glabel func_800A8CA4
 /* 0A98C0 800A8CC0 AFB3003C */  sw    $s3, 0x3c($sp)
 /* 0A98C4 800A8CC4 AFB20038 */  sw    $s2, 0x38($sp)
 /* 0A98C8 800A8CC8 AFB10034 */  sw    $s1, 0x34($sp)
-/* 0A98CC 800A8CCC 0C02ABBD */  jal   func_800AAEF4
+/* 0A98CC 800A8CCC 0C02ABBD */  jal   find_8018D9E0_entry_dupe
 /* 0A98D0 800A8CD0 24040064 */   li    $a0, 100
 /* 0A98D4 800A8CD4 3C118015 */  lui   $s1, %hi(gDisplayListHead) # $s1, 0x8015
 /* 0A98D8 800A8CD8 26310298 */  addiu $s1, %lo(gDisplayListHead) # addiu $s1, $s1, 0x298

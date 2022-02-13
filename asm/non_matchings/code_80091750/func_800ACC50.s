@@ -44,7 +44,7 @@ glabel L800ACC84
 /* 0AD8F0 800ACCF0 8FBF001C */   lw    $ra, 0x1c($sp)
 glabel L800ACCF4
 /* 0AD8F4 800ACCF4 240400B1 */  li    $a0, 177
-/* 0AD8F8 800ACCF8 0C02ABBD */  jal   func_800AAEF4
+/* 0AD8F8 800ACCF8 0C02ABBD */  jal   find_8018D9E0_entry_dupe
 /* 0AD8FC 800ACCFC AFA50020 */   sw    $a1, 0x20($sp)
 /* 0AD900 800ACD00 8C4E0004 */  lw    $t6, 4($v0)
 /* 0AD904 800ACD04 8FA50020 */  lw    $a1, 0x20($sp)
