@@ -91,6 +91,7 @@ void func_80094A64(Mtx*);
 void func_80094C60();
 void func_80095574();
 Gfx *func_800959A0(Gfx*, s32, s32, s32, s32);
+Gfx *func_800959F8(Gfx*, Vtx*);
 Gfx *func_80098C18(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *draw_box(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *func_80098FC8(Gfx*, s32, s32, s32, s32);
@@ -181,6 +182,10 @@ void func_80057CE4();
 /* This is where I'd put my static data, if I had any */
 
 extern Gfx D_06009410[];
+
+extern Gfx *D_800E84CC[];
+extern Gfx *D_800E84EC[];
+extern Gfx *D_800E850C[];
 
 extern s16 gGlyphDisplayWidth[]; // D_800EF690
 extern RGBA16 D_800E74A8[5];
