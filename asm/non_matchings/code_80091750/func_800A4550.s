@@ -39,7 +39,7 @@ glabel func_800A4550
 /* 0A51DC 800A45DC E7B40014 */  swc1  $f20, 0x14($sp)
 /* 0A51E0 800A45E0 0C024DAE */  jal   func_800936B8
 /* 0A51E4 800A45E4 24840021 */   addiu $a0, $a0, 0x21
-/* 0A51E8 800A45E8 0C02ABBD */  jal   func_800AAEF4
+/* 0A51E8 800A45E8 0C02ABBD */  jal   find_8018D9E0_entry_dupe
 /* 0A51EC 800A45EC 240400BB */   li    $a0, 187
 /* 0A51F0 800A45F0 8FA30048 */  lw    $v1, 0x48($sp)
 /* 0A51F4 800A45F4 28610003 */  slti  $at, $v1, 3

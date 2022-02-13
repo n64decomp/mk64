@@ -3,7 +3,7 @@ glabel func_800A0EB8
 /* 0A1ABC 800A0EBC AFBF0014 */  sw    $ra, 0x14($sp)
 /* 0A1AC0 800A0EC0 AFA40018 */  sw    $a0, 0x18($sp)
 /* 0A1AC4 800A0EC4 AFA5001C */  sw    $a1, 0x1c($sp)
-/* 0A1AC8 800A0EC8 0C02ABBD */  jal   func_800AAEF4
+/* 0A1AC8 800A0EC8 0C02ABBD */  jal   find_8018D9E0_entry_dupe
 /* 0A1ACC 800A0ECC 240400DA */   li    $a0, 218
 /* 0A1AD0 800A0ED0 8FA4001C */  lw    $a0, 0x1c($sp)
 /* 0A1AD4 800A0ED4 00405825 */  move  $t3, $v0
