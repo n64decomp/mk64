@@ -14576,7 +14576,6 @@ void func_800AAE18(struct_8018D9E0_entry *arg0) {
 }
 
 /**
- * @bug
  * Similar to find_8018D9E0_entry_dupe, there is potential for a
  * hard lock in the function if no appropriate D_8018D9E0 entry
  * is found.
@@ -14591,13 +14590,13 @@ struct_8018D9E0_entry *func_800AAE68(void) {
         }
     }
 
-    while(1);
+    // Something VERY wrong has occurred
+    while(TRUE);
 escape:
     return entry;
 }
 
 /**
- * @bug
  * Similar to find_8018D9E0_entry_dupe, there is potential for a
  * hard lock in the function if no appropriate D_8018D9E0 entry
  * is found.
@@ -14611,13 +14610,13 @@ struct_8018D9E0_entry *func_800AAEB4(s32 arg0) {
         }
     }
 
-    while(1);
+    // Something VERY wrong has occurred
+    while(TRUE);
 escape:
     return entry;
 }
 
 /**
- * @bug
  * `arg0` is the desired "type" of the 8018D9E0 entry to
  * search for. If no entry with that "type" is found, this
  * function will enter a `while(1)` loop, hard-locking the
@@ -14635,8 +14634,8 @@ struct_8018D9E0_entry *find_8018D9E0_entry_dupe(s32 arg0) {
         }
     }
 
-    // I don't know why they'd want a function that could potentially hard lock the game...
-    while(1);
+    // Something VERY wrong has occurred
+    while(TRUE);
 escape:
     return entry;
 }
