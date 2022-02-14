@@ -165,6 +165,7 @@ void func_800A94C8(struct_8018D9E0_entry*, s32, s32);
 void func_800A954C(struct_8018D9E0_entry*);
 void func_800AADD4(struct_8018D9E0_entry*);
 void func_800AAE18(struct_8018D9E0_entry*);
+struct_8018D9E0_entry *func_800AAE68();
 struct_8018D9E0_entry *func_800AAEB4(s32);
 struct_8018D9E0_entry *find_8018D9E0_entry_dupe(s32);
 struct_8018D9E0_entry *find_8018D9E0_entry(s32);
