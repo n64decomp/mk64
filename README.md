@@ -27,12 +27,12 @@ The build system has the following package requirements:
 
 To add submodules run `git submodule update --init --recursive` after cloning.
 
-##### Debian / Ubuntu
+#### Debian / Ubuntu
 ```
-sudo apt install build-essential pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev
+sudo apt install build-essential pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev libcapstone-dev
 ```
 
-##### Arch Linux
+#### Arch Linux
 
 To install build dependencies:
 ```
@@ -43,7 +43,7 @@ Install the following AUR packages:
 
 Review the n64decomp/sm64 readme for instructions to compile in other distributions.
 
-##### Windows
+#### Windows
 
 Compiling on Windows requires `MSYS2 MinGW x64`. The setup process is a tad intensive.  
 
