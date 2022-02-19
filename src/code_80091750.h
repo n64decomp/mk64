@@ -48,6 +48,7 @@ typedef struct {
 
 f64 exponent_by_squaring(f64, s32);
 f64 func_80091A6C(f64, s32);
+f64 func_80091AC0(f64, s32*);
 void swap_values(s32*, s32*);
 void func_80092148();
 void func_800921B4();
