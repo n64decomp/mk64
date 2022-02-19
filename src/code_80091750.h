@@ -113,6 +113,7 @@ void func_80099A70();
 void func_8009A344();
 void func_8009A594(s32, s32, MkAnimation*);
 void func_8009A640(s32, s32, s32, MkAnimation*);
+void func_8009A6D4();
 void func_8009A76C(s32, s32, s32, s32);
 void func_8009A7EC(s32, s32, s32, s32, s32);
 void func_8009A878(struct_8018DEE0_entry*);
