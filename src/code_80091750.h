@@ -44,6 +44,11 @@ typedef struct {
     /* 0x04 */ s32 offset;
 } struct_8018E118_entry; // size = 0x08
 
+typedef struct {
+    /* 0x00 */ MkTexture *textures;
+    /* 0x04 */ Gfx *displayList;
+} struct_8018E768_entry; // size = 0x08
+
 /* Function Prototypes */
 
 f64 exponent_by_squaring(f64, s32);
@@ -118,6 +123,10 @@ void func_8009A76C(s32, s32, s32, s32);
 void func_8009A7EC(s32, s32, s32, s32, s32);
 void func_8009A878(struct_8018DEE0_entry*);
 void func_8009A944(struct_8018DEE0_entry*, s32);
+void func_8009B938();
+void func_8009B954(MkTexture*);
+void func_8009B998();
+Gfx *func_8009B9D0(Gfx*, MkTexture*);
 Gfx *func_8009BA74(Gfx *, MkTexture*, s32, s32);
 Gfx *func_8009BEF0(Gfx*, s32, f32, f32, s32, f32,f32);
 Gfx *func_8009C434(Gfx*, struct_8018DEE0_entry*, s32, s32, s32);
@@ -192,6 +201,7 @@ void func_80057CE4();
 #define D_8018D9E0_SIZE 0x20
 #define D_8018DEE0_SIZE 0x10
 #define D_8018E118_SIZE 0xC8
+#define D_8018E768_SIZE 0x08
 
 /* This is where I'd put my static data, if I had any */
 
@@ -248,6 +258,9 @@ extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE]; // D_8018DEE0
 extern s32 gD_8018E118TotalSize;                          // D_8018E110
 extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE]; // D_8018E118
 extern s32 gNumD_8018E118Entries;                         // D_8018E758
+extern Gfx *D_8018E75C;                                   // D_8018E75C
+extern s32 gNumD_8018E768Entries;                         // D_8018E760
+extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE]; // D_8018E768
 extern s8  gTextColor;                                    // D_8018E860
 extern s8  D_8018ED91;
 extern s32 D_8018E850;
