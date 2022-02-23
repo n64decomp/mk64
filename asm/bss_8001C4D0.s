@@ -1803,7 +1803,7 @@ glabel gNumD_8018E118Entries
 glabel D_8018E75C
 .skip 4
 
-glabel D_8018E760
+glabel gNumD_8018E768Entries
 .skip 8
 
 glabel D_8018E768
