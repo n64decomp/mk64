@@ -7301,7 +7301,7 @@ static MkAnimation *D_800E8320[8] = {
     D_02007468,
     D_02006AD8,
 }; /* const */
-static MkAnimation *D_800E8420[8] = {
+static MkAnimation *gCharacterDefeatAnimation[8] = {
     D_020068E0,
     D_02006AC8,
     D_02006E98,
@@ -7789,7 +7789,7 @@ loop_3:
         }
         if (phi_v1_4 != 0) {
             phi_v1_5 = temp_a1 * 4;
-            phi_a0_2 = D_800E8420[temp_a1];
+            phi_a0_2 = gCharacterDefeatAnimation[temp_a1];
         } else {
             phi_v1_5 = temp_a1 * 4;
             phi_a0_2 = D_800E8320[temp_a1];
@@ -7848,7 +7848,7 @@ loop_3:
         phi_v1 = temp_a1_2 * 4;
         if (phi_v0_2 != 0) {
             phi_v1 = temp_a1_2 * 4;
-            phi_a0 = D_800E8420[temp_a1_2];
+            phi_a0 = gCharacterDefeatAnimation[temp_a1_2];
         } else {
             phi_a0 = D_800E8320[temp_a1_2];
         }
@@ -14102,7 +14102,7 @@ static MkAnimation *D_800E8360[8] = {
     D_02007468,
     D_02006AD8,
 }; /* const */
-static MkAnimation *D_800E8380[8] = {
+static MkAnimation *gCharacterCelebrateAnimation[8] = {
     D_02006718,
     D_02006900,
     D_02006CD0,
@@ -14122,7 +14122,7 @@ static MkAnimation *D_800E83A0[8] = {
     D_020074D8,
     D_02006B48,
 }; /* const */
-static MkAnimation *D_800E83C0[8] = {
+static MkAnimation *gCharacterDeselectAnimation[8] = {
     D_02006788,
     D_02006970,
     D_02006D40,
@@ -14132,7 +14132,7 @@ static MkAnimation *D_800E83C0[8] = {
     D_020074E8,
     D_02006B58,
 }; /* const */
-static MkAnimation *D_800E83E0[8] = {
+static MkAnimation *gCharacterSingleBlinkAnimation[8] = {
     D_020067E0,
     D_020069C8,
     D_02006D98,
@@ -14142,7 +14142,7 @@ static MkAnimation *D_800E83E0[8] = {
     D_02007540,
     D_02006BB0,
 }; /* const */
-static MkAnimation *D_800E8400[8] = {
+static MkAnimation *gCharacterDoubleBlinkAnimation[8] = {
     D_02006838,
     D_02006A20,
     D_02006DF0,
@@ -14187,19 +14187,19 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
     case 0:
         if ((*(&D_8018EDE8 + temp_v0) != 0) && (phi_a0 != 0)) {
             arg0->unk8 = 1;
-            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe(D_800E8380[temp_a1]));
+            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe(gCharacterCelebrateAnimation[temp_a1]));
             return;
         }
         sp30 = temp_a1;
         temp_v0_2 = random_int(0xC8, temp_a1);
         if (temp_v0_2 >= 0xC6) {
             arg0->unk8 = 4;
-            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe(D_800E83E0[temp_a1]));
+            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe(gCharacterSingleBlinkAnimation[temp_a1]));
             return;
         }
         if (temp_v0_2 >= 0xC5) {
             arg0->unk8 = 5;
-            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe(D_800E8400[temp_a1]));
+            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe(gCharacterDoubleBlinkAnimation[temp_a1]));
             return;
         }
     default:
@@ -14214,14 +14214,14 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
             arg0->unk8 = 3;
             sp24 = temp_a1 * 4;
             temp_a0_2 = arg0->D_8018DEE0_index;
-            func_8009A594(temp_a0_2, D_800E8460[temp_a1] - *(&D_8018DEE4 + (temp_a0_2 * 0x18)), segmented_to_virtual_dupe(D_800E83C0[temp_a1]));
+            func_8009A594(temp_a0_2, D_800E8460[temp_a1] - *(&D_8018DEE4 + (temp_a0_2 * 0x18)), segmented_to_virtual_dupe(gCharacterDeselectAnimation[temp_a1]));
             return;
         }
         break;
     case 2:
         if ((*(&D_8018EDE8 + temp_v0) == 0) && (phi_a0 != 0)) {
             arg0->unk8 = 3;
-            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe(D_800E83C0[temp_a1]));
+            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe(gCharacterDeselectAnimation[temp_a1]));
             return;
         }
         break;
@@ -14236,7 +14236,7 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
             arg0->unk8 = 1;
             sp20 = temp_a3;
             temp_a0_3 = arg0->D_8018DEE0_index;
-            func_8009A594(temp_a0_3, *temp_a3 - *(&D_8018DEE4 + (temp_a0_3 * 0x18)), segmented_to_virtual_dupe(D_800E8380[temp_a1]));
+            func_8009A594(temp_a0_3, *temp_a3 - *(&D_8018DEE4 + (temp_a0_3 * 0x18)), segmented_to_virtual_dupe(gCharacterCelebrateAnimation[temp_a1]));
             return;
         }
         break;
@@ -14244,7 +14244,7 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
     case 5:
         if ((*(&D_8018EDE8 + temp_v0) != 0) && (phi_a0 != 0)) {
             arg0->unk8 = 1;
-            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe(D_800E8380[temp_a1]));
+            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe(gCharacterCelebrateAnimation[temp_a1]));
             return;
         }
         if (temp_v1 == 4) {
@@ -15940,7 +15940,7 @@ extern s8 D_8018EDF3;
 extern s32 gPlayerWinningIndex;
 static ? D_800E72F8;                                /* unable to generate initializer; const */
 static ? D_800E7300;                                /* unable to generate initializer; const */
-static MkAnimation *D_800E8380[8] = {
+static MkAnimation *gCharacterCelebrateAnimation[8] = {
     D_02006718,
     D_02006900,
     D_02006CD0,
@@ -16026,7 +16026,7 @@ block_11:
                 sp38 = temp_a2;
                 if (find_8018D9E0_entry_dupe(0xB0)->unk4 >= 2) {
                     sp38 = temp_a2;
-                    func_8009A640(arg0->D_8018DEE0_index, 0, temp_a2, segmented_to_virtual_dupe(D_800E8380[temp_a1]));
+                    func_8009A640(arg0->D_8018DEE0_index, 0, temp_a2, segmented_to_virtual_dupe(gCharacterCelebrateAnimation[temp_a1]));
                     arg0->unk4 = 3;
                     temp_a0 = temp_a2 & 0xFF;
                     sp24 = temp_a0;
@@ -17237,7 +17237,7 @@ struct _struct_D_800E7480_0x8 {
 extern ? D_8018DEE4;
 static struct _struct_D_800E7458_0x8 D_800E7458[0]; /* unable to generate initializer; const */
 static struct _struct_D_800E7480_0x8 D_800E7480[0]; /* unable to generate initializer; const */
-static MkAnimation *D_800E8380[8] = {
+static MkAnimation *gCharacterCelebrateAnimation[8] = {
     D_02006718,
     D_02006900,
     D_02006CD0,
@@ -17306,7 +17306,7 @@ void func_800AF270(struct_8018D9E0_entry *arg0) {
                 return;
             }
             arg0->unk4 = 3;
-            func_8009A640(arg0->D_8018DEE0_index, 0, sp30, segmented_to_virtual_dupe(D_800E8380[temp_v0]));
+            func_8009A640(arg0->D_8018DEE0_index, 0, sp30, segmented_to_virtual_dupe(gCharacterCelebrateAnimation[temp_v0]));
             func_800CA0B8();
             func_800C90F4(0, (sp30 * 0x10) + 0x29008007);
             func_800CA0A0();

@@ -864,10 +864,10 @@ glabel L8009F264
 /* 09FEF4 8009F2F4 10600006 */  beqz  $v1, .L8009F310
 /* 09FEF8 8009F2F8 3C04800F */   lui   $a0, %hi(D_800E8320) # 0x800f
 /* 09FEFC 8009F2FC 00051880 */  sll   $v1, $a1, 2
-/* 09FF00 8009F300 3C04800F */  lui   $a0, %hi(D_800E8420) # 0x800f
+/* 09FF00 8009F300 3C04800F */  lui   $a0, %hi(gCharacterDefeatAnimation) # 0x800f
 /* 09FF04 8009F304 00832021 */  addu  $a0, $a0, $v1
 /* 09FF08 8009F308 10000004 */  b     .L8009F31C
-/* 09FF0C 8009F30C 8C848420 */   lw    $a0, %lo(D_800E8420)($a0) # -0x7be0($a0)
+/* 09FF0C 8009F30C 8C848420 */   lw    $a0, %lo(gCharacterDefeatAnimation)($a0) # -0x7be0($a0)
 .L8009F310:
 /* 09FF10 8009F310 00051880 */  sll   $v1, $a1, 2
 /* 09FF14 8009F314 00832021 */  addu  $a0, $a0, $v1
@@ -1037,10 +1037,10 @@ glabel L8009F530
 /* 0A0168 8009F568 10400006 */  beqz  $v0, .L8009F584
 /* 0A016C 8009F56C 00051880 */   sll   $v1, $a1, 2
 /* 0A0170 8009F570 00051880 */  sll   $v1, $a1, 2
-/* 0A0174 8009F574 3C04800F */  lui   $a0, %hi(D_800E8420) # 0x800f
+/* 0A0174 8009F574 3C04800F */  lui   $a0, %hi(gCharacterDefeatAnimation) # 0x800f
 /* 0A0178 8009F578 00832021 */  addu  $a0, $a0, $v1
 /* 0A017C 8009F57C 10000004 */  b     .L8009F590
-/* 0A0180 8009F580 8C848420 */   lw    $a0, %lo(D_800E8420)($a0) # -0x7be0($a0)
+/* 0A0180 8009F580 8C848420 */   lw    $a0, %lo(gCharacterDefeatAnimation)($a0) # -0x7be0($a0)
 .L8009F584:
 /* 0A0184 8009F584 3C04800F */  lui   $a0, %hi(D_800E8320) # 0x800f
 /* 0A0188 8009F588 00832021 */  addu  $a0, $a0, $v1

@@ -67,7 +67,7 @@ glabel L800AF34C
 /* 0AFF68 800AF368 0002C080 */  sll   $t8, $v0, 2
 /* 0AFF6C 800AF36C 29810003 */  slti  $at, $t4, 3
 /* 0AFF70 800AF370 1420000F */  bnez  $at, .L800AF3B0
-/* 0AFF74 800AF374 3C04800F */   lui   $a0, %hi(D_800E8380) # 0x800f
+/* 0AFF74 800AF374 3C04800F */   lui   $a0, %hi(gCharacterCelebrateAnimation) # 0x800f
 /* 0AFF78 800AF378 240D0004 */  li    $t5, 4
 /* 0AFF7C 800AF37C 0C03282E */  jal   func_800CA0B8
 /* 0AFF80 800AF380 AE0D0004 */   sw    $t5, 4($s0)
@@ -86,7 +86,7 @@ glabel L800AF34C
 /* 0AFFB0 800AF3B0 AE0F0004 */  sw    $t7, 4($s0)
 /* 0AFFB4 800AF3B4 00982021 */  addu  $a0, $a0, $t8
 /* 0AFFB8 800AF3B8 0C026455 */  jal   segmented_to_virtual_dupe
-/* 0AFFBC 800AF3BC 8C848380 */   lw    $a0, %lo(D_800E8380)($a0) # -0x7c80($a0)
+/* 0AFFBC 800AF3BC 8C848380 */   lw    $a0, %lo(gCharacterCelebrateAnimation)($a0) # -0x7c80($a0)
 /* 0AFFC0 800AF3C0 8E040018 */  lw    $a0, 0x18($s0)
 /* 0AFFC4 800AF3C4 00002825 */  move  $a1, $zero
 /* 0AFFC8 800AF3C8 8FA60030 */  lw    $a2, 0x30($sp)

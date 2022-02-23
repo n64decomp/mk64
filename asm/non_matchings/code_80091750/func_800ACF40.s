@@ -99,9 +99,9 @@ glabel L800AD01C
 /* 0ADCAC 800AD0AC 2B210002 */  slti  $at, $t9, 2
 /* 0ADCB0 800AD0B0 14200037 */  bnez  $at, .L800AD190
 /* 0ADCB4 800AD0B4 00054080 */   sll   $t0, $a1, 2
-/* 0ADCB8 800AD0B8 3C04800F */  lui   $a0, %hi(D_800E8380) # 0x800f
+/* 0ADCB8 800AD0B8 3C04800F */  lui   $a0, %hi(gCharacterCelebrateAnimation) # 0x800f
 /* 0ADCBC 800AD0BC 00882021 */  addu  $a0, $a0, $t0
-/* 0ADCC0 800AD0C0 8C848380 */  lw    $a0, %lo(D_800E8380)($a0) # -0x7c80($a0)
+/* 0ADCC0 800AD0C0 8C848380 */  lw    $a0, %lo(gCharacterCelebrateAnimation)($a0) # -0x7c80($a0)
 /* 0ADCC4 800AD0C4 0C026455 */  jal   segmented_to_virtual_dupe
 /* 0ADCC8 800AD0C8 AFA60038 */   sw    $a2, 0x38($sp)
 /* 0ADCCC 800AD0CC 8FA60038 */  lw    $a2, 0x38($sp)
