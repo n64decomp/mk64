@@ -13,8 +13,8 @@ glabel func_800B90F0
 /* 0B9D1C 800B911C 8DEFA5D0 */  lw    $t7, %lo(D_800EA5D0)($t7)
 /* 0B9D20 800B9120 3C0E803B */  lui   $t6, %hi(D_803B71B0) # $t6, 0x803b
 /* 0B9D24 800B9124 25CE71B0 */  addiu $t6, %lo(D_803B71B0) # addiu $t6, $t6, 0x71b0
-/* 0B9D28 800B9128 3C04803B */  lui   $a0, %hi(D_803AFBC8) # $a0, 0x803b
-/* 0B9D2C 800B912C 2484FBC8 */  addiu $a0, %lo(D_803AFBC8) # addiu $a0, $a0, -0x438
+/* 0B9D28 800B9128 3C04803B */  lui   $a0, %hi(gLeftVolRampings) # $a0, 0x803b
+/* 0B9D2C 800B912C 2484FBC8 */  addiu $a0, %lo(gLeftVolRampings) # addiu $a0, $a0, -0x438
 /* 0B9D30 800B9130 00EE2821 */  addu  $a1, $a3, $t6
 /* 0B9D34 800B9134 0C02E41F */  jal   func_800B907C
 /* 0B9D38 800B9138 01E73023 */   subu  $a2, $t7, $a3

@@ -300,14 +300,8 @@ SECTIONS
    _mainSegmentNoloadSizeHi = _mainSegmentNoloadSize >> 16;
    _mainSegmentNoloadSizeLo = _mainSegmentNoloadSize & 0xFFFF;
 
-   . = SEG_FRAMEBUFFERS;
-   BEGIN_NOLOAD(framebuffers)
-   {
-      BUILD_DIR/src/framebuffers.o(.bss*);
-   }
-   END_NOLOAD(framebuffers)
 
-
+   
 
    /* 0x8028DF00 0F7510-123640 [2C130] */
    BEGIN_SEG(code_8028DF00, SEG_8028DF00)
@@ -334,6 +328,9 @@ SECTIONS
         BUILD_DIR/src/code_8028DF00.o(.bss);
         BUILD_DIR/asm/bss_8028DF00.o(.bss);
         BUILD_DIR/src/memory.o(.bss);
+        BUILD_DIR/src/framebuffers.o(.bss*);
+        BUILD_DIR/src/audio/synthesis.o(.bss*);
+        BUILD_DIR/asm/bss_audio.o(.bss*);
         BUILD_DIR/asm/bss_sptask_audio.o(.bss);
 	   }
 	   END_NOLOAD(code_8028DF00)
@@ -343,12 +340,8 @@ SECTIONS
 	   _code_8028DF00SegmentNoloadSizeHi = _code_8028DF00SegmentNoloadSize >> 16;
 	   _code_8028DF00SegmentNoloadSizeLo = _code_8028DF00SegmentNoloadSize & 0xFFFF;
 
-   . = SEG_AUDIO;
-   BEGIN_NOLOAD(audio)
-   {
-      BUILD_DIR/src/audio/synthesis.o(.bss*);
-   }
-   END_NOLOAD(audio)
+
+
 
 
    /* 0x80280000 123640-12AAE0 [74A0] */
@@ -417,10 +410,10 @@ SECTIONS
    END_SEG(other_textures)
 
    /* 0x802BA370 724220-729A30 [0x5810] */
-   BEGIN_SEG(data_802BA370, 0x802BA370)
+   BEGIN_SEG(data_802BA370, SEG_802BA370)
    {
-      BUILD_DIR/src/math_util.o(.data);
-      . = ALIGN(0x10);
+        BUILD_DIR/src/math_util.o(.data);
+        . = ALIGN(0x10);
    }
    END_SEG(data_802BA370)
 

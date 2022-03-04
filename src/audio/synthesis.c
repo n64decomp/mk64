@@ -50,6 +50,11 @@ u64 *final_resample(u64 *cmd, struct NoteSynthesisState *synthesisState, s32 cou
 u64 *process_envelope(u64 *cmd, struct NoteSubEu *noteSubEu, struct NoteSynthesisState *synthesisState, s32 nSamples, u16 inBuf, s32 headsetPanSettings, u32 flags);
 u64 *note_apply_headset_pan_effects(u64 *cmd, struct NoteSubEu *noteSubEu, struct NoteSynthesisState *note, s32 bufLen, s32 flags, s32 leftRight);
 
+
+u64 gGfxSPTaskOutputBuffer[0x3F00];
+
+u32 gGfxSPTaskOutputBufferSize;
+u32 padding3[2];
 struct SynthesisReverb gSynthesisReverbs[4];
 u8 sAudioSynthesisPad[0x10];
 s16 gVolume;
@@ -60,10 +65,10 @@ struct NoteSubEu *gNoteSubsEu;
 extern struct Note *D_803B7088;
 extern s32 D_803B70B0;
 
-f32 gLeftVolRampings[3][1024];
-f32 gRightVolRampings[3][1024];
-f32 *gCurrentLeftVolRamping; // Points to any of the three left buffers above
-f32 *gCurrentRightVolRamping; // Points to any of the three right buffers above
+f32 gLeftVolRampings;
+//f32 gRightVolRampings[3][1024];
+//f32 *gCurrentLeftVolRamping; // Points to any of the three left buffers above
+//f32 *gCurrentRightVolRamping; // Points to any of the three right buffers above
 
 u8 audioString1[] = "pitch %x: delaybytes %d : olddelay %d\n";
 u8 audioString2[] = "cont %x: delaybytes %d : olddelay %d\n";

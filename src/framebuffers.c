@@ -2,8 +2,10 @@
 
 #include "config.h"
 
+u8 D_802BA290[224];
 
-u8 D_802BA290[22768];
+u8 frameBufferPadding[22544];
+
 u8 D_802BFB80[77824];
 
 u8 D_802D2B80[32768]; // Luigi raceway course path ghost

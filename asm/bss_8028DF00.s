@@ -2,6 +2,7 @@
 
 .section .bss
 
+
 glabel D_802BA050
 .skip 4
 
