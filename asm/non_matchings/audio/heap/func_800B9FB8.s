@@ -1,8 +1,8 @@
 glabel func_800B9FB8
-/* 0BABB8 800B9FB8 3C03803B */  lui   $v1, %hi(D_803AFBC3) # $v1, 0x803b
-/* 0BABBC 800B9FBC 8063FBC3 */  lb    $v1, %lo(D_803AFBC3)($v1)
-/* 0BABC0 800B9FC0 3C0E803B */  lui   $t6, %hi(D_803AF790) # 0x803b
-/* 0BABC4 800B9FC4 25C2F790 */  addiu $v0, $t6, %lo(D_803AF790) # -0x870
+/* 0BABB8 800B9FB8 3C03803B */  lui   $v1, %hi(gNumSynthesisReverbs) # $v1, 0x803b
+/* 0BABBC 800B9FBC 8063FBC3 */  lb    $v1, %lo(gNumSynthesisReverbs)($v1)
+/* 0BABC0 800B9FC0 3C0E803B */  lui   $t6, %hi(gSynthesisReverbs) # 0x803b
+/* 0BABC4 800B9FC4 25C2F790 */  addiu $v0, $t6, %lo(gSynthesisReverbs) # -0x870
 /* 0BABC8 800B9FC8 1860000E */  blez  $v1, .L800BA004
 /* 0BABCC 800B9FCC 00037940 */   sll   $t7, $v1, 5
 /* 0BABD0 800B9FD0 01E37821 */  addu  $t7, $t7, $v1

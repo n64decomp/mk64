@@ -31,7 +31,6 @@ struct MainPoolBlock {
 
 extern uintptr_t gSegmentTable[16];
 
-
 extern s32 D_801502A0;
 s32 D_802BA270;
 s32 D_802BA274;

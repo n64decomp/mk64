@@ -50,10 +50,10 @@ struct SynthesisReverb {
 extern struct SynthesisReverb gSynthesisReverbs[4];
 extern s8 gNumSynthesisReverbs;
 extern struct NoteSubEu *gNoteSubsEu;
-extern f32 gLeftVolRampings[3][1024];
-extern f32 gRightVolRampings[3][1024];
-extern f32 *gCurrentLeftVolRamping; // Points to any of the three left buffers above
-extern f32 *gCurrentRightVolRamping; // Points to any of the three right buffers above
+extern f32 gLeftVolRampings;
+//extern f32 gRightVolRampings[3][1024];
+//extern f32 *gCurrentLeftVolRamping; // Points to any of the three left buffers above
+//extern f32 *gCurrentRightVolRamping; // Points to any of the three right buffers above
 
 u64 *synthesis_execute(u64 *cmdBuf, s32 *writtenCmds, s16 *aiBuf, s32 bufLen);
 
