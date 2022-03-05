@@ -63,6 +63,9 @@ struct Controller *gControllerFive = &gControllers[4];  // 0x800DC4CC
 struct Controller *gControllerSix = &gControllers[5];   // 0x800DC4D0
 struct Controller *gControllerSeven = &gControllers[6]; // 0x800DC4D4
 struct Controller *gControllerEight = &gControllers[7]; // 0x800DC4D8
+//Player shift[1];
+//Player *shifting = &shift[0];
+
 
 Player gPlayers[8];
 Player *gPlayerOne = &gPlayers[0];   // 0x800DC4DC
@@ -171,8 +174,8 @@ u16 gEnableDebugMode = 0;
 s32 D_800DC524 = 7; // = COURSE_DATA_MENU?;
 UNUSED s32 D_800DC528 = 1;
 s32 gActiveScreenMode = SCREEN_MODE_1P;
-
-s32 gScreenModeSelection[2] = {0};
+s32 gScreenModeSelection = 0;
+UNUSED s32 D_800DC534  = 0;
 s32 gPlayerCountSelection1 = 2;
 
 s32 gModeSelection = GRAND_PRIX;
@@ -1123,7 +1126,7 @@ void func_80002684(void) {
 
 extern s32 D_800DC600;
 extern s32 D_8015F8B8, D_8015F8BC, D_8015F8C0, D_8015F8C4, D_8015F8C8, D_8015F8CC;
-
+//extern u8 _networkSegmentRomStart;
 void thread5_game_logic(s32 arg0) {
     osCreateMesgQueue(&D_8014EF88, &D_8014F00C, 1);
     osCreateMesgQueue(&D_8014EF70, &D_8014F008, 1);
@@ -1141,6 +1144,13 @@ void thread5_game_logic(s32 arg0) {
     rendering_init();
     read_controllers();
     func_800C5CB8();
+
+    //set_segment_base_addr(0x8, SEG_NETWORK);
+    //osInvalICache(SEG_NETWORK, 0x90);
+    //osInvalDCache(SEG_NETWORK+0x90, 0xFF);
+    //osPiStartDma(&gDmaIoMesg, 0, 0, &_networkSegmentRomStart, SEG_NETWORK, 0xFF, &gDmaMesgQueue);
+    //osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
+
 
     while(1) {
         func_800CB2C4();

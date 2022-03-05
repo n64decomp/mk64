@@ -101,7 +101,7 @@ Lights1 D_800DC610[] = {
     gdSPDefLights1(175, 175, 175, 255, 255, 255, 0, 0, 120),
     gdSPDefLights1(115, 115, 115, 255, 255, 255, 0, 0, 120),
 };
-static s32 pad = 0x80000000;
+static s32 pad_800029B0 = 0x80000000;
 s16 gCreditsCourseId = COURSE_LUIGI_RACEWAY;
 s16 gPlaceItemBoxes = 1;
 

@@ -14,7 +14,6 @@ Camera *camera1 = &cameras[0];
 Camera *camera2 = &cameras[1];
 Camera *camera3 = &cameras[2];
 Camera *camera4 = &cameras[3];
-//s32 test;
 
 
 extern Player *gPlayerTwo;

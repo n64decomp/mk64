@@ -86,7 +86,7 @@ glabel func_8003D080
 .L8003D1BC:
 /* 03DDBC 8003D1BC 3C01800F */  lui   $at, %hi(gPlayers+0x14) # $at, 0x800f
 /* 03DDC0 8003D1C0 C42C69A4 */  lwc1  $f12, %lo(gPlayers+0x14)($at)
-/* 03DDC4 8003D1C4 3C01800F */  lui   $at, %hi(gPlayers+0x14) # $at, 0x800f
+/* 03DDC4 8003D1C4 3C01800F */  lui   $at, %hi(gPlayers+0x18) # $at, 0x800f
 /* 03DDC8 8003D1C8 3C07800F */  lui   $a3, %hi(gPlayers+0x2E) # $a3, 0x800f
 /* 03DDCC 8003D1CC 24090001 */  li    $t1, 1
 /* 03DDD0 8003D1D0 AFA90010 */  sw    $t1, 0x10($sp)
@@ -151,13 +151,13 @@ glabel func_8003D080
 .L8003D2AC:
 /* 03DEAC 8003D2AC 3C01800F */  lui   $at, %hi(gPlayers+0x14) # $at, 0x800f
 /* 03DEB0 8003D2B0 C42C69A4 */  lwc1  $f12, %lo(gPlayers+0x14)($at)
-/* 03DEB4 8003D2B4 3C01800F */  lui   $at, %hi(gPlayers+0x14) # $at, 0x800f
+/* 03DEB4 8003D2B4 3C01800F */  lui   $at, %hi(gPlayers+0x18) # $at, 0x800f
 /* 03DEB8 8003D2B8 3C07800F */  lui   $a3, %hi(gPlayers+0x2E) # $a3, 0x800f
 /* 03DEBC 8003D2BC 240E0009 */  li    $t6, 9
 /* 03DEC0 8003D2C0 AFAE0010 */  sw    $t6, 0x10($sp)
 /* 03DEC4 8003D2C4 84E769BE */  lh    $a3, %lo(gPlayers+0x2E)($a3)
 /* 03DEC8 8003D2C8 C42E69A8 */  lwc1  $f14, %lo(gPlayers+0x18)($at)
-/* 03DECC 8003D2CC 8CC669AC */  lw    $a2, 0x69ac($a2)
+/* 03DECC 8003D2CC 8CC669AC */  lw    $a2, %lo(gPlayers+0x1C)($a2) # 0x69ac($a2)
 /* 03DED0 8003D2D0 0C007134 */  jal   func_8001C4D0
 /* 03DED4 8003D2D4 AFA00014 */   sw    $zero, 0x14($sp)
 /* 03DED8 8003D2D8 3C02800F */  lui   $v0, %hi(gPlayers+0xDD8) # $v0, 0x800f
@@ -377,7 +377,7 @@ glabel func_8003D080
 /* 03E20C 8003D60C AFAB0010 */  sw    $t3, 0x10($sp)
 /* 03E210 8003D610 84E769BE */  lh    $a3, %lo(gPlayers+0x2E)($a3)
 /* 03E214 8003D614 C42E69A8 */  lwc1  $f14, %lo(gPlayers+0x18)($at)
-/* 03E218 8003D618 8CC669AC */  lw    $a2, 0x69ac($a2)
+/* 03E218 8003D618 8CC669AC */  lw    $a2, %lo(gPlayers+0x1C)($a2) # 0x69ac($a2)
 /* 03E21C 8003D61C 0C007134 */  jal   func_8001C4D0
 /* 03E220 8003D620 AFA00014 */   sw    $zero, 0x14($sp)
 /* 03E224 8003D624 3C02800F */  lui   $v0, %hi(gPlayers+0xDD8) # $v0, 0x800f

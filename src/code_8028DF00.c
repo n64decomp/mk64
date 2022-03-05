@@ -115,7 +115,7 @@ extern void func_80005AE8();
 
 extern u16 D_8015F894;
 
-//u32 testbss[0x200];
+
 
 u16 D_802BA030;
 u16 D_802BA032;

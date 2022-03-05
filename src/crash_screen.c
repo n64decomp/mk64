@@ -47,6 +47,7 @@ extern void read_controllers();
 
 extern struct Controller *gControllerOne;
 
+//s32 shift = 0;
 
 u32 D_800DC670 = 0;
 
