@@ -214,18 +214,15 @@ SECTIONS
       BUILD_DIR/src/os/_Litob.o(.text);
       BUILD_DIR/src/os/_Ldtob.o(.text);
       BUILD_DIR/src/os/ldiv.o(.text);
-
       BUILD_DIR/data/rsp.o(.text);
       BUILD_DIR/src/main.o(.data);
       BUILD_DIR/data/data_0DD0A0.o(.data);
       BUILD_DIR/src/code_800029B0.o(.data);
-
       BUILD_DIR/data/data_0DD0A0_0.o(.data);
       BUILD_DIR/src/crash_screen.o(.data);
       BUILD_DIR/src/staff_ghosts.o(.data);
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
       BUILD_DIR/src/code_8001C4D0.o(.data);
-      BUILD_DIR/src/code_8001F980.o(.data);
       BUILD_DIR/data/data_0DD0A0_1_1.o(.data);
       BUILD_DIR/src/kart_attributes.inc.o(.data);
       BUILD_DIR/data/data_0DD0A0_2.o(.rodata);
@@ -234,7 +231,6 @@ SECTIONS
       BUILD_DIR/src/os/osViTable.o(.data);
       BUILD_DIR/src/os/osCreatePiManager.o(.data);
       BUILD_DIR/src/os/osContInit.o(.data);
-
       BUILD_DIR/data/data_0DD0A0_2_1.o(.data);
       BUILD_DIR/src/os/osTimer.o(.data);
       BUILD_DIR/src/os/__osViInit.o(.data);
@@ -243,7 +239,6 @@ SECTIONS
       BUILD_DIR/src/os/_Printf.o(.data);
       BUILD_DIR/src/os/osViData.o(.data);
       BUILD_DIR/src/os/_Litob.o(.data);
-      BUILD_DIR/data/rodata_main.o(.rodata);
       BUILD_DIR/src/main.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
@@ -294,15 +289,7 @@ SECTIONS
       BUILD_DIR/asm/bss_after_diskinit.o(.bss);
    }
    END_NOLOAD(main)
-	
-   _mainSegmentNoloadSize = SIZEOF(.main.noload) + 0x10;
    
-   _mainSegmentNoloadSizeHi = _mainSegmentNoloadSize >> 16;
-   _mainSegmentNoloadSizeLo = _mainSegmentNoloadSize & 0xFFFF;
-
-
-   
-
    /* 0x8028DF00 0F7510-123640 [2C130] */
    BEGIN_SEG(code_8028DF00, SEG_8028DF00)
    {
@@ -339,10 +326,6 @@ SECTIONS
 	   
 	   _code_8028DF00SegmentNoloadSizeHi = _code_8028DF00SegmentNoloadSize >> 16;
 	   _code_8028DF00SegmentNoloadSizeLo = _code_8028DF00SegmentNoloadSize & 0xFFFF;
-
-
-
-
 
    /* 0x80280000 123640-12AAE0 [74A0] */
    BEGIN_SEG(code_80280000, SEG_80280000)
