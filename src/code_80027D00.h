@@ -13,9 +13,12 @@ void func_80029158();
 void func_800291E8();
 void func_800291F0();
 void func_800291F8();
+void func_8002C11C(Player*);
 void func_8002AAC0(Player*);
+void func_8002E4C4(Player*);
 void func_80030FC8(Player*);
 void func_80032D94(Player*);
+void func_80033850(Player*, f32);
 
 /* This is where I'd put my static data, if I had any */
 
