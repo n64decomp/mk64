@@ -20,6 +20,7 @@ void func_8008E884(Player*, s8);
 void func_8008EC34(Player*, s8);
 void func_8008EEC4(Player*);
 void func_8008F0E8(Player*);
+void func_8008F104(Player*, s8);
 void func_8008F3E0(Player*);
 void func_8008F5A4(Player*, s8);
 void func_8008F86C(Player*, s8);
