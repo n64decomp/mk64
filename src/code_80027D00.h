@@ -15,6 +15,7 @@ void func_800291F0();
 void func_800291F8();
 void func_8002AAC0(Player*);
 void func_80030FC8(Player*);
+void func_80032D94(Player*);
 
 /* This is where I'd put my static data, if I had any */
 
@@ -57,5 +58,26 @@ extern f64 D_800EDAD8;
 extern f64 D_800EDAE0;
 extern f64 D_800EDAE8;
 extern f64 D_800EDAF0;
+
+extern f64 D_800EDBA8;
+extern f64 D_800EDBB0;
+extern f64 D_800EDBB8;
+extern f64 D_800EDBC0;
+extern f64 D_800EDBC8;
+extern f64 D_800EDBD0;
+extern f64 D_800EDBD8;
+extern f64 D_800EDBE0;
+extern f64 D_800EDBE8;
+extern f64 D_800EDBF0;
+extern f64 D_800EDBF8;
+extern f64 D_800EDC00;
+extern f64 D_800EDC08;
+extern f64 D_800EDC10;
+extern f64 D_800EDC18;
+extern f64 D_800EDC20;
+extern f64 D_800EDC28;
+extern f64 D_800EDC30;
+extern f64 D_800EDC38;
+extern f64 D_800EDC40;
 
 #endif
