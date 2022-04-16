@@ -102,6 +102,8 @@ Gfx *func_800959F8(Gfx*, Vtx*);
 Gfx *func_80098C18(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *draw_box(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *func_80098FC8(Gfx*, s32, s32, s32, s32);
+void dma_copy_base_729a30(u64*, size_t, void*);
+void dma_copy_base_7fa3c0(u64*, size_t, void*);
 void func_80099110();
 void func_80099184(s32);
 void *segmented_to_virtual(void*);
@@ -276,5 +278,8 @@ extern f32 D_8018EDD4;
 extern f32 D_8018EDD8;
 extern f32 D_8018EDDC;
 extern s8  D_802874F5;
+
+extern u8 _textures_0aSegmentRomStart[];
+extern u8 _textures_0bSegmentRomStart[];
 
 #endif
