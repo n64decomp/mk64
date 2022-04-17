@@ -387,7 +387,7 @@ typedef struct {
     /* 0x023A */ s16 unk_23A;
     /* 0x023C */ f32 unk_23C;
     /* 0x0240 */ s32 unk_240;
-    /* 0x0244 */ u16 unk_244[4];
+    /* 0x0244 */ u16 unk_244[4]; // [0] Active texture group
     /* 0x0244 */ u16 unk_24C[4];
     /* 0x0254 */ u16 characterId;
     /* 0x0256 */ s16 unk_256;

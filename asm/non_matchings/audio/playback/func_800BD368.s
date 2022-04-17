@@ -10,8 +10,8 @@ glabel func_800BD368
 /* 0BDF88 800BD388 AFB00018 */  sw    $s0, 0x18($sp)
 /* 0BDF8C 800BD38C 0C02F4C6 */  jal   func_800BD318
 /* 0BDF90 800BD390 02602025 */   move  $a0, $s3
-/* 0BDF94 800BD394 3C14803B */  lui   $s4, %hi(D_803B70B0) # $s4, 0x803b
-/* 0BDF98 800BD398 269470B0 */  addiu $s4, %lo(D_803B70B0) # addiu $s4, $s4, 0x70b0
+/* 0BDF94 800BD394 3C14803B */  lui   $s4, %hi(gMaxSimultaneousNotes) # $s4, 0x803b
+/* 0BDF98 800BD398 269470B0 */  addiu $s4, %lo(gMaxSimultaneousNotes) # addiu $s4, $s4, 0x70b0
 /* 0BDF9C 800BD39C 8E8E0000 */  lw    $t6, ($s4)
 /* 0BDFA0 800BD3A0 00008825 */  move  $s1, $zero
 /* 0BDFA4 800BD3A4 00008025 */  move  $s0, $zero

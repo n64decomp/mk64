@@ -34,7 +34,7 @@ glabel func_800BBA50
 /* 0BC6CC 800BBACC 8FA4003C */   lw    $a0, 0x3c($sp)
 /* 0BC6D0 800BBAD0 8FA4003C */  lw    $a0, 0x3c($sp)
 /* 0BC6D4 800BBAD4 02402825 */  move  $a1, $s2
-/* 0BC6D8 800BBAD8 0C02EAA0 */  jal   func_800BAA80
+/* 0BC6D8 800BBAD8 0C02EAA0 */  jal   audio_dma_copy_immediate
 /* 0BC6DC 800BBADC 02003025 */   move  $a2, $s0
 /* 0BC6E0 800BBAE0 8FA90048 */  lw    $t1, 0x48($sp)
 /* 0BC6E4 800BBAE4 3C0A803B */  lui   $t2, %hi(D_803B0400) # $t2, 0x803b
@@ -49,7 +49,7 @@ glabel func_800BBA50
 /* 0BC708 800BBB08 A04C0000 */   sb    $t4, ($v0)
 .L800BBB0C:
 /* 0BC70C 800BBB0C 02402825 */  move  $a1, $s2
-/* 0BC710 800BBB10 0C02EAA0 */  jal   func_800BAA80
+/* 0BC710 800BBB10 0C02EAA0 */  jal   audio_dma_copy_immediate
 /* 0BC714 800BBB14 24060040 */   li    $a2, 64
 /* 0BC718 800BBB18 262700D4 */  addiu $a3, $s1, 0xd4
 /* 0BC71C 800BBB1C 00E02025 */  move  $a0, $a3

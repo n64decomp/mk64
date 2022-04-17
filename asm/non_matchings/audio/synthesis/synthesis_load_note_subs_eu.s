@@ -1,15 +1,15 @@
 glabel synthesis_load_note_subs_eu
-/* 0B7BB4 800B6FB4 3C06803B */  lui   $a2, %hi(D_803B7088) # $a2, 0x803b
-/* 0B7BB8 800B6FB8 24C67088 */  addiu $a2, %lo(D_803B7088) # addiu $a2, $a2, 0x7088
+/* 0B7BB4 800B6FB4 3C06803B */  lui   $a2, %hi(gAudioBufferParameters) # $a2, 0x803b
+/* 0B7BB8 800B6FB8 24C67088 */  addiu $a2, %lo(gAudioBufferParameters) # addiu $a2, $a2, 0x7088
 /* 0B7BBC 800B6FBC 84CE000C */  lh    $t6, 0xc($a2)
 /* 0B7BC0 800B6FC0 24820001 */  addiu $v0, $a0, 1
 /* 0B7BC4 800B6FC4 00051900 */  sll   $v1, $a1, 4
 /* 0B7BC8 800B6FC8 004E082A */  slt   $at, $v0, $t6
 /* 0B7BCC 800B6FCC 10200017 */  beqz  $at, .L800B702C
-/* 0B7BD0 800B6FD0 3C07803B */   lui   $a3, %hi(D_803B70B0) # $a3, 0x803b
+/* 0B7BD0 800B6FD0 3C07803B */   lui   $a3, %hi(gMaxSimultaneousNotes) # $a3, 0x803b
 /* 0B7BD4 800B6FD4 3C05803B */  lui   $a1, %hi(gNoteSubsEu) # $a1, 0x803b
 /* 0B7BD8 800B6FD8 24A5FBC4 */  addiu $a1, %lo(gNoteSubsEu) # addiu $a1, $a1, -0x43c
-/* 0B7BDC 800B6FDC 24E770B0 */  addiu $a3, %lo(D_803B70B0) # addiu $a3, $a3, 0x70b0
+/* 0B7BDC 800B6FDC 24E770B0 */  addiu $a3, %lo(gMaxSimultaneousNotes) # addiu $a3, $a3, 0x70b0
 /* 0B7BE0 800B6FE0 8CF80000 */  lw    $t8, ($a3)
 .L800B6FE4:
 /* 0B7BE4 800B6FE4 8CAF0000 */  lw    $t7, ($a1)

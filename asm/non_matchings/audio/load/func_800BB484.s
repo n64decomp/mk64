@@ -28,13 +28,13 @@ glabel func_800BB484
 /* 0BC0E8 800BB4E8 54810022 */  bnel  $a0, $at, .L800BB574
 /* 0BC0EC 800BB4EC 8FBF001C */   lw    $ra, 0x1c($sp)
 /* 0BC0F0 800BB4F0 8C690004 */  lw    $t1, 4($v1)
-/* 0BC0F4 800BB4F4 3C04803B */  lui   $a0, %hi(D_803AFBE8) # $a0, 0x803b
+/* 0BC0F4 800BB4F4 3C04803B */  lui   $a0, %hi(gNotesAndBuffersPool) # $a0, 0x803b
 /* 0BC0F8 800BB4F8 8C650010 */  lw    $a1, 0x10($v1)
 /* 0BC0FC 800BB4FC 01263821 */  addu  $a3, $t1, $a2
 /* 0BC100 800BB500 AFA70028 */  sw    $a3, 0x28($sp)
 /* 0BC104 800BB504 AFA3002C */  sw    $v1, 0x2c($sp)
-/* 0BC108 800BB508 0C02E3FF */  jal   func_800B8FFC
-/* 0BC10C 800BB50C 2484FBE8 */   addiu $a0, %lo(D_803AFBE8) # addiu $a0, $a0, -0x418
+/* 0BC108 800BB508 0C02E3FF */  jal   soundAlloc
+/* 0BC10C 800BB50C 2484FBE8 */   addiu $a0, %lo(gNotesAndBuffersPool) # addiu $a0, $a0, -0x418
 /* 0BC110 800BB510 8FA3002C */  lw    $v1, 0x2c($sp)
 /* 0BC114 800BB514 8FA70028 */  lw    $a3, 0x28($sp)
 /* 0BC118 800BB518 14400005 */  bnez  $v0, .L800BB530
@@ -47,7 +47,7 @@ glabel func_800BB484
 /* 0BC130 800BB530 8C660010 */  lw    $a2, 0x10($v1)
 /* 0BC134 800BB534 AFA50024 */  sw    $a1, 0x24($sp)
 /* 0BC138 800BB538 AFA3002C */  sw    $v1, 0x2c($sp)
-/* 0BC13C 800BB53C 0C02EAA0 */  jal   func_800BAA80
+/* 0BC13C 800BB53C 0C02EAA0 */  jal   audio_dma_copy_immediate
 /* 0BC140 800BB540 00E02025 */   move  $a0, $a3
 /* 0BC144 800BB544 8FA3002C */  lw    $v1, 0x2c($sp)
 /* 0BC148 800BB548 8FA50024 */  lw    $a1, 0x24($sp)

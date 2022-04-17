@@ -99,13 +99,13 @@ glabel D_803B5FE8
 glabel D_803B5FF8
 .skip 16
 
-glabel D_803B6008
+glabel gCurrAudioFrameDmaQueue
 .skip 24
 
-glabel D_803B6020
+glabel gCurrAudioFrameDmaMesgBufs
 .skip 256
 
-glabel D_803B6120
+glabel gCurrAudioFrameDmaIoMesgBufs
 .skip 1536
 
 glabel D_803B6720
@@ -117,34 +117,34 @@ glabel D_803B6738
 glabel D_803B6740
 .skip 24
 
-glabel D_803B6758
+glabel sSampleDmas
 .skip 1792
 
-glabel D_803B6E58
+glabel gSampleDmaNumListItems
 .skip 4
 
-glabel D_803B6E5C
+glabel sSampleDmaListSize1
 .skip 4
 
 glabel D_803B6E60
 .skip 8
 
-glabel D_803B6E68
+glabel sSampleDmaReuseQueue1
 .skip 256
 
-glabel D_803B6F68
+glabel sSampleDmaReuseQueue2
 .skip 256
 
-glabel D_803B7068
+glabel sSampleDmaReuseQueueTail1
 .skip 1
 
-glabel D_803B7069
+glabel sSampleDmaReuseQueueTail2
 .skip 1
 
-glabel D_803B706A
+glabel sSampleDmaReuseQueueHead1
 .skip 1
 
-glabel D_803B706B
+glabel sSampleDmaReuseQueueHead2
 .skip 1
 
 glabel D_803B706C
@@ -165,7 +165,7 @@ glabel D_803B707C
 glabel D_803B7080
 .skip 8
 
-glabel D_803B7088
+glabel gAudioBufferParameters
 .skip 24
 
 glabel D_803B70A0
@@ -180,7 +180,7 @@ glabel D_803B70A8
 glabel D_803B70AC
 .skip 4
 
-glabel D_803B70B0
+glabel gMaxSimultaneousNotes
 .skip 4
 
 glabel D_803B70B4
@@ -192,7 +192,7 @@ glabel D_803B70B6
 glabel D_803B70B8
 .skip 4
 
-glabel D_803B70BC
+glabel gCurrAudioFrameDmaCount
 .skip 4
 
 glabel D_803B70C0

@@ -14,10 +14,10 @@ extern OSMesgQueue *D_800EA3B4;
 extern s32 D_800EA484;
 extern u8 D_803B0500;
 extern u8 D_803B0501;
-extern OSMesgQueue D_803B6008;
-extern ? D_803B7088;
+extern OSMesgQueue gCurrAudioFrameDmaQueue;
+extern ? gAudioBufferParameters;
 extern s32 D_803B70B8;
-extern s32 D_803B70BC;
+extern s32 gCurrAudioFrameDmaCount;
 extern s32 D_803B70C0;
 extern s32 D_803B70C4;
 extern ? D_803B70C8;
@@ -64,7 +64,7 @@ void *create_next_audio_frame_task(void) {
     s32 phi_s1_3;
 
     D_803B70B8 = D_803B70B8 + 1;
-    if ((D_803B70B8 % D_803B7088.unk0) != 0) {
+    if ((D_803B70B8 % gAudioBufferParameters.unk0) != 0) {
         return NULL;
     }
     osSendMesg(D_800EA3A8, D_803B70B8, 0);
@@ -79,7 +79,7 @@ void *create_next_audio_frame_task(void) {
     if (temp_v1 != 0) {
         osAiSetNextBuffer(*(&D_803B7180 + (temp_hi * 4)), temp_v1 * 4);
     }
-    temp_s1 = D_803B70BC;
+    temp_s1 = gCurrAudioFrameDmaCount;
     phi_s0 = 0;
     phi_s1 = temp_s1;
     phi_s0_2 = 0;
@@ -88,31 +88,31 @@ void *create_next_audio_frame_task(void) {
     if (temp_s1 > 0) {
         do {
             phi_s1_2 = phi_s1_3;
-            if (osRecvMesg(&D_803B6008, NULL, 0) == 0) {
+            if (osRecvMesg(&gCurrAudioFrameDmaQueue, NULL, 0) == 0) {
                 phi_s1_2 = phi_s1_3 - 1;
             }
             temp_s0 = phi_s0 + 1;
             phi_s0 = temp_s0;
             phi_s1 = phi_s1_2;
             phi_s1_3 = phi_s1_2;
-        } while (temp_s0 < D_803B70BC);
+        } while (temp_s0 < gCurrAudioFrameDmaCount);
     }
     if ((phi_s1 != 0) && (phi_s1 > 0)) {
         do {
-            osRecvMesg(&D_803B6008, NULL, 1);
+            osRecvMesg(&gCurrAudioFrameDmaQueue, NULL, 1);
             temp_s0_2 = phi_s0_2 + 1;
             phi_s0_2 = temp_s0_2;
         } while (temp_s0_2 != phi_s1);
     }
-    temp_s1_2 = D_803B6008.validCount;
+    temp_s1_2 = gCurrAudioFrameDmaQueue.validCount;
     if ((temp_s1_2 != 0) && (temp_s1_2 > 0)) {
         do {
-            osRecvMesg(&D_803B6008, NULL, 0);
+            osRecvMesg(&gCurrAudioFrameDmaQueue, NULL, 0);
             temp_s0_3 = phi_s0_3 + 1;
             phi_s0_3 = temp_s0_3;
         } while (temp_s0_3 != temp_s1_2);
     }
-    D_803B70BC = 0;
+    gCurrAudioFrameDmaCount = 0;
     func_800BAC04();
     if (osRecvMesg(D_800EA3B0, &sp58, 0) != -1) {
         D_803B0501 = sp58;
@@ -131,12 +131,12 @@ void *create_next_audio_frame_task(void) {
     D_803B70D0 = *(&D_803B70C8 + (temp_v0 * 4));
     sp60 = *temp_a3;
     temp_s1_3 = (temp_s0_4 * 2) + &D_803B718C;
-    *temp_s1_3 = (((D_803B7088.unk6 - sp74) + 0x40) & 0xFFF0) + 0x10;
-    temp_a0 = D_803B7088.unkA;
+    *temp_s1_3 = (((gAudioBufferParameters.unk6 - sp74) + 0x40) & 0xFFF0) + 0x10;
+    temp_a0 = gAudioBufferParameters.unkA;
     if (*temp_s1_3 < temp_a0) {
         *temp_s1_3 = temp_a0;
     }
-    temp_v0_2 = D_803B7088.unk8;
+    temp_v0_2 = gAudioBufferParameters.unk8;
     if (temp_v0_2 < *temp_s1_3) {
         *temp_s1_3 = temp_v0_2;
     }
