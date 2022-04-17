@@ -61,8 +61,8 @@ glabel L800BE638
 /* 0BF2A4 800BE6A4 A08E0001 */   sb    $t6, 1($a0)
 .L800BE6A8:
 /* 0BF2A8 800BE6A8 14200019 */  bnez  $at, .L800BE710
-/* 0BF2AC 800BE6AC 3C03803B */   lui   $v1, %hi(D_803B7088) # $v1, 0x803b
-/* 0BF2B0 800BE6B0 24637088 */  addiu $v1, %lo(D_803B7088) # addiu $v1, $v1, 0x7088
+/* 0BF2AC 800BE6AC 3C03803B */   lui   $v1, %hi(gAudioBufferParameters) # $v1, 0x803b
+/* 0BF2B0 800BE6B0 24637088 */  addiu $v1, %lo(gAudioBufferParameters) # addiu $v1, $v1, 0x7088
 /* 0BF2B4 800BE6B4 846F000C */  lh    $t7, 0xc($v1)
 /* 0BF2B8 800BE6B8 84790000 */  lh    $t9, ($v1)
 /* 0BF2BC 800BE6BC 00CF0019 */  multu $a2, $t7

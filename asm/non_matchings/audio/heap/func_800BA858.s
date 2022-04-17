@@ -81,7 +81,7 @@ glabel func_800BA858
 .L800BA968:
 /* 0BB568 800BA968 AFA50034 */  sw    $a1, 0x34($sp)
 /* 0BB56C 800BA96C AFA60038 */  sw    $a2, 0x38($sp)
-/* 0BB570 800BA970 0C02E3FF */  jal   func_800B8FFC
+/* 0BB570 800BA970 0C02E3FF */  jal   soundAlloc
 /* 0BB574 800BA974 AFA70030 */   sw    $a3, 0x30($sp)
 /* 0BB578 800BA978 8FA60038 */  lw    $a2, 0x38($sp)
 /* 0BB57C 800BA97C 3C0D803B */  lui   $t5, %hi(D_803B01B8) # $t5, 0x803b
@@ -96,7 +96,7 @@ glabel func_800BA858
 /* 0BB5A0 800BA9A0 00E02025 */  move  $a0, $a3
 /* 0BB5A4 800BA9A4 00402825 */  move  $a1, $v0
 /* 0BB5A8 800BA9A8 8FA60034 */  lw    $a2, 0x34($sp)
-/* 0BB5AC 800BA9AC 0C02EAA0 */  jal   func_800BAA80
+/* 0BB5AC 800BA9AC 0C02EAA0 */  jal   audio_dma_copy_immediate
 /* 0BB5B0 800BA9B0 AFA30020 */   sw    $v1, 0x20($sp)
 /* 0BB5B4 800BA9B4 8FA30020 */  lw    $v1, 0x20($sp)
 /* 0BB5B8 800BA9B8 8FAE0034 */  lw    $t6, 0x34($sp)

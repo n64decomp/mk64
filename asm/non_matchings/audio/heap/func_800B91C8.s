@@ -7,7 +7,7 @@ glabel func_800B91C8
 /* 0B9DDC 800B91DC 8FAF0018 */  lw    $t7, 0x18($sp)
 /* 0B9DE0 800B91E0 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 0B9DE4 800B91E4 AC8E0004 */  sw    $t6, 4($a0)
-/* 0B9DE8 800B91E8 0C02E3FF */  jal   func_800B8FFC
+/* 0B9DE8 800B91E8 0C02E3FF */  jal   soundAlloc
 /* 0B9DEC 800B91EC 8DE50000 */   lw    $a1, ($t7)
 /* 0B9DF0 800B91F0 8FB80018 */  lw    $t8, 0x18($sp)
 /* 0B9DF4 800B91F4 3C04803B */  lui   $a0, %hi(D_803AFC28) # $a0, 0x803b
@@ -18,7 +18,7 @@ glabel func_800B91C8
 /* 0B9E08 800B9208 8FB90018 */  lw    $t9, 0x18($sp)
 /* 0B9E0C 800B920C 3C04803B */  lui   $a0, %hi(D_803AFC18) # $a0, 0x803b
 /* 0B9E10 800B9210 2484FC18 */  addiu $a0, %lo(D_803AFC18) # addiu $a0, $a0, -0x3e8
-/* 0B9E14 800B9214 0C02E3FF */  jal   func_800B8FFC
+/* 0B9E14 800B9214 0C02E3FF */  jal   soundAlloc
 /* 0B9E18 800B9218 8F250004 */   lw    $a1, 4($t9)
 /* 0B9E1C 800B921C 8FA80018 */  lw    $t0, 0x18($sp)
 /* 0B9E20 800B9220 3C04803B */  lui   $a0, %hi(D_803AFC38) # $a0, 0x803b

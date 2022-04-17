@@ -28,7 +28,7 @@ glabel func_800BB99C
 /* 0BC604 800BBA04 00001025 */   move  $v0, $zero
 .L800BBA08:
 /* 0BC608 800BBA08 8FA40024 */  lw    $a0, 0x24($sp)
-/* 0BC60C 800BBA0C 0C02EAA0 */  jal   func_800BAA80
+/* 0BC60C 800BBA0C 0C02EAA0 */  jal   audio_dma_copy_immediate
 /* 0BC610 800BBA10 AFA50028 */   sw    $a1, 0x28($sp)
 /* 0BC614 800BBA14 8FA90030 */  lw    $t1, 0x30($sp)
 /* 0BC618 800BBA18 3C0A803B */  lui   $t2, %hi(D_803B0400) # $t2, 0x803b

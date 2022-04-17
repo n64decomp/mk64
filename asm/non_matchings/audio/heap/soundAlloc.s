@@ -1,4 +1,4 @@
-glabel func_800B8FFC
+glabel soundAlloc
 /* 0B9BFC 800B8FFC 8C860004 */  lw    $a2, 4($a0)
 /* 0B9C00 800B9000 8C8F0000 */  lw    $t7, ($a0)
 /* 0B9C04 800B9004 8C980008 */  lw    $t8, 8($a0)

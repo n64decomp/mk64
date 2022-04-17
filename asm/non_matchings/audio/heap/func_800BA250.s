@@ -8,7 +8,7 @@ glabel func_800BA250
 /* 0BAE68 800BA268 01EE7821 */  addu  $t7, $t7, $t6
 /* 0BAE6C 800BA26C 000F78C0 */  sll   $t7, $t7, 3
 /* 0BAE70 800BA270 2718A4D8 */  addiu $t8, %lo(D_800EA4D8) # addiu $t8, $t8, -0x5b28
-/* 0BAE74 800BA274 3C01803B */  lui   $at, %hi(D_803B6E58) # $at, 0x803b
+/* 0BAE74 800BA274 3C01803B */  lui   $at, %hi(gSampleDmaNumListItems) # $at, 0x803b
 /* 0BAE78 800BA278 AFBF003C */  sw    $ra, 0x3c($sp)
 /* 0BAE7C 800BA27C AFBE0038 */  sw    $fp, 0x38($sp)
 /* 0BAE80 800BA280 AFB70034 */  sw    $s7, 0x34($sp)
@@ -19,10 +19,10 @@ glabel func_800BA250
 /* 0BAE94 800BA294 AFB1001C */  sw    $s1, 0x1c($sp)
 /* 0BAE98 800BA298 AFB00018 */  sw    $s0, 0x18($sp)
 /* 0BAE9C 800BA29C 01F8B021 */  addu  $s6, $t7, $t8
-/* 0BAEA0 800BA2A0 AC206E58 */  sw    $zero, %lo(D_803B6E58)($at)
+/* 0BAEA0 800BA2A0 AC206E58 */  sw    $zero, %lo(gSampleDmaNumListItems)($at)
 /* 0BAEA4 800BA2A4 8ED90000 */  lw    $t9, ($s6)
-/* 0BAEA8 800BA2A8 3C14803B */  lui   $s4, %hi(D_803B7088) # $s4, 0x803b
-/* 0BAEAC 800BA2AC 26947088 */  addiu $s4, %lo(D_803B7088) # addiu $s4, $s4, 0x7088
+/* 0BAEA8 800BA2A8 3C14803B */  lui   $s4, %hi(gAudioBufferParameters) # $s4, 0x803b
+/* 0BAEAC 800BA2AC 26947088 */  addiu $s4, %lo(gAudioBufferParameters) # addiu $s4, $s4, 0x7088
 /* 0BAEB0 800BA2B0 A6990002 */  sh    $t9, 2($s4)
 /* 0BAEB4 800BA2B4 0C0343E0 */  jal   osAiSetFrequency
 /* 0BAEB8 800BA2B8 3324FFFF */   andi  $a0, $t9, 0xffff
@@ -30,8 +30,8 @@ glabel func_800BA250
 /* 0BAEC0 800BA2C0 3C0D803B */  lui   $t5, %hi(D_803B717C) # $t5, 0x803b
 /* 0BAEC4 800BA2C4 8DAD717C */  lw    $t5, %lo(D_803B717C)($t5)
 /* 0BAEC8 800BA2C8 96870002 */  lhu   $a3, 2($s4)
-/* 0BAECC 800BA2CC 3C0C803B */  lui   $t4, %hi(D_803B70B0) # $t4, 0x803b
-/* 0BAED0 800BA2D0 258C70B0 */  addiu $t4, %lo(D_803B70B0) # addiu $t4, $t4, 0x70b0
+/* 0BAECC 800BA2CC 3C0C803B */  lui   $t4, %hi(gMaxSimultaneousNotes) # $t4, 0x803b
+/* 0BAED0 800BA2D0 258C70B0 */  addiu $t4, %lo(gMaxSimultaneousNotes) # addiu $t4, $t4, 0x70b0
 /* 0BAED4 800BA2D4 00ED001A */  div   $zero, $a3, $t5
 /* 0BAED8 800BA2D8 00007012 */  mflo  $t6
 /* 0BAEDC 800BA2DC 25CF000F */  addiu $t7, $t6, 0xf
@@ -227,28 +227,28 @@ glabel func_800BA250
 /* 0BB1B8 800BA5B8 AC8D0008 */   sw    $t5, 8($a0)
 /* 0BB1BC 800BA5BC 0C02E378 */  jal   func_800B8DE0
 /* 0BB1C0 800BA5C0 00000000 */   nop   
-/* 0BB1C4 800BA5C4 3C05803B */  lui   $a1, %hi(D_803B70B0) # $a1, 0x803b
-/* 0BB1C8 800BA5C8 8CA570B0 */  lw    $a1, %lo(D_803B70B0)($a1)
-/* 0BB1CC 800BA5CC 3C13803B */  lui   $s3, %hi(D_803AFBE8) # $s3, 0x803b
-/* 0BB1D0 800BA5D0 2673FBE8 */  addiu $s3, %lo(D_803AFBE8) # addiu $s3, $s3, -0x418
+/* 0BB1C4 800BA5C4 3C05803B */  lui   $a1, %hi(gMaxSimultaneousNotes) # $a1, 0x803b
+/* 0BB1C8 800BA5C8 8CA570B0 */  lw    $a1, %lo(gMaxSimultaneousNotes)($a1)
+/* 0BB1CC 800BA5CC 3C13803B */  lui   $s3, %hi(gNotesAndBuffersPool) # $s3, 0x803b
+/* 0BB1D0 800BA5D0 2673FBE8 */  addiu $s3, %lo(gNotesAndBuffersPool) # addiu $s3, $s3, -0x418
 /* 0BB1D4 800BA5D4 00057880 */  sll   $t7, $a1, 2
 /* 0BB1D8 800BA5D8 01E57823 */  subu  $t7, $t7, $a1
 /* 0BB1DC 800BA5DC 000F2980 */  sll   $a1, $t7, 6
-/* 0BB1E0 800BA5E0 0C02E3FF */  jal   func_800B8FFC
+/* 0BB1E0 800BA5E0 0C02E3FF */  jal   soundAlloc
 /* 0BB1E4 800BA5E4 02602025 */   move  $a0, $s3
 /* 0BB1E8 800BA5E8 3C01803B */  lui   $at, %hi(D_803B1508) # $at, 0x803b
 /* 0BB1EC 800BA5EC 0C02F74D */  jal   func_800BDD34
 /* 0BB1F0 800BA5F0 AC221508 */   sw    $v0, %lo(D_803B1508)($at)
 /* 0BB1F4 800BA5F4 0C02F4DA */  jal   func_800BD368
 /* 0BB1F8 800BA5F8 00000000 */   nop   
-/* 0BB1FC 800BA5FC 3C18803B */  lui   $t8, %hi(D_803B70B0) # $t8, 0x803b
-/* 0BB200 800BA600 8F1870B0 */  lw    $t8, %lo(D_803B70B0)($t8)
+/* 0BB1FC 800BA5FC 3C18803B */  lui   $t8, %hi(gMaxSimultaneousNotes) # $t8, 0x803b
+/* 0BB200 800BA600 8F1870B0 */  lw    $t8, %lo(gMaxSimultaneousNotes)($t8)
 /* 0BB204 800BA604 868E000C */  lh    $t6, 0xc($s4)
 /* 0BB208 800BA608 02602025 */  move  $a0, $s3
 /* 0BB20C 800BA60C 01D80019 */  multu $t6, $t8
 /* 0BB210 800BA610 00002812 */  mflo  $a1
 /* 0BB214 800BA614 0005C900 */  sll   $t9, $a1, 4
-/* 0BB218 800BA618 0C02E3FF */  jal   func_800B8FFC
+/* 0BB218 800BA618 0C02E3FF */  jal   soundAlloc
 /* 0BB21C 800BA61C 03202825 */   move  $a1, $t9
 /* 0BB220 800BA620 3C01803B */  lui   $at, %hi(gNoteSubsEu) # $at, 0x803b
 /* 0BB224 800BA624 3C10803B */  lui   $s0, %hi(D_803B70C8) # $s0, 0x803b
@@ -260,7 +260,7 @@ glabel func_800BA250
 /* 0BB238 800BA638 8E450000 */  lw    $a1, ($s2)
 /* 0BB23C 800BA63C 02602025 */  move  $a0, $s3
 /* 0BB240 800BA640 000568C0 */  sll   $t5, $a1, 3
-/* 0BB244 800BA644 0C02E3FF */  jal   func_800B8FFC
+/* 0BB244 800BA644 0C02E3FF */  jal   soundAlloc
 /* 0BB248 800BA648 01A02825 */   move  $a1, $t5
 /* 0BB24C 800BA64C 26100004 */  addiu $s0, $s0, 4
 /* 0BB250 800BA650 1611FFF9 */  bne   $s0, $s1, .L800BA638
@@ -299,13 +299,13 @@ glabel func_800BA250
 /* 0BB2CC 800BA6CC 94580002 */  lhu   $t8, 2($v0)
 /* 0BB2D0 800BA6D0 A25E0001 */  sb    $fp, 1($s2)
 /* 0BB2D4 800BA6D4 03202825 */  move  $a1, $t9
-/* 0BB2D8 800BA6D8 0C02E3FF */  jal   func_800B8FFC
+/* 0BB2D8 800BA6D8 0C02E3FF */  jal   soundAlloc
 /* 0BB2DC 800BA6DC A6580008 */   sh    $t8, 8($s2)
 /* 0BB2E0 800BA6E0 96450006 */  lhu   $a1, 6($s2)
 /* 0BB2E4 800BA6E4 AE420018 */  sw    $v0, 0x18($s2)
 /* 0BB2E8 800BA6E8 02602025 */  move  $a0, $s3
 /* 0BB2EC 800BA6EC 00056840 */  sll   $t5, $a1, 1
-/* 0BB2F0 800BA6F0 0C02E3FF */  jal   func_800B8FFC
+/* 0BB2F0 800BA6F0 0C02E3FF */  jal   soundAlloc
 /* 0BB2F4 800BA6F4 01A02825 */   move  $a1, $t5
 /* 0BB2F8 800BA6F8 92430004 */  lbu   $v1, 4($s2)
 /* 0BB2FC 800BA6FC 964F0006 */  lhu   $t7, 6($s2)
@@ -337,19 +337,19 @@ glabel func_800BA250
 /* 0BB35C 800BA75C A64D000A */  sh    $t5, 0xa($s2)
 /* 0BB360 800BA760 02602025 */  move  $a0, $s3
 /* 0BB364 800BA764 24050020 */  li    $a1, 32
-/* 0BB368 800BA768 0C02E3FF */  jal   func_800B8FFC
+/* 0BB368 800BA768 0C02E3FF */  jal   soundAlloc
 /* 0BB36C 800BA76C 00008825 */   move  $s1, $zero
 /* 0BB370 800BA770 AE420020 */  sw    $v0, 0x20($s2)
 /* 0BB374 800BA774 02602025 */  move  $a0, $s3
-/* 0BB378 800BA778 0C02E3FF */  jal   func_800B8FFC
+/* 0BB378 800BA778 0C02E3FF */  jal   soundAlloc
 /* 0BB37C 800BA77C 24050020 */   li    $a1, 32
 /* 0BB380 800BA780 AE420024 */  sw    $v0, 0x24($s2)
 /* 0BB384 800BA784 02602025 */  move  $a0, $s3
-/* 0BB388 800BA788 0C02E3FF */  jal   func_800B8FFC
+/* 0BB388 800BA788 0C02E3FF */  jal   soundAlloc
 /* 0BB38C 800BA78C 24050020 */   li    $a1, 32
 /* 0BB390 800BA790 AE420028 */  sw    $v0, 0x28($s2)
 /* 0BB394 800BA794 02602025 */  move  $a0, $s3
-/* 0BB398 800BA798 0C02E3FF */  jal   func_800B8FFC
+/* 0BB398 800BA798 0C02E3FF */  jal   soundAlloc
 /* 0BB39C 800BA79C 24050020 */   li    $a1, 32
 /* 0BB3A0 800BA7A0 868F000C */  lh    $t7, 0xc($s4)
 /* 0BB3A4 800BA7A4 AE42002C */  sw    $v0, 0x2c($s2)
@@ -358,13 +358,13 @@ glabel func_800BA250
 /* 0BB3B0 800BA7B0 02408025 */  move  $s0, $s2
 /* 0BB3B4 800BA7B4 02602025 */  move  $a0, $s3
 .L800BA7B8:
-/* 0BB3B8 800BA7B8 0C02E3FF */  jal   func_800B8FFC
+/* 0BB3B8 800BA7B8 0C02E3FF */  jal   soundAlloc
 /* 0BB3BC 800BA7BC 24050300 */   li    $a1, 768
 /* 0BB3C0 800BA7C0 244E0180 */  addiu $t6, $v0, 0x180
 /* 0BB3C4 800BA7C4 AE020034 */  sw    $v0, 0x34($s0)
 /* 0BB3C8 800BA7C8 AE0E0038 */  sw    $t6, 0x38($s0)
 /* 0BB3CC 800BA7CC 02602025 */  move  $a0, $s3
-/* 0BB3D0 800BA7D0 0C02E3FF */  jal   func_800B8FFC
+/* 0BB3D0 800BA7D0 0C02E3FF */  jal   soundAlloc
 /* 0BB3D4 800BA7D4 24050300 */   li    $a1, 768
 /* 0BB3D8 800BA7D8 24580180 */  addiu $t8, $v0, 0x180
 /* 0BB3DC 800BA7DC AE020098 */  sw    $v0, 0x98($s0)
@@ -384,9 +384,9 @@ glabel func_800BA250
 /* 0BB40C 800BA80C 5420FFA5 */  bnel  $at, $zero, .L800BA6A4
 /* 0BB410 800BA810 8ED80008 */   lw    $t8, 8($s6)
 .L800BA814:
-/* 0BB414 800BA814 3C04803B */  lui   $a0, %hi(D_803B70B0) # $a0, 0x803b
+/* 0BB414 800BA814 3C04803B */  lui   $a0, %hi(gMaxSimultaneousNotes) # $a0, 0x803b
 /* 0BB418 800BA818 0C02EC0C */  jal   func_800BB030
-/* 0BB41C 800BA81C 8C8470B0 */   lw    $a0, %lo(D_803B70B0)($a0)
+/* 0BB41C 800BA81C 8C8470B0 */   lw    $a0, %lo(gMaxSimultaneousNotes)($a0)
 /* 0BB420 800BA820 0C033624 */  jal   osWritebackDCacheAll
 /* 0BB424 800BA824 00000000 */   nop   
 /* 0BB428 800BA828 8FBF003C */  lw    $ra, 0x3c($sp)

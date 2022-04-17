@@ -1,8 +1,8 @@
 glabel func_800B70EC
 /* 0B7CEC 800B70EC 27BDFFC0 */  addiu $sp, $sp, -0x40
 /* 0B7CF0 800B70F0 AFB5002C */  sw    $s5, 0x2c($sp)
-/* 0B7CF4 800B70F4 3C15803B */  lui   $s5, %hi(D_803B7088) # $s5, 0x803b
-/* 0B7CF8 800B70F8 26B57088 */  addiu $s5, %lo(D_803B7088) # addiu $s5, $s5, 0x7088
+/* 0B7CF4 800B70F4 3C15803B */  lui   $s5, %hi(gAudioBufferParameters) # $s5, 0x803b
+/* 0B7CF8 800B70F8 26B57088 */  addiu $s5, %lo(gAudioBufferParameters) # addiu $s5, $s5, 0x7088
 /* 0B7CFC 800B70FC AFB40028 */  sw    $s4, 0x28($sp)
 /* 0B7D00 800B7100 86B4000C */  lh    $s4, 0xc($s5)
 /* 0B7D04 800B7104 AFB60030 */  sw    $s6, 0x30($sp)

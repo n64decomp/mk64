@@ -29,7 +29,7 @@ glabel func_800BB780
 .L800BB7EC:
 /* 0BC3EC 800BB7EC 8FA40028 */  lw    $a0, 0x28($sp)
 /* 0BC3F0 800BB7F0 AFA5002C */  sw    $a1, 0x2c($sp)
-/* 0BC3F4 800BB7F4 0C02EAA0 */  jal   func_800BAA80
+/* 0BC3F4 800BB7F4 0C02EAA0 */  jal   audio_dma_copy_immediate
 /* 0BC3F8 800BB7F8 24840010 */   addiu $a0, $a0, 0x10
 /* 0BC3FC 800BB7FC 3C0A803B */  lui   $t2, %hi(D_803B7080) # $t2, 0x803b
 /* 0BC400 800BB800 8D4A7080 */  lw    $t2, %lo(D_803B7080)($t2)

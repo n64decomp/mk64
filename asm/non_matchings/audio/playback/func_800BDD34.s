@@ -1,8 +1,8 @@
 glabel func_800BDD34
 /* 0BE934 800BDD34 27BDFFC0 */  addiu $sp, $sp, -0x40
 /* 0BE938 800BDD38 AFB4002C */  sw    $s4, 0x2c($sp)
-/* 0BE93C 800BDD3C 3C14803B */  lui   $s4, %hi(D_803B70B0) # $s4, 0x803b
-/* 0BE940 800BDD40 269470B0 */  addiu $s4, %lo(D_803B70B0) # addiu $s4, $s4, 0x70b0
+/* 0BE93C 800BDD3C 3C14803B */  lui   $s4, %hi(gMaxSimultaneousNotes) # $s4, 0x803b
+/* 0BE940 800BDD40 269470B0 */  addiu $s4, %lo(gMaxSimultaneousNotes) # addiu $s4, $s4, 0x70b0
 /* 0BE944 800BDD44 8E8E0000 */  lw    $t6, ($s4)
 /* 0BE948 800BDD48 AFB10020 */  sw    $s1, 0x20($sp)
 /* 0BE94C 800BDD4C AFBF003C */  sw    $ra, 0x3c($sp)
@@ -15,13 +15,13 @@ glabel func_800BDD34
 /* 0BE968 800BDD68 F7B40010 */  sdc1  $f20, 0x10($sp)
 /* 0BE96C 800BDD6C 19C0002A */  blez  $t6, .L800BDE18
 /* 0BE970 800BDD70 00008825 */   move  $s1, $zero
-/* 0BE974 800BDD74 3C17803B */  lui   $s7, %hi(D_803AFBE8) # $s7, 0x803b
+/* 0BE974 800BDD74 3C17803B */  lui   $s7, %hi(gNotesAndBuffersPool) # $s7, 0x803b
 /* 0BE978 800BDD78 3C16800F */  lui   $s6, %hi(gZeroNoteSub) # $s6, 0x800f
 /* 0BE97C 800BDD7C 3C15803B */  lui   $s5, %hi(D_803B1508) # $s5, 0x803b
 /* 0BE980 800BDD80 4480A000 */  mtc1  $zero, $f20
 /* 0BE984 800BDD84 26B51508 */  addiu $s5, %lo(D_803B1508) # addiu $s5, $s5, 0x1508
 /* 0BE988 800BDD88 26D66250 */  addiu $s6, %lo(gZeroNoteSub) # addiu $s6, $s6, 0x6250
-/* 0BE98C 800BDD8C 26F7FBE8 */  addiu $s7, %lo(D_803AFBE8) # addiu $s7, $s7, -0x418
+/* 0BE98C 800BDD8C 26F7FBE8 */  addiu $s7, %lo(gNotesAndBuffersPool) # addiu $s7, $s7, -0x418
 /* 0BE990 800BDD90 00009025 */  move  $s2, $zero
 /* 0BE994 800BDD94 2413FFFF */  li    $s3, -1
 /* 0BE998 800BDD98 8EAF0000 */  lw    $t7, ($s5)
@@ -48,7 +48,7 @@ glabel func_800BDD34
 /* 0BE9E8 800BDDE8 A20000A0 */  sb    $zero, 0xa0($s0)
 /* 0BE9EC 800BDDEC E6140080 */  swc1  $f20, 0x80($s0)
 /* 0BE9F0 800BDDF0 E6140084 */  swc1  $f20, 0x84($s0)
-/* 0BE9F4 800BDDF4 0C02E3FF */  jal   func_800B8FFC
+/* 0BE9F4 800BDDF4 0C02E3FF */  jal   soundAlloc
 /* 0BE9F8 800BDDF8 AE1900BC */   sw    $t9, 0xbc($s0)
 /* 0BE9FC 800BDDFC AE02001C */  sw    $v0, 0x1c($s0)
 /* 0BEA00 800BDE00 8E880000 */  lw    $t0, ($s4)

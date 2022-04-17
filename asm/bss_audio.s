@@ -9,7 +9,7 @@ glabel D_803AFBD0
 glabel D_803AFBD8
 .skip 16
 
-glabel D_803AFBE8
+glabel gNotesAndBuffersPool
 .skip 48
 
 glabel D_803AFC18

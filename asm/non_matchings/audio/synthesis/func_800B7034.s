@@ -1,6 +1,6 @@
 glabel func_800B7034
-/* 0B7C34 800B7034 3C08803B */  lui   $t0, %hi(D_803B70B0) # $t0, 0x803b
-/* 0B7C38 800B7038 250870B0 */  addiu $t0, %lo(D_803B70B0) # addiu $t0, $t0, 0x70b0
+/* 0B7C34 800B7034 3C08803B */  lui   $t0, %hi(gMaxSimultaneousNotes) # $t0, 0x803b
+/* 0B7C38 800B7038 250870B0 */  addiu $t0, %lo(gMaxSimultaneousNotes) # addiu $t0, $t0, 0x70b0
 /* 0B7C3C 800B703C 8D030000 */  lw    $v1, ($t0)
 /* 0B7C40 800B7040 00803825 */  move  $a3, $a0
 /* 0B7C44 800B7044 00001025 */  move  $v0, $zero
