@@ -2446,43 +2446,36 @@ GLOBAL_ASM("asm/non_matchings/memory/func_802ABB04.s")
 #endif
 
 s8 func_802ABD10(u16 arg0) {
-    mk64_surface_map_ram *thing;
-    thing = &D_8015F580[arg0];
-    return thing->surfaceType;
+    mk64_surface_map_ram *tile = &D_8015F580[arg0];
+    return tile->surfaceType;
 }
 
 s16 func_802ABD40(u16 arg0) {
-    mk64_surface_map_ram *thing;
-    thing = &D_8015F580[arg0];
-    return thing->flags & 0xFF;
+    mk64_surface_map_ram *tile = &D_8015F580[arg0];
+    return tile->flags & 0xFF;
 }
 
 s16 func_802ABD7C(u16 arg0) {
-    mk64_surface_map_ram *thing;
-    thing = &D_8015F580[arg0];
-    return thing->flags & 0x1000;
+    mk64_surface_map_ram *tile = &D_8015F580[arg0];
+    return tile->flags & 0x1000;
 }
 
 s16 func_802ABDB8(u16 arg0) {
-    mk64_surface_map_ram *thing;
-    thing = &D_8015F580[arg0];
-    return thing->flags & 0x400;
+    mk64_surface_map_ram *tile = &D_8015F580[arg0];
+    return tile->flags & 0x400;
 }
 
 s16 func_802ABDF4(u16 arg0) {
-    mk64_surface_map_ram *thing;
-    thing = &D_8015F580[arg0];
-    return thing->flags & 0x800;
+    mk64_surface_map_ram *tile = &D_8015F580[arg0];
+    return tile->flags & 0x800;
 }
 
 f32 func_802ABE30(f32 arg0, f32 arg1, f32 arg2, u16 arg3) {
-    mk64_surface_map_ram *temp_v0;
-
-    temp_v0 = &D_8015F580[arg3];
-    if (temp_v0->gravity == 0.0f) {
+    mk64_surface_map_ram *tile = &D_8015F580[arg3];
+    if (tile->gravity == 0.0f) {
         return arg1;
     }
-    return ((temp_v0->height * arg0) + (temp_v0->rotation * arg2) + temp_v0->height2) / -temp_v0->gravity;
+    return ((tile->height * arg0) + (tile->rotation * arg2) + tile->height2) / -tile->gravity;
 }
 
 #ifdef MIPS_TO_C
