@@ -101,7 +101,7 @@ extern struct_D_802BFB80 D_802BFB80[][8];
 
 extern struct GfxPool *gGfxPool; // D_8014EF40
 
-extern mk64_surface_map_ram (*D_8015F580)[]; // Pointer to a list of surface_map entries
+extern mk64_surface_map_ram *D_8015F580; // This is techinally a pointer to an array, but declaring it as such create regalloc issues elsewhere
 extern u16 D_8015F588; // Number of entires in D_8015F580
 
 extern Vec3f D_80165070[];
