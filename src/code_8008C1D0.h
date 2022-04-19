@@ -80,8 +80,6 @@ void func_80056A40(s32, s32);
 void func_80056A94(s32, Player*);
 // code_80057C60
 void func_8006B8B4(Player*, s8);
-// code_80027D00.c
-s32  func_80031F48(Player*, float);
 // audio/external.c
 void func_800C90F4(u8, s32);
 void func_800C9060(u8, s32);
