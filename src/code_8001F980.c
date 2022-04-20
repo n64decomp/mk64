@@ -3,42 +3,9 @@
 #include <common_structs.h>
 #include <defines.h>
 #include "framebuffers.h"
-
-extern s32 D_800ED600, D_800ED608, D_800ED610, D_800ED618, D_800ED620, D_800ED628, D_800ED630;
-extern s32 gActiveScreenMode;
-extern s32 D_800DDB58[];
-extern s32 D_800ED638;
-extern s32 D_80164A28;
-extern u16 D_800DC51C;
-extern u16 D_8015F894;
-extern Player *gPlayerOne;
-extern Player *gPlayerTwo;
-extern Player *gPlayerThree;
-extern Player *gPlayerFour;
-extern Player *gPlayerFive;
-extern Player *gPlayerSix;
-extern Player *gPlayerSeven;
-extern Player *gPlayerEight;
-extern Player *gPlayerOneCopy;
-extern Camera *camera2;
-extern Camera *camera4;
-
-
-extern void func_80020000(Player *, Camera *, u8, u8);
-extern void func_8002088C();
-extern void func_80020F1C();
-extern void func_80021244(Player *, u8, u8);
-extern void func_80022BC4(Player*, s8, s32);
-extern void func_80022DB4(Player*, s8, s32);
-extern void func_800235AC(Player*, s8);
-extern void func_80026A48(Player*, s8);
-extern void func_80030A34(Player*);
-extern void func_8006E634(Player*, u8, u8);
-extern void func_8006E744(Player *, u8, u8);
-extern void func_8006E848(Player *, u8, u8);
-extern void func_8006E8C4(Player *, u8, u8);
-extern void func_8006E940(s32, u8, u8);
-
+#include "variables.h"
+#include "code_8001F980.h"
+#include "code_80057C60.h"
 
 // Not yet implemented. Needs more work to match.
 // Remove ifdef when matching.
@@ -1038,9 +1005,6 @@ GLOBAL_ASM("asm/non_matchings/code_8001F980/func_800224F0.s")
 void move_s32_towards(s32 *startingValue, s32 targetValue, f32 somePercent) {
     *startingValue -= ((*startingValue - targetValue) * somePercent);
 }
-
-extern f64 D_800ED680;
-extern f64 D_800ED688;
 
 /**
   * Function: move_f32_towards
