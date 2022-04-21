@@ -2,14 +2,13 @@
 #include <macros.h>
 #include <common_structs.h>
 #include <defines.h>
-#include "framebuffers.h"
 #include "variables.h"
 #include "code_8001F980.h"
 #include "code_80057C60.h"
 
 // Not yet implemented. Needs more work to match.
 // Remove ifdef when matching.
-#ifdef NON_MATCHING
+#ifdef NEEDS_RODATA
 s8 D_800DDB50[] = {
     0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x00, 0x02
 };
