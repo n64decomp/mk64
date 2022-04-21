@@ -8,8 +8,8 @@ extern u8 D_802BA290[22768];
 extern u8 D_802BFB80[77824];
 extern u8 D_802D2B80[32768];
 extern u8 D_802DAB80[20480];
-extern u16 D_802DFB80[37376];
-extern u16 D_802F1F80[16382];
+extern u8 D_802DFB80[2][2][18688];
+extern u16 D_802F1F80[2][4][2048];
 
 extern u16 gZBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
 
