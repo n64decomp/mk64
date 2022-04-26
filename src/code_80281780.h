@@ -33,7 +33,7 @@ extern struct UnkStruct_800DC5EC *D_800DC5EC;
 extern s32 gMenuSelectionFromEndingSequence; //D_80287550;
 extern s32 D_80287554;
 extern f32 D_801647A4;
-extern f32 D_80150130;
+extern f32 D_80150130[];
 
 extern s32 gPrevLoadedAddress;
 extern s32 D_8015F734;

@@ -11,8 +11,8 @@ extern Gfx *gDisplayListHead;
 
 extern Camera cameras[];//, *camera1, *camera2, *camera3, *camera4;
 
-extern f32 D_80150130, D_80150148, D_8015014C, D_80150150;
-
+extern f32 D_80150148, D_8015014C, D_80150150;
+extern f32 D_80150130[4];
 extern s16 gCreditsCourseId;
 extern u16 D_80150112;
 extern u16 D_80164AF0;
@@ -52,7 +52,7 @@ void func_80280038(void) {
     func_802A3E3C();
     func_80057FC4(0);
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPool[1], &sp44[37], D_80150130, D_80150148, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPool[1], &sp44[37], D_80150130[0], D_80150148, D_80150150, D_8015014C, 1.0f);
     gDPHalf1(gDisplayListHead++, sp44[37]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
@@ -103,9 +103,9 @@ void func_802802AC(void) {
         temp_f12 = camera->unk - camera->pos[0];
         temp = camera->unk1 - camera->pos[1];
         temp_f14 = camera->unk2 - camera->pos[2];
-        camera->rotX2 = func_802B7830(temp_f12, temp_f14);
-        camera->rotX = func_802B7830(sqrtf((temp_f12 * temp_f12) + (temp_f14 * temp_f14)), temp);
-        camera->rotY = 0;
+        camera->rotX[1] = func_802B7830(temp_f12, temp_f14);
+        camera->rotX[0] = func_802B7830(sqrtf((temp_f12 * temp_f12) + (temp_f14 * temp_f14)), temp);
+        camera->rotX[2] = 0;
         if (D_802874A0 != 0) {
             D_800DC5E4++;
         } else {
@@ -126,7 +126,7 @@ void func_80280420(void) {
     func_802A4D18();
     func_802A74BC();
     camera->unk30 = 60.0f;
-    D_80150130 = 60.0f;
+    D_80150130[0] = 60.0f;
     D_800DC5EC->screenWidth = 320;
     D_800DC5EC->screenHeight = 240;
     D_800DC5EC->screenStartX = 160;

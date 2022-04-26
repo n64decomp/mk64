@@ -588,7 +588,7 @@ void func_8028EDA8(void) {
 }
 
 f32 func_8028EE8C(s32 arg0) {
-    f32 temp_v0 = gPlayers[arg0].posZ;
+    f32 temp_v0 = gPlayers[arg0].pos[2];
     f32 temp_v1 = gPlayers[arg0].rotZ;
     f32 temp_f14 = D_8015F8D8 - temp_v0;
     f32 temp_f16 = temp_v1 - D_8015F8D8;

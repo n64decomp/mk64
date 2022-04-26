@@ -6,6 +6,7 @@
 
 typedef f32 Mat4[4][4];
 
+
 enum SpTaskState {
     SPTASK_STATE_NOT_STARTED,
     SPTASK_STATE_RUNNING,
@@ -157,26 +158,6 @@ struct UnkStruct_800DDB40 {
     u32 unk20;
     u16 unk24;
     u16 unk26;
-};
-
-// math util structs
-struct UnkStruct_802B51E8 {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-};
-
-struct UnkStruct_802B52D8 {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-};
-
-struct UnkStruct_802B52BC {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
 };
 
 struct UnkStruct_802B53C8 {

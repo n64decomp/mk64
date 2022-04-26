@@ -49,10 +49,10 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
             break;
     }
 
-    player->posX = arg2;
+    player->pos[0] = arg2;
     ret = func_802AE1C0(arg2, arg4 + 50.0f, arg3) + player->unk_070;
-    player->posZ = arg3;
-    player->posY = ret;
+    player->pos[2] = arg3;
+    player->pos[1] = ret;
     player->rotX = arg2;
     player->rotY = ret;
 
@@ -251,12 +251,12 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->boundingBoxCorners[BACK_LEFT_TYRE].unk_14   = 0;
     player->boundingBoxCorners[BACK_RIGHT_TYRE].unk_14  = 0;
 
-    player->unk_110 = 0;
-    player->unk_112 = 0;
-    player->unk_114 = 0;
-    player->unk_116 = 0;
-    player->unk_118 = 0;
-    player->unk_11A = 0;
+    player->unk_110.unk30 = 0;
+    player->unk_110.unk32 = 0;
+    player->unk_110.unk34 = 0;
+    player->unk_110.unk36 = 0;
+    player->unk_110.unk38 = 0;
+    player->unk_110.unk3A = 0;
 
     player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerX = 0.0f;
     player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerY = 0.0f;
@@ -279,18 +279,18 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->boundingBoxCorners[BACK_LEFT_TYRE].cornerGroundY   = 0.0f;
     player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerGroundY  = 0.0f;
 
-    player->unk_11C = 0.0f;
-    player->unk_120 = 0.0f;
-    player->unk_124 = 0.0f;
-    player->unk_128 = 0.0f;
-    player->unk_12C = 0.0f;
-    player->unk_130 = 0.0f;
-    player->unk_134 = 0.0f;
-    player->unk_138 = 0.0f;
-    player->unk_13C = 0.0f;
-    player->unk_140 = 0.0f;
-    player->unk_144 = 0.0f;
-    player->unk_148 = 0.0f;
+    player->unk_110.unk3C = 0.0f;
+    player->unk_110.unk40 = 0.0f;
+    player->unk_110.unk44 = 0.0f;
+    player->unk_110.unk48[0] = 0.0f;
+    player->unk_110.unk48[1] = 0.0f;
+    player->unk_110.unk48[2] = 0.0f;
+    player->unk_110.unk54[0] = 0.0f;
+    player->unk_110.unk54[1] = 0.0f;
+    player->unk_110.unk54[2] = 0.0f;
+    player->unk_110.unk60[0] = 0.0f;
+    player->unk_110.unk60[1] = 0.0f;
+    player->unk_110.unk60[2] = 0.0f;
 
     D_80165300[playerIndex] = 0;
     D_8018CE10[playerIndex].unk_04 = 0.0f;
@@ -1115,17 +1115,17 @@ void func_8003D080(void) {
                 switch (gModeSelection) {
                     case GRAND_PRIX:
                         func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 1, 0);
-                        func_8001C4D0(gPlayerTwo->posX, gPlayerTwo->posY, gPlayerTwo->posZ, gPlayerTwo->unk_02E, 1, 1);
+                        func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 1, 1);
                         break;
 
                     case BATTLE:
                         func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 9, 0);
-                        func_8001C4D0(gPlayerTwo->posX, gPlayerTwo->posY, gPlayerTwo->posZ, gPlayerTwo->unk_02E, 9, 1);
+                        func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 9, 1);
                         break;
 
                     default:
                         func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 1, 0);
-                        func_8001C4D0(gPlayerTwo->posX, gPlayerTwo->posY, gPlayerTwo->posZ, gPlayerTwo->unk_02E, 1, 1);
+                        func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 1, 1);
                         break;
                 }
                 break;
@@ -1134,22 +1134,22 @@ void func_8003D080(void) {
                 if (gModeSelection == BATTLE) {
                     ptr = &gPlayerThree;
                     func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 9, 0);
-                    func_8001C4D0(gPlayerTwo->posX, gPlayerTwo->posY, gPlayerTwo->posZ, gPlayerTwo->unk_02E, 9, 1);
+                    func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 9, 1);
                     ptr++;
-                    func_8001C4D0(ptr->posX, ptr->posY, ptr->posZ, ptr->unk_02E, 9, 2);
+                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 9, 2);
                     ptr++;
                     if (gPlayerCountSelection1 == 4) {
-                        func_8001C4D0(ptr->posX, ptr->posY, ptr->posZ, ptr->unk_02E, 9, 3);
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 9, 3);
                     }
                 } else {
                     ptr = &gPlayerThree;
                     func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 1, 0);
-                    func_8001C4D0(gPlayerTwo->posX, gPlayerTwo->posY, gPlayerTwo->posZ, gPlayerTwo->unk_02E, 1, 1);
+                    func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 1, 1);
                     ptr++;
-                    func_8001C4D0(ptr->posX, ptr->posY, ptr->posZ, ptr->unk_02E, 1, 2);
+                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 2);
                     ptr++;
                     if (gPlayerCountSelection1 == 4) {
-                        func_8001C4D0(ptr->posX, ptr->posY, ptr->posZ, ptr->unk_02E, 1, 3);
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 3);
                     }
                 }
                 break;
@@ -1163,17 +1163,17 @@ void func_8003D080(void) {
             case 1:
             case 2:
                 func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 3, 0);
-                func_8001C4D0(gPlayerTwo->posX, gPlayerTwo->posY, gPlayerTwo->posZ, gPlayerTwo->unk_02E, 3, 1);
+                func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 3, 1);
                 break;
 
             case 3:
                 ptr = &gPlayerThree;
                 func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 3, 0);
-                func_8001C4D0(gPlayerTwo->posX, gPlayerTwo->posY, gPlayerTwo->posZ, gPlayerTwo->unk_02E, 3, 1);
+                func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 3, 1);
                 ptr++;
-                func_8001C4D0(ptr->posX, ptr->posY, ptr->posZ, ptr->unk_02E, 3, 2);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 2);
                 ptr++;
-                func_8001C4D0(ptr->posX, ptr->posY, ptr->posZ, ptr->unk_02E, 3, 3);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 3);
                 break;
         }
     }
@@ -1242,8 +1242,8 @@ void func_8003DB5C(void) {
     Player *player = gPlayerOne;
     s32 i;
 
-    func_8001C4D0(player->posX, player->posY, player->posZ, player->unk_02E, 3, 0);
-    func_8001C4D0(player->posX, player->posY, player->posZ, player->unk_02E, 3, 1);
+    func_8001C4D0(player->pos[0], player->pos[1], player->pos[2], player->unk_02E, 3, 0);
+    func_8001C4D0(player->pos[0], player->pos[1], player->pos[2], player->unk_02E, 3, 1);
 
     for (i = 0; i < 8; i++, player++) {
         func_80027A20(player, i, 1, 0);

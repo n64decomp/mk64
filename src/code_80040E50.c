@@ -192,7 +192,6 @@ UNUSED s32 s32_step_up_towards_alternate(s32 *value, s32 target, s32 *step) {
 }
 
 UNUSED s32 s32_step_down_towards_alternate(s32 *value, s32 target, s32 *step) {
-    s32 temp_t7;
     s32 targetReached = 0;
 
     if (target < *value) {

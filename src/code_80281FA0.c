@@ -1070,7 +1070,7 @@ void func_80283EA0(s32 arg0) {
 }
 
 void func_80283ED0(Vec3f arg0) {
-    func_80282008(arg0, &gPlayerTwo->posX);
+    func_80282008(arg0, &gPlayerTwo->pos[0]);
 }
 
 #ifdef MIPS_TO_C
@@ -1078,9 +1078,9 @@ void func_80283ED0(Vec3f arg0) {
 ? func_802821A0(f32, f32, ?); // extern
 
 void func_80283EF8(s32 arg0) {
-    func_802821A0(gPlayerTwo->posX, 0.12f);
-    func_802821A0((bitwise f32) (arg0 + 4), gPlayerTwo->posY, 0x3DF5C28F);
-    func_802821A0((bitwise f32) (arg0 + 8), gPlayerTwo->posZ, 0x3DF5C28F);
+    func_802821A0(gPlayerTwo->pos[0], 0.12f);
+    func_802821A0((bitwise f32) (arg0 + 4), gPlayerTwo->pos[1], 0x3DF5C28F);
+    func_802821A0((bitwise f32) (arg0 + 8), gPlayerTwo->pos[2], 0x3DF5C28F);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80281FA0/func_80283EF8.s")
@@ -1095,7 +1095,7 @@ void func_80283F6C(s32 arg0) {
 }
 
 void func_80283FCC(Vec3f arg0) {
-    func_80282008(arg0, &gPlayerThree->posX);
+    func_80282008(arg0, &gPlayerThree->pos[0]);
 }
 
 #ifdef MIPS_TO_C
@@ -1219,9 +1219,9 @@ void func_80284308(void *arg0) {
     func_80282D90(arg0, &D_802858E0, &D_802858F8, 0);
     temp_v0 = *(sp30 + (D_802874F5 * 4));
     //player = gPlayerOne;
-    temp_f0 = temp_v0->unk14 - player->posX;
-    temp_f12 = temp_v0->unk1C - player->posZ;
-    temp_f2 = temp_v0->unk18 - player->posY;
+    temp_f0 = temp_v0->unk14 - player->pos[0];
+    temp_f12 = temp_v0->unk1C - player->pos[2];
+    temp_f2 = temp_v0->unk18 - player->pos[1];
     arg0->unkC = arg0->unkC + temp_f0;
     arg0->unk0 = arg0->unk0 + temp_f0;
     arg0->unk14 = arg0->unk14 + temp_f12;

@@ -38,34 +38,34 @@ s32 func_802B4FF8(Mat4 arg0, s32 arg1) {
     }
     func_802B75F8(&gGfxPool->mtxPool[D_80150112 + 0x32B], arg0);
     switch (arg1) {                                 /* irregular */
-    case 0:
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80150112 + 0x32B]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        D_80150112 += 1;
-        break;
-    case 1:
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80150112 + 0x32B]), G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        D_80150112 += 1;
-        break;
-    case 3:
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80150112 + 0x32B]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-        D_80150112 += 1;
-        break;
-    case 2:
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80150112 + 0x32B]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-        D_80150112 += 1;
-        break;
+        case 0:
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80150112 + 0x32B]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            D_80150112 += 1;
+            break;
+        case 1:
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80150112 + 0x32B]), G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            D_80150112 += 1;
+            break;
+        case 3:
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80150112 + 0x32B]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            D_80150112 += 1;
+            break;
+        case 2:
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80150112 + 0x32B]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            D_80150112 += 1;
+            break;
     }
     return 1;
 }
 
-f32 func_802B51E8(struct UnkStruct_802B51E8 *arg0, struct UnkStruct_802B51E8 *arg1) {
+f32 func_802B51E8(Vec3f arg0, Vec3f arg1) {
     f32 temp_f12;
     f32 temp_f14;
     f32 temp_f2;
 
-    temp_f2 = arg1->unk0 - arg0->unk0;
-    temp_f12 = arg1->unk4 - arg0->unk4;
-    temp_f14 = arg1->unk8 - arg0->unk8;
+    temp_f2 = arg1[0] - arg0[0];
+    temp_f12 = arg1[1] - arg0[1];
+    temp_f14 = arg1[2] - arg0[2];
     return (temp_f2 * temp_f2) + (temp_f12 * temp_f12) + temp_f14 + temp_f14;
 }
 
@@ -87,16 +87,16 @@ u32 func_802B5258(Vec3f arg0, Vec3s arg1) {
     return func_802B7830(temp_v1, temp_v2);
 }
 
-void load_giant_egg(struct UnkStruct_802B51E8 *arg0, f32 arg1, f32 arg2, f32 arg3) {
-    arg0->unk0 = arg1;
-    arg0->unk4 = arg2;
-    arg0->unk8 = arg3;
+void load_giant_egg(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
+    arg0[0] = arg1;
+    arg0[1] = arg2;
+    arg0[2] = arg3;
 }
 
-void func_802B52BC(struct UnkStruct_802B52BC *arg0, s16 arg1, s16 arg2, s16 arg3) {
-    arg0->unk0 = arg1;
-    arg0->unk2 = arg2;
-    arg0->unk4 = arg3;
+void func_802B52BC(Vec3s arg0, s16 arg1, s16 arg2, s16 arg3) {
+    arg0[0] = arg1;
+    arg0[1] = arg2;
+    arg0[2] = arg3;
 }
 
 // These functions have bogus return values.
@@ -707,7 +707,7 @@ void func_802B5F00(Mat4 arg0, f32 arg1) {
 f32 sins(u16);                             /* extern */
 f32 coss(u16);                             /* extern */
 
-void func_802B5F74(void *arg0, void *arg1, void *arg2) {
+void func_802B5F74(Mat4 arg0, Vec3f arg1, Vec3s arg2) {
     f32 sp3C;
     f32 sp34;
     f32 sp30;
@@ -1810,7 +1810,7 @@ s32 func_802B5224(f32, f32, u16);                   /* extern */
 u16 func_802B7CA8(f32, f32);                        /* extern */
 s32 func_802B8058(s32, s32, u16, u16);              /* extern */
 
-f32 func_802B80D0(void *arg0, void *arg1, u16 arg2, f32 arg3, f32 arg4, f32 arg5) {
+f32 func_802B80D0(Vec3f arg0, Vec3f arg1, u16 arg2, f32 arg3, f32 arg4, f32 arg5) {
     u16 sp5E;
     u16 sp5A;
     s32 sp28;

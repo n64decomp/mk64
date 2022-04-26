@@ -919,9 +919,9 @@ void func_80059820(s32 playerId) {
     D_8018CF14 = &camera1[playerId];
     temp_v1 = D_8018CF1C;
     temp_v0 = &D_8018CA70[playerId];
-    temp_v0->posXInt = (s32) temp_v1->posX;
-    temp_v0->posYInt = (s32) temp_v1->posY;
-    temp_v0->posZInt = (s32) temp_v1->posZ;
+    temp_v0->posXInt = (s32) temp_v1->pos[0];
+    temp_v0->posYInt = (s32) temp_v1->pos[1];
+    temp_v0->posZInt = (s32) temp_v1->pos[2];
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80059820.s")
@@ -3184,9 +3184,9 @@ void func_8005D6C0(Player* arg0) {
 }
 
 void func_8005D794(Player* arg0, UnkPlayerStruct258* arg1, f32 arg2, f32 arg3, f32 arg4, s8 arg5, s8 arg6) {
-    arg1->unk_008 = arg4;
-    arg1->unk_000 = arg2;
-    arg1->unk_004 = arg3;
+    arg1->unk_000[2] = arg4;
+    arg1->unk_000[0] = arg2;
+    arg1->unk_000[1] = arg3;
     arg1->unk_020 = -arg0->unk_02E;
     arg1->unk_014 = arg5;
     arg1->unk_010 = arg6;
@@ -4144,15 +4144,15 @@ void func_8005F90C(Player *player, s16 arg1, s32 arg2, s32 arg3) {
     phi_t1 = 0;
     if ((player->unk_0BC & 0x80) == 0x80) {
         phi_v0 = (s32) player->boundingBoxCorners[2].surfaceType;
-        phi_f12 = player->posZ;
-        phi_f0 = player->posX;
-        phi_f2 = player->posY - player->unk_070;
+        phi_f12 = player->pos[2];
+        phi_f0 = player->pos[0];
+        phi_f2 = player->pos[1] - player->unk_070;
         phi_t1 = 1;
     } else {
         phi_v0 = (s32) player->boundingBoxCorners[3].surfaceType;
-        phi_f12 = player->posZ;
-        phi_f0 = player->posX;
-        phi_f2 = player->posY - player->unk_070;
+        phi_f12 = player->pos[2];
+        phi_f0 = player->pos[0];
+        phi_f2 = player->pos[1] - player->unk_070;
     }
     switch (phi_v0) {
     case 2:
@@ -4655,9 +4655,9 @@ void func_80060F50(Player* arg0, s16 arg1, UNUSED s8 arg2, s8 arg3) {
         func_8005D800(&arg0->unk_258[arg1], 0xFFFFFF, 0xFF);
     }
 
-    arg0->unk_258[arg1].unk_008 = (coss(arg0->unk_258[arg1].unk_020) * D_800EE5A8) + arg0->posZ;
-    arg0->unk_258[arg1].unk_000 = (sins(arg0->unk_258[arg1].unk_020) * D_800EE5B0) + arg0->posX;
-    arg0->unk_258[arg1].unk_004 = D_801652A0[arg3];
+    arg0->unk_258[arg1].unk_000[2] = arg0->pos[2] + (coss(arg0->unk_258[arg1].unk_020) * D_800EE5A8);
+    arg0->unk_258[arg1].unk_000[0] = arg0->pos[0] + (sins(arg0->unk_258[arg1].unk_020) * D_800EE5B0);
+    arg0->unk_258[arg1].unk_000[1] = D_801652A0[arg3];
     arg0->unk_0DE &= ~0x0008;
 }
 
@@ -4677,9 +4677,9 @@ void func_80061130(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     func_8005D7D8(&arg0->unk_258[arg1], 7, 0.6f);
     func_8005D800(&arg0->unk_258[arg1], 0xFFFFFF, 0xD0);
 
-    arg0->unk_258[arg1].unk_008 = (coss(arg0->unk_258[arg1].unk_020) * 6.0f) + arg0->posZ;
-    arg0->unk_258[arg1].unk_000 = (sins(arg0->unk_258[arg1].unk_020) * 6.0f) + arg0->posX;
-    arg0->unk_258[arg1].unk_004 = arg0->posY - 5.0f;
+    arg0->unk_258[arg1].unk_000[2] = arg0->pos[2] +(coss(arg0->unk_258[arg1].unk_020) * 6.0f);
+    arg0->unk_258[arg1].unk_000[0] = arg0->pos[0] + (sins(arg0->unk_258[arg1].unk_020) * 6.0f);
+    arg0->unk_258[arg1].unk_000[1] = arg0->pos[1] - 5.0f;
     arg0->unk_258[arg1].unk_040 = 0;
     arg0->unk_258[arg1].unk_024 = 0.0f;
 }
@@ -5108,7 +5108,7 @@ void func_80061EF4(void *arg0, s16 arg1, s32 arg2, ? arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80061EF4.s")
 #endif
 
-void func_800621BC(Player *arg0, s16 arg1, s32 arg2, UNUSED s8 arg3) {
+void func_800621BC(Player* arg0, s16 arg1, s32 arg2, UNUSED s8 arg3) {
     s32 temp_v1;
     s32 phi_t0;
     s32 phi_t1;
@@ -5121,7 +5121,7 @@ void func_800621BC(Player *arg0, s16 arg1, s32 arg2, UNUSED s8 arg3) {
     if (temp_v1 == 1) {
         phi_t1 = 1;
         phi_t0 = 0;
-        phi_f2 = arg0->posY;
+        phi_f2 = arg0->pos[1];
     }
 
     if (temp_v1 == 0) {
@@ -5129,7 +5129,7 @@ void func_800621BC(Player *arg0, s16 arg1, s32 arg2, UNUSED s8 arg3) {
         if (1) {
             phi_t0 = 0;
         }
-        phi_f2 = arg0->posY;
+        phi_f2 = arg0->pos[1];
     }
 
     if (phi_t0 == 0) {
@@ -5145,8 +5145,8 @@ void func_800621BC(Player *arg0, s16 arg1, s32 arg2, UNUSED s8 arg3) {
                 arg0->unk_258[30 + arg1].unk_020 -= 2184;
             }
 
-            arg0->unk_258[30 + arg1].unk_008 = (coss((arg0->unk_258[30 + arg1].unk_020 - arg0->unk_02E) - arg0->unk_0C0) * 5.0f) + arg0->posZ;
-            arg0->unk_258[30 + arg1].unk_000 = (sins((arg0->unk_258[30 + arg1].unk_020 - arg0->unk_02E) - arg0->unk_0C0) * 5.0f) + arg0->posX;
+            arg0->unk_258[30 + arg1].unk_000[2] = arg0->pos[2] + (coss((arg0->unk_258[30 + arg1].unk_020 - arg0->unk_02E) - arg0->unk_0C0) * 5.0f);
+            arg0->unk_258[30 + arg1].unk_000[0] = arg0->pos[0] + (sins((arg0->unk_258[30 + arg1].unk_020 - arg0->unk_02E) - arg0->unk_0C0) * 5.0f);
             return;
         }
 
@@ -5163,17 +5163,17 @@ void func_800621BC(Player *arg0, s16 arg1, s32 arg2, UNUSED s8 arg3) {
             }
 
             new_var = new_var2;
-            new_var->unk_258[30 + arg1].unk_008 = (coss((new_var->unk_258[30 + arg1].unk_020 - new_var->unk_02E) - new_var->unk_0C0) * 5.0f) + new_var->posZ;
-            new_var->unk_258[30 + arg1].unk_000 = (sins((new_var->unk_258[30 + arg1].unk_020 - new_var->unk_02E) - new_var->unk_0C0) * 5.0f) + new_var->posX;
+            new_var->unk_258[30 + arg1].unk_000[2] = new_var->pos[2] + (coss((new_var->unk_258[30 + arg1].unk_020 - new_var->unk_02E) - new_var->unk_0C0) * 5.0f);
+            new_var->unk_258[30 + arg1].unk_000[0] = new_var->pos[0] + (sins((new_var->unk_258[30 + arg1].unk_020 - new_var->unk_02E) - new_var->unk_0C0) * 5.0f);
         }
     }
 }
 
 void func_80062484(Player* arg0, UnkPlayerStruct258* arg1, s32 arg2) {
     arg1->unk_01C = 1;
-    arg1->unk_004 = arg0->unk_074 + 1.0f;
-    arg1->unk_008 = arg0->posZ;
-    arg1->unk_000 = arg0->posX;
+    arg1->unk_000[1] = arg0->unk_074 + 1.0f;
+    arg1->unk_000[2] = arg0->pos[2];
+    arg1->unk_000[0] = arg0->pos[0];
     arg1->unk_020 = (arg2 * 0x1998) - arg0->unk_02E;
     arg1->unk_012 = 4;
     arg1->unk_01E = 0;
@@ -5401,7 +5401,7 @@ void func_800629BC(Player* arg0, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     arg0->unk_258[20 + arg3].unk_012 = 6;
     arg0->unk_258[20 + arg3].unk_01E = 0;
     arg0->unk_258[20 + arg3].unk_00C = D_800EE604;
-    arg0->unk_258[20 + arg3].unk_004 = 0.0f;
+    arg0->unk_258[20 + arg3].unk_000[1] = 0.0f;
 }
 
 void func_80062A18(Player* arg0, s8 arg1, UNUSED s8 arg2, s8 arg3) {
@@ -5411,9 +5411,9 @@ void func_80062A18(Player* arg0, s8 arg1, UNUSED s8 arg2, s8 arg3) {
     arg0->unk_258[20 + arg3].unk_01E = 1;
     arg0->unk_258[20 + arg3].unk_020 = 0;
     arg0->unk_0B6 &= ~0x0080;
-    arg0->unk_258[20 + arg3].unk_008 = arg0->posZ;
-    arg0->unk_258[20 + arg3].unk_000 = arg0->posX;
-    arg0->unk_258[20 + arg3].unk_004 = (arg0->posY + 4.0f);
+    arg0->unk_258[20 + arg3].unk_000[2] = arg0->pos[2];
+    arg0->unk_258[20 + arg3].unk_000[0] = arg0->pos[0];
+    arg0->unk_258[20 + arg3].unk_000[1] = (arg0->pos[1] + 4.0f);
 }
 
 void func_80062AA8(Player* arg0, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
@@ -5421,7 +5421,7 @@ void func_80062AA8(Player* arg0, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     arg0->unk_258[20 + arg3].unk_012 = 5;
     arg0->unk_258[20 + arg3].unk_00C = D_800EE60C;
     arg0->unk_258[20 + arg3].unk_01E = 0;
-    arg0->unk_258[20 + arg3].unk_004 = (arg0->posY + arg0->unk_070) - 2.5;
+    arg0->unk_258[20 + arg3].unk_000[1] = (arg0->pos[1] + arg0->unk_070) - 2.5;
 }
 
 void func_80062B18(f32 *arg0, f32 *arg1, f32 *arg2, f32 arg3, f32 arg4, f32 arg5, u16 arg6, u16 arg7) {
@@ -5552,15 +5552,15 @@ void func_80062F98(Player* arg0, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     
     temp_f0 = arg0->unk_258[10 + arg1].unk_018 / 10.0f;
     ++arg0->unk_258[10 + arg1].unk_01E;
-    arg0->unk_258[10 + arg1].unk_004 += temp_f0;
+    arg0->unk_258[10 + arg1].unk_000[1] += temp_f0;
     if ((arg0->unk_0CA & 1) == 1) {
-        arg0->unk_258[10 + arg1].unk_004 += (temp_f0 + D_800EE648);
-        if ((arg0->unk_258[10 + arg1].unk_01E == 0x10) || ((D_801652A0[arg2] - arg0->unk_258[10 + arg1].unk_004) < 3.0f)) {
+        arg0->unk_258[10 + arg1].unk_000[1] += (temp_f0 + D_800EE648);
+        if ((arg0->unk_258[10 + arg1].unk_01E == 0x10) || ((D_801652A0[arg2] - arg0->unk_258[10 + arg1].unk_000[1]) < 3.0f)) {
             arg0->unk_258[10 + arg1].unk_01C = 0;
             arg0->unk_258[10 + arg1].unk_01E = 0;
             arg0->unk_258[10 + arg1].unk_012 = 0;
         }
-    } else if ((arg0->unk_258[10 + arg1].unk_01E == 0xA) || ((D_801652A0[arg2] - arg0->unk_258[10 + arg1].unk_004) < 3.0f)) {
+    } else if ((arg0->unk_258[10 + arg1].unk_01E == 0xA) || ((D_801652A0[arg2] - arg0->unk_258[10 + arg1].unk_000[1]) < 3.0f)) {
         arg0->unk_258[10 + arg1].unk_01C = 0;
         arg0->unk_258[10 + arg1].unk_01E = 0;
         arg0->unk_258[10 + arg1].unk_012 = 0;
@@ -5569,9 +5569,9 @@ void func_80062F98(Player* arg0, s16 arg1, s8 arg2, UNUSED s8 arg3) {
 
 void func_800630C0(Player* arg0, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     ++arg0->unk_258[arg1].unk_01E;
-    arg0->unk_258[arg1].unk_008 = coss(arg0->unk_258[arg1].unk_020) * D_800EE650 + arg0->posZ;
-    arg0->unk_258[arg1].unk_000 = sins(arg0->unk_258[arg1].unk_020) * D_800EE658 + arg0->posX;
-    arg0->unk_258[arg1].unk_004 = D_801652A0[arg2];
+    arg0->unk_258[arg1].unk_000[2] = arg0->pos[2] + coss(arg0->unk_258[arg1].unk_020) * D_800EE650;
+    arg0->unk_258[arg1].unk_000[0] = arg0->pos[0] + sins(arg0->unk_258[arg1].unk_020) * D_800EE658;
+    arg0->unk_258[arg1].unk_000[1] = D_801652A0[arg2];
     if (arg0->unk_258[arg1].unk_01E == 15) {
         arg0->unk_258[arg1].unk_01C = 0;
         arg0->unk_258[arg1].unk_01E = 0;
@@ -5611,9 +5611,9 @@ void func_80063268(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     }
 
     arg0->unk_258[arg1].unk_024 += 0.25;
-    arg0->unk_258[arg1].unk_008 = (coss((arg0->unk_258[arg1].unk_020 + arg0->unk_258[arg1].unk_040)) * 5.5) + arg0->posZ;
-    arg0->unk_258[arg1].unk_000 = (sins((arg0->unk_258[arg1].unk_020 + arg0->unk_258[arg1].unk_040)) * 5.5) + arg0->posX;
-    arg0->unk_258[arg1].unk_004 = (arg0->unk_258[arg1].unk_024 + (arg0->posY - 5.0f));
+    arg0->unk_258[arg1].unk_000[2] = arg0->pos[2] + (coss((arg0->unk_258[arg1].unk_020 + arg0->unk_258[arg1].unk_040)) * 5.5);
+    arg0->unk_258[arg1].unk_000[0] = arg0->pos[0] + (sins((arg0->unk_258[arg1].unk_020 + arg0->unk_258[arg1].unk_040)) * 5.5);
+    arg0->unk_258[arg1].unk_000[1] = ((arg0->pos[1] - 5.0f) + arg0->unk_258[arg1].unk_024);
     ++arg0->unk_258[arg1].unk_01E;
     arg0->unk_258[arg1].unk_00C += D_800EE660;
     arg0->unk_258[arg1].unk_03E -= 5;
@@ -5631,15 +5631,15 @@ void func_80063268(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_80063408(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
-        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + (arg0->unk_258[10 + arg1].unk_01E * -7) * coss(arg0->unk_258[10 + arg1].unk_020);
-        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + (arg0->unk_258[10 + arg1].unk_01E * -7) * sins(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000[2] = arg0->boundingBoxCorners[2].cornerZ + (arg0->unk_258[10 + arg1].unk_01E * -7) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000[0] = arg0->boundingBoxCorners[2].cornerX + (arg0->unk_258[10 + arg1].unk_01E * -7) * sins(arg0->unk_258[10 + arg1].unk_020);
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + (arg0->unk_258[10 + arg1].unk_01E * -7) * coss(arg0->unk_258[10 + arg1].unk_020);
-        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + (arg0->unk_258[10 + arg1].unk_01E * -7) * sins(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000[2] = arg0->boundingBoxCorners[3].cornerZ + (arg0->unk_258[10 + arg1].unk_01E * -7) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000[0] = arg0->boundingBoxCorners[3].cornerX + (arg0->unk_258[10 + arg1].unk_01E * -7) * sins(arg0->unk_258[10 + arg1].unk_020);
     }
 
     ++arg0->unk_258[10 + arg1].unk_01E;
-    arg0->unk_258[10 + arg1].unk_004 += 1.0f;
+    arg0->unk_258[10 + arg1].unk_000[1] += 1.0f;
 
     if (((arg0->unk_0BC & 0x80) != 0) || ((arg0->unk_0BC & 0x40) != 0)) {
         arg0->unk_258[10 + arg1].unk_01C = 0;
@@ -5670,23 +5670,23 @@ void func_800635D4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
         if ((arg0->unk_0BC * 2) < 0) {
             func_80062B18(&sp44, &sp40, &sp3C, -2.0f, 0.0f, (-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16, -arg0->unk_258[10 + arg1].unk_020, 2 * -arg0->unk_206);
-            arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + sp44;
-            arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + sp3C;
+            arg0->unk_258[10 + arg1].unk_000[0] = arg0->boundingBoxCorners[2].cornerX + sp44;
+            arg0->unk_258[10 + arg1].unk_000[2] = arg0->boundingBoxCorners[2].cornerZ + sp3C;
         } else {
-            arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * coss(arg0->unk_258[10 + arg1].unk_020);
-            arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * sins(arg0->unk_258[10 + arg1].unk_020);
+            arg0->unk_258[10 + arg1].unk_000[2] = arg0->boundingBoxCorners[2].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * coss(arg0->unk_258[10 + arg1].unk_020);
+            arg0->unk_258[10 + arg1].unk_000[0] = arg0->boundingBoxCorners[2].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * sins(arg0->unk_258[10 + arg1].unk_020);
         }
     } else if ((arg0->unk_0BC * 2) < 0) {
         func_80062B18(&sp44, &sp40, &sp3C, 2.0f, 0.0f,  (-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16, - arg0->unk_258[10 + arg1].unk_020,  2 * -arg0->unk_206);
-        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + sp44;
-        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + sp3C;
+        arg0->unk_258[10 + arg1].unk_000[0] = arg0->boundingBoxCorners[3].cornerX + sp44;
+        arg0->unk_258[10 + arg1].unk_000[2] = arg0->boundingBoxCorners[3].cornerZ + sp3C;
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * coss(arg0->unk_258[10 + arg1].unk_020);
-        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * sins(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000[2] = arg0->boundingBoxCorners[3].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000[0] = arg0->boundingBoxCorners[3].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 16) * sins(arg0->unk_258[10 + arg1].unk_020);
     }
 
     ++arg0->unk_258[10 + arg1].unk_01E;
-    arg0->unk_258[10 + arg1].unk_004 += D_800EE670;
+    arg0->unk_258[10 + arg1].unk_000[1] += D_800EE670;
     if (((arg0->unk_0BC & 0x80) != 0) || ((arg0->unk_0BC & 0x40) != 0)) {
         arg0->unk_258[10 + arg1].unk_01C = 0;
         arg0->unk_258[10 + arg1].unk_01E = 0;
@@ -5718,14 +5718,14 @@ void func_800635D4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_800639DC(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
-        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + (D_800EE680 * arg0->unk_258[10 + arg1].unk_01E) * coss(arg0->unk_258[10 + arg1].unk_020);
-        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + (D_800EE684 * arg0->unk_258[10 + arg1].unk_01E) * sins(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000[2] = arg0->boundingBoxCorners[2].cornerZ + (D_800EE680 * arg0->unk_258[10 + arg1].unk_01E) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000[0] = arg0->boundingBoxCorners[2].cornerX + (D_800EE684 * arg0->unk_258[10 + arg1].unk_01E) * sins(arg0->unk_258[10 + arg1].unk_020);
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + (D_800EE688 * arg0->unk_258[10 + arg1].unk_01E) * coss(arg0->unk_258[10 + arg1].unk_020);
-        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + (D_800EE68C * arg0->unk_258[10 + arg1].unk_01E) * sins(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000[2] = arg0->boundingBoxCorners[3].cornerZ + (D_800EE688 * arg0->unk_258[10 + arg1].unk_01E) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000[0] = arg0->boundingBoxCorners[3].cornerX + (D_800EE68C * arg0->unk_258[10 + arg1].unk_01E) * sins(arg0->unk_258[10 + arg1].unk_020);
     }
     ++arg0->unk_258[10 + arg1].unk_01E;
-    arg0->unk_258[10 + arg1].unk_004 += D_800EE690;
+    arg0->unk_258[10 + arg1].unk_000[1] += D_800EE690;
     if (arg0->unk_258[10 + arg1].unk_01E == 8) {
         arg0->unk_258[10 + arg1].unk_01C = 0;
         arg0->unk_258[10 + arg1].unk_01E = 0;
@@ -5753,15 +5753,15 @@ void func_800639DC(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_80063BD4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
-        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + (-2 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020));
-        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + (-2 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020));
+        arg0->unk_258[10 + arg1].unk_000[2] = arg0->boundingBoxCorners[2].cornerZ + (-2 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020));
+        arg0->unk_258[10 + arg1].unk_000[0] = arg0->boundingBoxCorners[2].cornerX + (-2 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020));
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + (-2 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020));
-        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + (-2 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020));
+        arg0->unk_258[10 + arg1].unk_000[2] = arg0->boundingBoxCorners[3].cornerZ + (-2 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020));
+        arg0->unk_258[10 + arg1].unk_000[0] = arg0->boundingBoxCorners[3].cornerX + (-2 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020));
     }
 
     ++arg0->unk_258[10 + arg1].unk_01E;
-    arg0->unk_258[10 + arg1].unk_004 += D_800EE6A0;
+    arg0->unk_258[10 + arg1].unk_000[1] += D_800EE6A0;
     if (arg0->unk_258[10 + arg1].unk_01E == 8) {
         arg0->unk_258[10 + arg1].unk_01C = 0;
         arg0->unk_258[10 + arg1].unk_01E = 0;
@@ -5774,11 +5774,11 @@ void func_80063BD4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_80063D58(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (arg0->unk_258[10 + arg1].unk_010 == 1) {
-        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[2].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * coss(arg0->unk_258[10 + arg1].unk_020);
-        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[2].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * sins(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000[2] = arg0->boundingBoxCorners[2].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000[0] = arg0->boundingBoxCorners[2].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * sins(arg0->unk_258[10 + arg1].unk_020);
     } else {
-        arg0->unk_258[10 + arg1].unk_008 = arg0->boundingBoxCorners[3].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * coss(arg0->unk_258[10 + arg1].unk_020);
-        arg0->unk_258[10 + arg1].unk_000 = arg0->boundingBoxCorners[3].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * sins(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000[2] = arg0->boundingBoxCorners[3].cornerZ + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * coss(arg0->unk_258[10 + arg1].unk_020);
+        arg0->unk_258[10 + arg1].unk_000[0] = arg0->boundingBoxCorners[3].cornerX + ((-arg0->unk_258[10 + arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 20.0f) * sins(arg0->unk_258[10 + arg1].unk_020);
     }
 
     ++arg0->unk_258[10 + arg1].unk_01E;
@@ -5791,9 +5791,9 @@ void func_80063D58(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     arg0->unk_258[10 + arg1].unk_00C += D_800EE6B0;
     if (arg0->unk_258[10 + arg1].unk_01E >= 4) {
         arg0->unk_258[10 + arg1].unk_03E -= 18;
-        arg0->unk_258[10 + arg1].unk_004 -= D_800EE6B8;
+        arg0->unk_258[10 + arg1].unk_000[1] -= D_800EE6B8;
     } else {
-        arg0->unk_258[10 + arg1].unk_004 += D_800EE6C0;
+        arg0->unk_258[10 + arg1].unk_000[1] += D_800EE6C0;
     }
     
     if (arg0->unk_258[10 + arg1].unk_03E <= 0) {
@@ -5840,17 +5840,17 @@ void func_80064184(Player* arg0, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     f32 sp40;
     f32 sp3C;
 
-    sp40 = D_801652A0[arg2] - arg0->posY - 3.0f;
+    sp40 = D_801652A0[arg2] - arg0->pos[1] - 3.0f;
     if (((arg0->unk_0DE & 1) != 0) && (gCurrentCourseId != COURSE_KOOPA_BEACH)) {
-        sp40 = D_801652A0[arg2] - arg0->posY + D_800EE6C8;
+        sp40 = D_801652A0[arg2] - arg0->pos[1] + D_800EE6C8;
     }
 
     func_80062B18(&sp44, &sp40, &sp3C, 0.0f, sp40, -4.0f + ((-arg0->unk_258[arg1].unk_01E * (arg0->unk_094 / 18.0f) * 216.0f) / 10.0f), -arg0->unk_258[arg1].unk_020, 2 * -arg0->unk_206);
-    arg0->unk_258[arg1].unk_000 = arg0->posX + sp44;
-    arg0->unk_258[arg1].unk_008 = arg0->posZ + sp3C;
-    arg0->unk_258[arg1].unk_004 = arg0->posY + sp40;
+    arg0->unk_258[arg1].unk_000[0] = arg0->pos[0] + sp44;
+    arg0->unk_258[arg1].unk_000[2] = arg0->pos[2] + sp3C;
+    arg0->unk_258[arg1].unk_000[1] = arg0->pos[1] + sp40;
     ++arg0->unk_258[arg1].unk_01E;
-    if ((arg0->unk_258[arg1].unk_01E == 12) || (D_801652A0[arg2] <= (arg0->posY - arg0->unk_070))) {
+    if ((arg0->unk_258[arg1].unk_01E == 12) || (D_801652A0[arg2] <= (arg0->pos[1] - arg0->unk_070))) {
         arg0->unk_258[arg1].unk_01C = 0;
         arg0->unk_258[arg1].unk_01E = 0;
         arg0->unk_258[arg1].unk_012 = 0;
@@ -5868,9 +5868,9 @@ void func_80064184(Player* arg0, s16 arg1, s8 arg2, UNUSED s8 arg3) {
 }
 
 void func_800643A8(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    arg0->unk_258[10 + arg1].unk_008 = (D_800EE6D8 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020) + arg0->posZ);
-    arg0->unk_258[10 + arg1].unk_000 = (D_800EE6E0 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020) + arg0->posX);
-    arg0->unk_258[10 + arg1].unk_004 = arg0->unk_258[10 + arg1].unk_004 + 0.5;
+    arg0->unk_258[10 + arg1].unk_000[2] = arg0->pos[2] + (D_800EE6D8 * arg0->unk_258[10 + arg1].unk_01E * coss(arg0->unk_258[10 + arg1].unk_020));
+    arg0->unk_258[10 + arg1].unk_000[0] = arg0->pos[0] + (D_800EE6E0 * arg0->unk_258[10 + arg1].unk_01E * sins(arg0->unk_258[10 + arg1].unk_020));
+    arg0->unk_258[10 + arg1].unk_000[1] = arg0->unk_258[10 + arg1].unk_000[1] + 0.5;
 
     ++arg0->unk_258[10 + arg1].unk_01E;
     if (arg0->unk_258[10 + arg1].unk_01E == 10) {
@@ -5984,9 +5984,9 @@ GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80064664.s")
 void func_800647C8(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
     ++arg0->unk_258[30 + arg1].unk_01E;
-    arg0->unk_258[30 + arg1].unk_008 = ((D_800EE710 * (arg0->unk_258[30 + arg1].unk_01E)) * coss(arg0->unk_258[30 + arg1].unk_020)) + arg0->posZ;
-    arg0->unk_258[30 + arg1].unk_000 = ((D_800EE718 * (arg0->unk_258[30 + arg1].unk_01E)) * sins(arg0->unk_258[30 + arg1].unk_020) +  arg0->posX);
-    arg0->unk_258[30 + arg1].unk_004 =  (arg0->unk_074 + 2.0f);
+    arg0->unk_258[30 + arg1].unk_000[2] = arg0->pos[2] + ((D_800EE710 * (arg0->unk_258[30 + arg1].unk_01E)) * coss(arg0->unk_258[30 + arg1].unk_020));
+    arg0->unk_258[30 + arg1].unk_000[0] = arg0->pos[0] + ((D_800EE718 * (arg0->unk_258[30 + arg1].unk_01E)) * sins(arg0->unk_258[30 + arg1].unk_020));
+    arg0->unk_258[30 + arg1].unk_000[1] =  (arg0->unk_074 + 2.0f);
 
     if (arg0->unk_258[30 + arg1].unk_01E == 14) {
         arg0->unk_258[30 + arg1].unk_01C = 0;
@@ -6003,7 +6003,7 @@ void func_800647C8(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 void func_800648E4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     ++arg0->unk_258[30 + arg1].unk_01E;
     arg0->unk_258[30 + arg1].unk_00C -=  D_800EE720;
-    arg0->unk_258[30 + arg1].unk_004 += D_800EE728;
+    arg0->unk_258[30 + arg1].unk_000[1] += D_800EE728;
     arg0->unk_258[30 + arg1].unk_03E -= 12;
     
     if (arg0->unk_258[30 + arg1].unk_03E <= 0) {
@@ -6019,7 +6019,7 @@ void func_800648E4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_80064988(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     ++arg0->unk_258[30 + arg1].unk_01E;
-    arg0->unk_258[30 + arg1].unk_004 -= D_800EE730;
+    arg0->unk_258[30 + arg1].unk_000[1] -= D_800EE730;
 
     if (arg0->unk_258[30 + arg1].unk_01E == 10) {
         arg0->unk_258[30 + arg1].unk_01C = 0;
@@ -6032,9 +6032,9 @@ void func_800649F4(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     f32 temp;
     temp = arg0->unk_258[30 + arg1].unk_018;
    
-    arg0->unk_258[30 + arg1].unk_008 = ((-temp * arg0->unk_258[30 + arg1].unk_01E) * (coss(arg0->unk_258[30 + arg1].unk_020) ) + arg0->unk_21C);
-    arg0->unk_258[30 + arg1].unk_000 = ((-temp * arg0->unk_258[30 + arg1].unk_01E) * (sins(arg0->unk_258[30 + arg1].unk_020)) + arg0->unk_218);
-    arg0->unk_258[30 + arg1].unk_004 = (arg0->unk_258[30 + arg1].unk_014 + arg0->posY);
+  arg0->unk_258[30 + arg1].unk_000[2] = arg0->unk_21C + (((-temp) * arg0->unk_258[30 + arg1].unk_01E) * coss(arg0->unk_258[30 + arg1].unk_020));
+  arg0->unk_258[30 + arg1].unk_000[0] = arg0->unk_218 + (((-temp) * arg0->unk_258[30 + arg1].unk_01E) * sins(arg0->unk_258[30 + arg1].unk_020));
+  arg0->unk_258[30 + arg1].unk_000[1] = arg0->pos[1] + arg0->unk_258[30 + arg1].unk_014;
     arg0->unk_258[30 + arg1].unk_00C += D_800EE738;
 
     ++arg0->unk_258[30 + arg1].unk_01E;
@@ -6056,9 +6056,9 @@ void func_80064B30(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     f32 temp;
     temp = arg0->unk_258[30 + arg1].unk_018 * D_800EE740;
 
-    arg0->unk_258[30 + arg1].unk_008 = ((-temp * arg0->unk_258[30 + arg1].unk_01E) * (coss(arg0->unk_258[30 + arg1].unk_020)) + arg0->posZ);
-    arg0->unk_258[30 + arg1].unk_000 = ((-temp * arg0->unk_258[30 + arg1].unk_01E) * (sins(arg0->unk_258[30 + arg1].unk_020)) + arg0->posX);
-    arg0->unk_258[30 + arg1].unk_004 += D_800EE748;
+    arg0->unk_258[30 + arg1].unk_000[2] = (arg0->pos[2] + (-temp * arg0->unk_258[30 + arg1].unk_01E) * (coss(arg0->unk_258[30 + arg1].unk_020)));
+    arg0->unk_258[30 + arg1].unk_000[0] = (arg0->pos[0] + (-temp * arg0->unk_258[30 + arg1].unk_01E) * (sins(arg0->unk_258[30 + arg1].unk_020)));
+    arg0->unk_258[30 + arg1].unk_000[1] += D_800EE748;
 
     ++arg0->unk_258[30 + arg1].unk_01E;
     if (arg0->unk_258[30 + arg1].unk_01E == 10) {
@@ -6084,9 +6084,9 @@ void func_80064C74(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
         arg0->unk_258[30 + arg1].unk_020 -= 2184;
     }
     
-    arg0->unk_258[30 + arg1].unk_008 = (coss(arg0->unk_258[30 + arg1].unk_020 - arg0->unk_02E - arg0->unk_0C0) * 5.0f) + arg0->posZ;
-    arg0->unk_258[30 + arg1].unk_000 = (sins(arg0->unk_258[30 + arg1].unk_020 - arg0->unk_02E - arg0->unk_0C0) * 5.0f) + arg0->posX;
-    arg0->unk_258[30 + arg1].unk_004 = arg0->posY - 1.0f;
+    arg0->unk_258[30 + arg1].unk_000[2] = arg0->pos[2] + (coss(arg0->unk_258[30 + arg1].unk_020 - arg0->unk_02E - arg0->unk_0C0) * 5.0f);
+    arg0->unk_258[30 + arg1].unk_000[0] = arg0->pos[0] + (sins(arg0->unk_258[30 + arg1].unk_020 - arg0->unk_02E - arg0->unk_0C0) * 5.0f);
+    arg0->unk_258[30 + arg1].unk_000[1] = arg0->pos[1] - 1.0f;
     arg0->unk_258[30 + arg1].unk_00C += D_800EE750;
     ++arg0->unk_258[30 + arg1].unk_01E;
 
@@ -6105,7 +6105,7 @@ void func_80064C74(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_80064DEC(Player* arg0, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
 
-    arg0->unk_258[20 + arg3].unk_004 = arg0->posY;
+    arg0->unk_258[20 + arg3].unk_000[1] = arg0->pos[1];
     ++arg0->unk_258[20 + arg3].unk_01E;
     
     if (arg0->unk_258[20 + arg3].unk_01E == 9) {
@@ -6157,7 +6157,7 @@ void func_80064F88(Player* arg0, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
 void func_80065030(Player* arg0, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     ++arg0->unk_258[20 + arg3].unk_01E;
 
-    arg0->unk_258[20 + arg3].unk_004 += D_800EE788;
+    arg0->unk_258[20 + arg3].unk_000[1] += D_800EE788;
     arg0->unk_258[20 + arg3].unk_00C += D_800EE790;
     if (arg0->unk_258[20 + arg3].unk_00C >= (f64) 1.5) {
         arg0->unk_258[20 + arg3].unk_00C = 1.5f;
@@ -6172,9 +6172,9 @@ void func_80065030(Player* arg0, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
 }
 
 void func_800650FC(Player* arg0, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
-    arg0->unk_258[20 + arg3].unk_008 = (f32) arg0->posZ;
-    arg0->unk_258[20 + arg3].unk_000 = (f32) arg0->posX;
-    arg0->unk_258[20 + arg3].unk_004 = (f32) (arg0->posY + 4.0f);
+    arg0->unk_258[20 + arg3].unk_000[2] = (f32) arg0->pos[2];
+    arg0->unk_258[20 + arg3].unk_000[0] = (f32) arg0->pos[0];
+    arg0->unk_258[20 + arg3].unk_000[1] = (f32) (arg0->pos[1] + 4.0f);
     if ((arg0->unk_0BC & 0x80) == 0x80) {
         arg0->unk_258[20 + arg3].unk_020 += 4732;
     } else {

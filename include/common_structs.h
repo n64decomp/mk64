@@ -6,6 +6,7 @@
 typedef f32 Vec3f[3];
 
 typedef s16 Vec3s[3];
+typedef s16 Vec4s[4];
 
 typedef enum {
     /* 0x00 */ COURSE_MARIO_RACEWAY = 0,
@@ -113,9 +114,7 @@ typedef struct {
     f32 angleX;
     f32 angleY;
     f32 angleZ;
-    s16 rotX;
-    s16 rotX2;
-    s16 rotY; // unused?
+    Vec3s rotX;
     s16 rotZ;
     s32 unk3; // zero
     s32 unk4; // 0x4119999A
@@ -159,9 +158,7 @@ typedef struct {
 } Camera;
 
 typedef struct {
-    /* 0x00 */ f32 unk_000;
-    /* 0x04 */ f32 unk_004;
-    /* 0x08 */ f32 unk_008;
+    /* 0x00 */ Vec3f unk_000;
     /* 0x0C */ f32 unk_00C;
     /* 0x10 */ u16 unk_010;
     /* 0x12 */ u16 unk_012;
@@ -258,6 +255,24 @@ typedef struct {
 #define BACK_LEFT_TYRE   2
 #define BACK_RIGHT_TYRE  3
 
+
+typedef struct {
+    /* 0x00 */ u16 unk30;
+    /* 0x02 */ u16 unk32;
+    /* 0x04 */ u16 unk34;
+    /* 0x06 */ u16 unk36;
+    /* 0x08 */ u16 unk38;
+    /* 0x0A */ u16 unk3A;
+    /* 0x0C */ f32 unk3C;
+    /* 0x10 */ f32 unk40;
+    /* 0x14 */ f32 unk44;
+    /* 0x18 */ Vec3f unk48;
+    /* 0x24 */ Vec3f unk54;
+    /* 0x30 */ Vec3f unk60;
+    /* 0x3C */ f32 unk6C;
+} UnkActorInner;
+
+
 typedef struct {
     /* 0x0000 */ u16 unk_000;
     /* 0x0002 */ u16 unk_002;
@@ -268,9 +283,7 @@ typedef struct {
     /* 0x000C */ s32 unk_00C;
     /* 0x0010 */ s16 unk_010;
     /* 0x0012 */ s16 unk_012;
-    /* 0x0014 */ f32 posX;
-    /* 0x0018 */ f32 posY;
-    /* 0x001C */ f32 posZ;
+    /* 0x0014 */ Vec3f pos;
     /* 0x0020 */ f32 rotX;
     /* 0x0024 */ f32 rotY;
     /* 0x0028 */ f32 rotZ;
@@ -341,25 +354,7 @@ typedef struct {
     /* 0x0108 */ f32 unk_108;
     /* 0x010C */ s16 unk_10C;
     /* 0x010E */ char unk_10E[0x2];
-    /* 0x0110 */ s16 unk_110;
-    /* 0x0112 */ s16 unk_112;
-    /* 0x0114 */ s16 unk_114;
-    /* 0x0116 */ s16 unk_116;
-    /* 0x0118 */ s16 unk_118;
-    /* 0x011A */ s16 unk_11A;
-    /* 0x011C */ f32 unk_11C;
-    /* 0x0120 */ f32 unk_120;
-    /* 0x0124 */ f32 unk_124;
-    /* 0x0128 */ f32 unk_128;
-    /* 0x012C */ f32 unk_12C;
-    /* 0x0130 */ f32 unk_130;
-    /* 0x0134 */ f32 unk_134;
-    /* 0x0138 */ f32 unk_138;
-    /* 0x013C */ f32 unk_13C;
-    /* 0x0140 */ f32 unk_140;
-    /* 0x0144 */ f32 unk_144;
-    /* 0x0148 */ f32 unk_148;
-    /* 0x014C */ char unk_14C[0x4];
+    /* 0x0110 */ UnkActorInner unk_110;
     /* 0x0150 */ f32 unk_150[9];
     /* 0x0174 */ f32 unk_174[9];
     /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];
