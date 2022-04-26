@@ -14,8 +14,15 @@ void func_800291E8();
 void func_800291F0();
 void func_800291F8();
 void func_80029200(Player*, s8);
-void func_8002C11C(Player*);
 void func_8002AAC0(Player*);
+void func_8002AB70(Player*);
+void func_8002AE20();
+void func_8002AE28();
+void func_8002AE30();
+void func_8002B308(Player*, s8, s8);
+void func_8002B5C0(Player*, s8, s8);
+void func_8002B830(Player*, s8, s8);
+void func_8002C11C(Player*);
 void func_8002E4C4(Player*);
 void func_80030FC8(Player*);
 void func_80031F48(Player*, f32);
@@ -29,6 +36,12 @@ void func_80038BE4(Player*, s16);
 /* This is where I'd put my static data, if I had any */
 
 extern s16 D_80164AF0;
+
+extern f32 D_800ED7B8;
+extern f32 D_800ED7BC;
+extern f32 D_800ED7C0;
+extern f32 D_800ED7C4;
+extern f32 D_800ED7C8;
 
 extern f64 D_800ED9D8;
 extern f64 D_800ED9E0;
