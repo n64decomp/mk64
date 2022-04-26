@@ -85,7 +85,7 @@ void load_ending_sequence_royalraceway(void) {
     func_802A4D18();
     func_802A74BC();
     camera->unk30 = 60.0f;
-    D_80150130 = 60.0f;
+    D_80150130[0] = 60.0f;
     D_800DC5EC->screenWidth = 320;
     D_800DC5EC->screenHeight = 240;
     D_800DC5EC->screenStartX = 160;

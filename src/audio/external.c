@@ -5242,7 +5242,8 @@ extern ? D_800EA1C8;
 extern ? D_800EA1D4;
 extern ? D_800EA1DC;
 
-void func_800C98B8(s32 arg0, ? arg1, s32 arg2) {
+// Precursor to play_sound
+void func_800C98B8(Vec3f arg0, Vec3f arg1, u32 arg2) {
     s32 temp_t0;
     void *temp_v0;
     s32 phi_s0;

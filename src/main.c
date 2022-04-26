@@ -118,10 +118,10 @@ s32 D_80150120;
 s32 gMenuSelectionFromQuit;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
-s32 D_80150130;
-s32 D_80150134;
-s32 D_80150138;
-s32 D_8015013C;
+f32 D_80150130[4];
+//f32 D_80150134;
+//f32 D_80150138;
+//f32 D_8015013C;
 UNUSED s32 D_80150140;
 UNUSED s32 D_80150144;
 f32 D_80150148;
@@ -139,7 +139,9 @@ uintptr_t gPhysicalFramebuffers[3];
 u32 D_801502B4;
 UNUSED u32 D_801502B8;
 UNUSED u32 D_801502BC;
-s32 D_801502C0[2064];
+Mat4 D_801502C0;
+
+s32 padding[2048];
 
 u16 D_80152300[4];
 u16 D_80152308;
@@ -640,7 +642,7 @@ void func_8000142C(void) {
                             D_800DC514 = 0;
                     }
 
-                    temp_v0 = camera1->rotX2;
+                    temp_v0 = camera1->rotX[1];
                     D_801625E8 = D_800DC5EC->pathCounter;
                     if (temp_v0 < 0x2000) {
                         func_80057A50(40, 100, "SOUTH  ", D_801625E8);

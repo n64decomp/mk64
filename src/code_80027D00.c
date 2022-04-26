@@ -932,9 +932,9 @@ void func_8002934C(Player *player, s32 arg1, s8 arg2, s8 arg3) {
     } else {
         temp_v0 = phi_a3->unk244;
         if ((temp_v0 >= 0) && (temp_v0 < 0x101)) {
-            phi_f0 = player->rotY - player->posY;
+            phi_f0 = player->rotY - player->pos[1];
         } else {
-            phi_f0 = player->posY - player->rotY;
+            phi_f0 = player->pos[1] - player->rotY;
         }
         sp24 = phi_a3;
         phi_a3->unkD4 = func_802B7C40(phi_f0 / phi_f2, 0x4000000) * 0.5;
@@ -1124,9 +1124,9 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     sp80 = player->boundingBoxCorners[0].cornerX;
     sp84 = player->boundingBoxCorners[0].cornerY;
     sp88 = player->boundingBoxCorners[0].cornerZ;
-    player->boundingBoxCorners[0].cornerX = sp8C + player->posX;
-    player->boundingBoxCorners[0].cornerY = sp90 + player->posY;
-    player->boundingBoxCorners[0].cornerZ = sp94 + player->posZ;
+    player->boundingBoxCorners[0].cornerX = sp8C + player->pos[0];
+    player->boundingBoxCorners[0].cornerY = sp90 + player->pos[1];
+    player->boundingBoxCorners[0].cornerZ = sp94 + player->pos[2];
     func_802AFA34(player, player->boundingBoxCorners, sp80, sp84, sp88);
     temp_f14 = -sp48;
     temp_f2_2 = (f64) temp_f14;
@@ -1140,9 +1140,9 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     sp80 = player->boundingBoxCorners[1].cornerX;
     sp84 = player->boundingBoxCorners[1].cornerY;
     sp88 = player->boundingBoxCorners[1].cornerZ;
-    player->boundingBoxCorners[1].cornerX = sp8C + player->posX;
-    player->boundingBoxCorners[1].cornerY = sp90 + player->posY;
-    player->boundingBoxCorners[1].cornerZ = sp94 + player->posZ;
+    player->boundingBoxCorners[1].cornerX = sp8C + player->pos[0];
+    player->boundingBoxCorners[1].cornerY = sp90 + player->pos[1];
+    player->boundingBoxCorners[1].cornerZ = sp94 + player->pos[2];
     func_802AFA34(player, &player->boundingBoxCorners[1], sp80, sp84, sp88);
     temp_a0_3 = &sp8C;
     temp_f12 = sp34 + 4.0f;
@@ -1154,9 +1154,9 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     sp80 = player->boundingBoxCorners[2].cornerX;
     sp84 = player->boundingBoxCorners[2].cornerY;
     sp88 = player->boundingBoxCorners[2].cornerZ;
-    player->boundingBoxCorners[2].cornerX = sp8C + player->posX;
-    player->boundingBoxCorners[2].cornerY = sp90 + player->posY;
-    player->boundingBoxCorners[2].cornerZ = sp94 + player->posZ;
+    player->boundingBoxCorners[2].cornerX = sp8C + player->pos[0];
+    player->boundingBoxCorners[2].cornerY = sp90 + player->pos[1];
+    player->boundingBoxCorners[2].cornerZ = sp94 + player->pos[2];
     func_802AFA34(player, &player->boundingBoxCorners[2], sp80, sp84, sp88);
     temp_a0_4 = &sp8C;
     sp8C = (f32) (sp28 + 2.6);
@@ -1166,9 +1166,9 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     sp80 = player->boundingBoxCorners[3].cornerX;
     sp84 = player->boundingBoxCorners[3].cornerY;
     sp88 = player->boundingBoxCorners[3].cornerZ;
-    player->boundingBoxCorners[3].cornerX = sp8C + player->posX;
-    player->boundingBoxCorners[3].cornerY = sp90 + player->posY;
-    player->boundingBoxCorners[3].cornerZ = sp94 + player->posZ;
+    player->boundingBoxCorners[3].cornerX = sp8C + player->pos[0];
+    player->boundingBoxCorners[3].cornerY = sp90 + player->pos[1];
+    player->boundingBoxCorners[3].cornerZ = sp94 + player->pos[2];
     func_802AFA34(player, &player->boundingBoxCorners[3], sp80, sp84, sp88);
     if ((player->unk_0BC & 8) == 0) {
         move_f32_towards(&player->unk_230, (player->boundingBoxCorners[0].cornerGroundY + player->boundingBoxCorners[2].cornerGroundY) / 2.0f, 0.5f);
@@ -3224,10 +3224,10 @@ void func_8002D268(Player *player, s32 arg1, s8 arg2, s8 arg3) {
     if ((temp_v0_5 & 0x10) == 0x10) {
         player->unk_044 = temp_v0_5 & 0xFFEF;
     }
-    temp_f0_7 = player->posX;
+    temp_f0_7 = player->pos[0];
     spF0 = temp_f0_7;
-    temp_f2_7 = player->posZ;
-    temp_f12_6 = player->posY;
+    temp_f2_7 = player->pos[2];
+    temp_f12_6 = player->pos[1];
     spE8 = temp_f2_7;
     player->rotX = temp_f0_7;
     player->rotZ = temp_f2_7;
@@ -3370,7 +3370,7 @@ void func_8002D268(Player *player, s32 arg1, s8 arg2, s8 arg3) {
         player->posZ = spF4;
     }
     temp_v0_17 = player->unk_000;
-    player->posY = spF8;
+    player->pos[1] = spF8;
     if (((temp_v0_17 & 0x4000) != 0) && ((temp_v0_17 & 0x1000) == 0)) {
         func_8002BB9C(player, &spFC, &spF4, arg2, arg3, &sp98);
     }
@@ -3421,9 +3421,9 @@ void func_8002E4C4(Player *player) {
     player->kartHopJerk = 0.0f;
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = 0.0f;
-    player->posY = func_802AE1C0(player->posX, D_80164510[player_index] + 10.0f, player->posZ) + player->unk_070;
-    if (((player->posY - D_80164510[player_index]) > 1200.0f) || ((player->posY - D_80164510[player_index]) < -1200.0f)) {
-        player->posY = player->rotY;
+    player->pos[1] = func_802AE1C0(player->pos[0], D_80164510[player_index] + 10.0f, player->pos[2]) + player->unk_070;
+    if (((player->pos[1] - D_80164510[player_index]) > 1200.0f) || ((player->pos[1] - D_80164510[player_index]) < -1200.0f)) {
+        player->pos[1] = player->rotY;
     }
     player->unk_038 = 0.0f;
 }

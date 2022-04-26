@@ -73,26 +73,26 @@ glabel D_802B8848 # struct
 
 .hword 0000 # fill
 
-glabel D_802B8850
-.word 0, 0, 0
+#glabel D_802B8850
+#.word 0, 0, 0
 
-glabel D_802B885C
-.hword 0, 0, 0
+#glabel D_802B885C
+#.hword 0, 0, 0
 
-.hword 0000 # fill
+#.hword 0000 # fill
 
-glabel D_802B8864
-.hword 0, 0, 0
+#glabel D_802B8864
+#.hword 0, 0, 0
 
-.hword 0000 # fill
+#.hword 0000 # fill
 
-glabel D_802B886C
-.hword 0, 0, 0
+#glabel D_802B886C
+#.hword 0, 0, 0
 
-.hword 0000 # fill
+#.hword 0000 # fill
 
-glabel D_802B8874
-.float 0.0, 5.0, 10.0
+#glabel D_802B8874
+#.float 0.0, 5.0, 10.0
 
 #glabel D_802B8880 # Vp viewport
 #.hword 640, 480, 511, 0

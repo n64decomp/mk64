@@ -305,6 +305,7 @@ SECTIONS
       BUILD_DIR/src/code_802B0210.o(.text);
       BUILD_DIR/src/math_util.o(.text);
       BUILD_DIR/data/data_121DA0.o(.data);
+      BUILD_DIR/src/code_80296A50.o(.data);
       BUILD_DIR/src/code_802A3730.o(.data);
       BUILD_DIR/src/memory.o(.data);
       BUILD_DIR/data/data_121DA0_1.o(.data);
@@ -312,6 +313,8 @@ SECTIONS
       BUILD_DIR/data/data_121DA0_2.o(.data);
       BUILD_DIR/src/code_8028DF00.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_1.o(.data);
+      BUILD_DIR/src/code_80296A50.o(.rodata);
+      BUILD_DIR/data/data_121DA0_2_2.o(.data);
    }
    END_SEG(code_8028DF00)
 

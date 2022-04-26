@@ -24,9 +24,9 @@ extern Gfx D_00284EE0[];
 
 extern Camera cameras[];
 
-extern f32 D_80150130, D_80150148, D_8015014C, D_80150150;
+extern f32 D_80150148, D_8015014C, D_80150150;
 
-
+extern f32 D_80150130[];
 void func_80281C40(void) {
     s32 i;
 
@@ -64,7 +64,7 @@ void func_80281D00(void) {
     }
     func_8028150C();
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective((Mtx*) &gGfxPool->mtxPool[1], &sp64[39], D_80150130, D_80150148, D_80150150, D_8015014C, 1.0f);
+    guPerspective((Mtx*) &gGfxPool->mtxPool[1], &sp64[39], D_80150130[0], D_80150148, D_80150150, D_8015014C, 1.0f);
     gDPHalf1(gDisplayListHead++, sp64[39]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     guLookAt((Mtx*) &gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);

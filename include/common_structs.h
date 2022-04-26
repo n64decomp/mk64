@@ -6,6 +6,7 @@
 typedef f32 Vec3f[3];
 
 typedef s16 Vec3s[3];
+typedef s16 Vec4s[4];
 
 typedef enum {
     /* 0x00 */ COURSE_MARIO_RACEWAY = 0,
@@ -113,9 +114,9 @@ typedef struct {
     f32 angleX;
     f32 angleY;
     f32 angleZ;
-    s16 rotX;
-    s16 rotX2;
-    s16 rotY; // unused?
+    Vec3s rotX;
+    //s16 rotX2;
+    //s16 rotY; // unused?
     s16 rotZ;
     s32 unk3; // zero
     s32 unk4; // 0x4119999A
@@ -159,9 +160,9 @@ typedef struct {
 } Camera;
 
 typedef struct {
-    /* 0x00 */ f32 unk_000;
-    /* 0x04 */ f32 unk_004;
-    /* 0x08 */ f32 unk_008;
+    /* 0x00 */ Vec3f unk_000;
+    /* 0x04 */ 
+    /* 0x08 */ 
     /* 0x0C */ f32 unk_00C;
     /* 0x10 */ u16 unk_010;
     /* 0x12 */ u16 unk_012;
@@ -257,6 +258,163 @@ typedef struct {
 #define FRONT_RIGHT_TYRE 1
 #define BACK_LEFT_TYRE   2
 #define BACK_RIGHT_TYRE  3
+
+
+typedef struct {
+    /* 0x00 */ u16 unk30;
+    /* 0x02 */ u16 unk32;
+    /* 0x04 */ u16 unk34;
+    /* 0x06 */ u16 unk36;
+    /* 0x08 */ u16 unk38;
+    /* 0x0A */ u16 unk3A;
+    /* 0x0C */ f32 unk3C;
+    /* 0x10 */ f32 unk40;
+    /* 0x14 */ f32 unk44;
+    /* 0x18 */ Vec3f unk48;
+    /* 0x24 */ Vec3f unk54;
+    /* 0x30 */ Vec3f unk60;
+    /* 0x3C */ f32 unk6C;
+} UnkActorInner;
+
+
+typedef struct {
+    /* 0x0000 */ u16 unk_000;
+    /* 0x0002 */ u16 unk_002;
+    /* 0x0004 */ s16 currentRank;
+    /* 0x0006 */ u16 unk_006;
+    /* 0x0008 */ s16 lapCount;
+    /* 0x000A */ char unk_00A[0x2];
+    /* 0x000C */ s32 unk_00C;
+    /* 0x0010 */ s16 unk_010;
+    /* 0x0012 */ s16 unk_012;
+    /* 0x0014 */ Vec3f pos;
+    /* 0x0018 */ 
+    /* 0x001C */ 
+    /* 0x0020 */ f32 rotX;
+    /* 0x0024 */ f32 rotY;
+    /* 0x0028 */ f32 rotZ;
+    /* 0x002C */ s16 unk_02C;
+    /* 0x002E */ s16 unk_02E;
+    /* 0x0030 */ s16 unk_030;
+    /* 0x0032 */ char unk_032[0x2];
+    /* 0x0034 */ f32 unk_034;
+    /* 0x0038 */ f32 unk_038;
+    /* 0x003C */ f32 unk_03C;
+    /* 0x0040 */ char unk_040[0x2];
+    /* 0x0042 */ s16 unk_042;
+    /* 0x0044 */ s16 unk_044;
+    /* 0x0046 */ u16 unk_046;
+    /* 0x0048 */ char unk_048[0x10];
+    /* 0x0058 */ f32 unk_058;
+    /* 0x005C */ f32 unk_05C;
+    /* 0x0060 */ f32 unk_060;
+    /* 0x0064 */ f32 unk_064;
+    /* 0x0068 */ f32 unk_068;
+    /* 0x006C */ f32 unk_06C;
+    /* 0x0070 */ f32 unk_070;
+    /* 0x0074 */ f32 unk_074;
+    /* 0x0078 */ s16 unk_078;
+    /* 0x007A */ s16 unk_07A;
+    /* 0x007C */ s32 unk_07C;
+    /* 0x0080 */ f32 boostPower;
+    /* 0x0084 */ f32 unk_084;
+    /* 0x0088 */ f32 unk_088;
+    /* 0x008C */ f32 unk_08C;
+    /* 0x0090 */ f32 unk_090;
+    /* 0x0094 */ f32 unk_094;
+    /* 0x0098 */ f32 unk_098;
+    /* 0x009C */ f32 unk_09C;
+    /* 0x00A0 */ f32 unk_0A0;
+    /* 0x00A4 */ f32 unk_0A4;
+    /* 0x00A8 */ s16 unk_0A8;
+    /* 0x00AA */ s16 unk_0AA;
+    /* 0x00AC */ s16 unk_0AC;
+    /* 0x00AE */ s16 unk_0AE;
+    /* 0x00B0 */ s16 unk_0B0;
+    /* 0x00B2 */ s16 unk_0B2;
+    /* 0x00B4 */ s16 unk_0B4;
+    /* 0x00B6 */ u16 unk_0B6;
+    /* 0x00B8 */ f32 unk_0B8;
+    /* 0x00BC */ s32 unk_0BC;
+    /* 0x00C0 */ s16 unk_0C0;
+    /* 0x00C2 */ s16 unk_0C2;
+    /* 0x00C4 */ s16 unk_0C4;
+    /* 0x00C6 */ s16 unk_0C6;
+    /* 0x00C8 */ s16 unk_0C8;
+    /* 0x00CA */ s16 unk_0CA;
+    /* 0x00CC */ char unk_0CC[0x10];
+    /* 0x00DC */ s16 boostTimer;
+    /* 0x00DE */ u16 unk_0DE;
+    /* 0x00E0 */ s16 unk_0E0;
+    /* 0x00E2 */ s16 unk_0E2;
+    /* 0x00E4 */ f32 unk_0E4;
+    /* 0x00E8 */ f32 unk_0E8;
+    /* 0x00EC */ f32 kartHopVelocity;
+    /* 0x00F0 */ f32 kartHopJerk;
+    /* 0x00F4 */ f32 kartHopAcceleration;
+    /* 0x00F8 */ char unk_0F8[0x2];
+    /* 0x00FA */ s16 unk_0FA;
+    /* 0x00FC */ f32 unk_0FC;
+    /* 0x0100 */ f32 unk_100;
+    /* 0x0104 */ f32 unk_104;
+    /* 0x0108 */ f32 unk_108;
+    /* 0x010C */ s16 unk_10C;
+    /* 0x010E */ char unk_10E[0x2];
+    /* 0x0110 */ UnkActorInner unk_110;
+    /* 0x0150 */ f32 unk_150[9];
+    /* 0x0174 */ f32 unk_174[9];
+    /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];
+    /* 0x01F8 */ f32 unk_1F8;
+    /* 0x01FC */ f32 unk_1FC;
+    /* 0x0200 */ s32 unk_200;
+    /* 0x0204 */ s16 unk_204;
+    /* 0x0206 */ s16 unk_206;
+    /* 0x0208 */ f32 unk_208;
+    /* 0x020C */ f32 unk_20C;
+    /* 0x0210 */ f32 unk_210;
+    /* 0x0214 */ f32 unk_214;
+    /* 0x0218 */ f32 unk_218;
+    /* 0x021C */ f32 unk_21C;
+    /* 0x0220 */ s16 unk_220;
+    /* 0x0222 */ s16 unk_222;
+    /* 0x0224 */ f32 unk_224;
+    /* 0x0228 */ s16 unk_228;
+    /* 0x022A */ s16 unk_22A;
+    /* 0x022C */ f32 unk_22C;
+    /* 0x0230 */ f32 unk_230;
+    /* 0x0234 */ s16 unk_234;
+    /* 0x0236 */ s16 unk_236;
+    /* 0x0238 */ s16 unk_238;
+    /* 0x023A */ s16 unk_23A;
+    /* 0x023C */ f32 unk_23C;
+    /* 0x0240 */ s32 unk_240;
+    /* 0x0244 */ u16 unk_244[4]; // [0] Active texture group
+    /* 0x0244 */ u16 unk_24C[4];
+    /* 0x0254 */ u16 characterId;
+    /* 0x0256 */ s16 unk_256;
+    /* 0x0258 */ UnkPlayerStruct258 unk_258[40];
+    /* 0x0D98 */ s16 unk_D98;
+    /* 0x0D9A */ s16 unk_D9A;
+    /* 0x0D9C */ f32 unk_D9C;
+    /* 0x0DA0 */ f32 unk_DA0;
+    /* 0x0DA4 */ s16 unk_DA4;
+    /* 0x0DA6 */ s16 unk_DA6;
+    /* 0x0DA8 */ f32 unk_DA8;
+    /* 0x0DAC */ f32 unk_DAC;
+    /* 0x0DB0 */ f32 unk_DB0;
+    /* 0x0DB4 */ s16 unk_DB4;
+    /* 0x0DB6 */ s16 unk_DB6;
+    /* 0x0DB8 */ f32 unk_DB8;
+    /* 0x0DBC */ f32 unk_DBC;
+    /* 0x0DC0 */ f32 unk_DC0;
+    /* 0x0DC4 */ f32 unk_DC4;
+    /* 0x0DC8 */ f32 unk_DC8;
+    /* 0x0DCC */ s16 unk_DCC;
+    /* 0x0DCE */ s16 unk_DCE;
+    /* 0x0DD0 */ s16 unk_DD0;
+    /* 0x0DD2 */ s16 unk_DD2;
+    /* 0x0DD4 */ s16 unk_DD4;
+} Player; // size = 0xDD8
 
 typedef struct {
     /* 0x0000 */ u16 unk_000;
@@ -413,7 +571,7 @@ typedef struct {
     /* 0x0DD0 */ s16 unk_DD0;
     /* 0x0DD2 */ s16 unk_DD2;
     /* 0x0DD4 */ s16 unk_DD4;
-} Player; // size = 0xDD8
+} PlayerCopy; // size = 0xDD8
 
 typedef struct {
     // 6 little endian 3-byte records.

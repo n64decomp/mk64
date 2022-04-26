@@ -854,7 +854,7 @@ void func_8008DC08(Player* player, s8 arg1) {
     player->unk_0C0 = 0;
     player->unk_08C = 0.0f;
     player->unk_09C = 0.0f;
-    if ((player->unk_124 >= 600.0f) || ((player->unk_0BC & 0x1000) != 0)) { D_8018D990[arg1] = 3; } // placed block on same line to match
+    if ((player->unk_110.unk44 >= 600.0f) || ((player->unk_0BC & 0x1000) != 0)) { D_8018D990[arg1] = 3; } // placed block on same line to match
 
     switch (D_8018D990[arg1]) { 
     case 0:
@@ -888,7 +888,7 @@ void func_8008DC08(Player* player, s8 arg1) {
         break;
     case 1:
         player->unk_DC4 = 4.5f;
-        player->posY += D_800EF570;
+        player->pos[1] += D_800EF570;
         ++player->unk_238;
         
         if ((player->unk_046 & 0x80) != 0) {
@@ -920,12 +920,12 @@ void func_8008DC08(Player* player, s8 arg1) {
             player->unk_238 = 0;
         }
 
-        if (player->unk_124 >= 600.0f) {
+        if (player->unk_110.unk44 >= 600.0f) {
             D_8018D990[arg1] = 3;
         }
 
         player->unk_DC4 = 4.5f;
-        player->posY -= D_800EF580;
+        player->pos[1] -= D_800EF580;
 
         if ((player->unk_0BC & 8) != 8) {
             D_8018D990[arg1] = 3;

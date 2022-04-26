@@ -4143,27 +4143,27 @@ void func_80078C70(u32 arg0) {
         case 0:                                     /* switch 1 */
             sp1C = 0;
             sp18 = camera1;
-            D_8018D200 = D_80150130 + 40.0f;
+            D_8018D200 = D_80150130[0] + 40.0f;
             break;
         case 1:                                     /* switch 1 */
             sp1C = 0;
             sp18 = camera1;
-            D_8018D200 = D_80150130 + 40.0f;
+            D_8018D200 = D_80150130[0] + 40.0f;
             break;
         case 2:                                     /* switch 1 */
             sp18 = camera2;
             sp1C = D_8018D1F0;
-            D_8018D200 = D_80150134 + 40.0f;
+            D_8018D200 = D_80150130[1] + 40.0f;
             break;
         case 3:                                     /* switch 1 */
             sp1C = 0;
             sp18 = camera1;
-            D_8018D200 = D_80150130 + 40.0f;
+            D_8018D200 = D_80150130[0] + 40.0f;
             break;
         case 4:                                     /* switch 1 */
             sp18 = camera2;
             sp1C = D_8018D1F0;
-            D_8018D200 = D_80150134 + 40.0f;
+            D_8018D200 = D_80150130[1] + 40.0f;
             break;
         }
         temp_v0 = D_8018D200;
