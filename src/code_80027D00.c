@@ -1619,7 +1619,7 @@ void func_8002AB70(Player *player) {
             move_f32_towards(&player->unk_DAC, 1.0f, 0.07f);
         }
     } else {
-        if (player->unk_124 >= 50.0f) {
+        if (player->unk_110.unk44 >= 50.0f) {
             player->unk_DAC = 2.0f;
         }
         move_f32_towards(&player->unk_100, gKartGravityTable[player->characterId], 0.02f);
