@@ -115,8 +115,6 @@ typedef struct {
     f32 angleY;
     f32 angleZ;
     Vec3s rotX;
-    //s16 rotX2;
-    //s16 rotY; // unused?
     s16 rotZ;
     s32 unk3; // zero
     s32 unk4; // 0x4119999A
@@ -161,8 +159,6 @@ typedef struct {
 
 typedef struct {
     /* 0x00 */ Vec3f unk_000;
-    /* 0x04 */ 
-    /* 0x08 */ 
     /* 0x0C */ f32 unk_00C;
     /* 0x10 */ u16 unk_010;
     /* 0x12 */ u16 unk_012;
@@ -288,8 +284,6 @@ typedef struct {
     /* 0x0010 */ s16 unk_010;
     /* 0x0012 */ s16 unk_012;
     /* 0x0014 */ Vec3f pos;
-    /* 0x0018 */ 
-    /* 0x001C */ 
     /* 0x0020 */ f32 rotX;
     /* 0x0024 */ f32 rotY;
     /* 0x0028 */ f32 rotZ;

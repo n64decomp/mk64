@@ -4655,8 +4655,8 @@ void func_80060F50(Player* arg0, s16 arg1, UNUSED s8 arg2, s8 arg3) {
         func_8005D800(&arg0->unk_258[arg1], 0xFFFFFF, 0xFF);
     }
 
-    arg0->unk_258[arg1].unk_000[2] = (arg0->pos[2] + coss(arg0->unk_258[arg1].unk_020) * D_800EE5A8);
-    arg0->unk_258[arg1].unk_000[0] = (arg0->pos[0] + sins(arg0->unk_258[arg1].unk_020) * D_800EE5B0);
+    arg0->unk_258[arg1].unk_000[2] = arg0->pos[2] + (coss(arg0->unk_258[arg1].unk_020) * D_800EE5A8);
+    arg0->unk_258[arg1].unk_000[0] = arg0->pos[0] + (sins(arg0->unk_258[arg1].unk_020) * D_800EE5B0);
     arg0->unk_258[arg1].unk_000[1] = D_801652A0[arg3];
     arg0->unk_0DE &= ~0x0008;
 }
@@ -6084,8 +6084,8 @@ void func_80064C74(Player* arg0, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
         arg0->unk_258[30 + arg1].unk_020 -= 2184;
     }
     
-    arg0->unk_258[30 + arg1].unk_000[2] = (arg0->pos[2] + coss(arg0->unk_258[30 + arg1].unk_020 - arg0->unk_02E - arg0->unk_0C0) * 5.0f);
-    arg0->unk_258[30 + arg1].unk_000[0] = (arg0->pos[0] + sins(arg0->unk_258[30 + arg1].unk_020 - arg0->unk_02E - arg0->unk_0C0) * 5.0f);
+    arg0->unk_258[30 + arg1].unk_000[2] = arg0->pos[2] + (coss(arg0->unk_258[30 + arg1].unk_020 - arg0->unk_02E - arg0->unk_0C0) * 5.0f);
+    arg0->unk_258[30 + arg1].unk_000[0] = arg0->pos[0] + (sins(arg0->unk_258[30 + arg1].unk_020 - arg0->unk_02E - arg0->unk_0C0) * 5.0f);
     arg0->unk_258[30 + arg1].unk_000[1] = arg0->pos[1] - 1.0f;
     arg0->unk_258[30 + arg1].unk_00C += D_800EE750;
     ++arg0->unk_258[30 + arg1].unk_01E;
