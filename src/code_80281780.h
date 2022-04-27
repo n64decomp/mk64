@@ -45,7 +45,7 @@ extern s16 D_8015F6EA;
 extern s16 D_8015F6EE;
 extern s16 D_8015F6F2;
 extern u16 D_8015F6E8;
-extern s16 D_8015F6EC;
+extern u16 D_8015F6EC; // s16 or u16?
 extern u16 D_8015F6F0;
 extern s32 D_8015F59C;
 extern s32 D_8015F5A0;
