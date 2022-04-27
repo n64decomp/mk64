@@ -94,14 +94,6 @@ typedef struct {
     s8 stickX;
 } StaffGhost;
 // 80160ADC Banana's remaining
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s32 shellPos1; // BF8 = empty
-    s32 shellPos2; // 422 full
-    s32 shellPos3; // 422C full
-
-} Item; // Inventory?
 
 typedef struct {
  // B4 long
