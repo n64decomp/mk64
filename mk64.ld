@@ -325,6 +325,7 @@ SECTIONS
         BUILD_DIR/src/framebuffers.o(.bss*);
         BUILD_DIR/src/audio/synthesis.o(.bss*);
         BUILD_DIR/asm/bss_audio.o(.bss*);
+        . = ALIGN(0x8);
         BUILD_DIR/asm/bss_sptask_audio.o(.bss);
 	   }
 	   END_NOLOAD(code_8028DF00)
