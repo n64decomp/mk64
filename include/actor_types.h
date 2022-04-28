@@ -6,7 +6,7 @@
 // This keeps the other files cleaner.
 
 struct piranha_plant {
-    /* 0x00 */ s16 unk0; // 0xC, 0xD, or 0x2B
+    /* 0x00 */ s16 unk0; // ID
     #ifdef AVOID_UB
     /* 0x02 */ u16 unk2;
     #else

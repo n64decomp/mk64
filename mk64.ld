@@ -320,7 +320,7 @@ SECTIONS
 
    	BEGIN_NOLOAD(code_8028DF00) {
         BUILD_DIR/src/code_8028DF00.o(.bss);
-        BUILD_DIR/asm/bss_8028DF00.o(.bss);
+        BUILD_DIR/src/code_80296A50.o(.bss);
         BUILD_DIR/src/memory.o(.bss);
         BUILD_DIR/src/framebuffers.o(.bss*);
         BUILD_DIR/src/audio/synthesis.o(.bss*);
