@@ -346,6 +346,7 @@ SECTIONS
       BUILD_DIR/src/code_80281FA0.o(.text);
       BUILD_DIR/src/code_80280650.o(.data);
       BUILD_DIR/data/data_credits_128480.o(.data);
+      BUILD_DIR/src/dl_unk_80284EE0.inc.o(.data);
       BUILD_DIR/src/credits_01.inc.o(.data);
       BUILD_DIR/data/data_credits_128480_1.o(.data);
    }
@@ -377,7 +378,7 @@ SECTIONS
    /* common textures, decompressed and set as segment 0x0D */
    BEGIN_SEG(common_textures, 0x0D000000)
    {
-      BUILD_DIR/data/common_textures.mio0.o(.data);
+      BUILD_DIR/src/common_textures.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(common_textures)

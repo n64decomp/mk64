@@ -217,7 +217,7 @@ extern u8 _common_texturesSegmentRomStart[];
 extern u8 _common_texturesSegmentRomEnd[];
 extern u8 _data_802BA370SegmentRomStart[];
 extern u32 gHeapEndPtr;
-extern u32 *D_801978D0;
+extern u32 *D_801978D0; // Segment? Keeps track of segmented addresses?
 
 
 

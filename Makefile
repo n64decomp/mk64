@@ -244,6 +244,27 @@ $(BUILD_DIR)/src/startup_logo.inc.o: src/startup_logo.inc.c
 	$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
+# common textures
+$(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_00000_tlut.rgba16.inc.c -g textures/132B50_00000_tlut.rgba16.png -f rgba16 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_00200.rgba16.inc.c -g textures/132B50_00200.rgba16.png -f rgba16 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_01EE8.rgba16.inc.c -g textures/132B50_01EE8.rgba16.png -f rgba16 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_03348.rgba16.inc.c -g textures/132B50_03348.rgba16.png -f rgba16 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_03B48.rgba16.inc.c -g textures/132B50_03B48.rgba16.png -f rgba16 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_04C68_tlut.rgba16.inc.c -g textures/132B50_04C68_tlut.rgba16.png -f rgba16 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_04E38_tlut.rgba16.inc.c -g textures/132B50_04E38_tlut.rgba16.png -f rgba16 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_05038_tlut.rgba16.inc.c -g textures/132B50_05038_tlut.rgba16.png -f rgba16 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_06A58.i4.inc.c -g textures/132B50_06A58.i4.png -f i4 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_06AD8.ia8.inc.c -g textures/132B50_06AD8.ia8.png -f ia8 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_06ED8_tlut.rgba16.inc.c -g textures/132B50_06ED8_tlut.rgba16.png -f rgba16 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_06EF8.rgba16.inc.c -g textures/132B50_06EF8.rgba16.png -f rgba16 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_08150.ia8.inc.c -g textures/132B50_08150.ia8.png -f ia8 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_08470.ia8.inc.c -g textures/132B50_08470.ia8.png -f ia8 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_08790.ia8.inc.c -g textures/132B50_08790.ia8.png -f ia8 -s u8
+	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+	$(CC) -c $(CFLAGS) -o $@ $<
+	$(PYTHON) tools/set_o32abi_bit.py $@
+
 $(BUILD_DIR)/%.o: %.c
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(CC) -c $(CFLAGS) -o $@ $<
@@ -459,7 +480,16 @@ $(BUILD_DIR)/src/startup_logo.inc.mio0.o: src/startup_logo.inc.c
 	printf ".include \"macros.inc\"\n\n.data\n\n\n\n.balign 4\n\n\nglabel startup_logo\n\n.incbin \"build/us/src/startup_logo.inc.mio0\"\n\n.balign 16\n\nglabel data_825800_end\n" > build/us/src/startup_logo.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/startup_logo.inc.mio0.s
 
-$(BUILD_DIR)/$(TARGET).elf: $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(LD_COURSE_VERTEX_DEPENDENCIES) undefined_syms.txt
+# common_textures.c
+$(BUILD_DIR)/src/common_textures.inc.mio0.o: $(BUILD_DIR)/src/common_textures.inc.o
+	$(LD) -t -e 0 -Ttext=0D000000 --unresolved-symbols=ignore-all -Map $(BUILD_DIR)/src/common_textures.inc.elf.map -o $(BUILD_DIR)/src/common_textures.inc.elf $(BUILD_DIR)/src/common_textures.inc.o --no-check-sections
+	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/common_textures.inc.elf $(BUILD_DIR)/src/common_textures.inc.bin
+	$(MIO0TOOL) -c $(BUILD_DIR)/src/common_textures.inc.bin $(BUILD_DIR)/src/common_textures.inc.mio0
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"src/common_textures.inc.mio0\"\n\n" > build/us/src/common_textures.inc.mio0.s
+	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.s
+
+
+$(BUILD_DIR)/$(TARGET).elf: $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(LD_COURSE_VERTEX_DEPENDENCIES) undefined_syms.txt
 	$(LD) $(LDFLAGS) -o $@
 
 $(BUILD_DIR)/$(TARGET).z64: $(BUILD_DIR)/$(TARGET).elf
