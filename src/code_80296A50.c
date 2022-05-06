@@ -4926,7 +4926,7 @@ s32 func_8029F408(Player *arg0, Player *arg1) {
     if ((temp_a3->posY - arg1->posZ) < 0.0f) {
         return 0;
     }
-    if ((temp_a3->unk_070 + (bitwise f32) arg1->unk_00C) < temp_f2_2) {
+    if ((temp_a3->boundingBox + (bitwise f32) arg1->unk_00C) < temp_f2_2) {
         return 0;
     }
     if ((temp_a3->unk_000 & 0x4000) != 0) {
@@ -5143,7 +5143,7 @@ s32 func_8029FB80(Player *arg0, struct Actor *arg1) {
     f32 temp_f16;
     f32 temp_f2;
 
-    temp_f0 = arg0->unk_070 + arg1->unkC;
+    temp_f0 = arg0->boundingBox + arg1->unkC;
     temp_f2 = arg1->unk18[0] - arg0->pos[0];
     if (temp_f0 < temp_f2) {
         return 0;

@@ -4146,13 +4146,13 @@ void func_8005F90C(Player *player, s16 arg1, s32 arg2, s32 arg3) {
         phi_v0 = (s32) player->boundingBoxCorners[2].surfaceType;
         phi_f12 = player->pos[2];
         phi_f0 = player->pos[0];
-        phi_f2 = player->pos[1] - player->unk_070;
+        phi_f2 = player->pos[1] - player->boundingBox;
         phi_t1 = 1;
     } else {
         phi_v0 = (s32) player->boundingBoxCorners[3].surfaceType;
         phi_f12 = player->pos[2];
         phi_f0 = player->pos[0];
-        phi_f2 = player->pos[1] - player->unk_070;
+        phi_f2 = player->pos[1] - player->boundingBox;
     }
     switch (phi_v0) {
     case 2:
@@ -5421,7 +5421,7 @@ void func_80062AA8(Player* arg0, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     arg0->unk_258[20 + arg3].unk_012 = 5;
     arg0->unk_258[20 + arg3].unk_00C = D_800EE60C;
     arg0->unk_258[20 + arg3].unk_01E = 0;
-    arg0->unk_258[20 + arg3].unk_000[1] = (arg0->pos[1] + arg0->unk_070) - 2.5;
+    arg0->unk_258[20 + arg3].unk_000[1] = (arg0->pos[1] + arg0->boundingBox) - 2.5;
 }
 
 void func_80062B18(f32 *arg0, f32 *arg1, f32 *arg2, f32 arg3, f32 arg4, f32 arg5, u16 arg6, u16 arg7) {
@@ -5850,7 +5850,7 @@ void func_80064184(Player* arg0, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     arg0->unk_258[arg1].unk_000[2] = arg0->pos[2] + sp3C;
     arg0->unk_258[arg1].unk_000[1] = arg0->pos[1] + sp40;
     ++arg0->unk_258[arg1].unk_01E;
-    if ((arg0->unk_258[arg1].unk_01E == 12) || (D_801652A0[arg2] <= (arg0->pos[1] - arg0->unk_070))) {
+    if ((arg0->unk_258[arg1].unk_01E == 12) || (D_801652A0[arg2] <= (arg0->pos[1] - arg0->boundingBox))) {
         arg0->unk_258[arg1].unk_01C = 0;
         arg0->unk_258[arg1].unk_01E = 0;
         arg0->unk_258[arg1].unk_012 = 0;

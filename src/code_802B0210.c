@@ -1316,8 +1316,8 @@ void func_802B2914(struct banana_bunch_parent *banana_bunch, Player *player, s16
     struct banana_actor *phi_v0;
 
     sp4C = 0.0f;
-    sp50 = -player->unk_070;
-    sp54 = -(player->unk_070 + 4.0f);
+    sp50 = -player->boundingBox;
+    sp54 = -(player->boundingBox + 4.0f);
     func_802B63B8(&sp4C, player->unk_174);
     temp_a0 = &sp4C;
     temp_a1 = &sp58;
@@ -1744,8 +1744,8 @@ void update_obj_green_shell(struct shell_actor *shell) {
         temp_s1 = &gPlayers[shell->playerId];
         func_802B0210(&temp_s1->unk_110, &shell->unk30);
         sp6C = 0.0f;
-        sp70 = temp_s1->unk_070;
-        sp74 = -(temp_s1->unk_070 + shell->boundingBox + 2.0f);
+        sp70 = temp_s1->boundingBox;
+        sp74 = -(temp_s1->boundingBox + shell->boundingBox + 2.0f);
         func_802B63B8(&sp6C, temp_s1->unk_174);
         shell->pos[0] = sp6C + temp_s1->pos[0];
         temp_f14 = temp_s1->pos[1] - sp70;
@@ -1831,7 +1831,7 @@ void update_obj_green_shell(struct shell_actor *shell) {
             return;
         }
         sp6C = sins((u16) shell->rotAngle) * 6.0f;
-        sp70 = shell->boundingBox - temp_s1_2->unk_070;
+        sp70 = shell->boundingBox - temp_s1_2->boundingBox;
         sp74 = coss((u16) shell->rotAngle) * 6.0f;
         func_802B63B8(&sp6C, temp_s1_2->unk_174);
         shell->pos[0] = sp6C + temp_s1_2->pos[0];
@@ -1878,7 +1878,7 @@ void update_obj_green_shell(struct shell_actor *shell) {
         temp_t4 = shell->rotAngle + temp_v0_4->rotVelocity;
         shell->rotAngle = temp_t4;
         sp6C = sins(temp_t4 & 0xFFFF) * 8.0f;
-        sp70 = shell->boundingBox - temp_s1_4->unk_070;
+        sp70 = shell->boundingBox - temp_s1_4->boundingBox;
         sp74 = coss((u16) shell->rotAngle) * 8.0f;
         func_802B63B8((bitwise f32 *) 8.0f, &sp6C, temp_s1_4->unk_174);
         sp78 = shell->pos[0];
@@ -2254,8 +2254,8 @@ void update_obj_red_blue_shell(struct shell_actor *shell) {
         temp_s1 = &gPlayers[shell->playerId];
         func_802B0210(&temp_s1->unk_110, &shell->unk30);
         sp8C = 0.0f;
-        sp90 = temp_s1->unk_070;
-        sp94 = -(temp_s1->unk_070 + shell->boundingBox + 2.0f);
+        sp90 = temp_s1->boundingBox;
+        sp94 = -(temp_s1->boundingBox + shell->boundingBox + 2.0f);
         func_802B63B8(&sp8C, temp_s1->unk_174);
         shell->pos[0] = sp8C + temp_s1->pos[0];
         temp_f14 = temp_s1->pos[1] - sp90;
@@ -2338,7 +2338,7 @@ block_16:
             return;
         }
         sp8C = sins((u16) shell->rotAngle) * 8.0f;
-        sp90 = shell->boundingBox - temp_s1_2->unk_070;
+        sp90 = shell->boundingBox - temp_s1_2->boundingBox;
         sp94 = coss((u16) shell->rotAngle) * 8.0f;
         func_802B63B8(&sp8C, temp_s1_2->unk_174);
         shell->pos[0] = sp8C + temp_s1_2->pos[0];
@@ -2452,7 +2452,7 @@ block_16:
         temp_t6 = shell->rotAngle + temp_v0_7->rotVelocity;
         shell->rotAngle = temp_t6;
         sp8C = sins(temp_t6 & 0xFFFF) * 8.0f;
-        sp90 = shell->boundingBox - temp_s1_5->unk_070;
+        sp90 = shell->boundingBox - temp_s1_5->boundingBox;
         sp94 = coss((u16) shell->rotAngle) * 8.0f;
         func_802B63B8(&sp8C, temp_s1_5->unk_174);
         sp38 = shell->pos[0];
