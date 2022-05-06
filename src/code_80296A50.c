@@ -2349,7 +2349,7 @@ void func_8029A3AC(Camera *camera, Mat4 arg1, struct shell_actor *shell) {
     temp_t8 = ((s32) (u16) shell->rotVelocity / 4369) & 0xFFFF;
     arg1->unk30 = (f32) shell->pos[0];
     temp_t3 = phi_t3 + (sp + (temp_t8 * 2))->unk58;
-    arg1->unk34 = (f32) ((shell->pos[1] - shell->boundingBox) + 1.0f);
+    arg1->unk34 = (f32) ((shell->pos[1] - shell->boundingBoxSize) + 1.0f);
     arg1->unk38 = (f32) shell->pos[2];
     sp7C = temp_t8;
     sp54 = temp_t3;
@@ -4926,7 +4926,7 @@ s32 func_8029F408(Player *arg0, Player *arg1) {
     if ((temp_a3->posY - arg1->posZ) < 0.0f) {
         return 0;
     }
-    if ((temp_a3->boundingBox + (bitwise f32) arg1->unk_00C) < temp_f2_2) {
+    if ((temp_a3->boundingBoxSize + (bitwise f32) arg1->unk_00C) < temp_f2_2) {
         return 0;
     }
     if ((temp_a3->unk_000 & 0x4000) != 0) {
@@ -5143,7 +5143,7 @@ s32 func_8029FB80(Player *arg0, struct Actor *arg1) {
     f32 temp_f16;
     f32 temp_f2;
 
-    temp_f0 = arg0->boundingBox + arg1->unkC;
+    temp_f0 = arg0->boundingBoxSize + arg1->unkC;
     temp_f2 = arg1->unk18[0] - arg0->pos[0];
     if (temp_f0 < temp_f2) {
         return 0;
@@ -5841,7 +5841,7 @@ void update_obj_fake_item_box(struct fake_item_box *fake_item_box) {
 
     switch(fake_item_box->state) {
         case 0:
-            fake_item_box->boundingBox = fake_item_box->sizeScaling * 5.5f;
+            fake_item_box->boundingBoxSize = fake_item_box->sizeScaling * 5.5f;
             fake_item_box->rot[0] -= 0xB6;
             fake_item_box->rot[1] += 0x16C;
             fake_item_box->rot[2] -= 0xB6;
@@ -5857,7 +5857,7 @@ void update_obj_fake_item_box(struct fake_item_box *fake_item_box) {
             fake_item_box->pos[0] = temp_v0_4->pos[0] - temp_f14;
             fake_item_box->pos[1] = (temp_v0_4->pos[1] - temp_f16) - 1.0f;
             fake_item_box->pos[2] = temp_v0_4->pos[2] - temp_f18;
-            func_802ADDC8(&fake_item_box->unk30, fake_item_box->boundingBox, fake_item_box->pos[0], fake_item_box->pos[1], fake_item_box->pos[2]);
+            func_802ADDC8(&fake_item_box->unk30, fake_item_box->boundingBoxSize, fake_item_box->pos[0], fake_item_box->pos[1], fake_item_box->pos[2]);
             func_802B4E30(fake_item_box);
             temp_v1_3 = &gControllers[temp_v1];
             if ((temp_v0_4->unk_000 & 0x4000) != 0) {
@@ -5877,7 +5877,7 @@ void update_obj_fake_item_box(struct fake_item_box *fake_item_box) {
                 fake_item_box->sizeScaling = 1.0f;
             }
 
-            fake_item_box->boundingBox = fake_item_box->sizeScaling * 5.5f;
+            fake_item_box->boundingBoxSize = fake_item_box->sizeScaling * 5.5f;
             if (fake_item_box->targetY <= fake_item_box->pos[1]) {
                 fake_item_box->pos[1] = fake_item_box->targetY;
             } else {
