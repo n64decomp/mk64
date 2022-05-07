@@ -1119,7 +1119,7 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     sp38 = temp_f0;
     sp94 = temp_f2;
     sp40 = temp_f2;
-    sp90 = -player->unk_070;
+    sp90 = -player->boundingBoxSize;
     func_802B63B8(sp48, temp_a0, &sp5C);
     sp80 = player->boundingBoxCorners[0].cornerX;
     sp84 = player->boundingBoxCorners[0].cornerY;
@@ -1135,7 +1135,7 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     sp34 = temp_f14;
     sp28 = temp_f2_2;
     sp94 = sp40;
-    sp90 = -player->unk_070;
+    sp90 = -player->boundingBoxSize;
     func_802B63B8(sp48, (bitwise f32 *) temp_f14, temp_a0_2, &sp5C);
     sp80 = player->boundingBoxCorners[1].cornerX;
     sp84 = player->boundingBoxCorners[1].cornerY;
@@ -1149,7 +1149,7 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     sp8C = (f32) (sp38 - 2.6);
     sp94 = temp_f12;
     sp40 = temp_f12;
-    sp90 = -player->unk_070;
+    sp90 = -player->boundingBoxSize;
     func_802B63B8(temp_f12, temp_a0_3, &sp5C);
     sp80 = player->boundingBoxCorners[2].cornerX;
     sp84 = player->boundingBoxCorners[2].cornerY;
@@ -1161,7 +1161,7 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     temp_a0_4 = &sp8C;
     sp8C = (f32) (sp28 + 2.6);
     sp94 = sp40;
-    sp90 = -player->unk_070;
+    sp90 = -player->boundingBoxSize;
     func_802B63B8((bitwise f32) temp_a0_4, &sp5C);
     sp80 = player->boundingBoxCorners[3].cornerX;
     sp84 = player->boundingBoxCorners[3].cornerY;
@@ -3228,7 +3228,7 @@ void func_8002D268(Player *player, s32 arg1, s8 arg2, s8 arg3) {
         spF8 = temp_f4;
         spF8 = temp_f8 - D_800ED830;
     }
-    func_802AD950(&player->unk_110, player->unk_070, spFC, spF8, spF4, player->rotX, player->rotY, player->rotZ);
+    func_802AD950(&player->unk_110, player->boundingBoxSize, spFC, spF8, spF4, player->rotX, player->rotY, player->rotZ);
     player->unk_058 = 0.0f;
     player->unk_060 = 0.0f;
     player->unk_05C = 1.0f;
@@ -3404,7 +3404,7 @@ void func_8002E4C4(Player *player) {
     player->kartHopJerk = 0.0f;
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = 0.0f;
-    player->pos[1] = func_802AE1C0(player->pos[0], D_80164510[player_index] + 10.0f, player->pos[2]) + player->unk_070;
+    player->pos[1] = func_802AE1C0(player->pos[0], D_80164510[player_index] + 10.0f, player->pos[2]) + player->boundingBoxSize;
     if (((player->pos[1] - D_80164510[player_index]) > 1200.0f) || ((player->pos[1] - D_80164510[player_index]) < -1200.0f)) {
         player->pos[1] = player->rotY;
     }

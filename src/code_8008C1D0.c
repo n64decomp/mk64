@@ -940,7 +940,7 @@ void func_8008DC08(Player* player, s8 arg1) {
         player->unk_DB6 = 0;
         player->unk_0BC |= 0x08000000;
         player->unk_224 = 1.0f;
-        player->unk_070 = gKartBoundingBoxTable[player->characterId];
+        player->boundingBoxSize = gKartBoundingBoxSizeTable[player->characterId];
         D_80165190[0][arg1] = 1;
         D_80165190[1][arg1] = 1;
         D_80165190[2][arg1] = 1;
@@ -995,7 +995,7 @@ void func_8008DF98(Player* player, s8 arg1) {
 ? func_800C90F4(s32, s32, s8);                      /* extern */
 extern ? D_80165190;
 extern ? D_8018D920;
-extern ? gKartBoundingBoxTable;
+extern ? gKartBoundingBoxSizeTable;
 
 void func_8008E118(void *arg0, s8 arg1) {
     s16 *temp_v0_3;
@@ -1061,7 +1061,7 @@ void func_8008E118(void *arg0, s8 arg1) {
     }
     if ((arg0->unkB0 >= 0) && (arg0->unkB0 < 0x1CC)) {
         move_f32_towards(arg0 + 0x224, 0.7f, 0x3DCCCCCD);
-        move_f32_towards(arg0 + 0x70, *(&gKartBoundingBoxTable + (arg0->unk254 * 4)) * 0.9, 0x3DCCCCCD);
+        move_f32_towards(arg0 + 0x70, *(&gKartBoundingBoxSizeTable + (arg0->unk254 * 4)) * 0.9, 0x3DCCCCCD);
         return;
     }
     arg1 = phi_a2;
@@ -1076,11 +1076,11 @@ GLOBAL_ASM("asm/non_matchings/code_8008C1D0/func_8008E118.s")
 
 void func_8008E3C0(Player* player, UNUSED s8 arg1) {
     move_f32_towards(&player->unk_224, 1.0f, 0.1f);
-    move_f32_towards(&player->unk_070, gKartBoundingBoxTable[player->characterId], 0.1f);
+    move_f32_towards(&player->boundingBoxSize, gKartBoundingBoxSizeTable[player->characterId], 0.1f);
     
     player->unk_0BC &= ~0x40000000;
     player->unk_224 = 1.0f;
-    player->unk_070 = gKartBoundingBoxTable[player->characterId];
+    player->boundingBoxSize = gKartBoundingBoxSizeTable[player->characterId];
     player->unk_DC4 = 3.0f;
     player->unk_DB6 = 0;
     player->unk_0BC |= 0x08000000;

@@ -35,7 +35,7 @@ extern f32 gKartFrictionTable[8];
 extern f32 gKartGravityTable[8];
 extern f32 D_800E2670[8];
 extern f32 gKartTopSpeedTable[8];
-extern f32 gKartBoundingBoxTable[8];
+extern f32 gKartBoundingBoxSizeTable[8];
 
 extern f32 D_800E26D0[15];
 extern f32 D_800E270C[15];
