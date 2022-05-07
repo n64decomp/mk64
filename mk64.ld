@@ -378,7 +378,7 @@ SECTIONS
    /* common textures, decompressed and set as segment 0x0D */
    BEGIN_SEG(common_textures, 0x0D000000)
    {
-      BUILD_DIR/src/common_textures.mio0.o(.data);
+      BUILD_DIR/src/common_textures.inc.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(common_textures)

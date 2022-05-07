@@ -583,7 +583,7 @@ void func_80297818(void) {
     s16 *phi_v0;
     s32 phi_a1;
     s32 i;
-    phi_v1 = &gSegmentTable[D_0D004E38[0] + D_0D004E38[0] & 0xFFFFFF] + 0x80000000;
+    phi_v1 = &gSegmentTable[D_0D004738[0] + D_0D004C68[0x1D0] & 0xFFFFFF] + 0x80000000;
     //phi_v1 = *(&gSegmentTable + ((&D_0D004E38 >> 0x18) * 4)) + (&D_0D004E38 & 0xFFFFFF) + 0x80000000;
     phi_v0 = &D_802BA060;
     phi_a1 = 0;
@@ -2336,10 +2336,11 @@ void func_8029A75C(Camera *arg0, Mat4 arg1, struct Actor *arg2) {
     func_8029A3AC(arg0, arg1, arg2);
 }
 
-extern s8 D_0D005038[];
+extern s8 D_0D004E68[];
 
+// Middle of a tlut access
 void func_8029A828(Camera *arg0, Mat4 arg1, struct Actor *arg2) {
-    gDPLoadTLUT_pal256(gDisplayListHead++, &D_0D005038);
+    gDPLoadTLUT_pal256(gDisplayListHead++, &D_0D004E68[0x1D0]);
 
 
     func_8029A3AC(arg0, arg1, arg2);

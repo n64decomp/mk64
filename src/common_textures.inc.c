@@ -1,4 +1,5 @@
 #include <types.h>
+#include <macros.h>
 #include <PR/gbi.h>
 
 // From common_textures.bin
@@ -23,8 +24,11 @@ s8 D_0D000200[] = { // tlut
     #include "textures/132B50_00200.rgba16.inc.c"
 };
 
-static Vtx D_0D001210[] = {
+static Vtx D_0D001200[] = {
     {{{   -80,     100,       0}, 0, {0, 900}, {0xff, 0xff, 0xff, 0xff}}},
+};
+
+static Vtx D_0D001210[] = {
     {{{     4,       0,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{     0,      20,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{    -4,       0,       0}, 0, {0, 0}, {0xfe, 0x02, 0x00, 0x00}}},
@@ -102,10 +106,10 @@ static Vtx D_0D001390[] = {
     {{{    40,      85,       0}, 0, {0, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    80,      85,       0}, 0, {2012, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    80,     100,       0}, 0, {2012, 0}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{    40,     100,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
 static Vtx D_0D001590[] = {
-    {{{    40,     100,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -92,       0,       0}, 0, {0, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -89,       0,       0}, 0, {990, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -89,     115,       0}, 0, {990, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -128,11 +132,11 @@ static Vtx D_0D001590[] = {
     {{{    80,     115,       0}, 0, {990, 224}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    80,      85,       0}, 0, {0, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    88,      82,       0}, 0, {990, 990}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{    88,      87,       0}, 0, {990, 22}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{    80,      90,       0}, 0, {0, 2}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
 static Vtx D_0D001710[] = {
-    {{{    88,      87,       0}, 0, {990, 22}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{    80,      90,       0}, 0, {0, 2}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    80,      85,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -80,      85,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -80,     115,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -150,7 +154,7 @@ Gfx D_0D001750[] = {
 };
 
 Gfx D_0D001780[] = {
-    gsSPVertex(D_0D001210, 3, 0),
+    gsSPVertex(&D_0D001210, 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -204,24 +208,24 @@ Gfx D_0D001840[] = {
     gsDPSetTextureLUT(G_TT_RGBA16),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
-    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 1855, 49152),
+    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0xFC, 0x7C),
     gsDPLoadTextureBlock(&D_03004000, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSPVertex(D_0D001390, 32, 0),
-    gsSP1Quadrangle(0, 1, 2, 3),
+    gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsDPLoadTextureBlock(&D_03004800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
-    gsSP1Quadrangle(4, 5, 6, 7),
+    gsSP1Quadrangle(4, 5, 6, 7, 0),
     gsDPLoadTextureBlock(&D_03005000, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
-    gsSP1Quadrangle(8, 9, 10, 11),
+    gsSP1Quadrangle(8, 9, 10, 11, 0),
     gsDPLoadTextureBlock(&D_03005800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
-    gsSP1Quadrangle(12, 13, 14, 15),
+    gsSP1Quadrangle(12, 13, 14, 15, 0),
     gsDPLoadTextureBlock(&D_03006000, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
-    gsSP1Quadrangle(16, 17, 18, 19),
+    gsSP1Quadrangle(16, 17, 18, 19, 0),
     gsDPLoadTextureBlock(&D_03006800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
-    gsSP1Quadrangle(20, 21, 22, 23),
+    gsSP1Quadrangle(20, 21, 22, 23, 0),
     gsDPLoadTextureBlock(&D_03007000, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
-    gsSP1Quadrangle(24, 25, 26, 27),
+    gsSP1Quadrangle(24, 25, 26, 27, 0),
     gsDPLoadTextureBlock(&D_03007800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
-    gsSP1Quadrangle(28, 29, 30, 31),
+    gsSP1Quadrangle(28, 29, 30, 31, 0),
     gsDPSetTextureLUT(G_TT_NONE),
     gsSPEndDisplayList(),
 };
@@ -233,20 +237,20 @@ Gfx D_0D001AB8[] = {
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
-    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 7, 49276),
+    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 124, 124),
     gsSPVertex(D_0D001590, 24, 0),
-    gsSP1Quadrangle(0, 1, 2, 3),
-    gsSP1Quadrangle(4, 5, 6, 7),
+    gsSP1Quadrangle(0, 1, 2, 3, 0),
+    gsSP1Quadrangle(4, 5, 6, 7, 0),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, &D_03008800),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),
-    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 7, 49276),
-    gsSP1Quadrangle(8, 9, 10, 11),
-    gsSP1Quadrangle(12, 13, 14, 15),
-    gsSP1Quadrangle(16, 17, 18, 19),
-    gsSP1Quadrangle(20, 21, 22, 23),
+    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 124, 124),
+    gsSP1Quadrangle(8, 9, 10, 11, 0),
+    gsSP1Quadrangle(12, 13, 14, 15, 0),
+    gsSP1Quadrangle(16, 17, 18, 19, 0),
+    gsSP1Quadrangle(20, 21, 22, 23, 0),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };
@@ -255,7 +259,7 @@ Gfx D_0D001B68[] = {
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPVertex(D_0D001710, 4, 0),
-    gsSP1Quadrangle(0, 1, 2, 3),
+    gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsSPEndDisplayList(),
 };
 
@@ -339,40 +343,40 @@ static Vtx D_0D001D98[] = {
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
-    {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
 };
 
 static Vtx D_0D001DC8[] = {
+    {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
-    {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
 };
 
 static Vtx D_0D001DF8[] = {
+    {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
-    {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
 };
 
 static Vtx D_0D001E28[] = {
+    {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
-    {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
 };
 
 static Vtx D_0D001E58[] = {  
+    {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
-    {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
-};
 
+};
 static Vtx D_0D001E88[] = {
+    {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
-    {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
 };
 
 static Vtx D_0D001EB8[] = {
+    {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
 };
@@ -411,14 +415,14 @@ Gfx D_0D002F80[] = {
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
-    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 7, 49404),
+    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 124, 252),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gItemBoxQuestionMark_Texture),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 256),
     gsSPVertex(D_0D002F40, 4, 0),
-    gsSP1Quadrangle(0, 1, 2, 3),
+    gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };
@@ -431,14 +435,14 @@ Gfx D_0D003008[] = {
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
-    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 7, 49404),
+    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 124, 252),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gItemBoxQuestionMark_Texture),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 256),
     gsSPVertex(D_0D001D28, 4, 0),
-    gsSP1Quadrangle(0, 1, 2, 3),
+    gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };
@@ -576,7 +580,7 @@ Gfx D_0D004B48[] = {
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
-    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 7, 49276),
+    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 124, 124),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gBananaTexture),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
@@ -598,7 +602,7 @@ Gfx D_0D004BD8[] = {
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD),
-    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 1855, 49152),
+    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 252, 124),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_0D003B48),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
@@ -617,13 +621,15 @@ s8 D_0D004C68[] = {
     #include "textures/132B50_04C68_tlut.rgba16.inc.c"
 };
 
-s8 D_0D004E38[] = {
-    #include "textures/132B50_04E38_tlut.rgba16.inc.c"
+s8 D_0D004E68[] = {
+    #include "textures/132B50_04E68_tlut.rgba16.inc.c"
 };
 
-s8 D_0D005038[] = {
-    #include "textures/132B50_05038_tlut.rgba16.inc.c"
+s8 D_0D005068[] = {
+    #include "textures/132B50_05068_tlut.rgba16.inc.c"
 };
+
+static s32 fileSplitPad[4] = { 0 };
 
 static Vtx D_0D005238[] = {
     {{{     3,       6,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -647,8 +653,8 @@ Gfx D_0D0052B8[] = {
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
-    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 7, 49276),
-    gsSP1Quadrangle(0, 1, 2, 3),
+    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 124, 124),
+    gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsSPTexture(0xFFFF, 0xFFFF, 1, 1, G_OFF),
     gsDPPipeSync(),
     gsSPEndDisplayList(),
@@ -666,7 +672,7 @@ Gfx D_0D005308[] = {
 Gfx D_0D005338[] = {
     gsSPDisplayList(D_0D005308),
     gsSPVertex(D_0D005238, 4, 0),
-    gsSP1Quadrangle(0, 1, 2, 3),
+    gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsDPSetTextureLUT(G_TT_NONE),
     gsDPPipeSync(),
     gsSPEndDisplayList(),
@@ -675,7 +681,7 @@ Gfx D_0D005338[] = {
 Gfx D_0D005368[] = {
     gsSPDisplayList(D_0D005308),
     gsSPVertex(D_0D005278, 4, 0),
-    gsSP1Quadrangle(0, 1, 2, 3),
+    gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsDPSetTextureLUT(G_TT_NONE),
     gsDPPipeSync(),
     gsSPEndDisplayList(),
@@ -771,26 +777,26 @@ static Vtx D_0D0054B0[] = {
     {{{     5,      79,       0}, 0, {704, 10176}, {0xff, 0x80, 0x00, 0xff}}},
     {{{    -6,      79,       0}, 0, {0, 10176}, {0xff, 0x80, 0x00, 0xff}}},
     {{{    -6,     -96,       0}, 0, {0, 0}, {0xff, 0xff, 0x80, 0xff}}},
-};
-
-static Vtx D_0D005770[] = {
     {{{     5,     -96,       0}, 0, {704, 0}, {0xff, 0xff, 0x80, 0xff}}},
     {{{     5,      95,       0}, 0, {704, 12224}, {0xff, 0x80, 0x00, 0xff}}},
     {{{    -6,      95,       0}, 0, {0, 12224}, {0xff, 0x80, 0x00, 0xff}}},
-    {{{    -8,      -8,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D0057B0[] = {
+static Vtx D_0D005770[] = {
+    {{{    -8,      -8,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,      -8,       0}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,       7,       0}, 0, {960, 960}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -8,       7,       0}, 0, {0, 960}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{    -8,      -8,       0}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D0057F0[] = {
+static Vtx D_0D0057B0[] = {
+    {{{    -8,      -8,       0}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,      -8,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,       7,       0}, 0, {0, 960}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -8,       7,       0}, 0, {960, 960}, {0xff, 0xff, 0xff, 0xff}}},
+};
+
+static Vtx D_0D0057F0[] = {
     {{{    -8,       0,      -8}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,       0,      -8}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,       0,       7}, 0, {960, 960}, {0xff, 0xff, 0xff, 0xff}}},
@@ -803,19 +809,19 @@ static Vtx D_0D0057F0[] = {
     {{{     9,      -6,       0}, 0, {960, 0}, {0x00, 0x00, 0x00, 0xff}}},
     {{{     9,       9,       0}, 0, {960, 960}, {0x00, 0x00, 0x00, 0xff}}},
     {{{    -6,       9,       0}, 0, {0, 960}, {0x00, 0x00, 0x00, 0xff}}},
-};
-
-static Vtx D_0D0058E0[] = {
     {{{     0,      -8,       0}, 0, {448, 0}, {0x00, 0x00, 0x00, 0xff}}},
     {{{     8,       8,       0}, 0, {960, 960}, {0x00, 0x00, 0x00, 0xff}}},
     {{{    -8,       8,       0}, 0, {0, 960}, {0x00, 0x00, 0x00, 0xff}}},
-    {{{    -8,      -8,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005920[] = {
+static Vtx D_0D0058E0[] = {
+    {{{    -8,      -8,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,      -8,       0}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,       7,       0}, 0, {960, 960}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -8,       7,       0}, 0, {0, 960}, {0xff, 0xff, 0xff, 0xff}}},
+};
+
+static Vtx D_0D005920[] = {
     {{{    -4,     -32,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,     -32,       0}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,      31,       0}, 0, {960, 960}, {0xff, 0xff, 0xff, 0xff}}},
@@ -837,38 +843,39 @@ static Vtx D_0D005920[] = {
     {{{    11,      23,       0}, 0, {1472, 3008}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -12,      23,       0}, 0, {0, 3008}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -14,     -14,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
-};
-static Vtx D_0D005AA0[] = {
     {{{    13,     -14,       0}, 0, {1728, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    13,      13,       0}, 0, {1728, 1728}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -14,      13,       0}, 0, {0, 1728}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   -16,      -8,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005AE0[] = {
+static Vtx D_0D005AA0[] = {
+    {{{   -16,      -8,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,      -8,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,       7,       0}, 0, {1984, 960}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -16,       7,       0}, 0, {0, 960}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   -16,     -16,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
-};    
+};
 
-static Vtx D_0D005B20[] = {
+static Vtx D_0D005AE0[] = {
+    {{{   -16,     -16,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,     -16,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,      15,       0}, 0, {1984, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -16,      15,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   -16,     -16,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005B60[] = {
+static Vtx D_0D005B20[] = {
+    {{{   -16,     -16,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,     -16,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,      15,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -16,      15,       0}, 0, {1984, 1984}, {0xff, 0xff, 0xff, 0xff}}},
+};
+
+static Vtx D_0D005B60[] = {
     {{{   -16,       0,     -16}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,       0,     -16}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,       0,      15}, 0, {1984, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -16,       0,      15}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
 };
-    
+
 static Vtx D_0D005BD0[] = {
     {{{     0,      18,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    16,      -9,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1209,6 +1216,11 @@ Gfx D_0D006A40[] = {
     gsSPEndDisplayList(),
 };
 
+
+
+
+
+
 // Texture Block shadow i4
 s8 D_0D006A58[] = {
     #include "textures/132B50_06A58.i4.inc.c"
@@ -1223,9 +1235,8 @@ s8 D_0D006ED8[] = {
     #include "textures/132B50_06ED8_tlut.rgba16.inc.c"
 };
 
-// font Maybe ci8 probably i8
 s8 D_0D006EF8[] = {
-    #include "textures/132B50_06EF8.rgba16.inc.c"
+    #include "textures/132B50_06EF8.rgba16.ci4.inc.c"
 };
 
 // 0x76F8
@@ -1701,7 +1712,7 @@ Gfx D_0D008080[] = {
     gsDPSetTextureLUT(G_TT_RGBA16),
     gsDPLoadTLUT_pal16(0, D_0D006ED8),
     gsDPLoadSync(),
-    gsDPLoadTextureBlock_4b(D_0D006EF8, G_IM_FMT_CI, 128, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock_4b(&D_0D006ED8[0x20], G_IM_FMT_CI, 128, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSPEndDisplayList(),
 };
 
@@ -1753,10 +1764,10 @@ static Vtx D_0D008BB8[] = {
     {{{     2,       4,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     2,       0,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -2,       0,       0}, 0, {1984, 1984}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{    -2,       4,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
 static Vtx D_0D008BF8[] = {
-    {{{    -2,       4,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     2,       2,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     2,      -2,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -2,      -2,       0}, 0, {1984, 1984}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1964,71 +1975,861 @@ static Vtx D_0D008E98[] = {
 
 };
 
-// unknown data
-//s8 D_0D009418[] {
-    //#include ""
+/* C:\Users\MegaMech\decomp\actors\mk64\bin\common_textures.bin (2022-04-12 1:00:51 PM)
+   StartOffset(h): 00009418, EndOffset(h): 00009957, Length(h): 00000540 */
+// unk data. Maybe texture?
+/*
+u8 rawData[1344] = {
+	0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55,
+	0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
+	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55,
+	0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00,
+	0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55,
+	0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
+	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55,
+	0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00,
+	0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55,
+	0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
+	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55,
+	0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00,
+	0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55,
+	0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
+	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55,
+	0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00,
+	0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55,
+	0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
+	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55,
+	0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00,
+	0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55,
+	0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
+	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55,
+	0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00,
+	0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55,
+	0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
+	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
+	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
+	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
+	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
+	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0x92, 0xAA, 0xAB,
+	0x40, 0x92, 0xAA, 0xAB, 0x40, 0x92, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
+	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
+	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
+	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
+	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
+	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
+	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x40, 0x70, 0x00, 0x00,
+	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
+	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
+	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
+	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
+	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
+	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
+	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
+	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
+	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00,
+	0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB,
+	0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55,
+	0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB,
+	0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00,
+	0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55, 0x40, 0x55, 0x55, 0x55,
+	0x40, 0x55, 0x55, 0x55, 0x40, 0x55, 0x55, 0x55, 0x40, 0x55, 0x55, 0x55,
+	0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB,
+	0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00,
+	0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB,
+	0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55,
+	0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB,
+	0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00,
+	0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB,
+	0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55,
+	0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB,
+	0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00,
+	0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB,
+	0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55,
+	0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB,
+	0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00,
+	0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB,
+	0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55,
+	0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB,
+	0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00,
+	0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB,
+	0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB, 0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
+	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
+	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
+	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
+	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x3A, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0x70, 0x00, 0x00, 0x40, 0x70, 0x00, 0x00,
+	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
+	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
+	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
+	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
+	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
+	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
+	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
+	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
+	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
+	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
+	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
+	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
+	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
+	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
+	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
+	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+*/
+
+// unknown float data
+f32 D_0D009418[] = {
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
+    0.0f, 0.0f, 0.0f, 0.0f,
+};
+
+f32 D_0D009568[] = {
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 4.5833334f, 4.5833334f, 4.5833334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    4.1666665f, 5.5833334f, 6.1666665, 6.75f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    0.0f, 0.0f, 0.0f, 0.0f,
+};
+
+f32 D_0D0096B8[] = {
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.3333332f, 3.3333332f, 3.3333332f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    3.3333332f, 3.9166667f, 4.5f, 5.0833334f,
+    0.0f, 0.0f, 0.0f, 0.0f,
+};
+
+f32 D_0D009808[] = {
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    2.9166667f, 3.75f, 3.75f, 3.75f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    3.75f, 5.1666665f, 5.75f, 6.3333334f,
+    0.0f, 0.0f, 0.0f
+};
+
+s32 unkPad = 0;
+
+// Odometer speedometer
+s8 D_0D009958[] = {
+    #include "textures/132B50_09958.i4.inc.c"
+};
+
+// i8? odometer needle
+s8 D_0D00A558[] = {
+    #include "textures/132B50_0A558.i4.inc.c"
+};
+
+// Lap UI Texture
+s8 D_D00A958[] = {
+    #include "textures/132B50_0A958.rgba16.inc.c"
+};
+
+// 123/
+s8 D_0D00AB58[] = {
+    #include "textures/132B50_0AB58.rgba16.inc.c"
+};
+
+// Lap
+s8 D_0D00AD58[] = {
+    #include "textures/132B50_0AD58.rgba16.inc.c"
+};
+
+// 1/3
+s8 D_0D00B158[] = {
+    #include "textures/132B50_0B158.rgba16.inc.c"
+};
+
+// 2/3
+s8 D_0D00B558[] = {
+    #include "textures/132B50_0B558.rgba16.inc.c"
+};
+
+// 3/3
+s8 D_0D00B958[] = {
+    #include "textures/132B50_0B958.rgba16.inc.c"
+};
+
+// total
+s8 D_0D00BD58[] = {
+    #include "textures/132B50_0BD58.rgba16.inc.c"
+};
+
+// time
+s8 D_0D00C158[] = {
+    #include "textures/132B50_0C158.rgba16.inc.c"
+};
+
+// 0123456789'"!
+s8 D_0D00C558[] = {
+    #include "textures/132B50_0C558.rgba16.inc.c"
+};
+
+// first place
+s8 D_0D00D258[] = {
+    #include "textures/132B50_0D258.i4.inc.c"
+};
+
+// second place
+s8 D_0D00E258[] = {
+    #include "textures/132B50_0E258.i4.inc.c"
+};
+
+// third place
+s8 D_0D00F258[] = {
+    #include "textures/132B50_0F258.i4.inc.c"
+};
+
+// fourth place
+s8 D_0D010258[] = {
+    #include "textures/132B50_10258.i4.inc.c"
+};
+
+// fifth place
+s8 D_0D011258[] = {
+    #include "textures/132B50_11258.i4.inc.c"
+};
+
+// sixth place
+s8 D_0D012258[] = {
+    #include "textures/132B50_12258.i4.inc.c"
+};
+
+// seventh place
+s8 D_0D013258[] = {
+    #include "textures/132B50_13258.i4.inc.c"
+};
+
+// eighth place
+s8 D_0D014258[] = {
+    #include "textures/132B50_14258.i4.inc.c"
+};
+
+// First
+s8 D_0D015258[] = {
+    #include "textures/132B50_15258.i4.inc.c"
+};
+
+// Second
+s8 D_0D015A58[] = {
+    #include "textures/132B50_15A58.i4.inc.c"
+};
+
+// Third
+s8 D_0D016258[] = {
+    #include "textures/132B50_16258.i4.inc.c"
+};
+
+// Fourth
+s8 D_0D016A58[] = {
+    #include "textures/132B50_16A58.i4.inc.c"
+};
+
+// 17258 tlut
+s8 D_0D017258[] = {
+    #include "textures/132B50_17258_tlut.rgba16.inc.c"
+};
+
+s16 tlutPad[] = {0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, };
+
+// 1p 2p 3p 4p (includes 4 textures)
+// Required to match tlut
+s8 D_0D017458[] = {
+    #include "textures/unworkable_data.inc.c"
+};
+
+//s8 D_0D017C58[] = {
+//    #include "textures/132B50_17C58.rgba16.ci8.inc.c"
 //};
 
-// file pad?
-
-//s8 D_0D009568[] = {
-
+//s8 D_0D018458[] = {
+//    #include "textures/132B50_18458.rgba16.ci8.inc.c"
 //};
 
-// file pad?
+//s8 D_0D018C58[] = {
+//    #include "textures/132B50_18C58.rgba16.ci8.inc.c"
+//};
 
-//D_0D0096B8
+// 19458 tlut
+//s8 D_0D019458[] = {
+//    #include "textures/132B50_19458_tlut.rgba16.inc.c"
+//};
 
-// file pad?
+// 1 
+// s8 D_0D019658[] = {
+//     #include "textures/132B50_19658.rgba16.ci8.inc.c"
+// };
 
-//D_0D009808
+// // 2
+// s8 D_0D019758[] = {
+//     #include "textures/132B50_19758.rgba16.ci8.inc.c"
+// };
 
-// file pad?
+// // 3
+// s8 D_0D019858[] = {
+//     #include "textures/132B50_19858.rgba16.ci8.inc.c"
+// };
 
-// D_0D009958 // odometer
+// // 4
+// s8 D_0D019958[] = {
+//     #include "textures/132B50_19958.rgba16.ci8.inc.c"
+// };
+
+// // 5
+// s8 D_0D019A58[] = {
+//     #include "textures/132B50_19A58.rgba16.ci8.inc.c"
+// };
+
+// // 6
+// s8 D_0D019B58[] = {
+//     #include "textures/132B50_19B58.rgba16.ci8.inc.c"
+// };
+
+// // 7
+// s8 D_0D019C58[] = {
+//     #include "textures/132B50_19C58.rgba16.ci8.inc.c"
+// };
+
+// // 8
+// s8 D_0D019D58[] = {
+//     #include "textures/132B50_19D58.rgba16.ci8.inc.c"
+// };
+
+// // 0
+// s8 D_0D01A058[] = {
+//     #include "textures/132B50_1A058.rgba16.ci8.inc.c"
+// };
+
+// // 1
+// s8 D_0D01A098[] = {
+//     #include "textures/132B50_1A098.rgba16.ci8.inc.c"
+// };
+
+// // 2
+// s8 D_0D01A0D8[] = {
+//     #include "textures/132B50_1A0D8.rgba16.ci8.inc.c"
+// };
+
+// // 3
+// s8 D_0D01A118[] = {
+//     #include "textures/132B50_1A118.rgba16.ci8.inc.c"
+// };
+
+// // 4
+// s8 D_0D01A158[] = {
+//     #include "textures/132B50_1A158.rgba16.ci8.inc.c"
+// };
+
+// // 5
+// s8 D_0D01A198[] = {
+//     #include "textures/132B50_1A198.rgba16.ci8.inc.c"
+// };
+
+// // 6
+// s8 D_0D01A1D8[] = {
+//     #include "textures/132B50_1A1D8.rgba16.ci8.inc.c"
+// };
+
+// // 7
+// s8 D_0D01A218[] = {
+//     #include "textures/132B50_1A218.rgba16.ci8.inc.c"
+// };
+
+// // 8
+// s8 D_0D01A258[] = {
+//     #include "textures/132B50_1A258.rgba16.ci8.inc.c"
+// };
+
+// // 9
+// s8 D_0D01A298[] = {
+//     #include "textures/132B50_1A298.rgba16.ci8.inc.c"
+// };
+
+// some padding or file split?
+
+// Square
+s8 D_0D01A2D8[] = {
+    #include "textures/132B50_1A2D8.ia4.inc.c"
+};
 
 
-// D_0D00A558 // i8? odometer needle
+// 1A4D8 mario tlut
+s8 D_0D01A4D8[] = {
+    #include "textures/132B50_1A4D8_tlut.rgba16.inc.c"
+};
+
+// 1A6D8 luigi tlut
+s8 D_0D01A6D8[] = {
+    #include "textures/132B50_1A6D8_tlut.rgba16.inc.c"
+};
+
+// 1A8D8 peach tlut
+s8 D_0D01A8D8[] = {
+    #include "textures/132B50_1A8D8_tlut.rgba16.inc.c"
+};
+
+// 1AAD8 toad tlut
+s8 D_0D01AAD8[] = {
+    #include "textures/132B50_1AAD8_tlut.rgba16.inc.c"
+};
+
+// 1ACD8 yoshi tlut
+s8 D_0D01ACD8[] = {
+    #include "textures/132B50_1ACD8_tlut.rgba16.inc.c"
+};
+
+// 1AED8 dk tlut
+s8 D_0D01AED8[] = {
+    #include "textures/132B50_1AED8_tlut.rgba16.inc.c"
+};
+
+// 1B0D8 wario tlut
+s8 D_0D01B0D8[] = {
+    #include "textures/132B50_1B0D8_tlut.rgba16.inc.c"
+};
+
+// 1B2D8 bowser tlut
+s8 D_0D01B2D8[] = {
+    #include "textures/132B50_1B2D8_tlut.rgba16.inc.c"
+};
+
+// 1B4D8 bob-omb tlut and question mark?
+s8 D_0D01B4D8[] = {
+    #include "textures/132B50_1B4D8_tlut.rgba16.inc.c"
+};
 
 
-// D_0D00A958 // Lap UI Texture
+// Mario
+s8 D_0D01B6D8[] = {
+    #include "textures/132B50_1B6D8.rgba16.ci8.inc.c"
+};
 
-// D_0D00AB58 // 123/
+// Luigi
+s8 D_0D01BAD8[] = {
+    #include "textures/132B50_1BAD8.rgba16.ci8.inc.c"
+};
 
-// D_0D00AD58 // Lap
+// Peach
+s8 D_0D01BED8[] = {
+    #include "textures/132B50_1BED8.rgba16.ci8.inc.c"
+};
 
-// D_0D00B158 // 1/3
+// Toad
+s8 D_0D01C2D8[] = {
+    #include "textures/132B50_1C2D8.rgba16.ci8.inc.c"
+};
 
-// D_0D00B558 // 2/3
+// Yoshi
+s8 D_0D01C6D8[] = {
+    #include "textures/132B50_1C6D8.rgba16.ci8.inc.c"
+};
 
-// D_0D00B958 // 3/3
+// Donkey Kong
+s8 D_0D01CAD8[] = {
+    #include "textures/132B50_1CAD8.rgba16.ci8.inc.c"
+};
+
+// Wario
+s8 D_0D01CED8[] = {
+    #include "textures/132B50_1CED8.rgba16.ci8.inc.c"
+};
+
+// Bowser
+s8 D_0D01D2D8[] = {
+    #include "textures/132B50_1D2D8.rgba16.ci8.inc.c"
+};
+
+// Bob-omb
+s8 D_0D01D6D8[] = {
+    #include "textures/132B50_1D6D8.rgba16.ci8.inc.c"
+};
+
+// Question Mark
+s8 D_0D01DAD8[] = {
+    #include "textures/1DAD8_ci8.inc.c"
+};
+
+// 1DED8 tlut item frames
+s8 D_0D01DED8[] = {
+    #include "textures/132B50_1DED8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01E0D8[] = {
+    #include "textures/132B50_1E0D8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01E2D8[] = {
+    #include "textures/132B50_1E2D8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01E4D8[] = {
+    #include "textures/132B50_1E4D8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01E6D8[] = {
+    #include "textures/132B50_1E6D8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01E8D8[] = {
+    #include "textures/132B50_1E8D8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01EAD8[] = {
+    #include "textures/132B50_1EAD8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01ECD8[] = {
+    #include "textures/132B50_1ECD8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01EED8[] = {
+    #include "textures/132B50_1EED8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01F0D8[] = {
+    #include "textures/132B50_1F0D8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01F2D8[] = {
+    #include "textures/132B50_1F2D8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01F4D8[] = {
+    #include "textures/132B50_1F4D8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01F6D8[] = {
+    #include "textures/132B50_1F6D8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01F8D8[] = {
+    #include "textures/132B50_1F8D8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01FAD8[] = {
+    #include "textures/132B50_1FAD8_tlut.rgba16.inc.c"
+};
+
+s8 D_0D01FCD8[] = {
+    #include "textures/132B50_1FCD8_tlut.rgba16.inc.c"
+};
+
+// UI Item Frames
+s8 D_0D01FED8[] = {
+    #include "textures/132B50_1FED8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D0203D8[] = {
+    #include "textures/132B50_203D8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D0208D8[] = {
+    #include "textures/132B50_208D8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D020DD8[] = {
+    #include "textures/132B50_20DD8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D0212D8[] = {
+    #include "textures/132B50_212D8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D0217D8[] = {
+    #include "textures/132B50_217D8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D021CD8[] = {
+    #include "textures/132B50_21CD8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D0221D8[] = {
+    #include "textures/132B50_221D8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D0226D8[] = {
+    #include "textures/132B50_226D8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D022BD8[] = {
+    #include "textures/132B50_22BD8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D0230D8[] = {
+    #include "textures/132B50_230D8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D0235D8[] = {
+    #include "textures/132B50_235D8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D023AD8[] = {
+    #include "textures/132B50_23AD8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D023FD8[] = {
+    #include "textures/132B50_23FD8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D0244D8[] = {
+    #include "textures/132B50_244D8.rgba16.ci8.inc.c"
+};
+
+s8 D_0D0249D8[] = {
+    #include "textures/132B50_249D8.rgba16.ci8.inc.c"
+};
+
+// Unk data. Perhaps not an img nor tlut.
+s8 D_0D024ED8[] = {
+    #include "textures/common_132B50_24ED8.inc.c"
+};
+
+// traffic light tlut
+s8 D_0D025ED8[] = {
+    #include "textures/132B50_25ED8_tlut.rgba16.inc.c"
+};
 
 
-// D_0D00BD58 // TOTAL possibly total and time
+// unused traffic light textures
+UNUSED s8 D_0D0260D8[] = {
+    #include "textures/132B50_260D8.rgba16.ci8.inc.c"
+};
 
-// D_0D00C158 // TIME
+UNUSED s8 D_0D026558[] = {
+    #include "textures/132B50_26558.rgba16.ci8.inc.c"
+};
 
-// D_0D00C558 // unkTex
+UNUSED s8 D_0D0269D8[] = {
+    #include "textures/132B50_269D8.rgba16.ci8.inc.c"
+};
+
+UNUSED s8 D_0D026E58[] = {
+    #include "textures/132B50_26E58.rgba16.ci8.inc.c"
+};
+
+UNUSED s8 D_0D0272D8[] = {
+    #include "textures/132B50_272D8.rgba16.ci8.inc.c"
+};
+
+UNUSED s8 D_0D027758[] = {
+    #include "textures/132B50_27758.rgba16.ci8.inc.c"
+};
+
+UNUSED s8 D_0D027BD8[] = {
+    #include "textures/132B50_27BD8.rgba16.ci8.inc.c"
+};
+
+UNUSED s8 D_0D028058[] = {
+    #include "textures/132B50_28058.rgba16.ci8.inc.c"
+};
+
+UNUSED s8 D_0D0284D8[] = {
+    #include "textures/132B50_284D8.rgba16.ci8.inc.c"
+};
+
+UNUSED s8 D_0D028958[] = {
+    #include "textures/132B50_28958.rgba16.ci8.inc.c"
+};
+
+// leaf
+s8 D_0D028DD8[] = {
+    #include "textures/132B50_28DD8.rgba16.inc.c"
+};
+
+// leaf
+s8 D_0D0291D8[] = {
+    #include "textures/132B50_291D8.rgba16.inc.c"
+};
 
 
-// D_0D00D258 // ia8 first place, second place, etc. // the winnign version
+// some sort of smoke or effect (next too)
+s8 D_0D0293D8[] = {
+    #include "textures/132B50_293D8.i8.inc.c"
+};
 
+s8 D_0D029458[] = {
+    #include "textures/132B50_29458.i8.inc.c"
+};
 
-// D_0D015258 // Gameplay placement
+// 2A858 tlut
+s8 D_0D029858[] = {
+    #include "textures/132B50_29858.rgba16.ci8.inc.c"
+};
 
+s8 D_0D029C58[] = {
+    #include "textures/132B50_29C58.rgba16.ci8.inc.c"
+};
 
-// D_0D017258??? // data?
+s8 D_0D02A058[] = {
+    #include "textures/132B50_2A058.rgba16.ci8.inc.c"
+};
 
+s8 D_0D02A458[] = {
+    #include "textures/132B50_2A458.rgba16.ci8.inc.c"
+};
 
-// D_0D017458 // 1P, 2P, 3P, 4P
+// unk data tlut?
 
+s8 D_0D02AA58[] = {
+    #include "textures/132B50_2AA58.rgba16.inc.c"
+};
 
-// D_0D019458 // UnkTex
+s8 D_0D02AC58[] = {
+    #include "textures/132B50_2AC58.i8.inc.c"
+};
 
-// D_0D019658 // ia8 12345678 texture
+s8 D_0D02B058[] = {
+    #include "textures/132B50_2B058.i8.inc.c"
+};
 
-// D_0D019E58
+s8 D_0D02B458[] = {
+    #include "textures/132B50_2B458.i8.inc.c"
+};
 
-// lots of unk data 8E98
+s8 D_0D02B858[] = {
+    #include "textures/132B50_2B858.i8.inc.c"
+};
 
+s8 D_0D02BC58[] = {
+    #include "textures/132B50_2BC58.i8.inc.c"
+};
+
+s8 D_0D02C058[] = {
+    #include "textures/132B50_2C058.i8.inc.c"
+};
+
+s8 D_0D02C458[] = {
+    #include "textures/132B50_2C458.i8.inc.c"
+};
+
+s8 D_0D02C858[] = {
+    #include "textures/132B50_2C858.i8.inc.c"
+};
+
+// minimap cars
+s8 D_0D02CC58[] = {
+    #include "textures/132B50_2CC58.rgba16.inc.c"
+};
+
+s8 D_0D02CCD8[] = {
+    #include "textures/132B50_2CCD8.rgba16.inc.c"
+};
+
+s8 D_0D02CD58[] = {
+    #include "textures/132B50_2CD58.rgba16.inc.c"
+};
+
+s8 D_0D02CDD8[] = {
+    #include "textures/132B50_2CDD8.rgba16.inc.c"
+};
+
+s8 D_0D02CE58[] = {
+    #include "textures/132B50_2CE58.rgba16.inc.c"
+};
+
+s8 D_0D02CED8[] = {
+    #include "textures/132B50_2CED8.rgba16.inc.c"
+};
+
+s8 D_0D02CF58[] = {
+    #include "textures/132B50_2CF58.rgba16.inc.c"
+};
+
+s8 D_0D02CFD8[] = {
+    #include "textures/132B50_2CFD8.rgba16.inc.c"
+};
+
+// last minimap car
+s8 D_0D02D058[] = {
+    #include "textures/132B50_2D058.rgba16.inc.c"
+};
+
+// progress dot
+s8 D_0D02D0D8[] = {
+    #include "textures/132B50_2D0D8.rgba16.inc.c"
+};
 
