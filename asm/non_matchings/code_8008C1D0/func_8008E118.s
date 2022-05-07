@@ -134,11 +134,11 @@ glabel func_8008E118
 /* 08EF18 8008E318 0C008973 */  jal   move_f32_towards
 /* 08EF1C 8008E31C 34A53333 */   ori   $a1, (0x3F333333 & 0xFFFF) # ori $a1, $a1, 0x3333
 /* 08EF20 8008E320 960E0254 */  lhu   $t6, 0x254($s0)
-/* 08EF24 8008E324 3C01800E */  lui   $at, %hi(gKartBoundingBoxTable)
+/* 08EF24 8008E324 3C01800E */  lui   $at, %hi(gKartBoundingBoxSizeTable)
 /* 08EF28 8008E328 3C063DCC */  lui   $a2, (0x3DCCCCCD >> 16) # lui $a2, 0x3dcc
 /* 08EF2C 8008E32C 000E7880 */  sll   $t7, $t6, 2
 /* 08EF30 8008E330 002F0821 */  addu  $at, $at, $t7
-/* 08EF34 8008E334 C43226B0 */  lwc1  $f18, %lo(gKartBoundingBoxTable)($at)
+/* 08EF34 8008E334 C43226B0 */  lwc1  $f18, %lo(gKartBoundingBoxSizeTable)($at)
 /* 08EF38 8008E338 3C01800F */  lui   $at, %hi(D_800EF598)
 /* 08EF3C 8008E33C D426F598 */  ldc1  $f6, %lo(D_800EF598)($at)
 /* 08EF40 8008E340 46009121 */  cvt.d.s $f4, $f18

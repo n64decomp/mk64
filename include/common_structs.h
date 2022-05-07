@@ -297,7 +297,7 @@ typedef struct {
     /* 0x0064 */ f32 unk_064;
     /* 0x0068 */ f32 unk_068;
     /* 0x006C */ f32 unk_06C;
-    /* 0x0070 */ f32 unk_070;
+    /* 0x0070 */ f32 boundingBoxSize;
     /* 0x0074 */ f32 unk_074;
     /* 0x0078 */ s16 unk_078;
     /* 0x007A */ s16 unk_07A;
