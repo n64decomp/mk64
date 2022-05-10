@@ -25,34 +25,34 @@ extern struct Actor D_8015F9B8[];
 
 void func_802B02B4(struct Actor *arg0, s32 arg1) {
     s32 temp_f6;
-    struct Actor *temp_v0 = &D_8015F9B8[arg0->unk4];
+    struct Actor *temp_v0 = &D_8015F9B8[arg0->unk_04];
 
-    temp_v0->unk4--;
+    temp_v0->unk_04--;
 
-    switch((s16)arg0->unk8) {
+    switch((s16)arg0->unk_08) {
         case 0:
-            temp_v0->unk24[0] = -1.0f;
+            temp_v0->velocity[0] = -1.0f;
             break;
         case 1:
-            temp_v0->unk24[1] = -1.0f;
+            temp_v0->velocity[1] = -1.0f;
             break;
         case 2:
-            temp_v0->unk24[2] = -1.0f;
+            temp_v0->velocity[2] = -1.0f;
             break;
 
 
     }
-    arg0->unk2 = 0x8000; // bitflag
-    arg0->unk10[1] = 0;
-    arg0->unk24[1] = 3.0f;
-    arg0->unk4 = 60;
+    arg0->flags = 0x8000; // bitflag
+    arg0->rot[1] = 0;
+    arg0->velocity[1] = 3.0f;
+    arg0->unk_04 = 60;
 
     switch(arg1) {
         case 7:
-            arg0->unk6 = 5;
+            arg0->state = 5;
             break;
         case 8:
-            arg0->unk6 = 7;
+            arg0->state = 7;
             break;
     }
 }
@@ -69,8 +69,8 @@ void func_802B039C(void *arg0) {
     f32 phi_f6;
 
     arg0->unk6 = 1;
-    arg0->unk4 = 0xB4;
-    arg0->unk24 = (random_int(0xC8) - 0x64) * D_802B9E80;
+    arg0->unk_04 = 0xB4;
+    arg0->velocity = (random_int(0xC8) - 0x64) * D_802B9E80;
     temp_v0 = random_int(0xC8);
     temp_f6 = temp_v0;
     phi_f6 = temp_f6;
@@ -146,19 +146,19 @@ void func_802B0570(void *arg0) {
 
     func_802B0464(arg0->unk14);
     func_802B04E8(arg0, arg0->unk12);
-    temp_v0 = arg0->unk10;
+    temp_v0 = arg0->rot;
     if ((*(&gPlayers + (temp_v0 * 0xDD8)) & 0x4000) != 0) {
         func_800C9060(temp_v0 & 0xFF, 0x19019053);
     }
     arg0->unk2 = -0x8000;
-    arg0->unk4 = 0x3C;
+    arg0->unk_04 = 0x3C;
     arg0->unk6 = 5;
-    temp_v0_2 = (arg0->unk8 * 0x70) + &D_8015F9B8;
+    temp_v0_2 = (arg0->unk_08 * 0x70) + &D_8015F9B8;
     arg0->unk28 = 3.0f;
     temp_v0_2->unk12 = -1;
     temp_v0_2->unk14 = -1;
     temp_v0_2->unk16 = -1;
-    temp_v0_2->unk18 = -1;
+    temp_v0_2->pos = -1;
     temp_v0_2->unk1A = -1;
 }
 #else
@@ -218,8 +218,8 @@ void func_802B0648(struct banana_bunch_parent *banana_bunch) {
 block_10:
         temp_v0_6 = phi_v1->unk12;
         phi_v1->unk6 = 1;
-        phi_v1->unk4 = 0x00B4;
-        phi_v1->unk24 = 0.0f;
+        phi_v1->unk_04 = 0x00B4;
+        phi_v1->velocity = 0.0f;
         phi_v1->unk2C = 0.0f;
         phi_v1->unk28 = 1.5f;
         if (temp_v0_6 != -1) {
@@ -293,7 +293,7 @@ void func_802B0788(s16 arg0, struct banana_bunch_parent *banana_bunch, Player *p
 block_10:
         temp_a1 = phi_v0->unk12;
         phi_v0->unk6 = 1;
-        phi_v0->unk4 = 0x001E;
+        phi_v0->unk_04 = 0x001E;
         if (temp_a1 != -1) {
             (D_8015F9B8 + (temp_a1 * 0x70))->unk14 = -1;
         }
@@ -309,7 +309,7 @@ block_10:
         sp30 = phi_v0;
         load_giant_egg(phi_f12, &sp34, 0, phi_f0, phi_f12);
         func_802B64C4(&sp34, (s16) (player->unk_02E + player->unk_0C0));
-        sp30->unk24 = sp34;
+        sp30->velocity = sp34;
         sp30->unk28 = sp38;
         sp30->unk2C = sp3C;
     }
@@ -768,7 +768,7 @@ s16 func_802B17F4(void *arg0) {
     }
     temp_v1 = (temp_v0 * 0x70) + &D_8015F9B8;
     temp_v1->unk6 = 0;
-    temp_v1->unk10 = (arg0 - gPlayerOne) / 0xDD8;
+    temp_v1->rot = (arg0 - gPlayerOne) / 0xDD8;
     arg0->unkC = arg0->unkC | 0x40000;
     return temp_v0;
 }
@@ -805,11 +805,11 @@ s16 func_802B18E4(s32 arg0, s16 arg1) {
     }
     temp_v1 = (temp_v0 * 0x70) + &D_8015F9B8;
     temp_v1->unk6 = 0;
-    temp_v1->unk10 = 0x5B0;
+    temp_v1->rot = 0x5B0;
     temp_v1->unk12 = -0x8000;
     temp_v1->unk14 = (arg0 - gPlayerOne) / 0xDD8;
-    temp_v1->unk4 = 0;
-    temp_v1->unk8 = 0.0f;
+    temp_v1->unk_04 = 0;
+    temp_v1->unk_08 = 0.0f;
     return temp_v0;
 }
 #else
@@ -863,7 +863,7 @@ s32 func_802B19EC(struct triple_shell_parent *arg0, Player *player, s16 arg2, u1
     temp_s0 = (temp_t3 * 0x10) + D_8015F9B8;
     sp44 = player->pos[1];
     sp48 = player->pos[2];
-    func_802AD950(temp_s0 + 0x30, temp_s0->unkC + 1.0f, temp_s0->unk18, temp_s0->unk1C, temp_s0->unk20, sp40, sp44, sp48);
+    func_802AD950(temp_s0 + 0x30, temp_s0->unkC + 1.0f, temp_s0->pos, temp_s0->unk1C, temp_s0->unk20, sp40, sp44, sp48);
     func_802B4E30(temp_s0);
     temp_s0->unk2 = -0x7000;
     switch (arg2) {                                 /* irregular */
@@ -874,11 +874,11 @@ s32 func_802B19EC(struct triple_shell_parent *arg0, Player *player, s16 arg2, u1
         temp_s0->unk6 = 6;
         break;
     }
-    temp_s0->unk10 = 0;
+    temp_s0->rot = 0;
     temp_s0->unk12 = -0x8000;
     temp_s0->unk14 = (s16) ((s32) (player - gPlayerOne) / 3544);
-    temp_s0->unk4 = (s16) ((s32) (arg0 - D_8015F9B8) / 112);
-    temp_s0->unk8 = (f32) arg3;
+    temp_s0->unk_04 = (s16) ((s32) (arg0 - D_8015F9B8) / 112);
+    temp_s0->unk_08 = (f32) arg3;
     arg0->shellIndices[arg3] = (f32) ((s32) (temp_s0 - D_8015F9B8) / 112);
     return 1;
 }
@@ -920,7 +920,7 @@ s16 func_802B1C9C(void *arg0) {
     func_802B63B8(&sp40, arg0 + 0x174);
     temp_a0 = &sp40;
     sp40 = 0.0f + arg0->unk14;
-    sp44 += arg0->unk18;
+    sp44 += arg0->pos;
     sp48 += arg0->unk1C;
     temp_v0 = func_8029EC88(temp_a0, &sp4C, &sp54, 7);
     temp_v1 = temp_v0;
@@ -930,13 +930,13 @@ s16 func_802B1C9C(void *arg0) {
     temp_t8 = temp_v1 * 7;
     sp40 = arg0->unk14;
     temp_s0 = (temp_t8 * 0x10) + &D_8015F9B8;
-    sp44 = arg0->unk18;
+    sp44 = arg0->pos;
     sp48 = arg0->unk1C;
     sp3E = temp_v1;
-    func_802AD950(temp_s0 + 0x30, temp_s0->unkC + 1.0f, temp_s0->unk18, temp_s0->unk1C, temp_s0->unk20, sp40, sp44, sp48);
+    func_802AD950(temp_s0 + 0x30, temp_s0->unkC + 1.0f, temp_s0->pos, temp_s0->unk1C, temp_s0->unk20, sp40, sp44, sp48);
     func_802B4E30(temp_s0);
     temp_s0->unk6 = 0;
-    temp_s0->unk10 = 0;
+    temp_s0->rot = 0;
     temp_s0->unk12 = -0x8000;
     temp_s0->unk14 = (arg0 - gPlayerOne) / 0xDD8;
     return sp3E;
@@ -979,7 +979,7 @@ s16 func_802B1E48(void *arg0) {
     func_802B63B8(&sp40, arg0 + 0x174);
     temp_a0 = &sp40;
     sp40 = 0.0f + arg0->unk14;
-    sp44 += arg0->unk18;
+    sp44 += arg0->pos;
     sp48 += arg0->unk1C;
     temp_v0 = func_8029EC88(temp_a0, &sp4C, &sp54, 8);
     temp_v1 = temp_v0;
@@ -989,13 +989,13 @@ s16 func_802B1E48(void *arg0) {
     temp_t8 = temp_v1 * 7;
     sp40 = arg0->unk14;
     temp_s0 = (temp_t8 * 0x10) + &D_8015F9B8;
-    sp44 = arg0->unk18;
+    sp44 = arg0->pos;
     sp48 = arg0->unk1C;
     sp3E = temp_v1;
-    func_802AD950(temp_s0 + 0x30, temp_s0->unkC + 1.0f, temp_s0->unk18, temp_s0->unk1C, temp_s0->unk20, sp40, sp44, sp48);
+    func_802AD950(temp_s0 + 0x30, temp_s0->unkC + 1.0f, temp_s0->pos, temp_s0->unk1C, temp_s0->unk20, sp40, sp44, sp48);
     func_802B4E30(temp_s0);
     temp_s0->unk6 = 0;
-    temp_s0->unk10 = 0;
+    temp_s0->rot = 0;
     temp_s0->unk12 = arg0->unk2E - 0x8000;
     temp_s0->unk14 = (arg0 - gPlayerOne) / 0xDD8;
     return sp3E;
@@ -1340,13 +1340,13 @@ void func_802B2914(struct banana_bunch_parent *banana_bunch, Player *player, s16
         temp_s0 = D_8015F9B8 + temp_lo;
         sp54 = player->pos[2];
         sp6E = temp_t6;
-        func_802AD950(temp_s0 + 0x30, temp_s0->unkC + 1.0f, temp_s0->unk18, temp_s0->unk1C, temp_s0->unk20, sp4C, sp50, sp54);
+        func_802AD950(temp_s0 + 0x30, temp_s0->unkC + 1.0f, temp_s0->pos, temp_s0->unk1C, temp_s0->unk20, sp4C, sp50, sp54);
         func_802B4E30(temp_s0);
         temp_s0->unk2 = -0x7000;
-        temp_s0->unk10 = (s16) ((s32) (player - gPlayerOne) / 3544);
-        temp_s0->unk8 = (s16) ((s32) (banana_bunch - D_8015F9B8) / 112);
+        temp_s0->rot = (s16) ((s32) (player - gPlayerOne) / 3544);
+        temp_s0->unk_08 = (s16) ((s32) (banana_bunch - D_8015F9B8) / 112);
         temp_s0->unk14 = -1;
-        temp_s0->unk4 = 0x0014;
+        temp_s0->unk_04 = 0x0014;
         temp_s0->unkA = bananaId;
         switch (bananaId) {
         case 0:
@@ -1420,7 +1420,7 @@ s16 func_802B2C40(void *arg0) {
     temp_a1 = &sp30;
     temp_a2 = &sp38;
     sp24 += arg0->unk14;
-    sp28 += arg0->unk18;
+    sp28 += arg0->pos;
     sp2C += arg0->unk1C;
     sp38 = arg0->unk34;
     sp3C = arg0->unk38;
@@ -1434,7 +1434,7 @@ s16 func_802B2C40(void *arg0) {
     }
     temp_v1 = (temp_v0 * 0x70) + &D_8015F9B8;
     temp_v1->unk6 = 0;
-    temp_v1->unk24 = (arg0 - gPlayerOne) / 0xDD8;
+    temp_v1->velocity = (arg0 - gPlayerOne) / 0xDD8;
     arg0->unkC = arg0->unkC | 0x40000;
     return temp_v0;
 }
@@ -1479,7 +1479,7 @@ s16 func_802B2D70(void *arg0) {
     temp_a1 = &sp34;
     temp_a2 = &sp3C;
     sp28 += arg0->unk14;
-    sp2C += arg0->unk18;
+    sp2C += arg0->pos;
     sp30 += arg0->unk1C;
     sp3C = arg0->unk34;
     sp40 = arg0->unk38;
@@ -1492,9 +1492,9 @@ s16 func_802B2D70(void *arg0) {
         return temp_v0;
     }
     temp_v1 = (temp_v0 * 0x70) + &D_8015F9B8;
-    temp_v1->unk10 = temp_t0;
+    temp_v1->rot = temp_t0;
     temp_v1->unk6 = 0;
-    temp_v1->unk4 = 0x14;
+    temp_v1->unk_04 = 0x14;
     arg0->unkC = arg0->unkC | 0x40000;
     return temp_v0;
 }
@@ -1571,7 +1571,7 @@ void func_802B2FA0(Player *player) {
     s16 temp_t9;
 
     sp1C = (player - gPlayerOne) / 3544;
-    temp_t9 = player->unk10;
+    temp_t9 = player->rot;
     switch (temp_t9) {
     case 3:
         func_802B1C9C();
@@ -1658,7 +1658,7 @@ void func_802B30EC(void) {
                     phi_s1 = gControllerEight;
                 }
             }
-            if (((temp_v0 & 0x4000) != 0) && (phi_s0->unk10 != 0) && ((temp_v0 & 0x2000) == 0)) {
+            if (((temp_v0 & 0x4000) != 0) && (phi_s0->rot != 0) && ((temp_v0 & 0x2000) == 0)) {
                 temp_v0_2 = phi_s1->unk6;
                 if ((temp_v0_2 & 0x2000) != 0) {
                     phi_s1->unk6 = temp_v0_2 & ~0x2000;
@@ -1970,7 +1970,7 @@ void func_802B3B44(struct shell_actor *shell) {
     temp_a3 = temp_a1 & 0xFFFF;
     temp_f2 = (f32) temp_v0->unk0;
     temp_f12 = (f32) temp_v0->unk2;
-    temp_f28 = (f32) temp_v0->unk4;
+    temp_f28 = (f32) temp_v0->unk_04;
     phi_a2 = temp_a1 & 0xFFFF;
     if (temp_a3 >= (s32) temp_t0) {
         phi_a2 = (temp_a3 - temp_t0) & 0xFFFF;
@@ -1989,7 +1989,7 @@ void func_802B3B44(struct shell_actor *shell) {
     if (temp_f14 > 400.0f) {
         temp_f0_2 = (f32) temp_v0_2->unk0 - sp60;
         temp_f2_2 = (f32) temp_v0_2->unk2 - sp5C;
-        temp_f12_2 = (f32) temp_v0_2->unk4 - sp58;
+        temp_f12_2 = (f32) temp_v0_2->unk_04 - sp58;
         if (((temp_f0_2 * temp_f0_2) + (temp_f2_2 * temp_f2_2) + (temp_f12_2 * temp_f12_2)) < temp_f14) {
             shell->rotAngle = phi_a2;
             return;
@@ -2036,7 +2036,7 @@ void func_802B3B44(struct shell_actor *shell) {
     }
     temp_f16_3 = (f32) temp_v0_3->unk0;
     temp_f18_3 = (f32) temp_v0_3->unk2;
-    temp_f26 = (f32) temp_v0_3->unk4;
+    temp_f26 = (f32) temp_v0_3->unk_04;
     shell->pos[0] = (temp_f2 + temp_f16_3) * 0.5f;
     shell->pos[1] = ((temp_f12 + temp_f18_3) * 0.5f) + shell->boundingBoxSize;
     shell->pos[2] = (temp_f28 + temp_f26) * 0.5f;
@@ -2145,7 +2145,7 @@ void func_802B4104(void *arg0) {
     f32 temp_f0;
     f32 temp_f0_2;
 
-    if ((arg0->unk3C < 0.0f) && ((temp_f0 = arg0->unk4C, (temp_f0 < 0.25f)) || (temp_f0 > -0.25f))) {
+    if ((arg0->unk3C < 0.0f) && ((temp_f0 = arg0->unk_04C, (temp_f0 < 0.25f)) || (temp_f0 > -0.25f))) {
         func_8029FDC8(arg0);
         func_800C98B8(arg0 + 0x18, arg0 + 0x24, 0x19008054);
         arg0->unk2 = arg0->unk2 | 0x80;
@@ -2499,18 +2499,18 @@ GLOBAL_ASM("asm/non_matchings/code_802B0210/update_obj_red_blue_shell.s")
 
 void func_802B4E30(struct Actor *arg0) {
     if ((arg0->unk30.unk44 < 0.0f) && (arg0->unk30.unk34 == 1)) {
-        arg0->unk18[0] -= (arg0->unk30.unk60[0] * arg0->unk30.unk44);
-        arg0->unk18[1] -= (arg0->unk30.unk60[1] * arg0->unk30.unk44);
-        arg0->unk18[2] -= (arg0->unk30.unk60[2] * arg0->unk30.unk44);
+        arg0->pos[0] -= (arg0->unk30.unk60[0] * arg0->unk30.unk44);
+        arg0->pos[1] -= (arg0->unk30.unk60[1] * arg0->unk30.unk44);
+        arg0->pos[2] -= (arg0->unk30.unk60[2] * arg0->unk30.unk44);
     }
     if ((arg0->unk30.unk3C < 0.0f) && (arg0->unk30.unk30 == 1)) {
-        arg0->unk18[0] -= (arg0->unk30.unk48[0] * arg0->unk30.unk3C);
-        arg0->unk18[1] -= (arg0->unk30.unk48[1] * arg0->unk30.unk3C);
-        arg0->unk18[2] -= (arg0->unk30.unk48[2] * arg0->unk30.unk3C);
+        arg0->pos[0] -= (arg0->unk30.unk48[0] * arg0->unk30.unk3C);
+        arg0->pos[1] -= (arg0->unk30.unk48[1] * arg0->unk30.unk3C);
+        arg0->pos[2] -= (arg0->unk30.unk48[2] * arg0->unk30.unk3C);
     }
     if ((arg0->unk30.unk40 < 0.0f) && (arg0->unk30.unk32 == 1)) {
-        arg0->unk18[0] -= (arg0->unk30.unk54[0] * arg0->unk30.unk40);
-        arg0->unk18[1] -= (arg0->unk30.unk54[1] * arg0->unk30.unk40);
-        arg0->unk18[2] -= (arg0->unk30.unk54[2] * arg0->unk30.unk40);
+        arg0->pos[0] -= (arg0->unk30.unk54[0] * arg0->unk30.unk40);
+        arg0->pos[1] -= (arg0->unk30.unk54[1] * arg0->unk30.unk40);
+        arg0->pos[2] -= (arg0->unk30.unk54[2] * arg0->unk30.unk40);
     }
 }
