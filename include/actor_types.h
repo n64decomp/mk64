@@ -5,27 +5,27 @@
 // Made this because there will likely be a lot of structs in this file that will be compiled into one eventually.
 // This keeps the other files cleaner.
 
-#define ACTOR_FALLING_ROCK        0x05
-#define ACTOR_BANANA              0x06
-#define ACTOR_GREEN_SHELL         0x07
-#define ACTOR_RED_SHELL           0x08
-#define ACTOR_YOSHI_VALLEY_EGG    0x09
-#define ACTOR_PIRANHA_PLANT       0x0A
-#define ACTOR_ITEM_BOX            0x0C
-#define ACTOR_FAKE_ITEM_BOX       0x0D
-#define ACTOR_BANANA_BUNCH        0x0E
-#define ACTOR_TRAIN_ENGINE        0x0F
-#define ACTOR_TRAIN_TENDER        0x10
-#define ACTOR_TRAIN_PASSENGER_CAR 0x11
-#define ACTOR_TRIPLE_GREEN_SHELL  0x15
-#define ACTOR_TRIPLE_RED_SHELL    0x16
-#define ACTOR_MARIO_RACEWAY_SIGN  0x17
-#define ACTOR_WARIO_STADIUM_SIGN  0x23
-#define ACTOR_PADDLE_WHEEL_BOAT   0x26
-#define ACTOR_RAILROAD_CROSSING   0x27
-#define ACTOR_BLUE_SPINY_SHELL    0x2A
-#define ACTOR_HAB_ITEM_BOX        0x2B // HAB -> Hot Air Baloon
-#define ACTOR_KIWANO_FRUIT        0x2D
+#define ACTOR_FALLING_ROCK            0x05
+#define ACTOR_BANANA                  0x06
+#define ACTOR_GREEN_SHELL             0x07
+#define ACTOR_RED_SHELL               0x08
+#define ACTOR_YOSHI_VALLEY_EGG        0x09
+#define ACTOR_PIRANHA_PLANT           0x0A
+#define ACTOR_ITEM_BOX                0x0C
+#define ACTOR_FAKE_ITEM_BOX           0x0D
+#define ACTOR_BANANA_BUNCH            0x0E
+#define ACTOR_TRAIN_ENGINE            0x0F
+#define ACTOR_TRAIN_TENDER            0x10
+#define ACTOR_TRAIN_PASSENGER_CAR     0x11
+#define ACTOR_TRIPLE_GREEN_SHELL      0x15
+#define ACTOR_TRIPLE_RED_SHELL        0x16
+#define ACTOR_MARIO_RACEWAY_SIGN      0x17
+#define ACTOR_WARIO_STADIUM_SIGN      0x23
+#define ACTOR_PADDLE_WHEEL_BOAT       0x26
+#define ACTOR_RAILROAD_CROSSING       0x27
+#define ACTOR_BLUE_SPINY_SHELL        0x2A
+#define ACTOR_HOT_AIR_BALOON_ITEM_BOX 0x2B
+#define ACTOR_KIWANO_FRUIT            0x2D
 
 /*
 Used by the locomotive, tender, and passenger car
@@ -112,7 +112,7 @@ struct PaddleWheelBoat {
     /* 0x06 */ s16 wheelRot;
     /* 0x08 */ f32 unk_08;
     /* 0x0C */ f32 unk_0C;
-    /* 0x10 */ Vec3s boatRot; // Weirdly, its boatRot[1] (Y rotation?) that changes the direction the boat faces
+    /* 0x10 */ Vec3s boatRot;
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
