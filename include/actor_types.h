@@ -9,28 +9,28 @@
 #define ACTOR_BANANA              0x06
 #define ACTOR_GREEN_SHELL         0x07
 #define ACTOR_RED_SHELL           0x08
-#define ACTOR_YV_EGG              0x09 // YV -> Yoshi Valley
-#define ACTOR_PIRNHA_PLANT        0x0A
+#define ACTOR_YOSHI_VALLEY_EGG    0x09
+#define ACTOR_PIRANHA_PLANT       0x0A
 #define ACTOR_ITEM_BOX            0x0C
 #define ACTOR_FAKE_ITEM_BOX       0x0D
 #define ACTOR_BANANA_BUNCH        0x0E
 #define ACTOR_TRAIN_ENGINE        0x0F
-#define ACTOR_TRAIN_COAL_CAR      0x10
+#define ACTOR_TRAIN_TENDER        0x10
 #define ACTOR_TRAIN_PASSENGER_CAR 0x11
 #define ACTOR_TRIPLE_GREEN_SHELL  0x15
 #define ACTOR_TRIPLE_RED_SHELL    0x16
-#define ACTOR_MRW_SIGN            0x17 // MRW -> Mario Raceway
-#define ACTOR_WS_SIGN             0x23 // WS -> Wario Stadium
-#define ACTOR_PADDLE_WHEEL        0x26 // Just the paddle wheel, or does it mean the entire boat?
-#define ACTOR_RR_CROSSING         0x27 // RR -> Railroad
-#define ACTOR_BLUE_SHELL          0x2A
+#define ACTOR_MARIO_RACEWAY_SIGN  0x17
+#define ACTOR_WARIO_STADIUM_SIGN  0x23
+#define ACTOR_PADDLE_WHEEL_BOAT   0x26
+#define ACTOR_RAILROAD_CROSSING   0x27
+#define ACTOR_BLUE_SPINY_SHELL    0x2A
 #define ACTOR_HAB_ITEM_BOX        0x2B // HAB -> Hot Air Baloon
 #define ACTOR_KIWANO_FRUIT        0x2D
 
 /*
-Used by the engine, coal car, and passenger car
+Used by the locomotive, tender, and passenger car
 */
-struct train_car {
+struct TrainCar {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 unk_04;
@@ -44,7 +44,7 @@ struct train_car {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-struct railroad_crossing {
+struct RailroadCrossing {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 someTimer;
@@ -57,7 +57,7 @@ struct railroad_crossing {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-struct falling_rock {
+struct FallingRock {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 respawnTimer;
@@ -71,7 +71,7 @@ struct falling_rock {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-struct yv_egg {
+struct YoshiValleyEgg {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 unk_04;
@@ -89,7 +89,7 @@ struct yv_egg {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-struct kiwano_fruit {
+struct KiwanoFruit {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 targetPlayer; // Id of the player this actor tracks. Each player has their own kiwano actor just for them
@@ -105,21 +105,21 @@ struct kiwano_fruit {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-struct paddle_wheel_boat {
+struct PaddleWheelBoat {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 unk_04;
     /* 0x06 */ s16 wheelRot;
     /* 0x08 */ f32 unk_08;
     /* 0x0C */ f32 unk_0C;
-    /* 0x10 */ Vec3s boatRot;
+    /* 0x10 */ Vec3s boatRot; // Weirdly, its boatRot[1] (Y rotation?) that changes the direction the boat faces
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-struct piranha_plant {
+struct PiranhaPlant {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ Vec4s visibilityStates; // A per-camera visibilty state tracker
@@ -131,7 +131,7 @@ struct piranha_plant {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-struct triple_shell_parent {
+struct TripleShellParent {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 shellsAvailable;
@@ -147,7 +147,7 @@ struct triple_shell_parent {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-struct shell_actor {
+struct ShellActor {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     // Index in D_8015F9B8 for the parent actor of this shell
@@ -165,7 +165,7 @@ struct shell_actor {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-struct item_box {
+struct ItemBox {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 someTimer;
@@ -183,7 +183,7 @@ struct item_box {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-struct fake_item_box {
+struct FakeItemBox {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 someTimer;
@@ -199,7 +199,7 @@ struct fake_item_box {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-struct banana_bunch_parent {
+struct BananaBunchParent {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 unk_04;
@@ -214,7 +214,7 @@ struct banana_bunch_parent {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-struct banana_actor {
+struct BananaActor {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 unk_04;
@@ -222,14 +222,12 @@ struct banana_actor {
     /* 0x08 */ s16 parentIndex;
     /* 0x0A */ s16 bananaId; // ? Appears to indiciate which banana of the bunch this one is
     /* 0x0C */ f32 boundingBoxSize;
-    /*
-    Have to do it this way in order to 
-    ids[0] -> Id of the player that owns this banana
-    ids[1] -> Index in D_8015F9B8 of the next-oldest banana in the bunch
-    ids[1] -> Index in D_8015F9B8 of the next-youngest banana in the bunch
-    Pulls double duty as the `rot` member when the banana is ran over
-    */
-    /* 0x10 */ Vec3s ids;
+    union {
+        /* 0x10 */ Vec3s rot;
+        /* 0x10 */ s16 playerId; // Id of the player that owns this banana
+        /* 0x12 */ s16 elderIndex; // Index in D_8015F9B8 of the next-oldest banana in the bunch
+        /* 0x14 */ s16 youngerIndex; // Index in D_8015F9B8 of the next-youngest banana in the bunch
+    };
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
