@@ -2673,7 +2673,7 @@ s8 D_0D0249D8[] = {
 
 // Unk data. Perhaps not an img nor tlut.
 s8 D_0D024ED8[] = {
-    #include "textures/common_132B50_24ED8.inc.c"
+    #include "textures/common_132B50_24ED8.rgba16.inc.c"
 };
 
 // traffic light tlut
