@@ -2172,29 +2172,26 @@ typedef union {
         _g->words.w1 =  __gsSP1Quadrangle_w2f(v0, v1, v2, v3, flag);    \
 }
 
-// unmodified gsSP1Quadrangle
-#ifdef NON_MATCHING_GBI
+// Unmodified gsSP1Quadrangle
 #define gsSP1Quadrangle(v0, v1, v2, v3, flag)                           \
 {{                                                                      \
         (_SHIFTL(G_TRI2, 24, 8)|                                        \
          __gsSP1Quadrangle_w1f(v0, v1, v2, v3, flag)),                  \
          __gsSP1Quadrangle_w2f(v0, v1, v2, v3, flag)                    \
 }}
-#else
 /**
  * Modified to match startup_logo.inc.c
  * Likely due to a development version of gbi.h
  */
 #define __mk_gsSP1Triangle_w1(v0, v1, v2, v3)			                \
-     (_SHIFTL((v3)*2,24,8)|_SHIFTL((v0)*2,16,8)|_SHIFTL((v1)*2,8,8)|_SHIFTL((v2)*2,0,8))
+     (_SHIFTL((v3)*2,24,8)|_SHIFTL((v0)*2,16,8)|\
+	  _SHIFTL((v1)*2,8,8)|_SHIFTL((v2)*2,0,8))
 
-#define gsSP1Quadrangle(v0, v1, v2, v3)                                 \
+#define mk_gsSP1Quadrangle(v0, v1, v2, v3)                                 \
 {{                                                                      \
         _SHIFTL(G_QUAD, 24, 8),                                         \
         __mk_gsSP1Triangle_w1(v0, v1, v2, v3)                           \
 }}
-
-#endif /* NON_MATCHING */
 
 #endif	/* F3DEX_GBI_2 */
 

@@ -14,35 +14,35 @@
 
 #glabel D_802B8CE8
 #.word 0xbc000002, 0x80000040
-glabel D_802B8CF0
-.word 0xb7000000, 0x00002000
-glabel D_802B8CF8
-.word 0xb6000000, 0x00002000
-glabel D_802B8D00
-.word 0xbe000000, 0x00000140
-glabel D_802B8D08
-.word 0xfc121824, 0xff33ffff
-glabel D_802B8D10
-.word 0xfc127e24, 0xfffff3f9
-glabel D_802B8D18
-.word 0xfcffffff, 0xfffe793c
-glabel D_802B8D20
-.word 0xfc127e24, 0xfffff3f9
-glabel D_802B8D28
-.word 0xfcffffff, 0xfffcf279
+#glabel D_802B8CF0
+#.word 0xb7000000, 0x00002000
+#glabel D_802B8CF8
+#.word 0xb6000000, 0x00002000
+#glabel D_802B8D00
+#.word 0xbe000000, 0x00000140
+#glabel D_802B8D08
+#.word 0xfc121824, 0xff33ffff
+#glabel D_802B8D10
+#.word 0xfc127e24, 0xfffff3f9
+#glabel D_802B8D18
+#.word 0xfcffffff, 0xfffe793c
+#glabel D_802B8D20
+#.word 0xfc127e24, 0xfffff3f9
+#glabel D_802B8D28
+#.word 0xfcffffff, 0xfffcf279
 
-glabel D_802B8D30
-.word 0xb900031d, 0x00552078
-glabel D_802B8D38
-.word 0xb900031d, 0x00553078
-glabel D_802B8D40
-.word 0xb900031d, 0x005049d8
-glabel D_802B8D48
-.word 0xb900031d, 0x00442d58
-glabel D_802B8D50
-.word 0xb900031d, 0x00404dd8
-glabel D_802B8D58
-.word 0xe8000000, 0x00000000
+#glabel D_802B8D30
+#.word 0xb900031d, 0x00552078
+#glabel D_802B8D38
+#.word 0xb900031d, 0x00553078
+#glabel D_802B8D40
+#.word 0xb900031d, 0x005049d8
+#glabel D_802B8D48
+#.word 0xb900031d, 0x00442d58
+#glabel D_802B8D50
+#.word 0xb900031d, 0x00404dd8
+#glabel D_802B8D58
+#.word 0xe8000000, 0x00000000
 glabel D_802B8D60
 .word 0xe8000000, 0x00000000
 glabel D_802B8D68
