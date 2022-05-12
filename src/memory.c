@@ -4328,7 +4328,7 @@ s32 func_802AFA34(Player *player, kartBoundingBoxCorner *corner, f32 cornerX, f3
     sp104 = 0x447A0000;
     sp108 = 0x447A0000;
     sp10C = 0x447A0000;
-    temp_f20 = player->unk_070;
+    temp_f20 = player->boundingBoxSize;
     spFE = 0x1388;
     sp100 = 0x1388;
     sp102 = 0x1388;

@@ -93,7 +93,7 @@ f32 D_800E2670[] = {
 f32 gKartTopSpeedTable[] = {
     9.0,       9.0,       9.0,       9.0,       9.0,       9.0,       9.0,       9.0,
 };
-f32 gKartBoundingBoxTable[] = {
+f32 gKartBoundingBoxSizeTable[] = {
     5.5,       5.5,       5.5,       5.5,       5.5,       6.0,       5.5,       6.0,
 };
 

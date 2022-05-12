@@ -8,7 +8,7 @@ glabel func_80296D10
 /* 100338 80296D28 0C0AD4B6 */  jal   vec3f_copy
 /* 10033C 80296D2C 24840018 */   addiu $a0, $a0, 0x18
 /* 100340 80296D30 26040010 */  addiu $a0, $s0, 0x10
-/* 100344 80296D34 0C0AD4C1 */  jal   func_802B5304
+/* 100344 80296D34 0C0AD4C1 */  jal   vec3s_copy
 /* 100348 80296D38 8FA50038 */   lw    $a1, 0x38($sp)
 /* 10034C 80296D3C 26040024 */  addiu $a0, $s0, 0x24
 /* 100350 80296D40 0C0AD4B6 */  jal   vec3f_copy

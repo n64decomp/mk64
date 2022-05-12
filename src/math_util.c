@@ -118,7 +118,7 @@ void *vec3f_copy(Vec3f dest, Vec3f src) {
     return &dest; //! warning: function returns address of local variable
 }
 
-void func_802B5304(Vec3s dest, Vec3s src) {
+void vec3s_copy(Vec3s dest, Vec3s src) {
     dest[0] = src[0];
     dest[1] = src[1];
     dest[2] = src[2];

@@ -21,7 +21,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->characterId = arg6;
     player->unk_0B6 = 0;
     player->unk_0FC = gKartFrictionTable[player->characterId];
-    player->unk_070 = gKartBoundingBoxTable[player->characterId];
+    player->boundingBoxSize = gKartBoundingBoxSizeTable[player->characterId];
     player->unk_100 = gKartGravityTable[player->characterId];
 
     switch (gModeSelection) {
@@ -50,7 +50,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     }
 
     player->pos[0] = arg2;
-    ret = func_802AE1C0(arg2, arg4 + 50.0f, arg3) + player->unk_070;
+    ret = func_802AE1C0(arg2, arg4 + 50.0f, arg3) + player->boundingBoxSize;
     player->pos[2] = arg3;
     player->pos[1] = ret;
     player->rotX = arg2;
