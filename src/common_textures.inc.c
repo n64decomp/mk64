@@ -4,6 +4,9 @@
 
 // From common_textures.bin
 // Vtx 1210-1750
+
+// Somehow these symbols need to be linked in. For now, raw addresses are used.
+/*
 extern s8 D_03004000[];
 extern s8 D_03004800[];
 extern s8 D_03005000[];
@@ -14,7 +17,7 @@ extern s8 D_03007000[];
 extern s8 D_03007800[];
 extern s8 D_03008000[];
 extern s8 D_03008800[];
-
+*/
 
 s8 D_0D000000[] = { // tlut
     #include "textures/132B50_00000_tlut.rgba16.inc.c"
@@ -154,7 +157,7 @@ Gfx D_0D001750[] = {
 };
 
 Gfx D_0D001780[] = {
-    gsSPVertex(&D_0D001210, 3, 0),
+    gsSPVertex(D_0D001210, 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -209,22 +212,22 @@ Gfx D_0D001840[] = {
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0xFC, 0x7C),
-    gsDPLoadTextureBlock(&D_03004000, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(0x03004000, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSPVertex(D_0D001390, 32, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
-    gsDPLoadTextureBlock(&D_03004800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(0x03004800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSP1Quadrangle(4, 5, 6, 7, 0),
-    gsDPLoadTextureBlock(&D_03005000, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(0x03005000, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSP1Quadrangle(8, 9, 10, 11, 0),
-    gsDPLoadTextureBlock(&D_03005800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(0x03005800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSP1Quadrangle(12, 13, 14, 15, 0),
-    gsDPLoadTextureBlock(&D_03006000, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(0x03006000, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSP1Quadrangle(16, 17, 18, 19, 0),
-    gsDPLoadTextureBlock(&D_03006800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(0x03006800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSP1Quadrangle(20, 21, 22, 23, 0),
-    gsDPLoadTextureBlock(&D_03007000, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(0x03007000, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSP1Quadrangle(24, 25, 26, 27, 0),
-    gsDPLoadTextureBlock(&D_03007800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(0x03007800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSP1Quadrangle(28, 29, 30, 31, 0),
     gsDPSetTextureLUT(G_TT_NONE),
     gsSPEndDisplayList(),
@@ -232,7 +235,7 @@ Gfx D_0D001840[] = {
 
 Gfx D_0D001AB8[] = {
     gsSPClearGeometryMode(G_CULL_BACK),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, &D_03008000),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, 0x03008000),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),
@@ -241,7 +244,7 @@ Gfx D_0D001AB8[] = {
     gsSPVertex(D_0D001590, 24, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsSP1Quadrangle(4, 5, 6, 7, 0),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, &D_03008800),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, 0x03008800),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),
@@ -616,20 +619,25 @@ Gfx D_0D004BD8[] = {
     gsSPEndDisplayList(),
 };
 
-// three tluts
+// four tluts
+// Possibly only two tluts with a size of 2E8 each.
 s8 D_0D004C68[] = {
     #include "textures/132B50_04C68_tlut.rgba16.inc.c"
 };
 
+s8 D_0D004E38[] = {
+    #include "textures/132B50_04E38_tlut.rgba16.inc.c"
+};
+// Possibly part of 4E38
 s8 D_0D004E68[] = {
     #include "textures/132B50_04E68_tlut.rgba16.inc.c"
 };
-
+// 5038
 s8 D_0D005068[] = {
     #include "textures/132B50_05068_tlut.rgba16.inc.c"
 };
 
-static s32 fileSplitPad[4] = { 0 };
+//static s32 fileSplitPad[4] = { 0 };
 
 static Vtx D_0D005238[] = {
     {{{     3,       6,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -2319,7 +2327,7 @@ s16 tlutPad[] = {0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 
 // 1p 2p 3p 4p (includes 4 textures)
 // Required to match tlut
 s8 D_0D017458[] = {
-    #include "textures/unworkable_data.inc.c"
+    #include "textures/132B50_17458_combined_data.inc.c"
 };
 
 //s8 D_0D017C58[] = {
@@ -2530,7 +2538,7 @@ s8 D_0D01D6D8[] = {
 
 // Question Mark
 s8 D_0D01DAD8[] = {
-    #include "textures/1DAD8_ci8.inc.c"
+    #include "textures/132B50_1DAD8.rgba16.ci8.inc.c"
 };
 
 // 1DED8 tlut item frames
@@ -2675,6 +2683,7 @@ s8 D_0D025ED8[] = {
 
 
 // unused traffic light textures
+
 UNUSED s8 D_0D0260D8[] = {
     #include "textures/132B50_260D8.rgba16.ci8.inc.c"
 };
@@ -2726,11 +2735,19 @@ s8 D_0D0291D8[] = {
 };
 
 
-// some sort of smoke or effect (next too)
+// Some sort of smoke or effect
+// NON_MATCHING
+// @bug probably requires being extracted as i4 for mobility
+// Needs rgba16 to match
 s8 D_0D0293D8[] = {
-    #include "textures/132B50_293D8.i8.inc.c"
+    #include "textures/132B50_293D8.i4.inc.c"
 };
 
+// Some sort of smoke or effect
+// NON_MATCHING
+// @bug probably requires being extracted as i8 for mobility
+// Needs rgba16 to match
+// bin for now cause refuses to match
 s8 D_0D029458[] = {
     #include "textures/132B50_29458.i8.inc.c"
 };
@@ -2752,7 +2769,11 @@ s8 D_0D02A458[] = {
     #include "textures/132B50_2A458.rgba16.ci8.inc.c"
 };
 
-// unk data tlut?
+// tlut
+s8 D_0D02A858[] = {
+    #include "textures/132B50_2A858_tlut.rgba16.inc.c"
+};
+
 
 s8 D_0D02AA58[] = {
     #include "textures/132B50_2AA58.rgba16.inc.c"

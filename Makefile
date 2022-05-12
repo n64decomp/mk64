@@ -167,6 +167,7 @@ endif
 MIO0TOOL = $(TOOLS_DIR)/mio0
 N64CKSUM = $(TOOLS_DIR)/n64cksum
 N64GRAPHICS = $(TOOLS_DIR)/n64graphics
+BIN2C = $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
 REMOVE_BYTES := $(PYTHON) $(TOOLS_DIR)/remove_bytes.py
 EMULATOR = mupen64plus
@@ -251,13 +252,22 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_01EE8.rgba16.inc.c -g textures/132B50_01EE8.rgba16.png -f rgba16 -s u8
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_03348.rgba16.inc.c -g textures/132B50_03348.rgba16.png -f rgba16 -s u8
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_03B48.rgba16.inc.c -g textures/132B50_03B48.rgba16.png -f rgba16 -s u8
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_04C68_tlut.rgba16.inc.c -g textures/132B50_04C68_tlut.rgba16.png -f rgba16 -s u8
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_04E68_tlut.rgba16.inc.c -g textures/132B50_04E68_tlut.rgba16.png -f rgba16 -s u8
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_05068_tlut.rgba16.inc.c -g textures/132B50_05068_tlut.rgba16.png -f rgba16 -s u8
+	
+	$(BIN2C) textures/132B50_04C68_tlut.rgba16.bin $(BUILD_DIR)/textures/132B50_04C68_tlut.rgba16
+	$(BIN2C) textures/132B50_04E38_tlut.rgba16.bin $(BUILD_DIR)/textures/132B50_04E38_tlut.rgba16
+	$(BIN2C) textures/132B50_04E68_tlut.rgba16.bin $(BUILD_DIR)/textures/132B50_04E68_tlut.rgba16
+	$(BIN2C) textures/132B50_05068_tlut.rgba16.bin $(BUILD_DIR)/textures/132B50_05068_tlut.rgba16
+	
+	
+#$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_04C68_tlut.rgba16.inc.c -g textures/132B50_04C68_tlut.rgba16.png -f rgba16 -s u8
+#$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_04E68_tlut.rgba16.inc.c -g textures/132B50_04E68_tlut.rgba16.png -f rgba16 -s u8
+#$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_05068_tlut.rgba16.inc.c -g textures/132B50_05068_tlut.rgba16.png -f rgba16 -s u8
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_06A58.i4.inc.c -g textures/132B50_06A58.i4.png -f i4 -s u8
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_06AD8.ia8.inc.c -g textures/132B50_06AD8.ia8.png -f ia8 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_06EF8.rgba16.ci4.inc.c -g textures/132B50_06EF8.rgba16.ci4.png -f ci4 -s u8 -c rgba16 -w 128 -h 32 -p textures/132B50_06ED8_tlut_gen.rgba16.bin
+	$(BIN2C) textures/132B50_06ED8_tlut.rgba16.bin $(BUILD_DIR)/textures/132B50_06ED8_tlut.rgba16
 	
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_06EF8.rgba16.ci4.inc.c -g textures/132B50_06EF8.rgba16.ci4.png -f ci4 -s u8 -c rgba16 -p textures/132B50_06ED8_tlut.rgba16.png -w 128 -h 32
+	
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_08150.ia8.inc.c -g textures/132B50_08150.ia8.png -f ia8 -s u8 -w 100 -h 8
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_08470.ia8.inc.c -g textures/132B50_08470.ia8.png -f ia8 -s u8 -w 100 -h 8
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_08790.ia8.inc.c -g textures/132B50_08790.ia8.png -f ia8 -s u8 -w 100 -h 8
@@ -291,6 +301,8 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c
 
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_17258_tlut.rgba16.inc.c -g textures/132B50_17258_tlut.rgba16.png -s u8 -w 38 -h 6
 	
+	$(BIN2C) textures/132B50_17458_combined_data.bin $(BUILD_DIR)/textures/132B50_17458_combined_data
+
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_17458.rgba16.ci8.inc.c -g textures/132B50_17458.rgba16.ci8.png -s u8 -w 64 -h 32 -c rgba16 -p textures/132B50_17258_tlut.rgba16.png
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_17C58.rgba16.ci8.inc.c -g textures/132B50_17C58.rgba16.ci8.png -s u8 -w 64 -h 32 -c rgba16 -p textures/132B50_17258_tlut.bin
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_18458.rgba16.ci8.inc.c -g textures/132B50_18458.rgba16.ci8.png -s u8 -w 64 -h 32 -c rgba16 -p textures/132B50_17258_tlut.bin
@@ -320,6 +332,7 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c
 
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1A2D8.ia4.inc.c -g textures/132B50_1A2D8.ia4.png -s u8 -f ia4
 
+
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1A4D8_tlut.rgba16.inc.c -g textures/132B50_1A4D8_tlut.rgba16.png -s u8 -w 16 -h 16
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1A6D8_tlut.rgba16.inc.c -g textures/132B50_1A6D8_tlut.rgba16.png -s u8 -w 16 -h 16
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1A8D8_tlut.rgba16.inc.c -g textures/132B50_1A8D8_tlut.rgba16.png -s u8 -w 16 -h 16
@@ -331,16 +344,17 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1B4D8_tlut.rgba16.inc.c -g textures/132B50_1B4D8_tlut.rgba16.png -s u8 -w 16 -h 16
 
 
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1B6D8.rgba16.ci8.inc.c -g textures/132B50_1B6D8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1A4D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1BAD8.rgba16.ci8.inc.c -g textures/132B50_1BAD8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1A6D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1BED8.rgba16.ci8.inc.c -g textures/132B50_1BED8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1A8D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1C2D8.rgba16.ci8.inc.c -g textures/132B50_1C2D8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1AAD8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1C6D8.rgba16.ci8.inc.c -g textures/132B50_1C6D8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1ACD8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1CAD8.rgba16.ci8.inc.c -g textures/132B50_1CAD8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1AED8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1CED8.rgba16.ci8.inc.c -g textures/132B50_1CED8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1B0D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1D2D8.rgba16.ci8.inc.c -g textures/132B50_1D2D8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1B2D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1D6D8.rgba16.ci8.inc.c -g textures/132B50_1D6D8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1B4D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1DAD8.rgba16.ci8.inc.c -g textures/132B50_1DAD8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1B4D8_tlut.rgba16.png
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1B6D8.rgba16.ci8.inc.c -g textures/132B50_1B6D8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1A4D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1BAD8.rgba16.ci8.inc.c -g textures/132B50_1BAD8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1A6D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1BED8.rgba16.ci8.inc.c -g textures/132B50_1BED8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1A8D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1C2D8.rgba16.ci8.inc.c -g textures/132B50_1C2D8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1AAD8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1C6D8.rgba16.ci8.inc.c -g textures/132B50_1C6D8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1ACD8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1CAD8.rgba16.ci8.inc.c -g textures/132B50_1CAD8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1AED8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1CED8.rgba16.ci8.inc.c -g textures/132B50_1CED8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1B0D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1D2D8.rgba16.ci8.inc.c -g textures/132B50_1D2D8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1B2D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1D6D8.rgba16.ci8.inc.c -g textures/132B50_1D6D8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1B4D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1DAD8.rgba16.ci8.inc.c -g textures/132B50_1DAD8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1B4D8_tlut_gen.rgba16.bin
+	$(BIN2C) textures/132B50_1DAD8.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_1DAD8.rgba16.ci8
 
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1DED8_tlut.rgba16.inc.c -g textures/132B50_1DED8_tlut.rgba16.png -s u8 -w 16 -h 16
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1E0D8_tlut.rgba16.inc.c -g textures/132B50_1E0D8_tlut.rgba16.png -s u8 -w 16 -h 16
@@ -360,57 +374,64 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1FCD8_tlut.rgba16.inc.c -g textures/132B50_1FCD8_tlut.rgba16.png -s u8 -w 16 -h 16
 
 
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1FED8.rgba16.ci8.inc.c -g textures/132B50_1FED8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1DED8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_203D8.rgba16.ci8.inc.c -g textures/132B50_203D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1E0D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_208D8.rgba16.ci8.inc.c -g textures/132B50_208D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1E2D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_20DD8.rgba16.ci8.inc.c -g textures/132B50_20DD8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1E4D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_212D8.rgba16.ci8.inc.c -g textures/132B50_212D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1E6D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_217D8.rgba16.ci8.inc.c -g textures/132B50_217D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1E8D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_21CD8.rgba16.ci8.inc.c -g textures/132B50_21CD8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1EAD8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_221D8.rgba16.ci8.inc.c -g textures/132B50_221D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1ECD8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_226D8.rgba16.ci8.inc.c -g textures/132B50_226D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1EED8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_22BD8.rgba16.ci8.inc.c -g textures/132B50_22BD8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1F0D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_230D8.rgba16.ci8.inc.c -g textures/132B50_230D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1F2D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_235D8.rgba16.ci8.inc.c -g textures/132B50_235D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1F4D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_23AD8.rgba16.ci8.inc.c -g textures/132B50_23AD8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1F6D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_23FD8.rgba16.ci8.inc.c -g textures/132B50_23FD8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1F8D8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_244D8.rgba16.ci8.inc.c -g textures/132B50_244D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1FAD8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_249D8.rgba16.ci8.inc.c -g textures/132B50_249D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1FCD8_tlut.rgba16.png
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1FED8.rgba16.ci8.inc.c -g textures/132B50_1FED8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1DED8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_203D8.rgba16.ci8.inc.c -g textures/132B50_203D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1E0D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_208D8.rgba16.ci8.inc.c -g textures/132B50_208D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1E2D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_20DD8.rgba16.ci8.inc.c -g textures/132B50_20DD8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1E4D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_212D8.rgba16.ci8.inc.c -g textures/132B50_212D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1E6D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_217D8.rgba16.ci8.inc.c -g textures/132B50_217D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1E8D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_21CD8.rgba16.ci8.inc.c -g textures/132B50_21CD8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1EAD8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_221D8.rgba16.ci8.inc.c -g textures/132B50_221D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1ECD8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_226D8.rgba16.ci8.inc.c -g textures/132B50_226D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1EED8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_22BD8.rgba16.ci8.inc.c -g textures/132B50_22BD8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1F0D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_230D8.rgba16.ci8.inc.c -g textures/132B50_230D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1F2D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_235D8.rgba16.ci8.inc.c -g textures/132B50_235D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1F4D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_23AD8.rgba16.ci8.inc.c -g textures/132B50_23AD8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1F6D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_23FD8.rgba16.ci8.inc.c -g textures/132B50_23FD8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1F8D8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_244D8.rgba16.ci8.inc.c -g textures/132B50_244D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1FAD8_tlut_gen.rgba16.bin
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_249D8.rgba16.ci8.inc.c -g textures/132B50_249D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1FCD8_tlut_gen.rgba16.bin
 
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_25ED8_tlut.rgba16.inc.c -g textures/132B50_25ED8_tlut.rgba16.png -s u8 -w 16 -h 16
 
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_260D8.rgba16.ci8.inc.c -g textures/132B50_260D8.rgba16.ci8.png -s u8 -w 24 -h 48 -f ci8 -c rgba16 -p textures/132B50_25ED8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_26558.rgba16.ci8.inc.c -g textures/132B50_26558.rgba16.ci8.png -s u8 -w 24 -h 48 -f ci8 -c rgba16 -p textures/132B50_25ED8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_269D8.rgba16.ci8.inc.c -g textures/132B50_269D8.rgba16.ci8.png -s u8 -w 24 -h 48 -f ci8 -c rgba16 -p textures/132B50_25ED8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_26E58.rgba16.ci8.inc.c -g textures/132B50_26E58.rgba16.ci8.png -s u8 -w 24 -h 48 -f ci8 -c rgba16 -p textures/132B50_25ED8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_272D8.rgba16.ci8.inc.c -g textures/132B50_272D8.rgba16.ci8.png -s u8 -w 24 -h 48 -f ci8 -c rgba16 -p textures/132B50_25ED8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_27758.rgba16.ci8.inc.c -g textures/132B50_27758.rgba16.ci8.png -s u8 -w 24 -h 48 -f ci8 -c rgba16 -p textures/132B50_25ED8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_27BD8.rgba16.ci8.inc.c -g textures/132B50_27BD8.rgba16.ci8.png -s u8 -w 24 -h 48 -f ci8 -c rgba16 -p textures/132B50_25ED8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_28058.rgba16.ci8.inc.c -g textures/132B50_28058.rgba16.ci8.png -s u8 -w 24 -h 48 -f ci8 -c rgba16 -p textures/132B50_25ED8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_284D8.rgba16.ci8.inc.c -g textures/132B50_284D8.rgba16.ci8.png -s u8 -w 24 -h 48 -f ci8 -c rgba16 -p textures/132B50_25ED8_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_28958.rgba16.ci8.inc.c -g textures/132B50_28958.rgba16.ci8.png -s u8 -w 24 -h 48 -f ci8 -c rgba16 -p textures/132B50_25ED8_tlut.rgba16.png
+	$(BIN2C) textures/132B50_260D8.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_260D8.rgba16.ci8
+	$(BIN2C) textures/132B50_26558.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_26558.rgba16.ci8
+	$(BIN2C) textures/132B50_269D8.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_269D8.rgba16.ci8
+	$(BIN2C) textures/132B50_26E58.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_26E58.rgba16.ci8
+	$(BIN2C) textures/132B50_272D8.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_272D8.rgba16.ci8
+	$(BIN2C) textures/132B50_27758.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_27758.rgba16.ci8
+	$(BIN2C) textures/132B50_27BD8.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_27BD8.rgba16.ci8
+	$(BIN2C) textures/132B50_28058.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_28058.rgba16.ci8
+	$(BIN2C) textures/132B50_284D8.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_284D8.rgba16.ci8
+	$(BIN2C) textures/132B50_28958.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_28958.rgba16.ci8
 
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_28DD8.rgba16.inc.c -g textures/132B50_28DD8.rgba16.png -s u8 -w 32 -h 16
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_291D8.rgba16.inc.c -g textures/132B50_291D8.rgba16.png -s u8 -w 16 -h 16
 
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_293D8.i8.inc.c -g textures/132B50_293D8.i8.png -s u8 -w 8 -h 16
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_29458.i8.inc.c -g textures/132B50_29458.i8.png -s u8 -w 32 -h 32
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_293D8.i4.inc.c -g textures/132B50_293D8.i4.png -s u8 -w 16 -h 16 -f i4
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_29458.i8.inc.c -g textures/132B50_29458.i8.png -s u8 -w 32 -h 32 -f i8
 
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_29858.rgba16.ci8.inc.c -g textures/132B50_29858.rgba16.ci8.png -s u8 -w 32 -h 32 -c rgba16 -p textures/132B50_2A858_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_29C58.rgba16.ci8.inc.c -g textures/132B50_29C58.rgba16.ci8.png -s u8 -w 32 -h 32 -c rgba16 -p textures/132B50_2A858_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2A058.rgba16.ci8.inc.c -g textures/132B50_2A058.rgba16.ci8.png -s u8 -w 32 -h 32 -c rgba16 -p textures/132B50_2A858_tlut.rgba16.png
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2A458.rgba16.ci8.inc.c -g textures/132B50_2A458.rgba16.ci8.png -s u8 -w 32 -h 32 -c rgba16 -p textures/132B50_2A858_tlut.rgba16.png
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_29858.rgba16.ci8.inc.c -g textures/132B50_29858.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_2A858_pal.rgba16.bin
+	$(BIN2C) textures/132B50_29C58.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_29C58.rgba16.ci8
+	$(BIN2C) textures/132B50_2A058.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_2A058.rgba16.ci8
+	$(BIN2C) textures/132B50_2A458.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_2A458.rgba16.ci8
+
+
+#$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_29C58.rgba16.ci8.inc.c -g textures/132B50_29C58.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/a.rgba16.png
+#$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2A058.rgba16.ci8.inc.c -g textures/132B50_2A058.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/b.rgba16.bin
+#$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2A458.rgba16.ci8.inc.c -g textures/132B50_2A458.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/c.rgba16.bin
+
+	$(BIN2C) textures/132B50_2A858_tlut.rgba16.bin $(BUILD_DIR)/textures/132B50_2A858_tlut.rgba16
 
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2AA58.rgba16.inc.c -g textures/132B50_2AA58.rgba16.png -s u8 -w 16 -h 16
 
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2AC58.i8.inc.c -g textures/132B50_2AC58.i8.png -s u8 -w 32 -h 32
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2B058.i8.inc.c -g textures/132B50_2B058.i8.png -s u8 -w 32 -h 32
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2B458.i8.inc.c -g textures/132B50_2B458.i8.png -s u8 -w 32 -h 32
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2B858.i8.inc.c -g textures/132B50_2B858.i8.png -s u8 -w 32 -h 32
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2BC58.i8.inc.c -g textures/132B50_2BC58.i8.png -s u8 -w 32 -h 32
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2C058.i8.inc.c -g textures/132B50_2C058.i8.png -s u8 -w 32 -h 32
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2C458.i8.inc.c -g textures/132B50_2C458.i8.png -s u8 -w 32 -h 32
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2C858.i8.inc.c -g textures/132B50_2C858.i8.png -s u8 -w 32 -h 32
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2AC58.i8.inc.c -g textures/132B50_2AC58.i8.png -s u8 -w 32 -h 32 -f i8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2B058.i8.inc.c -g textures/132B50_2B058.i8.png -s u8 -w 32 -h 32 -f i8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2B458.i8.inc.c -g textures/132B50_2B458.i8.png -s u8 -w 32 -h 32 -f i8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2B858.i8.inc.c -g textures/132B50_2B858.i8.png -s u8 -w 32 -h 32 -f i8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2BC58.i8.inc.c -g textures/132B50_2BC58.i8.png -s u8 -w 32 -h 32 -f i8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2C058.i8.inc.c -g textures/132B50_2C058.i8.png -s u8 -w 32 -h 32 -f i8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2C458.i8.inc.c -g textures/132B50_2C458.i8.png -s u8 -w 32 -h 32 -f i8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2C858.i8.inc.c -g textures/132B50_2C858.i8.png -s u8 -w 32 -h 32 -f i8
 
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2CC58.rgba16.inc.c -g textures/132B50_2CC58.rgba16.png -s u8 -w 8 -h 8
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2CCD8.rgba16.inc.c -g textures/132B50_2CCD8.rgba16.png -s u8 -w 8 -h 8

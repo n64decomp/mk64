@@ -190,10 +190,14 @@ def main():
             print("extracting", asset)
             if "size" in meta:
                 # TODO: hack for extracting raw binary from MIO0 block
-                if magic == b"MIO0":
+                if assets[0][0].endswith(".bin"):
+                    size = int(meta["size"], 0)
+                elif magic == b"MIO0":
+
                     size = len(image)
                 else:
                     size = int(meta["size"], 0)
+
             elif "dims" in meta:
                 w, h = meta["dims"]
                 pixels = w * h

@@ -3,6 +3,7 @@
 #include "types.h"
 #include "variables.h"
 #include <defines.h>
+#include <config.h>
 
 #include "code_80281780.h"
 
@@ -10,6 +11,7 @@ extern Camera cameras[];
 
 extern s32 gPrevLoadedAddress;
 
+/*
 extern Gfx D_070067E8[];
 extern Gfx D_0700AEF8[];
 extern Gfx D_0700A970[];
@@ -19,6 +21,7 @@ extern Gfx D_07000E88[];
 extern Gfx D_0700A618[];
 extern Gfx D_070023F8[];
 extern Gfx D_07002478[];
+*/
 
 // unk4 is buttonDown?
 void func_80281780(void) {
@@ -96,8 +99,8 @@ void load_ending_sequence_royalraceway(void) {
     func_802A74BC();
     camera->unk30 = 60.0f;
     D_80150130[0] = 60.0f;
-    D_800DC5EC->screenWidth = 320;
-    D_800DC5EC->screenHeight = 240;
+    D_800DC5EC->screenWidth = SCREEN_WIDTH;
+    D_800DC5EC->screenHeight = SCREEN_HEIGHT;
     D_800DC5EC->screenStartX = 160;
     D_800DC5EC->screenStartY = 120;
     gScreenModeSelection = SCREEN_MODE_1P;
@@ -125,16 +128,18 @@ void load_ending_sequence_royalraceway(void) {
     D_800DC5BC = (u16)0;
     D_800DC5C8 = (u16)0;
     D_8015F580 = (s32) gPrevLoadedAddress;
-    func_802AF5AC(&D_070067E8, -1);
-    func_802AF5AC(&D_0700AEF8, -1);
-    func_802AF5AC(&D_0700A970, 8);
-    func_802AF5AC(&D_0700AC30, 8);
-    func_802AF5AC(&D_07000CE0, 0x10);
-    func_802AF5AC(&D_07000E88, 0x10);
-    func_802AF5AC(&D_0700A618, -1);
-    func_802AF5AC(&D_0700A618, -1);
-    func_802AF5AC(&D_070023F8, 1);
-    func_802AF5AC(&D_07002478, 1);
+    // @bug these segmented addresses need to be symbols for mobility
+    // This syntax is required to match
+    func_802AF5AC(0x70067E8, -1);
+    func_802AF5AC(0x700AEF8, -1);
+    func_802AF5AC(0x700A970, 8);
+    func_802AF5AC(0x700AC30, 8);
+    func_802AF5AC(0x7000CE0, 0x10);
+    func_802AF5AC(0x7000E88, 0x10);
+    func_802AF5AC(0x700A618, -1);
+    func_802AF5AC(0x700A618, -1);
+    func_802AF5AC(0x70023F8, 1);
+    func_802AF5AC(0x7002478, 1);
     func_80295C6C();
     func_80281780();
     func_802818BC();

@@ -59,7 +59,7 @@ Gfx D_80284EE0[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx D_80284f70[] = {
+Gfx D_80284F70[] = {
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
