@@ -39,7 +39,6 @@ OTHER_DATA_MIO0_NAMES := \
 OTHER_DATA_MIO0_FILES := $(addprefix $(BUILD_DIR)/bin/,$(addsuffix .mio0,$(OTHER_DATA_MIO0_NAMES)))
 
 TEXTURE_DATA_MIO0_NAMES := \
-	common_textures   \
 	texture_68EB50    \
 	texture_68EDA0    \
 	texture_68EFF0    \
