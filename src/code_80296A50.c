@@ -1012,18 +1012,18 @@ extern s8 D_0600D850[];
 extern f32 D_802B9624;
 extern f32 D_802B9628;
 extern s32 D_802BA058;
-void func_80298328(Camera*, Mat4, void*);
 // Mario Raceway Load piranha plant textures?
-void func_80298328(Camera *arg0, Mat4 arg1, struct piranha_plant *arg2) {
+void func_80298328(Camera *arg0, Mat4 arg1, struct PiranhaPlant *arg2) {
+    s32 pad;
     s32 addr;
     s16 temp_lo = arg0 - camera1; 
     s16 phi_t4;
-    s16 temp = arg2->unk2;
+    s16 temp = arg2->flags;
     f32 temp_f0;
 
     if (temp & 0x800) { return; }
 
-        temp_f0 = func_802B80D0(arg0->pos, arg2->unk18, arg0->rotX[1], 0, D_80150130[arg0 - camera1], D_802B9624);
+        temp_f0 = func_802B80D0(arg0->pos, arg2->pos, arg0->rotX[1], 0, D_80150130[arg0 - camera1], D_802B9624);
         
         if (temp_f0 < 0.0f) {
 
@@ -1087,16 +1087,16 @@ void func_80298328(Camera *arg0, Mat4 arg1, struct piranha_plant *arg2) {
 
             switch(temp_lo) {
                 case 0:
-                    phi_t4 = arg2->timers[3];
+                    phi_t4 = arg2->timers[0];
                     break;
                 case 1:
-                    phi_t4 = arg2->timers[2];
-                    break;
-                case 2:
                     phi_t4 = arg2->timers[1];
                     break;
+                case 2:
+                    phi_t4 = arg2->timers[2];
+                    break;
                 case 3:
-                    phi_t4 = arg2->timers[0];
+                    phi_t4 = arg2->timers[3];
                     break;
             }
         }
@@ -6820,7 +6820,6 @@ void func_8029A23C(Camera *, Mat4, struct Actor*);                  /* extern */
 void func_8029A75C(Camera *, Mat4, struct Actor*);              /* extern */
 void func_8029A828(Camera *, Mat4, struct Actor*);                   /* extern */
 void func_8029A8F4(Camera *, Mat4, struct BananaActor*);                  /* extern */
-void func_80298328(Camera *, Mat4, struct Actor*);
 void func_8029AC18(Camera *, Mat4, struct Actor*);                /* extern */
 //void func_8029AE1C(Camera *, struct Actor*, Mat4, u16);            /* extern */
 void func_8029B06C(Camera *, struct Actor*);                        /* extern */
