@@ -2,10 +2,13 @@
 #include <macros.h>
 #include <PR/gbi.h>
 
+// This file appears to contain course non-specific content.
+
 // From common_textures.bin
 // Vtx 1210-1750
 
 // Somehow these symbols need to be linked in. For now, raw addresses are used.
+
 /*
 extern s8 D_03004000[];
 extern s8 D_03004800[];
@@ -2673,7 +2676,7 @@ s8 D_0D0249D8[] = {
 
 // Unk data. Perhaps not an img nor tlut.
 s8 D_0D024ED8[] = {
-    #include "textures/common_132B50_24ED8.rgba16.inc.c"
+    #include "textures/common_132B50_24ED8_tlut.rgba16.inc.c"
 };
 
 // traffic light tlut
