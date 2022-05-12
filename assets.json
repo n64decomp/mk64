@@ -59,6 +59,7 @@
 "bin/lib/PR/f3d/F3DEX_data.bin": {"meta":{"size": "0x800"}, "offsets": {"us":["0x0F4900", "0x0"]}},
 "bin/lib/PR/f3d/F3DLX_data.bin": {"meta":{"size": "0x800"}, "offsets": {"us":["0x0F5100", "0x0"]}},
 "bin/lib/PR/audio/aspMain_data.bin": {"meta":{"size": "0x300"}, "offsets": {"us":["0x0F5900", "0x0"]}},
+"bin/common_textures.bin": {"meta":{"size": "0x2D158"}, "offsets":{"us":["0x132B50","0x0"]}},
 "bin/mk64.u.128480.bin": {"meta":{"size": "0x2660"}, "offsets":{"us":["0x128480","0x0"]}},
 "bin/mk64.u.6A0ABC.bin": {"meta":{"size": "0x72304"}, "offsets":{"us":["0x6A0ABC","0x0"]}},
 "bin/mk64.u.724220.bin": {"meta":{"size": "0x5810"}, "offsets":{"us":["0x724220","0x0"]}},
