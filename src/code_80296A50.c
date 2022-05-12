@@ -366,7 +366,7 @@ void func_80296D10(struct Actor *actor, s32 arg1, Vec3s arg2, Vec3f arg3, s16 ac
         actor->unk_08 = D_802B95F4;
         func_802ADDC8(temp_a0, temp_f0, actor->pos[0], actor->pos[1], actor->pos[2]);
         return;
-    case ACTOR_HOT_AIR_BALOON_ITEM_BOX:
+    case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
         actor->flags |= 0x4000;
         actor->unk_04 = 0;
         actor->state = 5;
@@ -4060,7 +4060,7 @@ void func_8029DB44(void) {
     temp_t9 = gCurrentCourseId;
     D_8015F900 = 0;
     switch (temp_t9) {
-    case 0:
+    case COURSE_MARIO_RACEWAY:
         place_segment_06(&D_06009570);
         place_piranha_plants(&D_06009518);
         place_all_item_boxes(&D_06009498);
@@ -4074,18 +4074,18 @@ void func_8029DB44(void) {
         temp_v1 = (func_8029EC88(temp_a0_2, &sp2C, &sp34, 0x17) * 0x70) + &D_8015F9B8;
         temp_v1->unk2 = temp_v1->unk2 | 0x4000;
         break;
-    case 1:
+    case COURSE_CHOCO_MOUNTAIN:
         place_all_item_boxes(&D_06007250);
         place_falling_rocks(&D_06007230);
         break;
-    case 2:
+    case COURSE_BOWSER_CASTLE:
         place_segment_06(&D_06009290);
         place_all_item_boxes(&D_06009370);
         break;
-    case 3:
+    case COURSE_BANSHEE_BOARDWALK:
         place_all_item_boxes(&D_0600B3D0);
         break;
-    case 4:
+    case COURSE_YOSHI_VALLEY:
         place_segment_06(&D_060180A0);
         place_all_item_boxes(&D_06018110);
         load_giant_egg(&sp40, 0xC50FC000, 0, 0x441E8000);
@@ -4093,34 +4093,34 @@ void func_8029DB44(void) {
         sp40 *= gCourseDirection;
         func_8029EC88(temp_a0_3, &sp2C, &sp34, 9);
         break;
-    case 5:
+    case COURSE_FRAPPE_SNOWLAND:
         place_segment_06(&D_06007718);
         place_all_item_boxes(&D_06007810);
         break;
-    case 6:
+    case COURSE_KOOPA_BEACH:
         func_802A14BC(328.0f * gCourseDirection, 0x428C0000, 0x451ED000);
         place_all_item_boxes(&D_06018E78);
         place_palm_trees(&D_06018F70);
         break;
-    case 7:
+    case COURSE_ROYAL_RACEWAY:
         place_segment_06(&D_0600DA78);
         place_all_item_boxes(&D_0600DB80);
         place_piranha_plants(&D_0600D9F0);
         break;
-    case 8:
+    case COURSE_LUIGI_RACEWAY:
         place_segment_06(&D_0600FE80);
         place_all_item_boxes(&D_0600FDE8);
         break;
-    case 9:
+    case COURSE_MOO_MOO_FARM:
         if (gPlayerCountSelection1 != 4) {
             place_segment_06(&D_06014330);
         }
         place_all_item_boxes(&D_060143E0);
         break;
-    case 10:
+    case COURSE_TOADS_TURNPIKE:
         place_all_item_boxes(&D_06023AE0);
         break;
-    case 11:
+    case COURSE_KALAMARI_DESERT:
         place_segment_06(&D_06022F08);
         place_all_item_boxes(&D_06022E88);
         load_giant_egg(&sp40, 0xC4D20000, 0x40000000, 0x420C0000);
@@ -4141,13 +4141,13 @@ void func_8029DB44(void) {
         sp40 *= gCourseDirection;
         *(&D_8015F9BE + (func_8029EC88(temp_a0_7, &sp2C, &sp34, 0x27) * 0x70)) = 0;
         break;
-    case 12:
+    case COURSE_SHERBET_LAND:
         place_all_item_boxes(&D_06009B80);
         break;
-    case 13:
+    case COURSE_RAINBOW_ROAD:
         place_all_item_boxes(&D_06016338);
         break;
-    case 14:
+    case COURSE_WARIO_STADIUM:
         place_all_item_boxes(&D_0600CB40);
         load_giant_egg(&sp40, 0xC3030000, 0x42A60000, 0x438F0000);
         temp_a0_8 = &sp40;
@@ -4162,21 +4162,21 @@ void func_8029DB44(void) {
         sp40 *= gCourseDirection;
         func_8029EC88(temp_a0_10, &sp2C, &sp34, 0x23);
         break;
-    case 15:
+    case COURSE_BLOCK_FORT:
         place_all_item_boxes(&D_06000038);
         break;
-    case 16:
+    case COURSE_SKYSCRAPER:
         place_all_item_boxes(&D_06000080);
         break;
-    case 17:
+    case COURSE_DOUBLE_DECK:
         place_all_item_boxes(&D_06000028);
         break;
-    case 18:
+    case COURSE_DK_JUNGLE:
         place_all_item_boxes(&D_06013EC0);
         func_8029D9F8();
         func_80298D10();
         break;
-    case 19:
+    case COURSE_BIG_DONUT:
         place_all_item_boxes(&D_06000058);
         break;
     }
@@ -5624,7 +5624,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
             }
         }
         break;
-    case ACTOR_HOT_AIR_BALOON_ITEM_BOX:
+    case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
         temp_a0_7 = player;
         player = player;
         if (func_8029FB80(temp_a0_7, actor) == 1) {
@@ -6736,7 +6736,7 @@ void func_802A2F34(struct UnkStruct_800DC5EC *arg0) {
             case ACTOR_ITEM_BOX:
                 func_802A1EA0(temp_s1, phi_s0);
                 break;
-            case ACTOR_HOT_AIR_BALOON_ITEM_BOX:
+            case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
                 func_802A1EA0(temp_s1, phi_s0);
                 break;
         }
@@ -6983,7 +6983,7 @@ void update_simple_objects(void) {
             case ACTOR_ITEM_BOX:
                 update_obj_item_box(phi_s0);
                 break;
-            case ACTOR_HOT_AIR_BALOON_ITEM_BOX:
+            case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
                 update_obj_item_box_hot_air_balloon(phi_s0);
                 break;
             case ACTOR_FAKE_ITEM_BOX:
