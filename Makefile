@@ -167,9 +167,8 @@ endif
 MIO0TOOL = $(TOOLS_DIR)/mio0
 N64CKSUM = $(TOOLS_DIR)/n64cksum
 N64GRAPHICS = $(TOOLS_DIR)/n64graphics
-BIN2C = $(TOOLS_DIR)/bin2c.py
+BIN2C = $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
-REMOVE_BYTES := $(PYTHON) $(TOOLS_DIR)/remove_bytes.py
 EMULATOR = mupen64plus
 EMU_FLAGS = --noosd
 LOADER = loader64
