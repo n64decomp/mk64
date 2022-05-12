@@ -390,6 +390,7 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_244D8.rgba16.ci8.inc.c -g textures/132B50_244D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1FAD8_tlut_gen.rgba16.bin
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_249D8.rgba16.ci8.inc.c -g textures/132B50_249D8.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/132B50_1FCD8_tlut_gen.rgba16.bin
 
+	$(BIN2C) textures/132B50_24ED8.rgba16.bin $(BUILD_DIR)/textures/132B50_24ED8.rgba16
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_25ED8_tlut.rgba16.inc.c -g textures/132B50_25ED8_tlut.rgba16.png -s u8 -w 16 -h 16
 
 	$(BIN2C) textures/132B50_260D8.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_260D8.rgba16.ci8
