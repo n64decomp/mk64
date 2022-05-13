@@ -71,6 +71,19 @@ struct FallingRock {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
+// Data in course_choco_mountain_dl.bin
+// 7230?
+// func_8029CF0C
+struct innerFR {
+    Vec4s data;
+};
+
+typedef union {
+    struct innerFR unk;
+    s32 unk2;
+    s32 unk3;
+} UnknownFallingRock;
+
 struct YoshiValleyEgg {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
