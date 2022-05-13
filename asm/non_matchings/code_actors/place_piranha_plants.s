@@ -26,7 +26,7 @@ glabel place_piranha_plants
 /* 106284 8029CC74 AFB20020 */  sw    $s2, 0x20($sp)
 /* 106288 8029CC78 AFB1001C */  sw    $s1, 0x1c($sp)
 /* 10628C 8029CC7C 02018021 */  addu  $s0, $s0, $at
-/* 106290 8029CC80 0C0AD4A7 */  jal   vec3f_set_alternate
+/* 106290 8029CC80 0C0AD4A7 */  jal   vec3f_set
 /* 106294 8029CC84 03C02025 */   move  $a0, $fp
 /* 106298 8029CC88 27B2004C */  addiu $s2, $sp, 0x4c
 /* 10629C 8029CC8C 02402025 */  move  $a0, $s2

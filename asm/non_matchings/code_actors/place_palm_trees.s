@@ -27,7 +27,7 @@ glabel place_palm_trees
 /* 1063F4 8029CDE4 AFB1002C */  sw    $s1, 0x2c($sp)
 /* 1063F8 8029CDE8 F7B40020 */  sdc1  $f20, 0x20($sp)
 /* 1063FC 8029CDEC 02018021 */  addu  $s0, $s0, $at
-/* 106400 8029CDF0 0C0AD4A7 */  jal   vec3f_set_alternate
+/* 106400 8029CDF0 0C0AD4A7 */  jal   vec3f_set
 /* 106404 8029CDF4 02C02025 */   move  $a0, $s6
 /* 106408 8029CDF8 27B70058 */  addiu $s7, $sp, 0x58
 /* 10640C 8029CDFC 02E02025 */  move  $a0, $s7

@@ -27,7 +27,7 @@ glabel place_segment_06
 /* 106BF8 8029D5E8 AFB00030 */  sw    $s0, 0x30($sp)
 /* 106BFC 8029D5EC F7B60028 */  sdc1  $f22, 0x28($sp)
 /* 106C00 8029D5F0 02619821 */  addu  $s3, $s3, $at
-/* 106C04 8029D5F4 0C0AD4A7 */  jal   vec3f_set_alternate
+/* 106C04 8029D5F4 0C0AD4A7 */  jal   vec3f_set
 /* 106C08 8029D5F8 27A40080 */   addiu $a0, $sp, 0x80
 /* 106C0C 8029D5FC 24084000 */  li    $t0, 16384
 /* 106C10 8029D600 A7A80078 */  sh    $t0, 0x78($sp)

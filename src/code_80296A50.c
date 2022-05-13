@@ -19,7 +19,7 @@ void func_802B5F00(Mat4, f32);
 
 void mtxf_translate(Mat4, Vec3f);                          /* extern */
 void vec3s_set(Vec3s, s16, s16, s16);
-void vec3f_set_alternate(Vec3f, f32, f32, f32);
+void vec3f_set(Vec3f, f32, f32, f32);
 s16 func_8029EC88(Vec3f, Vec3s, Vec3f, s16);
 
 extern Player gPlayers[];
@@ -2053,7 +2053,7 @@ GLOBAL_ASM("asm/non_matchings/code_actors/func_8029AC18.s")
 void mtxf_translate(Mat4, Vec3f); // extern
 void func_802B59DC(Mat4, s32); // extern
 void func_802B71CC(Mat4, Mat4, Mat4); // extern
-void vec3f_set_alternate(Vec3f, f32, f32, f32); // extern
+void vec3f_set(Vec3f, f32, f32, f32); // extern
 extern s8 D_0600E058[];
 extern s8 D_0600E730[];
 extern s8 D_0600FC28[];
@@ -2084,7 +2084,7 @@ void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, Mat4 arg2, u16 ar
             gSPDisplayList(gDisplayListHead++, &D_0600E058);
 
             func_802B59DC(spE0, boat->wheelRot);
-            vec3f_set_alternate(sp120, 0, 16.0f, -255.0f);
+            vec3f_set(sp120, 0, 16.0f, -255.0f);
             mtxf_translate(spA0, sp120);
             func_802B71CC(sp60, spE0, spA0);
             if (func_802B4FF8(sp60, 3) != 0) {
@@ -2281,7 +2281,7 @@ s32 func_802B4FF8(f32 (*)[4], ?);                   /* extern */
 ? func_802B59DC(f32 (*)[4], s16);                   /* extern */
 ? func_802B5F74(f32 (*)[4], f32 *, s16 *);          /* extern */
 f32 func_802B80D0(f32 *, u16, ?, f32, f32);         /* extern */
-? vec3f_set_alternate(f32 *, ?, ?, ?);                   /* extern */
+? vec3f_set(f32 *, ?, ?, ?);                   /* extern */
 extern ? D_0601B978;
 extern ? D_0601C0F0;
 extern ? D_0601D160;
@@ -2381,7 +2381,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
                 temp_v0_9->words.w1 = (u32) &D_06022D28;
                 temp_v0_9->words.w0 = 0x06000000;
                 func_802B59DC((f32 (*)[4]) &sp120[0], actor->wheelRot);
-                vec3f_set_alternate(&sp160, 0x41880000, 0x40C00000, 0x42000000);
+                vec3f_set(&sp160, 0x41880000, 0x40C00000, 0x42000000);
                 mtxf_translate((f32 (*)[4]) &spE0[0], &sp160);
                 func_802B71CC((f32 (*)[4]) &spA0[0], (f32 (*)[4]) &sp120[0], (f32 (*)[4]) &spE0[0]);
                 if (func_802B4FF8((f32 (*)[4]) &spA0[0], 3) != 0) {
@@ -2395,7 +2395,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
                     temp_v0_11->words.w0 = 0xBD000000;
                     sp30 = &D_06022DB8;
                     func_802B59DC((f32 (*)[4]) &sp120[0], actor->wheelRot);
-                    vec3f_set_alternate(&sp160, 0xC1880000, 0x40C00000, 0x42000000);
+                    vec3f_set(&sp160, 0xC1880000, 0x40C00000, 0x42000000);
                     mtxf_translate((f32 (*)[4]) &spE0[0], &sp160);
                     func_802B71CC((f32 (*)[4]) &spA0[0], (f32 (*)[4]) &sp120[0], (f32 (*)[4]) &spE0[0]);
                     if (func_802B4FF8((f32 (*)[4]) &spA0[0], 3) != 0) {
@@ -2408,7 +2408,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
                         temp_v0_13->words.w1 = 0;
                         temp_v0_13->words.w0 = 0xBD000000;
                         func_802B59DC((f32 (*)[4]) &sp120[0], (s16) (actor->wheelRot + 0x16C));
-                        vec3f_set_alternate(&sp160, 0x41880000, 0x40C00000, 0x41800000);
+                        vec3f_set(&sp160, 0x41880000, 0x40C00000, 0x41800000);
                         mtxf_translate((f32 (*)[4]) &spE0[0], &sp160);
                         func_802B71CC((f32 (*)[4]) &spA0[0], (f32 (*)[4]) &sp120[0], (f32 (*)[4]) &spE0[0]);
                         if (func_802B4FF8((f32 (*)[4]) &spA0[0], 3) != 0) {
@@ -2421,7 +2421,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
                             temp_v0_15->words.w1 = 0;
                             temp_v0_15->words.w0 = 0xBD000000;
                             func_802B59DC((f32 (*)[4]) &sp120[0], (s16) (actor->wheelRot + 0x16C));
-                            vec3f_set_alternate(&sp160, 0xC1880000, 0x40C00000, 0x41800000);
+                            vec3f_set(&sp160, 0xC1880000, 0x40C00000, 0x41800000);
                             mtxf_translate((f32 (*)[4]) &spE0[0], &sp160);
                             func_802B71CC((f32 (*)[4]) &spA0[0], (f32 (*)[4]) &sp120[0], (f32 (*)[4]) &spE0[0]);
                             if (func_802B4FF8((f32 (*)[4]) &spA0[0], 3) != 0) {
@@ -2434,7 +2434,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
                                 temp_v0_17->words.w1 = 0;
                                 temp_v0_17->words.w0 = 0xBD000000;
                                 func_802B59DC((f32 (*)[4]) &sp120[0], (s16) (actor->wheelRot + 0x444));
-                                vec3f_set_alternate(&sp160, 0x41880000, 0x41400000, 0xC1400000);
+                                vec3f_set(&sp160, 0x41880000, 0x41400000, 0xC1400000);
                                 mtxf_translate((f32 (*)[4]) &spE0[0], &sp160);
                                 func_802B71CC((f32 (*)[4]) &spA0[0], (f32 (*)[4]) &sp120[0], (f32 (*)[4]) &spE0[0]);
                                 if (func_802B4FF8((f32 (*)[4]) &spA0[0], 3) != 0) {
@@ -2448,7 +2448,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
                                     temp_v0_19->words.w0 = 0xBD000000;
                                     sp30 = &D_06022D70;
                                     func_802B59DC((f32 (*)[4]) &sp120[0], (s16) (actor->wheelRot + 0x444));
-                                    vec3f_set_alternate(&sp160, 0xC1880000, 0x41400000, 0xC1400000);
+                                    vec3f_set(&sp160, 0xC1880000, 0x41400000, 0xC1400000);
                                     mtxf_translate((f32 (*)[4]) &spE0[0], &sp160);
                                     func_802B71CC((f32 (*)[4]) &spA0[0], (f32 (*)[4]) &sp120[0], (f32 (*)[4]) &spE0[0]);
                                     if (func_802B4FF8((f32 (*)[4]) &spA0[0], 3) != 0) {
@@ -2461,7 +2461,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
                                         temp_v0_21->words.w1 = 0;
                                         temp_v0_21->words.w0 = 0xBD000000;
                                         func_802B59DC((f32 (*)[4]) &sp120[0], (s16) (actor->wheelRot + 0x2D8));
-                                        vec3f_set_alternate(&sp160, 0x41880000, 0x41400000, 0xC2080000);
+                                        vec3f_set(&sp160, 0x41880000, 0x41400000, 0xC2080000);
                                         mtxf_translate((f32 (*)[4]) &spE0[0], &sp160);
                                         func_802B71CC((f32 (*)[4]) &spA0[0], (f32 (*)[4]) &sp120[0], (f32 (*)[4]) &spE0[0]);
                                         if (func_802B4FF8((f32 (*)[4]) &spA0[0], 3) != 0) {
@@ -2474,7 +2474,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
                                             temp_v0_23->words.w1 = 0;
                                             temp_v0_23->words.w0 = 0xBD000000;
                                             func_802B59DC((f32 (*)[4]) &sp120[0], (s16) (actor->wheelRot + 0x2D8));
-                                            vec3f_set_alternate(&sp160, 0xC1880000, 0x41400000, 0xC2080000);
+                                            vec3f_set(&sp160, 0xC1880000, 0x41400000, 0xC2080000);
                                             mtxf_translate((f32 (*)[4]) &spE0[0], &sp160);
                                             func_802B71CC((f32 (*)[4]) &spA0[0], (f32 (*)[4]) &sp120[0], (f32 (*)[4]) &spE0[0]);
                                             if (func_802B4FF8((f32 (*)[4]) &spA0[0], 3) != 0) {
@@ -2514,7 +2514,7 @@ s32 func_802B4FF8(? *, ?); // extern
 ? func_802B5F74(? *, ? *, s32); // extern
 ? func_802B71CC(? *, ? *, ? *); // extern
 f32 func_802B80D0(? *, u16, ?, f32, f32); // extern
-? vec3f_set_alternate(? *, ?, ?, ?); // extern
+? vec3f_set(? *, ?, ?, ?); // extern
 extern ? D_0601F228;
 extern ? D_0601F708;
 extern ? D_0601FAF8;
@@ -2590,7 +2590,7 @@ void func_8029BFB0(void *arg0, void *arg1) {
                 temp_v0_6->unk_04 = &D_06022D28;
                 temp_v0_6->unk0 = 0x6000000;
                 func_802B59DC(&sp100, arg1->unk6);
-                vec3f_set_alternate(&spF4, 0x41880000, 0x40C00000, 0x41000000);
+                vec3f_set(&spF4, 0x41880000, 0x40C00000, 0x41000000);
                 mtxf_translate(&spB4, &spF4);
                 func_802B71CC(&sp74, &sp100, &spB4);
                 if (func_802B4FF8(&sp74, 3) != 0) {
@@ -2604,7 +2604,7 @@ void func_8029BFB0(void *arg0, void *arg1) {
                     temp_v0_8->unk0 = 0xBD000000;
                     sp30 = &D_06022DB8;
                     func_802B59DC(&sp100, arg1->unk6);
-                    vec3f_set_alternate(&spF4, 0xC1880000, 0x40C00000, 0x41000000);
+                    vec3f_set(&spF4, 0xC1880000, 0x40C00000, 0x41000000);
                     mtxf_translate(&spB4, &spF4);
                     func_802B71CC(&sp74, &sp100, &spB4);
                     if (func_802B4FF8(&sp74, 3) != 0) {
@@ -2617,7 +2617,7 @@ void func_8029BFB0(void *arg0, void *arg1) {
                         temp_v0_10->unk_04 = 0;
                         temp_v0_10->unk0 = 0xBD000000;
                         func_802B59DC(&sp100, arg1->unk6 + 0x444);
-                        vec3f_set_alternate(&spF4, 0x41880000, 0x40C00000, 0xC1000000);
+                        vec3f_set(&spF4, 0x41880000, 0x40C00000, 0xC1000000);
                         mtxf_translate(&spB4, &spF4);
                         func_802B71CC(&sp74, &sp100, &spB4);
                         if (func_802B4FF8(&sp74, 3) != 0) {
@@ -2630,7 +2630,7 @@ void func_8029BFB0(void *arg0, void *arg1) {
                             temp_v0_12->unk_04 = 0;
                             temp_v0_12->unk0 = 0xBD000000;
                             func_802B59DC(&sp100, arg1->unk6 + 0x444);
-                            vec3f_set_alternate(&spF4, 0xC1880000, 0x40C00000, 0xC1000000);
+                            vec3f_set(&spF4, 0xC1880000, 0x40C00000, 0xC1000000);
                             mtxf_translate(&spB4, &spF4);
                             func_802B71CC(&sp74, &sp100, &spB4);
                             if (func_802B4FF8(&sp74, 3) != 0) {
@@ -2666,7 +2666,7 @@ s32 func_802B4FF8(? *, ?); // extern
 ? func_802B5F74(? *, ? *, s32); // extern
 ? func_802B71CC(? *, ? *, ? *); // extern
 f32 func_802B80D0(? *, u16, ?, f32, f32); // extern
-? vec3f_set_alternate(? *, ?, ?, ?); // extern
+? vec3f_set(? *, ?, ?, ?); // extern
 extern ? D_06020A08;
 extern ? D_06020A20;
 extern ? D_06021220;
@@ -2768,7 +2768,7 @@ void func_8029C3CC(void *arg0, void *arg1) {
                 temp_v0_9->unk_04 = &D_06022D28;
                 temp_v0_9->unk0 = 0x6000000;
                 func_802B59DC(&sp128, arg1->unk6);
-                vec3f_set_alternate(&sp11C, 0x41880000, 0x40C00000, 0x41E00000);
+                vec3f_set(&sp11C, 0x41880000, 0x40C00000, 0x41E00000);
                 mtxf_translate(&spDC, &sp11C);
                 func_802B71CC(&sp9C, &sp128, &spDC);
                 if (func_802B4FF8(&sp9C, 3) != 0) {
@@ -2782,7 +2782,7 @@ void func_8029C3CC(void *arg0, void *arg1) {
                     temp_v0_11->unk0 = 0xBD000000;
                     sp2C = &D_06022DB8;
                     func_802B59DC(&sp128, arg1->unk6);
-                    vec3f_set_alternate(&sp11C, 0xC1880000, 0x40C00000, 0x41E00000);
+                    vec3f_set(&sp11C, 0xC1880000, 0x40C00000, 0x41E00000);
                     mtxf_translate(&spDC, &sp11C);
                     func_802B71CC(&sp9C, &sp128, &spDC);
                     if (func_802B4FF8(&sp9C, 3) != 0) {
@@ -2795,7 +2795,7 @@ void func_8029C3CC(void *arg0, void *arg1) {
                         temp_v0_13->unk_04 = 0;
                         temp_v0_13->unk0 = 0xBD000000;
                         func_802B59DC(&sp128, arg1->unk6 + 0x222);
-                        vec3f_set_alternate(&sp11C, 0x41880000, 0x40C00000, 0x41400000);
+                        vec3f_set(&sp11C, 0x41880000, 0x40C00000, 0x41400000);
                         mtxf_translate(&spDC, &sp11C);
                         func_802B71CC(&sp9C, &sp128, &spDC);
                         if (func_802B4FF8(&sp9C, 3) != 0) {
@@ -2808,7 +2808,7 @@ void func_8029C3CC(void *arg0, void *arg1) {
                             temp_v0_15->unk_04 = 0;
                             temp_v0_15->unk0 = 0xBD000000;
                             func_802B59DC(&sp128, arg1->unk6 + 0x222);
-                            vec3f_set_alternate(&sp11C, 0xC1880000, 0x40C00000, 0x41400000);
+                            vec3f_set(&sp11C, 0xC1880000, 0x40C00000, 0x41400000);
                             mtxf_translate(&spDC, &sp11C);
                             func_802B71CC(&sp9C, &sp128, &spDC);
                             if (func_802B4FF8(&sp9C, 3) != 0) {
@@ -2821,7 +2821,7 @@ void func_8029C3CC(void *arg0, void *arg1) {
                                 temp_v0_17->unk_04 = 0;
                                 temp_v0_17->unk0 = 0xBD000000;
                                 func_802B59DC(&sp128, arg1->unk6 + 0x5B0);
-                                vec3f_set_alternate(&sp11C, 0x41880000, 0x40C00000, 0xC1000000);
+                                vec3f_set(&sp11C, 0x41880000, 0x40C00000, 0xC1000000);
                                 mtxf_translate(&spDC, &sp11C);
                                 func_802B71CC(&sp9C, &sp128, &spDC);
                                 if (func_802B4FF8(&sp9C, 3) != 0) {
@@ -2834,7 +2834,7 @@ void func_8029C3CC(void *arg0, void *arg1) {
                                     temp_v0_19->unk_04 = 0;
                                     temp_v0_19->unk0 = 0xBD000000;
                                     func_802B59DC(&sp128, arg1->unk6 + 0x5B0);
-                                    vec3f_set_alternate(&sp11C, 0xC1880000, 0x40C00000, 0xC1000000);
+                                    vec3f_set(&sp11C, 0xC1880000, 0x40C00000, 0xC1000000);
                                     mtxf_translate(&spDC, &sp11C);
                                     func_802B71CC(&sp9C, &sp128, &spDC);
                                     if (func_802B4FF8(&sp9C, 3) != 0) {
@@ -2847,7 +2847,7 @@ void func_8029C3CC(void *arg0, void *arg1) {
                                         temp_v0_21->unk_04 = 0;
                                         temp_v0_21->unk0 = 0xBD000000;
                                         func_802B59DC(&sp128, arg1->unk6 + 0x16C);
-                                        vec3f_set_alternate(&sp11C, 0x41880000, 0x40C00000, 0xC1C00000);
+                                        vec3f_set(&sp11C, 0x41880000, 0x40C00000, 0xC1C00000);
                                         mtxf_translate(&spDC, &sp11C);
                                         func_802B71CC(&sp9C, &sp128, &spDC);
                                         if (func_802B4FF8(&sp9C, 3) != 0) {
@@ -2860,7 +2860,7 @@ void func_8029C3CC(void *arg0, void *arg1) {
                                             temp_v0_23->unk_04 = 0;
                                             temp_v0_23->unk0 = 0xBD000000;
                                             func_802B59DC(&sp128, arg1->unk6 + 0x16C);
-                                            vec3f_set_alternate(&sp11C, 0xC1880000, 0x40C00000, 0xC1C00000);
+                                            vec3f_set(&sp11C, 0xC1880000, 0x40C00000, 0xC1C00000);
                                             mtxf_translate(&spDC, &sp11C);
                                             func_802B71CC(&sp9C, &sp128, &spDC);
                                             if (func_802B4FF8(&sp9C, 3) != 0) {
@@ -2979,7 +2979,7 @@ void place_piranha_plants(u32 arg0) {
     Vec3s *phi_s0;
 
     temp_s0 = VIRTUAL_TO_PHYSICAL2(gSegmentTable[arg0 >> 18] + SEGMENT_OFFSET(arg0));
-    vec3f_set_alternate(sp54, 0, 0, 0);
+    vec3f_set(sp54, 0, 0, 0);
     vec3s_set(sp4C, 0, 0, 0);
     //temp_s1 = *temp_s0;
     //phi_s1 = temp_s1;
@@ -3018,7 +3018,7 @@ GLOBAL_ASM("asm/non_matchings/code_actors/place_piranha_plants.s")
 s32 func_8029EC88(f32 *, ? *, ? *, ?); // extern
 ? func_802ADDC8(void *, ?, s32, s32, f32); // extern
 ? vec3s_set(? *, ?, ?, ?); // extern
-? vec3f_set_alternate(? *, ?, ?, ?); // extern
+? vec3f_set(? *, ?, ?, ?); // extern
 extern ? D_8015F9B8;
 extern f32 gCourseDirection;
 extern ? gSegmentTable;
@@ -3041,7 +3041,7 @@ void place_palm_trees(u32 arg0) {
     s16 *phi_s0;
 
     temp_s0 = *(&gSegmentTable + ((arg0 >> 0x18) * 4)) + (arg0 & 0xFFFFFF) + 0x80000000;
-    vec3f_set_alternate(&sp60, 0, 0, 0);
+    vec3f_set(&sp60, 0, 0, 0);
     vec3s_set(&sp58, 0, 0, 0);
     temp_v0 = *temp_s0;
     phi_v0 = temp_v0;
@@ -3079,7 +3079,7 @@ void func_8029CF0C(Gfx *displaylist, struct FallingRock *rock) {
     rock->pos[0] = (f32) temp_v0->unk.data[0] * gCourseDirection;
     rock->pos[1] = (f32) temp_v0->unk.data[1] + 10.0f;
     rock->pos[2] = (f32) temp_v0->unk.data[2];
-    vec3f_set_alternate(rock->velocity, 0, 0, 0);
+    vec3f_set(rock->velocity, 0, 0, 0);
     vec3s_set(rock->rot, 0, 0, 0);
 }
 
@@ -3088,7 +3088,7 @@ void func_8029CF0C(Gfx *displaylist, struct FallingRock *rock) {
 s32 func_8029EC88(f32 *, ? *, ? *, ?); // extern
 ? func_802AAAAC(void *); // extern
 ? vec3s_set(? *, ?, ?, ?); // extern
-? vec3f_set_alternate(? *, ?, ?, ?); // extern
+? vec3f_set(? *, ?, ?, ?); // extern
 extern ? D_8015F9B8;
 extern f32 gCourseDirection;
 extern ? gSegmentTable;
@@ -3118,7 +3118,7 @@ void place_falling_rocks(u32 arg0) {
             sp64 = phi_v0 * gCourseDirection;
             sp68 = phi_s0->unk2 + 10.0f;
             sp6C = phi_s0->unk_04;
-            vec3f_set_alternate(&sp58, 0, 0, 0);
+            vec3f_set(&sp58, 0, 0, 0);
             vec3s_set(&sp50, 0, 0, 0);
             temp_v1 = &D_8015F9B8 + (func_8029EC88(temp_s4, &sp50, &sp58, 5) * 0x70);
             temp_a0 = temp_v1 + 0x30;
@@ -3264,7 +3264,7 @@ GLOBAL_ASM("asm/non_matchings/code_actors/update_obj_falling_rocks.s")
 s32 func_8029EC88(f32 *, s16 *, ? *, s16);          /* extern */
 f32 func_802ABE30(?32, f32, ?32, u16);              /* extern */
 ? func_802ADDC8(void *, ?, ?32, f32, ?32);          /* extern */
-? vec3f_set_alternate(? *, f32, f32, f32);               /* extern */
+? vec3f_set(? *, f32, f32, f32);               /* extern */
 extern s32 D_800DC50C;
 extern ? D_8015F9B8;
 extern f32 gCourseDirection;
@@ -3293,7 +3293,7 @@ void place_segment_06(u32 arg0) {
     s16 phi_s2;
 
     temp_s3 = *(&gSegmentTable + ((arg0 >> 0x18) * 4)) + (arg0 & 0xFFFFFF) + 0x80000000;
-    vec3f_set_alternate(&sp80, 0.0f, 0.0f, 0.0f);
+    vec3f_set(&sp80, 0.0f, 0.0f, 0.0f);
     sp78 = 0x4000;
     sp7A = 0;
     sp7C = 0;
@@ -3381,7 +3381,7 @@ GLOBAL_ASM("asm/non_matchings/code_actors/place_segment_06.s")
 //generated by m2c commit 685418adfeb3794409e47b45ac5cab60b17d23fd
 s16 func_8029EC88(f32 *, s16 *, ? *, ?);            /* extern */
 f32 func_802AE1C0(f32, f32, f32);                   /* extern */
-? vec3f_set_alternate(? *, ?, ?, ?);                     /* extern */
+? vec3f_set(? *, ?, ?, ?);                     /* extern */
 s16 random_u16();                                   /* extern */
 extern f32 gCourseDirection;
 extern s16 gPlaceItemBoxes;
@@ -3410,7 +3410,7 @@ void place_all_item_boxes(u32 arg0) {
     temp_s0 = gSegmentTable[arg0 >> 0x18] + (arg0 & 0xFFFFFF) + 0x80000000;
     phi_s0 = temp_s0;
     if ((gModeSelection != 1) && (gPlaceItemBoxes != 0)) {
-        vec3f_set_alternate(&sp60, 0, 0, 0);
+        vec3f_set(&sp60, 0, 0, 0);
         temp_v1 = *temp_s0;
         phi_v1 = temp_v1;
         if (temp_v1 != -0x8000) {
@@ -3504,7 +3504,7 @@ GLOBAL_ASM("asm/non_matchings/code_actors/func_8029DAB8.s")
 s32 func_8029EC88(f32 *, ? *, ? *, ?);              /* extern */
 ? func_802A14BC(f32, ?, ?);                         /* extern */
 ? vec3s_set(? *, ?, ?, ?);                      /* extern */
-? vec3f_set_alternate(f32 *, ?, ?, ?);                   /* extern */
+? vec3f_set(f32 *, ?, ?, ?);                   /* extern */
 ? place_all_item_boxes(? *);                        /* extern */
 ? place_falling_rocks(? *);                         /* extern */
 ? place_palm_trees(? *);                            /* extern */
@@ -3582,11 +3582,11 @@ void func_8029DB44(void) {
         place_segment_06(&D_06009570);
         place_piranha_plants(&D_06009518);
         place_all_item_boxes(&D_06009498);
-        vec3f_set_alternate(&sp40, 0x43160000, 0x42200000, 0xC4A28000);
+        vec3f_set(&sp40, 0x43160000, 0x42200000, 0xC4A28000);
         temp_a0 = &sp40;
         sp40 *= gCourseDirection;
         func_8029EC88(temp_a0, &sp2C, &sp34, 0x17);
-        vec3f_set_alternate(&sp40, 0x451D8000, 0, 0x449B0000);
+        vec3f_set(&sp40, 0x451D8000, 0, 0x449B0000);
         temp_a0_2 = &sp40;
         sp40 *= gCourseDirection;
         temp_v1 = (func_8029EC88(temp_a0_2, &sp2C, &sp34, 0x17) * 0x70) + &D_8015F9B8;
@@ -3606,7 +3606,7 @@ void func_8029DB44(void) {
     case COURSE_YOSHI_VALLEY:
         place_segment_06(&D_060180A0);
         place_all_item_boxes(&D_06018110);
-        vec3f_set_alternate(&sp40, 0xC50FC000, 0, 0x441E8000);
+        vec3f_set(&sp40, 0xC50FC000, 0, 0x441E8000);
         temp_a0_3 = &sp40;
         sp40 *= gCourseDirection;
         func_8029EC88(temp_a0_3, &sp2C, &sp34, 9);
@@ -3641,7 +3641,7 @@ void func_8029DB44(void) {
     case COURSE_KALAMARI_DESERT:
         place_segment_06(&D_06022F08);
         place_all_item_boxes(&D_06022E88);
-        vec3f_set_alternate(&sp40, 0xC4D20000, 0x40000000, 0x420C0000);
+        vec3f_set(&sp40, 0xC4D20000, 0x40000000, 0x420C0000);
         temp_a0_4 = &sp40;
         sp40 *= gCourseDirection;
         /*
@@ -3651,16 +3651,16 @@ void func_8029DB44(void) {
         In this function, that's the `crossingId` member of a RailroadCrossing actor
         */
         *(&D_8015F9BE + (func_8029EC88(temp_a0_4, &sp2C, &sp34, 0x27) * 0x70)) = 1;
-        vec3f_set_alternate(&sp40, 0xC4C80000, 0x40000000, 0x420C0000);
+        vec3f_set(&sp40, 0xC4C80000, 0x40000000, 0x420C0000);
         temp_a0_5 = &sp40;
         sp40 *= gCourseDirection;
         *(&D_8015F9BE + (func_8029EC88(temp_a0_5, &sp2C, &sp34, 0x27) * 0x70)) = 1;
         vec3s_set(&sp2C, 0, -0x2000, 0);
-        vec3f_set_alternate(&sp40, 0xC519B000, 0x40000000, 0x450D7000);
+        vec3f_set(&sp40, 0xC519B000, 0x40000000, 0x450D7000);
         temp_a0_6 = &sp40;
         sp40 *= gCourseDirection;
         *(&D_8015F9BE + (func_8029EC88(temp_a0_6, &sp2C, &sp34, 0x27) * 0x70)) = 0;
-        vec3f_set_alternate(&sp40, 0xC51A3000, 0x40000000, 0x45147000);
+        vec3f_set(&sp40, 0xC51A3000, 0x40000000, 0x45147000);
         temp_a0_7 = &sp40;
         sp40 *= gCourseDirection;
         *(&D_8015F9BE + (func_8029EC88(temp_a0_7, &sp2C, &sp34, 0x27) * 0x70)) = 0;
@@ -3673,15 +3673,15 @@ void func_8029DB44(void) {
         break;
     case COURSE_WARIO_STADIUM:
         place_all_item_boxes(&D_0600CB40);
-        vec3f_set_alternate(&sp40, 0xC3030000, 0x42A60000, 0x438F0000);
+        vec3f_set(&sp40, 0xC3030000, 0x42A60000, 0x438F0000);
         temp_a0_8 = &sp40;
         sp40 *= gCourseDirection;
         func_8029EC88(temp_a0_8, &sp2C, &sp34, 0x23);
-        vec3f_set_alternate(&sp40, 0xC5131000, 0x42900000, 0xC4C90000);
+        vec3f_set(&sp40, 0xC5131000, 0x42900000, 0xC4C90000);
         temp_a0_9 = &sp40;
         sp40 *= gCourseDirection;
         func_8029EC88(temp_a0_9, &sp2C, &sp34, 0x23);
-        vec3f_set_alternate(&sp40, 0xC523E000, 0x429E0000, 0x4438C000);
+        vec3f_set(&sp40, 0xC523E000, 0x429E0000, 0x4438C000);
         temp_a0_10 = &sp40;
         sp40 *= gCourseDirection;
         func_8029EC88(temp_a0_10, &sp2C, &sp34, 0x23);
@@ -4143,7 +4143,7 @@ void func_8029ED38(Vec3f arg0, Vec3s arg1) {
     //? sp24;
     //? sp1C;
 
-    vec3f_set_alternate(arg0, 0, 0, 0);
+    vec3f_set(arg0, 0, 0, 0);
     vec3s_set(arg1, 0, 0, 0);
     func_8029EC88(arg0, arg1, arg0, arg1);
 }
@@ -5382,7 +5382,7 @@ void func_802A14BC(f32 arg0, f32 arg1, f32 arg2) {
 
     if (gModeSelection != TIME_TRIALS) {
         vec3s_set(sp20, 0, 0, 0);
-        vec3f_set_alternate(sp28, 0, 0, 0);
+        vec3f_set(sp28, 0, 0, 0);
         sp34[0] = arg0;
         sp34[1] = arg1;
         sp34[2] = arg2;

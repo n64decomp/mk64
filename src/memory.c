@@ -1641,9 +1641,9 @@ void func_802AAAAC(UnkActorInner *arg0) {
     temp_a0->unk-C = 0.0f;
     temp_a0->unk-8 = 0.0f;
     temp_a0->unk-4 = 0.0f;
-    vec3f_set_alternate(temp_a0, 0.0f, 0.0f, 1.0f);
-    vec3f_set_alternate(arg0->unk54, 1.0f, 0.0f, 0.0f);
-    vec3f_set_alternate(arg0->unk60, 0.0f, 1.0f, 0.0f);
+    vec3f_set(temp_a0, 0.0f, 0.0f, 1.0f);
+    vec3f_set(arg0->unk54, 1.0f, 0.0f, 0.0f);
+    vec3f_set(arg0->unk60, 0.0f, 1.0f, 0.0f);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/memory/func_802AAAAC.s")

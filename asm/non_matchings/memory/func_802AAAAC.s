@@ -18,21 +18,21 @@ glabel func_802AAAAC
 /* 1140FC 802AAAEC 3C073F80 */  lui   $a3, 0x3f80
 /* 114100 802AAAF0 E482FFF4 */  swc1  $f2, -0xc($a0)
 /* 114104 802AAAF4 E482FFF8 */  swc1  $f2, -8($a0)
-/* 114108 802AAAF8 0C0AD4A7 */  jal   vec3f_set_alternate
+/* 114108 802AAAF8 0C0AD4A7 */  jal   vec3f_set
 /* 11410C 802AAAFC E482FFFC */   swc1  $f2, -4($a0)
 /* 114110 802AAB00 44800000 */  mtc1  $zero, $f0
 /* 114114 802AAB04 26040024 */  addiu $a0, $s0, 0x24
 /* 114118 802AAB08 3C053F80 */  lui   $a1, 0x3f80
 /* 11411C 802AAB0C 44060000 */  mfc1  $a2, $f0
 /* 114120 802AAB10 44070000 */  mfc1  $a3, $f0
-/* 114124 802AAB14 0C0AD4A7 */  jal   vec3f_set_alternate
+/* 114124 802AAB14 0C0AD4A7 */  jal   vec3f_set
 /* 114128 802AAB18 00000000 */   nop   
 /* 11412C 802AAB1C 44800000 */  mtc1  $zero, $f0
 /* 114130 802AAB20 26040030 */  addiu $a0, $s0, 0x30
 /* 114134 802AAB24 3C063F80 */  lui   $a2, 0x3f80
 /* 114138 802AAB28 44050000 */  mfc1  $a1, $f0
 /* 11413C 802AAB2C 44070000 */  mfc1  $a3, $f0
-/* 114140 802AAB30 0C0AD4A7 */  jal   vec3f_set_alternate
+/* 114140 802AAB30 0C0AD4A7 */  jal   vec3f_set
 /* 114144 802AAB34 00000000 */   nop   
 /* 114148 802AAB38 8FBF001C */  lw    $ra, 0x1c($sp)
 /* 11414C 802AAB3C 8FB00018 */  lw    $s0, 0x18($sp)

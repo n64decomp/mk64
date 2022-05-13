@@ -7,7 +7,7 @@ glabel func_8029ED38
 /* 10835C 8029ED4C 44050000 */  mfc1  $a1, $f0
 /* 108360 8029ED50 44060000 */  mfc1  $a2, $f0
 /* 108364 8029ED54 44070000 */  mfc1  $a3, $f0
-/* 108368 8029ED58 0C0AD4A7 */  jal   vec3f_set_alternate
+/* 108368 8029ED58 0C0AD4A7 */  jal   vec3f_set
 /* 10836C 8029ED5C 27A40024 */   addiu $a0, $sp, 0x24
 /* 108370 8029ED60 27A4001C */  addiu $a0, $sp, 0x1c
 /* 108374 8029ED64 00002825 */  move  $a1, $zero
