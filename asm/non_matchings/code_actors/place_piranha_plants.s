@@ -26,13 +26,13 @@ glabel place_piranha_plants
 /* 106284 8029CC74 AFB20020 */  sw    $s2, 0x20($sp)
 /* 106288 8029CC78 AFB1001C */  sw    $s1, 0x1c($sp)
 /* 10628C 8029CC7C 02018021 */  addu  $s0, $s0, $at
-/* 106290 8029CC80 0C0AD4A7 */  jal   load_giant_egg
+/* 106290 8029CC80 0C0AD4A7 */  jal   vec3f_set_alternate
 /* 106294 8029CC84 03C02025 */   move  $a0, $fp
 /* 106298 8029CC88 27B2004C */  addiu $s2, $sp, 0x4c
 /* 10629C 8029CC8C 02402025 */  move  $a0, $s2
 /* 1062A0 8029CC90 00002825 */  move  $a1, $zero
 /* 1062A4 8029CC94 00003025 */  move  $a2, $zero
-/* 1062A8 8029CC98 0C0AD4AF */  jal   func_802B52BC
+/* 1062A8 8029CC98 0C0AD4AF */  jal   vec3s_set
 /* 1062AC 8029CC9C 00003825 */   move  $a3, $zero
 /* 1062B0 8029CCA0 86110000 */  lh    $s1, ($s0)
 /* 1062B4 8029CCA4 24138000 */  li    $s3, -32768

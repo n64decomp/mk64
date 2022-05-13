@@ -87,13 +87,17 @@ u32 func_802B5258(Vec3f arg0, Vec3s arg1) {
     return func_802B7830(temp_v1, temp_v2);
 }
 
-void load_giant_egg(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
+/*
+The difference between this and plain vec3f_copy is the return value.
+_alternate returns nothing while plain _copy returns a local variable address
+*/
+void vec3f_set_alternate(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
     arg0[0] = arg1;
     arg0[1] = arg2;
     arg0[2] = arg3;
 }
 
-void func_802B52BC(Vec3s arg0, s16 arg1, s16 arg2, s16 arg3) {
+void vec3s_set(Vec3s arg0, s16 arg1, s16 arg2, s16 arg3) {
     arg0[0] = arg1;
     arg0[1] = arg2;
     arg0[2] = arg3;
@@ -124,7 +128,7 @@ void vec3s_copy(Vec3s dest, Vec3s src) {
     dest[2] = src[2];
 }
 
-void *func_802B5320(Vec3f dest, f32 x, f32 y, f32 z) {
+void *vec3f_set(Vec3f dest, f32 x, f32 y, f32 z) {
     dest[0] = x;
     dest[1] = y;
     dest[2] = z;

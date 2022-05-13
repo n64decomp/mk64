@@ -56,12 +56,12 @@ glabel place_falling_rocks
 /* 1066FC 8029D0EC 44893000 */  mtc1  $t1, $f6
 /* 106700 8029D0F0 00000000 */  nop   
 /* 106704 8029D0F4 46803220 */  cvt.s.w $f8, $f6
-/* 106708 8029D0F8 0C0AD4A7 */  jal   load_giant_egg
+/* 106708 8029D0F8 0C0AD4A7 */  jal   vec3f_set_alternate
 /* 10670C 8029D0FC E7A8006C */   swc1  $f8, 0x6c($sp)
 /* 106710 8029D100 02402025 */  move  $a0, $s2
 /* 106714 8029D104 00002825 */  move  $a1, $zero
 /* 106718 8029D108 00003025 */  move  $a2, $zero
-/* 10671C 8029D10C 0C0AD4AF */  jal   func_802B52BC
+/* 10671C 8029D10C 0C0AD4AF */  jal   vec3s_set
 /* 106720 8029D110 00003825 */   move  $a3, $zero
 /* 106724 8029D114 02802025 */  move  $a0, $s4
 /* 106728 8029D118 02402825 */  move  $a1, $s2
