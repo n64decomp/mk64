@@ -8217,7 +8217,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80012220.s")
 s16 func_8000DBAC(? *, ? *, s32); // extern
 ? func_80012220(? *); // extern
 s16 func_8029EC88(? *, ? *, ? *, ?); // extern
-? func_802B52BC(? *, ?, s16, ?); // extern
+? vec3s_set(? *, ?, s16, ?); // extern
 extern ? D_801635A0;
 extern ? D_801635A4;
 extern ? D_801635B0;
@@ -8313,7 +8313,7 @@ void func_800122D8(void) {
                     phi_s0->unk24 = func_8000DBAC(temp_s1, phi_s0 + 0x1C, phi_s0->unk20);
                     phi_s0->unk10 = phi_s0->unk4 - temp_f20;
                     phi_s0->unk18 = phi_s0->unkC - temp_f22;
-                    func_802B52BC(&sp90, 0, phi_s0->unk24, 0);
+                    vec3s_set(&sp90, 0, phi_s0->unk24, 0);
                     phi_s0->unk1E = func_8029EC88(temp_s1, &sp90, phi_s0 + 0x10, 0x26);
                 }
                 temp_s0 = phi_s0 + 0x2C;
@@ -8332,7 +8332,7 @@ void func_800122D8(void) {
             temp_a2 = func_8000DBAC(sp74, sp70, phi_s6->unkFC);
             phi_s6->unk10 = phi_s6->unk4 - temp_f20_2;
             phi_s6->unk18 = phi_s6->unkC - temp_f22_2;
-            func_802B52BC(&spAC, 0, temp_a2, 0);
+            vec3s_set(&spAC, 0, temp_a2, 0);
             temp_s0_2 = phi_s6 + 0x24;
             phi_s6->unk1E = func_8029EC88(sp74, &spAC, sp54, 0xF);
             temp_s1_2 = temp_s0_2 + 4;
@@ -8342,7 +8342,7 @@ void func_800122D8(void) {
                 temp_a2_2 = func_8000DBAC(temp_s1_2, temp_s0_2 + 0x1C, phi_s6->unkFC);
                 temp_s0_2->unk10 = temp_s0_2->unk4 - temp_f20_3;
                 temp_s0_2->unk18 = temp_s0_2->unkC - temp_f22_3;
-                func_802B52BC(&spAC, 0, temp_a2_2, 0);
+                vec3s_set(&spAC, 0, temp_a2_2, 0);
                 temp_s0_2->unk1E = func_8029EC88(temp_s1_2, &spAC, temp_s0_2 + 0x10, 0x10);
             }
             phi_s2 = sp68;
@@ -8356,7 +8356,7 @@ loop_8:
                 temp_a2_3 = func_8000DBAC(temp_s1_3, temp_s0_3 + 0x1C, phi_s6->unkFC);
                 temp_s0_3->unk10 = temp_s0_3->unk4 - temp_f20_4;
                 temp_s0_3->unk18 = temp_s0_3->unkC - temp_f22_4;
-                func_802B52BC(&spAC, 0, temp_a2_3, 0);
+                vec3s_set(&spAC, 0, temp_a2_3, 0);
                 temp_s0_3->unk1E = func_8029EC88(temp_s1_3, &spAC, temp_s0_3 + 0x10, 0x11);
             }
             temp_s3 = phi_s3 + 0x24;

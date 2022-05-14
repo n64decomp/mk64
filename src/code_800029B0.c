@@ -53,7 +53,7 @@ void func_800CA008(u8, u8);
 extern f32 D_8015F738, D_8015F748, D_8015F758, D_8015F768, D_8015F778;
 extern u32 *D_802B91C8;
 
-void load_giant_egg(f32 *, f32, f32, f32);
+void vec3f_set(f32 *, f32, f32, f32);
 
 // gfx?
 extern u32 *D_0F04FE28;
@@ -195,33 +195,33 @@ void func_80002A18(void) {
 void func_80002DAC(void) {
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            load_giant_egg(&D_8015F748, -223.0f, 94.0f, -155.0f);
+            vec3f_set(&D_8015F748, -223.0f, 94.0f, -155.0f);
             func_800C9D80(&D_8015F748, &D_802B91C8, 0x5103700B);
             break;
         case COURSE_ROYAL_RACEWAY:
-            load_giant_egg(&D_8015F748, 177.0f, 87.0f, -393.0f);
+            vec3f_set(&D_8015F748, 177.0f, 87.0f, -393.0f);
             func_800C9D80(&D_8015F748, &D_802B91C8, 0x5103700B);
             break;
         case COURSE_LUIGI_RACEWAY:
-            load_giant_egg(&D_8015F748, 85.0f, 21.0f, -219.0f);
+            vec3f_set(&D_8015F748, 85.0f, 21.0f, -219.0f);
             func_800C9D80(&D_8015F748, &D_802B91C8, 0x5103700B);
             break;
         case COURSE_WARIO_STADIUM:
-            load_giant_egg(&D_8015F748, 298.0f, 202.0f, -850.0f);
+            vec3f_set(&D_8015F748, 298.0f, 202.0f, -850.0f);
             func_800C9D80(&D_8015F748, &D_802B91C8, 0x5103700B);
-            load_giant_egg(&D_8015F758, -1600.0f, 202.0f, -2430.0f);
+            vec3f_set(&D_8015F758, -1600.0f, 202.0f, -2430.0f);
             func_800C9D80(&D_8015F758, &D_802B91C8, 0x5103700B);
-            load_giant_egg(&D_8015F768, -2708.0f, 202.0f, 1762.0f);
+            vec3f_set(&D_8015F768, -2708.0f, 202.0f, 1762.0f);
             func_800C9D80(&D_8015F768, &D_802B91C8, 0x5103700B);
-            load_giant_egg(&D_8015F778, -775.0f, 202.0f, 1930.0f);
+            vec3f_set(&D_8015F778, -775.0f, 202.0f, 1930.0f);
             func_800C9D80(&D_8015F778, &D_802B91C8, 0x5103700B);
             break;
         case COURSE_KOOPA_BEACH:
-            load_giant_egg(&D_8015F738, 153.0f, 0.0f, 2319.0f);
+            vec3f_set(&D_8015F738, 153.0f, 0.0f, 2319.0f);
             func_800C9D80(&D_8015F738, &D_802B91C8, 0x51028001);
             break;
         case COURSE_DK_JUNGLE:
-            load_giant_egg(&D_8015F738, -790.0f, -255.0f, -447.0f);
+            vec3f_set(&D_8015F738, -790.0f, -255.0f, -447.0f);
             func_800C9D80(&D_8015F738, &D_802B91C8, 0x51028001);
             break;
         default:
@@ -264,7 +264,7 @@ void func_80003040(void) {
             func_802AF8BC(0x7000878, -0x80, 0, 0, 0);
             break;
         case COURSE_YOSHI_VALLEY:
-            load_giant_egg(&sp34, -2300.0f, 0.0f, 634.0f);
+            vec3f_set(&sp34, -2300.0f, 0.0f, 634.0f);
             sp34 *= gCourseDirection;
             func_8029EC88(&sp34, &sp20, &sp28, 9);
             break;
@@ -293,11 +293,11 @@ void func_80003040(void) {
             func_802AF8BC(0x7001318, -1, 0xFF, 0xFF, 0);
             break;
         case COURSE_WARIO_STADIUM:
-            load_giant_egg(&sp34, -131.0f, 83.0f, 286.0f);
+            vec3f_set(&sp34, -131.0f, 83.0f, 286.0f);
             func_8029EC88(&sp34, &sp20, &sp28, 0x23);
-            load_giant_egg(&sp34, -2353.0f, 72.0f, -1608.0f);
+            vec3f_set(&sp34, -2353.0f, 72.0f, -1608.0f);
             func_8029EC88(&sp34, &sp20, &sp28, 0x23);
-            load_giant_egg(&sp34, -2622.0f, 79.0f, 739.0f);
+            vec3f_set(&sp34, -2622.0f, 79.0f, 739.0f);
             func_8029EC88(&sp34, &sp20, &sp28, 0x23);
             func_802AF8BC(0x7000C50, 0x64, 0xFF, 0xFF, 0xFF);
             func_802AF8BC(0x7000BD8, 0x64, 0xFF, 0xFF, 0xFF);

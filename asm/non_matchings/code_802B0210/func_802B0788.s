@@ -128,7 +128,7 @@ glabel func_802B0788
 .L802B0964:
 /* 119F74 802B0964 44060000 */  mfc1  $a2, $f0
 /* 119F78 802B0968 44076000 */  mfc1  $a3, $f12
-/* 119F7C 802B096C 0C0AD4A7 */  jal   load_giant_egg
+/* 119F7C 802B096C 0C0AD4A7 */  jal   vec3f_set
 /* 119F80 802B0970 AFA20030 */   sw    $v0, 0x30($sp)
 /* 119F84 802B0974 8FA30048 */  lw    $v1, 0x48($sp)
 /* 119F88 802B0978 27A40034 */  addiu $a0, $sp, 0x34

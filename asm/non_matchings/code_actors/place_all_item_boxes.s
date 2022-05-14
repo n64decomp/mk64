@@ -37,7 +37,7 @@ glabel place_all_item_boxes
 /* 106ECC 8029D8BC 44050000 */  mfc1  $a1, $f0
 /* 106ED0 8029D8C0 44060000 */  mfc1  $a2, $f0
 /* 106ED4 8029D8C4 44070000 */  mfc1  $a3, $f0
-/* 106ED8 8029D8C8 0C0AD4A7 */  jal   load_giant_egg
+/* 106ED8 8029D8C8 0C0AD4A7 */  jal   vec3f_set
 /* 106EDC 8029D8CC 00000000 */   nop   
 /* 106EE0 8029D8D0 86030000 */  lh    $v1, ($s0)
 /* 106EE4 8029D8D4 24138000 */  li    $s3, -32768

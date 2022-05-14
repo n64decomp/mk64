@@ -27,13 +27,13 @@ glabel place_palm_trees
 /* 1063F4 8029CDE4 AFB1002C */  sw    $s1, 0x2c($sp)
 /* 1063F8 8029CDE8 F7B40020 */  sdc1  $f20, 0x20($sp)
 /* 1063FC 8029CDEC 02018021 */  addu  $s0, $s0, $at
-/* 106400 8029CDF0 0C0AD4A7 */  jal   load_giant_egg
+/* 106400 8029CDF0 0C0AD4A7 */  jal   vec3f_set
 /* 106404 8029CDF4 02C02025 */   move  $a0, $s6
 /* 106408 8029CDF8 27B70058 */  addiu $s7, $sp, 0x58
 /* 10640C 8029CDFC 02E02025 */  move  $a0, $s7
 /* 106410 8029CE00 00002825 */  move  $a1, $zero
 /* 106414 8029CE04 00003025 */  move  $a2, $zero
-/* 106418 8029CE08 0C0AD4AF */  jal   func_802B52BC
+/* 106418 8029CE08 0C0AD4AF */  jal   vec3s_set
 /* 10641C 8029CE0C 00003825 */   move  $a3, $zero
 /* 106420 8029CE10 86020000 */  lh    $v0, ($s0)
 /* 106424 8029CE14 241E8000 */  li    $fp, -32768
