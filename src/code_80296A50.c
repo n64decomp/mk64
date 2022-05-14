@@ -2324,7 +2324,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPDisplayList(gDisplayListHead++, D_06022D28);
 
     func_802B59DC(sp120, actor->wheelRot);
-    load_giant_egg(sp160, 17.0f, 6.0f, 32.0f);
+    vec3f_set(sp160, 17.0f, 6.0f, 32.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2334,7 +2334,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, actor->wheelRot);
-    load_giant_egg(sp160, -17.0, 6.0f, 32.0f);
+    vec3f_set(sp160, -17.0, 6.0f, 32.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2344,7 +2344,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
-    load_giant_egg(sp160, 17.0f, 6.0f, 16.0f);
+    vec3f_set(sp160, 17.0f, 6.0f, 16.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2354,7 +2354,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
-    load_giant_egg(sp160, -17.0f, 6.0f, 16.0f);
+    vec3f_set(sp160, -17.0f, 6.0f, 16.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2364,7 +2364,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
-    load_giant_egg(sp160, 17.0f, 12.0f, -12.0f);
+    vec3f_set(sp160, 17.0f, 12.0f, -12.0f);
     mtxf_translate(spE0, &sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2374,7 +2374,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
-    load_giant_egg(&sp160, -17.0f, 12.0f, -12.0f);
+    vec3f_set(&sp160, -17.0f, 12.0f, -12.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2384,7 +2384,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x2D8));
-    load_giant_egg(&sp160, 17.0f, 12.0f, -34.0f);
+    vec3f_set(&sp160, 17.0f, 12.0f, -34.0f);
     mtxf_translate(spE0, &sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2394,7 +2394,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x2D8));
-    load_giant_egg(sp160, -17.0f, 12.0f, -34.0f);
+    vec3f_set(sp160, -17.0f, 12.0f, -34.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2444,7 +2444,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     gSPDisplayList(gDisplayListHead++, D_06022D28);
 
     func_802B59DC(sp120, actor->wheelRot);
-    load_giant_egg(sp160, 17.0f, 6.0f, 8.0f);
+    vec3f_set(sp160, 17.0f, 6.0f, 8.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2454,7 +2454,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, actor->wheelRot);
-    load_giant_egg(sp160, -17.0, 6.0f, 8.0f);
+    vec3f_set(sp160, -17.0, 6.0f, 8.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2464,7 +2464,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
-    load_giant_egg(sp160, 17.0f, 6.0f, -8.0f);
+    vec3f_set(sp160, 17.0f, 6.0f, -8.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2474,7 +2474,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
-    load_giant_egg(sp160, -17.0f, 6.0f, -8.0f);
+    vec3f_set(sp160, -17.0f, 6.0f, -8.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2531,7 +2531,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     gSPDisplayList(gDisplayListHead++, D_06022D28);
 
     func_802B59DC(sp120, actor->wheelRot);
-    load_giant_egg(sp160, 17.0f, 6.0f, 28.0f);
+    vec3f_set(sp160, 17.0f, 6.0f, 28.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2541,7 +2541,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, actor->wheelRot);
-    load_giant_egg(sp160, -17.0, 6.0f, 28.0f);
+    vec3f_set(sp160, -17.0, 6.0f, 28.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2551,7 +2551,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x222));
-    load_giant_egg(sp160, 17.0f, 6.0f, 12.0f);
+    vec3f_set(sp160, 17.0f, 6.0f, 12.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2561,7 +2561,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x222));
-    load_giant_egg(sp160, -17.0f, 6.0f, 12.0f);
+    vec3f_set(sp160, -17.0f, 6.0f, 12.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2571,7 +2571,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x5B0));
-    load_giant_egg(sp160, 17.0f, 6.0f, -8.0f);
+    vec3f_set(sp160, 17.0f, 6.0f, -8.0f);
     mtxf_translate(spE0, &sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2581,7 +2581,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x5B0));
-    load_giant_egg(&sp160, -17.0f, 6.0f, -8.0f);
+    vec3f_set(&sp160, -17.0f, 6.0f, -8.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2591,7 +2591,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
-    load_giant_egg(&sp160, 17.0f, 6.0f, -24.0f);
+    vec3f_set(&sp160, 17.0f, 6.0f, -24.0f);
     mtxf_translate(spE0, &sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2601,7 +2601,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
-    load_giant_egg(sp160, -17.0f, 6.0f, -24.0f);
+    vec3f_set(sp160, -17.0f, 6.0f, -24.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -2664,8 +2664,8 @@ void place_piranha_plants(Gfx *displaylist) {
     Vec3s sp4C;
     s32 temp;
     
-    load_giant_egg(sp54, 0, 0, 0);
-    func_802B52BC(sp4C, 0, 0, 0);
+    vec3f_set(sp54, 0, 0, 0);
+    vec3s_set(sp4C, 0, 0, 0);
         
     while (temp_s0->unk.data[0] != -0x8000) {
         sp60[0] = temp_s0->unk.data[0] * gCourseDirection;
@@ -2695,8 +2695,8 @@ void place_palm_trees(Gfx *displaylist) {
     Vec3s sp4C;
     s32 temp;
     
-    load_giant_egg(sp54, 0, 0, 0);
-    func_802B52BC(sp4C, 0, 0, 0);
+    vec3f_set(sp54, 0, 0, 0);
+    vec3s_set(sp4C, 0, 0, 0);
         
     while (temp_s0->unk.data[0] != -0x8000) {
         sp60[0] = temp_s0->unk.data[0] * gCourseDirection;
@@ -2722,8 +2722,8 @@ void func_8029CF0C(Gfx *displaylist, struct FallingRock *rock) {
     rock->pos[0] = (f32) temp_v0->unk.data[0] * gCourseDirection;
     rock->pos[1] = (f32) temp_v0->unk.data[1] + 10.0f;
     rock->pos[2] = (f32) temp_v0->unk.data[2];
-    load_giant_egg(rock->velocity, 0, 0, 0);
-    func_802B52BC(rock->rot, 0, 0, 0);
+    vec3f_set(rock->velocity, 0, 0, 0);
+    vec3s_set(rock->rot, 0, 0, 0);
 }
 
 void func_802AAAAC(UnkActorInner*);
@@ -2743,8 +2743,8 @@ void place_falling_rocks(Gfx *displaylist) {
         sp60[0] = temp_s0->unk.data[0] * gCourseDirection;
         sp60[1] = temp_s0->unk.data[1] + 10.0f;
         sp60[2] = temp_s0->unk.data[2];
-        load_giant_egg(sp54, 0, 0, 0);
-        func_802B52BC(sp4C, 0, 0, 0);
+        vec3f_set(sp54, 0, 0, 0);
+        vec3s_set(sp4C, 0, 0, 0);
         temp = func_8029EC88(sp60, sp4C, sp54, ACTOR_FALLING_ROCK);
         temp_v1 = (struct FallingRock *) &D_8015F9B8[temp];
 
