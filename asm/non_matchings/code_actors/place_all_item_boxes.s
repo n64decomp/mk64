@@ -46,11 +46,11 @@ glabel place_all_item_boxes
 /* 106EF0 8029D8E0 241E0070 */   li    $fp, 112
 /* 106EF4 8029D8E4 4481B000 */  mtc1  $at, $f22
 /* 106EF8 8029D8E8 3C014120 */  li    $at, 0x41200000 # 10.000000
-/* 106EFC 8029D8EC 3C178016 */  lui   $s7, %hi(D_8015F9B8) # $s7, 0x8016
+/* 106EFC 8029D8EC 3C178016 */  lui   $s7, %hi(gActorList) # $s7, 0x8016
 /* 106F00 8029D8F0 3C148016 */  lui   $s4, %hi(gCourseDirection) # $s4, 0x8016
 /* 106F04 8029D8F4 4481A000 */  mtc1  $at, $f20
 /* 106F08 8029D8F8 2694F784 */  addiu $s4, %lo(gCourseDirection) # addiu $s4, $s4, -0x87c
-/* 106F0C 8029D8FC 26F7F9B8 */  addiu $s7, %lo(D_8015F9B8) # addiu $s7, $s7, -0x648
+/* 106F0C 8029D8FC 26F7F9B8 */  addiu $s7, %lo(gActorList) # addiu $s7, $s7, -0x648
 /* 106F10 8029D900 27B60058 */  addiu $s6, $sp, 0x58
 /* 106F14 8029D904 27B5006C */  addiu $s5, $sp, 0x6c
 /* 106F18 8029D908 44832000 */  mtc1  $v1, $f4

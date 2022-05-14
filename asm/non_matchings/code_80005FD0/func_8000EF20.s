@@ -21,13 +21,13 @@ glabel func_8000EF20
 /* 00FB6C 8000EF6C F7B60020 */  sdc1  $f22, 0x20($sp)
 /* 00FB70 8000EF70 3C01800F */  lui   $at, %hi(D_800ED048) # $at, 0x800f
 /* 00FB74 8000EF74 3C108016 */  lui   $s0, %hi(D_801641F8) # $s0, 0x8016
-/* 00FB78 8000EF78 3C138016 */  lui   $s3, %hi(D_8015F9B8) # $s3, 0x8016
+/* 00FB78 8000EF78 3C138016 */  lui   $s3, %hi(gActorList) # $s3, 0x8016
 /* 00FB7C 8000EF7C 3C168016 */  lui   $s6, %hi(D_801642D8) # $s6, 0x8016
 /* 00FB80 8000EF80 AFBF0064 */  sw    $ra, 0x64($sp)
 /* 00FB84 8000EF84 AFB1004C */  sw    $s1, 0x4c($sp)
 /* 00FB88 8000EF88 F7B40018 */  sdc1  $f20, 0x18($sp)
 /* 00FB8C 8000EF8C 26D642D8 */  addiu $s6, %lo(D_801642D8) # addiu $s6, $s6, 0x42d8
-/* 00FB90 8000EF90 2673F9B8 */  addiu $s3, %lo(D_8015F9B8) # addiu $s3, $s3, -0x648
+/* 00FB90 8000EF90 2673F9B8 */  addiu $s3, %lo(gActorList) # addiu $s3, $s3, -0x648
 /* 00FB94 8000EF94 261041F8 */  addiu $s0, %lo(D_801641F8) # addiu $s0, $s0, 0x41f8
 /* 00FB98 8000EF98 C436D048 */  lwc1  $f22, %lo(D_800ED048)($at)
 /* 00FB9C 8000EF9C 24120001 */  li    $s2, 1

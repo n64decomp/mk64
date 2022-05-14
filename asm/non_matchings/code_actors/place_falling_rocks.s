@@ -27,12 +27,12 @@ glabel place_falling_rocks
 /* 10668C 8029D07C 3C014120 */  li    $at, 0x41200000 # 10.000000
 /* 106690 8029D080 12E20034 */  beq   $s7, $v0, .L8029D154
 /* 106694 8029D084 24160070 */   li    $s6, 112
-/* 106698 8029D088 3C158016 */  lui   $s5, %hi(D_8015F9B8) # $s5, 0x8016
+/* 106698 8029D088 3C158016 */  lui   $s5, %hi(gActorList) # $s5, 0x8016
 /* 10669C 8029D08C 3C138016 */  lui   $s3, %hi(gCourseDirection) # $s3, 0x8016
 /* 1066A0 8029D090 4481B000 */  mtc1  $at, $f22
 /* 1066A4 8029D094 4480A000 */  mtc1  $zero, $f20
 /* 1066A8 8029D098 2673F784 */  addiu $s3, %lo(gCourseDirection) # addiu $s3, $s3, -0x87c
-/* 1066AC 8029D09C 26B5F9B8 */  addiu $s5, %lo(D_8015F9B8) # addiu $s5, $s5, -0x648
+/* 1066AC 8029D09C 26B5F9B8 */  addiu $s5, %lo(gActorList) # addiu $s5, $s5, -0x648
 /* 1066B0 8029D0A0 27B40064 */  addiu $s4, $sp, 0x64
 /* 1066B4 8029D0A4 27B20050 */  addiu $s2, $sp, 0x50
 /* 1066B8 8029D0A8 27B10058 */  addiu $s1, $sp, 0x58

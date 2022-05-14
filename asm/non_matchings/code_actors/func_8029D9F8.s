@@ -9,9 +9,9 @@ glabel func_8029D9F8
 /* 107024 8029DA14 AFB2001C */  sw    $s2, 0x1c($sp)
 /* 107028 8029DA18 AFB00014 */  sw    $s0, 0x14($sp)
 /* 10702C 8029DA1C 3C11800F */  lui   $s1, %hi(gPlayers) # $s1, 0x800f
-/* 107030 8029DA20 3C168016 */  lui   $s6, %hi(D_8015F9B8) # $s6, 0x8016
+/* 107030 8029DA20 3C168016 */  lui   $s6, %hi(gActorList) # $s6, 0x8016
 /* 107034 8029DA24 AFBF0034 */  sw    $ra, 0x34($sp)
-/* 107038 8029DA28 26D6F9B8 */  addiu $s6, %lo(D_8015F9B8) # addiu $s6, $s6, -0x648
+/* 107038 8029DA28 26D6F9B8 */  addiu $s6, %lo(gActorList) # addiu $s6, $s6, -0x648
 /* 10703C 8029DA2C 26316990 */  addiu $s1, %lo(gPlayers) # addiu $s1, $s1, 0x6990
 /* 107040 8029DA30 00008025 */  move  $s0, $zero
 /* 107044 8029DA34 24120004 */  li    $s2, 4

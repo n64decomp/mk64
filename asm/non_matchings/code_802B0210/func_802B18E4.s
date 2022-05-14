@@ -41,8 +41,8 @@ glabel func_802B18E4
 .L802B1980:
 /* 11AF90 802B1980 000440C0 */  sll   $t0, $a0, 3
 /* 11AF94 802B1984 01044023 */  subu  $t0, $t0, $a0
-/* 11AF98 802B1988 3C0B8016 */  lui   $t3, %hi(D_8015F9B8) # $t3, 0x8016
-/* 11AF9C 802B198C 256BF9B8 */  addiu $t3, %lo(D_8015F9B8) # addiu $t3, $t3, -0x648
+/* 11AF98 802B1988 3C0B8016 */  lui   $t3, %hi(gActorList) # $t3, 0x8016
+/* 11AF9C 802B198C 256BF9B8 */  addiu $t3, %lo(gActorList) # addiu $t3, $t3, -0x648
 /* 11AFA0 802B1990 00084100 */  sll   $t0, $t0, 4
 /* 11AFA4 802B1994 010B1821 */  addu  $v1, $t0, $t3
 /* 11AFA8 802B1998 240A05B0 */  li    $t2, 1456

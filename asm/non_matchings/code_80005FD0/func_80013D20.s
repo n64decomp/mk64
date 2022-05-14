@@ -111,8 +111,8 @@ glabel func_80013D20
 /* 014AC4 80013EC4 C612000C */  lwc1  $f18, 0xc($s0)
 /* 014AC8 80013EC8 46040181 */  sub.s $f6, $f0, $f4
 /* 014ACC 80013ECC 860B001E */  lh    $t3, 0x1e($s0)
-/* 014AD0 80013ED0 3C0D8016 */  lui   $t5, %hi(D_8015F9B8) # $t5, 0x8016
-/* 014AD4 80013ED4 25ADF9B8 */  addiu $t5, %lo(D_8015F9B8) # addiu $t5, $t5, -0x648
+/* 014AD0 80013ED0 3C0D8016 */  lui   $t5, %hi(gActorList) # $t5, 0x8016
+/* 014AD4 80013ED4 25ADF9B8 */  addiu $t5, %lo(gActorList) # addiu $t5, $t5, -0x648
 /* 014AD8 80013ED8 E6060010 */  swc1  $f6, 0x10($s0)
 /* 014ADC 80013EDC C7AA0058 */  lwc1  $f10, 0x58($sp)
 /* 014AE0 80013EE0 000B60C0 */  sll   $t4, $t3, 3

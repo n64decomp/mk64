@@ -1,7 +1,7 @@
 glabel func_802B02B4
 /* 1198C4 802B02B4 848E0004 */  lh    $t6, 4($a0)
-/* 1198C8 802B02B8 3C188016 */  lui   $t8, %hi(D_8015F9B8) # $t8, 0x8016
-/* 1198CC 802B02BC 2718F9B8 */  addiu $t8, %lo(D_8015F9B8) # addiu $t8, $t8, -0x648
+/* 1198C8 802B02B8 3C188016 */  lui   $t8, %hi(gActorList) # $t8, 0x8016
+/* 1198CC 802B02BC 2718F9B8 */  addiu $t8, %lo(gActorList) # addiu $t8, $t8, -0x648
 /* 1198D0 802B02C0 000E78C0 */  sll   $t7, $t6, 3
 /* 1198D4 802B02C4 01EE7823 */  subu  $t7, $t7, $t6
 /* 1198D8 802B02C8 000F7900 */  sll   $t7, $t7, 4

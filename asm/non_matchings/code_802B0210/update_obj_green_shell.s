@@ -196,8 +196,8 @@ glabel L802B33CC
 /* 11CBC8 802B35B8 01012821 */  addu  $a1, $t0, $at
 /* 11CBCC 802B35BC 0C03243D */  jal   func_800C90F4
 /* 11CBD0 802B35C0 92040015 */   lbu   $a0, 0x15($s0)
-/* 11CBD4 802B35C4 3C098016 */  lui   $t1, %hi(D_8015F9B8) # $t1, 0x8016
-/* 11CBD8 802B35C8 2529F9B8 */  addiu $t1, %lo(D_8015F9B8) # addiu $t1, $t1, -0x648
+/* 11CBD4 802B35C4 3C098016 */  lui   $t1, %hi(gActorList) # $t1, 0x8016
+/* 11CBD8 802B35C8 2529F9B8 */  addiu $t1, %lo(gActorList) # addiu $t1, $t1, -0x648
 /* 11CBDC 802B35CC 02092023 */  subu  $a0, $s0, $t1
 /* 11CBE0 802B35D0 24010070 */  li    $at, 112
 /* 11CBE4 802B35D4 0081001A */  div   $zero, $a0, $at
@@ -251,8 +251,8 @@ glabel L802B3614
 /* 11CC98 802B3688 01812821 */  addu  $a1, $t4, $at
 /* 11CC9C 802B368C 0C03243D */  jal   func_800C90F4
 /* 11CCA0 802B3690 92040015 */   lbu   $a0, 0x15($s0)
-/* 11CCA4 802B3694 3C0D8016 */  lui   $t5, %hi(D_8015F9B8) # $t5, 0x8016
-/* 11CCA8 802B3698 25ADF9B8 */  addiu $t5, %lo(D_8015F9B8) # addiu $t5, $t5, -0x648
+/* 11CCA4 802B3694 3C0D8016 */  lui   $t5, %hi(gActorList) # $t5, 0x8016
+/* 11CCA8 802B3698 25ADF9B8 */  addiu $t5, %lo(gActorList) # addiu $t5, $t5, -0x648
 /* 11CCAC 802B369C 020D2023 */  subu  $a0, $s0, $t5
 /* 11CCB0 802B36A0 24010070 */  li    $at, 112
 /* 11CCB4 802B36A4 0081001A */  div   $zero, $a0, $at
@@ -281,8 +281,8 @@ glabel L802B3614
 /* 11CD0C 802B36FC 01212821 */  addu  $a1, $t1, $at
 /* 11CD10 802B3700 0C03243D */  jal   func_800C90F4
 /* 11CD14 802B3704 92040015 */   lbu   $a0, 0x15($s0)
-/* 11CD18 802B3708 3C0A8016 */  lui   $t2, %hi(D_8015F9B8) # $t2, 0x8016
-/* 11CD1C 802B370C 254AF9B8 */  addiu $t2, %lo(D_8015F9B8) # addiu $t2, $t2, -0x648
+/* 11CD18 802B3708 3C0A8016 */  lui   $t2, %hi(gActorList) # $t2, 0x8016
+/* 11CD1C 802B370C 254AF9B8 */  addiu $t2, %lo(gActorList) # addiu $t2, $t2, -0x648
 /* 11CD20 802B3710 020A2023 */  subu  $a0, $s0, $t2
 /* 11CD24 802B3714 24010070 */  li    $at, 112
 /* 11CD28 802B3718 0081001A */  div   $zero, $a0, $at
@@ -448,14 +448,14 @@ glabel L802B382C
 glabel L802B3974
 /* 11CF84 802B3974 860D0014 */  lh    $t5, 0x14($s0)
 /* 11CF88 802B3978 86180004 */  lh    $t8, 4($s0)
-/* 11CF8C 802B397C 3C088016 */  lui   $t0, %hi(D_8015F9B8) # $t0, 0x8016
+/* 11CF8C 802B397C 3C088016 */  lui   $t0, %hi(gActorList) # $t0, 0x8016
 /* 11CF90 802B3980 000D70C0 */  sll   $t6, $t5, 3
 /* 11CF94 802B3984 0018C8C0 */  sll   $t9, $t8, 3
 /* 11CF98 802B3988 01CD7023 */  subu  $t6, $t6, $t5
 /* 11CF9C 802B398C 0338C823 */  subu  $t9, $t9, $t8
 /* 11CFA0 802B3990 000E7100 */  sll   $t6, $t6, 4
 /* 11CFA4 802B3994 0019C900 */  sll   $t9, $t9, 4
-/* 11CFA8 802B3998 2508F9B8 */  addiu $t0, %lo(D_8015F9B8) # addiu $t0, $t0, -0x648
+/* 11CFA8 802B3998 2508F9B8 */  addiu $t0, %lo(gActorList) # addiu $t0, $t0, -0x648
 /* 11CFAC 802B399C 03281021 */  addu  $v0, $t9, $t0
 /* 11CFB0 802B39A0 01CD7023 */  subu  $t6, $t6, $t5
 /* 11CFB4 802B39A4 84490000 */  lh    $t1, ($v0)

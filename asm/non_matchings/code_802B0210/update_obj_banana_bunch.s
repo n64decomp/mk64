@@ -112,9 +112,9 @@ glabel L802B0B84
 glabel L802B0BCC
 /* 11A1DC 802B0BCC 860F0012 */  lh    $t7, 0x12($s0)
 /* 11A1E0 802B0BD0 24030070 */  li    $v1, 112
-/* 11A1E4 802B0BD4 3C028016 */  lui   $v0, %hi(D_8015F9B8) # $v0, 0x8016
+/* 11A1E4 802B0BD4 3C028016 */  lui   $v0, %hi(gActorList) # $v0, 0x8016
 /* 11A1E8 802B0BD8 01E30019 */  multu $t7, $v1
-/* 11A1EC 802B0BDC 2442F9B8 */  addiu $v0, %lo(D_8015F9B8) # addiu $v0, $v0, -0x648
+/* 11A1EC 802B0BDC 2442F9B8 */  addiu $v0, %lo(gActorList) # addiu $v0, $v0, -0x648
 /* 11A1F0 802B0BE0 240E0006 */  li    $t6, 6
 /* 11A1F4 802B0BE4 A60E0006 */  sh    $t6, 6($s0)
 /* 11A1F8 802B0BE8 0000C012 */  mflo  $t8

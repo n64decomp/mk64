@@ -59,7 +59,7 @@ glabel D_80284E94
 .word 0x00000000
 
 glabel D_80284ED0
-.word 0x01020304, 0x05060700, 
+.word 0x01020304, 0x05060700
 
 #.word 0x00000000 # padding
 
