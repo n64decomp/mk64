@@ -43,12 +43,12 @@
 #.word 0xb900031d, 0x00404dd8
 #glabel D_802B8D58
 #.word 0xe8000000, 0x00000000
-glabel D_802B8D60
-.word 0xe8000000, 0x00000000
-glabel D_802B8D68
-.word 0xe6000000, 0x00000000
-glabel D_802B8D70
-.word 0xbb000001, 0xffffffff
+#glabel D_802B8D60
+#.word 0xe8000000, 0x00000000
+#glabel D_802B8D68
+#.word 0xe6000000, 0x00000000
+#glabel D_802B8D70
+#.word 0xbb000001, 0xffffffff
 
-glabel D_802B8D78
-.word 0xbb000000, 0x00010001
+#glabel D_802B8D78
+#.word 0xbb000000, 0x00010001
