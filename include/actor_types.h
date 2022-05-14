@@ -20,6 +20,7 @@
 #define ACTOR_TRIPLE_GREEN_SHELL       0x15
 #define ACTOR_TRIPLE_RED_SHELL         0x16
 #define ACTOR_MARIO_RACEWAY_SIGN       0x17
+#define ACTOR_PALM_TREE                0x19
 #define ACTOR_WARIO_STADIUM_SIGN       0x23
 #define ACTOR_PADDLE_WHEEL_BOAT        0x26
 #define ACTOR_RAILROAD_CROSSING        0x27
@@ -75,7 +76,8 @@ struct FallingRock {
 // 7230?
 // func_8029CF0C
 struct innerFR {
-    Vec4s data;
+    Vec3s data;
+    u16 unk2;
 };
 
 typedef union {
@@ -138,6 +140,20 @@ struct PiranhaPlant {
     /* 0x04 */ Vec4s visibilityStates; // A per-camera visibilty state tracker
     /* 0x0C */ f32 boundingBoxSize;
     /* 0x10 */ Vec4s unk10;
+    /* 0x18 */ Vec3f pos;
+    /* 0x24 */ Vec4s timers; // A per-camera timer. Might be more appropriate to call this state
+    /* 0x2C */ f32 unk_02C;
+    /* 0x30 */ UnkActorInner unk30;
+}; // size = 0x70
+
+// Copied from PiranhaPlant, may not be accurate.
+struct PalmTree {
+    /* 0x00 */ s16 type;
+    /* 0x02 */ s16 flags;
+    /* 0x04 */ Vec4s visibilityStates; // A per-camera visibilty state tracker
+    /* 0x0C */ f32 boundingBoxSize;
+    /* 0x10 */ Vec3s unk10;
+    /* 0x16 */ s16 unk16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec4s timers; // A per-camera timer. Might be more appropriate to call this state
     /* 0x2C */ f32 unk_02C;
