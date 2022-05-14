@@ -87,10 +87,6 @@ u32 func_802B5258(Vec3f arg0, Vec3s arg1) {
     return func_802B7830(temp_v1, temp_v2);
 }
 
-/*
-The difference between this and plain vec3f_copy is the return value.
-_alternate returns nothing while plain _copy returns a local variable address
-*/
 void vec3f_set(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
     arg0[0] = arg1;
     arg0[1] = arg2;
