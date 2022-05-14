@@ -6019,7 +6019,7 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
                 case 4:
                     func_802994D4(temp_s1, D_801502C0, phi_s0);
                     break;
-                case ACTOR_PALM_TREE:
+                case 19:
                     func_8029969C(temp_s1, D_801502C0, phi_s0);
                     break;
                 case 26:
