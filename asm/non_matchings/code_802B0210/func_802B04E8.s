@@ -3,14 +3,14 @@ glabel func_802B04E8
 /* 119AFC 802B04EC AFB00018 */  sw    $s0, 0x18($sp)
 /* 119B00 802B04F0 00058400 */  sll   $s0, $a1, 0x10
 /* 119B04 802B04F4 AFB30024 */  sw    $s3, 0x24($sp)
-/* 119B08 802B04F8 3C138016 */  lui   $s3, %hi(D_8015F9B8) # $s3, 0x8016
+/* 119B08 802B04F8 3C138016 */  lui   $s3, %hi(gActorList) # $s3, 0x8016
 /* 119B0C 802B04FC 00107403 */  sra   $t6, $s0, 0x10
 /* 119B10 802B0500 AFB40028 */  sw    $s4, 0x28($sp)
 /* 119B14 802B0504 AFB20020 */  sw    $s2, 0x20($sp)
 /* 119B18 802B0508 2412FFFF */  li    $s2, -1
 /* 119B1C 802B050C 24140070 */  li    $s4, 112
 /* 119B20 802B0510 01C08025 */  move  $s0, $t6
-/* 119B24 802B0514 2673F9B8 */  addiu $s3, %lo(D_8015F9B8) # addiu $s3, $s3, -0x648
+/* 119B24 802B0514 2673F9B8 */  addiu $s3, %lo(gActorList) # addiu $s3, $s3, -0x648
 /* 119B28 802B0518 AFBF002C */  sw    $ra, 0x2c($sp)
 /* 119B2C 802B051C AFB1001C */  sw    $s1, 0x1c($sp)
 /* 119B30 802B0520 AFA40030 */  sw    $a0, 0x30($sp)

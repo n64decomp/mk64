@@ -35,9 +35,9 @@ glabel place_segment_06
 /* 106C18 8029D608 A7A0007C */  sh    $zero, 0x7c($sp)
 /* 106C1C 8029D60C 86620000 */  lh    $v0, ($s3)
 /* 106C20 8029D610 24018000 */  li    $at, -32768
-/* 106C24 8029D614 3C1E8016 */  lui   $fp, %hi(D_8015F9B8) # $fp, 0x8016
+/* 106C24 8029D614 3C1E8016 */  lui   $fp, %hi(gActorList) # $fp, 0x8016
 /* 106C28 8029D618 10410077 */  beq   $v0, $at, .L8029D7F8
-/* 106C2C 8029D61C 27DEF9B8 */   addiu $fp, %lo(D_8015F9B8) # addiu $fp, $fp, -0x648
+/* 106C2C 8029D61C 27DEF9B8 */   addiu $fp, %lo(gActorList) # addiu $fp, $fp, -0x648
 /* 106C30 8029D620 3C0140A0 */  li    $at, 0x40A00000 # 5.000000
 /* 106C34 8029D624 3C17800E */  lui   $s7, %hi(gCurrentCourseId) # $s7, 0x800e
 /* 106C38 8029D628 3C168016 */  lui   $s6, %hi(gCourseDirection) # $s6, 0x8016

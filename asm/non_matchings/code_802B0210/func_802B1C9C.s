@@ -62,8 +62,8 @@ glabel func_802B1C9C
 /* 11B398 802B1D88 0303C023 */  subu  $t8, $t8, $v1
 /* 11B39C 802B1D8C E7AA0040 */  swc1  $f10, 0x40($sp)
 /* 11B3A0 802B1D90 C6300018 */  lwc1  $f16, 0x18($s1)
-/* 11B3A4 802B1D94 3C0F8016 */  lui   $t7, %hi(D_8015F9B8) # $t7, 0x8016
-/* 11B3A8 802B1D98 25EFF9B8 */  addiu $t7, %lo(D_8015F9B8) # addiu $t7, $t7, -0x648
+/* 11B3A4 802B1D94 3C0F8016 */  lui   $t7, %hi(gActorList) # $t7, 0x8016
+/* 11B3A8 802B1D98 25EFF9B8 */  addiu $t7, %lo(gActorList) # addiu $t7, $t7, -0x648
 /* 11B3AC 802B1D9C 0018C100 */  sll   $t8, $t8, 4
 /* 11B3B0 802B1DA0 030F8021 */  addu  $s0, $t8, $t7
 /* 11B3B4 802B1DA4 3C013F80 */  li    $at, 0x3F800000 # 1.000000

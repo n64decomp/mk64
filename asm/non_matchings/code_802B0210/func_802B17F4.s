@@ -39,8 +39,8 @@ glabel func_802B17F4
 .L802B1888:
 /* 11AE98 802B1888 0004C8C0 */  sll   $t9, $a0, 3
 /* 11AE9C 802B188C 0324C823 */  subu  $t9, $t9, $a0
-/* 11AEA0 802B1890 3C0A8016 */  lui   $t2, %hi(D_8015F9B8) # $t2, 0x8016
-/* 11AEA4 802B1894 254AF9B8 */  addiu $t2, %lo(D_8015F9B8) # addiu $t2, $t2, -0x648
+/* 11AEA0 802B1890 3C0A8016 */  lui   $t2, %hi(gActorList) # $t2, 0x8016
+/* 11AEA4 802B1894 254AF9B8 */  addiu $t2, %lo(gActorList) # addiu $t2, $t2, -0x648
 /* 11AEA8 802B1898 0019C900 */  sll   $t9, $t9, 4
 /* 11AEAC 802B189C 032A1821 */  addu  $v1, $t9, $t2
 /* 11AEB0 802B18A0 A4600006 */  sh    $zero, 6($v1)

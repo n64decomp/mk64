@@ -71,14 +71,14 @@ glabel L8029FE88
 /* 1094D8 8029FEC8 10610011 */  beq   $v1, $at, .L8029FF10
 /* 1094DC 8029FECC 24010002 */   li    $at, 2
 /* 1094E0 8029FED0 10610006 */  beq   $v1, $at, .L8029FEEC
-/* 1094E4 8029FED4 3C0D8016 */   lui   $t5, %hi(D_8015F9B8) # $t5, 0x8016
+/* 1094E4 8029FED4 3C0D8016 */   lui   $t5, %hi(gActorList) # $t5, 0x8016
 /* 1094E8 8029FED8 24010004 */  li    $at, 4
 /* 1094EC 8029FEDC 10610017 */  beq   $v1, $at, .L8029FF3C
 /* 1094F0 8029FEE0 00C02025 */   move  $a0, $a2
 /* 1094F4 8029FEE4 1000007D */  b     .L802A00DC
 /* 1094F8 8029FEE8 8FBF0014 */   lw    $ra, 0x14($sp)
 .L8029FEEC:
-/* 1094FC 8029FEEC 25ADF9B8 */  addiu $t5, %lo(D_8015F9B8) # addiu $t5, $t5, -0x648
+/* 1094FC 8029FEEC 25ADF9B8 */  addiu $t5, %lo(gActorList) # addiu $t5, $t5, -0x648
 /* 109500 8029FEF0 00CD2023 */  subu  $a0, $a2, $t5
 /* 109504 8029FEF4 24010070 */  li    $at, 112
 /* 109508 8029FEF8 0081001A */  div   $zero, $a0, $at
@@ -122,8 +122,8 @@ glabel L8029FF74
 /* 109590 8029FF80 0C0327BD */  jal   func_800C9EF4
 /* 109594 8029FF84 AFA60018 */   sw    $a2, 0x18($sp)
 /* 109598 8029FF88 8FA60018 */  lw    $a2, 0x18($sp)
-/* 10959C 8029FF8C 3C098016 */  lui   $t1, %hi(D_8015F9B8) # $t1, 0x8016
-/* 1095A0 8029FF90 2529F9B8 */  addiu $t1, %lo(D_8015F9B8) # addiu $t1, $t1, -0x648
+/* 10959C 8029FF8C 3C098016 */  lui   $t1, %hi(gActorList) # $t1, 0x8016
+/* 1095A0 8029FF90 2529F9B8 */  addiu $t1, %lo(gActorList) # addiu $t1, $t1, -0x648
 /* 1095A4 8029FF94 24010070 */  li    $at, 112
 /* 1095A8 8029FF98 00C92023 */  subu  $a0, $a2, $t1
 /* 1095AC 8029FF9C 0081001A */  div   $zero, $a0, $at
@@ -155,8 +155,8 @@ glabel L8029FFB4
 /* 10960C 8029FFFC 01A00008 */  jr    $t5
 /* 109610 802A0000 00000000 */   nop   
 glabel L802A0004
-/* 109614 802A0004 3C0E8016 */  lui   $t6, %hi(D_8015F9B8) # $t6, 0x8016
-/* 109618 802A0008 25CEF9B8 */  addiu $t6, %lo(D_8015F9B8) # addiu $t6, $t6, -0x648
+/* 109614 802A0004 3C0E8016 */  lui   $t6, %hi(gActorList) # $t6, 0x8016
+/* 109618 802A0008 25CEF9B8 */  addiu $t6, %lo(gActorList) # addiu $t6, $t6, -0x648
 /* 10961C 802A000C 00CE2023 */  subu  $a0, $a2, $t6
 /* 109620 802A0010 24010070 */  li    $at, 112
 /* 109624 802A0014 0081001A */  div   $zero, $a0, $at

@@ -11,8 +11,8 @@ glabel func_8029ABD4
 /* 104208 8029ABF8 01E27823 */  subu  $t7, $t7, $v0
 /* 10420C 8029ABFC 87AE001E */  lh    $t6, 0x1e($sp)
 /* 104210 8029AC00 000F7900 */  sll   $t7, $t7, 4
-/* 104214 8029AC04 3C018016 */  lui   $at, %hi(D_8015F9BE) # 0x8016
+/* 104214 8029AC04 3C018016 */  lui   $at, %hi(gActorList) # 0x8016
 /* 104218 8029AC08 002F0821 */  addu  $at, $at, $t7
 /* 10421C 8029AC0C 27BD0018 */  addiu $sp, $sp, 0x18
 /* 104220 8029AC10 03E00008 */  jr    $ra
-/* 104224 8029AC14 A42EF9BE */   sh    $t6, %lo(D_8015F9BE)($at) # -0x642($at)
+/* 104224 8029AC14 A42EF9BE */   sh    $t6, %lo(gActorList+6)($at) # -0x642($at)

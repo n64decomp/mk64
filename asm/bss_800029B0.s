@@ -244,14 +244,8 @@ glabel D_8015F8F6
 glabel D_8015F900
 .skip 184
 
-glabel D_8015F9B8
-.skip 6
-
-glabel D_8015F9BE
-.skip 938
-
-glabel D_8015FD68
-.skip 10256
+glabel gActorList
+.skip 11200
 
 glabel D_80162578
 .skip 112

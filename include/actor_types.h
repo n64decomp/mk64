@@ -2,8 +2,32 @@
 #include <macros.h>
 #include <common_structs.h>
 
-// Made this because there will likely be a lot of structs in this file that will be compiled into one eventually.
-// This keeps the other files cleaner.
+/*
+gActorList should be understood to be populated by generic Actor structs.
+However, for human readability, many functions interacting with actor list elements expect one of the many
+specialized types found in this file.
+
+Note that specialized types must be the same size as a plain Actor. Don't be mislead into thinking that
+because its a separate type that it can modified separately from plain Actor. If you modify/add an actor type
+and its size is different from plain Actor's, you WILL run into buggy (potentially crash inducing) behaviour.
+
+Specialized structs are customizable so long as the following member specifications are met:
+
+In general:
+    0x00 -> s16 type
+    0x02 -> s16 flags
+    0x30 -> UnkActorInner unk30
+
+If player can collide with the actor:
+    0x0C -> f32 boundingBoxSize
+
+If the actor makes sound (necessary for doppler/volume stuff):
+    0x18 -> Vec3f pos
+    0x24 -> Vec3f velocity
+
+Other members are more flexible, and even the non-general specifications can be ignored IF AND ONLY IF you know
+exactly what you're doing.
+*/
 
 #define ACTOR_FALLING_ROCK             0x05
 #define ACTOR_BANANA                   0x06
@@ -27,6 +51,28 @@
 #define ACTOR_BLUE_SPINY_SHELL         0x2A
 #define ACTOR_HOT_AIR_BALLOON_ITEM_BOX 0x2B
 #define ACTOR_KIWANO_FRUIT             0x2D
+
+#define ACTOR_LIST_SIZE 100
+
+struct Actor {
+    /* 0x00 */ s16 type;
+    /* 0x02 */ s16 flags;
+    /* 0x04 */ s16 unk_04;
+    /* 0x06 */ s16 state;
+    /* 0x08 */ f32 unk_08;
+    /* 0x0C */ f32 boundingBoxSize;
+    /* 0x10 */ Vec3s rot;
+    /* 0x16 */ s16 unk_16;
+    /* 0x18 */ Vec3f pos;
+    /* 0x24 */ Vec3f velocity;
+    /* 0x30 */ UnkActorInner unk30;
+}; // size = 0x70
+
+extern struct Actor gActorList[ACTOR_LIST_SIZE]; // D_8015F9B8
+
+/*
+Specialized actor types
+*/
 
 /*
 Used by the locomotive, tender, and passenger car
@@ -172,18 +218,23 @@ struct TripleShellParent {
     /* 0x14 */ s16 playerId; // Id of the player that "owns" the shells
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f unk_18;
-    /* 0x24 */ Vec3f shellIndices; // Indices in D_8015F9B8 for the shells "owned" by this parent
+    /* 0x24 */ Vec3f shellIndices; // Indices in gActorList for the shells "owned" by this parent
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
 struct ShellActor {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
-    // Index in D_8015F9B8 for the parent actor of this shell
+    // Index in gActorList for the parent actor of this shell
     // Seems to pull double duty as a timer
-    /* 0x04 */ s16 parentIndex;
+    union {
+        /* 0x04 */ s16 parentIndex;
+        /* 0x04 */ s16 someTimer;
+        // Red Shells only (maybe blue shells?)
+        /* 0x04 */ s16 targetPlayer; // Player the shell is after
+    };
     /* 0x06 */ s16 state;
-    /* 0x08 */ f32 unk_08;
+    /* 0x08 */ f32 shellId; // 0, 1, or 2. Indicates which shell in the triplet this one is
     /* 0x0C */ f32 boundingBoxSize;
     /* 0x10 */ s16 rotVelocity; // Change in rotAngle on a per-update basis
     /* 0x12 */ s16 rotAngle; // Angle of rotation around player (or parent?), not the rotation of the shell itself
@@ -236,7 +287,7 @@ struct BananaBunchParent {
     /* 0x08 */ f32 unk_08;
     /* 0x0C */ f32 unk_0C;
     /* 0x10 */ s16 playerId; // Player that own the bananas
-    /* 0x12 */ s16 bananaIndices[5]; // Indices in D_8015F9B8 for the bananas owned by this parent
+    /* 0x12 */ s16 bananaIndices[5]; // Indices in gActorList for the bananas owned by this parent
     /* 0x1C */ s16 bananasAvailable;
     /* 0x1E */ s16 unk_1E;
     /* 0x20 */ f32 unk_20[4];
@@ -254,23 +305,9 @@ struct BananaActor {
     union {
         /* 0x10 */ Vec3s rot;
         /* 0x10 */ s16 playerId; // Id of the player that owns this banana
-        /* 0x12 */ s16 elderIndex; // Index in D_8015F9B8 of the next-oldest banana in the bunch
-        /* 0x14 */ s16 youngerIndex; // Index in D_8015F9B8 of the next-youngest banana in the bunch
+        /* 0x12 */ s16 elderIndex; // Index in gActorList of the next-oldest banana in the bunch
+        /* 0x14 */ s16 youngerIndex; // Index in gActorList of the next-youngest banana in the bunch
     };
-    /* 0x16 */ s16 unk_16;
-    /* 0x18 */ Vec3f pos;
-    /* 0x24 */ Vec3f velocity;
-    /* 0x30 */ UnkActorInner unk30;
-}; // size = 0x70
-
-struct Actor {
-    /* 0x00 */ s16 type;
-    /* 0x02 */ s16 flags;
-    /* 0x04 */ s16 unk_04;
-    /* 0x06 */ s16 state;
-    /* 0x08 */ f32 unk_08;
-    /* 0x0C */ f32 boundingBoxSize;
-    /* 0x10 */ Vec3s rot;
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;

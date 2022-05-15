@@ -66,8 +66,8 @@ glabel func_802B2D70
 .L802B2E6C:
 /* 11C47C 802B2E6C 000448C0 */  sll   $t1, $a0, 3
 /* 11C480 802B2E70 01244823 */  subu  $t1, $t1, $a0
-/* 11C484 802B2E74 3C0A8016 */  lui   $t2, %hi(D_8015F9B8) # $t2, 0x8016
-/* 11C488 802B2E78 254AF9B8 */  addiu $t2, %lo(D_8015F9B8) # addiu $t2, $t2, -0x648
+/* 11C484 802B2E74 3C0A8016 */  lui   $t2, %hi(gActorList) # $t2, 0x8016
+/* 11C488 802B2E78 254AF9B8 */  addiu $t2, %lo(gActorList) # addiu $t2, $t2, -0x648
 /* 11C48C 802B2E7C 00094900 */  sll   $t1, $t1, 4
 /* 11C490 802B2E80 012A1821 */  addu  $v1, $t1, $t2
 /* 11C494 802B2E84 240B0014 */  li    $t3, 20

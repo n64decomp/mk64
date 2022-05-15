@@ -59,9 +59,9 @@ glabel func_802B2C40
 /* 11C330 802B2D20 00004812 */  mflo  $t1
 /* 11C334 802B2D24 44893000 */  mtc1  $t1, $f6
 /* 11C338 802B2D28 01E47823 */  subu  $t7, $t7, $a0
-/* 11C33C 802B2D2C 3C188016 */  lui   $t8, %hi(D_8015F9B8) # $t8, 0x8016
+/* 11C33C 802B2D2C 3C188016 */  lui   $t8, %hi(gActorList) # $t8, 0x8016
 /* 11C340 802B2D30 46803220 */  cvt.s.w $f8, $f6
-/* 11C344 802B2D34 2718F9B8 */  addiu $t8, %lo(D_8015F9B8) # addiu $t8, $t8, -0x648
+/* 11C344 802B2D34 2718F9B8 */  addiu $t8, %lo(gActorList) # addiu $t8, $t8, -0x648
 /* 11C348 802B2D38 000F7900 */  sll   $t7, $t7, 4
 /* 11C34C 802B2D3C 01F81821 */  addu  $v1, $t7, $t8
 /* 11C350 802B2D40 A4600006 */  sh    $zero, 6($v1)

@@ -2,9 +2,9 @@ glabel func_8000ED80
 /* 00F980 8000ED80 000470C0 */  sll   $t6, $a0, 3
 /* 00F984 8000ED84 01C47023 */  subu  $t6, $t6, $a0
 /* 00F988 8000ED88 000E7100 */  sll   $t6, $t6, 4
-/* 00F98C 8000ED8C 3C0F8016 */  lui   $t7, %hi(D_8015F9B8) # 0x8016
+/* 00F98C 8000ED8C 3C0F8016 */  lui   $t7, %hi(gActorList) # 0x8016
 /* 00F990 8000ED90 01EE7821 */  addu  $t7, $t7, $t6
-/* 00F994 8000ED94 85EFF9B8 */  lh    $t7, %lo(D_8015F9B8)($t7) # -0x648($t7)
+/* 00F994 8000ED94 85EFF9B8 */  lh    $t7, %lo(gActorList)($t7) # -0x648($t7)
 /* 00F998 8000ED98 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 00F99C 8000ED9C 24010008 */  li    $at, 8
 /* 00F9A0 8000EDA0 11E10003 */  beq   $t7, $at, .L8000EDB0
