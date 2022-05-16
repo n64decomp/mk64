@@ -1,6 +1,6 @@
 glabel func_80295D88
-/* 0FF398 80295D88 3C018015 */  lui   $at, %hi(D_80150110) # $at, 0x8015
-/* 0FF39C 80295D8C A4200110 */  sh    $zero, %lo(D_80150110)($at)
+/* 0FF398 80295D88 3C018015 */  lui   $at, %hi(gNumActors) # $at, 0x8015
+/* 0FF39C 80295D8C A4200110 */  sh    $zero, %lo(gNumActors)($at)
 /* 0FF3A0 80295D90 3C018016 */  lui   $at, %hi(D_8015F6EA) # $at, 0x8016
 /* 0FF3A4 80295D94 A420F6EA */  sh    $zero, %lo(D_8015F6EA)($at)
 /* 0FF3A8 80295D98 3C018016 */  lui   $at, %hi(D_8015F6EE) # $at, 0x8016

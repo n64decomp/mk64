@@ -19,8 +19,8 @@ glabel func_8029DB44
 /* 107198 8029DB88 95410004 */  lhu   $at, 4($t2)
 /* 10719C 8029DB8C A5210004 */  sh    $at, 4($t1)
 /* 1071A0 8029DB90 9739C5A0 */  lhu   $t9, %lo(gCurrentCourseId)($t9)
-/* 1071A4 8029DB94 3C018016 */  lui   $at, %hi(D_8015F900) # $at, 0x8016
-/* 1071A8 8029DB98 A420F900 */  sh    $zero, %lo(D_8015F900)($at)
+/* 1071A4 8029DB94 3C018016 */  lui   $at, %hi(gNumPermanentActors) # $at, 0x8016
+/* 1071A8 8029DB98 A420F900 */  sh    $zero, %lo(gNumPermanentActors)($at)
 /* 1071AC 8029DB9C 2F210014 */  sltiu $at, $t9, 0x14
 /* 1071B0 8029DBA0 10200166 */  beqz  $at, .L8029E13C
 /* 1071B4 8029DBA4 0019C880 */   sll   $t9, $t9, 2
@@ -405,9 +405,9 @@ glabel L8029E130
 .L8029E13C:
 /* 10774C 8029E13C 8FBF0014 */  lw    $ra, 0x14($sp)
 .L8029E140:
-/* 107750 8029E140 3C0E8015 */  lui   $t6, %hi(D_80150110) # $t6, 0x8015
-/* 107754 8029E144 95CE0110 */  lhu   $t6, %lo(D_80150110)($t6)
-/* 107758 8029E148 3C018016 */  lui   $at, %hi(D_8015F900) # 0x8016
+/* 107750 8029E140 3C0E8015 */  lui   $t6, %hi(gNumActors) # $t6, 0x8015
+/* 107754 8029E144 95CE0110 */  lhu   $t6, %lo(gNumActors)($t6)
+/* 107758 8029E148 3C018016 */  lui   $at, %hi(gNumPermanentActors) # 0x8016
 /* 10775C 8029E14C 27BD0050 */  addiu $sp, $sp, 0x50
 /* 107760 8029E150 03E00008 */  jr    $ra
-/* 107764 8029E154 A42EF900 */   sh    $t6, %lo(D_8015F900)($at) # -0x700($at)
+/* 107764 8029E154 A42EF900 */   sh    $t6, %lo(gNumPermanentActors)($at) # -0x700($at)

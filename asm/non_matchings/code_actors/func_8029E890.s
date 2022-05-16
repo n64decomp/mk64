@@ -1,7 +1,7 @@
 glabel func_8029E890
 /* 107EA0 8029E890 27BDFFD8 */  addiu $sp, $sp, -0x28
-/* 107EA4 8029E894 3C0B8016 */  lui   $t3, %hi(D_8015F900) # $t3, 0x8016
-/* 107EA8 8029E898 956BF900 */  lhu   $t3, %lo(D_8015F900)($t3)
+/* 107EA4 8029E894 3C0B8016 */  lui   $t3, %hi(gNumPermanentActors) # $t3, 0x8016
+/* 107EA8 8029E898 956BF900 */  lhu   $t3, %lo(gNumPermanentActors)($t3)
 /* 107EAC 8029E89C AFB10020 */  sw    $s1, 0x20($sp)
 /* 107EB0 8029E8A0 AFBF0024 */  sw    $ra, 0x24($sp)
 /* 107EB4 8029E8A4 29610064 */  slti  $at, $t3, 0x64

@@ -75,10 +75,10 @@ extern u32 *D_06014330;
 
 extern f32 gCourseDirection;
 
-extern u16 D_8015F900;
+extern u16 gNumPermanentActors;
 
 extern s16 D_800DC5BC, D_800DC5C8;
-extern u16 D_80150110;
+extern u16 gNumActors;
 
 
 s32 D_800DC5E0 = 32;
@@ -245,7 +245,7 @@ void func_80003040(void) {
 
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
-    D_80150110 = 0;
+    gNumActors = 0;
     gIsMirrorMode = 0;
     gCourseDirection = 1.0f;
 
@@ -314,5 +314,5 @@ void func_80003040(void) {
         default:
             break;
     }
-    D_8015F900 = D_80150110;
+    gNumPermanentActors = gNumActors;
 }

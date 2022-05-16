@@ -107,7 +107,7 @@ OSContPad gControllerPads[4];
 u8 gControllerBits;
 
 u8 D_8014F110[4096];
-u16 D_80150110;
+u16 gNumActors;
 u16 D_80150112;
 s32 D_80150114;
 f32 D_80150118;

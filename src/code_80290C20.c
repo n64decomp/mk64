@@ -2280,7 +2280,7 @@ void func_80295D88(void) {
     u16 temp_t7;
     f32 phi_f10;
 
-    D_80150110 = 0;
+    gNumActors = 0;
     D_8015F6EA = 0;
     D_8015F6EE = 0;
     D_8015F6F2 = 0;

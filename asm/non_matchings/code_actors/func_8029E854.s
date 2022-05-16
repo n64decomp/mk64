@@ -4,8 +4,8 @@ glabel func_8029E854
 /* 107E6C 8029E85C 0C0A79F7 */  jal   func_8029E7DC
 /* 107E70 8029E860 AFA40018 */   sw    $a0, 0x18($sp)
 /* 107E74 8029E864 8FA40018 */  lw    $a0, 0x18($sp)
-/* 107E78 8029E868 3C028015 */  lui   $v0, %hi(D_80150110) # $v0, 0x8015
-/* 107E7C 8029E86C 24420110 */  addiu $v0, %lo(D_80150110) # addiu $v0, $v0, 0x110
+/* 107E78 8029E868 3C028015 */  lui   $v0, %hi(gNumActors) # $v0, 0x8015
+/* 107E7C 8029E86C 24420110 */  addiu $v0, %lo(gNumActors) # addiu $v0, $v0, 0x110
 /* 107E80 8029E870 A4800002 */  sh    $zero, 2($a0)
 /* 107E84 8029E874 A4800000 */  sh    $zero, ($a0)
 /* 107E88 8029E878 944E0000 */  lhu   $t6, ($v0)

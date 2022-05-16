@@ -2,8 +2,8 @@ glabel func_8029ABD4
 /* 1041E4 8029ABD4 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 1041E8 8029ABD8 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 1041EC 8029ABDC AFA5001C */  sw    $a1, 0x1c($sp)
-/* 1041F0 8029ABE0 3C018015 */  lui   $at, %hi(D_80150110) # $at, 0x8015
-/* 1041F4 8029ABE4 A4200110 */  sh    $zero, %lo(D_80150110)($at)
+/* 1041F0 8029ABE0 3C018015 */  lui   $at, %hi(gNumActors) # $at, 0x8015
+/* 1041F4 8029ABE4 A4200110 */  sh    $zero, %lo(gNumActors)($at)
 /* 1041F8 8029ABE8 0C0A7B4E */  jal   func_8029ED38
 /* 1041FC 8029ABEC 24050014 */   li    $a1, 20
 /* 104200 8029ABF0 000278C0 */  sll   $t7, $v0, 3
