@@ -2,7 +2,9 @@
 
 #include "config.h"
 
-u8 D_802BA290[224];
+u16 gRandomSeed16;
+
+u8 randomSeedPadding[222];
 
 u8 frameBufferPadding[22544];
 
