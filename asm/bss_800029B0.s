@@ -241,7 +241,7 @@ glabel D_8015F8F4
 glabel D_8015F8F6
 .skip 10
 
-glabel D_8015F900
+glabel gNumPermanentActors
 .skip 184
 
 glabel gActorList

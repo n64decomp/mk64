@@ -13504,7 +13504,7 @@ block_194:
             temp_s0->unk0 = 0;
             goto block_194;
         case 4:                                     /* switch 1 */
-            if (D_80150110 < 0x50) {
+            if (gNumActors < 0x50) {
                 temp_s0->unk2 = func_802B1C9C(sp2C, temp_a1);
                 temp_v1_5 = temp_s0->unk2;
                 if ((temp_v1_5 >= 0) && (temp_v1_5 < 0x64)) {
@@ -13545,7 +13545,7 @@ block_71:
             }
             goto block_194;
         case 7:                                     /* switch 1 */
-            if (D_80150110 < 0x50) {
+            if (gNumActors < 0x50) {
                 temp_s0->unk2 = func_802B1E48(sp2C, temp_a1);
                 temp_v1_6 = temp_s0->unk2;
                 if ((temp_v1_6 >= 0) && (temp_v1_6 < 0x64)) {
@@ -13586,7 +13586,7 @@ block_92:
             }
             goto block_194;
         case 10:                                    /* switch 1 */
-            if (D_80150110 < 0x50) {
+            if (gNumActors < 0x50) {
                 temp_s0->unk2 = func_802B17F4(sp2C, temp_a1);
                 temp_v1_7 = temp_s0->unk2;
                 if ((temp_v1_7 >= 0) && (temp_v1_7 < 0x64)) {

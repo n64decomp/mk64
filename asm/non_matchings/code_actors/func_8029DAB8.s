@@ -1,9 +1,9 @@
 glabel func_8029DAB8
-/* 1070C8 8029DAB8 3C018015 */  lui   $at, %hi(D_80150110) # $at, 0x8015
+/* 1070C8 8029DAB8 3C018015 */  lui   $at, %hi(gNumActors) # $at, 0x8015
 /* 1070CC 8029DABC 3C038016 */  lui   $v1, %hi(gActorList) # $v1, 0x8016
 /* 1070D0 8029DAC0 3C028016 */  lui   $v0, %hi(D_80162578) # $v0, 0x8016
 /* 1070D4 8029DAC4 44800000 */  mtc1  $zero, $f0
-/* 1070D8 8029DAC8 A4200110 */  sh    $zero, %lo(D_80150110)($at)
+/* 1070D8 8029DAC8 A4200110 */  sh    $zero, %lo(gNumActors)($at)
 /* 1070DC 8029DACC 24422578 */  addiu $v0, %lo(D_80162578) # addiu $v0, $v0, 0x2578
 /* 1070E0 8029DAD0 2463F9B8 */  addiu $v1, %lo(gActorList) # addiu $v1, $v1, -0x648
 .L8029DAD4:

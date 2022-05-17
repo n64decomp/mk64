@@ -118,19 +118,10 @@ struct FallingRock {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-// Data in course_choco_mountain_dl.bin
-// 7230?
-// func_8029CF0C
-struct innerFR {
-    Vec3s data;
-    u16 unk2;
+struct ActorSpawnData {
+    /* 0x00 */ Vec3s pos;
+    /* 0x06 */ u16 someId; // Usually populated, but not necessarily used by all actors types
 };
-
-typedef union {
-    struct innerFR unk;
-    s32 unk2;
-    s32 unk3;
-} UnknownFallingRock;
 
 struct YoshiValleyEgg {
     /* 0x00 */ s16 type;

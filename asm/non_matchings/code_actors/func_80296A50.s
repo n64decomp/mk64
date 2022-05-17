@@ -1,6 +1,6 @@
 glabel func_80296A50
-/* 100060 80296A50 3C098016 */  lui   $t1, %hi(D_8015F900) # $t1, 0x8016
-/* 100064 80296A54 9529F900 */  lhu   $t1, %lo(D_8015F900)($t1)
+/* 100060 80296A50 3C098016 */  lui   $t1, %hi(gNumPermanentActors) # $t1, 0x8016
+/* 100064 80296A54 9529F900 */  lhu   $t1, %lo(gNumPermanentActors)($t1)
 /* 100068 80296A58 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 10006C 80296A5C AFBF0014 */  sw    $ra, 0x14($sp)
 /* 100070 80296A60 29210064 */  slti  $at, $t1, 0x64

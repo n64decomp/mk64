@@ -9,7 +9,7 @@ glabel func_802AF314
 /* 118940 802AF330 8739F6F2 */  lh    $t9, %lo(D_8015F6F2)($t9)
 /* 118944 802AF334 8718F6F0 */  lh    $t8, %lo(D_8015F6F0)($t8)
 /* 118948 802AF338 3C028015 */  lui   $v0, %hi(D_8014F110) # $v0, 0x8015
-/* 11894C 802AF33C 3C038015 */  lui   $v1, %hi(D_80150110) # $v1, 0x8015
+/* 11894C 802AF33C 3C038015 */  lui   $v1, %hi(gNumActors) # $v1, 0x8015
 /* 118950 802AF340 AFBF0044 */  sw    $ra, 0x44($sp)
 /* 118954 802AF344 AFBE0040 */  sw    $fp, 0x40($sp)
 /* 118958 802AF348 AFB7003C */  sw    $s7, 0x3c($sp)
@@ -20,7 +20,7 @@ glabel func_802AF314
 /* 11896C 802AF35C AFB20028 */  sw    $s2, 0x28($sp)
 /* 118970 802AF360 AFB10024 */  sw    $s1, 0x24($sp)
 /* 118974 802AF364 AFB00020 */  sw    $s0, 0x20($sp)
-/* 118978 802AF368 24630110 */  addiu $v1, %lo(D_80150110) # addiu $v1, $v1, 0x110
+/* 118978 802AF368 24630110 */  addiu $v1, %lo(gNumActors) # addiu $v1, $v1, 0x110
 /* 11897C 802AF36C 2442F110 */  addiu $v0, %lo(D_8014F110) # addiu $v0, $v0, -0xef0
 /* 118980 802AF370 01CF2023 */  subu  $a0, $t6, $t7
 /* 118984 802AF374 03192823 */  subu  $a1, $t8, $t9
