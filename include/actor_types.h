@@ -295,9 +295,11 @@ struct BananaActor {
     /* 0x0C */ f32 boundingBoxSize;
     union {
         /* 0x10 */ Vec3s rot;
+        struct {
         /* 0x10 */ s16 playerId; // Id of the player that owns this banana
         /* 0x12 */ s16 elderIndex; // Index in gActorList of the next-oldest banana in the bunch
         /* 0x14 */ s16 youngerIndex; // Index in gActorList of the next-youngest banana in the bunch
+        };
     };
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
