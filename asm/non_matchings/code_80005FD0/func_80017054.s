@@ -431,7 +431,7 @@ glabel func_80017054
 /* 0182C4 800176C4 C60A0014 */  lwc1  $f10, 0x14($s0)
 /* 0182C8 800176C8 E7AC00AC */  swc1  $f12, 0xac($sp)
 /* 0182CC 800176CC 46065381 */  sub.s $f14, $f10, $f6
-/* 0182D0 800176D0 0C0ADE0C */  jal   func_802B7830
+/* 0182D0 800176D0 0C0ADE0C */  jal   atan2s
 /* 0182D4 800176D4 E7AE00A4 */   swc1  $f14, 0xa4($sp)
 /* 0182D8 800176D8 C7A000AC */  lwc1  $f0, 0xac($sp)
 /* 0182DC 800176DC C7AE00A4 */  lwc1  $f14, 0xa4($sp)
@@ -442,7 +442,7 @@ glabel func_80017054
 /* 0182F0 800176F0 0C033850 */  jal   sqrtf
 /* 0182F4 800176F4 46044300 */   add.s $f12, $f8, $f4
 /* 0182F8 800176F8 46000306 */  mov.s $f12, $f0
-/* 0182FC 800176FC 0C0ADE0C */  jal   func_802B7830
+/* 0182FC 800176FC 0C0ADE0C */  jal   atan2s
 /* 018300 80017700 C7AE00A8 */   lwc1  $f14, 0xa8($sp)
 /* 018304 80017704 A6020024 */  sh    $v0, 0x24($s0)
 /* 018308 80017708 A6000028 */  sh    $zero, 0x28($s0)

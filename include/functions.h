@@ -3,7 +3,7 @@
 
 #include "common_structs.h"
 
-s32 random_int(s32);
+s32 random_int(u16);
 void mio0decode(u8* arg0, u8* arg1);
 
 void func_8000F2DC(void);

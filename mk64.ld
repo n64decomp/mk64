@@ -315,6 +315,7 @@ SECTIONS
       BUILD_DIR/data/data_121DA0_2_1.o(.data);
       BUILD_DIR/src/code_80296A50.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_2.o(.data);
+      BUILD_DIR/src/math_util.o(.rodata);
    }
    END_SEG(code_8028DF00)
 

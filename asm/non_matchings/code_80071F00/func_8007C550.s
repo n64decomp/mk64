@@ -10,7 +10,7 @@ glabel func_8007C550
 /* 07D170 8007C570 AFA40020 */  sw    $a0, 0x20($sp)
 /* 07D174 8007C574 C46C0038 */  lwc1  $f12, 0x38($v1)
 /* 07D178 8007C578 C46E0040 */  lwc1  $f14, 0x40($v1)
-/* 07D17C 8007C57C 0C0ADE0C */  jal   func_802B7830
+/* 07D17C 8007C57C 0C0ADE0C */  jal   atan2s
 /* 07D180 8007C580 AFA30018 */   sw    $v1, 0x18($sp)
 /* 07D184 8007C584 8FA30018 */  lw    $v1, 0x18($sp)
 /* 07D188 8007C588 3045FFFF */  andi  $a1, $v0, 0xffff

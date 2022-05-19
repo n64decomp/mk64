@@ -30,12 +30,12 @@ glabel func_80282454
 /* 125B04 802824C4 0C033850 */  jal   sqrtf
 /* 125B08 802824C8 E5C00000 */   swc1  $f0, ($t6)
 /* 125B0C 802824CC C7AC0028 */  lwc1  $f12, 0x28($sp)
-/* 125B10 802824D0 0C0ADE0C */  jal   func_802B7830
+/* 125B10 802824D0 0C0ADE0C */  jal   atan2s
 /* 125B14 802824D4 46000386 */   mov.s $f14, $f0
 /* 125B18 802824D8 8FAF003C */  lw    $t7, 0x3c($sp)
 /* 125B1C 802824DC A5E20000 */  sh    $v0, ($t7)
 /* 125B20 802824E0 C7AE0024 */  lwc1  $f14, 0x24($sp)
-/* 125B24 802824E4 0C0ADE0C */  jal   func_802B7830
+/* 125B24 802824E4 0C0ADE0C */  jal   atan2s
 /* 125B28 802824E8 C7AC002C */   lwc1  $f12, 0x2c($sp)
 /* 125B2C 802824EC 8FB80040 */  lw    $t8, 0x40($sp)
 /* 125B30 802824F0 A7020000 */  sh    $v0, ($t8)

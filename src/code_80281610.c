@@ -4,7 +4,7 @@
 
 extern Camera cameras[];
 
-extern u16 func_802B7830(f32, f32);
+extern u16 atan2s(f32, f32);
 
 void func_80281610(void) {
     Camera *camera = &cameras[0];
@@ -18,8 +18,8 @@ void func_80281610(void) {
     temp_f12 = camera->unk - camera->pos[0];
     temp = camera->unk1 - camera->pos[1];
     temp_f14 = camera->unk2 - camera->pos[2];
-    camera->rotX[1] = func_802B7830(temp_f12, temp_f14);
-    camera->rotX[0] = func_802B7830(sqrtf((temp_f12 * temp_f12) + (temp_f14 * temp_f14)), temp);
+    camera->rotX[1] = atan2s(temp_f12, temp_f14);
+    camera->rotX[0] = atan2s(sqrtf((temp_f12 * temp_f12) + (temp_f14 * temp_f14)), temp);
     camera->rotX[2] = 0;
 }
 

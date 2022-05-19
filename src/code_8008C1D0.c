@@ -2473,7 +2473,7 @@ void func_800914A0(void) {
 //be unused/unnamed
 ? func_800914A0(s16, s32, s16);                     /* extern */
 ? func_802ADDC8(void *, ?, f32, f32, f32);          /* extern */
-s16 func_802B7830(f32, f32);                        /* extern */
+s16 atan2s(f32, f32);                        /* extern */
 f32 sqrtf(f32, f32);                                /* extern */
 extern void *gPlayerOneCopy;
 extern u16 D_80152308;
@@ -2553,8 +2553,8 @@ block_5:
     temp_f14 = *(&cameras + 0x14) - *(&cameras + 8);
     sp34 = *(&cameras + 0x10) - *(&cameras + 4);
     sp30 = temp_f14;
-    *(&cameras + 0x26) = func_802B7830(temp_f12, temp_f14);
-    *(&cameras + 0x24) = func_802B7830(sqrtf((sp38 * sp38) + (temp_f14 * temp_f14), temp_f14), sp34);
+    *(&cameras + 0x26) = atan2s(temp_f12, temp_f14);
+    *(&cameras + 0x24) = atan2s(sqrtf((sp38 * sp38) + (temp_f14 * temp_f14), temp_f14), sp34);
     *(&cameras + 0x28) = 0;
 }
 #else

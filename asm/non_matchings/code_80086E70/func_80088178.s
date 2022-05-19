@@ -16,7 +16,7 @@ glabel func_80088178
 /* 088DB0 800881B0 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 088DB4 800881B4 AFA40018 */  sw    $a0, 0x18($sp)
 /* 088DB8 800881B8 AFA5001C */  sw    $a1, 0x1c($sp)
-/* 088DBC 800881BC 0C0ADE0C */  jal   func_802B7830
+/* 088DBC 800881BC 0C0ADE0C */  jal   atan2s
 /* 088DC0 800881C0 468083A0 */   cvt.s.w $f14, $f16
 /* 088DC4 800881C4 8FAA0018 */  lw    $t2, 0x18($sp)
 /* 088DC8 800881C8 3C0C8016 */  lui   $t4, %hi(D_80165C18) # $t4, 0x8016

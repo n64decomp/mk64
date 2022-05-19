@@ -43,7 +43,7 @@ glabel func_8007CE0C
 /* 07DAB0 8007CEB0 C4460014 */  lwc1  $f6, 0x14($v0)
 /* 07DAB4 8007CEB4 C44A001C */  lwc1  $f10, 0x1c($v0)
 /* 07DAB8 8007CEB8 46083301 */  sub.s $f12, $f6, $f8
-/* 07DABC 8007CEBC 0C0ADE0C */  jal   func_802B7830
+/* 07DABC 8007CEBC 0C0ADE0C */  jal   atan2s
 /* 07DAC0 8007CEC0 46105381 */   sub.s $f14, $f10, $f16
 /* 07DAC4 8007CEC4 8FBF0024 */  lw    $ra, 0x24($sp)
 /* 07DAC8 8007CEC8 A60200C0 */  sh    $v0, 0xc0($s0)

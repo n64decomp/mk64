@@ -15,7 +15,7 @@ glabel func_8008A0B4
 /* 08ACE8 8008A0E8 C4AA001C */  lwc1  $f10, 0x1c($a1)
 /* 08ACEC 8008A0EC AFA00018 */  sw    $zero, 0x18($sp)
 /* 08ACF0 8008A0F0 46062301 */  sub.s $f12, $f4, $f6
-/* 08ACF4 8008A0F4 0C0ADE0C */  jal   func_802B7830
+/* 08ACF4 8008A0F4 0C0ADE0C */  jal   atan2s
 /* 08ACF8 8008A0F8 460A4381 */   sub.s $f14, $f8, $f10
 /* 08ACFC 8008A0FC 8FB80030 */  lw    $t8, 0x30($sp)
 /* 08AD00 8008A100 97A40036 */  lhu   $a0, 0x36($sp)

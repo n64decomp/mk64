@@ -123,6 +123,14 @@ struct ActorSpawnData {
     /* 0x06 */ u16 someId; // Usually populated, but not necessarily used by all actors types
 };
 
+// Required for func_80298AC0 due to diff size.
+// members unverified. data located at D_06013F78
+struct UnkActorSpawnData {
+    /* 0x00 */ Vec3s pos;
+    /* 0x06 */ u16 someId; // Usually populated, but not necessarily used by all actors types
+    /* 0x08 */ u16 unk8;
+};
+
 struct YoshiValleyEgg {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;

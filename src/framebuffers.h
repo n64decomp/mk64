@@ -4,7 +4,7 @@
 #include <PR/ultratypes.h>
 #include "config.h"
 
-extern u8 D_802BA290[22768];
+extern u8 gRandomSeed16[22768];
 extern u8 D_802BFB80[77824];
 extern u8 D_802D2B80[32768];
 extern u8 D_802DAB80[20480];

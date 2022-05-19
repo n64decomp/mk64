@@ -23,7 +23,8 @@ void mtxf_translate(Mat4, Vec3f);
 void func_802B5F00(Mat4, f32);
 void func_802B71CC(Mat4, Mat4, Mat4);
 void func_802B75F8(Mtx*, Mat4);
-u32 func_802B7830(f32, f32);
+
+u16 atan2s(f32, f32);
 f32 sins(u16);
 f32 coss(u16);
 

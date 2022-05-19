@@ -24,7 +24,7 @@ extern u16 D_8015F588; // Number of entires in D_8015F580
 extern u16 gIsInQuitToMenuTransition, gQuitToMenuTransitionCounter;
 extern s32 D_802874A0;
 
-extern u16 func_802B7830(f32, f32);
+extern u16 atan2s(f32, f32);
 extern u16 D_80164714, D_80164716, D_80164718;
 extern u16 D_800DC5E4;
 extern u32 D_800DC524;
@@ -103,8 +103,8 @@ void func_802802AC(void) {
         temp_f12 = camera->unk - camera->pos[0];
         temp = camera->unk1 - camera->pos[1];
         temp_f14 = camera->unk2 - camera->pos[2];
-        camera->rotX[1] = func_802B7830(temp_f12, temp_f14);
-        camera->rotX[0] = func_802B7830(sqrtf((temp_f12 * temp_f12) + (temp_f14 * temp_f14)), temp);
+        camera->rotX[1] = atan2s(temp_f12, temp_f14);
+        camera->rotX[0] = atan2s(sqrtf((temp_f12 * temp_f12) + (temp_f14 * temp_f14)), temp);
         camera->rotX[2] = 0;
         if (D_802874A0 != 0) {
             D_800DC5E4++;
