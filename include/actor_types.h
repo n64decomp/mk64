@@ -1,3 +1,6 @@
+#ifndef ACTOR_TYPES_H
+#define ACTOR_TYPES_H
+
 #include <ultra64.h>
 #include <macros.h>
 #include <common_structs.h>
@@ -320,3 +323,5 @@ struct BananaActor {
     /* 0x24 */ Vec3f velocity;
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
+
+#endif

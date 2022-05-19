@@ -3,13 +3,11 @@
 
 #include "common_structs.h"
 
-s32 random_int(u16);
 void mio0decode(u8* arg0, u8* arg1);
 
 void func_8000F2DC(void);
 void func_8000F628(void);
 void func_8000EEDC(void);
-f32 func_802AE1C0(f32 arg0, f32 arg1, f32 arg2);
 void func_802B6540(f32* arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4);
 void func_80295BF8(s32 arg0);
 void func_8005D6C0(Player* player);

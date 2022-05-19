@@ -83,6 +83,7 @@ void func_802A8EA8(Gfx*, u8, u8);
 void func_802A8F14(Gfx*, u8, u8);
 void func_802A94D8(Gfx*, u8, u8);
 void func_802A9544(Gfx*, u8, u8);
+void func_802AAAAC(UnkActorInner*);
 s8   func_802ABD10(u16);
 s16  func_802ABD40(u16);
 s16  func_802ABD7C(u16);
@@ -90,6 +91,8 @@ s16  func_802ABDB8(u16);
 s16  func_802ABDF4(u16);
 f32  func_802ABE30(f32, f32, f32, u16);
 f32  func_802ABEAC(UnkActorInner*, Vec3f);
+void func_802ADDC8(UnkActorInner*, f32, f32, f32, f32);
+f32  func_802AE1C0(f32, f32, f32);
 
 // main.c
 extern struct D_80150158 gD_80150158[];

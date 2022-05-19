@@ -3,6 +3,7 @@
 #include <defines.h>
 #include "variables.h"
 #include "kart_attributes.h"
+#include "memory.h"
 #include "code_80027D00.h"
 #include "code_8008C1D0.h"
 

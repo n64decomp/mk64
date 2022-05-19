@@ -1,6 +1,7 @@
 #include "global.h"
 #include <defines.h>
 #include "kart_attributes.h"
+#include "memory.h"
 
 extern s16 D_80165560[];
 extern s32* D_800E3C50[];
