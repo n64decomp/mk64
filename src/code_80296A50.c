@@ -3460,7 +3460,7 @@ void func_8029E7DC(struct Actor *actor) {
  * This func likely plays an audio track based on flag
  * Next, it destroys the actor via zeroing its flags and type.
  * Note that the data from its other members still exist.
- * Actors are expected to set pos and rot data if used. Not doing so could result in the use of expired data.
+ * Actors are expected to set members such as pos and rot data if used. Not doing so could result in the use of expired data.
  * 
  * This method does not require modification to gActorList directly.
  * No popping of listSize. It's always the size of ACTOR_LIST_SIZE.
