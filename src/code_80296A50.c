@@ -3463,7 +3463,7 @@ void func_8029E7DC(struct Actor *actor) {
  * Actors are expected to set members such as pos and rot data if used. Not doing so could result in the use of expired data.
  * 
  * This method does not require modification to gActorList directly.
- * No popping of listSize. It's always the size of ACTOR_LIST_SIZE.
+ * No popping members of gActorList. The list is always the size of ACTOR_LIST_SIZE.
  * Actors are members of gActorList by definition.
  * 
  * @param Actor to destroy 
