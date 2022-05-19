@@ -16,7 +16,6 @@
 void func_8008C214(void);
 void func_80091B78(void);
 void func_802A4D18(void);
-void move_segment_table_to_dmem(void);
 void func_802A3E3C(void);
 void func_802A4160(void);
 void func_802A41D4(void);
@@ -24,7 +23,6 @@ void func_802A3CB0(void);
 void audio_init();
 void profiler_log_gfx_time(enum ProfilerGfxEvent eventID);
 void profiler_log_vblank_time(void);
-void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, void *sp, OSPri pri);
 void create_debug_thread(void);
 void start_debug_thread(void);
 
@@ -32,17 +30,6 @@ extern void func_80290B14();
 extern void func_80057A50(s32 arg0, s32 arg1, char arg2[8], s16 arg3);
 
 struct SPTask *create_next_audio_frame_task(void);
-
-
-extern void dma_copy(u8 *dest, u8 *arg1, u32 size);
-extern s32 func_802A7D70(u8 *arg0, u8 *arg1);
-extern void func_802A7CF0(u32 arg0, u32 arg1);
-
-extern s32 D_800DC524;
-extern s32 gActiveScreenMode;
-
-
-extern f32 D_800DC594;
 
 struct VblankHandler *gVblankHandler1 = NULL;
 struct VblankHandler *gVblankHandler2 = NULL;
@@ -165,8 +152,6 @@ u32 gGfxSPTaskStack[256];
 OSMesg D_8015F3E0[32];
 OSMesgQueue D_8015F460;
 
-extern s16 sController1Unplugged;
-
 s32 D_800DC50C = 0xffff;
 u16 D_800DC510 = 0;
 u16 D_800DC514 = 0;
@@ -196,8 +181,8 @@ s32 D_800DC568 = 0;
 s32 D_800DC56C[8] = {0};
 s16 sNumVBlanks = 0;
 UNUSED s16 D_800DC590 = 0;
-float D_800DC594 = 0.0f;
-float gCourseTimer = 0.0f;
+f32 D_800DC594 = 0.0f;
+f32 gCourseTimer = 0.0f;
 
 
 extern u64 rspbootTextStart[], rspbootTextEnd[];
@@ -225,9 +210,6 @@ extern u32 *D_801978D0; // Segment? Keeps track of segmented addresses?
 //extern u16 gFramebuffer1;
 //extern u16 gFramebuffer2;
 
-extern void thread5_game_logic();
-extern void thread4_audio();
-
 extern s16 gCurrentlyLoadedCourseId;
 extern s16 gCurrentCourseId;
 
@@ -250,17 +232,6 @@ extern u16 D_800DC5B0;
 extern s32 gPlayerWinningIndex;
 
 extern s32 gEnableResourceMeters;
-
-// Declarations (in this file)
-void thread1_idle(void *arg0);
-void thread3_video(void *arg0);
-
-// Message IDs
-#define MESG_SP_COMPLETE 100
-#define MESG_DP_COMPLETE 101
-#define MESG_VI_VBLANK 102
-#define MESG_START_GFX_SPTASK 103
-#define MESG_NMI_REQUEST 104
 
 void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, void *sp, OSPri pri) {
     thread->next = NULL;
@@ -1126,8 +1097,6 @@ void func_80002684(void) {
         }
 }
 
-extern s32 D_800DC600;
-extern s32 D_8015F8B8, D_8015F8BC, D_8015F8C0, D_8015F8C4, D_8015F8C8, D_8015F8CC;
 //extern u8 _networkSegmentRomStart;
 void thread5_game_logic(s32 arg0) {
     osCreateMesgQueue(&D_8014EF88, &D_8014F00C, 1);

@@ -18,7 +18,6 @@ extern s32 D_802874FC;
 extern u32 gMenuSelectionFromEndingSequence;
 extern s32 D_80287554;
 extern u16 gIsInQuitToMenuTransition;
-extern u32 D_800DC524;
 extern Gfx D_00284F70[];
 extern Gfx D_00284EE0[];
 

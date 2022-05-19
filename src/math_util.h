@@ -14,7 +14,15 @@
 
 #define sqr(x) ((x) * (x))
 
-s32 func_802B4FF8(Mat4, s32);
+s32  func_802B4FF8(Mat4, s32);
+f32  func_802B51E8(Vec3f, Vec3f);
+u32  func_802B5224(Vec3f, Vec3f);
+u32  func_802B5258(Vec3f, Vec3s);
+void vec3f_set(Vec3f, f32, f32, f32);
+void vec3s_set(Vec3s, s16, s16, s16);
+void *vec3f_copy(Vec3f, Vec3f);
+void vec3s_copy(Vec3s, Vec3s);
+void *sm64_vec3f_set(Vec3f, f32, f32, f32);
 void mtxf_identity(Mat4);
 void func_802B5398(Mat4, Mat4, s32);
 void func_802B5450(Mat4, Mat4, Mat4);
