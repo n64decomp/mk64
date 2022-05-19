@@ -5274,7 +5274,7 @@ s32 func_800C21E8(s32, ?); // extern
 extern u8 D_800EA108;
 extern u8 D_800EA1C0;
 
-void func_800C99E0(s32 arg0, ? arg1) {
+void func_800C99E0(Vec3f arg0, s32 arg1) {
     s32 temp_t9;
     s32 temp_v0;
     s32 phi_s0;

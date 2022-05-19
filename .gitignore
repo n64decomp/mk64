@@ -62,6 +62,7 @@ expected/*
 # Assets. Generally ignored, but ones with "custom" in the name are fine.
 /bin/*
 /textures/**/*.png
+/textures/**/*.bin
 /assets/**/*.bin
 /music/**/*.m64
 /sound/**/*.m64
