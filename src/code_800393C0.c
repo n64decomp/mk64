@@ -64,9 +64,9 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->unk_05C = 1.0f;
     player->unk_058 = 0.0f;
     player->unk_060 = 0.0f;
-    player->unk_034 = 0.0f;
-    player->unk_038 = 0.0f;
-    player->unk_03C = 0.0f;
+    player->unk_034[0] = 0.0f;
+    player->unk_034[1] = 0.0f;
+    player->unk_034[2] = 0.0f;
     player->unk_02E = arg5;
     player->unk_030 = 0;
     player->unk_0FA = 0;

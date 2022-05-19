@@ -204,7 +204,7 @@ glabel L802B0C70
 .L802B0D24:
 /* 11A334 802B0D24 1460000A */  bnez  $v1, .L802B0D50
 /* 11A338 802B0D28 02002025 */   move  $a0, $s0
-/* 11A33C 802B0D2C 0C0A7A15 */  jal   func_8029E854
+/* 11A33C 802B0D2C 0C0A7A15 */  jal   destroy_actor
 /* 11A340 802B0D30 AFA7002C */   sw    $a3, 0x2c($sp)
 /* 11A344 802B0D34 8FA7002C */  lw    $a3, 0x2c($sp)
 /* 11A348 802B0D38 3C01FFFB */  lui   $at, (0xFFFBFFFF >> 16) # lui $at, 0xfffb

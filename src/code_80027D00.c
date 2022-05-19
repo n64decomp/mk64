@@ -2964,9 +2964,9 @@ void func_8002D268(Player *player, s32 arg1, s8 arg2, s8 arg3) {
     f32 spB0;
     f32 spAC;
     f32 spA8;
-    f32 spA0;
-    f32 sp9C;
-    f32 sp98;
+    //f32 spA0;
+    //f32 sp9C;
+    Vec3f sp98; // Clearly a vec3f
     ? sp8C;
     s32 sp7C;
     f32 sp60;
@@ -3158,9 +3158,9 @@ void func_8002D268(Player *player, s32 arg1, s8 arg2, s8 arg3) {
     func_8002C7E4(temp_f12_3, temp_f14_3, player, arg3, arg2);
     sp18C = func_80030150(player, arg3);
     func_802B63B8(&sp184, temp_a1);
-    sp98 = player->unk_034;
-    sp9C = player->unk_038;
-    spA0 = player->unk_03C;
+    sp98 = player->unk_034[0];
+    sp9C = player->unk_034[1];
+    spA0 = player->unk_034[2];
     if (((player->unk_10C < 3) && (player->unk_256 < 3)) || ((player->unk_0BC & 0x2000) == 0x2000)) {
         temp_t4 = player->unk_07C >> 0x10;
         if ((temp_t4 >= 0x28) || (temp_t4 < -0x27)) {
@@ -3217,9 +3217,9 @@ void func_8002D268(Player *player, s32 arg1, s8 arg2, s8 arg3) {
     player->rotY = temp_f12_6;
     temp_t9 = &D_8018CE10[arg3];
     sp54 = temp_t9;
-    spFC = temp_t9->unk_04 + (temp_f0_7 + player->unk_034);
-    spF8 = player->unk_038 + temp_f12_6;
-    spF4 = temp_t9->unk_0C + (spE8 + player->unk_03C);
+    spFC = temp_t9->unk_04 + (temp_f0_7 + player->unk_034[0]);
+    spF8 = player->unk_034[1] + temp_f12_6;
+    spF4 = temp_t9->unk_0C + (spE8 + player->unk_034[2]);
     temp_v0_6 = player->unk_0CA;
     if (((temp_v0_6 & 2) != 2) && ((temp_v0_6 & 8) != 8) && ((player->unk_0BC & 0x4000000) != 0x4000000) && ((temp_v0_6 & 1) == 0)) {
         func_8002AAC0(temp_f12_6, phi_f14_2, player);
@@ -3359,9 +3359,9 @@ void func_8002D268(Player *player, s32 arg1, s8 arg2, s8 arg3) {
     }
     player->unk_064 = sp178;
     player->unk_06C = sp180;
-    player->unk_034 = sp98;
-    player->unk_038 = sp9C;
-    player->unk_03C = spA0;
+    player->unk_034[0] = sp98[0];
+    player->unk_034[1] = sp98[1];
+    player->unk_034[2] = sp98[2];
     temp_v0_18 = &D_80165070[arg3];
     temp_v0_18->unk0 = sp98;
     temp_v0_18->unk4 = sp9C;
@@ -3372,9 +3372,9 @@ void func_8002D268(Player *player, s32 arg1, s8 arg2, s8 arg3) {
         temp_f12_7 = *temp_v0_19;
         if (temp_f12_7 < temp_f2_8) {
             temp_f0_8 = temp_f12_7 / temp_f2_8;
-            player->unk_034 *= temp_f0_8;
-            player->unk_038 *= temp_f0_8;
-            player->unk_03C *= temp_f0_8;
+            player->unk_034[0] *= temp_f0_8;
+            player->unk_034[1] *= temp_f0_8;
+            player->unk_034[2] *= temp_f0_8;
             player->unk_094 = *temp_v0_19;
         }
     }
@@ -3383,9 +3383,9 @@ void func_8002D268(Player *player, s32 arg1, s8 arg2, s8 arg3) {
         if (temp_f2_9 > 1.0f) {
             temp_f0_9 = 1.0f / temp_f2_9;
             player->unk_094 = 1.0f;
-            player->unk_034 *= temp_f0_9;
-            player->unk_038 *= temp_f0_9;
-            player->unk_03C *= temp_f0_9;
+            player->unk_034[0] *= temp_f0_9;
+            player->unk_034[1] *= temp_f0_9;
+            player->unk_034[2] *= temp_f0_9;
         }
     }
     if (player->unk_124 >= 500.0f) {
@@ -3408,7 +3408,7 @@ void func_8002E4C4(Player *player) {
     if (((player->pos[1] - D_80164510[player_index]) > 1200.0f) || ((player->pos[1] - D_80164510[player_index]) < -1200.0f)) {
         player->pos[1] = player->rotY;
     }
-    player->unk_038 = 0.0f;
+    player->unk_034[1] = 0.0f;
 }
 
 #ifdef MIPS_TO_C

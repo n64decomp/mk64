@@ -1101,8 +1101,8 @@ void func_8008E4A4(Player* player, s8 arg1) {
     player->unk_042 += 0xAAA;
     player->unk_08C = 0.0f;
     player->unk_09C = 0.0f;
-    player->unk_034 = 0.0f;
-    player->unk_03C = 0.0f;
+    player->unk_034[0] = 0.0f;
+    player->unk_034[2] = 0.0f;
     player->unk_0BC &= ~0xC0;
 
     if ((player->unk_0BC & 8) != 8) {
