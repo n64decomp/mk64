@@ -377,15 +377,15 @@ GLOBAL_ASM("asm/non_matchings/code_80040E50/func_80041608.s")
 #endif
 
 s32 func_80041658(f32 arg0, f32 arg1) {
-    return -func_802B7830(arg0, arg1) & 0xFFFF;
+    return -atan2s(arg0, arg1) & 0xFFFF;
 }
 
 UNUSED s32 func_80041680(f32 arg0, f32 arg1) {
-    return func_802B7830(arg1, arg0);
+    return atan2s(arg1, arg0);
 }
 
 UNUSED s32 func_800416AC(f32 arg0, f32 arg1) {
-    return func_802B7830(arg1, arg0);
+    return atan2s(arg1, arg0);
 }
 
 f32 func_800416D8(f32 arg0, f32 arg1, u16 arg2) {
@@ -403,7 +403,7 @@ f32 func_80041724(f32 arg0, f32 arg1, u16 arg2) {
 }
 
 s32 func_80041770(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
-    return func_802B7830(arg1 - arg0, arg3 - arg2);
+    return atan2s(arg1 - arg0, arg3 - arg2);
 }
 
 #ifdef MIPS_TO_C
@@ -442,11 +442,11 @@ GLOBAL_ASM("asm/non_matchings/code_80040E50/func_800417B4.s")
 #endif
 
 s32 func_800418AC(f32 arg0, f32 arg1, Vec3f arg2) {
-    return func_802B7830(arg0 - arg2[0], arg1 - arg2[2]);
+    return atan2s(arg0 - arg2[0], arg1 - arg2[2]);
 }
 
 s32 func_800418E8(f32 arg0, f32 arg1, Vec3f arg2) {
-    return func_802B7830(arg0 - arg2[1], arg1 - arg2[2]);
+    return atan2s(arg0 - arg2[1], arg1 - arg2[2]);
 }
 
 #ifdef MIPS_TO_C

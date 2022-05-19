@@ -15,7 +15,7 @@ glabel func_8007C420
 /* 07D054 8007C454 C4A8001C */  lwc1  $f8, 0x1c($a1)
 /* 07D058 8007C458 AFA30018 */  sw    $v1, 0x18($sp)
 /* 07D05C 8007C45C 46062301 */  sub.s $f12, $f4, $f6
-/* 07D060 8007C460 0C0ADE0C */  jal   func_802B7830
+/* 07D060 8007C460 0C0ADE0C */  jal   atan2s
 /* 07D064 8007C464 460A4381 */   sub.s $f14, $f8, $f10
 /* 07D068 8007C468 8FA30018 */  lw    $v1, 0x18($sp)
 /* 07D06C 8007C46C 3045FFFF */  andi  $a1, $v0, 0xffff

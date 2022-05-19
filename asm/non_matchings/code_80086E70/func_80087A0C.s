@@ -52,7 +52,7 @@ glabel func_80087A0C
 /* 0886D4 80087AD4 03281821 */  addu  $v1, $t9, $t0
 /* 0886D8 80087AD8 A7B80036 */  sh    $t8, 0x36($sp)
 /* 0886DC 80087ADC E4700014 */  swc1  $f16, 0x14($v1)
-/* 0886E0 80087AE0 0C0ADE0C */  jal   func_802B7830
+/* 0886E0 80087AE0 0C0ADE0C */  jal   atan2s
 /* 0886E4 80087AE4 AFA30020 */   sw    $v1, 0x20($sp)
 /* 0886E8 80087AE8 8FA30020 */  lw    $v1, 0x20($sp)
 /* 0886EC 80087AEC 02002025 */  move  $a0, $s0

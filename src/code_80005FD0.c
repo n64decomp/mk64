@@ -10183,7 +10183,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80015314.s")
 ? func_8001D794(Player *, void *, f32 *, f32 *, f32 *, f32 *, s32); // extern
 ? func_800224F0(void *, s16, s16); // extern
 ? func_802ADDC8(void *, ?, f32, f32, f32); // extern
-s16 func_802B7830(f32, f32); // extern
+s16 atan2s(f32, f32); // extern
 
 void func_80015390(void *arg0, ? arg1, ? arg2) {
     f32 sp94;
@@ -10226,8 +10226,8 @@ void func_80015390(void *arg0, ? arg1, ? arg2) {
     sp94 = temp_f12;
     temp_f14 = arg0->unk14 - arg0->unk8;
     sp8C = temp_f14;
-    arg0->unk26 = func_802B7830(temp_f12, temp_f14);
-    arg0->unk24 = func_802B7830(sqrtf((sp94 * sp94) + (temp_f14 * temp_f14)), sp90);
+    arg0->unk26 = atan2s(temp_f12, temp_f14);
+    arg0->unk24 = atan2s(sqrtf((sp94 * sp94) + (temp_f14 * temp_f14)), sp90);
     arg0->unk28 = 0;
 }
 #else
@@ -10313,7 +10313,7 @@ s32 func_80007BF8(s32, s32, ?, ?, s32); // extern
 s16 func_8000D33C(f32, f32, u16, f32, s16, s32); // extern
 ? func_80014D30(s32, s32); // extern
 ? func_8001A348(s32, s32, s16); // extern
-s16 func_802B7830(f32, f32); // extern
+s16 atan2s(f32, f32); // extern
 extern f64 D_800ED220;
 extern f64 D_800ED228;
 extern ? D_80163068;
@@ -10408,8 +10408,8 @@ block_10:
     sp84 = temp_f12;
     temp_f14 = arg0->unk14 - arg0->unk8;
     sp7C = temp_f14;
-    arg0->unk26 = func_802B7830(temp_f12, temp_f14);
-    arg0->unk24 = func_802B7830(sqrtf((sp84 * sp84) + (temp_f14 * temp_f14)), sp80);
+    arg0->unk26 = atan2s(temp_f12, temp_f14);
+    arg0->unk24 = atan2s(sqrtf((sp84 * sp84) + (temp_f14 * temp_f14)), sp80);
     arg0->unk28 = 0;
 }
 #else
@@ -10486,7 +10486,7 @@ s32 func_80007BF8(s32, s32, ?, ?, s32); // extern
 s16 func_8000D33C(f32, f32, s16 *, f32, s16, s32); // extern
 ? func_80014D30(s32, s32); // extern
 ? func_8001A348(s32, s32, s16, s32 *, s32 *); // extern
-s16 func_802B7830(f32, f32); // extern
+s16 atan2s(f32, f32); // extern
 extern f64 D_800ED230;
 extern ? D_80162FA0;
 extern ? D_80163068;
@@ -10669,8 +10669,8 @@ block_8:
     spA8 = arg0->unk10 - arg0->unk4;
     temp_f14_2 = arg0->unk14 - arg0->unk8;
     spA4 = temp_f14_2;
-    arg0->unk26 = func_802B7830(temp_f20_2, temp_f14_2);
-    arg0->unk24 = func_802B7830(sqrtf((temp_f20_2 * temp_f20_2) + (temp_f14_2 * temp_f14_2)), spA8);
+    arg0->unk26 = atan2s(temp_f20_2, temp_f14_2);
+    arg0->unk24 = atan2s(sqrtf((temp_f20_2 * temp_f20_2) + (temp_f14_2 * temp_f14_2)), spA8);
     arg0->unk28 = 0;
 }
 #else
@@ -10745,7 +10745,7 @@ s16 func_8000D33C(f32, f32, s32, f32, s16, s32);    /* extern */
 ? func_80014D30(s32, s32);                          /* extern */
 ? func_8001A348(s32, f32, s16, ?, ?);               /* extern */
 f32 func_802AE1C0(f32, f32, f32, f32 *);            /* extern */
-s16 func_802B7830(f32, f32);                        /* extern */
+s16 atan2s(f32, f32);                        /* extern */
 f32 sqrtf(f32, f32, s32);                           /* extern */
 extern ? D_80162FA0;
 extern ? D_80163068;
@@ -10976,8 +10976,8 @@ void func_80016494(void *arg0, u16 *arg1, s8 arg2, s32 arg3) {
     spAC = temp_f12_2;
     temp_f14_2 = arg0->unk14 - arg0->unk8;
     spA4 = temp_f14_2;
-    arg0->unk26 = func_802B7830(temp_f12_2, temp_f14_2);
-    arg0->unk24 = func_802B7830(sqrtf((spAC * spAC) + (temp_f14_2 * temp_f14_2), temp_f14_2), spA8);
+    arg0->unk26 = atan2s(temp_f12_2, temp_f14_2);
+    arg0->unk24 = atan2s(sqrtf((spAC * spAC) + (temp_f14_2 * temp_f14_2), temp_f14_2), spA8);
     arg0->unk28 = 0;
 }
 #else
@@ -11095,7 +11095,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80016C3C.s")
 ? func_8000BBD8(u16, s32, s16, s16); // extern
 s16 func_8000D33C(f32, f32, s32 *, s32 *, s16, s32); // extern
 ? func_80014D30(s32, s32, f32 *); // extern
-s16 func_802B7830(f32, f32); // extern
+s16 atan2s(f32, f32); // extern
 extern f64 D_800ED270;
 extern f64 D_800ED278;
 extern ? D_80162FA0;
@@ -11263,8 +11263,8 @@ void func_80017054(void *arg0, ? arg1, ? arg2, s32 arg3) {
     spAC = temp_f12;
     temp_f14_2 = arg0->unk14 - (bitwise f32) arg0->unk8;
     spA4 = temp_f14_2;
-    arg0->unk26 = func_802B7830(temp_f12, temp_f14_2);
-    arg0->unk24 = func_802B7830(sqrtf((spAC * spAC) + (temp_f14_2 * temp_f14_2)), spA8);
+    arg0->unk26 = atan2s(temp_f12, temp_f14_2);
+    arg0->unk24 = atan2s(sqrtf((spAC * spAC) + (temp_f14_2 * temp_f14_2)), spA8);
     arg0->unk28 = 0;
 }
 #else
@@ -11341,7 +11341,7 @@ s32 func_80007BF8(s32, s32, ?, ?, s32);             /* extern */
 s16 func_8000D33C(f32, f32, f32 *, f32, s16, s32);  /* extern */
 ? func_80014D30(s32, s32, f32 *, f32 *);            /* extern */
 ? func_8001A348(s32, f32, s16);                     /* extern */
-s16 func_802B7830(f32, f32);                        /* extern */
+s16 atan2s(f32, f32);                        /* extern */
 f32 sqrtf(f32, f32, f32 *, f32 *);                  /* extern */
 extern ? D_80162FA0;
 extern ? D_80163068;
@@ -11517,8 +11517,8 @@ void func_800178F4(void *arg0, u16 *arg1, s8 arg2, s32 arg3) {
     sp94 = temp_f12;
     temp_f14_3 = arg0->unk14 - arg0->unk8;
     sp8C = temp_f14_3;
-    arg0->unk26 = func_802B7830(temp_f12, temp_f14_3);
-    arg0->unk24 = func_802B7830(sqrtf((sp94 * sp94) + (temp_f14_3 * temp_f14_3), temp_f14_3), sp90);
+    arg0->unk26 = atan2s(temp_f12, temp_f14_3);
+    arg0->unk24 = atan2s(sqrtf((sp94 * sp94) + (temp_f14_3 * temp_f14_3), temp_f14_3), sp90);
     arg0->unk28 = 0;
 }
 #else
@@ -11597,7 +11597,7 @@ s32 func_80007BF8(s32, s32, ?, ?, s32);             /* extern */
 s16 func_8000D33C(f32, f32, f32 *, f32, s16, s32);  /* extern */
 ? func_80014D30(s32, s32, f32 *, f32 *);            /* extern */
 ? func_8001A348(s32, f32, s16);                     /* extern */
-s16 func_802B7830(f32, f32);                        /* extern */
+s16 atan2s(f32, f32);                        /* extern */
 f32 sqrtf(f32, f32, f32 *, f32 *);                  /* extern */
 extern ? D_80162FA0;
 extern ? D_80163068;
@@ -11778,8 +11778,8 @@ void func_800180F0(void *arg0, u16 *arg1, s8 arg2, s32 arg3) {
     sp94 = temp_f12;
     temp_f14_3 = arg0->unk14 - arg0->unk8;
     sp8C = temp_f14_3;
-    arg0->unk26 = func_802B7830(temp_f12, temp_f14_3);
-    arg0->unk24 = func_802B7830(sqrtf((sp94 * sp94) + (temp_f14_3 * temp_f14_3), temp_f14_3), sp90);
+    arg0->unk26 = atan2s(temp_f12, temp_f14_3);
+    arg0->unk24 = atan2s(sqrtf((sp94 * sp94) + (temp_f14_3 * temp_f14_3), temp_f14_3), sp90);
     arg0->unk28 = 0;
 }
 #else
@@ -11857,7 +11857,7 @@ s32 func_80007BF8(s32, s32, ?, ?, s32); // extern
 s16 func_8000D33C(f32, f32, s16, f32, s32, s32); // extern
 ? func_80014D30(s32, s32); // extern
 ? func_8001A348(s32, f32, s16); // extern
-s16 func_802B7830(f32, f32); // extern
+s16 atan2s(f32, f32); // extern
 extern f64 D_800ED2A8;
 extern f64 D_800ED2B0;
 extern f64 D_800ED2B8;
@@ -12111,8 +12111,8 @@ void func_800188F4(void *arg0, ? arg1, ? arg2, s32 arg3) {
     spAC = temp_f12_2;
     temp_f14_2 = arg0->unk14 - arg0->unk8;
     spA4 = temp_f14_2;
-    arg0->unk26 = func_802B7830(temp_f12_2, temp_f14_2);
-    arg0->unk24 = func_802B7830(sqrtf((spAC * spAC) + (temp_f14_2 * temp_f14_2)), spA8);
+    arg0->unk26 = atan2s(temp_f12_2, temp_f14_2);
+    arg0->unk24 = atan2s(sqrtf((spAC * spAC) + (temp_f14_2 * temp_f14_2)), spA8);
     arg0->unk28 = 0;
 }
 #else
@@ -12199,7 +12199,7 @@ s32 func_80007BF8(s32, s32, ?, ?, s32); // extern
 s16 func_8000D33C(f32, f32, u16, f32, s16, s32); // extern
 ? func_80014D30(s32, s32); // extern
 ? func_8001A348(s32, s32, s16); // extern
-s16 func_802B7830(f32, f32); // extern
+s16 atan2s(f32, f32); // extern
 extern f64 D_800ED318;
 extern f64 D_800ED320;
 extern ? D_80163068;
@@ -12293,8 +12293,8 @@ block_8:
     sp8C = temp_f12;
     temp_f14 = arg0->unk14 - arg0->unk8;
     sp84 = temp_f14;
-    arg0->unk26 = func_802B7830(temp_f12, temp_f14);
-    arg0->unk24 = func_802B7830(sqrtf((sp8C * sp8C) + (temp_f14 * temp_f14)), sp88);
+    arg0->unk26 = atan2s(temp_f12, temp_f14);
+    arg0->unk24 = atan2s(sqrtf((sp8C * sp8C) + (temp_f14 * temp_f14)), sp88);
     arg0->unk28 = 0;
 }
 #else
@@ -12346,7 +12346,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8001969C.s")
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 ? func_80014D30(s32, ?); // extern
-s16 func_802B7830(f32, f32); // extern
+s16 atan2s(f32, f32); // extern
 extern ? D_801645F8;
 extern ? D_80164618;
 extern ? D_80164638;
@@ -12375,8 +12375,8 @@ void func_80019760(void *arg0, ? arg1, ? arg2, s32 arg3) {
     sp2C = temp_f12;
     temp_f14 = arg0->unk14 - arg0->unk8;
     sp24 = temp_f14;
-    arg0->unk26 = func_802B7830(temp_f12, temp_f14);
-    arg0->unk24 = func_802B7830(sqrtf((sp2C * sp2C) + (temp_f14 * temp_f14)), sp28);
+    arg0->unk26 = atan2s(temp_f12, temp_f14);
+    arg0->unk24 = atan2s(sqrtf((sp2C * sp2C) + (temp_f14 * temp_f14)), sp28);
     arg0->unk28 = 0;
 }
 #else

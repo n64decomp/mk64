@@ -516,7 +516,7 @@ void func_802976D8(Vec3s arg0) {
     arg0[2] = 0;
 }
 
-s16 func_802B7830(f32, f32); // extern
+s16 atan2s(f32, f32); // extern
 
 void func_802976EC(UnkActorInner *arg0, Vec3s arg1) {
     f32 x, y, z;
@@ -531,9 +531,9 @@ void func_802976EC(UnkActorInner *arg0, Vec3s arg1) {
     y = arg0->unk60[1];
     z = arg0->unk60[2];
 
-    arg1[0] = func_802B7830(z, y) + 0x4000;
+    arg1[0] = atan2s(z, y) + 0x4000;
     arg1[1] = 0;
-    arg1[2] = func_802B7830(x, y);
+    arg1[2] = atan2s(x, y);
 }
 
 f32 func_802ABE30(f32, f32, f32, u16); // extern
@@ -1258,7 +1258,6 @@ GLOBAL_ASM("asm/non_matchings/code_actors/func_802986B4.s")
 
 void func_800C9060(Player*, s32);                            /* extern */
 void func_800C90F4(Player*, s32);                          /* extern */
-void func_800C98B8(Vec3f, Vec3f, s32);                   /* extern */
 s32 func_8029EEB8(Player*, Vec3f, f32, f32, f32);          /* extern */
 extern s8 D_06013F78[];
 extern f32 D_802B964C; // 0.8f

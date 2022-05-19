@@ -315,8 +315,8 @@ glabel D_802BA010
 glabel D_802BA018
 .double 3.141592653589793
 
-glabel D_802BA020
-.double 3.141592653589793
+#glabel D_802BA020
+#.double 3.141592653589793
 
-glabel D_802BA028
-.double 65535.0
+#glabel D_802BA028
+#.double 65535.0

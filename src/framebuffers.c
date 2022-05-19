@@ -4,7 +4,7 @@
 
 u16 gRandomSeed16;
 
-u8 randomSeedPadding[222];
+u8 randomSeedPadding[216];
 
 u8 frameBufferPadding[22544];
 
