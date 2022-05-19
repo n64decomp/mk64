@@ -392,7 +392,7 @@ glabel L8029E10C
 /* 10771C 8029E10C 3C040601 */  lui   $a0, %hi(D_06013EC0) # $a0, 0x601
 /* 107720 8029E110 0C0A760C */  jal   place_all_item_boxes
 /* 107724 8029E114 24843EC0 */   addiu $a0, %lo(D_06013EC0) # addiu $a0, $a0, 0x3ec0
-/* 107728 8029E118 0C0A767E */  jal   func_8029D9F8
+/* 107728 8029E118 0C0A767E */  jal   init_kiwano_fruit
 /* 10772C 8029E11C 00000000 */   nop   
 /* 107730 8029E120 0C0A6344 */  jal   func_80298D10
 /* 107734 8029E124 00000000 */   nop   

@@ -1316,12 +1316,12 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
     sp4C += player->pos[0];
     sp50 += player->pos[1];
     sp54 += player->pos[2];
-    sp60 = player->unk_034;
-    sp64 = player->unk_038;
+    sp60 = player->unk_034[0];
+    sp64 = player->unk_034[1];
     sp58 = 0;
     sp5A = 0;
     sp5C = 0;
-    sp68 = player->unk_03C;
+    sp68 = player->unk_034[2];
     temp_v0 = func_8029EC88(temp_a0, temp_a1, temp_a2, 6);
     temp_t6 = temp_v0;
     if (temp_v0 >= 0) {

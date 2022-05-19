@@ -283,9 +283,7 @@ typedef struct {
     /* 0x002E */ s16 unk_02E;
     /* 0x0030 */ s16 unk_030;
     /* 0x0032 */ char unk_032[0x2];
-    /* 0x0034 */ f32 unk_034;
-    /* 0x0038 */ f32 unk_038;
-    /* 0x003C */ f32 unk_03C;
+    /* 0x0034 */ Vec3f unk_034;
     /* 0x0040 */ char unk_040[0x2];
     /* 0x0042 */ s16 unk_042;
     /* 0x0044 */ s16 unk_044;
