@@ -251,7 +251,7 @@ void func_80003040(void) {
 
     gPlayerCountSelection1 = 1;
     set_segment_base_addr(0x03, (gPrevLoadedAddress + 0xFFFF7000));
-    func_8029DAB8();
+    destroy_all_actors();
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             func_802A84F4(&D_0F04F45C, 0x35B, 0x800);
