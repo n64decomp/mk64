@@ -2,8 +2,8 @@
 #include <macros.h>
 #include <defines.h>
 #include <actor_types.h>
-
-void *vec3f_copy(Vec3f, Vec3f); // extern
+#include "math_util.h"
+#include "code_802B0210.h"
 
 void func_802B0210(UnkActorInner *arg0, UnkActorInner *arg1) {
     arg1->unk30 = arg0->unk30;
@@ -20,8 +20,6 @@ void func_802B0210(UnkActorInner *arg0, UnkActorInner *arg1) {
     vec3f_copy(arg1->unk54, arg0->unk54);
     vec3f_copy(arg1->unk60, arg0->unk60);
 }
-
-extern struct Actor gActorList[];
 
 void func_802B02B4(struct ShellActor *shell, s32 shellType) {
     struct TripleShellParent *parent = &gActorList[shell->parentIndex];
@@ -129,12 +127,6 @@ void func_802B04E8(s32 arg0, s16 arg1) {
 #else
 GLOBAL_ASM("asm/non_matchings/code_802B0210/func_802B04E8.s")
 #endif
-
-extern void func_800C9060(s32, s32);                            /* extern */
-extern void func_802B0464(s16);                               /* extern */
-extern void func_802B04E8(struct BananaActor *, s16);         /* extern */
-
-extern Player gPlayers[];
 
 void func_802B0570(struct BananaActor *banana) {
     struct BananaBunchParent *temp_v0_2;

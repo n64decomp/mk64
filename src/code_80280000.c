@@ -27,7 +27,6 @@ extern s32 D_802874A0;
 extern u16 atan2s(f32, f32);
 extern u16 D_80164714, D_80164716, D_80164718;
 extern u16 D_800DC5E4;
-extern u32 D_800DC524;
 extern u32 D_800DC50C;
 extern u32 D_802874FC;
 

@@ -15,49 +15,14 @@
 //#include "segment_symbols.h"
 //#include "segments.h"
 
-#define ALIGN4(val) (((val) + 0x3) & ~0x3)
-#define ALIGN16(val) (((val) + 0xF) & ~0xF)
-#define ALIGN32(val) (((val) + 0xF) & ~0xF)
 
-struct MainPoolState {
-    u32 freeSpace;
-    struct MainPoolBlock *listHeadL;
-    struct MainPoolBlock *listHeadR;
-    struct MainPoolState *prev;
-};
-
-struct MainPoolBlock {
-    struct MainPoolBlock *prev;
-    struct MainPoolBlock *next;
-};
-
-extern uintptr_t gSegmentTable[16];
-
-extern s32 D_801502A0;
 s32 D_802BA270;
 s32 D_802BA274;
 u32 sPoolFreeSpace;
 struct MainPoolBlock *sPoolListHeadL;
 struct MainPoolBlock *sPoolListHeadR;
 
-extern u32 gPrevLoadedAddress;
-extern s32 gPrevMainThreadTask;
-
-extern Gfx *gDisplayListHead;
-extern u32 D_8015F724;
-extern u32 gHeapEndPtr;
-
-extern struct D_80150158 gD_80150158[];
-
 struct MainPoolState *gMainPoolState = NULL;
-
-struct UnkStruct_802B8CD4 {
-    s16 unk0;
-    s16 unk2;
-    s32 unk4;
-    s32 unk8;
-    s32 fill; 
-};
 
 struct UnkStruct_802B8CD4 D_802B8CD4[] = {
     0
@@ -102,7 +67,6 @@ void func_802A7CF0(s32 start, s32 end) {
     gPrevLoadedAddress = start;
 }
 
-
 s32 func_802A7D1C(s32 arg0) {
     s32 addr;
 
@@ -118,9 +82,6 @@ UNUSED void func_802A7D54(s32 arg0, s32 arg1) {
     gD_80150158[arg0].unk0 = arg0;
     gD_80150158[arg0].unk8 = arg1;
 }
-
-void dma_copy(s32, s32, s32); // extern
-s32 func_802A7D1C(s32 arg0); // extern
 
 s32 func_802A7D70(s32 arg0, s32 arg1) {
     s32 temp_v0;
@@ -334,18 +295,17 @@ UNUSED u32 func_802A82AC(s32 arg0) {
     return phi_v1;
 }
 
-s32 func_802A82E4(s32 arg0, s32 arg1) {
-    s32 sp24;
-    s32 sp1C;
+s32 func_802A82E4(u8 *start, u8 *end) {
+    s32 dest;
+    u32 size;
 
-    sp1C = ALIGN16(arg1 - arg0);
-    sp24 = gPrevLoadedAddress;
-    dma_copy(sp24, arg0, sp1C);
-    gPrevLoadedAddress += sp1C;
-    return sp24;
+    size = ALIGN16(end - start);
+    dest = gPrevLoadedAddress;
+    dma_copy(dest, start, size);
+    gPrevLoadedAddress += size;
+    return dest;
 }
 
-extern u8 _other_texturesSegmentRomStart[];
 // unused mio0 decode func.
 UNUSED s32 func_802A8348(s32 arg0, s32 arg1, s32 arg2) {
     s32 offset;
@@ -2318,9 +2278,6 @@ f32 func_802ABE30(f32 arg0, f32 arg1, f32 arg2, u16 arg3) {
     }
     return ((tile->height * arg0) + (tile->rotation * arg2) + tile->height2) / -tile->gravity;
 }
-
-f32 func_802ABE30(f32, f32, f32, u16); // extern
-
 
 f32 func_802ABEAC(UnkActorInner *arg0, Vec3f arg1) {
     if (arg0->unk34 == 1) {
