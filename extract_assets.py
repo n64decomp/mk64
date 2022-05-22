@@ -66,7 +66,7 @@ def main():
     if not langs or not all(a in all_langs for a in langs):
         langs_str = " ".join("[" + lang + "]" for lang in all_langs)
         print("Usage: " + sys.argv[0] + " " + langs_str)
-        print("For each version, baserom.<version>.z64 must exist")
+        print("For each version, mk64.<version>.z64 must exist")
         sys.exit(1)
 
     asset_map = read_asset_map()
@@ -123,7 +123,7 @@ def main():
     # Load ROMs
     roms = {}
     for lang in langs:
-        fname = "baserom." + lang + ".z64"
+        fname = "mk64." + lang + ".z64"
         try:
             with open(fname, "rb") as f:
                 roms[lang] = f.read()
@@ -174,7 +174,7 @@ def main():
                         "-d",
                         "-o", str(rom_offset),
                         "-a", meta["alpha"],
-                        "baserom." + lang + ".z64",
+                        "mk64." + lang + ".z64",
                         "-",
                     ],
                     check=True,
@@ -235,7 +235,7 @@ def main():
                             if pal_source == 0: # 0 is ROM
                                 pal_input = roms[lang][pal_offset : pal_offset + pal_size]
                             else: # assume MIO0 block
-                                pal_blk = subprocess.run(["./tools/mio0", "-d", "-o", str(pal_source), "baserom." + lang + ".z64", "-"],
+                                pal_blk = subprocess.run(["./tools/mio0", "-d", "-o", str(pal_source), "mk64." + lang + ".z64", "-"],
                                                         check=True, stdout=subprocess.PIPE).stdout
                                 pal_input = pal_blk[pal_offset : pal_offset + pal_size]
                         else: # pull directly from same block as CI data
