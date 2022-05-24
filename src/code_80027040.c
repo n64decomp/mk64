@@ -21,7 +21,7 @@ u16 D_800DDEB0[] = { // sizes
 */
 extern s32 gActiveScreenMode;
 
-extern uintptr_t **gKartTextureGroup18s;
+extern uintptr_t *gKartTextureGroup18s[];
 
 extern uintptr_t *gKartMarioGroup8[];
 extern uintptr_t *gKartMarioGroup7[];
@@ -290,80 +290,75 @@ uintptr_t ***gKartTextureTable1[] = {
     gKartBowserTable1,
 };
 
-// some larger diffs that need resolving
-#ifdef MIPS_TO_C
 void func_80027040(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
 
     //s32 tmp = player->unk_0BC; 
-    void *buf; // = &D_802DFB80[arg4][arg3][arg1 * 0x920];
-    u16 id;
-    if (((((((player->unk_0BC & 0x80) == 0x80) || ((player->unk_0BC & 0x40) == 0x40)) || ((player->unk_0BC & 0x80000) == 0x80000)) || ((player->unk_0BC & 0x800000) == 0x800000)) || ((player->unk_0BC & 0x20000) == 0x20000)) || ((player->unk_044 & 0x800) != 0))
+    //void *buf; // = &D_802DFB80[arg4][arg3][arg1 * 0x920];
+    s32 temp;
+    if (((((((player->unk_0BC & 0x80) == 0x80) || ((player->unk_0BC & 0x40) == 0x40)) || ((player->unk_0BC & 0x80000) == 0x80000)) || 
+    ((player->unk_0BC & 0x800000) == 0x800000)) || ((player->unk_0BC & 0x20000) == 0x20000)) || ((player->unk_044 & 0x800) != 0))
     {
         // temp_v1 = player + (arg2 * 2);
         if (player->unk_244[arg2] != 0) {
             //buf = &D_802DFB80[arg2][arg1 * 0x920];
-            buf = &D_802DFB80[arg4][arg3][arg1 * 0x920];
-            osInvalDCache(buf, D_800DDEB0[player->characterId]);
-            id = player->characterId;
-            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable1[id][player->unk_24C[arg2]][player->unk_244[arg2]])], buf, D_800DDEB0[player->unk_0BC], &gDmaMesgQueue);
-            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
+            //buf = &D_802DFB80[arg4][arg3][arg1 * 0x920];
+            // temp_s0 = &D_802DFB80[0][0][(arg4 * 0x9200) + (arg3 * 0x4900) + (arg1 * 0x920)];
+            //temp = 0x30;
+            //if (temp);
+            osInvalDCache(&D_802DFB80[arg4][arg3][arg1 * 0x920], D_800DDEB0[player->characterId]);
+            //temp = player->characterId;
+            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable1[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], &D_802DFB80[arg4][arg3][arg1 * 0x920], D_800DDEB0[player->characterId], &gDmaMesgQueue);
+            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         } else {
-            buf = &D_802DFB80[arg4][arg3][arg1 * 0x920];
-            osInvalDCache(&D_802DFB80[arg4][arg3], D_800DDEB0[player->characterId]);
-            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], buf, D_800DDEB0[player->unk_0BC], &gDmaMesgQueue);
-            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
+            //buf = &D_802DFB80[arg4][arg3][arg1 * 0x920];
+            osInvalDCache(&D_802DFB80[arg4][arg3][arg1 * 0x920], D_800DDEB0[player->characterId]);
+            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])],  &D_802DFB80[arg4][arg3][arg1 * 0x920], D_800DDEB0[player->characterId], &gDmaMesgQueue);
+            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         }
     } else if (((((player->unk_0BC & 0x400) == 0x400) || ((player->unk_0BC & 0x1000000) == 0x1000000)) || ((player->unk_0BC & 0x2000000) == 0x2000000)) || ((player->unk_0BC & 0x10000) == 0x10000))
     {
-        buf = &D_802DFB80[arg4][arg3][arg1 * 0x920];
-        osInvalDCache(buf, 0x780);
-        osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureGroup18s[player->characterId][player->unk_0A8 >> 8])], buf, 0x900, &gDmaMesgQueue);
-        osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
+        //temp = player->unk_0A8 >> 8;
+        //buf = &D_802DFB80[arg4][arg3][arg1 * 0x920];
+        osInvalDCache(&D_802DFB80[arg4][arg3][arg1 * 0x920], 0x780U);
+        osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureGroup18s[player->characterId][player->unk_0A8 >> 8])], &D_802DFB80[arg4][arg3][arg1 * 0x920], 0x900U, &gDmaMesgQueue);
+        osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     } else {
-        buf = &D_802DFB80[arg4][arg3][arg1 * 0x920];
-        osInvalDCache(buf, D_800DDEB0[player->characterId]);
-        osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], buf, D_800DDEB0[player->unk_0BC], &gDmaMesgQueue);
-        osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
+        //buf = &D_802DFB80[arg4][arg3][arg1 * 0x920];
+        osInvalDCache(&D_802DFB80[arg4][arg3][arg1 * 0x920], D_800DDEB0[player->characterId]);
+        osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], &D_802DFB80[arg4][arg3][arg1 * 0x920], D_800DDEB0[player->characterId], &gDmaMesgQueue);
+        osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027040/func_80027040.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3ec45aadfc2cb619035fb802d88c52eacfab0326
 void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
     //s32 temp_v0;
-    void *temp_s0;
+    s32 temp = player->unk_0BC;
 
     //temp_v0 = player->unk_0BC;
-    if (((player->unk_0BC & 0x80) == 0x80) || ((player->unk_0BC & 0x40) == 0x40) || ((player->unk_0BC & 0x80000) == 0x80000) || ((player->unk_0BC & 0x800000) == 0x800000) || ((player->unk_0BC & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0))
+    if (((temp & 0x80) == 0x80) || ((temp & 0x40) == 0x40) || ((temp & 0x80000) == 0x80000) || ((temp & 0x800000) == 0x800000) || ((temp & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0))
     {
         //temp_v1_2 = player + (arg2 * 2);
         if (player->unk_244[arg2] != 0) {
-            temp_s0 = D_802DFB80[arg4][arg3][arg1 * 0x920];
-            osInvalDCache(D_802DFB80[arg4][arg3], D_800DDEB0[player->characterId]);
-            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], temp_s0, D_800DDEB0[player->characterId], &gDmaMesgQueue);
+            //temp_s0 = D_802DFB80[arg4][arg3][arg1 * 0x920];
+            osInvalDCache(&D_802DFB80[arg4][arg3][arg1 * 0x920], D_800DDEB0[player->characterId]);
+            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable1[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], &D_802DFB80[arg4][arg3][arg1 * 0x920], D_800DDEB0[player->characterId], &gDmaMesgQueue);
         } else {
-            temp_s0 = D_802DFB80[arg4][arg3][arg1 * 0x920];
-            osInvalDCache(temp_s0, D_800DDEB0[player->characterId]);
-            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable1[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], temp_s0, D_800DDEB0[player->characterId], &gDmaMesgQueue);
+            //temp_s0 = D_802DFB80[arg4][arg3][arg1 * 0x920];
+            osInvalDCache(&D_802DFB80[arg4][arg3][arg1 * 0x920], D_800DDEB0[player->characterId]);
+            osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], &D_802DFB80[arg4][arg3][arg1 * 0x920], D_800DDEB0[player->characterId], &gDmaMesgQueue);
         }
-    } else if (((player->unk_0BC & 0x400) == 0x400) || ((player->unk_0BC & 0x01000000) == 0x01000000) || ((player->unk_0BC & 0x02000000) == 0x02000000) || ((player->unk_0BC & 0x10000) == 0x10000))
+    } else if (((temp & 0x400) == 0x400) || ((temp & 0x01000000) == 0x01000000) || ((temp & 0x02000000) == 0x02000000) || ((temp & 0x10000) == 0x10000))
     {
-        temp_s0 = D_802DFB80[arg4][arg3][arg1 * 0x920];
-        osInvalDCache(temp_s0, 0x780);
-        osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureGroup18s[player->characterId][player->unk_0A8 >> 8])], temp_s0, 0x900, &gDmaMesgQueue);
+        // temp_s0 = D_802DFB80[arg4][arg3][arg1 * 0x920];
+        osInvalDCache(&D_802DFB80[arg4][arg3][arg1 * 0x920], 0x780);
+        osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureGroup18s[player->characterId][player->unk_0A8 >> 8])], &D_802DFB80[arg4][arg3][arg1 * 0x920], 0x900, &gDmaMesgQueue);
     } else {
-        temp_s0 = D_802DFB80[arg4][arg3][arg1 * 0x920];
-        osInvalDCache(temp_s0, D_800DDEB0[player->characterId]);
+        //temp_s0 = D_802DFB80[arg4][arg3][arg1 * 0x920];
+        osInvalDCache(&D_802DFB80[arg4][arg3][arg1 * 0x920], D_800DDEB0[player->characterId]);
         //temp_v1 = player + (arg2 * 2);
-        osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], temp_s0, D_800DDEB0[player->characterId], &gDmaMesgQueue);
+        osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], &D_802DFB80[arg4][arg3][arg1 * 0x920], D_800DDEB0[player->characterId], &gDmaMesgQueue);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027040/func_80027560.s")
-#endif
 
 void func_80027A20(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     // @bug: Undefined Behaviour UB
@@ -379,12 +374,12 @@ void func_80027A20(Player *player, s8 arg1, s8 arg2, s8 arg3) {
         case 2:
             osInvalDCache(temp_s0, 0x200);
             osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartPalettes[player->characterId])], temp_s0, 0x200, &gDmaMesgQueue);
-            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
+            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
             break;
         case 3:
             osInvalDCache(temp_s0, 0x200);
             osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartPalettes[player->characterId])], temp_s0, 0x200, &gDmaMesgQueue);
-            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
+            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
             break;
     }
 }
@@ -392,7 +387,7 @@ void func_80027A20(Player *player, s8 arg1, s8 arg2, s8 arg3) {
 void func_80027BDC(UNUSED Player *player, s32 arg1, void *vAddr, u16 size) {
     osInvalDCache(vAddr, size);
     osPiStartDma(&gDmaIoMesg, 0, 0, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(arg1)], vAddr, size, &gDmaMesgQueue);
-    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
+    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 }
 
 void func_80027C74(UNUSED Player *player, s32 arg1, void *vAddr, u16 size) {

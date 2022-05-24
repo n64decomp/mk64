@@ -846,7 +846,7 @@ extern ? D_800DDBD4;
 extern f64 D_800ED788;
 extern f64 D_800ED790;
 
-void func_8002934C(Player *player, s32 arg1, s8 arg2, s8 arg3) {
+void func_8002934C(Player *player, struct Camera *arg1, s8 arg2, s8 arg3) {
     f32 sp50;
     f32 sp28;
     void *sp24;
@@ -2947,7 +2947,7 @@ extern f32 D_800ED838;
 extern f64 D_800ED840;
 extern ? gKartTopSpeedTable;
 
-void func_8002D268(Player *player, s32 arg1, s8 arg2, s8 arg3) {
+void func_8002D268(Player *player, Camera *arg1, s8 arg2, s8 arg3) {
     f32 sp18C;
     f32 sp184;
     f32 sp180;
