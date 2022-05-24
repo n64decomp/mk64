@@ -29,6 +29,7 @@ void update_obj_train_car2(struct TrainCar*);
 void update_obj_piranha_plant(struct PiranhaPlant*);
 void func_80298328(Camera*, Mat4, struct PiranhaPlant*);
 void func_802986B4(Camera*, Mat4, struct Actor*);
+void func_80298AC0(Player*);
 void func_80298D7C(Camera*, Mat4, struct Actor*);
 void func_80299144(Camera*, Mat4, struct Actor*);
 void func_8029930C(Camera*, Mat4, struct Actor*);
@@ -73,6 +74,7 @@ void destroy_actor(struct Actor*);
 s16  func_8029E890(f32 *, s16 *, f32 *, s16);
 s16  func_8029EC88(Vec3f, Vec3s, Vec3f, s16);
 s32  func_8029EEB8(Player*, Vec3f, f32, f32, f32);
+s32  func_8029F408(Player*, struct YoshiValleyEgg*);
 s32  func_8029FB80(Player*, struct Actor*);
 s32  func_8029FCA4(struct Actor*, struct Actor*);
 void func_8029FDC8(struct Actor*);
@@ -100,7 +102,7 @@ void update_simple_objects();
 // audio/external.c
 extern void func_800C98B8(Vec3f, Vec3f, u32);
 extern void func_800C9060(Player*, s32);
-extern void func_800C90F4(Player*, s32);
+extern void func_800C90F4(u8, uintptr_t);
 extern void func_800C99E0(Vec3f, s32);
 extern void func_800C9D80(Vec3f*, Vec3f*, u32);
 
@@ -266,6 +268,7 @@ extern s32 D_8015F8E0;
 extern s32 D_801625EC;
 extern s32 D_801625F0;
 extern s32 D_801625F4;
+extern s32 D_80162DF8;
 extern s32 D_802BA058;
 
 extern s8 D_06006990[];
