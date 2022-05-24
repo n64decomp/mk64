@@ -1048,12 +1048,12 @@ void func_8003CD78(void) {
     func_8003BE30();
 }
 
-void func_8003CD98(Player *player, s32 arg1, s8 arg2, s8 arg3) {
+void func_8003CD98(Player *player, struct Camera *camera, s8 arg2, s8 arg3) {
     if (player->unk_000 & PLAYER_EXISTS) {
         if (arg3 == 0) {
-            func_8002D268(player, arg1, arg3, arg2);
+            func_8002D268(player, camera, arg3, arg2);
         }
-        func_8002934C(player, arg1, arg3, arg2);
+        func_8002934C(player, camera, arg3, arg2);
         if ((arg3 == 0) || (arg3 == 1)) {
             s32 idx;
 
