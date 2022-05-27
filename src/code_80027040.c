@@ -290,6 +290,7 @@ uintptr_t ***gKartTextureTable1[] = {
     gKartBowserTable1,
 };
 
+
 /**
  * @brief Dma's mio0 compressed character textures and places them in a buffer.
  * Later, this data becomes decompressed.
