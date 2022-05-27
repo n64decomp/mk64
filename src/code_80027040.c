@@ -290,6 +290,18 @@ uintptr_t ***gKartTextureTable1[] = {
     gKartBowserTable1,
 };
 
+/**
+ * @brief Dma's mio0 compressed character textures and places them in a buffer.
+ * Later, this data becomes decompressed.
+ * 
+ * The player struct tracks the texture indices to load.
+ * 
+ * @param player
+ * @param arg1 Appears to be character index; 0-7.
+ * @param arg2 Rom buffer index appears to always be 0-3. Sometimes subtracted by 2.
+ * @param arg3 Second buffer index appears to always be 0-3.
+ * @param arg4 First buffer index always zero.
+ **/
 void func_80027040(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
 
     //s32 tmp = player->unk_0BC; 
