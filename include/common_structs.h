@@ -474,7 +474,15 @@ typedef struct {
 typedef struct
 {
     /* 0x00 */ f32 unk_000;
-    /* 0x04 */ s8  unk_004[0x24];
+    /* 0x04 */ f32  unk_004;
+    /* 0x28 */ f32 unk_008;
+    /* 0x28 */ f32 unk_00C;
+    /* 0x28 */ f32 unk_010;
+    /* 0x28 */ f32 unk_014;
+    /* 0x28 */ f32 unk_018;
+    /* 0x28 */ f32 unk_01C;
+    /* 0x28 */ f32 unk_020;
+    /* 0x28 */ f32 unk_024;
     /* 0x28 */ f32 unk_028;
     /* 0x2C */ f32 unk_02C;
     /* 0x30 */ f32 unk_030;
