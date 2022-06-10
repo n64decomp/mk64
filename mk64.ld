@@ -310,11 +310,14 @@ SECTIONS
       BUILD_DIR/src/memory.o(.data);
       BUILD_DIR/data/data_121DA0_1.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);
+      BUILD_DIR/src/code_802B0210.o(.data);
       BUILD_DIR/data/data_121DA0_2.o(.data);
       BUILD_DIR/src/code_8028DF00.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_1.o(.data);
       BUILD_DIR/src/code_80296A50.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_2.o(.data);
+      BUILD_DIR/src/code_802B0210.o(.rodata);
+      BUILD_DIR/data/data_121DA0_2_3.o(.data);
       BUILD_DIR/src/math_util.o(.rodata);
    }
    END_SEG(code_8028DF00)

@@ -8,9 +8,10 @@ extern void func_800C8F44(u16 arg0);
 extern u16 D_800DC5A8;
 
 struct UnkStruct80164490 {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
+    s16 wayPointX;
+    s16 wayPointY;
+    s16 wayPointZ;
+    s16 wayPointSegment;
 };
 
 extern struct UnkStruct80164490 *D_80164490;
@@ -162,18 +163,18 @@ void func_80002A18(void) {
     func_8029E158();
 
     if (gModeSelection != BATTLE) {
-        D_8015F8D0.unk4 = (f32) (D_80164490->unk2 - 15);;
-        D_8015F8D0.unk8 = D_80164490->unk4;
+        D_8015F8D0.unk4 = (f32) (D_80164490->wayPointY - 15);;
+        D_8015F8D0.unk8 = D_80164490->wayPointZ;
         if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
             D_8015F8D0.unk0 = (gIsMirrorMode != 0) ?
-                              D_80164490->unk0 + 138.0f :
-                              D_80164490->unk0 - 138.0f;
+                              D_80164490->wayPointX + 138.0f :
+                              D_80164490->wayPointX - 138.0f;
         } else if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
             D_8015F8D0.unk0 = (gIsMirrorMode != 0) ?
-                              D_80164490->unk0 + 12.0f :
-                              D_80164490->unk0 - 12.0f;
+                              D_80164490->wayPointX + 12.0f :
+                              D_80164490->wayPointX - 12.0f;
         } else {
-            D_8015F8D0.unk0 = D_80164490->unk0;
+            D_8015F8D0.unk0 = D_80164490->wayPointX;
         }
     }
     if (D_800DC51C == 0) {
