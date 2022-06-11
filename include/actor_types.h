@@ -245,7 +245,10 @@ struct ShellActor {
     /* 0x08 */ f32 shellId; // 0, 1, or 2. Indicates which shell in the triplet this one is
     /* 0x0C */ f32 boundingBoxSize;
     /* 0x10 */ s16 rotVelocity; // Change in rotAngle on a per-update basis
-    /* 0x12 */ s16 rotAngle; // Angle of rotation around player (or parent?), not the rotation of the shell itself
+    union {
+        /* 0x12 */ s16 rotAngle; // Angle of rotation around player (or parent?), not the rotation of the shell itself
+        /* 0x12 */ u16 pathIndex; // Index in the set of points that make up the "path" the red/blue shell follows (may be GP mode exclusive)
+    };
     /* 0x14 */ s16 playerId; // Id of the player that "owns" the shell
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
