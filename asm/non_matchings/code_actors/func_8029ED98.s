@@ -1,29 +1,4 @@
-glabel func_8029ED38
-/* 108348 8029ED38 44800000 */  mtc1  $zero, $f0
-/* 10834C 8029ED3C 27BDFFD0 */  addiu $sp, $sp, -0x30
-/* 108350 8029ED40 AFA50034 */  sw    $a1, 0x34($sp)
-/* 108354 8029ED44 AFBF0014 */  sw    $ra, 0x14($sp)
-/* 108358 8029ED48 AFA40030 */  sw    $a0, 0x30($sp)
-/* 10835C 8029ED4C 44050000 */  mfc1  $a1, $f0
-/* 108360 8029ED50 44060000 */  mfc1  $a2, $f0
-/* 108364 8029ED54 44070000 */  mfc1  $a3, $f0
-/* 108368 8029ED58 0C0AD4A7 */  jal   vec3f_set
-/* 10836C 8029ED5C 27A40024 */   addiu $a0, $sp, 0x24
-/* 108370 8029ED60 27A4001C */  addiu $a0, $sp, 0x1c
-/* 108374 8029ED64 00002825 */  move  $a1, $zero
-/* 108378 8029ED68 00003025 */  move  $a2, $zero
-/* 10837C 8029ED6C 0C0AD4AF */  jal   vec3s_set
-/* 108380 8029ED70 00003825 */   move  $a3, $zero
-/* 108384 8029ED74 8FA40030 */  lw    $a0, 0x30($sp)
-/* 108388 8029ED78 27A5001C */  addiu $a1, $sp, 0x1c
-/* 10838C 8029ED7C 27A60024 */  addiu $a2, $sp, 0x24
-/* 108390 8029ED80 0C0A7B22 */  jal   func_8029EC88
-/* 108394 8029ED84 87A70036 */   lh    $a3, 0x36($sp)
-/* 108398 8029ED88 8FBF0014 */  lw    $ra, 0x14($sp)
-/* 10839C 8029ED8C 27BD0030 */  addiu $sp, $sp, 0x30
-/* 1083A0 8029ED90 03E00008 */  jr    $ra
-/* 1083A4 8029ED94 00000000 */   nop   
-
+glabel func_8029ED98
 /* 1083A8 8029ED98 27BDFF90 */  addiu $sp, $sp, -0x70
 /* 1083AC 8029ED9C 00057602 */  srl   $t6, $a1, 0x18
 /* 1083B0 8029EDA0 000E7880 */  sll   $t7, $t6, 2
