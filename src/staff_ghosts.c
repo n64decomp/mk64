@@ -247,7 +247,11 @@ s32 func_8000546C(void) {
 
     if (D_80162DB0 >= 0x1000) {
         gPlayerOne->unk_000 = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_CPU;
+#ifdef AVOID_UB
+        return 0;
+#else
         return;
+#endif
     }
 
     temp_a0 = D_80162DB4[D_80162DB0];

@@ -20,6 +20,10 @@ ifeq ($(VERSION),us)
   TARGET := mk64.us
 endif
 
+### Utility Functions ###
+# Returns the path to the command $(1) if exists. Otherwise returns an empty string.
+find-command = $(shell which $(1) 2>/dev/null)
+
 ################ Target Executable and Sources ###############
 
 # BUILD_DIR is location where all build artifacts are placed
@@ -110,28 +114,35 @@ TOOLS_DIR := tools
 
 ifeq ($(USE_QEMU_IRIX),1)
   # Verify that qemu-irix exists
-  QEMU_IRIX := $(shell which qemu-irix)
-  ifeq (, $(QEMU_IRIX))
+  QEMU_IRIX := $(call find-command,qemu-irix)
+  ifeq (,$(QEMU_IRIX))
     $(error Using the IDO compiler requires qemu-irix. Please install qemu-irix package or set the QEMU_IRIX environment variable to the full qemu-irix binary path)
   endif
 endif
 
 ifeq ($(USE_QEMU_IRIX),1)
     IRIX_ROOT := $(TOOLS_DIR)/ido5.3_compiler
-      CC      := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/bin/cc
+    CC        := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/bin/cc
 else
     IDO_ROOT := tools/ido5.3_recomp
-     CC      := $(IDO_ROOT)/cc
+    CC       := $(IDO_ROOT)/cc
 endif
 
 AS      := $(CROSS)as
-
-CPP     := cpp -P -Wno-trigraphs
 LD      := $(CROSS)ld
 AR      := $(CROSS)ar
 OBJDUMP := $(CROSS)objdump
 OBJCOPY := $(CROSS)objcopy
 PYTHON    := python3
+
+# Prefer clang as C preprocessor if installed on the system
+ifneq (,$(call find-command,clang))
+  CPP      := clang
+  CPPFLAGS := -E -P -x c -Wno-trigraphs
+else
+  CPP      := cpp
+  CPPFLAGS := -P -Wno-trigraphs
+endif
 
 MIPSISET := -mips2 -32
 OPT_FLAGS := -O2
@@ -466,7 +477,7 @@ $(GLOBAL_ASM_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(A
 $(GLOBAL_ASM_AUDIO_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
 $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT) #repeat for other files
-	$(CPP) $(VERSION_CFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
+	$(CPP) $(CPPFLAGS) $(VERSION_CFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 
 #################### Libultra                      #####################
