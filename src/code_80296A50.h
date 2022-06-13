@@ -108,7 +108,7 @@ extern void func_800C98B8(Vec3f, Vec3f, u32);
 extern void func_800C9060(u8, s32);
 extern void func_800C90F4(u8, uintptr_t);
 extern void func_800C99E0(Vec3f, s32);
-extern void func_800C9D80(Vec3f*, Vec3f*, u32);
+extern void func_800C9D80(Vec3f, Vec3f, u32);
 
 extern struct Actor gActorList[];
 extern Player gPlayers[];
