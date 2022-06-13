@@ -237,7 +237,7 @@ void func_80005310(void) {
     }
 }
 
-s32 func_8000546C(void) {
+void func_8000546C(void) {
     u32 temp_a0;
     u32 temp_a1;
     UNUSED u16 unk;
@@ -247,11 +247,7 @@ s32 func_8000546C(void) {
 
     if (D_80162DB0 >= 0x1000) {
         gPlayerOne->unk_000 = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_CPU;
-#ifdef AVOID_UB
-        return 0;
-#else
         return;
-#endif
     }
 
     temp_a0 = D_80162DB4[D_80162DB0];
