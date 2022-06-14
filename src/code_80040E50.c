@@ -671,16 +671,16 @@ UNUSED void func_8004214C(u16 arg1, f32 arg2) {
 }
 
 UNUSED void func_800421FC(s32 arg0, s32 arg1, f32 arg2) {
-    Mat4 sp30;
+    Mat4 matrix;
 
-    func_80041A78(sp30, arg0, arg1);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], sp30);
+    func_80041A78(matrix, arg0, arg1);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     D_8018D120++;
 
-    func_80041B68(sp30, arg2);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], sp30);
+    func_80041B68(matrix, arg2);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     D_8018D120++;
 }
