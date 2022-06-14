@@ -37,5 +37,3 @@ glabel func_802B4F60
 /* 11E5F8 802B4FE8 03E00008 */  jr    $ra
 /* 11E5FC 802B4FEC 27BD0070 */   addiu $sp, $sp, 0x70
 
-/* 11E600 802B4FF0 03E00008 */  jr    $ra
-/* 11E604 802B4FF4 00000000 */   nop   

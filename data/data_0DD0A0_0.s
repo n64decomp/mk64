@@ -50,7 +50,7 @@ glabel D_800DC668
 glabel D_800DC66C
 .hword 0x0000, 0x0000
 
-#glabel D_800DC670
+#glabel sCounter
 #.word 0x00000000
 
 #glabel crashScreenFont

@@ -2161,17 +2161,11 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B29D8.s")
 #endif
 
 s32 func_800B34E8(s32 arg0) {
-    if (arg0 == gCharacterGridSelections[0]) {
-        return 0;
-    }
-    if (arg0 == D_8018EDE5) {
-        return 0;
-    }
-    if (arg0 == D_8018EDE6) {
-        return 0;
-    }
-    if (arg0 == D_8018EDE7) {
-        return 0;
+    s32 i;
+    for (i =0; i < 4; i++) {
+        if (arg0 == gCharacterGridSelections[i]) {
+            return 0;
+        }
     }
     return 1;
 }
