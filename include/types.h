@@ -5,7 +5,7 @@
 #include <common_structs.h>
 
 typedef f32 Mat4[4][4];
-
+typedef f32 Mat3[3][3];
 
 enum SpTaskState {
     SPTASK_STATE_NOT_STARTED,
