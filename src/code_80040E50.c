@@ -458,11 +458,6 @@ s32 func_80041980(Vec3f arg0, Camera *arg1, u16 arg2) {
     return ret;
 }
 
-extern Vec3s D_80165834;
-extern s8 D_80165840[];
-
-void func_80042D14(Vec3f, Vec3f, Vec3s);
-
 void func_800419F8(void) {
     Vec3f sp18;
     Vec3f sp24;
@@ -476,7 +471,7 @@ void func_800419F8(void) {
     D_80165840[2] = sp24[2];
 }
 
-UNUSED func_80041A70() {
+UNUSED func_80041A70(void) {
 
 }
 
@@ -592,8 +587,6 @@ void func_80041C64(Mat4 arg0, s32 arg1, s32 arg2, u16 arg3, f32 arg4) {
   arg0[1][3] = 0.0f;
   arg0[2][3] = 0.0f;
 }
-
-extern s8 D_801658FE;
 
 // Likely D_801658**[index] = 1; * denotes wildcard
 void func_80041D24(void) {
@@ -803,8 +796,8 @@ extern struct_80165C18_entry D_80165C18[];
  * @brief Tried to put the definitions in the declares. However, sp3C wants to be at the top.
  * Something may be possible with some padding. Couldn't find a way though. So we get big mess.
  * 
- * @param arg0 
- * @param arg1 
+ * @param arg0
+ * @param arg1
  **/
 
 void func_800427DC(s32 arg0, Mat4 arg1) {
