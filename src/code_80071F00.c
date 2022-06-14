@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <defines.h>
 #include <functions.h>
+#include "code_80040E50.h"
 #include "code_80071F00.h"
 
 s32 find_unused_obj_index(s32* arg0) {
@@ -2280,7 +2281,7 @@ void func_8007601C(s32 arg0) {
     if (D_80165C18[arg0].unk_048 > 0) {
         --D_80165C18[arg0].unk_048;
         if (D_80165C18[arg0].unk_048 == 0) {
-            func_800C9EF4(&D_80165C18[arg0].unk_004, 0x5102800A);
+            func_800C9EF4(D_80165C18[arg0].unk_004, 0x5102800A);
         }
     }
 
@@ -2288,8 +2289,8 @@ void func_8007601C(s32 arg0) {
         func_8008A6DC(arg0, 300.0f);
         if ((func_8007223C(arg0, 0x40000) != 0) && (func_80072354(arg0, 1) != 0)) {
             func_800722A4(arg0, 1);
-            func_80075F98(&D_80165C18[arg0].unk_004, (u16) D_80165C18[arg0].unk_0C0, 1.0f);
-            func_800C9D80(&D_80165C18[arg0].unk_004, &D_80165C18[arg0].unk_038, 0x5102800A);
+            func_80075F98(D_80165C18[arg0].unk_004, (u16) D_80165C18[arg0].unk_0C0, 1.0f);
+            func_800C9D80(D_80165C18[arg0].unk_004, &D_80165C18[arg0].unk_038, 0x5102800A);
             if (D_80165C18[arg0].unk_0A4 > 0) {
                 --D_80165C18[arg0].unk_0A4;
                 D_80165C18[arg0].unk_04C = 0x5A;

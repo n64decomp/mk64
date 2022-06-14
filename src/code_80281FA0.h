@@ -5,20 +5,25 @@
 
 /* Function Prototypes */
 
-void func_80281FA0(Vec3f, f32, f32, f32);
-void func_80281FC0(Vec3s, s16, s16, s16);
+void vec3f_set_dupe(Vec3f, f32, f32, f32);
+void vec3s_set_dupe(Vec3s, s16, s16, s16);
 void func_80281FDC(Vec3f);
 void func_80281FF4(Vec3s);
-void func_80282008(Vec3f, Vec3f);
-void func_80282024(Vec3s, Vec3s);
+void vec3f_copy_dupe(Vec3f, Vec3f);
+void vec3s_copy_dupe(Vec3s, Vec3s);
 void func_80282040();
 void func_80282048();
+void func_80282050(Vec3f, Vec3f, s16);
+void func_802820F8(Vec3f, Vec3f, s16);
 s32  func_802821A0(f32*, f32, f32);
 s32  func_80282200(s16*, s16, s16);
 s32  func_802822AC(f32*, f32, f32);
 s32  func_80282364(s16*, s16, s16);
 void func_8028240C();
 void func_80282434(s32);
+void func_80282454(Vec3f, Vec3f, f32*, s16*, s16*);
+void func_80282504(Vec3f, Vec3f, f32, s16, s16);
+void func_802825C8(Vec3f, Vec3f, Vec3f, Vec3s);
 s32  func_80282D90(s32, s32, s32, s32);
 void func_80282E58(s32, s32, s32);
 void func_80282F00(s16*, s16);

@@ -137,6 +137,7 @@ void func_8009C918();
 void func_8009E1C0();
 void func_8009E208();
 void func_8009E258();
+void func_8009E5BC();
 void func_8009E620();
 void add_8018D9E0_entry(s32, s32, s32, s8);
 void func_800A0AD0(struct_8018D9E0_entry*);

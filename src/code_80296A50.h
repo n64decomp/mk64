@@ -51,6 +51,7 @@ void func_8029A8F4(Camera*, Mat4, struct BananaActor*);
 void update_obj_wario_stadium_sign(struct Actor*);
 void update_obj_railroad_crossing(struct RailroadCrossing*);
 void update_obj_mario_raceway_sign(struct Actor*);
+void func_8029ABD4(Vec3f, s16);
 void func_8029AC18(Camera*, Mat4, struct Actor*);
 void func_8029AE1C(Camera*, struct PaddleWheelBoat*, Mat4, u16);
 void func_8029B06C(Camera*, struct Actor*);
@@ -73,7 +74,10 @@ void func_8029E7DC(struct Actor*);
 void destroy_actor(struct Actor*);
 s16  func_8029E890(f32 *, s16 *, f32 *, s16);
 s16  func_8029EC88(Vec3f, Vec3s, Vec3f, s16);
+s16  func_8029ED38(Vec3f, s16);
 s32  func_8029EEB8(Player*, Vec3f, f32, f32, f32);
+s32  func_8029F1F8(Player*, struct Actor*);
+s32  func_8029F2FC(Player*, struct PiranhaPlant*);
 s32  func_8029F408(Player*, struct YoshiValleyEgg*);
 s32  func_8029FB80(Player*, struct Actor*);
 s32  func_8029FCA4(struct Actor*, struct Actor*);
@@ -101,10 +105,10 @@ void update_simple_objects();
 
 // audio/external.c
 extern void func_800C98B8(Vec3f, Vec3f, u32);
-extern void func_800C9060(Player*, s32);
+extern void func_800C9060(u8, s32);
 extern void func_800C90F4(u8, uintptr_t);
 extern void func_800C99E0(Vec3f, s32);
-extern void func_800C9D80(Vec3f*, Vec3f*, u32);
+extern void func_800C9D80(Vec3f, Vec3f, u32);
 
 extern struct Actor gActorList[];
 extern Player gPlayers[];

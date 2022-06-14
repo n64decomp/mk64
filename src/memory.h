@@ -91,6 +91,9 @@ s16  func_802ABDB8(u16);
 s16  func_802ABDF4(u16);
 f32  func_802ABE30(f32, f32, f32, u16);
 f32  func_802ABEAC(UnkActorInner*, Vec3f);
+void process_shell_collision(Vec3f, f32, Vec3f, f32);
+void func_802AC098(UnkActorInner*, Vec3f);
+void func_802AD950(UnkActorInner*, f32, f32, f32, f32, f32, f32, f32);
 void func_802ADDC8(UnkActorInner*, f32, f32, f32, f32);
 f32  func_802AE1C0(f32, f32, f32);
 
