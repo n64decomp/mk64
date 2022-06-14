@@ -314,6 +314,8 @@ SECTIONS
       BUILD_DIR/data/data_121DA0_2.o(.data);
       BUILD_DIR/src/code_8028DF00.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_1.o(.data);
+      BUILD_DIR/src/code_80290C20.o(.rodata);
+      BUILD_DIR/data/data_121DA0_2_1_2.o(.data);
       BUILD_DIR/src/code_80296A50.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_2.o(.data);
       BUILD_DIR/src/code_802B0210.o(.rodata);
