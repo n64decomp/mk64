@@ -3,9 +3,6 @@
 
 #include "common_structs.h"
 
-s32  f32_step_up_towards(f32*, f32, f32);
-s32  s16_step_down_towards(s16*, s16, s16);
-void func_80041480(s16*, s16, s16, s16*);
 s32  func_80072044(s32*, s32*, s32);
 void func_800721C0(s32, s32);
 void func_800721E8(s32, s32);
@@ -38,15 +35,19 @@ void func_80075698(s32);
 void func_800759EC(s32, s32*, f32);
 void func_80075B08(s32);
 void func_80075E5C(s32, void*, u16, s32, s32);
-void func_80075F98(s32, s32, f32);
+void func_80075F98(Vec3f, s32, f32);
 void func_80086E70(s32);
 void func_80086F60(s32);
 void func_800877C4(s32);
 void func_8008A6DC(s32, f32);
 s32  func_8008A8B0(s16, s16);
+
+// code_80086E70.c
 void func_8008BF18(s32);
-void func_800C9D80(s32*, f32*, s32);
-void func_800C9EF4(s32*, s32);
+
+// audio/external.c
+void func_800C9D80(Vec3f, f32*, s32);
+void func_800C9EF4(Vec3f, s32);
 
 s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, uintptr_t devAddr, void *vAddr, size_t nbytes, OSMesgQueue *mq);
 s32 osRecvMesg(OSMesgQueue*, OSMesg*, s32);

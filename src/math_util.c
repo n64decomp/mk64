@@ -1413,8 +1413,8 @@ u16 random_u16(void) {
     return gRandomSeed16;
 }
 
-s32 random_int(u16 arg0) {
-    return (u16) (arg0 * (( (f32) random_u16() )  / 65535.0));
+u16 random_int(u16 arg0) {
+    return arg0 * (( (f32) random_u16() )  / 65535.0);
 }
 s16 func_802B7F34(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     return atan2s(arg2 - arg0, arg3 - arg1);
