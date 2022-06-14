@@ -32,7 +32,7 @@ void func_802B59DC(Mat4, s16);
 void func_802B5F74(Mat4, Vec3f, Vec3s);
 f32  func_802B80D0(Vec3f, Vec3f, u16, f32, f32, f32);
 void func_802B5F00(Mat4, f32);
-void func_802B63B8(Vec3f, f32*);
+void func_802B63B8(Vec3f, Mat3);
 void func_802B64C4(Vec3f, s16);
 void func_802B71CC(Mat4, Mat4, Mat4);
 void func_802B75F8(Mtx*, Mat4);
