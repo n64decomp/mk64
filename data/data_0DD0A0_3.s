@@ -1663,6 +1663,8 @@ glabel D_800ED6E0
 
 .word 0x00000000, 0x00000000
 
+# start rodata for code_80027D00
+
 glabel jpt_800ED6F0
 .word L80027F38, L80027FC0, L80028048, L800280D0
 .word L80028854, L80028854, L80028854, L80028854
@@ -2372,7 +2374,12 @@ glabel D_800EDE08
 
 glabel D_800EDE10
 .double 0.02
+
+# end of rodata for code_80027D00
+
 .balign 0x10
+
+# start of rodata for code_800393C0
 
 glabel D_800EDE20
 .float -34.6
@@ -2448,132 +2455,4 @@ glabel D_800EDF08
 glabel D_800EDF0C
 .float 575.0
 
-glabel D_800EDF10
-.double 0.1736
-
-glabel D_800EDF18
-.double 0.1736
-
-glabel D_800EDF20
-.double 0.1736
-
-glabel D_800EDF28
-.double 0.1736
-
-glabel D_800EDF30
-.double 0.1
-
-glabel D_800EDF38
-.float 0.8829
-.word 0x00000000
-
-glabel D_800EDF40
-.double 0.2
-
-glabel D_800EDF48
-.float 0.7318
-.word 0x00000000
-
-glabel D_800EDF50
-.double 0.1
-
-glabel D_800EDF58
-.float 0.8829
-.word 0x00000000
-
-glabel D_800EDF60
-.double 0.1
-
-glabel D_800EDF68
-.float 0.835699975
-.word 0x00000000
-
-glabel D_800EDF70
-.double 0.1
-
-glabel D_800EDF78
-.float 0.8357
-.word 0x00000000
-
-glabel D_800EDF80
-.double 0.1
-
-glabel D_800EDF88
-.float 0.835699975
-
-glabel jpt_800EDF8C
-.word L8003F59C, L8003F5D0, L8003F604, L8003F6D4
-.word L8003F6D4, L8003F6D4, L8003F5D0, L8003F6D4
-.word L8003F638, L8003F6D4, L8003F6D4, L8003F6D4
-.word L8003F6D4, L8003F6D4, L8003F66C, L8003F6D4
-.word L8003F6D4, L8003F6D4, L8003F6A0
-
-glabel D_800EDFD8
-.double 0.1
-
-glabel D_800EDFE0
-.double 0.1
-
-glabel D_800EDFE8
-.double -0.00001
-
-glabel D_800EDFF0
-.double 0.1
-
-glabel D_800EDFF8
-.double -0.00001
-
-glabel D_800EE000
-.double 0.1
-
-glabel D_800EE008
-.double 0.1
-
-glabel D_800EE010
-.double -0.00001
-
-glabel D_800EE018
-.double 0.1
-
-glabel D_800EE020
-.double -0.00001
-
-.word 0x00000000, 0x00000000
-
-glabel D_800EE030
-.double 0.8
-
-glabel D_800EE038
-.double 0.8
-
-glabel D_800EE040
-.double 0.8
-
-glabel D_800EE048
-.double 0.8
-
-glabel jpt_800EE050
-.word L80050C50, L80050A88, L80050AC0, L80050B1C
-.word L80050BA8
-
-glabel D_800EE064
-.float 0.6
-
-glabel jpt_800EE068
-.word L80053520, L80053574, L800535C8, L8005361C
-.word L80053670
-
-.word 0x00000000
-
-glabel D_800EE080
-.double 0.8
-
-glabel D_800EE088
-.double 0.8
-
-
-
-#glabel jpt_800EE090
-#.word L80057D14, L80057D28, L80057D3C, L80057D50
-#.word L80057D64, L80057DC0, L80057DC0, L80057DC0
-#.word L80057D78, L80057D8C, L80057DA0, L80057DB4
+# end of rodata for code_800393C0

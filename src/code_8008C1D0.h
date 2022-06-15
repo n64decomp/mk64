@@ -72,8 +72,6 @@ void func_800914A0();
 
 // code_80005FD0
 void func_800098FC(u32, Player*);
-// code_8001F980
-void move_f32_towards(f32*, f32, f32);
 // code_800431B0
 void func_800569F4(s32);
 void func_80056A40(s32, s32);

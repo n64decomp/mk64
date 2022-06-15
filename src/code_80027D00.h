@@ -14,6 +14,7 @@ void func_800291E8();
 void func_800291F0();
 void func_800291F8();
 void func_80029200(Player*, s8);
+void func_8002A5F4(Vec3f, f32, Vec3f, f32, f32);
 void func_8002AAC0(Player*);
 void func_8002AB70(Player*);
 void func_8002AE20();
