@@ -337,7 +337,7 @@ typedef struct {
     /* 0x00EC */ f32 kartHopVelocity;
     /* 0x00F0 */ f32 kartHopJerk;
     /* 0x00F4 */ f32 kartHopAcceleration;
-    /* 0x00F8 */ char unk_0F8[0x2];
+    /* 0x00F8 */ u16 unk_0F8;
     /* 0x00FA */ s16 unk_0FA;
     /* 0x00FC */ f32 unk_0FC;
     /* 0x0100 */ f32 unk_100;
