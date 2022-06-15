@@ -6,6 +6,7 @@
 #include "kart_attributes.h"
 #include "code_8008C1D0.h"
 #include "code_80027D00.h"
+#include "code_8001F980.h"
 #include <defines.h>
 
 UNUSED void func_unnamed(void) {
@@ -1333,7 +1334,7 @@ void func_8008EDC0(Player* player) {
     if ((u16) player->unk_256 > 0) {
         player->unk_09C = 0.0f;
     }
-    if ((*((u16*)&player->unk_0F8) != 0xFE) && ((player->unk_0BC & 8) != 8)) {
+    if ((player->unk_0F8 != 0xFE) && ((player->unk_0BC & 8) != 8)) {
         move_f32_towards(&player->boostPower, 0, 1.0f);
     } else {
         move_f32_towards(&player->boostPower, 400.0f, 0.01f);
@@ -1377,7 +1378,7 @@ void func_8008EEE4(Player* player, s8 arg1) {
 void func_8008F008(Player* player) {
     player->unk_09C = D_800E261C[0][player->characterId];
 
-    if ( ( *((u16*) player->unk_0F8) != 0xFC) && ((player->unk_0BC & 8) != 8)) {
+    if ((player->unk_0F8 != 0xFC) && ((player->unk_0BC & 8) != 8)) {
         move_f32_towards(&player->boostPower, 0, 1.0f);
     } else {
         move_f32_towards(&player->boostPower, 300.0f, 0.1f);
