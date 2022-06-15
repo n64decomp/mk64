@@ -5,6 +5,7 @@
 #include "main.h"
 #include "variables.h"
 #include "math_util.h"
+
 #include "memory.h"
 
 #pragma intrinsic (sqrtf)
@@ -339,13 +340,12 @@ s32 vec3f_set_dupe_2_electric_boogaloo(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3)
 }
 
 Vec3f *func_80041530(Vec3f dest) {
-    f32 temp_f16;
+    f32 invsqrt = 1.0f / sqrtf(dest[0] * dest[0] + dest[1] * dest[1] + dest[2] * dest[2]);
 
-    temp_f16 = 1.0f / sqrtf((dest[0] * dest[0]) + (dest[1] * dest[1]) + (dest[2] * dest[2]));
-    dest[0] = dest[0] * temp_f16;
-    dest[1] = dest[1] * temp_f16;
-    dest[2] = dest[2] * temp_f16;
-    return &dest;
+    dest[0] = dest[0] * invsqrt;
+    dest[1] = dest[1] * invsqrt;
+    dest[2] = dest[2] * invsqrt;
+    return  &dest;
 }
 
 Vec3f *func_80041594(Vec3f arg0, Vec3f arg1, Vec3f arg2) {
@@ -459,129 +459,144 @@ s32 func_80041980(Vec3f arg0, Camera *arg1, u16 arg2) {
 }
 
 void func_800419F8(void) {
-    Vec3f sp24;
     Vec3f sp18;
+    Vec3f sp24;
 
-    sp24[0] = 0.0f;
-    sp24[1] = 0.0f;
-    sp24[2] = 120.0f;
-    func_80042D14(sp18, sp24, D_80165834);
-    D_80165840[0] = sp18[0];
-    D_80165840[1] = sp18[1];
-    D_80165840[2] = sp18[2];
+    sp18[0] = 0.0f;
+    sp18[1] = 0.0f;
+    sp18[2] = 120.0f;
+    func_80042D14(sp24, sp18, D_80165834);
+    D_80165840[0] = sp24[0];
+    D_80165840[1] = sp24[1];
+    D_80165840[2] = sp24[2];
 }
 
-UNUSED void func_80041A70(void){
-    return;
+UNUSED func_80041A70(void) {
+
 }
 
 void func_80041A78(Mat4 arg0, s32 arg1, s32 arg2) {
     arg0[0][0] = 1.0f;
+    arg0[1][1] = 1.0f;
+    arg0[2][2] = 1.0f;
     arg0[1][0] = 0.0f;
     arg0[2][0] = 0.0f;
-    arg0[3][0] = arg1;
     arg0[0][1] = 0.0f;
-    arg0[1][1] = 1.0f;
+    arg0[3][0] = arg1;
     arg0[2][1] = 0.0f;
-    arg0[3][1] = arg2;
     arg0[0][2] = 0.0f;
     arg0[1][2] = 0.0f;
-    arg0[2][2] = 1.0f;
     arg0[3][2] = 0.0f;
+    arg0[3][1] = arg2;
     arg0[0][3] = 0.0f;
     arg0[1][3] = 0.0f;
     arg0[2][3] = 0.0f;
     arg0[3][3] = 1.0f;
 }
 
-void func_80041AD8(Mat4 arg0, u16 angle) {
-    f32 sine = sins(angle);
-    f32 cosine = coss(angle);
-
-    arg0[0][0] = cosine;
-    arg0[1][0] = -sine;
+void func_80041AD8(Mat4 arg0, u16 arg1) {
+    f32 sp1C = sins(arg1);
+    f32 temp_f0 = coss(arg1);
+    
+    arg0[0][0] = temp_f0;
+    arg0[1][0] = -sp1C;
+    arg0[1][1] = temp_f0;
+    arg0[0][1] = sp1C;
     arg0[2][0] = 0.0f;
     arg0[3][0] = 0.0f;
-    arg0[0][1] = sine;
-    arg0[1][1] = cosine;
     arg0[2][1] = 0.0f;
     arg0[3][1] = 0.0f;
     arg0[0][2] = 0.0f;
     arg0[1][2] = 0.0f;
-    arg0[2][2] = 1.0f;
     arg0[3][2] = 0.0f;
     arg0[0][3] = 0.0f;
     arg0[1][3] = 0.0f;
     arg0[2][3] = 0.0f;
+    arg0[2][2] = 1.0f;
     arg0[3][3] = 1.0f;
 }
 
 void func_80041B68(Mat4 arg0, f32 arg1) {
-    arg0[0][0] = arg1;
     arg0[1][0] = 0.0f;
     arg0[2][0] = 0.0f;
     arg0[3][0] = 0.0f;
     arg0[0][1] = 0.0f;
-    arg0[1][1] = arg1;
     arg0[2][1] = 0.0f;
     arg0[3][1] = 0.0f;
     arg0[0][2] = 0.0f;
     arg0[1][2] = 0.0f;
-    arg0[2][2] = 1.0f;
     arg0[3][2] = 0.0f;
     arg0[0][3] = 0.0f;
     arg0[1][3] = 0.0f;
     arg0[2][3] = 0.0f;
+    arg0[2][2] = 1.0f;
     arg0[3][3] = 1.0f;
+    arg0[0][0] = arg1;
+    arg0[1][1] = arg1;
 }
 
-void func_80041BBC(Mat4 arg0, u16 angle, f32 arg2) {
-    f32 sine = sins(angle);
-    f32 cosine = coss(angle) * arg2;
+void func_80041BBC(Mat4 arg0, u16 arg1, f32 arg2) {
+    f32 sp1C = sins(arg1);
+    f32 temp_f12 = coss(arg1) * arg2;
 
-    arg0[0][0] = cosine;
-    arg0[1][0] = -sine * arg2;
     arg0[2][0] = 0.0f;
+    arg0[0][0] = temp_f12;
+    arg0[1][1] = temp_f12;
+    arg0[2][1] = 0.0f;
+    arg0[1][0] = -sp1C * arg2;
+    arg0[0][2] = 0.0f;
+    arg0[1][2] = 0.0f;
+    arg0[0][1] = sp1C * arg2;
+    arg0[3][2] = 0.0f;
+    arg0[0][3] = 0.0f;
+    arg0[1][3] = 0.0f;
+    arg0[2][3] = 0.0f;
     arg0[3][0] = 1.0f;
-    arg0[0][1] = sine * arg2;
-    arg0[1][1] = cosine;
-    arg0[2][1] = 0.0f;
     arg0[3][1] = 1.0f;
-    arg0[0][2] = 0.0f;
-    arg0[1][2] = 0.0f;
     arg0[2][2] = 1.0f;
-    arg0[3][2] = 0.0f;
-    arg0[0][3] = 0.0f;
-    arg0[1][3] = 0.0f;
-    arg0[2][3] = 0.0f;
     arg0[3][3] = 1.0f;
 }
 
-void func_80041C64(Mat4 arg0, s32 arg1, s32 arg2, u16 angle, f32 arg4) {
-    f32 sine = sins(angle);
-    f32 cosine = coss(angle) * arg4;
+/**
+ * @brief arg1 and arg2 are s32's into floats?!?
+ * 
+ * @param arg0 
+ * @param arg1 
+ * @param arg2 
+ * @param arg3 
+ * @param arg4 
+ */
+void func_80041C64(Mat4 arg0, s32 arg1, s32 arg2, u16 arg3, f32 arg4) {
+  f32 sp24 = sins(arg3);
+  f32 temp_f12 = coss(arg3) * arg4;
 
-    arg0[0][0] = cosine;
-    arg0[1][0] = -sine * arg4;
-    arg0[2][0] = 0.0f;
-    arg0[3][0] = arg1;
-    arg0[0][1] = sine * arg4;
-    arg0[1][1] = cosine;
-    arg0[2][1] = 0.0f;
-    arg0[3][1] = arg2;
-    arg0[0][2] = 0.0f;
-    arg0[1][2] = 0.0f;
-    arg0[2][2] = 1.0f;
-    arg0[3][2] = 0.0f;
-    arg0[0][3] = 0.0f;
-    arg0[1][3] = 0.0f;
-    arg0[2][3] = 0.0f;
-    arg0[3][3] = 1.0f;
+  arg0[2][0] = 0.0f;
+  arg0[0][0] = temp_f12;
+  arg0[1][0] = (-sp24) * arg4;
+  arg0[3][0] = (f32) arg1;
+  arg0[1][1] = temp_f12;
+  arg0[0][1] = sp24 * arg4;
+  arg0[2][1] = 0.0f;
+  arg0[3][1] = (f32) arg2;
+  arg0[0][2] = 0.0f;
+  arg0[1][2] = 0.0f;
+  arg0[2][2] = 1.0f;
+  arg0[3][3] = 1.0f;
+  arg0[3][2] = 0.0f;
+  arg0[0][3] = 0.0f;
+  arg0[1][3] = 0.0f;
+  arg0[2][3] = 0.0f;
 }
 
+// Likely D_801658**[index] = 1; * denotes wildcard
 void func_80041D24(void) {
     D_801658FE = 1;
 }
+
+void guOrtho(Mtx *, f32, f32, f32, f32, f32, f32, f32); /* extern */
+extern s32 gActiveScreenMode;
+extern s8 D_801658FE;
+extern Mtx D_80183D60[];
 
 void func_80041D34(void) {
     guOrtho(&D_80183D60, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
@@ -611,89 +626,101 @@ void func_80041EF4(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[5]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 }
 
-UNUSED void func_80041F54(s32 arg0, s32 arg1) {
-    Mat4 someMatrix;
+extern s32 D_8018D120;
+void func_80022180(Mtx*, Mat4);
 
-    func_80041A78(someMatrix, arg0, arg1);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], someMatrix);
+UNUSED void func_80041F54(s32 arg0, s32 arg1) {
+    Mat4 matrix;
+
+    func_80041A78(matrix, arg0, arg1);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
+
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120 += 1;
+    D_8018D120++;
 }
 
 UNUSED void func_80042000(u16 arg0) {
-    Mat4 someMatrix;
+    Mat4 matrix;
 
-    func_80041AD8(someMatrix, arg0);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], someMatrix);
+    func_80041AD8(matrix, arg0);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], &matrix);
+
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120 += 1;
+    D_8018D120++;
 }
 
 UNUSED void func_800420A8(f32 arg0) {
-    Mat4 someMatrix;
+    Mat4 matrix;
 
-    func_80041B68(someMatrix, arg0);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], someMatrix);
+    func_80041B68(matrix, arg0);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
+
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120 += 1;
+    D_8018D120++;
+
 }
 
-UNUSED void func_8004214C(u16 arg0, f32 arg1) {
-    Mat4 someMatrix;
+UNUSED void func_8004214C(u16 arg1, f32 arg2) {
+    Mat4 matrix;
 
-    func_80041BBC(someMatrix, arg0, arg1);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], someMatrix);
+    func_80041BBC(matrix, arg1, arg2);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
+
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120 += 1;
+    D_8018D120++;
 }
 
 UNUSED void func_800421FC(s32 arg0, s32 arg1, f32 arg2) {
-    Mat4 someMatrix;
+    Mat4 matrix;
 
-    func_80041A78(someMatrix, arg0, arg1);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], someMatrix);
+    func_80041A78(matrix, arg0, arg1);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
+
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120 += 1;
-    func_80041B68(someMatrix, arg2);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], someMatrix);
+    D_8018D120++;
+
+    func_80041B68(matrix, arg2);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-    D_8018D120 += 1;
+    D_8018D120++;
 }
 
 void func_80042330(s32 arg0, s32 arg1, u16 arg2, f32 arg3) {
-    Mat4 someMatrix;
-
-    func_80041C64(someMatrix, arg0, arg1, arg2, arg3);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], someMatrix);
+    Mat4 matrix;
+    func_80041C64(matrix, arg0, arg1, arg2, arg3);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120 += 1;
+    D_8018D120++;
 }
 
 UNUSED void func_800423F0(Mat4 arg0, u16 arg1, u16 arg2, u16 arg3) {
-    f32 sine1;
-    f32 cosine1;
-    f32 sine2;
-    f32 cosine2;
-    f32 sine3;
-    f32 cosine3;
-    sine1   = sins(arg1);
-    cosine1 = coss(arg1);
-    sine2   = sins(arg2);
-    cosine2 = coss(arg2);
-    sine3   = sins(arg3);
-    cosine3 = coss(arg3);
+    f32 sp3C;
+    f32 temp_f20;
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 temp_f0;
 
-    arg0[0][0] = (cosine2 * cosine3) + ((sine1 * sine2) * sine3);
-    arg0[1][0] = ((-cosine2) * sine3) + ((sine1 * sine2) * cosine3);
-    arg0[2][0] = cosine1 * sine2;
+
+    sp3C = sins(arg1);
+    temp_f20 = coss(arg1);
+    sp34 = sins(arg2);
+    sp30 = coss(arg2);
+    sp2C = sins(arg3);
+    temp_f0 = coss(arg3);
+
+
+    arg0[0][0] = (f32) (sp30 * temp_f0 + (sp3C * sp34 * sp2C));
+    arg0[1][0] = (f32) ((-sp30 * sp2C) + (sp3C * sp34 * temp_f0));
+    arg0[2][0] = (f32) (temp_f20 * sp34);
     arg0[3][0] = 0.0f;
-    arg0[0][1] = cosine1 * sine3;
-    arg0[1][1] = cosine1 * cosine3;
-    arg0[2][1] = -sine1;
+    arg0[0][1] = (f32) (temp_f20 * sp2C);
+    arg0[1][1] = (f32) (temp_f20 * temp_f0);
+    arg0[2][1] = (f32) -sp3C;
     arg0[3][1] = 0.0f;
-    arg0[0][2] = ((-sine2) * cosine3) + ((sine1 * cosine2) * sine3);
-    arg0[1][2] = (sine2 * sine3) + ((sine1 * cosine2) * cosine3);
-    arg0[2][2] = cosine1 * cosine2;
+    arg0[0][2] = (f32) ((-sp34 * temp_f0) + (sp3C * sp30 * sp2C));
+    arg0[1][2] = (f32) ((sp34 * sp2C) + (sp3C * sp30 * temp_f0));
+    arg0[2][2] = (f32) (temp_f20 * sp30);
     arg0[3][2] = 0.0f;
     arg0[0][3] = 0.0f;
     arg0[1][3] = 0.0f;
@@ -702,51 +729,41 @@ UNUSED void func_800423F0(Mat4 arg0, u16 arg1, u16 arg2, u16 arg3) {
 }
 
 UNUSED void func_8004252C(Mat4 arg0, u16 arg1, u16 arg2) {
-    f32 sine1;
-    f32 cosine1;
-    f32 sine2;
-    f32 cosine2;
+    f32 sp2C = sins(arg1);
+    f32 sp28 = coss(arg1);
+    f32 sp24 = sins(arg2);
+    f32 temp_f0 = coss(arg2);
 
-    sine1   = sins(arg1);
-    cosine1 = coss(arg1);
-    sine2   = sins(arg2);
-    cosine2 = coss(arg2);
-    arg0[0][0] = cosine2;
-    arg0[1][0] = sine1 * sine2;
-    arg0[2][0] = cosine1 * sine2;
+    arg0[1][0] = sp2C * sp24;
+    arg0[2][0] = sp28 * sp24;
     arg0[0][1] = 0.0f;
-    arg0[1][1] = cosine1;
-    arg0[2][1] = -sine1;
-    arg0[0][2] = -sine2;
-    arg0[1][2] = sine1 * cosine2;
-    arg0[2][2] = cosine1 * cosine2;
+    arg0[0][0] = temp_f0;
+    arg0[2][1] = -sp2C;
+    arg0[0][2] = -sp24;
+    arg0[1][1] = sp28;
+    arg0[1][2] = sp2C * temp_f0;
+    arg0[2][2] = sp28 * temp_f0;
 }
 
 void func_800425D0(Mat4 arg0, Vec3f arg1, Vec3s arg2, f32 arg3) {
-    f32 sine1;
-    f32 cosine1;
-    f32 sine2;
-    f32 cosine2;
-    f32 sine3;
-    f32 cosine3;
+    f32 sp44 = sins(arg2[0]);
+    f32 temp_f22 = coss(arg2[0]);
+    f32 sp3C = sins(arg2[1]);
+    f32 sp38 = coss(arg2[1]);
+    f32 sp34 = sins(arg2[2]);
+    f32 temp_f0 = coss(arg2[2]);
 
-    sine1   = sins(arg2[0]);
-    cosine1 = coss(arg2[0]);
-    sine2   = sins(arg2[1]);
-    cosine2 = coss(arg2[1]);
-    sine3   = sins(arg2[2]);
-    cosine3 = coss(arg2[2]);
-    arg0[0][0] = ((cosine2 * cosine3) + ((sine1 * sine2) * sine3)) * arg3;
-    arg0[1][0] = ((-cosine2 * sine3) + ((sine1 * sine2) * cosine3)) * arg3;
-    arg0[2][0] = cosine1 * sine2 * arg3;
+    arg0[0][0] = ((sp38 * temp_f0) + (sp44 * sp3C * sp34)) * arg3;
+    arg0[1][0] = ((-sp38 * sp34) + (sp44 * sp3C * temp_f0)) * arg3;
+    arg0[2][0] = (temp_f22 * sp3C) * arg3;
     arg0[3][0] = arg1[0];
-    arg0[0][1] = cosine1 * sine3 * arg3;
-    arg0[1][1] = cosine1 * cosine3 * arg3;
-    arg0[2][1] = -sine1 * arg3;
+    arg0[0][1] = temp_f22 * sp34 * arg3;
+    arg0[1][1] = temp_f22 * temp_f0 * arg3;
+    arg0[2][1] = -sp44 * arg3;
     arg0[3][1] = arg1[1];
-    arg0[0][2] = ((-sine2 * cosine3) + ((sine1 * cosine2) * sine3)) * arg3;
-    arg0[1][2] = ((sine2 * sine3) + ((sine1 * cosine2) * cosine3)) * arg3;
-    arg0[2][2] = cosine1 * cosine2 * arg3;
+    arg0[0][2] = ((-sp3C * temp_f0) + (sp44 * sp38 * sp34)) * arg3;
+    arg0[1][2] = ((sp3C * sp34) + (sp44 * sp38 * temp_f0)) * arg3;
+    arg0[2][2] = temp_f22 * sp38 * arg3;
     arg0[3][2] = arg1[2];
     arg0[0][3] = 0.0f;
     arg0[1][3] = 0.0f;
@@ -773,32 +790,44 @@ void func_80042760(Mat4 arg0, Vec3f arg1, Vec3f arg2, f32 arg3) {
     arg0[3][3] = 1.0f;
 }
 
-void func_800427DC(s32 arg0, Mat4 arg1) {
-    f32 sine1;
-    f32 cosine1;
-    f32 sine2;
-    f32 cosine2;
-    f32 sine3;
-    f32 cosine3;
+extern struct_80165C18_entry D_80165C18[];
 
-    sine1   = sins(D_80165C18[arg0].unk_0B2);
-    cosine1 = coss(D_80165C18[arg0].unk_0B2);
-    sine2   = sins(D_80165C18[arg0].unk_0B4);
-    cosine2 = coss(D_80165C18[arg0].unk_0B4);
-    sine3   = sins(D_80165C18[arg0].unk_0B6);
-    cosine3 = coss(D_80165C18[arg0].unk_0B6);
-    arg1[0][0] = D_80165C18[arg0].unk_000 * ((cosine2 * cosine3) + ((sine1 * sine2) * sine3));
-    arg1[1][0] = (D_80165C18[arg0].unk_000 * ((-cosine2 * sine3) + ((sine1 * sine2) * cosine3)));
-    arg1[2][0] = (D_80165C18[arg0].unk_000 * (cosine1 * sine2));
-    arg1[3][0] = D_80165C18[arg0].unk_004[0];
-    arg1[0][1] = D_80165C18[arg0].unk_000 * (cosine1 * sine3);
-    arg1[1][1] = (D_80165C18[arg0].unk_000 * (cosine1 * cosine3));
-    arg1[2][1] = (D_80165C18[arg0].unk_000 * -sine1);
-    arg1[3][1] = D_80165C18[arg0].unk_004[1];
-    arg1[0][2] = D_80165C18[arg0].unk_000 * ((-sine2 * cosine3) + ((sine1 * cosine2) * sine3));
-    arg1[1][2] = (D_80165C18[arg0].unk_000 * ((sine2 * sine3) + ((sine1 * cosine2) * cosine3)));
-    arg1[2][2] = (D_80165C18[arg0].unk_000 * (cosine1 * cosine2));
-    arg1[3][2] = D_80165C18[arg0].unk_004[2];
+/**
+ * @brief Tried to put the definitions in the declares. However, sp3C wants to be at the top.
+ * Something may be possible with some padding. Couldn't find a way though. So we get big mess.
+ * 
+ * @param arg0
+ * @param arg1
+ **/
+
+void func_800427DC(s32 arg0, Mat4 arg1) {
+    f32 sp3C;
+    struct_80165C18_entry *temp_s0 = &D_80165C18[arg0];
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
+    f32 temp_f0;
+    f32 temp_f20;
+
+    sp3C = sins(temp_s0->unk_0B2);
+    temp_f20 = coss(temp_s0->unk_0B2);
+    sp34 = sins(temp_s0->unk_0B4);
+    sp30 = coss(temp_s0->unk_0B4);
+    sp2C = sins(temp_s0->unk_0B6);
+    temp_f0 = coss(temp_s0->unk_0B6);
+
+    arg1[0][0] = temp_s0->unk_000 * ((sp30 * temp_f0) + (sp3C * sp34 * sp2C));
+    arg1[1][0] = temp_s0->unk_000 * ((-sp30 * sp2C) + sp3C * sp34 * temp_f0);
+    arg1[2][0] = temp_s0->unk_000 * (temp_f20 * sp34);
+    arg1[3][0] = temp_s0->unk_004[0];
+    arg1[0][1] = temp_s0->unk_000 * (temp_f20 * sp2C);
+    arg1[1][1] = temp_s0->unk_000 * (temp_f20 * temp_f0);
+    arg1[2][1] = temp_s0->unk_000 * -sp3C;
+    arg1[3][1] = temp_s0->unk_004[1];
+    arg1[0][2] = temp_s0->unk_000 * ((-sp34 * temp_f0) + (sp3C * sp30 * sp2C));
+    arg1[1][2] = temp_s0->unk_000 * ((sp34 * sp2C) + (sp3C * sp30 * temp_f0));
+    arg1[2][2] = temp_s0->unk_000 * (temp_f20 * sp30);
+    arg1[3][2] = temp_s0->unk_004[2];
     arg1[0][3] = 0.0f;
     arg1[1][3] = 0.0f;
     arg1[2][3] = 0.0f;
@@ -834,7 +863,6 @@ void func_80042A20(Mat4 arg0, Vec3f arg1, Vec3f arg2, u16 arg3, f32 arg4) {
     func_80041530(sp38);
     func_80041594(sp2C, sp38, arg1);
     func_80041530(sp2C);
-
     arg0[0][0] = sp38[0] * arg4;
     arg0[0][1] = sp38[1] * arg4;
     arg0[0][2] = sp38[2] * arg4;
@@ -912,51 +940,53 @@ void func_80042D14(Vec3f arg0, Vec3f arg1, Vec3s arg2) {
 }
 
 void func_80042E00(Vec3f arg0, Vec3s arg1, f32 arg2) {
-    Mat4 someMatrix;
+    Mat4 matrix;
 
-    func_800425D0(someMatrix, arg0, arg1, arg2);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], someMatrix);
+    func_800425D0(matrix, arg0, arg1, arg2);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120 += 1;
+    D_8018D120++;
 }
 
 UNUSED void func_80042EB8(Vec3f arg0, Vec3f arg1, f32 arg2) {
-    Mat4 someMatrix;
+    Mat4 matrix;
 
-    func_80042760(someMatrix, arg0, arg1, arg2);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], someMatrix);
+    func_80042760(matrix, arg0, arg1, arg2);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120 += 1;
+    D_8018D120++;
 }
 
-void func_80042F70(Vec3f arg0, Vec3s arg1, f32 arg2) {
-    Mat4 someMatrix;
-    Vec3s sp20;
 
-    sp20[0] = (u16)arg1[0] + 0x8000;
-    sp20[1] = (u16)arg1[1] + 0x8000;
-    // * 1 done here to force the compiler to respect the u16 typecast
-    sp20[2] = (u16)arg1[2] * 1;
-    func_800425D0(someMatrix, arg0, sp20, arg2);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], someMatrix);
+void func_80042F70(Vec3f arg0, Vec3su arg1, f32 arg2) {
+    Mat4 matrix;
+    Vec3su sp20;
+
+    sp20[0] = arg1[0] + 0x8000;
+    sp20[1] = arg1[1] + 0x8000;
+    sp20[2] = arg1[2];
+    func_800425D0(matrix, arg0, sp20, arg2);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
+
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120 += 1;
+    D_8018D120++;
 }
 
 void func_80043050(Vec3f arg0,Vec3f arg1, f32 arg2) {
-    Mat4 someMatrix;
+    Mat4 matrix;
 
-    func_80042A20(someMatrix, arg1, arg0, 0, arg2);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], someMatrix);
+    func_80042A20(matrix, arg1, arg0, 0, arg2);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120 += 1;
+    D_8018D120++;
 }
 
 void func_80043104(s32 arg0) {
-    Mat4 someMatrix;
+    Mat4 sp20;
 
-    func_800427DC(arg0, someMatrix);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], someMatrix);
+    func_800427DC(arg0, sp20);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], sp20);
+
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120 += 1;
+    D_8018D120++;
 }

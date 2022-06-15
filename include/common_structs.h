@@ -6,6 +6,7 @@
 typedef f32 Vec3f[3];
 
 typedef s16 Vec3s[3];
+typedef u16 Vec3su[3];
 typedef s16 Vec4s[4];
 
 typedef enum {

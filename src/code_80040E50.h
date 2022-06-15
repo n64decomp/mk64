@@ -22,7 +22,6 @@ s32 s32_step_towards(s32*, s32, s32);
 s32 func_80041608(f32, f32, f32, f32, f32);
 s32 func_80041680(f32, f32);
 s32 func_800416AC(f32, f32);
-void func_80041A70();
 void func_80041F54(s32, s32);
 void func_80042000(u16);
 void func_800420A8(f32);
@@ -77,7 +76,7 @@ void func_800427DC(s32, Mat4);
 void func_80042A20(Mat4, Vec3f, Vec3f, u16, f32);
 void func_80042D14(Vec3f, Vec3f, Vec3s);
 void func_80042E00(Vec3f, Vec3s, f32);
-void func_80042F70(Vec3f, Vec3s, f32);
+void func_80042F70(Vec3f, Vec3su, f32);
 void func_80043050(Vec3f, Vec3f, f32);
 void func_80043104(s32);
 
