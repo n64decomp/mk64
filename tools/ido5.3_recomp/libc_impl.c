@@ -16,8 +16,10 @@
 #ifdef __CYGWIN__
 #include <windows.h>
 #endif
+
 #ifdef __APPLE__
-  #include <mach-o/dyld.h>
+#include <mach-o/dyld.h>
+#include <mach/vm_page_size.h>
 #endif
 
 #include <sys/mman.h>
@@ -186,21 +188,39 @@ static char bin_dir[PATH_MAX + 1];
 #endif
 static int g_file_max = 3;
 
-#ifdef __CYGWIN__
+
+/* Compilation Target/Emulation Host Page Size Determination */
+#if defined(__CYGWIN__) || (defined(__linux__) && defined(__aarch64__))
+#define RUNTIME_PAGESIZE
+/* ARM64 linux can have page sizes of 4kb, 16kb, or 64kb */
+/* Set in main before running the translated code */ 
 static size_t g_Pagesize;
-#endif
+
+#define TRUNC_PAGE(x) ((x) & ~(g_Pagesize - 1))
+#define ROUND_PAGE(x) (TRUNC_PAGE((x) + (g_Pagesize - 1)))
+
+#elif defined(__APPLE__)
+/* https://developer.apple.com/documentation/apple-silicon/addressing-architectural-differences-in-your-macos-code */
+#define TRUNC_PAGE(x) (trunc_page((x)))
+#define ROUND_PAGE(x) (round_page((x)))
+
+#else
+/* A fixed 4KB page size for x64 linux (is there anything else?) */
+#define TRUNC_PAGE(x) ((x) & ~(0x1000 - 1))
+#define ROUND_PAGE(x) (TRUNC_PAGE((x) + (0x1000 - 1)))
+#endif /* PageSize Macros */
 
 static uint8_t *memory_map(size_t length)
 {
 #ifdef __CYGWIN__
     uint8_t *mem = mmap(0, length, PROT_NONE, MAP_PRIVATE | MAP_ANONYMOUS | MAP_NORESERVE, -1, 0);
-    g_Pagesize = sysconf(_SC_PAGESIZE);
-    assert(((uintptr_t)mem & (g_Pagesize-1)) == 0);
 #else
     uint8_t *mem = mmap(0, length, PROT_NONE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
 #endif
+
+    assert(TRUNC_PAGE((uintptr_t)mem) == (uintptr_t)mem);
     if (mem == MAP_FAILED) {
-        perror("mmap");
+        perror("mmap (memory_map)");
         exit(1);
     }
     return mem;
@@ -210,20 +230,26 @@ static void memory_allocate(uint8_t *mem, uint32_t start, uint32_t end)
 {
     assert(start >= MEM_REGION_START);
     assert(end <= MEM_REGION_START + MEM_REGION_SIZE);
+    // `start` will be passed to mmap, 
+    // so it has to be host aligned in order to keep the guest's pages valid
+    assert(start == TRUNC_PAGE(start));
 #ifdef __CYGWIN__
-    uintptr_t _start = ((uintptr_t)mem + start) & ~(g_Pagesize-1);
-    uintptr_t _end = ((uintptr_t)mem + end + (g_Pagesize-1)) & ~(g_Pagesize-1);
+    uintptr_t _start = TRUNC_PAGE((uintptr_t)mem + start);
+    uintptr_t _end = ROUND_PAGE((uintptr_t)mem + end);
 
     if(mprotect((void*)_start, _end - _start, PROT_READ | PROT_WRITE) < 0) {
-        perror("mprotect");
+        perror("mprotect (memory_allocate)");
         exit(1);
     }
 #else
-    if (mmap(mem + start, end - start, PROT_READ | PROT_WRITE, MAP_FIXED | MAP_PRIVATE | MAP_ANONYMOUS, -1, 0) == MAP_FAILED) {
-        perror("mmap");
+    void *addr = (void *)TRUNC_PAGE((uintptr_t)mem + start);
+    size_t len = end - start;
+
+    if (mmap(addr, len, PROT_READ | PROT_WRITE, MAP_FIXED | MAP_PRIVATE | MAP_ANONYMOUS, -1, 0) == MAP_FAILED) {
+        perror("mmap (memory_allocate)");
         exit(1);
     }
-#endif
+#endif /* __CYGWIN__ */
 }
 
 static void memory_unmap(uint8_t *mem, size_t length)
@@ -273,6 +299,9 @@ int main(int argc, char *argv[]) {
     int ret;
 
     find_bin_dir();
+#ifdef RUNTIME_PAGESIZE
+    g_Pagesize = sysconf(_SC_PAGESIZE);
+#endif /* RUNTIME_PAGESIZE */
 
     uint8_t *mem = memory_map(MEM_REGION_SIZE);
     mem -= MEM_REGION_START;
@@ -287,7 +316,11 @@ int main(int argc, char *argv[]) {
 
 void mmap_initial_data_range(uint8_t *mem, uint32_t start, uint32_t end) {
     custom_libc_data_addr = end;
+#ifdef __APPLE__
+    end += vm_page_size;
+#else 
     end += 4096;
+#endif /* __APPLE__ */
     memory_allocate(mem, start, end);
     cur_sbrk = end;
 }
@@ -331,8 +364,9 @@ static uint32_t strcpy2(uint8_t *mem, uint32_t dest_addr, uint32_t src_addr) {
 
 uint32_t wrapper_sbrk(uint8_t *mem, int increment) {
     uint32_t old = cur_sbrk;
-    memory_allocate(mem, old, (old + increment));
-    cur_sbrk += increment;
+    size_t alignedInc = ROUND_PAGE(old + increment) - old;
+    memory_allocate(mem, old, old + alignedInc);
+    cur_sbrk += alignedInc;
     return old;
 }
 
@@ -434,10 +468,10 @@ uint32_t wrapper_malloc(uint8_t *mem, uint32_t size) {
         uint32_t sbrk_request = 0x10000;
         if (8 + item_size > sbrk_request) {
             sbrk_request = 8 + item_size;
-            sbrk_request = (sbrk_request + 0xfff) & ~0xfff;
+            sbrk_request = ROUND_PAGE(sbrk_request);
         }
         uint32_t left_over = sbrk_request % (8 + item_size);
-        sbrk_request -= left_over & ~0xfff;
+        sbrk_request -= left_over & ~(4096 - 1);
         mem_allocated += sbrk_request;
         ++num_sbrks;
         node_ptr = wrapper_sbrk(mem, sbrk_request);
@@ -988,6 +1022,30 @@ uint32_t wrapper_strtoul(uint8_t *mem, uint32_t nptr_addr, uint32_t endptr_addr,
     return res;
 }
 
+uint64_t wrapper_strtoll(uint8_t *mem, uint32_t nptr_addr, uint32_t endptr_addr, int base) {
+    STRING(nptr)
+    char *endptr = NULL;
+    uint64_t res = strtoll(nptr, endptr_addr != 0 ? &endptr : NULL, base);
+
+    if(endptr != NULL) {
+        MEM_U32(endptr_addr) = nptr_addr + (uint32_t)(endptr - nptr);
+    }
+
+    return res;
+}
+
+uint64_t wrapper_strtoull(uint8_t *mem, uint32_t nptr_addr, uint32_t endptr_addr, int base) {
+    STRING(nptr)
+    char *endptr = NULL;
+    uint64_t res = strtoull(nptr, endptr_addr != 0 ? &endptr : NULL, base);
+
+    if(endptr != NULL) {
+        MEM_U32(endptr_addr) = nptr_addr + (uint32_t)(endptr - nptr);
+    }
+
+    return res;
+}
+
 double wrapper_strtod(uint8_t *mem, uint32_t nptr_addr, uint32_t endptr_addr) {
     STRING(nptr)
     char *endptr = NULL;
@@ -1336,7 +1394,7 @@ int wrapper_ftell(uint8_t *mem, uint32_t fp_addr) {
     return res;
 }
 
-int wrapper_rewind(uint8_t *mem, uint32_t fp_addr) {
+void wrapper_rewind(uint8_t *mem, uint32_t fp_addr) {
     (void)wrapper_fseek(mem, fp_addr, 0, SEEK_SET);
     struct FILE_irix *f = (struct FILE_irix *)&MEM_U32(fp_addr);
     f->_flag &= ~IOERR;
@@ -1787,6 +1845,7 @@ int wrapper_setvbuf(uint8_t *mem, uint32_t fp_addr, uint32_t buf_addr, int mode,
     f->_ptr_addr = buf_addr;
     f->_cnt = 0;
     bufendtab[(fp_addr - IOB_ADDR) / sizeof(struct FILE_irix)] = size;
+    return 0;
 }
 
 int wrapper___semgetc(uint8_t *mem, uint32_t fp_addr) {

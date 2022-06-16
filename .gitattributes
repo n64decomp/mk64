@@ -1,1 +1,22 @@
-* text eol=lf
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# force C files to unix endings regardless of host platform
+# for compatibility with IDO cc
+*.c text eol=lf diff=c
+*.h text eol=lf diff=c
+
+# List text files in case git doesn't characterize correctly
+*.s text
+*.in text
+*.js text
+*.md text
+*.py text diff=python
+*.sh text
+*.ld text
+*.inc text
+*.txt text
+*.json text
+*.yaml text
+*.toml text
+*.rs text diff=rust

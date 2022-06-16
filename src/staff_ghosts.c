@@ -237,7 +237,7 @@ void func_80005310(void) {
     }
 }
 
-s32 func_8000546C(void) {
+void func_8000546C(void) {
     u32 temp_a0;
     u32 temp_a1;
     UNUSED u16 unk;

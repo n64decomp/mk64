@@ -49,14 +49,25 @@ Compiling on Windows requires `MSYS2 MinGW x64`. The setup process is a tad inte
 
 [Instructions here](docs/BUILD_WINDOWS.md)
 
+#### macOS
+
+Install [Homebrew](https://brew.sh), then install the following dependencies:
+```
+brew update
+brew install python3 capstone coreutils make pkg-config tehzz/n64-dev/mips64-elf-binutils
+```
+
+When building, use `gmake` to ensure that homebrew `make` is used instead of the old, macOS system `make`.
+
 ## Building
 
 Place a US version of Mario Kart 64 called `baserom.us.z64` into the project folder for asset extraction.
 
 Run the following commands after pulling:
-
-* make -C tools
-* make
+```bash
+make -C tools
+make
+```
 
 ## Progress
 
