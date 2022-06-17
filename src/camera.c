@@ -221,7 +221,7 @@ block_7:
     func_802B7F7C(&cameras[cameraId], &cameras[cameraId].unk, &cameras[cameraId].rotX, &cameras[cameraId]);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8001C4D0/func_8001C4D0.s")
+GLOBAL_ASM("asm/non_matchings/camera/func_8001C4D0.s")
 #endif
 
 void func_8001CA10(Camera *camera) {
@@ -312,7 +312,7 @@ void func_8001CA78(s32 arg0, void *arg1, void *arg2, f32 *arg3, f32 *arg4, f32 *
     *arg5 = ((temp_f16 - temp_f12) * 1.0f) + temp_f12;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8001C4D0/func_8001CA78.s")
+GLOBAL_ASM("asm/non_matchings/camera/func_8001CA78.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -555,7 +555,7 @@ void func_8001CCEC(void *arg0, void *arg1, void *arg2, f32 *arg3, f32 *arg4, f32
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8001C4D0/func_8001CCEC.s")
+GLOBAL_ASM("asm/non_matchings/camera/func_8001CCEC.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -621,7 +621,7 @@ void func_8001D53C(void *arg0, void *arg1, void *arg2, f32 *arg3, f32 *arg4, f32
     *(&D_80164AA0 + sp38) = 0.0f;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8001C4D0/func_8001D53C.s")
+GLOBAL_ASM("asm/non_matchings/camera/func_8001D53C.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -663,7 +663,7 @@ void func_8001D794(void *arg0, void *arg1, void *arg2, f32 *arg3, f32 *arg4, f32
     *arg5 = (((sp68 + arg0->unk1C) - temp_f12) * 1.0f) + temp_f12;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8001C4D0/func_8001D794.s")
+GLOBAL_ASM("asm/non_matchings/camera/func_8001D794.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -884,7 +884,7 @@ void func_8001D944(void *arg0, void *arg1, void *arg2, f32 *arg3, f32 *arg4, f32
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8001C4D0/func_8001D944.s")
+GLOBAL_ASM("asm/non_matchings/camera/func_8001D944.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -965,7 +965,7 @@ void func_8001E0C4(void *arg0, void *arg1, s8 arg2) {
     arg0->unk28 = 0;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8001C4D0/func_8001E0C4.s")
+GLOBAL_ASM("asm/non_matchings/camera/func_8001E0C4.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -1073,7 +1073,7 @@ block_26:
     arg0->unk28 = 0;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8001C4D0/func_8001E45C.s")
+GLOBAL_ASM("asm/non_matchings/camera/func_8001E45C.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -1113,7 +1113,7 @@ void func_8001E8E8(void *arg0, void *arg1, s8 arg2) {
     arg0->unk28 = 0;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8001C4D0/func_8001E8E8.s")
+GLOBAL_ASM("asm/non_matchings/camera/func_8001E8E8.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -1221,7 +1221,7 @@ block_26:
     arg0->unk28 = 0;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8001C4D0/func_8001EA0C.s")
+GLOBAL_ASM("asm/non_matchings/camera/func_8001EA0C.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -1376,7 +1376,7 @@ void func_8001EE98(void *arg0, s32 arg1, s8 arg2) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8001C4D0/func_8001EE98.s")
+GLOBAL_ASM("asm/non_matchings/camera/func_8001EE98.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -1563,7 +1563,7 @@ block_66:
     cameras[playerId].unk30 = phi_f2;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8001C4D0/func_8001F394.s")
+GLOBAL_ASM("asm/non_matchings/camera/func_8001F394.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -1607,5 +1607,5 @@ loop_3:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8001C4D0/func_8001F87C.s")
+GLOBAL_ASM("asm/non_matchings/camera/func_8001F87C.s")
 #endif

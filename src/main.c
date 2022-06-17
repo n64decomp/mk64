@@ -1116,13 +1116,6 @@ void thread5_game_logic(s32 arg0) {
     read_controllers();
     func_800C5CB8();
 
-    //set_segment_base_addr(0x8, SEG_NETWORK);
-    //osInvalICache(SEG_NETWORK, 0x90);
-    //osInvalDCache(SEG_NETWORK+0x90, 0xFF);
-    //osPiStartDma(&gDmaIoMesg, 0, 0, &_networkSegmentRomStart, SEG_NETWORK, 0xFF, &gDmaMesgQueue);
-    //osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
-
-
     while(1) {
         func_800CB2C4();
         if (D_800DC524 != D_800DC50C) {

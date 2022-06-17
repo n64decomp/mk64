@@ -577,7 +577,7 @@ void func_802A4A0C(Vtx *arg0, struct UnkStruct_800DC5EC *arg1, s32 arg2, s32 arg
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_802A3730/func_802A4A0C.s")
+GLOBAL_ASM("asm/non_matchings/skybox/func_802A4A0C.s")
 #endif
 
 /*
@@ -751,7 +751,7 @@ void func_802A4D18(void) {
 }
 
 #else
-GLOBAL_ASM("asm/non_matchings/code_802A3730/func_802A4D18.s")
+GLOBAL_ASM("asm/non_matchings/skybox/func_802A4D18.s")
 #endif
 
 //extern f32 D_80150134;
@@ -1572,7 +1572,7 @@ block_7:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_802A3730/func_802A7658.s")
+GLOBAL_ASM("asm/non_matchings/skybox/func_802A7658.s")
 #endif
 
 extern s32 D_800DC5DC;
