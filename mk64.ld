@@ -73,13 +73,13 @@ SECTIONS
       BUILD_DIR/src/code_8001F980.o(.text);
       BUILD_DIR/src/code_80027040.o(.text);
       BUILD_DIR/src/code_80027D00.o(.text);
-      BUILD_DIR/src/code_800393C0.o(.text);
+      BUILD_DIR/src/spawn_players.o(.text);
       BUILD_DIR/src/code_8003DC40.o(.text);
       BUILD_DIR/asm/unused_mio0_decode.o(.text);
       BUILD_DIR/asm/mio0_decode.o(.text);
       BUILD_DIR/asm/tkmk00_decode.o(.text);
       BUILD_DIR/src/gbiMacro.o(.text);
-      BUILD_DIR/src/code_80040E50.o(.text);
+      BUILD_DIR/src/math_util_2.o(.text);
       BUILD_DIR/src/code_800431B0.o(.text);
       BUILD_DIR/src/code_80057C60.o(.text);
       BUILD_DIR/src/code_8006E9C0.o(.text);
@@ -301,26 +301,26 @@ SECTIONS
    {
       BUILD_DIR/src/code_8028DF00.o(.text);
       BUILD_DIR/src/code_80290C20.o(.text);
-      BUILD_DIR/src/code_80296A50.o(.text);
-      BUILD_DIR/src/code_802A3730.o(.text);
+      BUILD_DIR/src/actors.o(.text);
+      BUILD_DIR/src/skybox_and_splitscreen.o(.text);
       BUILD_DIR/src/memory.o(.text);
-      BUILD_DIR/src/code_802B0210.o(.text);
+      BUILD_DIR/src/actors_extended.o(.text);
       BUILD_DIR/src/math_util.o(.text);
       BUILD_DIR/data/data_121DA0.o(.data);
-      BUILD_DIR/src/code_80296A50.o(.data);
-      BUILD_DIR/src/code_802A3730.o(.data);
+      BUILD_DIR/src/actors.o(.data);
+      BUILD_DIR/src/skybox_and_splitscreen.o(.data);
       BUILD_DIR/src/memory.o(.data);
       BUILD_DIR/data/data_121DA0_1.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);
-      BUILD_DIR/src/code_802B0210.o(.data);
+      BUILD_DIR/src/actors_extended.o(.data);
       BUILD_DIR/data/data_121DA0_2.o(.data);
       BUILD_DIR/src/code_8028DF00.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_1.o(.data);
       BUILD_DIR/src/code_80290C20.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_1_2.o(.data);
-      BUILD_DIR/src/code_80296A50.o(.rodata);
+      BUILD_DIR/src/actors.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_2.o(.data);
-      BUILD_DIR/src/code_802B0210.o(.rodata);
+      BUILD_DIR/src/actors_extended.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_3.o(.data);
       BUILD_DIR/src/math_util.o(.rodata);
    }
@@ -328,7 +328,7 @@ SECTIONS
 
    	BEGIN_NOLOAD(code_8028DF00) {
         BUILD_DIR/src/code_8028DF00.o(.bss);
-        BUILD_DIR/src/code_80296A50.o(.bss);
+        BUILD_DIR/src/actors.o(.bss);
         BUILD_DIR/src/memory.o(.bss);
         BUILD_DIR/src/framebuffers.o(.bss*);
         BUILD_DIR/src/audio/synthesis.o(.bss*);

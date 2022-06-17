@@ -1,5 +1,5 @@
-#ifndef CODE_802B0210_H
-#define CODE_802B0210_H
+#ifndef ACTORS_EXTENDED_H
+#define ACTORS_EXTENDED_H
 
 #include "common_structs.h"
 #include "actor_types.h"
@@ -87,4 +87,4 @@ extern u16 D_80164430;
 extern u16 D_80164438[];
 extern s16 gPlayerPositionLUT[];
 
-#endif
+#endif // ACTORS_EXTENDED_H

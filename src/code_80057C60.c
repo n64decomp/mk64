@@ -6,7 +6,7 @@
 #include <config.h>
 #include <defines.h>
 #include "code_80057C60.h"
-#include "code_80040E50.h"
+#include "math_util_2.h"
 #include "math_util.h"
 
 // UI Code?

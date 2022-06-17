@@ -2,7 +2,7 @@
 #include <macros.h>
 #include <defines.h>
 #include <functions.h>
-#include "code_80040E50.h"
+#include "math_util_2.h"
 #include "code_80071F00.h"
 
 s32 find_unused_obj_index(s32* arg0) {

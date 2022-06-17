@@ -1041,7 +1041,7 @@ void func_8003C0F0(void) {
 }
 #else
 void func_8003C0F0(void);
-GLOBAL_ASM("asm/non_matchings//code_800393C0/func_8003C0F0.s")
+GLOBAL_ASM("asm/non_matchings/code_800393C0/func_8003C0F0.s")
 #endif
 
 void func_8003CD78(void) {
@@ -1232,7 +1232,7 @@ void func_8003D080(void) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings//code_800393C0/func_8003D080.s")
+GLOBAL_ASM("asm/non_matchings/code_800393C0/func_8003D080.s")
 #endif
 
 // #ifdef NON_MATCHING

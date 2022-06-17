@@ -8,8 +8,8 @@
 #include <PR/gbi.h>
 #include "math_util.h"
 #include "memory.h"
-#include "code_802B0210.h"
-#include "code_80296A50.h"
+#include "actors_extended.h"
+#include "actors.h"
 
 s32 D_802BA050;
 s32 D_802BA054;

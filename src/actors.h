@@ -1,5 +1,5 @@
-#ifndef CODE_80296A50_H
-#define CODE_80296A50_H
+#ifndef ACTORS_H
+#define ACTORS_H
 
 #include "types.h"
 #include "actor_types.h"
@@ -319,4 +319,4 @@ extern u16 D_800DC5BC;
 
 extern Vec3f D_8015F8D0;
 
-#endif
+#endif // ACTORS_H

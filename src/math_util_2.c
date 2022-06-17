@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <common_structs.h>
-#include "code_80040E50.h"
+#include "math_util_2.h"
 #include "main.h"
 #include "variables.h"
 #include "math_util.h"

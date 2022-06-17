@@ -2379,7 +2379,7 @@ glabel D_800EDE10
 
 .balign 0x10
 
-# start of rodata for code_800393C0
+# start of rodata for code_800393C0 spawn_players
 
 glabel D_800EDE20
 .float -34.6
@@ -2455,4 +2455,4 @@ glabel D_800EDF08
 glabel D_800EDF0C
 .float 575.0
 
-# end of rodata for code_800393C0
+# end of rodata for code_800393C0 spawn_players
