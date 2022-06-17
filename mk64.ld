@@ -227,7 +227,9 @@ SECTIONS
       BUILD_DIR/src/code_80027040.o(.data);
       BUILD_DIR/data/data_0DD0A0_1_2.o(.data);
       BUILD_DIR/src/kart_attributes.inc.o(.data);
-      BUILD_DIR/data/data_0DD0A0_2.o(.rodata);
+      BUILD_DIR/data/data_0DD0A0_2.o(.data);
+      BUILD_DIR/src/spawn_players.o(.data);
+      BUILD_DIR/data/data_0DD0A0_2_0.o(.data);
       BUILD_DIR/src/audio/load.o(.rodata*);
       BUILD_DIR/data/data_0DD0A0_2_1_0.o(.rodata);
       BUILD_DIR/src/os/osInitialize.o(.data*);
@@ -246,6 +248,7 @@ SECTIONS
       BUILD_DIR/src/main.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
+      BUILD_DIR/src/spawn_players.o(.rodata);
       BUILD_DIR/src/code_8003DC40.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3_0_1.o(.rodata);
       BUILD_DIR/src/code_80057C60.o(.rodata);

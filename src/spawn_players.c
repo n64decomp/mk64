@@ -389,41 +389,41 @@ void func_80039AE4(void) {
     }
 }
 
-typedef struct {
-    s32 unk00[8];
-} temp_80039DA4; // to be removed when data is compilable
-extern temp_80039DA4 D_800E4360;
-extern temp_80039DA4 D_800E4380;
+//typedef struct {
+//    s32 unk00[8];
+//} temp_80039DA4; // to be removed when data is compilable
+//extern temp_80039DA4 D_800E4360;
+//extern temp_80039DA4 D_800E4380;
 
 void func_80039DA4(void) {
     s32 i;
-    // Put back in when data is compilable
-    /*
+    
     s32 sp2C[] = {
-        0x00000007, 0x00000006, 0x00000005, 0x00000004,
-        0x00000003, 0x00000002, 0x00000001, 0x00000000,
+        7, 6, 5, 4,
+        3, 2, 1, 0,
     };
 
     s32 spC[] = {
-        0x00000000, 0x00000001, 0x00000002, 0x00000003,
-        0x00000004, 0x00000005, 0x00000006, 0x00000007,
+        0, 1, 2, 3,
+        4, 5, 6, 7,
     };
-    */
-    temp_80039DA4 sp2C = D_800E4360;
-    temp_80039DA4 spC = D_800E4380;
 
     if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) ||
         (D_800DC51C == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         for (i = 0; i < 8; i++) {
-            D_80165270[i] = sp2C.unk00[i];
+            D_80165270[i] = sp2C[i];
         }
     } else {
         for (i = 0; i < 8; i++) {
-            D_80165270[i] = spC.unk00[gPlayerPositions[i]];
+            D_80165270[i] = spC[gPlayerPositions[i]];
         }
     }
 }
+
+UNUSED f32 D_800E43A0 = 1.0f;
+UNUSED s16  D_800E43A4 = 1;
+UNUSED s16 D_800E43A8 = 0;
 
 void func_80039F44(f32 *arg0, f32 *arg1, f32 arg2) {
     func_80039DA4();
@@ -676,48 +676,29 @@ void spawn_players_4p_battle(f32 *arg0, f32 *arg1, f32 arg2) {
     func_80039AE4();
 }
 
-/* Remove when rodata works */
-extern f32 D_800EDE20;
-extern f32 D_800EDE24;
-extern f32 D_800EDE28;
-extern f32 D_800EDE2C;
-extern f32 D_800EDE30;
-extern f32 D_800EDE34;
-extern f32 D_800EDE38;
-extern f32 D_800EDE3C;
-extern f32 D_800EDE40;
-extern f32 D_800EDE44;
-extern f32 D_800EDE48;
-extern f32 D_800EDE4C;
-extern f32 D_800EDE50;
-extern f32 D_800EDE54;
-extern f32 D_800EDE58;
-extern f32 D_800EDE5C;
-
 void func_8003BE30(void) {
-    spawn_player(gPlayerOne, 0, -2770.774f, -345.187f, D_800EDE20, 0.0f, gCharacterIdByGPOverallRank[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    spawn_player(gPlayerTwo, 1, -3691.506f, -6.822f, D_800EDE24, D_800EDE28, gCharacterIdByGPOverallRank[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    spawn_player(gPlayerThree, 2, -3475.028f, -998.485f, D_800EDE2C, D_800EDE30, gCharacterIdByGPOverallRank[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerOne, 0, -2770.774f, -345.187f, -34.6f, 0.0f, gCharacterIdByGPOverallRank[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerTwo, 1, -3691.506f, -6.822f, -6.95f, 36400.0f, gCharacterIdByGPOverallRank[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerThree, 2, -3475.028f, -998.485f, -8.059f, 45500.0f, gCharacterIdByGPOverallRank[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
     if (D_802874D8.unk_1D >= 3) {
-        spawn_player(gPlayerFour, 3, -3025.772f, 110.039f, D_800EDE34, D_800EDE38, D_802874D8.unk_1E, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerFour, 3, -3025.772f, 110.039f, -23.224f, 28210.0f, D_802874D8.unk_1E, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
     } else {
-        spawn_player(gPlayerFour, 3, -3025.772f, 110.039f, D_800EDE3C, D_800EDE40, gCharacterIdByGPOverallRank[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerFour, 3, -3025.772f, 110.039f, -23.224f, 28210.0f, gCharacterIdByGPOverallRank[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
     }
-    spawn_player(gPlayerFive, 4, -2770.774f, -345.187f, D_800EDE44, 0.0f, 0, 0x7000);
-    spawn_player(gPlayerSix, 5, -3691.506f, -6.822f, D_800EDE48, D_800EDE4C, 0, 0x7000);
-    spawn_player(gPlayerSeven, 6, -3475.028f, -998.485f, D_800EDE50, D_800EDE54, 0, 0x7000);
-    spawn_player(gPlayerEight, 7, -3025.772f, 110.039f, D_800EDE58, D_800EDE5C, 0, 0x7000);
+    spawn_player(gPlayerFive, 4, -2770.774f, -345.187f, -34.6f, 0.0f, 0, 0x7000);
+    spawn_player(gPlayerSix, 5, -3691.506f, -6.822f, -6.95f, 36400.0f, 0, 0x7000);
+    spawn_player(gPlayerSeven, 6, -3475.028f, -998.485f, -8.059f, 45500.0f, 0, 0x7000);
+    spawn_player(gPlayerEight, 7, -3025.772f, 110.039f, -23.224f, 28210.0f, 0, 0x7000);
     D_80164A28 = 0;
     func_80039AE4();
 }
 
-#ifdef NON_MATCHING
 void func_8003C0F0(void) {
     s16 sp5E;
     s16 sp5C;
     s16 sp5A;
     s32 temp;
-
+    s32 pad[4];
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
         case COURSE_CHOCO_MOUNTAIN:
@@ -736,9 +717,9 @@ void func_8003C0F0(void) {
         case COURSE_WARIO_STADIUM:
         case COURSE_DK_JUNGLE:
             func_8000F2DC();
-            sp5E = (f32)D_80164550[0];
-            sp5C = (f32)D_80164550[2];
-            sp5A = (f32)D_80164550[1];
+            sp5E = (f32) D_80164550[0];
+            sp5C = (f32) D_80164550[2];
+            sp5A = (f32) D_80164550[1];
             if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
                 sp5E = 0;
             }
@@ -772,9 +753,9 @@ void func_8003C0F0(void) {
             switch (gActiveScreenMode) {
                 case 0:
                     switch (gModeSelection) {
-                        case GRAND_PRIX:
-                            D_80165210[0] = D_80165210[2] = D_80165210[4] = D_80165210[6] = sp5E + 0x14;
-                            D_80165210[1] = D_80165210[3] = D_80165210[5] = D_80165210[7] = sp5E - 0x14;
+                        case 0:
+                            D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E + 0x14)));
+                            D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E - 0x14)));
                             D_80165230[0] = sp5C + 0x1E;
                             D_80165230[1] = sp5C + 0x32;
                             D_80165230[2] = sp5C + 0x46;
@@ -784,11 +765,11 @@ void func_8003C0F0(void) {
                             D_80165230[6] = sp5C + 0x96;
                             D_80165230[7] = sp5C + 0xAA;
                             func_80039F44(D_80165210, D_80165230, sp5A);
-                            break;
+                        break;
 
-                        case TIME_TRIALS:
-                            D_80165210[0] = D_80165210[2] = D_80165210[4] = D_80165210[6] = sp5E;
-                            D_80165210[1] = D_80165210[3] = D_80165210[5] = D_80165210[7] = sp5E;
+                        case 1:
+                            D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E)));
+                            D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E)));
                             D_80165230[0] = sp5C + 0x1E;
                             D_80165230[1] = sp5C + 0x1E;
                             D_80165230[2] = sp5C + 0x1E;
@@ -798,16 +779,16 @@ void func_8003C0F0(void) {
                             D_80165230[6] = sp5C + 0x1E;
                             D_80165230[7] = sp5C + 0x1E;
                             func_8003A59C(D_80165210, D_80165230, sp5A);
-                            break;
+                        break;
                     }
                     break;
 
                 case 1:
                 case 2:
                     switch (gModeSelection) {
-                        case GRAND_PRIX:
-                            D_80165210[0] = D_80165210[2] = D_80165210[4] = D_80165210[6] = sp5E + 0x14;
-                            D_80165210[1] = D_80165210[3] = D_80165210[5] = D_80165210[7] = sp5E - 0x14;
+                        case 0:
+                            D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E + 0x14)));
+                            D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E - 0x14)));
                             D_80165230[0] = sp5C + 0x1E;
                             D_80165230[1] = sp5C + 0x32;
                             D_80165230[2] = sp5C + 0x46;
@@ -819,9 +800,9 @@ void func_8003C0F0(void) {
                             func_8003A9F0(D_80165210, D_80165230, sp5A);
                             break;
 
-                        case VERSUS:
-                            D_80165210[0] = D_80165210[2] = D_80165210[4] = D_80165210[6] = sp5E + 0xA;
-                            D_80165210[1] = D_80165210[3] = D_80165210[5] = D_80165210[7] = sp5E - 0xA;
+                        case 2:
+                            D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E + 0xA)));
+                            D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E - 0xA)));
                             D_80165230[0] = sp5C + 0x1E;
                             D_80165230[1] = sp5C + 0x1E;
                             D_80165230[2] = sp5C + 0x1E;
@@ -837,12 +818,15 @@ void func_8003C0F0(void) {
 
                 case 3:
                     switch (gModeSelection) {
-                        case VERSUS:
+                        case 2:
                             D_80165210[0] = sp5E + 0x1E;
-                            D_80165210[2] = D_80165210[4] = D_80165210[6] = sp5E - 0xA;
-                            D_80165210[3] = D_80165210[5] = D_80165210[7] = sp5E - 0x1E;
+                            D_80165210[6] = sp5E - 0xA;
                             D_80165210[1] = sp5E + 0xA;
-
+                            D_80165210[7] = sp5E - 0x1E;
+                            D_80165210[4] = sp5E - 0xA;
+                            D_80165210[2] = sp5E - 0xA;
+                            D_80165210[5] = sp5E - 0x1E;
+                            D_80165210[3] = sp5E - 0x1E;
                             D_80165230[0] = sp5C + 0x1E;
                             D_80165230[1] = sp5C + 0x1E;
                             D_80165230[2] = sp5C + 0x1E;
@@ -853,7 +837,8 @@ void func_8003C0F0(void) {
                             D_80165230[7] = sp5C + 0x1E;
                             if (gPlayerCountSelection1 == 4) {
                                 func_8003B870(D_80165210, D_80165230, sp5A);
-                            } else {
+                            }
+                            else {
                                 func_8003B318(D_80165210, D_80165230, sp5A);
                             }
                             break;
@@ -867,29 +852,22 @@ void func_8003C0F0(void) {
                 case 1:
                 case 2:
                     temp = 5;
-                    if (1){
-                        if (1){};
-                    };
+                    if (1);
                     D_80165210[0] = 0;
                     D_80165210[1] = 0;
-                    D_80165230[0] = -200.0f;
-                    D_80165230[1] = 200.0f;
+                    D_80165230[1] = -200.0f;
+                    D_80165230[0] = 200.0f;
                     spawn_players_2p_battle(D_80165210, D_80165230, temp);
                     break;
 
                 case 3:
                     temp = 5;
-                    if (1){
-                        if (1){};
-                    };
                     D_80165210[2] = -200.0f;
                     D_80165230[1] = -200.0f;
-
                     D_80165210[0] = 0.0f;
                     D_80165210[1] = 0.0f;
                     D_80165230[2] = 0.0f;
                     D_80165230[3] = 0.0f;
-
                     D_80165210[3] = 200.0f;
                     D_80165230[0] = 200.0f;
                     if (gPlayerCountSelection1 == 4) {
@@ -906,9 +884,7 @@ void func_8003C0F0(void) {
                 case 1:
                 case 2:
                     temp = 0x1E0;
-                    if (1){
-                        if (1){};
-                    };
+                    if (1);
                     D_80165210[0] = 0.0f;
                     D_80165210[1] = 0.0f;
                     D_80165230[1] = -400.0f;
@@ -918,9 +894,6 @@ void func_8003C0F0(void) {
 
                 case 3:
                     temp = 0x1E0;
-                    if (1){
-                        if (1){};
-                    };
                     D_80165210[0] = 0.0f;
                     D_80165210[1] = 0.0f;
                     D_80165210[2] = -400.0f;
@@ -940,38 +913,33 @@ void func_8003C0F0(void) {
 
         case COURSE_DOUBLE_DECK:
             switch (gActiveScreenMode) {
-                case 1:
-                case 2:
-                    temp = 0x37;
-                    if (1){
-                        if (1){};
-                    };
-                    D_80165210[0] = 0.0f;
-                    D_80165210[1] = 0.0f;
-                    D_80165230[1] = -160.0f;
-                    D_80165230[0] = 160.0f;
-                    spawn_players_2p_battle(D_80165210, D_80165230, temp);
-                    break;
+            case 1:
+            case 2:
+                temp = 0x37;
+                if (1);
+                D_80165210[0] = 0.0f;
+                D_80165210[1] = 0.0f;
+                D_80165230[1] = -160.0f;
+                D_80165230[0] = 160.0f;
+                spawn_players_2p_battle(D_80165210, D_80165230, temp);
+                break;
 
-                case 3:
-                    temp = 0x37;
-                    if (1){
-                        if (1){};
-                    };
-                    D_80165210[0] = 0.0f;
-                    D_80165210[1] = 0.0f;
-                    D_80165210[2] = -160.0f;
-                    D_80165210[3] = 160.0f;
-                    D_80165230[0] = 160.0f;
-                    D_80165230[1] = -160.0f;
-                    D_80165230[2] = 0.0f;
-                    D_80165230[3] = 0.0f;
-                    if (gPlayerCountSelection1 == 4) {
-                        spawn_players_4p_battle(D_80165210, D_80165230, temp);
-                    } else {
-                        spawn_players_3p_battle(D_80165210, D_80165230, temp);
-                    }
-                    break;
+            case 3:
+                temp = 0x37;
+                D_80165210[0] = 0.0f;
+                D_80165210[1] = 0.0f;
+                D_80165210[2] = -160.0f;
+                D_80165210[3] = 160.0f;
+                D_80165230[0] = 160.0f;
+                D_80165230[1] = -160.0f;
+                D_80165230[2] = 0.0f;
+                D_80165230[3] = 0.0f;
+                if (gPlayerCountSelection1 == 4) {
+                    spawn_players_4p_battle(D_80165210, D_80165230, temp);
+                } else {
+                    spawn_players_3p_battle(D_80165210, D_80165230, temp);
+                }
+                break;
             }
             break;
 
@@ -980,9 +948,7 @@ void func_8003C0F0(void) {
                 case 1:
                 case 2:
                     temp = 0xC8;
-                    if (1){
-                        if (1){};
-                    };
+                    if (1);
                     D_80165210[0] = 0.0f;
                     D_80165210[1] = 0.0f;
                     D_80165230[1] = -575.0f;
@@ -992,9 +958,6 @@ void func_8003C0F0(void) {
 
                 case 3:
                     temp = 0xC8;
-                    if (1){
-                        if (1){};
-                    };
                     D_80165210[0] = 0.0f;
                     D_80165210[1] = 0.0f;
                     D_80165210[2] = -575.0f;
@@ -1013,8 +976,8 @@ void func_8003C0F0(void) {
             break;
 
         default:
-            D_80165210[0] = D_80165210[2] = D_80165210[4] = D_80165210[6] = 20.0f;
-            D_80165210[1] = D_80165210[3] = D_80165210[5] = D_80165210[7] = -20.0f;
+            D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = 20.0f)));
+            D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = -20.0f)));
             D_80165230[0] = 30.0f;
             D_80165230[1] = 50.0f;
             D_80165230[2] = 70.0f;
@@ -1023,26 +986,22 @@ void func_8003C0F0(void) {
             D_80165230[5] = 130.0f;
             D_80165230[6] = 150.0f;
             D_80165230[7] = 170.0f;
-            spawn_player(gPlayerOneCopy, 0, D_80165210[0], D_80165230[0], sp5A, 32768.0f, gCharacterSelections[0], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
-            spawn_player(gPlayerTwo, 1, D_80165210[1], D_80165230[1], sp5A, 32768.0f, 1, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-            spawn_player(gPlayerThree, 2, D_80165210[2], D_80165230[2], sp5A, 32768.0f, 2, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-            spawn_player(gPlayerFour, 3, D_80165210[3], D_80165230[3], sp5A, 32768.0f, 3, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-            spawn_player(gPlayerFive, 4, D_80165210[4], D_80165230[4], sp5A, 32768.0f, 4, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-            spawn_player(gPlayerSix, 5, D_80165210[5], D_80165230[5], sp5A, 32768.0f, 5, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-            spawn_player(gPlayerSeven, 6, D_80165210[6], D_80165230[6], sp5A, 32768.0f, 6, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-            spawn_player(gPlayerEight, 7, D_80165210[7], D_80165230[7], sp5A, 32768.0f, 7, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+            spawn_player(gPlayerOneCopy, 0, D_80165210[0], D_80165230[0], sp5A, 32768.0f, gCharacterSelections[0], ((1 << 15) | (1 << 13)) | (1 << 14));
+            spawn_player(gPlayerTwo, 1, D_80165210[1], D_80165230[1], sp5A, 32768.0f, 1, ((1 << 15) | (1 << 12)) | (1 << 13));
+            spawn_player(gPlayerThree, 2, D_80165210[2], D_80165230[2], sp5A, 32768.0f, 2, ((1 << 15) | (1 << 12)) | (1 << 13));
+            spawn_player(gPlayerFour, 3, D_80165210[3], D_80165230[3], sp5A, 32768.0f, 3, ((1 << 15) | (1 << 12)) | (1 << 13));
+            spawn_player(gPlayerFive, 4, D_80165210[4], D_80165230[4], sp5A, 32768.0f, 4, ((1 << 15) | (1 << 12)) | (1 << 13));
+            spawn_player(gPlayerSix, 5, D_80165210[5], D_80165230[5], sp5A, 32768.0f, 5, ((1 << 15) | (1 << 12)) | (1 << 13));
+            spawn_player(gPlayerSeven, 6, D_80165210[6], D_80165230[6], sp5A, 32768.0f, 6, ((1 << 15) | (1 << 12)) | (1 << 13));
+            spawn_player(gPlayerEight, 7, D_80165210[7], D_80165230[7], sp5A, 32768.0f, 7, ((1 << 15) | (1 << 12)) | (1 << 13));
             D_80164A28 = 0;
             break;
     }
 
-    if (gModeSelection != BATTLE) {
+    if (gModeSelection != 3) {
         func_8000F628();
     }
 }
-#else
-void func_8003C0F0(void);
-GLOBAL_ASM("asm/non_matchings/code_800393C0/func_8003C0F0.s")
-#endif
 
 void func_8003CD78(void) {
     func_8003BE30();
@@ -1076,15 +1035,12 @@ void func_8003CD98(Player *player, struct Camera *camera, s8 arg2, s8 arg3) {
     }
 }
 
-#ifdef NON_MATCHING
-// issues with 1C, func_8001C4D0 seems to want it as an s32, but spawn_player saves it as a float
-// it's z pos so it should be a float, m2c detects the arg as f32 in func_8001C4D0
-// pointer loading/increments are wrong
 void func_8003D080(void) {
-    Player* ptr;
+    s32 pad;
+    Player* ptr = &gPlayers[0];
 
     func_8005D290();
-    if (D_800DC50C == ENDING_SEQUENCE) {
+    if (D_800DC50C == 5) {
         func_8003CD78();
     } else {
         func_8003C0F0();
@@ -1093,20 +1049,20 @@ void func_8003D080(void) {
         switch (gActiveScreenMode) {
             case 0:
                 switch (gModeSelection) {
-                    case GRAND_PRIX:
-                        if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
-                            func_8001C4D0(0.0f, gPlayerOne->unk_0A8, D_8016524C, gPlayerOne->unk_0BC, 8, 0);
+                    case 0:
+                        if (gCurrentCourseId == 10) {
+                            func_8001C4D0(0.0f, ptr->pos[1], D_8016524C, ptr->unk_02E, 8, 0);
                         } else {
-                            func_8001C4D0((D_80165210[6] + D_80165210[7]) / 2, gPlayerOne->unk_0A8, D_8016524C, gPlayerOne->unk_0BC, 8, 0);
+                            func_8001C4D0((D_80165210[7] + D_80165210[6]) / 2, ptr->pos[1], D_8016524C, ptr->unk_02E, 8, 0);
                         }
                         break;
 
-                    case TIME_TRIALS:
-                        func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, D_8016524C, gPlayerOne->unk_0BC, 1, 0);
+                    case 1:
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 0);
                         break;
 
                     default:
-                        func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 10, 0);
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 10, 0);
                         break;
                 }
                 break;
@@ -1114,42 +1070,45 @@ void func_8003D080(void) {
             case 1:
             case 2:
                 switch (gModeSelection) {
-                    case GRAND_PRIX:
-                        func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 1, 0);
-                        func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 1, 1);
+                    case 0:
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 0);
+                        ptr++;
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 1);
                         break;
 
-                    case BATTLE:
-                        func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 9, 0);
-                        func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 9, 1);
+                    case 3:
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 9, 0);
+                        ptr++;
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 9, 1);
                         break;
 
                     default:
-                        func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 1, 0);
-                        func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 1, 1);
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 0);
+                        ptr++;
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 1);
                         break;
                 }
                 break;
 
             case 3:
-                if (gModeSelection == BATTLE) {
-                    ptr = &gPlayerThree;
-                    func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 9, 0);
-                    func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 9, 1);
+                if (gModeSelection == 3) {
+                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 9, 0);
+                    ptr++;
+                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 9, 1);
                     ptr++;
                     func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 9, 2);
-                    ptr++;
                     if (gPlayerCountSelection1 == 4) {
+                        ptr++;
                         func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 9, 3);
                     }
                 } else {
-                    ptr = &gPlayerThree;
-                    func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 1, 0);
-                    func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 1, 1);
+                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 0);
+                    ptr++;
+                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 1);
                     ptr++;
                     func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 2);
-                    ptr++;
                     if (gPlayerCountSelection1 == 4) {
+                        ptr++;
                         func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 3);
                     }
                 }
@@ -1158,19 +1117,20 @@ void func_8003D080(void) {
     } else {
         switch (gActiveScreenMode) {
             case 0:
-                func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 3, 0);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 0);
                 break;
 
             case 1:
             case 2:
-                func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 3, 0);
-                func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 3, 1);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 0);
+                ptr++;
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 1);
                 break;
 
             case 3:
-                ptr = &gPlayerThree;
-                func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 3, 0);
-                func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 3, 1);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 0);
+                ptr++;
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 1);
                 ptr++;
                 func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 2);
                 ptr++;
@@ -1181,7 +1141,7 @@ void func_8003D080(void) {
 
     switch (gActiveScreenMode) {
         case 0:
-            func_8003CD98(gPlayerTwo, camera1, 0, 0); // sic
+            func_8003CD98(gPlayerOneCopy, camera1, 0, 0); // sic
             func_8003CD98(gPlayerTwo, camera1, 1, 0);
             func_8003CD98(gPlayerThree, camera1, 2, 0);
             func_8003CD98(gPlayerFour, camera1, 3, 0);
@@ -1231,14 +1191,7 @@ void func_8003D080(void) {
             break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800393C0/func_8003D080.s")
-#endif
 
-// #ifdef NON_MATCHING
-// TODO: verify this claim because just changing the prototype makes it match
-// if 1C is typed as s32 it matches, but spawn_player saves it as a float
-// it's z pos so it should be a float, m2c detects it as f32 in func_8001C4D0
 void func_8003DB5C(void) {
     Player *player = gPlayerOne;
     s32 i;
@@ -1251,6 +1204,4 @@ void func_8003DB5C(void) {
         func_80027A20(player, i, 1, 1);
     }
 }
-// #else
-// GLOBAL_ASM("asm/non_matchings/code_800393C0/func_8003DB5C.s")
-// #endif
+
