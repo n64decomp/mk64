@@ -8,8 +8,8 @@
 #include <PR/gbi.h>
 #include "math_util.h"
 #include "memory.h"
-#include "code_802B0210.h"
-#include "code_80296A50.h"
+#include "actors_extended.h"
+#include "actors.h"
 
 s32 D_802BA050;
 s32 D_802BA054;
@@ -169,7 +169,7 @@ loop_34:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_80296A50.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_80296A50.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -359,7 +359,7 @@ void func_80296D10(struct Actor *actor, Vec3f startingPos, Vec3s startingRot, Ve
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_80296D10.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_80296D10.s")
 #endif
 
 void func_80297230(Camera *arg0, struct Actor *arg1) {
@@ -454,7 +454,7 @@ if (temp_t4 < 0x7FF) {
     gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0, 0);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_80297524.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_80297524.s")
 #endif
 
 void func_802976D8(Vec3s arg0) {
@@ -580,7 +580,7 @@ void func_80297A50(Camera *camera, Mat4 arg1, struct Actor *arg2) {
         }
 }
 #endif
-GLOBAL_ASM("asm/non_matchings/code_actors/func_80297A50.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_80297A50.s")
 
 void update_obj_yoshi_valley_egg(struct YoshiValleyEgg *egg) {
     egg->pathRot += 0x5B;
@@ -729,7 +729,7 @@ block_17:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/update_obj_kiwano_fruit.s")
+GLOBAL_ASM("asm/non_matchings/actors/update_obj_kiwano_fruit.s")
 #endif
 
 void update_obj_paddle_wheel(struct PaddleWheelBoat *boat) {
@@ -1057,7 +1057,7 @@ block_17:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_802986B4.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_802986B4.s")
 #endif
 
 //static f32 D_802B964C = 0.8f;
@@ -1087,7 +1087,7 @@ void func_80298AC0(Player *player) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_80298AC0.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_80298AC0.s")
 #endif
 
 void func_80298C94(void) {
@@ -1254,7 +1254,7 @@ block_29:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_80298D7C.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_80298D7C.s")
 #endif
 
 void func_80299144(Camera *camera, Mat4 arg1, struct Actor *arg2) {
@@ -1738,7 +1738,7 @@ void func_8029AC18(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_8029AC18.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_8029AC18.s")
 #endif
 
 void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, Mat4 arg2, u16 arg3) {
@@ -2435,7 +2435,7 @@ void update_obj_falling_rocks(struct FallingRock *rock) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/update_obj_falling_rocks.s")
+GLOBAL_ASM("asm/non_matchings/actors/update_obj_falling_rocks.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -2536,7 +2536,7 @@ void place_segment_06(u32 arg0) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/place_segment_06.s")
+GLOBAL_ASM("asm/non_matchings/actors/place_segment_06.s")
 #endif
 
 void place_all_item_boxes(struct ActorSpawnData *spawnData) {
@@ -2776,7 +2776,7 @@ void func_8029DB44(void) {
     gNumPermanentActors = gNumActors;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_8029DB44.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_8029DB44.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -2956,7 +2956,7 @@ void func_8029E158(void) {
     func_800122D8();
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_8029E158.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_8029E158.s")
 #endif
 
 void func_8029E7DC(struct Actor *actor) {
@@ -3153,7 +3153,7 @@ block_50:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_8029E890.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_8029E890.s")
 #endif
 
 s16 func_8029EC88(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
@@ -3206,7 +3206,7 @@ void func_8029ED98(Player *player, u32 arg1) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_8029ED98.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_8029ED98.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -3320,7 +3320,7 @@ block_25:
     return 1;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_8029EEB8.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_8029EEB8.s")
 #endif
 
 #ifdef NEEDS_RODATA
@@ -3343,7 +3343,7 @@ s32 func_8029F1F8(Player *player, struct Actor *marioRacewaySign) {
     return 0;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_8029F1F8.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_8029F1F8.s")
 #endif
 
 s32 func_8029F2FC(Player *player, struct PiranhaPlant *plant) {
@@ -3575,7 +3575,7 @@ block_36:
     return 1;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_8029F69C.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_8029F69C.s")
 #endif
 
 s32 func_8029FB80(Player *arg0, struct Actor *arg1) {
@@ -3795,7 +3795,7 @@ void func_8029FDC8(struct Actor *actor) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_8029FDC8.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_8029FDC8.s")
 #endif
 
 void func_802A00E8(struct Actor *arg0, struct Actor *arg1) {
@@ -4125,7 +4125,7 @@ block_89:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_802A0450.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_802A0450.s")
 #endif
 
 void func_802A0D54(void) {
@@ -4652,7 +4652,7 @@ void func_802A171C(Camera *camera, struct Actor *actor) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_802A171C.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_802A171C.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -4976,7 +4976,7 @@ block_42:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_actors/func_802A1EA0.s")
+GLOBAL_ASM("asm/non_matchings/actors/func_802A1EA0.s")
 #endif
 
 void func_802A269C(Camera *arg0, struct Actor *arg1) {

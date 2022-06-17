@@ -901,7 +901,7 @@ void func_8028F588(void) {
     D_800DC5EC->screenHeight = phi_v0_8;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8028DF00/func_8028F588.s")
+GLOBAL_ASM("asm/non_matchings/race_logic/func_8028F588.s")
 #endif
 
 void func_8028F8BC(void) {
@@ -1018,7 +1018,7 @@ block_20:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8028DF00/func_8028F970.s")
+GLOBAL_ASM("asm/non_matchings/race_logic/func_8028F970.s")
 #endif
 
 void func_8028FBD4(void) {
@@ -1401,7 +1401,7 @@ block_8:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8028DF00/func_802903D8.s")
+GLOBAL_ASM("asm/non_matchings/race_logic/func_802903D8.s")
 #endif
 
 void func_802909F0(void) {

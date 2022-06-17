@@ -140,7 +140,7 @@ extern s16  D_801651D0[4][8];
 
 extern f32  D_80165210[];
 extern f32  D_80165230[];
-extern s32  D_8016524C;
+extern f32  D_8016524C;
 extern s16  D_80165270[8];
 extern f32  D_80165280[];
 extern f32  D_801652A0[];

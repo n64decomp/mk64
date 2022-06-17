@@ -9,7 +9,7 @@ extern Mtx D_0D008E98;
 extern Gfx* gDisplayListHead;
 
 // rsp init
-void gfx_func_80040D00(void) {
+UNUSED void gfx_func_80040D00(void) {
     D_800E43A8 = 0;
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
