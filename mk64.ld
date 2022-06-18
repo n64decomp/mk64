@@ -87,7 +87,7 @@ SECTIONS
       BUILD_DIR/src/code_80086E70.o(.text);
       BUILD_DIR/src/code_8008C1D0.o(.text);
       BUILD_DIR/src/code_80091750.o(.text);
-      BUILD_DIR/src/code_800AF9B0.o(.text);
+      BUILD_DIR/src/menus.o(.text);
       BUILD_DIR/src/audio/synthesis.o(.text);
       BUILD_DIR/src/audio/heap.o(.text);
       BUILD_DIR/src/audio/load.o(.text);

@@ -2,7 +2,7 @@
 #include <macros.h>
 #include <defines.h>
 #include "code_80091750.h"
-#include "code_800AF9B0.h"
+#include "menus.h"
 #include "credits_01.h"
 #include "data_segment2.h"
 #include "variables.h"
