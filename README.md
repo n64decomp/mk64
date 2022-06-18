@@ -98,8 +98,11 @@ Some menu textures are compressed using a format called tkmk00. A byte-matching 
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to
-discuss what you would like to change.
+Pull requests are welcome. For major changes, please discuss in the Discord.
+
+Files needing documentation:
+actors.c, actors_extended.c, main.c, kart_dma.c, race_logic.c, render_courses.c, skybox_and_splitscreen.c, staff_ghosts.c.
+Any inc.c file.
 
 Run `clang-format` on your code to ensure it meets the project's coding standards.
 
