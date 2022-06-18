@@ -4,7 +4,7 @@
 #include "global.h"
 
 #include "code_80091750.h"
-#include "code_800AF9B0.h"
+#include "menus.h"
 
 void func_800AF9B0(void) {
     D_8018EDB8 = func_802A7B70(7680);
@@ -96,7 +96,7 @@ void func_800AF9E4(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s16 arg4, s16 arg5, s
     temp_a3_5->unk0 = 0xBF000000;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800AF9E4.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800AF9E4.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -168,7 +168,7 @@ void func_800AFC54(s32 arg0, s32 arg1, s32 arg2, s32 arg3, void *arg4) {
     arg4->unk4 = temp_f18 * temp_f2 * 120.0f;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800AFC54.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800AFC54.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -240,7 +240,7 @@ void func_800AFE00(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     } while (temp_v1 != 0x1E0);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800AFE00.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800AFE00.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -276,7 +276,7 @@ void func_800AFF58(s32 arg0) {
     } while (temp_s0 != 0xC);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800AFF58.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800AFF58.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -388,7 +388,7 @@ loop_5:
     temp_v0_4->unk0 = 0xB6000000;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B0004.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B0004.s")
 #endif
 
 
@@ -449,7 +449,7 @@ void func_800B0350(void) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B0350.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B0350.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -1005,7 +1005,7 @@ void func_800B053C(struct Controller *arg0, u16 arg1) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B053C.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B053C.s")
 #endif
 
 // Handle navigating the data menu interface
@@ -1322,7 +1322,7 @@ void func_800B15AC(struct Controller *arg0, u16 arg1) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B15AC.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B15AC.s")
 #endif
 
 // Handle controller input during the logo screen
@@ -1478,7 +1478,7 @@ void func_800B1C90(struct Controller* controller, u16 arg1) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B1C90.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B1C90.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -1765,7 +1765,7 @@ void func_800B20F4(void *arg0, s32 arg1) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B20F4.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B20F4.s")
 #endif
 
 void func_800B28C8(void) {
@@ -2157,7 +2157,7 @@ block_64:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B29D8.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B29D8.s")
 #endif
 
 s32 func_800B34E8(s32 arg0) {
@@ -2180,7 +2180,7 @@ Please modify the assembly to work around it (e.g. copy the instruction
 to all jump sources and move the label, or add a nop to the delay slot).
 */
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B3554.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B3554.s")
 #endif
 
 // Handle navigating the course menu interface
@@ -2560,7 +2560,7 @@ void func_800B3F74(u32 arg0) {
     func_800B44AC();
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B3F74.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B3F74.s")
 #endif
 
 void func_800B44AC(void) {
@@ -2582,7 +2582,7 @@ void func_800B44BC(void) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B44BC.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B44BC.s")
 #endif
 
 s32 func_800B4520(void) {
@@ -2603,7 +2603,7 @@ extern s32 D_80162DE0;
 extern s32 D_8018D9C0;
 extern ? D_8018EE16;
 
-// Separated from assembly in code_800AF9B0/func_800B4520.s
+// Separated from assembly in menus/func_800B4520.s
 UNUSED void func_800B4560(s32 arg0, s32 arg1) {
     s32 sp18;
 
@@ -2613,7 +2613,7 @@ UNUSED void func_800B4560(s32 arg0, s32 arg1) {
     rmonPrintf(&D_800F2C0C, (s32) ((arg1 << 7) + sp18)->unk6);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B4560.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B4560.s")
 #endif
 
 void func_800B45E0(s32 arg0) {
@@ -2720,7 +2720,7 @@ s32 compute_save_data_checksum_1(void) {
     return ((D_8018ED10.grandPrixPointsMushroomCup + 1 + ((temp_a0->unk0 + 1) * 2) + 1 + ((temp_a0->unk1 + 1) * 3) + 1 + 1 + ((temp_a0->unk2 + 1) * 4) + 1 + 2 + ((temp_a0->unk3 + 1) * 5) + 1 + 3) % 0x100) & 0xFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B492C.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B492C.s")
 #endif
 
 s32 compute_save_data_checksum_2(void) {
@@ -2822,7 +2822,7 @@ void func_800B4A9C(s32 arg0) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B4A9C.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B4A9C.s")
 #endif
 
 void validate_save_data(void) {
@@ -2885,7 +2885,7 @@ s32 func_800B4DF4(u8 *arg0) {
     return ((arg0[1] << 8) + arg0[0] + (arg0[2] << 0x10)) & 0xFFFFFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B4DF4.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B4DF4.s")
 #endif
 
 // Get a time trial record, infer course index
@@ -3033,7 +3033,7 @@ block_10:
     return phi_s1_2;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B5020.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B5020.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -3102,7 +3102,7 @@ s32 func_800B5218(void) {
     return phi_v0_2;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B5218.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B5218.s")
 #endif
 
 void func_800B536C(s32 arg0) {
@@ -3276,7 +3276,7 @@ void func_800B559C(s32 arg0, void *arg1, void *arg2) {
     osEepromLongWrite(&gSIEventMesgQueue, ((temp_s2_2 - &D_8018EB90) >> 3) & 0xFF, temp_s2_2, 0x38);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B559C.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B559C.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -3325,7 +3325,7 @@ loop_2:
     return (temp_v1 % 0x100) & 0xFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B578C.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B578C.s")
 #endif
 
 s32 func_800B5888(s32 arg0) {
@@ -3379,7 +3379,7 @@ void update_save_data_backup(void) {
     osEepromLongWrite(&gSIEventMesgQueue, ((&D_8018ED88 - &D_8018EB90) >> 3) & 0xFF, &D_8018ED88, 8);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B5948.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B5948.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -3393,7 +3393,7 @@ s32 compute_save_data_checksum_backup_1(void) {
     return ((D_8018ED88.grandPrixPointsMushroomCup + 1 + ((temp_a0->unk0 + 1) * 2) + 1 + ((temp_a0->unk1 + 1) * 3) + 1 + 1 + ((temp_a0->unk2 + 1) * 4) + 1 + 2 + ((temp_a0->unk3 + 1) * 5) + 1 + 3) % 0x100) & 0xFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B59F4.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B59F4.s")
 #endif
 
 s32 compute_save_data_checksum_backup_2(void) {
@@ -3519,7 +3519,7 @@ block_27:
     return phi_v0_2;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B5B94.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B5B94.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -3604,7 +3604,7 @@ block_25:
     return phi_v0_2;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B5DA4.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B5DA4.s")
 #endif
 
 s32 func_800B5F30(void) {
@@ -3682,7 +3682,7 @@ s32 func_800B60E8(s32 arg0) {
     return temp_v1 & 0xFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B60E8.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B60E8.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -3782,7 +3782,7 @@ s32 func_800B6178(s32 arg0) {
     return phi_v1;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B6178.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B6178.s")
 #endif
 
 s32 func_800B6348(s32 arg0) {
@@ -3924,7 +3924,7 @@ block_9:
     return sp34;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B65F4.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B65F4.s")
 #endif
 
 void func_800B6708(void) {
@@ -3985,7 +3985,7 @@ s32 func_800B6828(s32 arg0) {
     return temp_v1 & 0xFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B6828.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B6828.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -4015,7 +4015,7 @@ s32 func_800B68F4(s32 arg0) {
     return temp_a1 & 0xFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B68F4.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B68F4.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -4056,7 +4056,7 @@ void func_800B69BC(s32 arg0) {
     osPfsReadWriteFile(&D_8018E868, D_8018EB84, 1, temp_a3, 0x80, temp_t0);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B69BC.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B69BC.s")
 #endif
 
 s32 func_800B6A68(void) {
@@ -4096,7 +4096,7 @@ extern ? D_8018EB84;
 extern s32 gControllerPakNumPagesFree;
 extern ? gSIEventMesgQueue;
 
-// Separated from assembly in code_800AF9B0/func_800B6A68.s
+// Separated from assembly in menus/func_800B6A68.s
 UNUSED void func_800B6AF8(void) {
     s32 temp_t1;
 
@@ -4109,5 +4109,5 @@ UNUSED void func_800B6AF8(void) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B6AF8.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B6AF8.s")
 #endif

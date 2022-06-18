@@ -1,5 +1,5 @@
-#ifndef CODE_800AF9B0_H
-#define CODE_800AF9B0_H
+#ifndef MENUS_H
+#define MENUS_H
 
 #include "PR/os.h"
 #include "common_structs.h"
@@ -152,4 +152,4 @@ extern s8          D_8018EE0A;
 extern s8          gCupCourseSelection; // D_8018EE0B
 extern struct_8018EE10_entry D_8018EE10[];
 
-#endif
+#endif // MENUS_H

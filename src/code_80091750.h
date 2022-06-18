@@ -135,6 +135,7 @@ Gfx *func_8009C434(Gfx*, struct_8018DEE0_entry*, s32, s32, s32);
 Gfx *func_8009C708(Gfx*, struct_8018DEE0_entry *, s32, s32, s32, s32);
 void func_8009C918();
 void func_8009E1C0();
+void func_8009E1E4();
 void func_8009E208();
 void func_8009E258();
 void func_8009E5BC();
