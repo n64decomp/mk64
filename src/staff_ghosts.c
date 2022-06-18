@@ -52,8 +52,8 @@ s32 D_80162DFC;
 s32 D_80162E00;
 
 extern u8 D_802BFB80[77824];
-extern u8 D_802D2B80[32768];
-extern u8 D_802DAB80[20480];
+extern u8 *D_802D2B80[32768];
+extern u8 *D_802DAB80[20480];
 
 u32 *D_800DC710 = &D_802D2B80[0];
 u32 *D_800DC714 = &D_802DAB80[0];
@@ -222,7 +222,7 @@ void func_80005310(void) {
 
                 D_80162DD8 = 1U;
                 D_80162DBC = &D_802BFB80[(D_80162DCC << 0xF) + 0x3000];
-                D_80162DBC[0] = -1;
+                *D_80162DBC = 0xFFFFFFFF;
                 D_80162DB8 = 0;
                 D_80162DDC = 0;
                 func_80091EE4(&D_80162DC0);
@@ -411,67 +411,69 @@ void func_800057DC(void) {
        D_80162D8C += (s32) 0xFFFF0000;
     }
 }
-/*
+
 void func_8000599C(void) {
     s16 temp_a2;
-
-    u32 temp_v0;
+    u32 phi_a3;
     u32 temp_v1;
     u32 temp_v2;
-    u32 *temp_t0;
+    s16 new_var;
+    u32 temp_v0;
+    u32 temp_t0;
     u32 temp_a0_2;
-    u32 temp_a3;
-    u32 phi_a3;
 
-    if (D_80162DB8 >= 0x1000) {
+    if (((D_80162DB8 >= 0x1000) || 
+        ((gPlayerOne->unk_0CA & 2) != 0)) || 
+        ((gPlayerOne->unk_0CA & 8) != 0)) {
         D_80162DF8 = 1;
         return;
     }
-    temp_v1 &= 0xff;
-    temp_v2 &= 0xff << 8;
-    //temp_v1 = gPlayerOne->unk_0CA;
 
-
-    //if (((temp_v1 & 2) != 0) || ((temp_v1 & 8) != 0)) {
-
-    //}
+    temp_v1 = gControllerOne->rawStickX;
+    temp_v1 &= 0xFF;
+    temp_v2 = gControllerOne->rawStickY;
+    temp_v2 = (temp_v2 & 0xFF) << 8;
     temp_a2 = gControllerOne->button;
     phi_a3 = 0;
-    if (temp_a2 & A_BUTTON) {
+    if (temp_a2 & 0x8000) {
         phi_a3 |= 0x80000000;
-    }
-    if (temp_a2 & B_BUTTON) {
+    } if (temp_a2 & 0x4000) {
         phi_a3 |= 0x40000000;
     }
-    if (temp_a2 & Z_TRIG) {
+    if (temp_a2 & 0x2000) {
         phi_a3 |= 0x20000000;
     }
-    if (temp_a2 & R_TRIG) {
+    if (temp_a2 & 0x0010) {
         phi_a3 |= 0x10000000;
     }
     phi_a3 |= temp_v1;
     phi_a3 |= temp_v2;
-    temp_v0 = (gControllerOne->rawStickY & 0xFF) << 8;
-    temp_a3 = phi_a3 | (gControllerOne->rawStickX & 0xFF) | temp_v0;
-    temp_a0_2 = &D_80162DBC[D_80162DB8];;
-    if (*D_80162DBC == -1) {
-        *temp_t0 = temp_a3;
-    } else {
-        if ((temp_a0_2 & 0xFF00FFFF) == temp_a3) {
-            if ((temp_a0_2 & 0xFF0000) == 0xFF0000) {
-                D_80162DB8++;
-                D_80162DBC[D_80162DB8] = temp_a3;
-            } else {
-                *temp_t0 += 0x10000;
-            }
-        } else {
+    temp_t0 = D_80162DBC[D_80162DB8];
+    temp_a0_2 = temp_t0 & 0xFF00FFFF;
+
+    if ((*D_80162DBC) == 0xFFFFFFFF) {
+
+        D_80162DBC[D_80162DB8] = phi_a3;
+
+    } else if (temp_a0_2 == phi_a3) {
+
+        temp_v0 = temp_t0 & 0xFF0000;
+
+        if (temp_v0 == 0xFF0000) {
+
             D_80162DB8++;
-            D_80162DBC[D_80162DB8] = temp_a3;
+            D_80162DBC[D_80162DB8] = phi_a3;
+
+        } else {
+
+            temp_t0 += 0x10000;
+            D_80162DBC[D_80162DB8] = temp_t0;
+            
         }
+    } else {
+        D_80162DB8++; D_80162DBC[D_80162DB8] = phi_a3;
     }
 }
-*/
-GLOBAL_ASM("asm/non_matchings/staff_ghosts/func_8000599C.s")
 
 // sets player to AI? (unconfirmed)
 void func_80005AE8(Player *ply) {
@@ -482,84 +484,86 @@ void func_80005AE8(Player *ply) {
 
 #ifdef NON_MATCHING
 
-void func_80005B18(void) {
-    s16 *temp_v0_2;
-    s16 *temp_v0_3;
-    s32 temp_v0;
-    u16 *phi_a3;
-
-    if (gModeSelection == TIME_TRIALS) {
-        temp_v0 = gLapCountByPlayerId[0];
-        //phi_a3 = &D_80162DD4;
-        if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && D_80162DF8 != 1) {
-            //if (D_80162DF8 != 1) {
-
-            if (D_80162DD4 == 1) {
-                D_80162DD0 = D_80162DCC;
-                func_800052A4(); //gModeSelection, &D_80162DDC, 3, &D_80162DD4);
-                D_80162DD4 = 0;
-                D_80162DDC = 1;
-                D_80162DE0 = gPlayerOne->characterId;
-                D_80162DE8 = gPlayerOne->characterId;
-                D_80162E00 = 0;
-                D_80162DFC = D_8018CA78;
-                func_80005AE8(gPlayerTwo); // (u16) &D_80162DDC);
-                func_80005AE8(gPlayerThree);
-
-            } else {
-                if (gLapCountByPlayerId[4] != 3) {
-                    D_80162DD0 = D_80162DCC;
-                    func_800052A4(); // gModeSelection, &D_80162DDC, 3, &D_80162DD4);
-                    D_80162DDC = 1;
-                    D_80162DE0 = gPlayerOne->characterId;
-                    D_80162DFC = D_8018CA78;
-                    D_80162E00 = 0;
-                    D_80162DE8 = gPlayerOne->characterId;
-                    func_80005AE8(gPlayerTwo); // (u16) &D_80162DDC);
-                    func_80005AE8(gPlayerThree);
-                    return;
-
-                }
-            }
-            D_80162D80 = (void *) ((D_80162DC8 << 0xF) + 0x3000 + &D_802BFB80);
-            D_80162D84 = D_80162D86;
-            D_80162DD0 = D_80162DCC;
-            D_80162DE8 = gPlayerOne->characterId;
-            D_80162DD8 = 0;
-            D_80162DD4 = 0;
-            D_80162DDC = 1;
-            func_80005AE8(gPlayerTwo); // (u16) &D_80162DDC, 3, &D_80162DD4);
-            func_80005AE8(gPlayerThree);
-
-
-            return;
+void func_80005B18(void)
+{
+  if (gModeSelection == 1)
+  {
+    if (((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0)) && (D_80162DF8 != 1))
+    {
+      if (D_80162DD4 == (u16)1)
+      {
+        D_80162DD0 = D_80162DCC;
+        func_800052A4();
+        D_80162DD4 = 0;
+        D_80162DDC = 1;
+        D_80162DE0 = gPlayerOne->characterId;
+        D_80162DE8 = gPlayerOne->characterId;
+        D_80162E00 = 0;
+        D_80162DFC = D_8018CA78;
+        func_80005AE8(gPlayerTwo);
+        func_80005AE8(gPlayerThree);
+      }
+      else
+      {
+        if (gLapCountByPlayerId[4] != 3)
+        {
+          D_80162DD0 = D_80162DCC;
+          func_800052A4();
+          D_80162DDC = 1;
+          D_80162DE0 = gPlayerOne->characterId;
+          D_80162DFC = D_8018CA78;
+          D_80162E00 = 0;
+          D_80162DE8 = gPlayerOne->characterId;
+          func_80005AE8(gPlayerTwo);
+          func_80005AE8(gPlayerThree);
+          return;
         }
-        if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (D_80162DF8 == 1)) {
-            D_80162D80 = (void *) ((D_80162DC8 << 0xF) + 0x3000 + &D_802BFB80);
-            D_80162D84 = D_80162D86;
-            D_80162DDC = 1;
-        }
-        if (( gPlayerOne->unk_000 & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) {
-            func_80005AE8(gPlayerTwo); // (u16) &D_80162DDC, 3, phi_a3);
-            func_80005AE8(gPlayerThree);
-            return;
-        };
-        D_80162DEC++;
-        if (D_80162DEC > 100) {
-            D_80162DEC = 100;
-        }
-        if ((gModeSelection == TIME_TRIALS) && (gActiveScreenMode == 0)) {
-            if ((D_80162DD4 == 0) && (gLapCountByPlayerId[4] != 3)) {
-                func_800057DC(); //gModeSelection, &D_80162DDC, 3, &D_80162DD4);
-            }
-            if ((D_80162DD6 == 0) && (3 != gLapCountByPlayerId[8])) {
-                func_8000561C();
-            }
-            if (( gPlayerOne->unk_000 & PLAYER_CINEMATIC_MODE) == 0) {
-                func_8000599C();
-            }
-        }
+      }
+      D_80162D80 = &D_802BFB80[(D_80162DC8 << 0xF) + 0x3000];
+      D_80162D84 = D_80162D86;
+      D_80162DD0 = D_80162DCC;
+      D_80162DE8 = gPlayerOne->characterId;
+      D_80162DD8 = 0;
+      D_80162DD4 = 0;
+      D_80162DDC = 1;
+      func_80005AE8(gPlayerTwo);
+      func_80005AE8(gPlayerThree);
+      return;
     }
+    if (((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0)) && (D_80162DF8 == 1))
+    {
+      D_80162D80 = &D_802BFB80[(D_80162DC8 << 0xF) + 0x3000];
+      D_80162D84 = D_80162D86;
+      D_80162DDC = 1;
+    }
+    if ((gPlayerOne->unk_000 & 0x800) == 0x800)
+    {
+      func_80005AE8(gPlayerTwo);
+      func_80005AE8(gPlayerThree);
+      return;
+    }
+    ;
+    D_80162DEC++;
+    if (D_80162DEC > 100)
+    {
+      D_80162DEC = 100;
+    }
+    if ((gModeSelection == 1) && (gActiveScreenMode == 0))
+    {
+      if ((D_80162DD4 == 0) && (gLapCountByPlayerId[1] != 3))
+      {
+        func_800057DC();
+      }
+      if ((D_80162DD6 == 0) && (3 != gLapCountByPlayerId[8]))
+      {
+        func_8000561C();
+      }
+      if ((gPlayerOne->unk_000 & (1 << 11)) == 0)
+      {
+        func_8000599C();
+      }
+    }
+  }
 }
 
 #else

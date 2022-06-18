@@ -50,9 +50,6 @@ struct Controller *gControllerFive = &gControllers[4];  // 0x800DC4CC
 struct Controller *gControllerSix = &gControllers[5];   // 0x800DC4D0
 struct Controller *gControllerSeven = &gControllers[6]; // 0x800DC4D4
 struct Controller *gControllerEight = &gControllers[7]; // 0x800DC4D8
-//Player shift[1];
-//Player *shifting = &shift[0];
-
 
 Player gPlayers[8];
 Player *gPlayerOne = &gPlayers[0];   // 0x800DC4DC
@@ -66,8 +63,8 @@ Player *gPlayerEight = &gPlayers[7]; // 0x800DC4F8
 
 Player *gPlayerOneCopy = &gPlayers[0];   // 0x800DC4FC
 Player *gPlayerTwoCopy = &gPlayers[1];   // 0x800DC500
-Player *gPlayerThreeCopy = &gPlayers[2]; // 0x800DC504
-Player *gPlayerFourCopy = &gPlayers[3];  // 0x800DC508
+UNUSED Player *gPlayerThreeCopy = &gPlayers[2]; // 0x800DC504
+UNUSED Player *gPlayerFourCopy = &gPlayers[3];  // 0x800DC508
 
 s32 D_800FD850[3];
 struct GfxPool gGfxPools[2];
