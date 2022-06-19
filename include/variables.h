@@ -18,7 +18,7 @@ extern f32   gCourseCompletionPercentByPlayerId[8]; // D_801644D0
 extern f32   gCourseCompletionPercentByRank[8];     // D_80162FD8
 extern s8    gCourseRecordsMenuSelection;           // D_8018EDF8
 extern f32   gCourseTimer;                          // D_800DC598
-extern s16   gCupCourseOrder[NUM_CUPS][NUM_COURSES_PER_CUP]; // D_800F2BB4
+extern const s16 gCupCourseOrder[NUM_CUPS][NUM_COURSES_PER_CUP]; // D_800F2BB4
 extern s8    gCupCourseSelection;                   // D_8018EE0B
 extern char *gCupNames[];                           // D_800E7500
 extern s8    gCupSelection;                         // D_8018EE09

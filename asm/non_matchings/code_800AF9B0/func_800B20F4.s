@@ -1,3 +1,10 @@
+.section .late_rodata
+glabel jpt_800F2DE0
+.word L800B2178, L800B21CC
+.word L800B2240, L800B231C, L800B2414, L800B24DC
+.word L800B2604
+
+.section .text
 glabel func_800B20F4
 /* 0B2CF4 800B20F4 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 0B2CF8 800B20F8 240E0001 */  li    $t6, 1

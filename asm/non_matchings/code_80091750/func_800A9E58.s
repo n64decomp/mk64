@@ -40,11 +40,11 @@ glabel L800A9EBC
 /* 0AAAE0 800A9EE0 8C830004 */  lw    $v1, 4($a0)
 /* 0AAAE4 800A9EE4 00C23021 */  addu  $a2, $a2, $v0
 /* 0AAAE8 800A9EE8 80C686AB */  lb    $a2, %lo(gGameModeRowSelectionForNumPlayers)($a2) # -0x7955($a2)
-/* 0AAAEC 800A9EEC 00025080 */  sll   $t2, $v0, 2
-/* 0AAAF0 800A9EF0 01425023 */  subu  $t2, $t2, $v0
-/* 0AAAF4 800A9EF4 000A5080 */  sll   $t2, $t2, 2
+/* 0AAAEC 800A9EEC 00025080 */  sll   $t2, $v0, 2   # playerCount * 4
+/* 0AAAF0 800A9EF0 01425023 */  subu  $t2, $t2, $v0 # playerCount * 3
+/* 0AAAF4 800A9EF4 000A5080 */  sll   $t2, $t2, 2   # playerCount * 12
 /* 0AAAF8 800A9EF8 00065880 */  sll   $t3, $a2, 2
-/* 0AAAFC 800A9EFC 014B6021 */  addu  $t4, $t2, $t3
+/* 0AAAFC 800A9EFC 014B6021 */  addu  $t4, $t2, $t3 # a2 * 4 + playerCount * 12
 /* 0AAB00 800A9F00 3C05800F */  lui   $a1, %hi(gGameModeFromNumPlayersAndRowSelection) # 0x800f
 /* 0AAB04 800A9F04 00AC2821 */  addu  $a1, $a1, $t4
 /* 0AAB08 800A9F08 8FA70020 */  lw    $a3, 0x20($sp)

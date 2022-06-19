@@ -3,10 +3,13 @@
 
 #include "common_structs.h"
 
+void play_sound2(s32);
 void func_800CA0A0();
 void func_800CA0B8();
 void func_800CA0CC();
 void func_800CA270();
+void func_800CA330(s32);
+void func_800CA388(s32);
 void func_800CB134();
 
 extern s8  D_800EA0F4;

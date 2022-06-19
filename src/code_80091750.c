@@ -1,14 +1,21 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
+
 #include "code_80091750.h"
-#include "code_800AF9B0.h"
+
+#include "code_80005FD0.h"
+//#include "code_800AF9B0.h"
+#include "code_800B0350.h"
+#include "code_800B45E0.h"
+#include "code_80057C60.h"
 #include "credits_01.h"
 #include "data_segment2.h"
 #include "variables.h"
 // TODO: Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
+
 
 f64 exponent_by_squaring(f64 base, s32 exponent) {
     s32 positive_exponent;
@@ -848,8 +855,8 @@ s32 char_to_glyph_index(char *character) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/char_to_glyph_index.s")
 #endif
 
-s32 func_80092DF8(void) {
-    return func_80092E1C() + 0x50;
+s32 func_80092DF8(s8 *arg) {
+    return func_80092E1C(arg) + 0x50;
 }
 
 #ifdef MIPS_TO_C
