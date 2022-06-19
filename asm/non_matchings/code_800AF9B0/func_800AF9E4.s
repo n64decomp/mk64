@@ -1,3 +1,9 @@
+.section .late_rodata
+glabel D_800F2B30
+.float -0.07
+.word 0x00000000
+
+.section .text
 glabel func_800AF9E4
 /* 0B05E4 800AF9E4 00C70019 */  multu $a2, $a3
 /* 0B05E8 800AF9E8 27BDFFF0 */  addiu $sp, $sp, -0x10

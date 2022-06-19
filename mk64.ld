@@ -252,6 +252,7 @@ SECTIONS
       BUILD_DIR/data/data_0DD0A0_3_0_1.o(.rodata);
       BUILD_DIR/src/code_80057C60.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3_0.o(.rodata);
+      BUILD_DIR/src/code_800AF9B0.o(.rodata);
       BUILD_DIR/src/code_800B0350.o(.rodata);
       BUILD_DIR/src/code_800B45E0.o(.rodata);
       BUILD_DIR/data/rodata_audio.o(.rodata);

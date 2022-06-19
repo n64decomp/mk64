@@ -1,3 +1,8 @@
+.section .late_rodata
+glabel D_800F2B44
+.float 0.18
+
+.section .text
 glabel func_800B0004
 /* 0B0C04 800B0004 27BDFF40 */  addiu $sp, $sp, -0xc0
 /* 0B0C08 800B0008 3C038015 */  lui   $v1, %hi(gDisplayListHead) # $v1, 0x8015
