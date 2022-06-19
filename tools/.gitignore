@@ -4,3 +4,6 @@
 /n64graphics
 /tkmk00
 /extract_data_for_mio
+
+__pycache__
+*.pyc
