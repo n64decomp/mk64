@@ -1,5 +1,5 @@
-#ifndef CODE_800B0350_H
-#define CODE_800B0350_H
+#ifndef MENUS_H
+#define MENUS_H
 
 #include "PR/os.h"
 #include "common_structs.h"
@@ -17,9 +17,9 @@ void func_800B29D8(struct Controller*, u16);
 s32  func_800B34E8(s32);
 void func_800B3554(struct Controller*, u16);
 void func_800B3B58(struct Controller*, u16);
-void func_800B44AC();
-void func_800B44BC();
-s32  func_800B4520();
+void func_800B44AC(void);
+void func_800B44BC(void);
+s32  func_800B4520(void);
 
 /* data */
 // these might not be in this file, but for now...
@@ -34,4 +34,4 @@ extern s8          D_8018EDF3;
 extern s8          D_8018EDFB;
 extern s8          D_8018EE0A;
 
-#endif /* CODE_800B0350_H */
+#endif /* MENUS_H */

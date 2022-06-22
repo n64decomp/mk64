@@ -3,7 +3,7 @@
 #include <defines.h>
 #include "global.h"
 
-#include "code_800B0350.h"
+#include "menus.h"
 
 #include "audio/external.h"
 #include "code_80091750.h"
