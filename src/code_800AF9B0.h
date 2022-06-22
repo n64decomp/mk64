@@ -18,7 +18,4 @@ extern s32         D_800E86A4;
 extern s8          gDisplayedControllerPakTableRows[5]; // D_800E86C6
 extern s32         D_800E86E4;
 
-extern u32         D_8018EDB8;
-extern u32         D_8018EDBC;
-
 #endif
