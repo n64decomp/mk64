@@ -87,7 +87,7 @@ SECTIONS
       BUILD_DIR/src/code_80086E70.o(.text);
       BUILD_DIR/src/code_8008C1D0.o(.text);
       BUILD_DIR/src/code_80091750.o(.text);
-      BUILD_DIR/src/menus.o(.text);
+      BUILD_DIR/src/code_800AF9B0.o(.text);
       BUILD_DIR/src/code_800B0350.o(.text);
       BUILD_DIR/src/code_800B45E0.o(.text);
       BUILD_DIR/src/audio/synthesis.o(.text);
@@ -255,7 +255,7 @@ SECTIONS
       BUILD_DIR/data/data_0DD0A0_3_0_1.o(.rodata);
       BUILD_DIR/src/code_80057C60.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3_0.o(.rodata);
-      BUILD_DIR/src/menus.o(.rodata);
+      BUILD_DIR/src/code_800AF9B0.o(.rodata);
       BUILD_DIR/src/code_800B0350.o(.rodata);
       BUILD_DIR/src/code_800B45E0.o(.rodata);
       BUILD_DIR/data/rodata_audio.o(.rodata);

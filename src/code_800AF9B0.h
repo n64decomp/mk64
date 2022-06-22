@@ -1,5 +1,5 @@
-#ifndef MENUS_H
-#define MENUS_H
+#ifndef CODE_800AF9B0_H
+#define CODE_800AF9B0_H
 
 #include "common_structs.h"
 #include <types.h>
@@ -18,4 +18,4 @@ extern s32         D_800E86A4;
 extern s8          gDisplayedControllerPakTableRows[5]; // D_800E86C6
 extern s32         D_800E86E4;
 
-#endif // MENUS_H
+#endif /* CODE_800AF9B0_H */
