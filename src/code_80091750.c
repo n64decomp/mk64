@@ -5,12 +5,12 @@
 #include "code_80091750.h"
 
 #include "code_80005FD0.h"
-//#include "code_800AF9B0.h"
 #include "code_800B0350.h"
 #include "code_800B45E0.h"
 #include "code_80057C60.h"
 #include "credits_01.h"
 #include "data_segment2.h"
+#include "menus.h"
 #include "variables.h"
 // TODO: Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project

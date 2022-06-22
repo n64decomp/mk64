@@ -69,17 +69,17 @@ SECTIONS
       BUILD_DIR/src/staff_ghosts.o(.text);
       BUILD_DIR/asm/unused_overflow_check.o(.text);
       BUILD_DIR/src/code_80005FD0.o(.text);
-      BUILD_DIR/src/code_8001C4D0.o(.text);
+      BUILD_DIR/src/camera.o(.text);
       BUILD_DIR/src/code_8001F980.o(.text);
-      BUILD_DIR/src/code_80027040.o(.text);
+      BUILD_DIR/src/kart_dma.o(.text);
       BUILD_DIR/src/code_80027D00.o(.text);
-      BUILD_DIR/src/code_800393C0.o(.text);
+      BUILD_DIR/src/spawn_players.o(.text);
       BUILD_DIR/src/code_8003DC40.o(.text);
       BUILD_DIR/asm/unused_mio0_decode.o(.text);
       BUILD_DIR/asm/mio0_decode.o(.text);
       BUILD_DIR/asm/tkmk00_decode.o(.text);
       BUILD_DIR/src/gbiMacro.o(.text);
-      BUILD_DIR/src/code_80040E50.o(.text);
+      BUILD_DIR/src/math_util_2.o(.text);
       BUILD_DIR/src/code_800431B0.o(.text);
       BUILD_DIR/src/code_80057C60.o(.text);
       BUILD_DIR/src/code_8006E9C0.o(.text);
@@ -87,7 +87,7 @@ SECTIONS
       BUILD_DIR/src/code_80086E70.o(.text);
       BUILD_DIR/src/code_8008C1D0.o(.text);
       BUILD_DIR/src/code_80091750.o(.text);
-      BUILD_DIR/src/code_800AF9B0.o(.text);
+      BUILD_DIR/src/menus.o(.text);
       BUILD_DIR/src/code_800B0350.o(.text);
       BUILD_DIR/src/code_800B45E0.o(.text);
       BUILD_DIR/src/audio/synthesis.o(.text);
@@ -224,12 +224,14 @@ SECTIONS
       BUILD_DIR/src/crash_screen.o(.data);
       BUILD_DIR/src/staff_ghosts.o(.data);
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
-      BUILD_DIR/src/code_8001C4D0.o(.data);
+      BUILD_DIR/src/camera.o(.data);
       BUILD_DIR/data/data_0DD0A0_1_1.o(.data);
-      BUILD_DIR/src/code_80027040.o(.data);
+      BUILD_DIR/src/kart_dma.o(.data);
       BUILD_DIR/data/data_0DD0A0_1_2.o(.data);
       BUILD_DIR/src/kart_attributes.inc.o(.data);
-      BUILD_DIR/data/data_0DD0A0_2.o(.rodata);
+      BUILD_DIR/data/data_0DD0A0_2.o(.data);
+      BUILD_DIR/src/spawn_players.o(.data);
+      BUILD_DIR/data/data_0DD0A0_2_0.o(.data);
       BUILD_DIR/src/audio/load.o(.rodata*);
       BUILD_DIR/data/data_0DD0A0_2_1_0.o(.rodata);
       BUILD_DIR/src/os/osInitialize.o(.data*);
@@ -248,11 +250,12 @@ SECTIONS
       BUILD_DIR/src/main.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
+      BUILD_DIR/src/spawn_players.o(.rodata);
       BUILD_DIR/src/code_8003DC40.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3_0_1.o(.rodata);
       BUILD_DIR/src/code_80057C60.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3_0.o(.rodata);
-      BUILD_DIR/src/code_800AF9B0.o(.rodata);
+      BUILD_DIR/src/menus.o(.rodata);
       BUILD_DIR/src/code_800B0350.o(.rodata);
       BUILD_DIR/src/code_800B45E0.o(.rodata);
       BUILD_DIR/data/rodata_audio.o(.rodata);
@@ -281,7 +284,7 @@ SECTIONS
       BUILD_DIR/src/staff_ghosts.o(.bss);
       BUILD_DIR/asm/bss_80005FD0.o(.bss);
       BUILD_DIR/asm/bss_MainSeg.o(.bss);
-      BUILD_DIR/src/code_8001C4D0.o(.bss);
+      BUILD_DIR/src/camera.o(.bss);
       BUILD_DIR/asm/bss_8001C4D0.o(.bss);
       BUILD_DIR/src/os/osCreateViManager.o(.bss);
       BUILD_DIR/src/os/osCreatePiManager.o(.bss);
@@ -305,36 +308,36 @@ SECTIONS
    /* 0x8028DF00 0F7510-123640 [2C130] */
    BEGIN_SEG(code_8028DF00, SEG_8028DF00)
    {
-      BUILD_DIR/src/code_8028DF00.o(.text);
-      BUILD_DIR/src/code_80290C20.o(.text);
-      BUILD_DIR/src/code_80296A50.o(.text);
-      BUILD_DIR/src/code_802A3730.o(.text);
+      BUILD_DIR/src/race_logic.o(.text);
+      BUILD_DIR/src/render_courses.o(.text);
+      BUILD_DIR/src/actors.o(.text);
+      BUILD_DIR/src/skybox_and_splitscreen.o(.text);
       BUILD_DIR/src/memory.o(.text);
-      BUILD_DIR/src/code_802B0210.o(.text);
+      BUILD_DIR/src/actors_extended.o(.text);
       BUILD_DIR/src/math_util.o(.text);
       BUILD_DIR/data/data_121DA0.o(.data);
-      BUILD_DIR/src/code_80296A50.o(.data);
-      BUILD_DIR/src/code_802A3730.o(.data);
+      BUILD_DIR/src/actors.o(.data);
+      BUILD_DIR/src/skybox_and_splitscreen.o(.data);
       BUILD_DIR/src/memory.o(.data);
       BUILD_DIR/data/data_121DA0_1.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);
-      BUILD_DIR/src/code_802B0210.o(.data);
+      BUILD_DIR/src/actors_extended.o(.data);
       BUILD_DIR/data/data_121DA0_2.o(.data);
-      BUILD_DIR/src/code_8028DF00.o(.rodata);
+      BUILD_DIR/src/race_logic.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_1.o(.data);
-      BUILD_DIR/src/code_80290C20.o(.rodata);
+      BUILD_DIR/src/render_courses.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_1_2.o(.data);
-      BUILD_DIR/src/code_80296A50.o(.rodata);
+      BUILD_DIR/src/actors.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_2.o(.data);
-      BUILD_DIR/src/code_802B0210.o(.rodata);
+      BUILD_DIR/src/actors_extended.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_3.o(.data);
       BUILD_DIR/src/math_util.o(.rodata);
    }
    END_SEG(code_8028DF00)
 
    	BEGIN_NOLOAD(code_8028DF00) {
-        BUILD_DIR/src/code_8028DF00.o(.bss);
-        BUILD_DIR/src/code_80296A50.o(.bss);
+        BUILD_DIR/src/race_logic.o(.bss);
+        BUILD_DIR/src/actors.o(.bss);
         BUILD_DIR/src/memory.o(.bss);
         BUILD_DIR/src/framebuffers.o(.bss*);
         BUILD_DIR/src/audio/synthesis.o(.bss*);
@@ -354,7 +357,7 @@ SECTIONS
    {
       BUILD_DIR/src/code_80280000.o(.text);
       BUILD_DIR/src/code_80280650.o(.text);
-      BUILD_DIR/src/code_80281610.o(.text);
+      BUILD_DIR/src/camera_junk.o(.text);
       BUILD_DIR/src/code_80281780.o(.text);
       BUILD_DIR/src/code_80281C40.o(.text);
       BUILD_DIR/src/code_80281FA0.o(.text);

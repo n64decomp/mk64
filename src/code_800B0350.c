@@ -117,7 +117,7 @@ void func_800B0350(void) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B0350.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B0350.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -673,7 +673,7 @@ void func_800B053C(struct Controller *arg0, u16 arg1) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B053C.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B053C.s")
 #endif
 
 // Handle navigating the data menu interface
@@ -990,7 +990,7 @@ void func_800B15AC(struct Controller *arg0, u16 arg1) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B15AC.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B15AC.s")
 #endif
 
 // Handle controller input during the logo screen
@@ -1146,7 +1146,7 @@ void func_800B1C90(struct Controller* controller, u16 arg1) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B1C90.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B1C90.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -1433,7 +1433,7 @@ void func_800B20F4(void *arg0, s32 arg1) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B20F4.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B20F4.s")
 #endif
 
 void func_800B28C8(void) {
@@ -1825,7 +1825,7 @@ block_64:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B29D8.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B29D8.s")
 #endif
 
 s32 func_800B34E8(s32 arg0) {
@@ -1848,7 +1848,7 @@ Please modify the assembly to work around it (e.g. copy the instruction
 to all jump sources and move the label, or add a nop to the delay slot).
 */
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B3554.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B3554.s")
 #endif
 
 // Handle navigating the course menu interface
@@ -2228,7 +2228,7 @@ void func_800B3F74(u32 arg0) {
     func_800B44AC();
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B3F74.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B3F74.s")
 #endif
 
 void func_800B44AC(void) {
@@ -2250,7 +2250,7 @@ void func_800B44BC(void) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B44BC.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B44BC.s")
 #endif
 
 s32 func_800B4520(void) {
@@ -2281,5 +2281,5 @@ UNUSED void func_800B4560(s32 arg0, s32 arg1) {
     rmonPrintf(&D_800F2C0C, (s32) ((arg1 << 7) + sp18)->unk6);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B4560.s")
+GLOBAL_ASM("asm/non_matchings/menus/func_800B4560.s")
 #endif

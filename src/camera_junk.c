@@ -29,6 +29,7 @@ extern f32 D_80150130[];
 // rodata
 extern const f32 D_80286B90, D_80286B94, D_80286B98, D_80286B9C, D_80286BA0;
 
+// GP Ending sequence camera settings?
 void func_802816B8(void) {
     cameras[0].pos[0] = D_80286B90;
     cameras[0].pos[1] = 19.0f;

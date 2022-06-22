@@ -45,7 +45,7 @@ glabel D_802B87D8
 .hword 0 # fill
 
 #.word 0 # fill padding
-# start of 80296A50.c
+# start of 80296A50.c actors
 
 #glabel D_802B87E0
 #.word 0

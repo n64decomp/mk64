@@ -221,7 +221,7 @@ block_60:
     temp_v1_3->unk4 = *(sp24 + ((((phi_a0 * 4) + phi_a3_2) - 4) * 4));
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80290C20/load_surface_map.s")
+GLOBAL_ASM("asm/non_matchings/render_courses/load_surface_map.s")
 #endif
 
 void func_80291198(void) {
@@ -1059,7 +1059,7 @@ block_82:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80290C20/func_8029122C.s")
+GLOBAL_ASM("asm/non_matchings/render_courses/func_8029122C.s")
 #endif
 
 void func_80291198();
@@ -1537,7 +1537,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, 0x070010C0);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80290C20/render_moo_moo_farm.s")
+GLOBAL_ASM("asm/non_matchings/render_courses/render_moo_moo_farm.s")
 #endif
 
 extern s32 D_801625EC;
