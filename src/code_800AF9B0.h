@@ -6,6 +6,7 @@
 
 /* Function Prototypes */
 void func_800AF9B0(void);
+void func_800B0004(void);
 
 /* This is where I'd put my static data, if I had any */
 

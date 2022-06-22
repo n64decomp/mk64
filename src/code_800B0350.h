@@ -7,7 +7,6 @@
 #include <defines.h>
 
 /* Function Prototypes */
-void func_800B0004();
 void func_800B053C(struct Controller*, u16);
 void func_800B13B0(struct Controller*, u16);
 void func_800B15AC(struct Controller*, u16);

@@ -13,19 +13,19 @@
 extern Light D_800E8680;
 extern Light D_800E8688;
 
-// this file's BSS
-extern s16 D_8018EDB0;
-extern s16 D_8018EDB2;
-extern s16 D_8018EDB4;
-extern Vtx *D_8018EDB8;
-extern Vtx *D_8018EDBC;
+/* BSS */
+s16 D_8018EDB0;
+s16 D_8018EDB2;
+s16 D_8018EDB4;
+Vtx *D_8018EDB8;
+Vtx *D_8018EDBC;
 
-// utils
+/* utils */
 #define SQ(x) ((x) * (x))
 
 void func_800AF9B0(void) {
-    D_8018EDB8 = (void *)func_802A7B70(7680);
-    D_8018EDBC = (void *)func_802A7B70(7680);
+    D_8018EDB8 = (void *)func_802A7B70(480 * sizeof(Vtx));
+    D_8018EDBC = (void *)func_802A7B70(480 * sizeof(Vtx));
 }
 
 // could be a normal vertex, not a color...
