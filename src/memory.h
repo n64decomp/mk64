@@ -34,9 +34,6 @@ struct AllocOnlyPool {
 #define MEMORY_POOL_RIGHT 1
 
 #define ALIGN4(val) (((val) + 0x3) & ~0x3)
-// #define ALIGN16(val) (((val) + 0xF) & ~0xF)
-// in macros.h
-#define ALIGN32(val) (((val) + 0xF) & ~0xF)
 
 s32 func_802A7B70(s32);
 uintptr_t set_segment_base_addr(s32, void*);

@@ -60,7 +60,7 @@ void move_segment_table_to_dmem(void) {
 
 void func_802A7CF0(s32 start, s32 end) {
 
-    start = ALIGN32(start);
+    start = ALIGN16(start);
     end &= ~0xF;
 
     D_8015F724 = (end - start) - 0x10;
@@ -70,7 +70,7 @@ void func_802A7CF0(s32 start, s32 end) {
 s32 func_802A7D1C(s32 arg0) {
     s32 addr;
 
-    arg0 = ALIGN32(arg0);
+    arg0 = ALIGN16(arg0);
     D_8015F724 -= arg0;
     addr = gPrevLoadedAddress;
     gPrevLoadedAddress += arg0;
