@@ -1,3 +1,17 @@
+.section .rodata
+glabel D_800F2BE8
+.asciiz "ghost_kart=%d,"
+.balign 4
+
+glabel D_800F2BF8
+.asciiz "pak1_ghost_kart=%d,"
+.balign 4
+
+glabel D_800F2C0C
+.asciiz "pak2_ghost_kart=%d\n"
+.balign 4
+
+.section .text
 glabel func_800B4560
 /* 0B5160 800B4560 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 0B5164 800B4564 3C0E8019 */  lui   $t6, %hi(D_8018D9C0) # $t6, 0x8019

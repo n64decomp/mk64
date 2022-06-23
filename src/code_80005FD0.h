@@ -6,6 +6,7 @@
 /* Function Prototypes */
 
 s16 func_80005FD0();
+void func_8001968C(void);
 
 // math_util.c
 u32 func_802B5224();

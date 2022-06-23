@@ -1,3 +1,11 @@
+.section .late_rodata
+glabel jpt_800F2E20
+.word L800B4070, L800B4100
+.word L800B4230, L800B43B0, L800B4494, L800B4014
+.word L800B4024, L800B4030, L800B4040, L800B4054
+.word L800B4070, L800B4100, L800B4230, L800B43B0
+
+.section .text
 glabel func_800B3F74
 /* 0B4B74 800B3F74 24030001 */  li    $v1, 1
 /* 0B4B78 800B3F78 3C018019 */  lui   $at, %hi(gDebugMenuSelection) # $at, 0x8019
@@ -83,7 +91,7 @@ glabel L800B4070
 /* 0B4CA0 800B40A0 A020EDF7 */  sb    $zero, %lo(gTimeTrialDataCourseIndex)($at)
 /* 0B4CA4 800B40A4 80870000 */  lb    $a3, ($a0)
 /* 0B4CA8 800B40A8 24080004 */  li    $t0, 4
-/* 0B4CAC 800B40AC 3C19800F */  lui   $t9, %hi(D_800F2BDF) # 0x800f
+/* 0B4CAC 800B40AC 3C19800F */  lui   $t9, %hi((D_800F2BDC + 3)) # 0x800f
 /* 0B4CB0 800B40B0 1CE00003 */  bgtz  $a3, .L800B40C0
 /* 0B4CB4 800B40B4 00002825 */   move  $a1, $zero
 /* 0B4CB8 800B40B8 A0830000 */  sb    $v1, ($a0)
@@ -96,7 +104,7 @@ glabel L800B4070
 /* 0B4CD0 800B40D0 80870000 */  lb    $a3, ($a0)
 /* 0B4CD4 800B40D4 0327C821 */  addu  $t9, $t9, $a3
 .L800B40D8:
-/* 0B4CD8 800B40D8 83392BDF */  lb    $t9, %lo(D_800F2BDF)($t9) # 0x2bdf($t9)
+/* 0B4CD8 800B40D8 83392BDF */  lb    $t9, %lo((D_800F2BDC + 3))($t9) # 0x2bdf($t9)
 /* 0B4CDC 800B40DC 3C018019 */  lui   $at, %hi(D_8018EDF1) # $at, 0x8019
 /* 0B4CE0 800B40E0 00002025 */  move  $a0, $zero
 /* 0B4CE4 800B40E4 0C032802 */  jal   func_800CA008

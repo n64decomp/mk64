@@ -1,3 +1,20 @@
+.section .late_rodata
+glabel D_800F2D90
+.double 4.2
+
+glabel D_800F2D98
+.double 4.2
+
+glabel D_800F2DA0
+.double 4.2
+
+glabel D_800F2DA8
+.double 4.2
+
+glabel D_800F2DB0
+.double 4.2
+
+.section .text
 glabel func_800B15AC
 /* 0B21AC 800B15AC 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 0B21B0 800B15B0 AFBF0014 */  sw    $ra, 0x14($sp)

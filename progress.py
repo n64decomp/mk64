@@ -74,7 +74,7 @@ mainSegFiles2 = [
     "asm/non_matchings/code_80057C60", "asm/non_matchings/code_8006E9C0",
     "asm/non_matchings/code_80071F00", "asm/non_matchings/code_80086E70",
     "asm/non_matchings/code_8008C1D0", "asm/non_matchings/code_80091750",
-    "asm/non_matchings/code_800AF9B0"
+    "asm/non_matchings/menus"
     ]
 seg2Files2 = [
     "asm/non_matchings/code_8028DF00", "asm/non_matchings/code_80290C20",

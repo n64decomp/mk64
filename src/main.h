@@ -58,6 +58,7 @@ void thread5_game_logic(s32);
 void thread4_audio(s32);
 
 extern struct GfxPool *gGfxPool;
+extern Gfx *gDisplayListHead;
 
 extern OSIoMesg gDmaIoMesg;
 extern OSMesg gMainReceivedMesg;
