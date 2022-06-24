@@ -59,6 +59,7 @@ void thread4_audio(s32);
 
 extern struct GfxPool *gGfxPool;
 extern Gfx *gDisplayListHead;
+extern struct Controller gControllers[8];
 
 extern OSIoMesg gDmaIoMesg;
 extern OSMesg gMainReceivedMesg;

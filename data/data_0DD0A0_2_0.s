@@ -1839,6 +1839,7 @@ glabel D_800E8600
 .word 0x00280028, 0x00000000, 0x00b20028, 0x00000000
 .word 0x002800a0, 0x00000000, 0x00b200a0, 0x00000000
 
+# start code_800AF9B0.c data?
 glabel D_800E8680 # Title screen flag colour
 .word 0x1f1f1f00, 0x1f1f1f00 # light reflection colour
 
@@ -1848,6 +1849,7 @@ glabel D_800E8688
 .word 0x28281400 # light brightness (stops)
 .word 0x00000000, 0x00000000, 0x00000000
 
+# start menus.c data?
 glabel gMenuSelection # menu counter
 .word 0x00000008
 
@@ -1905,6 +1907,8 @@ glabel D_800E86D0
 
 glabel D_800E86E4
 .word 0x00000042, 0x00000000, 0x00000000
+
+# end data for menus.c?
 
 glabel D_800E86F0
 .hword 0x3031 # '01' -> u16 company_code param to osPfsFindFile()

@@ -14,7 +14,7 @@ union GrandPrixPointsUnion
 /* Function Prototypes */
 void func_800B45E0(s32);
 void write_save_data_grand_prix_points_and_sound_mode();
-void func_800B46D0();
+void func_800B46D0(void);
 void func_800B4728(s32);
 void reset_save_data_grand_prix_points_and_sound_mode();
 s32  func_800B4874(s32);
@@ -42,14 +42,20 @@ s32  compute_save_data_checksum_backup_1(void);
 s32  compute_save_data_checksum_backup_2(void);
 s32  validate_save_data_checksum_backup();
 s32  func_800B5B2C(s32);
+s32  func_800B5B94(void);
+s32  func_800B5DA4(void);
 s32  func_800B5F30();
 s32  func_800B6014();
+s32  func_800B6088(s32);
 u8   func_800B60E8(s32);
+s32  func_800B6178(s32);
 s32  func_800B64EC(s32);
+s32  func_800B65F4(s32, s32);
 void func_800B6708(void);
+void func_800B6798(void);
 u8   func_800B6828(s32);
 u8   func_800B68F4(s32); 
-void func_800B69BC(s32);
+s32  func_800B69BC(s32);
 s32  func_800B6A68();
 
 /* data */
@@ -58,7 +64,7 @@ s32  func_800B6A68();
 extern u32*        D_800DC714;
 
 extern u16         D_800E86F0;
-extern s32         D_800E86F4;
+extern u32         D_800E86F4; // osPfs gamecode
 extern s8          D_800E86F8;
 extern struct_8018EE10_entry D_8018EE10[];
 extern struct_8018EE10_entry *D_8018D9C0;
@@ -70,8 +76,8 @@ extern union GrandPrixPointsUnion D_8018ED88; // D_8018EB90.grandPrixPointsBacku
 
 extern s8          D_800E86FC;
 extern const u8    D_800F2E60[];
-extern const char  D_800F2E64[];
-extern const char  D_800F2E74[];
+extern const u8    D_800F2E64[];
+extern const u8    D_800F2E74[];
 extern OSMesgQueue gSIEventMesgQueue; // D_8014F0B8
 extern u16         D_80162DD6;
 extern s32         D_80162DE0;
@@ -82,7 +88,7 @@ extern OSPfsState  D_8018E938[];
 extern s32         D_8018EB38[16];
 extern s32         D_8018EB78;
 extern s32         D_8018EB7C;
-extern s32         D_8018EB84;
+extern s32         D_8018EB84; // osPfs file_no receiver/out param
 extern s32         D_8018EB88;
 extern SaveData    D_8018EB90;
 extern u8          D_8018ED11;
