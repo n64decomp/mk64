@@ -4,7 +4,7 @@ glabel func_800A2EB8
 /* 0A3AC0 800A2EC0 0080A025 */  move  $s4, $a0
 /* 0A3AC4 800A2EC4 AFB00020 */  sw    $s0, 0x20($sp)
 /* 0A3AC8 800A2EC8 AFB10024 */  sw    $s1, 0x24($sp)
-/* 0A3ACC 800A2ECC 3C108016 */  lui   $s0, %hi(D_80164360) # $s0, 0x8016
+/* 0A3ACC 800A2ECC 3C108016 */  lui   $s0, %hi(gGPCurrentRacePlayerIdByRank) # $s0, 0x8016
 /* 0A3AD0 800A2ED0 3C048016 */  lui   $a0, %hi(D_80164370) # $a0, 0x8016
 /* 0A3AD4 800A2ED4 3C02800F */  lui   $v0, %hi(gPlayers) # $v0, 0x800f
 /* 0A3AD8 800A2ED8 AFBF0044 */  sw    $ra, 0x44($sp)
@@ -16,7 +16,7 @@ glabel func_800A2EB8
 /* 0A3AF0 800A2EF0 AFB20028 */  sw    $s2, 0x28($sp)
 /* 0A3AF4 800A2EF4 24426990 */  addiu $v0, %lo(gPlayers) # addiu $v0, $v0, 0x6990
 /* 0A3AF8 800A2EF8 24844370 */  addiu $a0, %lo(D_80164370) # addiu $a0, $a0, 0x4370
-/* 0A3AFC 800A2EFC 26104360 */  addiu $s0, %lo(D_80164360) # addiu $s0, $s0, 0x4360
+/* 0A3AFC 800A2EFC 26104360 */  addiu $s0, %lo(gGPCurrentRacePlayerIdByRank) # addiu $s0, $s0, 0x4360
 /* 0A3B00 800A2F00 27B10070 */  addiu $s1, $sp, 0x70
 /* 0A3B04 800A2F04 24030DD8 */  li    $v1, 3544
 .L800A2F08:
@@ -74,12 +74,12 @@ glabel func_800A2EB8
 /* 0A3BD4 800A2FD4 24840057 */  addiu $a0, $a0, 0x57
 /* 0A3BD8 800A2FD8 0C024CC9 */  jal   func_80093324
 /* 0A3BDC 800A2FDC 24A50028 */   addiu $a1, $a1, 0x28
-/* 0A3BE0 800A2FE0 3C108016 */  lui   $s0, %hi(D_80164360) # $s0, 0x8016
+/* 0A3BE0 800A2FE0 3C108016 */  lui   $s0, %hi(gGPCurrentRacePlayerIdByRank) # $s0, 0x8016
 /* 0A3BE4 800A2FE4 3C178019 */  lui   $s7, %hi(D_8018EDF3) # $s7, 0x8019
 /* 0A3BE8 800A2FE8 3C15800E */  lui   $s5, %hi(gGlobalTimer) # $s5, 0x800e
 /* 0A3BEC 800A2FEC 26B5C54C */  addiu $s5, %lo(gGlobalTimer) # addiu $s5, $s5, -0x3ab4
 /* 0A3BF0 800A2FF0 26F7EDF3 */  addiu $s7, %lo(D_8018EDF3) # addiu $s7, $s7, -0x120d
-/* 0A3BF4 800A2FF4 26104360 */  addiu $s0, %lo(D_80164360) # addiu $s0, $s0, 0x4360
+/* 0A3BF4 800A2FF4 26104360 */  addiu $s0, %lo(gGPCurrentRacePlayerIdByRank) # addiu $s0, $s0, 0x4360
 /* 0A3BF8 800A2FF8 00009025 */  move  $s2, $zero
 /* 0A3BFC 800A2FFC 27B10070 */  addiu $s1, $sp, 0x70
 /* 0A3C00 800A3000 00009825 */  move  $s3, $zero

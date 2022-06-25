@@ -9,7 +9,7 @@ glabel func_8000C9DC
 /* 00D5F8 8000C9F8 3C01800F */  lui   $at, %hi(D_800ECFF4) # $at, 0x800f
 /* 00D5FC 8000C9FC 00095400 */  sll   $t2, $t1, 0x10
 /* 00D600 8000CA00 C420CFF4 */  lwc1  $f0, %lo(D_800ECFF4)($at)
-/* 00D604 8000CA04 3C048016 */  lui   $a0, %hi(D_801645C8) # 0x8016
+/* 00D604 8000CA04 3C048016 */  lui   $a0, %hi(gWaypointCountByPathIndex) # 0x8016
 /* 00D608 8000CA08 3C068016 */  lui   $a2, %hi(D_80164550) # 0x8016
 /* 00D60C 8000CA0C 000A6C03 */  sra   $t5, $t2, 0x10
 /* 00D610 8000CA10 00094400 */  sll   $t0, $t1, 0x10
@@ -26,7 +26,7 @@ glabel func_8000C9DC
 /* 00D63C 8000CA3C 46007506 */  mov.s $f20, $f14
 /* 00D640 8000CA40 00001025 */  move  $v0, $zero
 /* 00D644 8000CA44 2403FFFF */  li    $v1, -1
-/* 00D648 8000CA48 948445C8 */  lhu   $a0, %lo(D_801645C8)($a0) # 0x45c8($a0)
+/* 00D648 8000CA48 948445C8 */  lhu   $a0, %lo(gWaypointCountByPathIndex)($a0) # 0x45c8($a0)
 /* 00D64C 8000CA4C 8CC64550 */  lw    $a2, %lo(D_80164550)($a2) # 0x4550($a2)
 /* 00D650 8000CA50 01804025 */  move  $t0, $t4
 /* 00D654 8000CA54 10200032 */  beqz  $at, .L8000CB20

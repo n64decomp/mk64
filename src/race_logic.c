@@ -4,6 +4,7 @@
 #include <common_structs.h>
 #include <config.h>
 #include <defines.h>
+#include "waypoints.h"
 
 extern Player *gPlayerTwo;
 extern Player *gPlayerThree;
@@ -204,8 +205,6 @@ void update_player_battle_status(void) {
 }
 
 extern f32 gTimePlayerLastTouchedFinishLine[];
-extern u16 D_801645B0[];
-extern u16 D_801645C8[];
 extern f32 gLapCompletionPercentByPlayerId[];
 
 void func_8028E298(void) {
@@ -218,10 +217,10 @@ void func_8028E298(void) {
         if ((gPlayers[i].unk_000 & PLAYER_CINEMATIC_MODE)) {
             continue;
         }
-            temp_a2 = D_801645B0[i];
+            temp_a2 = gPathIndexByPlayerId[i];
 
-            temp_v0 = ((2 - gPlayers[i].lapCount) * D_801645C8[temp_a2]);
-            temp_v0 += D_801645C8[temp_a2] * (1.0f - gLapCompletionPercentByPlayerId[i]);
+            temp_v0 = ((2 - gPlayers[i].lapCount) * gWaypointCountByPathIndex[temp_a2]);
+            temp_v0 += gWaypointCountByPathIndex[temp_a2] * (1.0f - gLapCompletionPercentByPlayerId[i]);
             temp_v0 /= 15.0f;
 
             gTimePlayerLastTouchedFinishLine[i] = gCourseTimer + temp_v0;

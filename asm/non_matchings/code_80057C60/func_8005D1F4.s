@@ -4,14 +4,14 @@ glabel func_8005D1F4
 /* 05DDFC 8005D1FC 24010002 */  li    $at, 2
 /* 05DE00 8005D200 00047840 */  sll   $t7, $a0, 1
 /* 05DE04 8005D204 15C10020 */  bne   $t6, $at, .L8005D288
-/* 05DE08 8005D208 3C028016 */   lui   $v0, %hi(D_80164438)
+/* 05DE08 8005D208 3C028016 */   lui   $v0, %hi(gNearestWaypointByPlayerId)
 /* 05DE0C 8005D20C 0004C140 */  sll   $t8, $a0, 5
 /* 05DE10 8005D210 0304C021 */  addu  $t8, $t8, $a0
 /* 05DE14 8005D214 3C198019 */  lui   $t9, %hi(D_8018CA70) # $t9, 0x8019
 /* 05DE18 8005D218 004F1021 */  addu  $v0, $v0, $t7
 /* 05DE1C 8005D21C 2739CA70 */  addiu $t9, %lo(D_8018CA70) # addiu $t9, $t9, -0x3590
 /* 05DE20 8005D220 0018C080 */  sll   $t8, $t8, 2
-/* 05DE24 8005D224 94424438 */  lhu   $v0, %lo(D_80164438)($v0)
+/* 05DE24 8005D224 94424438 */  lhu   $v0, %lo(gNearestWaypointByPlayerId)($v0)
 /* 05DE28 8005D228 03191821 */  addu  $v1, $t8, $t9
 /* 05DE2C 8005D22C 3C068016 */  lui   $a2, %hi(D_80163DE8) # $a2, 0x8016
 /* 05DE30 8005D230 3C088016 */  lui   $t0, %hi(D_80164034) # $t0, 0x8016

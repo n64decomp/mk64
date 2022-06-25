@@ -12,8 +12,8 @@ glabel func_800508C0
 /* 0514E8 800508E8 10000003 */  b     .L800508F8
 /* 0514EC 800508EC 86104378 */   lh    $s0, %lo(D_80164378)($s0)
 .L800508F0:
-/* 0514F0 800508F0 3C108016 */  lui   $s0, %hi(D_80164360) # $s0, 0x8016
-/* 0514F4 800508F4 86104360 */  lh    $s0, %lo(D_80164360)($s0)
+/* 0514F0 800508F0 3C108016 */  lui   $s0, %hi(gGPCurrentRacePlayerIdByRank) # $s0, 0x8016
+/* 0514F4 800508F4 86104360 */  lh    $s0, %lo(gGPCurrentRacePlayerIdByRank)($s0)
 .L800508F8:
 /* 0514F8 800508F8 3204FFFF */  andi  $a0, $s0, 0xffff
 /* 0514FC 800508FC 27A50054 */  addiu $a1, $sp, 0x54

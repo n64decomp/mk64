@@ -32,11 +32,11 @@ glabel set_places
 /* 007430 80006830 31880003 */  andi  $t0, $t4, 3
 /* 007434 80006834 1100001B */  beqz  $t0, .L800068A4
 /* 007438 80006838 01003025 */   move  $a2, $t0
-/* 00743C 8000683C 3C188016 */  lui   $t8, %hi(D_80164360) # $t8, 0x8016
+/* 00743C 8000683C 3C188016 */  lui   $t8, %hi(gGPCurrentRacePlayerIdByRank) # $t8, 0x8016
 /* 007440 80006840 00002880 */  sll   $a1, $zero, 2
 /* 007444 80006844 3C0E8016 */  lui   $t6, %hi(gCourseCompletionPercentByRank) # $t6, 0x8016
 /* 007448 80006848 25CE2FD8 */  addiu $t6, %lo(gCourseCompletionPercentByRank) # addiu $t6, $t6, 0x2fd8
-/* 00744C 8000684C 27184360 */  addiu $t8, %lo(D_80164360) # addiu $t8, $t8, 0x4360
+/* 00744C 8000684C 27184360 */  addiu $t8, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t8, $t8, 0x4360
 /* 007450 80006850 00007840 */  sll   $t7, $zero, 1
 /* 007454 80006854 27B90080 */  addiu $t9, $sp, 0x80
 /* 007458 80006858 3C0D8016 */  lui   $t5, %hi(gCourseCompletionPercentByPlayerId) # $t5, 0x8016
@@ -60,8 +60,8 @@ glabel set_places
 /* 00749C 8000689C 25290001 */   addiu $t1, $t1, 1
 /* 0074A0 800068A0 116C002A */  beq   $t3, $t4, .L8000694C
 .L800068A4:
-/* 0074A4 800068A4 3C0E8016 */   lui   $t6, %hi(D_80164360) # $t6, 0x8016
-/* 0074A8 800068A8 25CE4360 */  addiu $t6, %lo(D_80164360) # addiu $t6, $t6, 0x4360
+/* 0074A4 800068A4 3C0E8016 */   lui   $t6, %hi(gGPCurrentRacePlayerIdByRank) # $t6, 0x8016
+/* 0074A8 800068A8 25CE4360 */  addiu $t6, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t6, $t6, 0x4360
 /* 0074AC 800068AC 000BC840 */  sll   $t9, $t3, 1
 /* 0074B0 800068B0 3C188016 */  lui   $t8, %hi(gCourseCompletionPercentByRank) # $t8, 0x8016
 /* 0074B4 800068B4 27182FD8 */  addiu $t8, %lo(gCourseCompletionPercentByRank) # addiu $t8, $t8, 0x2fd8
@@ -114,11 +114,11 @@ glabel set_places
 /* 007560 80006960 31880003 */  andi  $t0, $t4, 3
 /* 007564 80006964 1100001C */  beqz  $t0, .L800069D8
 /* 007568 80006968 01003025 */   move  $a2, $t0
-/* 00756C 8000696C 3C0F8016 */  lui   $t7, %hi(D_80164360) # $t7, 0x8016
+/* 00756C 8000696C 3C0F8016 */  lui   $t7, %hi(gGPCurrentRacePlayerIdByRank) # $t7, 0x8016
 /* 007570 80006970 00002880 */  sll   $a1, $zero, 2
 /* 007574 80006974 3C188016 */  lui   $t8, %hi(gCourseCompletionPercentByRank) # $t8, 0x8016
 /* 007578 80006978 27182FD8 */  addiu $t8, %lo(gCourseCompletionPercentByRank) # addiu $t8, $t8, 0x2fd8
-/* 00757C 8000697C 25EF4360 */  addiu $t7, %lo(D_80164360) # addiu $t7, $t7, 0x4360
+/* 00757C 8000697C 25EF4360 */  addiu $t7, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t7, $t7, 0x4360
 /* 007580 80006980 00007040 */  sll   $t6, $zero, 1
 /* 007584 80006984 27B90080 */  addiu $t9, $sp, 0x80
 /* 007588 80006988 3C078016 */  lui   $a3, %hi(gTimePlayerLastTouchedFinishLine) # $a3, 0x8016
@@ -143,8 +143,8 @@ glabel set_places
 /* 0075D0 800069D0 25290001 */   addiu $t1, $t1, 1
 /* 0075D4 800069D4 116C002E */  beq   $t3, $t4, .L80006A90
 .L800069D8:
-/* 0075D8 800069D8 3C188016 */   lui   $t8, %hi(D_80164360) # $t8, 0x8016
-/* 0075DC 800069DC 27184360 */  addiu $t8, %lo(D_80164360) # addiu $t8, $t8, 0x4360
+/* 0075D8 800069D8 3C188016 */   lui   $t8, %hi(gGPCurrentRacePlayerIdByRank) # $t8, 0x8016
+/* 0075DC 800069DC 27184360 */  addiu $t8, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t8, $t8, 0x4360
 /* 0075E0 800069E0 000BC840 */  sll   $t9, $t3, 1
 /* 0075E4 800069E4 3C0F8016 */  lui   $t7, %hi(gCourseCompletionPercentByRank) # $t7, 0x8016
 /* 0075E8 800069E8 25EF2FD8 */  addiu $t7, %lo(gCourseCompletionPercentByRank) # addiu $t7, $t7, 0x2fd8
@@ -198,12 +198,12 @@ glabel set_places
 /* 00769C 80006A9C 25AD44D0 */  addiu $t5, %lo(gCourseCompletionPercentByPlayerId) # addiu $t5, $t5, 0x44d0
 /* 0076A0 80006AA0 1B000076 */  blez  $t8, .L80006C7C
 /* 0076A4 80006AA4 AFB80030 */   sw    $t8, 0x30($sp)
-/* 0076A8 80006AA8 3C0A8016 */  lui   $t2, %hi(D_80164360) # $t2, 0x8016
-/* 0076AC 80006AAC 3C088016 */  lui   $t0, %hi(D_80164360) # $t0, 0x8016
+/* 0076A8 80006AA8 3C0A8016 */  lui   $t2, %hi(gGPCurrentRacePlayerIdByRank) # $t2, 0x8016
+/* 0076AC 80006AAC 3C088016 */  lui   $t0, %hi(gGPCurrentRacePlayerIdByRank) # $t0, 0x8016
 /* 0076B0 80006AB0 3C06800F */  lui   $a2, %hi(gPlayers) # $a2, 0x800f
 /* 0076B4 80006AB4 24C66990 */  addiu $a2, %lo(gPlayers) # addiu $a2, $a2, 0x6990
-/* 0076B8 80006AB8 25084360 */  addiu $t0, %lo(D_80164360) # addiu $t0, $t0, 0x4360
-/* 0076BC 80006ABC 254A4360 */  addiu $t2, %lo(D_80164360) # addiu $t2, $t2, 0x4360
+/* 0076B8 80006AB8 25084360 */  addiu $t0, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t0, $t0, 0x4360
+/* 0076BC 80006ABC 254A4360 */  addiu $t2, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t2, $t2, 0x4360
 /* 0076C0 80006AC0 24090001 */  li    $t1, 1
 /* 0076C4 80006AC4 24070DD8 */  li    $a3, 3544
 /* 0076C8 80006AC8 27A40080 */  addiu $a0, $sp, 0x80
@@ -345,8 +345,8 @@ glabel set_places
 /* 0078C0 80006CC0 31880003 */  andi  $t0, $t4, 3
 /* 0078C4 80006CC4 11000015 */  beqz  $t0, .L80006D1C
 /* 0078C8 80006CC8 01002825 */   move  $a1, $t0
-/* 0078CC 80006CCC 3C188016 */  lui   $t8, %hi(D_80164360) # $t8, 0x8016
-/* 0078D0 80006CD0 27184360 */  addiu $t8, %lo(D_80164360) # addiu $t8, $t8, 0x4360
+/* 0078CC 80006CCC 3C188016 */  lui   $t8, %hi(gGPCurrentRacePlayerIdByRank) # $t8, 0x8016
+/* 0078D0 80006CD0 27184360 */  addiu $t8, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t8, $t8, 0x4360
 /* 0078D4 80006CD4 00007840 */  sll   $t7, $zero, 1
 /* 0078D8 80006CD8 00007080 */  sll   $t6, $zero, 2
 /* 0078DC 80006CDC 3C068016 */  lui   $a2, %hi(gPlayerPositions) # $a2, 0x8016
@@ -367,8 +367,8 @@ glabel set_places
 /* 007914 80006D14 25290001 */   addiu $t1, $t1, 1
 /* 007918 80006D18 116C0024 */  beq   $t3, $t4, .L80006DAC
 .L80006D1C:
-/* 00791C 80006D1C 3C0E8016 */   lui   $t6, %hi(D_80164360) # $t6, 0x8016
-/* 007920 80006D20 25CE4360 */  addiu $t6, %lo(D_80164360) # addiu $t6, $t6, 0x4360
+/* 00791C 80006D1C 3C0E8016 */   lui   $t6, %hi(gGPCurrentRacePlayerIdByRank) # $t6, 0x8016
+/* 007920 80006D20 25CE4360 */  addiu $t6, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t6, $t6, 0x4360
 /* 007924 80006D24 3C068016 */  lui   $a2, %hi(gPlayerPositions) # $a2, 0x8016
 /* 007928 80006D28 000BC040 */  sll   $t8, $t3, 1
 /* 00792C 80006D2C 000BC880 */  sll   $t9, $t3, 2

@@ -53,14 +53,14 @@ glabel func_80016C3C
 /* 017900 80016D00 8C6E0000 */  lw    $t6, ($v1)
 .L80016D04:
 /* 017904 80016D04 8FB80070 */  lw    $t8, 0x70($sp)
-/* 017908 80016D08 3C0C8016 */  lui   $t4, %hi(D_80164668) # $t4, 0x8016
-/* 01790C 80016D0C 3C108016 */  lui   $s0, %hi(D_801645C8) # 0x8016
-/* 017910 80016D10 258C4668 */  addiu $t4, %lo(D_80164668) # addiu $t4, $t4, 0x4668
+/* 017908 80016D08 3C0C8016 */  lui   $t4, %hi(gNearestWaypointByCameraId) # $t4, 0x8016
+/* 01790C 80016D0C 3C108016 */  lui   $s0, %hi(gWaypointCountByPathIndex) # 0x8016
+/* 017910 80016D10 258C4668 */  addiu $t4, %lo(gNearestWaypointByCameraId) # addiu $t4, $t4, 0x4668
 /* 017914 80016D14 000E7840 */  sll   $t7, $t6, 1
 /* 017918 80016D18 0018C840 */  sll   $t9, $t8, 1
 /* 01791C 80016D1C 020F8021 */  addu  $s0, $s0, $t7
 /* 017920 80016D20 032C8821 */  addu  $s1, $t9, $t4
-/* 017924 80016D24 961045C8 */  lhu   $s0, %lo(D_801645C8)($s0) # 0x45c8($s0)
+/* 017924 80016D24 961045C8 */  lhu   $s0, %lo(gWaypointCountByPathIndex)($s0) # 0x45c8($s0)
 /* 017928 80016D28 862D0000 */  lh    $t5, ($s1)
 /* 01792C 80016D2C 8E450000 */  lw    $a1, ($s2)
 /* 017930 80016D30 00003025 */  move  $a2, $zero

@@ -1,8 +1,8 @@
 glabel func_80010E6C
 /* 011A6C 80010E6C 00047040 */  sll   $t6, $a0, 1
-/* 011A70 80010E70 3C028016 */  lui   $v0, %hi(D_801645C8) # 0x8016
+/* 011A70 80010E70 3C028016 */  lui   $v0, %hi(gWaypointCountByPathIndex) # 0x8016
 /* 011A74 80010E74 004E1021 */  addu  $v0, $v0, $t6
-/* 011A78 80010E78 944245C8 */  lhu   $v0, %lo(D_801645C8)($v0) # 0x45c8($v0)
+/* 011A78 80010E78 944245C8 */  lhu   $v0, %lo(gWaypointCountByPathIndex)($v0) # 0x45c8($v0)
 /* 011A7C 80010E7C 00042880 */  sll   $a1, $a0, 2
 /* 011A80 80010E80 3C038016 */  lui   $v1, %hi(D_80164580) # 0x8016
 /* 011A84 80010E84 3C068016 */  lui   $a2, %hi(D_801645A0) # 0x8016

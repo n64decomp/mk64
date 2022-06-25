@@ -17,10 +17,10 @@ glabel func_80019760
 /* 01A39C 8001979C E4860004 */  swc1  $f6, 4($a0)
 /* 01A3A0 800197A0 C4284638 */  lwc1  $f8, %lo(D_80164638)($at)
 /* 01A3A4 800197A4 00077040 */  sll   $t6, $a3, 1
-/* 01A3A8 800197A8 3C0F8016 */  lui   $t7, %hi(D_80164668) # 0x8016
+/* 01A3A8 800197A8 3C0F8016 */  lui   $t7, %hi(gNearestWaypointByCameraId) # 0x8016
 /* 01A3AC 800197AC 01EE7821 */  addu  $t7, $t7, $t6
 /* 01A3B0 800197B0 E4880008 */  swc1  $f8, 8($a0)
-/* 01A3B4 800197B4 85EF4668 */  lh    $t7, %lo(D_80164668)($t7) # 0x4668($t7)
+/* 01A3B4 800197B4 85EF4668 */  lh    $t7, %lo(gNearestWaypointByCameraId)($t7) # 0x4668($t7)
 /* 01A3B8 800197B8 3C198016 */  lui   $t9, %hi(D_80164550) # $t9, 0x8016
 /* 01A3BC 800197BC 8F394550 */  lw    $t9, %lo(D_80164550)($t9)
 /* 01A3C0 800197C0 000FC0C0 */  sll   $t8, $t7, 3

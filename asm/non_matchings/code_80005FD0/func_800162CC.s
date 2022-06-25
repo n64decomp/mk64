@@ -1,28 +1,28 @@
 glabel func_800162CC
 /* 016ECC 800162CC 00046040 */  sll   $t4, $a0, 1
-/* 016ED0 800162D0 3C0D8016 */  lui   $t5, %hi(D_80164438) # 0x8016
+/* 016ED0 800162D0 3C0D8016 */  lui   $t5, %hi(gNearestWaypointByPlayerId) # 0x8016
 /* 016ED4 800162D4 44856000 */  mtc1  $a1, $f12
 /* 016ED8 800162D8 01AC6821 */  addu  $t5, $t5, $t4
-/* 016EDC 800162DC 95AD4438 */  lhu   $t5, %lo(D_80164438)($t5) # 0x4438($t5)
+/* 016EDC 800162DC 95AD4438 */  lhu   $t5, %lo(gNearestWaypointByPlayerId)($t5) # 0x4438($t5)
 /* 016EE0 800162E0 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 016EE4 800162E4 00077400 */  sll   $t6, $a3, 0x10
 /* 016EE8 800162E8 0006C080 */  sll   $t8, $a2, 2
 /* 016EEC 800162EC 3C018016 */  lui   $at, %hi(D_80164688)
-/* 016EF0 800162F0 3C0A8016 */  lui   $t2, %hi(D_80164668) # $t2, 0x8016
+/* 016EF0 800162F0 3C0A8016 */  lui   $t2, %hi(gNearestWaypointByCameraId) # $t2, 0x8016
 /* 016EF4 800162F4 000E7C03 */  sra   $t7, $t6, 0x10
 /* 016EF8 800162F8 AFA70034 */  sw    $a3, 0x34($sp)
 /* 016EFC 800162FC 00380821 */  addu  $at, $at, $t8
-/* 016F00 80016300 254A4668 */  addiu $t2, %lo(D_80164668) # addiu $t2, $t2, 0x4668
+/* 016F00 80016300 254A4668 */  addiu $t2, %lo(gNearestWaypointByCameraId) # addiu $t2, $t2, 0x4668
 /* 016F04 80016304 00064840 */  sll   $t1, $a2, 1
 /* 016F08 80016308 01E03825 */  move  $a3, $t7
 /* 016F0C 8001630C 03001825 */  move  $v1, $t8
 /* 016F10 80016310 012A4021 */  addu  $t0, $t1, $t2
 /* 016F14 80016314 E42C4688 */  swc1  $f12, %lo(D_80164688)($at)
-/* 016F18 80016318 3C188016 */  lui   $t8, %hi(D_801645C8) # 0x8016
+/* 016F18 80016318 3C188016 */  lui   $t8, %hi(gWaypointCountByPathIndex) # 0x8016
 /* 016F1C 8001631C 000F7840 */  sll   $t7, $t7, 1
 /* 016F20 80016320 A50D0000 */  sh    $t5, ($t0)
 /* 016F24 80016324 030FC021 */  addu  $t8, $t8, $t7
-/* 016F28 80016328 971845C8 */  lhu   $t8, %lo(D_801645C8)($t8) # 0x45c8($t8)
+/* 016F28 80016328 971845C8 */  lhu   $t8, %lo(gWaypointCountByPathIndex)($t8) # 0x45c8($t8)
 /* 016F2C 8001632C 850E0000 */  lh    $t6, ($t0)
 /* 016F30 80016330 00C0C825 */  move  $t9, $a2
 /* 016F34 80016334 AFA60030 */  sw    $a2, 0x30($sp)

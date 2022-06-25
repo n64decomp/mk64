@@ -152,7 +152,7 @@ glabel D_8016435A
 glabel D_8016435C
 .skip 4
 
-glabel D_80164360
+glabel gGPCurrentRacePlayerIdByRank
 .skip 8
 
 glabel D_80164368
@@ -214,7 +214,7 @@ glabel D_8016440C
 glabel D_80164430
 .skip 8
 
-glabel D_80164438
+glabel gNearestWaypointByPlayerId
 .skip 6
 
 glabel D_8016443E
@@ -277,10 +277,10 @@ glabel D_80164590
 glabel D_801645A0
 .skip 16
 
-glabel D_801645B0
+glabel gPathIndexByPlayerId
 .skip 24
 
-glabel D_801645C8
+glabel gWaypointCountByPathIndex
 .skip 6
 
 glabel D_801645CE
@@ -316,7 +316,7 @@ glabel D_80164648
 glabel D_80164658
 .skip 16
 
-glabel D_80164668
+glabel gNearestWaypointByCameraId
 .skip 8
 
 glabel D_80164670

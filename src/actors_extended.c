@@ -4,6 +4,7 @@
 #include <actor_types.h>
 #include "math_util.h"
 #include "memory.h"
+#include "waypoints.h"
 #include "code_80091750.h"
 #include "actors.h"
 #include "actors_extended.h"
@@ -1600,7 +1601,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
                 shell->targetPlayer = gPlayerPositionLUT[0];
                 shell->state = 8;
                 shell->shellId = 1000.0f;
-                temp_v0 = D_80164438[player - gPlayerOne] + 8;
+                temp_v0 = gNearestWaypointByPlayerId[player - gPlayerOne] + 8;
                 if ((s32) D_80164430 < temp_v0) {
                     temp_v0 -= D_80164430;
                 }
@@ -1621,7 +1622,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
                 if (player->currentRank == 0) {
                     shell->state = 4;
                     shell->someTimer = 0x0258;
-                    temp_v0 = D_80164438[player - gPlayerOne] + 8;
+                    temp_v0 = gNearestWaypointByPlayerId[player - gPlayerOne] + 8;
                     if ((s32) D_80164430 < temp_v0) {
                         temp_v0 -= D_80164430;
                     }
@@ -1629,7 +1630,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
                 } else if (player->currentRank >= 5) {
                     shell->state = 5;
                     shell->shellId = 1000.0f;
-                    temp_v0 = D_80164438[player - gPlayerOne] + 8;
+                    temp_v0 = gNearestWaypointByPlayerId[player - gPlayerOne] + 8;
                     if ((s32) D_80164430 < temp_v0) {
                         temp_v0 -= D_80164430;
                     }
