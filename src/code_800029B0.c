@@ -42,7 +42,7 @@ extern s8 D_8018EDF3;
 extern s8 gCupSelection;
 
 
-extern u32 gScreenModeSelection;
+extern s32 gScreenModeSelection;
 extern u32 D_8015F730;
 extern u32 D_8015F734;
 extern u32 gPrevLoadedAddress;

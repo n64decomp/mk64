@@ -1884,11 +1884,10 @@ glabel D_800E86C4
 .byte 0x00
 glabel D_800E86C5
 .byte 0x00
-glabel D_800E86C6
+glabel D_800E86C6 # gDisplayedControllerPakTableRows[5] or [6]
 .byte 0x01
 glabel D_800E86C7
 .byte 0x02
-
 glabel D_800E86C8
 .byte 0x03
 glabel D_800E86C9

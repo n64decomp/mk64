@@ -28,6 +28,7 @@ s32  func_800B4E24(s32);
 s32  func_800B4EB4(s32, s32);
 s32  func_800B4F2C();
 s32  func_800B4FB0(s32);
+void func_800B5404(s32, s32);
 u8   func_800B54C0(s32, s32);
 u8   func_800B54EC(s32, s32);
 u8   func_800B5508(s32, s32, s32);
