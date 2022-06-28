@@ -13,13 +13,45 @@
 #include "main.h"
 
 /** BSS **/
-extern s32 D_8018EDE0;
-extern s32 gMainMenuSelectionDepth;
-extern s8 D_8018EDF1;  // self bss
-extern s8 D_8018EDF5;
-extern s8 D_8018EDF9;
-extern s32 D_8018EE04; // self bss
-extern s8 gDebugGotoScene; // self bss
+s32 D_8018EDC0;
+f32 D_8018EDC4;
+f32 D_8018EDC8;
+f32 D_8018EDCC;
+f32 D_8018EDD0;
+f32 D_8018EDD4;
+f32 D_8018EDD8;
+f32 D_8018EDDC;
+s32 D_8018EDE0;
+s8 gCharacterGridSelections[4];
+s8 D_8018EDE8;
+s8 D_8018EDE9;
+s8 D_8018EDEA;
+s8 D_8018EDEB;
+s8 D_8018EDEC;
+s8 gMainMenuSelectionDepth;
+s8 D_8018EDEE;
+s8 gDebugMenuSelection;
+s8 gControllerPakMenuSelection;
+s8 D_8018EDF1;
+u8 gSoundMode;
+s8 D_8018EDF3;
+s8 D_8018EDF4;
+s8 D_8018EDF5;
+s8 D_8018EDF6;
+s8 gTimeTrialDataCourseIndex;
+s8 gCourseRecordsMenuSelection;
+s8 D_8018EDF9;
+s8 gDebugGotoScene;
+s8 D_8018EDFB;
+s8 D_8018EDFC;
+s32 gMenuTimingCounter;
+s32 D_8018EE04;
+s8 D_8018EE08;
+s8 gCupSelection;
+s8 D_8018EE0A;
+s8 gCupCourseSelection;
+s8 D_8018EE0C;
+struct_8018EE10_entry D_8018EE10[2];
 
 /** Data **/
 s32 gMenuSelection = LOGO_INTRO_MENU;
@@ -29,7 +61,7 @@ s8 gCharacterSelections[4] = { 0, 1, 2, 3 };
 
 // Well, for now let's split this into two symbols to match func_800B28C8
 // but otherwise treat this as one symbol.
-// This is in generally a giant hack. 
+// This is in general a giant hack. 
 // Note that even the sizes of the two versions of the array are not the same
 // due to alignment padding 
 #ifdef NON_MATCHING
