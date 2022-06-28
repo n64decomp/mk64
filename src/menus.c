@@ -13,6 +13,8 @@
 #include "main.h"
 
 /** BSS **/
+extern s32 D_8018EDE0;
+extern s32 gMainMenuSelectionDepth;
 extern s8 D_8018EDF1;  // self bss
 extern s8 D_8018EDF5;
 extern s8 D_8018EDF9;
@@ -20,9 +22,52 @@ extern s32 D_8018EE04; // self bss
 extern s8 gDebugGotoScene; // self bss
 
 /** Data **/
-extern s8 D_800E86C6[]; // self data
+s32 gMenuSelection = LOGO_INTRO_MENU;
+s32 D_800E86A4 = 0;
+s8 gCharacterSelections[4] = { 0, 1, 2, 3 };
 
-/* const/rodata data */
+
+// Well, for now let's split this into two symbols to match func_800B28C8
+// but otherwise treat this as one symbol.
+// This is in generally a giant hack. 
+// Note that even the sizes of the two versions of the array are not the same
+// due to alignment padding 
+#ifdef NON_MATCHING
+#define CONTIG_GAMEMODEROWS
+#endif
+
+#ifdef CONTIG_GAMEMODEROWS
+// gGameModeRowSelectionForNumPlayers is (D_800E86AC - 1)
+// gGameModeSubMenuRowSelectionForNumPlayers (D_800E86AC + 1)
+s8 D_800E86AC[5][3] = {
+    {0, 0, 0},
+    {0, 0, 0},
+    {0, 0, 0},
+    {0, 0, 0},
+    {0, 0, 0},
+};
+#else 
+s8 D_800E86AC[3] = { 0, 0, 0 };
+s8 D_800E86BO[4][3] = {
+    {0, 0, 0},
+    {0, 0, 0},
+    {0, 0, 0},
+    {0, 0, 0}
+};
+#endif
+
+s8 gNextDemoId = 0;
+s8 gControllerPakSelectedTableRow = 0;
+//s8 D_800E86C4[2] = {0, 0};
+//s8 D_800E86C6[10] = {1, 2, 3, 4, 5, 6, 0, 0, 0, 0}; // gDisplayedControllerPakTableRows?
+s8 D_800E86C4[12] = {0, 0, 1, 2, 3, 4, 5, 6, 0, 0, 0, 0};
+s8 D_800E86D0[16] = {0}; // this doesn't make a lot of sense...
+s8 unref_800E86E0[4] = {0, 0, 0, 1};
+
+
+u32 D_800E86E4 = OS_VI_GAMMA_OFF | OS_VI_DITHER_FILTER_ON;
+
+/*** Const/rodata Data ***/
 // used to set gScreenModeSelection; might be smaller; could be function static data
 const s8 D_800F2B50[] = {0, 1, 2, 3, 3, 0, 0, 0};
 
@@ -846,7 +891,7 @@ void func_800B1C90(struct Controller* controller, UNUSED u16 arg1) {
             break;
         case CONTROLLER_PAK_MENU_TABLE_GAME_DATA:
             if ((buttonAndStickPress & 0x9000) != 0) {
-                selectedTableRow = D_800E86C6[gControllerPakSelectedTableRow] - 1;
+                selectedTableRow = D_800E86C4[gControllerPakSelectedTableRow + 2] - 1;
                 if (D_8018EB38[selectedTableRow] == 0) {
                     gControllerPakMenuSelection = CONTROLLER_PAK_MENU_QUIT;
                     play_sound2(0x49008001);
@@ -863,7 +908,7 @@ void func_800B1C90(struct Controller* controller, UNUSED u16 arg1) {
                     --gControllerPakSelectedTableRow;
                     if (gControllerPakSelectedTableRow < 0) {
                         gControllerPakSelectedTableRow = 0;
-                        if (D_800E86C6[gControllerPakSelectedTableRow] != 1) {
+                        if (D_800E86C4[gControllerPakSelectedTableRow + 2] != 1) {
                             D_800E86D0[0] = 2;
                             play_sound2(0x49008000);
                             return;
@@ -877,7 +922,7 @@ void func_800B1C90(struct Controller* controller, UNUSED u16 arg1) {
                 ++gControllerPakSelectedTableRow;
                 if (gControllerPakSelectedTableRow >= CONTROLLER_PAK_MENU_TABLE_GAME_DATA) {
                     gControllerPakSelectedTableRow = CONTROLLER_PAK_MENU_QUIT;
-                    if (D_800E86C6[gControllerPakSelectedTableRow] != 0x10) {
+                    if (D_800E86C4[gControllerPakSelectedTableRow + 2] != 0x10) {
                         D_800E86D0[0] = 1;
                         play_sound2(0x49008000);
                         return;
@@ -921,7 +966,7 @@ void func_800B1C90(struct Controller* controller, UNUSED u16 arg1) {
             gControllerPakMenuSelection = CONTROLLER_PAK_MENU_ERASING;
             return;
         case CONTROLLER_PAK_MENU_ERASING:
-            selectedTableRow = D_800E86C6[gControllerPakSelectedTableRow] - 1;
+            selectedTableRow = D_800E86C4[gControllerPakSelectedTableRow + 2] - 1;
             osPfsState = &D_8018E938[selectedTableRow];
 
             switch (osPfsDeleteFile(&D_8018E868, osPfsState->company_code, osPfsState->game_code, (u8 *)&osPfsState->game_name, (u8 *)&osPfsState->ext_name)) { 
@@ -1170,13 +1215,19 @@ void func_800B20F4(struct Controller *controller, u16 arg1) {
     }
 }
 
+
 void func_800B28C8(void) {
+
+#ifdef CONTIG_GAMEMODEROWS
     // For Grand Prix and Versus, this will be the CC mode selected. For Time Trials, it will
     // be whether 'Begin' or 'Data' is selected. Not used for Battle.
-    s8 temp_v0 = gGameModeSubMenuRowSelectionForNumPlayers[D_8018EDF3][gGameModeRowSelectionForNumPlayers[D_8018EDF3]];
-
+    s8 temp_v0 = D_800E86AC[D_8018EDF3][D_800E86AC[0][D_8018EDF3 - 1] + 1];
     // Determine which game mode was selected based on the number of players and the row selected on the main menu
-    switch (gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][gGameModeRowSelectionForNumPlayers[D_8018EDF3]]) {
+    switch (gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[0][D_8018EDF3 - 1]]) {
+#else
+    s8 temp_v0 = D_800E86BO[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1] - 3];
+    switch (gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]]) {
+#endif
     case GRAND_PRIX:
         gCCSelection =  temp_v0;
         gPlaceItemBoxes = 1;
@@ -1218,7 +1269,7 @@ void func_800B28C8(void) {
 static ? gGameModeRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
 static ? D_800E86AC;                                /* unable to generate initializer; const */
 static ? gGameModeSubMenuRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
-static ? D_800E86B0;                                /* unable to generate initializer; const */
+static ? (D_800E86AC + 4);                                /* unable to generate initializer; const */
 static ? D_800F2B5F;                                /* unable to generate initializer; const */
 static ? D_800F2B61;                                /* unable to generate initializer; const */
 static ? D_800F2B6D;                                /* unable to generate initializer; const */
@@ -1439,7 +1490,7 @@ void func_800B29D8(void *arg0, u16 arg1) {
                 play_sound2(0x4900900E, arg1, phi_v1);
             }
             temp_v0_6 = D_8018EDF3;
-            temp_v1_5 = (temp_v0_6 * 3) + *(&gGameModeRowSelectionForNumPlayers + temp_v0_6) + &D_800E86B0;
+            temp_v1_5 = (temp_v0_6 * 3) + *(&gGameModeRowSelectionForNumPlayers + temp_v0_6) + &(D_800E86AC + 4);
             temp_a0_4 = temp_v1_5->unk-3;
             phi_a1 = temp_a0_4;
             if (((phi_v1 & 0x800) != 0) && (temp_a0_4 > 0)) {
@@ -1478,7 +1529,7 @@ block_64:
                     }
                 }
                 if (phi_v1_2 != 0) {
-                    temp_v1_6 = (phi_v0_2 * 3) + phi_a0_2 + &D_800E86B0;
+                    temp_v1_6 = (phi_v0_2 * 3) + phi_a0_2 + &(D_800E86AC + 4);
                     sp1C = phi_v1;
                     temp_v1_6->unk-3 = temp_v1_6->unk-3 + 1;
                     func_800B44AC(phi_a0_2, phi_a1, phi_v1);
@@ -1564,7 +1615,7 @@ GLOBAL_ASM("asm/non_matchings/menus/func_800B29D8.s")
 
 s32 func_800B34E8(s32 arg0) {
     s32 i;
-    for (i =0; i < 4; i++) {
+    for (i = 0; i < 4; i++) {
         if (arg0 == gCharacterGridSelections[i]) {
             return 0;
         }

@@ -10,17 +10,26 @@
 #include "main.h"
 #include "math_util.h"
 
-extern Light D_800E8680;
-extern Light D_800E8688;
+/*** Data ***/
+Ambient D_800E8680 = {{
+    {31, 31, 31}, 0,
+    {31, 31, 31}, 0,
+}};
 
-/* BSS */
+Light D_800E8688 = {{
+    {255, 255, 255}, 0,
+    {255, 255, 255}, 0,
+    { 40,  40,  20}, 0,
+}};
+
+/*** BSS ****/
 s16 D_8018EDB0;
 s16 D_8018EDB2;
 s16 D_8018EDB4;
 Vtx *D_8018EDB8;
 Vtx *D_8018EDBC;
 
-/* utils */
+/*** utils **/
 #define SQ(x) ((x) * (x))
 
 void func_800AF9B0(void) {

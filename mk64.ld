@@ -232,6 +232,11 @@ SECTIONS
       BUILD_DIR/data/data_0DD0A0_2.o(.data);
       BUILD_DIR/src/spawn_players.o(.data);
       BUILD_DIR/data/data_0DD0A0_2_0.o(.data);
+      BUILD_DIR/src/code_800AF9B0.o(.data);
+      BUILD_DIR/src/menus.o(.data);
+      BUILD_DIR/src/code_800B45E0.o(.data);
+      BUILD_DIR/data/data_800E8700.o(.data);
+      BUILD_DIR/data/data_audio.o(.data);
       BUILD_DIR/src/audio/load.o(.rodata*);
       BUILD_DIR/data/data_0DD0A0_2_1_0.o(.rodata);
       BUILD_DIR/src/os/osInitialize.o(.data*);

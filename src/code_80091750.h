@@ -137,6 +137,7 @@ Gfx *func_8009BEF0(Gfx*, s32, f32, f32, s32, f32,f32);
 Gfx *func_8009C434(Gfx*, struct_8018DEE0_entry*, s32, s32, s32);
 Gfx *func_8009C708(Gfx*, struct_8018DEE0_entry *, s32, s32, s32, s32);
 void func_8009C918();
+void func_8009E0F0(s32);
 void func_8009E1C0();
 void func_8009E1E4();
 void func_8009E208(void);
@@ -247,7 +248,7 @@ extern s32 gGlyphTextureLUT[]; // D_800E7E84
 extern MkTexture *D_800E82B4[5];
 extern f32 D_800E8530;
 extern f32 D_800E8534;
-extern s8  D_800E86D0[20];
+extern s8  D_800E86D0[];
 extern f32 D_800F1CC8;
 extern f32 D_800F1F04;
 extern f32 D_800F1F08;
