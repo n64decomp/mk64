@@ -643,7 +643,6 @@ void func_80044924(s8 *image, s32 width, s32 arg2) {
     gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
     gDPLoadSync(gDisplayListHead++);
 
-
     temp_t3 = (((width * arg2) + 3) >> 2) - 1;
 
     if (temp_t3 < 0x7FF) {
@@ -2836,7 +2835,7 @@ UNUSED void func_8004A5E4(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4) {
 //extern ? D_0D007B98;
 //extern f64 D_800EE030;
 //extern ? D_80183E50;
-//
+
 extern Gfx D_0D007B98[];
 extern f64 D_800EE030;
 extern Vec3f D_80183E50;
