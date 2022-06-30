@@ -475,6 +475,8 @@
 #define G_ACMUX_PRIM_LOD_FRAC	6
 #define G_ACMUX_1		        6
 #define G_ACMUX_0		        7
+// Invalid alpha combiner constant for unused func_8004B5A8.
+#define G_ACMUX_PRIMITIVE_ALPHA 10
 
 /* typical CC cycle 1 modes */
 #define	G_CC_PRIMITIVE              0, 0, 0, PRIMITIVE, 0, 0, 0, PRIMITIVE
