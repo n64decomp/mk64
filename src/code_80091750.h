@@ -141,7 +141,7 @@ void func_8009E0F0(s32);
 void func_8009E1C0();
 void func_8009E1E4();
 void func_8009E208(void);
-void func_8009E258();
+void func_8009E258(void);
 void func_8009E280(void);
 void func_8009E5BC();
 void func_8009E620();
