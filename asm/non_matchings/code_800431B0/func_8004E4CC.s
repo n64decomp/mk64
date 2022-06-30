@@ -1,18 +1,4 @@
-glabel func_8004E4CC
-/* 04F0CC 8004E4CC 27BDFFD8 */  addiu $sp, $sp, -0x28
-/* 04F0D0 8004E4D0 AFBF0024 */  sw    $ra, 0x24($sp)
-/* 04F0D4 8004E4D4 240E0028 */  li    $t6, 40
-/* 04F0D8 8004E4D8 240F0020 */  li    $t7, 32
-/* 04F0DC 8004E4DC 24180020 */  li    $t8, 32
-/* 04F0E0 8004E4E0 AFB80018 */  sw    $t8, 0x18($sp)
-/* 04F0E4 8004E4E4 AFAF0014 */  sw    $t7, 0x14($sp)
-/* 04F0E8 8004E4E8 0C013890 */  jal   func_8004E240
-/* 04F0EC 8004E4EC AFAE0010 */   sw    $t6, 0x10($sp)
-/* 04F0F0 8004E4F0 8FBF0024 */  lw    $ra, 0x24($sp)
-/* 04F0F4 8004E4F4 27BD0028 */  addiu $sp, $sp, 0x28
-/* 04F0F8 8004E4F8 03E00008 */  jr    $ra
-/* 04F0FC 8004E4FC 00000000 */   nop   
-
+glabel func_8004E500
 /* 04F100 8004E500 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 04F104 8004E504 AFBF0024 */  sw    $ra, 0x24($sp)
 /* 04F108 8004E508 240E0030 */  li    $t6, 48
