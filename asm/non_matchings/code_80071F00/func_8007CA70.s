@@ -8,9 +8,9 @@ glabel func_8007CA70
 /* 07D688 8007CA88 0C01F27E */  jal   func_8007C9F8
 /* 07D68C 8007CA8C 00000000 */   nop   
 /* 07D690 8007CA90 00027840 */  sll   $t7, $v0, 1
-/* 07D694 8007CA94 3C038016 */  lui   $v1, %hi(D_80164438) # 0x8016
+/* 07D694 8007CA94 3C038016 */  lui   $v1, %hi(gNearestWaypointByPlayerId) # 0x8016
 /* 07D698 8007CA98 006F1821 */  addu  $v1, $v1, $t7
-/* 07D69C 8007CA9C 94634438 */  lhu   $v1, %lo(D_80164438)($v1) # 0x4438($v1)
+/* 07D69C 8007CA9C 94634438 */  lhu   $v1, %lo(gNearestWaypointByPlayerId)($v1) # 0x4438($v1)
 /* 07D6A0 8007CAA0 3C018019 */  lui   $at, %hi(D_8018D018) # $at, 0x8019
 /* 07D6A4 8007CAA4 A422D018 */  sh    $v0, %lo(D_8018D018)($at)
 /* 07D6A8 8007CAA8 286100C9 */  slti  $at, $v1, 0xc9
@@ -28,8 +28,8 @@ glabel func_8007CA70
 /* 07D6D4 8007CAD4 13000017 */  beqz  $t8, .L8007CB34
 /* 07D6D8 8007CAD8 00000000 */   nop   
 /* 07D6DC 8007CADC 84A5D018 */  lh    $a1, %lo(D_8018D018)($a1)
-/* 07D6E0 8007CAE0 3C088016 */  lui   $t0, %hi(D_80164438) # $t0, 0x8016
-/* 07D6E4 8007CAE4 25084438 */  addiu $t0, %lo(D_80164438) # addiu $t0, $t0, 0x4438
+/* 07D6E0 8007CAE0 3C088016 */  lui   $t0, %hi(gNearestWaypointByPlayerId) # $t0, 0x8016
+/* 07D6E4 8007CAE4 25084438 */  addiu $t0, %lo(gNearestWaypointByPlayerId) # addiu $t0, $t0, 0x4438
 /* 07D6E8 8007CAE8 0005C840 */  sll   $t9, $a1, 1
 /* 07D6EC 8007CAEC 03281821 */  addu  $v1, $t9, $t0
 /* 07D6F0 8007CAF0 94620000 */  lhu   $v0, ($v1)
@@ -58,9 +58,9 @@ glabel func_8007CA70
 /* 07D744 8007CB44 0C01F27E */  jal   func_8007C9F8
 /* 07D748 8007CB48 00000000 */   nop   
 /* 07D74C 8007CB4C 00025040 */  sll   $t2, $v0, 1
-/* 07D750 8007CB50 3C038016 */  lui   $v1, %hi(D_80164438) # 0x8016
+/* 07D750 8007CB50 3C038016 */  lui   $v1, %hi(gNearestWaypointByPlayerId) # 0x8016
 /* 07D754 8007CB54 006A1821 */  addu  $v1, $v1, $t2
-/* 07D758 8007CB58 94634438 */  lhu   $v1, %lo(D_80164438)($v1) # 0x4438($v1)
+/* 07D758 8007CB58 94634438 */  lhu   $v1, %lo(gNearestWaypointByPlayerId)($v1) # 0x4438($v1)
 /* 07D75C 8007CB5C 3C018019 */  lui   $at, %hi(D_8018D110) # $at, 0x8019
 /* 07D760 8007CB60 A422D110 */  sh    $v0, %lo(D_8018D110)($at)
 /* 07D764 8007CB64 286101FF */  slti  $at, $v1, 0x1ff
@@ -78,8 +78,8 @@ glabel func_8007CA70
 /* 07D790 8007CB90 51600018 */  beql  $t3, $zero, .L8007CBF4
 /* 07D794 8007CB94 8FBF0014 */   lw    $ra, 0x14($sp)
 /* 07D798 8007CB98 84A5D110 */  lh    $a1, %lo(D_8018D110)($a1)
-/* 07D79C 8007CB9C 3C0D8016 */  lui   $t5, %hi(D_80164438) # $t5, 0x8016
-/* 07D7A0 8007CBA0 25AD4438 */  addiu $t5, %lo(D_80164438) # addiu $t5, $t5, 0x4438
+/* 07D79C 8007CB9C 3C0D8016 */  lui   $t5, %hi(gNearestWaypointByPlayerId) # $t5, 0x8016
+/* 07D7A0 8007CBA0 25AD4438 */  addiu $t5, %lo(gNearestWaypointByPlayerId) # addiu $t5, $t5, 0x4438
 /* 07D7A4 8007CBA4 00056040 */  sll   $t4, $a1, 1
 /* 07D7A8 8007CBA8 018D1821 */  addu  $v1, $t4, $t5
 /* 07D7AC 8007CBAC 94620000 */  lhu   $v0, ($v1)

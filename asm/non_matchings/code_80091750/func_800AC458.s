@@ -117,7 +117,7 @@ glabel L800AC5D0
 /* 0AD204 800AC604 2442D9BC */  addiu $v0, %lo(D_8018D9BC) # addiu $v0, $v0, -0x2644
 /* 0AD208 800AC608 8C4F0000 */  lw    $t7, ($v0)
 /* 0AD20C 800AC60C 0005C840 */  sll   $t9, $a1, 1
-/* 0AD210 800AC610 3C0A8016 */  lui   $t2, %hi(D_80164360) # 0x8016
+/* 0AD210 800AC610 3C0A8016 */  lui   $t2, %hi(gGPCurrentRacePlayerIdByRank) # 0x8016
 /* 0AD214 800AC614 01E53021 */  addu  $a2, $t7, $a1
 /* 0AD218 800AC618 90C80000 */  lbu   $t0, ($a2)
 /* 0AD21C 800AC61C 01595021 */  addu  $t2, $t2, $t9
@@ -125,7 +125,7 @@ glabel L800AC5D0
 /* 0AD224 800AC624 19000028 */  blez  $t0, .L800AC6C8
 /* 0AD228 800AC628 2518FFFF */   addiu $t8, $t0, -1
 /* 0AD22C 800AC62C A0D80000 */  sb    $t8, ($a2)
-/* 0AD230 800AC630 854A4360 */  lh    $t2, %lo(D_80164360)($t2) # 0x4360($t2)
+/* 0AD230 800AC630 854A4360 */  lh    $t2, %lo(gGPCurrentRacePlayerIdByRank)($t2) # 0x4360($t2)
 /* 0AD234 800AC634 3C0D8019 */  lui   $t5, %hi(gGPPointsByCharacterId) # $t5, 0x8019
 /* 0AD238 800AC638 25ADD9C8 */  addiu $t5, %lo(gGPPointsByCharacterId) # addiu $t5, $t5, -0x2638
 /* 0AD23C 800AC63C 000A58C0 */  sll   $t3, $t2, 3

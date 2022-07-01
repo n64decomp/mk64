@@ -53,14 +53,14 @@ glabel update_obj_kiwano_fruit
 /* 101428 80297E18 3C0D800E */  lui   $t5, %hi(gPlayerOne) # $t5, 0x800e
 /* 10142C 80297E1C 8DADC4DC */  lw    $t5, %lo(gPlayerOne)($t5)
 /* 101430 80297E20 24010DD8 */  li    $at, 3544
-/* 101434 80297E24 3C048016 */  lui   $a0, %hi(D_80164438) # 0x8016
+/* 101434 80297E24 3C048016 */  lui   $a0, %hi(gNearestWaypointByPlayerId) # 0x8016
 /* 101438 80297E28 006D7023 */  subu  $t6, $v1, $t5
 /* 10143C 80297E2C 01C1001A */  div   $zero, $t6, $at
 /* 101440 80297E30 00007812 */  mflo  $t7
 /* 101444 80297E34 31F8FFFF */  andi  $t8, $t7, 0xffff
 /* 101448 80297E38 0018C840 */  sll   $t9, $t8, 1
 /* 10144C 80297E3C 00992021 */  addu  $a0, $a0, $t9
-/* 101450 80297E40 94844438 */  lhu   $a0, %lo(D_80164438)($a0) # 0x4438($a0)
+/* 101450 80297E40 94844438 */  lhu   $a0, %lo(gNearestWaypointByPlayerId)($a0) # 0x4438($a0)
 /* 101454 80297E44 3C098016 */  lui   $t1, %hi(D_80164490) # $t1, 0x8016
 /* 101458 80297E48 8D294490 */  lw    $t1, %lo(D_80164490)($t1)
 /* 10145C 80297E4C 000450C0 */  sll   $t2, $a0, 3

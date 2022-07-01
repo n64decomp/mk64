@@ -8,12 +8,12 @@ glabel func_8001CA78
 /* 01D690 8001CA90 AFA40098 */  sw    $a0, 0x98($sp)
 /* 01D694 8001CA94 AFA700A4 */  sw    $a3, 0xa4($sp)
 /* 01D698 8001CA98 C4A40030 */  lwc1  $f4, 0x30($a1)
-/* 01D69C 8001CA9C 3C0E8016 */  lui   $t6, %hi(D_801645C8) # $t6, 0x8016
+/* 01D69C 8001CA9C 3C0E8016 */  lui   $t6, %hi(gWaypointCountByPathIndex) # $t6, 0x8016
 /* 01D6A0 8001CAA0 3C198016 */  lui   $t9, %hi(D_80164550) # $t9, 0x8016
 /* 01D6A4 8001CAA4 E7A40068 */  swc1  $f4, 0x68($sp)
 /* 01D6A8 8001CAA8 C4A60034 */  lwc1  $f6, 0x34($a1)
 /* 01D6AC 8001CAAC 8F394550 */  lw    $t9, %lo(D_80164550)($t9)
-/* 01D6B0 8001CAB0 95CE45C8 */  lhu   $t6, %lo(D_801645C8)($t6)
+/* 01D6B0 8001CAB0 95CE45C8 */  lhu   $t6, %lo(gWaypointCountByPathIndex)($t6)
 /* 01D6B4 8001CAB4 E7A6006C */  swc1  $f6, 0x6c($sp)
 /* 01D6B8 8001CAB8 C4A80038 */  lwc1  $f8, 0x38($a1)
 /* 01D6BC 8001CABC 44800000 */  mtc1  $zero, $f0

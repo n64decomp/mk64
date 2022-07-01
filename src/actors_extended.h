@@ -47,22 +47,6 @@ s32 func_8000ED80(s32);
 s32 func_8000EDC8(s32);
 s32 func_8000EE10(s32);
 
-
-/*******************************************/
-// These are also  defined and used in code_800029B0.c
-// They'll have to be unified sometime in the future
-extern u16 D_80164430;
-
-struct UnkStruct80164490 {
-    s16 wayPointX;
-    s16 wayPointY;
-    s16 wayPointZ;
-    s16 wayPointSegment;
-};
-
-extern struct UnkStruct80164490 *D_80164490;
-/*******************************************/
-
 extern f32 D_802B9F68;
 
 extern s16 gPlayerBalloonCount[];
@@ -83,8 +67,6 @@ extern s16 D_8015F6E8;
 extern s16 D_8015F6EA;
 extern s16 D_8015F6F0;
 extern s16 D_8015F6F2;
-extern u16 D_80164430;
-extern u16 D_80164438[];
 extern s16 gPlayerPositionLUT[];
 
 #endif // ACTORS_EXTENDED_H

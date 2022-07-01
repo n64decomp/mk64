@@ -2,19 +2,11 @@
 #include <macros.h>
 #include "types.h"
 #include "variables.h"
+#include "waypoints.h"
 #include <defines.h>
 
 extern void func_800C8F44(u16 arg0);
 extern u16 D_800DC5A8;
-
-struct UnkStruct80164490 {
-    s16 wayPointX;
-    s16 wayPointY;
-    s16 wayPointZ;
-    s16 wayPointSegment;
-};
-
-extern struct UnkStruct80164490 *D_80164490;
 
 struct UnkStruct8015F8D0 {
     f32 unk0;

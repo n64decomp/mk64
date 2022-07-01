@@ -36,9 +36,9 @@ glabel func_8000F2DC
 /* 00FF64 8000F364 3C168016 */  lui   $s6, %hi(D_80164580) # $s6, 0x8016
 /* 00FF68 8000F368 3C178016 */  lui   $s7, %hi(D_80164590) # $s7, 0x8016
 /* 00FF6C 8000F36C 3C158016 */  lui   $s5, %hi(D_801645A0) # $s5, 0x8016
-/* 00FF70 8000F370 3C108016 */  lui   $s0, %hi(D_801645B0) # $s0, 0x8016
+/* 00FF70 8000F370 3C108016 */  lui   $s0, %hi(gPathIndexByPlayerId) # $s0, 0x8016
 /* 00FF74 8000F374 AC223598 */  sw    $v0, %lo(D_80163598)($at)
-/* 00FF78 8000F378 261045B0 */  addiu $s0, %lo(D_801645B0) # addiu $s0, $s0, 0x45b0
+/* 00FF78 8000F378 261045B0 */  addiu $s0, %lo(gPathIndexByPlayerId) # addiu $s0, $s0, 0x45b0
 /* 00FF7C 8000F37C 26B545A0 */  addiu $s5, %lo(D_801645A0) # addiu $s5, $s5, 0x45a0
 /* 00FF80 8000F380 26F74590 */  addiu $s7, %lo(D_80164590) # addiu $s7, $s7, 0x4590
 /* 00FF84 8000F384 26D64580 */  addiu $s6, %lo(D_80164580) # addiu $s6, $s6, 0x4580
@@ -165,8 +165,8 @@ glabel func_8000F2DC
 .L8000F558:
 /* 010158 8000F558 1612FFF0 */  bne   $s0, $s2, .L8000F51C
 /* 01015C 8000F55C 26310004 */   addiu $s1, $s1, 4
-/* 010160 8000F560 3C0E8016 */  lui   $t6, %hi(D_801645C8) # $t6, 0x8016
-/* 010164 8000F564 95CE45C8 */  lhu   $t6, %lo(D_801645C8)($t6)
+/* 010160 8000F560 3C0E8016 */  lui   $t6, %hi(gWaypointCountByPathIndex) # $t6, 0x8016
+/* 010164 8000F564 95CE45C8 */  lhu   $t6, %lo(gWaypointCountByPathIndex)($t6)
 /* 010168 8000F568 3C02800E */  lui   $v0, %hi(gCurrentCourseId)
 /* 01016C 8000F56C 8442C5A0 */  lh    $v0, %lo(gCurrentCourseId)($v0)
 /* 010170 8000F570 3C018016 */  lui   $at, %hi(D_80164430) # $at, 0x8016

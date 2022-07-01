@@ -32,10 +32,10 @@ glabel func_80050320
 /* 050F98 80050398 24160004 */  li    $s6, 4
 .L8005039C:
 /* 050F9C 8005039C C64E0000 */  lwc1  $f14, ($s2)
-/* 050FA0 800503A0 3C0F8016 */  lui   $t7, %hi(D_80164360) # $t7, 0x8016
+/* 050FA0 800503A0 3C0F8016 */  lui   $t7, %hi(gGPCurrentRacePlayerIdByRank) # $t7, 0x8016
 /* 050FA4 800503A4 00002025 */  move  $a0, $zero
 /* 050FA8 800503A8 460EB03E */  c.le.s $f22, $f14
-/* 050FAC 800503AC 25EF4360 */  addiu $t7, %lo(D_80164360) # addiu $t7, $t7, 0x4360
+/* 050FAC 800503AC 25EF4360 */  addiu $t7, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t7, $t7, 0x4360
 /* 050FB0 800503B0 00101040 */  sll   $v0, $s0, 1
 /* 050FB4 800503B4 02714821 */  addu  $t1, $s3, $s1
 /* 050FB8 800503B8 45020035 */  bc1fl .L80050490
@@ -125,12 +125,12 @@ glabel func_80050320
 /* 0510F4 800504F4 45020039 */  bc1fl .L800505DC
 /* 0510F8 800504F8 26100001 */   addiu $s0, $s0, 1
 /* 0510FC 800504FC C5E80000 */  lwc1  $f8, ($t7)
-/* 051100 80050500 3C0D8016 */  lui   $t5, %hi(D_80164360) # $t5, 0x8016
+/* 051100 80050500 3C0D8016 */  lui   $t5, %hi(gGPCurrentRacePlayerIdByRank) # $t5, 0x8016
 /* 051104 80050504 3C0E8019 */  lui   $t6, %hi(D_8018D028) # $t6, 0x8019
 /* 051108 80050508 460042A1 */  cvt.d.s $f10, $f8
 /* 05110C 8005050C 25CED028 */  addiu $t6, %lo(D_8018D028) # addiu $t6, $t6, -0x2fd8
 /* 051110 80050510 4634503E */  c.le.d $f10, $f20
-/* 051114 80050514 25AD4360 */  addiu $t5, %lo(D_80164360) # addiu $t5, $t5, 0x4360
+/* 051114 80050514 25AD4360 */  addiu $t5, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t5, $t5, 0x4360
 /* 051118 80050518 00106040 */  sll   $t4, $s0, 1
 /* 05111C 8005051C 018D3021 */  addu  $a2, $t4, $t5
 /* 051120 80050520 45000002 */  bc1f  .L8005052C

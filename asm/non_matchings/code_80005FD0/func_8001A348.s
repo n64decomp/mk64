@@ -13,11 +13,11 @@ glabel func_8001A348
 /* 01AF74 8001A374 44856000 */  mtc1  $a1, $f12
 /* 01AF78 8001A378 85EF479E */  lh    $t7, %lo(cameras+0xAE)($t7) # 0x479e($t7)
 /* 01AF7C 8001A37C 3C018016 */  lui   $at, %hi(D_80164688)
-/* 01AF80 8001A380 3C048016 */  lui   $a0, %hi(D_80164668) # 0x8016
+/* 01AF80 8001A380 3C048016 */  lui   $a0, %hi(gNearestWaypointByCameraId) # 0x8016
 /* 01AF84 8001A384 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 01AF88 8001A388 00380821 */  addu  $at, $at, $t8
 /* 01AF8C 8001A38C 00832021 */  addu  $a0, $a0, $v1
-/* 01AF90 8001A390 84844668 */  lh    $a0, %lo(D_80164668)($a0) # 0x4668($a0)
+/* 01AF90 8001A390 84844668 */  lh    $a0, %lo(gNearestWaypointByCameraId)($a0) # 0x4668($a0)
 /* 01AF94 8001A394 00C02825 */  move  $a1, $a2
 /* 01AF98 8001A398 AFA3001C */  sw    $v1, 0x1c($sp)
 /* 01AF9C 8001A39C AFA70028 */  sw    $a3, 0x28($sp)

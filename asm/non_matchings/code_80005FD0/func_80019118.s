@@ -1,17 +1,17 @@
 glabel func_80019118
 /* 019D18 80019118 00044840 */  sll   $t1, $a0, 1
-/* 019D1C 8001911C 3C0A8016 */  lui   $t2, %hi(D_80164438) # 0x8016
+/* 019D1C 8001911C 3C0A8016 */  lui   $t2, %hi(gNearestWaypointByPlayerId) # 0x8016
 /* 019D20 80019120 01495021 */  addu  $t2, $t2, $t1
 /* 019D24 80019124 44856000 */  mtc1  $a1, $f12
-/* 019D28 80019128 954A4438 */  lhu   $t2, %lo(D_80164438)($t2) # 0x4438($t2)
+/* 019D28 80019128 954A4438 */  lhu   $t2, %lo(gNearestWaypointByPlayerId)($t2) # 0x4438($t2)
 /* 019D2C 8001912C 00067080 */  sll   $t6, $a2, 2
 /* 019D30 80019130 3C018016 */  lui   $at, %hi(D_80164688)
-/* 019D34 80019134 3C198016 */  lui   $t9, %hi(D_80164668) # $t9, 0x8016
-/* 019D38 80019138 3C038016 */  lui   $v1, %hi(D_801645C8) # $v1, 0x8016
+/* 019D34 80019134 3C198016 */  lui   $t9, %hi(gNearestWaypointByCameraId) # $t9, 0x8016
+/* 019D38 80019138 3C038016 */  lui   $v1, %hi(gWaypointCountByPathIndex) # $v1, 0x8016
 /* 019D3C 8001913C 002E0821 */  addu  $at, $at, $t6
-/* 019D40 80019140 27394668 */  addiu $t9, %lo(D_80164668) # addiu $t9, $t9, 0x4668
+/* 019D40 80019140 27394668 */  addiu $t9, %lo(gNearestWaypointByCameraId) # addiu $t9, $t9, 0x4668
 /* 019D44 80019144 0006C040 */  sll   $t8, $a2, 1
-/* 019D48 80019148 946345C8 */  lhu   $v1, %lo(D_801645C8)($v1)
+/* 019D48 80019148 946345C8 */  lhu   $v1, %lo(gWaypointCountByPathIndex)($v1)
 /* 019D4C 8001914C 03191021 */  addu  $v0, $t8, $t9
 /* 019D50 80019150 E42C4688 */  swc1  $f12, %lo(D_80164688)($at)
 /* 019D54 80019154 254B000C */  addiu $t3, $t2, 0xc

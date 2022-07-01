@@ -24,14 +24,14 @@ glabel func_8004F3E4
 .L8004F43C:
 /* 05003C 8004F43C 3C118019 */  lui   $s1, %hi(D_8018D158) # $s1, 0x8019
 /* 050040 8004F440 8E31D158 */  lw    $s1, %lo(D_8018D158)($s1)
-/* 050044 8004F444 3C0F8016 */  lui   $t7, %hi(D_80164360) # $t7, 0x8016
-/* 050048 8004F448 25EF4360 */  addiu $t7, %lo(D_80164360) # addiu $t7, $t7, 0x4360
+/* 050044 8004F444 3C0F8016 */  lui   $t7, %hi(gGPCurrentRacePlayerIdByRank) # $t7, 0x8016
+/* 050048 8004F448 25EF4360 */  addiu $t7, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t7, $t7, 0x4360
 /* 05004C 8004F44C 2631FFFF */  addiu $s1, $s1, -1
 /* 050050 8004F450 0620001A */  bltz  $s1, .L8004F4BC
 /* 050054 8004F454 00117040 */   sll   $t6, $s1, 1
 /* 050058 8004F458 3C12800E */  lui   $s2, %hi(gPlayerOne) # $s2, 0x800e
-/* 05005C 8004F45C 3C118016 */  lui   $s1, %hi(D_80164360) # $s1, 0x8016
-/* 050060 8004F460 26314360 */  addiu $s1, %lo(D_80164360) # addiu $s1, $s1, 0x4360
+/* 05005C 8004F45C 3C118016 */  lui   $s1, %hi(gGPCurrentRacePlayerIdByRank) # $s1, 0x8016
+/* 050060 8004F460 26314360 */  addiu $s1, %lo(gGPCurrentRacePlayerIdByRank) # addiu $s1, $s1, 0x4360
 /* 050064 8004F464 2652C4DC */  addiu $s2, %lo(gPlayerOne) # addiu $s2, $s2, -0x3b24
 /* 050068 8004F468 01CF8021 */  addu  $s0, $t6, $t7
 /* 05006C 8004F46C 24130DD8 */  li    $s3, 3544
@@ -62,8 +62,8 @@ glabel func_8004F3E4
 /* 0500C4 8004F4C4 06200063 */  bltz  $s1, .L8004F654
 /* 0500C8 8004F4C8 24130DD8 */   li    $s3, 3544
 /* 0500CC 8004F4CC 00115840 */  sll   $t3, $s1, 1
-/* 0500D0 8004F4D0 3C0C8016 */  lui   $t4, %hi(D_80164360) # $t4, 0x8016
-/* 0500D4 8004F4D4 258C4360 */  addiu $t4, %lo(D_80164360) # addiu $t4, $t4, 0x4360
+/* 0500D0 8004F4D0 3C0C8016 */  lui   $t4, %hi(gGPCurrentRacePlayerIdByRank) # $t4, 0x8016
+/* 0500D4 8004F4D4 258C4360 */  addiu $t4, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t4, $t4, 0x4360
 /* 0500D8 8004F4D8 016C8021 */  addu  $s0, $t3, $t4
 /* 0500DC 8004F4DC 24111000 */  li    $s1, 4096
 /* 0500E0 8004F4E0 86050000 */  lh    $a1, ($s0)
@@ -80,8 +80,8 @@ glabel func_8004F3E4
 /* 050108 8004F508 0C013C5A */  jal   func_8004F168
 /* 05010C 8004F50C 94460254 */   lhu   $a2, 0x254($v0)
 .L8004F510:
-/* 050110 8004F510 3C198016 */  lui   $t9, %hi(D_80164360) # $t9, 0x8016
-/* 050114 8004F514 27394360 */  addiu $t9, %lo(D_80164360) # addiu $t9, $t9, 0x4360
+/* 050110 8004F510 3C198016 */  lui   $t9, %hi(gGPCurrentRacePlayerIdByRank) # $t9, 0x8016
+/* 050114 8004F514 27394360 */  addiu $t9, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t9, $t9, 0x4360
 /* 050118 8004F518 2610FFFE */  addiu $s0, $s0, -2
 /* 05011C 8004F51C 0219082B */  sltu  $at, $s0, $t9
 /* 050120 8004F520 5020FFF0 */  beql  $at, $zero, .L8004F4E4
@@ -118,14 +118,14 @@ glabel func_8004F3E4
 /* 050190 8004F590 8FBF002C */   lw    $ra, 0x2c($sp)
 .L8004F594:
 /* 050194 8004F594 8E31C538 */  lw    $s1, %lo(gPlayerCountSelection1)($s1) # -0x3ac8($s1)
-/* 050198 8004F598 3C0C8016 */  lui   $t4, %hi(D_80164360) # $t4, 0x8016
-/* 05019C 8004F59C 258C4360 */  addiu $t4, %lo(D_80164360) # addiu $t4, $t4, 0x4360
+/* 050198 8004F598 3C0C8016 */  lui   $t4, %hi(gGPCurrentRacePlayerIdByRank) # $t4, 0x8016
+/* 05019C 8004F59C 258C4360 */  addiu $t4, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t4, $t4, 0x4360
 /* 0501A0 8004F5A0 2631FFFF */  addiu $s1, $s1, -1
 /* 0501A4 8004F5A4 0620002B */  bltz  $s1, .L8004F654
 /* 0501A8 8004F5A8 00115840 */   sll   $t3, $s1, 1
 /* 0501AC 8004F5AC 3C12800E */  lui   $s2, %hi(gPlayerOne) # $s2, 0x800e
-/* 0501B0 8004F5B0 3C118016 */  lui   $s1, %hi(D_80164360) # $s1, 0x8016
-/* 0501B4 8004F5B4 26314360 */  addiu $s1, %lo(D_80164360) # addiu $s1, $s1, 0x4360
+/* 0501B0 8004F5B0 3C118016 */  lui   $s1, %hi(gGPCurrentRacePlayerIdByRank) # $s1, 0x8016
+/* 0501B4 8004F5B4 26314360 */  addiu $s1, %lo(gGPCurrentRacePlayerIdByRank) # addiu $s1, $s1, 0x4360
 /* 0501B8 8004F5B8 2652C4DC */  addiu $s2, %lo(gPlayerOne) # addiu $s2, $s2, -0x3b24
 /* 0501BC 8004F5BC 016C8021 */  addu  $s0, $t3, $t4
 /* 0501C0 8004F5C0 24130DD8 */  li    $s3, 3544
