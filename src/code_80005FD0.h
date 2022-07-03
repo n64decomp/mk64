@@ -4,8 +4,8 @@
 #include "common_structs.h"
 
 /* Function Prototypes */
-
-s16 func_80005FD0();
+s16  func_80005FD0(void);
+void func_8000F0E0(void);
 void func_8001968C(void);
 
 // math_util.c

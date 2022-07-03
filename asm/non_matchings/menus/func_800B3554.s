@@ -37,7 +37,7 @@ glabel func_800B3554
 /* 0B41DC 800B35DC 006A1821 */  addu  $v1, $v1, $t2
 /* 0B41E0 800B35E0 10000150 */  b     .L800B3B24
 /* 0B41E4 800B35E4 8063EDE4 */   lb    $v1, %lo(gCharacterGridSelections)($v1) # -0x121c($v1)
-.L800B35E8:
+.L800B35E8: # case 1
 /* 0B41E8 800B35E8 3C108019 */  lui   $s0, %hi(gCharacterGridSelections) # $s0, 0x8019
 /* 0B41EC 800B35EC 2610EDE4 */  addiu $s0, %lo(gCharacterGridSelections) # addiu $s0, $s0, -0x121c
 /* 0B41F0 800B35F0 020B6021 */  addu  $t4, $s0, $t3
@@ -350,7 +350,7 @@ glabel func_800B3554
 /* 0B4650 800B3A50 8FA80028 */  lw    $t0, 0x28($sp)
 /* 0B4654 800B3A54 10000033 */  b     .L800B3B24
 /* 0B4658 800B3A58 81030000 */   lb    $v1, ($t0)
-.L800B3A5C:
+.L800B3A5C: # case 2, 3
 /* 0B465C 800B3A5C 15200011 */  bnez  $t1, .L800B3AA4
 /* 0B4660 800B3A60 00603025 */   move  $a2, $v1
 /* 0B4664 800B3A64 3C038019 */  lui   $v1, %hi(gMenuTimingCounter) # $v1, 0x8019
