@@ -6,32 +6,60 @@
 #include <types.h>
 #include <defines.h>
 
-/* Function Prototypes */
-void func_800B053C(struct Controller*, u16);
-void func_800B13B0(struct Controller*, u16);
-void func_800B15AC(struct Controller*, u16);
-void func_800B1C40(struct Controller*, u16);
-void func_800B1C90(struct Controller*, u16);
-void func_800B20F4(struct Controller*, u16);
-void func_800B29D8(struct Controller*, u16);
-s32  func_800B34E8(s32);
-void func_800B3554(struct Controller*, u16);
-void func_800B3B58(struct Controller*, u16);
-void func_800B44AC(void);
+/* functions */
+void func_800B0350(void);
+void func_800B3F74(s32 menuSelection);
 void func_800B44BC(void);
 s32  func_800B4520(void);
 
 /* data */
-// these might not be in this file, but for now...
-extern s8          gGameModeSubMenuRowSelectionForNumPlayers[SELECTED_PLAYER_DEFINES_TOTAL][MAX_NUM_MAIN_MENU_GAME_TYPES]; // D_800E869D. 0-4 players, 3 possible game types per player amouunt
-extern s8          gGameModeRowSelectionForNumPlayers[SELECTED_PLAYER_DEFINES_TOTAL]; // D_800E869B. 0-4 players, game type row selected for each player amoun
-extern const s32   gGameModeFromNumPlayersAndRowSelection[SELECTED_PLAYER_DEFINES_TOTAL][MAX_NUM_MAIN_MENU_GAME_TYPES]; // D_800F2B60. 0-4 players, 3 possible game types per player amount
-extern s16         gPlaceItemBoxes; // D_800DC638
+extern s32 gMenuSelection;
+extern s32 D_800E86A4;
+extern s8 gCharacterSelections[4];
+extern s8 D_800E86AC[4];
+extern s8 D_800E86B0[4][3];
+extern s8 gNextDemoId;
+extern s8 gControllerPakSelectedTableRow;
+extern s8 D_800E86C4[12];
+extern s8 D_800E86D0[16];
 
-extern s32         D_8018E7A8;
-extern s8          D_8018E7B0;
-extern s8          D_8018EDF3;
-extern s8          D_8018EDFB;
-extern s8          D_8018EE0A;
+extern const s8 D_800F2B60[5][3];
+extern const s32 gGameModeFromNumPlayersAndRowSelection[5][3];
+extern const s16 gCupCourseOrder[5][4];
+
+extern s32 D_8018EDC0;
+extern f32 D_8018EDC4;
+extern f32 D_8018EDC8;
+extern f32 D_8018EDCC;
+extern f32 D_8018EDD0;
+extern f32 D_8018EDD4;
+extern f32 D_8018EDD8;
+extern f32 D_8018EDDC;
+extern s32 D_8018EDE0;
+extern s8 gCharacterGridSelections[4];
+extern s8 D_8018EDE8[4];
+extern s8 D_8018EDEC;
+extern s8 gMainMenuSelectionDepth;
+extern s8 D_8018EDEE;
+extern s8 gDebugMenuSelection;
+extern s8 gControllerPakMenuSelection;
+extern s8 D_8018EDF1;
+extern u8 gSoundMode;
+extern s8 D_8018EDF3;
+extern s8 D_8018EDF4;
+extern s8 D_8018EDF5;
+extern s8 D_8018EDF6;
+extern s8 gTimeTrialDataCourseIndex;
+extern s8 gCourseRecordsMenuSelection;
+extern s8 D_8018EDF9;
+extern s8 gDebugGotoScene;
+extern s8 D_8018EDFB;
+extern s8 D_8018EDFC;
+extern s32 gMenuTimingCounter;
+extern s8 D_8018EE08;
+extern s8 gCupSelection;
+extern s8 gCupCourseSelection;
+extern s8 D_8018EE0C;
+extern struct_8018EE10_entry D_8018EE10[2];
 
 #endif /* MENUS_H */

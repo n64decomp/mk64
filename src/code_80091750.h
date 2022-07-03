@@ -289,4 +289,7 @@ extern s8  D_802874F5;
 extern u8 _textures_0aSegmentRomStart[];
 extern u8 _textures_0bSegmentRomStart[];
 
+extern s32 D_8018E7A8; // maybe?
+extern s8 D_8018E7B0;  // maybe?
+
 #endif

@@ -6,6 +6,7 @@
 
 #include "menus.h"
 
+#include "actors.h"
 #include "audio/external.h"
 #include "code_80005FD0.h"
 #include "code_80091750.h"
@@ -16,6 +17,9 @@
 
 /** Externs to be put into headers **/
 extern s16 D_8015F892; // bss unknown
+extern u32 D_800DC5AC; // data? from this file or another (main.c?)?
+extern void func_800C3448(s32);
+extern void rmonPrintf(const char *, ...); // not in a libultra header?
 
 /** BSS **/
 s32 D_8018EDC0;
@@ -78,14 +82,11 @@ s8 D_800E86B0[4][3] = {
 
 s8 gNextDemoId = 0;
 s8 gControllerPakSelectedTableRow = 0;
-//s8 D_800E86C4[2] = {0, 0};
-//s8 D_800E86C6[10] = {1, 2, 3, 4, 5, 6, 0, 0, 0, 0}; // gDisplayedControllerPakTableRows?
 s8 D_800E86C4[12] = {0, 0, 1, 2, 3, 4, 5, 6, 0, 0, 0, 0};
 s8 D_800E86D0[16] = {0}; // this doesn't make a lot of sense...
 s8 unref_800E86E0[4] = {0, 0, 0, 1};
 
-
-u32 D_800E86E4 = OS_VI_GAMMA_OFF | OS_VI_DITHER_FILTER_ON;
+u32 sVIGammaOffDitherOn = OS_VI_GAMMA_OFF | OS_VI_DITHER_FILTER_ON;
 
 /*** Const/rodata Data ***/
 // used to set gScreenModeSelection; might be smaller; could be function static data
@@ -93,12 +94,7 @@ const s8 D_800F2B50[] = {0, 1, 2, 3, 3, 0, 0, 0};
 
 // set to D_8018EDF3, then that sets gPlayerCountSelection1
 const s8 D_800F2B58[] = {1, 2, 2, 3, 4, 0, 0, 0};
-//const s8 D_800F2B5F = 0; // probably part of above array; terminator?
 
-// probably combined...
-//const s8 D_800F2B60 = 1;
-//const s8 D_800F2B61[] = {2, 1, 1, 2, 1, 0, 2, 2, 0, 2, 0, 0};
-//const s8 D_800F2B6D[] = {2, 0, 0};
 const s8 D_800F2B60[5][3] = {
     {1, 2, 1},
     {1, 2, 1},
@@ -141,7 +137,7 @@ const s16 gCupCourseOrder[5][4] = {
     { COURSE_BIG_DONUT, COURSE_BLOCK_FORT, COURSE_DOUBLE_DECK, COURSE_SKYSCRAPER },
 };
 
-const s8 D_800F2BDC[] = {1, 0, 0, 0, 0, 1, 3, 4};
+const s8 D_800F2BDC[8] = {1, 0, 0, 0, 0, 1, 3, 4};
 
 // needs to be a union (or array...?) to go into rodata as a const
 // terrible for endianness... Best guess as to what this is for..
@@ -151,10 +147,17 @@ union GameModePack {
 };
 const union GameModePack D_800F2BE4 = { {0, 1, 2, 3} };
 
-/**** External Function/Data to be moved into proper headers ****/
-extern void func_800C3448(s32);
-// not in a libultra header?
-extern void rmonPrintf(const char *, ...);
+/** forward decs **/
+void func_800B053C(struct Controller *, u16);
+void func_800B13B0(struct Controller *, u16);
+void func_800B15AC(struct Controller *, u16);
+void func_800B1C40(struct Controller *, u16);
+void func_800B1C90(struct Controller *, u16);
+void func_800B20F4(struct Controller *, u16);
+void func_800B29D8(struct Controller *, u16);
+void func_800B3554(struct Controller *, u16);
+void func_800B3B58(struct Controller *, u16);
+void func_800B44AC(void);
 /**************************/
 
 void func_800B0350(void) {
@@ -182,7 +185,7 @@ void func_800B0350(void) {
                         func_8009E1C0();
                 }
             }
-            osViSetSpecialFeatures(D_800E86E4);
+            osViSetSpecialFeatures(sVIGammaOffDitherOn);
             switch (gMenuSelection) {
             case OPTIONS_MENU:
                 func_800B053C(&gControllers[controllerIdx], controllerIdx);
@@ -222,15 +225,8 @@ void func_800B0350(void) {
     }
 }
 
-extern u32 D_800DC5AC; // data? from this file or another (main.c?)?
-// this file's bss
-extern u8 D_8018EE14[]; // probably a byte array
-extern u8 D_8018EE15[];
-extern u8 D_8018EE94; // probably another byte array
-extern s8 D_8018EE95[];
 
 // D_8018EDEC is position on options screen?
-
 #ifdef NON_MATCHING
 // issue is regalloc starting at the 0x32 0x33 case
 enum MenuOptionsCursorPositions {
@@ -1249,7 +1245,6 @@ void func_800B20F4(struct Controller *controller, u16 arg1) {
     }
 }
 
-
 void func_800B28C8(void) {
     // For Grand Prix and Versus, this will be the CC mode selected. For Time Trials, it will
     // be whether 'Begin' or 'Data' is selected. Not used for Battle.
@@ -1282,7 +1277,6 @@ void func_800B28C8(void) {
         break;
     }
 }
-
 
 #ifdef NON_MATCHING
 // nonmatching: regalloc; arg1 is not AND-ed back into $a1, reg chaos follows
@@ -1523,19 +1517,16 @@ void func_800B29D8(struct Controller *controller, u16 arg1) {
 GLOBAL_ASM("asm/non_matchings/menus/func_800B29D8.s")
 #endif
 
-// open_grid_spot_at
-// check if there is no currently selected and/or hovered character at char position `arg0`
-s32 func_800B34E8(s32 arg0) {
+// check if there is no currently selected and/or hovered character at grid position `gridId`
+s32 open_css_grid_spot(s32 gridId) {
     s32 i;
     for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
-        if (arg0 == gCharacterGridSelections[i]) {
+        if (gridId == gCharacterGridSelections[i]) {
             return FALSE;
         }
     }
     return TRUE;
 }
-void func_8000F124(void); // code_80005FD0
-void func_800C90F4(u8, uintptr_t); // audio external.c
 
 #ifdef NON_MATCHING
 // grid positions are from right to left, then top to bottom
@@ -1598,7 +1589,7 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
                 if ((btnAndStick & CONT_RIGHT) && (btnAndStick & CONT_DOWN)) {
                     if (gCharacterGridSelections[arg1] == 1 || gCharacterGridSelections[arg1] == 2 || gCharacterGridSelections[arg1] == 3) {
                         // L800B37B0
-                        if (func_800B34E8(gCharacterGridSelections[arg1] + 5)) {
+                        if (open_css_grid_spot(gCharacterGridSelections[arg1] + 5)) {
                             gCharacterGridSelections[arg1] += 5;
                             play_sound2(0x49008000);
                         }
@@ -1608,7 +1599,7 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
                 // L800B37E4
                 if ((btnAndStick & CONT_LEFT) && (btnAndStick & CONT_DOWN)) {
                     if (gCharacterGridSelections[arg1] == 2 || gCharacterGridSelections[arg1] == 3 || gCharacterGridSelections[arg1] == 4) {
-                        if (func_800B34E8(gCharacterGridSelections[arg1] + 3)) {
+                        if (open_css_grid_spot(gCharacterGridSelections[arg1] + 3)) {
                             gCharacterGridSelections[arg1] += 3;
                             play_sound2(0x49008000);
                         }
@@ -1618,7 +1609,7 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
                 // L800B3844
                 if ((btnAndStick & CONT_RIGHT) && (btnAndStick & CONT_UP)) {
                     if (gCharacterGridSelections[arg1] == 5 || gCharacterGridSelections[arg1] == 6 || gCharacterGridSelections[arg1] == 7) {
-                        if (func_800B34E8(gCharacterGridSelections[arg1] - 3)) {
+                        if (open_css_grid_spot(gCharacterGridSelections[arg1] - 3)) {
                             gCharacterGridSelections[arg1] -= 3;
                             play_sound2(0x49008000);
                         }
@@ -1628,7 +1619,7 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
                 // L800B38A0
                 if ((btnAndStick & CONT_LEFT) && (btnAndStick & CONT_UP)) {
                     if (gCharacterGridSelections[arg1] == 6 || gCharacterGridSelections[arg1] == 7 || gCharacterGridSelections[arg1] == 8) {
-                        if (func_800B34E8(gCharacterGridSelections[arg1] - 5)) {
+                        if (open_css_grid_spot(gCharacterGridSelections[arg1] - 5)) {
                             gCharacterGridSelections[arg1] -= 5;
                             play_sound2(0x49008000);
                         }
@@ -1640,7 +1631,7 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
                     if (gCharacterGridSelections[arg1] != 4 && gCharacterGridSelections[arg1] != 8) {
                         do {
                             // L800B391C
-                            if (func_800B34E8(gCharacterGridSelections[arg1] + 1)) {
+                            if (open_css_grid_spot(gCharacterGridSelections[arg1] + 1)) {
                                 gCharacterGridSelections[arg1] += 1;
                                 play_sound2(0x49008000);
                                 break;
@@ -1655,7 +1646,7 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
                 if (btnAndStick & CONT_LEFT) {
                     if (gCharacterGridSelections[arg1] != 1 && gCharacterGridSelections[arg1] != 5) {
                         do {
-                            if (func_800B34E8(gCharacterGridSelections[arg1] - 1)) {
+                            if (open_css_grid_spot(gCharacterGridSelections[arg1] - 1)) {
                                 gCharacterGridSelections[arg1] -= 1;
                                 play_sound2(0x49008000);
                                 break;
@@ -1673,7 +1664,7 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
                     gCharacterGridSelections[arg1] += 4;
                 }
                 // L800B3A30
-                if (func_800B34E8(gCharacterGridSelections[arg1])) {
+                if (open_css_grid_spot(gCharacterGridSelections[arg1])) {
                     play_sound2(0x49008000);
                 }
             }
@@ -1818,7 +1809,6 @@ void func_800B3B58(struct Controller *arg0, u16 arg1) {
         }
     }
 }
-
 
 void func_800B3F74(s32 menuSelection) {
     s32 i;
@@ -2026,7 +2016,6 @@ s32 func_800B4520(void) {
     return 0;
 }
 
-// Separated from assembly in code_800AF9B0/func_800B4520.s
 UNUSED void func_800B4560(s32 arg0, s32 arg1) {
     struct_8018EE10_entry *pak1 = D_8018EE10;
     struct_8018EE10_entry *pak2 = D_8018D9C0;
