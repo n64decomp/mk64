@@ -32,11 +32,11 @@ glabel func_8000D6D0
 /* 00E348 8000D748 4600B386 */   mov.s $f14, $f22
 /* 00E34C 8000D74C 87A600C2 */  lh    $a2, 0xc2($sp)
 /* 00E350 8000D750 8FA900B4 */  lw    $t1, 0xb4($sp)
-/* 00E354 8000D754 3C078016 */  lui   $a3, %hi(D_801645C8) # 0x8016
+/* 00E354 8000D754 3C078016 */  lui   $a3, %hi(gWaypointCountByPathIndex) # 0x8016
 /* 00E358 8000D758 00065840 */  sll   $t3, $a2, 1
 /* 00E35C 8000D75C 00EB3821 */  addu  $a3, $a3, $t3
 /* 00E360 8000D760 A5220000 */  sh    $v0, ($t1)
-/* 00E364 8000D764 94E745C8 */  lhu   $a3, %lo(D_801645C8)($a3) # 0x45c8($a3)
+/* 00E364 8000D764 94E745C8 */  lhu   $a3, %lo(gWaypointCountByPathIndex)($a3) # 0x45c8($a3)
 /* 00E368 8000D768 87AA00C6 */  lh    $t2, 0xc6($sp)
 /* 00E36C 8000D76C 8FA500BC */  lw    $a1, 0xbc($sp)
 /* 00E370 8000D770 004A1821 */  addu  $v1, $v0, $t2

@@ -120,6 +120,8 @@ extern struct Controller gControllers[];
 
 extern s32 gActiveScreenMode;
 
+extern u16 gNearestWaypointByPlayerId[];
+
 extern Camera *camera1;
 extern struct Actor gActorList[];
 extern Gfx *gDisplayListHead;

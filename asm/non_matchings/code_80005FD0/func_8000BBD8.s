@@ -8,9 +8,9 @@ glabel func_8000BBD8
 /* 00C7F0 8000BBF0 000FC403 */  sra   $t8, $t7, 0x10
 /* 00C7F4 8000BBF4 000E38C0 */  sll   $a3, $t6, 3
 /* 00C7F8 8000BBF8 00187040 */  sll   $t6, $t8, 1
-/* 00C7FC 8000BBFC 3C0F8016 */  lui   $t7, %hi(D_801645C8) # 0x8016
+/* 00C7FC 8000BBFC 3C0F8016 */  lui   $t7, %hi(gWaypointCountByPathIndex) # 0x8016
 /* 00C800 8000BC00 01EE7821 */  addu  $t7, $t7, $t6
-/* 00C804 8000BC04 95EF45C8 */  lhu   $t7, %lo(D_801645C8)($t7) # 0x45c8($t7)
+/* 00C804 8000BC04 95EF45C8 */  lhu   $t7, %lo(gWaypointCountByPathIndex)($t7) # 0x45c8($t7)
 /* 00C808 8000BC08 AFA5002C */  sw    $a1, 0x2c($sp)
 /* 00C80C 8000BC0C 3C058016 */  lui   $a1, %hi(D_80164560) # 0x8016
 /* 00C810 8000BC10 01AF001A */  div   $zero, $t5, $t7

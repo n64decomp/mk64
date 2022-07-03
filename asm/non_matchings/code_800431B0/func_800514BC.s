@@ -30,8 +30,8 @@ glabel func_800514BC
 .L80051528:
 /* 052128 80051528 1A60001D */  blez  $s3, .L800515A0
 /* 05212C 8005152C 2670FFFF */   addiu $s0, $s3, -1
-/* 052130 80051530 3C088016 */  lui   $t0, %hi(D_80164360) # $t0, 0x8016
-/* 052134 80051534 25084360 */  addiu $t0, %lo(D_80164360) # addiu $t0, $t0, 0x4360
+/* 052130 80051530 3C088016 */  lui   $t0, %hi(gGPCurrentRacePlayerIdByRank) # $t0, 0x8016
+/* 052134 80051534 25084360 */  addiu $t0, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t0, $t0, 0x4360
 /* 052138 80051538 0010C840 */  sll   $t9, $s0, 1
 /* 05213C 8005153C 3C15800E */  lui   $s5, %hi(gPlayerOne) # $s5, 0x800e
 /* 052140 80051540 26B5C4DC */  addiu $s5, %lo(gPlayerOne) # addiu $s5, $s5, -0x3b24

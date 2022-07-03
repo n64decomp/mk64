@@ -16,11 +16,11 @@ glabel func_80019D2C
 /* 01A964 80019D64 0C005469 */  jal   func_800151A4
 /* 01A968 80019D68 AFA60028 */   sw    $a2, 0x28($sp)
 /* 01A96C 80019D6C 8FA3001C */  lw    $v1, 0x1c($sp)
-/* 01A970 80019D70 3C028016 */  lui   $v0, %hi(D_80164438) # 0x8016
+/* 01A970 80019D70 3C028016 */  lui   $v0, %hi(gNearestWaypointByPlayerId) # 0x8016
 /* 01A974 80019D74 8FA60028 */  lw    $a2, 0x28($sp)
 /* 01A978 80019D78 0003C040 */  sll   $t8, $v1, 1
 /* 01A97C 80019D7C 00581021 */  addu  $v0, $v0, $t8
-/* 01A980 80019D80 94424438 */  lhu   $v0, %lo(D_80164438)($v0) # 0x4438($v0)
+/* 01A980 80019D80 94424438 */  lhu   $v0, %lo(gNearestWaypointByPlayerId)($v0) # 0x4438($v0)
 /* 01A984 80019D84 28410065 */  slti  $at, $v0, 0x65
 /* 01A988 80019D88 14200002 */  bnez  $at, .L80019D94
 /* 01A98C 80019D8C 284100FA */   slti  $at, $v0, 0xfa

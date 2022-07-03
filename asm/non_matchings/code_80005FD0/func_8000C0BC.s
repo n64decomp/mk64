@@ -8,12 +8,12 @@ glabel func_8000C0BC
 /* 00CCD4 8000C0D4 AFA7006C */  sw    $a3, 0x6c($sp)
 /* 00CCD8 8000C0D8 8DE80000 */  lw    $t0, ($t7)
 /* 00CCDC 8000C0DC 4486B000 */  mtc1  $a2, $f22
-/* 00CCE0 8000C0E0 3C068016 */  lui   $a2, %hi(D_801645C8) # 0x8016
+/* 00CCE0 8000C0E0 3C068016 */  lui   $a2, %hi(gWaypointCountByPathIndex) # 0x8016
 /* 00CCE4 8000C0E4 0008C840 */  sll   $t9, $t0, 1
 /* 00CCE8 8000C0E8 3C0A8016 */  lui   $t2, %hi(D_80164550) # 0x8016
 /* 00CCEC 8000C0EC 00D93021 */  addu  $a2, $a2, $t9
 /* 00CCF0 8000C0F0 0008C080 */  sll   $t8, $t0, 2
-/* 00CCF4 8000C0F4 94C645C8 */  lhu   $a2, %lo(D_801645C8)($a2) # 0x45c8($a2)
+/* 00CCF4 8000C0F4 94C645C8 */  lhu   $a2, %lo(gWaypointCountByPathIndex)($a2) # 0x45c8($a2)
 /* 00CCF8 8000C0F8 01585021 */  addu  $t2, $t2, $t8
 /* 00CCFC 8000C0FC 8D4A4550 */  lw    $t2, %lo(D_80164550)($t2) # 0x4550($t2)
 /* 00CD00 8000C100 30EEFFFF */  andi  $t6, $a3, 0xffff
@@ -177,9 +177,9 @@ glabel func_8000C0BC
 /* 00CF50 8000C350 2B010002 */  slti  $at, $t8, 2
 /* 00CF54 8000C354 14200076 */  bnez  $at, .L8000C530
 /* 00CF58 8000C358 0009C840 */   sll   $t9, $t1, 1
-/* 00CF5C 8000C35C 3C068016 */  lui   $a2, %hi(D_801645C8) # 0x8016
+/* 00CF5C 8000C35C 3C068016 */  lui   $a2, %hi(gWaypointCountByPathIndex) # 0x8016
 /* 00CF60 8000C360 00D93021 */  addu  $a2, $a2, $t9
-/* 00CF64 8000C364 94C645C8 */  lhu   $a2, %lo(D_801645C8)($a2) # 0x45c8($a2)
+/* 00CF64 8000C364 94C645C8 */  lhu   $a2, %lo(gWaypointCountByPathIndex)($a2) # 0x45c8($a2)
 /* 00CF68 8000C368 8D4A4550 */  lw    $t2, %lo(D_80164550)($t2) # 0x4550($t2)
 /* 00CF6C 8000C36C 00001825 */  move  $v1, $zero
 /* 00CF70 8000C370 18C0006F */  blez  $a2, .L8000C530
@@ -309,8 +309,8 @@ glabel func_8000C0BC
 /* 00D148 8000C548 8FAC0028 */   lw    $t4, 0x28($sp)
 /* 00D14C 8000C54C 3C0A8016 */  lui   $t2, %hi(D_80164550) # $t2, 0x8016
 /* 00D150 8000C550 8D424550 */  lw    $v0, %lo(D_80164550)($t2)
-/* 00D154 8000C554 3C068016 */  lui   $a2, %hi(D_801645C8) # $a2, 0x8016
-/* 00D158 8000C558 94C645C8 */  lhu   $a2, %lo(D_801645C8)($a2)
+/* 00D154 8000C554 3C068016 */  lui   $a2, %hi(gWaypointCountByPathIndex) # $a2, 0x8016
+/* 00D158 8000C558 94C645C8 */  lhu   $a2, %lo(gWaypointCountByPathIndex)($a2)
 /* 00D15C 8000C55C 84590000 */  lh    $t9, ($v0)
 /* 00D160 8000C560 844E0002 */  lh    $t6, 2($v0)
 /* 00D164 8000C564 844F0004 */  lh    $t7, 4($v0)

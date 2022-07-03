@@ -8,9 +8,9 @@ glabel func_80019DF4
 /* 01AA0C 80019E0C 8718467C */  lh    $t8, %lo(D_8016467C)($t8)
 /* 01AA10 80019E10 85EF467A */  lh    $t7, %lo(D_8016467A)($t7)
 /* 01AA14 80019E14 85CE4678 */  lh    $t6, %lo(D_80164678)($t6)
-/* 01AA18 80019E18 3C028016 */  lui   $v0, %hi(D_80164360) # $v0, 0x8016
+/* 01AA18 80019E18 3C028016 */  lui   $v0, %hi(gGPCurrentRacePlayerIdByRank) # $v0, 0x8016
 /* 01AA1C 80019E1C 3C08800E */  lui   $t0, %hi(camera1)
-/* 01AA20 80019E20 84424360 */  lh    $v0, %lo(D_80164360)($v0)
+/* 01AA20 80019E20 84424360 */  lh    $v0, %lo(gGPCurrentRacePlayerIdByRank)($v0)
 /* 01AA24 80019E24 8D08DB40 */  lw    $t0, %lo(camera1)($t0)
 /* 01AA28 80019E28 A4394676 */  sh    $t9, %lo(D_80164670+0x6)($at)
 /* 01AA2C 80019E2C A4384674 */  sh    $t8, %lo(D_80164670+0x4)($at)

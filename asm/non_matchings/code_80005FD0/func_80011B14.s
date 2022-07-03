@@ -13,11 +13,11 @@ glabel func_80011B14
 /* 012740 80011B40 3C0C8016 */  lui   $t4, %hi(D_801632B0) # $t4, 0x8016
 /* 012744 80011B44 0006C8C0 */  sll   $t9, $a2, 3
 /* 012748 80011B48 258C32B0 */  addiu $t4, %lo(D_801632B0) # addiu $t4, $t4, 0x32b0
-/* 01274C 80011B4C 3C0F8016 */  lui   $t7, %hi(D_80164438) # 0x8016
+/* 01274C 80011B4C 3C0F8016 */  lui   $t7, %hi(gNearestWaypointByPlayerId) # 0x8016
 /* 012750 80011B50 03287021 */  addu  $t6, $t9, $t0
 /* 012754 80011B54 AD8E0000 */  sw    $t6, ($t4)
 /* 012758 80011B58 01E37821 */  addu  $t7, $t7, $v1
-/* 01275C 80011B5C 95EF4438 */  lhu   $t7, %lo(D_80164438)($t7) # 0x4438($t7)
+/* 01275C 80011B5C 95EF4438 */  lhu   $t7, %lo(gNearestWaypointByPlayerId)($t7) # 0x4438($t7)
 /* 012760 80011B60 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 012764 80011B64 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 012768 80011B68 A7AF002E */  sh    $t7, 0x2e($sp)

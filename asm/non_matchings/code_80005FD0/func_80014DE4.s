@@ -62,9 +62,9 @@ glabel func_80014DE4
 /* 015AC4 80014EC4 00000000 */   nop   
 /* 015AC8 80014EC8 A4600000 */  sh    $zero, ($v1)
 .L80014ECC:
-/* 015ACC 80014ECC 3C018016 */  lui   $at, %hi(D_80164668) # $at, 0x8016
-/* 015AD0 80014ED0 A420466A */  sh    $zero, %lo(D_80164668+0x2)($at)
-/* 015AD4 80014ED4 A420466C */  sh    $zero, %lo(D_80164668+0x4)($at)
-/* 015AD8 80014ED8 A420466E */  sh    $zero, %lo(D_80164668+0x6)($at)
+/* 015ACC 80014ECC 3C018016 */  lui   $at, %hi(gNearestWaypointByCameraId) # $at, 0x8016
+/* 015AD0 80014ED0 A420466A */  sh    $zero, %lo(gNearestWaypointByCameraId+0x2)($at)
+/* 015AD4 80014ED4 A420466C */  sh    $zero, %lo(gNearestWaypointByCameraId+0x4)($at)
+/* 015AD8 80014ED8 A420466E */  sh    $zero, %lo(gNearestWaypointByCameraId+0x6)($at)
 /* 015ADC 80014EDC 03E00008 */  jr    $ra
-/* 015AE0 80014EE0 A4204668 */   sh    $zero, %lo(D_80164668)($at) # 0x4668($at)
+/* 015AE0 80014EE0 A4204668 */   sh    $zero, %lo(gNearestWaypointByCameraId)($at) # 0x4668($at)

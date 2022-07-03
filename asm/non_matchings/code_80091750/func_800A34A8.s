@@ -15,12 +15,12 @@ glabel func_800A34A8
 /* 0A40DC 800A34DC 10600140 */  beqz  $v1, .L800A39E0
 /* 0A40E0 800A34E0 28610009 */   slti  $at, $v1, 9
 /* 0A40E4 800A34E4 10200025 */  beqz  $at, .L800A357C
-/* 0A40E8 800A34E8 3C048016 */   lui   $a0, %hi(D_80164360) # $a0, 0x8016
+/* 0A40E8 800A34E8 3C048016 */   lui   $a0, %hi(gGPCurrentRacePlayerIdByRank) # $a0, 0x8016
 /* 0A40EC 800A34EC 3C058016 */  lui   $a1, %hi(D_80164370) # $a1, 0x8016
 /* 0A40F0 800A34F0 3C02800F */  lui   $v0, %hi(gPlayers) # $v0, 0x800f
 /* 0A40F4 800A34F4 24426990 */  addiu $v0, %lo(gPlayers) # addiu $v0, $v0, 0x6990
 /* 0A40F8 800A34F8 24A54370 */  addiu $a1, %lo(D_80164370) # addiu $a1, $a1, 0x4370
-/* 0A40FC 800A34FC 24844360 */  addiu $a0, %lo(D_80164360) # addiu $a0, $a0, 0x4360
+/* 0A40FC 800A34FC 24844360 */  addiu $a0, %lo(gGPCurrentRacePlayerIdByRank) # addiu $a0, $a0, 0x4360
 /* 0A4100 800A3500 27B00080 */  addiu $s0, $sp, 0x80
 /* 0A4104 800A3504 24030DD8 */  li    $v1, 3544
 .L800A3508:
@@ -108,8 +108,8 @@ glabel func_800A34A8
 /* 0A4244 800A3644 0C024CC9 */  jal   func_80093324
 /* 0A4248 800A3648 01EE2823 */   subu  $a1, $t7, $t6
 /* 0A424C 800A364C 3C17800E */  lui   $s7, %hi(gGlobalTimer) # $s7, 0x800e
-/* 0A4250 800A3650 3C168016 */  lui   $s6, %hi(D_80164360) # $s6, 0x8016
-/* 0A4254 800A3654 26D64360 */  addiu $s6, %lo(D_80164360) # addiu $s6, $s6, 0x4360
+/* 0A4250 800A3650 3C168016 */  lui   $s6, %hi(gGPCurrentRacePlayerIdByRank) # $s6, 0x8016
+/* 0A4254 800A3654 26D64360 */  addiu $s6, %lo(gGPCurrentRacePlayerIdByRank) # addiu $s6, $s6, 0x4360
 /* 0A4258 800A3658 26F7C54C */  addiu $s7, %lo(gGlobalTimer) # addiu $s7, $s7, -0x3ab4
 /* 0A425C 800A365C 00008825 */  move  $s1, $zero
 /* 0A4260 800A3660 241E0003 */  li    $fp, 3

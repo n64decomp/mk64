@@ -12,9 +12,9 @@ glabel func_8007BD04
 /* 07C92C 8007BD2C 0004C840 */  sll   $t9, $a0, 1
 /* 07C930 8007BD30 17000019 */  bnez  $t8, .L8007BD98
 /* 07C934 8007BD34 AFAE001C */   sw    $t6, 0x1c($sp)
-/* 07C938 8007BD38 3C028016 */  lui   $v0, %hi(D_80164438) # 0x8016
+/* 07C938 8007BD38 3C028016 */  lui   $v0, %hi(gNearestWaypointByPlayerId) # 0x8016
 /* 07C93C 8007BD3C 00591021 */  addu  $v0, $v0, $t9
-/* 07C940 8007BD40 94424438 */  lhu   $v0, %lo(D_80164438)($v0) # 0x4438($v0)
+/* 07C940 8007BD40 94424438 */  lhu   $v0, %lo(gNearestWaypointByPlayerId)($v0) # 0x4438($v0)
 /* 07C944 8007BD44 284100A0 */  slti  $at, $v0, 0xa0
 /* 07C948 8007BD48 14200013 */  bnez  $at, .L8007BD98
 /* 07C94C 8007BD4C 284100AB */   slti  $at, $v0, 0xab

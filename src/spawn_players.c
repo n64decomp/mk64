@@ -2,6 +2,7 @@
 #include <defines.h>
 #include "kart_attributes.h"
 #include "memory.h"
+#include "waypoints.h"
 
 extern s16 D_80165560[];
 extern s32* D_800E3C50[];
@@ -717,9 +718,9 @@ void func_8003C0F0(void) {
         case COURSE_WARIO_STADIUM:
         case COURSE_DK_JUNGLE:
             func_8000F2DC();
-            sp5E = (f32) D_80164550[0];
-            sp5C = (f32) D_80164550[2];
-            sp5A = (f32) D_80164550[1];
+            sp5E = (f32) D_80164550[0][0].wayPointX;
+            sp5C = (f32) D_80164550[0][0].wayPointZ;
+            sp5A = (f32) D_80164550[0][0].wayPointY;
             if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
                 sp5E = 0;
             }

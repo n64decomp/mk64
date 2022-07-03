@@ -24,12 +24,12 @@ glabel func_8001A450
 /* 01B0A8 8001A4A8 03293021 */  addu  $a2, $t9, $t1
 /* 01B0AC 8001A4AC 84C30000 */  lh    $v1, ($a2)
 /* 01B0B0 8001A4B0 2401000A */  li    $at, 10
-/* 01B0B4 8001A4B4 3C048016 */  lui   $a0, %hi(D_80164668) # 0x8016
+/* 01B0B4 8001A4B4 3C048016 */  lui   $a0, %hi(gNearestWaypointByCameraId) # 0x8016
 /* 01B0B8 8001A4B8 24650001 */  addiu $a1, $v1, 1
 /* 01B0BC 8001A4BC 00A1001A */  div   $zero, $a1, $at
 /* 01B0C0 8001A4C0 00992021 */  addu  $a0, $a0, $t9
 /* 01B0C4 8001A4C4 00002810 */  mfhi  $a1
-/* 01B0C8 8001A4C8 84844668 */  lh    $a0, %lo(D_80164668)($a0) # 0x4668($a0)
+/* 01B0C8 8001A4C8 84844668 */  lh    $a0, %lo(gNearestWaypointByCameraId)($a0) # 0x4668($a0)
 /* 01B0CC 8001A4CC AFA60018 */  sw    $a2, 0x18($sp)
 /* 01B0D0 8001A4D0 AFA70028 */  sw    $a3, 0x28($sp)
 /* 01B0D4 8001A4D4 0C0068C4 */  jal   func_8001A310

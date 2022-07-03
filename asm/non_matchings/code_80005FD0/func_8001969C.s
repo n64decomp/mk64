@@ -1,8 +1,8 @@
 glabel func_8001969C
-/* 01A29C 8001969C 3C0F8016 */  lui   $t7, %hi(D_801645C8) # $t7, 0x8016
-/* 01A2A0 800196A0 95EF45C8 */  lhu   $t7, %lo(D_801645C8)($t7)
-/* 01A2A4 800196A4 3C0E8016 */  lui   $t6, %hi(D_80164668) # $t6, 0x8016
-/* 01A2A8 800196A8 25CE4668 */  addiu $t6, %lo(D_80164668) # addiu $t6, $t6, 0x4668
+/* 01A29C 8001969C 3C0F8016 */  lui   $t7, %hi(gWaypointCountByPathIndex) # $t7, 0x8016
+/* 01A2A0 800196A0 95EF45C8 */  lhu   $t7, %lo(gWaypointCountByPathIndex)($t7)
+/* 01A2A4 800196A4 3C0E8016 */  lui   $t6, %hi(gNearestWaypointByCameraId) # $t6, 0x8016
+/* 01A2A8 800196A8 25CE4668 */  addiu $t6, %lo(gNearestWaypointByCameraId) # addiu $t6, $t6, 0x4668
 /* 01A2AC 800196AC 00061040 */  sll   $v0, $a2, 1
 /* 01A2B0 800196B0 004E1821 */  addu  $v1, $v0, $t6
 /* 01A2B4 800196B4 25F8FFEE */  addiu $t8, $t7, -0x12

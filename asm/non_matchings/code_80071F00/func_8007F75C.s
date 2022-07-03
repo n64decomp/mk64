@@ -1,9 +1,9 @@
 glabel func_8007F75C
 /* 08035C 8007F75C 27BDFFC8 */  addiu $sp, $sp, -0x38
 /* 080360 8007F760 00047040 */  sll   $t6, $a0, 1
-/* 080364 8007F764 3C028016 */  lui   $v0, %hi(D_80164438) # 0x8016
+/* 080364 8007F764 3C028016 */  lui   $v0, %hi(gNearestWaypointByPlayerId) # 0x8016
 /* 080368 8007F768 004E1021 */  addu  $v0, $v0, $t6
-/* 08036C 8007F76C 94424438 */  lhu   $v0, %lo(D_80164438)($v0) # 0x4438($v0)
+/* 08036C 8007F76C 94424438 */  lhu   $v0, %lo(gNearestWaypointByPlayerId)($v0) # 0x4438($v0)
 /* 080370 8007F770 AFB6002C */  sw    $s6, 0x2c($sp)
 /* 080374 8007F774 AFB50028 */  sw    $s5, 0x28($sp)
 /* 080378 8007F778 284100AA */  slti  $at, $v0, 0xaa

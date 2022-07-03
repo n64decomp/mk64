@@ -222,11 +222,11 @@ glabel func_8000F628
 /* 01058C 8000F98C AED00000 */  sw    $s0, ($s6)
 .L8000F990:
 /* 010590 8000F990 8E820000 */  lw    $v0, ($s4)
-/* 010594 8000F994 3C018016 */  lui   $at, %hi(D_80164360) # 0x8016
+/* 010594 8000F994 3C018016 */  lui   $at, %hi(gGPCurrentRacePlayerIdByRank) # 0x8016
 /* 010598 8000F998 8FAF00BC */  lw    $t7, 0xbc($sp)
 /* 01059C 8000F99C 00021840 */  sll   $v1, $v0, 1
 /* 0105A0 8000F9A0 00230821 */  addu  $at, $at, $v1
-/* 0105A4 8000F9A4 A4304360 */  sh    $s0, %lo(D_80164360)($at) # 0x4360($at)
+/* 0105A4 8000F9A4 A4304360 */  sh    $s0, %lo(gGPCurrentRacePlayerIdByRank)($at) # 0x4360($at)
 /* 0105A8 8000F9A8 3C018016 */  lui   $at, %hi(D_80164378) # 0x8016
 /* 0105AC 8000F9AC 00230821 */  addu  $at, $at, $v1
 /* 0105B0 8000F9B0 A4304378 */  sh    $s0, %lo(D_80164378)($at) # 0x4378($at)
@@ -542,14 +542,14 @@ glabel func_8000F628
 /* 010A70 8000FE70 A44EFFFE */   sh    $t6, -2($v0)
 .L8000FE74:
 /* 010A74 8000FE74 3C148016 */  lui   $s4, %hi(gPlayerPositions) # $s4, 0x8016
-/* 010A78 8000FE78 3C028016 */  lui   $v0, %hi(D_801645B0) # $v0, 0x8016
-/* 010A7C 8000FE7C 3C038016 */  lui   $v1, %hi(D_80164438) # $v1, 0x8016
+/* 010A78 8000FE78 3C028016 */  lui   $v0, %hi(gPathIndexByPlayerId) # $v0, 0x8016
+/* 010A7C 8000FE7C 3C038016 */  lui   $v1, %hi(gNearestWaypointByPlayerId) # $v1, 0x8016
 /* 010A80 8000FE80 3C058016 */  lui   $a1, %hi(D_80164448) # $a1, 0x8016
-/* 010A84 8000FE84 3C048016 */  lui   $a0, %hi(D_801645C8) # $a0, 0x8016
-/* 010A88 8000FE88 248445C8 */  addiu $a0, %lo(D_801645C8) # addiu $a0, $a0, 0x45c8
+/* 010A84 8000FE84 3C048016 */  lui   $a0, %hi(gWaypointCountByPathIndex) # $a0, 0x8016
+/* 010A88 8000FE88 248445C8 */  addiu $a0, %lo(gWaypointCountByPathIndex) # addiu $a0, $a0, 0x45c8
 /* 010A8C 8000FE8C 24A54448 */  addiu $a1, %lo(D_80164448) # addiu $a1, $a1, 0x4448
-/* 010A90 8000FE90 24634438 */  addiu $v1, %lo(D_80164438) # addiu $v1, $v1, 0x4438
-/* 010A94 8000FE94 244245B0 */  addiu $v0, %lo(D_801645B0) # addiu $v0, $v0, 0x45b0
+/* 010A90 8000FE90 24634438 */  addiu $v1, %lo(gNearestWaypointByPlayerId) # addiu $v1, $v1, 0x4438
+/* 010A94 8000FE94 244245B0 */  addiu $v0, %lo(gPathIndexByPlayerId) # addiu $v0, $v0, 0x45b0
 /* 010A98 8000FE98 269443B8 */  addiu $s4, %lo(gPlayerPositions) # addiu $s4, $s4, 0x43b8
 .L8000FE9C:
 /* 010A9C 8000FE9C 300EFFFF */  andi  $t6, $zero, 0xffff

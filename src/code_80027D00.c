@@ -100,7 +100,7 @@ GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80027DA8.s")
 ? func_800CA2B8(s32, s8);                           /* extern */
 ? func_800CA2E4(s32, ?, s8);                        /* extern */
 ? func_800CA30C(s32, s8);                           /* extern */
-extern ? D_80164438;
+extern ? gNearestWaypointByPlayerId;
 extern ? D_80165300;
 u16 gCurrentCourseId;                               /* unable to generate initializer */
 
@@ -187,7 +187,7 @@ void func_80027EDC(u16 *arg0, s8 arg1) {
         switch (temp_t9) {                          /* switch 1 */
         case 0:                                     /* switch 1 */
             temp_v1 = temp_a2 * 2;
-            temp_v0_2 = *(&D_80164438 + temp_v1);
+            temp_v0_2 = *(&gNearestWaypointByPlayerId + temp_v1);
             if ((temp_v0_2 >= 0x19B) && (temp_v0_2 < 0x1B9)) {
                 temp_v0_3 = temp_v1 + &D_80165300;
                 if (*temp_v0_3 != 1) {
@@ -208,7 +208,7 @@ void func_80027EDC(u16 *arg0, s8 arg1) {
             return;
         case 1:                                     /* switch 1 */
             temp_v1_2 = temp_a2 * 2;
-            temp_v0_5 = *(&D_80164438 + temp_v1_2);
+            temp_v0_5 = *(&gNearestWaypointByPlayerId + temp_v1_2);
             if ((temp_v0_5 >= 0xA0) && (temp_v0_5 < 0xB4)) {
                 temp_v0_6 = temp_v1_2 + &D_80165300;
                 if (*temp_v0_6 != 1) {
@@ -229,7 +229,7 @@ void func_80027EDC(u16 *arg0, s8 arg1) {
             return;
         case 2:                                     /* switch 1 */
             temp_v1_3 = temp_a2 * 2;
-            temp_v0_8 = *(&D_80164438 + temp_v1_3);
+            temp_v0_8 = *(&gNearestWaypointByPlayerId + temp_v1_3);
             if ((temp_v0_8 >= 0x29) && (temp_v0_8 < 0x1D2)) {
                 temp_v0_9 = temp_v1_3 + &D_80165300;
                 if (*temp_v0_9 != 1) {
@@ -250,7 +250,7 @@ void func_80027EDC(u16 *arg0, s8 arg1) {
             return;
         case 3:                                     /* switch 1 */
             temp_v1_4 = temp_a2 * 2;
-            temp_v0_11 = *(&D_80164438 + temp_v1_4);
+            temp_v0_11 = *(&gNearestWaypointByPlayerId + temp_v1_4);
             if ((temp_v0_11 >= 0x180) && (temp_v0_11 < 0x1E1)) {
                 temp_v0_12 = temp_v1_4 + &D_80165300;
                 if (*temp_v0_12 != 1) {
@@ -271,7 +271,7 @@ void func_80027EDC(u16 *arg0, s8 arg1) {
             return;
         case 8:                                     /* switch 1 */
             temp_v1_5 = temp_a2 * 2;
-            temp_v0_14 = *(&D_80164438 + temp_v1_5);
+            temp_v0_14 = *(&gNearestWaypointByPlayerId + temp_v1_5);
             if ((temp_v0_14 >= 0x145) && (temp_v0_14 < 0x18B)) {
                 temp_v0_15 = temp_v1_5 + &D_80165300;
                 if (*temp_v0_15 != 1) {
@@ -312,7 +312,7 @@ void func_80027EDC(u16 *arg0, s8 arg1) {
             return;
         case 12:                                    /* switch 1 */
             temp_v1_6 = temp_a2 * 2;
-            temp_v0_19 = *(&D_80164438 + temp_v1_6);
+            temp_v0_19 = *(&gNearestWaypointByPlayerId + temp_v1_6);
             if ((temp_v0_19 >= 0x11C) && (temp_v0_19 < 0x209)) {
                 temp_v0_20 = temp_v1_6 + &D_80165300;
                 if (*temp_v0_20 != 1) {
@@ -333,7 +333,7 @@ void func_80027EDC(u16 *arg0, s8 arg1) {
             return;
         case 18:                                    /* switch 1 */
             temp_v1_7 = temp_a2 * 2;
-            temp_v0_22 = *(&D_80164438 + temp_v1_7);
+            temp_v0_22 = *(&gNearestWaypointByPlayerId + temp_v1_7);
             if (((temp_v0_22 >= 0) && (temp_v0_22 < 0x65)) || ((temp_v0_22 >= 0x14A) && (temp_v0_22 < 0x21F))) {
                 temp_v0_25 = temp_v1_7 + &D_80165300;
                 if (*temp_v0_25 != 2) {
@@ -379,7 +379,7 @@ void func_80027EDC(u16 *arg0, s8 arg1) {
         switch (temp_t5) {                          /* switch 2 */
         case 0:                                     /* switch 2 */
             temp_v1_8 = temp_a2 * 2;
-            temp_v0_26 = *(&D_80164438 + temp_v1_8);
+            temp_v0_26 = *(&gNearestWaypointByPlayerId + temp_v1_8);
             if ((temp_v0_26 >= 0x19B) && (temp_v0_26 < 0x1B9)) {
                 temp_v0_27 = temp_v1_8 + &D_80165300;
                 if (*temp_v0_27 != 1) {
@@ -402,7 +402,7 @@ block_127:
             return;
         case 1:                                     /* switch 2 */
             temp_v1_9 = temp_a2 * 2;
-            temp_v0_29 = *(&D_80164438 + temp_v1_9);
+            temp_v0_29 = *(&gNearestWaypointByPlayerId + temp_v1_9);
             if ((temp_v0_29 >= 0xA0) && (temp_v0_29 < 0xB4)) {
                 temp_v0_30 = temp_v1_9 + &D_80165300;
                 if (*temp_v0_30 != 1) {
@@ -423,7 +423,7 @@ block_127:
             return;
         case 2:                                     /* switch 2 */
             temp_v1_10 = temp_a2 * 2;
-            temp_v0_32 = *(&D_80164438 + temp_v1_10);
+            temp_v0_32 = *(&gNearestWaypointByPlayerId + temp_v1_10);
             if ((temp_v0_32 >= 0x29) && (temp_v0_32 < 0x1D2)) {
                 temp_v0_33 = temp_v1_10 + &D_80165300;
                 if (*temp_v0_33 != 1) {
@@ -444,7 +444,7 @@ block_127:
             return;
         case 3:                                     /* switch 2 */
             temp_v1_11 = temp_a2 * 2;
-            temp_v0_35 = *(&D_80164438 + temp_v1_11);
+            temp_v0_35 = *(&gNearestWaypointByPlayerId + temp_v1_11);
             if ((temp_v0_35 >= 0x180) && (temp_v0_35 < 0x1E1)) {
                 temp_v0_36 = temp_v1_11 + &D_80165300;
                 if (*temp_v0_36 != 1) {
@@ -465,7 +465,7 @@ block_127:
             return;
         case 8:                                     /* switch 2 */
             temp_v1_12 = temp_a2 * 2;
-            temp_v0_38 = *(&D_80164438 + temp_v1_12);
+            temp_v0_38 = *(&gNearestWaypointByPlayerId + temp_v1_12);
             if ((temp_v0_38 >= 0x145) && (temp_v0_38 < 0x18B)) {
                 temp_v0_39 = temp_v1_12 + &D_80165300;
                 if (*temp_v0_39 != 1) {
@@ -506,7 +506,7 @@ block_127:
             return;
         case 12:                                    /* switch 2 */
             temp_v1_13 = temp_a2 * 2;
-            temp_v0_43 = *(&D_80164438 + temp_v1_13);
+            temp_v0_43 = *(&gNearestWaypointByPlayerId + temp_v1_13);
             if ((temp_v0_43 >= 0x11C) && (temp_v0_43 < 0x209)) {
                 temp_v0_44 = temp_v1_13 + &D_80165300;
                 if (*temp_v0_44 != 1) {
@@ -527,7 +527,7 @@ block_127:
             return;
         case 18:                                    /* switch 2 */
             temp_v1_14 = temp_a2 * 2;
-            temp_v0_46 = *(&D_80164438 + temp_v1_14);
+            temp_v0_46 = *(&gNearestWaypointByPlayerId + temp_v1_14);
             if ((temp_v0_46 >= 0x288) && (temp_v0_46 < 0x305)) {
                 temp_v0_47 = temp_v1_14 + &D_80165300;
                 if (*temp_v0_47 != 1) {
@@ -2283,8 +2283,8 @@ void func_8002C11C(Player *player) {
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 90e635335cb052c4324a3aa7478e4761db19dfaf
 s32 func_802ABDF4(u16, s8, Player *);               /* extern */
-extern ? D_80164438;
-extern ? D_801645B0;
+extern ? gNearestWaypointByPlayerId;
+extern ? gPathIndexByPlayerId;
 extern ? D_80165310;
 extern ? D_80165320;
 extern ? D_80165330;
@@ -2318,15 +2318,15 @@ void func_8002C17C(Player *player, s8 arg1) {
         temp_v1 = temp_v0_2 + &D_80165330;
         if ((player->unk_124 >= 600.0f) && (*temp_v1 == 0)) {
             *temp_v1 = 1;
-            *(&D_80165320 + temp_v0_2) = *(&D_80164438 + temp_v0_2);
-            *(&D_80165310 + temp_v0_2) = *(&D_801645B0 + temp_v0_2);
+            *(&D_80165320 + temp_v0_2) = *(&gNearestWaypointByPlayerId + temp_v0_2);
+            *(&D_80165310 + temp_v0_2) = *(&gPathIndexByPlayerId + temp_v0_2);
             return;
         }
         temp_v0_3 = arg1 * 2;
         temp_v1_2 = temp_v0_3 + &D_80165330;
         if (*temp_v1_2 == 0) {
-            *(&D_80165320 + temp_v0_3) = *(&D_80164438 + temp_v0_3);
-            *(&D_80165310 + temp_v0_3) = *(&D_801645B0 + temp_v0_3);
+            *(&D_80165320 + temp_v0_3) = *(&gNearestWaypointByPlayerId + temp_v0_3);
+            *(&D_80165310 + temp_v0_3) = *(&gPathIndexByPlayerId + temp_v0_3);
             return;
         }
         if ((player->unk_0BC & 8) == 0) {
@@ -2344,16 +2344,16 @@ void func_8002C17C(Player *player, s8 arg1) {
             temp_v1_3 = temp_v0_4 + &D_80165330;
             if (*temp_v1_3 == 0) {
                 *temp_v1_3 = 1;
-                *(&D_80165320 + temp_v0_4) = *(&D_80164438 + temp_v0_4);
-                *(&D_80165310 + temp_v0_4) = *(&D_801645B0 + temp_v0_4);
+                *(&D_80165320 + temp_v0_4) = *(&gNearestWaypointByPlayerId + temp_v0_4);
+                *(&D_80165310 + temp_v0_4) = *(&gPathIndexByPlayerId + temp_v0_4);
                 return;
             }
         }
         temp_v0_5 = arg1 * 2;
         if (temp_a0 != 0xB) {
             *(&D_80165330 + temp_v0_5) = 0;
-            *(&D_80165320 + temp_v0_5) = *(&D_80164438 + temp_v0_5);
-            *(&D_80165310 + temp_v0_5) = *(&D_801645B0 + temp_v0_5);
+            *(&D_80165320 + temp_v0_5) = *(&gNearestWaypointByPlayerId + temp_v0_5);
+            *(&D_80165310 + temp_v0_5) = *(&gPathIndexByPlayerId + temp_v0_5);
             return;
         }
         break;
@@ -2365,8 +2365,8 @@ void func_8002C17C(Player *player, s8 arg1) {
             temp_v1_4 = temp_v0_6 + &D_80165330;
             if (*temp_v1_4 == 0) {
                 *temp_v1_4 = 1;
-                *(&D_80165320 + temp_v0_6) = *(&D_80164438 + temp_v0_6);
-                *(&D_80165310 + temp_v0_6) = *(&D_801645B0 + temp_v0_6);
+                *(&D_80165320 + temp_v0_6) = *(&gNearestWaypointByPlayerId + temp_v0_6);
+                *(&D_80165310 + temp_v0_6) = *(&gPathIndexByPlayerId + temp_v0_6);
                 return;
             }
         }
@@ -2374,8 +2374,8 @@ void func_8002C17C(Player *player, s8 arg1) {
             temp_v0_7 = arg1 * 2;
             if ((temp_a0_2 & 8) == 0) {
                 *(&D_80165330 + temp_v0_7) = 0;
-                *(&D_80165320 + temp_v0_7) = *(&D_80164438 + temp_v0_7);
-                *(&D_80165310 + temp_v0_7) = *(&D_801645B0 + temp_v0_7);
+                *(&D_80165320 + temp_v0_7) = *(&gNearestWaypointByPlayerId + temp_v0_7);
+                *(&D_80165310 + temp_v0_7) = *(&gPathIndexByPlayerId + temp_v0_7);
                 return;
             }
         }
@@ -2385,15 +2385,15 @@ void func_8002C17C(Player *player, s8 arg1) {
         temp_v1_5 = temp_v0_8 + &D_80165330;
         if ((player->unk_124 >= 600.0f) && (*temp_v1_5 == 0)) {
             *temp_v1_5 = 1;
-            *(&D_80165320 + temp_v0_8) = *(&D_80164438 + temp_v0_8);
-            *(&D_80165310 + temp_v0_8) = *(&D_801645B0 + temp_v0_8);
+            *(&D_80165320 + temp_v0_8) = *(&gNearestWaypointByPlayerId + temp_v0_8);
+            *(&D_80165310 + temp_v0_8) = *(&gPathIndexByPlayerId + temp_v0_8);
             return;
         }
         temp_v0_9 = arg1 * 2;
         temp_v1_6 = temp_v0_9 + &D_80165330;
         if (*temp_v1_6 == 0) {
-            *(&D_80165320 + temp_v0_9) = *(&D_80164438 + temp_v0_9);
-            *(&D_80165310 + temp_v0_9) = *(&D_801645B0 + temp_v0_9);
+            *(&D_80165320 + temp_v0_9) = *(&gNearestWaypointByPlayerId + temp_v0_9);
+            *(&D_80165310 + temp_v0_9) = *(&gPathIndexByPlayerId + temp_v0_9);
             return;
         }
         if (((player->unk_0BC & 8) == 0) && ((player->unk_0CA & 1) == 0)) {

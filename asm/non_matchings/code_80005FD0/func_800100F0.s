@@ -31,11 +31,11 @@ glabel func_800100F0
 /* 010D64 80010164 0C00457D */  jal   process_path_data
 /* 010D68 80010168 00402825 */   move  $a1, $v0
 /* 010D6C 8001016C 8FAB0038 */  lw    $t3, 0x38($sp)
-/* 010D70 80010170 3C018016 */  lui   $at, %hi(D_801645C8) # 0x8016
+/* 010D70 80010170 3C018016 */  lui   $at, %hi(gWaypointCountByPathIndex) # 0x8016
 /* 010D74 80010174 000B6040 */  sll   $t4, $t3, 1
 /* 010D78 80010178 002C0821 */  addu  $at, $at, $t4
 /* 010D7C 8001017C 10000022 */  b     .L80010208
-/* 010D80 80010180 A42245C8 */   sh    $v0, %lo(D_801645C8)($at) # 0x45c8($at)
+/* 010D80 80010180 A42245C8 */   sh    $v0, %lo(gWaypointCountByPathIndex)($at) # 0x45c8($at)
 .L80010184:
 /* 010D84 80010184 00026900 */  sll   $t5, $v0, 4
 /* 010D88 80010188 01A37021 */  addu  $t6, $t5, $v1
@@ -69,10 +69,10 @@ glabel func_800100F0
 /* 010DEC 800101EC 0C004405 */  jal   func_80011014
 /* 010DF0 800101F0 8FA70038 */   lw    $a3, 0x38($sp)
 /* 010DF4 800101F4 8FB90038 */  lw    $t9, 0x38($sp)
-/* 010DF8 800101F8 3C018016 */  lui   $at, %hi(D_801645C8) # 0x8016
+/* 010DF8 800101F8 3C018016 */  lui   $at, %hi(gWaypointCountByPathIndex) # 0x8016
 /* 010DFC 800101FC 00194040 */  sll   $t0, $t9, 1
 /* 010E00 80010200 00280821 */  addu  $at, $at, $t0
-/* 010E04 80010204 A42245C8 */  sh    $v0, %lo(D_801645C8)($at) # 0x45c8($at)
+/* 010E04 80010204 A42245C8 */  sh    $v0, %lo(gWaypointCountByPathIndex)($at) # 0x45c8($at)
 .L80010208:
 /* 010E08 80010208 8FBF0014 */  lw    $ra, 0x14($sp)
 .L8001020C:

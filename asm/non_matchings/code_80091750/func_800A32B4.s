@@ -1,8 +1,8 @@
 glabel func_800A32B4
 /* 0A3EB4 800A32B4 00077040 */  sll   $t6, $a3, 1
-/* 0A3EB8 800A32B8 3C0F8016 */  lui   $t7, %hi(D_80164360) # 0x8016
+/* 0A3EB8 800A32B8 3C0F8016 */  lui   $t7, %hi(gGPCurrentRacePlayerIdByRank) # 0x8016
 /* 0A3EBC 800A32BC 01EE7821 */  addu  $t7, $t7, $t6
-/* 0A3EC0 800A32C0 85EF4360 */  lh    $t7, %lo(D_80164360)($t7) # 0x4360($t7)
+/* 0A3EC0 800A32C0 85EF4360 */  lh    $t7, %lo(gGPCurrentRacePlayerIdByRank)($t7) # 0x4360($t7)
 /* 0A3EC4 800A32C4 27BDFFA8 */  addiu $sp, $sp, -0x58
 /* 0A3EC8 800A32C8 3C018016 */  lui   $at, %hi(gTimePlayerLastTouchedFinishLine)
 /* 0A3ECC 800A32CC 000FC080 */  sll   $t8, $t7, 2
