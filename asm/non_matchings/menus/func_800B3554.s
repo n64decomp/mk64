@@ -166,7 +166,7 @@ glabel func_800B3554
 /* 0B43B0 800B37B0 24700005 */   addiu $s0, $v1, 5
 /* 0B43B4 800B37B4 0010CE00 */  sll   $t9, $s0, 0x18
 /* 0B43B8 800B37B8 00192603 */  sra   $a0, $t9, 0x18
-/* 0B43BC 800B37BC 0C02CD3A */  jal   open_css_grid_spot
+/* 0B43BC 800B37BC 0C02CD3A */  jal   is_character_spot_free
 /* 0B43C0 800B37C0 00808025 */   move  $s0, $a0
 /* 0B43C4 800B37C4 104000DF */  beqz  $v0, .L800B3B44
 /* 0B43C8 800B37C8 8FA90028 */   lw    $t1, 0x28($sp)
@@ -192,7 +192,7 @@ glabel func_800B3554
 /* 0B4410 800B3810 24700003 */   addiu $s0, $v1, 3
 /* 0B4414 800B3814 00105E00 */  sll   $t3, $s0, 0x18
 /* 0B4418 800B3818 000B2603 */  sra   $a0, $t3, 0x18
-/* 0B441C 800B381C 0C02CD3A */  jal   open_css_grid_spot
+/* 0B441C 800B381C 0C02CD3A */  jal   is_character_spot_free
 /* 0B4420 800B3820 00808025 */   move  $s0, $a0
 /* 0B4424 800B3824 104000C7 */  beqz  $v0, .L800B3B44
 /* 0B4428 800B3828 8FAD0028 */   lw    $t5, 0x28($sp)
@@ -217,7 +217,7 @@ glabel func_800B3554
 /* 0B446C 800B386C 2470FFFD */   addiu $s0, $v1, -3
 /* 0B4470 800B3870 00107E00 */  sll   $t7, $s0, 0x18
 /* 0B4474 800B3874 000F2603 */  sra   $a0, $t7, 0x18
-/* 0B4478 800B3878 0C02CD3A */  jal   open_css_grid_spot
+/* 0B4478 800B3878 0C02CD3A */  jal   is_character_spot_free
 /* 0B447C 800B387C 00808025 */   move  $s0, $a0
 /* 0B4480 800B3880 104000B0 */  beqz  $v0, .L800B3B44
 /* 0B4484 800B3884 8FB90028 */   lw    $t9, 0x28($sp)
@@ -242,7 +242,7 @@ glabel func_800B3554
 /* 0B44C8 800B38C8 2470FFFB */   addiu $s0, $v1, -5
 /* 0B44CC 800B38CC 00104E00 */  sll   $t1, $s0, 0x18
 /* 0B44D0 800B38D0 00092603 */  sra   $a0, $t1, 0x18
-/* 0B44D4 800B38D4 0C02CD3A */  jal   open_css_grid_spot
+/* 0B44D4 800B38D4 0C02CD3A */  jal   is_character_spot_free
 /* 0B44D8 800B38D8 00808025 */   move  $s0, $a0
 /* 0B44DC 800B38DC 10400099 */  beqz  $v0, .L800B3B44
 /* 0B44E0 800B38E0 8FAB0028 */   lw    $t3, 0x28($sp)
@@ -262,7 +262,7 @@ glabel func_800B3554
 /* 0B4514 800B3914 00106600 */  sll   $t4, $s0, 0x18
 /* 0B4518 800B3918 000C8603 */  sra   $s0, $t4, 0x18
 .L800B391C:
-/* 0B451C 800B391C 0C02CD3A */  jal   open_css_grid_spot
+/* 0B451C 800B391C 0C02CD3A */  jal   is_character_spot_free
 /* 0B4520 800B3920 02002025 */   move  $a0, $s0
 /* 0B4524 800B3924 10400008 */  beqz  $v0, .L800B3948
 /* 0B4528 800B3928 24010005 */   li    $at, 5
@@ -297,7 +297,7 @@ glabel func_800B3554
 /* 0B4594 800B3994 0010CE00 */  sll   $t9, $s0, 0x18
 /* 0B4598 800B3998 00198603 */  sra   $s0, $t9, 0x18
 .L800B399C:
-/* 0B459C 800B399C 0C02CD3A */  jal   open_css_grid_spot
+/* 0B459C 800B399C 0C02CD3A */  jal   is_character_spot_free
 /* 0B45A0 800B39A0 02002025 */   move  $a0, $s0
 /* 0B45A4 800B39A4 10400008 */  beqz  $v0, .L800B39C8
 /* 0B45A8 800B39A8 24010004 */   li    $at, 4
@@ -338,7 +338,7 @@ glabel func_800B3554
 /* 0B4628 800B3A28 00107E00 */  sll   $t7, $s0, 0x18
 /* 0B462C 800B3A2C 000F8603 */  sra   $s0, $t7, 0x18
 .L800B3A30:
-/* 0B4630 800B3A30 0C02CD3A */  jal   open_css_grid_spot
+/* 0B4630 800B3A30 0C02CD3A */  jal   is_character_spot_free
 /* 0B4634 800B3A34 02002025 */   move  $a0, $s0
 /* 0B4638 800B3A38 10400005 */  beqz  $v0, .L800B3A50
 /* 0B463C 800B3A3C 8FB90028 */   lw    $t9, 0x28($sp)

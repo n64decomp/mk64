@@ -227,7 +227,7 @@ void func_800B0350(void) {
 
 
 // D_8018EDEC is position on options screen?
-#ifdef NON_MATCHING
+#ifndef NON_MATCHING
 // issue is regalloc starting at the 0x32 0x33 case
 enum MenuOptionsCursorPositions {
     MENU_OPTIONS_CSRPOS_SOUNDMODE = 0x16
@@ -490,9 +490,8 @@ void func_800B053C(struct Controller *controller, u16 arg1) {
         case 0x32:
         case 0x33:
         {
-            //if (sp30[sp38->unk20].courseIndex != D_8018EE10[D_8018EDEC - 0x32].courseIndex || D_8018EE10[D_8018EDEC - 0x32].ghostDataSaved == 0) {
-            //if (sp30[sp38->unk20].courseIndex != (D_8018EE10 + (D_8018EDEC - 0x32))->courseIndex || (D_8018EE10 + (D_8018EDEC - 0x32))->ghostDataSaved == 0) {
-            if (sp30[sp38->unk20].courseIndex != D_8018EE10[D_8018EDEC - 0x32].courseIndex || D_8018EE10[D_8018EDEC - 0x32].ghostDataSaved == 0) {
+            // bit of a fake match, but if it works it works?
+            if ((sp30[sp38->unk20].courseIndex != ((0, (D_8018EE10 + (D_8018EDEC - 0x32))->courseIndex))) || ((D_8018EE10 + (D_8018EDEC - 0x32))->ghostDataSaved == 0)) {
                 if ((btnAndStick & CONT_DOWN) && (D_8018EDEC < 0x33)) {
                     D_8018EDEC += 1;
                     play_sound2(0x49008000);
@@ -517,7 +516,7 @@ void func_800B053C(struct Controller *controller, u16 arg1) {
             } else if (btnAndStick & CONT_A) {
                 // L800B0FCC
                 sp38->unk1C = D_8018EDEC - 0x32;
-                if (D_8018EE10[(sp38->unk1C) << 7].ghostDataSaved) {
+                if (D_8018EE10[(sp38->unk1C)].ghostDataSaved) {
                     D_8018EDEC = 0x38;
                 } else {
                     D_8018EDEC = 0x3A;
@@ -617,7 +616,7 @@ void func_800B053C(struct Controller *controller, u16 arg1) {
             }
             // L800B12DC
             D_8018EDEC = 0x3C;
-            D_8018EE10[sp38->unk1C << 7].courseIndex = sp30[sp38->unk20].courseIndex;
+            D_8018EE10[sp38->unk1C].courseIndex = (sp30 + sp38->unk20)->courseIndex;
             func_800B6088(sp38->unk1C);
             break;
         }
@@ -1405,6 +1404,7 @@ void func_800B29D8(struct Controller *controller, u16 arg1) {
         case 5:
         case 8:
         {
+            if (1);
             if ((arg1 == 0) && (++gMenuTimingCounter == 100 || gMenuTimingCounter % 300 == 0)) {
                 // L800B2FAC
                 if (gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]] == 0 || gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]] == 2) {
@@ -1518,7 +1518,7 @@ GLOBAL_ASM("asm/non_matchings/menus/func_800B29D8.s")
 #endif
 
 // check if there is no currently selected and/or hovered character at grid position `gridId`
-s32 open_css_grid_spot(s32 gridId) {
+s32 is_character_spot_free(s32 gridId) {
     s32 i;
     for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
         if (gridId == gCharacterGridSelections[i]) {
@@ -1589,7 +1589,7 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
                 if ((btnAndStick & CONT_RIGHT) && (btnAndStick & CONT_DOWN)) {
                     if (gCharacterGridSelections[arg1] == 1 || gCharacterGridSelections[arg1] == 2 || gCharacterGridSelections[arg1] == 3) {
                         // L800B37B0
-                        if (open_css_grid_spot(gCharacterGridSelections[arg1] + 5)) {
+                        if (is_character_spot_free(gCharacterGridSelections[arg1] + 5)) {
                             gCharacterGridSelections[arg1] += 5;
                             play_sound2(0x49008000);
                         }
@@ -1599,7 +1599,7 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
                 // L800B37E4
                 if ((btnAndStick & CONT_LEFT) && (btnAndStick & CONT_DOWN)) {
                     if (gCharacterGridSelections[arg1] == 2 || gCharacterGridSelections[arg1] == 3 || gCharacterGridSelections[arg1] == 4) {
-                        if (open_css_grid_spot(gCharacterGridSelections[arg1] + 3)) {
+                        if (is_character_spot_free(gCharacterGridSelections[arg1] + 3)) {
                             gCharacterGridSelections[arg1] += 3;
                             play_sound2(0x49008000);
                         }
@@ -1609,7 +1609,7 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
                 // L800B3844
                 if ((btnAndStick & CONT_RIGHT) && (btnAndStick & CONT_UP)) {
                     if (gCharacterGridSelections[arg1] == 5 || gCharacterGridSelections[arg1] == 6 || gCharacterGridSelections[arg1] == 7) {
-                        if (open_css_grid_spot(gCharacterGridSelections[arg1] - 3)) {
+                        if (is_character_spot_free(gCharacterGridSelections[arg1] - 3)) {
                             gCharacterGridSelections[arg1] -= 3;
                             play_sound2(0x49008000);
                         }
@@ -1619,7 +1619,7 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
                 // L800B38A0
                 if ((btnAndStick & CONT_LEFT) && (btnAndStick & CONT_UP)) {
                     if (gCharacterGridSelections[arg1] == 6 || gCharacterGridSelections[arg1] == 7 || gCharacterGridSelections[arg1] == 8) {
-                        if (open_css_grid_spot(gCharacterGridSelections[arg1] - 5)) {
+                        if (is_character_spot_free(gCharacterGridSelections[arg1] - 5)) {
                             gCharacterGridSelections[arg1] -= 5;
                             play_sound2(0x49008000);
                         }
@@ -1631,7 +1631,7 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
                     if (gCharacterGridSelections[arg1] != 4 && gCharacterGridSelections[arg1] != 8) {
                         do {
                             // L800B391C
-                            if (open_css_grid_spot(gCharacterGridSelections[arg1] + 1)) {
+                            if (is_character_spot_free(gCharacterGridSelections[arg1] + 1)) {
                                 gCharacterGridSelections[arg1] += 1;
                                 play_sound2(0x49008000);
                                 break;
@@ -1646,7 +1646,7 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
                 if (btnAndStick & CONT_LEFT) {
                     if (gCharacterGridSelections[arg1] != 1 && gCharacterGridSelections[arg1] != 5) {
                         do {
-                            if (open_css_grid_spot(gCharacterGridSelections[arg1] - 1)) {
+                            if (is_character_spot_free(gCharacterGridSelections[arg1] - 1)) {
                                 gCharacterGridSelections[arg1] -= 1;
                                 play_sound2(0x49008000);
                                 break;
@@ -1664,7 +1664,7 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
                     gCharacterGridSelections[arg1] += 4;
                 }
                 // L800B3A30
-                if (open_css_grid_spot(gCharacterGridSelections[arg1])) {
+                if (is_character_spot_free(gCharacterGridSelections[arg1])) {
                     play_sound2(0x49008000);
                 }
             }
