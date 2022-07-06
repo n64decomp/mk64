@@ -5,11 +5,10 @@
 
 #include "main.h"
 #include "types.h"
+#include "camera.h"
 #include "code_80281780.h"
 
 extern Gfx *gDisplayListHead;
-
-extern Camera cameras[];//, *camera1, *camera2, *camera3, *camera4;
 
 extern f32 D_80150148, D_8015014C, D_80150150;
 extern f32 D_80150130[4];
@@ -54,7 +53,7 @@ void func_80280038(void) {
     guPerspective(&gGfxPool->mtxPool[1], &sp44[37], D_80150130[0], D_80150148, D_80150150, D_8015014C, 1.0f);
     gDPHalf1(gDisplayListHead++, sp44[37]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
+    guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     gCurrentCourseId = gCreditsCourseId;
     mtxf_identity(&sp44);
@@ -99,12 +98,12 @@ void func_802802AC(void) {
 
         D_802874FC = 0;
         func_80283648(camera);
-        temp_f12 = camera->unk - camera->pos[0];
-        temp = camera->unk1 - camera->pos[1];
-        temp_f14 = camera->unk2 - camera->pos[2];
-        camera->rotX[1] = atan2s(temp_f12, temp_f14);
-        camera->rotX[0] = atan2s(sqrtf((temp_f12 * temp_f12) + (temp_f14 * temp_f14)), temp);
-        camera->rotX[2] = 0;
+        temp_f12 = camera->lookAt[0] - camera->pos[0];
+        temp = camera->lookAt[1] - camera->pos[1];
+        temp_f14 = camera->lookAt[2] - camera->pos[2];
+        camera->rot[1] = atan2s(temp_f12, temp_f14);
+        camera->rot[0] = atan2s(sqrtf((temp_f12 * temp_f12) + (temp_f14 * temp_f14)), temp);
+        camera->rot[2] = 0;
         if (D_802874A0 != 0) {
             D_800DC5E4++;
         } else {
@@ -124,7 +123,7 @@ void func_80280420(void) {
     D_800DC518 = 1;
     func_802A4D18();
     func_802A74BC();
-    camera->unk30 = 60.0f;
+    camera->unk_B4 = 60.0f;
     D_80150130[0] = 60.0f;
     D_800DC5EC->screenWidth = 320;
     D_800DC5EC->screenHeight = 240;
@@ -152,12 +151,12 @@ void func_80280420(void) {
     camera->pos[0] = 1400.0f;
     camera->pos[1] = 300.0f;
     camera->pos[2] = 1400.0f;
-    camera->unk = 0.0f;
-    camera->unk1 = 0.0f;
-    camera->unk2 = 0.0f;
-    camera->angleX = 0.0f;
-    camera->angleY = 1.0f;
-    camera->angleZ = 0.0f;
+    camera->lookAt[0] = 0.0f;
+    camera->lookAt[1] = 0.0f;
+    camera->lookAt[2] = 0.0f;
+    camera->up[0] = 0.0f;
+    camera->up[1] = 1.0f;
+    camera->up[2] = 0.0f;
     func_80283430();
     func_80003040();
     func_8006E9C0();

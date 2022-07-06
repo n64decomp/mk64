@@ -97,58 +97,20 @@ typedef struct {
 // 80160ADC Banana's remaining
 
 typedef struct {
- // B4 long
-    Vec3f pos;
-    //f32 posY;
-    //f32 posZ;
-    f32 unk; // lookat? faceangle?
-    f32 unk1;
-    f32 unk2;
-    f32 angleX;
-    f32 angleY;
-    f32 angleZ;
-    Vec3s rotX;
-    s16 rotZ;
-    s32 unk3; // zero
-    s32 unk4; // 0x4119999A
-    s32 unk5; // 0xC20C bit flag?
-    s32 unk6; // 0
-    s32 unk7; // 0
-    s32 unk8; // 0x41F
-    s32 unk9; // 0
-    s32 unk10; // 0
-    s32 unk11; // 0
-    s32 unk12; // 0
-    u16 unk13; // 0x103F7
-    u16 unk13_and_a_half;
-    u16 unk14; // 0x05BC00## Surface camera is over?
-    u16 unk14_half;
-    f32 collisionX;
-    f32 collisionY;
-    f32 collisionZ;
-    f32 unk15;
-    f32 unk16;
-    f32 unk17;
-    f32 unk18;
-    f32 unk19;
-    f32 unk20;
-    f32 unkAngleX;
-    f32 unkAngleY;
-    f32 unkAngleZ;
-    s32 unk21; // zero
-    f32 collision;
-    f32 unk22; // zero
-    s16 unk23; // confirmed s16
-    s16 unk24; // zero
-    s16 unk24_and_a_half;
-    s32 unk25; // zero
-    s32 unk26; // zero
-    // need another s16 here?
-    s32 unk27; // 8
-    s16 unk28; // zero
-    f32 unk29; // 422
-    f32 unk30;
-} Camera;
+    /* 0x00 */ u16 unk30;
+    /* 0x02 */ u16 unk32;
+    /* 0x04 */ u16 unk34;
+    /* 0x06 */ u16 unk36;
+    /* 0x08 */ u16 unk38;
+    /* 0x0A */ u16 unk3A;
+    /* 0x0C */ f32 unk3C;
+    /* 0x10 */ f32 unk40;
+    /* 0x14 */ f32 unk44;
+    /* 0x18 */ Vec3f unk48;
+    /* 0x24 */ Vec3f unk54;
+    /* 0x30 */ Vec3f unk60;
+    /* 0x3C */ f32 unk6C;
+} UnkActorInner;
 
 typedef struct {
     /* 0x00 */ Vec3f unk_000;
@@ -247,24 +209,6 @@ typedef struct {
 #define FRONT_RIGHT_TYRE 1
 #define BACK_LEFT_TYRE   2
 #define BACK_RIGHT_TYRE  3
-
-
-typedef struct {
-    /* 0x00 */ u16 unk30;
-    /* 0x02 */ u16 unk32;
-    /* 0x04 */ u16 unk34;
-    /* 0x06 */ u16 unk36;
-    /* 0x08 */ u16 unk38;
-    /* 0x0A */ u16 unk3A;
-    /* 0x0C */ f32 unk3C;
-    /* 0x10 */ f32 unk40;
-    /* 0x14 */ f32 unk44;
-    /* 0x18 */ Vec3f unk48;
-    /* 0x24 */ Vec3f unk54;
-    /* 0x30 */ Vec3f unk60;
-    /* 0x3C */ f32 unk6C;
-} UnkActorInner;
-
 
 typedef struct {
     /* 0x0000 */ u16 unk_000;

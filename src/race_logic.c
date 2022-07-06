@@ -5,17 +5,13 @@
 #include <config.h>
 #include <defines.h>
 #include "waypoints.h"
+#include "camera.h"
 
 extern Player *gPlayerTwo;
 extern Player *gPlayerThree;
 extern Player *gPlayerFour;
 extern Player *gPlayerOneCopy;
 extern Player *gPlayerTwoCopy;
-
-extern struct Camera *camera1;
-extern struct Camera *camera2;
-extern struct Camera *camera3;
-extern struct Camera *camera4;
 
 extern struct Controller gControllers[];
 extern struct Controller *gControllerOne;

@@ -19,6 +19,7 @@ void func_80021DA8();
 void func_80021F84(Mat4, f32);
 void func_80021FF8(Mtx*, Mat4);
 void func_80022180(Mtx*, Mat4);
+s32  func_800224F0(s16*, s16, s16);
 void move_s32_towards(s32*, s32, f32);
 void move_f32_towards(f32*, f32, f32);
 void move_s16_towards(s16*, s16, f32);

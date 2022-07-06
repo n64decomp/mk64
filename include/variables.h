@@ -72,11 +72,6 @@ extern char *gSoundModeNames[NUM_SOUND_MODES]; // D_800E7710
 extern f32   gTimePlayerLastTouchedFinishLine[8]; // D_8015F898
 extern s8    gTimeTrialDataCourseIndex;           // D_8018EDF7
 
-extern Camera *camera1;
-extern Camera *camera2;
-extern Camera *camera3;
-extern Camera *camera4;
-
 extern Player gPlayers[8];
 extern Player* gPlayerOne;
 extern Player* gPlayerTwo;

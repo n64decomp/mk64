@@ -3,6 +3,7 @@
 
 #include <ultra64.h>
 #include <common_structs.h>
+#include "camera.h"
 
 typedef f32 Mat4[4][4];
 typedef f32 Mat3[3][3];

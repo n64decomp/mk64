@@ -49,6 +49,7 @@ s16 func_802B7D28(f32);
 u16 random_u16();
 u16 random_int(u16);
 s16 func_802B7F34(f32, f32, f32, f32);
+void func_802B7F7C(Vec3f, Vec3f, Vec3s);
 f32 sins(u16);
 f32 coss(u16);
 

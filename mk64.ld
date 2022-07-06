@@ -327,7 +327,6 @@ SECTIONS
       BUILD_DIR/src/actors.o(.data);
       BUILD_DIR/src/skybox_and_splitscreen.o(.data);
       BUILD_DIR/src/memory.o(.data);
-      BUILD_DIR/data/data_121DA0_1.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);
       BUILD_DIR/src/actors_extended.o(.data);
       BUILD_DIR/data/data_121DA0_2.o(.data);
@@ -374,6 +373,8 @@ SECTIONS
       BUILD_DIR/src/dl_unk_80284EE0.inc.o(.data);
       BUILD_DIR/src/credits_01.inc.o(.data);
       BUILD_DIR/data/data_credits_128480_1.o(.data);
+      BUILD_DIR/src/camera_junk.o(.rodata);
+      BUILD_DIR/data/data_credits_128480_2.o(.data);
    }
    END_SEG(code_80280000)
 

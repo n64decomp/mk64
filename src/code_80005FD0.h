@@ -41,7 +41,8 @@ f32  func_80010FA0(f32, f32, f32, s32);
 s32  process_path_data(struct TrackWayPoint*, struct TrackWayPoint*);
 f32  func_80013C74(s16, s16);
 f32  func_800145A8(s16, f32, s16);
-void func_8001968C(void);
+void func_80014D30(s32, s32);
+void func_8001968C();
 
 /* This is where I'd put my static data, if I had any */
 // Might belong in menus.h?
