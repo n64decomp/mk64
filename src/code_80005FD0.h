@@ -4,7 +4,6 @@
 #include "common_structs.h"
 
 /* Function Prototypes */
-
 s16  func_80005FD0(Vec3f, Vec3f);
 s32  func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
 void func_80006114(Vec3f, Vec3f, s16);
@@ -30,6 +29,8 @@ s16  func_8000CD24(f32, f32, f32, s16, Player*, s32, s32);
 s16  func_8000D24C(f32, f32, f32, s32*);
 s16  func_8000D2B4(f32, f32, f32, s16, s32);
 s16  func_8000D33C(f32, f32, f32, s16, s32);
+void func_8000F0E0(void);
+void func_8000F124(void);
 void func_80010218(s32);
 f32  func_80010480(s32, u16);
 void func_800107C4(s32);
@@ -40,7 +41,7 @@ f32  func_80010FA0(f32, f32, f32, s32);
 s32  process_path_data(struct TrackWayPoint*, struct TrackWayPoint*);
 f32  func_80013C74(s16, s16);
 f32  func_800145A8(s16, f32, s16);
-void func_8001968C();
+void func_8001968C(void);
 
 /* This is where I'd put my static data, if I had any */
 // Might belong in menus.h?

@@ -2,41 +2,58 @@
 
 import argparse
 import os
+import shutil
 import sys
 import subprocess
 from pathlib import Path
 
+# assuming that this util is in tools/
 script_dir = os.path.dirname(os.path.realpath(__file__))
-root_dir = os.path.abspath(os.path.join(script_dir, ""))
+root_dir = os.path.abspath(os.path.join(script_dir, ".."))
 print(root_dir)
-src_dir = root_dir + "src/"
 
 # Project-specific
 CPP_FLAGS = [
-    "-Iinclude",
-    "-Isrc",
+    "-undef",
+    "-D__sgi",
+    "-DVERSION_US",
+    "-DTARGET_N64",
     "-D_LANGUAGE_C",
     "-DF3DEX_GBI",
     "-D_MIPS_SZLONG=32",
     "-DSCRIPT(...)={}"
     "-D__attribute__(...)=",
     "-D__asm__(...)=",
+    "-DGLOBAL_ASM(...)=",
     "-ffreestanding",
+    "-nostdinc",
+    "-Iinclude/libc",
+    "-Iinclude",
+    "-Ibuild",
+    "-Ibuild/include",
+    "-Isrc",
+    "-I.",
 ]
 
 def import_c_file(in_file) -> str:
     in_file = os.path.relpath(in_file, root_dir)
-    cpp_command = ["gcc", "-E", "-P", "-dM", *CPP_FLAGS, in_file]
-    cpp_command2 = ["gcc", "-E", "-P", *CPP_FLAGS, in_file]
+    # Prefer clang as C preprocessor if installed on the system
+    if shutil.which('clang') is not None:
+        cpp = ['clang', '-E', '-P', '-x', 'c', '-Wno-trigraphs']
+    else:
+        cpp = ['gcc', '-E', '-P']
+    
+    cpp_getdefines = [*cpp, "-dM", *CPP_FLAGS, in_file]
+    cpp_procfile = [*cpp, *CPP_FLAGS, in_file]
 
     out_text = ""
     try:
-        out_text += subprocess.check_output(cpp_command, cwd=root_dir, encoding="utf-8")
-        out_text += subprocess.check_output(cpp_command2, cwd=root_dir, encoding="utf-8")
+        out_text += subprocess.check_output(cpp_getdefines, cwd=root_dir, encoding="utf-8")
+        out_text += subprocess.check_output(cpp_procfile, cwd=root_dir, encoding="utf-8")
     except subprocess.CalledProcessError:
         print(
-            "Failed to preprocess input file, when running command:\n"
-            + cpp_command,
+            "Failed to preprocess input file, when running command:\n",
+            cpp_getdefines,
             file=sys.stderr,
             )
         sys.exit(1)

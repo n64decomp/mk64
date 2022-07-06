@@ -52,7 +52,7 @@ extern s32   gMenuSelection;     // D_800E86A0
 extern s32   gModeSelection;     // D_800DC53C
 
 // Indicates the ID of the next title screen demo that will be played
-extern u8    gNextDemoId;           // D_800E86BC
+extern s8    gNextDemoId;           // D_800E86BC
 
 // Maps course IDs (as defined in the COURSES enum) to an index in a given cup's track order
 extern u8    gPerCupIndexByCourseId[NUM_COURSES]; // D_800EFD50

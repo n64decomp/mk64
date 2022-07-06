@@ -215,7 +215,7 @@ void func_802A3730(struct UnkStruct_800DC5EC*);
 
 extern u16 gPlayerBalloonStatus[8][3]; // D_8018D5F0
 extern s16 gPlayerBalloonCount[];      // D_8018D8C0
-extern u32 gScreenModeSelection;       // D_800DC530
+extern s32 gScreenModeSelection;       // D_800DC530
 
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
 extern struct UnkStruct_800DC5EC *D_800DC5F0;

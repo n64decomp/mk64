@@ -61,9 +61,9 @@ glabel func_800B65F4
 /* 0B72D0 800B66D0 000C69C0 */  sll   $t5, $t4, 7
 /* 0B72D4 800B66D4 AC2A2DFC */  sw    $t2, %lo(D_80162DFC)($at)
 /* 0B72D8 800B66D8 826B0005 */  lb    $t3, 5($s3)
-/* 0B72DC 800B66DC 3C018019 */  lui   $at, %hi(D_8018EE15) # 0x8019
+/* 0B72DC 800B66DC 3C018019 */  lui   $at, %hi((D_8018EE10 + 5)) # 0x8019
 /* 0B72E0 800B66E0 002D0821 */  addu  $at, $at, $t5
-/* 0B72E4 800B66E4 A02BEE15 */  sb    $t3, %lo(D_8018EE15)($at) # -0x11eb($at)
+/* 0B72E4 800B66E4 A02BEE15 */  sb    $t3, %lo((D_8018EE10 + 5))($at) # -0x11eb($at)
 .L800B66E8:
 /* 0B72E8 800B66E8 8FA20034 */  lw    $v0, 0x34($sp)
 .L800B66EC:

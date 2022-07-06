@@ -333,15 +333,15 @@ glabel func_800A34A8
 /* 0A4578 800A3978 248400E6 */   addiu $a0, $a0, 0xe6
 /* 0A457C 800A397C 3C028019 */  lui   $v0, %hi(D_8018EDF3) # $v0, 0x8019
 /* 0A4580 800A3980 8042EDF3 */  lb    $v0, %lo(D_8018EDF3)($v0)
-/* 0A4584 800A3984 3C09800F */  lui   $t1, %hi(gGameModeRowSelectionForNumPlayers) # 0x800f
-/* 0A4588 800A3988 3C0A800F */  lui   $t2, %hi(gGameModeSubMenuRowSelectionForNumPlayers) # 0x800f
+/* 0A4584 800A3984 3C09800F */  lui   $t1, %hi((D_800E86AC - 1)) # 0x800f
+/* 0A4588 800A3988 3C0A800F */  lui   $t2, %hi((D_800E86B0 - 3)) # 0x800f
 /* 0A458C 800A398C 01224821 */  addu  $t1, $t1, $v0
-/* 0A4590 800A3990 812986AB */  lb    $t1, %lo(gGameModeRowSelectionForNumPlayers)($t1) # -0x7955($t1)
+/* 0A4590 800A3990 812986AB */  lb    $t1, %lo((D_800E86AC - 1))($t1) # -0x7955($t1)
 /* 0A4594 800A3994 0002C880 */  sll   $t9, $v0, 2
 /* 0A4598 800A3998 0322C823 */  subu  $t9, $t9, $v0
 /* 0A459C 800A399C 03295821 */  addu  $t3, $t9, $t1
 /* 0A45A0 800A39A0 014B5021 */  addu  $t2, $t2, $t3
-/* 0A45A4 800A39A4 814A86AD */  lb    $t2, %lo(gGameModeSubMenuRowSelectionForNumPlayers)($t2) # -0x7953($t2)
+/* 0A45A4 800A39A4 814A86AD */  lb    $t2, %lo((D_800E86B0 - 3))($t2) # -0x7953($t2)
 /* 0A45A8 800A39A8 8E68000C */  lw    $t0, 0xc($s3)
 /* 0A45AC 800A39AC 3C01800F */  lui   $at, %hi(D_800F1CC0) # $at, 0x800f
 /* 0A45B0 800A39B0 C4201CC0 */  lwc1  $f0, %lo(D_800F1CC0)($at)

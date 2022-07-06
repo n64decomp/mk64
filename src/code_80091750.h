@@ -137,10 +137,12 @@ Gfx *func_8009BEF0(Gfx*, s32, f32, f32, s32, f32,f32);
 Gfx *func_8009C434(Gfx*, struct_8018DEE0_entry*, s32, s32, s32);
 Gfx *func_8009C708(Gfx*, struct_8018DEE0_entry *, s32, s32, s32, s32);
 void func_8009C918();
+void func_8009E0F0(s32);
 void func_8009E1C0();
 void func_8009E1E4();
-void func_8009E208();
-void func_8009E258();
+void func_8009E208(void);
+void func_8009E258(void);
+void func_8009E280(void);
 void func_8009E5BC();
 void func_8009E620();
 void add_8018D9E0_entry(s32, s32, s32, s8);
@@ -246,7 +248,7 @@ extern s32 gGlyphTextureLUT[]; // D_800E7E84
 extern MkTexture *D_800E82B4[5];
 extern f32 D_800E8530;
 extern f32 D_800E8534;
-extern s8  D_800E86D0[20];
+extern s8  D_800E86D0[];
 extern f32 D_800F1CC8;
 extern f32 D_800F1F04;
 extern f32 D_800F1F08;
@@ -286,5 +288,8 @@ extern s8  D_802874F5;
 
 extern u8 _textures_0aSegmentRomStart[];
 extern u8 _textures_0bSegmentRomStart[];
+
+extern s32 D_8018E7A8; // maybe?
+extern s8 D_8018E7B0;  // maybe?
 
 #endif

@@ -59,6 +59,7 @@ void thread4_audio(s32);
 
 extern struct GfxPool *gGfxPool;
 extern Gfx *gDisplayListHead;
+extern struct Controller gControllers[8];
 
 extern OSIoMesg gDmaIoMesg;
 extern OSMesg gMainReceivedMesg;
@@ -68,6 +69,7 @@ extern s32 gActiveScreenMode;
 extern f32 D_800DC594;
 extern s32 D_800DC600;
 extern s32 D_8015F8B8, D_8015F8BC, D_8015F8C0, D_8015F8C4, D_8015F8C8, D_8015F8CC;
+extern s32 gScreenModeSelection;
 
 extern s16 sController1Unplugged;
 

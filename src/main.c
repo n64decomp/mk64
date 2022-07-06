@@ -6,6 +6,7 @@
 #include "profiler.h"
 #include "main.h"
 #include "memory.h"
+#include "menus.h"
 #include "segments.h"
 #include "segment_symbols.h"
 #include "common_structs.h"

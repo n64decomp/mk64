@@ -1,28 +1,107 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
-#include "global.h"
+#include <global.h>
+#include <common_structs.h>
 
 #include "menus.h"
 
+#include "actors.h"
 #include "audio/external.h"
+#include "code_80005FD0.h"
 #include "code_80091750.h"
-#include <common_structs.h>
+#include "code_800AF9B0.h"
+#include "code_800B45E0.h"
+#include "main.h"
+#include "staff_ghosts.h"
+
+/** Externs to be put into headers **/
+extern s16 D_8015F892; // bss unknown
+extern u32 D_800DC5AC; // data? from this file or another (main.c?)?
+extern void func_800C3448(s32);
+extern void rmonPrintf(const char *, ...); // not in a libultra header?
+
+/** BSS **/
+s32 D_8018EDC0;
+f32 D_8018EDC4;
+f32 D_8018EDC8;
+f32 D_8018EDCC;
+f32 D_8018EDD0;
+f32 D_8018EDD4;
+f32 D_8018EDD8;
+f32 D_8018EDDC;
+s32 D_8018EDE0;
+s8 gCharacterGridSelections[4]; // map from player id to current grid position
+s8 D_8018EDE8[4]; // bool8; map player id to isCharSelected on CSS
+s8 D_8018EDEC;
+s8 gMainMenuSelectionDepth;
+s8 D_8018EDEE; // grid screen state?
+s8 gDebugMenuSelection;
+s8 gControllerPakMenuSelection;
+s8 D_8018EDF1;
+u8 gSoundMode;
+s8 D_8018EDF3; // main menu row id? but it is also the number of players define
+s8 D_8018EDF4;
+s8 D_8018EDF5;
+s8 D_8018EDF6;
+s8 gTimeTrialDataCourseIndex;
+s8 gCourseRecordsMenuSelection;
+s8 D_8018EDF9;
+s8 gDebugGotoScene;
+s8 D_8018EDFB;
+s8 D_8018EDFC;
+s32 gMenuTimingCounter;
+s32 D_8018EE04;
+s8 D_8018EE08;
+s8 gCupSelection;
+s8 D_8018EE0A;
+s8 gCupCourseSelection;
+s8 D_8018EE0C;
+struct_8018EE10_entry D_8018EE10[2];
+
+/** Data **/
+s32 gMenuSelection = LOGO_INTRO_MENU;
+s32 D_800E86A4 = 0;
+s8 gCharacterSelections[4] = { MARIO, LUIGI, YOSHI, TOAD };
 
 
-/* const/rodata data */
+// gGameModeRowSelectionForNumPlayers is (D_800E86AC - 1)
+// gGameModeSubMenuRowSelectionForNumPlayers (D_800E86AC + 1)
+
+// the current row selected in column i on main menu
+s8 D_800E86AC[4] = { 0, 0, 0, 0 };
+// For Grand Prix and Versus, this will be the CC mode selected. For Time Trials, it will
+// be whether 'Begin' or 'Data' is selected. Not used for Battle.
+// indexed as [column][row]
+s8 D_800E86B0[4][3] = {
+    {0, 0, 0},
+    {0, 0, 0},
+    {0, 0, 0},
+    {0, 0, 0}
+};
+
+s8 gNextDemoId = 0;
+s8 gControllerPakSelectedTableRow = 0;
+s8 D_800E86C4[12] = {0, 0, 1, 2, 3, 4, 5, 6, 0, 0, 0, 0};
+s8 D_800E86D0[16] = {0}; // this doesn't make a lot of sense...
+s8 unref_800E86E0[4] = {0, 0, 0, 1};
+
+u32 sVIGammaOffDitherOn = OS_VI_GAMMA_OFF | OS_VI_DITHER_FILTER_ON;
+
+/*** Const/rodata Data ***/
 // used to set gScreenModeSelection; might be smaller; could be function static data
 const s8 D_800F2B50[] = {0, 1, 2, 3, 3, 0, 0, 0};
 
 // set to D_8018EDF3, then that sets gPlayerCountSelection1
 const s8 D_800F2B58[] = {1, 2, 2, 3, 4, 0, 0, 0};
-//const s8 D_800F2B5F = 0; // probably part of above array; terminator?
 
-// probably combined...
-//const s8 D_800F2B60 = 1;
-//const s8 D_800F2B61[] = {2, 1, 1, 2, 1, 0, 2, 2, 0, 2, 0, 0};
-//const s8 D_800F2B6D[] = {2, 0, 0};
-const s8 D_800F2B60[] = {1, 2, 1, 1, 2, 1, 0, 2, 2, 0, 2, 0, 0, 2, 0, 0};
+const s8 D_800F2B60[5][3] = {
+    {1, 2, 1},
+    {1, 2, 1},
+    {0, 2, 2},
+    {0, 2, 0}, 
+    {0, 2, 0}
+};
 
 // is this another union GameModePack? Figure out when decomping.
 const s32 gGameModeFromNumPlayersAndRowSelection[5][3] = {
@@ -33,7 +112,17 @@ const s32 gGameModeFromNumPlayersAndRowSelection[5][3] = {
     { 0x00000002, 0x00000003, 0x00000000 },
 };
 
-const s8 D_800F2BAC[] = { 0x00, 0x01, 0x06, 0x03, 0x02, 0x04, 0x05, 0x07 };
+// map from character grid position id to character id
+const s8 D_800F2BAC[] = { 
+    MARIO,
+    LUIGI,
+    PEACH,
+    TOAD,
+    YOSHI,
+    DK,
+    WARIO,
+    BOWSER, 
+};
 
 const s16 gCupCourseOrder[5][4] = {
     // mushroom cup
@@ -48,36 +137,55 @@ const s16 gCupCourseOrder[5][4] = {
     { COURSE_BIG_DONUT, COURSE_BLOCK_FORT, COURSE_DOUBLE_DECK, COURSE_SKYSCRAPER },
 };
 
-const s8 D_800F2BDC[] = {1, 0, 0, 0, 0, 1, 3, 4};
-
-// terrible for endianness... Best guess as to what this is for..
-union GameModePack {
-    s8  modes[4];
-    s32 word;
-};
+const s8 D_800F2BDC[8] = {1, 0, 0, 0, 0, 1, 3, 4};
 
 // needs to be a union (or array...?) to go into rodata as a const
+// terrible for endianness... Best guess as to what this is for..
+union GameModePack {
+    u8  modes[4];
+    s32 word;
+};
 const union GameModePack D_800F2BE4 = { {0, 1, 2, 3} };
 
-// new file start
-#if NEEDS_RODATA
+/** forward decs **/
+void func_800B053C(struct Controller *, u16);
+void func_800B13B0(struct Controller *, u16);
+void func_800B15AC(struct Controller *, u16);
+void func_800B1C40(struct Controller *, u16);
+void func_800B1C90(struct Controller *, u16);
+void func_800B20F4(struct Controller *, u16);
+void func_800B29D8(struct Controller *, u16);
+void func_800B3554(struct Controller *, u16);
+void func_800B3B58(struct Controller *, u16);
+void func_800B44AC(void);
+/**************************/
+
 void func_800B0350(void) {
     u16 controllerIdx;
 
     if (D_800E86A4 == 0) {
         for (controllerIdx = 0; controllerIdx < 4; controllerIdx++) {
             if ((func_800B4520() == 0) && (gEnableDebugMode != 0) && ((gControllers[controllerIdx].buttonPressed & 0x1000) != 0)) {
-                if ((gMenuSelection != MAIN_MENU) && (gMenuSelection != PLAYER_SELECT_MENU)) {
-                    if (gMenuSelection == COURSE_SELECT_MENU) {
+                // this is certainly a way to write these...
+                switch (gMenuSelection) {
+                    case COURSE_SELECT_MENU:
                         func_800CA330(0x19);
-                    }
+                        // deliberate (?) fallthru
+                    case MAIN_MENU:
+                    case PLAYER_SELECT_MENU:
+                        play_sound2(0x49008016);
+                        break;
                 }
-                play_sound2(0x49008016);
-                if ((gMenuSelection != CONTROLLER_PAK_MENU) && (gMenuSelection != START_MENU)) {
-                    func_8009E1C0();
+
+                switch (gMenuSelection) {
+                    case CONTROLLER_PAK_MENU:
+                    case START_MENU:
+                        break;
+                    default:
+                        func_8009E1C0();
                 }
             }
-            osViSetSpecialFeatures(D_800E86E4);
+            osViSetSpecialFeatures(sVIGammaOffDitherOn);
             switch (gMenuSelection) {
             case OPTIONS_MENU:
                 func_800B053C(&gControllers[controllerIdx], controllerIdx);
@@ -116,562 +224,429 @@ void func_800B0350(void) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B0350.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 06ada559d7a32fdab49fa2d619cdfa027615bcda
-? func_8009E280();                                  /* extern */
-s32 func_800B5B94();                                /* extern */
-s32 func_800B5DA4();                                /* extern */
-? func_800B6088(s32);                               /* extern */
-s32 func_800B6178(s32);                             /* extern */
-s32 func_800B65F4(s32, s32);                        /* extern */
-? func_800B6708();                                  /* extern */
-? func_800B6798();                                  /* extern */
-s32 osPfsFindFile(? *, u16, s32, ? *, ? *, ? *);    /* extern */
-? play_sound2(?, u16, u16);                         /* extern */
-extern void *D_8018D9C0;
-extern ? D_8018E868;
-extern ? D_8018EB84;
-extern ? D_8018EE10;
-extern ? D_8018EE14;
-extern ? D_8018EE15;
-extern u8 D_8018EE94;
-extern s8 D_8018EE95;
-static s32 D_800DC5AC = 0;
-static u16 D_800E86F0;                              /* unable to generate initializer; const */
-static s32 D_800E86F4 = 0x4E4B544A;                 /* const */
-static ? D_800F2E64;                                /* unable to generate initializer; const */
-static ? D_800F2E74;                                /* unable to generate initializer; const */
 
-void func_800B053C(struct Controller *arg0, u16 arg1) {
-    u16 sp3E;
+// D_8018EDEC is position on options screen?
+#ifndef NON_MATCHING
+// issue is regalloc starting at the 0x32 0x33 case
+enum MenuOptionsCursorPositions {
+    MENU_OPTIONS_CSRPOS_SOUNDMODE = 0x16
+};
+
+// navigation of the options menu
+void func_800B053C(struct Controller *controller, u16 arg1) {
+    u16 btnAndStick; // sp3E
     struct_8018D9E0_entry *sp38;
-    void *sp30;
-    s32 sp2C;
-    s32 sp20;
-    f64 temp_f0;
-    f64 temp_f0_10;
-    f64 temp_f0_2;
-    f64 temp_f0_3;
-    f64 temp_f0_4;
-    f64 temp_f0_5;
-    f64 temp_f0_6;
-    f64 temp_f0_7;
-    f64 temp_f0_8;
-    f64 temp_f0_9;
-    s32 temp_t7;
-    s32 temp_t9_2;
-    s32 temp_v0_10;
-    s32 temp_v0_11;
-    s32 temp_v0_7;
-    s32 temp_v0_8;
-    s8 temp_v0_4;
-    s8 temp_v0_9;
-    s8 temp_v1;
-    s8 temp_v1_2;
-    s8 temp_v1_3;
-    s8 temp_v1_4;
-    s8 temp_v1_5;
-    s8 temp_v1_6;
-    struct_8018D9E0_entry *temp_t0;
-    struct_8018D9E0_entry *temp_v0;
-    u16 temp_t8;
-    u32 temp_t9;
-    u8 temp_v0_2;
-    u8 temp_v0_3;
-    u8 temp_v0_5;
-    u8 temp_v0_6;
-    void *temp_a0;
-    u16 phi_a2;
-    s32 phi_a1;
-    s8 *phi_t1;
-    s32 phi_a1_2;
-    s8 *phi_t1_2;
-    s32 phi_a1_3;
-    s8 *phi_t1_3;
-    u16 phi_a1_4;
-    struct_8018D9E0_entry *phi_t0;
-    s8 *phi_t1_4;
-    s32 phi_a1_5;
-    s8 *phi_t1_5;
-    s32 phi_v0;
-    s32 phi_v0_2;
+    s32 res;
+    struct_8018EE10_entry *sp30;
+    s32 sp2C; // cursorWasMoved or communicateStoredAction
+    UNUSED u32 pad;
 
-    temp_t8 = (arg0->buttonPressed | arg0->stickPressed) & 0xFFFF;
-    phi_a2 = temp_t8;
-    if ((gEnableDebugMode == 0) && ((temp_t8 & 0x1000) != 0)) {
-        phi_a2 = (temp_t8 | 0x8000) & 0xFFFF;
+    btnAndStick = (controller->buttonPressed | controller->stickPressed); 
+
+    if (!gEnableDebugMode && (btnAndStick & CONT_START)) {
+        btnAndStick |= CONT_A;
     }
-    sp3E = phi_a2;
-    if (func_800B4520(phi_a2) == 0) {
-        sp3E = phi_a2;
-        temp_v0 = find_8018D9E0_entry_dupe(0xF0);
-        temp_v1 = D_8018EDEC;
-        temp_t0 = temp_v0;
+
+    if (!func_800B4520()) {
+        sp38 = find_8018D9E0_entry_dupe(0xF0);
         sp30 = D_8018D9C0;
-        phi_t1_4 = &D_8018EDEC;
-        switch (temp_v1) {                          /* switch 1 */
-        case 0x15:                                  /* switch 1 */
-        case 0x16:                                  /* switch 1 */
-        case 0x17:                                  /* switch 1 */
-        case 0x18:                                  /* switch 1 */
-            sp2C = 0;
-            phi_a1 = (s32) phi_a2;
-            if (((phi_a2 & 0x400) != 0) && ((s32) temp_v1 < 0x18)) {
-                D_8018EDEC = temp_v1 + 1;
-                sp20 = (s32) phi_a2;
-                sp38 = temp_t0;
-                play_sound2(0x49008000, phi_a2, phi_a2);
-                temp_f0 = (f64) temp_t0->unk24;
-                phi_a1 = sp20;
-                if (temp_f0 < 4.2) {
-                    temp_t0->unk24 = (f32) (temp_f0 + 4.0);
+        switch (D_8018EDEC) {
+        case 0x15:
+        case 0x16:
+        case 0x17:
+        case 0x18:
+        {   
+            sp2C = FALSE;
+            if ((btnAndStick & CONT_DOWN) && (D_8018EDEC < 0x18)) {
+                D_8018EDEC += 1;
+                play_sound2(0x49008000);
+                if (sp38->unk24 < 4.2) {
+                    sp38->unk24 += 4.0;
                 }
-                temp_t0->unk8 = 1;
-                sp2C = 1;
+                sp38->unk8 = 1;
+                sp2C = TRUE;
             }
-            phi_t1 = &D_8018EDEC;
-            if ((phi_a1 & 0x800) != 0) {
-                temp_v1_2 = D_8018EDEC;
-                if ((s32) temp_v1_2 >= 0x16) {
-                    D_8018EDEC = temp_v1_2 - 1;
-                    sp2C = 1;
-                    sp20 = phi_a1;
-                    sp38 = temp_t0;
-                    play_sound2(0x49008000, (u16) phi_a1);
-                    temp_f0_2 = (f64) temp_t0->unk24;
-                    phi_t1 = &D_8018EDEC;
-                    if (temp_f0_2 < 4.2) {
-                        temp_t0->unk24 = (f32) (temp_f0_2 + 4.0);
-                    }
-                    temp_t0->unk8 = -1;
+            // L800B066C
+            if ((btnAndStick & CONT_UP) && (D_8018EDEC >= 0x16)) {
+                D_8018EDEC -= 1;
+                play_sound2(0x49008000);
+                if (sp38->unk24 < 4.2) {
+                    sp38->unk24 += 4.0;
                 }
+                sp2C = TRUE;
+                sp38->unk8 = -1;
             }
-            if (sp2C != 0) {
-                temp_v0_2 = gSoundMode;
-                if (temp_t0->unk4 != temp_v0_2) {
-                    gSaveDataSoundMode = temp_v0_2;
-                    sp20 = phi_a1;
-                    sp38 = temp_t0;
-                    write_save_data_grand_prix_points_and_sound_mode();
-                    update_save_data_backup();
-                    temp_t0->unk4 = (s32) gSoundMode;
-                    phi_t1 = &D_8018EDEC;
-                }
+            // L800B06FC
+            if (sp2C && gSoundMode != sp38->unk4) {
+                gSaveDataSoundMode = gSoundMode;
+                write_save_data_grand_prix_points_and_sound_mode();
+                update_save_data_backup();
+                sp38->unk4 = gSoundMode;
             }
-            if (((u16) phi_a1 & 0x4000) != 0) {
-                sp38 = temp_t0;
+            // L800B0758
+            if (btnAndStick & CONT_B) {
                 func_8009E280();
                 play_sound2(0x49008002);
-                temp_v0_3 = gSoundMode;
-                if (temp_t0->unk4 != temp_v0_3) {
-                    gSaveDataSoundMode = temp_v0_3;
-                    sp38 = temp_t0;
+                if (gSoundMode != sp38->unk4) {
+                    gSaveDataSoundMode = gSoundMode;
                     write_save_data_grand_prix_points_and_sound_mode();
                     update_save_data_backup();
-                    temp_t0->unk4 = (s32) gSoundMode;
-                    return;
+                    sp38->unk4 = gSoundMode;
                 }
-            } else if (((u16) phi_a1 & 0x8000) != 0) {
-                temp_v0_4 = *phi_t1;
-                switch (temp_v0_4) {                /* switch 3; irregular */
-                case 22:                            /* switch 3 */
-                    temp_v0_5 = gSoundMode;
-                    if ((s32) temp_v0_5 < 3) {
-                        gSoundMode = temp_v0_5 + 1;
+                return;
+            }
+            // L800B07C8
+            if (btnAndStick & CONT_A) {
+                switch (D_8018EDEC) {
+                case 0x16:
+                    if (gSoundMode < 3) {
+                        gSoundMode += 1;
                     } else {
-                        gSoundMode = 0;
+                        gSoundMode = SOUND_STEREO;
                     }
-                    if (gSoundMode == 2) {
-                        gSoundMode = 3;
+                    if (gSoundMode == SOUND_UNUSED) {
+                        gSoundMode = SOUND_MONO;
                     }
                     func_800B44BC();
-                    temp_v0_6 = gSoundMode;
-                    switch (temp_v0_6) {            /* switch 4; irregular */
-                    case 0:                         /* switch 4 */
-                        play_sound2(0x49008024);
-                        return;
-                    case 1:                         /* switch 4 */
-                        play_sound2(0x49008025);
-                        return;
-                    case 3:                         /* switch 4 */
-                        play_sound2(0x49008029);
-                        return;
+                    switch (gSoundMode) {
+                    case SOUND_STEREO:     play_sound2(0x49008024); return;
+                    case SOUND_HEADPHONES: play_sound2(0x49008025); return;
+                    case SOUND_MONO:       play_sound2(0x49008029); return;
                     }
                     break;
-                case 23:                            /* switch 3 */
-                    sp38 = temp_t0;
-                    temp_v0_7 = func_800B5DA4();
-                    switch (temp_v0_7) {            /* switch 5; irregular */
-                    case -1:                        /* switch 5 */
+                case 0x17:
+                    switch(func_800B5DA4()) {
+                    case -1:
                         D_8018EDEC = 0x2B;
                         play_sound2(0x4900FF07);
                         return;
-                    case 0:                         /* switch 5 */
-                        sp38 = temp_t0;
+                    case 0:
                         func_800B6798();
-                        temp_v0_8 = func_800B5B94();
-                        temp_t9 = temp_v0_8 + 1;
-                        sp2C = temp_v0_8;
-                        switch (temp_t9) {          /* switch 2 */
-                        case 0:                     /* switch 2 */
+                        sp2C = func_800B5B94();
+                        switch (sp2C) {
+                        case -1:
                             D_8018EDEC = 0x46;
-                            temp_t0->unk4 = 0;
+                            sp38->unk4 = 0;
                             play_sound2(0x49008001);
                             break;
-                        case 1:                     /* switch 2 */
+                        case 0:
                             func_800B6708();
                             break;
-                        case 2:                     /* switch 2 */
+                        case 1:
                             D_8018EDEC = 0x34;
                             play_sound2(0x4900FF07);
                             break;
-                        case 5:                     /* switch 2 */
+                        case 4:
                             D_8018EDEC = 0x37;
                             play_sound2(0x4900FF07);
                             break;
-                        default:                    /* switch 2 */
+                        case 2:
+                        case 3:
+                        default:
                             D_8018EDEC = 0x35;
                             play_sound2(0x4900FF07);
                             break;
                         }
-                        if ((sp2C == -1) && (sp30->unk4 == 0) && (sp30->unk84 == 0)) {
+                        // L800B09DC
+                        // definitely reading u8 at 0x84 from struct_8018EE10_entry,
+                        // but that is too big for the size of the struct... unsized array off the end?
+                        if (sp2C == -1 && !sp30->ghostDataSaved && !((u8 *)sp30)[0x84]) {
                             D_8018EDEC = 0x2A;
                             play_sound2(0x4900FF07);
                             return;
                         }
+                        // L800B0A20
                         if (sp2C == 0) {
-                            if (sp30->unk4 != 0) {
+                            if (sp30->ghostDataSaved) {
                                 D_8018EDEC = 0x28;
                                 play_sound2(0x49008001);
-                                return;
-                            }
-                            if (sp30->unk84 != 0) {
+                            } else if (((u8 *)sp30)[0x84]) {
                                 D_8018EDEC = 0x29;
                                 play_sound2(0x49008001);
-                                return;
+                            } else {
+                                D_8018EDEC = 0x2A;
+                                play_sound2(0x4900FF07);
                             }
-                            D_8018EDEC = 0x2A;
-                            play_sound2(0x4900FF07);
-                            return;
                         }
-                        break;
-                    case 1:                         /* switch 5 */
+                        // else return?
+                        return;
+                    case 1:
                         D_8018EDEC = 0x2C;
                         play_sound2(0x4900FF07);
                         return;
-                    default:                        /* switch 5 */
-                    case 2:                         /* switch 5 */
+                    case 2:
+                    default:
                         D_8018EDEC = 0x2D;
                         play_sound2(0x4900FF07);
                         return;
                     }
-                    break;
-                case 24:                            /* switch 3 */
-                    *phi_t1 = 0x1E;
-                    play_sound2(0x49008001, (u16) phi_a1);
+                case 0x18: 
+                {
+                    D_8018EDEC = 0x1E;
+                    play_sound2(0x49008001);
                     return;
-                case 21:                            /* switch 3 */
+                }
+                case 0x15:
+                {
                     func_8009E280();
                     play_sound2(0x49008002);
                     return;
                 }
-            }
+                }
+            } 
+            // maybe else return?; 
             break;
-        case 0x1E:                                  /* switch 1 */
-        case 0x1F:                                  /* switch 1 */
-            phi_a1_2 = (s32) phi_a2;
-            if (((phi_a2 & 0x400) != 0) && ((s32) temp_v1 < 0x1F)) {
-                D_8018EDEC = temp_v1 + 1;
-                sp20 = (s32) phi_a2;
-                sp38 = temp_t0;
-                play_sound2(0x49008000, phi_a2, phi_a2);
-                temp_f0_3 = (f64) temp_t0->unk24;
-                phi_a1_2 = sp20;
-                if (temp_f0_3 < 4.2) {
-                    temp_t0->unk24 = (f32) (temp_f0_3 + 4.0);
+        }
+        case 0x1E:
+        case 0x1F:
+        {
+            if ((btnAndStick & CONT_DOWN) && (D_8018EDEC < 0x1F)) {
+                D_8018EDEC += 1;
+                play_sound2(0x49008000);
+                if (sp38->unk24 < 4.2) {
+                    sp38->unk24 += 4.0;
                 }
-                temp_t0->unk8 = 1;
+                sp38->unk8 = 1;
             }
-            phi_t1_2 = &D_8018EDEC;
-            if ((phi_a1_2 & 0x800) != 0) {
-                temp_v1_3 = D_8018EDEC;
-                if ((s32) temp_v1_3 >= 0x1F) {
-                    D_8018EDEC = temp_v1_3 - 1;
-                    sp20 = phi_a1_2;
-                    sp38 = temp_t0;
-                    play_sound2(0x49008000, (u16) phi_a1_2);
-                    temp_f0_4 = (f64) temp_t0->unk24;
-                    phi_t1_2 = &D_8018EDEC;
-                    if (temp_f0_4 < 4.2) {
-                        temp_t0->unk24 = (f32) (temp_f0_4 + 4.0);
-                    }
-                    temp_t0->unk8 = -1;
+            // L800B0B74
+            if ((btnAndStick & CONT_UP) && (D_8018EDEC >= 0x1F)) {
+                D_8018EDEC -= 1;
+                play_sound2(0x49008000);
+                if (sp38->unk24 < 4.2) {
+                    sp38->unk24 += 4.0;
                 }
+                sp38->unk8 = -1;
             }
-            if (((u16) phi_a1_2 & 0x4000) != 0) {
-                *phi_t1_2 = 0x18;
-                play_sound2(0x49008002, (u16) phi_a1_2);
-                return;
-            }
-            if (((u16) phi_a1_2 & 0x8000) != 0) {
-                temp_v0_9 = *phi_t1_2;
-                switch (temp_v0_9) {                /* switch 6; irregular */
-                case 30:                            /* switch 6 */
-                    *phi_t1_2 = 0x18;
-                    play_sound2(0x49008002, (u16) phi_a1_2);
-                    return;
-                case 31:                            /* switch 6 */
-                    *phi_t1_2 = 0x20;
-                    func_800B46D0(0x49000000, (u16) phi_a1_2);
-                    D_800DC5AC = 0;
-                    play_sound2(0x4900801D);
-                    return;
-                }
-            }
-            break;
-        case 0x20:                                  /* switch 1 */
-            if ((phi_a2 & 0xD000) != 0) {
+            // L800B0BF8
+            if (btnAndStick & CONT_B) {
                 D_8018EDEC = 0x18;
                 play_sound2(0x49008002);
                 return;
             }
-            break;
-        case 0x28:                                  /* switch 1 */
-        case 0x29:                                  /* switch 1 */
-            phi_a1_3 = (s32) phi_a2;
-            if (((phi_a2 & 0x400) != 0) && ((s32) temp_v1 < 0x29) && (sp30->unk84 != 0)) {
-                D_8018EDEC = temp_v1 + 1;
-                sp20 = (s32) phi_a2;
-                sp38 = temp_t0;
-                play_sound2(0x49008000, phi_a2, phi_a2);
-                temp_f0_5 = (f64) temp_t0->unk24;
-                phi_a1_3 = sp20;
-                if (temp_f0_5 < 4.2) {
-                    temp_t0->unk24 = (f32) (temp_f0_5 + 4.0);
-                }
-                temp_t0->unk8 = 1;
-            }
-            phi_t1_3 = &D_8018EDEC;
-            if ((phi_a1_3 & 0x800) != 0) {
-                temp_v1_4 = D_8018EDEC;
-                if (((s32) temp_v1_4 >= 0x29) && (sp30->unk4 != 0)) {
-                    D_8018EDEC = temp_v1_4 - 1;
-                    sp20 = phi_a1_3;
-                    sp38 = temp_t0;
-                    play_sound2(0x49008000, (u16) phi_a1_3);
-                    temp_f0_6 = (f64) temp_t0->unk24;
-                    phi_t1_3 = &D_8018EDEC;
-                    if (temp_f0_6 < 4.2) {
-                        temp_t0->unk24 = (f32) (temp_f0_6 + 4.0);
-                    }
-                    temp_t0->unk8 = -1;
+            // L800B0C20
+            if (btnAndStick & CONT_A) {
+                switch (D_8018EDEC) {
+                case 0x1E:
+                    D_8018EDEC = 0x18;
+                    play_sound2(0x49008002);
+                    break;
+                case 0x1F:
+                    D_8018EDEC = 0x20;
+                    func_800B46D0();
+                    D_800DC5AC = 0;
+                    play_sound2(0x4900801D);
+                    break;
                 }
             }
-            if (((u16) phi_a1_3 & 0x4000) != 0) {
-                *phi_t1_3 = 0x17;
-                play_sound2(0x49008002, (u16) phi_a1_3);
-                return;
-            }
-            if (((u16) phi_a1_3 & 0x8000) != 0) {
-                temp_t9_2 = *phi_t1_3 - 0x28;
-                temp_t0->unk20 = temp_t9_2;
-                if (((sp30 + (temp_t9_2 << 7))->unk5 == D_8018EE95) && (D_8018EE94 != 0)) {
-                    *phi_t1_3 = 0x33;
-                } else {
-                    *phi_t1_3 = 0x32;
-                }
-                play_sound2(0x49008001, (u16) phi_a1_3);
-                return;
+            break; // or return?
+        }
+        case 0x20:
+        {
+            if (btnAndStick & (CONT_A | CONT_B | CONT_START)) {
+                D_8018EDEC = 0x18;
+                play_sound2(0x49008002);
             }
             break;
-        case 0x32:                                  /* switch 1 */
-        case 0x33:                                  /* switch 1 */
-            temp_a0 = ((temp_v1 - 0x32) << 7) + &D_8018EE10;
-            phi_a1_4 = phi_a2;
-            if (((sp30 + (temp_v0->unk20 << 7))->unk5 != temp_a0->unk5) || (phi_t0 = temp_t0, (temp_a0->unk4 == 0))) {
-                if (((phi_a2 & 0x400) != 0) && ((s32) temp_v1 < 0x33)) {
-                    D_8018EDEC = temp_v1 + 1;
-                    sp20 = (s32) phi_a2;
-                    sp38 = temp_t0;
-                    play_sound2(0x49008000, phi_a2, phi_a2);
-                    temp_f0_7 = (f64) temp_t0->unk24;
-                    if (temp_f0_7 < 4.2) {
-                        temp_t0->unk24 = (f32) (temp_f0_7 + 4.0);
-                    }
-                    temp_t0->unk8 = 1;
+        }
+        case 0x28:
+        case 0x29:
+        {
+            if ((btnAndStick & CONT_DOWN) && (D_8018EDEC < 0x29) && (sp30[1].ghostDataSaved)) {
+                D_8018EDEC += 1;
+                play_sound2(0x49008000);
+                if (sp38->unk24 < 4.2) {
+                    sp38->unk24 += 4.0;
                 }
-                phi_a1_4 = (u16) (s32) phi_a2;
-                phi_t0 = temp_t0;
-                phi_t1_4 = &D_8018EDEC;
-                if (((s32) phi_a2 & 0x800) != 0) {
-                    temp_v1_5 = D_8018EDEC;
-                    if ((s32) temp_v1_5 >= 0x33) {
-                        D_8018EDEC = temp_v1_5 - 1;
-                        sp20 = (s32) phi_a2;
-                        sp38 = temp_t0;
-                        play_sound2(0x49008000, (u16) (s32) phi_a2);
-                        temp_f0_8 = (f64) temp_t0->unk24;
-                        phi_a1_4 = (u16) (s32) phi_a2;
-                        phi_t0 = temp_t0;
-                        phi_t1_4 = &D_8018EDEC;
-                        if (temp_f0_8 < 4.2) {
-                            temp_t0->unk24 = (f32) (temp_f0_8 + 4.0);
-                        }
-                        temp_t0->unk8 = -1;
-                    }
+                sp38->unk8 = 1;
+            }
+            // L800B0D38
+            if ((btnAndStick & CONT_UP) && (D_8018EDEC >= 0x29) && sp30->ghostDataSaved) {
+                D_8018EDEC -= 1;
+                play_sound2(0x49008000);
+                if (sp38->unk24 < 4.2) {
+                    sp38->unk24 += 4.0;
                 }
+                sp38->unk8 = -1;
             }
-            if ((phi_a1_4 & 0x4000) != 0) {
-                *phi_t1_4 = phi_t0->unk20 + 0x28;
-                play_sound2(0x49008002, phi_a1_4);
-                return;
-            }
-            if ((phi_a1_4 & 0x8000) != 0) {
-                temp_t7 = *phi_t1_4 - 0x32;
-                phi_t0->unk1C = temp_t7;
-                if (*(&D_8018EE14 + (temp_t7 << 7)) != 0) {
-                    *phi_t1_4 = 0x38;
-                } else {
-                    *phi_t1_4 = 0x3A;
-                    phi_t0->unk4 = 0;
-                }
-                play_sound2(0x49008001, phi_a1_4);
-                return;
-            }
-            break;
-        case 0x2A:                                  /* switch 1 */
-        case 0x2B:                                  /* switch 1 */
-        case 0x2C:                                  /* switch 1 */
-        case 0x2D:                                  /* switch 1 */
-        case 0x34:                                  /* switch 1 */
-        case 0x35:                                  /* switch 1 */
-        case 0x37:                                  /* switch 1 */
-        case 0x3C:                                  /* switch 1 */
-        case 0x41:                                  /* switch 1 */
-        case 0x42:                                  /* switch 1 */
-            if ((phi_a2 & 0xD000) != 0) {
+            // L800B0DD0
+            if (btnAndStick & CONT_B) {
                 D_8018EDEC = 0x17;
                 play_sound2(0x49008002);
                 return;
             }
-            break;
-        case 0x38:                                  /* switch 1 */
-        case 0x39:                                  /* switch 1 */
-            phi_a1_5 = (s32) phi_a2;
-            if (((phi_a2 & 0x100) != 0) && ((s32) temp_v1 < 0x39)) {
-                D_8018EDEC = temp_v1 + 1;
-                sp20 = (s32) phi_a2;
-                sp38 = temp_t0;
-                play_sound2(0x49008000, phi_a2, phi_a2);
-                temp_f0_9 = (f64) temp_t0->unk24;
-                phi_a1_5 = sp20;
-                if (temp_f0_9 < 4.2) {
-                    temp_t0->unk24 = (f32) (temp_f0_9 + 4.0);
+            // L800B0DF4
+            if (btnAndStick & CONT_A) {
+                sp38->unk20 = D_8018EDEC - 0x28;
+                if (sp30[sp38->unk20].courseIndex == D_8018EE10[1].courseIndex && D_8018EE10[1].ghostDataSaved) {
+                    D_8018EDEC = 0x33;
+                } else {
+                    D_8018EDEC = 0x32;
                 }
-                temp_t0->unk8 = 1;
+                play_sound2(0x49008001);
             }
-            phi_t1_5 = &D_8018EDEC;
-            if ((phi_a1_5 & 0x200) != 0) {
-                temp_v1_6 = D_8018EDEC;
-                if ((s32) temp_v1_6 >= 0x39) {
-                    D_8018EDEC = temp_v1_6 - 1;
-                    sp20 = phi_a1_5;
-                    sp38 = temp_t0;
-                    play_sound2(0x49008000, (u16) phi_a1_5);
-                    temp_f0_10 = (f64) temp_t0->unk24;
-                    phi_t1_5 = &D_8018EDEC;
-                    if (temp_f0_10 < 4.2) {
-                        temp_t0->unk24 = (f32) (temp_f0_10 + 4.0);
+            break;
+        }
+        case 0x32:
+        case 0x33:
+        {
+            // bit of a fake match, but if it works it works?
+            if ((sp30[sp38->unk20].courseIndex != ((0, (D_8018EE10 + (D_8018EDEC - 0x32))->courseIndex))) || ((D_8018EE10 + (D_8018EDEC - 0x32))->ghostDataSaved == 0)) {
+                if ((btnAndStick & CONT_DOWN) && (D_8018EDEC < 0x33)) {
+                    D_8018EDEC += 1;
+                    play_sound2(0x49008000);
+                    if (sp38->unk24 < 4.2) {
+                        sp38->unk24 += 4.0;
                     }
-                    temp_t0->unk8 = -1;
+                    sp38->unk8 = 1;
                 }
+                if ((btnAndStick & CONT_UP) && (D_8018EDEC >= 0x33)) {
+                    D_8018EDEC -= 1;
+                    play_sound2(0x49008000);
+                    if (sp38->unk24 < 4.2) {
+                        sp38->unk24 += 4.0;
+                    }
+                    sp38->unk8 = -1;
+                }   
             }
-            if (((u16) phi_a1_5 & 0x4000) != 0) {
-                *phi_t1_5 = temp_t0->unk1C + 0x32;
-                play_sound2(0x49008002, (u16) phi_a1_5);
-                return;
-            }
-            if (((u16) phi_a1_5 & 0x8000) != 0) {
-                if (*phi_t1_5 == 0x38) {
-                    *phi_t1_5 = 0x17;
-                    play_sound2(0x49008002, (u16) phi_a1_5);
-                    return;
+            // L800B0FA4
+            if (btnAndStick & CONT_B) {
+                D_8018EDEC = sp38->unk20 + 0x28;
+                play_sound2(0x49008002);
+            } else if (btnAndStick & CONT_A) {
+                // L800B0FCC
+                sp38->unk1C = D_8018EDEC - 0x32;
+                if (D_8018EE10[(sp38->unk1C)].ghostDataSaved) {
+                    D_8018EDEC = 0x38;
+                } else {
+                    D_8018EDEC = 0x3A;
+                    sp38->unk4 = 0;
                 }
-                *phi_t1_5 = 0x3A;
-                sp38 = temp_t0;
-                play_sound2(0x49008001, (u16) phi_a1_5);
-                temp_t0->unk4 = 0;
-                return;
+                play_sound2(0x49008001);
+            } 
+            break;
+        }
+        case 0x2A:
+        case 0x2B:
+        case 0x2C:
+        case 0x2D:
+        case 0x34:
+        case 0x35:
+        case 0x37:
+        case 0x3C:
+        case 0x41:
+        case 0x42:
+        {
+            if (btnAndStick & (CONT_A | CONT_B | CONT_START)) {
+                D_8018EDEC = 0x17;
+                play_sound2(0x49008002);
             }
             break;
-        case 0x3A:                                  /* switch 1 */
+        }
+        case 0x38:
+        case 0x39:
+        {
+            if ((btnAndStick & CONT_RIGHT) && D_8018EDEC < 0x39) {
+                D_8018EDEC += 1;
+                play_sound2(0x49008000);
+                if (sp38->unk24 < 4.2) {
+                    sp38->unk24 += 4.0;
+                }
+                sp38->unk8 = 1;
+            }
+            // L800B10C4
+            if ((btnAndStick & CONT_LEFT) && D_8018EDEC >= 0x39) {
+                D_8018EDEC -= 1;
+                play_sound2(0x49008000);
+                if (sp38->unk24 < 4.2) {
+                    sp38->unk24 += 4.0;
+                }
+                sp38->unk8 = -1;
+            }
+            // L800B114C
+            if (btnAndStick & CONT_B) {
+                D_8018EDEC = sp38->unk1C + 0x32;
+                play_sound2(0x49008002);
+                return;
+            }
+            if (btnAndStick & CONT_A) {
+                if (D_8018EDEC == 0x38) {
+                    D_8018EDEC = 0x17;
+                    play_sound2(0x49008002);
+                } else {
+                    D_8018EDEC = 0x3A;
+                    play_sound2(0x49008001);
+                    sp38->unk4 = 0;
+                }
+            }
+            // return?
+            break;
+        }
+        case 0x3A:
+        {
             if (arg1 == 0) {
-                temp_v0->unk4 += 1;
+                sp38->unk4 += 1;
             }
-            if (temp_v0->unk4 >= 3) {
+            if (sp38->unk4 >= 3) {
                 D_8018EDEC = 0x3B;
-                return;
             }
             break;
-        case 0x3B:                                  /* switch 1 */
-            sp38 = temp_t0;
-            temp_v0_10 = func_800B5DA4();
-            phi_v0 = temp_v0_10;
-            if (temp_v0_10 == 0) {
-                sp38 = temp_t0;
-                phi_v0 = func_800B65F4(temp_t0->unk20, temp_t0->unk1C);
+        }
+        case 0x3B:
+        {
+            res = func_800B5DA4();
+            if (res == 0) {
+                res = func_800B65F4(sp38->unk20, sp38->unk1C);
             }
-            if (phi_v0 != 0) {
+            // L800B1230
+            if (res != 0) {
                 D_8018EDEC = 0x42;
                 play_sound2(0x4900FF07);
                 return;
             }
-            sp38 = temp_t0;
-            temp_v0_11 = osPfsFindFile(&D_8018E868, D_800E86F0, D_800E86F4, &D_800F2E64, &D_800F2E74, &D_8018EB84);
-            phi_v0_2 = temp_v0_11;
-            if (temp_v0_11 == 0) {
-                sp38 = temp_t0;
-                phi_v0_2 = func_800B6178(temp_t0->unk1C);
+            // L800B1254
+            res = osPfsFindFile(&D_8018E868, D_800E86F0, D_800E86F4, (u8 *)D_800F2E64, (u8 *)D_800F2E74, &D_8018EB84);
+            if (res == 0) {
+                res = func_800B6178(sp38->unk1C);
             }
-            if (phi_v0_2 != 0) {
+            if (res != 0) {
                 D_8018EDEC = 0x41;
                 play_sound2(0x4900FF07);
                 return;
             }
+            // L800B12DC
             D_8018EDEC = 0x3C;
-            *(&D_8018EE15 + (temp_t0->unk1C << 7)) = ((temp_t0->unk20 << 7) + sp30)->unk5;
-            func_800B6088(temp_t0->unk1C);
-            return;
-        case 0x46:                                  /* switch 1 */
-            if (arg1 == 0) {
-                temp_v0->unk4 += 1;
-            }
-            if (temp_v0->unk4 >= 3) {
-                D_8018EDEC = 0x47;
-                return;
-            }
-            break;
-        case 0x47:                                  /* switch 1 */
-            if (func_800B6A68() != 0) {
-                D_8018EDEC = 0x36;
-                play_sound2(0x4900FF07);
-                return;
-            }
-            if (sp30->unk4 != 0) {
-                D_8018EDEC = 0x28;
-                return;
-            }
-            D_8018EDEC = 0x29;
+            D_8018EE10[sp38->unk1C].courseIndex = (sp30 + sp38->unk20)->courseIndex;
+            func_800B6088(sp38->unk1C);
             break;
         }
-    } else {
-    default:                                        /* switch 1 */
+        case 0x46:
+        {
+            if (arg1 == 0) {
+                sp38->unk4 += 1;
+            }
+            if (sp38->unk4 >= 3) {
+                D_8018EDEC = 0x47;
+            }
+            break;
+        }
+        case 0x47:
+        {
+            if (func_800B6A68()) {
+                D_8018EDEC = 0x36;
+                play_sound2(0x4900FF07);
+            } else if (sp30->ghostDataSaved) {
+                D_8018EDEC = 0x28;
+            } else {
+                D_8018EDEC = 0x29;
+            }
+            break;
+        }
+        default: break;
+        }
     }
-}
+    // L800B13A0 return
+} 
 #else
 GLOBAL_ASM("asm/non_matchings/menus/func_800B053C.s")
 #endif
@@ -737,261 +712,167 @@ void func_800B13B0(struct Controller *controller, UNUSED u16 arg1) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 06ada559d7a32fdab49fa2d619cdfa027615bcda
-? play_sound2(?, s32);                              /* extern */
-extern s8 D_8018EDF9;
-
-void func_800B15AC(struct Controller *arg0, u16 arg1) {
-    u16 sp2E;
+void func_800B15AC(struct Controller *controller, UNUSED u16 arg1) {
+    u16 btnAndStick; // sp2E
     struct_8018D9E0_entry *sp28;
-    u8 *sp24;
-    s32 sp20;
-    s32 sp18;
-    f64 temp_f0;
-    f64 temp_f0_2;
-    f64 temp_f0_3;
-    f64 temp_f0_4;
-    f64 temp_f0_5;
-    s32 temp_a1_4;
-    s32 temp_t4;
-    s32 temp_v0_11;
-    s8 temp_a1;
-    s8 temp_a1_2;
-    s8 temp_a1_3;
-    s8 temp_v0;
-    s8 temp_v0_10;
-    s8 temp_v0_3;
-    s8 temp_v0_4;
-    s8 temp_v0_5;
-    s8 temp_v0_6;
-    s8 temp_v0_7;
-    s8 temp_v0_8;
-    s8 temp_v0_9;
-    struct_8018D9E0_entry *temp_a2;
-    struct_8018D9E0_entry *temp_a2_2;
-    struct_8018D9E0_entry *temp_v0_2;
-    u16 temp_t8;
-    u16 phi_v1;
-    s32 phi_a1;
-    s32 phi_a3;
-    struct_8018D9E0_entry *phi_a2;
-    s8 *phi_v1_2;
-    s32 phi_a3_2;
-    struct_8018D9E0_entry *phi_a2_2;
-    s8 *phi_v1_3;
+    CourseTimeTrialRecords *sp24;
+    s32 res;
 
-    temp_t8 = (arg0->buttonPressed | arg0->stickPressed) & 0xFFFF;
-    phi_v1 = temp_t8;
-    if ((gEnableDebugMode == 0) && ((temp_t8 & 0x1000) != 0)) {
-        phi_v1 = (temp_t8 | 0x8000) & 0xFFFF;
+    btnAndStick = (controller->buttonPressed | controller->stickPressed); 
+
+    if (!gEnableDebugMode && (btnAndStick & CONT_START)) {
+        btnAndStick |= CONT_A;
     }
-    sp2E = phi_v1;
-    if (func_800B4520() == 0) {
-        temp_v0 = D_8018EDEC;
-        switch (temp_v0) {                          /* irregular */
-        case 11:
-            phi_a3 = (s32) phi_v1;
-            if ((phi_v1 & 0x200) != 0) {
-                temp_a1 = gTimeTrialDataCourseIndex;
-                if ((s32) temp_a1 > 0) {
-                    gTimeTrialDataCourseIndex = temp_a1 - 1;
-                    sp18 = (s32) phi_v1;
-                    play_sound2(0x49008000, (s32) temp_a1);
-                    phi_a3 = sp18;
+
+    if (!func_800B4520()) {
+        switch(D_8018EDEC) {
+        case 0x0B:
+        {
+            if ((btnAndStick & CONT_LEFT) && (gTimeTrialDataCourseIndex > 0)) {
+                gTimeTrialDataCourseIndex -= 1;
+                play_sound2(0x49008000);
+            }
+
+            if ((btnAndStick & CONT_RIGHT) && (gTimeTrialDataCourseIndex < 15)) {
+                gTimeTrialDataCourseIndex += 1;
+                play_sound2(0x49008000);
+            }
+
+            sp28 = find_8018D9E0_entry_dupe(0xE8);
+            sp24 = &D_8018EB90.allCourseTimeTrialRecords
+                .cupRecords[gTimeTrialDataCourseIndex / 4]
+                .courseRecords[gTimeTrialDataCourseIndex % 4];
+            if (gCourseRecordsMenuSelection == 2 && func_800B639C(gTimeTrialDataCourseIndex) < 0) {
+                gCourseRecordsMenuSelection -= 1;
+            }
+
+            if (gCourseRecordsMenuSelection == 1 && sp24->unknownBytes[0] == 0) {
+                gCourseRecordsMenuSelection -= 1;
+            }
+
+            if ((btnAndStick & CONT_UP) && (gCourseRecordsMenuSelection > 0)) {
+                gCourseRecordsMenuSelection -= 1;
+                if (gCourseRecordsMenuSelection == 1 && sp24->unknownBytes[0] == 0) {
+                    gCourseRecordsMenuSelection -= 1;
                 }
-            }
-            if ((phi_a3 & 0x100) != 0) {
-                temp_a1_2 = gTimeTrialDataCourseIndex;
-                if ((s32) temp_a1_2 < 0xF) {
-                    gTimeTrialDataCourseIndex = temp_a1_2 + 1;
-                    sp18 = phi_a3;
-                    play_sound2(0x49008000, (s32) temp_a1_2);
+                play_sound2(0x49008000);
+                if (sp28->unk24 < 4.2) {
+                    sp28->unk24 += 4.0;
                 }
+                sp28->unk8 = -1;
             }
-            sp18 = phi_a3;
-            temp_v0_2 = find_8018D9E0_entry_dupe(0xE8);
-            temp_a1_3 = gTimeTrialDataCourseIndex;
-            temp_t4 = (((s32) temp_a1_3 / 4) * 0x60) + (((s32) temp_a1_3 % 4) * 0x18);
-            phi_a2 = temp_v0_2;
-            if (gCourseRecordsMenuSelection == 2) {
-                sp28 = temp_v0_2;
-                sp18 = phi_a3;
-                sp24 = &D_8018EB90.allCourseTimeTrialRecords.cupRecords[0].courseRecords[0].records[0][temp_t4];
-                temp_a2 = temp_v0_2;
-                phi_a2 = temp_a2;
-                if (func_800B639C((s32) temp_a1_3) < 0) {
-                    gCourseRecordsMenuSelection += -1;
+
+            if ((btnAndStick & CONT_DOWN) && (gCourseRecordsMenuSelection < 2)) {
+                gCourseRecordsMenuSelection += 1;
+                if (gCourseRecordsMenuSelection == 1 && sp24->unknownBytes[0] == 0) {
+                    gCourseRecordsMenuSelection += 1;
                 }
-            }
-            temp_v0_3 = gCourseRecordsMenuSelection;
-            phi_v1_2 = &gCourseRecordsMenuSelection;
-            if ((temp_v0_3 == 1) && (D_8018EB90.allCourseTimeTrialRecords.cupRecords[0].courseRecords[0].records[0][temp_t4].unk12 == 0)) {
-                gCourseRecordsMenuSelection = temp_v0_3 - 1;
-            }
-            if ((phi_a3 & 0x800) != 0) {
-                temp_v0_4 = gCourseRecordsMenuSelection;
-                if ((s32) temp_v0_4 > 0) {
-                    gCourseRecordsMenuSelection = temp_v0_4 - 1;
-                    temp_v0_5 = gCourseRecordsMenuSelection;
-                    if ((temp_v0_5 == 1) && (D_8018EB90.allCourseTimeTrialRecords.cupRecords[0].courseRecords[0].records[0][temp_t4].unk12 == 0)) {
-                        gCourseRecordsMenuSelection = temp_v0_5 - 1;
-                    }
-                    sp28 = phi_a2;
-                    sp18 = phi_a3;
-                    sp24 = &D_8018EB90.allCourseTimeTrialRecords.cupRecords[0].courseRecords[0].records[0][temp_t4];
-                    play_sound2(0x49008000);
-                    temp_f0 = (f64) phi_a2->unk24;
-                    phi_v1_2 = &gCourseRecordsMenuSelection;
-                    if (temp_f0 < 4.2) {
-                        phi_a2->unk24 = (f32) (temp_f0 + 4.0);
-                    }
-                    phi_a2->unk8 = -1;
-                }
-            }
-            phi_a3_2 = phi_a3;
-            phi_a2_2 = phi_a2;
-            phi_v1_3 = phi_v1_2;
-            if ((phi_a3 & 0x400) != 0) {
-                temp_v0_6 = *phi_v1_2;
-                if ((s32) temp_v0_6 < 2) {
-                    *phi_v1_2 = temp_v0_6 + 1;
-                    temp_v0_7 = *phi_v1_2;
-                    if ((temp_v0_7 == 1) && (D_8018EB90.allCourseTimeTrialRecords.cupRecords[0].courseRecords[0].records[0][temp_t4].unk12 == 0)) {
-                        *phi_v1_2 = temp_v0_7 + 1;
-                    }
-                    if ((*phi_v1_2 == 2) && (sp28 = phi_a2, sp18 = phi_a3, sp24 = &D_8018EB90.allCourseTimeTrialRecords.cupRecords[0].courseRecords[0].records[0][temp_t4], phi_a3_2 = phi_a3, phi_a2_2 = phi_a2, phi_v1_3 = &gCourseRecordsMenuSelection, (func_800B639C((s32) gTimeTrialDataCourseIndex) < 0))) {
-                        if (D_8018EB90.allCourseTimeTrialRecords.cupRecords[0].courseRecords[0].records[0][temp_t4].unk12 == 0) {
-                            gCourseRecordsMenuSelection = 0;
-                        } else {
-                            gCourseRecordsMenuSelection = 1;
-                        }
+                
+                if (gCourseRecordsMenuSelection == 2 && func_800B639C(gTimeTrialDataCourseIndex) < 0) {
+                    if (sp24->unknownBytes[0] == 0) {
+                        gCourseRecordsMenuSelection = 0;
                     } else {
-                        sp28 = phi_a2;
-                        sp18 = phi_a3;
-                        play_sound2(0x49008000);
-                        temp_f0_2 = (f64) phi_a2->unk24;
-                        phi_a3_2 = phi_a3;
-                        phi_a2_2 = phi_a2;
-                        phi_v1_3 = &gCourseRecordsMenuSelection;
-                        if (temp_f0_2 < 4.2) {
-                            phi_a2->unk24 = (f32) (temp_f0_2 + 4.0);
-                        }
-                        phi_a2->unk8 = 1;
+                        gCourseRecordsMenuSelection = 1;
                     }
+                }  else {
+                    play_sound2(0x49008000);
+                    if (sp28->unk24 < 4.2) {
+                        sp28->unk24 += 4.0;
+                    }
+                    sp28->unk8 = 1;
                 }
             }
-            if ((phi_a3_2 & 0x4000) != 0) {
+            
+            if (btnAndStick & CONT_B) {
                 func_8009E208();
                 play_sound2(0x49008002);
-                return;
-            }
-            if ((phi_a3_2 & 0x8000) != 0) {
-                temp_f0_3 = (f64) phi_a2_2->unk24;
-                if (temp_f0_3 < 4.2) {
-                    phi_a2_2->unk24 = (f32) (temp_f0_3 + 4.0);
+            } else if (btnAndStick & CONT_A) {
+                if (sp28->unk24 < 4.2) {
+                    sp28->unk24 += 4.0;
                 }
-                if (*phi_v1_3 == 0) {
-                    func_8009E208(0x49008001);
+                if (gCourseRecordsMenuSelection == 0) {
+                    func_8009E208();
                     play_sound2(0x49008002);
-                    return;
+                } else {
+                    D_8018EDEC = 0x0C;
+                    D_8018EDF9 = 0;
+                    play_sound2(0x49008001);
                 }
-                D_8018EDEC = 0xC;
-                D_8018EDF9 = 0;
-                play_sound2(0x49008001);
-                return;
             }
             break;
-        case 12:
-            sp18 = (s32) phi_v1;
-            temp_a2_2 = find_8018D9E0_entry_dupe(0xE9);
-            if ((sp18 & 0x800) != 0) {
-                temp_v0_8 = D_8018EDF9;
-                if ((s32) temp_v0_8 > 0) {
-                    D_8018EDF9 = temp_v0_8 - 1;
-                    sp28 = temp_a2_2;
-                    sp18 = sp18;
-                    play_sound2(0x49008000);
-                    temp_f0_4 = (f64) temp_a2_2->unk24;
-                    if (temp_f0_4 < 4.2) {
-                        temp_a2_2->unk24 = (f32) (temp_f0_4 + 4.0);
-                    }
-                    temp_a2_2->unk8 = -1;
+        }
+        case 0x0C: 
+        {
+            sp28 = find_8018D9E0_entry_dupe(0xE9);
+            if ((btnAndStick & CONT_UP) && (D_8018EDF9 > 0)) {
+                D_8018EDF9 -= 1;
+                play_sound2(0x49008000);
+                if (sp28->unk24 < 4.2) {
+                    sp28->unk24 += 4.0;
                 }
+                sp28->unk8 = -1;
             }
-            if ((sp18 & 0x400) != 0) {
-                temp_v0_9 = D_8018EDF9;
-                if ((s32) temp_v0_9 <= 0) {
-                    D_8018EDF9 = temp_v0_9 + 1;
-                    sp28 = temp_a2_2;
-                    sp18 = sp18;
-                    play_sound2(0x49008000);
-                    temp_f0_5 = (f64) temp_a2_2->unk24;
-                    if (temp_f0_5 < 4.2) {
-                        temp_a2_2->unk24 = (f32) (temp_f0_5 + 4.0);
-                    }
-                    temp_a2_2->unk8 = 1;
+            
+            if ((btnAndStick & CONT_DOWN) && (D_8018EDF9 <= 0)) {
+                D_8018EDF9 += 1;
+                play_sound2(0x49008000);
+                if (sp28->unk24 < 4.2) {
+                    sp28->unk24 += 4.0;
                 }
+                sp28->unk8 = 1;
             }
-            if ((sp18 & 0x4000) != 0) {
+            
+            if (btnAndStick & CONT_B) {
                 D_8018EDEC = 0xB;
                 play_sound2(0x49008002);
-                return;
-            }
-            if ((sp18 & 0x8000) != 0) {
+            } else if (btnAndStick & CONT_A) {
                 if (D_8018EDF9 != 0) {
-                    temp_v0_10 = gCourseRecordsMenuSelection;
-                    phi_a1 = 0;
-                    switch (temp_v0_10) {           /* switch 1; irregular */
-                    case 1:                         /* switch 1 */
-                        func_800B4728((s32) gTimeTrialDataCourseIndex);
-                        func_800B559C((s32) gTimeTrialDataCourseIndex);
+                    res = 0;
+                    switch (gCourseRecordsMenuSelection) {
+                    case 1:
+                    {
+                        func_800B4728(gTimeTrialDataCourseIndex);
+                        func_800B559C(gTimeTrialDataCourseIndex);
                         play_sound2(0x4900801D);
-                        phi_a1 = -1;
+                        res = -1;
                         break;
-                    case 2:                         /* switch 1 */
-                        temp_v0_11 = func_800B639C((s32) gTimeTrialDataCourseIndex);
-                        phi_a1 = temp_v0_11;
-                        if (temp_v0_11 >= 0) {
-                            sp20 = temp_v0_11;
-                            func_800B69BC(temp_v0_11);
-                            temp_a1_4 = sp20;
-                            if (MIPS2C_ERROR(Read from unset register $v0) != 0) {
-                                D_8018EDEC = 0xD;
-                                sp20 = temp_a1_4;
-                                play_sound2(0x4900FF07, temp_a1_4);
-                                phi_a1 = temp_a1_4;
+                    }
+                    case 2:
+                    {
+                        res = func_800B639C(gTimeTrialDataCourseIndex);
+                        if (res >= 0) {
+                            if (func_800B69BC(res) != 0){
+                                D_8018EDEC = 0x0D;
+                                play_sound2(0x4900FF07);
                             } else {
-                                sp20 = temp_a1_4;
-                                play_sound2(0x4900801D, temp_a1_4);
-                                D_8018EDEC = 0xB;
-                                phi_a1 = temp_a1_4;
+                                play_sound2(0x4900801D);
+                                D_8018EDEC = 0x0B;
                             }
                         }
                         break;
                     }
-                    if ((phi_a1 + 1) == 0) {
+                    }
+
+                    if (!(res + 1)) {
                         D_8018EDEC = 0xB;
-                        return;
                     }
                 } else {
                     play_sound2(0x49008002);
                     D_8018EDEC = 0xB;
-                    return;
                 }
             }
             break;
-        case 13:
-            if ((phi_v1 & 0xD000) != 0) {
+        }
+        case 0x0D:
+        {
+            if (btnAndStick & (CONT_A | CONT_B | CONT_START)) {
                 D_8018EDEC = 0xB;
             }
             break;
         }
+        }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B15AC.s")
-#endif
 
 // Handle controller input during the logo screen
 void func_800B1C40(struct Controller *arg0, UNUSED u16 arg1) {
@@ -1003,12 +884,11 @@ void func_800B1C40(struct Controller *arg0, UNUSED u16 arg1) {
     }
 }
 
-#ifdef NEEDS_RODATA
-void func_800B1C90(struct Controller* controller, u16 arg1) {
+void func_800B1C90(struct Controller* controller, UNUSED u16 arg1) {
     u16 buttonAndStickPress;
     OSPfsState* osPfsState;
     s32 selectedTableRow;
-    s8 pad;
+    UNUSED s8 pad;
     
     buttonAndStickPress = controller->buttonPressed | controller->stickPressed;
     if (func_800B4520() == 0) {
@@ -1040,25 +920,25 @@ void func_800B1C90(struct Controller* controller, u16 arg1) {
             break;
         case CONTROLLER_PAK_MENU_TABLE_GAME_DATA:
             if ((buttonAndStickPress & 0x9000) != 0) {
-                selectedTableRow = gDisplayedControllerPakTableRows[gControllerPakSelectedTableRow] - 1;
+                selectedTableRow = D_800E86C4[gControllerPakSelectedTableRow + 2] - 1;
                 if (D_8018EB38[selectedTableRow] == 0) {
                     gControllerPakMenuSelection = CONTROLLER_PAK_MENU_QUIT;
                     play_sound2(0x49008001);
                     return;
                 }
             } else if ((buttonAndStickPress & 0x4000) != 0) {
-                if (D_800E86D0 == 0) {
+                if (D_800E86D0[0] == 0) {
                     gControllerPakMenuSelection = CONTROLLER_PAK_MENU_SELECT_RECORD;
                     play_sound2(0x49008002);
                     return;
                 }
             } else if ((buttonAndStickPress & 0x800) != 0) {
-                if (D_800E86D0 == 0) {
+                if (D_800E86D0[0] == 0) {
                     --gControllerPakSelectedTableRow;
                     if (gControllerPakSelectedTableRow < 0) {
                         gControllerPakSelectedTableRow = 0;
-                        if (gDisplayedControllerPakTableRows[gControllerPakSelectedTableRow] != 1) {
-                            D_800E86D0 = 2;
+                        if (D_800E86C4[gControllerPakSelectedTableRow + 2] != 1) {
+                            D_800E86D0[0] = 2;
                             play_sound2(0x49008000);
                             return;
                         }
@@ -1067,12 +947,12 @@ void func_800B1C90(struct Controller* controller, u16 arg1) {
                         return;
                     }
                 }
-            } else if (((buttonAndStickPress & 0x400) != 0) && (D_800E86D0 == 0)) {
+            } else if (((buttonAndStickPress & 0x400) != 0) && (D_800E86D0[0] == 0)) {
                 ++gControllerPakSelectedTableRow;
                 if (gControllerPakSelectedTableRow >= CONTROLLER_PAK_MENU_TABLE_GAME_DATA) {
                     gControllerPakSelectedTableRow = CONTROLLER_PAK_MENU_QUIT;
-                    if (gDisplayedControllerPakTableRows[gControllerPakSelectedTableRow] != 0x10) {
-                        D_800E86D0 = 1;
+                    if (D_800E86C4[gControllerPakSelectedTableRow + 2] != 0x10) {
+                        D_800E86D0[0] = 1;
                         play_sound2(0x49008000);
                         return;
                     }
@@ -1115,10 +995,10 @@ void func_800B1C90(struct Controller* controller, u16 arg1) {
             gControllerPakMenuSelection = CONTROLLER_PAK_MENU_ERASING;
             return;
         case CONTROLLER_PAK_MENU_ERASING:
-            selectedTableRow = gDisplayedControllerPakTableRows[gControllerPakSelectedTableRow] - 1;
+            selectedTableRow = D_800E86C4[gControllerPakSelectedTableRow + 2] - 1;
             osPfsState = &D_8018E938[selectedTableRow];
 
-            switch (osPfsDeleteFile(&D_8018E868, osPfsState->company_code, osPfsState->game_code, &osPfsState->game_name, &osPfsState->ext_name)) { 
+            switch (osPfsDeleteFile(&D_8018E868, osPfsState->company_code, osPfsState->game_code, (u8 *)&osPfsState->game_name, (u8 *)&osPfsState->ext_name)) { 
             default:                           
                 gControllerPakMenuSelection = CONTROLLER_PAK_MENU_ERASE_ERROR_NOT_ERASED;
                 return;
@@ -1145,304 +1025,231 @@ void func_800B1C90(struct Controller* controller, u16 arg1) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B1C90.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
-? func_8009E1C0();                                  /* extern */
-? func_800B44BC();                                  /* extern */
-? write_save_data_grand_prix_points_and_sound_mode();                                  /* extern */
-? reset_save_data_grand_prix_points_and_sound_mode();                                  /* extern */
-? func_800B5404(s32, s32);                          /* extern */
-? update_save_data_backup();                                  /* extern */
-? func_800CA330(?);                                 /* extern */
-? play_sound2(?, s32);                              /* extern */
-static ? D_800F2B50;                                /* unable to generate initializer; const */
-static ? D_800F2B58;                                /* unable to generate initializer; const */
-s16 gCurrentCourseId;                               /* unable to generate initializer */
-
-void func_800B20F4(void *arg0, s32 arg1) {
-    u16 sp2E;
+void func_800B20F4(struct Controller *controller, u16 arg1) {
+    u16 btnAndStick;
+    u16 i;
     s32 sp28;
-    s32 sp24;
-    s16 temp_v0;
-    s16 temp_v0_2;
-    s32 temp_a1;
-    s32 temp_a1_2;
-    s32 temp_a1_3;
-    s8 temp_t2;
-    s8 temp_v0_3;
-    s8 temp_v0_4;
-    s8 temp_v0_5;
-    s8 temp_v0_6;
-    u8 temp_t2_2;
-    u8 temp_t7;
-    u8 temp_v0_7;
-    u8 temp_v0_8;
-    s32 phi_a1;
-    s32 phi_s0;
-    s32 phi_a1_2;
-    s32 phi_s0_2;
-    s32 phi_a1_3;
-    s32 phi_s0_3;
 
-    sp28 = 1;
-    sp2E = arg0->unk6 | arg0->unkC;
+    sp28 = TRUE;
+    btnAndStick = controller->buttonPressed | controller->stickPressed;
+
     if (func_800B4520() == 0) {
-        if ((arg1 & 0xFFFF) == 0) {
+        if (arg1 == 0) {
             D_8018EE04 += 1;
         }
-        temp_t2 = gDebugMenuSelection;
-        switch (temp_t2) {
+
+        switch (gDebugMenuSelection) {
         case DEBUG_MENU_DISABLED:
-            sp28 = 0;
-            if ((D_8018EE04 >= 0x2E) && ((sp2E & 0x9000) != 0)) {
+        {
+            sp28 = FALSE;
+            if ((D_8018EE04 >= 0x2E) && (btnAndStick & (CONT_A | CONT_START))) {
                 func_8009E1C0();
                 func_800CA330(0x19);
                 play_sound2(0x4900801A);
+            } else {
+                break;
             }
             break;
+        }
         case DEBUG_MENU_DEBUG_MODE:
-            if ((sp2E & 0x300) != 0) {
-                sp24 = sp2E;
+        {
+            if (btnAndStick & (CONT_RIGHT | CONT_LEFT)) {
                 play_sound2(0x49008000);
-                if (gEnableDebugMode != 0) {
-                    gEnableDebugMode = 0;
+                if (gEnableDebugMode) {
+                    gEnableDebugMode = FALSE;
                 } else {
-                    gEnableDebugMode = 1;
+                    gEnableDebugMode = TRUE;
                 }
             }
-            if ((sp2E & 0x400) != 0) {
+            if (btnAndStick & CONT_DOWN) {
                 play_sound2(0x49008000);
                 gDebugMenuSelection = DEBUG_MENU_COURSE;
             }
             break;
+        }
         case DEBUG_MENU_COURSE:
-            if ((sp2E & 0x100) != 0) {
-                sp24 = sp2E;
+        {
+            if (btnAndStick & CONT_RIGHT) {
                 play_sound2(0x49008000);
-                temp_v0 = gCurrentCourseId;
-                if (temp_v0 < 0x13) {
-                    gCurrentCourseId = temp_v0 + 1;
+                if (gCurrentCourseId < 0x13) {
+                    gCurrentCourseId += 1;
                 } else {
                     gCurrentCourseId = 0;
                 }
             }
-            if ((sp2E & 0x200) != 0) {
-                sp24 = sp2E;
+            if (btnAndStick & CONT_LEFT) {
                 play_sound2(0x49008000);
-                temp_v0_2 = gCurrentCourseId;
-                if (temp_v0_2 > 0) {
-                    gCurrentCourseId = temp_v0_2 - 1;
+                if (gCurrentCourseId > 0) {
+                    gCurrentCourseId -= 1;
                 } else {
                     gCurrentCourseId = 0x13;
                 }
             }
-            if ((sp2E & 0x800) != 0) {
-                sp24 = sp2E;
+            if (btnAndStick & CONT_UP) {
                 play_sound2(0x49008000);
                 gDebugMenuSelection = DEBUG_MENU_DEBUG_MODE;
             }
-            if ((sp2E & 0x400) != 0) {
+            if (btnAndStick & CONT_DOWN) {
                 play_sound2(0x49008000);
                 gDebugMenuSelection = DEBUG_MENU_SCREEN_MODE;
             }
             break;
+        }
         case DEBUG_MENU_SCREEN_MODE:
-            if ((sp2E & 0x100) != 0) {
-                temp_v0_3 = D_8018EDF1;
-                if (temp_v0_3 < 4) {
-                    D_8018EDF1 = temp_v0_3 + 1;
-                    sp24 = sp2E;
-                    play_sound2(0x49008000);
-                    gScreenModeSelection = *(&D_800F2B50 + D_8018EDF1);
-                }
+        {
+            if ((btnAndStick & CONT_RIGHT) && (D_8018EDF1 < 4)) {
+                D_8018EDF1 += 1;
+                play_sound2(0x49008000);
+                gScreenModeSelection = D_800F2B50[D_8018EDF1];
             }
-            if ((sp2E & 0x200) != 0) {
-                temp_v0_4 = D_8018EDF1;
-                if (temp_v0_4 > 0) {
-                    D_8018EDF1 = temp_v0_4 - 1;
-                    sp24 = sp2E;
-                    play_sound2(0x49008000);
-                    gScreenModeSelection = *(&D_800F2B50 + D_8018EDF1);
-                }
+            if ((btnAndStick & CONT_LEFT) && (D_8018EDF1 > 0)) {
+                D_8018EDF1 -= 1;
+                play_sound2(0x49008000);
+                gScreenModeSelection = D_800F2B50[D_8018EDF1];
             }
-            if ((sp2E & 0x800) != 0) {
+            if (btnAndStick & CONT_UP) {
                 gDebugMenuSelection = DEBUG_MENU_COURSE;
-                sp24 = sp2E;
                 play_sound2(0x49008000);
             }
-            if ((sp2E & 0x400) != 0) {
+            if (btnAndStick & CONT_DOWN) {
                 gDebugMenuSelection = DEBUG_MENU_PLAYER;
                 play_sound2(0x49008000);
             }
             break;
+        }
         case DEBUG_MENU_PLAYER:
-            if ((sp2E & 0x100) != 0) {
-                temp_v0_5 = gCharacterSelections;
-                if (temp_v0_5 < 7) {
-                    gCharacterSelections = temp_v0_5 + 1;
-                    sp24 = sp2E;
-                    play_sound2(0x49008000);
-                }
-            }
-            if ((sp2E & 0x200) != 0) {
-                temp_v0_6 = gCharacterSelections;
-                if (temp_v0_6 > 0) {
-                    gCharacterSelections = temp_v0_6 - 1;
-                    sp24 = sp2E;
-                    play_sound2(0x49008000);
-                }
-            }
-            if ((sp2E & 0x800) != 0) {
-                gDebugMenuSelection = DEBUG_MENU_SCREEN_MODE;
-                sp24 = sp2E;
+        {
+            if ((btnAndStick & CONT_RIGHT) && (*gCharacterSelections < 7)) {
+                gCharacterSelections[0] += 1;
                 play_sound2(0x49008000);
             }
-            if ((sp2E & 0x400) != 0) {
+            if ((btnAndStick & CONT_LEFT) && (gCharacterSelections[0] > 0)) {
+                gCharacterSelections[0] -= 1;
+                play_sound2(0x49008000);
+            }
+            if (btnAndStick & CONT_UP) {
+                gDebugMenuSelection = DEBUG_MENU_SCREEN_MODE;
+                play_sound2(0x49008000);
+            }
+            if (btnAndStick & CONT_DOWN) {
                 gDebugMenuSelection = DEBUG_MENU_SOUND_MODE;
                 play_sound2(0x49008000);
             }
             break;
+        }
         case DEBUG_MENU_SOUND_MODE:
-            if ((sp2E & 0x100) != 0) {
-                if (gSoundMode < SOUND_MONO) {
-                    gSoundMode += 1;
-                    if ((gSoundMode & 0xFF) == SOUND_UNUSED) {
-                        gSoundMode = SOUND_MONO;
-                    }
-                    sp24 = sp2E;
-                    play_sound2(0x49008000);
-                    func_800B44BC();
-                    gSaveDataSoundMode = gSoundMode;
-                    write_save_data_grand_prix_points_and_sound_mode();
-                    update_save_data_backup();
+        {
+            if ((btnAndStick & CONT_RIGHT) && (gSoundMode < 3)) {
+                gSoundMode += 1;
+                if (gSoundMode == SOUND_UNUSED) {
+                    gSoundMode = SOUND_MONO;
                 }
+                play_sound2(0x49008000);
+                func_800B44BC();
+                gSaveDataSoundMode = gSoundMode;
+                write_save_data_grand_prix_points_and_sound_mode();
+                update_save_data_backup();
             }
-            if ((sp2E & 0x200) != 0) {
-                if (gSoundMode > SOUND_STEREO) {
-                    gSoundMode -= 1;
-                    if ((gSoundMode & 0xFF) == SOUND_UNUSED) {
-                        gSoundMode = SOUND_HEADPHONES;
-                    }
-                    sp24 = sp2E;
-                    play_sound2(0x49008000);
-                    func_800B44BC();
-                    gSaveDataSoundMode = gSoundMode;
-                    write_save_data_grand_prix_points_and_sound_mode();
+            if ((btnAndStick & CONT_LEFT) && (gSoundMode > 0)) {
+                gSoundMode -= 1;
+                if (gSoundMode == SOUND_UNUSED) {
+                    gSoundMode = SOUND_HEADPHONES;
                 }
+                play_sound2(0x49008000);
+                func_800B44BC();
+                gSaveDataSoundMode = gSoundMode;
+                write_save_data_grand_prix_points_and_sound_mode();
             }
-            if ((sp2E & 0x800) != 0) {
+            if (btnAndStick & CONT_UP) {
                 gDebugMenuSelection = DEBUG_MENU_PLAYER;
-                sp24 = sp2E;
                 play_sound2(0x49008000);
             }
-            if ((sp2E & 0x400) != 0) {
+            if (btnAndStick & CONT_DOWN) {
                 gDebugMenuSelection = DEBUG_MENU_GIVE_ALL_GOLD_CUP;
                 play_sound2(0x49008000);
             }
             break;
+        }
         case DEBUG_MENU_GIVE_ALL_GOLD_CUP:
-            if ((sp2E & 0x800) != 0) {
+        {
+            if (btnAndStick & CONT_UP) {
                 gDebugMenuSelection = DEBUG_MENU_SOUND_MODE;
-                sp24 = sp2E;
                 play_sound2(0x49008000);
             }
-            if ((sp2E & 0x4000) != 0) {
-                phi_a1 = 0;
-                phi_s0 = 0;
-                do {
-                    func_800B5404(0, phi_a1);
-                    temp_a1 = (phi_s0 + 1) & 0xFFFF;
-                    phi_a1 = temp_a1;
-                    phi_s0 = temp_a1;
-                } while (temp_a1 < 0x10);
-                play_sound2(0x49008001, temp_a1);
-            } else if ((sp2E & 0x20) != 0) {
+            if (btnAndStick & CONT_B) {
+                for (i = 0; i < 16; i++) {
+                    func_800B5404(0, i);
+                }
+                play_sound2(0x49008001);
+                break;
+            } else if (btnAndStick & CONT_L) {
                 reset_save_data_grand_prix_points_and_sound_mode();
-                phi_a1_2 = 0;
-                phi_s0_2 = 0;
-                do {
-                    func_800B5404(phi_a1_2 / 4, phi_a1_2);
-                    temp_a1_2 = (phi_s0_2 + 1) & 0xFFFF;
-                    phi_a1_2 = temp_a1_2;
-                    phi_s0_2 = temp_a1_2;
-                } while (temp_a1_2 < 0x10);
-                play_sound2(0x49008001, temp_a1_2);
-            } else if ((sp2E & 0x200) != 0) {
+                for (i = 0; i < 16; i++) {
+                    func_800B5404(i / 4, i);
+                }
+                play_sound2(0x49008001);
+                break;
+            } else if (btnAndStick & CONT_LEFT) {
                 reset_save_data_grand_prix_points_and_sound_mode();
-                phi_a1_3 = 0;
-                phi_s0_3 = 0;
-                do {
-                    if ((phi_a1_3 % 4) == 2) {
-                        func_800B5404(0, phi_a1_3);
+                for (i = 0; i < 16; i++) {
+                    if (i % 4 == 2) {
+                        func_800B5404(0, i);
                     } else {
-                        func_800B5404(phi_a1_3 / 4, phi_a1_3);
+                        func_800B5404(i / 4, i);
                     }
-                    temp_a1_3 = (phi_s0_3 + 1) & 0xFFFF;
-                    phi_a1_3 = temp_a1_3;
-                    phi_s0_3 = temp_a1_3;
-                } while (temp_a1_3 < 0x10);
-                play_sound2(0x49008001, temp_a1_3);
+                }
+                play_sound2(0x49008001);
+            } else {
+                break;
             }
             break;
-        default:
-            break;
         }
-        D_8018EDF3 = *(&D_800F2B58 + D_8018EDF1);
-        gPlayerCountSelection1 = D_8018EDF3;
-        if (sp28 != 0) {
-            if ((sp2E & 0x9000) != 0) { // A or Start pressed
-                sp24 = sp2E;
+        default: break;
+        }
+
+        gPlayerCountSelection1 = D_8018EDF3 = D_800F2B58[D_8018EDF1];
+
+        if (sp28) {
+            if (btnAndStick & (CONT_A | CONT_START)) {
                 func_8009E1C0();
                 func_800CA330(0x19);
                 gDebugMenuSelection = DEBUG_MENU_EXITED;
-                if ((arg0->unk4 & 0x20) != 0) { // L held
+
+                if (controller->button & CONT_L) {
                     D_800DC51C = 1;
                 } else {
                     D_800DC51C = 0;
                 }
-                if ((arg0->unk4 & 0x2000) != 0) { // Z is held
-                    if ((sp2E & 0x8000) != 0) {
-                        gDebugGotoScene = DEBUG_GOTO_ENDING_SEQUENCE; // Go to ending ceremony if A is not pressed
+
+                if (controller->button & Z_TRIG) {
+                    if (btnAndStick & CONT_A) {
+                        gDebugGotoScene = 1; 
                     } else {
-                        gDebugGotoScene = DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA; // Go to credits, set gCCSelection to CC_EXTRA
+                        gDebugGotoScene = 3;
                     }
                 }
                 play_sound2(0x49008016);
-                return;
-            }
-            if (((sp2E & 0x4000) != 0) && ((arg0->unk4 & 0x2000) != 0)) { // B pressed and Z held
+            } else if ((btnAndStick & CONT_B) && (controller->button & Z_TRIG)) {
                 func_8009E1C0();
                 func_800CA330(0x19);
                 gDebugMenuSelection = DEBUG_MENU_EXITED;
-                gDebugGotoScene = DEBUG_GOTO_CREDITS_SEQUENCE_CC_50; // Go to credits, set gCCSelection to CC_50
+                gDebugGotoScene = 2;
                 play_sound2(0x49008016);
-                return;
-            }
-            if ((sp2E & 0x10) != 0) { // R pressed
-                gDebugMenuSelection = DEBUG_MENU_DISABLED; // Close out of debug menu
+            } else if (btnAndStick & CONT_R) {
+                gDebugMenuSelection = DEBUG_MENU_DISABLED;
                 play_sound2(0x49008001);
             }
-            /* Duplicate return node #100. Try simplifying control flow for better match */
-            return;
         }
-        /* Duplicate return node #100. Try simplifying control flow for better match */
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B20F4.s")
-#endif
 
 void func_800B28C8(void) {
     // For Grand Prix and Versus, this will be the CC mode selected. For Time Trials, it will
     // be whether 'Begin' or 'Data' is selected. Not used for Battle.
-    s8 temp_v0 = gGameModeSubMenuRowSelectionForNumPlayers[D_8018EDF3][gGameModeRowSelectionForNumPlayers[D_8018EDF3]];
-
+    s8 temp_v0 = D_800E86B0[D_8018EDF3 - 1][D_800E86AC[D_8018EDF3 - 1]];
     // Determine which game mode was selected based on the number of players and the row selected on the main menu
-    switch (gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][gGameModeRowSelectionForNumPlayers[D_8018EDF3]]) {
+    switch (gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]]) {
     case GRAND_PRIX:
         gCCSelection =  temp_v0;
         gPlaceItemBoxes = 1;
@@ -1470,383 +1277,426 @@ void func_800B28C8(void) {
     }
 }
 
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
-? func_8009E0F0(?);                                 /* extern */
-? func_8009E1C0();                                  /* extern */
-? func_8009E258(s8);                                /* extern */
-? func_8009E280(s8);                                /* extern */
-? func_800B28C8();                                  /* extern */
-? func_800B44AC(s8, u16, u16);                      /* extern */
-? func_800CA330(?);                                 /* extern */
-? play_sound2(?, u16, u16);                         /* extern */
-static ? gGameModeRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
-static ? D_800E86AC;                                /* unable to generate initializer; const */
-static ? gGameModeSubMenuRowSelectionForNumPlayers;                                /* unable to generate initializer; const */
-static ? D_800E86B0;                                /* unable to generate initializer; const */
-static ? D_800F2B5F;                                /* unable to generate initializer; const */
-static ? D_800F2B61;                                /* unable to generate initializer; const */
-static ? D_800F2B6D;                                /* unable to generate initializer; const */
-static ? gGameModeFromNumPlayersAndRowSelection;                                /* unable to generate initializer; const */
-
-void func_800B29D8(void *arg0, u16 arg1) {
-    u16 sp2E;
+#ifdef NON_MATCHING
+// nonmatching: regalloc; arg1 is not AND-ed back into $a1, reg chaos follows
+void func_800B29D8(struct Controller *controller, u16 arg1) {
+    u16 btnAndStick; // sp2E
     s32 sp28;
     s32 sp24;
-    s32 sp1C;
-    s32 temp_t7_3;
-    s32 temp_t7_5;
-    s32 temp_v1_3;
-    s32 temp_v1_4;
-    s32 temp_v1_7;
-    s8 temp_a0;
-    s8 temp_a0_2;
-    s8 temp_a0_3;
-    s8 temp_a0_4;
-    s8 temp_a0_5;
-    s8 temp_a0_6;
-    s8 temp_a0_7;
-    s8 temp_a1;
-    s8 temp_t1;
-    s8 temp_t1_2;
-    s8 temp_t2;
-    s8 temp_t4_2;
-    s8 temp_t4_3;
-    s8 temp_t5;
-    s8 temp_t5_2;
-    s8 temp_t6;
-    s8 temp_t6_2;
-    s8 temp_t7;
-    s8 temp_t7_2;
-    s8 temp_t7_4;
-    s8 temp_t7_6;
-    s8 temp_t8;
-    s8 temp_v0;
-    s8 temp_v0_10;
-    s8 temp_v0_11;
-    s8 temp_v0_2;
-    s8 temp_v0_3;
-    s8 temp_v0_4;
-    s8 temp_v0_5;
-    s8 temp_v0_6;
-    s8 temp_v0_7;
-    s8 temp_v0_8;
-    s8 temp_v0_9;
-    u16 temp_t9;
-    u8 temp_t4;
-    void *temp_v1;
-    void *temp_v1_2;
-    void *temp_v1_5;
-    void *temp_v1_6;
-    u16 phi_v1;
-    s32 phi_a2;
-    s32 phi_v0;
-    u8 *phi_t0;
-    s8 phi_a0;
-    u8 *phi_t0_2;
-    s32 phi_a1;
-    s32 phi_v1_2;
-    s8 phi_v0_2;
-    s8 phi_a0_2;
-    s32 *phi_v1_3;
+    s32 newMode; // temp_v1_2?
 
-    temp_t9 = (arg0->unk6 | arg0->unkC) & 0xFFFF;
-    phi_v1 = temp_t9;
-    if ((gEnableDebugMode == 0) && ((temp_t9 & 0x1000) != 0)) {
-        phi_v1 = (temp_t9 | 0x8000) & 0xFFFF;
+    btnAndStick = controller->buttonPressed | controller->stickPressed;
+    if (!gEnableDebugMode && (btnAndStick & CONT_START)) {
+        btnAndStick |= CONT_A;
     }
-    sp2E = phi_v1;
-    arg1 &= 0xFFFF;
-    if (func_800B4520(arg0) == 0) {
-        temp_t4 = gMainMenuSelectionDepth;
-        switch (temp_t4) {
-        case BLANK_MAIN_MENU:
-            temp_t5 = D_8018EDF3;
-            phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_t5 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_t5) * 4));
+
+    if (!func_800B4520()) {
+        switch (gMainMenuSelectionDepth) {
+        case 0:
+        {
+            newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
             break;
-        case PLAYER_NUM_SELECTION:
-            phi_a2 = phi_v1;
-            if ((phi_v1 & 0x100) != 0) {
-                temp_v0 = D_8018EDF3;
-                if (temp_v0 < 4) {
-                    D_8018EDF3 = temp_v0 + 1;
-                    sp1C = phi_v1;
-                    func_800B44AC();
-                    play_sound2(0x49008000);
-                    phi_a2 = sp1C;
-                }
-            }
-            temp_v0_2 = D_8018EDF3;
-            phi_v0 = temp_v0_2;
-            phi_t0 = &gMainMenuSelectionDepth;
-            if (((phi_a2 & 0x200) != 0) && (temp_v0_2 >= 2)) {
-                D_8018EDF3 = temp_v0_2 - 1;
-                sp1C = phi_a2;
+        }
+        case 3:
+        {
+            if ((btnAndStick & CONT_RIGHT) && D_8018EDF3 < 4) {
+                D_8018EDF3 += 1;
                 func_800B44AC();
                 play_sound2(0x49008000);
-                phi_v0 = D_8018EDF3;
-                phi_t0 = &gMainMenuSelectionDepth;
             }
-            gPlayerCountSelection1 = phi_v0;
-            phi_a0 = &gPlayerCountSelection1;
-            if (phi_v0 != 1) {
-                phi_a0 = 3;
-                if (phi_v0 != 2) {
-                    if ((phi_v0 != 3) && (phi_v0 != 4)) {
-
-                    } else {
-                        gScreenModeSelection = SCREEN_MODE_3P_4P_SPLITSCREEN;
-                    }
-                } else {
-                    gScreenModeSelection = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
-                }
-            } else {
-                gScreenModeSelection = SCREEN_MODE_1P;
+            if ((btnAndStick & CONT_LEFT) && D_8018EDF3 >= 2) {
+                D_8018EDF3 -= 1;
+                func_800B44AC();
+                play_sound2(0x49008000);
             }
-            if ((phi_a2 & 0x4000) != 0) {
+            // L800B2B38
+            gPlayerCountSelection1 = D_8018EDF3;
+            switch (gPlayerCountSelection1){
+                case 1: gScreenModeSelection = SCREEN_MODE_1P; break;
+                case 2: gScreenModeSelection = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL; break;
+                case 3:
+                case 4: gScreenModeSelection = SCREEN_MODE_3P_4P_SPLITSCREEN; break;
+            }
+            // L800B2B94
+            if (btnAndStick & CONT_B) {
                 func_8009E0F0(0x14);
                 func_800CA330(0x19);
                 D_8018EDE0 = 1;
                 play_sound2(0x49008002);
-                temp_t7 = D_8018EDF3;
-                phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_t7 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_t7) * 4));
-            } else if ((phi_a2 & 0x8000) != 0) {
-                *phi_t0 = GAME_MODE_SELECTION;
-                func_800B44AC(phi_a0);
-                play_sound2(0x49008001);
-                temp_t4_2 = D_8018EDF3;
-                phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_t4_2 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_t4_2) * 4));
-            } else if ((phi_a2 & 0x20) != 0) {
-                *phi_t0 = OPTIONS_SELECTION;
-                func_8009E280(phi_a0);
-                play_sound2(0x49009010);
-                temp_t1 = D_8018EDF3;
-                phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_t1 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_t1) * 4));
-            } else if ((phi_a2 & 0x10) != 0) {
-                *phi_t0 = DATA_SELECTION;
-                func_8009E258(phi_a0);
-                play_sound2(0x49009011);
-                temp_t6 = D_8018EDF3;
-                phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_t6 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_t6) * 4));
-            } else {
-                phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((phi_v0 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + phi_v0) * 4));
-            }
-            break;
-        case GAME_MODE_SELECTION:
-            if ((phi_v1 & 0x400) != 0) {
-                temp_v0_3 = D_8018EDF3;
-                temp_v1 = temp_v0_3 + &D_800E86AC;
-                temp_a0 = temp_v1->unk-1;
-                if (temp_a0 < *(&D_800F2B5F + temp_v0_3)) {
-                    temp_v1->unk-1 = temp_a0 + 1;
-                    sp1C = phi_v1;
-                    func_800B44AC(temp_a0, arg1, phi_v1);
-                    play_sound2(0x49008000);
-                }
-            }
-            phi_t0_2 = &gMainMenuSelectionDepth;
-            if ((phi_v1 & 0x800) != 0) {
-                temp_v1_2 = D_8018EDF3 + &D_800E86AC;
-                temp_a0_2 = temp_v1_2->unk-1;
-                if (temp_a0_2 > 0) {
-                    temp_v1_2->unk-1 = temp_a0_2 - 1;
-                    sp1C = phi_v1;
-                    func_800B44AC(temp_a0_2);
-                    play_sound2(0x49008000);
-                    phi_t0_2 = &gMainMenuSelectionDepth;
-                }
-            }
-            if ((phi_v1 & 0x4000) != 0) {
-                *phi_t0_2 = PLAYER_NUM_SELECTION;
-                func_800B44AC(3);
-                play_sound2(0x49008002);
-                temp_t6_2 = D_8018EDF3;
-                phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_t6_2 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_t6_2) * 4));
-            } else {
-                temp_v0_4 = D_8018EDF3;
-                temp_a0_3 = *(&gGameModeRowSelectionForNumPlayers + temp_v0_4);
-                if ((phi_v1 & 0x8000) != 0) {
-                    temp_v1_3 = *(&gGameModeFromNumPlayersAndRowSelection + ((temp_v0_4 * 0xC) + (temp_a0_3 * 4)));
-                    if (temp_v1_3 != 0) {
-                        if (temp_v1_3 != 1) {
-                            if (temp_v1_3 != 2) {
-                                if (temp_v1_3 != 3) {
-                                    *phi_t0_2 = CONFIRM_OK_SELECTION;
-                                } else {
-                                    *phi_t0_2 = CONFIRM_OK_SELECTION;
-                                    play_sound2(0x4900900D);
-                                }
-                            } else {
-                                *phi_t0_2 = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
-                                play_sound2(0x4900900C);
-                            }
-                        } else {
-                            *phi_t0_2 = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
-                            play_sound2(0x4900900B);
-                        }
-                    } else {
-                        *phi_t0_2 = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
-                        play_sound2(0x4900900A);
-                    }
-                    func_800B44AC();
-                    temp_t7_2 = D_8018EDF3;
-                    gMenuTimingCounter = 0;
-                    phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_t7_2 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_t7_2) * 4));
-                } else {
-                    phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_v0_4 * 0xC) + (temp_a0_3 * 4));
-                }
-            }
-            break;
-        case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:
-        case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:
-            if ((arg1 == 0) && ((temp_t7_3 = gMenuTimingCounter + 1, gMenuTimingCounter = temp_t7_3, (temp_t7_3 == 0x64)) || ((temp_t7_3 % 300) == 0)) && ((temp_v0_5 = D_8018EDF3, temp_v1_4 = *(&gGameModeFromNumPlayersAndRowSelection + ((temp_v0_5 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_v0_5) * 4))), (temp_v1_4 == 0)) || (temp_v1_4 == 2))) {
-                sp1C = phi_v1;
-                play_sound2(0x4900900E, arg1, phi_v1);
-            }
-            temp_v0_6 = D_8018EDF3;
-            temp_v1_5 = (temp_v0_6 * 3) + *(&gGameModeRowSelectionForNumPlayers + temp_v0_6) + &D_800E86B0;
-            temp_a0_4 = temp_v1_5->unk-3;
-            phi_a1 = temp_a0_4;
-            if (((phi_v1 & 0x800) != 0) && (temp_a0_4 > 0)) {
-                temp_v1_5->unk-3 = temp_a0_4 - 1;
-                sp28 = temp_a0_4;
-                sp1C = phi_v1;
-                func_800B44AC(temp_a0_4, temp_a0_4, phi_v1);
-                play_sound2(0x49008000);
-                phi_a1 = sp28;
-            }
-            if ((phi_v1 & 0x400) != 0) {
-                sp24 = 0;
-                sp28 = phi_a1;
-                sp1C = phi_v1;
-                phi_v1_2 = sp24;
-                if (func_800B555C() != 0) {
-                    temp_v0_7 = D_8018EDF3;
-                    temp_a0_5 = *(&gGameModeRowSelectionForNumPlayers + temp_v0_7);
-                    phi_v0_2 = temp_v0_7;
-                    phi_a0_2 = temp_a0_5;
-                    phi_v0_2 = temp_v0_7;
-                    phi_a0_2 = temp_a0_5;
-                    if (phi_a1 < *(&D_800F2B6D + ((temp_v0_7 * 3) + temp_a0_5))) {
-                        goto block_64;
-                    }
-                } else {
-                    temp_v0_8 = D_8018EDF3;
-                    temp_a0_6 = *(&gGameModeRowSelectionForNumPlayers + temp_v0_8);
-                    phi_v0_2 = temp_v0_8;
-                    phi_a0_2 = temp_a0_6;
-                    phi_v0_2 = temp_v0_8;
-                    phi_a0_2 = temp_a0_6;
-                    if (phi_a1 < *(&D_800F2B61 + ((temp_v0_8 * 3) + temp_a0_6))) {
-block_64:
-                        phi_v1_2 = 1;
-                    }
-                }
-                if (phi_v1_2 != 0) {
-                    temp_v1_6 = (phi_v0_2 * 3) + phi_a0_2 + &D_800E86B0;
-                    sp1C = phi_v1;
-                    temp_v1_6->unk-3 = temp_v1_6->unk-3 + 1;
-                    func_800B44AC(phi_a0_2, phi_a1, phi_v1);
-                    play_sound2(0x49008000);
-                }
-            }
-            temp_v0_9 = D_8018EDF3;
-            temp_a0_7 = *(&gGameModeRowSelectionForNumPlayers + temp_v0_9);
-            temp_a1 = *(&gGameModeSubMenuRowSelectionForNumPlayers + ((temp_v0_9 * 3) + temp_a0_7));
-            if ((phi_v1 & 0x4000) != 0) {
+                newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
+            } else if (btnAndStick & CONT_A) {
+                // L800B2C00
                 gMainMenuSelectionDepth = GAME_MODE_SELECTION;
-                func_800B44AC(temp_a0_7, temp_a1, phi_v1);
+                func_800B44AC();
+                play_sound2(0x49008001);
+                newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
+            } else if (btnAndStick & CONT_L) {
+                // L800B2C58
+                gMainMenuSelectionDepth = OPTIONS_SELECTION;
+                func_8009E280();
+                play_sound2(0x49009010);
+                newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
+            } else if (btnAndStick & CONT_R) {
+                gMainMenuSelectionDepth = DATA_SELECTION;
+                func_8009E258();
+                play_sound2(0x49009011);
+                newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
+            } else {
+                newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
+            }
+            break;
+        }
+        case 4:
+        {
+            if (btnAndStick & CONT_DOWN) {
+                if (D_800E86AC[D_8018EDF3 - 1] < D_800F2B58[D_8018EDF3 + 7]) {
+                    D_800E86AC[D_8018EDF3 - 1] += 1;
+                    func_800B44AC();
+                    play_sound2(0x49008000);
+                }
+            }
+            // L800B2D94
+            if (btnAndStick & CONT_UP) {
+                if (D_800E86AC[D_8018EDF3 - 1] > 0) {
+                    D_800E86AC[D_8018EDF3 - 1] -= 1;
+                    func_800B44AC();
+                    play_sound2(0x49008000);
+                }
+            }
+            // L800B2DE0
+            if (btnAndStick & CONT_B) {
+                gMainMenuSelectionDepth = PLAYER_NUM_SELECTION;
+                func_800B44AC();
                 play_sound2(0x49008002);
-                temp_t5_2 = D_8018EDF3;
-                phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_t5_2 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_t5_2) * 4));
-            } else if ((phi_v1 & 0x8000) != 0) {
-                sp28 = temp_a1;
-                func_800B44AC(temp_a0_7, temp_a1, phi_v1);
-                temp_v0_10 = D_8018EDF3;
-                if ((temp_v0_10 == 1) && (*(&gGameModeRowSelectionForNumPlayers + temp_v0_10) == 1) && (temp_a1 == 1)) {
+                newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
+            } else if (btnAndStick & CONT_A) {
+                // L800B2E3C
+                switch(gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]]) {
+                    case 0: 
+                        gMainMenuSelectionDepth = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
+                        play_sound2(0x4900900A);
+                        break;
+                    case 2:
+                        gMainMenuSelectionDepth = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
+                        play_sound2(0x4900900C);
+                        break;
+                    case 1:
+                        gMainMenuSelectionDepth = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
+                        play_sound2(0x4900900B);
+                        break;
+                    case 3:
+                        gMainMenuSelectionDepth = CONFIRM_OK_SELECTION;
+                        play_sound2(0x4900900D);
+                        break;
+                    default:
+                        gMainMenuSelectionDepth = CONFIRM_OK_SELECTION;
+                        break;
+                }
+                // L800B2F04
+                func_800B44AC();
+                gMenuTimingCounter = 0;
+                newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
+            } else {
+                newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
+            }
+            break;
+        }
+        case 5:
+        case 8:
+        {
+            if (1);
+            if ((arg1 == 0) && (++gMenuTimingCounter == 100 || gMenuTimingCounter % 300 == 0)) {
+                // L800B2FAC
+                if (gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]] == 0 || gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]] == 2) {
+                    play_sound2(0x4900900E);
+                }
+            }
+            // L800B3000
+            sp28 = D_800E86B0[D_8018EDF3 - 1][D_800E86AC[D_8018EDF3 - 1]];
+            if ((btnAndStick & CONT_UP) && (sp28 > 0)) {
+                D_800E86B0[D_8018EDF3 - 1][D_800E86AC[D_8018EDF3 - 1]] -= 1;
+                func_800B44AC();
+                play_sound2(0x49008000);
+            }
+            // L800B3068
+            if (btnAndStick & CONT_DOWN) {
+                sp24 = FALSE;
+                if (func_800B555C()) {
+                    if (sp28 < D_800F2B60[D_8018EDF3 + 4][D_800E86AC[D_8018EDF3 - 1] + 1]) {
+                        sp24 = TRUE;
+                    }
+                } else {
+                    // L800B30D4
+                    if (sp28 < D_800F2B60[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1] + 1]) {
+                        sp24 = TRUE;
+                    }
+                }
+                // L800B3110
+                if (sp24) {
+                    D_800E86B0[D_8018EDF3 - 1][D_8018EDF3] += 1;
+                    func_800B44AC();
+                    play_sound2(0x49008000);
+                }
+            }
+            // L800B3150
+            sp28 = D_800E86B0[D_8018EDF3 - 1][D_800E86AC[D_8018EDF3 - 1]];
+            if (btnAndStick & CONT_B) {
+                gMainMenuSelectionDepth = GAME_MODE_SELECTION;
+                func_800B44AC();
+                play_sound2(0x49008002);
+                newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
+            } else if (btnAndStick & CONT_A) {
+                // L800B31DC
+                func_800B44AC();
+                if (D_8018EDF3 == 1 && D_800E86AC[D_8018EDF3 - 1] == 1 && sp28 == 1) {
                     func_8009E258();
                     play_sound2(0x49009011);
                 } else {
                     gMainMenuSelectionDepth = CONFIRM_OK_SELECTION;
-                    play_sound2(0x49008001, temp_a1);
+                    play_sound2(0x49008001);
                     gMenuTimingCounter = 0;
                 }
-                temp_t7_4 = D_8018EDF3;
-                phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_t7_4 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_t7_4) * 4));
+                newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
             } else {
-                phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_v0_9 * 0xC) + (temp_a0_7 * 4));
+                // L800B3294
+                newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
             }
             break;
-        case CONFIRM_OK_SELECTION:
-        case CONFIRM_OK_SELECTION_FROM_BACK_OUT:
-            if ((arg1 == 0) && ((temp_t7_5 = gMenuTimingCounter + 1, gMenuTimingCounter = temp_t7_5, (temp_t7_5 == 0x3C)) || ((temp_t7_5 % 300) == 0))) {
-                sp1C = phi_v1;
-                play_sound2(0x4900900F, arg1, phi_v1);
+        }
+        case 6:
+        case 7:
+        {
+            if ((arg1 == 0) && (++gMenuTimingCounter == 60 || gMenuTimingCounter % 300 == 0)) {
+                play_sound2(0x4900900F);
             }
-            if ((phi_v1 & 0x4000) != 0) {
-                temp_v0_11 = D_8018EDF3;
-                temp_v1_7 = *(&gGameModeFromNumPlayersAndRowSelection + ((temp_v0_11 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_v0_11) * 4)));
-                if ((temp_v1_7 != 0) && (temp_v1_7 != 1) && (temp_v1_7 != 2)) {
-                    if (temp_v1_7 != 3) {
-
-                    }
-                    gMainMenuSelectionDepth = GAME_MODE_SELECTION;
-                } else {
-                    gMainMenuSelectionDepth = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
+            // L800B330C
+            if (btnAndStick & CONT_B) {
+                switch (gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]]) {
+                    case 0:
+                    case 1:
+                    case 2:
+                        gMainMenuSelectionDepth = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
+                        break;
+                    case 3:
+                    default:
+                        gMainMenuSelectionDepth = GAME_MODE_SELECTION;
+                        break;
                 }
+                // L800B3384
                 func_800B44AC();
                 play_sound2(0x49008002);
-                temp_t7_6 = D_8018EDF3;
                 gMenuTimingCounter = 0;
-                phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_t7_6 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_t7_6) * 4));
-            } else if ((phi_v1 & 0x8000) != 0) {
+                newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
+            } else if (btnAndStick & CONT_A) {
+                // L800B33D8
                 func_8009E1C0();
                 play_sound2(0x49008016);
                 func_800B28C8();
-                temp_t1_2 = D_8018EDF3;
-                phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_t1_2 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_t1_2) * 4));
+                newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
             } else {
-                temp_t4_3 = D_8018EDF3;
-                phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_t4_3 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_t4_3) * 4));
+                newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
             }
             break;
-        case OPTIONS_SELECTION:
-        case DATA_SELECTION:
-            temp_t2 = D_8018EDF3;
-            phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_t2 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_t2) * 4));
-            break;
-        default:
-            temp_t8 = D_8018EDF3;
-            phi_v1_3 = &gGameModeFromNumPlayersAndRowSelection + ((temp_t8 * 0xC) + (*(&gGameModeRowSelectionForNumPlayers + temp_t8) * 4));
+        }
+        case 1:
+        case 2:
+        {
+            newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
             break;
         }
-        gModeSelection = *phi_v1_3;
+        default:
+        {
+            newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
+            break;
+        }
+        }
+        gModeSelection = newMode;
     }
 }
 #else
 GLOBAL_ASM("asm/non_matchings/menus/func_800B29D8.s")
 #endif
 
-s32 func_800B34E8(s32 arg0) {
+// check if there is no currently selected and/or hovered character at grid position `gridId`
+s32 is_character_spot_free(s32 gridId) {
     s32 i;
-    for (i =0; i < 4; i++) {
-        if (arg0 == gCharacterGridSelections[i]) {
-            return 0;
+    for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
+        if (gridId == gCharacterGridSelections[i]) {
+            return FALSE;
         }
     }
-    return 1;
+    return TRUE;
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-/*
-Failed to decompile function func_800B3554:
+#ifdef NON_MATCHING
+// grid positions are from right to left, then top to bottom
+// nonmatching: the gCharacterGridSelections pointer is not promoted to $s0
+void func_800B3554(struct Controller *controller, u16 arg1) {
+    u16 btnAndStick; // sp36
+    s8 selected;
+    s8 i;
 
-Label L800B3A94 refers to a delay slot; this is currently not supported.
-Please modify the assembly to work around it (e.g. copy the instruction
-to all jump sources and move the label, or add a nop to the delay slot).
-*/
+    btnAndStick = (controller->buttonPressed) | (controller->stickPressed);
+    if (!gEnableDebugMode && btnAndStick & CONT_START) {
+        btnAndStick |= CONT_A;
+    }
+
+    if (!func_800B4520()) {
+        switch (D_8018EDEE) {
+        case 1: 
+        {
+            if (gCharacterGridSelections[arg1] == 0) {
+                if (btnAndStick & CONT_B) {
+                    func_8009E208();
+                    play_sound2(0x49008002);
+                }
+                return;
+            }
+            // L800B3630
+            if (btnAndStick & CONT_B) {
+                if (D_8018EDE8[arg1]) {
+                    D_8018EDE8[arg1] = FALSE;
+                    play_sound2(0x49008002);
+                } else {
+                    func_8009E208();
+                    play_sound2(0x49008002);
+                }
+            }
+            // L800B3684
+            if ((btnAndStick & CONT_A) && !D_8018EDE8[arg1]) {
+                D_8018EDE8[arg1] = TRUE;
+                func_800C90F4(
+                    arg1, 
+                    (((uintptr_t)D_800F2BAC[gCharacterGridSelections[arg1] - 1]) << 4) + 0x2900800EU
+                );
+            }
+            // L800B36F4
+            selected = FALSE;
+            for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
+                if (gCharacterGridSelections[i] && D_8018EDE8[i]) {
+                    selected = TRUE;
+                    break;
+                }
+            }
+            // L800B3738
+            if (!selected) {
+                D_8018EDEE = 2;
+                func_800B44AC();
+                gMenuTimingCounter = 0;
+            }
+            // L800B3768
+            if (D_8018EDE8[arg1]) {
+                if ((btnAndStick & CONT_RIGHT) && (btnAndStick & CONT_DOWN)) {
+                    if (gCharacterGridSelections[arg1] == 1 || gCharacterGridSelections[arg1] == 2 || gCharacterGridSelections[arg1] == 3) {
+                        // L800B37B0
+                        if (is_character_spot_free(gCharacterGridSelections[arg1] + 5)) {
+                            gCharacterGridSelections[arg1] += 5;
+                            play_sound2(0x49008000);
+                        }
+                    }
+                    return;
+                }
+                // L800B37E4
+                if ((btnAndStick & CONT_LEFT) && (btnAndStick & CONT_DOWN)) {
+                    if (gCharacterGridSelections[arg1] == 2 || gCharacterGridSelections[arg1] == 3 || gCharacterGridSelections[arg1] == 4) {
+                        if (is_character_spot_free(gCharacterGridSelections[arg1] + 3)) {
+                            gCharacterGridSelections[arg1] += 3;
+                            play_sound2(0x49008000);
+                        }
+                    }
+                    return;
+                }
+                // L800B3844
+                if ((btnAndStick & CONT_RIGHT) && (btnAndStick & CONT_UP)) {
+                    if (gCharacterGridSelections[arg1] == 5 || gCharacterGridSelections[arg1] == 6 || gCharacterGridSelections[arg1] == 7) {
+                        if (is_character_spot_free(gCharacterGridSelections[arg1] - 3)) {
+                            gCharacterGridSelections[arg1] -= 3;
+                            play_sound2(0x49008000);
+                        }
+                    }
+                    return;
+                }
+                // L800B38A0
+                if ((btnAndStick & CONT_LEFT) && (btnAndStick & CONT_UP)) {
+                    if (gCharacterGridSelections[arg1] == 6 || gCharacterGridSelections[arg1] == 7 || gCharacterGridSelections[arg1] == 8) {
+                        if (is_character_spot_free(gCharacterGridSelections[arg1] - 5)) {
+                            gCharacterGridSelections[arg1] -= 5;
+                            play_sound2(0x49008000);
+                        }
+                    }
+                    return;
+                }
+                // L800B38FC
+                if (btnAndStick & CONT_RIGHT) {
+                    if (gCharacterGridSelections[arg1] != 4 && gCharacterGridSelections[arg1] != 8) {
+                        do {
+                            // L800B391C
+                            if (is_character_spot_free(gCharacterGridSelections[arg1] + 1)) {
+                                gCharacterGridSelections[arg1] += 1;
+                                play_sound2(0x49008000);
+                                break;
+                            }
+                            gCharacterGridSelections[arg1] += 1;
+
+                        } while (gCharacterGridSelections[arg1] != 5 && gCharacterGridSelections[arg1] != 9 && gCharacterGridSelections[arg1] <= 10);
+                    }
+                    return;
+                }
+                // L800B3978
+                if (btnAndStick & CONT_LEFT) {
+                    if (gCharacterGridSelections[arg1] != 1 && gCharacterGridSelections[arg1] != 5) {
+                        do {
+                            if (is_character_spot_free(gCharacterGridSelections[arg1] - 1)) {
+                                gCharacterGridSelections[arg1] -= 1;
+                                play_sound2(0x49008000);
+                                break;
+                            }
+                            gCharacterGridSelections[arg1] -= 1;
+                        } while (gCharacterGridSelections[arg1] != 0 && gCharacterGridSelections[arg1] != 4 && gCharacterGridSelections[arg1] >= 0);
+                    }
+                    return;
+                }
+                // L800B39F4
+                if ((btnAndStick & CONT_UP) && (gCharacterGridSelections[arg1] >= 5)) {
+                    gCharacterGridSelections[arg1] -= 4;
+                }
+                if ((btnAndStick & CONT_DOWN) && (gCharacterGridSelections[arg1] < 5)) {
+                    gCharacterGridSelections[arg1] += 4;
+                }
+                // L800B3A30
+                if (is_character_spot_free(gCharacterGridSelections[arg1])) {
+                    play_sound2(0x49008000);
+                }
+            }
+            break;
+        }
+        case 2:
+        case 3:
+        {
+            if (!arg1 && (++gMenuTimingCounter == 60 || gMenuSelection % 300 == 0)) {
+                // L800B3A94
+                play_sound2(0x4900900F);
+            }
+            // L800B3AA4
+            if (btnAndStick & CONT_B) {
+                D_8018EDEE = 1;
+                D_8018EDE8[arg1] = FALSE;
+                play_sound2(0x49008002);
+            } else if (btnAndStick & CONT_A) {
+                func_8009E1C0();
+                play_sound2(0x49008016);
+                func_8000F124();
+            }
+            break;
+        }
+        }
+        // L800B3B24
+        if (gCharacterGridSelections[arg1] != 0) {
+            gCharacterSelections[arg1] = D_800F2BAC[gCharacterGridSelections[arg1] - 1];
+        }
+    }
+    // L800B3B44
+}
 #else
 GLOBAL_ASM("asm/non_matchings/menus/func_800B3554.s")
 #endif
@@ -1928,7 +1778,6 @@ void func_800B3B58(struct Controller *arg0, u16 arg1) {
             }
             break;
         case 3:
-
             if ((arg1 == 0) && ((++gMenuTimingCounter == 0x3C) || ((gMenuTimingCounter % 300) == 0))) {
                 play_sound2(0x4900900F);
             }
@@ -1961,128 +1810,64 @@ void func_800B3B58(struct Controller *arg0, u16 arg1) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
-? func_8000F0E0();                                  /* extern */
-? func_800B44AC();                                  /* extern */
-? func_800B5F30();                                  /* extern */
-? func_800C8EAC(?, s8 *, s8);                       /* extern */
-? func_800CA008(?, ?, s32);                         /* extern */
-? func_800CB2C4();                                  /* extern */
-? play_sound2(?, s8 *, s8 *, s8);                   /* extern */
-extern s32 D_800DC50C;
-extern s32 D_800DC524;
-extern s32 gScreenModeSelection;
-extern s32 D_800DC540;
-extern s16 D_8015F890;
-extern s16 D_8015F892;
-extern s32 D_80162DC8;
-extern s32 D_80162DCC;
-extern s16 D_80162DD4;
-extern s16 D_80162DD8;
-extern s32 D_80162E00;
-extern s16 D_8016556E;
-extern s32 D_8018EDE0;
-extern s8 D_8018EDE8;
-extern s8 D_8018EDE9;
-extern s8 D_8018EDEA;
-extern s8 D_8018EDEB;
-extern s8 D_8018EDEC;
-extern s8 gMainMenuSelectionDepth;
-extern s8 D_8018EDEE;
-extern s8 gDebugMenuSelection;
-extern s8 D_8018EDF1;
-extern s8 D_8018EDF3;
-extern s8 gTimeTrialDataCourseIndex;
-extern s8 gDebugGotoScene;
-extern s8 D_8018EDFB;
-extern s8 D_8018EDFC;
-extern s32 gMenuTimingCounter;
-extern s32 D_8018EE04;
-extern s8 D_8018EE08;
-extern s8 D_8018EE0A;
-extern s16 gEnableDebugMode;
-static s8 gCharacterSelections = 0;                           /* const */
-static ? D_800F2BDF;                                /* unable to generate initializer; const */
-s32 gIsMirrorMode = 0;
+void func_800B3F74(s32 menuSelection) {
+    s32 i;
 
-void func_800B3F74(u32 arg0) {
-    s32 temp_v0;
-    s32 temp_v0_3;
-    s32 temp_v0_4;
-    s8 *temp_a1;
-    s8 *temp_a2;
-    s8 *temp_v0_5;
-    s8 temp_a0;
-    s8 temp_a3;
-    s8 temp_a3_2;
-    s8 temp_v0_2;
-    s32 phi_a3;
-    s32 phi_v1;
-    s8 *phi_v0;
-    s8 *phi_a2;
-    s8 *phi_a1;
-    s32 phi_a0;
-    s8 *phi_v0_2;
-
-    gDebugMenuSelection = DEBUG_MENU_DISABLED;
+    gDebugMenuSelection = 1;
     gMenuTimingCounter = 0;
     D_8018EE04 = 0;
     D_8018EE08 = 0;
     D_8015F890 = 0;
     D_8015F892 = 0;
-    gDebugGotoScene = DEBUG_GOTO_RACING;
+    gDebugGotoScene = 0;
     D_8018EDFB = 0;
     D_8016556E = 0;
-    D_80162DD4 = 1;
+    *D_80162DD4 = 1;
     D_80162DD8 = 1;
     D_80162E00 = 0;
     D_80162DC8 = 1;
     D_80162DCC = 0;
-    switch (arg0) {
-    case OPTIONS_MENU:
-        D_8018EDEC = 0x15;
-        break;
-    case DATA_MENU:
-        D_8018EDEC = 1;
-        break;
-    case COURSE_DATA_MENU:
-        D_8018EDEC = 0xB;
-        break;
-    case LOGO_INTRO_MENU:
+
+    switch (menuSelection) {
+    case 5: D_8018EDEC = 21; break;
+    case 6: D_8018EDEC =  1; break;
+    case 7: D_8018EDEC = 11; break;
+    case 8: func_800CA008(0, 0); break;
+    case 9:
+    {
+        gControllerPakMenuSelection = 1;
         func_800CA008(0, 0);
         break;
-    case CONTROLLER_PAK_MENU:
-        gControllerPakMenuSelection = CONTROLLER_PAK_MENU_SELECT_RECORD;
-        func_800CA008(0, 0);
-        break;
-    case START_MENU_FROM_QUIT:
-    case START_MENU:
+    }
+    case 0:
+    case 10:
+    {
         gIsMirrorMode = 0;
         gEnableDebugMode = 0;
-        gCupSelection = MUSHROOM_CUP;
-        gCupCourseSelection = CUP_COURSE_ONE;
-        gTimeTrialDataCourseIndex = TIME_TRIAL_DATA_LUIGI_RACEWAY;
-        if (D_8018EDF3 <= ZERO_PLAYERS_SELECTED) {
-            D_8018EDF3 = ONE_PLAYERS_SELECTED;
+        gCupSelection = 0;
+        gCupCourseSelection = 0;
+        gTimeTrialDataCourseIndex = 0;
+        if (D_8018EDF3 <= 0) {
+            D_8018EDF3 = 1;
         }
-        phi_a3 = D_8018EDF3;
-        if (D_8018EDF3 >= SELECTED_PLAYER_DEFINES_TOTAL) {
-            D_8018EDF3 = FOUR_PLAYERS_SELECTED;
-            phi_a3 = D_8018EDF3;
+        if (D_8018EDF3 >= 5) {
+            D_8018EDF3 = 4;
         }
-        D_8018EDF1 = *(&D_800F2BDF + phi_a3);
+        D_8018EDF1 = D_800F2BDC[D_8018EDF3 + 3];
         func_800CA008(0, 0);
         func_800C8EAC(1);
         D_8018EDFC = 0;
         break;
-    case MAIN_MENU_FROM_QUIT:
-    case MAIN_MENU:
+    }
+    case 1:
+    case 11:
+    {
         gEnableDebugMode = 0;
         gIsMirrorMode = 0;
         D_8018EDFC = 0;
         func_800B5F30();
         func_8000F0E0();
+
         if (D_800DC50C != 0) {
             func_800CA008(0, 0);
             func_800CB2C4();
@@ -2090,108 +1875,93 @@ void func_800B3F74(u32 arg0) {
             D_800DC524 = 0;
             func_800C8EAC(2);
         }
-        temp_v0 = D_8018EDE0;
-        if (temp_v0 != 0) {
-            if (temp_v0 != 1) {
-                if (temp_v0 != 3) {
-                    if (temp_v0 != 4) {
 
-                    } else {
-                        gMainMenuSelectionDepth = PLAYER_NUM_SELECTION;
-                    }
-                } else {
-                    temp_v0_2 = gMainMenuSelectionDepth;
-                    if ((temp_v0_2 != OPTIONS_SELECTION) && (temp_v0_2 != DATA_SELECTION)) {
-                        gMainMenuSelectionDepth = TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT;
-                    } else {
-                        gMainMenuSelectionDepth = PLAYER_NUM_SELECTION;
-                    }
-                }
-            } else {
-                gMainMenuSelectionDepth = CONFIRM_OK_SELECTION_FROM_BACK_OUT;
-            }
-        } else {
+        switch (D_8018EDE0) {
+        case 0:
+        {
             gMainMenuSelectionDepth = PLAYER_NUM_SELECTION;
-            func_800C8EAC(2, &gMainMenuSelectionDepth, 3);
-            temp_v0_3 = gScreenModeSelection;
-            D_8018EDF3 = ONE_PLAYERS_SELECTED;
-            if ((temp_v0_3 >= NUM_SCREEN_MODES) || (temp_v0_3 < SCREEN_MODE_1P)) {
+            func_800C8EAC(2);
+            D_8018EDF3 = 1;
+            if (gScreenModeSelection >= NUM_SCREEN_MODES || gScreenModeSelection < 0) {
                 gScreenModeSelection = SCREEN_MODE_1P;
             }
+            break;
+        }
+        case 1:
+        {
+            gMainMenuSelectionDepth = CONFIRM_OK_SELECTION_FROM_BACK_OUT;
+            break;
+        }
+        case 3:
+        {
+            // why...
+            switch (gMainMenuSelectionDepth) {
+                default:
+                    gMainMenuSelectionDepth = TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT;
+                    break;
+                case 1:
+                case 2:
+                    gMainMenuSelectionDepth = PLAYER_NUM_SELECTION;
+                    break;
+            }
+            break;
+        }
+        case 4:
+        {
+            gMainMenuSelectionDepth = PLAYER_NUM_SELECTION;
+            break;
+        }
         }
         break;
-    case PLAYER_SELECT_MENU_FROM_QUIT:
-    case PLAYER_SELECT_MENU:
-        temp_v0_4 = D_8018EDE0;
-        if (temp_v0_4 != 0) {
-            if (temp_v0_4 != 1) {
-
-            } else {
-                D_8018EDEE = 3;
-                temp_a3 = D_8018EDF3;
-                if (temp_a3 > 0) {
-                    D_8018EDE8 = 1;
-                } else {
-                    D_8018EDE8 = 0;
-                }
-                if ((temp_a3 - 1) > 0) {
-                    D_8018EDE9 = 1;
-                } else {
-                    D_8018EDE9 = 0;
-                }
-                if ((temp_a3 - 2) > 0) {
-                    D_8018EDEA = 1;
-                } else {
-                    D_8018EDEA = 0;
-                }
-                if ((temp_a3 - 3) > 0) {
-                    D_8018EDEB = 1;
-                } else {
-                    D_8018EDEB = 0;
-                }
-            }
-        } else {
+    }
+    case 2:
+    case 12:
+    {
+        switch (D_8018EDE0) {
+        case 0:
+        {
             D_8018EDEE = 1;
             if (D_800DC50C == 0) {
-                temp_a3_2 = D_8018EDF3;
-                phi_v1 = 0;
-                phi_v0 = &gCharacterGridSelections;
-                phi_a2 = &gCharacterSelections;
-                phi_a1 = &D_8018EDE8;
-                do {
-                    phi_a0 = phi_v1 + 1;
-                    if (phi_v1 < temp_a3_2) {
-                        temp_a0 = phi_v1 + 1;
-                        *phi_v0 = temp_a0;
-                        phi_a0 = temp_a0;
+                for (i = 0; i < 4; i++) {
+                    if (i < D_8018EDF3) {
+                        gCharacterGridSelections[i] = i + 1;
                     } else {
-                        *phi_v0 = 0;
+                        gCharacterGridSelections[i] = 0;
                     }
-                    *phi_a2 = phi_v1;
-                    temp_a1 = phi_a1 + 1;
-                    temp_a2 = phi_a2 + 1;
-                    temp_a1->unk-1 = 0;
-                    phi_v1 = phi_a0;
-                    phi_v0 += 1;
-                    phi_a2 = temp_a2;
-                    phi_a1 = temp_a1;
-                } while (phi_a0 != 4);
-                play_sound2(0x49009012, temp_a1, temp_a2, temp_a3_2);
+                    D_8018EDE8[i] = FALSE;
+                    gCharacterSelections[i] = i;
+                }
+                play_sound2(0x49009012);
             } else {
                 func_800CA008(0, 0);
                 func_800CB2C4();
                 D_800DC50C = 0;
                 D_800DC524 = 0;
                 func_800C8EAC(2);
-                D_8018EDE8 = 0;
-                D_8018EDE8 = 0;
-                D_8018EDE8 = 0;
-                D_8018EDE8 = 0;
+                for (i = 0; i < ARRAY_COUNT(D_8018EDE8); i++) {
+                    D_8018EDE8[i] = FALSE;
+                }
             }
+            break;
+        }
+        case 1:
+        {
+            D_8018EDEE = 3;
+            for (i = 0; i < ARRAY_COUNT(D_8018EDE8); i++) {
+                if (D_8018EDF3 > i) {
+                    D_8018EDE8[i] = TRUE;
+                } else {
+                    D_8018EDE8[i] = FALSE;
+                }
+            }
+            break;
+        }
         }
         break;
-    case COURSE_SELECT_MENU_FROM_QUIT:
-    case COURSE_SELECT_MENU:
+    }
+    case 3:
+    case 13:
+    {
         if (gModeSelection == BATTLE) {
             gCupSelection = BATTLE_CUP;
             D_800DC540 = 4;
@@ -2203,7 +1973,7 @@ void func_800B3F74(u32 arg0) {
             D_8018EDEC = 1;
         }
         if (D_800DC50C != 0) {
-            func_800CA008(0, 0, 3);
+            func_800CA008(0, 0);
             func_800CB2C4();
             D_800DC50C = 0;
             D_800DC524 = 0;
@@ -2212,46 +1982,31 @@ void func_800B3F74(u32 arg0) {
         play_sound2(0x49009013);
         D_8018EE0A = 0;
         if (gModeSelection == GRAND_PRIX) {
-            gCupCourseSelection = CUP_COURSE_ONE;
+            gCupCourseSelection = 0;
         }
-        phi_v0_2 = gGPPointsByCharacterId;
-        do {
-            temp_v0_5 = phi_v0_2 + 4;
-            temp_v0_5->unk-3 = 0;
-            temp_v0_5->unk-2 = 0;
-            temp_v0_5->unk-1 = 0;
-            temp_v0_5->unk-4 = 0;
-            phi_v0_2 = temp_v0_5;
-        } while (temp_v0_5 != gCharacterIdByGPOverallRank);
+
+        for (i = 0; i < ARRAY_COUNT(gGPPointsByCharacterId); i++) {
+            gGPPointsByCharacterId[i] = 0;
+        }
         break;
+    }
     }
     func_800B44AC();
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B3F74.s")
-#endif
 
 void func_800B44AC(void) {
     D_8018E7A8 = 0x20;
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-? func_800C3448(s32, s32 *); // extern
-extern s32 D_800F2BE4;
-extern u8 gSoundMode;
-
 void func_800B44BC(void) {
-    s32 sp20;
+    UNUSED u32 pad;
+    union GameModePack pack;
 
-    sp20 = D_800F2BE4;
+    pack = D_800F2BE4;
     if ((gSoundMode == SOUND_STEREO) || (gSoundMode == SOUND_HEADPHONES) || (gSoundMode == SOUND_MONO)) {
-        func_800C3448(*(&sp20 + temp_v1) | 0xE0000000, &sp20);
+        func_800C3448(pack.modes[gSoundMode] | 0xE0000000);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B44BC.s")
-#endif
 
 s32 func_800B4520(void) {
 
@@ -2261,25 +2016,11 @@ s32 func_800B4520(void) {
     return 0;
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit cc33060578851a93591ed035e96ffd1f15c765f1
-? rmonPrintf(? *, s32);                          /* extern */
-extern ? D_800F2BE8;
-extern ? D_800F2BF8;
-extern ? D_800F2C0C;
-extern s32 D_80162DE0;
-extern s32 D_8018D9C0;
-extern ? D_8018EE16;
-
-// Separated from assembly in code_800AF9B0/func_800B4520.s
 UNUSED void func_800B4560(s32 arg0, s32 arg1) {
-    s32 sp18;
+    struct_8018EE10_entry *pak1 = D_8018EE10;
+    struct_8018EE10_entry *pak2 = D_8018D9C0;
 
-    sp18 = D_8018D9C0;
-    rmonPrintf(&D_800F2BE8, D_80162DE0);
-    rmonPrintf(&D_800F2BF8, (s32) *(&D_8018EE16 + (arg0 << 7)));
-    rmonPrintf(&D_800F2C0C, (s32) ((arg1 << 7) + sp18)->unk6);
+    rmonPrintf("ghost_kart=%d,", D_80162DE0);
+    rmonPrintf("pak1_ghost_kart=%d,", (pak1 + arg0)->characterId);
+    rmonPrintf("pak2_ghost_kart=%d\n", (pak2 + arg1)->characterId);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B4560.s")
-#endif

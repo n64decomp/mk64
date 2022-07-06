@@ -16,7 +16,5 @@ extern s32         D_800DC540;
 extern s16         gCurrentCourseId; // D_800DC5A0
 extern s32         gIsMirrorMode; // D_800DC5F4
 extern s32         D_800E86A4;
-extern s8          gDisplayedControllerPakTableRows[5]; // D_800E86C6
-extern s32         D_800E86E4;
 
 #endif /* CODE_800AF9B0_H */

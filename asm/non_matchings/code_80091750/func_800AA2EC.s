@@ -26,10 +26,10 @@ glabel L800AA334
 /* 0AAF44 800AA344 8FBF001C */   lw    $ra, 0x1c($sp)
 /* 0AAF48 800AA348 8042EDF3 */  lb    $v0, %lo(D_8018EDF3)($v0)
 /* 0AAF4C 800AA34C 24010001 */  li    $at, 1
-/* 0AAF50 800AA350 3C0B800F */  lui   $t3, %hi(gGameModeRowSelectionForNumPlayers) # 0x800f
+/* 0AAF50 800AA350 3C0B800F */  lui   $t3, %hi((D_800E86AC - 1)) # 0x800f
 /* 0AAF54 800AA354 14410098 */  bne   $v0, $at, .L800AA5B8
 /* 0AAF58 800AA358 01625821 */   addu  $t3, $t3, $v0
-/* 0AAF5C 800AA35C 816B86AB */  lb    $t3, %lo(gGameModeRowSelectionForNumPlayers)($t3) # -0x7955($t3)
+/* 0AAF5C 800AA35C 816B86AB */  lb    $t3, %lo((D_800E86AC - 1))($t3) # -0x7955($t3)
 /* 0AAF60 800AA360 24010001 */  li    $at, 1
 /* 0AAF64 800AA364 3C03800F */  lui   $v1, %hi(D_800E86F8) # $v1, 0x800f
 /* 0AAF68 800AA368 15610093 */  bne   $t3, $at, .L800AA5B8

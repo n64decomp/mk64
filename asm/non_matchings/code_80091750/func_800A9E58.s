@@ -36,10 +36,10 @@ glabel L800A9EBC
 .L800A9ED4:
 /* 0AAAD4 800A9ED4 3C028019 */  lui   $v0, %hi(D_8018EDF3) # $v0, 0x8019
 /* 0AAAD8 800A9ED8 8042EDF3 */  lb    $v0, %lo(D_8018EDF3)($v0)
-/* 0AAADC 800A9EDC 3C06800F */  lui   $a2, %hi(gGameModeRowSelectionForNumPlayers) # 0x800f
+/* 0AAADC 800A9EDC 3C06800F */  lui   $a2, %hi((D_800E86AC - 1)) # 0x800f
 /* 0AAAE0 800A9EE0 8C830004 */  lw    $v1, 4($a0)
 /* 0AAAE4 800A9EE4 00C23021 */  addu  $a2, $a2, $v0
-/* 0AAAE8 800A9EE8 80C686AB */  lb    $a2, %lo(gGameModeRowSelectionForNumPlayers)($a2) # -0x7955($a2)
+/* 0AAAE8 800A9EE8 80C686AB */  lb    $a2, %lo((D_800E86AC - 1))($a2) # -0x7955($a2)
 /* 0AAAEC 800A9EEC 00025080 */  sll   $t2, $v0, 2   # playerCount * 4
 /* 0AAAF0 800A9EF0 01425023 */  subu  $t2, $t2, $v0 # playerCount * 3
 /* 0AAAF4 800A9EF4 000A5080 */  sll   $t2, $t2, 2   # playerCount * 12
@@ -87,13 +87,13 @@ glabel L800A9F7C
 /* 0AAB8C 800A9F8C 8FA40030 */  lw    $a0, 0x30($sp)
 /* 0AAB90 800A9F90 8C58000C */  lw    $t8, 0xc($v0)
 /* 0AAB94 800A9F94 3C198019 */  lui   $t9, %hi(D_8018EDF3) # $t9, 0x8019
-/* 0AAB98 800A9F98 3C09800F */  lui   $t1, %hi(gGameModeRowSelectionForNumPlayers) # 0x800f
+/* 0AAB98 800A9F98 3C09800F */  lui   $t1, %hi((D_800E86AC - 1)) # 0x800f
 /* 0AAB9C 800A9F9C AC98000C */  sw    $t8, 0xc($a0)
 /* 0AABA0 800A9FA0 8339EDF3 */  lb    $t9, %lo(D_8018EDF3)($t9)
 /* 0AABA4 800A9FA4 8C4B0010 */  lw    $t3, 0x10($v0)
 /* 0AABA8 800A9FA8 240E0001 */  li    $t6, 1
 /* 0AABAC 800A9FAC 01394821 */  addu  $t1, $t1, $t9
-/* 0AABB0 800A9FB0 812986AB */  lb    $t1, %lo(gGameModeRowSelectionForNumPlayers)($t1) # -0x7955($t1)
+/* 0AABB0 800A9FB0 812986AB */  lb    $t1, %lo((D_800E86AC - 1))($t1) # -0x7955($t1)
 /* 0AABB4 800A9FB4 AC80001C */  sw    $zero, 0x1c($a0)
 /* 0AABB8 800A9FB8 AC8E0004 */  sw    $t6, 4($a0)
 /* 0AABBC 800A9FBC 000950C0 */  sll   $t2, $t1, 3
@@ -119,14 +119,14 @@ glabel L800A9FD8
 /* 0AAC08 800AA008 846E0000 */  lh    $t6, ($v1)
 /* 0AAC0C 800AA00C 8C4D000C */  lw    $t5, 0xc($v0)
 /* 0AAC10 800AA010 3C198019 */  lui   $t9, %hi(D_8018EDF3) # $t9, 0x8019
-/* 0AAC14 800AA014 3C09800F */  lui   $t1, %hi(gGameModeRowSelectionForNumPlayers) # 0x800f
+/* 0AAC14 800AA014 3C09800F */  lui   $t1, %hi((D_800E86AC - 1)) # 0x800f
 /* 0AAC18 800AA018 01AE7821 */  addu  $t7, $t5, $t6
 /* 0AAC1C 800AA01C AC8F000C */  sw    $t7, 0xc($a0)
 /* 0AAC20 800AA020 8339EDF3 */  lb    $t9, %lo(D_8018EDF3)($t9)
 /* 0AAC24 800AA024 8C4A0010 */  lw    $t2, 0x10($v0)
 /* 0AAC28 800AA028 846C0002 */  lh    $t4, 2($v1)
 /* 0AAC2C 800AA02C 01394821 */  addu  $t1, $t1, $t9
-/* 0AAC30 800AA030 812986AB */  lb    $t1, %lo(gGameModeRowSelectionForNumPlayers)($t1) # -0x7955($t1)
+/* 0AAC30 800AA030 812986AB */  lb    $t1, %lo((D_800E86AC - 1))($t1) # -0x7955($t1)
 /* 0AAC34 800AA034 0009C0C0 */  sll   $t8, $t1, 3
 /* 0AAC38 800AA038 0309C021 */  addu  $t8, $t8, $t1
 /* 0AAC3C 800AA03C 0018C040 */  sll   $t8, $t8, 1
@@ -256,14 +256,14 @@ glabel L800AA198
 /* 0AAE04 800AA204 030A2821 */  addu  $a1, $t8, $t2
 /* 0AAE08 800AA208 AC85000C */  sw    $a1, 0xc($a0)
 /* 0AAE0C 800AA20C 8C4C0010 */  lw    $t4, 0x10($v0)
-/* 0AAE10 800AA210 3C0F800F */  lui   $t7, %hi(gGameModeRowSelectionForNumPlayers) # 0x800f
+/* 0AAE10 800AA210 3C0F800F */  lui   $t7, %hi((D_800E86AC - 1)) # 0x800f
 /* 0AAE14 800AA214 018D5821 */  addu  $t3, $t4, $t5
 /* 0AAE18 800AA218 AC8B0010 */  sw    $t3, 0x10($a0)
 /* 0AAE1C 800AA21C 81CEEDF3 */  lb    $t6, %lo(D_8018EDF3)($t6)
 /* 0AAE20 800AA220 8C580010 */  lw    $t8, 0x10($v0)
 /* 0AAE24 800AA224 84690002 */  lh    $t1, 2($v1)
 /* 0AAE28 800AA228 01EE7821 */  addu  $t7, $t7, $t6
-/* 0AAE2C 800AA22C 81EF86AB */  lb    $t7, %lo(gGameModeRowSelectionForNumPlayers)($t7) # -0x7955($t7)
+/* 0AAE2C 800AA22C 81EF86AB */  lb    $t7, %lo((D_800E86AC - 1))($t7) # -0x7955($t7)
 /* 0AAE30 800AA230 AFA2002C */  sw    $v0, 0x2c($sp)
 /* 0AAE34 800AA234 000FC8C0 */  sll   $t9, $t7, 3
 /* 0AAE38 800AA238 032FC821 */  addu  $t9, $t9, $t7
