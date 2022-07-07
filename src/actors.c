@@ -551,7 +551,7 @@ void func_802979F8(struct Actor *arg0, f32 arg1) {
 
 void func_80297A50(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     u16 temp_t0;
-    f32 temp = func_802B80D0(camera->pos, arg2->unk18, camera->rotX[1], 0, D_80150130[camera - camera1], D_802B95F8);
+    f32 temp = func_802B80D0(camera->pos, arg2->unk18, camera->rot[1], 0, D_80150130[camera - camera1], D_802B95F8);
 
     if (temp < 0.0f) { return; }
 
@@ -780,7 +780,7 @@ void func_80298328(Camera *arg0, Mat4 arg1, struct PiranhaPlant *arg2) {
 
     if (temp & 0x800) { return; }
 
-        temp_f0 = func_802B80D0(arg0->pos, arg2->pos, arg0->rotX[1], 0, D_80150130[arg0 - camera1], D_802B9624);
+        temp_f0 = func_802B80D0(arg0->pos, arg2->pos, arg0->rot[1], 0, D_80150130[arg0 - camera1], D_802B9624);
 
         if (temp_f0 < 0.0f) {
 
@@ -941,7 +941,7 @@ loop_2:
         sp88 = (f32) phi_v0 * gCourseDirection;
         sp8C = (f32) phi_s1->unk2;
         sp90 = (f32) phi_s1->unk4;
-        temp_f0 = func_802B80D0(camera, &sp88, (u16) camera->rotX2, 0.0f, D_80150130[(s32) (camera - camera1) / 184], D_802B9630);
+        temp_f0 = func_802B80D0(camera, &sp88, (u16) camera->rot2, 0.0f, D_80150130[(s32) (camera - camera1) / 184], D_802B9630);
         phi_s5_2 = phi_s5_3;
         phi_s5_2 = phi_s5_3;
         if (temp_f0 > 0.0f) {
@@ -1163,7 +1163,7 @@ loop_5:
         spD8 = (f32) phi_s1->unk2;
         spDC = (f32) phi_s1->unk_04;
         temp_t0 = temp_s0 & 0xF;
-        if (func_802B80D0(camera, temp_a1, (u16) camera->rotX2, 0.0f, *(&D_80150130 + (((s32) (camera - camera1) / 184) * 4)), phi_f22) < 0.0f) {
+        if (func_802B80D0(camera, temp_a1, (u16) camera->rot2, 0.0f, *(&D_80150130 + (((s32) (camera - camera1) / 184) * 4)), phi_f22) < 0.0f) {
             goto block_29;
         }
         if (temp_t0 == 6) {
@@ -1231,7 +1231,7 @@ void func_80299144(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rotX[1], 0, D_80150130[camera - camera1], D_802B9658);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], D_802B9658);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1254,7 +1254,7 @@ void func_8029930C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rotX[1], 0, D_80150130[camera - camera1], D_802B9660);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], D_802B9660);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1277,7 +1277,7 @@ void func_802994D4(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rotX[1], 0, D_80150130[camera - camera1], D_802B9668);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], D_802B9668);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1300,7 +1300,7 @@ void func_8029969C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rotX[1], 0, D_80150130[camera - camera1], D_802B9670);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], D_802B9670);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1323,7 +1323,7 @@ void func_80299864(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rotX[1], 0, D_80150130[camera - camera1], D_802B9674);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], D_802B9674);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1346,7 +1346,7 @@ void func_80299A2C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rotX[1], 0, D_80150130[camera - camera1], D_802B967C);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], D_802B967C);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1369,7 +1369,7 @@ void func_80299BF4(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rotX[1], 0, D_80150130[camera - camera1], D_802B9684);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], D_802B9684);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1392,7 +1392,7 @@ void func_80299DBC(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rotX[1], 0, D_80150130[camera - camera1], D_802B968C);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], D_802B968C);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1414,7 +1414,7 @@ void func_80299EDC(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rotX[1], 0, D_80150130[camera - camera1], D_802B9694);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], D_802B9694);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1436,7 +1436,7 @@ void func_80299FFC(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rotX[1], 0, D_80150130[camera - camera1], D_802B969C);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], D_802B969C);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1458,7 +1458,7 @@ void func_8029A11C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rotX[1], 0, D_80150130[camera - camera1], D_802B96A4);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], D_802B96A4);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1505,7 +1505,7 @@ void func_8029A3AC(Camera *camera, Mat4 arg1, struct ShellActor *shell) {
     };
     uintptr_t phi_t3;
 
-    f32 temp_f0 = func_802B80D0(camera->pos, shell->pos, camera->rotX[1], 0, D_80150130[camera - camera1], D_802B96AC);
+    f32 temp_f0 = func_802B80D0(camera->pos, shell->pos, camera->rot[1], 0, D_80150130[camera - camera1], D_802B96AC);
     if (temp_f0 < 0.0f) {
         func_80297230(camera, (struct Actor *)shell);
         return;
@@ -1573,7 +1573,7 @@ void func_8029A8F4(Camera *arg0, Mat4 arg1, struct BananaActor *arg2) {
     Vec3s sp7C;
     Mat4 sp3C;
 
-    f32 temp = func_802B80D0(arg0->pos, arg2->pos, arg0->rotX[1], 0, D_80150130[arg0 - camera1], D_802B96B4);
+    f32 temp = func_802B80D0(arg0->pos, arg2->pos, arg0->rot[1], 0, D_80150130[arg0 - camera1], D_802B96B4);
     if (temp < 0.0f) {
         func_80297230(arg0, arg2);
         return;
@@ -1667,7 +1667,7 @@ extern f32 D_802B96B8;
 void func_8029AC18(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp; 
 
-        temp = func_802B80D0(camera->pos, arg2->pos, camera->rotX[1], 0, D_80150130[camera - camera1], D_802B96B8);
+        temp = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], D_802B96B8);
     if (temp < 0.0f) { return; }
 
     arg1[3][0] = arg2->pos[0]; // unk30
@@ -1718,7 +1718,7 @@ void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, Mat4 arg2, u16 ar
     f32 temp;
 
     if ((arg3 > 20) && (arg3 < 25)) { return; }
-        temp = func_802B80D0(arg0->pos, boat->pos, arg0->rotX[1], 90000.0f, D_80150130[arg0 - camera1], D_802B96DC);
+        temp = func_802B80D0(arg0->pos, boat->pos, arg0->rot[1], 90000.0f, D_80150130[arg0 - camera1], D_802B96DC);
 
     if (temp < 0.0f) { return; }
 
@@ -1748,7 +1748,7 @@ void func_8029B06C(Camera *arg0, struct Actor *arg1) {
     s32 pad[6];
     Mat4 spD8;
     s32 pad2[32];
-    f32 temp_f0 = func_802B80D0(arg0->pos, arg1->pos, arg0->rotX[1], 2500.0f, D_80150130[arg0 - camera1], D_802B96E0);
+    f32 temp_f0 = func_802B80D0(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, D_80150130[arg0 - camera1], D_802B96E0);
     if (temp_f0 < 0.0f) { return; }
 
         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -1791,7 +1791,7 @@ void func_8029B2E4(Camera *arg0, struct Actor *arg1) {
     s32 pad2[32];
     f32 temp_f0;
 
-    temp_f0 = func_802B80D0(arg0->pos, arg1->pos, arg0->rotX[1], 2500.0f, D_80150130[arg0 - camera1], D_802B96F0);
+    temp_f0 = func_802B80D0(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, D_80150130[arg0 - camera1], D_802B96F0);
     if (temp_f0 < 0.0f) { return; }
 
         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -1821,7 +1821,7 @@ void func_8029B4E0(Camera *arg0, struct Actor *arg1) {
     s32 pad[6];
     Mat4 spC8;
     s32 pad2[32];
-    f32 temp_f0 = func_802B80D0(arg0->pos,arg1->pos, arg0->rotX[1], 2500.0f, D_80150130[arg0 - camera1], D_802B9700);
+    f32 temp_f0 = func_802B80D0(arg0->pos,arg1->pos, arg0->rot[1], 2500.0f, D_80150130[arg0 - camera1], D_802B9700);
 
     if (!(temp_f0 < 0.0f)) {
 
@@ -1854,7 +1854,7 @@ void func_8029B6EC(Camera *camera, struct Actor* arg1) {
     s32 pad[6];
     Mat4 spC8;
     s32 pad2[32];
-    f32 temp_f0 = func_802B80D0(camera->pos, arg1->pos, camera->rotX[1], 2500.0f, D_80150130[camera - camera1], D_802B9710);
+    f32 temp_f0 = func_802B80D0(camera->pos, arg1->pos, camera->rot[1], 2500.0f, D_80150130[camera - camera1], D_802B9710);
 
     if (!(temp_f0 < 0.0f)) {
 
@@ -1889,7 +1889,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     Mat4 spE0;
     Mat4 spA0;
 
-    f32 temp_f0 = func_802B80D0(camera->pos, actor->pos, camera->rotX[1], 2500.0f, D_80150130[camera - camera1], D_802B9720);
+    f32 temp_f0 = func_802B80D0(camera->pos, actor->pos, camera->rot[1], 2500.0f, D_80150130[camera - camera1], D_802B9720);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -2004,7 +2004,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     Mat4 spE0;
     Mat4 spA0;
 
-    f32 temp_f0 = func_802B80D0(camera->pos, actor->pos, camera->rotX[1], 625.0f, D_80150130[camera - camera1], D_802B9730);
+    f32 temp_f0 = func_802B80D0(camera->pos, actor->pos, camera->rot[1], 625.0f, D_80150130[camera - camera1], D_802B9730);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -2074,7 +2074,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     Mat4 spE0;
     Mat4 spA0;
 
-    f32 temp_f0 = func_802B80D0(camera->pos, actor->pos, camera->rotX[1], 2025.0f, D_80150130[camera - camera1], D_802B9740);
+    f32 temp_f0 = func_802B80D0(camera->pos, actor->pos, camera->rot[1], 2025.0f, D_80150130[camera - camera1], D_802B9740);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -2192,7 +2192,7 @@ void func_8029CA90(Camera *camera, struct FallingRock *rock) {
 
     if (rock->respawnTimer != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, rock->pos, camera->rotX[1], 400.0f, D_80150130[camera - camera1], D_802B9750);
+    temp_f0 = func_802B80D0(camera->pos, rock->pos, camera->rot[1], 400.0f, D_80150130[camera - camera1], D_802B9750);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -4423,7 +4423,7 @@ void func_802A171C(Camera *camera, struct Actor *actor) {
 
     temp_a1 = actor->pos;
     sp38 = temp_a1;
-    if (func_802B80D0(temp_a1, (u16) camera->rotX2, 0x451C4000, *(&D_80150130 + (((s32) (camera - camera1) / 184) * 4)), D_802B99E0) < 0.0f) {
+    if (func_802B80D0(temp_a1, (u16) camera->rot2, 0x451C4000, *(&D_80150130 + (((s32) (camera - camera1) / 184) * 4)), D_802B99E0) < 0.0f) {
         func_80297230(camera, actor);
         return;
     }
@@ -4713,7 +4713,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
 
     temp_a1 = item_box->pos;
     sp38 = temp_a1;
-    temp_f0 = func_802B80D0(temp_a1, (u16) camera->rotX2, 0, *(&D_80150130 + (((s32) (camera - camera1) / 184) * 4)), D_802B9A00);
+    temp_f0 = func_802B80D0(temp_a1, (u16) camera->rot2, 0, *(&D_80150130 + (((s32) (camera - camera1) / 184) * 4)), D_802B9A00);
     if (!(temp_f0 < 0.0f) && !(D_802B9A04 < temp_f0)) {
         temp_a0 = item_box->state;
         phi_a0 = temp_a0;
@@ -4949,7 +4949,7 @@ GLOBAL_ASM("asm/non_matchings/actors/func_802A1EA0.s")
 
 void func_802A269C(Camera *arg0, struct Actor *arg1) {
     Mat4 sp38;
-    f32 unk = func_802B80D0(arg0->pos, arg1->pos, arg0->rotX[1], 0, D_80150130[arg0 - camera1], D_802B9A28);
+    f32 unk = func_802B80D0(arg0->pos, arg1->pos, arg0->rot[1], 0, D_80150130[arg0 - camera1], D_802B9A28);
 
     if (!(unk < 0.0f)) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -4970,7 +4970,7 @@ void func_802A27A0(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg, u16 arg3
     f32 temp_f0;
 
     if (D_800DC50C != CREDITS_SEQUENCE) {
-        temp_f0 = func_802B80D0(arg0->pos, egg->pos, arg0->rotX[1], 200.0f, D_80150130[arg0 - camera1], D_802B9A2C);
+        temp_f0 = func_802B80D0(arg0->pos, egg->pos, arg0->rot[1], 200.0f, D_80150130[arg0 - camera1], D_802B9A2C);
         if (temp_f0 < 0.0f) {
             return;
         }
@@ -5014,7 +5014,7 @@ void func_802A29BC(Camera *arg0, Mat4 arg1, struct Actor *arg2) {
     s16 temp = arg2->flags;
 
     if (temp & 0x800) { return; }
-        unk = func_802B80D0(arg0->pos, arg2->pos, arg0->rotX[1], 0, D_80150130[arg0 - camera1], 16000000.0f);
+        unk = func_802B80D0(arg0->pos, arg2->pos, arg0->rot[1], 0, D_80150130[arg0 - camera1], 16000000.0f);
         if (!(unk < 0.0f)) {
             gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
             gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -5031,7 +5031,7 @@ s16 D_802B885C[] = {0, 0, 0};
 void func_802A2AD0(Camera *arg0, struct Actor *arg1) {
     Vec3s sp80 = {0, 0, 0};
     Mat4 sp40;
-    f32 unk = func_802B80D0(arg0->pos, arg1->pos, arg0->rotX[1], 0.0f, D_80150130[arg0 - camera1], 4000000.0f);
+    f32 unk = func_802B80D0(arg0->pos, arg1->pos, arg0->rot[1], 0.0f, D_80150130[arg0 - camera1], 4000000.0f);
 
     if (unk < 0.0f) { return; }
         func_802B5F74(sp40, arg1->pos, arg1->rot);
@@ -5063,7 +5063,7 @@ void func_802A2C78(Camera *arg0, Mat4 arg1, struct Actor *arg2) {
         return;
     }
 
-    temp_f0 = func_802B80D0(arg0->pos, arg2->pos, arg0->rotX[1], 0.0f, D_80150130[arg0 - camera1], 4000000.0f);
+    temp_f0 = func_802B80D0(arg0->pos, arg2->pos, arg0->rot[1], 0.0f, D_80150130[arg0 - camera1], 4000000.0f);
 
     if (!(temp_f0 < 0.0f)) {
         if (((temp_v0 & 0x400) == 0) && (temp_f0 < 250000.0f)) {
@@ -5137,8 +5137,8 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
 
     struct Actor *phi_s0;
     Vec3f sp4C = {0.0f, 5.0f, 10.0f};
-    f32 sp48 = sins(temp_s1->rotX[1] - 0x8000); // unk26;
-    f32 temp_f0 = coss(temp_s1->rotX[1] - 0x8000);
+    f32 sp48 = sins(temp_s1->rot[1] - 0x8000); // unk26;
+    f32 temp_f0 = coss(temp_s1->rot[1] - 0x8000);
 
 
     D_801502C0[0][0] = temp_f0;

@@ -611,7 +611,7 @@ void func_8000142C(void) {
                             D_800DC514 = 0;
                     }
 
-                    temp_v0 = camera1->rotX[1];
+                    temp_v0 = camera1->rot[1];
                     D_801625E8 = D_800DC5EC->pathCounter;
                     if (temp_v0 < 0x2000) {
                         func_80057A50(40, 100, "SOUTH  ", D_801625E8);

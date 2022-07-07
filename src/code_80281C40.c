@@ -21,8 +21,6 @@ extern u16 gIsInQuitToMenuTransition;
 extern Gfx D_00284F70[];
 extern Gfx D_00284EE0[];
 
-extern Camera cameras[];
-
 extern f32 D_80150148, D_8015014C, D_80150150;
 
 extern f32 D_80150130[];
@@ -66,7 +64,7 @@ void func_80281D00(void) {
     guPerspective((Mtx*) &gGfxPool->mtxPool[1], &sp64[39], D_80150130[0], D_80150148, D_80150150, D_8015014C, 1.0f);
     gDPHalf1(gDisplayListHead++, sp64[39]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt((Mtx*) &gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
+    guLookAt((Mtx*) &gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     mtxf_identity(&sp64[6]);
     func_802B4FF8(&sp64[6], 0);

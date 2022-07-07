@@ -6,6 +6,7 @@
 #include <common_structs.h>
 #include <variables.h>
 #include <config.h>
+#include "camera.h"
 
 void func_802A41D4();
 
@@ -988,8 +989,8 @@ void func_802A59A4(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
     guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2],
-             camera->unk, camera->unk1, camera->unk2, camera->angleX,
-             camera->angleY, camera->angleZ);
+             camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0],
+             camera->up[1], camera->up[2]);
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(sp5C);
@@ -1036,7 +1037,7 @@ void func_802A5CB4(void) {
     guPerspective(&gGfxPool->mtxPool[1], &sp9A[17], D_80150130[0], D_80150148, D_80150150, D_8015014C, 1.0f);
     gDPHalf1(gDisplayListHead++, sp9A[17]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
+    guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     if (D_800DC5C8 == 0) {
 
@@ -1085,7 +1086,7 @@ void func_802A5FAC(void) {
     guPerspective(&gGfxPool->mtxPool[2], &sp9A[17], D_80150130[1], D_80150148, D_80150150, D_8015014C, 1.0f);
     gDPHalf1(gDisplayListHead++, sp9A[17]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[8], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
+    guLookAt(&gGfxPool->mtxPool[8], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     //D_801647A8, D_801647AC, D_801647B0, D_801647B4, D_801647B8, D_801647BC, D_801647C0, D_801647C4, D_801647C8);
 
@@ -1133,7 +1134,7 @@ void func_802A62A4(void) {
     guPerspective(&gGfxPool->mtxPool[1], &sp9A[17], D_80150130[0], D_80150148, D_80150150, D_8015014C, 1.0f);
     gDPHalf1(gDisplayListHead++, sp9A[17]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
+    guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     if (D_800DC5C8 == 0) {
 
@@ -1181,7 +1182,7 @@ void func_802A65B8(void) {
     guPerspective(&gGfxPool->mtxPool[2], &sp9A[17], D_80150130[1], D_80150148, D_80150150, D_8015014C, 1.0f);
     gDPHalf1(gDisplayListHead++, sp9A[17]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[8], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
+    guLookAt(&gGfxPool->mtxPool[8], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
@@ -1227,7 +1228,7 @@ void func_802A68CC(void) {
     guPerspective(&gGfxPool->mtxPool[1], &sp9A[17], D_80150130[0], D_80150148, D_80150150, D_8015014C, 1.0f);
     gDPHalf1(gDisplayListHead++, sp9A[17]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
+    guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
@@ -1274,7 +1275,7 @@ void func_802A6BB0(void) {
     gDPHalf1(gDisplayListHead++, sp9A[17]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-    guLookAt(&gGfxPool->mtxPool[8], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
+    guLookAt(&gGfxPool->mtxPool[8], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(sp58);
@@ -1318,7 +1319,7 @@ void func_802A6E94(void) {
     guPerspective(&gGfxPool->mtxPool[3], &sp9A[17], D_80150130[2], D_80150148, D_80150150, D_8015014C, 1.0f);
     gDPHalf1(gDisplayListHead++, sp9A[17]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[9], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
+    guLookAt(&gGfxPool->mtxPool[9], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[9]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
@@ -1373,7 +1374,7 @@ void func_802A7178(void) {
     guPerspective(&gGfxPool->mtxPool[4], &sp92[17], D_80150130[3], D_80150148, D_80150150, D_8015014C, 1.0f);
     gDPHalf1(gDisplayListHead++, sp92[17]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[4]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[10], camera->pos[0], camera->pos[1], camera->pos[2], camera->unk, camera->unk1, camera->unk2, camera->angleX, camera->angleY, camera->angleZ);
+    guLookAt(&gGfxPool->mtxPool[10], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[10]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(sp50);

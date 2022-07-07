@@ -451,7 +451,7 @@ s32 func_80041980(Vec3f arg0, Camera *arg1, u16 arg2) {
     s32 ret;
 
     ret = 0;
-    temp_t9 = (func_80041770(arg1->pos[0], arg0[0], arg1->pos[2], arg0[2]) + (arg2 / 2)) - arg1->rotX[1];
+    temp_t9 = (func_80041770(arg1->pos[0], arg0[0], arg1->pos[2], arg0[2]) + (arg2 / 2)) - arg1->rot[1];
     if ((temp_t9 >= 0) && (arg2 >= temp_t9)) {
         ret = 1;
     }
