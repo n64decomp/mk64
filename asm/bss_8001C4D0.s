@@ -1932,6 +1932,7 @@ glabel D_8018EB90
 glabel D_8018EBA2
 .skip 366
 
+# start of eight byte struct
 glabel D_8018ED10
 .skip 1
 
@@ -1947,15 +1948,19 @@ glabel D_8018ED13
 glabel gSaveDataSoundMode
 .skip 2
 
+# crc 1
 glabel D_8018ED16
 .skip 1
 
+# crc 2
 glabel D_8018ED17
 .skip 55
+# end eight byte struct at 8018ED18?
 
 glabel D_8018ED4E
 .skip 58
 
+# another save data struct (8 bytes again I hope)
 glabel D_8018ED88
 .skip 1
 
@@ -1979,6 +1984,7 @@ glabel D_8018ED8F
 
 glabel D_8018ED90
 .skip 1
+# end backup save data struct
 
 glabel D_8018ED91
 .skip 3

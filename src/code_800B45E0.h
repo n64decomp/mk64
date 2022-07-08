@@ -12,20 +12,23 @@ union GrandPrixPointsUnion
 };
 
 /* Function Prototypes */
+
+s32 func_800B5020(u32 time, s32 charId);
+
 void func_800B45E0(s32);
 void write_save_data_grand_prix_points_and_sound_mode();
 void func_800B46D0(void);
 void func_800B4728(s32);
 void reset_save_data_grand_prix_points_and_sound_mode();
-s32  func_800B4874(s32);
+u8   func_800B4874(s32);
 s32  func_800B639C(s32);
-s32  compute_save_data_checksum_1();
-s32  compute_save_data_checksum_2();
+u8   compute_save_data_checksum_1();
+u8   compute_save_data_checksum_2();
 void func_800B4A10();
 void func_800B4A9C(s32);
 void validate_save_data(void);
 s32  func_800B4E24(s32);
-s32  func_800B4EB4(s32, s32);
+u32  func_800B4EB4(s32, s32);
 s32  func_800B4F2C();
 s32  func_800B4FB0(s32);
 void func_800B5404(s32, s32);
@@ -39,8 +42,8 @@ void func_800B559C(s32);
 s32  func_800B578C(s32);
 s32  func_800B5888(s32); 
 void update_save_data_backup();
-s32  compute_save_data_checksum_backup_1(void);
-s32  compute_save_data_checksum_backup_2(void);
+u8  compute_save_data_checksum_backup_1(void);
+u8  compute_save_data_checksum_backup_2(void);
 s32  validate_save_data_checksum_backup();
 s32  func_800B5B2C(s32);
 s32  func_800B5B94(void);
