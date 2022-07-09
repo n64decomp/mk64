@@ -439,8 +439,13 @@ typedef struct
     /* 0x6C */ s32 unk_06C;
     /* 0x70 */ s32 unk_070;
     /* 0x74 */ s32 unk_074;
-    /* 0x78 */ s8  unk_078[0x0C];
-    /* 0x84 */ s16 unk_084[0xE];
+    /* 0x78 */ s8  unk_078[0x04];
+    /* 0x7C */ s32 unk_07C;
+    /* 0x80 */ s32 unk_080;
+    /* 0x84 */ s16 unk_084[0xA];
+    /* 0x98 */ s16 unk_098;
+    /* 0x9A */ s16 unk_09A;
+    /* 0x9C */ s32 unk_09C;
     /* 0xA0 */ s16 unk_0A0;
     /* 0xA2 */ s16 unk_0A2;
     /* 0xA4 */ s16 unk_0A4;
