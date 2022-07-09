@@ -262,7 +262,7 @@ struct struct_E0 {
     union {
         s8 s8;
         s16 s16;
-    };
+    } unk00;
     s16 unk2;
     s8 unk4[0xDC];
 }; // Size 0xE0
@@ -274,7 +274,7 @@ extern struct struct_E0 D_80165CE3[];
  * (includes D_80165CE3, D_80165CEF)
  **/
 void func_80072388(s32 arg0, s32 arg1) {
-    D_80165CE3[arg0].s8 = arg1;
+    D_80165CE3[arg0].unk00.s8 = arg1;
 }
 
 void func_800723A4(s32 arg0, s32 arg1) {
@@ -311,7 +311,7 @@ void func_80072488(s32 arg0) {
 extern struct struct_E0 D_80165CEF[];
 
 void func_800724DC(s32 arg0) {
-    D_80165CEF[arg0].s8 = 0;
+    D_80165CEF[arg0].unk00.s8 = 0;
 }
 
 void func_800724F8(s32 arg0, s32 arg1) {
@@ -349,13 +349,13 @@ void func_8007266C(s32 arg0) {
     func_80072388(arg0, 0);
     func_800721E8(arg0, 0x2000);
     func_800721E8(arg0, 8);
-    D_80165CBE[arg0].s16 = func_80072530(arg0);
+    D_80165CBE[arg0].unk00.s16 = func_80072530(arg0);
 }
 
 void func_800726CC(s32 arg0, s32 arg1) {
     func_80072388(arg0, 0);
     func_800721E8(arg0, 0x2000);
-    D_80165CBE[arg0].s16 = arg1;
+    D_80165CBE[arg0].unk00.s16 = arg1;
 }
 
 UNUSED void func_8007271C(s32 arg0, s32 arg1) {
@@ -365,7 +365,7 @@ UNUSED void func_8007271C(s32 arg0, s32 arg1) {
 }
 
 UNUSED void func_80007274C(s32 arg0) {
-    if (D_80165CE3[arg0].s8 == 0) {
+    if (D_80165CE3[arg0].unk00.s8 == 0) {
         func_80072488(arg0);
     }
 }
@@ -429,32 +429,32 @@ UNUSED s32 func_800728B0(s32 arg0, s32 arg1, s32 arg2) {
 
 void func_80072950(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     if (arg1 == arg2) {
-        D_80165CBE[arg0].s16 = arg3;
+        D_80165CBE[arg0].unk00.s16 = arg3;
     }
 }
 
 UNUSED void func_80072974(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     if (arg1 != arg2) {
-        D_80165CBE[arg0].s16 = arg3;
+        D_80165CBE[arg0].unk00.s16 = arg3;
     }
 }
 
 extern struct struct_E0 D_80165CE4[];
 
 UNUSED void func_80072998(s32 arg0) {
-        D_80165CE4[arg0].s8 = 0;
+        D_80165CE4[arg0].unk00.s8 = 0;
 }
 
 extern struct struct_E0 D_80165CBA[];
 
 void func_800729B4(s32 arg0, s32 arg1) {
-    D_80165CBA[arg0].s16 = arg1;
+    D_80165CBA[arg0].unk00.s16 = arg1;
 }
 
 extern struct struct_E0 D_80165CBC[];
 
 void func_800729D0(s32 arg0, s32 arg1) {
-    D_80165CBC[arg0].s16 = arg1;
+    D_80165CBC[arg0].unk00.s16 = arg1;
 }
 
 #ifdef MIPS_TO_C
@@ -848,19 +848,19 @@ extern struct struct_E0 D_80165CEE[];
 
 UNUSED void func_8007369C(s32 arg0, s32 arg1) {
     func_800721E8(arg0, 0x8000);
-    D_80165CEE[arg0].s8 = arg1;
+    D_80165CEE[arg0].unk00.s8 = arg1;
 }
 
 extern struct struct_E0 D_80165CEE[];
 
 void func_800736E0(s32 arg0) {
     func_800721E8(arg0, 0x8000);
-    D_80165CEE[arg0].s8 = 1;
+    D_80165CEE[arg0].unk00.s8 = 1;
 }
 
 void func_80073720(s32 arg0) {
     func_800721E8(arg0, 0x8000);
-    D_80165CEE[arg0].s8 = 0;
+    D_80165CEE[arg0].unk00.s8 = 0;
 }
 
 #ifdef MIPS_TO_C
@@ -899,7 +899,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007375C.s")
 extern struct struct_E0 D_80165CE7[];
 
 void func_80073800(s32 arg0, s32 arg1) {
-    D_80165CE7[arg0].s8 = arg1;
+    D_80165CE7[arg0].unk00.s8 = arg1;
 }
 
 void func_8007381C(s32 arg0) {
@@ -910,7 +910,7 @@ extern struct struct_E0 D_80165CF4[];
 
 void func_80073844(s32 arg0) {
     func_80073800(arg0, 0);
-    D_80165CF4[arg0].s8 = 1;
+    D_80165CF4[arg0].unk00.s8 = 1;
 }
 
 void func_80073884(s32 arg0) {
@@ -1123,7 +1123,7 @@ UNUSED s32 func_80073ED4(s32 arg0, u16* arg1, u16 arg2, s32 arg3) {
 extern struct struct_E0 D_80165CE5[];
 
 void func_80073F90(s32 arg0, s32 arg1) {
-    D_80165CE5[arg0].s8 = arg1;
+    D_80165CE5[arg0].unk00.s8 = arg1;
 }
 
 void func_80073FAC(s32 arg0) {
@@ -1134,7 +1134,7 @@ extern struct struct_E0 D_80165CF3[];
 
 void func_80073FD4(s32 arg0) {
     func_80073F90(arg0, 0);
-    D_80165CF3[arg0].s8 = 1;
+    D_80165CF3[arg0].unk00.s8 = 1;
 }
 
 UNUSED void func_80074014(void) {

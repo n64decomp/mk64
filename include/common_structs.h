@@ -502,8 +502,8 @@ typedef struct
     /* 0x04 */ u8  ghostDataSaved;
     /* 0x05 */ s8  courseIndex;
     /* 0x06 */ u8  characterId;
-    /* 0x07 */ u8  unk_07;
-    /* 0x08 */ s8  unk_08[0x77];
+    /* 0x07 */ s8  unk_07[0x3C];
+    /* 0x43 */ u8  pad_43[0x7F-0x43];
     /* 0x7F */ u8  checksum;
 } struct_8018EE10_entry; // size = 0x80
 
