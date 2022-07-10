@@ -43,6 +43,3 @@ glabel func_8005DA30
 /* 05E6C4 8005DAC4 27BD0020 */  addiu $sp, $sp, 0x20
 /* 05E6C8 8005DAC8 03E00008 */  jr    $ra
 /* 05E6CC 8005DACC 00000000 */   nop   
-
-/* 05E6D0 8005DAD0 03E00008 */  jr    $ra
-/* 05E6D4 8005DAD4 00000000 */   nop   
