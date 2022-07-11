@@ -911,6 +911,12 @@ void func_80021E10(Mat4 arg0, f32 *arg1, s16 *arg2) {
 GLOBAL_ASM("asm/non_matchings/code_8001F980/func_80021E10.s")
 #endif
 
+UNUSED void func_80021F50(Mat4 arg0, Vec3f arg1) {
+    arg0[3][0] += arg1[0];
+    arg0[3][1] += arg1[1];
+    arg0[3][2] += arg1[2];
+}
+
 void func_80021F84(Mat4 arg0, f32 arg1) {
     arg0[0][0] *= arg1;
     arg0[1][0] *= arg1;
@@ -3230,3 +3236,11 @@ void func_80026B4C(void *arg0, s8 arg1, s8 arg2, s8 arg3) {
 #else
 GLOBAL_ASM("asm/non_matchings/code_8001F980/func_80026B4C.s")
 #endif
+
+UNUSED void func_8002701C(void) {
+
+}
+
+UNUSED void func_80027024(s32 arg0, s32 arg1, s32 arg2) {
+
+}

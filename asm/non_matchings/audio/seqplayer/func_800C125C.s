@@ -104,4 +104,3 @@ glabel func_800C125C
 /* 0C1FE0 800C13E0 8FBE0038 */  lw    $fp, 0x38($sp)
 /* 0C1FE4 800C13E4 03E00008 */  jr    $ra
 /* 0C1FE8 800C13E8 27BD0040 */   addiu $sp, $sp, 0x40
-

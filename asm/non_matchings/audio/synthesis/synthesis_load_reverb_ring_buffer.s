@@ -37,4 +37,3 @@ glabel synthesis_load_reverb_ring_buffer
 /* 0B7B10 800B6F10 030CC821 */  addu  $t9, $t8, $t4
 /* 0B7B14 800B6F14 03E00008 */  jr    $ra
 /* 0B7B18 800B6F18 AD790004 */   sw    $t9, 4($t3)
-

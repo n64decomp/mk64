@@ -1,7 +1,7 @@
 glabel func_8001C05C
 /* 01CC5C 8001C05C 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 01CC60 8001C060 AFBF0014 */  sw    $ra, 0x14($sp)
-/* 01CC64 8001C064 0C000433 */  jal   func_800010CC
+/* 01CC64 8001C064 0C000433 */  jal   init_seg_8028DF00
 /* 01CC68 8001C068 00000000 */   nop   
 /* 01CC6C 8001C06C 240E0014 */  li    $t6, 20
 /* 01CC70 8001C070 3C01800E */  lui   $at, %hi(gCurrentCourseId)

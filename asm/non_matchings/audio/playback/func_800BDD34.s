@@ -70,5 +70,4 @@ glabel func_800BDD34
 /* 0BEA3C 800BDE3C 8FB70038 */  lw    $s7, 0x38($sp)
 /* 0BEA40 800BDE40 03E00008 */  jr    $ra
 /* 0BEA44 800BDE44 27BD0040 */   addiu $sp, $sp, 0x40
-
 /* 0BEA48 800BDE48 00000000 */  nop   

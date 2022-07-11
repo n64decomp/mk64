@@ -5,7 +5,7 @@
 
 .section .data
 
-#glabel D_800DC600
+#glabel pAppNmiBuffer
 #.word osAppNmiBuffer
 
 #glabel gIsMirrorMode

@@ -12,12 +12,12 @@ glabel func_800A6BEC
 /* 0A7814 800A6C14 AFA40030 */  sw    $a0, 0x30($sp)
 /* 0A7818 800A6C18 18600020 */  blez  $v1, .L800A6C9C
 /* 0A781C 800A6C1C 00008025 */   move  $s0, $zero
-/* 0A7820 800A6C20 3C158016 */  lui   $s5, %hi(D_8015F8BC) # $s5, 0x8016
-/* 0A7824 800A6C24 3C148016 */  lui   $s4, %hi(D_8015F8C8) # $s4, 0x8016
+/* 0A7820 800A6C20 3C158016 */  lui   $s5, %hi(gNmiUnknown2) # $s5, 0x8016
+/* 0A7824 800A6C24 3C148016 */  lui   $s4, %hi(gNmiUnknown5) # $s4, 0x8016
 /* 0A7828 800A6C28 3C11800E */  lui   $s1, %hi(gModeSelection) # $s1, 0x800e
 /* 0A782C 800A6C2C 2631C53C */  addiu $s1, %lo(gModeSelection) # addiu $s1, $s1, -0x3ac4
-/* 0A7830 800A6C30 2694F8C8 */  addiu $s4, %lo(D_8015F8C8) # addiu $s4, $s4, -0x738
-/* 0A7834 800A6C34 26B5F8BC */  addiu $s5, %lo(D_8015F8BC) # addiu $s5, $s5, -0x744
+/* 0A7830 800A6C30 2694F8C8 */  addiu $s4, %lo(gNmiUnknown5) # addiu $s4, $s4, -0x738
+/* 0A7834 800A6C34 26B5F8BC */  addiu $s5, %lo(gNmiUnknown2) # addiu $s5, $s5, -0x744
 /* 0A7838 800A6C38 24130003 */  li    $s3, 3
 /* 0A783C 800A6C3C 24120002 */  li    $s2, 2
 /* 0A7840 800A6C40 8E220000 */  lw    $v0, ($s1)

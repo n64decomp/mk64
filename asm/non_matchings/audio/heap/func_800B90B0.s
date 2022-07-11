@@ -11,8 +11,3 @@ glabel func_800B90B0
 /* 0B9CD4 800B90D4 AC820008 */  sw    $v0, 8($a0)
 /* 0B9CD8 800B90D8 03E00008 */  jr    $ra
 /* 0B9CDC 800B90DC AC820014 */   sw    $v0, 0x14($a0)
-
-/* 0B9CE0 800B90E0 8C8E0000 */  lw    $t6, ($a0)
-/* 0B9CE4 800B90E4 AC80000C */  sw    $zero, 0xc($a0)
-/* 0B9CE8 800B90E8 03E00008 */  jr    $ra
-/* 0B9CEC 800B90EC AC8E0004 */   sw    $t6, 4($a0)
