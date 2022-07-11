@@ -27,12 +27,12 @@ extern struct UnkStruct_800DC5EC *D_800DC5F0;
 extern struct UnkStruct_800DC5EC *D_800DC5F4;
 extern struct UnkStruct_800DC5EC *D_800DC5F8;
 
-extern u8 *D_8015F8BC;
-extern u8 *D_8015F8B8;
-extern u8 *D_8015F8C0;
-extern u8 *D_8015F8C4;
-extern u8 *D_8015F8C8;
-extern u8 *D_8015F8CC;
+extern u8 *gNmiUnknown2;
+extern u8 *gNmiUnknown1;
+extern u8 *gNmiUnknown3;
+extern u8 *gNmiUnknown4;
+extern u8 *gNmiUnknown5;
+extern u8 *gNmiUnknown6;
 
 extern s16 gPlayerBalloonCount[];
 extern s16 D_8016348C;
@@ -149,13 +149,13 @@ void func_8028E028(void) {
 
     switch(gPlayerCountSelection1) {
         case 2:
-            *(D_8015F8C4 + gPlayerWinningIndex) += 1;
+            *(gNmiUnknown4 + gPlayerWinningIndex) += 1;
             break;
         case 3:
-            *(D_8015F8C8 + gPlayerWinningIndex) += 1;
+            *(gNmiUnknown5 + gPlayerWinningIndex) += 1;
             break;
         case 4:
-            *(D_8015F8CC + gPlayerWinningIndex) += 1;
+            *(gNmiUnknown6 + gPlayerWinningIndex) += 1;
             break;
     }
     func_800CA118((u8) gPlayerWinningIndex);
@@ -648,10 +648,10 @@ void func_8028EF28(void) {
                         switch(gPlayerCountSelection1) {
                             case 2:
                                 if (currentPosition == 0) {
-                                    *(D_8015F8B8 + i) += 1;
+                                    *(gNmiUnknown1 + i) += 1;
                                 }
-                                if (*(D_8015F8B8 + i) > 99) {
-                                    *(D_8015F8B8 + i) = 99;
+                                if (*(gNmiUnknown1 + i) > 99) {
+                                    *(gNmiUnknown1 + i) = 99;
                                 }
                                 D_800DC510 = 5;
                                 i = D_8015F8F2[0];
@@ -661,17 +661,17 @@ void func_8028EF28(void) {
                                 break;
                             case 3:
                                 if (currentPosition < 3) {
-                                    *(D_8015F8BC + i * 3 + currentPosition) += 1;
+                                    *(gNmiUnknown2 + i * 3 + currentPosition) += 1;
                                 }
-                                if (*(D_8015F8BC + i * 3 + currentPosition) > 99) {
-                                    *(D_8015F8BC + i * 3 + currentPosition) = 99;
+                                if (*(gNmiUnknown2 + i * 3 + currentPosition) > 99) {
+                                    *(gNmiUnknown2 + i * 3 + currentPosition) = 99;
                                 }
                                 if (currentPosition == 1) {
                                     D_800DC510 = 5;
                                     i = D_8015F8F2[1];
-                                    *(D_8015F8BC + i * 3 + 2) += 1;
-                                    if (*(D_8015F8BC + i * 3 + 2) > 99) {
-                                        *(D_8015F8BC + i * 3 + 2) = 99;
+                                    *(gNmiUnknown2 + i * 3 + 2) += 1;
+                                    if (*(gNmiUnknown2 + i * 3 + 2) > 99) {
+                                        *(gNmiUnknown2 + i * 3 + 2) = 99;
                                     }
                                     gPlayers[i].unk_00C |= 0x200000;
                                     gPlayers[i].unk_000 |= PLAYER_CPU;
@@ -680,10 +680,10 @@ void func_8028EF28(void) {
                                 break;
                             case 4:
                                 if (currentPosition < 3) {
-                                    *(D_8015F8C0 + i * 3 + currentPosition) += 1;
+                                    *(gNmiUnknown3 + i * 3 + currentPosition) += 1;
                                 }
-                                if (*(D_8015F8C0 + i * 3 + currentPosition) > 99) {
-                                    *(D_8015F8C0 + i * 3 + currentPosition) = 99;
+                                if (*(gNmiUnknown3 + i * 3 + currentPosition) > 99) {
+                                    *(gNmiUnknown3 + i * 3 + currentPosition) = 99;
                                 }
                                 if (currentPosition == 2) {
                                     D_800DC510 = 5;

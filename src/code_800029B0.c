@@ -86,7 +86,7 @@ struct UnkStruct_800DC5EC *D_800DC5F0 = &D_8015F480[1];
 struct UnkStruct_800DC5EC *D_800DC5F4 = &D_8015F480[2];
 struct UnkStruct_800DC5EC *D_800DC5F8 = &D_8015F480[3];
 u16 D_800DC5FC = 0;
-u8 *D_800DC600 = &osAppNmiBuffer[0];
+uintptr_t *pAppNmiBuffer = &osAppNmiBuffer;
 s32 gIsMirrorMode = 0;
 f32 D_800DC608 =  1.0f;
 Lights1 D_800DC610[] = {
@@ -221,11 +221,13 @@ void func_80002DAC(void) {
     }
 }
 
-void func_80003010(void) {
-    int i;
-
+/**
+ * The nmi buffer allows developers to save 64 bytes of data through a soft reset.
+ */
+void clear_nmi_buffer(void) {
+    s32 i;
     for (i = 0; i < 16; i++) {
-        ((u32 *)osAppNmiBuffer)[i] = 0;
+        osAppNmiBuffer[i] = 0;
     }
 }
 

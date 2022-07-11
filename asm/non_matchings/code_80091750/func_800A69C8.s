@@ -46,23 +46,23 @@ glabel func_800A69C8
 /* 0A7670 800A6A70 3C188016 */  lui   $t8, %hi(gPlayerPositions)
 /* 0A7674 800A6A74 030FC021 */  addu  $t8, $t8, $t7
 /* 0A7678 800A6A78 8F1843B8 */  lw    $t8, %lo(gPlayerPositions)($t8)
-/* 0A767C 800A6A7C 3C198016 */  lui   $t9, %hi(D_8015F8B8) # $t9, 0x8016
+/* 0A767C 800A6A7C 3C198016 */  lui   $t9, %hi(gNmiUnknown1) # $t9, 0x8016
 /* 0A7680 800A6A80 13000002 */  beqz  $t8, .L800A6A8C
 /* 0A7684 800A6A84 00000000 */   nop
 /* 0A7688 800A6A88 24030001 */  li    $v1, 1
 .L800A6A8C:
-/* 0A768C 800A6A8C 8F39F8B8 */  lw    $t9, %lo(D_8015F8B8)($t9)
+/* 0A768C 800A6A8C 8F39F8B8 */  lw    $t9, %lo(gNmiUnknown1)($t9)
 /* 0A7690 800A6A90 10000009 */  b     .L800A6AB8
 /* 0A7694 800A6A94 0330A021 */   addu  $s4, $t9, $s0
 .L800A6A98:
 /* 0A7698 800A6A98 3C08800E */  lui   $t0, %hi(gPlayerWinningIndex) # $t0, 0x800e
 /* 0A769C 800A6A9C 8D08C5E8 */  lw    $t0, %lo(gPlayerWinningIndex)($t0)
-/* 0A76A0 800A6AA0 3C098016 */  lui   $t1, %hi(D_8015F8C4) # $t1, 0x8016
+/* 0A76A0 800A6AA0 3C098016 */  lui   $t1, %hi(gNmiUnknown4) # $t1, 0x8016
 /* 0A76A4 800A6AA4 12080002 */  beq   $s0, $t0, .L800A6AB0
 /* 0A76A8 800A6AA8 00000000 */   nop
 /* 0A76AC 800A6AAC 24030001 */  li    $v1, 1
 .L800A6AB0:
-/* 0A76B0 800A6AB0 8D29F8C4 */  lw    $t1, %lo(D_8015F8C4)($t1)
+/* 0A76B0 800A6AB0 8D29F8C4 */  lw    $t1, %lo(gNmiUnknown4)($t1)
 /* 0A76B4 800A6AB4 0130A021 */  addu  $s4, $t1, $s0
 .L800A6AB8:
 /* 0A76B8 800A6AB8 00035080 */  sll   $t2, $v1, 2
