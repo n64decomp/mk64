@@ -37,4 +37,3 @@ glabel func_800B6F1C
 /* 0B7BA8 800B6FA8 030CC821 */  addu  $t9, $t8, $t4
 /* 0B7BAC 800B6FAC 03E00008 */  jr    $ra
 /* 0B7BB0 800B6FB0 AD790004 */   sw    $t9, 4($t3)
-

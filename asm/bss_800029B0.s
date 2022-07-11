@@ -193,22 +193,22 @@ glabel D_8015F894
 glabel gTimePlayerLastTouchedFinishLine
 .skip 32
 
-glabel D_8015F8B8
+glabel gNmiUnknown1
 .skip 4
 
-glabel D_8015F8BC
+glabel gNmiUnknown2
 .skip 4
 
-glabel D_8015F8C0
+glabel gNmiUnknown3
 .skip 4
 
-glabel D_8015F8C4
+glabel gNmiUnknown4
 .skip 4
 
-glabel D_8015F8C8
+glabel gNmiUnknown5
 .skip 4
 
-glabel D_8015F8CC
+glabel gNmiUnknown6
 .skip 4
 
 glabel D_8015F8D0
@@ -253,7 +253,7 @@ glabel D_80162578
 glabel D_801625E8
 .skip 2
 
-glabel sController1Unplugged
+glabel sIsController1Unplugged
 .skip 2
 
 glabel D_801625EC

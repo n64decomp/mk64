@@ -9,6 +9,8 @@ typedef s16 Vec3s[3];
 typedef u16 Vec3su[3];
 typedef s16 Vec4s[4];
 
+#define COURSE_NULL 0xFF
+
 typedef enum {
     /* 0x00 */ COURSE_MARIO_RACEWAY = 0,
     /* 0x01 */ COURSE_CHOCO_MOUNTAIN,

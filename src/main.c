@@ -38,7 +38,7 @@ struct VblankHandler *gVblankHandler2 = NULL;
 struct SPTask *gActiveSPTask = NULL;
 struct SPTask *sCurrentAudioSPTask = NULL;
 struct SPTask* sCurrentDisplaySPTask = NULL;
-struct SPTask* D_800DC4B4 = NULL;
+struct SPTask* sNextAudioSPTask = NULL;
 struct SPTask* sNextDisplaySPTask = NULL;
 
 
@@ -72,15 +72,15 @@ struct GfxPool gGfxPools[2];
 struct GfxPool *gGfxPool;
 
 s32 gfxPool_padding; // is this necessary?
-struct VblankHandler D_8014EF48;
+struct VblankHandler gGameVblankHandler;
 struct VblankHandler sSoundVblankHandler;
-OSMesgQueue gDmaMesgQueue, D_8014EF70, D_8014EF88, unused_gMsgQueue, gIntrMesgQueue, D_8014EFD0;
+OSMesgQueue gDmaMesgQueue, gGameVblankQueue, gGfxVblankQueue, unused_gMsgQueue, gIntrMesgQueue, gSPTaskMesgQueue;
 OSMesgQueue sSoundMesgQueue;
-OSMesg sSoundMesgBuf;
-OSMesg D_8014F004, D_8014F008;
-OSMesg D_8014F00C[1];
+OSMesg sSoundMesgBuf[1];
+OSMesg gDmaMesgBuf[1], gGameMesgBuf;
+OSMesg gGfxMesgBuf[1];
 UNUSED OSMesg D_8014F010, D_8014F014;
-OSMesg D_8014F018[16], D_8014F058[16];
+OSMesg gIntrMesgBuf[16], gSPTaskMesgBuf[16];
 OSMesg gMainReceivedMesg;
 OSIoMesg gDmaIoMesg;
 OSMesgQueue gSIEventMesgQueue;
@@ -96,7 +96,7 @@ u16 gNumActors;
 u16 D_80150112;
 s32 D_80150114;
 f32 D_80150118;
-u16 D_8015011C;
+u16 wasSoftReset;
 u16 D_8015011E;
 
 s32 D_80150120;
@@ -138,19 +138,19 @@ OSThread gVideoThread;
 ALIGNED8 u8 gVideoThreadStack[0x2000];
 OSThread D_80156820;
 ALIGNED8 u8 D_8015680_Stack[0x2000];
-OSThread D_801589D0;
-ALIGNED8 u8 D_801589D0_Stack[0x2000];
-OSThread D_8015AB80;
-ALIGNED8 u8 D_8015AB80_Stack[0x2000];
+OSThread gGameLoopThread;
+ALIGNED8 u8 gGameLoopThreadStack[0x2000];
+OSThread gAudioThread;
+ALIGNED8 u8 gAudioThreadStack[0x2000];
 OSThread D_8015CD30;
 ALIGNED8 u8 D_8015CD30_Stack[0x1000];
 
 u8 gGfxSPTaskYieldBuffer[4352];
 u32 gGfxSPTaskStack[256];
-OSMesg D_8015F3E0[32];
-OSMesgQueue D_8015F460;
+OSMesg gPIMesgBuf[32];
+OSMesgQueue gPIMesgQueue;
 
-s32 D_800DC50C = 0xffff;
+s32 D_800DC50C = 0xFFFF;
 u16 D_800DC510 = 0;
 u16 D_800DC514 = 0;
 u16 D_800DC518 = 0;
@@ -239,12 +239,14 @@ void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, 
 
 void main_func(void) {
     osInitialize();
-	//! Why is this using the gVideoThread as idle stack?
-    create_thread(&gIdleThread, 1, thread1_idle, NULL, &gVideoThread, 100);
+    create_thread(&gIdleThread, 1, &thread1_idle, NULL, gIdleThreadStack + ARRAY_COUNT(gIdleThreadStack), 100);
     osStartThread(&gIdleThread);
 }
 
-void thread1_idle(void *arg0) {
+/**
+ * Initialize hardware, start main thread, then idle.
+ */
+void thread1_idle(void *arg) {
     osCreateViManager(OS_PRIORITY_VIMGR);
     if (osTvType == TV_TYPE_NTSC) {
         osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);
@@ -253,25 +255,25 @@ void thread1_idle(void *arg0) {
     }
     osViBlack(TRUE);
     osViSetSpecialFeatures(OS_VI_GAMMA_OFF);
-    osCreatePiManager(OS_PRIORITY_PIMGR, &D_8015F460, &D_8015F3E0, 0x20);
-    D_8015011C = (s16) osResetType;
+    osCreatePiManager(OS_PRIORITY_PIMGR, &gPIMesgQueue, gPIMesgBuf, ARRAY_COUNT(gPIMesgBuf));
+    wasSoftReset = (s16) osResetType;
     create_debug_thread();
     start_debug_thread();
-    create_thread(&gVideoThread, 3, &thread3_video, arg0, &D_80156820, 100);
+    create_thread(&gVideoThread, 3, &thread3_video, arg, gVideoThreadStack + ARRAY_COUNT(gVideoThreadStack), 100);
     osStartThread(&gVideoThread);
     osSetThreadPri(NULL, 0);
 
     // halt
-    while (1);
+    while (TRUE);
 }
 
 void setup_mesg_queues(void) {
-    osCreateMesgQueue(&gDmaMesgQueue, &D_8014F004, 1);
-    osCreateMesgQueue(&D_8014EFD0, &D_8014F058, 0x10);
-    osCreateMesgQueue(&gIntrMesgQueue, &D_8014F018, 0x10);
-    osViSetEvent(&gIntrMesgQueue, (OSMesg) 0x66, 1);
-    osSetEventMesg(4, &gIntrMesgQueue, (OSMesg) 0x64);
-    osSetEventMesg(9, &gIntrMesgQueue, (OSMesg) 0x65);
+    osCreateMesgQueue(&gDmaMesgQueue, gDmaMesgBuf, ARRAY_COUNT(gDmaMesgBuf));
+    osCreateMesgQueue(&gSPTaskMesgQueue, gSPTaskMesgBuf, ARRAY_COUNT(gSPTaskMesgBuf));
+    osCreateMesgQueue(&gIntrMesgQueue, gIntrMesgBuf, ARRAY_COUNT(gIntrMesgBuf));
+    osViSetEvent(&gIntrMesgQueue, (OSMesg) MESG_VI_VBLANK, 1);
+    osSetEventMesg(OS_EVENT_SP, &gIntrMesgQueue, (OSMesg) MESG_SP_COMPLETE);
+    osSetEventMesg(OS_EVENT_DP, &gIntrMesgQueue, (OSMesg) MESG_DP_COMPLETE);
 }
 
 void start_sptask(s32 taskType) {
@@ -285,10 +287,12 @@ void start_sptask(s32 taskType) {
     gActiveSPTask->state = SPTASK_STATE_RUNNING;
 }
 
-// Most similar to create_task_structure from SM64, with additional provisions
-// to load both F3DEX and F3DLX, depending on the number of players
-void func_800006E8(void) {
-    gGfxSPTask->msgqueue = &D_8014EF88;
+/**
+ * Initializes the Fast3D OSTask structure.
+ * Loads F3DEX or F3DLX based on the number of players
+ **/
+void create_gfx_task_structure(void) {
+    gGfxSPTask->msgqueue = &gGfxVblankQueue;
     gGfxSPTask->msg = (OSMesg) 2;
     gGfxSPTask->task.t.type = M_GFXTASK;
     gGfxSPTask->task.t.flags = (1 << 1);
@@ -321,58 +325,58 @@ void init_controllers(void) {
     osSetEventMesg(OS_EVENT_SI, &gSIEventMesgQueue, (OSMesg) 0x33333333);
     osContInit(&gSIEventMesgQueue, &gControllerBits, &gControllerStatuses);
     if ((gControllerBits & 1) == 0) {
-        sController1Unplugged = TRUE;
-        return;
+        sIsController1Unplugged = TRUE;
+    } else {
+        sIsController1Unplugged = FALSE;
     }
-    sController1Unplugged = FALSE;
 }
 
-void func_80000934(s32 arg0) {
-    struct Controller *controller = &gControllers[arg0];
-    u16 phi_a0;
+void update_controller(s32 index) {
+    struct Controller *controller = &gControllers[index];
+    u16 stick;
 
-    if (sController1Unplugged != 0) {
+    if (sIsController1Unplugged) {
         return;
     }
 
-    controller->rawStickX = gControllerPads[arg0].stick_x;
-    controller->rawStickY = gControllerPads[arg0].stick_y;
+    controller->rawStickX = gControllerPads[index].stick_x;
+    controller->rawStickY = gControllerPads[index].stick_y;
 
-    if ((gControllerPads[arg0].button & 4) != 0) {
-        gControllerPads[arg0].button |= Z_TRIG;
+    if ((gControllerPads[index].button & 4) != 0) {
+        gControllerPads[index].button |= Z_TRIG;
     }
-    controller->buttonPressed = gControllerPads[arg0].button & (gControllerPads[arg0].button ^ controller->button);
-    controller->buttonDepressed = controller->button & (gControllerPads[arg0].button ^ controller->button);
-    controller->button = gControllerPads[arg0].button;
+    controller->buttonPressed = gControllerPads[index].button & (gControllerPads[index].button ^ controller->button);
+    controller->buttonDepressed = controller->button & (gControllerPads[index].button ^ controller->button);
+    controller->button = gControllerPads[index].button;
 
-    phi_a0 = 0;
+    stick = 0;
     if (controller->rawStickX < -50) {
-        phi_a0 |= L_JPAD;
+        stick |= L_JPAD;
     }
     if (controller->rawStickX > 50) {
-        phi_a0 |= R_JPAD;
+        stick |= R_JPAD;
     }
     if (controller->rawStickY < -50) {
-        phi_a0 |= D_JPAD;
+        stick |= D_JPAD;
     }
     if (controller->rawStickY > 50) {
-        phi_a0 |= U_JPAD;
+        stick |= U_JPAD;
     }
-    controller->stickPressed = phi_a0 & (phi_a0 ^ controller->stickDirection);
-    controller->stickDepressed = controller->stickDirection & (phi_a0 ^ controller->stickDirection);
-    controller->stickDirection = phi_a0;
+    controller->stickPressed = stick & (stick ^ controller->stickDirection);
+    controller->stickDepressed = controller->stickDirection & (stick ^ controller->stickDirection);
+    controller->stickDirection = stick;
 }
 
 void read_controllers(void) {
-    OSMesg sp1C;
+    OSMesg msg;
 
     osContStartReadData(&gSIEventMesgQueue);
-    osRecvMesg(&gSIEventMesgQueue, &sp1C, 1);
+    osRecvMesg(&gSIEventMesgQueue, &msg, OS_MESG_BLOCK);
     osContGetReadData(&gControllerPads);
-    func_80000934(0);
-    func_80000934(1);
-    func_80000934(2);
-    func_80000934(3);
+    update_controller(0);
+    update_controller(1);
+    update_controller(2);
+    update_controller(3);
     gControllerFive->button = (s16) (((gControllerOne->button | gControllerTwo->button) | gControllerThree->button) | gControllerFour->button);
     gControllerFive->buttonPressed = (s16) (((gControllerOne->buttonPressed | gControllerTwo->buttonPressed) | gControllerThree->buttonPressed) | gControllerFour->buttonPressed);
     gControllerFive->buttonDepressed = (s16) (((gControllerOne->buttonDepressed | gControllerTwo->buttonDepressed) | gControllerThree->buttonDepressed) | gControllerFour->buttonDepressed);
@@ -385,14 +389,12 @@ void func_80000BEC(void) {
     D_801502B4 = VIRTUAL_TO_PHYSICAL(&gZBuffer);
 }
 
-// send_sp_task_message from SM64
-void func_80000C0C(OSMesg arg0) {
+void dispatch_audio_sptask(struct SPTask *spTask) {
     osWritebackDCacheAll();
-    osSendMesg(&D_8014EFD0, arg0, OS_MESG_NOBLOCK);
+    osSendMesg(&gSPTaskMesgQueue, spTask, OS_MESG_NOBLOCK);
 }
 
-// similar to send_display_list from SM64
-void send_display_list(struct SPTask *spTask) {
+void exec_display_list(struct SPTask *spTask) {
     osWritebackDCacheAll();
     spTask->state = SPTASK_STATE_NOT_STARTED;
     if (sCurrentDisplaySPTask == NULL) {
@@ -413,12 +415,13 @@ void func_80000CA8(void) {
     func_802A3CB0();
 }
 
-// Similar to end_master_display_list in SM64
-void func_80000CE8(void) {
+/**
+ * End the master display list and initialize the graphics task structure for the next frame to be rendered.
+ */
+void end_master_display_list(void) {
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
-
-    func_800006E8();
+    create_gfx_task_structure();
 }
 
 // clear_frame_buffer from SM64, with a few edits
@@ -445,8 +448,8 @@ void rendering_init(void) {
     gDisplayListHead = gGfxPool->gfxPool;
     func_80000CA8();
     clear_framebuffer(0);
-    func_80000CE8();
-    send_display_list(&gGfxPool->spTask);
+    end_master_display_list();
+    exec_display_list(&gGfxPool->spTask);
     sRenderingFramebuffer++;
     gGlobalTimer++;
 }
@@ -458,15 +461,21 @@ void config_gfx_pool(void) {
     gGfxSPTask = &gGfxPool->spTask;
 }
 
+/**
+ * Send current master display list for rendering.
+ * Tell the VI which colour framebuffer to display.
+ * Yields to the VI framerate twice, locking the game at 30 FPS.
+ * Selects the next framebuffer to be rendered and displayed.
+ */
 void display_and_vsync(void) {
-    profiler_log_thread5_time(2);
-    osRecvMesg(&D_8014EF88, &gMainReceivedMesg, 1);
-    send_display_list(&gGfxPool->spTask);
-    profiler_log_thread5_time(3);
-    osRecvMesg(&D_8014EF70, &gMainReceivedMesg, 1);
+    profiler_log_thread5_time(BEFORE_DISPLAY_LISTS);
+    osRecvMesg(&gGfxVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+    exec_display_list(&gGfxPool->spTask);
+    profiler_log_thread5_time(AFTER_DISPLAY_LISTS);
+    osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
-    profiler_log_thread5_time(4);
-    osRecvMesg(&D_8014EF70, &gMainReceivedMesg, 1);
+    profiler_log_thread5_time(THREAD5_END);
+    osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     crash_screen_set_framebuffer(gPhysicalFramebuffers[sRenderedFramebuffer]);
     if (++sRenderedFramebuffer == 3) {
         sRenderedFramebuffer = 0;
@@ -477,7 +486,7 @@ void display_and_vsync(void) {
     gGlobalTimer++;
 }
 
-void func_8000105C(void) {
+void init_seg_80280000(void) {
     bzero(SEG_80280000, 0xDF00);
     osWritebackDCacheAll();
     dma_copy(SEG_80280000, &_code_80280000SegmentRomStart, ALIGN16((u32)&_code_80280000SegmentRomEnd - (u32)&_code_80280000SegmentRomStart));
@@ -485,7 +494,7 @@ void func_8000105C(void) {
     osInvalDCache(SEG_80280000, 0xDF00);
 }
 
-void func_800010CC(void) {
+void init_seg_8028DF00(void) {
     bzero(SEG_8028DF00, 0x2C470);
     osWritebackDCacheAll();
     dma_copy(SEG_8028DF00, &_code_8028DF00SegmentRomStart, ALIGN16((u32)&_code_8028DF00SegmentRomEnd - (u32)&_code_8028DF00SegmentRomStart));
@@ -518,20 +527,20 @@ void init_game(void) {
     s32 sp38;
     UNUSED s32 unknown_padding;
 
-    func_800010CC();
+    init_seg_8028DF00();
     gHeapEndPtr = SEG_8028DF00;
     set_segment_base_addr(0, 0x80000000);
     func_802A7CF0(&D_801978D0, 0x80242F00);
     func_80000BEC();
     osInvalDCache(SEG_802BA370, 0x5810);
     osPiStartDma(&gDmaIoMesg, 0, 0, &_data_802BA370SegmentRomStart, SEG_802BA370, 0x5810, &gDmaMesgQueue);
-    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
+    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     set_segment_base_addr(2, func_802A7D70(&_data_segment2SegmentRomStart, &_data_segment2SegmentRomEnd));
     sp2C = (u32)&_common_texturesSegmentRomEnd - (u32)&_common_texturesSegmentRomStart;
     sp2C = ALIGN16(sp2C);
     texture_seg = SEG_8028DF00-sp2C;
     osPiStartDma(&gDmaIoMesg, 0, 0, &_common_texturesSegmentRomStart, texture_seg, sp2C, &gDmaMesgQueue);
-    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
+    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
     sp40 = *(u32 *)(texture_seg + 4);
     sp40 = ALIGN16(sp40);
@@ -597,7 +606,7 @@ void func_8000142C(void) {
             }
             func_8005A070();
             sNumVBlanks = 0;
-            profiler_log_thread5_time(1);
+            profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
             D_8015F788 = 0;
             func_802A59A4();
             if (gEnableDebugMode == 0) {
@@ -662,7 +671,7 @@ void func_8000142C(void) {
                     func_80022744();
                 }
                 func_8005A070();
-                profiler_log_thread5_time(1);
+                profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
                 sNumVBlanks = 0;
                 move_segment_table_to_dmem();
                 func_802A3E3C();
@@ -707,7 +716,7 @@ void func_8000142C(void) {
                     }
                 func_80022744();
             }
-            profiler_log_thread5_time(1);
+            profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
             sNumVBlanks = (u16)0;
             func_8005A070();
             move_segment_table_to_dmem();
@@ -780,7 +789,7 @@ void func_8000142C(void) {
             }
         func_8005A070();
         sNumVBlanks = 0;
-        profiler_log_thread5_time(1);
+        profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
         move_segment_table_to_dmem();
         func_802A3E3C();
         if (D_800DC5B0 != 0) {
@@ -870,42 +879,41 @@ void interrupt_gfx_sptask(void) {
     }
 }
 
-void func_80001FAC(void) {
+void receive_new_tasks(void) {
     s32 pad;
-    struct SPTask *sp40;
+    struct SPTask *spTask;
 
-    while(osRecvMesg(&D_8014EFD0, &sp40, 0) != -1) {
-        sp40->state = 0;
-        switch(sp40->task.t.type) {
+    while(osRecvMesg(&gSPTaskMesgQueue, (OSMesg *) &spTask, OS_MESG_NOBLOCK) != -1) {
+        spTask->state = SPTASK_STATE_NOT_STARTED;
+        switch(spTask->task.t.type) {
             case 2:
-                D_800DC4B4 = sp40;
+                sNextAudioSPTask = spTask;
                 break;
             case 1:
-                sNextDisplaySPTask = sp40;
+                sNextDisplaySPTask = spTask;
                 break;
         }
     }
 
-    if (sCurrentAudioSPTask == 0 && D_800DC4B4 != 0) {
-        sCurrentAudioSPTask = D_800DC4B4;
-        D_800DC4B4 = 0;
+    if (sCurrentAudioSPTask == NULL && sNextAudioSPTask != NULL) {
+        sCurrentAudioSPTask = sNextAudioSPTask;
+        sNextAudioSPTask = NULL;
     }
-    if (sCurrentDisplaySPTask == 0 && sNextDisplaySPTask != 0) {
+    if (sCurrentDisplaySPTask == NULL && sNextDisplaySPTask != NULL) {
         sCurrentDisplaySPTask = sNextDisplaySPTask;
-        sNextDisplaySPTask = 0;
+        sNextDisplaySPTask = NULL;
     }
 }
 
-// likely set_vblank_handler from SM64
-void func_800020D8(s32 arg0, struct VblankHandler *arg1, OSMesgQueue *arg2, OSMesg *arg3) {
-    arg1->queue = arg2;
-    arg1->msg = arg3;
-    switch (arg0) {
+void set_vblank_handler(s32 index, struct VblankHandler *handler, OSMesgQueue *queue, OSMesg *msg) {
+    handler->queue = queue;
+    handler->msg = msg;
+    switch (index) {
         case 1:
-            gVblankHandler1 = arg1;
+            gVblankHandler1 = handler;
             break;
         case 2:
-            gVblankHandler2 = arg1;
+            gVblankHandler2 = handler;
             break;
     }
 }
@@ -918,13 +926,17 @@ void start_gfx_sptask(void) {
     }
 }
 
-// Similar to handle_vblank from SM64
-void func_80002168(void) {
+void handle_vblank(void) {
     D_800DC594 += 0.01666666;
     sNumVBlanks++;
 
-    func_80001FAC();
+    receive_new_tasks();
 
+    // First try to kick off an audio task. If the gfx task is currently
+    // running, we need to asynchronously interrupt it -- handle_sp_complete
+    // will pick up on what we're doing and start the audio task for us.
+    // If there is already an audio task running, there is nothing to do.
+    // If there is no audio task available, try a gfx task instead.
     if (sCurrentAudioSPTask != NULL) {
         if (gActiveSPTask != NULL) {
             interrupt_gfx_sptask();
@@ -934,22 +946,28 @@ void func_80002168(void) {
         }
     } else {
         if (gActiveSPTask == NULL && sCurrentDisplaySPTask != NULL
-                && sCurrentDisplaySPTask->state != 3) {
-                    profiler_log_gfx_time(0);
-                    start_sptask(M_GFXTASK);
-                }
-            }
+                && sCurrentDisplaySPTask->state != SPTASK_STATE_FINISHED) {
+            profiler_log_gfx_time(TASKS_QUEUED);
+            start_sptask(M_GFXTASK);
+        }
+    }
+
+    /* This is where I would put my rumble code... If I had any. */
+    #if ENABLE_RUMBLE
+    rumble_thread_update_vi();
+    #endif
+
     if (gVblankHandler1 != NULL) {
-        osSendMesg(gVblankHandler1->queue, gVblankHandler1->msg, 0);
+        osSendMesg(gVblankHandler1->queue, gVblankHandler1->msg, OS_MESG_NOBLOCK);
     }
     if (gVblankHandler2 != NULL) {
-        osSendMesg(gVblankHandler2->queue, gVblankHandler2->msg, 0);
+        osSendMesg(gVblankHandler2->queue, gVblankHandler2->msg, OS_MESG_NOBLOCK);
     }
 }
 
-// likely handle_dp_complete from SM64
-void func_80002284(void) {
-    if (sCurrentDisplaySPTask->msgqueue != 0) {
+void handle_dp_complete(void) {
+    // Gfx SP task is completely done.
+    if (sCurrentDisplaySPTask->msgqueue != NULL) {
         osSendMesg(sCurrentDisplaySPTask->msgqueue, sCurrentDisplaySPTask->msg, OS_MESG_NOBLOCK);
     }
     profiler_log_gfx_time(RDP_COMPLETE);
@@ -957,76 +975,83 @@ void func_80002284(void) {
     sCurrentDisplaySPTask = NULL;
 }
 
-void *func_800022DC(void) {
-    struct SPTask *temp_a3 = gActiveSPTask;
+void handle_sp_complete(void) {
+    struct SPTask *curSPTask = gActiveSPTask;
 
     gActiveSPTask = NULL;
-    if (temp_a3->state == 2) {
-
-        if (osSpTaskYielded(temp_a3) == 0) {
-            temp_a3->state = 3;
-            profiler_log_gfx_time(1);
+    
+    if (curSPTask->state == SPTASK_STATE_INTERRUPTED) {
+        // handle_vblank tried to start an audio task while there was already a
+        // gfx task running, so it had to interrupt the gfx task. That interruption
+        // just finished.
+        if (osSpTaskYielded(curSPTask) == 0) {
+            // The gfx task completed before we had time to interrupt it.
+            // Mark it finished, just like below.
+            curSPTask->state = SPTASK_STATE_FINISHED;
+            profiler_log_gfx_time(RSP_COMPLETE);
         }
+        // Start the audio task, as expected by handle_vblank.
         profiler_log_vblank_time();
-        start_sptask(2);
+        start_sptask(M_AUDTASK);
     } else {
-        temp_a3->state = 3;
-        if (temp_a3->task.t.type == 2) {
-
+        curSPTask->state = SPTASK_STATE_FINISHED;
+        if (curSPTask->task.t.type == M_AUDTASK) {
+            // After audio tasks come gfx tasks.
             profiler_log_vblank_time();
-
-            if (sCurrentDisplaySPTask != 0) {
-                if (sCurrentDisplaySPTask->state != 3) {
-                    if (sCurrentDisplaySPTask->state != 2) {
-                        profiler_log_gfx_time(0);
+            if (sCurrentDisplaySPTask != NULL) {
+                if (sCurrentDisplaySPTask->state != SPTASK_STATE_FINISHED) {
+                    if (sCurrentDisplaySPTask->state != SPTASK_STATE_INTERRUPTED) {
+                        profiler_log_gfx_time(TASKS_QUEUED);
                     }
-                    start_sptask(1);
+                    start_sptask(M_GFXTASK);
                 }
             }
-            sCurrentAudioSPTask = 0;
-            if (temp_a3->msgqueue != 0) {
-                osSendMesg(temp_a3->msgqueue, temp_a3->msg, 0);
+            sCurrentAudioSPTask = NULL;
+            if (curSPTask->msgqueue != NULL) {
+                osSendMesg(curSPTask->msgqueue, curSPTask->msg, OS_MESG_NOBLOCK);
             }
         } else {
-            profiler_log_gfx_time(1);
+            // The SP process is done, but there is still a Display Processor notification
+            // that needs to arrive before we can consider the task completely finished and
+            // null out sCurrentDisplaySPTask. That happens in handle_dp_complete.
+            profiler_log_gfx_time(RSP_COMPLETE);
         }
     };
 }
 
 void thread3_video(UNUSED void *arg0) {
-    s32 pad[2];
-    OSMesg msg;
-    u64 *temp_v0;
     s32 i;
-    s32 pad2[2];
+    u64 *framebuffer1;
+    OSMesg msg;
+    s32 pad[4];
 
     gPhysicalFramebuffers[0] = (uintptr_t *) &gFramebuffer0;
     gPhysicalFramebuffers[1] = (uintptr_t *) &gFramebuffer1;
     gPhysicalFramebuffers[2] = (uintptr_t *) &gFramebuffer2;
 
-    temp_v0 = &gFramebuffer1;
+    framebuffer1 = &gFramebuffer1;
     for (i = 0; i < 19200; i++) {
-        temp_v0[i] = 0;
+        framebuffer1[i] = 0;
     }
 
     setup_mesg_queues();
     init_game();
-    create_thread(&D_8015AB80, 4, &thread4_audio, 0, &D_8015AB80_Stack[8192], 0x14);
-    osStartThread(&D_8015AB80);
-    create_thread(&D_801589D0, 5, &thread5_game_logic, 0, &D_801589D0_Stack[8192], 0xA);
-    osStartThread(&D_801589D0);
+    create_thread(&gAudioThread, 4, &thread4_audio, 0, gAudioThreadStack + ARRAY_COUNT(gAudioThreadStack), 20);
+    osStartThread(&gAudioThread);
+    create_thread(&gGameLoopThread, 5, &thread5_game_loop, 0, gGameLoopThreadStack + ARRAY_COUNT(gGameLoopThreadStack), 10);
+    osStartThread(&gGameLoopThread);
 
-    while (1) {
+    while (TRUE) {
         osRecvMesg(&gIntrMesgQueue, &msg, OS_MESG_BLOCK);
         switch ((u32) msg) {
             case MESG_VI_VBLANK:
-                func_80002168();
+                handle_vblank();
                 break;
             case MESG_SP_COMPLETE:
-                func_800022DC();
+                handle_sp_complete();
                 break;
             case MESG_DP_COMPLETE:
-                func_80002284();
+                handle_dp_complete();
                 break;
             case MESG_START_GFX_SPTASK:
                 start_gfx_sptask();
@@ -1061,88 +1086,94 @@ void func_80002658(void) {
 
 void func_80002684(void) {
     switch (D_800DC50C) {
-        case 0:
+        case START_MENU_FROM_QUIT:
             func_80002658();
-            gCurrentlyLoadedCourseId = 255;
+            gCurrentlyLoadedCourseId = COURSE_NULL;
             break;
-        case 1:
+        case MAIN_MENU_FROM_QUIT:
             func_800025D4();
-            gCurrentlyLoadedCourseId = 255;
+            gCurrentlyLoadedCourseId = COURSE_NULL;
             break;
-        case 2:
+        case PLAYER_SELECT_MENU_FROM_QUIT:
             func_80002600();
-            gCurrentlyLoadedCourseId = 255;
+            gCurrentlyLoadedCourseId = COURSE_NULL;
             break;
-        case 3:
+        case COURSE_SELECT_MENU_FROM_QUIT:
             func_8000262C();
-            gCurrentlyLoadedCourseId = 255;
+            gCurrentlyLoadedCourseId = COURSE_NULL;
             break;
-        case 4:
-            func_800010CC();
+        case RACING:
+            init_seg_8028DF00();
             func_80002A18();
             break;
-        case 5:
-            gCurrentlyLoadedCourseId = 255;
-            func_8000105C();
+        case ENDING_SEQUENCE:
+            gCurrentlyLoadedCourseId = COURSE_NULL;
+            init_seg_80280000();
             load_ending_sequence_royalraceway();
             break;
-        case 9:
-            gCurrentlyLoadedCourseId = 255;
-            func_800010CC();
-            func_8000105C();
+        case CREDITS_SEQUENCE:
+            gCurrentlyLoadedCourseId = COURSE_NULL;
+            init_seg_8028DF00();
+            init_seg_80280000();
             func_80280420();
             break;
         }
 }
 
-//extern u8 _networkSegmentRomStart;
-void thread5_game_logic(s32 arg0) {
-    osCreateMesgQueue(&D_8014EF88, &D_8014F00C, 1);
-    osCreateMesgQueue(&D_8014EF70, &D_8014F008, 1);
+void thread5_game_loop(UNUSED void *arg) {
+    osCreateMesgQueue(&gGfxVblankQueue, &gGfxMesgBuf, 1);
+    osCreateMesgQueue(&gGameVblankQueue, &gGameMesgBuf, 1);
     init_controllers();
-    if (D_8015011C == 0) {
-        func_80003010();
+    if (!wasSoftReset) {
+        clear_nmi_buffer();
     }
-    func_800020D8(2, &D_8014EF48, &D_8014EF70, (OSMesg) 1);
-    D_8015F8B8 = (s32) D_800DC600;
-    D_8015F8BC = (s32) (D_800DC600 + 2);
-    D_8015F8C0 = (s32) (D_800DC600 + 0xB);
-    D_8015F8C4 = (s32) (D_800DC600 + 0x17);
-    D_8015F8C8 = (s32) (D_800DC600 + 0x19);
-    D_8015F8CC = (s32) (D_800DC600 + 0x1C);
+    set_vblank_handler(2, &gGameVblankHandler, &gGameVblankQueue, (OSMesg) OS_EVENT_SW2);
+    // Potentially unused?
+    gNmiUnknown1 = (s32) pAppNmiBuffer;
+    gNmiUnknown2 = (s32) pAppNmiBuffer + 2;
+    gNmiUnknown3 = (s32) pAppNmiBuffer + 11;
+    gNmiUnknown4 = (s32) pAppNmiBuffer + 23;
+    gNmiUnknown5 = (s32) pAppNmiBuffer + 25;
+    gNmiUnknown6 = (s32) pAppNmiBuffer + 28;
     rendering_init();
     read_controllers();
     func_800C5CB8();
 
-    while(1) {
+    while(TRUE) {
         func_800CB2C4();
         if (D_800DC524 != D_800DC50C) {
             D_800DC50C = (s32) D_800DC524;
             func_80002684();
         }
-        profiler_log_thread5_time(0);
+        profiler_log_thread5_time(THREAD5_START);
         config_gfx_pool();
         read_controllers();
         func_80001ECC();
-        func_80000CE8();
+        end_master_display_list();
         display_and_vsync();
     }
 }
 
-void thread4_audio(UNUSED s32 arg0) {
+/**
+ * Sound processing thread. Runs at 50 or 60 FPS according to osTvType.
+ */
+void thread4_audio(UNUSED void *arg) {
     UNUSED u32 unused[3];
     audio_init();
-    osCreateMesgQueue(&sSoundMesgQueue, &sSoundMesgBuf, 1);
-    func_800020D8(1, &sSoundVblankHandler, &sSoundMesgQueue, (OSMesg) 0x200);
+    osCreateMesgQueue(&sSoundMesgQueue, &sSoundMesgBuf, ARRAY_COUNT(sSoundMesgBuf));
+    set_vblank_handler(1, &sSoundVblankHandler, &sSoundMesgQueue, (OSMesg) 512);
+
     while (TRUE) {
         OSMesg msg;
         struct SPTask *spTask;
 
-        osRecvMesg(&sSoundMesgQueue, &msg, 1);
+        osRecvMesg(&sSoundMesgQueue, &msg, OS_MESG_BLOCK);
+
         profiler_log_thread4_time();
+
         spTask = create_next_audio_frame_task();
         if (spTask != NULL) {
-            func_80000C0C(spTask);
+            dispatch_audio_sptask(spTask);
         }
         profiler_log_thread4_time();
     }

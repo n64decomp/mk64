@@ -13,6 +13,6 @@ extern u32 osTvType;
 extern u32 osRomBase;
 extern u32 osResetType;
 extern u32 osMemSize;
-extern u8 osAppNmiBuffer[64];
+extern s32 osAppNmiBuffer[16];
 
 #endif /* _LIBULTRA_H */

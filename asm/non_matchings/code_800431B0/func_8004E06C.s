@@ -121,6 +121,3 @@ glabel func_8004E06C
 /* 04EE2C 8004E22C 8FBE0050 */  lw    $fp, 0x50($sp)
 /* 04EE30 8004E230 03E00008 */  jr    $ra
 /* 04EE34 8004E234 27BD0058 */   addiu $sp, $sp, 0x58
-
-/* 04EE38 8004E238 03E00008 */  jr    $ra
-/* 04EE3C 8004E23C 00000000 */   nop   

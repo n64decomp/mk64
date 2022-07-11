@@ -1709,6 +1709,10 @@ void func_8029AC18(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 GLOBAL_ASM("asm/non_matchings/actors/func_8029AC18.s")
 #endif
 
+UNUSED void func_8029AE14() {
+
+}
+
 void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, Mat4 arg2, u16 arg3) {
     s32 pad[3];
     Vec3f sp120;
