@@ -45,9 +45,9 @@ void func_80280038(void) {
     D_80150112 = 0;
     D_80164AF0 = 0;
     D_8018D120 = 0;
-    func_802A3E3C();
+    init_rdp();
     func_802A53A4();
-    func_802A3E3C();
+    init_rdp();
     func_80057FC4(0);
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
     guPerspective(&gGfxPool->mtxPool[1], &sp44[37], D_80150130[0], D_80150148, D_80150150, D_8015014C, 1.0f);
@@ -64,9 +64,9 @@ void func_80280038(void) {
     func_80058538(0);
     func_80284CC0();
     func_80281C40();
-    func_802A3E3C();
+    init_rdp();
     func_80093F10();
-    func_802A3E3C();
+    init_rdp();
 }
 
 void func_80280268(s32 arg0) {
@@ -79,7 +79,7 @@ void func_80280268(s32 arg0) {
     gCreditsCourseId = arg0;
 }
 
-void func_802802AC(void) {
+void credits_loop(void) {
     Camera *camera = &cameras[0];
 
     f32 temp_f12;

@@ -600,10 +600,7 @@ void func_80281540(void) {
 extern s16 D_80150112;
 extern s32 D_802874FC;
 
-void func_80281548(void) {
-    void *temp_v0;
-    void *temp_v0_2;
-
+void ending_sequence_loop(void) {
     D_80150112 = 0;
     D_802874FC = 0;
     func_80281610();

@@ -1491,7 +1491,8 @@ void func_800947B4(struct GfxPool *arg0, s32 unused) {
 #ifdef NEEDS_RODATA
 // Non-matching due to .rodata diffs resulting from the switch/case
 // jump table
-void func_80094A64(Mtx *arg0) {
+// Renders menu graphics?
+void func_80094A64(GfxPool *arg0) {
     D_8018D120 = 0;
     D_80164AF0 = 0;
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_802B8880));

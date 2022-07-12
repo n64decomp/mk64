@@ -6,7 +6,7 @@ glabel jpt_800F2DFC
 .word L800B32B4, L800B2F70
 
 .section .text
-glabel func_800B29D8
+glabel main_menu_act
 /* 0B35D8 800B29D8 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 0B35DC 800B29DC AFBF0014 */  sw    $ra, 0x14($sp)
 /* 0B35E0 800B29E0 AFA50034 */  sw    $a1, 0x34($sp)

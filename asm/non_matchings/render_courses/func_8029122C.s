@@ -4,7 +4,7 @@ glabel func_8029122C
 /* 0FA844 80291234 AFA40270 */  sw    $a0, 0x270($sp)
 /* 0FA848 80291238 8C8F0008 */  lw    $t7, 8($a0)
 /* 0FA84C 8029123C AFA50274 */  sw    $a1, 0x274($sp)
-/* 0FA850 80291240 0C0A8F8F */  jal   func_802A3E3C
+/* 0FA850 80291240 0C0A8F8F */  jal   init_rdp
 /* 0FA854 80291244 AFAF0268 */   sw    $t7, 0x268($sp)
 /* 0FA858 80291248 8FA80270 */  lw    $t0, 0x270($sp)
 /* 0FA85C 8029124C 8FA50274 */  lw    $a1, 0x274($sp)

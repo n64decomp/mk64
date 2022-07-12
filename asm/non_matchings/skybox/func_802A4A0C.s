@@ -88,7 +88,7 @@ glabel func_802A4A0C
 /* 10E174 802A4B64 A60D0012 */  sh    $t5, 0x12($s0)
 /* 10E178 802A4B68 A60D0022 */  sh    $t5, 0x22($s0)
 /* 10E17C 802A4B6C A60D0042 */  sh    $t5, 0x42($s0)
-/* 10E180 802A4B70 0C0A8F8F */  jal   func_802A3E3C
+/* 10E180 802A4B70 0C0A8F8F */  jal   init_rdp
 /* 10E184 802A4B74 A60D0072 */   sh    $t5, 0x72($s0)
 /* 10E188 802A4B78 3C038015 */  lui   $v1, %hi(gDisplayListHead) # $v1, 0x8015
 /* 10E18C 802A4B7C 24630298 */  addiu $v1, %lo(gDisplayListHead) # addiu $v1, $v1, 0x298

@@ -17,10 +17,10 @@
 void func_8008C214(void);
 void func_80091B78(void);
 void func_802A4D18(void);
-void func_802A3E3C(void);
-void func_802A4160(void);
-void func_802A41D4(void);
-void func_802A3CB0(void);
+void init_rdp(void);
+void set_viewport(void);
+void select_framebuffer(void);
+void init_z_buffer(void);
 void audio_init();
 void profiler_log_gfx_time(enum ProfilerGfxEvent eventID);
 void profiler_log_vblank_time(void);
@@ -407,12 +407,15 @@ void exec_display_list(struct SPTask *spTask) {
     }
 }
 
-void func_80000CA8(void) {
+/**
+ * Set default RCP (Reality Co-Processor) settings.
+ */
+void init_rcp(void) {
     move_segment_table_to_dmem();
-    func_802A3E3C();
-    func_802A4160();
-    func_802A41D4();
-    func_802A3CB0();
+    init_rdp();
+    set_viewport();
+    select_framebuffer();
+    init_z_buffer();
 }
 
 /**
@@ -446,7 +449,7 @@ void rendering_init(void) {
     set_segment_base_addr(1, gGfxPool);
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = gGfxPool->gfxPool;
-    func_80000CA8();
+    init_rcp();
     clear_framebuffer(0);
     end_master_display_list();
     exec_display_list(&gGfxPool->spTask);
@@ -552,12 +555,16 @@ void init_game(void) {
     D_8015F734 = gPrevLoadedAddress;
 }
 
-void func_80001404(void) {
+/**
+ * @brief 
+ * 
+ */
+void game_init_clear_framebuffer(void) {
     D_800DC524 = 0; // = START_MENU_FROM_QUIT?
     clear_framebuffer(0);
 }
 
-void func_8000142C(void) {
+void race_logic_loop(void) {
     s16 i;
     s32 pad;
     u16 temp_v0;
@@ -674,9 +681,9 @@ void func_8000142C(void) {
                 profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
                 sNumVBlanks = 0;
                 move_segment_table_to_dmem();
-                func_802A3E3C();
+                init_rdp();
                 if (D_800DC5B0 != 0) {
-                    func_802A41D4();
+                    select_framebuffer();
                 }
                 D_8015F788 = 0;
                 if (gPlayerWinningIndex == 0) {
@@ -720,9 +727,9 @@ void func_8000142C(void) {
             sNumVBlanks = (u16)0;
             func_8005A070();
             move_segment_table_to_dmem();
-            func_802A3E3C();
+            init_rdp();
             if (D_800DC5B0 != 0) {
-                func_802A41D4();
+                select_framebuffer();
             }
             D_8015F788 = 0;
             if (gPlayerWinningIndex == 0) {
@@ -791,9 +798,9 @@ void func_8000142C(void) {
         sNumVBlanks = 0;
         profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
         move_segment_table_to_dmem();
-        func_802A3E3C();
+        init_rdp();
         if (D_800DC5B0 != 0) {
-            func_802A41D4();
+            select_framebuffer();
         }
         D_8015F788 = 0;
         if (gPlayerWinningIndex == 0) {
@@ -845,29 +852,39 @@ void func_8000142C(void) {
     gSPEndDisplayList(gDisplayListHead++);
 }
 
-void func_80001ECC(void) {
+/**
+ * mk64 appears to run on a series of states.
+ * It moves between the states like a series of steps.
+ * Step 1) Clear framebuffer
+ * Step 2) Prepare menus
+ * Step 3) Process race related logic
+ * Step 4) Credits
+ */
+void game_state_controller(void) {
 
     switch (D_800DC50C) {
         case 7:
-            func_80001404();
+            game_init_clear_framebuffer();
             break;
-        case 0:
-        case 1:
-        case 2:
-        case 3:
+        case START_MENU_FROM_QUIT:
+        case MAIN_MENU_FROM_QUIT:
+        case PLAYER_SELECT_MENU_FROM_QUIT:
+        case COURSE_SELECT_MENU_FROM_QUIT:
+            // Display black
             osViBlack(0);
-            func_800B0350();
-            func_80000CA8();
-            func_80094A64(gGfxPool);
+            update_menus();
+            init_rcp();
+            // gGfxPool->mtxPool->m or gGfxPool?
+            func_80094A64(gGfxPool->mtxPool->m);
             break;
-        case 4:
-            func_8000142C();
+        case RACING:
+            race_logic_loop();
             break;
-        case 5:
-            func_80281548();
+        case ENDING_SEQUENCE:
+            ending_sequence_loop();
             break;
-        case 9:
-            func_802802AC();
+        case CREDITS_SEQUENCE:
+            credits_loop();
             break;
     }
 }
@@ -1128,7 +1145,8 @@ void thread5_game_loop(UNUSED void *arg) {
         clear_nmi_buffer();
     }
     set_vblank_handler(2, &gGameVblankHandler, &gGameVblankQueue, (OSMesg) OS_EVENT_SW2);
-    // Potentially unused?
+    // These variables track stats such as player wins.
+    // In the event of a console reset, it remembers them.
     gNmiUnknown1 = (s32) pAppNmiBuffer;
     gNmiUnknown2 = (s32) pAppNmiBuffer + 2;
     gNmiUnknown3 = (s32) pAppNmiBuffer + 11;
@@ -1148,7 +1166,7 @@ void thread5_game_loop(UNUSED void *arg) {
         profiler_log_thread5_time(THREAD5_START);
         config_gfx_pool();
         read_controllers();
-        func_80001ECC();
+        game_state_controller();
         end_master_display_list();
         display_and_vsync();
     }
