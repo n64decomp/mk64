@@ -54,7 +54,7 @@ void func_80281D00(void) {
         clear_framebuffer(0);
         if (D_80287554 >= 4) {
             gIsInQuitToMenuTransition = 0;
-            D_800DC524 = gMenuSelectionFromEndingSequence;
+            gGamestateNext = gMenuSelectionFromEndingSequence;
         }
         D_80287554++;
         return;

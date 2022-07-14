@@ -99,8 +99,8 @@ glabel func_80283430
 /* 126BEC 802835AC 26100014 */  addiu $s0, $s0, 0x14
 /* 126BF0 802835B0 1612FFFA */  bne   $s0, $s2, .L8028359C
 /* 126BF4 802835B4 26310014 */   addiu $s1, $s1, 0x14
-/* 126BF8 802835B8 3C0F800E */  lui   $t7, %hi(D_800DC50C) # $t7, 0x800e
-/* 126BFC 802835BC 8DEFC50C */  lw    $t7, %lo(D_800DC50C)($t7)
+/* 126BF8 802835B8 3C0F800E */  lui   $t7, %hi(gGamestate) # $t7, 0x800e
+/* 126BFC 802835BC 8DEFC50C */  lw    $t7, %lo(gGamestate)($t7)
 /* 126C00 802835C0 3C018028 */  lui   $at, %hi(D_802856C0) # $at, 0x8028
 /* 126C04 802835C4 E43456C0 */  swc1  $f20, %lo(D_802856C0)($at)
 /* 126C08 802835C8 24010005 */  li    $at, 5

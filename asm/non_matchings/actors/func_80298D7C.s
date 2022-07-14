@@ -30,13 +30,13 @@ glabel func_80298D7C
 /* 1023FC 80298DEC 252987E0 */  addiu $t1, %lo(D_802B87E0) # addiu $t1, $t1, -0x7820
 /* 102400 80298DF0 8D210000 */  lw    $at, ($t1)
 /* 102404 80298DF4 27A80088 */  addiu $t0, $sp, 0x88
-/* 102408 80298DF8 3C0D800E */  lui   $t5, %hi(D_800DC50C) # $t5, 0x800e
+/* 102408 80298DF8 3C0D800E */  lui   $t5, %hi(gGamestate) # $t5, 0x800e
 /* 10240C 80298DFC AD010000 */  sw    $at, ($t0)
 /* 102410 80298E00 95210004 */  lhu   $at, 4($t1)
 /* 102414 80298E04 3C128015 */  lui   $s2, %hi(gDisplayListHead) # $s2, 0x8015
 /* 102418 80298E08 0080A025 */  move  $s4, $a0
 /* 10241C 80298E0C A5010004 */  sh    $at, 4($t0)
-/* 102420 80298E10 8DADC50C */  lw    $t5, %lo(D_800DC50C)($t5)
+/* 102420 80298E10 8DADC50C */  lw    $t5, %lo(gGamestate)($t5)
 /* 102424 80298E14 24010009 */  li    $at, 9
 /* 102428 80298E18 00A0A825 */  move  $s5, $a1
 /* 10242C 80298E1C 15A10004 */  bne   $t5, $at, .L80298E30

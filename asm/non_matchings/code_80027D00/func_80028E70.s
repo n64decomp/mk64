@@ -6,11 +6,11 @@ glabel func_80028E70
 /* 029A80 80028E80 AFA70024 */  sw    $a3, 0x24($sp)
 /* 029A84 80028E84 94820000 */  lhu   $v0, ($a0)
 /* 029A88 80028E88 34018000 */  li    $at, 32768
-/* 029A8C 80028E8C 3C0F800E */  lui   $t7, %hi(D_800DC50C) # $t7, 0x800e
+/* 029A8C 80028E8C 3C0F800E */  lui   $t7, %hi(gGamestate) # $t7, 0x800e
 /* 029A90 80028E90 304E8000 */  andi  $t6, $v0, 0x8000
 /* 029A94 80028E94 55C1002E */  bnel  $t6, $at, .L80028F50
 /* 029A98 80028E98 8FBF0014 */   lw    $ra, 0x14($sp)
-/* 029A9C 80028E9C 8DEFC50C */  lw    $t7, %lo(D_800DC50C)($t7)
+/* 029A9C 80028E9C 8DEFC50C */  lw    $t7, %lo(gGamestate)($t7)
 /* 029AA0 80028EA0 24010005 */  li    $at, 5
 /* 029AA4 80028EA4 30582000 */  andi  $t8, $v0, 0x2000
 /* 029AA8 80028EA8 55E1000D */  bnel  $t7, $at, .L80028EE0

@@ -12,8 +12,8 @@ glabel func_800B6178
 /* 0B6DA0 800B61A0 10000062 */  b     .L800B632C
 /* 0B6DA4 800B61A4 2402FFFF */   li    $v0, -1
 .L800B61A8:
-/* 0B6DA8 800B61A8 3C11800E */  lui   $s1, %hi(D_800DC50C) # $s1, 0x800e
-/* 0B6DAC 800B61AC 2631C50C */  addiu $s1, %lo(D_800DC50C) # addiu $s1, $s1, -0x3af4
+/* 0B6DA8 800B61A8 3C11800E */  lui   $s1, %hi(gGamestate) # $s1, 0x800e
+/* 0B6DAC 800B61AC 2631C50C */  addiu $s1, %lo(gGamestate) # addiu $s1, $s1, -0x3af4
 /* 0B6DB0 800B61B0 8E2E0000 */  lw    $t6, ($s1)
 /* 0B6DB4 800B61B4 24100004 */  li    $s0, 4
 /* 0B6DB8 800B61B8 AFA40030 */  sw    $a0, 0x30($sp)

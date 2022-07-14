@@ -2010,7 +2010,7 @@ extern Gfx D_06023B68[];
 extern Vec3f D_8015F590;
 extern u16 D_800DC5BC;                                     /* unable to generate initializer */
 extern s16 D_800DC5C8;                                     /* unable to generate initializer */
-extern s32 D_800DC50C;
+extern s32 gGamestate;
 extern s32 gModeSelection;
 extern u16 gNumActors;
 extern s16 D_8015F6EC;
@@ -2150,7 +2150,7 @@ void func_80295D88(void) {
             func_802AF8BC(0x07002068, -0x6A, 255, 255, 255);
             func_802AF8BC(0x07001E18, -0x6A, 255, 255, 255);
             func_802AF8BC(0x07001318, 255, 255, 255, 0);
-            if (D_800DC50C != CREDITS_SEQUENCE) {
+            if (gGamestate != CREDITS_SEQUENCE) {
                 func_802AF8BC(0x07001FB8, -0x6A, 255, 255, 255);
             }
             break;

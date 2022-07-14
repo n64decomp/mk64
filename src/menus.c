@@ -152,7 +152,7 @@ void options_menu_act(struct Controller *, u16);
 void data_menu_act(struct Controller *, u16);
 void course_data_menu_act(struct Controller *, u16);
 void logo_intro_menu_act(struct Controller *, u16);
-void func_800B1C90(struct Controller *, u16);
+void controller_pak_menu_act(struct Controller *, u16);
 void splash_menu_act(struct Controller *, u16);
 void main_menu_act(struct Controller *, u16);
 void player_select_menu_act(struct Controller *, u16);
@@ -205,8 +205,8 @@ void update_menus(void) {
                 logo_intro_menu_act(&gControllers[controllerIdx], controllerIdx);
                 break;
             case CONTROLLER_PAK_MENU:
-                if (controllerIdx == 0) {
-                    func_800B1C90(&gControllers[controllerIdx], controllerIdx);
+                if (controllerIdx == PLAYER_ONE) {
+                    controller_pak_menu_act(&gControllers[controllerIdx], controllerIdx);
                 }
                 break;
             case START_MENU_FROM_QUIT:
@@ -893,7 +893,7 @@ void logo_intro_menu_act(struct Controller *arg0, UNUSED u16 arg1) {
     }
 }
 
-void func_800B1C90(struct Controller* controller, UNUSED u16 arg1) {
+void controller_pak_menu_act(struct Controller* controller, UNUSED u16 arg1) {
     u16 buttonAndStickPress;
     OSPfsState* osPfsState;
     s32 selectedTableRow;
@@ -1877,11 +1877,11 @@ void func_800B3F74(s32 menuSelection) {
         func_800B5F30();
         func_8000F0E0();
 
-        if (D_800DC50C != 0) {
+        if (gGamestate != 0) {
             func_800CA008(0, 0);
             func_800CB2C4();
-            D_800DC50C = 0;
-            D_800DC524 = 0;
+            gGamestate = 0;
+            gGamestateNext = 0;
             func_800C8EAC(2);
         }
 
@@ -1930,7 +1930,7 @@ void func_800B3F74(s32 menuSelection) {
         case 0:
         {
             D_8018EDEE = 1;
-            if (D_800DC50C == 0) {
+            if (gGamestate == 0) {
                 for (i = 0; i < 4; i++) {
                     if (i < D_8018EDF3) {
                         gCharacterGridSelections[i] = i + 1;
@@ -1944,8 +1944,8 @@ void func_800B3F74(s32 menuSelection) {
             } else {
                 func_800CA008(0, 0);
                 func_800CB2C4();
-                D_800DC50C = 0;
-                D_800DC524 = 0;
+                gGamestate = 0;
+                gGamestateNext = 0;
                 func_800C8EAC(2);
                 for (i = 0; i < ARRAY_COUNT(D_8018EDE8); i++) {
                     D_8018EDE8[i] = FALSE;
@@ -1981,11 +1981,11 @@ void func_800B3F74(s32 menuSelection) {
             }
             D_8018EDEC = 1;
         }
-        if (D_800DC50C != 0) {
+        if (gGamestate != 0) {
             func_800CA008(0, 0);
             func_800CB2C4();
-            D_800DC50C = 0;
-            D_800DC524 = 0;
+            gGamestate = 0;
+            gGamestateNext = 0;
             func_800C8EAC(2);
         }
         play_sound2(0x49009013);

@@ -1,6 +1,6 @@
 glabel func_8005A3C0
-/* 05AFC0 8005A3C0 3C02800E */  lui   $v0, %hi(D_800DC50C) # $v0, 0x800e
-/* 05AFC4 8005A3C4 8C42C50C */  lw    $v0, %lo(D_800DC50C)($v0)
+/* 05AFC0 8005A3C0 3C02800E */  lui   $v0, %hi(gGamestate) # $v0, 0x800e
+/* 05AFC4 8005A3C4 8C42C50C */  lw    $v0, %lo(gGamestate)($v0)
 /* 05AFC8 8005A3C8 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 05AFCC 8005A3CC 24010005 */  li    $at, 5
 /* 05AFD0 8005A3D0 AFBF0014 */  sw    $ra, 0x14($sp)

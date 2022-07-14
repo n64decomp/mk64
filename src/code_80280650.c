@@ -603,7 +603,7 @@ extern s32 D_802874FC;
 void ending_sequence_loop(void) {
     D_80150112 = 0;
     D_802874FC = 0;
-    func_80281610();
+    setup_camera_ending_sequence();
     func_80028F70();
     func_80022744();
     func_80059AC8();

@@ -1,6 +1,6 @@
 glabel func_80055E68
-/* 056A68 80055E68 3C0E800E */  lui   $t6, %hi(D_800DC50C) # $t6, 0x800e
-/* 056A6C 80055E6C 8DCEC50C */  lw    $t6, %lo(D_800DC50C)($t6)
+/* 056A68 80055E68 3C0E800E */  lui   $t6, %hi(gGamestate) # $t6, 0x800e
+/* 056A6C 80055E6C 8DCEC50C */  lw    $t6, %lo(gGamestate)($t6)
 /* 056A70 80055E70 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 056A74 80055E74 AFB00018 */  sw    $s0, 0x18($sp)
 /* 056A78 80055E78 3C108018 */  lui   $s0, %hi(D_80183EA0) # $s0, 0x8018

@@ -20,7 +20,7 @@ extern struct UnkStruct_800DC5EC *D_800DC5F8;
 extern u16 D_800DC5B0;
 
 void init_rdp();
-extern s32 D_800DC524;
+extern s32 gGamestateNext;
 extern s16 gIsInQuitToMenuTransition;
 extern u16 gQuitToMenuTransitionCounter;
 extern s32 gMenuSelection;
@@ -143,8 +143,8 @@ void func_802A38B4(void) {
         gQuitToMenuTransitionCounter--;
         return;
     }
-    D_800DC524 = gMenuSelectionFromQuit;
-    D_800DC50C = 255;
+    gGamestateNext = gMenuSelectionFromQuit;
+    gGamestate = 255;
     gIsInQuitToMenuTransition = 0;
     gQuitToMenuTransitionCounter = 0;
     D_800E86A4 = 1;
@@ -259,18 +259,18 @@ UNUSED void func_802A40CC(void) {}
 UNUSED void func_802A40D4(void) {}
 UNUSED void func_802A40DC(void) {}
 
-#define UNKNOWN_MODE 0xFFFFFFFF
+#define G_CLEAR_ALL_MODES 0xFFFFFFFF
 
 UNUSED s32 set_viewport2(void) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_800DC5EC->viewport));
-    gSPClearGeometryMode(gDisplayListHead++, UNKNOWN_MODE);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE |
         G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH | G_CLIPPING);
 }
 
 void set_viewport(void) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_802B8880));
-    gSPClearGeometryMode(gDisplayListHead++, UNKNOWN_MODE);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 }
 
@@ -594,7 +594,7 @@ extern s32 gScreenModeSelection;
 void func_802A4D18(void) {
     f32 phi_f10;
 
-    if (D_800DC50C != RACING) {
+    if (gGamestate != RACING) {
         D_8015014C = 6800.0f; // D_802B9BB4
         D_80150150 = 3.0f;
     } else {
@@ -780,7 +780,7 @@ void func_802A53A4(void) {
     select_framebuffer();
     if (D_800DC5B4 != 0) {
         func_802A4A0C(&D_802B8890, D_800DC5EC, 0x140, 0xF0, &D_80150130[0]);
-        if (D_800DC50C != CREDITS_SEQUENCE) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             func_80057FC4(0);
         }
         func_802A487C(&D_802B8890, D_800DC5EC, 0x140, 0xF0, &D_80150130[0]);

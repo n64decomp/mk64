@@ -271,7 +271,7 @@ void func_80091B78(void) {
         var_s0_2 += 1;
     } while (var_s0_2 != 8);
     func_800B44BC();
-    osViSetSpecialFeatures(0x00000040U);
+    osViSetSpecialFeatures(OS_VI_DITHER_FILTER_ON);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80091B78.s")
@@ -4128,7 +4128,7 @@ void func_80099AEC(void) {
     void *temp_v0;
     void *temp_v0_2;
 
-    if (D_800DC50C == 4) {
+    if (gGamestate == 4) {
         sp60 = 0x00000500;
     } else {
         sp60 = 0x00001000;
@@ -5820,7 +5820,7 @@ void func_8009CBE4(s32 arg0, s32 arg1, s32 arg2) {
     sp40 = temp_t4;
     gDisplayListHead = draw_box(gDisplayListHead, phi_t2 - temp_v1_3, phi_t3 - temp_t0, temp_v1_3 + phi_t2, temp_t0 + phi_t3, temp_v0_5->unk0, temp_v0_5->unk2, temp_v0_5->unk4, 0xFF - ((*temp_t4 * 0xFF) / *temp_t9));
     if ((arg1 == 0) && (temp_t6 = *temp_t4 + 1, *temp_t4 = temp_t6, ((temp_t6 < *sp3C) == 0))) {
-        if (D_800DC50C == RACING) {
+        if (gGamestate == RACING) {
             *(&D_8018E7AC + arg0) = 6;
             return;
         }
@@ -5857,7 +5857,7 @@ void func_8009CE1C(void) {
 ? func_80290360();                                  /* extern */
 ? func_80290388();                                  /* extern */
 ? func_802903B0();                                  /* extern */
-extern s32 D_800DC524;
+extern s32 gGamestateNext;
 extern s32 D_800E86A4;
 extern s16 D_8015F892;
 extern ? D_8018E7AC;
@@ -5907,7 +5907,7 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
 
     var_a0 = arg0;
     var_a2 = arg3;
-    temp_v0 = D_800DC50C;
+    temp_v0 = gGamestate;
     var_a1 = 0;
     if (temp_v0 == (s32) 5) {
         temp_v1 = gCCSelection;
@@ -5918,7 +5918,7 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
         }
         if (var_a1 != 0) {
             gMenuSelectionFromEndingSequence = 9;
-            gCreditsCourseId = 8;
+            gCreditsCourseId = COURSE_LUIGI_RACEWAY;
             return;
         }
         gMenuSelectionFromEndingSequence = 1;
@@ -6066,7 +6066,7 @@ block_74:
             case 2:                                 /* switch 3 */
                 D_800DC51C = 1;
                 D_8018EE08 = 1;
-                D_800DC524 = 4;
+                gGamestateNext = 4;
                 gCCSelection = (s32) 1;
                 temp_v1_4 = (s8) gNextDemoId;
                 switch (temp_v1_4) {                /* switch 4 */
@@ -6166,7 +6166,7 @@ block_74:
                 D_800E86A4 = 1;
             }
             if (gMenuSelection >= 0xE) {
-                D_800DC524 = 4;
+                gGamestateNext = 4;
                 if (gModeSelection == 1) {
                     D_8018EDFB = (s8) 1;
                 }
@@ -6178,15 +6178,15 @@ block_74:
         temp_v1_7 = gDebugGotoScene;
         switch (temp_v1_7) {                        /* switch 5; irregular */
         case 1:                                     /* switch 5 */
-            D_800DC524 = (s32) 5;
+            gGamestateNext = (s32) 5;
             break;
         case 2:                                     /* switch 5 */
         case 3:                                     /* switch 5 */
-            D_800DC524 = 9;
-            gCreditsCourseId = 8;
+            gGamestateNext = 9;
+            gCreditsCourseId = COURSE_LUIGI_RACEWAY;
             break;
         default:                                    /* switch 5 */
-            D_800DC524 = 4;
+            gGamestateNext = 4;
             if (gModeSelection == (s32) 1) {
                 D_8018EDFB = 1;
             }
@@ -10493,7 +10493,7 @@ void func_800A474C(s32 recordType, s32 column, s32 row) {
     u32 phi_v0_2;
     u32 phi_v0_3;
 
-    if (D_800DC50C == 4) {
+    if (gGamestate == 4) {
         sp30 = 0;
     } else {
         sp30 = 1;

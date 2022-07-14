@@ -161,8 +161,8 @@ glabel func_80283648
 /* 126EDC 8028389C 24A576E0 */  addiu $a1, %lo(D_802876E0) # addiu $a1, $a1, 0x76e0
 /* 126EE0 802838A0 0C0A0802 */  jal   vec3f_copy_dupe
 /* 126EE4 802838A4 8FA40034 */   lw    $a0, 0x34($sp)
-/* 126EE8 802838A8 3C08800E */  lui   $t0, %hi(D_800DC50C) # $t0, 0x800e
-/* 126EEC 802838AC 8D08C50C */  lw    $t0, %lo(D_800DC50C)($t0)
+/* 126EE8 802838A8 3C08800E */  lui   $t0, %hi(gGamestate) # $t0, 0x800e
+/* 126EEC 802838AC 8D08C50C */  lw    $t0, %lo(gGamestate)($t0)
 /* 126EF0 802838B0 24010009 */  li    $at, 9
 /* 126EF4 802838B4 3C09800E */  lui   $t1, %hi(gIsMirrorMode) # $t1, 0x800e
 /* 126EF8 802838B8 1501000A */  bne   $t0, $at, .L802838E4

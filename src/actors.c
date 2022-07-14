@@ -400,7 +400,7 @@ void func_80297340(Camera *arg0) {
     Mat4 sp38;
     s16 temp = D_8015F8D0[2];
 
-    if (D_800DC50C == CREDITS_SEQUENCE) { return; }
+    if (gGamestate == CREDITS_SEQUENCE) { return; }
 
     mtxf_translate(sp38, D_8015F8D0); 
 
@@ -715,8 +715,8 @@ void update_obj_train_engine(struct TrainCar *arg0) {
 }
 
 // wheels
-void update_obj_train_car1(struct TrainCar *arg0) {
-    arg0->wheelRot -= 0x4FA;
+void update_obj_train_car1(struct TrainCar *tender) {
+    tender->wheelRot -= 0x4FA;
 }
 
 // wheels
@@ -1128,7 +1128,7 @@ void func_80298D7C(Camera *camera, f32 (*arg1)[4], struct Actor *arg2) {
     sp88.unk0 = (s32) D_802B87E0.unk0;
     sp88.unk4 = (u16) D_802B87E0.unk4;
     phi_s1 = temp_s1;
-    if (D_800DC50C == 9) {
+    if (gGamestate == 9) {
         phi_f22 = D_802B9650;
     } else {
         phi_f22 = D_802B9654;
@@ -1614,18 +1614,18 @@ void update_obj_wario_stadium_sign(struct Actor *arg0) {
 /**
  * If train close activate bell sound according to timing
  **/
-void update_obj_railroad_crossing(struct RailroadCrossing *arg0) {
+void update_obj_railroad_crossing(struct RailroadCrossing *crossing) {
     // If train close?
-    if (D_801637B8[arg0->crossingId] != 0) {
+    if (D_801637B8[crossing->crossingId] != 0) {
         // Timer++
-        arg0->someTimer++;
+        crossing->someTimer++;
         // Reset timer
-        if (arg0->someTimer > 40) {
-            arg0->someTimer = 1;
+        if (crossing->someTimer > 40) {
+            crossing->someTimer = 1;
         }
         // Play Bell sound when timer hits 20 or 1.
-        if ((arg0->someTimer == 1) || (arg0->someTimer == 20)) {
-            func_800C98B8(arg0->pos, arg0->velocity, 0x19017016);
+        if ((crossing->someTimer == 1) || (crossing->someTimer == 20)) {
+            func_800C98B8(crossing->pos, crossing->velocity, 0x19017016);
         }
     }
 }
@@ -2491,7 +2491,7 @@ void place_segment_06(u32 arg0) {
                 break;
             }
             temp_s0 = &gActorList[func_8029EC88(&sp8C, &sp78, &sp80, var_s2)];
-            if (D_800DC50C == 9) {
+            if (gGamestate == 9) {
                 func_802976D8(temp_s0->rot);
             } else {
                 temp_s1 = &temp_s0->unk30;
@@ -2825,8 +2825,6 @@ static ? gTextureShrub;                             /* unable to generate initia
 s16 gCurrentCourseId;                               /* unable to generate initializer */
 
 void func_8029E158(void) {
-    u16 temp_t6;
-
     set_segment_base_addr(3, gPrevLoadedAddress);
     D_802BA050 = func_802A84F4((s32) &D_0F04CBE0, 0x00000257U, 0x00000400U);
     func_802A84F4((s32) &D_0F04CE30, 0x00000242U, 0x00000400U);
@@ -2854,8 +2852,8 @@ void func_8029E158(void) {
     func_802A84F4((s32) &D_0F0561AC, 0x0000025BU, 0x00000800U);
     func_802A84F4((s32) &gTexture671A88, 0x00000400U, 0x00000800U);
     func_802A84F4((s32) &gTexture6774D8, 0x00000400U, 0x00000800U);
-    temp_t6 = (u16) gCurrentCourseId;
-    switch (temp_t6) {
+
+    switch (gCurrentCourseId) {
     case 0:
         func_802A84F4((s32) &D_0F04F45C, 0x0000035BU, 0x00000800U);
         D_802BA058 = func_802A84F4((s32) &D_0F056408, 0x000003E8U, 0x00000800U);
@@ -4100,7 +4098,7 @@ block_89:
 GLOBAL_ASM("asm/non_matchings/actors/func_802A0450.s")
 #endif
 
-void func_802A0D54(void) {
+void evaluate_player_collision(void) {
     struct Actor *temp_a1;
     s32 i, j;
     Player *phi_s1;
@@ -4973,7 +4971,7 @@ void func_802A27A0(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg, u16 arg3
     Vec3f sp54;
     f32 temp_f0;
 
-    if (D_800DC50C != CREDITS_SEQUENCE) {
+    if (gGamestate != CREDITS_SEQUENCE) {
         temp_f0 = func_802B80D0(arg0->pos, egg->pos, arg0->rot[1], 200.0f, D_80150130[arg0 - camera1], D_802B9A2C);
         if (temp_f0 < 0.0f) {
             return;
@@ -5139,7 +5137,7 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
     s32 pad[12];
     s32 i;
 
-    struct Actor *phi_s0;
+    struct Actor *actor;
     Vec3f sp4C = {0.0f, 5.0f, 10.0f};
     f32 sp48 = sins(temp_s1->rot[1] - 0x8000); // unk26;
     f32 temp_f0 = coss(temp_s1->rot[1] - 0x8000);
@@ -5170,119 +5168,119 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
     D_8015F8E0 = 0;
 
     for (i = 0; i < ACTOR_LIST_SIZE; i++) {
-        phi_s0 = &gActorList[i];
+        actor = &gActorList[i];
 
-        if (phi_s0->flags == 0) {
+        if (actor->flags == 0) {
             continue;
         }
-            switch (phi_s0->type) {
+            switch (actor->type) {
                 case 2:
-                    func_80299144(temp_s1, D_801502C0, phi_s0);
+                    func_80299144(temp_s1, D_801502C0, actor);
                     break;
                 case 3:
-                    func_8029930C(temp_s1, D_801502C0, phi_s0);
+                    func_8029930C(temp_s1, D_801502C0, actor);
                     break;
                 case 4:
-                    func_802994D4(temp_s1, D_801502C0, phi_s0);
+                    func_802994D4(temp_s1, D_801502C0, actor);
                     break;
                 case 19:
-                    func_8029969C(temp_s1, D_801502C0, phi_s0);
+                    func_8029969C(temp_s1, D_801502C0, actor);
                     break;
                 case 26:
-                    func_80299864(temp_s1, D_801502C0, phi_s0);
+                    func_80299864(temp_s1, D_801502C0, actor);
                     break;
                 case 28:
-                    func_80299A2C(temp_s1, D_801502C0, phi_s0);
+                    func_80299A2C(temp_s1, D_801502C0, actor);
                     break;
                 case 33:
-                    func_80299BF4(temp_s1, D_801502C0, phi_s0);
+                    func_80299BF4(temp_s1, D_801502C0, actor);
                     break;
                 case 29:
-                    func_80299DBC(temp_s1, D_801502C0, phi_s0);
+                    func_80299DBC(temp_s1, D_801502C0, actor);
                     break;
                 case 30:
-                    func_80299EDC(temp_s1, D_801502C0, phi_s0);
+                    func_80299EDC(temp_s1, D_801502C0, actor);
                     break;
                 case 31:
-                    func_80299FFC(temp_s1, D_801502C0, phi_s0);
+                    func_80299FFC(temp_s1, D_801502C0, actor);
                     break;
                 case 32:
-                    func_8029A11C(temp_s1, D_801502C0, phi_s0);
+                    func_8029A11C(temp_s1, D_801502C0, actor);
                     break;
                 case ACTOR_FALLING_ROCK:
-                    func_8029CA90(temp_s1, (struct FallingRock *) phi_s0);
+                    func_8029CA90(temp_s1, (struct FallingRock *) actor);
                     break;
                 case ACTOR_KIWANO_FRUIT:
-                    func_8029A23C(temp_s1, D_801502C0, phi_s0);
+                    func_8029A23C(temp_s1, D_801502C0, actor);
                     break;
                 case ACTOR_BANANA:
-                    func_8029A8F4(temp_s1, D_801502C0, phi_s0);
+                    func_8029A8F4(temp_s1, D_801502C0, actor);
                     break;
                 case ACTOR_GREEN_SHELL:
-                    func_8029A690(temp_s1, D_801502C0, (struct ShellActor *) phi_s0);
+                    func_8029A690(temp_s1, D_801502C0, (struct ShellActor *) actor);
                     break;
                 case ACTOR_RED_SHELL:
-                    func_8029A75C(temp_s1, D_801502C0, (struct ShellActor *) phi_s0);
+                    func_8029A75C(temp_s1, D_801502C0, (struct ShellActor *) actor);
                     break;
                 case ACTOR_BLUE_SPINY_SHELL:
-                    func_8029A828(temp_s1, D_801502C0, (struct ShellActor *) phi_s0);
+                    func_8029A828(temp_s1, D_801502C0, (struct ShellActor *) actor);
                     break;
                 case ACTOR_PIRANHA_PLANT:
-                    func_80298328(temp_s1, D_801502C0, phi_s0);
+                    func_80298328(temp_s1, D_801502C0, actor);
                     break;
                 case ACTOR_TRAIN_ENGINE:
-                    func_8029B8E8(temp_s1, (struct TrainCar *) phi_s0);
+                    func_8029B8E8(temp_s1, (struct TrainCar *) actor);
                     break;
                 case ACTOR_TRAIN_TENDER:
-                    func_8029BFB0(temp_s1, (struct TrainCar *) phi_s0);
+                    func_8029BFB0(temp_s1, (struct TrainCar *) actor);
                     break;
                 case ACTOR_TRAIN_PASSENGER_CAR:
-                    func_8029C3CC(temp_s1, (struct TrainCar *) phi_s0);
+                    func_8029C3CC(temp_s1, (struct TrainCar *) actor);
                     break;
                 case 18:
-                    func_80297A50(temp_s1, D_801502C0, phi_s0);
+                    func_80297A50(temp_s1, D_801502C0, actor);
                     break;
                 case 20:
-                    func_8029AC18(temp_s1, D_801502C0, phi_s0);
+                    func_8029AC18(temp_s1, D_801502C0, actor);
                     break;
                 case ACTOR_MARIO_RACEWAY_SIGN:
-                    func_802A29BC(temp_s1, D_801502C0, phi_s0);
+                    func_802A29BC(temp_s1, D_801502C0, actor);
                     break;
                 case ACTOR_WARIO_STADIUM_SIGN:
-                    func_802A269C(temp_s1, phi_s0);
+                    func_802A269C(temp_s1, actor);
                     break;
                 case 25:
-                    func_802A2C78(temp_s1, D_801502C0, phi_s0);
+                    func_802A2C78(temp_s1, D_801502C0, actor);
                     break;
                 case ACTOR_PADDLE_WHEEL_BOAT:
-                    func_8029AE1C(temp_s1, phi_s0, D_801502C0, sp92);
+                    func_8029AE1C(temp_s1, actor, D_801502C0, sp92);
                     break;
                 case 37:
-                    func_8029B06C(temp_s1, phi_s0);
+                    func_8029B06C(temp_s1, actor);
                     break;
                 case 40:
-                    func_8029B2E4(temp_s1, phi_s0);
+                    func_8029B2E4(temp_s1, actor);
                     break;
                 case 41:
-                    func_8029B6EC(temp_s1, phi_s0);
+                    func_8029B6EC(temp_s1, actor);
                     break;
                 case 44:
-                    func_8029B4E0(temp_s1, phi_s0);
+                    func_8029B4E0(temp_s1, actor);
                     break;
                 case 39:
-                    func_802A2AD0(temp_s1, phi_s0);
+                    func_802A2AD0(temp_s1, actor);
                     break;
                 case ACTOR_YOSHI_VALLEY_EGG:
-                    func_802A27A0(temp_s1, D_801502C0, phi_s0, sp92);
+                    func_802A27A0(temp_s1, D_801502C0, actor, sp92);
                     break;
             }
     }
     switch (gCurrentCourseId) {
         case COURSE_MOO_MOO_FARM:
-            func_802986B4(temp_s1, D_801502C0, phi_s0);
+            func_802986B4(temp_s1, D_801502C0, actor);
             break;
         case COURSE_DK_JUNGLE:
-            func_80298D7C(temp_s1, D_801502C0, phi_s0);
+            func_80298D7C(temp_s1, D_801502C0, actor);
             break;
     }
 }

@@ -7,6 +7,7 @@
 #include "types.h"
 #include "camera.h"
 #include "code_80281780.h"
+#include <config.h>
 
 extern Gfx *gDisplayListHead;
 
@@ -26,7 +27,7 @@ extern s32 D_802874A0;
 extern u16 atan2s(f32, f32);
 extern u16 D_80164714, D_80164716, D_80164718;
 extern u16 D_800DC5E4;
-extern u32 D_800DC50C;
+extern u32 gGamestate;
 extern u32 D_802874FC;
 
 extern u16 D_800DC518;
@@ -87,12 +88,12 @@ void credits_loop(void) {
     f32 temp_f14;
 
     D_802874A0 = 0;
-    if (gIsInQuitToMenuTransition != 0) {
+    if (gIsInQuitToMenuTransition) {
         gQuitToMenuTransitionCounter--;
         if (gQuitToMenuTransitionCounter == 0) {
             gIsInQuitToMenuTransition = 0;
-            D_800DC524 = CREDITS_SEQUENCE;
-            D_800DC50C = 255;
+            gGamestateNext = CREDITS_SEQUENCE;
+            gGamestate = 255;
         }
     } else {
 
@@ -115,7 +116,7 @@ void credits_loop(void) {
     }
 }
 
-void func_80280420(void) {
+void load_credits(void) {
     Camera *camera = &cameras[0];
 
     gCurrentCourseId = gCreditsCourseId;
@@ -125,8 +126,8 @@ void func_80280420(void) {
     func_802A74BC();
     camera->unk_B4 = 60.0f;
     D_80150130[0] = 60.0f;
-    D_800DC5EC->screenWidth = 320;
-    D_800DC5EC->screenHeight = 240;
+    D_800DC5EC->screenWidth = SCREEN_WIDTH;
+    D_800DC5EC->screenHeight = SCREEN_HEIGHT;
     D_800DC5EC->screenStartX = 160;
     D_800DC5EC->screenStartY = 120;
     gScreenModeSelection = SCREEN_MODE_1P;

@@ -132,8 +132,8 @@ glabel L8029D73C
 /* 106D5C 8029D74C 27A50078 */  addiu $a1, $sp, 0x78
 /* 106D60 8029D750 0C0A7B22 */  jal   func_8029EC88
 /* 106D64 8029D754 27A60080 */   addiu $a2, $sp, 0x80
-/* 106D68 8029D758 3C0E800E */  lui   $t6, %hi(D_800DC50C) # $t6, 0x800e
-/* 106D6C 8029D75C 8DCEC50C */  lw    $t6, %lo(D_800DC50C)($t6)
+/* 106D68 8029D758 3C0E800E */  lui   $t6, %hi(gGamestate) # $t6, 0x800e
+/* 106D6C 8029D75C 8DCEC50C */  lw    $t6, %lo(gGamestate)($t6)
 /* 106D70 8029D760 000268C0 */  sll   $t5, $v0, 3
 /* 106D74 8029D764 01A26823 */  subu  $t5, $t5, $v0
 /* 106D78 8029D768 000D6900 */  sll   $t5, $t5, 4
