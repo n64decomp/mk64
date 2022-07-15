@@ -3,18 +3,12 @@
 #include "types.h"
 #include "variables.h"
 #include "waypoints.h"
+#include "actors.h"
+#include "actor_types.h"
 #include <defines.h>
 
 extern void func_800C8F44(u16 arg0);
 extern u16 D_800DC5A8;
-
-struct UnkStruct8015F8D0 {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-};
-
-extern struct UnkStruct8015F8D0 D_8015F8D0;
 
 extern struct Controller *gControllerOne[];
 
@@ -67,10 +61,7 @@ extern u32 *D_06014330;
 
 extern f32 gCourseDirection;
 
-extern u16 gNumPermanentActors;
-
-extern s16 D_800DC5BC, D_800DC5C8;
-extern u16 gNumActors;
+extern s16 D_800DC5C8;
 
 
 s32 D_800DC5E0 = 32;
@@ -154,18 +145,18 @@ void func_80002A18(void) {
     func_8029E158();
 
     if (gModeSelection != BATTLE) {
-        D_8015F8D0.unk4 = (f32) (D_80164490->wayPointY - 15);;
-        D_8015F8D0.unk8 = D_80164490->wayPointZ;
+        D_8015F8D0[1] = (f32) (D_80164490->wayPointY - 15);;
+        D_8015F8D0[2] = D_80164490->wayPointZ;
         if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
-            D_8015F8D0.unk0 = (gIsMirrorMode != 0) ?
+            D_8015F8D0[0] = (gIsMirrorMode != 0) ?
                               D_80164490->wayPointX + 138.0f :
                               D_80164490->wayPointX - 138.0f;
         } else if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-            D_8015F8D0.unk0 = (gIsMirrorMode != 0) ?
+            D_8015F8D0[0] = (gIsMirrorMode != 0) ?
                               D_80164490->wayPointX + 12.0f :
                               D_80164490->wayPointX - 12.0f;
         } else {
-            D_8015F8D0.unk0 = D_80164490->wayPointX;
+            D_8015F8D0[0] = D_80164490->wayPointX;
         }
     }
     if (D_800DC51C == 0) {
@@ -232,10 +223,9 @@ void clear_nmi_buffer(void) {
 }
 
 void func_80003040(void) {
-    u32 pad[2];
-    f32 sp34;
-    s32 sp28[3] = {0};
-    s16 sp20[3] = {0};
+    Vec3f position;
+    Vec3f velocity = {0, 0, 0};
+    Vec3s rotation = {0, 0, 0};
 
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
@@ -258,9 +248,9 @@ void func_80003040(void) {
             func_802AF8BC(0x7000878, -0x80, 0, 0, 0);
             break;
         case COURSE_YOSHI_VALLEY:
-            vec3f_set(&sp34, -2300.0f, 0.0f, 634.0f);
-            sp34 *= gCourseDirection;
-            func_8029EC88(&sp34, &sp20, &sp28, 9);
+            vec3f_set(position, -2300.0f, 0.0f, 634.0f);
+            position[0] *= gCourseDirection;
+            func_8029EC88(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
             break;
         case COURSE_MOO_MOO_FARM:
             func_802A84F4(&D_0F04FE28, 0x3E8, 0x800);
@@ -287,12 +277,12 @@ void func_80003040(void) {
             func_802AF8BC(0x7001318, -1, 0xFF, 0xFF, 0);
             break;
         case COURSE_WARIO_STADIUM:
-            vec3f_set(&sp34, -131.0f, 83.0f, 286.0f);
-            func_8029EC88(&sp34, &sp20, &sp28, 0x23);
-            vec3f_set(&sp34, -2353.0f, 72.0f, -1608.0f);
-            func_8029EC88(&sp34, &sp20, &sp28, 0x23);
-            vec3f_set(&sp34, -2622.0f, 79.0f, 739.0f);
-            func_8029EC88(&sp34, &sp20, &sp28, 0x23);
+            vec3f_set(position, -131.0f, 83.0f, 286.0f);
+            func_8029EC88(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+            vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
+            func_8029EC88(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+            vec3f_set(position, -2622.0f, 79.0f, 739.0f);
+            func_8029EC88(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
             func_802AF8BC(0x7000C50, 0x64, 0xFF, 0xFF, 0xFF);
             func_802AF8BC(0x7000BD8, 0x64, 0xFF, 0xFF, 0xFF);
             func_802AF8BC(0x7000B60, 0x64, 0xFF, 0xFF, 0xFF);
