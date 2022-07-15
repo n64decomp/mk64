@@ -7684,7 +7684,7 @@ void func_80053870(s32 arg0) {
         do {
             temp_s1_2 = *phi_s0_2;
             temp_v0 = (&D_80165C18 + (temp_s1_2 * 0xE0))->unkDF;
-            if (D_800DC50C != CREDITS_SEQUENCE) {
+            if (gGamestate != CREDITS_SEQUENCE) {
                 temp_v0_2 = *(&D_8018CF68 + (arg0 * 2));
                 if ((temp_v0_2 >= (temp_v0 - 1)) && ((temp_v0 + 1) >= temp_v0_2) && (func_8008A140(temp_s1_2, sp84, 0x8000) != 0)) {
                     func_800536C8(temp_s1_2);
@@ -9085,7 +9085,7 @@ void func_80055E68(s32 arg0) {
     s32 temp_s0;
 
     temp_s0 = D_80183EA0;
-    if (D_800DC50C != CREDITS_SEQUENCE) {
+    if (gGamestate != CREDITS_SEQUENCE) {
         func_8008A1D0(temp_s0, arg0, 0x5DC, 0xBB8);
         if (func_8007223C(temp_s0, 0x40000) != 0) {
             func_80055CCC(temp_s0, arg0);
@@ -9683,7 +9683,7 @@ void func_80057114(s32 arg0) {
     s32 phi_s2_2;
 
     phi_fp = arg0;
-    if (D_800DC50C == ENDING_SEQUENCE) {
+    if (gGamestate == ENDING_SEQUENCE) {
         phi_fp = 0;
     }
     temp_s7 = (phi_fp * 0xB8) + camera1;
@@ -9694,7 +9694,7 @@ void func_80057114(s32 arg0) {
             temp_s0 = *phi_s1;
             if (func_8007223C(temp_s0, 0x200000) != 0) {
                 (&D_80163DE8 + (phi_s2 * 0x54))->unk4A = 0;
-            } else if (D_800DC50C != ENDING_SEQUENCE) {
+            } else if (gGamestate != ENDING_SEQUENCE) {
                 (&D_80163DE8 + (phi_s2 * 0x54))->unk4A = 1;
             }
             func_800721E8(temp_s0, 0x200000);

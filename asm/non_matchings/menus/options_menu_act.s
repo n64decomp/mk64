@@ -52,7 +52,7 @@ glabel D_800F2D88
 .double 4.2
 
 .section .text
-glabel func_800B053C
+glabel options_menu_act
 /* 0B113C 800B053C 27BDFFC0 */  addiu $sp, $sp, -0x40
 /* 0B1140 800B0540 AFBF001C */  sw    $ra, 0x1c($sp)
 /* 0B1144 800B0544 AFA50044 */  sw    $a1, 0x44($sp)

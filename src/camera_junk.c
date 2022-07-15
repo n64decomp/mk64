@@ -8,7 +8,7 @@
 extern f32 D_80150148, D_8015014C, D_80150150;
 extern f32 D_80150130[];
 
-void func_80281610(void) {
+void setup_camera_ending_sequence(void) {
     Camera *camera;
     f32 x_dist;
     f32 y_dist;

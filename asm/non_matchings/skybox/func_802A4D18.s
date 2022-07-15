@@ -1,6 +1,6 @@
 glabel func_802A4D18
-/* 10E328 802A4D18 3C0E800E */  lui   $t6, %hi(D_800DC50C) # $t6, 0x800e
-/* 10E32C 802A4D1C 8DCEC50C */  lw    $t6, %lo(D_800DC50C)($t6)
+/* 10E328 802A4D18 3C0E800E */  lui   $t6, %hi(gGamestate) # $t6, 0x800e
+/* 10E32C 802A4D1C 8DCEC50C */  lw    $t6, %lo(gGamestate)($t6)
 /* 10E330 802A4D20 24010004 */  li    $at, 4
 /* 10E334 802A4D24 3C0F800E */  lui   $t7, %hi(gCurrentCourseId) # $t7, 0x800e
 /* 10E338 802A4D28 11C10009 */  beq   $t6, $at, .L802A4D50

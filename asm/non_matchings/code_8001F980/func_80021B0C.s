@@ -46,8 +46,8 @@ glabel func_80021B0C
 /* 0227BC 80021BBC 0C01B9F3 */  jal   func_8006E7CC
 /* 0227C0 80021BC0 00003025 */   move  $a2, $zero
 .L80021BC4:
-/* 0227C4 80021BC4 3C0F800E */  lui   $t7, %hi(D_800DC50C) # $t7, 0x800e
-/* 0227C8 80021BC8 8DEFC50C */  lw    $t7, %lo(D_800DC50C)($t7)
+/* 0227C4 80021BC4 3C0F800E */  lui   $t7, %hi(gGamestate) # $t7, 0x800e
+/* 0227C8 80021BC8 8DEFC50C */  lw    $t7, %lo(gGamestate)($t7)
 /* 0227CC 80021BCC 24010005 */  li    $at, 5
 /* 0227D0 80021BD0 3C04800E */  lui   $a0, %hi(gPlayerOne) # $a0, 0x800e
 /* 0227D4 80021BD4 55E10025 */  bnel  $t7, $at, .L80021C6C

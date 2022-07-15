@@ -7,7 +7,7 @@
 #include <defines.h>
 
 /* functions */
-void func_800B0350(void);
+void update_menus(void);
 void func_800B3F74(s32 menuSelection);
 void func_800B44BC(void);
 s32  func_800B4520(void);

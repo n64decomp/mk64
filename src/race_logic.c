@@ -61,7 +61,7 @@ extern f32 D_80150118;
 extern u16 D_800DC518;
 extern u16 D_8015011E;
 extern float gCourseTimer;
-extern float D_800DC594;
+extern float gVBlankTimer;
 extern s32 gScreenModeSelection;
 extern s32 D_8018D2AC;
 extern s32 gActiveScreenMode;
@@ -1071,7 +1071,7 @@ void func_8028FCBC(void) {
             D_802BA032 = 0;
             D_8015011E = 0;
             gCourseTimer = 0.0f;
-            D_800DC594 = 0.0f;
+            gVBlankTimer = 0.0f;
             D_800DC5B0 = 1;
             D_800DC5B4 = 1;
             D_802BA034 = 0.008f;

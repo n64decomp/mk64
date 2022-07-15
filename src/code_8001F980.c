@@ -819,7 +819,7 @@ void func_80021B0C(void) {
         func_8006E7CC(gPlayerSeven, 6, 0);
         func_8006E7CC(gPlayerEight, 7, 0);
     }
-    if (D_800DC50C == ENDING_SEQUENCE) {
+    if (gGamestate == ENDING_SEQUENCE) {
         temp_a0 = gPlayerOne;
         if ((temp_a0->unk_044 & 0x2000) != 0) {
             func_80024374(temp_a0, 0, 0);

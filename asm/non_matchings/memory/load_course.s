@@ -6,8 +6,8 @@ glabel load_course
 /* 113F38 802AA928 000E7100 */  sll   $t6, $t6, 4
 /* 113F3C 802AA92C 01CF1021 */  addu  $v0, $t6, $t7
 /* 113F40 802AA930 27BDFFA0 */  addiu $sp, $sp, -0x60
-/* 113F44 802AA934 3C03800E */  lui   $v1, %hi(D_800DC50C) # $v1, 0x800e
-/* 113F48 802AA938 8C63C50C */  lw    $v1, %lo(D_800DC50C)($v1)
+/* 113F44 802AA934 3C03800E */  lui   $v1, %hi(gGamestate) # $v1, 0x800e
+/* 113F48 802AA938 8C63C50C */  lw    $v1, %lo(gGamestate)($v1)
 /* 113F4C 802AA93C 8C580000 */  lw    $t8, ($v0)
 /* 113F50 802AA940 8C590004 */  lw    $t9, 4($v0)
 /* 113F54 802AA944 8C480008 */  lw    $t0, 8($v0)
@@ -51,8 +51,8 @@ glabel load_course
 /* 113FE0 802AA9D0 24040009 */  li    $a0, 9
 /* 113FE4 802AA9D4 0C0A9EE5 */  jal   set_segment_base_addr
 /* 113FE8 802AA9D8 00402825 */   move  $a1, $v0
-/* 113FEC 802AA9DC 3C08800E */  lui   $t0, %hi(D_800DC50C) # $t0, 0x800e
-/* 113FF0 802AA9E0 8D08C50C */  lw    $t0, %lo(D_800DC50C)($t0)
+/* 113FEC 802AA9DC 3C08800E */  lui   $t0, %hi(gGamestate) # $t0, 0x800e
+/* 113FF0 802AA9E0 8D08C50C */  lw    $t0, %lo(gGamestate)($t0)
 /* 113FF4 802AA9E4 24010005 */  li    $at, 5
 /* 113FF8 802AA9E8 8FA40048 */  lw    $a0, 0x48($sp)
 /* 113FFC 802AA9EC 11010006 */  beq   $t0, $at, .L802AAA08

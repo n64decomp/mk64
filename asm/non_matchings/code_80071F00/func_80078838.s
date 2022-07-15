@@ -1,7 +1,7 @@
 glabel func_80078838
 /* 079438 80078838 27BDFFD8 */  addiu $sp, $sp, -0x28
-/* 07943C 8007883C 3C0E800E */  lui   $t6, %hi(D_800DC50C) # $t6, 0x800e
-/* 079440 80078840 8DCEC50C */  lw    $t6, %lo(D_800DC50C)($t6)
+/* 07943C 8007883C 3C0E800E */  lui   $t6, %hi(gGamestate) # $t6, 0x800e
+/* 079440 80078840 8DCEC50C */  lw    $t6, %lo(gGamestate)($t6)
 /* 079444 80078844 24010009 */  li    $at, 9
 /* 079448 80078848 AFBF0024 */  sw    $ra, 0x24($sp)
 /* 07944C 8007884C AFB30020 */  sw    $s3, 0x20($sp)

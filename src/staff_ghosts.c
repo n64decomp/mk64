@@ -587,12 +587,12 @@ void func_80005E6C(void) {
     }
 }
 
-void func_80005F44(void) {
+void staff_ghosts_loop(void) {
     if (D_8015F890 == 1) {
         func_80005E6C();
         return;
     }
-    if (D_80162DF0 == 0) {
+    if (!D_80162DF0) {
         func_80005B18();
         return;
     }
