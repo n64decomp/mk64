@@ -16,6 +16,8 @@ void func_800219BC();
 void func_80021C78();
 void func_80021D40();
 void func_80021DA8();
+void func_80021E10(Mat4, Vec3f, Vec3s);
+void func_80021F50(Mat4, Vec3f);
 void func_80021F84(Mat4, f32);
 void func_80021FF8(Mtx*, Mat4);
 void func_80022180(Mtx*, Mat4);
