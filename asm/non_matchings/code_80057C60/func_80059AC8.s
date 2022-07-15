@@ -38,7 +38,7 @@ glabel func_80059AC8
 /* 05A754 80059B54 3C02800E */  lui   $v0, %hi(gScreenModeSelection) # $v0, 0x800e
 /* 05A758 80059B58 8C42C530 */  lw    $v0, %lo(gScreenModeSelection)($v0)
 /* 05A75C 80059B5C 24010001 */  li    $at, 1
-/* 05A760 80059B60 3C08800E */  lui   $t0, %hi(D_800DC50C) # $t0, 0x800e
+/* 05A760 80059B60 3C08800E */  lui   $t0, %hi(gGamestate) # $t0, 0x800e
 /* 05A764 80059B64 10400009 */  beqz  $v0, .L80059B8C
 /* 05A768 80059B68 00000000 */   nop   
 /* 05A76C 80059B6C 10410020 */  beq   $v0, $at, .L80059BF0
@@ -50,7 +50,7 @@ glabel func_80059AC8
 /* 05A784 80059B84 10000028 */  b     .L80059C28
 /* 05A788 80059B88 00000000 */   nop   
 .L80059B8C:
-/* 05A78C 80059B8C 8D08C50C */  lw    $t0, %lo(D_800DC50C)($t0)
+/* 05A78C 80059B8C 8D08C50C */  lw    $t0, %lo(gGamestate)($t0)
 /* 05A790 80059B90 24010009 */  li    $at, 9
 /* 05A794 80059B94 1101000C */  beq   $t0, $at, .L80059BC8
 /* 05A798 80059B98 00000000 */   nop   

@@ -13,7 +13,7 @@ glabel func_80078288
 /* 078EB4 800782B4 10400108 */  beqz  $v0, .L800786D8
 /* 078EB8 800782B8 24010001 */   li    $at, 1
 /* 078EBC 800782BC 10410008 */  beq   $v0, $at, .L800782E0
-/* 078EC0 800782C0 3C19800E */   lui   $t9, %hi(D_800DC50C) # $t9, 0x800e
+/* 078EC0 800782C0 3C19800E */   lui   $t9, %hi(gGamestate) # $t9, 0x800e
 /* 078EC4 800782C4 24010002 */  li    $at, 2
 /* 078EC8 800782C8 104100E4 */  beq   $v0, $at, .L8007865C
 /* 078ECC 800782CC 24010003 */   li    $at, 3
@@ -22,7 +22,7 @@ glabel func_80078288
 /* 078ED8 800782D8 10000100 */  b     .L800786DC
 /* 078EDC 800782DC 8FBF001C */   lw    $ra, 0x1c($sp)
 .L800782E0:
-/* 078EE0 800782E0 8F39C50C */  lw    $t9, %lo(D_800DC50C)($t9)
+/* 078EE0 800782E0 8F39C50C */  lw    $t9, %lo(gGamestate)($t9)
 /* 078EE4 800782E4 24010009 */  li    $at, 9
 /* 078EE8 800782E8 13210081 */  beq   $t9, $at, .L800784F0
 /* 078EEC 800782EC 3C08800E */   lui   $t0, %hi(gPlayerOneCopy) # $t0, 0x800e

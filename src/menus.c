@@ -148,24 +148,29 @@ union GameModePack {
 const union GameModePack D_800F2BE4 = { {0, 1, 2, 3} };
 
 /** forward decs **/
-void func_800B053C(struct Controller *, u16);
-void func_800B13B0(struct Controller *, u16);
-void func_800B15AC(struct Controller *, u16);
-void func_800B1C40(struct Controller *, u16);
-void func_800B1C90(struct Controller *, u16);
-void func_800B20F4(struct Controller *, u16);
-void func_800B29D8(struct Controller *, u16);
-void func_800B3554(struct Controller *, u16);
-void func_800B3B58(struct Controller *, u16);
+void options_menu_act(struct Controller *, u16);
+void data_menu_act(struct Controller *, u16);
+void course_data_menu_act(struct Controller *, u16);
+void logo_intro_menu_act(struct Controller *, u16);
+void controller_pak_menu_act(struct Controller *, u16);
+void splash_menu_act(struct Controller *, u16);
+void main_menu_act(struct Controller *, u16);
+void player_select_menu_act(struct Controller *, u16);
+void course_select_menu_act(struct Controller *, u16);
 void func_800B44AC(void);
 /**************************/
 
-void func_800B0350(void) {
+/**
+ * Includes opening logo and splash screens
+ */
+void update_menus(void) {
     u16 controllerIdx;
 
     if (D_800E86A4 == 0) {
         for (controllerIdx = 0; controllerIdx < 4; controllerIdx++) {
-            if ((func_800B4520() == 0) && (gEnableDebugMode != 0) && ((gControllers[controllerIdx].buttonPressed & 0x1000) != 0)) {
+
+            // Quick jump through menus using the start button.
+            if ((func_800B4520() == 0) && (gEnableDebugMode) && ((gControllers[controllerIdx].buttonPressed & START_BUTTON) != 0)) {
                 // this is certainly a way to write these...
                 switch (gMenuSelection) {
                     case COURSE_SELECT_MENU:
@@ -188,37 +193,37 @@ void func_800B0350(void) {
             osViSetSpecialFeatures(sVIGammaOffDitherOn);
             switch (gMenuSelection) {
             case OPTIONS_MENU:
-                func_800B053C(&gControllers[controllerIdx], controllerIdx);
+                options_menu_act(&gControllers[controllerIdx], controllerIdx);
                 break;
             case DATA_MENU:
-                func_800B13B0(&gControllers[controllerIdx], controllerIdx);
+                data_menu_act(&gControllers[controllerIdx], controllerIdx);
                 break;
             case COURSE_DATA_MENU:
-                func_800B15AC(&gControllers[controllerIdx], controllerIdx);
+                course_data_menu_act(&gControllers[controllerIdx], controllerIdx);
                 break;
             case LOGO_INTRO_MENU:
-                func_800B1C40(&gControllers[controllerIdx], controllerIdx);
+                logo_intro_menu_act(&gControllers[controllerIdx], controllerIdx);
                 break;
             case CONTROLLER_PAK_MENU:
-                if (controllerIdx == 0) {
-                    func_800B1C90(&gControllers[controllerIdx], controllerIdx);
+                if (controllerIdx == PLAYER_ONE) {
+                    controller_pak_menu_act(&gControllers[controllerIdx], controllerIdx);
                 }
                 break;
             case START_MENU_FROM_QUIT:
             case START_MENU:
-                func_800B20F4(&gControllers[controllerIdx], controllerIdx);
+                splash_menu_act(&gControllers[controllerIdx], controllerIdx);
                 break;
             case MAIN_MENU_FROM_QUIT:
             case MAIN_MENU:
-                func_800B29D8(&gControllers[controllerIdx], controllerIdx);
+                main_menu_act(&gControllers[controllerIdx], controllerIdx);
                 break;
             case PLAYER_SELECT_MENU_FROM_QUIT:
             case PLAYER_SELECT_MENU:
-                func_800B3554(&gControllers[controllerIdx], controllerIdx);
+                player_select_menu_act(&gControllers[controllerIdx], controllerIdx);
                 break;
             case COURSE_SELECT_MENU_FROM_QUIT:
             case COURSE_SELECT_MENU:
-                func_800B3B58(&gControllers[controllerIdx], controllerIdx);
+                course_select_menu_act(&gControllers[controllerIdx], controllerIdx);
                 break;
             }
         }
@@ -234,7 +239,7 @@ enum MenuOptionsCursorPositions {
 };
 
 // navigation of the options menu
-void func_800B053C(struct Controller *controller, u16 arg1) {
+void options_menu_act(struct Controller *controller, u16 arg1) {
     u16 btnAndStick; // sp3E
     struct_8018D9E0_entry *sp38;
     s32 res;
@@ -648,11 +653,11 @@ void func_800B053C(struct Controller *controller, u16 arg1) {
     // L800B13A0 return
 } 
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B053C.s")
+GLOBAL_ASM("asm/non_matchings/menus/options_menu_act.s")
 #endif
 
 // Handle navigating the data menu interface
-void func_800B13B0(struct Controller *controller, UNUSED u16 arg1) {
+void data_menu_act(struct Controller *controller, UNUSED u16 arg1) {
     u16 buttonAndStickPress = (controller->buttonPressed | controller->stickPressed);
 
     // Make pressing Start have the same effect as pressing A
@@ -712,7 +717,7 @@ void func_800B13B0(struct Controller *controller, UNUSED u16 arg1) {
     }
 }
 
-void func_800B15AC(struct Controller *controller, UNUSED u16 arg1) {
+void course_data_menu_act(struct Controller *controller, UNUSED u16 arg1) {
     u16 btnAndStick; // sp2E
     struct_8018D9E0_entry *sp28;
     CourseTimeTrialRecords *sp24;
@@ -874,17 +879,21 @@ void func_800B15AC(struct Controller *controller, UNUSED u16 arg1) {
     }
 }
 
-// Handle controller input during the logo screen
-void func_800B1C40(struct Controller *arg0, UNUSED u16 arg1) {
-    u16 sp1E = arg0->buttonPressed | arg0->stickPressed;
+/**
+ * On input skip logo screen
+ **/
+void logo_intro_menu_act(struct Controller *arg0, UNUSED u16 arg1) {
+    u16 anyInput = arg0->buttonPressed | arg0->stickPressed;
 
-    if ((func_800B4520() == 0) && (sp1E != 0)) {
+    if ((func_800B4520() == 0) && (anyInput)) {
+        // Audio related
         func_800CA388(0x3C);
+        
         func_8009E1E4();
     }
 }
 
-void func_800B1C90(struct Controller* controller, UNUSED u16 arg1) {
+void controller_pak_menu_act(struct Controller* controller, UNUSED u16 arg1) {
     u16 buttonAndStickPress;
     OSPfsState* osPfsState;
     s32 selectedTableRow;
@@ -1026,7 +1035,7 @@ void func_800B1C90(struct Controller* controller, UNUSED u16 arg1) {
     }
 }
 
-void func_800B20F4(struct Controller *controller, u16 arg1) {
+void splash_menu_act(struct Controller *controller, u16 arg1) {
     u16 btnAndStick;
     u16 i;
     s32 sp28;
@@ -1279,7 +1288,7 @@ void func_800B28C8(void) {
 
 #ifdef NON_MATCHING
 // nonmatching: regalloc; arg1 is not AND-ed back into $a1, reg chaos follows
-void func_800B29D8(struct Controller *controller, u16 arg1) {
+void main_menu_act(struct Controller *controller, u16 arg1) {
     u16 btnAndStick; // sp2E
     s32 sp28;
     s32 sp24;
@@ -1514,7 +1523,7 @@ void func_800B29D8(struct Controller *controller, u16 arg1) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B29D8.s")
+GLOBAL_ASM("asm/non_matchings/menus/main_menu_act.s")
 #endif
 
 // check if there is no currently selected and/or hovered character at grid position `gridId`
@@ -1531,7 +1540,7 @@ s32 is_character_spot_free(s32 gridId) {
 #ifdef NON_MATCHING
 // grid positions are from right to left, then top to bottom
 // nonmatching: the gCharacterGridSelections pointer is not promoted to $s0
-void func_800B3554(struct Controller *controller, u16 arg1) {
+void player_select_menu_act(struct Controller *controller, u16 arg1) {
     u16 btnAndStick; // sp36
     s8 selected;
     s8 i;
@@ -1698,11 +1707,11 @@ void func_800B3554(struct Controller *controller, u16 arg1) {
     // L800B3B44
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B3554.s")
+GLOBAL_ASM("asm/non_matchings/menus/player_select_menu_act.s")
 #endif
 
 // Handle navigating the course menu interface
-void func_800B3B58(struct Controller *arg0, u16 arg1) {
+void course_select_menu_act(struct Controller *arg0, u16 arg1) {
     u16 buttonAndStickPress = (arg0->buttonPressed | arg0->stickPressed);
 
     if ((gEnableDebugMode == 0) && ((buttonAndStickPress & 0x1000) != 0)) {
@@ -1868,11 +1877,11 @@ void func_800B3F74(s32 menuSelection) {
         func_800B5F30();
         func_8000F0E0();
 
-        if (D_800DC50C != 0) {
+        if (gGamestate != 0) {
             func_800CA008(0, 0);
             func_800CB2C4();
-            D_800DC50C = 0;
-            D_800DC524 = 0;
+            gGamestate = 0;
+            gGamestateNext = 0;
             func_800C8EAC(2);
         }
 
@@ -1921,7 +1930,7 @@ void func_800B3F74(s32 menuSelection) {
         case 0:
         {
             D_8018EDEE = 1;
-            if (D_800DC50C == 0) {
+            if (gGamestate == 0) {
                 for (i = 0; i < 4; i++) {
                     if (i < D_8018EDF3) {
                         gCharacterGridSelections[i] = i + 1;
@@ -1935,8 +1944,8 @@ void func_800B3F74(s32 menuSelection) {
             } else {
                 func_800CA008(0, 0);
                 func_800CB2C4();
-                D_800DC50C = 0;
-                D_800DC524 = 0;
+                gGamestate = 0;
+                gGamestateNext = 0;
                 func_800C8EAC(2);
                 for (i = 0; i < ARRAY_COUNT(D_8018EDE8); i++) {
                     D_8018EDE8[i] = FALSE;
@@ -1972,11 +1981,11 @@ void func_800B3F74(s32 menuSelection) {
             }
             D_8018EDEC = 1;
         }
-        if (D_800DC50C != 0) {
+        if (gGamestate != 0) {
             func_800CA008(0, 0);
             func_800CB2C4();
-            D_800DC50C = 0;
-            D_800DC524 = 0;
+            gGamestate = 0;
+            gGamestateNext = 0;
             func_800C8EAC(2);
         }
         play_sound2(0x49009013);
@@ -2008,6 +2017,7 @@ void func_800B44BC(void) {
     }
 }
 
+// Likely checks that the user is actually in the menus and not racing.
 s32 func_800B4520(void) {
 
     if ((D_8018E7B0 == 2) || (D_8018E7B0 == 3) || (D_8018E7B0 == 4) || (D_8018E7B0 == 7)) {

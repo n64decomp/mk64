@@ -584,7 +584,7 @@ s32 func_8028336C(s32 arg0, Camera *camera) {
     if (temp_v1 != 0) {
         return temp_v1;
     }
-    temp_v1_2 = D_800DC50C;
+    temp_v1_2 = gGamestate;
     switch (temp_v1_2) {                            /* irregular */
     case 5:
         D_802876D8 = (s32) *(&sp20 + D_802874F5);
@@ -675,7 +675,7 @@ void func_80283430(void) {
         var_s1 += 0x14;
     } while (var_s0 != &D_80287824);
     D_802856C0 = 0.0f;
-    if (D_800DC50C == 5) {
+    if (gGamestate == 5) {
         D_802856B0 = 120.0f;
         D_802856B4 = 12.0f;
         D_802856B8 = 120.0f;
@@ -768,7 +768,7 @@ s32 func_80283648(Camera *camera) {
         camera->angleZ = sins((u16) sp6C) * -sp38;
         vec3f_copy_dupe(camera->pos, &D_802876EC);
         vec3f_copy_dupe(sp34, (f32 *) &D_802876E0);
-        if ((D_800DC50C == 9) && (gIsMirrorMode != 0)) {
+        if ((gGamestate == 9) && (gIsMirrorMode != 0)) {
             camera->pos[0] = -camera->pos[0];
             camera->unk = -camera->unk;
         }

@@ -1,7 +1,7 @@
 glabel func_80057114
 /* 057D14 80057114 27BDFFC0 */  addiu $sp, $sp, -0x40
-/* 057D18 80057118 3C0E800E */  lui   $t6, %hi(D_800DC50C) # $t6, 0x800e
-/* 057D1C 8005711C 8DCEC50C */  lw    $t6, %lo(D_800DC50C)($t6)
+/* 057D18 80057118 3C0E800E */  lui   $t6, %hi(gGamestate) # $t6, 0x800e
+/* 057D1C 8005711C 8DCEC50C */  lw    $t6, %lo(gGamestate)($t6)
 /* 057D20 80057120 AFBE0038 */  sw    $fp, 0x38($sp)
 /* 057D24 80057124 24010005 */  li    $at, 5
 /* 057D28 80057128 0080F025 */  move  $fp, $a0
@@ -47,8 +47,8 @@ glabel func_80057114
 /* 057DC0 800571C0 1000000A */  b     .L800571EC
 /* 057DC4 800571C4 A500004A */   sh    $zero, 0x4a($t0)
 .L800571C8:
-/* 057DC8 800571C8 3C09800E */  lui   $t1, %hi(D_800DC50C) # $t1, 0x800e
-/* 057DCC 800571CC 8D29C50C */  lw    $t1, %lo(D_800DC50C)($t1)
+/* 057DC8 800571C8 3C09800E */  lui   $t1, %hi(gGamestate) # $t1, 0x800e
+/* 057DCC 800571CC 8D29C50C */  lw    $t1, %lo(gGamestate)($t1)
 /* 057DD0 800571D0 24010005 */  li    $at, 5
 /* 057DD4 800571D4 11210005 */  beq   $t1, $at, .L800571EC
 /* 057DD8 800571D8 00000000 */   nop   

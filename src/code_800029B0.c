@@ -111,15 +111,15 @@ void func_800029B0(void) {
     }
 }
 
-void func_80002A18(void) {
+void setup_race(void) {
     struct Controller *controller;
-    int tmp;
+    int i;
 
     gPlayerCountSelection1 = D_8018EDF3;
-    if (D_800DC50C != RACING) {
+    if (gGamestate != RACING) {
         gIsMirrorMode = 0;
     }
-    if (gIsMirrorMode != 0) {
+    if (gIsMirrorMode) {
         gCourseDirection = -1.0f;
     } else {
         gCourseDirection = 1.0f;
@@ -175,7 +175,7 @@ void func_80002A18(void) {
 
     controller = *gControllerOne;
 
-    for (tmp = 0; tmp < 7; tmp++, controller++){
+    for (i = 0; i < 7; i++, controller++){
         controller->rawStickX = 0;
         controller->rawStickY = 0;
         controller->buttonPressed = 0;
@@ -244,7 +244,7 @@ void func_80003040(void) {
     gCourseDirection = 1.0f;
 
     gPlayerCountSelection1 = 1;
-    set_segment_base_addr(0x03, (gPrevLoadedAddress + 0xFFFF7000));
+    set_segment_base_addr(3, (gPrevLoadedAddress + 0xFFFF7000));
     destroy_all_actors();
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:

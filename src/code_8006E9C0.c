@@ -1462,7 +1462,7 @@ void func_80070780(void) {
     temp_t6 = gCurrentCourseId;
     switch (temp_t6) {
     case 0:
-        if (D_800DC50C != CREDITS_SEQUENCE) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
@@ -1553,7 +1553,7 @@ void func_80070780(void) {
         } while (temp_s0_4 != &D_8018C0B0);
         return;
     case 3:
-        if (D_800DC50C != CREDITS_SEQUENCE) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             temp_s0_5 = D_80183EA0.unk0;
             func_80073444(temp_s0_5, &D_06007BB8, &D_06007DB8, 0x20, 0x40);
             temp_v0_5 = &D_80165C18 + (temp_s0_5 * 0xE0);
@@ -1574,7 +1574,7 @@ void func_80070780(void) {
             phi_s1_3 = temp_s1;
         } while (temp_s1 < &D_80183EB0);
         phi_s2_3 = &D_80183F28;
-        if (D_800DC50C != CREDITS_SEQUENCE) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             phi_v1 = D_800E5E8C;
             phi_s1_4 = &D_800E5E14;
             do {
@@ -1612,7 +1612,7 @@ void func_80070780(void) {
             phi_s1_5 = temp_s1_2;
         } while (temp_s1_2 < &D_8018C278);
         phi_s1_6 = &D_80183EA0;
-        if (D_800DC50C != CREDITS_SEQUENCE) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             phi_v1_2 = &D_800E5EE8;
             phi_s2_4 = &D_80183F28;
             do {
@@ -1641,7 +1641,7 @@ void func_80070780(void) {
         return;
     case 6:
         phi_s1_7 = &D_80183EA0;
-        if (D_800DC50C != CREDITS_SEQUENCE) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             phi_v1_3 = D_800E5F80;
             do {
                 temp_s0_9 = *phi_s1_7;
@@ -1676,7 +1676,7 @@ void func_80070780(void) {
         } while (temp_s2 != &D_80183F50);
         return;
     case 7:
-        if (D_800DC50C != CREDITS_SEQUENCE) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
@@ -1698,7 +1698,7 @@ void func_80070780(void) {
         /* Duplicate return node #106. Try simplifying control flow for better match */
         return;
     case 8:
-        if (D_800DC50C != CREDITS_SEQUENCE) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
@@ -1722,7 +1722,7 @@ void func_80070780(void) {
         /* Duplicate return node #106. Try simplifying control flow for better match */
         return;
     case 9:
-        if (D_800DC50C != CREDITS_SEQUENCE) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             temp_v0_10 = D_8018EDF3;
             phi_s1_8 = &D_80183EA0;
             if ((temp_v0_10 == ONE_PLAYERS_SELECTED) || ((temp_v0_10 == TWO_PLAYERS_SELECTED) && (gModeSelection == VERSUS))) {
@@ -1811,7 +1811,7 @@ block_75:
         /* Duplicate return node #106. Try simplifying control flow for better match */
         return;
     case 11:
-        if (D_800DC50C != CREDITS_SEQUENCE) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             find_unused_obj_index(&D_8018CF10);
             func_800723A4(D_8018CF10, 0);
             phi_s1_12 = &D_8018C1B0;
@@ -1846,7 +1846,7 @@ block_75:
         return;
     case 13:
         phi_s1_14 = &D_80183EA0;
-        if (D_800DC50C != CREDITS_SEQUENCE) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             do {
                 func_800723A4(*phi_s1_14, 0);
                 temp_s1_5 = phi_s1_14 + 4;

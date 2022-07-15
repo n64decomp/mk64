@@ -113,8 +113,8 @@ glabel func_8009CBE4
 /* 09D984 8009CD84 8F380000 */  lw    $t8, ($t9)
 /* 09D988 8009CD88 01D8082B */  sltu  $at, $t6, $t8
 /* 09D98C 8009CD8C 1420000E */  bnez  $at, .L8009CDC8
-/* 09D990 8009CD90 3C0E800E */   lui   $t6, %hi(D_800DC50C) # $t6, 0x800e
-/* 09D994 8009CD94 8DCEC50C */  lw    $t6, %lo(D_800DC50C)($t6)
+/* 09D990 8009CD90 3C0E800E */   lui   $t6, %hi(gGamestate) # $t6, 0x800e
+/* 09D994 8009CD94 8DCEC50C */  lw    $t6, %lo(gGamestate)($t6)
 /* 09D998 8009CD98 24010004 */  li    $at, 4
 /* 09D99C 8009CD9C 24190006 */  li    $t9, 6
 /* 09D9A0 8009CDA0 15C10004 */  bne   $t6, $at, .L8009CDB4

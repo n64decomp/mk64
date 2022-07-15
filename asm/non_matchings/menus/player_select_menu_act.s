@@ -1,4 +1,4 @@
-glabel func_800B3554
+glabel player_select_menu_act
 /* 0B4154 800B3554 27BDFFC0 */  addiu $sp, $sp, -0x40
 /* 0B4158 800B3558 AFBF001C */  sw    $ra, 0x1c($sp)
 /* 0B415C 800B355C AFB00018 */  sw    $s0, 0x18($sp)

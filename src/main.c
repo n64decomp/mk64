@@ -17,10 +17,10 @@
 void func_8008C214(void);
 void func_80091B78(void);
 void func_802A4D18(void);
-void func_802A3E3C(void);
-void func_802A4160(void);
-void func_802A41D4(void);
-void func_802A3CB0(void);
+void init_rdp(void);
+void set_viewport(void);
+void select_framebuffer(void);
+void init_z_buffer(void);
 void audio_init();
 void profiler_log_gfx_time(enum ProfilerGfxEvent eventID);
 void profiler_log_vblank_time(void);
@@ -150,13 +150,13 @@ u32 gGfxSPTaskStack[256];
 OSMesg gPIMesgBuf[32];
 OSMesgQueue gPIMesgQueue;
 
-s32 D_800DC50C = 0xFFFF;
+s32 gGamestate = 0xFFFF;
 u16 D_800DC510 = 0;
 u16 D_800DC514 = 0;
 u16 D_800DC518 = 0;
 u16 D_800DC51C = 0;
 u16 gEnableDebugMode = 0;
-s32 D_800DC524 = 7; // = COURSE_DATA_MENU?;
+s32 gGamestateNext = 7; // = COURSE_DATA_MENU?;
 UNUSED s32 D_800DC528 = 1;
 s32 gActiveScreenMode = SCREEN_MODE_1P;
 s32 gScreenModeSelection = 0;
@@ -179,7 +179,7 @@ s32 D_800DC568 = 0;
 s32 D_800DC56C[8] = {0};
 s16 sNumVBlanks = 0;
 UNUSED s16 D_800DC590 = 0;
-f32 D_800DC594 = 0.0f;
+f32 gVBlankTimer = 0.0f;
 f32 gCourseTimer = 0.0f;
 
 
@@ -298,7 +298,7 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->task.t.flags = (1 << 1);
     gGfxSPTask->task.t.ucode_boot = rspbootTextStart;
     gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspbootTextEnd - (u8 *) rspbootTextStart);
-    if (D_800DC50C != RACING || gPlayerCountSelection1 - 1 == 0) {
+    if (gGamestate != RACING || gPlayerCountSelection1 - 1 == 0) {
         gGfxSPTask->task.t.ucode = gspF3DEXTextStart;
         gGfxSPTask->task.t.ucode_data = gspF3DEXDataStart;
     } else {
@@ -407,12 +407,15 @@ void exec_display_list(struct SPTask *spTask) {
     }
 }
 
-void func_80000CA8(void) {
+/**
+ * Set default RCP (Reality Co-Processor) settings.
+ */
+void init_rcp(void) {
     move_segment_table_to_dmem();
-    func_802A3E3C();
-    func_802A4160();
-    func_802A41D4();
-    func_802A3CB0();
+    init_rdp();
+    set_viewport();
+    select_framebuffer();
+    init_z_buffer();
 }
 
 /**
@@ -446,7 +449,7 @@ void rendering_init(void) {
     set_segment_base_addr(1, gGfxPool);
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = gGfxPool->gfxPool;
-    func_80000CA8();
+    init_rcp();
     clear_framebuffer(0);
     end_master_display_list();
     exec_display_list(&gGfxPool->spTask);
@@ -518,8 +521,10 @@ void dma_copy(u8 *dest, u8 *arg1, u32 size) {
     }
 }
 
-// Resembles setup_game_memory from SM64
-void init_game(void) {
+/**
+ * Setup main segments and framebuffers.
+ */
+void setup_game_memory(void) {
     UNUSED u32 pad[2];
     u32 sp2C;
     u32 sp40;
@@ -552,15 +557,19 @@ void init_game(void) {
     D_8015F734 = gPrevLoadedAddress;
 }
 
-void func_80001404(void) {
-    D_800DC524 = 0; // = START_MENU_FROM_QUIT?
+/**
+ * @brief 
+ * 
+ */
+void game_init_clear_framebuffer(void) {
+    gGamestateNext = 0; // = START_MENU_FROM_QUIT?
     clear_framebuffer(0);
 }
 
-void func_8000142C(void) {
+void race_logic_loop(void) {
     s16 i;
     s32 pad;
-    u16 temp_v0;
+    u16 rotY;
     f32 pad2 = 0;
 
     D_80150112 = 0;
@@ -581,9 +590,9 @@ void func_8000142C(void) {
     func_802A4EF4();
 
     switch(gActiveScreenMode) {
-        case 0:
+        case SCREEN_MODE_1P:
             D_80150114 = 2;
-            func_80005F44();
+            staff_ghosts_loop();
             if (D_800DC5FC == 0) {
 
                 for (i = 0; i < D_80150114; i++) {
@@ -591,7 +600,7 @@ void func_8000142C(void) {
                         gCourseTimer += 0.01666666;
                     }
                     func_802909F0();
-                    func_802A0D54();
+                    evaluate_player_collision();
                     func_800382DC();
                     func_8001EE98(gPlayerOneCopy, camera1, 0);
                     func_80028F70();
@@ -620,15 +629,15 @@ void func_8000142C(void) {
                             D_800DC514 = 0;
                     }
 
-                    temp_v0 = camera1->rot[1];
+                    rotY = camera1->rot[1];
                     D_801625E8 = D_800DC5EC->pathCounter;
-                    if (temp_v0 < 0x2000) {
+                    if (rotY < 0x2000) {
                         func_80057A50(40, 100, "SOUTH  ", D_801625E8);
-                    } else if (temp_v0 < 0x6000) {
+                    } else if (rotY < 0x6000) {
                         func_80057A50(40, 100, "EAST   ", D_801625E8);
-                    } else if (temp_v0 < 0xA000) {
+                    } else if (rotY < 0xA000) {
                         func_80057A50(40, 100, "NORTH  ", D_801625E8);
-                    } else if (temp_v0 < 0xE000) {
+                    } else if (rotY < 0xE000) {
                         func_80057A50(40, 100, "WEST   ", D_801625E8);
                     } else {
                         func_80057A50(40, 100, "SOUTH  ", D_801625E8);
@@ -644,7 +653,7 @@ void func_8000142C(void) {
             }
             break;
 
-        case 2:
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             if (gCurrentCourseId == COURSE_DK_JUNGLE) {
                 D_80150114 = 3;
             } else {
@@ -656,7 +665,7 @@ void func_8000142C(void) {
                             gCourseTimer += 0.01666666;
                         }
                         func_802909F0();
-                        func_802A0D54();
+                        evaluate_player_collision();
                         func_800382DC();
                         func_8001EE98(gPlayerOneCopy, camera1, 0);
                         func_80029060();
@@ -674,9 +683,9 @@ void func_8000142C(void) {
                 profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
                 sNumVBlanks = 0;
                 move_segment_table_to_dmem();
-                func_802A3E3C();
+                init_rdp();
                 if (D_800DC5B0 != 0) {
-                    func_802A41D4();
+                    select_framebuffer();
                 }
                 D_8015F788 = 0;
                 if (gPlayerWinningIndex == 0) {
@@ -688,7 +697,7 @@ void func_8000142C(void) {
                 }
             break;
 
-        case 1:
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
 
             if (gCurrentCourseId == COURSE_DK_JUNGLE) {
                 D_80150114 = 3;
@@ -702,7 +711,7 @@ void func_8000142C(void) {
                             gCourseTimer += 0.01666666;
                         }
                         func_802909F0();
-                        func_802A0D54();
+                        evaluate_player_collision();
                         func_800382DC();
                         func_8001EE98(gPlayerOneCopy, camera1, 0);
                         func_80029060();
@@ -720,9 +729,9 @@ void func_8000142C(void) {
             sNumVBlanks = (u16)0;
             func_8005A070();
             move_segment_table_to_dmem();
-            func_802A3E3C();
+            init_rdp();
             if (D_800DC5B0 != 0) {
-                func_802A41D4();
+                select_framebuffer();
             }
             D_8015F788 = 0;
             if (gPlayerWinningIndex == 0) {
@@ -735,7 +744,7 @@ void func_8000142C(void) {
 
             break;
 
-        case 3:
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
             if (gPlayerCountSelection1 == 3) {
                 switch(gCurrentCourseId) {
                     case COURSE_BOWSER_CASTLE:
@@ -749,6 +758,7 @@ void func_8000142C(void) {
                         break;
                 }
             } else {
+                // Four players
                 switch(gCurrentCourseId) {
                     case COURSE_BLOCK_FORT:
                     case COURSE_DOUBLE_DECK:
@@ -769,7 +779,7 @@ void func_8000142C(void) {
                         gCourseTimer += 0.01666666;
                     }
                     func_802909F0();
-                    func_802A0D54();
+                    evaluate_player_collision();
                     func_800382DC();
                     func_8001EE98(gPlayerOneCopy, camera1, 0);
                     func_80029158();
@@ -791,9 +801,9 @@ void func_8000142C(void) {
         sNumVBlanks = 0;
         profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
         move_segment_table_to_dmem();
-        func_802A3E3C();
+        init_rdp();
         if (D_800DC5B0 != 0) {
-            func_802A41D4();
+            select_framebuffer();
         }
         D_8015F788 = 0;
         if (gPlayerWinningIndex == 0) {
@@ -845,29 +855,42 @@ void func_8000142C(void) {
     gSPEndDisplayList(gDisplayListHead++);
 }
 
-void func_80001ECC(void) {
-
-    switch (D_800DC50C) {
+/**
+ * mk64's game loop depends on a series of states.
+ * It runs a wide branching series of code based on these states.
+ * State 1) Clear framebuffer
+ * State 2) Run menus
+ * State 3) Process race related logic
+ * State 4) Ending sequence
+ * State 5) Credits
+ * 
+ * Note that the state doesn't flip-flop at random but is permanent
+ * until the state changes (ie. Exit menus and start a race).
+ */
+void game_state_handler(void) {
+    switch (gGamestate) {
         case 7:
-            func_80001404();
+            game_init_clear_framebuffer();
             break;
-        case 0:
-        case 1:
-        case 2:
-        case 3:
+        case START_MENU_FROM_QUIT:
+        case MAIN_MENU_FROM_QUIT:
+        case PLAYER_SELECT_MENU_FROM_QUIT:
+        case COURSE_SELECT_MENU_FROM_QUIT:
+            // Display black
             osViBlack(0);
-            func_800B0350();
-            func_80000CA8();
-            func_80094A64(gGfxPool);
+            update_menus();
+            init_rcp();
+            // gGfxPool->mtxPool->m or gGfxPool?
+            func_80094A64(gGfxPool->mtxPool->m);
             break;
-        case 4:
-            func_8000142C();
+        case RACING:
+            race_logic_loop();
             break;
-        case 5:
-            func_80281548();
+        case ENDING_SEQUENCE:
+            ending_sequence_loop();
             break;
-        case 9:
-            func_802802AC();
+        case CREDITS_SEQUENCE:
+            credits_loop();
             break;
     }
 }
@@ -927,7 +950,7 @@ void start_gfx_sptask(void) {
 }
 
 void handle_vblank(void) {
-    D_800DC594 += 0.01666666;
+    gVBlankTimer += 0.01666666;
     sNumVBlanks++;
 
     receive_new_tasks();
@@ -1035,9 +1058,11 @@ void thread3_video(UNUSED void *arg0) {
     }
 
     setup_mesg_queues();
-    init_game();
+    setup_game_memory();
+
     create_thread(&gAudioThread, 4, &thread4_audio, 0, gAudioThreadStack + ARRAY_COUNT(gAudioThreadStack), 20);
     osStartThread(&gAudioThread);
+
     create_thread(&gGameLoopThread, 5, &thread5_game_loop, 0, gGameLoopThreadStack + ARRAY_COUNT(gGameLoopThreadStack), 10);
     osStartThread(&gGameLoopThread);
 
@@ -1084,8 +1109,13 @@ void func_80002658(void) {
     func_802A4D18();
 }
 
-void func_80002684(void) {
-    switch (D_800DC50C) {
+/**
+ * Sets courseId to NULL if 
+ * 
+ * 
+ */
+void update_gamestate(void) {
+    switch (gGamestate) {
         case START_MENU_FROM_QUIT:
             func_80002658();
             gCurrentlyLoadedCourseId = COURSE_NULL;
@@ -1104,7 +1134,7 @@ void func_80002684(void) {
             break;
         case RACING:
             init_seg_8028DF00();
-            func_80002A18();
+            setup_race();
             break;
         case ENDING_SEQUENCE:
             gCurrentlyLoadedCourseId = COURSE_NULL;
@@ -1115,7 +1145,7 @@ void func_80002684(void) {
             gCurrentlyLoadedCourseId = COURSE_NULL;
             init_seg_8028DF00();
             init_seg_80280000();
-            func_80280420();
+            load_credits();
             break;
         }
 }
@@ -1128,7 +1158,8 @@ void thread5_game_loop(UNUSED void *arg) {
         clear_nmi_buffer();
     }
     set_vblank_handler(2, &gGameVblankHandler, &gGameVblankQueue, (OSMesg) OS_EVENT_SW2);
-    // Potentially unused?
+    // These variables track stats such as player wins.
+    // In the event of a console reset, it remembers them.
     gNmiUnknown1 = (s32) pAppNmiBuffer;
     gNmiUnknown2 = (s32) pAppNmiBuffer + 2;
     gNmiUnknown3 = (s32) pAppNmiBuffer + 11;
@@ -1141,14 +1172,16 @@ void thread5_game_loop(UNUSED void *arg) {
 
     while(TRUE) {
         func_800CB2C4();
-        if (D_800DC524 != D_800DC50C) {
-            D_800DC50C = (s32) D_800DC524;
-            func_80002684();
+
+        // Update the gamestate if it has changed.
+        if (gGamestateNext != gGamestate) {
+            gGamestate = gGamestateNext;
+            update_gamestate();
         }
         profiler_log_thread5_time(THREAD5_START);
         config_gfx_pool();
         read_controllers();
-        func_80001ECC();
+        game_state_handler();
         end_master_display_list();
         display_and_vsync();
     }

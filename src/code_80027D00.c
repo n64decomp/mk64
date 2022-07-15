@@ -731,7 +731,7 @@ void func_80028E70(void *arg0, s32 arg1, s8 arg2, s8 arg3) {
 
     temp_v0 = arg0->unk0;
     if ((temp_v0 & 0x8000) == 0x8000) {
-        if (D_800DC50C == ENDING_SEQUENCE) {
+        if (gGamestate == ENDING_SEQUENCE) {
             if ((temp_v0 & 0x2000) == 0) {
                 func_80038C6C(arg3, arg2);
                 return;

@@ -103,8 +103,8 @@ glabel func_80087E08
 /* 088B8C 80087F8C E446003C */  swc1  $f6, 0x3c($v0)
 /* 088B90 80087F90 0C021D47 */  jal   func_8008751C
 /* 088B94 80087F94 A45800C0 */   sh    $t8, 0xc0($v0)
-/* 088B98 80087F98 3C01800E */  lui   $at, %hi(D_800DC594) # $at, 0x800e
-/* 088B9C 80087F9C C428C594 */  lwc1  $f8, %lo(D_800DC594)($at)
+/* 088B98 80087F98 3C01800E */  lui   $at, %hi(gVBlankTimer) # $at, 0x800e
+/* 088B9C 80087F9C C428C594 */  lwc1  $f8, %lo(gVBlankTimer)($at)
 /* 088BA0 80087FA0 8FA20024 */  lw    $v0, 0x24($sp)
 /* 088BA4 80087FA4 4600428D */  trunc.w.s $f10, $f8
 /* 088BA8 80087FA8 44085000 */  mfc1  $t0, $f10

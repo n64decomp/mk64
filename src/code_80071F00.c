@@ -3783,7 +3783,7 @@ void func_80078288(s32 arg0) {
             temp_s0->unkB4 = func_800872D8(arg0, camera1);
             return;
         }
-        if (D_800DC50C != CREDITS_SEQUENCE) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             sp3A = ((gPlayerOneCopy->unk_094 / 18.0f) * 216.0f) / 2.0f;
             sp3E = (random_int(0xF) - sp3A) + 0x2D;
             sp3C = random_int(0x12C) + 0x1E;
@@ -3941,7 +3941,7 @@ void func_80078838(void) {
     s32 temp_a0;
     s32 *phi_s0;
 
-    if (D_800DC50C != CREDITS_SEQUENCE) {
+    if (gGamestate != CREDITS_SEQUENCE) {
         func_80078790();
     } else {
         func_80078790();
@@ -9099,7 +9099,7 @@ void func_80080524(s32 arg0) {
     temp_s0->unk14 = 70.0f;
     temp_s0->unk20 = 0.0f;
     func_8008B888(arg0, 0, 0, 0);
-    if ((gIsMirrorMode != 0) || (D_800DC50C == CREDITS_SEQUENCE)) {
+    if ((gIsMirrorMode != 0) || (gGamestate == CREDITS_SEQUENCE)) {
         func_8008B8BC(arg0, 0, 0xC000, 0);
     } else {
         func_8008B8BC(arg0, 0, 0x4000, 0);
@@ -9285,7 +9285,7 @@ block_6:
         func_8007E63C(arg0);
         func_8008085C(arg0);
         func_80073514(arg0);
-        if (D_800DC50C != CREDITS_SEQUENCE) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             if ((D_8018D40C == 0) && (phi_t0->unkA6 == 2)) {
                 func_800C98B8(phi_t0 + 4, phi_t0 + 0x38, 0x19036045);
                 return;
@@ -10481,7 +10481,7 @@ void func_8008241C(s32 arg0, s32 arg1) {
         phi_f10 = temp_f10 + 4294967296.0;
     }
     temp_f4 = phi_f10 + -100.0;
-    if (D_800DC50C == CREDITS_SEQUENCE) {
+    if (gGamestate == CREDITS_SEQUENCE) {
         func_8008B7D4(arg0, sp22 + D_800EF170, sp20 + 60.0, temp_f4 + D_800EF178);
     } else if (temp_s0->unkD5 != 0) {
         func_8008B7D4(arg0, (sp22 + D_800EF180) * D_8018D01C, sp20 + 20.0, temp_f4 + D_800EF188);
@@ -10602,7 +10602,7 @@ void func_80082870(void) {
                     D_80183E40.unk0 = 0.0f;
                     D_80183E40.unk4 = 0.0f;
                     D_80183E40.unk8 = 0.0f;
-                    if (D_800DC50C != CREDITS_SEQUENCE) {
+                    if (gGamestate != CREDITS_SEQUENCE) {
                         func_800C98B8(temp_s1 + 4, &D_80183E40, 0x19017043);
                     } else if (D_802876D2 < 0x97) {
                         func_800C98B8(&D_80165C18 + (D_80183F2C * 0xE0) + 4, &D_80183E40, 0x19017043);
@@ -10618,7 +10618,7 @@ void func_80082870(void) {
     if (temp_v0 != 0) {
         D_80165900 = temp_v0 - 1;
     } else {
-        if (D_800DC50C != CREDITS_SEQUENCE) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             D_80165900 = 0x3C;
         } else {
             D_80165900 = 0xF;
@@ -11812,7 +11812,7 @@ block_14:
     } else if ((arg1 >= 9) && (arg1 < 0xF)) {
         switch (arg1) {
         case 9:
-            if (D_800DC50C != CREDITS_SEQUENCE) {
+            if (gGamestate != CREDITS_SEQUENCE) {
                 func_8008B7D4(arg0, D_8018D01C * 146.0, 0, 0xC3BE0000);
             } else {
                 func_8008B7D4(arg0, D_8018D01C * 380.0, 0, 0xC405C000);
@@ -12226,7 +12226,7 @@ void func_800853DC(s32 arg0) {
     temp_v0 = (arg0 * 0xE0) + &D_80165C18;
     temp_v0->unk70 = &D_0600F960;
     temp_v0->unk0 = 1.0f;
-    if (D_800DC50C != CREDITS_SEQUENCE) {
+    if (gGamestate != CREDITS_SEQUENCE) {
         sp2C = temp_v0;
         func_8008B7D4(D_8018D01C * -176.0, 0.0f, -2323.0f);
         func_8008B80C(arg0, 0.0f, 0x43960000, 0.0f);

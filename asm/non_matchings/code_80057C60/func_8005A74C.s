@@ -19,8 +19,8 @@ glabel L8005A77C
 /* 05B38C 8005A78C 10000070 */  b     .L8005A950
 /* 05B390 8005A790 00000000 */   nop   
 glabel L8005A794
-/* 05B394 8005A794 3C0F800E */  lui   $t7, %hi(D_800DC50C) # $t7, 0x800e
-/* 05B398 8005A798 8DEFC50C */  lw    $t7, %lo(D_800DC50C)($t7)
+/* 05B394 8005A794 3C0F800E */  lui   $t7, %hi(gGamestate) # $t7, 0x800e
+/* 05B398 8005A798 8DEFC50C */  lw    $t7, %lo(gGamestate)($t7)
 /* 05B39C 8005A79C 24010009 */  li    $at, 9
 /* 05B3A0 8005A7A0 11E1006B */  beq   $t7, $at, .L8005A950
 /* 05B3A4 8005A7A4 00000000 */   nop   
@@ -45,8 +45,8 @@ glabel L8005A794
 glabel L8005A7EC
 /* 05B3EC 8005A7EC 0C020C20 */  jal   func_80083080
 /* 05B3F0 8005A7F0 00000000 */   nop   
-/* 05B3F4 8005A7F4 3C19800E */  lui   $t9, %hi(D_800DC50C) # $t9, 0x800e
-/* 05B3F8 8005A7F8 8F39C50C */  lw    $t9, %lo(D_800DC50C)($t9)
+/* 05B3F4 8005A7F4 3C19800E */  lui   $t9, %hi(gGamestate) # $t9, 0x800e
+/* 05B3F8 8005A7F8 8F39C50C */  lw    $t9, %lo(gGamestate)($t9)
 /* 05B3FC 8005A7FC 24010009 */  li    $at, 9
 /* 05B400 8005A800 13210053 */  beq   $t9, $at, .L8005A950
 /* 05B404 8005A804 00000000 */   nop   
@@ -55,8 +55,8 @@ glabel L8005A7EC
 /* 05B410 8005A810 1000004F */  b     .L8005A950
 /* 05B414 8005A814 00000000 */   nop   
 glabel L8005A818
-/* 05B418 8005A818 3C08800E */  lui   $t0, %hi(D_800DC50C) # $t0, 0x800e
-/* 05B41C 8005A81C 8D08C50C */  lw    $t0, %lo(D_800DC50C)($t0)
+/* 05B418 8005A818 3C08800E */  lui   $t0, %hi(gGamestate) # $t0, 0x800e
+/* 05B41C 8005A81C 8D08C50C */  lw    $t0, %lo(gGamestate)($t0)
 /* 05B420 8005A820 24010009 */  li    $at, 9
 /* 05B424 8005A824 11010003 */  beq   $t0, $at, .L8005A834
 /* 05B428 8005A828 00000000 */   nop   
@@ -68,8 +68,8 @@ glabel L8005A818
 /* 05B43C 8005A83C 10000044 */  b     .L8005A950
 /* 05B440 8005A840 00000000 */   nop   
 glabel L8005A844
-/* 05B444 8005A844 3C09800E */  lui   $t1, %hi(D_800DC50C) # $t1, 0x800e
-/* 05B448 8005A848 8D29C50C */  lw    $t1, %lo(D_800DC50C)($t1)
+/* 05B444 8005A844 3C09800E */  lui   $t1, %hi(gGamestate) # $t1, 0x800e
+/* 05B448 8005A848 8D29C50C */  lw    $t1, %lo(gGamestate)($t1)
 /* 05B44C 8005A84C 24010009 */  li    $at, 9
 /* 05B450 8005A850 11210003 */  beq   $t1, $at, .L8005A860
 /* 05B454 8005A854 00000000 */   nop   
@@ -82,8 +82,8 @@ glabel L8005A844
 /* 05B46C 8005A86C 10410007 */  beq   $v0, $at, .L8005A88C
 /* 05B470 8005A870 24010002 */   li    $at, 2
 /* 05B474 8005A874 10410005 */  beq   $v0, $at, .L8005A88C
-/* 05B478 8005A878 3C0A800E */   lui   $t2, %hi(D_800DC50C) # $t2, 0x800e
-/* 05B47C 8005A87C 8D4AC50C */  lw    $t2, %lo(D_800DC50C)($t2)
+/* 05B478 8005A878 3C0A800E */   lui   $t2, %hi(gGamestate) # $t2, 0x800e
+/* 05B47C 8005A87C 8D4AC50C */  lw    $t2, %lo(gGamestate)($t2)
 /* 05B480 8005A880 24010009 */  li    $at, 9
 /* 05B484 8005A884 15410032 */  bne   $t2, $at, .L8005A950
 /* 05B488 8005A888 00000000 */   nop   
@@ -102,8 +102,8 @@ glabel L8005A89C
 /* 05B4B4 8005A8B4 10000026 */  b     .L8005A950
 /* 05B4B8 8005A8B8 00000000 */   nop   
 glabel L8005A8BC
-/* 05B4BC 8005A8BC 3C0C800E */  lui   $t4, %hi(D_800DC50C) # $t4, 0x800e
-/* 05B4C0 8005A8C0 8D8CC50C */  lw    $t4, %lo(D_800DC50C)($t4)
+/* 05B4BC 8005A8BC 3C0C800E */  lui   $t4, %hi(gGamestate) # $t4, 0x800e
+/* 05B4C0 8005A8C0 8D8CC50C */  lw    $t4, %lo(gGamestate)($t4)
 /* 05B4C4 8005A8C4 24010009 */  li    $at, 9
 /* 05B4C8 8005A8C8 11810021 */  beq   $t4, $at, .L8005A950
 /* 05B4CC 8005A8CC 00000000 */   nop   
@@ -117,8 +117,8 @@ glabel L8005A8E0
 /* 05B4E8 8005A8E8 10000019 */  b     .L8005A950
 /* 05B4EC 8005A8EC 00000000 */   nop   
 glabel L8005A8F0
-/* 05B4F0 8005A8F0 3C0D800E */  lui   $t5, %hi(D_800DC50C) # $t5, 0x800e
-/* 05B4F4 8005A8F4 8DADC50C */  lw    $t5, %lo(D_800DC50C)($t5)
+/* 05B4F0 8005A8F0 3C0D800E */  lui   $t5, %hi(gGamestate) # $t5, 0x800e
+/* 05B4F4 8005A8F4 8DADC50C */  lw    $t5, %lo(gGamestate)($t5)
 /* 05B4F8 8005A8F8 24010009 */  li    $at, 9
 /* 05B4FC 8005A8FC 11A10003 */  beq   $t5, $at, .L8005A90C
 /* 05B500 8005A900 00000000 */   nop   
@@ -130,8 +130,8 @@ glabel L8005A8F0
 /* 05B514 8005A914 1000000E */  b     .L8005A950
 /* 05B518 8005A918 00000000 */   nop   
 glabel L8005A91C
-/* 05B51C 8005A91C 3C0E800E */  lui   $t6, %hi(D_800DC50C) # $t6, 0x800e
-/* 05B520 8005A920 8DCEC50C */  lw    $t6, %lo(D_800DC50C)($t6)
+/* 05B51C 8005A91C 3C0E800E */  lui   $t6, %hi(gGamestate) # $t6, 0x800e
+/* 05B520 8005A920 8DCEC50C */  lw    $t6, %lo(gGamestate)($t6)
 /* 05B524 8005A924 24010009 */  li    $at, 9
 /* 05B528 8005A928 11C10009 */  beq   $t6, $at, .L8005A950
 /* 05B52C 8005A92C 00000000 */   nop   

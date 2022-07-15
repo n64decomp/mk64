@@ -49,12 +49,12 @@ void func_80281D00(void) {
     u16 sp64[46];
 
     func_802A53A4();
-    func_802A3E3C();
+    init_rdp();
     if (gMenuSelectionFromEndingSequence != 0xFFFF) {
         clear_framebuffer(0);
         if (D_80287554 >= 4) {
             gIsInQuitToMenuTransition = 0;
-            D_800DC524 = gMenuSelectionFromEndingSequence;
+            gGamestateNext = gMenuSelectionFromEndingSequence;
         }
         D_80287554++;
         return;
@@ -78,5 +78,5 @@ void func_80281D00(void) {
     func_80093F10();
     func_80284CC0();
     func_80281C40();
-    func_802A3E3C();
+    init_rdp();
 }

@@ -1,7 +1,7 @@
 glabel func_80099AEC
 /* 09A6EC 80099AEC 27BDFF68 */  addiu $sp, $sp, -0x98
-/* 09A6F0 80099AF0 3C0E800E */  lui   $t6, %hi(D_800DC50C) # $t6, 0x800e
-/* 09A6F4 80099AF4 8DCEC50C */  lw    $t6, %lo(D_800DC50C)($t6)
+/* 09A6F0 80099AF0 3C0E800E */  lui   $t6, %hi(gGamestate) # $t6, 0x800e
+/* 09A6F4 80099AF4 8DCEC50C */  lw    $t6, %lo(gGamestate)($t6)
 /* 09A6F8 80099AF8 24010004 */  li    $at, 4
 /* 09A6FC 80099AFC AFBF004C */  sw    $ra, 0x4c($sp)
 /* 09A700 80099B00 AFBE0048 */  sw    $fp, 0x48($sp)
