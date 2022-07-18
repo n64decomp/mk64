@@ -7,7 +7,9 @@
 /* Function Prototypes */
 
 void func_8001F980(s32*, s32*);
-void func_80020000(Player*, struct Camera*, u8, u8);
+u16  func_8001FB0C(Player*, Camera*, f32, f32);
+u16  func_8001FD78(Player*, f32, f32, f32);
+void func_80020000(Player*, Camera*, u8, u8);
 void func_8002088C();
 void func_80020F1C();
 void func_80021244(Player*, u8, u8);
@@ -22,6 +24,7 @@ void func_80021F84(Mat4, f32);
 void func_80021FF8(Mtx*, Mat4);
 void func_80022180(Mtx*, Mat4);
 s32  func_800224F0(s16*, s16, s16);
+void func_8002276C();
 void move_s32_towards(s32*, s32, f32);
 void move_f32_towards(f32*, f32, f32);
 void move_s16_towards(s16*, s16, f32);
