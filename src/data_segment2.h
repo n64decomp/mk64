@@ -3,7 +3,7 @@
 
 #include <PR/gbi.h>
 
-extern s32 D_02007B38[];
+extern Vtx D_02007B38[];
 
 extern Gfx D_02007650[];
 extern Gfx D_020076B0[];
