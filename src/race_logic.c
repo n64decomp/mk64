@@ -745,7 +745,7 @@ void update_race_position_data(void) {
 void func_8028F474(void) {
     s32 i;
 
-        switch (D_800DC510) {
+    switch (D_800DC510) {
         case 3:
         case 4:
         case 5:
@@ -757,7 +757,7 @@ void func_8028F474(void) {
         case 2:
             func_800097E0();
             break;
-        }
+    }
 }
 
 void func_8028F4E8(void) {

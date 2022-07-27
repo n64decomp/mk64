@@ -446,7 +446,7 @@ glabel ipl3_entry # 0xA4000040
     bal   func_A4000690
      nop
 
-halt:
+halt: # checksum fail
     bal   halt
      nop
 

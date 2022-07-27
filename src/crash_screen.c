@@ -88,115 +88,23 @@ void crash_screen_draw_glyph(u16 *framebuffer, s32 x, s32 y, s32 glyph) {
 
 #define WHITE_COLOUR 0xFFFF
 #define RED_COLOUR 0xF801
-void crash_screen_draw_square(u16 *framebuffer) {
-    s32 temp_a0;
-    s32 temp_a1;
-    s32 temp_a1_2;
-    s32 temp_ra;
-    s32 temp_s0;
-    s32 temp_s1;
-    s32 temp_t0;
-    s32 temp_v1;
-    s32 phi_s2;
-    s32 phi_s0;
-    s16 *phi_v0;
-    s32 phi_v1;
-    void *phi_v0_2;
-    s32 phi_a1;
-    s32 phi_s1;
-    s32 phi_a0;
-    s32 phi_a1_2;
-    s32 phi_v1_2;
-    s32 phi_a0_2;
-    s32 phi_a0_3;
-    s32 phi_a1_3;
-    s32 phi_a1_4;
-    s32 i, j, k;
+void crash_screen_draw_square(u16 framebuffer[][640/sizeof(u16)]) {
+    s32 var_s0;
+    s32 var_s2;
+    s32 row;
+    s32 column;
 
-    //phi_s2 = 0x28;
-    //phi_s0 = 0x2E;
-    phi_a0_2 = framebuffer;
-    //phi_a1_3 = arg1;
-    for (i = 46; i > 44; i--) {
-        //phi_s1 = phi_s2;
-        //phi_a0 = phi_a0_2;
-        //phi_a1_2 = phi_a1_3;
-       // phi_a0_3 = phi_a0_2;
-        //phi_a1_4 = phi_a1_3;
-        //if (phi_s2 < phi_s0) {
-            for (j = 40; j < i; j++) {
-                //phi_v1 = phi_s2;
-                //phi_v1_2 = phi_s2;
-                if (phi_s2 < phi_s0) {
-                    //temp_a0 = i - j;
-                    temp_t0 = (i - j) & 3;
-                    //temp_ra = framebuffer + (phi_s1 * 0x280);
-                    //phi_a0_3 = temp_a0;
-                    if (temp_t0 != 0) {
-                        phi_v0 = temp_ra + (phi_s2 * 2);
-                        do { // (temp_t0 + j;) {
-                            j++;
-                            //temp_v1 = phi_v1 + 1;
-                            //phi_v1 = temp_v1;
-                            //phi_v1_2 = temp_v1;
-                            if (i - j == 6) {
-                                framebuffer[i * 640 + j * 2] = RED_COLOUR;
-                            } else {
-                                framebuffer[i * 640 + j * 2] = WHITE_COLOUR;
-                            }
-                            j += 2;
-                        } while ((temp_t0 + j) != j);
-                        phi_a1_4 = temp_v1 * 2;
-                        if (temp_v1 != phi_s0) {
-                            break; // goto 10
-                        }
-                    } else {
-//block_10:
-                        //temp_a1 = phi_v1_2 * 2;
-                        phi_v0_2 = framebuffer[i * 640 + j * 2];
-                        phi_a1 = temp_a1;
-                        for (k = j + 8; k < j * 2; k += 8) {
-                        //do {
-                            //temp_a1_2 = phi_a1 + 8;
-                            //phi_a1 = temp_a1_2;
-                            //phi_a1_4 = temp_a1_2;
-                            if (temp_a0 == 6) {
-                                framebuffer[i * 640 + j * 2] = RED_COLOUR;
-                            } else {
-                                framebuffer[i * 640 + j * 2] = WHITE_COLOUR;
-                            }
-                            //if (temp_a0 == 6) {
-                            //    phi_v0_2->unk2 = RED_COLOUR;
-                            //} else {
-                            //    phi_v0_2->unk2 = WHITE_COLOUR;
-                            //}
-                            //if (temp_a0 == 6) {
-                            //    phi_v0_2->unk4 = RED_COLOUR;
-                            //} else {
-                            //    phi_v0_2->unk4 = WHITE_COLOUR;
-                            //}
-                            //if (temp_a0 == 6) {
-                            //    phi_v0_2->unk6 = RED_COLOUR;
-                            //} else {
-                            //    phi_v0_2->unk6 = WHITE_COLOUR;
-                            //}
-                            //phi_v0_2 += 8;
-                        } //while (temp_a1_2 != (phi_s0 * 2));
-                    }
+    for (var_s0 = 0x2E, var_s2 = 0x28; var_s0 > 0x2C; var_s0--, var_s2++) {
+        for (row = var_s2; row < var_s0; row++) {
+            for (column = var_s2; column < var_s0; column++) {
+                if ((var_s0 - var_s2) == 6) {
+                    framebuffer[row][column] = RED_COLOUR;
+                } else {
+                    framebuffer[row][column] = WHITE_COLOUR;
                 }
-                //temp_s1 = phi_s1 + 1;
-                //phi_s1 = temp_s1;
-                //phi_a0 = phi_a0_3;
-                //phi_a1_2 = phi_a1_4;
-            } //while (temp_s1 != phi_s0);
-        
-        //temp_s0 = phi_s0 - 1;
-        //phi_s2 += 1;
-        //phi_s0 = temp_s0;
-        //phi_a0_2 = phi_a0;
-        //phi_a1_3 = phi_a1_2;
-        //i--;
-    } //while (temp_s0 != 44);
+            }
+        }
+    }
     osWritebackDCacheAll();
     osViSwapBuffer(framebuffer);
 }
