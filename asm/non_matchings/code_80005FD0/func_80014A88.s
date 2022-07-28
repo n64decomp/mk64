@@ -17,11 +17,11 @@ glabel func_80014A88
 /* 0156C4 80014AC4 8DEFC53C */  lw    $t7, %lo(gModeSelection)($t7)
 /* 0156C8 80014AC8 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 0156CC 80014ACC 24010001 */  li    $at, 1
-/* 0156D0 80014AD0 3C188016 */  lui   $t8, %hi(D_80163AF8) # $t8, 0x8016
+/* 0156D0 80014AD0 3C188016 */  lui   $t8, %hi(gTankerTruckList) # $t8, 0x8016
 /* 0156D4 80014AD4 AFBF001C */  sw    $ra, 0x1c($sp)
 /* 0156D8 80014AD8 46305003 */  div.d $f0, $f10, $f16
 /* 0156DC 80014ADC 24060007 */  li    $a2, 7
-/* 0156E0 80014AE0 27183AF8 */  addiu $t8, %lo(D_80163AF8) # addiu $t8, $t8, 0x3af8
+/* 0156E0 80014AE0 27183AF8 */  addiu $t8, %lo(gTankerTruckList) # addiu $t8, $t8, 0x3af8
 /* 0156E4 80014AE4 24070032 */  li    $a3, 50
 /* 0156E8 80014AE8 3C198016 */  lui   $t9, %hi(D_80164550) # $t9, 0x8016
 /* 0156EC 80014AEC 46320100 */  add.d $f4, $f0, $f18
