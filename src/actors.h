@@ -97,7 +97,7 @@ void func_802A1EA0(Camera*, struct Actor*);
 void func_802A269C(Camera*, struct Actor*);
 void func_802A27A0(Camera*, Mat4, struct YoshiValleyEgg*, u16);
 void func_802A29BC(Camera*, Mat4, struct Actor*);
-void func_802A2AD0(Camera*, struct Actor*);
+void func_802A2AD0(Camera*, struct RailroadCrossing*);
 void func_802A2C78(Camera*, Mat4, struct Actor*);
 void func_802A2F34(struct UnkStruct_800DC5EC*);
 void func_802A3008(struct UnkStruct_800DC5EC*);

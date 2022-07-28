@@ -202,7 +202,7 @@ void func_80296D10(struct Actor *actor, Vec3f startingPos, Vec3s startingRot, Ve
     sp2C = temp_a0;
     func_802AAAAC(temp_a0);
     switch ((s16) actorType) {
-    case 37:
+    case ACTOR_BOX_TRUCK:
         temp_v0 = D_802BA260;
         phi_v0 = (s16) temp_v0;
         if ((s32) temp_v0 >= 3) {
@@ -326,7 +326,7 @@ void func_80296D10(struct Actor *actor, Vec3f startingPos, Vec3s startingRot, Ve
         actor->boundingBoxSize = 3.0f;
         actor->unk_08 = 7.0f;
         return;
-    case 25:
+    case ACTOR_PALM_TREE:
         actor->flags |= 0x4000;
         actor->state = 0x003C;
         actor->boundingBoxSize = 3.0f;
@@ -5030,21 +5030,21 @@ void func_802A29BC(Camera *arg0, Mat4 arg1, struct Actor *arg2) {
 s32 D_802B8850[] = {0, 0, 0};
 s16 D_802B885C[] = {0, 0, 0};
 
-void func_802A2AD0(Camera *arg0, struct Actor *arg1) {
+void func_802A2AD0(Camera *arg0, struct RailroadCrossing *rr_crossing) {
     Vec3s sp80 = {0, 0, 0};
     Mat4 sp40;
-    f32 unk = func_802B80D0(arg0->pos, arg1->pos, arg0->rot[1], 0.0f, D_80150130[arg0 - camera1], 4000000.0f);
+    f32 unk = func_802B80D0(arg0->pos, rr_crossing->pos, arg0->rot[1], 0.0f, D_80150130[arg0 - camera1], 4000000.0f);
 
-    if (unk < 0.0f) { return; }
-        func_802B5F74(sp40, arg1->pos, arg1->rot);
-        if (func_802B4FF8(sp40, 0) == 0) { return; }
+    if (!(unk < 0.0f)) {
+        func_802B5F74(sp40, rr_crossing->pos, rr_crossing->rot);
 
+        if (func_802B4FF8(sp40, 0) != 0) {
             gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
 
-            if (D_801637B8[arg1->state]) {
+            if (D_801637B8[rr_crossing->crossingId]) {
 
-                if (arg1->unk_04 < 20) {
+                if (rr_crossing->someTimer < 20) {
                     gSPDisplayList(gDisplayListHead++, D_06010AE8);
                 } else {
                     gSPDisplayList(gDisplayListHead++, D_06010C10);
@@ -5053,6 +5053,8 @@ void func_802A2AD0(Camera *arg0, struct Actor *arg1) {
                 gSPDisplayList(gDisplayListHead++, D_06010D38);
             }
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
+        }
+    }
 }
 
 void func_802A2C78(Camera *arg0, Mat4 arg1, struct Actor *arg2) {
@@ -5249,25 +5251,25 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
                 case ACTOR_WARIO_STADIUM_SIGN:
                     func_802A269C(temp_s1, actor);
                     break;
-                case 25:
+                case ACTOR_PALM_TREE:
                     func_802A2C78(temp_s1, D_801502C0, actor);
                     break;
                 case ACTOR_PADDLE_WHEEL_BOAT:
                     func_8029AE1C(temp_s1, actor, D_801502C0, sp92);
                     break;
-                case 37:
+                case ACTOR_BOX_TRUCK:
                     func_8029B06C(temp_s1, actor);
                     break;
-                case 40:
+                case ACTOR_SCHOOL_BUS:
                     func_8029B2E4(temp_s1, actor);
                     break;
-                case 41:
+                case ACTOR_TANKER_TRUCK:
                     func_8029B6EC(temp_s1, actor);
                     break;
-                case 44:
+                case ACTOR_CAR:
                     func_8029B4E0(temp_s1, actor);
                     break;
-                case 39:
+                case ACTOR_RAILROAD_CROSSING:
                     func_802A2AD0(temp_s1, actor);
                     break;
                 case ACTOR_YOSHI_VALLEY_EGG:

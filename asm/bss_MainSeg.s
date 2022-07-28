@@ -41,71 +41,26 @@ glabel D_801637F0
 glabel D_80163814
 .skip 4
 
-glabel D_80163818
-.skip 4
-
-glabel D_8016381C
-.skip 12
-
-glabel D_80163828
-.skip 24
-
-glabel D_80163840
-.skip 324
+glabel gBoxTruckList
+.skip 364
 
 glabel D_80163984
 .skip 4
 
-glabel D_80163988
-.skip 4
-
-glabel D_8016398C
-.skip 8
-
-glabel D_80163994
-.skip 4
-
-glabel D_80163998
-.skip 24
-
-glabel D_801639B0
-.skip 324
+glabel gSchoolBusList
+.skip 364
 
 glabel D_80163AF4
 .skip 4
 
-glabel D_80163AF8
-.skip 4
-
-glabel D_80163AFC
-.skip 8
-
-glabel D_80163B04
-.skip 4
-
-glabel D_80163B08
-.skip 24
-
-glabel D_80163B20
-.skip 324
+glabel gTankerTruckList
+.skip 364
 
 glabel D_80163C64
 .skip 4
 
-glabel D_80163C68
-.skip 4
-
-glabel D_80163C6C
-.skip 8
-
-glabel D_80163C74
-.skip 4
-
-glabel D_80163C78
-.skip 24
-
-glabel D_80163C90
-.skip 324
+glabel gCarList
+.skip 364
 
 glabel D_80163DD4
 .skip 4

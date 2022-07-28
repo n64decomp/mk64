@@ -49,10 +49,14 @@ exactly what you're doing.
 #define ACTOR_MARIO_RACEWAY_SIGN       0x17
 #define ACTOR_PALM_TREE                0x19
 #define ACTOR_WARIO_STADIUM_SIGN       0x23
+#define ACTOR_BOX_TRUCK                0x25
 #define ACTOR_PADDLE_WHEEL_BOAT        0x26
 #define ACTOR_RAILROAD_CROSSING        0x27
+#define ACTOR_SCHOOL_BUS               0x28
+#define ACTOR_TANKER_TRUCK             0x29
 #define ACTOR_BLUE_SPINY_SHELL         0x2A
 #define ACTOR_HOT_AIR_BALLOON_ITEM_BOX 0x2B
+#define ACTOR_CAR                      0x2C
 #define ACTOR_KIWANO_FRUIT             0x2D
 
 #define ACTOR_LIST_SIZE 100
@@ -101,7 +105,8 @@ struct RailroadCrossing {
     /* 0x06 */ s16 crossingId;
     /* 0x08 */ f32 unk_08;
     /* 0x0C */ f32 unk_0C;
-    /* 0x10 */ Vec4s unk_10;
+    /* 0x10 */ Vec3s rot;
+    /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
     /* 0x30 */ UnkActorInner unk30;
