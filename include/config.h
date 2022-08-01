@@ -10,6 +10,8 @@
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
 
+#define STACKSIZE 0x2000
+
 // Border Height Define for NTSC Versions
 #define BORDER_HEIGHT 1
 

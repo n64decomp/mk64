@@ -186,7 +186,7 @@ void func_802B0788(s16 rawStickY, struct BananaBunchParent *banana_bunch, Player
         var_f12 = (player->unk_094 * 0.75f) + 4.5f + var_f0;
     }
     vec3f_set(velocity, 0.0f, var_f0, var_f12);
-    func_802B64C4(velocity, player->unk_02E + player->unk_0C0);
+    func_802B64C4(velocity, player->unk_02C[1] + player->unk_0C0);
     banana->velocity[0] = velocity[0];
     banana->velocity[1] = velocity[1];
     banana->velocity[2] = velocity[2];
@@ -425,7 +425,7 @@ void update_obj_triple_shell(struct TripleShellParent *parent, s16 shellType) {
                     someVelocity[0] = 0;
                     someVelocity[1] = 0;
                     someVelocity[2] = 8;
-                    func_802B64C4(someVelocity, player->unk_02E + player->unk_0C0);
+                    func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
                     shell->velocity[0] = someVelocity[0];
                     shell->velocity[1] = someVelocity[1];
                     shell->velocity[2] = someVelocity[2];
@@ -450,7 +450,7 @@ void update_obj_triple_shell(struct TripleShellParent *parent, s16 shellType) {
                     someVelocity[0] = 0;
                     someVelocity[1] = 0;
                     someVelocity[2] = 8;
-                    func_802B64C4(someVelocity, player->unk_02E + player->unk_0C0);
+                    func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
                     shell->velocity[0] = someVelocity[0];
                     shell->velocity[1] = someVelocity[1];
                     shell->velocity[2] = someVelocity[2];
@@ -475,7 +475,7 @@ void update_obj_triple_shell(struct TripleShellParent *parent, s16 shellType) {
                     someVelocity[0] = 0;
                     someVelocity[1] = 0;
                     someVelocity[2] = 8;
-                    func_802B64C4(someVelocity, player->unk_02E + player->unk_0C0);
+                    func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
                     shell->velocity[0] = someVelocity[0];
                     shell->velocity[1] = someVelocity[1];
                     shell->velocity[2] = someVelocity[2];
@@ -649,7 +649,7 @@ s32 func_802B1E48(Player *player) {
     func_802B4E30(shell);
     shell->state = 0;
     shell->rotVelocity = 0;
-    shell->rotAngle = player->unk_02E - 0x8000;
+    shell->rotAngle = player->unk_02C[1] - 0x8000;
     shell->playerId = player - gPlayerOne;
     return actorIndex;
 }
@@ -725,7 +725,7 @@ void update_obj_banana(struct BananaActor *banana) {
                         temp_f0 = (player->unk_094 * 0.75f) + 3.5f + pad1;
                     }
                     vec3f_set(someVelocity, 0, pad1, temp_f0);
-                    func_802B64C4(someVelocity, player->unk_02E + player->unk_0C0);
+                    func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
                     banana->velocity[0] = someVelocity[0];
                     banana->velocity[1] = someVelocity[1];
                     banana->velocity[2] = someVelocity[2];
@@ -771,7 +771,7 @@ void update_obj_banana(struct BananaActor *banana) {
         someVelocity[0] = 0.0f;
         someVelocity[1] = 0.0f;
         someVelocity[2] = -5.0f;
-        func_802B64C4(someVelocity, player->unk_02E + player->unk_0C0);
+        func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
         unkX = player->pos[0] + someVelocity[0];
         unkY = player->pos[1] + someVelocity[1];
         unkZ = player->pos[2] + someVelocity[2];
@@ -1151,7 +1151,7 @@ void update_obj_green_shell(struct ShellActor *shell) {
                     somePosVel[0] = 0.0f;
                     somePosVel[1] = 0.0f;
                     somePosVel[2] = -var_f2;
-                    func_802B64C4(somePosVel, player->unk_02E + player->unk_0C0);
+                    func_802B64C4(somePosVel, player->unk_02C[1] + player->unk_0C0);
                     shell->velocity[0] = somePosVel[0];
                     shell->velocity[1] = somePosVel[1];
                     shell->velocity[2] = somePosVel[2];
@@ -1200,7 +1200,7 @@ void update_obj_green_shell(struct ShellActor *shell) {
             somePosVel[0] = 0.0f;
             somePosVel[1] = 0.0f;
             somePosVel[2] = var_f2;
-            func_802B64C4(somePosVel, player->unk_02E + player->unk_0C0);
+            func_802B64C4(somePosVel, player->unk_02C[1] + player->unk_0C0);
             shell->velocity[0] = somePosVel[0];
             shell->velocity[1] = somePosVel[1];
             shell->velocity[2] = somePosVel[2];
@@ -1578,7 +1578,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
             somePosVel[0] = 0.0f;
             somePosVel[1] = 0.0f;
             somePosVel[2] = temp_f0;
-            func_802B64C4(somePosVel, (s16) (player->unk_02E + player->unk_0C0));
+            func_802B64C4(somePosVel, (s16) (player->unk_02C[1] + player->unk_0C0));
             shell->velocity[0] = somePosVel[0];
             shell->velocity[1] = somePosVel[1];
             shell->velocity[2] = somePosVel[2];

@@ -116,12 +116,14 @@ glabel D_800DDE54
 .word gKartMarioWheels1, gKartLuigiWheels1, gKartYoshiWheels1, gKartToadWheels1
 .word gKartDKWheels1,    gKartWarioWheels1, gKartPeachWheels1, gKartBowserWheels1
 
+# array size of 9?
 glabel D_800DDE74
 .word 0x00000060, 0x00000080, 0x000000c0, 0x00000100
 .word 0x00000120, 0x00000180, 0x00000200, 0x00000220
+.word 0x00000240
 
-glabel D_800DDE94
-.word 0x00000240, 0x00000000
+# padding?
+.word 0x00000000
 
 glabel D_800DDE9C
 .word 0x41100000, 0x40e00000, 0x40a00000

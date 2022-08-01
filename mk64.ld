@@ -255,6 +255,8 @@ SECTIONS
       BUILD_DIR/src/main.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
+      BUILD_DIR/src/code_8001F980.o(.rodata);
+      BUILD_DIR/data/data_0DD0A0_3_0_0.o(.rodata);
       BUILD_DIR/src/spawn_players.o(.rodata);
       BUILD_DIR/src/code_8003DC40.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3_0_1.o(.rodata);

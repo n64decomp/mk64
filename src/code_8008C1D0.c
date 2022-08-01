@@ -288,7 +288,7 @@ void func_8008C73C(Player *player, s8 arg1) {
         }
 
         player->unk_0B6 |= 0x80;
-        player->unk_0C0 = 0; player->unk_07C = 0; player->unk_078 = 0; player->unk_0AE = player->unk_02E; player->unk_0B2 = 2;
+        player->unk_0C0 = 0; player->unk_07C = 0; player->unk_078 = 0; player->unk_0AE = player->unk_02C[1]; player->unk_0B2 = 2;
         D_80165190[0][arg1] = 1;
         D_80165190[1][arg1] = 1;
         D_80165190[2][arg1] = 1;
@@ -312,7 +312,7 @@ void func_8008C8C4(Player* player, s8 arg1) {
     player->unk_0BC &= ~0x80;
     player->unk_0BC &= ~0x40;
     player->unk_0A8 = 0;
-    player->unk_02E = player->unk_0AE;
+    player->unk_02C[1] = player->unk_0AE;
     player->unk_07C = 0;
     player->unk_0C0 = 0;
     player->unk_0BC &= ~0x800;
@@ -688,7 +688,7 @@ void func_8008D554(Player* player) {
 void func_8008D570(Player *player, s8 arg1) {
     func_8008C354(player, arg1);
 
-    player->unk_0AE = player->unk_02E;
+    player->unk_0AE = player->unk_02C[1];
     player->unk_0BC |= 0x80000;
     player->unk_0BC &= ~0x10;
     player->unk_00C &= ~0x1000;
@@ -714,10 +714,10 @@ void func_8008D698(Player* player, s8 arg1) {
     s16 temp;
  
     if (player->unk_0B2 == 0) {
-        player->unk_02E = player->unk_0AE;
+        player->unk_02C[1] = player->unk_0AE;
         temp = 0;
     } else {
-        player->unk_02E -= 1820;
+        player->unk_02C[1] -= 1820;
         D_8018D920[arg1] -= 1820;
         temp = ((u16) D_8018D920[arg1] / 1820);
     }
@@ -736,7 +736,7 @@ void func_8008D760(Player* player) {
     player->unk_0A8 = 0;
     player->unk_07C = 0;
     player->unk_0C0 = 0;
-    player->unk_02E = player->unk_0AE;
+    player->unk_02C[1] = player->unk_0AE;
     player->unk_0BC &= 0xFFF7FFFF;
     player->unk_100 = gKartGravityTable[player->characterId];
     player->unk_000 &= 0xFF7F;
@@ -745,7 +745,7 @@ void func_8008D760(Player* player) {
 void func_8008D7B0(Player* player, s8 arg1) {
     func_8008C354(player, arg1);
 
-    player->unk_0AE = player->unk_02E;
+    player->unk_0AE = player->unk_02C[1];
     player->unk_0BC |= 0x800000;
     player->unk_0BC &= ~0x10;
     player->unk_00C &= 0xFFFDFFFF;
@@ -767,10 +767,10 @@ void func_8008D8B4(Player* player, s8 arg1) {
     s16 temp;
 
     if (player->unk_0B2 == 0) {
-        player->unk_02E = player->unk_0AE;
+        player->unk_02C[1] = player->unk_0AE;
         temp = 0;
     } else {
-        player->unk_02E -= 1820;
+        player->unk_02C[1] -= 1820;
         D_8018D920[arg1] -= 1820;
         temp = ((u16) (D_8018D920[arg1]) / 1820);
     }
@@ -789,7 +789,7 @@ void func_8008D97C(Player *player) {
     player->unk_0A8 = 0;
     player->unk_07C = 0;
     player->unk_0C0 = 0;
-    player->unk_02E = player->unk_0AE;
+    player->unk_02C[1] = player->unk_0AE;
     player->unk_0BC &= 0xFF7FFFFF;
     player->unk_100 = gKartGravityTable[player->characterId];
 }
@@ -964,7 +964,7 @@ void func_8008DF98(Player* player, s8 arg1) {
     player->unk_0B0 = 0;
     player->unk_224 = 1.0f;
     D_8018D930[arg1] = gCourseTimer;
-    player->unk_0AE = player->unk_02E;
+    player->unk_0AE = player->unk_02C[1];
     player->unk_0B2 = 2;
     player->unk_0C0 = 0;
     player->unk_07C = 0;    
@@ -1087,7 +1087,7 @@ void func_8008E3C0(Player* player, UNUSED s8 arg1) {
     player->unk_0BC |= 0x08000000;
     
     if ((player->unk_0BC & 0x20000) == 0x20000) {
-        player->unk_02E = player->unk_0AE;
+        player->unk_02C[1] = player->unk_0AE;
     }
     
     player->unk_0BC &= ~0x20000;
@@ -1400,7 +1400,7 @@ void func_8008F0E8(Player* player) {
 void func_8008F104(Player* player, s8 arg1) {
     func_8008C354(player, arg1);
 
-    player->unk_0AE = player->unk_02E;
+    player->unk_0AE = player->unk_02C[1];
     player->unk_0B2 = 2;
     player->unk_0C0 = 0;
     player->unk_07C = 0;
@@ -1419,7 +1419,7 @@ void func_8008F1B8(Player* player, s8 arg1) {
     player->unk_08C = (player->unk_210 * D_800EF5A8);
     if (player->unk_0B2 < 0) {
         if ((player->unk_044 & 0x80) == 0x80) {
-            player->unk_02E += 182;
+            player->unk_02C[1] += 182;
             D_8018D920[arg1] += 182;
 
             temp = ((u16) D_8018D920[arg1] / 182);
@@ -1430,7 +1430,7 @@ void func_8008F1B8(Player* player, s8 arg1) {
             }
         } else {
 
-            player->unk_02E -= 182;
+            player->unk_02C[1] -= 182;
             D_8018D920[arg1] -= 182;
             temp = ((u16) D_8018D920[arg1] / 182);
             if (temp == 180) {
@@ -1441,7 +1441,7 @@ void func_8008F1B8(Player* player, s8 arg1) {
         }
     } else {
         if ((player->unk_0B2 & 1) != 0) {
-            player->unk_02E -= 364;
+            player->unk_02C[1] -= 364;
             D_8018D920[arg1] -= 364;
             temp = ((u16) D_8018D920[arg1] / 364);
             if (temp < 71) {
@@ -1451,7 +1451,7 @@ void func_8008F1B8(Player* player, s8 arg1) {
             player->unk_044 &= ~0x40;
             return;
         }
-        player->unk_02E += 364;
+        player->unk_02C[1] += 364;
         D_8018D920[arg1] += 364;
         temp = ((u16) D_8018D920[arg1] / 364);
         if (temp >= 110) {
@@ -2055,7 +2055,7 @@ void func_80090778(Player* player) {
             player->unk_0A8 = 0;
             player->unk_07C = 0;
             player->unk_0C0 = 0;
-            player->unk_02E = player->unk_0AE;
+            player->unk_02C[1] = player->unk_0AE;
         }
         func_8008E3C0(player, playerIndex);
     }
@@ -2353,7 +2353,7 @@ GLOBAL_ASM("asm/non_matchings/code_8008C1D0/func_800910E4.s")
 void func_800911B4(Player* player, s8 arg1) {
     s32 temp_v0;
 
-    player->unk_0AE = player->unk_02E;
+    player->unk_0AE = player->unk_02C[1];
     player->unk_044 |= 0x1800;
     player->unk_044 &= ~0x0400;
     player->unk_044 |=  0x2000;
