@@ -2127,7 +2127,7 @@ void func_800097E0(void) {
     func_8000EF20();
     D_8016337C++;
 
-    if (gCurrentCourseId == 20) { 
+    if (gCurrentCourseId == 20) {
         for (i = 0; i < 7; i++) {
             func_8000DF8C(i);
         }
@@ -3043,19 +3043,17 @@ s32 func_8000B7E4(s32 arg0, u16 wayPointIndex) {
     return 0;
 }
 
-#ifdef NEEDS_RODATA
 extern f32 D_800ECFD8;// = 1.1f;
 extern f32 D_800ECFDC;// = -1.1f;
 
-s32 func_8000B820(s32 playerId) {
-    if ((1.1f <= D_80163068[playerId]) || (D_80163068[playerId] <= -1.1f)) {
+s32 func_8000B820(s32 playerIndex) {
+    f32 value = D_80163068[playerIndex];
+    // Check if value between 1.1 and -1.1
+    if ((D_800ECFD8 <= value) || (value <= D_800ECFDC)) {
         return 1;
     }
     return 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000B820.s")
-#endif
 
 #ifdef NEEDS_RODATA
 extern f32 D_800ECFE0;// = 0.01f;
@@ -3069,7 +3067,7 @@ f32 func_8000B874(f32 posX, f32 posZ, u16 wayPointIndex, s32 pathIndex) {
     f32 math;
     struct TrackWayPoint *thing1;
     struct TrackWayPoint *thing2;
-    
+
     thing1 = &D_80164560[pathIndex][wayPointIndex];
     thing2 = &D_80164570[pathIndex][wayPointIndex];
 
@@ -4470,7 +4468,7 @@ extern struct unk_41F8 D_801641F8[];
 s32 func_8000ED14(s32, s16);
 s32 func_8000ED14(s32 arg0, s16 arg1) {
     s32 i;
-    s32 a2 = 0; 
+    s32 a2 = 0;
 
     for (i = 0; i < 8; i++) {
 
