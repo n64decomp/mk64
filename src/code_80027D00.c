@@ -906,7 +906,7 @@ void func_8002934C(Player *player, struct Camera *arg1, s8 arg2, s8 arg3) {
     temp_t7 = arg2 * 2;
     temp_a3 = player + temp_t7;
     temp_a3->unk48 = atan2s(player->posX - arg1->unk0, player->posZ - arg1->unk8);
-    player->unk_244[arg2] = ((player->unk_02E + temp_a3->unk48 + player->unk_0C0) & 0xFFFF) / 0x80;
+    player->unk_244[arg2] = ((player->unk_02C[1] + temp_a3->unk48 + player->unk_0C0) & 0xFFFF) / 0x80;
     temp_f6 = player->unk_224;
     temp_v1 = player->unk_0BC;
     temp_f4 = D_800DDBD4[player->characterId] * 18.0f;
@@ -950,7 +950,7 @@ void func_8002934C(Player *player, struct Camera *arg1, s8 arg2, s8 arg3) {
     }
     sp24 = phi_a3;
     func_80029200(player, arg2);
-    temp_a0 = (player->unk_02E + phi_a3->unk48 + player->unk_0C0) & 0xFFFF;
+    temp_a0 = (player->unk_02C[1] + phi_a3->unk48 + player->unk_0C0) & 0xFFFF;
     sp20 = temp_a0;
     sp28 = sins(temp_a0);
     move_s16_towards(phi_a3 + 0x50, (coss(temp_a0) * phi_a3->unkCC) + (phi_a3->unkD4 * sp28), 0x3F000000, phi_a3);
@@ -989,7 +989,7 @@ block_28:
         phi_a3->unk50 = 0;
         phi_v1_2 = player->unk_0BC;
     }
-    temp_t9 = (player->unk_02E + phi_a3->unk48 + player->unk_0C0) & 0xFFFF;
+    temp_t9 = (player->unk_02C[1] + phi_a3->unk48 + player->unk_0C0) & 0xFFFF;
     if (((phi_v1_2 & 0x80) == 0x80) || ((phi_v1_2 & 0x40) == 0x40) || (phi_t1 == (phi_v1_2 & phi_t1)) || (phi_a2 == (phi_v1_2 & phi_a2)) || (phi_t2 == (phi_v1_2 & phi_t2)) || ((player->unk_044 & 0x800) != 0)) {
         if (temp_t9 >= 0x7FF9) {
             temp_t6 = ((-temp_t9 & 0xFFFF) / phi_a1) & 0xFFFF;
@@ -1117,7 +1117,7 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
         phi_f12 = (D_800DDBD4[player->characterId] / 2.0f) * 18.0f;
     }
     sp48 = phi_f12;
-    func_802B6540(phi_f12, &sp5C, 0, 0x3F800000, 0, player->unk_02E + player->unk_0C0);
+    func_802B6540(phi_f12, &sp5C, 0, 0x3F800000, 0, player->unk_02C[1] + player->unk_0C0);
     temp_f0 = (f64) sp48;
     temp_a0 = &sp8C;
     temp_f2 = sp48 - 2.0f;
@@ -1264,7 +1264,7 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     f32 phi_f20;
     s16 phi_a1;
 
-    temp_v1 = -(s32) player->unk_02E - player->unk_0C0;
+    temp_v1 = -(s32) player->unk_02C[1] - player->unk_0C0;
     if ((player->unk_0BC & 0x40000000) == 0x40000000) {
         phi_f20 = (f32) (((f64) ((D_800DDBD4[player->characterId] * 18.0f) / 2.0f) * ((f64) player->unk_224 * 1.5)) - 1.0);
     } else {
@@ -2888,7 +2888,7 @@ void func_8002D028(Player *player, s8 arg1) {
     sp50 = 0.0f;
     sp54 = D_80165230[temp_v0];
     temp_f0 = 8.0f * 182.0f;
-    temp_v1 = -func_802B5224(player->pos, &sp4C) - player->unk_02E;
+    temp_v1 = -func_802B5224(player->pos, &sp4C) - player->unk_02C[1];
     temp_f8 = (s32) temp_f0;
     var_a2 = temp_v1;
     temp_f18 = (s32) (-8.0f * 182.0f);
@@ -2907,8 +2907,8 @@ void func_8002D028(Player *player, s8 arg1) {
     temp_f0_2 = sp54 - player->pos[2];
     temp_f2 = sp4C - player->pos[0];
     if (sqrtf((temp_f0_2 * temp_f0_2) + (temp_f2 * temp_f2)) <= 8.0f) {
-        func_800224F0(&player->unk_02E, -0x8000, 0x016C);
-        temp_v1_2 = player->unk_02E;
+        func_800224F0(&player->unk_02C[1], -0x8000, 0x016C);
+        temp_v1_2 = player->unk_02C[1];
         if ((temp_v1_2 < -0x7F41) || (temp_v1_2 >= 0x7F42)) {
             player->unk_000 &= 0xFDFF;
         }
@@ -3172,9 +3172,9 @@ void func_8002D268(Player *player, Camera *arg1, s8 arg2, s8 arg3) {
         spB0 = player->unk_100 * -1.0f;
         spAC = phi_f14 * 0.0f;
     }
-    sp60 = coss(phi_f12, phi_f14, (player->unk_02E + player->unk_0C0) & 0xFFFF, 1);
+    sp60 = coss(phi_f12, phi_f14, (player->unk_02C[1] + player->unk_0C0) & 0xFFFF, 1);
     temp_a1 = player->unk_174;
-    temp_f2_3 = (sins((player->unk_02E + player->unk_0C0) & 0xFFFF) * -(player->rotX - player->posX)) + ((player->rotZ - player->posZ) * sp60);
+    temp_f2_3 = (sins((player->unk_02C[1] + player->unk_0C0) & 0xFFFF) * -(player->rotX - player->posX)) + ((player->rotZ - player->posZ) * sp60);
     if (D_800ED7E8 < temp_f2_3) {
         player->unk_044 |= 8;
     } else {
@@ -3270,9 +3270,9 @@ void func_8002D268(Player *player, Camera *arg1, s8 arg2, s8 arg3) {
     player->unk_060 = 0.0f;
     player->unk_05C = 1.0f;
     if ((player->unk_044 & 1) != 1) {
-        func_802B6540(sp58, player->unk_058, player->unk_05C, player->unk_060, player->unk_02E);
+        func_802B6540(sp58, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
     } else {
-        func_802B6540(sp58, player->unk_058, player->unk_05C, player->unk_060, player->unk_02E + 0x8000);
+        func_802B6540(sp58, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1] + 0x8000);
     }
     player->unk_0BC |= 8;
     player->unk_0C2 += 1;

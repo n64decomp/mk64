@@ -111,7 +111,10 @@ void draw_reference_profiler_bars(void) {
     gDPFillRectangle(gDisplayListHead++, 177, 220, 226, 222);
 }
 
-void func_80003AFC(void) {
+/**
+ * Likely identical to sm64 but in mk64 they likely commented it out.
+ */
+void draw_profiler_mode_1(void) {
 
 }
 

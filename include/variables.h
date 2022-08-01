@@ -91,10 +91,10 @@ extern Mtx D_80183D60[];
 
 extern struct_D_8018CE10 D_8018CE10[];
 extern struct_D_802874D8 D_802874D8;
-extern struct_D_802DFB80 D_802DFB80[][8];
-extern struct_D_802BFB80 D_802BFB80[][8];
+//extern struct_D_802DFB80 D_802DFB80[][8];
+//extern struct_D_802BFB80 D_802BFB80[][8];
 
-extern struct GfxPool *gGfxPool; // D_8014EF40
+//extern struct GfxPool *gGfxPool; // D_8014EF40
 
 extern mk64_surface_map_ram *D_8015F580; // This is techinally a pointer to an array, but declaring it as such create regalloc issues elsewhere
 extern u16 D_8015F588; // Number of entires in D_8015F580

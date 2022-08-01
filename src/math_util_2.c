@@ -627,7 +627,7 @@ void func_80041EF4(void) {
 }
 
 extern s32 D_8018D120;
-void func_80022180(Mtx*, Mat4);
+//void func_80022180(Mtx*, Mat4);
 
 UNUSED void func_80041F54(s32 arg0, s32 arg1) {
     Mat4 matrix;
