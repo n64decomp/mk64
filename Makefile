@@ -495,7 +495,6 @@ $(BUILD_DIR)/src/os/_Litob.o:        OPT_FLAGS := -O3
 $(BUILD_DIR)/src/os/_Ldtob.o:        OPT_FLAGS := -O3
 $(BUILD_DIR)/src/os/osSyncPrintf.o:        OPT_FLAGS := -O3
 
-
 #################### Compile course vertex to mio0 #####################
 
 mushroom_cup := $(BUILD_DIR)/courses/mushroom_cup

@@ -3,6 +3,7 @@
 #include "kart_attributes.h"
 #include "memory.h"
 #include "waypoints.h"
+#include "framebuffers.h"
 
 extern s16 D_80165560[];
 extern s32* D_800E3C50[];
@@ -61,7 +62,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     D_80164510[playerIndex] = ret;
 
 
-    player->unk_02C = 0;
+    player->unk_02C[0] = 0;
     player->rotZ = arg3;
     player->unk_05C = 1.0f;
     player->unk_058 = 0.0f;
@@ -69,8 +70,8 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->unk_034[0] = 0.0f;
     player->unk_034[1] = 0.0f;
     player->unk_034[2] = 0.0f;
-    player->unk_02E = arg5;
-    player->unk_030 = 0;
+    player->unk_02C[1] = arg5;
+    player->unk_02C[2] = 0;
     player->unk_0FA = 0;
     player->unk_002 = 0;
 
@@ -303,8 +304,8 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     if (gModeSelection == BATTLE) {
         func_8006B7E4(player, playerIndex);
     }
-    func_802B6540(player->unk_150, player->unk_058, player->unk_05C, player->unk_060, player->unk_02E);
-    func_802B6540(player->unk_174, player->unk_058, player->unk_05C, player->unk_060, player->unk_02E);
+    func_802B6540(player->unk_150, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
+    func_802B6540(player->unk_174, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
 }
 
 void func_80039AE4(void) {
@@ -1020,12 +1021,13 @@ void func_8003CD98(Player *player, struct Camera *camera, s8 arg2, s8 arg3) {
             func_80027A20(player, arg2, arg3, 0);
             func_80027A20(player, arg2, arg3, 1);
             func_80027040(player, arg2, arg3, arg3, 0);
-            mio0decode((u8*)&D_802DFB80[arg3][arg2], (u8*)&D_802BFB80[arg3][arg2]); // [0x8000][0x1000]
+         // mio0decode((u8*)&D_802DFB80[arg3][arg2], (u8*)&D_802BFB80[arg3][arg2]); // [0x8000][0x1000]
+            mio0decode((u8*)&D_802DFB80[0][0][(arg3 * 0x4900) + (arg2 * 0x920)], (u8*)&D_802BFB80[0][0][(arg3 << 0xF) + (arg2 << 0xC)]);
         } else {
             func_80027A20(player, arg2, arg3, 0);
             func_80027A20(player, arg2, arg3, 1);
             func_80027040(player, (s8) (arg2 + 4), arg3, (s8) (arg3 - 2), 0);
-            mio0decode((u8*)&D_802DFB80[arg3][arg2] - 0x6D80, (u8*)&D_802BFB80[arg3][arg2] + 0xFFFF4000);
+            mio0decode((u8*)&D_802DFB80[0][0][(arg3 * 0x4900) + (arg2 * 0x920)] - 0x6D80, (u8*)&D_802BFB80[0][0][(arg3 << 0xF) + (arg2 << 0xC)] + 0xFFFF4000);
         }
 
         D_801650D0[arg3][arg2] = player->unk_244[arg3];
@@ -1052,18 +1054,18 @@ void func_8003D080(void) {
                 switch (gModeSelection) {
                     case 0:
                         if (gCurrentCourseId == 10) {
-                            func_8001C4D0(0.0f, ptr->pos[1], D_8016524C, ptr->unk_02E, 8, 0);
+                            func_8001C4D0(0.0f, ptr->pos[1], D_8016524C, ptr->unk_02C[1], 8, 0);
                         } else {
-                            func_8001C4D0((D_80165210[7] + D_80165210[6]) / 2, ptr->pos[1], D_8016524C, ptr->unk_02E, 8, 0);
+                            func_8001C4D0((D_80165210[7] + D_80165210[6]) / 2, ptr->pos[1], D_8016524C, ptr->unk_02C[1], 8, 0);
                         }
                         break;
 
                     case 1:
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 0);
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 0);
                         break;
 
                     default:
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 10, 0);
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 10, 0);
                         break;
                 }
                 break;
@@ -1072,45 +1074,45 @@ void func_8003D080(void) {
             case 2:
                 switch (gModeSelection) {
                     case 0:
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 0);
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 0);
                         ptr++;
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 1);
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 1);
                         break;
 
                     case 3:
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 9, 0);
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 0);
                         ptr++;
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 9, 1);
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 1);
                         break;
 
                     default:
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 0);
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 0);
                         ptr++;
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 1);
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 1);
                         break;
                 }
                 break;
 
             case 3:
                 if (gModeSelection == 3) {
-                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 9, 0);
+                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 0);
                     ptr++;
-                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 9, 1);
+                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 1);
                     ptr++;
-                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 9, 2);
+                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 2);
                     if (gPlayerCountSelection1 == 4) {
                         ptr++;
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 9, 3);
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 3);
                     }
                 } else {
-                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 0);
+                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 0);
                     ptr++;
-                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 1);
+                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 1);
                     ptr++;
-                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 2);
+                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 2);
                     if (gPlayerCountSelection1 == 4) {
                         ptr++;
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 1, 3);
+                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 3);
                     }
                 }
                 break;
@@ -1118,24 +1120,24 @@ void func_8003D080(void) {
     } else {
         switch (gActiveScreenMode) {
             case 0:
-                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 0);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 0);
                 break;
 
             case 1:
             case 2:
-                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 0);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 0);
                 ptr++;
-                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 1);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 1);
                 break;
 
             case 3:
-                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 0);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 0);
                 ptr++;
-                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 1);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 1);
                 ptr++;
-                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 2);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 2);
                 ptr++;
-                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02E, 3, 3);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 3);
                 break;
         }
     }
@@ -1197,8 +1199,8 @@ void func_8003DB5C(void) {
     Player *player = gPlayerOne;
     s32 i;
 
-    func_8001C4D0(player->pos[0], player->pos[1], player->pos[2], player->unk_02E, 3, 0);
-    func_8001C4D0(player->pos[0], player->pos[1], player->pos[2], player->unk_02E, 3, 1);
+    func_8001C4D0(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 0);
+    func_8001C4D0(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 1);
 
     for (i = 0; i < 8; i++, player++) {
         func_80027A20(player, i, 1, 0);

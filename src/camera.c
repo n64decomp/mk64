@@ -806,7 +806,7 @@ void func_8001E0C4(Camera *camera, Player *player, s8 arg2) {
     } else {
         var_a2 = (temp_v0 / 3) + 0x87;
     }
-    func_800224F0(&camera->unk_2C, player->unk_02E, var_a2);
+    func_800224F0(&camera->unk_2C, player->unk_02C[1], var_a2);
     func_8001CA78(player, camera, &sp60, &sp74, &sp70, &sp6C, (s32) camera->unk_2C, (s32) arg2);
     camera->rotZ = (u16) camera->rotZ & 0xFFFB;
     func_802ADDC8(&camera->unk_54, (f32) 3, sp74, sp70, sp6C);
@@ -907,7 +907,7 @@ void func_8001E45C(Camera *camera, Player *player, s8 arg2) {
     } else {
         move_s16_towards(&camera->unk_B0, 0, 0.05f);
         temp_v1_2 = player->unk_078;
-        temp_a3_3 = ((s16) camera->unk_2C / 182) - ((s16) player->unk_02E / 182);
+        temp_a3_3 = ((s16) camera->unk_2C / 182) - ((s16) player->unk_02C[1] / 182);
         if (temp_v1_2 == 0) {
             if ((player->unk_0BC & 0x20) == 0x20) {
                 var_a3 = 0x02D8;
@@ -929,7 +929,7 @@ void func_8001E45C(Camera *camera, Player *player, s8 arg2) {
     if (((player->unk_0BC & 0x80) == 0x80) || ((player->unk_0BC & 0x40) == 0x40) || ((player->unk_0BC & 0x4000) == 0x4000) || ((player->unk_0BC & 0x80000) == 0x80000) || ((player->unk_0BC & 0x800000) == 0x800000) || (((player->unk_0BC & 0x20) == 0x20) && (player->unk_078 != 0)) || (player->unk_110.unk3C <= 0.0f) || (player->unk_110.unk40 <= 0.0f) || ((player->unk_0BC & 0x20000) == 0x20000)) {
         func_8001CCEC(player, camera, &sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     } else {
-        func_800224F0(&camera->unk_2C, (s16) (player->unk_02E + camera->unk_B0), var_a3);
+        func_800224F0(&camera->unk_2C, (s16) (player->unk_02C[1] + camera->unk_B0), var_a3);
         func_8001CCEC(player, camera, &sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     }
     camera->rotZ = (u16) camera->rotZ & 0xFFFB;
@@ -969,8 +969,8 @@ void func_8001E8E8(Camera *camera, Player *player, s8 arg2) {
     f32 temp_f14;
 
     camera->unk_B0 = 0;
-    camera->unk2C = (s16) player->unk_02E;
-    func_8001D53C(player, camera, &sp5C, &sp7C, &sp78, &sp74, (s32) player->unk_02E, (s32) arg2);
+    camera->unk2C = (s16) player->unk_02C[1];
+    func_8001D53C(player, camera, &sp5C, &sp7C, &sp78, &sp74, (s32) player->unk_02C[1], (s32) arg2);
     func_802ADDC8(&camera->unk_54, 5.0f, sp7C, sp78, sp74);
     camera->lookAt[0] = sp5C;
     camera->lookAt[1] = sp60;
@@ -1046,7 +1046,7 @@ void func_8001EA0C(Camera *camera, Player *player, s8 arg2) {
     } else {
         move_s16_towards(&camera->unk_B0, 0, 0.05f);
         temp_v1_2 = player->unk_078;
-        temp_a3_3 = ((s16) camera->unk_2C / 182) - ((s16) player->unk_02E / 182);
+        temp_a3_3 = ((s16) camera->unk_2C / 182) - ((s16) player->unk_02C[1] / 182);
         if (temp_v1_2 == 0) {
             if ((player->unk_0BC & 0x20) == 0x20) {
                 var_a3 = 0x02D8;
@@ -1068,7 +1068,7 @@ void func_8001EA0C(Camera *camera, Player *player, s8 arg2) {
     if (((player->unk_0BC & 0x80) == 0x80) || ((player->unk_0BC & 0x40) == 0x40) || ((player->unk_0BC & 0x4000) == 0x4000) || ((player->unk_0BC & 0x80000) == 0x80000) || ((player->unk_0BC & 0x800000) == 0x800000) || (((player->unk_0BC & 0x20) == 0x20) && (player->unk_078 != 0)) || (player->unk_110.unk3C <= 0.0f) || (player->unk_110.unk40 <= 0.0f) || ((player->unk_0BC & 0x20000) == 0x20000)) {
         func_8001D944(player, camera, &sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     } else {
-        func_800224F0(&camera->unk_2C, (s16) (player->unk_02E + camera->unk_B0), var_a3);
+        func_800224F0(&camera->unk_2C, (s16) (player->unk_02C[1] + camera->unk_B0), var_a3);
         func_8001D944(player, camera, &sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     }
     camera->rotZ = (u16) camera->rotZ & 0xFFFB;

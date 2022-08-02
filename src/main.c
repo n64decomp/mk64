@@ -133,17 +133,17 @@ u16 D_80152308;
 
 UNUSED OSThread paddingThread;
 OSThread gIdleThread;
-ALIGNED8 u8 gIdleThreadStack[0x2000]; // Based on sm64 and padding between bss symbols.
+ALIGNED8 u8 gIdleThreadStack[STACKSIZE]; // Based on sm64 and padding between bss symbols.
 OSThread gVideoThread;
-ALIGNED8 u8 gVideoThreadStack[0x2000];
-OSThread D_80156820;
-ALIGNED8 u8 D_8015680_Stack[0x2000];
+ALIGNED8 u8 gVideoThreadStack[STACKSIZE];
+UNUSED OSThread D_80156820;
+UNUSED ALIGNED8 u8 D_8015680_Stack[STACKSIZE];
 OSThread gGameLoopThread;
-ALIGNED8 u8 gGameLoopThreadStack[0x2000];
+ALIGNED8 u8 gGameLoopThreadStack[STACKSIZE];
 OSThread gAudioThread;
-ALIGNED8 u8 gAudioThreadStack[0x2000];
-OSThread D_8015CD30;
-ALIGNED8 u8 D_8015CD30_Stack[0x1000];
+ALIGNED8 u8 gAudioThreadStack[STACKSIZE];
+UNUSED OSThread D_8015CD30;
+UNUSED ALIGNED8 u8 D_8015CD30_Stack[STACKSIZE / 2];
 
 u8 gGfxSPTaskYieldBuffer[4352];
 u32 gGfxSPTaskStack[256];
