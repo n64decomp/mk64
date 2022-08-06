@@ -3,13 +3,26 @@
 
 #include <PR/ultratypes.h>
 #include "config.h"
+#include "common_structs.h"
+
+typedef struct {
+    char unk_00[0x1000];
+} struct_D_802BFB80; // size = 0x1000
+
+typedef struct {
+    char unk_00[0x920];
+} struct_D_802DFB80; // size = 0x920
+
+typedef struct {
+    char unk_00[0x200];
+} struct_D_802F1F80; // size = 0x200
 
 extern u16 gRandomSeed16;
-extern u8 D_802BFB80[2][2][0x8000];
-extern u8 D_802D2B80[32768];
-extern u8 D_802DAB80[20480];
-extern u8 D_802DFB80[2][2][18688];
-extern u16 D_802F1F80[2][4][2048];
+extern u8 randomSeedPadding[216];
+extern u8 frameBufferPadding[22544];
+extern struct_D_802BFB80 D_802BFB80[][2][8];
+extern struct_D_802DFB80 D_802DFB80[][2][8];
+extern struct_D_802F1F80 D_802F1F80[][4][8];
 
 extern u16 gZBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
 

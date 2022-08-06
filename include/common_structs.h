@@ -514,14 +514,6 @@ typedef struct
 } struct_8018EE10_entry; // size = 0x80
 
 typedef struct {
-    char unk_00[0x920];
-} struct_D_802DFB80; // size = 0x920
-
-typedef struct {
-    char unk_00[0x1000];
-} struct_D_802BFB80;
-
-typedef struct {
     /* 0x00 */ u16 red;
     /* 0x02 */ u16 green;
     /* 0x04 */ u16 blue;
