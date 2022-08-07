@@ -681,18 +681,18 @@ void spawn_players_4p_battle(f32 *arg0, f32 *arg1, f32 arg2) {
 }
 
 void func_8003BE30(void) {
-    spawn_player(gPlayerOne,   0, -2770.774f, -345.187f, D_800EDE20, 0.0f, gCharacterIdByGPOverallRank[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    spawn_player(gPlayerTwo,   1, -3691.506f,   -6.822f, D_800EDE24, D_800EDE28, gCharacterIdByGPOverallRank[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    spawn_player(gPlayerThree, 2, -3475.028f, -998.485f, D_800EDE2C, D_800EDE30, gCharacterIdByGPOverallRank[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerOne,   0, -2770.774f, -345.187f,  -34.6f,     0.0f, gCharacterIdByGPOverallRank[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerTwo,   1, -3691.506f,   -6.822f,  -6.95f, 36400.0f, gCharacterIdByGPOverallRank[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerThree, 2, -3475.028f, -998.485f, -8.059f, 45500.0f, gCharacterIdByGPOverallRank[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
     if (D_802874D8.unk_1D >= 3) {
         spawn_player(gPlayerFour, 3, -3025.772f, 110.039f, -23.224f, 28210.0f, D_802874D8.unk_1E, PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
     } else {
         spawn_player(gPlayerFour, 3, -3025.772f, 110.039f, -23.224f, 28210.0f, gCharacterIdByGPOverallRank[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
     }
-    spawn_player(gPlayerFive,  4, -2770.774f, -345.187f, D_800EDE44, 0.0f, 0, 0x7000);
-    spawn_player(gPlayerSix,   5, -3691.506f,   -6.822f, D_800EDE48, D_800EDE4C, 0, 0x7000);
-    spawn_player(gPlayerSeven, 6, -3475.028f, -998.485f, D_800EDE50, D_800EDE54, 0, 0x7000);
-    spawn_player(gPlayerEight, 7, -3025.772f,  110.039f, D_800EDE58, D_800EDE5C, 0, 0x7000);
+    spawn_player(gPlayerFive,  4, -2770.774f, -345.187f,   -34.6f,     0.0f, 0, 0x7000);
+    spawn_player(gPlayerSix,   5, -3691.506f,   -6.822f,   -6.95f, 36400.0f, 0, 0x7000);
+    spawn_player(gPlayerSeven, 6, -3475.028f, -998.485f,  -8.059f, 45500.0f, 0, 0x7000);
+    spawn_player(gPlayerEight, 7, -3025.772f,  110.039f, -23.224f, 28210.0f, 0, 0x7000);
     D_80164A28 = 0;
     func_80039AE4();
 }
@@ -1094,9 +1094,7 @@ void func_8003D080(void) {
 
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
                 if (gModeSelection == BATTLE) {
-                    ptr = &gPlayerThree;
-                    func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 9, 0);
-                    func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 9, 1);
+                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 0);
                     ptr++;
                     func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 1);
                     ptr++;
@@ -1121,19 +1119,20 @@ void func_8003D080(void) {
     } else {
         switch (gActiveScreenMode) {
             case SCREEN_MODE_1P:
-                func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 3, 0);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 0);
                 break;
 
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-                func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 3, 0);
-                func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 3, 1);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 0);
+                ptr++;
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 1);
                 break;
 
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
-                ptr = &gPlayerThree;
-                func_8001C4D0(gPlayerOne->unk_0A4, gPlayerOne->unk_0A8, gPlayerOne->unk_0AC, gPlayerOne->unk_0BC, 3, 0);
-                func_8001C4D0(gPlayerTwo->pos[0], gPlayerTwo->pos[1], gPlayerTwo->pos[2], gPlayerTwo->unk_02E, 3, 1);
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 0);
+                ptr++;
+                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 1);
                 ptr++;
                 func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 2);
                 ptr++;
@@ -1144,7 +1143,7 @@ void func_8003D080(void) {
 
     switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            func_8003CD98(gPlayerTwo,   camera1, 0, 0); // sic
+            func_8003CD98(gPlayerOneCopy,   camera1, 0, 0); // sic
             func_8003CD98(gPlayerTwo,   camera1, 1, 0);
             func_8003CD98(gPlayerThree, camera1, 2, 0);
             func_8003CD98(gPlayerFour,  camera1, 3, 0);

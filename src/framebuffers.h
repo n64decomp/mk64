@@ -49,8 +49,8 @@ typedef struct {
  * helps with understanding
  */
 typedef struct {
-    RGBA5551  kart_palette[0xC0]; // 0x000
-    RGBA5551 wheel_palette[0x40]; // 0x180
+    /* 0x000 */ RGBA5551  kart_palette[0xC0];
+    /* 0x180 */ RGBA5551 wheel_palette[0x40];
 } struct_D_802F1F80; // size = 0x200
 
 extern u16 gRandomSeed16;
@@ -58,7 +58,13 @@ extern u8 randomSeedPadding[216];
 extern u8 frameBufferPadding[22544];
 extern struct_D_802BFB80 D_802BFB80[][2][8];
 extern struct_D_802DFB80 D_802DFB80[][2][8];
-extern struct_D_802F1F80 D_802F1F80[][4][8];
+
+/**
+ * SO
+ * It would be nice to define D_802F1F80 as ```struct_D_802F1F80 D_802F1F80[2][4][8]```.
+ * But due to some register allocation issues in func_80027A20 we have to define it in a different manner
+ **/
+extern u32 D_802F1F80[][4][1024];
 
 extern u16 gZBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
 

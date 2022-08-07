@@ -173,9 +173,10 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
     }
 }
 
-#ifdef INCORRECT_REGALLOC
 void func_80027A20(Player *player, s8 arg1, s8 arg2, s8 arg3) {
-    struct_D_802F1F80 *temp_s0 = &D_802F1F80[arg2][arg3][arg1];
+    // Weird typecasting is being done here. We define D_802F1F80 as a 3-dimensional u32 array,
+    // but its better to understand it as a 3-dimensional struct_D_802F1F80 array.
+    struct_D_802F1F80 *temp_s0 = &D_802F1F80[arg3][arg2][arg1 << 7];
     switch(gActiveScreenMode) {
         case 0:
         case 1:
@@ -191,9 +192,6 @@ void func_80027A20(Player *player, s8 arg1, s8 arg2, s8 arg3) {
             break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027040/func_80027A20.s")
-#endif
 
 void func_80027BDC(UNUSED Player *player, s32 arg1, void *vAddr, u16 size) {
     osInvalDCache(vAddr, size);

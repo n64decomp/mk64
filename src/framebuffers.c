@@ -11,7 +11,7 @@ u8 frameBufferPadding[22544];
 
 struct_D_802BFB80 D_802BFB80[2][2][8];
 struct_D_802DFB80 D_802DFB80[2][2][8];
-struct_D_802F1F80 D_802F1F80[2][4][8];
+u32 D_802F1F80[2][4][1024];
 
 u16 gZBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
 

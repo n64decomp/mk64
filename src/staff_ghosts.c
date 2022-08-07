@@ -480,7 +480,6 @@ void func_80005AE8(Player *ply) {
 }
 
 #ifdef NON_MATCHING
-
 void func_80005B18(void) {
     s16 *temp_v0_2;
     s16 *temp_v0_3;
@@ -558,7 +557,6 @@ void func_80005B18(void) {
                 func_8000599C();
             }
         }
-      }
       D_80162D80 = &D_802BFB80[(D_80162DC8 << 0xF) + 0x3000];
       D_80162D84 = D_80162D86;
       D_80162DD0 = D_80162DCC;
@@ -603,7 +601,6 @@ void func_80005B18(void) {
         func_8000599C();
       }
     }
-  }
 }
 
 #else
