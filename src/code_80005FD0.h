@@ -4,7 +4,10 @@
 #include "common_structs.h"
 #include "vehicles.h"
 
+// FIXME: This header is missing some funciton prototypes
+
 /* Function Prototypes */
+
 s16  func_80005FD0(Vec3f, Vec3f);
 s32  func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
 void func_80006114(Vec3f, Vec3f, s16);
@@ -64,6 +67,7 @@ void func_80014CC0(s32, Player*);
 void func_80014D08(s32);
 void func_80014D30(s32, s32);
 void func_8001968C();
+void func_8001C3C4(s32);
 
 /* This is where I'd put my static data, if I had any */
 // 0 or 1, only 1 when when in extra (mirror) mode

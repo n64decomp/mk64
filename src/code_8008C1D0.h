@@ -5,6 +5,11 @@
 
 /* Function Prototypes */
 
+// FIXME: this header file is missing some function prototypes
+
+void func_8008C1D8(s32*);
+void func_8008C1E0(s32, s32);
+void func_8008C204();
 void func_8008C310(Player*);
 void func_8008C354(Player*, s8);
 void func_8008C528(Player*, s8);
@@ -76,8 +81,6 @@ void func_800098FC(u32, Player*);
 void func_800569F4(s32);
 void func_80056A40(s32, s32);
 void func_80056A94(s32, Player*);
-// code_80057C60
-void func_8006B8B4(Player*, s8);
 // audio/external.c
 void func_800C90F4(u8, uintptr_t);
 void func_800C9060(u8, s32);

@@ -104,6 +104,7 @@ typedef struct {
     /* 0x04 */ u16 unk34;
     /* 0x06 */ u16 unk36;
     /* 0x08 */ u16 unk38;
+    // This may be an index to the tilemap?
     /* 0x0A */ u16 unk3A;
     /* 0x0C */ f32 unk3C;
     /* 0x10 */ f32 unk40;
@@ -229,7 +230,7 @@ typedef struct {
     /* 0x002C */ Vec3s unk_02C;
     /* 0x0032 */ char unk_032[0x2];
     /* 0x0034 */ Vec3f unk_034;
-    /* 0x0040 */ char unk_040[0x2];
+    /* 0x0040 */ s16 unk_040;
     /* 0x0042 */ s16 unk_042;
     /* 0x0044 */ s16 unk_044;
     /* 0x0046 */ u16 unk_046;
@@ -416,83 +417,6 @@ typedef struct {
     char unk_32[0xE]; // guessed
 } struct_D_801650D0;
 
-typedef struct
-{
-    /* 0x00 */ f32 unk_000;
-    /* 0x04 */ Vec3f unk_004;
-    /* 0x10 */ Vec3f  unk_010;
-    /* 0x1C */ s8  unk_01C[0xC];
-    /* 0x28 */ Vec3f unk_028;
-    /* 0x34 */ f32 unk_034;
-    /* 0x38 */ f32 unk_038;
-    /* 0x3C */ f32 unk_03C;
-    /* 0x40 */ f32  unk_040;
-    /* 0x44 */ s32 unk_044;
-    /* 0x48 */ s32 unk_048;
-    /* 0x4C */ s32 unk_04C;
-    /* 0x50 */ s32 unk_050;
-    /* 0x54 */ s32 unk_054;
-    /* 0x58 */ s32 unk_058;
-    /* 0x5C */ s32 unk_05C;
-    /* 0x60 */ s32* unk_060;
-    /* 0x64 */ s32* unk_064;
-    /* 0x68 */ s32* unk_068;
-    /* 0x6C */ s32 unk_06C;
-    /* 0x70 */ s32 unk_070;
-    /* 0x74 */ s32 unk_074;
-    /* 0x78 */ s8  unk_078[0x04];
-    /* 0x7C */ s32 unk_07C;
-    /* 0x80 */ s32 unk_080;
-    /* 0x84 */ s16 unk_084[0xA];
-    /* 0x98 */ s16 unk_098;
-    /* 0x9A */ s16 unk_09A;
-    /* 0x9C */ s32 unk_09C;
-    /* 0xA0 */ s16 unk_0A0;
-    /* 0xA2 */ s16 unk_0A2;
-    /* 0xA4 */ s16 unk_0A4;
-    /* 0xA6 */ s16 unk_0A6;
-    /* 0xA8 */ s16 unk_0A8;
-    /* 0xAA */ s16 unk_0AA;
-    /* 0xAC */ s16 unk_0AC;
-    /* 0xAE */ s16 unk_0AE;
-    /* 0xB0 */ s16 unk_0B0;
-    /* 0xB0 */ s16 unk_0B2;
-    /* 0xB0 */ s16 unk_0B4;
-    /* 0xB0 */ s16 unk_0B6;
-    /* 0xB0 */ s8  unk_0B8[0x6];
-    /* 0xBE */ u16 unk_0BE;
-    /* 0xC0 */ u16 unk_0C0;
-    /* 0xC2 */ u16  unk_0C2;
-    /* 0xC4 */ s8  unk_0C4;
-    /* 0xC5 */ s8  unk_0C5;
-    /* 0xC6 */ s8  unk_0C6;
-    /* 0xC7 */ s8  unk_0C7;
-    /* 0xC8 */ s8  unk_0C8;
-    /* 0xC9 */ s8  unk_0C9;
-    /* 0xCA */ s8  unk_0CA;
-    /* 0xCB */ s8  unk_0CB;
-    /* 0xCC */ s8  unk_0CC;
-    /* 0xCD */ s8  unk_0CD;
-    /* 0xCE */ s8  unk_0CE;
-    /* 0xCF */ s8  unk_0CF;
-    /* 0xD0 */ s8  unk_0D0;
-    /* 0xD1 */ s8  unk_0D1;
-    /* 0xD2 */ s8  unk_0D2;
-    /* 0xD3 */ s8  unk_0D3;
-    /* 0xD4 */ s8  unk_0D4;
-    /* 0xD5 */ s8  unk_0D5;
-    /* 0xD6 */ u8  unk_0D6;
-    /* 0xD7 */ u8  unk_0D7;
-    /* 0xD8 */ s8  unk_0D8;
-    /* 0xD9 */ u8  unk_0D9;
-    /* 0xDA */ u8  unk_0DA;
-    /* 0xDB */ u8  unk_0DB;
-    /* 0xDC */ u8  unk_0DC;
-    /* 0xDD */ s8  unk_0DD;
-    /* 0xDE */ s8  unk_0DE;
-    /* 0xDF */ s8  unk_0DF;
-} struct_80165C18_entry; // size = 0xE0
-
 typedef struct {
     char unk_00[0x4];
     f32 unk_04;
@@ -598,7 +522,12 @@ typedef struct {
     /* 0x7D */ s8 unk_7D;
     /* 0x7E */ s8 unk_7E;
     /* 0x7F */ s8 unk_7F;
-    /* 0x80 */ s32 unk_80;
+    /* 0x80 */ s8 unk_80;
+    /* 0x81 */ s8 unk_81;
+    /* 0x82 */ s8 unk_82;
+    /* 0x83 */ s8 unk_83;
 } struct_8018CA70_entry; // size = 0x84
+
+#define D_8018CA70_SIZE 4
 
 #endif

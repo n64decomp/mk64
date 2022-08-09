@@ -3,9 +3,7 @@
 
 #include "common_structs.h"
 
-void func_8001C3C4(s32);
-
-void func_80041D34(void);
+// code_800431B0
 
 void func_8004E638(s32);
 void func_8004E78C(s32);
@@ -39,6 +37,8 @@ void func_80054BE8(s32);
 void func_80055F48(s32);
 
 void func_80056160(s32);
+
+// code_80057C60
 
 void func_80057C60();
 void func_80057CE4();
@@ -162,6 +162,7 @@ void func_8006A7C0(Player*, f32, f32, s8, s8);
 void func_8006AFD0(Player*, s16, s8, s8);
 
 void func_8006B87C(Player*, s8);
+void func_8006B8B4(Player*, s8);
 void func_8006B974(s32, s8, s8);
 void func_8006B9CC(Player*, s8);
 void func_8006BA94(Player*, s8, s8);
@@ -186,29 +187,7 @@ void func_8006E848(Player*, s8, s8);
 void func_8006E8C4(Player*, s8, s8);
 void func_8006E940(Player*, s8, s8);
 
-void func_800744CC(void);
-void func_80077640(void);
-
-void func_80078C70(s32);
-
-void func_8007A948(s32);
-void func_8007AA44(s32);
-
-void func_8007BB9C(s32);
-
-void func_8007C2F8(s32);
-
-void func_80081210(void);
-
-void func_80086604(void);
-void func_80086D80(void);
-
-void func_800892E0(s32);
-
-void func_8008C1D8(s32*);
-void func_8008C1E0(s32*, s32*);
-void func_8008C204(void);
-
+// skybox_and_splitscreen
 void func_802A3730(struct UnkStruct_800DC5EC*);
 
 

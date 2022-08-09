@@ -5,6 +5,7 @@
 #include "main.h"
 #include "variables.h"
 #include "math_util.h"
+#include "objects.h"
 
 #include "memory.h"
 
@@ -789,8 +790,6 @@ void func_80042760(Mat4 arg0, Vec3f arg1, Vec3f arg2, f32 arg3) {
     arg0[2][3] = 0.0f;
     arg0[3][3] = 1.0f;
 }
-
-extern struct_80165C18_entry D_80165C18[];
 
 /**
  * @brief Tried to put the definitions in the declares. However, sp3C wants to be at the top.

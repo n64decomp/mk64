@@ -11467,14 +11467,14 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8001C14C.s")
 
 extern u16 D_80163E2A;
 
-void func_8001C3C4(void) {
+void func_8001C3C4(s32 arg0) {
     if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
         if (D_80163E2A >= 16) {
             func_80057114(3);
         }
     } else {
         if (gModeSelection == VERSUS) {
-            func_80057114();
+            func_80057114(arg0);
         }
     }
 }
