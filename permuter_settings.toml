@@ -12,3 +12,5 @@
 "PHYSICAL_.*" = "unsigned int"
 "TIME_TRIAL_.*" = "int"
 "TEXT_.*" = "int"
+"OS_.*" = "int"
+"SEGMENT_.*" = "int"

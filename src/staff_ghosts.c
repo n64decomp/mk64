@@ -3,6 +3,7 @@
 #include <types.h>
 #include <common_structs.h>
 #include <defines.h>
+#include "framebuffers.h"
 
 extern s32 mio0encode(s32 input, s32, s32);
 extern s32 func_80040174(void *, s32, s32);
@@ -51,12 +52,8 @@ s32 D_80162DFC;
 
 s32 D_80162E00;
 
-extern u8 D_802BFB80[77824];
-extern u8 *D_802D2B80[32768];
-extern u8 *D_802DAB80[20480];
-
-u32 *D_800DC710 = &D_802D2B80[0];
-u32 *D_800DC714 = &D_802DAB80[0];
+u32 *D_800DC710 = &D_802BFB80[0][2][3];
+u32 *D_800DC714 = &D_802BFB80[1][1][3];
 
 extern OSIoMesg *gDmaIoMesg;
 extern u8 _kart_texturesSegmentRomStart;
@@ -87,7 +84,7 @@ extern s32 D_80164394;
 extern s32 D_80164398;
 
 void func_80004EF0(void) {
-    D_80162DA4 = &D_802D2B80[0];
+    D_80162DA4 = &D_802BFB80[0][2][3];
     osInvalDCache(&D_80162DA4[0], 0x4000);
     osPiStartDma(&gDmaIoMesg, 0, 0, (D_80162DC4 & 0xFFFFFF) + &_kart_texturesSegmentRomStart, D_80162DA4, 0x4000, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
@@ -96,13 +93,13 @@ void func_80004EF0(void) {
 }
 
 void func_80004FB0(void) {
-    D_80162DB4 = &D_802BFB80[(D_80162DD0 << 0xf) + 0x3000];
+    D_80162DB4 = &D_802BFB80[0][D_80162DD0][3];
     D_80162DAC = *D_80162DB4 & 0xFF0000;
     D_80162DB0 = 0;
 }
 
 void func_80004FF8(void) {
-    D_80162D94 = &D_802BFB80[(D_80162DC8 << 0xF) + 0x3000];
+    D_80162D94 = &D_802BFB80[0][D_80162DC8][3];
     D_80162D8C = (s32) *D_80162D94 & 0xFF0000;
     D_80162D90 = 0;
 }
@@ -169,7 +166,7 @@ s32 func_800051C4(void) {
 }
 
 void func_8000522C(void) {
-    D_80162D94 = &D_802BFB80[(D_80162DC8 << 0xF) + 0x3000];
+    D_80162D94 = &D_802BFB80[0][D_80162DC8][3];
     mio0decode(D_800DC714, D_80162D94);
     D_80162D8C = (s32) (*D_80162D94 & 0xFF0000);
     D_80162D90 = 0;
@@ -187,7 +184,7 @@ void func_800052A4(void) {
         D_80162DCC = 0;
     }
     temp_v0 = D_80162DB8;
-    D_80162D80 = (void *) &D_802BFB80[(D_80162DC8 << 0xF) + 0x3000];
+    D_80162D80 = (void *) &D_802BFB80[0][D_80162DC8][3];
     D_80162D84 = temp_v0;
     D_80162D86 = temp_v0;
 }
@@ -221,8 +218,8 @@ void func_80005310(void) {
             } else {
 
                 D_80162DD8 = 1U;
-                D_80162DBC = &D_802BFB80[(D_80162DCC << 0xF) + 0x3000];
-                *D_80162DBC = 0xFFFFFFFF;
+                D_80162DBC = &D_802BFB80[0][D_80162DCC][3];
+                D_80162DBC[0] = -1;
                 D_80162DB8 = 0;
                 D_80162DDC = 0;
                 func_80091EE4(&D_80162DC0);
@@ -483,42 +480,83 @@ void func_80005AE8(Player *ply) {
 }
 
 #ifdef NON_MATCHING
+void func_80005B18(void) {
+    s16 *temp_v0_2;
+    s16 *temp_v0_3;
+    s32 temp_v0;
+    u16 *phi_a3;
 
-void func_80005B18(void)
-{
-  if (gModeSelection == 1)
-  {
-    if (((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0)) && (D_80162DF8 != 1))
-    {
-      if (D_80162DD4 == (u16)1)
-      {
-        D_80162DD0 = D_80162DCC;
-        func_800052A4();
-        D_80162DD4 = 0;
-        D_80162DDC = 1;
-        D_80162DE0 = gPlayerOne->characterId;
-        D_80162DE8 = gPlayerOne->characterId;
-        D_80162E00 = 0;
-        D_80162DFC = D_8018CA78;
-        func_80005AE8(gPlayerTwo);
-        func_80005AE8(gPlayerThree);
-      }
-      else
-      {
-        if (gLapCountByPlayerId[4] != 3)
-        {
-          D_80162DD0 = D_80162DCC;
-          func_800052A4();
-          D_80162DDC = 1;
-          D_80162DE0 = gPlayerOne->characterId;
-          D_80162DFC = D_8018CA78;
-          D_80162E00 = 0;
-          D_80162DE8 = gPlayerOne->characterId;
-          func_80005AE8(gPlayerTwo);
-          func_80005AE8(gPlayerThree);
-          return;
+    if (gModeSelection == TIME_TRIALS) {
+        temp_v0 = gLapCountByPlayerId[0];
+        //phi_a3 = &D_80162DD4;
+        if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && D_80162DF8 != 1) {
+            //if (D_80162DF8 != 1) {
+
+            if (D_80162DD4 == 1) {
+                D_80162DD0 = D_80162DCC;
+                func_800052A4(); //gModeSelection, &D_80162DDC, 3, &D_80162DD4);
+                D_80162DD4 = 0;
+                D_80162DDC = 1;
+                D_80162DE0 = gPlayerOne->characterId;
+                D_80162DE8 = gPlayerOne->characterId;
+                D_80162E00 = 0;
+                D_80162DFC = D_8018CA78;
+                func_80005AE8(gPlayerTwo); // (u16) &D_80162DDC);
+                func_80005AE8(gPlayerThree);
+
+            } else {
+                if (gLapCountByPlayerId[4] != 3) {
+                    D_80162DD0 = D_80162DCC;
+                    func_800052A4(); // gModeSelection, &D_80162DDC, 3, &D_80162DD4);
+                    D_80162DDC = 1;
+                    D_80162DE0 = gPlayerOne->characterId;
+                    D_80162DFC = D_8018CA78;
+                    D_80162E00 = 0;
+                    D_80162DE8 = gPlayerOne->characterId;
+                    func_80005AE8(gPlayerTwo); // (u16) &D_80162DDC);
+                    func_80005AE8(gPlayerThree);
+                    return;
+
+                }
+            }
+            D_80162D80 = (void *) &D_802BFB80[0][D_80162DC8][3];
+            D_80162D84 = D_80162D86;
+            D_80162DD0 = D_80162DCC;
+            D_80162DE8 = gPlayerOne->characterId;
+            D_80162DD8 = 0;
+            D_80162DD4 = 0;
+            D_80162DDC = 1;
+            func_80005AE8(gPlayerTwo); // (u16) &D_80162DDC, 3, &D_80162DD4);
+            func_80005AE8(gPlayerThree);
+
+
+            return;
         }
-      }
+        if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (D_80162DF8 == 1)) {
+            D_80162D80 = (void *) &D_802BFB80[0][D_80162DC8][3];
+            D_80162D84 = D_80162D86;
+            D_80162DDC = 1;
+        }
+        if (( gPlayerOne->unk_000 & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) {
+            func_80005AE8(gPlayerTwo); // (u16) &D_80162DDC, 3, phi_a3);
+            func_80005AE8(gPlayerThree);
+            return;
+        };
+        D_80162DEC++;
+        if (D_80162DEC > 100) {
+            D_80162DEC = 100;
+        }
+        if ((gModeSelection == TIME_TRIALS) && (gActiveScreenMode == 0)) {
+            if ((D_80162DD4 == 0) && (gLapCountByPlayerId[4] != 3)) {
+                func_800057DC(); //gModeSelection, &D_80162DDC, 3, &D_80162DD4);
+            }
+            if ((D_80162DD6 == 0) && (3 != gLapCountByPlayerId[8])) {
+                func_8000561C();
+            }
+            if (( gPlayerOne->unk_000 & PLAYER_CINEMATIC_MODE) == 0) {
+                func_8000599C();
+            }
+        }
       D_80162D80 = &D_802BFB80[(D_80162DC8 << 0xF) + 0x3000];
       D_80162D84 = D_80162D86;
       D_80162DD0 = D_80162DCC;
@@ -563,7 +601,6 @@ void func_80005B18(void)
         func_8000599C();
       }
     }
-  }
 }
 
 #else

@@ -1,6 +1,7 @@
 #include <ultra64.h>
 
 #include "config.h"
+#include "framebuffers.h"
 
 u16 gRandomSeed16;
 
@@ -8,12 +9,9 @@ u8 randomSeedPadding[216];
 
 u8 frameBufferPadding[22544];
 
-u8 D_802BFB80[77824];
-
-u8 D_802D2B80[32768]; // Luigi raceway course path ghost
-u8 D_802DAB80[20480];
-u8 D_802DFB80[2][2][18688];
-u16 D_802F1F80[2][4][2048];
+struct_D_802BFB80 D_802BFB80[2][2][8];
+struct_D_802DFB80 D_802DFB80[2][2][8];
+u32 D_802F1F80[2][4][1024];
 
 u16 gZBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
 

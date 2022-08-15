@@ -344,22 +344,23 @@ SECTIONS
    }
    END_SEG(code_8028DF00)
 
-   	BEGIN_NOLOAD(code_8028DF00) {
-        BUILD_DIR/src/race_logic.o(.bss);
-        BUILD_DIR/src/actors.o(.bss);
-        BUILD_DIR/src/memory.o(.bss);
-        BUILD_DIR/src/framebuffers.o(.bss*);
-        BUILD_DIR/src/audio/synthesis.o(.bss*);
-        BUILD_DIR/asm/bss_audio.o(.bss*);
-        . = ALIGN(0x8);
-        BUILD_DIR/asm/bss_sptask_audio.o(.bss);
-	   }
-	   END_NOLOAD(code_8028DF00)
-	
-	   _code_8028DF00SegmentNoloadSize = SIZEOF(.code_8028DF00.noload) + 0x10;
-	   
-	   _code_8028DF00SegmentNoloadSizeHi = _code_8028DF00SegmentNoloadSize >> 16;
-	   _code_8028DF00SegmentNoloadSizeLo = _code_8028DF00SegmentNoloadSize & 0xFFFF;
+	BEGIN_NOLOAD(code_8028DF00)
+   {
+      BUILD_DIR/src/race_logic.o(.bss);
+      BUILD_DIR/src/actors.o(.bss);
+      BUILD_DIR/src/memory.o(.bss);
+      BUILD_DIR/src/framebuffers.o(.bss*);
+      BUILD_DIR/src/audio/synthesis.o(.bss*);
+      BUILD_DIR/asm/bss_audio.o(.bss*);
+      . = ALIGN(0x8);
+      BUILD_DIR/asm/bss_sptask_audio.o(.bss);
+   }
+   END_NOLOAD(code_8028DF00)
+
+   _code_8028DF00SegmentNoloadSize = SIZEOF(.code_8028DF00.noload) + 0x10;
+   
+   _code_8028DF00SegmentNoloadSizeHi = _code_8028DF00SegmentNoloadSize >> 16;
+   _code_8028DF00SegmentNoloadSizeLo = _code_8028DF00SegmentNoloadSize & 0xFFFF;
 
    /* 0x80280000 123640-12AAE0 [74A0] */
    BEGIN_SEG(code_80280000, SEG_80280000)
