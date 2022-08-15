@@ -333,7 +333,7 @@ UNUSED void func_8007271C(s32 arg0, s32 arg1) {
     }
 }
 
-UNUSED void func_80007274C(s32 arg0) {
+UNUSED void func_8007274C(s32 arg0) {
     if (D_80165C18[arg0].unk_0CB == 0) {
         func_80072488(arg0);
     }

@@ -32,7 +32,7 @@ s16  func_80072530(s32);
 void func_8007266C(s32);
 void func_800726CC(s32, s32);
 void func_8007271C(s32, s32);
-void func_80007274C(s32);
+void func_8007274C(s32);
 s32  func_8007278C(s32, s32);
 s32  func_8007281C(s32, s32);
 s32  func_800728B0(s32, s32, s32);

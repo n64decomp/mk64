@@ -3,41 +3,6 @@
 
 #include "common_structs.h"
 
-// code_800431B0
-
-void func_8004E638(s32);
-void func_8004E78C(s32);
-void func_8004E800(s32);
-void func_8004E998(s32);
-void func_8004EB30(s32);
-void func_8004EB38(s32);
-void func_8004ED40(s32);
-void func_8004EE54(s32);
-
-void func_8004F020(s32);
-void func_8004F3E4(s32);
-void func_8004FA78(s32);
-
-void func_80050320(void);
-
-void func_800514BC(void);
-void func_800517C8(void);
-void func_80051EBC(void);
-void func_80051EF8(void);
-void func_80051F9C(void);
-
-void func_80052044(void);
-void func_80052080(void);
-void func_80052C60(void);
-
-void func_800532A4(s32);
-
-void func_80054BE8(s32);
-
-void func_80055F48(s32);
-
-void func_80056160(s32);
-
 // code_80057C60
 
 void func_80057C60();

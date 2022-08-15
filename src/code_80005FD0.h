@@ -4,7 +4,7 @@
 #include "common_structs.h"
 #include "vehicles.h"
 
-// FIXME: This header is missing some funciton prototypes
+// TODO: This header is missing some function prototypes
 
 /* Function Prototypes */
 

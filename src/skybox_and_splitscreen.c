@@ -283,8 +283,7 @@ extern s32 D_800DC5D8;
  */
 void select_framebuffer(void) {
     gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer]));
-    gDPSetFillColor(gDisplayListHead++, ((D_800DC5D0 << 8 & 0xF800 | (D_800DC5D4 * 8) & 0x7C0 | D_800DC5D8 >> 2 & 0x3E | 1) << 16) |
-                    (D_800DC5D0 << 8 & 0xF800 | (D_800DC5D4 * 8) & 0x7C0 | (D_800DC5D8 >> 2) & 0x3E | 1));
+    gDPSetFillColor(gDisplayListHead++, GPACK_RGBA5551(D_800DC5D0, D_800DC5D4, D_800DC5D8, 1) << 0x10 | GPACK_RGBA5551(D_800DC5D0, D_800DC5D4, D_800DC5D8, 1));
     gDPPipeSync(gDisplayListHead++);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH-1, SCREEN_HEIGHT-1);

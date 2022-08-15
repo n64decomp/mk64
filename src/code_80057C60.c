@@ -7,13 +7,13 @@
 #include <defines.h>
 #include "math_util.h"
 #include "math_util_2.h"
-//#include "code_800431B0.h" <- FIXME: create this header file
+#include "code_800431B0.h"
 #include "code_80005FD0.h"
 #include "code_80057C60.h"
 #include "code_80071F00.h"
 #include "code_80086E70.h"
 #include "code_8008C1D0.h"
-//#include "skybox_and_splitscreen.h" <- FIXME: create this header file
+//#include "skybox_and_splitscreen.h" <- TODO: create this header file
 
 // UI Code?
 void func_80057C60(void) {
@@ -54,8 +54,6 @@ void func_80057CE4(void) {
     }
 }
 
-void func_8004C024(s32, s32, s32, s32, s32, s32, s32); // extern
-void func_8004C148(s32, s32, s32, s32, s32, s32, s32); // extern
 extern s8 D_801657B2;
 
 void func_80057DD0(void) {
