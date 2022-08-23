@@ -126,11 +126,3 @@ glabel L8008C1A8
 /* 08CDAC 8008C1AC 27BD0018 */  addiu $sp, $sp, 0x18
 /* 08CDB0 8008C1B0 03E00008 */  jr    $ra
 /* 08CDB4 8008C1B4 00000000 */   nop   
-
-/* 08CDB8 8008C1B8 03E00008 */  jr    $ra
-/* 08CDBC 8008C1BC AFA40000 */   sw    $a0, ($sp)
-
-/* 08CDC0 8008C1C0 03E00008 */  jr    $ra
-/* 08CDC4 8008C1C4 AFA40000 */   sw    $a0, ($sp)
-
-/* 08CDC8 8008C1C8 00000000 */  nop   

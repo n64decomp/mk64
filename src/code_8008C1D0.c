@@ -4,21 +4,24 @@
 #include "functions.h"
 #include "variables.h"
 #include "kart_attributes.h"
-#include "code_8008C1D0.h"
-#include "code_80027D00.h"
+#include "code_80005FD0.h"
 #include "code_8001F980.h"
+#include "code_80027D00.h"
+#include "code_800431B0.h"
+#include "code_80057C60.h"
+#include "code_8008C1D0.h"
 #include <defines.h>
 
 UNUSED void func_unnamed(void) {
 
 }
 
-UNUSED void func_8008C1D8(UNUSED s32 arg0) {
+void func_8008C1D8(UNUSED s32 *arg0) {
 
 }
 
-UNUSED void func_8008C1E0(UNUSED s32 arg0, UNUSED s32 arg1)  {
-        arg1 = 4;
+void func_8008C1E0(UNUSED s32 arg0, UNUSED s32 arg1)  {
+    arg1 = 4;
 }
 
 UNUSED void func_unnamed1(UNUSED s32 arg0) {
@@ -33,7 +36,7 @@ UNUSED void func_unnamed3(void) {
 
 }
 
-UNUSED void func_8008C204(void) {
+void func_8008C204(void) {
 
 }
 
@@ -1671,7 +1674,7 @@ void func_8008FC1C(Player* player) {
     if ((player->unk_000 & 0x40) != 0) {
         playerIndex = get_player_index_for_player(player);
         player->unk_000 = 0x7000;
-        func_80056A94(playerIndex, player);
+        func_80056A94(playerIndex);
     }
 }
 

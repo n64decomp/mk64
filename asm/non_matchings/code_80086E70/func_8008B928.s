@@ -69,35 +69,3 @@ glabel func_8008B928
 /* 08C634 8008BA34 8FB10018 */  lw    $s1, 0x18($sp)
 /* 08C638 8008BA38 03E00008 */  jr    $ra
 /* 08C63C 8008BA3C 27BD0020 */   addiu $sp, $sp, 0x20
-
-glabel func_8008BA40
-/* 08C640 8008BA40 27BDFFE8 */  addiu $sp, $sp, -0x18
-/* 08C644 8008BA44 AFBF0014 */  sw    $ra, 0x14($sp)
-/* 08C648 8008BA48 AFA40018 */  sw    $a0, 0x18($sp)
-/* 08C64C 8008BA4C AFA60020 */  sw    $a2, 0x20($sp)
-/* 08C650 8008BA50 AFA5001C */  sw    $a1, 0x1c($sp)
-/* 08C654 8008BA54 0C0ADF8D */  jal   random_int
-/* 08C658 8008BA58 97A40022 */   lhu   $a0, 0x22($sp)
-/* 08C65C 8008BA5C 97AF0022 */  lhu   $t7, 0x22($sp)
-/* 08C660 8008BA60 87AE001E */  lh    $t6, 0x1e($sp)
-/* 08C664 8008BA64 8FAB0018 */  lw    $t3, 0x18($sp)
-/* 08C668 8008BA68 05E10003 */  bgez  $t7, .L8008BA78
-/* 08C66C 8008BA6C 000FC043 */   sra   $t8, $t7, 1
-/* 08C670 8008BA70 25E10001 */  addiu $at, $t7, 1
-/* 08C674 8008BA74 0001C043 */  sra   $t8, $at, 1
-.L8008BA78:
-/* 08C678 8008BA78 0058C823 */  subu  $t9, $v0, $t8
-/* 08C67C 8008BA7C 00194400 */  sll   $t0, $t9, 0x10
-/* 08C680 8008BA80 00084C03 */  sra   $t1, $t0, 0x10
-/* 08C684 8008BA84 01C95021 */  addu  $t2, $t6, $t1
-/* 08C688 8008BA88 448A2000 */  mtc1  $t2, $f4
-/* 08C68C 8008BA8C 000B60C0 */  sll   $t4, $t3, 3
-/* 08C690 8008BA90 8FBF0014 */  lw    $ra, 0x14($sp)
-/* 08C694 8008BA94 468021A0 */  cvt.s.w $f6, $f4
-/* 08C698 8008BA98 018B6023 */  subu  $t4, $t4, $t3
-/* 08C69C 8008BA9C 000C6140 */  sll   $t4, $t4, 5
-/* 08C6A0 8008BAA0 3C018016 */  lui   $at, %hi(D_80165C28)
-/* 08C6A4 8008BAA4 002C0821 */  addu  $at, $at, $t4
-/* 08C6A8 8008BAA8 27BD0018 */  addiu $sp, $sp, 0x18
-/* 08C6AC 8008BAAC 03E00008 */  jr    $ra
-/* 08C6B0 8008BAB0 E4265C28 */   swc1  $f6, %lo(D_80165C28)($at)

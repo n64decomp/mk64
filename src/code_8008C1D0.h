@@ -5,7 +5,47 @@
 
 /* Function Prototypes */
 
+void func_unnamed();
+void func_8008C1D8(s32*);
+void func_8008C1E0(s32, s32);
+void func_unnamed1(s32);
+void func_unnamed2(s32);
+void func_unnamed3();
+void func_8008C204();
+void func_unnamed4();
+void func_8008C214();
+void func_unnamed5();
+void func_unnamed6();
+void func_unnamed7();
+void func_unnamed8();
+void func_8008C23C();
+void func_unnamed9();
+void func_unnamed10();
+void func_unnamed11();
+void func_unnamed12();
+void func_unnamed13();
+void func_unnamed14();
+void func_unnamed15();
+void func_unnamed16();
+void func_unnamed17();
+void func_unnamed18();
+void func_unnamed19();
+void func_unnamed20();
+void func_unnamed21();
+void func_unnamed22(s32, s32);
+void func_unnamed23();
+void func_unnamed24();
+void func_unnamed25();
+void func_unnamed26();
+void func_unnamed27();
+void func_unnamed28();
+void func_unnamed29();
+void func_unnamed30();
+void func_unnamed31();
+void func_unnamed32();
+void func_unnamed33();
 void func_8008C310(Player*);
+void func_unnamed34();
 void func_8008C354(Player*, s8);
 void func_8008C528(Player*, s8);
 void func_8008C62C(Player*, s8);
@@ -69,15 +109,8 @@ void func_800911B4(Player*, s8);
 void func_80091440(s8);
 void func_800914A0();
 
-
 // code_80005FD0
 void func_800098FC(u32, Player*);
-// code_800431B0
-void func_800569F4(s32);
-void func_80056A40(s32, s32);
-void func_80056A94(s32, Player*);
-// code_80057C60
-void func_8006B8B4(Player*, s8);
 // audio/external.c
 void func_800C90F4(u8, uintptr_t);
 void func_800C9060(u8, s32);

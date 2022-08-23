@@ -87,7 +87,4 @@ extern s8    D_80165840[];
 extern s8    D_801658FE;
 extern s32   D_8018D120;
 
-// This is also used in 80071F00
-extern struct_80165C18_entry D_80165C18[];
-
 #endif // MATH_UTIL_2_H

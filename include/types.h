@@ -106,63 +106,6 @@ struct UnkStruct_802B53C8 {
 };
 // end math util structs
 
-struct UnkStruct8008A890 {
- // B4 long
-    Vec3f pos;
-    //f32 posY;
-    //f32 posZ;
-    f32 unk; // lookat? faceangle?
-    f32 unk1;
-    f32 unk2;
-    f32 angleX;
-    f32 angleY;
-    f32 angleZ;
-    s16 rotX;
-    s16 rotX2;
-    s16 rotY; // unused?
-    s16 rotZ;
-    s32 unk3; // zero
-    s32 unk4; // 0x4119999A
-    s32 unk5; // 0xC20C bit flag?
-    s32 unk6; // 0
-    s32 unk7; // 0
-    s32 unk8; // 0x41F
-    s32 unk9; // 0
-    s32 unk10; // 0
-    s32 unk11; // 0
-    s32 unk12; // 0
-    u16 unk13; // 0x103F7
-    u16 unk13_and_a_half;
-    u16 unk14; // 0x05BC00## Surface camera is over?
-    u16 unk14_half;
-    u16 collisionX;
-    u16 value;
-    u16 collisionY;
-    f32 collisionZ;
-    f32 unk15;
-    f32 unk16;
-    f32 unk17;
-    f32 unk18;
-    f32 unk19;
-    f32 unk20;
-    f32 unkAngleX;
-    f32 unkAngleY;
-    f32 unkAngleZ;
-    s32 unk21; // zero
-    f32 collision;
-    f32 unk22; // zero
-    s16 unk23; // confirmed s16
-    s16 unk24; // zero
-    s16 unk24_and_a_half;
-    s32 unk25; // zero
-    s32 unk26; // zero
-    // need another s16 here?
-    s32 unk27; // 8
-    s16 unk28; // zero
-    f32 unk29; // 422
-    f32 unk30;
-};
-
 struct UnkStruct_800DDB68 {
     s32 *D_800ED600; s32 *D_800ED608; s32 *D_800ED610; s32 *D_800ED618;
     s32 *D_800ED620; s32 *D_800ED628; s32 *D_800ED630; s32 *D_800ED638;
