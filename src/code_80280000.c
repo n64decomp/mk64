@@ -6,31 +6,12 @@
 #include "main.h"
 #include "types.h"
 #include "camera.h"
+#include "memory.h"
+#include "math_util.h"
+#include "code_80280000.h"
 #include "code_80281780.h"
+#include "skybox_and_splitscreen.h"
 #include <config.h>
-
-extern Gfx *gDisplayListHead;
-
-extern f32 D_80150148, D_8015014C, D_80150150;
-extern f32 D_80150130[4];
-extern s16 gCreditsCourseId;
-extern u16 D_80150112;
-extern u16 D_80164AF0;
-extern u32 D_8018D120;
-extern s32 gPrevLoadedAddress;
-extern mk64_surface_map_ram (*D_8015F580)[];
-extern u16 D_8015F588; // Number of entires in D_8015F580
-
-extern u16 gIsInQuitToMenuTransition, gQuitToMenuTransitionCounter;
-extern s32 D_802874A0;
-
-extern u16 atan2s(f32, f32);
-extern u16 D_80164714, D_80164716, D_80164718;
-extern u16 D_800DC5E4;
-extern u32 gGamestate;
-extern u32 D_802874FC;
-
-extern u16 D_800DC518;
 
 void func_80280000(void) {
     func_802966A0();

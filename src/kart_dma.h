@@ -1,5 +1,5 @@
-#ifndef CODE_80027040_H
-#define CODE_80027040_H
+#ifndef KART_DMA_H
+#define KART_DMA_H
 
 #include "macros.h"
 #include "common_structs.h"
@@ -9,8 +9,8 @@
 void func_80027040(Player*, s8, s8, s8, s8);
 void func_80027560(Player*, s8, s8, s8, s8);
 void func_80027A20(Player*, s8, s8, s8);
-void func_80027BDC(UNUSED Player*, s32, void*, u16);
-void func_80027C74(UNUSED Player*, s32, void*, u16);
+void func_80027BDC(Player*, s32, void*, u16);
+void func_80027C74(Player*, s32, void*, u16);
 
 /* This is where I'd put my static data, if I had any */
 

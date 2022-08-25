@@ -75,6 +75,7 @@ void func_8005AB20();
 void func_8005B914();
 
 void func_8005C360(f32);
+void func_8005C64C(s32);
 void func_8005C6B4(s8, s16*, s16*, s16*);
 void func_8005C728();
 void func_8005CB60(s32, s32);

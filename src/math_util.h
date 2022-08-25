@@ -35,6 +35,7 @@ void func_802B5A44(Mat4, s16);
 void func_802B5AAC(Mat4, s16);
 void func_802B5CAC(s16, s16, Vec3f);
 void func_802B5D30(s16, s16, s32);
+void func_802B5D64(u32, s16, s32, s32);
 void func_802B5F00(Mat4, f32);
 void func_802B5F74(Mat4, Vec3f, Vec3s);
 void func_802B60B4(Mat4, Vec3s, Vec3s);

@@ -2,11 +2,8 @@
 #include <macros.h>
 #include <common_structs.h>
 #include "camera.h"
+#include "camera_junk.h"
 #include "math_util.h"
-
-// guPerspective params
-extern f32 D_80150148, D_8015014C, D_80150150;
-extern f32 D_80150130[];
 
 void setup_camera_ending_sequence(void) {
     Camera *camera;

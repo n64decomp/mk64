@@ -4,24 +4,13 @@
 #include "variables.h"
 #include <defines.h>
 #include <config.h>
-
+#include "memory.h"
+#include "camera.h"
+#include "spawn_players.h"
+#include "skybox_and_splitscreen.h"
+#include "code_8006E9C0.h"
+#include "code_80280650.h"
 #include "code_80281780.h"
-
-extern Camera cameras[];
-
-extern s32 gPrevLoadedAddress;
-
-/*
-extern Gfx D_070067E8[];
-extern Gfx D_0700AEF8[];
-extern Gfx D_0700A970[];
-extern Gfx D_0700AC30[];
-extern Gfx D_07000CE0[];
-extern Gfx D_07000E88[];
-extern Gfx D_0700A618[];
-extern Gfx D_070023F8[];
-extern Gfx D_07002478[];
-*/
 
 // unk4 is buttonDown?
 void func_80281780(void) {

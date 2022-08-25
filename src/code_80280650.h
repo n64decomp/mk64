@@ -1,6 +1,8 @@
 #ifndef CODE_80280650_H
 #define CODE_80280650_H
 
+#include "common_structs.h"
+
 struct UnkStruct_80280658 {
     s32 unk0;
     s16 unk4;
@@ -73,7 +75,7 @@ f32  func_8028080C();
 f32  func_80280850(f32);
 void func_80280884();
 void func_8028093C(struct UnkStruct_80280658*);
-void func_80280A28(Vec3f, Vec3s, f32);
+void func_80280A28(Vec3f, Vec3s, f32 );
 void func_80280FA0(s32);
 void func_80280FA8(s32);
 void func_80280FB0();
@@ -85,7 +87,7 @@ void func_80281528();
 void func_80281530();
 void func_80281538();
 void func_80281540();
-void func_80281548();
+void ending_sequence_loop();
 
 extern struct UnkStruct_80280658 *D_802874F8;
 extern struct UnkStruct_80280658 *D_80284E7C;
@@ -96,7 +98,6 @@ extern s32  D_80284E88;
 extern s32  D_802874E0;
 extern s8   D_802874F4;
 extern s32  D_802874D4;
-extern s16  D_80150112;
 extern s32  D_802874FC;
 extern Mat4 D_80287500;
 extern s16  D_80164AF0;

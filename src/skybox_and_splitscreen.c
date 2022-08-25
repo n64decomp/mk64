@@ -7,30 +7,7 @@
 #include <variables.h>
 #include <config.h>
 #include "camera.h"
-
-void select_framebuffer();
-
-extern Gfx *gDisplayListHead;
-
-extern struct UnkStruct_800DC5EC *D_800DC5EC;
-extern struct UnkStruct_800DC5EC *D_800DC5F0;
-extern struct UnkStruct_800DC5EC *D_800DC5F4;
-extern struct UnkStruct_800DC5EC *D_800DC5F8;
-
-extern u16 D_800DC5B0;
-
-void init_rdp();
-extern s32 gGamestateNext;
-extern s16 gIsInQuitToMenuTransition;
-extern u16 gQuitToMenuTransitionCounter;
-extern s32 gMenuSelection;
-extern s32 D_800E86A4;
-extern s32 gMenuSelectionFromQuit;
-
-extern s32 D_801502B4;
-extern uintptr_t *gPhysicalFramebuffers[];
-extern u16 sRenderingFramebuffer;
-
+#include "skybox_and_splitscreen.h"
 
 Vp D_802B8880[] = {
     {640, 480, 511, 0,
@@ -259,8 +236,6 @@ UNUSED void func_802A40CC(void) {}
 UNUSED void func_802A40D4(void) {}
 UNUSED void func_802A40DC(void) {}
 
-#define G_CLEAR_ALL_MODES 0xFFFFFFFF
-
 UNUSED s32 set_viewport2(void) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_800DC5EC->viewport));
     gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
@@ -273,10 +248,6 @@ void set_viewport(void) {
     gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 }
-
-extern s32 D_800DC5D0;
-extern s32 D_800DC5D4;
-extern s32 D_800DC5D8;
 
 /**
  * Tells the RDP which of the three framebuffers it shall draw to.
@@ -324,10 +295,6 @@ void func_802A4300(void) {
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 
 }
-
-extern s32 D_801625EC;
-extern s32 D_801625F0;
-extern s32 D_801625F4;
 
 struct Skybox {
     s16 unk0;
@@ -393,7 +360,6 @@ struct Skybox D_802B8BCC[21] = {
     {0, 0, 0, 0, 0, 0},
     {255, 224, 240, 0, 0, 0},
 };
-extern u16 D_800DC5BC;
 
 void func_802A450C(Vtx *skybox) {
     s32 i;
@@ -457,9 +423,6 @@ void func_802A450C(Vtx *skybox) {
     skybox[7].v.cn[1] = D_802B8BCC[gCurrentCourseId].unk2;
     skybox[7].v.cn[2] = D_802B8BCC[gCurrentCourseId].unk4;
 }
-
-extern Mtx *D_0D008E98;
-extern struct GfxPool *gGfxPool;
 
 void func_802A487C(Vtx *arg0, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED s32 arg4) {
 
@@ -670,8 +633,6 @@ GLOBAL_ASM("asm/non_matchings/skybox/func_802A4D18.s")
 //extern f32 D_80150138;
 //extern f32 D_8015013C;
 
-extern f32 D_80150130[];
-
 void func_802A4EF4(void) {
     switch(gActiveScreenMode) {
         case 0:
@@ -694,8 +655,6 @@ void func_802A4EF4(void) {
             break;
     }
 }
-
-extern u16 D_800DC5B4;
 
 void func_802A5004(void) {
 
@@ -875,15 +834,6 @@ void func_802A5760(void) {
     }
 }
 
-extern f32 D_80150148;
-extern f32 D_80150150;
-extern f32 D_8015014C;
-
-
-extern u16 D_800DC5C8;
-extern u16 D_800DC5B8;
-extern Camera cameras[];
-
 void func_802A59A4(void) {
     Camera *camera = &cameras[0];
     u16 spAA[32];
@@ -931,8 +881,6 @@ void func_802A59A4(void) {
         func_80058DB4(0);
     }
 }
-
-extern s32 D_8015F788;
 
 void func_802A5CB4(void) {
     Camera *camera = &cameras[0];
@@ -1316,12 +1264,6 @@ void func_802A7178(void) {
     }
     D_8015F788 += 1;
 }
-
-extern struct UnkStruct_800DC5EC D_8015F480[];
-extern s32 D_8015F790[];
-
-extern struct Controller gControllers[];
-extern Player gPlayers[];
 
 void func_802A74BC(void) {
     struct UnkStruct_800DC5EC *wrapper = &D_8015F480[0];
