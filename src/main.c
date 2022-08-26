@@ -42,7 +42,7 @@ struct SPTask* sNextAudioSPTask = NULL;
 struct SPTask* sNextDisplaySPTask = NULL;
 
 
-struct Controller gControllers[8];
+struct Controller gControllers[8]; //0x800F6910
 struct Controller *gControllerOne = &gControllers[0];   // 0x800DC4BC
 struct Controller *gControllerTwo = &gControllers[1];   // 0x800DC4C0
 struct Controller *gControllerThree = &gControllers[2]; // 0x800DC4C4
@@ -150,7 +150,7 @@ u32 gGfxSPTaskStack[256];
 OSMesg gPIMesgBuf[32];
 OSMesgQueue gPIMesgQueue;
 
-s32 gGamestate = 0xFFFF;
+s32 gGamestate = 0xFFFF; // 0x800DC50C
 u16 D_800DC510 = 0;
 u16 D_800DC514 = 0;
 u16 D_800DC518 = 0;
@@ -161,7 +161,7 @@ UNUSED s32 D_800DC528 = 1;
 s32 gActiveScreenMode = SCREEN_MODE_1P;
 s32 gScreenModeSelection = 0;
 UNUSED s32 D_800DC534  = 0;
-s32 gPlayerCountSelection1 = 2;
+s32 gPlayerCountSelection1 = 2; // 0x800DC538
 
 s32 gModeSelection = GRAND_PRIX;
 s32 D_800DC540 = 0;
@@ -331,7 +331,8 @@ void init_controllers(void) {
     }
 }
 
-void update_controller(s32 index) {
+//0x80000934
+void update_controller(s32 index) { 
     struct Controller *controller = &gControllers[index];
     u16 stick;
 
@@ -367,6 +368,7 @@ void update_controller(s32 index) {
     controller->stickDirection = stick;
 }
 
+//0x80000A28
 void read_controllers(void) {
     OSMesg msg;
 

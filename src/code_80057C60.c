@@ -645,7 +645,7 @@ extern s32 D_8018D2A4;
 
 void func_800590D4(void) {
     if (D_8018D2A4 != 0) {
-        if (gModeSelection != 3) {
+        if (gModeSelection != BATTLE) {
             switch (gPlayerCountSelection1) {
                 case 1:
                     if (gModeSelection != 1) {

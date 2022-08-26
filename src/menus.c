@@ -34,7 +34,7 @@ s32 D_8018EDE0;
 s8 gCharacterGridSelections[4]; // map from player id to current grid position
 s8 D_8018EDE8[4]; // bool8; map player id to isCharSelected on CSS
 s8 D_8018EDEC;
-s8 gMainMenuSelectionDepth;
+s8 gMainMenuSelectionDepth; //0x8018EDED
 s8 D_8018EDEE; // grid screen state?
 s8 gDebugMenuSelection;
 s8 gControllerPakMenuSelection;
@@ -60,7 +60,7 @@ s8 D_8018EE0C;
 struct_8018EE10_entry D_8018EE10[2];
 
 /** Data **/
-s32 gMenuSelection = LOGO_INTRO_MENU;
+s32 gMenuSelection = LOGO_INTRO_MENU; //0x800E86A0
 s32 D_800E86A4 = 0;
 s8 gCharacterSelections[4] = { MARIO, LUIGI, YOSHI, TOAD };
 
@@ -95,21 +95,24 @@ const s8 D_800F2B50[] = {0, 1, 2, 3, 3, 0, 0, 0};
 // set to D_8018EDF3, then that sets gPlayerCountSelection1
 const s8 D_800F2B58[] = {1, 2, 2, 3, 4, 0, 0, 0};
 
-const s8 D_800F2B60[5][3] = {
-    {1, 2, 1},
-    {1, 2, 1},
-    {0, 2, 2},
-    {0, 2, 0}, 
-    {0, 2, 0}
+// limit for each colone in one-two-three-four players selection
+const s8 D_800F2B60[4] = {1, 2, 1, 1};
+
+// limit in each colone
+const s8 D_800F2B64[4][3] = {
+    {2, 1, 0},
+    {2, 2, 0},
+    {2, 0, 0},
+    {2, 0, 0}
 };
 
-// is this another union GameModePack? Figure out when decomping.
+// 0x800F2B70 is this another union GameModePack? Figure out when decomping.
 const s32 gGameModeFromNumPlayersAndRowSelection[5][3] = {
-    { 0x03010003, 0x03000300, 0x00030000 },
-    { 0x00000000, 0x00000001, 0x00000000 },
-    { 0x00000000, 0x00000002, 0x00000003 },
-    { 0x00000002, 0x00000003, 0x00000000 },
-    { 0x00000002, 0x00000003, 0x00000000 },
+    { 0x03010003, 0x03000300,  0x00030000 },
+    { GRAND_PRIX, TIME_TRIALS, 0x00000000 }, //0x800F2B7C first colone
+    { GRAND_PRIX, VERSUS,      BATTLE     }, //second
+    { VERSUS,     BATTLE,      0x00000000 }, //third
+    { VERSUS,     BATTLE,      0x00000000 }, //four
 };
 
 // map from character grid position id to character id

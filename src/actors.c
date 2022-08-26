@@ -666,7 +666,7 @@ void update_obj_kiwano_fruit(struct KiwanoFruit *fruit) {
                 player->unk_034[0] -= temp_f2  * 0.7f;
                 player->unk_034[2] -= temp_f14 * 0.7f;
                 func_800C9060(player - gPlayerOne, 0x19007018U);
-                if (gModeSelection != 0) {
+                if (gModeSelection != GRAND_PRIX) {
                     D_80162DF8 = 1;
                 }
             }
@@ -724,6 +724,7 @@ void update_obj_train_car2(struct TrainCar *arg0) {
     arg0->wheelRot -= 0x666;
 }
 
+// 0x80298274
 void update_obj_piranha_plant(struct PiranhaPlant *arg0) {
     if ((arg0->flags & 0x800) == 0) {
         if ((arg0->flags & 0x400) != 0) {
@@ -4017,7 +4018,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
     case 5:
         if (((player->unk_0BC << 0) >= 0) && ((player->unk_000 & 0x100) == 0) && (func_8029FB80(player, actor) == 1)) {
             func_800C98B8(actor->pos, actor->velocity, 0x19009005U);
-            if ((gModeSelection == 1) && ((player->unk_000 & 0x1000) == 0)) {
+            if ((gModeSelection == GRAND_PRIX) && ((player->unk_000 & 0x1000) == 0)) {
                 D_80162DF8 = 1;
             }
             if ((player->unk_0BC & 0x200) != 0) {

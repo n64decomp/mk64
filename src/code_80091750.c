@@ -956,6 +956,7 @@ s32 get_string_width(char *buffer) {
     return stringWidth;
 }
 
+// 0x800930D8
 void set_text_color(s32 arg0) {
     gTextColor = arg0;
 }
@@ -1087,6 +1088,7 @@ void func_800936B8(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f
     print_text1(column, row, text, tracking, x_scale, y_scale, 1);
 }
 
+// 0x800936EC
 void draw_text(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale) {
     print_text1(column, row, text, tracking, x_scale, y_scale, 2);
 }
@@ -6932,6 +6934,8 @@ static MkTexture *D_800E8274[8] = {
     D_020049E4,
     D_02004A34,
 };
+
+// texture use in menu
 static MkTexture *D_800E8294[8] = {
     D_020048F4,
     D_0200491C,
@@ -7593,6 +7597,8 @@ static MkTexture *D_800E7CA8[0x19] = {
     D_020014A0,
 };
 static MkTexture *D_800E7D4C[2] = { D_02004598, D_020045C0 };
+
+// 0x800E7D54 name selection
 static MkTexture *D_800E7D54[8] = {
     D_02001A8C,
     D_02001A64,
@@ -7632,6 +7638,7 @@ static MkTexture *D_800E817C[0x1A] = {
     D_0200419C,
 };
 static MkTexture *D_800E824C[2] = { D_0200478C, D_02004854 };
+
 static MkTexture *D_800E8254[8] = {
     D_02004660,
     D_02004688,
@@ -8567,6 +8574,8 @@ struct _struct_D_800E8234_0x8 {
 };                                                  /* size = 0x8 */
 
 Gfx *func_8009BC9C(Gfx *, void *, s32, s32, s32, s32); /* extern */
+
+// menu selection
 static struct _struct_D_800E8234_0x8 D_800E8234[3] = {
     { D_02004688, D_020047DC },
     { D_020046D8, D_02004804 },
@@ -13666,6 +13675,8 @@ s32 func_800AAFCC(s32);                             /* extern */
 s32 random_int(?, s32);                             /* extern */
 extern ? D_8018DEE4;
 extern ? D_8018EDE8;
+
+// 0x800E8360 head selection
 static MkAnimation *D_800E8360[8] = {
     D_02006708,
     D_020068F0,
@@ -13676,6 +13687,8 @@ static MkAnimation *D_800E8360[8] = {
     D_02007468,
     D_02006AD8,
 }; /* const */
+
+// 0x800E8380
 static MkAnimation *gCharacterCelebrateAnimation[8] = {
     D_02006718,
     D_02006900,
@@ -13686,6 +13699,8 @@ static MkAnimation *gCharacterCelebrateAnimation[8] = {
     D_02007478,
     D_02006AE8,
 }; /* const */
+
+// 0x800E83A0 celebrate end
 static MkAnimation *D_800E83A0[8] = {
     D_02006778,
     D_02006960,
@@ -13696,6 +13711,8 @@ static MkAnimation *D_800E83A0[8] = {
     D_020074D8,
     D_02006B48,
 }; /* const */
+
+// 0x800E83C0
 static MkAnimation *gCharacterDeselectAnimation[8] = {
     D_02006788,
     D_02006970,
@@ -13706,6 +13723,8 @@ static MkAnimation *gCharacterDeselectAnimation[8] = {
     D_020074E8,
     D_02006B58,
 }; /* const */
+
+// 0x800E83E0
 static MkAnimation *gCharacterSingleBlinkAnimation[8] = {
     D_020067E0,
     D_020069C8,
@@ -13714,8 +13733,10 @@ static MkAnimation *gCharacterSingleBlinkAnimation[8] = {
     D_02007170,
     D_02007358,
     D_02007540,
-    D_02006BB0,
+    D_02006CB0,
 }; /* const */
+
+// 0x800E8400
 static MkAnimation *gCharacterDoubleBlinkAnimation[8] = {
     D_02006838,
     D_02006A20,
@@ -13725,6 +13746,17 @@ static MkAnimation *gCharacterDoubleBlinkAnimation[8] = {
     D_020073B0,
     D_02007598,
     D_02006C08,
+}; /* const */
+
+static MkAnimation *D_800E8420[8] = {
+    D_020067E0,
+    D_020069C8,
+    D_02006D98,
+    D_02006F80,
+    D_02007170,
+    D_02007358,
+    D_02007540,
+    D_02006CB0,
 }; /* const */
 static s32 D_800E8440[8] = { 0xA, 0xA, 0xA, 0xA, 0xA, 0xA, 0xA, 0xA }; /* const */
 static s32 D_800E8460[8] = { 9, 9, 9, 9, 0xA, 9, 9, 9 }; /* const */
