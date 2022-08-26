@@ -4,7 +4,7 @@
 #include "variables.h"
 #include "framebuffers.h"
 #include "common_structs.h"
-#include "code_80027040.h"
+#include "kart_dma.h"
 
 uintptr_t **gKartMarioTable0[] = {
     gKartMarioGroup8, gKartMarioGroup7, gKartMarioGroup6,

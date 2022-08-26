@@ -40,6 +40,8 @@ void init_seg_80280000();
 void init_seg_8028DF00();
 void dma_copy(u8*, u8*, u32);
 void setup_game_memory();
+void game_init_clear_framebuffer();
+void race_logic_loop();
 void game_state_handler();
 void interrupt_gfx_sptask();
 void receive_new_tasks();
@@ -67,10 +69,51 @@ extern OSMesgQueue gDmaMesgQueue;
 extern s32 gGamestateNext;
 extern s32 gActiveScreenMode;
 extern f32 gVBlankTimer;
-extern uintptr_t pAppNmiBuffer;
-extern s32 gNmiUnknown1, gNmiUnknown2, gNmiUnknown3, gNmiUnknown4, gNmiUnknown5, gNmiUnknown6;
+extern u8 *pAppNmiBuffer;
+extern u8 *gNmiUnknown1;
+extern u8 *gNmiUnknown2;
+extern u8 *gNmiUnknown3;
+extern u8 *gNmiUnknown4;
+extern u8 *gNmiUnknown5;
+extern u8 *gNmiUnknown6;
 extern s32 gScreenModeSelection;
 
 extern s16 sIsController1Unplugged;
+
+extern u64 rspbootTextStart[], rspbootTextEnd[];
+extern u64 gspF3DEXTextStart[], gspF3DEXTextEnd[];
+extern u64 gspF3DLXTextStart[], gspF3DLXTextEnd[];
+extern u64 gspF3DEXDataStart[];
+extern u64 gspF3DLXDataStart[];
+
+extern u64 gGfxSPTaskOutputBuffer[];
+extern u32 gGfxSPTaskOutputBufferSize;
+
+extern u32 gPrevLoadedAddress;
+extern s32 D_8015F734;
+extern u8 _data_segment2SegmentRomStart[];
+extern u8 _data_segment2SegmentRomEnd[];
+extern u8 _common_texturesSegmentRomStart[];
+extern u8 _common_texturesSegmentRomEnd[];
+extern u8 _data_802BA370SegmentRomStart[];
+extern u32 gHeapEndPtr;
+extern u32 *D_801978D0; // Segment? Keeps track of segmented addresses?
+
+extern s16 gCurrentlyLoadedCourseId;
+extern s16 gCurrentCourseId;
+
+extern s16 D_80164AF0;
+extern u16 D_800DC5FC;
+extern u16 gIsInQuitToMenuTransition;
+
+
+extern s32 D_8015F788;
+extern s16 D_801625E8;
+extern struct UnkStruct_800DC5EC *D_800DC5EC;
+
+extern u16 D_800DC5B0;
+extern s32 gPlayerWinningIndex;
+
+extern s32 gEnableResourceMeters;
 
 #endif

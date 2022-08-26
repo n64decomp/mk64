@@ -65,27 +65,32 @@ TotalMipsToCFunctions = len(CountMipsToCFunctions(GetFiles("src", ".c")) if not 
 TotalNonMatchingFunctions = len(CountNonMatchingFunctions(GetFiles("src", ".c")) if not args.matching else [])
 
 mainSegFiles2 = [
-    "asm/non_matchings/crash_screen", "asm/non_matchings/code_80004740",
-    "asm/non_matchings/staff_ghosts", "asm/non_matchings/code_80005FD0",
-    "asm/non_matchings/code_8001C4D0", "asm/non_matchings/code_8001F980",
-    "asm/non_matchings/code_80027040", "asm/non_matchings/code_80027D00",
-    "asm/non_matchings/code_800393C0", "asm/non_matchings/code_8003DC40",
-    "asm/non_matchings/code_80040E50", "asm/non_matchings/code_800431B0",
-    "asm/non_matchings/code_80057C60", "asm/non_matchings/code_8006E9C0",
-    "asm/non_matchings/code_80071F00", "asm/non_matchings/code_80086E70",
-    "asm/non_matchings/code_8008C1D0", "asm/non_matchings/code_80091750",
-    "asm/non_matchings/menus"
-    ]
+    "asm/non_matchings/code_80004740",
+    "asm/non_matchings/code_80005FD0",
+    "asm/non_matchings/code_8001F980",
+    "asm/non_matchings/code_80027D00",
+    "asm/non_matchings/code_800431B0",
+    "asm/non_matchings/code_80057C60",
+    "asm/non_matchings/code_8006E9C0",
+    "asm/non_matchings/code_80071F00",
+    "asm/non_matchings/code_80086E70",
+    "asm/non_matchings/code_8008C1D0",
+    "asm/non_matchings/code_80091750",
+    "asm/non_matchings/crash_screen",
+    "asm/non_matchings/menus",
+    "asm/non_matchings/staff_ghosts",
+]
 seg2Files2 = [
-    "asm/non_matchings/code_8028DF00", "asm/non_matchings/code_80290C20",
-    "asm/non_matchings/code_actors", "asm/non_matchings/code_802A3730",
-    "asm/non_matchings/memory", "asm/non_matchings/code_802B0210",
-    "asm/non_matchings/math_util"
+    "asm/non_matchings/actors",
+    "asm/non_matchings/math_util",
+    "asm/non_matchings/memory",
+    "asm/non_matchings/race_logic",
+    "asm/non_matchings/render_courses",
+    "asm/non_matchings/skybox",
 ]
 seg3Files2 = [
-    "asm/non_matchings/code_80280000", "asm/non_matchings/code_80280650",
-    "asm/non_matchings/code_80281610", "asm/non_matchings/code_80281780",
-    "asm/non_matchings/code_80281C40", "asm/non_matchings/code_80281FA0"
+    "asm/non_matchings/code_80280650",
+    "asm/non_matchings/code_80281FA0",
 ]
 audioFiles2 = [
     "asm/non_matchings/audio"
@@ -148,35 +153,54 @@ audio = 0
 libultra = 0
 
 mainSegFiles = [
-    "build/us/src/main",          "build/us/src/code_800029B0",
-    "build/us/src/profiler",      "build/us/src/crash_screen",
-    "build/us/src/code_80004740", "build/us/src/staff_ghosts",
+    "build/us/src/code_800029B0",
+    "build/us/src/code_80004740",
     "build/us/src/code_80005FD0",
-    "build/us/src/code_8001C4D0", "build/us/src/code_8001F980",
-    "build/us/src/code_80027040", "build/us/src/code_80027D00",
-    "build/us/src/code_800393C0", "build/us/src/code_8003DC40",
-    "build/us/src/gbiMacro",      "build/us/src/code_80040E50",
-    "build/us/src/code_800431B0", "build/us/src/code_80057C60",
-    "build/us/src/code_8006E9C0", "build/us/src/code_80071F00",
-    "build/us/src/code_80086E70", "build/us/src/code_8008C1D0",
-    "build/us/src/code_80091750", "build/us/src/code_800AF9B0"
-    ]
+    "build/us/src/code_8001F980",
+    "build/us/src/code_80027D00",
+    "build/us/src/code_800431B0",
+    "build/us/src/code_80057C60",
+    "build/us/src/code_8006E9C0",
+    "build/us/src/code_80071F00",
+    "build/us/src/code_80086E70",
+    "build/us/src/code_8008C1D0",
+    "build/us/src/code_80091750",
+    "build/us/src/code_800AF9B0",
+    "build/us/src/crash_screen",
+    "build/us/src/gbiMacro",
+    "build/us/src/kart_dma",
+    "build/us/src/main",
+    "build/us/src/math_util_2",
+    "build/us/src/profiler",
+    "build/us/src/spawn_players",
+    "build/us/src/staff_ghosts",
+]
 seg2Files = [
-    "build/us/src/code_8028DF00", "build/us/src/code_80290C20",
-    "build/us/src/code_80296A50", "build/us/src/code_802A3730",
-    "build/us/src/memory", "build/us/src/code_802B0210",
-    "build/us/src/math_util"
+    "build/us/src/actors",
+    "build/us/src/actors_extended",
+    "build/us/src/math_util",
+    "build/us/src/memory",
+    "build/us/src/race_logic",
+    "build/us/src/render_courses",
+    "build/us/src/skybox_and_splitscreen",
 ]
 seg3Files = [
-    "build/us/src/code_80280000", "build/us/src/code_80280650",
-    "build/us/src/code_80281610", "build/us/src/code_80281780",
-    "build/us/src/code_80281C40", "build/us/src/code_80281FA0"
+    "build/us/src/camera_junk",
+    "build/us/src/code_80280000",
+    "build/us/src/code_80280650",
+    "build/us/src/code_80281780",
+    "build/us/src/code_80281C40",
+    "build/us/src/code_80281FA0",
 ]
 segAudioFiles = [
-    "build/us/src/audio/synthesis", "build/us/src/audio/heap",
-    "build/us/src/audio/load", "build/us/src/audio/playback",
-    "build/us/src/audio/effects", "build/us/src/audio/seqplayer",
-    "build/us/src/audio/external", "build/us/src/audio/port_eu"
+    "build/us/src/audio/effects",
+    "build/us/src/audio/external",
+    "build/us/src/audio/heap",
+    "build/us/src/audio/load",
+    "build/us/src/audio/playback",
+    "build/us/src/audio/port_eu",
+    "build/us/src/audio/seqplayer",
+    "build/us/src/audio/synthesis",
 ]
 
 for line in mapFile:

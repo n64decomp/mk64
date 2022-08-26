@@ -9,6 +9,9 @@ typedef s16 Vec3s[3];
 typedef u16 Vec3su[3];
 typedef s16 Vec4s[4];
 
+typedef f32 Mat3[3][3];
+typedef f32 Mat4[4][4];
+
 #define COURSE_NULL 0xFF
 
 typedef enum {
@@ -293,7 +296,7 @@ typedef struct {
     /* 0x010E */ char unk_10E[0x2];
     /* 0x0110 */ UnkActorInner unk_110;
     /* 0x0150 */ f32 unk_150[9];
-    /* 0x0174 */ f32 unk_174[9];
+    /* 0x0174 */ Mat3 unk_174;
     /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];
     /* 0x01F8 */ f32 unk_1F8;
     /* 0x01FC */ f32 unk_1FC;

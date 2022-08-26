@@ -2,6 +2,7 @@
 #define CODE_80027D00_H
 
 #include "common_structs.h"
+#include "camera.h"
 
 /* Function Prototypes */
 
@@ -16,6 +17,7 @@ void func_800291F8();
 void func_80029200(Player*, s8);
 void func_8002934C(Player*, Camera*, s8, s8);
 void func_8002A5F4(Vec3f, f32, Vec3f, f32, f32);
+void func_8002AA50(Player*);
 void func_8002AAC0(Player*);
 void func_8002AB70(Player*);
 void func_8002AE20();
@@ -34,6 +36,10 @@ void func_80032D94(Player*);
 void func_80033280(Player*, f32);
 void func_80033850(Player*, f32);
 void func_80036C5C(Player*);
+void func_80037614(Player*, Vec3f, Vec3f);
+void func_8003777C(Player*, Vec3f, Vec3f);
+void func_800378E8(Player*, Vec3f, Vec3f);
+void func_80037A4C(Player*, Vec3f, Vec3f);
 void func_80038BE4(Player*, s16);
 
 /* This is where I'd put my static data, if I had any */

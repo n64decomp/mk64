@@ -3,6 +3,7 @@
 #include <types.h>
 #include <common_structs.h>
 #include "main.h"
+#include "variables.h"
 #include "code_8001F980.h"
 #include "code_80280650.h"
 
