@@ -4,18 +4,10 @@
 #include "memory.h"
 #include "waypoints.h"
 #include "framebuffers.h"
-#include "code_80027040.h"
+#include "kart_dma.h"
+#include "camera.h"
 #include "code_80027D00.h"
-
-extern s16 D_80165560[];
-extern s32* D_800E3C50[];
-extern u16* D_800E3890[];
-extern s16 D_80165340;
-
-extern Camera *camera1;
-extern Camera *camera2;
-extern Camera *camera3;
-extern Camera *camera4;
+#include "spawn_players.h"
 
 void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, f32 arg5, u16 arg6, s16 arg7) {
     f32 ret;
@@ -1011,7 +1003,7 @@ void func_8003CD78(void) {
     func_8003BE30();
 }
 
-void func_8003CD98(Player *player, struct Camera *camera, s8 arg2, s8 arg3) {
+void func_8003CD98(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     if (player->unk_000 & PLAYER_EXISTS) {
         if (arg3 == 0) {
             func_8002D268(player, camera, arg3, arg2);
@@ -1206,4 +1198,3 @@ void func_8003DB5C(void) {
         func_80027A20(player, i, 1, 1);
     }
 }
-

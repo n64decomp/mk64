@@ -3,35 +3,11 @@
 #include <common_structs.h>
 #include <defines.h>
 #include <types.h>
-
-extern Gfx *gDisplayListHead;
-s32 func_80290C20(Camera *camera);
-void load_surface_map(s32, struct UnkStruct_800DC5EC *arg1);
-extern void func_802B5D64(u32, s16, s32, s32);
-extern s16 gCurrentCourseId;
-extern s32 gPrevLoadedAddress;
-extern s32 gActiveScreenMode;
-
-extern u16 sRenderedFramebuffer;
-extern uintptr_t *gPhysicalFramebuffers[];
-extern uintptr_t gSegmentTable[];
-
-extern void func_802AAAAC(Player *);
-extern Player gPlayers[];
-
-extern s32 D_8015F59C;
-extern s32 D_8015F5A0;
-
-extern s32 D_800DC5DC;
-extern s32 D_800DC5E0;
-extern s16 D_802B87D8;
-
-void func_80298C94(); // extern
-void func_802AF7B4(s32, s32, s32); // extern
-extern s32 D_802B87C4;
-extern s32 D_802B87C8;
-extern s32 D_802B87CC;
-void func_802A7658(s32, s32, s32, s32, u16*, u16*);
+#include "actors.h"
+#include "math_util.h"
+#include "memory.h"
+#include "code_80281780.h"
+#include "render_courses.h"
 
 s32 func_80290C20(Camera *camera) {
     if (camera->unk_54.unk34 == 0) {
@@ -45,16 +21,6 @@ s32 func_80290C20(Camera *camera) {
     }
     return 0;
 }
-
-void func_802AF5D8(u32, s8, s32); // extern
-extern s32 D_8015F5A4;
-
-struct Unk0CAC {
-    s32 unk0;
-    u8 unk4;
-    u8 unk5;
-    u16 unk6;
-};
 
 void func_80290CAC(uintptr_t arg0) {
     s32 segment = SEGMENT_NUMBER2(arg0);
@@ -217,8 +183,6 @@ GLOBAL_ASM("asm/non_matchings/render_courses/load_surface_map.s")
 void func_80291198(void) {
     gSPDisplayList(gDisplayListHead++, 0x07001140);
 }
-
-extern s32 gScreenModeSelection;
 
 void func_802911C4(void) {
     if (gScreenModeSelection == SCREEN_MODE_1P) {
@@ -984,10 +948,6 @@ block_82:
 GLOBAL_ASM("asm/non_matchings/render_courses/func_8029122C.s")
 #endif
 
-void func_80291198();
-void func_802911C4();
-extern Gfx mario_raceway_dls[];
-
 void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     s32 pad;
     u16 sp22 = arg0->pathCounter;
@@ -1097,13 +1057,6 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, 0x07000160);
 }
 
-extern s32 D_801625EC;
-extern s32 D_801625F0;
-extern s32 D_801625F4;
-extern s16 D_802B87B0;
-extern s16 D_802B87B4;
-extern Gfx choco_mountain_dls[];
-
 void render_choco_mountain(struct UnkStruct_800DC5EC *arg0) {
     s32 pad[13];
 
@@ -1146,9 +1099,6 @@ void render_choco_mountain(struct UnkStruct_800DC5EC *arg0) {
 
 }
 
-extern s32 D_802B87BC;
-extern Gfx bowsers_castle_dls[];
-
 void render_bowsers_castle(struct UnkStruct_800DC5EC *arg0) {
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -1175,11 +1125,6 @@ void render_bowsers_castle(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, 0x07000248);
 }
 
-extern Gfx banshee_boardwalk_dls[];
-extern Gfx D_0600B278[];
-
-extern void mtxf_translate(Mat4 dest, Vec3f b);
-extern void func_802B4FF8(Mat4 arg0, s32 arg1);
 void render_banshee_boardwalk(struct UnkStruct_800DC5EC *arg0) {
     Camera *camera = arg0->camera;
     Mat4 spCC;
@@ -1231,8 +1176,6 @@ void render_banshee_boardwalk(struct UnkStruct_800DC5EC *arg0) {
     gDPPipeSync(gDisplayListHead++);
 }
 
-extern Gfx yoshi_valley_dls;
-
 void render_yoshi_valley(struct UnkStruct_800DC5EC *arg0) {
 
     gDPPipeSync(gDisplayListHead++);
@@ -1242,8 +1185,6 @@ void render_yoshi_valley(struct UnkStruct_800DC5EC *arg0) {
     load_surface_map(&yoshi_valley_dls, arg0);
     gDPPipeSync(gDisplayListHead++);
 }
-
-extern u8 frappe_snowland_dls[];
 
 void render_frappe_snowland(struct UnkStruct_800DC5EC *arg0) {
 
@@ -1261,8 +1202,6 @@ void render_frappe_snowland(struct UnkStruct_800DC5EC *arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     load_surface_map(&frappe_snowland_dls, arg0);
 }
-
-extern Gfx koopa_troopa_beach_dls[];
 
 void render_koopa_troopa_beach(struct UnkStruct_800DC5EC *arg0) {
 
@@ -1287,8 +1226,6 @@ void render_koopa_troopa_beach(struct UnkStruct_800DC5EC *arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPPipeSync(gDisplayListHead++);
 }
-
-extern Gfx royal_raceway_dls[];
 
 void render_royal_raceway(struct UnkStruct_800DC5EC *arg0) {
 
@@ -1315,8 +1252,6 @@ void render_royal_raceway(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, 0x070008A0);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
-
-extern Gfx luigi_raceway_dls[];
 
 void render_luigi_raceway(struct UnkStruct_800DC5EC *arg0) {
 
@@ -1462,17 +1397,6 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
 GLOBAL_ASM("asm/non_matchings/render_courses/render_moo_moo_farm.s")
 #endif
 
-extern s32 D_801625EC;
-extern s32 D_801625F0;
-extern s32 D_801625F4;
-extern s16 D_802B87B0;
-extern s16 D_802B87B4;
-extern s16 D_802B87D4;
-
-extern Gfx toads_turnpike_dls[];
-
-extern Lights1 D_800DC610[]; // Light data?
-
 void render_toads_turnpike(struct UnkStruct_800DC5EC *arg0) {
     s32 pad[13];
 
@@ -1497,8 +1421,6 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC *arg0) {
     gSPClearGeometryMode(gDisplayListHead++, G_FOG);
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 }
-
-extern u8 kalimari_desert_dls[];
 
 void render_kalimari_desert(struct UnkStruct_800DC5EC *arg0) {
 
@@ -1528,8 +1450,6 @@ void render_kalimari_desert(struct UnkStruct_800DC5EC *arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-extern u8 sherbet_land_dls[];
-
 void render_sherbet_land(struct UnkStruct_800DC5EC *arg0) {
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -1548,8 +1468,6 @@ void render_rainbow_road(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
-
-extern Gfx wario_stadium_dls[];
 
 void render_wario_stadium(struct UnkStruct_800DC5EC *arg0) {
     s16 prevFrame;
@@ -1651,10 +1569,6 @@ void render_double_deck(struct UnkStruct_800DC5EC *arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-extern s16 D_802B87D0;
-
-extern Gfx dks_jungle_parkway_dls[];
-
 void render_dks_jungle_parkway(struct UnkStruct_800DC5EC *arg0) {
 
     func_802B5D64(&D_800DC610, D_802B87D4, 0, 1);
@@ -1698,24 +1612,6 @@ void render_big_donut(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, 0x07000D20);
     gSPDisplayList(gDisplayListHead++, 0x07000230);
 }
-
-extern Gfx D_060071B0[];
-extern Gfx D_060076A0[];
-extern Gfx D_06009148[];
-extern Gfx D_06009348[];
-extern Gfx D_06009AE8[];
-extern Gfx D_0600B308[];
-extern Gfx D_0600CA78[];
-extern Gfx D_0600D8E8[];
-extern Gfx D_0600FD40[];
-extern Gfx D_06013C30[];
-extern Gfx D_06014088[];
-extern Gfx D_06016220[];
-extern Gfx D_06018020[];
-extern Gfx D_06018D68[];
-extern Gfx D_06022E00[];
-extern Gfx D_06023930[];
-extern Gfx D_sherbet_land_06000000[];
 
 void func_8029569C(void) {
     switch (gCurrentCourseId) {
@@ -1781,8 +1677,6 @@ void func_8029569C(void) {
             break;
     }
 }
-
-extern u16 D_800DC518;
 
 void func_80295A38(struct UnkStruct_800DC5EC *arg0) {
 
@@ -1870,24 +1764,6 @@ void func_80295BF8(s32 playerIndex) {
     player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceMapIndex   = 0x1388;
 }
 
-
-extern void func_802AF314(u16 *, s16 *, s16 *, s16 *);
-extern u16 D_8015F58A;
-
-extern s16 D_8015F700;
-extern s16 D_8015F702;
-extern f32 D_8015F8E8;
-extern f32 D_8015F8E4;
-
-extern s16 D_8015F6E8;
-extern s16 D_8015F6F0;
-extern s16 D_8015F6EA;
-extern s16 D_8015F6F2;
-extern s16 D_8015F6EE;
-extern u16 D_8015F588;
-
-#define ALIGNF(x) (((x) + 0xF) & ~0xF)
-
 void func_80295C6C(void) {
     gPrevLoadedAddress += ALIGNF(D_8015F588 * 0x2C);
     D_8015F6E8 += 20;
@@ -1895,60 +1771,19 @@ void func_80295C6C(void) {
     D_8015F6EA += -20;
     D_8015F6F2 += -20;
     D_8015F6EE += -20;
-    func_802AF314(&D_8015F6F0, &D_8015F6EA, &D_8015F6F2, &D_8015F6EE);
+    func_802AF314();
     gPrevLoadedAddress += ALIGNF(D_8015F58A * 2);
 }
-
-
-extern s16 D_8015F6F4;
-extern s16 D_8015F6F6;
 
 UNUSED void func_80295D50(s16 arg0, s16 arg1) {
     D_8015F6F4 = arg1;
     D_8015F6F6 = arg0;
 }
 
-extern s16 D_8015F6F4;
-extern s16 D_8015F6F6;
-
 void func_80295D6C(void) {
     D_8015F6F4 = 3000;
     D_8015F6F6 = -3000;
 }
-
-void func_802AAA70(uintptr_t);                                 /* extern */
-void func_802AF588(uintptr_t);                                 /* extern */
-void func_802AF5AC(uintptr_t, s8);                              /* extern */
-void func_802AF8BC(uintptr_t, s8, u8, u8, u8);                   /* extern */
-void func_802B5CAC(s16 arg0, s16 arg1, Vec3f arg2);
-
-extern Gfx D_060072D0[];
-extern Gfx D_060079A0[];
-extern Gfx D_060093D8[];
-extern Gfx D_06009650[];
-extern Gfx D_06009C20[];
-extern Gfx D_0600B458[];
-extern Gfx D_0600CC38[];
-extern Gfx D_0600DC28[];
-extern Gfx D_0600FF28[];
-extern Gfx D_06014338[];
-extern Gfx D_060144B8[];
-extern Gfx D_06016440[];
-extern Gfx D_06016558[];
-extern Gfx D_06018240[];
-extern Gfx D_06018FD8[];
-extern Gfx D_06023070[];
-extern Gfx D_06023B68[];
-extern Vec3f D_8015F590;
-extern u16 D_800DC5BC;                                     /* unable to generate initializer */
-extern s16 D_800DC5C8;                                     /* unable to generate initializer */
-extern s32 gGamestate;
-extern s32 gModeSelection;
-extern u16 gNumActors;
-extern s16 D_8015F6EC;
-extern s32 D_8015F58C;
-extern uintptr_t D_8015F580;
-extern s32 gCCSelection;
 
 void func_80295D88(void) {
     f32 phi_f10;

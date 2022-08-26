@@ -12,23 +12,22 @@
 #include "common_structs.h"
 #include <defines.h>
 #include "framebuffers.h"
+#include "camera.h"
+#include "profiler.h"
+#include "race_logic.h"
+#include "skybox_and_splitscreen.h"
+#include "code_800431B0.h"
+#include "code_8008C1D0.h"
+#include "code_80281780.h"
 
 // Declarations (not in this file)
-void func_8008C214(void);
 void func_80091B78(void);
-void func_802A4D18(void);
-void init_rdp(void);
-void set_viewport(void);
-void select_framebuffer(void);
-void init_z_buffer(void);
+
 void audio_init();
-void profiler_log_gfx_time(enum ProfilerGfxEvent eventID);
-void profiler_log_vblank_time(void);
+
 void create_debug_thread(void);
 void start_debug_thread(void);
 
-extern void func_80290B14();
-extern void func_80057A50(s32 arg0, s32 arg1, char arg2[8], s16 arg3);
 
 struct SPTask *create_next_audio_frame_task(void);
 
@@ -181,55 +180,6 @@ s16 sNumVBlanks = 0;
 UNUSED s16 D_800DC590 = 0;
 f32 gVBlankTimer = 0.0f;
 f32 gCourseTimer = 0.0f;
-
-
-extern u64 rspbootTextStart[], rspbootTextEnd[];
-extern u64 gspF3DEXTextStart[], gspF3DEXTextEnd[];
-extern u64 gspF3DLXTextStart[], gspF3DLXTextEnd[];
-extern u64 gspF3DEXDataStart[];
-extern u64 gspF3DLXDataStart[];
-
-extern u64 gGfxSPTaskOutputBuffer[];
-extern u32 gGfxSPTaskOutputBufferSize;
-
-extern u32 gPrevLoadedAddress;
-extern u32 D_8015F734;
-extern u8 _data_segment2SegmentRomStart[];
-extern u8 _data_segment2SegmentRomEnd[];
-extern u8 _common_texturesSegmentRomStart[];
-extern u8 _common_texturesSegmentRomEnd[];
-extern u8 _data_802BA370SegmentRomStart[];
-extern u32 gHeapEndPtr;
-extern u32 *D_801978D0; // Segment? Keeps track of segmented addresses?
-
-
-
-//extern u16 gFramebuffer0;
-//extern u16 gFramebuffer1;
-//extern u16 gFramebuffer2;
-
-extern s16 gCurrentlyLoadedCourseId;
-extern s16 gCurrentCourseId;
-
-extern u16 D_80164AF0;
-extern u16 D_800DC5FC;
-extern u16 gIsInQuitToMenuTransition;
-
-
-extern s32 D_8015F788;
-extern s16 D_801625E8;
-extern struct UnkStruct_800DC5EC *D_800DC5EC;
-
-
-extern Camera *camera1;
-extern Camera *camera2;
-extern Camera *camera3;
-extern Camera *camera4;
-
-extern u16 D_800DC5B0;
-extern s32 gPlayerWinningIndex;
-
-extern s32 gEnableResourceMeters;
 
 void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, void *sp, OSPri pri) {
     thread->next = NULL;
@@ -1160,12 +1110,12 @@ void thread5_game_loop(UNUSED void *arg) {
     set_vblank_handler(2, &gGameVblankHandler, &gGameVblankQueue, (OSMesg) OS_EVENT_SW2);
     // These variables track stats such as player wins.
     // In the event of a console reset, it remembers them.
-    gNmiUnknown1 = (s32) pAppNmiBuffer;
-    gNmiUnknown2 = (s32) pAppNmiBuffer + 2;
-    gNmiUnknown3 = (s32) pAppNmiBuffer + 11;
-    gNmiUnknown4 = (s32) pAppNmiBuffer + 23;
-    gNmiUnknown5 = (s32) pAppNmiBuffer + 25;
-    gNmiUnknown6 = (s32) pAppNmiBuffer + 28;
+    gNmiUnknown1 = &pAppNmiBuffer[0];  // 2  u8's, tracks number of times player 1/2 won a VS race
+    gNmiUnknown2 = &pAppNmiBuffer[2];  // 9  u8's, 3x3, tracks number of times player 1/2/3   has placed in 1st/2nd/3rd in a VS race
+    gNmiUnknown3 = &pAppNmiBuffer[11]; // 12 u8's, 4x3, tracks number of times player 1/2/3/4 has placed in 1st/2nd/3rd in a VS race
+    gNmiUnknown4 = &pAppNmiBuffer[23]; // 2  u8's, tracking number of Battle mode wins by player 1/2
+    gNmiUnknown5 = &pAppNmiBuffer[25]; // 3  u8's, tracking number of Battle mode wins by player 1/2/3
+    gNmiUnknown6 = &pAppNmiBuffer[28]; // 4  u8's, tracking number of Battle mode wins by player 1/2/3/4
     rendering_init();
     read_controllers();
     func_800C5CB8();

@@ -31,6 +31,8 @@ void func_80298328(Camera*, Mat4, struct PiranhaPlant*);
 void func_802986B4(Camera*, Mat4, struct Actor*);
 void func_80298AC0(Player*);
 void func_80298D7C(Camera*, Mat4, struct Actor*);
+void func_80298C94();
+void func_80298D10();
 void func_80299144(Camera*, Mat4, struct Actor*);
 void func_8029930C(Camera*, Mat4, struct Actor*);
 void func_802994D4(Camera*, Mat4, struct Actor*);
@@ -53,6 +55,7 @@ void update_obj_railroad_crossing(struct RailroadCrossing*);
 void update_obj_mario_raceway_sign(struct Actor*);
 void func_8029ABD4(Vec3f, s16);
 void func_8029AC18(Camera*, Mat4, struct Actor*);
+void func_8029AE14();
 void func_8029AE1C(Camera*, struct PaddleWheelBoat*, Mat4, u16);
 void func_8029B06C(Camera*, struct Actor*);
 void func_8029B2E4(Camera*, struct Actor*);
@@ -109,6 +112,13 @@ extern void func_800C9060(u8, s32);
 extern void func_800C90F4(u8, uintptr_t);
 extern void func_800C99E0(Vec3f, s32);
 extern void func_800C9D80(Vec3f, Vec3f, u32);
+
+extern s32 D_802BA050;
+extern s32 D_802BA054;
+extern s32 D_802BA058;
+extern struct Actor *D_802BA05C;
+extern s8 D_802BA060[512]; // tlut 256
+extern u16 D_802BA260;
 
 extern struct Actor gActorList[];
 extern Player gPlayers[];

@@ -2,28 +2,15 @@
 #include <PR/gu.h>
 #include <macros.h>
 #include "main.h"
+#include "math_util.h"
+#include "skybox_and_splitscreen.h"
+#include "code_800431B0.h"
+#include "code_80057C60.h"
+#include "code_80091750.h"
+#include "code_80280650.h"
+#include "code_80281C40.h"
+#include "code_80281FA0.h"
 
-extern Gfx *gDisplayListHead;
-
-struct UnkStruct80287560 {
-    s16 unk0;
-    s16 unk2;
-    s32 unk4;
-    s32 unk8;
-}; // 0xC
-
-extern struct UnkStruct80287560 D_80287560[];
-extern s32 D_802874FC;
-
-extern u32 gMenuSelectionFromEndingSequence;
-extern s32 D_80287554;
-extern u16 gIsInQuitToMenuTransition;
-extern Gfx D_00284F70[];
-extern Gfx D_00284EE0[];
-
-extern f32 D_80150148, D_8015014C, D_80150150;
-
-extern f32 D_80150130[];
 void func_80281C40(void) {
     s32 i;
 

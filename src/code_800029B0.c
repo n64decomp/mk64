@@ -5,9 +5,11 @@
 #include "waypoints.h"
 #include "actors.h"
 #include "actor_types.h"
+#include "math_util.h"
+#include "audio/external.h"
+#include "code_800029B0.h"
 #include <defines.h>
 
-extern void func_800C8F44(u16 arg0);
 extern u16 D_800DC5A8;
 
 extern struct Controller *gControllerOne[];
@@ -34,12 +36,8 @@ extern u32 D_8015F734;
 extern u32 gPrevLoadedAddress;
 extern s32 D_80150120;
 
-void func_800CA008(u8, u8);
-
 extern f32 D_8015F738, D_8015F748, D_8015F758, D_8015F768, D_8015F778;
 extern u32 *D_802B91C8;
-
-void vec3f_set(f32 *, f32, f32, f32);
 
 // gfx?
 extern u32 *D_0F04FE28;
@@ -77,7 +75,7 @@ struct UnkStruct_800DC5EC *D_800DC5F0 = &D_8015F480[1];
 struct UnkStruct_800DC5EC *D_800DC5F4 = &D_8015F480[2];
 struct UnkStruct_800DC5EC *D_800DC5F8 = &D_8015F480[3];
 u16 D_800DC5FC = 0;
-uintptr_t *pAppNmiBuffer = &osAppNmiBuffer;
+u8 *pAppNmiBuffer = &osAppNmiBuffer;
 s32 gIsMirrorMode = 0;
 f32 D_800DC608 =  1.0f;
 Lights1 D_800DC610[] = {

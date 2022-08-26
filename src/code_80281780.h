@@ -1,23 +1,25 @@
 #ifndef CODE_80281780_H
 #define CODE_80281780_H
 
-// variables found in code_80281780.c; not necessarily ones that belong there
-extern void func_802A4D18();
-extern void func_802A74BC();
-extern void load_course();
-extern u32 set_segment_base_addr();
+/* Function Prototypes */
+
+void func_80281780(void);
+s32 func_80281880(s32 arg0);
+void func_802818BC(void);
+void load_ending_sequence_royalraceway(void);
+
+
 extern int func_802AA88C();
-extern void func_802AF5AC();
-extern void func_80295C6C();
-extern void func_80281780();
-extern void func_802818BC();
-extern void func_8003D080();
-extern void func_8006E9C0();
-extern void func_8001C05C();
-extern void func_80280FB0();
-extern void func_802816B8();
+extern u32 set_segment_base_addr();
+extern void load_course();
+
 extern void func_80093E60();
-extern void *gHeapEndPtr;
+
+extern void func_802816B8();
+
+extern void func_80295C6C();
+
+extern void func_802A4D18();
 
 extern s16 gCurrentCourseId;
 extern u16 D_800DC5B4;
@@ -35,7 +37,6 @@ extern s32 D_80287554;
 extern f32 D_801647A4;
 extern f32 D_80150130[];
 
-extern s32 gPrevLoadedAddress;
 extern s32 D_8015F734;
 
 extern s32 D_8015F730;
@@ -44,9 +45,9 @@ extern f32 D_8015F8E4;
 extern s16 D_8015F6EA;
 extern s16 D_8015F6EE;
 extern s16 D_8015F6F2;
-extern u16 D_8015F6E8;
-extern u16 D_8015F6EC; // s16 or u16?
-extern u16 D_8015F6F0;
+extern s16 D_8015F6E8;
+extern s16 D_8015F6EC; // s16 or u16?
+extern s16 D_8015F6F0;
 extern s32 D_8015F59C;
 extern s32 D_8015F5A0;
 extern s32 D_8015F58C;

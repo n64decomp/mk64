@@ -119,7 +119,6 @@ void func_80075F98(Vec3f, s32, f32);
 void func_8007601C(s32);
 void func_80076194(s32, Vec3f, f32, s32);
 void func_80076538(s32);
-void func_80086604();
 void func_8007675C(s32, Vec3s, s32);
 void func_80076B7C();
 void func_80076DC4(s32);
@@ -133,6 +132,7 @@ void func_80077B3C(s32);
 void func_80077BCC(s32);
 void func_80078C68();
 void func_80078C70(s32);
+void func_80078F64();
 void func_80079054(s32);
 void func_80079084(s32);
 void func_800790B4(s32);
@@ -182,6 +182,7 @@ void func_80085080(s32);
 void func_80085534(s32);
 void func_80085BB4(s32);
 void func_80086424(s32);
+void func_80086604();
 void func_80086D80();
 
 // audio/external.c

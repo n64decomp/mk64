@@ -146,8 +146,6 @@ extern f32 D_800EF678;
 extern f32 D_800EF67C;
 extern u16 D_80152308;
 extern u16 D_8015F6F8;
-extern u16 gNearestWaypointByPlayerId[];
-extern u16 gWaypointCountByPathIndex;
 extern s16 D_80165190[4][8];
 extern f32 D_80165280[];
 extern s16 D_80165320[];
