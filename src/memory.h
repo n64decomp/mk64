@@ -43,7 +43,7 @@ struct AllocOnlyPool {
 s32   func_802A7B70(s32);
 uintptr_t set_segment_base_addr(s32, void*);
 void *get_segment_base_addr(s32);
-s32   lookup_item(u32);
+void *segmented_to_virtual(const void *);
 void  move_segment_table_to_dmem();
 void  func_802A7CF0(s32, s32);
 s32   func_802A7D1C(s32);

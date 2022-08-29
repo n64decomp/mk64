@@ -2,7 +2,7 @@ glabel func_8009A478
 /* 09B078 8009A478 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 09B07C 8009A47C AFBF001C */  sw    $ra, 0x1c($sp)
 /* 09B080 8009A480 AFB00018 */  sw    $s0, 0x18($sp)
-/* 09B084 8009A484 0C026455 */  jal   segmented_to_virtual_dupe
+/* 09B084 8009A484 0C026455 */  jal   segmented_to_virtual_dupe_dupe_2
 /* 09B088 8009A488 AFA50034 */   sw    $a1, 0x34($sp)
 /* 09B08C 8009A48C 3C048019 */  lui   $a0, %hi(D_8018DEE0) # $a0, 0x8019
 /* 09B090 8009A490 2484DEE0 */  addiu $a0, %lo(D_8018DEE0) # addiu $a0, $a0, -0x2120

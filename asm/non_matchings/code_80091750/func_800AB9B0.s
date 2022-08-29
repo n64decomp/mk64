@@ -29,7 +29,7 @@ glabel func_800AB9B0
 /* 0AC618 800ABA18 010A5821 */  addu  $t3, $t0, $t2
 /* 0AC61C 800ABA1C 3C04800E */  lui   $a0, %hi(D_800E7E20)
 /* 0AC620 800ABA20 008B2021 */  addu  $a0, $a0, $t3
-/* 0AC624 800ABA24 0C026455 */  jal   segmented_to_virtual_dupe
+/* 0AC624 800ABA24 0C026455 */  jal   segmented_to_virtual_dupe_dupe_2
 /* 0AC628 800ABA28 8C847E20 */   lw    $a0, %lo(D_800E7E20)($a0)
 /* 0AC62C 800ABA2C 8E040018 */  lw    $a0, 0x18($s0)
 /* 0AC630 800ABA30 00002825 */  move  $a1, $zero

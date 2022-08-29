@@ -50,7 +50,7 @@ glabel func_80092290
 /* 092F48 80092348 24160006 */  li    $s6, 6
 /* 092F4C 8009234C 24150100 */  li    $s5, 256
 .L80092350:
-/* 092F50 80092350 0C026455 */  jal   segmented_to_virtual_dupe
+/* 092F50 80092350 0C026455 */  jal   segmented_to_virtual_dupe_dupe_2
 /* 092F54 80092354 8E040000 */   lw    $a0, ($s0)
 /* 092F58 80092358 8FAE0044 */  lw    $t6, 0x44($sp)
 /* 092F5C 8009235C 8FC40000 */  lw    $a0, ($fp)

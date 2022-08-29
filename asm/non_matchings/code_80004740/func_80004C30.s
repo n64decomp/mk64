@@ -14,10 +14,10 @@ glabel func_80004C30
 /* 005860 80004C60 AFA60050 */  sw    $a2, 0x50($sp)
 /* 005864 80004C64 8CA4000C */  lw    $a0, 0xc($a1)
 /* 005868 80004C68 00A08025 */  move  $s0, $a1
-/* 00586C 80004C6C 0C0A9EF5 */  jal   lookup_item
+/* 00586C 80004C6C 0C0A9EF5 */  jal   segmented_to_virtual
 /* 005870 80004C70 A7A60052 */   sh    $a2, 0x52($sp)
 /* 005874 80004C74 AFA20040 */  sw    $v0, 0x40($sp)
-/* 005878 80004C78 0C0A9EF5 */  jal   lookup_item
+/* 005878 80004C78 0C0A9EF5 */  jal   segmented_to_virtual
 /* 00587C 80004C7C 8E040010 */   lw    $a0, 0x10($s0)
 /* 005880 80004C80 3C138016 */  lui   $s3, %hi(D_80162D7A) # $s3, 0x8016
 /* 005884 80004C84 26732D7A */  addiu $s3, %lo(D_80162D7A) # addiu $s3, $s3, 0x2d7a

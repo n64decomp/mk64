@@ -19,7 +19,7 @@ glabel func_800A08D8
 .L800A091C:
 /* 0A151C 800A091C 00077880 */  sll   $t7, $a3, 2
 /* 0A1520 800A0920 008F2021 */  addu  $a0, $a0, $t7
-/* 0A1524 800A0924 0C026449 */  jal   segmented_to_virtual
+/* 0A1524 800A0924 0C026449 */  jal   segmented_to_virtual_dupe
 /* 0A1528 800A0928 8C847AF8 */   lw    $a0, %lo(D_800E7AF8)($a0)
 /* 0A152C 800A092C 3C048015 */  lui   $a0, %hi(gDisplayListHead) # $a0, 0x8015
 /* 0A1530 800A0930 8C840298 */  lw    $a0, %lo(gDisplayListHead)($a0)

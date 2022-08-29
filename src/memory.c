@@ -46,8 +46,14 @@ void *get_segment_base_addr(s32 segment) {
     return (void *) (gSegmentTable[segment] | 0x80000000);
 }
 
-s32 lookup_item(u32 segment) {
-    return (gSegmentTable[segment >> 0x18] + (segment & 0xFFFFFF)) | 0x80000000;
+/**
+ * @brief converts an RSP segment + offset address to a normal memory address
+ */
+void *segmented_to_virtual(const void *addr) {
+    size_t segment = (uintptr_t) addr >> 24;
+    size_t offset = (uintptr_t) addr & 0x00FFFFFF;
+
+    return (void *) ((gSegmentTable[segment] + offset) | 0x80000000);
 }
 
 void move_segment_table_to_dmem(void) {
