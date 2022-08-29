@@ -31,7 +31,7 @@ glabel func_800AEDBC
 /* 0AFA28 800AEE28 AFA70018 */  sw    $a3, 0x18($sp)
 /* 0AFA2C 800AEE2C 000A5880 */  sll   $t3, $t2, 2
 /* 0AFA30 800AEE30 008B2021 */  addu  $a0, $a0, $t3
-/* 0AFA34 800AEE34 0C026455 */  jal   segmented_to_virtual_dupe_dupe_2
+/* 0AFA34 800AEE34 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 0AFA38 800AEE38 8C847E34 */   lw    $a0, %lo(D_800E7E34)($a0)
 /* 0AFA3C 800AEE3C 8FA70018 */  lw    $a3, 0x18($sp)
 /* 0AFA40 800AEE40 00002825 */  move  $a1, $zero

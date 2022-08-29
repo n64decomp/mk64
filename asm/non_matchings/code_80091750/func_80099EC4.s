@@ -295,7 +295,7 @@ glabel func_80099EC4
 
 /* 09AEF0 8009A2F0 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 09AEF4 8009A2F4 AFBF001C */  sw    $ra, 0x1c($sp)
-/* 09AEF8 8009A2F8 0C026455 */  jal   segmented_to_virtual_dupe_dupe_2
+/* 09AEF8 8009A2F8 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 09AEFC 8009A2FC AFB00018 */   sw    $s0, 0x18($sp)
 /* 09AF00 8009A300 8C440000 */  lw    $a0, ($v0)
 /* 09AF04 8009A304 00408025 */  move  $s0, $v0

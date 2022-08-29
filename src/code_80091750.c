@@ -528,7 +528,7 @@ void func_80092290(s32 arg0, s32 *arg1, s32 *arg2, s32 arg3) {
         temp_s4 = (((arg0 * 4) + (((s32) gGlobalTimer % 2) * 2)) - 6) * 0x10;
         phi_s0 = D_800E84C0;
         do {
-            temp_v0 = segmented_to_virtual_dupe_dupe_2(*phi_s0);
+            temp_v0 = segmented_to_virtual_dupe_2(*phi_s0);
             temp_a0 = *arg2;
             temp_a2 = temp_v0 + temp_s4;
             temp_a1 = 0x100 - temp_a0;
@@ -3761,7 +3761,7 @@ void *segmented_to_virtual_dupe(const void *addr) {
     return (void *) ((gSegmentTable[segment] + offset) + 0x80000000);
 }
 
-void *segmented_to_virtual_dupe_dupe_2(const void *addr) {
+void *segmented_to_virtual_dupe_2(const void *addr) {
     size_t segment = (uintptr_t) addr >> 24;
     size_t offset = (uintptr_t) addr & 0x00FFFFFF;
 
@@ -4259,7 +4259,7 @@ s32 func_8009A374(MkAnimation *arg0) {
     s32 phi_a1_2;
     MkAnimation *phi_a2;
 
-    temp_v0 = segmented_to_virtual_dupe_dupe_2(arg0);
+    temp_v0 = segmented_to_virtual_dupe_2(arg0);
     temp_a2 = temp_v0;
     phi_a1 = 0;
     phi_a1_2 = 0;
@@ -4329,7 +4329,7 @@ s32 func_8009A478(MkAnimation *arg0, s32 arg1) {
     struct_8018DEE0_entry *phi_v1;
     s32 phi_a3_2;
 
-    temp_v0 = segmented_to_virtual_dupe_dupe_2(arg0);
+    temp_v0 = segmented_to_virtual_dupe_2(arg0);
     temp_s0 = temp_v0;
     phi_a3 = 0;
     phi_a3_2 = 0;
@@ -4389,7 +4389,7 @@ void func_8009A594(s32 arg0, s32 arg1, MkAnimation *arg2) {
     MkTexture *temp_v0_2;
     s32 thing = arg1;
 
-    temp_v0 = segmented_to_virtual_dupe_dupe_2(arg2);
+    temp_v0 = segmented_to_virtual_dupe_2(arg2);
     temp_s0 = &D_8018DEE0[arg0];
     temp_s0->textureSequence = temp_v0;
     temp_s0->sequenceIndex = arg1;
@@ -4416,7 +4416,7 @@ void func_8009A640(s32 arg0, s32 arg1, s32 arg2, MkAnimation *arg3) {
     MkTexture *temp_a0;
     s32 thing = arg1;
 
-    temp_v0 = segmented_to_virtual_dupe_dupe_2(arg3);
+    temp_v0 = segmented_to_virtual_dupe_2(arg3);
     D_8018DEE0[arg0].textureSequence = temp_v0;
     D_8018DEE0[arg0].sequenceIndex = arg1;
     D_8018DEE0[arg0].frameCountDown = temp_v0[arg1].frame_length;
@@ -7228,7 +7228,7 @@ loop_3:
         return;
     case 0xD6:
         sp7C = var_ra;
-        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_dupe_2(*D_800E7D34));
+        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(*D_800E7D34));
         return;
     case 0xD7:
         var_v1_2 = D_800E7D0C;
@@ -7311,13 +7311,13 @@ loop_3:
     case 0x32:
         sp7C = var_ra;
         sp24 = type * 4;
-        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_dupe_2(D_800E8274[type]));
+        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E8274[type]));
         func_800996BC(segmented_to_virtual_dupe(*(&D_800E7CA8 + sp24)), 0);
         return;
     case 0xA0:
     case 0xA1:
         sp7C = var_ra;
-        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_dupe_2(D_800E80A0[type]));
+        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E80A0[type]));
         return;
     case 0x5D:
         var_ra->unk1C = 0x00000020;
@@ -7339,7 +7339,7 @@ loop_3:
     case 0x61:
     case 0x62:
         sp7C = var_ra;
-        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_dupe_2(D_800E7E34[*(&gCupCourseOrder - 0xBE + (var_ra->type * 2))]));
+        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E7E34[*(&gCupCourseOrder - 0xBE + (var_ra->type * 2))]));
         return;
     case 0x5E:
         sp7C = var_ra;
@@ -7356,7 +7356,7 @@ loop_3:
         sp7C = var_ra;
         temp_v0_5 = func_800B54C0((s32) gCupSelection, gCCSelection);
         var_ra->unk20 = temp_v0_5;
-        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_dupe_2(*(&D_800E7E20 + ((((s32) gCCSelection / 2) * 0x10) + -(temp_v0_5 * 4)))));
+        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(*(&D_800E7E20 + ((((s32) gCCSelection / 2) * 0x10) + -(temp_v0_5 * 4)))));
         var_ra->column = (s32) D_800E7268.unk0;
         var_ra->row = (s32) D_800E7268.unk2;
         return;
@@ -7451,7 +7451,7 @@ block_63:
         sp20 = var_v1_4;
         sp24 = var_a2;
         sp3C = type - 0xB1;
-        var_ra->D_8018DEE0_index = func_8009A478(segmented_to_virtual_dupe_dupe_2(var_a0), sp3C);
+        var_ra->D_8018DEE0_index = func_8009A478(segmented_to_virtual_dupe_2(var_a0), sp3C);
         func_800996BC(segmented_to_virtual_dupe(*(&D_800E7D54 + var_v1_4)), 0);
         func_80099184(segmented_to_virtual_dupe(*(&D_800E7FF0 + var_a2)));
         return;
@@ -7473,7 +7473,7 @@ block_63:
     case 0xE6:
         temp_v0_9 = gTimeTrialDataCourseIndex;
         sp7C = var_ra;
-        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_dupe_2(D_800E7E34[*(&gCupCourseOrder + (((temp_v0_9 / 4) * 8) + ((temp_v0_9 % 4) * 2)))]));
+        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E7E34[*(&gCupCourseOrder + (((temp_v0_9 / 4) * 8) + ((temp_v0_9 % 4) * 2)))]));
         var_ra->unk1C = (s32) gTimeTrialDataCourseIndex;
         func_800996BC(segmented_to_virtual_dupe(D_02004A0C), 0);
         func_8006EF60();
@@ -7509,7 +7509,7 @@ block_63:
         }
         sp7C = var_ra;
         sp20 = var_v1_5;
-        var_ra->D_8018DEE0_index = func_8009A478(segmented_to_virtual_dupe_dupe_2(var_a0_2), 0);
+        var_ra->D_8018DEE0_index = func_8009A478(segmented_to_virtual_dupe_2(var_a0_2), 0);
         func_800996BC(segmented_to_virtual_dupe(*(&D_800E7D54 + var_v1_5)), 0);
         break;
     }
@@ -12998,7 +12998,7 @@ void func_800A9710(struct_8018D9E0_entry *arg0) {
     if (phi_v0 != arg0->unk4) {
         arg0->unk4 = phi_v0;
         arg0 = arg0;
-        func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_dupe_2(D_800E7D34[phi_v0]));
+        func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E7D34[phi_v0]));
     }
 }
 #else
@@ -13774,19 +13774,19 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
     case 0:
         if ((*(&D_8018EDE8 + temp_v0) != 0) && (phi_a0 != 0)) {
             arg0->unk8 = 1;
-            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_dupe_2(gCharacterCelebrateAnimation[temp_a1]));
+            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(gCharacterCelebrateAnimation[temp_a1]));
             return;
         }
         sp30 = temp_a1;
         temp_v0_2 = random_int(0xC8, temp_a1);
         if (temp_v0_2 >= 0xC6) {
             arg0->unk8 = 4;
-            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_dupe_2(gCharacterSingleBlinkAnimation[temp_a1]));
+            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(gCharacterSingleBlinkAnimation[temp_a1]));
             return;
         }
         if (temp_v0_2 >= 0xC5) {
             arg0->unk8 = 5;
-            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_dupe_2(gCharacterDoubleBlinkAnimation[temp_a1]));
+            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(gCharacterDoubleBlinkAnimation[temp_a1]));
             return;
         }
     default:
@@ -13794,21 +13794,21 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
     case 1:
         if (*(&D_8018DEE4 + (arg0->D_8018DEE0_index * 0x18)) >= D_800E8440[temp_a1]) {
             arg0->unk8 = 2;
-            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_dupe_2(D_800E83A0[temp_a1]));
+            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E83A0[temp_a1]));
             return;
         }
         if ((*(&D_8018EDE8 + temp_v0) == 0) && (phi_a0 != 0)) {
             arg0->unk8 = 3;
             sp24 = temp_a1 * 4;
             temp_a0_2 = arg0->D_8018DEE0_index;
-            func_8009A594(temp_a0_2, D_800E8460[temp_a1] - *(&D_8018DEE4 + (temp_a0_2 * 0x18)), segmented_to_virtual_dupe_dupe_2(gCharacterDeselectAnimation[temp_a1]));
+            func_8009A594(temp_a0_2, D_800E8460[temp_a1] - *(&D_8018DEE4 + (temp_a0_2 * 0x18)), segmented_to_virtual_dupe_2(gCharacterDeselectAnimation[temp_a1]));
             return;
         }
         break;
     case 2:
         if ((*(&D_8018EDE8 + temp_v0) == 0) && (phi_a0 != 0)) {
             arg0->unk8 = 3;
-            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_dupe_2(gCharacterDeselectAnimation[temp_a1]));
+            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(gCharacterDeselectAnimation[temp_a1]));
             return;
         }
         break;
@@ -13816,14 +13816,14 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
         temp_a3 = &D_800E8460[temp_a1];
         if (*(&D_8018DEE4 + (arg0->D_8018DEE0_index * 0x18)) >= *temp_a3) {
             arg0->unk8 = 0;
-            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_dupe_2(D_800E8360[temp_a1]));
+            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E8360[temp_a1]));
             return;
         }
         if ((*(&D_8018EDE8 + temp_v0) != 0) && (phi_a0 != 0)) {
             arg0->unk8 = 1;
             sp20 = temp_a3;
             temp_a0_3 = arg0->D_8018DEE0_index;
-            func_8009A594(temp_a0_3, *temp_a3 - *(&D_8018DEE4 + (temp_a0_3 * 0x18)), segmented_to_virtual_dupe_dupe_2(gCharacterCelebrateAnimation[temp_a1]));
+            func_8009A594(temp_a0_3, *temp_a3 - *(&D_8018DEE4 + (temp_a0_3 * 0x18)), segmented_to_virtual_dupe_2(gCharacterCelebrateAnimation[temp_a1]));
             return;
         }
         break;
@@ -13831,7 +13831,7 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
     case 5:
         if ((*(&D_8018EDE8 + temp_v0) != 0) && (phi_a0 != 0)) {
             arg0->unk8 = 1;
-            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_dupe_2(gCharacterCelebrateAnimation[temp_a1]));
+            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(gCharacterCelebrateAnimation[temp_a1]));
             return;
         }
         if (temp_v1 == 4) {
@@ -13843,7 +13843,7 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
         }
         if (*(&D_8018DEE4 + (arg0->D_8018DEE0_index * 0x18)) >= phi_v0) {
             arg0->unk8 = 0;
-            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_dupe_2(*(D_800E8360 + phi_v1)));
+            func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(*(D_800E8360 + phi_v1)));
         }
         break;
     }
@@ -14009,7 +14009,7 @@ void func_800AAC18(struct_8018D9E0_entry *arg0) {
                 arg0->unk8 = 2;
                 arg0->row = (s32) temp_t0->unk2;
                 arg0 = arg0;
-                func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_dupe_2(D_800E8340[temp_a1]));
+                func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E8340[temp_a1]));
                 return;
             }
         default:
@@ -14337,7 +14337,7 @@ void func_800AB260(struct_8018D9E0_entry *arg0) {
 void func_800AB290(struct_8018D9E0_entry *arg0) {
     if (arg0->unk1C != gCupSelection) {
         arg0->unk1C = gCupSelection;
-        func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_dupe_2(D_800E7E34[gCupCourseOrder[gCupSelection][arg0->type - 0x5F]]));
+        func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[gCupSelection][arg0->type - 0x5F]]));
     }
 }
 
@@ -14607,7 +14607,7 @@ void func_800AB9B0(struct_8018D9E0_entry *arg0) {
         arg0->unk1C = (s32) temp_v0;
         temp_v0_2 = func_800B54C0((s32) gCupSelection, gCCSelection);
         arg0->unk20 = temp_v0_2;
-        func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_dupe_2(*(&D_800E7E20 + ((((s32) gCCSelection / 2) * 0x10) + -(s32) (temp_v0_2 * 4)))));
+        func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(*(&D_800E7E20 + ((((s32) gCCSelection / 2) * 0x10) + -(s32) (temp_v0_2 * 4)))));
         arg0->column = (s32) D_800E7268->unk0;
         arg0->row = (s32) D_800E7268->unk2;
     }
@@ -15602,7 +15602,7 @@ block_11:
                 sp38 = temp_a2;
                 if (find_8018D9E0_entry_dupe(0x000000B0)->unk4 >= 2) {
                     sp38 = temp_a2;
-                    func_8009A640(arg0->D_8018DEE0_index, 0, temp_a2, segmented_to_virtual_dupe_dupe_2(gCharacterCelebrateAnimation[temp_a1]));
+                    func_8009A640(arg0->D_8018DEE0_index, 0, temp_a2, segmented_to_virtual_dupe_2(gCharacterCelebrateAnimation[temp_a1]));
                     arg0->unk4 = 3;
                     temp_a0 = temp_a2 & 0xFF;
                     sp24 = temp_a0;
@@ -15616,7 +15616,7 @@ block_11:
     case 3:
         if (*(&D_8018DEE4 + (arg0->D_8018DEE0_index * 0x18)) >= D_800E8440[temp_a1]) {
             sp38 = temp_a2;
-            func_8009A640(arg0->D_8018DEE0_index, 0, temp_a2, segmented_to_virtual_dupe_dupe_2(D_800E83A0[temp_a1]));
+            func_8009A640(arg0->D_8018DEE0_index, 0, temp_a2, segmented_to_virtual_dupe_2(D_800E83A0[temp_a1]));
             arg0->unk4 = 4;
         }
         break;
@@ -16607,7 +16607,7 @@ void func_800AEDBC(struct_8018D9E0_entry *arg0) {
         arg0->unk1C = (s32) temp_v0;
         temp_v0_2 = gTimeTrialDataCourseIndex;
         arg0 = arg0;
-        func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_dupe_2(D_800E7E34[*(gCupCourseOrder + ((((s32) temp_v0_2 / 4) * 8) + (((s32) temp_v0_2 % 4) * 2)))]));
+        func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E7E34[*(gCupCourseOrder + ((((s32) temp_v0_2 / 4) * 8) + (((s32) temp_v0_2 % 4) * 2)))]));
         if (func_800B5B94() == 0) {
             func_800B6708();
             return;
@@ -16910,7 +16910,7 @@ void func_800AF270(struct_8018D9E0_entry *arg0) {
                 return;
             }
             arg0->unk4 = 3;
-            func_8009A640(arg0->D_8018DEE0_index, 0, sp30, segmented_to_virtual_dupe_dupe_2(gCharacterCelebrateAnimation[temp_v0]));
+            func_8009A640(arg0->D_8018DEE0_index, 0, sp30, segmented_to_virtual_dupe_2(gCharacterCelebrateAnimation[temp_v0]));
             func_800CA0B8();
             func_800C90F4(0, (sp30 * 0x10) + 0x29008007);
             func_800CA0A0();
@@ -16919,7 +16919,7 @@ void func_800AF270(struct_8018D9E0_entry *arg0) {
         break;
     case 3:
         if (*(&D_8018DEE4 + (arg0->D_8018DEE0_index * 0x18)) >= D_800E8440[temp_v0]) {
-            func_8009A640(arg0->D_8018DEE0_index, 0, sp30, segmented_to_virtual_dupe_dupe_2(D_800E83A0[temp_v0]));
+            func_8009A640(arg0->D_8018DEE0_index, 0, sp30, segmented_to_virtual_dupe_2(D_800E83A0[temp_v0]));
             arg0->unk4 = 4;
         }
         break;

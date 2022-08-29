@@ -110,7 +110,7 @@ void dma_copy_base_7fa3c0(u64*, size_t, void*);
 void func_80099110();
 void func_80099184(s32);
 void *segmented_to_virtual_dupe(const void*);
-void *segmented_to_virtual_dupe_dupe_2(const void*);
+void *segmented_to_virtual_dupe_2(const void*);
 Gfx *func_8009C204(Gfx*, MkTexture*, s32, s32, s32);
 void func_8009CA2C();
 void func_8009CA6C(s32);

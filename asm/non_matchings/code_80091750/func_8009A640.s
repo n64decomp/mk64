@@ -4,7 +4,7 @@ glabel func_8009A640
 /* 09B248 8009A648 AFA40028 */  sw    $a0, 0x28($sp)
 /* 09B24C 8009A64C AFA60030 */  sw    $a2, 0x30($sp)
 /* 09B250 8009A650 00E02025 */  move  $a0, $a3
-/* 09B254 8009A654 0C026455 */  jal   segmented_to_virtual_dupe_dupe_2
+/* 09B254 8009A654 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 09B258 8009A658 AFA5002C */   sw    $a1, 0x2c($sp)
 /* 09B25C 8009A65C 8FAE0028 */  lw    $t6, 0x28($sp)
 /* 09B260 8009A660 8FA5002C */  lw    $a1, 0x2c($sp)
