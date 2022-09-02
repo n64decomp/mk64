@@ -16,10 +16,10 @@ void func_802B0210(UnkActorInner *arg0, UnkActorInner *arg1) {
     arg1->unk36 = arg0->unk36;
     arg1->unk38 = arg0->unk38;
     arg1->unk3A = arg0->unk3A;
-    arg1->unk3C = arg0->unk3C;
-    arg1->unk40 = arg0->unk40;
+    arg1->unk3C[0] = arg0->unk3C[0];
+    arg1->unk3C[1] = arg0->unk3C[1];
+    arg1->unk3C[2] = arg0->unk3C[2];
 
-    arg1->unk44 = arg0->unk44;
     vec3f_copy(arg1->unk48, arg0->unk48);
     vec3f_copy(arg1->unk54, arg0->unk54);
     vec3f_copy(arg1->unk60, arg0->unk60);
@@ -755,13 +755,13 @@ void update_obj_banana(struct BananaActor *banana) {
         } else {
             func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
             banana->unk30.unk34 = 1;
-            if ((banana->unk30.unk34 != 0) && (banana->unk30.unk44 < 0.0f)) {
+            if ((banana->unk30.unk34 != 0) && (banana->unk30.unk3C[2] < 0.0f)) {
                 someOtherVelocity[0] = -banana->unk30.unk60[0];
                 someOtherVelocity[1] = -banana->unk30.unk60[1];
                 someOtherVelocity[2] = -banana->unk30.unk60[2];
-                banana->pos[0] += someOtherVelocity[0] * banana->unk30.unk44;
-                banana->pos[1] += someOtherVelocity[1] * banana->unk30.unk44;
-                banana->pos[2] += someOtherVelocity[2] * banana->unk30.unk44;
+                banana->pos[0] += someOtherVelocity[0] * banana->unk30.unk3C[2];
+                banana->pos[1] += someOtherVelocity[1] * banana->unk30.unk3C[2];
+                banana->pos[2] += someOtherVelocity[2] * banana->unk30.unk3C[2];
                 banana->flags &= ~0x1000;
                 banana->state = 4;
             }
@@ -1233,7 +1233,7 @@ void update_obj_green_shell(struct ShellActor *shell) {
         shell->pos[2] += shell->velocity[2];
         func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], somePos2[0], somePos2[1], somePos2[2]);
         func_802B4E30((struct Actor *) shell);
-        if ((shell->unk30.unk3C < 0.0f) || (shell->unk30.unk40 < 0.0f)) {
+        if ((shell->unk30.unk3C[0] < 0.0f) || (shell->unk30.unk3C[1] < 0.0f)) {
             func_802AC098(&shell->unk30, shell->velocity);
             func_800C98B8(shell->pos, shell->velocity, 0x19008054U);
             shell->flags |= 0x80;
@@ -1450,11 +1450,11 @@ s16 func_802B3FD0(Player *owner, struct ShellActor *shell) {
 }
 
 void func_802B4104(struct ShellActor *shell) {
-    if ((shell->unk30.unk3C < 0.0f) && ((shell->unk30.unk48[1] < 0.25f) || (shell->unk30.unk48[1] > -0.25f))) {
+    if ((shell->unk30.unk3C[0] < 0.0f) && ((shell->unk30.unk48[1] < 0.25f) || (shell->unk30.unk48[1] > -0.25f))) {
         func_8029FDC8((struct Actor *) shell);
         func_800C98B8(shell->pos, shell->velocity, 0x19008054U);
         shell->flags |= 0x80;
-    } else if ((shell->unk30.unk40 < 0.0f) && ((shell->unk30.unk54[1] < 0.25f) || (shell->unk30.unk54[1] < -0.25f))) {
+    } else if ((shell->unk30.unk3C[1] < 0.0f) && ((shell->unk30.unk54[1] < 0.25f) || (shell->unk30.unk54[1] < -0.25f))) {
         func_8029FDC8((struct Actor *) shell);
         func_800C98B8(shell->pos, shell->velocity, 0x19008054U);
         shell->flags |= 0x80;
@@ -1735,19 +1735,19 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
 }
 
 void func_802B4E30(struct Actor *arg0) {
-    if ((arg0->unk30.unk44 < 0.0f) && (arg0->unk30.unk34 == 1)) {
-        arg0->pos[0] -= (arg0->unk30.unk60[0] * arg0->unk30.unk44);
-        arg0->pos[1] -= (arg0->unk30.unk60[1] * arg0->unk30.unk44);
-        arg0->pos[2] -= (arg0->unk30.unk60[2] * arg0->unk30.unk44);
+    if ((arg0->unk30.unk3C[2] < 0.0f) && (arg0->unk30.unk34 == 1)) {
+        arg0->pos[0] -= (arg0->unk30.unk60[0] * arg0->unk30.unk3C[2]);
+        arg0->pos[1] -= (arg0->unk30.unk60[1] * arg0->unk30.unk3C[2]);
+        arg0->pos[2] -= (arg0->unk30.unk60[2] * arg0->unk30.unk3C[2]);
     }
-    if ((arg0->unk30.unk3C < 0.0f) && (arg0->unk30.unk30 == 1)) {
-        arg0->pos[0] -= (arg0->unk30.unk48[0] * arg0->unk30.unk3C);
-        arg0->pos[1] -= (arg0->unk30.unk48[1] * arg0->unk30.unk3C);
-        arg0->pos[2] -= (arg0->unk30.unk48[2] * arg0->unk30.unk3C);
+    if ((arg0->unk30.unk3C[0] < 0.0f) && (arg0->unk30.unk30 == 1)) {
+        arg0->pos[0] -= (arg0->unk30.unk48[0] * arg0->unk30.unk3C[0]);
+        arg0->pos[1] -= (arg0->unk30.unk48[1] * arg0->unk30.unk3C[0]);
+        arg0->pos[2] -= (arg0->unk30.unk48[2] * arg0->unk30.unk3C[0]);
     }
-    if ((arg0->unk30.unk40 < 0.0f) && (arg0->unk30.unk32 == 1)) {
-        arg0->pos[0] -= (arg0->unk30.unk54[0] * arg0->unk30.unk40);
-        arg0->pos[1] -= (arg0->unk30.unk54[1] * arg0->unk30.unk40);
-        arg0->pos[2] -= (arg0->unk30.unk54[2] * arg0->unk30.unk40);
+    if ((arg0->unk30.unk3C[1] < 0.0f) && (arg0->unk30.unk32 == 1)) {
+        arg0->pos[0] -= (arg0->unk30.unk54[0] * arg0->unk30.unk3C[1]);
+        arg0->pos[1] -= (arg0->unk30.unk54[1] * arg0->unk30.unk3C[1]);
+        arg0->pos[2] -= (arg0->unk30.unk54[2] * arg0->unk30.unk3C[1]);
     }
 }

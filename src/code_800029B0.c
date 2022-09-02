@@ -15,7 +15,7 @@ extern u16 D_800DC5A8;
 extern struct Controller *gControllerOne[];
 
 extern s32 D_800DC510;
-extern s16 D_8015F6FE;
+extern u16 D_8015F6FE;
 extern s16 D_800DC5B8;
 extern u16 D_80152308;
 extern s32 D_802BA038;
@@ -37,25 +37,25 @@ extern u32 gPrevLoadedAddress;
 extern s32 D_80150120;
 
 extern f32 D_8015F738, D_8015F748, D_8015F758, D_8015F768, D_8015F778;
-extern u32 *D_802B91C8;
+extern Vec3f D_802B91C8;
 
 // gfx?
-extern u32 *D_0F04FE28;
-extern u32 *D_0F050118;
-extern u32 *D_0F051C54;
-extern u32 *D_0F051FD8;
-extern u32 *D_0F05232C;
-extern u32 *D_0F0526B8;
-extern u32 *D_0F052A20;
-extern u32 *D_0F052D3C;
-extern u32 *D_0F05300C;
-extern u32 *D_0F0532F8;
-extern u32 *D_0F05363C;
-extern u32 *D_0F053950;
-extern u32 *D_0F04F45C;
+extern s8 D_0F04F45C[];
+extern s8 D_0F04FE28[];
+extern s8 D_0F050118[];
+extern s8 D_0F051C54[];
+extern s8 D_0F051FD8[];
+extern s8 D_0F05232C[];
+extern s8 D_0F0526B8[];
+extern s8 D_0F052A20[];
+extern s8 D_0F052D3C[];
+extern s8 D_0F05300C[];
+extern s8 D_0F0532F8[];
+extern s8 D_0F05363C[];
+extern s8 D_0F053950[];
 
-extern u32 *D_06009570;
-extern u32 *D_06014330;
+extern struct ActorSpawnData D_06009570[];
+extern struct ActorSpawnData D_06014330[];
 
 extern f32 gCourseDirection;
 
@@ -177,33 +177,33 @@ void func_80002DAC(void) {
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             vec3f_set(&D_8015F748, -223.0f, 94.0f, -155.0f);
-            func_800C9D80(&D_8015F748, &D_802B91C8, 0x5103700B);
+            func_800C9D80(&D_8015F748, D_802B91C8, 0x5103700B);
             break;
         case COURSE_ROYAL_RACEWAY:
             vec3f_set(&D_8015F748, 177.0f, 87.0f, -393.0f);
-            func_800C9D80(&D_8015F748, &D_802B91C8, 0x5103700B);
+            func_800C9D80(&D_8015F748, D_802B91C8, 0x5103700B);
             break;
         case COURSE_LUIGI_RACEWAY:
             vec3f_set(&D_8015F748, 85.0f, 21.0f, -219.0f);
-            func_800C9D80(&D_8015F748, &D_802B91C8, 0x5103700B);
+            func_800C9D80(&D_8015F748, D_802B91C8, 0x5103700B);
             break;
         case COURSE_WARIO_STADIUM:
             vec3f_set(&D_8015F748, 298.0f, 202.0f, -850.0f);
-            func_800C9D80(&D_8015F748, &D_802B91C8, 0x5103700B);
+            func_800C9D80(&D_8015F748, D_802B91C8, 0x5103700B);
             vec3f_set(&D_8015F758, -1600.0f, 202.0f, -2430.0f);
-            func_800C9D80(&D_8015F758, &D_802B91C8, 0x5103700B);
+            func_800C9D80(&D_8015F758, D_802B91C8, 0x5103700B);
             vec3f_set(&D_8015F768, -2708.0f, 202.0f, 1762.0f);
-            func_800C9D80(&D_8015F768, &D_802B91C8, 0x5103700B);
+            func_800C9D80(&D_8015F768, D_802B91C8, 0x5103700B);
             vec3f_set(&D_8015F778, -775.0f, 202.0f, 1930.0f);
-            func_800C9D80(&D_8015F778, &D_802B91C8, 0x5103700B);
+            func_800C9D80(&D_8015F778, D_802B91C8, 0x5103700B);
             break;
         case COURSE_KOOPA_BEACH:
             vec3f_set(&D_8015F738, 153.0f, 0.0f, 2319.0f);
-            func_800C9D80(&D_8015F738, &D_802B91C8, 0x51028001);
+            func_800C9D80(&D_8015F738, D_802B91C8, 0x51028001);
             break;
         case COURSE_DK_JUNGLE:
             vec3f_set(&D_8015F738, -790.0f, -255.0f, -447.0f);
-            func_800C9D80(&D_8015F738, &D_802B91C8, 0x51028001);
+            func_800C9D80(&D_8015F738, D_802B91C8, 0x51028001);
             break;
         default:
             break;
@@ -236,8 +236,8 @@ void func_80003040(void) {
     destroy_all_actors();
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            func_802A84F4(&D_0F04F45C, 0x35B, 0x800);
-            place_segment_06(&D_06009570);
+            func_802A84F4(D_0F04F45C, 0x35B, 0x800);
+            place_segment_06(D_06009570);
             break;
         case COURSE_BOWSER_CASTLE:
             func_802AF8BC(0x7001350, 0x32, 0, 0, 0);
@@ -251,19 +251,19 @@ void func_80003040(void) {
             func_8029EC88(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
             break;
         case COURSE_MOO_MOO_FARM:
-            func_802A84F4(&D_0F04FE28, 0x3E8, 0x800);
-            func_802A84F4(&D_0F050118, 0x3E8, 0x800);
-            func_802A84F4(&D_0F051C54, 0x400, 0x800);
-            func_802A84F4(&D_0F051FD8, 0x400, 0x800);
-            func_802A84F4(&D_0F05232C, 0x400, 0x800);
-            func_802A84F4(&D_0F0526B8, 0x400, 0x800);
-            func_802A84F4(&D_0F052A20, 0x400, 0x800);
-            func_802A84F4(&D_0F052D3C, 0x400, 0x800);
-            func_802A84F4(&D_0F05300C, 0x400, 0x800);
-            func_802A84F4(&D_0F0532F8, 0x400, 0x800);
-            func_802A84F4(&D_0F05363C, 0x400, 0x800);
-            func_802A84F4(&D_0F053950, 0x400, 0x800);
-            place_segment_06(&D_06014330);
+            func_802A84F4(D_0F04FE28, 0x3E8, 0x800);
+            func_802A84F4(D_0F050118, 0x3E8, 0x800);
+            func_802A84F4(D_0F051C54, 0x400, 0x800);
+            func_802A84F4(D_0F051FD8, 0x400, 0x800);
+            func_802A84F4(D_0F05232C, 0x400, 0x800);
+            func_802A84F4(D_0F0526B8, 0x400, 0x800);
+            func_802A84F4(D_0F052A20, 0x400, 0x800);
+            func_802A84F4(D_0F052D3C, 0x400, 0x800);
+            func_802A84F4(D_0F05300C, 0x400, 0x800);
+            func_802A84F4(D_0F0532F8, 0x400, 0x800);
+            func_802A84F4(D_0F05363C, 0x400, 0x800);
+            func_802A84F4(D_0F053950, 0x400, 0x800);
+            place_segment_06(D_06014330);
             break;
         case COURSE_SHERBET_LAND:
             func_802AF8BC(0x7001EB8, -0x4C, 0xFF, 0xFF, 0xFF);

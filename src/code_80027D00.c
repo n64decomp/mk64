@@ -1435,7 +1435,7 @@ void func_8002AB70(Player *player) {
             move_f32_towards(&player->unk_DAC, 1.0f, 0.07f);
         }
     } else {
-        if (player->unk_110.unk44 >= 50.0f) {
+        if (player->unk_110.unk3C[2] >= 50.0f) {
             player->unk_DAC = 2.0f;
         }
         move_f32_towards(&player->unk_100, gKartGravityTable[player->characterId], 0.02f);
@@ -2137,7 +2137,7 @@ void func_8002C17C(Player *player, s8 playerId) {
     case 4:
         temp_v0_2 = playerId * 2;
         temp_v1 = temp_v0_2 + &D_80165330;
-        if ((player->unk_110.unk44 >= 600.0f) && (*temp_v1 == 0)) {
+        if ((player->unk_110.unk3C[2] >= 600.0f) && (*temp_v1 == 0)) {
             *temp_v1 = 1;
             *(&D_80165320 + temp_v0_2) = gNearestWaypointByPlayerId[playerId];
             *(&D_80165310 + temp_v0_2) = gPathIndexByPlayerId[playerId];
@@ -2204,7 +2204,7 @@ void func_8002C17C(Player *player, s8 playerId) {
     case 13:
         temp_v0_8 = playerId * 2;
         temp_v1_5 = temp_v0_8 + &D_80165330;
-        if ((player->unk_110.unk44 >= 600.0f) && (*temp_v1_5 == 0)) {
+        if ((player->unk_110.unk3C[2] >= 600.0f) && (*temp_v1_5 == 0)) {
             *temp_v1_5 = 1;
             *(&D_80165320 + temp_v0_8) = gNearestWaypointByPlayerId[playerId];
             *(&D_80165310 + temp_v0_8) = gPathIndexByPlayerId[playerId];
@@ -2286,10 +2286,10 @@ void func_8002C4F8(Player *player, s8 arg1) {
     if ((temp_v0_2 == 6) || (temp_v0_2 == 0x0010) || (temp_v0_2 == 0x000D)) {
         player->unk_0DE &= 0xFFF3;
     }
-    if ((player->boundingBoxSize < (*var_a2 - player->pos[1])) && (player->unk_110.unk44 >= 600.0f)) {
+    if ((player->boundingBoxSize < (*var_a2 - player->pos[1])) && (player->unk_110.unk3C[2] >= 600.0f)) {
         player->unk_0CA |= 1;
     }
-    if (player->unk_110.unk44 >= 600.0f) {
+    if (player->unk_110.unk3C[2] >= 600.0f) {
         player->unk_0CA |= 0x100;
     } else if ((player->unk_0BC & 8) != 8) {
         player->unk_0CA &= 0xFEFF;
@@ -2880,7 +2880,7 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     }
     player->unk_0BC |= 8;
     player->unk_0C2 += 1;
-    spA8 = player->unk_110.unk44;
+    spA8 = player->unk_110.unk3C[2];
     if (spA8 <= 0.0f) {
         temp_v0_7 = player->unk_0C2;
         temp_t4_2 = player->unk_0BC & ~2;
@@ -2937,7 +2937,7 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         player->unk_0C2 = 0;
         player->kartHopVelocity = (f32) player->unk_0C2;
     }
-    spA8 = player->unk_110.unk44;
+    spA8 = player->unk_110.unk3C[2];
     if (spA8 <= 0.0f) {
         func_8003F46C(player, &sp8C, &sp98, &sp178, &spA8, &spFC, &spF8, &spF4);
     }
@@ -3026,7 +3026,7 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
             player->unk_034[2] *= temp_f0_9;
         }
     }
-    if (player->unk_110.unk44 >= 500.0f) {
+    if (player->unk_110.unk3C[2] >= 500.0f) {
         player->unk_078 = (s16) ((s16) player->unk_078 / 2);
     }
     func_8002C4F8(player, arg3);
@@ -3216,7 +3216,7 @@ void func_8002E594(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     player->unk_058 = 0.0f;
     player->unk_060 = 0.0f;
     player->unk_05C = 1.0f;
-    sp74 = player->unk_110.unk44;
+    sp74 = player->unk_110.unk3C[2];
     if (sp74 <= 0.0f) {
         temp_t1 = player->unk_0BC & ~2;
         temp_t5 = temp_t1 & ~8;
@@ -3287,7 +3287,7 @@ block_63:
         }
         player->kartHopVelocity = (f32) player->unk_0C2;
     }
-    sp74 = player->unk_110.unk44;
+    sp74 = player->unk_110.unk3C[2];
     if (sp74 <= 0.0f) {
         func_8003F46C(player, &sp48, &sp54, &spE0, &sp74, &spD0, &spCC, &spC8);
     }
@@ -3595,7 +3595,7 @@ void func_8002F730(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     player->unk_05C = 1.0f;
     func_802B6540(sp4C, 0.0f, 1.0f, 0.0f, (s32) player->unk_02E);
     player->unk_0BC &= ~8;
-    sp78 = player->unk_110.unk44;
+    sp78 = player->unk_110.unk3C[2];
     if (sp78 <= 0.0f) {
         func_8003F46C(player, &sp5C, &sp68, &spE8, &sp78, &spCC, &spC8, &spC4);
     }
@@ -6461,7 +6461,7 @@ void func_80037CFC(Player *player, struct Controller *controller, u8 arg2) {
         temp_v0_2 = player->unk_0BC;
         if ((temp_v0_2 & 8) != 8) {
             func_80033AE0(player, controller, (s8) arg2);
-        } else if (((temp_v0_2 & 2) == 2) && (player->unk_110.unk44 <= 5.0f)) {
+        } else if (((temp_v0_2 & 2) == 2) && (player->unk_110.unk3C[2] <= 5.0f)) {
             func_80033AE0(player, controller, (s8) arg2);
         }
         temp_t4 = player->unk_0BC & ~1;
@@ -6950,7 +6950,7 @@ void func_80038C6C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     func_802B6540(sp50, 0.0f, 1.0f, 0.0f, (s32) player->unk_02E);
     player->unk_0BC |= 8;
     player->unk_0C2 += 1;
-    sp98 = player->unk_110.unk44;
+    sp98 = player->unk_110.unk3C[2];
     if (sp98 <= 0.0f) {
         player->unk_0C2 = 0;
         temp_t6 = player->unk_0BC & ~2;
@@ -6958,7 +6958,7 @@ void func_80038C6C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         player->unk_0BC = temp_t6 & ~8;
         player->kartHopVelocity = (f32) player->unk_0C2;
     }
-    sp98 = player->unk_110.unk44;
+    sp98 = player->unk_110.unk3C[2];
     if (sp98 <= 0.0f) {
         func_8003F46C(player, &sp7C, &sp88, &sp108, &sp98, &spEC, &spE8, &spE4);
     }
@@ -7018,7 +7018,7 @@ void func_80038C6C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
             player->unk_034[2] *= temp_f0_4;
         }
     }
-    if (player->unk_110.unk44 >= 500.0f) {
+    if (player->unk_110.unk3C[2] >= 500.0f) {
         player->unk_078 = (s16) ((s16) player->unk_078 / 2);
     }
     func_8002C4F8(player, arg3);

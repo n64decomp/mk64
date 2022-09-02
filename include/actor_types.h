@@ -128,18 +128,15 @@ struct FallingRock {
 
 struct ActorSpawnData {
     /* 0x00 */ Vec3s pos;
-    /* 0x06 */ u16 someId; // Usually populated, but not necessarily used by all actors types
+    union {
+        /* 0x06 */ u16 someId; // Usually populated, but not necessarily used by all actors types
+        /* 0x06 */ s16 signedSomeId;
+    };
 };
 
 // Required for func_80298AC0 due to diff size.
 // members unverified. data located at D_06013F78
 struct UnkActorSpawnData {
-    /* 0x00 */ Vec3s pos;
-    /* 0x06 */ s16 someId; // s16 required here.
-    /* 0x08 */ u16 unk8;
-};
-
-struct UnkActorSpawnData80298D10 {
     /* 0x00 */ Vec3s pos;
     /* 0x06 */ s16 someId; // Usually populated, but not necessarily used by all actors types
     /* 0x08 */ s16 unk8;

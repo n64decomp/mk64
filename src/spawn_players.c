@@ -131,7 +131,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->unk_10C = 0;
     player->unk_200 = 0;
     player->unk_204 = 0;
-    player->unk_220 = 0;
+    player->nearestWaypointId = 0;
     player->unk_228 = 0;
     player->unk_22A = 0;
     player->unk_234 = 0;
@@ -276,9 +276,9 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->boundingBoxCorners[  BACK_LEFT_TYRE].cornerGroundY = 0.0f;
     player->boundingBoxCorners[ BACK_RIGHT_TYRE].cornerGroundY = 0.0f;
 
-    player->unk_110.unk3C = 0.0f;
-    player->unk_110.unk40 = 0.0f;
-    player->unk_110.unk44 = 0.0f;
+    player->unk_110.unk3C[0] = 0.0f;
+    player->unk_110.unk3C[1] = 0.0f;
+    player->unk_110.unk3C[2] = 0.0f;
     player->unk_110.unk48[0] = 0.0f;
     player->unk_110.unk48[1] = 0.0f;
     player->unk_110.unk48[2] = 0.0f;

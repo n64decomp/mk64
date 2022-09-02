@@ -14,3 +14,4 @@
 "TEXT_.*" = "int"
 "OS_.*" = "int"
 "SEGMENT_.*" = "int"
+"ACTOR_.*" = "int"
