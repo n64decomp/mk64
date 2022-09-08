@@ -118,8 +118,8 @@ extern Gfx D_sherbet_land_06000000[];
 extern u16 D_800DC518;
 extern u16 D_8015F58A;
 
-extern s16 D_8015F700;
-extern s16 D_8015F702;
+extern u16 D_8015F700;
+extern u16 D_8015F702;
 extern f32 D_8015F8E8;
 extern f32 D_8015F8E4;
 
