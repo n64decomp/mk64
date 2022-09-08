@@ -182,7 +182,7 @@ glabel func_8000F628
 /* 0104F0 8000F8F0 AFAA00E8 */  sw    $t2, 0xe8($sp)
 /* 0104F4 8000F8F4 AFAB00E4 */  sw    $t3, 0xe4($sp)
 /* 0104F8 8000F8F8 AFAC00E0 */  sw    $t4, 0xe0($sp)
-/* 0104FC 8000F8FC 0C026455 */  jal   segmented_to_virtual_dupe
+/* 0104FC 8000F8FC 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 010500 8000F900 AFAD00DC */   sw    $t5, 0xdc($sp)
 /* 010504 8000F904 C4440000 */  lwc1  $f4, ($v0)
 /* 010508 8000F908 8FAA00E8 */  lw    $t2, 0xe8($sp)

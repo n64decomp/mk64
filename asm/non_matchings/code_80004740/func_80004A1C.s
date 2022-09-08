@@ -125,7 +125,7 @@ glabel func_80004A1C
 /* 0057E8 80004BE8 27190001 */  addiu $t9, $t8, 1
 /* 0057EC 80004BEC 10C0000B */  beqz  $a2, .L80004C1C
 /* 0057F0 80004BF0 AE190000 */   sw    $t9, ($s0)
-/* 0057F4 80004BF4 0C0A9EF5 */  jal   lookup_item
+/* 0057F4 80004BF4 0C0A9EF5 */  jal   segmented_to_virtual
 /* 0057F8 80004BF8 00C02025 */   move  $a0, $a2
 /* 0057FC 80004BFC 3C058015 */  lui   $a1, %hi(gDisplayListHead) # $a1, 0x8015
 /* 005800 80004C00 24A50298 */  addiu $a1, %lo(gDisplayListHead) # addiu $a1, $a1, 0x298

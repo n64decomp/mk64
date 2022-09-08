@@ -4791,25 +4791,25 @@ u8 gen_random_item(s16 arg0, s16 arg1) {
         temp_v0 = gPlayerCountSelection1;
         switch (temp_v0) {                          /* irregular */
         case 2:
-            sp18 = lookup_item((u32) &D_0D008790);
+            sp18 = segmented_to_virtual((u32) &D_0D008790);
 block_8:
             var_a1 = &D_801658FD;
             break;
         case 3:
-            sp18 = lookup_item(0x0D008858U);
+            sp18 = segmented_to_virtual(0x0D008858U);
             goto block_8;
         case 4:
-            sp18 = lookup_item(0x0D008984U);
+            sp18 = segmented_to_virtual(0x0D008984U);
             goto block_8;
         }
         var_v1 = *((arg0 * 0x64) + sp18 + *var_a1);
     } else if (temp_v1 == 3) {
-        var_v1 = *(D_801658FD + lookup_item((u32) &D_0D008B14));
+        var_v1 = *(D_801658FD + segmented_to_virtual((u32) &D_0D008B14));
     } else {
         if (arg1 == 0) {
-            var_v0 = lookup_item((u32) &D_0D008150);
+            var_v0 = segmented_to_virtual((u32) &D_0D008150);
         } else {
-            var_v0 = lookup_item(0x0D008470U);
+            var_v0 = segmented_to_virtual(0x0D008470U);
         }
         var_v1 = *((arg0 * 0x64) + var_v0 + D_801658FD);
     }

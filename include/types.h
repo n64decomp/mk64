@@ -46,17 +46,18 @@ struct Controller {
 };
 
 struct UnkStruct_800DC5EC {
-    struct Controller *controllers; // gControllers ptr 800F6910
-    Camera *camera; // Player camera ptr
-    Player *player; // Player ptr 800F6990
-    s32 unkC; // unk struct?
-    Vp viewport;
-    s32 pad[2];
-    u32 cameraHeight;
-    s16 screenWidth;
-    s16 screenHeight;
-    s16 screenStartX;
-    s16 screenStartY;
+    /* 0x00 */ struct Controller *controllers; // gControllers ptr 800F6910
+    /* 0x04 */ Camera *camera; // Player camera ptr
+    /* 0x08 */ Player *player; // Player ptr 800F6990
+    /* 0x0C */ s32 unkC; // unk struct?
+    /* 0x10 */ Vp viewport;
+    /* 0x20 */ s32 pad[2];
+    /* 0x28 */ s16 cameraHeight;
+    /* 0x2A */ s16 unk;
+    /* 0x2C */ s16 screenWidth;
+    /* 0x2F */ s16 screenHeight;
+    /* 0x30 */ s16 screenStartX;
+    /* 0x32 */ s16 screenStartY;
     s16 unk3C;
     s16 playerDirection;
     s16 pathCounter;
