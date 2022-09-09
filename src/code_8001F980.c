@@ -1162,7 +1162,7 @@ void func_800231D8(Player *player, s8 arg1) {
             if (((gNearestWaypointByPlayerId[arg1] >= 0x15) && (gNearestWaypointByPlayerId[arg1] < 0x2A))
             || ((gNearestWaypointByPlayerId[arg1] >= 0x14D) && (gNearestWaypointByPlayerId[arg1] < 0x15C))
             || ((gNearestWaypointByPlayerId[arg1] >= 0x1D1) && (gNearestWaypointByPlayerId[arg1] < 0x1E4))
-            || (player->unk_110.unk44 >= 500.0f)) {
+            || (player->unk_110.unk3C[2] >= 500.0f)) {
                 func_80022F14(player, arg1, 0x340000, 0.3f);
                 func_80023038(player, arg1, 0x4040, 0.3f);
                 D_80164B80[arg1] = 0;
@@ -1356,7 +1356,7 @@ void func_80023C84(Player *player, s8 arg1, s8 arg2) {
         || ((player->unk_0BC & 0x10000) == 0x10000)
         || ((player->unk_0BC & 8) == 8)) {
 
-        var_f2 = (f32) (1.0 - ((f64) player->unk_110.unk44 * 0.02));
+        var_f2 = (f32) (1.0 - ((f64) player->unk_110.unk3C[2] * 0.02));
         if (var_f2 < 0.0f) {var_f2 = 0.0f;}
         if (var_f2 > 1.0f) {var_f2 = 1.0f;}
         spB4[0] = player->unk_110.unk60[0];

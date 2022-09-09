@@ -10,7 +10,7 @@ glabel func_800996BC
 /* 09A2DC 800996DC AFB40028 */  sw    $s4, 0x28($sp)
 /* 09A2E0 800996E0 AFB30024 */  sw    $s3, 0x24($sp)
 /* 09A2E4 800996E4 AFB1001C */  sw    $s1, 0x1c($sp)
-/* 09A2E8 800996E8 0C026449 */  jal   segmented_to_virtual
+/* 09A2E8 800996E8 0C026449 */  jal   segmented_to_virtual_dupe
 /* 09A2EC 800996EC AFB00018 */   sw    $s0, 0x18($sp)
 /* 09A2F0 800996F0 8C4E0004 */  lw    $t6, 4($v0)
 /* 09A2F4 800996F4 00408025 */  move  $s0, $v0
