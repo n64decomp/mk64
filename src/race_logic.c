@@ -911,7 +911,7 @@ loop_2:
                 temp_s0->buttonPressed = 0;
                 func_800C9F90(1);
                 D_80162DF0 = 1;
-                if (gModeSelection == 1) {
+                if (gModeSelection == TIME_TRIALS) {
                     temp_a0 = gPlayerOne;
                     if (temp_a0->unk_000 & 0x8100) {
                         func_80005AE8(temp_a0);
@@ -1367,15 +1367,15 @@ void func_80290B14(void) {
     func_80059C50();
 
     switch(gActiveScreenMode) {
-        case 0:
+        case SCREEN_MODE_1P:
             func_8001EE98(gPlayerOneCopy, camera1, 0);
             break;
-        case 1:
-        case 2:
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             func_8001EE98(gPlayerOneCopy, camera1, 0);
             func_8001EE98(gPlayerTwoCopy, camera2, 1);
             break;
-        case 3:
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
             func_8001EE98(gPlayerOneCopy, camera1, 0);
             func_8001EE98(gPlayerTwo, camera2, 1);
             func_8001EE98(gPlayerThree, camera3, 2);

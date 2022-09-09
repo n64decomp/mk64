@@ -1436,7 +1436,7 @@ void func_8001F87C(s32 cameraId) {
     if (gActiveScreenMode == 0) {
         var_a1 = 0;
         var_a2 = gPlayerOne;
-        if (gModeSelection == 0) {
+        if (gModeSelection == GRAND_PRIX) {
 loop_3:
             temp_v0 = var_a2->unk_000;
             if (!(temp_v0 & 0x200) && !(temp_v0 & 0x80)) {

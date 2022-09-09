@@ -1442,7 +1442,7 @@ void func_80070780(void) {
     switch (temp_t6) {
     case 0:
         if (gGamestate != 9) {
-            if (gModeSelection == 0) {
+            if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
             var_s0 = &D_8018C630;
@@ -1655,7 +1655,7 @@ void func_80070780(void) {
         return;
     case 7:
         if (gGamestate != 9) {
-            if (gModeSelection == 0) {
+            if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
             var_s0_3 = &D_8018C630;
@@ -1673,7 +1673,7 @@ void func_80070780(void) {
         break;
     case 8:
         if (gGamestate != 9) {
-            if (gModeSelection == 0) {
+            if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
             D_80165898 = 0;

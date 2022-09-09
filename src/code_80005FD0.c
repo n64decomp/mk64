@@ -1686,7 +1686,7 @@ s32 func_800088D8(s32 arg0, s16 arg1, s16 arg2) {
     temp_t4 = temp_t0 + &D_80163150;
     *temp_t5 = -1;
     *temp_t4 = -1;
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         return 1;
     }
     if (var_a1 < 0) {
@@ -2046,7 +2046,7 @@ block_25:
                 if (temp_f0_2 < sp38) {
                     temp_t1 = *temp_v0_2 + 1;
                     *temp_v0_2 = temp_t1;
-                    if ((gModeSelection == 0) && (temp_t1 == 5)) {
+                    if ((gModeSelection == GRAND_PRIX) && (temp_t1 == 5)) {
                         var_v0 = gLapCountByPlayerId;
                         if (*(&D_80164408 + var_a3) == 7) {
                             do {
@@ -2095,7 +2095,7 @@ block_25:
     temp_v0_5 = player->unk_000;
     if (((temp_v0_5 & 0x4000) != 0) && ((temp_v0_5 & 0x1000) == 0)) {
         func_800065D0(playerId, player, &D_80163448);
-        if ((gModeSelection == 0) && (D_8018EDF3 == 2) && (playerId == 0)) {
+        if ((gModeSelection == GRAND_PRIX) && (D_8018EDF3 == 2) && (playerId == 0)) {
             if (D_80164408 < D_8016440C) {
                 D_80163478 = 0;
             } else {
@@ -5158,7 +5158,7 @@ void func_8000F628(void) {
         *spD0 = -1;
         *spCC = 0.0f;
         *spC8 = 0.0f;
-        if (gModeSelection == 0) {
+        if (gModeSelection == GRAND_PRIX) {
             temp_v0 = *(var_fp + D_80165270);
             *var_s4 = (s32) temp_v0;
             *var_s6 = (s32) temp_v0;
@@ -5272,7 +5272,7 @@ void func_8000F628(void) {
     if (D_800DC51C == 0) {
         var_v0 = &D_80163344;
         var_s0_2 = 0;
-        if (gModeSelection == 0) {
+        if (gModeSelection == GRAND_PRIX) {
             var_a0 = &D_80163348;
             do {
                 temp_t7 = *var_a0;
@@ -5293,7 +5293,7 @@ void func_8000F628(void) {
             var_s2_2 += 2;
             var_s2_2->unk-2 = 0;
         } while ((u32) var_s2_2 < (u32) &D_80163340);
-        if (gModeSelection == 2) {
+        if (gModeSelection == VERSUS) {
             temp_t6 = cameras->playerId;
             temp_v1_3 = temp_t6 & 0xFFFF;
             (&D_80163330)[temp_v1_3] = 1;
@@ -7151,14 +7151,14 @@ void func_800139E4(f32 arg0, f32 arg1, s32 arg2, s32 arg3, VehicleStuff *vehicle
             var_s0->someFlags = 0;
             var_s0->someFlagsTheSequel = 0;
             var_s0->position[2] = (f32) temp_v0->wayPointZ;
-            if (gModeSelection == 1) {
+            if (gModeSelection == TIME_TRIALS) {
                 var_s0->someType = (s16) (var_s3 % 3);
             } else {
                 var_s0->someType = random_int(3U);
             }
             temp_v0_2 = var_s0->someType;
             var_s0->someMultiplierTheSequel = (f32) ((f64) (f32) (temp_v0_2 - 1) * 0.6);
-            if (((gCCSelection > 0) || (gModeSelection == 1)) && (temp_v0_2 == 2)) {
+            if (((gCCSelection > 0) || (gModeSelection == TIME_TRIALS)) && (temp_v0_2 == 2)) {
                 var_s0->someMultiplier = arg0;
             } else {
                 var_s0->someMultiplier = arg1;
@@ -10536,7 +10536,7 @@ void func_8001A588(s32 arg0, Camera *camera, u16 *arg2, s8 arg3, s32 arg4) {
     void *temp_v0_7;
 
     var_s0 = camera->playerId;
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         var_s0 = 0;
     }
     func_80019FB4(arg4);
@@ -10578,7 +10578,7 @@ void func_8001A588(s32 arg0, Camera *camera, u16 *arg2, s8 arg3, s32 arg4) {
         if ((arg4 == 0) && ((temp_v0_4 = D_801646C8, (temp_v0_4 == 0x0000000A)) || (temp_v0_4 == 0x0000000B))) {
             func_8001A518((s32) var_s0, gPlayerPositions[var_s0], 0, arg4);
         }
-        if ((gModeSelection != 1) && (arg4 == 1) && ((temp_v0_5 = D_801646C8, (temp_v0_5 == 0x00000104)) || (temp_v0_5 == 0x00000105))) {
+        if ((gModeSelection != TIME_TRIALS) && (arg4 == 1) && ((temp_v0_5 = D_801646C8, (temp_v0_5 == 0x00000104)) || (temp_v0_5 == 0x00000105))) {
             var_v1 = 0;
             if (D_8018EDF3 == 2) {
                 func_8001A518((s32) var_s0, gPlayerPositions[var_s0], 1, arg4);

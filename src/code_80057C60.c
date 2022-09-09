@@ -648,7 +648,7 @@ void func_800590D4(void) {
         if (gModeSelection != BATTLE) {
             switch (gPlayerCountSelection1) {
                 case 1:
-                    if (gModeSelection != 1) {
+                    if (gModeSelection != TIME_TRIALS) {
                         func_8004E800(0);
                         break;
                     }
@@ -828,7 +828,7 @@ void func_80059560(s32 playerId) {
     struct_8018CA70_entry *temp_v0;
     struct_8018CA70_entry *temp_v0_2;
 
-    if (gModeSelection != 3) {
+    if (gModeSelection != BATTLE) {
         if ((D_801657F8 != 0) && (D_8018D188 != 0)) {
             temp_v0 = &D_8018CA70[playerId];
             sp3C = temp_v0;
@@ -1050,7 +1050,7 @@ void func_80059AC8(void) {
             case SCREEN_MODE_1P:
                 if (gGamestate != 9) {
                     func_80059A88(0);
-                    if (gModeSelection == 1) {
+                    if (gModeSelection == TIME_TRIALS) {
                         func_8005995C();
                     }
                 } else {
@@ -1623,7 +1623,7 @@ void func_8005AAF0(void) {
 }
 
 void func_8005AB20(void) {
-    if ((gModeSelection == 0) && (gPlayerCountSelection1 == 1)) {
+    if ((gModeSelection == GRAND_PRIX) && (gPlayerCountSelection1 == 1)) {
         func_8005AA6C(0x14);
     }
 }
@@ -2147,7 +2147,7 @@ block_76:
         phi_v0_3 = D_8018D1CC;
         break;
     case 0x2:
-        if (gModeSelection == 1) {
+        if (gModeSelection == TIME_TRIALS) {
             D_8018CA70->unk80 = 1;
         }
         D_8018CA70->unk_78 = 1;
@@ -2830,7 +2830,7 @@ void func_8005CB60(s32 playerId, s32 arg1) {
                 temp_s0->someTimer = (temp_s0 + (*temp_v1 * 4))->unk14;
             }
             phi_a2 = 1;
-            if (gModeSelection == 1) {
+            if (gModeSelection == TIME_TRIALS) {
                 temp_v0_2 = D_80165638;
                 temp_a0_2 = temp_s0->someTimer1;
                 if (temp_v0_2 >= temp_a0_2) {
@@ -2905,7 +2905,7 @@ void func_8005CB60(s32 playerId, s32 arg1) {
                     playerId = phi_a3;
                     func_80079084(phi_a3);
                     func_800C9060(playerId & 0xFF, 0x1900F015);
-                    if ((gCurrentCourseId == 8) && (D_80165898 == 0) && (gModeSelection != 1)) {
+                    if ((gCurrentCourseId == 8) && (D_80165898 == 0) && (gModeSelection != TIME_TRIALS)) {
                         D_80165898 = 1;
                     }
                 }
@@ -3009,7 +3009,7 @@ void func_8005D1F4(s32 playerId) {
     u16 temp_a0;
     ? *phi_a2;
 
-    if (gModeSelection == 2) {
+    if (gModeSelection == VERSUS) {
         temp_v1 = &D_8018CA70[playerId];
         temp_v1->unk_74 = 0;
         phi_a2 = &D_80163DE8;

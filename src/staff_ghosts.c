@@ -586,7 +586,7 @@ void func_80005B18(void) {
     {
       D_80162DEC = 100;
     }
-    if ((gModeSelection == 1) && (gActiveScreenMode == 0))
+    if ((gModeSelection == TIME_TRIALS) && (gActiveScreenMode == 0))
     {
       if ((D_80162DD4 == 0) && (gLapCountByPlayerId[1] != 3))
       {

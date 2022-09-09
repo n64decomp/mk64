@@ -90,10 +90,10 @@ f32 gKartGravityTable[] = {
 f32 D_800E2670[] = {
     0.12,      0.12,      0.12,      0.12,      0.12,      0.12,      0.12,      0.12,
 };
-f32 gKartTopSpeedTable[] = {
+f32 gKartTopSpeedTable[] = { // 0x800E2690
     9.0,       9.0,       9.0,       9.0,       9.0,       9.0,       9.0,       9.0,
 };
-f32 gKartBoundingBoxSizeTable[] = {
+f32 gKartBoundingBoxSizeTable[] = { // 0x800E26B0
     5.5,       5.5,       5.5,       5.5,       5.5,       6.0,       5.5,       6.0,
 };
 
@@ -244,7 +244,7 @@ f32 *D_800E2EB0[8] = {
 };
 
 // accel1  accel2  accel3  accel4  accel5 accel6  accel7  accel8 accel9 accel10
-f32 gKartAccelerationMario[] = {
+f32 gKartAccelerationMario[] = { // 0x800E2ED0
     2.0,    2.0,    2.0,    1.6,    1.4,    1.2,    1.0,    0.8,    0.6,    0.4,
 };
 f32 gKartAccelerationLuigi[] = {
@@ -385,7 +385,7 @@ f32 *D_800E3610[8] = {
 };
 
 //  Mario   Luigi   Yoshi   Toad    D.K.    Wario   Peach   Bowser
-f32 gKartHandlingTable[] = {
+f32 gKartHandlingTable[] = { // 0x800E3630
     1.25,   1.25,   1.28,   1.28,   1.15,   1.15,   1.28,   1.15,
 };
 f32 gKartTable800E3650[] = {
@@ -400,7 +400,7 @@ f32 gKartTurnSpeedReductionTable1[] = {
 f32 gKartTable800E36B0[] = {
     2.0,    2.0,    3.0,    3.0,    1.5,    1.5,    3.0,    3.0,
 };
-f32 gKartHopInitialVelocityTable[] = {
+f32 gKartHopInitialVelocityTable[] = { // 0x800E36D0
     0.93,   0.93,   0.93,   0.93,   0.93,   0.93,   0.93,   0.93,
 };
 f32 gKartHopJerkTable[] = {

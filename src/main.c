@@ -157,15 +157,15 @@ u16 D_800DC51C = 0;
 u16 gEnableDebugMode = 0;
 s32 gGamestateNext = 7; // = COURSE_DATA_MENU?;
 UNUSED s32 D_800DC528 = 1;
-s32 gActiveScreenMode = SCREEN_MODE_1P;
-s32 gScreenModeSelection = 0;
+s32 gActiveScreenMode = SCREEN_MODE_1P;// 0x800DC52C
+s32 gScreenModeSelection = 0; // 0x800DC530
 UNUSED s32 D_800DC534  = 0;
 s32 gPlayerCountSelection1 = 2; // 0x800DC538
 
-s32 gModeSelection = GRAND_PRIX;
+s32 gModeSelection = GRAND_PRIX; // 0x800DC53C
 s32 D_800DC540 = 0;
 s32 D_800DC544 = 0;
-s32 gCCSelection = CC_50;
+s32 gCCSelection = CC_50; // 0x800DC548
 s32 gGlobalTimer = 0;
 UNUSED s32 D_800DC550 = 0;
 UNUSED s32 D_800DC554 = 0;
@@ -178,8 +178,8 @@ s32 D_800DC568 = 0;
 s32 D_800DC56C[8] = {0};
 s16 sNumVBlanks = 0;
 UNUSED s16 D_800DC590 = 0;
-f32 gVBlankTimer = 0.0f;
-f32 gCourseTimer = 0.0f;
+f32 gVBlankTimer = 0.0f; // 0x800DC594
+f32 gCourseTimer = 0.0f; // 0x800DC598
 
 void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, void *sp, OSPri pri) {
     thread->next = NULL;
@@ -270,6 +270,7 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->task.t.yield_data_size = 0xD00; /* Not equal to OS_YIELD_DATA_SIZE */
 }
 
+// 0x800008A4
 void init_controllers(void) {
     osCreateMesgQueue(&gSIEventMesgQueue, &gSIEventMesgBuf[0], ARRAY_COUNT(gSIEventMesgBuf));
     osSetEventMesg(OS_EVENT_SI, &gSIEventMesgQueue, (OSMesg) 0x33333333);
@@ -281,7 +282,7 @@ void init_controllers(void) {
     }
 }
 
-//0x80000934
+// 0x80000934
 void update_controller(s32 index) { 
     struct Controller *controller = &gControllers[index];
     u16 stick;
@@ -518,6 +519,7 @@ void game_init_clear_framebuffer(void) {
     clear_framebuffer(0);
 }
 
+// 0x8000142C
 void race_logic_loop(void) {
     s16 i;
     s32 pad;
@@ -819,6 +821,8 @@ void race_logic_loop(void) {
  * Note that the state doesn't flip-flop at random but is permanent
  * until the state changes (ie. Exit menus and start a race).
  */
+
+// 0x80001ED4
 void game_state_handler(void) {
     switch (gGamestate) {
         case 7:
@@ -847,6 +851,8 @@ void game_state_handler(void) {
     }
 }
 
+
+// 0x80001F78 
 void interrupt_gfx_sptask(void) {
     if (gActiveSPTask->task.t.type == M_GFXTASK) {
         gActiveSPTask->state = SPTASK_STATE_INTERRUPTED;
@@ -854,6 +860,7 @@ void interrupt_gfx_sptask(void) {
     }
 }
 
+// 0x80001FAC
 void receive_new_tasks(void) {
     s32 pad;
     struct SPTask *spTask;
@@ -994,6 +1001,7 @@ void handle_sp_complete(void) {
     };
 }
 
+// 0x800023E4
 void thread3_video(UNUSED void *arg0) {
     s32 i;
     u64 *framebuffer1;

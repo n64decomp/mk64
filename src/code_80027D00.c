@@ -2975,7 +2975,7 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         func_8008F5A4(player, arg3);
     }
     player->unk_074 = func_802ABE30(spFC, spF8, spF4, player->unk_110.unk3A);
-    if (((player->unk_000 & 0x4000) == 0x4000) && ((temp_v0_16 = gActiveScreenMode, (temp_v0_16 == 0)) || (temp_v0_16 == 2) || (temp_v0_16 == 1))) {
+    if (((player->unk_000 & 0x4000) == 0x4000) && (((gActiveScreenMode == 0)) || (gActiveScreenMode == 2) || (gActiveScreenMode == 1))) {
         func_80029B4C(player, spFC, spF8, spF4);
     } else {
         func_8002A194(player, spFC, spF8, spF4);
@@ -3600,7 +3600,7 @@ void func_8002F730(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         func_8003F46C(player, &sp5C, &sp68, &spE8, &sp78, &spCC, &spC8, &spC4);
     }
     player->unk_074 = func_802ABE30(spCC, spC8, spC4, player->unk_110.unk3A);
-    if (((player->unk_000 & 0x4000) == 0x4000) && ((temp_v0 = gActiveScreenMode, (temp_v0 == 0)) || (temp_v0 == 2) || (temp_v0 == 1))) {
+    if (((player->unk_000 & 0x4000) == 0x4000) && (((gActiveScreenMode == 0)) || (gActiveScreenMode == 2) || (gActiveScreenMode == 1))) {
         func_80029B4C(player, spCC, spC8, spC4);
     } else {
         func_8002A194(player, spCC, spC8, spC4);
@@ -6614,18 +6614,14 @@ void func_800382DC(void) {
     Player *temp_a0_3;
     Player *temp_a0_4;
     Player *temp_a0_5;
-    s32 temp_v0;
-    s32 temp_v0_2;
     u16 temp_v0_3;
     u16 temp_v0_4;
     u16 temp_v0_5;
     u16 temp_v0_6;
 
-    temp_v0 = gActiveScreenMode;
-    switch (temp_v0) {                              /* irregular */
+    switch (gActiveScreenMode) {                              /* irregular */
     case 0:
-        temp_v0_2 = gModeSelection;
-        switch (temp_v0_2) {                        /* switch 1; irregular */
+        switch (gModeSelection) {                        /* switch 1; irregular */
         case 0:                                     /* switch 1 */
             func_800381AC(gPlayerOne, gControllerOne, 0);
             return;

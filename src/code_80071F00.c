@@ -4883,7 +4883,7 @@ s32 func_8007B040(s32 objectIndex, s32 arg1) {
 
     var_a3 = 0;
     var_t3 = 0;
-    if (gModeSelection == 0) {
+    if (gModeSelection == GRAND_PRIX) {
         if (random_int(0x0064U) < 0x51) {
             temp_v0 = arg1 * 4;
             var_v1 = func_8007AF40((s32) *(&D_80164392 + temp_v0), *(&D_801643BA + temp_v0));
@@ -5863,7 +5863,7 @@ s16 func_8007C9F8(void) {
         return 0;
     }
     if (temp_v0 == 2) {
-        if (gModeSelection == 0) {
+        if (gModeSelection == GRAND_PRIX) {
             if (gPlayerPositions->unk0 < gPlayerPositions->unk4) {
                 return 0;
             }

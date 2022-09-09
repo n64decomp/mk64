@@ -4096,6 +4096,7 @@ block_89:
 GLOBAL_ASM("asm/non_matchings/actors/func_802A0450.s")
 #endif
 
+// 0x802A0D54
 void evaluate_player_collision(void) {
     struct Actor *temp_a1;
     s32 i, j;
