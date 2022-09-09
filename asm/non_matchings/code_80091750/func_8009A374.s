@@ -1,7 +1,7 @@
 glabel func_8009A374
 /* 09AF74 8009A374 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 09AF78 8009A378 AFBF0014 */  sw    $ra, 0x14($sp)
-/* 09AF7C 8009A37C 0C026455 */  jal   segmented_to_virtual_dupe
+/* 09AF7C 8009A37C 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 09AF80 8009A380 00000000 */   nop   
 /* 09AF84 8009A384 3C048019 */  lui   $a0, %hi(D_8018DEE0) # $a0, 0x8019
 /* 09AF88 8009A388 2484DEE0 */  addiu $a0, %lo(D_8018DEE0) # addiu $a0, $a0, -0x2120

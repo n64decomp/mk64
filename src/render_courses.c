@@ -13,10 +13,10 @@ s32 func_80290C20(Camera *camera) {
     if (camera->unk_54.unk34 == 0) {
         return 1;
     }
-    if ((camera->unk_54.unk30 == 1) && (camera->unk_54.unk3C < 3.0f)) {
+    if ((camera->unk_54.unk30 == 1) && (camera->unk_54.unk3C[0] < 3.0f)) {
         return 1;
     }
-    if ((camera->unk_54.unk32 == 1) && (camera->unk_54.unk40 < 3.0f)) {
+    if ((camera->unk_54.unk32 == 1) && (camera->unk_54.unk3C[1] < 3.0f)) {
         return 1;
     }
     return 0;

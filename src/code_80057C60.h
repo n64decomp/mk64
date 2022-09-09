@@ -76,6 +76,8 @@ void func_8005B914();
 
 void func_8005C360(f32);
 void func_8005C64C(s32);
+void func_8005C654(s32*);
+void func_8005C65C(s32);
 void func_8005C6B4(s8, s16*, s16*, s16*);
 void func_8005C728();
 void func_8005CB60(s32, s32);
@@ -84,6 +86,25 @@ void func_8005D0FC(s32);
 void func_8005D18C();
 void func_8005D1F4(s32);
 
+void func_8005D6C0(Player*);
+void func_8005D794(Player*, UnkPlayerStruct258*, f32, f32, f32, s8, s8);
+void func_8005D7D8(UnkPlayerStruct258*, s8, f32);
+void func_8005D800(UnkPlayerStruct258*, s32, s16);
+void func_8005D82C(UnkPlayerStruct258*, s32, s16);
+void func_8005D898(Player*, s16, s8, s8);
+void func_8005DAD0();
+void func_8005DAD8(UnkPlayerStruct258*, s16, s16, s16);
+void func_80060F50(Player*, s16, s8, s8);
+void func_80061094(Player*, s16, s8, s8);
+void func_80061130(Player*, s16, s8, s8);
+void func_800621BC(Player*, s16, s32, s8);
+void func_80062484(Player*, UnkPlayerStruct258*, s32);
+void func_800628C0(Player*, s8, s8, s8);
+void func_80062914(Player*, s8, s8, s8);
+void func_80062968(Player*, s8, s8, s8);
+void func_800629BC(Player*, s8, s8, s8);
+void func_80062A18(Player*, s8, s8, s8);
+void func_80062AA8(Player*, s8, s8, s8);
 void func_80062B18(f32*, f32*, f32*, f32, f32, f32, u16, u16);
 void func_80062F98(Player*, s16, s8, s8);
 
@@ -96,6 +117,7 @@ void func_800639DC(Player*, s16, s8, s8);
 void func_80063BD4(Player*, s16, s8, s8);
 void func_80063D58(Player*, s16, s8, s8);
 
+void func_80064184(Player*, s16, s8, s8);
 void func_800643A8(Player*, s16, s8, s8);
 void func_800647C8(Player*, s16, s8, s8);
 void func_800648E4(Player*, s16, s8, s8);
@@ -153,10 +175,30 @@ void func_8006E848(Player*, s8, s8);
 void func_8006E8C4(Player*, s8, s8);
 void func_8006E940(Player*, s8, s8);
 
-// skybox_and_splitscreen
-void func_802A3730(struct UnkStruct_800DC5EC*);
 
 
+extern s8 D_801657B2;
+extern s8 D_801657C8;
+extern s32 D_8018D22C;
+extern s32 gGamestate;
+extern u16 D_800DC51C;
+extern s16 D_80165730;
+extern s8 D_8018EDF3;
+extern s8 D_80165898;
+extern u16 D_8015F894;
+extern Gfx D_0D0076F8[];
+extern s8 D_801657E4;
+extern s8 D_801657E6;
+extern s32 D_8018D2AC;
+extern u16 D_800DC5B8;
+extern s8 D_801657F0;
+extern s8 D_80165800;
+extern s8 D_80165801;
+extern s8 D_801657B0;
+extern u8 D_801658FF;
+extern struct Controller *gControllerOne;
+extern s32 D_8018D214;
+extern s32 D_8018D2C8[];
 
 extern u16 gPlayerBalloonStatus[8][3]; // D_8018D5F0
 extern s16 gPlayerBalloonCount[];      // D_8018D8C0

@@ -16,7 +16,7 @@ glabel L800A1470
 /* 0A2070 800A1470 00057880 */  sll   $t7, $a1, 2
 /* 0A2074 800A1474 3C04800F */  lui   $a0, %hi(D_800E82C8) # 0x800f
 /* 0A2078 800A1478 008F2021 */  addu  $a0, $a0, $t7
-/* 0A207C 800A147C 0C026449 */  jal   segmented_to_virtual
+/* 0A207C 800A147C 0C026449 */  jal   segmented_to_virtual_dupe
 /* 0A2080 800A1480 8C8482C8 */   lw    $a0, %lo(D_800E82C8)($a0) # -0x7d38($a0)
 /* 0A2084 800A1484 3C048015 */  lui   $a0, %hi(gDisplayListHead) # $a0, 0x8015
 /* 0A2088 800A1488 8C840298 */  lw    $a0, %lo(gDisplayListHead)($a0)
@@ -31,7 +31,7 @@ glabel L800A14A8
 /* 0A20A8 800A14A8 0005C080 */  sll   $t8, $a1, 2
 /* 0A20AC 800A14AC 3C04800F */  lui   $a0, %hi(D_800E82C8) # 0x800f
 /* 0A20B0 800A14B0 00982021 */  addu  $a0, $a0, $t8
-/* 0A20B4 800A14B4 0C026449 */  jal   segmented_to_virtual
+/* 0A20B4 800A14B4 0C026449 */  jal   segmented_to_virtual_dupe
 /* 0A20B8 800A14B8 8C8482C8 */   lw    $a0, %lo(D_800E82C8)($a0) # -0x7d38($a0)
 /* 0A20BC 800A14BC 8E06000C */  lw    $a2, 0xc($s0)
 /* 0A20C0 800A14C0 8E070010 */  lw    $a3, 0x10($s0)

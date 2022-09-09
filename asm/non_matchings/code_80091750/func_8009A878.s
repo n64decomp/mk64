@@ -28,7 +28,7 @@ glabel func_8009A878
 /* 09B4DC 8009A8DC 8C4F0004 */  lw    $t7, 4($v0)
 .L8009A8E0:
 /* 09B4E0 8009A8E0 AE0F0008 */  sw    $t7, 8($s0)
-/* 09B4E4 8009A8E4 0C026449 */  jal   segmented_to_virtual
+/* 09B4E4 8009A8E4 0C026449 */  jal   segmented_to_virtual_dupe
 /* 09B4E8 8009A8E8 8C440000 */   lw    $a0, ($v0)
 /* 09B4EC 8009A8EC 8E180014 */  lw    $t8, 0x14($s0)
 /* 09B4F0 8009A8F0 00402025 */  move  $a0, $v0

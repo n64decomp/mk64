@@ -38,21 +38,21 @@ glabel gen_random_item
 /* 07BA38 8007AE38 87AB0022 */   lh    $t3, 0x22($sp)
 .L8007AE3C:
 /* 07BA3C 8007AE3C 3C040D01 */  lui   $a0, %hi(D_0D008790) # $a0, 0xd01
-/* 07BA40 8007AE40 0C0A9EF5 */  jal   lookup_item
+/* 07BA40 8007AE40 0C0A9EF5 */  jal   segmented_to_virtual
 /* 07BA44 8007AE44 24848790 */   addiu $a0, %lo(D_0D008790) # addiu $a0, $a0, -0x7870
 /* 07BA48 8007AE48 3C058016 */  lui   $a1, %hi(D_801658FD) # $a1, 0x8016
 /* 07BA4C 8007AE4C AFA20018 */  sw    $v0, 0x18($sp)
 /* 07BA50 8007AE50 1000000C */  b     .L8007AE84
 /* 07BA54 8007AE54 24A558FD */   addiu $a1, %lo(D_801658FD) # addiu $a1, $a1, 0x58fd
 .L8007AE58:
-/* 07BA58 8007AE58 0C0A9EF5 */  jal   lookup_item
+/* 07BA58 8007AE58 0C0A9EF5 */  jal   segmented_to_virtual
 /* 07BA5C 8007AE5C 24848858 */   addiu $a0, $a0, -0x77a8
 /* 07BA60 8007AE60 3C058016 */  lui   $a1, %hi(D_801658FD) # $a1, 0x8016
 /* 07BA64 8007AE64 AFA20018 */  sw    $v0, 0x18($sp)
 /* 07BA68 8007AE68 10000006 */  b     .L8007AE84
 /* 07BA6C 8007AE6C 24A558FD */   addiu $a1, %lo(D_801658FD) # addiu $a1, $a1, 0x58fd
 .L8007AE70:
-/* 07BA70 8007AE70 0C0A9EF5 */  jal   lookup_item
+/* 07BA70 8007AE70 0C0A9EF5 */  jal   segmented_to_virtual
 /* 07BA74 8007AE74 24848984 */   addiu $a0, $a0, -0x767c
 /* 07BA78 8007AE78 3C058016 */  lui   $a1, %hi(D_801658FD) # $a1, 0x8016
 /* 07BA7C 8007AE7C AFA20018 */  sw    $v0, 0x18($sp)
@@ -75,7 +75,7 @@ glabel gen_random_item
 /* 07BAB4 8007AEB4 14610009 */  bne   $v1, $at, .L8007AEDC
 /* 07BAB8 8007AEB8 87A90026 */   lh    $t1, 0x26($sp)
 /* 07BABC 8007AEBC 3C040D01 */  lui   $a0, %hi(D_0D008B14) # $a0, 0xd01
-/* 07BAC0 8007AEC0 0C0A9EF5 */  jal   lookup_item
+/* 07BAC0 8007AEC0 0C0A9EF5 */  jal   segmented_to_virtual
 /* 07BAC4 8007AEC4 24848B14 */   addiu $a0, %lo(D_0D008B14) # addiu $a0, $a0, -0x74ec
 /* 07BAC8 8007AEC8 3C198016 */  lui   $t9, %hi(D_801658FD) # $t9, 0x8016
 /* 07BACC 8007AECC 933958FD */  lbu   $t9, %lo(D_801658FD)($t9)
@@ -86,12 +86,12 @@ glabel gen_random_item
 /* 07BADC 8007AEDC 15200006 */  bnez  $t1, .L8007AEF8
 /* 07BAE0 8007AEE0 3C040D01 */   lui   $a0, 0xd01
 /* 07BAE4 8007AEE4 3C040D01 */  lui   $a0, %hi(D_0D008150) # $a0, 0xd01
-/* 07BAE8 8007AEE8 0C0A9EF5 */  jal   lookup_item
+/* 07BAE8 8007AEE8 0C0A9EF5 */  jal   segmented_to_virtual
 /* 07BAEC 8007AEEC 24848150 */   addiu $a0, %lo(D_0D008150) # addiu $a0, $a0, -0x7eb0
 /* 07BAF0 8007AEF0 10000004 */  b     .L8007AF04
 /* 07BAF4 8007AEF4 87AA0022 */   lh    $t2, 0x22($sp)
 .L8007AEF8:
-/* 07BAF8 8007AEF8 0C0A9EF5 */  jal   lookup_item
+/* 07BAF8 8007AEF8 0C0A9EF5 */  jal   segmented_to_virtual
 /* 07BAFC 8007AEFC 24848470 */   addiu $a0, $a0, -0x7b90
 /* 07BB00 8007AF00 87AA0022 */  lh    $t2, 0x22($sp)
 .L8007AF04:

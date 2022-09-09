@@ -13,7 +13,7 @@ glabel func_8009BA74
 /* 09C6A0 8009BAA0 AFB3004C */  sw    $s3, 0x4c($sp)
 /* 09C6A4 8009BAA4 AFB20048 */  sw    $s2, 0x48($sp)
 /* 09C6A8 8009BAA8 AFB10044 */  sw    $s1, 0x44($sp)
-/* 09C6AC 8009BAAC 0C026449 */  jal   segmented_to_virtual
+/* 09C6AC 8009BAAC 0C026449 */  jal   segmented_to_virtual_dupe
 /* 09C6B0 8009BAB0 00A02025 */   move  $a0, $a1
 /* 09C6B4 8009BAB4 8C4E0004 */  lw    $t6, 4($v0)
 /* 09C6B8 8009BAB8 3C1E0200 */  lui   $fp, %hi(D_02007708) # $fp, 0x200

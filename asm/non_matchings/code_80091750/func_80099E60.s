@@ -14,7 +14,7 @@ glabel func_80099E60
 /* 09AA8C 80099E8C 55E0FFFE */  bnel  $t7, $zero, .L80099E88
 /* 09AA90 80099E90 8C6F0008 */   lw    $t7, 8($v1)
 .L80099E94:
-/* 09AA94 80099E94 0C026449 */  jal   segmented_to_virtual
+/* 09AA94 80099E94 0C026449 */  jal   segmented_to_virtual_dupe
 /* 09AA98 80099E98 AFA3001C */   sw    $v1, 0x1c($sp)
 /* 09AA9C 80099E9C 8FA3001C */  lw    $v1, 0x1c($sp)
 /* 09AAA0 80099EA0 AC620000 */  sw    $v0, ($v1)

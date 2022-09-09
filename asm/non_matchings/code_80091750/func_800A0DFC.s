@@ -31,7 +31,7 @@ glabel func_800A0DFC
 .L800A0E68:
 /* 0A1A68 800A0E68 00008012 */  mflo  $s0
 /* 0A1A6C 800A0E6C 028E7821 */  addu  $t7, $s4, $t6
-/* 0A1A70 800A0E70 0C026449 */  jal   segmented_to_virtual
+/* 0A1A70 800A0E70 0C026449 */  jal   segmented_to_virtual_dupe
 /* 0A1A74 800A0E74 8DE40000 */   lw    $a0, ($t7)
 /* 0A1A78 800A0E78 8E640000 */  lw    $a0, ($s3)
 /* 0A1A7C 800A0E7C 00402825 */  move  $a1, $v0

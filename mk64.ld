@@ -331,11 +331,10 @@ SECTIONS
       BUILD_DIR/src/memory.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);
       BUILD_DIR/src/actors_extended.o(.data);
-      BUILD_DIR/data/data_121DA0_2.o(.data);
+      BUILD_DIR/src/race_logic.o(.data);
       BUILD_DIR/src/race_logic.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_1.o(.data);
       BUILD_DIR/src/render_courses.o(.rodata);
-      BUILD_DIR/data/data_121DA0_2_1_2.o(.data);
       BUILD_DIR/src/actors.o(.rodata);
       BUILD_DIR/data/data_121DA0_2_2.o(.data);
       BUILD_DIR/src/actors_extended.o(.rodata);

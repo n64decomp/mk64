@@ -59,7 +59,7 @@ glabel func_800A8564
 .L800A862C:
 /* 0A922C 800A862C AFAF0034 */  sw    $t7, 0x34($sp)
 /* 0A9230 800A8630 AFA50030 */  sw    $a1, 0x30($sp)
-/* 0A9234 800A8634 0C026449 */  jal   segmented_to_virtual
+/* 0A9234 800A8634 0C026449 */  jal   segmented_to_virtual_dupe
 /* 0A9238 800A8638 AFA70038 */   sw    $a3, 0x38($sp)
 /* 0A923C 800A863C 8FA70038 */  lw    $a3, 0x38($sp)
 /* 0A9240 800A8640 8FA50030 */  lw    $a1, 0x30($sp)

@@ -94,7 +94,7 @@ glabel func_800A1780
 /* 0A24E0 800A18E0 03197825 */  or    $t7, $t8, $t9
 /* 0A24E4 800A18E4 31AE00FF */  andi  $t6, $t5, 0xff
 /* 0A24E8 800A18E8 01EEC025 */  or    $t8, $t7, $t6
-/* 0A24EC 800A18EC 0C026449 */  jal   segmented_to_virtual
+/* 0A24EC 800A18EC 0C026449 */  jal   segmented_to_virtual_dupe
 /* 0A24F0 800A18F0 AD180004 */   sw    $t8, 4($t0)
 /* 0A24F4 800A18F4 8FA30018 */  lw    $v1, 0x18($sp)
 /* 0A24F8 800A18F8 3C048015 */  lui   $a0, %hi(gDisplayListHead) # $a0, 0x8015

@@ -25,7 +25,7 @@ glabel func_800100F0
 /* 010D4C 8001014C 01395021 */  addu  $t2, $t1, $t9
 /* 010D50 80010150 3C04800E */  lui   $a0, %hi(D_800DC8D0)
 /* 010D54 80010154 008A2021 */  addu  $a0, $a0, $t2
-/* 010D58 80010158 0C026455 */  jal   segmented_to_virtual_dupe
+/* 010D58 80010158 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 010D5C 8001015C 8C84C8D0 */   lw    $a0, %lo(D_800DC8D0)($a0)
 /* 010D60 80010160 8FA40030 */  lw    $a0, 0x30($sp)
 /* 010D64 80010164 0C00457D */  jal   process_path_data
@@ -42,7 +42,7 @@ glabel func_800100F0
 /* 010D8C 8001018C 3C04800E */  lui   $a0, %hi(gCoursePathTable)
 /* 010D90 80010190 008E2021 */  addu  $a0, $a0, $t6
 /* 010D94 80010194 8C84C780 */  lw    $a0, %lo(gCoursePathTable)($a0)
-/* 010D98 80010198 0C026455 */  jal   segmented_to_virtual_dupe
+/* 010D98 80010198 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 010D9C 8001019C A7A6001A */   sh    $a2, 0x1a($sp)
 /* 010DA0 800101A0 AFA2002C */  sw    $v0, 0x2c($sp)
 /* 010DA4 800101A4 00402025 */  move  $a0, $v0

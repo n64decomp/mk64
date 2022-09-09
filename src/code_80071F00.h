@@ -127,6 +127,7 @@ void func_80076ED8(s32);
 void func_800773D8(s32, s32);
 void func_80077428(s32);
 void func_80077640();
+void func_80077AB0(Vec3f, s32);
 void func_80077B14(s32);
 void func_80077B3C(s32);
 void func_80077BCC(s32);
@@ -143,6 +144,7 @@ void func_8007A884();
 void func_8007A910(s32);
 void func_8007A948(s32);
 void func_8007AA44(s32);
+void func_8007ABFC(s32, s32);
 u8   gen_random_item(s16, s16);
 u8   func_8007AF40(s32, s16);
 u8   func_8007AF78(s32, s16);
@@ -186,7 +188,7 @@ void func_80086604();
 void func_80086D80();
 
 // audio/external.c
-void func_800C9D80(Vec3f, f32*, s32);
+void func_800C9D80(Vec3f, Vec3f, u32);
 void func_800C9EF4(Vec3f, s32);
 
 s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, uintptr_t devAddr, void *vAddr, size_t nbytes, OSMesgQueue *mq);
