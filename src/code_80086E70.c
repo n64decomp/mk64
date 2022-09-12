@@ -1776,7 +1776,6 @@ extern s16 D_80165780;
 extern s16 D_80165782;
 extern s16 D_80165784;
 extern s16 D_80165786;
-extern ? D_80165C18;
 
 void func_8008B284(s32 arg0) {
     s32 sp0;

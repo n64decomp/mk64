@@ -23,7 +23,7 @@ extern s8 gControllerPakSelectedTableRow;
 extern s8 D_800E86C4[12];
 extern s8 D_800E86D0[16];
 
-extern const s8 D_800F2B60[5][3];
+extern const s8 D_800F2B60[4];
 extern const s32 gGameModeFromNumPlayersAndRowSelection[5][3];
 extern const s16 gCupCourseOrder[5][4];
 

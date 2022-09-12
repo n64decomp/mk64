@@ -339,7 +339,7 @@ void func_8002088C(void) {
     func_8006E634(gPlayerTwo, 1, 1);
     func_8006E634(gPlayerThree, 2, 1);
     func_8006E634(gPlayerFour, 3, 1);
-    if (gActiveScreenMode != 3) {
+    if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
         func_8006E634(gPlayerFive, 4, 1);
         func_8006E634(gPlayerSix, 5, 1);
         func_8006E634(gPlayerSeven, 6, 1);
@@ -551,7 +551,7 @@ void func_800212B4(void) {
     func_80020000(gPlayerTwo, camera1, 1U, 0U);
     func_80020000(gPlayerThree, camera1, 2U, 0U);
     func_80020000(gPlayerFour, camera1, 3U, 0U);
-    if (gActiveScreenMode != 3) {
+    if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
         func_80020000(gPlayerFive, camera1, 4U, 0U);
         func_80020000(gPlayerSix, camera1, 5U, 0U);
         func_80020000(gPlayerSeven, camera1, 6U, 0U);
@@ -561,7 +561,7 @@ void func_800212B4(void) {
     func_80021244(gPlayerTwo, 1U, 0U);
     func_80021244(gPlayerThree, 2U, 0U);
     func_80021244(gPlayerFour, 3U, 0U);
-    if (gActiveScreenMode != 3) {
+    if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
         func_80021244(gPlayerFive, 4U, 0U);
         func_80021244(gPlayerSix, 5U, 0U);
         func_80021244(gPlayerSeven, 6U, 0U);
@@ -574,7 +574,7 @@ void func_800212B4(void) {
         func_8006E5AC(gPlayerTwo, 1, 0);
         func_8006E5AC(gPlayerThree, 2, 0);
         func_8006E5AC(gPlayerFour, 3, 0);
-        if (gActiveScreenMode != 3) {
+        if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
             func_8006E5AC(gPlayerFive, 4, 0);
             func_8006E5AC(gPlayerSix, 5, 0);
             func_8006E5AC(gPlayerSeven, 6, 0);
@@ -685,7 +685,7 @@ void func_80021B0C(void) {
     func_8006E7CC(gPlayerTwo, 1, 0);
     func_8006E7CC(gPlayerThree, 2, 0);
     func_8006E7CC(gPlayerFour, 3, 0);
-    if (gActiveScreenMode != 3) {
+    if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
         func_8006E7CC(gPlayerFive, 4, 0);
         func_8006E7CC(gPlayerSix, 5, 0);
         func_8006E7CC(gPlayerSeven, 6, 0);

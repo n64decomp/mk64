@@ -892,7 +892,7 @@ loop_2:
         temp_v0 = var_s3->unk_000;
         if ((temp_v0 & 0x4000) && !(temp_v0 & 0x1000)) {
             temp_s0 = &gControllers[var_s2];
-            if (gActiveScreenMode != 3) {
+            if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
                 temp_v0_2 = temp_s0->buttonPressed;
                 if ((temp_v0_2 & 0x20) && !(temp_s0->button & 0x10)) {
                     temp_s0->buttonPressed = temp_v0_2 & 0xFFDF;

@@ -1434,12 +1434,12 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
             if (btnAndStick & CONT_DOWN) {
                 sp24 = FALSE;
                 if (func_800B555C()) {
-                    if (sp28 < D_800F2B60[D_8018EDF3 + 4][D_800E86AC[D_8018EDF3 - 1] + 1]) {
+                    if (sp28 < D_800F2B64[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1] + 1]) {
                         sp24 = TRUE;
                     }
                 } else {
                     // L800B30D4
-                    if (sp28 < D_800F2B60[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1] + 1]) {
+                    if (sp28 < D_800F2B60[D_8018EDF3]) {
                         sp24 = TRUE;
                     }
                 }

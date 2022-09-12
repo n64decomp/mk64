@@ -2914,8 +2914,7 @@ void func_8005CB60(s32 playerId, s32 arg1) {
     } else {
         playerId = temp_a3;
         f32_step_towards(&temp_s0->rankScaling, 0x3F800000, 0x3E000000, temp_a3);
-        temp_v0_6 = gScreenModeSelection;
-        switch (temp_v0_6) {                        /* irregular */
+        switch (gScreenModeSelection) {                        /* irregular */
         case 0:
             s16_step_towards(&temp_s0->slideRankX, 0x1C, 7, playerId);
             if (D_8018D1FC != 0) {
@@ -10064,7 +10063,7 @@ void func_8006AFD0(void *arg0, s8 arg1, s16 arg2, s8 arg3) {
         temp_v0_2 = (arg3 * 0xB8) + &cameras;
         temp_f20 = arg0->unk14 - temp_v0_2->unk0;
         temp_f0 = arg0->unk1C - temp_v0_2->unk8;
-        if (gActiveScreenMode != 3) {
+        if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
             sp11C = temp_t1;
             phi_f20 = sqrtf((temp_f20 * temp_f20) + (temp_f0 * temp_f0)) / 300.0f;
         } else {

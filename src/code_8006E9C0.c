@@ -1464,8 +1464,7 @@ void func_80070780(void) {
     case 2:
         D_80165750 = 0x000B;
         D_80165758 = &D_800E5894;
-        temp_v0 = gCCSelection;
-        switch (temp_v0) {                          /* switch 1; irregular */
+        switch (gCCSelection) {                          /* switch 1; irregular */
         case 1:                                     /* switch 1 */
         case 3:                                     /* switch 1 */
             break;
@@ -1696,8 +1695,7 @@ void func_80070780(void) {
             temp_v0_10 = D_8018EDF3;
             var_s1_8 = D_80183EA0;
             if ((temp_v0_10 == 1) || ((temp_v0_10 == 2) && (gModeSelection == (s32) 2))) {
-                temp_v0_11 = gCCSelection;
-                switch (temp_v0_11) {               /* switch 2; irregular */
+                switch (gCCSelection) {               /* switch 2; irregular */
                 case 0:                             /* switch 2 */
                     D_8018D1C8 = 4;
                     D_8018D1D0 = 6;
@@ -2192,7 +2190,7 @@ extern s32 D_80183E88;
 extern s32 D_80183E8C;
 extern s32 D_80183E90;
 extern s32 D_80183E94;
-extern s32 D_8018D158;
+extern s32 D_8018D158;find_unused_obj_index
 extern s32 D_8018D3BC;
 extern s32 D_8018D3C0;
 extern s32 D_8018D3C4;
