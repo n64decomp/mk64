@@ -7,15 +7,15 @@ glabel func_80004DFC
 /* 005A10 80004E10 01C08025 */  move  $s0, $t6
 /* 005A14 80004E14 AFA5002C */  sw    $a1, 0x2c($sp)
 /* 005A18 80004E18 AFA60030 */  sw    $a2, 0x30($sp)
-/* 005A1C 80004E1C 0C0A9EF5 */  jal   lookup_item
+/* 005A1C 80004E1C 0C0A9EF5 */  jal   segmented_to_virtual
 /* 005A20 80004E20 AFA70034 */   sw    $a3, 0x34($sp)
 /* 005A24 80004E24 AFA20024 */  sw    $v0, 0x24($sp)
-/* 005A28 80004E28 0C0A9EF5 */  jal   lookup_item
+/* 005A28 80004E28 0C0A9EF5 */  jal   segmented_to_virtual
 /* 005A2C 80004E2C 8FA4002C */   lw    $a0, 0x2c($sp)
 /* 005A30 80004E30 87AF0032 */  lh    $t7, 0x32($sp)
 /* 005A34 80004E34 000FC080 */  sll   $t8, $t7, 2
 /* 005A38 80004E38 0058C821 */  addu  $t9, $v0, $t8
-/* 005A3C 80004E3C 0C0A9EF5 */  jal   lookup_item
+/* 005A3C 80004E3C 0C0A9EF5 */  jal   segmented_to_virtual
 /* 005A40 80004E40 8F240000 */   lw    $a0, ($t9)
 /* 005A44 80004E44 84480008 */  lh    $t0, 8($v0)
 /* 005A48 80004E48 00402825 */  move  $a1, $v0

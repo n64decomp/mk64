@@ -11,7 +11,7 @@ glabel func_80011A5C
 /* 012680 80011A80 2631C720 */  addiu $s1, %lo(D_800DC720) # addiu $s1, $s1, -0x38e0
 /* 012684 80011A84 26102EB8 */  addiu $s0, %lo(D_80162EB8) # addiu $s0, $s0, 0x2eb8
 .L80011A88:
-/* 012688 80011A88 0C026455 */  jal   segmented_to_virtual_dupe
+/* 012688 80011A88 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 01268C 80011A8C 8E240000 */   lw    $a0, ($s1)
 /* 012690 80011A90 26100004 */  addiu $s0, $s0, 4
 /* 012694 80011A94 26310004 */  addiu $s1, $s1, 4

@@ -45,7 +45,7 @@ glabel L800AAC50
 /* 0AB8C0 800AACC0 008F2021 */  addu  $a0, $a0, $t7
 /* 0AB8C4 800AACC4 ACEE0010 */  sw    $t6, 0x10($a3)
 /* 0AB8C8 800AACC8 AFA70030 */  sw    $a3, 0x30($sp)
-/* 0AB8CC 800AACCC 0C026455 */  jal   segmented_to_virtual_dupe
+/* 0AB8CC 800AACCC 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 0AB8D0 800AACD0 8C848340 */   lw    $a0, %lo(D_800E8340)($a0) # -0x7cc0($a0)
 /* 0AB8D4 800AACD4 8FA70030 */  lw    $a3, 0x30($sp)
 /* 0AB8D8 800AACD8 00002825 */  move  $a1, $zero

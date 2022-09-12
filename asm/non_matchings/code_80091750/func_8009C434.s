@@ -19,7 +19,7 @@ glabel func_8009C434
 /* 09D078 8009C478 00A0A825 */  move  $s5, $a1
 /* 09D07C 8009C47C 00C0B025 */  move  $s6, $a2
 /* 09D080 8009C480 00E0B825 */  move  $s7, $a3
-/* 09D084 8009C484 0C026449 */  jal   segmented_to_virtual
+/* 09D084 8009C484 0C026449 */  jal   segmented_to_virtual_dupe
 /* 09D088 8009C488 8F240000 */   lw    $a0, ($t9)
 /* 09D08C 8009C48C 8C4A0004 */  lw    $t2, 4($v0)
 /* 09D090 8009C490 00408025 */  move  $s0, $v0

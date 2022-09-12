@@ -7,7 +7,7 @@ glabel func_80099184
 /* 099D98 80099198 AFB30024 */  sw    $s3, 0x24($sp)
 /* 099D9C 8009919C AFB20020 */  sw    $s2, 0x20($sp)
 /* 099DA0 800991A0 AFB1001C */  sw    $s1, 0x1c($sp)
-/* 099DA4 800991A4 0C026449 */  jal   segmented_to_virtual
+/* 099DA4 800991A4 0C026449 */  jal   segmented_to_virtual_dupe
 /* 099DA8 800991A8 AFB00018 */   sw    $s0, 0x18($sp)
 /* 099DAC 800991AC 8C4E0004 */  lw    $t6, 4($v0)
 /* 099DB0 800991B0 00408825 */  move  $s1, $v0
@@ -153,7 +153,7 @@ glabel func_80099184
 /* 099FA8 800993A8 AFB30024 */  sw    $s3, 0x24($sp)
 /* 099FAC 800993AC AFB20020 */  sw    $s2, 0x20($sp)
 /* 099FB0 800993B0 AFB1001C */  sw    $s1, 0x1c($sp)
-/* 099FB4 800993B4 0C026449 */  jal   segmented_to_virtual
+/* 099FB4 800993B4 0C026449 */  jal   segmented_to_virtual_dupe
 /* 099FB8 800993B8 AFB00018 */   sw    $s0, 0x18($sp)
 /* 099FBC 800993BC 8C4E0004 */  lw    $t6, 4($v0)
 /* 099FC0 800993C0 3C168019 */  lui   $s6, %hi(D_8018D9B0) # $s6, 0x8019
@@ -264,7 +264,7 @@ glabel func_80099184
 /* 09A13C 8009953C AFB30020 */  sw    $s3, 0x20($sp)
 /* 09A140 80099540 AFB2001C */  sw    $s2, 0x1c($sp)
 /* 09A144 80099544 AFB10018 */  sw    $s1, 0x18($sp)
-/* 09A148 80099548 0C026449 */  jal   segmented_to_virtual
+/* 09A148 80099548 0C026449 */  jal   segmented_to_virtual_dupe
 /* 09A14C 8009954C AFB00014 */   sw    $s0, 0x14($sp)
 /* 09A150 80099550 8C4E0004 */  lw    $t6, 4($v0)
 /* 09A154 80099554 3C158019 */  lui   $s5, %hi(D_8018D9B0) # $s5, 0x8019

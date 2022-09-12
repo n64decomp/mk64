@@ -29,7 +29,7 @@ glabel func_8009A944
 .L8009A9AC:
 /* 09B5AC 8009A9AC ACEF0008 */  sw    $t7, 8($a3)
 /* 09B5B0 8009A9B0 8C440000 */  lw    $a0, ($v0)
-/* 09B5B4 8009A9B4 0C026449 */  jal   segmented_to_virtual
+/* 09B5B4 8009A9B4 0C026449 */  jal   segmented_to_virtual_dupe
 /* 09B5B8 8009A9B8 AFA70018 */   sw    $a3, 0x18($sp)
 /* 09B5BC 8009A9BC 8FA70018 */  lw    $a3, 0x18($sp)
 /* 09B5C0 8009A9C0 00402025 */  move  $a0, $v0

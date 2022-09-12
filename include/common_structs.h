@@ -109,9 +109,7 @@ typedef struct {
     /* 0x08 */ u16 unk38;
     // This may be an index to the tilemap?
     /* 0x0A */ u16 unk3A;
-    /* 0x0C */ f32 unk3C;
-    /* 0x10 */ f32 unk40;
-    /* 0x14 */ f32 unk44;
+    /* 0x0C */ Vec3f unk3C;
     /* 0x18 */ Vec3f unk48;
     /* 0x24 */ Vec3f unk54;
     /* 0x30 */ Vec3f unk60;
@@ -309,7 +307,7 @@ typedef struct {
     /* 0x0214 */ f32 unk_214;
     /* 0x0218 */ f32 unk_218;
     /* 0x021C */ f32 unk_21C;
-    /* 0x0220 */ s16 unk_220;
+    /* 0x0220 */ s16 nearestWaypointId; // ??
     /* 0x0222 */ s16 unk_222;
     /* 0x0224 */ f32 unk_224;
     /* 0x0228 */ s16 unk_228;

@@ -13,7 +13,7 @@
 #include "code_80071F00.h"
 #include "code_80086E70.h"
 #include "code_8008C1D0.h"
-//#include "skybox_and_splitscreen.h" <- TODO: create this header file
+#include "skybox_and_splitscreen.h"
 
 // UI Code?
 void func_80057C60(void) {
@@ -54,8 +54,6 @@ void func_80057CE4(void) {
     }
 }
 
-extern s8 D_801657B2;
-
 void func_80057DD0(void) {
     if (D_801657B2 != 0) {
         func_8004C024(0xF, 0xB, 0x122, 0, 0xFF, 0, 0xFF);
@@ -73,9 +71,6 @@ void func_80057DD0(void) {
     }
 }
 
-extern u8 D_0D0076F8;
-extern s8 D_801657C8;
-extern s8 D_801657B0;
 void func_80057FC4(u32 arg0) {
     UNUSED Gfx *temp_v1;
 
@@ -109,8 +104,6 @@ void func_80057FC4(u32 arg0) {
     }
 
 }
-
-extern s32 D_8018D22C;
 
 void func_80058090(u32 arg0) {
     UNUSED Gfx *temp_v1;
@@ -166,9 +159,6 @@ void func_80058090(u32 arg0) {
     }
 }
 
-void func_8005217C(s32);
-extern s32 gGamestate;
-extern u16 D_800DC51C;
 void func_800581C8(void) {
 
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
@@ -297,33 +287,6 @@ void func_8005884C(void) {
     func_80058B58(3);
 }
 
-void func_80051638(s32);
-
-void func_800524B4(s32);
-void func_80052590(s32);
-void func_800527D8(s32);
-void func_80052E30(s32);
-void func_8005327C(s32);
-void func_80053870(s32);
-void func_80053E6C(s32);
-void func_800541BC(s32);
-void func_80054414(s32);
-void func_80054664(s32);
-void func_80054938(s32);
-void func_800550A4(s32);
-void func_80055228(s32);
-void func_80055380(s32);
-void func_80055528(s32);
-void func_8005568C(s32);
-void func_8005592C(s32);
-void func_80055C38(s32);
-void func_80055E68(s32);
-void func_80056188(s32);
-void func_80056AC0(s32);
-extern s16 D_80165730;
-extern s8 D_8018EDF3;
-extern s8 D_80165898;
-
 void func_800588F4(s32 arg0) {
 
     switch (gCurrentCourseId) {
@@ -422,8 +385,6 @@ void func_800588F4(s32 arg0) {
     }
 }
 
-extern u16 D_8015F894;
-
 void func_80058B58() {
     switch(gCurrentCourseId) {
         case 5:
@@ -440,8 +401,6 @@ void func_80058B58() {
             break;
     }
 }
-
-extern u8 D_0D0076F8;
 
 void func_80058BF4(void) {
     gSPDisplayList(gDisplayListHead++, &D_0D0076F8);
@@ -582,18 +541,11 @@ void func_80058DB4(u32 arg0) {
     }
 }
 
-extern s8 D_801657B0;
-
 void func_80058F48(void) {
     if (D_801657B0 == 0) {
         func_80041EF4();
     }
 }
-
-extern s8 D_801657D8;
-extern s8 D_801657E4;
-extern s8 D_801657E6;
-extern s32 D_8018D188;
 
 void func_80058F78(void) {
     if (D_801657B0 == 0) {
@@ -615,8 +567,6 @@ void func_80058F78(void) {
 void func_80059024(void) {
 
 }
-
-extern s32 D_8018D2AC;
 
 void func_8005902C(void) {
 
@@ -640,8 +590,6 @@ void func_8005902C(void) {
         }
     }
 }
-
-extern s32 D_8018D2A4;
 
 void func_800590D4(void) {
     if (D_8018D2A4 != 0) {
@@ -672,14 +620,6 @@ void func_800590D4(void) {
         }
     }
 }
-
-extern u16 D_800DC5B8;
-extern s8 D_801657E8;
-extern s8 D_801657F0;
-extern s8 D_80165800;
-extern s8 D_80165801;
-extern s32 D_8018D188;
-extern s32 D_8018D2BC;
 
 void func_800591B4(void) {
 
@@ -775,9 +715,6 @@ void func_800593F8(void) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800593F8.s")
 #endif
 
-extern s8 D_80165800;
-extern s32 D_8018D188;
-
 void func_80059488(s32 arg0) {
     if ((gModeSelection != BATTLE) && (*(&D_80165800 + arg0) == 0) && (D_8018D188 != 0)) {
         func_8004FA78(arg0);
@@ -789,8 +726,6 @@ void func_80059488(s32 arg0) {
 void func_800594F0(void) {
 
 }
-
-extern s8 D_801657B0;
 
 void func_800594F8(void) {
     if (D_801657B0 == 0) {
@@ -848,8 +783,6 @@ void func_80059560(s32 playerId) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80059560.s")
 #endif
 
-extern s8 D_801657B0;
-
 void func_800596A8(void) {
     if (D_801657B0 == 0) {
         func_80041EF4();
@@ -867,8 +800,6 @@ void func_80059710(void) {
 
 }
 
-extern s8 D_801657B0;
-
 void func_80059718(void) {
     if (D_801657B0 == 0) {
         func_80041EF4();
@@ -876,15 +807,11 @@ void func_80059718(void) {
     }
 }
 
-extern s8 D_801657B0;
-
 void func_80059750(void) {
     if (D_801657B0 == 0) {
         func_80041EF4();
     }
 }
-
-extern s8 D_801657B0;
 
 void func_80059780(void) {
     if (D_801657B0 == 0) {
@@ -893,15 +820,11 @@ void func_80059780(void) {
     }
 }
 
-extern s8 D_801657B0;
-
 void func_800597B8(void) {
     if (D_801657B0 == 0) {
         func_80041EF4();
     }
 }
-
-extern s8 D_801657B0;
 
 void func_800597E8(void) {
     if (D_801657B0 == 0) {
@@ -931,8 +854,6 @@ void func_80059820(s32 playerId) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80059820.s")
 #endif
 
-extern u8 D_801658FF;
-extern struct Controller *gControllerOne;
 void func_800598D4(s32 arg0) {
     struct Controller *controller = &gControllerOne[arg0];
 
@@ -946,8 +867,6 @@ void func_800598D4(s32 arg0) {
         D_801658FF++;
     }
 }
-
-extern s32 D_8018D214;
 
 void func_8005994C(void) {
     D_8018D214 = 1;
@@ -2507,7 +2426,6 @@ void func_8005C64C(s32 arg0) {
 void func_8005C654(s32 *arg0) {
     *arg0 = 0;
 }
-extern s32 D_8018D2C8[];
 
 void func_8005C65C(s32 arg0) {
     D_8018D2C8[arg0] = 1;

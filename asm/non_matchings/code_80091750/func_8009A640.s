@@ -4,7 +4,7 @@ glabel func_8009A640
 /* 09B248 8009A648 AFA40028 */  sw    $a0, 0x28($sp)
 /* 09B24C 8009A64C AFA60030 */  sw    $a2, 0x30($sp)
 /* 09B250 8009A650 00E02025 */  move  $a0, $a3
-/* 09B254 8009A654 0C026455 */  jal   segmented_to_virtual_dupe
+/* 09B254 8009A654 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 09B258 8009A658 AFA5002C */   sw    $a1, 0x2c($sp)
 /* 09B25C 8009A65C 8FAE0028 */  lw    $t6, 0x28($sp)
 /* 09B260 8009A660 8FA5002C */  lw    $a1, 0x2c($sp)
@@ -23,7 +23,7 @@ glabel func_8009A640
 /* 09B294 8009A694 004A5821 */  addu  $t3, $v0, $t2
 /* 09B298 8009A698 AC690008 */  sw    $t1, 8($v1)
 /* 09B29C 8009A69C 8D640000 */  lw    $a0, ($t3)
-/* 09B2A0 8009A6A0 0C026449 */  jal   segmented_to_virtual
+/* 09B2A0 8009A6A0 0C026449 */  jal   segmented_to_virtual_dupe
 /* 09B2A4 8009A6A4 AFA3001C */   sw    $v1, 0x1c($sp)
 /* 09B2A8 8009A6A8 8FA3001C */  lw    $v1, 0x1c($sp)
 /* 09B2AC 8009A6AC 00402025 */  move  $a0, $v0

@@ -39,7 +39,7 @@ glabel L800A9770
 /* 0AA384 800A9784 00992021 */   addu  $a0, $a0, $t9
 /* 0AA388 800A9788 ACE20004 */  sw    $v0, 4($a3)
 /* 0AA38C 800A978C AFA70018 */  sw    $a3, 0x18($sp)
-/* 0AA390 800A9790 0C026455 */  jal   segmented_to_virtual_dupe
+/* 0AA390 800A9790 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 0AA394 800A9794 8C847D34 */   lw    $a0, %lo(D_800E7D34)($a0)
 /* 0AA398 800A9798 8FA70018 */  lw    $a3, 0x18($sp)
 /* 0AA39C 800A979C 00002825 */  move  $a1, $zero
