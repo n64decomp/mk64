@@ -41,30 +41,30 @@ struct SPTask* sNextAudioSPTask = NULL;
 struct SPTask* sNextDisplaySPTask = NULL;
 
 
-struct Controller gControllers[8]; //0x800F6910
-struct Controller *gControllerOne = &gControllers[0];   // 0x800DC4BC
-struct Controller *gControllerTwo = &gControllers[1];   // 0x800DC4C0
-struct Controller *gControllerThree = &gControllers[2]; // 0x800DC4C4
-struct Controller *gControllerFour = &gControllers[3];  // 0x800DC4C8
-struct Controller *gControllerFive = &gControllers[4];  // 0x800DC4CC
-struct Controller *gControllerSix = &gControllers[5];   // 0x800DC4D0
-struct Controller *gControllerSeven = &gControllers[6]; // 0x800DC4D4
-struct Controller *gControllerEight = &gControllers[7]; // 0x800DC4D8
+struct Controller gControllers[8];
+struct Controller *gControllerOne = &gControllers[0];
+struct Controller *gControllerTwo = &gControllers[1];
+struct Controller *gControllerThree = &gControllers[2];
+struct Controller *gControllerFour = &gControllers[3];
+struct Controller *gControllerFive = &gControllers[4];
+struct Controller *gControllerSix = &gControllers[5];
+struct Controller *gControllerSeven = &gControllers[6];
+struct Controller *gControllerEight = &gControllers[7];
 
 Player gPlayers[8];
-Player *gPlayerOne = &gPlayers[0];   // 0x800DC4DC
-Player *gPlayerTwo = &gPlayers[1];   // 0x800DC4E0
-Player *gPlayerThree = &gPlayers[2]; // 0x800DC4E4
-Player *gPlayerFour = &gPlayers[3];  // 0x800DC4E8
-Player *gPlayerFive = &gPlayers[4];  // 0x800DC4EC
-Player *gPlayerSix = &gPlayers[5];   // 0x800DC4F0
-Player *gPlayerSeven = &gPlayers[6]; // 0x800DC4F4
-Player *gPlayerEight = &gPlayers[7]; // 0x800DC4F8
+Player *gPlayerOne = &gPlayers[0];
+Player *gPlayerTwo = &gPlayers[1];
+Player *gPlayerThree = &gPlayers[2];
+Player *gPlayerFour = &gPlayers[3];
+Player *gPlayerFive = &gPlayers[4];
+Player *gPlayerSix = &gPlayers[5];
+Player *gPlayerSeven = &gPlayers[6];
+Player *gPlayerEight = &gPlayers[7];
 
-Player *gPlayerOneCopy = &gPlayers[0];   // 0x800DC4FC
-Player *gPlayerTwoCopy = &gPlayers[1];   // 0x800DC500
-UNUSED Player *gPlayerThreeCopy = &gPlayers[2]; // 0x800DC504
-UNUSED Player *gPlayerFourCopy = &gPlayers[3];  // 0x800DC508
+Player *gPlayerOneCopy = &gPlayers[0];
+Player *gPlayerTwoCopy = &gPlayers[1];
+UNUSED Player *gPlayerThreeCopy = &gPlayers[2];
+UNUSED Player *gPlayerFourCopy = &gPlayers[3];
 
 s32 D_800FD850[3];
 struct GfxPool gGfxPools[2];
@@ -149,7 +149,7 @@ u32 gGfxSPTaskStack[256];
 OSMesg gPIMesgBuf[32];
 OSMesgQueue gPIMesgQueue;
 
-s32 gGamestate = 0xFFFF; // 0x800DC50C
+s32 gGamestate = 0xFFFF;
 u16 D_800DC510 = 0;
 u16 D_800DC514 = 0;
 u16 D_800DC518 = 0;
@@ -157,15 +157,15 @@ u16 D_800DC51C = 0;
 u16 gEnableDebugMode = 0;
 s32 gGamestateNext = 7; // = COURSE_DATA_MENU?;
 UNUSED s32 D_800DC528 = 1;
-s32 gActiveScreenMode = SCREEN_MODE_1P;// 0x800DC52C
-s32 gScreenModeSelection = 0; // 0x800DC530
+s32 gActiveScreenMode = SCREEN_MODE_1P;
+s32 gScreenModeSelection = 0;
 UNUSED s32 D_800DC534  = 0;
-s32 gPlayerCountSelection1 = 2; // 0x800DC538
+s32 gPlayerCountSelection1 = 2;
 
-s32 gModeSelection = GRAND_PRIX; // 0x800DC53C
+s32 gModeSelection = GRAND_PRIX;
 s32 D_800DC540 = 0;
 s32 D_800DC544 = 0;
-s32 gCCSelection = CC_50; // 0x800DC548
+s32 gCCSelection = CC_50;
 s32 gGlobalTimer = 0;
 UNUSED s32 D_800DC550 = 0;
 UNUSED s32 D_800DC554 = 0;
@@ -178,8 +178,8 @@ s32 D_800DC568 = 0;
 s32 D_800DC56C[8] = {0};
 s16 sNumVBlanks = 0;
 UNUSED s16 D_800DC590 = 0;
-f32 gVBlankTimer = 0.0f; // 0x800DC594
-f32 gCourseTimer = 0.0f; // 0x800DC598
+f32 gVBlankTimer = 0.0f;
+f32 gCourseTimer = 0.0f;
 
 void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, void *sp, OSPri pri) {
     thread->next = NULL;
@@ -318,7 +318,6 @@ void update_controller(s32 index) {
     controller->stickDirection = stick;
 }
 
-//0x80000A28
 void read_controllers(void) {
     OSMesg msg;
 
@@ -848,8 +847,6 @@ void game_state_handler(void) {
     }
 }
 
-
-// 0x80001F78 
 void interrupt_gfx_sptask(void) {
     if (gActiveSPTask->task.t.type == M_GFXTASK) {
         gActiveSPTask->state = SPTASK_STATE_INTERRUPTED;

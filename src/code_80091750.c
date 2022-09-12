@@ -13711,7 +13711,7 @@ static MkAnimation *gCharacterCelebrateAnimation[8] = {
     D_02006AE8,
 }; /* const */
 
-// 0x800E83A0 celebrate end
+// celebrate end
 static MkAnimation *D_800E83A0[8] = {
     D_02006778,
     D_02006960,
@@ -13723,7 +13723,6 @@ static MkAnimation *D_800E83A0[8] = {
     D_02006B48,
 }; /* const */
 
-// 0x800E83C0
 static MkAnimation *gCharacterDeselectAnimation[8] = {
     D_02006788,
     D_02006970,
@@ -13735,7 +13734,6 @@ static MkAnimation *gCharacterDeselectAnimation[8] = {
     D_02006B58,
 }; /* const */
 
-// 0x800E83E0
 static MkAnimation *gCharacterSingleBlinkAnimation[8] = {
     D_020067E0,
     D_020069C8,
@@ -13747,7 +13745,6 @@ static MkAnimation *gCharacterSingleBlinkAnimation[8] = {
     D_02006CB0,
 }; /* const */
 
-// 0x800E8400
 static MkAnimation *gCharacterDoubleBlinkAnimation[8] = {
     D_02006838,
     D_02006A20,

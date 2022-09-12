@@ -3395,7 +3395,6 @@ void func_802A0450(Player *player, struct Actor *actor) {
     }
 }
 
-// 0x802A0D54
 void evaluate_player_collision(void) {
     struct Actor *temp_a1;
     s32 i, j;
