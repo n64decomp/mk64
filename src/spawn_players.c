@@ -9,7 +9,6 @@
 #include "code_80027D00.h"
 #include "spawn_players.h"
 
-// 0x800393C0
 void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, f32 arg5, u16 arg6, s16 arg7) {
     f32 ret;
     s8 idx;

@@ -270,7 +270,7 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->task.t.yield_data_size = 0xD00; /* Not equal to OS_YIELD_DATA_SIZE */
 }
 
-// 0x800008A4
+
 void init_controllers(void) {
     osCreateMesgQueue(&gSIEventMesgQueue, &gSIEventMesgBuf[0], ARRAY_COUNT(gSIEventMesgBuf));
     osSetEventMesg(OS_EVENT_SI, &gSIEventMesgQueue, (OSMesg) 0x33333333);
@@ -282,7 +282,6 @@ void init_controllers(void) {
     }
 }
 
-// 0x80000934
 void update_controller(s32 index) { 
     struct Controller *controller = &gControllers[index];
     u16 stick;
@@ -519,7 +518,6 @@ void game_init_clear_framebuffer(void) {
     clear_framebuffer(0);
 }
 
-// 0x8000142C
 void race_logic_loop(void) {
     s16 i;
     s32 pad;
@@ -822,7 +820,6 @@ void race_logic_loop(void) {
  * until the state changes (ie. Exit menus and start a race).
  */
 
-// 0x80001ED4
 void game_state_handler(void) {
     switch (gGamestate) {
         case 7:
@@ -860,7 +857,6 @@ void interrupt_gfx_sptask(void) {
     }
 }
 
-// 0x80001FAC
 void receive_new_tasks(void) {
     s32 pad;
     struct SPTask *spTask;
@@ -1001,7 +997,6 @@ void handle_sp_complete(void) {
     };
 }
 
-// 0x800023E4
 void thread3_video(UNUSED void *arg0) {
     s32 i;
     u64 *framebuffer1;

@@ -575,7 +575,6 @@ void update_obj_train_car2(struct TrainCar *arg0) {
     arg0->wheelRot -= 0x666;
 }
 
-// 0x80298274
 void update_obj_piranha_plant(struct PiranhaPlant *arg0) {
     if ((arg0->flags & 0x800) == 0) {
         if ((arg0->flags & 0x400) != 0) {

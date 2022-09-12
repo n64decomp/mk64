@@ -957,7 +957,7 @@ s32 get_string_width(char *buffer) {
     return stringWidth;
 }
 
-// 0x800930D8
+
 void set_text_color(s32 arg0) {
     gTextColor = arg0;
 }
@@ -1089,7 +1089,6 @@ void func_800936B8(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f
     print_text1(column, row, text, tracking, x_scale, y_scale, 1);
 }
 
-// 0x800936EC
 void draw_text(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale) {
     print_text1(column, row, text, tracking, x_scale, y_scale, 2);
 }
@@ -7611,7 +7610,7 @@ static MkTexture *D_800E7CA8[0x19] = {
 };
 static MkTexture *D_800E7D4C[2] = { D_02004598, D_020045C0 };
 
-// 0x800E7D54 name selection
+// name selection
 static MkTexture *D_800E7D54[8] = {
     D_02001A8C,
     D_02001A64,
@@ -13689,7 +13688,7 @@ s32 random_int(?, s32);                             /* extern */
 extern ? D_8018DEE4;
 extern ? D_8018EDE8;
 
-// 0x800E8360 head selection
+// head selection
 static MkAnimation *D_800E8360[8] = {
     D_02006708,
     D_020068F0,
@@ -13701,7 +13700,6 @@ static MkAnimation *D_800E8360[8] = {
     D_02006AD8,
 }; /* const */
 
-// 0x800E8380
 static MkAnimation *gCharacterCelebrateAnimation[8] = {
     D_02006718,
     D_02006900,
