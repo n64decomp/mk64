@@ -2975,7 +2975,7 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         func_8008F5A4(player, arg3);
     }
     player->unk_074 = func_802ABE30(spFC, spF8, spF4, player->unk_110.unk3A);
-    if (((player->unk_000 & 0x4000) == 0x4000) && (((gActiveScreenMode == 0)) || (gActiveScreenMode == 2) || (gActiveScreenMode == 1))) {
+    if (((player->unk_000 & 0x4000) == 0x4000) && ((temp_v0_16 = gActiveScreenMode, (temp_v0_16 == 0)) || (temp_v0_16 == 2) || (temp_v0_16 == 1))) {
         func_80029B4C(player, spFC, spF8, spF4);
     } else {
         func_8002A194(player, spFC, spF8, spF4);

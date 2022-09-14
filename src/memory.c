@@ -1437,7 +1437,7 @@ s32 load_course(s32 arg0) {
     } else {
         gHeapEndPtr = 0x8028DF00;
     }
-    set_segment_base_addr(9, func_802A7D70(temp_a2, temp_v0->offsetRomEnd));
+    set_segment_base_addr(9, func_802A7D70((s32) temp_v0_2->offsetRomStart, (s32) temp_v0_2->offsetRomEnd));
     if (gGamestate != ENDING_SEQUENCE) {
         set_segment_base_addr(6, func_802AA88C(sp48, sp44));
     }

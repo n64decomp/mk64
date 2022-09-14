@@ -95,10 +95,10 @@ const s8 D_800F2B50[] = {0, 1, 2, 3, 3, 0, 0, 0};
 // set to D_8018EDF3, then that sets gPlayerCountSelection1
 const s8 D_800F2B58[] = {1, 2, 2, 3, 4, 0, 0, 0};
 
-// limit for each colone in one-two-three-four players selection
+// Limit for each colone in one-two-three-four players selection
 const s8 D_800F2B60[4] = {1, 2, 1, 1};
 
-// limit in each colone
+// Limit in each colone
 const s8 D_800F2B64[4][3] = {
     {2, 1, 0},
     {2, 2, 0},
