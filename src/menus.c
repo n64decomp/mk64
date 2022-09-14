@@ -95,10 +95,10 @@ const s8 D_800F2B50[] = {0, 1, 2, 3, 3, 0, 0, 0};
 // set to D_8018EDF3, then that sets gPlayerCountSelection1
 const s8 D_800F2B58[] = {1, 2, 2, 3, 4, 0, 0, 0};
 
-// Limit for each colone in one-two-three-four players selection
+// Limit for each column in one-two-three-four players selection
 const s8 D_800F2B60[4] = {1, 2, 1, 1};
 
-// Limit in each colone
+// Limit in each column
 const s8 D_800F2B64[4][3] = {
     {2, 1, 0},
     {2, 2, 0},
@@ -109,7 +109,7 @@ const s8 D_800F2B64[4][3] = {
 // is this another union GameModePack? Figure out when decomping.
 const s32 gGameModeFromNumPlayersAndRowSelection[5][3] = {
     { 0x03010003, 0x03000300,  0x00030000 },
-    { GRAND_PRIX, TIME_TRIALS, 0x00000000 }, //first colone
+    { GRAND_PRIX, TIME_TRIALS, 0x00000000 }, //first column
     { GRAND_PRIX, VERSUS,      BATTLE     }, //second
     { VERSUS,     BATTLE,      0x00000000 }, //third
     { VERSUS,     BATTLE,      0x00000000 }, //four
