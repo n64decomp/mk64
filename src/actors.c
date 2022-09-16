@@ -828,7 +828,7 @@ void func_80298C94(void) {
     s32 index;
 
     for (index = 0; index < 4; index++){
-        // wtf is up with the << 0x18 >> 0x18? is it some weird type conversion? 
+        // wtf is up with the << 0x18 >> 0x18gKartTable800E36B0 is it some weird type conversion? 
         if (((gPlayers[index].unk_000 & 0xC000) != 0) && (((func_802ABD10(gPlayers[index].unk_110.unk3A) << 0x18) >> 0x18) == 8)) {
             func_80298AC0(&gPlayers[index]);
         }
