@@ -496,7 +496,7 @@ GLOBAL_ASM("asm/non_matchings/code_80086E70/func_80088228.s")
 extern s16 D_80165762;
 extern s16 D_80165772;
 extern s16 D_80165782;
-extern ? D_80165C18;
+extern struct_80165C18_entry D_80165C18;
 
 s32 func_800882B0(s32 arg0, s32 arg1) {
     f32 temp_f0;
@@ -1628,8 +1628,8 @@ UNUSED void func_8008AE94(void) {
 extern s16 D_80165760;
 extern s16 D_80165770;
 extern s16 D_80165780;
-extern ? D_80165C18;
-extern ? D_80183DC8;
+extern struct_80165C18_entry D_80165C18;
+extern s32 D_80183DC8;
 
 void func_8008AE9C(s32 arg0) {
     f32 temp_f0;
@@ -1677,8 +1677,8 @@ UNUSED void func_8008B030(void) {
 extern s16 D_80165760;
 extern s16 D_80165770;
 extern s16 D_80165780;
-extern ? D_80165C18;
-extern ? D_80183DA8;
+extern struct_80165C18_entry D_80165C18;
+extern s32 D_80183DA8;
 
 void func_8008B038(s32 arg0) {
     f32 temp_f0;

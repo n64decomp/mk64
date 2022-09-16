@@ -445,7 +445,7 @@ void func_8028118C(?, s32, ?);                         /* extern */
 void guLookAtF(? *, f32, f32, f32, f32, f32, f32, f32, f32, f32); /* extern */
 extern s16 D_802874C4;
 extern s32 D_802874E0;
-extern ? D_80287500;
+extern Mat4 D_80287500;
 
 void func_802812C8(void) {
     f32 temp_f0;

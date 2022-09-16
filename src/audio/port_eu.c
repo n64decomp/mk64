@@ -31,7 +31,7 @@ extern ? aspMainDataEnd;
 extern ? aspMainDataStart;
 extern ? aspMainTextStart;
 extern ? rspbootTextEnd;
-extern ? rspbootTextStart;
+extern u64 rspbootTextStart;
 
 void *create_next_audio_frame_task(void) {
     u32 sp74;

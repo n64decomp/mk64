@@ -139,7 +139,7 @@ u16 func_8001FD78(Player *player, f32 posX, f32 arg2, f32 posZ) {
 void func_8001F9E4(s8);                                /* extern */
 extern s16 D_80164AB0;
 extern s16 D_80164AC0;
-extern ? D_80164AD0;
+extern s32 D_80164AD0;
 extern u16 gFramebuffer0;
 extern u16 gFramebuffer1;
 extern u16 gFramebuffer2;
@@ -306,9 +306,9 @@ typedef struct {
     /* 0x001 */ char pad1[0x91F];                   /* maybe part of unk0[0x920]? */
 } struct_D_802DFB80;                                /* size = 0x920 */
 
-extern ? D_80164AAE;
+extern s16 D_80164AAE;
 extern s16 D_80164AB0;
-extern ? D_80164ABE;
+extern s16 D_80164ABE;
 extern s16 D_80164AC0;
 extern Player *D_80164AD0;
 extern u16 gFramebuffer0;
@@ -379,9 +379,9 @@ typedef struct {
     /* 0x001 */ char pad1[0x91F];                   /* maybe part of unk0[0x920]? */
 } struct_D_802DFB80;                                /* size = 0x920 */
 
-extern ? D_80164AAE;
+extern s16 D_80164AAE;
 extern s16 D_80164AB0;
-extern ? D_80164ABE;
+extern s16 D_80164ABE;
 extern s16 D_80164AC0;
 extern Player *D_80164AD0;
 extern u16 gFramebuffer0;
@@ -446,9 +446,9 @@ typedef struct {
     /* 0x001 */ char pad1[0x91F];                   /* maybe part of unk0[0x920]? */
 } struct_D_802DFB80;                                /* size = 0x920 */
 
-extern ? D_80164AAE;
+extern s16 D_80164AAE;
 extern s16 D_80164AB0;
-extern ? D_80164ABE;
+extern s16 D_80164ABE;
 extern s16 D_80164AC0;
 extern Player *D_80164AD0;
 extern u16 gFramebuffer0;
@@ -1407,7 +1407,7 @@ extern s32 D_80165C20;
 extern u32 D_8018D474;
 static f32 D_800DDBD4[8] = { 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f };
 static ? D_800DDE9C;                                /* unable to generate initializer */
-static ? D_800E51D0;                                /* unable to generate initializer */
+static Vtx D_800E51D0;                                /* unable to generate initializer */
 static ? D_800E5210;                                /* unable to generate initializer */
 
 void func_80024374(Player *player, s8 arg1, s8 arg2) {
@@ -1586,13 +1586,13 @@ extern Gfx D_0D008CD8;
 extern void *D_80164B04;
 extern u8 *D_80164B08;
 extern u8 *D_80164B0C;
-extern ? D_80164B10;
-extern ? D_80164B20;
-extern ? D_80164B30;
-extern ? D_80164B40;
-extern ? D_80164B50;
-extern ? D_80164B60;
-extern ? D_8018D970;
+extern u16 D_80164B10;
+extern u16 D_80164B20;
+extern u16 D_80164B30;
+extern u16 D_80164B40;
+extern u16 D_80164B50;
+extern u16 D_80164B60;
+extern s32 D_8018D970;
 static ? D_800DDBB4;                                /* unable to generate initializer */
 static f32 D_800DDBD4[8] = { 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f };
 
@@ -2008,12 +2008,12 @@ extern Gfx D_0D008CD8;
 extern void *D_80164B04;
 extern u8 *D_80164B08;
 extern u8 *D_80164B0C;
-extern ? D_80164B10;
-extern ? D_80164B20;
-extern ? D_80164B30;
-extern ? D_80164B40;
-extern ? D_80164B50;
-extern ? D_80164B60;
+extern u16 D_80164B10;
+extern u16 D_80164B20;
+extern u16 D_80164B30;
+extern u16 D_80164B40;
+extern u16 D_80164B50;
+extern u16 D_80164B60;
 static ? *D_800DDBB4[8] = {
     &D_800E49C0,
     &D_800E4AC0,
@@ -2250,12 +2250,12 @@ extern Gfx D_0D008C78;
 extern Gfx D_0D008D10;
 extern u32 D_80164B08;
 extern u32 D_80164B0C;
-extern ? D_80164B10;
-extern ? D_80164B20;
-extern ? D_80164B30;
-extern ? D_80164B40;
-extern ? D_80164B50;
-extern ? D_80164B60;
+extern u16 D_80164B10;
+extern u16 D_80164B20;
+extern u16 D_80164B30;
+extern u16 D_80164B40;
+extern u16 D_80164B50;
+extern u16 D_80164B60;
 static ? *D_800DDBB4[8] = {
     &D_800E49C0,
     &D_800E4AC0,
@@ -2429,12 +2429,12 @@ extern Gfx D_0D008C78;
 extern Gfx D_0D008CD8;
 extern u32 D_80164B08;
 extern u32 D_80164B0C;
-extern ? D_80164B10;
-extern ? D_80164B20;
-extern ? D_80164B30;
-extern ? D_80164B40;
-extern ? D_80164B50;
-extern ? D_80164B60;
+extern u16 D_80164B10;
+extern u16 D_80164B20;
+extern u16 D_80164B30;
+extern u16 D_80164B40;
+extern u16 D_80164B50;
+extern u16 D_80164B60;
 static ? *D_800DDBB4[8] = {
     &D_800E49C0,
     &D_800E4AC0,

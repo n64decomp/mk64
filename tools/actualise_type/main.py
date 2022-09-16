@@ -1,5 +1,13 @@
 import os
 import re
+import argparse
+
+parser = argparse.ArgumentParser(description='Actualise type in C code')
+parser.add_argument('-k', '--know_the_unknow', action='store_true', help='replace ? by type if is found somewhere')
+parser.add_argument('-cv', "--change_var_name", action='store_true', help='change var name')
+parser.add_argument("-cf", "--change_type_var", action='store_true', help="change type of var")
+
+arg = parser.parse_args()
 
 root = "."
 
@@ -20,7 +28,7 @@ ban_type = [
 static = {}
 
 def check_file_and_folder(path:str, name:str) -> bool:
-    if not (name.endswith(".c")):
+    if not (name.endswith(".c") or name.endswith(".h")):
         return True
     
     if "tools" in path:
@@ -64,26 +72,76 @@ def find_type(prefix = ""):
                     else:
                         number_type_var[i[0]] = 1
 
-find_type()
+def know_the_unknow():
+    find_type()
 
-find_type("static")
+    find_type("static")
 
-find_type("const")
+    find_type("const")
 
-find_type("struct")
+    find_type("struct")
 
-find_type("extern")
+    find_type("extern")
 
-for path, subdirs, files in os.walk(root):
-    for name in files:
-        if check_file_and_folder(path, name):
-            continue
-        
-        print(os.path.join(path, name))
-        with open(os.path.join(path, name), "r+") as f:
-            data = f.read()
-            for i in var:
-                data = replace_type(i, var[i], data)
+    print(var)
+
+    for path, subdirs, files in os.walk(root):
+        for name in files:
+            if check_file_and_folder(path, name):
+                continue
             
-            f.seek(0)
-            f.write(data)
+            print(os.path.join(path, name))
+            with open(os.path.join(path, name), "r+") as f:
+                data = f.read()
+                for i in var:
+                    data = replace_type(i, var[i], data)
+                
+                f.seek(0)
+                f.write(data)
+
+def change_var_name():
+
+    old_name = input("Old name: ")
+    new_name = input("New name: ")
+
+    for path, subdirs, files in os.walk(root):
+        for name in files:
+            if check_file_and_folder(path, name):
+                continue
+            
+            print(os.path.join(path, name))
+            with open(os.path.join(path, name), "r+") as f:
+                data = f.read()
+                data = data.replace(old_name, new_name)
+                
+                f.seek(0)
+                f.write(data)
+
+def change_type_var():
+    name_var = input("Name var: ")
+    new_type = input("New type: ")
+
+    for path, subdirs, files in os.walk(root):
+        for name in files:
+            if check_file_and_folder(path, name):
+                continue
+            
+            print(os.path.join(path, name))
+            with open(os.path.join(path, name), "r+") as f:
+                data = f.read()
+                data = replace_type(name_var, new_type, data)
+                
+                f.seek(0)
+                f.write(data)
+
+def main():
+    if arg.know_the_unknow:
+        print("actualise type")
+        know_the_unknow()
+    elif arg.change_var_name:
+        change_var_name()
+    elif arg.change_type_var:
+        change_type_var()
+
+if __name__ == "__main__":
+    main()
