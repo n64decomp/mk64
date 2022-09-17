@@ -3599,7 +3599,7 @@ void func_8002F730(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         func_8003F46C(player, &sp5C, &sp68, &spE8, &sp78, &spCC, &spC8, &spC4);
     }
     player->unk_074 = func_802ABE30(spCC, spC8, spC4, player->unk_110.unk3A);
-    if (((player->unk_000 & 0x4000) == 0x4000) && (((gActiveScreenMode == SCREEN_MODE_1P)) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
+    if (((player->unk_000 & 0x4000) == 0x4000) && ((temp_v0 = gActiveScreenMode, (temp_v0 == SCREEN_MODE_1P)) || (temp_v0 == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL) || (temp_v0 == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
         func_80029B4C(player, spCC, spC8, spC4);
     } else {
         func_8002A194(player, spCC, spC8, spC4);
@@ -4856,7 +4856,7 @@ void func_80032CB0(Player *player, f32 arg1) {
 
 void func_80032D94(Player *player) {
     f64 some_multiplier;
-    s32 player_index;
+    UNUSED s32 player_index;
 
     player_index = get_player_index_for_player(player);
     if ((0.0                            <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDBA8))) {
