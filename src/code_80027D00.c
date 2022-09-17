@@ -517,13 +517,12 @@ void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
 
     temp_v0 = player->unk_000;
     if (!(temp_v0 & 0x2000)) {
-        temp_v0_2 = gActiveScreenMode;
-        switch (temp_v0_2) {                        /* irregular */
-        case 0:
+        switch (gActiveScreenMode) {                        /* irregular */
+        case SCREEN_MODE_1P:
             sp1E = func_8001FB0C(player, camera1, (f32) D_8016557C, 0.0f);
             break;
-        case 1:
-        case 2:
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             temp_v0_3 = func_8001FB0C(player, camera1, (f32) D_8016557C, 0.0f);
             sp1E = temp_v0_3;
             if (temp_v0_3 == 1) {
@@ -532,7 +531,7 @@ void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
                 sp1E = func_8001FB0C(player, camera2, (f32) D_8016557C, 0.0f);
             }
             break;
-        case 3:
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
             temp_v0_4 = func_8001FB0C(player, camera1, (f32) D_8016557C, 0.0f);
             sp1E = temp_v0_4;
             if (temp_v0_4 == 1) {
@@ -554,7 +553,7 @@ void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
             }
             break;
         }
-        if ((sp1E == 1) || ((player->unk_000 & 0x100) == 0x100) || (gModeSelection == 3) || (temp_v0_7 = player->unk_0CA, ((temp_v0_7 & 2) != 0)) || (temp_v0_7 & 8) || (*(&D_801633F8 + (arg2 * 2)) == (s16) 1U)) {
+        if ((sp1E == 1) || ((player->unk_000 & 0x100) == 0x100) || (gModeSelection == BATTLE) || (temp_v0_7 = player->unk_0CA, ((temp_v0_7 & 2) != 0)) || (temp_v0_7 & 8) || (*(&D_801633F8 + (arg2 * 2)) == (s16) 1U)) {
             temp_t4 = player->unk_0BC & ~0x1000;
             player->unk_0BC = temp_t4;
             if (((temp_t4 & 0x80) == 0x80) || ((temp_t4 & 0x40) == 0x40) || ((temp_t4 & 0x400) == 0x400) || ((temp_t4 & 0x4000) == 0x4000) || ((temp_t4 & 0x80000) == 0x80000) || ((temp_t4 & 0x800000) == 0x800000) || ((temp_t4 & 0x01000000) == 0x01000000) || ((temp_t4 & 0x02000000) == 0x02000000) || ((temp_t4 & 0x20000) == 0x20000) || (player->unk_044 & 0x800)) {
@@ -2975,7 +2974,7 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         func_8008F5A4(player, arg3);
     }
     player->unk_074 = func_802ABE30(spFC, spF8, spF4, player->unk_110.unk3A);
-    if (((player->unk_000 & 0x4000) == 0x4000) && ((temp_v0_16 = gActiveScreenMode, (temp_v0_16 == 0)) || (temp_v0_16 == 2) || (temp_v0_16 == 1))) {
+    if (((player->unk_000 & 0x4000) == 0x4000) && ((temp_v0_16 = gActiveScreenMode, (temp_v0_16 == SCREEN_MODE_1P)) || (temp_v0_16 == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL) || (temp_v0_16 == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
         func_80029B4C(player, spFC, spF8, spF4);
     } else {
         func_8002A194(player, spFC, spF8, spF4);
@@ -3327,7 +3326,7 @@ block_63:
         func_8008F5A4(player, arg3);
     }
     player->unk_074 = func_802ABE30(spD0, spCC, spC8, player->unk_110.unk3A);
-    if (((player->unk_000 & 0x4000) == 0x4000) && ((temp_v0_11 = gActiveScreenMode, (temp_v0_11 == 0)) || (temp_v0_11 == 2) || (temp_v0_11 == 1))) {
+    if (((player->unk_000 & 0x4000) == 0x4000) && ((temp_v0_11 = gActiveScreenMode, (temp_v0_11 == SCREEN_MODE_1P)) || (temp_v0_11 == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL) || (temp_v0_11 == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
         func_80029B4C(player, spD0, spCC, spC8);
     } else {
         func_8002A194(player, spD0, spCC, spC8);
@@ -3600,7 +3599,7 @@ void func_8002F730(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         func_8003F46C(player, &sp5C, &sp68, &spE8, &sp78, &spCC, &spC8, &spC4);
     }
     player->unk_074 = func_802ABE30(spCC, spC8, spC4, player->unk_110.unk3A);
-    if (((player->unk_000 & 0x4000) == 0x4000) && (((gActiveScreenMode == 0)) || (gActiveScreenMode == 2) || (gActiveScreenMode == 1))) {
+    if (((player->unk_000 & 0x4000) == 0x4000) && (((gActiveScreenMode == SCREEN_MODE_1P)) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
         func_80029B4C(player, spCC, spC8, spC4);
     } else {
         func_8002A194(player, spCC, spC8, spC4);
@@ -5551,7 +5550,7 @@ void func_80033AE0(Player *player, struct Controller *arg1, s8 arg2) {
     player->unk_0FA = (s16) temp_t9;
     if (((sp2D0 >= 0x5A) || (sp2D0 < -0x59)) && ((player->unk_044 & 0x4000) == 0)) {
         temp_v1_4 = player->unk_0BC;
-        if (((temp_v1_4 & 0x10) == 0) && (gCCSelection == 2) && (gModeSelection != 3) && ((temp_v1_4 & 8) == 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 40.0f) && (player->unk_204 == 0)) {
+        if (((temp_v1_4 & 0x10) == 0) && (gCCSelection == CC_150) && (gModeSelection != BATTLE) && ((temp_v1_4 & 8) == 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 40.0f) && (player->unk_204 == 0)) {
             player->unk_00C |= 0x80;
         }
     }
@@ -5889,7 +5888,7 @@ block_125:
             player->unk_078 = phi_t4;
         }
     }
-    if (gModeSelection == 3) {
+    if (gModeSelection == BATTLE) {
         player->unk_078 = (s16) (s32) ((f64) player->unk_078 * 1.7);
     }
 }
@@ -6395,7 +6394,7 @@ void func_80037BB4(Player *player, f32 *arg1) {
             player->unk_02E += temp_v0;
         }
         if (!(player->unk_000 & 0x1000)) {
-            if (gModeSelection == 3) {
+            if (gModeSelection == BATTLE) {
                 func_800378E8(player, &sp20, arg1);
                 return;
             }
@@ -6409,7 +6408,7 @@ void func_80037BB4(Player *player, f32 *arg1) {
         player->unk_02E += temp_v0;
     }
     if (!(player->unk_000 & 0x1000)) {
-        if (gModeSelection == 3) {
+        if (gModeSelection == BATTLE) {
             func_80037A4C(player, &sp20, arg1);
             return;
         }
@@ -6490,7 +6489,7 @@ void func_80037CFC(Player *player, struct Controller *controller, u8 arg2) {
                 func_80030FC8(player);
                 func_80030E00(player);
             } else {
-                if (gModeSelection == 3) {
+                if (gModeSelection == BATTLE) {
                     func_80031F48(player, 2.0f);
                 } else {
                     func_80031F48(player, 1.0f);
@@ -6602,7 +6601,7 @@ void func_800382DC(void) {
     u16 temp_v0_6;
 
     switch (gActiveScreenMode) {                              /* irregular */
-    case 0:
+    case SCREEN_MODE_1P:
         switch (gModeSelection) {                        /* switch 1; irregular */
         case 0:                                     /* switch 1 */
             func_800381AC(gPlayerOne, gControllerOne, 0);
@@ -6637,12 +6636,12 @@ void func_800382DC(void) {
             break;
         }
         break;
-    case 1:
-    case 2:
+    case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+    case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
         func_800381AC(gPlayerOne, gControllerOne, 0);
         func_800381AC(gPlayerTwo, gControllerTwo, 1);
         return;
-    case 3:
+    case SCREEN_MODE_3P_4P_SPLITSCREEN:
         func_800381AC(gPlayerOne, gControllerOne, 0);
         func_800381AC(gPlayerTwo, gControllerTwo, 1);
         func_800381AC(gPlayerThree, gControllerThree, 2);

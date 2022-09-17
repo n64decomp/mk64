@@ -546,7 +546,7 @@ void func_80005B18(void) {
         if (D_80162DEC > 100) {
             D_80162DEC = 100;
         }
-        if ((gModeSelection == TIME_TRIALS) && (gActiveScreenMode == 0)) {
+        if ((gModeSelection == TIME_TRIALS) && (gActiveScreenMode == SCREEN_MODE_1P)) {
             if ((D_80162DD4 == 0) && (gLapCountByPlayerId[4] != 3)) {
                 func_800057DC(); //gModeSelection, &D_80162DDC, 3, &D_80162DD4);
             }
@@ -586,7 +586,7 @@ void func_80005B18(void) {
     {
       D_80162DEC = 100;
     }
-    if ((gModeSelection == TIME_TRIALS) && (gActiveScreenMode == 0))
+    if ((gModeSelection == TIME_TRIALS) && (gActiveScreenMode == SCREEN_MODE_1P))
     {
       if ((D_80162DD4 == 0) && (gLapCountByPlayerId[1] != 3))
       {

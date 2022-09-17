@@ -1184,7 +1184,7 @@ block_3:
         func_80282D90(arg0, temp_v0_4->unk4, temp_v0_4->unk8, 0);
         break;
     }
-    if (gCCSelection == 3) {
+    if (gCCSelection == CC_EXTRA) {
         sp2C = D_80286B34[D_800DC5E4];
     }
     if (sp2C == D_802876D2) {

@@ -378,7 +378,7 @@ void func_8008C9EC(Player *player, s8 arg1) {
         if ((s16) ((s32) (temp_t7 & 0xFFFF) / (s32) (0x10000 / (s32) (0x168 / (s32) ((s16) (&sp30[0])[temp_v1] / 182)))) == 0) {
             player->unk_0B2 = temp_v1 - 1;
             if (player->unk_0B2 <= 0) {
-                if (gModeSelection == 3) {
+                if (gModeSelection == BATTLE) {
                     func_8006B8B4(player, arg1);
                 }
                 func_8008C8C4(player, arg1);
@@ -395,7 +395,7 @@ void func_8008C9EC(Player *player, s8 arg1) {
             player->unk_0B2 = temp_v1_2 - 1;
             if (player->unk_0B2 <= 0) {
                 func_8008C8C4(player, arg1);
-                if (gModeSelection == 3) {
+                if (gModeSelection == BATTLE) {
                     func_8006B8B4(player, arg1);
                 }
             }
@@ -1072,7 +1072,7 @@ void func_8008E4A4(Player* player, s8 arg1) {
         if ((D_80165460[arg1] == 1) && ((player->unk_000 & 0x4000) == 0x4000)) {
             player->unk_09C += 100.0f;
         }
-        if (gModeSelection == 3) {
+        if (gModeSelection == BATTLE) {
             func_8006B8B4(player, arg1);
         }
     } else {
@@ -1089,7 +1089,7 @@ void func_8008E4A4(Player* player, s8 arg1) {
                 D_80165190[3][arg1] = 1;
                 player->unk_042 = 0;
 
-                if (gModeSelection == 3) {
+                if (gModeSelection == BATTLE) {
                     func_8006B8B4(player, arg1);
                 }
                 if ((D_80165460[arg1] == 1) && ((player->unk_000 & 0x4000) == 0x4000)) {
@@ -1436,7 +1436,7 @@ void func_8008F494(Player* player, s8 arg1) {
          ((player->unk_0BC & 0x40) != 0) ||
          ((player->unk_0BC << 7) < 0) ||
          ((player->unk_0BC << 6) < 0) ||
-         ((player->unk_0BC & 0x400) != 0)) && (gModeSelection == 3)) {
+         ((player->unk_0BC & 0x400) != 0)) && (gModeSelection == BATTLE)) {
         player->unk_044 |= 0x8000;
     }
 
@@ -2170,7 +2170,7 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
                 if (player->unk_000 & 0x4000) {
                     func_800C9018((u8) arg1, 0x0100FA28);
                 }
-                if (gModeSelection == 3) {
+                if (gModeSelection == BATTLE) {
                     func_8006B8B4(player, arg1);
                 }
                 player->unk_0CA &= 0xFFFD;

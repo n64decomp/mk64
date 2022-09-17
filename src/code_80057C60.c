@@ -2833,7 +2833,7 @@ void func_8005CB60(s32 playerId, s32 arg1) {
         playerId = temp_a3;
         f32_step_towards(&temp_s0->rankScaling, 0x3F800000, 0x3E000000, temp_a3);
         switch (gScreenModeSelection) {                        /* irregular */
-        case 0:
+        case SCREEN_MODE_1P:
             s16_step_towards(&temp_s0->slideRankX, 0x1C, 7, playerId);
             if (D_8018D1FC != 0) {
                 s16_step_towards(&temp_s0->slideRankY, -0x28, 1);
@@ -2841,11 +2841,11 @@ void func_8005CB60(s32 playerId, s32 arg1) {
                 s16_step_towards(&temp_s0->slideRankY, -0x10, 4);
             }
             break;
-        case 2:
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             s16_step_towards(&temp_s0->slideRankX, 0x1C, 7, playerId);
             s16_step_towards(&temp_s0->slideRankY, -0x10, 4);
             break;
-        case 1:
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             s16_step_towards(&temp_s0->slideRankX, 0x1C, 7, playerId);
             s16_step_towards(&temp_s0->slideRankY, -0x10, 4);
             s16_step_towards(&temp_s0->lap1CompletionTimeX, 0xE4, 0x10);
@@ -2853,7 +2853,7 @@ void func_8005CB60(s32 playerId, s32 arg1) {
             s16_step_towards(&temp_s0->lap3CompletionTimeX, 0xE4, 0x10);
             s16_step_towards(&temp_s0->totalTimeX, 0xE4, 0x10);
             break;
-        case 3:
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
             if ((playerId & 1) == 1) {
                 s16_step_towards(&temp_s0->slideRankX, -8, 2, playerId);
             } else {
@@ -10989,8 +10989,8 @@ void func_8006CEC0(void *arg0, s16 arg1, s8 arg2, s8 arg3) {
         }
 block_22:
         temp_v0_4 = gActiveScreenMode;
-        if (temp_v0_4 != 0) {
-            if ((temp_v0_4 != 1) && (temp_v0_4 != 2) && (temp_v0_4 != 3)) {
+        if (temp_v0_4 != SCREEN_MODE_1P) {
+            if ((temp_v0_4 != SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL) && (temp_v0_4 != SCREEN_MODE_2P_SPLITSCREEN_VERTICAL) && (temp_v0_4 != SCREEN_MODE_3P_4P_SPLITSCREEN)) {
                 return;
             }
             if ((temp_t1_2 != 0) && ((temp_v1 & 0x4000000) != 0x4000000) && ((temp_v1 & 0x400) != 0x400) && ((temp_v1 & 0x1000000) != 0x1000000)) {
@@ -11132,14 +11132,14 @@ void func_8006D474(void *arg0, s8 arg1, s8 arg2) {
             if (temp_v0_2 != 1) {
                 if (temp_v0_2 != 6) {
 
-                } else if (gActiveScreenMode == 3) {
+                } else if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
                     if (arg2 == arg1) {
                         func_80066BAC(arg0, arg1, phi_s2, arg2);
                     }
                 } else if (arg2 == arg1) {
                     func_80066BAC(arg0, arg1, phi_s2, arg2);
                 }
-            } else if (gActiveScreenMode == 3) {
+            } else if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
                 if (arg2 == arg1) {
                     func_8006538C(arg0, arg1, phi_s2, arg2);
                 }
@@ -11150,56 +11150,56 @@ void func_8006D474(void *arg0, s8 arg1, s8 arg2) {
             switch (temp_t8_2) {                    /* switch 1 */
             case 1:                                 /* switch 1 */
             case 9:                                 /* switch 1 */
-                if (gActiveScreenMode == 0) {
+                if (gActiveScreenMode == SCREEN_MODE_1P) {
                     func_800691B8(arg0, arg1, phi_s2, arg2);
                 } else if (arg2 == arg1) {
                     func_800691B8(arg0, arg1, phi_s2, arg2);
                 }
                 break;
             case 2:                                 /* switch 1 */
-                if (gActiveScreenMode == 0) {
+                if (gActiveScreenMode == SCREEN_MODE_1P) {
                     func_800696CC(arg0, arg1, phi_s2, arg2, temp_s5->unkAD4);
                 } else if (arg2 == arg1) {
                     func_800696CC(arg0, arg1, phi_s2, arg2, temp_s5->unkAD4);
                 }
                 break;
             case 3:                                 /* switch 1 */
-                if (gActiveScreenMode == 0) {
+                if (gActiveScreenMode == SCREEN_MODE_1P) {
                     func_80067280(arg0, arg1, phi_s2, arg2);
                 } else if (arg2 == arg1) {
                     func_80067280(arg0, arg1, phi_s2, arg2);
                 }
                 break;
             case 4:                                 /* switch 1 */
-                if (gActiveScreenMode == 0) {
+                if (gActiveScreenMode == SCREEN_MODE_1P) {
                     func_80069444(arg0, arg1, phi_s2, arg2);
                 } else if (arg2 == arg1) {
                     func_80069444(arg0, arg1, phi_s2, arg2);
                 }
                 break;
             case 5:                                 /* switch 1 */
-                if (gActiveScreenMode == 0) {
+                if (gActiveScreenMode == SCREEN_MODE_1P) {
                     func_80069938(arg0, arg1, phi_s2, arg2);
                 } else if (arg2 == arg1) {
                     func_80069938(arg0, arg1, phi_s2, arg2);
                 }
                 break;
             case 6:                                 /* switch 1 */
-                if (gActiveScreenMode == 0) {
+                if (gActiveScreenMode == SCREEN_MODE_1P) {
                     func_80069BA8(arg0, arg1, phi_s2, arg2);
                 } else if (arg2 == arg1) {
                     func_80069BA8(arg0, arg1, phi_s2, arg2);
                 }
                 break;
             case 7:                                 /* switch 1 */
-                if (gActiveScreenMode == 0) {
+                if (gActiveScreenMode == SCREEN_MODE_1P) {
                     func_80069DB8(arg0, arg1, phi_s2, arg2);
                 } else if (arg2 == arg1) {
                     func_80069DB8(arg0, arg1, phi_s2, arg2);
                 }
                 break;
             case 8:                                 /* switch 1 */
-                if (gActiveScreenMode == 0) {
+                if (gActiveScreenMode == SCREEN_MODE_1P) {
                     func_80067604(arg0, arg1, phi_s2, arg2);
                 } else if (arg2 == arg1) {
                     func_80067604(arg0, arg1, phi_s2, arg2);
@@ -11209,7 +11209,7 @@ void func_8006D474(void *arg0, s8 arg1, s8 arg2) {
             temp_t6 = temp_s5->unk53A;
             switch (temp_t6) {                      /* switch 2 */
             case 1:                                 /* switch 2 */
-                if (gActiveScreenMode == 3) {
+                if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
                     if (arg2 == arg1) {
                         func_80065AB0(arg0, arg1, phi_s2, arg2);
                     }
@@ -11221,7 +11221,7 @@ void func_8006D474(void *arg0, s8 arg1, s8 arg2) {
             case 3:                                 /* switch 2 */
             case 4:                                 /* switch 2 */
             case 5:                                 /* switch 2 */
-                if (gActiveScreenMode == 3) {
+                if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
                     if (arg2 == arg1) {
                         func_80065F0C(arg0, arg1, phi_s2, arg2);
                     }
@@ -11230,7 +11230,7 @@ void func_8006D474(void *arg0, s8 arg1, s8 arg2) {
                 }
                 break;
             case 9:                                 /* switch 2 */
-                if (gActiveScreenMode == 3) {
+                if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
                     if (arg2 == arg1) {
                         func_800664E0(arg0, arg1, phi_s2, arg2);
                     }
@@ -11239,7 +11239,7 @@ void func_8006D474(void *arg0, s8 arg1, s8 arg2) {
                 }
                 break;
             case 11:                                /* switch 2 */
-                if (gActiveScreenMode == 3) {
+                if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
                     if (arg2 == arg1) {
                         func_8006A01C(arg0, arg1, phi_s2, arg2);
                     }
@@ -11287,7 +11287,7 @@ void func_8006DD3C(Player* arg0, s8 arg1, s8 arg2) {
                 if (temp_v0 == 5) {
                     func_8006A280(arg0, arg1, temp_s0, arg2);
                 }
-            } else if (gActiveScreenMode == 3) {
+            } else if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
                 if (arg2 == arg1) {
                     func_80066998(arg0, arg1, temp_s0, arg2);
                 }

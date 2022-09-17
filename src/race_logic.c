@@ -270,7 +270,7 @@ void func_8028E438(void) {
             D_80150148 = (f32) ((f32) temp_v0->screenWidth / (f32) temp_v0->screenHeight);
             if (phi_v1_4 == 4) {
                 D_8015F894 = 2;
-                gActiveScreenMode = 0;
+                gActiveScreenMode = SCREEN_MODE_1P;
                 D_800DC5EC->screenWidth = temp_v0->screenWidth;
                 D_800DC5EC->screenHeight = temp_v0->screenHeight;
                 D_800DC5EC->screenStartX = temp_v0->screenStartX;
@@ -405,7 +405,7 @@ void func_8028E678(void) {
                 D_800DC5F0->screenStartX = D_800DC5EC->screenStartX;
                 D_800DC5F0->screenStartY = D_800DC5EC->screenStartY;
 
-                gActiveScreenMode = 2;
+                gActiveScreenMode = SCREEN_MODE_2P_SPLITSCREEN_VERTICAL;
                 D_80150148 = 1.33333337;
                 gPlayerCountSelection1 = 2;
                 func_8003DB5C();
@@ -771,9 +771,8 @@ void func_8028F588(void) {
     s16 var_v0_8;
     s32 temp_v0;
 
-    temp_v0 = gActiveScreenMode;
-    switch (temp_v0) {                              /* irregular */
-    case 0:
+    switch (gActiveScreenMode) {                              /* irregular */
+    case SCREEN_MODE_1P:
         var_v0 = (s16) (s32) (320.0f * D_802BA034);
         if (var_v0 < 0) {
             var_v0 = 1;
@@ -785,7 +784,7 @@ void func_8028F588(void) {
         }
         D_800DC5EC->unk2E = var_v0_2;
         return;
-    case 2:
+    case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
         var_v0_3 = (s16) (s32) (160.0f * D_802BA034);
         if (var_v0_3 <= 0) {
             var_v0_3 = 1;
@@ -803,7 +802,7 @@ void func_8028F588(void) {
         D_800DC5EC->unk2E = var_v0_4;
         D_800DC5F0->unk2E = var_v0_4;
         return;
-    case 1:
+    case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
         var_v0_5 = (s16) (s32) (320.0f * D_802BA034);
         if (var_v0_5 <= 0) {
             var_v0_5 = 1;
@@ -821,7 +820,7 @@ void func_8028F588(void) {
         D_800DC5EC->unk2E = var_v0_6;
         D_800DC5F0->unk2E = var_v0_6;
         return;
-    case 3:
+    case SCREEN_MODE_3P_4P_SPLITSCREEN:
         var_v0_7 = (s16) (s32) (160.0f * D_802BA034);
         if (var_v0_7 <= 0) {
             var_v0_7 = 1;
@@ -936,7 +935,7 @@ block_20:
             var_s2 += 1;
             var_s3 += 0xDD8;
             if (var_s2 == 4) {
-                if ((gEnableDebugMode != 0) && (gModeSelection != 3)) {
+                if ((gEnableDebugMode != 0) && (gModeSelection != BATTLE)) {
                     temp_a1 = gControllerOne;
                     if (temp_a1->unk6 & 0x800) {
                         gLapCountByPlayerId->unk0 = 2;
@@ -1040,7 +1039,7 @@ void func_8028FCBC(void) {
         case 1:
             func_8028F914();
             if (D_802BA034 == 1.0f) {
-                if (gActiveScreenMode != 0) {
+                if (gActiveScreenMode != SCREEN_MODE_1P) {
                     if (gCurrentCourseId == COURSE_LUIGI_RACEWAY) {
                         func_802A7940();
                     } else if (gCurrentCourseId == COURSE_WARIO_STADIUM) {

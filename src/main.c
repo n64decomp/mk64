@@ -158,7 +158,7 @@ u16 gEnableDebugMode = 0;
 s32 gGamestateNext = 7; // = COURSE_DATA_MENU?;
 UNUSED s32 D_800DC528 = 1;
 s32 gActiveScreenMode = SCREEN_MODE_1P;
-s32 gScreenModeSelection = 0;
+s32 gScreenModeSelection = SCREEN_MODE_1P;
 UNUSED s32 D_800DC534  = 0;
 s32 gPlayerCountSelection1 = 2;
 

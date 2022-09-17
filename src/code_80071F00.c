@@ -3695,20 +3695,19 @@ extern s32 D_80183DB8;
 void func_80078F64(void) {
     s32 temp_v0;
 
-    temp_v0 = gScreenModeSelection;
-    switch (temp_v0) {                              /* irregular */
-    case 0:
+    switch (gScreenModeSelection) {                              /* irregular */
+    case SCREEN_MODE_1P:
         func_800723A4(D_80183DB8.unk0, 1);
         return;
-    case 2:
-        func_800723A4(D_80183DB8.unk0, 1);
-        func_800723A4(D_80183DB8.unk4, 1);
-        return;
-    case 1:
+    case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
         func_800723A4(D_80183DB8.unk0, 1);
         func_800723A4(D_80183DB8.unk4, 1);
         return;
-    case 3:
+    case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+        func_800723A4(D_80183DB8.unk0, 1);
+        func_800723A4(D_80183DB8.unk4, 1);
+        return;
+    case SCREEN_MODE_3P_4P_SPLITSCREEN:
         func_800723A4(D_80183DB8.unk0, 1);
         func_800723A4(D_80183DB8.unk4, 1);
         func_800723A4(D_80183DB8.unk8, 1);
@@ -4782,7 +4781,7 @@ u8 gen_random_item(s16 arg0, s16 arg1) {
     var_a1 = &D_801658FD;
     D_801658FD = (u8) ((u32) (random_int(0x0064U) + (D_801658FD + D_801658FF) + gRaceFrameCounter) % 100U);
     temp_v1 = gModeSelection;
-    if (temp_v1 == 2) {
+    if (temp_v1 == VERSUS) {
         temp_v0 = gPlayerCountSelection1;
         switch (temp_v0) {                          /* irregular */
         case 2:
@@ -4798,7 +4797,7 @@ block_8:
             goto block_8;
         }
         var_v1 = *((arg0 * 0x64) + sp18 + *var_a1);
-    } else if (temp_v1 == 3) {
+    } else if (temp_v1 == BATTLE) {
         var_v1 = *(D_801658FD + segmented_to_virtual((u32) &D_0D008B14));
     } else {
         if (arg1 == 0) {
@@ -5105,14 +5104,14 @@ void func_8007B34C(s32 playerId) {
         break;
     case 2:
         temp_v0 = gActiveScreenMode;
-        if (temp_v0 == 0) {
+        if (temp_v0 == SCREEN_MODE_1P) {
             temp_v1 = &D_8018CA70[playerId];
             sp28 = temp_v1;
             s16_step_up_towards(&temp_v1->slideItemBoxY, 0x0040, 4);
             if (temp_v1->slideItemBoxY == 0x0040) {
                 func_80072488(temp_s0);
             }
-        } else if (temp_v0 == 3) {
+        } else if (temp_v0 == SCREEN_MODE_3P_4P_SPLITSCREEN) {
             if ((playerId == 0) || (playerId == 2)) {
                 temp_v1_2 = &D_8018CA70[playerId];
                 sp28 = temp_v1_2;
@@ -5169,11 +5168,11 @@ void func_8007B34C(s32 playerId) {
         break;
     case 11:
         temp_v0_2 = gActiveScreenMode;
-        if (temp_v0_2 == 0) {
+        if (temp_v0_2 == SCREEN_MODE_1P) {
             if (s16_step_down_towards((playerId * 0x84) + 0x48 + D_8018CA70, 0, 4) != 0) {
                 func_80072488(temp_s0);
             }
-        } else if (temp_v0_2 == 3) {
+        } else if (temp_v0_2 == SCREEN_MODE_3P_4P_SPLITSCREEN) {
             if ((playerId == 0) || (playerId == 2)) {
                 temp_v1_5 = &D_8018CA70[playerId];
                 sp28 = temp_v1_5;
@@ -6554,7 +6553,7 @@ void func_8007DDC0(s32 objectIndex) {
     }
     if (temp_s0->unk_04C == 0) {
         temp_v0_3 = gCCSelection;
-        if ((temp_v0_3 == 0) || (temp_v0_3 == 1) || (temp_v0_3 == 2) || (temp_v0_3 == 3)) {
+        if ((temp_v0_3 == CC_50) || (temp_v0_3 == CC_100) || (temp_v0_3 == CC_150) || (temp_v0_3 == CC_EXTRA)) {
             sp2C = 1150.0f;
         }
         func_8008A6DC(objectIndex, sp2C);
@@ -6736,7 +6735,7 @@ void func_8007E1F4(s32 objectIndex) {
     }
     if (temp_s0->unk_04C == 0) {
         temp_v0_3 = gCCSelection;
-        if ((temp_v0_3 == 0) || (temp_v0_3 == 1) || (temp_v0_3 == 2) || (temp_v0_3 == 3)) {
+        if ((temp_v0_3 == CC_50) || (temp_v0_3 == CC_100) || (temp_v0_3 == CC_150) || (temp_v0_3 == CC_EXTRA)) {
             sp2C = 700.0f;
         }
         func_8008A6DC(objectIndex, sp2C);

@@ -99,9 +99,9 @@ void func_8001C4D0(f32 posX, f32 posY, f32 posZ, s16 rot, u32 arg4, s32 cameraId
         temp_a3->unk2C = (s16) temp_v1->unk_02E;
         temp_a3->unk_AC = temp_v1->unk_02E;
         switch (gActiveScreenMode) {                          /* switch 1; irregular */
-        case 0:                                     /* switch 1 */
-        case 2:                                     /* switch 1 */
-            if (gModeSelection == 3) {
+        case SCREEN_MODE_1P:                                     /* switch 1 */
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:                                     /* switch 1 */
+            if (gModeSelection == BATTLE) {
                 temp_a3->unk_30[0] = 0.0f;
                 temp_a3->unk_3C[0] = 0.0f;
                 temp_a3->unk_3C[1] = 0.0f;
@@ -118,8 +118,8 @@ void func_8001C4D0(f32 posX, f32 posY, f32 posZ, s16 rot, u32 arg4, s32 cameraId
                 temp_a3->unk_3C[2] = 70.0f;
             }
             break;
-        case 1:                                     /* switch 1 */
-            if (gModeSelection == 3) {
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:                                     /* switch 1 */
+            if (gModeSelection == BATTLE) {
                 temp_a3->unk_30[0] = 0.0f;
                 temp_a3->unk_3C[0] = 0.0f;
                 temp_a3->unk_3C[1] = 0.0f;
@@ -135,8 +135,8 @@ void func_8001C4D0(f32 posX, f32 posY, f32 posZ, s16 rot, u32 arg4, s32 cameraId
                 temp_a3->unk_30[2] = -35.0f;
             }
             break;
-        case 3:                                     /* switch 1 */
-            if (gModeSelection == 3) {
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:                                     /* switch 1 */
+            if (gModeSelection == BATTLE) {
                 temp_a3->unk_30[0] = 0.0f;
                 temp_a3->unk_3C[0] = 0.0f;
                 temp_a3->unk_3C[1] = 0.0f;
@@ -411,7 +411,7 @@ void func_8001CCEC(Player *player, Camera *camera, f32 *arg2, f32 *arg3, f32 *ar
         }
     }
     if ((player->unk_0CA & 0x100) == 0x100) {
-        if ((gActiveScreenMode == 1) || (gActiveScreenMode == 2) || (gActiveScreenMode == 3)) {
+        if ((gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL) || (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN)) {
             temp_a0_5 = var_s2 + &D_80164A90;
             sp38 = temp_a0_5;
             sp3C = var_v1_2;
@@ -1135,9 +1135,8 @@ void func_8001EE98(Player *player, Camera *camera, s8 arg2) {
     if (camera == camera4) {
         var_s0 = 3;
     }
-    temp_v0 = gModeSelection;
-    switch (temp_v0) {                              /* irregular */
-    case 0:
+    switch (gModeSelection) {                              /* irregular */
+    case GRAND_PRIX:
         if (((player->unk_000 & 0x800) == 0x800) || (D_800DC51C == 1)) {
             *(&D_80152300 + (var_s0 * 2)) = 3;
         } else if (D_800DC5FC == 1) {
@@ -1146,7 +1145,7 @@ void func_8001EE98(Player *player, Camera *camera, s8 arg2) {
             func_8001A0DC((var_s0 * 2) + &D_80152300, camera, player, arg2, var_s0);
         }
         break;
-    case 3:
+    case BATTLE:
         if ((D_800DC51C == (u16) 1) || ((D_8015F894 == 2) && (D_80164A89 == 1))) {
             if (D_80164A88 == 0) {
                 func_80019ED0();
@@ -1170,7 +1169,7 @@ void func_8001EE98(Player *player, Camera *camera, s8 arg2) {
             *sp2C = 9;
         }
         break;
-    case 1:
+    case TIME_TRIALS:
         if (((gPlayerOne->unk_000 & 0x800) == 0x800) || (D_800DC51C == (u16) 1)) {
             D_80152300.unk0 = 3;
             *(&D_80152300 + 2) = 3;
@@ -1189,7 +1188,7 @@ void func_8001EE98(Player *player, Camera *camera, s8 arg2) {
             *sp2C = 1;
         }
         break;
-    case 2:
+    case VERSUS:
         if (((player->unk_000 & 0x800) == 0x800) || (D_800DC51C == (u16) 1) || (D_8015F894 == 2)) {
             *(&D_80152300 + (var_s0 * 2)) = 3;
         } else {
@@ -1385,7 +1384,7 @@ block_51:
     default:                                        /* switch 1 */
         var_f2 = sp34;
         break;
-    case 0:                                         /* switch 1 */
+    case SCREEN_MODE_1P:                                         /* switch 1 */
         temp_v0_5 = D_80164A28;
         if (temp_v0_5 == 1) {
             *(&D_80164498 + temp_t3) = 40.0f;
@@ -1405,9 +1404,9 @@ block_51:
 block_66:
         var_f2 = var_f0;
         break;
-    case 1:                                         /* switch 1 */
-    case 2:                                         /* switch 1 */
-    case 3:                                         /* switch 1 */
+    case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:                                         /* switch 1 */
+    case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:                                         /* switch 1 */
+    case SCREEN_MODE_3P_4P_SPLITSCREEN:                                         /* switch 1 */
         var_f0 = func_80014EE4(*arg1, sp2C);
         goto block_66;
     }
@@ -1429,7 +1428,7 @@ void func_8001F87C(s32 cameraId) {
     s32 var_a1;
     u16 temp_v0;
 
-    if (gActiveScreenMode == 0) {
+    if (gActiveScreenMode == SCREEN_MODE_1P) {
         var_a1 = 0;
         var_a2 = gPlayerOne;
         if (gModeSelection == GRAND_PRIX) {

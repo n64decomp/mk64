@@ -1456,14 +1456,14 @@ void func_80070780(void) {
         D_80165750 = 0x000B;
         D_80165758 = &D_800E5894;
         switch (gCCSelection) {                          /* switch 1; irregular */
-        case 1:                                     /* switch 1 */
-        case 3:                                     /* switch 1 */
+        case CC_100:                                     /* switch 1 */
+        case CC_EXTRA:                                     /* switch 1 */
             break;
-        case 0:                                     /* switch 1 */
+        case CC_50:                                     /* switch 1 */
             D_80165750 = 8;
             D_80165758 = &D_800E5854;
             break;
-        case 2:                                     /* switch 1 */
+        case CC_150:                                     /* switch 1 */
             D_80165750 = 0x000C;
             D_80165758 = &D_800E58EC;
             break;
@@ -1685,23 +1685,23 @@ void func_80070780(void) {
         if (gGamestate != 9) {
             temp_v0_10 = D_8018EDF3;
             var_s1_8 = D_80183EA0;
-            if ((temp_v0_10 == 1) || ((temp_v0_10 == 2) && (gModeSelection == (s32) 2))) {
+            if ((temp_v0_10 == 1) || ((temp_v0_10 == 2) && (gModeSelection == (s32) VERSUS))) {
                 switch (gCCSelection) {               /* switch 2; irregular */
-                case 0:                             /* switch 2 */
+                case CC_50:                             /* switch 2 */
                     D_8018D1C8 = 4;
                     D_8018D1D0 = 6;
                     goto block_75;
-                case 1:                             /* switch 2 */
+                case CC_100:                             /* switch 2 */
                     D_8018D1C8 = 5;
                     D_8018D1D0 = 8;
                     D_8018D1D8 = 8;
                     break;
-                case 2:                             /* switch 2 */
+                case CC_150:                             /* switch 2 */
                     D_8018D1C8 = 5;
                     D_8018D1D0 = 8;
                     D_8018D1D8 = 0x0000000A;
                     break;
-                case 3:                             /* switch 2 */
+                case CC_EXTRA:                             /* switch 2 */
                     D_8018D1C8 = 5;
                     D_8018D1D0 = 8;
                     D_8018D1D8 = 8;
@@ -1981,10 +1981,10 @@ void func_80071428(void) {
     D_8018D3C0 = 0x00000050;
     D_801657A2 = 0x0333;
     switch (temp_v1) {                              /* irregular */
-    case 0:
+    case GRAND_PRIX:
         D_8018D158 = 8;
         return;
-    case 1:
+    case TIME_TRIALS:
         D_80165638 = (func_800B4F2C(0, 40.0f, &D_8018D3DC, 1, 0x0078, 0x0028) & 0xFFFFF) - 1;
         D_80165648 = func_800B4E24(0) & 0xFFFFF;
         D_80165888 = 1;
@@ -2065,14 +2065,14 @@ void func_80071818(void) {
     D_8018D3C0 = 0x00000028;
     D_801657A2 = 0x0666;
     switch (temp_v1) {                              /* irregular */
-    case 0:
+    case GRAND_PRIX:
         D_8018D158 = 8;
         return;
-    case 2:
+    case VERSUS:
 block_7:
         D_8018D158 = 2;
         return;
-    case 3:
+    case BATTLE:
         goto block_7;
     }
 }
@@ -2136,7 +2136,7 @@ void func_80071A20(void) {
     D_8018CA70->unkDC = 0x007F;
     D_8018CA70->unkDE = 0x0101;
     D_8018CA70->unkE4 = 0x00DA;
-    if (gModeSelection == 3) {
+    if (gModeSelection == BATTLE) {
         D_8018CA70->itemBoxY = 0x005E;
         D_8018CA70->unkC8 = 0x00D0;
     }
@@ -2152,14 +2152,14 @@ void func_80071A20(void) {
     D_8018D3C0 = 0x00000028;
     D_801657A2 = 0x0666;
     switch (temp_v0) {                              /* irregular */
-    case 0:
+    case GRAND_PRIX:
         D_8018D158 = 8;
         return;
-    case 2:
+    case VERSUS:
 block_9:
         D_8018D158 = 2;
         return;
-    case 3:
+    case BATTLE:
         goto block_9;
     }
 }
@@ -2257,7 +2257,7 @@ void func_80071C28(void) {
     D_8018CA70->unk1EC = 0x00D4;
     D_8018CA70->unk1F8 = 0x00C8;
     D_8018CA70->unk1FA = 0x00C0;
-    if (gModeSelection == 3) {
+    if (gModeSelection == BATTLE) {
         D_8018CA70->itemBoxY = 0x00C8;
         D_8018CA70->unkC8 = 0x00C8;
         D_8018CA70->unk14C = 0x00B8;

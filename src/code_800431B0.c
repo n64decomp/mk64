@@ -5060,7 +5060,7 @@ void func_8004FA78(s32 playerId) {
     struct_8018CA70_entry *phi_s2;
 
     temp_v0 = gModeSelection;
-    if ((temp_v0 != 2) && (temp_v0 != 3)) {
+    if ((temp_v0 != VERSUS) && (temp_v0 != BATTLE)) {
         temp_s4 = &D_8018CA70[playerId];
         if (D_8018D320 == temp_s4->lapCount) {
             phi_s3 = &D_80165658;
@@ -5933,7 +5933,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
     gDisplayListHead = temp_v0_26 + 8;
     temp_v0_26->words.w0 = 0x06000000;
     temp_v0_26->words.w1 = (u32) &D_0D006950;
-    if ((spAC == gPlayerOne) && (gScreenModeSelection == 0)) {
+    if ((spAC == gPlayerOne) && (gScreenModeSelection == SCREEN_MODE_1P)) {
         temp_v0_27 = gDisplayListHead;
         gDisplayListHead = temp_v0_27 + 8;
         temp_v0_27->words.w1 = (u32) &D_0D007A40;

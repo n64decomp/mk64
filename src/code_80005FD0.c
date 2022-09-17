@@ -306,10 +306,9 @@ void set_places(void) {
     void *var_a2_3;
     void *var_a2_4;
 
-    temp_v0 = gModeSelection;
-    switch (temp_v0) {                              /* irregular */
-    case 0:
-    case 1:
+    switch (gModeSelection) {                              /* irregular */
+    case GRAND_PRIX:
+    case TIME_TRIALS:
         var_t4 = 8;
 block_7:
         if (D_8016348C == 0) {
@@ -685,9 +684,9 @@ block_80:
                 } while (var_t3_3 != var_t4);
             }
         }
-    case 3:
+    case BATTLE:
         return;
-    case 2:
+    case VERSUS:
         var_t4 = D_8018EDF3;
         goto block_7;
     }
@@ -760,10 +759,9 @@ void func_800070F4(void) {
     s8 var_a2;
     void *temp_t3_3;
 
-    temp_v0 = gModeSelection;
-    switch (temp_v0) {                              /* irregular */
-    case 0:
-    case 1:
+    switch (gModeSelection) {                              /* irregular */
+    case GRAND_PRIX:
+    case TIME_TRIALS:
         var_a2 = 8;
 block_7:
         var_a3 = 0;
@@ -926,9 +924,9 @@ block_35:
                 } while (var_a3_3 != var_a2);
             }
         }
-    case 3:
+    case BATTLE:
         return;
-    case 2:
+    case VERSUS:
         var_a2 = D_8018EDF3;
         goto block_7;
     }
@@ -1505,13 +1503,13 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
             temp_v0_2 = gCCSelection;
             var_f0 = 3.3333333f;
             switch (temp_v0_2) {                    /* irregular */
-            case 1:
-            case 3:
+            case CC_100:
+            case CC_EXTRA:
                 break;
-            case 0:
+            case CC_50:
                 var_f0 = 2.5f;
                 break;
-            case 2:
+            case CC_150:
                 var_f0 = 3.75f;
                 break;
             }
@@ -2492,11 +2490,11 @@ void func_80009B60(s32 playerId) {
                 temp_v0_5 = gModeSelection;
                 D_80162FD0 = 0;
                 switch (temp_v0_5) {                /* switch 1; irregular */
-                case 1:                             /* switch 1 */
-                case 2:                             /* switch 1 */
-                case 3:                             /* switch 1 */
+                case TIME_TRIALS:                             /* switch 1 */
+                case VERSUS:                             /* switch 1 */
+                case BATTLE:                             /* switch 1 */
                     break;
-                case 0:                             /* switch 1 */
+                case GRAND_PRIX:                             /* switch 1 */
                     break;
                 }
                 temp_a1 = sp34 + &D_801631E0;
@@ -5302,7 +5300,7 @@ void func_8000F628(void) {
     } while ((u32) var_v1 < (u32) &D_80164448);
     D_8016347A = 0;
     var_v1_2 = &D_80162F10;
-    if (gCCSelection == 3) {
+    if (gCCSelection == CC_EXTRA) {
         D_8016347A = 1;
     }
     var_v0_4 = &D_80162F50;
@@ -10515,8 +10513,8 @@ void func_8001A588(s32 arg0, Camera *camera, u16 *arg2, s8 arg3, s32 arg4) {
         }
     }
     temp_v0 = gModeSelection;
-    if ((temp_v0 != 3) && (*(&D_80164680 + (arg4 * 2)) == -1) && (*arg2 & 0x800) && (D_801646CC == 0) && (D_801646C8 == 0)) {
-        if (temp_v0 == 2) {
+    if ((temp_v0 != BATTLE) && (*(&D_80164680 + (arg4 * 2)) == -1) && (*arg2 & 0x800) && (D_801646CC == 0) && (D_801646C8 == 0)) {
+        if (temp_v0 == VERSUS) {
             func_8001A220(0, (s32) var_s0, arg4);
         } else {
             func_8001A124(0, (s32) var_s0, arg4);
@@ -10785,7 +10783,7 @@ void func_8001AC10(s32 playerId, s32 arg1, s32 *arg2) {
     var_a2 = arg2;
     temp_t9 = &gPlayerOne[playerId];
     sp2C = temp_t9;
-    if ((gModeSelection != (s32) 1) && (D_801646CC != (u16) 1) && !(temp_t9->unk_000 & 0x800)) {
+    if ((gModeSelection != (s32) TIME_TRIALS) && (D_801646CC != (u16) 1) && !(temp_t9->unk_000 & 0x800)) {
         temp_s0 = (playerId * 0x10) + &D_801642D8;
         temp_a1 = temp_s0->unk0;
         switch (temp_a1) {                          /* switch 1 */

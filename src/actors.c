@@ -1450,7 +1450,7 @@ void func_8029B06C(Camera *arg0, struct Actor *arg1) {
                     break;
             }
 
-            if (gActiveScreenMode == 0) {
+            if (gActiveScreenMode == SCREEN_MODE_1P) {
                 if (temp_f0 < 160000.0f) {
                     gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_0);
                 } else if (temp_f0 < 640000.0f) {
@@ -1482,7 +1482,7 @@ void func_8029B2E4(Camera *arg0, struct Actor *arg1) {
         func_802B5F74(spC8, arg1->pos, arg1->rot);
         if (func_802B4FF8(spC8, 0) != 0) {
 
-            if (gActiveScreenMode == 0) {
+            if (gActiveScreenMode == SCREEN_MODE_1P) {
                 if (temp_f0 < 160000.0f) {
                     gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_3);
                 } else if (temp_f0 < 640000.0f) {
@@ -1514,7 +1514,7 @@ void func_8029B4E0(Camera *arg0, struct Actor *arg1) {
         func_802B5F00(spC8, 0.1f);
         if (func_802B4FF8(spC8, 0) != 0) {
 
-            if (gActiveScreenMode == 0) {
+            if (gActiveScreenMode == SCREEN_MODE_1P) {
                 if (temp_f0 < 160000.0f) {
                     gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_9);
                 } else if (temp_f0 < 640000.0f) {
@@ -1545,7 +1545,7 @@ void func_8029B6EC(Camera *camera, struct Actor* arg1) {
         func_802B5F74(spC8, arg1->pos, arg1->rot);
         if (func_802B4FF8(spC8, 0) != 0) {
 
-            if (gActiveScreenMode == 0) {
+            if (gActiveScreenMode == SCREEN_MODE_1P) {
                 if (temp_f0 < 160000.0f) {
 
                     gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_6);
