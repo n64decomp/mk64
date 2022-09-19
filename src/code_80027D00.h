@@ -116,4 +116,12 @@ extern f64 D_800EDC30;
 extern f64 D_800EDC38;
 extern f64 D_800EDC40;
 
+extern struct Controller *gControllerEight;
+extern struct Controller *gControllerFour;
+extern struct Controller *gControllerOne;
+extern struct Controller *gControllerSeven;
+extern struct Controller *gControllerSix;
+extern struct Controller *gControllerThree;
+extern struct Controller *gControllerTwo;
+
 #endif

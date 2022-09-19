@@ -520,7 +520,7 @@ void update_obj_kiwano_fruit(struct KiwanoFruit *fruit) {
                 player->unk_034[0] -= temp_f2  * 0.7f;
                 player->unk_034[2] -= temp_f14 * 0.7f;
                 func_800C9060(player - gPlayerOne, 0x19007018U);
-                if (gModeSelection != 0) {
+                if (gModeSelection != GRAND_PRIX) {
                     D_80162DF8 = 1;
                 }
             }
@@ -1450,7 +1450,7 @@ void func_8029B06C(Camera *arg0, struct Actor *arg1) {
                     break;
             }
 
-            if (gActiveScreenMode == 0) {
+            if (gActiveScreenMode == SCREEN_MODE_1P) {
                 if (temp_f0 < 160000.0f) {
                     gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_0);
                 } else if (temp_f0 < 640000.0f) {
@@ -1482,7 +1482,7 @@ void func_8029B2E4(Camera *arg0, struct Actor *arg1) {
         func_802B5F74(spC8, arg1->pos, arg1->rot);
         if (func_802B4FF8(spC8, 0) != 0) {
 
-            if (gActiveScreenMode == 0) {
+            if (gActiveScreenMode == SCREEN_MODE_1P) {
                 if (temp_f0 < 160000.0f) {
                     gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_3);
                 } else if (temp_f0 < 640000.0f) {
@@ -1514,7 +1514,7 @@ void func_8029B4E0(Camera *arg0, struct Actor *arg1) {
         func_802B5F00(spC8, 0.1f);
         if (func_802B4FF8(spC8, 0) != 0) {
 
-            if (gActiveScreenMode == 0) {
+            if (gActiveScreenMode == SCREEN_MODE_1P) {
                 if (temp_f0 < 160000.0f) {
                     gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_9);
                 } else if (temp_f0 < 640000.0f) {
@@ -1545,7 +1545,7 @@ void func_8029B6EC(Camera *camera, struct Actor* arg1) {
         func_802B5F74(spC8, arg1->pos, arg1->rot);
         if (func_802B4FF8(spC8, 0) != 0) {
 
-            if (gActiveScreenMode == 0) {
+            if (gActiveScreenMode == SCREEN_MODE_1P) {
                 if (temp_f0 < 160000.0f) {
 
                     gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_6);
@@ -3323,7 +3323,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
         if (!(player->unk_0BC & 0x80000000) && !(player->unk_000 & 0x100)) {
             if (func_8029FB80(player, actor) == 1) {
                 func_800C98B8(actor->pos, actor->velocity, 0x19009005U);
-                if ((gModeSelection == 1) && !(player->unk_000 & 0x1000)) {
+                if ((gModeSelection == TIME_TRIALS) && !(player->unk_000 & 0x1000)) {
                     D_80162DF8 = 1;
                 }
                 if (player->unk_0BC & 0x200) {

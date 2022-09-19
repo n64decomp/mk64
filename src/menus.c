@@ -95,21 +95,24 @@ const s8 D_800F2B50[] = {0, 1, 2, 3, 3, 0, 0, 0};
 // set to D_8018EDF3, then that sets gPlayerCountSelection1
 const s8 D_800F2B58[] = {1, 2, 2, 3, 4, 0, 0, 0};
 
-const s8 D_800F2B60[5][3] = {
-    {1, 2, 1},
-    {1, 2, 1},
-    {0, 2, 2},
-    {0, 2, 0}, 
-    {0, 2, 0}
+// Limit for each column in one-two-three-four players selection
+const s8 D_800F2B60[4] = {1, 2, 1, 1};
+
+// Limit in each column
+const s8 D_800F2B64[4][3] = {
+    {2, 1, 0},
+    {2, 2, 0},
+    {2, 0, 0},
+    {2, 0, 0}
 };
 
 // is this another union GameModePack? Figure out when decomping.
 const s32 gGameModeFromNumPlayersAndRowSelection[5][3] = {
-    { 0x03010003, 0x03000300, 0x00030000 },
-    { 0x00000000, 0x00000001, 0x00000000 },
-    { 0x00000000, 0x00000002, 0x00000003 },
-    { 0x00000002, 0x00000003, 0x00000000 },
-    { 0x00000002, 0x00000003, 0x00000000 },
+    { 0x03010003, 0x03000300,  0x00030000 },
+    { GRAND_PRIX, TIME_TRIALS, 0x00000000 }, //first column
+    { GRAND_PRIX, VERSUS,      BATTLE     }, //second
+    { VERSUS,     BATTLE,      0x00000000 }, //third
+    { VERSUS,     BATTLE,      0x00000000 }, //four
 };
 
 // map from character grid position id to character id
@@ -1233,9 +1236,9 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
 
                 if (controller->button & Z_TRIG) {
                     if (btnAndStick & CONT_A) {
-                        gDebugGotoScene = 1; 
+                        gDebugGotoScene = DEBUG_GOTO_ENDING_SEQUENCE; 
                     } else {
-                        gDebugGotoScene = 3;
+                        gDebugGotoScene = DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA;
                     }
                 }
                 play_sound2(0x49008016);
@@ -1243,7 +1246,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 func_8009E1C0();
                 func_800CA330(0x19);
                 gDebugMenuSelection = DEBUG_MENU_EXITED;
-                gDebugGotoScene = 2;
+                gDebugGotoScene = DEBUG_GOTO_CREDITS_SEQUENCE_CC_50;
                 play_sound2(0x49008016);
             } else if (btnAndStick & CONT_R) {
                 gDebugMenuSelection = DEBUG_MENU_DISABLED;
@@ -1301,12 +1304,12 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
 
     if (!func_800B4520()) {
         switch (gMainMenuSelectionDepth) {
-        case 0:
+        case BLANK_MAIN_MENU:
         {
             newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
             break;
         }
-        case 3:
+        case PLAYER_NUM_SELECTION:
         {
             if ((btnAndStick & CONT_RIGHT) && D_8018EDF3 < 4) {
                 D_8018EDF3 += 1;
@@ -1355,7 +1358,7 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
             }
             break;
         }
-        case 4:
+        case GAME_MODE_SELECTION:
         {
             if (btnAndStick & CONT_DOWN) {
                 if (D_800E86AC[D_8018EDF3 - 1] < D_800F2B58[D_8018EDF3 + 7]) {
@@ -1410,8 +1413,8 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
             }
             break;
         }
-        case 5:
-        case 8:
+        case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:
+        case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:
         {
             if (1);
             if ((arg1 == 0) && (++gMenuTimingCounter == 100 || gMenuTimingCounter % 300 == 0)) {
@@ -1431,12 +1434,12 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
             if (btnAndStick & CONT_DOWN) {
                 sp24 = FALSE;
                 if (func_800B555C()) {
-                    if (sp28 < D_800F2B60[D_8018EDF3 + 4][D_800E86AC[D_8018EDF3 - 1] + 1]) {
+                    if (sp28 < D_800F2B64[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1] + 1]) {
                         sp24 = TRUE;
                     }
                 } else {
                     // L800B30D4
-                    if (sp28 < D_800F2B60[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1] + 1]) {
+                    if (sp28 < D_800F2B60[D_8018EDF3]) {
                         sp24 = TRUE;
                     }
                 }
@@ -1472,8 +1475,8 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
             }
             break;
         }
-        case 6:
-        case 7:
+        case CONFIRM_OK_SELECTION:
+        case CONFIRM_OK_SELECTION_FROM_BACK_OUT:
         {
             if ((arg1 == 0) && (++gMenuTimingCounter == 60 || gMenuTimingCounter % 300 == 0)) {
                 play_sound2(0x4900900F);
@@ -1507,8 +1510,8 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
             }
             break;
         }
-        case 1:
-        case 2:
+        case OPTIONS_SELECTION:
+        case DATA_SELECTION:
         {
             newMode = gGameModeFromNumPlayersAndRowSelection[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1]];
             break;
@@ -1822,13 +1825,13 @@ void course_select_menu_act(struct Controller *arg0, u16 arg1) {
 void func_800B3F74(s32 menuSelection) {
     s32 i;
 
-    gDebugMenuSelection = 1;
+    gDebugMenuSelection = DEBUG_MENU_DISABLED;
     gMenuTimingCounter = 0;
     D_8018EE04 = 0;
     D_8018EE08 = 0;
     D_8015F890 = 0;
     D_8015F892 = 0;
-    gDebugGotoScene = 0;
+    gDebugGotoScene = DEBUG_GOTO_RACING;
     D_8018EDFB = 0;
     D_8016556E = 0;
     *D_80162DD4 = 1;
@@ -1844,7 +1847,7 @@ void func_800B3F74(s32 menuSelection) {
     case 8: func_800CA008(0, 0); break;
     case 9:
     {
-        gControllerPakMenuSelection = 1;
+        gControllerPakMenuSelection = CONTROLLER_PAK_MENU_SELECT_RECORD;
         func_800CA008(0, 0);
         break;
     }
@@ -1853,7 +1856,7 @@ void func_800B3F74(s32 menuSelection) {
     {
         gIsMirrorMode = 0;
         gEnableDebugMode = 0;
-        gCupSelection = 0;
+        gCupSelection = MUSHROOM_CUP;
         gCupCourseSelection = 0;
         gTimeTrialDataCourseIndex = 0;
         if (D_8018EDF3 <= 0) {
@@ -1908,8 +1911,8 @@ void func_800B3F74(s32 menuSelection) {
                 default:
                     gMainMenuSelectionDepth = TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT;
                     break;
-                case 1:
-                case 2:
+                case OPTIONS_SELECTION:
+                case DATA_SELECTION:
                     gMainMenuSelectionDepth = PLAYER_NUM_SELECTION;
                     break;
             }

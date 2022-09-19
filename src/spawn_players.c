@@ -747,9 +747,9 @@ void func_8003C0F0(void) {
         case COURSE_WARIO_STADIUM:
         case COURSE_DK_JUNGLE:
             switch (gActiveScreenMode) {
-                case 0:
+                case SCREEN_MODE_1P:
                     switch (gModeSelection) {
-                        case 0:
+                        case GRAND_PRIX:
                             D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E + 0x14)));
                             D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E - 0x14)));
                             D_80165230[0] = sp5C + 0x1E;
@@ -763,7 +763,7 @@ void func_8003C0F0(void) {
                             func_80039F44(D_80165210, D_80165230, sp5A);
                         break;
 
-                        case 1:
+                        case TIME_TRIALS:
                             D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E)));
                             D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E)));
                             D_80165230[0] = sp5C + 0x1E;
@@ -779,10 +779,10 @@ void func_8003C0F0(void) {
                     }
                     break;
 
-                case 1:
-                case 2:
+                case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+                case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                     switch (gModeSelection) {
-                        case 0:
+                        case GRAND_PRIX:
                             D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E + 0x14)));
                             D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E - 0x14)));
                             D_80165230[0] = sp5C + 0x1E;
@@ -796,7 +796,7 @@ void func_8003C0F0(void) {
                             func_8003A9F0(D_80165210, D_80165230, sp5A);
                             break;
 
-                        case 2:
+                        case VERSUS:
                             D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E + 0xA)));
                             D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E - 0xA)));
                             D_80165230[0] = sp5C + 0x1E;
@@ -812,9 +812,9 @@ void func_8003C0F0(void) {
                     }
                     break;
 
-                case 3:
+                case SCREEN_MODE_3P_4P_SPLITSCREEN:
                     switch (gModeSelection) {
-                        case 2:
+                        case VERSUS:
                             D_80165210[0] = sp5E + 0x1E;
                             D_80165210[6] = sp5E - 0xA;
                             D_80165210[1] = sp5E + 0xA;
@@ -845,8 +845,8 @@ void func_8003C0F0(void) {
 
         case COURSE_BLOCK_FORT:
             switch (gActiveScreenMode) {
-                case 1:
-                case 2:
+                case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+                case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                     temp = 5;
                     if (1);
                     D_80165210[0] = 0;
@@ -856,7 +856,7 @@ void func_8003C0F0(void) {
                     spawn_players_2p_battle(D_80165210, D_80165230, temp);
                     break;
 
-                case 3:
+                case SCREEN_MODE_3P_4P_SPLITSCREEN:
                     temp = 5;
                     D_80165210[2] = -200.0f;
                     D_80165230[1] = -200.0f;
@@ -877,8 +877,8 @@ void func_8003C0F0(void) {
 
         case COURSE_SKYSCRAPER:
             switch (gActiveScreenMode) {
-                case 1:
-                case 2:
+                case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+                case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                     temp = 0x1E0;
                     if (1);
                     D_80165210[0] = 0.0f;
@@ -888,7 +888,7 @@ void func_8003C0F0(void) {
                     spawn_players_2p_battle(D_80165210, D_80165230, temp);
                     break;
 
-                case 3:
+                case SCREEN_MODE_3P_4P_SPLITSCREEN:
                     temp = 0x1E0;
                     D_80165210[0] = 0.0f;
                     D_80165210[1] = 0.0f;
@@ -909,8 +909,8 @@ void func_8003C0F0(void) {
 
         case COURSE_DOUBLE_DECK:
             switch (gActiveScreenMode) {
-            case 1:
-            case 2:
+            case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+            case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                 temp = 0x37;
                 if (1);
                 D_80165210[0] = 0.0f;
@@ -941,8 +941,8 @@ void func_8003C0F0(void) {
 
         case COURSE_BIG_DONUT:
             switch (gActiveScreenMode) {
-                case 1:
-                case 2:
+                case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+                case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                     temp = 0xC8;
                     if (1);
                     D_80165210[0] = 0.0f;
@@ -952,7 +952,7 @@ void func_8003C0F0(void) {
                     spawn_players_2p_battle(D_80165210, D_80165230, temp);
                     break;
 
-                case 3:
+                case SCREEN_MODE_3P_4P_SPLITSCREEN:
                     temp = 0xC8;
                     D_80165210[0] = 0.0f;
                     D_80165210[1] = 0.0f;
@@ -994,7 +994,7 @@ void func_8003C0F0(void) {
             break;
     }
 
-    if (gModeSelection != 3) {
+    if (gModeSelection != BATTLE) {
         func_8000F628();
     }
 }
@@ -1043,7 +1043,7 @@ void func_8003D080(void) {
         switch (gActiveScreenMode) {
             case SCREEN_MODE_1P:
                 switch (gModeSelection) {
-                    case 0:
+                    case GRAND_PRIX:
                         if (gCurrentCourseId == 10) {
                             func_8001C4D0(0.0f, ptr->pos[1], D_8016524C, ptr->unk_02C[1], 8, 0);
                         } else {
@@ -1051,7 +1051,7 @@ void func_8003D080(void) {
                         }
                         break;
 
-                    case 1:
+                    case TIME_TRIALS:
                         func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 0);
                         break;
 
@@ -1064,13 +1064,13 @@ void func_8003D080(void) {
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                 switch (gModeSelection) {
-                    case 0:
+                    case GRAND_PRIX:
                         func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 0);
                         ptr++;
                         func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 1);
                         break;
 
-                    case 3:
+                    case BATTLE:
                         func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 0);
                         ptr++;
                         func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 1);

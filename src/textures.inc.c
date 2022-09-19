@@ -1,5 +1,6 @@
 #include "textures.h"
 
+// 0x801978D0
 MkTexture D_02000000[2] = {
     {3, 0, gTextureTinyFont0, 8, 8, 0, 0, 0x75, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
@@ -2341,21 +2342,24 @@ MkTexture D_02004660[2] = {
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
+// 0x8019BF58 first colone one player
 MkTexture D_02004688[4] = {
-    {1, 0, gTextureMenu1PGame,         64, 54, 0,  0, 0x0, 0},
-    {1, 0, gTextureMenuModeMarioGP,    64, 18, 0, 65, 0x0, 0},
+    {1, 0, gTextureMenu1PGame,         64, 54, 0,  0, 0x0, 0}, // 0x8019BF58
+    {1, 0, gTextureMenuModeMarioGP,    64, 18, 0, 65, 0x0, 0}, // 0x8019BF6C
     {1, 0, gTextureMenuModeTimeTrials, 64, 18, 0, 83, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
+// 0x8019BFA8 second colone two player
 MkTexture D_020046D8[5] = {
-    {1, 0, gTextureMenu2PGame,      64, 54, 0,   0, 0x0, 0},
+    {1, 0, gTextureMenu2PGame,      64, 54, 0,   0, 0x0, 0}, // 0x8019BFA8
     {1, 0, gTextureMenuModeMarioGP, 64, 18, 0,  65, 0x0, 0},
     {1, 0, gTextureMenuModeVS,      64, 18, 0,  83, 0x0, 0},
     {1, 0, gTextureMenuModeBattle,  64, 18, 0, 101, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
+// 0x8019C00C third colone three player
 MkTexture D_0200473C[4] = {
     {1, 0, gTextureMenu3PGame,     64, 54, 0,  0, 0x0, 0},
     {1, 0, gTextureMenuModeVS,     64, 18, 0, 65, 0x0, 0},
@@ -3556,6 +3560,8 @@ MkAnimation D_02006BB0[11] = {
     {      NULL, 0x00000000},
 };
 
+
+// bowser animation
 MkAnimation D_02006C08[21] = {
     {D_02006488, 0x00000001},
     {D_020064B0, 0x00000001},

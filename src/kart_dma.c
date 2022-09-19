@@ -178,14 +178,14 @@ void func_80027A20(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     // but its better to understand it as a 3-dimensional struct_D_802F1F80 array.
     struct_D_802F1F80 *temp_s0 = &D_802F1F80[arg3][arg2][arg1 << 7];
     switch(gActiveScreenMode) {
-        case 0:
-        case 1:
-        case 2:
+        case SCREEN_MODE_1P:
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             osInvalDCache(temp_s0, sizeof(struct_D_802F1F80));
             osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartPalettes[player->characterId])], temp_s0, sizeof(struct_D_802F1F80), &gDmaMesgQueue);
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
             break;
-        case 3:
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
             osInvalDCache(temp_s0, sizeof(struct_D_802F1F80));
             osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartPalettes[player->characterId])], temp_s0, sizeof(struct_D_802F1F80), &gDmaMesgQueue);
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);

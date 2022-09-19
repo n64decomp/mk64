@@ -42,29 +42,29 @@ struct SPTask* sNextDisplaySPTask = NULL;
 
 
 struct Controller gControllers[8];
-struct Controller *gControllerOne = &gControllers[0];   // 0x800DC4BC
-struct Controller *gControllerTwo = &gControllers[1];   // 0x800DC4C0
-struct Controller *gControllerThree = &gControllers[2]; // 0x800DC4C4
-struct Controller *gControllerFour = &gControllers[3];  // 0x800DC4C8
-struct Controller *gControllerFive = &gControllers[4];  // 0x800DC4CC
-struct Controller *gControllerSix = &gControllers[5];   // 0x800DC4D0
-struct Controller *gControllerSeven = &gControllers[6]; // 0x800DC4D4
-struct Controller *gControllerEight = &gControllers[7]; // 0x800DC4D8
+struct Controller *gControllerOne = &gControllers[0];
+struct Controller *gControllerTwo = &gControllers[1];
+struct Controller *gControllerThree = &gControllers[2];
+struct Controller *gControllerFour = &gControllers[3];
+struct Controller *gControllerFive = &gControllers[4];
+struct Controller *gControllerSix = &gControllers[5];
+struct Controller *gControllerSeven = &gControllers[6];
+struct Controller *gControllerEight = &gControllers[7];
 
 Player gPlayers[8];
-Player *gPlayerOne = &gPlayers[0];   // 0x800DC4DC
-Player *gPlayerTwo = &gPlayers[1];   // 0x800DC4E0
-Player *gPlayerThree = &gPlayers[2]; // 0x800DC4E4
-Player *gPlayerFour = &gPlayers[3];  // 0x800DC4E8
-Player *gPlayerFive = &gPlayers[4];  // 0x800DC4EC
-Player *gPlayerSix = &gPlayers[5];   // 0x800DC4F0
-Player *gPlayerSeven = &gPlayers[6]; // 0x800DC4F4
-Player *gPlayerEight = &gPlayers[7]; // 0x800DC4F8
+Player *gPlayerOne = &gPlayers[0];
+Player *gPlayerTwo = &gPlayers[1];
+Player *gPlayerThree = &gPlayers[2];
+Player *gPlayerFour = &gPlayers[3];
+Player *gPlayerFive = &gPlayers[4];
+Player *gPlayerSix = &gPlayers[5];
+Player *gPlayerSeven = &gPlayers[6];
+Player *gPlayerEight = &gPlayers[7];
 
-Player *gPlayerOneCopy = &gPlayers[0];   // 0x800DC4FC
-Player *gPlayerTwoCopy = &gPlayers[1];   // 0x800DC500
-UNUSED Player *gPlayerThreeCopy = &gPlayers[2]; // 0x800DC504
-UNUSED Player *gPlayerFourCopy = &gPlayers[3];  // 0x800DC508
+Player *gPlayerOneCopy = &gPlayers[0];
+Player *gPlayerTwoCopy = &gPlayers[1];
+UNUSED Player *gPlayerThreeCopy = &gPlayers[2];
+UNUSED Player *gPlayerFourCopy = &gPlayers[3];
 
 s32 D_800FD850[3];
 struct GfxPool gGfxPools[2];
@@ -158,7 +158,7 @@ u16 gEnableDebugMode = 0;
 s32 gGamestateNext = 7; // = COURSE_DATA_MENU?;
 UNUSED s32 D_800DC528 = 1;
 s32 gActiveScreenMode = SCREEN_MODE_1P;
-s32 gScreenModeSelection = 0;
+s32 gScreenModeSelection = SCREEN_MODE_1P;
 UNUSED s32 D_800DC534  = 0;
 s32 gPlayerCountSelection1 = 2;
 
@@ -270,6 +270,7 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->task.t.yield_data_size = 0xD00; /* Not equal to OS_YIELD_DATA_SIZE */
 }
 
+
 void init_controllers(void) {
     osCreateMesgQueue(&gSIEventMesgQueue, &gSIEventMesgBuf[0], ARRAY_COUNT(gSIEventMesgBuf));
     osSetEventMesg(OS_EVENT_SI, &gSIEventMesgQueue, (OSMesg) 0x33333333);
@@ -281,7 +282,7 @@ void init_controllers(void) {
     }
 }
 
-void update_controller(s32 index) {
+void update_controller(s32 index) { 
     struct Controller *controller = &gControllers[index];
     u16 stick;
 
@@ -817,6 +818,7 @@ void race_logic_loop(void) {
  * Note that the state doesn't flip-flop at random but is permanent
  * until the state changes (ie. Exit menus and start a race).
  */
+
 void game_state_handler(void) {
     switch (gGamestate) {
         case 7:
