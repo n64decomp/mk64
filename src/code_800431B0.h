@@ -3,32 +3,39 @@
 
 #include "common_structs.h"
 
-struct Vtx4_800431B0 {
-    Vtx vtx[4];
-};
-
-void func_800431B0(Vec3f, Vec3s, f32, s32);
-void func_80043220(Vec3f, Vec3s, f32, s32);
-void func_80043328(Vec3f, Vec3s, f32, s32);
-void func_800433288(Vec3f, Vec3s, f32, s32);
-void *func_80043390(Vec3f, Vec3s, f32, s32);
-void func_800433F8(Vec3f, Vec3s, f32, s32);
-void func_80043460(Vec3f, Vec3s, f32, s32);
-void func_80043500(Vec3f, Vec3s, f32, s32);
-void func_800435A0(s32, Vec3su, f32, Gfx*, s32);
-void func_80043668(Vec3f, Vec3s, f32, Vtx*);
-void func_800436D0(s32, s32, u16, f32, s32);
+void func_800431B0(Vec3f, Vec3s, f32, Vtx*);
+void func_80043220(Vec3f, Vec3s, f32, Gfx*);
+void func_80043328(Vec3f, Vec3s, f32, Gfx*);
+void func_800433288(Vec3f, Vec3s, f32, Gfx*);
+void func_80043390(Vec3f, Vec3s, f32, Gfx*);
+void func_800433F8(Vec3f, Vec3s, f32, Gfx*);
+void func_80043460(Vec3f, Vec3s, f32, Gfx*);
+void func_80043500(Vec3f, Vec3s, f32, Gfx*);
+void func_800435A0(Vec3f, Vec3su, f32, Gfx*, s32);
+void func_80043668(Vec3f, Vec3s, f32, Gfx*);
+void func_800436D0(s32, s32, u16, f32, Vtx*);
 void func_80043764(s32, s32, u16, f32, Vtx*);
-void func_800437F8(s32, s32, u16, f32, struct Vtx4_800431B0*, s32);
-void func_800438C4(s32, s32, u16, f32, struct Vtx4_800431B0*, s32);
-void func_8004398C(s32, s32, u16, f32, struct Vtx4_800431B0*, s32);
+void func_800437F8(s32, s32, u16, f32, Vtx*, s32);
+void func_800438C4(s32, s32, u16, f32, Vtx*, s32);
+void func_8004398C(s32, s32, u16, f32, Vtx*, s32);
 s32  func_80043A54(s32);
+void func_80043A84(s8*, s32, s32);
 void func_80043C28(s8*, s32, s32);
+void func_80043D50(s8*, s32, s32);
+void func_80043EF8(s8*, s32, s32, s32);
 
 void func_800440B8(s8*, s32, s32);
+void func_800441E0(s8*, s32, s32);
 void func_80044388(s8*, s32, s32);
+void func_800444B0(s8*, s32, s32);
 void func_80044658(s8*, s32, s32);
+void func_8004477C(s8*, s32, s32);
+void func_80044AB8(s8*, s32, s32);
+void func_80044BF8(s8*, s32, s32);
 
+void func_800452A4(s8*, s32, s32);
+void func_8004544C(s8*, s32, s32, s32);
+void func_80045614(s8*, s32, s32);
 void func_80045B2C(Vtx*);
 void func_80045B74(Vtx*);
 void func_80045BBC(Vec3f, Vec3s, f32, Vtx*);
@@ -46,8 +53,8 @@ void func_80046720(s32, s32, u16, f32, s32, s32, s32, s32, s32, s32);
 void func_80046794(s32, s32, u16, f32, s32, s32, s32, s32, s32, s32);
 void func_80046808(Vec3f, Vec3s, f32, s32, s32, s32, s32, s32, s32);
 void func_80046874(Vec3f, Vec3s, f32, s32, s32, s32, s32, s32, s32);
-void func_800468E0(s32, s32, f32, s32, s32, s32, s32, s32, s32, s32);
-void func_80046954(s32, s32, f32, s32, s32, s32, s32, s32, s32);
+void func_800468E0(Vec3f, Vec3s, f32, s32, s32, s32, s32, s32, s32, s32);
+void func_80046954(Vec3f, Vec3s, f32, s32, s32, s32, s32, s32, s32);
 void func_80046A00(Vec3f, Vec3s, f32, s32, Vtx*, s32, s32);
 void func_80046A68(Vec3f, Vec3s, f32, s32, s32, s32, s32, s32, s32);
 void func_80046AD4(s32, s32, u16, f32, s32);
@@ -281,6 +288,7 @@ void func_80052E30(s32);
 
 void func_8005327C(s32);
 void func_800532A4(s32);
+void func_800534E8(s32);
 void func_80053870(s32);
 void func_80053E6C(s32);
 
@@ -299,7 +307,9 @@ void func_800557AC();
 void func_8005592C(s32);
 void func_80055C38(s32);
 void func_80055E68(s32);
+void func_80055EF4(s32, s32);
 void func_80055F48(s32);
+void func_80055FA0(s32, s32);
 
 void func_80056160(s32);
 void func_80056188(s32);
@@ -349,6 +359,12 @@ extern Vec3f D_80183E50;
 extern Vec3f D_80183E70;
 extern s32 D_80183EAC;
 extern s32 D_8018D1E0;
+
+extern Lights1 D_800E4638;
+extern Lights1 D_800E4650;
+extern Lights1 D_800E4668;
+extern Lights1 D_800E4680;
+extern Lights1 D_800E4698;
 
 extern s8 D_800E5670[];
 extern s8 D_800E566A[];

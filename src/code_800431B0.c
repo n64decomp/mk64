@@ -5,128 +5,128 @@
 #include <actor_types.h>
 #include <config.h>
 #include "math_util_2.h"
+#include "objects.h"
 #include "code_8001F980.h"
 #include "code_800431B0.h"
 #include "code_80071F00.h"
 #include "main.h"
 
-void func_800431B0(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3) {
+void func_800431B0(Vec3f arg0, Vec3s arg1, f32 arg2, Vtx *vtx) {
     func_80042E00(arg0, arg1, arg2);
-    gSPVertex(gDisplayListHead++, arg3, 4, 0);
+    gSPVertex(gDisplayListHead++, vtx, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D006940);
 }
 
-void func_80043220(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3) {
+void func_80043220(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, &D_0D0077A0);
-    gSPDisplayList(gDisplayListHead++, arg3);
+    gSPDisplayList(gDisplayListHead++, gfx);
 }
 
-UNUSED void func_800433288(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3) {
+UNUSED void func_800433288(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0077A0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
-    gSPDisplayList(gDisplayListHead++, arg3);
+    gSPDisplayList(gDisplayListHead++, gfx);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void func_80043328(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3) {
+void func_80043328(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0077D0);
-    gSPDisplayList(gDisplayListHead++, arg3);
+    gSPDisplayList(gDisplayListHead++, gfx);
 }
 
-UNUSED void *func_80043390(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3) {
+UNUSED void func_80043390(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0077F8);
-    gSPDisplayList(gDisplayListHead++, arg3);
+    gSPDisplayList(gDisplayListHead++, gfx);
 }
 
-UNUSED void func_800433F8(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3) {
+UNUSED void func_800433F8(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007828);
-    gSPDisplayList(gDisplayListHead++, arg3);
+    gSPDisplayList(gDisplayListHead++, gfx);
 }
 
-UNUSED void func_80043460(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3) {
+UNUSED void func_80043460(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007828);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
-    gSPDisplayList(gDisplayListHead++, arg3);
+    gSPDisplayList(gDisplayListHead++, gfx);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void func_80043500(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3) {
+void func_80043500(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
 
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007850);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
-    gSPDisplayList(gDisplayListHead++, arg3);
+    gSPDisplayList(gDisplayListHead++, gfx);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void func_800435A0(s32 arg0, Vec3su arg1, f32 arg2, Gfx *arg3, s32 arg4) {
+void func_800435A0(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx, s32 arg4) {
     func_80042F70(arg0, arg1, arg2);
 
     gSPDisplayList(gDisplayListHead++, D_0D007878);
     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, 0xFF, 0xFF, arg4);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
-    gSPDisplayList(gDisplayListHead++, arg3);
+    gSPDisplayList(gDisplayListHead++, gfx);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-UNUSED void func_80043668(Vec3f arg0, Vec3s arg1, f32 arg2, Vtx *arg3) {
+UNUSED void func_80043668(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
-    gSPDisplayList(gDisplayListHead++, arg3);
+    gSPDisplayList(gDisplayListHead++, gfx);
 }
 
-UNUSED void func_800436D0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4) {
+UNUSED void func_800436D0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
-    gSPVertex(gDisplayListHead++, arg4, 3, 0);
+    gSPVertex(gDisplayListHead++, vtx, 3, 0);
     gSPDisplayList(gDisplayListHead++, D_0D006930);
 
 }
 
-UNUSED void func_80043764(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *arg4) {
+UNUSED void func_80043764(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
-    gSPVertex(gDisplayListHead++, arg4, 4, 0);
+    gSPVertex(gDisplayListHead++, vtx, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D006940);
 }
 
-UNUSED void func_800437F8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, struct Vtx4_800431B0 *arg4, s32 arg5) {
+UNUSED void func_800437F8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 arg5) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-    arg4->vtx[0].v.cn[3] = arg5;
-    arg4->vtx[1].v.cn[3] = arg5;
-    arg4->vtx[2].v.cn[3] = arg5;
-    arg4->vtx[3].v.cn[3] = arg5;
-    gSPVertex(gDisplayListHead++, arg4, 4, 0);
+    vtx[0].v.cn[3] = arg5;
+    vtx[1].v.cn[3] = arg5;
+    vtx[2].v.cn[3] = arg5;
+    vtx[3].v.cn[3] = arg5;
+    gSPVertex(gDisplayListHead++, vtx, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D006940);
 }
 
-UNUSED void func_800438C4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, struct Vtx4_800431B0 *arg4, s32 arg5) {
-    arg4->vtx[1].v.ob[0] = arg5;
-    arg4->vtx[2].v.ob[0] = arg5;
-  func_80042330(arg0, arg1, arg2, arg3);
-  gSPDisplayList(gDisplayListHead++, D_0D0078A0);
-  gDPSetRenderMode(gDisplayListHead++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-  gSPVertex(gDisplayListHead++, arg4, 4, 0);
-  gSPDisplayList(gDisplayListHead++, D_0D006940);
-
-}
-
-UNUSED void func_8004398C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, struct Vtx4_800431B0 *arg4, s32 arg5) {
-    arg4->vtx[0].v.ob[0] = arg5;
-    arg4->vtx[3].v.ob[0] = arg5;
+UNUSED void func_800438C4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 arg5) {
+    vtx[1].v.ob[0] = arg5;
+    vtx[2].v.ob[0] = arg5;
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
     gDPSetRenderMode(gDisplayListHead++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-    gSPVertex(gDisplayListHead++, arg4, 4, 0);
+    gSPVertex(gDisplayListHead++, vtx, 4, 0);
+    gSPDisplayList(gDisplayListHead++, D_0D006940);
+}
+
+UNUSED void func_8004398C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 arg5) {
+    vtx[0].v.ob[0] = arg5;
+    vtx[3].v.ob[0] = arg5;
+    func_80042330(arg0, arg1, arg2, arg3);
+    gSPDisplayList(gDisplayListHead++, D_0D0078A0);
+    gDPSetRenderMode(gDisplayListHead++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gSPVertex(gDisplayListHead++, vtx, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D006940);
 }
     
@@ -144,469 +144,59 @@ s32 func_80043A54(s32 arg0) {
     return phi_v1;
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-
-
-void func_80043A84(s32 arg0, s32 arg1, s32 arg2) {
-    s32 temp_t4;
-    s32 temp_t6;
-    void *temp_a3;
-    void *temp_t3;
-    void *temp_v0;
-    void *temp_v0_2;
-    void *temp_v0_3;
-    void *temp_v0_4;
-    void *temp_v0_5;
-    s32 phi_t1;
-    s32 phi_t2;
-    s32 phi_a0;
-
-    temp_v0 = gDisplayListHead;
-    gDisplayListHead = temp_v0 + 8;
-    temp_v0->unk4 = arg0;
-    temp_v0->unk0 = 0xFD180000;
-    temp_v0_2 = gDisplayListHead;
-    gDisplayListHead = temp_v0_2 + 8;
-    temp_v0_2->unk4 = 0x7080200;
-    temp_v0_2->unk0 = 0xF5180000;
-    temp_t3 = gDisplayListHead;
-    gDisplayListHead = temp_t3 + 8;
-    temp_t3->unk4 = 0;
-    temp_t3->unk0 = 0xE6000000;
-    temp_a3 = gDisplayListHead;
-    temp_t4 = (arg1 * arg2) - 1;
-    gDisplayListHead = temp_a3 + 8;
-    temp_a3->unk0 = 0xF3000000;
-    if (temp_t4 < 0x7FF) {
-        phi_a0 = temp_t4;
-    } else {
-        phi_a0 = 0x7FF;
-    }
-    temp_t6 = (arg1 * 4) / 8;
-    if (temp_t6 <= 0) {
-        phi_t1 = 1;
-    } else {
-        phi_t1 = temp_t6;
-    }
-    if (temp_t6 <= 0) {
-        phi_t2 = 1;
-    } else {
-        phi_t2 = temp_t6;
-    }
-    temp_a3->unk4 = (((phi_t1 + 0x7FF) / phi_t2) & 0xFFF) | 0x7000000 | ((phi_a0 & 0xFFF) << 0xC);
-    temp_v0_3 = gDisplayListHead;
-    gDisplayListHead = temp_v0_3 + 8;
-    temp_v0_3->unk4 = 0;
-    temp_v0_3->unk0 = 0xE7000000;
-    temp_v0_4 = gDisplayListHead;
-    gDisplayListHead = temp_v0_4 + 8;
-    temp_v0_4->unk0 = (((((arg1 * 2) + 7) >> 3) & 0x1FF) << 9) | 0xF5180000;
-    temp_v0_4->unk4 = 0x80200;
-    temp_v0_5 = gDisplayListHead;
-    gDisplayListHead = temp_v0_5 + 8;
-    temp_v0_5->unk0 = 0xF2000000;
-    temp_v0_5->unk4 = ((((arg1 - 1) * 4) & 0xFFF) << 0xC) | (((arg2 - 1) * 4) & 0xFFF);
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80043A84.s")
-#endif
-
-void func_80043C28(s8 *image, s32 width, s32 arg2) {
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_32b, width, image);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_32b, (((width * 2) + 7) >> 3), 0, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    
-    gDPLoadTile(gDisplayListHead++, G_TX_LOADTILE, 0, 0, (width - 1) << 0x2, (arg2 - 1) << 0x2);
-    gDPPipeSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_32b, (((width * 2) + 7) >> 3), 0, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0,  0, (width - 1) << 0x2, (arg2 - 1) << 0x2);
+void func_80043A84(s8 *image, s32 width, s32 height) {
+    gDPLoadTextureBlock(gDisplayListHead++, image, G_IM_FMT_RGBA, G_IM_SIZ_32b, width, height, 0,
+        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-
-
-void func_80043D50(s32 arg0, s32 arg1, s32 arg2) {
-    void *sp4;
-    s32 temp_t1;
-    s32 temp_t4;
-    s32 temp_v0_4;
-    void *temp_a3;
-    void *temp_v0;
-    void *temp_v0_2;
-    void *temp_v0_3;
-    void *temp_v0_5;
-    void *temp_v0_6;
-    void *temp_v0_7;
-    s32 phi_t2;
-    s32 phi_t3;
-    s32 phi_a0;
-
-    temp_v0 = gDisplayListHead;
-    gDisplayListHead = temp_v0 + 8;
-    temp_v0->unk4 = arg0;
-    temp_v0->unk0 = 0xFD100000;
-    temp_v0_2 = gDisplayListHead;
-    gDisplayListHead = temp_v0_2 + 8;
-    temp_v0_2->unk4 = 0x70C0300;
-    temp_v0_2->unk0 = 0xF5100000;
-    temp_v0_3 = gDisplayListHead;
-    gDisplayListHead = temp_v0_3 + 8;
-    temp_v0_3->unk4 = 0;
-    temp_v0_3->unk0 = 0xE6000000;
-    temp_a3 = gDisplayListHead;
-    temp_t4 = (arg1 * arg2) - 1;
-    gDisplayListHead = temp_a3 + 8;
-    temp_a3->unk0 = 0xF3000000;
-    if (temp_t4 < 0x7FF) {
-        phi_a0 = temp_t4;
-    } else {
-        phi_a0 = 0x7FF;
-    }
-    temp_t1 = arg1 * 2;
-    temp_v0_4 = temp_t1 / 8;
-    phi_t2 = temp_v0_4;
-    if (temp_v0_4 <= 0) {
-        phi_t2 = 1;
-    }
-    if (temp_v0_4 <= 0) {
-        phi_t3 = 1;
-    } else {
-        phi_t3 = temp_v0_4;
-    }
-    temp_a3->unk4 = (((phi_t2 + 0x7FF) / phi_t3) & 0xFFF) | 0x7000000 | ((phi_a0 & 0xFFF) << 0xC);
-    temp_v0_5 = gDisplayListHead;
-    gDisplayListHead = temp_v0_5 + 8;
-    temp_v0_5->unk4 = 0;
-    temp_v0_5->unk0 = 0xE7000000;
-    temp_v0_6 = gDisplayListHead;
-    gDisplayListHead = temp_v0_6 + 8;
-    temp_v0_6->unk0 = ((((temp_t1 + 7) >> 3) & 0x1FF) << 9) | 0xF5100000;
-    temp_v0_6->unk4 = 0xC0300;
-    temp_v0_7 = gDisplayListHead;
-    gDisplayListHead = temp_v0_7 + 8;
-    sp4 = temp_v0_7;
-    temp_v0_7->unk0 = 0xF2000000;
-    temp_v0_7->unk4 = ((((arg1 - 1) * 4) & 0xFFF) << 0xC) | (((arg2 - 1) * 4) & 0xFFF);
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80043D50.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-
-
-void func_80043EF8(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    void *sp18;
-    void *sp14;
-    s32 sp0;
-    s32 temp_a3;
-    s32 temp_t8;
-    s32 temp_t9;
-    s32 temp_v0_3;
-    void *temp_t1;
-    void *temp_t5;
-    void *temp_v0;
-    void *temp_v0_2;
-    void *temp_v0_4;
-    void *temp_v0_5;
-    void *temp_v0_6;
-    s32 phi_t3;
-    s32 phi_t4;
-    s32 phi_a0;
-
-    temp_v0 = gDisplayListHead;
-    gDisplayListHead = temp_v0 + 8;
-    temp_v0->unk4 = arg0;
-    temp_v0->unk0 = 0xFD100000;
-    temp_v0_2 = gDisplayListHead;
-    gDisplayListHead = temp_v0_2 + 8;
-    temp_t9 = (arg3 & 0xF) * 0x10;
-    temp_v0_2->unk4 = temp_t9 | 0x7080100;
-    temp_v0_2->unk0 = 0xF5100000;
-    temp_t5 = gDisplayListHead;
-    gDisplayListHead = temp_t5 + 8;
-    temp_t5->unk4 = 0;
-    temp_t5->unk0 = 0xE6000000;
-    temp_t1 = gDisplayListHead;
-    gDisplayListHead = temp_t1 + 8;
-    temp_t8 = (arg1 * arg2) - 1;
-    temp_t1->unk0 = 0xF3000000;
-    sp0 = temp_t8;
-    if (temp_t8 < 0x7FF) {
-        phi_a0 = temp_t8;
-    } else {
-        phi_a0 = 0x7FF;
-    }
-    temp_a3 = arg1 * 2;
-    temp_v0_3 = temp_a3 / 8;
-    phi_t3 = temp_v0_3;
-    if (temp_v0_3 <= 0) {
-        phi_t3 = 1;
-    }
-    if (temp_v0_3 <= 0) {
-        phi_t4 = 1;
-    } else {
-        phi_t4 = temp_v0_3;
-    }
-    temp_t1->unk4 = (((phi_t3 + 0x7FF) / phi_t4) & 0xFFF) | 0x7000000 | ((phi_a0 & 0xFFF) << 0xC);
-    temp_v0_4 = gDisplayListHead;
-    gDisplayListHead = temp_v0_4 + 8;
-    temp_v0_4->unk4 = 0;
-    temp_v0_4->unk0 = 0xE7000000;
-    temp_v0_5 = gDisplayListHead;
-    gDisplayListHead = temp_v0_5 + 8;
-    sp18 = temp_v0_5;
-    temp_v0_5->unk0 = ((((temp_a3 + 7) >> 3) & 0x1FF) << 9) | 0xF5100000;
-    temp_v0_5->unk4 = temp_t9 | 0x80100;
-    temp_v0_6 = gDisplayListHead;
-    gDisplayListHead = temp_v0_6 + 8;
-    sp14 = temp_v0_6;
-    temp_v0_6->unk0 = 0xF2000000;
-    temp_v0_6->unk4 = ((((arg1 - 1) * 4) & 0xFFF) << 0xC) | (((arg2 - 1) * 4) & 0xFFF);
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80043EF8.s")
-#endif
-
-void func_800440B8(s8 *image, s32 width, s32 arg2) {
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, width, image);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, (((width * 2) + 7) >> 3), 0, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    
-    gDPLoadTile(gDisplayListHead++, G_TX_LOADTILE, 0, 0, (width - 1) << 0x2, (arg2 - 1) << 0x2);
-    gDPPipeSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, (((width * 2) + 7) >> 3), 0, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0,  0, (width - 1) << 0x2, (arg2 - 1) << 0x2);
+void func_80043C28(s8 *image, s32 width, s32 height) {
+    gDPLoadTextureTile(gDisplayListHead++, image, G_IM_FMT_RGBA, G_IM_SIZ_32b, width, height,
+        0, 0, width -1, height -1, 0,
+        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-
-
-void func_800441E0(s32 arg0, s32 arg1, s32 arg2) {
-    void *sp4;
-    s32 temp_t1;
-    s32 temp_t4;
-    s32 temp_v0_4;
-    void *temp_a3;
-    void *temp_v0;
-    void *temp_v0_2;
-    void *temp_v0_3;
-    void *temp_v0_5;
-    void *temp_v0_6;
-    void *temp_v0_7;
-    s32 phi_t2;
-    s32 phi_t3;
-    s32 phi_a0;
-
-    temp_v0 = gDisplayListHead;
-    gDisplayListHead = temp_v0 + 8;
-    temp_v0->unk4 = arg0;
-    temp_v0->unk0 = 0xFD700000;
-    temp_v0_2 = gDisplayListHead;
-    gDisplayListHead = temp_v0_2 + 8;
-    temp_v0_2->unk4 = 0x7080200;
-    temp_v0_2->unk0 = 0xF5700000;
-    temp_v0_3 = gDisplayListHead;
-    gDisplayListHead = temp_v0_3 + 8;
-    temp_v0_3->unk4 = 0;
-    temp_v0_3->unk0 = 0xE6000000;
-    temp_a3 = gDisplayListHead;
-    temp_t4 = (arg1 * arg2) - 1;
-    gDisplayListHead = temp_a3 + 8;
-    temp_a3->unk0 = 0xF3000000;
-    if (temp_t4 < 0x7FF) {
-        phi_a0 = temp_t4;
-    } else {
-        phi_a0 = 0x7FF;
-    }
-    temp_t1 = arg1 * 2;
-    temp_v0_4 = temp_t1 / 8;
-    phi_t2 = temp_v0_4;
-    if (temp_v0_4 <= 0) {
-        phi_t2 = 1;
-    }
-    if (temp_v0_4 <= 0) {
-        phi_t3 = 1;
-    } else {
-        phi_t3 = temp_v0_4;
-    }
-    temp_a3->unk4 = (((phi_t2 + 0x7FF) / phi_t3) & 0xFFF) | 0x7000000 | ((phi_a0 & 0xFFF) << 0xC);
-    temp_v0_5 = gDisplayListHead;
-    gDisplayListHead = temp_v0_5 + 8;
-    temp_v0_5->unk4 = 0;
-    temp_v0_5->unk0 = 0xE7000000;
-    temp_v0_6 = gDisplayListHead;
-    gDisplayListHead = temp_v0_6 + 8;
-    temp_v0_6->unk0 = ((((temp_t1 + 7) >> 3) & 0x1FF) << 9) | 0xF5700000;
-    temp_v0_6->unk4 = 0x80200;
-    temp_v0_7 = gDisplayListHead;
-    gDisplayListHead = temp_v0_7 + 8;
-    sp4 = temp_v0_7;
-    temp_v0_7->unk0 = 0xF2000000;
-    temp_v0_7->unk4 = ((((arg1 - 1) * 4) & 0xFFF) << 0xC) | (((arg2 - 1) * 4) & 0xFFF);
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_800441E0.s")
-#endif
-
-void func_80044388(s8 *image, s32 width, s32 arg2) {
-
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, width, image);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, (((width * 2) + 7) >> 3), 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadTile(gDisplayListHead++, G_TX_LOADTILE, 0, 0, (width - 1) << 0x2, (arg2 - 1) << 0x2);
-    gDPPipeSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, (((width * 2) + 7) >> 3), 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, (width - 1) << 0x2, (arg2 - 1) << 0x2);
+void func_80043D50(s8 *image, s32 width, s32 height) {
+    gDPLoadTextureBlock(gDisplayListHead++, image, G_IM_FMT_RGBA, G_IM_SIZ_16b, width, height, 0,
+        G_TX_MIRROR | G_TX_CLAMP, G_TX_MIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-
-
-void func_800444B0(s32 arg0, s32 arg1, s32 arg2) {
-    s32 temp_t3;
-    s32 temp_v0_4;
-    void *temp_a3;
-    void *temp_v0;
-    void *temp_v0_2;
-    void *temp_v0_3;
-    void *temp_v0_5;
-    void *temp_v0_6;
-    void *temp_v0_7;
-    s32 phi_t1;
-    s32 phi_t2;
-    s32 phi_a0;
-
-    temp_v0 = gDisplayListHead;
-    gDisplayListHead = temp_v0 + 8;
-    temp_v0->unk4 = arg0;
-    temp_v0->unk0 = 0xFD700000;
-    temp_v0_2 = gDisplayListHead;
-    gDisplayListHead = temp_v0_2 + 8;
-    temp_v0_2->unk0 = 0xF5700000;
-    temp_v0_2->unk4 = 0x7080200;
-    temp_v0_3 = gDisplayListHead;
-    gDisplayListHead = temp_v0_3 + 8;
-    temp_v0_3->unk4 = 0;
-    temp_v0_3->unk0 = 0xE6000000;
-    temp_a3 = gDisplayListHead;
-    temp_t3 = (((arg1 * arg2) + 1) >> 1) - 1;
-    gDisplayListHead = temp_a3 + 8;
-    temp_a3->unk0 = 0xF3000000;
-    if (temp_t3 < 0x7FF) {
-        phi_a0 = temp_t3;
-    } else {
-        phi_a0 = 0x7FF;
-    }
-    temp_v0_4 = arg1 / 8;
-    phi_t1 = temp_v0_4;
-    if (temp_v0_4 <= 0) {
-        phi_t1 = 1;
-    }
-    if (temp_v0_4 <= 0) {
-        phi_t2 = 1;
-    } else {
-        phi_t2 = temp_v0_4;
-    }
-    temp_a3->unk4 = (((phi_t1 + 0x7FF) / phi_t2) & 0xFFF) | 0x7000000 | ((phi_a0 & 0xFFF) << 0xC);
-    temp_v0_5 = gDisplayListHead;
-    gDisplayListHead = temp_v0_5 + 8;
-    temp_v0_5->unk4 = 0;
-    temp_v0_5->unk0 = 0xE7000000;
-    temp_v0_6 = gDisplayListHead;
-    gDisplayListHead = temp_v0_6 + 8;
-    temp_v0_6->unk4 = 0x80200;
-    temp_v0_6->unk0 = ((((arg1 + 7) >> 3) & 0x1FF) << 9) | 0xF5680000;
-    temp_v0_7 = gDisplayListHead;
-    gDisplayListHead = temp_v0_7 + 8;
-    temp_v0_7->unk0 = 0xF2000000;
-    temp_v0_7->unk4 = ((((arg1 - 1) * 4) & 0xFFF) << 0xC) | (((arg2 - 1) * 4) & 0xFFF);
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_800444B0.s")
-#endif
-
-void func_80044658(s8 *image, s32 width, s32 arg2) {
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, width, image);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, (((width) + 7) >> 3), 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadTile(gDisplayListHead++, G_TX_LOADTILE, 0, 0, (width - 1) << 0x2, (arg2 - 1) << 0x2);
-    gDPPipeSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, (((width) + 7) >> 3), 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, (width - 1) << 0x2, (arg2 - 1) << 0x2);
+void func_80043EF8(s8 *image, s32 width, s32 height, s32 someMask) {
+    gDPLoadTextureBlock(gDisplayListHead++, image, G_IM_FMT_RGBA, G_IM_SIZ_16b, width, height, 0,
+        G_TX_MIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_CLAMP, someMask, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-
-
-void func_8004477C(s32 arg0, s32 arg1, s32 arg2) {
-    s32 temp_t3;
-    s32 temp_v0_4;
-    void *temp_a3;
-    void *temp_v0;
-    void *temp_v0_2;
-    void *temp_v0_3;
-    void *temp_v0_5;
-    void *temp_v0_6;
-    void *temp_v0_7;
-    s32 phi_t1;
-    s32 phi_t2;
-    s32 phi_a0;
-
-    temp_v0 = gDisplayListHead;
-    gDisplayListHead = temp_v0 + 8;
-    temp_v0->unk4 = arg0;
-    temp_v0->unk0 = 0xFD900000;
-    temp_v0_2 = gDisplayListHead;
-    gDisplayListHead = temp_v0_2 + 8;
-    temp_v0_2->unk0 = 0xF5900000;
-    temp_v0_2->unk4 = 0x7080200;
-    temp_v0_3 = gDisplayListHead;
-    gDisplayListHead = temp_v0_3 + 8;
-    temp_v0_3->unk4 = 0;
-    temp_v0_3->unk0 = 0xE6000000;
-    temp_a3 = gDisplayListHead;
-    temp_t3 = (((arg1 * arg2) + 1) >> 1) - 1;
-    gDisplayListHead = temp_a3 + 8;
-    temp_a3->unk0 = 0xF3000000;
-    if (temp_t3 < 0x7FF) {
-        phi_a0 = temp_t3;
-    } else {
-        phi_a0 = 0x7FF;
-    }
-    temp_v0_4 = arg1 / 8;
-    phi_t1 = temp_v0_4;
-    if (temp_v0_4 <= 0) {
-        phi_t1 = 1;
-    }
-    if (temp_v0_4 <= 0) {
-        phi_t2 = 1;
-    } else {
-        phi_t2 = temp_v0_4;
-    }
-    temp_a3->unk4 = (((phi_t1 + 0x7FF) / phi_t2) & 0xFFF) | 0x7000000 | ((phi_a0 & 0xFFF) << 0xC);
-    temp_v0_5 = gDisplayListHead;
-    gDisplayListHead = temp_v0_5 + 8;
-    temp_v0_5->unk4 = 0;
-    temp_v0_5->unk0 = 0xE7000000;
-    temp_v0_6 = gDisplayListHead;
-    gDisplayListHead = temp_v0_6 + 8;
-    temp_v0_6->unk4 = 0x80200;
-    temp_v0_6->unk0 = ((((arg1 + 7) >> 3) & 0x1FF) << 9) | 0xF5880000;
-    temp_v0_7 = gDisplayListHead;
-    gDisplayListHead = temp_v0_7 + 8;
-    temp_v0_7->unk0 = 0xF2000000;
-    temp_v0_7->unk4 = ((((arg1 - 1) * 4) & 0xFFF) << 0xC) | (((arg2 - 1) * 4) & 0xFFF);
+void func_800440B8(s8 *image, s32 width, s32 height) {
+    gDPLoadTextureTile(gDisplayListHead++, image, G_IM_FMT_RGBA, G_IM_SIZ_16b, width, height,
+        0, 0, width -1, height -1, 0,
+        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_8004477C.s")
-#endif
+
+void func_800441E0(s8 *image, s32 width, s32 height) {
+    gDPLoadTextureBlock(gDisplayListHead++, image, G_IM_FMT_IA, G_IM_SIZ_16b, width, height, 0,
+        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+}
+
+void func_80044388(s8 *image, s32 width, s32 height) {
+    gDPLoadTextureTile(gDisplayListHead++, image, G_IM_FMT_IA, G_IM_SIZ_16b, width, height,
+        0, 0, width -1, height -1, 0,
+        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+}
+
+void func_800444B0(s8 *image, s32 width, s32 height) {
+    gDPLoadTextureBlock(gDisplayListHead++, image, G_IM_FMT_IA, G_IM_SIZ_8b, width, height, 0,
+        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+}
+
+void func_80044658(s8 *image, s32 width, s32 height) {
+    gDPLoadTextureTile(gDisplayListHead++, image, G_IM_FMT_IA, G_IM_SIZ_8b, width, height,
+        0, 0, width -1, height -1, 0,
+        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+}
+
+void func_8004477C(s8 *image, s32 width, s32 height) {
+    gDPLoadTextureBlock(gDisplayListHead++, image, G_IM_FMT_I, G_IM_SIZ_8b, width, height, 0,
+        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+}
 
 #ifdef NON_MATCHING
 
@@ -638,87 +228,16 @@ GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80044924.s")
 //gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, 1, 0x00000000);
 //gDPLoadTile(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0, 0);
 
-#ifdef NON_MATCHING
-UNUSED void func_80044AB8(s8 *image, s32 width, s32 arg2) {
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, width, image);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_8b, (((width >> 1) + 7) >> 3), 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadTile(gDisplayListHead++, G_TX_LOADTILE, 0, 0, ((width - 1) * 2) << 0x2, (arg2 - 1) << 0x2);
-    gDPPipeSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_4b, (((width >> 1) + 7) >> 3), 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, ((width - 1) * 2) << 0x2, (arg2 - 1) << 0x2);
+UNUSED void func_80044AB8(s8 *image, s32 width, s32 height) {
+    gDPLoadTextureTile_4b(gDisplayListHead++, image, G_IM_FMT_IA, width, height,
+        0, 0, width -1, height -1, 0,
+        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
-#else
-//gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_4b, 0, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80044AB8.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-
-
-void func_80044BF8(s32 arg0, s32 arg1, s32 arg2) {
-    s32 temp_t3;
-    s32 temp_v0_4;
-    void *temp_a3;
-    void *temp_v0;
-    void *temp_v0_2;
-    void *temp_v0_3;
-    void *temp_v0_5;
-    void *temp_v0_6;
-    void *temp_v0_7;
-    s32 phi_t1;
-    s32 phi_t2;
-    s32 phi_a0;
-
-    temp_v0 = gDisplayListHead;
-    gDisplayListHead = temp_v0 + 8;
-    temp_v0->unk4 = arg0;
-    temp_v0->unk0 = 0xFD900000;
-    temp_v0_2 = gDisplayListHead;
-    gDisplayListHead = temp_v0_2 + 8;
-    temp_v0_2->unk0 = 0xF5900000;
-    temp_v0_2->unk4 = 0x7080200;
-    temp_v0_3 = gDisplayListHead;
-    gDisplayListHead = temp_v0_3 + 8;
-    temp_v0_3->unk4 = 0;
-    temp_v0_3->unk0 = 0xE6000000;
-    temp_a3 = gDisplayListHead;
-    temp_t3 = (((arg1 * arg2) + 1) >> 1) - 1;
-    gDisplayListHead = temp_a3 + 8;
-    temp_a3->unk0 = 0xF3000000;
-    if (temp_t3 < 0x7FF) {
-        phi_a0 = temp_t3;
-    } else {
-        phi_a0 = 0x7FF;
-    }
-    temp_v0_4 = arg1 / 8;
-    phi_t1 = temp_v0_4;
-    if (temp_v0_4 <= 0) {
-        phi_t1 = 1;
-    }
-    if (temp_v0_4 <= 0) {
-        phi_t2 = 1;
-    } else {
-        phi_t2 = temp_v0_4;
-    }
-    temp_a3->unk4 = (((phi_t1 + 0x7FF) / phi_t2) & 0xFFF) | 0x7000000 | ((phi_a0 & 0xFFF) << 0xC);
-    temp_v0_5 = gDisplayListHead;
-    gDisplayListHead = temp_v0_5 + 8;
-    temp_v0_5->unk4 = 0;
-    temp_v0_5->unk0 = 0xE7000000;
-    temp_v0_6 = gDisplayListHead;
-    gDisplayListHead = temp_v0_6 + 8;
-    temp_v0_6->unk4 = 0x80200;
-    temp_v0_6->unk0 = ((((arg1 + 7) >> 3) & 0x1FF) << 9) | 0xF5880000;
-    temp_v0_7 = gDisplayListHead;
-    gDisplayListHead = temp_v0_7 + 8;
-    temp_v0_7->unk0 = 0xF2000000;
-    temp_v0_7->unk4 = ((((arg1 - 1) * 4) & 0xFFF) << 0xC) | (((arg2 - 1) * 4) & 0xFFF);
+void func_80044BF8(s8 *image, s32 width, s32 height) {
+    gDPLoadTextureBlock(gDisplayListHead++, image, G_IM_FMT_I, G_IM_SIZ_8b, width, height, 0,
+        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80044BF8.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
@@ -893,233 +412,50 @@ void func_800450C8(s32 arg0, s32 arg1, s32 arg2) {
 GLOBAL_ASM("asm/non_matchings/code_800431B0/func_800450C8.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-
-
-void func_800452A4(s32 arg0, s32 arg1, s32 arg2) {
-    s32 temp_t3;
-    s32 temp_v0_4;
-    void *temp_a3;
-    void *temp_v0;
-    void *temp_v0_2;
-    void *temp_v0_3;
-    void *temp_v0_5;
-    void *temp_v0_6;
-    void *temp_v0_7;
-    s32 phi_t1;
-    s32 phi_t2;
-    s32 phi_a0;
-
-    temp_v0 = gDisplayListHead;
-    gDisplayListHead = temp_v0 + 8;
-    temp_v0->unk4 = arg0;
-    temp_v0->unk0 = 0xFD500000;
-    temp_v0_2 = gDisplayListHead;
-    gDisplayListHead = temp_v0_2 + 8;
-    temp_v0_2->unk0 = 0xF5500000;
-    temp_v0_2->unk4 = 0x7080200;
-    temp_v0_3 = gDisplayListHead;
-    gDisplayListHead = temp_v0_3 + 8;
-    temp_v0_3->unk4 = 0;
-    temp_v0_3->unk0 = 0xE6000000;
-    temp_a3 = gDisplayListHead;
-    temp_t3 = (((arg1 * arg2) + 1) >> 1) - 1;
-    gDisplayListHead = temp_a3 + 8;
-    temp_a3->unk0 = 0xF3000000;
-    if (temp_t3 < 0x7FF) {
-        phi_a0 = temp_t3;
-    } else {
-        phi_a0 = 0x7FF;
-    }
-    temp_v0_4 = arg1 / 8;
-    phi_t1 = temp_v0_4;
-    if (temp_v0_4 <= 0) {
-        phi_t1 = 1;
-    }
-    if (temp_v0_4 <= 0) {
-        phi_t2 = 1;
-    } else {
-        phi_t2 = temp_v0_4;
-    }
-    temp_a3->unk4 = (((phi_t1 + 0x7FF) / phi_t2) & 0xFFF) | 0x7000000 | ((phi_a0 & 0xFFF) << 0xC);
-    temp_v0_5 = gDisplayListHead;
-    gDisplayListHead = temp_v0_5 + 8;
-    temp_v0_5->unk4 = 0;
-    temp_v0_5->unk0 = 0xE7000000;
-    temp_v0_6 = gDisplayListHead;
-    gDisplayListHead = temp_v0_6 + 8;
-    temp_v0_6->unk4 = 0x80200;
-    temp_v0_6->unk0 = ((((arg1 + 7) >> 3) & 0x1FF) << 9) | 0xF5480000;
-    temp_v0_7 = gDisplayListHead;
-    gDisplayListHead = temp_v0_7 + 8;
-    temp_v0_7->unk0 = 0xF2000000;
-    temp_v0_7->unk4 = ((((arg1 - 1) * 4) & 0xFFF) << 0xC) | (((arg2 - 1) * 4) & 0xFFF);
+void func_800452A4(s8 *image, s32 width, s32 height) {
+    gDPLoadTextureBlock(gDisplayListHead++, image, G_IM_FMT_CI, G_IM_SIZ_8b, width, height, 0,
+        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_800452A4.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-
-
-void func_8004544C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    void *sp4;
-    s32 temp_t5;
-    s32 temp_t6;
-    s32 temp_v0_3;
-    void *temp_t1;
-    void *temp_t4;
-    void *temp_v0;
-    void *temp_v0_2;
-    void *temp_v0_4;
-    void *temp_v0_5;
-    void *temp_v0_6;
-    s32 phi_t2;
-    s32 phi_t3;
-    s32 phi_a0;
-
-    temp_v0 = gDisplayListHead;
-    gDisplayListHead = temp_v0 + 8;
-    temp_v0->unk4 = arg0;
-    temp_v0->unk0 = 0xFD500000;
-    temp_v0_2 = gDisplayListHead;
-    gDisplayListHead = temp_v0_2 + 8;
-    temp_t6 = (arg3 & 0xF) * 0x10;
-    temp_v0_2->unk0 = 0xF5500000;
-    temp_v0_2->unk4 = temp_t6 | 0x7080100;
-    temp_t4 = gDisplayListHead;
-    gDisplayListHead = temp_t4 + 8;
-    temp_t4->unk4 = 0;
-    temp_t4->unk0 = 0xE6000000;
-    temp_t1 = gDisplayListHead;
-    temp_t5 = (((arg1 * arg2) + 1) >> 1) - 1;
-    gDisplayListHead = temp_t1 + 8;
-    temp_t1->unk0 = 0xF3000000;
-    if (temp_t5 < 0x7FF) {
-        phi_a0 = temp_t5;
-    } else {
-        phi_a0 = 0x7FF;
-    }
-    temp_v0_3 = arg1 / 8;
-    phi_t2 = temp_v0_3;
-    if (temp_v0_3 <= 0) {
-        phi_t2 = 1;
-    }
-    if (temp_v0_3 <= 0) {
-        phi_t3 = 1;
-    } else {
-        phi_t3 = temp_v0_3;
-    }
-    temp_t1->unk4 = (((phi_t2 + 0x7FF) / phi_t3) & 0xFFF) | 0x7000000 | ((phi_a0 & 0xFFF) << 0xC);
-    temp_v0_4 = gDisplayListHead;
-    gDisplayListHead = temp_v0_4 + 8;
-    temp_v0_4->unk4 = 0;
-    temp_v0_4->unk0 = 0xE7000000;
-    temp_v0_5 = gDisplayListHead;
-    gDisplayListHead = temp_v0_5 + 8;
-    temp_v0_5->unk4 = temp_t6 | 0x80100;
-    temp_v0_5->unk0 = ((((arg1 + 7) >> 3) & 0x1FF) << 9) | 0xF5480000;
-    temp_v0_6 = gDisplayListHead;
-    gDisplayListHead = temp_v0_6 + 8;
-    sp4 = temp_v0_6;
-    temp_v0_6->unk0 = 0xF2000000;
-    temp_v0_6->unk4 = ((((arg1 - 1) * 4) & 0xFFF) << 0xC) | (((arg2 - 1) * 4) & 0xFFF);
+void func_8004544C(s8 *image, s32 width, s32 height, s32 someMask) {
+    gDPLoadTextureBlock(gDisplayListHead++, image, G_IM_FMT_CI, G_IM_SIZ_8b, width, height, 0,
+        G_TX_MIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_CLAMP, someMask, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_8004544C.s")
-#endif
 
-#ifdef MIPS_TO_C
-UNUSED void func_80045614(s32 arg0, s32 arg1, s32 arg2) {
-    void *sp14;
-    void *sp10;
-    void *spC;
-    s32 sp0;
-    s32 temp_t0;
-    s32 temp_t2;
-    s32 temp_t5;
-    s32 temp_t7;
-    void *temp_v0;
-    void *temp_v0_2;
-    void *temp_v0_3;
-    void *temp_v0_4;
-    void *temp_v0_5;
-    void *temp_v0_6;
-    void *temp_v0_7;
-
-    temp_v0 = gDisplayListHead;
-    temp_t0 = arg1 - 1;
-    gDisplayListHead = temp_v0 + 8;
-    temp_v0->unk0 = (s32) ((temp_t0 & 0xFFF) | 0xFD480000);
-    temp_v0->unk4 = arg0;
-    temp_v0_2 = gDisplayListHead;
-    gDisplayListHead = temp_v0_2 + 8;
-    temp_t2 = ((((s32) (arg1 + 7) >> 3) & 0x1FF) << 9) | 0xF5480000;
-    temp_v0_2->unk4 = 0x07080200;
-    temp_v0_2->unk0 = temp_t2;
-    temp_v0_3 = gDisplayListHead;
-    gDisplayListHead = temp_v0_3 + 8;
-    temp_v0_3->unk4 = 0;
-    temp_v0_3->unk0 = 0xE6000000;
-    temp_v0_4 = gDisplayListHead;
-    gDisplayListHead = temp_v0_4 + 8;
-    temp_v0_4->unk0 = 0xF4000000;
-    temp_t5 = ((temp_t0 * 4) & 0xFFF) << 0xC;
-    temp_t7 = ((arg2 - 1) * 4) & 0xFFF;
-    sp0 = temp_t7;
-    temp_v0_4->unk4 = (s32) (temp_t5 | 0x07000000 | temp_t7);
-    temp_v0_5 = gDisplayListHead;
-    gDisplayListHead = temp_v0_5 + 8;
-    sp14 = temp_v0_5;
-    temp_v0_5->unk4 = 0;
-    temp_v0_5->unk0 = 0xE7000000;
-    temp_v0_6 = gDisplayListHead;
-    gDisplayListHead = temp_v0_6 + 8;
-    sp10 = temp_v0_6;
-    temp_v0_6->unk4 = 0x80200;
-    temp_v0_6->unk0 = temp_t2;
-    temp_v0_7 = gDisplayListHead;
-    gDisplayListHead = temp_v0_7 + 8;
-    spC = temp_v0_7;
-    temp_v0_7->unk0 = 0xF2000000;
-    temp_v0_7->unk4 = (s32) (temp_t5 | sp0);
+UNUSED void func_80045614(s8 *image, s32 width, s32 height) {
+    gDPLoadTextureTile(gDisplayListHead++, image, G_IM_FMT_CI, G_IM_SIZ_8b, width, height,
+        0, 0, width - 1, height -1, 0,
+        G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80045614.s")
-#endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern s32 *gDisplayListHead;
-
-void func_80045738(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    s32 *sp4C;
-    s32 *sp28;
-    s32 *sp24;
-    s32 *sp20;
-    s32 *sp1C;
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
+void func_80045738(s8 *image1, s8 *image2, s32 width, s32 height) {
+    Gfx *sp4C;
+    Gfx *sp28;
+    Gfx *sp24;
+    Gfx *sp20;
+    Gfx *sp1C;
     s32 spC;
     s32 sp4;
     s32 sp0;
-    s32 *temp_t0;
-    s32 *temp_t1;
-    s32 *temp_v0;
-    s32 *temp_v0_10;
-    s32 *temp_v0_11;
-    s32 *temp_v0_13;
-    s32 *temp_v0_14;
-    s32 *temp_v0_15;
-    s32 *temp_v0_16;
-    s32 *temp_v0_17;
-    s32 *temp_v0_2;
-    s32 *temp_v0_3;
-    s32 *temp_v0_5;
-    s32 *temp_v0_6;
-    s32 *temp_v0_7;
-    s32 *temp_v0_8;
-    s32 *temp_v0_9;
+    Gfx *temp_t0;
+    Gfx *temp_t1;
+    Gfx *temp_v0;
+    Gfx *temp_v0_10;
+    Gfx *temp_v0_11;
+    Gfx *temp_v0_13;
+    Gfx *temp_v0_14;
+    Gfx *temp_v0_15;
+    Gfx *temp_v0_16;
+    Gfx *temp_v0_17;
+    Gfx *temp_v0_2;
+    Gfx *temp_v0_3;
+    Gfx *temp_v0_5;
+    Gfx *temp_v0_6;
+    Gfx *temp_v0_7;
+    Gfx *temp_v0_8;
+    Gfx *temp_v0_9;
     s32 temp_a0;
     s32 temp_a0_2;
     s32 temp_lo;
@@ -1128,123 +464,123 @@ void func_80045738(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     s32 temp_t8;
     s32 temp_v0_12;
     s32 temp_v0_4;
-    s32 phi_t3;
-    s32 phi_t2;
-    s32 phi_t4;
-    s32 phi_t3_2;
-    s32 phi_t2_2;
-    s32 phi_t4_2;
+    s32 var_t2;
+    s32 var_t2_2;
+    s32 var_t3;
+    s32 var_t3_2;
+    s32 var_t4;
+    s32 var_t4_2;
 
     temp_t0 = gDisplayListHead;
     gDisplayListHead = temp_t0 + 8;
-    temp_t0->unk0 = 0xFCFFFFFF;
-    temp_t0->unk4 = 0xFFFCF438;
+    temp_t0->words.w0 = 0xFCFFFFFF;
+    temp_t0->words.w1 = 0xFFFCF438;
     temp_t1 = gDisplayListHead;
     gDisplayListHead = temp_t1 + 8;
-    temp_t1->unk4 = arg1;
-    temp_t1->unk0 = 0xFD900000;
+    temp_t1->words.w1 = (u32) image2;
+    temp_t1->words.w0 = 0xFD900000;
     temp_v0 = gDisplayListHead;
     gDisplayListHead = temp_v0 + 8;
-    temp_v0->unk0 = 0xF5900100;
-    temp_v0->unk4 = 0x70C0300;
+    temp_v0->words.w0 = 0xF5900100;
+    temp_v0->words.w1 = 0x070C0300;
     temp_v0_2 = gDisplayListHead;
     gDisplayListHead = temp_v0_2 + 8;
-    temp_v0_2->unk0 = 0xE6000000;
-    temp_v0_2->unk4 = 0;
+    temp_v0_2->words.w0 = 0xE6000000;
+    temp_v0_2->words.w1 = 0;
     temp_v0_3 = gDisplayListHead;
+    var_t4 = 0x7FF;
     gDisplayListHead = temp_v0_3 + 8;
     sp4C = temp_v0_3;
-    temp_v0_3->unk0 = 0xF3000000;
-    temp_lo = arg2 * arg3;
-    temp_t5 = ((temp_lo + 1) >> 1) - 1;
+    temp_v0_3->words.w0 = 0xF3000000;
+    temp_lo = width * height;
+    temp_t5 = ((s32) (temp_lo + 1) >> 1) - 1;
     spC = temp_lo;
-    phi_t4 = 0x7FF;
-    phi_t4_2 = 0x7FF;
     if (temp_t5 < 0x7FF) {
-        phi_t4 = temp_t5;
+        var_t4 = temp_t5;
     }
-    temp_v0_4 = arg2 / 8;
-    phi_t3 = temp_v0_4;
+    temp_v0_4 = width / 8;
+    var_t3 = temp_v0_4;
     if (temp_v0_4 <= 0) {
-        phi_t3 = 1;
+        var_t3 = 1;
     }
     if (temp_v0_4 <= 0) {
-        phi_t2 = 1;
+        var_t2 = 1;
     } else {
-        phi_t2 = temp_v0_4;
+        var_t2 = temp_v0_4;
     }
-    sp4C->unk4 = (((phi_t3 + 0x7FF) / phi_t2) & 0xFFF) | 0x7000000 | ((phi_t4 & 0xFFF) << 0xC);
+    sp4C->words.w1 = (((s32) (var_t3 + 0x7FF) / var_t2) & 0xFFF) | 0x07000000 | ((var_t4 & 0xFFF) << 0xC);
     temp_v0_5 = gDisplayListHead;
     gDisplayListHead = temp_v0_5 + 8;
-    temp_v0_5->unk0 = 0xE7000000;
-    temp_v0_5->unk4 = 0;
+    temp_v0_5->words.w0 = 0xE7000000;
+    temp_v0_5->words.w1 = 0;
     temp_v0_6 = gDisplayListHead;
     gDisplayListHead = temp_v0_6 + 8;
-    temp_v0_6->unk0 = ((((arg2 + 7) >> 3) & 0x1FF) << 9) | 0xF5880000 | 0x100;
-    temp_v0_6->unk4 = 0xC0300;
+    temp_v0_6->words.w0 = ((((s32) (width + 7) >> 3) & 0x1FF) << 9) | 0xF5880000 | 0x100;
+    temp_v0_6->words.w1 = 0x000C0300;
     temp_v0_7 = gDisplayListHead;
+    var_t4_2 = 0x7FF;
     gDisplayListHead = temp_v0_7 + 8;
-    temp_v0_7->unk0 = 0xF2000000;
-    temp_t6 = (((arg2 - 1) * 4) & 0xFFF) << 0xC;
-    temp_t8 = ((arg3 - 1) * 4) & 0xFFF;
+    temp_v0_7->words.w0 = 0xF2000000;
+    temp_t6 = (((width - 1) * 4) & 0xFFF) << 0xC;
+    temp_t8 = ((height - 1) * 4) & 0xFFF;
     sp0 = temp_t8;
     sp4 = temp_t6;
-    temp_v0_7->unk4 = temp_t6 | temp_t8;
+    temp_v0_7->words.w1 = temp_t6 | temp_t8;
     temp_v0_8 = gDisplayListHead;
     gDisplayListHead = temp_v0_8 + 8;
-    temp_v0_8->unk0 = 0xFD100000;
-    temp_v0_8->unk4 = arg0;
+    temp_v0_8->words.w0 = 0xFD100000;
+    temp_v0_8->words.w1 = (u32) image1;
     temp_v0_9 = gDisplayListHead;
     gDisplayListHead = temp_v0_9 + 8;
-    temp_v0_9->unk0 = 0xF5100000;
-    temp_v0_9->unk4 = 0x70C0300;
+    temp_v0_9->words.w0 = 0xF5100000;
+    temp_v0_9->words.w1 = 0x070C0300;
     temp_v0_10 = gDisplayListHead;
     gDisplayListHead = temp_v0_10 + 8;
-    temp_v0_10->unk0 = 0xE6000000;
-    temp_v0_10->unk4 = 0;
+    temp_v0_10->words.w0 = 0xE6000000;
+    temp_v0_10->words.w1 = 0;
     temp_v0_11 = gDisplayListHead;
     gDisplayListHead = temp_v0_11 + 8;
-    temp_v0_11->unk0 = 0xF3000000;
+    temp_v0_11->words.w0 = 0xF3000000;
     temp_a0 = spC - 1;
     if (temp_a0 < 0x7FF) {
-        phi_t4_2 = temp_a0;
+        var_t4_2 = temp_a0;
     }
-    temp_a0_2 = arg2 * 2;
+    temp_a0_2 = width * 2;
     temp_v0_12 = temp_a0_2 / 8;
-    phi_t3_2 = temp_v0_12;
+    var_t3_2 = temp_v0_12;
     if (temp_v0_12 <= 0) {
-        phi_t3_2 = 1;
+        var_t3_2 = 1;
     }
     if (temp_v0_12 <= 0) {
-        phi_t2_2 = 1;
+        var_t2_2 = 1;
     } else {
-        phi_t2_2 = temp_v0_12;
+        var_t2_2 = temp_v0_12;
     }
-    temp_v0_11->unk4 = (((phi_t3_2 + 0x7FF) / phi_t2_2) & 0xFFF) | 0x7000000 | ((phi_t4_2 & 0xFFF) << 0xC);
+    temp_v0_11->words.w1 = (((s32) (var_t3_2 + 0x7FF) / var_t2_2) & 0xFFF) | 0x07000000 | ((var_t4_2 & 0xFFF) << 0xC);
     temp_v0_13 = gDisplayListHead;
     gDisplayListHead = temp_v0_13 + 8;
-    temp_v0_13->unk0 = 0xE7000000;
-    temp_v0_13->unk4 = 0;
+    temp_v0_13->words.w0 = 0xE7000000;
+    temp_v0_13->words.w1 = 0;
     temp_v0_14 = gDisplayListHead;
     gDisplayListHead = temp_v0_14 + 8;
     sp28 = temp_v0_14;
-    temp_v0_14->unk4 = 0xC0300;
-    temp_v0_14->unk0 = ((((temp_a0_2 + 7) >> 3) & 0x1FF) << 9) | 0xF5100000;
+    temp_v0_14->words.w1 = 0x000C0300;
+    temp_v0_14->words.w0 = ((((s32) (temp_a0_2 + 7) >> 3) & 0x1FF) << 9) | 0xF5100000;
     temp_v0_15 = gDisplayListHead;
     gDisplayListHead = temp_v0_15 + 8;
     sp24 = temp_v0_15;
-    temp_v0_15->unk0 = 0xF2000000;
-    temp_v0_15->unk4 = sp4 | sp0;
+    temp_v0_15->words.w0 = 0xF2000000;
+    temp_v0_15->words.w1 = sp4 | sp0;
     temp_v0_16 = gDisplayListHead;
     gDisplayListHead = temp_v0_16 + 8;
     sp20 = temp_v0_16;
-    temp_v0_16->unk0 = ((((arg2 + 7) >> 3) & 0x1FF) << 9) | 0xF5880000 | 0x100;
-    sp20->unk4 = 0x1000000;
+    temp_v0_16->words.w0 = ((((s32) (width + 7) >> 3) & 0x1FF) << 9) | 0xF5880000 | 0x100;
+    sp20->words.w1 = 0x01000000;
     temp_v0_17 = gDisplayListHead;
     gDisplayListHead = temp_v0_17 + 8;
     sp1C = temp_v0_17;
-    temp_v0_17->unk0 = 0xF2000000;
-    sp1C->unk4 = sp4 | 0x1000000 | sp0;
+    temp_v0_17->words.w0 = 0xF2000000;
+    sp1C->words.w1 = sp4 | 0x01000000 | sp0;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80045738.s")
@@ -1558,7 +894,7 @@ UNUSED void func_80046634(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 
 void func_800466B0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007948);
-    func_80043D50(arg4, arg6, arg7, &gDisplayListHead);
+    func_80043D50(arg4, arg6, arg7);
     func_80045B74(arg5);
 }
 
@@ -1586,14 +922,13 @@ UNUSED void func_80046874(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3, s32 arg4, 
     func_80045E10(arg3, arg4, arg5, arg6, arg8);
 }
 
-void func_800468E0(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_800468E0(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     func_80045F18(arg3, arg4, arg5, arg6, arg8, arg9);
 }
 
-UNUSED void func_80046954(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-
+UNUSED void func_80046954(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
@@ -1604,7 +939,7 @@ UNUSED void func_80046954(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4, s32 
 void func_80046A00(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3, Vtx *arg4, s32 arg5, s32 arg6) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007948);
-    func_80043D50(arg3, arg5, arg6, &gDisplayListHead);
+    func_80043D50(arg3, arg5, arg6);
     func_80045B74(arg4);
 }
 
@@ -3191,62 +2526,44 @@ void func_8004B72C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s
 }
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-
-
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
 void func_8004B7DC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6) {
-    void *temp_v1;
-    void *temp_v1_2;
-    void *temp_v1_3;
-    void *temp_v1_4;
-    void *temp_v1_5;
-    void *temp_v1_6;
+    Gfx *temp_v1;
+    Gfx *temp_v1_2;
+    Gfx *temp_v1_3;
+    Gfx *temp_v1_4;
+    Gfx *temp_v1_5;
+    Gfx *temp_v1_6;
+
+    // These look like they should be gSPTextureRectangle, but that's not quite right...
 
     if (arg6 == 0) {
-
-        gSPTextureRectangle
-        //gTexRect(gDisplayListHead++, ((arg0 + arg2) - 1) << 0xC, (arg1 + arg3) - 1, arg0, arg1, G_TX_RENDERTILE);
-        //gDPHalf2(gDisplayListHead++, arg4);
-        //gSPModifyVertex(gDisplayListHead++, 0, arg5, 0x10000400);
-
-/*
         temp_v1 = gDisplayListHead;
         gDisplayListHead = temp_v1 + 8;
-        temp_v1->unk4 = (((arg0 * 4) & 0xFFF) << 0xC) | ((arg1 * 4) & 0xFFF);
-        temp_v1->unk0 = (((((arg0 + arg2) - 1) * 4) & 0xFFF) << 0xC) | 0xE4000000 | ((((arg1 + arg3) - 1) * 4) & 0xFFF);
+        temp_v1->words.w0 = (((((arg0 + arg2) - 1) * 4) & 0xFFF) << 0xC) | 0xE4000000 | ((((arg1 + arg3) - 1) * 4) & 0xFFF);
+        temp_v1->words.w1 = (((arg0 * 4) & 0xFFF) << 0xC) | ((arg1 * 4) & 0xFFF);
         temp_v1_2 = gDisplayListHead;
         gDisplayListHead = temp_v1_2 + 8;
-        temp_v1_2->unk0 = 0xB3000000;
-        temp_v1_2->unk4 = (arg4 << 0x15) | ((arg5 << 5) & 0xFFFF);
+        temp_v1_2->words.w0 = 0xB3000000;
+        temp_v1_2->words.w1 = (arg4 << 0x15) | ((arg5 << 5) & 0xFFFF);
         temp_v1_3 = gDisplayListHead;
         gDisplayListHead = temp_v1_3 + 8;
-        temp_v1_3->unk0 = 0xB2000000;
-        temp_v1_3->unk4 = 0x10000400;
-        */
-        
-    } else {
-
-        //gSPTextureRectangle(gDisplayListHead++, arg0 << 0xC, arg1, arg0 + arg2 << 0xC, arg3, arg4, arg5);
-/*
-        gTexRect(gDisplayListHead++, ((arg0 + arg2) - 1) << 0xC, (arg1 + arg3) - 1, arg0, arg1, G_TX_RENDERTILE);
-        gDPHalf2(gDisplayListHead++, arg4);
-        gSPModifyVertex(gDisplayListHead++, 0, arg5, 0x10000400);
-        */
-/*
-        temp_v1_4 = gDisplayListHead;
-        gDisplayListHead = temp_v1_4 + 8;
-        temp_v1_4->unk4 = (((arg0 * 4) & 0xFFF) << 0xC) | ((arg1 * 4) & 0xFFF);
-        temp_v1_4->unk0 = ((((arg0 + arg2) * 4) & 0xFFF) << 0xC) | 0xE4000000 | (((arg1 + arg3) * 4) & 0xFFF);
-        temp_v1_5 = gDisplayListHead;
-        gDisplayListHead = temp_v1_5 + 8;
-        temp_v1_5->unk0 = 0xB3000000;
-        temp_v1_5->unk4 = (arg4 << 0x15) | ((arg5 << 5) & 0xFFFF);
-        temp_v1_6 = gDisplayListHead;
-        gDisplayListHead = temp_v1_6 + 8;
-        temp_v1_6->unk0 = 0xB2000000;
-        temp_v1_6->unk4 = 0x4000400;
-        */
+        temp_v1_3->words.w0 = 0xB2000000;
+        temp_v1_3->words.w1 = 0x10000400;
+        return;
     }
+    temp_v1_4 = gDisplayListHead;
+    gDisplayListHead = temp_v1_4 + 8;
+    temp_v1_4->words.w1 = (((arg0 * 4) & 0xFFF) << 0xC) | ((arg1 * 4) & 0xFFF);
+    temp_v1_4->words.w0 = ((((arg0 + arg2) * 4) & 0xFFF) << 0xC) | 0xE4000000 | (((arg1 + arg3) * 4) & 0xFFF);
+    temp_v1_5 = gDisplayListHead;
+    gDisplayListHead = temp_v1_5 + 8;
+    temp_v1_5->words.w0 = 0xB3000000;
+    temp_v1_5->words.w1 = (arg4 << 0x15) | ((arg5 << 5) & 0xFFFF);
+    temp_v1_6 = gDisplayListHead;
+    gDisplayListHead = temp_v1_6 + 8;
+    temp_v1_6->words.w0 = 0xB2000000;
+    temp_v1_6->words.w1 = 0x04000400;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_800431B0/func_8004B7DC.s")
@@ -4701,9 +4018,8 @@ GLOBAL_ASM("asm/non_matchings/code_800431B0/func_8004EF9C.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_8004CAD0(s32, s32, ? *); // extern
-extern s8 D_0D02CC58;
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
+extern ? D_0D02CC58;
 extern s16 D_8018D2B0;
 extern s16 D_8018D2B8;
 extern s16 D_8018D2C0;
@@ -4712,35 +4028,31 @@ extern s16 D_8018D2E0;
 extern s16 D_8018D2E8;
 extern s16 D_8018D2F0;
 extern s16 D_8018D2F8;
+s16 gCurrentCourseId;                               /* unable to generate initializer */
 
 void func_8004F020(s32 arg0) {
-    f32 temp_f0;
+    f32 var_f0;
+    f64 var_f16;
     s16 temp_v1;
     s32 temp_v0;
-    f32 phi_f0;
-    f64 phi_f16;
 
     temp_v0 = arg0 * 2;
     temp_v1 = gCurrentCourseId;
-    temp_f0 = ((*(&D_8018D2D8 + temp_v0) + D_8018D2F8) - (D_8018D2B8 / 2)) + D_8018D2E8;
-    phi_f0 = temp_f0;
-    if (temp_v1 != 0) {
-        if (temp_v1 != 1) {
-            if (temp_v1 != 0xB) {
-
-            } else {
-                phi_f16 = temp_f0 + 4.0;
-                goto block_7;
-            }
-        } else {
-            phi_f0 = temp_f0 - 16.0;
-        }
-    } else {
-        phi_f16 = temp_f0 - 2.0;
+    var_f0 = (f32) (((*(&D_8018D2D8 + temp_v0) + D_8018D2F8) - ((s16) D_8018D2B8 / 2)) + D_8018D2E8);
+    switch (temp_v1) {                              /* irregular */
+    case 0:
+        var_f16 = (f64) var_f0 - 2.0;
 block_7:
-        phi_f0 = phi_f16;
+        var_f0 = (f32) var_f16;
+        break;
+    case 1:
+        var_f0 = (f32) ((f64) var_f0 - 16.0);
+        break;
+    case 11:
+        var_f16 = (f64) var_f0 + 4.0;
+        goto block_7;
     }
-    func_8004CAD0(((*(&D_8018D2C0 + temp_v0) + D_8018D2F0) - (D_8018D2B0 / 2)) + D_8018D2E0, phi_f0, &D_0D02CC58);
+    func_8004CAD0((s32) (f32) (((*(&D_8018D2C0 + temp_v0) + D_8018D2F0) - ((s16) D_8018D2B0 / 2)) + D_8018D2E0), (s32) var_f0, (s32) &D_0D02CC58);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_800431B0/func_8004F020.s")
@@ -5039,67 +4351,62 @@ void func_8004F9CC(s32 arg0, s32 arg1, s32 arg2) {
 }
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 792017ad9d422c2467bd42686f383a5c41f41c75
-void func_8004CB90(s32, s32, ? *);                     /* extern */
-void func_8004F9CC(s16, s16, u32);                     /* extern */
-void print_timer(s16, s16, u32);                       /* extern */
-extern s8 D_0D00BD58;
-extern s8 D_0D00C158;
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
+extern ? D_0D00BD58;
+extern ? D_0D00C158;
 extern s32 D_80165658;
 extern s8 D_801657E3;
 extern s8 D_801657E5;
 extern s32 D_8018D320;
 
 void func_8004FA78(s32 playerId) {
-    s32 temp_s0;
+    s32 *var_s3;
     s32 temp_v0;
+    s32 var_s0;
     struct_8018CA70_entry *temp_s4;
-    s32 *phi_s3;
-    struct_8018CA70_entry *phi_s1;
-    s32 phi_s0;
-    struct_8018CA70_entry *phi_s2;
+    struct_8018CA70_entry *var_s1;
+    struct_8018CA70_entry *var_s2;
 
     temp_v0 = gModeSelection;
     if ((temp_v0 != VERSUS) && (temp_v0 != BATTLE)) {
         temp_s4 = &D_8018CA70[playerId];
         if (D_8018D320 == temp_s4->lapCount) {
-            phi_s3 = &D_80165658;
-            phi_s1 = temp_s4;
+            var_s3 = &D_80165658;
+            var_s1 = temp_s4;
             if (D_8015F890 == 0) {
-                phi_s0 = 0;
-                phi_s2 = temp_s4;
+                var_s0 = 0;
+                var_s2 = temp_s4;
                 do {
-                    if (*phi_s3 == 0) {
-                        print_timer(phi_s1->lap1CompletionTimeX, temp_s4->timerY + phi_s0, phi_s2->lap1Duration);
+                    if (*var_s3 == 0) {
+                        print_timer((s32) var_s1->lap1CompletionTimeX, temp_s4->timerY + var_s0, (s32) var_s2->lap1Duration);
                     } else {
-                        func_8004F9CC(phi_s1->lap1CompletionTimeX, temp_s4->timerY + phi_s0, phi_s2->lap1Duration);
+                        func_8004F9CC((s32) var_s1->lap1CompletionTimeX, temp_s4->timerY + var_s0, (s32) var_s2->lap1Duration);
                     }
-                    temp_s0 = phi_s0 + 0x10;
-                    phi_s3 += 4;
-                    phi_s1 += 2;
-                    phi_s0 = temp_s0;
-                    phi_s2 += 4;
-                } while (temp_s0 != 0x30);
-                func_8004CB90(temp_s4->totalTimeX - 0x13, temp_s4->timerY + 0x38, &D_0D00BD58);
+                    var_s0 += 0x10;
+                    var_s3 += 4;
+                    var_s1 += 2;
+                    var_s2 += 4;
+                } while (var_s0 != 0x30);
+                func_8004CB90(temp_s4->totalTimeX - 0x13, temp_s4->timerY + 0x38, (s32) &D_0D00BD58);
                 if (D_801657E5 != 0) {
-                    func_8004F9CC(temp_s4->totalTimeX, temp_s4->timerY + 0x30, temp_s4->someTimer);
+                    func_8004F9CC((s32) temp_s4->totalTimeX, temp_s4->timerY + 0x30, (s32) temp_s4->someTimer);
                     return;
                 }
-                print_timer(temp_s4->totalTimeX, temp_s4->timerY + 0x30, temp_s4->someTimer);
+                print_timer((s32) temp_s4->totalTimeX, temp_s4->timerY + 0x30, (s32) temp_s4->someTimer);
             }
         } else {
             if (temp_s4->blinkTimer == 0) {
-                func_8004CB90(temp_s4->timerX - 0x13, temp_s4->timerY + 8, &D_0D00C158);
-                print_timer(temp_s4->timerX, temp_s4->timerY, temp_s4->someTimer);
+                func_8004CB90(temp_s4->timerX - 0x13, temp_s4->timerY + 8, (s32) &D_0D00C158);
+                print_timer((s32) temp_s4->timerX, (s32) temp_s4->timerY, (s32) temp_s4->someTimer);
                 return;
             }
-            func_8004CB90(temp_s4->timerX - 0x13, temp_s4->timerY + 8, (? *)0x0D00AD58);
+            func_8004CB90(temp_s4->timerX - 0x13, temp_s4->timerY + 8, 0x0D00AD58);
             if (D_801657E3 != 0) {
-                func_8004F9CC(temp_s4->timerX, temp_s4->timerY, temp_s4->someTimer1);
+                func_8004F9CC((s32) temp_s4->timerX, (s32) temp_s4->timerY, (s32) temp_s4->someTimer1);
                 return;
             }
             if (temp_s4->blinkState == 0) {
-                print_timer(temp_s4->timerX, temp_s4->timerY, temp_s4->someTimer1);
+                print_timer((s32) temp_s4->timerX, (s32) temp_s4->timerY, (s32) temp_s4->someTimer1);
             }
         }
     }
@@ -5427,59 +4734,52 @@ GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80050320.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern f32 gLapCompletionPercentByPlayerId;
-extern s32 gLapCountByPlayerId;
-
-s32 func_80050644(s32 arg0, s32 *arg1, s32 *arg2) {
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
+s32 func_80050644(s32 playerId, s32 *arg1, s32 *arg2) {
     s32 temp_a3;
-    s32 temp_t0;
     s32 temp_t6;
-    s32 phi_v0;
-    s32 phi_v0_2;
+    s32 var_v0;
 
-    temp_t6 = arg0 & 0xFFFF;
-    temp_t0 = temp_t6 * 4;
-    temp_a3 = *(&gLapCountByPlayerId + temp_t0);
-    phi_v0 = 0;
-    phi_v0_2 = 0;
+    temp_t6 = playerId & 0xFFFF;
+    temp_a3 = gLapCountByPlayerId[temp_t6];
+    var_v0 = 0;
     if (temp_a3 < 3) {
         if (gPlayerCountSelection1 == 1) {
             if (temp_a3 >= 0) {
-                phi_v0 = *(&gLapCompletionPercentByPlayerId + temp_t0) * 928.0f;
+                var_v0 = (s32) (gLapCompletionPercentByPlayerId[temp_t6] * 928.0f);
             }
-            if (phi_v0 < 0x104) {
-                *arg1 = phi_v0;
+            if (var_v0 < 0x104) {
+                *arg1 = var_v0;
                 *arg2 = 0;
                 return 1;
             }
-            if (phi_v0 < 0x1D0) {
-                *arg1 = 0x104;
-                *arg2 = phi_v0 - 0x104;
+            if (var_v0 < 0x1D0) {
+                *arg1 = 0x00000104;
+                *arg2 = var_v0 - 0x104;
                 return 2;
             }
-            if (phi_v0 < 0x2D4) {
-                *arg1 = 0x2D4 - phi_v0;
-                *arg2 = 0xCC;
+            if (var_v0 < 0x2D4) {
+                *arg1 = 0x2D4 - var_v0;
+                *arg2 = 0x000000CC;
                 return 3;
             }
             *arg1 = 0;
-            *arg2 = 0x3A0 - phi_v0;
+            *arg2 = 0x3A0 - var_v0;
             return 4;
         }
         if (temp_a3 >= 0) {
-            phi_v0_2 = *(&gLapCompletionPercentByPlayerId + temp_t0) * 260.0f;
+            var_v0 = (s32) (gLapCompletionPercentByPlayerId[temp_t6] * 260.0f);
         }
-        *arg1 = phi_v0_2;
+        *arg1 = var_v0;
         *arg2 = 0;
         return 0;
     }
     if (gPlayerCountSelection1 == 1) {
-        *arg1 = 0x20;
+        *arg1 = 0x00000020;
         *arg2 = (gPlayerPositions[temp_t6] * 0x14) + 0x20;
         return 0;
     }
-    *arg1 = *(&gLapCompletionPercentByPlayerId + temp_t0) * 260.0f;
+    *arg1 = (s32) (gLapCompletionPercentByPlayerId[temp_t6] * 260.0f);
     *arg2 = 0;
     return 0;
 }
@@ -5524,9 +4824,9 @@ GLOBAL_ASM("asm/non_matchings/code_800431B0/func_800507D8.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
-void func_8004C024(s16, ?, s16, s32, s32, s32, s32);   /* extern */
-void func_8004C148(?, s16, s16, s32, s32, s32, s32);   /* extern */
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
+u32 func_80050644(s32, s32 *, s32 *);               /* extern */
+extern s16 D_80164378;
 
 void func_800508C0(void) {
     s32 sp54;
@@ -5536,91 +4836,89 @@ void func_800508C0(void) {
     u16 sp42;
     u16 sp40;
     u16 sp3E;
+    s16 var_s0;
     s32 temp_v1;
-    s16 phi_s0;
-    u16 phi_s0_2;
-    s32 phi_s1;
-    s32 phi_s2;
-    u16 phi_s0_3;
-    s32 phi_s1_2;
-    s32 phi_s2_2;
+    s32 var_s1;
+    s32 var_s2;
+    u16 var_s0_2;
+    u16 var_s0_3;
+    u16 var_s1_2;
+    u16 var_s2_2;
 
-    if (gModeSelection == TIME_TRIALS) {
-        phi_s0 = D_80164378;
+    if (gModeSelection == 1) {
+        var_s0 = D_80164378;
     } else {
-        phi_s0 = gGPCurrentRacePlayerIdByRank;
+        var_s0 = *gGPCurrentRacePlayerIdByRank;
     }
-    temp_v1 = gLapCountByPlayerId[phi_s0];
-    sp4C = func_80050644(phi_s0 & 0xFFFF, &sp54, &sp50);
+    temp_v1 = gLapCountByPlayerId[var_s0];
+    sp4C = func_80050644(var_s0 & 0xFFFF, &sp54, &sp50);
     if (temp_v1 > 0) {
         if (temp_v1 == 1) {
-            phi_s0_2 = 0;
-            phi_s1 = 0;
-            phi_s2 = 0xFF;
+            var_s0_2 = 0;
+            var_s1 = 0;
+            var_s2 = 0x000000FF;
         } else {
+            var_s0_2 = 0x00FF;
             if (temp_v1 == 2) {
-                phi_s1 = 0xFF;
+                var_s0_2 = 0x00FF;
+                var_s1 = 0x000000FF;
             } else {
-                phi_s1 = 0;
+                var_s1 = 0;
             }
-            phi_s0_2 = 0xFF;
-            phi_s2 = 0;
+            var_s2 = 0;
         }
         sp48 = temp_v1;
-        func_8004C024(0x20, 0x12, 0x104, phi_s0_2 & 0xFFFF, phi_s1, phi_s2, 0xFF);
-        func_8004C148(0x124, 0x12, 0xCC, phi_s0_2 & 0xFFFF, phi_s1, phi_s2, 0xFF);
-        func_8004C024(0x20, 0xDE, 0x104, phi_s0_2 & 0xFFFF, phi_s1, phi_s2, 0xFF);
-        func_8004C148(0x20, 0x12, 0xCC, phi_s0_2 & 0xFFFF, phi_s1, phi_s2, 0xFF);
-        sp42 = phi_s0_2;
-        sp40 = phi_s1;
-        sp3E = phi_s2;
+        func_8004C024(0x0020, 0x0012, 0x0104, var_s0_2 & 0xFFFF, (u16) var_s1, (u16) var_s2, (u16) 0x000000FF);
+        func_8004C148(0x0124, 0x0012, 0x00CC, var_s0_2 & 0xFFFF, (u16) var_s1, (u16) var_s2, (u16) 0x000000FF);
+        func_8004C024(0x0020, 0x00DE, 0x0104, var_s0_2 & 0xFFFF, (u16) var_s1, (u16) var_s2, (u16) 0x000000FF);
+        func_8004C148(0x0020, 0x0012, 0x00CC, var_s0_2 & 0xFFFF, (u16) var_s1, (u16) var_s2, (u16) 0x000000FF);
+        sp42 = var_s0_2;
+        sp40 = (u16) var_s1;
+        sp3E = (u16) var_s2;
     }
-    phi_s0_3 = sp42;
-    phi_s1_2 = sp40;
-    phi_s2_2 = sp3E;
-    if ((gLapCountByPlayerId[phi_s0] >= 0) && (gLapCountByPlayerId[phi_s0] < 3)) {
-        if (gLapCountByPlayerId[phi_s0] != 0) {
-            if (gLapCountByPlayerId[phi_s0] != 1) {
-                if (gLapCountByPlayerId[phi_s0] != 2) {
-
-                } else {
-                    phi_s1_2 = 0;
-                    goto block_20;
-                }
-            } else {
-                phi_s1_2 = 0xFF;
-block_20:
-                phi_s0_3 = 0xFF;
-                phi_s2_2 = 0;
-            }
-        } else {
-            phi_s0_3 = 0;
-            phi_s1_2 = 0;
-            phi_s2_2 = 0xFF;
-        }
+    var_s0_3 = sp42;
+    var_s1_2 = sp40;
+    var_s2_2 = sp3E;
+    switch (temp_v1) {                              /* switch 1; irregular */
+    case 0:                                         /* switch 1 */
+        var_s0_3 = 0;
+        var_s1_2 = 0;
+        var_s2_2 = 0x00FF;
+    default:                                        /* switch 1 */
+block_21:
         switch (sp4C) {
         case 1:
-            func_8004C024(0x20, 0x12, sp54, phi_s0_3 & 0xFFFF, phi_s1_2, phi_s2_2, 0xFF);
+            func_8004C024(0x0020, 0x0012, (s16) sp54, var_s0_3 & 0xFFFF, (u16) (s32) var_s1_2, (u16) (s32) var_s2_2, (u16) 0x000000FF);
             return;
         case 2:
-            func_8004C024(0x20, 0x12, 0x104, phi_s0_3 & 0xFFFF, phi_s1_2, phi_s2_2, 0xFF);
-            func_8004C148(0x124, 0x12, sp50, phi_s0_3 & 0xFFFF, phi_s1_2, phi_s2_2, 0xFF);
+            func_8004C024(0x0020, 0x0012, 0x0104, var_s0_3 & 0xFFFF, (u16) (s32) var_s1_2, (u16) (s32) var_s2_2, (u16) 0x000000FF);
+            func_8004C148(0x0124, 0x0012, (s16) sp50, var_s0_3 & 0xFFFF, (u16) (s32) var_s1_2, (u16) (s32) var_s2_2, (u16) 0x000000FF);
             return;
         case 3:
-            func_8004C024(0x20, 0x12, 0x104, phi_s0_3 & 0xFFFF, phi_s1_2, phi_s2_2, 0xFF);
-            func_8004C148(0x124, 0x12, 0xCC, phi_s0_3 & 0xFFFF, phi_s1_2, phi_s2_2, 0xFF);
-            func_8004C024(sp54 + 0x20, 0xDE, 0x104 - sp54, phi_s0_3 & 0xFFFF, phi_s1_2, phi_s2_2, 0xFF);
+            func_8004C024(0x0020, 0x0012, 0x0104, var_s0_3 & 0xFFFF, (u16) (s32) var_s1_2, (u16) (s32) var_s2_2, (u16) 0x000000FF);
+            func_8004C148(0x0124, 0x0012, 0x00CC, var_s0_3 & 0xFFFF, (u16) (s32) var_s1_2, (u16) (s32) var_s2_2, (u16) 0x000000FF);
+            func_8004C024((s16) (sp54 + 0x20), 0x00DE, (s16) (0x104 - sp54), var_s0_3 & 0xFFFF, (u16) (s32) var_s1_2, (u16) (s32) var_s2_2, (u16) 0x000000FF);
             return;
         case 4:
-            func_8004C024(0x20, 0x12, 0x104, phi_s0_3 & 0xFFFF, phi_s1_2, phi_s2_2, 0xFF);
-            func_8004C148(0x124, 0x12, 0xCC, phi_s0_3 & 0xFFFF, phi_s1_2, phi_s2_2, 0xFF);
-            func_8004C024(0x20, 0xDE, 0x104, phi_s0_3 & 0xFFFF, phi_s1_2, phi_s2_2, 0xFF);
-            func_8004C148(0x20, sp50 + 0x12, 0xCC - sp50, phi_s0_3 & 0xFFFF, phi_s1_2, phi_s2_2, 0xFF);
-            /* Duplicate return node #27. Try simplifying control flow for better match */
+            func_8004C024(0x0020, 0x0012, 0x0104, var_s0_3 & 0xFFFF, (u16) (s32) var_s1_2, (u16) (s32) var_s2_2, (u16) 0x000000FF);
+            func_8004C148(0x0124, 0x0012, 0x00CC, var_s0_3 & 0xFFFF, (u16) (s32) var_s1_2, (u16) (s32) var_s2_2, (u16) 0x000000FF);
+            func_8004C024(0x0020, 0x00DE, 0x0104, var_s0_3 & 0xFFFF, (u16) (s32) var_s1_2, (u16) (s32) var_s2_2, (u16) 0x000000FF);
+            func_8004C148(0x0020, (s16) (sp50 + 0x12), (s16) (0xCC - sp50), var_s0_3 & 0xFFFF, (u16) (s32) var_s1_2, (u16) (s32) var_s2_2, (u16) 0x000000FF);
+            /* fallthrough */
+        default:
             return;
         }
-    } else {
-    default:
+        break;
+    case 1:                                         /* switch 1 */
+        var_s0_3 = 0x00FF;
+        var_s1_2 = 0x00FF;
+block_20:
+        var_s2_2 = 0;
+        goto block_21;
+    case 2:                                         /* switch 1 */
+        var_s0_3 = 0x00FF;
+        var_s1_2 = 0;
+        goto block_20;
     }
 }
 #else
@@ -6481,107 +5779,102 @@ GLOBAL_ASM("asm/non_matchings/code_800431B0/func_800520C0.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_80042E00(void *, void *, s32, s32); // extern
-void func_800520C0(s32); // extern
-s32 func_8007223C(s32, ?, s32); // extern
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
+? func_800520C0(s32);                               /* extern */
 extern ? D_06007650;
 extern ? D_060078C0;
 extern ? D_06007978;
 extern ? D_06007B38;
-extern Gfx D_0D007828;
-extern ? D_800E45C0;
-extern ? D_800E45C8;
-extern ? D_800E45D8;
-extern ? D_800E45E0;
-extern ? D_800E45F0;
-extern ? D_800E45F8;
-extern ? D_800E4608;
-extern ? D_800E4610;
-extern struct_80165C18_entry D_80165C18;
-extern s32 D_80183F28;
-
+extern ? D_0D007828;
+static ? D_800E45C0;                                /* unable to generate initializer */
+static ? D_800E45C8;                                /* unable to generate initializer */
+static ? D_800E45D8;                                /* unable to generate initializer */
+static ? D_800E45E0;                                /* unable to generate initializer */
+static ? D_800E45F0;                                /* unable to generate initializer */
+static ? D_800E45F8;                                /* unable to generate initializer */
+static ? D_800E4608;                                /* unable to generate initializer */
+static ? D_800E4610;                                /* unable to generate initializer */
 
 void func_8005217C(s32 arg0) {
     s32 sp50;
-    void *sp18;
+    struct_80165C18_entry *sp18;
+    Gfx *temp_v0;
+    Gfx *temp_v0_10;
+    Gfx *temp_v0_11;
+    Gfx *temp_v0_12;
+    Gfx *temp_v0_13;
+    Gfx *temp_v0_2;
+    Gfx *temp_v0_3;
+    Gfx *temp_v0_4;
+    Gfx *temp_v0_5;
+    Gfx *temp_v0_6;
+    Gfx *temp_v0_7;
+    Gfx *temp_v0_8;
+    Gfx *temp_v0_9;
     s32 temp_a3;
-    void *temp_v0;
-    void *temp_v0_10;
-    void *temp_v0_11;
-    void *temp_v0_12;
-    void *temp_v0_13;
-    void *temp_v0_2;
-    void *temp_v0_3;
-    void *temp_v0_4;
-    void *temp_v0_5;
-    void *temp_v0_6;
-    void *temp_v0_7;
-    void *temp_v0_8;
-    void *temp_v0_9;
-    void *temp_v1;
+    struct_80165C18_entry *temp_v1;
 
-    temp_a3 = D_80183F28;
-    temp_v1 = (temp_a3 * 0xE0) + &D_80165C18;
-    if (temp_v1->unkA6 >= 2) {
+    temp_a3 = *D_80183F28;
+    temp_v1 = &D_80165C18[temp_a3];
+    if (temp_v1->unk_0A6 >= 2) {
         sp18 = temp_v1;
         sp50 = temp_a3;
-        if (func_8007223C(temp_a3, 0x10, temp_a3) != 0) {
+        if (func_8007223C(temp_a3, 0x00000010) != 0) {
             sp50 = temp_a3;
-            func_80042E00(temp_v1 + 4, temp_v1 + 0xBE, temp_v1->unk0, temp_a3);
+            func_80042E00(temp_v1->unk_004, (s16 *) temp_v1->unk_0BE, temp_v1->unk_000);
             func_800520C0(sp50);
             temp_v0 = gDisplayListHead;
             gDisplayListHead = temp_v0 + 8;
-            temp_v0->unk4 = &D_0D007828;
-            temp_v0->unk0 = 0x6000000;
+            temp_v0->words.w1 = (u32) &D_0D007828;
+            temp_v0->words.w0 = 0x06000000;
             temp_v0_2 = gDisplayListHead;
             gDisplayListHead = temp_v0_2 + 8;
-            temp_v0_2->unk4 = &D_800E45C8;
-            temp_v0_2->unk0 = 0x3860010;
+            temp_v0_2->words.w1 = (u32) &D_800E45C8;
+            temp_v0_2->words.w0 = 0x03860010;
             temp_v0_3 = gDisplayListHead;
             gDisplayListHead = temp_v0_3 + 8;
-            temp_v0_3->unk4 = &D_800E45C0;
-            temp_v0_3->unk0 = 0x3880010;
+            temp_v0_3->words.w1 = (u32) &D_800E45C0;
+            temp_v0_3->words.w0 = 0x03880010;
             temp_v0_4 = gDisplayListHead;
             gDisplayListHead = temp_v0_4 + 8;
-            temp_v0_4->unk4 = &D_06007B38;
-            temp_v0_4->unk0 = 0x6000000;
+            temp_v0_4->words.w1 = (u32) &D_06007B38;
+            temp_v0_4->words.w0 = 0x06000000;
             temp_v0_5 = gDisplayListHead;
             gDisplayListHead = temp_v0_5 + 8;
-            temp_v0_5->unk4 = &D_800E45E0;
-            temp_v0_5->unk0 = 0x3860010;
+            temp_v0_5->words.w1 = (u32) &D_800E45E0;
+            temp_v0_5->words.w0 = 0x03860010;
             temp_v0_6 = gDisplayListHead;
             gDisplayListHead = temp_v0_6 + 8;
-            temp_v0_6->unk4 = &D_800E45D8;
-            temp_v0_6->unk0 = 0x3880010;
+            temp_v0_6->words.w1 = (u32) &D_800E45D8;
+            temp_v0_6->words.w0 = 0x03880010;
             temp_v0_7 = gDisplayListHead;
             gDisplayListHead = temp_v0_7 + 8;
-            temp_v0_7->unk4 = &D_06007978;
-            temp_v0_7->unk0 = 0x6000000;
+            temp_v0_7->words.w1 = (u32) &D_06007978;
+            temp_v0_7->words.w0 = 0x06000000;
             temp_v0_8 = gDisplayListHead;
             gDisplayListHead = temp_v0_8 + 8;
-            temp_v0_8->unk4 = &D_800E45F8;
-            temp_v0_8->unk0 = 0x3860010;
+            temp_v0_8->words.w1 = (u32) &D_800E45F8;
+            temp_v0_8->words.w0 = 0x03860010;
             temp_v0_9 = gDisplayListHead;
             gDisplayListHead = temp_v0_9 + 8;
-            temp_v0_9->unk4 = &D_800E45F0;
-            temp_v0_9->unk0 = 0x3880010;
+            temp_v0_9->words.w1 = (u32) &D_800E45F0;
+            temp_v0_9->words.w0 = 0x03880010;
             temp_v0_10 = gDisplayListHead;
             gDisplayListHead = temp_v0_10 + 8;
-            temp_v0_10->unk4 = &D_060078C0;
-            temp_v0_10->unk0 = 0x6000000;
+            temp_v0_10->words.w1 = (u32) &D_060078C0;
+            temp_v0_10->words.w0 = 0x06000000;
             temp_v0_11 = gDisplayListHead;
             gDisplayListHead = temp_v0_11 + 8;
-            temp_v0_11->unk4 = &D_800E4610;
-            temp_v0_11->unk0 = 0x3860010;
+            temp_v0_11->words.w1 = (u32) &D_800E4610;
+            temp_v0_11->words.w0 = 0x03860010;
             temp_v0_12 = gDisplayListHead;
             gDisplayListHead = temp_v0_12 + 8;
-            temp_v0_12->unk4 = &D_800E4608;
-            temp_v0_12->unk0 = 0x3880010;
+            temp_v0_12->words.w1 = (u32) &D_800E4608;
+            temp_v0_12->words.w0 = 0x03880010;
             temp_v0_13 = gDisplayListHead;
             gDisplayListHead = temp_v0_13 + 8;
-            temp_v0_13->unk4 = &D_06007650;
-            temp_v0_13->unk0 = 0x6000000;
+            temp_v0_13->words.w1 = (u32) &D_06007650;
+            temp_v0_13->words.w0 = 0x06000000;
         }
     }
 }
@@ -7145,76 +6438,54 @@ void func_8005327C(s32 arg0) {
 }
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-s16 func_800418AC(f32, f32, s32); // extern
-void func_800480B4(void *, void *, s32, s32, s32, s32, s32, s32, s32, s32); // extern
-void func_800485C4(void *, void *, s32, s16, s32, s32, s32, s32, s32, s32, s32); // extern
-void func_8004A630(f32, void *, void *, ?); // extern
-s32 func_8007223C(s32, ?, s32); // extern
-s32 func_80072354(s32, ?); // extern
-extern struct_80165C18_entry D_80165C18;
-extern s32 D_80183DB8;
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
+? func_8004A630(f32, void *, f32 *, ?);             /* extern */
+extern ? D_80183DB8;
 extern ? D_8018C0B0;
 extern void *D_8018CF14;
 
-void func_800532A4(s32 arg0) {
+void func_800532A4(s32 cameraId) {
     s32 sp44;
-    f32 temp_f0;
-    f32 temp_f2;
+    Camera *temp_s1;
+    f32 var_f0;
+    f32 var_f2;
     s32 temp_a0;
-    s32 temp_a2;
-    s32 temp_s1;
-    s32 temp_t7;
+    struct_80165C18_entry *temp_s0;
     u8 temp_v0;
     u8 temp_v0_2;
     u8 temp_v1;
     u8 temp_v1_2;
-    void *temp_s0;
-    void *temp_s1_2;
-    void *temp_s1_3;
     void *temp_v0_3;
-    f32 phi_f0;
-    f32 phi_f2;
-    void *phi_s1;
 
-    temp_a2 = arg0;
-    temp_a0 = *(&D_80183DB8 + (arg0 * 4));
-    temp_t7 = temp_a2 * 0xB8;
-    arg0 = temp_a2;
+    temp_a0 = *(&D_80183DB8 + (cameraId * 4));
     sp44 = temp_a0;
-    temp_s1 = temp_t7 + camera1;
-    if (func_8007223C(temp_a0, 0x10, temp_a2) != 0) {
-        temp_s0 = (sp44 * 0xE0) + &D_80165C18;
-        temp_s0->unkB2 = 0;
-        temp_s0->unkB4 = func_800418AC(temp_s0->unk4, temp_s0->unkC, temp_s1);
-        temp_s0->unkB6 = 0x8000;
-        temp_s1_2 = temp_s0 + 4;
-        phi_s1 = temp_s1_2;
+    temp_s1 = &camera1[cameraId];
+    if (func_8007223C(temp_a0, 0x00000010) != 0) {
+        temp_s0 = &D_80165C18[sp44];
+        temp_s0->unk_0B2 = 0;
+        temp_s0->unk_0B4 = func_800418AC(temp_s0->unk_004[0], temp_s0->unk_004[2], temp_s1->pos);
+        temp_s0->unk_0B6 = 0x8000;
         if (func_80072354(sp44, 2) != 0) {
-            temp_v1 = temp_s0->unkDA;
-            temp_v0 = temp_s0->unkD9;
-            temp_s1_3 = temp_s0 + 4;
-            func_800480B4(temp_s1_3, temp_s0 + 0xB2, temp_s0->unk0, temp_s0->unk60, temp_s0->unk64, temp_s0->unk74, temp_v0, temp_v1, temp_v0, temp_v1 / 2);
-            phi_s1 = temp_s1_3;
+            temp_v1 = temp_s0->unk_0DA;
+            temp_v0 = temp_s0->unk_0D9;
+            func_800480B4((s32) temp_s0->unk_004, (s32) &temp_s0->unk_0B2, temp_s0->unk_000, (s32) temp_s0->unk_060, (s32) temp_s0->unk_064, temp_s0->unk_074, (s32) temp_v0, (s32) temp_v1, (s32) temp_v0, (s32) temp_v1 / 2);
         } else {
-            temp_v1_2 = temp_s0->unkDA;
-            temp_v0_2 = temp_s0->unkD9;
-            func_800485C4(temp_s1_2, temp_s0 + 0xB2, temp_s0->unk0, temp_s0->unkA0, temp_s0->unk60, temp_s0->unk64, temp_s0->unk74, temp_v0_2, temp_v1_2, temp_v0_2, temp_v1_2 / 2);
+            temp_v1_2 = temp_s0->unk_0DA;
+            temp_v0_2 = temp_s0->unk_0D9;
+            func_800485C4((s32) temp_s0->unk_004, (s32) &temp_s0->unk_0B2, temp_s0->unk_000, (s32) temp_s0->unk_0A0, (s32) temp_s0->unk_060, (s32) temp_s0->unk_064, temp_s0->unk_074, (s32) temp_v0_2, (s32) temp_v1_2, (s32) temp_v0_2, (s32) temp_v1_2 / 2);
         }
-        if (gScreenModeSelection == SCREEN_MODE_1P) {
+        if (gScreenModeSelection == 0) {
             temp_v0_3 = D_8018CF14;
-            temp_f0 = temp_s0->unk4 - temp_v0_3->unk0;
-            temp_f2 = temp_s0->unkC - temp_v0_3->unk8;
-            phi_f0 = temp_f0;
-            phi_f2 = temp_f2;
-            if (temp_f0 < 0.0f) {
-                phi_f0 = -temp_f0;
+            var_f0 = temp_s0->unk_004[0] - temp_v0_3->unk0;
+            var_f2 = temp_s0->unk_004[2] - temp_v0_3->unk8;
+            if (var_f0 < 0.0f) {
+                var_f0 = -var_f0;
             }
-            if (temp_f2 < 0.0f) {
-                phi_f2 = -temp_f2;
+            if (var_f2 < 0.0f) {
+                var_f2 = -var_f2;
             }
-            if ((phi_f0 + phi_f2) <= 200.0) {
-                func_8004A630(0.0f, (arg0 << 6) + &D_8018C0B0, phi_s1, 0x3EB33333);
+            if ((f64) (var_f0 + var_f2) <= 200.0) {
+                func_8004A630(0.0f, (cameraId << 6) + &D_8018C0B0, temp_s0->unk_004, 0x3EB33333);
             }
         }
     }
@@ -7239,23 +6510,50 @@ void func_800534A4(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/code_800431B0/func_800534A4.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
-extern ? D_80165CBC;
-static ? D_800E4638;                                /* unable to generate initializer; const */
-static ? D_800E4640;                                /* unable to generate initializer; const */
-static ? D_800E4650;                                /* unable to generate initializer; const */
-static ? D_800E4658;                                /* unable to generate initializer; const */
-static ? D_800E4668;                                /* unable to generate initializer; const */
-static ? D_800E4670;                                /* unable to generate initializer; const */
-static ? D_800E4680;                                /* unable to generate initializer; const */
-static ? D_800E4688;                                /* unable to generate initializer; const */
-static ? D_800E4698;                                /* unable to generate initializer; const */
-static ? D_800E46A0;                                /* unable to generate initializer; const */
+#ifdef NEEDS_RODATA
+// jpt_800EE068
+// I guess this also needs all those Light1's too, which are plain data (I think)
 
-void func_800534E8(s32 arg0) {
+void func_800534E8(s32 objectIndex) {
+    // I don't get why all of theses weren't just `gSPSetLights1` calls...
+    switch (D_80165C18[objectIndex].unk_0A4) {
+    case 0:
+        gSPLight(gDisplayListHead++, &D_800E4638.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4638.a, LIGHT_2);
+        break;
+    case 1:
+        gSPLight(gDisplayListHead++, &D_800E4650.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4650.a, LIGHT_2);
+        break;
+    case 2:
+        gSPLight(gDisplayListHead++, &D_800E4668.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4668.a, LIGHT_2);
+        break;
+    case 3:
+        gSPLight(gDisplayListHead++, &D_800E4680.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4680.a, LIGHT_2);
+        break;
+    case 4:
+        gSPLight(gDisplayListHead++, &D_800E4698.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4698.a, LIGHT_2);
+        break;
+    default:
+        break;
+    }
+}
+#else
+GLOBAL_ASM("asm/non_matchings/code_800431B0/func_800534E8.s")
+#endif
+
+#ifdef MIPS_TO_C
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
+? func_8004A7AC(s32, ?);                            /* extern */
+extern ? D_06006F38;
+extern ? D_0D007828;
+
+void func_800536C8(s32 objectIndex) {
+    Gfx *sp20;
     Gfx *temp_v0;
-    Gfx *temp_v0_10;
     Gfx *temp_v0_2;
     Gfx *temp_v0_3;
     Gfx *temp_v0_4;
@@ -7264,136 +6562,51 @@ void func_800534E8(s32 arg0) {
     Gfx *temp_v0_7;
     Gfx *temp_v0_8;
     Gfx *temp_v0_9;
-    u16 temp_t7;
+    struct_80165C18_entry *temp_s0;
 
-    temp_t7 = *(&D_80165CBC + (arg0 * 0xE0));
-    switch (temp_t7) {
-    case 0:
+    temp_s0 = &D_80165C18[objectIndex];
+    if ((temp_s0->unk_0A6 >= 2) && (func_80072354(objectIndex, 0x00000040) != 0)) {
+        func_8004A7AC(objectIndex, 0x3FE00000);
+        func_80042E00(temp_s0->unk_004, (s16 *) &temp_s0->unk_0B2, temp_s0->unk_000);
+        func_800534E8(objectIndex);
         temp_v0 = gDisplayListHead;
         gDisplayListHead = temp_v0 + 8;
-        temp_v0->words.w0 = 0x3860010;
-        temp_v0->words.w1 = &D_800E4640;
+        temp_v0->words.w0 = 0x06000000;
+        temp_v0->words.w1 = (u32) &D_0D007828;
         temp_v0_2 = gDisplayListHead;
         gDisplayListHead = temp_v0_2 + 8;
-        temp_v0_2->words.w0 = 0x3880010;
-        temp_v0_2->words.w1 = &D_800E4638;
-        return;
-    case 1:
+        temp_v0_2->words.w1 = 0x00008000;
+        temp_v0_2->words.w0 = 0xBA000E02;
         temp_v0_3 = gDisplayListHead;
         gDisplayListHead = temp_v0_3 + 8;
-        temp_v0_3->words.w0 = 0x3860010;
-        temp_v0_3->words.w1 = &D_800E4658;
+        temp_v0_3->words.w0 = 0xFD100000;
+        temp_v0_3->words.w1 = (u32) &D_06006F38;
         temp_v0_4 = gDisplayListHead;
         gDisplayListHead = temp_v0_4 + 8;
-        temp_v0_4->words.w0 = 0x3880010;
-        temp_v0_4->words.w1 = &D_800E4650;
-        return;
-    case 2:
+        temp_v0_4->words.w1 = 0;
+        temp_v0_4->words.w0 = 0xE8000000;
         temp_v0_5 = gDisplayListHead;
         gDisplayListHead = temp_v0_5 + 8;
-        temp_v0_5->words.w0 = 0x3860010;
-        temp_v0_5->words.w1 = &D_800E4670;
+        temp_v0_5->words.w1 = 0x07000000;
+        temp_v0_5->words.w0 = 0xF5000100;
         temp_v0_6 = gDisplayListHead;
         gDisplayListHead = temp_v0_6 + 8;
-        temp_v0_6->words.w0 = 0x3880010;
-        temp_v0_6->words.w1 = &D_800E4668;
-        return;
-    case 3:
+        temp_v0_6->words.w1 = 0;
+        temp_v0_6->words.w0 = 0xE6000000;
         temp_v0_7 = gDisplayListHead;
         gDisplayListHead = temp_v0_7 + 8;
-        temp_v0_7->words.w0 = 0x3860010;
-        temp_v0_7->words.w1 = &D_800E4688;
-        temp_v0_8 = gDisplayListHead;
-        gDisplayListHead = temp_v0_8 + 8;
-        temp_v0_8->words.w0 = 0x3880010;
-        temp_v0_8->words.w1 = &D_800E4680;
-        return;
-    case 4:
-        temp_v0_9 = gDisplayListHead;
-        gDisplayListHead = temp_v0_9 + 8;
-        temp_v0_9->words.w0 = 0x3860010;
-        temp_v0_9->words.w1 = &D_800E46A0;
-        temp_v0_10 = gDisplayListHead;
-        gDisplayListHead = temp_v0_10 + 8;
-        temp_v0_10->words.w0 = 0x3880010;
-        temp_v0_10->words.w1 = &D_800E4698;
-        /* fallthrough */
-    default:
-        return;
-    }
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_800534E8.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_80042E00(void *, void *, s32); // extern
-void func_8004544C(s32, ?, ?, ?); // extern
-void func_8004A7AC(s32, ?); // extern
-void func_800534E8(s32); // extern
-s32 func_80072354(?); // extern
-extern s32 D_06006F38;
-extern Gfx D_0D007828;
-extern struct_80165C18_entry D_80165C18;
-
-
-void func_800536C8(s32 arg0) {
-    void *sp20;
-    void *temp_s0;
-    void *temp_v0;
-    void *temp_v0_2;
-    void *temp_v0_3;
-    void *temp_v0_4;
-    void *temp_v0_5;
-    void *temp_v0_6;
-    void *temp_v0_7;
-    void *temp_v0_8;
-    void *temp_v0_9;
-
-    temp_s0 = (arg0 * 0xE0) + &D_80165C18;
-    if ((temp_s0->unkA6 >= 2) && (func_80072354(0x40) != 0)) {
-        func_8004A7AC(arg0, 0x3FE00000);
-        func_80042E00(temp_s0 + 4, temp_s0 + 0xB2, temp_s0->unk0);
-        func_800534E8(arg0);
-        temp_v0 = gDisplayListHead;
-        gDisplayListHead = temp_v0 + 8;
-        temp_v0->unk0 = 0x6000000;
-        temp_v0->unk4 = &D_0D007828;
-        temp_v0_2 = gDisplayListHead;
-        gDisplayListHead = temp_v0_2 + 8;
-        temp_v0_2->unk4 = 0x8000;
-        temp_v0_2->unk0 = 0xBA000E02;
-        temp_v0_3 = gDisplayListHead;
-        gDisplayListHead = temp_v0_3 + 8;
-        temp_v0_3->unk0 = 0xFD100000;
-        temp_v0_3->unk4 = &D_06006F38;
-        temp_v0_4 = gDisplayListHead;
-        gDisplayListHead = temp_v0_4 + 8;
-        temp_v0_4->unk4 = 0;
-        temp_v0_4->unk0 = 0xE8000000;
-        temp_v0_5 = gDisplayListHead;
-        gDisplayListHead = temp_v0_5 + 8;
-        temp_v0_5->unk4 = 0x7000000;
-        temp_v0_5->unk0 = 0xF5000100;
-        temp_v0_6 = gDisplayListHead;
-        gDisplayListHead = temp_v0_6 + 8;
-        temp_v0_6->unk4 = 0;
-        temp_v0_6->unk0 = 0xE6000000;
-        temp_v0_7 = gDisplayListHead;
-        gDisplayListHead = temp_v0_7 + 8;
-        temp_v0_7->unk4 = 0x73FC000;
-        temp_v0_7->unk0 = 0xF0000000;
+        temp_v0_7->words.w1 = 0x073FC000;
+        temp_v0_7->words.w0 = 0xF0000000;
         temp_v0_8 = gDisplayListHead;
         gDisplayListHead = temp_v0_8 + 8;
         sp20 = temp_v0_8;
-        temp_v0_8->unk4 = 0;
-        temp_v0_8->unk0 = 0xE7000000;
-        func_8004544C(temp_s0->unk64, 0x10, 0x40, 4);
+        temp_v0_8->words.w1 = 0;
+        temp_v0_8->words.w0 = 0xE7000000;
+        func_8004544C((s8 *) temp_s0->unk_064, 0x00000010, 0x00000040, 4);
         temp_v0_9 = gDisplayListHead;
         gDisplayListHead = temp_v0_9 + 8;
-        temp_v0_9->unk0 = 0x6000000;
-        temp_v0_9->unk4 = temp_s0->unk70;
+        temp_v0_9->words.w0 = 0x06000000;
+        temp_v0_9->words.w1 = (u32) temp_s0->unk_070;
     }
 }
 #else
@@ -7401,232 +6614,204 @@ GLOBAL_ASM("asm/non_matchings/code_800431B0/func_800536C8.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-s16 func_800418AC(f32, f32, s32); // extern
-void func_80042E00(void *, void *, s32, s32 *); // extern
-void func_800431B0(void *, ? *, s32, ? *); // extern
-void func_80043D50(? *, ?, ?); // extern
-void func_800444B0(s32, ?, ?, u32); // extern
-void func_8004B138(?, ?, ?, s16); // extern
-void func_8004B3C8(?); // extern
-void func_800534A4(s32); // extern
-void func_800536C8(s32); // extern
-void func_800721E8(s32, ?); // extern
-void func_800722CC(s32, ?); // extern
-s32 func_8008A140(s32, s32, ?); // extern
-extern ? D_06006738;
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
+? func_800534A4(s32);                               /* extern */
+? func_800536C8(s32);                               /* extern */
+extern s8 D_06006738;
 extern Vtx D_0D005AE0;
-extern Vtx D_0D005C00;
-extern Gfx D_0D006930;
-extern Gfx D_0D0079C8;
-extern Gfx D_0D007AE0;
-extern ? D_800E4668;
-extern ? D_800E4670;
+extern ? D_0D005C00;
+extern ? D_0D006930;
+extern ? D_0D0079C8;
+extern ? D_0D007AE0;
 extern s16 D_80165750;
-extern struct_80165C18_entry D_80165C18;
 extern s16 D_80183E80;
-extern s32 D_80183EA0;
 extern s32 D_8018C3F0;
 extern ? D_8018C5F0;
 extern s32 D_8018C630;
 extern ? D_8018C830;
-extern s16 D_8018CF68;
-extern s32 D_8018D120;
-extern s32 D_8018D490;
+extern s8 *D_8018D490;
+extern s32 gGamestate;
+static ? D_800E4668;                                /* unable to generate initializer */
+static ? D_800E4670;                                /* unable to generate initializer */
 
-
-void func_80053870(s32 arg0) {
+void func_80053870(s32 cameraId) {
     s32 sp94;
-    s32 sp84;
+    Camera *sp84;
     s32 *sp44;
+    Gfx *temp_v0_10;
+    Gfx *temp_v0_11;
+    Gfx *temp_v0_12;
+    Gfx *temp_v0_13;
+    Gfx *temp_v0_14;
+    Gfx *temp_v0_15;
+    Gfx *temp_v0_3;
+    Gfx *temp_v0_4;
+    Gfx *temp_v0_5;
+    Gfx *temp_v0_6;
+    Gfx *temp_v0_7;
+    Gfx *temp_v0_8;
+    Gfx *temp_v0_9;
     s16 temp_v0_2;
-    s32 *temp_s0;
-    s32 *temp_s3;
+    s32 *var_a3;
+    s32 *var_s0;
+    s32 *var_s0_2;
+    s32 *var_s3;
+    s32 *var_v1;
     s32 temp_s1;
     s32 temp_s1_2;
     s32 temp_s1_3;
     s32 temp_s1_4;
-    s32 temp_s2;
-    u32 temp_a3;
+    s32 var_s2;
+    struct_80165C18_entry *temp_s0;
+    struct_80165C18_entry *temp_s0_2;
     u8 temp_v0;
-    void *temp_s0_2;
-    void *temp_s0_3;
-    void *temp_v0_10;
-    void *temp_v0_11;
-    void *temp_v0_12;
-    void *temp_v0_13;
-    void *temp_v0_14;
-    void *temp_v0_15;
-    void *temp_v0_3;
-    void *temp_v0_4;
-    void *temp_v0_5;
-    void *temp_v0_6;
-    void *temp_v0_7;
-    void *temp_v0_8;
-    void *temp_v0_9;
-    s32 *phi_s0;
-    s32 phi_s2;
-    s32 *phi_s0_2;
-    u32 phi_v1;
-    s32 *phi_a3;
-    s32 *phi_s3;
 
-    sp84 = (arg0 * 0xB8) + camera1;
-    if (arg0 == 0) {
-        phi_s0 = &D_80183EA0;
-        phi_s2 = 0;
+    sp84 = &camera1[cameraId];
+    if (cameraId == 0) {
+        var_s0 = D_80183EA0;
+        var_s2 = 0;
         if (D_80165750 > 0) {
             do {
-                temp_s1 = *phi_s0;
-                func_800721E8(temp_s1, 0x70000);
-                func_800722CC(temp_s1, 0x110);
-                temp_s2 = phi_s2 + 1;
-                phi_s0 += 4;
-                phi_s2 = temp_s2;
-            } while (temp_s2 < D_80165750);
+                temp_s1 = *var_s0;
+                func_800721E8(temp_s1, 0x00070000);
+                func_800722CC(temp_s1, 0x00000110);
+                var_s2 += 1;
+                var_s0 += 4;
+            } while (var_s2 < D_80165750);
             sp94 = temp_s1;
         }
     }
     func_800534A4(sp94);
-    phi_s0_2 = &D_80183EA0;
+    var_s0_2 = D_80183EA0;
     if (D_80165750 > 0) {
         do {
-            temp_s1_2 = *phi_s0_2;
-            temp_v0 = (&D_80165C18 + (temp_s1_2 * 0xE0))->unkDF;
-            if (gGamestate != CREDITS_SEQUENCE) {
-                temp_v0_2 = *(&D_8018CF68 + (arg0 * 2));
-                if ((temp_v0_2 >= (temp_v0 - 1)) && ((temp_v0 + 1) >= temp_v0_2) && (func_8008A140(temp_s1_2, sp84, 0x8000) != 0)) {
+            temp_s1_2 = *var_s0_2;
+            temp_v0 = D_80165C18[temp_s1_2].unk_0DF;
+            if (gGamestate != 9) {
+                temp_v0_2 = D_8018CF68[cameraId];
+                if ((temp_v0_2 >= (s16) (temp_v0 - 1)) && ((s16) (temp_v0 + 1) >= temp_v0_2) && (func_8008A140(temp_s1_2, sp84, 0x8000U) != 0)) {
                     func_800536C8(temp_s1_2);
                 }
-                phi_v1 = (D_80165750 * 4) + &D_80183EA0;
+                var_v1 = &D_80183EA0[D_80165750];
             } else {
                 func_800536C8(temp_s1_2);
-                phi_v1 = (D_80165750 * 4) + &D_80183EA0;
+                var_v1 = &D_80183EA0[D_80165750];
             }
-            temp_s0 = phi_s0_2 + 4;
-            phi_s0_2 = temp_s0;
-        } while (temp_s0 < phi_v1);
+            var_s0_2 += 4;
+        } while ((u32) var_s0_2 < (u32) var_v1);
     }
     temp_v0_3 = gDisplayListHead;
     gDisplayListHead = temp_v0_3 + 8;
-    temp_v0_3->unk0 = 0x6000000;
-    temp_v0_3->unk4 = &D_0D0079C8;
+    temp_v0_3->words.w0 = 0x06000000;
+    temp_v0_3->words.w1 = (u32) &D_0D0079C8;
     temp_v0_4 = gDisplayListHead;
     gDisplayListHead = temp_v0_4 + 8;
-    temp_v0_4->unk4 = 0xFF33FFFF;
-    temp_v0_4->unk0 = 0xFC121824;
+    temp_v0_4->words.w1 = 0xFF33FFFF;
+    temp_v0_4->words.w0 = 0xFC121824;
     temp_v0_5 = gDisplayListHead;
     gDisplayListHead = temp_v0_5 + 8;
-    temp_v0_5->unk4 = 0x80000040;
-    temp_v0_5->unk0 = 0xBC000002;
+    temp_v0_5->words.w1 = 0x80000040;
+    temp_v0_5->words.w0 = 0xBC000002;
     temp_v0_6 = gDisplayListHead;
     gDisplayListHead = temp_v0_6 + 8;
-    temp_v0_6->unk4 = &D_800E4670;
-    temp_v0_6->unk0 = 0x3860010;
+    temp_v0_6->words.w1 = (u32) &D_800E4670;
+    temp_v0_6->words.w0 = 0x03860010;
     temp_v0_7 = gDisplayListHead;
     gDisplayListHead = temp_v0_7 + 8;
-    temp_v0_7->unk4 = &D_800E4668;
-    temp_v0_7->unk0 = 0x3880010;
+    temp_v0_7->words.w1 = (u32) &D_800E4668;
+    temp_v0_7->words.w0 = 0x03880010;
     temp_v0_8 = gDisplayListHead;
     gDisplayListHead = temp_v0_8 + 8;
-    temp_v0_8->unk4 = 0x3000;
-    temp_v0_8->unk0 = 0xB6000000;
+    temp_v0_8->words.w1 = 0x00003000;
+    temp_v0_8->words.w0 = 0xB6000000;
     temp_v0_9 = gDisplayListHead;
     gDisplayListHead = temp_v0_9 + 8;
-    temp_v0_9->unk0 = 0xB7000000;
-    temp_v0_9->unk4 = 0x20204;
-    func_80043D50(&D_06006738, 0x20, 0x20);
-    phi_a3 = &D_8018C630;
+    temp_v0_9->words.w0 = 0xB7000000;
+    temp_v0_9->words.w1 = 0x00020204;
+    func_80043D50(&D_06006738, 0x00000020, 0x00000020);
+    var_a3 = &D_8018C630;
     do {
-        temp_s1_3 = *phi_a3;
+        temp_s1_3 = *var_a3;
         if (temp_s1_3 != -1) {
-            temp_s0_2 = &D_80165C18 + (temp_s1_3 * 0xE0);
-            if ((temp_s0_2->unkA6 > 0) && (temp_s0_2->unkD5 == 3) && (D_8018D120 < 0x2EF)) {
-                sp44 = phi_a3;
-                func_80042E00(temp_s0_2 + 4, temp_s0_2 + 0xB2, temp_s0_2->unk0, phi_a3);
+            temp_s0 = &D_80165C18[temp_s1_3];
+            if ((temp_s0->unk_0A6 > 0) && (temp_s0->unk_0D5 == 3) && (D_8018D120 < 0x2EF)) {
+                sp44 = var_a3;
+                func_80042E00(temp_s0->unk_004, (s16 *) &temp_s0->unk_0B2, temp_s0->unk_000);
                 temp_v0_10 = gDisplayListHead;
                 gDisplayListHead = temp_v0_10 + 8;
-                temp_v0_10->unk0 = 0x4000C2F;
-                temp_v0_10->unk4 = &D_0D005C00;
+                temp_v0_10->words.w0 = 0x04000C2F;
+                temp_v0_10->words.w1 = (u32) &D_0D005C00;
                 temp_v0_11 = gDisplayListHead;
                 gDisplayListHead = temp_v0_11 + 8;
-                temp_v0_11->unk4 = &D_0D006930;
-                temp_v0_11->unk0 = 0x6000000;
+                temp_v0_11->words.w1 = (u32) &D_0D006930;
+                temp_v0_11->words.w0 = 0x06000000;
             }
         }
-        temp_a3 = phi_a3 + 4;
-        phi_a3 = temp_a3;
-    } while (temp_a3 < &D_8018C830);
+        var_a3 += 4;
+    } while ((u32) var_a3 < (u32) &D_8018C830);
     temp_v0_12 = gDisplayListHead;
     gDisplayListHead = temp_v0_12 + 8;
-    temp_v0_12->unk4 = 0x2000;
-    temp_v0_12->unk0 = 0xB7000000;
+    temp_v0_12->words.w1 = 0x00002000;
+    temp_v0_12->words.w0 = 0xB7000000;
     temp_v0_13 = gDisplayListHead;
     gDisplayListHead = temp_v0_13 + 8;
-    temp_v0_13->unk4 = 0x20000;
-    temp_v0_13->unk0 = 0xB6000000;
+    temp_v0_13->words.w1 = 0x00020000;
+    temp_v0_13->words.w0 = 0xB6000000;
     temp_v0_14 = gDisplayListHead;
     gDisplayListHead = temp_v0_14 + 8;
-    temp_v0_14->unk0 = 0xBB000000;
-    temp_v0_14->unk4 = 0x10001;
+    temp_v0_14->words.w0 = 0xBB000000;
+    temp_v0_14->words.w1 = 0x00010001;
     temp_v0_15 = gDisplayListHead;
     gDisplayListHead = temp_v0_15 + 8;
-    temp_v0_15->unk0 = 0x6000000;
-    temp_v0_15->unk4 = &D_0D007AE0;
-    func_800444B0(D_8018D490, 0x20, 0x20, temp_a3);
+    temp_v0_15->words.w0 = 0x06000000;
+    temp_v0_15->words.w1 = (u32) &D_0D007AE0;
+    func_800444B0(D_8018D490, 0x00000020, 0x00000020);
     func_8004B3C8(0);
     D_80183E80.unk0 = 0;
     D_80183E80.unk4 = 0x8000;
-    phi_s3 = &D_8018C3F0;
+    var_s3 = &D_8018C3F0;
     do {
-        temp_s1_4 = *phi_s3;
+        temp_s1_4 = *var_s3;
         if (temp_s1_4 != -1) {
-            temp_s0_3 = &D_80165C18 + (temp_s1_4 * 0xE0);
-            if ((temp_s0_3->unkA6 >= 2) && (temp_s0_3->unkD5 == 2) && (D_8018D120 < 0x2EF)) {
-                func_8004B138(0xFF, 0xFF, 0xFF, temp_s0_3->unkA0);
-                D_80183E80.unk2 = func_800418AC(temp_s0_3->unk4, temp_s0_3->unkC, sp84);
-                func_800431B0(temp_s0_3 + 4, &D_80183E80, temp_s0_3->unk0, &D_0D005AE0);
+            temp_s0_2 = &D_80165C18[temp_s1_4];
+            if ((temp_s0_2->unk_0A6 >= 2) && (temp_s0_2->unk_0D5 == 2) && (D_8018D120 < 0x2EF)) {
+                func_8004B138(0x000000FF, 0x000000FF, 0x000000FF, (s32) temp_s0_2->unk_0A0);
+                D_80183E80.unk2 = func_800418AC(temp_s0_2->unk_004[0], temp_s0_2->unk_004[2], sp84->pos);
+                func_800431B0(temp_s0_2->unk_004, &D_80183E80, temp_s0_2->unk_000, &D_0D005AE0);
             }
         }
-        temp_s3 = phi_s3 + 4;
-        phi_s3 = temp_s3;
-    } while (temp_s3 != &D_8018C5F0);
+        var_s3 += 4;
+    } while (var_s3 != &D_8018C5F0);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80053870.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_80042E00(void *, ? *, s32); // extern
-void func_8004B1C8(s16, s16, s16, s16, s32, s32, s32); // extern
-extern Vtx D_0D0060B0;
-extern Gfx D_0D006940;
-extern struct_80165C18_entry D_80165C18;
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
+extern ? D_0D0060B0;
 extern s16 D_80183E80;
-extern s32 D_8018D120;
 
-
-void func_80053D74(s32 arg0, ? arg1, s32 arg2) {
-    void *sp28;
-    void *temp_v0;
-    void *temp_v0_2;
-    void *temp_v0_3;
+void func_80053D74(s32 objectIndex, s32 arg1, s32 arg2) {
+    struct_80165C18_entry *sp28;
+    Gfx *temp_v0_2;
+    Gfx *temp_v0_3;
+    struct_80165C18_entry *temp_v0;
 
     if (D_8018D120 < 0x2EF) {
-        temp_v0 = (arg0 * 0xE0) + &D_80165C18;
-        D_80183E80.unk4 = temp_v0->unk90 + 0x8000;
+        temp_v0 = &D_80165C18[objectIndex];
+        D_80183E80.unk4 = (s16) (temp_v0->unk_084[6] + 0x8000);
         sp28 = temp_v0;
-        func_80042E00(temp_v0 + 4, &D_80183E80, temp_v0->unk0);
-        func_8004B1C8(temp_v0->unk84, temp_v0->unk86, temp_v0->unk88, temp_v0->unk8A, temp_v0->unk8C, temp_v0->unk8E, temp_v0->unkA0);
+        func_80042E00(temp_v0->unk_004, &D_80183E80, temp_v0->unk_000);
+        func_8004B1C8((s32) temp_v0->unk_084[0], (s32) temp_v0->unk_084[1], (s32) temp_v0->unk_084[2], (s32) temp_v0->unk_084[3], (s32) temp_v0->unk_084[4], (s32) temp_v0->unk_084[5], (s32) temp_v0->unk_0A0);
         temp_v0_2 = gDisplayListHead;
         gDisplayListHead = temp_v0_2 + 8;
-        temp_v0_2->unk0 = 0x400103F;
-        temp_v0_2->unk4 = (arg2 * 0x10) + &D_0D0060B0;
+        temp_v0_2->words.w0 = 0x0400103F;
+        temp_v0_2->words.w1 = (u32) ((arg2 * 0x10) + &D_0D0060B0);
         temp_v0_3 = gDisplayListHead;
         gDisplayListHead = temp_v0_3 + 8;
-        temp_v0_3->unk0 = 0x6000000;
-        temp_v0_3->unk4 = &D_0D006940;
+        temp_v0_3->words.w0 = 0x06000000;
+        temp_v0_3->words.w1 = (u32) D_0D006940;
     }
 }
 #else
@@ -7993,52 +7178,39 @@ GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80054664.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-s16 func_800418AC(f32, f32, s32); // extern
-void func_800431B0(void *, ? *, s32, ? *); // extern
-void func_8004B1C8(?, ?, ?, ?, s32, s32, s32); // extern
-extern Vtx D_0D005AE0;
-extern struct_80165C18_entry D_80165C18;
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
+extern ? D_0D005AE0;
 extern s16 D_80183E80;
-extern s32 D_8018D120;
 
-void func_8005477C(s32 arg0, s32 arg1, s32 arg2) {
+void func_8005477C(s32 objectIndex, s32 arg1, f32 *arg2) {
     s32 temp_t6;
-    void *temp_s0;
-    void *temp_s0_2;
-    void *temp_s0_3;
-    void *temp_s0_4;
-    void *phi_s0;
+    struct_80165C18_entry *var_s0;
 
     temp_t6 = arg1 & 0xFF;
     if (D_8018D120 < 0x2EF) {
-        if (temp_t6 != 0) {
-            if (temp_t6 != 1) {
-                if (temp_t6 != 2) {
-                    if (temp_t6 != 3) {
-                        phi_s0 = (arg0 * 0xE0) + &D_80165C18;
-                    } else {
-                        temp_s0 = (arg0 * 0xE0) + &D_80165C18;
-                        func_8004B1C8(0xFF, 0xFF, 0x1E, 0xFF, 0, 0, temp_s0->unkA0);
-                        phi_s0 = temp_s0;
-                    }
-                } else {
-                    temp_s0_2 = (arg0 * 0xE0) + &D_80165C18;
-                    func_8004B1C8(0xFF, 0xE6, 0xFF, 0xFF, 0, 0x96, temp_s0_2->unkA0);
-                    phi_s0 = temp_s0_2;
-                }
-            } else {
-                temp_s0_3 = (arg0 * 0xE0) + &D_80165C18;
-                func_8004B1C8(0xFF, 0xFF, 0x96, 0xFF, 0, 0, temp_s0_3->unkA0);
-                phi_s0 = temp_s0_3;
-            }
-        } else {
-            temp_s0_4 = (arg0 * 0xE0) + &D_80165C18;
-            func_8004B1C8(0xE6, 0xFF, 0xFF, 0, 0, 0xFF, temp_s0_4->unkA0);
-            phi_s0 = temp_s0_4;
+        switch (temp_t6) {                          /* irregular */
+        default:
+            var_s0 = &D_80165C18[objectIndex];
+            break;
+        case 0:
+            var_s0 = &D_80165C18[objectIndex];
+            func_8004B1C8(0x000000E6, 0x000000FF, 0x000000FF, 0, 0, 0x000000FF, (s32) var_s0->unk_0A0);
+            break;
+        case 1:
+            var_s0 = &D_80165C18[objectIndex];
+            func_8004B1C8(0x000000FF, 0x000000FF, 0x00000096, 0x000000FF, 0, 0, (s32) var_s0->unk_0A0);
+            break;
+        case 2:
+            var_s0 = &D_80165C18[objectIndex];
+            func_8004B1C8(0x000000FF, 0x000000E6, 0x000000FF, 0x000000FF, 0, 0x00000096, (s32) var_s0->unk_0A0);
+            break;
+        case 3:
+            var_s0 = &D_80165C18[objectIndex];
+            func_8004B1C8(0x000000FF, 0x000000FF, 0x0000001E, 0x000000FF, 0, 0, (s32) var_s0->unk_0A0);
+            break;
         }
-        D_80183E80.unk2 = func_800418AC(phi_s0->unk4, phi_s0->unkC, arg2);
-        func_800431B0(phi_s0 + 4, &D_80183E80, phi_s0->unk0, &D_0D005AE0);
+        D_80183E80.unk2 = func_800418AC(var_s0->unk_004[0], var_s0->unk_004[2], arg2);
+        func_800431B0(var_s0->unk_004, &D_80183E80, var_s0->unk_000, (s32) &D_0D005AE0);
     }
 }
 #else
@@ -8829,53 +8001,44 @@ GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80055C38.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-s32 func_800418AC(f32, f32, void *, ? *, s32); // extern
-void func_80043328(void *, ? *, s32, ? *); // extern
-void func_8004A6EC(s32, f32); // extern
-s32 func_80072270(s32, ?); // extern
-void func_8008A454(?); // extern
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
+? func_8004A6EC(s32, f32);                          /* extern */
 extern ? D_0600F650;
-extern ? D_0600F960;
+extern Gfx D_0600F960;
 extern ? D_0600FA20;
-extern ? D_0600FBE0;
-extern struct_80165C18_entry D_80165C18;
+extern Gfx D_0600FBE0;
 extern s16 D_80183E80;
 
+void func_80055CCC(s32 objectIndex, s32 cameraId) {
+    Camera *sp24;
+    Gfx *temp_v1;
+    Gfx *temp_v1_2;
+    struct_80165C18_entry *temp_s0;
 
-void func_80055CCC(s32 arg0, s32 arg1) {
-    s32 sp24;
-    void *temp_a0;
-    void *temp_s0;
-    void *temp_v1;
-    void *temp_v1_2;
-
-    temp_s0 = (arg0 * 0xE0) + &D_80165C18;
-    sp24 = (arg1 * 0xB8) + camera1;
-    if (temp_s0->unkA6 >= 2) {
-        func_8008A454(0x12C);
-        func_8004A6EC(arg0, (20.0 / (temp_s0->unk8 - temp_s0->unk44)) + 0.5);
-        temp_a0 = temp_s0 + 4;
-        if (func_80072270(arg0, 0x100000) != 0) {
-            func_80043328(temp_a0, temp_s0 + 0xBE, temp_s0->unk0, &D_0600F960);
+    temp_s0 = &D_80165C18[objectIndex];
+    sp24 = &camera1[cameraId];
+    if (temp_s0->unk_0A6 >= 2) {
+        func_8008A454(objectIndex, cameraId, 0x0000012C);
+        func_8004A6EC(objectIndex, (f32) ((20.0 / (f64) (temp_s0->unk_004[1] - temp_s0->unk_044)) + 0.5));
+        if (func_80072270(objectIndex, 0x00100000) != 0) {
+            func_80043328(temp_s0->unk_004, (s16 *) temp_s0->unk_0BE, temp_s0->unk_000, &D_0600F960);
             temp_v1 = gDisplayListHead;
             gDisplayListHead = temp_v1 + 8;
-            temp_v1->unk0 = 0x6000000;
-            temp_v1->unk4 = &D_0600F650;
+            temp_v1->words.w0 = 0x06000000;
+            temp_v1->words.w1 = (u32) &D_0600F650;
             return;
         }
-        D_80183E80.unk0 = temp_s0->unkBE;
-        D_80183E80.unk2 = func_800418AC(temp_s0->unk4, temp_s0->unkC, temp_a0, &D_80183E80, sp24) + 0x8000;
-        D_80183E80.unk4 = temp_s0->unkC2;
-        func_80043328(temp_s0 + 4, &D_80183E80, temp_s0->unk0, &D_0600FBE0);
+        D_80183E80.unk0 = (s16) temp_s0->unk_0BE[0];
+        D_80183E80.unk2 = (s16) (func_800418AC(temp_s0->unk_004[0], temp_s0->unk_004[2], sp24->pos) + 0x8000);
+        D_80183E80.unk4 = (u16) temp_s0->unk_0BE[2];
+        func_80043328(temp_s0->unk_004, &D_80183E80, temp_s0->unk_000, &D_0600FBE0);
         temp_v1_2 = gDisplayListHead;
         gDisplayListHead = temp_v1_2 + 8;
-        temp_v1_2->unk0 = 0x6000000;
-        temp_v1_2->unk4 = &D_0600FA20;
+        temp_v1_2->words.w0 = 0x06000000;
+        temp_v1_2->words.w1 = (u32) &D_0600FA20;
         if (gPlayerCountSelection1 == 1) {
-            temp_s0->unkC0 = 0;
+            temp_s0->unk_0BE[1] = 0;
         }
-        // Duplicate return node #5. Try simplifying control flow for better match
     }
 }
 #else
@@ -8883,49 +8046,36 @@ GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80055CCC.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_80055CCC(s32, s32); // extern
-void func_800721E8(s32, ?); // extern
-s32 func_8007223C(s32, ?); // extern
-void func_8008A1D0(s32, s32, ?, ?); // extern
-extern s32 D_80183EA0;
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
+? func_80055CCC(s32, s32);                          /* extern */
+extern s32 gGamestate;
 
 void func_80055E68(s32 arg0) {
     s32 temp_s0;
 
-    temp_s0 = D_80183EA0;
-    if (gGamestate != CREDITS_SEQUENCE) {
-        func_8008A1D0(temp_s0, arg0, 0x5DC, 0xBB8);
-        if (func_8007223C(temp_s0, 0x40000) != 0) {
+    temp_s0 = *D_80183EA0;
+    if (gGamestate != 9) {
+        func_8008A1D0(temp_s0, arg0, 0x000005DC, 0x00000BB8);
+        if (func_8007223C(temp_s0, 0x00040000) != 0) {
             func_80055CCC(temp_s0, arg0);
-            return;
         }
-        // Duplicate return node #4. Try simplifying control flow for better match
-        return;
+    } else {
+        func_800721E8(temp_s0, 0x00100000);
+        func_80055CCC(temp_s0, arg0);
     }
-    func_800721E8(temp_s0, 0x100000);
-    func_80055CCC(temp_s0, arg0);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80055E68.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_80043220(void *, void *, s32, s32); // extern
-extern struct_80165C18_entry D_80165C18;
+void func_80055EF4(s32 objectIndex, s32 arg1) {
+    struct_80165C18_entry *object;
 
-void func_80055EF4(s32 arg0, ? arg1) {
-    void *temp_v0;
-
-    temp_v0 = (arg0 * 0xE0) + &D_80165C18;
-    if (temp_v0->unkA6 >= 2) {
-        func_80043220(temp_v0 + 4, temp_v0 + 0xBE, temp_v0->unk0, temp_v0->unk70);
+    object = &D_80165C18[objectIndex];
+    if (object->unk_0A6 >= 2) {
+        func_80043220(object->unk_004, object->unk_0BE, object->unk_000, object->unk_070);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80055EF4.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
@@ -8948,43 +8098,26 @@ void func_80055F48(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80055F48.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 5bd751fca3befef73d6a2e20d84a88cc918a77fe
-void func_80022180(Mtx *, ? *);                        /* extern */
-void func_800425D0(? *, void *, void *, s32);          /* extern */
-s32 func_802B4FF8(? *, ?);                            /* extern */
-void mtxf_identity(? *);                               /* extern */
-extern Gfx D_0D0077A0[];
-extern struct_80165C18_entry D_80165C18;
-extern s32 D_8018D120;
+void func_80055FA0(s32 objectIndex, s32 arg1) {
+    Mat4 someMatrix1;
+    Mat4 someMatrix2;
+    struct_80165C18_entry *object;
 
-void func_80055FA0(s32 arg0, s32 arg1) {
-    ? sp80;
-    ? sp40;
-    void *sp20;
-    void *temp_t0;
-
-    temp_t0 = (arg0 * 0xE0) + &D_80165C18;
-    if ((s32) temp_t0->unkA6 >= 2) {
+    object = &D_80165C18[objectIndex];
+    if (object->unk_0A6 >= 2) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        sp20 = temp_t0;
-        func_800425D0(&sp80, temp_t0 + 4, temp_t0 + 0xBE, temp_t0->unk0);
-        func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], &sp80);
+        func_800425D0(someMatrix1,object->unk_004, object->unk_0BE, object->unk_000);
+        func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], someMatrix1);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         D_8018D120++;
         gSPDisplayList(gDisplayListHead++, D_0D0077A0);
-        gSPDisplayList(gDisplayListHead++, sp20->unk70);
+        gSPDisplayList(gDisplayListHead++, object->unk_070);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-        mtxf_identity(&sp40);
-        func_802B4FF8(&sp40, 0);
+        mtxf_identity(someMatrix2);
+        func_802B4FF8(someMatrix2, 0);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800431B0/func_80055FA0.s")
-#endif
-
-extern s32 D_80183EAC;
 
 void func_80056160(s32 arg0) {
     func_80055FA0(D_80183EAC, arg0);

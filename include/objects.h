@@ -50,9 +50,7 @@ typedef struct
     /* 0xB4 */ u16 unk_0B4;
     /* 0xB6 */ u16 unk_0B6;
     /* 0xB8 */ Vec3s unk_0B8;
-    /* 0xBE */ u16 unk_0BE;
-    /* 0xC0 */ u16 unk_0C0;
-    /* 0xC2 */ u16 unk_0C2;
+    /* 0xBE */ Vec3su unk_0BE;
     /* 0xC4 */ u16 unk_0C4;
     /* 0xC6 */ u16 unk_0C6;
     /* 0xC8 */ u16 unk_0C8;
