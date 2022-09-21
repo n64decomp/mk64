@@ -229,7 +229,6 @@ for line in mapFile:
 
             if (objFile.startswith(tuple(segAudioFiles))):
                 audio += size
-
 nonMatchingASM = GetNonMatchingSize("asm/non_matchings")
 nonMatchingMain = GetNonMatchingSize("main")
 nonMatchingSeg2 = GetNonMatchingSize("seg2")
@@ -239,7 +238,7 @@ nonMatchingASMAudio = GetNonMatchingSize("audio")
 
 src -= nonMatchingASM
 
-decompilable = src + audio + 448 # 448 = OS func_800CE720
+decompilable = src + audio + 2176 # 2176 in decimal = __osLeoInterrupt (non_matching)
 
 mainSeg += libultra
 mainSeg -= nonMatchingMain
@@ -254,30 +253,28 @@ mainSeg_size = 831024
 seg2_size = 174224
 seg3_size = 20032
 mk64Code_size = 1025280
-# handwritten is likely 4400 bytes which brings us to the grand total of 53248.
-# for now the total is just a guess. 544 being non_matching funcs.
-# osSyncPrintf and func_800CE720
+
+# libultra
+# handwritten is 4400 bytes (in decimal) which brings us to the grand total of 53248.
 #libultra non_matching
-#osSyncPrintf     0x60   96
-#func_800CE720    0x1C0  448
-#guPerspectiveF   0x290 656
 #__osLeoInterrupt 0x880 2176
-#contramread      0x3B0 944
-#contramwrite     0x3B0 944
 
 
 #total 0x1490    5264
-
-libultra_size = 43584 + 5264 # 53248 - 2112 # total - handwritten
+# 53248 - 4400
+libultra_size = 53248 - 4400 # 53248 - 4400 # total - handwritten
 audio_size = 86912
 text_size = mk64Code_size - decompilable
 
-srcPct = 100 * src / mk64Code_size
+gameCode_size = (mk64Code_size - audio_size - (libultra_size + 4400)) # 4400 includes handwritten OS
+
+srcPct = 100 * src / gameCode_size
 libultraPct = 100 * libultra / libultra_size
 audioPct = 100 * audio / audio_size
 mainSegPct = 100 * mainSeg / mainSeg_size
 seg2Pct = 100 * seg2 / seg2_size
 seg3Pct = 100 * seg3 / seg3_size
+
 
 bytesPerHeartPiece = text_size // 80
 
