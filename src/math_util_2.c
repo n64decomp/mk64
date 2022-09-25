@@ -746,7 +746,7 @@ UNUSED void func_8004252C(Mat4 arg0, u16 arg1, u16 arg2) {
     arg0[2][2] = sp28 * temp_f0;
 }
 
-void func_800425D0(Mat4 arg0, Vec3f arg1, Vec3s arg2, f32 arg3) {
+void func_800425D0(Mat4 arg0, Vec3f arg1, Vec3su arg2, f32 arg3) {
     f32 sp44 = sins(arg2[0]);
     f32 temp_f22 = coss(arg2[0]);
     f32 sp3C = sins(arg2[1]);
@@ -808,12 +808,12 @@ void func_800427DC(s32 arg0, Mat4 arg1) {
     f32 temp_f0;
     f32 temp_f20;
 
-    sp3C = sins(temp_s0->unk_0B2);
-    temp_f20 = coss(temp_s0->unk_0B2);
-    sp34 = sins(temp_s0->unk_0B4);
-    sp30 = coss(temp_s0->unk_0B4);
-    sp2C = sins(temp_s0->unk_0B6);
-    temp_f0 = coss(temp_s0->unk_0B6);
+    sp3C = sins(temp_s0->unk_0B2[0]);
+    temp_f20 = coss(temp_s0->unk_0B2[0]);
+    sp34 = sins(temp_s0->unk_0B2[1]);
+    sp30 = coss(temp_s0->unk_0B2[1]);
+    sp2C = sins(temp_s0->unk_0B2[2]);
+    temp_f0 = coss(temp_s0->unk_0B2[2]);
 
     arg1[0][0] = temp_s0->unk_000 * ((sp30 * temp_f0) + (sp3C * sp34 * sp2C));
     arg1[1][0] = temp_s0->unk_000 * ((-sp30 * sp2C) + sp3C * sp34 * temp_f0);
@@ -938,7 +938,7 @@ void func_80042D14(Vec3f arg0, Vec3f arg1, Vec3s arg2) {
     arg0[2] = ((sp2C * cosine1 * sine2) - (sp28 * sine1)) + (sp24 * cosine1 * cosine2);
 }
 
-void func_80042E00(Vec3f arg0, Vec3s arg1, f32 arg2) {
+void func_80042E00(Vec3f arg0, Vec3su arg1, f32 arg2) {
     Mat4 matrix;
 
     func_800425D0(matrix, arg0, arg1, arg2);
