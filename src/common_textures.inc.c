@@ -2216,7 +2216,7 @@ s8 D_0D00A558[] = {
 };
 
 // Lap UI Texture
-s8 D_D00A958[] = {
+s8 D_0D00A958[] = {
     #include "textures/132B50_0A958.rgba16.inc.c"
 };
 

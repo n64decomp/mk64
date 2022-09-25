@@ -1530,9 +1530,9 @@ void func_80074FD8(s32 objectIndex) {
         }
         sp28 = temp_v1;
         func_8008BF18(objectIndex);
-        temp_v1->unk_0B2 = (u16) temp_v1->unk_0B2 + D_8016582C.unk0;
-        temp_v1->unk_0B4 = (u16) temp_v1->unk_0B4 + D_8016582C.unk2;
-        temp_v1->unk_0B6 = (u16) temp_v1->unk_0B6 + D_8016582C.unk4;
+        temp_v1->unk_0B2[0] = (u16) temp_v1->unk_0B2[0] + D_8016582C.unk0;
+        temp_v1->unk_0B2[1] = (u16) temp_v1->unk_0B2[1] + D_8016582C.unk2;
+        temp_v1->unk_0B2[2] = (u16) temp_v1->unk_0B2[2] + D_8016582C.unk4;
         return;
     case 2:
         func_80086F60(objectIndex);
@@ -1577,9 +1577,9 @@ void func_800750D8(s32 objectIndex, s32 arg1, f32 *arg2, s32 arg3, s32 arg4) {
     }
     temp_a0 = temp_v0 * 0x50;
     temp_v1->unk_010[1] = (f32) (var_f18 + ((f64) arg2->unk4 - 10.0));
-    temp_v1->unk_0B2 = sp24 << 7;
-    temp_v1->unk_0B4 = temp_a0;
-    temp_v1->unk_0B6 = temp_a0;
+    temp_v1->unk_0B2[0] = sp24 << 7;
+    temp_v1->unk_0B2[1] = temp_a0;
+    temp_v1->unk_0B2[2] = temp_a0;
     temp_v1->unk_010[2] = (arg2->unk8 + (f32) ((s32) temp_v0 / 2)) - 12.0f;
 }
 #else
@@ -1750,8 +1750,8 @@ void func_80075698(s32 arg0) {
     D_80165C18[arg0].unk_06C = D_8018D490;
     D_80165C18[arg0].unk_0A0 = 0xFF;
     D_80165C18[arg0].unk_0BE[1] = 0;
-    D_80165C18[arg0].unk_0B2 = 0;
-    D_80165C18[arg0].unk_0B6 = 0;
+    D_80165C18[arg0].unk_0B2[0] = 0;
+    D_80165C18[arg0].unk_0B2[2] = 0;
     D_80165C18[arg0].unk_028[0] = 0.0f;
     D_80165C18[arg0].unk_028[1] = 0.0f;
     D_80165C18[arg0].unk_028[2] = 0.0f;
@@ -1897,8 +1897,8 @@ void func_80075B08(s32 arg0) {
     D_80165C18[arg0].unk_06C = D_8018D490;
     D_80165C18[arg0].unk_0A0 = 0xFF;
     D_80165C18[arg0].unk_0BE[1] = 0;
-    D_80165C18[arg0].unk_0B2 = 0;
-    D_80165C18[arg0].unk_0B6 = 0;
+    D_80165C18[arg0].unk_0B2[0] = 0;
+    D_80165C18[arg0].unk_0B2[2] = 0;
     D_80165C18[arg0].unk_028[0] = 0.0f;
     D_80165C18[arg0].unk_028[1] = 0.0f;
     D_80165C18[arg0].unk_028[2] = 0.0f;
@@ -2838,7 +2838,7 @@ void func_80077584(s32 objectIndex) {
             temp_v0->unk_038[0] = 0.0f;
         }
     }
-    temp_v0->unk_0B6 = (u16) temp_v0->unk_0B6 + temp_v0->unk_084[3];
+    temp_v0->unk_0B2[2] = (u16) temp_v0->unk_0B2[2] + temp_v0->unk_084[3];
     func_80087710(objectIndex);
     func_8008BF18(objectIndex);
 }
@@ -3020,8 +3020,8 @@ void func_80077BCC(s32 objectIndex) {
         break;
     }
     func_8008BF18(objectIndex);
-    D_80165C18[objectIndex].unk_0B2 += 0x1000;
-    D_80165C18[objectIndex].unk_0B4 += 0x1000;
+    D_80165C18[objectIndex].unk_0B2[0] += 0x1000;
+    D_80165C18[objectIndex].unk_0B2[1] += 0x1000;
 }
 
 #ifdef MIPS_TO_C
@@ -3374,7 +3374,7 @@ void func_80078288(s32 objectIndex) {
         if ((f64) temp_s0->unk_004[1] <= 0.0) {
             func_80086FD4(objectIndex);
         }
-        temp_s0->unk_0B4 = func_800872D8(objectIndex, camera1);
+        temp_s0->unk_0B2[1] = func_800872D8(objectIndex, camera1);
         return;
     case 3:
         func_80086F60(objectIndex);
@@ -5705,8 +5705,8 @@ void func_8007C5B4(s32 objectIndex) {
     func_80073FD4(objectIndex);
     func_80086EF0(objectIndex);
     func_800721C0(objectIndex, 0x00000800);
-    temp_s0->unk_0B2 = 0;
-    temp_s0->unk_0B6 = 0x8000;
+    temp_s0->unk_0B2[0] = 0;
+    temp_s0->unk_0B2[2] = 0x8000;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007C5B4.s")
@@ -6467,7 +6467,7 @@ void func_8007DB44(void) {
     func_80073514(temp_s0);
     temp_s1 = &D_80165C18[temp_s0];
     func_80073CB0(temp_s0, &temp_s1->unk_0A0, -0x00001000, 0x00001000, 0x00000400, 0, -1);
-    temp_s1->unk_0B6 = temp_s1->unk_0A0 + 0x8000;
+    temp_s1->unk_0B2[2] = temp_s1->unk_0A0 + 0x8000;
     if ((D_8018CFB0 != 0) || (D_8018CFC8 != 0)) {
         D_8018CFD8 = 0;
         var_s2 = &D_8018C3F0;
@@ -6596,7 +6596,7 @@ void func_8007DF20(s32 objectIndex) {
     temp_v0->unk_000 = 1.0f;
     func_8008B8BC(objectIndex, 0U, 0U, 0U);
     if (gIsMirrorMode != 0) {
-        temp_v0->unk_0B4 = 0x8000;
+        temp_v0->unk_0B2[1] = 0x8000;
         temp_v0->unk_004[0] = 1765.0f;
         temp_v0->unk_004[2] = 195.0f;
     } else {
@@ -6651,7 +6651,7 @@ void func_8007E00C(s32 objectIndex) {
         }
         func_80073CB0(objectIndex, &temp_s0->unk_0A0, -0x00002000, 0, 0x00000400, 0, -1);
         temp_v1 = temp_s0->unk_084[7];
-        temp_s0->unk_0B6 = temp_s0->unk_0A0;
+        temp_s0->unk_0B2[2] = temp_s0->unk_0A0;
         if (temp_v1 == 0) {
             func_800C98B8(temp_s0->unk_004, temp_s0->unk_038, 0x1901904EU);
             temp_s0->unk_084[7] = 0x0014;
@@ -6660,8 +6660,8 @@ void func_8007E00C(s32 objectIndex) {
         temp_s0->unk_084[7] = temp_v1 - 1;
         return;
     case 5:
-        temp_v0 = func_800417B4((u16) temp_s0->unk_0B6, 0U);
-        temp_s0->unk_0B6 = temp_v0;
+        temp_v0 = func_800417B4((u16) temp_s0->unk_0B2[2], 0U);
+        temp_s0->unk_0B2[2] = temp_v0;
         if (!(temp_v0 & 0xFFFF)) {
             func_80072488(objectIndex);
             return;
@@ -6669,7 +6669,7 @@ void func_8007E00C(s32 objectIndex) {
     default:
         return;
     case 6:
-        temp_s0->unk_0B6 = 0;
+        temp_s0->unk_0B2[2] = 0;
         temp_s0->unk_084[7] = 0;
         func_80072488(objectIndex);
         D_8018CFB0 = 0;
@@ -7058,7 +7058,7 @@ void func_8007E63C(s32 objectIndex) {
         }
         break;
     case 0x12C:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x00008000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x00008000) != 0) {
             func_800722CC(objectIndex, 4);
             func_8007266C(objectIndex);
         }
@@ -7141,7 +7141,7 @@ void func_8007ED6C(s32 objectIndex) {
     }
     func_8007E63C(objectIndex);
     func_8008BF18(objectIndex);
-    sp24->unk_0BE[1] = (u16) sp24->unk_0B4;
+    sp24->unk_0BE[1] = (u16) sp24->unk_0B2[1];
     func_80073514(objectIndex);
 }
 #else
@@ -7203,7 +7203,7 @@ void func_8007EFBC(s32 objectIndex) {
     switch (temp_t8) {
     case 1:
         sp24 = temp_v1;
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0800U, 0x00008000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0800U, 0x00008000) != 0) {
             temp_v1->unk1C = (f32) ((f64) D_8018D01C * 200.0);
             func_80086FD4(objectIndex);
             return;
@@ -7217,14 +7217,14 @@ void func_8007EFBC(s32 objectIndex) {
         }
         break;
     case 3:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x00008000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x00008000) != 0) {
             func_800726CC(objectIndex, 3);
             func_80086FD4(objectIndex);
             return;
         }
         break;
     case 5:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x0000C000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x0000C000) != 0) {
             func_80086FD4(objectIndex);
             return;
         }
@@ -7236,14 +7236,14 @@ void func_8007EFBC(s32 objectIndex) {
         }
         break;
     case 7:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x00004000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x00004000) != 0) {
             func_80086FD4(objectIndex);
             func_800726CC(objectIndex, 3);
             return;
         }
         break;
     case 9:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x00010000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x00010000) != 0) {
             func_80086FD4(objectIndex);
             return;
         }
@@ -7255,14 +7255,14 @@ void func_8007EFBC(s32 objectIndex) {
         }
         break;
     case 11:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x00010000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x00010000) != 0) {
             func_80086FD4(objectIndex);
             func_800726CC(objectIndex, 3);
             return;
         }
         break;
     case 13:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x00014000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x00014000) != 0) {
             func_80086FD4(objectIndex);
             return;
         }
@@ -7274,7 +7274,7 @@ void func_8007EFBC(s32 objectIndex) {
         }
         break;
     case 15:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x0000C000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x0000C000) != 0) {
             func_80086FD4(objectIndex);
             func_800726CC(objectIndex, 3);
             return;
@@ -7303,7 +7303,7 @@ void func_8007F280(s32 objectIndex) {
     switch (temp_t8) {
     case 1:
         sp24 = temp_v1;
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x00010000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x00010000) != 0) {
             temp_v1->unk1C = (f32) ((f64) D_8018D01C * -200.0);
             func_80086FD4(objectIndex);
             return;
@@ -7317,14 +7317,14 @@ void func_8007F280(s32 objectIndex) {
         }
         break;
     case 3:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x00010000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x00010000) != 0) {
             func_800726CC(objectIndex, 3);
             func_80086FD4(objectIndex);
             return;
         }
         break;
     case 5:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x00004000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x00004000) != 0) {
             func_80086FD4(objectIndex);
             return;
         }
@@ -7336,14 +7336,14 @@ void func_8007F280(s32 objectIndex) {
         }
         break;
     case 7:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x0000C000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x0000C000) != 0) {
             func_80086FD4(objectIndex);
             func_800726CC(objectIndex, 3);
             return;
         }
         break;
     case 9:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x00008000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x00008000) != 0) {
             func_80086FD4(objectIndex);
             return;
         }
@@ -7355,14 +7355,14 @@ void func_8007F280(s32 objectIndex) {
         }
         break;
     case 11:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x00008000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x00008000) != 0) {
             func_80086FD4(objectIndex);
             func_800726CC(objectIndex, 3);
             return;
         }
         break;
     case 13:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x0000C000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x0000C000) != 0) {
             func_80086FD4(objectIndex);
             return;
         }
@@ -7374,7 +7374,7 @@ void func_8007F280(s32 objectIndex) {
         }
         break;
     case 15:
-        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B4, 0x0400U, 0x00014000) != 0) {
+        if (func_80073E18(objectIndex, (u16 *) &temp_v1->unk_0B2[1], 0x0400U, 0x00014000) != 0) {
             func_80086FD4(objectIndex);
             func_800726CC(objectIndex, 3);
             return;
@@ -7601,7 +7601,7 @@ void func_8007FA08(s32 objectIndex) {
     temp_s0->unk_038 = (bitwise f32) 0;
     temp_s0->unk_0DD = 1;
     temp_s0->unk_0DF = 8;
-    temp_s0->unk_0BE[1] = (u16) temp_s0->unk_0B4;
+    temp_s0->unk_0BE[1] = (u16) temp_s0->unk_0B2[1];
     temp_s0->unk_028[1] = 15.0f;
     temp_s0->unk20 = 15.0f;
     func_80072488(objectIndex);
@@ -7661,7 +7661,7 @@ void func_8007FB48(s32 objectIndex) {
         if (var_a0 < 0x65) {
             sp18 = temp_v1;
             var_a0 = temp_v1->unk_0B0;
-            temp_v1->unk_0B4 = func_800417B4(temp_v1->unk_0B4, (temp_v1->unk_0BE[1] + 0x8000) & 0xFFFF);
+            temp_v1->unk_0B2[1] = func_800417B4(temp_v1->unk_0B2[1], (temp_v1->unk_0BE[1] + 0x8000) & 0xFFFF);
             if (var_a0 == 0x0064) {
                 temp_v1->unk_0D2 = 1;
                 var_a0 = temp_v1->unk_0B0;
@@ -7696,8 +7696,8 @@ block_20:
         break;
     case 5:
         sp18 = temp_v1;
-        temp_v0_2 = func_800417B4(temp_v1->unk_0B4, temp_v1->unk_0BE[1]);
-        temp_v1->unk_0B4 = temp_v0_2;
+        temp_v0_2 = func_800417B4(temp_v1->unk_0B2[1], temp_v1->unk_0BE[1]);
+        temp_v1->unk_0B2[1] = temp_v0_2;
         if ((temp_v0_2 & 0xFFFF) == temp_v1->unk_0BE[1]) {
             sp18 = temp_v1;
             func_800722CC(objectIndex, 8);
@@ -8320,8 +8320,8 @@ void func_80081080(s32 objectIndex) {
     temp_v0 = &D_80165C18[objectIndex];
     temp_v0->unk_0A0 = 0x00FF;
     temp_v0->unk_0BE[1] = 0;
-    temp_v0->unk_0B2 = 0;
-    temp_v0->unk_0B6 = 0;
+    temp_v0->unk_0B2[0] = 0;
+    temp_v0->unk_0B2[2] = 0;
     temp_v0->unk_064 = temp_v1;
     temp_v0->unk_06C = (s32) temp_v1;
     temp_v0->unk_028[0] = 0.0f;
@@ -8564,7 +8564,7 @@ loop_6:
                 }
                 temp_s0->unk_03C = (f32) (((f64) var_f6 * 0.1) + 4.8);
                 temp_f4 = ((f64) (f32) random_int(5U) * 0.01) + 0.8;
-                temp_s0->unk_0B4 = (0x10000 / sp70) * var_s1;
+                temp_s0->unk_0B2[1] = (0x10000 / sp70) * var_s1;
                 temp_s0->unk_034 = (f32) temp_f4;
                 temp_s0->unk_010[0] = temp_s5->unk_010[0];
                 temp_s0->unk_010[1] = (f32) ((f64) temp_s5->unk_010[1] - 13.0);
@@ -8589,7 +8589,7 @@ void func_80081790(s32 objectIndex) {
     case 0:
         break;                           /* irregular */
     case 1:
-        if (func_80087E08(objectIndex, D_80165C18[objectIndex].unk_038[1], 0.3f, D_80165C18[objectIndex].unk_034, D_80165C18[objectIndex].unk_0B4, 0x00000032) != 0) {
+        if (func_80087E08(objectIndex, D_80165C18[objectIndex].unk_038[1], 0.3f, D_80165C18[objectIndex].unk_034, D_80165C18[objectIndex].unk_0B2[1], 0x00000032) != 0) {
             func_80072488(objectIndex);
         }
         func_8008BF18(objectIndex);
@@ -8652,7 +8652,7 @@ void func_80081924(s32 objectIndex) {
         func_80086F60(objectIndex);
         break;
     case 10:
-        D_80165C18[objectIndex].unk_0B6 += 0x1000;
+        D_80165C18[objectIndex].unk_0B2[2] += 0x1000;
         D_80165C18[objectIndex].unk_038[1] -= 0.184;
         func_8008751C(objectIndex);
         func_80087710(objectIndex);
@@ -9646,7 +9646,7 @@ void func_8008379C(s32 objectIndex) {
         break;
     }
     func_8008BF18(objectIndex);
-    D_80165C18[objectIndex].unk_0B6 += D_80165C18[objectIndex].unk_0A0;
+    D_80165C18[objectIndex].unk_0B2[2] += D_80165C18[objectIndex].unk_0A0;
 }
 
 #ifdef MIPS_TO_C
@@ -9665,9 +9665,9 @@ void func_80083868(s32 objectIndex) {
     temp_s0->unk_000 = 0.1f;
     func_80072488(objectIndex);
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
-    temp_s0->unk_0B2 = 0;
-    temp_s0->unk_0B4 = 0;
-    temp_s0->unk_0B6 = 0x8000;
+    temp_s0->unk_0B2[0] = 0;
+    temp_s0->unk_0B2[1] = 0;
+    temp_s0->unk_0B2[2] = 0x8000;
     temp_s0->unk_0A0 = random_int(0x2000U) - 0x1000;
     func_80086E70(objectIndex);
     temp_s0->unk_034 = 1.5f;
@@ -9707,7 +9707,7 @@ void func_80083948(s32 objectIndex) {
     }
     func_8008BF18(objectIndex);
     func_80073D0C(objectIndex, &D_80165C18[objectIndex].unk_0A0, -0x00001000, 0x00001000, 0x00000400, 1, -1);
-    D_80165C18[objectIndex].unk_0B6 = D_80165C18[objectIndex].unk_0A0 + 0x8000;
+    D_80165C18[objectIndex].unk_0B2[2] = D_80165C18[objectIndex].unk_0A0 + 0x8000;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80083948.s")
@@ -9757,9 +9757,9 @@ void func_80083B0C(s32 objectIndex) {
     temp_v0->unk_000 = 0.1f;
     func_80072488(objectIndex);
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
-    temp_v0->unk_0B2 = 0;
-    temp_v0->unk_0B4 = 0;
-    temp_v0->unk_0B6 = 0x8000;
+    temp_v0->unk_0B2[0] = 0;
+    temp_v0->unk_0B2[1] = 0;
+    temp_v0->unk_0B2[2] = 0x8000;
     temp_v0->unkC8 = 2;
     temp_v0->unk_034 = 1.5f;
     func_800721C0(objectIndex, 0x04000210);
@@ -10439,14 +10439,14 @@ void func_800850B0(s32 objectIndex) {
             return;
         }
         temp_s0->unk_084[7] = temp_v0 - 1;
-        temp_s0->unk_0B4 = (u16) temp_s0->unk_0B4 + 0x2000;
-        temp_s0->unk_0B2 = (s16) temp_s0->unk_0BE[0];
-        temp_s0->unk_0B6 = (s16) temp_s0->unk_0BE[2];
+        temp_s0->unk_0B2[1] = (u16) temp_s0->unk_0B2[1] + 0x2000;
+        temp_s0->unk_0B2[0] = (s16) temp_s0->unk_0BE[0];
+        temp_s0->unk_0B2[2] = (s16) temp_s0->unk_0BE[2];
         return;
     }
-    temp_s0->unk_0B2 = (s16) temp_s0->unk_0BE[0];
-    temp_s0->unk_0B4 = (s16) temp_s0->unk_0BE[1];
-    temp_s0->unk_0B6 = (s16) temp_s0->unk_0BE[2];
+    temp_s0->unk_0B2[0] = (s16) temp_s0->unk_0BE[0];
+    temp_s0->unk_0B2[1] = (s16) temp_s0->unk_0BE[1];
+    temp_s0->unk_0B2[2] = (s16) temp_s0->unk_0BE[2];
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_800850B0.s")

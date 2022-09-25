@@ -2022,9 +2022,9 @@ void func_8008B888(s32 arg0, u16 arg1, u16 arg2, u16 arg3) {
 }
 
 void func_8008B8BC(s32 arg0, u16 arg1, u16 arg2, u16 arg3) {
-    D_80165C18[arg0].unk_0B2 = arg1;
-    D_80165C18[arg0].unk_0B4 = arg2;
-    D_80165C18[arg0].unk_0B6 = arg3;
+    D_80165C18[arg0].unk_0B2[0] = arg1;
+    D_80165C18[arg0].unk_0B2[1] = arg2;
+    D_80165C18[arg0].unk_0B2[2] = arg3;
 }
 
 void func_8008B8F0(s32 arg0, f32 arg1, f32 arg2, f32 arg3) {
