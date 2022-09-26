@@ -286,11 +286,11 @@ void update_obj_banana_bunch(struct BananaBunchParent *banana_bunch) {
         }
         if (someCount == 0) {
             destroy_actor(banana_bunch);
-            owner->unk_00C &= ~0x40000;
+            owner->statusEffects &= ~0x40000;
         } else if ((owner->unk_000 & 0x4000) != 0) {
             controller = &gControllers[banana_bunch->playerId];
-            if ((controller->buttonPressed & 0x2000) != 0) {
-                controller->buttonPressed &= ~0x2000;
+            if ((controller->buttonPressed & Z_TRIG) != 0) {
+                controller->buttonPressed &= ~Z_TRIG;
                 func_800C9060(owner - gPlayerOne, 0x19008012);
                 if ((controller->rawStickY >= 0x1F) && ((controller->rawStickX < 0x28) && (controller->rawStickX >= -0x27))) {
                     func_802B0788(controller->rawStickY, banana_bunch, owner);
@@ -414,9 +414,9 @@ void update_obj_triple_shell(struct TripleShellParent *parent, s16 shellType) {
             destroy_actor((struct Actor *) parent);
             break;
         }
-        if ((gControllers[parent->playerId].buttonPressed & 0x2000) != 0) {
+        if ((gControllers[parent->playerId].buttonPressed & Z_TRIG) != 0) {
             parent->unk_08 += 1.0f;
-            gControllers[parent->playerId].buttonPressed &= ~0x2000;
+            gControllers[parent->playerId].buttonPressed &= ~Z_TRIG;
         }
         if (parent->unk_08 > 0.0f) {
             if (parent->shellIndices[0] > 0.0f) {
@@ -516,7 +516,7 @@ s32 func_802B17F4(Player *player) {
     bananaBunch = &gActorList[actorIndex];
     bananaBunch->state = 0;
     bananaBunch->playerId = player - gPlayerOne;
-    player->unk_00C |= 0x40000;
+    player->statusEffects |= 0x40000;
     return actorIndex;
 }
 
@@ -713,7 +713,7 @@ void update_obj_banana(struct BananaActor *banana) {
                 controller->buttonDepressed &= ~0x2000;
                 banana->state = 1;
                 banana->unk_04 = 0x00B4;
-                player->unk_00C &= ~0x40000;
+                player->statusEffects &= ~0x40000;
                 func_800C9060(player - gPlayerOne, 0x19008012U);
                 pad1 = controller->rawStickY;
                 if ((pad1 > 30.0f) && (controller->rawStickX < 10) && (controller->rawStickX >= -9)) {
@@ -947,7 +947,7 @@ s32 func_802B2C40(Player *player) {
     itemBox = (struct FakeItemBox*)&gActorList[actorIndex];
     itemBox->playerId = (player - gPlayerOne);
     itemBox->state = 0;
-    player->unk_00C |= 0x40000;
+    player->statusEffects |= 0x40000;
     return actorIndex;
 }
 
@@ -987,24 +987,29 @@ s32 func_802B2D70(Player *player) {
     banana->playerId = playerId;
     banana->state = 0;
     banana->unk_04 = 0x0014;
-    player->unk_00C |= 0x40000;
+    player->statusEffects |= 0x40000;
     return actorIndex;
 }
 
-// Something related to the thunderbolt item
+/**
+ * Strikes players with thunder
+ * 
+ * @param Activating player (not to be struck) 
+ */
 void func_802B2EBC(Player *player) {
-    s32 playerIndex;
+    s32 index;
     Player *otherPlayer;
 
     func_8009E5BC();
     if ((player->unk_000 & 0x4000) != 0) {
+        // Play sound.
         func_800CAB4C(player - gPlayerOne);
     }
 
-    for (playerIndex = 0; playerIndex < 8; playerIndex++) {
-        otherPlayer = &gPlayers[playerIndex];
+    for (index = 0; index < 8; index++) {
+        otherPlayer = &gPlayers[index];
         if (player != otherPlayer) {
-            otherPlayer->unk_00C |= 0x4000;
+            otherPlayer->statusEffects |= 0x4000;
         }
     }
 }
@@ -1030,22 +1035,22 @@ void func_802B2FA0(Player *player) {
         func_802B17F4(player);
         break;
     case ITEM_MUSHROOM:
-        player->unk_00C |= 0x200;
+        player->statusEffects |= 0x200;
         break;
     case ITEM_DOUBLE_MUSHROOM:
-        player->unk_00C |= 0x200;
+        player->statusEffects |= 0x200;
         break;
     case ITEM_TRIPLE_MUSHROOM:
-        player->unk_00C |= 0x200;
+        player->statusEffects |= 0x200;
         break;
     case ITEM_SUPER_MUSHROOM:
-        player->unk_00C |= 0x200;
+        player->statusEffects |= 0x200;
         break;
     case ITEM_BOO:
-        player->unk_00C |= 0x800;
+        player->statusEffects |= 0x800;
         break;
     case ITEM_STAR:
-        player->unk_00C |= 0x2000;
+        player->statusEffects |= 0x2000;
         break;
     case ITEM_THUNDERBOLT:
         func_802B2EBC(player);
@@ -1086,8 +1091,8 @@ void func_802B30EC(void) {
             }
 
             if (((player->unk_000 & 0x4000) != 0) && (player->unk_010 != ITEM_NONE) && ((player->unk_000 & 0x2000) == 0)) {
-                if ((controller->buttonPressed & 0x2000) != 0) {
-                    controller->buttonPressed &= ~0x2000;
+                if ((controller->buttonPressed & Z_TRIG) != 0) {
+                    controller->buttonPressed &= ~Z_TRIG;
                     func_802B2FA0(player);
                 }
             }

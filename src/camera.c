@@ -1280,7 +1280,7 @@ void func_8001F394(Player *player, f32 *arg1) {
     }
     temp_v1 = D_80164A08[sp2C];
     if (*temp_v1 == 0) {
-        if (player->unk_00C & 0x40000) {
+        if (player->statusEffects & 0x40000) {
             *temp_v1 = 1;
         }
         if ((player->unk_0BC & 0x2000) == 0x2000) {
@@ -1289,7 +1289,7 @@ void func_8001F394(Player *player, f32 *arg1) {
         if ((player->unk_0BC & 0x100000) == 0x100000) {
             *temp_v1 = 3;
         }
-        if ((player->unk_00C & 0x100) == 0x100) {
+        if ((player->statusEffects & 0x100) == 0x100) {
             *temp_v1 = 4;
         }
         temp_v0 = player->unk_0BC;
@@ -1301,7 +1301,7 @@ void func_8001F394(Player *player, f32 *arg1) {
     switch (*temp_v1) {
     case 1:
         var_a0 = temp_t3 + &D_80164498;
-        if (player->unk_00C & 0x40000) {
+        if (player->statusEffects & 0x40000) {
             sp1C = temp_t3;
             move_f32_towards(var_a0, 20.0f, 0.2f);
         } else {
@@ -1350,7 +1350,7 @@ block_51:
         break;
     case 4:
         var_a0 = temp_t3 + &D_80164498;
-        if ((player->unk_00C & 0x100) == 0x100) {
+        if ((player->statusEffects & 0x100) == 0x100) {
             sp1C = temp_t3;
             move_f32_towards(var_a0, 25.0f, 1.0f);
         } else {

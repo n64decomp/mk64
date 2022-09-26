@@ -215,13 +215,13 @@ typedef struct {
 #define BACK_RIGHT_TYRE  3
 
 typedef struct {
-    /* 0x0000 */ u16 unk_000;
+    /* 0x0000 */ u16 unk_000; // playerType?
     /* 0x0002 */ u16 unk_002;
     /* 0x0004 */ s16 currentRank;
     /* 0x0006 */ u16 unk_006;
     /* 0x0008 */ s16 lapCount;
     /* 0x000A */ char unk_00A[0x2];
-    /* 0x000C */ s32 unk_00C;
+    /* 0x000C */ s32 statusEffects; // Bitflag.
     /* 0x0010 */ s16 unk_010;
     /* 0x0012 */ s16 unk_012;
     /* 0x0014 */ Vec3f pos;
@@ -286,8 +286,8 @@ typedef struct {
     /* 0x00F4 */ f32 kartHopAcceleration;
     /* 0x00F8 */ u16 unk_0F8;
     /* 0x00FA */ s16 unk_0FA;
-    /* 0x00FC */ f32 unk_0FC;
-    /* 0x0100 */ f32 unk_100;
+    /* 0x00FC */ f32 kartFriction;
+    /* 0x0100 */ f32 kartGravity;
     /* 0x0104 */ f32 unk_104;
     /* 0x0108 */ f32 unk_108;
     /* 0x010C */ s16 unk_10C;

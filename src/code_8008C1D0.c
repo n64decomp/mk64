@@ -160,7 +160,7 @@ UNUSED void func_unnamed33(void) {
 
 
 void func_8008C310(Player *player) {
-    if ((player->unk_00C & 2) || (player->unk_00C & 4) || ((player->unk_00C << 9) < 0) || (player->unk_00C & 0x1000000)) {
+    if ((player->statusEffects & 2) || (player->statusEffects & 4) || ((player->statusEffects << 9) < 0) || (player->statusEffects & 0x1000000)) {
         player->unk_0B6 = ((u16)player->unk_0B6 | 0x1000);
     }
 }
@@ -241,7 +241,7 @@ void func_8008C528(Player *player, s8 arg1) {
     } else {
         func_800098FC(arg1, player);
     }
-    player->unk_00C = (s32) (player->unk_00C & ~4);
+    player->statusEffects = (s32) (player->statusEffects & ~4);
 }
 
 void func_8008C62C(Player *player, s8 arg1) {
@@ -332,7 +332,7 @@ void func_8008C8C4(Player* player, s8 arg1) {
         player->unk_09C = (f32) (player->unk_09C + 100.0f);
     }
     if ((gModeSelection == VERSUS) && ((player->unk_000 & 0x1000) == 0x1000) && (D_800DC51C == 0) && ((player->unk_0CA & 2) == 0) && (gPlayerPositions[arg1] != 0)) {
-        player->unk_00C = (s32) (player->unk_00C | 0x400000);
+        player->statusEffects = (s32) (player->statusEffects | 0x400000);
     }
 }
 
@@ -415,7 +415,7 @@ GLOBAL_ASM("asm/non_matchings/code_8008C1D0/func_8008C9EC.s")
 void func_8008CDC0(Player* player, s8 arg1) {
     func_8008C354(player, arg1);
 
-    player->unk_00C &= ~1;
+    player->statusEffects &= ~1;
     player->unk_0B4 = 0;
     player->unk_0B8 = 3.0f;
     player->unk_0AC = 1;
@@ -511,7 +511,7 @@ void func_8008D0E4(Player* player, UNUSED s8 arg1) {
 void func_8008D0FC(Player *player, s8 arg1) {
     func_8008C354(player, arg1);
 
-    player->unk_00C &= ~0x80;
+    player->statusEffects &= ~0x80;
     player->unk_0B4 = 0;
     player->unk_0B8 = 2.0f;
     player->unk_0AC = 1;
@@ -603,7 +603,7 @@ void func_8008D3C4(Player* player, s8 arg1) {
     func_8008C354(player, arg1);
 
     player->unk_0BC |= 0x2000;
-    player->unk_00C &= ~0x200;
+    player->statusEffects &= ~0x200;
     player->unk_DB4 = 0;
     player->unk_DBC = 8.0f;
     
@@ -650,7 +650,7 @@ void func_8008D570(Player *player, s8 arg1) {
     player->unk_0AE = player->unk_02C[1];
     player->unk_0BC |= 0x80000;
     player->unk_0BC &= ~0x10;
-    player->unk_00C &= ~0x1000;
+    player->statusEffects &= ~0x1000;
     player->kartHopJerk = D_800E3730[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = (f32) D_800E3710[player->characterId];
@@ -697,7 +697,7 @@ void func_8008D760(Player* player) {
     player->unk_0C0 = 0;
     player->unk_02C[1] = player->unk_0AE;
     player->unk_0BC &= 0xFFF7FFFF;
-    player->unk_100 = gKartGravityTable[player->characterId];
+    player->kartGravity = gKartGravityTable[player->characterId];
     player->unk_000 &= 0xFF7F;
 }
 
@@ -707,7 +707,7 @@ void func_8008D7B0(Player* player, s8 arg1) {
     player->unk_0AE = player->unk_02C[1];
     player->unk_0BC |= 0x800000;
     player->unk_0BC &= ~0x10;
-    player->unk_00C &= 0xFFFDFFFF;
+    player->statusEffects &= 0xFFFDFFFF;
     player->kartHopJerk = D_800E3770[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = D_800E3750[player->characterId];
@@ -750,7 +750,7 @@ void func_8008D97C(Player *player) {
     player->unk_0C0 = 0;
     player->unk_02C[1] = player->unk_0AE;
     player->unk_0BC &= 0xFF7FFFFF;
-    player->unk_100 = gKartGravityTable[player->characterId];
+    player->kartGravity = gKartGravityTable[player->characterId];
 }
 
 void func_8008D9C0(Player* player) {
@@ -792,7 +792,7 @@ void func_8008DABC(Player *player, s8 arg1) {
         player->unk_D9C = 0.0f;
         player->unk_DA0 = 65.0f;
 
-        if ((player->unk_00C & 0x100) != 0) {
+        if ((player->statusEffects & 0x100) != 0) {
             player->unk_046 |= 0x80;
         }
 
@@ -824,7 +824,7 @@ void func_8008DC08(Player* player, s8 arg1) {
         }
 
         if ((player->unk_046 & 0x80) != 0) {
-            if ((player->unk_00C & 0x100) == 0) {
+            if ((player->statusEffects & 0x100) == 0) {
                 D_8018D990[arg1] = 1;
                 player->unk_238 = 0;
                 if ((player->unk_000 & 0x4000) != 0) {
@@ -916,7 +916,7 @@ void func_8008DC08(Player* player, s8 arg1) {
 void func_8008DF98(Player* player, s8 arg1) {
     func_8008C354(player, arg1);
 
-    player->unk_00C &= ~0x4000;
+    player->statusEffects &= ~0x4000;
     player->unk_0BC |= 0x40020000;
     player->unk_0BC &= ~0x10;
     player->unk_08C *= D_800EF588;
@@ -1136,7 +1136,7 @@ void func_8008E6C0(Player *player, s8 arg1)
         func_800098FC(arg1, player);
     }
 
-    player->unk_00C &= ~0x00480000;
+    player->statusEffects &= ~0x00480000;
     player->unk_0B6 |= 0x40;
     D_80165480[arg1] = 0;
     D_80165460[arg1] = 0;
@@ -1236,7 +1236,7 @@ void func_8008EAE0(Player* player, s8 arg1) {
     
     player->unk_0BC |= 0x02000000;
     player->unk_0B6 |= 0x40;
-    player->unk_00C &= ~0x01000002;
+    player->statusEffects &= ~0x01000002;
 
     D_80165480[arg1] = 0;
     D_80165460[arg1] = 0;
@@ -1259,7 +1259,7 @@ void func_8008EC88(Player* player, s8 arg1) {
     func_8008C354(player, arg1);
 
     player->unk_0BC |= 0x100000;
-    player->unk_00C &= ~0x00800000;
+    player->statusEffects &= ~0x00800000;
     player->unk_DB4 = 0;
     player->unk_DBC = 8.0f;
     if (D_8015F890 != 1) {
@@ -1307,7 +1307,7 @@ void func_8008EEE4(Player* player, s8 arg1) {
     func_8008C354(player, arg1);
 
     player->unk_0BC |= 0x4;
-    player->unk_00C &= ~0x8000;
+    player->statusEffects &= ~0x8000;
 
     if (D_8015F890 != 1) {
         if (((player->unk_000 & 0x4000) == 0x4000) && ((player->unk_000 & 0x100) == 0)) {
@@ -1506,7 +1506,7 @@ void func_8008F778(Player* player, s8 arg1) {
     func_8008C354(player, arg1);
 
     player->unk_0BC |= 0x200;
-    player->unk_00C &= ~0x2000;
+    player->statusEffects &= ~0x2000;
     D_8018D930[arg1] = gCourseTimer;
     D_8018D900[arg1] = 1;
     if (((player->unk_000 & 0x4000) == 0x4000) && ((player->unk_000 & 0x100) != 0x100)) {
@@ -1581,7 +1581,7 @@ void func_8008FA38(Player* player, s8 arg1) {
     func_8008C354(player, arg1);
 
     player->unk_0BC |= 0x80000000;
-    player->unk_00C &= ~0x800;
+    player->statusEffects &= ~0x800;
     D_8018D950[arg1] = gCourseTimer;
     D_8018D970[arg1] = 0xFF;
 
@@ -1627,8 +1627,8 @@ void func_8008FC64(Player* player, s8 arg1) {
     player->unk_0C6 -= 4;
     if (player->unk_0C6 < 5) {
         player->unk_0C6 = 0;
-        player->unk_00C &= 0xFBFFFFFF;
-        player->unk_00C |= 0x08000000;
+        player->statusEffects &= 0xFBFFFFFF;
+        player->statusEffects |= 0x08000000;
         player->unk_000 |= 0x40;
         
         func_8008FDA8(player, arg1);
@@ -1640,7 +1640,7 @@ void func_8008FCDC(Player* player, s8 arg1) {
     player->unk_0C6 += 2;
     if (player->unk_0C6 >= 0xF0) {
         player->unk_0C6 = 0xFF;
-        player->unk_00C &= ~0x08000000;
+        player->statusEffects &= ~0x08000000;
     }
 
     func_80056A40(arg1, (u32) player->unk_0C6);
@@ -1649,7 +1649,7 @@ void func_8008FCDC(Player* player, s8 arg1) {
 void func_8008FD4C(Player* player, UNUSED s8 arg1) {
     s16 temp_v0;
     
-    player->unk_00C |= 0x04000000;
+    player->statusEffects |= 0x04000000;
     player->unk_044 |= 0x200;
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
@@ -1676,7 +1676,7 @@ void func_8008FDF4(Player* player, UNUSED s8 arg1) {
     player->kartHopJerk =  D_800E37F0[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = D_800E37D0[player->characterId];
-    player->unk_00C &= ~0x00100000;
+    player->statusEffects &= ~0x00100000;
     player->unk_0BC |= 0x10000000;
 }
 
@@ -2328,7 +2328,7 @@ void func_80091298(Player *player, s8 arg1) {
                 player->unk_044 &= 0xF7FF;
                 player->unk_DC0 = 3.0f;
                 player->unkD4 = 0;
-                player->unk_100 = gKartGravityTable[player->characterId];
+                player->kartGravity = gKartGravityTable[player->characterId];
                 player->unk_000 |= 0x2000;
                 player->unk_094 = 0.0f;
                 player->unk_08C = 0.0f;
