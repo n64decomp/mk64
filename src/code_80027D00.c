@@ -1072,13 +1072,13 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
         temp_v0_2 = player->unk_0BC;
         if (((temp_v0_2 & 0x100000) != 0x100000) && ((temp_v0_2 & 8) != 8)) {
             var_v1 = temp_t5 & 0xFFFF;
-            player->unk_00C |= 0x800000;
+            player->statusEffects |= 0x800000;
         }
     }
     if (var_v1 == 0xFC) {
         temp_v0_3 = player->unk_0BC;
         if (((temp_v0_3 & 4) != 4) && ((temp_v0_3 & 8) != 8)) {
-            player->unk_00C |= 0x8000;
+            player->statusEffects |= 0x8000;
         }
     }
 }
@@ -1183,13 +1183,13 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     if (player->unk_0F8 == 0x00FE) {
         temp_v0_2 = player->unk_0BC;
         if (((temp_v0_2 & 0x100000) != 0x100000) && ((temp_v0_2 & 8) != 8)) {
-            player->unk_00C |= 0x800000;
+            player->statusEffects |= 0x800000;
         }
     }
     if (player->unk_0F8 == 0x00FC) {
         temp_v0_3 = player->unk_0BC;
         if (((temp_v0_3 & 4) != 4) && ((temp_v0_3 & 8) != 8)) {
-            player->unk_00C |= 0x8000;
+            player->statusEffects |= 0x8000;
         }
     }
 }
@@ -1380,7 +1380,7 @@ void func_8002AA50(Player *player) {
     player->kartHopVelocity = gKartHopInitialVelocityTable[player->characterId];
     player->unk_0BC |= 2;
     player->unk_DAC = 3.0f;
-    player->unk_100 = 500.0f;
+    player->kartGravity = 500.0f;
     func_80036C5C(player);
 }
 
@@ -1427,17 +1427,17 @@ void func_8002AB70(Player *player) {
     f64 pad;
     if (((player->unk_0BC & 8) != 8) && (player->unk_08C > 0.0f)) {
         if (((player->unk_0C4 / 182) < -1) && ((player->unk_0C4 / 182) >= -0x14) && (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
-            move_f32_towards(&player->unk_100, 500.0f, 1.0f);
+            move_f32_towards(&player->kartGravity, 500.0f, 1.0f);
             move_f32_towards(&player->unk_DAC, 3.0f, 0.05f);
         } else {
-            move_f32_towards(&player->unk_100, gKartGravityTable[player->characterId], 0.1f);
+            move_f32_towards(&player->kartGravity, gKartGravityTable[player->characterId], 0.1f);
             move_f32_towards(&player->unk_DAC, 1.0f, 0.07f);
         }
     } else {
         if (player->unk_110.unk3C[2] >= 50.0f) {
             player->unk_DAC = 2.0f;
         }
-        move_f32_towards(&player->unk_100, gKartGravityTable[player->characterId], 0.02f);
+        move_f32_towards(&player->kartGravity, gKartGravityTable[player->characterId], 0.02f);
         if ((player->unk_0BC & 2) == 2) {
             move_f32_towards(&player->unk_DAC, 1.0f, 0.07f);
         } else {
@@ -1446,29 +1446,29 @@ void func_8002AB70(Player *player) {
     }
     if ((player->unk_0BC & 0x100000) == 0x100000) {
         move_f32_towards(&player->unk_DAC, 20.0f, 1.0f);
-        player->unk_100 = D_800ED7B8;
+        player->kartGravity = D_800ED7B8;
     }
     if ((player->unk_0BC & 4) == 4) {
         move_f32_towards(&player->unk_DAC, 25.0f, 1.0f);
-        player->unk_100 = 1800.0f;
+        player->kartGravity = 1800.0f;
     }
     if ((player->unk_0BC & 0x400) == 0x400) {
-        player->unk_100 = D_800ED7BC;
+        player->kartGravity = D_800ED7BC;
     }
     if (player->unk_0BC & 0x80000) {
-        player->unk_100 = D_800ED7C0;
+        player->kartGravity = D_800ED7C0;
     }
     if ((player->unk_044 & 0x800) != 0) {
-        player->unk_100 = D_800ED7C4;
+        player->kartGravity = D_800ED7C4;
     }
     if ((player->unk_0BC & 0x800000) == 0x800000) {
-        player->unk_100 = 300.0f;
+        player->kartGravity = 300.0f;
     }
     if ((player->unk_0BC & 0x01000000) == 0x01000000) {
-        player->unk_100 = D_800ED7C8;
+        player->kartGravity = D_800ED7C8;
     }
     if ((player->unk_0BC & 0x02000000) == 0x02000000) {
-        player->unk_100 = 800.0f;
+        player->kartGravity = 800.0f;
     }
 }
 
@@ -1624,91 +1624,91 @@ void func_8002B308(Player *player, s8 arg1, s8 arg2) {
     s32 phi_v0_16;
     s32 phi_v0_17;
 
-    temp_v0 = player->unk_00C;
+    temp_v0 = player->statusEffects;
     phi_v0 = temp_v0;
     if ((temp_v0 & 2) == 2) {
         func_8008EAE0(player, arg1);
-        phi_v0 = player->unk_00C;
+        phi_v0 = player->statusEffects;
     }
     phi_v0_2 = phi_v0;
     if ((phi_v0 & 4) == 4) {
         func_8008C528(player, arg1);
-        phi_v0_2 = player->unk_00C;
+        phi_v0_2 = player->statusEffects;
     }
     phi_v0_3 = phi_v0_2;
     if ((phi_v0_2 & 1) == 1) {
         func_8008CDC0(player, arg1);
-        phi_v0_3 = player->unk_00C;
+        phi_v0_3 = player->statusEffects;
     }
     phi_v0_4 = phi_v0_3;
     if ((phi_v0_3 & 0x200) == 0x200) {
         func_8008D3C4(player, arg1);
-        phi_v0_4 = player->unk_00C;
+        phi_v0_4 = player->statusEffects;
     }
     phi_v0_5 = phi_v0_4;
     if ((phi_v0_4 & 0x02000000) == 0x02000000) {
         func_8002A704(player, arg1);
-        phi_v0_5 = player->unk_00C;
+        phi_v0_5 = player->statusEffects;
     }
     phi_v0_6 = phi_v0_5;
     if ((phi_v0_5 & 0x1000) == 0x1000) {
         func_8008D570(player, arg1);
-        phi_v0_6 = player->unk_00C;
+        phi_v0_6 = player->statusEffects;
     }
     phi_v0_7 = phi_v0_6;
     if ((phi_v0_6 & 0x20000) == 0x20000) {
         func_8008D7B0(player, arg1);
-        phi_v0_7 = player->unk_00C;
+        phi_v0_7 = player->statusEffects;
     }
     phi_v0_8 = phi_v0_7;
     if ((phi_v0_7 & 0x100) == 0x100) {
         func_8008DABC(player, arg1);
-        phi_v0_8 = player->unk_00C;
+        phi_v0_8 = player->statusEffects;
     }
     phi_v0_9 = phi_v0_8;
     if ((phi_v0_8 & 0x4000) == 0x4000) {
         func_8008DF98(player, arg1);
-        phi_v0_9 = player->unk_00C;
+        phi_v0_9 = player->statusEffects;
     }
     phi_v0_10 = phi_v0_9;
     if ((phi_v0_9 & 0x200000) == 0x200000) {
         func_8008C73C(player, arg1);
-        phi_v0_10 = player->unk_00C;
+        phi_v0_10 = player->statusEffects;
     }
     phi_v0_11 = phi_v0_10;
     if ((phi_v0_10 & 0x400000) == 0x400000) {
         func_8008E6C0(player, arg1);
-        phi_v0_11 = player->unk_00C;
+        phi_v0_11 = player->statusEffects;
     }
     phi_v0_12 = phi_v0_11;
     if ((phi_v0_11 & 0x01000000) == 0x01000000) {
         func_8008EAE0(player, arg1);
-        phi_v0_12 = player->unk_00C;
+        phi_v0_12 = player->statusEffects;
     }
     phi_v0_13 = phi_v0_12;
     if ((phi_v0_12 & 0x800000) == 0x800000) {
         func_8008EC88(player, arg1);
-        phi_v0_13 = player->unk_00C;
+        phi_v0_13 = player->statusEffects;
     }
     phi_v0_14 = phi_v0_13;
     if ((phi_v0_13 & 0x8000) == 0x8000) {
         func_8008EEE4(player, arg1);
-        phi_v0_14 = player->unk_00C;
+        phi_v0_14 = player->statusEffects;
     }
     phi_v0_15 = phi_v0_14;
     if ((phi_v0_14 & 0x2000) == 0x2000) {
         func_8008F778(player, arg1);
-        phi_v0_15 = player->unk_00C;
+        phi_v0_15 = player->statusEffects;
     }
     phi_v0_16 = phi_v0_15;
     if ((phi_v0_15 & 0x800) == 0x800) {
         func_8008FA38(player, arg1);
-        phi_v0_16 = player->unk_00C;
+        phi_v0_16 = player->statusEffects;
     }
     phi_v0_17 = phi_v0_16;
     if ((phi_v0_16 & 0x80) != 0) {
         func_8008D0FC(player, arg1);
-        phi_v0_17 = player->unk_00C;
+        phi_v0_17 = player->statusEffects;
     }
     if (phi_v0_17 & 0x80000) {
         func_8008E6C0(player, arg1);
@@ -1720,63 +1720,63 @@ GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002B308.s")
 
 void func_8002B5C0(Player *player, s8 arg1, s8 arg2) {
     if (((player->unk_0CA & 8) != 0) || ((player->unk_0CA & 2) != 0)) {
-        player->unk_00C &= 0xFE1D0478;
+        player->statusEffects &= 0xFE1D0478;
     }
     if ((player->unk_0BC & 0x400) == 0x400) {
-        player->unk_00C &= 0xFF5D457E;
+        player->statusEffects &= 0xFF5D457E;
     }
     if (((player->unk_0BC & 0x80) == 0x80) || ((player->unk_0BC & 0x40) == 0x40)) {
-        player->unk_00C &= 0xFF5F457E;
+        player->statusEffects &= 0xFF5F457E;
     }
     if ((player->unk_0BC & 0x800) == 0x800) {
-        player->unk_00C &= 0xFF5D457E;
+        player->statusEffects &= 0xFF5D457E;
     }
     if ((player->unk_044 & 0x4000) != 0) {
-        player->unk_00C &= 0xFF5D457E;
+        player->statusEffects &= 0xFF5D457E;
     }
     if ((player->unk_0BC & 0x80000) == 0x80000) {
-        player->unk_00C &= 0xFE1D4478;
+        player->statusEffects &= 0xFE1D4478;
     }
     if ((player->unk_0BC & 0x800000) == 0x800000) {
-        player->unk_00C &= 0xFE1D0478;
+        player->statusEffects &= 0xFE1D0478;
     }
     if ((player->unk_0BC & 0x04000000) == 0x04000000) {
-        player->unk_00C &= 0xFE1D0578;
+        player->statusEffects &= 0xFE1D0578;
     }
     if ((player->unk_0BC & 0x01000000) == 0x01000000) {
-        player->unk_00C &= 0xFE1D4478;
+        player->statusEffects &= 0xFE1D4478;
     }
     if ((player->unk_0BC & 0x02000000) == 0x02000000) {
-        player->unk_00C &= 0xFE1D4478;
+        player->statusEffects &= 0xFE1D4478;
     }
     if ((player->unk_0BC & 0x100000) == 0x100000) {
-        player->unk_00C &= 0xFE1D0478;
+        player->statusEffects &= 0xFE1D0478;
     }
     if ((player->unk_0BC & 4) == 4) {
-        player->unk_00C &= 0xFE1D0478;
+        player->statusEffects &= 0xFE1D0478;
     }
     if ((player->unk_0BC & 0x10000) == 0x10000) {
-        player->unk_00C &= 0xFE1D0478;
+        player->statusEffects &= 0xFE1D0478;
     }
     if ((player->unk_0BC & 0x200) == 0x200) {
-        player->unk_00C &= 0xFE9D8478;
+        player->statusEffects &= 0xFE9D8478;
     }
     if ((player->unk_0BC & 0x80000000) == 0x80000000) {
-        player->unk_00C &= 0xFE9D8678;
+        player->statusEffects &= 0xFE9D8678;
     }
     if ((player->unk_0BC & 0x4000) == 0x4000) {
-        player->unk_00C &= 0xFF5D45FF;
+        player->statusEffects &= 0xFF5D45FF;
     }
     if ((player->unk_0BC & 0x20000) == 0x20000) {
-        player->unk_00C &= 0xFE1D0478;
+        player->statusEffects &= 0xFE1D0478;
     }
 }
 
 void func_8002B830(Player *player, s8 arg1, s8 arg2) {
-    if (player->unk_00C != 0) {
+    if (player->statusEffects != 0) {
         func_8002B5C0(player, arg1, arg2);
     }
-    if (player->unk_00C != 0) {
+    if (player->statusEffects != 0) {
         func_8002B308(player, arg1, arg2);
     }
     if ((player->unk_044 & 0x400) != 0) {
@@ -2516,10 +2516,10 @@ void func_8002CD48(Player *player, s8 arg1, s8 arg2) {
         func_80031F48(player, 10.0f);
     }
     if (D_800DC510 != 5) {
-        if (player->unk_00C & 0x04000000) {
+        if (player->statusEffects & 0x04000000) {
             func_8008FC64(player, arg1);
         }
-        if ((player->unk_00C * 0x10) < 0) {
+        if ((player->statusEffects * 0x10) < 0) {
             func_8008FCDC(player, arg1);
         }
     }
@@ -2758,7 +2758,7 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         player->unk_06C *= -1.0f;
     }
     if ((player->boundingBoxCorners[2].surfaceType == 1) && (player->boundingBoxCorners[3].surfaceType == 1)) {
-        temp_f0 = player->unk_100;
+        temp_f0 = player->kartGravity;
         var_f12 = player->unk_064 + sp16C;
         spB4 = (f32) (((f64) (-player->unk_110.unk60[0] * temp_f0) * 0.925) + (f64) (-1.0f * var_f12));
         spB0 = -player->unk_110.unk60[1] * temp_f0;
@@ -2769,7 +2769,7 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         if (var_v0 >= 0xA) {
             var_v0 = 0x0000000A;
         }
-        temp_f0_2 = player->unk_100;
+        temp_f0_2 = player->kartGravity;
         var_f12 = player->unk_064 + sp16C;
         temp_f2 = (sp + (var_v0 * 4))->unk104;
         spB4 = (temp_f2 * (-player->unk_110.unk60[0] * temp_f0_2)) + (-1.0f * var_f12);
@@ -2782,11 +2782,11 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     if ((temp_v1 != 8) && ((temp_v0_2 & 0x20) == 0x20)) {
         spB4 = var_f12 * 0.0f;
         spAC = var_f14 * 0.0f;
-        spB0 = (player->unk_100 * -1.0f) / 4.0f;
+        spB0 = (player->kartGravity * -1.0f) / 4.0f;
     }
     if (temp_v1 == 8) {
         spB4 = var_f12 * 0.0f;
-        spB0 = player->unk_100 * -1.0f;
+        spB0 = player->kartGravity * -1.0f;
         spAC = var_f14 * 0.0f;
     }
     sp60 = coss((player->unk_02E + player->unk_0C0) & 0xFFFF);
@@ -2821,23 +2821,23 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
             temp_f0_3 = (f64) sp98;
             temp_f12_2 = (f64) sp7C;
             temp_f2_3 = (f64) spA0;
-            sp98 = (f32) (temp_f0_3 + ((((f64) (sp184 + spB4 + sp160) - (temp_f0_3 * (0.12 * (f64) player->unk_0FC))) / 6000.0) / (((f64) player->unk_20C * 0.6) + 1.0 + temp_f12_2)));
-            spA0 = (f32) (temp_f2_3 + ((((f64) (sp18C + spAC + sp168) - (temp_f2_3 * (0.12 * (f64) player->unk_0FC))) / 6000.0) / (((f64) player->unk_20C * 0.6) + 1.0 + temp_f12_2)));
+            sp98 = (f32) (temp_f0_3 + ((((f64) (sp184 + spB4 + sp160) - (temp_f0_3 * (0.12 * (f64) player->kartFriction))) / 6000.0) / (((f64) player->unk_20C * 0.6) + 1.0 + temp_f12_2)));
+            spA0 = (f32) (temp_f2_3 + ((((f64) (sp18C + spAC + sp168) - (temp_f2_3 * (0.12 * (f64) player->kartFriction))) / 6000.0) / (((f64) player->unk_20C * 0.6) + 1.0 + temp_f12_2)));
         } else {
             temp_f0_4 = (f64) sp98;
             temp_f12_3 = (f64) (sp7C + 1);
             temp_f2_4 = (f64) spA0;
-            sp98 = (f32) (temp_f0_4 + ((((f64) (sp184 + spB4 + sp160) - (temp_f0_4 * (0.12 * (f64) player->unk_0FC))) / 6000.0) / temp_f12_3));
-            spA0 = (f32) (temp_f2_4 + ((((f64) (sp18C + spAC + sp168) - (temp_f2_4 * (0.12 * (f64) player->unk_0FC))) / 6000.0) / temp_f12_3));
+            sp98 = (f32) (temp_f0_4 + ((((f64) (sp184 + spB4 + sp160) - (temp_f0_4 * (0.12 * (f64) player->kartFriction))) / 6000.0) / temp_f12_3));
+            spA0 = (f32) (temp_f2_4 + ((((f64) (sp18C + spAC + sp168) - (temp_f2_4 * (0.12 * (f64) player->kartFriction))) / 6000.0) / temp_f12_3));
         }
     } else {
         temp_f0_5 = (f64) sp98;
         temp_f2_5 = (f64) spA0;
-        sp98 = (f32) (temp_f0_5 + ((((f64) (sp184 + spB4 + sp160) - (temp_f0_5 * (0.12 * (f64) player->unk_0FC))) / 6000.0) / 30.0));
-        spA0 = (f32) (temp_f2_5 + ((((f64) (sp18C + spAC + sp168) - (temp_f2_5 * (0.12 * (f64) player->unk_0FC))) / 6000.0) / 30.0));
+        sp98 = (f32) (temp_f0_5 + ((((f64) (sp184 + spB4 + sp160) - (temp_f0_5 * (0.12 * (f64) player->kartFriction))) / 6000.0) / 30.0));
+        spA0 = (f32) (temp_f2_5 + ((((f64) (sp18C + spAC + sp168) - (temp_f2_5 * (0.12 * (f64) player->kartFriction))) / 6000.0) / 30.0));
     }
     temp_f0_6 = (f64) sp9C;
-    sp9C = (f32) (temp_f0_6 + ((((f64) (sp188 + spB0 + sp164) - (temp_f0_6 * (0.12 * (f64) player->unk_0FC))) / 6000.0) / (f64) player->unk_DAC));
+    sp9C = (f32) (temp_f0_6 + ((((f64) (sp188 + spB0 + sp164) - (temp_f0_6 * (0.12 * (f64) player->kartFriction))) / 6000.0) / (f64) player->unk_DAC));
     temp_v0_4 = player->unk_0CA;
     if (((temp_v0_4 & 2) == 2) || ((temp_v0_4 & 8) == 8) || ((player->unk_0BC & 0x04000000) == 0x04000000) || (temp_v0_4 & 1)) {
         sp98 = 0.0f;
@@ -3145,13 +3145,13 @@ void func_8002E594(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     func_8002FCA8(player, arg3);
     temp_v0_2 = player->unk_0BC;
     if (((temp_v0_2 & 0x80) == 0x80) || ((temp_v0_2 & 0x40) == 0x40) || ((temp_v0_2 & 0x20000) == 0x20000)) {
-        temp_f0 = player->unk_100;
+        temp_f0 = player->kartGravity;
         sp80 = (f32) (((f64) (-player->unk_110.unk60[0] * temp_f0) * 0.1) + (f64) (-1.0f * player->unk_064));
         sp7C = -player->unk_110.unk60[1] * temp_f0;
         sp78 = (f32) (((f64) (-player->unk_110.unk60[2] * temp_f0) * 0.1) + (f64) (-1.0f * player->unk_06C));
     } else {
         sp80 = player->unk_064 * -1.0f;
-        sp7C = player->unk_100 * -1.0f;
+        sp7C = player->kartGravity * -1.0f;
         sp78 = player->unk_06C * -1.0f;
     }
     func_8002C7E4(player, arg3, arg2);
@@ -3177,16 +3177,16 @@ void func_8002E594(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     if ((player->unk_10C < 3) && ((s32) (u16) player->unk_256 < 3) && (temp_v0_3 = player->unk_0BC, ((temp_v0_3 & 0x400) != 0x400)) && ((temp_v0_3 & 0x01000000) != 0x01000000) && ((temp_v0_3 & 0x02000000) != 0x02000000)) {
         temp_f0_2 = (f64) sp54;
         temp_f2 = (f64) sp5C;
-        sp54 = (f32) (temp_f0_2 + ((((f64) (spEC + sp80 + spD4) - (temp_f0_2 * (0.12 * (f64) player->unk_0FC))) / 6000.0) / (f64) ((player->unk_20C * 5.0f) + 1.0f)));
-        sp5C = (f32) (temp_f2 + ((((f64) (spF4 + sp78 + spDC) - (temp_f2 * (0.12 * (f64) player->unk_0FC))) / 6000.0) / (f64) ((player->unk_20C * 5.0f) + 1.0f)));
+        sp54 = (f32) (temp_f0_2 + ((((f64) (spEC + sp80 + spD4) - (temp_f0_2 * (0.12 * (f64) player->kartFriction))) / 6000.0) / (f64) ((player->unk_20C * 5.0f) + 1.0f)));
+        sp5C = (f32) (temp_f2 + ((((f64) (spF4 + sp78 + spDC) - (temp_f2 * (0.12 * (f64) player->kartFriction))) / 6000.0) / (f64) ((player->unk_20C * 5.0f) + 1.0f)));
     } else {
         temp_f0_3 = (f64) sp54;
         temp_f2_2 = (f64) sp5C;
-        sp54 = (f32) (temp_f0_3 + ((((f64) (spEC + sp80 + spD4) - (temp_f0_3 * (0.2 * (f64) player->unk_0FC))) / 6000.0) * 0.08));
-        sp5C = (f32) (temp_f2_2 + ((((f64) (spF4 + sp78 + spDC) - (temp_f2_2 * (0.2 * (f64) player->unk_0FC))) / 6000.0) * 0.08));
+        sp54 = (f32) (temp_f0_3 + ((((f64) (spEC + sp80 + spD4) - (temp_f0_3 * (0.2 * (f64) player->kartFriction))) / 6000.0) * 0.08));
+        sp5C = (f32) (temp_f2_2 + ((((f64) (spF4 + sp78 + spDC) - (temp_f2_2 * (0.2 * (f64) player->kartFriction))) / 6000.0) * 0.08));
     }
     temp_f0_4 = (f64) sp58;
-    sp58 = (f32) (temp_f0_4 + ((((f64) (spF0 + sp7C + spD8) - (temp_f0_4 * (0.12 * (f64) player->unk_0FC))) / 6000.0) / (f64) player->unk_DAC));
+    sp58 = (f32) (temp_f0_4 + ((((f64) (spF0 + sp7C + spD8) - (temp_f0_4 * (0.12 * (f64) player->kartFriction))) / 6000.0) / (f64) player->unk_DAC));
     temp_v0_4 = player->unk_0CA;
     if (((temp_v0_4 & 2) == 2) || ((temp_v0_4 & 8) == 8)) {
         sp58 = 0.0f;
@@ -3439,9 +3439,9 @@ void control_cpu_movement(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     sp70 = player->unk_034[2];
     temp_f0 = (f64) sp68;
     temp_f2 = (f64) sp70;
-    temp_f8 = (f32) (temp_f0 + (((f64) (spF4 + sp84 + spD0) - (temp_f0 * (0.12 * (f64) player->unk_0FC))) / 6000.0));
+    temp_f8 = (f32) (temp_f0 + (((f64) (spF4 + sp84 + spD0) - (temp_f0 * (0.12 * (f64) player->kartFriction))) / 6000.0));
     sp68 = temp_f8;
-    temp_f8_2 = (f32) (temp_f2 + (((f64) (spFC + sp7C + spD8) - (temp_f2 * (0.12 * (f64) player->unk_0FC))) / 6000.0));
+    temp_f8_2 = (f32) (temp_f2 + (((f64) (spFC + sp7C + spD8) - (temp_f2 * (0.12 * (f64) player->kartFriction))) / 6000.0));
     sp70 = temp_f8_2;
     temp_f12 = player->pos[0];
     temp_f14 = player->pos[2];
@@ -4392,9 +4392,9 @@ void func_80030FC8(Player *player) {
         player->unk_08C = (player->unk_09C * player->unk_09C) / 25.0f;
     }
     player->unk_044 |= 0x20;
-    if ((player->unk_00C * 8) < 0) {
+    if ((player->statusEffects * 8) < 0) {
         func_8008F104(player, player_index);
-        player->unk_00C &= 0xEFFFFFFF;
+        player->statusEffects &= 0xEFFFFFFF;
     }
 }
 
@@ -4416,9 +4416,9 @@ void func_80031F48(Player *player, f32 arg1) {
         player->unk_08C = (player->unk_09C * player->unk_09C) / 25.0f;
     }
     player->unk_044 &= 0xFFDF;
-    if ((player->unk_00C * 8) < 0) {
+    if ((player->statusEffects * 8) < 0) {
         func_8008F104(player, player_index);
-        player->unk_00C &= 0xEFFFFFFF;
+        player->statusEffects &= 0xEFFFFFFF;
     }
 }
 
@@ -4847,9 +4847,9 @@ void func_80032CB0(Player *player, f32 arg1) {
         player->unk_09C = player->unk_214;
     }
     if ((f64) player->unk_09C <= (player->unk_214 * D_800EDBA0)) {
-        player->unk_00C &= 0xEFFFFFFF;
+        player->statusEffects &= 0xEFFFFFFF;
     }
-    player->unk_00C &= 0xFDFFFFFF;
+    player->statusEffects &= 0xFDFFFFFF;
     player->unk_044 &= 0xFFDF;
     player->unk_098 = (player->unk_09C * player->unk_09C) / 25.0f;
 }
@@ -5551,7 +5551,7 @@ void func_80033AE0(Player *player, struct Controller *arg1, s8 arg2) {
     if (((sp2D0 >= 0x5A) || (sp2D0 < -0x59)) && ((player->unk_044 & 0x4000) == 0)) {
         temp_v1_4 = player->unk_0BC;
         if (((temp_v1_4 & 0x10) == 0) && (gCCSelection == CC_150) && (gModeSelection != BATTLE) && ((temp_v1_4 & 8) == 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 40.0f) && (player->unk_204 == 0)) {
-            player->unk_00C |= 0x80;
+            player->statusEffects |= 0x80;
         }
     }
     temp_v0_4 = player->boundingBoxCorners[3].surfaceType;
@@ -6870,7 +6870,7 @@ void func_80038C6C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     func_8002AB70(player);
     temp_a1 = player->unk_174[0];
     spA4 = (spFC + player->unk_064) * 0.0f;
-    spA0 = player->unk_100 * -1.0f;
+    spA0 = player->kartGravity * -1.0f;
     sp110 = 0.0f;
     sp10C = 0.0f;
     sp108 = 0.0f;
@@ -6887,10 +6887,10 @@ void func_80038C6C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     temp_f0 = (f64) sp88;
     sp90 = player->unk_034[2];
     temp_f2 = (f64) sp90;
-    sp88 = (f32) (temp_f0 + ((((f64) (sp114 + spA4 + spF0) - (temp_f0 * (0.12 * (f64) player->unk_0FC))) / 6000.0) / 1.0));
+    sp88 = (f32) (temp_f0 + ((((f64) (sp114 + spA4 + spF0) - (temp_f0 * (0.12 * (f64) player->kartFriction))) / 6000.0) / 1.0));
     temp_f12 = (f64) temp_f8;
-    sp90 = (f32) (temp_f2 + ((((f64) (sp11C + sp9C + spF8) - (temp_f2 * (0.12 * (f64) player->unk_0FC))) / 6000.0) / 1.0));
-    sp8C = (f32) (temp_f12 + ((((f64) (sp118 + spA0 + spF4) - (temp_f12 * (0.12 * (f64) player->unk_0FC))) / 6000.0) / 1.0));
+    sp90 = (f32) (temp_f2 + ((((f64) (sp11C + sp9C + spF8) - (temp_f2 * (0.12 * (f64) player->kartFriction))) / 6000.0) / 1.0));
+    sp8C = (f32) (temp_f12 + ((((f64) (sp118 + spA0 + spF4) - (temp_f12 * (0.12 * (f64) player->kartFriction))) / 6000.0) / 1.0));
     temp_v0 = player->unk_044;
     if ((temp_v0 & 0x10) == 0x10) {
         player->unk_044 = temp_v0 & 0xFFEF;

@@ -1117,7 +1117,7 @@ s32 func_80089B50(s32 objectIndex) {
                     if ((temp_v0 & 0x8000) && !(temp_v0 & 0x100) && (func_80088D18(objectIndex, var_s0) != 0)) {
                         sp40 = 1;
                         if (!(var_s0->unk_0BC & 0x200)) {
-                            var_s0->unk_00C |= 0x400000;
+                            var_s0->statusEffects |= 0x400000;
                             if (func_8007223C(objectIndex, 0x04000000) != 0) {
                                 func_80072180();
                             }
@@ -1160,7 +1160,7 @@ s32 func_80089CBC(s32 objectIndex, f32 arg1) {
                     if ((temp_v0 & 0x8000) && !(temp_v0 & 0x100) && (func_80088E98(objectIndex, var_s0, arg1) != 0)) {
                         var_s7 = 1;
                         if (!(var_s0->unk_0BC & 0x200)) {
-                            var_s0->unk_00C |= 0x400000;
+                            var_s0->statusEffects |= 0x400000;
                             if (func_8007223C(objectIndex, 0x04000000) != 0) {
                                 func_80072180();
                             }
@@ -1202,7 +1202,7 @@ s32 func_80089F24(s32 objectIndex) {
                         if (func_8007223C(objectIndex, 0x04000000) != 0) {
                             func_80072180();
                         }
-                        var_s0->unk_00C |= 0x200000;
+                        var_s0->statusEffects |= 0x200000;
                     }
                 }
                 var_s1 += 1;

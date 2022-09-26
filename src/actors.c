@@ -3011,7 +3011,7 @@ void func_8029FDC8(struct Actor *actor) {
             break;
         case 0:
             player = &gPlayers[banana->playerId];
-            player->unk_00C &= ~0x00040000;
+            player->statusEffects &= ~0x00040000;
             /* fallthrough */
         case 4:
             banana->flags = -0x8000;
@@ -3106,7 +3106,7 @@ void func_8029FDC8(struct Actor *actor) {
         fakeItemBox = (struct FakeItemBox *)actor;
         player = &gPlayers[(s16)fakeItemBox->playerId];
         if (fakeItemBox->state == 0) {
-            player->unk_00C &= ~0x00040000;
+            player->statusEffects &= ~0x00040000;
         }
         fakeItemBox->state = 2;
         fakeItemBox->flags = -0x8000;
@@ -3228,10 +3228,10 @@ void func_802A0450(Player *player, struct Actor *actor) {
         break;
     case ACTOR_BANANA:
         if (player->unk_0BC & 0x800008C0) { break; }
-        if (player->unk_00C & 1) { break; }
+        if (player->statusEffects & 1) { break; }
         temp_v1 = actor->rot[0];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        player->unk_00C |= 1;
+        player->statusEffects |= 1;
         owner = &gPlayers[temp_v1];
         if (owner->unk_000 & 0x4000) {
             if (actor->flags & 0xF) {
@@ -3250,10 +3250,10 @@ void func_802A0450(Player *player, struct Actor *actor) {
         break;
     case ACTOR_GREEN_SHELL:
         if (player->unk_0BC & 0x80000400) { break; }
-        if (player->unk_00C & 4) { break; }
+        if (player->statusEffects & 4) { break; }
         temp_v1 = actor->rot[2];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        player->unk_00C |= 4;
+        player->statusEffects |= 4;
         func_800C98B8(player->pos, player->unk_034, 0x19018010U);
         owner = &gPlayers[temp_v1];
         if ((owner->unk_000 & 0x4000) && (temp_lo != temp_v1)) {
@@ -3262,11 +3262,11 @@ void func_802A0450(Player *player, struct Actor *actor) {
         func_8029FDC8(actor);
         break;
     case ACTOR_BLUE_SPINY_SHELL:
-        if (player->unk_00C & 2) { break; }
+        if (player->statusEffects & 2) { break; }
         temp_v1 = actor->rot[2];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
         if (!(player->unk_0BC & 0x80000000)) {
-            player->unk_00C |= 2;
+            player->statusEffects |= 2;
             func_800C98B8(player->pos, player->unk_034, 0x19018010U);
         }
         owner = &gPlayers[temp_v1];
@@ -3280,11 +3280,11 @@ void func_802A0450(Player *player, struct Actor *actor) {
     case ACTOR_RED_SHELL:
         temp_v1 = actor->rot[2];
         if (player->unk_0BC & 0x01000000) { break; }
-        if (player->unk_00C & 2) { break; }
+        if (player->statusEffects & 2) { break; }
         temp_v1 = actor->rot[2];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
         if (!(player->unk_0BC & 0x80000000)) {
-            player->unk_00C |= 2;
+            player->statusEffects |= 2;
             func_800C98B8(player->pos, player->unk_034, 0x19018010U);
         }
         owner = &gPlayers[temp_v1];
@@ -3339,7 +3339,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
         if (player->unk_0BC & 0x80000000) { break; }
         temp_v1 = actor->velocity[0];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-            player->unk_00C |= 0x400000;
+            player->statusEffects |= 0x400000;
             owner = &gPlayers[temp_v1];
             if (owner->unk_000 & 0x4000) {
                 if (actor->flags & 0xF) {
@@ -3354,7 +3354,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
                     }
                 }
                 if (actor->state == 0) {
-                    owner->unk_00C &= ~0x00040000;
+                    owner->statusEffects &= ~0x00040000;
                 }
             }
             actor->state = 2;
@@ -3521,7 +3521,7 @@ void update_obj_fake_item_box(struct FakeItemBox *fake_item_box) {
                 if ((temp_v1_3->buttonDepressed & Z_TRIG) != 0) {
                     temp_v1_3->buttonDepressed &= 0xDFFF;
                     func_802A1064(fake_item_box);
-                    temp_v0_4->unk_00C &= 0xFFFBFFFF;
+                    temp_v0_4->statusEffects &= 0xFFFBFFFF;
                     func_800C9060((u8)(temp_v0_4 - gPlayerOne), 0x19008012);
                 }
             }
