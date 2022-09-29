@@ -1446,15 +1446,15 @@ UNUSED void func_802B8614(Player *player) {
     f64 temp_f4;
     f64 temp_f6;
 
-    temp_f6 = (f64) player->boundingBoxCorners[1].cornerX;
+    temp_f6 = (f64) player->boundingBoxCorners[1].cornerPos[0];
     sp70 = (f64) player->boundingBoxCorners[1].cornerGroundY;
-    sp68 = (f64) player->boundingBoxCorners[1].cornerZ;
-    temp_f30 = (f64) player->boundingBoxCorners[0].cornerX;
+    sp68 = (f64) player->boundingBoxCorners[1].cornerPos[2];
+    temp_f30 = (f64) player->boundingBoxCorners[0].cornerPos[0];
     sp58 = (f64) player->boundingBoxCorners[0].cornerGroundY;
-    sp50 = (f64) player->boundingBoxCorners[0].cornerZ;
-    sp48 = (f64) player->boundingBoxCorners[3].cornerX;
+    sp50 = (f64) player->boundingBoxCorners[0].cornerPos[2];
+    sp48 = (f64) player->boundingBoxCorners[3].cornerPos[0];
     sp40 = (f64) player->boundingBoxCorners[3].cornerGroundY;
-    temp_f4 = (f64) player->boundingBoxCorners[3].cornerZ;
+    temp_f4 = (f64) player->boundingBoxCorners[3].cornerPos[2];
     temp_f2 = sp58 - sp70;
     sp38 = temp_f4;
     temp_f12 = temp_f4 - sp50;

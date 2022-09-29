@@ -1523,9 +1523,9 @@ void func_80070780(void) {
             temp_s0_4 = D_80183EA0->unk0;
             func_80073444(temp_s0_4, &D_06007BB8, &D_06007DB8, 0x20U, (u16) 0x00000040);
             temp_v0_5 = &D_80165C18[temp_s0_4];
-            temp_v0_5->unk_0B2 = 0;
-            temp_v0_5->unk_0B4 = 0;
-            temp_v0_5->unk_0B6 = 0x8000;
+            temp_v0_5->unk_0B2[0] = 0;
+            temp_v0_5->unk_0B2[1] = 0;
+            temp_v0_5->unk_0B2[2] = 0x8000;
             func_800723A4(D_80183EA0->unk4, 0);
             func_800723A4(D_80183EA0->unk8, 0);
             return;

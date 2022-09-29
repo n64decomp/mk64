@@ -6,7 +6,10 @@
 #include "framebuffers.h"
 #include "kart_dma.h"
 #include "camera.h"
+#include "math_util.h"
 #include "code_80027D00.h"
+#include "code_80057C60.h"
+#include "render_courses.h"
 #include "spawn_players.h"
 
 // arg4 is height? Or something like that?
@@ -256,21 +259,21 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_110.unk38 = 0;
     player->unk_110.unk3A = 0;
 
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerX = 0.0f;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerY = 0.0f;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerZ = 0.0f;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerPos[0] = 0.0f;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerPos[1] = 0.0f;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerPos[2] = 0.0f;
 
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerX = 0.0f;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerY = 0.0f;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerZ = 0.0f;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerPos[0] = 0.0f;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerPos[1] = 0.0f;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerPos[2] = 0.0f;
 
-    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerX = 0.0f;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerY = 0.0f;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerZ = 0.0f;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerPos[0] = 0.0f;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerPos[1] = 0.0f;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerPos[2] = 0.0f;
 
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerX = 0.0f;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerY = 0.0f;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerZ = 0.0f;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerPos[0] = 0.0f;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerPos[1] = 0.0f;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerPos[2] = 0.0f;
 
     player->boundingBoxCorners[ FRONT_LEFT_TYRE].cornerGroundY = 0.0f;
     player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerGroundY = 0.0f;
