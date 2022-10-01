@@ -39,6 +39,8 @@ extern s16 *D_801645A0[];
 extern s16 D_80162FCE;
 // Shadows values from gPathIndexByPlayerId
 extern s32 D_80163448;
+// Shadows values from gPathIndexByPlayerId, but is an array
+extern u16 D_80165310[];
 // Shadows values from D_80164560
 extern struct TrackWayPoint *D_801631D0;
 // Shadows values from D_80164570

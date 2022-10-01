@@ -154,7 +154,7 @@ extern s32 gGamestate;
 extern s32 gModeSelection;
 extern u16 gNumActors;
 extern s32 D_8015F58C;
-extern uintptr_t D_8015F580;
+extern mk64_surface_map_ram *D_8015F580;
 extern s32 gCCSelection;
 
 #endif

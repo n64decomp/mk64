@@ -991,12 +991,12 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     sp40 = temp_f2;
     sp90 = -player->boundingBoxSize;
     func_802B63B8(&sp8C, (f32 (*)[3]) &sp5C[0]);
-    sp80 = player->boundingBoxCorners[0].cornerX;
-    sp84 = player->boundingBoxCorners[0].cornerY;
-    sp88 = player->boundingBoxCorners[0].cornerZ;
-    player->boundingBoxCorners[0].cornerX = sp8C + player->pos[0];
-    player->boundingBoxCorners[0].cornerY = sp90 + player->pos[1];
-    player->boundingBoxCorners[0].cornerZ = sp94 + player->pos[2];
+    sp80 = player->boundingBoxCorners[0].cornerPos[0];
+    sp84 = player->boundingBoxCorners[0].cornerPos[1];
+    sp88 = player->boundingBoxCorners[0].cornerPos[2];
+    player->boundingBoxCorners[0].cornerPos[0] = sp8C + player->pos[0];
+    player->boundingBoxCorners[0].cornerPos[1] = sp90 + player->pos[1];
+    player->boundingBoxCorners[0].cornerPos[2] = sp94 + player->pos[2];
     func_802AFA34(player, player->boundingBoxCorners, sp80, sp84, sp88);
     temp_f14 = -sp48;
     temp_f2_2 = (f64) temp_f14;
@@ -1006,12 +1006,12 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     sp94 = sp40;
     sp90 = -player->boundingBoxSize;
     func_802B63B8(&sp8C, (f32 (*)[3]) &sp5C[0]);
-    sp80 = player->boundingBoxCorners[1].cornerX;
-    sp84 = player->boundingBoxCorners[1].cornerY;
-    sp88 = player->boundingBoxCorners[1].cornerZ;
-    player->boundingBoxCorners[1].cornerX = sp8C + player->pos[0];
-    player->boundingBoxCorners[1].cornerY = sp90 + player->pos[1];
-    player->boundingBoxCorners[1].cornerZ = sp94 + player->pos[2];
+    sp80 = player->boundingBoxCorners[1].cornerPos[0];
+    sp84 = player->boundingBoxCorners[1].cornerPos[1];
+    sp88 = player->boundingBoxCorners[1].cornerPos[2];
+    player->boundingBoxCorners[1].cornerPos[0] = sp8C + player->pos[0];
+    player->boundingBoxCorners[1].cornerPos[1] = sp90 + player->pos[1];
+    player->boundingBoxCorners[1].cornerPos[2] = sp94 + player->pos[2];
     func_802AFA34(player, &player->boundingBoxCorners[1], sp80, sp84, sp88);
     temp_f12 = sp34 + 4.0f;
     sp8C = (f32) (sp38 - 2.6);
@@ -1019,23 +1019,23 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     sp40 = temp_f12;
     sp90 = -player->boundingBoxSize;
     func_802B63B8(&sp8C, (f32 (*)[3]) &sp5C[0]);
-    sp80 = player->boundingBoxCorners[2].cornerX;
-    sp84 = player->boundingBoxCorners[2].cornerY;
-    sp88 = player->boundingBoxCorners[2].cornerZ;
-    player->boundingBoxCorners[2].cornerX = sp8C + player->pos[0];
-    player->boundingBoxCorners[2].cornerY = sp90 + player->pos[1];
-    player->boundingBoxCorners[2].cornerZ = sp94 + player->pos[2];
+    sp80 = player->boundingBoxCorners[2].cornerPos[0];
+    sp84 = player->boundingBoxCorners[2].cornerPos[1];
+    sp88 = player->boundingBoxCorners[2].cornerPos[2];
+    player->boundingBoxCorners[2].cornerPos[0] = sp8C + player->pos[0];
+    player->boundingBoxCorners[2].cornerPos[1] = sp90 + player->pos[1];
+    player->boundingBoxCorners[2].cornerPos[2] = sp94 + player->pos[2];
     func_802AFA34(player, &player->boundingBoxCorners[2], sp80, sp84, sp88);
     sp8C = (f32) (sp28 + 2.6);
     sp94 = sp40;
     sp90 = -player->boundingBoxSize;
     func_802B63B8(&sp8C, (f32 (*)[3]) &sp5C[0]);
-    sp80 = player->boundingBoxCorners[3].cornerX;
-    sp84 = player->boundingBoxCorners[3].cornerY;
-    sp88 = player->boundingBoxCorners[3].cornerZ;
-    player->boundingBoxCorners[3].cornerX = sp8C + player->pos[0];
-    player->boundingBoxCorners[3].cornerY = sp90 + player->pos[1];
-    player->boundingBoxCorners[3].cornerZ = sp94 + player->pos[2];
+    sp80 = player->boundingBoxCorners[3].cornerPos[0];
+    sp84 = player->boundingBoxCorners[3].cornerPos[1];
+    sp88 = player->boundingBoxCorners[3].cornerPos[2];
+    player->boundingBoxCorners[3].cornerPos[0] = sp8C + player->pos[0];
+    player->boundingBoxCorners[3].cornerPos[1] = sp90 + player->pos[1];
+    player->boundingBoxCorners[3].cornerPos[2] = sp94 + player->pos[2];
     func_802AFA34(player, &player->boundingBoxCorners[3], sp80, sp84, sp88);
     if (!(player->unk_0BC & 8)) {
         move_f32_towards(&player->unk_230, (player->boundingBoxCorners[0].cornerGroundY + player->boundingBoxCorners[2].cornerGroundY) / 2.0f, 0.5f);
@@ -1124,27 +1124,27 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     temp_t7 = (temp_v1 + 0x2000) & 0xFFFF;
     sp28 = temp_t7;
     sp3A = temp_v1;
-    player->boundingBoxCorners[0].cornerZ = (coss((u16) temp_t7) * var_f20) + arg3;
+    player->boundingBoxCorners[0].cornerPos[2] = (coss((u16) temp_t7) * var_f20) + arg3;
     temp_f12 = (sins((u16) sp28) * var_f20) + arg1;
-    player->boundingBoxCorners[0].cornerX = temp_f12;
-    player->boundingBoxCorners[0].cornerGroundY = func_802ABE30(temp_f12, arg2, player->boundingBoxCorners[0].cornerZ, player->unk_110.unk3A);
+    player->boundingBoxCorners[0].cornerPos[0] = temp_f12;
+    player->boundingBoxCorners[0].cornerGroundY = func_802ABE30(temp_f12, arg2, player->boundingBoxCorners[0].cornerPos[2], player->unk_110.unk3A);
     temp_t8 = (sp3A - 0x2000) & 0xFFFF;
     sp28 = temp_t8;
-    player->boundingBoxCorners[1].cornerZ = (coss((u16) temp_t8) * var_f20) + arg3;
+    player->boundingBoxCorners[1].cornerPos[2] = (coss((u16) temp_t8) * var_f20) + arg3;
     temp_f12_2 = (sins((u16) sp28) * var_f20) + arg1;
-    player->boundingBoxCorners[1].cornerX = temp_f12_2;
-    player->boundingBoxCorners[1].cornerGroundY = func_802ABE30(temp_f12_2, arg2, player->boundingBoxCorners[1].cornerZ, player->unk_110.unk3A);
+    player->boundingBoxCorners[1].cornerPos[0] = temp_f12_2;
+    player->boundingBoxCorners[1].cornerGroundY = func_802ABE30(temp_f12_2, arg2, player->boundingBoxCorners[1].cornerPos[2], player->unk_110.unk3A);
     temp_t9 = (sp3A + 0x6000) & 0xFFFF;
     sp28 = temp_t9;
-    player->boundingBoxCorners[2].cornerZ = (coss((u16) temp_t9) * var_f20) + arg3;
+    player->boundingBoxCorners[2].cornerPos[2] = (coss((u16) temp_t9) * var_f20) + arg3;
     temp_f12_3 = (sins((u16) sp28) * var_f20) + arg1;
-    player->boundingBoxCorners[2].cornerX = temp_f12_3;
-    player->boundingBoxCorners[2].cornerGroundY = func_802ABE30(temp_f12_3, arg2, player->boundingBoxCorners[2].cornerZ, player->unk_110.unk3A);
+    player->boundingBoxCorners[2].cornerPos[0] = temp_f12_3;
+    player->boundingBoxCorners[2].cornerGroundY = func_802ABE30(temp_f12_3, arg2, player->boundingBoxCorners[2].cornerPos[2], player->unk_110.unk3A);
     temp_t0 = (sp3A - 0x6000) & 0xFFFF;
     sp28 = temp_t0;
-    player->boundingBoxCorners[3].cornerZ = (coss((u16) temp_t0) * var_f20) + arg3;
-    player->boundingBoxCorners[3].cornerX = (sins((u16) sp28) * var_f20) + arg1;
-    player->boundingBoxCorners[3].cornerGroundY = func_802ABE30(player->boundingBoxCorners[2].cornerX, arg2, player->boundingBoxCorners[2].cornerZ, player->unk_110.unk3A);
+    player->boundingBoxCorners[3].cornerPos[2] = (coss((u16) temp_t0) * var_f20) + arg3;
+    player->boundingBoxCorners[3].cornerPos[0] = (sins((u16) sp28) * var_f20) + arg1;
+    player->boundingBoxCorners[3].cornerGroundY = func_802ABE30(player->boundingBoxCorners[2].cornerPos[0], arg2, player->boundingBoxCorners[2].cornerPos[2], player->unk_110.unk3A);
     if ((player->unk_0BC & 8) != 8) {
         temp_f0 = player->boundingBoxCorners[0].cornerGroundY;
         temp_f2 = player->boundingBoxCorners[2].cornerGroundY;
@@ -1958,59 +1958,37 @@ void func_8002BB9C(Player *player, f32 *arg1, f32 *arg2, f32 *arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002BB9C.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern ? D_800E3CAC;
-extern ? D_800E3CC8;
+#ifdef NEEDS_RODATA
+// data_0DD0A0_2.s
+// extern s32 D_800E3CAC;
+// extern s32 D_800E3CC8;
 
-void func_8002BD58(void *arg0) {
-    ? sp2C;
-    ? spC;
+void func_8002BD58(Player *player) {
+    s32 sp2C[7] = { 0x002f0000, 0x00300000, 0x00310000, 0x00320000, 0x00320000, 0x00320000, 0x00320000 };
+    s32  spC[8] = { 0x00280000, 0x002c0000, 0x00300000, 0x00320000, 0x00320000, 0x00320000, 0x00320000, 0x00320000 };
     s16 temp_t5;
-    s16 temp_v0;
-    s32 phi_v0;
 
-    sp2C.unk0 = D_800E3CAC.unk0;
-    sp2C.unk4 = D_800E3CAC.unk4;
-    sp2C.unk8 = D_800E3CAC.unk8;
-    sp2C.unkC = D_800E3CAC.unkC;
-    sp2C.unk10 = D_800E3CAC.unk10;
-    sp2C.unk14 = D_800E3CAC.unk14;
-    sp2C.unk18 = D_800E3CAC.unk18;
-    spC.unk0 = D_800E3CC8.unk0;
-    spC.unk4 = D_800E3CC8.unk4;
-    spC.unk8 = D_800E3CC8.unk8;
-    spC.unkC = D_800E3CC8.unkC;
-    spC.unk10 = D_800E3CC8.unk10;
-    spC.unk14 = D_800E3CC8.unk14;
-    spC.unk18 = D_800E3CC8.unk18;
-    spC.unk1C = D_800E3CC8.unk1C;
-    temp_v0 = arg0->unk234;
-    if (temp_v0 >= 0) {
-        if ((temp_v0 >= 5) && (temp_v0 < 0x1E)) {
-            arg0->unk7C = *(&sp2C + ((temp_v0 / 6) * 4));
+    if (player->unk_234 >= 0) {
+        if ((player->unk_234 >= 5) && (player->unk_234 < 0x1E)) {
+            player->unk_07C = sp2C[player->unk_234 / 6];
         }
-        if ((temp_v0 >= 0x1E) && (temp_v0 < 0x50)) {
-            arg0->unk7C = *(&spC + (((temp_v0 - 0x1E) / 0xC) * 4));
+        if ((player->unk_234 >= 0x1E) && (player->unk_234 < 0x50)) {
+            player->unk_07C = spC[(s32) (player->unk_234 - 0x1E) / 12];
         }
-        if (((temp_v0 < 0x50) || (temp_v0 >= 0x5B)) && (temp_v0 >= 0x5B) && (temp_v0 < 0xA1)) {
-            arg0->unk7C = sp10;
-            return;
+        if (((player->unk_234 < 0x50) || (player->unk_234 >= 0x5B)) && (player->unk_234 >= 0x5B) && (player->unk_234 < 0xA1)) {
+            player->unk_07C = spC[1];
         }
-        // Duplicate return node #23. Try simplifying control flow for better match
-        return;
-    }
-    temp_t5 = temp_v0 * -1;
-    if ((temp_v0 < -4) && (temp_v0 >= -0x1E)) {
-        arg0->unk7C = *(&sp2C + ((temp_t5 / 6) * 4)) * -1;
-    }
-    phi_v0 = arg0->unk234;
-    if ((arg0->unk234 < -0x1E) && (arg0->unk234 >= -0x50)) {
-        arg0->unk7C = *(&spC + (((temp_t5 - 0x1E) / 0xC) * 4)) * -1;
-        phi_v0 = arg0->unk234;
-    }
-    if (((phi_v0 >= -0x50) || (phi_v0 < -0x5A)) && (phi_v0 < -0x5A) && (phi_v0 >= -0xA0)) {
-        arg0->unk7C = sp10 * -1;
+    } else {
+        temp_t5 = -player->unk_234;
+        if ((player->unk_234 < -4) && (player->unk_234 >= -0x1E)) {
+            player->unk_07C = sp2C[temp_t5 / 6] * -1;
+        }
+        if ((player->unk_234 < -0x1E) && (player->unk_234 >= -0x50)) {
+            player->unk_07C = spC[(s32) (temp_t5 - 0x1E) / 12] * -1;
+        }
+        if (((player->unk_234 >= -0x50) || (player->unk_234 < -0x5A)) && (player->unk_234 < -0x5A) && (player->unk_234 >= -0xA0)) {
+            player->unk_07C = spC[1] * -1;
+        }
     }
 }
 #else
@@ -6789,13 +6767,12 @@ void func_80038BE4(Player *player, s16 arg1) {
 }
 
 #ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-void func_80029B4C(Player *, f32, f32, f32);           /* extern */
-void func_8002AE38(Player *, s8, f32, f32, f32, f32);  /* extern */
-void func_8002C4F8(Player *, s8);                      /* extern */
-void func_8002C954(Player *, s8, f32 *);               /* extern */
-void func_8002CD48(Player *, s8, s8);                  /* extern */
-void func_802B6540(f32 *, f32, f32, f32, s32);         /* extern */
+//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
+? func_80029B4C(Player *, f32, f32, f32);           /* extern */
+? func_8002AE38(Player *, s8, f32, f32, f32, f32);  /* extern */
+? func_8002C4F8(Player *, s8);                      /* extern */
+? func_8002C954(Player *, s8, f32 *);               /* extern */
+? func_8002CD48(Player *, s8, s8);                  /* extern */
 static ? D_800E4328;                                /* unable to generate initializer */
 static ? D_800E4334;                                /* unable to generate initializer */
 static ? D_800E4340;                                /* unable to generate initializer */
@@ -6916,7 +6893,7 @@ void func_80038C6C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     player->unk_058 = 0.0f;
     player->unk_060 = 0.0f;
     player->unk_05C = 1.0f;
-    func_802B6540(sp50, 0.0f, 1.0f, 0.0f, (s32) player->unk_02E);
+    func_802B6540((f32 (*)[3]) sp50, 0.0f, 1.0f, 0.0f, (s16) (s32) player->unk_02E);
     player->unk_0BC |= 8;
     player->unk_0C2 += 1;
     sp98 = player->unk_110.unk3C[2];
@@ -6931,19 +6908,19 @@ void func_80038C6C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     if (sp98 <= 0.0f) {
         func_8003F46C(player, &sp7C, &sp88, &sp108, &sp98, &spEC, &spE8, &spE4);
     }
-    sp98 = player->unk_110.unk3C;
+    sp98 = player->unk_110.unk3C[0];
     if (sp98 < 0.0f) {
         func_8003F734(player, &sp7C, &sp88, &sp98, &spEC, &spE8, &spE4);
         func_8002C954(player, arg3, &sp88);
     }
-    sp98 = player->unk_110.unk40;
+    sp98 = player->unk_110.unk3C[1];
     if (sp98 < 0.0f) {
         func_8003FBAC(player, &sp7C, &sp88, &sp98, &spEC, &spE8, &spE4);
         func_8002C954(player, arg3, &sp88);
     }
-    sp98 = player->unk_110.unk3C;
+    sp98 = player->unk_110.unk3C[0];
     if (sp98 >= 0.0f) {
-        sp98 = player->unk_110.unk40;
+        sp98 = player->unk_110.unk3C[1];
         if (sp98 >= 0.0f) {
             player->unk_046 &= 0xFFDF;
         }

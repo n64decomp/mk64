@@ -13,8 +13,6 @@ union GrandPrixPointsUnion
 
 /* Function Prototypes */
 
-s32 func_800B5020(u32 time, s32 charId);
-
 void func_800B45E0(s32);
 void write_save_data_grand_prix_points_and_sound_mode();
 void func_800B46D0(void);
@@ -34,6 +32,7 @@ s32  func_800B4FB0(s32);
 void func_800B5404(s32, s32);
 u8   func_800B54C0(s32, s32);
 u8   func_800B54EC(s32, s32);
+s32  func_800B5020(u32 time, s32 charId);
 u8   func_800B5508(s32, s32, s32);
 s32  func_800B5530(s32);
 s32  func_800B555C();
