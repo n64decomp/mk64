@@ -9,11 +9,22 @@
 C Files left: ~22 out of 35
 # Mario Kart 64
 
-This repo contains a work-in-progress decompilation of Mario Kart 64 (U). The project pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information.
+This repo contains a work-in-progress decompilation of Mario Kart 64 (U) and an in-progress dissassembly of the European 1.0 version. The project pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information.
 
 It builds the following ROM:
 
 * mk64.us.z64 `sha1: 579c48e211ae952530ffc8738709f078d5dd215e`
+
+And splits the following ROM:
+
+* mk64.eu.z64 `sha1: a729039453210b84f17019dda3f248d5888f7690`
+
+EU is in an experimental state that does not interact with the build system.
+Splitting requires [splat](https://github.com/ethteck/splat), using:
+```
+python3 tools/splat/split.py mk64.eu1.yaml
+```
+
 
 This repository does not contain assets. Compiling requires asset extraction from a prior copy of the game.
 
