@@ -191,9 +191,7 @@ typedef struct {
 } mk64_surface_map_ram; // size = 0x2C
 
 typedef struct {
-    /* 0x00 */ f32 cornerX;
-    /* 0x04 */ f32 cornerY;
-    /* 0x08 */ f32 cornerZ;
+    /* 0x00 */ Vec3f cornerPos;
     // Type of surface the corner is above
     /* 0x0C */ u8  surfaceType;
     // Close to being a copy of the top byte of the surface_map "flag" member
@@ -201,7 +199,7 @@ typedef struct {
     // Don't know if "tile" is right the right term
     // D_8015F580 is a pointer to an array of "tile" structs. This is an index to that array
     /* 0x0E */ u16 surfaceMapIndex;
-    // cornerX/Y/Z place the corner "in the air" as it were, this member indicates the Y position of the corner's "on the ground" sibling
+    // cornerPos places the corner "in the air" as it were, this member indicates the Y position of the corner's "on the ground" sibling
     // On flat ground this value should be cornerY - gKartBoundingBoxTable[characterId]
     /* 0x10 */ f32 cornerGroundY;
     // Something lighting related. 1 when in a shaded region, 2 when in a tree's shadow
@@ -215,13 +213,13 @@ typedef struct {
 #define BACK_RIGHT_TYRE  3
 
 typedef struct {
-    /* 0x0000 */ u16 unk_000;
+    /* 0x0000 */ u16 unk_000; // playerType?
     /* 0x0002 */ u16 unk_002;
     /* 0x0004 */ s16 currentRank;
     /* 0x0006 */ u16 unk_006;
     /* 0x0008 */ s16 lapCount;
     /* 0x000A */ char unk_00A[0x2];
-    /* 0x000C */ s32 unk_00C;
+    /* 0x000C */ s32 statusEffects; // Bitflag.
     /* 0x0010 */ s16 unk_010;
     /* 0x0012 */ s16 unk_012;
     /* 0x0014 */ Vec3f pos;
@@ -274,7 +272,14 @@ typedef struct {
     /* 0x00C6 */ s16 unk_0C6;
     /* 0x00C8 */ s16 unk_0C8;
     /* 0x00CA */ s16 unk_0CA;
-    /* 0x00CC */ char unk_0CC[0x10];
+    /* 0x00CC */ s16 unk_0CC;
+    /* 0x00CE */ s16 unk_0CE;
+    /* 0x00D0 */ s16 unk_0D0;
+    /* 0x00D2 */ s16 unk_0D2;
+    /* 0x00D4 */ s16 unk_0D4;
+    /* 0x00D6 */ s16 unk_0D6;
+    /* 0x00D8 */ s16 unk_0D8;
+    /* 0x00DA */ s16 unk_0DA;
     /* 0x00DC */ s16 boostTimer;
     /* 0x00DE */ u16 unk_0DE;
     /* 0x00E0 */ s16 unk_0E0;
@@ -286,8 +291,8 @@ typedef struct {
     /* 0x00F4 */ f32 kartHopAcceleration;
     /* 0x00F8 */ u16 unk_0F8;
     /* 0x00FA */ s16 unk_0FA;
-    /* 0x00FC */ f32 unk_0FC;
-    /* 0x0100 */ f32 unk_100;
+    /* 0x00FC */ f32 kartFriction;
+    /* 0x0100 */ f32 kartGravity;
     /* 0x0104 */ f32 unk_104;
     /* 0x0108 */ f32 unk_108;
     /* 0x010C */ s16 unk_10C;

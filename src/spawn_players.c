@@ -6,20 +6,24 @@
 #include "framebuffers.h"
 #include "kart_dma.h"
 #include "camera.h"
+#include "math_util.h"
 #include "code_80027D00.h"
+#include "code_80057C60.h"
+#include "render_courses.h"
 #include "spawn_players.h"
 
-void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, f32 arg5, u16 arg6, s16 arg7) {
+// arg4 is height? Or something like that?
+void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingColumn, f32 arg4, f32 arg5, u16 characterId, s16 playerType) {
     f32 ret;
     s8 idx;
 
     player->unk_000 = PLAYER_INACTIVE;
     player->unk_08C = 0;
-    player->characterId = arg6;
+    player->characterId = characterId;
     player->unk_0B6 = 0;
-    player->unk_0FC = gKartFrictionTable[player->characterId];
+    player->kartFriction = gKartFrictionTable[player->characterId];
     player->boundingBoxSize = gKartBoundingBoxSizeTable[player->characterId];
-    player->unk_100 = gKartGravityTable[player->characterId];
+    player->kartGravity = gKartGravityTable[player->characterId];
 
     switch (gModeSelection) {
         case GRAND_PRIX:
@@ -46,18 +50,18 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
             break;
     }
 
-    player->pos[0] = arg2;
-    ret = func_802AE1C0(arg2, arg4 + 50.0f, arg3) + player->boundingBoxSize;
-    player->pos[2] = arg3;
+    player->pos[0] = startingRow;
+    ret = func_802AE1C0(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;
+    player->pos[2] = startingColumn;
     player->pos[1] = ret;
-    player->rotX = arg2;
+    player->rotX = startingRow;
     player->rotY = ret;
 
     D_80164510[playerIndex] = ret;
 
 
     player->unk_02C[0] = 0;
-    player->rotZ = arg3;
+    player->rotZ = startingColumn;
     player->unk_05C = 1.0f;
     player->unk_058 = 0.0f;
     player->unk_060 = 0.0f;
@@ -79,7 +83,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->unk_090 = 0.0f;
     player->unk_094 = 0.0f;
     player->unk_074 = 0.0f;
-    player->unk_000 = arg7;
+    player->unk_000 = playerType;
     player->unk_0CA = 0;
     player->unk_0DE = 0;
     player->unk_10C = 0;
@@ -92,7 +96,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->unk_DAC = 0.0f;
     player->unk_044 = 0;
     player->unk_046 = 0;
-    player->unk_00C = 0;
+    player->statusEffects = 0;
     player->unk_0C6 = 0xFF;
 
 
@@ -255,21 +259,21 @@ void spawn_player(Player *player, s8 playerIndex, f32 arg2, f32 arg3, f32 arg4, 
     player->unk_110.unk38 = 0;
     player->unk_110.unk3A = 0;
 
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerX = 0.0f;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerY = 0.0f;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerZ = 0.0f;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerPos[0] = 0.0f;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerPos[1] = 0.0f;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerPos[2] = 0.0f;
 
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerX = 0.0f;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerY = 0.0f;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerZ = 0.0f;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerPos[0] = 0.0f;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerPos[1] = 0.0f;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerPos[2] = 0.0f;
 
-    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerX = 0.0f;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerY = 0.0f;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerZ = 0.0f;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerPos[0] = 0.0f;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerPos[1] = 0.0f;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerPos[2] = 0.0f;
 
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerX = 0.0f;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerY = 0.0f;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerZ = 0.0f;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerPos[0] = 0.0f;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerPos[1] = 0.0f;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerPos[2] = 0.0f;
 
     player->boundingBoxCorners[ FRONT_LEFT_TYRE].cornerGroundY = 0.0f;
     player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerGroundY = 0.0f;

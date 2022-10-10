@@ -7,7 +7,6 @@ void mio0decode(u8* arg0, u8* arg1);
 
 void func_8000F2DC(void);
 void func_8000F628(void);
-void func_802B6540(f32* arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4);
 void func_8006B7E4(Player* player, s32 arg1);
 void func_800267AC(Player* player, s8 arg1, s8 arg2);
 void func_8005D290(void);

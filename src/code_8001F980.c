@@ -1822,7 +1822,7 @@ void func_800248D0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
         gDisplayListHead = temp_v0_24 + 8;
         temp_v0_24->words.w0 = 0xB900031D;
         temp_v0_24->words.w1 = 0x00505978;
-    } else if (((player->unk_0CA & 4) == 4) || (temp_v0_25 = player->unk_00C, ((temp_v0_25 * 0x10) < 0)) || (temp_v0_25 & 0x04000000)) {
+    } else if (((player->unk_0CA & 4) == 4) || (temp_v0_25 = player->statusEffects, ((temp_v0_25 * 0x10) < 0)) || (temp_v0_25 & 0x04000000)) {
         temp_v0_26 = gDisplayListHead;
         gDisplayListHead = temp_v0_26 + 8;
         temp_v0_26->words.w0 = 0x01020040;

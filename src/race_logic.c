@@ -630,7 +630,7 @@ void func_8028EF28(void) {
                                 }
                                 D_800DC510 = 5;
                                 i = D_8015F8F2[0];
-                                gPlayers[i].unk_00C |= 0x200000;
+                                gPlayers[i].statusEffects |= 0x200000;
                                 gPlayers[i].unk_000 |= PLAYER_CPU;
                                 func_800CA118((u8)i);
                                 break;
@@ -648,7 +648,7 @@ void func_8028EF28(void) {
                                     if (*(gNmiUnknown2 + i * 3 + 2) > 99) {
                                         *(gNmiUnknown2 + i * 3 + 2) = 99;
                                     }
-                                    gPlayers[i].unk_00C |= 0x200000;
+                                    gPlayers[i].statusEffects |= 0x200000;
                                     gPlayers[i].unk_000 |= PLAYER_CPU;
                                     func_800CA118((u8)i);
                                 }
@@ -663,7 +663,7 @@ void func_8028EF28(void) {
                                 if (currentPosition == 2) {
                                     D_800DC510 = 5;
                                     i = D_8015F8F2[2];
-                                    gPlayers[i].unk_00C |= 0x200000;
+                                    gPlayers[i].statusEffects |= 0x200000;
                                     gPlayers[i].unk_000 |= PLAYER_CPU;
                                     func_800CA118((u8)i);
                                 }
@@ -1262,14 +1262,14 @@ void func_802903D8(Player *player_one, Player *player_two) {
                 func_800C9060(((s32) (player_two - gPlayerOne) / 3544) & 0xFF, 0x19008001U);
                 return;
             }
-            player_two->unk_00C |= 0x400000;
+            player_two->statusEffects |= 0x400000;
             sp70 = temp_f0;
             func_8008FC1C(player_one);
             func_800C9060(((s32) (player_two - gPlayerOne) / 3544) & 0xFF, 0x19008001U);
             goto block_8;
         }
         if (player_two->unk_000 & 0x40) {
-            player_one->unk_00C |= 0x400000;
+            player_one->statusEffects |= 0x400000;
             func_8008FC1C(player_two);
             func_800C9060(((s32) (player_one - gPlayerOne) / 3544) & 0xFF, 0x19008001U);
             return;
@@ -1278,10 +1278,10 @@ block_8:
         temp_v0 = player_one->unk_0BC;
         if (temp_v0 & 0x200) {
             if (!(player_two->unk_0BC & 0x200)) {
-                player_two->unk_00C |= 0x01000000;
+                player_two->statusEffects |= 0x01000000;
             }
         } else if (player_two->unk_0BC & 0x200) {
-            player_one->unk_00C |= 0x01000000;
+            player_one->statusEffects |= 0x01000000;
         } else {
             player_one->unk_0BC = temp_v0 | 0x8000;
             player_two->unk_0BC |= 0x8000;
