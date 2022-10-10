@@ -188,6 +188,9 @@ void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, 
 }
 
 void main_func(void) {
+#if defined(VERSION_EU)
+    osTvType = TV_TYPE_PAL;
+#endif
     osInitialize();
     create_thread(&gIdleThread, 1, &thread1_idle, NULL, gIdleThreadStack + ARRAY_COUNT(gIdleThreadStack), 100);
     osStartThread(&gIdleThread);
@@ -198,11 +201,15 @@ void main_func(void) {
  */
 void thread1_idle(void *arg) {
     osCreateViManager(OS_PRIORITY_VIMGR);
+#if defined(VERSION_EU)
+    osViSetMode(&osViModeTable[OS_VI_PAL_LAN1]);
+#else // VERSION_US
     if (osTvType == TV_TYPE_NTSC) {
         osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);
     } else {
         osViSetMode(&osViModeTable[OS_VI_MPAL_LAN1]);
     }
+#endif
     osViBlack(TRUE);
     osViSetSpecialFeatures(OS_VI_GAMMA_OFF);
     osCreatePiManager(OS_PRIORITY_PIMGR, &gPIMesgQueue, gPIMesgBuf, ARRAY_COUNT(gPIMesgBuf));
@@ -213,7 +220,7 @@ void thread1_idle(void *arg) {
     osStartThread(&gVideoThread);
     osSetThreadPri(NULL, 0);
 
-    // halt
+    // Halt
     while (TRUE);
 }
 
