@@ -7,6 +7,7 @@
 #include <variables.h>
 #include <config.h>
 #include "camera.h"
+#include "common_textures.h"
 #include "skybox_and_splitscreen.h"
 
 Vp D_802B8880[] = {

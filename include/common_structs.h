@@ -128,8 +128,7 @@ typedef struct {
     /* 0x20 */ s16 unk_020;
     /* 0x22 */ s16 unk_022;
     /* 0x24 */ f32 unk_024;
-    /* 0x28 */ s16 unk_028;
-    /* 0x2A */ s16 unk_02A;
+    /* 0x28 */ f32 unk_028;
     /* 0x2C */ s16 unk_02C;
     /* 0x2E */ s16 unk_02E;
     /* 0x30 */ s16 unk_030;

@@ -91,14 +91,29 @@ void func_8005D794(Player*, UnkPlayerStruct258*, f32, f32, f32, s8, s8);
 void func_8005D7D8(UnkPlayerStruct258*, s8, f32);
 void func_8005D800(UnkPlayerStruct258*, s32, s16);
 void func_8005D82C(UnkPlayerStruct258*, s32, s16);
-void func_8005D898(Player*, s16, s8, s8);
+void func_8005D898(Player*, s16, s32, s8, s8);
+void func_8005DA30(Player*, s16, s32, s8, s8);
 void func_8005DAD0();
 void func_8005DAD8(UnkPlayerStruct258*, s16, s16, s16);
+
+void func_80060BCC(Player*, s16, s32, s32);
 void func_80060F50(Player*, s16, s8, s8);
+
 void func_80061094(Player*, s16, s8, s8);
-void func_80061130(Player*, s16, s8, s8);
+void func_80061130(Player*, s16, s32, s8, s8);
+void func_80061224(Player*, s16, s32, s8, s8);
+void func_800612F8(Player*, s32, s32, s32);
+void func_80061430(Player*, s32, s32, s32);
+void func_800615AC(Player*, s16, s32, s32);
+void func_80061754(Player*, s16, s32, s32, s32);
+void func_8006199C(Player*, s16, s32, s8, s8);
+void func_80061A34(Player*, s16, s32, s32);
+void func_80061D4C(Player*, s16, s32, s32);
+void func_80061EF4(Player*, s16, s32, s32);
+
 void func_800621BC(Player*, s16, s32, s8);
 void func_80062484(Player*, UnkPlayerStruct258*, s32);
+void func_800624D8(Player*, s32, s32, s32);
 void func_800628C0(Player*, s8, s8, s8);
 void func_80062914(Player*, s8, s8, s8);
 void func_80062968(Player*, s8, s8, s8);
@@ -106,6 +121,7 @@ void func_800629BC(Player*, s8, s8, s8);
 void func_80062A18(Player*, s8, s8, s8);
 void func_80062AA8(Player*, s8, s8, s8);
 void func_80062B18(f32*, f32*, f32*, f32, f32, f32, u16, u16);
+void func_80062C74(Player*, s16, s32, s32);
 void func_80062F98(Player*, s16, s8, s8);
 
 void func_800630C0(Player*, s16, s8, s8);
@@ -116,9 +132,12 @@ void func_800635D4(Player*, s16, s8, s8);
 void func_800639DC(Player*, s16, s8, s8);
 void func_80063BD4(Player*, s16, s8, s8);
 void func_80063D58(Player*, s16, s8, s8);
+void func_80063FBC(Player*, s16, s32, s32);
 
 void func_80064184(Player*, s16, s8, s8);
 void func_800643A8(Player*, s16, s8, s8);
+void func_800644E8(Player*, s16, s32, s32);
+void func_80064664(Player*, s16, s32, s32);
 void func_800647C8(Player*, s16, s8, s8);
 void func_800648E4(Player*, s16, s8, s8);
 void func_80064988(Player*, s16, s8, s8);
@@ -132,6 +151,7 @@ void func_80064F88(Player*, s16, s8, s8);
 void func_80065030(Player*, s16, s8, s8);
 void func_800650FC(Player*, s16, s8, s8);
 void func_800651F4(Player*, s16, s8, s8);
+void func_800652D4(Vec3f, Vec3s, f32);
 void func_800658A0(Player*, s8, s16, s8);
 
 void func_80066998(Player*, s8, s16, s8);
@@ -199,6 +219,7 @@ extern u8 D_801658FF;
 extern struct Controller *gControllerOne;
 extern s32 D_8018D214;
 extern s32 D_8018D2C8[];
+extern uintptr_t D_8018D48C; // Some kind of pointer to some decoded texture(s)
 
 extern u16 gPlayerBalloonStatus[8][3]; // D_8018D5F0
 extern s16 gPlayerBalloonCount[];      // D_8018D8C0

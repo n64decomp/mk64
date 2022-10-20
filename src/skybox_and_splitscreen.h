@@ -73,7 +73,6 @@ extern s32 D_801625EC;
 extern s32 D_801625F0;
 extern s32 D_801625F4;
 extern u16 D_800DC5BC;
-extern Mtx *D_0D008E98;
 extern struct GfxPool *gGfxPool;
 extern f32 D_80150130[];
 extern u16 D_800DC5B4;
