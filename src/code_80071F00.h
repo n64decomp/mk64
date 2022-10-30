@@ -5,9 +5,9 @@
 #include "camera.h"
 
 s32  find_unused_obj_index(s32*);
-void func_80071F6C(s32);
+void func_80071F6C(s32*);
 s32  func_80072044(s32*, s32*, s32);
-void func_80072100(s32);
+void func_80072100(s32*);
 void func_800721C0(s32, s32);
 void func_800721E8(s32, s32);
 void func_80072214(s32, s32);
@@ -126,11 +126,16 @@ void func_80076E14(s32);
 void func_80076ED8(s32);
 void func_800773D8(s32, s32);
 void func_80077428(s32);
+void func_80077450(s32);
+void func_80077584(s32);
 void func_80077640();
+void func_80077700(s32, Vec3f, s32);
 void func_80077AB0(Vec3f, s32);
 void func_80077B14(s32);
 void func_80077B3C(s32);
 void func_80077BCC(s32);
+void func_80077E20(s32);
+void func_80078220(s32);
 void func_80078C68();
 void func_80078C70(s32);
 void func_80078F64();
@@ -167,6 +172,7 @@ void func_800806BC(s32);
 void func_8008078C(s32);
 void func_8008085C(s32);
 void func_80080A14(s32, Player*);
+void func_80080A4C(s32, s32);
 void func_80081208();
 void func_80081210();
 void func_80081790(s32);
