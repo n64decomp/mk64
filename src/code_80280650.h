@@ -76,6 +76,7 @@ f32  func_80280850(f32);
 void func_80280884();
 void func_8028093C(struct UnkStruct_80280658*);
 void func_80280A28(Vec3f, Vec3s, f32 );
+void func_80280B50(Vec3f, f32, s32, s16);
 void func_80280FA0(s32);
 void func_80280FA8(s32);
 void func_80280FB0();

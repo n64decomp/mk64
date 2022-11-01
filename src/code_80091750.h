@@ -155,9 +155,12 @@ void func_800A11D0(struct_8018D9E0_entry*, s32, s32);
 void func_800A15EC(struct_8018D9E0_entry*);
 void func_800A1924(struct_8018D9E0_entry*);
 void func_800A1A20(struct_8018D9E0_entry*);
+void func_800A1F30(struct_8018D9E0_entry*);
+void func_800A2D1C(struct_8018D9E0_entry*);
 void func_800A3C84(struct_8018D9E0_entry*);
 void func_800A4550(s32, s32, s32);
 void func_800A474C(s32, s32, s32);
+void func_800A4A24(struct_8018D9E0_entry*);
 void func_800A4B38(struct_8018D9E0_entry*);
 void func_800A4BC8(struct_8018D9E0_entry*);
 void func_800A4EF8(struct_8018D9E0_entry*);
@@ -165,6 +168,7 @@ void func_800A5084(struct_8018D9E0_entry*);
 void func_800A5360(struct_8018D9E0_entry*);
 void func_800A54EC();
 void func_800A6034(struct_8018D9E0_entry*);
+void func_800A70E8(struct_8018D9E0_entry*);
 void func_800A7258(struct_8018D9E0_entry*);
 void func_800A72FC(struct_8018D9E0_entry*);
 void func_800A7448(struct_8018D9E0_entry*);
@@ -203,7 +207,12 @@ void func_800AB020(struct_8018D9E0_entry*);
 void func_800AB098(struct_8018D9E0_entry*);
 void func_800AB260(struct_8018D9E0_entry*);
 void func_800AB290(struct_8018D9E0_entry*);
+void func_800ABF68(struct_8018D9E0_entry*);
+void func_800AC128(struct_8018D9E0_entry*);
+void func_800AC324(struct_8018D9E0_entry*);
 void func_800AC978(struct_8018D9E0_entry*);
+void func_800AD1A4(struct_8018D9E0_entry*);
+void func_800AEC54(struct_8018D9E0_entry*);
 void func_800AEE90(struct_8018D9E0_entry*);
 void func_800AEEBC(struct_8018D9E0_entry*);
 void func_800AEEE8(struct_8018D9E0_entry*);
@@ -224,6 +233,8 @@ void func_80057CE4();
 /* This is where I'd put my static data, if I had any */
 
 extern Gfx D_06009410[];
+
+extern s32  D_800DDB24;
 
 extern Gfx *D_800E84CC[];
 extern Gfx *D_800E84EC[];
@@ -271,6 +282,7 @@ extern f32 D_800F24B8;
 extern f64 D_800F24C0;
 extern s32 D_80165754;
 extern s32 D_8018D9B0;
+extern s8  D_8018D9D8;
 extern s8  D_8018D9D9;
 extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE]; // D_8018D9E0
 extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE]; // D_8018DEE0
@@ -294,6 +306,7 @@ extern f32 D_8018EDD0;
 extern f32 D_8018EDD4;
 extern f32 D_8018EDD8;
 extern f32 D_8018EDDC;
+extern s8  D_8018EE08;
 extern s8  D_802874F5;
 
 extern u8 _textures_0aSegmentRomStart[];
