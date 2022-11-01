@@ -6,6 +6,7 @@
 void play_sound2(s32);
 void func_800C8EAC(u16);
 void func_800C8EF8();
+void func_800C9060(u8, u32);
 void func_800C90F4(u8, uintptr_t);
 void func_800CA008(u8, u8);
 void func_800CA0A0();

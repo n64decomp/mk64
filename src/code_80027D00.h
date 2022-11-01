@@ -51,6 +51,8 @@ void func_800332E8(Player*, s32);
 void func_800337CC(Player*, f32, s32);
 void func_80033850(Player*, f32);
 void func_80036C5C(Player*);
+void func_80036CB4(Player*);
+void func_80036DB4(Player*, Vec3f, Vec3f);
 void func_80037614(Player*, Vec3f, Vec3f);
 void func_8003777C(Player*, Vec3f, Vec3f);
 void func_800378E8(Player*, Vec3f, Vec3f);

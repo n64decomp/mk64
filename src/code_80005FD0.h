@@ -82,13 +82,15 @@ void func_80011AE4(s32);
 void func_80012220(VehicleStuff*);
 void func_800122D8();
 void func_80012A48(TrainCarStuff*, s16);
+void func_80012AC0();
+void func_80012DC0(s32, Player*);
+void func_800133C4();
+void func_80013854(Player*);
 f32  func_80013C74(s16, s16);
 void func_80013D20(VehicleStuff*);
 void func_80013F7C(s32, Player*, VehicleStuff*, f32, f32, s32, u32);
 f32  func_800145A8(s16, f32, s16);
 void func_800146B8(s32, s32, VehicleStuff*);
-void func_80012AC0();
-void func_800133C4();
 void func_8001487C();
 void func_800148C4(s32, Player*);
 void func_8001490C(s32);
@@ -103,6 +105,8 @@ void func_80014CC0(s32, Player*);
 void func_80014D08(s32);
 void func_80014D30(s32, s32);
 void func_8001530C();
+void func_80015314(s32, s32, s32);
+void func_80015390(Camera*, Player*, s32);
 void func_8001968C();
 void func_8001C05C();
 void func_80019DE4();
@@ -125,6 +129,9 @@ extern f32 D_800DCA4C[];
 
 // See bss_80005FD0.s
 extern UnkActorInner D_80162E70;
+extern s16 D_80162EB0;
+extern u16 D_801631E0[8];
+extern s32 D_80163488;
 
 extern s32 D_8016337C;
 extern s32 gModeSelection;
