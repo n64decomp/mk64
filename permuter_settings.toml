@@ -15,3 +15,7 @@
 "OS_.*" = "int"
 "SEGMENT_.*" = "int"
 "ACTOR_.*" = "int"
+"A_[A-Z]+" = "int"
+"a[A-Za-z]+" = "void"
+"_SHIFT[LR]" = "void"
+"ALIGN.*" = "int"
