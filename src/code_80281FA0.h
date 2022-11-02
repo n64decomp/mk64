@@ -25,7 +25,7 @@ void func_80282454(Vec3f, Vec3f, f32*, s16*, s16*);
 void func_80282504(Vec3f, Vec3f, f32, s16, s16);
 void func_802825C8(Vec3f, Vec3f, Vec3f, Vec3s);
 s32  func_80282D90(Camera*, s32, s32, s32);
-void func_80282E58(Camera*, s32, s32);
+void func_80282E58(Camera*, s16*, s32);
 void func_80282F00(s16*, s16);
 void func_80283240(s16);
 s32  func_802832C4(void (*)(s32), Camera*, s16, s16);
@@ -117,16 +117,8 @@ extern s32 D_80285BA8;
 extern s32 D_80285C38;
 extern s32 D_80285C74;
 extern s16 D_80285D14;
-extern s16 D_802876D0;
-extern s16 D_802876D2;
 extern s32 D_802876D4;
 extern s32 D_802876D8;
-extern s32 D_802876E0;
-extern s32 D_80287818;
-extern s32 D_80287998;
-extern f32 D_80287B18;
-extern s16 D_80287B1C;
-extern s16 D_80287B1E;
-extern s8  D_80287B20;
+//extern struct credits_data_1FA0 *D_802876E0;
 
 #endif

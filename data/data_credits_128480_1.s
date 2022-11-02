@@ -2,26 +2,26 @@
 
 .data
 
-glabel D_802856B0
-.word 0x42C40000
+#glabel D_802856B0
+#.word 0x42C40000
 
 
-glabel D_802856B4
-.word 0x41400000
+#glabel D_802856B4
+#.word 0x41400000
 
-glabel D_802856B8
-.word 0x42500000
+#glabel D_802856B8
+#.word 0x42500000
 
 
-glabel D_802856BC
-.word 0x42500000
-glabel D_802856C0
-.word 0x00000000
+#glabel D_802856BC
+#.word 0x42500000
+#glabel D_802856C0
+#.word 0x00000000
 
-glabel D_802856C4
-.word 0x00000000, 0x00000000
-.word 0x00000000
-.word 0x00000000
+#glabel D_802856C4
+#.word 0x00000000, 0x00000000
+#.word 0x00000000
+#.word 0x00000000
 
 glabel D_802856D4
 

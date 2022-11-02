@@ -62,91 +62,91 @@ glabel D_80287554
 glabel D_80287560
 .skip 368
 
-glabel D_802876D0
-.skip 2
+#glabel D_802876D0 # Begin 80281fa0.c
+#.skip 2
 
-glabel D_802876D2
-.skip 2
+#glabel D_802876D2
+#.skip 2
 
-glabel D_802876D4
-.skip 4
+#glabel D_802876D4
+#.skip 4
 
-glabel D_802876D8
-.skip 8
+#glabel D_802876D8
+#.skip 8
 
-glabel D_802876E0
-.skip 12
+#glabel D_802876E0
+#.skip 12
 
-glabel D_802876EC
-.skip 12
+#glabel D_802876EC
+#.skip 12
 
-glabel D_802876F8
-.skip 4
+#glabel D_802876F8
+#.skip 4
 
-glabel D_802876FC
-.skip 4
+#glabel D_802876FC
+#.skip 4
 
-glabel D_80287700
-.skip 4
+#glabel D_80287700
+#.skip 4
 
-glabel D_80287704
-.skip 12
+#glabel D_80287704
+#.skip 12
 
-glabel D_80287710
-.skip 12
+#glabel D_80287710
+#.skip 12
 
-glabel D_8028771C
-.skip 12
+#glabel D_8028771C
+#.skip 12
 
-glabel D_80287728
-.skip 6
+#glabel D_80287728
+#.skip 6
 
-glabel D_8028772E
-.skip 6
+#glabel D_8028772E
+#.skip 6
 
-glabel D_80287734
-.skip 6
+#glabel D_80287734
+#.skip 6
 
-glabel D_8028773A
-.skip 6
+#glabel D_8028773A
+#.skip 6
 
-glabel D_80287740
-.skip 4
+#glabel D_80287740
+#.skip 4
 
-glabel D_80287744
-.skip 4
+#glabel D_80287744
+#.skip 4
 
-glabel D_80287748
-.skip 4
+#glabel D_80287748
+#.skip 4
 
-glabel D_8028774C
-.skip 2
+#glabel D_8028774C
+#.skip 2
 
-glabel D_8028774E
-.skip 2
+#glabel D_8028774E
+#.skip 2
 
-glabel D_80287750
-.skip 12
+#glabel D_80287750
+#.skip 12
 
-glabel D_8028775C
-.skip 188
+#glabel D_8028775C # Compiler Generated
+#.skip 188
 
-glabel D_80287818
-.skip 12
+#glabel D_80287818
+#.skip 12
 
-glabel D_80287824
-.skip 372
+#glabel D_80287824 # compiler Gen
+#.skip 372
 
-glabel D_80287998
-.skip 384
+#glabel D_80287998
+#.skip 384
 
-glabel D_80287B18
-.skip 4
+#glabel D_80287B18
+#.skip 4
 
-glabel D_80287B1C
-.skip 2
+#glabel D_80287B1C
+#.skip 2
 
-glabel D_80287B1E
-.skip 2
+#glabel D_80287B1E
+#.skip 2
 
-glabel D_80287B20
+#glabel D_80287B20
