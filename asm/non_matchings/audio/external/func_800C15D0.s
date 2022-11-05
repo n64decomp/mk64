@@ -46,8 +46,8 @@ glabel func_800C15D0
 /* 0C227C 800C167C 3C04803B */  lui   $a0, %hi(D_803B17D0) # 0x803b
 /* 0C2280 800C1680 00992021 */  addu  $a0, $a0, $t9
 /* 0C2284 800C1684 8C8417D0 */  lw    $a0, %lo(D_803B17D0)($a0) # 0x17d0($a0)
-/* 0C2288 800C1688 3C08803B */  lui   $t0, %hi(D_803B5EF0) # $t0, 0x803b
-/* 0C228C 800C168C 25085EF0 */  addiu $t0, %lo(D_803B5EF0) # addiu $t0, $t0, 0x5ef0
+/* 0C2288 800C1688 3C08803B */  lui   $t0, %hi(gSequenceChannelNone) # $t0, 0x803b
+/* 0C228C 800C168C 25085EF0 */  addiu $t0, %lo(gSequenceChannelNone) # addiu $t0, $t0, 0x5ef0
 /* 0C2290 800C1690 11040002 */  beq   $t0, $a0, .L800C169C
 /* 0C2294 800C1694 2401FFFF */   li    $at, -1
 /* 0C2298 800C1698 8083005E */  lb    $v1, 0x5e($a0)

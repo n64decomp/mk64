@@ -17,8 +17,8 @@ glabel func_800BB584
 /* 0BC1C0 800BB5C0 8C450004 */  lw    $a1, 4($v0)
 .L800BB5C4:
 /* 0BC1C4 800BB5C4 8FA30020 */  lw    $v1, 0x20($sp)
-/* 0BC1C8 800BB5C8 3C0B803B */  lui   $t3, %hi(D_803B7080) # $t3, 0x803b
-/* 0BC1CC 800BB5CC 8D6B7080 */  lw    $t3, %lo(D_803B7080)($t3)
+/* 0BC1C8 800BB5C8 3C0B803B */  lui   $t3, %hi(gCtlEntries) # $t3, 0x803b
+/* 0BC1CC 800BB5CC 8D6B7080 */  lw    $t3, %lo(gCtlEntries)($t3)
 /* 0BC1D0 800BB5D0 00035080 */  sll   $t2, $v1, 2
 /* 0BC1D4 800BB5D4 01435023 */  subu  $t2, $t2, $v1
 /* 0BC1D8 800BB5D8 000A1880 */  sll   $v1, $t2, 2
@@ -27,11 +27,11 @@ glabel func_800BB584
 /* 0BC1E4 800BB5E4 90460001 */  lbu   $a2, 1($v0)
 /* 0BC1E8 800BB5E8 90470002 */  lbu   $a3, 2($v0)
 /* 0BC1EC 800BB5EC AFA30018 */  sw    $v1, 0x18($sp)
-/* 0BC1F0 800BB5F0 0C02ED89 */  jal   func_800BB624
+/* 0BC1F0 800BB5F0 0C02ED89 */  jal   patch_audio_bank
 /* 0BC1F4 800BB5F4 2484FFFC */   addiu $a0, $a0, -4
-/* 0BC1F8 800BB5F8 3C0C803B */  lui   $t4, %hi(D_803B7080) # $t4, 0x803b
+/* 0BC1F8 800BB5F8 3C0C803B */  lui   $t4, %hi(gCtlEntries) # $t4, 0x803b
 /* 0BC1FC 800BB5FC 8FA30018 */  lw    $v1, 0x18($sp)
-/* 0BC200 800BB600 8D8C7080 */  lw    $t4, %lo(D_803B7080)($t4)
+/* 0BC200 800BB600 8D8C7080 */  lw    $t4, %lo(gCtlEntries)($t4)
 /* 0BC204 800BB604 01831021 */  addu  $v0, $t4, $v1
 /* 0BC208 800BB608 8C4D0004 */  lw    $t5, 4($v0)
 /* 0BC20C 800BB60C 8DAEFFFC */  lw    $t6, -4($t5)

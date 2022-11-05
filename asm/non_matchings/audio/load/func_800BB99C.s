@@ -13,9 +13,9 @@ glabel func_800BB99C
 /* 0BC5C8 800BB9C8 24C6000F */  addiu $a2, $a2, 0xf
 /* 0BC5CC 800BB9CC 00A03825 */  move  $a3, $a1
 /* 0BC5D0 800BB9D0 00C1C824 */  and   $t9, $a2, $at
-/* 0BC5D4 800BB9D4 3C04803B */  lui   $a0, %hi(D_803AFC48) # $a0, 0x803b
+/* 0BC5D4 800BB9D4 3C04803B */  lui   $a0, %hi(gSeqLoadedPool) # $a0, 0x803b
 /* 0BC5D8 800BB9D8 03203025 */  move  $a2, $t9
-/* 0BC5DC 800BB9DC 2484FC48 */  addiu $a0, %lo(D_803AFC48) # addiu $a0, $a0, -0x3b8
+/* 0BC5DC 800BB9DC 2484FC48 */  addiu $a0, %lo(gSeqLoadedPool) # addiu $a0, $a0, -0x3b8
 /* 0BC5E0 800BB9E0 AFB9002C */  sw    $t9, 0x2c($sp)
 /* 0BC5E4 800BB9E4 24050001 */  li    $a1, 1
 /* 0BC5E8 800BB9E8 AFAF0010 */  sw    $t7, 0x10($sp)
@@ -31,8 +31,8 @@ glabel func_800BB99C
 /* 0BC60C 800BBA0C 0C02EAA0 */  jal   audio_dma_copy_immediate
 /* 0BC610 800BBA10 AFA50028 */   sw    $a1, 0x28($sp)
 /* 0BC614 800BBA14 8FA90030 */  lw    $t1, 0x30($sp)
-/* 0BC618 800BBA18 3C0A803B */  lui   $t2, %hi(D_803B0400) # $t2, 0x803b
-/* 0BC61C 800BBA1C 254A0400 */  addiu $t2, %lo(D_803B0400) # addiu $t2, $t2, 0x400
+/* 0BC618 800BBA18 3C0A803B */  lui   $t2, %hi(gSeqLoadStatus) # $t2, 0x803b
+/* 0BC61C 800BBA1C 254A0400 */  addiu $t2, %lo(gSeqLoadStatus) # addiu $t2, $t2, 0x400
 /* 0BC620 800BBA20 012A1021 */  addu  $v0, $t1, $t2
 /* 0BC624 800BBA24 904B0000 */  lbu   $t3, ($v0)
 /* 0BC628 800BBA28 24010005 */  li    $at, 5

@@ -6,10 +6,10 @@ glabel func_800C3508
 /* 0C4118 800C3518 01EE7821 */  addu  $t7, $t7, $t6
 /* 0C411C 800C351C 27ADFFF0 */  addiu $t5, $sp, -0x10
 /* 0C4120 800C3520 000F78C0 */  sll   $t7, $t7, 3
-/* 0C4124 800C3524 3C18803B */  lui   $t8, %hi(D_803B1510) # 0x803b
+/* 0C4124 800C3524 3C18803B */  lui   $t8, %hi(gSequencePlayers) # 0x803b
 /* 0C4128 800C3528 ADA40010 */  sw    $a0, 0x10($t5)
 /* 0C412C 800C352C 030FC021 */  addu  $t8, $t8, $t7
-/* 0C4130 800C3530 8F181510 */  lw    $t8, %lo(D_803B1510)($t8) # 0x1510($t8)
+/* 0C4130 800C3530 8F181510 */  lw    $t8, %lo(gSequencePlayers)($t8) # 0x1510($t8)
 /* 0C4134 800C3534 01C02025 */  move  $a0, $t6
 /* 0C4138 800C3538 000440C0 */  sll   $t0, $a0, 3
 /* 0C413C 800C353C 0018CFC2 */  srl   $t9, $t8, 0x1f

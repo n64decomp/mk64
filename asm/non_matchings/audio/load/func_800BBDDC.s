@@ -35,9 +35,9 @@ glabel func_800BBDDC
 .L800BBE5C:
 /* 0BCA5C 800BBE5C 306C0001 */  andi  $t4, $v1, 1
 /* 0BCA60 800BBE60 1180001A */  beqz  $t4, .L800BBECC
-/* 0BCA64 800BBE64 3C0D803B */   lui   $t5, %hi(D_803B03C0) # 0x803b
+/* 0BCA64 800BBE64 3C0D803B */   lui   $t5, %hi(gBankLoadStatus) # 0x803b
 /* 0BCA68 800BBE68 01A66821 */  addu  $t5, $t5, $a2
-/* 0BCA6C 800BBE6C 91AD03C0 */  lbu   $t5, %lo(D_803B03C0)($t5) # 0x3c0($t5)
+/* 0BCA6C 800BBE6C 91AD03C0 */  lbu   $t5, %lo(gBankLoadStatus)($t5) # 0x3c0($t5)
 /* 0BCA70 800BBE70 24010001 */  li    $at, 1
 /* 0BCA74 800BBE74 00002025 */  move  $a0, $zero
 /* 0BCA78 800BBE78 29AE0002 */  slti  $t6, $t5, 2
@@ -45,7 +45,7 @@ glabel func_800BBDDC
 /* 0BCA80 800BBE80 15C10007 */  bne   $t6, $at, .L800BBEA0
 /* 0BCA84 800BBE84 00001825 */   move  $v1, $zero
 /* 0BCA88 800BBE88 24050002 */  li    $a1, 2
-/* 0BCA8C 800BBE8C 0C02E6A4 */  jal   func_800B9A90
+/* 0BCA8C 800BBE8C 0C02E6A4 */  jal   get_bank_or_seq
 /* 0BCA90 800BBE90 AFA60028 */   sw    $a2, 0x28($sp)
 /* 0BCA94 800BBE94 8FA60028 */  lw    $a2, 0x28($sp)
 /* 0BCA98 800BBE98 10000001 */  b     .L800BBEA0

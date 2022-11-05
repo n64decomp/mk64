@@ -205,7 +205,7 @@ glabel func_800BA250
 /* 0BB160 800BA560 3C04803B */  lui   $a0, %hi(D_803B0358) # $a0, 0x803b
 /* 0BB164 800BA564 24840358 */  addiu $a0, %lo(D_803B0358) # addiu $a0, $a0, 0x358
 /* 0BB168 800BA568 AC900000 */  sw    $s0, ($a0)
-/* 0BB16C 800BA56C 0C02E472 */  jal   func_800B91C8
+/* 0BB16C 800BA56C 0C02E472 */  jal   seq_and_bank_pool_init
 /* 0BB170 800BA570 AC910004 */   sw    $s1, 4($a0)
 /* 0BB174 800BA574 8ECD0010 */  lw    $t5, 0x10($s6)
 /* 0BB178 800BA578 3C04803B */  lui   $a0, %hi(D_803B0360) # $a0, 0x803b
@@ -214,7 +214,7 @@ glabel func_800BA250
 /* 0BB184 800BA584 8ECF0014 */  lw    $t7, 0x14($s6)
 /* 0BB188 800BA588 AC8F0004 */  sw    $t7, 4($a0)
 /* 0BB18C 800BA58C 8ECE0018 */  lw    $t6, 0x18($s6)
-/* 0BB190 800BA590 0C02E491 */  jal   func_800B9244
+/* 0BB190 800BA590 0C02E491 */  jal   persistent_pools_init
 /* 0BB194 800BA594 AC8E0008 */   sw    $t6, 8($a0)
 /* 0BB198 800BA598 8ED8001C */  lw    $t8, 0x1c($s6)
 /* 0BB19C 800BA59C 3C04803B */  lui   $a0, %hi(D_803B0370) # $a0, 0x803b
@@ -223,7 +223,7 @@ glabel func_800BA250
 /* 0BB1A8 800BA5A8 8ED90020 */  lw    $t9, 0x20($s6)
 /* 0BB1AC 800BA5AC AC990004 */  sw    $t9, 4($a0)
 /* 0BB1B0 800BA5B0 8ECD0024 */  lw    $t5, 0x24($s6)
-/* 0BB1B4 800BA5B4 0C02E4C0 */  jal   func_800B9300
+/* 0BB1B4 800BA5B4 0C02E4C0 */  jal   temporary_pools_init
 /* 0BB1B8 800BA5B8 AC8D0008 */   sw    $t5, 8($a0)
 /* 0BB1BC 800BA5BC 0C02E378 */  jal   func_800B8DE0
 /* 0BB1C0 800BA5C0 00000000 */   nop   
@@ -236,10 +236,10 @@ glabel func_800BA250
 /* 0BB1DC 800BA5DC 000F2980 */  sll   $a1, $t7, 6
 /* 0BB1E0 800BA5E0 0C02E3FF */  jal   soundAlloc
 /* 0BB1E4 800BA5E4 02602025 */   move  $a0, $s3
-/* 0BB1E8 800BA5E8 3C01803B */  lui   $at, %hi(D_803B1508) # $at, 0x803b
-/* 0BB1EC 800BA5EC 0C02F74D */  jal   func_800BDD34
-/* 0BB1F0 800BA5F0 AC221508 */   sw    $v0, %lo(D_803B1508)($at)
-/* 0BB1F4 800BA5F4 0C02F4DA */  jal   func_800BD368
+/* 0BB1E8 800BA5E8 3C01803B */  lui   $at, %hi(gNotes) # $at, 0x803b
+/* 0BB1EC 800BA5EC 0C02F74D */  jal   note_init_all
+/* 0BB1F0 800BA5F0 AC221508 */   sw    $v0, %lo(gNotes)($at)
+/* 0BB1F4 800BA5F4 0C02F4DA */  jal   init_note_free_list
 /* 0BB1F8 800BA5F8 00000000 */   nop   
 /* 0BB1FC 800BA5FC 3C18803B */  lui   $t8, %hi(gMaxSimultaneousNotes) # $t8, 0x803b
 /* 0BB200 800BA600 8F1870B0 */  lw    $t8, %lo(gMaxSimultaneousNotes)($t8)

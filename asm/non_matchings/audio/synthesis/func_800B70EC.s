@@ -23,7 +23,7 @@ glabel func_800B70EC
 /* 0B7D3C 800B713C 0C03044E */  jal   func_800C1138
 /* 0B7D40 800B7140 02002025 */   move  $a0, $s0
 /* 0B7D44 800B7144 86AE000C */  lh    $t6, 0xc($s5)
-/* 0B7D48 800B7148 0C02DC0D */  jal   func_800B7034
+/* 0B7D48 800B7148 0C02DC0D */  jal   synthesis_load_note_subs_eu
 /* 0B7D4C 800B714C 01D42023 */   subu  $a0, $t6, $s4
 /* 0B7D50 800B7150 1E00FFF9 */  bgtz  $s0, .L800B7138
 /* 0B7D54 800B7154 0200A025 */   move  $s4, $s0
