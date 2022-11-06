@@ -17,12 +17,12 @@ glabel func_800BA00C
 /* 0BAC48 800BA048 01E00008 */  jr    $t7
 /* 0BAC4C 800BA04C 00000000 */   nop   
 glabel L800BA050
-/* 0BAC50 800BA050 3C10803B */  lui   $s0, %hi(D_803B1510) # $s0, 0x803b
-/* 0BAC54 800BA054 3C11803B */  lui   $s1, %hi(D_803B1A30) # $s1, 0x803b
-/* 0BAC58 800BA058 26311A30 */  addiu $s1, %lo(D_803B1A30) # addiu $s1, $s1, 0x1a30
-/* 0BAC5C 800BA05C 26101510 */  addiu $s0, %lo(D_803B1510) # addiu $s0, $s0, 0x1510
+/* 0BAC50 800BA050 3C10803B */  lui   $s0, %hi(gSequencePlayers) # $s0, 0x803b
+/* 0BAC54 800BA054 3C11803B */  lui   $s1, %hi(gSequenceChannels) # $s1, 0x803b
+/* 0BAC58 800BA058 26311A30 */  addiu $s1, %lo(gSequenceChannels) # addiu $s1, $s1, 0x1a30
+/* 0BAC5C 800BA05C 26101510 */  addiu $s0, %lo(gSequencePlayers) # addiu $s0, $s0, 0x1510
 .L800BA060:
-/* 0BAC60 800BA060 0C02FBCB */  jal   func_800BEF2C
+/* 0BAC60 800BA060 0C02FBCB */  jal   sequence_player_disable
 /* 0BAC64 800BA064 02002025 */   move  $a0, $s0
 /* 0BAC68 800BA068 26100148 */  addiu $s0, $s0, 0x148
 /* 0BAC6C 800BA06C 1611FFFC */  bne   $s0, $s1, .L800BA060
@@ -52,8 +52,8 @@ glabel L800BA094
 /* 0BACC4 800BA0C4 00001825 */  move  $v1, $zero
 /* 0BACC8 800BA0C8 18C0001A */  blez  $a2, .L800BA134
 /* 0BACCC 800BA0CC 3C07803B */   lui   $a3, %hi(gAudioBufferParameters) # $a3, 0x803b
-/* 0BACD0 800BA0D0 3C05803B */  lui   $a1, %hi(D_803B1508) # $a1, 0x803b
-/* 0BACD4 800BA0D4 24A51508 */  addiu $a1, %lo(D_803B1508) # addiu $a1, $a1, 0x1508
+/* 0BACD0 800BA0D0 3C05803B */  lui   $a1, %hi(gNotes) # $a1, 0x803b
+/* 0BACD4 800BA0D4 24A51508 */  addiu $a1, %lo(gNotes) # addiu $a1, $a1, 0x1508
 /* 0BACD8 800BA0D8 24E77088 */  addiu $a3, %lo(gAudioBufferParameters) # addiu $a3, $a3, 0x7088
 .L800BA0DC:
 /* 0BACDC 800BA0DC 8CAA0000 */  lw    $t2, ($a1)

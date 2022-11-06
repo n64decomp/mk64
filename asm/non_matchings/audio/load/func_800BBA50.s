@@ -17,9 +17,9 @@ glabel func_800BBA50
 /* 0BC68C 800BBA8C 2610000F */  addiu $s0, $s0, 0xf
 /* 0BC690 800BBA90 00A03825 */  move  $a3, $a1
 /* 0BC694 800BBA94 02013024 */  and   $a2, $s0, $at
-/* 0BC698 800BBA98 3C04803B */  lui   $a0, %hi(D_803AFC48) # $a0, 0x803b
+/* 0BC698 800BBA98 3C04803B */  lui   $a0, %hi(gSeqLoadedPool) # $a0, 0x803b
 /* 0BC69C 800BBA9C 00C08025 */  move  $s0, $a2
-/* 0BC6A0 800BBAA0 2484FC48 */  addiu $a0, %lo(D_803AFC48) # addiu $a0, $a0, -0x3b8
+/* 0BC6A0 800BBAA0 2484FC48 */  addiu $a0, %lo(gSeqLoadedPool) # addiu $a0, $a0, -0x3b8
 /* 0BC6A4 800BBAA4 24050001 */  li    $a1, 1
 /* 0BC6A8 800BBAA8 AFAF0010 */  sw    $t7, 0x10($sp)
 /* 0BC6AC 800BBAAC 0C02E4EF */  jal   func_800B93BC
@@ -37,8 +37,8 @@ glabel func_800BBA50
 /* 0BC6D8 800BBAD8 0C02EAA0 */  jal   audio_dma_copy_immediate
 /* 0BC6DC 800BBADC 02003025 */   move  $a2, $s0
 /* 0BC6E0 800BBAE0 8FA90048 */  lw    $t1, 0x48($sp)
-/* 0BC6E4 800BBAE4 3C0A803B */  lui   $t2, %hi(D_803B0400) # $t2, 0x803b
-/* 0BC6E8 800BBAE8 254A0400 */  addiu $t2, %lo(D_803B0400) # addiu $t2, $t2, 0x400
+/* 0BC6E4 800BBAE4 3C0A803B */  lui   $t2, %hi(gSeqLoadStatus) # $t2, 0x803b
+/* 0BC6E8 800BBAE8 254A0400 */  addiu $t2, %lo(gSeqLoadStatus) # addiu $t2, $t2, 0x400
 /* 0BC6EC 800BBAEC 012A1021 */  addu  $v0, $t1, $t2
 /* 0BC6F0 800BBAF0 904B0000 */  lbu   $t3, ($v0)
 /* 0BC6F4 800BBAF4 24010005 */  li    $at, 5
@@ -66,11 +66,11 @@ glabel func_800BBA50
 /* 0BC748 800BBB48 AFB90010 */  sw    $t9, 0x10($sp)
 /* 0BC74C 800BBB4C 26450040 */  addiu $a1, $s2, 0x40
 /* 0BC750 800BBB50 2606FFC0 */  addiu $a2, $s0, -0x40
-/* 0BC754 800BBB54 0C02EABE */  jal   func_800BAAF8
+/* 0BC754 800BBB54 0C02EABE */  jal   audio_dma_copy_async
 /* 0BC758 800BBB58 24840040 */   addiu $a0, $a0, 0x40
 /* 0BC75C 800BBB5C 8FA80048 */  lw    $t0, 0x48($sp)
-/* 0BC760 800BBB60 3C0F803B */  lui   $t7, %hi(D_803B0400) # $t7, 0x803b
-/* 0BC764 800BBB64 25EF0400 */  addiu $t7, %lo(D_803B0400) # addiu $t7, $t7, 0x400
+/* 0BC760 800BBB60 3C0F803B */  lui   $t7, %hi(gSeqLoadStatus) # $t7, 0x803b
+/* 0BC764 800BBB64 25EF0400 */  addiu $t7, %lo(gSeqLoadStatus) # addiu $t7, $t7, 0x400
 /* 0BC768 800BBB68 010F1021 */  addu  $v0, $t0, $t7
 /* 0BC76C 800BBB6C 90490000 */  lbu   $t1, ($v0)
 /* 0BC770 800BBB70 24010005 */  li    $at, 5

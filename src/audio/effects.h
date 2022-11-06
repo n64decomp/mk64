@@ -1,6 +1,8 @@
 #ifndef AUDIO_EFFECTS_H
 #define AUDIO_EFFECTS_H
 
+#include "audio/internal.h"
+
 #ifdef TARGET_N64
   #define IS_BIG_ENDIAN 1
 #endif
@@ -31,5 +33,15 @@
 #else
   #define BSWAP16(x) (((x) & 0xff) << 8 | (((x) >> 8) & 0xff))
 #endif
+
+void sequence_channel_process_sound(struct SequenceChannel *seqChannel, s32 recalculateVolume);
+void sequence_player_process_sound(struct SequencePlayer *seqPlayer);
+f32 get_portamento_freq_scale(struct Portamento *p);
+s16 get_vibrato_pitch_change(struct VibratoState *vib);
+f32 get_vibrato_freq_scale(struct VibratoState *vib);
+void note_vibrato_update(struct Note *note);
+void note_vibrato_init(struct Note *note);
+void adsr_init(struct AdsrState *adsr, struct AdsrEnvelope *envelope, s16 *volOut);
+f32 adsr_update(struct AdsrState *adsr);
 
 #endif /* AUDIO_EFFECTS_H */

@@ -2,9 +2,9 @@ glabel func_800C59C4
 /* 0C65C4 800C59C4 3C0F803B */  lui   $t7, %hi(D_803B17D0) # $t7, 0x803b
 /* 0C65C8 800C59C8 8DEF17D0 */  lw    $t7, %lo(D_803B17D0)($t7)
 /* 0C65CC 800C59CC 27BDFFD0 */  addiu $sp, $sp, -0x30
-/* 0C65D0 800C59D0 3C0E803B */  lui   $t6, %hi(D_803B5EF0) # $t6, 0x803b
+/* 0C65D0 800C59D0 3C0E803B */  lui   $t6, %hi(gSequenceChannelNone) # $t6, 0x803b
 /* 0C65D4 800C59D4 AFBE0028 */  sw    $fp, 0x28($sp)
-/* 0C65D8 800C59D8 25CE5EF0 */  addiu $t6, %lo(D_803B5EF0) # addiu $t6, $t6, 0x5ef0
+/* 0C65D8 800C59D8 25CE5EF0 */  addiu $t6, %lo(gSequenceChannelNone) # addiu $t6, $t6, 0x5ef0
 /* 0C65DC 800C59DC 03A0F025 */  move  $fp, $sp
 /* 0C65E0 800C59E0 AFBF002C */  sw    $ra, 0x2c($sp)
 /* 0C65E4 800C59E4 11CF000F */  beq   $t6, $t7, .L800C5A24

@@ -346,8 +346,8 @@ struct AdsrEnvelope gDefaultEnvelope[] = {
 // TODO 0x00000000800f624c                fill2
 u32 fill2 = 0x00000000;
 
-struct NoteSub gZeroNoteSub = { 0 };
-struct NoteSub gDefaultNoteSub = { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, { NULL } };
+struct NoteSubEu gZeroNoteSub = { 0 };
+struct NoteSubEu gDefaultNoteSub = { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, { NULL } };
 
 u16 gHeadsetPanQuantization[0x10] = {
     0x40, 0x40, 0x30, 0x30, 0x20, 0x20, 0x10, 0, 0, 0,

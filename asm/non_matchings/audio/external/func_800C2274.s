@@ -4,9 +4,9 @@ glabel func_800C2274
 /* 0C2E7C 800C227C 01C77021 */  addu  $t6, $t6, $a3
 /* 0C2E80 800C2280 000E70C0 */  sll   $t6, $t6, 3
 /* 0C2E84 800C2284 27BDFFB8 */  addiu $sp, $sp, -0x48
-/* 0C2E88 800C2288 3C05803B */  lui   $a1, %hi(D_803B1510) # $a1, 0x803b
+/* 0C2E88 800C2288 3C05803B */  lui   $a1, %hi(gSequencePlayers) # $a1, 0x803b
 /* 0C2E8C 800C228C 01C77021 */  addu  $t6, $t6, $a3
-/* 0C2E90 800C2290 24A51510 */  addiu $a1, %lo(D_803B1510) # addiu $a1, $a1, 0x1510
+/* 0C2E90 800C2290 24A51510 */  addiu $a1, %lo(gSequencePlayers) # addiu $a1, $a1, 0x1510
 /* 0C2E94 800C2294 000E70C0 */  sll   $t6, $t6, 3
 /* 0C2E98 800C2298 00AE7821 */  addu  $t7, $a1, $t6
 /* 0C2E9C 800C229C 8DF80000 */  lw    $t8, ($t7)
