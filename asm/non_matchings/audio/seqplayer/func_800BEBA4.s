@@ -1,4 +1,4 @@
-glabel func_800BEBA4
+glabel sequence_channel_disable
 /* 0BF7A4 800BEBA4 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 0BF7A8 800BEBA8 AFB20020 */  sw    $s2, 0x20($sp)
 /* 0BF7AC 800BEBAC AFB1001C */  sw    $s1, 0x1c($sp)
@@ -9,12 +9,12 @@ glabel func_800BEBA4
 /* 0BF7C0 800BEBC0 24120004 */  li    $s2, 4
 /* 0BF7C4 800BEBC4 02202025 */  move  $a0, $s1
 .L800BEBC8:
-/* 0BF7C8 800BEBC8 0C02FAD5 */  jal   func_800BEB54
+/* 0BF7C8 800BEBC8 0C02FAD5 */  jal   seq_channel_layer_free
 /* 0BF7CC 800BEBCC 02002825 */   move  $a1, $s0
 /* 0BF7D0 800BEBD0 26100001 */  addiu $s0, $s0, 1
 /* 0BF7D4 800BEBD4 5612FFFC */  bnel  $s0, $s2, .L800BEBC8
 /* 0BF7D8 800BEBD8 02202025 */   move  $a0, $s1
-/* 0BF7DC 800BEBDC 0C02F506 */  jal   func_800BD418
+/* 0BF7DC 800BEBDC 0C02F506 */  jal   note_pool_clear
 /* 0BF7E0 800BEBE0 26240084 */   addiu $a0, $s1, 0x84
 /* 0BF7E4 800BEBE4 922E0000 */  lbu   $t6, ($s1)
 /* 0BF7E8 800BEBE8 31D9FF7F */  andi  $t9, $t6, 0xff7f

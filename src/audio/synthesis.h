@@ -1,7 +1,7 @@
 #ifndef AUDIO_SYNTHESIS_H
 #define AUDIO_SYNTHESIS_H
 
-//#include "internal.h"
+#include "audio/internal.h"
 #include "PR/abi.h"
 
 #define DEFAULT_LEN_1CH 0x180
@@ -81,11 +81,17 @@ struct SynthesisReverb {
 
 #define ALIGN(val, amnt) (((val) + (1 << amnt) - 1) & ~((1 << amnt) - 1))
 
+void prepare_reverb_ring_buffer(s32 chunkLen, u32 updateIndex, s32 reverbIndex);
 u64 *synthesis_execute(u64 *cmdBuf, s32 *writtenCmds, s16 *aiBuf, s32 bufLen);
 Acmd *synthesis_load_reverb_ring_buffer(Acmd*, u16, u16, s32, s32);
 Acmd *synthesis_save_reverb_ring_buffer(Acmd*, u16, u16, s32, s32);
-Acmd *func_800B7304(Acmd*, s32, s16, s16);
-Acmd *func_800B7630(Acmd*, s16, s16);
+void func_800B6FB4(s32 updateIndexStart, s32 noteIndex);
+void synthesis_load_note_subs_eu(s32 updateIndex);
+Acmd *synthesis_resample_and_mix_reverb(Acmd*, s32, s16, s16);
+Acmd *synthesis_load_reverb_samples(Acmd*, s16, s16);
+Acmd *load_wave_samples(Acmd *acmd, struct NoteSubEu *noteSubEu, struct NoteSynthesisState *synthesisState, s32 nSamplesToLoad);
+Acmd *final_resample(Acmd *acmd, struct NoteSynthesisState *synthesisState, s32 count, u16 pitch, u16 dmemIn, u32 flags);
+Acmd *note_apply_headset_pan_effects(Acmd *acmd, struct NoteSubEu *noteSubEu, struct NoteSynthesisState *note, s32 bufLen, s32 flags, s32 leftRight);
 
 extern struct AudioBufferParametersEU gAudioBufferParameters;
 extern s32 gMaxSimultaneousNotes;
@@ -93,9 +99,15 @@ extern s32 gMaxSimultaneousNotes;
 extern struct SynthesisReverb gSynthesisReverbs[4];
 extern s8 gNumSynthesisReverbs;
 extern struct NoteSubEu *gNoteSubsEu;
-extern f32 gLeftVolRampings;
-//extern f32 gRightVolRampings[3][1024];
-//extern f32 *gCurrentLeftVolRamping; // Points to any of the three left buffers above
-//extern f32 *gCurrentRightVolRamping; // Points to any of the three right buffers above
+/*
+SO
+gLeftVolRampings is almost certainly gAudioSessionPool (D_803AFBC8) in disguise, but since
+synthesis' ro/data has already been broken out it'll be very hard to fix that.
+
+extern f32 gLeftVolRampings[3][1024];
+extern f32 gRightVolRampings[3][1024];
+extern f32 *gCurrentLeftVolRamping; // Points to any of the three left buffers above
+extern f32 *gCurrentRightVolRamping; // Points to any of the three right buffers above
+*/
 
 #endif // AUDIO_SYNTHESIS_H

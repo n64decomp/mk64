@@ -16,8 +16,8 @@ glabel func_800BB864
 /* 0BC49C 800BB89C 00C1C024 */  and   $t8, $a2, $at
 /* 0BC4A0 800BB8A0 00A03825 */  move  $a3, $a1
 /* 0BC4A4 800BB8A4 2706FFF0 */  addiu $a2, $t8, -0x10
-/* 0BC4A8 800BB8A8 3C04803B */  lui   $a0, %hi(D_803AFE18) # $a0, 0x803b
-/* 0BC4AC 800BB8AC 2484FE18 */  addiu $a0, %lo(D_803AFE18) # addiu $a0, $a0, -0x1e8
+/* 0BC4A8 800BB8A8 3C04803B */  lui   $a0, %hi(gBankLoadedPool) # $a0, 0x803b
+/* 0BC4AC 800BB8AC 2484FE18 */  addiu $a0, %lo(gBankLoadedPool) # addiu $a0, $a0, -0x1e8
 /* 0BC4B0 800BB8B0 AFA60064 */  sw    $a2, 0x64($sp)
 /* 0BC4B4 800BB8B4 24050001 */  li    $a1, 1
 /* 0BC4B8 800BB8B8 AFB10010 */  sw    $s1, 0x10($sp)
@@ -29,8 +29,8 @@ glabel func_800BB864
 /* 0BC4D0 800BB8D0 1000002D */  b     .L800BB988
 /* 0BC4D4 800BB8D4 00001025 */   move  $v0, $zero
 .L800BB8D8:
-/* 0BC4D8 800BB8D8 3C04803B */  lui   $a0, %hi(D_803B7080) # $a0, 0x803b
-/* 0BC4DC 800BB8DC 24847080 */  addiu $a0, %lo(D_803B7080) # addiu $a0, $a0, 0x7080
+/* 0BC4D8 800BB8D8 3C04803B */  lui   $a0, %hi(gCtlEntries) # $a0, 0x803b
+/* 0BC4DC 800BB8DC 24847080 */  addiu $a0, %lo(gCtlEntries) # addiu $a0, $a0, 0x7080
 /* 0BC4E0 800BB8E0 A2110006 */  sb    $s1, 6($s0)
 /* 0BC4E4 800BB8E4 8C890000 */  lw    $t1, ($a0)
 /* 0BC4E8 800BB8E8 00111880 */  sll   $v1, $s1, 2
@@ -61,10 +61,10 @@ glabel func_800BB864
 /* 0BC54C 800BB94C AFA90010 */  sw    $t1, 0x10($sp)
 /* 0BC550 800BB950 26040140 */  addiu $a0, $s0, 0x140
 /* 0BC554 800BB954 2605013C */  addiu $a1, $s0, 0x13c
-/* 0BC558 800BB958 0C02EAD6 */  jal   func_800BAB58
+/* 0BC558 800BB958 0C02EAD6 */  jal   audio_dma_partial_copy_async
 /* 0BC55C 800BB95C 26060144 */   addiu $a2, $s0, 0x144
-/* 0BC560 800BB960 3C08803B */  lui   $t0, %hi(D_803B03C0) # $t0, 0x803b
-/* 0BC564 800BB964 250803C0 */  addiu $t0, %lo(D_803B03C0) # addiu $t0, $t0, 0x3c0
+/* 0BC560 800BB960 3C08803B */  lui   $t0, %hi(gBankLoadStatus) # $t0, 0x803b
+/* 0BC564 800BB964 250803C0 */  addiu $t0, %lo(gBankLoadStatus) # addiu $t0, $t0, 0x3c0
 /* 0BC568 800BB968 02281021 */  addu  $v0, $s1, $t0
 /* 0BC56C 800BB96C 904A0000 */  lbu   $t2, ($v0)
 /* 0BC570 800BB970 24010005 */  li    $at, 5
