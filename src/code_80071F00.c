@@ -8092,7 +8092,7 @@ block_6:
                 func_800C98B8(temp_t0->unk_004, &temp_t0->unk_038, 0x19036045U);
             }
         } else {
-            temp_v0 = D_802876D2;
+            temp_v0 = gCutsceneShotTimer;
             if ((temp_v0 < 0xBF) && ((temp_v0 % 88) == 0x0000001E)) {
                 func_800C98B8(temp_t0->unk_004, &temp_t0->unk_038, 0x19036045U);
             }
@@ -9152,7 +9152,7 @@ void func_80082870(void) {
                     D_80183E40.unk8 = 0.0f;
                     if (gGamestate != 9) {
                         func_800C98B8(temp_s1->unk_004, &D_80183E40, 0x19017043U);
-                    } else if (D_802876D2 < 0x97) {
+                    } else if (gCutsceneShotTimer < 0x97) {
                         func_800C98B8(D_80165C18[D_80183F2C].unk_004, &D_80183E40, 0x19017043U);
                     }
                 }

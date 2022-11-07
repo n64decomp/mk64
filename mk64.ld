@@ -379,7 +379,6 @@ SECTIONS
       BUILD_DIR/src/camera_junk.o(.rodata);
       BUILD_DIR/data/data_credits_128480_2.o(.data);
       BUILD_DIR/src/code_80281FA0.o(.rodata);
-
    }
    END_SEG(code_80280000)
 

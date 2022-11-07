@@ -1,7 +1,7 @@
 .include "macros.inc"
 
 .data
-
+glabel D_englishCredits
 # English credits
 .asciiz "executive producer"
 .balign 4
@@ -229,20 +229,14 @@ control characters if the byte isn't in the usual ASCII range
 
 .word 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
-glabel D_80287470
-.word 0x3F2AAAAB
+#glabel D_80287470
+#.word 0x3F2AAAAB
 
-glabel D_80287474
-.word 0x3E2AAAAB
+#glabel D_80287474
+#.word 0x3E2AAAAB
 
-glabel D_80287478
-.word 0x3F666666
+#glabel D_80287478
+#.word 0x3F666666
 
-glabel D_8028747C
-.word 0xC52EC000
-glabel jpt_80287480
-.word L80284B1C, L80284B4C, L80284B7C
-.word L80284BAC
-.word L80284BE8
-.word 0x00000000
-.word 0x00000000, 0x00000000
+#glabel D_8028747C
+#.word 0xC52EC000

@@ -62,10 +62,10 @@ glabel D_80287554
 glabel D_80287560
 .skip 368
 
-#glabel D_802876D0 # Begin 80281fa0.c
+#glabel sCutsceneShot # Begin 80281fa0.c
 #.skip 2
 
-#glabel D_802876D2
+#glabel gCutsceneShotTimer
 #.skip 2
 
 #glabel D_802876D4

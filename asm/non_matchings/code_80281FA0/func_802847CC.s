@@ -176,7 +176,7 @@ glabel func_802847CC
 /* 1280A8 80284A68 24010003 */  li    $at, 3
 /* 1280AC 80284A6C 3C08800E */  lui   $t0, %hi(D_800DC5E4) # $t0, 0x800e
 /* 1280B0 80284A70 17210007 */  bne   $t9, $at, .L80284A90
-/* 1280B4 80284A74 3C0C8028 */   lui   $t4, %hi(D_802876D2) # $t4, 0x8028
+/* 1280B4 80284A74 3C0C8028 */   lui   $t4, %hi(gCutsceneShotTimer) # $t4, 0x8028
 /* 1280B8 80284A78 9508C5E4 */  lhu   $t0, %lo(D_800DC5E4)($t0)
 /* 1280BC 80284A7C 3C0A8028 */  lui   $t2, %hi(D_80286B34) # 0x8028
 /* 1280C0 80284A80 00084840 */  sll   $t1, $t0, 1
@@ -185,7 +185,7 @@ glabel func_802847CC
 /* 1280CC 80284A8C A7AA002C */  sh    $t2, 0x2c($sp)
 .L80284A90:
 /* 1280D0 80284A90 97AB002C */  lhu   $t3, 0x2c($sp)
-/* 1280D4 80284A94 858C76D2 */  lh    $t4, %lo(D_802876D2)($t4)
+/* 1280D4 80284A94 858C76D2 */  lh    $t4, %lo(gCutsceneShotTimer)($t4)
 /* 1280D8 80284A98 3C02800E */  lui   $v0, %hi(D_800DC5E4) # $v0, 0x800e
 /* 1280DC 80284A9C 556C000E */  bnel  $t3, $t4, .L80284AD8
 /* 1280E0 80284AA0 8FBF001C */   lw    $ra, 0x1c($sp)
