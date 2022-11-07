@@ -380,14 +380,17 @@ SECTIONS
       BUILD_DIR/data/data_credits_128480.o(.data);
       BUILD_DIR/src/dl_unk_80284EE0.inc.o(.data);
       BUILD_DIR/src/credits_01.inc.o(.data);
+      BUILD_DIR/src/code_80281FA0.o(.data);
       BUILD_DIR/data/data_credits_128480_1.o(.data);
       BUILD_DIR/src/camera_junk.o(.rodata);
       BUILD_DIR/data/data_credits_128480_2.o(.data);
+      BUILD_DIR/src/code_80281FA0.o(.rodata);
    }
    END_SEG(code_80280000)
 
    BEGIN_NOLOAD(code_80280000) {
       BUILD_DIR/asm/bss_credits.o(.bss);
+      BUILD_DIR/src/code_80281FA0.o(.bss);
    }
    END_NOLOAD(code_80280000)
 
