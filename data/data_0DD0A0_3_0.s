@@ -2980,6 +2980,9 @@ glabel D_800F0C78
 
 .balign 4
 
+# D_800F0C7C, D_800F0C80, D_800F0C88, and D_800F0C90 are strings with
+# some weird encoding
+# See data_credits_128480_2.s for more details
 glabel D_800F0C7C # "ー"
 .byte 0xa1, 0xbc, 0x00
 .balign 4

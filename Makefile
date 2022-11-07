@@ -20,6 +20,13 @@ ifeq ($(VERSION),us)
   TARGET := mk64.us
 endif
 
+# COMPILER - selects the C compiler to use
+#   ido - uses the SGI IRIS Development Option compiler, which is used to build
+#         an original matching N64 ROM
+#   gcc - uses the GNU C Compiler
+COMPILER ?= ido
+$(eval $(call validate-option,COMPILER,ido gcc))
+
 ### Utility Functions ###
 # Returns the path to the command $(1) if exists. Otherwise returns an empty string.
 find-command = $(shell which $(1) 2>/dev/null)
@@ -159,7 +166,7 @@ GRUCODE_CFLAGS = -DF3DEX_GBI -D_LANGUAGE_C
 CC_CHECK := gcc -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) -std=gnu90 -Wall -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(VERSION_CFLAGS) $(GRUCODE_CFLAGS)
 
 ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) --defsym F3DEX_GBI=1
-CFLAGS = -Wab,-r4300_mul -non_shared -G 0 -Xcpluscomm -Xfullwarn -signed $(OPT_FLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) $(MIPSISET) $(GRUCODE_CFLAGS)
+CFLAGS = -Wab,-r4300_mul -non_shared -G 0 -Xcpluscomm -Xfullwarn -signed $(OPT_FLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) $(VERSION_CFLAGS) $(MIPSISET) $(GRUCODE_CFLAGS)
 OBJCOPYFLAGS = --pad-to=0xC00000 --gap-fill=0xFF
 
 LDFLAGS = -T undefined_syms.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(BUILD_DIR)/$(TARGET).map --no-check-sections
@@ -494,6 +501,12 @@ $(BUILD_DIR)/src/os/_Printf.o:        OPT_FLAGS := -O3
 $(BUILD_DIR)/src/os/_Litob.o:        OPT_FLAGS := -O3
 $(BUILD_DIR)/src/os/_Ldtob.o:        OPT_FLAGS := -O3
 $(BUILD_DIR)/src/os/osSyncPrintf.o:        OPT_FLAGS := -O3
+
+# Alternate compiler flags needed for matching
+ifeq ($(COMPILER),ido)
+    $(BUILD_DIR)/src/audio/%.o:        OPT_FLAGS := -O2 -use_readwrite_const
+    $(BUILD_DIR)/src/audio/port_eu.o:  OPT_FLAGS := -O2 -framepointer
+endif
 
 #################### Compile course vertex to mio0 #####################
 

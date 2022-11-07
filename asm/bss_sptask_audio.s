@@ -4,54 +4,7 @@
 
 # Audio
 
-.skip 396
-
-glabel D_803B017C
-.skip 4
-
-glabel D_803B0180
-.skip 56
-
-glabel D_803B01B8
-.skip 12
-
-glabel D_803B01C4
-.skip 388
-
-glabel D_803B0348
-.skip 16
-
-glabel D_803B0358
-.skip 8
-
-glabel D_803B0360
-.skip 16
-
-glabel D_803B0370
-.skip 16
-
-glabel D_803B0380
-.skip 64
-
-glabel D_803B03C0
-.skip 64
-
-glabel D_803B0400
-.skip 256
-
-glabel D_803B0500
-.skip 1
-
-glabel D_803B0501
-.skip 3
-
-glabel D_803B0504
-.skip 4100
-
-glabel D_803B1508
-.skip 8
-
-glabel D_803B1510
+glabel gSequencePlayers
 .skip 148
 
 glabel D_803B15A4
@@ -68,36 +21,25 @@ glabel D_803B17D0
 
 glabel D_803B18E8
 .skip 328
+# End of gSequencePlayers
 
-glabel D_803B1A30
+glabel gSequenceChannels
 .skip 9408
 
-glabel D_803B3EF0
-.skip 108
+glabel gSequenceLayers
+.skip 8192
 
-glabel D_803B3F5C
-.skip 8084
-
-glabel D_803B5EF0
+glabel gSequenceChannelNone
 .skip 108
 
 glabel D_803B5F5C
 .skip 92
 
-glabel D_803B5FB8
+glabel gLayerFreeList
 .skip 16
 
-glabel D_803B5FC8
-.skip 16
-
-glabel D_803B5FD8
-.skip 16
-
-glabel D_803B5FE8
-.skip 16
-
-glabel D_803B5FF8
-.skip 16
+glabel gNoteFreeLists
+.skip 64
 
 glabel gCurrAudioFrameDmaQueue
 .skip 24
@@ -156,23 +98,17 @@ glabel D_803B7070
 glabel D_803B7074
 .skip 4
 
-glabel D_803B7078
+glabel gAlBankSets
 .skip 4
 
 glabel D_803B707C
 .skip 4
 
-glabel D_803B7080
+glabel gCtlEntries
 .skip 8
 
 glabel gAudioBufferParameters
-.skip 24
-
-glabel D_803B70A0
-.skip 4
-
-glabel D_803B70A4
-.skip 4
+.skip 32
 
 glabel D_803B70A8
 .skip 4
@@ -186,7 +122,7 @@ glabel gMaxSimultaneousNotes
 glabel D_803B70B4
 .skip 2
 
-glabel D_803B70B6
+glabel gAudioLibSoundMode
 .skip 2
 
 glabel D_803B70B8
@@ -231,7 +167,7 @@ glabel D_803B7192
 glabel D_803B7194
 .skip 4
 
-glabel D_803B7198
+glabel gAudioErrorFlags
 .skip 8
 
 glabel D_803B71A0

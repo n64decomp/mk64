@@ -143,8 +143,8 @@ glabel func_800C3724
 /* 0C452C 800C392C 0315C021 */  addu  $t8, $t8, $s5
 /* 0C4530 800C3930 0018C0C0 */  sll   $t8, $t8, 3
 /* 0C4534 800C3934 0315C021 */  addu  $t8, $t8, $s5
-/* 0C4538 800C3938 3C0B803B */  lui   $t3, %hi(D_803B1510) # $t3, 0x803b
-/* 0C453C 800C393C 256B1510 */  addiu $t3, %lo(D_803B1510) # addiu $t3, $t3, 0x1510
+/* 0C4538 800C3938 3C0B803B */  lui   $t3, %hi(gSequencePlayers) # $t3, 0x803b
+/* 0C453C 800C393C 256B1510 */  addiu $t3, %lo(gSequencePlayers) # addiu $t3, $t3, 0x1510
 /* 0C4540 800C3940 0018C0C0 */  sll   $t8, $t8, 3
 /* 0C4544 800C3944 030B2821 */  addu  $a1, $t8, $t3
 /* 0C4548 800C3948 8CAC0000 */  lw    $t4, ($a1)
@@ -432,9 +432,9 @@ glabel func_800C3724
 .L800C3D3C:
 /* 0C493C 800C3D3C 01F57821 */  addu  $t7, $t7, $s5
 /* 0C4940 800C3D40 000F78C0 */  sll   $t7, $t7, 3
-/* 0C4944 800C3D44 3C0E803B */  lui   $t6, %hi(D_803B1510) # 0x803b
+/* 0C4944 800C3D44 3C0E803B */  lui   $t6, %hi(gSequencePlayers) # 0x803b
 /* 0C4948 800C3D48 01CF7021 */  addu  $t6, $t6, $t7
-/* 0C494C 800C3D4C 8DCE1510 */  lw    $t6, %lo(D_803B1510)($t6) # 0x1510($t6)
+/* 0C494C 800C3D4C 8DCE1510 */  lw    $t6, %lo(gSequencePlayers)($t6) # 0x1510($t6)
 /* 0C4950 800C3D50 00009025 */  move  $s2, $zero
 /* 0C4954 800C3D54 000ECFC2 */  srl   $t9, $t6, 0x1f
 /* 0C4958 800C3D58 57200073 */  bnel  $t9, $zero, .L800C3F28

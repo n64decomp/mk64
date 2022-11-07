@@ -23,13 +23,13 @@ typedef struct
     /* 0x54 */ s32 unk_054;
     /* 0x58 */ s32 unk_058;
     /* 0x5C */ s32 unk_05C;
-    /* 0x60 */ s32* unk_060;
-    /* 0x64 */ s32* unk_064;
-    /* 0x68 */ s32* unk_068;
-    /* 0x6C */ s32 unk_06C;
+    /* 0x60 */ s32 *unk_060;
+    /* 0x64 */ s8 *unk_064;
+    /* 0x68 */ s32 *unk_068;
+    /* 0x6C */ s8 *unk_06C;
     /* 0x70 */ s32 unk_070;
     // For at least 1 object type this is meant to be a Vtx*. See func_800555BC
-    /* 0x74 */ s32 unk_074;
+    /* 0x74 */ Vtx *unk_074;
     /* 0x78 */ s8  unk_078[0x04];
     /* 0x7C */ s32 unk_07C;
     /* 0x80 */ s32 unk_080;

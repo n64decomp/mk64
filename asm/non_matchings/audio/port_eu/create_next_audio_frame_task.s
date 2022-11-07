@@ -143,7 +143,7 @@ glabel create_next_audio_frame_task
 /* 0CC12C 800CB52C 02402025 */   move  $a0, $s2
 .L800CB530:
 /* 0CC130 800CB530 3C01803B */  lui   $at, %hi(gCurrAudioFrameDmaCount) # $at, 0x803b
-/* 0CC134 800CB534 0C02EB01 */  jal   func_800BAC04
+/* 0CC134 800CB534 0C02EB01 */  jal   decrease_sample_dma_ttls
 /* 0CC138 800CB538 AC2070BC */   sw    $zero, %lo(gCurrAudioFrameDmaCount)($at)
 /* 0CC13C 800CB53C 3C04800F */  lui   $a0, %hi(D_800EA3B0) # $a0, 0x800f
 /* 0CC140 800CB540 8C84A3B0 */  lw    $a0, %lo(D_800EA3B0)($a0)

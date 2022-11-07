@@ -1,7 +1,7 @@
 glabel func_800B7C30
 /* 0B8830 800B7C30 27BDFEC0 */  addiu $sp, $sp, -0x140
-/* 0B8834 800B7C34 3C18803B */  lui   $t8, %hi(D_803B1508) # $t8, 0x803b
-/* 0B8838 800B7C38 8F181508 */  lw    $t8, %lo(D_803B1508)($t8)
+/* 0B8834 800B7C34 3C18803B */  lui   $t8, %hi(gNotes) # $t8, 0x803b
+/* 0B8838 800B7C38 8F181508 */  lw    $t8, %lo(gNotes)($t8)
 /* 0B883C 800B7C3C 00047880 */  sll   $t7, $a0, 2
 /* 0B8840 800B7C40 01E47823 */  subu  $t7, $t7, $a0
 /* 0B8844 800B7C44 000F7980 */  sll   $t7, $t7, 6
@@ -61,7 +61,7 @@ glabel func_800B7C30
 /* 0B8918 800B7D18 00047B80 */  sll   $t7, $a0, 0xe
 /* 0B891C 800B7D1C 05E3000E */  bgezl $t7, .L800B7D58
 /* 0B8920 800B7D20 8F0E000C */   lw    $t6, 0xc($t8)
-/* 0B8924 800B7D24 0C02E16D */  jal   func_800B85B4
+/* 0B8924 800B7D24 0C02E16D */  jal   load_wave_samples
 /* 0B8928 800B7D28 8FA40154 */   lw    $a0, 0x154($sp)
 /* 0B892C 800B7D2C 8EE60008 */  lw    $a2, 8($s7)
 /* 0B8930 800B7D30 0006C040 */  sll   $t8, $a2, 1
@@ -442,7 +442,7 @@ glabel func_800B7C30
 /* 0B8EA0 800B82A0 A23800B0 */  sb    $t8, 0xb0($s1)
 /* 0B8EA4 800B82A4 AFAD00E4 */  sw    $t5, 0xe4($sp)
 /* 0B8EA8 800B82A8 8FA50140 */  lw    $a1, 0x140($sp)
-/* 0B8EAC 800B82AC 0C02DBED */  jal   synthesis_load_note_subs_eu
+/* 0B8EAC 800B82AC 0C02DBED */  jal   func_800B6FB4
 /* 0B8EB0 800B82B0 8FA40158 */   lw    $a0, 0x158($sp)
 /* 0B8EB4 800B82B4 1000000D */  b     .L800B82EC
 /* 0B8EB8 800B82B8 8FAD00E4 */   lw    $t5, 0xe4($sp)
@@ -597,7 +597,7 @@ glabel func_800B7C30
 /* 0B90D0 800B84D0 97A70112 */  lhu   $a3, 0x112($sp)
 /* 0B90D4 800B84D4 AFA30014 */  sw    $v1, 0x14($sp)
 /* 0B90D8 800B84D8 AFA30114 */  sw    $v1, 0x114($sp)
-/* 0B90DC 800B84DC 0C02E191 */  jal   func_800B8644
+/* 0B90DC 800B84DC 0C02E191 */  jal   final_resample
 /* 0B90E0 800B84E0 AFB90010 */   sw    $t9, 0x10($sp)
 /* 0B90E4 800B84E4 8FB10144 */  lw    $s1, 0x144($sp)
 /* 0B90E8 800B84E8 00409025 */  move  $s2, $v0
@@ -639,7 +639,7 @@ glabel func_800B7C30
 /* 0B9168 800B8568 02E03025 */  move  $a2, $s7
 /* 0B916C 800B856C 02603825 */  move  $a3, $s3
 /* 0B9170 800B8570 AFB40010 */  sw    $s4, 0x10($sp)
-/* 0B9174 800B8574 0C02E28B */  jal   func_800B8A2C
+/* 0B9174 800B8574 0C02E28B */  jal   note_apply_headset_pan_effects
 /* 0B9178 800B8578 AFB00014 */   sw    $s0, 0x14($sp)
 /* 0B917C 800B857C 00409025 */  move  $s2, $v0
 .L800B8580:

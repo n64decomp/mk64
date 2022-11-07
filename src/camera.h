@@ -11,7 +11,7 @@ typedef struct {
     // I think these are the "nautical angles" between pos and lookAt
     // rot[0] = pitch, rot[1] = yaw, rot[2] = roll?
     /* 0x24 */ Vec3s rot;
-    /* 0x2A */ s16 rotZ;
+    /* 0x2A */ u16 someBitFlags;
     /* 0x2C */ s16 unk_2C;
     /* 0x2E */ s16 unk_2E;
     /* 0x30 */ Vec3f unk_30;
@@ -82,7 +82,13 @@ typedef struct {
 
 void func_8001CA10(Camera*);
 void func_8001CA24(Player*, f32);
+void func_8001CA78(Player*, Camera*, Vec3f, f32*, f32*, f32*, s16, s8);
 void func_8001D794(Player*, Camera*, Vec3f, f32*, f32*, f32*, s16);
+void func_8001E0C4(Camera*, Player*, s8);
+void func_8001F87C(s32);
+
+extern s32 D_80164A2C;
+extern f32 D_80164A30;
 
 extern Camera cameras[];
 extern Camera *camera1;
@@ -93,5 +99,8 @@ extern Camera *camera4;
 extern Player *gPlayerTwo;
 extern Player *gPlayerThree;
 extern Player *gPlayerFour;
+
+// Actually define in main.c, probably need to add to main.h
+extern u16 D_80152300[];
 
 #endif

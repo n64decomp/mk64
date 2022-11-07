@@ -237,8 +237,11 @@ SECTIONS
       BUILD_DIR/src/code_800B45E0.o(.data);
       BUILD_DIR/data/data_800E8700.o(.data);
       BUILD_DIR/data/data_audio.o(.data);
-      BUILD_DIR/src/audio/load.o(.rodata*);
+      BUILD_DIR/src/audio/load.o(.data);
       BUILD_DIR/data/data_0DD0A0_2_1_0.o(.rodata);
+      BUILD_DIR/src/audio/playback.o(.data);
+      BUILD_DIR/src/audio/effects.o(.data);
+      BUILD_DIR/data/data_0DD0A0_2_1_1.o(.rodata);
       BUILD_DIR/src/os/osInitialize.o(.data*);
       BUILD_DIR/src/os/osCreateViManager.o(.data);
       BUILD_DIR/src/os/osViTable.o(.data);
@@ -266,6 +269,9 @@ SECTIONS
       BUILD_DIR/src/menus.o(.rodata);
       BUILD_DIR/src/code_800B45E0.o(.rodata);
       BUILD_DIR/data/rodata_audio.o(.rodata);
+      BUILD_DIR/src/audio/playback.o(.rodata);
+      BUILD_DIR/src/audio/effects.o(.rodata);
+      BUILD_DIR/data/rodata_audio_2.o(.rodata);
       BUILD_DIR/src/os/guRotateF.o(.rodata);
       BUILD_DIR/src/os/guPerspectiveF.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3_1.o(.rodata);
