@@ -858,7 +858,7 @@ void func_80298D7C(Camera *camera, Mat4 arg1, struct Actor *actor) {
     Vec3s sp88 = { 0, 0, 0 };
     s32 test;
 
-    if (gGamestate == 9) {
+    if (gGamestate == CREDITS_SEQUENCE) {
         var_f22 = 9000000.0f;
     } else {
         var_f22 = 1000000.0f;
@@ -2142,7 +2142,7 @@ void place_segment_06(struct ActorSpawnData *arg0) {
         }
 
         temp_s0 = &gActorList[func_8029EC88(position, rotation, velocity, actorType)];
-        if (gGamestate == 9) {
+        if (gGamestate == CREDITS_SEQUENCE) {
             func_802976D8(temp_s0->rot);
         } else {
             func_802ADDC8(&temp_s0->unk30, 5.0f, temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2]);

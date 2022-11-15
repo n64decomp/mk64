@@ -155,7 +155,7 @@ MIPSISET := -mips2 -32
 OPT_FLAGS := -O2
 
 TARGET_CFLAGS := -nostdinc -I include/libc -DTARGET_N64
-CC_CFLAGS := -fno-builtin
+CC_CFLAGS := -fno-builtin -w
 
 INCLUDE_CFLAGS := -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I .
 
