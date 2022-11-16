@@ -29,7 +29,7 @@ extern void *D_803B70D4;
 extern ? D_803B70D8;
 extern ? D_803B7180;
 extern ? D_803B718C;
-extern s32 D_803B7194;
+extern s32 gAudioRandom;
 extern ? aspMainDataEnd;
 extern ? aspMainDataStart;
 extern ? aspMainTextStart;
@@ -148,8 +148,8 @@ void *create_next_audio_frame_task(void) {
         func_800CBCB0(sp54);
     }
     D_803B70D0 = func_800B70EC(D_803B70D0, &sp70, sp60, *temp_s1_3);
-    D_803B7194 = osGetCount() * (D_803B7194 + D_803B70B8);
-    D_803B7194 = *(*sp40 + ((D_803B70B8 & 0xFF) * 2)) + D_803B7194;
+    gAudioRandom = osGetCount() * (gAudioRandom + D_803B70B8);
+    gAudioRandom = *(*sp40 + ((D_803B70B8 & 0xFF) * 2)) + gAudioRandom;
     D_803B70D4->unk40 = 0;
     D_803B70D4->unk44 = 0;
     temp_v1_2 = D_803B70D4;

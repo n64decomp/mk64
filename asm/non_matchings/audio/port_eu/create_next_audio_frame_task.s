@@ -253,10 +253,10 @@ glabel create_next_audio_frame_task
 /* 0CC2C8 800CB6C8 86270000 */   lh    $a3, ($s1)
 /* 0CC2CC 800CB6CC 0C034468 */  jal   osGetCount
 /* 0CC2D0 800CB6D0 AE020000 */   sw    $v0, ($s0)
-/* 0CC2D4 800CB6D4 3C04803B */  lui   $a0, %hi(D_803B7194) # $a0, 0x803b
+/* 0CC2D4 800CB6D4 3C04803B */  lui   $a0, %hi(gAudioRandom) # $a0, 0x803b
 /* 0CC2D8 800CB6D8 3C07803B */  lui   $a3, %hi(D_803B70B8) # $a3, 0x803b
 /* 0CC2DC 800CB6DC 24E770B8 */  addiu $a3, %lo(D_803B70B8) # addiu $a3, $a3, 0x70b8
-/* 0CC2E0 800CB6E0 24847194 */  addiu $a0, %lo(D_803B7194) # addiu $a0, $a0, 0x7194
+/* 0CC2E0 800CB6E0 24847194 */  addiu $a0, %lo(gAudioRandom) # addiu $a0, $a0, 0x7194
 /* 0CC2E4 800CB6E4 8C8A0000 */  lw    $t2, ($a0)
 /* 0CC2E8 800CB6E8 8CEB0000 */  lw    $t3, ($a3)
 /* 0CC2EC 800CB6EC 8CF80000 */  lw    $t8, ($a3)

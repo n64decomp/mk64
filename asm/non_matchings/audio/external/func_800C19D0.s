@@ -32,8 +32,8 @@ glabel L800C1A34
 /* 0C2644 800C1A44 01284823 */  subu  $t1, $t1, $t0
 /* 0C2648 800C1A48 00094900 */  sll   $t1, $t1, 4
 /* 0C264C 800C1A4C 0019C980 */  sll   $t9, $t9, 6
-/* 0C2650 800C1A50 3C0B8019 */  lui   $t3, %hi(D_80191420) # $t3, 0x8019
-/* 0C2654 800C1A54 256B1420 */  addiu $t3, %lo(D_80191420) # addiu $t3, $t3, 0x1420
+/* 0C2650 800C1A50 3C0B8019 */  lui   $t3, %hi(sSoundBanks) # $t3, 0x8019
+/* 0C2654 800C1A54 256B1420 */  addiu $t3, %lo(sSoundBanks) # addiu $t3, $t3, 0x1420
 /* 0C2658 800C1A58 03295021 */  addu  $t2, $t9, $t1
 /* 0C265C 800C1A5C 014B8021 */  addu  $s0, $t2, $t3
 /* 0C2660 800C1A60 C60C001C */  lwc1  $f12, 0x1c($s0)
