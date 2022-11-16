@@ -8,6 +8,9 @@
 #include "objects.h"
 #include "main.h"
 
+/* externs */
+void func_80280268(s32);
+
 extern f32 D_80150130[];
 
 f32 D_802856B0 = 98.0f;
@@ -23,7 +26,7 @@ s16 sCutsceneShot;
 s16 gCutsceneShotTimer;
 s32 D_802876D4;
 s32 D_802876D8;
-s32 D_802876DC; // fake? Or D8 is array.
+s32 D_802876DC; // fake/padding? Or D8 is array?
 
 // static bss declared in function.
 extern f32 D_80287B18;
@@ -427,7 +430,8 @@ dummy_label_888430: ;
   }
 }
 
-s32 func_80282D90(Camera *camera, struct struct_80282C40 *arg1, struct struct_80282C40 *arg2, s32 arg3) {
+// todo: Cast to normal Camera? Or from CinematicCamera?
+s32 func_80282D90(Camera *camera, struct struct_80286A04 *arg1, struct struct_80286A04 *arg2, s32 arg3) {
     s32 res;
 
     func_802832C4(&func_80282434, camera, 0, 0);
@@ -662,7 +666,7 @@ void func_80283430(void)
 //extern f32 D_80287710;
 //extern f32 D_8028771C;
 
-void func_80284AE8(CinematicCamera*);
+void func_80284AE8(CinematicCamera *camera);
 
 // Camera init? or scene init? scene_entry_point?
 s32 func_80283648(Camera *camera) {
@@ -675,7 +679,7 @@ s32 func_80283648(Camera *camera) {
 	Vec3f sp40;
 	u8 temp;
 
-	static f32 D_802876F8 = 0;
+	//f32 D_802876F8 = 0;
 	//u8 D_802876FC;
 
 	func_80283428();
@@ -706,18 +710,18 @@ s32 func_80283648(Camera *camera) {
 			func_80282504(&D_802876E0[12], (f32 *) (&D_802876E0), sp64, sp6E, ((s32) sp6C));
 		}
 
-		//var_f0 = D_802876F8;
-
-		if (D_802876F8 > 65536.0f)
-		{
-			D_802876F8 -= 65536.0f;
-		}
-		if (D_802876F8 < (-65536.0f))
-		{
-			D_802876F8 += 65536.0f;
-		}
-
 		var_f0 = D_802876F8;
+
+		if (var_f0 > 65536.0f)
+		{
+			var_f0 -= 65536.0f;
+		}
+		if (var_f0 < (-65536.0f))
+		{
+			var_f0 += 65536.0f;
+		}
+
+		D_802876F8 = var_f0;
 		if (var_f0 < 0.0f)
 		{
 			var_f0 += 65536.0f;
@@ -746,90 +750,90 @@ s32 func_80283648(Camera *camera) {
 GLOBAL_ASM("asm/non_matchings/code_80281FA0/func_80283648.s")
 #endif
 
-void func_80283968(s32 arg0) {
+void func_80283968(Camera *camera) {
     func_8028100C(-0xC6C, 0xD2, -0x1EF);
 }
 
-void func_80283994(s32 arg0) {
+void func_80283994(CinematicCamera *camera) {
     func_80280FFC();
 }
 
-void func_802839B4(s32 arg0) {
+void func_802839B4(Camera *camera) {
     D_802856B8 = 52.0f;
 }
 
-void func_802839CC(s32 arg0) {
+void func_802839CC(Camera *camera) {
     D_802856B8 = 0.0f;
 }
 
-void func_802839E0(s32 arg0) {
+void func_802839E0(Camera *camera) {
     func_80092C80();
 }
 
-void func_80283A00(s32 arg0) {
+void func_80283A00(Camera *camera) {
     if (D_800DC5E4 == 0) {
         play_sound2(0x49009009);
     }
 }
 
-void func_80283A34(s32 arg0) {
+void func_80283A34(CinematicCamera *camera) {
     func_800CA0CC();
 }
 
-void func_80283A54(s32 arg0) {
+void func_80283A54(Camera *camera) {
     play_sound2(0x49009014);
 }
 
 // Balloon pop
-void func_80283A7C(s32 arg0) {
+void func_80283A7C(CinematicCamera *camera) {
     play_sound2(0x4900801E);
 }
 
-void func_80283AA4(s32 arg0) {
+void func_80283AA4(Camera *camera) {
     play_sound2(0x4900801F);
 }
 
-void func_80283ACC(s32 arg0) {
+void func_80283ACC(Camera *camera) {
     play_sound2(0x49008020);
 }
 
-void func_80283AF4(s32 arg0) {
+void func_80283AF4(Camera *camera) {
     play_sound2(0x49008021);
 }
 
-void func_80283B1C(s32 arg0) {
+void func_80283B1C(Camera *camera) {
     play_sound2(0x49008022);
 }
 
-void func_80283B44(s32 arg0) {
+void func_80283B44(Camera *camera) {
     play_sound2(0x49008023);
 }
 
-void func_80283B6C(s32 arg0) {
+void func_80283B6C(Camera *camera) {
     func_800CA0B8();
     func_800C9060(0, 0x19009005);
     func_800CA0A0();
 }
 
-void func_80283BA4(s32 arg0) {
+void func_80283BA4(Camera *camera) {
     func_800CA0B8();
     func_800C90F4(0, (gPlayerFour->characterId * 0x10) + 0x29008004);
     func_800CA0A0();
 }
 
-void func_80283BF0(s32 arg0) {
+void func_80283BF0(CinematicCamera *camera) {
     func_800C8EF8(0x1A);
 }
 
-void func_80283C14(s32 arg0) {
+void func_80283C14(Camera *camera) {
     func_800C8EF8(0x1B);
 }
 
-void func_80283C38(s32 arg0) {
+void func_80283C38(Camera *camera) {
     func_800CB134();
 }
 
-void func_80283C58(CinematicCamera *arg0) {
+void func_80283C58(CinematicCamera *camera) {
     func_800CB14C();
 }
 
@@ -839,7 +843,7 @@ void func_80283C78(s32 arg0) {
     }
 }
 
-void func_80283CA8(s32 arg0) {
+void func_80283CA8(CinematicCamera *camera) {
     func_800CA008(0, 3);
 }
 
@@ -971,13 +975,13 @@ struct struct_80282C40 D_80285940[] = {
 	{ 0xFF, 0x00, 0x00, 0x1E, 0x00, 0x00, { 0xF1E0, 0x000C, 0xFE71} },
 };
 // todo: label from sm64
-struct _struct_D_80286B5C_0x8 {
+struct Cutscene {
     /* 0x0 */ void (*shot)(Camera*);
-    /* 0x4 */ s16 unk4;
-    /* 0x6 */ s16 pad;
+    /* 0x4 */ s16 duration;
+    /* 0x6 */ //s16 pad;
 }; /* size = 0x8 */
-extern struct _struct_D_80286B5C_0x8 D_80285D10[];
-void func_80283D2C(Camera *camera) {
+extern struct Cutscene D_80285D10[];
+void func_80283D2C(CinematicCamera *camera) {
     D_802856B8 = 120.0f;
     func_802832C4(&func_80283CA8, camera, 0, 0);
     func_802832C4(&func_80283A34, camera, 1, 1);
@@ -990,8 +994,7 @@ void func_80283D2C(Camera *camera) {
     func_802832C4(&func_80283A7C, camera, 130, 130);
     func_802832C4(&func_80283A7C, camera, 152, 152);
     func_802832C4(&func_80283A7C, camera, 160, 160);
-                                      // 330            // 330 - 60 todo: import var
-    func_802832C4(&func_80283994, camera, D_80285D10[0].unk4 - 60, D_80285D10[0].unk4 - 60);
+    func_802832C4(&func_80283994, camera, D_80285D10[0].duration - 60, D_80285D10[0].duration - 60);
     func_80282D90(camera, &D_802856DC, &D_80285718, 0);
 }
 
@@ -1073,12 +1076,12 @@ void func_8028422C(Camera *camera) {
     func_802832C4(&func_80284184, camera, 6, -1);
 }
 
-void func_802842A8(s32 arg0) {
-    func_80282D90(arg0, &D_802858B0, &D_802858C8, 0);
+void func_802842A8(Camera *camera) {
+    func_80282D90(camera, &D_802858B0, &D_802858C8, 0);
 }
 
-void func_802842D8(s32 arg0) {
-    func_80282D90(arg0, &D_802857F0, &D_80285850, 0);
+void func_802842D8(Camera *camera) {
+    func_80282D90(camera, &D_802857F0, &D_80285850, 0);
 }
 
 void func_80284308(Camera *camera) {
@@ -1125,7 +1128,6 @@ struct struct_80282C40 D_80285A4C[] = {
 	{ 0x00, 0x00, 0x00, 45, 0x00, 0x00, { 0xF219, 0xFFF7, 0xFD56} },
 	{ 0xFF, 0x00, 0x00, 45, 0x00, 0x00, { 0xF1E8, 0xFFED, 0xFDD9} },
 };
-
 
 struct struct_80282C40 D_80285A88[] = {
 	{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, { 0xF3D8, 0x0012, 0xFE0E} },
@@ -1222,7 +1224,7 @@ struct struct_80282C40 D_80285CE0[] = {
 
 void func_80284308(Camera *);
 
-struct _struct_D_80286B5C_0x8 D_80285D10[] = {
+struct Cutscene D_80285D10[] = {
     { func_80283D2C, 330 },
     { func_802840C8, 270 },
     { func_802842D8, 247 },
@@ -1234,53 +1236,53 @@ struct _struct_D_80286B5C_0x8 D_80285D10[] = {
     { func_80284308, 0x7FFF },
 };
 
-void func_80284418(s32 arg0) {
-    func_802832C4(&func_80283B1C, arg0, 0x52, 0x52);
-    func_802832C4(&func_80283B1C, arg0, 0x48, 0x48);
-    func_802832C4(&func_80283B1C, arg0, 0x3D, 0x3D);
-    func_80282D90(arg0, &D_80285A10, &D_80285A4C, 0);
+void func_80284418(Camera *camera) {
+    func_802832C4(&func_80283B1C, camera, 0x52, 0x52);
+    func_802832C4(&func_80283B1C, camera, 0x48, 0x48);
+    func_802832C4(&func_80283B1C, camera, 0x3D, 0x3D);
+    func_80282D90(camera, &D_80285A10, &D_80285A4C, 0);
 }
 
-void func_80284494(s32 arg0) {
-    func_802832C4(&func_80283ACC, arg0, 0x1E, 0x1E);
-    func_802832C4(&func_80283968, arg0, 0, 0);
-    func_80282D90(arg0, &D_80285A88, &D_80285AB8, 0);
+void func_80284494(Camera *camera) {
+    func_802832C4(&func_80283ACC, camera, 0x1E, 0x1E);
+    func_802832C4(&func_80283968, camera, 0, 0);
+    func_80282D90(camera, &D_80285A88, &D_80285AB8, 0);
 }
 
-void func_802844FC(s32 arg0) {
-    func_802832C4(&func_80283AA4, arg0, 0x3B, 0x3B);
-    func_80282D90(arg0, &D_80285AE8, &D_80285B00, 0);
+void func_802844FC(Camera *camera) {
+    func_802832C4(&func_80283AA4, camera, 0x3B, 0x3B);
+    func_80282D90(camera, &D_80285AE8, &D_80285B00, 0);
 }
 
-void func_8028454C(s32 arg0) {
-    func_802832C4(&func_80283CA8, arg0, 0, 0);
-    func_802832C4(&func_80283A34, arg0, 1, 1);
-    func_802832C4(&func_80283C38, arg0, 0, 0);
-    func_802832C4(&func_80283994, arg0, 0x3C, 0x3C);
-    func_80282D90(arg0, &D_80285B18, &D_80285B54, 0);
+void func_8028454C(Camera *camera) {
+    func_802832C4(&func_80283CA8, camera, 0, 0);
+    func_802832C4(&func_80283A34, camera, 1, 1);
+    func_802832C4(&func_80283C38, camera, 0, 0);
+    func_802832C4(&func_80283994, camera, 0x3C, 0x3C);
+    func_80282D90(camera, &D_80285B18, &D_80285B54, 0);
 }
 
-void func_802845EC(s32 arg0) {
-    func_80282D90(arg0, &D_80285B90, &D_80285BA8, 0);
+void func_802845EC(Camera *camera) {
+    func_80282D90(camera, &D_80285B90, &D_80285BA8, 0);
 }
 
-void func_8028461C(s32 arg0) {
+void func_8028461C(Camera *camera) {
     func_80283240(1);
-    func_80283B6C(arg0);
+    func_80283B6C(camera);
 }
 
-void func_80284648(s32 arg0) {
-    func_802832C4(&func_802845EC, arg0, 0, 0);
-    func_802832C4(&func_8028461C, arg0, 0x110, 0x110);
-    func_802832C4(&func_80283BA4, arg0, 0x115, 0x115);
+void func_80284648(Camera *camera) {
+    func_802832C4(&func_802845EC, camera, 0, 0);
+    func_802832C4(&func_8028461C, camera, 0x110, 0x110);
+    func_802832C4(&func_80283BA4, camera, 0x115, 0x115);
 }
 
 UNUSED void func_802846AC(void) {
 
 }
 
-void func_802846B4(s32 arg0) {
-    func_80282D90(arg0, &D_80285C38, &D_80285C74, 0);
+void func_802846B4(Camera *camera) {
+    func_80282D90(camera, &D_80285C38, &D_80285C74, 0);
 }
 
 // todo: What does this even do?
@@ -1295,7 +1297,7 @@ void func_802846E4(Camera *camera) {
     camera->pos[2] += (gPlayerFour->pos[2] - -97.0f);
 }
 
-struct _struct_D_80286B5C_0x8 D_80285D58[] = {
+struct Cutscene D_80285D58[] = {
     { func_8028454C, 300 },
     { func_80284154, 175 },
     { func_802846B4, 200 },
@@ -1582,14 +1584,15 @@ static struct struct_80285D80 D_80285D80[] = {
 };
 
 struct struct_80286A04 {
-    u8 unk0[4];
+    u8 unk0;
+    u8 unk1;
     struct struct_80285D80 *unk4;
     struct struct_80285D80 *unk8;
+    u16 unkC;
 };
 
-struct struct_80286A04 D_80286A04[] = {
-    {{ 0x01, 0x00, 0x00, 0x00 }, &D_80285D80[162], &D_80285D80[162]}
-};
+//struct struct_80286A04 D_80286A04[] = {
+//};
 
 struct struct_80286A10 {
     u16 unk0[4];
@@ -1598,33 +1601,30 @@ struct struct_80286A10 {
 };
 
 // 0xC90 (80285D80 size) 3216 decimal.
-struct struct_80286A10 D_80286A10[] = {
+struct struct_80286A04 D_80286A04[] = {
 
-	{{ 0x0096, 0x0000, 0x0008, 0x0000 }, &D_80285D80[0], &D_80285D80[4] },
-    {{ 0x00F1, 0x0000, 0x0009, 0x0000 }, &D_80285D80[8], &D_80285D80[13] },
-    {{ 0x00F1, 0x0000, 0x000B, 0x0000 }, &D_80285D80[26], &D_80285D80[34] },
-	{{ 0x00F1, 0x0000, 0x0005, 0x0000 }, &D_80285D80[18], &D_80285D80[22] },
-    {{ 0x00F1, 0x0000, 0x0002, 0x0000 }, &D_80285D80[42], &D_80285D80[48] },
-    {{ 0x00F1, 0x0000, 0x000E, 0x0000 }, &D_80285D80[259], &D_80285D80[263] },
-	{{ 0x00F1, 0x0000, 0x000C, 0x0000 }, &D_80285D80[55], &D_80285D80[59] },
-    {{ 0x00F1, 0x0000, 0x0007, 0x0000 }, &D_80285D80[63], &D_80285D80[71] },
-    {{ 0x00F1, 0x0000, 0x0001, 0x0000 }, &D_80285D80[79], &D_80285D80[92] },
-	{{ 0x00F1, 0x0000, 0x0004, 0x0000 }, &D_80285D80[105], &D_80285D80[112] },
-    {{ 0x00F1, 0x0000, 0x0012, 0x0000 }, &D_80285D80[119], &D_80285D80[128] },
-    {{ 0x00F0, 0x0000, 0x0000, 0x0000 }, &D_80285D80[155], &D_80285D80[162] },
-	{{ 0x00F0, 0x0000, 0x0006, 0x0000 }, &D_80285D80[169], &D_80285D80[176] },
-    {{ 0x00F0, 0x0000, 0x000A, 0x0000 }, &D_80285D80[183], &D_80285D80[193] },
-    {{ 0x00F0, 0x0000, 0x0003, 0x0000 }, &D_80285D80[203], &D_80285D80[211] },
-	{{ 0x00F0, 0x0000, 0x000D, 0x0000 }, &D_80285D80[219], &D_80285D80[232] },
-    {{ 0x00F0, 0x0000, 0x0100, 0x0000 }, &D_80285D80[162], &D_80285D80[162] },
-    {{ 0x00F2, 0x0000, 0x0207, 0x0000 }, &D_80285D80[245], &D_80285D80[252] },
+    { 0x01, 0x00, &D_80285D80[162], &D_80285D80[162], 0x0096 },
+	{ 0x00, 0x08, &D_80285D80[0],   &D_80285D80[4],   0x00F1 },
+    { 0x00, 0x09, &D_80285D80[8],   &D_80285D80[13],  0x00F1 },
+    { 0x00, 0x0B, &D_80285D80[26],  &D_80285D80[34],  0x00F1 },
+	{ 0x00, 0x05, &D_80285D80[18],  &D_80285D80[22],  0x00F1 },
+    { 0x00, 0x02, &D_80285D80[42],  &D_80285D80[48],  0x00F1 },
+    { 0x00, 0x0E, &D_80285D80[259], &D_80285D80[263], 0x00F1 },
+	{ 0x00, 0x0C, &D_80285D80[55],  &D_80285D80[59],  0x00F1 },
+    { 0x00, 0x07, &D_80285D80[63],  &D_80285D80[71],  0x00F1 },
+    { 0x00, 0x01, &D_80285D80[79],  &D_80285D80[92],  0x00F1 },
+	{ 0x00, 0x04, &D_80285D80[105], &D_80285D80[112], 0x00F1 },
+    { 0x00, 0x12, &D_80285D80[119], &D_80285D80[128], 0x00F0 },
+    { 0x00, 0x00, &D_80285D80[155], &D_80285D80[162], 0x00F0 },
+	{ 0x00, 0x06, &D_80285D80[169], &D_80285D80[176], 0x00F0 },
+    { 0x00, 0x0A, &D_80285D80[183], &D_80285D80[193], 0x00F0 },
+    { 0x00, 0x03, &D_80285D80[203], &D_80285D80[211], 0x00F0 },
+	{ 0x00, 0x0D, &D_80285D80[219], &D_80285D80[232], 0x00F0 },
+    { 0x01, 0x00, &D_80285D80[162], &D_80285D80[162], 0x00F2 },
+    { 0x02, 0x07, &D_80285D80[245], &D_80285D80[252], 0x00F0 },
 };
 
-// actual ptr?
-u16 D_80286B30[] = {
-    0x00F0, 0x0000,
-};
-// compiler generated array access?
+
 u16 D_80286B34[] = {
     0x0096, 0x00F3, 0x00F3, 0x00F3,
     0x00F3, 0x00F3, 0x00F3, 0x00F3,
@@ -1633,99 +1633,56 @@ u16 D_80286B34[] = {
     0x00F2, 0x00F9, 0x00F0, 0x0000,
 };
 
-
-#ifdef MIPS_TO_C
-//generated by m2c commit bece1d6db17040749f77dbbd090363cc6fb926f9
-void func_80280268(s32);                                /* extern */
-//static ? D_80286A04;                                /* unable to generate initializer */
-//static ? D_80286A10;                                /* unable to generate initializer */
-
-//f32 D_802856B4 = 12.0f;
-//extern u8 D_80286B34[];
-//extern struct struct_80286A04 D_80286A04[];
-//extern struct struct_80286A10 D_80286A10[];
-
-void func_802847CC(s32 arg0) {
-    u16 sp2E;
-    u16 sp2C;
-    s32 sp24;
-    f32 temp_f4 = D_802856B4;
-    s16 temp_a2;
-    s16 temp_a2_2;
-    s32 var_t9;
-    u16 temp_v0 = D_80286A10->unk0[D_800DC5E4];
-    //u16 temp_v0_5;
-    //u8 temp_v0_2;
-    void *temp_v0_3;
-    void *temp_v0_4;
-    f32 cf;
-
-    //temp_f4 = D_802856B4;
-    //temp_v0 = D_80286A10[D_800DC5E4]; // * 0x10));
-    if (((s32)cf & 0x78) != 0) {
-        if (((s32)cf & 0x78) == 0) {
-            var_t9 = (s32) (temp_f4 - 2.1474836e9f) | 0x80000000; // CF00 0000
-        } else {
-            goto block_3;
-        }
-    } else {
-        var_t9 = (s32) temp_f4;
-        if (var_t9 < 0) {
-block_3:
-            var_t9 = -1;
-        }
-    }
-    sp2E = (temp_v0 - var_t9) - 0xA;
-    sp2C = temp_v0;
-    func_802832C4(func_80283CD0, arg0, 0, 0);
-    func_802832C4(func_80283A00, arg0, 8, 8);
-    func_802832C4(func_80283C78, arg0, 149, 149);
-    func_802832C4(func_80282434, arg0, 0, 0);
-    
-    switch (D_80286A04->unk0[D_800DC5E4]) {                            /* irregular */
+void func_802847CC(Camera *camera) {
+   u16 sp2E;
+  u16 sp2C;
+  // D_802856B4 cast to u32 triggers cfc1.
+  sp2E = D_80286A04[D_800DC5E4].unkC - (10 - (-(((u16)(u32) D_802856B4))));
+    sp2C = D_80286A04[D_800DC5E4].unkC;
+    //sp2E = 
+  func_802832C4(func_80283CD0, camera, 0, 0);
+  func_802832C4(func_80283A00, camera, 8, 8);
+  func_802832C4(func_80283C78, camera, 149, 149);
+  func_802832C4(func_80282434, camera, 0, 0);
+  switch (D_80286A04[D_800DC5E4].unk0)
+  {
     case 1:
-        func_802832C4(func_802839CC, arg0, 0, -1);
-        temp_a2 = sp2E - 0x14;
-        func_802832C4(func_802839E0, arg0, temp_a2, temp_a2);
-        break;
+      func_802832C4(func_802839CC, camera, 0, -1);
+      func_802832C4(func_802839E0, camera, sp2E - 0x14, sp2E - 0x14);
+      break;
+
     case 2:
-        func_802832C4(func_802839B4, arg0, 0, 0);
-        func_802832C4(func_80283D04, arg0, 247, 247);
-        temp_v0_3 = D_80286A04->unk0[D_800DC5E4];
-        func_80282D90(arg0, temp_v0_3, temp_v0_3, 0);
-                                     //unk4           //unk8
-        break;
+      func_802832C4(func_802839B4, camera, 0, 0);
+      func_802832C4(func_80283D04, camera, 247, 247);
+      func_80282D90(camera, D_80286A04[D_800DC5E4].unk4, D_80286A04[D_800DC5E4].unk8, 0);
+      break;
+
     default:
-        func_802832C4(func_802839B4, arg0, 0, 0);
-        sp24 = (s32) sp2E;
-        func_802832C4(func_802839CC, arg0, (s16) sp2E, (s16) sp2E);
-        temp_a2_2 = sp2E - 0x14;
-        func_802832C4(func_802839E0, arg0, temp_a2_2, temp_a2_2);
-        temp_v0_4 = D_80286A04->unk0[D_800DC5E4];
-        func_80282D90(arg0, temp_v0_4, temp_v0_4, 0);
-                                     //unk4           //unk8
-        break;
+      func_802832C4(func_802839B4, camera, 0, 0);
+      func_802832C4(func_802839CC, camera, sp2E, sp2E);
+      func_802832C4(func_802839E0, camera, sp2E - 0x14, sp2E - 0x14);
+      func_80282D90(camera, D_80286A04[D_800DC5E4].unk4, D_80286A04[D_800DC5E4].unk8, 0);
+      break;
+
+  }
+
+  if (gCCSelection == 3)
+  {
+    sp2C = D_80286B34[D_800DC5E4];
+  }
+  if (gCutsceneShotTimer == sp2C)
+  {
+    if (D_80286A04[D_800DC5E4].unk0 != 2)
+    {
+      func_80280268(D_80286A04[D_800DC5E4 + 1].unk1);
     }
-    if (gCCSelection == CC_EXTRA) {
-        sp2C = D_80286B34[D_800DC5E4];
-    }
-    if (sp2C == gCutsceneShotTimer) {
-        //temp_v0_5 = D_800DC5E4;
-        if (D_80286A04->unk0[D_800DC5E4] != 2) {
-            // Goto menu or load next credits course?
-            func_80280268(D_80286A04->unk0[D_800DC5E4 + 0x11]); // ->unk11
-        }
-    }
+  }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80281FA0/func_802847CC.s")
-#endif
 
+void func_802847CC(Camera*);
 
-
-void func_802847CC(s32);
-
-struct _struct_D_80286B5C_0x8 D_80286B5C[] = {
+// Start of credits cutscene?
+struct Cutscene D_80286B5C[] = {
     { func_802847CC, 0x7FFF },
 };
 
@@ -1737,17 +1694,17 @@ struct struct_80284AE8 {
     u8 unk1C;
 };
 
-void func_80284AE8(CinematicCamera *c) {
+void func_80284AE8(CinematicCamera *camera) {
     s32 pad[3];
     s16 cutsceneDuration;
 
 #define CUTSCENE(id, cutscene)                                                                            \
     case id:                                                                                              \
-        cutsceneDuration = cutscene[sCutsceneShot].unk4;                                                  \
-        cutscene[sCutsceneShot].shot(c);                                                                  \
+        cutsceneDuration = cutscene[sCutsceneShot].duration;                                                  \
+        cutscene[sCutsceneShot].shot(camera);                                                                  \
 
-    if (!c->cutscene) { return; }
-    switch (c->cutscene) {
+    if (!camera->cutscene) { return; }
+    switch (camera->cutscene) {
         CUTSCENE(2, D_80285D10)
         break;
         CUTSCENE(3, D_80285D10)
@@ -1755,7 +1712,7 @@ void func_80284AE8(CinematicCamera *c) {
         CUTSCENE(4, D_80285D10)
         break;
         CUTSCENE(5, D_80285D58)
-        func_80283C58(c);
+        func_80283C58(camera);
         break;
         CUTSCENE(6, D_80286B5C)
         break;
