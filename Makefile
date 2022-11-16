@@ -506,6 +506,7 @@ $(BUILD_DIR)/src/os/osSyncPrintf.o:        OPT_FLAGS := -O3
 ifeq ($(COMPILER),ido)
     $(BUILD_DIR)/src/audio/%.o:        OPT_FLAGS := -O2 -use_readwrite_const
     $(BUILD_DIR)/src/audio/port_eu.o:  OPT_FLAGS := -O2 -framepointer
+    $(BUILD_DIR)/src/audio/external.o:  OPT_FLAGS := -O2 -framepointer
 endif
 
 #################### Compile course vertex to mio0 #####################

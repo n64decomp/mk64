@@ -32,22 +32,19 @@ glabel D_8018FC08
 glabel D_8018FC10
 .skip 16
 
-glabel D_8018FC20
+glabel sSoundRequests
 .skip 6144
 
-glabel D_80191420
-.skip 36
+glabel sSoundBanks
+.skip 5760
 
-glabel D_80191444
-.skip 5724
-
-glabel D_80192AA0
+glabel sSoundBankUsedListBack
 .skip 8
 
-glabel D_80192AA8
+glabel sSoundBankFreeListFront
 .skip 8
 
-glabel D_80192AB0
+glabel sNumSoundsInBank
 .skip 8
 
 glabel D_80192AB8
@@ -56,7 +53,7 @@ glabel D_80192AB8
 glabel D_80192C38
 .skip 4
 
-glabel D_80192C3C
+glabel sSoundBankDisabled
 .skip 12
 
 glabel D_80192C48

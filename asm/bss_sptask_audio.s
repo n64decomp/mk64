@@ -164,7 +164,7 @@ glabel D_803B718C
 glabel D_803B7192
 .skip 2
 
-glabel D_803B7194
+glabel gAudioRandom
 .skip 4
 
 glabel gAudioErrorFlags

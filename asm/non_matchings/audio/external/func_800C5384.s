@@ -4,8 +4,8 @@ glabel func_800C5384
 /* 0C5F8C 800C538C 309500FF */  andi  $s5, $a0, 0xff
 /* 0C5F90 800C5390 00157100 */  sll   $t6, $s5, 4
 /* 0C5F94 800C5394 01D57023 */  subu  $t6, $t6, $s5
-/* 0C5F98 800C5398 3C0F8019 */  lui   $t7, %hi(D_80191420) # $t7, 0x8019
-/* 0C5F9C 800C539C 25EF1420 */  addiu $t7, %lo(D_80191420) # addiu $t7, $t7, 0x1420
+/* 0C5F98 800C5398 3C0F8019 */  lui   $t7, %hi(sSoundBanks) # $t7, 0x8019
+/* 0C5F9C 800C539C 25EF1420 */  addiu $t7, %lo(sSoundBanks) # addiu $t7, $t7, 0x1420
 /* 0C5FA0 800C53A0 000E7180 */  sll   $t6, $t6, 6
 /* 0C5FA4 800C53A4 AFBF004C */  sw    $ra, 0x4c($sp)
 /* 0C5FA8 800C53A8 AFBE0048 */  sw    $fp, 0x48($sp)

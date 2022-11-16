@@ -162,14 +162,20 @@ glabel jpt_800F35C4
 .word L800C1A34, L800C1A34, L800C1A34, L800C1A34
 .word L800C1AEC, L800C1A34
 
+# begin func_800C1E2C
 glabel D_800F35DC
 .float 0.1
+# end func_800C1E2C
 
+#begin func_800C1F8C
 glabel D_800F35E0
 .float 100000.0
+#end func_800C1F8C
 
+#begin func_800C21E8
 glabel D_800F35E4
 .float 100000.0
+#end func_800C21E8
 
 glabel D_800F35E8
 .float 0.85
@@ -261,6 +267,7 @@ glabel D_800F3728
 glabel D_800F372C
 .float 0.9
 
+# begin func_800C6758
 glabel D_800F3730
 .float 0.6
 
@@ -269,6 +276,7 @@ glabel D_800F3734
 
 glabel D_800F3738
 .float 0.95
+# end func_800C6758
 
 glabel jpt_800F373C
 .word L800C69C8, L800C6A0C, L800C6910, L800C6C74
@@ -305,6 +313,7 @@ glabel jpt_800F3868
 .word L800C7514, L800C75C8, L800C74D4, L800C75C4
 .word L800C75C8, L800C75B4, L800C75BC
 
+# begin func_800C8770
 glabel D_800F3894
 .float 0.7
 
@@ -322,6 +331,7 @@ glabel D_800F38A4
 
 glabel D_800F38A8
 .float 0.03
+# end func_800C8770
 
 glabel D_800F38AC
 .float 0.012000
@@ -438,6 +448,7 @@ glabel D_800F3958
 glabel D_800F395C
 .float 4805.0
 
+# start func_800C9A88 data
 glabel jpt_800F3960
 .word L800C9B3C, L800C9B3C, L800C9B68, L800C9B94
 .word L800C9BC0, L800C9BEC, L800C9B68, L800C9BEC
@@ -471,6 +482,7 @@ glabel D_800F39A0
 
 glabel D_800F39A4
 .float 1922.0
+# end func_800C9A88 data
 
 glabel D_800F39A8
 .float 0.55

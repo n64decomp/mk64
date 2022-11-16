@@ -50,9 +50,9 @@ glabel func_800C4FE4
 /* 0C5CA0 800C50A0 01F17823 */  subu  $t7, $t7, $s1
 /* 0C5CA4 800C50A4 000F7900 */  sll   $t7, $t7, 4
 /* 0C5CA8 800C50A8 000E7180 */  sll   $t6, $t6, 6
-/* 0C5CAC 800C50AC 3C198019 */  lui   $t9, %hi(D_80191420) # $t9, 0x8019
+/* 0C5CAC 800C50AC 3C198019 */  lui   $t9, %hi(sSoundBanks) # $t9, 0x8019
 /* 0C5CB0 800C50B0 92460000 */  lbu   $a2, ($s2)
-/* 0C5CB4 800C50B4 27391420 */  addiu $t9, %lo(D_80191420) # addiu $t9, $t9, 0x1420
+/* 0C5CB4 800C50B4 27391420 */  addiu $t9, %lo(sSoundBanks) # addiu $t9, $t9, 0x1420
 /* 0C5CB8 800C50B8 01CFC021 */  addu  $t8, $t6, $t7
 /* 0C5CBC 800C50BC 03198021 */  addu  $s0, $t8, $t9
 /* 0C5CC0 800C50C0 92020028 */  lbu   $v0, 0x28($s0)

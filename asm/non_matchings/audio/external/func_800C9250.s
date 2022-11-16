@@ -9,8 +9,8 @@ glabel func_800C9250
 /* 0C9E6C 800C926C 000F78C0 */  sll   $t7, $t7, 3
 /* 0C9E70 800C9270 3C18800F */  lui   $t8, %hi(gPlayers+0x254)
 /* 0C9E74 800C9274 030FC021 */  addu  $t8, $t8, $t7
-/* 0C9E78 800C9278 3C08803B */  lui   $t0, %hi(D_803B7194) # $t0, 0x803b
-/* 0C9E7C 800C927C 8D087194 */  lw    $t0, %lo(D_803B7194)($t0)
+/* 0C9E78 800C9278 3C08803B */  lui   $t0, %hi(gAudioRandom) # $t0, 0x803b
+/* 0C9E7C 800C927C 8D087194 */  lw    $t0, %lo(gAudioRandom)($t0)
 /* 0C9E80 800C9280 97186BE4 */  lhu   $t8, %lo(gPlayers+0x254)($t8)
 /* 0C9E84 800C9284 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 0C9E88 800C9288 3C012900 */  lui   $at, (0x29008001 >> 16) # lui $at, 0x2900
