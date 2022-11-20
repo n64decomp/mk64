@@ -3,6 +3,17 @@
 
 #include "common_structs.h"
 
+// todo put this define in types.h or similar.
+// Certain functions are marked as having return values, but do not
+// actually return a value. This causes undefined behavior, which we'd rather
+// avoid on modern GCC. This only impacts -O2 and can matter for both the function
+// itself and functions that call it.
+#ifdef AVOID_UB
+    #define BAD_RETURN(cmd) void
+#else
+    #define BAD_RETURN(cmd) cmd
+#endif
+
 typedef struct {
     /* 0x00 */ Vec3f pos;
     /* 0x0C */ Vec3f lookAt;
@@ -38,6 +49,9 @@ typedef struct {
     /* 0xB2 */ s16 unk_B2;
     /* 0xB4 */ f32 unk_B4;
 } Camera; /* size = 0xB8 */
+
+typedef BAD_RETURN(s32) (*CameraEvent)(struct Camera *c);
+typedef CameraEvent CutsceneShot;
 
 // The camera used for cutscenes appears to
 // use a slightly different struct.

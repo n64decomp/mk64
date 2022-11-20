@@ -4,6 +4,7 @@
 #include <common_structs.h>
 #include <config.h>
 #include <defines.h>
+#include <sounds.h>
 #include "camera.h"
 #include "waypoints.h"
 #include "staff_ghosts.h"
@@ -903,7 +904,7 @@ loop_2:
                     if ((temp_t7 & 0xFFFF) >= 3) {
                         D_800DC5A8 = 0;
                     }
-                    play_sound2(0x4900801C);
+                    play_sound2(SOUND_ACTION_PING);
                     func_800029B0();
                 }
             }
@@ -1006,8 +1007,8 @@ void func_8028FCBC(void) {
             if (D_800DC51C == 0) {
                 if (gModeSelection == GRAND_PRIX) {
                     func_800C8EF8(11);
-                    play_sound2(0x49008018);
-                    play_sound2(0x49008019);
+                    play_sound2(SOUND_ACTION_REV_ENGINE);
+                    play_sound2(SOUND_ACTION_REV_ENGINE_2);
                 } else {
                     func_800C8EF8(22);
                 }

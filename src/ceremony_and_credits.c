@@ -7,6 +7,8 @@
 #include "code_80281FA0.h"
 #include "objects.h"
 #include "main.h"
+#include "camera.h"
+#include <sounds.h>
 
 /* externs */
 void func_80280268(s32);
@@ -28,16 +30,41 @@ s32 D_802876D4;
 s32 D_802876D8;
 s32 D_802876DC; // fake/padding? Or D8 is array?
 
-// static bss declared in function.
-//extern f32 D_80287B18;
-//extern s16 D_80287B1C;
+struct struct_80283431 {
+    Vec3f unk0;
+    Vec3s unkC;
+};
+
+struct struct_80283430 {
+    s8 unk0; // index
+    s8 unk1; // speed
+    u16 unk2; // point
+    s8 unk4;
+    s8 unk5;
+    Vec3s unk6;
+};
+struct unkStruct_80283430 {
+    s16 unk0;
+    f32 unk4;
+};
+
+struct unkStruct_80283430_2 {
+    f32 unk0;
+    s16 unk4;
+    s16 unk6;
+};
+
+
+struct b18 {
+    f32 unk0;
+    s16 unk4;
+    s16 unk6;
+    s8 unk8;
+};
+//extern struct b18 sCutsceneSplineSegmentProgress;
+//extern s16 sCutsceneSplineSegment;
 //extern s16 D_80287B1E;
 //extern s8 D_80287B20;
-
-extern f32 D_80287B18;
-extern s16 D_80287B1C;
-extern s16 D_80287B1E;
-extern s8 D_80287B20;
 
 struct credits_data_1FA0 {
     Vec3f unk0;
@@ -91,6 +118,25 @@ struct struct_D_802876D0 {
   /* 0x4A */ s16 unk6E;
 };
 
+struct PlayerGeometry {
+    /*0x00*/ struct Surface *currFloor;
+    /*0x04*/ f32 currFloorHeight;
+    /*0x08*/ s16 currFloorType;
+    /*0x0C*/ struct Surface *currCeil;
+    /*0x10*/ s16 currCeilType;
+    /*0x14*/ f32 currCeilHeight;
+    /*0x18*/ struct Surface *prevFloor;
+    /*0x1C*/ f32 prevFloorHeight;
+    /*0x20*/ s16 prevFloorType;
+    /*0x24*/ struct Surface *prevCeil;
+    /*0x28*/ f32 prevCeilHeight;
+    /*0x2C*/ s16 prevCeilType;
+    /// Unused, but recalculated every frame
+    /*0x30*/ f32 waterHeight;
+};
+
+// unk0 Vec3f lookat
+// unk[12] Vec3f pos
 s8 D_802876E0[24]; // todo: Should be CinematicCamera * ? Or cameraSplineRail?
 
 f32 D_802876F8;
@@ -99,34 +145,16 @@ s8 D_802876FC;
 f32 D_80287700[10];
 Vec3s D_80287728[4];
 
-struct struct_80283431 {
-    Vec3f unk0;
-    Vec3s unkC;
-};
-
-struct struct_80283430 {
-    s8 unk0; // index
-    s8 unk1; // speed
-    u16 unk2; // point
-    s8 unk4;
-    s8 unk5;
-    Vec3s unk6;
-};
-struct unkStruct_80283430 {
-    s16 unk0;
-    f32 unk4;
-};
-
-struct unkStruct_80283430_2 {
-    f32 unk0;
-    s16 unk4;
-    s16 unk6;
-};
-
-//extern struct struct_80283430 D_80287818[];
-//extern struct struct_80283430 D_80287998[];
-
-//extern struct struct_80283431 D_80287750[10];
+// static bss declared in func_80283430?
+struct unkStruct_80283430 D_80287740;
+struct unkStruct_80283430_2 D_80287748;
+struct struct_80283431 D_80287750[10];
+struct struct_80283430 D_80287818[32];
+struct struct_80283430 D_80287998[32];
+f32 sCutsceneSplineSegmentProgress;
+s16 sCutsceneSplineSegment;
+s16 D_80287B1E;
+s8 D_80287B20;
 
 void vec3f_set_dupe(Vec3f dest, f32 arg1, f32 arg2, f32 arg3) {
     dest[0] = arg1;
@@ -186,15 +214,19 @@ UNUSED void func_802820F8(f32 *dest, f32 *src, s16 angle) {
     dest[0] = sp2C[0];
 }
 
-// Called just before fish shoots trophy at awards cutscene.
-s32 func_802821A0(Vec3f arg0, f32 arg1, f32 arg2) {
-    if (arg2 > 1.0f) {
-        arg2 = 1.0f;
+/**
+ * Target f32 at given rate.
+ * Used for targeting playerTwo and playerThree.
+ * Also targets the trophy.
+ */
+s32 f32_lerp(f32 *dest, f32 src, f32 lerp) {
+    if (lerp > 1.0f) {
+        lerp = 1.0f;
     }
     
-    arg0[0] = arg0[0] + ((arg1 - arg0[0]) * arg2);
+    *dest = *dest + ((src - *dest) * lerp);
     
-    if (arg1 == arg0[0]) {
+    if (src == *dest) {
         return 0;
     }
     return 1;
@@ -218,8 +250,9 @@ UNUSED s32 func_80282200(Vec3s arg0, s16 arg1, s16 arg2) {
     return 1;
 }
 
-s32 func_802822AC(Vec3f arg0, f32 arg1, f32 arg2) {
-    f32 temp_f0 = arg1 - arg0[0];
+// Calculates fade in/out
+s32 set_transition_colour_fade_alpha_ending(f32 *arg0, f32 arg1, f32 arg2) {
+    f32 temp_f0 = arg1 - *arg0;
    
     if (arg2 < 0.0f) {
         arg2 = -1.0f * arg2;
@@ -228,27 +261,27 @@ s32 func_802822AC(Vec3f arg0, f32 arg1, f32 arg2) {
     if (temp_f0 > 0.0f) {
         temp_f0 -= arg2;
         if (temp_f0 > 0.0f) {
-            arg0[0] = arg1 - temp_f0;
+            *arg0 = arg1 - temp_f0;
         } else {
-            arg0[0] = arg1;
+            *arg0 = arg1;
         }
     } else {
         temp_f0 += arg2;
         if (temp_f0 < 0.0f) {
-            arg0[0] = arg1 - temp_f0;
+            *arg0 = arg1 - temp_f0;
         } else {
-            arg0[0] = arg1;
+            *arg0 = arg1;
         }
     }
 
-    if (arg1 == arg0[0]) {
+    if (arg1 == *arg0) {
         return 0;
     }
     return 1;
 }
 
-s32 func_80282364(Vec3s arg0, s16 arg1, s16 arg2) {
-    s16 temp_v0 = arg1 - arg0[0];
+s32 func_80282364(s16 *arg0, s16 arg1, s16 arg2) {
+    s16 temp_v0 = arg1 - *arg0;
 
     if (arg2 < 0) {
        arg2 = arg2 * -1;
@@ -256,34 +289,34 @@ s32 func_80282364(Vec3s arg0, s16 arg1, s16 arg2) {
     if ( temp_v0 > 0) {
         temp_v0 -= arg2;
         if (temp_v0 >= 0) {
-            arg0[0] = arg1 - temp_v0;
+            *arg0 = arg1 - temp_v0;
         } else {
-            arg0[0] = arg1;
+            *arg0 = arg1;
         }
     } else {
         temp_v0 += arg2;
         if (temp_v0 <= 0) {
-            arg0[0] = arg1 - temp_v0;
+            *arg0 = arg1 - temp_v0;
         } else {
-            arg0[0] = arg1;
+            *arg0 = arg1;
         }
     }
 
-    if (arg1 == arg0[0]) {
+    if (arg1 == *arg0) {
         return 0;
     }
     return 1;
 }
 
-void func_8028240C(void) {
-    D_80287B1C = 0;
-    D_80287B18 = 0.0f;
+void reset_spline(void) {
+    sCutsceneSplineSegment = 0;
+    sCutsceneSplineSegmentProgress = 0.0f;
     D_80287B1E = 0;
     D_80287B20 = 0;
 }
 
 void func_80282434(Camera *arg0) {
-    func_8028240C();
+    reset_spline();
 }
 
 void func_80282454(Vec3f arg0, Vec3f arg1, f32 *distance, s16 *arg3, s16 *arg4) {
@@ -346,8 +379,28 @@ struct CutsceneSplinePoint {
 
 };
 
-// move_point_along_spline
-s32 func_802828C8(Vec3f p, Vec3f arg1, struct struct_80283430 spline[], s16 *splineSegment, f32 *progress) {
+/**
+ * Computes the point that is `progress` percent of the way through segment `splineSegment` of `spline`,
+ * and stores the result in `p`. `progress` and `splineSegment` are updated if `progress` becomes >= 1.0.
+ *
+ * When neither of the next two points' speeds == 0, the number of frames is between 1 and 255. Otherwise
+ * it's infinite.
+ *
+ * To calculate the number of frames it will take to progress through a spline segment:
+ * If the next two speeds are the same and nonzero, it's 1.0 / firstSpeed.
+ *
+ * s1 and s2 are short hand for first/secondSpeed. The progress at any frame n is defined by a recurrency relation:
+ *      p(n+1) = (s2 - s1 + 1) * p(n) + s1
+ * Which can be written as
+ *      p(n) = (s2 * ((s2 - s1 + 1)^(n) - 1)) / (s2 - s1)
+ *
+ * Solving for the number of frames:
+ *      n = log(((s2 - s1) / s1) + 1) / log(s2 - s1 + 1)
+ *
+ * @return 1 if the point has reached the end of the spline, when `progress` reaches 1.0 or greater, and
+ * the 4th CutsceneSplinePoint in the current segment away from spline[splineSegment] has an index of -1.
+ */
+s32 move_point_along_spline(Vec3f p, Vec3f arg1, struct struct_80283430 spline[], s16 *splineSegment, f32 *progress) {
     s32 finished = 0;
     Mat4 controlPoints;
     s32 i = 0;
@@ -447,30 +500,26 @@ dummy_label_888430: ;
 
 // todo: Cast to normal Camera? Or from CinematicCamera?
 s32 func_80282D90(Camera *camera, struct struct_80286A04 *arg1, struct struct_80286A04 *arg2, s32 arg3) {
-    //static struct struct_80283430 D_80287818[32];
-    //static struct struct_80283430 D_80287998[32];
-    //extern s16 D_80287B1C;
-    //extern f32 D_80287B18;
     s32 res;
 
-    func_802832C4(&func_80282434, camera, 0, 0);
-    func_80282C40(0x80287818, arg1, arg3);
-    func_80282C40(0x80287998, arg2, arg3);
+    cutscene_event(&func_80282434, camera, 0, 0);
+    func_80282C40(&D_80287818, arg1, arg3);
+    func_80282C40(&D_80287998, arg2, arg3);
 
     if (0) {}; // debug stub?
 
-    res = func_802828C8(camera->lookAt, camera->up, 0x80287818, &D_80287B1C, &D_80287B18) |
-          func_802828C8(camera->pos, camera->up, 0x80287998, &D_80287B1C, &D_80287B18);
+    res = move_point_along_spline(camera->lookAt, camera->up, &D_80287818, &sCutsceneSplineSegment, &sCutsceneSplineSegmentProgress) |
+          move_point_along_spline(camera->pos, camera->up, &D_80287998, &sCutsceneSplineSegment, &sCutsceneSplineSegmentProgress);
     return res;
 }
 
 void func_80282E58(Camera *camera, struct struct_80282C40 *arg1, s32 arg2) {
     //extern struct struct_80283430 D_80287818[];
-    //extern s16 D_80287B1C;
-    //extern f32 D_80287B18;
+    //extern s16 sCutsceneSplineSegment;
+    //extern f32 sCutsceneSplineSegmentProgress;
 
-    func_80282C40(0x80287818, arg1, arg2);
-    func_802828C8(camera->lookAt, camera->up, 0x80287818, &D_80287B1C, &D_80287B18);
+    func_80282C40(&D_80287818, arg1, arg2);
+    move_point_along_spline(camera->lookAt, camera->up, &D_80287818, &sCutsceneSplineSegment, &sCutsceneSplineSegmentProgress);
 }
 
 void func_80282EAC(s32 arg0, struct struct_D_802876D0 *arg1, s16 arg2, s16 arg3, s16 arg4)
@@ -548,9 +597,15 @@ void func_80283240(s16 arg0) {
     }
 }
 
-s32 func_802832C4(void (*func_ptr)(s32), Camera *camera, s16 time2, s16 time) {
-    if ((gCutsceneShotTimer >= time2) && ((time == -1) || (time >= gCutsceneShotTimer))) {
-        func_ptr(camera);
+/**
+ * Call the event while `start` <= gCutsceneTimer <= `end`
+ * If `end` is -1, call for the rest of the shot.
+ */
+s32 cutscene_event(CameraEvent event, Camera *camera, s16 start, s16 end) {
+    if (gCutsceneShotTimer >= start) {
+        if ((end == -1) || (end >= gCutsceneShotTimer)) {
+            event(camera);
+        }
     }
     return 0;
 }
@@ -577,11 +632,11 @@ s32 func_8028336C(UNUSED struct struct_D_802876D0 *arg0, UNUSED Camera *camera) 
   }
   switch (gGamestate)
   {
-    case 5:
+    case ENDING_SEQUENCE:
       D_802876D8 = sp20[D_802874F5];
       break;
 
-    case 9:
+    case CREDITS_SEQUENCE:
       D_802876D8 = 6;
       break;
 
@@ -598,21 +653,19 @@ s32 func_80283428(void) {
     return 0;
 }
 
-
-//#ifdef A
+// Matches with static. Seems to not be correct though
+#ifdef NON_MATCHING
 // todo: D_802876E0???? CinematicCamera struct
 void func_80283430(void)
 {
 
-    static struct unkStruct_80283430 D_80287740;
-    static struct unkStruct_80283430_2 D_80287748;
-    static struct struct_80283431 D_80287750[10];
-    static struct struct_80283430 D_80287818[32];
-    static struct struct_80283430 D_80287998[32];
+    //static struct struct_80283431 D_80287750[10];
+    //static  struct struct_80283430 D_80287818[32];
+    //static struct struct_80283430 D_80287998[32];
 
-    //extern f32 D_80287B18;
+    //extern f32 sCutsceneSplineSegmentProgress;
 
-    //extern s16 D_80287B1C;
+    //extern s16 sCutsceneSplineSegment;
     //extern s16 D_80287B1E;
     //extern s8 D_80287B20;
     s32 i;
@@ -639,7 +692,7 @@ void func_80283430(void)
     sCutsceneShot = 0;
     gCutsceneShotTimer = 0;
     D_802876D4 = 0;
-    func_8028240C();
+    reset_spline();
     for (i = 0; i < 32; i++)
     {
         D_80287818[i].unk0 = -1;
@@ -664,30 +717,23 @@ void func_80283430(void)
     D_802856B8 = 52.0f;
     }
 }
-//#else
-//GLOBAL_ASM("asm/non_matchings/code_80281FA0/func_80283430.s")
-//#endif
+#else
+GLOBAL_ASM("asm/non_matchings/ceremony_and_credits/func_80283430.s")
+#endif
 
-s8 test;
-s32 pad[12];
-f32 D_80287B18;
-s16 D_80287B1C;
-s16 D_80287B1E;
-s8 D_80287B20;
-
-#ifdef MIPS_TO_C
+#ifdef NON_MATCHING
 //generated by m2c commit 3b40ab93768f52ac241c5ae84ef58ef6bc4cb1de
 //void func_80282F44(?, s32 *, Camera *);                /* extern */
 //void func_80283100(s32 *, f32 *);                      /* extern */
 //s32 func_8028336C(s32 *, Camera *);                 /* extern */
-//void func_80284AE8(s32 *);                             /* extern */
+//void play_cutscene(s32 *);                             /* extern */
 //extern Vec3f D_802876EC;
 //extern f32 D_802876F8;
 //extern f32 D_80287704;
 //extern f32 D_80287710;
 //extern f32 D_8028771C;
 
-void func_80284AE8(CinematicCamera *camera);
+void play_cutscene(CinematicCamera *camera);
 
 // Camera init? or scene init? scene_entry_point?
 s32 func_80283648(Camera *camera) {
@@ -716,7 +762,7 @@ s32 func_80283648(Camera *camera) {
 	{
 		vec3f_copy_dupe(&D_802876E0[12], &camera->pos);
 		vec3f_copy_dupe(&D_802876E0, &camera->lookAt);
-		func_80284AE8(D_802876E0);
+		play_cutscene(D_802876E0);
 		func_80282454(&D_802876E0[12], D_802876E0, &sp64, &sp6E, &sp6C);
 		if (sp6E >= 0x3800)
 		{
@@ -768,7 +814,7 @@ s32 func_80283648(Camera *camera) {
 	return D_802876D8;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80281FA0/func_80283648.s")
+GLOBAL_ASM("asm/non_matchings/ceremony_and_credits/func_80283648.s")
 #endif
 
 void func_80283968(Camera *camera) {
@@ -793,7 +839,7 @@ void func_802839E0(Camera *camera) {
 
 void func_80283A00(Camera *camera) {
     if (D_800DC5E4 == 0) {
-        play_sound2(0x49009009);
+        play_sound2(SOUND_INTRO_WELCOME);
     }
 }
 
@@ -802,37 +848,37 @@ void func_80283A34(CinematicCamera *camera) {
 }
 
 void func_80283A54(Camera *camera) {
-    play_sound2(0x49009014);
+    play_sound2(SOUND_CEREMONY_CONGRATULATION);
 }
 
 // Balloon pop
 void func_80283A7C(CinematicCamera *camera) {
-    play_sound2(0x4900801E);
+    play_sound2(SOUND_CEREMONY_BALLOON_POP);
 }
 
 void func_80283AA4(Camera *camera) {
-    play_sound2(0x4900801F);
+    play_sound2(SOUND_CEREMONY_FISH);
 }
 
 void func_80283ACC(Camera *camera) {
-    play_sound2(0x49008020);
+    play_sound2(SOUND_CEREMONY_FISH_2);
 }
 
 void func_80283AF4(Camera *camera) {
-    play_sound2(0x49008021);
+    play_sound2(SOUND_CEREMONY_SHOOT_TROPHY);
 }
 
 void func_80283B1C(Camera *camera) {
-    play_sound2(0x49008022);
+    play_sound2(SOUND_CEREMONY_PODIUM);
 }
 
 void func_80283B44(Camera *camera) {
-    play_sound2(0x49008023);
+    play_sound2(SOUND_CEREMONY_TROPHY);
 }
 
 void func_80283B6C(Camera *camera) {
     func_800CA0B8();
-    func_800C9060(0, 0x19009005);
+    func_800C9060(0, SOUND_ACTION_EXPLOSION);
     func_800CA0A0();
 }
 
@@ -846,6 +892,7 @@ void func_80283BF0(CinematicCamera *camera) {
     func_800C8EF8(0x1A);
 }
 
+// 
 void func_80283C14(Camera *camera) {
     func_800C8EF8(0x1B);
 }
@@ -877,7 +924,7 @@ void func_80283CD0(s32 arg0) {
 // End of credits farewell
 // "Hey, you're very good, see you next time."
 void func_80283D04(s32 arg0) {
-    play_sound2(0x49008026);
+    play_sound2(SOUND_CREDITS_FAREWELL);
 }
 
 
@@ -1004,18 +1051,18 @@ struct Cutscene {
 extern struct Cutscene D_80285D10[];
 void func_80283D2C(CinematicCamera *camera) {
     D_802856B8 = 120.0f;
-    func_802832C4(&func_80283CA8, camera, 0, 0);
-    func_802832C4(&func_80283A34, camera, 1, 1);
-    func_802832C4(&func_80283BF0, camera, 0, 0);
-    func_802832C4(&func_80283A7C, camera, 45, 45);
-    func_802832C4(&func_80283A7C, camera, 65, 65);
-    func_802832C4(&func_80283A7C, camera, 70, 70);
-    func_802832C4(&func_80283A7C, camera, 94, 94);
-    func_802832C4(&func_80283A7C, camera, 110, 110);
-    func_802832C4(&func_80283A7C, camera, 130, 130);
-    func_802832C4(&func_80283A7C, camera, 152, 152);
-    func_802832C4(&func_80283A7C, camera, 160, 160);
-    func_802832C4(&func_80283994, camera, D_80285D10[0].duration - 60, D_80285D10[0].duration - 60);
+    cutscene_event(&func_80283CA8, camera, 0, 0);
+    cutscene_event(&func_80283A34, camera, 1, 1);
+    cutscene_event(&func_80283BF0, camera, 0, 0);
+    cutscene_event(&func_80283A7C, camera, 45, 45);
+    cutscene_event(&func_80283A7C, camera, 65, 65);
+    cutscene_event(&func_80283A7C, camera, 70, 70);
+    cutscene_event(&func_80283A7C, camera, 94, 94);
+    cutscene_event(&func_80283A7C, camera, 110, 110);
+    cutscene_event(&func_80283A7C, camera, 130, 130);
+    cutscene_event(&func_80283A7C, camera, 152, 152);
+    cutscene_event(&func_80283A7C, camera, 160, 160);
+    cutscene_event(&func_80283994, camera, D_80285D10[0].duration - 60, D_80285D10[0].duration - 60);
     func_80282D90(camera, &D_802856DC, &D_80285718, 0);
 }
 
@@ -1028,14 +1075,14 @@ void func_80283ED0(Camera *camera) {
 }
 
 void func_80283EF8(Camera *camera) {
-    func_802821A0(&camera->pos[0], gPlayerTwo->pos[0], 0.12f);
-    func_802821A0(&camera->pos[1], gPlayerTwo->pos[1], 0.12f);
-    func_802821A0(&camera->pos[2], gPlayerTwo->pos[2], 0.12f);
+    f32_lerp(&camera->pos[0], gPlayerTwo->pos[0], 0.12f);
+    f32_lerp(&camera->pos[1], gPlayerTwo->pos[1], 0.12f);
+    f32_lerp(&camera->pos[2], gPlayerTwo->pos[2], 0.12f);
 }
 
 void func_80283F6C(Camera *camera) {
-    func_802832C4(&func_80283ED0, camera, 0, 0);
-    func_802832C4(&func_80283EF8, camera, 0, -1);
+    cutscene_event(&func_80283ED0, camera, 0, 0);
+    cutscene_event(&func_80283EF8, camera, 0, -1);
     func_80282E58(camera, &D_802857B4, 0);
 }
 
@@ -1044,19 +1091,19 @@ void func_80283FCC(Camera *camera) {
 }
 
 void func_80283FF4(Camera *camera) {
-    func_802821A0(&camera->pos[0], gPlayerThree->pos[0], 0.12f);
-    func_802821A0(&camera->pos[1], gPlayerThree->pos[1], 0.12f);
-    func_802821A0(&camera->pos[2], gPlayerThree->pos[2], 0.12f);
+    f32_lerp(&camera->pos[0], gPlayerThree->pos[0], 0.12f);
+    f32_lerp(&camera->pos[1], gPlayerThree->pos[1], 0.12f);
+    f32_lerp(&camera->pos[2], gPlayerThree->pos[2], 0.12f);
 }
 
 void func_80284068(Camera *camera) {
-    func_802832C4(&func_80283FCC, camera, 0, 0);
-    func_802832C4(&func_80283FF4, camera, 0, -1);
+    cutscene_event(&func_80283FCC, camera, 0, 0);
+    cutscene_event(&func_80283FF4, camera, 0, -1);
     func_80282E58(camera, &D_802857CC, 0);
 }
 
 void func_802840C8(Camera *camera) {
-    func_802832C4(&func_80283C14, camera, 5, 5);
+    cutscene_event(&func_80283C14, camera, 5, 5);
 
     switch(D_802876D8) {
         case 2:
@@ -1080,9 +1127,9 @@ extern s32 D_80183EAC;
 
 void func_80284184(Camera *camera)
 {
-  f32 new_var2;
-  new_var2 = ((D_80165C20[D_80183EAC].unk_000 - camera->lookAt[1]) * 0.899999976f) + camera->lookAt[1];
-  func_802821A0(&camera->pos[1], new_var2, 0.5);
+  f32 trophy;
+  trophy = ((D_80165C20[D_80183EAC].unk_000 - camera->lookAt[1]) * 0.899999976f) + camera->lookAt[1];
+  f32_lerp(&camera->pos[1], trophy, 0.5);
 }
 
 void func_802841E8(Camera *camera) {
@@ -1091,10 +1138,10 @@ void func_802841E8(Camera *camera) {
 }
 
 void func_8028422C(Camera *camera) {
-    func_802832C4(&func_80283AF4, camera, 6, 6);
-    func_802832C4(&func_80283B44, camera, 30, 30);
-    func_802832C4(&func_802841E8, camera, 0, 0);
-    func_802832C4(&func_80284184, camera, 6, -1);
+    cutscene_event(&func_80283AF4, camera, 6, 6);
+    cutscene_event(&func_80283B44, camera, 30, 30);
+    cutscene_event(&func_802841E8, camera, 0, 0);
+    cutscene_event(&func_80284184, camera, 6, -1);
 }
 
 void func_802842A8(Camera *camera) {
@@ -1117,7 +1164,7 @@ void func_80284308(Camera *camera) {
     f32 y;
     f32 z;
 
-    func_802832C4(func_80283A54, camera, 140, 140);
+    cutscene_event(func_80283A54, camera, 140, 140);
     func_80282D90(camera, D_802858E0, D_802858F8, 0);
 
     ply = *(sp30[0] + D_802874F5);
@@ -1258,28 +1305,28 @@ struct Cutscene D_80285D10[] = {
 };
 
 void func_80284418(Camera *camera) {
-    func_802832C4(&func_80283B1C, camera, 0x52, 0x52);
-    func_802832C4(&func_80283B1C, camera, 0x48, 0x48);
-    func_802832C4(&func_80283B1C, camera, 0x3D, 0x3D);
+    cutscene_event(&func_80283B1C, camera, 0x52, 0x52);
+    cutscene_event(&func_80283B1C, camera, 0x48, 0x48);
+    cutscene_event(&func_80283B1C, camera, 0x3D, 0x3D);
     func_80282D90(camera, &D_80285A10, &D_80285A4C, 0);
 }
 
 void func_80284494(Camera *camera) {
-    func_802832C4(&func_80283ACC, camera, 0x1E, 0x1E);
-    func_802832C4(&func_80283968, camera, 0, 0);
+    cutscene_event(&func_80283ACC, camera, 0x1E, 0x1E);
+    cutscene_event(&func_80283968, camera, 0, 0);
     func_80282D90(camera, &D_80285A88, &D_80285AB8, 0);
 }
 
 void func_802844FC(Camera *camera) {
-    func_802832C4(&func_80283AA4, camera, 0x3B, 0x3B);
+    cutscene_event(&func_80283AA4, camera, 0x3B, 0x3B);
     func_80282D90(camera, &D_80285AE8, &D_80285B00, 0);
 }
 
 void func_8028454C(Camera *camera) {
-    func_802832C4(&func_80283CA8, camera, 0, 0);
-    func_802832C4(&func_80283A34, camera, 1, 1);
-    func_802832C4(&func_80283C38, camera, 0, 0);
-    func_802832C4(&func_80283994, camera, 0x3C, 0x3C);
+    cutscene_event(&func_80283CA8, camera, 0, 0);
+    cutscene_event(&func_80283A34, camera, 1, 1);
+    cutscene_event(&func_80283C38, camera, 0, 0);
+    cutscene_event(&func_80283994, camera, 0x3C, 0x3C);
     func_80282D90(camera, &D_80285B18, &D_80285B54, 0);
 }
 
@@ -1293,9 +1340,9 @@ void func_8028461C(Camera *camera) {
 }
 
 void func_80284648(Camera *camera) {
-    func_802832C4(&func_802845EC, camera, 0, 0);
-    func_802832C4(&func_8028461C, camera, 0x110, 0x110);
-    func_802832C4(&func_80283BA4, camera, 0x115, 0x115);
+    cutscene_event(&func_802845EC, camera, 0, 0);
+    cutscene_event(&func_8028461C, camera, 0x110, 0x110);
+    cutscene_event(&func_80283BA4, camera, 0x115, 0x115);
 }
 
 UNUSED void func_802846AC(void) {
@@ -1332,7 +1379,7 @@ struct struct_80285D80 {
     s16 unk6[3];
 };
 
-static struct struct_80285D80 D_80285D80[] = {
+struct struct_80285D80 D_80285D80[] = {
     {  0,  0,  0,  0,  0,  0, { 0xffc6, 0x0000, 0xfc02 }},
     {  0,  0,  0,  0,  4,  0, { 0xffb9, 0x0005, 0xff53 }},
     {  0,  0,  0,  0, 10,  0, { 0xfec3, 0x0036, 0x009e }},
@@ -1661,27 +1708,27 @@ void func_802847CC(Camera *camera) {
   sp2E = D_80286A04[D_800DC5E4].unkC - (10 - (-(((u16)(u32) D_802856B4))));
     sp2C = D_80286A04[D_800DC5E4].unkC;
     //sp2E = 
-  func_802832C4(func_80283CD0, camera, 0, 0);
-  func_802832C4(func_80283A00, camera, 8, 8);
-  func_802832C4(func_80283C78, camera, 149, 149);
-  func_802832C4(func_80282434, camera, 0, 0);
+  cutscene_event(func_80283CD0, camera, 0, 0);
+  cutscene_event(func_80283A00, camera, 8, 8);
+  cutscene_event(func_80283C78, camera, 149, 149);
+  cutscene_event(func_80282434, camera, 0, 0);
   switch (D_80286A04[D_800DC5E4].unk0)
   {
     case 1:
-      func_802832C4(func_802839CC, camera, 0, -1);
-      func_802832C4(func_802839E0, camera, sp2E - 0x14, sp2E - 0x14);
+      cutscene_event(func_802839CC, camera, 0, -1);
+      cutscene_event(func_802839E0, camera, sp2E - 0x14, sp2E - 0x14);
       break;
 
     case 2:
-      func_802832C4(func_802839B4, camera, 0, 0);
-      func_802832C4(func_80283D04, camera, 247, 247);
+      cutscene_event(func_802839B4, camera, 0, 0);
+      cutscene_event(func_80283D04, camera, 247, 247);
       func_80282D90(camera, D_80286A04[D_800DC5E4].unk4, D_80286A04[D_800DC5E4].unk8, 0);
       break;
 
     default:
-      func_802832C4(func_802839B4, camera, 0, 0);
-      func_802832C4(func_802839CC, camera, sp2E, sp2E);
-      func_802832C4(func_802839E0, camera, sp2E - 0x14, sp2E - 0x14);
+      cutscene_event(func_802839B4, camera, 0, 0);
+      cutscene_event(func_802839CC, camera, sp2E, sp2E);
+      cutscene_event(func_802839E0, camera, sp2E - 0x14, sp2E - 0x14);
       func_80282D90(camera, D_80286A04[D_800DC5E4].unk4, D_80286A04[D_800DC5E4].unk8, 0);
       break;
 
@@ -1707,15 +1754,12 @@ struct Cutscene D_80286B5C[] = {
     { func_802847CC, 0x7FFF },
 };
 
-//#ifdef MIPS_TO_C
-//generated by m2c commit 3b40ab93768f52ac241c5ae84ef58ef6bc4cb1de
-
 struct struct_80284AE8 {
     u8 unk0[0x1C];
     u8 unk1C;
 };
 
-void func_80284AE8(CinematicCamera *camera) {
+void play_cutscene(CinematicCamera *camera) {
     s32 pad[3];
     s16 cutsceneDuration;
 
@@ -1749,17 +1793,17 @@ void func_80284AE8(CinematicCamera *camera) {
                 if (gCutsceneShotTimer == cutsceneDuration) {
                     sCutsceneShot++;
                     gCutsceneShotTimer = 0;
-                    func_8028240C();
+                    reset_spline();
                 }
             } else {
                 if (gCutsceneShotTimer & 0x4000) {
                     gCutsceneShotTimer = 0;
-                    func_8028240C();
+                    reset_spline();
                 } else {
                     D_802876D8 = 0;
                     sCutsceneShot = 0;
                     gCutsceneShotTimer = 0;
-                    func_8028240C();
+                    reset_spline();
                 }
     }
     
@@ -1784,6 +1828,6 @@ void func_80284CC0(void) {
     gDPFillRectangle(gDisplayListHead++, 0, 0, 319, (s32)temp_f14);
     gDPFillRectangle(gDisplayListHead++, 0, (s32)temp_f0, 319, 239);
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
-    func_802822AC(&D_802856C0, D_802856B8, D_802856BC / D_802856B4);
+    set_transition_colour_fade_alpha_ending(&D_802856C0, D_802856B8, D_802856BC / D_802856B4);
 }
 

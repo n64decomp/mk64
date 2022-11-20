@@ -15,6 +15,7 @@
 #include "code_80005FD0.h"
 #include "code_80071F00.h"
 #include "code_8008C1D0.h"
+#include <sounds.h>
 
 s32 D_802BA050;
 s32 D_802BA054;
@@ -3322,7 +3323,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
     case ACTOR_FALLING_ROCK:
         if (!(player->unk_0BC & 0x80000000) && !(player->unk_000 & 0x100)) {
             if (func_8029FB80(player, actor) == 1) {
-                func_800C98B8(actor->pos, actor->velocity, 0x19009005U);
+                func_800C98B8(actor->pos, actor->velocity, SOUND_ACTION_EXPLOSION);
                 if ((gModeSelection == TIME_TRIALS) && !(player->unk_000 & 0x1000)) {
                     D_80162DF8 = 1;
                 }

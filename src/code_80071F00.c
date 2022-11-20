@@ -3846,7 +3846,7 @@ void func_80079380(s32 objectIndex, s32 arg1) {
         if (func_8007278C(objectIndex, 0x00000014) != 0) {
             temp_v1->unk_068 += 0x200;
             if (arg1 == 0) {
-                play_sound2(0x49008003);
+                play_sound2(SOUND_ACTION_COUNTDOWN_LIGHT);
                 return;
             }
         }
@@ -3856,7 +3856,7 @@ void func_80079380(s32 objectIndex, s32 arg1) {
         return;
     case 9:
         if ((func_8007278C(objectIndex, 8) != 0) && (arg1 == 0)) {
-            play_sound2(0x49008003);
+            play_sound2(SOUND_ACTION_COUNTDOWN_LIGHT);
             return;
         }
         break;
@@ -3871,7 +3871,7 @@ void func_80079380(s32 objectIndex, s32 arg1) {
         if (func_8007278C(objectIndex, 8) != 0) {
             temp_v1->unk_068 += 0x200;
             if (arg1 == 0) {
-                play_sound2(0x49008004);
+                play_sound2(SOUND_ACTION_GREEN_LIGHT);
                 return;
             }
         }

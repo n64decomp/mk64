@@ -32,7 +32,7 @@ glabel func_80283648
 /* 126D00 802836C0 0C0A0802 */  jal   vec3f_copy_dupe
 /* 126D04 802836C4 8FA50034 */   lw    $a1, 0x34($sp)
 /* 126D08 802836C8 3C048028 */  lui   $a0, %hi(D_802876E0) # $a0, 0x8028
-/* 126D0C 802836CC 0C0A12BA */  jal   func_80284AE8
+/* 126D0C 802836CC 0C0A12BA */  jal   play_cutscene
 /* 126D10 802836D0 248476E0 */   addiu $a0, %lo(D_802876E0) # addiu $a0, $a0, 0x76e0
 /* 126D14 802836D4 3C048028 */  lui   $a0, %hi(D_802876E0+0xC) # $a0, 0x8028
 /* 126D18 802836D8 3C058028 */  lui   $a1, %hi(D_802876E0) # $a1, 0x8028

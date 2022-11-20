@@ -12,6 +12,7 @@
 #include "code_80057C60.h"
 #include "code_8008C1D0.h"
 #include <defines.h>
+#include <sounds.h>
 
 UNUSED void func_unnamed(void) {
 
@@ -237,7 +238,7 @@ void func_8008C528(Player *player, s8 arg1) {
     player->unk_042 = 0;
     if (((player->unk_000 & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->unk_000 & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         func_800C90F4(arg1, (temp_v1 * 0x10) + 0x29008005);
-        func_800C9060(arg1, 0x19009005);
+        func_800C9060(arg1, SOUND_ACTION_EXPLOSION);
     } else {
         func_800098FC(arg1, player);
     }
@@ -1098,7 +1099,7 @@ void func_8008E6C0(Player *player, s8 arg1)
         if (((gModeSelection == VERSUS) && ((player->unk_000 & 0x1000) != 0)) && (D_800DC51C == 0)) {
             func_800CA24C(arg1);
         }
-        func_800C9060(arg1, 0x19009005);
+        func_800C9060(arg1, SOUND_ACTION_EXPLOSION);
     } else {
         func_800098FC(arg1, player);
     }
@@ -1196,7 +1197,7 @@ void func_8008EAE0(Player* player, s8 arg1) {
     
     if (((player->unk_000 & 0x4000) == 0x4000) && ((player->unk_000 & 0x100) != 0x100)) {
         func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008005);
-        func_800C9060(arg1, 0x19009005);
+        func_800C9060(arg1, SOUND_ACTION_EXPLOSION);
     } else {
         func_800098FC(arg1, player);
     }

@@ -5,40 +5,40 @@
 
 .section .data
 
-glabel gFloatArray802B8790
-.float 1.2, 1.0, 0.9, 0.7, 2.0, 1.8, 0.9, 2.3
+#glabel gFloatArray802B8790
+#.float 1.2, 1.0, 0.9, 0.7, 2.0, 1.8, 0.9, 2.3
 
-glabel D_802B87B0
-.hword 995
-.hword 0 # fill
+#glabel D_802B87B0
+#.hword 995
+#.hword 0 # fill
 
-glabel D_802B87B4
-.hword 1000
-.hword 0 # fill
+#glabel D_802B87B4
+#.hword 1000
+#.hword 0 # fill
 
-.word 0 # fill
+#.word 0 # fill
 
-glabel D_802B87BC
-.word 0
+#glabel D_802B87BC
+#.word 0
 
-.word 0 # fill
+#.word 0 # fill
 
-glabel D_802B87C4
-.word 0
+#glabel D_802B87C4
+#.word 0
 
-glabel D_802B87C8
-.word 0
+#glabel D_802B87C8
+#.word 0
 
-glabel D_802B87CC
-.word 0
+#glabel D_802B87CC
+#.word 0
 
-glabel D_802B87D0
-.hword 0
-.hword 0 # fill
+#glabel D_802B87D0
+#.hword 0
+#.hword 0 # fill
 
-glabel D_802B87D4
-.hword 0
-.hword 0 # fill
+#glabel D_802B87D4
+#.hword 0
+#.hword 0 # fill
 
-glabel D_802B87D8
-.hword 0
+#glabel D_802B87D8
+#.hword 0
