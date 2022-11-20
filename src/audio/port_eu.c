@@ -288,7 +288,7 @@ void func_800CBA64(s32 playerIndex, s32 fadeInTime) {
     }
 }
 
-extern s8 D_800EA3A0;
+extern u8 D_800EA3A0;
 extern s8 D_800EA3A4;
 
 extern OSMesgQueue *D_800EA3A8[4];
@@ -308,11 +308,11 @@ void func_800CBAB4(void) {
 
 extern struct EuAudioCmd D_80193820[0x100];
 
-void func_800CBB48(s32 arg0, s32 *arg1) {
-    struct EuAudioCmd *cmd = &D_80193820[D_800EA3A0 & 0xff];
-    cmd->u.first = arg0;
-    cmd->u2.as_u32 = *arg1;
-    D_800EA3A0++;
+void func_800CBB48(s32 arg0, s32 *arg1){
+  struct EuAudioCmd *cmd = &D_80193820[D_800EA3A0];
+  cmd->u.first = arg0;
+  cmd->u2.as_u32 = *arg1;
+  D_800EA3A0++;
 }
 
 void func_800CBB88(u32 arg0, f32 arg1) {
