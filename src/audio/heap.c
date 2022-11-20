@@ -584,7 +584,6 @@ void *get_bank_or_seq_inner(s32 poolIdx, s32 arg1, s32 bankId) {
 }
 
 #ifdef NEEDS_RODATA
-// error : `.rodata' referenced in section `.text' of build/us/src/audio/heap.o: defined in discarded section `.rodata' of build/us/src/audio/heap.o
 // inspired by func_eu_802e27e4_unused from SM64
 void func_800B9BE4(f32 arg0, f32 arg1, u16 *arg2) {
     s32 i;
