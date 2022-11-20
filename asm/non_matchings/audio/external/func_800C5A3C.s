@@ -1,22 +1,22 @@
 glabel func_800C5A3C
-/* 0C663C 800C5A3C 3C01800F */  lui   $at, %hi(D_800EA1B8) # $at, 0x800f
-/* 0C6640 800C5A40 A020A1B8 */  sb    $zero, %lo(D_800EA1B8)($at)
-/* 0C6644 800C5A44 3C01800F */  lui   $at, %hi(D_800EA1BC) # $at, 0x800f
-/* 0C6648 800C5A48 A020A1BC */  sb    $zero, %lo(D_800EA1BC)($at)
+/* 0C663C 800C5A3C 3C01800F */  lui   $at, %hi(sSoundRequestCount) # $at, 0x800f
+/* 0C6640 800C5A40 A020A1B8 */  sb    $zero, %lo(sSoundRequestCount)($at)
+/* 0C6644 800C5A44 3C01800F */  lui   $at, %hi(sNumProcessedSoundRequests) # $at, 0x800f
+/* 0C6648 800C5A48 A020A1BC */  sb    $zero, %lo(sNumProcessedSoundRequests)($at)
 /* 0C664C 800C5A4C 3C01800F */  lui   $at, %hi(D_800EA1C4) # $at, 0x800f
 /* 0C6650 800C5A50 A420A1C4 */  sh    $zero, %lo(D_800EA1C4)($at)
 /* 0C6654 800C5A54 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 0C6658 800C5A58 3C098019 */  lui   $t1, %hi(D_80192C48) # $t1, 0x8019
-/* 0C665C 800C5A5C 3C088019 */  lui   $t0, %hi(D_80192C3C) # $t0, 0x8019
-/* 0C6660 800C5A60 3C078019 */  lui   $a3, %hi(D_80192AB0) # $a3, 0x8019
-/* 0C6664 800C5A64 3C058019 */  lui   $a1, %hi(D_80192AA8) # $a1, 0x8019
-/* 0C6668 800C5A68 3C048019 */  lui   $a0, %hi(D_80192AA0) # $a0, 0x8019
+/* 0C665C 800C5A5C 3C088019 */  lui   $t0, %hi(sSoundBankDisabled) # $t0, 0x8019
+/* 0C6660 800C5A60 3C078019 */  lui   $a3, %hi(sNumSoundsInBank) # $a3, 0x8019
+/* 0C6664 800C5A64 3C058019 */  lui   $a1, %hi(sSoundBankFreeListFront) # $a1, 0x8019
+/* 0C6668 800C5A68 3C048019 */  lui   $a0, %hi(sSoundBankUsedListBack) # $a0, 0x8019
 /* 0C666C 800C5A6C 44810000 */  mtc1  $at, $f0
 /* 0C6670 800C5A70 27ADFFF0 */  addiu $t5, $sp, -0x10
-/* 0C6674 800C5A74 24842AA0 */  addiu $a0, %lo(D_80192AA0) # addiu $a0, $a0, 0x2aa0
-/* 0C6678 800C5A78 24A52AA8 */  addiu $a1, %lo(D_80192AA8) # addiu $a1, $a1, 0x2aa8
-/* 0C667C 800C5A7C 24E72AB0 */  addiu $a3, %lo(D_80192AB0) # addiu $a3, $a3, 0x2ab0
-/* 0C6680 800C5A80 25082C3C */  addiu $t0, %lo(D_80192C3C) # addiu $t0, $t0, 0x2c3c
+/* 0C6674 800C5A74 24842AA0 */  addiu $a0, %lo(sSoundBankUsedListBack) # addiu $a0, $a0, 0x2aa0
+/* 0C6678 800C5A78 24A52AA8 */  addiu $a1, %lo(sSoundBankFreeListFront) # addiu $a1, $a1, 0x2aa8
+/* 0C667C 800C5A7C 24E72AB0 */  addiu $a3, %lo(sNumSoundsInBank) # addiu $a3, $a3, 0x2ab0
+/* 0C6680 800C5A80 25082C3C */  addiu $t0, %lo(sSoundBankDisabled) # addiu $t0, $t0, 0x2c3c
 /* 0C6684 800C5A84 25292C48 */  addiu $t1, %lo(D_80192C48) # addiu $t1, $t1, 0x2c48
 /* 0C6688 800C5A88 00001025 */  move  $v0, $zero
 /* 0C668C 800C5A8C 24060001 */  li    $a2, 1
@@ -60,8 +60,8 @@ glabel func_800C5A3C
 /* 0C6718 800C5B18 29810006 */  slti  $at, $t4, 6
 /* 0C671C 800C5B1C 1420FFEF */  bnez  $at, .L800C5ADC
 /* 0C6720 800C5B20 01801025 */   move  $v0, $t4
-/* 0C6724 800C5B24 3C088019 */  lui   $t0, %hi(D_80191420) # $t0, 0x8019
-/* 0C6728 800C5B28 25081420 */  addiu $t0, %lo(D_80191420) # addiu $t0, $t0, 0x1420
+/* 0C6724 800C5B24 3C088019 */  lui   $t0, %hi(sSoundBanks) # $t0, 0x8019
+/* 0C6728 800C5B28 25081420 */  addiu $t0, %lo(sSoundBanks) # addiu $t0, $t0, 0x1420
 /* 0C672C 800C5B2C 00001025 */  move  $v0, $zero
 /* 0C6730 800C5B30 240A0030 */  li    $t2, 48
 /* 0C6734 800C5B34 240903C0 */  li    $t1, 960

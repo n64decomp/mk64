@@ -31,5 +31,6 @@ extern s32 gUnknownData_800F6290[32];
 extern f32 gHeadsetPanVolume[128];
 extern f32 gStereoPanVolume[128];
 extern f32 gDefaultPanVolume[128];
+extern u32 gAudioRandom;
 
 #endif
