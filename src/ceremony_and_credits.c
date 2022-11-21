@@ -453,16 +453,6 @@ s32 move_point_along_spline(Vec3f p, Vec3f arg1, struct struct_80283430 spline[]
     return finished;
 }
 
-struct struct_80282C40 {
-    s8 unk0;
-    s8 unk1;
-    s8 unk2;
-    u8 unk3;
-    s8 unk4;
-    s8 unk5;
-    Vec3s unk6;
-};
-
 void func_80282BE4(struct struct_80283430 *arg0, s8 arg1, u8 arg2, s8 arg3, Vec3s arg4, s32 arg5)
 {
     arg0->unk0 = arg1;
@@ -1393,12 +1383,6 @@ struct Cutscene D_80285D58[] = {
     { func_80284648, 0x7FFF },
 };
 
-
-struct struct_80285D80 {
-    u8 unk0[6];
-    s16 unk6[3];
-};
-
 struct struct_80285D80 D_80285D80[] = {
     {  0,  0,  0,  0,  0,  0, { 0xffc6, 0x0000, 0xfc02 }},
     {  0,  0,  0,  0,  4,  0, { 0xffb9, 0x0005, 0xff53 }},
@@ -1670,17 +1654,6 @@ struct struct_80285D80 D_80285D80[] = {
     {  0,  0,  0, 70,  0,  0, { 0xfea3, 0x0041, 0x05f7 }},
     { -1,  0,  0, 70,  0,  0, { 0xfeda, 0x0109, 0x0642 }},
 };
-
-struct struct_80286A04 {
-    u8 unk0;
-    u8 unk1;
-    struct struct_80285D80 *unk4;
-    struct struct_80285D80 *unk8;
-    u16 unkC;
-};
-
-//struct struct_80286A04 D_80286A04[] = {
-//};
 
 struct struct_80286A10 {
     u16 unk0[4];

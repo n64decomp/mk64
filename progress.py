@@ -90,7 +90,7 @@ seg2Files2 = [
 ]
 seg3Files2 = [
     "asm/non_matchings/code_80280650",
-    "asm/non_matchings/code_80281FA0",
+    "asm/non_matchings/ceremony_and_credits",
 ]
 audioFiles2 = [
     "asm/non_matchings/audio"
@@ -156,6 +156,7 @@ mainSegFiles = [
     "build/us/src/code_800029B0",
     "build/us/src/code_80004740",
     "build/us/src/code_80005FD0",
+    "build/us/src/camera",
     "build/us/src/code_8001F980",
     "build/us/src/code_80027D00",
     "build/us/src/code_800431B0",
@@ -190,7 +191,7 @@ seg3Files = [
     "build/us/src/code_80280650",
     "build/us/src/code_80281780",
     "build/us/src/code_80281C40",
-    "build/us/src/code_80281FA0",
+    "build/us/src/ceremony_and_credits",
 ]
 segAudioFiles = [
     "build/us/src/audio/effects",

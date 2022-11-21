@@ -1,7 +1,30 @@
-#ifndef CODE_80281FA0_h
-#define CODE_80281FA0_h
+#ifndef CEREMONY_AND_CREDITS_H
+#define CEREMONY_AND_CREDITS_H
 
 #include "common_structs.h"
+
+struct struct_80282C40 {
+    s8 unk0;
+    s8 unk1;
+    s8 unk2;
+    u8 unk3;
+    s8 unk4;
+    s8 unk5;
+    Vec3s unk6;
+};
+
+struct struct_80285D80 {
+    u8 unk0[6];
+    s16 unk6[3];
+};
+
+struct struct_80286A04 {
+    u8 unk0;
+    u8 unk1;
+    struct struct_80285D80 *unk4;
+    struct struct_80285D80 *unk8;
+    u16 unkC;
+};
 
 /* Function Prototypes */
 
@@ -24,33 +47,27 @@ void func_80282434(Camera*);
 void func_80282454(Vec3f, Vec3f, f32*, s16*, s16*);
 void func_80282504(Vec3f, Vec3f, f32, s16, s16);
 void func_802825C8(Vec3f, Vec3f, Vec3f, Vec3s);
-//s32  func_80282D90(Camera*, struct struct_80282C40*, struct struct_80282C40*, s32);
-//void func_80282E58(Camera*, s16*, s32);
+s32  func_80282D90(Camera*, struct struct_80286A04*, struct struct_80286A04*, s32);
+void func_80282E58(Camera*, struct struct_80282C40*, s32);
 void func_80282F00(s16*, s16);
 void func_80283240(s16);
 s32  cutscene_event(CameraEvent event, Camera*, s16, s16);
 s32  func_80283330(s32);
 s32  func_80283428();
-//void func_80283968(s32);
+void func_80283968(Camera*);
 void func_80283994(CinematicCamera*);
-//void func_802839B4(s32);
-//void func_802839CC(s32);
-//void func_802839E0(s32);
-//void func_80283A00(s32);
+void func_802839B4(Camera*);
+void func_802839CC(Camera*);
+void func_802839E0(Camera*);
 void func_80283A34(CinematicCamera*);
 void func_80283A54(Camera*);
 void func_80283A7C(CinematicCamera*);
-//void func_80283AA4(s32);
-//void func_80283ACC(s32);
-//void func_80283AF4(s32);
-//void func_80283B1C(s32);
-//void func_80283B44(s32);
-//void func_80283B6C(s32);
-//void func_80283BA4(s32);
+void func_80283B6C(Camera*);
+void func_80283BA4(Camera*);
 void func_80283BF0(CinematicCamera*);
 void func_80283C14(Camera*);
-//void func_80283C38(s32);
-//void func_80283C58(CinematicCamera*);
+void func_80283C38(Camera*);
+void func_80283C58(CinematicCamera*);
 void func_80283C78(s32);
 void func_80283CA8(CinematicCamera*);
 void func_80283CD0(s32);
@@ -91,34 +108,34 @@ extern f32 D_802856B4;
 extern f32 D_802856B8;
 extern f32 D_802856BC;
 extern f32 D_802856C0;
-//extern struct struct_80282C40 D_802856DC[];
-//extern s32 D_80285718[];
-//extern s32 D_80285754[];
-//extern s32 D_80285784[];
-//extern s32 D_802857B4[];
-//extern s32 D_802857CC[];
-//extern s32 D_802857F0;
-//extern s32 D_80285850;
-//extern s32 D_802858B0;
-//extern s32 D_802858C8;
-//extern s32 D_80285910;
-//extern s32 D_80285928;
-//extern s32 D_80285940;
-//extern s32 D_80285A10;
-//extern s32 D_80285A4C;
-//extern s32 D_80285A88;
-//extern s32 D_80285AB8;
-//extern s32 D_80285AE8;
-//extern s32 D_80285B00;
-//extern s32 D_80285B18;
-//extern s32 D_80285B54;
-//extern s32 D_80285B90;
-//extern s32 D_80285BA8;
-//extern s32 D_80285C38;
-//extern s32 D_80285C74;
+extern struct struct_80282C40 D_802856DC[];
+extern struct struct_80282C40 D_80285718[];
+extern struct struct_80282C40 D_80285754[];
+extern struct struct_80282C40 D_80285784[];
+extern struct struct_80282C40 D_802857B4[];
+extern struct struct_80282C40 D_802857CC[];
+extern struct struct_80282C40 D_802857F0[];
+extern struct struct_80282C40 D_80285850[];
+extern struct struct_80282C40 D_802858B0[];
+extern struct struct_80282C40 D_802858C8[];
+extern struct struct_80282C40 D_80285910[];
+extern struct struct_80282C40 D_80285928[];
+extern struct struct_80282C40 D_80285940[];
+extern struct struct_80282C40 D_80285A10[];
+extern struct struct_80282C40 D_80285A4C[];
+extern struct struct_80282C40 D_80285A88[];
+extern struct struct_80282C40 D_80285AB8[];
+extern struct struct_80282C40 D_80285AE8[];
+extern struct struct_80282C40 D_80285B00[];
+extern struct struct_80282C40 D_80285B18[];
+extern struct struct_80282C40 D_80285B54[];
+extern struct struct_80282C40 D_80285B90[];
+extern struct struct_80282C40 D_80285BA8[];
+extern struct struct_80282C40 D_80285C38[];
+extern struct struct_80282C40 D_80285C74[];
 extern s16 D_80285D14;
 extern s32 D_802876D4;
 extern s32 D_802876D8;
 //extern struct credits_data_1FA0 *D_802876E0;
 
-#endif
+#endif // CEREMONY_AND_CREDITS_H
