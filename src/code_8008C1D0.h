@@ -116,8 +116,6 @@ void func_800914A0();
 // code_80005FD0
 void func_800098FC(u32, Player*);
 // audio/external.c
-void func_800C90F4(u8, uintptr_t);
-void func_800C9060(u8, s32);
 void func_800C9250(u8);
 void func_800CA24C(u8);
 void func_800CA59C(u8);
@@ -152,7 +150,6 @@ extern u16 D_80152308;
 extern u16 D_8015F6F8;
 extern s16 D_80165190[4][8];
 extern f32 D_80165280[];
-extern s16 D_80165320[];
 extern s32 D_80165420[];
 extern s32 D_80165440[];
 extern s32 D_80165460[];

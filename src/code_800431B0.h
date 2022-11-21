@@ -275,6 +275,7 @@ void func_8004E800(s32);
 void func_8004E998(s32);
 void func_8004EB30(s32);
 void func_8004EB38(s32);
+void func_8004EB38(s32);
 void func_8004ED40(s32);
 void func_8004EE54(s32);
 
@@ -288,6 +289,7 @@ void func_8004FA78(s32);
 void func_8004FC78(s16, s16, s8);
 
 void func_80050320();
+s32  func_80050644(u16, s32*, s32*);
 
 void func_800514BC();
 void func_80051638(s32);
@@ -301,6 +303,8 @@ void func_80051F9C();
 void func_80052044();
 void func_80052080();
 void func_8005217C(s32);
+void func_800523B8(s32, s32, u32);
+void func_800524B4(s32);
 void func_800524B4(s32);
 void func_800527D8(s32);
 void func_80052590(s32);
@@ -310,6 +314,7 @@ void func_80052E30(s32);
 void func_8005327C(s32);
 void func_800532A4(s32);
 void func_800534E8(s32);
+void func_800536C8(s32);
 void func_80053870(s32);
 void func_80053E6C(s32);
 
@@ -384,6 +389,7 @@ extern Vec3f D_80183E70;
 extern s32 D_80183E88[];
 extern Vec3s D_80183E98;
 extern s32 D_80183EAC;
+extern UnkActorInner D_8018C830;
 extern s32 D_8018D1E0;
 
 extern Lights1 D_800E4638;
@@ -394,6 +400,8 @@ extern Lights1 D_800E4698;
 
 extern s8 D_800E5670[];
 extern s8 D_800E566A[];
+
+extern u8 D_06006F38[]; // Some type of pallette?
 
 extern Gfx *gDisplayListHead;
 

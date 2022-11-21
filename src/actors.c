@@ -16,6 +16,7 @@
 #include "code_80071F00.h"
 #include "code_8008C1D0.h"
 #include <sounds.h>
+#include "audio/external.h"
 
 s32 D_802BA050;
 s32 D_802BA054;

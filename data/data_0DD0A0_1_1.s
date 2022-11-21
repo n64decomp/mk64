@@ -126,7 +126,7 @@ glabel D_800DDE74
 .word 0x00000000
 
 glabel D_800DDE9C
-.word 0x41100000, 0x40e00000, 0x40a00000
+.float 9.0, 7.0, 5.0
 
 .word 0x00000000, 0x00000000
 
