@@ -13,6 +13,7 @@ default: all
 VERSION ?= us
 # If COMPARE is 1, check the output sha1sum when building 'all'
 COMPARE ?= 1
+export LANG := C
 
 ifeq ($(VERSION),us)
   VERSION_CFLAGS := -DVERSION_US

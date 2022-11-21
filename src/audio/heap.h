@@ -108,6 +108,7 @@ void *unk_pool1_lookup(s32 poolIdx, s32 id);
 
 // Note: In some .asm files D_803AFBC8 has been replaced with gLeftVolRampings
 // That is almost certainly incorrect, but I don't know how to fix it at this point
+extern struct SoundAllocPool gLeftVolRampings;
 extern struct SoundAllocPool gAudioSessionPool; // D_803AFBC8
 extern struct SoundAllocPool gAudioInitPool;    // D_803AFBD8
 extern struct SoundAllocPool gNotesAndBuffersPool;
