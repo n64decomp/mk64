@@ -1,10 +1,16 @@
+/**
+ * @file ceremony_and_credits.c
+ * Implements cinematic camera for ceremony and credits scenes.
+ * Camera moves via splines.
+ */
+
 #include <ultra64.h>
 #include <macros.h>
 #include <types.h>
 #include <common_structs.h>
 #include "variables.h"
 #include "math_util.h"
-#include "code_80281FA0.h"
+#include "ceremony_and_credits.h"
 #include "objects.h"
 #include "main.h"
 #include "camera.h"
@@ -837,7 +843,10 @@ void func_802839E0(Camera *camera) {
     func_80092C80();
 }
 
-void func_80283A00(Camera *camera) {
+/**
+ * Played at beginning of credits.
+ */
+void play_sound_welcome(Camera *camera) {
     if (D_800DC5E4 == 0) {
         play_sound2(SOUND_INTRO_WELCOME);
     }
@@ -847,32 +856,41 @@ void func_80283A34(CinematicCamera *camera) {
     func_800CA0CC();
 }
 
-void func_80283A54(Camera *camera) {
+/**
+ * Played after receiving trophy.
+ */
+void play_sound_congratulation(Camera *camera) {
     play_sound2(SOUND_CEREMONY_CONGRATULATION);
 }
 
-// Balloon pop
-void func_80283A7C(CinematicCamera *camera) {
+/**
+ * Played in ceremony opening with ballons.
+ */
+void play_sound_balloon_pop(CinematicCamera *camera) {
     play_sound2(SOUND_CEREMONY_BALLOON_POP);
 }
 
-void func_80283AA4(Camera *camera) {
+void play_sound_fish(Camera *camera) {
     play_sound2(SOUND_CEREMONY_FISH);
 }
 
-void func_80283ACC(Camera *camera) {
+void play_sound_fish_2(Camera *camera) {
     play_sound2(SOUND_CEREMONY_FISH_2);
 }
 
-void func_80283AF4(Camera *camera) {
+void play_sound_shoot_trophy(Camera *camera) {
     play_sound2(SOUND_CEREMONY_SHOOT_TROPHY);
 }
 
-void func_80283B1C(Camera *camera) {
+void play_sound_podium(Camera *camera) {
     play_sound2(SOUND_CEREMONY_PODIUM);
 }
 
-void func_80283B44(Camera *camera) {
+/**
+ * Played in background nearly the entire ceremony
+ * Begins again or plays louder once the trophy appears.
+ */
+void play_sound_trophy(Camera *camera) {
     play_sound2(SOUND_CEREMONY_TROPHY);
 }
 
@@ -921,9 +939,11 @@ void func_80283CD0(s32 arg0) {
     }
 }
 
-// End of credits farewell
-// "Hey, you're very good, see you next time."
-void func_80283D04(s32 arg0) {
+/**
+ * End of credits farewell.
+ * "Hey, you're very good. See you next time!"
+ */
+void play_sound_farewell(s32 arg0) {
     play_sound2(SOUND_CREDITS_FAREWELL);
 }
 
@@ -1042,7 +1062,7 @@ struct struct_80282C40 D_80285940[] = {
 	{ 0x00, 0x00, 0x00, 0x1E, 0x00, 0x00, { 0xF1E1, 0x000A, 0xFE71} },
 	{ 0xFF, 0x00, 0x00, 0x1E, 0x00, 0x00, { 0xF1E0, 0x000C, 0xFE71} },
 };
-// todo: label from sm64
+
 struct Cutscene {
     /* 0x0 */ void (*shot)(Camera*);
     /* 0x4 */ s16 duration;
@@ -1054,14 +1074,14 @@ void func_80283D2C(CinematicCamera *camera) {
     cutscene_event(&func_80283CA8, camera, 0, 0);
     cutscene_event(&func_80283A34, camera, 1, 1);
     cutscene_event(&func_80283BF0, camera, 0, 0);
-    cutscene_event(&func_80283A7C, camera, 45, 45);
-    cutscene_event(&func_80283A7C, camera, 65, 65);
-    cutscene_event(&func_80283A7C, camera, 70, 70);
-    cutscene_event(&func_80283A7C, camera, 94, 94);
-    cutscene_event(&func_80283A7C, camera, 110, 110);
-    cutscene_event(&func_80283A7C, camera, 130, 130);
-    cutscene_event(&func_80283A7C, camera, 152, 152);
-    cutscene_event(&func_80283A7C, camera, 160, 160);
+    cutscene_event(&play_sound_balloon_pop, camera, 45, 45);
+    cutscene_event(&play_sound_balloon_pop, camera, 65, 65);
+    cutscene_event(&play_sound_balloon_pop, camera, 70, 70);
+    cutscene_event(&play_sound_balloon_pop, camera, 94, 94);
+    cutscene_event(&play_sound_balloon_pop, camera, 110, 110);
+    cutscene_event(&play_sound_balloon_pop, camera, 130, 130);
+    cutscene_event(&play_sound_balloon_pop, camera, 152, 152);
+    cutscene_event(&play_sound_balloon_pop, camera, 160, 160);
     cutscene_event(&func_80283994, camera, D_80285D10[0].duration - 60, D_80285D10[0].duration - 60);
     func_80282D90(camera, &D_802856DC, &D_80285718, 0);
 }
@@ -1138,8 +1158,8 @@ void func_802841E8(Camera *camera) {
 }
 
 void func_8028422C(Camera *camera) {
-    cutscene_event(&func_80283AF4, camera, 6, 6);
-    cutscene_event(&func_80283B44, camera, 30, 30);
+    cutscene_event(&play_sound_shoot_trophy, camera, 6, 6);
+    cutscene_event(&play_sound_trophy, camera, 30, 30);
     cutscene_event(&func_802841E8, camera, 0, 0);
     cutscene_event(&func_80284184, camera, 6, -1);
 }
@@ -1164,7 +1184,7 @@ void func_80284308(Camera *camera) {
     f32 y;
     f32 z;
 
-    cutscene_event(func_80283A54, camera, 140, 140);
+    cutscene_event(play_sound_congratulation, camera, 140, 140);
     func_80282D90(camera, D_802858E0, D_802858F8, 0);
 
     ply = *(sp30[0] + D_802874F5);
@@ -1305,20 +1325,20 @@ struct Cutscene D_80285D10[] = {
 };
 
 void func_80284418(Camera *camera) {
-    cutscene_event(&func_80283B1C, camera, 0x52, 0x52);
-    cutscene_event(&func_80283B1C, camera, 0x48, 0x48);
-    cutscene_event(&func_80283B1C, camera, 0x3D, 0x3D);
+    cutscene_event(&play_sound_podium, camera, 0x52, 0x52);
+    cutscene_event(&play_sound_podium, camera, 0x48, 0x48);
+    cutscene_event(&play_sound_podium, camera, 0x3D, 0x3D);
     func_80282D90(camera, &D_80285A10, &D_80285A4C, 0);
 }
 
 void func_80284494(Camera *camera) {
-    cutscene_event(&func_80283ACC, camera, 0x1E, 0x1E);
+    cutscene_event(&play_sound_fish_2, camera, 0x1E, 0x1E);
     cutscene_event(&func_80283968, camera, 0, 0);
     func_80282D90(camera, &D_80285A88, &D_80285AB8, 0);
 }
 
 void func_802844FC(Camera *camera) {
-    cutscene_event(&func_80283AA4, camera, 0x3B, 0x3B);
+    cutscene_event(&play_sound_fish, camera, 0x3B, 0x3B);
     func_80282D90(camera, &D_80285AE8, &D_80285B00, 0);
 }
 
@@ -1709,7 +1729,7 @@ void func_802847CC(Camera *camera) {
     sp2C = D_80286A04[D_800DC5E4].unkC;
     //sp2E = 
   cutscene_event(func_80283CD0, camera, 0, 0);
-  cutscene_event(func_80283A00, camera, 8, 8);
+  cutscene_event(play_sound_welcome, camera, 8, 8);
   cutscene_event(func_80283C78, camera, 149, 149);
   cutscene_event(func_80282434, camera, 0, 0);
   switch (D_80286A04[D_800DC5E4].unk0)
@@ -1721,7 +1741,7 @@ void func_802847CC(Camera *camera) {
 
     case 2:
       cutscene_event(func_802839B4, camera, 0, 0);
-      cutscene_event(func_80283D04, camera, 247, 247);
+      cutscene_event(play_sound_farewell, camera, 247, 247);
       func_80282D90(camera, D_80286A04[D_800DC5E4].unk4, D_80286A04[D_800DC5E4].unk8, 0);
       break;
 

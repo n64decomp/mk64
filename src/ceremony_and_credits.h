@@ -54,7 +54,7 @@ void func_80283C14(Camera*);
 void func_80283C78(s32);
 void func_80283CA8(CinematicCamera*);
 void func_80283CD0(s32);
-void func_80283D04(s32);
+void play_sound_farewell(s32);
 void func_80283D2C(CinematicCamera*);
 void func_80283EA0(Camera*);
 void func_80283ED0(Camera*);
