@@ -1397,7 +1397,7 @@ GLOBAL_ASM("asm/non_matchings/camera/func_8001F394.s")
 void func_8001F87C(s32 cameraId) {
     s32 playerIndex;
     // Why?
-    s32 test = cameraId;
+    s32 id = cameraId;
 
     if(gPlayerOne){}
     if (gActiveScreenMode == 0) {
@@ -1409,9 +1409,9 @@ void func_8001F87C(s32 cameraId) {
                 }
                 if ((playerIndex == 7) && (D_80164A2C == 0x0000003C)) {
                     D_80164A28 = 2;
-                    D_80152300[test] = 1;
-                    cameras[test].rot[1] = gPlayerOne[playerIndex].unk_02C[1];
-                    cameras[test].unk_2C = gPlayerOne[playerIndex].unk_02C[1];
+                    D_80152300[id] = 1;
+                    cameras[id].rot[1] = gPlayerOne[playerIndex].unk_02C[1];
+                    cameras[id].unk_2C = gPlayerOne[playerIndex].unk_02C[1];
                 }
             }
         }

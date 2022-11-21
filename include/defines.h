@@ -122,7 +122,7 @@
 #define GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION 5 // Selecting CC for GP and Versus. Selecting "Begin" or "Data" for Time Trials. Unused for Battle
 #define CONFIRM_OK_SELECTION 6
 #define CONFIRM_OK_SELECTION_FROM_BACK_OUT 7
-#define TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT 8
+#define TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT 8
 
 /**
  * Options for gControllerPakMenuSelection

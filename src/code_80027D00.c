@@ -3623,21 +3623,19 @@ f32 func_80030150(Player *player, s8 arg1) {
     var_f2 = (player->unk_094 / 18.0f) * 216.0f;
     if (var_f2 >= 8.0f) {
         if ((player->unk_0BC & 0x200) != 0x200) {
-            if(1) {}
             if ((s32) player->boundingBoxCorners[3].surfaceType >= 0xF) {
                 // ???????
-            } else {
+            } else 
                 var_f0 += D_800E2E90[player->characterId][player->boundingBoxCorners[3].surfaceType];
-            }
-            if ((s32) player->boundingBoxCorners[2].surfaceType < 0xF) {
+            
+            if ((s32) player->boundingBoxCorners[2].surfaceType < 0xF) 
                 var_f0 += D_800E2E90[player->characterId][player->boundingBoxCorners[2].surfaceType];
-            }
-            if ((s32) player->boundingBoxCorners[1].surfaceType < 0xF) {
+            
+            if ((s32) player->boundingBoxCorners[1].surfaceType < 0xF) 
                 var_f0 += D_800E2EB0[player->characterId][player->boundingBoxCorners[1].surfaceType];
-            }
-            if ((s32) player->boundingBoxCorners[0].surfaceType < 0xF) {
+            
+            if ((s32) player->boundingBoxCorners[0].surfaceType < 0xF) 
                 var_f0 += D_800E2E90[player->characterId][player->boundingBoxCorners[0].surfaceType];
-            }
         }
         if (((player->unk_0BC & 8) != 8) && ((player->unk_0CA & 2) != 2)) {
             temp_lo = player->unk_0C4 / 182;

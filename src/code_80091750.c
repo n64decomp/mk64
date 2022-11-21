@@ -13,6 +13,7 @@
 #include "data_segment2.h"
 #include "code_800AF9B0.h"
 #include "variables.h"
+#include <sounds.h>
 // TODO: Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
@@ -1788,7 +1789,7 @@ void func_80095574(void) {
     }
     var_v0_2 = gMenuTimingCounter;
     if (var_v0_2 == 2) {
-        play_sound2(0x49009009);
+        play_sound2(SOUND_INTRO_WELCOME);
         var_v0_2 = gMenuTimingCounter;
     }
     if (var_v0_2 >= 0x12D) {
@@ -11709,7 +11710,7 @@ block_7:
                 }
                 if ((var_s1->unk20 != 0) && (var_s1->unk1C >= 3)) {
                     var_s1->unk20 = 0;
-                    play_sound2(0x49018008);
+                    play_sound2(SOUND_INTRO_LOGO);
                 }
                 break;
             case 0xDA:                              /* switch 8 */
@@ -11727,7 +11728,7 @@ block_7:
                 case 0:                             /* switch 9 */
                     if (gControllerFive->unk4 & 0x10) {
                         var_s1->unk4 = (s32) 1U;
-                        play_sound2(0x4900801C);
+                        play_sound2(SOUND_ACTION_PING);
                     } else {
                         var_s1->visible = 0;
                     }
@@ -11753,7 +11754,7 @@ block_7:
                 case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:                             /* switch 5 */
                 case CONFIRM_OK_SELECTION:                             /* switch 5 */
                 case CONFIRM_OK_SELECTION_FROM_BACK_OUT:                             /* switch 5 */
-                case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:                             /* switch 5 */
+                case TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT:                             /* switch 5 */
                     func_800A9C40(var_s1);
                     break;
                 }
@@ -11776,7 +11777,7 @@ block_7:
                 case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:                             /* switch 6 */
                 case CONFIRM_OK_SELECTION:                             /* switch 6 */
                 case CONFIRM_OK_SELECTION_FROM_BACK_OUT:                             /* switch 6 */
-                case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:                             /* switch 6 */
+                case TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT:                             /* switch 6 */
                     func_800A9C40(var_s1);
                     break;
                 }
@@ -13032,7 +13033,7 @@ void func_800A9C40(struct_8018D9E0_entry *arg0) {
     case 1:
         func_800AA280();
         temp_v0 = gMainMenuSelectionDepth;
-        if ((temp_v0 == CONFIRM_OK_SELECTION_FROM_BACK_OUT) || (temp_v0 == TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT)) {
+        if ((temp_v0 == CONFIRM_OK_SELECTION_FROM_BACK_OUT) || (temp_v0 == TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT)) {
             arg0->unk1C = 0x20;
             return;
         }
@@ -13078,7 +13079,7 @@ void func_800A9D5C(struct_8018D9E0_entry *arg0) {
     switch (temp_t1) {
     case 2:
         temp_v0 = gMainMenuSelectionDepth;
-        if ((temp_v0 == CONFIRM_OK_SELECTION_FROM_BACK_OUT) || (temp_v0 == TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT)) {
+        if ((temp_v0 == CONFIRM_OK_SELECTION_FROM_BACK_OUT) || (temp_v0 == TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT)) {
             arg0->column = 0x00000080;
             arg0->row = 0x0000003E;
             return;
@@ -13185,7 +13186,7 @@ block_5:
             arg0->row = (*(&D_800E86AC - 1 + D_8018EDF3) * 0x12) + temp_v0_2->row + 0x41;
             return;
         case CONFIRM_OK_SELECTION_FROM_BACK_OUT:                                     /* switch 2 */
-        case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:                                     /* switch 2 */
+        case TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT:                                     /* switch 2 */
             temp_v0_3 = func_800AAE68(temp_a1, temp_a2, sp20);
             temp_v1_2 = (arg0->type * 8) + -(sp24 * 8) + &D_800E70E8;
             arg0->column = temp_v0_3->column + temp_v1_2->unk0;
@@ -13206,7 +13207,7 @@ block_5:
         case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:                                     /* switch 3 */
         case CONFIRM_OK_SELECTION:                                     /* switch 3 */
         case CONFIRM_OK_SELECTION_FROM_BACK_OUT:                                     /* switch 3 */
-        case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:                                     /* switch 3 */
+        case TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT:                                     /* switch 3 */
             if ((temp_a1 != sp20) && (temp_a1 != sp1C)) {
                 arg0->visible = 0;
 block_37:
@@ -13242,7 +13243,7 @@ block_37:
         case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:                                     /* switch 4 */
         case CONFIRM_OK_SELECTION:                                     /* switch 4 */
         case CONFIRM_OK_SELECTION_FROM_BACK_OUT:                                     /* switch 4 */
-        case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:                                     /* switch 4 */
+        case TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT:                                     /* switch 4 */
             if ((temp_a1 != sp20) && (temp_a1 != sp1C)) {
                 arg0->visible = 0;
                 goto block_37;
@@ -13281,7 +13282,7 @@ void func_800AA280(struct_8018D9E0_entry *arg0) {
 
     temp_v1 = gMainMenuSelectionDepth;
     temp_v0 = (arg0->type * 8) - 0x50 + &D_800E70A0;
-    if ((temp_v1 == CONFIRM_OK_SELECTION_FROM_BACK_OUT) || (temp_v1 == TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT)) {
+    if ((temp_v1 == CONFIRM_OK_SELECTION_FROM_BACK_OUT) || (temp_v1 == TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT)) {
         arg0->column = (s32) temp_v0->unk0;
         arg0->row = (s32) temp_v0->unk2;
         return;
@@ -13327,7 +13328,7 @@ void func_800AA2EC(struct_8018D9E0_entry *arg0) {
     case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:
     case CONFIRM_OK_SELECTION:
     case CONFIRM_OK_SELECTION_FROM_BACK_OUT:
-    case TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT:
+    case TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT:
         if ((arg0->unk4 == 0) && (temp_v0 = D_8018EDF3, (temp_v0 == 1)) && (*(&D_800E86AC - 1 + temp_v0) == 1)) {
             if (D_800E86F8 != 0) {
                 sp20 = 0;
@@ -14798,7 +14799,7 @@ void func_800AC458(struct_8018D9E0_entry *arg0) {
                 arg0 = temp_a3;
                 *temp_v1_2 += 1;
                 sp1C = temp_a1_2;
-                play_sound2(0x49008017, temp_a1_2, temp_a2_2, temp_a3);
+                play_sound2(SOUND_ACTION_COUNT_SCORE, temp_a1_2, temp_a2_2, temp_a3);
                 phi_a3 = arg0;
                 if ((*(D_8018D9BC + temp_a1_2) == 0) && (arg0->unk20 == 0)) {
                     arg0->unk20 = 1;
@@ -14883,7 +14884,7 @@ loop_41:
         if ((D_8018D9D8 != 0) && (D_800DDB24 != 0)) {
             temp_a3->unk4 = 0xC;
             temp_a3->unk20 = temp_a3->row;
-            play_sound2(0x49008015);
+            play_sound2(SOUND_ACTION_NEXT_COURSE);
             return;
         }
         break;
@@ -15003,7 +15004,7 @@ block_24:
                 if (temp_v0_3 >= 0xC) {
                     temp_a1_2->unk4 = temp_v0_3 - 1;
                     arg0 = temp_a1_2;
-                    play_sound2(0x49008000, temp_a1_2);
+                    play_sound2(SOUND_MENU_CURSOR_MOVE, temp_a1_2);
                     temp_f0 = (f64) arg0->unk24;
                     phi_a1 = arg0;
                     if (temp_f0 < 4.2) {
@@ -15022,7 +15023,7 @@ block_24:
                 if (temp_v0_4 < 0xC) {
                     phi_a1->unk4 = temp_v0_4 + 1;
                     arg0 = phi_a1;
-                    play_sound2(0x49008000, phi_a1);
+                    play_sound2(SOUND_MENU_CURSOR_MOVE, phi_a1);
                     temp_f0_2 = (f64) arg0->unk24;
                     phi_a1_2 = arg0;
                     if (temp_f0_2 < 4.2) {
@@ -15037,7 +15038,7 @@ block_24:
                 arg0 = phi_a1_2;
                 func_8009DFE0(0x1E, phi_a1_2);
                 func_800CA330(0x19);
-                play_sound2(0x4900801B);
+                play_sound2(SOUND_ACTION_CONTINUE_UNKNOWN);
                 temp_f0_3 = (f64) arg0->unk24;
                 phi_a1_4 = arg0;
                 if (temp_f0_3 < 4.2) {
@@ -15146,7 +15147,7 @@ void func_800ACC50(struct_8018D9E0_entry *arg0) {
                 if (temp_v0_2 >= 0xB) {
                     temp_a1_2->unk4 = temp_v0_2 - 1;
                     arg0 = temp_a1_2;
-                    play_sound2(0x49008000, temp_a1_2);
+                    play_sound2(SOUND_MENU_CURSOR_MOVE, temp_a1_2);
                     temp_f0 = (f64) arg0->unk24;
                     phi_a1 = arg0;
                     if (temp_f0 < 4.2) {
@@ -15165,7 +15166,7 @@ void func_800ACC50(struct_8018D9E0_entry *arg0) {
                 if (temp_v0_3 < 0xD) {
                     phi_a1->unk4 = temp_v0_3 + 1;
                     arg0 = phi_a1;
-                    play_sound2(0x49008000, phi_a1);
+                    play_sound2(SOUND_MENU_CURSOR_MOVE, phi_a1);
                     temp_f0_2 = (f64) arg0->unk24;
                     phi_a1_2 = arg0;
                     if (temp_f0_2 < 4.2) {
@@ -15178,7 +15179,7 @@ void func_800ACC50(struct_8018D9E0_entry *arg0) {
             if ((phi_v1 & 0x9000) != 0) {
                 arg0 = phi_a1_2;
                 func_8009DFE0(0x1E, phi_a1_2);
-                play_sound2(0x49008016);
+                play_sound2(SOUND_MENU_OK_CLICKED);
                 if (gModeSelection == VERSUS) {
                     D_8018EDF4 = (s8) arg0->unk4;
                 } else {
@@ -15491,7 +15492,7 @@ void func_800AD2E8(struct_8018D9E0_entry *arg0) {
                     if ((D_80162DF8 == 1) && (temp_t2 == 9)) {
                         arg0->unk4 = temp_t2 - 1;
                     }
-                    play_sound2(0x49008000, temp_a1);
+                    play_sound2(SOUND_MENU_CURSOR_MOVE, temp_a1);
                     temp_f0 = (f64) arg0->unk24;
                     if (temp_f0 < 4.2) {
                         arg0->unk24 = (f32) (temp_f0 + 4.0);
@@ -15517,7 +15518,7 @@ void func_800AD2E8(struct_8018D9E0_entry *arg0) {
                         arg0->unk4 = temp_v0_5 - 2;
                         phi_a1_3 = gControllerOne->unk6;
                     } else {
-                        play_sound2(0x49008000, phi_a1_2);
+                        play_sound2(SOUND_MENU_CURSOR_MOVE, phi_a1_2);
                         temp_f0_2 = (f64) arg0->unk24;
                         if (temp_f0_2 < 4.2) {
                             arg0->unk24 = (f32) (temp_f0_2 + 4.0);
@@ -15543,7 +15544,7 @@ void func_800AD2E8(struct_8018D9E0_entry *arg0) {
                             func_800B6708();
                             arg0->unk4 = func_800B6348((gCupSelection * 4) + gCupCourseSelection) + 0x11;
                             sp28 = 1;
-                            play_sound2(0x49008001);
+                            play_sound2(SOUND_MENU_SELECT);
                             phi_v1 = 1;
                             break;
                         case 2:                     /* switch 4 */
@@ -15584,13 +15585,13 @@ void func_800AD2E8(struct_8018D9E0_entry *arg0) {
                                 break;
                             }
                             if (phi_v1_2 != 0) {
-                                play_sound2(0x4900FF07);
+                                play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                                 return;
                             }
                             if (osPfsFindFile(&D_8018E868, D_800E86F0, D_800E86F4, &D_800F2E64, &D_800F2E74, &D_8018EB84) == 0) {
                                 func_800B6708();
                                 arg0->unk4 = func_800B6348((gCupSelection * 4) + gCupCourseSelection) + 0x11;
-                                play_sound2(0x49008001);
+                                play_sound2(SOUND_MENU_SELECT);
                                 return;
                             }
                             goto block_56;
@@ -15598,17 +15599,17 @@ void func_800AD2E8(struct_8018D9E0_entry *arg0) {
 block_56:
                         if (D_8018EB7C >= D_8018EB78) {
                             arg0->unk4 = 0xE;
-                            play_sound2(0x4900FF07);
+                            play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                             return;
                         }
                         if (gControllerPakNumPagesFree >= 0x79) {
                             arg0->unk4 = 0x13;
                             arg0->unk1C = 0;
-                            play_sound2(0x49008001);
+                            play_sound2(SOUND_MENU_SELECT);
                             return;
                         }
                         arg0->unk4 = 0xE;
-                        play_sound2(0x4900FF07);
+                        play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                         return;
                     }
                 } else {
@@ -15616,7 +15617,7 @@ block_56:
                     D_8018EDF5 = (s8) temp_v0_6;
                     arg0->unk4 = 0x1E;
                     arg0->unk20 = arg0->row;
-                    play_sound2(0x49008015, phi_a1_3);
+                    play_sound2(SOUND_ACTION_NEXT_COURSE, phi_a1_3);
                     temp_f0_4 = (f64) arg0->unk24;
                     if (temp_f0_4 < 4.2) {
                         arg0->unk24 = (f32) (temp_f0_4 + 4.0);
@@ -15698,7 +15699,7 @@ void func_800ADF48(struct_8018D9E0_entry *arg0) {
                         arg0->unk4 = temp_v0 - 1;
                         sp18 = temp_a2;
                         arg0 = arg0;
-                        play_sound2(0x49008000);
+                        play_sound2(SOUND_MENU_CURSOR_MOVE);
                         temp_f0 = (f64) arg0->unk24;
                         if (temp_f0 < 4.2) {
                             arg0->unk24 = (f32) (temp_f0 + 4.0);
@@ -15716,7 +15717,7 @@ void func_800ADF48(struct_8018D9E0_entry *arg0) {
                         arg0->unk4 = temp_v0_2 + 1;
                         sp18 = temp_t2 + &gControllers;
                         arg0 = arg0;
-                        play_sound2(0x49008000);
+                        play_sound2(SOUND_MENU_CURSOR_MOVE);
                         temp_f0_2 = (f64) arg0->unk24;
                         phi_a1 = arg0;
                         if (temp_f0_2 < 4.2) {
@@ -15730,7 +15731,7 @@ void func_800ADF48(struct_8018D9E0_entry *arg0) {
                     temp_v0_3 = *(&D_800F0B50 + gModeSelection);
                     if (phi_a1->unk4 != temp_v0_3) {
                         phi_a1->unk4 = (s32) temp_v0_3;
-                        play_sound2(0x49008002);
+                        play_sound2(SOUND_MENU_GO_BACK);
                         return;
                     }
                 }
@@ -15744,7 +15745,7 @@ void func_800ADF48(struct_8018D9E0_entry *arg0) {
                     }
                     arg0 = phi_a1;
                     func_8009DFE0(0x1E, phi_a1, temp_t2 + &gControllers, &gModeSelection);
-                    play_sound2(0x4900801B);
+                    play_sound2(SOUND_ACTION_CONTINUE_UNKNOWN);
                     func_800CA330(0x3C);
                     temp_f0_3 = (f64) arg0->unk24;
                     if (temp_f0_3 < 4.2) {
@@ -15847,7 +15848,7 @@ void func_800AE218(struct_8018D9E0_entry *arg0) {
         }
         if ((gControllerOne->unk6 & 0x1000) != 0) {
             arg0->unk4 = 0xF;
-            play_sound2(0x49008005);
+            play_sound2(SOUND_ACTION_GO_BACK_2);
             return;
         }
         if (D_8018CAE0 != 0) {
@@ -15881,7 +15882,7 @@ void func_800AE218(struct_8018D9E0_entry *arg0) {
                 temp_v1 = arg0->unk4;
                 if (temp_v1 >= 0xC) {
                     arg0->unk4 = temp_v1 - 1;
-                    play_sound2(0x49008000, temp_a1);
+                    play_sound2(SOUND_MENU_CURSOR_MOVE, temp_a1);
                     temp_f0 = (f64) arg0->unk24;
                     if (temp_f0 < 4.2) {
                         arg0->unk24 = (f32) (temp_f0 + 4.0);
@@ -15897,7 +15898,7 @@ void func_800AE218(struct_8018D9E0_entry *arg0) {
                 temp_v1_2 = arg0->unk4;
                 if (temp_v1_2 < 0x10) {
                     arg0->unk4 = temp_v1_2 + 1;
-                    play_sound2(0x49008000, phi_a1);
+                    play_sound2(SOUND_MENU_CURSOR_MOVE, phi_a1);
                     temp_f0_2 = (f64) arg0->unk24;
                     if (temp_f0_2 < 4.2) {
                         arg0->unk24 = (f32) (temp_f0_2 + 4.0);
@@ -15931,7 +15932,7 @@ void func_800AE218(struct_8018D9E0_entry *arg0) {
                     }
                 case 5:                             /* switch 3 */
                     if (phi_v1 != 0) {
-                        play_sound2(0x49008001);
+                        play_sound2(SOUND_MENU_SELECT);
                         return;
                     }
                     if (D_800E86F8 == 0) {
@@ -15963,13 +15964,13 @@ void func_800AE218(struct_8018D9E0_entry *arg0) {
                             break;
                         }
                         if (phi_v1_2 != 0) {
-                            play_sound2(0x4900FF07);
+                            play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                             return;
                         }
                         if (osPfsFindFile(&D_8018E868, D_800E86F0, D_800E86F4, &D_800F2E64, &D_800F2E74, &D_8018EB84) == 0) {
                             func_800B6708();
                             arg0->unk4 = func_800B6348((gCupSelection * 4) + gCupCourseSelection) + 0x1E;
-                            play_sound2(0x49008001);
+                            play_sound2(SOUND_MENU_SELECT);
                             return;
                         }
                         goto block_49;
@@ -15977,21 +15978,21 @@ void func_800AE218(struct_8018D9E0_entry *arg0) {
 block_49:
                     if (D_8018EB7C >= D_8018EB78) {
                         arg0->unk4 = 0x18;
-                        play_sound2(0x4900FF07);
+                        play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                         return;
                     }
                     if (gControllerPakNumPagesFree >= 0x79) {
                         arg0->unk4 = 0x20;
                         arg0->unk1C = 0;
-                        play_sound2(0x49008001);
+                        play_sound2(SOUND_MENU_SELECT);
                         return;
                     }
                     arg0->unk4 = 0x18;
-                    play_sound2(0x4900FF07);
+                    play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                     return;
                 }
                 func_8009DFE0(0x1E);
-                play_sound2(0x49008016);
+                play_sound2(SOUND_MENU_OK_CLICKED);
                 func_800CA330(0x19);
                 func_800CA388(0x19);
                 temp_f0_4 = (f64) arg0->unk24;
@@ -16011,7 +16012,7 @@ block_49:
     case 41:                                        /* switch 1 */
         if ((gControllerOne->unk6 & 0xD000) != 0) {
             arg0->unk4 = 0x10;
-            play_sound2(0x49008002);
+            play_sound2(SOUND_MENU_GO_BACK);
             temp_f0_5 = (f64) arg0->unk24;
             if (temp_f0_5 < 4.2) {
                 arg0->unk24 = (f32) (temp_f0_5 + 4.0);
@@ -16030,7 +16031,7 @@ block_49:
                 temp_v1_3 = arg0->unk4;
                 if (temp_v1_3 >= 0x1F) {
                     arg0->unk4 = temp_v1_3 - 1;
-                    play_sound2(0x49008000, temp_a1_2);
+                    play_sound2(SOUND_MENU_CURSOR_MOVE, temp_a1_2);
                     temp_f0_6 = (f64) arg0->unk24;
                     if (temp_f0_6 < 4.2) {
                         arg0->unk24 = (f32) (temp_f0_6 + 4.0);
@@ -16044,7 +16045,7 @@ block_49:
                 temp_v1_4 = arg0->unk4;
                 if (temp_v1_4 < 0x1F) {
                     arg0->unk4 = temp_v1_4 + 1;
-                    play_sound2(0x49008000, phi_a1_2);
+                    play_sound2(SOUND_MENU_CURSOR_MOVE, phi_a1_2);
                     temp_f0_7 = (f64) arg0->unk24;
                     if (temp_f0_7 < 4.2) {
                         arg0->unk24 = (f32) (temp_f0_7 + 4.0);
@@ -16056,7 +16057,7 @@ block_49:
         temp_a0_3 = gControllerOne->unk6;
         if ((temp_a0_3 & 0x4000) != 0) {
             arg0->unk4 = 0x10;
-            play_sound2(0x49008002);
+            play_sound2(SOUND_MENU_GO_BACK);
             return;
         }
         if ((temp_a0_3 & 0x9000) != 0) {
@@ -16069,7 +16070,7 @@ block_49:
             } else {
                 arg0->unk4 = 0x23;
             }
-            play_sound2(0x49008001);
+            play_sound2(SOUND_MENU_SELECT);
             temp_f0_8 = (f64) arg0->unk24;
             if (temp_f0_8 < 4.2) {
                 arg0->unk24 = (f32) (temp_f0_8 + 4.0);
@@ -16098,7 +16099,7 @@ block_49:
         phi_a0_2 = temp_a0_5;
         if (((temp_a1_3 & 0x800) != 0) && ((s32) (u32) arg0->unk4 >= 0x24)) {
             arg0->unk4 = (u32) arg0->unk4 - 1;
-            play_sound2(0x49008000, temp_a1_3);
+            play_sound2(SOUND_MENU_CURSOR_MOVE, temp_a1_3);
             temp_f0_9 = (f64) arg0->unk24;
             if (temp_f0_9 < 4.2) {
                 arg0->unk24 = (f32) (temp_f0_9 + 4.0);
@@ -16113,7 +16114,7 @@ block_49:
             temp_v1_5 = arg0->unk4;
             if (temp_v1_5 < 0x24) {
                 arg0->unk4 = temp_v1_5 + 1;
-                play_sound2(0x49008000, phi_a1_3);
+                play_sound2(SOUND_MENU_CURSOR_MOVE, phi_a1_3);
                 temp_f0_10 = (f64) arg0->unk24;
                 if (temp_f0_10 < 4.2) {
                     arg0->unk24 = (f32) (temp_f0_10 + 4.0);
@@ -16124,14 +16125,14 @@ block_49:
         }
         if ((phi_a0_2 & 0x4000) != 0) {
             arg0->unk4 = arg0->unk20 + 0x1E;
-            play_sound2(0x49008002);
+            play_sound2(SOUND_MENU_GO_BACK);
             return;
         }
         if ((phi_a0_2 & 0x9000) != 0) {
             if (arg0->unk4 == 0x24) {
                 arg0->unk4 = 0x28;
                 arg0->unk1C = 0;
-                play_sound2(0x49008001);
+                play_sound2(SOUND_MENU_SELECT);
                 temp_f0_11 = (f64) arg0->unk24;
                 if (temp_f0_11 < 4.2) {
                     arg0->unk24 = (f32) (temp_f0_11 + 4.0);
@@ -16139,7 +16140,7 @@ block_49:
                 }
             } else {
                 arg0->unk4 = arg0->unk20 + 0x1E;
-                play_sound2(0x49008002);
+                play_sound2(SOUND_MENU_GO_BACK);
                 return;
             }
         }
@@ -16148,12 +16149,12 @@ block_49:
         if (arg0->unk1C == 1) {
             if (osPfsFindFile(&D_8018E868, D_800E86F0, D_800E86F4, &D_800F2E64, &D_800F2E74, &D_8018EB84) != 0) {
                 arg0->unk4 = 0x29;
-                play_sound2(0x4900FF07);
+                play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                 return;
             }
             if (func_800B6178(arg0->unk20) != 0) {
                 arg0->unk4 = 0x29;
-                play_sound2(0x4900FF07);
+                play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                 return;
             }
             goto block_107;
@@ -16403,10 +16404,10 @@ void func_800AF004(struct_8018D9E0_entry *arg0) {
             arg0->unk4 = 6;
             arg0->unk1C = 0;
             if ((s32) D_802874F5 < 3) {
-                play_sound2(0x49008016);
+                play_sound2(SOUND_MENU_OK_CLICKED);
                 return;
             }
-            play_sound2(0x4900801B);
+            play_sound2(SOUND_ACTION_CONTINUE_UNKNOWN);
             return;
         }
         break;

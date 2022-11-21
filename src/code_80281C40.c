@@ -9,7 +9,7 @@
 #include "code_80091750.h"
 #include "code_80280650.h"
 #include "code_80281C40.h"
-#include "code_80281FA0.h"
+#include "ceremony_and_credits.h"
 
 void func_80281C40(void) {
     s32 i;

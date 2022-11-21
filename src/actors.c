@@ -15,6 +15,7 @@
 #include "code_80005FD0.h"
 #include "code_80071F00.h"
 #include "code_8008C1D0.h"
+#include <sounds.h>
 
 s32 D_802BA050;
 s32 D_802BA054;
@@ -858,7 +859,7 @@ void func_80298D7C(Camera *camera, Mat4 arg1, struct Actor *actor) {
     Vec3s sp88 = { 0, 0, 0 };
     s32 test;
 
-    if (gGamestate == 9) {
+    if (gGamestate == CREDITS_SEQUENCE) {
         var_f22 = 9000000.0f;
     } else {
         var_f22 = 1000000.0f;
@@ -2142,7 +2143,7 @@ void place_segment_06(struct ActorSpawnData *arg0) {
         }
 
         temp_s0 = &gActorList[func_8029EC88(position, rotation, velocity, actorType)];
-        if (gGamestate == 9) {
+        if (gGamestate == CREDITS_SEQUENCE) {
             func_802976D8(temp_s0->rot);
         } else {
             func_802ADDC8(&temp_s0->unk30, 5.0f, temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2]);
@@ -3322,7 +3323,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
     case ACTOR_FALLING_ROCK:
         if (!(player->unk_0BC & 0x80000000) && !(player->unk_000 & 0x100)) {
             if (func_8029FB80(player, actor) == 1) {
-                func_800C98B8(actor->pos, actor->velocity, 0x19009005U);
+                func_800C98B8(actor->pos, actor->velocity, SOUND_ACTION_EXPLOSION);
                 if ((gModeSelection == TIME_TRIALS) && !(player->unk_000 & 0x1000)) {
                     D_80162DF8 = 1;
                 }

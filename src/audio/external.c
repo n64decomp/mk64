@@ -7,6 +7,7 @@
 #include "audio/external.h"
 #include "audio/load.h"
 #include "audio/data.h"
+#include <sounds.h>
 
 // REQUIRES void in the argument list to match properly
 void func_800C13F0(void) {
@@ -4239,11 +4240,11 @@ void play_sound2(s32 arg0) {
     s32 phi_a0_2;
 
     phi_a0 = arg0;
-    if ((arg0 == 0x49008018) && (gCurrentCourseId == 0x12)) {
+    if ((arg0 == SOUND_ACTION_REV_ENGINE) && (gCurrentCourseId == 0x12)) {
         phi_a0 = 0x49008027;
     }
     phi_a0_2 = phi_a0;
-    if ((phi_a0 == 0x49008019) && (gCurrentCourseId == 0x12)) {
+    if ((phi_a0 == SOUND_ACTION_REV_ENGINE_2) && (gCurrentCourseId == 0x12)) {
         phi_a0_2 = 0x49008028;
     }
     play_sound(phi_a0_2, &D_800EA1C8, 4, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
@@ -4848,12 +4849,12 @@ extern s8 D_800EA16C;
 
 void func_800C9F90(s32 arg0) {
     if ((arg0 & 0xFF) != 0) {
-        play_sound2(0x49008005);
+        play_sound2(SOUND_ACTION_GO_BACK_2);
         func_800CBBB8(0xF1000000, 0);
         D_800EA16C = 1;
         return;
     }
-    play_sound2(0x49008006);
+    play_sound2(SOUND_ACTION_UNKNOWN_CONFIRMATION);
     func_800CBBB8(0xF2000000, 0);
     D_800EA16C = 0;
 }
@@ -5273,7 +5274,7 @@ void func_800CA984(s32 arg0) {
             do {
                 temp_v0_2 = func_800C1C88(temp_s5 & 0xFF, temp_v0->pos, &D_800EA1C8, &temp_v0->unk_098, (u8) var_s0, 0x31029008U);
                 if (temp_v0_2 != NULL) {
-                    play_sound(0x31029008U, temp_v0_2->unk18, var_s0 & 0xFF, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
+                    play_sound(SOUND_ITEM_STAR, temp_v0_2->unk18, var_s0 & 0xFF, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
                 }
                 temp_t2 = (var_s0 + 1) & 0xFF;
                 var_s0 = temp_t2;
@@ -5327,7 +5328,7 @@ void func_800CAB4C(u8 arg0) {
 block_4:
             func_800C36C4(0, 1, 0x55, 5);
             func_800C9060(arg0, 0x1900F013);
-            play_sound(0x5101C00C, &D_800EA1C8, 0, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
+            play_sound(SOUND_ITEM_THUNDERBOLT, &D_800EA1C8, 0, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
         }
         D_800EA168 = 1;
     }
@@ -5368,10 +5369,10 @@ extern ? D_800EA1DC;
 
 void func_800CAC60(s32 arg0) {
     if ((D_800EA108 == 0) && (D_800EA0F0 == 0)) {
-        play_sound(0x1900F00C, &D_800EA1C8, 0, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
+        play_sound(SOUND_ACTION_EXPLOSION_2, &D_800EA1C8, 0, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
         if ((D_800EA10C.unk0 != 1) && (D_800EA10C.unk1 != 1)) {
             func_800C36C4(0, 1, 0x37, 5);
-            play_sound(0x5101C00C, &D_800EA1C8, 0, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
+            play_sound(SOUND_ITEM_THUNDERBOLT, &D_800EA1C8, 0, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
             D_800EA168 = 1;
         }
     }
