@@ -11,6 +11,7 @@
 #include "code_800431B0.h"
 #include "code_80057C60.h"
 #include "code_8008C1D0.h"
+#include "audio/external.h"
 #include <defines.h>
 #include <sounds.h>
 

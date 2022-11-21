@@ -38,14 +38,7 @@ void update_obj_red_blue_shell(struct ShellActor*);
 void func_802B4E30(struct Actor*);
 
 // audio/external.c
-extern void func_800C9060(u8, s32);
-extern void func_800C90F4(u8, u32);
 extern void func_800CAB4C(u8);
-
-// code_80005FD0.c
-s32 func_8000ED80(s32);
-s32 func_8000EDC8(s32);
-s32 func_8000EE10(s32);
 
 extern f32 D_802B9F68;
 

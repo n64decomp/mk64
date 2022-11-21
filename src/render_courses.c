@@ -1759,7 +1759,7 @@ void func_80295BF8(s32 playerIndex) {
 }
 
 void func_80295C6C(void) {
-    gPrevLoadedAddress += ALIGNF(D_8015F588 * 0x2C);
+    gPrevLoadedAddress += ALIGNF(D_8015F588 * sizeof(mk64_surface_map_ram));
     D_8015F6E8 += 20;
     D_8015F6F0 += 20;
     D_8015F6EA += -20;

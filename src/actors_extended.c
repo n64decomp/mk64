@@ -5,9 +5,11 @@
 #include "math_util.h"
 #include "memory.h"
 #include "waypoints.h"
+#include "code_80005FD0.h"
 #include "code_80091750.h"
 #include "actors.h"
 #include "actors_extended.h"
+#include "audio/external.h"
 
 void func_802B0210(UnkActorInner *arg0, UnkActorInner *arg1) {
     arg1->unk30 = arg0->unk30;

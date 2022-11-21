@@ -27,7 +27,7 @@ typedef struct
     /* 0x64 */ s8 *unk_064;
     /* 0x68 */ s32 *unk_068;
     /* 0x6C */ s8 *unk_06C;
-    /* 0x70 */ s32 unk_070;
+    /* 0x70 */ Gfx *unk_070;
     // For at least 1 object type this is meant to be a Vtx*. See func_800555BC
     /* 0x74 */ Vtx *unk_074;
     /* 0x78 */ s8  unk_078[0x04];

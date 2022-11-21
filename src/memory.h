@@ -102,6 +102,7 @@ void  func_802AD950(UnkActorInner*, f32, f32, f32, f32, f32, f32, f32);
 s32   func_802ADDC8(UnkActorInner*, f32, f32, f32, f32);
 f32   func_802AE1C0(f32, f32, f32);
 s32   func_802AEE1C(s16, s16, s16, s16, s16, s16, s16, s16);
+s32   func_802AF0FC(s16, s16, s16, s16, u16);
 void  func_802AF314();
 void  func_802AF588(s32);
 void  func_802AF5AC(s32, s8);
