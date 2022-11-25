@@ -8,6 +8,7 @@
 glabel D_802B9BB0
 .float 30000.0
 
+# begin func_802A4D18
 glabel D_802B9BB4
 .float 6800.0
 
@@ -47,6 +48,7 @@ glabel D_802B9C24
 
 glabel D_802B9C28
 .float 1.3333333730697632
+#end func_802A4D18
 
 .word 0
 

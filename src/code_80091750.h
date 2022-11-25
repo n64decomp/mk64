@@ -67,6 +67,7 @@ void func_800925CC();
 void func_80092604();
 void func_80092630();
 void func_8009265C();
+void func_80092688();
 void func_80092C80();
 s32  char_to_glyph_index(char*);
 s32  func_80092DF8(s8 *);
@@ -207,21 +208,21 @@ void func_800AB020(struct_8018D9E0_entry*);
 void func_800AB098(struct_8018D9E0_entry*);
 void func_800AB260(struct_8018D9E0_entry*);
 void func_800AB290(struct_8018D9E0_entry*);
+void func_800ABCF4(struct_8018D9E0_entry*);
+void func_800ABEAC(struct_8018D9E0_entry*);
 void func_800ABF68(struct_8018D9E0_entry*);
 void func_800AC128(struct_8018D9E0_entry*);
 void func_800AC324(struct_8018D9E0_entry*);
 void func_800AC978(struct_8018D9E0_entry*);
 void func_800AD1A4(struct_8018D9E0_entry*);
 void func_800AEC54(struct_8018D9E0_entry*);
+void func_800AEDBC(struct_8018D9E0_entry*);
 void func_800AEE90(struct_8018D9E0_entry*);
 void func_800AEEBC(struct_8018D9E0_entry*);
 void func_800AEEE8(struct_8018D9E0_entry*);
 void func_800AF480(struct_8018D9E0_entry*);
 void func_800AF4DC(struct_8018D9E0_entry*);
 void func_800AF740(struct_8018D9E0_entry*);
-
-// code_80057C60.c
-void func_80057CE4();
 
 /* File specific defines */
 
@@ -314,5 +315,8 @@ extern u8 _textures_0bSegmentRomStart[];
 
 extern s32 D_8018E7A8; // maybe?
 extern s8 D_8018E7B0;  // maybe?
+
+// This is tracking which credit "state" we're in, decides which credits are shown (and probably other stuff)
+extern u16 D_800DC5E4;
 
 #endif

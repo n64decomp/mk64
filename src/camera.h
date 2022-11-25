@@ -97,12 +97,16 @@ typedef struct {
 void func_8001CA10(Camera*);
 void func_8001CA24(Player*, f32);
 void func_8001CA78(Player*, Camera*, Vec3f, f32*, f32*, f32*, s16, s8);
+void func_8001D53C(Player*, Camera*, Vec3f, f32*, f32*, f32*, s16, s16);
 void func_8001D794(Player*, Camera*, Vec3f, f32*, f32*, f32*, s16);
 void func_8001E0C4(Camera*, Player*, s8);
+void func_8001E8E8(Camera*, Player*, s8);
 void func_8001F87C(s32);
 
 extern s32 D_80164A2C;
 extern f32 D_80164A30;
+extern f32 D_80164A90[];
+extern f32 D_80164AA0[];
 
 extern Camera cameras[];
 extern Camera *camera1;
