@@ -870,7 +870,7 @@ loop_2:
             temp_s0 = &gControllers[var_s2];
             if (gActiveScreenMode != 3) {
                 temp_v0_2 = temp_s0->buttonPressed;
-                if ((temp_v0_2 & 0x20) && !(temp_s0->button & 0x10)) {
+                if ((temp_v0_2 & L_TRIG) && !(temp_s0->button & R_TRIG)) {
                     temp_s0->buttonPressed = temp_v0_2 & 0xFFDF;
                     temp_t7 = D_800DC5A8 + 1;
                     D_800DC5A8 = temp_t7;
@@ -881,7 +881,7 @@ loop_2:
                     func_800029B0();
                 }
             }
-            if ((temp_s0->buttonPressed & 0x1000) && (temp_v0_3 = temp_s0->button, ((temp_v0_3 & 0x10) == 0)) && !(temp_v0_3 & 0x20)) {
+            if ((temp_s0->buttonPressed & START_BUTTON) && (temp_v0_3 = temp_s0->button, ((temp_v0_3 & R_TRIG) == 0)) && !(temp_v0_3 & L_TRIG)) {
                 func_8028DF00();
                 D_800DC5FC = ((s32) (temp_s0 - gControllerOne) >> 4) + 1;
                 temp_s0->buttonPressed = 0;
@@ -906,15 +906,15 @@ block_20:
             var_s2 += 1;
             var_s3 += 0xDD8;
             if (var_s2 == 4) {
-                if ((gEnableDebugMode != 0) && (gModeSelection != 3)) {
-                    if (gControllerOne->buttonPressed & 0x800) {
+                if ((gEnableDebugMode != 0) && (gModeSelection != BATTLE)) {
+                    if (gControllerOne->buttonPressed & U_JPAD) {
                         gLapCountByPlayerId->unk0 = 2;
                     }
-                    if (gControllerOne->buttonPressed & 0x100) {
+                    if (gControllerOne->buttonPressed & R_JPAD) {
                         gLapCountByPlayerId->unk0 = 2;
                         gLapCountByPlayerId->unk4 = 2;
                     }
-                    if (gControllerOne->buttonPressed & 0x400) {
+                    if (gControllerOne->buttonPressed & D_JPAD) {
                         gLapCountByPlayerId->unk0 = 2;
                         gLapCountByPlayerId->unk4 = 2;
                         gLapCountByPlayerId->unk8 = 2;
