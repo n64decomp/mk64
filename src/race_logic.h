@@ -21,6 +21,7 @@ void func_8028F3E8();
 void update_race_position_data();
 void func_8028F474();
 void func_8028F4E8();
+void func_8028F588();
 void func_8028F8BC();
 void func_8028F914();
 void func_8028F970();

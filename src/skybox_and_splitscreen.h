@@ -25,6 +25,7 @@ void select_framebuffer();
 void func_802A4300();
 void func_802A450C(Vtx*);
 void func_802A487C(Vtx*, s32, s32, s32, s32);
+void func_802A4D18();
 void func_802A4EF4();
 void func_802A5004();
 void func_802A50EC();
@@ -77,8 +78,8 @@ extern struct GfxPool *gGfxPool;
 extern f32 D_80150130[];
 extern u16 D_800DC5B4;
 extern f32 D_80150148;
-extern f32 D_80150150;
 extern f32 D_8015014C;
+extern f32 D_80150150;
 
 
 extern u16 D_800DC5C8;

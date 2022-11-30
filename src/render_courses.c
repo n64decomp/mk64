@@ -64,7 +64,6 @@ void func_80290CAC(uintptr_t arg0) {
 }
 
 extern u16 D_80152300[];
-s16 func_802ABD40(u16);
 
 void load_surface_map(s32 arg0, struct UnkStruct_800DC5EC *arg1) {
     Player *temp_t1 = arg1->player;
