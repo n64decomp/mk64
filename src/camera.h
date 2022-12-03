@@ -50,7 +50,7 @@ typedef struct {
     /* 0xB4 */ f32 unk_B4;
 } Camera; /* size = 0xB8 */
 
-typedef BAD_RETURN(s32) (*CameraEvent)(struct Camera *c);
+typedef BAD_RETURN(s32) (*CameraEvent)(Camera *c);
 typedef CameraEvent CutsceneShot;
 
 // The camera used for cutscenes appears to
