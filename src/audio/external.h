@@ -108,7 +108,7 @@ void func_800C8770(u8);
 void func_800C89E4();
 void play_sound2(s32);
 void func_800C8EAC(u16);
-void func_800C8EF8();
+void func_800C8EF8(u16);
 void func_800C9060(u8, u32);
 void func_800C90F4(u8, uintptr_t);
 void func_800CA008(u8, u8);
@@ -170,5 +170,7 @@ extern u8 D_800EA1C0;// = 0;
 extern Vec3f D_800EA1C8;// = {0.0f, 0.0f, 0.0f}
 extern u8 D_800EA1DC;// = 0;
 extern u8 D_800EA244;
+
+extern s8 D_800EA16C;
 
 #endif

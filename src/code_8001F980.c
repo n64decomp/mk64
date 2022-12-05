@@ -667,7 +667,7 @@ void func_80021B0C(void) {
         func_8006E7CC(gPlayerSeven, 6, 0);
         func_8006E7CC(gPlayerEight, 7, 0);
     }
-    if (gGamestate == 5) {
+    if (gGamestate == ENDING_SEQUENCE) {
         if (gPlayerOne->unk_044 & 0x2000) {
             func_80024374(gPlayerOne, 0, 0);
         }

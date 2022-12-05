@@ -45,7 +45,7 @@ void func_80280038(void) {
     func_802A3008(D_800DC5EC);
     func_80058090(0);
     func_80058538(0);
-    func_80284CC0();
+    transition_sliding_borders();
     func_80281C40();
     init_rdp();
     func_80093F10();
@@ -140,7 +140,7 @@ void load_credits(void) {
     camera->up[0] = 0.0f;
     camera->up[1] = 1.0f;
     camera->up[2] = 0.0f;
-    func_80283430();
+    init_cinematic_camera();
     func_80003040();
     func_8006E9C0();
     func_80093E60();
