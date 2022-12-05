@@ -4,6 +4,7 @@
 #include <PR/gu.h>
 
 #include "main.h"
+#include "variables.h"
 #include "types.h"
 #include "camera.h"
 #include "memory.h"
