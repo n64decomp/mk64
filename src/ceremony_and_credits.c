@@ -465,7 +465,7 @@ void func_80283240(s16 arg0) {
 }
 
 /**
- * Call the event while `start` <= gCutsceneTimer <= `end`
+ * Call the event while `start` <= gCutsceneShotTimer <= `end`
  * If `end` is -1, call for the rest of the shot.
  */
 s32 cutscene_event(CameraEvent event, struct CinematicCamera *camera, s16 start, s16 end) {
@@ -1506,49 +1506,44 @@ u16 D_80286B34[] = {
 };
 
 void func_802847CC(struct CinematicCamera *camera) {
-   u16 sp2E;
-  u16 sp2C;
-  // D_802856B4 cast to u32 triggers cfc1.
-  sp2E = D_80286A04[D_800DC5E4].unkC - (10 - (-(((u16)(u32) D_802856B4))));
+    u16 sp2E;
+    u16 sp2C;
+    // D_802856B4 cast to u32 triggers cfc1.
+    sp2E = D_80286A04[D_800DC5E4].unkC - (10 - (-(((u16)(u32) D_802856B4))));
     sp2C = D_80286A04[D_800DC5E4].unkC;
-    //sp2E = 
-  cutscene_event(func_80283CD0, camera, 0, 0);
-  cutscene_event(play_sound_welcome, camera, 8, 8);
-  cutscene_event(func_80283C78, camera, 149, 149);
-  cutscene_event(func_80282434, camera, 0, 0);
-  switch (D_80286A04[D_800DC5E4].unk0)
-  {
-    case 1:
-      cutscene_event(func_802839CC, camera, 0, -1);
-      cutscene_event(func_802839E0, camera, sp2E - 0x14, sp2E - 0x14);
-      break;
 
-    case 2:
-      cutscene_event(func_802839B4, camera, 0, 0);
-      cutscene_event(play_sound_farewell, camera, 247, 247);
-      func_80282D90(camera, D_80286A04[D_800DC5E4].unk4, D_80286A04[D_800DC5E4].unk8, 0);
-      break;
+    cutscene_event(func_80283CD0, camera, 0, 0);
+    cutscene_event(play_sound_welcome, camera, 8, 8);
+    cutscene_event(func_80283C78, camera, 149, 149);
+    cutscene_event(func_80282434, camera, 0, 0);
+    switch (D_80286A04[D_800DC5E4].unk0) {
+        case 1:
+            cutscene_event(func_802839CC, camera, 0, -1);
+            cutscene_event(func_802839E0, camera, sp2E - 0x14, sp2E - 0x14);
+            break;
 
-    default:
-      cutscene_event(func_802839B4, camera, 0, 0);
-      cutscene_event(func_802839CC, camera, sp2E, sp2E);
-      cutscene_event(func_802839E0, camera, sp2E - 0x14, sp2E - 0x14);
-      func_80282D90(camera, D_80286A04[D_800DC5E4].unk4, D_80286A04[D_800DC5E4].unk8, 0);
-      break;
-
-  }
-
-  if (gCCSelection == 3)
-  {
-    sp2C = D_80286B34[D_800DC5E4];
-  }
-  if (gCutsceneShotTimer == sp2C)
-  {
-    if (D_80286A04[D_800DC5E4].unk0 != 2)
-    {
-      func_80280268(D_80286A04[D_800DC5E4 + 1].unk1);
+        case 2:
+            cutscene_event(func_802839B4, camera, 0, 0);
+            cutscene_event(play_sound_farewell, camera, 247, 247);
+            func_80282D90(camera, D_80286A04[D_800DC5E4].unk4, D_80286A04[D_800DC5E4].unk8, 0);
+            break;
+        default:
+            cutscene_event(func_802839B4, camera, 0, 0);
+            cutscene_event(func_802839CC, camera, sp2E, sp2E);
+            cutscene_event(func_802839E0, camera, sp2E - 0x14, sp2E - 0x14);
+            func_80282D90(camera, D_80286A04[D_800DC5E4].unk4, D_80286A04[D_800DC5E4].unk8, 0);
+            break;
     }
-  }
+
+    if (gCCSelection == 3) {
+        sp2C = D_80286B34[D_800DC5E4];
+    }
+
+    if (gCutsceneShotTimer == sp2C) {    
+        if (D_80286A04[D_800DC5E4].unk0 != 2) {
+            func_80280268(D_80286A04[D_800DC5E4 + 1].unk1);
+        }
+    }
 }
 
 // Start of credits cutscene?
@@ -1562,7 +1557,7 @@ struct struct_80284AE8 {
 };
 
 /**
- * Play the current cutscene until either gCutsceneTimer reaches the max time, or c->cutscene is set to 0
+ * Play the current cutscene until either gCutsceneShotTimer reaches the max time, or c->cutscene is set to 0
  */
 void play_cutscene(struct CinematicCamera *camera) {
     s32 pad[3];
