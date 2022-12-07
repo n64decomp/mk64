@@ -1038,7 +1038,7 @@ void func_8003D080(void) {
     Player* ptr = &gPlayers[0];
 
     func_8005D290();
-    if (gGamestate == 5) {
+    if (gGamestate == ENDING_SEQUENCE) {
         func_8003CD78();
     } else {
         func_8003C0F0();

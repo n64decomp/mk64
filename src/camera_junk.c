@@ -37,5 +37,5 @@ void func_802816B8(void) {
     D_80150148 = 1.33333333f;
     D_80150150 = 3.0f;
     D_8015014C = 6800.0f;
-    func_80283430();
+    init_cinematic_camera();
 }

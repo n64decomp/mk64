@@ -197,7 +197,7 @@ void func_802846B4(struct CinematicCamera*);
 void func_802846E4(struct CinematicCamera*);
 void func_802847CC(struct CinematicCamera*);
 void play_cutscene(struct CinematicCamera*);
-void func_80284CC0();
+void transition_sliding_borders();
 
 /* This is where I'd put my static data, if I had any */
 

@@ -63,7 +63,7 @@ void func_80281D00(void) {
     func_80021B0C();
     gSPDisplayList(gDisplayListHead++, &D_00284EE0);
     func_80093F10();
-    func_80284CC0();
+    transition_sliding_borders();
     func_80281C40();
     init_rdp();
 }

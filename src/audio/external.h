@@ -96,7 +96,7 @@ struct Unk_8018EFD8 *func_800C1C88(u8, Vec3f, Vec3f, f32*, u8, u32);
 void func_800C1DA4(Camera*, Vec3s, struct Unk_8018EFD8*);
 void func_800C1E2C(Camera*, Vec3f, struct Unk_8018EFD8*);
 void func_800C1F8C();
-f32 *func_800C21E8(f32*, u32);
+f32 *func_800C21E8(s32, s32);
 void func_800C4084(u16);
 void play_sound(u32, f32*, u8, f32*, f32*, u8*);
 void func_800C41CC(u8, struct Unk_80191420*);
@@ -108,7 +108,7 @@ void func_800C8770(u8);
 void func_800C89E4();
 void play_sound2(s32);
 void func_800C8EAC(u16);
-void func_800C8EF8();
+void func_800C8EF8(u16);
 void func_800C9060(u8, u32);
 void func_800C90F4(u8, uintptr_t);
 void func_800CA008(u8, u8);
@@ -119,11 +119,9 @@ void func_800CA118();
 void func_800CA270();
 void func_800CA2E4(u8, s8);
 void func_800CA30C(u8);
-void func_800CA330();
-void func_800CA330(s32);
-void func_800CA388();
-void func_800CA388(s32);
-void func_800CA49C();
+void func_800CA330(u8);
+void func_800CA388(u8);
+void func_800CA49C(u8);
 void func_800CB134();
 void func_800CB2C4(void);
 
@@ -170,5 +168,7 @@ extern u8 D_800EA1C0;// = 0;
 extern Vec3f D_800EA1C8;// = {0.0f, 0.0f, 0.0f}
 extern u8 D_800EA1DC;// = 0;
 extern u8 D_800EA244;
+
+extern s8 D_800EA16C;
 
 #endif
