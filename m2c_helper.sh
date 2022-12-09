@@ -48,8 +48,8 @@ CONTEXT_M2C_OPTS="--stack-structs --zfill-constants"
 DISASSEMBLY_M2C_OPTS="--zfill-constants"
 # Directories to search when a .incbin line is encountered in a data file
 INCBIN_OPTS="--incbin-dir ./expected/build/us --incbin-dir ./"
-# File that the final disassebmly output will be placed. Can be named whatever you want
-DISASSEMBLY_FILE="tyler.c"
+# File that the final disassembly output will be placed. Can be named whatever you want
+DISASSEMBLY_FILE="function_disassembly.c"
 
 # Directory where the m2c program can be found
 M2C_DIR="../mips_to_c"
