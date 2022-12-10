@@ -23,7 +23,8 @@ extern "C" {
  * rights reserved under the Copyright Laws of the United States.
  */
 
-#ident "$Revision: 1.4 $"
+// Causes issues when using m2ctx, not really necessary for our purposes
+//#ident "$Revision: 1.4 $"
 
 extern void    bcopy(const void *, void *, size_t);
 extern int    bcmp(const void *, const void *, int);

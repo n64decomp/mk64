@@ -53,6 +53,7 @@ doxygen/doxygen/*
 
 # no context header for now, until it's greenlit for the repo
 context_gen_header.h
+contexts/*
 tools/m2ctx.py
 # regardless of the above, the context file itself shouldnt be there
 ctx.c
