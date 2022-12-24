@@ -9,10 +9,6 @@ void func_80002DAC();
 void clear_nmi_buffer();
 void func_80003040();
 
-// audio/external
-
-void func_800C8F44(u16 arg0);
-
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
 extern struct UnkStruct_800DC5EC *D_800DC5F0;
 extern struct UnkStruct_800DC5EC *D_800DC5F4;

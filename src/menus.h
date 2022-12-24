@@ -6,11 +6,29 @@
 #include <types.h>
 #include <defines.h>
 
+// D_8018EDEC is position on options screen?
+enum MenuOptionsCursorPositions {
+    MENU_OPTIONS_CSRPOS_SOUNDMODE = 0x16
+};
+
 /* functions */
 void update_menus(void);
-void func_800B3F74(s32 menuSelection);
+void options_menu_act(struct Controller *, u16);
+void data_menu_act(struct Controller *, u16);
+void course_data_menu_act(struct Controller *, u16);
+void logo_intro_menu_act(struct Controller *, u16);
+void controller_pak_menu_act(struct Controller *, u16);
+void splash_menu_act(struct Controller *, u16);
+void func_800B28C8(void);
+void main_menu_act(struct Controller *, u16);
+s32 is_character_spot_free(s32);
+void player_select_menu_act(struct Controller *, u16);
+void course_select_menu_act(struct Controller *, u16);
+void func_800B3F74(s32);
+void func_800B44AC(void);
 void func_800B44BC(void);
 s32  func_800B4520(void);
+void func_800B4560(s32, s32);
 
 /* data */
 extern s32 gMenuSelection;
@@ -23,7 +41,7 @@ extern s8 gControllerPakSelectedTableRow;
 extern s8 D_800E86C4[12];
 extern s8 D_800E86D0[16];
 
-extern const s8 D_800F2B60[4];
+extern const s8 D_800F2B60[5][3];
 extern const s32 gGameModeFromNumPlayersAndRowSelection[5][3];
 extern const s16 gCupCourseOrder[5][4];
 
