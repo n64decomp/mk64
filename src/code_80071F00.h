@@ -207,7 +207,6 @@ void func_80086D80();
 
 // audio/external.c
 void func_800C9D80(Vec3f, Vec3f, u32);
-void func_800C9EF4(Vec3f, s32);
 
 s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, uintptr_t devAddr, void *vAddr, size_t nbytes, OSMesgQueue *mq);
 s32 osRecvMesg(OSMesgQueue*, OSMesg*, s32);

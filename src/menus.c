@@ -19,7 +19,6 @@
 /** Externs to be put into headers **/
 extern s16 D_8015F892; // bss unknown
 extern u32 D_800DC5AC; // data? from this file or another (main.c?)?
-extern void func_800C3448(s32);
 extern void rmonPrintf(const char *, ...); // not in a libultra header?
 
 /** BSS **/
@@ -91,25 +90,27 @@ u32 sVIGammaOffDitherOn = OS_VI_GAMMA_OFF | OS_VI_DITHER_FILTER_ON;
 
 /*** Const/rodata Data ***/
 // used to set gScreenModeSelection; might be smaller; could be function static data
-const s8 D_800F2B50[] = {0, 1, 2, 3, 3, 0, 0, 0};
+const s8 D_800F2B50[] = {0, 1, 2, 3, 3};
 
 // set to D_8018EDF3, then that sets gPlayerCountSelection1
-const s8 D_800F2B58[] = {1, 2, 2, 3, 4, 0, 0, 0};
+const s8 D_800F2B58[] = {1, 2, 2, 3, 4};
 
 // Limit for each column in one-two-three-four players selection
-const s8 D_800F2B60[4] = {1, 2, 1, 1};
-
-// Limit in each column
-const s8 D_800F2B64[4][3] = {
-    {2, 1, 0},
-    {2, 2, 0},
-    {2, 0, 0},
-    {2, 0, 0}
+const s8 D_800F2B60[5][3] = {
+    {1, 2, 1},
+    {1, 2, 1},
+    {0, 2, 2},
+    {0, 2, 0},
+    {0, 2, 0},
+    // {0, 3, 1},
+    // {0, 3, 3},
+    // {0, 3, 0},
+    // {0, 3, 0},
 };
 
 // is this another union GameModePack? Figure out when decomping.
 const s32 gGameModeFromNumPlayersAndRowSelection[5][3] = {
-    { 0x03010003, 0x03000300,  0x00030000 },
+    { 0x03010003, 0x03000300,  0x00030000 }, // Despite this matching, there is no way this line belongs in this array
     { GRAND_PRIX, TIME_TRIALS, 0x00000000 }, //first column
     { GRAND_PRIX, VERSUS,      BATTLE     }, //second
     { VERSUS,     BATTLE,      0x00000000 }, //third
@@ -151,17 +152,6 @@ union GameModePack {
 };
 const union GameModePack D_800F2BE4 = { {0, 1, 2, 3} };
 
-/** forward decs **/
-void options_menu_act(struct Controller *, u16);
-void data_menu_act(struct Controller *, u16);
-void course_data_menu_act(struct Controller *, u16);
-void logo_intro_menu_act(struct Controller *, u16);
-void controller_pak_menu_act(struct Controller *, u16);
-void splash_menu_act(struct Controller *, u16);
-void main_menu_act(struct Controller *, u16);
-void player_select_menu_act(struct Controller *, u16);
-void course_select_menu_act(struct Controller *, u16);
-void func_800B44AC(void);
 /**************************/
 
 /**
@@ -234,14 +224,6 @@ void update_menus(void) {
     }
 }
 
-
-// D_8018EDEC is position on options screen?
-#ifndef NON_MATCHING
-// issue is regalloc starting at the 0x32 0x33 case
-enum MenuOptionsCursorPositions {
-    MENU_OPTIONS_CSRPOS_SOUNDMODE = 0x16
-};
-
 // navigation of the options menu
 void options_menu_act(struct Controller *controller, u16 arg1) {
     u16 btnAndStick; // sp3E
@@ -276,7 +258,6 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 sp38->unk8 = 1;
                 sp2C = TRUE;
             }
-            // L800B066C
             if ((btnAndStick & CONT_UP) && (D_8018EDEC >= 0x16)) {
                 D_8018EDEC -= 1;
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -286,14 +267,12 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 sp2C = TRUE;
                 sp38->unk8 = -1;
             }
-            // L800B06FC
             if (sp2C && gSoundMode != sp38->unk4) {
                 gSaveDataSoundMode = gSoundMode;
                 write_save_data_grand_prix_points_and_sound_mode();
                 update_save_data_backup();
                 sp38->unk4 = gSoundMode;
             }
-            // L800B0758
             if (btnAndStick & CONT_B) {
                 func_8009E280();
                 play_sound2(SOUND_MENU_GO_BACK);
@@ -305,7 +284,6 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 return;
             }
-            // L800B07C8
             if (btnAndStick & CONT_A) {
                 switch (D_8018EDEC) {
                 case 0x16:
@@ -357,20 +335,16 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                             play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                             break;
                         }
-                        // L800B09DC
-                        // definitely reading u8 at 0x84 from struct_8018EE10_entry,
-                        // but that is too big for the size of the struct... unsized array off the end?
-                        if (sp2C == -1 && !sp30->ghostDataSaved && !((u8 *)sp30)[0x84]) {
+                        if (sp2C == -1 && !sp30[0].ghostDataSaved && !sp30[1].ghostDataSaved) {
                             D_8018EDEC = 0x2A;
                             play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                             return;
                         }
-                        // L800B0A20
                         if (sp2C == 0) {
-                            if (sp30->ghostDataSaved) {
+                            if (sp30[0].ghostDataSaved) {
                                 D_8018EDEC = 0x28;
                                 play_sound2(SOUND_MENU_SELECT);
-                            } else if (((u8 *)sp30)[0x84]) {
+                            } else if (sp30[1].ghostDataSaved) {
                                 D_8018EDEC = 0x29;
                                 play_sound2(SOUND_MENU_SELECT);
                             } else {
@@ -418,7 +392,6 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 sp38->unk8 = 1;
             }
-            // L800B0B74
             if ((btnAndStick & CONT_UP) && (D_8018EDEC >= 0x1F)) {
                 D_8018EDEC -= 1;
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -427,13 +400,11 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 sp38->unk8 = -1;
             }
-            // L800B0BF8
             if (btnAndStick & CONT_B) {
                 D_8018EDEC = 0x18;
                 play_sound2(SOUND_MENU_GO_BACK);
                 return;
             }
-            // L800B0C20
             if (btnAndStick & CONT_A) {
                 switch (D_8018EDEC) {
                 case 0x1E:
@@ -469,8 +440,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 sp38->unk8 = 1;
             }
-            // L800B0D38
-            if ((btnAndStick & CONT_UP) && (D_8018EDEC >= 0x29) && sp30->ghostDataSaved) {
+            if ((btnAndStick & CONT_UP) && (D_8018EDEC >= 0x29) && sp30[0].ghostDataSaved) {
                 D_8018EDEC -= 1;
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
                 if (sp38->unk24 < 4.2) {
@@ -478,13 +448,11 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 sp38->unk8 = -1;
             }
-            // L800B0DD0
             if (btnAndStick & CONT_B) {
                 D_8018EDEC = 0x17;
                 play_sound2(SOUND_MENU_GO_BACK);
                 return;
             }
-            // L800B0DF4
             if (btnAndStick & CONT_A) {
                 sp38->unk20 = D_8018EDEC - 0x28;
                 if (sp30[sp38->unk20].courseIndex == D_8018EE10[1].courseIndex && D_8018EE10[1].ghostDataSaved) {
@@ -518,12 +486,10 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                     sp38->unk8 = -1;
                 }   
             }
-            // L800B0FA4
             if (btnAndStick & CONT_B) {
                 D_8018EDEC = sp38->unk20 + 0x28;
                 play_sound2(SOUND_MENU_GO_BACK);
             } else if (btnAndStick & CONT_A) {
-                // L800B0FCC
                 sp38->unk1C = D_8018EDEC - 0x32;
                 if (D_8018EE10[(sp38->unk1C)].ghostDataSaved) {
                     D_8018EDEC = 0x38;
@@ -563,7 +529,6 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 sp38->unk8 = 1;
             }
-            // L800B10C4
             if ((btnAndStick & CONT_LEFT) && D_8018EDEC >= 0x39) {
                 D_8018EDEC -= 1;
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -572,7 +537,6 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 sp38->unk8 = -1;
             }
-            // L800B114C
             if (btnAndStick & CONT_B) {
                 D_8018EDEC = sp38->unk1C + 0x32;
                 play_sound2(SOUND_MENU_GO_BACK);
@@ -607,13 +571,11 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
             if (res == 0) {
                 res = func_800B65F4(sp38->unk20, sp38->unk1C);
             }
-            // L800B1230
             if (res != 0) {
                 D_8018EDEC = 0x42;
                 play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                 return;
             }
-            // L800B1254
             res = osPfsFindFile(&D_8018E868, D_800E86F0, D_800E86F4, (u8 *)D_800F2E64, (u8 *)D_800F2E74, &D_8018EB84);
             if (res == 0) {
                 res = func_800B6178(sp38->unk1C);
@@ -623,7 +585,6 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                 return;
             }
-            // L800B12DC
             D_8018EDEC = 0x3C;
             D_8018EE10[sp38->unk1C].courseIndex = (sp30 + sp38->unk20)->courseIndex;
             func_800B6088(sp38->unk1C);
@@ -644,7 +605,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
             if (func_800B6A68()) {
                 D_8018EDEC = 0x36;
                 play_sound2(SOUND_MENU_FILE_NOT_FOUND);
-            } else if (sp30->ghostDataSaved) {
+            } else if (sp30[0].ghostDataSaved) {
                 D_8018EDEC = 0x28;
             } else {
                 D_8018EDEC = 0x29;
@@ -654,11 +615,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
         default: break;
         }
     }
-    // L800B13A0 return
-} 
-#else
-GLOBAL_ASM("asm/non_matchings/menus/options_menu_act.s")
-#endif
+}
 
 // Handle navigating the data menu interface
 void data_menu_act(struct Controller *controller, UNUSED u16 arg1) {
@@ -1435,12 +1392,12 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
             if (btnAndStick & CONT_DOWN) {
                 sp24 = FALSE;
                 if (func_800B555C()) {
-                    if (sp28 < D_800F2B64[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1] + 1]) {
+                    if (sp28 < D_800F2B60[D_8018EDF3 + 4][D_800E86AC[D_8018EDF3 - 1] + 1]) {
                         sp24 = TRUE;
                     }
                 } else {
                     // L800B30D4
-                    if (sp28 < D_800F2B60[D_8018EDF3]) {
+                    if (sp28 < D_800F2B60[D_8018EDF3][D_800E86AC[D_8018EDF3 - 1] + 1]) {
                         sp24 = TRUE;
                     }
                 }

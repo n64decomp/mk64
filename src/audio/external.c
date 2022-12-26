@@ -13,9 +13,6 @@
 void func_800C13F0(void) {
 }
 
-extern OSMesgQueue *D_800EA3B0;
-extern OSMesgQueue *D_800EA3B4;
-
 void func_800C13FC(OSMesg presetId) {
     OSMesg mesg;
     osRecvMesg(D_800EA3B4, &mesg, 0);
@@ -377,7 +374,7 @@ GLOBAL_ASM("asm/non_matchings/audio/external/func_800C1F8C.s")
 #ifdef NEEDS_RODATA
 // data/rodata_audio_2.s
 extern f32 D_800F35E4;// = 100000.0f;
-f32 *func_800C21E8(f32 *arg0, u32 arg1) {
+f32 *func_800C21E8(Vec3f arg0, u32 arg1) {
     u8 var_v0;
     f32 *ret;
     // Only here to force a match
@@ -4228,8 +4225,6 @@ void func_800C8CCC(void) {
 GLOBAL_ASM("asm/non_matchings/audio/external/func_800C8CCC.s")
 #endif
 
-extern u8 D_800EA1D4;
-
 void play_sound2(s32 soundBits) {
 
     if ((soundBits == SOUND_ACTION_REV_ENGINE) && (gCurrentCourseId == 0x12)) {
@@ -4242,24 +4237,15 @@ void play_sound2(s32 soundBits) {
     play_sound(soundBits, &D_800EA1C8, 4, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
 }
 
-void func_800C3448(s32);
-extern u16 D_800EA15C;
-
 void func_800C8EAC(u16 arg0) {
     func_800C3448(arg0 | 0x10000);
     D_800EA15C = arg0;
 }
 
-void func_800C3448(s32);
-extern u16 D_800EA160;
-
 void func_800C8EF8(u16 arg0) {
     func_800C3448(arg0 | 0x1010000);
     D_800EA160 = arg0;
 }
-
-
-void func_800C36C4(s32 arg0, s32 arg1, u8 arg2, s8 arg3);
 
 void func_800C8F44(u8 arg0) {
     func_800C36C4(0, 0, arg0, 1);
@@ -4789,17 +4775,13 @@ void func_800C9D80(Vec3f position, Vec3f velocity, u32 soundBits) {
 GLOBAL_ASM("asm/non_matchings/audio/external/func_800C9D80.s")
 #endif
 
-
-f32 *func_800C21E8(s32, s32);
-void func_800C5578(s32, s32);
-
-void func_800C9EF4(s32 arg0, s32 arg1) {
+void func_800C9EF4(Vec3f arg0, u32 arg1) {
     f32 *temp;
     u8 i;
 
     for (i = 0; i < D_800EA1C0 + 1; i++) {
         temp = func_800C21E8(arg0, arg1); 
-        if (temp != 0) {
+        if (temp != NULL) {
             func_800C5578(temp, arg1);
         }
     }
@@ -4930,8 +4912,6 @@ void func_800CA118(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/audio/external/func_800CA118.s")
 #endif
 
-extern u8 D_800EA0EC[];
-
 void func_800CA24C(u8 arg0) {
     D_800EA0EC[arg0] = 2;
 }
@@ -4939,8 +4919,6 @@ void func_800CA24C(u8 arg0) {
 void func_800CA270() {
     D_800EA0F4 = 1;
 }
-
-extern u8 D_800E9F90[];
 
 // appears to write u8 in list of f32s?
 // However, 0x3C is 0.0f which could likely get confused with `u8 = 0`;
@@ -4965,8 +4943,6 @@ void func_800CA330(u8 arg0) {
     func_800C3448(arg0 << 0x10 | 0x110000FF);
 }
 
-void func_800C58B8(u8, u8, u16); // extern
-
 void func_800CA388(u8 arg0) {
     arg0 *= 2;
     func_800C58B8(0, 0, arg0);
@@ -4975,9 +4951,6 @@ void func_800CA388(u8 arg0) {
     func_800C58B8(3, 0, arg0);
     func_800C58B8(5, 0, arg0);
 }
-
-void func_800C3448(s32);
-extern u8 D_800EA104;
 
 void func_800CA414(u16 arg0, u16 arg1) {
     if (D_800EA104 == 0) {
@@ -4988,12 +4961,6 @@ void func_800CA414(u16 arg0, u16 arg1) {
     }
     D_800EA104 = 1;
 }
-
-extern u8 D_800EA108;
-extern u16 D_800EA15C;
-extern u8 D_800EA164;
-extern u8 D_800EA1C0;
-extern u8 D_8018FC08;
 
 void func_800CA49C(u8 arg0) {
     if (D_800EA108 == 0) {
