@@ -6,7 +6,7 @@
 void func_8006E9C0();
 void func_8006EA5C();
 void func_8006ED60();
-s32  func_8006ED94(s32*, s32, s32, s32);
+s32 func_8006ED94(u8 *devAddr, u8* baseAddress, u32 size, u32 offset);
 void func_8006EE44();
 void func_80070190();
 void func_80070714();
