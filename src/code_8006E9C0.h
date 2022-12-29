@@ -14,7 +14,6 @@ void func_80070714();
 extern s32 gScreenModeSelection;
 extern s32 gTextureLogoMarioKart64;
 extern s16 D_80165730;
-extern s16 D_80165738;
 extern s16 D_80165740;
 extern s16 D_80165748;
 extern s32 D_80183D5C;

@@ -17,6 +17,7 @@
 #include "skybox_and_splitscreen.h"
 #include "common_textures.h"
 #include "audio/external.h"
+#include "objects.h"
 
 // UI Code?
 void func_80057C60(void) {
@@ -390,16 +391,16 @@ void func_800588F4(s32 arg0) {
 
 void func_80058B58() {
     switch(gCurrentCourseId) {
-        case 5:
+        case COURSE_FRAPPE_SNOWLAND:
             if (gGamestate != 9) {
-                if ((D_8015F894 == 0) && (gPlayerCountSelection1 == COURSE_CHOCO_MOUNTAIN)) {
+                if ((D_8015F894 == 0) && (gPlayerCountSelection1 == 1)) {
                     func_800517C8();
                 }
-                break;
+            } else {
+                func_800517C8();
             }
-            func_800517C8();
             break;
-        case 12:
+        case COURSE_SHERBET_LAND:
             func_80052C60();
             break;
     }

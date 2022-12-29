@@ -118,6 +118,7 @@ void func_800C8F44(u8);
 void func_800C9060(u8, u32);
 void func_800C90F4(u8, uintptr_t);
 void func_800C9A88(u8);
+void func_800C9D80(Vec3f, Vec3f, u32);
 void func_800C9EF4(Vec3f, u32);
 void func_800C9F90(u8);
 void func_800CA008(u8, u8);
