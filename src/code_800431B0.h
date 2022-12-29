@@ -307,22 +307,35 @@ void func_800523B8(s32, s32, u32);
 void func_800524B4(s32);
 void func_800524B4(s32);
 void func_800527D8(s32);
+void func_8005285C(s32);
 void func_80052590(s32);
 void func_80052C60();
+void func_80052D70(s32);
 void func_80052E30(s32);
 
+void func_8005309C(s32);
 void func_8005327C(s32);
 void func_800532A4(s32);
 void func_800534E8(s32);
 void func_800536C8(s32);
 void func_80053870(s32);
+void func_80053D74(s32, s32, s32);
 void func_80053E6C(s32);
 
+void func_800540CC(s32, s32);
 void func_800541BC(s32);
+void func_80054324(s32, s32);
 void func_80054414(s32);
+void func_8005457C(s32, s32);
 void func_80054664(s32);
+void func_8005477C(s32, u8, Vec3f);
 void func_80054938(s32);
+void func_80054AFC(s32, Vec3f);
 void func_80054BE8(s32);
+void func_80054D00(s32, s32);
+void func_80054E10(s32);
+void func_80054EB8(s32);
+void func_80054F04(s32);
 
 void func_800550A4(s32);
 void func_80055228(s32);
@@ -334,6 +347,7 @@ void func_8005568C(s32);
 void func_800557AC();
 void func_8005592C(s32);
 void func_80055C38(s32);
+void func_80055CCC(s32, s32);
 void func_80055E68(s32);
 void func_80055EF4(s32, s32);
 void func_80055F48(s32);
@@ -342,6 +356,7 @@ void func_80055FA0(s32, s32);
 void func_80056160(s32);
 void func_80056188(s32);
 void func_800568A0(s32, s32);
+void func_8005669C(s32, s32, s32);
 void func_800569F4(s32);
 void func_80056A40(s32, s32);
 void func_80056A94(s32);
@@ -384,13 +399,18 @@ extern u16 D_801656D0;
 extern u16 D_801656E0;
 
 extern s32 D_80183DD8[];
+extern Vec3f D_80183E40;
 extern Vec3f D_80183E50;
 extern Vec3f D_80183E70;
+extern Vec3s D_80183E80;
 extern s32 D_80183E88[];
 extern Vec3s D_80183E98;
 extern s32 D_80183EAC;
 extern UnkActorInner D_8018C830;
 extern s32 D_8018D1E0;
+extern s32 D_8018D1F0;
+
+extern struct UnkStruct_800DC5EC *D_800DC5F0;
 
 extern Lights1 D_800E4638;
 extern Lights1 D_800E4650;
@@ -404,5 +424,13 @@ extern s8 D_800E566A[];
 extern u8 D_06006F38[]; // Some type of pallette?
 
 extern Gfx *gDisplayListHead;
+
+// Stuff from undefined_syms.txt, don't know where else to put them
+extern s8  D_06013670[];
+extern Gfx D_06007218[];
+extern Gfx D_0600F650[];
+extern Gfx D_0600F960[];
+extern Gfx D_0600FA20[];
+extern Gfx D_0600FBE0[];
 
 #endif
