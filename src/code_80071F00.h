@@ -52,7 +52,7 @@ s32  func_80072E54(s32, s32, s32, s32, s32, s32);
 s32  func_80072F88(s32, s32, s32, s32, s32, s32);
 s32  func_800730BC(s32, s32, s32, s32, s32, s32);
 s32  func_8007326C(s32, s32, s32, s32, s32, s32);
-void func_80073404(s32, u8, u8, s32);
+void func_80073404(s32, u8, u8, Vtx*);
 void func_80073444(s32, s32*, s32*, u8, u16);
 void func_8007348C(s32, s32*, u8, u8, s32);
 void func_800734D4();

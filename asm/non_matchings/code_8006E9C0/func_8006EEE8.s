@@ -6,10 +6,10 @@ glabel func_8006EEE8
 /* 06FAF8 8006EEF8 00047080 */  sll   $t6, $a0, 2
 /* 06FAFC 8006EEFC 84A55520 */  lh    $a1, %lo(D_800E5520)($a1) # 0x5520
 /* 06FB00 8006EF00 27BDFFE0 */  addiu $sp, $sp, -0x20
-/* 06FB04 8006EF04 3C04800E */  lui   $a0, %hi(D_800E54D0) # 0x800e
+/* 06FB04 8006EF04 3C04800E */  lui   $a0, %hi(gCourseOutlineTextures) # 0x800e
 /* 06FB08 8006EF08 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 06FB0C 8006EF0C 008E2021 */  addu  $a0, $a0, $t6
-/* 06FB10 8006EF10 8C8454D0 */  lw    $a0, %lo(D_800E54D0)($a0) # 0x54d0
+/* 06FB10 8006EF10 8C8454D0 */  lw    $a0, %lo(gCourseOutlineTextures)($a0) # 0x54d0
 /* 06FB14 8006EF14 AFA8001C */  sw    $t0, 0x1c($sp)
 /* 06FB18 8006EF18 0C0AA13D */  jal   func_802A84F4
 /* 06FB1C 8006EF1C 00A03025 */   move  $a2, $a1

@@ -2480,229 +2480,229 @@ s8 D_0D01A2D8[] = {
 
 
 // 1A4D8 mario tlut
-s8 D_0D01A4D8[] = {
-    #include "textures/132B50_1A4D8_tlut.rgba16.inc.c"
+s8 gTLUTPortraitMario[] = {
+    #include "textures/gTLUTPortraitMario.rgba16.inc.c"
 };
 
 // 1A6D8 luigi tlut
-s8 D_0D01A6D8[] = {
-    #include "textures/132B50_1A6D8_tlut.rgba16.inc.c"
+s8 gTLUTPortraitLuigi[] = {
+    #include "textures/gTLUTPortraitLuigi.rgba16.inc.c"
 };
 
 // 1A8D8 peach tlut
-s8 D_0D01A8D8[] = {
-    #include "textures/132B50_1A8D8_tlut.rgba16.inc.c"
+s8 gTLUTPortraitPeach[] = {
+    #include "textures/gTLUTPortraitPeach.rgba16.inc.c"
 };
 
 // 1AAD8 toad tlut
-s8 D_0D01AAD8[] = {
-    #include "textures/132B50_1AAD8_tlut.rgba16.inc.c"
+s8 gTLUTPortraitToad[] = {
+    #include "textures/gTLUTPortraitToad.rgba16.inc.c"
 };
 
 // 1ACD8 yoshi tlut
-s8 D_0D01ACD8[] = {
-    #include "textures/132B50_1ACD8_tlut.rgba16.inc.c"
+s8 gTLUTPortraitYoshi[] = {
+    #include "textures/gTLUTPortraitYoshi.rgba16.inc.c"
 };
 
 // 1AED8 dk tlut
-s8 D_0D01AED8[] = {
-    #include "textures/132B50_1AED8_tlut.rgba16.inc.c"
+s8 gTLUTPortraitDonkeyKong[] = {
+    #include "textures/gTLUTPortraitDonkeyKong.rgba16.inc.c"
 };
 
 // 1B0D8 wario tlut
-s8 D_0D01B0D8[] = {
-    #include "textures/132B50_1B0D8_tlut.rgba16.inc.c"
+s8 gTLUTPortraitWario[] = {
+    #include "textures/gTLUTPortraitWario.rgba16.inc.c"
 };
 
 // 1B2D8 bowser tlut
-s8 D_0D01B2D8[] = {
-    #include "textures/132B50_1B2D8_tlut.rgba16.inc.c"
+s8 gTLUTPortraitBowser[] = {
+    #include "textures/gTLUTPortraitBowser.rgba16.inc.c"
 };
 
 // 1B4D8 bob-omb tlut and question mark?
-s8 D_0D01B4D8[] = {
+s8 gTLUTPortraitMiniBombKart[] = {
     #include "textures/132B50_1B4D8_tlut.rgba16.inc.c"
 };
 
 
 // Mario
-s8 D_0D01B6D8[] = {
-    #include "textures/132B50_1B6D8.rgba16.ci8.inc.c"
+s8 gTexturePortraitMario[] = {
+    #include "textures/gTexturePortraitMario.rgba16.ci8.inc.c"
 };
 
 // Luigi
-s8 D_0D01BAD8[] = {
-    #include "textures/132B50_1BAD8.rgba16.ci8.inc.c"
+s8 gTexturePortraitLuigi[] = {
+    #include "textures/gTexturePortraitLuigi.rgba16.ci8.inc.c"
 };
 
 // Peach
-s8 D_0D01BED8[] = {
-    #include "textures/132B50_1BED8.rgba16.ci8.inc.c"
+s8 gTexturePortraitPeach[] = {
+    #include "textures/gTexturePortraitPeach.rgba16.ci8.inc.c"
 };
 
 // Toad
-s8 D_0D01C2D8[] = {
-    #include "textures/132B50_1C2D8.rgba16.ci8.inc.c"
+s8 gTexturePortraitToad[] = {
+    #include "textures/gTexturePortraitToad.rgba16.ci8.inc.c"
 };
 
 // Yoshi
-s8 D_0D01C6D8[] = {
-    #include "textures/132B50_1C6D8.rgba16.ci8.inc.c"
+s8 gTexturePortraitYoshi[] = {
+    #include "textures/gTexturePortraitYoshi.rgba16.ci8.inc.c"
 };
 
 // Donkey Kong
-s8 D_0D01CAD8[] = {
-    #include "textures/132B50_1CAD8.rgba16.ci8.inc.c"
+s8 gTexturePortraitDonkeyKong[] = {
+    #include "textures/gTexturePortraitDonkeyKong.rgba16.ci8.inc.c"
 };
 
 // Wario
-s8 D_0D01CED8[] = {
-    #include "textures/132B50_1CED8.rgba16.ci8.inc.c"
+s8 gTexturePortraitWario[] = {
+    #include "textures/gTexturePortraitWario.rgba16.ci8.inc.c"
 };
 
 // Bowser
-s8 D_0D01D2D8[] = {
-    #include "textures/132B50_1D2D8.rgba16.ci8.inc.c"
+s8 gTexturePortraitBowser[] = {
+    #include "textures/gTexturePortraitBowser.rgba16.ci8.inc.c"
 };
 
 // Bob-omb
-s8 D_0D01D6D8[] = {
+s8 gTexturePortraitMiniBombKart[] = {
     #include "textures/132B50_1D6D8.rgba16.ci8.inc.c"
 };
 
 // Question Mark
-s8 D_0D01DAD8[] = {
+s8 gTexturePortraitQuestionMark[] = {
     #include "textures/132B50_1DAD8.rgba16.ci8.inc.c"
 };
 
 // 1DED8 tlut item frames
-s8 D_0D01DED8[] = {
-    #include "textures/132B50_1DED8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowNone[] = {
+    #include "textures/gTLUTItemWindowNone.rgba16.inc.c"
 };
 
-s8 D_0D01E0D8[] = {
-    #include "textures/132B50_1E0D8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowBanana[] = {
+    #include "textures/gTLUTItemWindowBanana.rgba16.inc.c"
 };
 
-s8 D_0D01E2D8[] = {
-    #include "textures/132B50_1E2D8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowBananaBunch[] = {
+    #include "textures/gTLUTItemWindowBananaBunch.rgba16.inc.c"
 };
 
-s8 D_0D01E4D8[] = {
-    #include "textures/132B50_1E4D8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowMushroom[] = {
+    #include "textures/gTLUTItemWindowMushroom.rgba16.inc.c"
 };
 
-s8 D_0D01E6D8[] = {
-    #include "textures/132B50_1E6D8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowDoubleMushroom[] = {
+    #include "textures/gTLUTItemWindowDoubleMushroom.rgba16.inc.c"
 };
 
-s8 D_0D01E8D8[] = {
-    #include "textures/132B50_1E8D8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowTripleMushroom[] = {
+    #include "textures/gTLUTItemWindowTripleMushroom.rgba16.inc.c"
 };
 
-s8 D_0D01EAD8[] = {
-    #include "textures/132B50_1EAD8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowSuperMushroom[] = {
+    #include "textures/gTLUTItemWindowSuperMushroom.rgba16.inc.c"
 };
 
-s8 D_0D01ECD8[] = {
-    #include "textures/132B50_1ECD8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowBlueShell[] = {
+    #include "textures/gTLUTItemWindowBlueShell.rgba16.inc.c"
 };
 
-s8 D_0D01EED8[] = {
-    #include "textures/132B50_1EED8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowBoo[] = {
+    #include "textures/gTLUTItemWindowBoo.rgba16.inc.c"
 };
 
-s8 D_0D01F0D8[] = {
-    #include "textures/132B50_1F0D8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowGreenShell[] = {
+    #include "textures/gTLUTItemWindowGreenShell.rgba16.inc.c"
 };
 
-s8 D_0D01F2D8[] = {
-    #include "textures/132B50_1F2D8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowTripleGreenShell[] = {
+    #include "textures/gTLUTItemWindowTripleGreenShell.rgba16.inc.c"
 };
 
-s8 D_0D01F4D8[] = {
-    #include "textures/132B50_1F4D8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowRedShell[] = {
+    #include "textures/gTLUTItemWindowRedShell.rgba16.inc.c"
 };
 
-s8 D_0D01F6D8[] = {
-    #include "textures/132B50_1F6D8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowTripleRedShell[] = {
+    #include "textures/gTLUTItemWindowTripleRedShell.rgba16.inc.c"
 };
 
-s8 D_0D01F8D8[] = {
-    #include "textures/132B50_1F8D8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowStar[] = {
+    #include "textures/gTLUTItemWindowStar.rgba16.inc.c"
 };
 
-s8 D_0D01FAD8[] = {
-    #include "textures/132B50_1FAD8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowThunderBolt[] = {
+    #include "textures/gTLUTItemWindowThunderBolt.rgba16.inc.c"
 };
 
-s8 D_0D01FCD8[] = {
-    #include "textures/132B50_1FCD8_tlut.rgba16.inc.c"
+s8 gTLUTItemWindowFakeItemBox[] = {
+    #include "textures/gTLUTItemWindowFakeItemBox.rgba16.inc.c"
 };
 
 // UI Item Frames
-s8 D_0D01FED8[] = {
-    #include "textures/132B50_1FED8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowNone[] = {
+    #include "textures/gTextureItemWindowNone.rgba16.ci8.inc.c"
 };
 
-s8 D_0D0203D8[] = {
-    #include "textures/132B50_203D8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowBanana[] = {
+    #include "textures/gTextureItemWindowBanana.rgba16.ci8.inc.c"
 };
 
-s8 D_0D0208D8[] = {
-    #include "textures/132B50_208D8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowBananaBunch[] = {
+    #include "textures/gTextureItemWindowBananaBunch.rgba16.ci8.inc.c"
 };
 
-s8 D_0D020DD8[] = {
-    #include "textures/132B50_20DD8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowMushroom[] = {
+    #include "textures/gTextureItemWindowMushroom.rgba16.ci8.inc.c"
 };
 
-s8 D_0D0212D8[] = {
-    #include "textures/132B50_212D8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowDoubleMushroom[] = {
+    #include "textures/gTextureItemWindowDoubleMushroom.rgba16.ci8.inc.c"
 };
 
-s8 D_0D0217D8[] = {
-    #include "textures/132B50_217D8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowTripleMushroom[] = {
+    #include "textures/gTextureItemWindowTripleMushroom.rgba16.ci8.inc.c"
 };
 
-s8 D_0D021CD8[] = {
-    #include "textures/132B50_21CD8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowSuperMushroom[] = {
+    #include "textures/gTextureItemWindowSuperMushroom.rgba16.ci8.inc.c"
 };
 
-s8 D_0D0221D8[] = {
-    #include "textures/132B50_221D8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowBlueShell[] = {
+    #include "textures/gTextureItemWindowBlueShell.rgba16.ci8.inc.c"
 };
 
-s8 D_0D0226D8[] = {
-    #include "textures/132B50_226D8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowBoo[] = {
+    #include "textures/gTextureItemWindowBoo.rgba16.ci8.inc.c"
 };
 
-s8 D_0D022BD8[] = {
-    #include "textures/132B50_22BD8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowGreenShell[] = {
+    #include "textures/gTextureItemWindowGreenShell.rgba16.ci8.inc.c"
 };
 
-s8 D_0D0230D8[] = {
-    #include "textures/132B50_230D8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowTripleGreenShell[] = {
+    #include "textures/gTextureItemWindowTripleGreenShell.rgba16.ci8.inc.c"
 };
 
-s8 D_0D0235D8[] = {
-    #include "textures/132B50_235D8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowRedShell[] = {
+    #include "textures/gTextureItemWindowRedShell.rgba16.ci8.inc.c"
 };
 
-s8 D_0D023AD8[] = {
-    #include "textures/132B50_23AD8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowTripleRedShell[] = {
+    #include "textures/gTextureItemWindowTripleRedShell.rgba16.ci8.inc.c"
 };
 
-s8 D_0D023FD8[] = {
-    #include "textures/132B50_23FD8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowStar[] = {
+    #include "textures/gTextureItemWindowStar.rgba16.ci8.inc.c"
 };
 
-s8 D_0D0244D8[] = {
-    #include "textures/132B50_244D8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowThunderBolt[] = {
+    #include "textures/gTextureItemWindowThunderBolt.rgba16.ci8.inc.c"
 };
 
-s8 D_0D0249D8[] = {
-    #include "textures/132B50_249D8.rgba16.ci8.inc.c"
+s8 gTextureItemWindowFakeItemBox[] = {
+    #include "textures/gTextureItemWindowFakeItemBox.rgba16.ci8.inc.c"
 };
 
 // Unk data. Perhaps not an img nor tlut.
@@ -2846,45 +2846,37 @@ s8 D_0D02C858[] = {
 };
 
 // minimap cars
-s8 D_0D02CC58[] = {
+s8 gTextureMiniMapFinishLine[] = {
     #include "textures/132B50_2CC58.rgba16.inc.c"
 };
 
-s8 D_0D02CCD8[] = {
-    #include "textures/132B50_2CCD8.rgba16.inc.c"
+s8 gMiniMapKartTextures[][128] = {
+    { // Mario
+        #include "textures/132B50_2CCD8.rgba16.inc.c"
+    },
+    { // Luigi
+        #include "textures/132B50_2CD58.rgba16.inc.c"
+    },
+    { // Yoshi
+        #include "textures/132B50_2CDD8.rgba16.inc.c"
+    },
+    { // Toad
+        #include "textures/132B50_2CE58.rgba16.inc.c"
+    },
+    { // Donkey Kong
+        #include "textures/132B50_2CED8.rgba16.inc.c"
+    },
+    { // Wario
+        #include "textures/132B50_2CF58.rgba16.inc.c"
+    },
+    { // Peach
+        #include "textures/132B50_2CFD8.rgba16.inc.c"
+    },
+    { // Bowser
+        #include "textures/132B50_2D058.rgba16.inc.c"
+    },
 };
 
-s8 D_0D02CD58[] = {
-    #include "textures/132B50_2CD58.rgba16.inc.c"
+s8 gTextureMiniMapProgressDot[] = {
+        #include "textures/132B50_2D0D8.rgba16.inc.c"
 };
-
-s8 D_0D02CDD8[] = {
-    #include "textures/132B50_2CDD8.rgba16.inc.c"
-};
-
-s8 D_0D02CE58[] = {
-    #include "textures/132B50_2CE58.rgba16.inc.c"
-};
-
-s8 D_0D02CED8[] = {
-    #include "textures/132B50_2CED8.rgba16.inc.c"
-};
-
-s8 D_0D02CF58[] = {
-    #include "textures/132B50_2CF58.rgba16.inc.c"
-};
-
-s8 D_0D02CFD8[] = {
-    #include "textures/132B50_2CFD8.rgba16.inc.c"
-};
-
-// last minimap car
-s8 D_0D02D058[] = {
-    #include "textures/132B50_2D058.rgba16.inc.c"
-};
-
-// progress dot
-s8 D_0D02D0D8[] = {
-    #include "textures/132B50_2D0D8.rgba16.inc.c"
-};
-

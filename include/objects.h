@@ -83,6 +83,9 @@ extern struct_80165C18_entry D_80165C18[];
 // This is another list of indices in D_80165C18.
 extern s32 D_80183DD8[];
 
+// Appears to be a list of object list indices for the Item Window part of the HUD
+extern s32 gItemWindowObjectByPlayerId[];
+
 /**
  * D_80183EA0, D_80183F28, D_8018BFA8, and D_8018C030 are all lists of indices in D_80165C18.
  * func_80070190 initializes them in such a way that the indicies in each list are not adjacent.
@@ -92,6 +95,9 @@ extern s32 D_80183DD8[];
  **/ 
 
 extern s32 D_80183EA0[];
+/**
+ * Snowmen in Frappe Snowlad
+**/
 extern s32 D_80183F28[];
 extern s32 D_8018BFA8[];
 extern s32 D_8018C030[];
@@ -148,5 +154,9 @@ extern s32 D_80183E6C;
 extern s32 D_8018C970[];
 // Next free spot in D_8018C970? Wraps back around to 0 if it gets bigger than D_8018C970_SIZE
 extern s32 D_80183E7C;
+
+// List of object list indices used by the clouds and stars in some stages
+// Also used for snowflakes like D_8018C1B0? Not sure what's up with that
+extern s32 D_8018CC80[];
 
 #endif

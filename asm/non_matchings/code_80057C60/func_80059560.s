@@ -56,12 +56,12 @@ glabel func_80059560
 /* 05A234 80059634 00003025 */  move  $a2, $zero
 /* 05A238 80059638 3C073F80 */  lui   $a3, 0x3f80
 /* 05A23C 8005963C 11200014 */  beqz  $t1, .L80059690
-/* 05A240 80059640 3C0A0D02 */   lui   $t2, %hi(D_0D01B4D8) # $t2, 0xd02
-/* 05A244 80059644 3C0B0D02 */  lui   $t3, %hi(D_0D01D6D8) # $t3, 0xd02
+/* 05A240 80059640 3C0A0D02 */   lui   $t2, %hi(gTLUTPortraitMiniBombKart) # $t2, 0xd02
+/* 05A244 80059644 3C0B0D02 */  lui   $t3, %hi(gTexturePortraitMiniBombKart) # $t3, 0xd02
 /* 05A248 80059648 3C0C0D00 */  lui   $t4, %hi(D_0D005AE0) # $t4, 0xd00
 /* 05A24C 8005964C 258C5AE0 */  addiu $t4, %lo(D_0D005AE0) # addiu $t4, $t4, 0x5ae0
-/* 05A250 80059650 256BD6D8 */  addiu $t3, %lo(D_0D01D6D8) # addiu $t3, $t3, -0x2928
-/* 05A254 80059654 254AB4D8 */  addiu $t2, %lo(D_0D01B4D8) # addiu $t2, $t2, -0x4b28
+/* 05A250 80059650 256BD6D8 */  addiu $t3, %lo(gTexturePortraitMiniBombKart) # addiu $t3, $t3, -0x2928
+/* 05A254 80059654 254AB4D8 */  addiu $t2, %lo(gTLUTPortraitMiniBombKart) # addiu $t2, $t2, -0x4b28
 /* 05A258 80059658 240D0020 */  li    $t5, 32
 /* 05A25C 8005965C 240E0020 */  li    $t6, 32
 /* 05A260 80059660 240F0020 */  li    $t7, 32

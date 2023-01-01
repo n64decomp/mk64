@@ -11,11 +11,11 @@ glabel func_8007B254
 /* 07BE78 8007B278 01C47023 */  subu  $t6, $t6, $a0
 /* 07BE7C 8007B27C 000E7140 */  sll   $t6, $t6, 5
 /* 07BE80 8007B280 01CF1021 */  addu  $v0, $t6, $t7
-/* 07BE84 8007B284 3C190D02 */  lui   $t9, %hi(D_0D01DED8) # $t9, 0xd02
-/* 07BE88 8007B288 3C080D02 */  lui   $t0, %hi(D_0D01FED8) # $t0, 0xd02
+/* 07BE84 8007B284 3C190D02 */  lui   $t9, %hi(gTLUTItemWindowNone) # $t9, 0xd02
+/* 07BE88 8007B288 3C080D02 */  lui   $t0, %hi(gTextureItemWindowNone) # $t0, 0xd02
 /* 07BE8C 8007B28C 24180002 */  li    $t8, 2
-/* 07BE90 8007B290 2739DED8 */  addiu $t9, %lo(D_0D01DED8) # addiu $t9, $t9, -0x2128
-/* 07BE94 8007B294 2508FED8 */  addiu $t0, %lo(D_0D01FED8) # addiu $t0, $t0, -0x128
+/* 07BE90 8007B290 2739DED8 */  addiu $t9, %lo(gTLUTItemWindowNone) # addiu $t9, $t9, -0x2128
+/* 07BE94 8007B294 2508FED8 */  addiu $t0, %lo(gTextureItemWindowNone) # addiu $t0, $t0, -0x128
 /* 07BE98 8007B298 24090028 */  li    $t1, 40
 /* 07BE9C 8007B29C 240A0020 */  li    $t2, 32
 /* 07BEA0 8007B2A0 240B0032 */  li    $t3, 50

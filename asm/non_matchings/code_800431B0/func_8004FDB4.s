@@ -42,8 +42,8 @@ glabel func_8004FDB4
 /* 050A54 8004FE54 0C012CD7 */  jal   func_8004B35C
 /* 050A58 8004FE58 240600FF */   li    $a2, 255
 /* 050A5C 8004FE5C 8E300000 */  lw    $s0, ($s1)
-/* 050A60 8004FE60 3C0C0D02 */  lui   $t4, %hi(D_0D01B4D8) # $t4, 0xd02
-/* 050A64 8004FE64 258CB4D8 */  addiu $t4, %lo(D_0D01B4D8) # addiu $t4, $t4, -0x4b28
+/* 050A60 8004FE60 3C0C0D02 */  lui   $t4, %hi(gTLUTPortraitMiniBombKart) # $t4, 0xd02
+/* 050A64 8004FE64 258CB4D8 */  addiu $t4, %lo(gTLUTPortraitMiniBombKart) # addiu $t4, $t4, -0x4b28
 /* 050A68 8004FE68 26180008 */  addiu $t8, $s0, 8
 /* 050A6C 8004FE6C AE380000 */  sw    $t8, ($s1)
 /* 050A70 8004FE70 3C19FD10 */  lui   $t9, 0xfd10
@@ -79,10 +79,10 @@ glabel func_8004FDB4
 /* 050AE8 8004FEE8 AE0F0000 */  sw    $t7, ($s0)
 /* 050AEC 8004FEEC 8E300000 */  lw    $s0, ($s1)
 /* 050AF0 8004FEF0 3C0CE700 */  lui   $t4, 0xe700
-/* 050AF4 8004FEF4 3C040D02 */  lui   $a0, %hi(D_0D01DAD8) # $a0, 0xd02
+/* 050AF4 8004FEF4 3C040D02 */  lui   $a0, %hi(gTexturePortraitQuestionMark) # $a0, 0xd02
 /* 050AF8 8004FEF8 26190008 */  addiu $t9, $s0, 8
 /* 050AFC 8004FEFC AE390000 */  sw    $t9, ($s1)
-/* 050B00 8004FF00 2484DAD8 */  addiu $a0, %lo(D_0D01DAD8) # addiu $a0, $a0, -0x2528
+/* 050B00 8004FF00 2484DAD8 */  addiu $a0, %lo(gTexturePortraitQuestionMark) # addiu $a0, $a0, -0x2528
 /* 050B04 8004FF04 24050020 */  li    $a1, 32
 /* 050B08 8004FF08 24060020 */  li    $a2, 32
 /* 050B0C 8004FF0C AE000004 */  sw    $zero, 4($s0)
@@ -127,7 +127,7 @@ glabel func_8004FDB4
 /* 050BA0 8004FFA0 240600FF */   li    $a2, 255
 /* 050BA4 8004FFA4 8E300000 */  lw    $s0, ($s1)
 /* 050BA8 8004FFA8 3C0DFD10 */  lui   $t5, 0xfd10
-/* 050BAC 8004FFAC 3C0F800E */  lui   $t7, %hi(D_800E457C)
+/* 050BAC 8004FFAC 3C0F800E */  lui   $t7, %hi(gPortraitTLUTs)
 /* 050BB0 8004FFB0 260C0008 */  addiu $t4, $s0, 8
 /* 050BB4 8004FFB4 AE2C0000 */  sw    $t4, ($s1)
 /* 050BB8 8004FFB8 AE0D0000 */  sw    $t5, ($s0)
@@ -136,13 +136,13 @@ glabel func_8004FDB4
 /* 050BC4 8004FFC4 3C0DF500 */  lui   $t5, (0xF5000100 >> 16) # lui $t5, 0xf500
 /* 050BC8 8004FFC8 00037080 */  sll   $t6, $v1, 2
 /* 050BCC 8004FFCC 01EE7821 */  addu  $t7, $t7, $t6
-/* 050BD0 8004FFD0 8DEF457C */  lw    $t7, %lo(D_800E457C)($t7)
+/* 050BD0 8004FFD0 8DEF457C */  lw    $t7, %lo(gPortraitTLUTs)($t7)
 /* 050BD4 8004FFD4 01C01825 */  move  $v1, $t6
 /* 050BD8 8004FFD8 3C0E0700 */  lui   $t6, 0x700
 /* 050BDC 8004FFDC AE0F0004 */  sw    $t7, 4($s0)
 /* 050BE0 8004FFE0 8E300000 */  lw    $s0, ($s1)
 /* 050BE4 8004FFE4 35AD0100 */  ori   $t5, (0xF5000100 & 0xFFFF) # ori $t5, $t5, 0x100
-/* 050BE8 8004FFE8 3C04800E */  lui   $a0, %hi(D_800E459C)
+/* 050BE8 8004FFE8 3C04800E */  lui   $a0, %hi(gPortraitTextures)
 /* 050BEC 8004FFEC 26180008 */  addiu $t8, $s0, 8
 /* 050BF0 8004FFF0 AE380000 */  sw    $t8, ($s1)
 /* 050BF4 8004FFF4 AE000004 */  sw    $zero, 4($s0)
@@ -176,7 +176,7 @@ glabel func_8004FDB4
 /* 050C64 80050064 AE000004 */  sw    $zero, 4($s0)
 /* 050C68 80050068 AE0F0000 */  sw    $t7, ($s0)
 /* 050C6C 8005006C 0C0114A9 */  jal   func_800452A4
-/* 050C70 80050070 8C84459C */   lw    $a0, %lo(D_800E459C)($a0)
+/* 050C70 80050070 8C84459C */   lw    $a0, %lo(gPortraitTextures)($a0)
 /* 050C74 80050074 8FB800C4 */  lw    $t8, 0xc4($sp)
 /* 050C78 80050078 5300000A */  beql  $t8, $zero, .L800500A4
 /* 050C7C 8005007C 8E300000 */   lw    $s0, ($s1)

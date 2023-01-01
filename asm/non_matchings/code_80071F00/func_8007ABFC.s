@@ -12,9 +12,9 @@ glabel func_8007ABFC
 /* 07B824 8007AC24 17000019 */  bnez  $t8, .L8007AC8C
 /* 07B828 8007AC28 00803025 */   move  $a2, $a0
 /* 07B82C 8007AC2C 0004C880 */  sll   $t9, $a0, 2
-/* 07B830 8007AC30 3C048018 */  lui   $a0, %hi(D_80183E88) # 0x8018
+/* 07B830 8007AC30 3C048018 */  lui   $a0, %hi(gItemWindowObjectByPlayerId) # 0x8018
 /* 07B834 8007AC34 00992021 */  addu  $a0, $a0, $t9
-/* 07B838 8007AC38 8C843E88 */  lw    $a0, %lo(D_80183E88)($a0) # 0x3e88($a0)
+/* 07B838 8007AC38 8C843E88 */  lw    $a0, %lo(gItemWindowObjectByPlayerId)($a0) # 0x3e88($a0)
 /* 07B83C 8007AC3C 24050004 */  li    $a1, 4
 /* 07B840 8007AC40 AFA30018 */  sw    $v1, 0x18($sp)
 /* 07B844 8007AC44 AFA60020 */  sw    $a2, 0x20($sp)

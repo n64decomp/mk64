@@ -30,28 +30,28 @@ vertex   23,  -19,    0,    0,    0, 0xFF, 0xFF, 0xFF, 0xFF
 vertex   23,   20,    0,    0, 2496, 0xFF, 0xFF, 0xFF, 0xFF
 vertex  -24,   20,    0, 3008, 2496, 0xFF, 0xFF, 0xFF, 0xFF
 
-glabel D_800E44F0
-.word D_0D01DED8, D_0D01E0D8, D_0D01E2D8, D_0D01F0D8
-.word D_0D01F2D8, D_0D01F4D8, D_0D01F6D8, D_0D01ECD8
-.word D_0D01FAD8, D_0D01FCD8, D_0D01F8D8, D_0D01EED8
-.word D_0D01E4D8, D_0D01E6D8, D_0D01E8D8, D_0D01EAD8
+glabel gItemWindowTLUTs
+.word gTLUTItemWindowNone, gTLUTItemWindowBanana, gTLUTItemWindowBananaBunch, gTLUTItemWindowGreenShell
+.word gTLUTItemWindowTripleGreenShell, gTLUTItemWindowRedShell, gTLUTItemWindowTripleRedShell, gTLUTItemWindowBlueShell
+.word gTLUTItemWindowThunderBolt, gTLUTItemWindowFakeItemBox, gTLUTItemWindowStar, gTLUTItemWindowBoo
+.word gTLUTItemWindowMushroom, gTLUTItemWindowDoubleMushroom, gTLUTItemWindowTripleMushroom, gTLUTItemWindowSuperMushroom
 
-glabel D_800E4530
-.word D_0D01FED8, D_0D0203D8, D_0D0208D8, D_0D022BD8
-.word D_0D0230D8, D_0D0235D8, D_0D023AD8, D_0D0221D8
-.word D_0D0244D8, D_0D0249D8, D_0D023FD8, D_0D0226D8
-.word D_0D020DD8, D_0D0212D8, D_0D0217D8, D_0D021CD8
+glabel gItemWindowTextures
+.word gTextureItemWindowNone, gTextureItemWindowBanana, gTextureItemWindowBananaBunch, gTextureItemWindowGreenShell
+.word gTextureItemWindowTripleGreenShell, gTextureItemWindowRedShell, gTextureItemWindowTripleRedShell, gTextureItemWindowBlueShell
+.word gTextureItemWindowThunderBolt, gTextureItemWindowFakeItemBox, gTextureItemWindowStar, gTextureItemWindowBoo
+.word gTextureItemWindowMushroom, gTextureItemWindowDoubleMushroom, gTextureItemWindowTripleMushroom, gTextureItemWindowSuperMushroom
 
 glabel D_800E4570
 .word D_0D00B158, D_0D00B558, D_0D00B958
 
-glabel D_800E457C
-.word D_0D01A4D8, D_0D01A6D8, D_0D01ACD8, D_0D01AAD8
-.word D_0D01AED8, D_0D01B0D8, D_0D01A8D8, D_0D01B2D8
+glabel gPortraitTLUTs
+.word gTLUTPortraitMario, gTLUTPortraitLuigi, gTLUTPortraitYoshi, gTLUTPortraitToad
+.word gTLUTPortraitDonkeyKong, gTLUTPortraitWario, gTLUTPortraitPeach, gTLUTPortraitBowser
 
-glabel D_800E459C
-.word D_0D01B6D8, D_0D01BAD8, D_0D01C6D8, D_0D01C2D8
-.word D_0D01CAD8, D_0D01CED8, D_0D01BED8, D_0D01D2D8
+glabel gPortraitTextures
+.word gTexturePortraitMario, gTexturePortraitLuigi, gTexturePortraitYoshi, gTexturePortraitToad
+.word gTexturePortraitDonkeyKong, gTexturePortraitWario, gTexturePortraitPeach, gTexturePortraitBowser
 
 .word 0x00000000
 
@@ -424,7 +424,7 @@ glabel D_800E52D0 # TODO: RGBA16 palette for CRASH/POOMP
 .word 0xfcb5fd01, 0xfd41fd81, 0xfdc1fe01, 0xfe41fe81
 .word 0xfec1ffff, 0x00000000, 0x00000000, 0x00000000
 
-glabel D_800E54D0 # passed as a0 to func_8006ED94
+glabel gCourseOutlineTextures # passed as a0 to func_8006ED94
 .word gTextureCourseOutlineMarioRaceway, gTextureCourseOutlineChocoMountain, gTextureCourseOutlineBowsersCastle, gTextureCourseOutlineBansheeBoardwalk
 .word gTextureCourseOutlineYoshiValley, gTextureCourseOutlineFrappeSnowland, gTextureCourseOutlineKoopaTroopaBeach, gTextureCourseOutlineRoyalRaceway
 .word gTextureCourseOutlineLuigiRaceway, gTextureCourseOutlineMooMooFarm, gTextureCourseOutlineToadsTurnpike, gTextureCourseOutlineKalimariDesert
