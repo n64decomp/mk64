@@ -12207,9 +12207,7 @@
 "textures/gTexturePortraitDonkeyKong.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":"0x1AED8"}, "offsets": {"us":["0x132B50", "0x1CAD8"]}},
 "textures/gTexturePortraitWario.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":"0x1B0D8"}, "offsets": {"us":["0x132B50", "0x1CED8"]}},
 "textures/gTexturePortraitBowser.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":"0x1B2D8"}, "offsets": {"us":["0x132B50", "0x1D2D8"]}},
-"textures/132B50_1D6D8.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":"0x1B4D8"}, "offsets": {"us":["0x132B50", "0x1D6D8"]}},
-"textures/132B50_1DAD8.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":"0x1B4D8"}, "offsets": {"us":["0x132B50", "0x1DAD8"]}},
-"textures/132B50_1DAD8.rgba16.ci8.bin": {"meta":{"size":"0x400"}, "offsets": {"us":["0x132B50", "0x1DAD8"]}},
+"textures/132B50_1D6D8.rgba16.ci8.png": {"meta":{"dims":[64,32], "pal":"0x1B4D8"}, "offsets": {"us":["0x132B50", "0x1D6D8"]}},
 
 "textures/gTLUTItemWindowNone.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x132B50", "0x1DED8"]}},
 "textures/gTLUTItemWindowBanana.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x132B50", "0x1E0D8"]}},

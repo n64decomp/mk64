@@ -2565,15 +2565,17 @@ s8 gTexturePortraitBowser[] = {
     #include "textures/gTexturePortraitBowser.rgba16.ci8.inc.c"
 };
 
-// Bob-omb
-s8 gTexturePortraitMiniBombKart[] = {
+// The Mini Bomb Kart and Question Mark portrait textures are
+// part of a single PNG file and use the same TLUT, which makes
+// including the image(s) as a C array kind of awkward
+s8 gTexturePortraitMiniBombKart[][1024] = {
     #include "textures/132B50_1D6D8.rgba16.ci8.inc.c"
 };
 
 // Question Mark
-s8 gTexturePortraitQuestionMark[] = {
-    #include "textures/132B50_1DAD8.rgba16.ci8.inc.c"
-};
+// s8 gTexturePortraitQuestionMark[] = {
+//     #include "textures/132B50_1DAD8.rgba16.ci8.inc.c"
+// };
 
 // 1DED8 tlut item frames
 s8 gTLUTItemWindowNone[] = {

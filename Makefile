@@ -370,11 +370,7 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTexturePortraitDonkeyKong.rgba16.ci8.inc.c -g textures/gTexturePortraitDonkeyKong.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/gTLUTPortraitDonkeyKong.rgba16.bin
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTexturePortraitWario.rgba16.ci8.inc.c -g textures/gTexturePortraitWario.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/gTLUTPortraitWario.rgba16.bin
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTexturePortraitBowser.rgba16.ci8.inc.c -g textures/gTexturePortraitBowser.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/gTLUTPortraitBowser.rgba16.bin
-	# There's something very odd going on here. 132B50_1D6D8 and 132B50_1DAD8 use the same TLUT (132B50_1B4D8_tlut)
-	# n64graphics (seemingly) isn't handling this correctly, which is why we're forced to use bin2c to generate 132B50_1DAD8.rgba16.ci8.inc.c
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1D6D8.rgba16.ci8.inc.c -g textures/132B50_1D6D8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1B4D8_tlut_gen.rgba16.bin
-	#$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1DAD8.rgba16.ci8.inc.c -g textures/132B50_1DAD8.rgba16.ci8.png -s u8 -w 32 -h 32 -f ci8 -c rgba16 -p textures/132B50_1B4D8_tlut_gen.rgba16.bin
-	$(BIN2C) textures/132B50_1DAD8.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_1DAD8.rgba16.ci8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_1D6D8.rgba16.ci8.inc.c -g textures/132B50_1D6D8.rgba16.ci8.png -s u8 -w 64 -h 32 -f ci8 -c rgba16 -p textures/132B50_1B4D8_tlut_gen.rgba16.bin
 
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTLUTItemWindowNone.rgba16.inc.c -g textures/gTLUTItemWindowNone.rgba16.png -s u8 -w 16 -h 16
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTLUTItemWindowBanana.rgba16.inc.c -g textures/gTLUTItemWindowBanana.rgba16.png -s u8 -w 16 -h 16
