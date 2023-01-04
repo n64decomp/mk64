@@ -763,17 +763,8 @@ glabel D_80183E80
 glabel D_80183E84
 .skip 4
 
-glabel D_80183E88
-.skip 4
-
-glabel D_80183E8C
-.skip 4
-
-glabel D_80183E90
-.skip 4
-
-glabel D_80183E94
-.skip 4
+glabel gItemWindowObjectByPlayerId
+.skip 16
 
 glabel D_80183E98
 .skip 8

@@ -102,6 +102,7 @@
 #include "src/code_8003DC40.h"
 #include "src/code_800431B0.h"
 #include "src/code_80057C60.h"
+#include "src/code_8006E9C0.h"
 #include "src/code_80071F00.h"
 #include "src/code_80086E70.h"
 #include "src/code_8008C1D0.h"

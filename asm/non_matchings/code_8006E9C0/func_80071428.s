@@ -18,12 +18,12 @@ glabel func_80071428
 /* 072068 80071468 3C048018 */  lui   $a0, %hi(D_80183DBC) # $a0, 0x8018
 /* 07206C 8007146C 0C01C7C0 */  jal   find_unused_obj_index
 /* 072070 80071470 24843DBC */   addiu $a0, %lo(D_80183DBC) # addiu $a0, $a0, 0x3dbc
-/* 072074 80071474 3C048018 */  lui   $a0, %hi(D_80183E88) # $a0, 0x8018
+/* 072074 80071474 3C048018 */  lui   $a0, %hi(gItemWindowObjectByPlayerId) # $a0, 0x8018
 /* 072078 80071478 0C01C7C0 */  jal   find_unused_obj_index
-/* 07207C 8007147C 24843E88 */   addiu $a0, %lo(D_80183E88) # addiu $a0, $a0, 0x3e88
-/* 072080 80071480 3C048018 */  lui   $a0, %hi(D_80183E8C) # $a0, 0x8018
+/* 07207C 8007147C 24843E88 */   addiu $a0, %lo(gItemWindowObjectByPlayerId) # addiu $a0, $a0, 0x3e88
+/* 072080 80071480 3C048018 */  lui   $a0, %hi(gItemWindowObjectByPlayerId + 4) # $a0, 0x8018
 /* 072084 80071484 0C01C7C0 */  jal   find_unused_obj_index
-/* 072088 80071488 24843E8C */   addiu $a0, %lo(D_80183E8C) # addiu $a0, $a0, 0x3e8c
+/* 072088 80071488 24843E8C */   addiu $a0, %lo(gItemWindowObjectByPlayerId + 4) # addiu $a0, $a0, 0x3e8c
 /* 07208C 8007148C 0C01C064 */  jal   func_80070190
 /* 072090 80071490 00000000 */   nop
 /* 072094 80071494 0C01C157 */  jal   func_8007055C
@@ -58,7 +58,7 @@ glabel func_80071428
 /* 072108 80071508 240B0019 */  li    $t3, 25
 /* 07210C 8007150C 240C00A0 */  li    $t4, 160
 /* 072110 80071510 468054A0 */  cvt.s.w $f18, $f10
-/* 072114 80071514 3C048018 */  lui   $a0, %hi(D_80183E88) # $a0, 0x8018
+/* 072114 80071514 3C048018 */  lui   $a0, %hi(gItemWindowObjectByPlayerId) # $a0, 0x8018
 /* 072118 80071518 E432CFF4 */  swc1  $f18, %lo(D_8018CFF4)($at)
 /* 07211C 8007151C 3C018016 */  lui   $at, %hi(D_8016579E) # $at, 0x8016
 /* 072120 80071520 A42D579E */  sh    $t5, %lo(D_8016579E)($at)
@@ -82,7 +82,7 @@ glabel func_80071428
 /* 072168 80071568 A5000048 */  sh    $zero, 0x48($t0)
 /* 07216C 8007156C A518006A */  sh    $t8, 0x6a($t0)
 /* 072170 80071570 0C01BB9F */  jal   func_8006EE7C
-/* 072174 80071574 8C843E88 */   lw    $a0, %lo(D_80183E88)($a0)
+/* 072174 80071574 8C843E88 */   lw    $a0, %lo(gItemWindowObjectByPlayerId)($a0)
 /* 072178 80071578 3C01420C */  li    $at, 0x420C0000 # 35.000000
 /* 07217C 8007157C 44810000 */  mtc1  $at, $f0
 /* 072180 80071580 3C01C1C0 */  li    $at, 0xC1C00000 # -24.000000

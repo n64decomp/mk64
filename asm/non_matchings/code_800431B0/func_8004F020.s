@@ -77,8 +77,8 @@ glabel func_8004F020
 .L8004F138:
 /* 04FD38 8004F138 4600148D */  trunc.w.s $f18, $f2
 .L8004F13C:
-/* 04FD3C 8004F13C 3C060D03 */  lui   $a2, %hi(D_0D02CC58) # $a2, 0xd03
-/* 04FD40 8004F140 24C6CC58 */  addiu $a2, %lo(D_0D02CC58) # addiu $a2, $a2, -0x33a8
+/* 04FD3C 8004F13C 3C060D03 */  lui   $a2, %hi(gTextureMiniMapFinishLine) # $a2, 0xd03
+/* 04FD40 8004F140 24C6CC58 */  addiu $a2, %lo(gTextureMiniMapFinishLine) # addiu $a2, $a2, -0x33a8
 /* 04FD44 8004F144 4600010D */  trunc.w.s $f4, $f0
 /* 04FD48 8004F148 44049000 */  mfc1  $a0, $f18
 /* 04FD4C 8004F14C 44052000 */  mfc1  $a1, $f4

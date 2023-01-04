@@ -1,10 +1,10 @@
 glabel func_8007AC9C
 /* 07B89C 8007AC9C 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 07B8A0 8007ACA0 AFB00014 */  sw    $s0, 0x14($sp)
-/* 07B8A4 8007ACA4 3C108018 */  lui   $s0, %hi(D_80183E88) # 0x8018
+/* 07B8A4 8007ACA4 3C108018 */  lui   $s0, %hi(gItemWindowObjectByPlayerId) # 0x8018
 /* 07B8A8 8007ACA8 0004C080 */  sll   $t8, $a0, 2
 /* 07B8AC 8007ACAC 02188021 */  addu  $s0, $s0, $t8
-/* 07B8B0 8007ACB0 8E103E88 */  lw    $s0, %lo(D_80183E88)($s0) # 0x3e88($s0)
+/* 07B8B0 8007ACB0 8E103E88 */  lw    $s0, %lo(gItemWindowObjectByPlayerId)($s0) # 0x3e88($s0)
 /* 07B8B4 8007ACB4 000470C0 */  sll   $t6, $a0, 3
 /* 07B8B8 8007ACB8 01C47023 */  subu  $t6, $t6, $a0
 /* 07B8BC 8007ACBC 0010C8C0 */  sll   $t9, $s0, 3

@@ -72,8 +72,8 @@ glabel func_80050E34
 /* 051B38 80050F38 AC580000 */  sw    $t8, ($v0)
 /* 051B3C 80050F3C AC590004 */  sw    $t9, 4($v0)
 /* 051B40 80050F40 8E020000 */  lw    $v0, ($s0)
-/* 051B44 80050F44 3C180D02 */  lui   $t8, %hi(D_0D01B4D8) # $t8, 0xd02
-/* 051B48 80050F48 2718B4D8 */  addiu $t8, %lo(D_0D01B4D8) # addiu $t8, $t8, -0x4b28
+/* 051B44 80050F44 3C180D02 */  lui   $t8, %hi(gTLUTPortraitMiniBombKart) # $t8, 0xd02
+/* 051B48 80050F48 2718B4D8 */  addiu $t8, %lo(gTLUTPortraitMiniBombKart) # addiu $t8, $t8, -0x4b28
 /* 051B4C 80050F4C 244E0008 */  addiu $t6, $v0, 8
 /* 051B50 80050F50 AE0E0000 */  sw    $t6, ($s0)
 /* 051B54 80050F54 3C0FFD10 */  lui   $t7, 0xfd10
@@ -109,13 +109,13 @@ glabel func_80050E34
 /* 051BCC 80050FCC AC590000 */  sw    $t9, ($v0)
 /* 051BD0 80050FD0 8E020000 */  lw    $v0, ($s0)
 /* 051BD4 80050FD4 3C18E700 */  lui   $t8, 0xe700
-/* 051BD8 80050FD8 3C040D02 */  lui   $a0, %hi(D_0D01DAD8) # $a0, 0xd02
+/* 051BD8 80050FD8 3C040D02 */  lui   $a0, %hi(gTexturePortraitQuestionMark) # $a0, 0xd02
 /* 051BDC 80050FDC 244F0008 */  addiu $t7, $v0, 8
 /* 051BE0 80050FE0 AE0F0000 */  sw    $t7, ($s0)
 /* 051BE4 80050FE4 AC400004 */  sw    $zero, 4($v0)
 /* 051BE8 80050FE8 AC580000 */  sw    $t8, ($v0)
 /* 051BEC 80050FEC AFAD00D4 */  sw    $t5, 0xd4($sp)
-/* 051BF0 80050FF0 2484DAD8 */  addiu $a0, %lo(D_0D01DAD8) # addiu $a0, $a0, -0x2528
+/* 051BF0 80050FF0 2484DAD8 */  addiu $a0, %lo(gTexturePortraitQuestionMark) # addiu $a0, $a0, -0x2528
 /* 051BF4 80050FF4 24050020 */  li    $a1, 32
 /* 051BF8 80050FF8 0C0114A9 */  jal   func_800452A4
 /* 051BFC 80050FFC 24060020 */   li    $a2, 32
@@ -160,12 +160,12 @@ glabel func_80050E34
 /* 051C94 80051094 3C108015 */  lui   $s0, %hi(gDisplayListHead) # $s0, 0x8015
 /* 051C98 80051098 26100298 */  addiu $s0, %lo(gDisplayListHead) # addiu $s0, $s0, 0x298
 /* 051C9C 8005109C 8E020000 */  lw    $v0, ($s0)
-/* 051CA0 800510A0 3C19800E */  lui   $t9, %hi(D_800E457C)
+/* 051CA0 800510A0 3C19800E */  lui   $t9, %hi(gPortraitTLUTs)
 /* 051CA4 800510A4 032AC821 */  addu  $t9, $t9, $t2
 /* 051CA8 800510A8 244F0008 */  addiu $t7, $v0, 8
 /* 051CAC 800510AC AE0F0000 */  sw    $t7, ($s0)
 /* 051CB0 800510B0 AC580000 */  sw    $t8, ($v0)
-/* 051CB4 800510B4 8F39457C */  lw    $t9, %lo(D_800E457C)($t9)
+/* 051CB4 800510B4 8F39457C */  lw    $t9, %lo(gPortraitTLUTs)($t9)
 /* 051CB8 800510B8 3C0FE800 */  lui   $t7, 0xe800
 /* 051CBC 800510BC 3C048016 */  lui   $a0, %hi(D_801656C0) # $a0, 0x8016
 /* 051CC0 800510C0 AC590004 */  sw    $t9, 4($v0)
@@ -248,9 +248,9 @@ glabel func_80050E34
 /* 051DF0 800511F0 AFAA003C */   sw    $t2, 0x3c($sp)
 /* 051DF4 800511F4 8FAA003C */  lw    $t2, 0x3c($sp)
 .L800511F8:
-/* 051DF8 800511F8 3C04800E */  lui   $a0, %hi(D_800E459C)
+/* 051DF8 800511F8 3C04800E */  lui   $a0, %hi(gPortraitTextures)
 /* 051DFC 800511FC 008A2021 */  addu  $a0, $a0, $t2
-/* 051E00 80051200 8C84459C */  lw    $a0, %lo(D_800E459C)($a0)
+/* 051E00 80051200 8C84459C */  lw    $a0, %lo(gPortraitTextures)($a0)
 /* 051E04 80051204 24050020 */  li    $a1, 32
 /* 051E08 80051208 0C0114A9 */  jal   func_800452A4
 /* 051E0C 8005120C 24060020 */   li    $a2, 32

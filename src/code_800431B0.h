@@ -403,7 +403,6 @@ extern Vec3f D_80183E40;
 extern Vec3f D_80183E50;
 extern Vec3f D_80183E70;
 extern Vec3s D_80183E80;
-extern s32 D_80183E88[];
 extern Vec3s D_80183E98;
 extern s32 D_80183EAC;
 extern UnkActorInner D_8018C830;
