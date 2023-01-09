@@ -631,13 +631,9 @@ s8 D_0D004C68[] = {
 s8 D_0D004E38[] = {
     #include "textures/132B50_04E38_tlut.rgba16.inc.c"
 };
-// Possibly part of 4E38
-s8 D_0D004E68[] = {
-    #include "textures/132B50_04E68_tlut.rgba16.inc.c"
-};
 // 5038
-s8 D_0D005068[] = {
-    #include "textures/132B50_05068_tlut.rgba16.inc.c"
+s8 D_0D005038[] = {
+    #include "textures/132B50_05038_tlut.rgba16.inc.c"
 };
 
 //static s32 fileSplitPad[4] = { 0 };
@@ -1723,7 +1719,7 @@ Gfx D_0D008080[] = {
     gsDPSetTextureLUT(G_TT_RGBA16),
     gsDPLoadTLUT_pal16(0, D_0D006ED8),
     gsDPLoadSync(),
-    gsDPLoadTextureBlock_4b(&D_0D006ED8[0x20], G_IM_FMT_CI, 128, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock_4b(D_0D006EF8, G_IM_FMT_CI, 128, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSPEndDisplayList(),
 };
 
@@ -2355,8 +2351,6 @@ s8 D_0D016A58[] = {
 s8 D_0D017258[] = {
     #include "textures/132B50_17258_tlut.rgba16.inc.c"
 };
-
-s16 tlutPad[] = {0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, };
 
 // 1p 2p 3p 4p (includes 4 textures)
 // Required to match tlut

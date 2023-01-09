@@ -266,19 +266,15 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_03348.rgba16.inc.c -g textures/132B50_03348.rgba16.png -f rgba16 -s u8
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_03B48.rgba16.inc.c -g textures/132B50_03B48.rgba16.png -f rgba16 -s u8
 	
-	$(BIN2C) textures/132B50_04C68_tlut.rgba16.bin $(BUILD_DIR)/textures/132B50_04C68_tlut.rgba16
-	$(BIN2C) textures/132B50_04E38_tlut.rgba16.bin $(BUILD_DIR)/textures/132B50_04E38_tlut.rgba16
-	$(BIN2C) textures/132B50_04E68_tlut.rgba16.bin $(BUILD_DIR)/textures/132B50_04E68_tlut.rgba16
-	$(BIN2C) textures/132B50_05068_tlut.rgba16.bin $(BUILD_DIR)/textures/132B50_05068_tlut.rgba16
-	
-	
-#$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_04C68_tlut.rgba16.inc.c -g textures/132B50_04C68_tlut.rgba16.png -f rgba16 -s u8
-#$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_04E68_tlut.rgba16.inc.c -g textures/132B50_04E68_tlut.rgba16.png -f rgba16 -s u8
-#$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_05068_tlut.rgba16.inc.c -g textures/132B50_05068_tlut.rgba16.png -f rgba16 -s u8
+	# 132B50_04C68_tlut is an incredibly odd TLUT, its size appears to be 8x29? Which on the surface seems wrong but works in practice?
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_04C68_tlut.rgba16.inc.c -g textures/132B50_04C68_tlut.rgba16.png -f rgba16 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_04E38_tlut.rgba16.inc.c -g textures/132B50_04E38_tlut.rgba16.png -f rgba16 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_05038_tlut.rgba16.inc.c -g textures/132B50_05038_tlut.rgba16.png -f rgba16 -s u8
+
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_06A58.i4.inc.c -g textures/132B50_06A58.i4.png -f i4 -s u8
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_06AD8.ia8.inc.c -g textures/132B50_06AD8.ia8.png -f ia8 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_06ED8_tlut.rgba16.inc.c -g textures/132B50_06ED8_tlut.rgba16.png -f rgba16 -s u8
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_06EF8.rgba16.ci4.inc.c -g textures/132B50_06EF8.rgba16.ci4.png -f ci4 -s u8 -c rgba16 -w 128 -h 32 -p textures/132B50_06ED8_tlut_gen.rgba16.bin
-	$(BIN2C) textures/132B50_06ED8_tlut.rgba16.bin $(BUILD_DIR)/textures/132B50_06ED8_tlut.rgba16
 	
 	
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_08150.ia8.inc.c -g textures/132B50_08150.ia8.png -f ia8 -s u8 -w 100 -h 8
@@ -403,8 +399,8 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTextureItemWindowFakeItemBox.rgba16.ci8.inc.c -g textures/gTextureItemWindowFakeItemBox.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/gTLUTItemWindowFakeItemBox.rgba16.bin
 
 	$(BIN2C) textures/132B50_24ED8_tlut.rgba16.bin $(BUILD_DIR)/textures/132B50_24ED8_tlut.rgba16
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_25ED8_tlut.rgba16.inc.c -g textures/132B50_25ED8_tlut.rgba16.png -s u8 -w 16 -h 16
 
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_25ED8_tlut.rgba16.inc.c -g textures/132B50_25ED8_tlut.rgba16.png -s u8
 	$(BIN2C) textures/132B50_260D8.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_260D8.rgba16.ci8
 	$(BIN2C) textures/132B50_26558.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_26558.rgba16.ci8
 	$(BIN2C) textures/132B50_269D8.rgba16.ci8.bin $(BUILD_DIR)/textures/132B50_269D8.rgba16.ci8

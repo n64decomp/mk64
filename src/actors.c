@@ -17,6 +17,7 @@
 #include "code_8008C1D0.h"
 #include <sounds.h>
 #include "audio/external.h"
+#include "common_textures.h"
 
 s32 D_802BA050;
 s32 D_802BA054;
@@ -374,7 +375,7 @@ void func_802977E4(Player *arg0) {
 
 void func_80297818(void) {
     s16 *phi_v0 = &D_802BA060[0];
-    s16 *phi_v1 = VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(&D_0D004E38)] + SEGMENT_OFFSET(&D_0D004E38));
+    s16 *phi_v1 = VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(D_0D004E38)] + SEGMENT_OFFSET(D_0D004E38));
     s16 temp_a0, temp_a0_2, temp_a0_3, temp_a0_4, temp_a0_5;
     s32 i;
     for (i = 0; i < 256; i++) {
@@ -1253,7 +1254,7 @@ UNUSED s16 D_802B8810[] = {
 };
 
 void func_8029A690(Camera *arg0, Mat4 arg1, struct ShellActor *arg2) {
-    gDPLoadTLUT_pal256(gDisplayListHead++, &D_0D004E38);
+    gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004E38);
     func_8029A3AC(arg0, arg1, arg2);
 }
 
@@ -1264,7 +1265,7 @@ void func_8029A75C(Camera *arg0, Mat4 arg1, struct ShellActor *arg2) {
 
 // Middle of a tlut access
 void func_8029A828(Camera *arg0, Mat4 arg1, struct ShellActor *arg2) {
-    gDPLoadTLUT_pal256(gDisplayListHead++, &D_0D004E68[0x1D0]);
+    gDPLoadTLUT_pal256(gDisplayListHead++, D_0D005038);
     func_8029A3AC(arg0, arg1, arg2);
 }
 
