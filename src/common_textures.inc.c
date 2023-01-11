@@ -2352,118 +2352,125 @@ s8 D_0D017258[] = {
     #include "textures/132B50_17258_tlut.rgba16.inc.c"
 };
 
-// 1p 2p 3p 4p (includes 4 textures)
-// Required to match tlut
+// 1p
 s8 D_0D017458[] = {
-    #include "textures/132B50_17458_combined_data.inc.c"
+    #include "textures/132B50_17458.rgba16.ci8.inc.c"
 };
 
-//s8 D_0D017C58[] = {
-//    #include "textures/132B50_17C58.rgba16.ci8.inc.c"
-//};
+// 2p
+s8 D_0D017C58[] = {
+   #include "textures/132B50_17C58.rgba16.ci8.inc.c"
+};
 
-//s8 D_0D018458[] = {
-//    #include "textures/132B50_18458.rgba16.ci8.inc.c"
-//};
+// 3p
+s8 D_0D018458[] = {
+   #include "textures/132B50_18458.rgba16.ci8.inc.c"
+};
 
-//s8 D_0D018C58[] = {
-//    #include "textures/132B50_18C58.rgba16.ci8.inc.c"
-//};
+// 4p
+s8 D_0D018C58[] = {
+   #include "textures/132B50_18C58.rgba16.ci8.inc.c"
+};
 
 // 19458 tlut
-//s8 D_0D019458[] = {
-//    #include "textures/132B50_19458_tlut.rgba16.inc.c"
-//};
+s8 D_0D019458[] = {
+   #include "textures/132B50_19458_tlut.rgba16.inc.c"
+};
 
 // 1 
-// s8 D_0D019658[] = {
-//     #include "textures/132B50_19658.rgba16.ci8.inc.c"
-// };
+s8 D_0D019658[] = {
+    #include "textures/132B50_19658.rgba16.ci8.inc.c"
+};
 
-// // 2
-// s8 D_0D019758[] = {
-//     #include "textures/132B50_19758.rgba16.ci8.inc.c"
-// };
+// 2
+s8 D_0D019758[] = {
+    #include "textures/132B50_19758.rgba16.ci8.inc.c"
+};
 
-// // 3
-// s8 D_0D019858[] = {
-//     #include "textures/132B50_19858.rgba16.ci8.inc.c"
-// };
+// 3
+s8 D_0D019858[] = {
+    #include "textures/132B50_19858.rgba16.ci8.inc.c"
+};
 
-// // 4
-// s8 D_0D019958[] = {
-//     #include "textures/132B50_19958.rgba16.ci8.inc.c"
-// };
+// 4
+s8 D_0D019958[] = {
+    #include "textures/132B50_19958.rgba16.ci8.inc.c"
+};
 
-// // 5
-// s8 D_0D019A58[] = {
-//     #include "textures/132B50_19A58.rgba16.ci8.inc.c"
-// };
+// 5
+s8 D_0D019A58[] = {
+    #include "textures/132B50_19A58.rgba16.ci8.inc.c"
+};
 
-// // 6
-// s8 D_0D019B58[] = {
-//     #include "textures/132B50_19B58.rgba16.ci8.inc.c"
-// };
+// 6
+s8 D_0D019B58[] = {
+    #include "textures/132B50_19B58.rgba16.ci8.inc.c"
+};
 
-// // 7
-// s8 D_0D019C58[] = {
-//     #include "textures/132B50_19C58.rgba16.ci8.inc.c"
-// };
+// 7
+s8 D_0D019C58[] = {
+    #include "textures/132B50_19C58.rgba16.ci8.inc.c"
+};
 
-// // 8
-// s8 D_0D019D58[] = {
-//     #include "textures/132B50_19D58.rgba16.ci8.inc.c"
-// };
+// 8
+s8 D_0D019D58[] = {
+    #include "textures/132B50_19D58.rgba16.ci8.inc.c"
+};
 
-// // 0
-// s8 D_0D01A058[] = {
-//     #include "textures/132B50_1A058.rgba16.ci8.inc.c"
-// };
+// 19E58 tlut
+s8 D_0D019E58[] = {
+   #include "textures/132B50_19E58_tlut.rgba16.inc.c"
+};
 
-// // 1
-// s8 D_0D01A098[] = {
-//     #include "textures/132B50_1A098.rgba16.ci8.inc.c"
-// };
+// 0
+s8 D_0D01A058[] = {
+    #include "textures/132B50_1A058.rgba16.ci8.inc.c"
+};
 
-// // 2
-// s8 D_0D01A0D8[] = {
-//     #include "textures/132B50_1A0D8.rgba16.ci8.inc.c"
-// };
+// 1
+s8 D_0D01A098[] = {
+    #include "textures/132B50_1A098.rgba16.ci8.inc.c"
+};
 
-// // 3
-// s8 D_0D01A118[] = {
-//     #include "textures/132B50_1A118.rgba16.ci8.inc.c"
-// };
+// 2
+s8 D_0D01A0D8[] = {
+    #include "textures/132B50_1A0D8.rgba16.ci8.inc.c"
+};
 
-// // 4
-// s8 D_0D01A158[] = {
-//     #include "textures/132B50_1A158.rgba16.ci8.inc.c"
-// };
+// 3
+s8 D_0D01A118[] = {
+    #include "textures/132B50_1A118.rgba16.ci8.inc.c"
+};
 
-// // 5
-// s8 D_0D01A198[] = {
-//     #include "textures/132B50_1A198.rgba16.ci8.inc.c"
-// };
+// 4
+s8 D_0D01A158[] = {
+    #include "textures/132B50_1A158.rgba16.ci8.inc.c"
+};
 
-// // 6
-// s8 D_0D01A1D8[] = {
-//     #include "textures/132B50_1A1D8.rgba16.ci8.inc.c"
-// };
+// 5
+s8 D_0D01A198[] = {
+    #include "textures/132B50_1A198.rgba16.ci8.inc.c"
+};
 
-// // 7
-// s8 D_0D01A218[] = {
-//     #include "textures/132B50_1A218.rgba16.ci8.inc.c"
-// };
+// 6
+s8 D_0D01A1D8[] = {
+    #include "textures/132B50_1A1D8.rgba16.ci8.inc.c"
+};
 
-// // 8
-// s8 D_0D01A258[] = {
-//     #include "textures/132B50_1A258.rgba16.ci8.inc.c"
-// };
+// 7
+s8 D_0D01A218[] = {
+    #include "textures/132B50_1A218.rgba16.ci8.inc.c"
+};
 
-// // 9
-// s8 D_0D01A298[] = {
-//     #include "textures/132B50_1A298.rgba16.ci8.inc.c"
-// };
+// 8
+s8 D_0D01A258[] = {
+    #include "textures/132B50_1A258.rgba16.ci8.inc.c"
+};
+
+// 9
+s8 D_0D01A298[] = {
+    #include "textures/132B50_1A298.rgba16.ci8.inc.c"
+};
 
 // some padding or file split?
 
@@ -2559,17 +2566,14 @@ s8 gTexturePortraitBowser[] = {
     #include "textures/gTexturePortraitBowser.rgba16.ci8.inc.c"
 };
 
-// The Mini Bomb Kart and Question Mark portrait textures are
-// part of a single PNG file and use the same TLUT, which makes
-// including the image(s) as a C array kind of awkward
-s8 gTexturePortraitMiniBombKart[][1024] = {
-    #include "textures/132B50_1D6D8.rgba16.ci8.inc.c"
+s8 gTexturePortraitMiniBombKart[] = {
+    #include "textures/gTexturePortraitMiniBombKart.rgba16.ci8.inc.c"
 };
 
 // Question Mark
-// s8 gTexturePortraitQuestionMark[] = {
-//     #include "textures/132B50_1DAD8.rgba16.ci8.inc.c"
-// };
+s8 gTexturePortraitQuestionMark[] = {
+    #include "textures/gTexturePortraitQuestionMark.rgba16.ci8.inc.c"
+};
 
 // 1DED8 tlut item frames
 s8 gTLUTItemWindowNone[] = {
@@ -2713,7 +2717,7 @@ s8 D_0D025ED8[] = {
 
 
 // unused traffic light textures
-
+ 
 UNUSED s8 D_0D0260D8[] = {
     #include "textures/132B50_260D8.rgba16.ci8.inc.c"
 };
