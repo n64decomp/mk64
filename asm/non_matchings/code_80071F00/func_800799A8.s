@@ -5,12 +5,12 @@ glabel func_800799A8
 /* 07A5B4 800799B4 00808025 */  move  $s0, $a0
 /* 07A5B8 800799B8 0C01E47C */  jal   func_800791F0
 /* 07A5BC 800799BC AFA5002C */   sw    $a1, 0x2c($sp)
-/* 07A5C0 800799C0 3C050D02 */  lui   $a1, %hi(D_0D025CD8) # $a1, 0xd02
+/* 07A5C0 800799C0 3C050D02 */  lui   $a1, %hi(gTLUTLakituFishing) # $a1, 0xd02
 /* 07A5C4 800799C4 3C060F0D */  lui   $a2, %hi(D_0F0CCF50) # $a2, 0xf0d
 /* 07A5C8 800799C8 240E0048 */  li    $t6, 72
 /* 07A5CC 800799CC AFAE0010 */  sw    $t6, 0x10($sp)
 /* 07A5D0 800799D0 24C6CF50 */  addiu $a2, %lo(D_0F0CCF50) # addiu $a2, $a2, -0x30b0
-/* 07A5D4 800799D4 24A55CD8 */  addiu $a1, %lo(D_0D025CD8) # addiu $a1, $a1, 0x5cd8
+/* 07A5D4 800799D4 24A55CD8 */  addiu $a1, %lo(gTLUTLakituFishing) # addiu $a1, $a1, 0x5cd8
 /* 07A5D8 800799D8 02002025 */  move  $a0, $s0
 /* 07A5DC 800799DC 0C01CD11 */  jal   func_80073444
 /* 07A5E0 800799E0 24070038 */   li    $a3, 56

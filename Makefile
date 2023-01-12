@@ -401,7 +401,14 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTextureItemWindowThunderBolt.rgba16.ci8.inc.c -g textures/gTextureItemWindowThunderBolt.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/gTLUTItemWindowThunderBolt.rgba16.bin
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTextureItemWindowFakeItemBox.rgba16.ci8.inc.c -g textures/gTextureItemWindowFakeItemBox.rgba16.ci8.png -s u8 -w 40 -h 32 -f ci8 -c rgba16 -p textures/gTLUTItemWindowFakeItemBox.rgba16.bin
 
-	$(BIN2C) textures/132B50_24ED8_tlut.rgba16.bin $(BUILD_DIR)/textures/132B50_24ED8_tlut.rgba16
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTLUTLakituNoLights.rgba16.inc.c -g textures/gTLUTLakituNoLights.rgba16.png -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTLUTLakituRedLights.rgba16.inc.c -g textures/gTLUTLakituRedLights.rgba16.png -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTLUTLakituBlueLight.rgba16.inc.c -g textures/gTLUTLakituBlueLight.rgba16.png -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTLUTLakituCheckeredFlag.rgba16.inc.c -g textures/gTLUTLakituCheckeredFlag.rgba16.png -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTLUTLakituSecondLap.rgba16.inc.c -g textures/gTLUTLakituSecondLap.rgba16.png -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTLUTLakituFinalLap.rgba16.inc.c -g textures/gTLUTLakituFinalLap.rgba16.png -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTLUTLakituReverse.rgba16.inc.c -g textures/gTLUTLakituReverse.rgba16.png -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTLUTLakituFishing.rgba16.inc.c -g textures/gTLUTLakituFishing.rgba16.png -s u8
 
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_25ED8_tlut.rgba16.inc.c -g textures/132B50_25ED8_tlut.rgba16.png -s u8
 	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/132B50_260D8.rgba16.ci8.inc.c -g textures/132B50_260D8.rgba16.ci8.png -s u8 -w 24 -h 48 -f ci8 -c rgba16 -p textures/132B50_25ED8_tlut.rgba16.png
@@ -438,16 +445,16 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2C458.i8.inc.c -g textures/132B50_2C458.i8.png -s u8 -w 32 -h 32 -f i8
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2C858.i8.inc.c -g textures/132B50_2C858.i8.png -s u8 -w 32 -h 32 -f i8
 
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2CC58.rgba16.inc.c -g textures/132B50_2CC58.rgba16.png -s u8 -w 8 -h 8
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2CCD8.rgba16.inc.c -g textures/132B50_2CCD8.rgba16.png -s u8 -w 8 -h 8
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2CD58.rgba16.inc.c -g textures/132B50_2CD58.rgba16.png -s u8 -w 8 -h 8
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2CDD8.rgba16.inc.c -g textures/132B50_2CDD8.rgba16.png -s u8 -w 8 -h 8
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2CE58.rgba16.inc.c -g textures/132B50_2CE58.rgba16.png -s u8 -w 8 -h 8
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2CED8.rgba16.inc.c -g textures/132B50_2CED8.rgba16.png -s u8 -w 8 -h 8
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2CF58.rgba16.inc.c -g textures/132B50_2CF58.rgba16.png -s u8 -w 8 -h 8
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2CFD8.rgba16.inc.c -g textures/132B50_2CFD8.rgba16.png -s u8 -w 8 -h 8
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2D058.rgba16.inc.c -g textures/132B50_2D058.rgba16.png -s u8 -w 8 -h 8
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_2D0D8.rgba16.inc.c -g textures/132B50_2D0D8.rgba16.png -s u8 -w 8 -h 8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTextureMiniMapFinishLine.rgba16.inc.c -g textures/gTextureMiniMapFinishLine.rgba16.png -s u8 -w 8 -h 8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTextureMiniMapKartMario.rgba16.inc.c -g textures/gTextureMiniMapKartMario.rgba16.png -s u8 -w 8 -h 8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTextureMiniMapKartLuigi.rgba16.inc.c -g textures/gTextureMiniMapKartLuigi.rgba16.png -s u8 -w 8 -h 8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTextureMiniMapKartYoshi.rgba16.inc.c -g textures/gTextureMiniMapKartYoshi.rgba16.png -s u8 -w 8 -h 8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTextureMiniMapKartToad.rgba16.inc.c -g textures/gTextureMiniMapKartToad.rgba16.png -s u8 -w 8 -h 8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTextureMiniMapKartDonkeyKong.rgba16.inc.c -g textures/gTextureMiniMapKartDonkeyKong.rgba16.png -s u8 -w 8 -h 8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTextureMiniMapKartWario.rgba16.inc.c -g textures/gTextureMiniMapKartWario.rgba16.png -s u8 -w 8 -h 8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTextureMiniMapKartPeach.rgba16.inc.c -g textures/gTextureMiniMapKartPeach.rgba16.png -s u8 -w 8 -h 8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTextureMiniMapKartBowser.rgba16.inc.c -g textures/gTextureMiniMapKartBowser.rgba16.png -s u8 -w 8 -h 8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTextureMiniMapProgressDot.rgba16.inc.c -g textures/gTextureMiniMapProgressDot.rgba16.png -s u8 -w 8 -h 8
 	
 
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<

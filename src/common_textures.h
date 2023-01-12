@@ -291,7 +291,13 @@ extern s8 gTextureItemWindowTripleRedShell[];
 extern s8 gTextureItemWindowStar[];
 extern s8 gTextureItemWindowThunderBolt[];
 extern s8 gTextureItemWindowFakeItemBox[];
-extern s8 D_0D024ED8[];
+extern s8 gTLUTLakituCountdown[][512];
+extern s8 gTLUTLakituCheckeredFlag[];
+extern s8 gTLUTLakituSecondLap[];
+extern s8 gTLUTLakituFinalLap[];
+extern s8 gTLUTLakituReverse[];
+extern s8 gTLUTLakituFishing[];
+
 extern s8 D_0D025ED8[];
 extern s8 D_0D0260D8[];
 extern s8 D_0D026558[];

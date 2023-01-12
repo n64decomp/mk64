@@ -2705,9 +2705,36 @@ s8 gTextureItemWindowFakeItemBox[] = {
     #include "textures/gTextureItemWindowFakeItemBox.rgba16.ci8.inc.c"
 };
 
-// Unk data. Perhaps not an img nor tlut.
-s8 D_0D024ED8[] = {
-    #include "textures/132B50_24ED8_tlut.rgba16.inc.c"
+s8 gTLUTLakituCountdown[][512] = {
+    {
+        #include "textures/gTLUTLakituNoLights.rgba16.inc.c"
+    },
+    {
+        #include "textures/gTLUTLakituRedLights.rgba16.inc.c"
+    },
+    {
+        #include "textures/gTLUTLakituBlueLight.rgba16.inc.c"
+    }
+};
+
+s8 gTLUTLakituCheckeredFlag[] = {
+    #include "textures/gTLUTLakituCheckeredFlag.rgba16.inc.c"
+};
+
+s8 gTLUTLakituSecondLap[] = {
+    #include "textures/gTLUTLakituSecondLap.rgba16.inc.c"
+};
+
+s8 gTLUTLakituFinalLap[] = {
+    #include "textures/gTLUTLakituFinalLap.rgba16.inc.c"
+};
+
+s8 gTLUTLakituReverse[] = {
+    #include "textures/gTLUTLakituReverse.rgba16.inc.c"
+};
+
+s8 gTLUTLakituFishing[] = {
+    #include "textures/gTLUTLakituFishing.rgba16.inc.c"
 };
 
 // traffic light tlut
@@ -2847,36 +2874,36 @@ s8 D_0D02C858[] = {
 
 // minimap cars
 s8 gTextureMiniMapFinishLine[] = {
-    #include "textures/132B50_2CC58.rgba16.inc.c"
+    #include "textures/gTextureMiniMapFinishLine.rgba16.inc.c"
 };
 
 s8 gMiniMapKartTextures[][128] = {
     { // Mario
-        #include "textures/132B50_2CCD8.rgba16.inc.c"
+        #include "textures/gTextureMiniMapKartMario.rgba16.inc.c"
     },
     { // Luigi
-        #include "textures/132B50_2CD58.rgba16.inc.c"
+        #include "textures/gTextureMiniMapKartLuigi.rgba16.inc.c"
     },
     { // Yoshi
-        #include "textures/132B50_2CDD8.rgba16.inc.c"
+        #include "textures/gTextureMiniMapKartYoshi.rgba16.inc.c"
     },
     { // Toad
-        #include "textures/132B50_2CE58.rgba16.inc.c"
+        #include "textures/gTextureMiniMapKartToad.rgba16.inc.c"
     },
     { // Donkey Kong
-        #include "textures/132B50_2CED8.rgba16.inc.c"
+        #include "textures/gTextureMiniMapKartDonkeyKong.rgba16.inc.c"
     },
     { // Wario
-        #include "textures/132B50_2CF58.rgba16.inc.c"
+        #include "textures/gTextureMiniMapKartWario.rgba16.inc.c"
     },
     { // Peach
-        #include "textures/132B50_2CFD8.rgba16.inc.c"
+        #include "textures/gTextureMiniMapKartPeach.rgba16.inc.c"
     },
     { // Bowser
-        #include "textures/132B50_2D058.rgba16.inc.c"
+        #include "textures/gTextureMiniMapKartBowser.rgba16.inc.c"
     },
 };
 
 s8 gTextureMiniMapProgressDot[] = {
-        #include "textures/132B50_2D0D8.rgba16.inc.c"
+        #include "textures/gTextureMiniMapProgressDot.rgba16.inc.c"
 };
