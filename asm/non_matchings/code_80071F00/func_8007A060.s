@@ -4,12 +4,12 @@ glabel func_8007A060
 /* 07AC68 8007A068 AFB00020 */  sw    $s0, 0x20($sp)
 /* 07AC6C 8007A06C 0C01E47C */  jal   func_800791F0
 /* 07AC70 8007A070 00808025 */   move  $s0, $a0
-/* 07AC74 8007A074 3C050D02 */  lui   $a1, %hi(D_0D0256D8) # $a1, 0xd02
+/* 07AC74 8007A074 3C050D02 */  lui   $a1, %hi(gTLUTLakituSecondLap) # $a1, 0xd02
 /* 07AC78 8007A078 3C060F0A */  lui   $a2, %hi(D_0F09DB50) # $a2, 0xf0a
 /* 07AC7C 8007A07C 240E0038 */  li    $t6, 56
 /* 07AC80 8007A080 AFAE0010 */  sw    $t6, 0x10($sp)
 /* 07AC84 8007A084 24C6DB50 */  addiu $a2, %lo(D_0F09DB50) # addiu $a2, $a2, -0x24b0
-/* 07AC88 8007A088 24A556D8 */  addiu $a1, %lo(D_0D0256D8) # addiu $a1, $a1, 0x56d8
+/* 07AC88 8007A088 24A556D8 */  addiu $a1, %lo(gTLUTLakituSecondLap) # addiu $a1, $a1, 0x56d8
 /* 07AC8C 8007A08C 02002025 */  move  $a0, $s0
 /* 07AC90 8007A090 0C01CD11 */  jal   func_80073444
 /* 07AC94 8007A094 24070048 */   li    $a3, 72
