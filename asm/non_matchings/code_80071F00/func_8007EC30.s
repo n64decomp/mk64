@@ -44,12 +44,12 @@ glabel func_8007EC30
 /* 07F8D4 8007ECD4 0C022E2F */  jal   func_8008B8BC
 /* 07F8D8 8007ECD8 00003825 */   move  $a3, $zero
 .L8007ECDC:
-/* 07F8DC 8007ECDC 3C050600 */  lui   $a1, %hi(D_06006F38) # $a1, 0x600
+/* 07F8DC 8007ECDC 3C050600 */  lui   $a1, %hi(gTLUTWhomp) # $a1, 0x600
 /* 07F8E0 8007ECE0 3C060600 */  lui   $a2, %hi(D_06007138) # $a2, 0x600
 /* 07F8E4 8007ECE4 24190040 */  li    $t9, 64
 /* 07F8E8 8007ECE8 AFB90010 */  sw    $t9, 0x10($sp)
 /* 07F8EC 8007ECEC 24C67138 */  addiu $a2, %lo(D_06007138) # addiu $a2, $a2, 0x7138
-/* 07F8F0 8007ECF0 24A56F38 */  addiu $a1, %lo(D_06006F38) # addiu $a1, $a1, 0x6f38
+/* 07F8F0 8007ECF0 24A56F38 */  addiu $a1, %lo(gTLUTWhomp) # addiu $a1, $a1, 0x6f38
 /* 07F8F4 8007ECF4 02002025 */  move  $a0, $s0
 /* 07F8F8 8007ECF8 0C01CD11 */  jal   func_80073444
 /* 07F8FC 8007ECFC 24070010 */   li    $a3, 16

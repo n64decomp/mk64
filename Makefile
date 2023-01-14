@@ -273,8 +273,8 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c
 	
 	# 132B50_04C68_tlut is an incredibly odd TLUT, its size appears to be 8x29? Which on the surface seems wrong but works in practice?
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_04C68_tlut.rgba16.inc.c -g textures/132B50_04C68_tlut.rgba16.png -f rgba16 -s u8
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_04E38_tlut.rgba16.inc.c -g textures/132B50_04E38_tlut.rgba16.png -f rgba16 -s u8
-	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_05038_tlut.rgba16.inc.c -g textures/132B50_05038_tlut.rgba16.png -f rgba16 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTLUTGreenShell.rgba16.inc.c -g textures/gTLUTGreenShell.rgba16.png -f rgba16 -s u8
+	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/gTLUTBlueShell.rgba16.inc.c -g textures/gTLUTBlueShell.rgba16.png -f rgba16 -s u8
 
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_06A58.i4.inc.c -g textures/132B50_06A58.i4.png -f i4 -s u8
 	$(N64GRAPHICS) -i $(BUILD_DIR)/textures/132B50_06AD8.ia8.inc.c -g textures/132B50_06AD8.ia8.png -f ia8 -s u8

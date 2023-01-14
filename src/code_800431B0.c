@@ -5317,7 +5317,7 @@ void func_800536C8(s32 objectIndex) {
         func_800534E8(objectIndex);
         gSPDisplayList(gDisplayListHead++, D_0D007828);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_06006F38);
+        gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTWhomp);
         func_8004544C(D_80165C18[objectIndex].unk_064, 0x00000010, 0x00000040, 4);
         gSPDisplayList(gDisplayListHead++, D_80165C18[objectIndex].unk_070);
     }
