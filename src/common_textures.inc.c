@@ -628,12 +628,12 @@ s8 D_0D004C68[] = {
     #include "textures/132B50_04C68_tlut.rgba16.inc.c"
 };
 
-s8 D_0D004E38[] = {
-    #include "textures/132B50_04E38_tlut.rgba16.inc.c"
+s8 gTLUTGreenShell[] = {
+    #include "textures/gTLUTGreenShell.rgba16.inc.c"
 };
 // 5038
-s8 D_0D005038[] = {
-    #include "textures/132B50_05038_tlut.rgba16.inc.c"
+s8 gTLUTBlueShell[] = {
+    #include "textures/gTLUTBlueShell.rgba16.inc.c"
 };
 
 //static s32 fileSplitPad[4] = { 0 };

@@ -222,12 +222,12 @@ glabel L80070AA8
 /* 0716B8 80070AB8 11410251 */  beq   $t2, $at, .L80071400
 /* 0716BC 80070ABC 26313EA0 */   addiu $s1, %lo(D_80183EA0) # addiu $s1, $s1, 0x3ea0
 /* 0716C0 80070AC0 8E300000 */  lw    $s0, ($s1)
-/* 0716C4 80070AC4 3C050600 */  lui   $a1, %hi(D_06007BB8) # $a1, 0x600
+/* 0716C4 80070AC4 3C050600 */  lui   $a1, %hi(gTLUTBat) # $a1, 0x600
 /* 0716C8 80070AC8 3C060600 */  lui   $a2, %hi(D_06007DB8) # $a2, 0x600
 /* 0716CC 80070ACC 240B0040 */  li    $t3, 64
 /* 0716D0 80070AD0 AFAB0010 */  sw    $t3, 0x10($sp)
 /* 0716D4 80070AD4 24C67DB8 */  addiu $a2, %lo(D_06007DB8) # addiu $a2, $a2, 0x7db8
-/* 0716D8 80070AD8 24A57BB8 */  addiu $a1, %lo(D_06007BB8) # addiu $a1, $a1, 0x7bb8
+/* 0716D8 80070AD8 24A57BB8 */  addiu $a1, %lo(gTLUTBat) # addiu $a1, $a1, 0x7bb8
 /* 0716DC 80070ADC 24070020 */  li    $a3, 32
 /* 0716E0 80070AE0 0C01CD11 */  jal   func_80073444
 /* 0716E4 80070AE4 02002025 */   move  $a0, $s0
