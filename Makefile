@@ -508,11 +508,11 @@ endif
 COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
 
 $(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(BUILD_DIR)/$*/model.inc.elf.map -o $(BUILD_DIR)/$*/model.inc.elf $(BUILD_DIR)/$*/model.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/$*/model.inc.elf $(BUILD_DIR)/$*/model.inc.bin
-	$(MIO0TOOL) -c $(BUILD_DIR)/$*/model.inc.bin $(BUILD_DIR)/$*/model.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(BUILD_DIR)/$*/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"bin/course_$(lastword $(subst /, ,$*))_packed.bin\"\n" > $(BUILD_DIR)/$*/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $@ $(BUILD_DIR)/$*/model.inc.mio0.s
+	$(LD) -t -e 0 -Ttext=0F000000 -Map $(@D)/model.inc.elf.map -o $(@D)/model.inc.elf $(@D)/model.inc.o --no-check-sections
+	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/model.inc.elf $(@D)/model.inc.bin
+	$(MIO0TOOL) -c $(@D)/model.inc.bin $(@D)/model.inc.mio0
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"bin/course_$(lastword $(subst /, ,$*))_packed.bin\"\n" > $(@D)/model.inc.mio0.s
+	$(AS) $(ASFLAGS) -o $@ $(@D)/model.inc.mio0.s
 
 ####################       STAFF GHOSTS        #####################
 
