@@ -558,7 +558,7 @@ SECTIONS
 
    BEGIN_SEG(koopa_troopa_beach_vertex, 0x0F000000) \
    { \
-      BUILD_DIR/courses/mushroom_cup/koopa_beach/model.inc.mio0.o(.data);       \
+      BUILD_DIR/courses/mushroom_cup/koopa_troopa_beach/model.inc.mio0.o(.data);       \
    } \
    END_SEG(koopa_troopa_beach_vertex)   
 
