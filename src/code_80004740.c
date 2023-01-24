@@ -267,12 +267,6 @@ s16 func_80004DFC(u32 arg0, u32 arg1, s16 arg2, s16 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80004740/func_80004DFC.s")
 #endif
 
-struct stru_80004EAC {
-    s32 unk0;
-    s32 unk4;
-    s16 unk8;
-};
-
 s16 func_80004EAC(void *addr, s16 offset) {
     uintptr_t *item = segmented_to_virtual(addr);
     struct stru_80004EAC *temp = segmented_to_virtual(item[offset]);
