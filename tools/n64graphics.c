@@ -287,15 +287,23 @@ int ia2raw(uint8_t *raw, const ia *img, int width, int height, int depth)
    return size;
 }
 
+/**
+ * Check 2 rgba structs for equality. 0 if unequal, 1 if equal
+**/
 int comp_rgba(const rgba left, const rgba right) {
-   if (left.red != right.red || left.green != right.green || left.blue != right.blue || left.alpha != right.alpha) {
+   if ((left.red != right.red) || (left.green != right.green) || (left.blue != right.blue) || (left.alpha != right.alpha)) {
       return 0;
    } else {
       return 1;
    }
 }
 
-int myfuncthing(const rgba comp, const rgba *pal, int pal_size) {
+/**
+ * Check if a given rgba (comp) is in a given palette (pal, represented as an array of rgba structs)
+ * If found, return the index in pal it was found out
+ * Otherwise, return -1
+**/
+int get_color_index(const rgba comp, const rgba *pal, int pal_size) {
    int pal_idx;
    for (pal_idx = 0; pal_idx < pal_size; pal_idx++) {
       if (comp_rgba(comp, pal[pal_idx]) == 1) return pal_idx;
@@ -305,13 +313,19 @@ int myfuncthing(const rgba comp, const rgba *pal, int pal_size) {
    return -1;
 }
 
-int myfunc2rawci(uint8_t *rawci, const rgba *img, const rgba *pal, int raw_size, int img_size, int pal_size) {
+/**
+ * Takes an image (img, an array of rgba structs) and a palette (pal, also an array of rgba structs)
+ * Sets the values of rawci (8 bit color index array) to the appropriate index in pal that each entry in img can be found at
+ * If a value in img is not found in pal, return 0, indicating an error
+ * Returns 1 if all values in img are found somewhere in pal
+**/
+int imgpal2rawci(uint8_t *rawci, const rgba *img, const rgba *pal, int raw_size, int img_size, int pal_size) {
    int img_idx;
    int pal_idx;
    memset(rawci, 0, raw_size);
 
    for (img_idx = 0; img_idx < img_size; img_idx++) {
-      pal_idx = myfuncthing(img[img_idx], pal, pal_size);
+      pal_idx = get_color_index(img[img_idx], pal, pal_size);
       if (pal_idx != -1) {
          rawci[img_idx] = pal_idx;
       } else {
@@ -619,7 +633,7 @@ typedef enum
 {
    MODE_EXPORT,
    MODE_IMPORT,
-   MODE_NEW,
+   MODE_EXPORT_CI,
 } tool_mode;
 
 typedef struct
@@ -842,7 +856,7 @@ static int parse_arguments(int argc, char *argv[], graphics_config *config)
             case 'Z':
                if (++i >= argc) return 0;
                config->bin_filename = argv[i];
-               config->mode = MODE_NEW;
+               config->mode = MODE_EXPORT_CI;
                break;
             default:
                return 0;
@@ -1113,13 +1127,13 @@ int main(int argc, char *argv[])
             return EXIT_FAILURE;
          }
          break;
-      case MODE_NEW:
+      case MODE_EXPORT_CI:
       {
-         uint8_t *ci;
+         uint8_t *rawci;
          int img_length;
          int pal_length;
          int ci_length;
-         int mysuccess;
+         int conversion_success;
 
          if (0 == strcmp("-", config.bin_filename)) {
             bin_fp = stdout;
@@ -1137,27 +1151,43 @@ int main(int argc, char *argv[])
          if (!config.bin_truncate) {
             fseek(bin_fp, config.bin_offset, SEEK_SET);
          }
-         // switch (config.pal_format.format) {
-         //    case IMG_FORMAT_RGBA:
+         switch (config.pal_format.format) {
+            case IMG_FORMAT_RGBA:
                palr = png2rgba(config.pal_filename, &config.width, &config.height);
-         //    break;
-         // }
+               break;
+            default:
+               ERROR("Unexpected format for the palette: %s\n", format2str(&config.pal_format));
+               return EXIT_FAILURE;
+         }
          pal_length = config.width * config.height;
-         // switch (config.format.format) {
-         //    case IMG_FORMAT_RGBA:
+         /**
+          * We're kind misusing the config stuff here
+          * We at first use it to convert the input image into an rgba16 (always 16, not 32)
+          * But then we re-use it to control the output bin file's size
+          * The proper thing to do here would be to:
+          *     Expand the config to have separate image and bin file parameters
+          *     Add optional argument(s) to specify the new parameters
+          *  In practice what this means is that, as written, when using the -Z mode you MUST set the -f
+          *  argument to `ci8`. Anything else is erroneous
+         **/
+         switch (config.format.format) {
+            case IMG_FORMAT_CI:
                imgr = png2rgba(config.img_filename, &config.width, &config.height);
-         //    break;
-         // }
+               break;
+            default:
+               ERROR("Unexpected format for the image: %s\n", format2str(&config.format));
+               return EXIT_FAILURE;
+         }
          img_length = config.width * config.height;
          ci_length = img_length * config.format.depth / 8;
-         ci = malloc(ci_length);
-         mysuccess = myfunc2rawci(ci, imgr, palr, ci_length, img_length, pal_length);
-         if (!mysuccess) {
+         rawci = malloc(ci_length);
+         conversion_success = imgpal2rawci(rawci, imgr, palr, ci_length, img_length, pal_length);
+         if (!conversion_success) {
             ERROR("Error converting PNG and TLUT to CI\n");
             exit(EXIT_FAILURE);
          }
          INFO("Writing 0x%X bytes to offset 0x%X of \"%s\"\n", ci_length, config.bin_offset, config.bin_filename);
-         flength = fprint_write_output(bin_fp, config.encoding, ci, ci_length);
+         flength = fprint_write_output(bin_fp, config.encoding, rawci, ci_length);
          if (config.encoding == ENCODING_RAW && flength != ci_length) {
             ERROR("Error writing %d bytes to \"%s\"\n", ci_length, config.bin_filename);
          }
@@ -1165,11 +1195,11 @@ int main(int argc, char *argv[])
          if (bin_fp != stdout) {
             fclose(bin_fp);
          }
-         free(ci);
+         free(rawci);
          break;
       }
       default:
-         ERROR("Unexpected run mode: \n");
+         ERROR("Unexpected run mode: %d\n", config.mode);
          return EXIT_FAILURE;
    }
 
