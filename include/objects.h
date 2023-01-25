@@ -34,7 +34,7 @@ typedef struct
     /* 0x7C */ s32 unk_07C;
     /* 0x80 */ s32 unk_080;
     /* 0x84 */ s16 unk_084[0xA];
-    /* 0x98 */ s16 unk_098;
+    /* 0x98 */ u16 unk_098;
     /* 0x9A */ s16 unk_09A;
     /* 0x9C */ s16 unk_09C;
     /* 0x9E */ s16 unk_09E;
@@ -80,11 +80,15 @@ typedef struct
 // This is the object list
 extern struct_80165C18_entry D_80165C18[];
 
-// This is another list of indices in D_80165C18.
+// This are other lists of indices in D_80165C18.
+extern s32 D_80183DB8[];
 extern s32 D_80183DD8[];
 
 // Appears to be a list of object list indices for the Item Window part of the HUD
 extern s32 gItemWindowObjectByPlayerId[];
+
+// Used for loop bounds when accessing D_80183EA0
+extern s16 D_80165750;
 
 /**
  * D_80183EA0, D_80183F28, D_8018BFA8, and D_8018C030 are all lists of indices in D_80165C18.

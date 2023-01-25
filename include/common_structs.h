@@ -510,7 +510,8 @@ typedef struct {
     /* 0x73 */ s8 blinkState;
     /* 0x74 */ s8 unk_74;
     /* 0x75 */ s8 unk_75;
-    /* 0x76 */ s16 itemOverride; // Something related to item generation. If non-zero, it determines the item you get
+    /* 0x76 */ s8 itemOverride; // Something related to item generation. If non-zero, it determines the item you get
+    /* 0x77 */ s8 unk_77;
     // 0x78 to 0x7F appear to be some type of "state" trackers for the lap and timer text during a race start
     // When a race starts those texts (and their afterimages) slide in and "bounce" a bit. These states control the bouncing (somehow)
     /* 0x78 */ s8 unk_78;
