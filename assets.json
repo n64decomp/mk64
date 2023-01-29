@@ -12594,8 +12594,8 @@
 "textures/gTextureGreenShell04.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":["0x4E38", "0x132B50"]}, "offsets": {"us":["0x68F248", "0x00000"]}},
 "textures/gTextureGreenShell05.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":["0x4E38", "0x132B50"]}, "offsets": {"us":["0x68F4A8", "0x00000"]}},
 "textures/gTextureGreenShell06.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":["0x4E38", "0x132B50"]}, "offsets": {"us":["0x68F700", "0x00000"]}},
-"textures/gTextureGreenShell06.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":["0x4E38", "0x132B50"]}, "offsets": {"us":["0x68F96C", "0x00000"]}},
-"textures/gTextureGreenShell07.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":["0x4E38", "0x132B50"]}, "offsets": {"us":["0x68FBCC", "0x00000"]}},
+"textures/gTextureGreenShell07.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":["0x4E38", "0x132B50"]}, "offsets": {"us":["0x68F96C", "0x00000"]}},
+"textures/gTextureGreenShell08.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":["0x4E38", "0x132B50"]}, "offsets": {"us":["0x68FBCC", "0x00000"]}},
 
 "textures/gTLUTBlueShell.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x132B50", "0x05038"]}},
 "textures/gTextureBlueShell01.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":["0x5038", "0x132B50"]}, "offsets": {"us":["0x68FE20", "0x00000"]}},
