@@ -55,6 +55,7 @@ void func_800598D4(s32);
 void func_8005994C();
 void func_8005995C();
 void func_80059A88(s32);
+void func_80059C50();
 void func_80059D00();
 
 void func_8005A070();
@@ -301,6 +302,8 @@ extern s8  D_801657D8;
 extern s8  D_801657E8;
 
 extern s8  D_8018CAE0;
+extern s16 gGPCurrentRaceCharacterIdByRank[];
+extern s16 D_8018CF98[];
 
 extern s32 D_8018D120;
 extern s32 D_8018D170;

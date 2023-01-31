@@ -72,9 +72,9 @@ glabel func_80071A20
 /* 072738 80071B38 3C0E800E */  lui   $t6, %hi(gModeSelection) # $t6, 0x800e
 /* 07273C 80071B3C 8DCEC53C */  lw    $t6, %lo(gModeSelection)($t6)
 /* 072740 80071B40 24010003 */  li    $at, 3
-/* 072744 80071B44 3C038016 */  lui   $v1, %hi(gPlayerPositions) # $v1, 0x8016
+/* 072744 80071B44 3C038016 */  lui   $v1, %hi(gGPCurrentRaceRankByPlayerId) # $v1, 0x8016
 /* 072748 80071B48 15C10005 */  bne   $t6, $at, .L80071B60
-/* 07274C 80071B4C 246343B8 */   addiu $v1, %lo(gPlayerPositions) # addiu $v1, $v1, 0x43b8
+/* 07274C 80071B4C 246343B8 */   addiu $v1, %lo(gGPCurrentRaceRankByPlayerId) # addiu $v1, $v1, 0x43b8
 /* 072750 80071B50 240F005E */  li    $t7, 94
 /* 072754 80071B54 241800D0 */  li    $t8, 208
 /* 072758 80071B58 A44F0044 */  sh    $t7, 0x44($v0)

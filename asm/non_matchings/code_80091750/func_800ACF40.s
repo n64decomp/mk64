@@ -69,9 +69,9 @@ glabel L800AD01C
 /* 0ADC40 800AD040 1000000C */  b     .L800AD074
 /* 0ADC44 800AD044 00000000 */   nop
 .L800AD048:
-/* 0ADC48 800AD048 3C0C8016 */  lui   $t4, %hi(gPlayerPositions)
+/* 0ADC48 800AD048 3C0C8016 */  lui   $t4, %hi(gGPCurrentRaceRankByPlayerId)
 /* 0ADC4C 800AD04C 018B6021 */  addu  $t4, $t4, $t3
-/* 0ADC50 800AD050 8D8C43B8 */  lw    $t4, %lo(gPlayerPositions)($t4)
+/* 0ADC50 800AD050 8D8C43B8 */  lw    $t4, %lo(gGPCurrentRaceRankByPlayerId)($t4)
 /* 0ADC54 800AD054 11800007 */  beqz  $t4, .L800AD074
 /* 0ADC58 800AD058 00000000 */   nop
 /* 0ADC5C 800AD05C 10000005 */  b     .L800AD074

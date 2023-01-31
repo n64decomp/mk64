@@ -709,7 +709,7 @@ void update_race_position_data(void) {
         if (((gPlayers[i].unk_000 & PLAYER_EXISTS) != 0) &&
             ((gPlayers[i].unk_000 & PLAYER_CINEMATIC_MODE) == 0) &&
             ((gPlayers[i].unk_000 & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
-            position = gPlayerPositions[i];
+            position = gGPCurrentRaceRankByPlayerId[i];
             gPlayers[i].currentRank = position;
             gPlayerPositionLUT[position] = i;
         }

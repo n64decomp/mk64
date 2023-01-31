@@ -9,6 +9,7 @@
 #include "code_80005FD0.h"
 #include "code_8001F980.h"
 #include "code_80027D00.h"
+#include "code_80071F00.h"
 #include "variables.h"
 #include <actor_types.h>
 #include "vehicles.h"
@@ -478,7 +479,7 @@ block_34:
                 var_t1_3 += 1;
             } while (var_t1_3 != sp30);
         }
-        var_v1_5 = gPlayerPositions;
+        var_v1_5 = gGPCurrentRaceRankByPlayerId;
         var_v0_5 = &D_801643E0;
         do {
             temp_t9 = *var_v1_5;
@@ -497,7 +498,7 @@ block_34:
                     temp_v1_2 = *var_v0_6;
                     var_t2_6 += 2;
                     var_v0_6 += 4;
-                    gPlayerPositions[temp_v1_2] = var_t3_3;
+                    gGPCurrentRaceRankByPlayerId[temp_v1_2] = var_t3_3;
                     var_t3_3 = var_t1_4;
                     var_t2_6->unk-2 = (s16) temp_v1_2;
                     var_t1_4 += 1;
@@ -514,19 +515,19 @@ block_50:
                     temp_v1_3 = *var_v0_7;
                     var_t2_7 += 8;
                     var_v0_7 += 0x10;
-                    gPlayerPositions[temp_v1_3] = var_t3_3;
+                    gGPCurrentRaceRankByPlayerId[temp_v1_3] = var_t3_3;
                     temp_a1 = var_v0_7->unk-C;
                     temp_t7 = var_t3_3 + 2;
                     var_t2_7->unk-8 = (s16) temp_v1_3;
-                    gPlayerPositions[temp_a1] = var_t1_5;
+                    gGPCurrentRaceRankByPlayerId[temp_a1] = var_t1_5;
                     temp_a3 = var_v0_7->unk-8;
                     temp_t9_2 = var_t3_3 + 3;
                     var_t3_3 += 4;
-                    gPlayerPositions[temp_a3] = temp_t7;
+                    gGPCurrentRaceRankByPlayerId[temp_a3] = temp_t7;
                     temp_t0_4 = var_v0_7->unk-4;
                     var_t1_5 += 4;
                     var_t2_7->unk-6 = (s16) temp_a1;
-                    gPlayerPositions[temp_t0_4] = temp_t9_2;
+                    gGPCurrentRaceRankByPlayerId[temp_t0_4] = temp_t9_2;
                     var_t2_7->unk-4 = (s16) temp_a3;
                     var_t2_7->unk-2 = (s16) temp_t0_4;
                 } while (var_t3_3 != var_t4);
@@ -870,7 +871,7 @@ block_21:
                 var_a1_2 += 1;
             } while (var_a1_2 != temp_t0);
         }
-        var_v1_3 = gPlayerPositions;
+        var_v1_3 = gGPCurrentRaceRankByPlayerId;
         var_v0_4 = &D_801643E0;
         do {
             temp_t7 = *var_v1_3;
@@ -889,7 +890,7 @@ block_21:
                     temp_v1_2 = *var_v0_5;
                     var_t0_3 += 2;
                     var_v0_5 += 4;
-                    gPlayerPositions[temp_v1_2] = var_a3_3;
+                    gGPCurrentRaceRankByPlayerId[temp_v1_2] = var_a3_3;
                     var_a3_3 = var_a1_3;
                     var_t0_3->unk-2 = (s16) temp_v1_2;
                     var_a1_3 += 1;
@@ -906,19 +907,19 @@ block_35:
                     temp_v1_3 = *var_v0_6;
                     var_t0_4 += 8;
                     var_v0_6 += 0x10;
-                    gPlayerPositions[temp_v1_3] = var_a3_3;
+                    gGPCurrentRaceRankByPlayerId[temp_v1_3] = var_a3_3;
                     temp_a0_6 = var_v0_6->unk-C;
                     temp_t6 = var_a3_3 + 2;
                     var_t0_4->unk-8 = (s16) temp_v1_3;
-                    gPlayerPositions[temp_a0_6] = var_a1_4;
+                    gGPCurrentRaceRankByPlayerId[temp_a0_6] = var_a1_4;
                     temp_t1_2 = var_v0_6->unk-8;
                     temp_t9 = var_a3_3 + 3;
                     var_a3_3 += 4;
-                    gPlayerPositions[temp_t1_2] = temp_t6;
+                    gGPCurrentRaceRankByPlayerId[temp_t1_2] = temp_t6;
                     temp_t2_6 = var_v0_6->unk-4;
                     var_a1_4 += 4;
                     var_t0_4->unk-6 = (s16) temp_a0_6;
-                    gPlayerPositions[temp_t2_6] = temp_t9;
+                    gGPCurrentRaceRankByPlayerId[temp_t2_6] = temp_t9;
                     var_t0_4->unk-4 = (s16) temp_t1_2;
                     var_t0_4->unk-2 = (s16) temp_t2_6;
                 } while (var_a3_3 != var_a2);
@@ -1202,7 +1203,7 @@ block_55:
             var_a3_3 += 1;
         } while (var_a3_3 != 7);
     }
-    var_v1_3 = gPlayerPositions;
+    var_v1_3 = gGPCurrentRaceRankByPlayerId;
     var_v0_4 = &D_801643E0;
     do {
         temp_t6_3 = *var_v1_3;
@@ -1218,19 +1219,19 @@ block_55:
         temp_v1 = *var_v0_5;
         var_v0_5 += 0x10;
         var_a0_4 += 8;
-        gPlayerPositions[temp_v1] = var_t0_5;
+        gGPCurrentRaceRankByPlayerId[temp_v1] = var_t0_5;
         temp_a1 = var_v0_5->unk-C;
         temp_t8_3 = var_t0_5 + 2;
         var_a0_4->unk-8 = (s16) temp_v1;
-        gPlayerPositions[temp_a1] = var_a3_4;
+        gGPCurrentRaceRankByPlayerId[temp_a1] = var_a3_4;
         temp_a2 = var_v0_5->unk-8;
         temp_t7_3 = var_t0_5 + 3;
         var_t0_5 += 4;
-        gPlayerPositions[temp_a2] = temp_t8_3;
+        gGPCurrentRaceRankByPlayerId[temp_a2] = temp_t8_3;
         temp_t1_2 = var_v0_5->unk-4;
         var_a3_4 += 4;
         var_a0_4->unk-6 = (s16) temp_a1;
-        gPlayerPositions[temp_t1_2] = temp_t7_3;
+        gGPCurrentRaceRankByPlayerId[temp_t1_2] = temp_t7_3;
         var_a0_4->unk-4 = (s16) temp_a2;
         var_a0_4->unk-2 = (s16) temp_t1_2;
     } while (var_t0_5 != 8);
@@ -1276,8 +1277,8 @@ void func_80007D04(s32 playerId, Player *player) {
     temp_v1 = D_80163478;
     temp_t1 = D_80164450[temp_v1];
     temp_t2 = D_80164450[playerId];
-    if (gPlayerPositions[playerId] < 2) {
-        if (((s16) (temp_t2 - temp_t1) >= 0x191) && ((s16)gPlayerPositions[temp_v1] >= 6)) {
+    if (gGPCurrentRaceRankByPlayerId[playerId] < 2) {
+        if (((s16) (temp_t2 - temp_t1) >= 0x191) && ((s16)gGPCurrentRaceRankByPlayerId[temp_v1] >= 6)) {
             player->unk_0BC &= ~0x200000;
             func_80030FC8(player);
             var_t5 = 4;
@@ -1752,15 +1753,15 @@ s32 func_800088D8(s32 arg0, s16 arg1, s16 arg2) {
     do {
         temp_t7 = (u16) *var_a0_3;
         var_a0_3 += 2;
-        if (gPlayerPositions[temp_t7] < arg2) {
+        if (gGPCurrentRaceRankByPlayerId[temp_t7] < arg2) {
             var_v0 += 1;
         }
     } while ((u32) var_a0_3 < (u32) &D_80163348);
     temp_t1_2 = D_8018EDF3;
     var_a0_4 = 0;
-    var_v1 = gPlayerPositions;
+    var_v1 = gGPCurrentRaceRankByPlayerId;
     if (temp_t1_2 > 0) {
-        sp4 = &gPlayerPositions[temp_t1_2];
+        sp4 = &gGPCurrentRaceRankByPlayerId[temp_t1_2];
         do {
             if (*var_v1 < arg2) {
                 var_a0_4 += 1;
@@ -2204,10 +2205,10 @@ void func_800099EC(s32 arg0, ? arg1) {
         phi_s0 = 0;
         phi_a0 = temp_a0;
         if (temp_a0 > ZERO_PLAYERS_SELECTED) {
-            phi_s2 = gPlayerPositions;
+            phi_s2 = gGPCurrentRaceRankByPlayerId;
             phi_s1 = 0;
             do {
-                temp_v0 = gPlayerPositions[arg0];
+                temp_v0 = gGPCurrentRaceRankByPlayerId[arg0];
                 temp_v1 = *phi_s2;
                 if ((temp_v0 < temp_v1) && (temp_v0 == *(&D_801643E0 + phi_s1)) && (temp_v1 == *(&D_801643E0 + (arg0 * 4)))) {
                     func_800C92CC(arg0 & 0xFF, 0x2900800D);
@@ -2553,7 +2554,7 @@ block_63:
                         return;
                     }
                     temp_v0_9 = D_8018EDF3;
-                    if ((temp_v0_9 > 0) && (temp_v0_9 < 3) && (*(&D_80163330 + sp34) == 1) && ((s32) *(&D_8016334C + sp34) < *(gPlayerPositions + sp38))) {
+                    if ((temp_v0_9 > 0) && (temp_v0_9 < 3) && (*(&D_80163330 + sp34) == 1) && ((s32) *(&D_8016334C + sp34) < *(gGPCurrentRaceRankByPlayerId + sp38))) {
                         var_t0 = sp38 + &D_80163210;
                         *var_t0 = 0x41055555;
                     } else if (D_80162FD0 == (s16) 1U) {
@@ -4498,79 +4499,55 @@ void func_8000EEDC(void) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_80076D70(void *, f32, s16); // extern
-extern f32 D_800ED040;
-extern f32 D_800ED044;
-extern f32 D_800ED048;
-extern f32 D_800ED04C;
-extern ? gActorList;
-extern ? D_801641F8;
-extern ? D_801642D8;
+#ifdef NEEDS_RODATA
+// data/data_0DD0A0_3.s
+extern f32 D_800ED040;// = 0.3f;
+extern f32 D_800ED044;// = 0.45f;
+extern f32 D_800ED048;// = 0.15f;
+extern f32 D_800ED04C;// = 0.9f;
 
 void func_8000EF20(void) {
-    ? *temp_s0;
-    f32 temp_f22;
-    s16 temp_v0;
-    u32 temp_t0;
-    u32 temp_v0_2;
-    u32 temp_v0_3;
-    u32 temp_v0_4;
-    void *temp_s1;
-    ? *phi_s0;
-    u32 phi_v0;
-    f32 phi_f20;
+    s32 someIndex;
+    f32 var_f20;
+    struct Actor *temp_s1;
+    struct unk_41F8 *var_s0;
 
-    temp_f22 = D_800ED048;
-    phi_s0 = &D_801641F8;
-    do {
-        if (phi_s0->unkC == 1) {
-            temp_v0 = phi_s0->unk10;
-            temp_t0 = phi_s0->unk14 + 1;
-            phi_s0->unk14 = temp_t0;
-            temp_s1 = &gActorList + (phi_s0->unkE * 0x70);
-            if (temp_v0 != 0) {
-                if (temp_v0 != 1) {
-                    if (temp_v0 != 2) {
-                        phi_v0 = temp_t0;
-                        phi_f20 = 1.0f;
-                    } else {
-                        temp_v0_2 = phi_s0->unk14;
-                        phi_v0 = temp_v0_2;
-                        if (temp_v0_2 < 0xA) {
-                            phi_f20 = temp_f22;
-                        } else {
-                            goto block_14;
-                        }
-                    }
+    for (someIndex = 0; someIndex < 8; someIndex++) {
+        var_s0 = &D_801641F8[someIndex];
+        if (var_s0->unkC == 1) {
+            temp_s1 = &gActorList[var_s0->unkE];
+            var_s0->unk14++;
+            switch (var_s0->unk10) {
+            case 0:
+                if (var_s0->unk14 < 0xA) {
+                    var_f20 = 0.3f;
                 } else {
-                    temp_v0_3 = phi_s0->unk14;
-                    phi_v0 = temp_v0_3;
-                    if (temp_v0_3 < 0xA) {
-                        phi_f20 = temp_f22;
-                    } else {
-block_14:
-                        phi_v0 = phi_s0->unk14;
-                        phi_f20 = D_800ED044;
-                    }
+                    var_f20 = 0.9f;
                 }
-            } else {
-                temp_v0_4 = phi_s0->unk14;
-                phi_v0 = temp_v0_4;
-                if (temp_v0_4 < 0xA) {
-                    phi_f20 = D_800ED040;
+                break;
+            case 1:
+                if (var_s0->unk14 < 0xA) {
+                    var_f20 = 0.15f;
                 } else {
-                    phi_f20 = D_800ED04C;
+                    var_f20 = 0.45f;
                 }
+                break;
+            case 2:
+                if (var_s0->unk14 < 0xA) {
+                    var_f20 = 0.15f;
+                } else {
+                    var_f20 = 0.45f;
+                }
+                break;
+            default:
+                var_f20 = 1.0f;
+                break;
             }
-            if ((phi_v0 & 1) == 0) {
-                func_80076D70(temp_s1 + 0x18, ((random_int(0x1E) + 0x14) * phi_f20) / 50.0f, phi_s0->unk10);
+            if (!(var_s0->unk14 & 1)) {
+                func_80076D70(temp_s1->pos, ((random_int(30) + 20) * var_f20) / 50.0f, var_s0->unk10);
             }
         }
-        temp_s0 = phi_s0 + 0x1C;
-        phi_s0 = temp_s0;
-    } while (temp_s0 != &D_801642D8);
+    }
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000EF20.s")
@@ -5067,7 +5044,7 @@ void func_8000F628(void) {
     var_ra = &D_801631A0;
     var_s6 = &D_801643E0;
     var_s5 = &D_801634F8;
-    var_s4 = gPlayerPositions;
+    var_s4 = gGPCurrentRaceRankByPlayerId;
     var_s2 = &D_80163330;
     var_s1 = gPlayers;
     sp4C = &D_801630B8;
@@ -5268,7 +5245,7 @@ void func_8000F628(void) {
     }
     var_v1 = gNearestWaypointByPlayerId;
     var_v0_3 = gPathIndexByPlayerId;
-    var_s4_2 = gPlayerPositions;
+    var_s4_2 = gGPCurrentRaceRankByPlayerId;
     do {
         var_v1 += 2;
         temp_t9_2 = (gWaypointCountByPathIndex[0 & 0xFFFF] - *var_s4_2) - 4;
@@ -10224,7 +10201,7 @@ extern s16 D_80164680;
 void func_8001A124(s32 arg0, s32 arg1) {
     s32 temp_v0;
 
-    temp_v0 = gPlayerPositions[arg0];
+    temp_v0 = gGPCurrentRaceRankByPlayerId[arg0];
     switch (temp_v0) {                              /* irregular */
     case 0:
         if (random_int(0x0064U) < 0x32) {
@@ -10482,12 +10459,12 @@ void func_8001A588(s32 arg0, Camera *camera, u16 *arg2, s8 arg3, s32 arg4) {
             D_801646C8 = 0;
         }
         if ((arg4 == 0) && ((temp_v0_4 = D_801646C8, (temp_v0_4 == 0x0000000A)) || (temp_v0_4 == 0x0000000B))) {
-            func_8001A518((s32) var_s0, gPlayerPositions[var_s0], 0, arg4);
+            func_8001A518((s32) var_s0, gGPCurrentRaceRankByPlayerId[var_s0], 0, arg4);
         }
         if ((gModeSelection != TIME_TRIALS) && (arg4 == 1) && ((temp_v0_5 = D_801646C8, (temp_v0_5 == 0x00000104)) || (temp_v0_5 == 0x00000105))) {
             var_v1 = 0;
             if (D_8018EDF3 == 2) {
-                func_8001A518((s32) var_s0, gPlayerPositions[var_s0], 1, arg4);
+                func_8001A518((s32) var_s0, gGPCurrentRaceRankByPlayerId[var_s0], 1, arg4);
             } else {
                 sp44 = (s32) var_s0;
 loop_34:
@@ -10727,14 +10704,14 @@ void func_8001AC10(s32 playerId) {
         case 0:                                     /* switch 1 */
             temp_s0->ffff = -1;
             if ((((playerId * 0x14) + 0x64) < D_80164450[playerId]) && (temp_s0->timer >= 0x259) && (temp_s0->laps < 3) && (temp_v1 = gLapCountByPlayerId[playerId], ((temp_v1 < 3) != 0))) {
-                func_8001AB74(playerId, temp_s0, func_8007AF78((s32) (s16) temp_v1, gPlayerPositions[playerId].unk2));
+                func_8001AB74(playerId, temp_s0, func_8007AF78((s32) (s16) temp_v1, gGPCurrentRaceRankByPlayerId[playerId].unk2));
             } else {
                 func_8001ABE0(playerId, (s32) temp_s0);
             }
         default:                                    /* switch 1 */
             break;
         case 1:                                     /* switch 1 */
-            if ((gLapCountByPlayerId[playerId] > 0) && (temp_v1_2 = D_80163478, temp_a0 = gPlayerPositions[temp_v1_2], ((temp_a0 < gPlayerPositions[playerId]) != 0)) && (temp_a0 == 0)) {
+            if ((gLapCountByPlayerId[playerId] > 0) && (temp_v1_2 = D_80163478, temp_a0 = gGPCurrentRaceRankByPlayerId[temp_v1_2], ((temp_a0 < gGPCurrentRaceRankByPlayerId[playerId]) != 0)) && (temp_a0 == 0)) {
                 temp_v0 = sp2C->characterId;
                 switch (temp_v0) {                  /* switch 3; irregular */
                 case 4:                             /* switch 3 */

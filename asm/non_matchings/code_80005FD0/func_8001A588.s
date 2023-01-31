@@ -159,9 +159,9 @@ glabel func_8001A588
 /* 01B3D4 8001A7D4 2401000B */  li    $at, 11
 /* 01B3D8 8001A7D8 14410009 */  bne   $v0, $at, .L8001A800
 .L8001A7DC:
-/* 01B3DC 8001A7DC 3C058016 */   lui   $a1, %hi(gPlayerPositions)
+/* 01B3DC 8001A7DC 3C058016 */   lui   $a1, %hi(gGPCurrentRaceRankByPlayerId)
 /* 01B3E0 8001A7E0 00AC2821 */  addu  $a1, $a1, $t4
-/* 01B3E4 8001A7E4 8CA543B8 */  lw    $a1, %lo(gPlayerPositions)($a1)
+/* 01B3E4 8001A7E4 8CA543B8 */  lw    $a1, %lo(gGPCurrentRaceRankByPlayerId)($a1)
 /* 01B3E8 8001A7E8 0C006946 */  jal   func_8001A518
 /* 01B3EC 8001A7EC 00003025 */   move  $a2, $zero
 /* 01B3F0 8001A7F0 3C088016 */  lui   $t0, %hi(D_801646C8) # $t0, 0x8016
@@ -189,9 +189,9 @@ glabel func_8001A588
 /* 01B440 8001A840 15A1000A */  bne   $t5, $at, .L8001A86C
 /* 01B444 8001A844 24060008 */   li    $a2, 8
 /* 01B448 8001A848 00107880 */  sll   $t7, $s0, 2
-/* 01B44C 8001A84C 3C058016 */  lui   $a1, %hi(gPlayerPositions)
+/* 01B44C 8001A84C 3C058016 */  lui   $a1, %hi(gGPCurrentRaceRankByPlayerId)
 /* 01B450 8001A850 00AF2821 */  addu  $a1, $a1, $t7
-/* 01B454 8001A854 8CA543B8 */  lw    $a1, %lo(gPlayerPositions)($a1)
+/* 01B454 8001A854 8CA543B8 */  lw    $a1, %lo(gGPCurrentRaceRankByPlayerId)($a1)
 /* 01B458 8001A858 02002025 */  move  $a0, $s0
 /* 01B45C 8001A85C 0C006946 */  jal   func_8001A518
 /* 01B460 8001A860 24060001 */   li    $a2, 1

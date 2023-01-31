@@ -46,7 +46,7 @@ glabel func_80071428
 /* 0720D8 800714D8 46803220 */  cvt.s.w $f8, $f6
 /* 0720DC 800714DC 240E0034 */  li    $t6, 52
 /* 0720E0 800714E0 240F00C8 */  li    $t7, 200
-/* 0720E4 800714E4 3C188016 */  lui   $t8, %hi(gPlayerPositions) # $t8, 0x8016
+/* 0720E4 800714E4 3C188016 */  lui   $t8, %hi(gGPCurrentRaceRankByPlayerId) # $t8, 0x8016
 /* 0720E8 800714E8 2402012C */  li    $v0, 300
 /* 0720EC 800714EC 2403FFD8 */  li    $v1, -40
 /* 0720F0 800714F0 E428CFEC */  swc1  $f8, %lo(D_8018CFEC)($at)
@@ -66,7 +66,7 @@ glabel func_80071428
 /* 072128 80071528 A50F0064 */  sh    $t7, 0x64($t0)
 /* 07212C 8007152C A5000066 */  sh    $zero, 0x66($t0)
 /* 072130 80071530 A5000068 */  sh    $zero, 0x68($t0)
-/* 072134 80071534 8F1843B8 */  lw    $t8, %lo(gPlayerPositions)($t8)
+/* 072134 80071534 8F1843B8 */  lw    $t8, %lo(gGPCurrentRaceRankByPlayerId)($t8)
 /* 072138 80071538 240DFFE0 */  li    $t5, -32
 /* 07213C 8007153C A502004E */  sh    $v0, 0x4e($t0)
 /* 072140 80071540 A5020050 */  sh    $v0, 0x50($t0)

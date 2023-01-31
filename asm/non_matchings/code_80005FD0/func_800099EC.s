@@ -25,8 +25,8 @@ glabel func_800099EC
 /* 00A648 80009A48 00008025 */  move  $s0, $zero
 /* 00A64C 80009A4C 0014A880 */  sll   $s5, $s4, 2
 /* 00A650 80009A50 18800021 */  blez  $a0, .L80009AD8
-/* 00A654 80009A54 3C198016 */   lui   $t9, %hi(gPlayerPositions)
-/* 00A658 80009A58 273243B8 */  addiu $s2, $t9, %lo(gPlayerPositions)
+/* 00A654 80009A54 3C198016 */   lui   $t9, %hi(gGPCurrentRaceRankByPlayerId)
+/* 00A658 80009A58 273243B8 */  addiu $s2, $t9, %lo(gGPCurrentRaceRankByPlayerId)
 /* 00A65C 80009A5C 3C1E2900 */  lui   $fp, (0x2900800D >> 16) # lui $fp, 0x2900
 /* 00A660 80009A60 3C138016 */  lui   $s3, %hi(D_801643E0) # $s3, 0x8016
 /* 00A664 80009A64 267343E0 */  addiu $s3, %lo(D_801643E0) # addiu $s3, $s3, 0x43e0

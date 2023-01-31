@@ -1094,6 +1094,7 @@ glabel D_800ED038
 glabel D_800ED03C
 .float 0.15
 
+#begin func_8000EF20
 glabel D_800ED040
 .float 0.3
 
@@ -1105,6 +1106,7 @@ glabel D_800ED048
 
 glabel D_800ED04C
 .float 0.9
+#end func_8000EF20
 
 glabel D_800ED050
 .float 0.015

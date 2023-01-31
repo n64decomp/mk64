@@ -1,9 +1,9 @@
 glabel func_800A6E94
 /* 0A7A94 800A6E94 27BDFFB0 */  addiu $sp, $sp, -0x50
 /* 0A7A98 800A6E98 00057880 */  sll   $t7, $a1, 2
-/* 0A7A9C 800A6E9C 3C188016 */  lui   $t8, %hi(gPlayerPositions)
+/* 0A7A9C 800A6E9C 3C188016 */  lui   $t8, %hi(gGPCurrentRaceRankByPlayerId)
 /* 0A7AA0 800A6EA0 030FC021 */  addu  $t8, $t8, $t7
-/* 0A7AA4 800A6EA4 8F1843B8 */  lw    $t8, %lo(gPlayerPositions)($t8)
+/* 0A7AA4 800A6EA4 8F1843B8 */  lw    $t8, %lo(gGPCurrentRaceRankByPlayerId)($t8)
 /* 0A7AA8 800A6EA8 AFBF002C */  sw    $ra, 0x2c($sp)
 /* 0A7AAC 800A6EAC AFB00028 */  sw    $s0, 0x28($sp)
 /* 0A7AB0 800A6EB0 F7B40020 */  sdc1  $f20, 0x20($sp)

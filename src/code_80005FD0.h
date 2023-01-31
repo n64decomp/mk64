@@ -21,7 +21,8 @@ struct unk_41F8 {
     u16 unkC;
     u16 unkE;
     s16 unk10;
-    s32 unk14;
+    // s16 compilerPadding;
+    u32 unk14;
     s32 unk18;
 };
 
@@ -64,6 +65,7 @@ s32  func_8000EDC8(s32);
 void func_8000DF8C(s32);
 s32  func_8000EE10(s32);
 void func_8000EE58(s32);
+void func_8000EF20();
 void func_8000EEDC();
 void func_8000EF20();
 void func_8000F0E0();

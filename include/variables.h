@@ -58,7 +58,7 @@ extern s8    gNextDemoId;           // D_800E86BC
 extern u8    gPerCupIndexByCourseId[NUM_COURSES]; // D_800EFD50
 extern s32   gPlayerCountSelection1;
 extern s32   gPlayerIsThrottleActive[];           // D_801653E0
-extern s32   gPlayerPositions[];                  // D_801643B8
+extern s32   gGPCurrentRaceRankByPlayerId[];      // D_801643B8
 
 extern u8    gSaveDataSoundMode;               // D_8018ED14
 extern u8    gSaveDataSoundModeBackup;         // D_8018ED8C

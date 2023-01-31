@@ -1,8 +1,8 @@
 glabel func_8001A124
 /* 01AD24 8001A124 00047080 */  sll   $t6, $a0, 2
-/* 01AD28 8001A128 3C028016 */  lui   $v0, %hi(gPlayerPositions)
+/* 01AD28 8001A128 3C028016 */  lui   $v0, %hi(gGPCurrentRaceRankByPlayerId)
 /* 01AD2C 8001A12C 004E1021 */  addu  $v0, $v0, $t6
-/* 01AD30 8001A130 8C4243B8 */  lw    $v0, %lo(gPlayerPositions)($v0)
+/* 01AD30 8001A130 8C4243B8 */  lw    $v0, %lo(gGPCurrentRaceRankByPlayerId)($v0)
 /* 01AD34 8001A134 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 01AD38 8001A138 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 01AD3C 8001A13C 1040000B */  beqz  $v0, .L8001A16C

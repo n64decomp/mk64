@@ -84,8 +84,8 @@ glabel func_80071818
 /* 072560 80071960 3C013F00 */  li    $at, 0x3F000000 # 0.500000
 /* 072564 80071964 44812000 */  mtc1  $at, $f4
 /* 072568 80071968 3C028019 */  lui   $v0, %hi(D_8018CA70) # $v0, 0x8019
-/* 07256C 8007196C 3C048016 */  lui   $a0, %hi(gPlayerPositions) # $a0, 0x8016
-/* 072570 80071970 248443B8 */  addiu $a0, %lo(gPlayerPositions) # addiu $a0, $a0, 0x43b8
+/* 07256C 8007196C 3C048016 */  lui   $a0, %hi(gGPCurrentRaceRankByPlayerId) # $a0, 0x8016
+/* 072570 80071970 248443B8 */  addiu $a0, %lo(gGPCurrentRaceRankByPlayerId) # addiu $a0, $a0, 0x43b8
 /* 072574 80071974 2442CA70 */  addiu $v0, %lo(D_8018CA70) # addiu $v0, $v0, -0x3590
 /* 072578 80071978 E4440088 */  swc1  $f4, 0x88($v0)
 /* 07257C 8007197C 8C8C0000 */  lw    $t4, ($a0)
