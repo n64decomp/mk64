@@ -2248,7 +2248,7 @@ void func_80076C9C(s32 objectIndex, Vec3f arg1, s16 arg2) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80076C9C.s")
 #endif
 
-void func_80076D70(Vec3f arg0, s32 arg1, s16 arg2) {
+void func_80076D70(Vec3f arg0, f32 arg1, s16 arg2) {
     s32 temp_v0;
 
     temp_v0 = func_80072044(D_8018C870, &D_80183E6C, 0x00000040);
@@ -5217,7 +5217,7 @@ s16 func_8007C9F8(void) {
     }
     if (temp_v0 == 2) {
         if (gModeSelection == GRAND_PRIX) {
-            if (gPlayerPositions->unk0 < gPlayerPositions->unk4) {
+            if (gGPCurrentRaceRankByPlayerId->unk0 < gGPCurrentRaceRankByPlayerId->unk4) {
                 return 0;
             }
             return 1;

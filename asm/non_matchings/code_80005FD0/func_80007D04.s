@@ -1,6 +1,6 @@
 glabel func_80007D04
-/* 008904 80007D04 3C0B8016 */  lui   $t3, %hi(gPlayerPositions) # $t3, 0x8016
-/* 008908 80007D08 256B43B8 */  addiu $t3, %lo(gPlayerPositions) # addiu $t3, $t3, 0x43b8
+/* 008904 80007D04 3C0B8016 */  lui   $t3, %hi(gGPCurrentRaceRankByPlayerId) # $t3, 0x8016
+/* 008908 80007D08 256B43B8 */  addiu $t3, %lo(gGPCurrentRaceRankByPlayerId) # addiu $t3, $t3, 0x43b8
 /* 00890C 80007D0C 3C038016 */  lui   $v1, %hi(D_80163478) # $v1, 0x8016
 /* 008910 80007D10 00041080 */  sll   $v0, $a0, 2
 /* 008914 80007D14 84633478 */  lh    $v1, %lo(D_80163478)($v1)

@@ -43,9 +43,9 @@ glabel func_800A69C8
 /* 0A7668 800A6A68 00035080 */   sll   $t2, $v1, 2
 .L800A6A6C:
 /* 0A766C 800A6A6C 00107880 */  sll   $t7, $s0, 2
-/* 0A7670 800A6A70 3C188016 */  lui   $t8, %hi(gPlayerPositions)
+/* 0A7670 800A6A70 3C188016 */  lui   $t8, %hi(gGPCurrentRaceRankByPlayerId)
 /* 0A7674 800A6A74 030FC021 */  addu  $t8, $t8, $t7
-/* 0A7678 800A6A78 8F1843B8 */  lw    $t8, %lo(gPlayerPositions)($t8)
+/* 0A7678 800A6A78 8F1843B8 */  lw    $t8, %lo(gGPCurrentRaceRankByPlayerId)($t8)
 /* 0A767C 800A6A7C 3C198016 */  lui   $t9, %hi(gNmiUnknown1) # $t9, 0x8016
 /* 0A7680 800A6A80 13000002 */  beqz  $t8, .L800A6A8C
 /* 0A7684 800A6A84 00000000 */   nop

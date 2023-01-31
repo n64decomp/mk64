@@ -145,7 +145,7 @@ glabel D_8016439C
 glabel D_801643B0
 .skip 8
 
-glabel gPlayerPositions
+glabel gGPCurrentRaceRankByPlayerId
 .skip 2
 
 glabel D_801643BA

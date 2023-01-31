@@ -142,7 +142,7 @@ void func_80076AEC(s32);
 void func_80076B7C();
 void func_80076B84();
 void func_80076C9C(s32, Vec3f, s16);
-void func_80076D70(Vec3f, s32, s16);
+void func_80076D70(Vec3f, f32, s16);
 void func_80076DC4(s32);
 void func_80076E14(s32);
 void func_80076ED8(s32);

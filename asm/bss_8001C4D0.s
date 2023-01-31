@@ -1041,7 +1041,7 @@ glabel D_8018CF78
 
 # List of half-word character IDs indicating each character's
 # place in the current Grand Prix race's standings
-glabel gGPCurrentRaceRanks
+glabel gGPCurrentRaceCharacterIdByRank
 .skip 16
 
 glabel D_8018CF90

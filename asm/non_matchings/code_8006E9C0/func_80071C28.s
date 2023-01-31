@@ -126,8 +126,8 @@ glabel func_80071C28
 .L80071E18:
 /* 072A18 80071E18 3C013F00 */  li    $at, 0x3F000000 # 0.500000
 /* 072A1C 80071E1C 44812000 */  mtc1  $at, $f4
-/* 072A20 80071E20 3C028016 */  lui   $v0, %hi(gPlayerPositions) # $v0, 0x8016
-/* 072A24 80071E24 244243B8 */  addiu $v0, %lo(gPlayerPositions) # addiu $v0, $v0, 0x43b8
+/* 072A20 80071E20 3C028016 */  lui   $v0, %hi(gGPCurrentRaceRankByPlayerId) # $v0, 0x8016
+/* 072A24 80071E24 244243B8 */  addiu $v0, %lo(gGPCurrentRaceRankByPlayerId) # addiu $v0, $v0, 0x43b8
 /* 072A28 80071E28 E6040190 */  swc1  $f4, 0x190($s0)
 /* 072A2C 80071E2C C6000190 */  lwc1  $f0, 0x190($s0)
 /* 072A30 80071E30 8C590000 */  lw    $t9, ($v0)

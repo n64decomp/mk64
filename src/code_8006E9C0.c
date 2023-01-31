@@ -1878,7 +1878,7 @@ void func_80071428(void) {
     D_8018CA70->itemBoxY = -0x0020;
     D_8018CA70->slideItemBoxX = 0;
     D_8018CA70->slideItemBoxY = 0;
-    D_8018CA70->stagingPosition = (s16) *gPlayerPositions;
+    D_8018CA70->stagingPosition = (s16) *gGPCurrentRaceRankByPlayerId;
     func_8006EE7C(*gItemWindowObjectByPlayerId);
     var_f0 = 35.0f;
     var_v0 = &D_8018D078;
@@ -2016,8 +2016,8 @@ void func_80071818(void) {
     D_8018CA70->unkE4 = 0x0028;
     func_8006EE7C(*(gItemWindowObjectByPlayerId + 4));
     D_8018CA70->unk88 = 0.5f;
-    D_8018CA70->stagingPosition = (s16) gPlayerPositions->unk0;
-    D_8018CA70->unkEE = (s16) gPlayerPositions->unk4;
+    D_8018CA70->stagingPosition = (s16) gGPCurrentRaceRankByPlayerId->unk0;
+    D_8018CA70->unkEE = (s16) gGPCurrentRaceRankByPlayerId->unk4;
     D_8018CA70->rankScaling = D_8018CA70->unk88;
     D_8018D3C4 = 0x0000001E;
     D_8018D3BC = 0x00000018;
@@ -2094,8 +2094,8 @@ void func_80071A20(void) {
         D_8018CA70->unkC8 = 0x00D0;
     }
     D_8018CA70->unk88 = 0.5f;
-    D_8018CA70->stagingPosition = (s16) gPlayerPositions->unk0;
-    D_8018CA70->unkEE = (s16) gPlayerPositions->unk4;
+    D_8018CA70->stagingPosition = (s16) gGPCurrentRaceRankByPlayerId->unk0;
+    D_8018CA70->unkEE = (s16) gGPCurrentRaceRankByPlayerId->unk4;
     D_8018CA70->rankScaling = D_8018CA70->unk88;
     func_8006EE7C(*gItemWindowObjectByPlayerId);
     func_8006EE7C(*(gItemWindowObjectByPlayerId + 4));
@@ -2210,10 +2210,10 @@ void func_80071C28(void) {
     D_8018CA70->unk10C = (f32) D_8018CA70->unk190;
     D_8018CA70->unk88 = (f32) D_8018CA70->unk190;
     D_8018CA70->rankScaling = D_8018CA70->unk190;
-    D_8018CA70->stagingPosition = (s16) gPlayerPositions->unk0;
-    D_8018CA70->unkEE = (s16) gPlayerPositions->unk4;
-    D_8018CA70->unk172 = (s16) gPlayerPositions->unk8;
-    D_8018CA70->unk1F6 = (s16) gPlayerPositions->unkC;
+    D_8018CA70->stagingPosition = (s16) gGPCurrentRaceRankByPlayerId->unk0;
+    D_8018CA70->unkEE = (s16) gGPCurrentRaceRankByPlayerId->unk4;
+    D_8018CA70->unk172 = (s16) gGPCurrentRaceRankByPlayerId->unk8;
+    D_8018CA70->unk1F6 = (s16) gGPCurrentRaceRankByPlayerId->unkC;
     func_8006EE7C(*gItemWindowObjectByPlayerId);
     func_8006EE7C(*(gItemWindowObjectByPlayerId + 4));
     func_8006EE7C(*(gItemWindowObjectByPlayerId + 8));

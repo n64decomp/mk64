@@ -2988,7 +2988,7 @@ void func_8004E800(s32 playerId) {
             func_8004A384(temp_v0->slideRankX + temp_v0->rankX, temp_v0->slideRankY + temp_v0->rankY, 0U, temp_v0->rankScaling, 0x000000FF, D_800E55F8[temp_v1], 0, 0x000000FF, (s32) ((temp_v1 << 0xC) + D_0D00D258), D_0D0068F0, 0x00000080, 0x00000040, 0x00000080, 0x00000040);
             return;
         }
-        func_8004A384(temp_v0->slideRankX + temp_v0->rankX, temp_v0->slideRankY + temp_v0->rankY, 0U, temp_v0->rankScaling, 0x000000FF, D_800E55F8[D_80165594], 0, 0x000000FF, (s32) ((gPlayerPositions[playerId] << 0xC) + D_0D00D258), D_0D0068F0, 0x00000080, 0x00000040, 0x00000080, 0x00000040);
+        func_8004A384(temp_v0->slideRankX + temp_v0->rankX, temp_v0->slideRankY + temp_v0->rankY, 0U, temp_v0->rankScaling, 0x000000FF, D_800E55F8[D_80165594], 0, 0x000000FF, (s32) ((gGPCurrentRaceRankByPlayerId[playerId] << 0xC) + D_0D00D258), D_0D0068F0, 0x00000080, 0x00000040, 0x00000080, 0x00000040);
     }
 }
 #else
@@ -3007,11 +3007,11 @@ void func_8004E998(s32 playerId) {
     temp_v0 = &D_8018CA70[playerId];
     if ((u8) temp_v0->unk_81 != 0) {
         if (temp_v0->lapCount != 3) {
-            temp_v1 = gPlayerPositions[playerId];
+            temp_v1 = gGPCurrentRaceRankByPlayerId[playerId];
             func_8004A384(temp_v0->slideRankX + temp_v0->rankX, temp_v0->slideRankY + temp_v0->rankY, 0U, temp_v0->rankScaling, 0x000000FF, D_800E5618[temp_v1], 0, 0x000000FF, (s32) ((temp_v1 << 0xB) + D_0D015258), D_0D006030, 0x00000040, 0x00000040, 0x00000040, 0x00000040);
             return;
         }
-        func_8004A384(temp_v0->slideRankX + temp_v0->rankX, temp_v0->slideRankY + temp_v0->rankY, 0U, temp_v0->rankScaling, 0x000000FF, D_800E5618[D_80165598], 0, 0x000000FF, (s32) ((gPlayerPositions[playerId] << 0xB) + D_0D015258), D_0D006030, 0x00000040, 0x00000040, 0x00000040, 0x00000040);
+        func_8004A384(temp_v0->slideRankX + temp_v0->rankX, temp_v0->slideRankY + temp_v0->rankY, 0U, temp_v0->rankScaling, 0x000000FF, D_800E5618[D_80165598], 0, 0x000000FF, (s32) ((gGPCurrentRaceRankByPlayerId[playerId] << 0xB) + D_0D015258), D_0D006030, 0x00000040, 0x00000040, 0x00000040, 0x00000040);
     }
 }
 #else
@@ -3195,14 +3195,14 @@ void func_8004F168(s32 arg0, s32 arg1, s32 arg2) {
         temp_a0 = ((*(&D_8018D2C0 + temp_t0) + D_8018D2F0) - ((s16) D_8018D2B0 / 2)) + D_8018D2E0 + (s16) (s32) (temp_v1->pos[0] * D_8018D2A0);
         temp_a1 = ((*(&D_8018D2D8 + temp_t0) + D_8018D2F8) - ((s16) D_8018D2B8 / 2)) + D_8018D2E8 + (s32) (temp_v1->pos[2] * D_8018D2A0);
         if (arg2 != 8) {
-            if ((gPlayerPositions[arg1] == 0) && (gModeSelection != 3) && (gModeSelection != 1)) {
+            if ((gGPCurrentRaceRankByPlayerId[arg1] == 0) && (gModeSelection != 3) && (gModeSelection != 1)) {
                 func_80046424((s32) temp_a0, (s32) temp_a1, (temp_v1->unk_02C[1] + 0x8000) & 0xFFFF, 1.0f, (s32) gMiniMapKartTextures[arg2], (s32) D_0D005470, 8, 8, 8, 8);
                 return;
             }
             func_800463B0((s32) temp_a0, (s32) temp_a1, (temp_v1->unk_02C[1] + 0x8000) & 0xFFFF, 1.0f, (s32) gMiniMapKartTextures[arg2], (s32) D_0D005470, 8, 8, 8, 8);
             return;
         }
-        if (gPlayerPositions[arg1] == 0) {
+        if (gGPCurrentRaceRankByPlayerId[arg1] == 0) {
             func_8004C450((s32) temp_a0, (s32) temp_a1, 8U, 8U, (s32) gTextureMiniMapProgressDot);
             return;
         }
@@ -3715,7 +3715,7 @@ extern ? D_8018D028;
 extern f32 D_8018D050;
 extern ? D_8018D078;
 extern s32 D_8018D3E0;
-extern ? gGPCurrentRaceRanks;
+extern ? gGPCurrentRaceCharacterIdByRank;
 
 void func_80050320(void) {
     Gfx *temp_v1_3;
@@ -3749,7 +3749,7 @@ void func_80050320(void) {
                 if ((f64) *(&D_8018D078 + var_s1) < 0.0) {
                     var_a0 = 1;
                 }
-                temp_v1 = *((var_s0 * 2) + &gGPCurrentRaceRanks);
+                temp_v1 = *((var_s0 * 2) + &gGPCurrentRaceCharacterIdByRank);
                 temp_a1 = gLapCountByPlayerId[gGPCurrentRacePlayerIdByRank[var_s0]];
                 if (temp_v1 == gPlayerOne->characterId) {
                     func_8004FDB4(*temp_t0, temp_f14, var_a0, temp_a1, var_s0, (s16) temp_a1, (s32) temp_v1, 0x000000FF, 1, var_a0, 0);
@@ -3832,7 +3832,7 @@ s32 func_80050644(u16 arg0, s32 *arg1, s32 *arg2) {
         }
     } else if (gPlayerCountSelection1 == 1) {
         *arg1 = 0x00000020;
-        *arg2 = (gPlayerPositions[arg0] * 0x14) + 0x20;
+        *arg2 = (gGPCurrentRaceRankByPlayerId[arg0] * 0x14) + 0x20;
     } else {
         thing = (s32) (gLapCompletionPercentByPlayerId[arg0] * 260);
         *arg1 = thing;
@@ -4324,7 +4324,7 @@ void func_800514BC(void) {
     if (gModeSelection == TIME_TRIALS) {
         func_80050E34(0, D_80164408);
     } else if (gPlayerCountSelection1 == 1) {
-        func_80050E34(0, *gPlayerPositions);
+        func_80050E34(0, *gGPCurrentRaceRankByPlayerId);
     }
     temp_v1 = gDisplayListHead;
     gDisplayListHead = temp_v1 + 8;
