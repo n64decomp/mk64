@@ -21,6 +21,7 @@
 #define SCALE_3_8(VAL_) ((VAL_) * 0x24)
 #define SCALE_8_3(VAL_) ((VAL_) / 0x24)
 
+unsigned short magicFiller = 0x07FE;
 
 typedef struct
 {
@@ -587,7 +588,7 @@ int raw2ci(uint8_t *rawci, palette_t *pal, const uint8_t *raw, int raw_len, int 
 {
    // assign colors to palette
    pal->used = 0;
-   memset(pal->data, 0, sizeof(pal->data));
+   memset16safe(pal->data, magicFiller, sizeof(pal->data) / sizeof(uint16_t));
    int ci_idx = 0;
    for (int i = 0; i < raw_len; i += sizeof(uint16_t)) {
       uint16_t val = read_u16_be(&raw[i]);
@@ -598,6 +599,15 @@ int raw2ci(uint8_t *rawci, palette_t *pal, const uint8_t *raw, int raw_len, int 
       } else {
          switch (ci_depth) {
             case 8:
+               // It appears some palettes have a default index of transparent/0.
+               // This requires iterating the pal_idx unless the CI really does begin with 0.
+               if (i == 0) {
+                  pal->data[0] = 0;
+                  if (val != 0) {
+                     rawci[ci_idx] = (uint8_t) ++pal_idx;
+                     break;
+                  }
+               }
                rawci[ci_idx] = (uint8_t)pal_idx;
                break;
             case 4:
@@ -609,6 +619,11 @@ int raw2ci(uint8_t *rawci, palette_t *pal, const uint8_t *raw, int raw_len, int 
                break;
             }
          }
+         //if (ci_idx == 0) {
+         //   pal->data[0] = 0;
+            //pal_idx += 1;
+            //pal->used++;
+         //}
          ci_idx++;
       }
    }
@@ -858,6 +873,10 @@ static int parse_arguments(int argc, char *argv[], graphics_config *config)
                config->bin_filename = argv[i];
                config->mode = MODE_EXPORT_CI;
                break;
+            case 'm':
+               if (i++ >= argc) return 0;
+               magicFiller = strtol(argv[i], NULL, 16);
+               break;
             default:
                return 0;
                break;
@@ -896,7 +915,7 @@ int main(int argc, char *argv[])
    int length = 0;
    int flength;
    int res;
-
+   
    int valid = parse_arguments(argc, argv, &config);
    if (!valid || !valid_config(&config)) {
       print_usage();
@@ -951,6 +970,10 @@ int main(int argc, char *argv[])
                break;
             case IMG_FORMAT_CI:
             {
+               int w = 0;
+               int h = 0;
+               int channels = 0;
+               stbi_uc *data = stbi_load(config.img_filename, &w, &h, &channels, STBI_default);
                palette_t pal = {0};
                FILE *pal_fp;
                uint8_t *raw16;
@@ -960,6 +983,11 @@ int main(int argc, char *argv[])
                int ci_length;
                int pal_success;
                int pal_length;
+
+               if (!data || w <= 0 || h <= 0) {
+                  ERROR("Error reading w/h from img \"%s\"\n", config.img_filename);
+                  return 0;
+               }
 
                if (config.pal_truncate) {
                   pal_fp = fopen(config.pal_filename, "wb");
@@ -974,7 +1002,7 @@ int main(int argc, char *argv[])
                   fseek(pal_fp, config.bin_offset, SEEK_SET);
                }
 
-               raw16_size = config.width * config.height * config.pal_format.depth / 8;
+               raw16_size = w * h * config.pal_format.depth / 8;
                raw16 = malloc(raw16_size);
                if (!raw16) {
                   ERROR("Error allocating %d bytes\n", raw16_size);
