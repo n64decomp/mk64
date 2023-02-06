@@ -98,7 +98,7 @@ glabel func_8000F628
 /* 0103A8 8000F7A8 25EF30B8 */  addiu $t7, %lo(D_801630B8) # addiu $t7, $t7, 0x30b8
 /* 0103AC 8000F7AC 3C11800F */  lui   $s1, %hi(gPlayers) # $s1, 0x800f
 /* 0103B0 8000F7B0 3C128016 */  lui   $s2, %hi(D_80163330) # $s2, 0x8016
-/* 0103B4 8000F7B4 3C148016 */  lui   $s4, %hi(gPlayerPositions) # $s4, 0x8016
+/* 0103B4 8000F7B4 3C148016 */  lui   $s4, %hi(gGPCurrentRaceRankByPlayerId) # $s4, 0x8016
 /* 0103B8 8000F7B8 3C158016 */  lui   $s5, %hi(D_801634F8) # $s5, 0x8016
 /* 0103BC 8000F7BC 3C168016 */  lui   $s6, %hi(D_801643E0) # $s6, 0x8016
 /* 0103C0 8000F7C0 3C1F8016 */  lui   $ra, %hi(D_801631A0) # $ra, 0x8016
@@ -121,7 +121,7 @@ glabel func_8000F628
 /* 010404 8000F804 27FF31A0 */  addiu $ra, %lo(D_801631A0) # addiu $ra, $ra, 0x31a0
 /* 010408 8000F808 26D643E0 */  addiu $s6, %lo(D_801643E0) # addiu $s6, $s6, 0x43e0
 /* 01040C 8000F80C 26B534F8 */  addiu $s5, %lo(D_801634F8) # addiu $s5, $s5, 0x34f8
-/* 010410 8000F810 269443B8 */  addiu $s4, %lo(gPlayerPositions) # addiu $s4, $s4, 0x43b8
+/* 010410 8000F810 269443B8 */  addiu $s4, %lo(gGPCurrentRaceRankByPlayerId) # addiu $s4, $s4, 0x43b8
 /* 010414 8000F814 26523330 */  addiu $s2, %lo(D_80163330) # addiu $s2, $s2, 0x3330
 /* 010418 8000F818 26316990 */  addiu $s1, %lo(gPlayers) # addiu $s1, $s1, 0x6990
 /* 01041C 8000F81C AFAF004C */  sw    $t7, 0x4c($sp)
@@ -541,7 +541,7 @@ glabel func_8000F628
 /* 010A6C 8000FE6C 1609FFF5 */  bne   $s0, $t1, .L8000FE44
 /* 010A70 8000FE70 A44EFFFE */   sh    $t6, -2($v0)
 .L8000FE74:
-/* 010A74 8000FE74 3C148016 */  lui   $s4, %hi(gPlayerPositions) # $s4, 0x8016
+/* 010A74 8000FE74 3C148016 */  lui   $s4, %hi(gGPCurrentRaceRankByPlayerId) # $s4, 0x8016
 /* 010A78 8000FE78 3C028016 */  lui   $v0, %hi(gPathIndexByPlayerId) # $v0, 0x8016
 /* 010A7C 8000FE7C 3C038016 */  lui   $v1, %hi(gNearestWaypointByPlayerId) # $v1, 0x8016
 /* 010A80 8000FE80 3C058016 */  lui   $a1, %hi(D_80164448) # $a1, 0x8016
@@ -550,7 +550,7 @@ glabel func_8000F628
 /* 010A8C 8000FE8C 24A54448 */  addiu $a1, %lo(D_80164448) # addiu $a1, $a1, 0x4448
 /* 010A90 8000FE90 24634438 */  addiu $v1, %lo(gNearestWaypointByPlayerId) # addiu $v1, $v1, 0x4438
 /* 010A94 8000FE94 244245B0 */  addiu $v0, %lo(gPathIndexByPlayerId) # addiu $v0, $v0, 0x45b0
-/* 010A98 8000FE98 269443B8 */  addiu $s4, %lo(gPlayerPositions) # addiu $s4, $s4, 0x43b8
+/* 010A98 8000FE98 269443B8 */  addiu $s4, %lo(gGPCurrentRaceRankByPlayerId) # addiu $s4, $s4, 0x43b8
 .L8000FE9C:
 /* 010A9C 8000FE9C 300EFFFF */  andi  $t6, $zero, 0xffff
 /* 010AA0 8000FEA0 000EC040 */  sll   $t8, $t6, 1

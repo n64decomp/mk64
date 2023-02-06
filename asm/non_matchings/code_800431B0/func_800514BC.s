@@ -75,11 +75,11 @@ glabel func_800514BC
 .L800515C8:
 /* 0521C8 800515C8 8EEF0000 */  lw    $t7, ($s7)
 /* 0521CC 800515CC 00002025 */  move  $a0, $zero
-/* 0521D0 800515D0 3C058016 */  lui   $a1, %hi(gPlayerPositions) # $a1, 0x8016
+/* 0521D0 800515D0 3C058016 */  lui   $a1, %hi(gGPCurrentRaceRankByPlayerId) # $a1, 0x8016
 /* 0521D4 800515D4 16CF0003 */  bne   $s6, $t7, .L800515E4
 /* 0521D8 800515D8 00000000 */   nop
 /* 0521DC 800515DC 0C01438D */  jal   func_80050E34
-/* 0521E0 800515E0 8CA543B8 */   lw    $a1, %lo(gPlayerPositions)($a1)
+/* 0521E0 800515E0 8CA543B8 */   lw    $a1, %lo(gGPCurrentRaceRankByPlayerId)($a1)
 .L800515E4:
 /* 0521E4 800515E4 3C048015 */  lui   $a0, %hi(gDisplayListHead) # $a0, 0x8015
 /* 0521E8 800515E8 24840298 */  addiu $a0, %lo(gDisplayListHead) # addiu $a0, $a0, 0x298

@@ -416,7 +416,7 @@ void func_80039DA4(void) {
         }
     } else {
         for (i = 0; i < 8; i++) {
-            D_80165270[i] = spC[gPlayerPositions[i]];
+            D_80165270[i] = spC[gGPCurrentRaceRankByPlayerId[i]];
         }
     }
 }

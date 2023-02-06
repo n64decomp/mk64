@@ -333,7 +333,7 @@ void func_8008C8C4(Player* player, s8 arg1) {
     if ((D_80165460[arg1] == 1) && ((player->unk_000 & 0x4000) == 0x4000)) {
         player->unk_09C = (f32) (player->unk_09C + 100.0f);
     }
-    if ((gModeSelection == VERSUS) && ((player->unk_000 & 0x1000) == 0x1000) && (D_800DC51C == 0) && ((player->unk_0CA & 2) == 0) && (gPlayerPositions[arg1] != 0)) {
+    if ((gModeSelection == VERSUS) && ((player->unk_000 & 0x1000) == 0x1000) && (D_800DC51C == 0) && ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[arg1] != 0)) {
         player->statusEffects = (s32) (player->statusEffects | 0x400000);
     }
 }

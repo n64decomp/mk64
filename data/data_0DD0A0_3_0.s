@@ -2834,6 +2834,7 @@ glabel D_800F0B50
 glabel D_800F0B54
 .byte 0x20, 0x0f, 0x18, 0x2c
 
+# being func_80095574
 .balign 4
 glabel D_800F0B58
 .asciiz "debug_mode"
@@ -2889,6 +2890,7 @@ glabel D_800F0BA4
 .balign 4
 glabel D_800F0BB0
 .asciiz "push b to get all goldcup"
+# end func_80095574
 
 .balign 4
 glabel D_800F0BCC
@@ -3921,6 +3923,7 @@ glabel jpt_800F2868
 .word L800ADE80, L800ADEA0, L800ADEB0, L800ADEC0
 .word L800ADED0
 
+# begin func_800ADF48
 glabel jpt_800F287C
 .word L800ADF84, L800AE208, L800AE208, L800AE208
 .word L800AE208, L800AE208, L800AE208, L800AE208
@@ -3943,6 +3946,7 @@ glabel D_800F2938
 
 glabel D_800F2940
 .double 4.2
+#end func_800ADF48
 
 glabel jpt_800F2948
 .word L800AE260, L800AE2C8, L800AEC40, L800AEC40

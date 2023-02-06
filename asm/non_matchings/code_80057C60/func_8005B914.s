@@ -495,8 +495,8 @@ glabel L8005C000
 /* 05CC0C 8005C00C 100000A0 */  b     .L8005C290
 /* 05CC10 8005C010 8C42D1CC */   lw    $v0, %lo(D_8018D1CC)($v0)
 glabel L8005C014
-/* 05CC14 8005C014 3C088016 */  lui   $t0, %hi(gPlayerPositions) # $t0, 0x8016
-/* 05CC18 8005C018 8D0843B8 */  lw    $t0, %lo(gPlayerPositions)($t0)
+/* 05CC14 8005C014 3C088016 */  lui   $t0, %hi(gGPCurrentRaceRankByPlayerId) # $t0, 0x8016
+/* 05CC18 8005C018 8D0843B8 */  lw    $t0, %lo(gGPCurrentRaceRankByPlayerId)($t0)
 /* 05CC1C 8005C01C 29010004 */  slti  $at, $t0, 4
 /* 05CC20 8005C020 10200005 */  beqz  $at, .L8005C038
 /* 05CC24 8005C024 00000000 */   nop
