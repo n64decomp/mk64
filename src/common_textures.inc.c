@@ -2,7 +2,11 @@
 #include <macros.h>
 #include <PR/gbi.h>
 
-// This file appears to contain course non-specific content.
+/**
+ * @file Contains common course resources
+ * textures, vertices, displaylists, etc.
+ * A good example would be lakitu or shells as they exist in every course.
+*/
 
 // From common_textures.bin
 // Vtx 1210-1750

@@ -42,12 +42,7 @@ BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)
 INCLUDE_DIRS := include
 SRC_DIRS := src src/audio src/os src/os/math courses
 ASM_DIRS := asm asm/audio asm/os asm/os/non_matchings data data/sound_data
-COURSE_DIRS :=        \
-	courses/mushroom_cup/luigi_raceway courses/mushroom_cup/koopa_beach        \
-	courses/mushroom_cup/moo_moo_farm courses/mushroom_cup/kalimari_desert courses/flower_cup/toads_turnpike courses/flower_cup/frappe_snowland                     \
-	courses/flower_cup/choco_mountain courses/flower_cup/mario_raceway courses/star_cup/wario_stadium courses/star_cup/sherbet_land courses/star_cup/royal_raceway  \
-	courses/star_cup/bowsers_castle courses/special_cup/dks_jungle_parkway courses/special_cup/yoshi_valley courses/special_cup/banshee_boardwalk                   \
-	courses/special_cup/rainbow_road courses/battle/big_donut courses/battle/block_fort courses/battle/double_deck courses/battle/skyscraper
+COURSE_DIRS := $(shell find courses -mindepth 2 -type d)
 
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
@@ -349,162 +344,15 @@ endif
 
 #################### Compile course vertex to mio0 #####################
 
-mushroom_cup := $(BUILD_DIR)/courses/mushroom_cup
-flower_cup := $(BUILD_DIR)/courses/flower_cup
-star_cup := $(BUILD_DIR)/courses/star_cup
-special_cup := $(BUILD_DIR)/courses/special_cup
-battle := $(BUILD_DIR)/courses/battle
-LD_COURSE_VERTEX_DEPENDENCIES :=        \
-     $(mushroom_cup)/luigi_raceway/model.inc.mio0.o $(mushroom_cup)/moo_moo_farm/model.inc.mio0.o \
-	 $(mushroom_cup)/koopa_beach/model.inc.mio0.o $(mushroom_cup)/kalimari_desert/model.inc.mio0.o \
-	 $(flower_cup)/toads_turnpike/model.inc.mio0.o $(flower_cup)/frappe_snowland/model.inc.mio0.o \
-	 $(flower_cup)/choco_mountain/model.inc.mio0.o $(flower_cup)/mario_raceway/model.inc.mio0.o \
-	 $(star_cup)/wario_stadium/model.inc.mio0.o $(star_cup)/sherbet_land/model.inc.mio0.o \
-	 $(star_cup)/royal_raceway/model.inc.mio0.o $(star_cup)/bowsers_castle/model.inc.mio0.o \
-	 $(special_cup)/dks_jungle_parkway/model.inc.mio0.o $(special_cup)/yoshi_valley/model.inc.mio0.o \
-	 $(special_cup)/banshee_boardwalk/model.inc.mio0.o $(special_cup)/rainbow_road/model.inc.mio0.o \
-	 $(battle)/big_donut/model.inc.mio0.o $(battle)/block_fort/model.inc.mio0.o \
-	 $(battle)/double_deck/model.inc.mio0.o $(battle)/skyscraper/model.inc.mio0.o \
+COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
 
-$(mushroom_cup)/luigi_raceway/%.inc.mio0.o: courses/mushroom_cup/luigi_raceway/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(mushroom_cup)/luigi_raceway/$*.inc.elf.map -o $(mushroom_cup)/luigi_raceway/$*.inc.elf $(mushroom_cup)/luigi_raceway/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(mushroom_cup)/luigi_raceway/$*.inc.elf $(mushroom_cup)/luigi_raceway/$*.inc.bin
-	$(MIO0TOOL) -c $(mushroom_cup)/luigi_raceway/$*.inc.bin $(mushroom_cup)/luigi_raceway/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/mushroom_cup/luigi_raceway/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_luigi_raceway_packed\n\n.incbin \"bin/course_luigi_raceway_packed.bin\"\n" > build/us/courses/mushroom_cup/luigi_raceway/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(mushroom_cup)/luigi_raceway/$*.inc.mio0.o $(mushroom_cup)/luigi_raceway/$*.inc.mio0.s
-
-$(mushroom_cup)/moo_moo_farm/%.inc.mio0.o: courses/mushroom_cup/moo_moo_farm/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(mushroom_cup)/moo_moo_farm/$*.elf.map -o $(mushroom_cup)/moo_moo_farm/$*.inc.elf $(mushroom_cup)/moo_moo_farm/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(mushroom_cup)/moo_moo_farm/$*.inc.elf $(mushroom_cup)/moo_moo_farm/$*.inc.bin
-	$(MIO0TOOL) -c $(mushroom_cup)/moo_moo_farm/$*.inc.bin $(mushroom_cup)/moo_moo_farm/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/mushroom_cup/moo_moo_farm/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_moo_moo_farm_packed\n\n.incbin \"bin/course_moo_moo_farm_packed.bin\"\n" > build/us/courses/mushroom_cup/moo_moo_farm/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(mushroom_cup)/moo_moo_farm/$*.inc.mio0.o $(mushroom_cup)/moo_moo_farm/$*.inc.mio0.s
-
-$(mushroom_cup)/koopa_beach/%.inc.mio0.o: courses/mushroom_cup/koopa_beach/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(mushroom_cup)/koopa_beach/$*.elf.map -o $(mushroom_cup)/koopa_beach/$*.inc.elf $(mushroom_cup)/koopa_beach/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(mushroom_cup)/koopa_beach/$*.inc.elf $(mushroom_cup)/koopa_beach/$*.inc.bin
-	$(MIO0TOOL) -c $(mushroom_cup)/koopa_beach/$*.inc.bin $(mushroom_cup)/koopa_beach/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/mushroom_cup/koopa_beach/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_koopa_troopa_beach_packed\n\n.incbin \"bin/course_koopa_troopa_beach_packed.bin\"\n" > build/us/courses/mushroom_cup/koopa_beach/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(mushroom_cup)/koopa_beach/$*.inc.mio0.o $(mushroom_cup)/koopa_beach/$*.inc.mio0.s
-
-$(mushroom_cup)/kalimari_desert/%.inc.mio0.o: courses/mushroom_cup/kalimari_desert/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(mushroom_cup)/kalimari_desert/$*.elf.map -o $(mushroom_cup)/kalimari_desert/$*.inc.elf $(mushroom_cup)/kalimari_desert/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(mushroom_cup)/kalimari_desert/$*.inc.elf $(mushroom_cup)/kalimari_desert/$*.inc.bin
-	$(MIO0TOOL) -c $(mushroom_cup)/kalimari_desert/$*.inc.bin $(mushroom_cup)/kalimari_desert/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/mushroom_cup/kalimari_desert/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_kalimari_desert_packed\n\n.incbin \"bin/course_kalimari_desert_packed.bin\"\n" > build/us/courses/mushroom_cup/kalimari_desert/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(mushroom_cup)/kalimari_desert/$*.inc.mio0.o $(mushroom_cup)/kalimari_desert/$*.inc.mio0.s
-
-$(flower_cup)/toads_turnpike/%.inc.mio0.o: courses/flower_cup/toads_turnpike/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(flower_cup)/toads_turnpike/$*.elf.map -o $(flower_cup)/toads_turnpike/$*.inc.elf $(flower_cup)/toads_turnpike/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(flower_cup)/toads_turnpike/$*.inc.elf $(flower_cup)/toads_turnpike/$*.inc.bin
-	$(MIO0TOOL) -c $(flower_cup)/toads_turnpike/$*.inc.bin $(flower_cup)/toads_turnpike/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/flower_cup/toads_turnpike/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_toads_turnpike_packed\n\n.incbin \"bin/course_toads_turnpike_packed.bin\"\n" > build/us/courses/flower_cup/toads_turnpike/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(flower_cup)/toads_turnpike/$*.inc.mio0.o $(flower_cup)/toads_turnpike/$*.inc.mio0.s
-
-$(flower_cup)/frappe_snowland/%.inc.mio0.o: courses/flower_cup/frappe_snowland/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(flower_cup)/frappe_snowland/$*.elf.map -o $(flower_cup)/frappe_snowland/$*.inc.elf $(flower_cup)/frappe_snowland/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(flower_cup)/frappe_snowland/$*.inc.elf $(flower_cup)/frappe_snowland/$*.inc.bin
-	$(MIO0TOOL) -c $(flower_cup)/frappe_snowland/$*.inc.bin $(flower_cup)/frappe_snowland/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/flower_cup/frappe_snowland/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_frappe_snowland_packed\n\n.incbin \"bin/course_frappe_snowland_packed.bin\"\n" > build/us/courses/flower_cup/frappe_snowland/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(flower_cup)/frappe_snowland/$*.inc.mio0.o $(flower_cup)/frappe_snowland/$*.inc.mio0.s
-
-$(flower_cup)/choco_mountain/%.inc.mio0.o: courses/flower_cup/choco_mountain/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(flower_cup)/choco_mountain/$*.elf.map -o $(flower_cup)/choco_mountain/$*.inc.elf $(flower_cup)/choco_mountain/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(flower_cup)/choco_mountain/$*.inc.elf $(flower_cup)/choco_mountain/$*.inc.bin
-	$(MIO0TOOL) -c $(flower_cup)/choco_mountain/$*.inc.bin $(flower_cup)/choco_mountain/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/flower_cup/choco_mountain/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_choco_mountain_packed\n\n.incbin \"bin/course_choco_mountain_packed.bin\"\n" > build/us/courses/flower_cup/choco_mountain/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(flower_cup)/choco_mountain/$*.inc.mio0.o $(flower_cup)/choco_mountain/$*.inc.mio0.s
-
-$(flower_cup)/mario_raceway/%.inc.mio0.o: courses/flower_cup/mario_raceway/model.inc.c 
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(flower_cup)/mario_raceway/model.elf.map -o $(flower_cup)/mario_raceway/model.inc.elf $(flower_cup)/mario_raceway/model.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(flower_cup)/mario_raceway/model.inc.elf $(flower_cup)/mario_raceway/model.inc.bin
-	$(MIO0TOOL) -c $(flower_cup)/mario_raceway/model.inc.bin $(flower_cup)/mario_raceway/model.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/flower_cup/mario_raceway/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_mario_raceway_packed\n\n.incbin \"bin/course_mario_raceway_packed.bin\"\n" > build/us/courses/flower_cup/mario_raceway/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(flower_cup)/mario_raceway/$*.inc.mio0.o $(flower_cup)/mario_raceway/$*.inc.mio0.s
-
-$(star_cup)/wario_stadium/%.inc.mio0.o: courses/star_cup/wario_stadium/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(star_cup)/wario_stadium/$*.elf.map -o $(star_cup)/wario_stadium/$*.inc.elf $(star_cup)/wario_stadium/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(star_cup)/wario_stadium/$*.inc.elf $(star_cup)/wario_stadium/$*.inc.bin
-	$(MIO0TOOL) -c $(star_cup)/wario_stadium/$*.inc.bin $(star_cup)/wario_stadium/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/star_cup/wario_stadium/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_wario_stadium_packed\n\n.incbin \"bin/course_wario_stadium_packed.bin\"\n" > build/us/courses/star_cup/wario_stadium/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(star_cup)/wario_stadium/$*.inc.mio0.o $(star_cup)/wario_stadium/$*.inc.mio0.s
-
-$(star_cup)/sherbet_land/%.inc.mio0.o: courses/star_cup/sherbet_land/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(star_cup)/sherbet_land/$*.elf.map -o $(star_cup)/sherbet_land/$*.inc.elf $(star_cup)/sherbet_land/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(star_cup)/sherbet_land/$*.inc.elf $(star_cup)/sherbet_land/$*.inc.bin
-	$(MIO0TOOL) -c $(star_cup)/sherbet_land/$*.inc.bin $(star_cup)/sherbet_land/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/star_cup/sherbet_land/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_sherbet_land_packed\n\n.incbin \"bin/course_sherbet_land_packed.bin\"\n" > build/us/courses/star_cup/sherbet_land/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(star_cup)/sherbet_land/$*.inc.mio0.o $(star_cup)/sherbet_land/$*.inc.mio0.s
-
-$(star_cup)/royal_raceway/%.inc.mio0.o: courses/star_cup/royal_raceway/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(star_cup)/royal_raceway/$*.elf.map -o $(star_cup)/royal_raceway/$*.inc.elf $(star_cup)/royal_raceway/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(star_cup)/royal_raceway/$*.inc.elf $(star_cup)/royal_raceway/$*.inc.bin
-	$(MIO0TOOL) -c $(star_cup)/royal_raceway/$*.inc.bin $(star_cup)/royal_raceway/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/star_cup/royal_raceway/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_royal_raceway_packed\n\n.incbin \"bin/course_royal_raceway_packed.bin\"\n" > build/us/courses/star_cup/royal_raceway/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(star_cup)/royal_raceway/$*.inc.mio0.o $(star_cup)/royal_raceway/$*.inc.mio0.s
-
-$(star_cup)/bowsers_castle/%.inc.mio0.o: courses/star_cup/bowsers_castle/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(star_cup)/bowsers_castle/$*.elf.map -o $(star_cup)/bowsers_castle/$*.inc.elf $(star_cup)/bowsers_castle/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(star_cup)/bowsers_castle/$*.inc.elf $(star_cup)/bowsers_castle/$*.inc.bin
-	$(MIO0TOOL) -c $(star_cup)/bowsers_castle/$*.inc.bin $(star_cup)/bowsers_castle/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/star_cup/bowsers_castle/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_bowsers_castle_packed\n\n.incbin \"bin/course_bowsers_castle_packed.bin\"\n" > build/us/courses/star_cup/bowsers_castle/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(star_cup)/bowsers_castle/$*.inc.mio0.o $(star_cup)/bowsers_castle/$*.inc.mio0.s
-
-$(special_cup)/dks_jungle_parkway/%.inc.mio0.o: courses/special_cup/dks_jungle_parkway/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(special_cup)/dks_jungle_parkway/$*.elf.map -o $(special_cup)/dks_jungle_parkway/$*.inc.elf $(special_cup)/dks_jungle_parkway/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(special_cup)/dks_jungle_parkway/$*.inc.elf $(special_cup)/dks_jungle_parkway/$*.inc.bin
-	$(MIO0TOOL) -c $(special_cup)/dks_jungle_parkway/$*.inc.bin $(special_cup)/dks_jungle_parkway/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/special_cup/dks_jungle_parkway/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_dks_jungle_parkway_packed\n\n.incbin \"bin/course_dks_jungle_parkway_packed.bin\"\n" > build/us/courses/special_cup/dks_jungle_parkway/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(special_cup)/dks_jungle_parkway/$*.inc.mio0.o $(special_cup)/dks_jungle_parkway/$*.inc.mio0.s
-
-$(special_cup)/yoshi_valley/%.inc.mio0.o: courses/special_cup/yoshi_valley/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(special_cup)/yoshi_valley/$*.elf.map -o $(special_cup)/yoshi_valley/$*.inc.elf $(special_cup)/yoshi_valley/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(special_cup)/yoshi_valley/$*.inc.elf $(special_cup)/yoshi_valley/$*.inc.bin
-	$(MIO0TOOL) -c $(special_cup)/yoshi_valley/$*.inc.bin $(special_cup)/yoshi_valley/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/special_cup/yoshi_valley/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_yoshi_valley_packed\n\n.incbin \"bin/course_yoshi_valley_packed.bin\"\n" > build/us/courses/special_cup/yoshi_valley/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(special_cup)/yoshi_valley/$*.inc.mio0.o $(special_cup)/yoshi_valley/$*.inc.mio0.s
-
-$(special_cup)/banshee_boardwalk/%.inc.mio0.o: courses/special_cup/banshee_boardwalk/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(special_cup)/banshee_boardwalk/$*.elf.map -o $(special_cup)/banshee_boardwalk/$*.inc.elf $(special_cup)/banshee_boardwalk/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(special_cup)/banshee_boardwalk/$*.inc.elf $(special_cup)/banshee_boardwalk/$*.inc.bin
-	$(MIO0TOOL) -c $(special_cup)/banshee_boardwalk/$*.inc.bin $(special_cup)/banshee_boardwalk/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/special_cup/banshee_boardwalk/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_banshee_boardwalk_packed\n\n.incbin \"bin/course_banshee_boardwalk_packed.bin\"\n" > build/us/courses/special_cup/banshee_boardwalk/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(special_cup)/banshee_boardwalk/$*.inc.mio0.o $(special_cup)/banshee_boardwalk/$*.inc.mio0.s
-
-$(special_cup)/rainbow_road/%.inc.mio0.o: courses/special_cup/rainbow_road/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(special_cup)/rainbow_road/$*.elf.map -o $(special_cup)/rainbow_road/$*.inc.elf $(special_cup)/rainbow_road/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(special_cup)/rainbow_road/$*.inc.elf $(special_cup)/rainbow_road/$*.inc.bin
-	$(MIO0TOOL) -c $(special_cup)/rainbow_road/$*.inc.bin $(special_cup)/rainbow_road/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/special_cup/rainbow_road/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_rainbow_road_packed\n\n.incbin \"bin/course_rainbow_road_packed.bin\"\n" > build/us/courses/special_cup/rainbow_road/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(special_cup)/rainbow_road/$*.inc.mio0.o $(special_cup)/rainbow_road/$*.inc.mio0.s
-
-$(battle)/big_donut/%.inc.mio0.o: courses/battle/big_donut/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(battle)/big_donut/$*.elf.map -o $(battle)/big_donut/$*.inc.elf $(battle)/big_donut/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(battle)/big_donut/$*.inc.elf $(battle)/big_donut/$*.inc.bin
-	$(MIO0TOOL) -c $(battle)/big_donut/$*.inc.bin $(battle)/big_donut/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/battle/big_donut/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_big_donut_packed\n\n.incbin \"bin/course_big_donut_packed.bin\"\n" > build/us/courses/battle/big_donut/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(battle)/big_donut/$*.inc.mio0.o $(battle)/big_donut/$*.inc.mio0.s
-
-$(battle)/block_fort/%.inc.mio0.o: courses/battle/block_fort/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(battle)/block_fort/$*.elf.map -o $(battle)/block_fort/$*.inc.elf $(battle)/block_fort/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(battle)/block_fort/$*.inc.elf $(battle)/block_fort/$*.inc.bin
-	$(MIO0TOOL) -c $(battle)/block_fort/$*.inc.bin $(battle)/block_fort/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/battle/block_fort/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_block_fort_packed\n\n.incbin \"bin/course_block_fort_packed.bin\"\n" > build/us/courses/battle/block_fort/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(battle)/block_fort/$*.inc.mio0.o $(battle)/block_fort/$*.inc.mio0.s
-
-$(battle)/double_deck/%.inc.mio0.o: courses/battle/double_deck/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(battle)/double_deck/$*.elf.map -o $(battle)/double_deck/$*.inc.elf $(battle)/double_deck/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(battle)/double_deck/$*.inc.elf $(battle)/double_deck/$*.inc.bin
-	$(MIO0TOOL) -c $(battle)/double_deck/$*.inc.bin $(battle)/double_deck/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/battle/double_deck/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_double_deck_packed\n\n.incbin \"bin/course_double_deck_packed.bin\"\n" > build/us/courses/battle/double_deck/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(battle)/double_deck/$*.inc.mio0.o $(battle)/double_deck/$*.inc.mio0.s
-
-$(battle)/skyscraper/%.inc.mio0.o: courses/battle/skyscraper/%.inc.c
-	$(LD) -t -e 0 -Ttext=0F000000 -Map $(battle)/skyscraper/$*.elf.map -o $(battle)/skyscraper/$*.inc.elf $(battle)/skyscraper/$*.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(battle)/skyscraper/$*.inc.elf $(battle)/skyscraper/$*.inc.bin
-	$(MIO0TOOL) -c $(battle)/skyscraper/$*.inc.bin $(battle)/skyscraper/$*.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"build/us/courses/battle/skyscraper/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_skyscraper_packed\n\n.incbin \"bin/course_skyscraper_packed.bin\"\n" > build/us/courses/battle/skyscraper/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(battle)/skyscraper/$*.inc.mio0.o $(battle)/skyscraper/$*.inc.mio0.s
+# Elf the course data to include symbol addresses then convert to binary and compress to mio0. The mio0 file is converted to an object file so that the linker can link it.
+$(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c
+	$(LD) -t -e 0 -Ttext=0F000000 -Map $(@D)/model.inc.elf.map -o $(@D)/model.inc.elf $(@D)/model.inc.o --no-check-sections
+	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/model.inc.elf $(@D)/model.inc.bin
+	$(MIO0TOOL) -c $(@D)/model.inc.bin $(@D)/model.inc.mio0
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"bin/course_$(lastword $(subst /, ,$*))_packed.bin\"\n" > $(@D)/model.inc.mio0.s
+	$(AS) $(ASFLAGS) -o $@ $(@D)/model.inc.mio0.s
 
 ####################       STAFF GHOSTS        #####################
 
@@ -535,7 +383,7 @@ $(BUILD_DIR)/src/common_textures.inc.mio0.o: $(BUILD_DIR)/src/common_textures.in
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.s
 
 
-$(BUILD_DIR)/$(TARGET).elf: $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(LD_COURSE_VERTEX_DEPENDENCIES) undefined_syms.txt
+$(BUILD_DIR)/$(TARGET).elf: $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_MODEL_TARGETS) undefined_syms.txt
 	$(LD) $(LDFLAGS) -o $@
 
 $(BUILD_DIR)/$(TARGET).z64: $(BUILD_DIR)/$(TARGET).elf
