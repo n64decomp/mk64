@@ -758,7 +758,7 @@ void func_80059560(s32 playerId) {
         if (D_801657E4 == 2) {
             temp_v0_2 = &D_8018CA70[playerId];
             if ((temp_v0_2->unk_74 != 0) && (D_80165608 != 0)) {
-                func_80047910((s32) temp_v0_2->unk_6C, (s32) temp_v0_2->unk_6E, 0U, 1.0f, (s32) gTLUTPortraitMiniBombKart, (s32) gTexturePortraitMiniBombKart, D_0D005AE0, 0x00000020, 0x00000020, 0x00000020, 0x00000020);
+                func_80047910((s32) temp_v0_2->unk_6C, (s32) temp_v0_2->unk_6E, 0U, 1.0f, (s32) gTLUTPortraitBombKartAndQuestionMark, (s32) gTexturePortraitBombKartAndQuestionMark, D_0D005AE0, 0x00000020, 0x00000020, 0x00000020, 0x00000020);
             }
         }
     }

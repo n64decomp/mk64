@@ -28,10 +28,10 @@ glabel func_80050C68
 /* 0518CC 80050CCC 10400048 */  beqz  $v0, .L80050DF0
 /* 0518D0 80050CD0 3224FFFF */   andi  $a0, $s1, 0xffff
 /* 0518D4 80050CD4 3C130D00 */  lui   $s3, %hi(D_0D007DB8) # $s3, 0xd00
-/* 0518D8 80050CD8 3C140D02 */  lui   $s4, %hi(gTLUTPortraitMiniBombKart) # $s4, 0xd02
+/* 0518D8 80050CD8 3C140D02 */  lui   $s4, %hi(gTLUTPortraitBombKartAndQuestionMark) # $s4, 0xd02
 /* 0518DC 80050CDC 3C150D00 */  lui   $s5, %hi(D_0D0069E0) # $s5, 0xd00
 /* 0518E0 80050CE0 26B569E0 */  addiu $s5, %lo(D_0D0069E0) # addiu $s5, $s5, 0x69e0
-/* 0518E4 80050CE4 2694B4D8 */  addiu $s4, %lo(gTLUTPortraitMiniBombKart) # addiu $s4, $s4, -0x4b28
+/* 0518E4 80050CE4 2694B4D8 */  addiu $s4, %lo(gTLUTPortraitBombKartAndQuestionMark) # addiu $s4, $s4, -0x4b28
 /* 0518E8 80050CE8 26737DB8 */  addiu $s3, %lo(D_0D007DB8) # addiu $s3, $s3, 0x7db8
 /* 0518EC 80050CEC 03C02825 */  move  $a1, $fp
 /* 0518F0 80050CF0 0C0141F6 */  jal   func_800507D8
@@ -44,8 +44,8 @@ glabel func_80050C68
 /* 05190C 80050D0C AC530004 */  sw    $s3, 4($v0)
 /* 051910 80050D10 AC560000 */  sw    $s6, ($v0)
 /* 051914 80050D14 8E020000 */  lw    $v0, ($s0)
-/* 051918 80050D18 3C040D02 */  lui   $a0, %hi(gTexturePortraitMiniBombKart) # $a0, 0xd02
-/* 05191C 80050D1C 2484D6D8 */  addiu $a0, %lo(gTexturePortraitMiniBombKart) # addiu $a0, $a0, -0x2928
+/* 051918 80050D18 3C040D02 */  lui   $a0, %hi(gTexturePortraitBombKartAndQuestionMark) # $a0, 0xd02
+/* 05191C 80050D1C 2484D6D8 */  addiu $a0, %lo(gTexturePortraitBombKartAndQuestionMark) # addiu $a0, $a0, -0x2928
 /* 051920 80050D20 244F0008 */  addiu $t7, $v0, 8
 /* 051924 80050D24 AE0F0000 */  sw    $t7, ($s0)
 /* 051928 80050D28 AC540004 */  sw    $s4, 4($v0)

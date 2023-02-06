@@ -3572,7 +3572,7 @@ void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 arg4, s32 arg5, s
         temp_s0_2 = gDisplayListHead;
         gDisplayListHead = temp_s0_2 + 8;
         temp_s0_2->words.w0 = 0xFD100000;
-        temp_s0_2->words.w1 = (u32) gTLUTPortraitMiniBombKart;
+        temp_s0_2->words.w1 = (u32) gTLUTPortraitBombKartAndQuestionMark;
         temp_s0_3 = gDisplayListHead;
         gDisplayListHead = temp_s0_3 + 8;
         temp_s0_3->words.w1 = 0;
@@ -4011,7 +4011,7 @@ void func_80050C68(void) {
             temp_v0_2->words.w0 = 0x06000000;
             temp_v0_3 = gDisplayListHead;
             gDisplayListHead = temp_v0_3 + 8;
-            temp_v0_3->words.w1 = (u32) gTLUTPortraitMiniBombKart;
+            temp_v0_3->words.w1 = (u32) gTLUTPortraitBombKartAndQuestionMark;
             temp_v0_3->words.w0 = 0xFD100000;
             temp_v0_4 = gDisplayListHead;
             gDisplayListHead = temp_v0_4 + 8;
@@ -4033,7 +4033,7 @@ void func_80050C68(void) {
             gDisplayListHead = temp_v0_8 + 8;
             temp_v0_8->words.w1 = 0;
             temp_v0_8->words.w0 = 0xE7000000;
-            func_800452A4(gTexturePortraitMiniBombKart, 0x00000020, 0x00000020);
+            func_800452A4(gTexturePortraitBombKartAndQuestionMark, 0x00000020, 0x00000020);
             func_80042330(sp88 + 0x20, sp84 + 0x12, 0U, 0.6f);
             temp_v0_9 = gDisplayListHead;
             gDisplayListHead = temp_v0_9 + 8;
@@ -4144,7 +4144,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
         temp_v0_4 = gDisplayListHead;
         gDisplayListHead = temp_v0_4 + 8;
         temp_v0_4->words.w0 = 0xFD100000;
-        temp_v0_4->words.w1 = (u32) gTLUTPortraitMiniBombKart;
+        temp_v0_4->words.w1 = (u32) gTLUTPortraitBombKartAndQuestionMark;
         temp_v0_5 = gDisplayListHead;
         gDisplayListHead = temp_v0_5 + 8;
         temp_v0_5->words.w1 = 0;

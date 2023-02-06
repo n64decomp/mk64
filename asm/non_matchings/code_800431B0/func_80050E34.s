@@ -72,8 +72,8 @@ glabel func_80050E34
 /* 051B38 80050F38 AC580000 */  sw    $t8, ($v0)
 /* 051B3C 80050F3C AC590004 */  sw    $t9, 4($v0)
 /* 051B40 80050F40 8E020000 */  lw    $v0, ($s0)
-/* 051B44 80050F44 3C180D02 */  lui   $t8, %hi(gTLUTPortraitMiniBombKart) # $t8, 0xd02
-/* 051B48 80050F48 2718B4D8 */  addiu $t8, %lo(gTLUTPortraitMiniBombKart) # addiu $t8, $t8, -0x4b28
+/* 051B44 80050F44 3C180D02 */  lui   $t8, %hi(gTLUTPortraitBombKartAndQuestionMark) # $t8, 0xd02
+/* 051B48 80050F48 2718B4D8 */  addiu $t8, %lo(gTLUTPortraitBombKartAndQuestionMark) # addiu $t8, $t8, -0x4b28
 /* 051B4C 80050F4C 244E0008 */  addiu $t6, $v0, 8
 /* 051B50 80050F50 AE0E0000 */  sw    $t6, ($s0)
 /* 051B54 80050F54 3C0FFD10 */  lui   $t7, 0xfd10
