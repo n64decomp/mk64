@@ -619,11 +619,6 @@ int raw2ci(uint8_t *rawci, palette_t *pal, const uint8_t *raw, int raw_len, int 
                break;
             }
          }
-         //if (ci_idx == 0) {
-         //   pal->data[0] = 0;
-            //pal_idx += 1;
-            //pal->used++;
-         //}
          ci_idx++;
       }
    }
