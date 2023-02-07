@@ -2,7 +2,11 @@
 #include <macros.h>
 #include <PR/gbi.h>
 
-// This file appears to contain course non-specific content.
+/**
+ * @file Contains common course resources
+ * textures, vertices, displaylists, etc.
+ * A good example would be lakitu or shells as they exist in every course.
+*/
 
 // From common_textures.bin
 // Vtx 1210-1750
@@ -23,64 +27,64 @@ extern s8 D_03008800[];
 */
 
 s8 D_0D000000[] = { // tlut
-    #include "textures/132B50_00000_tlut.rgba16.inc.c"
+    #include "textures/common/132B50_00000_tlut.rgba16.inc.c"
 };
 
 s8 D_0D000200[] = { // tlut
-    #include "textures/132B50_00200.rgba16.inc.c"
+    #include "textures/common/132B50_00200.rgba16.inc.c"
 };
 
-static Vtx D_0D001200[] = {
+Vtx D_0D001200[] = {
     {{{   -80,     100,       0}, 0, {0, 900}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D001210[] = {
+Vtx D_0D001210[] = {
     {{{     4,       0,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{     0,      20,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{    -4,       0,       0}, 0, {0, 0}, {0xfe, 0x02, 0x00, 0x00}}},
 };
 
-static Vtx D_0D001240[] = {
+Vtx D_0D001240[] = {
     {{{     4,       0,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{     0,      20,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{    -4,       0,       0}, 0, {0, 0}, {0xf4, 0x89, 0x00, 0x00}}},
 };
 
-static Vtx D_0D001270[] = {
+Vtx D_0D001270[] = {
     {{{     4,       0,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{     0,      20,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{    -4,       0,       0}, 0, {0, 0}, {0xe7, 0xf3, 0x00, 0x00}}},
 };
 
-static Vtx D_0D0012A0[] = {
+Vtx D_0D0012A0[] = {
     {{{     4,       0,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{     0,      20,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{    -4,       0,       0}, 0, {0, 0}, {0xa6, 0xfe, 0x23, 0x00}}},
 };
-static Vtx D_0D0012D0[] = { 
+Vtx D_0D0012D0[] = { 
     {{{     4,       0,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{     0,      20,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{    -4,       0,       0}, 0, {0, 0}, {0x00, 0x9c, 0x23, 0x00}}},
 };
-static Vtx D_0D001300[] = {  
+Vtx D_0D001300[] = {  
     {{{     4,       0,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{     0,      20,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{    -4,       0,       0}, 0, {0, 0}, {0x00, 0x94, 0xa5, 0x00}}},
 };
 
-static Vtx D_0D001330[] = {
+Vtx D_0D001330[] = {
     {{{     4,       0,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{     0,      20,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{    -4,       0,       0}, 0, {0, 0}, {0x00, 0x50, 0x9d, 0x00}}},
 };
 
-static Vtx D_0D001360[] = {
+Vtx D_0D001360[] = {
     {{{     4,       0,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{     0,      20,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{    -4,       0,       0}, 0, {0, 0}, {0x00, 0x00, 0x9b, 0x00}}},
 };
 
-static Vtx D_0D001390[] = {
+Vtx D_0D001390[] = {
     {{{   -80,     100,       0}, 0, {0, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -40,     100,       0}, 0, {2012, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -40,     115,       0}, 0, {2012, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -115,7 +119,7 @@ static Vtx D_0D001390[] = {
     {{{    40,     100,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D001590[] = {
+Vtx D_0D001590[] = {
     {{{   -92,       0,       0}, 0, {0, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -89,       0,       0}, 0, {990, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -89,     115,       0}, 0, {990, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -142,7 +146,7 @@ static Vtx D_0D001590[] = {
     {{{    80,      90,       0}, 0, {0, 2}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D001710[] = {
+Vtx D_0D001710[] = {
     {{{    80,      85,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -80,      85,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -80,     115,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -325,71 +329,71 @@ Gfx D_0D001C88[] = {
 };
 
 
-static Vtx D_0D001CE8[] = {
+Vtx D_0D001CE8[] = {
     {{{    -5,       0,      -5}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x80}}},
     {{{    -5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x80}}},
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x80}}},
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x80}}},
 };
 
-static Vtx D_0D001D28[] = {
+Vtx D_0D001D28[] = {
     {{{     3,      -5,       0}, 0, {1024, 1945}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,       5,       0}, 0, {1024, 65434}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,       5,       0}, 0, {0, 65434}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,      -5,       0}, 0, {0, 1945}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D001D68[] = {
+Vtx D_0D001D68[] = {
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
 };
 
-static Vtx D_0D001D98[] = {
+Vtx D_0D001D98[] = {
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
 };
 
-static Vtx D_0D001DC8[] = {
+Vtx D_0D001DC8[] = {
     {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
 };
 
-static Vtx D_0D001DF8[] = {
+Vtx D_0D001DF8[] = {
     {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
 };
 
-static Vtx D_0D001E28[] = {
+Vtx D_0D001E28[] = {
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
 };
 
-static Vtx D_0D001E58[] = {  
+Vtx D_0D001E58[] = {  
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
 
 };
-static Vtx D_0D001E88[] = {
+Vtx D_0D001E88[] = {
     {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
 };
 
-static Vtx D_0D001EB8[] = {
+Vtx D_0D001EB8[] = {
     {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
 };
 
 // D_0D001EE8
-static s8 gItemBoxQuestionMark_Texture[] = {
-    #include "textures/132B50_01EE8.rgba16.inc.c"
+s8 gItemBoxQuestionMark_Texture[] = {
+    #include "textures/common/132B50_01EE8.rgba16.inc.c"
 };
 
 Gfx D_0D002EE8[] = {
@@ -406,7 +410,7 @@ Gfx D_0D002EE8[] = {
     gsSPEndDisplayList(),
 };
 
-static Vtx D_0D002F40[] = {
+Vtx D_0D002F40[] = {
     {{{    -3,       5,       0}, 0, {1024, 2048}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,      -5,       0}, 0, {1024, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,      -5,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -551,7 +555,7 @@ Gfx D_0D003288[] = {
     gsSPEndDisplayList(),
 };
 
-static Vtx D_0D003298[] = {
+Vtx D_0D003298[] = {
     {{{     4,      -3,       0}, 0, {1228, 1024}, {0xff, 0xfe, 0xfe, 0xff}}},
     {{{     0,       4,       0}, 0, {512, 65332}, {0xc1, 0xff, 0x00, 0xff}}},
     {{{    -4,      -3,       0}, 0, {65332, 1024}, {0xff, 0xfe, 0xfe, 0xff}}},
@@ -559,7 +563,7 @@ static Vtx D_0D003298[] = {
     {{{     0,      -3,      -4}, 0, {65332, 1024}, {0xd3, 0xda, 0xad, 0xff}}},
 };
 
-static Vtx D_0D0032E8[] = {
+Vtx D_0D0032E8[] = {
     {{{     6,      -3,       0}, 0, {2048, 1024}, {0xff, 0xfe, 0xfe, 0xff}}},
     {{{     0,       4,       0}, 0, {1023, 65127}, {0xc1, 0xff, 0x00, 0xff}}},
     {{{    -6,      -3,       0}, 0, {0, 1024}, {0xff, 0xfe, 0xfe, 0xff}}},
@@ -571,11 +575,11 @@ static Vtx D_0D0032E8[] = {
 
 // D_0D003348
 s8 gBananaTexture[] = {
-    #include "textures/132B50_03348.rgba16.inc.c"
+    #include "textures/common/132B50_03348.rgba16.inc.c"
 };
 
 s8 D_0D003B48[] = {
-    #include "textures/132B50_03B48.rgba16.inc.c"
+    #include "textures/common/132B50_03B48.rgba16.inc.c"
 };
 
 // 0x4B48
@@ -622,34 +626,30 @@ Gfx D_0D004BD8[] = {
     gsSPEndDisplayList(),
 };
 
-// four tluts
-// Possibly only two tluts with a size of 2E8 each.
+// tlut size 8x29
+// todo: What is this?
 s8 D_0D004C68[] = {
-    #include "textures/132B50_04C68_tlut.rgba16.inc.c"
+    #include "textures/common/132B50_04C68_tlut.rgba16.inc.c"
 };
 
-s8 D_0D004E38[] = {
-    #include "textures/132B50_04E38_tlut.rgba16.inc.c"
-};
-// Possibly part of 4E38
-s8 D_0D004E68[] = {
-    #include "textures/132B50_04E68_tlut.rgba16.inc.c"
+s8 gTLUTGreenShell[] = {
+    #include "textures/common/gTLUTGreenShell.rgba16.inc.c"
 };
 // 5038
-s8 D_0D005068[] = {
-    #include "textures/132B50_05068_tlut.rgba16.inc.c"
+s8 gTLUTBlueShell[] = {
+    #include "textures/common/gTLUTBlueShell.rgba16.inc.c"
 };
 
-//static s32 fileSplitPad[4] = { 0 };
+//s32 fileSplitPad[4] = { 0 };
 
-static Vtx D_0D005238[] = {
+Vtx D_0D005238[] = {
     {{{     3,       6,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,       6,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,       0,       0}, 0, {0, 1920}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,       0,       0}, 0, {1984, 1920}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005278[] = {
+Vtx D_0D005278[] = {
 
     {{{     3,       6,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,       6,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -732,21 +732,21 @@ Gfx D_0D005418[] = {
     gsSPEndDisplayList(),
 };
 
-static Vtx D_0D005430[] = {
+Vtx D_0D005430[] = {
     {{{    -2,      -2,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     1,      -2,       0}, 0, {192, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     1,       1,       0}, 0, {192, 192}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -2,       1,       0}, 0, {0, 192}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005470[] = {
+Vtx D_0D005470[] = {
     {{{    -4,      -4,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,      -4,       0}, 0, {448, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,       3,       0}, 0, {448, 448}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -4,       3,       0}, 0, {0, 448}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D0054B0[] = {
+Vtx D_0D0054B0[] = {
     {{{    -4,      -8,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,      -8,       0}, 0, {448, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,       7,       0}, 0, {448, 960}, {0xff, 0xff, 0xff, 0xff}}},
@@ -793,21 +793,21 @@ static Vtx D_0D0054B0[] = {
     {{{    -6,      95,       0}, 0, {0, 12224}, {0xff, 0x80, 0x00, 0xff}}},
 };
 
-static Vtx D_0D005770[] = {
+Vtx D_0D005770[] = {
     {{{    -8,      -8,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,      -8,       0}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,       7,       0}, 0, {960, 960}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -8,       7,       0}, 0, {0, 960}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D0057B0[] = {
+Vtx D_0D0057B0[] = {
     {{{    -8,      -8,       0}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,      -8,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,       7,       0}, 0, {0, 960}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -8,       7,       0}, 0, {960, 960}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D0057F0[] = {
+Vtx D_0D0057F0[] = {
     {{{    -8,       0,      -8}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,       0,      -8}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,       0,       7}, 0, {960, 960}, {0xff, 0xff, 0xff, 0xff}}},
@@ -825,14 +825,14 @@ static Vtx D_0D0057F0[] = {
     {{{    -8,       8,       0}, 0, {0, 960}, {0x00, 0x00, 0x00, 0xff}}},
 };
 
-static Vtx D_0D0058E0[] = {
+Vtx D_0D0058E0[] = {
     {{{    -8,      -8,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,      -8,       0}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,       7,       0}, 0, {960, 960}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -8,       7,       0}, 0, {0, 960}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005920[] = {
+Vtx D_0D005920[] = {
     {{{    -4,     -32,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,     -32,       0}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,      31,       0}, 0, {960, 960}, {0xff, 0xff, 0xff, 0xff}}},
@@ -859,47 +859,47 @@ static Vtx D_0D005920[] = {
     {{{   -14,      13,       0}, 0, {0, 1728}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005AA0[] = {
+Vtx D_0D005AA0[] = {
     {{{   -16,      -8,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,      -8,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,       7,       0}, 0, {1984, 960}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -16,       7,       0}, 0, {0, 960}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005AE0[] = {
+Vtx D_0D005AE0[] = {
     {{{   -16,     -16,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,     -16,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,      15,       0}, 0, {1984, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -16,      15,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005B20[] = {
+Vtx D_0D005B20[] = {
     {{{   -16,     -16,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,     -16,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,      15,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -16,      15,       0}, 0, {1984, 1984}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005B60[] = {
+Vtx D_0D005B60[] = {
     {{{   -16,       0,     -16}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,       0,     -16}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    15,       0,      15}, 0, {1984, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -16,       0,      15}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005BD0[] = {
+Vtx D_0D005BD0[] = {
     {{{     0,      18,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    16,      -9,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -16,      -9,       0}, 0, {1984, 1984}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005C00[] = {
+Vtx D_0D005C00[] = {
     {{{     0,      18,       0}, 0, {0, 0}, {0x00, 0x00, 0x78, 0xff}}},
     {{{    16,      -9,       0}, 0, {1984, 0}, {0x00, 0x00, 0x78, 0xff}}},
     {{{   -16,      -9,       0}, 0, {1984, 1984}, {0x00, 0x00, 0x78, 0xff}}},
 };
 
-static Vtx D_0D005C30[] = {
+Vtx D_0D005C30[] = {
     {{{     0,      18,       0}, 0, {0, 0}, {0xd5, 0x2c, 0x66, 0xff}}},
     {{{    16,      -9,       0}, 0, {1984, 0}, {0x66, 0xd3, 0x2b, 0xff}}},
     {{{   -16,      -9,       0}, 0, {1984, 1984}, {0x2a, 0x99, 0xd6, 0xff}}},
@@ -942,7 +942,7 @@ static Vtx D_0D005C30[] = {
     {{{   -24,       0,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005EB0[] = {
+Vtx D_0D005EB0[] = {
     {{{    23,       0,       0}, 0, {3008, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    23,      23,       0}, 0, {3008, 1472}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -24,      23,       0}, 0, {0, 1472}, {0xff, 0xff, 0xff, 0xff}}},
@@ -953,7 +953,7 @@ static Vtx D_0D005EB0[] = {
     {{{   -28,       0,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
     
-static Vtx D_0D005F30[] = {
+Vtx D_0D005F30[] = {
     {{{    27,       0,       0}, 0, {3520, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    27,      35,       0}, 0, {3520, 2240}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -28,      35,       0}, 0, {0, 2240}, {0xff, 0xff, 0xff, 0xff}}},
@@ -964,21 +964,21 @@ static Vtx D_0D005F30[] = {
     {{{   -10,       0,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005FB0[] = {
+Vtx D_0D005FB0[] = {
     {{{    45,       0,       0}, 0, {3520, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    45,      35,       0}, 0, {3520, 2240}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -10,      35,       0}, 0, {0, 2240}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,     -16,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D005FF0[] = {
+Vtx D_0D005FF0[] = {
     {{{    31,     -16,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,      15,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      15,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -53,     -16,       0}, 0, {0, 0}, {0xff, 0x00, 0x00, 0xff}}},
 };
 
-static Vtx D_0D006030[] = {
+Vtx D_0D006030[] = {
     {{{    10,     -16,       0}, 0, {4032, 0}, {0xff, 0x00, 0x00, 0xff}}},
     {{{    10,      15,       0}, 0, {4032, 1984}, {0xff, 0x00, 0x00, 0xff}}},
     {{{   -53,      15,       0}, 0, {0, 1984}, {0xff, 0x00, 0x00, 0xff}}},
@@ -989,7 +989,7 @@ static Vtx D_0D006030[] = {
     {{{   -32,     -32,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0xff}}},
 };
 
-static Vtx D_0D0060B0[] = {  
+Vtx D_0D0060B0[] = {  
     {{{    31,     -32,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0xff}}},
     {{{    31,      31,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0xff}}},
     {{{   -32,      31,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0xff}}},
@@ -1001,7 +1001,7 @@ static Vtx D_0D0060B0[] = {
 };
     
 
-static Vtx D_0D006130[] = {  
+Vtx D_0D006130[] = {  
     {{{    31,       0,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,      31,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      31,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1012,7 +1012,7 @@ static Vtx D_0D006130[] = {
     {{{   -32,       0,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D0061B0[] = {  
+Vtx D_0D0061B0[] = {  
     {{{    31,       0,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,      31,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      31,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1031,7 +1031,7 @@ static Vtx D_0D0061B0[] = {
     {{{   -32,       0,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D0062B0[] = {  
+Vtx D_0D0062B0[] = {  
     {{{    31,       0,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,      31,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      31,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1066,7 +1066,7 @@ static Vtx D_0D0062B0[] = {
     {{{   -32,      15,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D0064B0[] = {
+Vtx D_0D0064B0[] = {
     {{{    31,      15,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,      47,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      47,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1109,7 +1109,7 @@ static Vtx D_0D0064B0[] = {
     {{{   -36,       0,       0}, 0, {0, 32}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D006730[] = {
+Vtx D_0D006730[] = {
     {{{    35,       0,       0}, 0, {4544, 32}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    35,      23,       0}, 0, {4544, 1504}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -36,      23,       0}, 0, {0, 1504}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1140,7 +1140,7 @@ static Vtx D_0D006730[] = {
     {{{   -56,     -16,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0xff}}},
 };
 
-static Vtx D_0D0068F0[] = {
+Vtx D_0D0068F0[] = {
     {{{    55,     -16,       0}, 0, {7104, 0}, {0x00, 0x00, 0x00, 0xff}}},
     {{{    55,      15,       0}, 0, {7104, 1984}, {0x00, 0x00, 0x00, 0xff}}},
     {{{   -56,      15,       0}, 0, {0, 1984}, {0x00, 0x00, 0x00, 0xff}}},
@@ -1234,20 +1234,20 @@ Gfx D_0D006A40[] = {
 
 // Texture Block shadow i4
 s8 D_0D006A58[] = {
-    #include "textures/132B50_06A58.i4.inc.c"
+    #include "textures/common/132B50_06A58.i4.inc.c"
 };
 
 s8 D_0D006AD8[] = {
-    #include "textures/132B50_06AD8.ia8.inc.c"
+    #include "textures/common/132B50_06AD8.ia8.inc.c"
 };
 
 // tlut
 s8 D_0D006ED8[] = {
-    #include "textures/132B50_06ED8_tlut.rgba16.inc.c"
+    #include "textures/common/tlut/132B50_06EF8.rgba16.ci4.tlut.inc.c"
 };
 
 s8 D_0D006EF8[] = {
-    #include "textures/132B50_06EF8.rgba16.ci4.inc.c"
+    #include "textures/common/tlut/132B50_06EF8.rgba16.ci4.inc.c"
 };
 
 // 0x76F8
@@ -1723,7 +1723,7 @@ Gfx D_0D008080[] = {
     gsDPSetTextureLUT(G_TT_RGBA16),
     gsDPLoadTLUT_pal16(0, D_0D006ED8),
     gsDPLoadSync(),
-    gsDPLoadTextureBlock_4b(&D_0D006ED8[0x20], G_IM_FMT_CI, 128, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock_4b(D_0D006EF8, G_IM_FMT_CI, 128, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSPEndDisplayList(),
 };
 
@@ -1747,15 +1747,15 @@ Gfx D_0D008138[] = {
 
 // 0x8150 unk data prob texture
 s8 D_0D008150[] = {
-    #include "textures/132B50_08150.ia8.inc.c"
+    #include "textures/common/132B50_08150.ia8.inc.c"
 };
 
 s8 D_0D008470[] = {
-    #include "textures/132B50_08470.ia8.inc.c"
+    #include "textures/common/132B50_08470.ia8.inc.c"
 };
 
 s8 D_0D008790[] = {
-    #include "textures/132B50_08790.ia8.inc.c"
+    #include "textures/common/132B50_08790.ia8.inc.c"
 };
 // D_0D008858 part of 08790
 
@@ -1764,28 +1764,28 @@ s8 D_0D008790[] = {
 // D_0D008B14 part of 08790
 
 
-static Vtx D_0D008B78[] = {
+Vtx D_0D008B78[] = {
     {{{     2,       2,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     2,      -2,       0}, 0, {0, 960}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -2,      -2,       0}, 0, {960, 960}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -2,       2,       0}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D008BB8[] = {
+Vtx D_0D008BB8[] = {
     {{{     2,       4,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     2,       0,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -2,       0,       0}, 0, {1984, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -2,       4,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D008BF8[] = {
+Vtx D_0D008BF8[] = {
     {{{     2,       2,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     2,      -2,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -2,      -2,       0}, 0, {1984, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -2,       2,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-static Vtx D_0D008C38[] = {
+Vtx D_0D008C38[] = {
     {{{     2,       2,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     2,      -2,       0}, 0, {1984, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -2,      -2,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1893,14 +1893,14 @@ Gfx D_0D008E70[] = {
     gsSPEndDisplayList(),
 };
 
-static Mtx D_0D008E98 = {
+Mtx D_0D008E98 = {
     {{65536,       0, 1, 0},
      {    0,   65536, 0, 1},
      {    0,       0, 0, 0},
      {    0,       0, 0, 0}},
 };
 
-static Vtx D_0D008EA8[] = {
+Vtx D_0D008EA8[] = {
 
     // I think these 4 Vtx's are really the rows of a Mtx (D_0D008E98), based on the usage of D_0D008E98 throughout the code base
     // {{{     1,       0,       0}, 0, {0, 1}, {0x00, 0x00, 0x00, 0x00}}},
@@ -2017,126 +2017,6 @@ static Vtx D_0D008EA8[] = {
 
 };
 
-/* C:\Users\MegaMech\decomp\actors\mk64\bin\common_textures.bin (2022-04-12 1:00:51 PM)
-   StartOffset(h): 00009418, EndOffset(h): 00009957, Length(h): 00000540 */
-// unk data. Maybe texture?
-/*
-u8 rawData[1344] = {
-	0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55,
-	0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
-	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55,
-	0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00,
-	0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55,
-	0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
-	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55,
-	0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00,
-	0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55,
-	0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
-	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55,
-	0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00,
-	0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55,
-	0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
-	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55,
-	0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00,
-	0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55,
-	0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
-	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55,
-	0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00,
-	0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55,
-	0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
-	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55,
-	0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00,
-	0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB, 0x40, 0xC5, 0x55, 0x55,
-	0x40, 0xD8, 0x00, 0x00, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
-	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
-	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
-	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
-	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
-	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0x92, 0xAA, 0xAB,
-	0x40, 0x92, 0xAA, 0xAB, 0x40, 0x92, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
-	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
-	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
-	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
-	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
-	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x85, 0x55, 0x55, 0x40, 0xB2, 0xAA, 0xAB,
-	0x40, 0xC5, 0x55, 0x55, 0x40, 0xD8, 0x00, 0x00, 0x40, 0x70, 0x00, 0x00,
-	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
-	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
-	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
-	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
-	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
-	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
-	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
-	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
-	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x00, 0x00, 0x00, 0x00,
-	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-	0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00,
-	0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB,
-	0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55,
-	0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB,
-	0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00,
-	0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55, 0x40, 0x55, 0x55, 0x55,
-	0x40, 0x55, 0x55, 0x55, 0x40, 0x55, 0x55, 0x55, 0x40, 0x55, 0x55, 0x55,
-	0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB,
-	0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00,
-	0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB,
-	0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55,
-	0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB,
-	0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00,
-	0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB,
-	0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55,
-	0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB,
-	0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00,
-	0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB,
-	0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55,
-	0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB,
-	0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00,
-	0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB,
-	0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55,
-	0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB,
-	0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB, 0x40, 0x90, 0x00, 0x00,
-	0x40, 0xA2, 0xAA, 0xAB, 0x40, 0x55, 0x55, 0x55, 0x40, 0x7A, 0xAA, 0xAB,
-	0x40, 0x90, 0x00, 0x00, 0x40, 0xA2, 0xAA, 0xAB, 0x00, 0x00, 0x00, 0x00,
-	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
-	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
-	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
-	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
-	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x3A, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0x70, 0x00, 0x00, 0x40, 0x70, 0x00, 0x00,
-	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
-	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
-	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
-	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
-	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
-	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
-	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
-	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
-	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
-	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
-	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
-	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00,
-	0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB,
-	0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55, 0x40, 0xB8, 0x00, 0x00,
-	0x40, 0xCA, 0xAA, 0xAB, 0x40, 0x70, 0x00, 0x00, 0x40, 0xA5, 0x55, 0x55,
-	0x40, 0xB8, 0x00, 0x00, 0x40, 0xCA, 0xAA, 0xAB, 0x00, 0x00, 0x00, 0x00,
-	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-};
-*/
-
 // unknown float data
 f32 D_0D009418[] = {
     4.1666665f, 5.5833334f, 6.1666665f, 6.75f,
@@ -2238,488 +2118,424 @@ s32 unkPad = 0;
 
 // Odometer speedometer
 s8 D_0D009958[] = {
-    #include "textures/132B50_09958.i4.inc.c"
+    #include "textures/common/132B50_09958.i4.inc.c"
 };
 
 // i8? odometer needle
 s8 D_0D00A558[] = {
-    #include "textures/132B50_0A558.i4.inc.c"
+    #include "textures/common/132B50_0A558.i4.inc.c"
 };
 
 // Lap UI Texture
 s8 D_0D00A958[] = {
-    #include "textures/132B50_0A958.rgba16.inc.c"
+    #include "textures/common/132B50_0A958.rgba16.inc.c"
 };
 
 // 123/
 s8 D_0D00AB58[] = {
-    #include "textures/132B50_0AB58.rgba16.inc.c"
+    #include "textures/common/132B50_0AB58.rgba16.inc.c"
 };
 
 // Lap
 s8 D_0D00AD58[] = {
-    #include "textures/132B50_0AD58.rgba16.inc.c"
+    #include "textures/common/132B50_0AD58.rgba16.inc.c"
 };
 
 // 1/3
 s8 D_0D00B158[] = {
-    #include "textures/132B50_0B158.rgba16.inc.c"
+    #include "textures/common/132B50_0B158.rgba16.inc.c"
 };
 
 // 2/3
 s8 D_0D00B558[] = {
-    #include "textures/132B50_0B558.rgba16.inc.c"
+    #include "textures/common/132B50_0B558.rgba16.inc.c"
 };
 
 // 3/3
 s8 D_0D00B958[] = {
-    #include "textures/132B50_0B958.rgba16.inc.c"
+    #include "textures/common/132B50_0B958.rgba16.inc.c"
 };
 
 // total
 s8 D_0D00BD58[] = {
-    #include "textures/132B50_0BD58.rgba16.inc.c"
+    #include "textures/common/132B50_0BD58.rgba16.inc.c"
 };
 
 // time
 s8 D_0D00C158[] = {
-    #include "textures/132B50_0C158.rgba16.inc.c"
+    #include "textures/common/132B50_0C158.rgba16.inc.c"
 };
 
 // 0123456789'"!
 s8 D_0D00C558[] = {
-    #include "textures/132B50_0C558.rgba16.inc.c"
+    #include "textures/common/132B50_0C558.rgba16.inc.c"
 };
 
 // first place
 s8 D_0D00D258[] = {
-    #include "textures/132B50_0D258.i4.inc.c"
+    #include "textures/common/132B50_0D258.i4.inc.c"
 };
 
 // second place
 s8 D_0D00E258[] = {
-    #include "textures/132B50_0E258.i4.inc.c"
+    #include "textures/common/132B50_0E258.i4.inc.c"
 };
 
 // third place
 s8 D_0D00F258[] = {
-    #include "textures/132B50_0F258.i4.inc.c"
+    #include "textures/common/132B50_0F258.i4.inc.c"
 };
 
 // fourth place
 s8 D_0D010258[] = {
-    #include "textures/132B50_10258.i4.inc.c"
+    #include "textures/common/132B50_10258.i4.inc.c"
 };
 
 // fifth place
 s8 D_0D011258[] = {
-    #include "textures/132B50_11258.i4.inc.c"
+    #include "textures/common/132B50_11258.i4.inc.c"
 };
 
 // sixth place
 s8 D_0D012258[] = {
-    #include "textures/132B50_12258.i4.inc.c"
+    #include "textures/common/132B50_12258.i4.inc.c"
 };
 
 // seventh place
 s8 D_0D013258[] = {
-    #include "textures/132B50_13258.i4.inc.c"
+    #include "textures/common/132B50_13258.i4.inc.c"
 };
 
 // eighth place
 s8 D_0D014258[] = {
-    #include "textures/132B50_14258.i4.inc.c"
+    #include "textures/common/132B50_14258.i4.inc.c"
 };
 
 // First
 s8 D_0D015258[] = {
-    #include "textures/132B50_15258.i4.inc.c"
+    #include "textures/common/132B50_15258.i4.inc.c"
 };
 
 // Second
 s8 D_0D015A58[] = {
-    #include "textures/132B50_15A58.i4.inc.c"
+    #include "textures/common/132B50_15A58.i4.inc.c"
 };
 
 // Third
 s8 D_0D016258[] = {
-    #include "textures/132B50_16258.i4.inc.c"
+    #include "textures/common/132B50_16258.i4.inc.c"
 };
 
 // Fourth
 s8 D_0D016A58[] = {
-    #include "textures/132B50_16A58.i4.inc.c"
+    #include "textures/common/132B50_16A58.i4.inc.c"
 };
 
-// 17258 tlut
-s8 D_0D017258[] = {
-    #include "textures/132B50_17258_tlut.rgba16.inc.c"
+// tlut for 1p, 2p, 3p, 4p
+u8 D_0D017258[] = {
+    #include "textures/common/tlut/132B50_17458.rgba16.ci8.tlut.inc.c"
 };
 
-s16 tlutPad[] = {0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, 0x7FE, };
-
-// 1p 2p 3p 4p (includes 4 textures)
-// Required to match tlut
-s8 D_0D017458[] = {
-    #include "textures/132B50_17458_combined_data.inc.c"
+// 1p, 2p, 3p, 4p
+u8 D_0D017458[] = {
+    #include "textures/common/tlut/132B50_17458.rgba16.ci8.inc.c"
 };
 
-//s8 D_0D017C58[] = {
-//    #include "textures/132B50_17C58.rgba16.ci8.inc.c"
-//};
+// font tlut for 12345678
+s8 D_0D019458[] = {
+   #include "textures/common/tlut/132B50_19658.rgba16.ci8.tlut.inc.c"
+};
+ 
+// font 12345678
+s8 D_0D019658[] = {
+    #include "textures/common/tlut/132B50_19658.rgba16.ci8.inc.c"
+};
 
-//s8 D_0D018458[] = {
-//    #include "textures/132B50_18458.rgba16.ci8.inc.c"
-//};
+// font tlut for 0123456789
+s8 D_0D019E58[] = {
+   #include "textures/common/tlut/132B50_1A058.rgba16.ci8.tlut.inc.c"
+};
 
-//s8 D_0D018C58[] = {
-//    #include "textures/132B50_18C58.rgba16.ci8.inc.c"
-//};
-
-// 19458 tlut
-//s8 D_0D019458[] = {
-//    #include "textures/132B50_19458_tlut.rgba16.inc.c"
-//};
-
-// 1 
-// s8 D_0D019658[] = {
-//     #include "textures/132B50_19658.rgba16.ci8.inc.c"
-// };
-
-// // 2
-// s8 D_0D019758[] = {
-//     #include "textures/132B50_19758.rgba16.ci8.inc.c"
-// };
-
-// // 3
-// s8 D_0D019858[] = {
-//     #include "textures/132B50_19858.rgba16.ci8.inc.c"
-// };
-
-// // 4
-// s8 D_0D019958[] = {
-//     #include "textures/132B50_19958.rgba16.ci8.inc.c"
-// };
-
-// // 5
-// s8 D_0D019A58[] = {
-//     #include "textures/132B50_19A58.rgba16.ci8.inc.c"
-// };
-
-// // 6
-// s8 D_0D019B58[] = {
-//     #include "textures/132B50_19B58.rgba16.ci8.inc.c"
-// };
-
-// // 7
-// s8 D_0D019C58[] = {
-//     #include "textures/132B50_19C58.rgba16.ci8.inc.c"
-// };
-
-// // 8
-// s8 D_0D019D58[] = {
-//     #include "textures/132B50_19D58.rgba16.ci8.inc.c"
-// };
-
-// // 0
-// s8 D_0D01A058[] = {
-//     #include "textures/132B50_1A058.rgba16.ci8.inc.c"
-// };
-
-// // 1
-// s8 D_0D01A098[] = {
-//     #include "textures/132B50_1A098.rgba16.ci8.inc.c"
-// };
-
-// // 2
-// s8 D_0D01A0D8[] = {
-//     #include "textures/132B50_1A0D8.rgba16.ci8.inc.c"
-// };
-
-// // 3
-// s8 D_0D01A118[] = {
-//     #include "textures/132B50_1A118.rgba16.ci8.inc.c"
-// };
-
-// // 4
-// s8 D_0D01A158[] = {
-//     #include "textures/132B50_1A158.rgba16.ci8.inc.c"
-// };
-
-// // 5
-// s8 D_0D01A198[] = {
-//     #include "textures/132B50_1A198.rgba16.ci8.inc.c"
-// };
-
-// // 6
-// s8 D_0D01A1D8[] = {
-//     #include "textures/132B50_1A1D8.rgba16.ci8.inc.c"
-// };
-
-// // 7
-// s8 D_0D01A218[] = {
-//     #include "textures/132B50_1A218.rgba16.ci8.inc.c"
-// };
-
-// // 8
-// s8 D_0D01A258[] = {
-//     #include "textures/132B50_1A258.rgba16.ci8.inc.c"
-// };
-
-// // 9
-// s8 D_0D01A298[] = {
-//     #include "textures/132B50_1A298.rgba16.ci8.inc.c"
-// };
+// 0123456789
+s8 D_0D01A058[] = {
+    #include "textures/common/tlut/132B50_1A058.rgba16.ci8.inc.c"
+};
 
 // some padding or file split?
 
 // Square
 s8 D_0D01A2D8[] = {
-    #include "textures/132B50_1A2D8.ia4.inc.c"
+    #include "textures/common/132B50_1A2D8.ia4.inc.c"
 };
-
 
 // 1A4D8 mario tlut
 s8 gTLUTPortraitMario[] = {
-    #include "textures/gTLUTPortraitMario.rgba16.inc.c"
+    #include "textures/common/tlut/gTexturePortraitMario.rgba16.ci8.tlut.inc.c"
 };
 
 // 1A6D8 luigi tlut
 s8 gTLUTPortraitLuigi[] = {
-    #include "textures/gTLUTPortraitLuigi.rgba16.inc.c"
+    #include "textures/common/tlut/gTexturePortraitLuigi.rgba16.ci8.tlut.inc.c"
 };
 
 // 1A8D8 peach tlut
 s8 gTLUTPortraitPeach[] = {
-    #include "textures/gTLUTPortraitPeach.rgba16.inc.c"
+    #include "textures/common/tlut/gTexturePortraitPeach.rgba16.ci8.tlut.inc.c"
 };
 
 // 1AAD8 toad tlut
 s8 gTLUTPortraitToad[] = {
-    #include "textures/gTLUTPortraitToad.rgba16.inc.c"
+    #include "textures/common/tlut/gTexturePortraitToad.rgba16.ci8.tlut.inc.c"
 };
 
 // 1ACD8 yoshi tlut
 s8 gTLUTPortraitYoshi[] = {
-    #include "textures/gTLUTPortraitYoshi.rgba16.inc.c"
+    #include "textures/common/tlut/gTexturePortraitYoshi.rgba16.ci8.tlut.inc.c"
 };
 
 // 1AED8 dk tlut
 s8 gTLUTPortraitDonkeyKong[] = {
-    #include "textures/gTLUTPortraitDonkeyKong.rgba16.inc.c"
+    #include "textures/common/tlut/gTexturePortraitDonkeyKong.rgba16.ci8.tlut.inc.c"
 };
 
 // 1B0D8 wario tlut
 s8 gTLUTPortraitWario[] = {
-    #include "textures/gTLUTPortraitWario.rgba16.inc.c"
+    #include "textures/common/tlut/gTexturePortraitWario.rgba16.ci8.tlut.inc.c"
 };
 
 // 1B2D8 bowser tlut
 s8 gTLUTPortraitBowser[] = {
-    #include "textures/gTLUTPortraitBowser.rgba16.inc.c"
+    #include "textures/common/tlut/gTexturePortraitBowser.rgba16.ci8.tlut.inc.c"
 };
 
 // 1B4D8 bob-omb tlut and question mark?
-s8 gTLUTPortraitMiniBombKart[] = {
-    #include "textures/132B50_1B4D8_tlut.rgba16.inc.c"
+s8 gTLUTPortraitBombKartAndQuestionMark[] = {
+    #include "textures/common/tlut/gTexturePortraitBombKartAndQuestionMark.rgba16.ci8.tlut.inc.c"
 };
 
 
 // Mario
 s8 gTexturePortraitMario[] = {
-    #include "textures/gTexturePortraitMario.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTexturePortraitMario.rgba16.ci8.inc.c"
 };
 
 // Luigi
 s8 gTexturePortraitLuigi[] = {
-    #include "textures/gTexturePortraitLuigi.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTexturePortraitLuigi.rgba16.ci8.inc.c"
 };
 
 // Peach
 s8 gTexturePortraitPeach[] = {
-    #include "textures/gTexturePortraitPeach.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTexturePortraitPeach.rgba16.ci8.inc.c"
 };
 
 // Toad
 s8 gTexturePortraitToad[] = {
-    #include "textures/gTexturePortraitToad.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTexturePortraitToad.rgba16.ci8.inc.c"
 };
 
 // Yoshi
 s8 gTexturePortraitYoshi[] = {
-    #include "textures/gTexturePortraitYoshi.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTexturePortraitYoshi.rgba16.ci8.inc.c"
 };
 
 // Donkey Kong
 s8 gTexturePortraitDonkeyKong[] = {
-    #include "textures/gTexturePortraitDonkeyKong.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTexturePortraitDonkeyKong.rgba16.ci8.inc.c"
 };
 
 // Wario
 s8 gTexturePortraitWario[] = {
-    #include "textures/gTexturePortraitWario.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTexturePortraitWario.rgba16.ci8.inc.c"
 };
 
 // Bowser
 s8 gTexturePortraitBowser[] = {
-    #include "textures/gTexturePortraitBowser.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTexturePortraitBowser.rgba16.ci8.inc.c"
 };
 
-// The Mini Bomb Kart and Question Mark portrait textures are
-// part of a single PNG file and use the same TLUT, which makes
-// including the image(s) as a C array kind of awkward
-s8 gTexturePortraitMiniBombKart[][1024] = {
-    #include "textures/132B50_1D6D8.rgba16.ci8.inc.c"
+// Mini Bomb Kart & Question Mark
+s8 gTexturePortraitBombKartAndQuestionMark[] = {
+    #include "textures/common/tlut/gTexturePortraitBombKartAndQuestionMark.rgba16.ci8.inc.c"
 };
-
-// Question Mark
-// s8 gTexturePortraitQuestionMark[] = {
-//     #include "textures/132B50_1DAD8.rgba16.ci8.inc.c"
-// };
 
 // 1DED8 tlut item frames
 s8 gTLUTItemWindowNone[] = {
-    #include "textures/gTLUTItemWindowNone.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowNone.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowBanana[] = {
-    #include "textures/gTLUTItemWindowBanana.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowBanana.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowBananaBunch[] = {
-    #include "textures/gTLUTItemWindowBananaBunch.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowBananaBunch.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowMushroom[] = {
-    #include "textures/gTLUTItemWindowMushroom.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowMushroom.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowDoubleMushroom[] = {
-    #include "textures/gTLUTItemWindowDoubleMushroom.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowDoubleMushroom.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowTripleMushroom[] = {
-    #include "textures/gTLUTItemWindowTripleMushroom.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowTripleMushroom.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowSuperMushroom[] = {
-    #include "textures/gTLUTItemWindowSuperMushroom.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowSuperMushroom.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowBlueShell[] = {
-    #include "textures/gTLUTItemWindowBlueShell.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowBlueShell.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowBoo[] = {
-    #include "textures/gTLUTItemWindowBoo.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowBoo.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowGreenShell[] = {
-    #include "textures/gTLUTItemWindowGreenShell.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowGreenShell.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowTripleGreenShell[] = {
-    #include "textures/gTLUTItemWindowTripleGreenShell.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowTripleGreenShell.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowRedShell[] = {
-    #include "textures/gTLUTItemWindowRedShell.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowRedShell.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowTripleRedShell[] = {
-    #include "textures/gTLUTItemWindowTripleRedShell.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowTripleRedShell.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowStar[] = {
-    #include "textures/gTLUTItemWindowStar.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowStar.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowThunderBolt[] = {
-    #include "textures/gTLUTItemWindowThunderBolt.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowThunderBolt.rgba16.ci8.tlut.inc.c"
 };
 
 s8 gTLUTItemWindowFakeItemBox[] = {
-    #include "textures/gTLUTItemWindowFakeItemBox.rgba16.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowFakeItemBox.rgba16.ci8.tlut.inc.c"
 };
 
 // UI Item Frames
 s8 gTextureItemWindowNone[] = {
-    #include "textures/gTextureItemWindowNone.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowNone.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowBanana[] = {
-    #include "textures/gTextureItemWindowBanana.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowBanana.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowBananaBunch[] = {
-    #include "textures/gTextureItemWindowBananaBunch.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowBananaBunch.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowMushroom[] = {
-    #include "textures/gTextureItemWindowMushroom.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowMushroom.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowDoubleMushroom[] = {
-    #include "textures/gTextureItemWindowDoubleMushroom.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowDoubleMushroom.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowTripleMushroom[] = {
-    #include "textures/gTextureItemWindowTripleMushroom.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowTripleMushroom.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowSuperMushroom[] = {
-    #include "textures/gTextureItemWindowSuperMushroom.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowSuperMushroom.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowBlueShell[] = {
-    #include "textures/gTextureItemWindowBlueShell.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowBlueShell.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowBoo[] = {
-    #include "textures/gTextureItemWindowBoo.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowBoo.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowGreenShell[] = {
-    #include "textures/gTextureItemWindowGreenShell.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowGreenShell.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowTripleGreenShell[] = {
-    #include "textures/gTextureItemWindowTripleGreenShell.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowTripleGreenShell.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowRedShell[] = {
-    #include "textures/gTextureItemWindowRedShell.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowRedShell.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowTripleRedShell[] = {
-    #include "textures/gTextureItemWindowTripleRedShell.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowTripleRedShell.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowStar[] = {
-    #include "textures/gTextureItemWindowStar.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowStar.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowThunderBolt[] = {
-    #include "textures/gTextureItemWindowThunderBolt.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowThunderBolt.rgba16.ci8.inc.c"
 };
 
 s8 gTextureItemWindowFakeItemBox[] = {
-    #include "textures/gTextureItemWindowFakeItemBox.rgba16.ci8.inc.c"
+    #include "textures/common/tlut/gTextureItemWindowFakeItemBox.rgba16.ci8.inc.c"
 };
 
-// Unk data. Perhaps not an img nor tlut.
-s8 D_0D024ED8[] = {
-    #include "textures/132B50_24ED8_tlut.rgba16.inc.c"
+s8 gTLUTLakituCountdown[][512] = {
+    {
+        #include "textures/common/gTLUTLakituNoLights.rgba16.inc.c"
+    },
+    {
+        #include "textures/common/gTLUTLakituRedLights.rgba16.inc.c"
+    },
+    {
+        #include "textures/common/gTLUTLakituBlueLight.rgba16.inc.c"
+    }
 };
 
-// traffic light tlut
-s8 D_0D025ED8[] = {
+/**
+ * todo: Generate tlut based on the actual texture.
+ * The textures these tluts are for are not in common_textures.inc.c
+ * This applies to gTLUTLakituCheckeredFlag, gTLUTLakituSecondLap,
+ * gTLUTLakituFinalLap, gTLUTLakituReverse, gTLUTLakituFishing
+ * Appears to be animation textures.
+*/
+
+s8 gTLUTLakituCheckeredFlag[] = {
+    #include "textures/common/gTLUTLakituCheckeredFlag.rgba16.inc.c"
+};
+
+s8 gTLUTLakituSecondLap[] = {
+    #include "textures/common/gTLUTLakituSecondLap.rgba16.inc.c"
+};
+
+s8 gTLUTLakituFinalLap[] = {
+    #include "textures/common/gTLUTLakituFinalLap.rgba16.inc.c"
+};
+
+s8 gTLUTLakituReverse[] = {
+    #include "textures/common/gTLUTLakituReverse.rgba16.inc.c"
+};
+
+s8 gTLUTLakituFishing[] = {
+    #include "textures/common/gTLUTLakituFishing.rgba16.inc.c"
+};
+
+// unused traffic light tlut
+UNUSED s8 D_0D025ED8[] = {
     #include "textures/132B50_25ED8_tlut.rgba16.inc.c"
 };
 
-
 // unused traffic light textures
-
+ 
 UNUSED s8 D_0D0260D8[] = {
     #include "textures/132B50_260D8.rgba16.ci8.inc.c"
 };
@@ -2762,123 +2578,104 @@ UNUSED s8 D_0D028958[] = {
 
 // leaf
 s8 D_0D028DD8[] = {
-    #include "textures/132B50_28DD8.rgba16.inc.c"
+    #include "textures/common/132B50_28DD8.rgba16.inc.c"
 };
 
 // leaf
 s8 D_0D0291D8[] = {
-    #include "textures/132B50_291D8.rgba16.inc.c"
+    #include "textures/common/132B50_291D8.rgba16.inc.c"
 };
 
 
-// Some sort of smoke or effect
-// NON_MATCHING
-// @bug probably requires being extracted as i4 for mobility
-// Needs rgba16 to match
+// Cloud smoke or fog?
 s8 D_0D0293D8[] = {
-    #include "textures/132B50_293D8.i4.inc.c"
+    #include "textures/common/132B50_293D8.i4.inc.c"
 };
 
-// Some sort of smoke or effect
-// NON_MATCHING
-// @bug probably requires being extracted as i8 for mobility
-// Needs rgba16 to match
-// bin for now cause refuses to match
+// Smoke?
 s8 D_0D029458[] = {
-    #include "textures/132B50_29458.i8.inc.c"
+    #include "textures/common/132B50_29458.i8.inc.c"
 };
 
-// 2A858 tlut
+// Uses 2A858 as tlut
 s8 D_0D029858[] = {
-    #include "textures/132B50_29858.rgba16.ci8.inc.c"
+    #include "textures/common/tlut2/132B50_29858.rgba16.ci8.inc.c"
 };
 
-s8 D_0D029C58[] = {
-    #include "textures/132B50_29C58.rgba16.ci8.inc.c"
-};
-
-s8 D_0D02A058[] = {
-    #include "textures/132B50_2A058.rgba16.ci8.inc.c"
-};
-
-s8 D_0D02A458[] = {
-    #include "textures/132B50_2A458.rgba16.ci8.inc.c"
-};
-
-// tlut
+// Special tlut that uses 0xFFFF as a transparent tail instead of 0x0 or 0x07FE.
+// tlut for 29858
 s8 D_0D02A858[] = {
-    #include "textures/132B50_2A858_tlut.rgba16.inc.c"
+    #include "textures/common/tlut2/132B50_29858.rgba16.ci8.tlut.inc.c"
 };
-
 
 s8 D_0D02AA58[] = {
-    #include "textures/132B50_2AA58.rgba16.inc.c"
+    #include "textures/common/132B50_2AA58.rgba16.inc.c"
 };
 
 s8 D_0D02AC58[] = {
-    #include "textures/132B50_2AC58.i8.inc.c"
+    #include "textures/common/132B50_2AC58.i8.inc.c"
 };
 
 s8 D_0D02B058[] = {
-    #include "textures/132B50_2B058.i8.inc.c"
+    #include "textures/common/132B50_2B058.i8.inc.c"
 };
 
 s8 D_0D02B458[] = {
-    #include "textures/132B50_2B458.i8.inc.c"
+    #include "textures/common/132B50_2B458.i8.inc.c"
 };
 
 s8 D_0D02B858[] = {
-    #include "textures/132B50_2B858.i8.inc.c"
+    #include "textures/common/132B50_2B858.i8.inc.c"
 };
 
 s8 D_0D02BC58[] = {
-    #include "textures/132B50_2BC58.i8.inc.c"
+    #include "textures/common/132B50_2BC58.i8.inc.c"
 };
 
 s8 D_0D02C058[] = {
-    #include "textures/132B50_2C058.i8.inc.c"
+    #include "textures/common/132B50_2C058.i8.inc.c"
 };
 
 s8 D_0D02C458[] = {
-    #include "textures/132B50_2C458.i8.inc.c"
+    #include "textures/common/132B50_2C458.i8.inc.c"
 };
 
 s8 D_0D02C858[] = {
-    #include "textures/132B50_2C858.i8.inc.c"
+    #include "textures/common/132B50_2C858.i8.inc.c"
 };
 
 // minimap cars
 s8 gTextureMiniMapFinishLine[] = {
-    #include "textures/132B50_2CC58.rgba16.inc.c"
+    #include "textures/common/gTextureMiniMapFinishLine.rgba16.inc.c"
 };
 
 s8 gMiniMapKartTextures[][128] = {
     { // Mario
-        #include "textures/132B50_2CCD8.rgba16.inc.c"
+        #include "textures/common/gTextureMiniMapKartMario.rgba16.inc.c"
     },
     { // Luigi
-        #include "textures/132B50_2CD58.rgba16.inc.c"
+        #include "textures/common/gTextureMiniMapKartLuigi.rgba16.inc.c"
     },
     { // Yoshi
-        #include "textures/132B50_2CDD8.rgba16.inc.c"
+        #include "textures/common/gTextureMiniMapKartYoshi.rgba16.inc.c"
     },
     { // Toad
-        #include "textures/132B50_2CE58.rgba16.inc.c"
+        #include "textures/common/gTextureMiniMapKartToad.rgba16.inc.c"
     },
     { // Donkey Kong
-        #include "textures/132B50_2CED8.rgba16.inc.c"
+        #include "textures/common/gTextureMiniMapKartDonkeyKong.rgba16.inc.c"
     },
     { // Wario
-        #include "textures/132B50_2CF58.rgba16.inc.c"
+        #include "textures/common/gTextureMiniMapKartWario.rgba16.inc.c"
     },
     { // Peach
-        #include "textures/132B50_2CFD8.rgba16.inc.c"
+        #include "textures/common/gTextureMiniMapKartPeach.rgba16.inc.c"
     },
     { // Bowser
-        #include "textures/132B50_2D058.rgba16.inc.c"
+        #include "textures/common/gTextureMiniMapKartBowser.rgba16.inc.c"
     },
 };
 
 s8 gTextureMiniMapProgressDot[] = {
-        #include "textures/132B50_2D0D8.rgba16.inc.c"
+        #include "textures/common/gTextureMiniMapProgressDot.rgba16.inc.c"
 };

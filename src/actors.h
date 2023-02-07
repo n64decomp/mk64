@@ -321,9 +321,6 @@ extern Gfx D_0D0031E8[];
 extern Gfx D_0D004B48[];
 extern Gfx D_0D004BD8[];
 
-extern s8 D_0D004E38[];
-extern s8 D_0D004E68[];
-
 extern s8 D_0F04CBE0[];
 extern s8 D_0F04CE30[];
 extern s8 D_0F04D080[];

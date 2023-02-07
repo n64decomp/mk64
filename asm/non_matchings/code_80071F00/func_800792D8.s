@@ -8,12 +8,12 @@ glabel func_800792D8
 /* 079EF0 800792F0 3C018019 */  lui   $at, %hi(D_8018D168) # $at, 0x8019
 /* 079EF4 800792F4 AC20D168 */  sw    $zero, %lo(D_8018D168)($at)
 .L800792F8:
-/* 079EF8 800792F8 3C050D02 */  lui   $a1, %hi(D_0D024ED8) # $a1, 0xd02
+/* 079EF8 800792F8 3C050D02 */  lui   $a1, %hi(gTLUTLakituCountdown) # $a1, 0xd02
 /* 079EFC 800792FC 3C060F06 */  lui   $a2, %hi(D_0F05EB50) # $a2, 0xf06
 /* 079F00 80079300 240E0048 */  li    $t6, 72
 /* 079F04 80079304 AFAE0010 */  sw    $t6, 0x10($sp)
 /* 079F08 80079308 24C6EB50 */  addiu $a2, %lo(D_0F05EB50) # addiu $a2, $a2, -0x14b0
-/* 079F0C 8007930C 24A54ED8 */  addiu $a1, %lo(D_0D024ED8) # addiu $a1, $a1, 0x4ed8
+/* 079F0C 8007930C 24A54ED8 */  addiu $a1, %lo(gTLUTLakituCountdown) # addiu $a1, $a1, 0x4ed8
 /* 079F10 80079310 8FA40028 */  lw    $a0, 0x28($sp)
 /* 079F14 80079314 0C01CD11 */  jal   func_80073444
 /* 079F18 80079318 24070038 */   li    $a3, 56
