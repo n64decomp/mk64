@@ -479,7 +479,14 @@ SECTIONS
    END_SEG(data_825800)
 
    MIO0_SEG(course_mario_raceway_dl)
-   MIO0_SEG(course_choco_mountain_dl)
+
+   BEGIN_SEG(course_choco_mountain_dl_mio0, 0x0) \
+   { \
+      BUILD_DIR/courses/flower_cup/choco_mountain/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_choco_mountain_dl_mio0)
+
    MIO0_SEG(course_bowsers_castle_dl)
    MIO0_SEG(course_banshee_boardwalk_dl)
    MIO0_SEG(course_yoshi_valley_dl)
@@ -493,11 +500,35 @@ SECTIONS
    MIO0_SEG(course_sherbet_land_dl)
    MIO0_SEG(course_rainbow_road_dl)
    MIO0_SEG(course_wario_stadium_dl)
-   MIO0_SEG(course_block_fort_dl)
-   MIO0_SEG(course_skyscraper_dl)
-   MIO0_SEG(course_double_deck_dl)
+   BEGIN_SEG(course_block_fort_dl_mio0, 0x0) \
+   { \
+      BUILD_DIR/courses/battle/block_fort/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_block_fort_dl_mio0)
+
+   BEGIN_SEG(course_skyscraper_dl_mio0, 0x0) \
+   { \
+      BUILD_DIR/courses/battle/skyscraper/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_skyscraper_dl_mio0)
+
+   BEGIN_SEG(course_double_deck_dl_mio0, 0x0) \
+   { \
+      BUILD_DIR/courses/battle/double_deck/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_double_deck_dl_mio0)
+
+
    MIO0_SEG(course_dks_jungle_parkway_dl)
-   MIO0_SEG(course_big_donut_dl)
+   BEGIN_SEG(course_big_donut_dl_mio0, 0x0) \
+   { \
+      BUILD_DIR/courses/battle/big_donut/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_big_donut_dl_mio0)
 
    COURSE_OFFSETS_SEG(course_mario_raceway_offsets, 0x09000000)
    COURSE_OFFSETS_SEG(course_choco_mountain_offsets, 0x09000000)

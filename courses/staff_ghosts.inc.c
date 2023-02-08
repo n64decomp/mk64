@@ -9,15 +9,15 @@
 */
 
 StaffGhost d_mario_raceway_staff_ghost[] = {
-     #include "courses/flower_cup/mario_raceway/staff_ghost.inc.c"
+     #include "courses/flower_cup/mario_raceway/staff_ghost.incl.c"
 };
 
 StaffGhost d_luigi_raceway_staff_ghost[1046] = {
-     #include "courses/mushroom_cup/luigi_raceway/staff_ghost.inc.c"
+     #include "courses/mushroom_cup/luigi_raceway/staff_ghost.incl.c"
 };
 
 StaffGhost d_royal_raceway_staff_ghost[] = {
-     #include "courses/star_cup/royal_raceway/staff_ghost.inc.c"
+     #include "courses/star_cup/royal_raceway/staff_ghost.incl.c"
 };
 
 // Unknown data. Perhaps colour or lights

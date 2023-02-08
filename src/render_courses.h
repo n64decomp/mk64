@@ -74,7 +74,7 @@ extern s32 D_802B87BC;
 extern Gfx bowsers_castle_dls[];
 extern Gfx banshee_boardwalk_dls[];
 extern Gfx D_0600B278[];
-extern Gfx yoshi_valley_dls;
+extern Gfx yoshi_valley_dls[];
 extern u8 frappe_snowland_dls[];
 extern Gfx koopa_troopa_beach_dls[];
 extern Gfx royal_raceway_dls[];

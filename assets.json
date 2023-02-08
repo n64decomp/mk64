@@ -13503,8 +13503,8 @@
 "textures/825800_08A48.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x825800", "0x08A48"]}},
 "textures/8284D0_07068.rgba16.png": {"meta":{"dims":[32,64]}, "offsets": {"us":["0x8284D0", "0x07068"]}},
 "textures/8284D0_08068.rgba16.png": {"meta":{"dims":[32,64]}, "offsets": {"us":["0x8284D0", "0x08068"]}},
-"textures/82B620_05B38.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x82B620", "0x05B38"]}},
-"textures/82B620_06338.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x82B620", "0x06338"]}},
+"textures/courses/choco_mountain_wall.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x82B620", "0x05B38"]}},
+"textures/courses/choco_mountain_rock.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x82B620", "0x06338"]}},
 "textures/82DF40_06738.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x82DF40", "0x06738"]}},
 
 "textures/gTLUTWhomp.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x82DF40", "0x06F38"]}},

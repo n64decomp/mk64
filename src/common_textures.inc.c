@@ -4,6 +4,7 @@
 
 /**
  * @file Contains common course resources
+ * @segment 0x0D
  * textures, vertices, displaylists, etc.
  * A good example would be lakitu or shells as they exist in every course.
 */
@@ -2114,6 +2115,7 @@ f32 D_0D009808[] = {
     0.0f, 0.0f, 0.0f
 };
 
+// todo: file split?
 s32 unkPad = 0;
 
 // Odometer speedometer

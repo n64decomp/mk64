@@ -1126,7 +1126,7 @@ void render_bowsers_castle(struct UnkStruct_800DC5EC *arg0) {
     if (D_802B87BC > 255) {
         D_802B87BC = 0;
     }
-    load_surface_map(&bowsers_castle_dls, arg0);
+    load_surface_map(bowsers_castle_dls, arg0);
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
@@ -1160,7 +1160,7 @@ void render_banshee_boardwalk(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, 0x07004E60);
     gSPDisplayList(gDisplayListHead++, 0x070069B0);
 
-    load_surface_map(&banshee_boardwalk_dls, arg0);
+    load_surface_map(banshee_boardwalk_dls, arg0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
@@ -1190,7 +1190,7 @@ void render_yoshi_valley(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    load_surface_map(&yoshi_valley_dls, arg0);
+    load_surface_map(yoshi_valley_dls, arg0);
     gDPPipeSync(gDisplayListHead++);
 }
 
@@ -1208,7 +1208,7 @@ void render_frappe_snowland(struct UnkStruct_800DC5EC *arg0) {
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    load_surface_map(&frappe_snowland_dls, arg0);
+    load_surface_map(frappe_snowland_dls, arg0);
 }
 
 void render_koopa_troopa_beach(struct UnkStruct_800DC5EC *arg0) {
@@ -1226,7 +1226,7 @@ void render_koopa_troopa_beach(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gSPDisplayList(gDisplayListHead++, 0x07009688);
-    load_surface_map(&koopa_troopa_beach_dls, arg0);
+    load_surface_map(koopa_troopa_beach_dls, arg0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
@@ -1251,7 +1251,7 @@ void render_royal_raceway(struct UnkStruct_800DC5EC *arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gSPDisplayList(gDisplayListHead++, 0x0700A648);
 
-    load_surface_map(&royal_raceway_dls, arg0);
+    load_surface_map(royal_raceway_dls, arg0);
 
     gSPDisplayList(gDisplayListHead++, 0x070011A8);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
@@ -1341,7 +1341,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, 0x07005640);
     gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
 
-    load_surface_map(&moo_moo_farm_dls, arg0);
+    load_surface_map(moo_moo_farm_dls, arg0);
 
     if ((temp_s0 < 14) && (temp_s0 > 10)) {
         if ((temp_s1 == 2) || (temp_s1 == 3) || (temp_s1 == 1))
@@ -1404,7 +1404,7 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_PASS2);
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2);
 
-    load_surface_map(&toads_turnpike_dls, arg0);
+    load_surface_map(toads_turnpike_dls, arg0);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_PASS2);
@@ -1431,7 +1431,7 @@ void render_kalimari_desert(struct UnkStruct_800DC5EC *arg0) {
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    load_surface_map(&kalimari_desert_dls, arg0);
+    load_surface_map(kalimari_desert_dls, arg0);
     gSPDisplayList(gDisplayListHead++, 0x07001ED8);
     gSPDisplayList(gDisplayListHead++, 0x07001B18);
     gSPDisplayList(gDisplayListHead++, 0x07008330);
@@ -1450,7 +1450,7 @@ void render_sherbet_land(struct UnkStruct_800DC5EC *arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    load_surface_map(&sherbet_land_dls, arg0);
+    load_surface_map(sherbet_land_dls, arg0);
 }
 
 void render_rainbow_road(struct UnkStruct_800DC5EC *arg0) {
@@ -1580,7 +1580,7 @@ void render_dks_jungle_parkway(struct UnkStruct_800DC5EC *arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
-    load_surface_map(&dks_jungle_parkway_dls, arg0);
+    load_surface_map(dks_jungle_parkway_dls, arg0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 

@@ -1880,26 +1880,28 @@ void func_8029CA90(Camera *camera, struct FallingRock *rock) {
 
     if (temp_f0 < 0.0f) { return; }
 
-    if ((temp_f0 < 250000.0f) && (rock->unk30.unk34 == 1)) {
-        sp8C[0] = rock->pos[0];
-        sp8C[2] = rock->pos[2];
-        temp_f0 = func_802ABE30(sp8C[0], rock->pos[1], sp8C[2], rock->unk30.unk3A);
-        sp98[0] = 0;
-        sp98[1] = 0;
-        sp98[2] = 0;
-        sp8C[1] = temp_f0 + 2.0f;
-        func_802B5F74(sp4C, sp8C, sp98);
-        if (func_802B4FF8(sp4C, 0) != 0) {
+    if (temp_f0 < 250000.0f) {
+    
+        if (rock->unk30.unk34 == 1) {
+            sp8C[0] = rock->pos[0];
+            sp8C[2] = rock->pos[2];
+            temp_f0 = func_802ABE30(sp8C[0], rock->pos[1], sp8C[2], rock->unk30.unk3A);
+            sp98[0] = 0;
+            sp98[1] = 0;
+            sp98[2] = 0;
+            sp8C[1] = temp_f0 + 2.0f;
+            func_802B5F74(sp4C, sp8C, sp98);
+            if (func_802B4FF8(sp4C, 0) == 0) {
+                return;
+            }
             gSPDisplayList(gDisplayListHead++, D_06006F88);
-            goto block_6;
-        }
-    } else {
-block_6:
-        func_802B5F74(sp4C, rock->pos, rock->rot);
-        if (func_802B4FF8(sp4C, 0) != 0) {
-            gSPDisplayList(gDisplayListHead++, D_06006FE0);
         }
     }
+    func_802B5F74(sp4C, rock->pos, rock->rot);
+    if (func_802B4FF8(sp4C, 0) == 0) {
+        return;
+    }
+    gSPDisplayList(gDisplayListHead++, D_06006FE0);
 }
 
 void place_piranha_plants(struct ActorSpawnData *spawnData) {
@@ -2167,24 +2169,25 @@ void place_all_item_boxes(struct ActorSpawnData *spawnData) {
     Vec3f startingVelocity;
     Vec3s startingRot;
 
-    if ((gModeSelection != TIME_TRIALS) && (gPlaceItemBoxes != 0)) {
-        vec3f_set(startingVelocity, 0, 0, 0);
-        while(temp_s0->pos[0] != -0x8000) {
-            startingPos[0] = temp_s0->pos[0] * gCourseDirection;
-            startingPos[1] = temp_s0->pos[1];
-            startingPos[2] = temp_s0->pos[2];
-            startingRot[0] = random_u16();
-            startingRot[1] = random_u16();
-            startingRot[2] = random_u16();
-            temp_s1 = func_8029EC88(startingPos, startingRot, startingVelocity, ACTOR_ITEM_BOX);
-            temp_f0 = func_802AE1C0(startingPos[0], startingPos[1] + 10.0f, startingPos[2]);
-            temp_v0 = (struct ItemBox *) &gActorList[temp_s1];
-            temp_v0->resetDistance = temp_f0;
-            temp_v0->origY = startingPos[1];
-            temp_v0->pos[1] = temp_f0 - 20.0f;
-            temp_s0++;
-        }
+    if ((gModeSelection == TIME_TRIALS) || (gPlaceItemBoxes == 0)) { return; }
+
+    vec3f_set(startingVelocity, 0, 0, 0);
+    while(temp_s0->pos[0] != -0x8000) {
+        startingPos[0] = temp_s0->pos[0] * gCourseDirection;
+        startingPos[1] = temp_s0->pos[1];
+        startingPos[2] = temp_s0->pos[2];
+        startingRot[0] = random_u16();
+        startingRot[1] = random_u16();
+        startingRot[2] = random_u16();
+        temp_s1 = func_8029EC88(startingPos, startingRot, startingVelocity, ACTOR_ITEM_BOX);
+        temp_f0 = func_802AE1C0(startingPos[0], startingPos[1] + 10.0f, startingPos[2]);
+        temp_v0 = (struct ItemBox *) &gActorList[temp_s1];
+        temp_v0->resetDistance = temp_f0;
+        temp_v0->origY = startingPos[1];
+        temp_v0->pos[1] = temp_f0 - 20.0f;
+        temp_s0++;
     }
+    
 }
 
 void init_kiwano_fruit(void) {
@@ -3577,15 +3580,15 @@ void func_802A14BC(f32 arg0, f32 arg1, f32 arg2) {
     Vec3s sp20;
     s16 temp_a0;
 
-    if (gModeSelection != TIME_TRIALS) {
-        vec3s_set(sp20, 0, 0, 0);
-        vec3f_set(sp28, 0, 0, 0);
-        sp34[0] = arg0;
-        sp34[1] = arg1;
-        sp34[2] = arg2;
-        temp_a0 = func_8029EC88(sp34, sp20, sp28, 43);
-        D_802BA05C = &gActorList[temp_a0];
-    }
+    if (gModeSelection == TIME_TRIALS) { return; }
+
+    vec3s_set(sp20, 0, 0, 0);
+    vec3f_set(sp28, 0, 0, 0);
+    sp34[0] = arg0;
+    sp34[1] = arg1;
+    sp34[2] = arg2;
+    temp_a0 = func_8029EC88(sp34, sp20, sp28, 43);
+    D_802BA05C = &gActorList[temp_a0];
 }
 
 void update_obj_item_box_hot_air_balloon(struct ItemBox *itemBox) {

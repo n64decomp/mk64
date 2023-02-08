@@ -47,7 +47,7 @@ COURSE_DIRS := $(shell find courses -mindepth 2 -type d)
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 
-ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) $(INCLUDE_DIRS) $(ASM_DIRS) $(ALL_KARTS_DIRS) $(TEXTURES_DIR)/raw $(TEXTURES_DIR)/standalone $(TEXTURES_DIR)/startup_logo $(TEXTURES_DIR)/crash_screen $(TEXTURES_DIR)/trophy $(TEXTURE_DIRS) $(TEXTURE_DIRS)/tlut $(TEXTURE_DIRS)/tlut2)
+ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) $(INCLUDE_DIRS) $(ASM_DIRS) $(ALL_KARTS_DIRS) $(TEXTURES_DIR)/raw $(TEXTURES_DIR)/standalone $(TEXTURES_DIR)/startup_logo $(TEXTURES_DIR)/crash_screen $(TEXTURES_DIR)/trophy $(TEXTURES_DIR)/courses $(TEXTURE_DIRS) $(TEXTURE_DIRS)/tlut $(TEXTURE_DIRS)/tlut2)
 
 ################### Universal Dependencies ###################
 
@@ -90,7 +90,7 @@ COURSE_ASM_FILES := $(wildcard courses/*/*/packed.s)
 
 C_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
 S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s)) $(COURSE_ASM_FILES)
-COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(wildcard $(dir)/model.inc.c))
+COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(wildcard $(dir)/*.inc.c))
 
 # Object files
 O_FILES := $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
@@ -272,8 +272,6 @@ TEXTURE_FILES_TLUT2 := $(foreach dir,$(TEXTURE_DIRS)/tlut2,$(subst .png, , $(wil
 $(TEXTURE_FILES):
 	$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8
 
-$(info $$var is [$(TEXTURE_FILES_TLUT)])
-#$(info $$var is [$(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(TEXTURE_FILES_TLUT))), ,$(TEXTURE_FILES_TLUT))))])
 # TLUT
 $(TEXTURE_FILES_TLUT):
 	$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8 -c $(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(TEXTURE_FILES_TLUT))), ,$(TEXTURE_FILES_TLUT)))) -p $(BUILD_DIR)/$@.tlut.inc.c
@@ -345,6 +343,9 @@ endif
 #################### Compile course vertex to mio0 #####################
 
 COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
+#COURSE_DL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/gfx.inc.mio0.o)
+COURSE_DL_TARGETS := build/us/courses/battle/big_donut/gfx.inc.mio0.o build/us/courses/battle/block_fort/gfx.inc.mio0.o build/us/courses/battle/skyscraper/gfx.inc.mio0.o build/us/courses/battle/double_deck/gfx.inc.mio0.o build/us/courses/flower_cup/choco_mountain/gfx.inc.mio0.o
+
 
 # Elf the course data to include symbol addresses then convert to binary and compress to mio0. The mio0 file is converted to an object file so that the linker can link it.
 $(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c
@@ -353,6 +354,20 @@ $(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c
 	$(MIO0TOOL) -c $(@D)/model.inc.bin $(@D)/model.inc.mio0
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"bin/course_$(lastword $(subst /, ,$*))_packed.bin\"\n" > $(@D)/model.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $@ $(@D)/model.inc.mio0.s
+
+COURSE_TEXTURE_FILES := $(foreach dir,textures/courses,$(subst .png, , $(wildcard $(dir)/*)))
+$(info $$var is [$(COURSE_TEXTURE_FILES)])
+
+$(COURSE_TEXTURE_FILES):
+	$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8
+
+# Compile course displaylists
+$(COURSE_DL_TARGETS) : $(BUILD_DIR)/%/gfx.inc.mio0.o : %/gfx.inc.c $(COURSE_TEXTURE_FILES)
+	$(LD) -t -e 0 -Ttext=0F000000 -Map $(@D)/gfx.inc.elf.map -o $(@D)/gfx.inc.elf $(@D)/gfx.inc.o --no-check-sections
+	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/gfx.inc.elf $(@D)/gfx.inc.bin
+	$(MIO0TOOL) -c $(@D)/gfx.inc.bin $(@D)/gfx.inc.mio0
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/gfx.inc.mio0\"\n\n" > $(@D)/gfx.inc.mio0.s
+	$(AS) $(ASFLAGS) -o $@ $(@D)/gfx.inc.mio0.s
 
 ####################       STAFF GHOSTS        #####################
 
@@ -383,7 +398,7 @@ $(BUILD_DIR)/src/common_textures.inc.mio0.o: $(BUILD_DIR)/src/common_textures.in
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.s
 
 
-$(BUILD_DIR)/$(TARGET).elf: $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_MODEL_TARGETS) undefined_syms.txt
+$(BUILD_DIR)/$(TARGET).elf: $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_MODEL_TARGETS) $(COURSE_DL_TARGETS) undefined_syms.txt
 	$(LD) $(LDFLAGS) -o $@
 
 $(BUILD_DIR)/$(TARGET).z64: $(BUILD_DIR)/$(TARGET).elf
