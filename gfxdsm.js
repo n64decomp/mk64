@@ -22,12 +22,12 @@ let type = 1;
 let iter = 8;
 
 switch(type) {
-    case 0:
+    case 0: // Actor Spawn
         iter = 8;
         break;
-    case 1:
+    case 1: // Vtx
         iter = 16;
-    case 2:
+    case 2: // Ptr Addr
         iter = 8;
 }
 
@@ -86,7 +86,7 @@ for (i = 0; i < f.length; i += iter) {
         case 1: // Vtx   {x, y, z}, { flag }, { t1, t2 }, { r, g, b, a }
             k.push("    {{ "+p(i + 0)+", "+p(i + 2)+", "+p(i + 4)+" }, { "+p(i + 6)+" }, { "+p(i + 8)+", "+p(i + 10)+" }, {"+s8(f[i + 12], 16)+", "+s8(f[i + 13], 16)+", "+s8(f[i + 14])+", "+s8(f[i + 15])+" }},");
             break;
-        case 2:
+        case 2: // Ptr addr
             k.push("    {{ "+s32(i + 0)+" }, { "+s32(i + 4)+" }},");
             break;
     }

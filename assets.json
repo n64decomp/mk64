@@ -13533,11 +13533,9 @@
 "textures/835BA0_16570.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x835BA0", "0x16570"]}},
 "textures/835BA0_16FA8.rgba16.png": {"meta":{"dims":[64,32]}, "offsets": {"us":["0x835BA0", "0x16FA8"]}},
 
-"textures/gTLUTSnowman.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x83F740", "0x4B20"]}},
-"textures/gTextureSnowmanHead.rgba16.ci8.png": {"meta":{"dims":[64,64], "pal":"0x4B20"}, "offsets": {"us":["0x83F740", "0x04D20"]}},
-"textures/gTextureSnowmanBody.rgba16.ci8.png": {"meta":{"dims":[64,64], "pal":"0x4B20"}, "offsets": {"us":["0x83F740", "0x05D20"]}},
-
-"textures/83F740_06F20.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":"0x6D20"}, "offsets": {"us":["0x83F740", "0x06F20"]}},
+"textures/courses/tlut2/frappe_snowland_snowman.rgba16.ci8.png": {"meta":{"dims":[64,128], "pal":"0x4B20"}, "offsets": {"us":["0x83F740", "0x04D20"]}},
+"textures/courses/tlut/frappe_snowland_snow.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":"0x6D20"}, "offsets": {"us":["0x83F740", "0x06F20"]}},
+"textures/courses/frappe_snowland_tree.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x83F740", "0x07320"]}},
 
 "textures/gTLUTCrab.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x842E40", "0x0D628"]}},
 "textures/gTextureCrab01.rgba16.ci8.png": {"meta":{"dims":[64,64], "pal":"0xD628"}, "offsets": {"us":["0x842E40", "0x0D828"]}},

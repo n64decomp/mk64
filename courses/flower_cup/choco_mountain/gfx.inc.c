@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
+#include <course.h>
 
 // todo: replace hard-coded addresses with variables.
 
@@ -3339,14 +3340,8 @@ struct ActorSpawnData d_course_choco_mountain_spawn_item_box[] = {
     {{ -32768, 0, 0 }, { 0 }},
 };
 
-// This could be *func(arg) instead.
-struct ChocoMountainUnkStruct {
-    uintptr_t addr;
-    s32 value;
-};
-
 // unk
-struct ChocoMountainUnkStruct d_course_choco_mountain_addr[] = {
+struct CourseAddrUnkStruct d_course_choco_mountain_addr[] = {
     {{ 0x07005A70 }, { 0xFFFF8000 }},
     {{ 0x070008E0 }, { 0xFFFF0000 }},
     {{ 0x07000448 }, { 0xFFFF8000 }},
