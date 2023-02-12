@@ -1961,8 +1961,8 @@ Gfx d_course_frappe_snowland_dl_33E0[] =
     gsSPEndDisplayList(),
 };
 
-// unk data
-struct ActorSpawnData d_course_frappe_snowland_unk_data[] = {
+// Spawn data
+struct ActorSpawnData d_course_frappe_snowland_spawn[] = {
     {{ -4, 0, -259 }, { 0 }},
     {{ -4, 0, -282 }, { 0 }},
     {{ -10, 0, -526 }, { 0 }},

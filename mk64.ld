@@ -478,7 +478,14 @@ SECTIONS
    }
    END_SEG(data_825800)
 
-   MIO0_SEG(course_mario_raceway_dl)
+
+
+   BEGIN_SEG(course_mario_raceway_dl_mio0, 0x0) \
+   { \
+      BUILD_DIR/courses/flower_cup/mario_raceway/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_mario_raceway_dl_mio0)
 
    BEGIN_SEG(course_choco_mountain_dl_mio0, 0x0) \
    { \
@@ -529,6 +536,7 @@ SECTIONS
 
 
    MIO0_SEG(course_dks_jungle_parkway_dl)
+
    BEGIN_SEG(course_big_donut_dl_mio0, 0x0) \
    { \
       BUILD_DIR/courses/battle/big_donut/gfx.inc.mio0.o(.data); \

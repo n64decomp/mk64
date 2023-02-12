@@ -18,7 +18,7 @@ let last = 0;
 
 let count = 0;
 
-let type = 1;
+let type = 0;
 let iter = 8;
 
 switch(type) {
@@ -27,8 +27,10 @@ switch(type) {
         break;
     case 1: // Vtx
         iter = 16;
+        break;
     case 2: // Ptr Addr
         iter = 8;
+        break;
 }
 
 // parse data to s16
