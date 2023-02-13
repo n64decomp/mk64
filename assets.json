@@ -13505,15 +13505,9 @@
 "textures/courses/mario_raceway_sign_right.rgba16.png": {"meta":{"dims":[32,64]}, "offsets": {"us":["0x8284D0", "0x08068"]}},
 "textures/courses/choco_mountain_wall.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x82B620", "0x05B38"]}},
 "textures/courses/choco_mountain_rock.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x82B620", "0x06338"]}},
-"textures/82DF40_06738.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x82DF40", "0x06738"]}},
+"textures/courses/bowsers_castle_thwomp.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x82DF40", "0x06738"]}},
 
-"textures/gTLUTWhomp.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x82DF40", "0x06F38"]}},
-"textures/gTextureWhomp01.rgba16.ci8.png": {"meta":{"dims":[16,64], "pal":"0x6F38"}, "offsets": {"us":["0x82DF40", "0x07138"]}},
-"textures/gTextureWhomp02.rgba16.ci8.png": {"meta":{"dims":[16,64], "pal":"0x6F38"}, "offsets": {"us":["0x82DF40", "0x07538"]}},
-"textures/gTextureWhomp03.rgba16.ci8.png": {"meta":{"dims":[16,64], "pal":"0x6F38"}, "offsets": {"us":["0x82DF40", "0x07938"]}},
-"textures/gTextureWhomp04.rgba16.ci8.png": {"meta":{"dims":[16,64], "pal":"0x6F38"}, "offsets": {"us":["0x82DF40", "0x07D38"]}},
-"textures/gTextureWhomp05.rgba16.ci8.png": {"meta":{"dims":[16,64], "pal":"0x6F38"}, "offsets": {"us":["0x82DF40", "0x08138"]}},
-"textures/gTextureWhomp06.rgba16.ci8.png": {"meta":{"dims":[16,64], "pal":"0x6F38"}, "offsets": {"us":["0x82DF40", "0x08538"]}},
+"textures/courses/tlut/bowsers_castle_thwomp_face.rgba16.ci8.png": {"meta":{"dims":[16,384], "pal":"0x6F38"}, "offsets": {"us":["0x82DF40", "0x07138"]}},
 
 "textures/831DC0_06E50.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x831DC0", "0x06E50"]}},
 
@@ -13620,9 +13614,9 @@
 "textures/8666A0_17E60.rgba16.png": {"meta":{"dims":[32,64]}, "offsets": {"us":["0x8666A0", "0x17E60"]}},
 "textures/8666A0_18E60.rgba16.png": {"meta":{"dims":[32,64]}, "offsets": {"us":["0x8666A0", "0x18E60"]}},
 "textures/8666A0_21D28.rgba16.png": {"meta":{"dims":[32,64]}, "offsets": {"us":["0x8666A0", "0x21D28"]}},
-"textures/86ECF0_068E8.ia16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x86ECF0", "0x068E8"]}},
-"textures/86ECF0_072E8.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x86ECF0", "0x072E8"]}},
-"textures/86ECF0_07AE8.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x86ECF0", "0x07AE8"]}},
+"textures/courses/sherbet_land_ice.ia16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x86ECF0", "0x068E8"]}},
+"textures/courses/sherbet_land_penguin_beak.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x86ECF0", "0x072E8"]}},
+"textures/courses/sherbet_land_penguin_eye.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x86ECF0", "0x07AE8"]}},
 
 "textures/gTLUTNeonMushroom01.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x872A00", "0x05400"]}},
 "textures/gTLUTNeonMushroom02.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x872A00", "0x05600"]}},

@@ -3014,6 +3014,7 @@ Gfx d_course_mario_raceway_dl_5228[] =
     gsSPEndDisplayList(),
 };
 
+// todo: This data likely needs to be split up
 // 0x5568 Bob-omb locations or path data?
 struct ActorSpawnData d_course_mario_raceway_spawn[] = {
     {{ 0, 0, -224 }, { 0 }},

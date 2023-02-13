@@ -590,6 +590,10 @@ int raw2ci(uint8_t *rawci, palette_t *pal, const uint8_t *raw, int raw_len, int 
    pal->used = 0;
    memset16safe(pal->data, magicFiller, sizeof(pal->data) / sizeof(uint16_t));
    int ci_idx = 0;
+
+    pal->data[0] = 0;
+    pal_add_color(pal, 0);
+
    for (int i = 0; i < raw_len; i += sizeof(uint16_t)) {
       uint16_t val = read_u16_be(&raw[i]);
       int pal_idx = pal_add_color(pal, val);
@@ -599,16 +603,7 @@ int raw2ci(uint8_t *rawci, palette_t *pal, const uint8_t *raw, int raw_len, int 
       } else {
          switch (ci_depth) {
             case 8:
-               // It appears some palettes have a default index of transparent/0.
-               // This requires iterating the pal_idx unless the CI really does begin with 0.
-               if (i == 0) {
-                  pal->data[0] = 0;
-                  if (val != 0) {
-                     rawci[ci_idx] = (uint8_t) ++pal_idx;
-                     break;
-                  }
-               }
-               rawci[ci_idx] = (uint8_t)pal_idx;
+                  rawci[ci_idx] = (uint8_t)pal_idx;
                break;
             case 4:
             {
@@ -998,6 +993,7 @@ int main(int argc, char *argv[])
                }
 
                raw16_size = w * h * config.pal_format.depth / 8;
+               printf("%#x ", raw16_size);
                raw16 = malloc(raw16_size);
                if (!raw16) {
                   ERROR("Error allocating %d bytes\n", raw16_size);

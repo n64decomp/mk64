@@ -494,7 +494,15 @@ SECTIONS
    } \
    END_SEG(course_choco_mountain_dl_mio0)
 
-   MIO0_SEG(course_bowsers_castle_dl)
+   BEGIN_SEG(course_bowsers_castle_dl_mio0, 0x0) \
+   { \
+      BUILD_DIR/courses/star_cup/bowsers_castle/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_bowsers_castle_dl_mio0)
+
+
+
    MIO0_SEG(course_banshee_boardwalk_dl)
    MIO0_SEG(course_yoshi_valley_dl)
    BEGIN_SEG(course_frappe_snowland_dl_mio0, 0x0) \
@@ -510,7 +518,15 @@ SECTIONS
    MIO0_SEG(course_moo_moo_farm_dl)
    MIO0_SEG(course_toads_turnpike_dl)
    MIO0_SEG(course_kalimari_desert_dl)
-   MIO0_SEG(course_sherbet_land_dl)
+
+   BEGIN_SEG(course_sherbet_land_dl_mio0, 0x06000000) \
+   { \
+      BUILD_DIR/courses/star_cup/sherbet_land/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_sherbet_land_dl_mio0)
+
+
    MIO0_SEG(course_rainbow_road_dl)
    MIO0_SEG(course_wario_stadium_dl)
    BEGIN_SEG(course_block_fort_dl_mio0, 0x0) \

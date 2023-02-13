@@ -164,3 +164,9 @@ $(MUSIC_DIR)/seq_21.m64
 
 $(BUILD_DIR)/src/startup_logo.inc.elf:             SEGMENT_ADDRESS := 0x06000000
 $(BUILD_DIR)/src/trophy_model.inc.elf:             SEGMENT_ADDRESS := 0x0B000000
+
+
+# COURSES
+
+$(BUILD_DIR)/courses/star_cup/sherbet_land/gfx.inc.elf:             SEGMENT_ADDRESS := 0x06000000
+
