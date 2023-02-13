@@ -12792,7 +12792,7 @@
 "textures/gTextureLakituFishing03.rgba16.ci8.png": {"meta":{"dims":[56,72], "pal":["0x25CD8", "0x132B50"]}, "offsets": {"us":["0x710E40", "0x0"]}},
 "textures/gTextureLakituFishing04.rgba16.ci8.png": {"meta":{"dims":[56,72], "pal":["0x25CD8", "0x132B50"]}, "offsets": {"us":["0x711E00", "0x0"]}},
 
-"textures/gTLUTBoo.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x831DC0", "0x5C80"]}},
+"textures/courses/gTLUTBoo.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x831DC0", "0x5C80"]}},
 "textures/712DC0_00000.rgba16.ci8.png": {"meta":{"dims":[48,40], "pal":["0x5C80", "0x831DC0"]}, "offsets": {"us":["0x712DC0", "0x00000"]}},
 "textures/712DC0_00780.rgba16.ci8.png": {"meta":{"dims":[48,40], "pal":["0x5C80", "0x831DC0"]}, "offsets": {"us":["0x712DC0", "0x00780"]}},
 "textures/712DC0_00F00.rgba16.ci8.png": {"meta":{"dims":[48,40], "pal":["0x5C80", "0x831DC0"]}, "offsets": {"us":["0x712DC0", "0x00F00"]}},
@@ -13509,16 +13509,12 @@
 
 "textures/courses/tlut/bowsers_castle_thwomp_face.rgba16.ci8.png": {"meta":{"dims":[16,384], "pal":"0x6F38"}, "offsets": {"us":["0x82DF40", "0x07138"]}},
 
-"textures/831DC0_06E50.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x831DC0", "0x06E50"]}},
+"textures/courses/banshee_boardwalk_fish_eyes.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x831DC0", "0x06E50"]}},
 
-"textures/gTLUTBat.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x831DC0", "0x07BB8"]}},
-"textures/gTextureBat01.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":"0x7BB8"}, "offsets": {"us":["0x831DC0", "0x07DB8"]}},
-"textures/gTextureBat02.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":"0x7BB8"}, "offsets": {"us":["0x831DC0", "0x085B8"]}},
-"textures/gTextureBat03.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":"0x7BB8"}, "offsets": {"us":["0x831DC0", "0x08DB8"]}},
-"textures/gTextureBat04.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":"0x7BB8"}, "offsets": {"us":["0x831DC0", "0x095B8"]}},
+"textures/courses/tlut/banshee_boardwalk_bat.rgba16.ci8.png": {"meta":{"dims":[32,256], "pal":"0x7BB8"}, "offsets": {"us":["0x831DC0", "0x07DB8"]}},
 
-"textures/831DC0_0A050.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x831DC0", "0x0A050"]}},
-"textures/831DC0_0AA78.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x831DC0", "0x0AA78"]}},
+"textures/courses/banshee_boardwalk_0A050.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x831DC0", "0x0A050"]}},
+"textures/courses/banshee_boardwalk_0AA78.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x831DC0", "0x0AA78"]}},
 "textures/835BA0_139A0.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x835BA0", "0x139A0"]}},
 
 "textures/gTLUTHedgehog.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x835BA0", "0x14908"]}},

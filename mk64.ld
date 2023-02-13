@@ -501,10 +501,15 @@ SECTIONS
    } \
    END_SEG(course_bowsers_castle_dl_mio0)
 
+   BEGIN_SEG(course_banshee_boardwalk_dl_mio0, 0x0) \
+   { \
+      BUILD_DIR/courses/special_cup/banshee_boardwalk/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_banshee_boardwalk_dl_mio0)
 
-
-   MIO0_SEG(course_banshee_boardwalk_dl)
    MIO0_SEG(course_yoshi_valley_dl)
+   
    BEGIN_SEG(course_frappe_snowland_dl_mio0, 0x0) \
    { \
       BUILD_DIR/courses/flower_cup/frappe_snowland/gfx.inc.mio0.o(.data); \
