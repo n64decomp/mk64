@@ -533,7 +533,14 @@ SECTIONS
 
 
    MIO0_SEG(course_rainbow_road_dl)
-   MIO0_SEG(course_wario_stadium_dl)
+
+   BEGIN_SEG(course_wario_stadium_dl_mio0, 0x06000000) \
+   { \
+      BUILD_DIR/courses/star_cup/wario_stadium/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_wario_stadium_dl_mio0)
+
    BEGIN_SEG(course_block_fort_dl_mio0, 0x0) \
    { \
       BUILD_DIR/courses/battle/block_fort/gfx.inc.mio0.o(.data); \
