@@ -4693,7 +4693,7 @@ struct ActorSpawnData d_course__dl[] = {
 };
 
 // 0x84D0
-Vtx_t d_course_wario_stadium_model1[] = {
+Vtx_t d_course_wario_stadium_sign_head_model[] = {
     {{ -60, 23, -9 }, { 0 }, { 0, 1024 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ -60, 23, 9 }, { 0 }, { 0, 1024 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ -60, 40, 9 }, { 0 }, { 0, 250 }, {0xFF, 0xFF, 0xFF, 0xFF }},
