@@ -534,7 +534,15 @@ SECTIONS
 
    END_SEG(course_luigi_raceway_dl_mio0)
 
-   MIO0_SEG(course_moo_moo_farm_dl)
+   BEGIN_SEG(course_moo_moo_farm_dl_mio0, 0x06000000) \
+   { \
+      BUILD_DIR/courses/mushroom_cup/moo_moo_farm/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+
+   END_SEG(course_moo_moo_farm_dl_mio0)
+
+
    MIO0_SEG(course_toads_turnpike_dl)
    MIO0_SEG(course_kalimari_desert_dl)
 

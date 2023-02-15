@@ -12569,7 +12569,7 @@
 "textures/69333C_00000.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":["0x7320", "0x83F740"]}, "offsets": {"us":["0x69333C", "0x00000"]}},
 "textures/693790_00000.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":["0x7320", "0x83F740"]}, "offsets": {"us":["0x693790", "0x00000"]}},
 
-"textures/gTLUTCow.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x852E20", "0x13870"]}},
+"textures/courses/moo_moo_farm_cow_tlut.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x852E20", "0x13870"]}},
 "textures/gTextureCow01Left.rgba16.ci8.png":  {"meta":{"dims":[32,64], "pal":["0x13870", "0x852E20"]}, "offsets": {"us":["0x693BC4", "0x00000"]}},
 "textures/gTextureCow01Right.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":["0x13870", "0x852E20"]}, "offsets": {"us":["0x693F48", "0x00000"]}},
 "textures/gTextureCow02Left.rgba16.ci8.png":  {"meta":{"dims":[32,64], "pal":["0x13870", "0x852E20"]}, "offsets": {"us":["0x69429C", "0x00000"]}},
@@ -13546,16 +13546,9 @@
 "textures/courses/luigi_raceway_balloon_basket.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x84E8E0", "0x0E588"]}},
 "textures/courses/luigi_raceway_balloon_rope.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x84E8E0", "0x0ED88"]}},
 
-"textures/gTLUTMole.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x852E20", "0x0FC70"]}},
-"textures/gTextureMole01.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":"0xFC70"}, "offsets": {"us":["0x852E20", "0x0FE70"]}},
-"textures/gTextureMole02.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":"0xFC70"}, "offsets": {"us":["0x852E20", "0x10670"]}},
-"textures/gTextureMole03.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":"0xFC70"}, "offsets": {"us":["0x852E20", "0x10E70"]}},
-"textures/gTextureMole04.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":"0xFC70"}, "offsets": {"us":["0x852E20", "0x11670"]}},
-"textures/gTextureMole05.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":"0xFC70"}, "offsets": {"us":["0x852E20", "0x11E70"]}},
-"textures/gTextureMole06.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":"0xFC70"}, "offsets": {"us":["0x852E20", "0x12670"]}},
-"textures/gTextureMole07.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":"0xFC70"}, "offsets": {"us":["0x852E20", "0x12E70"]}},
+"textures/courses/tlut/moo_moo_farm_mole.rgba16.ci8.png": {"meta":{"dims":[32,448], "pal":"0xFC70"}, "offsets": {"us":["0x852E20", "0x0FE70"]}},
 
-"textures/852E20_13670.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x852E20", "0x13670"]}},
+"textures/courses/moo_moo_farm_mole_rock.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x852E20", "0x13670"]}},
 "textures/857E80_059B8.rgba16.png": {"meta":{"dims":[32,64]}, "offsets": {"us":["0x857E80", "0x059B8"]}},
 "textures/857E80_069B8.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x857E80", "0x069B8"]}},
 "textures/857E80_071B8.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x857E80", "0x071B8"]}},

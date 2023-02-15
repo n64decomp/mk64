@@ -7,18 +7,20 @@ const { exit } = require('process');
  * 
  * node app.js input_file_here output_file_here
  */
-if (process.argv.length !== 4) {
+if (process.argv.length !== 4 && process.argv.length !== 5 ) {
   console.error(`Error! Usage: ./${process.argv[1].split('/').slice(-1)[0]} input_file output_file`) 
   exit(1);
 }
 // get the name of the file to read
 const f = fs.readFileSync(process.argv[2]);
 
-let last = 0;
+let type;
+if (Number(process.argv[4]) > -1 && Number(process.argv[4]) < 3) {
+    type = Number(process.argv[4]);
+} else {
+    type = 2;
+}
 
-let count = 0;
-
-let type = 0;
 let iter = 8;
 
 switch(type) {
