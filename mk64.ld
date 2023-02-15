@@ -518,8 +518,22 @@ SECTIONS
    END_SEG(course_frappe_snowland_dl_mio0)
 
    MIO0_SEG(course_koopa_troopa_beach_dl)
-   MIO0_SEG(course_royal_raceway_dl)
-   MIO0_SEG(course_luigi_raceway_dl)
+
+   BEGIN_SEG(course_royal_raceway_dl_mio0, 0x06000000) \
+   { \
+      BUILD_DIR/courses/star_cup/royal_raceway/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_royal_raceway_dl_mio0)
+
+   BEGIN_SEG(course_luigi_raceway_dl_mio0, 0x06000000) \
+   { \
+      BUILD_DIR/courses/mushroom_cup/luigi_raceway/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+
+   END_SEG(course_luigi_raceway_dl_mio0)
+
    MIO0_SEG(course_moo_moo_farm_dl)
    MIO0_SEG(course_toads_turnpike_dl)
    MIO0_SEG(course_kalimari_desert_dl)

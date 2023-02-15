@@ -2710,8 +2710,6 @@ u8 d_course_frappe_snowland_tree[] = {
 
 // unk. Lighting data?
 
-//u8 sdfioj[128] = { 0 };
-
 Vtx_t d_frappe_snowland_tree[] = {
     {{ 0, 48, 0 }, { 0 }, { 1024, -102 }, {0xFF, 0xFE, 0xFE, 0xFF }},
     {{ -25, 48, 0 }, { 0 }, { 0, -102 }, {0xFF, 0xFE, 0xFE, 0xFF }},

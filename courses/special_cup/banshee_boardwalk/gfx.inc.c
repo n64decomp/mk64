@@ -5,8 +5,6 @@
 #include <actor_types.h>
 #include <course.h>
 
-//extern Lights1 D_8600A038;
-
 Gfx d_course_banshee_boardwalk_dl_0[] =
 {
     gsSPEndDisplayList(),
