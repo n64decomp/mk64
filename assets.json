@@ -13548,7 +13548,7 @@
 
 "textures/courses/tlut/moo_moo_farm_mole.rgba16.ci8.png": {"meta":{"dims":[32,448], "pal":"0xFC70"}, "offsets": {"us":["0x852E20", "0x0FE70"]}},
 
-"textures/courses/moo_moo_farm_mole_rock.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x852E20", "0x13670"]}},
+"textures/courses/moo_moo_farm_mole_dirt.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x852E20", "0x13670"]}},
 "textures/857E80_059B8.rgba16.png": {"meta":{"dims":[32,64]}, "offsets": {"us":["0x857E80", "0x059B8"]}},
 "textures/857E80_069B8.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x857E80", "0x069B8"]}},
 "textures/857E80_071B8.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x857E80", "0x071B8"]}},

@@ -8486,8 +8486,8 @@ u8 d_course_moo_moo_farm_mole[] = {
 };
 
 // 0x13670
-u8 d_course_moo_moo_farm_mole_rock[] = {
-    #include "textures/courses/moo_moo_farm_mole_rock.rgba16.inc.c"
+u8 d_course_moo_moo_farm_mole_dirt[] = {
+    #include "textures/courses/moo_moo_farm_mole_dirt.rgba16.inc.c"
 };
 
 // 0x13870 todo: import texture. Odd sized tlut.
