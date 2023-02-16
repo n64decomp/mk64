@@ -544,7 +544,12 @@ SECTIONS
 
 
    MIO0_SEG(course_toads_turnpike_dl)
-   MIO0_SEG(course_kalimari_desert_dl)
+   BEGIN_SEG(course_kalimari_desert_dl_mio0, 0x06000000) \
+   { \
+      BUILD_DIR/courses/mushroom_cup/kalimari_desert/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_kalimari_desert_dl_mio0)
 
    BEGIN_SEG(course_sherbet_land_dl_mio0, 0x06000000) \
    { \
@@ -584,8 +589,12 @@ SECTIONS
    } \
    END_SEG(course_double_deck_dl_mio0)
 
-
-   MIO0_SEG(course_dks_jungle_parkway_dl)
+   BEGIN_SEG(course_dks_jungle_parkway_dl_mio0, 0x0) \
+   { \
+      BUILD_DIR/courses/special_cup/dks_jungle_parkway/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_dks_jungle_parkway_dl_mio0)
 
    BEGIN_SEG(course_big_donut_dl_mio0, 0x0) \
    { \

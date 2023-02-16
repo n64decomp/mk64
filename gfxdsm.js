@@ -79,7 +79,17 @@ function s32(b) {
 
 // lines to output
 let k = [];
-k.push("struct ActorSpawnData d_course__dl[] = {");
+switch(type) {
+    case 0:
+        k.push("struct ActorSpawnData d_course__dl[] = {");
+        break;
+    case 1:
+        k.push("Vtx_t d_course__dl[] = {");
+        break;
+    case 2:
+        k.push("struct CourseAddrUnkStruct d_course__dl[] = {");
+        break;
+}
 for (i = 0; i < f.length; i += iter) {
     // X Y Z
 
