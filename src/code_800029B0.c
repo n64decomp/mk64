@@ -248,7 +248,7 @@ void func_80003040(void) {
         case COURSE_YOSHI_VALLEY:
             vec3f_set(position, -2300.0f, 0.0f, 634.0f);
             position[0] *= gCourseDirection;
-            func_8029EC88(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
+            addActorToEmptySlot(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
             break;
         case COURSE_MOO_MOO_FARM:
             func_802A84F4(D_0F04FE28, 0x3E8, 0x800);
@@ -276,11 +276,11 @@ void func_80003040(void) {
             break;
         case COURSE_WARIO_STADIUM:
             vec3f_set(position, -131.0f, 83.0f, 286.0f);
-            func_8029EC88(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
             vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
-            func_8029EC88(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
             vec3f_set(position, -2622.0f, 79.0f, 739.0f);
-            func_8029EC88(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
             func_802AF8BC(0x7000C50, 0x64, 0xFF, 0xFF, 0xFF);
             func_802AF8BC(0x7000BD8, 0x64, 0xFF, 0xFF, 0xFF);
             func_802AF8BC(0x7000B60, 0x64, 0xFF, 0xFF, 0xFF);

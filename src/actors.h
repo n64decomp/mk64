@@ -5,7 +5,7 @@
 #include "actor_types.h"
 
 void func_80296A50(struct ShellActor*);
-void func_80296D10(struct Actor*, f32*, s16*, f32*, s16);
+void actor_init(struct Actor*, f32*, s16*, f32*, s16);
 void func_80297230(Camera*, struct Actor*);
 void func_802972B8(Camera*, struct Actor*);
 void func_80297340(Camera*);
@@ -75,11 +75,11 @@ void place_segment_06(struct ActorSpawnData*);
 void place_all_item_boxes(struct ActorSpawnData*);
 void init_kiwano_fruit();
 void destroy_all_actors();
-void func_8029DB44();
+void place_course_actors();
 void func_8029E7DC(struct Actor*);
 void destroy_actor(struct Actor*);
 s16  func_8029E890(f32*, s16*, f32*, s16);
-s16  func_8029EC88(Vec3f, Vec3s, Vec3f, s16);
+s16  addActorToEmptySlot(Vec3f, Vec3s, Vec3f, s16);
 s16  func_8029ED38(Vec3f, s16);
 s32  func_8029EEB8(Player*, Vec3f, f32, f32, f32);
 s32  func_8029F1F8(Player*, struct Actor*);

@@ -13597,7 +13597,7 @@
 "textures/courses/kalimari_desert_locomotive_lamp.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x8666A0", "0x13E60"]}},
 "textures/courses/kalimari_desert_locomotive_boiler.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x8666A0", "0x14660"]}},
 "textures/courses/kalimari_desert_carriage_railing.rgba16.png": {"meta":{"dims":[32,64]}, "offsets": {"us":["0x8666A0", "0x14E60"]}},
-"textures/courses/kalimari_desert_locomotive_coal_box.rgba16.png": {"meta":{"dims":[64,32]}, "offsets": {"us":["0x8666A0", "0x15E60"]}},
+"textures/courses/kalimari_desert_locomotive_tender.rgba16.png": {"meta":{"dims":[64,32]}, "offsets": {"us":["0x8666A0", "0x15E60"]}},
 "textures/courses/kalimari_desert_railway_ballast.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x8666A0", "0x16E60"]}},
 "textures/courses/kalimari_desert_carriage_lower.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x8666A0", "0x17660"]}},
 "textures/courses/kalimari_desert_carriage_door.rgba16.png": {"meta":{"dims":[32,64]}, "offsets": {"us":["0x8666A0", "0x17E60"]}},

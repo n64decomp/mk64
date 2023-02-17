@@ -3917,7 +3917,7 @@ Gfx d_course_mario_raceway_dl_9348[] =
     gsSPEndDisplayList(),
 };
 
-// Spawn locations
+// 0x9498 Spawn locations
 struct ActorSpawnData d_course_mario_raceway_spawn2[] = {
     {{ 503, 0, -951 }, { 0 }},
     {{ 531, 2, -986 }, { 0 }},

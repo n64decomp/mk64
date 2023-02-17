@@ -4564,31 +4564,19 @@ u8 d_course_kalimari_desert_tree_tlut[232] = {
 
 
 // 0x8468
-struct ActorSpawnData d_course_kalimari_desert_model[] = {
-    {{ 0, 25, 0 }, { 0 }},
-    {{ 1024, -102, -2 }, { -257 }},
-    {{ -12, 25, 0 }, { 0 }},
-    {{ 0, -102, -2 }, { -257 }},
-    {{ -12, 0, 0 }, { 0 }},
-    {{ 0, 1945, -2 }, { -257 }},
-    {{ 0, 0, 0 }, { 0 }},
-    {{ 1024, 1945, -2 }, { -257 }},
-    {{ 12, 25, 0 }, { 0 }},
-    {{ 1023, -102, -2 }, { -257 }},
-    {{ 0, 25, 0 }, { 0 }},
-    {{ 0, -102, -2 }, { -257 }},
-    {{ 0, 0, 0 }, { 0 }},
-    {{ 0, 1945, -2 }, { -257 }},
-    {{ 12, 0, 0 }, { 0 }},
-    {{ 1023, 1945, -2 }, { -257 }},
-    {{ 6, 25, 0 }, { 0 }},
-    {{ 1024, -409, -2 }, { -257 }},
-    {{ -6, 25, 0 }, { 0 }},
-    {{ 0, -409, -2 }, { -257 }},
-    {{ -6, 0, 0 }, { 0 }},
-    {{ 0, 1638, -2 }, { -257 }},
-    {{ 6, 0, 0 }, { 0 }},
-    {{ 1024, 1638, -2 }, { -257 }},
+Vtx_t d_course_kalimari_desert_cactus_model[] = {
+    {{ 0, 25, 0 }, { 0 }, { 1024, -102 }, {0xFF, 0xFE, 0xFE, 0xFF }},
+    {{ -12, 25, 0 }, { 0 }, { 0, -102 }, {0xFF, 0xFE, 0xFE, 0xFF }},
+    {{ -12, 0, 0 }, { 0 }, { 0, 1945 }, {0xFF, 0xFE, 0xFE, 0xFF }},
+    {{ 0, 0, 0 }, { 0 }, { 1024, 1945 }, {0xFF, 0xFE, 0xFE, 0xFF }},
+    {{ 12, 25, 0 }, { 0 }, { 1023, -102 }, {0xFF, 0xFE, 0xFE, 0xFF }},
+    {{ 0, 25, 0 }, { 0 }, { 0, -102 }, {0xFF, 0xFE, 0xFE, 0xFF }},
+    {{ 0, 0, 0 }, { 0 }, { 0, 1945 }, {0xFF, 0xFE, 0xFE, 0xFF }},
+    {{ 12, 0, 0 }, { 0 }, { 1023, 1945 }, {0xFF, 0xFE, 0xFE, 0xFF }},
+    {{ 6, 25, 0 }, { 0 }, { 1024, -409 }, {0xFF, 0xFE, 0xFE, 0xFF }},
+    {{ -6, 25, 0 }, { 0 }, { 0, -409 }, {0xFF, 0xFE, 0xFE, 0xFF }},
+    {{ -6, 0, 0 }, { 0 }, { 0, 1638 }, {0xFF, 0xFE, 0xFE, 0xFF }},
+    {{ 6, 0, 0 }, { 0 }, { 1024, 1638 }, {0xFF, 0xFE, 0xFE, 0xFF }},
 };
 
 Gfx d_course_kalimari_desert_dl_8528[] =
@@ -4687,7 +4675,7 @@ u8 d_course_kalimari_desert_crossing_sign_8[] = {
 };
 
 // 0x107E8
-Vtx_t d_course_kalimari_desert_model2[] = {
+Vtx_t d_course_kalimari_desert_crossing_signal_active_model[] = {
     {{ -8, 16, 0 }, { 0 }, { 0, 2048 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 0, 16, 0 }, { 0 }, { 1024, 2048 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 0, 32, 0 }, { 0 }, { 1024, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
@@ -4898,8 +4886,8 @@ u8 d_course_kalimari_desert_carriage_railing[] = {
 };
 
 // 0x15E60
-u8 d_course_kalimari_desert_locomotive_coal_box[] = {
-    #include "textures/courses/kalimari_desert_locomotive_coal_box.rgba16.inc.c"
+u8 d_course_kalimari_desert_locomotive_tender[] = {
+    #include "textures/courses/kalimari_desert_locomotive_tender.rgba16.inc.c"
 };
 
 // 0x16E60
@@ -4922,8 +4910,9 @@ u8 d_course_kalimari_desert_carriage_window[] = {
     #include "textures/courses/kalimari_desert_carriage_window.rgba16.inc.c"
 };
 
-// 0x19E60
-Vtx_t d_course_kalimari_desert_model3[] = {
+// 0x19E60 choo choo steam engine train model
+// high resolution
+Vtx_t d_course_kalimari_desert_locomotive_model_lod2[] = {
     {{ 8, 2, 58 }, { 0 }, { 2057, 2048 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 8, 16, 38 }, { 0 }, { 2052, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ -8, 16, 38 }, { 0 }, { -4, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
@@ -5682,8 +5671,8 @@ Gfx d_course_kalimari_desert_dl_1C0F0[] =
     gsSPEndDisplayList(),
 };
 
-// 0x1C100
-Vtx_t d_course_kalimari_desert_model4[] = {
+// 0x1C100 Low resolution choo choo steam engine train model
+Vtx_t d_course_kalimari_desert_locomotive_model_lod1[] = {
     {{ 8, 2, 58 }, { 0 }, { 2057, 2048 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 8, 16, 34 }, { 0 }, { 2052, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ -8, 16, 34 }, { 0 }, { -4, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
@@ -6193,8 +6182,8 @@ Gfx d_course_kalimari_desert_dl_1D668[] =
     gsSPEndDisplayList(),
 };
 
-// 0x1D680
-Vtx_t d_course_kalimari_desert_model11[] = {
+// 0x1D680 Very low resolution choo choo steam engine train model
+Vtx_t d_course_kalimari_desert_locomotive_model_lod0[] = {
     {{ 8, 2, 58 }, { 0 }, { 2057, 2048 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 8, 16, 34 }, { 0 }, { 2052, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ -8, 16, 34 }, { 0 }, { -4, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
@@ -6650,8 +6639,8 @@ Gfx d_course_kalimari_desert_dl_1E910[] =
     gsSPEndDisplayList(),
 };
 
-// 0x1E928
-Vtx_t d_course_kalimari_desert_model5[] = {
+// 0x1E928 Might be another lod model
+Vtx_t d_course_kalimari_desert_tender_model_lod2[] = {
     {{ -14, 12, -16 }, { 0 }, { 0, 0 }, {0x00, 0x00, 0x00, 0xFF }},
     {{ -16, 12, -19 }, { 0 }, { 0, 0 }, {0x00, 0x00, 0x00, 0xFF }},
     {{ 16, 12, -19 }, { 0 }, { 0, 0 }, {0x00, 0x00, 0x00, 0xFF }},
@@ -6864,7 +6853,7 @@ Gfx d_course_kalimari_desert_dl_1F228[] =
 };
 
 // 0x1F240
-Vtx_t d_course_kalimari_desert_model6[] = {
+Vtx_t d_course_kalimari_desert_tender_model_lod1[] = {
     {{ 16, 12, 21 }, { 0 }, { 0, 0 }, {0x00, 0x00, 0x00, 0xFF }},
     {{ 13, 12, 18 }, { 0 }, { 0, 0 }, {0x00, 0x00, 0x00, 0xFF }},
     {{ 13, 12, -16 }, { 0 }, { 0, 0 }, {0x00, 0x00, 0x00, 0xFF }},
@@ -6999,7 +6988,7 @@ Gfx d_course_kalimari_desert_dl_1F720[] =
 };
 
 // 0x1F728
-Vtx_t d_course_kalimari_desert_model_22[] = {
+Vtx_t d_course_kalimari_desert_tender_model_lod0[] = {
     {{ 13, 12, 18 }, { 0 }, { 0, 0 }, {0x0F, 0x0F, 0x0F, 0xFF }},
     {{ 13, 3, 18 }, { 0 }, { 0, 0 }, {0x0F, 0x0F, 0x0F, 0xFF }},
     {{ 13, 3, -16 }, { 0 }, { 0, 0 }, {0x0F, 0x0F, 0x0F, 0xFF }},
@@ -7115,8 +7104,10 @@ Gfx d_course_kalimari_desert_dl_1FB10[] =
     gsSPEndDisplayList(),
 };
 
+//u8 sdfiosjido[0xA60] = {0};
+
 // 0x1FB18
-Vtx_t d_course_kalimari_desert_model7[] = {
+Vtx_t d_course_kalimari_desert_carriage_chassis_model_lod2[] = {
     {{ -16, 12, -43 }, { 0 }, { 4096, 2048 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ -16, 28, -43 }, { 0 }, { 4096, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 16, 28, -43 }, { 0 }, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
@@ -7487,7 +7478,7 @@ Gfx d_course_kalimari_desert_dl_20A20[] =
 };
 
 // 0x20A38
-Vtx_t d_course_kalimari_desert_model8[] = {
+Vtx_t d_course_kalimari_desert_carriage_chassis_model_lod1[] = {
     {{ -16, 12, -43 }, { 0 }, { 4096, 2048 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ -16, 28, -43 }, { 0 }, { 4096, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 16, 28, -43 }, { 0 }, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
@@ -7777,8 +7768,8 @@ Gfx d_course_kalimari_desert_dl_21550[] =
     gsSPEndDisplayList(),
 };
 
-// 0x21568
-Vtx_t d_course_kalimari_desert_model9[] = {
+// 0x21568 Very low resolution
+Vtx_t d_course_kalimari_desert_carriage_model_lod0[] = {
     {{ -16, 12, -43 }, { 0 }, { 4096, 2048 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ -16, 28, -43 }, { 0 }, { 4096, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 16, 28, -43 }, { 0 }, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},

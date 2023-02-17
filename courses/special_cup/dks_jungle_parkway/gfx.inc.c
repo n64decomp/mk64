@@ -4072,7 +4072,7 @@ Gfx d_course_dks_jungle_parkway_dl_7108[] =
 };
 
 // 0x71F0
-struct ActorSpawnData d_course_dks_jungle_parkway_[] = {
+struct ActorSpawnData d_course_dks_jungle_parkway_path[] = {
     {{ 2, 0, 12 }, { 0 }},
     {{ 5, 0, -5 }, { 0 }},
     {{ 0, 0, -211 }, { 0 }},
@@ -4996,8 +4996,8 @@ struct ActorSpawnData d_course_dks_jungle_parkway_[] = {
     {{ -32768, -32768, -32768 }, { 0 }},
 };
 
-// 0x8EB8 unk data
-struct ActorSpawnData d_course_dks_jungle_parkway_unk[] = {
+// 0x8EB8
+struct ActorSpawnData d_course_dks_jungle_parkway_paddle_boat_model[] = {
     {{ 50, 66, 150 }, { 0 }},
     {{ 1263, 1039, 28416 }, { 11775 }},
     {{ 50, 81, 150 }, { 0 }},
@@ -5897,7 +5897,7 @@ Gfx d_course_dks_jungle_parkway_dl_E730[] =
 };
 
 // 0xE740
-Vtx_t d_course_dks_jungle_parkway_model[] = {
+Vtx_t d_course_dks_jungle_parkway_paddle_boat_paddle_model[] = {
     {{ -50, -28, -28 }, { 0 }, { 0, 0 }, {0xFF, 0xFE, 0xFE, 0xFF }},
     {{ 50, -28, -28 }, { 0 }, { 0, 1024 }, {0xFF, 0xFE, 0xFE, 0xFF }},
     {{ 50, 0, 0 }, { 0 }, { 1023, 1024 }, {0xFF, 0xFE, 0xFE, 0xFF }},
@@ -6034,7 +6034,7 @@ Gfx d_course_dks_jungle_parkway_dl_FC38[] =
 };
 
 // 0xFC40
-Vtx_t d_course_dks_jungle_parkway_model2[] = {
+Vtx_t d_course_dks_jungle_parkway_tree_model[] = {
     {{ 23, 75, 0 }, { 0 }, { 1024, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ -23, 75, 0 }, { 0 }, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ -23, 45, 0 }, { 0 }, { 0, 1024 }, {0xFF, 0xFF, 0xFF, 0xFF }},
@@ -6071,7 +6071,7 @@ Gfx d_course_dks_jungle_parkway_dl_10CC0[] =
     gsSPEndDisplayList(),
 };
 
-Vtx_t d_course_dks_jungle_parkway_model3[] = {
+Vtx_t d_course_dks_jungle_parkway_tree2_model[] = {
     {{ 3, 120, 0 }, { 0 }, { 1024, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ -40, 120, 0 }, { 0 }, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ -40, 0, 0 }, { 0 }, { 0, 1423 }, {0x73, 0x73, 0x73, 0xFF }},
@@ -6162,7 +6162,7 @@ Gfx d_course_dks_jungle_parkway_dl_12EF0[] =
 };
 
 // 0x12F78
-Vtx_t d_course_dks_jungle_parkway_model5[] = {
+Vtx_t d_course_dks_jungle_parkway_palm_tree_model[] = {
     {{ 0, 82, 40 }, { 0 }, { 1023, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 0, 82, -40 }, { 0 }, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 0, 42, -40 }, { 0 }, { 0, 1023 }, {0xFF, 0xFF, 0xFF, 0xFF }},
@@ -6232,8 +6232,8 @@ u8 d_course_dks_jungle_parkway_kiwano_tlut[] = {
     #include "textures/courses/dks_jungle_parkway_kiwano_tlut.rgba16.inc.c"
 };
 
-// 0x13B78
-Vtx_t d_course_dks_jungle_parkway_model6[] = {
+// 0x13B78 The actor that collides with the player when they go off course.
+Vtx_t d_course_dks_jungle_parkway_coconut_model[] = {
     {{ 2, 2, 0 }, { 0 }, { 992, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ -2, 2, 0 }, { 0 }, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ -2, -2, 0 }, { 0 }, { 0, 992 }, {0xFF, 0xFF, 0xFF, 0xFF }},
@@ -6290,7 +6290,7 @@ Gfx d_course_dks_jungle_parkway_dl_13C30[] =
 };
 
 // 0x13D20
-struct ActorSpawnData d_course_dks_jungle_parkway_path[] = {
+struct ActorSpawnData d_course_dks_jungle_parkway_path2[] = {
     {{ 1536, 32, 1536 }, { 528 }},
     {{ 1536, 384, 1536 }, { 784 }},
     {{ 1536, 1024, 1536 }, { 1576 }},

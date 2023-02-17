@@ -6356,7 +6356,7 @@ void func_800122D8(void) {
             tempLocomotive->velocity[0] = tempLocomotive->position[0] - origXPos;
             tempLocomotive->velocity[2] = tempLocomotive->position[2] - origZPos;
             vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-            tempLocomotive->actorIndex = func_8029EC88(tempLocomotive->position, trainCarRot, tempLocomotive->velocity, ACTOR_TRAIN_ENGINE);
+            tempLocomotive->actorIndex = addActorToEmptySlot(tempLocomotive->position, trainCarRot, tempLocomotive->velocity, ACTOR_TRAIN_ENGINE);
 
             tempTender = &D_801635A0[loopIndex].tender;
             if (tempTender->isActive == 1) {
@@ -6366,7 +6366,7 @@ void func_800122D8(void) {
                 tempTender->velocity[0] = tempTender->position[0] - origXPos;
                 tempTender->velocity[2] = tempTender->position[2] - origZPos;
                 vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-                tempTender->actorIndex = func_8029EC88(tempTender->position, trainCarRot, tempTender->velocity, ACTOR_TRAIN_TENDER);
+                tempTender->actorIndex = addActorToEmptySlot(tempTender->position, trainCarRot, tempTender->velocity, ACTOR_TRAIN_TENDER);
             }
 
             for(loopIndex2 = 0; loopIndex2 < NUM_PASSENGER_CAR_ENTRIES; loopIndex2++) {
@@ -6378,7 +6378,7 @@ void func_800122D8(void) {
                     tempPassengerCar->velocity[0] = tempPassengerCar->position[0] - origXPos;
                     tempPassengerCar->velocity[2] = tempPassengerCar->position[2] - origZPos;
                     vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-                    tempPassengerCar->actorIndex = func_8029EC88(tempPassengerCar->position, trainCarRot, tempPassengerCar->velocity, ACTOR_TRAIN_PASSENGER_CAR);
+                    tempPassengerCar->actorIndex = addActorToEmptySlot(tempPassengerCar->position, trainCarRot, tempPassengerCar->velocity, ACTOR_TRAIN_PASSENGER_CAR);
                 }
             }
         }
@@ -6393,7 +6393,7 @@ void func_800122D8(void) {
                 tempPaddleWheelBoat->velocity[0] = tempPaddleWheelBoat->position[0] - origXPos;
                 tempPaddleWheelBoat->velocity[2] = tempPaddleWheelBoat->position[2] - origZPos;
                 vec3s_set(paddleWheelBoatRot, 0, tempPaddleWheelBoat->yRotation, 0);
-                tempPaddleWheelBoat->actorIndex = func_8029EC88(tempPaddleWheelBoat->position, paddleWheelBoatRot, tempPaddleWheelBoat->velocity, ACTOR_PADDLE_WHEEL_BOAT);
+                tempPaddleWheelBoat->actorIndex = addActorToEmptySlot(tempPaddleWheelBoat->position, paddleWheelBoatRot, tempPaddleWheelBoat->velocity, ACTOR_PADDLE_WHEEL_BOAT);
             }
         }
         break;
@@ -6401,22 +6401,22 @@ void func_800122D8(void) {
         for(loopIndex = 0; loopIndex < NUM_RACE_BOX_TRUCKS; loopIndex++) {
             tempBoxTruck = &gBoxTruckList[loopIndex];
             func_80012220(tempBoxTruck);
-            tempBoxTruck->actorIndex = func_8029EC88(tempBoxTruck->position, tempBoxTruck->rotation, tempBoxTruck->velocity, ACTOR_BOX_TRUCK);
+            tempBoxTruck->actorIndex = addActorToEmptySlot(tempBoxTruck->position, tempBoxTruck->rotation, tempBoxTruck->velocity, ACTOR_BOX_TRUCK);
         }
         for(loopIndex = 0; loopIndex < NUM_RACE_SCHOOL_BUSES; loopIndex++) {
             tempSchoolBus = &gSchoolBusList[loopIndex];
             func_80012220(tempSchoolBus);
-            tempSchoolBus->actorIndex = func_8029EC88(tempSchoolBus->position, tempSchoolBus->rotation, tempSchoolBus->velocity, ACTOR_SCHOOL_BUS);
+            tempSchoolBus->actorIndex = addActorToEmptySlot(tempSchoolBus->position, tempSchoolBus->rotation, tempSchoolBus->velocity, ACTOR_SCHOOL_BUS);
         }
         for(loopIndex = 0; loopIndex < NUM_RACE_TANKER_TRUCKS; loopIndex++) {
             tempTankerTruck = &gTankerTruckList[loopIndex];
             func_80012220(tempTankerTruck);
-            tempTankerTruck->actorIndex = func_8029EC88(tempTankerTruck->position, tempTankerTruck->rotation, tempTankerTruck->velocity, ACTOR_TANKER_TRUCK);
+            tempTankerTruck->actorIndex = addActorToEmptySlot(tempTankerTruck->position, tempTankerTruck->rotation, tempTankerTruck->velocity, ACTOR_TANKER_TRUCK);
         }
         for(loopIndex = 0; loopIndex < NUM_RACE_CARS; loopIndex++) {
             tempCar = &gCarList[loopIndex];
             func_80012220(tempCar);
-            tempCar->actorIndex = func_8029EC88(tempCar->position, tempCar->rotation, tempCar->velocity, ACTOR_CAR);
+            tempCar->actorIndex = addActorToEmptySlot(tempCar->position, tempCar->rotation, tempCar->velocity, ACTOR_CAR);
         }
         break;
     }
