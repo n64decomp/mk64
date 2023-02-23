@@ -21,8 +21,16 @@ if (Number(process.argv[4]) > -1 && Number(process.argv[4]) < 3) {
     type = 2;
 }
 
-let iter = 8;
+// offset, type
+arr = [
+    {o: "0x0", t: 3},
+    {o: "0x19D0", t: 0}, // path
+    {o: "0x1CF8", t: 0}, // more path? or spawn?
+    // 0x5400
+];
 
+let iter = 8;
+// spawn, vtx, ptr, gfx
 switch(type) {
     case 0: // Actor Spawn
         iter = 8;
