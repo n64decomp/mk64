@@ -2899,11 +2899,164 @@ struct ActorSpawnData d_course_rainbow_road_path2[] = {
     {{ -32768, -32768, -32768 }, { 0 }},
 };
 
-// some textures
+// some textures 0x5400
+u8 d_course_rainbow_road_mushroom_tlut1[] = {
+    #include "textures/courses/rainbow_road_neon_mushroom1_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_mushroom_tlut2[] = {
+    #include "textures/courses/rainbow_road_neon_mushroom2_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_mushroom_tlut3[] = {
+    #include "textures/courses/rainbow_road_neon_mushroom3_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_mushroom_tlut4[] = {
+    #include "textures/courses/rainbow_road_neon_mushroom4_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_mushroom_tlut5[] = {
+    #include "textures/courses/rainbow_road_neon_mushroom5_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_mario_tlut1[] = {
+    #include "textures/courses/rainbow_road_neon_mario1_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_mario_tlut2[] = {
+    #include "textures/courses/rainbow_road_neon_mario2_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_mario_tlut3[] = {
+    #include "textures/courses/rainbow_road_neon_mario3_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_mario_tlut4[] = {
+    #include "textures/courses/rainbow_road_neon_mario4_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_mario_tlut5[] = {
+    #include "textures/courses/rainbow_road_neon_mario5_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_boo_tlut1[] = {
+    #include "textures/courses/rainbow_road_neon_boo1_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_boo_tlut2[] = {
+    #include "textures/courses/rainbow_road_neon_boo2_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_boo_tlut3[] = {
+    #include "textures/courses/rainbow_road_neon_boo3_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_boo_tlut4[] = {
+    #include "textures/courses/rainbow_road_neon_boo4_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_boo_tlut5[] = {
+    #include "textures/courses/rainbow_road_neon_boo5_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_peach_tlut[] = {
+    #include "textures/courses/rainbow_road_neon_peach_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_luigi_tlut[] = {
+    #include "textures/courses/rainbow_road_neon_luigi_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_donkey_kong_tlut[] = {
+    #include "textures/courses/rainbow_road_neon_donkey_kong_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_yoshi_tlut[] = {
+    #include "textures/courses/rainbow_road_neon_yoshi_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_bowser_tlut[] = {
+    #include "textures/courses/rainbow_road_neon_bowser_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_wario_tlut[] = {
+    #include "textures/courses/rainbow_road_neon_wario_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_toad_tlut[] = {
+    #include "textures/courses/rainbow_road_neon_toad_tlut.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_neon_mushroom[] = {
+    #include "textures/courses/rainbow_road/neon_mushroom.rgba16.ci8.inc.c"
+};
+
+u8 d_course_rainbow_road_neon_mario[] = {
+    #include "textures/courses/rainbow_road/neon_mario.rgba16.ci8.inc.c"
+};
+
+u8 d_course_rainbow_road_neon_boo[] = {
+    #include "textures/courses/rainbow_road/neon_boo.rgba16.ci8.inc.c"
+};
+
+u8 d_course_rainbow_road_neon_peach[] = {
+    #include "textures/courses/rainbow_road/neon_peach.rgba16.ci8.inc.c"
+};
+
+u8 d_course_rainbow_road_neon_luigi[] = {
+    #include "textures/courses/rainbow_road/neon_luigi.rgba16.ci8.inc.c"
+};
+
+u8 d_course_rainbow_road_neon_donkey_kong[] = {
+    #include "textures/courses/rainbow_road/neon_donkey_kong.rgba16.ci8.inc.c"
+};
+
+u8 d_course_rainbow_road_neon_yoshi[] = {
+    #include "textures/courses/rainbow_road/neon_yoshi.rgba16.ci8.inc.c"
+};
+
+u8 d_course_rainbow_road_neon_bowser[] = {
+    #include "textures/courses/rainbow_road/neon_bowser.rgba16.ci8.inc.c"
+};
+
+u8 d_course_rainbow_road_neon_wario[] = {
+    #include "textures/courses/rainbow_road/neon_wario.rgba16.ci8.inc.c"
+};
+
+u8 d_course_rainbow_road_neon_toad[] = {
+    #include "textures/courses/rainbow_road/neon_toad.rgba16.ci8.inc.c"
+};
+
+// unk data
+u64 d_course_rainbow_road_unk_double = 1;
+u64 d_course_rainbow_road_unk_double2 = 1;
+
+// unk light
+Lights1 d_course_rainbow_road_light1 = gdSPDefLights1(102, 102, 102, 255, 255, 255, 40, 40, 40);
+
+u8 d_course_rainbow_road_sphere[] = {
+    #include "textures/courses/rainbow_road_sphere.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_reflection_map_metal[] = {
+    #include "textures/courses/reflection_map_metal.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_reflection_map_gold[] = {
+    #include "textures/courses/reflection_map_gold.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_heart[] = {
+    #include "textures/courses/rainbow_road_heart.rgba16.inc.c"
+};
+
+u8 d_course_rainbow_road_eye[] = {
+    #include "textures/courses/rainbow_road_eye.rgba16.inc.c"
+};
 
 
-
-Vtx_t d_course_rainbow_road_model[] = {
+Vtx_t d_course_rainbow_road_chomp_lower_jaw_model[] = {
     {{ 281, 6, -451 }, { 0 }, { 0, 0 }, {0x2D, 0xFB, 0x8A, 0x00 }},
     {{ 223, -71, -469 }, { 0 }, { 0, 0 }, {0x2D, 0xFB, 0x8A, 0x00 }},
     {{ 181, 6, -490 }, { 0 }, { 0, 0 }, {0x2D, 0xFB, 0x8A, 0x00 }},
@@ -2949,7 +3102,7 @@ Gfx d_course_rainbow_road_dl_151A8[] =
     gsSPEndDisplayList(),
 };
 
-Vtx_t d_course_rainbow_road_model2[] = {
+Vtx_t d_course_rainbow_road_chomp_body_lower_model[] = {
     {{ -156, 533, -156 }, { 0 }, { 0, 0 }, {0xDE, 0x75, 0xDE, 0x00 }},
     {{ -220, 533, 0 }, { 0 }, { 0, 0 }, {0xD0, 0x75, 0x00, 0x00 }},
     {{ 0, 577, 0 }, { 0 }, { 0, 0 }, {0x00, 0x7F, 0x00, 0x00 }},
@@ -3060,7 +3213,7 @@ Gfx d_course_rainbow_road_dl_15550[] =
     gsSPEndDisplayList(),
 };
 
-Vtx_t d_course_rainbow_road_model3[] = {
+Vtx_t d_course_rainbow_road_chomp_upper_jaw_model[] = {
     {{ 181, -6, -490 }, { 0 }, { 0, 0 }, {0x2D, 0x05, 0x8A, 0x00 }},
     {{ 223, 71, -469 }, { 0 }, { 0, 0 }, {0x2D, 0x05, 0x8A, 0x00 }},
     {{ 281, -6, -451 }, { 0 }, { 0, 0 }, {0x2D, 0x05, 0x8A, 0x00 }},
@@ -3106,7 +3259,7 @@ Gfx d_course_rainbow_road_dl_158C0[] =
     gsSPEndDisplayList(),
 };
 
-Vtx_t d_course_rainbow_road_model4[] = {
+Vtx_t d_course_rainbow_road_chomp_body_upper_back_model[] = {
     {{ 0, -577, 0 }, { 0 }, { 0, 0 }, {0x00, 0x81, 0x00, 0x00 }},
     {{ -220, -533, 0 }, { 0 }, { 0, 0 }, {0xD0, 0x8B, 0x00, 0x00 }},
     {{ -156, -533, -156 }, { 0 }, { 0, 0 }, {0xDE, 0x8B, 0xDE, 0x00 }},
@@ -3217,7 +3370,7 @@ Gfx d_course_rainbow_road_dl_15C68[] =
     gsSPEndDisplayList(),
 };
 
-Vtx_t d_course_rainbow_road_model5[] = {
+Vtx_t d_course_rainbow_road_chomp_eyes_model[] = {
     {{ 341, -287, 410 }, { 0 }, { 990, 0 }, {0x69, 0xE7, 0x41, 0xFF }},
     {{ 505, -32, 246 }, { 0 }, { 0, 990 }, {0x69, 0xE7, 0x41, 0xFF }},
     {{ 374, -49, 450 }, { 0 }, { 990, 990 }, {0x69, 0xE7, 0x41, 0xFF }},
@@ -3258,7 +3411,8 @@ Gfx d_course_rainbow_road_dl_15F18[] =
     gsSPEndDisplayList(),
 };
 
-u8 d_rainbow_road_unknown_data[208] = {
+// 0x15FC8 todo: Format
+u8 d_rainbow_road_chomp_jaw_animation[208] = {
 	0x00, 0x00, 0x3F, 0xFF, 0x96, 0x02, 0x94, 0x83, 0x90, 0xD2, 0x8C, 0x1B,
 	0x87, 0x8E, 0x84, 0x5A, 0x83, 0xAC, 0x88, 0xAE, 0x92, 0x64, 0x9B, 0xC5,
 	0x9F, 0xC9, 0x9C, 0x7C, 0x95, 0x0F, 0x8C, 0x27, 0x84, 0x6D, 0x80, 0x8A,
@@ -3279,6 +3433,7 @@ u8 d_rainbow_road_unknown_data[208] = {
 	0x3F, 0xFF, 0x00, 0x00
 };
 
+// 0x16098 todo: unknown data. Likely not Vtx.
 Vtx_t d_course_rainbow_road_model7[] = {
     {{ 1, 0, 1 }, { 0 }, { 1, 0 }, {0x00, 0x01, 0x00, 0x00 }},
     {{ 1, 1, 1 }, { 0 }, { 1, 0 }, {0x00, 0x01, 0x00, 0x00 }},
@@ -3305,6 +3460,9 @@ Vtx_t d_course_rainbow_road_model7[] = {
     {{ 0, 2, 0 }, { 2 }, { 0, 2 }, {0x00, 0x00, 0x00, 0x03 }},
     {{ 0, 2, 0 }, { 0 }, { 0, 0 }, {0x00, 0x00, 0x00, 0x02 }},
 };
+
+// unk double. Likely apart of above data.
+u64 d_course_rainbow_road_unk_double3 = 2;
 
 Gfx d_course_rainbow_road_dl_16220[] =
 {

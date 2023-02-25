@@ -544,6 +544,8 @@ SECTIONS
 
 
    MIO0_SEG(course_toads_turnpike_dl)
+
+   
    BEGIN_SEG(course_kalimari_desert_dl_mio0, 0x06000000) \
    { \
       BUILD_DIR/courses/mushroom_cup/kalimari_desert/gfx.inc.mio0.o(.data); \
@@ -558,8 +560,12 @@ SECTIONS
    } \
    END_SEG(course_sherbet_land_dl_mio0)
 
-
-   MIO0_SEG(course_rainbow_road_dl)
+   BEGIN_SEG(course_rainbow_road_dl_mio0, 0x06000000) \
+   { \
+      BUILD_DIR/courses/special_cup/rainbow_road/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_rainbow_road_dl_mio0)
 
    BEGIN_SEG(course_wario_stadium_dl_mio0, 0x06000000) \
    { \
