@@ -508,7 +508,12 @@ SECTIONS
    } \
    END_SEG(course_banshee_boardwalk_dl_mio0)
 
-   MIO0_SEG(course_yoshi_valley_dl)
+   BEGIN_SEG(course_yoshi_valley_dl_mio0, 0x0) \
+   { \
+      BUILD_DIR/courses/special_cup/yoshi_valley/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_yoshi_valley_dl_mio0)
    
    BEGIN_SEG(course_frappe_snowland_dl_mio0, 0x0) \
    { \

@@ -13515,13 +13515,12 @@
 
 "textures/courses/banshee_boardwalk_0A050.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x831DC0", "0x0A050"]}},
 "textures/courses/banshee_boardwalk_0AA78.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x831DC0", "0x0AA78"]}},
-"textures/835BA0_139A0.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x835BA0", "0x139A0"]}},
+"textures/courses/yoshi_valley_yoshi_flag.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x835BA0", "0x139A0"]}},
 
-"textures/gTLUTHedgehog.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x835BA0", "0x14908"]}},
-"textures/gTextureHedgehog.rgba16.ci8.png": {"meta":{"dims":[64,64], "pal":"0x14908"}, "offsets": {"us":["0x835BA0", "0x14B08"]}},
+"textures/courses/tlut2/yoshi_valley_hedgehog.rgba16.ci8.png": {"meta":{"dims":[64,64], "pal":"0x14908"}, "offsets": {"us":["0x835BA0", "0x14B08"]}},
 
-"textures/835BA0_16570.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x835BA0", "0x16570"]}},
-"textures/835BA0_16FA8.rgba16.png": {"meta":{"dims":[64,32]}, "offsets": {"us":["0x835BA0", "0x16FA8"]}},
+"textures/courses/yoshi_valley_egg_spot.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x835BA0", "0x16570"]}},
+"textures/courses/yoshi_valley_egg.rgba16.png": {"meta":{"dims":[64,32]}, "offsets": {"us":["0x835BA0", "0x16FA8"]}},
 
 "textures/courses/tlut2/frappe_snowland_snowman.rgba16.ci8.png": {"meta":{"dims":[64,128], "pal":"0x4B20"}, "offsets": {"us":["0x83F740", "0x04D20"]}},
 "textures/courses/tlut/frappe_snowland_snow.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":"0x6D20"}, "offsets": {"us":["0x83F740", "0x06F20"]}},
