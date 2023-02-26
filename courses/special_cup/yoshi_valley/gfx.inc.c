@@ -10566,7 +10566,7 @@ u8 d_course_yoshi_valley_lights_unk[48] = {
 };
 
 // 0x141D0
-Vtx_t d_course_yoshi_valley_model[] = {
+Vtx_t d_course_yoshi_valley_flag_pole_model[] = {
     {{ 2800, -18, 57 }, { 0 }, { 0, 0 }, {0x5F, 0xE7, 0x4F, 0xFF }},
     {{ 2800, -59, 0 }, { 0 }, { 0, 0 }, {0x2D, 0x8A, 0x00, 0xFF }},
     {{ 2800, -18, -56 }, { 0 }, { 0, 0 }, {0x4D, 0xE1, 0xA1, 0xFF }},
@@ -10605,8 +10605,9 @@ Gfx d_course_yoshi_valley_dl_142C0[] =
     gsSPEndDisplayList(),
 };
 
-// 0x14348
-Vtx_t d_course_yoshi_valley_model2[] = {
+// 0x14348 Flag is a triangle split into five different models.
+// It's done this way to make it move in the wind.
+Vtx_t d_course_yoshi_valley_flag_1_model[] = {
     {{ 0, 0, 0 }, { 0 }, { -226, 510 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 460, 0, 540 }, { 0 }, { 224, 1318 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 460, 0, -539 }, { 0 }, { 224, -302 }, {0xFF, 0xFF, 0xFF, 0xFF }},
@@ -10642,7 +10643,7 @@ Gfx d_course_yoshi_valley_dl_143C8[] =
 };
 
 // 0x14468
-Vtx_t d_course_yoshi_valley_model3[] = {
+Vtx_t d_course_yoshi_valley_flag_2_model[] = {
     {{ 0, 0, 540 }, { 0 }, { 224, 1318 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 460, 0, 360 }, { 0 }, { 676, 1048 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 460, 0, -359 }, { 0 }, { 676, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
@@ -10657,7 +10658,7 @@ Gfx d_course_yoshi_valley_dl_144A8[] =
 };
 
 // 0x144C0
-Vtx_t d_course_yoshi_valley_model4[] = {
+Vtx_t d_course_yoshi_valley_flag_3_model[] = {
     {{ 344, 0, 224 }, { 0 }, { 1014, 846 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 344, 0, -223 }, { 0 }, { 1014, 172 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 0, 0, 360 }, { 0 }, { 676, 1048 }, {0xFF, 0xFF, 0xFF, 0xFF }},
@@ -10672,7 +10673,7 @@ Gfx d_course_yoshi_valley_dl_14500[] =
 };
 
 // 0x14518
-Vtx_t d_course_yoshi_valley_model5[] = {
+Vtx_t d_course_yoshi_valley_flag_4_model[] = {
     {{ 0, 0, 224 }, { 0 }, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 288, 0, 112 }, { 0 }, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 288, 0, -111 }, { 0 }, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
@@ -10693,7 +10694,7 @@ Gfx d_course_yoshi_valley_dl_14558[] =
 };
 
 // 0x145A0
-Vtx_t d_course_yoshi_valley_model6[] = {
+Vtx_t d_course_yoshi_valley_flag_5_model[] = {
     {{ 0, 0, 112 }, { 0 }, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 288, 0, 0 }, { 0 }, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
     {{ 0, 0, -111 }, { 0 }, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }},
@@ -10706,7 +10707,7 @@ Gfx d_course_yoshi_valley_dl_145D0[] =
     gsSPEndDisplayList(),
 };
 
-// 0x145E8
+// 0x145E8 Flag animation?
 u8 d_course_yoshi_valley_unk2[] = {
 	0x00, 0x00, 0x12, 0xE3, 0x0F, 0x43, 0x09, 0x9F, 0x02, 0xD1, 0xFB, 0xB3,
 	0xF5, 0x1B, 0xEF, 0xE3, 0xEC, 0xC0, 0xEA, 0x97, 0xE9, 0x05, 0xE8, 0x17,
@@ -10788,7 +10789,7 @@ u8 d_course_yoshi_valley_hedgehog[] = {
 };
 
 // 0x15B08
-Vtx_t d_course_yoshi_valley_model8[] = {
+Vtx_t d_course_yoshi_valley_tree_model[] = {
     {{ 40, 10, 0 }, { 0 }, { 1331, 1780 }, {0xFF, 0xFE, 0xFE, 0xFF }},
     {{ 0, 100, 0 }, { 0 }, { 511, 178 }, {0xFF, 0xFE, 0xFE, 0xFF }},
     {{ -40, 10, 0 }, { 0 }, { -307, 1780 }, {0xFF, 0xFE, 0xFE, 0xFF }},
@@ -10812,7 +10813,7 @@ Gfx d_course_yoshi_valley_dl_15B48[] =
 };
 
 // 0x15BD8
-Vtx_t d_course_yoshi_valley_model9[] = {
+Vtx_t d_course_yoshi_valley_egg_model[] = {
     {{ -39, 28, 39 }, { 0 }, { 264, 845 }, {0xB7, 0xCD, 0x4E, 0xFF }},
     {{ -28, 51, 53 }, { 0 }, { 477, 501 }, {0xCB, 0x00, 0x6A, 0xFF }},
     {{ -50, 51, 27 }, { 0 }, { 74, 536 }, {0x98, 0x00, 0x39, 0xFF }},
@@ -11040,8 +11041,8 @@ Gfx d_course_yoshi_valley_dl_16D70[] =
     gsSPEndDisplayList(),
 };
 
-// 0x16F68
-Vtx_t d_course_yoshi_valley_model10[] = {
+// 0x16F68 Far lod
+Vtx_t d_course_yoshi_valley_egg_model_lod0[] = {
     {{ 72, 102, 0 }, { 0 }, { 2048, 0 }, {0xFF, 0xFE, 0xFE, 0xFF }},
     {{ -60, 0, 0 }, { 0 }, { 0, 1024 }, {0xFF, 0xFE, 0xFE, 0xFF }},
     {{ 72, 0, 0 }, { 0 }, { 2048, 1024 }, {0xFF, 0xFE, 0xFE, 0xFF }},
