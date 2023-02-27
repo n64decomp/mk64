@@ -522,7 +522,12 @@ SECTIONS
    } \
    END_SEG(course_frappe_snowland_dl_mio0)
 
-   MIO0_SEG(course_koopa_troopa_beach_dl)
+   BEGIN_SEG(course_koopa_troopa_beach_dl_mio0, 0x06000000) \
+   { \
+      BUILD_DIR/courses/mushroom_cup/koopa_troopa_beach/gfx.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(course_koopa_troopa_beach_dl_mio0)
 
    BEGIN_SEG(course_royal_raceway_dl_mio0, 0x06000000) \
    { \
