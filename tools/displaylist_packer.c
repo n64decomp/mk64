@@ -6,14 +6,15 @@
 #define MAX_STRING_LENGTH 256
 #define MAX_STRING_OUTPUT 10000
 
-// Compile using gcc -o tools/displaylist_unpacker tools/displaylist_packer.c
+// Compile using gcc -o tools/displaylist_packer tools/displaylist_packer.c -mbig-endian
+// Run using ./displaylist_packer input.bin output.bin
 
-void pack(FILE *input_file, FILE *output_file, char *output_string, char* course_name);
+void pack(FILE *input_file, FILE *output_file);
 
 int main(int argc, char *argv[]) {
     // Check if we have the correct number of arguments
-    if (argc != 4) {
-        printf("Usage: ./dl_unpack input_file.bin output_filename course_name\n");
+    if (argc != 3) {
+        printf("Usage: ./dl_unpack input.bin output.bin\n");
         exit(1);
     }
 
@@ -25,21 +26,13 @@ int main(int argc, char *argv[]) {
     }
 
     // Create the output file
-    char output_file_name[MAX_STRING_LENGTH];
-    snprintf(output_file_name, MAX_STRING_LENGTH, "%s.bin", argv[2]);
-    FILE *output_file = fopen(output_file_name, "wb");
+    FILE *output_file = fopen(argv[2], "wb");
     if (output_file == NULL) {
-        printf("Failed to create output file: %s\n", output_file_name);
+        printf("Failed to create output file: %s\n", argv[2]);
         exit(1);
     }
 
-    // Allocate memory for the string
-    char *output_string = (char *) malloc(MAX_STRING_OUTPUT * sizeof(char));
-    if (output_string == NULL) {
-        printf("Failed to allocate memory for output string.\n");
-        exit(1);
-    }
-    pack(input_file, output_file, output_string, argv[3]);
+    pack(input_file, output_file);
     return 0;
 }
 
@@ -60,8 +53,9 @@ uint32_t compressB1(uint8_t a, uint8_t b, uint8_t c) {
 #define ARG1WORD(val) ((val) >> 32)
 #define ARG2(val) ((val) >> 40)
 #define ARG2WORD(val) ((val) >> 32)
+#define OPCODE(val) (uint8_t)((val) >> 56)
 
-void pack(FILE *input_file, FILE *output_file, char *output_string, char* course_name) {
+void pack(FILE *input_file, FILE *output_file) {
 
     // Initialize the string to an empty string
 
@@ -84,7 +78,7 @@ void pack(FILE *input_file, FILE *output_file, char *output_string, char* course
     char reusableStr[100];
     while (fread(&cmd, sizeof(uint64_t), 1, input_file) == 1) {
         cmd = swap_endian(cmd);
-        opCode = (cmd >> 56) & 0xFF;
+        opCode = OPCODE(cmd);
         //printf("%X \n", opCode);
         switch (opCode) {
             case 0xBF:
@@ -103,13 +97,13 @@ void pack(FILE *input_file, FILE *output_file, char *output_string, char* course
                 break;
             case 0xB1:
                 data[count++] = 0x58;
-                *(uint16_t*) (data + count) = compressB1(cmd >> 48, cmd >> 40, cmd >> 32);
+                *(uint16_t*) (data + count) = compressB1(ARG1(cmd), ARG2(cmd), cmd >> 32);
                 count++; count++;
                 *(uint16_t*) (data + count) = compressB1(cmd >> 16, cmd >> 8, cmd);
                 count++; count++;
                 break;
             case 0x04:
-                // Skip the opcode and read bytes 2/3 from the u64.
+                // Skip the opcode and read bytes 2/3 from the u64 (Byte 1 is the opcode 0x04).
                 data[count++] = (uint8_t)(((((uint16_t)ARG1WORD(cmd)) + 1) / 0x410) + 0x32);
                 // Read the right side of the u64 (as a u32).
                 *(uint16_t*) (data + count) = (uint16_t)(((uint32_t)cmd - 0x04000000) / 16);
@@ -186,10 +180,6 @@ void pack(FILE *input_file, FILE *output_file, char *output_string, char* course
                 data[count++] = p2;
 
                 data[count++] = p1;
-
-                //fread(&cmd, sizeof(uint64_t), 1, input_file);
-                //cmd = swap_endian(cmd);
-                //fseek(input_file, 8, SEEK_CUR);
                 break;
             case 0xBB:
                 if ((uint16_t)cmd == 0x0001) {
@@ -211,11 +201,6 @@ void pack(FILE *input_file, FILE *output_file, char *output_string, char* course
                 break;
             case 0xFC:
                 data[count++] = 0x53;
-                // if (cmd) {
-                //     data[count++] = 0x15;
-                // } else if {
-                //     data[count++] = 0x15;
-                // }
                 break;
             case 0xB7:
                 data[count++] = 0x56;
@@ -232,6 +217,7 @@ void pack(FILE *input_file, FILE *output_file, char *output_string, char* course
 
         offset += 4;
     }
+    // Coded as little endian but gets written as big endian (0xFF000000).
     *(uint32_t*) (data + count) = 0x000000FF;
     count++; count++; count++; count++;
     *(uint32_t*) (data + count) = 0x00000000;
@@ -250,5 +236,4 @@ void pack(FILE *input_file, FILE *output_file, char *output_string, char* course
     // Close the files and free the memory
     fclose(input_file);
     fclose(output_file);
-    free(output_string);
 }
