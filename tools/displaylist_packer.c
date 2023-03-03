@@ -231,7 +231,6 @@ void pack(FILE *input_file, FILE *output_file, char *output_string, char* course
         }
 
         offset += 4;
-        if (offset >= 12000) {break;}
     }
     *(uint32_t*) (data + count) = 0x000000FF;
     count++; count++; count++; count++;
