@@ -52,10 +52,7 @@ uint64_t swap_endian(uint64_t value) {
     return result;
 }
 
-uint32_t compress(uint8_t a, uint8_t b, uint8_t c) {
-    uint8_t result;
-    //printf("0x%X ", a); printf("0x%X ", b); printf("0x%X\n", c);
-    //printf("0x%X", (a / 2) | ((b / 2) << 5) | ((c / 2) << 10) );
+uint32_t compressB1(uint8_t a, uint8_t b, uint8_t c) {
     return (a / 2) | ((b / 2) << 5) | ((c / 2) << 10);
 }
 
@@ -95,9 +92,7 @@ void pack(FILE *input_file, FILE *output_file, char *output_string, char* course
                 p1 = (uint8_t) (cmd >> 16) / 2;
                 p2 = (uint8_t) (cmd >> 8) / 2;
                 p3 = (uint8_t) (cmd) / 2;
-                //printf("%llX\n", (uint8_t)cmd);
-                //printf("%X\n", (uint8_t)cmd >> 8);
-                //printf("%X\n", (uint16_t) (p1 | (p2 << 5) | (p3 << 10)));
+
                 *(uint16_t*) (data + count) = (uint16_t) (p1 | (p2 << 5) | (p3 << 10));
                 count++; count++;
                 break;
@@ -108,17 +103,15 @@ void pack(FILE *input_file, FILE *output_file, char *output_string, char* course
                 break;
             case 0xB1:
                 data[count++] = 0x58;
-                *(uint16_t*) (data + count) = compress(cmd >> 48, cmd >> 40, cmd >> 32);
+                *(uint16_t*) (data + count) = compressB1(cmd >> 48, cmd >> 40, cmd >> 32);
                 count++; count++;
-                *(uint16_t*) (data + count) = compress(cmd >> 16, cmd >> 8, cmd);
+                *(uint16_t*) (data + count) = compressB1(cmd >> 16, cmd >> 8, cmd);
                 count++; count++;
                 break;
             case 0x04:
                 // Skip the opcode and read bytes 2/3 from the u64.
                 data[count++] = (uint8_t)(((((uint16_t)ARG1WORD(cmd)) + 1) / 0x410) + 0x32);
                 // Read the right side of the u64 (as a u32).
-
-                //printf("0x%X\n", (uint16_t)((uint32_t)cmd - 0x04000000) / 16);
                 *(uint16_t*) (data + count) = (uint16_t)(((uint32_t)cmd - 0x04000000) / 16);
                 count++; count++;
                 break;
@@ -129,7 +122,7 @@ void pack(FILE *input_file, FILE *output_file, char *output_string, char* course
                 fseek(input_file, 24, SEEK_CUR);
                 fread(&cmd, sizeof(uint64_t), 1, input_file);
                 cmd = swap_endian(cmd);
-                //printf("0x%lX\n", cmd);
+
                 if (cmd == 0xF3000000073FF100) {
                     data[count++] = 0x20;
                 } else if (cmd == 0xF3000000077FF080) {
@@ -156,12 +149,8 @@ void pack(FILE *input_file, FILE *output_file, char *output_string, char* course
                 cmd = swap_endian(cmd);
                 p5 = ARG1WORD(cmd);
 
-                //printf("0x%llX\n", cmd);
                 p1 = ((cmd >> 14) & 0xF) << 4 | (cmd >> 18) & 0xF;
                 p2 = ((cmd >> 4) & 0xF) << 4 | (cmd >> 8) & 0xF;
-
-                //printf("0x%X\n", (cmd >> 18) & 0xF) | (cmd >> 14) & 0xF;
-                //printf("0x%X\n", (cmd >> 8)  & 0xF)  | (cmd >> 4)  & 0xF;
 
                 // Read 0xF2
                 fread(&cmd, sizeof(uint64_t), 1, input_file);
