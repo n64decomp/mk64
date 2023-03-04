@@ -6,7 +6,7 @@
 #define MAX_STRING_LENGTH 256
 #define MAX_STRING_OUTPUT 10000
 
-// Compile using gcc -o tools/displaylist_packer tools/displaylist_packer.c -mbig-endian
+// Compile using gcc -o tools/displaylist_packer tools/displaylist_packer.c
 // Run using ./displaylist_packer input.bin output.bin
 
 void pack(FILE *input_file, FILE *output_file);
@@ -62,7 +62,6 @@ void pack(FILE *input_file, FILE *output_file) {
     uint8_t p1;
     uint8_t p2;
     uint8_t p3;
-    uint16_t p4;
     uint32_t p5;
     uint32_t p6;
     uint64_t compare;
@@ -74,8 +73,6 @@ void pack(FILE *input_file, FILE *output_file) {
     uint32_t offset = 0;
     uint32_t count = 0;
     uint8_t data[10000];
-    char offsetStr[100];
-    char reusableStr[100];
     while (fread(&cmd, sizeof(uint64_t), 1, input_file) == 1) {
         cmd = swap_endian(cmd);
         opCode = OPCODE(cmd);
@@ -143,8 +140,8 @@ void pack(FILE *input_file, FILE *output_file) {
                 cmd = swap_endian(cmd);
                 p5 = ARG1WORD(cmd);
 
-                p1 = ((cmd >> 14) & 0xF) << 4 | (cmd >> 18) & 0xF;
-                p2 = ((cmd >> 4) & 0xF) << 4 | (cmd >> 8) & 0xF;
+                p1 = (((cmd >> 14) & 0xF) << 4) | ((cmd >> 18) & 0xF);
+                p2 = (((cmd >> 4) & 0xF) << 4) | ((cmd >> 8) & 0xF);
 
                 // Read 0xF2
                 fread(&cmd, sizeof(uint64_t), 1, input_file);
