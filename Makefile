@@ -353,14 +353,7 @@ $(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c
 	$(AS) $(ASFLAGS) -o $@ $(@D)/model.inc.mio0.s
 
 #################### Compile course displaylists to mio0 #####################
-
-COURSE_DL_TARGETS := build/us/courses/battle/big_donut/gfx.inc.mio0.o build/us/courses/battle/block_fort/gfx.inc.mio0.o build/us/courses/battle/skyscraper/gfx.inc.mio0.o \
-build/us/courses/battle/double_deck/gfx.inc.mio0.o build/us/courses/flower_cup/choco_mountain/gfx.inc.mio0.o build/us/courses/flower_cup/frappe_snowland/gfx.inc.mio0.o \
-build/us/courses/flower_cup/mario_raceway/gfx.inc.mio0.o build/us/courses/star_cup/bowsers_castle/gfx.inc.mio0.o build/us/courses/star_cup/sherbet_land/gfx.inc.mio0.o \
-build/us/courses/special_cup/banshee_boardwalk/gfx.inc.mio0.o build/us/courses/star_cup/wario_stadium/gfx.inc.mio0.o build/us/courses/star_cup/royal_raceway/gfx.inc.mio0.o \
-build/us/courses/mushroom_cup/luigi_raceway/gfx.inc.mio0.o build/us/courses/mushroom_cup/moo_moo_farm/gfx.inc.mio0.o build/us/courses/special_cup/dks_jungle_parkway/gfx.inc.mio0.o \
-build/us/courses/mushroom_cup/kalimari_desert/gfx.inc.mio0.o build/us/courses/special_cup/rainbow_road/gfx.inc.mio0.o build/us/courses/special_cup/yoshi_valley/gfx.inc.mio0.o \
-build/us/courses/mushroom_cup/koopa_troopa_beach/gfx.inc.mio0.o
+COURSE_DL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/gfx.inc.mio0.o)
 
 COURSE_TEXTURE_FILES := $(foreach dir,textures/courses,$(subst .png, , $(wildcard $(dir)/*)))
 COURSE_TLUT := $(foreach dir,textures/courses/tlut,$(subst .png, , $(wildcard $(dir)/*)))

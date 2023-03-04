@@ -10785,7 +10785,7 @@ u8 d_course_yoshi_valley_hedgehog_tlut[] = {
 
 // 0x14B08
 u8 d_course_yoshi_valley_hedgehog[] = {
-    #include "textures/courses/tlut/yoshi_valley_hedgehog.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut2/yoshi_valley_hedgehog.rgba16.ci8.inc.c"
 };
 
 // 0x15B08
