@@ -487,7 +487,7 @@ SECTIONS
    END_SEG(data_825800)
 
 
-   /* Segment six course data (Displaylists, models, textures, course paths, etc.) */
+   /* Segment Six Course Data (Displaylists, models, textures, course paths, etc.) */
 
    COURSE_DATA_SEG(flower_cup/mario_raceway,course_mario_raceway_dl)
    COURSE_DATA_SEG(flower_cup/choco_mountain,course_choco_mountain_dl)
@@ -531,7 +531,7 @@ SECTIONS
    COURSE_OFFSETS_SEG(course_dks_jungle_parkway_offsets, 0x09000000)
    COURSE_OFFSETS_SEG(course_big_donut_offsets, 0x09000000)
 
-   /* Course geography */
+   /* Segment 0xF Course Geography */
 
    COURSE_VERT_SEG(flower_cup/mario_raceway,mario_raceway_vertex)
    COURSE_VERT_SEG(flower_cup/choco_mountain,choco_mountain_vertex)
