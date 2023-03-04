@@ -353,7 +353,7 @@ $(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c
 	$(AS) $(ASFLAGS) -o $@ $(@D)/model.inc.mio0.s
 
 #################### Compile course displaylists to mio0 #####################
-COURSE_DL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/gfx.inc.mio0.o)
+COURSE_DL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.inc.mio0.o)
 
 COURSE_TEXTURE_FILES := $(foreach dir,textures/courses,$(subst .png, , $(wildcard $(dir)/*)))
 COURSE_TLUT := $(foreach dir,textures/courses/tlut,$(subst .png, , $(wildcard $(dir)/*)))
@@ -369,7 +369,7 @@ $(COURSE_TLUT):
 $(COURSE_TLUT2):
 	$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8 -c $(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(COURSE_TLUT2))), ,$(COURSE_TLUT2)))) -p $(BUILD_DIR)/$@.tlut.inc.c -m 0xFFFF
 
-$(COURSE_DL_TARGETS): $(BUILD_DIR)/%/gfx.inc.mio0.o : %/gfx.inc.c $(COURSE_TEXTURE_FILES) $(COURSE_TLUT) $(COURSE_TLUT2)
+$(COURSE_DL_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o : %/course_data.inc.c $(COURSE_TEXTURE_FILES) $(COURSE_TLUT) $(COURSE_TLUT2)
 # todo: Clean this up if possible. Not really worth the time though.
 	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_mushroom.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_mushroom4.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_mushroom4_tlut.rgba16.png
 
@@ -392,11 +392,11 @@ $(COURSE_DL_TARGETS): $(BUILD_DIR)/%/gfx.inc.mio0.o : %/gfx.inc.c $(COURSE_TEXTU
 	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab6.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab6.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
 	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab7.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab7.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
 
-	$(LD) -t -e 0 -Ttext=06000000 -Map $(@D)/gfx.inc.elf.map -o $(@D)/gfx.inc.elf $(@D)/gfx.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/gfx.inc.elf $(@D)/gfx.inc.bin
-	$(MIO0TOOL) -c $(@D)/gfx.inc.bin $(@D)/gfx.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/gfx.inc.mio0\"\n\n" > $(@D)/gfx.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $@ $(@D)/gfx.inc.mio0.s
+	$(LD) -t -e 0 -Ttext=06000000 -Map $(@D)/course_data.inc.elf.map -o $(@D)/course_data.inc.elf $(@D)/course_data.inc.o --no-check-sections
+	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/course_data.inc.elf $(@D)/course_data.inc.bin
+	$(MIO0TOOL) -c $(@D)/course_data.inc.bin $(@D)/course_data.inc.mio0
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/course_data.inc.mio0\"\n\n" > $(@D)/course_data.inc.mio0.s
+	$(AS) $(ASFLAGS) -o $@ $(@D)/course_data.inc.mio0.s
 
 
 ####################       STAFF GHOSTS        #####################
