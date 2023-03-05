@@ -182,6 +182,7 @@ endif
 MIO0TOOL = $(TOOLS_DIR)/mio0
 N64CKSUM = $(TOOLS_DIR)/n64cksum
 N64GRAPHICS = $(TOOLS_DIR)/n64graphics
+DLPACKER = $(TOOLS_DIR)/displaylist_packer
 BIN2C = $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
 EMULATOR = mupen64plus
@@ -342,14 +343,22 @@ endif
 
 #################### Compile course vertex to mio0 #####################
 
+COURSE_PACKED_DL := $(BUILD_DIR)/courses/flower_cup/mario_raceway/packed \
+	$(BUILD_DIR)/courses/mushroom_cup/koopa_troopa_beach/packed \
+	$(BUILD_DIR)/courses/battle/big_donut/packed \
+	$(BUILD_DIR)/courses/battle/block_fort/packed \
+	$(BUILD_DIR)/courses/battle/double_deck/packed \
+	$(BUILD_DIR)/courses/battle/skyscraper/packed \
+	$(BUILD_DIR)/courses/flower_cup/choco_mountain/packed \
+
 COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
 
 # Elf the course data to include symbol addresses then convert to binary and compress to mio0. The mio0 file is converted to an object file so that the linker can link it.
-$(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c
+$(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c $(COURSE_PACKED_DL)_dl.inc.bin
 	$(LD) -t -e 0 -Ttext=0F000000 -Map $(@D)/model.inc.elf.map -o $(@D)/model.inc.elf $(@D)/model.inc.o --no-check-sections
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/model.inc.elf $(@D)/model.inc.bin
 	$(MIO0TOOL) -c $(@D)/model.inc.bin $(@D)/model.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"bin/course_$(lastword $(subst /, ,$*))_packed.bin\"\n" > $(@D)/model.inc.mio0.s
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.bin\"\n" > $(@D)/model.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $@ $(@D)/model.inc.mio0.s
 
 #################### Compile course displaylists to mio0 #####################
@@ -397,6 +406,14 @@ $(COURSE_DL_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o : %/course_data.inc.
 	$(MIO0TOOL) -c $(@D)/course_data.inc.bin $(@D)/course_data.inc.mio0
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/course_data.inc.mio0\"\n\n" > $(@D)/course_data.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $@ $(@D)/course_data.inc.mio0.s
+
+#COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),/$(dir)/packed.inc.c)
+
+#$(info $(COURSE_PACKED_DL))
+$(COURSE_PACKED_DL)_dl.inc.bin:
+	$(LD) -t -e 0 -Ttext=07000000 -Map $(@D)/packed.inc.elf.map -o $(@D)/packed.inc.elf $(@D)/packed.inc.o --no-check-sections
+	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/packed.inc.elf $(@D)/packed.inc.bin
+	$(DLPACKER) $(@D)/packed.inc.bin $(@D)/packed_dl.inc.bin
 
 
 ####################       STAFF GHOSTS        #####################

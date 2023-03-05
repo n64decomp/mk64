@@ -62,8 +62,11 @@ void pack(FILE *input_file, FILE *output_file) {
     uint8_t p1;
     uint8_t p2;
     uint8_t p3;
+    uint8_t p4;
     uint32_t p5;
     uint32_t p6;
+    uint16_t p7;
+    uint32_t i;
     uint64_t compare;
     
 
@@ -72,12 +75,20 @@ void pack(FILE *input_file, FILE *output_file) {
     uint8_t opCode;
     uint32_t offset = 0;
     uint32_t count = 0;
-    uint8_t data[10000];
+    uint8_t data[50000];
     while (fread(&cmd, sizeof(uint64_t), 1, input_file) == 1) {
         cmd = swap_endian(cmd);
         opCode = OPCODE(cmd);
         //printf("%X \n", opCode);
         switch (opCode) {
+            case 0xB9:
+                p7 = (uint16_t) cmd;
+                if (p7 == 0x2078) {
+                    data[count++] = 0x18;
+                } else if (p7 == 0x3078) {
+                    data[count++] = 0x19;
+                }
+                break;
             case 0xBF:
                 data[count++] = 0x29;
                 p1 = (uint8_t) (cmd >> 16) / 2;
@@ -110,9 +121,18 @@ void pack(FILE *input_file, FILE *output_file) {
                 p1 = (uint32_t)(cmd - 0x05000000) >> 11;
                 p2 = 0x00;
                 p3 = 0x70;
+
+                p4 = (uint8_t)ARG1(cmd);
+
+
                 fseek(input_file, 24, SEEK_CUR);
                 fread(&cmd, sizeof(uint64_t), 1, input_file);
                 cmd = swap_endian(cmd);
+
+                if (p4 == 0x70) {
+                    cmd |= 0x300000000;
+                    
+                }
 
                 if (cmd == 0xF3000000073FF100) {
                     data[count++] = 0x20;
@@ -197,7 +217,15 @@ void pack(FILE *input_file, FILE *output_file) {
                 data[count++] = 0xDD;
                 break;
             case 0xFC:
-                data[count++] = 0x53;
+                p7 = (uint16_t)cmd;
+                if (p7 == 0xF3F9) {
+                    data[count++] = 0x16;
+                } else if (p7 == 0xFFFF) {
+                    data[count++] = 0x15;
+                } else if (p7 == 0x793C) {
+                    data[count++] = 0x17;
+                }
+                //data[count++] = 0x53;
                 break;
             case 0xB7:
                 data[count++] = 0x56;
@@ -205,24 +233,28 @@ void pack(FILE *input_file, FILE *output_file) {
             case 0xB6:
                 data[count++] = 0x57;
                 break;
+            case 0xFF:
+                data[count++] = 0xFF;
+                if (cmd) {
+                    p1 = ARG1(cmd);
+                    if (p1 <= 32) {
+                        for (i = 0; i < p1; i++) {
+                            data[count++] = 0x00;
+                        }
+                    }
+                }
+                goto eos; // end of switch
+                break;
             default:
-                printf("Error: Unknown Opcode: 0x%X ", opCode);
-                printf("Opcode written to file as 0xEE");
+                printf("Error: Unknown Opcode: 0x%X\n", opCode);
+                printf("Opcode written to file as 0xEE\n");
                 data[count++] = 0xEE;
                 break;
         }
 
         offset += 4;
     }
-    // Coded as little endian but gets written as big endian (0xFF000000).
-    *(uint32_t*) (data + count) = 0x000000FF;
-    count++; count++; count++; count++;
-    *(uint32_t*) (data + count) = 0x00000000;
-    count++; count++; count++; count++;
-    *(uint32_t*) (data + count) = 0x00000000;
-    count++; count++; count++; count++;
-    *(uint32_t*) (data + count) = 0x00000000;
-    count++; count++; count++; count++;
+    eos: ;
 
     size_t num_elements_written = fwrite(data, sizeof(uint8_t), count, output_file);
     if (num_elements_written != count) {
