@@ -3,7 +3,7 @@
 #include <PR/gbi.h>
 
 /**
- * @file Contains common course resources
+ * @file Contains common course data
  * @segment 0x0D
  * textures, vertices, displaylists, etc.
  * A good example would be lakitu or shells as they exist in every course.

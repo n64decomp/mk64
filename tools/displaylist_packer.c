@@ -75,6 +75,8 @@ void pack(FILE *input_file, FILE *output_file) {
     uint8_t opCode;
     uint32_t offset = 0;
     uint32_t count = 0;
+    // Warning: Static variable size may result in overflow if input file is too large.
+    // Solution: Increase array size.
     uint8_t data[50000];
     while (fread(&cmd, sizeof(uint64_t), 1, input_file) == 1) {
         cmd = swap_endian(cmd);

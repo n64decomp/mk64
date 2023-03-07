@@ -47,7 +47,10 @@ COURSE_DIRS := $(shell find courses -mindepth 2 -type d)
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 
-ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) $(INCLUDE_DIRS) $(ASM_DIRS) $(ALL_KARTS_DIRS) $(TEXTURES_DIR)/raw $(TEXTURES_DIR)/standalone $(TEXTURES_DIR)/startup_logo $(TEXTURES_DIR)/crash_screen $(TEXTURES_DIR)/trophy $(TEXTURES_DIR)/courses $(TEXTURES_DIR)/courses/tlut $(TEXTURES_DIR)/courses/tlut2 $(TEXTURE_DIRS) $(TEXTURE_DIRS)/tlut $(TEXTURE_DIRS)/tlut2 textures/courses/rainbow_road textures/courses/koopa_troopa_beach)
+ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) $(INCLUDE_DIRS) $(ASM_DIRS) $(ALL_KARTS_DIRS) $(TEXTURES_DIR)/raw \
+    $(TEXTURES_DIR)/standalone $(TEXTURES_DIR)/startup_logo $(TEXTURES_DIR)/crash_screen $(TEXTURES_DIR)/trophy $(TEXTURES_DIR)/courses        \
+	$(TEXTURES_DIR)/courses/tlut $(TEXTURES_DIR)/courses/tlut2 $(TEXTURE_DIRS) $(TEXTURE_DIRS)/tlut $(TEXTURES_DIR)/courses/tlut3              \
+	$(TEXTURE_DIRS)/tlut2)
 
 ################### Universal Dependencies ###################
 
@@ -160,7 +163,7 @@ INCLUDE_CFLAGS := -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I .
 GRUCODE_CFLAGS = -DF3DEX_GBI -D_LANGUAGE_C
 
 # Check code syntax with host compiler
-CC_CHECK := gcc -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) -std=gnu90 -Wall -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(VERSION_CFLAGS) $(GRUCODE_CFLAGS)
+CC_CHECK := gcc -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) -std=gnu90 -w -Wall -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(VERSION_CFLAGS) $(GRUCODE_CFLAGS)
 
 ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) --defsym F3DEX_GBI=1
 CFLAGS = -Wab,-r4300_mul -non_shared -G 0 -Xcpluscomm -Xfullwarn -signed $(OPT_FLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) $(VERSION_CFLAGS) $(MIPSISET) $(GRUCODE_CFLAGS)
@@ -343,22 +346,22 @@ endif
 
 #################### Compile course vertex to mio0 #####################
 
-COURSE_PACKED_DL := $(BUILD_DIR)/courses/flower_cup/mario_raceway/packed \
-	$(BUILD_DIR)/courses/mushroom_cup/koopa_troopa_beach/packed \
-	$(BUILD_DIR)/courses/battle/big_donut/packed \
-	$(BUILD_DIR)/courses/battle/block_fort/packed \
-	$(BUILD_DIR)/courses/battle/double_deck/packed \
-	$(BUILD_DIR)/courses/battle/skyscraper/packed \
-	$(BUILD_DIR)/courses/flower_cup/choco_mountain/packed \
+COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
 
 COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
 
+#$(info $(COURSE_PACKED_DL))
+$(COURSE_PACKED_DL): $(@D)/packed.inc.o
+	$(LD) -t -e 0 -Ttext=07000000 -Map $(@D)/packed.inc.elf.map -o $(@D)/packed.inc.elf $(@D)/packed.inc.o --no-check-sections
+	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/packed.inc.elf $(@D)/packed.inc.bin
+	$(DLPACKER) $(@D)/packed.inc.bin $(@D)/packed_dl.inc.bin
+
 # Elf the course data to include symbol addresses then convert to binary and compress to mio0. The mio0 file is converted to an object file so that the linker can link it.
-$(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c $(COURSE_PACKED_DL)_dl.inc.bin
+$(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c $(COURSE_PACKED_DL)
 	$(LD) -t -e 0 -Ttext=0F000000 -Map $(@D)/model.inc.elf.map -o $(@D)/model.inc.elf $(@D)/model.inc.o --no-check-sections
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/model.inc.elf $(@D)/model.inc.bin
 	$(MIO0TOOL) -c $(@D)/model.inc.bin $(@D)/model.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.bin\"\n" > $(@D)/model.inc.mio0.s
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.inc.bin\"\n" > $(@D)/model.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $@ $(@D)/model.inc.mio0.s
 
 #################### Compile course displaylists to mio0 #####################
@@ -367,6 +370,7 @@ COURSE_DL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_dat
 COURSE_TEXTURE_FILES := $(foreach dir,textures/courses,$(subst .png, , $(wildcard $(dir)/*)))
 COURSE_TLUT := $(foreach dir,textures/courses/tlut,$(subst .png, , $(wildcard $(dir)/*)))
 COURSE_TLUT2 := $(foreach dir,textures/courses/tlut2,$(subst .png, , $(wildcard $(dir)/*)))
+COURSE_TLUT3 := $(foreach dir,textures/courses/tlut3,$(subst .png, , $(wildcard $(dir)/*)))
 RAINBOW_ROAD_TEXTURE_FILES := $(foreach dir,textures/courses/rainbow_road,$(subst .png, , $(wildcard $(dir)/*)))
 
 $(COURSE_TEXTURE_FILES):
@@ -378,43 +382,42 @@ $(COURSE_TLUT):
 $(COURSE_TLUT2):
 	$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8 -c $(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(COURSE_TLUT2))), ,$(COURSE_TLUT2)))) -p $(BUILD_DIR)/$@.tlut.inc.c -m 0xFFFF
 
-$(COURSE_DL_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o : %/course_data.inc.c $(COURSE_TEXTURE_FILES) $(COURSE_TLUT) $(COURSE_TLUT2)
+$(COURSE_TLUT3):
+	$(N64GRAPHICS) -Z $(BUILD_DIR)/$@.inc.c -g $@.png -s u8 -c rgba16 -f ci8 -p textures/courses/$(basename $(notdir $@)).png
+#   tluts
+#	$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8 -c $(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(COURSE_TLUT2))), ,$(COURSE_TLUT2)))) -p $(BUILD_DIR)/$@.tlut.inc.c -m 0xFFFF
+
+
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_mushroom.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_mushroom4.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_mushroom4_tlut.rgba16.png
+
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_mario.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_mario5.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_mario5_tlut.rgba16.png
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_boo.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_boo5.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_boo5_tlut.rgba16.png
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_peach.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_peach.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_peach_tlut.rgba16.png
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_luigi.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_luigi.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_luigi_tlut.rgba16.png
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_donkey_kong.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_donkey_kong.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_donkey_kong_tlut.rgba16.png
+
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_yoshi.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_yoshi.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_yoshi_tlut.rgba16.png
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_bowser.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_bowser.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_bowser_tlut.rgba16.png
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_wario.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_wario.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_wario_tlut.rgba16.png
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_toad.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_toad.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_toad_tlut.rgba16.png
+
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab1.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab1.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab2.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab2.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab3.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab3.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab4.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab4.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab5.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab5.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab6.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab6.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
+#	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab7.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab7.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
+#   $(info RUNNING)
+#	$(error "Forced error")
+
+$(COURSE_DL_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o : %/course_data.inc.c $(BUILD_DIR)/%/course_data.inc.o $(COURSE_TEXTURE_FILES) $(COURSE_TLUT) $(COURSE_TLUT2) $(COURSE_TLUT3)
 # todo: Clean this up if possible. Not really worth the time though.
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_mushroom.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_mushroom4.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_mushroom4_tlut.rgba16.png
-
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_mario.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_mario5.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_mario5_tlut.rgba16.png
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_boo.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_boo5.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_boo5_tlut.rgba16.png
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_peach.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_peach.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_peach_tlut.rgba16.png
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_luigi.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_luigi.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_luigi_tlut.rgba16.png
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_donkey_kong.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_donkey_kong.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_donkey_kong_tlut.rgba16.png
-
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_yoshi.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_yoshi.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_yoshi_tlut.rgba16.png
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_bowser.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_bowser.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_bowser_tlut.rgba16.png
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_wario.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_wario.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_wario_tlut.rgba16.png
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/rainbow_road/neon_toad.rgba16.ci8.inc.c -g textures/courses/rainbow_road/neon_toad.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/rainbow_road_neon_toad_tlut.rgba16.png
-
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab1.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab1.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab2.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab2.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab3.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab3.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab4.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab4.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab5.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab5.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab6.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab6.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
-	$(N64GRAPHICS) -Z $(BUILD_DIR)/textures/courses/koopa_troopa_beach/crab7.rgba16.ci8.inc.c -g textures/courses/koopa_troopa_beach/crab7.rgba16.ci8.png -s u8 -c rgba16 -f ci8 -p textures/courses/koopa_troopa_beach_crab_tlut.rgba16.png
-
 	$(LD) -t -e 0 -Ttext=06000000 -Map $(@D)/course_data.inc.elf.map -o $(@D)/course_data.inc.elf $(@D)/course_data.inc.o --no-check-sections
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/course_data.inc.elf $(@D)/course_data.inc.bin
 	$(MIO0TOOL) -c $(@D)/course_data.inc.bin $(@D)/course_data.inc.mio0
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/course_data.inc.mio0\"\n\n" > $(@D)/course_data.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $@ $(@D)/course_data.inc.mio0.s
-
-#COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),/$(dir)/packed.inc.c)
-
-#$(info $(COURSE_PACKED_DL))
-$(COURSE_PACKED_DL)_dl.inc.bin:
-	$(LD) -t -e 0 -Ttext=07000000 -Map $(@D)/packed.inc.elf.map -o $(@D)/packed.inc.elf $(@D)/packed.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/packed.inc.elf $(@D)/packed.inc.bin
-	$(DLPACKER) $(@D)/packed.inc.bin $(@D)/packed_dl.inc.bin
-
 
 ####################       STAFF GHOSTS        #####################
 
