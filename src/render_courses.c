@@ -3,6 +3,7 @@
 #include <common_structs.h>
 #include <defines.h>
 #include <types.h>
+#include <packed_displaylist_symbols.h>
 #include "actors.h"
 #include "math_util.h"
 #include "memory.h"
@@ -1585,6 +1586,8 @@ void render_dks_jungle_parkway(struct UnkStruct_800DC5EC *arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
+extern Gfx d_course_big_donut_packed_dl_450[];
+
 void render_big_donut(struct UnkStruct_800DC5EC *arg0) {
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -1599,7 +1602,7 @@ void render_big_donut(struct UnkStruct_800DC5EC *arg0) {
         gSPDisplayList(gDisplayListHead++, 0x07000DE8);
 
     }
-    gSPDisplayList(gDisplayListHead++, 0x07000450);
+    gSPDisplayList(gDisplayListHead++, &d_course_big_donut_packed_dl_450);
     gSPDisplayList(gDisplayListHead++, 0x07000AC0);
     gSPDisplayList(gDisplayListHead++, 0x07000D20);
     gSPDisplayList(gDisplayListHead++, 0x07000230);
