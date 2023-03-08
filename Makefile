@@ -351,7 +351,7 @@ COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.i
 COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
 
 #$(info $(COURSE_PACKED_DL))
-$(COURSE_PACKED_DL): $(@D)/packed.inc.o
+$(COURSE_PACKED_DL):
 	$(LD) -t -e 0 -Ttext=07000000 -Map $(@D)/packed.inc.elf.map -o $(@D)/packed.inc.elf $(@D)/packed.inc.o --no-check-sections
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/packed.inc.elf $(@D)/packed.inc.bin
 	$(DLPACKER) $(@D)/packed.inc.bin $(@D)/packed_dl.inc.bin
@@ -371,7 +371,7 @@ COURSE_TEXTURE_FILES := $(foreach dir,textures/courses,$(subst .png, , $(wildcar
 COURSE_TLUT := $(foreach dir,textures/courses/tlut,$(subst .png, , $(wildcard $(dir)/*)))
 COURSE_TLUT2 := $(foreach dir,textures/courses/tlut2,$(subst .png, , $(wildcard $(dir)/*)))
 COURSE_TLUT3 := $(foreach dir,textures/courses/tlut3,$(subst .png, , $(wildcard $(dir)/*)))
-RAINBOW_ROAD_TEXTURE_FILES := $(foreach dir,textures/courses/rainbow_road,$(subst .png, , $(wildcard $(dir)/*)))
+#RAINBOW_ROAD_TEXTURE_FILES := $(foreach dir,textures/courses/rainbow_road,$(subst .png, , $(wildcard $(dir)/*)))
 
 $(COURSE_TEXTURE_FILES):
 	$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8

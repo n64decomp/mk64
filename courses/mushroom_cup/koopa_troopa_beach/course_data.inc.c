@@ -8056,36 +8056,36 @@ struct ActorSpawnData d_course_koopa_troopa_beach_dl[] = {
 
 // 0xD628
 u8 d_course_koopa_troopa_beach_crab_tlut[] = {
-    #include "textures/courses/koopa_troopa_beach_crab_tlut.rgba16.inc.c"
+    #include "textures/courses/koopa_troopa_beach_crab1.rgba16.inc.c"
 };
 
 // 0xD828
 u8 d_course_koopa_troopa_beach_crab1[] = {
-    #include "textures/courses/koopa_troopa_beach/crab1.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/koopa_troopa_beach_crab1.rgba16.ci8.inc.c"
 };
 
 u8 d_course_koopa_troopa_beach_crab2[] = {
-    #include "textures/courses/koopa_troopa_beach/crab2.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/koopa_troopa_beach_crab2.rgba16.ci8.inc.c"
 };
 
 u8 d_course_koopa_troopa_beach_crab3[] = {
-    #include "textures/courses/koopa_troopa_beach/crab3.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/koopa_troopa_beach_crab3.rgba16.ci8.inc.c"
 };
 
 u8 d_course_koopa_troopa_beach_crab4[] = {
-    #include "textures/courses/koopa_troopa_beach/crab4.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/koopa_troopa_beach_crab4.rgba16.ci8.inc.c"
 };
 
 u8 d_course_koopa_troopa_beach_crab5[] = {
-    #include "textures/courses/koopa_troopa_beach/crab5.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/koopa_troopa_beach_crab5.rgba16.ci8.inc.c"
 };
 
 u8 d_course_koopa_troopa_beach_crab6[] = {
-    #include "textures/courses/koopa_troopa_beach/crab6.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/koopa_troopa_beach_crab6.rgba16.ci8.inc.c"
 };
 
 u8 d_course_koopa_troopa_beach_crab7[] = {
-    #include "textures/courses/koopa_troopa_beach/crab7.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/koopa_troopa_beach_crab7.rgba16.ci8.inc.c"
 };
 
 // 0x14828

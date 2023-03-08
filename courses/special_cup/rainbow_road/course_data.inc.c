@@ -2901,131 +2901,131 @@ struct ActorSpawnData d_course_rainbow_road_path2[] = {
 
 // some textures 0x5400
 u8 d_course_rainbow_road_mushroom_tlut1[] = {
-    #include "textures/courses/rainbow_road_neon_mushroom1_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_mushroom1.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_mushroom_tlut2[] = {
-    #include "textures/courses/rainbow_road_neon_mushroom2_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_mushroom2.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_mushroom_tlut3[] = {
-    #include "textures/courses/rainbow_road_neon_mushroom3_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_mushroom3.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_mushroom_tlut4[] = {
-    #include "textures/courses/rainbow_road_neon_mushroom4_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_mushroom4.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_mushroom_tlut5[] = {
-    #include "textures/courses/rainbow_road_neon_mushroom5_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_mushroom5.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_mario_tlut1[] = {
-    #include "textures/courses/rainbow_road_neon_mario1_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_mario1.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_mario_tlut2[] = {
-    #include "textures/courses/rainbow_road_neon_mario2_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_mario2.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_mario_tlut3[] = {
-    #include "textures/courses/rainbow_road_neon_mario3_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_mario3.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_mario_tlut4[] = {
-    #include "textures/courses/rainbow_road_neon_mario4_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_mario4.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_mario_tlut5[] = {
-    #include "textures/courses/rainbow_road_neon_mario5_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_mario5.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_boo_tlut1[] = {
-    #include "textures/courses/rainbow_road_neon_boo1_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_boo1.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_boo_tlut2[] = {
-    #include "textures/courses/rainbow_road_neon_boo2_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_boo2.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_boo_tlut3[] = {
-    #include "textures/courses/rainbow_road_neon_boo3_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_boo3.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_boo_tlut4[] = {
-    #include "textures/courses/rainbow_road_neon_boo4_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_boo4.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_boo_tlut5[] = {
-    #include "textures/courses/rainbow_road_neon_boo5_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_boo5.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_peach_tlut[] = {
-    #include "textures/courses/rainbow_road_neon_peach_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_peach.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_luigi_tlut[] = {
-    #include "textures/courses/rainbow_road_neon_luigi_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_luigi.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_donkey_kong_tlut[] = {
-    #include "textures/courses/rainbow_road_neon_donkey_kong_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_donkey_kong.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_yoshi_tlut[] = {
-    #include "textures/courses/rainbow_road_neon_yoshi_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_yoshi.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_bowser_tlut[] = {
-    #include "textures/courses/rainbow_road_neon_bowser_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_bowser.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_wario_tlut[] = {
-    #include "textures/courses/rainbow_road_neon_wario_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_wario.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_toad_tlut[] = {
-    #include "textures/courses/rainbow_road_neon_toad_tlut.rgba16.inc.c"
+    #include "textures/courses/rainbow_road_neon_toad.rgba16.inc.c"
 };
 
 u8 d_course_rainbow_road_neon_mushroom[] = {
-    #include "textures/courses/rainbow_road/neon_mushroom.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/rainbow_road_neon_mushroom4.rgba16.ci8.inc.c"
 };
 
 u8 d_course_rainbow_road_neon_mario[] = {
-    #include "textures/courses/rainbow_road/neon_mario.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/rainbow_road_neon_mario5.rgba16.ci8.inc.c"
 };
 
 u8 d_course_rainbow_road_neon_boo[] = {
-    #include "textures/courses/rainbow_road/neon_boo.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/rainbow_road_neon_boo5.rgba16.ci8.inc.c"
 };
 
 u8 d_course_rainbow_road_neon_peach[] = {
-    #include "textures/courses/rainbow_road/neon_peach.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/rainbow_road_neon_peach.rgba16.ci8.inc.c"
 };
 
 u8 d_course_rainbow_road_neon_luigi[] = {
-    #include "textures/courses/rainbow_road/neon_luigi.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/rainbow_road_neon_luigi.rgba16.ci8.inc.c"
 };
 
 u8 d_course_rainbow_road_neon_donkey_kong[] = {
-    #include "textures/courses/rainbow_road/neon_donkey_kong.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/rainbow_road_neon_donkey_kong.rgba16.ci8.inc.c"
 };
 
 u8 d_course_rainbow_road_neon_yoshi[] = {
-    #include "textures/courses/rainbow_road/neon_yoshi.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/rainbow_road_neon_yoshi.rgba16.ci8.inc.c"
 };
 
 u8 d_course_rainbow_road_neon_bowser[] = {
-    #include "textures/courses/rainbow_road/neon_bowser.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/rainbow_road_neon_bowser.rgba16.ci8.inc.c"
 };
 
 u8 d_course_rainbow_road_neon_wario[] = {
-    #include "textures/courses/rainbow_road/neon_wario.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/rainbow_road_neon_wario.rgba16.ci8.inc.c"
 };
 
 u8 d_course_rainbow_road_neon_toad[] = {
-    #include "textures/courses/rainbow_road/neon_toad.rgba16.ci8.inc.c"
+    #include "textures/courses/tlut3/rainbow_road_neon_toad.rgba16.ci8.inc.c"
 };
 
 // unk data
