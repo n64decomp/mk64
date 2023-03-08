@@ -1,8 +1,6 @@
 #ifndef RENDER_COURSES_H
 #define RENDER_COURSES_H
 
-#define ALIGNF(x) (((x) + 0xF) & ~0xF)
-
 struct Unk0CAC {
     s32 unk0;
     u8 unk4;

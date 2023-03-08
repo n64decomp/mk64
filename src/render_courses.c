@@ -1583,7 +1583,6 @@ void render_dks_jungle_parkway(struct UnkStruct_800DC5EC *arg0) {
     load_surface_map(dks_jungle_parkway_dls, arg0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
-
 }
 
 void render_big_donut(struct UnkStruct_800DC5EC *arg0) {
@@ -1758,14 +1757,14 @@ void func_80295BF8(s32 playerIndex) {
 }
 
 void func_80295C6C(void) {
-    gPrevLoadedAddress += ALIGNF(D_8015F588 * sizeof(mk64_surface_map_ram));
+    gPrevLoadedAddress += ALIGN16(D_8015F588 * sizeof(mk64_surface_map_ram));
     D_8015F6E8 += 20;
     D_8015F6F0 += 20;
     D_8015F6EA += -20;
     D_8015F6F2 += -20;
     D_8015F6EE += -20;
     func_802AF314();
-    gPrevLoadedAddress += ALIGNF(D_8015F58A * 2);
+    gPrevLoadedAddress += ALIGN16(D_8015F58A * 2);
 }
 
 UNUSED void func_80295D50(s16 arg0, s16 arg1) {
@@ -1797,7 +1796,7 @@ void func_80295D88(void) {
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
     switch (gCurrentCourseId) {
-        case 0:
+        case COURSE_MARIO_RACEWAY:
             func_802AF588(0x07001140);
             if (gScreenModeSelection == SCREEN_MODE_1P) {
                 func_802AF588(0x070008E8);
@@ -1808,7 +1807,7 @@ void func_80295D88(void) {
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
-        case 1:
+        case COURSE_CHOCO_MOUNTAIN:
             D_800DC5BC = 1;
             D_801625EC = 255;
             D_801625F4 = 255;
@@ -1830,13 +1829,13 @@ void func_80295D88(void) {
             func_80295C6C();
             D_8015F8E4 = -80.0f;
             break;
-        case 2:
+        case COURSE_BOWSER_CASTLE:
             func_80290CAC(&D_060093D8);
             func_80295C6C();
             func_802AF8BC(0x07001350, 0x32, 0, 0, 0);
             D_8015F8E4 = -50.0f;
             break;
-        case 3:
+        case COURSE_BANSHEE_BOARDWALK:
             D_800DC5BC = 1;
             D_801625EC = 0;
             D_801625F4 = 0;
@@ -1846,18 +1845,18 @@ void func_80295D88(void) {
             func_802AF8BC(0x07000878, 128, 0, 0, 0);
             D_8015F8E4 = -80.0f;
             break;
-        case 4:
+        case COURSE_YOSHI_VALLEY:
             func_802B5D64(D_06016558, -0x38F0, 0x1C70, 1);
             func_80290CAC(D_06018240);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
-        case 5:
+        case COURSE_FRAPPE_SNOWLAND:
             func_80290CAC(D_060079A0);
             func_80295C6C();
             D_8015F8E4 = -50.0f;
             break;
-        case 6:
+        case COURSE_KOOPA_BEACH:
             func_80290CAC(D_06018FD8);
             func_80295C6C();
             func_802AF8BC(0x0700ADE0, -0x6A, 255, 255, 255);
@@ -1865,22 +1864,22 @@ void func_80295D88(void) {
             func_802AF8BC(0x07009E70, -0x6A, 255, 255, 255);
             func_802AF8BC(0x07000358, -0x6A, 255, 255, 255);
             break;
-        case 7:
+        case COURSE_ROYAL_RACEWAY:
             func_80290CAC(D_0600DC28);
             func_80295C6C();
             D_8015F8E4 = -60.0f;
             break;
-        case 8:
+        case COURSE_LUIGI_RACEWAY:
             func_80290CAC(D_0600FF28);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
-        case 9:
+        case COURSE_MOO_MOO_FARM:
             func_80290CAC(D_060144B8);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
-        case 10:
+        case COURSE_TOADS_TURNPIKE:
             D_801625EC = 43;
             D_801625F4 = 13;
             D_801625F0 = 4;
@@ -1890,19 +1889,19 @@ void func_80295D88(void) {
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
-        case 11:
+        case COURSE_KALAMARI_DESERT:
             func_80290CAC(D_06023070);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
-        case 12:
+        case COURSE_SHERBET_LAND:
             func_80290CAC(D_06009C20);
             func_80295C6C();
             D_8015F8E4 = -18.0f;
             func_802AF8BC(0x07001EB8, -0x4C, 255, 255, 255);
             func_802AF8BC(0x07002308, -0x6A, 255, 255, 255);
             break;
-        case 13:
+        case COURSE_RAINBOW_ROAD:
             D_800DC5C8 = 1;
             func_80290CAC(D_06016440);
             func_80295C6C();
@@ -1914,7 +1913,7 @@ void func_80295D88(void) {
                 func_802AF8BC(0x07001FB8, -0x6A, 255, 255, 255);
             }
             break;
-        case 14:
+        case COURSE_WARIO_STADIUM:
             func_80290CAC(D_0600CC38);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
@@ -1927,30 +1926,30 @@ void func_80295D88(void) {
             func_802AF8BC(0x07000DD0, 100, 255, 255, 255);
             func_802AF8BC(0x07000E48, 100, 255, 255, 255);
             break;
-        case 15:
+        case COURSE_BLOCK_FORT:
             func_802AF5AC(0x070015C0, 1);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
-        case 16:
+        case COURSE_SKYSCRAPER:
             func_802AF5AC(0x07001110, 1);
             func_802AF5AC(0x07000258, 1);
             func_80295C6C();
 
             D_8015F8E4 = -480.0f;
             break;
-        case 17:
+        case COURSE_DOUBLE_DECK:
             func_802AF5AC(0x07000738, 1);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
-        case 18:
+        case COURSE_DK_JUNGLE:
             func_80290CAC(D_06014338);
             func_80295C6C();
             D_8015F8E4 =  -475.0f;
             func_802AF8BC(0x07003FA8, 120, 255, 255, 255);
             break;
-        case 19:
+        case COURSE_BIG_DONUT:
             func_802AF5AC(0x07001018, 6);
             func_802AF5AC(0x07000450, 6);
             func_802AF5AC(0x07000AC0, 6);
