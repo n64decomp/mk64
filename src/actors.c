@@ -99,7 +99,8 @@ void func_80296A50(struct ShellActor *shell) {
     }
 }
 
-void func_80296D10(struct Actor *actor, Vec3f startingPos, Vec3s startingRot, Vec3f startingVelocity, s16 actorType) {
+// Sets introductory values for a new actor (ex. Banana).
+void actor_init(struct Actor *actor, Vec3f startingPos, Vec3s startingRot, Vec3f startingVelocity, s16 actorType) {
     vec3f_copy(actor->pos, startingPos);
     vec3s_copy(actor->rot, startingRot);
     vec3f_copy(actor->velocity, startingVelocity);
@@ -1393,6 +1394,7 @@ UNUSED void func_8029AE14() {
 
 }
 
+// This likely attaches the paddle wheel to the boat
 void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, Mat4 arg2, u16 arg3) {
     s32 pad[3];
     Vec3f sp120;
@@ -1566,6 +1568,7 @@ void func_8029B6EC(Camera *camera, struct Actor* arg1) {
     }
 }
 
+// Spins train wheels?
 void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     s32 pad[3];
     Vec3f sp160;
@@ -1880,26 +1883,28 @@ void func_8029CA90(Camera *camera, struct FallingRock *rock) {
 
     if (temp_f0 < 0.0f) { return; }
 
-    if ((temp_f0 < 250000.0f) && (rock->unk30.unk34 == 1)) {
-        sp8C[0] = rock->pos[0];
-        sp8C[2] = rock->pos[2];
-        temp_f0 = func_802ABE30(sp8C[0], rock->pos[1], sp8C[2], rock->unk30.unk3A);
-        sp98[0] = 0;
-        sp98[1] = 0;
-        sp98[2] = 0;
-        sp8C[1] = temp_f0 + 2.0f;
-        func_802B5F74(sp4C, sp8C, sp98);
-        if (func_802B4FF8(sp4C, 0) != 0) {
+    if (temp_f0 < 250000.0f) {
+    
+        if (rock->unk30.unk34 == 1) {
+            sp8C[0] = rock->pos[0];
+            sp8C[2] = rock->pos[2];
+            temp_f0 = func_802ABE30(sp8C[0], rock->pos[1], sp8C[2], rock->unk30.unk3A);
+            sp98[0] = 0;
+            sp98[1] = 0;
+            sp98[2] = 0;
+            sp8C[1] = temp_f0 + 2.0f;
+            func_802B5F74(sp4C, sp8C, sp98);
+            if (func_802B4FF8(sp4C, 0) == 0) {
+                return;
+            }
             gSPDisplayList(gDisplayListHead++, D_06006F88);
-            goto block_6;
-        }
-    } else {
-block_6:
-        func_802B5F74(sp4C, rock->pos, rock->rot);
-        if (func_802B4FF8(sp4C, 0) != 0) {
-            gSPDisplayList(gDisplayListHead++, D_06006FE0);
         }
     }
+    func_802B5F74(sp4C, rock->pos, rock->rot);
+    if (func_802B4FF8(sp4C, 0) == 0) {
+        return;
+    }
+    gSPDisplayList(gDisplayListHead++, D_06006FE0);
 }
 
 void place_piranha_plants(struct ActorSpawnData *spawnData) {
@@ -1920,7 +1925,7 @@ void place_piranha_plants(struct ActorSpawnData *spawnData) {
         startingPos[0] = temp_s0->pos[0] * gCourseDirection;
         startingPos[1] = temp_s0->pos[1];
         startingPos[2] = temp_s0->pos[2];
-        temp = func_8029EC88(startingPos, startingRot, startingVelocity, ACTOR_PIRANHA_PLANT);
+        temp = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_PIRANHA_PLANT);
         temp_v1 = (struct PiranhaPlant *) &gActorList[temp];
         temp_v1->visibilityStates[0] = 0;
         temp_v1->visibilityStates[1] = 0;
@@ -1951,7 +1956,7 @@ void place_palm_trees(struct ActorSpawnData *spawnData) {
         startingPos[0] = temp_s0->pos[0] * gCourseDirection;
         startingPos[1] = temp_s0->pos[1];
         startingPos[2] = temp_s0->pos[2];
-        temp = func_8029EC88(startingPos, startingRot, startingVelocity, ACTOR_PALM_TREE);
+        temp = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_PALM_TREE);
         temp_v1 = (struct PalmTree *) &gActorList[temp];
 
         temp_v1->visibilityStates[0] = temp_s0->someId;
@@ -1991,7 +1996,7 @@ void place_falling_rocks(struct ActorSpawnData *spawnData) {
         startingPos[2] = temp_s0->pos[2];
         vec3f_set(startingVelocity, 0, 0, 0);
         vec3s_set(startingRot, 0, 0, 0);
-        temp = func_8029EC88(startingPos, startingRot, startingVelocity, ACTOR_FALLING_ROCK);
+        temp = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_FALLING_ROCK);
         temp_v1 = (struct FallingRock *) &gActorList[temp];
 
         temp_v1->unk_06 = temp_s0->someId;
@@ -2144,7 +2149,7 @@ void place_segment_06(struct ActorSpawnData *arg0) {
             break;
         }
 
-        temp_s0 = &gActorList[func_8029EC88(position, rotation, velocity, actorType)];
+        temp_s0 = &gActorList[addActorToEmptySlot(position, rotation, velocity, actorType)];
         if (gGamestate == CREDITS_SEQUENCE) {
             func_802976D8(temp_s0->rot);
         } else {
@@ -2167,24 +2172,25 @@ void place_all_item_boxes(struct ActorSpawnData *spawnData) {
     Vec3f startingVelocity;
     Vec3s startingRot;
 
-    if ((gModeSelection != TIME_TRIALS) && (gPlaceItemBoxes != 0)) {
-        vec3f_set(startingVelocity, 0, 0, 0);
-        while(temp_s0->pos[0] != -0x8000) {
-            startingPos[0] = temp_s0->pos[0] * gCourseDirection;
-            startingPos[1] = temp_s0->pos[1];
-            startingPos[2] = temp_s0->pos[2];
-            startingRot[0] = random_u16();
-            startingRot[1] = random_u16();
-            startingRot[2] = random_u16();
-            temp_s1 = func_8029EC88(startingPos, startingRot, startingVelocity, ACTOR_ITEM_BOX);
-            temp_f0 = func_802AE1C0(startingPos[0], startingPos[1] + 10.0f, startingPos[2]);
-            temp_v0 = (struct ItemBox *) &gActorList[temp_s1];
-            temp_v0->resetDistance = temp_f0;
-            temp_v0->origY = startingPos[1];
-            temp_v0->pos[1] = temp_f0 - 20.0f;
-            temp_s0++;
-        }
+    if ((gModeSelection == TIME_TRIALS) || (gPlaceItemBoxes == 0)) { return; }
+
+    vec3f_set(startingVelocity, 0, 0, 0);
+    while(temp_s0->pos[0] != -0x8000) {
+        startingPos[0] = temp_s0->pos[0] * gCourseDirection;
+        startingPos[1] = temp_s0->pos[1];
+        startingPos[2] = temp_s0->pos[2];
+        startingRot[0] = random_u16();
+        startingRot[1] = random_u16();
+        startingRot[2] = random_u16();
+        temp_s1 = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_ITEM_BOX);
+        temp_f0 = func_802AE1C0(startingPos[0], startingPos[1] + 10.0f, startingPos[2]);
+        temp_v0 = (struct ItemBox *) &gActorList[temp_s1];
+        temp_v0->resetDistance = temp_f0;
+        temp_v0->origY = startingPos[1];
+        temp_v0->pos[1] = temp_f0 - 20.0f;
+        temp_s0++;
     }
+    
 }
 
 void init_kiwano_fruit(void) {
@@ -2203,7 +2209,7 @@ void init_kiwano_fruit(void) {
         if ((phi_s1->unk_000 & 0x4000) == 0) { continue; }
         if ((phi_s1->unk_000 & 0x100) != 0) { continue; }
 
-        phi_s0 = func_8029EC88(sp64, sp50, sp58, ACTOR_KIWANO_FRUIT);
+        phi_s0 = addActorToEmptySlot(sp64, sp50, sp58, ACTOR_KIWANO_FRUIT);
         actor = &gActorList[phi_s0];
         actor->unk_04 = i;
     }
@@ -2227,7 +2233,7 @@ void destroy_all_actors(void) {
     }
 }
 
-void func_8029DB44(void) {
+void place_course_actors(void) {
     s32 stackPadding0;
     Vec3f position;
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };
@@ -2243,10 +2249,10 @@ void func_8029DB44(void) {
         place_all_item_boxes(D_06009498);
         vec3f_set(position, 150.0f, 40.0f, -1300.0f);
         position[0] *= gCourseDirection;
-        func_8029EC88(position, rotation, velocity, ACTOR_MARIO_RACEWAY_SIGN);
+        addActorToEmptySlot(position, rotation, velocity, ACTOR_MARIO_RACEWAY_SIGN);
         vec3f_set(position, 2520.0f, 0.0f, 1240.0f);
         position[0] *= gCourseDirection;
-        actor = &gActorList[func_8029EC88(position, rotation, velocity, ACTOR_MARIO_RACEWAY_SIGN)];
+        actor = &gActorList[addActorToEmptySlot(position, rotation, velocity, ACTOR_MARIO_RACEWAY_SIGN)];
         actor->flags |= 0x4000;
         break;
     case COURSE_CHOCO_MOUNTAIN:
@@ -2265,7 +2271,7 @@ void func_8029DB44(void) {
         place_all_item_boxes(D_06018110);
         vec3f_set(position, -2300.0f, 0.0f, 634.0f);
         position[0] *= gCourseDirection;
-        func_8029EC88(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
+        addActorToEmptySlot(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
         break;
     case COURSE_FRAPPE_SNOWLAND:
         place_segment_06(D_06007718);
@@ -2299,20 +2305,20 @@ void func_8029DB44(void) {
         place_all_item_boxes(D_06022E88);
         vec3f_set(position, -1680.0f, 2.0f, 35.0f);
         position[0] *= gCourseDirection;
-        rrxing = (struct RailroadCrossing *)&gActorList[func_8029EC88(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
+        rrxing = (struct RailroadCrossing *)&gActorList[addActorToEmptySlot(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
         rrxing->crossingId = 1;
         vec3f_set(position, -1600.0f, 2.0f, 35.0f);
         position[0] *= gCourseDirection;
-        rrxing = (struct RailroadCrossing *)&gActorList[func_8029EC88(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
+        rrxing = (struct RailroadCrossing *)&gActorList[addActorToEmptySlot(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
         rrxing->crossingId = 1;
         vec3s_set(rotation, 0, -0x2000, 0);
         vec3f_set(position, -2459.0f, 2.0f, 2263.0f);
         position[0] *= gCourseDirection;
-        rrxing = (struct RailroadCrossing *)&gActorList[func_8029EC88(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
+        rrxing = (struct RailroadCrossing *)&gActorList[addActorToEmptySlot(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
         rrxing->crossingId = 0;
         vec3f_set(position, -2467.0f, 2.0f, 2375.0f);
         position[0] *= gCourseDirection;
-        rrxing = (struct RailroadCrossing *)&gActorList[func_8029EC88(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
+        rrxing = (struct RailroadCrossing *)&gActorList[addActorToEmptySlot(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
         rrxing->crossingId = 0;
         break;
     case COURSE_SHERBET_LAND:
@@ -2325,13 +2331,13 @@ void func_8029DB44(void) {
         place_all_item_boxes(D_0600CB40);
         vec3f_set(position, -131.0f, 83.0f, 286.0f);
         position[0] *= gCourseDirection;
-        func_8029EC88(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+        addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
         vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
         position[0] *= gCourseDirection;
-        func_8029EC88(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+        addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
         vec3f_set(position, -2622.0f, 79.0f, 739.0f);
         position[0] *= gCourseDirection;
-        func_8029EC88(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+        addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
         break;
     case COURSE_BLOCK_FORT:
         place_all_item_boxes(D_06000038);
@@ -2451,7 +2457,7 @@ void func_8029E158(void) {
     }
     func_80297818();
     destroy_all_actors();
-    func_8029DB44();
+    place_course_actors();
     func_800122D8();
 }
 
@@ -2509,7 +2515,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                     func_8000EE58(actorIndex);
                 case 7:
                     func_8029E7DC(compare);
-                    func_80296D10(compare, pos, rot, velocity, actorType);
+                    actor_init(compare, pos, rot, velocity, actorType);
                     return actorIndex;
                 default:
                     break;
@@ -2521,7 +2527,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                     func_8000EE58(actorIndex);
                 case 7:
                     func_8029E7DC(compare);
-                    func_80296D10(compare, pos, rot, velocity, actorType);
+                    actor_init(compare, pos, rot, velocity, actorType);
                     return actorIndex;
                 }
                 break;
@@ -2531,7 +2537,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                 case 4:
                 case 5:
                     func_8029E7DC(compare);
-                    func_80296D10(compare, pos, rot, velocity, actorType);
+                    actor_init(compare, pos, rot, velocity, actorType);
                     return actorIndex;
                 }
                 break;
@@ -2540,7 +2546,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                 case 1:
                 case 2:
                     func_8029E7DC(compare);
-                    func_80296D10(compare, pos, rot, velocity, actorType);
+                    actor_init(compare, pos, rot, velocity, actorType);
                     return actorIndex;
                 }
                 break;
@@ -2564,7 +2570,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                 func_8000EE58(actorIndex);
             case 7:
                 func_8029E7DC(compare);
-                func_80296D10(compare, pos, rot, velocity, actorType);
+                actor_init(compare, pos, rot, velocity, actorType);
                 return actorIndex;
             default:
                 break;
@@ -2576,7 +2582,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                 func_8000EE58(actorIndex);
             case 7:
                 func_8029E7DC(compare);
-                func_80296D10(compare, pos, rot, velocity, actorType);
+                actor_init(compare, pos, rot, velocity, actorType);
                 return actorIndex;
             }
             break;
@@ -2586,7 +2592,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
             case 4:
             case 5:
                 func_8029E7DC(compare);
-                func_80296D10(compare, pos, rot, velocity, actorType);
+                actor_init(compare, pos, rot, velocity, actorType);
                 return actorIndex;
             }
             break;
@@ -2595,7 +2601,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
             case 1:
             case 2:
                 func_8029E7DC(compare);
-                func_80296D10(compare, pos, rot, velocity, actorType);
+                actor_init(compare, pos, rot, velocity, actorType);
                 return actorIndex;
             }
             break;
@@ -2607,7 +2613,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
     return -1;
 }
 
-s16 func_8029EC88(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
+s16 addActorToEmptySlot(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
     s32 index;
 
     if (gNumActors >= ACTOR_LIST_SIZE) {
@@ -2616,7 +2622,7 @@ s16 func_8029EC88(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
     for(index = 0; index < ACTOR_LIST_SIZE; index++){
         if (gActorList[index].flags == 0) {
             gNumActors++;
-            func_80296D10(&gActorList[index], pos, rot, velocity, actorType);
+            actor_init(&gActorList[index], pos, rot, velocity, actorType);
             return index;
         }
     }
@@ -2629,7 +2635,7 @@ s16 func_8029ED38(Vec3f pos, s16 actorType) {
 
     vec3f_set(vel, 0.0f, 0.0f, 0.0f);
     vec3s_set(rot, 0, 0, 0);
-    return func_8029EC88(pos, rot, vel, actorType);
+    return addActorToEmptySlot(pos, rot, vel, actorType);
 }
 
 // I swear we have a struct that looks like this already but I cannot find it anywhere
@@ -3577,15 +3583,15 @@ void func_802A14BC(f32 arg0, f32 arg1, f32 arg2) {
     Vec3s sp20;
     s16 temp_a0;
 
-    if (gModeSelection != TIME_TRIALS) {
-        vec3s_set(sp20, 0, 0, 0);
-        vec3f_set(sp28, 0, 0, 0);
-        sp34[0] = arg0;
-        sp34[1] = arg1;
-        sp34[2] = arg2;
-        temp_a0 = func_8029EC88(sp34, sp20, sp28, 43);
-        D_802BA05C = &gActorList[temp_a0];
-    }
+    if (gModeSelection == TIME_TRIALS) { return; }
+
+    vec3s_set(sp20, 0, 0, 0);
+    vec3f_set(sp28, 0, 0, 0);
+    sp34[0] = arg0;
+    sp34[1] = arg1;
+    sp34[2] = arg2;
+    temp_a0 = addActorToEmptySlot(sp34, sp20, sp28, 43);
+    D_802BA05C = &gActorList[temp_a0];
 }
 
 void update_obj_item_box_hot_air_balloon(struct ItemBox *itemBox) {

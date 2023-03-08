@@ -1,9 +1,12 @@
 CC := gcc
 CFLAGS := -I . -Wall -Wextra -Wno-unused-parameter -pedantic -std=c99 -O2 -s
-PROGRAMS := mio0 n64graphics n64cksum tkmk00 extract_data_for_mio
+PROGRAMS := mio0 n64graphics displaylist_packer n64cksum tkmk00 extract_data_for_mio
 
 n64graphics_SOURCES := n64graphics.c utils.c
 n64graphics_CFLAGS  := -DN64GRAPHICS_STANDALONE
+
+displaylist_packer_SOURCES := displaylist_packer.c
+displaylist_packer_CFLAGS  := -Wno-unused-result
 
 mio0_SOURCES := libmio0.c
 mio0_CFLAGS := -DMIO0_STANDALONE

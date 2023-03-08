@@ -511,7 +511,7 @@ s32 func_802B17F4(Player *player) {
     s16 actorIndex;
     struct BananaBunchParent *bananaBunch;
 
-    actorIndex = func_8029EC88(startingPos, startingRot, startingVelocity, ACTOR_BANANA_BUNCH);
+    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_BANANA_BUNCH);
     if (actorIndex < 0) {
         return actorIndex;
     }
@@ -530,7 +530,7 @@ s32 func_802B18E4(Player *player, s16 tripleShellType) {
     s16 actorIndex;
     struct TripleShellParent *parent;
 
-    actorIndex = func_8029EC88(startingPos, startingRot, startingVelocity, tripleShellType);
+    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, tripleShellType);
     if (actorIndex < 0) {
         return actorIndex;
     }
@@ -560,7 +560,7 @@ s32 func_802B19EC(struct TripleShellParent *parent, Player *player, s16 shellTyp
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
 
-    actorIndex = func_8029EC88(startingPos, startingRot, startingVelocity, shellType);
+    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, shellType);
     if (actorIndex < 0) {
         parent->shellIndices[shellId] = -1.0f;
         return -1;
@@ -605,7 +605,7 @@ s32 func_802B1C9C(Player *player) {
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
-    actorIndex = func_8029EC88(startingPos, startingRot, startingVelocity, ACTOR_GREEN_SHELL);
+    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_GREEN_SHELL);
     if (actorIndex < 0) {
         return actorIndex;
     }
@@ -638,7 +638,7 @@ s32 func_802B1E48(Player *player) {
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
-    actorIndex = func_8029EC88(startingPos, startingRot, startingVelocity, ACTOR_RED_SHELL);
+    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_RED_SHELL);
     if (actorIndex < 0) {
         return actorIndex;
     }
@@ -865,7 +865,7 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
     startingRot[0] = 0;
     startingRot[1] = 0;
     startingRot[2] = 0;
-    actorIndex = func_8029EC88(startingPos, startingRot, startingVelocity, ACTOR_BANANA);
+    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_BANANA);
     if (actorIndex >= 0) {
         newBanana = (struct BananaActor*)&gActorList[actorIndex];
         startingPos[0] = player->pos[0];
@@ -942,7 +942,7 @@ s32 func_802B2C40(Player *player) {
     startingRot[0] = 0;
     startingRot[1] = 0;
     startingRot[2] = 0;
-    actorIndex = func_8029EC88(startingPos, startingRot, startingVelocity, ACTOR_FAKE_ITEM_BOX);
+    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_FAKE_ITEM_BOX);
     if (actorIndex < 0) {
         return actorIndex;
     }
@@ -981,7 +981,7 @@ s32 func_802B2D70(Player *player) {
     startingRot[0] = 0;
     startingRot[1] = 0;
     startingRot[2] = 0;
-    actorIndex = func_8029EC88(startingPos, startingRot, startingVelocity, ACTOR_BANANA);
+    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_BANANA);
     if (actorIndex < 0) {
         return actorIndex;
     }
