@@ -540,10 +540,8 @@ SECTIONS
    COURSE_OFFSETS_SEG(course_big_donut_offsets, 0x09000000)
 
    /* Segment 0xF Course Geography and Segment 0x7 Packed Displaylists */
-
+   
    COURSE_VERT_SEG(flower_cup/mario_raceway,mario_raceway_vertex)
-   /* COURSE_PACKED_SEG(flower_cup/mario_raceway,mario_raceway_vertex) */
-
    COURSE_VERT_SEG(flower_cup/choco_mountain,choco_mountain_vertex)
    COURSE_VERT_SEG(star_cup/bowsers_castle,bowsers_castle_vertex)
    COURSE_VERT_SEG(special_cup/banshee_boardwalk,banshee_boardwalk_vertex)
