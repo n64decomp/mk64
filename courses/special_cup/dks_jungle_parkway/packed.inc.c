@@ -5812,11 +5812,3 @@ Gfx d_course_dks_jungle_parkway_packed_dl_9C18[] =
     gsSPDisplayList(0x07009BA8),
     gsSPEndDisplayList(),
 };
-
-/**
- * The displaylist unpacker stops unpacking when it reaches 0xFF.
- * Each course has a random number of final zero bytes.
- * The displaylist packer generates the zero byte tail based on the second index.
- * This is required for matching.
- */
-u8 d_course_dks_jungle_parkway_packed_end[] = { 0xFF, 6, 0, 0, 0, 0, 0, 0 };

@@ -193,9 +193,8 @@ extern u32 big_donut_textures[];
 */
 
 /**
- * The final displaylist member references the address of the final gsSPEndDisplayList command.
- * As such, subtracting 0x8 from the _end variable receives this address.
- * The _end variable is used for alignment. View the end of a packed.inc.c file for more info.
+ * The address of the final displaylist is generated and calculated by tools/generate_segment_headers.py
+ * It always refers to a gsSPEndDisplayList command.
  */
 #define GET_OFFSET(val) (val - 0x8) - 0x07000000
 

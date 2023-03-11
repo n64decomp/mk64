@@ -7811,11 +7811,3 @@ Gfx d_course_luigi_raceway_packed_dl_C730[] =
     gsSPDisplayList(0x0700C668),
     gsSPEndDisplayList(),
 };
-
-/**
- * The displaylist unpacker stops unpacking when it reaches 0xFF.
- * Each course has a random number of final zero bytes.
- * The displaylist packer generates the zero byte tail based on the second index.
- * This is required for matching.
- */
-u8 d_course_luigi_raceway_packed_end[] = { 0xFF, 9, 0, 0, 0, 0, 0, 0 };

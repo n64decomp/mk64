@@ -611,11 +611,3 @@ Gfx d_course_big_donut_packed_dl_1070[] =
     gsSPDisplayList(0x07001040),
     gsSPEndDisplayList(),
 };
-
-/**
- * The displaylist unpacker stops unpacking when it reaches 0xFF.
- * Each course has a random number of final zero bytes.
- * The displaylist packer generates the zero byte tail based on the second index.
- * This is required for matching.
- */
-u8 d_course_big_donut_packed_end[] = { 0xFF, 0, 0, 0, 0, 0, 0, 0 };

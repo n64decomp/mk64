@@ -3421,11 +3421,3 @@ Gfx d_course_choco_mountain_packed_dl_5AE0[] =
     gsSPDisplayList(0x07005A98),
     gsSPEndDisplayList(),
 };
-
-/**
- * The displaylist unpacker stops unpacking when it reaches 0xFF.
- * Each course has a random number of final zero bytes.
- * The displaylist packer generates the zero byte tail based on the second index.
- * This is required for matching.
- */
-u8 d_course_choco_mountain_packed_end[] = { 0xFF, 4, 0, 0, 0, 0, 0, 0 };
