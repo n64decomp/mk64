@@ -1331,12 +1331,12 @@ GLOBAL_ASM("asm/non_matchings/memory/func_802AA88C.s")
 
 s32 load_course(s32 courseId) {
     UNUSED s32 pad[4];
-    s32 temp_v0;
+    u32 *temp_v0;
     u32 *dlRomStart;
     u32 *dlRomEnd;
     u32 *vertexRomStart;
     u32 *vertexRomEnd;
-    s32 sp4C;
+    s32 pad2;
     s32 gamestate;
     u32 *textures;
     mk64_Vtx *vertexStart;
@@ -1348,6 +1348,7 @@ s32 load_course(s32 courseId) {
     s32 offsetRomStart;
     s32 offsetRomEnd;
 
+    // Pointers to rom offsets
     gamestate = gGamestate;
     dlRomStart = gCourseTable[courseId].dlRomStart;
     dlRomEnd = gCourseTable[courseId].dlRomEnd;
@@ -1373,7 +1374,7 @@ s32 load_course(s32 courseId) {
     }
     prevLoadedAddress_saved = gPrevLoadedAddress;
     temp_v0 = func_802A82E4((u8 *)vertexRomStart, (u8 *)vertexRomEnd);
-    sp4C = temp_v0;
+
     set_segment_base_addr(0xF, (void *)temp_v0);
     func_802A87A8(vertexStart, vertexCount);
     display_list_unpack(packedStart, finalDL, unknown1);
@@ -1382,7 +1383,8 @@ s32 load_course(s32 courseId) {
     return temp_v0;
 }
 
-void func_802AAA70(uintptr_t addr) {
+// Used for the choco mountain guard rail
+void nullify_displaylist(uintptr_t addr) {
     s32 segment = SEGMENT_NUMBER2(addr);
     s32 offset = SEGMENT_OFFSET(addr);
 
@@ -1390,7 +1392,7 @@ void func_802AAA70(uintptr_t addr) {
 
     macro = VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     macro->words.w0 = G_ENDDL << 24;
-    macro->words.w1 = G_SPNOOP;
+    macro->words.w1 = 0;
 }
 
 void func_802AAAAC(UnkActorInner *arg0) {

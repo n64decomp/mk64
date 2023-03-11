@@ -46,6 +46,14 @@ OUTPUT_ARCH (mips)
       . = ALIGN(0x10); \
    } \
    END_SEG(name)
+
+#define COURSE_PACKED_SEG(dir, name) \
+   BEGIN_SEG(name, 0x07000000) \
+   { \
+      BUILD_DIR/courses/dir/packed.inc.mio0.o(.data); \
+      . = ALIGN(0x10); \
+   } \
+   END_SEG(name)
 	
 #define BEGIN_NOLOAD(name) \
     _##name##SegNoloadStart = ADDR(.name.noload); \
@@ -531,9 +539,11 @@ SECTIONS
    COURSE_OFFSETS_SEG(course_dks_jungle_parkway_offsets, 0x09000000)
    COURSE_OFFSETS_SEG(course_big_donut_offsets, 0x09000000)
 
-   /* Segment 0xF Course Geography */
+   /* Segment 0xF Course Geography and Segment 0x7 Packed Displaylists */
 
    COURSE_VERT_SEG(flower_cup/mario_raceway,mario_raceway_vertex)
+   /* COURSE_PACKED_SEG(flower_cup/mario_raceway,mario_raceway_vertex) */
+
    COURSE_VERT_SEG(flower_cup/choco_mountain,choco_mountain_vertex)
    COURSE_VERT_SEG(star_cup/bowsers_castle,bowsers_castle_vertex)
    COURSE_VERT_SEG(special_cup/banshee_boardwalk,banshee_boardwalk_vertex)
