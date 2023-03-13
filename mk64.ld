@@ -481,7 +481,7 @@ SECTIONS
 
    /* TODO: 0x825800 -> 0x8028B230 (0x100) ...
             0x828400 -> 0x8028DE30 (0xD0) */
-   BEGIN_SEG(data_821D10, 0x0C000000)
+   BEGIN_SEG(data_821D10, 0x0B000000)
    {
       BUILD_DIR/src/trophy_model.inc.mio0.o(.data);
       . = ALIGN(0x10);
@@ -539,7 +539,7 @@ SECTIONS
    COURSE_OFFSETS_SEG(course_dks_jungle_parkway_offsets, 0x09000000)
    COURSE_OFFSETS_SEG(course_big_donut_offsets, 0x09000000)
 
-   /* Segment 0xF Course Geography and Segment 0x7 Packed Displaylists */
+   /* Segment 0xF Course Geography (0x4 uncompressed) and Segment 0x7 Packed Displaylists */
    
    COURSE_VERT_SEG(flower_cup/mario_raceway,mario_raceway_vertex)
    COURSE_VERT_SEG(flower_cup/choco_mountain,choco_mountain_vertex)
@@ -582,7 +582,6 @@ SECTIONS
       BUILD_DIR/data/sound_data/instrument_sets.o(.data);
    }
    END_SEG(instrument_sets)
-
 
    /* Discard everything not specifically mentioned above. */
    /DISCARD/ :

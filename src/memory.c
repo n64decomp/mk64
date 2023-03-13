@@ -239,7 +239,7 @@ UNUSED void *load_segment(s32 segment, u8 *srcStart, u8 *srcEnd, u32 side) {
 }
 
 // Similar to sm64 load_to_fixed_pool_addr?
-void *func_802A8190(s32 arg0, s32 arg1) {
+UNUSED void *func_802A8190(s32 arg0, s32 arg1) {
     //u32 srcSize = ALIGN16(srcEnd - srcStart);
     //u32 destSize = ALIGN16((u8 *) sPoolListHeadR - destAddr);
     u32 addr;
@@ -1369,6 +1369,7 @@ s32 load_course(s32 courseId) {
         gHeapEndPtr = SEG_8028DF00;
     }
     set_segment_base_addr(9, func_802A7D70(offsetRomStart, offsetRomEnd));
+
     if (gGamestate != ENDING_SEQUENCE) {
         set_segment_base_addr(6, func_802AA88C(dlRomStart, dlRomEnd));
     }

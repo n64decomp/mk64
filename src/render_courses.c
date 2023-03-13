@@ -2031,11 +2031,11 @@ void func_802966A0(void) {
 void func_802969F8(void) {
 
     switch(gCurrentCourseId) {
-        case 9:
+        case COURSE_MOO_MOO_FARM:
             D_8015F702 = 0;
             D_8015F700 = 200;
             break;
-        case 6:
+        case COURSE_KOOPA_BEACH:
             D_8015F8E8 = -0.1f;
             D_8015F8E4 = 0.0f;
             break;
