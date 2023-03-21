@@ -2,29 +2,6 @@
 
 .section .rodata
 
-#glabel D_800ED6B0
-#.double 0.7
-
-#glabel D_800ED6B8
-#.double 0.8
-
-#glabel D_800ED6C0
-#.double 0.1
-
-#glabel D_800ED6C8
-#.double 0.02
-
-glabel D_800ED6D0
-.double 0.8
-
-glabel D_800ED6D8
-.double 0.8
-
-glabel D_800ED6E0
-.double 0.1
-
-.word 0x00000000, 0x00000000
-
 # start rodata for code_80027D00
 
 glabel jpt_800ED6F0
