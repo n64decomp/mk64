@@ -271,7 +271,7 @@ SECTIONS
       BUILD_DIR/data/data_0DD0A0_3_0_0.o(.rodata);
       BUILD_DIR/src/spawn_players.o(.rodata);
       BUILD_DIR/src/code_8003DC40.o(.rodata);
-      BUILD_DIR/data/data_0DD0A0_3_0_1.o(.rodata);
+      BUILD_DIR/src/code_800431B0.o(.rodata);
       BUILD_DIR/src/code_80057C60.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3_0.o(.rodata);
       BUILD_DIR/src/code_800AF9B0.o(.rodata);
