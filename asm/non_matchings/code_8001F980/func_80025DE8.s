@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800ED6E0
+.double 0.1
+
+.section .text
+
 glabel func_80025DE8
 /* 0269E8 80025DE8 27BDFF18 */  addiu $sp, $sp, -0xe8
 /* 0269EC 80025DEC AFB00028 */  sw    $s0, 0x28($sp)

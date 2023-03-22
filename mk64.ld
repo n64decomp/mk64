@@ -233,6 +233,7 @@ SECTIONS
       BUILD_DIR/src/staff_ghosts.o(.data);
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
       BUILD_DIR/src/camera.o(.data);
+      BUILD_DIR/src/code_8001F980.o(.data);
       BUILD_DIR/data/data_0DD0A0_1_1.o(.data);
       BUILD_DIR/src/kart_dma.o(.data);
       BUILD_DIR/data/data_0DD0A0_1_2.o(.data);
