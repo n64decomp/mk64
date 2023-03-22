@@ -3,15 +3,20 @@
 #include <ultra64.h>
 #include "macros.h"
 
-/*
- * This define is needed because the original definitions in __osDequeueThread.c are declared
- * seperately instead of part of a single struct, however some code alises over this memory
- * assuming a unified structure. To fix this, we declare the full type here and then alias the
- * symbol names to the correct members in AVOID_UB.
- */
+typedef struct __OSEventState
+{
+    OSMesgQueue *messageQueue;
+    OSMesg message;
+} __OSEventState;
+
+typedef struct __osThreadTail
+{
+    OSThread *next;
+    OSPri priority;
+} OSThreadTail;
 
 // Original OSThread_ListHead definitions
-extern OSThread *D_800EB3A0;
+extern OSThreadTail __osThreadTail;
 extern OSThread *__osActiveQueue;
 extern OSThread *__osRunQueue;
 extern OSThread *__osRunningThread;

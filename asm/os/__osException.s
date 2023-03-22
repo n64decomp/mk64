@@ -361,8 +361,8 @@ glabel L800D1668
 /* 0D22B0 800D16B0 AD3A0000 */   sw    $k0, ($t1)
 
 .L800D16B4:
-/* 0D22B4 800D16B4 3C01800F */  lui   $at, %hi(D_800EB3B4) # $at, 0x800f
-/* 0D22B8 800D16B8 AC3AB3B4 */  sw    $k0, %lo(D_800EB3B4)($at)
+/* 0D22B4 800D16B4 3C01800F */  lui   $at, %hi(__osFaultedThread) # $at, 0x800f
+/* 0D22B8 800D16B8 AC3AB3B4 */  sw    $k0, %lo(__osFaultedThread)($at)
 /* 0D22BC 800D16BC 24090001 */  li    $t1, 1
 /* 0D22C0 800D16C0 A7490010 */  sh    $t1, 0x10($k0)
 /* 0D22C4 800D16C4 24090002 */  li    $t1, 2

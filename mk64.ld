@@ -256,7 +256,9 @@ SECTIONS
       BUILD_DIR/src/os/osViTable.o(.data);
       BUILD_DIR/src/os/osCreatePiManager.o(.data);
       BUILD_DIR/src/os/osContInit.o(.data);
-      BUILD_DIR/data/data_0DD0A0_2_1.o(.data);
+      BUILD_DIR/src/os/osAiSetNextBuffer.o(.data);
+      BUILD_DIR/src/os/__osSetHWIntrRoutine.o(.data);
+      BUILD_DIR/src/os/__osDequeueThread.o(.data);
       BUILD_DIR/src/os/osTimer.o(.data);
       BUILD_DIR/src/os/__osViInit.o(.data);
       BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.data);
