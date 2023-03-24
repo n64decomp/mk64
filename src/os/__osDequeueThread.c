@@ -1,13 +1,10 @@
 #include "libultra_internal.h"
 
-// these don't feel like they belong here
-// but it makes the most logical since there was printf data before
-// OSThread *D_800EB3A0 = NULL;
-// u32 D_80334894 = -1;
-// OSThread *__osRunQueue = (OSThread *) &D_800EB3A0;
-// OSThread *__osActiveQueue = (OSThread *) &D_800EB3A0;
-// OSThread *__osRunningThread = NULL;
-// u32 D_803348A4 = 0; // UNKNOWN
+OSThreadTail __osThreadTail = {NULL, -1};
+OSThread *__osRunQueue = (OSThread *) &__osThreadTail;
+OSThread *__osActiveQueue = (OSThread *) &__osThreadTail;
+OSThread *__osRunningThread = NULL;
+OSThread *__osFaultedThread = NULL;
 
 void __osDequeueThread(OSThread **queue, OSThread *thread) {
     register OSThread **a2;
