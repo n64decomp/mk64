@@ -2,17 +2,6 @@
 #define _OSINT_H
 #include "libultra_internal.h"
 
-typedef struct __OSEventState
-{
-    OSMesgQueue *messageQueue;
-    OSMesg message;
-} __OSEventState;
-extern struct __osThreadTail
-{
-    OSThread *next;
-    OSPri priority;
-} __osThreadTail;
-
 //maybe should be in exceptasm.h?
 extern void __osEnqueueAndYield(OSThread **);
 extern void __osDequeueThread(OSThread **, OSThread *);
