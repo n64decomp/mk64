@@ -114,6 +114,4 @@ extern struct UnkStruct_800DC5EC *D_800DC5EC;
 extern u16 D_800DC5B0;
 extern s32 gPlayerWinningIndex;
 
-extern s32 gEnableResourceMeters;
-
 #endif

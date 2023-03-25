@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800F35E8
+.float 0.85
+
+.section .text
+
 glabel func_800C2474
 /* 0C3074 800C2474 3C0E800E */  lui   $t6, %hi(camera1) # $t6, 0x800e
 /* 0C3078 800C2478 8DCEDB40 */  lw    $t6, %lo(camera1)($t6)

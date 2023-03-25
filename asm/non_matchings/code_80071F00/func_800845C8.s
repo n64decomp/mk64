@@ -1,3 +1,56 @@
+.section .late_rodata
+
+glabel D_800EF2D8
+.double -2960.0
+
+glabel D_800EF2E0
+.double -2490.0
+
+glabel D_800EF2E8
+.double -2098.0
+
+glabel D_800EF2F0
+.double -2080.0
+
+glabel D_800EF2F8
+.float 0.08
+
+glabel jpt_800EF2FC
+.word L80084848, L80084904, L80084968, L800849CC
+.word L80084A30, L80084A94
+
+.word 0x00000000
+
+glabel D_800EF318
+.double 146.0
+
+glabel D_800EF320
+.double 380.0
+
+glabel D_800EF328
+.float 0.15
+.word 0x00000000
+
+glabel D_800EF330
+.double 380.0
+
+glabel D_800EF338
+.double -2300.0
+
+glabel D_800EF340
+.double -2500.0
+
+glabel D_800EF348
+.double -535.0
+
+glabel D_800EF350
+.double -250.0
+
+glabel D_800EF358
+.float 0.04
+
+.section .text
+
 glabel func_800845C8
 /* 0851C8 800845C8 000470C0 */  sll   $t6, $a0, 3
 /* 0851CC 800845CC 27BDFFE0 */  addiu $sp, $sp, -0x20

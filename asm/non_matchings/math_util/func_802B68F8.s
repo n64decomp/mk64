@@ -1,3 +1,13 @@
+.section .late_rodata
+
+glabel D_802B9FC8
+.double 3.141592653589793
+
+glabel D_802B9FD0
+.double 360.0
+
+.section .text
+
 glabel func_802B68F8
 /* 11FF08 802B68F8 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 11FF0C 802B68FC 44866000 */  mtc1  $a2, $f12

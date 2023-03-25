@@ -8,6 +8,7 @@
 #include "objects.h"
 
 #include "memory.h"
+#include "code_802AAA70.h"
 
 #pragma intrinsic (sqrtf)
 

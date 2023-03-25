@@ -67,6 +67,8 @@ extern f32 D_80164A30;
 extern f32 D_80164A90[];
 extern f32 D_80164AA0[];
 
+extern f32 D_800DDB30[];
+
 extern Camera cameras[];
 extern Camera *camera1;
 extern Camera *camera2;

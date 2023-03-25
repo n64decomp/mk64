@@ -92,9 +92,7 @@ void ending_sequence_loop();
 
 extern struct UnkStruct_80280658 *D_802874F8;
 extern struct UnkStruct_80280658 *D_80284E7C;
-extern f32  D_80286B74;
-extern f32  D_80286B78;
-extern f32  D_80286B7C;
+
 extern s32  D_80284E88;
 extern s32  D_802874E0;
 extern s8   D_802874F4;

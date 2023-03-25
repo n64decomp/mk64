@@ -1453,12 +1453,6 @@ void func_80074FD8(s32 objectIndex) {
     }
 }
 
-#ifdef NEEDS_RODATA
-extern f64 D_800EEAB0;// = 0.0005;
-extern f64 D_800EEAB8;// = 0.05
-extern f64 D_800EEAC0;// = 0.05
-extern f64 D_800EEAC8;// = 0.1
-
 void func_800750D8(s32 objectIndex, s32 arg1, Vec3f arg2, s32 arg3, s32 arg4) {
     s32 sp24;
     s32 temp_v0;
@@ -1481,9 +1475,6 @@ void func_800750D8(s32 objectIndex, s32 arg1, Vec3f arg2, s32 arg3, s32 arg4) {
     temp_v1->unk_0B2[1] = temp_v0 * 0x50;
     temp_v1->unk_0B2[2] = temp_v0 * 0x50;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_800750D8.s")
-#endif
 
 void func_80075304(Vec3f arg0, s32 arg1, s32 arg2, s32 arg3) {
     s32 var_s1;
@@ -1593,9 +1584,9 @@ void func_80075714(s32 objectIndex) {
         func_80075698(objectIndex);
         break;
     case 2:
-        D_80165C18[objectIndex].unk_038[1] -= D_800EEAD0;
+        D_80165C18[objectIndex].unk_038[1] -= 0.03;
         f32_step_up_towards(&D_80165C18[objectIndex].unk_028[1], 100.0f, D_80165C18[objectIndex].unk_038[1]);
-        func_8007415C(objectIndex, &D_80165C18[objectIndex].unk_000, 0.55f, 1.0f, D_800EEAD8, 1, 0);
+        func_8007415C(objectIndex, &D_80165C18[objectIndex].unk_000, 0.55f, 1.0f, 0.1f, 1, 0);
         if (func_80073B00(objectIndex, &D_80165C18[objectIndex].unk_0A0, 0xFF, 0x1E, 7, 0, 0) != 0) {
             func_80072488(objectIndex);
         }
@@ -1733,9 +1724,9 @@ void func_80075B84(s32 arg0) {
         func_80075B08(arg0);
         break;
     case 2:
-        D_80165C18[arg0].unk_038[1] -= D_800EEAE0;
+        D_80165C18[arg0].unk_038[1] -= 0.03;
         f32_step_up_towards(&D_80165C18[arg0].unk_028[1], 100.0f, D_80165C18[arg0].unk_038[1]);
-        func_8007415C(arg0, &D_80165C18[arg0].unk_000, 0.55f, 1.0f, D_800EEAE8, 1, 0);
+        func_8007415C(arg0, &D_80165C18[arg0].unk_000, 0.55f, 1.0f, 0.1f, 1, 0);
         if (func_80073B00(arg0, &D_80165C18[arg0].unk_0A0, 0xFF, 0x1E, 7, 0, 0) != 0) {
             func_80072488(arg0);
         }
@@ -1955,9 +1946,6 @@ void func_8007634C(s32 objectIndex) {
     func_80072488(objectIndex);
 }
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-// jpt_800EEAEC
 void func_800763CC(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
@@ -1995,9 +1983,6 @@ void func_800763CC(s32 objectIndex) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_800763CC.s")
-#endif
 
 void func_80076538(s32 objectIndex) {
     switch (D_80165C18[objectIndex].unk_0AE) {
@@ -2139,9 +2124,6 @@ void func_80076958(s32 objectIndex) {
     func_80072488(objectIndex);
 }
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-// jpt_800EEB00
 void func_800769D8(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
@@ -2171,9 +2153,6 @@ void func_800769D8(s32 objectIndex) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_800769D8.s")
-#endif
 
 void func_80076AEC(s32 objectIndex) {
     s32 thing;
@@ -2225,10 +2204,6 @@ void func_80076B84(void) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-extern f32 D_800EEB14; // = 0.3f;
-
 void func_80076C9C(s32 objectIndex, Vec3f arg1, s16 arg2) {
     struct_80165C18_entry *temp_v0;
 
@@ -2244,9 +2219,6 @@ void func_80076C9C(s32 objectIndex, Vec3f arg1, s16 arg2) {
     func_8008B8BC(objectIndex, 0U, 0U, 0U);
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80076C9C.s")
-#endif
 
 void func_80076D70(Vec3f arg0, f32 arg1, s16 arg2) {
     s32 temp_v0;
@@ -2468,8 +2440,6 @@ void func_80077450(s32 objectIndex) {
     }
 }
 
-#ifdef NEEDS_RODATA
-
 void func_80077584(s32 objectIndex) {
     struct_80165C18_entry *temp_v0;
 
@@ -2486,9 +2456,6 @@ void func_80077584(s32 objectIndex) {
     func_80087710(objectIndex);
     func_8008BF18(objectIndex);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80077584.s")
-#endif
 
 void func_80077640(void) {
     s32 someIndex;
@@ -2509,10 +2476,6 @@ void func_80077640(void) {
         }
     }
 }
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f32 D_800EEB38;// = 0.1f;
 
 void func_80077700(s32 objectIndex, Vec3f arg1, s32 arg2) {
     s32 stackPadding1;
@@ -2555,9 +2518,6 @@ void func_80077700(s32 objectIndex, Vec3f arg1, s32 arg2) {
     func_8008B888(objectIndex, 0U, (arg2 * 0xFFFF) / 20, 0U);
     func_8008B8BC(objectIndex, temp_s0, sp3E, sp3C);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80077700.s")
-#endif
 
 s32 func_80077A54(Vec3f arg0, s32 arg1) {
     s32 temp_v0;
@@ -2674,10 +2634,6 @@ loop_3:
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80077D5C.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f32 D_800EEB3C;// = 0.15f;
-
 void func_80077E20(s32 objectIndex) {
     struct_80165C18_entry *temp_v0;
 
@@ -2696,9 +2652,6 @@ void func_80077E20(s32 objectIndex) {
     temp_v0->unk_0A4 = 0;
     func_80072488(objectIndex);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80077E20.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -2841,10 +2794,6 @@ void func_80078170(s32 arg0, ? arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80078170.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.x
-extern f32 D_800EEB48;// = 0.15f;
-
 void func_80078220(s32 objectIndex) {
     struct_80165C18_entry *temp_v0;
 
@@ -2856,19 +2805,6 @@ void func_80078220(s32 objectIndex) {
     func_80086EF0(objectIndex);
     func_80072488(objectIndex);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80078220.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-extern f64 D_800EEB50; // = 0.03;
-extern f64 D_800EEB58; // = 0.01;
-extern f64 D_800EEB60; // = -0.3;
-extern f64 D_800EEB68; // = 45.0;
-extern f64 D_800EEB70; // = 0.03;
-extern f64 D_800EEB78; // = 0.01;
-extern f64 D_800EEB80; // = -0.6;
 
 void func_80078288(s32 objectIndex) {
     s16 sp3E;
@@ -2924,9 +2860,6 @@ void func_80078288(s32 objectIndex) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80078288.s")
-#endif
 
 void func_800786EC(s32 objectIndex) {
     switch (D_80165C18[objectIndex].unk_0A6) {                              /* irregular */
@@ -4728,10 +4661,6 @@ void func_8007BBBC(s32 objectIndex) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007BBBC.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-extern f64 D_800EEE08;// -1650.0;
-
 void func_8007BD04(s32 playerId) {
     s32 objectIndex;
 
@@ -4743,9 +4672,6 @@ void func_8007BD04(s32 playerId) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007BD04.s")
-#endif
 
 void func_8007BDA8(void) {
     s32 pad;
@@ -5522,15 +5448,6 @@ loop_5:
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007D070.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-extern f64 D_800EEEE8;// = -1775.0;
-extern f64 D_800EEEF0;// = 130.0;
-extern f64 D_800EEEF8;// = -2500.0;
-extern f64 D_800EEF00;// = 220.0;
-extern f64 D_800EEF08;// = -2100.0;
-extern f64 D_800EEF10;// = -290.0;
-
 void func_8007D360(s32 objectIndex, s32 arg1) {
     if (arg1 == 1) {
         D_80165C18[objectIndex].unk_010[0] = (f32) ((-1775.0 - random_int(0x001EU)) * (f64) D_8018D01C);
@@ -5562,13 +5479,6 @@ void func_8007D360(s32 objectIndex, s32 arg1) {
         D_80165C18[objectIndex].unk_034 = (random_int(4U) + 5.0);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007D360.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_0D00A0_3_0.s
-extern f32 D_800EEF18; // = 0.1f;
 
 void func_8007D6A8(s32 objectIndex, s32 arg1) {
     s32 stackPadding0;
@@ -5582,9 +5492,6 @@ void func_8007D6A8(s32 objectIndex, s32 arg1) {
     func_800721C0(objectIndex, 0x00000200);
     temp_v0->unk_0C8 = 3;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007D6A8.s")
-#endif
 
 void func_8007D714(s32 arg0) {
     s32 var_v0;
@@ -5640,13 +5547,6 @@ void func_8007D8AC(s32 arg0) {
     func_80086E70(arg0);
 }
 
-#ifdef NEEDS_RODATA
-
-extern f64 D_800EEF20;// = 2540.0;
-extern f64 D_800EEF28;// = -2540.0;
-extern f64 D_800EEF30;// = 2150.0;
-extern f64 D_800EEF38;// = -2150.0;
-
 void func_8007D8D4(s32 objectIndex, s32 arg1) {
     switch (D_80165C18[objectIndex].unk_0A6) {
     case 1:
@@ -5678,9 +5578,6 @@ void func_8007D8D4(s32 objectIndex, s32 arg1) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007D8D4.s")
-#endif
 
 void func_8007DA4C(s32 arg0) {
     func_8008781C(arg0);
@@ -5799,10 +5696,6 @@ block_19:
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007DB44.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-extern f32 D_800EEF40;// = 1150.0f;
-
 void func_8007DDC0(s32 objectIndex) {
     f32 sp2C;
     struct_80165C18_entry *temp_s0;
@@ -5842,9 +5735,6 @@ void func_8007DDC0(s32 objectIndex) {
         temp_s0->unk_0A4 = 2;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007DDC0.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -6007,10 +5897,6 @@ void func_8007E1F4(s32 objectIndex) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-extern f32 D_800EEF68;// -1371.0f;
-
 void func_8007E358(s32 objectIndex) {
     D_80165C18[objectIndex].unk_004[0] = -1371.0f * D_8018D01C;
     D_80165C18[objectIndex].unk_004[1] = 31.0f;
@@ -6021,13 +5907,6 @@ void func_8007E358(s32 objectIndex) {
     D_80165C18[objectIndex].unk_084[7] = 0;
     func_80072488(objectIndex);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007E358.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-// jpt_800EEF6C
 
 void func_8007E3EC(s32 objectIndex) {
 
@@ -6060,9 +5939,6 @@ void func_8007E3EC(s32 objectIndex) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007E3EC.s")
-#endif
 
 void func_8007E4C4(void) {
     s32 objectIndex = D_80183EA8;
@@ -6392,10 +6268,6 @@ void func_8007EE5C(s32 objectIndex) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007EE5C.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-// jpt_800EEFD0
-
 void func_8007EFBC(s32 objectIndex) {
     switch (D_80165C18[objectIndex].unk_0AE) {
     case 1:
@@ -6471,13 +6343,6 @@ void func_8007EFBC(s32 objectIndex) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007EFBC.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-// jpt_800EF018
 
 void func_8007F280(s32 objectIndex) {
     switch (D_80165C18[objectIndex].unk_0AE) {
@@ -6554,9 +6419,6 @@ void func_8007F280(s32 objectIndex) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007F280.s")
-#endif
 
 void func_8007F544(s32 objectIndex) {
     switch (D_80165C18[objectIndex].unk_0DD) {                              /* irregular */
@@ -7716,10 +7578,6 @@ void func_80081848(s32 objectIndex) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80081848.s")
 #endif
 
-#ifdef NEEDS_RODATA
-
-extern f64 D_800EF138;// = 0.184;
-
 void func_80081924(s32 objectIndex) {
     switch (D_80165C18[objectIndex].unk_0AE) {
     case 1:
@@ -7755,9 +7613,6 @@ void func_80081924(s32 objectIndex) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80081924.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -8340,7 +8195,6 @@ block_8:
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80082B34.s")
 #endif
 
-#ifdef NEEDS_RODATA
 void func_80082C30(s32 objectIndex) {
     switch (D_80165C18[objectIndex].unk_0AE) {
     case 1:
@@ -8381,9 +8235,6 @@ void func_80082C30(s32 objectIndex) {
         D_80165C18[objectIndex].unk_004[1] = (f32) (D_80165C18[objectIndex].unk_044 + 2.5);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80082C30.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
@@ -8536,7 +8387,6 @@ void func_8008311C(s32 objectIndex, s32 arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8008311C.s")
 #endif
 
-#ifdef NEEDS_RODATA
 void func_80083248(s32 objectIndex) {
     switch (D_80165C18[objectIndex].unk_0AE) {
     case 0:
@@ -8568,9 +8418,6 @@ void func_80083248(s32 objectIndex) {
         D_80165C18[objectIndex].unk_004[1] = D_80165C18[objectIndex].unk_044 + 6.0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80083248.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -8762,7 +8609,6 @@ void func_80083868(s32 objectIndex) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80083868.s")
 #endif
 
-#ifdef NEEDS_RODATA
 void func_80083948(s32 objectIndex) {
     switch (D_80165C18[objectIndex].unk_0AE) {
     case 1:
@@ -8794,9 +8640,6 @@ void func_80083948(s32 objectIndex) {
     func_80073D0C(objectIndex, &D_80165C18[objectIndex].unk_0A0, -0x00001000, 0x00001000, 0x00000400, 1, -1);
     D_80165C18[objectIndex].unk_0B2[2] = D_80165C18[objectIndex].unk_0A0 + 0x8000;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80083948.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -9613,7 +9456,6 @@ void func_800853DC(s32 objectIndex) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_800853DC.s")
 #endif
 
-#ifdef NEEDS_RODATA
 void func_80085534(s32 objectIndex) {
     switch (D_80165C18[objectIndex].unk_0AE) {
     case 1:
@@ -9664,9 +9506,6 @@ void func_80085534(s32 objectIndex) {
     func_800877C4(objectIndex);
     D_80165C18[objectIndex].unk_0BE[1] += 0x100;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80085534.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
@@ -10125,10 +9964,6 @@ void func_8008629C(s32 objectIndex, s32 arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8008629C.s")
 #endif
 
-#ifdef NEEDS_RODATA
-
-extern f64 D_800EF468;// = 0.1;
-
 void func_80086424(s32 objectIndex) {
     switch (D_80165C18[objectIndex].unk_0AE) {
     case 0:
@@ -10151,9 +9986,6 @@ void func_80086424(s32 objectIndex) {
     }
     func_8008BF18(objectIndex);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80086424.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc

@@ -296,20 +296,3 @@ glabel D_800DDB20
 
 glabel D_800DDB24
 .word 0x00000001
-
-.word 0x00000000, 0x00000000
-
-glabel D_800DDB30
-.float 0.4, 0.6, 0.275, 0.3
-
-#glabel camera1 # p1 camera struct pointer
-#.word cameras
-
-#glabel camera2 # p2 camera struct pointer
-#.word D_801647A8
-
-#glabel camera3 # p3 camera struct pointer
-#.word D_80164860
-
-#glabel camera4 # p4 camera struct pointer
-#.word D_80164918

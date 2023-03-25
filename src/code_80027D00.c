@@ -8,8 +8,315 @@
 #include "code_8001F980.h"
 #include "code_80027D00.h"
 #include "code_8008C1D0.h"
+#include "code_802AAA70.h"
 #include "waypoints.h"
 #include "audio/external.h"
+
+s16 D_800E3810[] = {
+    1, 2, 3, 4, 5, 6, 7, 0
+};
+
+s16 D_800E3820[] = {
+    0, 2, 3, 4, 5, 6, 7, 0
+};
+
+s16 D_800E3830[] = {
+    0, 1, 3, 4, 5, 6, 7, 0
+};
+
+s16 D_800E3840[] = {
+    0, 1, 2, 4, 5, 6, 7, 0
+};
+
+s16 D_800E3850[] = {
+    0, 1, 2, 3, 5, 6, 7, 0
+};
+
+s16 D_800E3860[] = {
+    0, 1, 2, 3, 4, 6, 7, 0
+};
+
+s16 D_800E3870[] = {
+    0, 1, 2, 3, 4, 5, 7, 0
+};
+
+s16 D_800E3880[] = {
+    0, 1, 2, 3, 4, 5, 6, 0
+};
+
+s16 *D_800E3890[] = {
+    D_800E3810, D_800E3820, D_800E3830, D_800E3840,
+    D_800E3850, D_800E3860, D_800E3870, D_800E3880
+};
+
+s16 D_800E38B0[] = {
+    2, 3, 4, 5, 6, 7
+};
+
+s16 D_800E38BC[] = {
+    1, 3, 4, 5, 6, 7
+};
+
+s16 D_800E38C8[] = {
+    1, 2, 4, 5, 6, 7
+};
+
+s16 D_800E38D4[] = {
+    1, 2, 3, 5, 6, 7
+};
+
+s16 D_800E38E0[] = {
+    1, 2, 3, 4, 6, 7
+};
+
+s16 D_800E38EC[] = {
+    1, 2, 3, 4, 5, 7
+};
+
+s16 D_800E38F8[] = {
+    1, 2, 3, 4, 5, 6
+};
+
+s16 D_800E3904[] = {
+    2, 3, 4, 5, 6, 7
+};
+
+s16 D_800E3910[] = {
+    0, 3, 4, 5, 6, 7
+};
+
+s16 D_800E391C[] = {
+    0, 2, 4, 5, 6, 7
+};
+
+s16 D_800E3928[] = {
+    0, 2, 3, 5, 6, 7
+};
+
+s16 D_800E3934[] = {
+    0, 2, 3, 4, 6, 7
+};
+
+s16 D_800E3940[] = {
+    0, 2, 3, 4, 5, 7
+};
+
+s16 D_800E394C[] = {
+    0, 2, 3, 4, 5, 6
+};
+
+s16 D_800E3958[] = {
+    1, 3, 4, 5, 6, 7
+};
+
+s16 D_800E3964[] = {
+    0, 3, 4, 5, 6, 7
+};
+
+s16 D_800E3970[] = {
+    0, 1, 4, 5, 6, 7
+};
+
+s16 D_800E397C[] = {
+    0, 1, 3, 5, 6, 7
+};
+
+s16 D_800E3988[] = {
+    0, 1, 3, 4, 6, 7
+};
+
+s16 D_800E3994[] = {
+    0, 1, 3, 4, 5, 7
+};
+
+s16 D_800E39A0[] = {
+    0, 1, 3, 4, 5, 6
+};
+
+s16 D_800E39AC[] = {
+    1, 2, 4, 5, 6, 7
+};
+
+s16 D_800E39B8[] = {
+    0, 2, 4, 5, 6, 7
+};
+
+s16 D_800E39C4[] = {
+    0, 1, 4, 5, 6, 7
+};
+
+s16 D_800E39D0[] = {
+    0, 1, 2, 5, 6, 7
+};
+
+s16 D_800E39DC[] = {
+    0, 1, 2, 4, 6, 7
+};
+
+s16 D_800E39E8[] = {
+    0, 1, 2, 4, 5, 7
+};
+
+s16 D_800E39F4[] = {
+    0, 1, 2, 4, 5, 6
+};
+
+s16 D_800E3A00[] = {
+    1, 2, 3, 5, 6, 7
+};
+
+s16 D_800E3A0C[] = {
+    0, 2, 3, 5, 6, 7
+};
+
+s16 D_800E3A18[] = {
+    0, 1, 3, 5, 6, 7
+};
+
+s16 D_800E3A24[] = {
+    0, 1, 2, 5, 6, 7
+};
+
+s16 D_800E3A30[] = {
+    0, 1, 2, 3, 6, 7
+};
+
+s16 D_800E3A3C[] = {
+    0, 1, 2, 3, 5, 7
+};
+
+s16 D_800E3A48[] = {
+    0, 1, 2, 3, 5, 6
+};
+
+s16 D_800E3A54[] = {
+    1, 2, 3, 4, 6, 7
+};
+
+s16 D_800E3A60[] = {
+    0, 2, 3, 4, 6, 7
+};
+
+s16 D_800E3A6C[] = {
+    0, 1, 3, 4, 6, 7
+};
+
+s16 D_800E3A78[] = {
+    0, 1, 2, 3, 6, 7
+};
+
+s16 D_800E3A84[] = {
+    0, 1, 2, 4, 6, 7
+};
+
+s16 D_800E3A90[] = {
+    0, 1, 2, 3, 4, 7
+};
+
+s16 D_800E3A9C[] = {
+    0, 1, 2, 3, 4, 6
+};
+
+s16 D_800E3AA8[] = {
+    1, 2, 3, 4, 5, 7
+};
+
+s16 D_800E3AB4[] = {
+    0, 2, 3, 4, 5, 7
+};
+
+s16 D_800E3AC0[] = {
+    0, 1, 3, 4, 5, 7
+};
+
+s16 D_800E3ACC[] = {
+    0, 1, 2, 3, 5, 7
+};
+
+s16 D_800E3AD8[] = {
+    0, 1, 2, 3, 4, 7
+};
+
+s16 D_800E3AE4[] = {
+    0, 1, 2, 4, 5, 7
+};
+
+s16 D_800E3AF0[] = {
+    0, 1, 2, 3, 4, 5
+};
+
+s16 D_800E3AFC[] = {
+    1, 2, 3, 4, 5, 6
+};
+
+s16 D_800E3B08[] = {
+    0, 2, 3, 4, 5, 6
+};
+
+s16 D_800E3B14[] = {
+    0, 1, 3, 4, 5, 6
+};
+
+s16 D_800E3B20[] = {
+    0, 1, 2, 3, 5, 6
+};
+
+s16 D_800E3B2C[] = {
+    0, 1, 2, 3, 4, 6
+};
+
+s16 D_800E3B38[] = {
+    0, 1, 2, 4, 5, 6
+};
+
+s16 D_800E3B44[] = {
+    0, 1, 2, 3, 4, 5
+};
+
+s16 *D_800E3B50[] = {
+    D_800E38B0, D_800E38B0, D_800E38BC, D_800E38C8,
+    D_800E38D4, D_800E38E0, D_800E38EC, D_800E38F8
+};
+
+s16 *D_800E3B70[] = {
+    D_800E3904, D_800E3904, D_800E3910, D_800E391C,
+    D_800E3928, D_800E3934, D_800E3940, D_800E394C
+};
+
+s16 *D_800E3B90[] = {
+    D_800E3958, D_800E3964, D_800E3964, D_800E3970,
+    D_800E397C, D_800E3988, D_800E3994, D_800E39A0
+};
+
+s16 *D_800E3BB0[] = {
+    D_800E39AC, D_800E39B8, D_800E39C4, D_800E39C4,
+    D_800E39D0, D_800E39DC, D_800E39E8, D_800E39F4
+};
+
+s16 *D_800E3BD0[] = {
+    D_800E3A00, D_800E3A0C, D_800E3A18, D_800E3A24,
+    D_800E3A24, D_800E3A30, D_800E3A3C, D_800E3A48
+};
+
+s16 *D_800E3BF0[] = {
+    D_800E3A54, D_800E3A60, D_800E3A6C, D_800E3A84,
+    D_800E3A78, D_800E3A78, D_800E3A90, D_800E3A9C
+};
+
+s16 *D_800E3C10[] = {
+    D_800E3AA8, D_800E3AB4, D_800E3AC0, D_800E3AE4,
+    D_800E3ACC, D_800E3AD8, D_800E3ACC, D_800E3AF0
+};
+
+s16 *D_800E3C30[] = {
+    D_800E3AFC, D_800E3B08, D_800E3B14, D_800E3B38,
+    D_800E3B20, D_800E3B2C, D_800E3B44, D_800E3B44
+};
+
+s16 **D_800E3C50[] = {
+    D_800E3B50, D_800E3B70, D_800E3B90, D_800E3BB0,
+    D_800E3BD0, D_800E3BF0, D_800E3C10, D_800E3C30
+};
 
 // func_80027D00
 s32 get_player_index_for_player(Player *player) {
@@ -1360,26 +1667,26 @@ void func_8002AB70(Player *player) {
     }
     if ((player->unk_0BC & 0x100000) == 0x100000) {
         move_f32_towards(&player->unk_DAC, 20.0f, 1.0f);
-        player->kartGravity = D_800ED7B8;
+        player->kartGravity = 3500.0f;
     }
     if ((player->unk_0BC & 4) == 4) {
         move_f32_towards(&player->unk_DAC, 25.0f, 1.0f);
         player->kartGravity = 1800.0f;
     }
     if ((player->unk_0BC & 0x400) == 0x400) {
-        player->kartGravity = D_800ED7BC;
+        player->kartGravity = 1100.0f;
     }
     if (player->unk_0BC & 0x80000) {
-        player->kartGravity = D_800ED7C0;
+        player->kartGravity = 1500.0f;
     }
     if ((player->unk_044 & 0x800) != 0) {
-        player->kartGravity = D_800ED7C4;
+        player->kartGravity = 1900.0f;
     }
     if ((player->unk_0BC & 0x800000) == 0x800000) {
         player->kartGravity = 300.0f;
     }
     if ((player->unk_0BC & 0x01000000) == 0x01000000) {
-        player->kartGravity = D_800ED7C8;
+        player->kartGravity = 550.0f;
     }
     if ((player->unk_0BC & 0x02000000) == 0x02000000) {
         player->kartGravity = 800.0f;
@@ -1479,12 +1786,6 @@ void func_8002AE38(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
     }
 }
 
-#ifdef NEEDS_RODATA
-//data_0DD0A0_2.s
-// Might be plain data?
-extern u16 D_800E3C70[10];// = { 0x0003, 0x0016, 0x0026, 0x003c, 0x0050, 0x0069, 0x0090, 0x009d, 0x00a9, 0x00cc };
-extern u16 D_800E3C84[10];// = { 0x000c, 0x0021, 0x002f, 0x0045, 0x005f, 0x007a, 0x0098, 0x00a5, 0x00b3, 0x00d5 };
-
 void func_8002B218(Player *player) {
     u16 someIndex;
     u16 sp38[10] = { 0x0003, 0x0016, 0x0026, 0x003c, 0x0050, 0x0069, 0x0090, 0x009d, 0x00a9, 0x00cc };
@@ -1504,9 +1805,6 @@ void func_8002B218(Player *player) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002B218.s")
-#endif
 
 void func_8002B308(Player *player, s8 arg1, s8 arg2) {
     if ((player->statusEffects & 2) == 2) {
@@ -1745,12 +2043,7 @@ void func_8002BB9C(Player *player, f32 *arg1, f32 *arg2, f32 *arg3) {
 #else
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002BB9C.s")
 #endif
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_2.s
-// extern s32 D_800E3CAC;
-// extern s32 D_800E3CC8;
-
+ 
 void func_8002BD58(Player *player) {
     s32 sp2C[7] = { 0x002f0000, 0x00300000, 0x00310000, 0x00320000, 0x00320000, 0x00320000, 0x00320000 };
     s32  spC[8] = { 0x00280000, 0x002c0000, 0x00300000, 0x00320000, 0x00320000, 0x00320000, 0x00320000, 0x00320000 };
@@ -1779,9 +2072,6 @@ void func_8002BD58(Player *player) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002BD58.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
@@ -3334,20 +3624,6 @@ void func_8002FCA8(Player *player, s8 arg1) {
     player->unk_208 = player->unk_088 - var_f12;
 }
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0_0
-extern f64 D_800ED8D8;// = 1.1;
-extern f64 D_800ED8E0;// = 1.1;
-extern f64 D_800ED8E8;// = 1.0125;
-extern f64 D_800ED8F0;// = 1.2;
-extern f64 D_800ED8F8;// = 1.025;
-extern f64 D_800ED900;// = 1.2;
-extern f64 D_800ED908;// = 0.7;
-extern f64 D_800ED910;// = 0.7;
-extern f64 D_800ED918;// = 0.004;
-extern f64 D_800ED920;// = 0.004;
-extern f64 D_800ED928;// = 0.7;
-
 void func_8002FE84(Player *player, f32 arg1) {
     f32 temp_f0_3;
     f32 var_f0;
@@ -3393,27 +3669,6 @@ void func_8002FE84(Player *player, f32 arg1) {
         player->unk_098 = (temp_f0_3 * temp_f0_3) / 25.0f;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002FE84.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0_0
-extern f64 D_800ED940;// = -0.2
-extern f64 D_800ED948;// = -0.55
-extern f64 D_800ED950;// = 0.004
-extern f64 D_800ED958;// = 0.004
-extern f64 D_800ED960;// = 0.01
-extern f64 D_800ED968;// = 0.01
-extern f64 D_800ED970;// = 0.008
-extern f64 D_800ED978;// = 0.008
-extern f64 D_800ED980;// = 0.3
-extern f64 D_800ED988;// = 0.15
-extern f64 D_800ED990;// = 0.05
-extern f64 D_800ED998;// = 0.04
-extern f64 D_800ED9A0;// = -0.85
-extern f64 D_800ED9A8;// = -0.55
-extern f64 D_800ED9B0;// = 0.05
 
 f32 func_80030150(Player *player, s8 arg1) {
     f32 var_f0;
@@ -3427,8 +3682,10 @@ f32 func_80030150(Player *player, s8 arg1) {
         if ((player->unk_0BC & 0x200) != 0x200) {
             if ((s32) player->boundingBoxCorners[3].surfaceType >= 0xF) {
                 // ???????
-            } else 
+                if(1) {}
+            } else {
                 var_f0 += D_800E2E90[player->characterId][player->boundingBoxCorners[3].surfaceType];
+            }
             
             if ((s32) player->boundingBoxCorners[2].surfaceType < 0xF) 
                 var_f0 += D_800E2E90[player->characterId][player->boundingBoxCorners[2].surfaceType];
@@ -3542,20 +3799,7 @@ f32 func_80030150(Player *player, s8 arg1) {
     func_8002FE84(player, var_f2);
     return (1.0f - player->unk_104) * var_f2;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80030150.s")
-#endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0_0
-extern f32 D_800ED9B8// = 0.35f;
-extern f32 D_800ED9BC// = 0.55f;
-extern f32 D_800ED9C0// = 0.94f;
-extern f32 D_800ED9C4// = 0.85f;
-extern f32 D_800ED9C8// = 0.46f;
-extern f32 D_800ED9CC// = 0.48f;
-extern f32 D_800ED9D0// = 0.3f;
-extern f32 D_800ED9D4// = 0.54f;
 void func_80030A34(Player *player) {
     f32 var_f0;
     f32 var_f2;
@@ -3604,9 +3848,6 @@ void func_80030A34(Player *player) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80030A34.s")
-#endif
 
 // This is likely the function responsible for detecting triple-tap "A" for "fast" acceleration
 void func_80030C34(Player *player) {
@@ -3738,77 +3979,70 @@ player->unk_214 is possibly the max-acceleration allowed
 No speculation on what player->unk_0C4 could be
 */
 void func_80030FC8(Player *player) {
-    f64 some_multiplier;
     s32 player_index;
 
     player_index = get_player_index_for_player(player);
     if (D_80165460[player_index] == 0) {
-        if ((0.0                            <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800ED9D8))) {
-            some_multiplier = D_800ED9E0;
-            player->unk_09C += gKartAccelerationTables[player->characterId][0] + (some_multiplier * (player->unk_0C4 / 182));
+        if ((0.0                     <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.1))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][0] + (0.05 * (player->unk_0C4 / 182));
         }
-        some_multiplier = D_800ED9E8;
-        if (((player->unk_214 * D_800ED9F0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800ED9F8))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][1] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.1) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.2))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][1] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 * D_800EDA00) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA08))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][2] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.2) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.3))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][2] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 * D_800EDA10) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA18))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][3] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.3) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.4))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][3] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 * D_800EDA20) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5       ))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][4] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.4) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][4] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 *        0.5) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA28))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][5] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.5) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.6))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][5] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 * D_800EDA30) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA38))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][6] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.6) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.7))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][6] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 * D_800EDA40) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA48))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][7] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.7) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.8))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][7] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 * D_800EDA50) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA58))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][8] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.8) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.9))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][8] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 * D_800EDA60) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0      ))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][9] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.9) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][9] + (0.05 * (player->unk_0C4 / 182));
         }
     } else {
-        if ((0.0                            <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA68))) {
-            some_multiplier = D_800EDA70;
-            player->unk_09C += (gKartAccelerationTables[player->characterId][0] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if ((0.0                     <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.1))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][0] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        some_multiplier = D_800EDA78;
-        if (((player->unk_214 * D_800EDA80) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA88))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][1] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.1) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.2))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][1] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * D_800EDA90) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA98))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][2] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.2) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.3))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][2] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * D_800EDAA0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDAA8))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][3] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.3) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.4))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][3] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * D_800EDAB0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5       ))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][4] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.4) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][4] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * 0.5)        <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDAB8))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][5] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.5) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.6))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][5] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * D_800EDAC0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDAC8))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][6] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.6) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.7))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][6] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * D_800EDAD0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDAD8))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][7] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.7) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.8))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][7] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * D_800EDAE0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDAE8))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][8] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
-            // Only here to satisfy the compiler gods, may they bless us with byte-for-byte matches
-            if (1) { } if (1) { } if (1) { } if (1) { } if (1) { }
+        if (((player->unk_214 * 0.8) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.9))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][8] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * D_800EDAF0) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0      ))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][9] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.9) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][9] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
     }
     if (player->unk_09C < 0.0f) {
@@ -3835,7 +4069,7 @@ void func_80031F48(Player *player, f32 arg1) {
     if (player->unk_09C <= 0.0f) {
         player->unk_09C = 0.0f;
     }
-    if (player->unk_094 < D_800EDAF8) {
+    if (player->unk_094 < 0.2) {
         player->unk_08C = 0.0f;
     }
     if (player->unk_214 <= player->unk_09C) {
@@ -3973,10 +4207,6 @@ void func_8003221C(Player *player) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0_0
-extern f64 D_800EDB00;// = 0.02;
-extern f64 D_800EDB08;// = 1.2;
 void func_800323E4(Player *player) {
     s32 var_v1;
     f32 test;
@@ -4046,31 +4276,6 @@ void func_800323E4(Player *player) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_800323E4.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0_0
-extern f64 D_800EDB10// = 0.1;
-extern f64 D_800EDB18// = 0.1;
-extern f64 D_800EDB20// = 0.2;
-extern f64 D_800EDB28// = 0.2;
-extern f64 D_800EDB30// = 0.3;
-extern f64 D_800EDB38// = 0.3;
-extern f64 D_800EDB40// = 0.4;
-extern f64 D_800EDB48// = 0.4;
-extern f64 D_800EDB50// = 0.6;
-extern f64 D_800EDB58// = 0.6;
-extern f64 D_800EDB60// = 0.7;
-extern f64 D_800EDB68// = 0.7;
-extern f64 D_800EDB70// = 0.8;
-extern f64 D_800EDB78// = 0.8;
-extern f64 D_800EDB80// = 0.9;
-extern f64 D_800EDB88// = 0.9;
-extern f32 D_800EDB90// = 0.9;
-extern s16 D_801656F0;
-extern s32 gRaceFrameCounter;
 
 void func_80032700(Player *player) {
     s32 temp_v0;
@@ -4127,69 +4332,59 @@ void func_80032700(Player *player) {
     player->unk_044 |= 0x20;
     player->unk_098 = (player->unk_09C * player->unk_09C) / 25.0f;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80032700.s")
-#endif
 
 void func_80032CB0(Player *player, f32 arg1) {
     player->unk_09C -= arg1;
     if (player->unk_09C <= 0.0f) {
         player->unk_09C = 0.0f;
     }
-    if (player->unk_094 < D_800EDB98) {
+    if (player->unk_094 < 0.2) {
         player->unk_08C = 0.0f;
     }
     if (player->unk_214 <= player->unk_09C) {
         player->unk_09C = player->unk_214;
     }
-    if ((f64) player->unk_09C <= (player->unk_214 * D_800EDBA0)) {
-        player->statusEffects &= 0xEFFFFFFF;
+    if ((f64) player->unk_09C <= (player->unk_214 * 0.7)) {
+        player->statusEffects &= ~0x10000000;
     }
-    player->statusEffects &= 0xFDFFFFFF;
-    player->unk_044 &= 0xFFDF;
+    player->statusEffects &= ~0x02000000;
+    player->unk_044 &= ~0x0020;
     player->unk_098 = (player->unk_09C * player->unk_09C) / 25.0f;
 }
 
 void func_80032D94(Player *player) {
-    f64 some_multiplier;
     UNUSED s32 player_index;
 
     player_index = get_player_index_for_player(player);
-    if ((0.0                            <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDBA8))) {
-        some_multiplier = D_800EDBB0;
-        player->unk_09C += gKartAccelerationTables[player->characterId][0] * some_multiplier;
+    if ((0.0                     <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.1))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][0] * 3.2;
     }
-    some_multiplier = D_800EDBB8;
-    if (((player->unk_214 * D_800EDBC0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDBC8))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][1] * some_multiplier;
+    if (((player->unk_214 * 0.1) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.2))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][1] * 3.2;
     }
-    if (((player->unk_214 * D_800EDBD0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDBD8))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][2] * some_multiplier;
+    if (((player->unk_214 * 0.2) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.3))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][2] * 3.2;
     }
-    if (((player->unk_214 * D_800EDBE0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDBE8))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][3] * some_multiplier;
-        if (1) { } if (1) { } if (1) { } if (1) { } if (1) { }
+    if (((player->unk_214 * 0.3) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.4))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][3] * 3.2;
     }
-    if (((player->unk_214 * D_800EDBF0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5       ))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][4] * some_multiplier;
-        if (1) { } if (1) { } if (1) { } if (1) { } if (1) { }
+    if (((player->unk_214 * 0.4) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][4] * 3.2;
     }
-    if (((player->unk_214 *        0.5) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDBF8))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][5] * some_multiplier;
+    if (((player->unk_214 * 0.5) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.6))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][5] * 3.2;
     }
-    if (((player->unk_214 * D_800EDC00) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDC08))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][6] * some_multiplier;
+    if (((player->unk_214 * 0.6) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.7))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][6] * 3.2;
     }
-    if (((player->unk_214 * D_800EDC10) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDC18))) {
-        some_multiplier = D_800EDC20;
-        player->unk_09C += gKartAccelerationTables[player->characterId][7] * some_multiplier;
+    if (((player->unk_214 * 0.7) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.8))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][7] * 2.8;
     }
-    some_multiplier = D_800EDC28;
-    if (((player->unk_214 * D_800EDC30) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDC38))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][8] * some_multiplier;
+    if (((player->unk_214 * 0.8) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.9))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][8] * 2.8;
     }
-    if (((player->unk_214 * D_800EDC40) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0      ))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][9] * some_multiplier;
+    if (((player->unk_214 * 0.9) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][9] * 2.8;
     }
     if (player->unk_09C < 0.0f) {
         player->unk_09C = 0.0f;
@@ -4207,29 +4402,6 @@ void func_80033280(Player *player, f32 arg1) {
     }
     player->unk_098 = (player->unk_09C * player->unk_09C) / 25.0f;
 }
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0_0
-extern f64 D_800EDC48// = 0.1;
-extern f64 D_800EDC50// = 3.2;
-extern f64 D_800EDC58// = 3.2;
-extern f64 D_800EDC60// = 0.1;
-extern f64 D_800EDC68// = 0.2;
-extern f64 D_800EDC70// = 0.2;
-extern f64 D_800EDC78// = 0.3;
-extern f64 D_800EDC80// = 0.3;
-extern f64 D_800EDC88// = 0.4;
-extern f64 D_800EDC90// = 0.4;
-extern f64 D_800EDC98// = 0.6;
-extern f64 D_800EDCA0// = 0.6;
-extern f64 D_800EDCA8// = 0.7;
-extern f64 D_800EDCB0// = 0.7;
-extern f64 D_800EDCB8// = 0.8;
-extern f64 D_800EDCC0// = 2.8;
-extern f64 D_800EDCC8// = 2.8;
-extern f64 D_800EDCD0// = 0.8;
-extern f64 D_800EDCD8// = 0.9;
-extern f64 D_800EDCE0// = 0.9;
 
 void func_800332E8(Player *player, s32 arg1) {
     if ((D_80165280[arg1] >= 0.0) && (D_80165280[arg1] < ((f64) player->unk_214 * 0.1))) {
@@ -4268,9 +4440,6 @@ void func_800332E8(Player *player, s32 arg1) {
     }
     player->unk_098 = (D_80165280[arg1] * D_80165280[arg1]) / 25.0f;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_800332E8.s")
-#endif
 
 void func_800337CC(Player *player, f32 arg1, s32 arg2) {
     player->unk_044 &= ~0x20;
@@ -5057,13 +5226,6 @@ block_123:
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80033AE0.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2.s
-extern f32 D_800E4068[0xA8];
-extern f32 D_800E4308[8];// = { 3.0f, 3.0f, 3.0f, 3.0f, 3.0f, 3.0f, 3.0f, 3.0f };
-// data/data_0DD0A0_3_0_0.s
-extern f64 D_800EDD88;// = 0.8;
-
 void func_8003680C(Player *player, s16 arg1) {
     s32 sp304 = 0;
     f32 stackPadding0[6];
@@ -5157,9 +5319,6 @@ void func_8003680C(Player *player, s16 arg1) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8003680C.s")
-#endif
 
 void func_80036C5C(Player *arg0) {
     if (((arg0->unk_094 / 18.0f) * 216.0f) > 20.0f) {
@@ -5187,16 +5346,6 @@ void func_80036CB4(Player *player) {
         player->unk_0BC &= ~0x10;
     }
 }
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0_0.s
-extern f64 D_800EDD90;// = 0.02;
-extern f64 D_800EDD98;// = 0.01;
-extern f64 D_800EDDA0;// = 0.05;
-extern f64 D_800EDDA8;// = 0.1;
-extern f64 D_800EDDB0;// = 0.15;
-extern f64 D_800EDDB8;// = 0.1;
-extern f64 D_800EDDC0;// = 0.05;
 
 void func_80036DB4(Player *player, Vec3f arg1, Vec3f arg2) {
     s16 thing;
@@ -5252,19 +5401,6 @@ void func_80036DB4(Player *player, Vec3f arg1, Vec3f arg2) {
     arg2[1] = arg1[1];
     arg2[2] = arg1[2];
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80036DB4.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0_0.s
-extern f64 D_800EDDC8;// = 0.02;
-extern f64 D_800EDDD0;// = 0.01;
-extern f64 D_800EDDD8;// = 0.05;
-extern f64 D_800EDDE0;// = 0.1;
-extern f64 D_800EDDE8;// = 0.15;
-extern f64 D_800EDDF0;// = 0.1;
-extern f64 D_800EDDF8;// = 0.05;
 
 void func_800371F4(Player *player, Vec3f arg1, Vec3f arg2) {
     s16 var_v0;
@@ -5319,9 +5455,6 @@ void func_800371F4(Player *player, Vec3f arg1, Vec3f arg2) {
     arg2[1] = arg1[1];
     arg2[2] = arg1[2];
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_800371F4.s")
-#endif
 
 void func_80037614(Player *player, Vec3f arg1, Vec3f arg2) {
     f32 var_f12;

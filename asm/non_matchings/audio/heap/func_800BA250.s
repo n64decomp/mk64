@@ -1,3 +1,13 @@
+.section .late_rodata
+
+glabel D_800F2E98
+.float 0.001171875
+
+glabel D_800F2E9C
+.float 2880000.0
+
+.section .text
+
 glabel func_800BA250
 /* 0BAE50 800BA250 27BDFFC0 */  addiu $sp, $sp, -0x40
 /* 0BAE54 800BA254 3C0E803B */  lui   $t6, %hi(D_803B0501) # $t6, 0x803b

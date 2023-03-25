@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800F3664
+.float 100000.0
+
+.section .text
+
 glabel func_800C4398
 /* 0C4F98 800C4398 3C0E800F */  lui   $t6, %hi(sNumProcessedSoundRequests) # $t6, 0x800f
 /* 0C4F9C 800C439C 91CEA1BC */  lbu   $t6, %lo(sNumProcessedSoundRequests)($t6)

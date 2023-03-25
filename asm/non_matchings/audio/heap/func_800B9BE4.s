@@ -1,3 +1,9 @@
+.section .late_rodata
+
+glabel D_800F2E80
+.float 262159.0
+
+.section .text
 
 glabel func_800B9BE4
 /* 0BA7E4 800B9BE4 3C01800F */  lui   $at, %hi(D_800F2E80) # $at, 0x800f

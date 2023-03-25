@@ -8,6 +8,9 @@
 #include "waypoints.h"
 #include "variables.h"
 #include "code_8001F980.h"
+#include "code_802AAA70.h"
+
+f32 D_800DDB30[] = { 0.4f, 0.6f, 0.275f, 0.3f };
 
 Camera cameras[4];
 Camera *camera1 = &cameras[0];

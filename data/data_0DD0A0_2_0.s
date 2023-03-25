@@ -2,6 +2,7 @@
 
 .section .data
 
+# code_80071F00 begin?
 glabel D_800E43B0 # TODO: unused?
 .float 65536.0, 0.0,     1.0, 0.0
 .float 0.0,     65536.0, 0.0, 1.0
@@ -1055,7 +1056,8 @@ glabel D_800E6F48
 .byte 0x00, 0x00, 0x00
 .byte 0x00, 0x00, 0x00
 .byte 0x00, 0x00, 0x00
-
+# code_80071F00 end?
+# code_8008C1D0 begin?
 glabel D_800E6F60
 .hword 0x0444, 0x0444, 0x0888, 0x0666, 0x071c, 0x0000
 
@@ -1117,7 +1119,7 @@ glabel D_800E7080
 glabel D_800E708C
 .float 0.0, -6.0, 4.0, 0.0
 .word 0x00000000
-
+# code_8008C1D0 end?
 glabel D_800E70A0
 .hword 0x003d, 0x0011, 0x0000, 0x0000
 .hword 0x0015, 0x003e, 0x0000, 0x0000

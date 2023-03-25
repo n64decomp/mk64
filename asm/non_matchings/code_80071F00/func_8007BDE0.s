@@ -1,3 +1,14 @@
+.section .late_rodata
+
+glabel D_800EEE10
+.float 0.2
+.word 0x00000000
+
+glabel D_800EEE18
+.double 55.0
+
+.section .text
+
 glabel func_8007BDE0
 /* 07C9E0 8007BDE0 000470C0 */  sll   $t6, $a0, 3
 /* 07C9E4 8007BDE4 01C47023 */  subu  $t6, $t6, $a0

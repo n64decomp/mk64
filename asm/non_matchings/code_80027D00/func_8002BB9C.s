@@ -1,3 +1,14 @@
+.section .data
+
+glabel D_800E3C98
+# Due to this data being included via a GLOBAL_ASM macro,
+# it gets passed through asm_processor instead of, I presume, the MIPS assembler
+# asm_process seemingly does not support .hword, only .half
+.hword 0x0000, 0x00b6, 0x016c, 0x0222, 0x02d8, 0x038e, 0x0444, 0x04fa
+.hword 0x05b0, 0x0666
+
+.section .text
+
 glabel func_8002BB9C
 /* 02C79C 8002BB9C 27BDFF78 */  addiu $sp, $sp, -0x88
 /* 02C7A0 8002BBA0 3C0F800E */  lui   $t7, %hi(D_800E3C98) # $t7, 0x800e

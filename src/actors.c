@@ -15,6 +15,7 @@
 #include "code_80005FD0.h"
 #include "code_80071F00.h"
 #include "code_8008C1D0.h"
+#include "code_802AAA70.h"
 #include <sounds.h>
 #include "audio/external.h"
 #include "common_textures.h"

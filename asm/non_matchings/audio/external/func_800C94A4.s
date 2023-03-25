@@ -1,3 +1,113 @@
+.section .late_rodata
+
+glabel jpt_800F38B8
+.word L800C9560, L800C9560, L800C95BC, L800C9618
+.word L800C9674, L800C96D0, L800C95BC, L800C96D0
+
+glabel D_800F38D8
+.float 0.35
+
+glabel D_800F38DC
+.float 2.800000
+
+glabel D_800F38E0
+.float 3844.0
+
+glabel D_800F38E4
+.float -0.8
+
+glabel D_800F38E8
+.float 1568.979614
+
+glabel D_800F38EC
+.float 1067.777832
+
+glabel D_800F38F0
+.float 2766.064941
+
+glabel D_800F38F4
+.float 0.6
+
+glabel D_800F38F8
+.float 3.200000
+
+glabel D_800F38FC
+.float 3844.0
+
+glabel D_800F3900
+.float -1.700000
+
+glabel D_800F3904
+.float 1478.461548
+
+glabel D_800F3908
+.float 784.489807
+
+glabel D_800F390C
+.float 12813.334961
+
+glabel D_800F3910
+.float 0.6
+
+glabel D_800F3914
+.float 2.800000
+
+glabel D_800F3918
+.float 3844.0
+
+glabel D_800F391C
+.float -0.6
+
+glabel D_800F3920
+.float 1747.272827
+
+glabel D_800F3924
+.float 1130.588257
+
+glabel D_800F3928
+.float 3844.000977
+
+glabel D_800F392C
+.float 0.2
+
+glabel D_800F3930
+.float 3844.0
+
+glabel D_800F3934
+.float -0.4
+
+glabel D_800F3938
+.float 2135.555664
+
+glabel D_800F393C
+.float 1601.666626
+
+glabel D_800F3940
+.float 3203.333008
+
+glabel D_800F3944
+.float 0.4
+
+glabel D_800F3948
+.float 2.400000
+
+glabel D_800F394C
+.float 3844.0
+
+glabel D_800F3950
+.float -0.8
+
+glabel D_800F3954
+.float 1922.0
+
+glabel D_800F3958
+.float 1201.250000
+
+glabel D_800F395C
+.float 4805.0
+
+.section .text
+
 glabel func_800C94A4
 /* 0CA0A4 800C94A4 3C0E800F */  lui   $t6, %hi(D_800EA108) # $t6, 0x800f
 /* 0CA0A8 800C94A8 91CEA108 */  lbu   $t6, %lo(D_800EA108)($t6)

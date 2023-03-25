@@ -1,3 +1,16 @@
+.section .late_rodata
+
+glabel D_800F2EA0
+.float 20.0304203
+
+glabel D_800F2EA4
+.float 16.546
+
+glabel D_800F2EA8
+.float 16.713
+
+.section .text
+
 glabel audio_init
 /* 0BCCDC 800BC0DC 27BDFF70 */  addiu $sp, $sp, -0x90
 /* 0BCCE0 800BC0E0 3C0E800F */  lui   $t6, %hi(D_800EA5DC) # $t6, 0x800f

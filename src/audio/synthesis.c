@@ -49,8 +49,17 @@ f32 gLeftVolRampings;
 //f32 *gCurrentLeftVolRamping; // Points to any of the three left buffers above
 //f32 *gCurrentRightVolRamping; // Points to any of the three right buffers above
 
-u8 audioString1[] = "pitch %x: delaybytes %d : olddelay %d\n";
-u8 audioString2[] = "cont %x: delaybytes %d : olddelay %d\n";
+/**
+ * Given that (almost) all of these are format strings, it is highly likely
+ * that they are meant to be used in some sort of printf variant. But I don't
+ * care to try and figure out which function gets which string(s)
+ * So I've place them all here instead.
+**/
+char synthesisAudioString0[] = "Terminate-Canceled Channel %d,Phase %d\n";
+char synthesisAudioString1[] = "Copy %d\n";
+char synthesisAudioString2[] = "%d->%d\n";
+char synthesisAudioString3[] = "pitch %x: delaybytes %d : olddelay %d\n";
+char synthesisAudioString4[] = "cont %x: delaybytes %d : olddelay %d\n";
 
 // Equivalent functionality as the US/JP version,
 // just that the reverb structure is chosen from an array with index

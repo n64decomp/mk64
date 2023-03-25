@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800F38B4
+.float 0.85
+
+.section .text
+
 glabel func_800C8AE4
 /* 0C96E4 800C8AE4 3C0E800E */  lui   $t6, %hi(gCurrentCourseId) # $t6, 0x800e
 /* 0C96E8 800C8AE8 85CEC5A0 */  lh    $t6, %lo(gCurrentCourseId)($t6)

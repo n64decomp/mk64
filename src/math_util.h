@@ -70,9 +70,6 @@ f32  coss(u16);
 s32  func_802B8058(u16, u16, u16);
 f32  func_802B80D0(Vec3f, Vec3f, u16, f32, f32, f32);
 
-extern f64 D_802B9FB0; // = 0.017453292222222222;
-extern f32 D_802B9FD8; // = 1000000.0f;
-extern f64 D_802BA018; // = 3.141592653589793;
 extern u16 gRandomSeed16;
 
 #endif // MATH_UTIL_H

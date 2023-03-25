@@ -236,7 +236,7 @@ SECTIONS
       BUILD_DIR/src/main.o(.data);
       BUILD_DIR/data/data_0DD0A0.o(.data);
       BUILD_DIR/src/code_800029B0.o(.data);
-      BUILD_DIR/data/data_0DD0A0_0.o(.data);
+      BUILD_DIR/src/profiler.o(.data);
       BUILD_DIR/src/crash_screen.o(.data);
       BUILD_DIR/src/staff_ghosts.o(.data);
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
@@ -246,16 +246,16 @@ SECTIONS
       BUILD_DIR/src/kart_dma.o(.data);
       BUILD_DIR/data/data_0DD0A0_1_2.o(.data);
       BUILD_DIR/src/kart_attributes.inc.o(.data);
-      BUILD_DIR/data/data_0DD0A0_2.o(.data);
+      BUILD_DIR/src/code_80027D00.o(.data);
       BUILD_DIR/src/spawn_players.o(.data);
       BUILD_DIR/data/data_0DD0A0_2_0.o(.data);
       BUILD_DIR/src/code_800AF9B0.o(.data);
       BUILD_DIR/src/menus.o(.data);
       BUILD_DIR/src/code_800B45E0.o(.data);
       BUILD_DIR/data/data_800E8700.o(.data);
-      BUILD_DIR/data/data_audio.o(.data);
+      BUILD_DIR/src/audio/synthesis.o(.data);
+      BUILD_DIR/src/audio/heap.o(.data);
       BUILD_DIR/src/audio/load.o(.data);
-      BUILD_DIR/data/data_0DD0A0_2_1_0.o(.rodata);
       BUILD_DIR/src/audio/playback.o(.data);
       BUILD_DIR/src/audio/effects.o(.data);
       BUILD_DIR/data/data_0DD0A0_2_1_1.o(.rodata);
@@ -277,23 +277,31 @@ SECTIONS
       BUILD_DIR/src/main.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
+      BUILD_DIR/src/camera.o(.rodata);
       BUILD_DIR/src/code_8001F980.o(.rodata);
-      BUILD_DIR/data/data_0DD0A0_3_0_0.o(.rodata);
+      BUILD_DIR/src/code_80027D00.o(.rodata);
       BUILD_DIR/src/spawn_players.o(.rodata);
       BUILD_DIR/src/code_8003DC40.o(.rodata);
       BUILD_DIR/src/code_800431B0.o(.rodata);
       BUILD_DIR/src/code_80057C60.o(.rodata);
-      BUILD_DIR/data/data_0DD0A0_3_0.o(.rodata);
+      BUILD_DIR/src/code_8006E9C0.o(.rodata);
+      BUILD_DIR/src/code_80071F00.o(.rodata);
+      BUILD_DIR/src/code_80086E70.o(.rodata);
+      BUILD_DIR/src/code_8008C1D0.o(.rodata);
+      BUILD_DIR/data/rodata_code_80091750.o(.rodata);
       BUILD_DIR/src/code_800AF9B0.o(.rodata);
       BUILD_DIR/src/menus.o(.rodata);
       BUILD_DIR/src/code_800B45E0.o(.rodata);
-      BUILD_DIR/data/rodata_audio.o(.rodata);
+      BUILD_DIR/src/audio/heap.o(.rodata);
+      BUILD_DIR/src/audio/load.o(.rodata);
       BUILD_DIR/src/audio/playback.o(.rodata);
       BUILD_DIR/src/audio/effects.o(.rodata);
-      BUILD_DIR/data/rodata_audio_2.o(.rodata);
+      BUILD_DIR/src/audio/seqplayer.o(.rodata);
+      BUILD_DIR/src/audio/external.o(.rodata);
+      BUILD_DIR/src/audio/port_eu.o(.rodata);
       BUILD_DIR/src/os/guRotateF.o(.rodata);
       BUILD_DIR/src/os/guPerspectiveF.o(.rodata);
-      BUILD_DIR/data/data_0DD0A0_3_1.o(.rodata);
+      BUILD_DIR/asm/os/__osException.o(.rodata);
       BUILD_DIR/src/os/__osDevMgrMain.o(.rodata);
       BUILD_DIR/src/os/math/sinf.o(.rodata);
       BUILD_DIR/src/os/math/cosf.o(.rodata);
@@ -312,7 +320,7 @@ SECTIONS
 
       BUILD_DIR/src/profiler.o(.bss);
       BUILD_DIR/src/crash_screen.o(.bss);
-      BUILD_DIR/asm/bss_80004740.o(.bss);
+      BUILD_DIR/src/code_80004740.o(.bss);
       BUILD_DIR/src/staff_ghosts.o(.bss);
       BUILD_DIR/asm/bss_80005FD0.o(.bss);
       BUILD_DIR/asm/bss_MainSeg.o(.bss);
@@ -348,6 +356,7 @@ SECTIONS
       BUILD_DIR/src/actors.o(.text);
       BUILD_DIR/src/skybox_and_splitscreen.o(.text);
       BUILD_DIR/src/memory.o(.text);
+      BUILD_DIR/src/code_802AAA70.o(.text);
       BUILD_DIR/src/actors_extended.o(.text);
       BUILD_DIR/src/math_util.o(.text);
       BUILD_DIR/src/render_courses.o(.data);
@@ -358,12 +367,12 @@ SECTIONS
       BUILD_DIR/src/actors_extended.o(.data);
       BUILD_DIR/src/race_logic.o(.data);
       BUILD_DIR/src/race_logic.o(.rodata);
-      BUILD_DIR/data/data_121DA0_2_1.o(.data);
       BUILD_DIR/src/render_courses.o(.rodata);
       BUILD_DIR/src/actors.o(.rodata);
-      BUILD_DIR/data/data_121DA0_2_2.o(.data);
+      BUILD_DIR/src/skybox_and_splitscreen.o(.rodata);
+      BUILD_DIR/src/memory.o(.rodata);
+      BUILD_DIR/src/code_802AAA70.o(.rodata);
       BUILD_DIR/src/actors_extended.o(.rodata);
-      BUILD_DIR/data/data_121DA0_2_3.o(.data);
       BUILD_DIR/src/math_util.o(.rodata);
    }
    END_SEG(code_8028DF00)
@@ -400,7 +409,7 @@ SECTIONS
       BUILD_DIR/src/dl_unk_80284EE0.inc.o(.data);
       BUILD_DIR/src/credits_01.inc.o(.data);
       BUILD_DIR/src/ceremony_and_credits.o(.data);
-      BUILD_DIR/data/data_credits_128480_1.o(.data);
+      BUILD_DIR/src/code_80280650.o(.rodata);
       BUILD_DIR/src/camera_junk.o(.rodata);
       BUILD_DIR/data/data_credits_128480_2.o(.data);
       BUILD_DIR/src/ceremony_and_credits.o(.rodata);

@@ -42,7 +42,7 @@ extern s32 D_80163448;
 // Shadows values from gPathIndexByPlayerId, but is an array
 extern u16 D_80165310[];
 // Shadows values from gNearestWaypointByPlayerId, but is an array
-extern u16 D_80165320[];
+extern s16 D_80165320[];
 // Don't think this really belongs with waypoint stuff, but don't know where else to put it
 extern s16 D_80165330[];
 // Shadows values from D_80164560

@@ -1,3 +1,40 @@
+.section .late_rodata
+
+glabel D_800ED528
+.double 0.7
+
+glabel D_800ED530
+.double 0.8
+
+glabel D_800ED538
+.double 0.1
+
+glabel D_800ED540
+.double 0.9
+
+glabel D_800ED548
+.double 0.1
+
+glabel D_800ED550
+.double 0.1
+
+glabel D_800ED558
+.double 0.1
+
+glabel D_800ED560
+.double 0.85
+
+glabel D_800ED568
+.double 0.02
+
+glabel D_800ED570
+.double 0.01
+
+glabel D_800ED578
+.double 0.15
+
+.section .text
+
 glabel func_8001CCEC
 /* 01D8EC 8001CCEC 27BDFF40 */  addiu $sp, $sp, -0xc0
 /* 01D8F0 8001CCF0 AFBF002C */  sw    $ra, 0x2c($sp)

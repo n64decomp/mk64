@@ -1,3 +1,33 @@
+.section .late_rodata
+
+glabel jpt_800ED4E0
+.word L8001C524, L8001C524, L8001C9CC, L8001C524
+.word L8001C9CC, L8001C9CC, L8001C9CC, L8001C9CC
+.word L8001C524, L8001C524, L8001C524
+
+glabel D_800ED50C
+.float 11.600000381
+
+glabel D_800ED510
+.float 19.200000763
+
+glabel D_800ED514
+.float 11.600000381
+
+glabel D_800ED518
+.float 19.200000763
+
+glabel D_800ED51C
+.float 9.600000381
+
+glabel D_800ED520
+.float 11.600000381
+
+glabel D_800ED524
+.float 19.200000763
+
+.section .text
+
 glabel func_8001C4D0
 /* 01D0D0 8001C4D0 27BDFFC0 */  addiu $sp, $sp, -0x40
 /* 01D0D4 8001C4D4 AFA60048 */  sw    $a2, 0x48($sp)
