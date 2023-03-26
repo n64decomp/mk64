@@ -1,3 +1,11 @@
+.section .late_rodata
+
+glabel jpt_800EE050
+.word L80050C50, L80050A88, L80050AC0, L80050B1C
+.word L80050BA8
+
+.section .text
+
 glabel func_800508C0
 /* 0514C0 800508C0 3C0E800E */  lui   $t6, %hi(gModeSelection) # $t6, 0x800e
 /* 0514C4 800508C4 8DCEC53C */  lw    $t6, %lo(gModeSelection)($t6)
