@@ -117,6 +117,7 @@ Gfx d_course_koopa_troopa_beach_packed_dl_2C0[] =
     gsSPEndDisplayList(),
 };
 
+// Unused waterfall bubbling effect?
 Gfx d_course_koopa_troopa_beach_packed_dl_2E8[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
@@ -147,6 +148,7 @@ Gfx d_course_koopa_troopa_beach_packed_dl_368[] =
     gsSPDisplayList(0x070002C0),
     gsSPEndDisplayList(),
 };
+
 
 Gfx d_course_koopa_troopa_beach_packed_dl_380[] =
 {
@@ -5946,6 +5948,7 @@ Gfx d_course_koopa_troopa_beach_packed_dl_9CC0[] =
     gsSPEndDisplayList(),
 };
 
+// waterfall?
 Gfx d_course_koopa_troopa_beach_packed_dl_9CD0[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
@@ -5967,6 +5970,7 @@ Gfx d_course_koopa_troopa_beach_packed_dl_9CD0[] =
     gsSPEndDisplayList(),
 };
 
+// Waterfall pool?
 Gfx d_course_koopa_troopa_beach_packed_dl_9D58[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),

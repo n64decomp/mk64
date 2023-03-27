@@ -435,7 +435,7 @@ block_9:
         temp_v1_18->words.w1 = 0;
         temp_v1_18->words.w0 = 0xE7000000;
         return;
-    case 6:                                         /* switch 1 */
+    case COURSE_KOOPA_BEACH:                                         /* switch 1 */
         temp_v1_19 = gDisplayListHead;
         gDisplayListHead = temp_v1_19 + 8;
         temp_v1_19->words.w1 = 0;
@@ -1973,8 +1973,8 @@ void func_802966A0(void) {
                 if (D_8015F8E4 > 0.0f) { D_8015F8E8 *= -1.0f; }
             }
             D_8015F8E4 += D_8015F8E8;
-            D_802B87BC += 9;
 
+            D_802B87BC += 9;
             if (D_802B87BC > 255) {
                 D_802B87BC = 0;
             }
@@ -1982,6 +1982,7 @@ void func_802966A0(void) {
             if (D_802B87C4 > 255) {
                 D_802B87C4 = 0;
             }
+            // waterfall animation
             func_802AF7B4(d_course_koopa_troopa_beach_packed_dl_9D58, 0, D_802B87BC);
             func_802AF7B4(d_course_koopa_troopa_beach_packed_dl_9CD0, 0, D_802B87C4);
             D_802B87CC = random_int(300) / 40;
@@ -1990,6 +1991,7 @@ void func_802966A0(void) {
             } else {
                 D_802B87C8 = -(random_int(300) / 40);
             }
+            // Waterfall bubbling effect? (unused)
             func_802AF7B4(d_course_koopa_troopa_beach_packed_dl_2E8, D_802B87C8, D_802B87CC);
             break;
         case COURSE_BANSHEE_BOARDWALK:
