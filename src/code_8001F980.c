@@ -15,18 +15,16 @@
 #include "framebuffers.h"
 #include "waypoints.h"
 
-// Not yet implemented. Needs more work to match.
-// Remove ifdef when matching.
-#ifdef NEEDS_RODATA
 s8 D_800DDB50[] = {
     0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x00, 0x02
 };
 
-s32 D_800DDB58[] = {
-    0x00000000, gFramebuffer0, gFramebuffer1, gFramebuffer2
-};
-#endif
+s32 D_800DDB58 = 0;
 
+// Can't find anything that actually references these...
+void *D_800DDB5C[3] = {
+    gFramebuffer0, gFramebuffer1, gFramebuffer2
+};
 
 void func_8001F980(s32 *arg0, s32 *arg1) {
     if ((D_800DC51C == 1) || (D_80164A28 != 0) || (D_8015F894 != 0)) {
@@ -517,12 +515,6 @@ void func_80021244(Player *player, s8 arg1, s8 arg2) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// Arrays are from data/data_0DD0A0_1_1.s
-// Array contents are found in data/data_0DD0A0_3.s
-extern char *D_800DDB68[8];// <- sp3C
-extern char *D_800DDB88[8];// <- sp1C
-
 void func_800212B4(void) {
     s32 stackPadding0;
     char *sp3C[8] = {
@@ -571,9 +563,136 @@ void func_800212B4(void) {
     }
     D_800DDB58 = 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_8001F980/func_800212B4.s")
-#endif
+
+// Hello, you've found the location of the bulk of the data section for this file
+// For reasons beyound human comprehension it MUST be placed somewhere below 
+// func_800212B4
+
+s32 junk[] = {0, 0, 0};
+
+Vtx *D_800DDBB4[] = {
+    D_800E49C0, D_800E4AC0, D_800E4BC0, D_800E4CC0,
+    D_800E4DC0, D_800E4EC0, D_800E4FD0, D_800E50D0
+};
+
+f32 D_800DDBD4[] = {
+    0.75f, 0.75f, 0.75f, 0.75f,
+    0.75f, 0.75f, 0.75f, 0.75f
+};
+
+u8 *gKartMarioWheels0[] = {
+    gKartMario168Wheel0, gKartMario147Wheel0, gKartMario126Wheel0, gKartMario105Wheel0,
+    gKartMario084Wheel0, gKartMario063Wheel0, gKartMario042Wheel0, gKartMario021Wheel0,
+    gKartMario000Wheel0
+};
+
+u8 *gKartMarioWheels1[] = {
+    gKartMario269Wheel0, gKartMario269Wheel0, gKartMario249Wheel0, gKartMario229Wheel0,
+    gKartMario229Wheel0, gKartMario229Wheel0, gKartMario209Wheel0, gKartMario189Wheel0,
+    gKartMario189Wheel0
+};
+
+u8 *gKartLuigiWheels0[] = {
+    gKartLuigi168Wheel0, gKartLuigi147Wheel0, gKartLuigi126Wheel0, gKartLuigi105Wheel0,
+    gKartLuigi084Wheel0, gKartLuigi063Wheel0, gKartLuigi042Wheel0, gKartLuigi021Wheel0,
+    gKartLuigi000Wheel0
+};
+
+u8 *gKartLuigiWheels1[] = {
+    gKartLuigi269Wheel0, gKartLuigi269Wheel0, gKartLuigi249Wheel0, gKartLuigi229Wheel0,
+    gKartLuigi229Wheel0, gKartLuigi229Wheel0, gKartLuigi209Wheel0, gKartLuigi189Wheel0,
+    gKartLuigi189Wheel0
+};
+
+u8 *gKartBowserWheels0[] = {
+    gKartBowser168Wheel0, gKartBowser147Wheel0, gKartBowser126Wheel0, gKartBowser105Wheel0,
+    gKartBowser084Wheel0, gKartBowser063Wheel0, gKartBowser042Wheel0, gKartBowser021Wheel0,
+    gKartBowser000Wheel0
+};
+
+u8 *gKartBowserWheels1[] = {
+    gKartBowser269Wheel0, gKartBowser269Wheel0, gKartBowser249Wheel0, gKartBowser229Wheel0,
+    gKartBowser229Wheel0, gKartBowser229Wheel0, gKartBowser209Wheel0, gKartBowser189Wheel0,
+    gKartBowser189Wheel0
+};
+
+u8 *gKartToadWheels0[] = {
+    gKartToad168Wheel0, gKartToad147Wheel0, gKartToad126Wheel0, gKartToad105Wheel0,
+    gKartToad084Wheel0, gKartToad063Wheel0, gKartToad042Wheel0, gKartToad021Wheel0,
+    gKartToad000Wheel0
+};
+
+u8 *gKartToadWheels1[] = {
+    gKartToad269Wheel0, gKartToad269Wheel0, gKartToad249Wheel0, gKartToad229Wheel0,
+    gKartToad229Wheel0, gKartToad229Wheel0, gKartToad209Wheel0, gKartToad189Wheel0,
+    gKartToad189Wheel0
+};
+
+u8 *gKartYoshiWheels0[] = {
+    gKartYoshi168Wheel0, gKartYoshi147Wheel0, gKartYoshi126Wheel0, gKartYoshi105Wheel0,
+    gKartYoshi084Wheel0, gKartYoshi063Wheel0, gKartYoshi042Wheel0, gKartYoshi021Wheel0,
+    gKartYoshi000Wheel0
+};
+
+u8 *gKartYoshiWheels1[] = {
+    gKartYoshi269Wheel0, gKartYoshi269Wheel0, gKartYoshi249Wheel0, gKartYoshi229Wheel0,
+    gKartYoshi229Wheel0, gKartYoshi229Wheel0, gKartYoshi209Wheel0, gKartYoshi189Wheel0,
+    gKartYoshi189Wheel0
+};
+
+u8 *gKartDKWheels0[] = {
+    gKartDK168Wheel0, gKartDK147Wheel0, gKartDK126Wheel0, gKartDK105Wheel0,
+    gKartDK084Wheel0, gKartDK063Wheel0, gKartDK042Wheel0, gKartDK021Wheel0,
+    gKartDK000Wheel0
+};
+
+u8 *gKartDKWheels1[] = {
+    gKartDK269Wheel0, gKartDK269Wheel0, gKartDK249Wheel0, gKartDK229Wheel0,
+    gKartDK229Wheel0, gKartDK229Wheel0, gKartDK209Wheel0, gKartDK189Wheel0,
+    gKartDK189Wheel0
+};
+
+u8 *gKartPeachWheels0[] = {
+    gKartPeach168Wheel0, gKartPeach147Wheel0, gKartPeach126Wheel0, gKartPeach105Wheel0,
+    gKartPeach084Wheel0, gKartPeach063Wheel0, gKartPeach042Wheel0, gKartPeach021Wheel0,
+    gKartPeach000Wheel0
+};
+
+u8 *gKartPeachWheels1[] = {
+    gKartPeach269Wheel0, gKartPeach269Wheel0, gKartPeach249Wheel0, gKartPeach229Wheel0,
+    gKartPeach229Wheel0, gKartPeach229Wheel0, gKartPeach209Wheel0, gKartPeach189Wheel0,
+    gKartPeach189Wheel0
+};
+
+u8 *gKartWarioWheels0[] = {
+    gKartWario168Wheel0, gKartWario147Wheel0, gKartWario126Wheel0, gKartWario105Wheel0,
+    gKartWario084Wheel0, gKartWario063Wheel0, gKartWario042Wheel0, gKartWario021Wheel0,
+    gKartWario000Wheel0
+};
+
+u8 *gKartWarioWheels1[] = {
+    gKartWario269Wheel0, gKartWario269Wheel0, gKartWario249Wheel0, gKartWario229Wheel0,
+    gKartWario229Wheel0, gKartWario229Wheel0, gKartWario209Wheel0, gKartWario189Wheel0,
+    gKartWario189Wheel0
+};
+
+u8 *D_800DDE34[] = {
+    gKartMarioWheels0, gKartLuigiWheels0, gKartYoshiWheels0, gKartToadWheels0,
+    gKartDKWheels0,    gKartWarioWheels0, gKartPeachWheels0, gKartBowserWheels0
+};
+
+u8 *D_800DDE54[] = {
+    gKartMarioWheels1, gKartLuigiWheels1, gKartYoshiWheels1, gKartToadWheels1,
+    gKartDKWheels1,    gKartWarioWheels1, gKartPeachWheels1, gKartBowserWheels1
+};
+
+s32 D_800DDE74[] = {
+     96, 128, 192, 256,
+    288, 384, 512, 544,
+    576
+};
+
+s32 maybeCompilerPadding = 0;
 
 void func_800215DC(void) {
     D_800DDB58 = 0;
@@ -848,9 +967,8 @@ void move_s32_towards(s32 *startingValue, s32 targetValue, f32 somePercent) {
   * move_f32_towards(thing, 500, 0.75f);
   * thing now has a value of 1000
 
-  * If after the move startingValue is inside of the range [D_800ED688, D_800ED680],
+  * If after the move startingValue is inside of the range [-0.001, 0.001],
   * force it to exactly 0.0f
-  * [D_800ED688, D_800ED680] = [-0.001, 0.001], based on data_0DD0A0_3.s
 
   * This is probably a precision thing. The scaling with somePercent likely
   * can't hit exactly 0 with any reliability, so they force it to 0 if you're
@@ -858,7 +976,7 @@ void move_s32_towards(s32 *startingValue, s32 targetValue, f32 somePercent) {
 **/
 void move_f32_towards(f32 *startingValue, f32 targetValue, f32 somePercent) {
     *startingValue -= ((*startingValue - targetValue) * somePercent);
-    if ((*startingValue < D_800ED680) && (D_800ED688 < *startingValue)) {
+    if ((*startingValue < 0.001) && (-0.001 < *startingValue)) {
         *startingValue = 0.0f;
     }
 }
@@ -1006,27 +1124,6 @@ void func_80022BC4(Player *player, UNUSED s8 arg1) {
     player->unk_DC4 = temp_f0;
     player->unk_DB6 = temp_v0;
 }
-
-/*
-Vtx D_800E49C0[] = {
-    {{9,   18,   -6},  {4032,    0}, {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{9,    9,   -6},  {4032, 1984}, {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{-9,    9,   -6}, {0, 1984},    {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{-9,   18,   -6}, {0,    0},    {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{9,    9,   -6},  {4032,    0}, {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{9,    0,   -6},  {4032, 1792}, {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{-9,    0,   -6}, {0, 1792},    {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{-9,    9,   -6}, {0,    0},    {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{9,   18,   -6},  {0,    0},    {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{9,    9,   -6},  {0, 1984},    {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{-9,    9,   -6}, {4032, 1984}, {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{-9,   18,   -6}, {4032,    0}, {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{9,    9,   -6},  {0,    0},    {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{9,    0,   -6},  {0, 1792},    {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{-9,    0,   -6}, {4032, 1792}, {0xFF, 0xFF, 0xFF, 0xFF}},
-    {{-9,    9,   -6}, {4032,    0}, {0xFF, 0xFF, 0xFF, 0xFF}},
-};
-*/
 
 void func_80022CA8(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     s16 temp_v0 = player->unk_DA4;
@@ -1368,10 +1465,6 @@ void func_80023C84(Player *player, s8 arg1, s8 arg2) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Vec3f D_800DDE9C;// = { 9.0f, 7.0f, 5.0f };
-
 void func_80024374(Player *player, s8 arg1, s8 arg2) {
     Mat4 sp118;
     Mat4 pad;
@@ -1419,9 +1512,6 @@ void func_80024374(Player *player, s8 arg1, s8 arg2) {
     gSPDisplayList(gDisplayListHead++, D_0D008C78);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_8001F980/func_80024374.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc

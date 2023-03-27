@@ -241,6 +241,7 @@ SECTIONS
       BUILD_DIR/src/staff_ghosts.o(.data);
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
       BUILD_DIR/src/camera.o(.data);
+      BUILD_DIR/src/code_8001F980.o(.data);
       BUILD_DIR/data/data_0DD0A0_1_1.o(.data);
       BUILD_DIR/src/kart_dma.o(.data);
       BUILD_DIR/data/data_0DD0A0_1_2.o(.data);
@@ -263,7 +264,9 @@ SECTIONS
       BUILD_DIR/src/os/osViTable.o(.data);
       BUILD_DIR/src/os/osCreatePiManager.o(.data);
       BUILD_DIR/src/os/osContInit.o(.data);
-      BUILD_DIR/data/data_0DD0A0_2_1.o(.data);
+      BUILD_DIR/src/os/osAiSetNextBuffer.o(.data);
+      BUILD_DIR/src/os/__osSetHWIntrRoutine.o(.data);
+      BUILD_DIR/src/os/__osDequeueThread.o(.data);
       BUILD_DIR/src/os/osTimer.o(.data);
       BUILD_DIR/src/os/__osViInit.o(.data);
       BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.data);
@@ -278,7 +281,7 @@ SECTIONS
       BUILD_DIR/data/data_0DD0A0_3_0_0.o(.rodata);
       BUILD_DIR/src/spawn_players.o(.rodata);
       BUILD_DIR/src/code_8003DC40.o(.rodata);
-      BUILD_DIR/data/data_0DD0A0_3_0_1.o(.rodata);
+      BUILD_DIR/src/code_800431B0.o(.rodata);
       BUILD_DIR/src/code_80057C60.o(.rodata);
       BUILD_DIR/data/data_0DD0A0_3_0.o(.rodata);
       BUILD_DIR/src/code_800AF9B0.o(.rodata);
