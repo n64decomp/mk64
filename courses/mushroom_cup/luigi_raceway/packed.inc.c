@@ -7811,5 +7811,3 @@ Gfx d_course_luigi_raceway_packed_dl_C730[] =
     gsSPDisplayList(0x0700C668),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_luigi_raceway_packed_tail[] = { 0xFF, 9, 0, 0, 0, 0, 0, 0 };

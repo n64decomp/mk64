@@ -280,7 +280,7 @@ UNUSED Vtx D_02007B38[] = {
     {{{  0,  0,  0}, 0, {  0, 448}, {0xff, 0x00, 0x00, 0xff}}},
 };
 
-// Todo: Place all theces vertices in a single array
+// Todo: Place all these vertices in a single array
 // Access the correct vertex using sym[value]
 Vtx D_02007BB8[] = {
     {{{ 0, 65520, 0}, 0, {   0, 0}, {0xff, 0xff, 0xff, 0xff}}},

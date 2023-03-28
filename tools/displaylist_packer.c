@@ -235,18 +235,10 @@ void pack(FILE *input_file, FILE *output_file) {
             case 0xB6:
                 data[count++] = 0x57;
                 break;
-            case 0xFF:
-                data[count++] = 0xFF;
-                if (cmd) {
-                    p1 = ARG1(cmd);
-                    if (p1 <= 32) {
-                        for (i = 0; i < p1; i++) {
-                            data[count++] = 0x00;
-                        }
-                    }
-                }
-                goto eos; // end of switch
-                break;
+            //case 0xFF:
+            //    data[count++] = 0xFF;
+            //    goto eos; // end of switch
+            //    break;
             default:
                 printf("Error: Unknown Opcode: 0x%X\n", opCode);
                 printf("Opcode written to file as 0xEE\n");
@@ -256,8 +248,8 @@ void pack(FILE *input_file, FILE *output_file) {
 
         offset += 4;
     }
-    eos: ;
-
+    //eos: ;
+    data[count++] = 0xFF;
     size_t num_elements_written = fwrite(data, sizeof(uint8_t), count, output_file);
     if (num_elements_written != count) {
         printf("Failed to write data to file.\n");

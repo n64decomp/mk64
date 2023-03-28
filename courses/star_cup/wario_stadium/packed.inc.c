@@ -6315,5 +6315,3 @@ Gfx d_course_wario_stadium_packed_dl_A4A8[] =
     gsSPDisplayList(0x070047D8),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_wario_stadium_packed_tail[] = { 0xFF, 15, 0, 0, 0, 0, 0, 0 };

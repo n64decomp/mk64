@@ -3841,5 +3841,3 @@ Gfx d_course_frappe_snowland_packed_dl_6638[] =
     gsSPDisplayList(0x07002670),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_frappe_snowland_packed_tail[] = { 0xFF, 11, 0, 0, 0, 0, 0, 0};

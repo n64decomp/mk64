@@ -2210,5 +2210,3 @@ Gfx d_course_sherbet_land_packed_dl_3848[] =
     gsSPDisplayList(0x070037E0),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_sherbet_land_packed_tail[] = { 0xFF, 15, 0, 0, 0, 0, 0, 0};

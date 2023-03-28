@@ -3421,5 +3421,3 @@ Gfx d_course_choco_mountain_packed_dl_5AE0[] =
     gsSPDisplayList(0x07005A98),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_choco_mountain_packed_tail[] = { 0xFF, 4, 0, 0, 0, 0, 0, 0 };

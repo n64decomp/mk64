@@ -1204,5 +1204,3 @@ Gfx d_course_rainbow_road_packed_dl_20F8[] =
     gsSPDisplayList(0x070020D0),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_rainbow_road_packed_tail[] = { 0xFF, 2, 0, 0, 0, 0, 0, 0};

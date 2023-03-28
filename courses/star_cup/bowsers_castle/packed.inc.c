@@ -5603,5 +5603,3 @@ Gfx d_course_bowsers_castle_packed_dl_9910[] =
     gsSPDisplayList(0x07009830),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_bowsers_castle_packed_tail[] = { 0xFF, 14, 0, 0, 0, 0, 0, 0 };

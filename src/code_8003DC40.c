@@ -227,23 +227,23 @@ void func_8003F46C(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         return;
     } else {
         switch (gCurrentCourseId) {
-        case 0:
+        case COURSE_MARIO_RACEWAY:
             func_8003E048(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
             break;
-        case 1:
-        case 6:
+        case COURSE_CHOCO_MOUNTAIN:
+        case COURSE_KOOPA_BEACH:
             func_8003E37C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
             break;
-        case 2:
+        case COURSE_BOWSER_CASTLE:
             func_8003E6EC(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
             break;
-        case 8:
+        case COURSE_LUIGI_RACEWAY:
             func_8003E9EC(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
             break;
-        case 14:
+        case COURSE_WARIO_STADIUM:
             func_8003EE2C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
             break;
-        case 18:
+        case COURSE_DK_JUNGLE:
             func_8003F138(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
             break;
         default:

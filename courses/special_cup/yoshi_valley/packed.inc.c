@@ -5099,5 +5099,3 @@ Gfx d_course_yoshi_valley_packed_dl_8150[] =
     gsSPDisplayList(0x07008110),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_yoshi_valley_packed_tail[] = { 0xFF, 15, 0, 0, 0, 0, 0, 0};

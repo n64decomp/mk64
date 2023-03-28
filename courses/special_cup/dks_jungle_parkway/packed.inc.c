@@ -5812,5 +5812,3 @@ Gfx d_course_dks_jungle_parkway_packed_dl_9C18[] =
     gsSPDisplayList(0x07009BA8),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_dks_jungle_parkway_packed_tail[] = { 0xFF, 6, 0, 0, 0, 0, 0, 0 };

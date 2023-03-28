@@ -4062,5 +4062,3 @@ Gfx d_course_mario_raceway_packed_dl_6928[] =
     gsSPDisplayList(0x070068C0),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_mario_raceway_packed_dl_tail[] = { 0xFF, 15, 0, 0, 0, 0, 0, 0 };

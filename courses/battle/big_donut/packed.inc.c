@@ -3,6 +3,7 @@
 #include <PR/gbi.h>
 #include <actor_types.h>
 #include <course.h>
+#include <types.h>
 
 Gfx d_course_big_donut_packed_dl_0[] =
 {
@@ -76,19 +77,19 @@ Gfx d_course_big_donut_packed_dl_0[] =
 
 Gfx d_course_big_donut_packed_dl_210[] =
 {
-    gsSPDisplayList(0x07000000),
+    gsSPDisplayList(d_course_big_donut_packed_dl_0),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_big_donut_packed_dl_220[] =
 {
-    gsSPDisplayList(0x07000210),
+    gsSPDisplayList(d_course_big_donut_packed_dl_210),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_big_donut_packed_dl_230[] =
 {
-    gsSPDisplayList(0x07000220),
+    gsSPDisplayList(d_course_big_donut_packed_dl_220),
     gsSPEndDisplayList(),
 };
 
@@ -164,7 +165,7 @@ Gfx d_course_big_donut_packed_dl_240[] =
 
 Gfx d_course_big_donut_packed_dl_450[] =
 {
-    gsSPDisplayList(0x07000240),
+    gsSPDisplayList(d_course_big_donut_packed_dl_240),
     gsSPEndDisplayList(),
 };
 
@@ -378,7 +379,7 @@ Gfx d_course_big_donut_packed_dl_460[] =
 
 Gfx d_course_big_donut_packed_dl_AC0[] =
 {
-    gsSPDisplayList(0x07000460),
+    gsSPDisplayList(d_course_big_donut_packed_dl_460),
     gsSPEndDisplayList(),
 };
 
@@ -466,8 +467,8 @@ Gfx d_course_big_donut_packed_dl_B58[] =
 
 Gfx d_course_big_donut_packed_dl_D20[] =
 {
-    gsSPDisplayList(0x07000B58),
-    gsSPDisplayList(0x07000AD0),
+    gsSPDisplayList(d_course_big_donut_packed_dl_B58),
+    gsSPDisplayList(d_course_big_donut_packed_dl_AD0),
     gsSPEndDisplayList(),
 };
 
@@ -499,7 +500,7 @@ Gfx d_course_big_donut_packed_dl_D38[] =
 
 Gfx d_course_big_donut_packed_dl_DE8[] =
 {
-    gsSPDisplayList(0x07000D38),
+    gsSPDisplayList(d_course_big_donut_packed_dl_D38),
     gsSPEndDisplayList(),
 };
 
@@ -589,27 +590,25 @@ Gfx d_course_big_donut_packed_dl_F90[] =
 
 Gfx d_course_big_donut_packed_dl_1018[] =
 {
-    gsSPDisplayList(0x07000F90),
-    gsSPDisplayList(0x07000F08),
-    gsSPDisplayList(0x07000E80),
-    gsSPDisplayList(0x07000DF8),
+    gsSPDisplayList(d_course_big_donut_packed_dl_F90),
+    gsSPDisplayList(d_course_big_donut_packed_dl_F08),
+    gsSPDisplayList(d_course_big_donut_packed_dl_E80),
+    gsSPDisplayList(d_course_big_donut_packed_dl_DF8),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_big_donut_packed_dl_1040[] =
 {
-    gsSPDisplayList(0x07001018),
-    gsSPDisplayList(0x07000DE8),
-    gsSPDisplayList(0x07000D20),
-    gsSPDisplayList(0x07000AC0),
-    gsSPDisplayList(0x07000450),
+    gsSPDisplayList(d_course_big_donut_packed_dl_1018),
+    gsSPDisplayList(d_course_big_donut_packed_dl_DE8),
+    gsSPDisplayList(d_course_big_donut_packed_dl_D20),
+    gsSPDisplayList(d_course_big_donut_packed_dl_AC0),
+    gsSPDisplayList(d_course_big_donut_packed_dl_450),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_big_donut_packed_dl_1070[] =
 {
-    gsSPDisplayList(0x07001040),
+    gsSPDisplayList(d_course_big_donut_packed_dl_1040),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_big_donut_packed_dl_tail[] = { 0xFF, 0, 0, 0, 0, 0, 0, 0 };

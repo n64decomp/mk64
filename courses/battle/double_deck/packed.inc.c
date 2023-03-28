@@ -273,5 +273,3 @@ Gfx d_course_double_deck_packed_dl_748[] =
 {
     gsSPEndDisplayList(),
 };
-
-u8 d_course_double_deck_packed_tail[] = { 0xFF, 9, 0, 0, 0, 0, 0, 0 };

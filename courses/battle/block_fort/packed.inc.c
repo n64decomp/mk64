@@ -814,5 +814,3 @@ Gfx d_course_block_fort_packed_dl_15D0[] =
 {
     gsSPEndDisplayList(),
 };
-
-u8 d_course_block_fort_packed_tail[] = {0xFF, 15, 0, 0, 0, 0, 0, 0};

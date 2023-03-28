@@ -86,7 +86,7 @@ void  func_802A8EA8(Gfx*, u8, u8);
 void  func_802A8F14(Gfx*, u8, u8);
 void  func_802A94D8(Gfx*, u8, u8);
 void  func_802A9544(Gfx*, u8, u8);
-void  func_802AAA70(uintptr_t);
+void  nullify_displaylist(uintptr_t);
 void  func_802AAAAC(UnkActorInner*);
 s8    func_802ABD10(u16);
 s16   func_802ABD40(u16);

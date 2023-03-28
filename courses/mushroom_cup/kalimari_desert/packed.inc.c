@@ -6551,5 +6551,3 @@ Gfx d_course_kalimari_desert_packed_dl_A670[] =
     gsSPDisplayList(0x0700A5F0),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_kalimari_desert_packed_tail[] = { 0xFF, 6, 0, 0, 0, 0, 0, 0 };

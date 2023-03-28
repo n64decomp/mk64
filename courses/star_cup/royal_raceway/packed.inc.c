@@ -6965,5 +6965,3 @@ Gfx d_course_royal_raceway_packed_dl_B120[] =
     gsSPDisplayList(0x0700B040),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_royal_raceway_packed_tail[] = { 0xFF, 13, 0, 0, 0, 0, 0, 0 };

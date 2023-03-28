@@ -3898,5 +3898,3 @@ Gfx d_course_toads_turnpike_packed_dl_6B08[] =
     gsSPDisplayList(0x07006AD8),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_toads_turnpike_packed_tail[10] = { 0xFF, 10, 0, 0, 0, 0 };

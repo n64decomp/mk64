@@ -627,5 +627,3 @@ Gfx d_course_skyscraper_packed_dl_1110[] =
     gsSPDisplayList(0x070010D8),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_skyscraper_packed_tail[] = { 0xFF, 7, 0, 0, 0, 0, 0, 0 };

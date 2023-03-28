@@ -4227,5 +4227,3 @@ Gfx d_course_moo_moo_farm_packed_dl_6730[] =
     gsSPDisplayList(0x070066D0),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_moo_moo_farm_packed_tail[] = { 0xFF, 15, 0, 0, 0, 0, 0, 0 };

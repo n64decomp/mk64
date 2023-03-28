@@ -4460,5 +4460,3 @@ Gfx d_course_banshee_boardwalk_packed_dl_7338[] =
     gsSPDisplayList(0x070072B8),
     gsSPEndDisplayList(),
 };
-
-u8 d_course_banshee_boardwalk_packed_dl_tail[] = { 0xFF, 1, 0, 0, 0, 0, 0, 0 };
