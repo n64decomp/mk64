@@ -1,3 +1,31 @@
+.section .late_rodata
+
+glabel D_800EE610
+.double 0.07
+
+glabel D_800EE618
+.double 0.3
+
+glabel D_800EE620
+.double 0.1
+
+glabel D_800EE628
+.double 0.1
+
+glabel D_800EE630
+.double 0.3
+
+glabel D_800EE638
+.float 5000.0
+
+glabel D_800EE63C
+.float 6000.0
+
+glabel D_800EE640
+.double 0.06
+
+.section .text
+
 glabel func_80062C74
 /* 063874 80062C74 27BDFF98 */  addiu $sp, $sp, -0x68
 /* 063878 80062C78 3C18800E */  lui   $t8, %hi(D_800E4898) # $t8, 0x800e

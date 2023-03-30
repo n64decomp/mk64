@@ -258,10 +258,6 @@ extern OSMesgQueue gDmaMesgQueue;
 extern OSMesg gMainReceivedMesg;
 extern OSIoMesg gDmaIoMesg;
 
-extern f64 D_800EEAD0;
-extern f32 D_800EEAD8;
-extern f64 D_800EEAE0;
-extern f32 D_800EEAE8;
 extern s32 D_80162DF8;
 extern s32 D_80165598;
 extern s16 D_80165740;

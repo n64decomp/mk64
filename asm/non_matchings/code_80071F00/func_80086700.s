@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800EF470
+.float 0.005
+
+.section .text
+
 glabel func_80086700
 /* 087300 80086700 3C0E800E */  lui   $t6, %hi(gCCSelection) # $t6, 0x800e
 /* 087304 80086704 8DCEC548 */  lw    $t6, %lo(gCCSelection)($t6)

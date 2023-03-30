@@ -1,3 +1,22 @@
+.section .late_rodata
+
+glabel jpt_800EF638
+.word L800909D0, L80090B80, L80090C84, L80090CDC
+.word L80090E08
+
+.word 0x00000000
+
+glabel D_800EF650
+.double 0.9
+
+glabel D_800EF658
+.float 1820.0
+
+glabel D_800EF65C
+.float -1820.0
+
+.section .text
+
 glabel func_80090970
 /* 091570 80090970 27BDFFA8 */  addiu $sp, $sp, -0x58
 /* 091574 80090974 AFBF001C */  sw    $ra, 0x1c($sp)

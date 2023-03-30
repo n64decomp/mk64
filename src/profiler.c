@@ -7,10 +7,13 @@
 struct ProfilerFrameData gProfilerFrameData[2];
 extern u32 D_800DC568;
 extern u32 D_800DC56C;
-extern s16 D_800DC664;
-extern s16 D_800DC668; // gCurrentFrameIndex1?
-extern s16 D_800DC66C; // gCurrentFrameIndex2?
 extern Gfx *gDisplayListHead;
+
+s32 gEnableResourceMeters = 0;
+
+s16 D_800DC664 = 0;
+s16 D_800DC668 = 1;
+s16 D_800DC66C = 0;
 
 void profiler_log_thread5_time(enum ProfilerGameEvent eventID) {
     gProfilerFrameData[D_800DC668].gameTimes[eventID] = osGetTime();

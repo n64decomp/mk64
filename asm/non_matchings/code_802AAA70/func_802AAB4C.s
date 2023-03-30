@@ -1,3 +1,61 @@
+.section .late_rodata
+
+glabel D_802B9E00
+.float 1859.0
+
+glabel D_802B9E04
+.float 1549.0
+
+glabel D_802B9E08
+.float -1102.0
+
+glabel D_802B9E0C
+.float -1402.0
+
+glabel D_802B9E10
+.float 2405.0
+
+glabel D_802B9E14
+.float 2233.0
+
+glabel D_802B9E18
+.float 0.8
+
+glabel D_802B9E1C
+.float -475.0
+
+glabel D_802B9E20
+.float -33.9
+
+glabel D_802B9E24
+.float -838.0
+
+glabel D_802B9E28
+.float -475.0
+
+glabel D_802B9E2C
+.float -475.0
+
+glabel D_802B9E30
+.float -993.0
+
+glabel D_802B9E34
+.float -33.9
+
+glabel D_802B9E38
+.float -475.0
+
+glabel D_802B9E3C
+.float -33.9
+
+glabel D_802B9E40
+.float -475.0
+
+glabel D_802B9E44
+.float -33.9
+
+.section .text
+
 glabel func_802AAB4C
 /* 11415C 802AAB4C 3C02800E */  lui   $v0, %hi(gCurrentCourseId) # $v0, 0x800e
 /* 114160 802AAB50 8442C5A0 */  lh    $v0, %lo(gCurrentCourseId)($v0)

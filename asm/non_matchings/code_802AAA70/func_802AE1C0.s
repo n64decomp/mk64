@@ -1,3 +1,25 @@
+.section .late_rodata
+
+glabel D_802B9E4C
+.float -3000.0
+
+glabel D_802B9E50
+.float 3000.0
+
+glabel D_802B9E54
+.float 3000.0
+
+glabel D_802B9E58
+.float 3000.0
+
+glabel D_802B9E5C
+.float 3000.0
+
+glabel D_802B9E60
+.float 3000.0
+
+.section .text
+
 glabel func_802AE1C0
 /* 1177D0 802AE1C0 3C028016 */  lui   $v0, %hi(D_8015F6EA) # $v0, 0x8016
 /* 1177D4 802AE1C4 8442F6EA */  lh    $v0, %lo(D_8015F6EA)($v0)

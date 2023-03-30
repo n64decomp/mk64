@@ -1,3 +1,40 @@
+.section .late_rodata
+
+glabel D_802B9FDC
+.float -0.01600503
+
+glabel D_802B9FE0
+.float 0.002834060
+
+glabel D_802B9FE4
+.float -0.074954450
+
+glabel D_802B9FE8
+.float 0.042587612
+
+glabel D_802B9FEC
+.float -0.142025709
+
+glabel D_802B9FF0
+.float 0.106367543
+
+glabel D_802B9FF4
+.float -0.333330661
+
+glabel D_802B9FF8
+.double 1.3375206719956623e-08
+
+glabel D_802BA000
+.double 1.5707963267948966
+
+glabel D_802BA008
+.double 1.5707963267948966
+
+glabel D_802BA010
+.double 50.123870849609375
+
+.section .text
+
 glabel func_802B79F0
 /* 121000 802B79F0 46007021 */  cvt.d.s $f0, $f14
 /* 121004 802B79F4 460E6403 */  div.s $f16, $f12, $f14

@@ -6,6 +6,11 @@
 #include "code_80004740.h"
 #include "memory.h"
 
+Vec3s D_80162D70;
+s16 D_80162D76;
+s16 D_80162D78;
+s16 D_80162D7A;
+
 void func_80004740(Mtx *dest, Mat4 src) {
 #ifdef AVOID_UB
     // Avoid type-casting which is technically UB by calling the equivalent

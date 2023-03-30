@@ -748,14 +748,14 @@ void func_8008D9C0(Player* player) {
 
     if (player->unk_D98 == 1) {
         player->unk_D9C += player->unk_DA0;
-        if (D_800EF568 <= player->unk_D9C) {
+        if (2002.0f <= player->unk_D9C) {
             player->unk_DA0 = 10.0f;
             player->unk_D98 *= -1;
         }
     }
     if (player->unk_D98 == -1) {
         player->unk_D9C -= player->unk_DA0;
-        if (player->unk_D9C <= D_800EF56C) {
+        if (player->unk_D9C <= -2002.0f) {
             player->unk_DA0 = 10.0f;
             player->unk_D98 *= -1;
         }
@@ -835,7 +835,7 @@ void func_8008DC08(Player* player, s8 arg1) {
         break;
     case 1:
         player->unk_DC4 = 4.5f;
-        player->pos[1] += D_800EF570;
+        player->pos[1] += 0.13;
         ++player->unk_238;
         
         if ((player->unk_046 & 0x80) != 0) {
@@ -855,7 +855,7 @@ void func_8008DC08(Player* player, s8 arg1) {
         }
 
         player->unk_D9C += player->unk_DA0;
-        if (D_800EF578 <= player->unk_D9C) {
+        if (3458.0f <= player->unk_D9C) {
             player->unk_DA0 = 0.0f;
             break;
         }
@@ -872,7 +872,7 @@ void func_8008DC08(Player* player, s8 arg1) {
         }
 
         player->unk_DC4 = 4.5f;
-        player->pos[1] -= D_800EF580;
+        player->pos[1] -= 0.085;
 
         if ((player->unk_0BC & 8) != 8) {
             D_8018D990[arg1] = 3;
@@ -906,7 +906,7 @@ void func_8008DF98(Player* player, s8 arg1) {
     player->statusEffects &= ~0x4000;
     player->unk_0BC |= 0x40020000;
     player->unk_0BC &= ~0x10;
-    player->unk_08C *= D_800EF588;
+    player->unk_08C *= 0.6;
     player->unk_0B0 = 0;
     player->unk_224 = 1.0f;
     D_8018D930[arg1] = gCourseTimer;
@@ -932,11 +932,6 @@ void func_8008DF98(Player* player, s8 arg1) {
         func_8006B8B4(player, arg1);
     }
 }
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f64 D_800EF590;// = 0.6;
-extern f64 D_800EF598;// = 0.9;
 
 void func_8008E118(Player *player, s8 arg1) {
     s16 test;
@@ -988,9 +983,6 @@ void func_8008E118(Player *player, s8 arg1) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_8008C1D0/func_8008E118.s")
-#endif
 
 void func_8008E3C0(Player* player, UNUSED s8 arg1) {
     move_f32_towards(&player->unk_224, 1.0f, 0.1f);
@@ -1260,7 +1252,7 @@ void func_8008EDC0(Player* player) {
         player->unk_0BC &= ~0x00100000;
         player->boostPower = 0.0f;
         if (player->unk_0C2 >= 0x33) {
-            temp_f0 = D_800EF5A0;
+            temp_f0 = 0.7;
             player->unk_09C = (player->unk_09C * temp_f0);
             player->unk_08C = (player->unk_08C * temp_f0);
         }
@@ -1333,7 +1325,7 @@ void func_8008F104(Player* player, s8 arg1) {
 void func_8008F1B8(Player* player, s8 arg1) {
     s16 temp;
 
-    player->unk_08C = (player->unk_210 * D_800EF5A8);
+    player->unk_08C = (player->unk_210 * 0.05);
     if (player->unk_0B2 < 0) {
         if ((player->unk_044 & 0x80) == 0x80) {
             player->unk_02C[1] += 182;
@@ -1665,10 +1657,6 @@ void func_8008FEDC(Player* player, UNUSED s8 arg1) {
     player->kartHopAcceleration = 0.0f;
 }
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-// jpt_800EF5B0
-
 void func_8008FF08(Player *player, s8 playerId) {
     if(player->nearestWaypointId){}
     switch (gCurrentCourseId) {
@@ -1742,9 +1730,6 @@ void func_8008FF08(Player *player, s8 playerId) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_8008C1D0/func_8008FF08.s")
-#endif
 
 #ifdef NEEDS_RODATA
 // data_0DD0A0_2_0.s
@@ -2088,7 +2073,6 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
 GLOBAL_ASM("asm/non_matchings/code_8008C1D0/func_80090970.s")
 #endif
 
-#ifdef NEEDS_RODATA
 s32 func_800910E4(Player *arg0) {
     s32 phi_v0 = 0;
     if ((((((arg0->unk_0CA & 2) == 2) || ((arg0->unk_0CA & 8) == 8)) || ((arg0->unk_000 & 0x40) != 0)) || ((arg0->unk_000 & 0x800) != 0)) || ((arg0->unk_000 & 0x8000) == 0)) {
@@ -2117,9 +2101,6 @@ func_800910E4_label:
         return 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_8008C1D0/func_800910E4.s")
-#endif
 
 void func_800911B4(Player* player, s8 arg1) {
     s32 temp_v0;
@@ -2128,9 +2109,9 @@ void func_800911B4(Player* player, s8 arg1) {
     player->unk_044 |= 0x1800;
     player->unk_044 &= ~0x0400;
     player->unk_044 |=  0x2000;
-    player->kartHopJerk = D_800EF678;
+    player->kartHopJerk = 0.002f;
     player->kartHopAcceleration = 0.0f;
-    player->kartHopVelocity = D_800EF67C;
+    player->kartHopVelocity = 2.6f;
     player->unk_0B2 = 2;
     player->unk_0C0 = 0;
     player->unk_07C = 0;

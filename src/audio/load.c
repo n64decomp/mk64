@@ -37,44 +37,61 @@ extern u8 sSampleDmaReuseQueueHead1; // sSampleDmaReuseQueueHead1
 extern u8 sSampleDmaReuseQueueHead2; // sSampleDmaReuseQueueHead2
 
 /**
+ * Given that (almost) all of these are format strings, it is highly likely
+ * that they are meant to be used in some sort of printf variant. But I don't
+ * care to try and figure out which function gets which string(s)
+ * So I've place them all here instead.
+**/
+char loadAudioString00[] = "Romcopy %x -> %x ,size %x\n";
+char loadAudioString01[] = "Romcopyend\n";
+char loadAudioString02[] = "CAUTION:WAVE CACHE FULL %d";
+char loadAudioString03[] = "LOAD  Rom :%x -> Ram :%x  Len:%x\n";
+char loadAudioString04[] = "BASE %x %x\n";
+char loadAudioString05[] = "LOAD %x %x %x\n";
+char loadAudioString06[] = "INSTTOP    %x\n";
+char loadAudioString07[] = "INSTMAP[0] %x\n";
+char loadAudioString08[] = "already flags %d\n";
+char loadAudioString09[] = "already flags %d\n";
+char loadAudioString10[] = "ERR:SLOW BANK DMA BUSY\n";
+char loadAudioString11[] = "ERR:SLOW DMA BUSY\n";
+char loadAudioString12[] = "Check %d  bank %d\n";
+char loadAudioString13[] = "Cache Check\n";
+char loadAudioString14[] = "NO BANK ERROR\n";
+char loadAudioString15[] = "BANK %d LOADING START\n";
+char loadAudioString16[] = "BANK %d LOAD MISS (NO MEMORY)!\n";
+char loadAudioString17[] = "BANK %d ALREADY CACHED\n";
+char loadAudioString18[] = "BANK LOAD MISS! FOR %d\n";
+char loadAudioString19[] = "Seq %d Loading Start\n";
+char loadAudioString20[] = "Heap Overflow Error\n";
+char loadAudioString21[] = "SEQ  %d ALREADY CACHED\n";
+char loadAudioString22[] = "Ok,one bank slow load Start \n";
+char loadAudioString23[] = "Sorry,too many %d bank is none.fast load Start \n";
+char loadAudioString24[] = "Seq %d:Default Load Id is %d\n";
+char loadAudioString25[] = "Seq Loading Start\n";
+char loadAudioString26[] = "Error:Before Sequence-SlowDma remain.\n";
+char loadAudioString27[] = "      Cancel Seq Start.\n";
+char loadAudioString28[] = "SEQ  %d ALREADY CACHED\n";
+char loadAudioString29[] = "Clear Workarea %x -%x size %x \n";
+char loadAudioString30[] = "AudioHeap is %x\n";
+char loadAudioString31[] = "Heap reset.Synth Change %x \n";
+char loadAudioString32[] = "Heap %x %x %x\n";
+char loadAudioString33[] = "Main Heap Initialize.\n";
+char loadAudioString34[] = "---------- Init Completed. ------------\n";
+char loadAudioString35[] = " Syndrv    :[%6d]\n";
+char loadAudioString36[] = " Seqdrv    :[%6d]\n";
+char loadAudioString37[] = " audiodata :[%6d]\n";
+char loadAudioString38[] = "---------------------------------------\n";
+
+/**
  * Performs an immediate DMA copy
  */
 void audio_dma_copy_immediate(uintptr_t devAddr, void *vAddr, size_t nbytes) {
-    eu_stubbed_printf_3("Romcopy %x -> %x ,size %x\n", devAddr, vAddr, nbytes);
+    // eu_stubbed_printf_3("Romcopy %x -> %x ,size %x\n", devAddr, vAddr, nbytes);
     osInvalDCache(vAddr, nbytes);
     osPiStartDma(&D_803B6740, OS_MESG_PRI_HIGH, OS_READ, devAddr, vAddr, nbytes, &D_803B6720);
     osRecvMesg(&D_803B6720, NULL, OS_MESG_BLOCK);
-    eu_stubbed_printf_0("Romcopyend\n");
+    // eu_stubbed_printf_0("Romcopyend\n");
 }
-
-const char audioString34[] = "CAUTION:WAVE CACHE FULL %d";
-const char audioString35[] = "LOAD  Rom :%x -> Ram :%x  Len:%x\n";
-const char audioString36[] = "BASE %x %x\n";
-const char audioString37[] = "LOAD %x %x %x\n";
-const char audioString38[] = "INSTTOP    %x\n";
-const char audioString39[] = "INSTMAP[0] %x\n";
-const char audioString40[] = "already flags %d\n";
-const char audioString41[] = "already flags %d\n";
-const char audioString42[] = "ERR:SLOW BANK DMA BUSY\n";
-const char audioString43[] = "ERR:SLOW DMA BUSY\n";
-const char audioString44[] = "Check %d  bank %d\n";
-const char audioString45[] = "Cache Check\n";
-const char audioString46[] = "NO BANK ERROR\n";
-const char audioString47[] = "BANK %d LOADING START\n";
-const char audioString48[] = "BANK %d LOAD MISS (NO MEMORY)!\n";
-const char audioString49[] = "BANK %d ALREADY CACHED\n";
-const char audioString50[] = "BANK LOAD MISS! FOR %d\n";
-
-
-const char audioString51[] = "Seq %d Loading Start\n";
-
-const char audioString52[] = "Heap Overflow Error\n";
-
-const char asdf[] = "SEQ  %d ALREADY CACHED\n";
-const char fdsa[] = "Ok,one bank slow load Start \n";
-const char af[] = "Sorry,too many %d bank is none.fast load Start \n";
-
-
 
 /**
  * Performs an asynchronus (normal priority) DMA copy

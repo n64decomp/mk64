@@ -1,3 +1,40 @@
+.section .data
+
+glabel D_800E3DC8
+.float 0.0, 0.0, 1.0
+
+glabel D_800E3DD4
+.float 0.0, 0.0, 0.0
+
+glabel D_800E3DE0
+.float 0.0, 0.0, 0.0
+
+glabel D_800E3DEC
+.float 0.0, 0.0, 0.0
+
+.section .late_rodata
+
+glabel D_800ED8A8
+.double 780.0
+
+glabel D_800ED8B0
+.double 6500.0
+
+glabel D_800ED8B8
+.float -1100.0
+.word 0x00000000
+
+glabel D_800ED8C0
+.double 0.13
+
+glabel D_800ED8C8
+.double 0.2
+
+glabel D_800ED8D0
+.double 0.018
+
+.section .text
+
 glabel func_8002F730
 /* 030330 8002F730 27BDFF00 */  addiu $sp, $sp, -0x100
 /* 030334 8002F734 3C0F800E */  lui   $t7, %hi(D_800E3DC8) # $t7, 0x800e

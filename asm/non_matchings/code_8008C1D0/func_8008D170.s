@@ -1,3 +1,16 @@
+.section .late_rodata
+
+glabel D_800EF550
+.double 0.1
+
+glabel D_800EF558
+.double 0.9
+
+glabel D_800EF560
+.double 1.3
+
+.section .text
+
 glabel func_8008D170
 /* 08DD70 8008D170 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 08DD74 8008D174 AFBF001C */  sw    $ra, 0x1c($sp)

@@ -1,3 +1,28 @@
+.section .late_rodata
+
+glabel D_800EF16C
+.float 0.2
+
+glabel D_800EF170
+.double -360.0
+
+glabel D_800EF178
+.double -1300.0
+
+glabel D_800EF180
+.double 328.0
+
+glabel D_800EF188
+.double 2541.0
+
+glabel D_800EF190
+.double -985.0
+
+glabel D_800EF198
+.double 1200.0
+
+.section .text
+
 glabel func_8008241C
 /* 08301C 8008241C 000470C0 */  sll   $t6, $a0, 3
 /* 083020 80082420 27BDFFD8 */  addiu $sp, $sp, -0x28

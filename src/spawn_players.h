@@ -26,8 +26,6 @@ void func_8003D080();
 void func_8003DB5C();
 
 extern s16 D_80165560[];
-extern s32* D_800E3C50[];
-extern u16* D_800E3890[];
 extern s16 D_80165340;
 
 

@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800EF418
+.double 799.0
+
+.section .text
+
 glabel func_80085DB8
 /* 0869B8 80085DB8 3C018019 */  lui   $at, %hi(D_8018D01C) # $at, 0x8019
 /* 0869BC 80085DBC C424D01C */  lwc1  $f4, %lo(D_8018D01C)($at)

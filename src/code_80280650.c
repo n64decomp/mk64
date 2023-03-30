@@ -141,15 +141,13 @@ s32 D_80284E40[] = {
 
 void func_8028093C(struct UnkStruct_80280658 *arg0) {
     struct UnkStruct_80280658 *temp_v0;
-    f32 temp_f0;
 
     if (arg0->unk44 < 0x1E) {
         arg0->unk14 += 2.5f;
-        arg0->unk10 += func_80280850(D_80286B74);
-        arg0->unk18 += func_80280850(D_80286B78);
+        arg0->unk10 += func_80280850(0.2f);
+        arg0->unk18 += func_80280850(0.2f);
     } else if (arg0->unk2C == 4) {
         temp_v0 = func_80280734(&D_80284E7C);
-        temp_f0 = D_80286B7C;
         temp_v0->unk10 = arg0->unk10;
         temp_v0->unk14 = arg0->unk14;
         temp_v0->unk18 = arg0->unk18;
@@ -157,8 +155,8 @@ void func_8028093C(struct UnkStruct_80280658 *arg0) {
         temp_v0->unk3C = 0xFF;
         temp_v0->unk40 = -0x11;
         temp_v0->unk44 = 0x64;
-        temp_v0->unk34 = temp_f0;
-        temp_v0->unk38 = temp_f0;
+        temp_v0->unk34 = 1.8700001f;
+        temp_v0->unk38 = 1.8700001f;
     }
 }
 

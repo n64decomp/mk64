@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800F3668
+.float 100000.0
+
+.section .text
+
 glabel func_800C473C
 /* 0C533C 800C473C 30AE00FF */  andi  $t6, $a1, 0xff
 /* 0C5340 800C4740 24080030 */  li    $t0, 48

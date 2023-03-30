@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800ED7D0
+.double 4.2
+
+.section .text
+
 glabel func_8002B9CC
 /* 02C5CC 8002B9CC 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 02C5D0 8002B9D0 AFBF001C */  sw    $ra, 0x1c($sp)

@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800EF680
+.double 1.08
+
+.section .text
+
 glabel func_80091298
 /* 091E98 80091298 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 091E9C 8009129C 3C18800E */  lui   $t8, %hi(D_800E706C) # $t8, 0x800e

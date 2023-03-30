@@ -1,3 +1,14 @@
+.section .late_rodata
+
+glabel D_800F3648
+.float 100000.0
+
+glabel jpt_800F364C
+.word L800C423C, L800C4268, L800C42A4, L800C42C8
+.word L800C42FC, L800C4330
+
+.section .text
+
 glabel func_800C41CC
 /* 0C4DCC 800C41CC 27ADFFF0 */  addiu $t5, $sp, -0x10
 /* 0C4DD0 800C41D0 ADA40010 */  sw    $a0, 0x10($t5)

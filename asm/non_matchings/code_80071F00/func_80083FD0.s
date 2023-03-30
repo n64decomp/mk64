@@ -1,3 +1,19 @@
+.section .late_rodata
+
+glabel D_800EF2A8
+.double 0.0002
+
+glabel D_800EF2B0
+.double 0.04
+
+glabel D_800EF2B8
+.double 0.05
+
+glabel D_800EF2C0
+.double 0.1
+
+.section .text
+
 glabel func_80083FD0
 /* 084BD0 80083FD0 000670C0 */  sll   $t6, $a2, 3
 /* 084BD4 80083FD4 01C67023 */  subu  $t6, $t6, $a2

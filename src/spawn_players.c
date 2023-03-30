@@ -9,6 +9,7 @@
 #include "math_util.h"
 #include "code_80027D00.h"
 #include "code_80057C60.h"
+#include "code_802AAA70.h"
 #include "render_courses.h"
 #include "spawn_players.h"
 

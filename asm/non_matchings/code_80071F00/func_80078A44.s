@@ -1,3 +1,11 @@
+.section .late_rodata
+
+glabel jpt_800EEB88
+.word L80078AFC, L80078B38, L80078B74, L80078BB0
+.word L80078BEC
+
+.section .text
+
 glabel func_80078A44
 /* 079644 80078A44 27BDFFB0 */  addiu $sp, $sp, -0x50
 /* 079648 80078A48 AFBE0048 */  sw    $fp, 0x48($sp)

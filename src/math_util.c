@@ -193,13 +193,13 @@ void mtxf_translate(Mat4 dest, Vec3f b) {
     dest[3][1] = b[1];
     dest[3][2] = b[2];
 }
-extern f64 D_802B9FB0; // = 0.017453292222222222;
+
 // Note the use of `2` which generates diff asm than just using floats (2.0f).
 void func_802B5564(Mat4 arg0, u16 *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
     f32 temp;
     s32 i, j;
     mtxf_identity(arg0);
-    arg2 *= D_802B9FB0;
+    arg2 *= 0.017453292222222222;
     temp = cosf(arg2 / 2) / sinf(arg2 / 2);
     arg0[0][0] = temp / arg3;
     arg0[1][1] = temp;
@@ -1004,7 +1004,6 @@ GLOBAL_ASM("asm/non_matchings/math_util/func_802B75F8.s")
  * Helper function for atan2s. Does a look up of the arctangent of y/x assuming
  * the resulting angle is in range [0, 0x2000] (1/8 of a circle).
  */
-extern f32 D_802B9FD8; // = 1000000.0f;
 
 u16 atan2_lookup(f32 y, f32 x) {
     u16 ret;
@@ -1012,7 +1011,7 @@ u16 atan2_lookup(f32 y, f32 x) {
     if (x == 0) {
         ret = gArctanTable[0];
     } else {
-        if (D_802B9FD8 < y / x) {
+        if (1000000.0f < y / x) {
             if (y > 0.0f) {
                 ret = 0x4000;
             } else {
@@ -1125,10 +1124,8 @@ f32 func_802B79F0(f32 arg0, f32 arg1) {
 GLOBAL_ASM("asm/non_matchings/math_util/func_802B79F0.s")
 #endif
 
-extern f64 D_802BA018; // = 3.141592653589793;
-
 UNUSED u16 func_802B7B50(f32 arg0, f32 arg1) {
-    return ((func_802B79B8(arg0, arg1) * 32768.0f) / D_802BA018);
+    return ((func_802B79B8(arg0, arg1) * 32768.0f) / 3.141592653589793);
 }
 
 UNUSED void func_802B7C18(f32 arg0) {

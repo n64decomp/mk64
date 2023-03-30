@@ -90,6 +90,7 @@ seg2Files2 = [
 ]
 seg3Files2 = [
     "asm/non_matchings/code_80280650",
+    "asm/non_matchings/code_802AAA70",
     "asm/non_matchings/ceremony_and_credits",
 ]
 audioFiles2 = [
@@ -191,6 +192,7 @@ seg3Files = [
     "build/us/src/code_80280650",
     "build/us/src/code_80281780",
     "build/us/src/code_80281C40",
+    "build/us/src/code_802AAA70",
     "build/us/src/ceremony_and_credits",
 ]
 segAudioFiles = [

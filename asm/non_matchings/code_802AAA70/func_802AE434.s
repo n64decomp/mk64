@@ -1,3 +1,19 @@
+.section .late_rodata
+
+glabel D_802B9E64
+.float -0.9
+
+glabel D_802B9E68
+.float 0.9
+
+glabel D_802B9E6C
+.float 0.1
+
+glabel D_802B9E70
+.float -0.1
+
+.section .text
+
 glabel func_802AE434
 /* 117A44 802AE434 3C0E8016 */  lui   $t6, %hi(D_8015F588) # $t6, 0x8016
 /* 117A48 802AE438 95CEF588 */  lhu   $t6, %lo(D_8015F588)($t6)

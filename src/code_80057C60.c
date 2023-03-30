@@ -3049,7 +3049,7 @@ void func_8005D898(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
         if (player->unk_22A >= 2) {
             func_8005D800(&player->unk_258[10 + arg1], 0xFF9600, 0x70);
         }
- 
+
         if (player->unk_22A >= 2) {
             // Why not put this in previous if statement?
             player->unk_258[10 + arg1].unk_040 = 2;
@@ -4091,9 +4091,6 @@ block_19:
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80060504.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-extern f64 D_800EE580;// = 0.1
 void func_800608E0(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     f32 var_f0;
     f32 sp50;
@@ -4121,9 +4118,6 @@ void func_800608E0(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     player->unk_258[arg1].unk_000[2] = player->pos[2] + sp48;
     player->unk_258[arg1].unk_000[1] = player->pos[1] + sp4C;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800608E0.s")
-#endif
 
 void func_80060B14(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     if ((gCurrentCourseId != 0x0010) && (gCurrentCourseId != 0x000D)) {
@@ -4134,13 +4128,6 @@ void func_80060B14(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
         }
     }
 }
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f64 D_800EE588;// = -1.8;
-extern f64 D_800EE590;// = -1.8;
-extern f64 D_800EE598;// = -1.8;
-extern f64 D_800EE5A0;// = -1.8;
 
 void func_80060BCC(Player *player, s16 arg1, s32 arg2, s32 arg3) {
     s32 sp54;
@@ -4177,9 +4164,6 @@ void func_80060BCC(Player *player, s16 arg1, s32 arg2, s32 arg3) {
         player->unk_258[arg1 + 10].unk_00C = (sp48 + 2.0f) / 10.0f;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80060BCC.s")
-#endif
 
 void func_80060F50(Player* player, s16 arg1, UNUSED s8 arg2, s8 arg3) {
     func_8005D794(player, &player->unk_258[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
@@ -4191,8 +4175,8 @@ void func_80060F50(Player* player, s16 arg1, UNUSED s8 arg2, s8 arg3) {
         func_8005D800(&player->unk_258[arg1], 0xFFFFFF, 0xFF);
     }
 
-    player->unk_258[arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[arg1].unk_020) * D_800EE5A8);
-    player->unk_258[arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[arg1].unk_020) * D_800EE5B0);
+    player->unk_258[arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[arg1].unk_020) * -5.8);
+    player->unk_258[arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[arg1].unk_020) * -5.8);
     player->unk_258[arg1].unk_000[1] = D_801652A0[arg3];
     player->unk_0DE &= ~0x0008;
 }
@@ -4250,9 +4234,6 @@ void func_800612F8(Player *player, s32 arg1, s32 arg2, s32 arg3) {
     player->unk_046 &= ~0x0008;
 }
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f64 D_800EE5B8;// = 1.9;
 void func_80061430(Player *player, s32 arg1, s32 arg2, s32 arg3) {
     s32 var_s2;
 
@@ -4272,9 +4253,6 @@ void func_80061430(Player *player, s32 arg1, s32 arg2, s32 arg3) {
     }
     player->unk_044 &= ~0x1000;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80061430.s")
-#endif
 
 #ifdef NEEDS_RODATA
 // data_0DD0A0_2.s
@@ -4535,10 +4513,6 @@ void func_80062484(Player* player, UnkPlayerStruct258* arg1, s32 arg2) {
     arg1->unk_01E = 0;
 }
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-// jpt_800EE5C8
-
 void func_800624D8(Player *player, s32 arg1, s32 arg2, s32 arg3) {
     s32 var_s1;
 
@@ -4628,16 +4602,13 @@ void func_800624D8(Player *player, s32 arg1, s32 arg2, s32 arg3) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800624D8.s")
-#endif
 
 void func_800628C0(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_01C = 1;
     player->unk_258[20 + arg3].unk_020 = -player->unk_02C[1];
     player->unk_258[20 + arg3].unk_012 = 2;
     player->unk_258[20 + arg3].unk_01E = 0;
-    player->unk_258[20 + arg3].unk_00C =  D_800EE5FC;
+    player->unk_258[20 + arg3].unk_00C =  0.2f;
 }
 
 void func_80062914(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
@@ -4653,7 +4624,7 @@ void func_80062968(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_020 = -player->unk_02C[1];
     player->unk_258[20 + arg3].unk_012 = 5;
     player->unk_258[20 + arg3].unk_01E = 0;
-    player->unk_258[20 + arg3].unk_00C = D_800EE600;
+    player->unk_258[20 + arg3].unk_00C = 0.2f;
 }
 
 void func_800629BC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
@@ -4661,14 +4632,14 @@ void func_800629BC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_020 = -player->unk_02C[1];
     player->unk_258[20 + arg3].unk_012 = 6;
     player->unk_258[20 + arg3].unk_01E = 0;
-    player->unk_258[20 + arg3].unk_00C = D_800EE604;
+    player->unk_258[20 + arg3].unk_00C = 0.2f;
     player->unk_258[20 + arg3].unk_000[1] = 0.0f;
 }
 
 void func_80062A18(Player* player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_01C = 1;
     player->unk_258[20 + arg3].unk_012 = 3;
-    player->unk_258[20 + arg1 /* arg1 instead of arg3 */].unk_00C = D_800EE608;
+    player->unk_258[20 + arg1 /* arg1 instead of arg3 */].unk_00C = 0.2f;
     player->unk_258[20 + arg3].unk_01E = 1;
     player->unk_258[20 + arg3].unk_020 = 0;
     player->unk_0B6 &= ~0x0080;
@@ -4680,7 +4651,7 @@ void func_80062A18(Player* player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
 void func_80062AA8(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_01C = 1;
     player->unk_258[20 + arg3].unk_012 = 5;
-    player->unk_258[20 + arg3].unk_00C = D_800EE60C;
+    player->unk_258[20 + arg3].unk_00C = 0.1f;
     player->unk_258[20 + arg3].unk_01E = 0;
     player->unk_258[20 + arg3].unk_000[1] = (player->pos[1] + player->boundingBoxSize) - 2.5;
 }
@@ -4800,7 +4771,7 @@ void func_80062F98(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     ++player->unk_258[10 + arg1].unk_01E;
     player->unk_258[10 + arg1].unk_000[1] += temp_f0;
     if ((player->unk_0CA & 1) == 1) {
-        player->unk_258[10 + arg1].unk_000[1] += (temp_f0 + D_800EE648);
+        player->unk_258[10 + arg1].unk_000[1] += (temp_f0 + 0.3);
         if ((player->unk_258[10 + arg1].unk_01E == 0x10) || ((D_801652A0[arg2] - player->unk_258[10 + arg1].unk_000[1]) < 3.0f)) {
             player->unk_258[10 + arg1].unk_01C = 0;
             player->unk_258[10 + arg1].unk_01E = 0;
@@ -4815,8 +4786,8 @@ void func_80062F98(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
 
 void func_800630C0(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     ++player->unk_258[arg1].unk_01E;
-    player->unk_258[arg1].unk_000[2] = player->pos[2] + coss(player->unk_258[arg1].unk_020) * D_800EE650;
-    player->unk_258[arg1].unk_000[0] = player->pos[0] + sins(player->unk_258[arg1].unk_020) * D_800EE658;
+    player->unk_258[arg1].unk_000[2] = player->pos[2] + coss(player->unk_258[arg1].unk_020) * -5.8;
+    player->unk_258[arg1].unk_000[0] = player->pos[0] + sins(player->unk_258[arg1].unk_020) * -5.8;
     player->unk_258[arg1].unk_000[1] = D_801652A0[arg2];
     if (player->unk_258[arg1].unk_01E == 15) {
         player->unk_258[arg1].unk_01C = 0;
@@ -4861,7 +4832,7 @@ void func_80063268(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     player->unk_258[arg1].unk_000[0] = player->pos[0] + (sins((player->unk_258[arg1].unk_020 + player->unk_258[arg1].unk_040)) * 5.5);
     player->unk_258[arg1].unk_000[1] = ((player->pos[1] - 5.0f) + player->unk_258[arg1].unk_024);
     ++player->unk_258[arg1].unk_01E;
-    player->unk_258[arg1].unk_00C += D_800EE660;
+    player->unk_258[arg1].unk_00C += 0.05;
     player->unk_258[arg1].unk_03E -= 5;
 
     if ((s32) player->unk_258[arg1].unk_03E <= 0) {
@@ -4898,7 +4869,7 @@ void func_80063408(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
         player->unk_258[10 + arg1].unk_012 = 0;
     }
 
-    player->unk_258[10 + arg1].unk_00C += D_800EE668;
+    player->unk_258[10 + arg1].unk_00C += 0.08;
     if (player->unk_258[10 + arg1].unk_01E >= 4) {
         player->unk_258[10 + arg1].unk_03E -= 16;
     }
@@ -4932,7 +4903,7 @@ void func_800635D4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     }
 
     ++player->unk_258[10 + arg1].unk_01E;
-    player->unk_258[10 + arg1].unk_000[1] += D_800EE670;
+    player->unk_258[10 + arg1].unk_000[1] += 0.2;
     if (((player->unk_0BC & 0x80) != 0) || ((player->unk_0BC & 0x40) != 0)) {
         player->unk_258[10 + arg1].unk_01C = 0;
         player->unk_258[10 + arg1].unk_01E = 0;
@@ -4944,7 +4915,7 @@ void func_800635D4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
         player->unk_258[10 + arg1].unk_012 = 0;
     }
 
-    player->unk_258[10 + arg1].unk_00C += D_800EE678;
+    player->unk_258[10 + arg1].unk_00C += 0.1;
     if (player->unk_258[10 + arg1].unk_040 == 0) {
         if (player->unk_258[10 + arg1].unk_01E >= 4) {
             player->unk_258[10 + arg1].unk_03E -= 12;
@@ -4964,21 +4935,21 @@ void func_800635D4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_800639DC(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (player->unk_258[10 + arg1].unk_010 == 1) {
-        player->unk_258[10 + arg1].unk_000[2] = player->boundingBoxCorners[2].cornerPos[2] + (D_800EE680 * player->unk_258[10 + arg1].unk_01E) * coss(player->unk_258[10 + arg1].unk_020);
-        player->unk_258[10 + arg1].unk_000[0] = player->boundingBoxCorners[2].cornerPos[0] + (D_800EE684 * player->unk_258[10 + arg1].unk_01E) * sins(player->unk_258[10 + arg1].unk_020);
+        player->unk_258[10 + arg1].unk_000[2] = player->boundingBoxCorners[2].cornerPos[2] + (-1.8f * player->unk_258[10 + arg1].unk_01E) * coss(player->unk_258[10 + arg1].unk_020);
+        player->unk_258[10 + arg1].unk_000[0] = player->boundingBoxCorners[2].cornerPos[0] + (-1.8f * player->unk_258[10 + arg1].unk_01E) * sins(player->unk_258[10 + arg1].unk_020);
     } else {
-        player->unk_258[10 + arg1].unk_000[2] = player->boundingBoxCorners[3].cornerPos[2] + (D_800EE688 * player->unk_258[10 + arg1].unk_01E) * coss(player->unk_258[10 + arg1].unk_020);
-        player->unk_258[10 + arg1].unk_000[0] = player->boundingBoxCorners[3].cornerPos[0] + (D_800EE68C * player->unk_258[10 + arg1].unk_01E) * sins(player->unk_258[10 + arg1].unk_020);
+        player->unk_258[10 + arg1].unk_000[2] = player->boundingBoxCorners[3].cornerPos[2] + (-1.8f * player->unk_258[10 + arg1].unk_01E) * coss(player->unk_258[10 + arg1].unk_020);
+        player->unk_258[10 + arg1].unk_000[0] = player->boundingBoxCorners[3].cornerPos[0] + (-1.8f * player->unk_258[10 + arg1].unk_01E) * sins(player->unk_258[10 + arg1].unk_020);
     }
     ++player->unk_258[10 + arg1].unk_01E;
-    player->unk_258[10 + arg1].unk_000[1] += D_800EE690;
+    player->unk_258[10 + arg1].unk_000[1] += 0.3;
     if (player->unk_258[10 + arg1].unk_01E == 8) {
         player->unk_258[10 + arg1].unk_01C = 0;
         player->unk_258[10 + arg1].unk_01E = 0;
         player->unk_258[10 + arg1].unk_012 = 0;
     }
 
-    player->unk_258[10 + arg1].unk_00C += D_800EE698;
+    player->unk_258[10 + arg1].unk_00C += 0.15;
     if (player->unk_258[10 + arg1].unk_040 == 0) {
         if ((s32) player->unk_258[10 + arg1].unk_01E >= 4) {
             --player->unk_258[10 + arg1].unk_03E;
@@ -5007,7 +4978,7 @@ void func_80063BD4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     }
 
     ++player->unk_258[10 + arg1].unk_01E;
-    player->unk_258[10 + arg1].unk_000[1] += D_800EE6A0;
+    player->unk_258[10 + arg1].unk_000[1] += 0.2;
     if (player->unk_258[10 + arg1].unk_01E == 8) {
         player->unk_258[10 + arg1].unk_01C = 0;
         player->unk_258[10 + arg1].unk_01E = 0;
@@ -5015,7 +4986,7 @@ void func_80063BD4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     }
 
     player->unk_258[10 + arg1].unk_018 = 2.0f;
-    player->unk_258[10 + arg1].unk_00C -= D_800EE6A8;
+    player->unk_258[10 + arg1].unk_00C -= 0.06;
 }
 
 void func_80063D58(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
@@ -5034,12 +5005,12 @@ void func_80063D58(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
         player->unk_258[10 + arg1].unk_012 = 0;
     }
 
-    player->unk_258[10 + arg1].unk_00C += D_800EE6B0;
+    player->unk_258[10 + arg1].unk_00C += 0.2;
     if (player->unk_258[10 + arg1].unk_01E >= 4) {
         player->unk_258[10 + arg1].unk_03E -= 18;
-        player->unk_258[10 + arg1].unk_000[1] -= D_800EE6B8;
+        player->unk_258[10 + arg1].unk_000[1] -= 0.1;
     } else {
-        player->unk_258[10 + arg1].unk_000[1] += D_800EE6C0;
+        player->unk_258[10 + arg1].unk_000[1] += 0.4;
     }
     
     if (player->unk_258[10 + arg1].unk_03E <= 0) {
@@ -5075,7 +5046,7 @@ void func_80064184(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
 
     sp40 = D_801652A0[arg2] - player->pos[1] - 3.0f;
     if (((player->unk_0DE & 1) != 0) && (gCurrentCourseId != COURSE_KOOPA_BEACH)) {
-        sp40 = D_801652A0[arg2] - player->pos[1] + D_800EE6C8;
+        sp40 = D_801652A0[arg2] - player->pos[1] + 0.1;
     }
 
     func_80062B18(&sp44, &sp40, &sp3C, 0.0f, sp40, -4.0f + ((-player->unk_258[arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 10.0f), -player->unk_258[arg1].unk_020, 2 * -player->unk_206);
@@ -5089,7 +5060,7 @@ void func_80064184(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
         player->unk_258[arg1].unk_012 = 0;
     }
     player->unk_258[arg1].unk_018 = 2.0f;
-    player->unk_258[arg1].unk_00C -= D_800EE6D0;
+    player->unk_258[arg1].unk_00C -= 0.35;
     if (player->unk_258[arg1].unk_00C < 0.0f) {
         player->unk_258[arg1].unk_00C = 0.0f;
     }
@@ -5101,8 +5072,8 @@ void func_80064184(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
 }
 
 void func_800643A8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
-    player->unk_258[10 + arg1].unk_000[2] = player->pos[2] + (D_800EE6D8 * player->unk_258[10 + arg1].unk_01E * coss(player->unk_258[10 + arg1].unk_020));
-    player->unk_258[10 + arg1].unk_000[0] = player->pos[0] + (D_800EE6E0 * player->unk_258[10 + arg1].unk_01E * sins(player->unk_258[10 + arg1].unk_020));
+    player->unk_258[10 + arg1].unk_000[2] = player->pos[2] + (-1.2 * player->unk_258[10 + arg1].unk_01E * coss(player->unk_258[10 + arg1].unk_020));
+    player->unk_258[10 + arg1].unk_000[0] = player->pos[0] + (-1.2 * player->unk_258[10 + arg1].unk_01E * sins(player->unk_258[10 + arg1].unk_020));
     player->unk_258[10 + arg1].unk_000[1] = player->unk_258[10 + arg1].unk_000[1] + 0.5;
 
     ++player->unk_258[10 + arg1].unk_01E;
@@ -5112,17 +5083,12 @@ void func_800643A8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
         player->unk_258[10 + arg1].unk_012 = 0;
     }
     
-    player->unk_258[10 + arg1].unk_00C += D_800EE6E8;
+    player->unk_258[10 + arg1].unk_00C += 0.2;
     player->unk_258[10 + arg1].unk_03E -= 8;
     if (player->unk_258[10 + arg1].unk_03E <= 0) {
         player->unk_258[10 + arg1].unk_03E = 0;
     }
 }
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f64 D_800EE6F0;// = -0.7;
-extern f64 D_800EE6F8;// = 0.2;
 
 void func_800644E8(Player *player, s16 arg1, s32 arg2, s32 arg3) {
     f32 thing2;
@@ -5151,14 +5117,6 @@ void func_800644E8(Player *player, s16 arg1, s32 arg2, s32 arg3) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800644E8.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f64 D_800EE6F0;// = -0.6;
-extern f64 D_800EE6F8;// = 0.1;
 
 void func_80064664(Player *player, s16 arg1, s32 arg2, s32 arg3) {
     f32 temp_f4;
@@ -5184,15 +5142,12 @@ void func_80064664(Player *player, s16 arg1, s32 arg2, s32 arg3) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80064664.s")
-#endif
 
 void func_800647C8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
     ++player->unk_258[30 + arg1].unk_01E;
-    player->unk_258[30 + arg1].unk_000[2] = player->pos[2] + ((D_800EE710 * (player->unk_258[30 + arg1].unk_01E)) * coss(player->unk_258[30 + arg1].unk_020));
-    player->unk_258[30 + arg1].unk_000[0] = player->pos[0] + ((D_800EE718 * (player->unk_258[30 + arg1].unk_01E)) * sins(player->unk_258[30 + arg1].unk_020));
+    player->unk_258[30 + arg1].unk_000[2] = player->pos[2] + ((-0.8 * (player->unk_258[30 + arg1].unk_01E)) * coss(player->unk_258[30 + arg1].unk_020));
+    player->unk_258[30 + arg1].unk_000[0] = player->pos[0] + ((-0.8 * (player->unk_258[30 + arg1].unk_01E)) * sins(player->unk_258[30 + arg1].unk_020));
     player->unk_258[30 + arg1].unk_000[1] =  (player->unk_074 + 2.0f);
 
     if (player->unk_258[30 + arg1].unk_01E == 14) {
@@ -5209,8 +5164,8 @@ void func_800647C8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_800648E4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     ++player->unk_258[30 + arg1].unk_01E;
-    player->unk_258[30 + arg1].unk_00C -=  D_800EE720;
-    player->unk_258[30 + arg1].unk_000[1] += D_800EE728;
+    player->unk_258[30 + arg1].unk_00C -=  0.06;
+    player->unk_258[30 + arg1].unk_000[1] += 0.1;
     player->unk_258[30 + arg1].unk_03E -= 12;
     
     if (player->unk_258[30 + arg1].unk_03E <= 0) {
@@ -5226,7 +5181,7 @@ void func_800648E4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_80064988(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     ++player->unk_258[30 + arg1].unk_01E;
-    player->unk_258[30 + arg1].unk_000[1] -= D_800EE730;
+    player->unk_258[30 + arg1].unk_000[1] -= 0.3;
 
     if (player->unk_258[30 + arg1].unk_01E == 10) {
         player->unk_258[30 + arg1].unk_01C = 0;
@@ -5242,7 +5197,7 @@ void func_800649F4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
   player->unk_258[30 + arg1].unk_000[2] = player->unk_21C + (((-temp) * player->unk_258[30 + arg1].unk_01E) * coss(player->unk_258[30 + arg1].unk_020));
   player->unk_258[30 + arg1].unk_000[0] = player->unk_218 + (((-temp) * player->unk_258[30 + arg1].unk_01E) * sins(player->unk_258[30 + arg1].unk_020));
   player->unk_258[30 + arg1].unk_000[1] = player->pos[1] + player->unk_258[30 + arg1].unk_014;
-    player->unk_258[30 + arg1].unk_00C += D_800EE738;
+    player->unk_258[30 + arg1].unk_00C += 0.04;
 
     ++player->unk_258[30 + arg1].unk_01E;
     if (player->unk_258[30 + arg1].unk_01E == 12) {
@@ -5261,11 +5216,11 @@ void func_800649F4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
 void func_80064B30(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     f32 temp;
-    temp = player->unk_258[30 + arg1].unk_018 * D_800EE740;
+    temp = player->unk_258[30 + arg1].unk_018 * 1.2;
 
     player->unk_258[30 + arg1].unk_000[2] = (player->pos[2] + (-temp * player->unk_258[30 + arg1].unk_01E) * (coss(player->unk_258[30 + arg1].unk_020)));
     player->unk_258[30 + arg1].unk_000[0] = (player->pos[0] + (-temp * player->unk_258[30 + arg1].unk_01E) * (sins(player->unk_258[30 + arg1].unk_020)));
-    player->unk_258[30 + arg1].unk_000[1] += D_800EE748;
+    player->unk_258[30 + arg1].unk_000[1] += 0.1;
 
     ++player->unk_258[30 + arg1].unk_01E;
     if (player->unk_258[30 + arg1].unk_01E == 10) {
@@ -5294,7 +5249,7 @@ void func_80064C74(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     player->unk_258[30 + arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[30 + arg1].unk_020 - player->unk_02C[1] - player->unk_0C0) * 5.0f);
     player->unk_258[30 + arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[30 + arg1].unk_020 - player->unk_02C[1] - player->unk_0C0) * 5.0f);
     player->unk_258[30 + arg1].unk_000[1] = player->pos[1] - 1.0f;
-    player->unk_258[30 + arg1].unk_00C += D_800EE750;
+    player->unk_258[30 + arg1].unk_00C += 0.4;
     ++player->unk_258[30 + arg1].unk_01E;
 
     if (player->unk_258[30 + arg1].unk_01E == 10) {
@@ -5322,7 +5277,7 @@ void func_80064DEC(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
         player->unk_258[20 + arg3].unk_012 = 0;
     }
     
-    player->unk_258[20 + arg3].unk_00C += D_800EE758;
+    player->unk_258[20 + arg3].unk_00C += 0.8;
     if (player->unk_258[20 + arg3].unk_00C >= (f64) 2.5) {
         player->unk_258[20 + arg3].unk_00C = 2.5f;
     }
@@ -5331,12 +5286,12 @@ void func_80064DEC(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
 void func_80064EA4(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->unk_258[20 + arg3].unk_01E;
     if (player->unk_258[20 + arg3].unk_01E < 4) {
-        player->unk_258[20 + arg3].unk_00C += D_800EE760;
+        player->unk_258[20 + arg3].unk_00C += 1.2;
         if (player->unk_258[20 + arg3].unk_00C >= 3.5) {
             player->unk_258[20 + arg3].unk_00C = 3.5f;
         }
     } else {
-        player->unk_258[20 + arg3].unk_00C -= D_800EE768;
+        player->unk_258[20 + arg3].unk_00C -= 1.8;
         if (player->unk_258[20 + arg3].unk_00C <= 0.0f) {
             player->unk_0B6 &= ~0x1000;
             player->unk_258[20 + arg3].unk_01C = 0;
@@ -5348,10 +5303,10 @@ void func_80064EA4(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
 
 void func_80064F88(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->unk_258[20 + arg3].unk_01E;
-    player->unk_258[20 + arg3].unk_00C += D_800EE770;
+    player->unk_258[20 + arg3].unk_00C += 0.15;
     
-    if (D_800EE778 <= player->unk_258[20 + arg3].unk_00C) {
-        player->unk_258[20 + arg3].unk_00C = D_800EE780;
+    if (1.2 <= player->unk_258[20 + arg3].unk_00C) {
+        player->unk_258[20 + arg3].unk_00C = 1.2f;
     }
     if (player->unk_258[20 + arg3].unk_01E >= 12) {
         player->unk_0B6 &= ~0x0800;
@@ -5364,8 +5319,8 @@ void func_80064F88(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
 void func_80065030(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->unk_258[20 + arg3].unk_01E;
 
-    player->unk_258[20 + arg3].unk_000[1] += D_800EE788;
-    player->unk_258[20 + arg3].unk_00C += D_800EE790;
+    player->unk_258[20 + arg3].unk_000[1] += 0.8;
+    player->unk_258[20 + arg3].unk_00C += 0.4;
     if (player->unk_258[20 + arg3].unk_00C >= (f64) 1.5) {
         player->unk_258[20 + arg3].unk_00C = 1.5f;
     }
@@ -5387,14 +5342,14 @@ void func_800650FC(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     } else {
          player->unk_258[20 + arg3].unk_020 -= 4732;
     }
- 
+
     if (((player->unk_0BC & 0x80) != 0x80) && ((player->unk_0BC & 0x40) != 0x40)) {
         player->unk_258[20 + arg3].unk_01C = 0;
         player->unk_258[20 + arg3].unk_01E = 0;
         player->unk_258[20 + arg3].unk_012 = 0;
     }
 
-    player->unk_258[20 + arg3].unk_00C += D_800EE798;
+    player->unk_258[20 + arg3].unk_00C += 0.08;
     if (player->unk_258[20 + arg3].unk_00C >= 1.5) {
         player->unk_258[20 + arg3].unk_00C = 1.5f;
     }
@@ -5403,12 +5358,12 @@ void func_800650FC(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
 void func_800651F4(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->unk_258[20 + arg3].unk_01E;
     if (player->unk_258[20 + arg3].unk_01E < 8) {
-        player->unk_258[20 + arg3].unk_00C += D_800EE7A0;
-        if (D_800EE7A8 <= player->unk_258[20 + arg3].unk_00C) {
-            player->unk_258[20 + arg3].unk_00C = D_800EE7B0;
+        player->unk_258[20 + arg3].unk_00C += 0.2;
+        if (1.2 <= player->unk_258[20 + arg3].unk_00C) {
+            player->unk_258[20 + arg3].unk_00C = 1.2f;
         }
     } else {
-        player->unk_258[20 + arg3].unk_00C -= D_800EE7B8;
+        player->unk_258[20 + arg3].unk_00C -= 0.4;
         if (player->unk_258[20 + arg3].unk_00C <= 0.0f) {
             player->unk_0B6 &= ~0x0020;
             player->unk_258[20 + arg3].unk_01C = 0;
@@ -10070,7 +10025,6 @@ void func_8006DC54(Player* player, s8 arg1, s8 arg2) {
     }
 }
 
-#ifdef NEEDS_RODATA
 void func_8006DD3C(Player* arg0, s8 arg1, s8 arg2) {
     s16 temp_s0;
     s32 temp_v0;
@@ -10111,15 +10065,12 @@ void func_8006DD3C(Player* arg0, s8 arg1, s8 arg2) {
                 break;
             }
             if (arg0->unk_258[21].unk_012 == 5) {
-                func_80067D3C(arg0, arg2, D_8018D480, 1, D_800EE948, 0xFFFFFF);
-                func_8006801C(arg0, arg2, D_8018D484, 1, D_800EE94C, 0xFF);
+                func_80067D3C(arg0, arg2, D_8018D480, 1, 1.6f, 0xFFFFFF);
+                func_8006801C(arg0, arg2, D_8018D484, 1, 1.6f, 0xFF);
             }
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006DD3C.s")
-#endif
 
 void func_8006E058(void) {
     switch (gActiveScreenMode) { 

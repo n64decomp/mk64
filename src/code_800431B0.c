@@ -13,6 +13,7 @@
 #include "code_800431B0.h"
 #include "code_80071F00.h"
 #include "code_80091750.h"
+#include "code_802AAA70.h"
 #include "main.h"
 
 void func_800431B0(Vec3f arg0, Vec3s arg1, f32 arg2, Vtx *vtx) {

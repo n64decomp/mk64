@@ -1,3 +1,26 @@
+.section .late_rodata
+
+glabel D_800EEA80
+.float 0.15
+.word 0x00000000
+
+glabel D_800EEA88
+.double 180.0
+
+glabel D_800EEA90
+.double 150.0
+
+glabel D_800EEA98
+.double 0.8
+
+glabel D_800EEAA0
+.double 0.2
+
+glabel D_800EEAA8
+.double 0.4
+
+.section .text
+
 glabel func_80074924
 /* 075524 80074924 000478C0 */  sll   $t7, $a0, 3
 /* 075528 80074928 3C01800F */  lui   $at, %hi(D_800EEA80) # $at, 0x800f

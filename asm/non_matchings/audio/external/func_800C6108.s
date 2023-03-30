@@ -1,3 +1,28 @@
+.section .late_rodata
+
+glabel D_800F3678
+.float 0.4
+
+glabel D_800F367C
+.float 0.005000
+
+glabel D_800F3680
+.float 0.01
+
+glabel D_800F3684
+.float 12000.0
+
+glabel D_800F3688
+.float 0.03
+
+glabel D_800F368C
+.float 0.03
+
+glabel D_800F3690
+.float 0.4
+
+.section .text
+
 glabel func_800C6108
 /* 0C6D08 800C6108 308600FF */  andi  $a2, $a0, 0xff
 /* 0C6D0C 800C610C 000678C0 */  sll   $t7, $a2, 3

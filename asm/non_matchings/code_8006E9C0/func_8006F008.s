@@ -1,3 +1,74 @@
+.section .late_rodata
+
+glabel jpt_800EE950
+.word L8006F0E4, L8006F174, L8006F1AC, L8006F1E4
+.word L8006F248, L8006F2A4, L8006F2FC, L8006F360
+.word L8006F3E8, L8006F470, L8006F4D4, L8006F50C
+.word L8006F578, L8006F600, L8006F640, L8006F678
+.word L8006F6A4, L8006F6D0, L8006F6FC, L8006F734
+
+glabel D_800EE9A0
+.float 0.022
+
+glabel D_800EE9A4
+.float 0.022
+
+glabel D_800EE9A8
+.float 0.0174
+
+glabel D_800EE9AC
+.float 0.016
+
+glabel D_800EE9B0
+.float 0.018
+
+glabel D_800EE9B4
+.float 0.016
+
+glabel D_800EE9B8
+.float 0.014
+
+glabel D_800EE9BC
+.float 0.014
+
+glabel D_800EE9C0
+.float 0.0155
+
+glabel D_800EE9C4
+.float 0.0155
+
+glabel D_800EE9C8
+.float 0.013
+
+glabel D_800EE9CC
+.float 0.015
+
+glabel D_800EE9D0
+.float 0.015
+
+glabel D_800EE9D4
+.float 0.0103
+
+glabel D_800EE9D8
+.float 0.0155
+
+glabel D_800EE9DC
+.float 0.0335
+
+glabel D_800EE9E0
+.float 0.0445
+
+glabel D_800EE9E4
+.float 0.0285
+
+glabel D_800EE9E8
+.float 0.0155
+
+glabel D_800EE9EC
+.float 0.0257
+
+.section .text
+
 glabel func_8006F008
 /* 06FC08 8006F008 3C018016 */  lui   $at, %hi(D_801655C8) # $at, 0x8016
 /* 06FC0C 8006F00C AC2055C8 */  sw    $zero, %lo(D_801655C8)($at)
