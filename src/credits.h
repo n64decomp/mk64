@@ -1,5 +1,5 @@
-#ifndef CREDIT_01_H
-#define CREDIT_01_H
+#ifndef CREDITS_H
+#define CREDITS_H
 
 #include "PR/ultratypes.h"
 
