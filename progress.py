@@ -20,6 +20,10 @@ def GetNonMatchingFunctions(files):
     functions = []
 
     for file in files:
+        # credits.c contains Japanese characters which are not supported by utf-8
+        # To prevent errors it cannot be included.
+        if (file == "src/credits.c"):
+          continue
         with open(file) as f:
             functions += re.findall(NON_MATCHING_PATTERN, f.read(), re.DOTALL)
 
