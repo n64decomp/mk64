@@ -12,9 +12,12 @@
 #include "code_80057C60.h"
 #include "code_80071F00.h"
 #include "code_80091750.h"
+#include "code_80005FD0.h"
+#include "spawn_players.h"
 #include "audio/external.h"
 #include "race_logic.h"
 #include "skybox_and_splitscreen.h"
+#include "math_util_2.h"
 
 extern Player *gPlayerTwo;
 extern Player *gPlayerThree;

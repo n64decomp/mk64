@@ -3,11 +3,9 @@
 #include "types.h"
 #include "profiler.h"
 #include "config.h"
+#include "main.h"
 
 struct ProfilerFrameData gProfilerFrameData[2];
-extern u32 D_800DC568;
-extern u32 D_800DC56C;
-extern Gfx *gDisplayListHead;
 
 s32 gEnableResourceMeters = 0;
 
@@ -213,7 +211,7 @@ void draw_profiler_mode_0(void) {
 
     // Two added lines in Mario Kart 64
     D_800DC568 = (s32) (clockStart + renderDuration);
-    D_800DC56C = rdpDuration;
+    D_800DC56C[0] = rdpDuration;
 
     // Draw bottom profilers.
 
@@ -226,8 +224,6 @@ void draw_profiler_mode_0(void) {
 
     draw_reference_profiler_bars();
 }
-
-extern struct Controller *gControllerOne;
 
 // Similar to draw_screen_borders from SM64, with a hint of draw_profiler
 void resource_display(void) {

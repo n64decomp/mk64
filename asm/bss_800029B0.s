@@ -142,10 +142,10 @@ glabel D_8015F708
 glabel D_8015F718
 .skip 12
 
-glabel D_8015F724
+glabel gFreeMemorySize
 .skip 4
 
-glabel gPrevLoadedAddress # 0x8015F728
+glabel gNextFreeMemoryAddress # 0x8015F728 ptr
 .skip 4
 
 glabel gHeapEndPtr # 0x8015F72C

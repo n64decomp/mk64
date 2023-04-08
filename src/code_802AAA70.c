@@ -2341,7 +2341,7 @@ extern s16 D_8015F6E8;
 extern s16 D_8015F6EA;
 extern s16 D_8015F6F0;
 extern s16 D_8015F6F2;
-extern s32 gPrevLoadedAddress;
+extern s32 gNextFreeMemoryAddress;
 
 void func_802AF314(void) {
     s32 sp4C;
@@ -2368,7 +2368,7 @@ void func_802AF314(void) {
         var_v0->unk-E = 0;
     } while (var_v0 != &gNumActors);
     D_8015F58A = 0;
-    D_8015F584 = gPrevLoadedAddress;
+    D_8015F584 = gNextFreeMemoryAddress;
     var_s7 = 0;
     temp_s6 = (s32) (D_8015F6E8 - D_8015F6EA) / 32;
     temp_fp = (s32) (D_8015F6F0 - D_8015F6F2) / 32;

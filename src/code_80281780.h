@@ -9,9 +9,8 @@ void func_802818BC(void);
 void load_ending_sequence_royalraceway(void);
 
 
-extern int func_802AA88C();
+extern int decompress_segments();
 extern u32 set_segment_base_addr();
-extern void load_course();
 
 extern void func_80093E60();
 
@@ -32,7 +31,7 @@ extern u16 D_800DC5BC;
 extern u16 D_800DC5C8;
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
 
-extern s32 gMenuSelectionFromEndingSequence; //D_80287550;
+extern u32 gMenuSelectionFromEndingSequence; //D_80287550;
 extern s32 D_80287554;
 extern f32 D_801647A4;
 extern f32 D_80150130[];

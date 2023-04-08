@@ -6,6 +6,8 @@
 #include "framebuffers.h"
 #include "code_800B45E0.h"
 #include "staff_ghosts.h"
+#include "code_80091750.h"
+#include "functions.h"
 
 extern s32 mio0encode(s32 input, s32, s32);
 extern s32 func_80040174(void *, s32, s32);
@@ -52,13 +54,10 @@ s32 D_80162DFC;
 
 s32 D_80162E00;
 
-u32 *D_800DC710 = &D_802BFB80[0][2][3];
-u32 *D_800DC714 = &D_802BFB80[1][1][3];
+u32 *D_800DC710 = (u32 *) &D_802BFB80[0][2][3];
+u32 *D_800DC714 = (u32 *) &D_802BFB80[1][1][3];
 
-extern OSIoMesg *gDmaIoMesg;
 extern u8 _kart_texturesSegmentRomStart;
-extern OSMesgQueue gDmaMesgQueue;
-extern OSMesg gMainReceivedMesg;
 
 extern s16 gCurrentCourseId;
 extern s32 gModeSelection;
@@ -84,22 +83,22 @@ extern s32 D_80164394;
 extern s32 D_80164398;
 
 void func_80004EF0(void) {
-    D_80162DA4 = &D_802BFB80[0][2][3];
+    D_80162DA4 = (u32 *) &D_802BFB80[0][2][3];
     osInvalDCache(&D_80162DA4[0], 0x4000);
-    osPiStartDma(&gDmaIoMesg, 0, 0, (D_80162DC4 & 0xFFFFFF) + &_kart_texturesSegmentRomStart, D_80162DA4, 0x4000, &gDmaMesgQueue);
-    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
+    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) ((D_80162DC4 & 0xFFFFFF) + &_kart_texturesSegmentRomStart), D_80162DA4, 0x4000, &gDmaMesgQueue);
+    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     D_80162D9C =  (*D_80162DA4 & 0xFF0000);
     D_80162DA0 = 0;
 }
 
 void func_80004FB0(void) {
-    D_80162DB4 = &D_802BFB80[0][D_80162DD0][3];
+    D_80162DB4 = (u32 *) &D_802BFB80[0][D_80162DD0][3];
     D_80162DAC = *D_80162DB4 & 0xFF0000;
     D_80162DB0 = 0;
 }
 
 void func_80004FF8(void) {
-    D_80162D94 = &D_802BFB80[0][D_80162DC8][3];
+    D_80162D94 = (u32 *) &D_802BFB80[0][D_80162DC8][3];
     D_80162D8C = (s32) *D_80162D94 & 0xFF0000;
     D_80162D90 = 0;
 }
@@ -121,7 +120,7 @@ void set_staff_ghost(void) {
                 D_80162DD6 = 1;
                 D_80162DF4 = 1;
             }
-            D_80162DC4 = &d_mario_raceway_staff_ghost;
+            D_80162DC4 = (u32) &d_mario_raceway_staff_ghost;
             D_80162DE4 = 0;
             break;
         case COURSE_ROYAL_RACEWAY:
@@ -133,7 +132,7 @@ void set_staff_ghost(void) {
                 D_80162DD6 = 1;
                 D_80162DF4 = 1;
             }
-            D_80162DC4 = &d_royal_raceway_staff_ghost;
+            D_80162DC4 = (u32) &d_royal_raceway_staff_ghost;
             D_80162DE4 = 6;
             break;
         case COURSE_LUIGI_RACEWAY:
@@ -145,7 +144,7 @@ void set_staff_ghost(void) {
                 D_80162DD6 = 1;
                 D_80162DF4 = 1;
             }
-            D_80162DC4 = &d_luigi_raceway_staff_ghost;
+            D_80162DC4 = (u32) &d_luigi_raceway_staff_ghost;
             D_80162DE4 = 1;
             break;
         default:
@@ -159,15 +158,15 @@ s32 func_800051C4(void) {
 
     if (D_80162D84 != 0) {
         // func_80040174 in mio0_decode.s
-        func_80040174(D_80162D80, (D_80162D84 * 4) + 0x20, D_800DC710);
-        phi_v0 = mio0encode(D_800DC710, (D_80162D84 * 4) + 0x20, D_800DC714);
+        func_80040174((void *) D_80162D80, (D_80162D84 * 4) + 0x20, (s32) D_800DC710);
+        phi_v0 = mio0encode((s32) D_800DC710, (D_80162D84 * 4) + 0x20, (s32) D_800DC714);
         return phi_v0 + 0x1e;
     }
 }
 
 void func_8000522C(void) {
-    D_80162D94 = &D_802BFB80[0][D_80162DC8][3];
-    mio0decode(D_800DC714, D_80162D94);
+    D_80162D94 = (u32 *) &D_802BFB80[0][D_80162DC8][3];
+    mio0decode((u8 *) D_800DC714, (u8 *) D_80162D94);
     D_80162D8C = (s32) (*D_80162D94 & 0xFF0000);
     D_80162D90 = 0;
     D_80162E00 = 1;
@@ -218,11 +217,11 @@ void func_80005310(void) {
             } else {
 
                 D_80162DD8 = 1U;
-                D_80162DBC = &D_802BFB80[0][D_80162DCC][3];
+                D_80162DBC = (u32 *) &D_802BFB80[0][D_80162DCC][3];
                 D_80162DBC[0] = -1;
                 D_80162DB8 = 0;
                 D_80162DDC = 0;
-                func_80091EE4(&D_80162DC0);
+                func_80091EE4();
                 if (D_80162DD4 == 0) {
                     func_80004FF8();
                 }
@@ -414,7 +413,6 @@ void func_8000599C(void) {
     u32 phi_a3;
     u32 temp_v1;
     u32 temp_v2;
-    s16 new_var;
     u32 temp_v0;
     u32 temp_t0;
     u32 temp_a0_2;

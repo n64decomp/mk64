@@ -195,7 +195,7 @@ void swap_values(s32 *arg0, s32 *arg1) {
 s32 func_80091D74();                                /* extern */
 void func_800C97C4(s32);                               /* extern */
 void func_800C9D0C(s32);                               /* extern */
-void *func_802AA88C(? *, ? *);                      /* extern */
+void *decompress_segments(? *, ? *);                      /* extern */
 void load_save_data();                                 /* extern */
 extern void *D_800DC5EC;
 extern s32 D_800E86A4;
@@ -214,7 +214,7 @@ extern s8 D_8018EDF6;
 extern s8 D_8018EE0C;
 extern u32 _course_mario_raceway_dl_mio0SegmentRomStart;
 extern s32 _data_825800SegmentRomStart;
-extern s32 gPrevLoadedAddress;
+extern s32 gNextFreeMemoryAddress;
 static s8 D_800E852C = 1;
 
 void func_80091B78(void) {
@@ -236,14 +236,14 @@ void func_80091B78(void) {
         }
     }
     if (gMenuSelection == LOGO_INTRO_MENU) {
-        gPrevLoadedAddress = D_8015F734;
-        set_segment_base_addr(6, func_802AA88C(&_data_825800SegmentRomStart, &_course_mario_raceway_dl_mio0SegmentRomStart));
+        gNextFreeMemoryAddress = D_8015F734;
+        set_segment_base_addr(6, decompress_segments(&_data_825800SegmentRomStart, &_course_mario_raceway_dl_mio0SegmentRomStart));
     }
-    gPrevLoadedAddress = D_8015F734;
-    D_8018D9B0 = func_802A7B70(0x000900B0);
-    D_8018D9B4 = func_802A7B70(0x0000CE00);
-    D_8018D9B8 = func_802A7B70(0x00012C00);
-    D_8018D9C0 = func_802A7B70(0x00001000);
+    gNextFreeMemoryAddress = D_8015F734;
+    D_8018D9B0 = get_next_available_memory_addr(0x000900B0);
+    D_8018D9B4 = get_next_available_memory_addr(0x0000CE00);
+    D_8018D9B8 = get_next_available_memory_addr(0x00012C00);
+    D_8018D9C0 = get_next_available_memory_addr(0x00001000);
     func_800AF9B0();
     D_8018EE0C = 0;
     var_v0 = &D_8018E7AC;
@@ -364,10 +364,10 @@ extern u8 gControllerBits;
 void func_80091FA4(void) {
     ? *var_v1;
 
-    D_8018D9B4 = func_802A7B70(0x00002800);
-    D_8018D9B0 = func_802A7B70(0x000124F8);
-    D_8018D9B8 = func_802A7B70(0x00001000);
-    D_8018D9BC = func_802A7B70(4);
+    D_8018D9B4 = get_next_available_memory_addr(0x00002800);
+    D_8018D9B0 = get_next_available_memory_addr(0x000124F8);
+    D_8018D9B8 = get_next_available_memory_addr(0x00001000);
+    D_8018D9BC = get_next_available_memory_addr(4);
     var_v1 = &D_8018E7AC;
     do {
         var_v1 += 1;
@@ -1238,10 +1238,10 @@ extern s8 D_8018E838;
 void func_80093E60(void) {
     ? *var_v1;
 
-    D_8018D9B4 = func_802A7B70(0x00002800);
-    D_8018D9B0 = func_802A7B70(0x000124F8);
-    D_8018D9B8 = func_802A7B70(0x00001000);
-    D_8018D9BC = func_802A7B70(4);
+    D_8018D9B4 = get_next_available_memory_addr(0x00002800);
+    D_8018D9B0 = get_next_available_memory_addr(0x000124F8);
+    D_8018D9B8 = get_next_available_memory_addr(0x00001000);
+    D_8018D9BC = get_next_available_memory_addr(4);
     var_v1 = &D_8018E7AC;
     do {
         var_v1 += 1;

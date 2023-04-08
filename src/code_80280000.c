@@ -13,6 +13,14 @@
 #include "code_80281780.h"
 #include "skybox_and_splitscreen.h"
 #include <config.h>
+#include "code_80091750.h"
+#include "code_8006E9C0.h"
+#include "code_800029B0.h"
+#include "ceremony_and_credits.h"
+#include "code_80281C40.h"
+#include "code_80057C60.h"
+#include "actors.h"
+#include "render_courses.h"
 
 void func_80280000(void) {
     func_802966A0();
@@ -22,8 +30,10 @@ void func_80280000(void) {
 }
 
 void func_80280038(void) {
+    u16 perspNorm;
     Camera *camera = &cameras[0];
-    u16 sp44[36];
+    UNUSED s32 pad;
+    Mat4 matrix;
 
     D_80150112 = 0;
     D_80164AF0 = 0;
@@ -32,15 +42,16 @@ void func_80280038(void) {
     func_802A53A4();
     init_rdp();
     func_80057FC4(0);
+    
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPool[1], &sp44[37], D_80150130[0], D_80150148, D_80150150, D_8015014C, 1.0f);
-    gDPHalf1(gDisplayListHead++, sp44[37]);
+    guPerspective(&gGfxPool->mtxPool[1], &perspNorm, D_80150130[0], D_80150148, D_80150150, D_8015014C, 1.0f);
+    gDPHalf1(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     gCurrentCourseId = gCreditsCourseId;
-    mtxf_identity(&sp44);
-    func_802B4FF8(&sp44, 0);
+    mtxf_identity(matrix);
+    func_802B4FF8(matrix, 0);
     func_80295A38(D_800DC5EC);
     func_802A3008(D_800DC5EC);
     func_80058090(0);
@@ -114,10 +125,10 @@ void load_credits(void) {
     D_800DC5EC->screenStartY = 120;
     gScreenModeSelection = SCREEN_MODE_1P;
     gActiveScreenMode = SCREEN_MODE_1P;
-    gPrevLoadedAddress = D_8015F734;
+    gNextFreeMemoryAddress = D_8015F734;
     load_course(gCurrentCourseId);
-    D_8015F730 = gPrevLoadedAddress;
-    set_segment_base_addr(0xB, func_802AA88C(&_data_821D10SegmentRomStart, &_data_825800SegmentRomStart));
+    D_8015F730 = gNextFreeMemoryAddress;
+    set_segment_base_addr(0xB, (void *) decompress_segments(&_data_821D10SegmentRomStart, &_data_825800SegmentRomStart));
     D_8015F6EA = -0x15A1;
     D_8015F6EE = -0x15A1;
     D_8015F6F2 = -0x15A1;
@@ -130,7 +141,7 @@ void load_credits(void) {
     D_8015F588 = 0;
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
-    D_8015F580 = gPrevLoadedAddress;
+    D_8015F580 = (mk64_surface_map_ram *) gNextFreeMemoryAddress;
     camera->pos[0] = 1400.0f;
     camera->pos[1] = 300.0f;
     camera->pos[2] = 1400.0f;
@@ -146,6 +157,6 @@ void load_credits(void) {
     func_80093E60();
     func_80092688();
     if (D_800DC5EC) {}
-    D_801625F8 = ((s32)gHeapEndPtr - gPrevLoadedAddress);
+    D_801625F8 = ((s32)gHeapEndPtr - gNextFreeMemoryAddress);
     D_801625FC = ((f32)D_801625F8 / 1000.0f);
 }

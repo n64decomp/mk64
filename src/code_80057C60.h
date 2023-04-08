@@ -27,6 +27,7 @@ void func_80058C20(u32);
 void func_80058DB4(u32);
 void func_80058F48();
 void func_80058F78();
+void func_80059AC8(void);
 
 void func_80059024();
 void func_8005902C();
@@ -76,7 +77,7 @@ void func_8005AB20();
 void func_8005B914();
 
 void func_8005C360(f32);
-void func_8005C64C(s32);
+void func_8005C64C(s32*);
 void func_8005C654(s32*);
 void func_8005C65C(s32);
 void func_8005C6B4(s8, s16*, s16*, s16*);

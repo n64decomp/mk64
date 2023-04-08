@@ -274,7 +274,7 @@ GLOBAL_ASM("asm/non_matchings/code_80004740/func_80004DFC.s")
 
 s16 func_80004EAC(void *addr, s16 offset) {
     uintptr_t *item = segmented_to_virtual(addr);
-    struct stru_80004EAC *temp = segmented_to_virtual(item[offset]);
+    struct stru_80004EAC *temp = (struct stru_80004EAC *) segmented_to_virtual((void *) item[offset]);
     
     return temp->unk8 - 1;
 }

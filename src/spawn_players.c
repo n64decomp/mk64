@@ -12,6 +12,7 @@
 #include "code_802AAA70.h"
 #include "render_courses.h"
 #include "spawn_players.h"
+#include "code_80005FD0.h"
 
 // arg4 is height? Or something like that?
 void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingColumn, f32 arg4, f32 arg5, u16 characterId, s16 playerType) {
@@ -441,7 +442,7 @@ void func_80039F44(f32 *arg0, f32 *arg1, f32 arg2) {
         D_80165560[0] = rand;
 
         for (i = 1; i < 7; i++) {
-            u16* arr = D_800E3890[gCharacterSelections[0]];
+            u16* arr = (u16 *) D_800E3890[gCharacterSelections[0]];
             if (rand == arr[i]) {
                 D_80165560[i] = arr[0];
             } else {
@@ -530,7 +531,7 @@ getRand:
         D_80165560[0] = rand;
 
         for (i = 1; i < 6; i++) {
-            u16* arr = D_800E3C50[gCharacterSelections[0]][gCharacterSelections[1]];
+            u16* arr = (u16 *) D_800E3C50[gCharacterSelections[0]][gCharacterSelections[1]];
             if (rand == arr[i]) {
                 D_80165560[i] = arr[0];
             } else {
@@ -699,7 +700,7 @@ void func_8003C0F0(void) {
     s16 sp5C;
     s16 sp5A;
     s32 temp;
-    s32 pad[4];
+    UNUSED s32 pad[4];
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
         case COURSE_CHOCO_MOUNTAIN:
@@ -1018,12 +1019,12 @@ void func_8003CD98(Player *player, Camera *camera, s8 arg2, s8 arg3) {
             func_80027A20(player, arg2, arg3, 0);
             func_80027A20(player, arg2, arg3, 1);
             func_80027040(player, arg2, arg3, arg3, 0);
-            mio0decode(&D_802DFB80[0][arg3][arg2], &D_802BFB80[0][arg3][arg2]);
+            mio0decode((u8 *) &D_802DFB80[0][arg3][arg2], (u8 *) &D_802BFB80[0][arg3][arg2]);
         } else {
             func_80027A20(player, arg2, arg3, 0);
             func_80027A20(player, arg2, arg3, 1);
             func_80027040(player, (s8) (arg2 + 4), arg3, (s8) (arg3 - 2), 0);
-            mio0decode(&D_802DFB80[0][arg3 - 2][arg2 + 4], &D_802BFB80[0][arg3 - 2][arg2 + 4]);
+            mio0decode((u8 *) &D_802DFB80[0][arg3 - 2][arg2 + 4], (u8 *) &D_802BFB80[0][arg3 - 2][arg2 + 4]);
         }
 
         D_801650D0[arg3][arg2] = player->unk_244[arg3];
@@ -1035,7 +1036,7 @@ void func_8003CD98(Player *player, Camera *camera, s8 arg2, s8 arg3) {
 }
 
 void func_8003D080(void) {
-    s32 pad;
+    UNUSED s32 pad;
     Player* ptr = &gPlayers[0];
 
     func_8005D290();

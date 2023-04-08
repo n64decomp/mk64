@@ -18,6 +18,11 @@ struct GfxPool {
     /* 0x28B20 */ struct SPTask spTask;
 }; // size = 0x28B70
 
+struct UnkStruct_8015F584 {
+    u16 unk0;
+    u16 unk2;
+};
+
 void create_thread(OSThread*, OSId, void (*entry)(void *), void*, void*, OSPri);
 void main_func();
 void thread1_idle(void*);
@@ -62,7 +67,11 @@ void thread4_audio(void*);
 extern struct GfxPool *gGfxPool;
 extern Gfx *gDisplayListHead;
 extern struct Controller gControllers[8];
+extern struct Controller *gControllerOne;
+extern s32 D_800DC568;
+extern s32 D_800DC56C[];
 
+extern u32 gPhysicalFramebuffers[];
 extern OSIoMesg gDmaIoMesg;
 extern OSMesg gMainReceivedMesg;
 extern OSMesgQueue gDmaMesgQueue;
@@ -89,7 +98,7 @@ extern u64 gspF3DLXDataStart[];
 extern u64 gGfxSPTaskOutputBuffer[];
 extern u32 gGfxSPTaskOutputBufferSize;
 
-extern u32 gPrevLoadedAddress;
+extern u32 gNextFreeMemoryAddress;
 extern s32 D_8015F734;
 extern u8 _data_segment2SegmentRomStart[];
 extern u8 _data_segment2SegmentRomEnd[];

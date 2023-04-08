@@ -33,8 +33,8 @@ Vtx *D_8018EDBC;
 #define SQ(x) ((x) * (x))
 
 void func_800AF9B0(void) {
-    D_8018EDB8 = (void *)func_802A7B70(480 * sizeof(Vtx));
-    D_8018EDBC = (void *)func_802A7B70(480 * sizeof(Vtx));
+    D_8018EDB8 = (void *)get_next_available_memory_addr(480 * sizeof(Vtx));
+    D_8018EDBC = (void *)get_next_available_memory_addr(480 * sizeof(Vtx));
 }
 
 // could be a normal vertex, not a color...

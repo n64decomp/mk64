@@ -205,7 +205,7 @@ struct courseTable gCourseTable[] = {{
         _course_mario_raceway_offsetsSegmentRomStart, _course_mario_raceway_offsetsSegmentRomEnd,
         d_course_mario_raceway_vertex, d_course_mario_raceway_vertex_count,
         d_course_mario_raceway_packed, GET_OFFSET(d_course_mario_raceway_packed_end),
-        mario_raceway_textures, (u16) 0, (u16) 0x0000,
+        mario_raceway_textures, 0, 0x0000,
 }, {
 	_course_choco_mountain_dl_mio0SegmentRomStart, _course_choco_mountain_dl_mio0SegmentRomEnd,
         _choco_mountain_vertexSegmentRomStart, _choco_mountain_vertexSegmentRomEnd,

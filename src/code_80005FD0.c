@@ -4741,7 +4741,7 @@ void func_8000F2DC(void) {
     D_80163368->unk4 = (s32) temp_v0->unk2;
     D_80163368->unk8 = (s32) temp_v0->unk4;
     D_80163368->unkC = (s32) temp_v0->unk6;
-    D_80163598 = func_802A7B70(temp_v0->unk8 * 4);
+    D_80163598 = get_next_available_memory_addr(temp_v0->unk8 * 4);
     var_s5 = D_801645A0;
     var_s7 = D_80164590;
     var_s6 = D_80164580;
@@ -4750,12 +4750,12 @@ void func_8000F2DC(void) {
     var_s3 = D_80164550;
     var_s1 = D_80163368;
     do {
-        *var_s3 = func_802A7B70(*var_s1 * 8);
-        *var_s4 = func_802A7B70(*var_s1 * 8);
-        *var_s2 = func_802A7B70(*var_s1 * 8);
-        *var_s6 = func_802A7B70(*var_s1 * 2);
-        *var_s7 = func_802A7B70(*var_s1 * 2);
-        temp_v0_2 = func_802A7B70(*var_s1 * 2);
+        *var_s3 = get_next_available_memory_addr(*var_s1 * 8);
+        *var_s4 = get_next_available_memory_addr(*var_s1 * 8);
+        *var_s2 = get_next_available_memory_addr(*var_s1 * 8);
+        *var_s6 = get_next_available_memory_addr(*var_s1 * 2);
+        *var_s7 = get_next_available_memory_addr(*var_s1 * 2);
+        temp_v0_2 = get_next_available_memory_addr(*var_s1 * 2);
         var_s5 += 4;
         var_s1 += 4;
         var_s3 += 4;

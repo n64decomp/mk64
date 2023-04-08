@@ -4,6 +4,7 @@
 #include "camera.h"
 #include "camera_junk.h"
 #include "math_util.h"
+#include "ceremony_and_credits.h"
 
 void setup_camera_ending_sequence(void) {
     Camera *camera;

@@ -277,9 +277,9 @@ void func_80280FA8(s32 arg0) {
 void func_80280FB0(void) {
     D_802874E0 = 0;
 
-    D_802874F8 = func_802A7B70(0x3B60);
+    D_802874F8 = get_next_available_memory_addr(0x3B60);
     bzero(D_802874F8, 0x3B60);
-    func_80280734(&D_80284E88);
+    func_80280734((struct UnkStruct80280658 *)&D_80284E88);
 }
 
 void func_80280FFC(void) {

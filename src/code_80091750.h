@@ -58,6 +58,10 @@ typedef struct {
 
 /* Function Prototypes */
 
+void func_80091EE4(void);
+void func_80091FA4(void);
+void func_80093A30(s32);
+void func_80093A5C(u32);
 f64 exponent_by_squaring(f64, s32);
 f64 func_80091A6C(f64, s32);
 f64 func_80091AC0(f64, s32*);

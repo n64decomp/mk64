@@ -108,6 +108,8 @@ struct Cutscene {
 
 /* Function Prototypes */
 
+void init_cinematic_camera(void);
+s32 func_80283648(Camera*);
 void vec3f_set_dupe(Vec3f, f32, f32, f32);
 void vec3s_set_dupe(Vec3s, s16, s16, s16);
 void vec3f_clear(Vec3f);

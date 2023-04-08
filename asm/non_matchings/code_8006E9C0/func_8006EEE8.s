@@ -11,7 +11,7 @@ glabel func_8006EEE8
 /* 06FB0C 8006EF0C 008E2021 */  addu  $a0, $a0, $t6
 /* 06FB10 8006EF10 8C8454D0 */  lw    $a0, %lo(gCourseOutlineTextures)($a0) # 0x54d0
 /* 06FB14 8006EF14 AFA8001C */  sw    $t0, 0x1c($sp)
-/* 06FB18 8006EF18 0C0AA13D */  jal   func_802A84F4
+/* 06FB18 8006EF18 0C0AA13D */  jal   dma_textures
 /* 06FB1C 8006EF1C 00A03025 */   move  $a2, $a1
 /* 06FB20 8006EF20 8FA8001C */  lw    $t0, 0x1c($sp)
 /* 06FB24 8006EF24 3C18800E */  lui   $t8, %hi(D_800E5548) # $t8, 0x800e

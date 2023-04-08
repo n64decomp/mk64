@@ -2362,98 +2362,98 @@ void place_course_actors(void) {
 }
 
 void func_8029E158(void) {
-    set_segment_base_addr(3, gPrevLoadedAddress);
-    D_802BA050 = func_802A84F4(D_0F04CBE0, 0x00000257U, 0x00000400U);
-    func_802A84F4(D_0F04CE30, 0x00000242U, 0x00000400U);
-    func_802A84F4(D_0F04D080, 0x00000259U, 0x00000400U);
-    func_802A84F4(D_0F04D2D8, 0x00000256U, 0x00000400U);
-    func_802A84F4(D_0F04D538, 0x00000246U, 0x00000400U);
-    func_802A84F4(D_0F04D790, 0x0000025EU, 0x00000400U);
-    func_802A84F4(D_0F04D9FC, 0x0000025CU, 0x00000400U);
-    func_802A84F4(D_0F04DC5C, 0x00000254U, 0x00000400U);
-    D_802BA054 = func_802A84F4(D_0F04DEB0, 0x0000022AU, 0x00000400U);
-    func_802A84F4(D_0F04E0DC, 0x00000237U, 0x00000400U);
-    func_802A84F4(D_0F04E314, 0x0000023EU, 0x00000400U);
-    func_802A84F4(D_0F04E554, 0x00000243U, 0x00000400U);
-    func_802A84F4(D_0F04E798, 0x00000255U, 0x00000400U);
-    func_802A84F4(D_0F04E9F0, 0x00000259U, 0x00000400U);
-    func_802A84F4(D_0F04EC4C, 0x00000239U, 0x00000400U);
-    func_802A84F4(D_0F04EE88, 0x00000236U, 0x00000400U);
-    func_802A84F4(D_0F054C3C, 0x0000028EU, 0x00000800U);
-    func_802A84F4(D_0F054ECC, 0x000002FBU, 0x00000800U);
-    func_802A84F4(D_0F0551C8, 0x00000302U, 0x00000800U);
-    func_802A84F4(D_0F0554CC, 0x000003B4U, 0x00000800U);
-    func_802A84F4(D_0F055880, 0x0000031EU, 0x00000800U);
-    func_802A84F4(D_0F055BA0, 0x0000036EU, 0x00000800U);
-    func_802A84F4(D_0F055F10, 0x0000029CU, 0x00000800U);
-    func_802A84F4(D_0F0561AC, 0x0000025BU, 0x00000800U);
-    func_802A84F4(gTexture671A88, 0x00000400U, 0x00000800U);
-    func_802A84F4(gTexture6774D8, 0x00000400U, 0x00000800U);
+    set_segment_base_addr(3, gNextFreeMemoryAddress);
+    D_802BA050 = dma_textures(D_0F04CBE0, 0x00000257U, 0x00000400U);
+    dma_textures(D_0F04CE30, 0x00000242U, 0x00000400U);
+    dma_textures(D_0F04D080, 0x00000259U, 0x00000400U);
+    dma_textures(D_0F04D2D8, 0x00000256U, 0x00000400U);
+    dma_textures(D_0F04D538, 0x00000246U, 0x00000400U);
+    dma_textures(D_0F04D790, 0x0000025EU, 0x00000400U);
+    dma_textures(D_0F04D9FC, 0x0000025CU, 0x00000400U);
+    dma_textures(D_0F04DC5C, 0x00000254U, 0x00000400U);
+    D_802BA054 = dma_textures(D_0F04DEB0, 0x0000022AU, 0x00000400U);
+    dma_textures(D_0F04E0DC, 0x00000237U, 0x00000400U);
+    dma_textures(D_0F04E314, 0x0000023EU, 0x00000400U);
+    dma_textures(D_0F04E554, 0x00000243U, 0x00000400U);
+    dma_textures(D_0F04E798, 0x00000255U, 0x00000400U);
+    dma_textures(D_0F04E9F0, 0x00000259U, 0x00000400U);
+    dma_textures(D_0F04EC4C, 0x00000239U, 0x00000400U);
+    dma_textures(D_0F04EE88, 0x00000236U, 0x00000400U);
+    dma_textures(D_0F054C3C, 0x0000028EU, 0x00000800U);
+    dma_textures(D_0F054ECC, 0x000002FBU, 0x00000800U);
+    dma_textures(D_0F0551C8, 0x00000302U, 0x00000800U);
+    dma_textures(D_0F0554CC, 0x000003B4U, 0x00000800U);
+    dma_textures(D_0F055880, 0x0000031EU, 0x00000800U);
+    dma_textures(D_0F055BA0, 0x0000036EU, 0x00000800U);
+    dma_textures(D_0F055F10, 0x0000029CU, 0x00000800U);
+    dma_textures(D_0F0561AC, 0x0000025BU, 0x00000800U);
+    dma_textures(gTexture671A88, 0x00000400U, 0x00000800U);
+    dma_textures(gTexture6774D8, 0x00000400U, 0x00000800U);
     switch (gCurrentCourseId) {
     case 0:
-        func_802A84F4(D_0F04F45C, 0x0000035BU, 0x00000800U);
-        D_802BA058 = func_802A84F4(D_0F056408, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F05662C, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F05688C, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F056AD0, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F056CF0, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F056EC8, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F057084, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F057288, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F057590, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F04F45C, 0x0000035BU, 0x00000800U);
+        D_802BA058 = dma_textures(D_0F056408, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F05662C, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F05688C, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F056AD0, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F056CF0, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F056EC8, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F057084, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F057288, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F057590, 0x000003E8U, 0x00000800U);
         break;
     case 2:
-        func_802A84F4(gTextureShrub, 0x000003FFU, 0x00000800U);
+        dma_textures(gTextureShrub, 0x000003FFU, 0x00000800U);
         break;
     case 4:
-        func_802A84F4(D_0F04F7A4, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F04F7A4, 0x000003E8U, 0x00000800U);
         break;
     case 5:
-        func_802A84F4(D_0F0513CC, 0x00000454U, 0x00000800U);
-        func_802A84F4(D_0F051820, 0x00000432U, 0x00000800U);
+        dma_textures(D_0F0513CC, 0x00000454U, 0x00000800U);
+        dma_textures(D_0F051820, 0x00000432U, 0x00000800U);
         break;
     case 7:
-        func_802A84F4(D_0F04FB3C, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F050D50, 0x000003E8U, 0x00000800U);
-        D_802BA058 = func_802A84F4(D_0F056408, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F05662C, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F05688C, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F056AD0, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F056CF0, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F056EC8, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F057084, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F057288, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F057590, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F04FB3C, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F050D50, 0x000003E8U, 0x00000800U);
+        D_802BA058 = dma_textures(D_0F056408, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F05662C, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F05688C, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F056AD0, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F056CF0, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F056EC8, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F057084, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F057288, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F057590, 0x000003E8U, 0x00000800U);
         break;
     case 8:
-        func_802A84F4(D_0F050468, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F050678, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F050468, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F050678, 0x000003E8U, 0x00000800U);
         break;
     case 9:
-        func_802A84F4(D_0F04FE28, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F050118, 0x000003E8U, 0x00000800U);
-        func_802A84F4(D_0F051C54, 0x00000400U, 0x00000800U);
-        func_802A84F4(D_0F051FD8, 0x00000400U, 0x00000800U);
-        func_802A84F4(D_0F05232C, 0x00000400U, 0x00000800U);
-        func_802A84F4(D_0F0526B8, 0x00000400U, 0x00000800U);
-        func_802A84F4(D_0F052A20, 0x00000400U, 0x00000800U);
-        func_802A84F4(D_0F052D3C, 0x00000400U, 0x00000800U);
-        func_802A84F4(D_0F05300C, 0x00000400U, 0x00000800U);
-        func_802A84F4(D_0F0532F8, 0x00000400U, 0x00000800U);
-        func_802A84F4(D_0F05363C, 0x00000400U, 0x00000800U);
-        func_802A84F4(D_0F053950, 0x00000400U, 0x00000800U);
+        dma_textures(D_0F04FE28, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F050118, 0x000003E8U, 0x00000800U);
+        dma_textures(D_0F051C54, 0x00000400U, 0x00000800U);
+        dma_textures(D_0F051FD8, 0x00000400U, 0x00000800U);
+        dma_textures(D_0F05232C, 0x00000400U, 0x00000800U);
+        dma_textures(D_0F0526B8, 0x00000400U, 0x00000800U);
+        dma_textures(D_0F052A20, 0x00000400U, 0x00000800U);
+        dma_textures(D_0F052D3C, 0x00000400U, 0x00000800U);
+        dma_textures(D_0F05300C, 0x00000400U, 0x00000800U);
+        dma_textures(D_0F0532F8, 0x00000400U, 0x00000800U);
+        dma_textures(D_0F05363C, 0x00000400U, 0x00000800U);
+        dma_textures(D_0F053950, 0x00000400U, 0x00000800U);
         break;
     case 11:
-        func_802A84F4(D_0F053C34, 0x0000033EU, 0x00000800U);
-        func_802A84F4(D_0F053F74, 0x000002FBU, 0x00000800U);
-        func_802A84F4(D_0F054270, 0x000002A8U, 0x00000800U);
-        func_802A84F4(D_0F054518, 0x00000374U, 0x00000800U);
-        func_802A84F4(D_0F05488C, 0x000003AFU, 0x00000800U);
+        dma_textures(D_0F053C34, 0x0000033EU, 0x00000800U);
+        dma_textures(D_0F053F74, 0x000002FBU, 0x00000800U);
+        dma_textures(D_0F054270, 0x000002A8U, 0x00000800U);
+        dma_textures(D_0F054518, 0x00000374U, 0x00000800U);
+        dma_textures(D_0F05488C, 0x000003AFU, 0x00000800U);
         break;
     case 18:
-        func_802A84F4(D_0F057EB4, 0x0000032FU, 0x00000400U);
-        func_802A84F4(D_0F0581E4, 0x00000369U, 0x00000400U);
-        func_802A84F4(D_0F058550, 0x00000364U, 0x00000400U);
+        dma_textures(D_0F057EB4, 0x0000032FU, 0x00000400U);
+        dma_textures(D_0F0581E4, 0x00000369U, 0x00000400U);
+        dma_textures(D_0F058550, 0x00000364U, 0x00000400U);
         break;
     }
     func_80297818();
@@ -4135,15 +4135,15 @@ void func_802A2F34(struct UnkStruct_800DC5EC *arg0) {
 }
 
 void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
-    Camera *temp_s1 = arg0->camera;
+    Camera *camera = arg0->camera;
     u16 sp92 = arg0->pathCounter;
     s32 pad[12];
     s32 i;
 
     struct Actor *actor;
     Vec3f sp4C = {0.0f, 5.0f, 10.0f};
-    f32 sp48 = sins(temp_s1->rot[1] - 0x8000); // unk26;
-    f32 temp_f0 = coss(temp_s1->rot[1] - 0x8000);
+    f32 sp48 = sins(camera->rot[1] - 0x8000); // unk26;
+    f32 temp_f0 = coss(camera->rot[1] - 0x8000);
 
 
     D_801502C0[0][0] = temp_f0;
@@ -4166,7 +4166,7 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
 
 
     if (gModeSelection != BATTLE) {
-        func_80297340(temp_s1);
+        func_80297340(camera);
     }
     D_8015F8E0 = 0;
 
@@ -4178,186 +4178,186 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
         }
             switch (actor->type) {
                 case 2:
-                    func_80299144(temp_s1, D_801502C0, actor);
+                    func_80299144(camera, D_801502C0, actor);
                     break;
                 case 3:
-                    func_8029930C(temp_s1, D_801502C0, actor);
+                    func_8029930C(camera, D_801502C0, actor);
                     break;
                 case 4:
-                    func_802994D4(temp_s1, D_801502C0, actor);
+                    func_802994D4(camera, D_801502C0, actor);
                     break;
                 case 19:
-                    func_8029969C(temp_s1, D_801502C0, actor);
+                    func_8029969C(camera, D_801502C0, actor);
                     break;
                 case 26:
-                    func_80299864(temp_s1, D_801502C0, actor);
+                    func_80299864(camera, D_801502C0, actor);
                     break;
                 case 28:
-                    func_80299A2C(temp_s1, D_801502C0, actor);
+                    func_80299A2C(camera, D_801502C0, actor);
                     break;
                 case 33:
-                    func_80299BF4(temp_s1, D_801502C0, actor);
+                    func_80299BF4(camera, D_801502C0, actor);
                     break;
                 case 29:
-                    func_80299DBC(temp_s1, D_801502C0, actor);
+                    func_80299DBC(camera, D_801502C0, actor);
                     break;
                 case 30:
-                    func_80299EDC(temp_s1, D_801502C0, actor);
+                    func_80299EDC(camera, D_801502C0, actor);
                     break;
                 case 31:
-                    func_80299FFC(temp_s1, D_801502C0, actor);
+                    func_80299FFC(camera, D_801502C0, actor);
                     break;
                 case 32:
-                    func_8029A11C(temp_s1, D_801502C0, actor);
+                    func_8029A11C(camera, D_801502C0, actor);
                     break;
                 case ACTOR_FALLING_ROCK:
-                    func_8029CA90(temp_s1, (struct FallingRock *) actor);
+                    func_8029CA90(camera, (struct FallingRock *) actor);
                     break;
                 case ACTOR_KIWANO_FRUIT:
-                    func_8029A23C(temp_s1, D_801502C0, actor);
+                    func_8029A23C(camera, D_801502C0, actor);
                     break;
                 case ACTOR_BANANA:
-                    func_8029A8F4(temp_s1, D_801502C0, actor);
+                    func_8029A8F4(camera, D_801502C0, actor);
                     break;
                 case ACTOR_GREEN_SHELL:
-                    func_8029A690(temp_s1, D_801502C0, (struct ShellActor *) actor);
+                    func_8029A690(camera, D_801502C0, (struct ShellActor *) actor);
                     break;
                 case ACTOR_RED_SHELL:
-                    func_8029A75C(temp_s1, D_801502C0, (struct ShellActor *) actor);
+                    func_8029A75C(camera, D_801502C0, (struct ShellActor *) actor);
                     break;
                 case ACTOR_BLUE_SPINY_SHELL:
-                    func_8029A828(temp_s1, D_801502C0, (struct ShellActor *) actor);
+                    func_8029A828(camera, D_801502C0, (struct ShellActor *) actor);
                     break;
                 case ACTOR_PIRANHA_PLANT:
-                    func_80298328(temp_s1, D_801502C0, actor);
+                    func_80298328(camera, D_801502C0, actor);
                     break;
                 case ACTOR_TRAIN_ENGINE:
-                    func_8029B8E8(temp_s1, (struct TrainCar *) actor);
+                    func_8029B8E8(camera, (struct TrainCar *) actor);
                     break;
                 case ACTOR_TRAIN_TENDER:
-                    func_8029BFB0(temp_s1, (struct TrainCar *) actor);
+                    func_8029BFB0(camera, (struct TrainCar *) actor);
                     break;
                 case ACTOR_TRAIN_PASSENGER_CAR:
-                    func_8029C3CC(temp_s1, (struct TrainCar *) actor);
+                    func_8029C3CC(camera, (struct TrainCar *) actor);
                     break;
                 case 18:
-                    func_80297A50(temp_s1, D_801502C0, actor);
+                    func_80297A50(camera, D_801502C0, actor);
                     break;
                 case 20:
-                    func_8029AC18(temp_s1, D_801502C0, actor);
+                    func_8029AC18(camera, D_801502C0, actor);
                     break;
                 case ACTOR_MARIO_RACEWAY_SIGN:
-                    func_802A29BC(temp_s1, D_801502C0, actor);
+                    func_802A29BC(camera, D_801502C0, actor);
                     break;
                 case ACTOR_WARIO_STADIUM_SIGN:
-                    func_802A269C(temp_s1, actor);
+                    func_802A269C(camera, actor);
                     break;
                 case ACTOR_PALM_TREE:
-                    func_802A2C78(temp_s1, D_801502C0, actor);
+                    func_802A2C78(camera, D_801502C0, actor);
                     break;
                 case ACTOR_PADDLE_WHEEL_BOAT:
-                    func_8029AE1C(temp_s1, actor, D_801502C0, sp92);
+                    func_8029AE1C(camera, actor, D_801502C0, sp92);
                     break;
                 case ACTOR_BOX_TRUCK:
-                    func_8029B06C(temp_s1, actor);
+                    func_8029B06C(camera, actor);
                     break;
                 case ACTOR_SCHOOL_BUS:
-                    func_8029B2E4(temp_s1, actor);
+                    func_8029B2E4(camera, actor);
                     break;
                 case ACTOR_TANKER_TRUCK:
-                    func_8029B6EC(temp_s1, actor);
+                    func_8029B6EC(camera, actor);
                     break;
                 case ACTOR_CAR:
-                    func_8029B4E0(temp_s1, actor);
+                    func_8029B4E0(camera, actor);
                     break;
                 case ACTOR_RAILROAD_CROSSING:
-                    func_802A2AD0(temp_s1, actor);
+                    func_802A2AD0(camera, actor);
                     break;
                 case ACTOR_YOSHI_VALLEY_EGG:
-                    func_802A27A0(temp_s1, D_801502C0, actor, sp92);
+                    func_802A27A0(camera, D_801502C0, actor, sp92);
                     break;
             }
     }
     switch (gCurrentCourseId) {
         case COURSE_MOO_MOO_FARM:
-            func_802986B4(temp_s1, D_801502C0, actor);
+            func_802986B4(camera, D_801502C0, actor);
             break;
         case COURSE_DK_JUNGLE:
-            func_80298D7C(temp_s1, D_801502C0, actor);
+            func_80298D7C(camera, D_801502C0, actor);
             break;
     }
 }
 
 void update_simple_objects(void) {
-    struct Actor *phi_s0;
+    struct Actor *actor;
     s32 i;
     for (i = 0; i < ACTOR_LIST_SIZE; i++) {
 
-        phi_s0 = &gActorList[i];
-        if (phi_s0->flags == 0) {
+        actor = &gActorList[i];
+        if (actor->flags == 0) {
             continue;
         }
 
-        switch (phi_s0->type) {
+        switch (actor->type) {
             case ACTOR_FALLING_ROCK:
-                update_obj_falling_rocks(phi_s0);
+                update_obj_falling_rocks(actor);
                 break;
             case ACTOR_GREEN_SHELL:
-                update_obj_green_shell(phi_s0);
+                update_obj_green_shell(actor);
                 break;
             case ACTOR_RED_SHELL:
-                update_obj_red_blue_shell(phi_s0);
+                update_obj_red_blue_shell(actor);
                 break;
             case ACTOR_BLUE_SPINY_SHELL:
-                update_obj_red_blue_shell(phi_s0);
+                update_obj_red_blue_shell(actor);
                 break;
             case ACTOR_KIWANO_FRUIT:
-                update_obj_kiwano_fruit(phi_s0);
+                update_obj_kiwano_fruit(actor);
                 break;
             case ACTOR_BANANA:
-                update_obj_banana(phi_s0);
+                update_obj_banana(actor);
                 break;
             case ACTOR_PADDLE_WHEEL_BOAT:
-                update_obj_paddle_wheel(phi_s0);
+                update_obj_paddle_wheel(actor);
                 break;
             case ACTOR_TRAIN_ENGINE:
-                update_obj_train_engine(phi_s0);
+                update_obj_train_engine(actor);
                 break;
             case ACTOR_TRAIN_TENDER:
-                update_obj_train_car1(phi_s0);
+                update_obj_train_car1(actor);
                 break;
             case ACTOR_TRAIN_PASSENGER_CAR:
-                update_obj_train_car2(phi_s0);
+                update_obj_train_car2(actor);
                 break;
             case ACTOR_ITEM_BOX:
-                update_obj_item_box(phi_s0);
+                update_obj_item_box(actor);
                 break;
             case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
-                update_obj_item_box_hot_air_balloon(phi_s0);
+                update_obj_item_box_hot_air_balloon(actor);
                 break;
             case ACTOR_FAKE_ITEM_BOX:
-                update_obj_fake_item_box(phi_s0);
+                update_obj_fake_item_box(actor);
                 break;
             case ACTOR_PIRANHA_PLANT:
-                update_obj_piranha_plant(phi_s0);
+                update_obj_piranha_plant(actor);
                 break;
             case ACTOR_BANANA_BUNCH:
-                update_obj_banana_bunch(phi_s0);
+                update_obj_banana_bunch(actor);
                 break;
             case ACTOR_TRIPLE_GREEN_SHELL:
-                update_obj_triple_shell(phi_s0, ACTOR_GREEN_SHELL);
+                update_obj_triple_shell(actor, ACTOR_GREEN_SHELL);
                 break;
             case ACTOR_TRIPLE_RED_SHELL:
-                update_obj_triple_shell(phi_s0, ACTOR_RED_SHELL);
+                update_obj_triple_shell(actor, ACTOR_RED_SHELL);
                 break;
             case ACTOR_MARIO_RACEWAY_SIGN:
-                update_obj_mario_raceway_sign(phi_s0);
+                update_obj_mario_raceway_sign(actor);
                 break;
             case ACTOR_WARIO_STADIUM_SIGN:
-                update_obj_wario_stadium_sign(phi_s0);
+                update_obj_wario_stadium_sign(actor);
                 break;
             case ACTOR_RAILROAD_CROSSING:
-                update_obj_railroad_crossing(phi_s0);
+                update_obj_railroad_crossing(actor);
                 break;
             case 2:
             case 3:
@@ -4372,10 +4372,10 @@ void update_simple_objects(void) {
             case 31:
             case 32:
             case 33:
-                update_obj_trees_cacti_shrubs(phi_s0);
+                update_obj_trees_cacti_shrubs(actor);
                 break;
             case ACTOR_YOSHI_VALLEY_EGG:
-                update_obj_yoshi_valley_egg(phi_s0);
+                update_obj_yoshi_valley_egg(actor);
                 break;
             }
         }
