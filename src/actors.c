@@ -2362,7 +2362,7 @@ void place_course_actors(void) {
 }
 
 void func_8029E158(void) {
-    set_segment_base_addr(3, gNextFreeMemoryAddress);
+    set_segment_base_addr(3, (void *) gNextFreeMemoryAddress);
     D_802BA050 = dma_textures(D_0F04CBE0, 0x00000257U, 0x00000400U);
     dma_textures(D_0F04CE30, 0x00000242U, 0x00000400U);
     dma_textures(D_0F04D080, 0x00000259U, 0x00000400U);
@@ -2390,7 +2390,7 @@ void func_8029E158(void) {
     dma_textures(gTexture671A88, 0x00000400U, 0x00000800U);
     dma_textures(gTexture6774D8, 0x00000400U, 0x00000800U);
     switch (gCurrentCourseId) {
-    case 0:
+    case COURSE_MARIO_RACEWAY:
         dma_textures(D_0F04F45C, 0x0000035BU, 0x00000800U);
         D_802BA058 = dma_textures(D_0F056408, 0x000003E8U, 0x00000800U);
         dma_textures(D_0F05662C, 0x000003E8U, 0x00000800U);
@@ -2402,17 +2402,17 @@ void func_8029E158(void) {
         dma_textures(D_0F057288, 0x000003E8U, 0x00000800U);
         dma_textures(D_0F057590, 0x000003E8U, 0x00000800U);
         break;
-    case 2:
+    case COURSE_BOWSER_CASTLE:
         dma_textures(gTextureShrub, 0x000003FFU, 0x00000800U);
         break;
-    case 4:
+    case COURSE_YOSHI_VALLEY:
         dma_textures(D_0F04F7A4, 0x000003E8U, 0x00000800U);
         break;
-    case 5:
+    case COURSE_FRAPPE_SNOWLAND:
         dma_textures(D_0F0513CC, 0x00000454U, 0x00000800U);
         dma_textures(D_0F051820, 0x00000432U, 0x00000800U);
         break;
-    case 7:
+    case COURSE_ROYAL_RACEWAY:
         dma_textures(D_0F04FB3C, 0x000003E8U, 0x00000800U);
         dma_textures(D_0F050D50, 0x000003E8U, 0x00000800U);
         D_802BA058 = dma_textures(D_0F056408, 0x000003E8U, 0x00000800U);
@@ -2425,11 +2425,11 @@ void func_8029E158(void) {
         dma_textures(D_0F057288, 0x000003E8U, 0x00000800U);
         dma_textures(D_0F057590, 0x000003E8U, 0x00000800U);
         break;
-    case 8:
+    case COURSE_LUIGI_RACEWAY:
         dma_textures(D_0F050468, 0x000003E8U, 0x00000800U);
         dma_textures(D_0F050678, 0x000003E8U, 0x00000800U);
         break;
-    case 9:
+    case COURSE_MOO_MOO_FARM:
         dma_textures(D_0F04FE28, 0x000003E8U, 0x00000800U);
         dma_textures(D_0F050118, 0x000003E8U, 0x00000800U);
         dma_textures(D_0F051C54, 0x00000400U, 0x00000800U);
@@ -2443,14 +2443,14 @@ void func_8029E158(void) {
         dma_textures(D_0F05363C, 0x00000400U, 0x00000800U);
         dma_textures(D_0F053950, 0x00000400U, 0x00000800U);
         break;
-    case 11:
+    case COURSE_KALAMARI_DESERT:
         dma_textures(D_0F053C34, 0x0000033EU, 0x00000800U);
         dma_textures(D_0F053F74, 0x000002FBU, 0x00000800U);
         dma_textures(D_0F054270, 0x000002A8U, 0x00000800U);
         dma_textures(D_0F054518, 0x00000374U, 0x00000800U);
         dma_textures(D_0F05488C, 0x000003AFU, 0x00000800U);
         break;
-    case 18:
+    case COURSE_DK_JUNGLE:
         dma_textures(D_0F057EB4, 0x0000032FU, 0x00000400U);
         dma_textures(D_0F0581E4, 0x00000369U, 0x00000400U);
         dma_textures(D_0F058550, 0x00000364U, 0x00000400U);
