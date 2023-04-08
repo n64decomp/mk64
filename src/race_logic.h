@@ -3,6 +3,7 @@
 
 /* Function Prototypes */
 
+void func_802903D8(Player*, Player*);
 void func_8028DF00();
 void func_8028DF38();
 void func_8028E028();

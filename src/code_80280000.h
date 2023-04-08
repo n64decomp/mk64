@@ -24,7 +24,7 @@ extern s32 D_802874A0;
 
 extern u16 D_80164714, D_80164716, D_80164718;
 extern u16 D_800DC5E4;
-extern u32 D_802874FC;
+extern s32 D_802874FC;
 
 extern u16 D_800DC518;
 

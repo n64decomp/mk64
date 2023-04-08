@@ -23,7 +23,7 @@ s32   func_802AF0FC(s16, s16, s16, s16, u16);
 void  func_802AF314();
 void  func_802AF588(s32);
 void  func_802AF5AC(s32, s8);
-void  func_802AF5D8(u32, s8, s32);
+void  func_802AF5D8(u32, s8, u16);
 void  func_802AF7B4(uintptr_t, s32, s32);
 void  func_802AF8BC(uintptr_t, s8, u8, u8, u8);
 void  func_802AF9F0(Vec3f, f32, Vec3f);

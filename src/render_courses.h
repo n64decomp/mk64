@@ -8,9 +8,10 @@ struct Unk0CAC {
     u16 unk6;
 };
 
+void func_8029122C(struct UnkStruct_800DC5EC*, s32);
 s32  func_80290C20(Camera*);
 void func_80290CAC(uintptr_t);
-void load_surface_map(s32, struct UnkStruct_800DC5EC*);
+void load_surface_map(uintptr_t, struct UnkStruct_800DC5EC*);
 void func_80291198();
 void func_802911C4();
 void render_mario_raceway(struct UnkStruct_800DC5EC*);
@@ -44,11 +45,10 @@ void func_802969F8();
 
 extern Gfx *gDisplayListHead;
 extern s16 gCurrentCourseId;
-extern u32 gPrevLoadedAddress;
+extern u32 gNextFreeMemoryAddress;
 extern s32 gActiveScreenMode;
 
 extern u16 sRenderedFramebuffer;
-extern uintptr_t *gPhysicalFramebuffers[];
 extern uintptr_t gSegmentTable[];
 
 extern Player gPlayers[];

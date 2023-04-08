@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include <PR/os.h>
 #include <macros.h>
+#include <functions.h>
 #include "types.h"
 #include "config.h"
 #include "profiler.h"
@@ -19,6 +20,18 @@
 #include "code_800431B0.h"
 #include "code_8008C1D0.h"
 #include "code_80281780.h"
+#include "audio/external.h"
+#include "code_800029B0.h"
+#include "code_80280000.h"
+#include "code_80280650.h"
+#include "code_80091750.h"
+#include "code_80057C60.h"
+#include "profiler.h"
+#include "code_80027D00.h"
+#include "code_8001F980.h"
+#include "render_courses.h"
+#include "actors.h"
+#include "staff_ghosts.h"
 
 // Declarations (not in this file)
 void func_80091B78(void);
@@ -90,7 +103,7 @@ OSContStatus gControllerStatuses[4];
 OSContPad gControllerPads[4];
 u8 gControllerBits;
 
-u8 D_8014F110[4096];
+struct UnkStruct_8015F584 D_8014F110[1024];
 u16 gNumActors;
 u16 D_80150112;
 s32 D_80150114;
@@ -119,7 +132,7 @@ Gfx *gDisplayListHead;
 struct SPTask *gGfxSPTask;
 s32 D_801502A0;
 s32 D_801502A4;
-uintptr_t gPhysicalFramebuffers[3];
+u32 gPhysicalFramebuffers[3];
 u32 D_801502B4;
 UNUSED u32 D_801502B8;
 UNUSED u32 D_801502BC;
@@ -274,7 +287,7 @@ void create_gfx_task_structure(void) {
 void init_controllers(void) {
     osCreateMesgQueue(&gSIEventMesgQueue, &gSIEventMesgBuf[0], ARRAY_COUNT(gSIEventMesgBuf));
     osSetEventMesg(OS_EVENT_SI, &gSIEventMesgQueue, (OSMesg) 0x33333333);
-    osContInit(&gSIEventMesgQueue, &gControllerBits, &gControllerStatuses);
+    osContInit(&gSIEventMesgQueue, &gControllerBits, gControllerStatuses);
     if ((gControllerBits & 1) == 0) {
         sIsController1Unplugged = TRUE;
     } else {
@@ -323,7 +336,7 @@ void read_controllers(void) {
 
     osContStartReadData(&gSIEventMesgQueue);
     osRecvMesg(&gSIEventMesgQueue, &msg, OS_MESG_BLOCK);
-    osContGetReadData(&gControllerPads);
+    osContGetReadData(gControllerPads);
     update_controller(0);
     update_controller(1);
     update_controller(2);
@@ -421,6 +434,7 @@ void config_gfx_pool(void) {
  * Yields to the VI framerate twice, locking the game at 30 FPS.
  * Selects the next framebuffer to be rendered and displayed.
  */
+void crash_screen_set_framebuffer(uintptr_t*);
 void display_and_vsync(void) {
     profiler_log_thread5_time(BEFORE_DISPLAY_LISTS);
     osRecvMesg(&gGfxVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
@@ -430,7 +444,7 @@ void display_and_vsync(void) {
     osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
     profiler_log_thread5_time(THREAD5_END);
     osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-    crash_screen_set_framebuffer(gPhysicalFramebuffers[sRenderedFramebuffer]);
+    crash_screen_set_framebuffer((uintptr_t *) gPhysicalFramebuffers[sRenderedFramebuffer]);
     if (++sRenderedFramebuffer == 3) {
         sRenderedFramebuffer = 0;
     }
@@ -441,33 +455,33 @@ void display_and_vsync(void) {
 }
 
 void init_seg_80280000(void) {
-    bzero(SEG_80280000, 0xDF00);
+    bzero((void *) SEG_80280000, 0xDF00);
     osWritebackDCacheAll();
-    dma_copy(SEG_80280000, &_code_80280000SegmentRomStart, ALIGN16((u32)&_code_80280000SegmentRomEnd - (u32)&_code_80280000SegmentRomStart));
-    osInvalICache(SEG_80280000, 0xDF00);
-    osInvalDCache(SEG_80280000, 0xDF00);
+    dma_copy((u8 *) SEG_80280000, (u8 *) &_code_80280000SegmentRomStart, ALIGN16((u32)&_code_80280000SegmentRomEnd - (u32)&_code_80280000SegmentRomStart));
+    osInvalICache((void *) SEG_80280000, 0xDF00);
+    osInvalDCache((void *) SEG_80280000, 0xDF00);
 }
 
 void init_seg_8028DF00(void) {
-    bzero(SEG_8028DF00, 0x2C470);
+    bzero((void *) SEG_8028DF00, 0x2C470);
     osWritebackDCacheAll();
-    dma_copy(SEG_8028DF00, &_code_8028DF00SegmentRomStart, ALIGN16((u32)&_code_8028DF00SegmentRomEnd - (u32)&_code_8028DF00SegmentRomStart));
-    osInvalICache(SEG_8028DF00, 0x2C470);
-    osInvalDCache(SEG_8028DF00, 0x2C470);
+    dma_copy((u8 *) SEG_8028DF00, (u8 *) &_code_8028DF00SegmentRomStart, ALIGN16((u32)&_code_8028DF00SegmentRomEnd - (u32)&_code_8028DF00SegmentRomStart));
+    osInvalICache((void *) SEG_8028DF00, 0x2C470);
+    osInvalDCache((void *) SEG_8028DF00, 0x2C470);
 }
 
-void dma_copy(u8 *dest, u8 *arg1, u32 size) {
+void dma_copy(u8 *dest, u8 *romAddr, u32 size) {
 
     osInvalDCache(dest, size);
     while(size > 0x100) {
-        osPiStartDma(&gDmaIoMesg, 0, 0, arg1, dest, 0x100, &gDmaMesgQueue);
+        osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) romAddr, dest, 0x100, &gDmaMesgQueue);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
         size -= 0x100;
-        arg1 += 0x100;
+        romAddr += 0x100;
         dest += 0x100;
     }
     if (size != 0) {
-        osPiStartDma(&gDmaIoMesg, 0, 0, arg1, dest, size, &gDmaMesgQueue);
+        osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) romAddr, dest, size, &gDmaMesgQueue);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
     }
 }
@@ -479,33 +493,33 @@ void setup_game_memory(void) {
     UNUSED u32 pad[2];
     u32 sp2C;
     u32 sp40;
-    s32 texture_seg;
-    s32 sp38;
+    uintptr_t texture_seg;
+    u32 sp38;
     UNUSED s32 unknown_padding;
 
     init_seg_8028DF00();
     gHeapEndPtr = SEG_8028DF00;
-    set_segment_base_addr(0, 0x80000000);
-    func_802A7CF0(&D_801978D0, 0x80242F00);
+    set_segment_base_addr(0, (void *) SEG_START);
+    initialize_memory_pool((uintptr_t) &D_801978D0, (uintptr_t) 0x80242F00);
     func_80000BEC();
-    osInvalDCache(SEG_802BA370, 0x5810);
-    osPiStartDma(&gDmaIoMesg, 0, 0, &_data_802BA370SegmentRomStart, SEG_802BA370, 0x5810, &gDmaMesgQueue);
+    osInvalDCache((void *) SEG_802BA370, 0x5810);
+    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_data_802BA370SegmentRomStart, (void *) SEG_802BA370, 0x5810, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-    set_segment_base_addr(2, func_802A7D70(&_data_segment2SegmentRomStart, &_data_segment2SegmentRomEnd));
+    set_segment_base_addr(2, (void *) load_data((uintptr_t) &_data_segment2SegmentRomStart, (uintptr_t) &_data_segment2SegmentRomEnd));
     sp2C = (u32)&_common_texturesSegmentRomEnd - (u32)&_common_texturesSegmentRomStart;
     sp2C = ALIGN16(sp2C);
     texture_seg = SEG_8028DF00-sp2C;
-    osPiStartDma(&gDmaIoMesg, 0, 0, &_common_texturesSegmentRomStart, texture_seg, sp2C, &gDmaMesgQueue);
+    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_common_texturesSegmentRomStart, (void *) texture_seg, sp2C, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
     sp40 = *(u32 *)(texture_seg + 4);
     sp40 = ALIGN16(sp40);
-    sp38 = gPrevLoadedAddress;
-    mio0decode(texture_seg, sp38);
-    set_segment_base_addr(0xD, sp38);
+    sp38 = gNextFreeMemoryAddress;
+    mio0decode((u8 *) texture_seg, (u8 *) sp38);
+    set_segment_base_addr(0xD, (void *) sp38);
 
-    gPrevLoadedAddress += sp40;
-    D_8015F734 = gPrevLoadedAddress;
+    gNextFreeMemoryAddress += sp40;
+    D_8015F734 = gNextFreeMemoryAddress;
 }
 
 /**
@@ -519,9 +533,7 @@ void game_init_clear_framebuffer(void) {
 
 void race_logic_loop(void) {
     s16 i;
-    s32 pad;
     u16 rotY;
-    f32 pad2 = 0;
 
     D_80150112 = 0;
     D_80164AF0 = 0;
@@ -833,7 +845,7 @@ void game_state_handler(void) {
             update_menus();
             init_rcp();
             // gGfxPool->mtxPool->m or gGfxPool?
-            func_80094A64(gGfxPool->mtxPool->m);
+            func_80094A64((Mtx *) gGfxPool->mtxPool->m);
             break;
         case RACING:
             race_logic_loop();
@@ -855,7 +867,7 @@ void interrupt_gfx_sptask(void) {
 }
 
 void receive_new_tasks(void) {
-    s32 pad;
+    UNUSED s32 pad;
     struct SPTask *spTask;
 
     while(osRecvMesg(&gSPTaskMesgQueue, (OSMesg *) &spTask, OS_MESG_NOBLOCK) != -1) {
@@ -959,7 +971,7 @@ void handle_sp_complete(void) {
         // handle_vblank tried to start an audio task while there was already a
         // gfx task running, so it had to interrupt the gfx task. That interruption
         // just finished.
-        if (osSpTaskYielded(curSPTask) == 0) {
+        if (osSpTaskYielded((OSTask *) curSPTask) == 0) {
             // The gfx task completed before we had time to interrupt it.
             // Mark it finished, just like below.
             curSPTask->state = SPTASK_STATE_FINISHED;
@@ -998,13 +1010,14 @@ void thread3_video(UNUSED void *arg0) {
     s32 i;
     u64 *framebuffer1;
     OSMesg msg;
-    s32 pad[4];
+    UNUSED s32 pad[4];
 
-    gPhysicalFramebuffers[0] = (uintptr_t *) &gFramebuffer0;
-    gPhysicalFramebuffers[1] = (uintptr_t *) &gFramebuffer1;
-    gPhysicalFramebuffers[2] = (uintptr_t *) &gFramebuffer2;
+    gPhysicalFramebuffers[0] = (u32) &gFramebuffer0;
+    gPhysicalFramebuffers[1] = (u32) &gFramebuffer1;
+    gPhysicalFramebuffers[2] = (u32) &gFramebuffer2;
 
-    framebuffer1 = &gFramebuffer1;
+    // Clear framebuffer.
+    framebuffer1 = (u64 *) &gFramebuffer1;
     for (i = 0; i < 19200; i++) {
         framebuffer1[i] = 0;
     }
@@ -1103,7 +1116,7 @@ void update_gamestate(void) {
 }
 
 void thread5_game_loop(UNUSED void *arg) {
-    osCreateMesgQueue(&gGfxVblankQueue, &gGfxMesgBuf, 1);
+    osCreateMesgQueue(&gGfxVblankQueue, gGfxMesgBuf, 1);
     osCreateMesgQueue(&gGameVblankQueue, &gGameMesgBuf, 1);
     init_controllers();
     if (!wasSoftReset) {
@@ -1145,7 +1158,7 @@ void thread5_game_loop(UNUSED void *arg) {
 void thread4_audio(UNUSED void *arg) {
     UNUSED u32 unused[3];
     audio_init();
-    osCreateMesgQueue(&sSoundMesgQueue, &sSoundMesgBuf, ARRAY_COUNT(sSoundMesgBuf));
+    osCreateMesgQueue(&sSoundMesgQueue, sSoundMesgBuf, ARRAY_COUNT(sSoundMesgBuf));
     set_vblank_handler(1, &sSoundVblankHandler, &sSoundMesgQueue, (OSMesg) 512);
 
     while (TRUE) {

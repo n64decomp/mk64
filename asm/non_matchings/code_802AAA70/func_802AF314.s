@@ -34,8 +34,8 @@ glabel func_802AF314
 /* 1189A0 802AF390 3C148016 */  lui   $s4, %hi(D_8015F58A) # $s4, 0x8016
 /* 1189A4 802AF394 2694F58A */  addiu $s4, %lo(D_8015F58A) # addiu $s4, $s4, -0xa76
 /* 1189A8 802AF398 A6800000 */  sh    $zero, ($s4)
-/* 1189AC 802AF39C 3C088016 */  lui   $t0, %hi(gPrevLoadedAddress) # $t0, 0x8016
-/* 1189B0 802AF3A0 8D08F728 */  lw    $t0, %lo(gPrevLoadedAddress)($t0)
+/* 1189AC 802AF39C 3C088016 */  lui   $t0, %hi(gNextFreeMemoryAddress) # $t0, 0x8016
+/* 1189B0 802AF3A0 8D08F728 */  lw    $t0, %lo(gNextFreeMemoryAddress)($t0)
 /* 1189B4 802AF3A4 3C018016 */  lui   $at, %hi(D_8015F584) # $at, 0x8016
 /* 1189B8 802AF3A8 3C038016 */  lui   $v1, %hi(D_8015F588) # $v1, 0x8016
 /* 1189BC 802AF3AC AC28F584 */  sw    $t0, %lo(D_8015F584)($at)

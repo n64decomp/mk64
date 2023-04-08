@@ -28,6 +28,9 @@ struct unk_41F8 {
 
 /* Function Prototypes */
 
+void func_800070F4(void);
+void func_80019DF4(void);
+void func_80019E58(void);
 s16  func_80005FD0(Vec3f, Vec3f);
 s32  func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
 void func_80006114(Vec3f, Vec3f, s16);
@@ -39,7 +42,7 @@ s32  func_80008E58(s32, s32);
 void func_80008F38(s32);
 void func_80009000(s32);
 void func_800090F0(s32, Player*);
-void func_800097E0();
+void func_800097E0(void);
 void func_80009B60(s32);
 s32  func_8000B7E4(s32, u16);
 s32  func_8000B820(s32);

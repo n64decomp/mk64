@@ -37,36 +37,36 @@ glabel func_80091B78
 /* 0927FC 80091BFC 1639000C */  bne   $s1, $t9, .L80091C30
 /* 092800 80091C00 3C088016 */   lui   $t0, %hi(D_8015F734) # $t0, 0x8016
 /* 092804 80091C04 8D08F734 */  lw    $t0, %lo(D_8015F734)($t0)
-/* 092808 80091C08 3C018016 */  lui   $at, %hi(gPrevLoadedAddress) # $at, 0x8016
+/* 092808 80091C08 3C018016 */  lui   $at, %hi(gNextFreeMemoryAddress) # $at, 0x8016
 /* 09280C 80091C0C 3C040082 */  lui   $a0, %hi(_data_825800SegmentRomStart) # $a0, 0x82
 /* 092810 80091C10 3C050083 */  lui   $a1, %hi(_course_mario_raceway_dl_mio0SegmentRomStart) # $a1, 0x83
 /* 092814 80091C14 24A584D0 */  addiu $a1, %lo(_course_mario_raceway_dl_mio0SegmentRomStart) # addiu $a1, $a1, -0x7b30
 /* 092818 80091C18 24845800 */  addiu $a0, %lo(_data_825800SegmentRomStart) # addiu $a0, $a0, 0x5800
-/* 09281C 80091C1C 0C0AAA23 */  jal   func_802AA88C
-/* 092820 80091C20 AC28F728 */   sw    $t0, %lo(gPrevLoadedAddress)($at)
+/* 09281C 80091C1C 0C0AAA23 */  jal   decompress_segments
+/* 092820 80091C20 AC28F728 */   sw    $t0, %lo(gNextFreeMemoryAddress)($at)
 /* 092824 80091C24 24040006 */  li    $a0, 6
 /* 092828 80091C28 0C0A9EE5 */  jal   set_segment_base_addr
 /* 09282C 80091C2C 00402825 */   move  $a1, $v0
 .L80091C30:
 /* 092830 80091C30 3C098016 */  lui   $t1, %hi(D_8015F734) # $t1, 0x8016
 /* 092834 80091C34 8D29F734 */  lw    $t1, %lo(D_8015F734)($t1)
-/* 092838 80091C38 3C018016 */  lui   $at, %hi(gPrevLoadedAddress) # $at, 0x8016
+/* 092838 80091C38 3C018016 */  lui   $at, %hi(gNextFreeMemoryAddress) # $at, 0x8016
 /* 09283C 80091C3C 3C040009 */  lui   $a0, (0x000900B0 >> 16) # lui $a0, 9
 /* 092840 80091C40 348400B0 */  ori   $a0, (0x000900B0 & 0xFFFF) # ori $a0, $a0, 0xb0
-/* 092844 80091C44 0C0A9EDC */  jal   func_802A7B70
-/* 092848 80091C48 AC29F728 */   sw    $t1, %lo(gPrevLoadedAddress)($at)
+/* 092844 80091C44 0C0A9EDC */  jal   get_next_available_memory_addr
+/* 092848 80091C48 AC29F728 */   sw    $t1, %lo(gNextFreeMemoryAddress)($at)
 /* 09284C 80091C4C 3C018019 */  lui   $at, %hi(D_8018D9B0) # $at, 0x8019
 /* 092850 80091C50 AC22D9B0 */  sw    $v0, %lo(D_8018D9B0)($at)
-/* 092854 80091C54 0C0A9EDC */  jal   func_802A7B70
+/* 092854 80091C54 0C0A9EDC */  jal   get_next_available_memory_addr
 /* 092858 80091C58 3404CE00 */   li    $a0, 52736
 /* 09285C 80091C5C 3C018019 */  lui   $at, %hi(D_8018D9B4) # $at, 0x8019
 /* 092860 80091C60 3C040001 */  lui   $a0, (0x00012C00 >> 16) # lui $a0, 1
 /* 092864 80091C64 AC22D9B4 */  sw    $v0, %lo(D_8018D9B4)($at)
-/* 092868 80091C68 0C0A9EDC */  jal   func_802A7B70
+/* 092868 80091C68 0C0A9EDC */  jal   get_next_available_memory_addr
 /* 09286C 80091C6C 34842C00 */   ori   $a0, (0x00012C00 & 0xFFFF) # ori $a0, $a0, 0x2c00
 /* 092870 80091C70 3C018019 */  lui   $at, %hi(D_8018D9B8) # $at, 0x8019
 /* 092874 80091C74 AC22D9B8 */  sw    $v0, %lo(D_8018D9B8)($at)
-/* 092878 80091C78 0C0A9EDC */  jal   func_802A7B70
+/* 092878 80091C78 0C0A9EDC */  jal   get_next_available_memory_addr
 /* 09287C 80091C7C 24041000 */   li    $a0, 4096
 /* 092880 80091C80 3C018019 */  lui   $at, %hi(D_8018D9C0) # $at, 0x8019
 /* 092884 80091C84 0C02BE6C */  jal   func_800AF9B0

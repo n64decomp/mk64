@@ -5,6 +5,10 @@
 #include <macros.h>
 #include <common_structs.h>
 
+//#pragma GCC diagnostic push
+//#pragma GCC diagnostic ignored "-Wmicrosoft-extension"
+//#pragma GCC diagnostic ignored "-Wmissing-member-name-in-structure-/-union"
+
 /*
 gActorList should be understood to be populated by generic Actor structs.
 However, for human readability, many functions interacting with actor list elements expect one of the many
@@ -329,4 +333,6 @@ struct BananaActor {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-#endif
+//#pragma GCC diagnostic pop
+
+#endif // ACTOR_TYPES_H

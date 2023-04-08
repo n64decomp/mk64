@@ -272,7 +272,7 @@ void func_8006EEE8(s32 courseId) {
     temp_t0 = courseId * 2;
     temp_a1 = D_800E5520[courseId];
     sp1C = temp_t0;
-    D_8018D240 = func_802A84F4(gCourseOutlineTextures[courseId], (u32) temp_a1, (u32) temp_a1);
+    D_8018D240 = dma_textures(gCourseOutlineTextures[courseId], (u32) temp_a1, (u32) temp_a1);
     temp_v1 = &D_800E5548[temp_t0];
     D_8018D2B0 = temp_v1->unk0;
     D_8018D2B8 = temp_v1->unk2;
@@ -409,7 +409,7 @@ void func_8006F008(void) {
     }
     switch ((u32) gCurrentCourseId) {
     case 0:
-        D_8018D220 = func_802A84F4((s32) &gTextureExhaust5, 0x00000443U, 0x00001000U);
+        D_8018D220 = dma_textures((s32) &gTextureExhaust5, 0x00000443U, 0x00001000U);
         D_8018D2A0 = 0.022f;
         D_8018D2E0 = 6;
         D_8018D2E8 = 0x001C;
@@ -434,14 +434,14 @@ block_26:
         D_8018D2E8 = 0x0030;
         break;
     case 3:
-        D_80165880 = func_802A84F4((s32) &D_0F0D0E50, 0x00004CC2U, 0x0000D980U);
+        D_80165880 = dma_textures((s32) &D_0F0D0E50, 0x00004CC2U, 0x0000D980U);
         D_8018D2A0 = 0.016f;
         D_8018D2C0.unk0 = 0x0106;
         D_8018D2E0 = 0x0037;
         D_8018D2E8 = 0x0027;
         break;
     case 4:
-        D_8018D220 = func_802A84F4((s32) &gTextureExhaust0, 0x00000479U, 0x00000C00U);
+        D_8018D220 = dma_textures((s32) &gTextureExhaust0, 0x00000479U, 0x00000C00U);
         D_8018D2A0 = 0.018f;
         D_8018D2E0 = 0x003D;
         D_8018D2E8 = 0x0026;
@@ -456,14 +456,14 @@ block_26:
         D_8018D310 = 0x00FF;
         break;
     case 6:
-        D_8018D220 = func_802A84F4((s32) &gTextureExhaust3, 0x000003C8U, 0x00001000U);
+        D_8018D220 = dma_textures((s32) &gTextureExhaust3, 0x000003C8U, 0x00001000U);
         D_8018D2A0 = 0.014f;
         D_8018D2C0.unk0 = 0x010C;
         D_8018D2E0 = 0x0028;
         D_8018D2E8 = 0x0015;
         break;
     case 7:
-        D_8018D220 = func_802A84F4((s32) &gTextureExhaust4, 0x000003F8U, 0x00001000U);
+        D_8018D220 = dma_textures((s32) &gTextureExhaust4, 0x000003F8U, 0x00001000U);
         D_8018D2C0.unk0 = 0x0106;
         D_8018D2A0 = 0.014f;
         D_8018D2E0 = 0x0025;
@@ -473,7 +473,7 @@ block_26:
         D_80165728 = -0x014A;
         break;
     case 8:
-        D_8018D220 = func_802A84F4((s32) &gTextureExhaust2, 0x000004F4U, 0x00000C00U);
+        D_8018D220 = dma_textures((s32) &gTextureExhaust2, 0x000004F4U, 0x00000C00U);
         D_8018D2A0 = 0.0155f;
         D_8018D2C0.unk0 = 0x010F;
         D_8018D2E0 = 0x002D;
@@ -483,7 +483,7 @@ block_26:
         D_80165728 = -0x00D7;
         break;
     case 9:
-        D_8018D220 = func_802A84F4((s32) &gTextureExhaust0, 0x00000479U, 0x00000C00U);
+        D_8018D220 = dma_textures((s32) &gTextureExhaust0, 0x00000479U, 0x00000C00U);
         D_8018D2A0 = 0.0155f;
         D_8018D2C0.unk0 = 0x010F;
         D_8018D2E0 = 0x0012;
@@ -498,13 +498,13 @@ block_26:
     case 11:
         D_8018D2C0.unk0 = 0x0107;
         D_8018D2D8.unk0 = 0x00A5;
-        D_8018D220 = func_802A84F4((s32) &gTextureExhaust5, 0x00000443U, 0x00001000U);
+        D_8018D220 = dma_textures((s32) &gTextureExhaust5, 0x00000443U, 0x00001000U);
         D_8018D2A0 = 0.015f;
         D_8018D2E0 = 0x0037;
         D_8018D2E8 = 0x001B;
         break;
     case 12:
-        D_8018D220 = func_802A84F4((s32) &gTextureExhaust1, 0x00000485U, 0x00000C00U);
+        D_8018D220 = dma_textures((s32) &gTextureExhaust1, 0x00000485U, 0x00000C00U);
         D_8018D2A0 = 0.015f;
         D_8018D2C0.unk0 = 0x0106;
         D_8018D2E0 = 0x0034;

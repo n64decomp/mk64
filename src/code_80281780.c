@@ -11,6 +11,8 @@
 #include "code_8006E9C0.h"
 #include "code_80280650.h"
 #include "code_80281780.h"
+#include "code_80005FD0.h"
+#include "code_802AAA70.h"
 
 // unk4 is buttonDown?
 void func_80281780(void) {
@@ -93,13 +95,13 @@ void load_ending_sequence_royalraceway(void) {
     D_800DC5EC->screenStartX = 160;
     D_800DC5EC->screenStartY = 120;
     gScreenModeSelection = SCREEN_MODE_1P;
-    gPrevLoadedAddress = (s32) D_8015F734;
+    gNextFreeMemoryAddress = (s32) D_8015F734;
     gActiveScreenMode = SCREEN_MODE_1P;
     gModeSelection = GRAND_PRIX;
     load_course(gCurrentCourseId);
-    D_8015F730 = (s32) gPrevLoadedAddress;
-    set_segment_base_addr(0xB, func_802AA88C(&_data_821D10SegmentRomStart, &_data_825800SegmentRomStart));
-    set_segment_base_addr(6, func_802AA88C(&_course_banshee_boardwalk_dl_mio0SegmentRomStart, &_course_yoshi_valley_dl_mio0SegmentRomStart));
+    D_8015F730 = (s32) gNextFreeMemoryAddress;
+    set_segment_base_addr(0xB, (void *) decompress_segments(&_data_821D10SegmentRomStart, &_data_825800SegmentRomStart));
+    set_segment_base_addr(6, (void *) decompress_segments(&_course_banshee_boardwalk_dl_mio0SegmentRomStart, &_course_yoshi_valley_dl_mio0SegmentRomStart));
     D_8015F8E4 = -2000.0f;
 
     D_8015F6EA = -0x15A1;
@@ -116,7 +118,7 @@ void load_ending_sequence_royalraceway(void) {
     D_8015F588 = (u16)0;
     D_800DC5BC = (u16)0;
     D_800DC5C8 = (u16)0;
-    D_8015F580 = (s32) gPrevLoadedAddress;
+    D_8015F580 = (mk64_surface_map_ram *) gNextFreeMemoryAddress;
     // @bug these segmented addresses need to be symbols for mobility
     // This syntax is required to match
     func_802AF5AC(0x70067E8, -1);
@@ -138,6 +140,6 @@ void load_ending_sequence_royalraceway(void) {
     func_80280FB0();
     func_802816B8();
     func_80093E60();
-    D_801625F8 = (s32) gHeapEndPtr - gPrevLoadedAddress;
+    D_801625F8 = (s32) gHeapEndPtr - gNextFreeMemoryAddress;
     D_801625FC = ((f32) D_801625F8 / 1000.0f);
 }

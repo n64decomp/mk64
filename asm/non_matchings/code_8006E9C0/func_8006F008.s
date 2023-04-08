@@ -131,7 +131,7 @@ glabel L8006F0E4
 /* 06FCE4 8006F0E4 3C040F0D */  lui   $a0, %hi(gTextureExhaust5) # $a0, 0xf0d
 /* 06FCE8 8006F0E8 248470CC */  addiu $a0, %lo(gTextureExhaust5) # addiu $a0, $a0, 0x70cc
 /* 06FCEC 8006F0EC 24050443 */  li    $a1, 1091
-/* 06FCF0 8006F0F0 0C0AA13D */  jal   func_802A84F4
+/* 06FCF0 8006F0F0 0C0AA13D */  jal   dma_textures
 /* 06FCF4 8006F0F4 24061000 */   li    $a2, 4096
 /* 06FCF8 8006F0F8 3C018019 */  lui   $at, %hi(D_8018D220) # $at, 0x8019
 /* 06FCFC 8006F0FC AC22D220 */  sw    $v0, %lo(D_8018D220)($at)
@@ -198,7 +198,7 @@ glabel L8006F1E4
 /* 06FDE4 8006F1E4 3C040F0D */  lui   $a0, %hi(D_0F0D0E50) # $a0, 0xf0d
 /* 06FDE8 8006F1E8 24840E50 */  addiu $a0, %lo(D_0F0D0E50) # addiu $a0, $a0, 0xe50
 /* 06FDEC 8006F1EC 24054CC2 */  li    $a1, 19650
-/* 06FDF0 8006F1F0 0C0AA13D */  jal   func_802A84F4
+/* 06FDF0 8006F1F0 0C0AA13D */  jal   dma_textures
 /* 06FDF4 8006F1F4 3406D980 */   li    $a2, 55680
 /* 06FDF8 8006F1F8 3C018016 */  lui   $at, %hi(D_80165880) # $at, 0x8016
 /* 06FDFC 8006F1FC AC225880 */  sw    $v0, %lo(D_80165880)($at)
@@ -224,7 +224,7 @@ glabel L8006F248
 /* 06FE48 8006F248 3C040F0D */  lui   $a0, %hi(gTextureExhaust0) # $a0, 0xf0d
 /* 06FE4C 8006F24C 24845B14 */  addiu $a0, %lo(gTextureExhaust0) # addiu $a0, $a0, 0x5b14
 /* 06FE50 8006F250 24050479 */  li    $a1, 1145
-/* 06FE54 8006F254 0C0AA13D */  jal   func_802A84F4
+/* 06FE54 8006F254 0C0AA13D */  jal   dma_textures
 /* 06FE58 8006F258 24060C00 */   li    $a2, 3072
 /* 06FE5C 8006F25C 3C018019 */  lui   $at, %hi(D_8018D220) # $at, 0x8019
 /* 06FE60 8006F260 AC22D220 */  sw    $v0, %lo(D_8018D220)($at)
@@ -271,7 +271,7 @@ glabel L8006F2FC
 /* 06FEFC 8006F2FC 3C040F0D */  lui   $a0, %hi(gTextureExhaust3) # $a0, 0xf0d
 /* 06FF00 8006F300 2484690C */  addiu $a0, %lo(gTextureExhaust3) # addiu $a0, $a0, 0x690c
 /* 06FF04 8006F304 240503C8 */  li    $a1, 968
-/* 06FF08 8006F308 0C0AA13D */  jal   func_802A84F4
+/* 06FF08 8006F308 0C0AA13D */  jal   dma_textures
 /* 06FF0C 8006F30C 24061000 */   li    $a2, 4096
 /* 06FF10 8006F310 3C018019 */  lui   $at, %hi(D_8018D220) # $at, 0x8019
 /* 06FF14 8006F314 AC22D220 */  sw    $v0, %lo(D_8018D220)($at)
@@ -297,7 +297,7 @@ glabel L8006F360
 /* 06FF60 8006F360 3C040F0D */  lui   $a0, %hi(gTextureExhaust4) # $a0, 0xf0d
 /* 06FF64 8006F364 24846CD4 */  addiu $a0, %lo(gTextureExhaust4) # addiu $a0, $a0, 0x6cd4
 /* 06FF68 8006F368 240503F8 */  li    $a1, 1016
-/* 06FF6C 8006F36C 0C0AA13D */  jal   func_802A84F4
+/* 06FF6C 8006F36C 0C0AA13D */  jal   dma_textures
 /* 06FF70 8006F370 24061000 */   li    $a2, 4096
 /* 06FF74 8006F374 3C018019 */  lui   $at, %hi(D_8018D220) # $at, 0x8019
 /* 06FF78 8006F378 AC22D220 */  sw    $v0, %lo(D_8018D220)($at)
@@ -332,7 +332,7 @@ glabel L8006F3E8
 /* 06FFE8 8006F3E8 3C040F0D */  lui   $a0, %hi(gTextureExhaust2) # $a0, 0xf0d
 /* 06FFEC 8006F3EC 24846418 */  addiu $a0, %lo(gTextureExhaust2) # addiu $a0, $a0, 0x6418
 /* 06FFF0 8006F3F0 240504F4 */  li    $a1, 1268
-/* 06FFF4 8006F3F4 0C0AA13D */  jal   func_802A84F4
+/* 06FFF4 8006F3F4 0C0AA13D */  jal   dma_textures
 /* 06FFF8 8006F3F8 24060C00 */   li    $a2, 3072
 /* 06FFFC 8006F3FC 3C018019 */  lui   $at, %hi(D_8018D220) # $at, 0x8019
 /* 070000 8006F400 AC22D220 */  sw    $v0, %lo(D_8018D220)($at)
@@ -367,7 +367,7 @@ glabel L8006F470
 /* 070070 8006F470 3C040F0D */  lui   $a0, %hi(gTextureExhaust0) # $a0, 0xf0d
 /* 070074 8006F474 24845B14 */  addiu $a0, %lo(gTextureExhaust0) # addiu $a0, $a0, 0x5b14
 /* 070078 8006F478 24050479 */  li    $a1, 1145
-/* 07007C 8006F47C 0C0AA13D */  jal   func_802A84F4
+/* 07007C 8006F47C 0C0AA13D */  jal   dma_textures
 /* 070080 8006F480 24060C00 */   li    $a2, 3072
 /* 070084 8006F484 3C018019 */  lui   $at, %hi(D_8018D220) # $at, 0x8019
 /* 070088 8006F488 AC22D220 */  sw    $v0, %lo(D_8018D220)($at)
@@ -412,7 +412,7 @@ glabel L8006F50C
 /* 07011C 8006F51C A5190000 */  sh    $t9, ($t0)
 /* 070120 8006F520 248470CC */  addiu $a0, %lo(gTextureExhaust5) # addiu $a0, $a0, 0x70cc
 /* 070124 8006F524 24050443 */  li    $a1, 1091
-/* 070128 8006F528 0C0AA13D */  jal   func_802A84F4
+/* 070128 8006F528 0C0AA13D */  jal   dma_textures
 /* 07012C 8006F52C 24061000 */   li    $a2, 4096
 /* 070130 8006F530 3C018019 */  lui   $at, %hi(D_8018D220) # $at, 0x8019
 /* 070134 8006F534 AC22D220 */  sw    $v0, %lo(D_8018D220)($at)
@@ -436,7 +436,7 @@ glabel L8006F578
 /* 070178 8006F578 3C040F0D */  lui   $a0, %hi(gTextureExhaust1) # $a0, 0xf0d
 /* 07017C 8006F57C 24845F90 */  addiu $a0, %lo(gTextureExhaust1) # addiu $a0, $a0, 0x5f90
 /* 070180 8006F580 24050485 */  li    $a1, 1157
-/* 070184 8006F584 0C0AA13D */  jal   func_802A84F4
+/* 070184 8006F584 0C0AA13D */  jal   dma_textures
 /* 070188 8006F588 24060C00 */   li    $a2, 3072
 /* 07018C 8006F58C 3C018019 */  lui   $at, %hi(D_8018D220) # $at, 0x8019
 /* 070190 8006F590 AC22D220 */  sw    $v0, %lo(D_8018D220)($at)

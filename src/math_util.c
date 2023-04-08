@@ -610,7 +610,7 @@ void func_802B6434(Vec3f arg0, Mat4 arg1) {
     arg0[2] = temp_f6;
 }
 
-UNUSED void func_802B64B0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+UNUSED void func_802B64B0(UNUSED s32 arg0, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
 
 }
 
@@ -936,7 +936,7 @@ void func_802B71CC(Mat4 arg0, Mat4 arg1, Mat4 arg2) {
     product[3][1] = (arg1[3][0] * arg2[0][1]) + (arg1[3][1] * arg2[1][1]) + (arg1[3][2] * arg2[2][1]) + (arg1[3][3] * arg2[3][1]);
     product[3][2] = (arg1[3][0] * arg2[0][2]) + (arg1[3][1] * arg2[1][2]) + (arg1[3][2] * arg2[2][2]) + (arg1[3][3] * arg2[3][2]);
     product[3][3] = (arg1[3][0] * arg2[0][3]) + (arg1[3][1] * arg2[1][3]) + (arg1[3][2] * arg2[2][3]) + (arg1[3][3] * arg2[3][3]);
-    func_802B5398(arg0, product, 0x10);
+    func_802B5398((s32 *)arg0, (s32 *)product, 0x10);
 }
 
 #ifdef MIPS_TO_C

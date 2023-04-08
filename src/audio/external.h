@@ -140,6 +140,7 @@ void func_800CA49C(u8);
 void func_800CAACC(u8);
 void func_800CB134();
 void func_800CB2C4(void);
+void func_800C5CB8(void);
 
 // Based on SM64, this should be part of data.c's BSS section. Somehow.
 extern s32 gAudioErrorFlags;

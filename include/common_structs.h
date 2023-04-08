@@ -148,11 +148,17 @@ typedef struct {
 // This struct is almost identical to the GBI Vtx_t type,
 // except that its missing the "flag" member.
 typedef struct {
-    s16        ob[3];    /* x, y, z */
-    s16        tc[2];    /* texture coord */
-    u8    ca[4];    /* color & alpha */
+    s16 ob[3];    /* x, y, z */
+    s16 tc[2];    /* texture coord */
+    u8  ca[4];    /* color & alpha */
 
 } mk64_Vtx;
+
+typedef struct {
+    s16 ob[3];    /* x, y, z */
+    s16 tc[2];    /* texture coord */
+    s8  n[3];    /* color & alpha */
+} mk64_Vtx_n;
 
 /*
 This struct has been copied (with only minor modifications) from
@@ -291,7 +297,7 @@ typedef struct {
     /* 0x010C */ s16 unk_10C;
     /* 0x010E */ char unk_10E[0x2];
     /* 0x0110 */ UnkActorInner unk_110;
-    /* 0x0150 */ f32 unk_150[9];
+    /* 0x0150 */ Mat3 unk_150;
     /* 0x0174 */ Mat3 unk_174;
     /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];
     /* 0x01F8 */ f32 unk_1F8;

@@ -5,6 +5,8 @@
 
 /* Function Prototypes */
 
+void func_802A4A0C(Vtx*, struct UnkStruct_800DC5EC*, s32, s32, f32*);
+
 void func_802A3730(struct UnkStruct_800DC5EC*);
 void func_802A38AC();
 void func_802A38B4();
@@ -24,7 +26,7 @@ void set_viewport();
 void select_framebuffer();
 void func_802A4300();
 void func_802A450C(Vtx*);
-void func_802A487C(Vtx*, s32, s32, s32, s32);
+void func_802A487C(Vtx*, struct UnkStruct_800DC5EC*, s32, s32, f32*);
 void func_802A4D18();
 void func_802A4EF4();
 void func_802A5004();
@@ -65,7 +67,6 @@ extern s32 D_800E86A4;
 extern s32 gMenuSelectionFromQuit;
 
 extern u32 D_801502B4;
-extern uintptr_t gPhysicalFramebuffers[3];
 extern u16 sRenderingFramebuffer;
 extern s32 D_800DC5D0;
 extern s32 D_800DC5D4;

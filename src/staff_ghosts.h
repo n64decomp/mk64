@@ -5,6 +5,7 @@
 #include "common_structs.h"
 #include <types.h>
 
+void func_80005B18(void);
 void func_80004EF0();
 void func_80004FB0();
 void func_80004FF8();
