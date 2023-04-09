@@ -5,6 +5,7 @@
 
 void  nullify_displaylist(uintptr_t);
 void  func_802AAAAC(UnkActorInner*);
+f32   func_802AAB4C(Player*);
 s8    func_802ABD10(u16);
 s16   func_802ABD40(u16);
 s16   func_802ABD7C(u16);
