@@ -93,6 +93,11 @@ extern u8 kalimari_desert_dls[];
 extern u8 sherbet_land_dls[];
 extern Gfx wario_stadium_dls[];
 
+extern Gfx D_06009228[];
+extern Gfx D_060164B8[];
+extern Gfx D_06019578[];
+extern Gfx D_090001D0[];
+
 extern Gfx dks_jungle_parkway_dls[];
 extern Gfx D_060071B0[];
 extern Gfx D_060076A0[];
