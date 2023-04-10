@@ -454,7 +454,14 @@ SECTIONS
    /* compressed kart textures and palettes */
    BEGIN_SEG(kart_textures, 0x0F000000)
    {
-      BUILD_DIR/data/kart_textures.o(.data);
+      BUILD_DIR/assets/karts/luigi/kart.o(.data);
+      BUILD_DIR/assets/karts/mario/kart.o(.data);
+      BUILD_DIR/assets/karts/yoshi/kart.o(.data);
+      BUILD_DIR/assets/karts/peach/kart.o(.data);
+      BUILD_DIR/assets/karts/wario/kart.o(.data);
+      BUILD_DIR/assets/karts/toad/kart.o(.data);
+      BUILD_DIR/assets/karts/donkeykong/kart.o(.data);
+      BUILD_DIR/assets/karts/bowser/kart.o(.data);
       BUILD_DIR/courses/staff_ghosts.inc.o(.data);
       . = ALIGN(0x10);
    }
