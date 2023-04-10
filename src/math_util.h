@@ -15,6 +15,7 @@
 #define sqr(x) ((x) * (x))
 
 void func_802B4FF0();
+void func_802B5794(Mat4, Vec3f, Vec3f);
 s32  func_802B4FF8(Mat4, s32);
 f32  func_802B51E8(Vec3f, Vec3f);
 u32  func_802B5224(Vec3f, Vec3f);

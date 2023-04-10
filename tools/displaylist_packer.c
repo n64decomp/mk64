@@ -66,7 +66,6 @@ void pack(FILE *input_file, FILE *output_file) {
     uint32_t p5;
     uint32_t p6;
     uint16_t p7;
-    uint32_t i;
     uint64_t compare;
     
 

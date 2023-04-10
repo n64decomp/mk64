@@ -5,6 +5,8 @@
 #include "textures.h"
 #include "main.h"
 
+extern u32 _course_mario_raceway_dl_mio0SegmentRomStart[];
+
 /* File specific types */
 
 typedef struct {
@@ -285,6 +287,8 @@ extern Gfx *D_800E84CC[];
 extern Gfx *D_800E84EC[];
 extern Gfx *D_800E850C[];
 
+extern s32 D_8018D9BC;
+
 extern s16 gGlyphDisplayWidth[]; // D_800EF690
 extern RGBA16 D_800E74A8[5];
 extern RGBA16 D_800E74D0[3];
@@ -341,9 +345,9 @@ extern s8  gTextColor;                                    // D_8018E860
 extern s8  D_8018ED91;
 extern s8  D_8018E838[];
 extern s32 D_8018E840[];
-extern s32 D_8018E850;
+extern s32 D_8018E850[];
 extern s32 D_8018E854;
-extern s32 D_8018E858;
+extern s32 D_8018E858[];
 extern s32 D_8018E85C;
 extern s32 D_8018EDC0;
 extern f32 D_8018EDC4;

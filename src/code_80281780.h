@@ -6,10 +6,8 @@
 void func_80281780(void);
 s32 func_80281880(s32 arg0);
 void func_802818BC(void);
-void load_ending_sequence_royalraceway(void);
+void load_ceremony_cutscene(void);
 
-
-extern int decompress_segments();
 extern u32 set_segment_base_addr();
 
 extern void func_80093E60();
@@ -72,4 +70,4 @@ extern s32 _data_825800SegmentRomStart;
 extern s32 _course_banshee_boardwalk_dl_mio0SegmentRomStart;
 extern s32 _course_yoshi_valley_dl_mio0SegmentRomStart;
 
-#endif
+#endif // CODE_80281780_H

@@ -1104,7 +1104,7 @@ void update_gamestate(void) {
         case ENDING_SEQUENCE:
             gCurrentlyLoadedCourseId = COURSE_NULL;
             init_seg_80280000();
-            load_ending_sequence_royalraceway();
+            load_ceremony_cutscene();
             break;
         case CREDITS_SEQUENCE:
             gCurrentlyLoadedCourseId = COURSE_NULL;
