@@ -106,7 +106,7 @@ u8 gControllerBits;
 struct UnkStruct_8015F584 D_8014F110[1024];
 u16 gNumActors;
 u16 D_80150112;
-s32 D_80150114;
+s32 gTickSpeed;
 f32 D_80150118;
 u16 wasSoftReset;
 u16 D_8015011E;
@@ -554,13 +554,13 @@ void race_logic_loop(void) {
 
     switch(gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            D_80150114 = 2;
+            gTickSpeed = 2;
             staff_ghosts_loop();
             if (D_800DC5FC == 0) {
 
-                for (i = 0; i < D_80150114; i++) {
+                for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E) {
-                        gCourseTimer += 0.01666666;
+                        gCourseTimer += 0.01666666; // 1 / 60
                     }
                     func_802909F0();
                     evaluate_player_collision();
@@ -618,12 +618,12 @@ void race_logic_loop(void) {
 
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                D_80150114 = 3;
+                gTickSpeed = 3;
             } else {
-                D_80150114 = 2;
+                gTickSpeed = 2;
             }
             if (D_800DC5FC == 0) {
-                    for (i = 0; i < D_80150114; i++) {
+                    for (i = 0; i < gTickSpeed; i++) {
                         if (D_8015011E != 0) {
                             gCourseTimer += 0.01666666;
                         }
@@ -663,13 +663,13 @@ void race_logic_loop(void) {
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
 
             if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                D_80150114 = 3;
+                gTickSpeed = 3;
             } else {
-                D_80150114 = 2;
+                gTickSpeed = 2;
             }
 
             if (D_800DC5FC == 0) {
-                    for (i = 0; i < D_80150114; i++) {
+                    for (i = 0; i < gTickSpeed; i++) {
                         if (D_8015011E != 0) {
                             gCourseTimer += 0.01666666;
                         }
@@ -714,10 +714,10 @@ void race_logic_loop(void) {
                     case COURSE_MOO_MOO_FARM:
                     case COURSE_SKYSCRAPER:
                     case COURSE_DK_JUNGLE:
-                        D_80150114 = 3;
+                        gTickSpeed = 3;
                         break;
                     default:
-                        D_80150114 = 2;
+                        gTickSpeed = 2;
                         break;
                 }
             } else {
@@ -726,18 +726,18 @@ void race_logic_loop(void) {
                     case COURSE_BLOCK_FORT:
                     case COURSE_DOUBLE_DECK:
                     case COURSE_BIG_DONUT:
-                        D_80150114 = 2;
+                        gTickSpeed = 2;
                         break;
                     case COURSE_DK_JUNGLE:
-                        D_80150114 = 4;
+                        gTickSpeed = 4;
                         break;
                     default:
-                        D_80150114 = 3;
+                        gTickSpeed = 3;
                         break;
                 }
             }
             if (D_800DC5FC == 0) {
-                for (i = 0; i < D_80150114; i++) {
+                for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E != 0) {
                         gCourseTimer += 0.01666666;
                     }
@@ -1138,7 +1138,7 @@ void thread5_game_loop(UNUSED void *arg) {
     while(TRUE) {
         func_800CB2C4();
 
-        // Update the gamestate if it has changed.
+        // Update the gamestate if it has changed (racing, menus, credits, etc.).
         if (gGamestateNext != gGamestate) {
             gGamestate = gGamestateNext;
             update_gamestate();
