@@ -78,7 +78,7 @@ void func_802818BC(void) {
     }
 }
 
-void load_ending_sequence_royalraceway(void) {
+void load_ceremony_cutscene(void) {
     Camera *camera = &cameras[0];
 
     gCurrentCourseId = COURSE_ROYAL_RACEWAY;
@@ -100,8 +100,8 @@ void load_ending_sequence_royalraceway(void) {
     gModeSelection = GRAND_PRIX;
     load_course(gCurrentCourseId);
     D_8015F730 = (s32) gNextFreeMemoryAddress;
-    set_segment_base_addr(0xB, (void *) decompress_segments(&_data_821D10SegmentRomStart, &_data_825800SegmentRomStart));
-    set_segment_base_addr(6, (void *) decompress_segments(&_course_banshee_boardwalk_dl_mio0SegmentRomStart, &_course_yoshi_valley_dl_mio0SegmentRomStart));
+    set_segment_base_addr(0xB, (void *) decompress_segments((u8 *) &_data_821D10SegmentRomStart, (u8 *) &_data_825800SegmentRomStart));
+    set_segment_base_addr(6, (void *) decompress_segments((u8 *) &_course_banshee_boardwalk_dl_mio0SegmentRomStart, (u8 *) &_course_yoshi_valley_dl_mio0SegmentRomStart));
     D_8015F8E4 = -2000.0f;
 
     D_8015F6EA = -0x15A1;

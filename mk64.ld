@@ -326,6 +326,8 @@ SECTIONS
       BUILD_DIR/asm/bss_MainSeg.o(.bss);
       BUILD_DIR/src/camera.o(.bss);
       BUILD_DIR/asm/bss_8001C4D0.o(.bss);
+      BUILD_DIR/src/code_80091750.o(.bss);
+      BUILD_DIR/asm/bss_8001C4D0_1.o(.bss);
       BUILD_DIR/src/code_800AF9B0.o(.bss);
       BUILD_DIR/src/menus.o(.bss);
       BUILD_DIR/asm/bss_main_audio.o(.bss);

@@ -87,6 +87,10 @@ extern u8 *gNmiUnknown5;
 extern u8 *gNmiUnknown6;
 extern s32 gScreenModeSelection;
 
+extern OSContStatus gControllerStatuses[];
+extern struct Controller *gControllerFive;
+extern u8 gControllerBits;
+
 extern s16 sIsController1Unplugged;
 
 extern u64 rspbootTextStart[], rspbootTextEnd[];

@@ -55,7 +55,7 @@ struct UnkStruct_800DC5EC {
     /* 0x28 */ s16 cameraHeight;
     /* 0x2A */ s16 unk;
     /* 0x2C */ s16 screenWidth;
-    /* 0x2F */ s16 screenHeight;
+    /* 0x2E */ s16 screenHeight;
     /* 0x30 */ s16 screenStartX;
     /* 0x32 */ s16 screenStartY;
     s16 unk3C;

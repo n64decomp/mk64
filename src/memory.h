@@ -48,6 +48,7 @@ void *get_segment_base_addr(s32);
 void *segmented_to_virtual(const void *);
 void  move_segment_table_to_dmem();
 void  initialize_memory_pool(uintptr_t, uintptr_t);
+void *decompress_segments(u8*, u8*);
 void *allocate_memory(u32);
 void *load_data(uintptr_t, uintptr_t);
 void  func_802A7D54(s32, s32);
