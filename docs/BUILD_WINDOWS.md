@@ -1,5 +1,7 @@
 ## Compiling mk64 Decomp In Windows
 
+***This method is not recommend but is the only solution for W7/W8. WSL is the path of least resistance, use that not this***
+
 The extraneous and convoluted process to building mk64 decomp on Windows begins with disabling your anti-virus program or adding an exception to the mk64 decomp folder and the msys2 installation folder. 
 Please note that this action may impact the security of your system. Prior to proceeding, make sure to understand the increased security risks that may result from this step. Nobody except you, is responsible and liable for your system and its security.
 
@@ -58,6 +60,14 @@ mk64 requires the following compiler binaries: `as1, cc, cfe, copt, ugen, ujoin,
 In `MSYS2 MinGW x64` run in the directory `mk64/tools/ido5.3_recomp/`:
 ```
 ./recomp ../ido5.3_compiler/usr/lib/as1 > as1_c.c
+./recomp ../ido5.3_compiler/usr/lib/cc > cc_c.c
+./recomp ../ido5.3_compiler/usr/lib/cfe > cfe_c.c
+./recomp ../ido5.3_compiler/usr/lib/copt > copt_c.c
+./recomp ../ido5.3_compiler/usr/lib/ugen > ugen_c.c
+./recomp ../ido5.3_compiler/usr/lib/ujoin > ujoin_c.c
+./recomp ../ido5.3_compiler/usr/lib/uld > uld_c.c
+./recomp ../ido5.3_compiler/usr/lib/umerge > umerge_c.c
+./recomp ../ido5.3_compiler/usr/lib/uopt > uopt_c.c
 ```
 If you get an assertion failed error. Then the directory to the compiler is incorrect.
 The binary for cc is in `/ido5.3_compiler/usr/bin/` so do:
@@ -68,6 +78,14 @@ The binary for cc is in `/ido5.3_compiler/usr/bin/` so do:
 In `MSYS2 MSYS` run in the directory `mk64/tools/ido5.3_recomp/`:
 ```
 gcc libc_impl.c as1_c.c -o as1 -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
+gcc libc_impl.c cc_c.c -o cc -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
+gcc libc_impl.c cfe_c.c -o cfe -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
+gcc libc_impl.c copt_c.c -o copt -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
+gcc libc_impl.c ugen_c.c -o ugen -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
+gcc libc_impl.c ujoin_c.c -o ujoin -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
+gcc libc_impl.c uld_c.c -o uld -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
+gcc libc_impl.c umerge_c.c -o umerge -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
+gcc libc_impl.c uopt_c.c -o uopt -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
 ```
 `-O2` is an optional optimization flag.  
 
