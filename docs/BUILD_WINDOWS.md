@@ -31,6 +31,13 @@ pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-capstone pkgconf make python3 gi
 pacman -S gcc
 ```
 
+### Step 3.5: Rename include in recomp.cpp
+For some reason on Windows capstone is inside of a capstone folder.
+```
+#include <capstone/capstone.h>
+```
+
+
 ### Step 4: Get Binutils
 Download and install the mips64 tool chain:  
 https://github.com/N64-tools/mips64-gcc-toolchain
