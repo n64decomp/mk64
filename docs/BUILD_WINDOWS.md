@@ -1,6 +1,9 @@
 ## Compiling mk64 Decomp In Windows
 
-***This method is not recommend but is the only solution for W7/W8. WSL is the path of least resistance, use that not this***
+***This method is not recommended nor supported. However, it is the only solution to build in W7/W8. WSL is the path of least resistance, use that not this***
+
+> Building decomp using msys on Windows is a journey..  A journey akin to crawling over broken glass in the dark.
+- leogames
 
 The extraneous and convoluted process to building mk64 decomp on Windows begins with disabling your anti-virus program or adding an exception to the mk64 decomp folder and the msys2 installation folder. 
 Please note that this action may impact the security of your system. Prior to proceeding, make sure to understand the increased security risks that may result from this step. Nobody except you, is responsible and liable for your system and its security.
