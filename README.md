@@ -80,20 +80,27 @@ Some menu textures are compressed using a format called tkmk00. A byte-matching 
 	mk64
 	├── asm: Handwritten assembly code, rom header and boot
 	│   ├── non_matchings: asm for non-matching sections
-	│   └── audio: assembly code
-	├── bin: Kart textures, course vertex, and textures
+	│   └── os: OS related assembly code
+	├── bin: Data needing import; kart textures, and textures.
+	├── courses: course, model, & DL data, course table, staff ghosts.
 	├── build: Output directory
 	├── data: Data, text, audio banks, and instrument sets.
+	├── docs: Build guides
 	├── include: header files
 	├── courses: level scripts, geo layout, offsets and display lists
 	├── lib: SDK library code
 	├── music: sequences
 	├── src: C source code for the game
-	│   └── audio: sample tables and audio source
+	│   ├── audio: sample tables and audio source
 	│   └── os: libultra
 	├── textures: texture data, bitmaps
+	|   ├── common: textures common to many courses
+	|   ├── courses: course specific textures
+	|   ├── crash screen: crash screen font image
 	│   ├── raw: raw textures
-  	│   └── standalone: whole textures
+  	│   ├── standalone: whole textures
+	|   ├── startup_logo: reflection map
+	|   └── trophy: ceremony cutscene podium and trophy textures
 	└── tools: build tools
 
 ## Contributing
