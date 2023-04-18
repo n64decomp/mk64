@@ -32,6 +32,7 @@
 #include "render_courses.h"
 #include "actors.h"
 #include "staff_ghosts.h"
+#include <defines.h>
 
 // Declarations (not in this file)
 void func_80091B78(void);
@@ -59,7 +60,7 @@ struct Controller *gControllerOne = &gControllers[0];
 struct Controller *gControllerTwo = &gControllers[1];
 struct Controller *gControllerThree = &gControllers[2];
 struct Controller *gControllerFour = &gControllers[3];
-struct Controller *gControllerFive = &gControllers[4];
+struct Controller *gControllerFive = &gControllers[4]; // All physical controllers combined.`
 struct Controller *gControllerSix = &gControllers[5];
 struct Controller *gControllerSeven = &gControllers[6];
 struct Controller *gControllerEight = &gControllers[7];
@@ -106,7 +107,7 @@ u8 gControllerBits;
 struct UnkStruct_8015F584 D_8014F110[1024];
 u16 gNumActors;
 u16 D_80150112;
-s32 D_80150114;
+s32 gTickSpeed;
 f32 D_80150118;
 u16 wasSoftReset;
 u16 D_8015011E;
@@ -167,7 +168,7 @@ u16 D_800DC510 = 0;
 u16 D_800DC514 = 0;
 u16 D_800DC518 = 0;
 u16 D_800DC51C = 0;
-u16 gEnableDebugMode = 0;
+u16 gEnableDebugMode = DEBUG_MODE;
 s32 gGamestateNext = 7; // = COURSE_DATA_MENU?;
 UNUSED s32 D_800DC528 = 1;
 s32 gActiveScreenMode = SCREEN_MODE_1P;
@@ -554,13 +555,13 @@ void race_logic_loop(void) {
 
     switch(gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            D_80150114 = 2;
+            gTickSpeed = 2;
             staff_ghosts_loop();
             if (D_800DC5FC == 0) {
 
-                for (i = 0; i < D_80150114; i++) {
+                for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E) {
-                        gCourseTimer += 0.01666666;
+                        gCourseTimer += 0.01666666; // 1 / 60
                     }
                     func_802909F0();
                     evaluate_player_collision();
@@ -581,36 +582,36 @@ void race_logic_loop(void) {
             profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
             D_8015F788 = 0;
             func_802A59A4();
-            if (gEnableDebugMode == 0) {
-                D_800DC514 = 0;
+            if (!gEnableDebugMode) {
+                D_800DC514 = FALSE;
             } else {
-                if (D_800DC514 != 0) {
+                if (D_800DC514) {
 
                     if ((gControllerOne->buttonPressed & R_TRIG) &&
                         (gControllerOne->button & A_BUTTON) &&
                         (gControllerOne->button & B_BUTTON)) {
-                            D_800DC514 = 0;
+                            D_800DC514 = FALSE;
                     }
 
                     rotY = camera1->rot[1];
-                    D_801625E8 = D_800DC5EC->pathCounter;
+                    gDebugPathCount = D_800DC5EC->pathCounter;
                     if (rotY < 0x2000) {
-                        func_80057A50(40, 100, "SOUTH  ", D_801625E8);
+                        func_80057A50(40, 100, "SOUTH  ", gDebugPathCount);
                     } else if (rotY < 0x6000) {
-                        func_80057A50(40, 100, "EAST   ", D_801625E8);
+                        func_80057A50(40, 100, "EAST   ", gDebugPathCount);
                     } else if (rotY < 0xA000) {
-                        func_80057A50(40, 100, "NORTH  ", D_801625E8);
+                        func_80057A50(40, 100, "NORTH  ", gDebugPathCount);
                     } else if (rotY < 0xE000) {
-                        func_80057A50(40, 100, "WEST   ", D_801625E8);
+                        func_80057A50(40, 100, "WEST   ", gDebugPathCount);
                     } else {
-                        func_80057A50(40, 100, "SOUTH  ", D_801625E8);
+                        func_80057A50(40, 100, "SOUTH  ", gDebugPathCount);
                     }
 
                 } else {
                     if ((gControllerOne->buttonPressed & L_TRIG) &&
                         (gControllerOne->button & A_BUTTON) &&
                         (gControllerOne->button & B_BUTTON)) {
-                            D_800DC514 = 1;
+                            D_800DC514 = TRUE;
                     }
                 }
             }
@@ -618,12 +619,12 @@ void race_logic_loop(void) {
 
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                D_80150114 = 3;
+                gTickSpeed = 3;
             } else {
-                D_80150114 = 2;
+                gTickSpeed = 2;
             }
             if (D_800DC5FC == 0) {
-                    for (i = 0; i < D_80150114; i++) {
+                    for (i = 0; i < gTickSpeed; i++) {
                         if (D_8015011E != 0) {
                             gCourseTimer += 0.01666666;
                         }
@@ -663,13 +664,13 @@ void race_logic_loop(void) {
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
 
             if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                D_80150114 = 3;
+                gTickSpeed = 3;
             } else {
-                D_80150114 = 2;
+                gTickSpeed = 2;
             }
 
             if (D_800DC5FC == 0) {
-                    for (i = 0; i < D_80150114; i++) {
+                    for (i = 0; i < gTickSpeed; i++) {
                         if (D_8015011E != 0) {
                             gCourseTimer += 0.01666666;
                         }
@@ -714,10 +715,10 @@ void race_logic_loop(void) {
                     case COURSE_MOO_MOO_FARM:
                     case COURSE_SKYSCRAPER:
                     case COURSE_DK_JUNGLE:
-                        D_80150114 = 3;
+                        gTickSpeed = 3;
                         break;
                     default:
-                        D_80150114 = 2;
+                        gTickSpeed = 2;
                         break;
                 }
             } else {
@@ -726,18 +727,18 @@ void race_logic_loop(void) {
                     case COURSE_BLOCK_FORT:
                     case COURSE_DOUBLE_DECK:
                     case COURSE_BIG_DONUT:
-                        D_80150114 = 2;
+                        gTickSpeed = 2;
                         break;
                     case COURSE_DK_JUNGLE:
-                        D_80150114 = 4;
+                        gTickSpeed = 4;
                         break;
                     default:
-                        D_80150114 = 3;
+                        gTickSpeed = 3;
                         break;
                 }
             }
             if (D_800DC5FC == 0) {
-                for (i = 0; i < D_80150114; i++) {
+                for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E != 0) {
                         gCourseTimer += 0.01666666;
                     }
@@ -793,10 +794,10 @@ void race_logic_loop(void) {
         break;
     }
 
-    if (gEnableDebugMode == 0) {
+    if (!gEnableDebugMode) {
         gEnableResourceMeters = 0;
     } else {
-        if (gEnableResourceMeters != 0) {
+        if (gEnableResourceMeters) {
             resource_display();
             if ((!(gControllerOne->button & L_TRIG)) &&
                 (gControllerOne->button & R_TRIG) &&
@@ -1138,7 +1139,7 @@ void thread5_game_loop(UNUSED void *arg) {
     while(TRUE) {
         func_800CB2C4();
 
-        // Update the gamestate if it has changed.
+        // Update the gamestate if it has changed (racing, menus, credits, etc.).
         if (gGamestateNext != gGamestate) {
             gGamestate = gGamestateNext;
             update_gamestate();

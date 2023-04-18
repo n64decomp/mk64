@@ -14,10 +14,9 @@
 #include "code_80005FD0.h"
 #include "code_802AAA70.h"
 
-// unk4 is buttonDown?
-void func_80281780(void) {
-    if (gEnableDebugMode != 0) {
-        if (gControllerOne->button & 0x0F0F) {
+void debug_switch_character_ceremony_cutscene(void) {
+    if (gEnableDebugMode) {
+        if (gControllerOne->button & HOLD_ALL_DPAD_AND_C_BUTTONS) {
             // Allows to switch character in debug mode?
             if (gControllerOne->button & U_CBUTTONS) {
                 gCharacterSelections[0] = LUIGI;
@@ -42,6 +41,7 @@ void func_80281780(void) {
             } else {
                 gCharacterSelections[0] = MARIO;
             }
+            // D_80284ED0 appears to be unused.
             bcopy(&D_80284ED0, &gCharacterIdByGPOverallRank, 8);
         }
     }
@@ -132,7 +132,7 @@ void load_ceremony_cutscene(void) {
     func_802AF5AC(0x70023F8, 1);
     func_802AF5AC(0x7002478, 1);
     func_80295C6C();
-    func_80281780();
+    debug_switch_character_ceremony_cutscene();
     func_802818BC();
     func_8003D080();
     func_8006E9C0();

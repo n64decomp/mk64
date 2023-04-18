@@ -3,7 +3,7 @@
 
 /* Function Prototypes */
 
-void func_80281780(void);
+void debug_switch_character_ceremony_cutscene(void);
 s32 func_80281880(s32 arg0);
 void func_802818BC(void);
 void load_ceremony_cutscene(void);

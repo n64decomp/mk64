@@ -121,7 +121,7 @@ extern u16 gIsInQuitToMenuTransition;
 
 
 extern s32 D_8015F788;
-extern s16 D_801625E8;
+extern s16 gDebugPathCount;
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
 
 extern u16 D_800DC5B0;

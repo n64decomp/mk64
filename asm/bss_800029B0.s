@@ -250,7 +250,7 @@ glabel gActorList
 glabel D_80162578
 .skip 112
 
-glabel D_801625E8
+glabel gDebugPathCount
 .skip 2
 
 glabel sIsController1Unplugged
