@@ -535,7 +535,7 @@ void func_8028EC98(s32 arg0) {
 
 }
 
-void func_8028EDA8(void) {
+void start_race(void) {
     s32 i;
 
     D_8015011E = -1;
@@ -738,11 +738,11 @@ void func_8028F474(void) {
 }
 
 void func_8028F4E8(void) {
-    if (gEnableDebugMode != 0) {
-        if (((gControllerFive->button & 0x10) != 0) &&
-            ((gControllerFive->button & 0x20) != 0) &&
-            ((gControllerFive->button & 0x8000) != 0) &&
-            ((gControllerFive->button & 0x4000) != 0)) {
+    if (gEnableDebugMode) {
+        if (((gControllerFive->button & R_TRIG) != 0) &&
+            ((gControllerFive->button & L_TRIG) != 0) &&
+            ((gControllerFive->button & A_BUTTON) != 0) &&
+            ((gControllerFive->button & B_BUTTON) != 0)) {
 
             func_800CA330(0x19);
             func_800CA388(0x19);
@@ -1040,11 +1040,11 @@ void func_8028FCBC(void) {
             func_8028F4E8();
             break;
         case 2:
-            if (D_800DC51C != 0) {
-                func_8028EDA8();
+            if (D_800DC51C) {
+                start_race();
             }
-            if ((gEnableDebugMode != 0) && ((gControllerFive->buttonPressed & 0x2000) != 0)) {
-                func_8028EDA8();
+            if ((gEnableDebugMode) && (gControllerFive->buttonPressed & Z_TRIG)) {
+                start_race();
             }
             func_8028F4E8();
             break;

@@ -1675,7 +1675,7 @@ void func_80095574(void) {
             debug_print_str2(0x00000046, 0x00000096, "*");
             break;
         }
-        if (gEnableDebugMode != 0) {
+        if (gEnableDebugMode) {
             debug_print_str2(0x000000AA, 0x00000064, "on");
         } else {
             debug_print_str2(0x000000AA, 0x00000064, "off");

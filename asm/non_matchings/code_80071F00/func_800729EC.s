@@ -1,7 +1,7 @@
 glabel func_800729EC
 /* 0735EC 800729EC 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 0735F0 800729F0 AFBF0014 */  sw    $ra, 0x14($sp)
-/* 0735F4 800729F4 0C0A3B6A */  jal   func_8028EDA8
+/* 0735F4 800729F4 0C0A3B6A */  jal   start_race
 /* 0735F8 800729F8 AFA40018 */   sw    $a0, 0x18($sp)
 /* 0735FC 800729FC 0C01C922 */  jal   func_80072488
 /* 073600 80072A00 8FA40018 */   lw    $a0, 0x18($sp)

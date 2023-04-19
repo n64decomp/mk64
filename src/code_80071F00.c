@@ -367,7 +367,7 @@ void func_800729EC(s32 arg0) {
     s8 temp_v1;
     struct_8018CA70_entry *var_v0;
 
-    func_8028EDA8();
+    start_race();
     func_80072488(arg0);
     D_8018D2BC = 1;
     D_8018D2A4 = 1;
