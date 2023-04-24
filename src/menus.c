@@ -1782,7 +1782,7 @@ void course_select_menu_act(struct Controller *arg0, u16 arg1) {
 void func_800B3F74(s32 menuSelection) {
     s32 i;
 
-    gDebugMenuSelection = DEBUG_MENU_DISABLED;
+    gDebugMenuSelection = DEBUG_MENU;
     gMenuTimingCounter = 0;
     gMenuDelayTimer = 0;
     D_8018EE08 = 0;

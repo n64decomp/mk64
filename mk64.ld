@@ -24,7 +24,7 @@ OUTPUT_ARCH (mips)
    END_SEG(name##_mio0)
 
 #define COURSE_DATA_SEG(dir, name) \
-   BEGIN_SEG(name##_mio0, 0x0) \
+   BEGIN_SEG(name##_mio0, 0x06000000) \
    { \
       BUILD_DIR/courses/dir/course_data.inc.mio0.o(.data); \
       . = ALIGN(0x10); \
