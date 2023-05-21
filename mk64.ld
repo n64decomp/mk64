@@ -96,7 +96,7 @@ SECTIONS
       BUILD_DIR/asm/tkmk00_decode.o(.text);
       BUILD_DIR/src/gbiMacro.o(.text);
       BUILD_DIR/src/math_util_2.o(.text);
-      BUILD_DIR/src/code_800431B0.o(.text);
+      BUILD_DIR/src/hud_renderer.o(.text);
       BUILD_DIR/src/code_80057C60.o(.text);
       BUILD_DIR/src/code_8006E9C0.o(.text);
       BUILD_DIR/src/code_80071F00.o(.text);
@@ -282,7 +282,7 @@ SECTIONS
       BUILD_DIR/src/code_80027D00.o(.rodata);
       BUILD_DIR/src/spawn_players.o(.rodata);
       BUILD_DIR/src/code_8003DC40.o(.rodata);
-      BUILD_DIR/src/code_800431B0.o(.rodata);
+      BUILD_DIR/src/hud_renderer.o(.rodata);
       BUILD_DIR/src/code_80057C60.o(.rodata);
       BUILD_DIR/src/code_8006E9C0.o(.rodata);
       BUILD_DIR/src/code_80071F00.o(.rodata);

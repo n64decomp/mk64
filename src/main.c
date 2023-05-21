@@ -17,7 +17,7 @@
 #include "profiler.h"
 #include "race_logic.h"
 #include "skybox_and_splitscreen.h"
-#include "code_800431B0.h"
+#include "hud_renderer.h"
 #include "code_8008C1D0.h"
 #include "code_80281780.h"
 #include "audio/external.h"

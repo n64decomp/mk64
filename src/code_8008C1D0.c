@@ -8,7 +8,7 @@
 #include "code_80005FD0.h"
 #include "code_8001F980.h"
 #include "code_80027D00.h"
-#include "code_800431B0.h"
+#include "hud_renderer.h"
 #include "code_80057C60.h"
 #include "code_8008C1D0.h"
 #include "audio/external.h"

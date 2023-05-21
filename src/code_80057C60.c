@@ -9,7 +9,7 @@
 #include "math_util_2.h"
 #include "code_80005FD0.h"
 #include "code_8001F980.h"
-#include "code_800431B0.h"
+#include "hud_renderer.h"
 #include "code_80057C60.h"
 #include "code_80071F00.h"
 #include "code_80086E70.h"

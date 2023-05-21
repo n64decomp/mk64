@@ -6,7 +6,7 @@
 #include "variables.h"
 #include "common_textures.h"
 #include "code_8001F980.h"
-#include "code_800431B0.h"
+#include "hud_renderer.h"
 #include "code_80280650.h"
 
 void func_80280650(void) {

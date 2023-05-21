@@ -1,5 +1,5 @@
-#ifndef CODE_800431B0_H
-#define CODE_800431B0_H
+#ifndef hud_renderer_H
+#define hud_renderer_H
 
 #include "common_structs.h"
 

@@ -4,7 +4,7 @@
 #include "main.h"
 #include "math_util.h"
 #include "skybox_and_splitscreen.h"
-#include "code_800431B0.h"
+#include "hud_renderer.h"
 #include "code_80057C60.h"
 #include "code_80091750.h"
 #include "code_80280650.h"
