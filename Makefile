@@ -160,7 +160,7 @@ CC_CFLAGS := -fno-builtin
 INCLUDE_CFLAGS := -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I .
 
 # TODO: Seperate F3D declares into version flags if needed.
-GRUCODE_CFLAGS = -DF3DEX_GBI -D_LANGUAGE_C
+GRUCODE_CFLAGS = -DF3DEX_GBI -DF3D_OLD -D_LANGUAGE_C
 
 # Check code syntax with host compiler
 CC_CHECK := gcc -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) -std=gnu90 -Wall -w -Wempty-body -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(VERSION_CFLAGS) $(GRUCODE_CFLAGS)

@@ -64,7 +64,7 @@
 
 #define PLAYER_INACTIVE             0         // 0x0000
 #define PLAYER_EXISTS               (1 << 15) // 0x8000
-#define PLAYER_CINEMATIC_MODE       (1 << 11) // 0x0800
+#define PLAYER_CINEMATIC_MODE       (1 << 11) // 0x0800 // Also used to track eliminations in Battle mode.
 #define PLAYER_STAGING              (1 <<  9) // 0x0200
 #define PLAYER_START_SEQUENCE       (1 << 13) // 0x2000
 #define PLAYER_CPU                  (1 << 12) // 0x1000
