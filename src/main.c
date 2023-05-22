@@ -17,7 +17,7 @@
 #include "profiler.h"
 #include "race_logic.h"
 #include "skybox_and_splitscreen.h"
-#include "code_800431B0.h"
+#include "hud_renderer.h"
 #include "code_8008C1D0.h"
 #include "code_80281780.h"
 #include "audio/external.h"
@@ -1099,6 +1099,8 @@ void update_gamestate(void) {
             gCurrentlyLoadedCourseId = COURSE_NULL;
             break;
         case RACING:
+            // @bug Reloading this segment makes random_u16() deterministic for player spawn order.
+            // In laymens terms, random_u16() outputs the same value everytime.
             init_seg_8028DF00();
             setup_race();
             break;

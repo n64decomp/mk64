@@ -1274,7 +1274,7 @@ UNUSED void func_8008A2CC(s32 objectIndex, s32 cameraId, u16 arg2) {
     }
 }
 
-u32 func_8008A364(s32 objectIndex, s32 cameraId, u16 arg2, s32 arg3) {
+s32 func_8008A364(s32 objectIndex, s32 cameraId, u16 arg2, s32 arg3) {
     Camera *camera;
     u32 var_v1;
     u16 var_a2;

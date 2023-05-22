@@ -154,8 +154,7 @@
 #  define G_BRANCH_Z		(G_IMMFIRST-15)
 #  define G_LOAD_UCODE		(G_IMMFIRST-16)
 #  define G_QUAD            (G_IMMFIRST-10)
-#else
-#  define G_RDPHALF_CONT	(G_IMMFIRST-13)
+#  define G_RDPHALF_CONT	(G_IMMFIRST-13) // From F3D_OLD used to render lap & timer UI.
 #endif
 
 /* We are overloading 2 of the immediate commands

@@ -325,6 +325,7 @@ void func_80092258(void); // todo remove this line
 void func_80091FA4(void) {
     s32 i;
 
+    // todo: These sizes need to be sizeof() for shiftability if possible
     D_8018D9B4 = get_next_available_memory_addr(0x00002800);
     D_8018D9B0 = get_next_available_memory_addr(0x000124F8);
     D_8018D9B8 = get_next_available_memory_addr(0x00001000);
@@ -11262,7 +11263,6 @@ void func_800A7790(struct_8018D9E0_entry *arg0) {
     s32 creditIndex;
     s8 slideDirection;
     UNUSED s32 pad;
-
     creditIndex = arg0->type - 0x190;
     set_text_color(D_802850C0[creditIndex].textColor);
     slideDirection = D_802850C0[creditIndex].slideDirection;
@@ -11292,8 +11292,7 @@ void convert_number_to_ascii(s32 number, char *buffer) {
 void write_dashes(char *buffer) {
     buffer[0] = 0x2D;
     buffer[1] = 0x2D;
-    // Terminator
-    buffer[2] = 0;
+    buffer[2] = '\0';
 }
 
 // Originally func_800A78F4

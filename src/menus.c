@@ -846,6 +846,21 @@ void course_data_menu_act(struct Controller *controller, UNUSED u16 arg1) {
 void logo_intro_menu_act(struct Controller *arg0, UNUSED u16 arg1) {
     u16 anyInput = arg0->buttonPressed | arg0->stickPressed;
 
+// Note: Choosing a course in the middle of a cup
+// will contain no definition for player staging/lineup.
+//#define SKIP_TO_RACE
+#ifdef SKIP_TO_RACE
+    gGamestateNext = 4; // Enter race state
+    gCCSelection = 1;
+    gCupSelection = 1;
+    gCupCourseSelection = 0;
+    gCurrentCourseId = 0;
+    gScreenModeSelection = 0;
+    gCharacterSelections[0] = 0;
+    gModeSelection = 0;
+    D_8018EDF3 = 1;
+#endif
+
     if ((func_800B4520() == 0) && (anyInput)) {
         // Audio related
         func_800CA388(0x3C);
@@ -1782,7 +1797,7 @@ void course_select_menu_act(struct Controller *arg0, u16 arg1) {
 void func_800B3F74(s32 menuSelection) {
     s32 i;
 
-    gDebugMenuSelection = DEBUG_MENU_DISABLED;
+    gDebugMenuSelection = DEBUG_MENU;
     gMenuTimingCounter = 0;
     gMenuDelayTimer = 0;
     D_8018EE08 = 0;

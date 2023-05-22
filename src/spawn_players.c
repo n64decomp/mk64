@@ -439,8 +439,11 @@ void func_80039F44(f32 *arg0, f32 *arg1, f32 arg2) {
             rand = random_int(7);
         } while(rand == gCharacterSelections[0]);
 
+        // Randomize gPlayerTwo
         D_80165560[0] = rand;
 
+        // Chooses arr[0] as a fallback to prevent duplicating characters.
+        // If it doesn't find the if, it will grab the final index as a fallback.
         for (i = 1; i < 7; i++) {
             u16* arr = (u16 *) D_800E3890[gCharacterSelections[0]];
             if (rand == arr[i]) {

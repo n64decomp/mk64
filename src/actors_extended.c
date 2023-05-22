@@ -712,8 +712,8 @@ void update_obj_banana(struct BananaActor *banana) {
             } else {
                 controller = &gControllers[banana->rot[0]];
             }
-            if ((controller->buttonDepressed & 0x2000) != 0) {
-                controller->buttonDepressed &= ~0x2000;
+            if ((controller->buttonDepressed & Z_TRIG) != 0) {
+                controller->buttonDepressed &= ~Z_TRIG;
                 banana->state = 1;
                 banana->unk_04 = 0x00B4;
                 player->statusEffects &= ~0x40000;
