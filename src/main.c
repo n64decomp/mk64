@@ -1099,6 +1099,8 @@ void update_gamestate(void) {
             gCurrentlyLoadedCourseId = COURSE_NULL;
             break;
         case RACING:
+            // @bug Reloading this segment makes random_u16() deterministic for player spawn order.
+            // In laymens terms, random_u16() outputs the same value everytime.
             init_seg_8028DF00();
             setup_race();
             break;

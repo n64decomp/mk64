@@ -4,6 +4,7 @@
 #include <variables.h>
 #include <main.h>
 #include "framebuffers.h"
+#include <PR/rcp.h>
 // Location based from sm64.
 // This may need to be moved before framebuffers.c
 // If math_util has data that does not line-up with trig_tables.
@@ -1154,8 +1155,6 @@ UNUSED s16 func_802B7D28(f32 arg0) {
     return func_802B79B8(sqrtf(1.0 - (f64)(arg0 * arg0)), arg0) * 32768.0f / 3.141592653589793;
 }
 
-//extern u16 gRandomSeed16;
-
 u16 random_u16(void) {
     u16 temp1, temp2;
 
@@ -1187,6 +1186,7 @@ u16 random_u16(void) {
 u16 random_int(u16 arg0) {
     return arg0 * (( (f32) random_u16() )  / 65535.0);
 }
+
 s16 func_802B7F34(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     return atan2s(arg2 - arg0, arg3 - arg1);
 }
