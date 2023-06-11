@@ -281,39 +281,9 @@ $(BUILD_DIR)/src/startup_logo.inc.o: src/startup_logo.inc.c
 
 ############################### Kart Textures and Palettes ###############################
 
-KART_EXPORT_SENTINELS := $(foreach char,$(CHARACTER_NAMES),$(KART_ASSET_DIR)/$(char)/.export)
+KART_EXPORT_SENTINELS :=
 
-$(KART_EXPORT_SENTINELS) : %/.export : %/kart.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
-
-# The author of this template is a Makefile neophyte.
-# It would not surprise them if there is a simpler, better way to accomplish this.
-# But until someone more knowledgeable comes along, we're stuck with this
-define kart_import_template =
-$(1)_KART_FRAME_PNG   := $$(wildcard $$(KART_ASSET_DIR)/$(1)/frames/*.png)
-$(1)_KART_PALETTE_PNG := $$(wildcard $$(KART_ASSET_DIR)/$(1)/palettes/*.png)
-$(1)_KART_FRAME_BIN   := $$($(1)_KART_FRAME_PNG:%.png=%.bin)
-$(1)_KART_PALETTE_BIN := $$($(1)_KART_PALETTE_PNG:%.png=%.bin)
-$(1)_KART_FRAME_MIO0  := $$($(1)_KART_FRAME_BIN:%.bin=%.mio0)
-
-$$($(1)_KART_FRAME_BIN): %.bin : %.png
-	$$(N64GRAPHICS) -Z $$@ -g $$< -s raw -f ci8 -c rgba16 -p $$(<D)/stitched_palettes/$$(<F:%.png=%_stitched_palette.png) -M $$(<D)/wheel_masks/$$(<F:%.png=%_wheel_mask.raw)
-
-$$($(1)_KART_FRAME_MIO0) : %.mio0 : %.bin
-	$$(MIO0TOOL) -c $$< $$@
-
-$$($(1)_KART_PALETTE_BIN): %.bin : %.png
-	$$(N64GRAPHICS) -i $$@ -g $$< -s raw -f rgba16
-
-$$(BUILD_DIR)/$$(KART_ASSET_DIR)/$(1)/kart.o: $$($(1)_KART_FRAME_MIO0) $$($(1)_KART_PALETTE_BIN)
-
-endef
-
-$(foreach char,$(CHARACTER_NAMES),$(eval $(call kart_import_template,$(char))))
-
-.PHONY: extract_assets distclean_kart_assets
-extract_assets: $(KART_EXPORT_SENTINELS)
+$(foreach char,$(CHARACTER_NAMES),$(eval include $(KART_ASSET_DIR)/$(char)/kart.mk))
 
 distclean_kart_assets:
 	rm -rf $(KART_FRAME_DIRS)
