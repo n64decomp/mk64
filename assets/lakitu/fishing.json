@@ -1,0 +1,7 @@
+{
+"gTLUTLakituFishing":     {"output_dir": "fishing", "rom_offset": "0x132B50", "block_offset": "0x25CD8", "width": 16, "height": 16, "type": "rgba16"},
+"gTextureLakituFishing1": {"output_dir": "fishing", "rom_offset": "0x70EEC0", "width": 56, "height": 72, "type": "ci8", "tlut": "gTLUTLakituFishing"},
+"gTextureLakituFishing2": {"output_dir": "fishing", "rom_offset": "0x70FE80", "width": 56, "height": 72, "type": "ci8", "tlut": "gTLUTLakituFishing"},
+"gTextureLakituFishing3": {"output_dir": "fishing", "rom_offset": "0x710E40", "width": 56, "height": 72, "type": "ci8", "tlut": "gTLUTLakituFishing"},
+"gTextureLakituFishing4": {"output_dir": "fishing", "rom_offset": "0x711E00", "width": 56, "height": 72, "type": "ci8", "tlut": "gTLUTLakituFishing"}
+}

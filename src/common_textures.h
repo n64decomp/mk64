@@ -4,7 +4,7 @@
 #include <types.h>
 #include <PR/gbi.h>
 
-extern s8  D_0D000000[];
+extern s8  gTLUTFinishLineBanner[];
 extern s8  D_0D000200[];
 extern Vtx D_0D001200[];
 extern Vtx D_0D001210[];

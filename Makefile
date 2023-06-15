@@ -41,28 +41,21 @@ BUILD_DIR_BASE := build
 BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)
 
 # Directories containing source files
+ASSET_DIR := assets
+BIN_DIR := bin
+DATA_DIR := data
 INCLUDE_DIRS := include
 SRC_DIRS := src src/audio src/os src/os/math courses
-ASM_DIRS := asm asm/audio asm/os asm/os/non_matchings data data/sound_data
+ASM_DIRS := asm asm/audio asm/os asm/os/non_matchings $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
 COURSE_DIRS := $(shell find courses -mindepth 2 -type d)
-BIN_DIR := bin
 
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 
-CHARACTER_NAMES := luigi mario yoshi peach toad wario donkeykong bowser
-
-ASSET_DIR := assets
-KART_ASSET_DIR := $(ASSET_DIR)/karts
-
-KART_DIRS         := $(foreach char,$(CHARACTER_NAMES),$(KART_ASSET_DIR)/$(char))
-KART_FRAME_DIRS   := $(addsuffix /frames,$(KART_DIRS))
-KART_PALETTE_DIRS := $(addsuffix /palettes,$(KART_DIRS))
-
 ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) $(INCLUDE_DIRS) $(ASM_DIRS) $(ALL_KARTS_DIRS) $(TEXTURES_DIR)/raw \
 	$(TEXTURES_DIR)/standalone $(TEXTURES_DIR)/startup_logo $(TEXTURES_DIR)/crash_screen $(TEXTURES_DIR)/trophy $(TEXTURES_DIR)/courses        \
 	$(TEXTURES_DIR)/courses/tlut $(TEXTURES_DIR)/courses/tlut2 $(TEXTURE_DIRS) $(TEXTURE_DIRS)/tlut $(TEXTURES_DIR)/courses/tlut3              \
-	$(TEXTURE_DIRS)/tlut2 $(KART_DIRS) $(BIN_DIR))
+	$(TEXTURE_DIRS)/tlut2 $(BIN_DIR))
 
 ################### Universal Dependencies ###################
 
@@ -102,10 +95,9 @@ GLOBAL_ASM_AUDIO_O_FILES = $(foreach file,$(GLOBAL_ASM_AUDIO_C_FILES),$(BUILD_DI
 # GLOBAL_ASM_DEP = $(BUILD_DIR)/src/audio/non_matching_dep
 
 COURSE_ASM_FILES := $(wildcard courses/*/*/packed.s)
-KART_ASM_FILES   := $(foreach dir,$(KART_DIRS),$(dir)/kart.s)
 
 C_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
-S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s)) $(COURSE_ASM_FILES) $(KART_ASM_FILES)
+S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s)) $(COURSE_ASM_FILES)
 COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(wildcard $(dir)/*.inc.c))
 
 # Object files
@@ -279,16 +271,15 @@ $(BUILD_DIR)/src/startup_logo.inc.o: src/startup_logo.inc.c
 	$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
-############################### Kart Textures and Palettes ###############################
+############################### Assets ###############################
 
-KART_EXPORT_SENTINELS :=
+ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name *.mk)
+ASSET_DIRECTORIES :=
 
-$(foreach char,$(CHARACTER_NAMES),$(eval include $(KART_ASSET_DIR)/$(char)/kart.mk))
+$(foreach inc,$(ASSET_INCLUDES),$(eval include $(inc)))
 
-distclean_kart_assets:
-	rm -rf $(KART_FRAME_DIRS)
-	rm -rf $(KART_PALETTE_DIRS)
-	rm -f  $(KART_EXPORT_SENTINELS)
+distclean_assets:
+	rm -rf $(ASSET_DIRECTORIES)
 
 ##########################################################################################
 
