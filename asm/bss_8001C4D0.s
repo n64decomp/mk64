@@ -574,13 +574,13 @@ glabel D_801658EC
 glabel D_801658F4
 .skip 9
 
-glabel D_801658FD
+glabel sRandomItemIndex
 .skip 1
 
 glabel D_801658FE
 .skip 1
 
-glabel D_801658FF
+glabel gControllerRandom
 .skip 1
 
 glabel D_80165900

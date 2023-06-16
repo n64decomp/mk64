@@ -1843,7 +1843,7 @@ void func_8002B308(Player *player, s8 arg1, s8 arg2) {
     if ((player->statusEffects & 0x01000000) == 0x01000000) {
         func_8008EAE0(player, arg1);
     }
-    if ((player->statusEffects & 0x800000) == 0x800000) {
+    if ((player->statusEffects & 0x00800000) == 0x00800000) {
         func_8008EC88(player, arg1);
     }
     if ((player->statusEffects & 0x8000) == 0x8000) {

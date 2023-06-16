@@ -1463,6 +1463,7 @@ void func_8008F650(Player* player, s8 arg1) {
     }
 }
 
+// Star item
 void func_8008F778(Player* player, s8 arg1) {
     func_8008C354(player, arg1);
 
@@ -1470,11 +1471,13 @@ void func_8008F778(Player* player, s8 arg1) {
     player->statusEffects &= ~0x2000;
     D_8018D930[arg1] = gCourseTimer;
     D_8018D900[arg1] = 1;
-    if (((player->unk_000 & 0x4000) == 0x4000) && ((player->unk_000 & 0x100) != 0x100)) {
+
+    if (((player->unk_000 & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->unk_000 & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         if (D_8018D900[arg1] == 1) {
             func_800CA59C(arg1);
             D_8018D900[arg1] = 2;
         }
+    // This may be in charge of ending the star sound. Still unknown though.
     } else if (D_8018D900[arg1] == 1) {
         func_800CA984(arg1);
         D_8018D900[arg1] = 2;
