@@ -218,7 +218,7 @@ extern s8 D_801657F0;
 extern s8 D_80165800;
 extern s8 D_80165801;
 extern s8 D_801657B0;
-extern u8 D_801658FF;
+extern u8 gControllerRandom;
 extern struct Controller *gControllerOne;
 extern s32 D_8018D214;
 extern s32 D_8018D2C8[];
