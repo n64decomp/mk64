@@ -3,14 +3,14 @@ FINISH_LINE_BANNER_DIR := assets/finish_line_banner
 FINISH_LINE_BANNER_PALETTE := $(FINISH_LINE_BANNER_DIR)/gTLUTFinishLineBanner.png
 
 FINISH_LINE_BANNER_PNG := \
-$(FINISH_LINE_BANNER_DIR)/gTexutreFinishLineBanner1.png \
-$(FINISH_LINE_BANNER_DIR)/gTexutreFinishLineBanner2.png \
-$(FINISH_LINE_BANNER_DIR)/gTexutreFinishLineBanner3.png \
-$(FINISH_LINE_BANNER_DIR)/gTexutreFinishLineBanner4.png \
-$(FINISH_LINE_BANNER_DIR)/gTexutreFinishLineBanner5.png \
-$(FINISH_LINE_BANNER_DIR)/gTexutreFinishLineBanner6.png \
-$(FINISH_LINE_BANNER_DIR)/gTexutreFinishLineBanner7.png \
-$(FINISH_LINE_BANNER_DIR)/gTexutreFinishLineBanner8.png
+$(FINISH_LINE_BANNER_DIR)/gTextureFinishLineBanner1.png \
+$(FINISH_LINE_BANNER_DIR)/gTextureFinishLineBanner2.png \
+$(FINISH_LINE_BANNER_DIR)/gTextureFinishLineBanner3.png \
+$(FINISH_LINE_BANNER_DIR)/gTextureFinishLineBanner4.png \
+$(FINISH_LINE_BANNER_DIR)/gTextureFinishLineBanner5.png \
+$(FINISH_LINE_BANNER_DIR)/gTextureFinishLineBanner6.png \
+$(FINISH_LINE_BANNER_DIR)/gTextureFinishLineBanner7.png \
+$(FINISH_LINE_BANNER_DIR)/gTextureFinishLineBanner8.png
 
 FINISH_LINE_BANNER_EXPORT_SENTINEL := $(FINISH_LINE_BANNER_DIR)/.export
 

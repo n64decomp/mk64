@@ -3,14 +3,14 @@ ONOMATOPOEIA_DIR := assets/onomatopoeia
 ONOMATOPOEIA_PALETTE := $(ONOMATOPOEIA_DIR)/gTLUTOnomatopoeia.png
 
 ONOMATOPOEIA_PNG := \
-$(ONOMATOPOEIA_DIR)/gTexutreOnomatopoeiaCrash1.png \
-$(ONOMATOPOEIA_DIR)/gTexutreOnomatopoeiaCrash2.png \
-$(ONOMATOPOEIA_DIR)/gTexutreOnomatopoeiaWhrrrr1.png \
-$(ONOMATOPOEIA_DIR)/gTexutreOnomatopoeiaWhrrrr2.png \
-$(ONOMATOPOEIA_DIR)/gTexutreOnomatopoeiaPoomp1.png \
-$(ONOMATOPOEIA_DIR)/gTexutreOnomatopoeiaPoomp2.png \
-$(ONOMATOPOEIA_DIR)/gTexutreBalloon1.png \
-$(ONOMATOPOEIA_DIR)/gTexutreBalloon2.png
+$(ONOMATOPOEIA_DIR)/gTextureOnomatopoeiaCrash1.png \
+$(ONOMATOPOEIA_DIR)/gTextureOnomatopoeiaCrash2.png \
+$(ONOMATOPOEIA_DIR)/gTextureOnomatopoeiaWhrrrr1.png \
+$(ONOMATOPOEIA_DIR)/gTextureOnomatopoeiaWhrrrr2.png \
+$(ONOMATOPOEIA_DIR)/gTextureOnomatopoeiaPoomp1.png \
+$(ONOMATOPOEIA_DIR)/gTextureOnomatopoeiaPoomp2.png \
+$(ONOMATOPOEIA_DIR)/gTextureBalloon1.png \
+$(ONOMATOPOEIA_DIR)/gTextureBalloon2.png
 
 ONOMATOPOEIA_EXPORT_SENTINEL := $(ONOMATOPOEIA_DIR)/.export
 

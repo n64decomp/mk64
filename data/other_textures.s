@@ -1324,36 +1324,36 @@ glabel gTexture6967FC
 .incbin "bin/texture_6967FC.mio0"
 
 .balign 4, 0x00
-glabel gTexutreFinishLineBanner1
-.incbin "assets/finish_line_banner/gTexutreFinishLineBanner1.mio0"
+glabel gTextureFinishLineBanner1
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner1.mio0"
 
 .balign 4, 0x00
-glabel gTexutreFinishLineBanner2
-.incbin "assets/finish_line_banner/gTexutreFinishLineBanner2.mio0"
+glabel gTextureFinishLineBanner2
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner2.mio0"
 
 .balign 4, 0x00
-glabel gTexutreFinishLineBanner3
-.incbin "assets/finish_line_banner/gTexutreFinishLineBanner3.mio0"
+glabel gTextureFinishLineBanner3
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner3.mio0"
 
 .balign 4, 0x00
-glabel gTexutreFinishLineBanner4
-.incbin "assets/finish_line_banner/gTexutreFinishLineBanner4.mio0"
+glabel gTextureFinishLineBanner4
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner4.mio0"
 
 .balign 4, 0x00
-glabel gTexutreFinishLineBanner5
-.incbin "assets/finish_line_banner/gTexutreFinishLineBanner5.mio0"
+glabel gTextureFinishLineBanner5
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner5.mio0"
 
 .balign 4, 0x00
-glabel gTexutreFinishLineBanner6
-.incbin "assets/finish_line_banner/gTexutreFinishLineBanner6.mio0"
+glabel gTextureFinishLineBanner6
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner6.mio0"
 
 .balign 4, 0x00
-glabel gTexutreFinishLineBanner7
-.incbin "assets/finish_line_banner/gTexutreFinishLineBanner7.mio0"
+glabel gTextureFinishLineBanner7
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner7.mio0"
 
 .balign 4, 0x00
-glabel gTexutreFinishLineBanner8
-.incbin "assets/finish_line_banner/gTexutreFinishLineBanner8.mio0"
+glabel gTextureFinishLineBanner8
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner8.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant1
@@ -1528,36 +1528,36 @@ glabel gTexture69EFE0
 .incbin "textures/standalone/texture_69EFE0.i4.mio0"
 
 .balign 4, 0x00
-glabel gTexutreOnomatopoeiaCrash1
-.incbin "assets/onomatopoeia/gTexutreOnomatopoeiaCrash1.mio0"
+glabel gTextureOnomatopoeiaCrash1
+.incbin "assets/onomatopoeia/gTextureOnomatopoeiaCrash1.mio0"
 
 .balign 4, 0x00
-glabel gTexutreOnomatopoeiaCrash2
-.incbin "assets/onomatopoeia/gTexutreOnomatopoeiaCrash2.mio0"
+glabel gTextureOnomatopoeiaCrash2
+.incbin "assets/onomatopoeia/gTextureOnomatopoeiaCrash2.mio0"
 
 .balign 4, 0x00
-glabel gTexutreOnomatopoeiaWhrrrr1
-.incbin "assets/onomatopoeia/gTexutreOnomatopoeiaWhrrrr1.mio0"
+glabel gTextureOnomatopoeiaWhrrrr1
+.incbin "assets/onomatopoeia/gTextureOnomatopoeiaWhrrrr1.mio0"
 
 .balign 4, 0x00
-glabel gTexutreOnomatopoeiaWhrrrr2
-.incbin "assets/onomatopoeia/gTexutreOnomatopoeiaWhrrrr2.mio0"
+glabel gTextureOnomatopoeiaWhrrrr2
+.incbin "assets/onomatopoeia/gTextureOnomatopoeiaWhrrrr2.mio0"
 
 .balign 4, 0x00
-glabel gTexutreOnomatopoeiaPoomp1
-.incbin "assets/onomatopoeia/gTexutreOnomatopoeiaPoomp1.mio0"
+glabel gTextureOnomatopoeiaPoomp1
+.incbin "assets/onomatopoeia/gTextureOnomatopoeiaPoomp1.mio0"
 
 .balign 4, 0x00
-glabel gTexutreOnomatopoeiaPoomp2
-.incbin "assets/onomatopoeia/gTexutreOnomatopoeiaPoomp2.mio0"
+glabel gTextureOnomatopoeiaPoomp2
+.incbin "assets/onomatopoeia/gTextureOnomatopoeiaPoomp2.mio0"
 
 .balign 4, 0x00
-glabel gTexutreBalloon1
-.incbin "assets/onomatopoeia/gTexutreBalloon1.mio0"
+glabel gTextureBalloon1
+.incbin "assets/onomatopoeia/gTextureBalloon1.mio0"
 
 .balign 4, 0x00
-glabel gTexutreBalloon2
-.incbin "assets/onomatopoeia/gTexutreBalloon2.mio0"
+glabel gTextureBalloon2
+.incbin "assets/onomatopoeia/gTextureBalloon2.mio0"
 
 .balign 4, 0x00
 glabel gTextureLightningBolt0
