@@ -1328,8 +1328,8 @@ u8 *load_course(s32 courseId) {
     uintptr_t finalDisplaylistOffset;
     u32 unknown1;
     s32 prevLoadedAddress_saved;
-    struct course_texture *offsetRomStart;
-    struct course_texture *offsetRomEnd;
+    u8 *offsetRomStart;
+    u8 *offsetRomEnd;
 
     // Pointers to rom offsets
     //gamestate = gGamestate;
