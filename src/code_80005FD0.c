@@ -1813,7 +1813,7 @@ s32 func_80008E58(s32 payerId, s32 pathIndex) {
     f32 posZ;
     Player *player;
     s32 trackSegment;
-    s32 stackPadding;
+    UNUSED s32 stackPadding;
 
     player = &gPlayers[payerId];
     posX = player->pos[0];
@@ -4685,8 +4685,8 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000F124.s")
 #endif
 
 // Delete track waypoints
-void func_8000F2BC(struct TrackWayPoint *arg0, s32 arg1) {
-    bzero(arg0, arg1 << 3);
+void func_8000F2BC(struct TrackWayPoint *arg0, size_t size) {
+    bzero((void *) arg0, size << 3);
 }
 
 #ifdef MIPS_TO_C

@@ -73,7 +73,7 @@ void func_8000EEDC();
 void func_8000EF20();
 void func_8000F0E0();
 void func_8000F124();
-void func_8000F2BC(struct TrackWayPoint*, s32);
+void func_8000F2BC(struct TrackWayPoint*, size_t);
 void func_80010218(s32);
 f32  func_80010480(s32, u16);
 void func_800107C4(s32);
