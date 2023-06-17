@@ -220,7 +220,7 @@ endif
 clean:
 	$(RM) -r $(BUILD_DIR)
 
-distclean: distclean_kart_assets
+distclean: distclean_assets
 	$(RM) -r $(BUILD_DIR_BASE)
 	./extract_assets.py --clean
 	make -C tools clean
@@ -330,7 +330,7 @@ COURSE_PACKED_DL_O := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl
 $(COURSE_PACKED_DL):
 	$(LD) -t -e 0 -Ttext=07000000 -Map $(@D)/packed.inc.elf.map -o $(@D)/packed.inc.elf $(@D)/packed.inc.o --no-check-sections
 # Generate header for packed displaylists
-	$(DLSYMGEN)
+	# $(DLSYMGEN)
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/packed.inc.elf $(@D)/packed.inc.bin
 	$(DLPACKER) $(@D)/packed.inc.bin $(@D)/packed_dl.inc.bin
 
@@ -338,7 +338,7 @@ $(COURSE_PACKED_DL):
 $(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c $(COURSE_PACKED_DL)
 	$(LD) -t -e 0 -Ttext=0F000000 -Map $(@D)/model.inc.elf.map -o $(@D)/model.inc.elf $(@D)/model.inc.o --no-check-sections
 # Generate model vertice count header
-	$(MODELSYMGEN)
+	#$(MODELSYMGEN)
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/model.inc.elf $(@D)/model.inc.bin
 	$(MIO0TOOL) -c $(@D)/model.inc.bin $(@D)/model.inc.mio0
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.inc.bin\"\n\n.balign 0x10\n" > $(@D)/model.inc.mio0.s
@@ -466,7 +466,7 @@ test: $(TARGET).z64
 load: $(TARGET).z64
 	$(LOADER) $(LOADER_FLAGS) $<
 
-.PHONY: all clean distclean default diff test load
+.PHONY: all clean distclean distclean_assets default diff test load
 .SECONDARY:
 
 # Remove built-in rules, to improve  build/us/courses/star_cup/bowsers_castle/model.inc.mio0.performance
