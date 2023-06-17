@@ -21,6 +21,8 @@ ifeq ($(VERSION),us)
   TARGET := mk64.us
 endif
 
+ BASEROM := baserom.$(VERSION).z64
+
 # COMPILER - selects the C compiler to use
 #   ido - uses the SGI IRIS Development Option compiler, which is used to build
 #         an original matching N64 ROM
@@ -39,18 +41,21 @@ BUILD_DIR_BASE := build
 BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)
 
 # Directories containing source files
+ASSET_DIR := assets
+BIN_DIR := bin
+DATA_DIR := data
 INCLUDE_DIRS := include
 SRC_DIRS := src src/audio src/os src/os/math courses
-ASM_DIRS := asm asm/audio asm/os asm/os/non_matchings data data/sound_data
+ASM_DIRS := asm asm/audio asm/os asm/os/non_matchings $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
 COURSE_DIRS := $(shell find courses -mindepth 2 -type d)
 
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 
 ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) $(INCLUDE_DIRS) $(ASM_DIRS) $(ALL_KARTS_DIRS) $(TEXTURES_DIR)/raw \
-    $(TEXTURES_DIR)/standalone $(TEXTURES_DIR)/startup_logo $(TEXTURES_DIR)/crash_screen $(TEXTURES_DIR)/trophy $(TEXTURES_DIR)/courses        \
+	$(TEXTURES_DIR)/standalone $(TEXTURES_DIR)/startup_logo $(TEXTURES_DIR)/crash_screen $(TEXTURES_DIR)/trophy $(TEXTURES_DIR)/courses        \
 	$(TEXTURES_DIR)/courses/tlut $(TEXTURES_DIR)/courses/tlut2 $(TEXTURE_DIRS) $(TEXTURE_DIRS)/tlut $(TEXTURES_DIR)/courses/tlut3              \
-	$(TEXTURE_DIRS)/tlut2)
+	$(TEXTURE_DIRS)/tlut2 $(BIN_DIR))
 
 ################### Universal Dependencies ###################
 
@@ -190,6 +195,7 @@ DLSYMGEN = $(PYTHON) $(TOOLS_DIR)/generate_segment_headers.py
 MODELSYMGEN = $(PYTHON) $(TOOLS_DIR)/generate_vertice_count.py
 BIN2C = $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
+ASSET_EXTRACT := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
 EMULATOR = mupen64plus
 EMU_FLAGS = --noosd
 LOADER = loader64
@@ -214,7 +220,7 @@ endif
 clean:
 	$(RM) -r $(BUILD_DIR)
 
-distclean:
+distclean: distclean_assets
 	$(RM) -r $(BUILD_DIR_BASE)
 	./extract_assets.py --clean
 	make -C tools clean
@@ -265,7 +271,17 @@ $(BUILD_DIR)/src/startup_logo.inc.o: src/startup_logo.inc.c
 	$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
+############################### Assets ###############################
 
+ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name *.mk)
+ASSET_DIRECTORIES :=
+
+$(foreach inc,$(ASSET_INCLUDES),$(eval include $(inc)))
+
+distclean_assets:
+	rm -rf $(ASSET_DIRECTORIES)
+
+##########################################################################################
 
 TEXTURE_FILES := $(foreach dir,$(TEXTURE_DIRS),$(subst .png, , $(wildcard $(dir)/*)))
 #TEXTURE_FILES_C := $(foreach file,$(TEXTURE_FILES),$(BUILD_DIR)/$(file:.png=.inc.c))
@@ -314,7 +330,7 @@ COURSE_PACKED_DL_O := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl
 $(COURSE_PACKED_DL):
 	$(LD) -t -e 0 -Ttext=07000000 -Map $(@D)/packed.inc.elf.map -o $(@D)/packed.inc.elf $(@D)/packed.inc.o --no-check-sections
 # Generate header for packed displaylists
-	$(DLSYMGEN)
+	# $(DLSYMGEN)
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/packed.inc.elf $(@D)/packed.inc.bin
 	$(DLPACKER) $(@D)/packed.inc.bin $(@D)/packed_dl.inc.bin
 
@@ -322,7 +338,7 @@ $(COURSE_PACKED_DL):
 $(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c $(COURSE_PACKED_DL)
 	$(LD) -t -e 0 -Ttext=0F000000 -Map $(@D)/model.inc.elf.map -o $(@D)/model.inc.elf $(@D)/model.inc.o --no-check-sections
 # Generate model vertice count header
-	$(MODELSYMGEN)
+	#$(MODELSYMGEN)
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/model.inc.elf $(@D)/model.inc.bin
 	$(MIO0TOOL) -c $(@D)/model.inc.bin $(@D)/model.inc.mio0
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.inc.bin\"\n\n.balign 0x10\n" > $(@D)/model.inc.mio0.s
@@ -450,7 +466,7 @@ test: $(TARGET).z64
 load: $(TARGET).z64
 	$(LOADER) $(LOADER_FLAGS) $<
 
-.PHONY: all clean distclean default diff test load
+.PHONY: all clean distclean distclean_assets default diff test load
 .SECONDARY:
 
 # Remove built-in rules, to improve  build/us/courses/star_cup/bowsers_castle/model.inc.mio0.performance

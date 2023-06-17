@@ -1,0 +1,11 @@
+{
+"gTLUTGreenShell":      {"output_dir": "greenshell", "rom_offset": "0x132B50", "block_offset": "0x04E38", "width": 16, "height": 16, "type": "rgba16"},
+"gTextureGreenShell01": {"output_dir": "greenshell", "rom_offset": "0x68EB50", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTGreenShell"},
+"gTextureGreenShell02": {"output_dir": "greenshell", "rom_offset": "0x68EDA0", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTGreenShell"},
+"gTextureGreenShell03": {"output_dir": "greenshell", "rom_offset": "0x68EFF0", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTGreenShell"},
+"gTextureGreenShell04": {"output_dir": "greenshell", "rom_offset": "0x68F248", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTGreenShell"},
+"gTextureGreenShell05": {"output_dir": "greenshell", "rom_offset": "0x68F4A8", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTGreenShell"},
+"gTextureGreenShell06": {"output_dir": "greenshell", "rom_offset": "0x68F700", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTGreenShell"},
+"gTextureGreenShell07": {"output_dir": "greenshell", "rom_offset": "0x68F96C", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTGreenShell"},
+"gTextureGreenShell08": {"output_dir": "greenshell", "rom_offset": "0x68FBCC", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTGreenShell"}
+}

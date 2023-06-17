@@ -1,0 +1,11 @@
+{
+"gTLUTFinishLineBanner":     {"output_dir": "finish_line_banner", "rom_offset": "0x132B50", "block_offset": "0x0", "width": 16, "height": 16, "type": "rgba16"},
+"gTextureFinishLineBanner1": {"output_dir": "finish_line_banner", "rom_offset": "0x696BAC", "width": 64, "height": 32, "type": "ci8", "tlut": "gTLUTFinishLineBanner"},
+"gTextureFinishLineBanner2": {"output_dir": "finish_line_banner", "rom_offset": "0x696E3C", "width": 64, "height": 32, "type": "ci8", "tlut": "gTLUTFinishLineBanner"},
+"gTextureFinishLineBanner3": {"output_dir": "finish_line_banner", "rom_offset": "0x697138", "width": 64, "height": 32, "type": "ci8", "tlut": "gTLUTFinishLineBanner"},
+"gTextureFinishLineBanner4": {"output_dir": "finish_line_banner", "rom_offset": "0x69743C", "width": 64, "height": 32, "type": "ci8", "tlut": "gTLUTFinishLineBanner"},
+"gTextureFinishLineBanner5": {"output_dir": "finish_line_banner", "rom_offset": "0x6977F0", "width": 64, "height": 32, "type": "ci8", "tlut": "gTLUTFinishLineBanner"},
+"gTextureFinishLineBanner6": {"output_dir": "finish_line_banner", "rom_offset": "0x697B10", "width": 64, "height": 32, "type": "ci8", "tlut": "gTLUTFinishLineBanner"},
+"gTextureFinishLineBanner7": {"output_dir": "finish_line_banner", "rom_offset": "0x697E80", "width": 64, "height": 32, "type": "ci8", "tlut": "gTLUTFinishLineBanner"},
+"gTextureFinishLineBanner8": {"output_dir": "finish_line_banner", "rom_offset": "0x69811C", "width": 64, "height": 32, "type": "ci8", "tlut": "gTLUTFinishLineBanner"}
+}

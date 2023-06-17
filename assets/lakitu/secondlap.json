@@ -1,0 +1,19 @@
+{
+"gTLUTLakituSecondLap":      {"output_dir": "secondlap", "rom_offset": "0x132B50", "block_offset": "0x256D8", "width": 16, "height": 16, "type": "rgba16"},
+"gTextureLakituSecondLap01": {"output_dir": "secondlap", "rom_offset": "0x6DFAC0", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap02": {"output_dir": "secondlap", "rom_offset": "0x6E0A80", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap03": {"output_dir": "secondlap", "rom_offset": "0x6E1A40", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap04": {"output_dir": "secondlap", "rom_offset": "0x6E2A00", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap05": {"output_dir": "secondlap", "rom_offset": "0x6E39C0", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap06": {"output_dir": "secondlap", "rom_offset": "0x6E4980", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap07": {"output_dir": "secondlap", "rom_offset": "0x6E5940", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap08": {"output_dir": "secondlap", "rom_offset": "0x6E6900", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap09": {"output_dir": "secondlap", "rom_offset": "0x6E78C0", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap10": {"output_dir": "secondlap", "rom_offset": "0x6E8880", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap11": {"output_dir": "secondlap", "rom_offset": "0x6E9840", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap12": {"output_dir": "secondlap", "rom_offset": "0x6EA800", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap13": {"output_dir": "secondlap", "rom_offset": "0x6EB7C0", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap14": {"output_dir": "secondlap", "rom_offset": "0x6EC780", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap15": {"output_dir": "secondlap", "rom_offset": "0x6ED740", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"},
+"gTextureLakituSecondLap16": {"output_dir": "secondlap", "rom_offset": "0x6EE700", "width": 72, "height": 56, "type": "ci8", "tlut": "gTLUTLakituSecondLap"}
+}

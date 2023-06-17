@@ -3594,7 +3594,7 @@ struct ActorSpawnData d_course_mario_raceway_spawn[] = {
 
 // 0x6740 tlut for gTexture698378 / gTexturePiranhaPlant
 u8 d_course_mario_raceway_piranha_plant_tlut[] = {
-    #include "textures/courses/gTLUTPiranhaPlant.rgba16.inc.c"
+    #include "assets/piranha_plant/gTLUTPiranhaPlant.inc.c"
 };
 
 // 0x6950

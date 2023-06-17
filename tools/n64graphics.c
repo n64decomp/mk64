@@ -304,9 +304,15 @@ int comp_rgba(const rgba left, const rgba right) {
  * If found, return the index in pal it was found out
  * Otherwise, return -1
 **/
-int get_color_index(const rgba comp, const rgba *pal, int pal_size) {
+int get_color_index(const rgba comp, const rgba *pal, int mask_value, int pal_size) {
    int pal_idx;
-   for (pal_idx = 0; pal_idx < pal_size; pal_idx++) {
+   // The starting values used here are super specific to MK64, they're not really portable to anything else
+   if (mask_value == 0) {
+      pal_idx = 0;
+   } else {
+      pal_idx = 0xC0;
+   }
+   for (; pal_idx < pal_size; pal_idx++) {
       if (comp_rgba(comp, pal[pal_idx]) == 1) return pal_idx;
    }
    ERROR("Could not find a color in the palette\n");
@@ -320,13 +326,19 @@ int get_color_index(const rgba comp, const rgba *pal, int pal_size) {
  * If a value in img is not found in pal, return 0, indicating an error
  * Returns 1 if all values in img are found somewhere in pal
 **/
-int imgpal2rawci(uint8_t *rawci, const rgba *img, const rgba *pal, int raw_size, int img_size, int pal_size) {
+int imgpal2rawci(uint8_t *rawci, const rgba *img, const rgba *pal, const uint8_t *wheel_mask, int raw_size, int img_size, int pal_size) {
    int img_idx;
    int pal_idx;
+   int mask_value;
    memset(rawci, 0, raw_size);
 
    for (img_idx = 0; img_idx < img_size; img_idx++) {
-      pal_idx = get_color_index(img[img_idx], pal, pal_size);
+      if (wheel_mask != NULL) {
+         mask_value = wheel_mask[img_idx];
+      } else {
+         mask_value = 0;
+      }
+      pal_idx = get_color_index(img[img_idx], pal, mask_value, pal_size);
       if (pal_idx != -1) {
          rawci[img_idx] = pal_idx;
       } else {
@@ -646,6 +658,7 @@ typedef struct
    char *img_filename;
    char *bin_filename;
    char *pal_filename;
+   char *mask_filename;
    tool_mode mode;
    write_encoding encoding;
    unsigned int bin_offset;
@@ -663,6 +676,7 @@ static const graphics_config default_config =
    .img_filename = NULL,
    .bin_filename = NULL,
    .pal_filename = NULL,
+   .mask_filename = NULL,
    .mode = MODE_EXPORT,
    .encoding = ENCODING_RAW,
    .bin_offset = 0,
@@ -769,6 +783,7 @@ static void print_usage(void)
          " -s SCHEME     output scheme: raw, u8 (hex), u64 (hex) (default: %s)\n"
          " -w WIDTH      export texture width (default: %d)\n"
          " -h HEIGHT     export texture height (default: %d)\n"
+         " -M MASK_FILE  Wheel mask file\n"
          "CI arguments:\n"
          " -c CI_FORMAT  CI palette format: rgba16, ia16 (default: %s)\n"
          " -p PAL_FILE   palette binary file to import/export from/to\n"
@@ -866,6 +881,10 @@ static int parse_arguments(int argc, char *argv[], graphics_config *config)
             case 'm':
                if (i++ >= argc) return 0;
                magicFiller = strtol(argv[i], NULL, 16);
+               break;
+            case 'M':
+               if (i++ >= argc) return 0;
+               config->mask_filename = argv[i];
                break;
             default:
                return 0;
@@ -1148,7 +1167,9 @@ int main(int argc, char *argv[])
          break;
       case MODE_EXPORT_CI:
       {
+         FILE *mask_fp;
          uint8_t *rawci;
+         uint8_t *wheel_mask;
          int img_length;
          int pal_length;
          int ci_length;
@@ -1200,7 +1221,24 @@ int main(int argc, char *argv[])
          img_length = config.width * config.height;
          ci_length = img_length * config.format.depth / 8;
          rawci = malloc(ci_length);
-         conversion_success = imgpal2rawci(rawci, imgr, palr, ci_length, img_length, pal_length);
+
+         if (config.mask_filename != NULL) {
+            mask_fp = fopen(config.mask_filename, "rb");
+            if (!mask_fp) {
+               ERROR("Error opening \"%s\"\n", config.mask_filename);
+               return -1;
+            }
+            wheel_mask = malloc(img_length);
+            flength = fread(wheel_mask, 1, img_length, mask_fp);
+            if (flength != img_length) {
+               ERROR("Error reading %d bytes from \"%s\"\n", img_length, config.mask_filename);
+               return -1;
+            }
+         } else {
+            wheel_mask = NULL;
+         }
+
+         conversion_success = imgpal2rawci(rawci, imgr, palr, wheel_mask, ci_length, img_length, pal_length);
          if (!conversion_success) {
             ERROR("Error converting PNG and TLUT to CI\n");
             exit(EXIT_FAILURE);
