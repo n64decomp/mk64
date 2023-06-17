@@ -121,9 +121,9 @@ struct courseTable {
     u8 *dlRomEnd;       // 0x04 ROM end for segment 6 DL data
     u8 *vertexRomStart; // 0x08 ROM start for segment 4 vertex data
     u8 *vertexRomEnd;   // 0x0C ROM end for segment 7?
-    struct course_texture *offsetRomStart; // 0x10 ROM start for uncompressed segment 9 texture and DL addresses
-    struct course_texture *offsetRomEnd;   // 0x14 ROM end for uncompressed segment 9 texture and DL addresses
-    u8 *vertexStart;    // 0x18 segmented address of vertex data
+    u8 *offsetRomStart; // 0x10 ROM start for uncompressed segment 9 texture and DL addresses
+    u8 *offsetRomEnd;   // 0x14 ROM end for uncompressed segment 9 texture and DL addresses
+    mk64_Vtx *vertexStart;    // 0x18 segmented address of vertex data
     u32 vertexCount;    // 0x1C number of vertices in vertex data
     u8 *packedStart;    // 0x20 packed display list start address
     uintptr_t finalDisplaylistOffset;        // 0x24
