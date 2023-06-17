@@ -3211,168 +3211,168 @@ struct ActorSpawnData d_course_toads_turnpike_dl[] = {
 // 0x59B8
 // Appears to be two windshields? Leaf texture or mask?
 u8 d_course_toads_turnpike_unk_windshield[] = {
-    #include "textures/courses/toads_turnpike_857E80_059B8.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_857E80_059B8.rgba16.inc.c"
 };
 
 // 0x69B8
 u8 d_course_toads_turnpike_truck1_box[] = {
-    #include "textures/courses/toads_turnpike_truck1_box.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_truck1_box.rgba16.inc.c"
 };
 
 // 0x71B8
 u8 d_course_toads_turnpike_truck1_headlights[] = {
-    #include "textures/courses/toads_turnpike_truck1_headlights.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_truck1_headlights.rgba16.inc.c"
 };
 
 // 0x79B8
 u8 d_course_toads_turnpike_truck1_tyre[] = {
-    #include "textures/courses/toads_turnpike_truck1_tyre.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_truck1_tyre.rgba16.inc.c"
 };
 
 // 0x81B8
 u8 d_course_toads_turnpike_truck1_cab[] = {
-    #include "textures/courses/toads_turnpike_truck1_cab.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_truck1_cab.rgba16.inc.c"
 };
 
 // 0x89B8
 u8 d_course_toads_turnpike_truck1_cab_side[] = {
-    #include "textures/courses/toads_turnpike_truck1_cab_side.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_truck1_cab_side.rgba16.inc.c"
 };
 
 // 0x91B8
 u8 d_course_toads_turnpike_bus_back_lod0[] = {
-    #include "textures/courses/toads_turnpike_bus_back_lod0.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_bus_back_lod0.rgba16.inc.c"
 };
 
 // 0xA1B8
 u8 d_course_toads_turnpike_bus_side[] = {
-    #include "textures/courses/toads_turnpike_bus_side.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_bus_side.rgba16.inc.c"
 };
 
 // 0xB1B8 Bus is right-hand drive. High resolution
 u8 d_course_toads_turnpike_bus_door_lod0[] = {
-    #include "textures/courses/toads_turnpike_bus_door_lod0.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_bus_door_lod0.rgba16.inc.c"
 };
 
 // 0xB9B8
 u8 d_course_toads_turnpike_bus_window[] = {
-    #include "textures/courses/toads_turnpike_bus_window.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_bus_window.rgba16.inc.c"
 };
 
 // 0xC1B8
 u8 d_course_toads_turnpike_bus_front_lod0[] = {
-    #include "textures/courses/toads_turnpike_bus_front_lod0.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_bus_front_lod0.rgba16.inc.c"
 };
 
 // 0xD1B8 Black fill
 u8 d_course_toads_turnpike_black[] = {
-    #include "textures/courses/toads_turnpike_black.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_black.rgba16.inc.c"
 };
 
 // 0xD9B8
 u8 d_course_toads_turnpike_bus_driver_window[] = {
-    #include "textures/courses/toads_turnpike_bus_driver_window.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_bus_driver_window.rgba16.inc.c"
 };
 
 // 0xE1B8 Low resolution.
 u8 d_course_toads_turnpike_bus_door_lod1[] = {
-    #include "textures/courses/toads_turnpike_bus_door_lod1.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_bus_door_lod1.rgba16.inc.c"
 };
 
 // 0xE9B8 Low resolution. The lod0 high resolution version is
 // window and side.
 u8 d_course_toads_turnpike_bus_side_lod1[] = {
-    #include "textures/courses/toads_turnpike_bus_side_lod1.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_bus_side_lod1.rgba16.inc.c"
 };
 
 // 0xF1B8
 u8 d_course_toads_turnpike_bus_front_lod1[] = {
-    #include "textures/courses/toads_turnpike_bus_front_lod1.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_bus_front_lod1.rgba16.inc.c"
 };
 
 // 0xF9B8
 u8 d_course_toads_turnpike_bus_back_lod1[] = {
-    #include "textures/courses/toads_turnpike_bus_back_lod1.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_bus_back_lod1.rgba16.inc.c"
 };
 
 // 0x101B8
 u8 d_course_toads_turnpike_tanker_truck_stripe[] = {
-    #include "textures/courses/toads_turnpike_tanker_truck_stripe.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_tanker_truck_stripe.rgba16.inc.c"
 };
 
 // 0x109B8
 u8 d_course_toads_turnpike_tanker_truck_windshield[] = {
-    #include "textures/courses/toads_turnpike_tanker_truck_windshield.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_tanker_truck_windshield.rgba16.inc.c"
 };
 
 // 0x111B8 Radiator.
 u8 d_course_toads_turnpike_tanker_truck_front[] = {
-    #include "textures/courses/toads_turnpike_tanker_truck_front.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_tanker_truck_front.rgba16.inc.c"
 };
 
 // 0x119B8
 u8 d_course_toads_turnpike_tanker_truck_headlights[] = {
-    #include "textures/courses/toads_turnpike_tanker_truck_headlights.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_tanker_truck_headlights.rgba16.inc.c"
 };
 
 // 0x121B8
 u8 d_course_toads_turnpike_tanker_truck_bumper[] = {
-    #include "textures/courses/toads_turnpike_tanker_truck_bumper.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_tanker_truck_bumper.rgba16.inc.c"
 };
 
 // 0x129B8
 u8 d_course_toads_turnpike_tanker_truck_side_back_lod1[] = {
-    #include "textures/courses/toads_turnpike_tanker_truck_side_back_lod1.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_tanker_truck_side_back_lod1.rgba16.inc.c"
 };
 
 // 0x131B8
 u8 d_course_toads_turnpike_tanker_truck_back_lod1[] = {
-    #include "textures/courses/toads_turnpike_tanker_truck_back_lod1.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_tanker_truck_back_lod1.rgba16.inc.c"
 };
 
 // 0x139B8
 u8 d_course_toads_turnpike_tanker_truck_side_front_lod1[] = {
-    #include "textures/courses/toads_turnpike_tanker_truck_side_front_lod1.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_tanker_truck_side_front_lod1.rgba16.inc.c"
 };
 
 // 0x141B8
 u8 d_course_toads_turnpike_tanker_truck_front_lod1[] = {
-    #include "textures/courses/toads_turnpike_tanker_truck_front_lod1.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_tanker_truck_front_lod1.rgba16.inc.c"
 };
 
 // 0x149B8
 u8 d_course_toads_turnpike_truck2_box[] = {
-    #include "textures/courses/toads_turnpike_truck2_box.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_truck2_box.rgba16.inc.c"
 };
 
 // 0x151B8
 u8 d_course_toads_turnpike_truck3_box[] = {
-    #include "textures/courses/toads_turnpike_truck3_box.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_truck3_box.rgba16.inc.c"
 };
 
 // 0x159B8
 u8 d_course_toads_turnpike_car_headlights[] = {
-    #include "textures/courses/toads_turnpike_car_headlights.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_car_headlights.rgba16.inc.c"
 };
 
 // 0x161B8
 u8 d_course_toads_turnpike_car_taillights[] = {
-    #include "textures/courses/toads_turnpike_car_taillights.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_car_taillights.rgba16.inc.c"
 };
 
 // 0x169B8
 u8 d_course_toads_turnpike_car_front_lod1[] = {
-    #include "textures/courses/toads_turnpike_car_front_lod1.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_car_front_lod1.rgba16.inc.c"
 };
 
 // 0x171B8
 u8 d_course_toads_turnpike_car_back_lod1[] = {
-    #include "textures/courses/toads_turnpike_car_back_lod1.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_car_back_lod1.rgba16.inc.c"
 };
 
 // 0x179B8
 u8 d_course_toads_turnpike_car_side_lod1[] = {
-    #include "textures/courses/toads_turnpike_car_side_lod1.rgba16.inc.c";
+    #include "textures/courses/toads_turnpike_car_side_lod1.rgba16.inc.c"
 };
 
 // 0x181B8
