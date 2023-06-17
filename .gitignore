@@ -64,7 +64,12 @@ expected/*
 /bin/*
 /textures/**/*.png
 /textures/**/*.bin
+/assets/**/.export
 /assets/**/*.bin
+/assets/**/*.png
+/assets/**/*.mio0
+/assets/**/*.raw
+/assets/**/*.inc.c
 /music/**/*.m64
 /sound/**/*.m64
 /sound/**/*.aiff

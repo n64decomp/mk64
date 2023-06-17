@@ -1324,72 +1324,72 @@ glabel gTexture6967FC
 .incbin "bin/texture_6967FC.mio0"
 
 .balign 4, 0x00
-glabel gTexture696BAC
-.incbin "bin/texture_696BAC.mio0"
+glabel gTextureFinishLineBanner1
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner1.mio0"
 
 .balign 4, 0x00
-glabel gTexture696E3C
-.incbin "bin/texture_696E3C.mio0"
+glabel gTextureFinishLineBanner2
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner2.mio0"
 
 .balign 4, 0x00
-glabel gTexture697138
-.incbin "bin/texture_697138.mio0"
+glabel gTextureFinishLineBanner3
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner3.mio0"
 
 .balign 4, 0x00
-glabel gTexture69743C
-.incbin "bin/texture_69743C.mio0"
+glabel gTextureFinishLineBanner4
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner4.mio0"
 
 .balign 4, 0x00
-glabel gTexture6977F0
-.incbin "bin/texture_6977F0.mio0"
+glabel gTextureFinishLineBanner5
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner5.mio0"
 
 .balign 4, 0x00
-glabel gTexture697B10
-.incbin "bin/texture_697B10.mio0"
+glabel gTextureFinishLineBanner6
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner6.mio0"
 
 .balign 4, 0x00
-glabel gTexture697E80
-.incbin "bin/texture_697E80.mio0"
+glabel gTextureFinishLineBanner7
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner7.mio0"
 
 .balign 4, 0x00
-glabel gTexture69811C
-.incbin "bin/texture_69811C.mio0"
+glabel gTextureFinishLineBanner8
+.incbin "assets/finish_line_banner/gTextureFinishLineBanner8.mio0"
 
 .balign 4, 0x00
-glabel gTexture698378
-.incbin "bin/texture_698378.mio0"
+glabel gTexturePiranhaPlant1
+.incbin "assets/piranha_plant/gTexturePiranhaPlant1.mio0"
 
 .balign 4, 0x00
-glabel gTexture69859C
-.incbin "bin/texture_69859C.mio0"
+glabel gTexturePiranhaPlant2
+.incbin "assets/piranha_plant/gTexturePiranhaPlant2.mio0"
 
 .balign 4, 0x00
-glabel gTexture6987FC
-.incbin "bin/texture_6987FC.mio0"
+glabel gTexturePiranhaPlant3
+.incbin "assets/piranha_plant/gTexturePiranhaPlant3.mio0"
 
 .balign 4, 0x00
-glabel gTexture698A40
-.incbin "bin/texture_698A40.mio0"
+glabel gTexturePiranhaPlant4
+.incbin "assets/piranha_plant/gTexturePiranhaPlant4.mio0"
 
 .balign 4, 0x00
-glabel gTexture698C60
-.incbin "bin/texture_698C60.mio0"
+glabel gTexturePiranhaPlant5
+.incbin "assets/piranha_plant/gTexturePiranhaPlant5.mio0"
 
 .balign 4, 0x00
-glabel gTexture698E38
-.incbin "bin/texture_698E38.mio0"
+glabel gTexturePiranhaPlant6
+.incbin "assets/piranha_plant/gTexturePiranhaPlant6.mio0"
 
 .balign 4, 0x00
-glabel gTexture698FF4
-.incbin "bin/texture_698FF4.mio0"
+glabel gTexturePiranhaPlant7
+.incbin "assets/piranha_plant/gTexturePiranhaPlant7.mio0"
 
 .balign 4, 0x00
-glabel gTexture6991F8
-.incbin "bin/texture_6991F8.mio0"
+glabel gTexturePiranhaPlant8
+.incbin "assets/piranha_plant/gTexturePiranhaPlant8.mio0"
 
 .balign 4, 0x00
-glabel gTexture699500
-.incbin "bin/texture_699500.mio0"
+glabel gTexturePiranhaPlant9
+.incbin "assets/piranha_plant/gTexturePiranhaPlant9.mio0"
 
 .balign 4, 0x00
 glabel gTexture6997E0
@@ -1528,36 +1528,36 @@ glabel gTexture69EFE0
 .incbin "textures/standalone/texture_69EFE0.i4.mio0"
 
 .balign 4, 0x00
-glabel gTexture69F158
-.incbin "bin/texture_69F158.mio0"
+glabel gTextureOnomatopoeiaCrash1
+.incbin "assets/onomatopoeia/gTextureOnomatopoeiaCrash1.mio0"
 
 .balign 4, 0x00
-glabel gTexture69F390
-.incbin "bin/texture_69F390.mio0"
+glabel gTextureOnomatopoeiaCrash2
+.incbin "assets/onomatopoeia/gTextureOnomatopoeiaCrash2.mio0"
 
 .balign 4, 0x00
-glabel gTexture69F5E4
-.incbin "bin/texture_69F5E4.mio0"
+glabel gTextureOnomatopoeiaWhrrrr1
+.incbin "assets/onomatopoeia/gTextureOnomatopoeiaWhrrrr1.mio0"
 
 .balign 4, 0x00
-glabel gTexture69F9C0
-.incbin "bin/texture_69F9C0.mio0"
+glabel gTextureOnomatopoeiaWhrrrr2
+.incbin "assets/onomatopoeia/gTextureOnomatopoeiaWhrrrr2.mio0"
 
 .balign 4, 0x00
-glabel gTexture69FD6C
-.incbin "bin/texture_69FD6C.mio0"
+glabel gTextureOnomatopoeiaPoomp1
+.incbin "assets/onomatopoeia/gTextureOnomatopoeiaPoomp1.mio0"
 
 .balign 4, 0x00
-glabel gTexture69FF30
-.incbin "bin/texture_69FF30.mio0"
+glabel gTextureOnomatopoeiaPoomp2
+.incbin "assets/onomatopoeia/gTextureOnomatopoeiaPoomp2.mio0"
 
 .balign 4, 0x00
-glabel gTexture6A010C
-.incbin "bin/texture_6A010C.mio0"
+glabel gTextureBalloon1
+.incbin "assets/onomatopoeia/gTextureBalloon1.mio0"
 
 .balign 4, 0x00
-glabel gTexture6A0350
-.incbin "bin/texture_6A0350.mio0"
+glabel gTextureBalloon2
+.incbin "assets/onomatopoeia/gTextureBalloon2.mio0"
 
 .balign 4, 0x00
 glabel gTextureLightningBolt0

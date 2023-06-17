@@ -27,8 +27,8 @@ extern s8 D_03008000[];
 extern s8 D_03008800[];
 */
 
-s8 D_0D000000[] = { // tlut
-    #include "textures/common/132B50_00000_tlut.rgba16.inc.c"
+s8 gTLUTFinishLineBanner[] = { // tlut
+    #include "assets/finish_line_banner/gTLUTFinishLineBanner.inc.c"
 };
 
 s8 D_0D000200[] = { // tlut
@@ -215,7 +215,7 @@ Gfx D_0D001828[] = {
 Gfx D_0D001840[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
-    gsDPLoadTLUT_pal256(D_0D000000),
+    gsDPLoadTLUT_pal256(gTLUTFinishLineBanner),
     gsDPSetTextureLUT(G_TT_RGBA16),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
@@ -634,11 +634,11 @@ s8 D_0D004C68[] = {
 };
 
 s8 gTLUTGreenShell[] = {
-    #include "textures/common/gTLUTGreenShell.rgba16.inc.c"
+    #include "assets/greenshell/gTLUTGreenShell.inc.c"
 };
 // 5038
 s8 gTLUTBlueShell[] = {
-    #include "textures/common/gTLUTBlueShell.rgba16.inc.c"
+    #include "assets/blueshell/gTLUTBlueShell.inc.c"
 };
 
 //s32 fileSplitPad[4] = { 0 };
@@ -2588,143 +2588,143 @@ s8 gTexturePortraitBombKartAndQuestionMark[] = {
 
 // 1DED8 tlut item frames
 s8 gTLUTItemWindowNone[] = {
-    #include "textures/common/tlut/gTextureItemWindowNone.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowNone.inc.c"
 };
 
 s8 gTLUTItemWindowBanana[] = {
-    #include "textures/common/tlut/gTextureItemWindowBanana.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowBanana.inc.c"
 };
 
 s8 gTLUTItemWindowBananaBunch[] = {
-    #include "textures/common/tlut/gTextureItemWindowBananaBunch.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowBananaBunch.inc.c"
 };
 
 s8 gTLUTItemWindowMushroom[] = {
-    #include "textures/common/tlut/gTextureItemWindowMushroom.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowMushroom.inc.c"
 };
 
 s8 gTLUTItemWindowDoubleMushroom[] = {
-    #include "textures/common/tlut/gTextureItemWindowDoubleMushroom.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowDoubleMushroom.inc.c"
 };
 
 s8 gTLUTItemWindowTripleMushroom[] = {
-    #include "textures/common/tlut/gTextureItemWindowTripleMushroom.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowTripleMushroom.inc.c"
 };
 
 s8 gTLUTItemWindowSuperMushroom[] = {
-    #include "textures/common/tlut/gTextureItemWindowSuperMushroom.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowSuperMushroom.inc.c"
 };
 
 s8 gTLUTItemWindowBlueShell[] = {
-    #include "textures/common/tlut/gTextureItemWindowBlueShell.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowBlueShell.inc.c"
 };
 
 s8 gTLUTItemWindowBoo[] = {
-    #include "textures/common/tlut/gTextureItemWindowBoo.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowBoo.inc.c"
 };
 
 s8 gTLUTItemWindowGreenShell[] = {
-    #include "textures/common/tlut/gTextureItemWindowGreenShell.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowGreenShell.inc.c"
 };
 
 s8 gTLUTItemWindowTripleGreenShell[] = {
-    #include "textures/common/tlut/gTextureItemWindowTripleGreenShell.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowTripleGreenShell.inc.c"
 };
 
 s8 gTLUTItemWindowRedShell[] = {
-    #include "textures/common/tlut/gTextureItemWindowRedShell.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowRedShell.inc.c"
 };
 
 s8 gTLUTItemWindowTripleRedShell[] = {
-    #include "textures/common/tlut/gTextureItemWindowTripleRedShell.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowTripleRedShell.inc.c"
 };
 
 s8 gTLUTItemWindowStar[] = {
-    #include "textures/common/tlut/gTextureItemWindowStar.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowStar.inc.c"
 };
 
 s8 gTLUTItemWindowThunderBolt[] = {
-    #include "textures/common/tlut/gTextureItemWindowThunderBolt.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowThunderBolt.inc.c"
 };
 
 s8 gTLUTItemWindowFakeItemBox[] = {
-    #include "textures/common/tlut/gTextureItemWindowFakeItemBox.rgba16.ci8.tlut.inc.c"
+    #include "assets/item_window/gTLUTItemWindowFakeItemBox.inc.c"
 };
 
 // UI Item Frames
 s8 gTextureItemWindowNone[] = {
-    #include "textures/common/tlut/gTextureItemWindowNone.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowNone.inc.c"
 };
 
 s8 gTextureItemWindowBanana[] = {
-    #include "textures/common/tlut/gTextureItemWindowBanana.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowBanana.inc.c"
 };
 
 s8 gTextureItemWindowBananaBunch[] = {
-    #include "textures/common/tlut/gTextureItemWindowBananaBunch.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowBananaBunch.inc.c"
 };
 
 s8 gTextureItemWindowMushroom[] = {
-    #include "textures/common/tlut/gTextureItemWindowMushroom.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowMushroom.inc.c"
 };
 
 s8 gTextureItemWindowDoubleMushroom[] = {
-    #include "textures/common/tlut/gTextureItemWindowDoubleMushroom.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowDoubleMushroom.inc.c"
 };
 
 s8 gTextureItemWindowTripleMushroom[] = {
-    #include "textures/common/tlut/gTextureItemWindowTripleMushroom.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowTripleMushroom.inc.c"
 };
 
 s8 gTextureItemWindowSuperMushroom[] = {
-    #include "textures/common/tlut/gTextureItemWindowSuperMushroom.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowSuperMushroom.inc.c"
 };
 
 s8 gTextureItemWindowBlueShell[] = {
-    #include "textures/common/tlut/gTextureItemWindowBlueShell.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowBlueShell.inc.c"
 };
 
 s8 gTextureItemWindowBoo[] = {
-    #include "textures/common/tlut/gTextureItemWindowBoo.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowBoo.inc.c"
 };
 
 s8 gTextureItemWindowGreenShell[] = {
-    #include "textures/common/tlut/gTextureItemWindowGreenShell.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowGreenShell.inc.c"
 };
 
 s8 gTextureItemWindowTripleGreenShell[] = {
-    #include "textures/common/tlut/gTextureItemWindowTripleGreenShell.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowTripleGreenShell.inc.c"
 };
 
 s8 gTextureItemWindowRedShell[] = {
-    #include "textures/common/tlut/gTextureItemWindowRedShell.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowRedShell.inc.c"
 };
 
 s8 gTextureItemWindowTripleRedShell[] = {
-    #include "textures/common/tlut/gTextureItemWindowTripleRedShell.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowTripleRedShell.inc.c"
 };
 
 s8 gTextureItemWindowStar[] = {
-    #include "textures/common/tlut/gTextureItemWindowStar.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowStar.inc.c"
 };
 
 s8 gTextureItemWindowThunderBolt[] = {
-    #include "textures/common/tlut/gTextureItemWindowThunderBolt.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowThunderBolt.inc.c"
 };
 
 s8 gTextureItemWindowFakeItemBox[] = {
-    #include "textures/common/tlut/gTextureItemWindowFakeItemBox.rgba16.ci8.inc.c"
+    #include "assets/item_window/gTextureItemWindowFakeItemBox.inc.c"
 };
 
 s8 gTLUTLakituCountdown[][512] = {
     {
-        #include "textures/common/gTLUTLakituNoLights.rgba16.inc.c"
+        #include "assets/lakitu/nolights/gTLUTLakituNoLights.inc.c"
     },
     {
-        #include "textures/common/gTLUTLakituRedLights.rgba16.inc.c"
+        #include "assets/lakitu/redlights/gTLUTLakituRedLights.inc.c"
     },
     {
-        #include "textures/common/gTLUTLakituBlueLight.rgba16.inc.c"
+        #include "assets/lakitu/bluelight/gTLUTLakituBlueLight.inc.c"
     }
 };
 
@@ -2737,23 +2737,23 @@ s8 gTLUTLakituCountdown[][512] = {
 */
 
 s8 gTLUTLakituCheckeredFlag[] = {
-    #include "textures/common/gTLUTLakituCheckeredFlag.rgba16.inc.c"
+    #include "assets/lakitu/checkeredflag/gTLUTLakituCheckeredFlag.inc.c"
 };
 
 s8 gTLUTLakituSecondLap[] = {
-    #include "textures/common/gTLUTLakituSecondLap.rgba16.inc.c"
+    #include "assets/lakitu/secondlap/gTLUTLakituSecondLap.inc.c"
 };
 
 s8 gTLUTLakituFinalLap[] = {
-    #include "textures/common/gTLUTLakituFinalLap.rgba16.inc.c"
+    #include "assets/lakitu/finallap/gTLUTLakituFinalLap.inc.c"
 };
 
 s8 gTLUTLakituReverse[] = {
-    #include "textures/common/gTLUTLakituReverse.rgba16.inc.c"
+    #include "assets/lakitu/reverse/gTLUTLakituReverse.inc.c"
 };
 
 s8 gTLUTLakituFishing[] = {
-    #include "textures/common/gTLUTLakituFishing.rgba16.inc.c"
+    #include "assets/lakitu/fishing/gTLUTLakituFishing.inc.c"
 };
 
 // unused traffic light tlut
@@ -2873,36 +2873,36 @@ s8 D_0D02C858[] = {
 
 // minimap cars
 s8 gTextureMiniMapFinishLine[] = {
-    #include "textures/common/gTextureMiniMapFinishLine.rgba16.inc.c"
+    #include "assets/minimap_icons/gTextureMiniMapFinishLine.inc.c"
 };
 
 s8 gMiniMapKartTextures[][128] = {
     { // Mario
-        #include "textures/common/gTextureMiniMapKartMario.rgba16.inc.c"
+        #include "assets/minimap_icons/gTextureMiniMapKartMario.inc.c"
     },
     { // Luigi
-        #include "textures/common/gTextureMiniMapKartLuigi.rgba16.inc.c"
+        #include "assets/minimap_icons/gTextureMiniMapKartLuigi.inc.c"
     },
     { // Yoshi
-        #include "textures/common/gTextureMiniMapKartYoshi.rgba16.inc.c"
+        #include "assets/minimap_icons/gTextureMiniMapKartYoshi.inc.c"
     },
     { // Toad
-        #include "textures/common/gTextureMiniMapKartToad.rgba16.inc.c"
+        #include "assets/minimap_icons/gTextureMiniMapKartToad.inc.c"
     },
     { // Donkey Kong
-        #include "textures/common/gTextureMiniMapKartDonkeyKong.rgba16.inc.c"
+        #include "assets/minimap_icons/gTextureMiniMapKartDonkeyKong.inc.c"
     },
     { // Wario
-        #include "textures/common/gTextureMiniMapKartWario.rgba16.inc.c"
+        #include "assets/minimap_icons/gTextureMiniMapKartWario.inc.c"
     },
     { // Peach
-        #include "textures/common/gTextureMiniMapKartPeach.rgba16.inc.c"
+        #include "assets/minimap_icons/gTextureMiniMapKartPeach.inc.c"
     },
     { // Bowser
-        #include "textures/common/gTextureMiniMapKartBowser.rgba16.inc.c"
+        #include "assets/minimap_icons/gTextureMiniMapKartBowser.inc.c"
     },
 };
 
 s8 gTextureMiniMapProgressDot[] = {
-        #include "textures/common/gTextureMiniMapProgressDot.rgba16.inc.c"
+        #include "assets/minimap_icons/gTextureMiniMapProgressDot.inc.c"
 };
