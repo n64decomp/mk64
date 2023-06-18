@@ -103,7 +103,7 @@ COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(wildcard $(dir)/*.inc.c))
 # Object files
 O_FILES := $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
 		   $(foreach file,$(COURSE_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
-           $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file:.s=.o))
+           $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file:.s=.o)) \
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d) $(BUILD_DIR)/$(LD_SCRIPT).d
@@ -171,7 +171,7 @@ GRUCODE_CFLAGS = -DF3DEX_GBI -DF3D_OLD -D_LANGUAGE_C
 CC_CHECK := gcc -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) -std=gnu90 -Wall -Wempty-body -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(VERSION_CFLAGS) $(GRUCODE_CFLAGS)
 
 ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) --defsym F3DEX_GBI=1
-CFLAGS = -Wab,-r4300_mul -non_shared -G 0 -Xcpluscomm -Xfullwarn -woff 838 -signed $(OPT_FLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) $(VERSION_CFLAGS) $(MIPSISET) $(GRUCODE_CFLAGS)
+CFLAGS = -Wab,-r4300_mul -non_shared -G 0 -Xcpluscomm -Xfullwarn -woff 838,649 -signed $(OPT_FLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) $(VERSION_CFLAGS) $(MIPSISET) $(GRUCODE_CFLAGS)
 OBJCOPYFLAGS = --pad-to=0xC00000 --gap-fill=0xFF
 
 LDFLAGS = -T undefined_syms.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(BUILD_DIR)/$(TARGET).map --no-check-sections
@@ -212,7 +212,7 @@ default: all
 MAKEFILE_SPLIT = Makefile.split
 include $(MAKEFILE_SPLIT)
 
-all: $(BUILD_DIR)/$(TARGET).z64 $(COURSE_MODEL_TARGETS)
+all: $(BUILD_DIR)/$(TARGET).z64
 ifeq ($(COMPARE),1)
 	@$(SHA1SUM) -c $(TARGET).sha1
 endif
@@ -322,7 +322,7 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 
 COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
 COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
-COURSE_PACKED_DL_O := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
+# COURSE_PACKED_DL_O := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
 
 
 
@@ -330,7 +330,7 @@ COURSE_PACKED_DL_O := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl
 $(COURSE_PACKED_DL):
 	$(LD) -t -e 0 -Ttext=07000000 -Map $(@D)/packed.inc.elf.map -o $(@D)/packed.inc.elf $(@D)/packed.inc.o --no-check-sections
 # Generate header for packed displaylists
-	# $(DLSYMGEN)
+#   $(DLSYMGEN)
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/packed.inc.elf $(@D)/packed.inc.bin
 	$(DLPACKER) $(@D)/packed.inc.bin $(@D)/packed_dl.inc.bin
 
@@ -338,7 +338,7 @@ $(COURSE_PACKED_DL):
 $(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c $(COURSE_PACKED_DL)
 	$(LD) -t -e 0 -Ttext=0F000000 -Map $(@D)/model.inc.elf.map -o $(@D)/model.inc.elf $(@D)/model.inc.o --no-check-sections
 # Generate model vertice count header
-	#$(MODELSYMGEN)
+#	$(MODELSYMGEN)
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/model.inc.elf $(@D)/model.inc.bin
 	$(MIO0TOOL) -c $(@D)/model.inc.bin $(@D)/model.inc.mio0
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.inc.bin\"\n\n.balign 0x10\n" > $(@D)/model.inc.mio0.s
@@ -346,13 +346,14 @@ $(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c $(COUR
 
 #################### Compile course vertex to mio0 #####################
 #################### Compile course displaylists to mio0 #####################
-COURSE_DL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.inc.mio0.o)
 
 COURSE_TEXTURE_FILES := $(foreach dir,textures/courses,$(subst .png, , $(wildcard $(dir)/*)))
 COURSE_TLUT := $(foreach dir,textures/courses/tlut,$(subst .png, , $(wildcard $(dir)/*)))
 COURSE_TLUT2 := $(foreach dir,textures/courses/tlut2,$(subst .png, , $(wildcard $(dir)/*)))
 COURSE_TLUT3 := $(foreach dir,textures/courses/tlut3,$(subst .png, , $(wildcard $(dir)/*)))
 #RAINBOW_ROAD_TEXTURE_FILES := $(foreach dir,textures/courses/rainbow_road,$(subst .png, , $(wildcard $(dir)/*)))
+
+COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.inc.mio0.o)
 
 $(COURSE_TEXTURE_FILES):
 	$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8
@@ -367,7 +368,7 @@ $(COURSE_TLUT3):
 	$(N64GRAPHICS) -Z $(BUILD_DIR)/$@.inc.c -g $@.png -s u8 -c rgba16 -f ci8 -p textures/courses/$(basename $(notdir $@)).png
 #   tluts
 
-$(COURSE_DL_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o : %/course_data.inc.c $(BUILD_DIR)/%/course_data.inc.o $(COURSE_TEXTURE_FILES) $(COURSE_TLUT) $(COURSE_TLUT2) $(COURSE_TLUT3)
+$(COURSE_DATA_TARGETS) : $(BUILD_DIR)/%/course_data.inc.mio0.o : %/course_data.inc.c $(COURSE_TEXTURE_FILES) $(COURSE_TLUT) $(COURSE_TLUT2) $(COURSE_TLUT3)
 # todo: Clean this up if possible. Not really worth the time though.
 	$(LD) -t -e 0 -Ttext=06000000 -Map $(@D)/course_data.inc.elf.map -o $(@D)/course_data.inc.elf $(@D)/course_data.inc.o --no-check-sections
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/course_data.inc.elf $(@D)/course_data.inc.bin
@@ -447,7 +448,7 @@ $(BUILD_DIR)/src/common_textures.inc.mio0.o: $(BUILD_DIR)/src/common_textures.in
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.s
 
 
-$(BUILD_DIR)/$(TARGET).elf: $(COURSE_DL_TARGETS) $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_MODEL_TARGETS) undefined_syms.txt
+$(BUILD_DIR)/$(TARGET).elf: $(COURSE_DATA_TARGETS) $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_MODEL_TARGETS) undefined_syms.txt
 	$(LD) $(LDFLAGS) -o $@
 
 $(BUILD_DIR)/$(TARGET).z64: $(BUILD_DIR)/$(TARGET).elf
