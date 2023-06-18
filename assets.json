@@ -693,8 +693,6 @@
 "textures/692CC0_00000.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":["0x4C68", "0x132B50"]}, "offsets": {"us":["0x692CC0", "0x00000"]}},
 
 "textures/standalone/shrub.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x692F3C", "0x00000"]}},
-"textures/69333C_00000.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":["0x7320", "0x83F740"]}, "offsets": {"us":["0x69333C", "0x00000"]}},
-"textures/693790_00000.rgba16.ci8.png": {"meta":{"dims":[32,64], "pal":["0x7320", "0x83F740"]}, "offsets": {"us":["0x693790", "0x00000"]}},
 
 "textures/courses/moo_moo_farm_cow_tlut.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x852E20", "0x13870"]}},
 "textures/gTextureCow01Left.rgba16.ci8.png":  {"meta":{"dims":[32,64], "pal":["0x13870", "0x852E20"]}, "offsets": {"us":["0x693BC4", "0x00000"]}},
@@ -1346,10 +1344,6 @@
 
 "textures/courses/yoshi_valley_egg_spot.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x835BA0", "0x16570"]}},
 "textures/courses/yoshi_valley_egg.rgba16.png": {"meta":{"dims":[64,32]}, "offsets": {"us":["0x835BA0", "0x16FA8"]}},
-
-"textures/courses/tlut2/frappe_snowland_snowman.rgba16.ci8.png": {"meta":{"dims":[64,128], "pal":"0x4B20"}, "offsets": {"us":["0x83F740", "0x04D20"]}},
-"textures/courses/tlut/frappe_snowland_snow.rgba16.ci8.png": {"meta":{"dims":[32,32], "pal":"0x6D20"}, "offsets": {"us":["0x83F740", "0x06F20"]}},
-"textures/courses/frappe_snowland_tree.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x83F740", "0x07320"]}},
 
 "textures/courses/koopa_troopa_beach_crab1.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x842E40", "0x0D628"]}},
 "textures/courses/koopa_troopa_beach_crab2.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x842E40", "0x0D628"]}},

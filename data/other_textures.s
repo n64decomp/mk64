@@ -1256,12 +1256,12 @@ glabel gTextureShrub
 .incbin "textures/standalone/shrub.rgba16.mio0"
 
 .balign 4, 0x00
-glabel gTexture69333C
-.incbin "bin/texture_69333C.mio0"
+glabel gTextureFrappeSnowlandTreeLeft
+.incbin "assets/courses/frappe_snowland/gTextureFrappeSnowlandTreeLeft.mio0"
 
 .balign 4, 0x00
-glabel gTexture693790
-.incbin "bin/texture_693790.mio0"
+glabel gTextureFrappeSnowlandTreeRight
+.incbin "assets/courses/frappe_snowland/gTextureFrappeSnowlandTreeRight.mio0"
 
 .balign 4, 0x00
 glabel gTexture693BC4
