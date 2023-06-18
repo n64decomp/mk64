@@ -368,7 +368,8 @@ $(COURSE_TLUT3):
 	$(N64GRAPHICS) -Z $(BUILD_DIR)/$@.inc.c -g $@.png -s u8 -c rgba16 -f ci8 -p textures/courses/$(basename $(notdir $@)).png
 #   tluts
 
-$(COURSE_DATA_TARGETS) : $(BUILD_DIR)/%/course_data.inc.mio0.o : %/course_data.inc.c $(COURSE_TEXTURE_FILES) $(COURSE_TLUT) $(COURSE_TLUT2) $(COURSE_TLUT3)
+# Why this has to reference itself as a dependency is beyond me. Albeit, all of makefile is beyond me.
+$(COURSE_DATA_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o : %/course_data.inc.c
 # todo: Clean this up if possible. Not really worth the time though.
 	$(LD) -t -e 0 -Ttext=06000000 -Map $(@D)/course_data.inc.elf.map -o $(@D)/course_data.inc.elf $(@D)/course_data.inc.o --no-check-sections
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/course_data.inc.elf $(@D)/course_data.inc.bin
@@ -448,7 +449,7 @@ $(BUILD_DIR)/src/common_textures.inc.mio0.o: $(BUILD_DIR)/src/common_textures.in
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.s
 
 
-$(BUILD_DIR)/$(TARGET).elf: $(COURSE_DATA_TARGETS) $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_MODEL_TARGETS) undefined_syms.txt
+$(BUILD_DIR)/$(TARGET).elf: $(COURSE_TEXTURE_FILES) $(COURSE_TLUT) $(COURSE_TLUT2) $(COURSE_TLUT3) $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_DATA_TARGETS) $(COURSE_MODEL_TARGETS) undefined_syms.txt
 	$(LD) $(LDFLAGS) -o $@
 
 $(BUILD_DIR)/$(TARGET).z64: $(BUILD_DIR)/$(TARGET).elf
