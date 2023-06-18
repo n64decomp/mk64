@@ -1357,39 +1357,39 @@ glabel gTextureFinishLineBanner8
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant1
-.incbin "assets/piranha_plant/gTexturePiranhaPlant1.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant1.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant2
-.incbin "assets/piranha_plant/gTexturePiranhaPlant2.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant2.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant3
-.incbin "assets/piranha_plant/gTexturePiranhaPlant3.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant3.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant4
-.incbin "assets/piranha_plant/gTexturePiranhaPlant4.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant4.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant5
-.incbin "assets/piranha_plant/gTexturePiranhaPlant5.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant5.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant6
-.incbin "assets/piranha_plant/gTexturePiranhaPlant6.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant6.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant7
-.incbin "assets/piranha_plant/gTexturePiranhaPlant7.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant7.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant8
-.incbin "assets/piranha_plant/gTexturePiranhaPlant8.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant8.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant9
-.incbin "assets/piranha_plant/gTexturePiranhaPlant9.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant9.mio0"
 
 .balign 4, 0x00
 glabel gTexture6997E0

@@ -273,7 +273,7 @@ $(BUILD_DIR)/src/startup_logo.inc.o: src/startup_logo.inc.c
 
 ############################### Assets ###############################
 
-ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name *.mk)
+ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name '*.mk')
 ASSET_DIRECTORIES :=
 
 $(foreach inc,$(ASSET_INCLUDES),$(eval include $(inc)))
