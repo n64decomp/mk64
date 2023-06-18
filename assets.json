@@ -1330,8 +1330,6 @@
 "textures/821D10_07760.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x821D10", "0x07760"]}},
 "textures/821D10_08070.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x821D10", "0x08070"]}},
 "textures/825800_08A48.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x825800", "0x08A48"]}},
-"textures/courses/choco_mountain_wall.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x82B620", "0x05B38"]}},
-"textures/courses/choco_mountain_rock.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x82B620", "0x06338"]}},
 "textures/courses/bowsers_castle_thwomp.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x82DF40", "0x06738"]}},
 
 "textures/courses/tlut/bowsers_castle_thwomp_face.rgba16.ci8.png": {"meta":{"dims":[16,384], "pal":"0x6F38"}, "offsets": {"us":["0x82DF40", "0x07138"]}},
