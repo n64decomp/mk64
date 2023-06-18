@@ -3,11 +3,17 @@
 #include <types.h>
 #include <common_structs.h>
 #include "main.h"
+#include "memory.h"
 #include "variables.h"
 #include "common_textures.h"
 #include "code_8001F980.h"
 #include "hud_renderer.h"
 #include "code_80280650.h"
+#include "camera_junk.h"
+#include "code_80027D00.h"
+#include "code_80057C60.h"
+#include "code_80005FD0.h"
+#include "code_80281C40.h"
 
 void func_80280650(void) {
 
@@ -26,9 +32,7 @@ void func_80280658(struct UnkStruct_80280658 *arg0) {
 }
 
 struct UnkStruct_80280658 *func_802806C8(void) {
-    //struct UnkStruct_80280658 *sp1C;
-    //s32 temp_v0;
-    s32 pad[2];
+    UNUSED s32 pad[2];
     struct UnkStruct_80280658 *phi_a0 = D_802874F8;
     s32 i;
 
@@ -49,7 +53,7 @@ struct UnkStruct_80280658 *func_802806C8(void) {
 struct UnkStruct_80280658 *func_80280734(struct UnkStruct_80280658 *arg0) {
     struct UnkStruct_80280658 *temp_v0 = func_802806C8();
 
-    temp_v0->unk28 = arg0;
+    temp_v0->unk28 = (struct UnkStruct_80280658_2 *) arg0;
     func_80280658(temp_v0);
     return temp_v0;
 }
@@ -147,7 +151,7 @@ void func_8028093C(struct UnkStruct_80280658 *arg0) {
         arg0->unk10 += func_80280850(0.2f);
         arg0->unk18 += func_80280850(0.2f);
     } else if (arg0->unk2C == 4) {
-        temp_v0 = func_80280734(&D_80284E7C);
+        temp_v0 = func_80280734((struct UnkStruct_80280658 *)&D_80284E7C);
         temp_v0->unk10 = arg0->unk10;
         temp_v0->unk14 = arg0->unk14;
         temp_v0->unk18 = arg0->unk18;
@@ -266,27 +270,26 @@ block_12:
 GLOBAL_ASM("asm/non_matchings/code_80280650/func_80280D1C.s")
 #endif
 
-void func_80280FA0(s32 arg0) {
+void func_80280FA0(UNUSED s32 arg0) {
 
 }
 
-void func_80280FA8(s32 arg0) {
+void func_80280FA8(UNUSED s32 arg0) {
 
 }
 
 void func_80280FB0(void) {
     D_802874E0 = 0;
-
-    D_802874F8 = get_next_available_memory_addr(0x3B60);
+    D_802874F8 = (struct UnkStruct_80280658 *) get_next_available_memory_addr(0x3B60);
     bzero(D_802874F8, 0x3B60);
-    func_80280734((struct UnkStruct80280658 *)&D_80284E88);
+    func_80280734((struct UnkStruct_80280658 *)&D_80284E88);
 }
 
 void func_80280FFC(void) {
     D_802874F4 = 1;
 }
 
-void func_8028100C(s32 arg0, s32 arg1, s32 arg2) {
+void func_8028100C(UNUSED s32 arg0, UNUSED s32 arg1, UNUSED s32 arg2) {
 
 }
 

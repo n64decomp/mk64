@@ -28,8 +28,12 @@ struct unk_41F8 {
 
 /* Function Prototypes */
 
+void func_8001C14C(void);
 void func_800070F4(void);
 void func_80019DF4(void);
+void func_80019C50(s32);
+void func_80019FB4(s32);
+void func_80019D2C(Camera*, Player*, s32);
 void func_80019E58(void);
 s16  func_80005FD0(Vec3f, Vec3f);
 s32  func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
@@ -73,7 +77,7 @@ void func_8000EEDC();
 void func_8000EF20();
 void func_8000F0E0();
 void func_8000F124();
-void func_8000F2BC(struct TrackWayPoint*, s32);
+void func_8000F2BC(struct TrackWayPoint*, size_t);
 void func_80010218(s32);
 f32  func_80010480(s32, u16);
 void func_800107C4(s32);
@@ -115,7 +119,7 @@ void func_80015390(Camera*, Player*, s32);
 void func_8001968C();
 void func_8001C05C();
 void func_80019DE4();
-void func_8001A0A4(s32, s32, s32, s32, s32);
+void func_8001A0A4(s16*, Camera*, Player*, s32, s32);
 void func_8001A0DC(s16*, Camera*, Player*, s8, s32);
 s32  func_8001A310(s32, s32);
 void func_8001ABE0(s32, s32);

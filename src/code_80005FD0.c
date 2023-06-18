@@ -14,6 +14,8 @@
 #include "variables.h"
 #include <actor_types.h>
 #include "vehicles.h"
+#include "hud_renderer.h"
+#include "code_80057C60.h"
 
 s16 func_80005FD0(Vec3f arg0, Vec3f arg1) {
     s16 temp_ret;
@@ -1813,7 +1815,7 @@ s32 func_80008E58(s32 payerId, s32 pathIndex) {
     f32 posZ;
     Player *player;
     s32 trackSegment;
-    s32 stackPadding;
+    UNUSED s32 stackPadding;
 
     player = &gPlayers[payerId];
     posX = player->pos[0];
@@ -1882,8 +1884,7 @@ void func_800090F0(s32 playerId, Player *player) {
     f32 posX;
     f32 posY;
     f32 posZ;
-    f32 stackPadding;
-    f32 stackPadding2;
+    UNUSED f32 pad[2];
 
     posX = player->pos[0];
     posY = player->pos[1];
@@ -2103,8 +2104,6 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000929C.s")
 
 void func_800097E0(void) {
     s32 i;
-    s32 j;
-    s32 unk = 0;
     func_8000EF20();
     D_8016337C++;
 
@@ -3029,7 +3028,7 @@ block_40:
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000B140.s")
 #endif
 
-s32 func_8000B7E4(s32 arg0, u16 wayPointIndex) {
+s32 func_8000B7E4(UNUSED s32 arg0, u16 wayPointIndex) {
     s16 thing = D_801645E0[wayPointIndex];
     if (thing > 0) {
         return 1;
@@ -3079,7 +3078,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000B874.s")
 #endif
 
 void func_8000B95C(s32 playerId, u16 wayPointIndex, s32 pathIndex) {
-    f32 stackPadding[3];
+    UNUSED Vec3f pad;
     D_80163068[playerId] = 0.0f;
     if ((s32) D_800DCA4C[gCurrentCourseId] >= 0) {
         if ((gPlayers[playerId].unk_000 & 0x8000) != 0) {
@@ -3434,7 +3433,7 @@ s16 func_8000C9DC(f32 posX, f32 posY, f32 posZ, s16 wayPointIndex, s32 pathIndex
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000C9DC.s")
 #endif
 
-void func_8000CBA4(f32 unusedPosX, f32 posY, f32 unusedPosZ, s16 *wayPointIndex) {
+void func_8000CBA4(UNUSED f32 posX, f32 posY, UNUSED f32 posZ, s16 *wayPointIndex) {
     s16 var_v0;
 
     var_v0 = *wayPointIndex;
@@ -3444,7 +3443,7 @@ void func_8000CBA4(f32 unusedPosX, f32 posY, f32 unusedPosZ, s16 *wayPointIndex)
     *wayPointIndex = var_v0;
 }
 
-void func_8000CBF8(f32 unusedPosX, f32 unusedPosY, f32 posZ, s16 *wayPointIndex, s32 pathIndex) {
+void func_8000CBF8(UNUSED f32 posX, UNUSED f32 posY, f32 posZ, s16 *wayPointIndex, s32 pathIndex) {
     s16 temp;
     temp = *wayPointIndex;
     if (temp == 0) {
@@ -3631,7 +3630,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000D100.s")
 #endif
 
 s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32 *pathIndex) {
-    s32 stackPadding;
+    UNUSED s32 pad;
     UnkActorInner sp24;
 
     func_802ADDC8(&sp24, 10.0f, posX, posY, posZ);
@@ -4685,8 +4684,8 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000F124.s")
 #endif
 
 // Delete track waypoints
-void func_8000F2BC(struct TrackWayPoint *arg0, s32 arg1) {
-    bzero(arg0, arg1 << 3);
+void func_8000F2BC(struct TrackWayPoint *arg0, size_t size) {
+    bzero((void *) arg0, size << 3);
 }
 
 #ifdef MIPS_TO_C
@@ -5394,7 +5393,6 @@ void func_80010218(s32 pathIndex) {
     struct TrackWayPoint *nextWayPoint;
     struct TrackWayPoint *var_s1;
     struct TrackWayPoint *var_s2;
-    u16 wayPointCount;
 
     if (((s32) D_800DCA4C[gCurrentCourseId]) >= 0) {
         wayPointWidth = D_800DCA4C[gCurrentCourseId];
@@ -5429,7 +5427,7 @@ void func_80010218(s32 pathIndex) {
 f32 func_80010480(s32 pathIndex, u16 wayPointIndex) {
     f32 temp_f10_2;
     f32 temp_f8;
-    f32 stackPadding;
+    UNUSED f32 stackPadding;
     struct TrackWayPoint *pathWaypoints;
     f32 x1;
     f32 z1;
@@ -5615,13 +5613,13 @@ loop_4:
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80010E6C.s")
 #endif
 
-f32 func_80010F40(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
+f32 func_80010F40(f32 arg0, f32 arg1, f32 arg2, UNUSED s32 arg3) {
     arg1 = func_802AE1C0(arg0, 2000.0f, arg2);
     func_802ADDC8(&D_80162E70, 1.0f, arg0, arg1, arg2);
     return arg1;
 }
 
-f32 func_80010FA0(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
+f32 func_80010FA0(f32 arg0, f32 arg1, f32 arg2, UNUSED s32 arg3) {
     arg1 = func_802AE1C0(arg0, (f32) ((f64) arg1 + 30.0), arg2);
     func_802ADDC8(&D_80162E70, 10.0f, arg0, arg1, arg2);
     return arg1;
@@ -6307,7 +6305,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80012190.s")
 
 void func_80012220(VehicleStuff *vehicle) {
     f32 origXPos;
-    f32 stackPadding;
+    UNUSED f32 stackPadding;
     f32 origZPos;
 
     origXPos = vehicle->position[0];
@@ -6329,9 +6327,7 @@ void func_80012220(VehicleStuff *vehicle) {
 
 void func_800122D8(void) {
     s16 trainCarYRot;
-    f32 stackPadding0;
-    f32 stackPadding1;
-    f32 stackPadding2;
+    UNUSED Vec3f pad;
     TrainCarStuff *tempLocomotive;
     TrainCarStuff *tempTender;
     TrainCarStuff *tempPassengerCar;
@@ -6542,7 +6538,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_800127E0.s")
 void func_80012A48(TrainCarStuff *trainCar, s16 arg1) {
     struct TrainCar *trainCarActor;
 
-    trainCarActor = &gActorList[trainCar->actorIndex];
+    trainCarActor = (struct TrainCar *) &gActorList[trainCar->actorIndex];
     trainCarActor->pos[0] = trainCar->position[0];
     trainCarActor->pos[1] = trainCar->position[1];
     trainCarActor->pos[2] = trainCar->position[2];
@@ -7822,7 +7818,7 @@ UNUSED void func_8001530C(void) {
 
 }
 
-void func_80015314(s32 playerId, s32 arg1, s32 cameraId) {
+void func_80015314(s32 playerId, UNUSED s32 arg1, s32 cameraId) {
     Camera *temp_a0;
     Player *temp_a1;
 
@@ -7836,9 +7832,8 @@ void func_80015314(s32 playerId, s32 arg1, s32 cameraId) {
     func_80015390(temp_a0, temp_a1, 0);
 }
 
-void func_80015390(Camera *camera, Player *player, s32 arg2) {
-    s32 stackPadding0[3];
-    s32 stackPadding1[3];
+void func_80015390(Camera *camera, UNUSED Player *player, UNUSED s32 arg2) {
+    UNUSED s32 pad[6];
     f32 temp_f12;
     f32 sp90;
     f32 temp_f14;
@@ -7846,11 +7841,9 @@ void func_80015390(Camera *camera, Player *player, s32 arg2) {
     f32 sp84;
     f32 sp80;
     f32 sp7C;
-    s32 stackPadding2[3];
+    UNUSED Vec3f pad2;
     Vec3f sp64;
-    s32 stackPadding3[3];
-    s32 stackPadding4[3];
-    s32 stackPadding5[3];
+    UNUSED s32 pad3[9];
     s16 var_a2;
 
     /*
@@ -10184,7 +10177,7 @@ void func_80019FB4(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80019FB4.s")
 #endif
 
-void func_8001A0A4(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+void func_8001A0A4(UNUSED s16 *arg0, UNUSED Camera *arg1, UNUSED Player *arg2, UNUSED s32 arg3, s32 arg4) {
     func_80019FB4(arg4);
     func_80019C50(arg4);
 }
@@ -10639,7 +10632,7 @@ void func_8001AB74(s32 arg0, s16 *arg1, s32 arg2) {
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8001AB74.s")
 #endif
 
-void func_8001ABE0(s32 arg0, s32 arg1) {
+void func_8001ABE0(UNUSED s32 arg0, UNUSED s32 arg1) {
 
 }
 
