@@ -42,7 +42,7 @@ struct AllocOnlyPool {
 
 extern f32 vtxStretchY;
 
-u32   *get_next_available_memory_addr(u32);
+void *get_next_available_memory_addr(u32);
 uintptr_t set_segment_base_addr(s32, void*);
 void *get_segment_base_addr(s32);
 void *segmented_to_virtual(const void *);

@@ -29,7 +29,7 @@ s32 D_802B8CE4 = 0; // pad
  * @param size of memory to allocate.
  * @return Address of free memory 
  */
-u32 *get_next_available_memory_addr(u32 size) {
+void *get_next_available_memory_addr(u32 size) {
     u32 *freeSpace = (u32 *)gNextFreeMemoryAddress;
     size = ALIGN16(size);
     gNextFreeMemoryAddress += size;

@@ -3,6 +3,7 @@
 
 #include "common_structs.h"
 
+void func_80057114(s32);
 void func_800431B0(Vec3f, Vec3s, f32, Vtx*);
 void func_80043220(Vec3f, Vec3s, f32, Gfx*);
 void func_80043328(Vec3f, Vec3s, f32, Gfx*);
