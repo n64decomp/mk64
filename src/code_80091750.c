@@ -17,6 +17,7 @@
 #include <sounds.h>
 #include "code_80281780.h"
 #include "memory.h"
+#include "audio/external.h"
 // TODO: Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
@@ -203,8 +204,8 @@ void swap_values(s32 *arg0, s32 *arg1) {
 
 extern s8 D_8018E7AC[]; // size of 4... Actually 5 probably.
 extern s8 D_800E852C;
-extern u32 D_8018D9B4;
-extern u32 D_8018D9B8;
+extern uintptr_t *D_8018D9B4;
+extern uintptr_t *D_8018D9B8;
 
 void func_80091B78(void) {
     s32 why = 0;
@@ -227,10 +228,11 @@ void func_80091B78(void) {
         set_segment_base_addr(6, decompress_segments((u8 *) &_data_825800SegmentRomStart, (u8 *) &_course_mario_raceway_dl_mio0SegmentRomStart));
     }
     gNextFreeMemoryAddress = D_8015F734;
-    D_8018D9B0 = get_next_available_memory_addr(0x000900B0);
-    D_8018D9B4 = get_next_available_memory_addr(0x0000CE00);
-    D_8018D9B8 = get_next_available_memory_addr(0x00012C00);
-    D_8018D9C0 = get_next_available_memory_addr(0x00001000);
+    // Hypothetically, this should be a ptr... But only hypothetically.
+    D_8018D9B0 = (intptr_t) get_next_available_memory_addr(0x000900B0);
+    D_8018D9B4 = (uintptr_t *) get_next_available_memory_addr(0x0000CE00);
+    D_8018D9B8 = (uintptr_t *) get_next_available_memory_addr(0x00012C00);
+    D_8018D9C0 = (struct_8018EE10_entry *) get_next_available_memory_addr(0x00001000);
     func_800AF9B0();
     D_8018EE0C = 0;
 
@@ -263,7 +265,7 @@ void func_80091B78(void) {
 
 s32 func_80091D74(void) {
     u8 sp67;
-    s32 pad[10];
+    UNUSED s32 pad[10];
     s32 i;
 
     if (!gControllerBits) {
@@ -326,10 +328,10 @@ void func_80091FA4(void) {
     s32 i;
 
     // todo: These sizes need to be sizeof() for shiftability if possible
-    D_8018D9B4 = get_next_available_memory_addr(0x00002800);
-    D_8018D9B0 = get_next_available_memory_addr(0x000124F8);
-    D_8018D9B8 = get_next_available_memory_addr(0x00001000);
-    D_8018D9BC = get_next_available_memory_addr(4);
+    D_8018D9B4 = (uintptr_t *) get_next_available_memory_addr(0x00002800);
+    D_8018D9B0 = (intptr_t) get_next_available_memory_addr(0x000124F8);
+    D_8018D9B8 = (uintptr_t *) get_next_available_memory_addr(0x00001000);
+    D_8018D9BC = (intptr_t *) get_next_available_memory_addr(4);
 
     for (i = 0; i < 5; i++) {
         D_8018E7AC[i] = 0;
@@ -883,7 +885,7 @@ void set_text_color(s32 arg0) {
     gTextColor = arg0;
 }
 
-UNUSED void func_800930E4(s32 arg0, s32 arg1, s32 *arg2) {
+UNUSED void func_800930E4(s32 arg0, s32 arg1, char *arg2) {
     set_text_color(TEXT_BLUE);
     func_80093324(arg0, arg1, arg2, 0, 1.0, 1.0);
 }
@@ -898,8 +900,8 @@ void print_text0(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
         do{
             glyphIndex = char_to_glyph_index(text);
             if (glyphIndex >= 0) {
-                func_80099184(segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]));
-                gDisplayListHead = func_8009BEF0(gDisplayListHead, segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]), column + (stringWidth * x_scale), row, arg6, x_scale, y_scale);
+                func_80099184((MkTexture *)segmented_to_virtual_dupe((const void *) gGlyphTextureLUT[glyphIndex]));
+                gDisplayListHead = func_8009BEF0(gDisplayListHead, (MkTexture *) segmented_to_virtual_dupe((const void *) gGlyphTextureLUT[glyphIndex]), column + (stringWidth * x_scale), row, arg6, x_scale, y_scale);
                 stringWidth += gGlyphDisplayWidth[glyphIndex] + tracking;
             }
             else if ((glyphIndex != -2) && (glyphIndex == -1)) {
@@ -980,8 +982,8 @@ void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
         do{
             glyphIndex = char_to_glyph_index(text);
             if (glyphIndex >= 0) {
-                func_80099184(segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]));
-                gDisplayListHead = func_8009BEF0(gDisplayListHead, segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]), column, row, arg6, x_scale, y_scale);
+                func_80099184((MkTexture *)segmented_to_virtual_dupe((const void *) gGlyphTextureLUT[glyphIndex]));
+                gDisplayListHead = func_8009BEF0(gDisplayListHead, (MkTexture *) segmented_to_virtual_dupe((const void *)gGlyphTextureLUT[glyphIndex]), column, row, arg6, x_scale, y_scale);
                 column += (gGlyphDisplayWidth[glyphIndex] + tracking);
                 column *= x_scale;
             }
@@ -1032,7 +1034,7 @@ void print_text2(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
         do {
             glyphIndex = char_to_glyph_index(text);
             if (glyphIndex >= 0) {
-                glyphTexture = segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]);
+                glyphTexture = (MkTexture *) segmented_to_virtual_dupe((const void *)gGlyphTextureLUT[glyphIndex]);
                 func_80099184(glyphTexture);
                 gDisplayListHead = func_8009BEF0(gDisplayListHead, glyphTexture, column - (gGlyphDisplayWidth[glyphIndex] / 2), row, arg6, x_scale, y_scale);
                 if ((glyphIndex >= 0xD5) && (glyphIndex < 0xE0)) {
@@ -1071,7 +1073,7 @@ void text_draw(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y
 extern s8 D_800F0B1C[];
 
 void func_80093A30(s32 arg0) {
-    func_8009E2A8(D_800F0B1C[arg0], arg0);
+    func_8009E2A8(D_800F0B1C[arg0]);
 }
 
 #ifdef MIPS_TO_C
@@ -1195,8 +1197,8 @@ void func_80093F10(void) {
     D_80164AF0++;
     gSPDisplayList(gDisplayListHead++, D_02007F18);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
-    func_80092290(4, &D_8018E850, &D_8018E858);
-    func_80092290(5, &D_8018E854, &D_8018E85C);
+    func_80092290(4, D_8018E850, D_8018E858);
+    func_80092290(5, (s32 *) &D_8018E854, (s32 *) &D_8018E85C);
     func_8009C918();
     func_80099A70();
     func_80099E54();
@@ -1215,8 +1217,8 @@ void func_800940EC(s32 arg0) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     D_80164AF0++;
     gSPDisplayList(gDisplayListHead++, D_02007F18);
-    func_80092290(4, &D_8018E850, &D_8018E858);
-    func_80092290(5, &D_8018E854, &D_8018E85C);
+    func_80092290(4, D_8018E850, D_8018E858);
+    func_80092290(5, (s32 *) &D_8018E854, (s32 *) &D_8018E85C);
     func_80092148();
     func_80099A70();
     func_80099E54();
@@ -1360,7 +1362,7 @@ void func_800942D0(void) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800942D0.s")
 #endif
 
-void func_80094660(struct GfxPool *arg0, s32 unused) {
+void func_80094660(struct GfxPool *arg0, UNUSED s32 arg1) {
     u16 perspNorm;
     move_segment_table_to_dmem();
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
@@ -1373,7 +1375,7 @@ void func_80094660(struct GfxPool *arg0, s32 unused) {
     gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
 }
 
-void func_800947B4(struct GfxPool *arg0, s32 unused) {
+void func_800947B4(struct GfxPool *arg0, UNUSED s32 arg1) {
     u16 perspNorm;
     move_segment_table_to_dmem();
     guPerspective(&arg0->mtxPool[1], &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
@@ -3479,9 +3481,6 @@ Gfx *func_80098C18(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32
 }
 
 Gfx *draw_box(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32 red, s32 green, s32 blue, s32 alpha) {
-    Gfx *temp_a0;
-    Gfx *temp_v1;
-
     red &= 0xFF;
     green &= 0xFF;
     blue &= 0xFF;
@@ -7957,7 +7956,7 @@ void func_800A09E0(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A09E0.s")
 #endif
 
-void func_800A0AD0(UNUSED struct_8018D9E0_entry *unused) {
+void func_800A0AD0(UNUSED struct_8018D9E0_entry *arg0) {
     struct_8018D9E0_entry *temp_t1;
     // Find struct_8018D9E0_entry with a type/id of 0xDA
     temp_t1 = find_8018D9E0_entry_dupe(0xDA);
@@ -12135,7 +12134,7 @@ void func_800A8CA4(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A8CA4.s")
 #endif
 
-void func_800A8E14(UNUSED struct_8018D9E0_entry *unused) {
+void func_800A8E14(UNUSED struct_8018D9E0_entry *arg0) {
     set_text_color(TEXT_YELLOW);
     draw_text(0x98, 0x44, D_800E77A8, 0, 1.0f, 1.0f);
     func_80093324(0x17, 0x58, D_800E77AC, 0, D_800F24A8, D_800F24AC);

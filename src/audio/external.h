@@ -88,6 +88,8 @@ struct Unk_800EA06C {
 	/* 0x0D */ // u8 compilerPadding0[3];
 } ;
 
+void func_800C9D0C(s32);
+void func_800C97C4(s32);
 void func_800C13F0();
 void func_800C13FC(OSMesg);
 f32 func_800C1480(u8, u8);

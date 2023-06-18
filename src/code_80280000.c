@@ -128,7 +128,7 @@ void load_credits(void) {
     gNextFreeMemoryAddress = D_8015F734;
     load_course(gCurrentCourseId);
     D_8015F730 = gNextFreeMemoryAddress;
-    set_segment_base_addr(0xB, (void *) decompress_segments(&_data_821D10SegmentRomStart, &_data_825800SegmentRomStart));
+    set_segment_base_addr(0xB, (void *) decompress_segments((u8 *)&_data_821D10SegmentRomStart, (u8 *)&_data_825800SegmentRomStart));
     D_8015F6EA = -0x15A1;
     D_8015F6EE = -0x15A1;
     D_8015F6F2 = -0x15A1;

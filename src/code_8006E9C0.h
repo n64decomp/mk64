@@ -21,7 +21,7 @@ extern s16 D_80165748;
 extern s32 D_80183D5C;
 extern s8  D_8018EDF3;
 extern s32 D_8018D1E0;
-extern s32 D_8018D9B0;
+extern intptr_t D_8018D9B0;
 
 extern struct_8018CA70_entry D_8018CA70[];
 // These are all *technically* hardcoded references to spots in D_8018CA70, but there's something weird

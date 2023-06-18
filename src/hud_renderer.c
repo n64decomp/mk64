@@ -6629,7 +6629,7 @@ void func_800579F8(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
     func_80057778();
 }
 
-void func_80057A50(s32 *x, s32 *y, char *str, s32 arg3) {
+void func_80057A50(s32 x, s32 y, char *str, s32 arg3) {
     load_debug_font();
     debug_print_string(&x, &y, str);
     func_8005762C(&x, &y, arg3, 10);

@@ -13,6 +13,7 @@ union GrandPrixPointsUnion
 
 /* Function Prototypes */
 
+void load_save_data(void);
 void func_800B45E0(s32);
 void write_save_data_grand_prix_points_and_sound_mode();
 void func_800B46D0(void);
