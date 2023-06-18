@@ -168,12 +168,12 @@ glabel gTextureGrass2
 .incbin "textures/standalone/grass_2.rgba16.mio0"
 
 .balign 4, 0x00
-glabel gTextureSignMooMooFarm0
-.incbin "textures/standalone/sign_moo_moo_farm_0.rgba16.mio0"
+glabel gTextureMooMooFarmSignLeft
+.incbin "assets/courses/moo_moo_farm/gTextureMooMooFarmSignLeft.mio0"
 
 .balign 4, 0x00
-glabel gTextureSignMooMooFarm1
-.incbin "textures/standalone/sign_moo_moo_farm_1.rgba16.mio0"
+glabel gTextureMooMooFarmSignRight
+.incbin "assets/courses/moo_moo_farm/gTextureMooMooFarmSignRight.mio0"
 
 .balign 4, 0x00
 glabel gTexture64ACAC
@@ -1264,44 +1264,44 @@ glabel gTextureFrappeSnowlandTreeRight
 .incbin "assets/courses/frappe_snowland/gTextureFrappeSnowlandTreeRight.mio0"
 
 .balign 4, 0x00
-glabel gTexture693BC4
-.incbin "bin/texture_693BC4.mio0"
+glabel gTextureCow01Left
+.incbin "assets/courses/moo_moo_farm/gTextureCow01Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture693F48
-.incbin "bin/texture_693F48.mio0"
+glabel gTextureCow01Right
+.incbin "assets/courses/moo_moo_farm/gTextureCow01Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture69429C
-.incbin "bin/texture_69429C.mio0"
+glabel gTextureCow02Left
+.incbin "assets/courses/moo_moo_farm/gTextureCow02Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture694628
-.incbin "bin/texture_694628.mio0"
+glabel gTextureCow02Right
+.incbin "assets/courses/moo_moo_farm/gTextureCow02Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture694990
-.incbin "bin/texture_694990.mio0"
+glabel gTextureCow03Left
+.incbin "assets/courses/moo_moo_farm/gTextureCow03Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture694CAC
-.incbin "bin/texture_694CAC.mio0"
+glabel gTextureCow03Right
+.incbin "assets/courses/moo_moo_farm/gTextureCow03Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture694F7C
-.incbin "bin/texture_694F7C.mio0"
+glabel gTextureCow04Left
+.incbin "assets/courses/moo_moo_farm/gTextureCow04Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture695268
-.incbin "bin/texture_695268.mio0"
+glabel gTextureCow04Right
+.incbin "assets/courses/moo_moo_farm/gTextureCow04Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture6955AC
-.incbin "bin/texture_6955AC.mio0"
+glabel gTextureCow05Left
+.incbin "assets/courses/moo_moo_farm/gTextureCow05Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture6958C0
-.incbin "bin/texture_6958C0.mio0"
+glabel gTextureCow05Right
+.incbin "assets/courses/moo_moo_farm/gTextureCow05Right.mio0"
 
 .balign 4, 0x00
 glabel gTexture695BA4
