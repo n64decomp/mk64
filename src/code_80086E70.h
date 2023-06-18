@@ -4,6 +4,10 @@
 #include "common_structs.h"
 #include "camera.h"
 
+void func_8008B038(s32);
+void func_8008AE9C(s32);
+void func_8008AB10(s32);
+void func_8008AA3C(s32);
 void func_80086E70(s32);
 void func_80086EAC(s32, s32, s16);
 void func_80086EF0(s32);
@@ -98,13 +102,13 @@ void func_8008ADC0();
 void func_8008ADC8();
 void func_8008AE8C();
 void func_8008AE94();
-void func_8008ADD0(s32, f32);
+void func_8008ADD0(s32*, f32);
 void func_8008AFE0(s32, f32);
 void func_8008B018();
 void func_8008B020();
 void func_8008B028();
 void func_8008B030();
-void func_8008ACE0(s32,f32);
+void func_8008ACE0(s32*,f32);
 void func_8008B17C(s32, f32);
 void func_8008B1B4();
 void func_8008B1BC();

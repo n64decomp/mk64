@@ -412,7 +412,11 @@ void func_802A86A8(mk64_Vtx *data, u32 arg1) {
     mk64_Vtx_n *vtx_n = (mk64_Vtx_n *) data;
     Vtx *vtx;
     s32 tmp = ALIGN16(arg1 * 0x10);
+#ifdef AVOID_UB
+    u32 i;
+#else
     s32 i;
+#endif
     s8 temp_a0;
     s8 temp_a3;
     s8 flags;
@@ -420,6 +424,7 @@ void func_802A86A8(mk64_Vtx *data, u32 arg1) {
     gHeapEndPtr -= tmp;
     vtx = (Vtx *) gHeapEndPtr;
 
+        // s32 to u32 comparison required for matching.
         for (i = 0; i < arg1; i++) {
             if (gIsMirrorMode) {
                 vtx->n.ob[0] = -vtx_n->ob[0];
@@ -447,7 +452,7 @@ void func_802A86A8(mk64_Vtx *data, u32 arg1) {
         }
 }
 
-void decompress_vtx(u8 *arg0, u32 vertexCount) {
+void decompress_vtx(mk64_Vtx *arg0, u32 vertexCount) {
     s32 size = ALIGN16(vertexCount * 0x18);
     u32 segment = SEGMENT_NUMBER2(arg0);
     u32 offset = SEGMENT_OFFSET(arg0);
@@ -1322,7 +1327,7 @@ u8 *load_course(s32 courseId) {
     u8 *vertexRomEnd;
     UNUSED s32 pad2[2];
     u32 *textures;
-    u8 *vertexStart; // mio0 compressed
+    mk64_Vtx *vertexStart; // mio0 compressed
     u8 *packedStart;
     u32 vertexCount;
     uintptr_t finalDisplaylistOffset;

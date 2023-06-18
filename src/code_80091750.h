@@ -60,6 +60,12 @@ typedef struct {
 
 /* Function Prototypes */
 
+void func_800A7A4C(s32);
+void func_8009DF8C(u32, s8);
+void func_8009DEF8(u32, s8);
+void func_8009D77C(s32,s32,s32);
+void func_8009CBE4(s32, s32, s32);
+void func_800996BC(MkTexture*, s32);
 void func_8009E2A8(s32);
 s32 func_80091D74(void);
 void func_80091EE4(void);
@@ -151,7 +157,7 @@ void func_8009B938();
 void func_8009B954(MkTexture*);
 void func_8009B998();
 Gfx *func_8009B9D0(Gfx*, MkTexture*);
-Gfx *func_8009BA74(Gfx *, MkTexture*, s32, s32);
+Gfx *func_8009BA74(Gfx *, MkTexture[], s32, s32);
 Gfx *func_8009BEF0(Gfx*, MkTexture*, f32, f32, s32, f32,f32);
 Gfx *func_8009C434(Gfx*, struct_8018DEE0_entry*, s32, s32, s32);
 Gfx *func_8009C708(Gfx*, struct_8018DEE0_entry *, s32, s32, s32, s32);
@@ -306,7 +312,7 @@ extern char *D_800E7730;
 extern char *D_800E77A8;
 extern char *D_800E77AC;
 extern char *D_800E77B0;
-extern char *D_800E77D8;
+extern char D_800E77D8[];
 extern char *D_800E77E4[0x14];
 extern char *D_800E7860[2];
 extern char *D_800E7A88[4];

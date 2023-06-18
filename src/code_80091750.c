@@ -18,6 +18,7 @@
 #include "code_80281780.h"
 #include "memory.h"
 #include "audio/external.h"
+#include "hud_renderer.h"
 // TODO: Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
@@ -1727,17 +1728,21 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_80095574.s")
 // Instead we depend on the fact that the result of func_80098C18 is left
 // in v0 which means it is returned, sort of.
 // Its also weird that the displayListHead argument goes entirely unused. What's up with that?
-Gfx *func_800958D4(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32 arg5) {
+Gfx *func_800958D4(UNUSED Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32 arg5) {
     s32 phi_v0;
 
     phi_v0 = ((D_8018E7A8 % arg5) << 9) / arg5;
-    if (phi_v0 >= 0x101) {
+    if (phi_v0 > 0x100) {
         phi_v0 = 0x200 - phi_v0;
     }
-    if (phi_v0 >= 0x100) {
+    if (phi_v0 > 0xFF) {
         phi_v0 = 0xFF;
     }
+    #if AVOID_UB
+    return gDisplayListHead = func_80098C18(gDisplayListHead, ulx, uly, lrx, lry, phi_v0, phi_v0, phi_v0, 0xFF);
+    #else
     gDisplayListHead = func_80098C18(gDisplayListHead, ulx, uly, lrx, lry, phi_v0, phi_v0, phi_v0, 0xFF);
+    #endif
 }
 
 Gfx *func_800959A0(Gfx *displayListHead, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
@@ -3525,7 +3530,7 @@ void dma_copy_base_729a30(u64 *arg0, size_t nbytes, void *vaddr) {
     OSMesg sp2C;
 
     osInvalDCache(vaddr, nbytes);
-    osPiStartDma(&sp30, OS_MESG_PRI_NORMAL, OS_READ, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(arg0)], vaddr, nbytes, &gDmaMesgQueue);
+    osPiStartDma(&sp30, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(arg0)], vaddr, nbytes, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &sp2C, OS_MESG_BLOCK);
 }
 
@@ -3534,7 +3539,7 @@ void dma_copy_base_7fa3c0(u64 *arg0, size_t nbytes, void *vaddr) {
     OSMesg sp2C;
 
     osInvalDCache(vaddr, nbytes);
-    osPiStartDma(&sp30, OS_MESG_PRI_NORMAL, OS_READ, &_textures_0bSegmentRomStart[SEGMENT_OFFSET(arg0)], vaddr, nbytes, &gDmaMesgQueue);
+    osPiStartDma(&sp30, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_textures_0bSegmentRomStart[SEGMENT_OFFSET(arg0)], vaddr, nbytes, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &sp2C, OS_MESG_BLOCK);
 }
 
@@ -4563,8 +4568,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009B538.s")
 #endif
 
 s32 func_8009B8C4(u64 *arg0) {
-    s32 stackPadding1;
-    s32 stackPadding2;
+    UNUSED s32 pad[2];
     s32 sp4;
     s32 found;
     s32 someIndex;
@@ -4588,7 +4592,7 @@ s32 func_8009B8C4(u64 *arg0) {
 // struct_8018EE10_entry pointer. But here its being treated as a
 // Gfx pointer. It seems to be multi use.
 void func_8009B938(void) {
-    D_8018E75C = D_8018D9C0;
+    D_8018E75C = (Gfx *) D_8018D9C0;
     gNumD_8018E768Entries = 0;
 }
 
@@ -4609,7 +4613,7 @@ void func_8009B998(void) {
 // as the return of this function. Which seems like a bug to me
 Gfx *func_8009B9D0(Gfx *displayListHead, MkTexture *textures) {
     Gfx *displayList;
-    s32 pad;
+    UNUSED s32 pad;
     s32 found;
     s32 index;
 
@@ -7948,7 +7952,7 @@ void func_800A09E0(struct_8018D9E0_entry *arg0) {
         if ((D_800E86D0[0] != 0) || ((table_row != 0) && (table_row != 8)))
         {
             y = (table_row * 0xA) + arg0->row;
-            gDisplayListHead = func_8009BA74(gDisplayListHead, &D_0200157C, x, y);
+            gDisplayListHead = func_8009BA74(gDisplayListHead, D_0200157C, x, y);
         }
     }
 }
@@ -7963,7 +7967,7 @@ void func_800A0AD0(UNUSED struct_8018D9E0_entry *arg0) {
     if ((gControllerPakMenuSelection != CONTROLLER_PAK_MENU_SELECT_RECORD) && (gControllerPakMenuSelection != CONTROLLER_PAK_MENU_END))
     {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, temp_t1->unk20, 0x00, 0xFF);
-        gDisplayListHead = func_8009BA74(gDisplayListHead, &D_02001874, 0x24, (gControllerPakSelectedTableRow * 0xA) + 0x7C);
+        gDisplayListHead = func_8009BA74(gDisplayListHead, D_02001874, 0x24, (gControllerPakSelectedTableRow * 0xA) + 0x7C);
     }
 }
 
@@ -8363,7 +8367,7 @@ void func_800A1924(struct_8018D9E0_entry *arg0) {
     func_8009A76C(arg0->D_8018DEE0_index, 0x17, 0x84, -1);
     if (func_800B639C(gTimeTrialDataCourseIndex) >= TIME_TRIAL_DATA_LUIGI_RACEWAY) {
         gDisplayListHead = func_800959A0(gDisplayListHead, 0x57, 0x84, 0x96, 0x95);
-        gDisplayListHead = func_8009BA74(gDisplayListHead, &D_02004A0C, 0x57, 0x84);
+        gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004A0C, 0x57, 0x84);
     }
     func_8004EF9C(gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4]);
     do {
@@ -8381,7 +8385,7 @@ void func_800A1A20(struct_8018D9E0_entry *arg0) {
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     draw_text(0x69, arg0->row + 0x19, D_800E7574[courseId], 0, 0.75f, 0.75f);
     set_text_color(TEXT_RED);
-    func_80093324(0x2D, arg0->row + 0x28, &D_800E77D8, 0, 0.75f, 0.75f);
+    func_80093324(0x2D, arg0->row + 0x28, (char *)&D_800E77D8, 0, 0.75f, 0.75f);
     func_800936B8(0xA5, arg0->row + 0x28, D_800E77E4[courseId], 1, 0.75f, 0.75f);
     set_text_color(TEXT_YELLOW);
     func_80093324(0xA0, arg0->row + 0x86, D_800E7728, 0, 0.75f, 0.75f);
@@ -12200,7 +12204,7 @@ void func_800A8F48(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A8F48.s")
 #endif
 
-void func_800A90D4(s32 arg0, struct_8018D9E0_entry *arg1) {
+void func_800A90D4(UNUSED s32 arg0, struct_8018D9E0_entry *arg1) {
     s32 temp_a2;
     s32 temp_t1;
     s32 temp_t7;

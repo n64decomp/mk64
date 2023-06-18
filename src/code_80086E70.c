@@ -106,7 +106,7 @@ s32 func_800871AC(s32 objectIndex, s32 arg1) {
     return sp24;
 }
 
-UNUSED void func_80087258(s32 objectIndex, s32 arg1, f32 arg2) {
+UNUSED void func_80087258(s32 objectIndex, UNUSED s32 arg1, f32 arg2) {
     D_80165C18[objectIndex].unk_028[1] += arg2;
     D_80165C18[objectIndex].unk_028[2] -= arg2;
 }
@@ -333,7 +333,7 @@ s32 func_80087D24(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3) {
 
 s32 func_80087E08(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s32 arg5) {
     s32 sp2C;
-    s32 stackPadding;
+    UNUSED s32 pad;
 
     sp2C = 0;
     if (func_80072270(objectIndex, 8) != 0) {
@@ -361,7 +361,7 @@ s32 func_80087E08(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s32 a
 
 UNUSED s32 func_80087F14(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s32 arg5) {
     s32 sp2C;
-    s32 stackPadding;
+    UNUSED s32 stackPadding;
 
     sp2C = 0;
     if (func_80072270(objectIndex, 8) != 0) {
@@ -746,9 +746,7 @@ s32 func_80088D18(s32 objectIndex, Player *player) {
     f32 temp_f0;
     f32 temp_f12;
     f32 temp_f2;
-    f32 var_f18;
     s32 var_v1;
-    u16 temp_t8;
 
     var_v1 = 0;
     temp_f0  = D_80165C18[objectIndex].unk_004[0] - player->pos[0];
@@ -766,7 +764,6 @@ s32 func_80088DA4(s32 objectIndex, Player *player) {
     f32 temp_f14;
     f32 temp_f2;
     s32 var_v1;
-    struct_80165C18_entry *temp_v0;
 
     var_v1 = 0;
     temp_f0  = D_80165C18[objectIndex].unk_004[0] - player->pos[0];
@@ -1197,6 +1194,8 @@ s32 func_8008A060(s32 objectIndex, Camera *camera, u16 arg2) {
 
     var_v1 = 0;
     temp_t3 = (((u16)camera->rot[1] - D_80165C18[objectIndex].unk_0BE[1]) + (arg2 >> 1));
+    
+    // @warning Always true
     if ((temp_t3 >= 0) && (arg2 >= temp_t3)) {
         var_v1 = 1;
     }
@@ -1232,7 +1231,7 @@ s32 func_8008A140(s32 objectIndex, Camera *camera, u16 arg2) {
 }
 
 void func_8008A1D0(s32 objectIndex, s32 cameraId, s32 arg2, s32 arg3) {
-    s32 temp_v0;
+    u32 temp_v0;
     u16 var_a2;
     Camera *camera;
 
@@ -1485,10 +1484,10 @@ GLOBAL_ASM("asm/non_matchings/code_80086E70/func_8008AB10.s")
 UNUSED void func_8008ABC0(s32 arg0) {
     switch (D_80165C18[arg0].unk_0AE) {
         case 1:
-            func_8008AA3C();
+            func_8008AA3C(arg0);
             break;
         case 2:
-            func_8008AB10();
+            func_8008AB10(arg0);
             break;
         case 3:
             func_80086F60(arg0);
@@ -1501,10 +1500,10 @@ UNUSED void func_8008ABC0(s32 arg0) {
 UNUSED void func_8008AC40(s32 arg0) {
     switch (D_80165C18[arg0].unk_0AE) {
         case 1:
-            func_8008AA3C();
+            func_8008AA3C(arg0);
             break;
         case 2:
-            func_8008AB10();
+            func_8008AB10(arg0);
             break;
         case 3:
             func_8008701C(arg0, 1);
@@ -1622,7 +1621,7 @@ GLOBAL_ASM("asm/non_matchings/code_80086E70/func_8008AE9C.s")
 #endif
 
 void func_8008AFE0(s32 arg0, f32 arg1) {
-    func_8008ADD0(&D_80183DC8, arg1);
+    func_8008ADD0((s32 *)&D_80183DC8, arg1);
     func_8008AE9C(arg0);
 }
 
@@ -1671,7 +1670,7 @@ GLOBAL_ASM("asm/non_matchings/code_80086E70/func_8008B038.s")
 #endif
 
 void func_8008B17C(s32 arg0, f32 arg1) {
-    func_8008ACE0(&D_80183DA8, arg1);
+    func_8008ACE0((s32 *) &D_80183DA8, arg1);
     func_8008B038(arg0);
 }
 
@@ -2217,10 +2216,10 @@ void func_8008BFFC(s32 objectIndex) {
 GLOBAL_ASM("asm/non_matchings/code_80086E70/func_8008BFFC.s")
 #endif
 
-UNUSED void func_8008C1B8(s32 arg0) {
+UNUSED void func_8008C1B8(UNUSED s32 arg0) {
 
 }
 
-UNUSED void func_8008C1C0(s32 arg0) {
+UNUSED void func_8008C1C0(UNUSED s32 arg0) {
 
 }
