@@ -2088,8 +2088,8 @@ UNUSED void func_8004CB30(s32 arg0, s32 arg1, s32 arg2) {
     func_8004C364(arg0, arg1, 16, 16, arg2);
 }
 
-void func_8004CB60(s32 arg0, s32 arg1, s32 arg2) {
-    func_8004C364(arg0, arg1, 32, 8, arg2);
+void func_8004CB60(s32 arg0, s32 arg1, s8 *texture) {
+    func_8004C364(arg0, arg1, 32, 8, texture);
 }
 
 void func_8004CB90(s32 arg0, s32 arg1, s32 arg2) {
@@ -4955,7 +4955,6 @@ extern s32 D_8018C3F0;
 extern ? D_8018C5F0;
 extern s32 D_8018C630;
 extern ? D_8018C830;
-extern s8 *D_8018D490;
 extern s32 gGamestate;
 static ? D_800E4668;                                /* unable to generate initializer */
 static ? D_800E4670;                                /* unable to generate initializer */

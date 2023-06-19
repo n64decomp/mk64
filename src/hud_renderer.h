@@ -220,7 +220,7 @@ void func_8004CA58(s32, s32, f32, s32, s32, s32);
 void func_8004CAD0(s32, s32, s32);
 void func_8004CB00(s32, s32, s32);
 void func_8004CB30(s32, s32, s32);
-void func_8004CB60(s32, s32, s32);
+void func_8004CB60(s32, s32, s8*);
 void func_8004CB90(s32, s32, s32);
 void func_8004CBC0(s32, s32, f32, s32);
 void func_8004CBF4(s32, s32, s32);

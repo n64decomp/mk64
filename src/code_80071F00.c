@@ -16,6 +16,7 @@
 #include "audio/external.h"
 #include "sounds.h"
 #include <actors.h>
+#include "race_logic.h"
 
 extern s32 D_8018D1F0;
 
@@ -128,7 +129,6 @@ void func_80072100(s32 *arg0) {
 }
 
 void func_80072120(s32 *arg0, s32 arg1) {
-    s32 var_s0;
     s32 i;
 
     for (i = 0; i < arg1; i++) {
@@ -677,7 +677,7 @@ void func_80073404(s32 arg0, u8 arg1, u8 arg2, Vtx *arg3) {
   D_80165C18[arg0].unk_054 = 0;
 }
 
-void func_80073444(s32 arg0, s32* arg1, s32* arg2, u8 arg3, u16 arg4) {
+void func_80073444(s32 arg0, s32* arg1, u8* arg2, u8 arg3, u16 arg4) {
     D_80165C18[arg0].unk_068 = arg1;
     D_80165C18[arg0].unk_06C = arg2;
     D_80165C18[arg0].unk_0D9 = arg3;
@@ -687,7 +687,7 @@ void func_80073444(s32 arg0, s32* arg1, s32* arg2, u8 arg3, u16 arg4) {
     D_80165C18[arg0].unk_054 = 0;
 }
 
-UNUSED void func_8007348C(s32 arg0, s32* arg1, u8 arg2, u8 arg3, s32 arg4) {
+UNUSED void func_8007348C(s32 arg0, s32* arg1, u8 arg2, u8 arg3, Vtx *arg4) {
     D_80165C18[arg0].unk_060 = arg1;
     D_80165C18[arg0].unk_068 = arg1;
     D_80165C18[arg0].unk_0D9 = arg2;
@@ -731,7 +731,7 @@ UNUSED void func_80073570(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80073570.s")
 #endif 
 
-void func_800735BC(s32 arg0, s32 arg1, f32 arg2) {
+void func_800735BC(s32 arg0, Gfx *arg1, f32 arg2) {
     D_80165C18[arg0].unk_054 = 0;
     D_80165C18[arg0].unk_070 = arg1;
     D_80165C18[arg0].unk_000 = arg2;
@@ -1160,8 +1160,8 @@ void func_80074510(uintptr_t devAddr, void * vaddr, size_t nbytes) {
     D_8018D224 = 1;
 }
 
-void func_80074574(s32 arg0, void *arg1, u16 arg2, u16 arg3) {
-    func_80074510(&_other_texturesSegmentRomStart[SEGMENT_OFFSET(arg0)], arg1, arg2 * arg3);
+void func_80074574(u8 *arg0, void *arg1, u16 arg2, u16 arg3) {
+    func_80074510((uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(arg0)], arg1, arg2 * arg3);
 }
 
 void func_800745C8(s32 arg0, s32 arg1) {
@@ -1178,7 +1178,7 @@ void func_800745C8(s32 arg0, s32 arg1) {
             phi_a1 = 1;
         }
         
-        D_80165C18[arg0].unk_064 = (D_80165C18[arg0].unk_0D9 * D_80165C18[arg0].unk_0DA * phi_a1) + arg1;
+        D_80165C18[arg0].unk_064 = (u8 *) (D_80165C18[arg0].unk_0D9 * D_80165C18[arg0].unk_0DA * phi_a1) + arg1;
         func_800744A0(arg0);
     }
 }
@@ -1193,7 +1193,7 @@ void func_8007466C(s32 arg0, s32 arg1) {
         if ((D_80165C18[arg0].unk_054 & 2) != 0) {
             phi_a1 = 1;
         }
-        D_80165C18[arg0].unk_064 = (D_80165C18[arg0].unk_0D9 * D_80165C18[arg0].unk_0DA * phi_a1) + arg1;
+        D_80165C18[arg0].unk_064 = (u8 *) (D_80165C18[arg0].unk_0D9 * D_80165C18[arg0].unk_0DA * phi_a1) + arg1;
         func_800744A0(arg0);
     }
 }
@@ -1208,7 +1208,7 @@ void func_80074704(s32 arg0, s32 arg1) {
         if ((D_80165C18[arg0].unk_054 & 2) != 0) {
             phi_a1 = 1;
         }
-        D_80165C18[arg0].unk_064 = (D_80165C18[arg0].unk_0D9 * D_80165C18[arg0].unk_0DA * phi_a1) + arg1;
+        D_80165C18[arg0].unk_064 = (u8 *) (D_80165C18[arg0].unk_0D9 * D_80165C18[arg0].unk_0DA * phi_a1) + arg1;
         func_800744A0(arg0);
     }
 }
@@ -1225,7 +1225,7 @@ s32 func_80074790(s32 arg0, s32 arg1) {
 }
 
 void func_800747F0(s32 objectIndex, s32 arg1) {
-    s32 sp24;
+    u8 *sp24;
     if (D_80165C18[objectIndex].unk_0D2 != D_80165C18[objectIndex].unk_0D3) {
         sp24 = D_80165C18[objectIndex].unk_06C + (D_80165C18[objectIndex].unk_0D9 * D_80165C18[objectIndex].unk_0DA * D_80165C18[objectIndex].unk_0D2);
         func_80074574(sp24, (void *) func_80074790(objectIndex, arg1), D_80165C18[objectIndex].unk_0D9, D_80165C18[objectIndex].unk_0DA);
@@ -1343,7 +1343,7 @@ void func_80074924(s32 objectIndex) {
     }
     temp_a0 = sp2C % 8;
     temp_v0_2 = &D_800E6F30[temp_a0];
-    temp_v1 = &D_800E6F48[temp_a0];
+    temp_v1 = (struct _struct_D_800E6F48_0x3 *)&D_800E6F48[temp_a0];
     temp_s0->unk_084[0] = (s16) temp_v0_2->unk0;
     temp_s0->unk_084[1] = (s16) temp_v0_2->unk1;
     temp_s0->unk_084[2] = (s16) temp_v0_2->unk2;
@@ -1518,8 +1518,7 @@ void func_8007542C(s32 arg0) {
 
 void func_80075574(s32 objectIndex, Vec3f arg1, f32 arg2) {
     struct_80165C18_entry *temp_v1;
-    s32 pad0;
-    s32 pad1;
+    UNUSED s32 pad[2];
 
     func_800723A4(objectIndex, 0);
     temp_v1 = &D_80165C18[objectIndex];
@@ -1853,7 +1852,7 @@ void func_8007601C(s32 arg0) {
         if ((func_8007223C(arg0, 0x40000) != 0) && (func_80072354(arg0, 1) != 0)) {
             func_800722A4(arg0, 1);
             func_80075F98(D_80165C18[arg0].unk_004, (u16) D_80165C18[arg0].unk_0BE[1], 1.0f);
-            func_800C9D80(D_80165C18[arg0].unk_004, &D_80165C18[arg0].unk_038, 0x5102800A);
+            func_800C9D80(D_80165C18[arg0].unk_004, D_80165C18[arg0].unk_038, 0x5102800A);
             if (D_80165C18[arg0].unk_0A4 > 0) {
                 D_80165C18[arg0].unk_0A4--;
                 D_80165C18[arg0].unk_04C = 0x5A;
@@ -2062,7 +2061,7 @@ extern s16 D_800E579C[1]; //[15][3];                               /* unable to 
 extern s16 D_800E57F8[1]; //[15][3];                               /* unable to generate initializer */
 
 void func_80076884(s32 arg0) {
-    s32 pad[2];
+    UNUSED s32 pad[2];
     s32 i;
     s16 *var_s2;
     u16 temp_v0;
@@ -2199,7 +2198,7 @@ void func_80076C9C(s32 objectIndex, Vec3f arg1, s16 arg2) {
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
 }
 
-void func_80076D70(Vec3f arg0, f32 arg1, s16 arg2) {
+void func_80076D70(Vec3f arg0, UNUSED f32 arg1, s16 arg2) {
     s32 temp_v0;
 
     temp_v0 = func_80072044(D_8018C870, &D_80183E6C, 0x00000040);
@@ -2268,7 +2267,7 @@ void func_80076FEC(s32 objectIndex, s32 flameIndex) {
     D_80165C18[objectIndex].unk_0D5 = 0xB;
     D_80165C18[objectIndex].unk_064 = D_0D02BC58;
     D_80165C18[objectIndex].unk_06C = D_0D02BC58;
-    D_80165C18[0, objectIndex].unk_000 = 0.8f;
+    D_80165C18[objectIndex].unk_000 = 0.8f;
 
     // Mixing arr + offset and array access... Why?
     // todo: ifdef this to proper array access.
@@ -2320,14 +2319,14 @@ void func_80077138(s32 objectIndex, Vec3f arg1, s32 arg2) {
     }
     temp_v0_3 = random_int(0x000CU);
     if (temp_v0_3 < 9) {
-        func_8005C674(temp_v0_3, &sp30[2], &sp30[1], &sp30);
+        func_8005C674(temp_v0_3, &sp30[2], &sp30[1], sp30);
         D_80165C18[objectIndex].unk_048 = 0;
         D_80165C18[objectIndex].unk_084[0] = sp30[2];
         D_80165C18[objectIndex].unk_084[1] = sp30[1];
         D_80165C18[objectIndex].unk_084[2] = sp30[0];
     } else {
         temp_v0_3 = random_int(3U);
-        func_8005C6B4(temp_v0_3, &sp30[2], &sp30[1], &sp30);
+        func_8005C6B4(temp_v0_3, &sp30[2], &sp30[1], sp30);
         D_80165C18[objectIndex].unk_084[0] = sp30[2];
         D_80165C18[objectIndex].unk_084[1] = sp30[1];
         D_80165C18[objectIndex].unk_084[2] = sp30[0];
@@ -2341,7 +2340,7 @@ void func_80077138(s32 objectIndex, Vec3f arg1, s32 arg2) {
     }
 }
 
-void func_800773D8(s32 arg0, s32 arg1) {
+void func_800773D8(f32 *arg0, s32 arg1) {
     s32 temp_v0 = func_80072044(D_8018C630, &D_80183E5C, 0x80);
     if (temp_v0 != -1) {
         func_80077138(temp_v0, arg0, arg1);
@@ -2354,7 +2353,7 @@ void func_80077428(s32 arg0) {
 }
 
 void func_80077450(s32 objectIndex) {
-    s16 stackPadding0;
+    UNUSED s16 stackPadding0;
     s16 sp3C;
     s16 sp3A;
     s16 sp38;
@@ -2420,8 +2419,8 @@ void func_80077640(void) {
 }
 
 void func_80077700(s32 objectIndex, Vec3f arg1, s32 arg2) {
-    s32 stackPadding1;
-    u16 stackPadding0;
+    UNUSED s32 stackPadding1;
+    UNUSED u16 stackPadding0;
     u16 temp_s0;
     u16 sp3E;
     u16 sp3C;
@@ -2471,7 +2470,7 @@ s32 func_80077A54(Vec3f arg0, s32 arg1) {
     return temp_v0;
 }
 
-void func_80077AB0(Vec3f arg0, s32 arg1) {
+void func_80077AB0(Vec3f arg0, UNUSED s32 arg1) {
     s32 var_s0;
 
     for (var_s0 = 0; var_s0 < D_8018C970_SPAWN_SIZE; var_s0++) {
@@ -2665,15 +2664,15 @@ void func_800780CC(s32 objectIndex, Camera *camera) {
 
 extern s32 D_8018D1F0;
 
-void func_80078170(s32 arg0, s32 arg1) {
-    s32 *phi_s0;
+void func_80078170(s32 arg0, Camera *arg1) {
+    s32 *objectIndex;
     s32 i;
 
-    func_80077D5C();
+    func_80077D5C(arg0);
     for (i = 0; i < D_8018D1F0; i++) {
-        phi_s0 = &D_8018CC80[arg0 + i];
-        if (D_80165C18[*phi_s0].unk_0A6 != 0) {
-            func_800780CC(*phi_s0, arg1);
+        objectIndex = &D_8018CC80[arg0 + i];
+        if (D_80165C18[*objectIndex].unk_0A6 != 0) {
+            func_800780CC(*objectIndex, arg1);
         }
     }
 }
@@ -2682,9 +2681,9 @@ void func_80078220(s32 objectIndex) {
     struct_80165C18_entry *temp_v0;
 
     temp_v0 = &D_80165C18[objectIndex];
-    temp_v0->unk_064 = &D_0D0293D8;
-    temp_v0->unk_06C = (s32) &D_0D0293D8;
-    temp_v0->unk_074 = (s32) &D_0D005770;
+    temp_v0->unk_064 = D_0D0293D8;
+    temp_v0->unk_06C = D_0D0293D8;
+    temp_v0->unk_074 = D_0D005770;
     temp_v0->unk_000 = 0.15f;
     func_80086EF0(objectIndex);
     func_80072488(objectIndex);
@@ -2694,7 +2693,7 @@ void func_80078288(s32 objectIndex) {
     s16 sp3E;
     s16 sp3C;
     s16 sp3A;
-    u16 temp_t3;
+    UNUSED u16 pad;
     u16 temp_t6;
 
     switch (D_80165C18[objectIndex].unk_0AE) {                              /* irregular */
@@ -2847,15 +2846,24 @@ void func_800789AC(s32 arg0, Camera *arg1, Vec3s *arg2) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_800789AC.s")
 #endif
 
-void func_80078A44(s32 arg0, Camera *camera, s32 rot) {
+typedef struct {
+    Vec3su unk0;
+    u16 pad;
+    Vec3su unkA;
+    u16 pad2;
+} test;
+
+typedef u16 testA[44][4];
+
+void func_80078A44(s32 arg0, Camera *camera, u16 rot[][4]) {
   s32 temp_s0;
   s32 i;
 
     for (i = 0; i < D_8018D1F0; i++, arg0++) {
         temp_s0 = D_8018CC80[arg0];
 
-        //                               i * 8 
-        func_800788F8(temp_s0, *(u16 *)((i << 3) + rot), camera);
+        //                              rot[i][0] 
+        func_800788F8(temp_s0, *(u16 *)(rot + i), camera);
         switch (i % 5U) {
             case 0:
                 func_80073CB0(temp_s0, &D_80165C18[temp_s0].unk_0A0, 0x00000028, 0x000000B4, 0x000000FF, 0, -1);
@@ -2880,14 +2888,14 @@ UNUSED void func_80078C68() {
 
 }
 
-extern s32 D_800E6A38;                                /* unable to generate initializer; const */
-extern s32 D_800E6AA8;                                /* unable to generate initializer; const */
-extern s32 D_800E6B00;                                /* unable to generate initializer; const */
-extern s32 D_800E6B38;                                /* unable to generate initializer; const */
-extern s32 D_800E6BA8;                                /* unable to generate initializer; const */
-extern s32 D_800E6C10;                                /* unable to generate initializer; const */
-extern s32 D_800E6C80;                                /* unable to generate initializer; const */
-extern s32 D_800E6DE0;                                /* unable to generate initializer; const */
+extern u16 D_800E6A38[];                                /* unable to generate initializer; const */
+extern u16 D_800E6AA8[];                                /* unable to generate initializer; const */
+extern u16 D_800E6B00[];                                /* unable to generate initializer; const */
+extern u16 D_800E6B38[];                                /* unable to generate initializer; const */
+extern u16 D_800E6BA8[];                                /* unable to generate initializer; const */
+extern u16 D_800E6C10[];                                /* unable to generate initializer; const */
+extern u16 D_800E6C80[];                                /* unable to generate initializer; const */
+extern u16 D_800E6DE0[];                                /* unable to generate initializer; const */
 
 extern s16 D_8018D200;
 extern s32 D_8018D1F0;
@@ -2898,7 +2906,7 @@ extern s16 D_8018D218;
 
 void func_80078C70(s32 arg0) {
     s32 sp1C;
-    s32 camera;
+    Camera *camera;
 
     if (D_801657C8 == 0) {
         switch (arg0) {                             /* switch 1 */
@@ -2934,42 +2942,42 @@ void func_80078C70(s32 arg0) {
         D_8018D1E8 = 1.7578125 / D_8018D200;
         D_8018D218 = 0xA0;
         switch (gCurrentCourseId) {                          /* switch 2 */
-        case 0:                                     /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6A38);
-            break;
-        case 4:                                     /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6AA8);
-            break;
-        case 5:                                     /* switch 2 */
-            func_80078170(sp1C, camera);
-            break;
-        case 6:                                     /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6B00);
-            break;
-        case 7:                                     /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6B38);
-            break;
-        case 8:                                     /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6A38);
-            break;
-        case 9:                                     /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6AA8);
-            break;
-        case 10:                                    /* switch 2 */
-            func_80078A44(sp1C, camera, &D_800E6C80);
-            break;
-        case 11:                                    /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6C10);
-            break;
-        case 12:                                    /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6BA8);
-            break;
-        case 13:                                    /* switch 2 */
-            func_80078A44(sp1C, camera, &D_800E6C80);
-            break;
-        case 14:                                    /* switch 2 */
-            func_80078A44(sp1C, camera, &D_800E6DE0);
-            break;
+            case 0:                                     /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6A38);
+                break;
+            case 4:                                     /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6AA8);
+                break;
+            case 5:                                     /* switch 2 */
+                func_80078170(sp1C, camera);
+                break;
+            case 6:                                     /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6B00);
+                break;
+            case 7:                                     /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6B38);
+                break;
+            case 8:                                     /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6A38);
+                break;
+            case 9:                                     /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6AA8);
+                break;
+            case 10:                                    /* switch 2 */
+                func_80078A44(sp1C, camera, D_800E6C80);
+                break;
+            case 11:                                    /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6C10);
+                break;
+            case 12:                                    /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6BA8);
+                break;
+            case 13:                                    /* switch 2 */
+                func_80078A44(sp1C, camera, D_800E6C80);
+                break;
+            case 14:                                    /* switch 2 */
+                func_80078A44(sp1C, camera, D_800E6DE0);
+                break;
         }
     }
 }

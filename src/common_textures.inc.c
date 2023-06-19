@@ -2815,7 +2815,7 @@ s8 D_0D0291D8[] = {
 
 
 // Cloud smoke or fog?
-s8 D_0D0293D8[] = {
+u8 D_0D0293D8[] = {
     #include "textures/common/132B50_293D8.i4.inc.c"
 };
 
@@ -2855,7 +2855,7 @@ s8 D_0D02B858[] = {
     #include "textures/common/132B50_2B858.i8.inc.c"
 };
 
-s8 D_0D02BC58[] = {
+u8 D_0D02BC58[] = {
     #include "textures/common/132B50_2BC58.i8.inc.c"
 };
 

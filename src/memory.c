@@ -375,7 +375,7 @@ UNUSED u8 *func_802A841C(u8* arg0, s32 arg1, s32 arg2) {
     return temp_v0;
 }
 
-u8 *dma_textures(u8 *arg0, u32 arg1, u32 arg2) {
+u8 *dma_textures(u8 texture[], u32 arg1, u32 arg2) {
     u8 *temp_v0;
     void *temp_a0;
 
@@ -384,7 +384,7 @@ u8 *dma_textures(u8 *arg0, u32 arg1, u32 arg2) {
     arg1 = ALIGN16(arg1);
     arg2 = ALIGN16(arg2);
     osInvalDCache((void *) temp_a0, arg1);
-    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(arg0)], (void *)temp_a0, arg1, &gDmaMesgQueue);
+    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(texture)], (void *)temp_a0, arg1, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, (int) 1);
     mio0decode((u8 *) temp_a0, temp_v0);
     gNextFreeMemoryAddress += arg2;
