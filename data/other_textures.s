@@ -1304,24 +1304,24 @@ glabel gTextureCow05Right
 .incbin "assets/courses/moo_moo_farm/gTextureCow05Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture695BA4
-.incbin "bin/texture_695BA4.mio0"
+glabel gTextureCactus1Left
+.incbin "assets/courses/kalimari_desert/gTextureCactus1Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture695EE4
-.incbin "bin/texture_695EE4.mio0"
+glabel gTextureCactus1Right
+.incbin "assets/courses/kalimari_desert/gTextureCactus1Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture6961E0
-.incbin "bin/texture_6961E0.mio0"
+glabel gTextureCactus2Left
+.incbin "assets/courses/kalimari_desert/gTextureCactus2Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture696488
-.incbin "bin/texture_696488.mio0"
+glabel gTextureCactus2Right
+.incbin "assets/courses/kalimari_desert/gTextureCactus2Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture6967FC
-.incbin "bin/texture_6967FC.mio0"
+glabel gTextureCactus3
+.incbin "assets/courses/kalimari_desert/gTextureCactus3.mio0"
 
 .balign 4, 0x00
 glabel gTextureFinishLineBanner1
