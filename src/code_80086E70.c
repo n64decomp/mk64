@@ -26,10 +26,10 @@ void func_80086EF0(s32 arg0) {
     func_80086E70(arg0);
 }
 
-void func_80086F10(s32 arg0, s32 arg1, s32 arg2) {
+void func_80086F10(s32 arg0, s32 arg1, u16 arg2[][4]) {
     func_80086E70(arg0);
     D_80165C18[arg0].unk_0DE = arg1;
-    D_80165C18[arg0].unk_080 = arg2;
+    D_80165C18[arg0].unk_080 = (u16 *) arg2;
 }
 
 void func_80086F60(s32 arg0) {

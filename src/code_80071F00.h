@@ -4,6 +4,8 @@
 #include "common_structs.h"
 #include "camera.h"
 
+void func_8007BBBC(s32);
+void func_8007B34C(s32);
 void func_800789AC(s32, Camera*, u16*);
 void func_80077D5C(s32);
 s32  find_unused_obj_index(s32*);
@@ -25,6 +27,10 @@ s32  func_80072320(s32, s32);
 s32  func_80072354(s32, s32);
 void func_80072388(s32, s32);
 void func_800723A4(s32, s32);
+void func_8007CC00(void);
+void func_8007FB48(s32);
+void func_8007FA08(s32);
+void func_8007E63C(s32);
 void func_80072408(s32);
 void func_80072428(s32);
 void func_80072488(s32);
@@ -55,7 +61,7 @@ s32  func_80072F88(s32, s32, s32, s32, s32, s32);
 s32  func_800730BC(s32, s32, s32, s32, s32, s32);
 s32  func_8007326C(s32, s32, s32, s32, s32, s32);
 void func_80073404(s32, u8, u8, Vtx*);
-void func_80073444(s32, s32*, u8*, u8, u16);
+void func_80073444(s32, s8*, u8*, u8, u16);
 void func_8007348C(s32, s32*, u8, u8, Vtx *);
 void func_800734D4();
 void func_800734DC(s32);
@@ -103,11 +109,11 @@ void func_80074510(uintptr_t, void*, size_t);
 void func_800745C8(s32, s32);
 void func_8007466C(s32, s32);
 void func_80074704(s32, s32);
-s32  func_80074790(s32, s32);
-void func_800747F0(s32, s32);
-void func_80074894(s32, s32);
-void func_800748C4(s32, s32);
-void func_800748F4(s32, s32);
+u8  *func_80074790(s32, u8*);
+void func_800747F0(s32, u8*);
+void func_80074894(s32, u8*);
+void func_800748C4(s32, u8*);
+void func_800748F4(s32, u8*);
 void func_80074924(s32);
 void func_80074D94(s32);
 void func_80074E28(s32);
