@@ -1311,10 +1311,6 @@
 "textures/courses/yoshi_valley_egg_spot.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x835BA0", "0x16570"]}},
 "textures/courses/yoshi_valley_egg.rgba16.png": {"meta":{"dims":[64,32]}, "offsets": {"us":["0x835BA0", "0x16FA8"]}},
 
-"textures/courses/sherbet_land_ice.ia16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x86ECF0", "0x068E8"]}},
-"textures/courses/sherbet_land_penguin_beak.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x86ECF0", "0x072E8"]}},
-"textures/courses/sherbet_land_penguin_eye.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x86ECF0", "0x07AE8"]}},
-
 "textures/courses/rainbow_road_neon_mushroom1.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x872A00", "0x05400"]}},
 "textures/courses/rainbow_road_neon_mushroom2.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x872A00", "0x05600"]}},
 "textures/courses/rainbow_road_neon_mushroom3.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x872A00", "0x05800"]}},
