@@ -1396,16 +1396,16 @@ glabel gTexture6997E0
 .incbin "textures/standalone/texture_6997E0.rgba16.mio0"
 
 .balign 4, 0x00
-glabel gTexture699E24
-.incbin "bin/texture_699E24.mio0"
+glabel gTextureDksJungleParkwayKiwanoFruit1
+.incbin "assets/courses/dks_jungle_parkway/gTextureDksJungleParkwayKiwanoFruit1.mio0"
 
 .balign 4, 0x00
-glabel gTexture69A154
-.incbin "bin/texture_69A154.mio0"
+glabel gTextureDksJungleParkwayKiwanoFruit2
+.incbin "assets/courses/dks_jungle_parkway/gTextureDksJungleParkwayKiwanoFruit2.mio0"
 
 .balign 4, 0x00
-glabel gTexture69A4C0
-.incbin "bin/texture_69A4C0.mio0"
+glabel gTextureDksJungleParkwayKiwanoFruit3
+.incbin "assets/courses/dks_jungle_parkway/gTextureDksJungleParkwayKiwanoFruit3.mio0"
 
 .balign 16, 0x00
 glabel gTextureKartShadow
@@ -1572,7 +1572,7 @@ glabel gTextureLightningBolt1
 
 .balign 4, 0x00
 glabel gTextureGhosts
-.incbin "bin/texture_ghosts.mio0"
+.incbin "assets/courses/banshee_boardwalk/boo_frames.mio0"
 
 .balign 4, 0x00
 glabel gTextureExhaust0
