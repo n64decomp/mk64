@@ -408,7 +408,7 @@ extern Vec3s D_80183E80;
 extern Vec3s D_80183E98;
 extern s32 D_80183EAC;
 extern UnkActorInner D_8018C830;
-extern s32 D_8018D1E0;
+extern u8 *D_8018D1E0;
 extern s32 D_8018D1F0;
 
 extern struct UnkStruct_800DC5EC *D_800DC5F0;

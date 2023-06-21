@@ -2652,7 +2652,7 @@ s8 gTLUTItemWindowFakeItemBox[] = {
 };
 
 // UI Item Frames
-s8 gTextureItemWindowNone[] = {
+u8 gTextureItemWindowNone[] = {
     #include "assets/item_window/gTextureItemWindowNone.inc.c"
 };
 

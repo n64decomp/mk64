@@ -275,7 +275,7 @@ extern s8 gTLUTItemWindowTripleRedShell[];
 extern s8 gTLUTItemWindowStar[];
 extern s8 gTLUTItemWindowThunderBolt[];
 extern s8 gTLUTItemWindowFakeItemBox[];
-extern s8 gTextureItemWindowNone[];
+extern u8 gTextureItemWindowNone[];
 extern s8 gTextureItemWindowBanana[];
 extern s8 gTextureItemWindowBananaBunch[];
 extern s8 gTextureItemWindowMushroom[];

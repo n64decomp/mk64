@@ -7,6 +7,17 @@
 #include "objects.h"
 #include "common_textures.h"
 #include <sounds.h>
+#include <functions.h>
+#include "audio/external.h"
+
+void func_8006FA94(void);
+void func_80071428(void);
+void func_80071818(void);
+void func_80071C28(void);
+void func_80070148(void);
+void func_8006EB10(void);
+void func_80071A20(void);
+
 
 void func_8006E9C0(void) {
 
@@ -179,13 +190,15 @@ void func_8006ED60() {
     D_80183D5C = -1;
 }
 
-s32 func_8006ED94(u8 *devAddr, u8 *baseAddress, u32 size, u32 offset)
+u8 *func_8006ED94(u8 *devAddr, u8 *baseAddress, u32 size, u32 offset)
 {
     u8 **tempAddress;
     u8 *address;
     address = baseAddress + offset;
-    osInvalDCache(address, (0, size = (~0xF) & (size + 0xF)));
-    osPiStartDma(&gDmaIoMesg, 0, 0, &_other_texturesSegmentRomStart[((u32) devAddr) & 0xFFFFFF], address, size, &gDmaMesgQueue);
+
+    size = ALIGN16(size);
+    osInvalDCache(address, (size));
+    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t)&_other_texturesSegmentRomStart[((u32) devAddr) & 0xFFFFFF], address, size, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
     tempAddress = &address;
     mio0decode(*tempAddress, (u8 *) baseAddress);
@@ -193,7 +206,7 @@ s32 func_8006ED94(u8 *devAddr, u8 *baseAddress, u32 size, u32 offset)
 }
 
 void func_8006EE44(void) {
-    D_8018D1E0 = func_8006ED94(&gTextureLogoMarioKart64, D_8018D9B0, 0x79E1, 0x20000);
+    D_8018D1E0 = func_8006ED94((u8 *)&gTextureLogoMarioKart64, (u8 *) D_8018D9B0, 0x79E1, 0x20000);
 }
 
 // Some kind of initalization for the Item Window part of the HUD
