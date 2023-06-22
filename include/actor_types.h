@@ -220,7 +220,7 @@ struct PalmTree {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-struct TripleShellParent {
+typedef struct {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 shellsAvailable;
@@ -234,7 +234,7 @@ struct TripleShellParent {
     /* 0x18 */ Vec3f unk_18;
     /* 0x24 */ Vec3f shellIndices; // Indices in gActorList for the shells "owned" by this parent
     /* 0x30 */ UnkActorInner unk30;
-}; // size = 0x70
+} TripleShellParent; // size = 0x70
 
 struct ShellActor {
     /* 0x00 */ s16 type;

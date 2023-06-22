@@ -117,9 +117,9 @@ extern void func_800C99E0(Vec3f, s32);
 
 extern Vec3f D_802B91C8;
 
-extern s32 D_802BA050;
-extern s32 D_802BA054;
-extern s32 D_802BA058;
+extern u8 *D_802BA050;
+extern u8 *D_802BA054;
+extern u8 *D_802BA058;
 extern struct Actor *D_802BA05C;
 extern s8 D_802BA060[512]; // tlut 256
 extern u16 D_802BA260;
@@ -263,7 +263,6 @@ extern s32 D_801625EC;
 extern s32 D_801625F0;
 extern s32 D_801625F4;
 extern s32 D_80162DF8;
-extern s32 D_802BA058;
 
 extern Gfx D_06006990[];
 extern Gfx D_06009330[];
@@ -383,9 +382,9 @@ extern u8 D_0F057590[];
 extern u8 D_0F057EB4[];
 extern u8 D_0F0581E4[];
 extern u8 D_0F058550[];
-extern s8 gTexture671A88[];
-extern s8 gTexture6774D8[];
-extern s8 gTextureShrub[];
+extern u8 gTexture671A88[];
+extern u8 gTexture6774D8[];
+extern u8 gTextureShrub[];
 
 extern s8 D_800DC628[];
 extern s8 D_800DC630[];
