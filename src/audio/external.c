@@ -8,6 +8,7 @@
 #include "audio/load.h"
 #include "audio/data.h"
 #include <sounds.h>
+#include "port_eu.h"
 
 // Requires void in the argument list to match properly.
 void func_800C13F0(void) {
@@ -364,7 +365,7 @@ f32 *func_800C21E8(Vec3f arg0, u32 arg1) {
     u8 var_v0;
     f32 *ret;
     // Only here to force a match
-    f32 *thing = arg0;
+    UNUSED f32 *thing = arg0;
     struct Unk_8018EFD8 *temp_a1;
 
     ret = 0;
@@ -4188,7 +4189,7 @@ void play_sound2(s32 soundBits) {
     if ((soundBits == SOUND_ACTION_REV_ENGINE_2) && (gCurrentCourseId == 0x12)) {
         soundBits = 0x49008028;
     }
-    play_sound(soundBits, &D_800EA1C8, 4, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
+    play_sound(soundBits, D_800EA1C8, 4, D_800EA1D4, D_800EA1D4, &D_800EA1DC);
 }
 
 void func_800C8EAC(u16 arg0) {
@@ -4243,15 +4244,13 @@ GLOBAL_ASM("asm/non_matchings/audio/external/func_800C8F80.s")
 //void func_800C5578(void *, s32); // extern
 
 typedef struct {
-    s32 unk0[0x3C];
+    Vec3f unk0[0x14]; // 0x14
 } UnkStruct_800E9F7C;
 
 extern UnkStruct_800E9F7C D_800E9F7C[];
 
 void func_800C9018(u8 arg0, s32 arg1) {
-    //s32 temp_a2;
-
-    //temp_a2 = arg0;
+    UNUSED s32 a = arg0;
     func_800C5578(D_800E9F7C->unk0[arg0], arg1);
 }
 #else

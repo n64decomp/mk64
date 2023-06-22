@@ -42,7 +42,7 @@ void func_800BD8F4(struct Note *note, struct SequenceChannelLayer *seqLayer);
 void note_release_and_take_ownership(struct Note *note, struct SequenceChannelLayer *seqLayer);
 struct Note *alloc_note_from_disabled(struct NotePool *pool, struct SequenceChannelLayer *seqLayer);
 struct Note *alloc_note_from_decaying(struct NotePool *pool, struct SequenceChannelLayer *seqLayer);
-s32 alloc_note_from_active(struct NotePool *pool, struct SequenceChannelLayer *seqLayer);
+struct Note *alloc_note_from_active(struct NotePool *pool, struct SequenceChannelLayer *seqLayer);
 struct Note *alloc_note(struct SequenceChannelLayer *seqLayer);
 void note_init_all(void);
 
