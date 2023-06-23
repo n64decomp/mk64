@@ -1258,13 +1258,6 @@
 "textures/821D10_08070.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x821D10", "0x08070"]}},
 "textures/825800_08A48.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x825800", "0x08A48"]}},
 
-"textures/courses/yoshi_valley_yoshi_flag.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x835BA0", "0x139A0"]}},
-
-"textures/courses/tlut2/yoshi_valley_hedgehog.rgba16.ci8.png": {"meta":{"dims":[64,64], "pal":"0x14908"}, "offsets": {"us":["0x835BA0", "0x14B08"]}},
-
-"textures/courses/yoshi_valley_egg_spot.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x835BA0", "0x16570"]}},
-"textures/courses/yoshi_valley_egg.rgba16.png": {"meta":{"dims":[64,32]}, "offsets": {"us":["0x835BA0", "0x16FA8"]}},
-
 "textures/courses/rainbow_road_neon_mushroom1.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x872A00", "0x05400"]}},
 "textures/courses/rainbow_road_neon_mushroom2.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x872A00", "0x05600"]}},
 "textures/courses/rainbow_road_neon_mushroom3.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x872A00", "0x05800"]}},
