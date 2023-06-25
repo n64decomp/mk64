@@ -428,10 +428,7 @@ glabel D_801657B4
 .skip 4
 
 glabel D_801657B8
-.skip 1
-
-glabel D_801657B9
-.skip 15
+.skip 16
 
 glabel D_801657C8
 .skip 8

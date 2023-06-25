@@ -17,20 +17,21 @@
 #include "code_80091750.h"
 #include "code_802AAA70.h"
 #include "main.h"
+#include "code_80086E70.h"
 
-void func_800431B0(Vec3f arg0, Vec3s arg1, f32 arg2, Vtx *vtx) {
+void func_800431B0(Vec3f arg0, Vec3su arg1, f32 arg2, Vtx *vtx) {
     func_80042E00(arg0, arg1, arg2);
     gSPVertex(gDisplayListHead++, vtx, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D006940);
 }
 
-void func_80043220(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
+void func_80043220(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, &D_0D0077A0);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
 
-UNUSED void func_80043288(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
+UNUSED void func_80043288(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0077A0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
@@ -38,25 +39,25 @@ UNUSED void func_80043288(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void func_80043328(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
+void func_80043328(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0077D0);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
 
-UNUSED void func_80043390(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
+UNUSED void func_80043390(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0077F8);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
 
-UNUSED void func_800433F8(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
+UNUSED void func_800433F8(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007828);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
 
-UNUSED void func_80043460(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
+UNUSED void func_80043460(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007828);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
@@ -64,7 +65,7 @@ UNUSED void func_80043460(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void func_80043500(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
+void func_80043500(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007850);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
@@ -82,7 +83,7 @@ void func_800435A0(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx, s32 arg4) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-UNUSED void func_80043668(Vec3f arg0, Vec3s arg1, f32 arg2, Gfx *gfx) {
+UNUSED void func_80043668(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
     gSPDisplayList(gDisplayListHead++, gfx);
@@ -431,17 +432,17 @@ void func_800450C8(s8 *image, s32 width, s32 height) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800450C8.s")
 #endif
 
-void func_800452A4(s8 *image, s32 width, s32 height) {
-    gDPLoadTextureBlock(gDisplayListHead++, image, G_IM_FMT_CI, G_IM_SIZ_8b, width, height, 0,
+void func_800452A4(u32 *texture, s32 width, s32 height) {
+    gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_CI, G_IM_SIZ_8b, width, height, 0,
         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
 
-void func_8004544C(s8 *image, s32 width, s32 height, s32 someMask) {
-    gDPLoadTextureBlock(gDisplayListHead++, image, G_IM_FMT_CI, G_IM_SIZ_8b, width, height, 0,
+void func_8004544C(u32 *texture, s32 width, s32 height, s32 someMask) {
+    gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_CI, G_IM_SIZ_8b, width, height, 0,
         G_TX_MIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_CLAMP, someMask, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
 
-UNUSED void func_80045614(s8 *image, s32 width, s32 height) {
+UNUSED void func_80045614(u32 *image, s32 width, s32 height) {
     gDPLoadTextureTile(gDisplayListHead++, image, G_IM_FMT_CI, G_IM_SIZ_8b, width, height,
         0, 0, width - 1, height - 1, 0,
         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -615,14 +616,14 @@ void func_80045B74(Vtx *arg0) {
     gSPDisplayList(gDisplayListHead++, D_0D006930);
 }
 
-UNUSED void func_80045BBC(Vec3f arg0, Vec3s arg1, f32 arg2, Vtx *arg3) {
+UNUSED void func_80045BBC(Vec3f arg0, Vec3su arg1, f32 arg2, Vtx *arg3) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
     gSPVertex(gDisplayListHead++, arg3, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D006940);
 }
 
-UNUSED void func_80045C48(Vec3f arg0, Vec3s arg1, f32 arg2, Vtx *arg3) {
+UNUSED void func_80045C48(Vec3f arg0, Vec3su arg1, f32 arg2, Vtx *arg3) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0078D0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
@@ -738,32 +739,32 @@ void func_800462A8(s8 *arg0, Vtx *arg1, s32 width, s32 arg3, s32 height) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void func_800463B0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_800463B0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, UNUSED s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007928);
     func_80045D0C(arg4, arg5, arg6, arg7, arg9);
 }
 
-void func_80046424(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_80046424(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, UNUSED s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007968);
     func_8004B614(D_801656C0, D_801656D0, D_801656E0, 128, 128, 128, 255);
     func_80045D0C(arg4, arg5, arg6, arg7, arg9);
 }
 
-void func_800464D0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_800464D0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, UNUSED s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007948);
     func_80045E10(arg4, arg5, arg6, arg7, arg9);
 }
 
-UNUSED void func_80046544(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+UNUSED void func_80046544(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, UNUSED s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D0079A8);
     func_80045E10(arg4, arg5, arg6, arg7, arg9);
 }
 
-void func_800465B8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+void func_800465B8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s8 *arg5, Vtx *arg6, s32 arg7, s32 arg8, UNUSED s32 arg9, s32 argA) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D0079E8);
 
@@ -771,50 +772,50 @@ void func_800465B8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s
     func_80045E10(arg5, arg6, arg7, arg8, argA);
 }
 
-UNUSED void func_80046634(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+UNUSED void func_80046634(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, UNUSED s32 arg9, s32 argA) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007948);
     func_80046030(arg4, arg5, arg6, arg7, arg8, argA);
 }
 
-void func_800466B0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7) {
+void func_800466B0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx* arg5, s32 arg6, s32 arg7) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007948);
     func_80043D50(arg4, arg6, arg7);
     func_80045B74(arg5);
 }
 
-UNUSED void func_80046720(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+UNUSED void func_80046720(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, UNUSED s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007928);
     func_800461A4(arg4, arg5, arg6, arg7, arg9);
 }
 
-UNUSED void func_80046794(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+UNUSED void func_80046794(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, UNUSED s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007948);
     func_800462A8(arg4, arg5, arg6, arg7, arg9);
 }
 
-void func_80046808(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
+void func_80046808(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007948);
     func_80045E10(arg3, arg4, arg5, arg6, arg8);
 }
 
-UNUSED void func_80046874(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
+UNUSED void func_80046874(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     func_80045E10(arg3, arg4, arg5, arg6, arg8);
 }
 
-void func_800468E0(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_800468E0(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8, s32 arg9) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     func_80045F18(arg3, arg4, arg5, arg6, arg8, arg9);
 }
 
-UNUSED void func_80046954(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
+UNUSED void func_80046954(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
@@ -822,72 +823,72 @@ UNUSED void func_80046954(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3, s32 arg4, 
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void func_80046A00(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3, Vtx *arg4, s32 arg5, s32 arg6) {
+void func_80046A00(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, Vtx *arg4, s32 arg5, s32 arg6) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007948);
     func_80043D50(arg3, arg5, arg6);
     func_80045B74(arg4);
 }
 
-UNUSED void func_80046A68(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
+UNUSED void func_80046A68(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     func_800462A8(arg3, arg4, arg5, arg6, arg8);
 }
 
-UNUSED void func_80046AD4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4) {
+UNUSED void func_80046AD4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4) {
     func_800464D0(arg0, arg1, arg2, arg3, arg4, D_0D005470, 8, 8, 8, 8);
 }
 
-UNUSED void func_80046B38(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4) {
+UNUSED void func_80046B38(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4) {
     func_800464D0(arg0, arg1, arg2, arg3, arg4, D_0D005770, 16, 16, 16, 16);
 }
 
-UNUSED void func_80046B9C(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3) {
+UNUSED void func_80046B9C(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3) {
     func_80046808(arg0, arg1, arg2, arg3, D_0D005770, 16, 16, 16, 16);
 }
 
-UNUSED void func_80046BEC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5) {
+UNUSED void func_80046BEC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_800466B0(arg0, arg1, arg2, arg3, arg4, arg5, 16, 16);
 }
 
-UNUSED void func_80046C3C(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4) {
+UNUSED void func_80046C3C(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, Vtx *arg4) {
     func_80046A00(arg0, arg1, arg2, arg3, arg4, 16, 16);
 }
 
-UNUSED void func_80046C78(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4) {
+UNUSED void func_80046C78(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4) {
     func_800464D0(arg0, arg1, arg2, arg3, arg4, D_0D005AE0, 32, 32, 32, 32);
 }
 
-UNUSED void func_80046CDC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4) {
+UNUSED void func_80046CDC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4) {
     func_800464D0(arg0, arg1, arg2, arg3, arg4, D_0D005FB0, 64, 32, 64, 32);
 }
 
-UNUSED void func_80046D40(Vec3f arg0, Vec3s arg1, f32 arg2, s32 arg3) {
+UNUSED void func_80046D40(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3) {
     func_80046808(arg0, arg1, arg2, arg3, D_0D005FB0, 64, 32, 64, 32);
 }
 
-UNUSED void func_80046D90(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4) {
+UNUSED void func_80046D90(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4) {
     func_800464D0(arg0, arg1, arg2, arg3, arg4, D_0D0060B0, 64, 64, 64, 32);
 }
 
-UNUSED void func_80046DF4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5) {
+UNUSED void func_80046DF4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s8 *arg5) {
     func_800465B8(arg0, arg1, arg2, arg3, arg4, arg5, D_0D0060B0, 64, 64, 64, 32);
 }
 
-void func_80046E60(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+void func_80046E60(s32 arg0, s8 *arg1, s32 arg2, s32 arg3) {
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     gDPLoadTLUT_pal256(gDisplayListHead++, arg0);
     func_800452A4(arg1, arg2, arg3);
 }
 
-void func_80046F60(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+void func_80046F60(s32 arg0, u8 *arg1, s32 arg2, s32 arg3, s32 arg4) {
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     gDPLoadTLUT_pal256(gDisplayListHead++, arg0);
     func_8004544C(arg1, arg2, arg3, arg4);
 }
 
-void func_80047068(s8 *arg0, s8 *arg1, Vtx *arg2, s32 arg3, s32 arg4, s32 width, s32 height) {
+void func_80047068(s8 *arg0, s8 *arg1, Vtx *arg2, UNUSED s32 arg3, s32 arg4, s32 width, s32 height) {
     s32 heightIndex;
     s32 vertexIndex;
     s8 *var_s2;
@@ -905,28 +906,28 @@ void func_80047068(s8 *arg0, s8 *arg1, Vtx *arg2, s32 arg3, s32 arg4, s32 width,
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void func_80047270(s8 *arg0, s8 *arg1, Vtx *arg2, s32 arg3, s32 arg4, s32 width, s32 height) {
+void func_80047270(u32 *tlut, u32 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, s32 width, s32 height) {
     s32 heightIndex;
     s32 vertexIndex;
-    s8 *var_s2;
+    u8 *img;
 
-    gDPLoadTLUT_pal256(gDisplayListHead++, arg0);
+    gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
     vertexIndex = 0;
-    var_s2 = arg1;
+    img = texture;
     for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
-        func_800452A4(var_s2, width, height);
+        func_800452A4(img, width, height);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D006940);
-        var_s2 += width * (height - 1);
+        img += width * (height - 1);
         vertexIndex += 4;
     }
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void func_8004747C(s8 *arg0, s8 *arg1, Vtx *arg2, s32 arg3, s32 arg4, s32 width, s32 height, s32 someMask) {
+void func_8004747C(u8 *arg0, u8 *arg1, Vtx *arg2, UNUSED s32 arg3, s32 arg4, s32 width, s32 height, s32 someMask) {
     s32 heightIndex;
     s32 vertexIndex;
-    s8 *var_s2;
+    u8 *var_s2;
 
     gDPLoadTLUT_pal256(gDisplayListHead++, arg0);
     vertexIndex = 0;
@@ -960,174 +961,174 @@ void func_8004768C(s8 *arg0, s8 *arg1, Vtx *arg2, s32 arg3, s32 width, s32 heigh
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void func_8004788C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+void func_8004788C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007CB8);
     func_80047068(arg4, arg5, arg6, arg7, arg8, arg9, argA);
 }
 
-void func_80047910(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+void func_80047910(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u32 *tlut, u32 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007CD8);
-    func_80047270(arg4, arg5, arg6, arg7, arg8, arg9, argA);
+    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
-void func_80047994(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+void func_80047994(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007CF8);
     func_80047270(arg4, arg5, arg6, arg7, arg8, arg9, argA);
 }
 
-void func_80047A18(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+void func_80047A18(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007D18);
     func_80047068(arg4, arg5, arg6, arg7, arg8, arg9, argA);
 }
 
-void func_80047A9C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+void func_80047A9C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007D38);
     func_80047270(arg4, arg5, arg6, arg7, arg8, arg9, argA);
 }
 
-UNUSED void func_80047B20(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9) {
+UNUSED void func_80047B20(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007D38);
     func_8004768C(arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_80047B9C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
+void func_80047B9C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s8 *arg5, s8 *arg6, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
     func_8004B2BC(arg4);
     func_80047068(arg5, arg6, arg7, arg8, arg9, argA, argB);
 }
 
-UNUSED void func_80047C28(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
+UNUSED void func_80047C28(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s8 *arg5, s8 *arg6, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007DD8);
     func_8004B2BC(arg4);
     func_80047270(arg5, arg6, arg7, arg8, arg9, argA, argB);
 }
 
-void func_80047CB4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
+void func_80047CB4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s8 *arg5, s8 *arg6, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007E38);
     func_8004B2BC(arg4);
     func_80047068(arg5, arg6, arg7, arg8, arg9, argA, argB);
 }
 
-UNUSED void func_80047D40(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
+UNUSED void func_80047D40(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s8 *arg5, s8 *arg6, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007E58);
     func_8004B2BC(arg4);
     func_80047270(arg5, arg6, arg7, arg8, arg9, argA, argB);
 }
 
-UNUSED void func_80047DCC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+UNUSED void func_80047DCC(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007CB8);
     func_80047068(arg3, arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_80047E48(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_80047E48(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007CD8);
     func_80047270(arg3, arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-UNUSED void func_80047EC4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+UNUSED void func_80047EC4(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D18);
     func_80047068(arg3, arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_80047F40(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_80047F40(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D38);
     func_80047270(arg3, arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-UNUSED void func_80047FBC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+UNUSED void func_80047FBC(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D58);
     func_80047270(arg3, arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-UNUSED void func_80048038(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+UNUSED void func_80048038(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D98);
     func_80047068(arg3, arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_800480B4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_800480B4(Vec3f arg0, Vec3su arg1, f32 arg2, u32 *arg3, u32 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     func_80047270(arg3, arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_80048130(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+void func_80048130(Vec3f arg0, Vec3su arg1, f32 arg2, u32 *arg3, u32 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     func_8004747C(arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA);
 }
 
-UNUSED void func_800481B4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8) {
+UNUSED void func_800481B4(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     func_8004768C(arg3, arg4, arg5, arg6, arg7, arg8);
 }
 
-UNUSED void func_80048228(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+UNUSED void func_80048228(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
     func_8004B2BC(arg3);
     func_80047068(arg4, arg5, arg6, arg7, arg8, arg9, argA);
 }
 
-void func_800482AC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+void func_800482AC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007DD8);
     func_8004B2BC(arg3);
     func_80047270(arg4, arg5, arg6, arg7, arg8, arg9, argA);
 }
 
-UNUSED void func_80048330(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+UNUSED void func_80048330(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E38);
     func_8004B2BC(arg3);
     func_80047068(arg4, arg5, arg6, arg7, arg8, arg9, argA);
 }
 
-void func_800483B4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+void func_800483B4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E58);
     func_8004B2BC(arg3);
     func_80047270(arg4, arg5, arg6, arg7, arg8, arg9, argA);
 }
 
-void func_80048438(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+void func_80048438(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007DF8);
     func_8004B2BC(arg3);
     func_80047068(arg4, arg5, arg6, arg7, arg8, arg9, argA);
 }
 
-void func_800484BC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+void func_800484BC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u32 *arg4, u32 *arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E18);
     func_8004B2BC(arg3);
     func_80047270(arg4, arg5, arg6, arg7, arg8, arg9, argA);
 }
 
-void func_80048540(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+void func_80048540(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E98);
     func_8004B2BC(arg3);
     func_80047270(arg4, arg5, arg6, arg7, arg8, arg9, argA);
 }
 
-void func_800485C4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+void func_800485C4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E98);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
@@ -1139,95 +1140,95 @@ void func_800485C4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, s32 ar
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
 }
 
-UNUSED void func_800486B0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_800486B0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_8004788C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 24, 48, 24, 48);
 }
 
-UNUSED void func_80048718(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_80048718(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_8004788C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 32, 32, 32, 32);
 }
 
-UNUSED void func_80048780(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_80048780(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_80048540(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 48, 48, 48, 40);
 }
 
-UNUSED void func_800487DC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_800487DC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_8004788C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 48, 48, 48, 48);
 }
 
-UNUSED void func_80048844(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_80048844(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_8004788C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 32, 64, 32);
 }
 
-UNUSED void func_800488AC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_800488AC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_8004788C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048914(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
-    func_80047910(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 64, 64, 32);
+UNUSED void func_80048914(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u32 *tlut, u32 *texture, Vtx *arg6) {
+    func_80047910(arg0, arg1, arg2, arg3, tlut, texture, arg6, 64, 64, 64, 32);
 }
 
-UNUSED void func_8004897C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_8004897C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_80047994(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 64, 64, 32);
 }
 
-UNUSED void func_800489E4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_800489E4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_80047A18(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048A4C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_80048A4C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_80047A9C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048AB4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, Vtx *arg7) {
+UNUSED void func_80048AB4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s8 *arg5, s8 *arg6, Vtx *arg7) {
     func_80047B9C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048B24(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, Vtx *arg7) {
+UNUSED void func_80048B24(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s8 *arg5, s8 *arg6, Vtx *arg7) {
     func_80047CB4(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048B94(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_80048B94(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5) {
     func_80047E48(arg0, arg1, arg2, arg3, arg4, arg5, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048BE8(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_80048BE8(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5) {
     func_80047F40(arg0, arg1, arg2, arg3, arg4, arg5, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048C3C(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_80048C3C(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5) {
     func_800480B4(arg0, arg1, arg2, arg3, arg4, arg5, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048C90(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_80048C90(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_800482AC(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048CEC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_80048CEC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_800483B4(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048D48(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_80048D48(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_800484BC(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048DA4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_80048DA4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_80048540(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048E00(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
-    func_80047910(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 72, 48, 72, 24);
+UNUSED void func_80048E00(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u32 *tlut, u32 *texture, Vtx *arg6) {
+    func_80047910(arg0, arg1, arg2, arg3, tlut, texture, arg6, 72, 48, 72, 24);
 }
 
-UNUSED void func_80048E68(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_80048E68(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_80047A18(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 72, 48, 72, 24);
 }
 
-UNUSED void func_80048ED0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, s32 arg5, Vtx *arg6) {
+UNUSED void func_80048ED0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
     func_80047A9C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 72, 48, 72, 24);
 }
 
-UNUSED void func_80048F38(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_80048F38(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5) {
     func_800480B4(arg0, arg1, arg2, arg3, arg4, arg5, 72, 48, 72, 24);
 }
 
@@ -1373,140 +1374,140 @@ void func_80049970(s8 *arg0, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 heigh
     gSPTexture(gDisplayListHead++, 0x0001, 0x0001, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void func_80049B20(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_80049B20(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
     func_80048F8C(arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-UNUSED void func_80049B9C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+UNUSED void func_80049B9C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
     func_80049130(arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_80049C18(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_80049C18(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
     func_800492D4(arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_80049C94(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_80049C94(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
     func_800492D4(arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_80049D10(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_80049D10(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A80);
     func_800492D4(arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_80049D8C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_80049D8C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007AA0);
     func_800492D4(arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-UNUSED void func_80049E08(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s32 arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
+UNUSED void func_80049E08(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s8 *arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
     func_8004B35C(red, green, blue, alpha);
     func_800492D4(arg8, arg9, argA, argB, argC, argD);
 }
 
-UNUSED void func_80049E98(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s32 arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
+UNUSED void func_80049E98(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s8 *arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
     func_8004B35C(red, green, blue, alpha);
     func_800492D4(arg8, arg9, argA, argB, argC, argD);
 }
 
-UNUSED void func_80049F28(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s32 arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
+UNUSED void func_80049F28(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s8 *arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007B00);
     func_8004B35C(red, green, blue, alpha);
     func_800492D4(arg8, arg9, argA, argB, argC, argD);
 }
 
-UNUSED void func_80049FB8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+UNUSED void func_80049FB8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
     func_80049478(arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-UNUSED void func_8004A034(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+UNUSED void func_8004A034(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
     func_80049478(arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_8004A0B0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_8004A0B0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
     func_8004961C(arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-UNUSED void func_8004A12C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s32 arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
+UNUSED void func_8004A12C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s8 *arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
     func_8004B35C(red, green, blue, alpha);
     func_8004961C(arg8, arg9, argA, argB, argC, argD);
 }
-UNUSED void func_8004A1BC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+UNUSED void func_8004A1BC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
     gDPSetCombineLERP(gDisplayListHead++, 1, 0, SHADE, 0, 0, 0, 0, TEXEL0, 1, 0, SHADE, 0, 0, 0, 0, TEXEL0);
     func_80049970(arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_8004A258(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_8004A258(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
     gDPSetCombineLERP(gDisplayListHead++, 1, 0, SHADE, 0, 0, 0, 0, TEXEL0, 1, 0, SHADE, 0, 0, 0, 0, TEXEL0);
     func_80049970(arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_8004A2F4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s32 arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
+void func_8004A2F4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s8 *arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
     func_8004B414(red, green, blue, alpha);
     func_80049970(arg8, arg9, argA, argB, argC, argD);
 }
 
-void func_8004A384(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s32 arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
+void func_8004A384(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s8 *arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
     func_8004B414(red, green, blue, alpha);
     func_80049970(arg8, arg9, argA, argB, argC, argD);
 }
 
-void func_8004A414(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
+void func_8004A414(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
     func_800492D4(arg3, arg4, arg5, arg6, arg7, arg8);
 }
 
-UNUSED void func_8004A488(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
+UNUSED void func_8004A488(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
     func_800492D4(arg3, arg4, arg5, arg6, arg7, arg8);
 }
 
-UNUSED void func_8004A4FC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
+UNUSED void func_8004A4FC(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007AC0);
     func_800492D4(arg3, arg4, arg5, arg6, arg7, arg8);
 }
 
-UNUSED void func_8004A570(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
+UNUSED void func_8004A570(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007AE0);
     func_800492D4(arg3, arg4, arg5, arg6, arg7, arg8);
 }
 
-UNUSED void func_8004A5E4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, Vtx *arg4) {
+UNUSED void func_8004A5E4(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, Vtx *arg4) {
     func_8004A414(arg0, arg1, arg2, arg3, arg4, 16, 16, 16, 16);
 }
 
@@ -1544,7 +1545,7 @@ void func_8004A7AC(s32 objectIndex, f32 arg1) {
         D_80183E98[0] = 0x4000;
         D_80183E98[1] = 0;
         D_80183E98[2] = 0;
-        func_80042E00(D_80183E50, &D_80183E98, arg1);
+        func_80042E00(D_80183E50, D_80183E98, arg1);
         gSPDisplayList(gDisplayListHead++, D_0D007B20);
     }
 }
@@ -1571,70 +1572,70 @@ void func_8004A9B8(f32 arg0) {
     gSPDisplayList(gDisplayListHead++, D_0D007C10);
 }
 
-UNUSED void func_8004AA10(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
+UNUSED void func_8004AA10(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
     func_80042E00(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007AE0);
     func_8004B6C4(D_80165860, D_8016586C, D_80165878);
     func_800497CC(arg3, arg4, arg5, arg6, arg7, arg8);
 }
 
-UNUSED void func_8004AAA0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_8004AAA0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_80049B20(arg0, arg1, arg2, arg3, arg4, arg5, 16, 16, 16, 16);
 }
 
-UNUSED void func_8004AB00(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_8004AB00(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_80049C18(arg0, arg1, arg2, arg3, arg4, arg5, 16, 16, 16, 16);
 }
 
-UNUSED void func_8004AB60(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_8004AB60(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_8004A0B0(arg0, arg1, arg2, arg3, arg4, arg5, 16, 16, 16, 16);
 }
 
-UNUSED void func_8004ABC0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_8004ABC0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_80049B20(arg0, arg1, arg2, arg3, arg4, arg5, 32, 32, 32, 32);
 }
 
-UNUSED void func_8004AC20(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_8004AC20(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_80049C18(arg0, arg1, arg2, arg3, arg4, arg5, 32, 32, 32, 32);
 }
 
-UNUSED void func_8004AC80(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_8004AC80(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_8004A0B0(arg0, arg1, arg2, arg3, arg4, arg5, 32, 32, 32, 32);
 }
 
-UNUSED void func_8004ACE0(s32 arg0, s32 arg1, f32 arg2, s32 arg3, Vtx *arg4) {
+UNUSED void func_8004ACE0(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, Vtx *arg4) {
     func_8004A414(arg0, arg1, arg2, arg3, arg4, 32, 32, 32, 32);
 }
 
-UNUSED void func_8004AD2C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_8004AD2C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_80049B20(arg0, arg1, arg2, arg3, arg4, arg5, 64, 32, 64, 32);
 }
 
-UNUSED void func_8004AD8C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_8004AD8C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_80049C18(arg0, arg1, arg2, arg3, arg4, arg5, 64, 32, 64, 32);
 }
 
-UNUSED void func_8004ADEC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_8004ADEC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_80049C94(arg0, arg1, arg2, arg3, arg4, arg5, 64, 32, 64, 32);
 }
 
-UNUSED void func_8004AE4C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_8004AE4C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_80049D10(arg0, arg1, arg2, arg3, arg4, arg5, 64, 32, 64, 32);
 }
 
-UNUSED void func_8004AEAC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_8004AEAC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_80049D8C(arg0, arg1, arg2, arg3, arg4, arg5, 64, 32, 64, 32);
 }
 
-UNUSED void func_8004AF0C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_8004AF0C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_80049C18(arg0, arg1, arg2, arg3, arg4, arg5, 64, 64, 64, 64);
 }
 
-UNUSED void func_8004AF6C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_8004AF6C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_80049B20(arg0, arg1, arg2, arg3, arg4, arg5, 64, 64, 64, 32);
 }
 
-UNUSED void func_8004AFCC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, Vtx *arg5) {
+UNUSED void func_8004AFCC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5) {
     func_80049C18(arg0, arg1, arg2, arg3, arg4, arg5, 64, 96, 64, 48);
 }
 
@@ -1642,8 +1643,8 @@ UNUSED void func_8004B02C(void) {
     gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
 }
 
-void func_8004B05C(u8 *texture) {
-    gDPLoadTLUT_pal256(gDisplayListHead++, texture);
+void func_8004B05C(u32 *tlut) {
+    gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
     gDPLoadSync(gDisplayListHead++);
     gDPSetTexturePersp(gDisplayListHead++, G_TP_NONE);
 }
@@ -1753,7 +1754,7 @@ void func_8004B950(s32 arg0, s32 arg1, s32 width, s32 height, s32 arg4) {
 }
 
 void func_8004B97C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
-    s32 pad[2];
+    UNUSED s32 pad[2];
     s32 sp2C;
     s32 var_a1;
     s32 var_v0;
@@ -1779,7 +1780,7 @@ void func_8004B97C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
 void func_8004B7DC(s32, s32, s32, s32, s32, s32, s32); // extern
 
 void func_8004BA08(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
-    s32 pad[2];
+    UNUSED s32 pad[2];
     s32 sp2C;
     s32 phi_a1;
     s32 phi_v1;
@@ -1803,7 +1804,7 @@ void func_8004BA08(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
 }
 
 void func_8004BA98(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6) {
-    s32 pad[2];
+    UNUSED s32 pad[2];
     s32 sp34;
     s32 sp30;
     s32 sp2C;
@@ -1935,10 +1936,10 @@ void func_8004C268(u32 arg0, u32 arg1, s8 *img, u32 width, u32 arg4, u32 height,
     arg1 -= (arg4 / 2);
     img2 = img;
 
-    for (i = 0; i < arg4 / height; i++) {
+    for (i = 0; i < (arg4 / height); i++) {
         func_80043D50(img2, width, height);
         func_8004B97C(arg0, arg1, width, height, arg6);
-        // fakematch?
+        // todo: fakematch?
         #ifdef AVOID_UB
         img2 += (width * height) * 2;
         #else
@@ -1954,7 +1955,7 @@ UNUSED void func_8004C354() {
 UNUSED void func_8004C35C() {
 }
 
-void func_8004C364(s32 arg0, s32 arg1, u32 arg2, u32 arg3, s32 arg4) {
+void func_8004C364(s32 arg0, s32 arg1, u32 arg2, u32 arg3, s8 *arg4) {
     gSPDisplayList(gDisplayListHead++, D_0D008108);
     gSPDisplayList(gDisplayListHead++, D_0D007EF8);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
@@ -1963,7 +1964,7 @@ void func_8004C364(s32 arg0, s32 arg1, u32 arg2, u32 arg3, s32 arg4) {
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
-void func_8004C450(s32 arg0, s32 arg1, u32 arg2, u32 arg3, s32 arg4) {
+void func_8004C450(s32 arg0, s32 arg1, u32 arg2, u32 arg3, s8 *arg4) {
 
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
     func_8004B614(D_801656C0, D_801656D0, D_801656E0, 0x80, 0x80, 0x80, 0xFF);
@@ -1972,7 +1973,7 @@ void func_8004C450(s32 arg0, s32 arg1, u32 arg2, u32 arg3, s32 arg4) {
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
-UNUSED void func_8004C53C(s32 arg0, s32 arg1, u32 arg2, u32 arg3, s32 arg4) {
+UNUSED void func_8004C53C(s32 arg0, s32 arg1, u32 arg2, u32 arg3, s8 *arg4) {
 
     gSPDisplayList(gDisplayListHead++, D_0D008108);
     gSPDisplayList(gDisplayListHead++, D_0D007EF8);
@@ -1982,7 +1983,7 @@ UNUSED void func_8004C53C(s32 arg0, s32 arg1, u32 arg2, u32 arg3, s32 arg4) {
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
-void func_8004C628(s32 arg0, s32 arg1, u32 arg2, u32 arg3, s32 arg4) {
+void func_8004C628(s32 arg0, s32 arg1, u32 arg2, u32 arg3, s8 *arg4) {
 
     gSPDisplayList(gDisplayListHead++, D_0D007EF8);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
@@ -2056,7 +2057,7 @@ void func_8004C8D4(s16 arg0, s16 arg1) {
     func_8004C6FC(arg0, arg1, D_8018D1E0, 0x100, 0x80);
 }
 
-UNUSED void func_8004C91C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
+UNUSED void func_8004C91C(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, s32 arg5) {
     gSPDisplayList(gDisplayListHead++, D_0D008108);
     gSPDisplayList(gDisplayListHead++, D_0D007EF8);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
@@ -2064,27 +2065,27 @@ UNUSED void func_8004C91C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
-void func_8004C9D8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7) {
+void func_8004C9D8(s32 arg0, s32 arg1, s32 arg2, s8 *arg3, s32 arg4, s32 arg5, UNUSED s32 arg6, s32 arg7) {
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
     func_8004B2BC(arg2);
     func_8004C268(arg0, arg1, arg3, arg4, arg5, arg7, 1);
 }
 
-void func_8004CA58(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5) {
+void func_8004CA58(s32 arg0, s32 arg1, f32 arg2, s8 *arg3, s32 arg4, s32 arg5) {
     gSPDisplayList(gDisplayListHead++, D_0D007F78);
     func_80043D50(arg3, arg4, arg5);
     func_8004BB3C(arg0, arg1, arg4, arg5, arg2);
 }
 
-void func_8004CAD0(s32 arg0, s32 arg1, s32 arg2) {
+void func_8004CAD0(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004C364(arg0, arg1, 8, 8, arg2);
 }
 
-UNUSED void func_8004CB00(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004CB00(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004C364(arg0, arg1, 8, 16, arg2);
 }
 
-UNUSED void func_8004CB30(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004CB30(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004C364(arg0, arg1, 16, 16, arg2);
 }
 
@@ -2092,44 +2093,44 @@ void func_8004CB60(s32 arg0, s32 arg1, s8 *texture) {
     func_8004C364(arg0, arg1, 32, 8, texture);
 }
 
-void func_8004CB90(s32 arg0, s32 arg1, s32 arg2) {
+void func_8004CB90(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004C364(arg0, arg1, 32, 16, arg2);
 }
 
-UNUSED void func_8004CBC0(s32 arg0, s32 arg1, f32 arg2, s32 arg3) {
+UNUSED void func_8004CBC0(s32 arg0, s32 arg1, f32 arg2, s8 *arg3) {
     func_8004CA58(arg0, arg1, arg2, arg3, 32, 16);
 }
 
-UNUSED void func_8004CBF4(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004CBF4(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004C364(arg0, arg1, 32, 32, arg2);
 }
 
-UNUSED void func_8004CC24(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004CC24(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004C628(arg0, arg1, 32, 32, arg2);
 }
 
-UNUSED void func_8004CC54(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004CC54(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004C364(arg0, arg1, 40, 32, arg2);
 }
 
-UNUSED void func_8004CC84(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004CC84(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004C91C(arg0, arg1, arg2, 48, 48, 24);
 }
 
-UNUSED void func_8004CCB4(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004CCB4(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004C364(arg0, arg1, 64, 32, arg2);
 }
 
-UNUSED void func_8004CCE4(s32 arg0, s32 arg1, f32 arg2, s32 arg3) {
+UNUSED void func_8004CCE4(s32 arg0, s32 arg1, f32 arg2, s8 *arg3) {
     func_8004CA58(arg0, arg1, arg2, arg3, 64, 32);
 }
 
-UNUSED void func_8004CD18(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004CD18(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004C91C(arg0, arg1, arg2, 64, 64, 32);
 }
 
-UNUSED void func_8004CD48(s32 arg0, s32 arg1, s8 *arg2, s32 width, s32 arg4, s32 height) {
-    s32 pad;
+UNUSED void func_8004CD48(s32 arg0, s32 arg1, UNUSED s8 *arg2, s32 width, s32 arg4, s32 height) {
+    UNUSED s32 pad;
     s32 var_s0;
     s32 i;
     s8 *var_s4;
@@ -2161,17 +2162,17 @@ UNUSED void func_8004CE8C(s32 arg0, s32 arg1, s8 *arg2, s32 width, s32 arg4, s32
     }
 }
 
-UNUSED void func_8004CF9C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6) {
+UNUSED void func_8004CF9C(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, UNUSED s32 arg5, s32 arg6) {
     gSPDisplayList(gDisplayListHead++, D_0D007FE0);
     func_8004CE8C(arg0, arg1, arg2, arg3, arg4, arg6);
 }
 
-UNUSED void func_8004CFF0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6) {
+UNUSED void func_8004CFF0(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, UNUSED s32 arg5, s32 arg6) {
     gSPDisplayList(gDisplayListHead++, D_0D008000);
     func_8004CE8C(arg0, arg1, arg2, arg3, arg4, arg6);
 }
 
-UNUSED void func_8004D044(s32 arg0, s32 arg1, s32 arg2, s32 red, s32 green, s32 blue, s32 alpha, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+UNUSED void func_8004D044(s32 arg0, s32 arg1, s8 *arg2, s32 red, s32 green, s32 blue, s32 alpha, s32 arg7, s32 arg8, UNUSED s32 arg9, s32 argA) {
     gSPDisplayList(gDisplayListHead++, D_0D007FE0);
     func_8004B35C(red, green, blue, alpha);
     func_8004CE8C(arg0, arg1, arg2, arg7, arg8, argA);
@@ -2182,7 +2183,6 @@ UNUSED void func_8004D0CC(void) {
 }
 
 Gfx *func_8004D0D4(s32 arg0, s32 arg1, s8 *arg2, s32 width, s32 arg4, s32 height) {
-    Gfx *var_v0;
     s32 var_s0;
     s8 *var_s1;
     s32 i;
@@ -2199,7 +2199,7 @@ Gfx *func_8004D0D4(s32 arg0, s32 arg1, s8 *arg2, s32 width, s32 arg4, s32 height
     }
 }
 
-void func_8004D210(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 width, s32 arg8, s32 arg9, s32 height) {
+void func_8004D210(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 width, s32 arg8, UNUSED s32 arg9, s32 height) {
     s32 var_s3;
     s8 *var_s4;
     s32 i;
@@ -2218,7 +2218,7 @@ void func_8004D210(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, s32 arg5, s
 
 }
 
-void func_8004D37C(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 width, s32 arg8, s32 arg9, s32 height) {
+void func_8004D37C(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 width, s32 arg8, UNUSED s32 arg9, s32 height) {
     s32 var_s3;
     s8 *var_s4;
     s32 i;
@@ -2237,7 +2237,7 @@ void func_8004D37C(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, s32 arg5, s
     }
 }
 
-void func_8004D4E8(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 width, s32 arg8, s32 arg9, s32 height) {
+void func_8004D4E8(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 width, s32 arg8, UNUSED s32 arg9, s32 height) {
     s32 var_s3;
     s8 *var_s4;
     s32 i;
@@ -2259,7 +2259,7 @@ void func_8004D4E8(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, s32 arg5, s
 //generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
 //? func_80044F34(s8 *, s32, s32);                    /* extern */
 
-UNUSED void func_8004D654(s32 arg0, s32 arg1, s8 *arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 width, s32 arg9, s32 argA, s32 height) {
+UNUSED void func_8004D654(s32 arg0, s32 arg1, s8 *arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 width, s32 arg9, UNUSED s32 argA, s32 height) {
     s8 *var_s2;
     s32 var_s3;
     s32 i;
@@ -2294,7 +2294,7 @@ void func_8004D7B4(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4) {
     s32 temp_s5;
     s32 var_s3;
     s8 *var_s2;
-    s32 test[3];
+    UNUSED s32 test[3];
     s32 i;
 
     D_801656B0 += D_80165710;
@@ -2353,13 +2353,13 @@ void func_8004D93C(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4) {
     }
 }
 
-void func_8004DAB8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+UNUSED void func_8004DAB8(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4) {
     f32 temp_f20;
     s16 temp_s7;
     s16 var_s1;
     u16 temp_s0;
     s32 temp_s6;
-    s32 var_s2;
+    s8 *var_s2;
     s32 var_s4;
     s32 var;
     s32 i;
@@ -2385,82 +2385,82 @@ void func_8004DAB8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     }
 }
 
-UNUSED void func_8004DC34(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DC34(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004CF9C(arg0, arg1, arg2, 8, 160, 8, 160);
 }
 
-UNUSED void func_8004DC6C(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DC6C(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004CF9C(arg0, arg1, arg2, 12, 160, 12, 160);
 }
 
-UNUSED void func_8004DCA4(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DCA4(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004CF9C(arg0, arg1, arg2, 12, 192, 12, 192);
 }
 
-UNUSED void func_8004DCDC(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DCDC(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004CD48(arg0, arg1, arg2, 16, 16, 16);
 }
 
-UNUSED void func_8004DD0C(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DD0C(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004CF9C(arg0, arg1, arg2, 16, 160, 16, 160);
 }
 
-UNUSED void func_8004DD44(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DD44(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004CD48(arg0, arg1, arg2, 32, 32, 32);
 }
 
-UNUSED void func_8004DD74(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DD74(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004CF9C(arg0, arg1, arg2, 32, 32, 32, 32);
 }
 
-UNUSED void func_8004DDAC(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DDAC(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004D0D4(arg0, arg1, arg2, 32, 32, 32);
 }
 
-UNUSED void func_8004DDDC(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DDDC(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004D7B4(arg0, arg1, arg2, 32, 32);
 }
 
-UNUSED void func_8004DE04(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DE04(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004D93C(arg0, arg1, arg2, 32, 32);
 }
 
-UNUSED void func_8004DE2C(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DE2C(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004DAB8(arg0, arg1, arg2, 32, 32);
 }
 
-UNUSED void func_8004DE54(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DE54(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004CD48(arg0, arg1, arg2, 64, 32, 32);
 }
 
-UNUSED void func_8004DE84(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DE84(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004CD48(arg0, arg1, arg2, 64, 64, 32);
 }
 
-UNUSED void func_8004DEB4(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DEB4(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004CF9C(arg0, arg1, arg2, 64, 96, 64, 48);
 }
 
-UNUSED void func_8004DEEC(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DEEC(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004CF9C(arg0, arg1, arg2, 112, 32, 112, 32);
 }
 
-UNUSED void func_8004DF24(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_8004DF24(s32 arg0, s32 arg1, s8 *arg2) {
     func_8004CF9C(arg0, arg1, arg2, 128, 32, 128, 32);
 }
 
-void func_8004DF5C(s32 arg0, s32 arg1, s8 *arg2, s32 width, s32 arg4, s32 height) {
+void func_8004DF5C(s32 arg0, s32 arg1, u32 *texture, s32 width, s32 arg4, s32 height) {
     s32 var_s0;
-    s8 *var_s1;
+    u8 *img;
     s32 i;
 
     var_s0 = arg1 - (arg4 / 2);
-    var_s1 = arg2;
+    img = texture;
 
     for (i = 0; i < arg4 / height; i++) {
-            func_800452A4(var_s1, width, height);
+            func_800452A4(img, width, height);
             func_8004B97C(arg0 - (width / 2), var_s0, width, height, 1);
-            var_s1 += width * height;
+            img += width * height;
             var_s0 += height;
     }
 }
@@ -2506,20 +2506,20 @@ UNUSED void func_8004E238(void) {
 
 }
 
-void func_8004E240(s32 arg0, s32 arg1, u8 *tlut, s32 arg3, s32 arg4, s32 arg5, s32 arg6) {
+void func_8004E240(s32 arg0, s32 arg1, u32 *tlut, u32 *texture, s32 arg4, s32 arg5, s32 arg6) {
     gSPDisplayList(gDisplayListHead++, D_0D007CB8);
     func_8004B05C(tlut);
-    func_8004DF5C(arg0, arg1, arg3, arg4, arg5, arg6);
+    func_8004DF5C(arg0, arg1, texture, arg4, arg5, arg6);
 }
 
-void func_8004E2B8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7) {
+void func_8004E2B8(s32 arg0, s32 arg1, s32 arg2, u32 *tlut, u32 *texture, s32 arg5, s32 arg6, s32 arg7) {
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
     func_8004B2BC(arg2);
-    func_8004B05C(arg3);
-    func_8004DF5C(arg0, arg1, arg4, arg5, arg6, arg7);
+    func_8004B05C(tlut);
+    func_8004DF5C(arg0, arg1, texture, arg5, arg6, arg7);
 }
 
-void func_8004E338(s32 arg0, s32 arg1, u8 *tlut, s32 arg3, s32 arg4, s32 arg5) {
+void func_8004E338(s32 arg0, s32 arg1, u8 *tlut, s8 *arg3, s32 arg4, s32 arg5) {
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
     func_8004B2BC(D_8016589C);
     func_8004B05C(tlut);
@@ -2530,52 +2530,52 @@ UNUSED void func_8004E3B8(void) {
 
 }
 
-UNUSED void func_8004E3C0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7) {
+UNUSED void func_8004E3C0(s32 arg0, s32 arg1, u8 *arg2, s8 *arg3, s32 arg4, s32 arg5, UNUSED s32 arg6, s32 arg7) {
     func_8004E240(arg0, arg1, arg2, arg3, arg4, arg5, arg7);
 }
 
-UNUSED void func_8004E3F4(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
+UNUSED void func_8004E3F4(s32 arg0, s32 arg1, s32 arg2, u8 *arg3, s8 *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
     func_8004E2B8(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg8);
 }
 
-UNUSED void func_8004E430(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+UNUSED void func_8004E430(s32 arg0, s32 arg1, u8 *arg2, s8 *arg3) {
     func_8004E240(arg0, arg1, arg2, arg3, 8, 128, 128);
 }
 
-UNUSED void func_8004E464(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+UNUSED void func_8004E464(s32 arg0, s32 arg1, u8 *arg2, s8 *arg3) {
     func_8004E240(arg0, arg1, arg2, arg3, 32, 32, 32);
 }
 
-UNUSED void func_8004E498(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+UNUSED void func_8004E498(s32 arg0, s32 arg1, u8 *arg2, s8 *arg3) {
     func_8004E240(arg0, arg1, arg2, arg3, 32, 64, 64);
 }
 
-void func_8004E4CC(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+void func_8004E4CC(s32 arg0, s32 arg1, u32 *arg2, u32 *arg3) {
     func_8004E240(arg0, arg1, arg2, arg3, 40, 32, 32);
 }
 
-UNUSED void func_8004E500(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    func_8004E240(arg0, arg1, arg2, arg3, 48, 48, 24);
+UNUSED void func_8004E500(s32 arg0, s32 arg1, u32 *tlut, u32 *texture) {
+    func_8004E240(arg0, arg1, tlut, texture, 48, 48, 24);
 }
 
-UNUSED void func_8004E534(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    func_8004E240(arg0, arg1, arg2, arg3, 64, 32, 32);
+UNUSED void func_8004E534(s32 arg0, s32 arg1, u32 *tlut, u32 *texture) {
+    func_8004E240(arg0, arg1, tlut, texture, 64, 32, 32);
 }
 
-UNUSED void func_8004E568(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    func_8004E240(arg0, arg1, arg2, arg3, 64, 64, 32);
+UNUSED void func_8004E568(s32 arg0, s32 arg1, u32 *tlut, u32 *texture) {
+    func_8004E240(arg0, arg1, tlut, texture, 64, 64, 32);
 }
 
-UNUSED void func_8004E59C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
-    func_8004E2B8(arg0, arg1, arg2, arg3, arg4, 64, 64, 32);
+UNUSED void func_8004E59C(s32 arg0, s32 arg1, s32 arg2, u32 *tlut, u32 *texture) {
+    func_8004E2B8(arg0, arg1, arg2, tlut, texture, 64, 64, 32);
 }
 
-UNUSED void func_8004E5D8(s32 arg0, s32 arg1, u8 *tlut, s32 arg3) {
+UNUSED void func_8004E5D8(s32 arg0, s32 arg1, u8 *tlut, s8 *arg3) {
     func_8004E338(arg0, arg1, tlut, arg3, 64, 64);
 }
 
-UNUSED void func_8004E604(s32 arg0, s32 arg1, u8 *tlut, s32 arg3) {
-    func_8004E240(arg0, arg1, tlut, arg3, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
+UNUSED void func_8004E604(s32 arg0, s32 arg1, u32 *tlut, u32 *texture) {
+    func_8004E240(arg0, arg1, tlut, texture, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
 }
 
 void func_8004E638(s32 playerId) {
@@ -2600,7 +2600,7 @@ void func_8004E6C4(s32 playerId) {
     temp_v1 = &D_80165C18[objectIndex];
     if (temp_v1->unk_0A6 >= 2) {
         temp_v0 = &D_8018CA70[playerId];
-        func_80047910(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, 0U, temp_v0->unknownScaling, (s32) temp_v1->unk_060, (s32) temp_v1->unk_064, D_0D005C30, 0x00000028, 0x00000020, 0x00000028, 0x00000020);
+        func_80047910(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, 0U, temp_v0->unknownScaling, (u32 *) temp_v1->unk_060, (u32 *) temp_v1->unk_064, D_0D005C30, 0x00000028, 0x00000020, 0x00000028, 0x00000020);
     }
 }
 
@@ -2664,7 +2664,7 @@ void func_8004E998(s32 playerId) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_8004E998.s")
 #endif
 
-void func_8004EB30(s32 arg0) {
+void func_8004EB30(UNUSED s32 arg0) {
 
 }
 
@@ -3034,7 +3034,7 @@ void func_8004F950(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 void func_8004F9CC(s32 arg0, s32 arg1, s32 arg2) {
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
     func_8004B614(D_801656C0, D_801656D0, D_801656E0, 128, 128, 128, 255);
-    func_80043D50(&D_0D00C558, 104, 16);
+    func_80043D50(D_0D00C558, 104, 16);
     func_8004F6D0(arg2);
     func_8004F8CC(arg0, arg1);
 }
@@ -3954,7 +3954,7 @@ void func_800514BC(void) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800514BC.s")
 #endif
 
-void func_80051638(s32 arg0) {
+void func_80051638(UNUSED s32 arg0) {
     s32 someIndex;
     s32 leafIndex;
     struct_80165C18_entry *object;
@@ -4401,13 +4401,13 @@ GLOBAL_ASM("asm/non_matchings/hud_renderer/func_8005217C.s")
 #endif
 
 void func_800523B8(s32 arg0, s32 arg1, u32 arg2) {
-    s32 stackPadding0[2];
+    UNUSED s32 pad[2];
     struct_80165C18_entry *temp_v1;
     Camera *camera = &camera1[arg1];
 
     temp_v1 = &D_80165C18[arg0];
     temp_v1->unk_0B2[1] = func_800418AC(temp_v1->unk_004[0], temp_v1->unk_004[2], camera->pos);
-    func_800484BC(temp_v1->unk_004, temp_v1->unk_0B2, temp_v1->unk_000, temp_v1->unk_0A0, temp_v1->unk_060, temp_v1->unk_064, (Vtx *) temp_v1->unk_074, 0x00000030, 0x00000028, 0x00000030, 0x00000028);
+    func_800484BC(temp_v1->unk_004, temp_v1->unk_0B2, temp_v1->unk_000, temp_v1->unk_0A0, temp_v1->unk_060, temp_v1->unk_064, temp_v1->unk_074, 0x00000030, 0x00000028, 0x00000030, 0x00000028);
     if ((func_8007223C(arg0, 0x00000020) != 0) && (arg2 < 0x15F91U)) {
         func_8004A630(&D_8018C830, temp_v1->unk_004, 0.4f);
     }
@@ -4809,12 +4809,12 @@ void func_8005309C(s32 cameraId) {
                 D_80183E80[1] = func_800418AC(D_80165C18[temp_s1].unk_004[0], D_80165C18[temp_s1].unk_004[2], camera->pos);
                 D_80183E80[2] = (u16) D_80165C18[temp_s1].unk_0B2[2];
                 if (func_8007223C(temp_s1, 0x00000010) != 0) {
-                    func_800480B4(D_80165C18[temp_s1].unk_004, (u16 *) D_80183E80, D_80165C18[temp_s1].unk_000, (s32) D_80165C18[temp_s1].unk_060, (s32) D_80165C18[temp_s1].unk_064, D_80165C18[temp_s1].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+                    func_800480B4(D_80165C18[temp_s1].unk_004, (u16 *) D_80183E80, D_80165C18[temp_s1].unk_000, D_80165C18[temp_s1].unk_060, D_80165C18[temp_s1].unk_064, D_80165C18[temp_s1].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
                 }
                 temp_s1 = D_80183F28[var_s4];
                 D_80183E80[0] = (s16) D_80165C18[temp_s1].unk_0B2[0];
                 D_80183E80[2] = (u16) D_80165C18[temp_s1].unk_0B2[2];
-                func_800480B4(D_80165C18[temp_s1].unk_004, (u16 *) D_80183E80, D_80165C18[temp_s1].unk_000, (s32) D_80165C18[temp_s1].unk_060, (s32) D_80165C18[temp_s1].unk_064, D_80165C18[temp_s1].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+                func_800480B4(D_80165C18[temp_s1].unk_004, (u16 *) D_80183E80, D_80165C18[temp_s1].unk_000, D_80165C18[temp_s1].unk_060, D_80165C18[temp_s1].unk_064, D_80165C18[temp_s1].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
         }
     }
@@ -5112,7 +5112,7 @@ void func_80053870(s32 cameraId) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80053870.s")
 #endif
 
-void func_80053D74(s32 objectIndex, s32 arg1, s32 vertexIndex) {
+void func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 vertexIndex) {
     struct_80165C18_entry *temp_v0;
 
     if (D_8018D120 < 0x2EF) {
@@ -5477,7 +5477,7 @@ void func_80054D00(s32 objectIndex, s32 cameraId) {
             D_80183E80[0] = (s16) D_80165C18[objectIndex].unk_0B2[0];
             D_80183E80[1] = func_800418AC(D_80165C18[objectIndex].unk_004[0], D_80165C18[objectIndex].unk_004[2], camera->pos);
             D_80183E80[2] = (u16) D_80165C18[objectIndex].unk_0B2[2];
-            func_80048130(D_80165C18[objectIndex].unk_004, (u16 *) D_80183E80, D_80165C18[objectIndex].unk_000, (s32) D_80165C18[objectIndex].unk_060, (s32) D_80165C18[objectIndex].unk_064, D_0D0062B0, 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
+            func_80048130(D_80165C18[objectIndex].unk_004, (u16 *) D_80183E80, D_80165C18[objectIndex].unk_000, D_80165C18[objectIndex].unk_060, D_80165C18[objectIndex].unk_064, D_0D0062B0, 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
         }
     }
 }
@@ -5497,7 +5497,7 @@ void func_80054E10(s32 objectIndex) {
 }
 
 // Almost certainly responsible for spawning/handling the moles on Moo Moo farm
-void func_80054EB8(s32 unused) {
+void func_80054EB8(UNUSED s32 unused) {
     s32 someIndex;
 
     for (someIndex = 0; someIndex < NUM_MOLES; someIndex++) {
@@ -5651,7 +5651,7 @@ void func_80055458(s32 objectIndex, s32 cameraId) {
         camera = &camera1[cameraId];
         func_8004A6EC(objectIndex, 0.5f);
         D_80165C18[objectIndex].unk_0B2[1] = func_800418AC(D_80165C18[objectIndex].unk_004[0], D_80165C18[objectIndex].unk_004[2], camera->pos);
-        func_800480B4(D_80165C18[objectIndex].unk_004, D_80165C18[objectIndex].unk_0B2, D_80165C18[objectIndex].unk_000, (s32) D_80165C18[objectIndex].unk_060, (s32) D_80165C18[objectIndex].unk_064, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+        func_800480B4(D_80165C18[objectIndex].unk_004, D_80165C18[objectIndex].unk_0B2, D_80165C18[objectIndex].unk_000, D_80165C18[objectIndex].unk_060, D_80165C18[objectIndex].unk_064, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
     }
 }
 
@@ -5675,7 +5675,7 @@ void func_800555BC(s32 objectIndex, s32 cameraId) {
         camera = &camera1[cameraId];
         func_8004A870(objectIndex, 0.7f);
         D_80165C18[objectIndex].unk_0B2[1] = func_800418AC(D_80165C18[objectIndex].unk_004[0], D_80165C18[objectIndex].unk_004[2], camera->pos);
-        func_800480B4(D_80165C18[objectIndex].unk_004, D_80165C18[objectIndex].unk_0B2, D_80165C18[objectIndex].unk_000, (s32) D_80165C18[objectIndex].unk_060, (s32) D_80165C18[objectIndex].unk_064, (Vtx *) D_80165C18[objectIndex].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+        func_800480B4(D_80165C18[objectIndex].unk_004, D_80165C18[objectIndex].unk_0B2, D_80165C18[objectIndex].unk_000, D_80165C18[objectIndex].unk_060, D_80165C18[objectIndex].unk_064, (Vtx *) D_80165C18[objectIndex].unk_074, 64, 64, 64, 32);
     }
 }
 
@@ -5881,7 +5881,7 @@ GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80055C38.s")
 #endif
 
 void func_80055CCC(s32 objectIndex, s32 cameraId) {
-    s32 stackPadding0;
+    UNUSED s32 pad;
     f32 test;
     Camera *camera;
 
@@ -5891,7 +5891,7 @@ void func_80055CCC(s32 objectIndex, s32 cameraId) {
         test = D_80165C18[objectIndex].unk_004[1] - D_80165C18[objectIndex].unk_044;
         func_8004A6EC(objectIndex, (20.0 / test) + 0.5);
         if (func_80072270(objectIndex, 0x00100000) != 0) {
-            func_80043328(D_80165C18[objectIndex].unk_004, (s16 *) D_80165C18[objectIndex].unk_0BE, D_80165C18[objectIndex].unk_000, D_0600F960);
+            func_80043328(D_80165C18[objectIndex].unk_004, (u16 *) D_80165C18[objectIndex].unk_0BE, D_80165C18[objectIndex].unk_000, D_0600F960);
             gSPDisplayList(gDisplayListHead++, D_0600F650);
         } else {
             D_80183E80[0] = (s16) D_80165C18[objectIndex].unk_0BE[0];
@@ -5920,7 +5920,7 @@ void func_80055E68(s32 arg0) {
     }
 }
 
-void func_80055EF4(s32 objectIndex, s32 arg1) {
+void func_80055EF4(s32 objectIndex, UNUSED s32 arg1) {
     struct_80165C18_entry *object;
 
     object = &D_80165C18[objectIndex];
@@ -5937,7 +5937,7 @@ void func_80055F48(s32 arg0) {
     }
 }
 
-void func_80055FA0(s32 objectIndex, s32 arg1) {
+void func_80055FA0(s32 objectIndex, UNUSED s32 arg1) {
     Mat4 someMatrix1;
     Mat4 someMatrix2;
     struct_80165C18_entry *object;
@@ -5975,7 +5975,7 @@ void func_80056188(s32 cameraId) {
             object = &D_80165C18[objectIndex];
             if ((object->unk_0A6 >= 2) && (func_80072270(objectIndex, 0x00080000) != 0) && (func_8008A140(objectIndex, camera, 0x2AABU) != 0)) {
                 object->unk_0B2[1] = func_800872D8(objectIndex, camera);
-                func_800480B4(object->unk_004, object->unk_0B2, object->unk_000, (s32) object->unk_060, (s32) object->unk_064, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+                func_800480B4(object->unk_004, object->unk_0B2, object->unk_000, object->unk_060, object->unk_064, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
         }
     }
@@ -6092,7 +6092,7 @@ void func_800563DC(s32 objectIndex, s32 cameraId, s32 arg2) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800563DC.s")
 #endif
 
-void func_8005669C(s32 objectIndex, s32 arg1, s32 arg2) {
+void func_8005669C(s32 objectIndex, UNUSED s32 arg1, s32 arg2) {
     gSPDisplayList(gDisplayListHead++, D_0D0079E8);
     func_8004B310(arg2);
     func_80043D50(D_0D02AA58, 0x00000010, 0x00000010);
@@ -6461,107 +6461,88 @@ void debug_wrap_text(s32 *x, s32 *y) {
     }
 }
 
-s8 D_800E5628[];
-void debug_print_string(s32 *x, s32 *y, s8 *arg2) {
+extern s8 D_800E5628[];
+void debug_print_string(s32 *x, s32 *y, char *arg2) {
     *x += 20;
     *y += 20;
 
     while (*arg2 != '\0') {
-        if (D_800E5628[*arg2] >= 0) {
-            func_800573E4(*x, *y, D_800E5628[*arg2]);
+        if (D_800E5628[(s32)*arg2] >= 0) {
+            func_800573E4(*x, *y, D_800E5628[(s32)*arg2]);
         }
         debug_wrap_text(x, y);
-        *arg2++;
+        arg2++;
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-extern s8 D_801657B8;
-extern s8 D_801657B9;
-static s8 D_800E5655[0x15] = { 0x2B, 0x24, 0x2D, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0x2C, 0x36, 0x3C, 0x2F, 0x3D, 0x28, 0x30, 0x0A, };
+extern s8 D_800E5655[0x15]; //[0x15] = { 0x2B, 0x24, 0x2D, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0x2C, 0x36, 0x3C, 0x2F, 0x3D, 0x28, 0x30, 0x0A, };
 
-void debug_print_number(s32 *arg0, s32 *arg1, s32 arg2, u32 arg3) {
-    s32 var_v0;
-    s8 *var_s0;
-    s8 var_a2;
-    u32 temp_t6;
+extern s8 D_801657B8[16];
 
-    debug_wrap_text(arg0, arg1);
-    var_v0 = arg2;
-    if (arg2 < 0) {
-        func_800573E4(*arg0, *arg1, *D_800E5655);
-        debug_wrap_text(arg0, arg1);
-        var_v0 = -arg2;
+void debug_print_number(s32 *x, s32 *y, s32 number, u32 numDigits)
+{
+    s32 n;
+    s8 *ptr;
+    s8 remainder;
+
+    debug_wrap_text(x, y);
+    n = number;
+    if (n < 0) {
+        func_800573E4(*x, *y, *D_800E5655);
+        debug_wrap_text(x, y);
+        n = -number;
     }
-    D_801657B8 = -1;
-    var_s0 = &D_801657B8;
-    if (var_v0 != 0) {
-        if (var_v0 != 0) {
-            do {
-                temp_t6 = (u32) var_v0 % arg3;
-                var_v0 = (s32) ((u32) var_v0 / arg3);
-                var_s0->unk1 = (s8) temp_t6;
-                var_s0 += 1;
-            } while (var_v0 != 0);
+      
+    *D_801657B8 = -1;
+    ptr = D_801657B8;
+    if (n != 0) {
+        while (n != 0) {
+            remainder = n % numDigits;
+            *++ptr = remainder;
+            n = n / numDigits;
         }
     } else {
-        var_s0 = &D_801657B9;
-        D_801657B9 = 0;
+        *++ptr = 0;
     }
-    var_a2 = *var_s0;
+    
     do {
-        var_s0 -= 1;
-        func_800573E4(*arg0, *arg1, var_a2);
-        debug_wrap_text(arg0, arg1);
-        var_a2 = *var_s0;
-    } while (var_a2 != -1);
+        func_800573E4(*x, *y, *ptr--);
+        debug_wrap_text(x, y);
+   } while (*ptr  != -1);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/debug_print_number.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-extern s8 D_801657B8;
-extern s8 D_801657B9;
 
 /**
- * 801657B8 does nothing? 0xFF a mask?
- * 801657B9 increments 0-9
- * 801657BA increments the tenth digit.
+ * 801657B8[] does nothing? 0xFF a mask?
+ * Index zero is a null/0xFF flag.
+ * The other indexes increment 0-9
+ * The final index (10) increments the tenth digit.
 */
-void func_8005762C(s32 *x, s32 *y, s8 *pathCount, u32 arg3) { // 10
-    s8 *var_s0;
-    //s8 var_a2;
-    //u32 temp_t6;
-    //u32 var_v0;
-https://decomp.me/scratch/A3vq3
+void func_8005762C(s32 *x, s32 *y, s32 pathCount, u32 numDigits) {
+    s8 *ptr;
+    s32 count;
+    s8 remainder;
+    
     debug_wrap_text(x, y);
-    D_801657B8 = -1;
-    var_s0 = &D_801657B8;
-    var_v0 = arg2;
-    if (pathCount) {
-        while (*pathCount != 0) {
-            //temp_t6 = *arg2 % arg3;
-            *pathCount /= arg3;
-            var_s0 = *pathCount % arg3;
-            var_s0++;
+    *D_801657B8 = -1;
+    ptr = D_801657B8;
+    count = pathCount;
+    if (count != 0) {
+        while (count != 0) {
+            // Retrives ones digit (31 outputs 1).
+            remainder = count % numDigits;
+            *++ptr = remainder;
+            // Retrieves tens digit (31 outputs 3).
+            count = count / numDigits;
         }
     } else {
-        D_801657B9 = 0;
+        *++ptr = 0;
     }
-    //var_a2 = *var_s0;
+    
     do {
-        D_801657B8--;
-        func_800573E4(*x, *y, D_801657B8);
+        func_800573E4(*x, *y, *ptr--);
         debug_wrap_text(x, y);
-        //D_801657B8 = *var_s0;
-    } while (D_801657B8 != -1);
+    } while (*ptr != -1);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_8005762C.s")
-#endif
 
 UNUSED void func_80057708() {
 
@@ -6577,65 +6558,65 @@ void func_80057778(void) {
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
-void debug_print_str2(s32 arg0, s32 arg1, s8 *arg2) {
+void debug_print_str2(s32 arg0, s32 arg1, char *arg2) {
     debug_print_string(&arg0, &arg1, arg2);
 }
 
-void print_str_num(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
+void print_str_num(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     debug_print_string(&arg0, &arg1, arg2);
     debug_print_number(&arg0, &arg1, arg3, 10);
 }
 
-UNUSED void func_80057814(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
+UNUSED void func_80057814(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     debug_print_string(&arg0, &arg1, arg2);
     func_8005762C(&arg0, &arg1, arg3, 10);
 }
 
-UNUSED void func_80057858(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
+UNUSED void func_80057858(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     debug_print_string(&arg0, &arg1, arg2);
     debug_print_number(&arg0, &arg1, arg3, 16);
     func_800573E4(arg0, arg1, D_800E5670[0]);
 }
 
-UNUSED void func_800578B0(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
+UNUSED void func_800578B0(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     debug_print_string(&arg0, &arg1, arg2);
     func_8005762C(&arg0, &arg1, arg3, 16);
     func_800573E4(arg0, arg1, D_800E5670[0]);
 }
 
-UNUSED void func_80057908(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
+UNUSED void func_80057908(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     debug_print_string(&arg0, &arg1, arg2);
     debug_print_number(&arg0, &arg1, arg3, 2);
     func_800573E4(arg0, arg1, D_800E566A[0]);
 }
 
-UNUSED void func_80057960(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
+UNUSED void func_80057960(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     debug_print_string(&arg0, &arg1, arg2);
     func_8005762C(&arg0, &arg1, arg3, 2);
     func_800573E4(arg0, arg1, D_800E566A[0]);
 }
 
-UNUSED void func_800579B8(s32 arg0, s32 arg1, s8 *arg2) {
+UNUSED void func_800579B8(s32 arg0, s32 arg1, char *arg2) {
     load_debug_font();
     debug_print_string(&arg0, &arg1, arg2);
     func_80057778();
 }
 
-void func_800579F8(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
+void func_800579F8(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     load_debug_font();
     debug_print_string(&arg0, &arg1, arg2);
     debug_print_number(&arg0, &arg1, arg3, 10);
     func_80057778();
 }
 
-void func_80057A50(s32 x, s32 y, char *str, s32 arg3) {
+void func_80057A50(s32 x, s32 y, char *str, u32 arg3) {
     load_debug_font();
     debug_print_string(&x, &y, str);
     func_8005762C(&x, &y, arg3, 10);
     func_80057778();
 }
 
-UNUSED void func_80057AA8(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
+UNUSED void func_80057AA8(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     load_debug_font();
     debug_print_string(&arg0, &arg1, arg2);
     debug_print_number(&arg0, &arg1, arg3, 16);
@@ -6643,7 +6624,7 @@ UNUSED void func_80057AA8(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
     func_80057778();
 }
 
-UNUSED void func_80057B14(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
+UNUSED void func_80057B14(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     load_debug_font();
     debug_print_string(&arg0, &arg1, arg2);
     func_8005762C(&arg0, &arg1, arg3, 16);
@@ -6651,7 +6632,7 @@ UNUSED void func_80057B14(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
     func_80057778();
 }
 
-UNUSED void func_80057B80(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
+UNUSED void func_80057B80(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     load_debug_font();
     debug_print_string(&arg0, &arg1, arg2);
     debug_print_number(&arg0, &arg1, arg3, 2);
@@ -6659,7 +6640,7 @@ UNUSED void func_80057B80(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
     func_80057778();
 }
 
-UNUSED void func_80057BEC(s32 arg0, s32 arg1, s8 *arg2, s32 arg3) {
+UNUSED void func_80057BEC(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     load_debug_font();
     debug_print_string(&arg0, &arg1, arg2);
     func_8005762C(&arg0, &arg1, arg3, 2);

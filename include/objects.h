@@ -23,9 +23,9 @@ typedef struct
     /* 0x54 */ s32 unk_054;
     /* 0x58 */ s32 unk_058;
     /* 0x5C */ s32 unk_05C;
-    /* 0x60 */ s32 *unk_060;
-    /* 0x64 */ u8 *unk_064; // ptr to a texture
-    /* 0x68 */ s32 *unk_068;
+    /* 0x60 */ u32 *unk_060;
+    /* 0x64 */ u32 *unk_064; // ptr to a texture
+    /* 0x68 */ u32 *unk_068;
     /* 0x6C */ u8 *unk_06C; // ptr to a texture
     /* 0x70 */ Gfx *unk_070;
     // For at least 1 object type this is meant to be a Vtx*. See func_800555BC
@@ -48,7 +48,7 @@ typedef struct
     /* 0xAE */ s16 unk_0AE;
     /* 0xB0 */ s16 unk_0B0;
     /* 0xB2 */ Vec3su unk_0B2;
-    /* 0xB8 */ Vec3s unk_0B8;
+    /* 0xB8 */ Vec3su unk_0B8;
     /* 0xBE */ Vec3su unk_0BE;
     /* 0xC4 */ u16 unk_0C4;
     /* 0xC6 */ u16 unk_0C6;
