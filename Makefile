@@ -1,27 +1,22 @@
 # Makefile to rebuild MK64 split image
 
-### Default target ###
+include util.mk
 
+# Default target
 default: all
 
-### Build Options ###
+# Preprocessor definitions
+DEFINES :=
 
-# These options can either be changed by modifying the makefile, or
-# by building with 'make SETTING=value'. 'make clean' may be required.
+#==============================================================================#
+# Build Options                                                                #
+#==============================================================================#
 
-# Version of the game to build
-VERSION ?= us
-# If COMPARE is 1, check the output sha1sum when building 'all'
-COMPARE ?= 1
-export LANG := C
+# Configure the build options with 'make SETTING=value' (ex. make VERSION=eu).
+# Run 'make clean' prior to changing versions.
 
-ifeq ($(VERSION),us)
-  VERSION_CFLAGS := -DVERSION_US
-  VERSION_ASFLAGS := --defsym VERSION_US=1
-  TARGET := mk64.us
-endif
-
- BASEROM := baserom.$(VERSION).z64
+# Build for the N64 (turn this off for ports)
+TARGET_N64 ?= 1
 
 # COMPILER - selects the C compiler to use
 #   ido - uses the SGI IRIS Development Option compiler, which is used to build
@@ -30,25 +25,182 @@ endif
 COMPILER ?= ido
 $(eval $(call validate-option,COMPILER,ido gcc))
 
-### Utility Functions ###
-# Returns the path to the command $(1) if exists. Otherwise returns an empty string.
-find-command = $(shell which $(1) 2>/dev/null)
 
-################ Target Executable and Sources ###############
 
-# BUILD_DIR is location where all build artifacts are placed
+# VERSION - selects the version of the game to build
+#   us - builds the 1997 North American version
+#   eu - builds the 1997 1.1 PAL version
+VERSION ?= us
+$(eval $(call validate-option,VERSION,us eu))
+
+ifeq      ($(VERSION),us)
+  DEFINES += VERSION_US=1
+  #VERSION_CFLAGS := -DVERSION_US
+  VERSION_ASFLAGS := --defsym VERSION_US=1
+else ifeq ($(VERSION), eu)
+  DEFINES += VERSION_EU=1 
+  #VERSION_CFLAGS := -DVERSION_EU
+  VERSION_ASFLAGS := --defsym VERSION_EU=1
+endif
+
+TARGET := mk64.$(VERSION)
+
+BASEROM := baserom.$(VERSION).z64
+
+
+
+# GRUCODE - selects which RSP microcode to use.
+#   f3d_old - default, version 0.95. An early version of f3d.
+#   f3dex2  - A newer, unsupported version
+# Note that 3/4 player mode uses F3DLX
+$(eval $(call validate-option,GRUCODE,f3d_old f3dex2))
+
+ifeq      ($(GRUCODE),f3d_old)
+  DEFINES += F3D_OLD=1
+else ifeq ($(GRUCODE), f3dex2) # Fast3DEX2
+  DEFINES += F3DEX_GBI_2=1 F3DEX_GBI_SHARED=1
+endif
+
+
+
+# USE_QEMU_IRIX - when ido is selected, select which way to emulate IRIX programs
+#   1 - use qemu-irix
+#   0 - statically recompile the IRIX programs
+USE_QEMU_IRIX ?= 0
+$(eval $(call validate-option,USE_QEMU_IRIX,0 1))
+
+ifeq      ($(COMPILER),ido)
+  ifeq ($(USE_QEMU_IRIX),1)
+  # Verify that qemu-irix exists
+  QEMU_IRIX := $(call find-command,qemu-irix)
+  ifeq (,$(QEMU_IRIX))
+    $(error Using the IDO compiler requires qemu-irix. Please install qemu-irix package or set the QEMU_IRIX environment variable to the full qemu-irix binary path)
+    endif
+  endif
+
+  MIPSISET := -mips2 -32
+else ifeq ($(COMPILER),gcc)
+  NON_MATCHING := 1
+  MIPSISET     := -mips3
+endif
+
+
+
+# NON_MATCHING - whether to build a matching, identical copy of the ROM
+#   1 - enable some alternate, more portable code that does not produce a matching ROM
+#   0 - build a matching ROM
+NON_MATCHING ?= 0
+$(eval $(call validate-option,NON_MATCHING,0 1))
+
+ifeq ($(TARGET_N64),0)
+  NON_MATCHING := 1
+endif
+
+ifeq ($(NON_MATCHING),1)
+  DEFINES += NON_MATCHING=1 AVOID_UB=1
+  COMPARE := 0
+endif
+
+
+
+# COMPARE - whether to verify the SHA-1 hash of the ROM after building
+#   1 - verifies the SHA-1 hash of the selected version of the game
+#   0 - does not verify the hash
+COMPARE ?= 1
+$(eval $(call validate-option,COMPARE,0 1))
+
+
+
+# Whether to hide commands or not
+VERBOSE ?= 0
+ifeq ($(VERBOSE),0)
+  V := @
+endif
+
+
+
+# Whether to colorize build messages
+COLOR ?= 1
+
+
+
+# display selected options unless 'make clean' or 'make distclean' is run
+ifeq ($(filter clean distclean,$(MAKECMDGOALS)),)
+  $(info ==== Build Options ====)
+  $(info Version:        $(VERSION))
+  $(info Microcode:      $(GRUCODE))
+  $(info Target:         $(TARGET))
+  ifeq ($(COMPARE),1)
+    $(info Compare ROM:    yes)
+  else
+    $(info Compare ROM:    no)
+  endif
+  ifeq ($(NON_MATCHING),1)
+    $(info Build Matching: no)
+  else
+    $(info Build Matching: yes)
+  endif
+  $(info =======================)
+endif
+
+
+#==============================================================================#
+# Universal Dependencies                                                       #
+#==============================================================================#
+
+TOOLS_DIR := tools
+
+# (This is a bit hacky, but a lot of rules implicitly depend
+# on tools and assets, and we use directory globs further down
+# in the makefile that we want should cover assets.)
+
+PYTHON := python3
+
+ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
+
+# Make sure assets exist
+  NOEXTRACT ?= 0
+  ifeq ($(NOEXTRACT),0)
+    DUMMY != $(PYTHON) extract_assets.py $(VERSION) >&2 || echo FAIL
+    ifeq ($(DUMMY),FAIL)
+      $(error Failed to extract assets)
+    endif
+  endif
+
+  # Make tools if out of date
+  DUMMY != make -s -C $(TOOLS_DIR) $(if $(filter-out ido0,$(COMPILER)$(USE_QEMU_IRIX)),all-except-recomp,) >&2 || echo FAIL
+  ifeq ($(DUMMY),FAIL)
+    $(error Failed to build tools)
+  endif
+  $(info Building ROM...)
+
+endif
+
+
+#==============================================================================#
+# Target Executable and Sources                                                #
+#==============================================================================#
+
 BUILD_DIR_BASE := build
-BUILD_DIR := $(BUILD_DIR_BASE)/$(VERSION)
+# BUILD_DIR is location where all build artifacts are placed
+BUILD_DIR      := $(BUILD_DIR_BASE)/$(VERSION)
+ROM            := $(BUILD_DIR)/$(TARGET).z64
+ELF            := $(BUILD_DIR)/$(TARGET).elf
+LD_SCRIPT      := mk64.ld
+ASSET_DIR      := assets
+BIN_DIR        := bin
+DATA_DIR       := data
+INCLUDE_DIRS   := include
 
 # Directories containing source files
-ASSET_DIR := assets
-BIN_DIR := bin
-DATA_DIR := data
-INCLUDE_DIRS := include
-SRC_DIRS := src src/audio src/os src/os/math courses
-ASM_DIRS := asm asm/audio asm/os asm/os/non_matchings $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
-COURSE_DIRS := $(shell find courses -mindepth 2 -type d)
+SRC_DIRS       := src src/audio src/os src/os/math courses
+ASM_DIRS       := asm asm/audio asm/os asm/os/non_matchings $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
 
+# file dependencies generated by splitter
+include Makefile.split
+
+# Directories containing course source and data files
+COURSE_DIRS := $(shell find courses -mindepth 2 -type d)
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 
@@ -57,42 +209,7 @@ ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) $(I
 	$(TEXTURES_DIR)/courses/tlut $(TEXTURES_DIR)/courses/tlut2 $(TEXTURE_DIRS) $(TEXTURE_DIRS)/tlut $(TEXTURES_DIR)/courses/tlut3              \
 	$(TEXTURE_DIRS)/tlut2 $(BIN_DIR))
 
-################### Universal Dependencies ###################
 
-# (This is a bit hacky, but a lot of rules implicitly depend
-# on tools and assets, and we use directory globs further down
-# in the makefile that we want should cover assets.)
-
-ifneq ($(MAKECMDGOALS),clean)
-ifneq ($(MAKECMDGOALS),distclean)
-
-# Make sure assets exist
-NOEXTRACT ?= 0
-ifeq ($(NOEXTRACT),0)
-DUMMY != ./extract_assets.py $(VERSION) >&2 || echo FAIL
-ifeq ($(DUMMY),FAIL)
-  $(error Failed to extract assets)
-endif
-endif
-
-# Make tools if out of date
-DUMMY != make -s -C tools >&2 || echo FAIL
-ifeq ($(DUMMY),FAIL)
-  $(error Failed to build tools)
-endif
-
-endif
-endif
-
-LD_SCRIPT = mk64.ld
-MIO0_DIR = bin
-
-# Files with GLOBAL_ASM blocks
-GLOBAL_ASM_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/*.c)
-GLOBAL_ASM_AUDIO_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/audio/*.c)
-GLOBAL_ASM_O_FILES = $(foreach file,$(GLOBAL_ASM_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
-GLOBAL_ASM_AUDIO_O_FILES = $(foreach file,$(GLOBAL_ASM_AUDIO_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
-# GLOBAL_ASM_DEP = $(BUILD_DIR)/src/audio/non_matching_dep
 
 COURSE_ASM_FILES := $(wildcard courses/*/*/packed.s)
 
@@ -107,71 +224,87 @@ O_FILES := $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d) $(BUILD_DIR)/$(LD_SCRIPT).d
-##################### Compiler Options #######################
 
-ifeq ($(shell type mips-linux-gnu-ld >/dev/null 2>/dev/null; echo $$?), 0)
+# Files with GLOBAL_ASM blocks
+GLOBAL_ASM_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/*.c)
+GLOBAL_ASM_AUDIO_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/audio/*.c)
+GLOBAL_ASM_O_FILES = $(foreach file,$(GLOBAL_ASM_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
+GLOBAL_ASM_AUDIO_O_FILES = $(foreach file,$(GLOBAL_ASM_AUDIO_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
+
+
+
+#==============================================================================#
+# Compiler Options                                                             #
+#==============================================================================#
+
+# detect prefix for MIPS toolchain
+ifneq      ($(call find-command,mips-linux-gnu-ld),)
   CROSS := mips-linux-gnu-
-else ifeq ($(shell type mips64-linux-gnu-ld >/dev/null 2>/dev/null; echo $$?), 0)
+else ifneq ($(call find-command,mips64-linux-gnu-ld),)
   CROSS := mips64-linux-gnu-
-else
+else ifneq ($(call find-command,mips64-elf-ld),)
   CROSS := mips64-elf-
-endif
-
-# USE_QEMU_IRIX - when ido is selected, select which way to emulate IRIX programs
-#   1 - use qemu-irix
-#   0 - statically recompile the IRIX programs
-USE_QEMU_IRIX ?= 0
-$(eval $(call validate-option,USE_QEMU_IRIX,0 1))
-TOOLS_DIR := tools
-
-ifeq ($(USE_QEMU_IRIX),1)
-  # Verify that qemu-irix exists
-  QEMU_IRIX := $(call find-command,qemu-irix)
-  ifeq (,$(QEMU_IRIX))
-    $(error Using the IDO compiler requires qemu-irix. Please install qemu-irix package or set the QEMU_IRIX environment variable to the full qemu-irix binary path)
-  endif
-endif
-
-ifeq ($(USE_QEMU_IRIX),1)
-    IRIX_ROOT := $(TOOLS_DIR)/ido5.3_compiler
-    CC        := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/bin/cc
 else
-    IDO_ROOT := tools/ido5.3_recomp
-    CC       := $(IDO_ROOT)/cc
+  $(error Unable to detect a suitable MIPS toolchain installed)
 endif
 
 AS      := $(CROSS)as
+ifeq ($(COMPILER),gcc)
+  CC      := $(CROSS)gcc
+else
+  ifeq ($(USE_QEMU_IRIX),1)
+    IRIX_ROOT := $(TOOLS_DIR)/ido5.3_compiler
+    CC      := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/bin/cc
+  else
+    IDO_ROOT := $(TOOLS_DIR)/ido5.3_recomp
+    CC      := $(IDO_ROOT)/cc
+  endif
+endif
 LD      := $(CROSS)ld
 AR      := $(CROSS)ar
 OBJDUMP := $(CROSS)objdump
 OBJCOPY := $(CROSS)objcopy
-PYTHON    := python3
+
+OPT_FLAGS := -O2
+
+ifeq ($(TARGET_N64),1)
+  TARGET_CFLAGS := -nostdinc -I include/libc -DTARGET_N64 -D_LANGUAGE_C
+  CC_CFLAGS := -fno-builtin
+endif
+
+
+C_DEFINES := $(foreach d,$(DEFINES),-D$(d))
+DEF_INC_CFLAGS := $(foreach i,$(INCLUDE_DIRS),-I$(i)) $(C_DEFINES)
 
 # Prefer clang as C preprocessor if installed on the system
 ifneq (,$(call find-command,clang))
   CPP      := clang
-  CPPFLAGS := -E -P -x c -Wno-trigraphs
+  CPPFLAGS := -E -P -x c -Wno-trigraphs $(DEF_INC_CFLAGS)
 else
   CPP      := cpp
-  CPPFLAGS := -P -Wno-trigraphs
+  CPPFLAGS := -P -Wno-trigraphs $(DEF_INC_CFLAGS)
 endif
 
-MIPSISET := -mips2 -32
-OPT_FLAGS := -O2
-
-TARGET_CFLAGS := -nostdinc -I include/libc -DTARGET_N64
-CC_CFLAGS := -fno-builtin
+# TODO: Seperate F3D declares into version flags if needed.
+#GRUCODE_CFLAGS = -DF3DEX_GBI -DF3D_OLD
 
 INCLUDE_CFLAGS := -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I .
-
-# TODO: Seperate F3D declares into version flags if needed.
-GRUCODE_CFLAGS = -DF3DEX_GBI -DF3D_OLD -D_LANGUAGE_C
-
 # Check code syntax with host compiler
-CC_CHECK := gcc -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) -std=gnu90 -Wall -Wempty-body -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(VERSION_CFLAGS) $(GRUCODE_CFLAGS)
+CC_CHECK := gcc
+CC_CHECK_CFLAGS := -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) -std=gnu90 -Wall -Wempty-body -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(VERSION_CFLAGS) $(DEF_INC_CFLAGS)
+
+# C compiler options
+HIDE_WARNINGS := -woff 838,649
+CFLAGS = -G 0 $(OPT_FLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) $(VERSION_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS)
+ifeq ($(COMPILER),gcc)
+  CFLAGS += -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
+else
+  CFLAGS += -non_shared -Wab,-r4300_mul -Xcpluscomm -Xfullwarn -signed -32 $(HIDE_WARNINGS)
+endif
 
 ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) --defsym F3DEX_GBI=1
-CFLAGS = -Wab,-r4300_mul -non_shared -G 0 -Xcpluscomm -Xfullwarn -woff 838,649 -signed $(OPT_FLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) $(VERSION_CFLAGS) $(MIPSISET) $(GRUCODE_CFLAGS)
+
+# Fils in the end of rom
 OBJCOPYFLAGS = --pad-to=0xC00000 --gap-fill=0xFF
 
 LDFLAGS = -T undefined_syms.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(BUILD_DIR)/$(TARGET).map --no-check-sections
@@ -184,35 +317,55 @@ else
   CC_CHECK += -m32
 endif
 
-####################### Other Tools #########################
+# Prevent a crash with -sopt
+export LANG := C
 
-# N64 tools
-MIO0TOOL = $(TOOLS_DIR)/mio0
-N64CKSUM = $(TOOLS_DIR)/n64cksum
-N64GRAPHICS = $(TOOLS_DIR)/n64graphics
-DLPACKER = $(TOOLS_DIR)/displaylist_packer
-DLSYMGEN = $(PYTHON) $(TOOLS_DIR)/generate_segment_headers.py
-MODELSYMGEN = $(PYTHON) $(TOOLS_DIR)/generate_vertice_count.py
-BIN2C = $(PYTHON) $(TOOLS_DIR)/bin2c.py
+#==============================================================================#
+# Miscellaneous Tools                                                          #
+#==============================================================================#
+
+MIO0TOOL              := $(TOOLS_DIR)/mio0
+N64CKSUM              := $(TOOLS_DIR)/n64cksum
+N64GRAPHICS           := $(TOOLS_DIR)/n64graphics
+DLPACKER              := $(TOOLS_DIR)/displaylist_packer
+DLSYMGEN              := $(PYTHON) $(TOOLS_DIR)/generate_segment_headers.py
+MODELSYMGEN           := $(PYTHON) $(TOOLS_DIR)/generate_vertice_count.py
+BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
-ASSET_EXTRACT := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
-EMULATOR = mupen64plus
-EMU_FLAGS = --noosd
-LOADER = loader64
-LOADER_FLAGS = -vwf
+ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
+EMULATOR               = mupen64plus
+EMU_FLAGS              = --noosd
+LOADER                 = loader64
+LOADER_FLAGS           = -vwf
+SHA1SUM                = sha1sum
+PRINT                  = printf
 
-SHA1SUM = sha1sum
+ifeq ($(COLOR),1)
+NO_COL  := \033[0m
+RED     := \033[0;31m
+GREEN   := \033[0;32m
+BLUE    := \033[0;34m
+YELLOW  := \033[0;33m
+BLINK   := \033[33;5m
+endif
+
+# Use Objcopy instead of extract_data_for_mio
+ifeq ($(COMPILER),gcc)
+  EXTRACT_DATA_FOR_MIO := $(OBJCOPY) -O binary --only-section=.data
+endif
+
+# Common build print status function
+define print
+  @$(PRINT) "$(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
+endef
 
 
-######################## Targets #############################
 
-default: all
+#==============================================================================#
+# Main Targets                                                                 #
+#==============================================================================#
 
-# file dependencies generated by splitter
-MAKEFILE_SPLIT = Makefile.split
-include $(MAKEFILE_SPLIT)
-
-all: $(BUILD_DIR)/$(TARGET).z64
+all: $(ROM)
 ifeq ($(COMPARE),1)
 	@$(SHA1SUM) -c $(TARGET).sha1
 endif
@@ -225,10 +378,20 @@ distclean: distclean_assets
 	./extract_assets.py --clean
 	make -C tools clean
 
+test: $(ROM)
+	$(EMULATOR) $(EMU_FLAGS) $<
+
+load: $(ROM)
+	$(LOADER) $(LOADER_FLAGS) $<
+
 # Make sure build directory exists before compiling anything
 DUMMY != mkdir -p $(ALL_DIRS)
 
-##################### Texture Generation #####################
+
+
+#==============================================================================#
+# Texture Generation                                                           #
+#==============================================================================#
 
 # RGBA32, RGBA16, IA16, IA8, IA4, IA1, I8, I4
 $(BUILD_DIR)/%: %.png
@@ -237,7 +400,11 @@ $(BUILD_DIR)/%: %.png
 $(BUILD_DIR)/textures/%.mio0: $(BUILD_DIR)/textures/%
 	$(MIO0TOOL) -c $< $@
 
-#################### Compressed Segments #####################
+
+
+#==============================================================================#
+# Compressed Segment Generation                                                #
+#==============================================================================#
 
 $(BUILD_DIR)/%.mio0: %.bin
 	$(MIO0TOOL) -c $< $@
@@ -271,7 +438,11 @@ $(BUILD_DIR)/src/startup_logo.inc.o: src/startup_logo.inc.c
 	$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
-############################### Assets ###############################
+
+
+#==============================================================================#
+# Compressed Segment Generation                                                #
+#==============================================================================#
 
 ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name *.mk)
 ASSET_DIRECTORIES :=
@@ -281,7 +452,11 @@ $(foreach inc,$(ASSET_INCLUDES),$(eval include $(inc)))
 distclean_assets:
 	rm -rf $(ASSET_DIRECTORIES)
 
-##########################################################################################
+
+
+#==============================================================================#
+# Common Textures Segment Generation                                           #
+#==============================================================================#
 
 TEXTURE_FILES := $(foreach dir,$(TEXTURE_DIRS),$(subst .png, , $(wildcard $(dir)/*)))
 #TEXTURE_FILES_C := $(foreach file,$(TEXTURE_FILES),$(BUILD_DIR)/$(file:.png=.inc.c))
@@ -320,13 +495,17 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 	$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
+
+
+#==============================================================================#
+# Course Packed Displaylists and Geography Generation                          #
+#==============================================================================#
+
+# todo: Fix DLSYMGEN & MODELSYMGEN scripts
+
 COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
 COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
-# COURSE_PACKED_DL_O := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
 
-
-
-#$(info $(COURSE_PACKED_DL))
 $(COURSE_PACKED_DL):
 	$(LD) -t -e 0 -Ttext=07000000 -Map $(@D)/packed.inc.elf.map -o $(@D)/packed.inc.elf $(@D)/packed.inc.o --no-check-sections
 # Generate header for packed displaylists
@@ -344,8 +523,11 @@ $(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c $(COUR
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.inc.bin\"\n\n.balign 0x10\n" > $(@D)/model.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $@ $(@D)/model.inc.mio0.s
 
-#################### Compile course vertex to mio0 #####################
-#################### Compile course displaylists to mio0 #####################
+
+
+#==============================================================================#
+# Course Data Generation                                                       #
+#==============================================================================#
 
 COURSE_TEXTURE_FILES := $(foreach dir,textures/courses,$(subst .png, , $(wildcard $(dir)/*)))
 COURSE_TLUT := $(foreach dir,textures/courses/tlut,$(subst .png, , $(wildcard $(dir)/*)))
@@ -383,6 +565,11 @@ $(COURSE_DATA_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o: $(BUILD_DIR)/%/co
 	$(AS) $(ASFLAGS) -o $@ $(@D)/course_data.inc.mio0.s
 
 
+
+#==============================================================================#
+# Source Code Generation                                                       #
+#==============================================================================#
+
 $(BUILD_DIR)/%.o: %.c
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(CC) -c $(CFLAGS) -o $@ $<
@@ -403,7 +590,11 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT) #repeat for other files
 	$(CPP) $(CPPFLAGS) $(VERSION_CFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 
-#################### Libultra                      #####################
+
+#==============================================================================#
+# Libultra Definitions                                                         #
+#==============================================================================#
+
 $(BUILD_DIR)/src/os/%.o:          OPT_FLAGS :=
 $(BUILD_DIR)/src/os/math/%.o:     OPT_FLAGS := -O2
 $(BUILD_DIR)/src/os/math/ll%.o:   OPT_FLAGS :=
@@ -425,7 +616,9 @@ ifeq ($(COMPILER),ido)
     $(BUILD_DIR)/src/audio/external.o:  OPT_FLAGS := -O2 -framepointer
 endif
 
-####################       STAFF GHOSTS        #####################
+#==============================================================================#
+# Compile Segmented Data                                                       #
+#==============================================================================#
 
 # trophy_model.inc.c
 
@@ -453,30 +646,27 @@ $(BUILD_DIR)/src/common_textures.inc.mio0.o: $(BUILD_DIR)/src/common_textures.in
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"src/common_textures.inc.mio0\"\n\n" > build/us/src/common_textures.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.s
 
-
-$(BUILD_DIR)/$(TARGET).elf: $(COURSE_DATA_TARGETS) $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_MODEL_TARGETS) undefined_syms.txt
+# Link MK64 ELF file
+$(ELF): $(COURSE_DATA_TARGETS) $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_MODEL_TARGETS) undefined_syms.txt
 	$(LD) $(LDFLAGS) -o $@
 
-$(BUILD_DIR)/$(TARGET).z64: $(BUILD_DIR)/$(TARGET).elf
+# Build ROM
+$(ROM): $(ELF)
 	$(OBJCOPY) $(OBJCOPYFLAGS) $< $(@:.z64=.bin) -O binary
 	$(N64CKSUM) $(@:.z64=.bin) $@
 
 $(BUILD_DIR)/$(TARGET).hex: $(TARGET).z64
 	xxd $< > $@
 
-$(BUILD_DIR)/$(TARGET).objdump: $(BUILD_DIR)/$(TARGET).elf 
+$(BUILD_DIR)/$(TARGET).objdump: $(ELF) 
 	$(OBJDUMP) -D $< > $@
 
-test: $(TARGET).z64
-	$(EMULATOR) $(EMU_FLAGS) $<
-
-load: $(TARGET).z64
-	$(LOADER) $(LOADER_FLAGS) $<
 
 .PHONY: all clean distclean distclean_assets default diff test load
+# with no prerequisites, .SECONDARY causes no intermediate target to be removed
 .SECONDARY:
 
-# Remove built-in rules, to improve  build/us/courses/star_cup/bowsers_castle/model.inc.mio0.performance
+# Remove built-in rules, to improve performance
 MAKEFLAGS += --no-builtin-rules
 
 -include $(DEP_FILES)
