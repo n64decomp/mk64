@@ -2716,7 +2716,7 @@ s8 gTextureItemWindowFakeItemBox[] = {
     #include "assets/item_window/gTextureItemWindowFakeItemBox.inc.c"
 };
 
-s8 gTLUTLakituCountdown[][512] = {
+u8 gTLUTLakituCountdown[][512] = {
     {
         #include "assets/lakitu/nolights/gTLUTLakituNoLights.inc.c"
     },
@@ -2736,23 +2736,23 @@ s8 gTLUTLakituCountdown[][512] = {
  * Appears to be animation textures.
 */
 
-s8 gTLUTLakituCheckeredFlag[] = {
+u8 gTLUTLakituCheckeredFlag[] = {
     #include "assets/lakitu/checkeredflag/gTLUTLakituCheckeredFlag.inc.c"
 };
 
-s8 gTLUTLakituSecondLap[] = {
+u8 gTLUTLakituSecondLap[] = {
     #include "assets/lakitu/secondlap/gTLUTLakituSecondLap.inc.c"
 };
 
-s8 gTLUTLakituFinalLap[] = {
+u8 gTLUTLakituFinalLap[] = {
     #include "assets/lakitu/finallap/gTLUTLakituFinalLap.inc.c"
 };
 
-s8 gTLUTLakituReverse[] = {
+u8 gTLUTLakituReverse[] = {
     #include "assets/lakitu/reverse/gTLUTLakituReverse.inc.c"
 };
 
-s8 gTLUTLakituFishing[] = {
+u8 gTLUTLakituFishing[] = {
     #include "assets/lakitu/fishing/gTLUTLakituFishing.inc.c"
 };
 
