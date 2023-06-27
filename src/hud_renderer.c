@@ -1120,28 +1120,28 @@ void func_800485C4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *te
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
 }
 
-UNUSED void func_800486B0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
-    func_8004788C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 24, 48, 24, 48);
+UNUSED void func_800486B0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
+    func_8004788C(arg0, arg1, arg2, arg3, tlut, texture, arg6, 24, 48, 24, 48);
 }
 
-UNUSED void func_80048718(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
-    func_8004788C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 32, 32, 32, 32);
+UNUSED void func_80048718(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
+    func_8004788C(arg0, arg1, arg2, arg3, tlut, texture, arg6, 32, 32, 32, 32);
 }
 
-UNUSED void func_80048780(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
-    func_80048540(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 48, 48, 48, 40);
+UNUSED void func_80048780(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
+    func_80048540(arg0, arg1, arg2, arg3, tlut, texture, arg6, 48, 48, 48, 40);
 }
 
-UNUSED void func_800487DC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
-    func_8004788C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 48, 48, 48, 48);
+UNUSED void func_800487DC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
+    func_8004788C(arg0, arg1, arg2, arg3, tlut, texture, arg6, 48, 48, 48, 48);
 }
 
-UNUSED void func_80048844(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
-    func_8004788C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 32, 64, 32);
+UNUSED void func_80048844(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
+    func_8004788C(arg0, arg1, arg2, arg3, tlut, texture, arg6, 64, 32, 64, 32);
 }
 
-UNUSED void func_800488AC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
-    func_8004788C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 64, 64, 32);
+UNUSED void func_800488AC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
+    func_8004788C(arg0, arg1, arg2, arg3, tlut, texture, arg6, 64, 64, 64, 32);
 }
 
 UNUSED void func_80048914(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
@@ -1168,15 +1168,15 @@ UNUSED void func_80048B24(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *
     func_80047CB4(arg0, arg1, arg2, arg3, arg4, tlut, texture, arg7, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048B94(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5) {
-    func_80047E48(arg0, arg1, arg2, arg3, arg4, arg5, 64, 64, 64, 32);
+UNUSED void func_80048B94(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5) {
+    func_80047E48(arg0, arg1, arg2, tlut, texture, arg5, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048BE8(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5) {
-    func_80047F40(arg0, arg1, arg2, arg3, arg4, arg5, 64, 64, 64, 32);
+UNUSED void func_80048BE8(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5) {
+    func_80047F40(arg0, arg1, arg2, tlut, texture, arg5, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048C3C(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5) {
+UNUSED void func_80048C3C(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *arg3, u8 *arg4, Vtx *arg5) {
     func_800480B4(arg0, arg1, arg2, arg3, arg4, arg5, 64, 64, 64, 32);
 }
 
