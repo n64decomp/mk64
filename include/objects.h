@@ -24,7 +24,7 @@ typedef struct
     /* 0x58 */ s32 unk_058;
     /* 0x5C */ s32 unk_05C;
     /* 0x60 */ u32 *unk_060;
-    /* 0x64 */ u32 *unk_064; // ptr to a texture
+    /* 0x64 */ u8 *unk_064; // ptr to a texture
     /* 0x68 */ u32 *unk_068;
     /* 0x6C */ u8 *unk_06C; // ptr to a texture
     /* 0x70 */ Gfx *unk_070;
