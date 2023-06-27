@@ -2359,7 +2359,7 @@ s8 D_0D00A958[] = {
 };
 
 // 123/
-s8 D_0D00AB58[] = {
+u8 D_0D00AB58[] = {
     #include "textures/common/132B50_0AB58.rgba16.inc.c"
 };
 
@@ -2394,7 +2394,7 @@ s8 D_0D00C158[] = {
 };
 
 // 0123456789'"!
-s8 D_0D00C558[] = {
+u8 D_0D00C558[] = {
     #include "textures/common/132B50_0C558.rgba16.inc.c"
 };
 
@@ -2804,7 +2804,7 @@ UNUSED s8 D_0D028958[] = {
 };
 
 // leaf
-s8 D_0D028DD8[] = {
+u8 D_0D028DD8[] = {
     #include "textures/common/132B50_28DD8.rgba16.inc.c"
 };
 
@@ -2835,7 +2835,7 @@ s8 D_0D02A858[] = {
     #include "textures/common/tlut2/132B50_29858.rgba16.ci8.tlut.inc.c"
 };
 
-s8 D_0D02AA58[] = {
+u8 D_0D02AA58[] = {
     #include "textures/common/132B50_2AA58.rgba16.inc.c"
 };
 

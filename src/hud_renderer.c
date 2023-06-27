@@ -1,3 +1,8 @@
+/**
+ * @file hud_renderer.c renders hud elements
+ * A more suitable name may be print.c
+**/
+
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <macros.h>
@@ -927,7 +932,7 @@ void func_8004747C(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, 
 void func_8004768C(u8 *tlut, u8 *texture, Vtx *arg2, s32 arg3, s32 width, s32 height) {
     s32 heightIndex;
     s32 vertexIndex = 0;
-    s8 *img = texture;
+    u8 *img = texture;
 
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
     for (heightIndex = 0; heightIndex < arg3 / height; heightIndex++) {
@@ -1176,40 +1181,40 @@ UNUSED void func_80048BE8(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *textu
     func_80047F40(arg0, arg1, arg2, tlut, texture, arg5, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048C3C(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *arg3, u8 *arg4, Vtx *arg5) {
-    func_800480B4(arg0, arg1, arg2, arg3, arg4, arg5, 64, 64, 64, 32);
+UNUSED void func_80048C3C(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5) {
+    func_800480B4(arg0, arg1, arg2, tlut, texture, arg5, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048C90(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
-    func_800482AC(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 64, 64, 32);
+UNUSED void func_80048C90(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
+    func_800482AC(arg0, arg1, arg2, arg3, tlut, texture, arg6, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048CEC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
-    func_800483B4(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 64, 64, 32);
+UNUSED void func_80048CEC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
+    func_800483B4(arg0, arg1, arg2, arg3, tlut, texture, arg6, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048D48(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
-    func_800484BC(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 64, 64, 32);
+UNUSED void func_80048D48(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
+    func_800484BC(arg0, arg1, arg2, arg3, tlut, texture, arg6, 64, 64, 64, 32);
 }
 
-UNUSED void func_80048DA4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
-    func_80048540(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 64, 64, 64, 32);
+UNUSED void func_80048DA4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
+    func_80048540(arg0, arg1, arg2, arg3, tlut, texture, arg6, 64, 64, 64, 32);
 }
 
 UNUSED void func_80048E00(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
     func_80047910(arg0, arg1, arg2, arg3, tlut, texture, arg6, 72, 48, 72, 24);
 }
 
-UNUSED void func_80048E68(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
-    func_80047A18(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 72, 48, 72, 24);
+UNUSED void func_80048E68(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
+    func_80047A18(arg0, arg1, arg2, arg3, tlut, texture, arg6, 72, 48, 72, 24);
 }
 
-UNUSED void func_80048ED0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, s8 *arg5, Vtx *arg6) {
-    func_80047A9C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 72, 48, 72, 24);
+UNUSED void func_80048ED0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
+    func_80047A9C(arg0, arg1, arg2, arg3, tlut, texture, arg6, 72, 48, 72, 24);
 }
 
-UNUSED void func_80048F38(Vec3f arg0, Vec3su arg1, f32 arg2, s8 *arg3, s8 *arg4, Vtx *arg5) {
-    func_800480B4(arg0, arg1, arg2, arg3, arg4, arg5, 72, 48, 72, 24);
+UNUSED void func_80048F38(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5) {
+    func_800480B4(arg0, arg1, arg2, tlut, texture, arg5, 72, 48, 72, 24);
 }
 
 void func_80048F8C(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 height) {
@@ -1266,20 +1271,18 @@ void func_800492D4(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void func_80049478(u8 *arg0, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 height) {
+void func_80049478(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 height) {
     s32 heightIndex;
     s32 widthIndex;
-    s32 vertexIndex;
-    s8 *var_s3;
+    s32 vertexIndex = 0;
+    u8 *img = texture;
 
-    vertexIndex = 0;
-    var_s3 = arg0;
     for (heightIndex = 0; heightIndex < arg3 / height; heightIndex++) {
         for (widthIndex = 0; widthIndex < arg2 / width; widthIndex++) {
-            func_80044658(var_s3, width, height);
+            func_80044658(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[vertexIndex], 4, 0);
             gSPDisplayList(gDisplayListHead++, D_0D006940);
-            var_s3 += width * height;
+            img += width * height;
             vertexIndex += 4;
         }
     }
@@ -1399,29 +1402,29 @@ UNUSED void func_80049F28(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 g
     func_800492D4(texture, arg9, argA, argB, argC, argD);
 }
 
-UNUSED void func_80049FB8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+UNUSED void func_80049FB8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
-    func_80049478(arg4, arg5, arg6, arg7, arg8, arg9);
+    func_80049478(texture, arg5, arg6, arg7, arg8, arg9);
 }
 
-UNUSED void func_8004A034(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+UNUSED void func_8004A034(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
-    func_80049478(arg4, arg5, arg6, arg7, arg8, arg9);
+    func_80049478(texture, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_8004A0B0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s8 *arg4, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void func_8004A0B0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
-    func_8004961C(arg4, arg5, arg6, arg7, arg8, arg9);
+    func_8004961C(texture, arg5, arg6, arg7, arg8, arg9);
 }
 
-UNUSED void func_8004A12C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s8 *arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
+UNUSED void func_8004A12C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, u8 *texture, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
     func_8004B35C(red, green, blue, alpha);
-    func_8004961C(arg8, arg9, argA, argB, argC, argD);
+    func_8004961C(texture, arg9, argA, argB, argC, argD);
 }
 UNUSED void func_8004A1BC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     func_80042330(arg0, arg1, arg2, arg3);
@@ -1437,18 +1440,18 @@ void func_8004A258(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture, Vtx *arg
     func_80049970(texture, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_8004A2F4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s8 *arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
+void func_8004A2F4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, u8 *texture, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
     func_8004B414(red, green, blue, alpha);
-    func_80049970(arg8, arg9, argA, argB, argC, argD);
+    func_80049970(texture, arg9, argA, argB, argC, argD);
 }
 
-void func_8004A384(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, s8 *arg8, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
+void func_8004A384(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, u8 *texture, Vtx *arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
     func_8004B414(red, green, blue, alpha);
-    func_80049970(arg8, arg9, argA, argB, argC, argD);
+    func_80049970(texture, arg9, argA, argB, argC, argD);
 }
 
 void func_8004A414(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
@@ -1865,14 +1868,14 @@ void func_8004BB3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, f32 arg4) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_8004BB3C.s")
 #endif
 
-void func_8004BD14(s32 arg0, s32 arg1, u32 width, u32 height, s32 alpha, s8 *arg5, s8 *arg6) {
+UNUSED void func_8004BD14(s32 arg0, s32 arg1, u32 width, u32 height, s32 alpha, u8 *texture1, u8 *texture2) {
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
     gSPDisplayList(gDisplayListHead++, D_0D008138);
     gDPSetTextureLOD(gDisplayListHead++, G_TL_TILE);
     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, alpha);
     gDPSetCombineLERP(gDisplayListHead++, TEXEL1, TEXEL0, PRIMITIVE_ALPHA, TEXEL0, TEXEL1, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED);
-    gDPLoadMultiTile(gDisplayListHead++, arg5,   0,   G_TX_RENDERTILE, G_IM_FMT_RGBA, G_IM_SIZ_16b, width, height, 0, 0, width - 1, height - 1, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gDPLoadMultiTile(gDisplayListHead++, arg6, 256, G_TX_RENDERTILE+1, G_IM_FMT_RGBA, G_IM_SIZ_16b, width, height, 0, 0, width - 1, height - 1, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadMultiTile(gDisplayListHead++, texture1,   0,   G_TX_RENDERTILE, G_IM_FMT_RGBA, G_IM_SIZ_16b, width, height, 0, 0, width - 1, height - 1, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadMultiTile(gDisplayListHead++, texture2, 256, G_TX_RENDERTILE+1, G_IM_FMT_RGBA, G_IM_SIZ_16b, width, height, 0, 0, width - 1, height - 1, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     func_8004B950(arg0, arg1, width, height, 2);
     gSPDisplayList(gDisplayListHead++, D_0D008120);
 }
@@ -1904,7 +1907,7 @@ void func_8004C268(u32 arg0, u32 arg1, u8 *texture, u32 width, u32 arg4, u32 hei
     arg1 -= (arg4 / 2);
     img2 = texture;
 
-    for (i = 0; i < (arg4 / height); i++) {
+    for (i = 0; (u32)i < (arg4 / height); i++) {
         func_80043D50(img2, width, height);
         func_8004B97C(arg0, arg1, width, height, arg6);
         // todo: fakematch?
@@ -2045,24 +2048,24 @@ void func_8004CA58(s32 arg0, s32 arg1, f32 arg2, u8 *texture, s32 arg4, s32 arg5
     func_8004BB3C(arg0, arg1, arg4, arg5, arg2);
 }
 
-void func_8004CAD0(s32 arg0, s32 arg1, s8 *arg2) {
-    func_8004C364(arg0, arg1, 8, 8, arg2);
+void func_8004CAD0(s32 arg0, s32 arg1, u8 *texture) {
+    func_8004C364(arg0, arg1, 8, 8, texture);
 }
 
-UNUSED void func_8004CB00(s32 arg0, s32 arg1, s8 *arg2) {
-    func_8004C364(arg0, arg1, 8, 16, arg2);
+UNUSED void func_8004CB00(s32 arg0, s32 arg1, u8 *texture) {
+    func_8004C364(arg0, arg1, 8, 16, texture);
 }
 
-UNUSED void func_8004CB30(s32 arg0, s32 arg1, s8 *arg2) {
-    func_8004C364(arg0, arg1, 16, 16, arg2);
+UNUSED void func_8004CB30(s32 arg0, s32 arg1, u8 *texture) {
+    func_8004C364(arg0, arg1, 16, 16, texture);
 }
 
-void func_8004CB60(s32 arg0, s32 arg1, s8 *texture) {
+void func_8004CB60(s32 arg0, s32 arg1, u8 *texture) {
     func_8004C364(arg0, arg1, 32, 8, texture);
 }
 
-void func_8004CB90(s32 arg0, s32 arg1, s8 *arg2) {
-    func_8004C364(arg0, arg1, 32, 16, arg2);
+void func_8004CB90(s32 arg0, s32 arg1, u8 *texture) {
+    func_8004C364(arg0, arg1, 32, 16, texture);
 }
 
 UNUSED void func_8004CBC0(s32 arg0, s32 arg1, f32 arg2, u8 *texture) {
@@ -2164,58 +2167,58 @@ UNUSED Gfx *func_8004D0D4(s32 arg0, s32 arg1, u8 *texture, s32 width, s32 arg4, 
     }
 }
 
-void func_8004D210(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 width, s32 arg8, UNUSED s32 arg9, s32 height) {
+void func_8004D210(s32 arg0, s32 arg1, u8 *texture, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 width, s32 arg8, UNUSED s32 arg9, s32 height) {
     s32 var_s3;
-    s8 *var_s4;
+    u8 *img;
     s32 i;
 
     var_s3 = arg1 - (arg8 / 2);
-    var_s4 = arg2;
+    img = texture;
     gSPDisplayList(gDisplayListHead++, D_0D007FE0);
     func_8004B35C(arg3, arg4, arg5, arg6);
 
     for (i = 0; i < arg8 / height; i++) {
-        func_80044924(var_s4, width, height);
+        func_80044924(img, width, height);
         func_8004B97C(arg0 - (width / 2), var_s3, width, height, 1);
-        var_s4 += (width * height) / 2;
+        img += (width * height) / 2;
         var_s3 += height;
     }
 
 }
 
-void func_8004D37C(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 width, s32 arg8, UNUSED s32 arg9, s32 height) {
+void func_8004D37C(s32 arg0, s32 arg1, u8 *texture, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 width, s32 arg8, UNUSED s32 arg9, s32 height) {
     s32 var_s3;
-    s8 *var_s4;
+    u8 *img;
     s32 i;
 
 
     var_s3 = arg1 - (arg8 / 2);
-    var_s4 = arg2;
+    img = texture;
     gSPDisplayList(gDisplayListHead++, D_0D007FE0);
     func_8004B414(arg3, arg4, arg5, arg6);
 
     for (i = 0; i < arg8 / height; i++) {
-        func_80044F34(var_s4, width, height);
+        func_80044F34(img, width, height);
         func_8004B97C(arg0 - (width / 2), var_s3, width, height, 1);
-        var_s4 += (width * height) / 2;
+        img += (width * height) / 2;
         var_s3 += height;
     }
 }
 
-void func_8004D4E8(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 width, s32 arg8, UNUSED s32 arg9, s32 height) {
+void func_8004D4E8(s32 arg0, s32 arg1, u8 *texture, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 width, s32 arg8, UNUSED s32 arg9, s32 height) {
     s32 var_s3;
-    s8 *var_s4;
+    u8 *img;
     s32 i;
 
     var_s3 = arg1 - (arg8 / 2);
-    var_s4 = arg2;
+    img = texture;
     gSPDisplayList(gDisplayListHead++, D_0D007FE0);
     func_8004B414(arg3, arg4, arg5, arg6);
 
     for (i = 0; i < arg8 / height; i++) {
-        func_800450C8(var_s4, width, height);
+        func_800450C8(img, width, height);
         func_8004BA08(arg0 - (width / 2), var_s3, width, height, 1);
-        var_s4 += (width * height) / 2;
+        img += (width * height) / 2;
         var_s3 += height;
     }
 }
@@ -2224,20 +2227,20 @@ void func_8004D4E8(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4, s32 arg5, s
 //generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
 //? func_80044F34(s8 *, s32, s32);                    /* extern */
 
-UNUSED void func_8004D654(s32 arg0, s32 arg1, s8 *arg2, f32 arg3, s32 arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 width, s32 arg9, UNUSED s32 argA, s32 height) {
-    s8 *var_s2;
+UNUSED void func_8004D654(s32 arg0, s32 arg1, u8 *texture, f32 arg3, s32 arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 width, s32 arg9, UNUSED s32 argA, s32 height) {
+    u8 *img;
     s32 var_s3;
     s32 i;
     // Something weird with (width / 2).
     var_s3 = arg1 - (width / 2);
-    var_s2 = arg2;
+    img = texture;
     gSPDisplayList(gDisplayListHead++, D_0D008000);
     func_8004B480(arg4, arg5, arg6);
 
     for (i = 0; i < arg9 / height; i++) {
-        func_80044F34(var_s2, width, height);
+        func_80044F34(img, width, height);
         func_8004BB3C(arg0, var_s3, width, arg9, arg3);
-        var_s2 += (width * height) / 2;
+        img += (width * height) / 2;
         var_s3 += height;
     }
 }
@@ -2250,7 +2253,7 @@ extern s16 D_80165708;
 extern s16 D_80165710;
 extern f32 D_8018D00C;
 
-void func_8004D7B4(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4) {
+void func_8004D7B4(s32 arg0, s32 arg1, u8 *texture, s32 arg3, s32 arg4) {
     s32 sp5C;
     f32 temp_f20;
     s16 temp_s7;
@@ -2258,7 +2261,7 @@ void func_8004D7B4(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4) {
     u16 temp_s0;
     s32 temp_s5;
     s32 var_s3;
-    s8 *var_s2;
+    u8 *img;
     UNUSED s32 test[3];
     s32 i;
 
@@ -2266,7 +2269,7 @@ void func_8004D7B4(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4) {
     temp_f20 = D_8018D00C;
     temp_s7 = D_80165708;
     var_s1 = D_801656B0;
-    var_s2 = arg2;
+    img = texture;
     var_s3 = arg1 - (arg4 / 2);
     gSPDisplayList(gDisplayListHead++, D_0D007FE0);
 
@@ -2275,12 +2278,12 @@ void func_8004D7B4(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4) {
         temp_s0 = var_s1;
         temp_s5 = (s32) ((sins(temp_s0) * temp_f20) + (f32) (arg0 - (arg3 / 2)));
         sins(temp_s0);
-        func_800441E0(var_s2, arg3, 1);
+        func_800441E0(img, arg3, 1);
         func_8004B97C(temp_s5, var_s3, arg3, 1, 1);
 
         var_s1 += temp_s7;
         var_s3 += 1;
-        var_s2 += sp5C;
+        img += sp5C;
     }
 }
 
@@ -2318,13 +2321,13 @@ void func_8004D93C(s32 arg0, s32 arg1, u8 *texture, s32 arg3, s32 arg4) {
     }
 }
 
-UNUSED void func_8004DAB8(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4) {
+UNUSED void func_8004DAB8(s32 arg0, s32 arg1, u8 *texture, s32 arg3, s32 arg4) {
     f32 temp_f20;
     s16 temp_s7;
     s16 var_s1;
     u16 temp_s0;
     s32 temp_s6;
-    s8 *var_s2;
+    u8 *img;
     s32 var_s4;
     s32 var;
     s32 i;
@@ -2333,7 +2336,7 @@ UNUSED void func_8004DAB8(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4) {
     temp_f20 = D_8018D00C;
     temp_s7 = D_80165708;
     var_s1 = (s16) D_801656B0;
-    var_s2 = arg2;
+    img = texture;
     var = arg3 / 2;
     var_s4 = arg1 - (arg4 / 2);
 
@@ -2342,24 +2345,24 @@ UNUSED void func_8004DAB8(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4) {
         temp_s0 = var_s1;
         temp_s6 = (s32) ((sins(temp_s0) * temp_f20) + (f32) (arg0 - (var)));
         sins(temp_s0);
-        func_80044924(var_s2, arg3, 1);
+        func_80044924(img, arg3, 1);
         func_8004B97C(temp_s6, var_s4, arg3, 1, 1);
         var_s1 += temp_s7;
-        var_s2 += arg3;
+        img += arg3;
         var_s4 += 1;
     }
 }
 
-UNUSED void func_8004DC34(s32 arg0, s32 arg1, s8 *arg2) {
-    func_8004CF9C(arg0, arg1, arg2, 8, 160, 8, 160);
+UNUSED void func_8004DC34(s32 arg0, s32 arg1, u8 *texture) {
+    func_8004CF9C(arg0, arg1, texture, 8, 160, 8, 160);
 }
 
-UNUSED void func_8004DC6C(s32 arg0, s32 arg1, s8 *arg2) {
-    func_8004CF9C(arg0, arg1, arg2, 12, 160, 12, 160);
+UNUSED void func_8004DC6C(s32 arg0, s32 arg1, u8 *texture) {
+    func_8004CF9C(arg0, arg1, texture, 12, 160, 12, 160);
 }
 
-UNUSED void func_8004DCA4(s32 arg0, s32 arg1, s8 *arg2) {
-    func_8004CF9C(arg0, arg1, arg2, 12, 192, 12, 192);
+UNUSED void func_8004DCA4(s32 arg0, s32 arg1, u8 *texture) {
+    func_8004CF9C(arg0, arg1, texture, 12, 192, 12, 192);
 }
 
 UNUSED void func_8004DCDC(s32 arg0, s32 arg1, u8 *texture) {
@@ -2432,13 +2435,13 @@ extern s16 D_80165708;
 extern s16 D_80165710;
 extern f32 D_8018D00C;
 
-void func_8004E06C(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4) {
+void func_8004E06C(s32 arg0, s32 arg1, u8 *texture, s32 arg3, s32 arg4) {
     f32 temp_f20;
     s16 temp_s7;
     s16 var_s1;
     u16 temp_s0;
     s32 var_s4;
-    s8 *var_s2;
+    u8 *img;
     u32 temp_s6;
     s32 i;
     s32 var;
@@ -2448,7 +2451,7 @@ void func_8004E06C(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4) {
     temp_f20 = D_8018D00C;
     var_s1 = (s16) D_801656B0;
     temp_s7 = D_80165708;
-    var_s2 = arg2;
+    img = texture;
     var = arg3 / 2;
     var_s4 = arg1 - (arg4 / 2);
 
@@ -2456,10 +2459,10 @@ void func_8004E06C(s32 arg0, s32 arg1, s8 *arg2, s32 arg3, s32 arg4) {
             temp_s0 = var_s1;
             temp_s6 = (u32) ((sins(temp_s0) * temp_f20) + (f32) (arg0 - var));
             sins(temp_s0);
-            func_800452A4(var_s2, arg3, 1);
+            func_800452A4(img, arg3, 1);
             func_8004B97C(temp_s6, var_s4, arg3, 1, 1);
             var_s1 += temp_s7;
-            var_s2 += arg3;
+            img += arg3;
             var_s4 += 1;
     }
 }
@@ -2474,69 +2477,69 @@ void func_8004E240(s32 arg0, s32 arg1, u8 *tlut, u8 *texture, s32 arg4, s32 arg5
     func_8004DF5C(arg0, arg1, texture, arg4, arg5, arg6);
 }
 
-void func_8004E2B8(s32 arg0, s32 arg1, s32 arg2, u32 *tlut, u32 *texture, s32 arg5, s32 arg6, s32 arg7) {
+void func_8004E2B8(s32 arg0, s32 arg1, s32 arg2, u8 *tlut, u8 *texture, s32 arg5, s32 arg6, s32 arg7) {
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
     func_8004B2BC(arg2);
     func_8004B05C(tlut);
     func_8004DF5C(arg0, arg1, texture, arg5, arg6, arg7);
 }
 
-void func_8004E338(s32 arg0, s32 arg1, u8 *tlut, u8 *arg3, s32 arg4, s32 arg5) {
+void func_8004E338(s32 arg0, s32 arg1, u8 *tlut, u8 *texture, s32 arg4, s32 arg5) {
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
     func_8004B2BC(D_8016589C);
     func_8004B05C(tlut);
-    func_8004E06C(arg0, arg1, arg3, arg4, arg5);
+    func_8004E06C(arg0, arg1, texture, arg4, arg5);
 }
 
 UNUSED void func_8004E3B8(void) {
 
 }
 
-UNUSED void func_8004E3C0(s32 arg0, s32 arg1, u8 *arg2, s8 *arg3, s32 arg4, s32 arg5, UNUSED s32 arg6, s32 arg7) {
-    func_8004E240(arg0, arg1, arg2, arg3, arg4, arg5, arg7);
+UNUSED void func_8004E3C0(s32 arg0, s32 arg1, u8 *tlut, u8 *texture, s32 arg4, s32 arg5, UNUSED s32 arg6, s32 arg7) {
+    func_8004E240(arg0, arg1, tlut, texture, arg4, arg5, arg7);
 }
 
-UNUSED void func_8004E3F4(s32 arg0, s32 arg1, s32 arg2, u8 *arg3, s8 *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
-    func_8004E2B8(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg8);
+UNUSED void func_8004E3F4(s32 arg0, s32 arg1, s32 arg2, u8 *tlut, u8 *texture, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
+    func_8004E2B8(arg0, arg1, arg2, tlut, texture, arg5, arg6, arg8);
 }
 
-UNUSED void func_8004E430(s32 arg0, s32 arg1, u8 *arg2, u8 *arg3) {
-    func_8004E240(arg0, arg1, arg2, arg3, 8, 128, 128);
+UNUSED void func_8004E430(s32 arg0, s32 arg1, u8 *tlut, u8 *texture) {
+    func_8004E240(arg0, arg1, tlut, texture, 8, 128, 128);
 }
 
-UNUSED void func_8004E464(s32 arg0, s32 arg1, u8 *arg2, u8 *arg3) {
-    func_8004E240(arg0, arg1, arg2, arg3, 32, 32, 32);
+UNUSED void func_8004E464(s32 arg0, s32 arg1, u8 *tlut, u8 *texture) {
+    func_8004E240(arg0, arg1, tlut, texture, 32, 32, 32);
 }
 
-UNUSED void func_8004E498(s32 arg0, s32 arg1, u8 *arg2, u8 *arg3) {
-    func_8004E240(arg0, arg1, arg2, arg3, 32, 64, 64);
+UNUSED void func_8004E498(s32 arg0, s32 arg1, u8 *tlut, u8 *texture) {
+    func_8004E240(arg0, arg1, tlut, texture, 32, 64, 64);
 }
 
-void func_8004E4CC(s32 arg0, s32 arg1, u32 *tlut, u32 *texture) {
+void func_8004E4CC(s32 arg0, s32 arg1, u8 *tlut, u8 *texture) {
     func_8004E240(arg0, arg1, tlut, texture, 40, 32, 32);
 }
 
-UNUSED void func_8004E500(s32 arg0, s32 arg1, u32 *tlut, u32 *texture) {
+UNUSED void func_8004E500(s32 arg0, s32 arg1, u8 *tlut, u8 *texture) {
     func_8004E240(arg0, arg1, tlut, texture, 48, 48, 24);
 }
 
-UNUSED void func_8004E534(s32 arg0, s32 arg1, u32 *tlut, u32 *texture) {
+UNUSED void func_8004E534(s32 arg0, s32 arg1, u8 *tlut, u8 *texture) {
     func_8004E240(arg0, arg1, tlut, texture, 64, 32, 32);
 }
 
-UNUSED void func_8004E568(s32 arg0, s32 arg1, u32 *tlut, u32 *texture) {
+UNUSED void func_8004E568(s32 arg0, s32 arg1, u8 *tlut, u8 *texture) {
     func_8004E240(arg0, arg1, tlut, texture, 64, 64, 32);
 }
 
-UNUSED void func_8004E59C(s32 arg0, s32 arg1, s32 arg2, u32 *tlut, u32 *texture) {
+UNUSED void func_8004E59C(s32 arg0, s32 arg1, s32 arg2, u8 *tlut, u8 *texture) {
     func_8004E2B8(arg0, arg1, arg2, tlut, texture, 64, 64, 32);
 }
 
-UNUSED void func_8004E5D8(s32 arg0, s32 arg1, u8 *tlut, s8 *arg3) {
+UNUSED void func_8004E5D8(s32 arg0, s32 arg1, u8 *tlut, u8 *arg3) {
     func_8004E338(arg0, arg1, tlut, arg3, 64, 64);
 }
 
-UNUSED void func_8004E604(s32 arg0, s32 arg1, u32 *tlut, u32 *texture) {
+UNUSED void func_8004E604(s32 arg0, s32 arg1, u8 *tlut, u8 *texture) {
     func_8004E240(arg0, arg1, tlut, texture, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
 }
 
@@ -2549,7 +2552,7 @@ void func_8004E638(s32 playerId) {
     temp_v1 = &D_80165C18[objectIndex];
     if (temp_v1->unk_0A6 >= 2) {
         temp_v0 = &D_8018CA70[playerId];
-        func_8004E4CC(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, temp_v1->unk_060, temp_v1->unk_064);
+        func_8004E4CC(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, (u8 *) temp_v1->unk_060, temp_v1->unk_064);
     }
 }
 
@@ -4369,7 +4372,7 @@ void func_800523B8(s32 arg0, s32 arg1, u32 arg2) {
 
     temp_v1 = &D_80165C18[arg0];
     temp_v1->unk_0B2[1] = func_800418AC(temp_v1->unk_004[0], temp_v1->unk_004[2], camera->pos);
-    func_800484BC(temp_v1->unk_004, temp_v1->unk_0B2, temp_v1->unk_000, temp_v1->unk_0A0, temp_v1->unk_060, temp_v1->unk_064, temp_v1->unk_074, 0x00000030, 0x00000028, 0x00000030, 0x00000028);
+    func_800484BC(temp_v1->unk_004, temp_v1->unk_0B2, temp_v1->unk_000, temp_v1->unk_0A0, (u8 *) temp_v1->unk_060, temp_v1->unk_064, temp_v1->unk_074, 0x00000030, 0x00000028, 0x00000030, 0x00000028);
     if ((func_8007223C(arg0, 0x00000020) != 0) && (arg2 < 0x15F91U)) {
         func_8004A630(&D_8018C830, temp_v1->unk_004, 0.4f);
     }
@@ -4771,12 +4774,12 @@ void func_8005309C(s32 cameraId) {
                 D_80183E80[1] = func_800418AC(D_80165C18[temp_s1].unk_004[0], D_80165C18[temp_s1].unk_004[2], camera->pos);
                 D_80183E80[2] = (u16) D_80165C18[temp_s1].unk_0B2[2];
                 if (func_8007223C(temp_s1, 0x00000010) != 0) {
-                    func_800480B4(D_80165C18[temp_s1].unk_004, (u16 *) D_80183E80, D_80165C18[temp_s1].unk_000, D_80165C18[temp_s1].unk_060, D_80165C18[temp_s1].unk_064, D_80165C18[temp_s1].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+                    func_800480B4(D_80165C18[temp_s1].unk_004, (u16 *) D_80183E80, D_80165C18[temp_s1].unk_000, (u8 *) D_80165C18[temp_s1].unk_060, D_80165C18[temp_s1].unk_064, D_80165C18[temp_s1].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
                 }
                 temp_s1 = D_80183F28[var_s4];
                 D_80183E80[0] = (s16) D_80165C18[temp_s1].unk_0B2[0];
                 D_80183E80[2] = (u16) D_80165C18[temp_s1].unk_0B2[2];
-                func_800480B4(D_80165C18[temp_s1].unk_004, (u16 *) D_80183E80, D_80165C18[temp_s1].unk_000, D_80165C18[temp_s1].unk_060, D_80165C18[temp_s1].unk_064, D_80165C18[temp_s1].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+                func_800480B4(D_80165C18[temp_s1].unk_004, (u16 *) D_80183E80, D_80165C18[temp_s1].unk_000, (u8 *) D_80165C18[temp_s1].unk_060, D_80165C18[temp_s1].unk_064, D_80165C18[temp_s1].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
         }
     }
@@ -5439,7 +5442,7 @@ void func_80054D00(s32 objectIndex, s32 cameraId) {
             D_80183E80[0] = (s16) D_80165C18[objectIndex].unk_0B2[0];
             D_80183E80[1] = func_800418AC(D_80165C18[objectIndex].unk_004[0], D_80165C18[objectIndex].unk_004[2], camera->pos);
             D_80183E80[2] = (u16) D_80165C18[objectIndex].unk_0B2[2];
-            func_80048130(D_80165C18[objectIndex].unk_004, (u16 *) D_80183E80, D_80165C18[objectIndex].unk_000, D_80165C18[objectIndex].unk_060, D_80165C18[objectIndex].unk_064, D_0D0062B0, 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
+            func_80048130(D_80165C18[objectIndex].unk_004, (u16 *) D_80183E80, D_80165C18[objectIndex].unk_000, (u8 *) D_80165C18[objectIndex].unk_060, D_80165C18[objectIndex].unk_064, D_0D0062B0, 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
         }
     }
 }
@@ -5613,7 +5616,7 @@ void func_80055458(s32 objectIndex, s32 cameraId) {
         camera = &camera1[cameraId];
         func_8004A6EC(objectIndex, 0.5f);
         D_80165C18[objectIndex].unk_0B2[1] = func_800418AC(D_80165C18[objectIndex].unk_004[0], D_80165C18[objectIndex].unk_004[2], camera->pos);
-        func_800480B4(D_80165C18[objectIndex].unk_004, D_80165C18[objectIndex].unk_0B2, D_80165C18[objectIndex].unk_000, D_80165C18[objectIndex].unk_060, D_80165C18[objectIndex].unk_064, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+        func_800480B4(D_80165C18[objectIndex].unk_004, D_80165C18[objectIndex].unk_0B2, D_80165C18[objectIndex].unk_000, (u8 *) D_80165C18[objectIndex].unk_060, D_80165C18[objectIndex].unk_064, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
     }
 }
 
@@ -5637,7 +5640,7 @@ void func_800555BC(s32 objectIndex, s32 cameraId) {
         camera = &camera1[cameraId];
         func_8004A870(objectIndex, 0.7f);
         D_80165C18[objectIndex].unk_0B2[1] = func_800418AC(D_80165C18[objectIndex].unk_004[0], D_80165C18[objectIndex].unk_004[2], camera->pos);
-        func_800480B4(D_80165C18[objectIndex].unk_004, D_80165C18[objectIndex].unk_0B2, D_80165C18[objectIndex].unk_000, D_80165C18[objectIndex].unk_060, D_80165C18[objectIndex].unk_064, (Vtx *) D_80165C18[objectIndex].unk_074, 64, 64, 64, 32);
+        func_800480B4(D_80165C18[objectIndex].unk_004, D_80165C18[objectIndex].unk_0B2, D_80165C18[objectIndex].unk_000, (u8 *) D_80165C18[objectIndex].unk_060, D_80165C18[objectIndex].unk_064, (Vtx *) D_80165C18[objectIndex].unk_074, 64, 64, 64, 32);
     }
 }
 
@@ -5937,7 +5940,7 @@ void func_80056188(s32 cameraId) {
             object = &D_80165C18[objectIndex];
             if ((object->unk_0A6 >= 2) && (func_80072270(objectIndex, 0x00080000) != 0) && (func_8008A140(objectIndex, camera, 0x2AABU) != 0)) {
                 object->unk_0B2[1] = func_800872D8(objectIndex, camera);
-                func_800480B4(object->unk_004, object->unk_0B2, object->unk_000, object->unk_060, object->unk_064, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+                func_800480B4(object->unk_004, object->unk_0B2, object->unk_000, (u8 *) object->unk_060, object->unk_064, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
         }
     }
