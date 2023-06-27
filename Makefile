@@ -36,10 +36,12 @@ $(eval $(call validate-option,VERSION,us eu))
 ifeq      ($(VERSION),us)
   DEFINES += VERSION_US=1
   #VERSION_CFLAGS := -DVERSION_US
+  GRUCODE   ?= f3d_old
   VERSION_ASFLAGS := --defsym VERSION_US=1
 else ifeq ($(VERSION), eu)
   DEFINES += VERSION_EU=1 
   #VERSION_CFLAGS := -DVERSION_EU
+  GRUCODE   ?= f3d_old
   VERSION_ASFLAGS := --defsym VERSION_EU=1
 endif
 
@@ -55,10 +57,10 @@ BASEROM := baserom.$(VERSION).z64
 # Note that 3/4 player mode uses F3DLX
 $(eval $(call validate-option,GRUCODE,f3d_old f3dex2))
 
-ifeq      ($(GRUCODE),f3d_old)
-  DEFINES += F3D_OLD=1
-else ifeq ($(GRUCODE), f3dex2) # Fast3DEX2
-  DEFINES += F3DEX_GBI_2=1 F3DEX_GBI_SHARED=1
+ifeq ($(GRUCODE), f3dex2) # Fast3DEX2
+  DEFINES += F3DEX_GBI_2 F3DEX_GBI_SHARED=1
+else
+  DEFINES += F3DEX_GBI=1 F3D_OLD=1
 endif
 
 
@@ -78,7 +80,7 @@ ifeq      ($(COMPILER),ido)
     endif
   endif
 
-  MIPSISET := -mips2 -32
+  MIPSISET := -mips2
 else ifeq ($(COMPILER),gcc)
   NON_MATCHING := 1
   MIPSISET     := -mips3
@@ -204,7 +206,7 @@ COURSE_DIRS := $(shell find courses -mindepth 2 -type d)
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 
-ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) $(INCLUDE_DIRS) $(ASM_DIRS) $(ALL_KARTS_DIRS) $(TEXTURES_DIR)/raw \
+ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) include $(ASM_DIRS) $(ALL_KARTS_DIRS) $(TEXTURES_DIR)/raw \
 	$(TEXTURES_DIR)/standalone $(TEXTURES_DIR)/startup_logo $(TEXTURES_DIR)/crash_screen $(TEXTURES_DIR)/trophy $(TEXTURES_DIR)/courses        \
 	$(TEXTURES_DIR)/courses/tlut $(TEXTURES_DIR)/courses/tlut2 $(TEXTURE_DIRS) $(TEXTURE_DIRS)/tlut $(TEXTURES_DIR)/courses/tlut3              \
 	$(TEXTURE_DIRS)/tlut2 $(BIN_DIR))
@@ -268,13 +270,19 @@ OBJCOPY := $(CROSS)objcopy
 OPT_FLAGS := -O2
 
 ifeq ($(TARGET_N64),1)
-  TARGET_CFLAGS := -nostdinc -I include/libc -DTARGET_N64 -D_LANGUAGE_C
+  TARGET_CFLAGS := -nostdinc -DTARGET_N64 -D_LANGUAGE_C
   CC_CFLAGS := -fno-builtin
 endif
 
+INCLUDE_DIRS := include $(BUILD_DIR) $(BUILD_DIR)/include src .
+ifeq ($(TARGET_N64),1)
+  INCLUDE_DIRS += include/libc
+endif
 
+#$(info $(DEFINES))
 C_DEFINES := $(foreach d,$(DEFINES),-D$(d))
 DEF_INC_CFLAGS := $(foreach i,$(INCLUDE_DIRS),-I$(i)) $(C_DEFINES)
+#$(info $(DEF_INC_CFLAGS))
 
 # Prefer clang as C preprocessor if installed on the system
 ifneq (,$(call find-command,clang))
@@ -288,19 +296,22 @@ endif
 # TODO: Seperate F3D declares into version flags if needed.
 #GRUCODE_CFLAGS = -DF3DEX_GBI -DF3D_OLD
 
-INCLUDE_CFLAGS := -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I .
+#INCLUDE_CFLAGS := -I include -I $(BUILD_DIR) -I $(BUILD_DIR)/include -I src -I .
+
 # Check code syntax with host compiler
 CC_CHECK := gcc
-CC_CHECK_CFLAGS := -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) -std=gnu90 -Wall -Wempty-body -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(VERSION_CFLAGS) $(DEF_INC_CFLAGS)
+CC_CHECK_CFLAGS := -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) -std=gnu90 -Wall -Wempty-body -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(DEF_INC_CFLAGS)
 
 # C compiler options
 HIDE_WARNINGS := -woff 838,649
-CFLAGS = -G 0 $(OPT_FLAGS) $(TARGET_CFLAGS) $(INCLUDE_CFLAGS) $(VERSION_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS)
+CFLAGS = -G 0 $(OPT_FLAGS) $(TARGET_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS)
 ifeq ($(COMPILER),gcc)
   CFLAGS += -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
 else
-  CFLAGS += -non_shared -Wab,-r4300_mul -Xcpluscomm -Xfullwarn -signed -32 $(HIDE_WARNINGS)
+  CFLAGS += $(HIDE_WARNINGS) -non_shared -Wab,-r4300_mul -Xcpluscomm -Xfullwarn -signed -32
 endif
+
+$(info $(CFLAGS))
 
 ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) --defsym F3DEX_GBI=1
 
@@ -571,12 +582,12 @@ $(COURSE_DATA_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o: $(BUILD_DIR)/%/co
 #==============================================================================#
 
 $(BUILD_DIR)/%.o: %.c
-	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
 $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
-	@$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.o: %.s $(MIO0_FILES) $(RAW_TEXTURE_FILES)
@@ -587,7 +598,7 @@ $(GLOBAL_ASM_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(A
 $(GLOBAL_ASM_AUDIO_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
 $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT) #repeat for other files
-	$(CPP) $(CPPFLAGS) $(VERSION_CFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
+	$(CPP) $(CPPFLAGS) $(DEF_INC_CFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 
 
