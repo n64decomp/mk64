@@ -168,12 +168,12 @@ glabel gTextureGrass2
 .incbin "textures/standalone/grass_2.rgba16.mio0"
 
 .balign 4, 0x00
-glabel gTextureSignMooMooFarm0
-.incbin "textures/standalone/sign_moo_moo_farm_0.rgba16.mio0"
+glabel gTextureMooMooFarmSignLeft
+.incbin "assets/courses/moo_moo_farm/gTextureMooMooFarmSignLeft.mio0"
 
 .balign 4, 0x00
-glabel gTextureSignMooMooFarm1
-.incbin "textures/standalone/sign_moo_moo_farm_1.rgba16.mio0"
+glabel gTextureMooMooFarmSignRight
+.incbin "assets/courses/moo_moo_farm/gTextureMooMooFarmSignRight.mio0"
 
 .balign 4, 0x00
 glabel gTexture64ACAC
@@ -1256,72 +1256,72 @@ glabel gTextureShrub
 .incbin "textures/standalone/shrub.rgba16.mio0"
 
 .balign 4, 0x00
-glabel gTexture69333C
-.incbin "bin/texture_69333C.mio0"
+glabel gTextureFrappeSnowlandTreeLeft
+.incbin "assets/courses/frappe_snowland/gTextureFrappeSnowlandTreeLeft.mio0"
 
 .balign 4, 0x00
-glabel gTexture693790
-.incbin "bin/texture_693790.mio0"
+glabel gTextureFrappeSnowlandTreeRight
+.incbin "assets/courses/frappe_snowland/gTextureFrappeSnowlandTreeRight.mio0"
 
 .balign 4, 0x00
-glabel gTexture693BC4
-.incbin "bin/texture_693BC4.mio0"
+glabel gTextureCow01Left
+.incbin "assets/courses/moo_moo_farm/gTextureCow01Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture693F48
-.incbin "bin/texture_693F48.mio0"
+glabel gTextureCow01Right
+.incbin "assets/courses/moo_moo_farm/gTextureCow01Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture69429C
-.incbin "bin/texture_69429C.mio0"
+glabel gTextureCow02Left
+.incbin "assets/courses/moo_moo_farm/gTextureCow02Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture694628
-.incbin "bin/texture_694628.mio0"
+glabel gTextureCow02Right
+.incbin "assets/courses/moo_moo_farm/gTextureCow02Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture694990
-.incbin "bin/texture_694990.mio0"
+glabel gTextureCow03Left
+.incbin "assets/courses/moo_moo_farm/gTextureCow03Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture694CAC
-.incbin "bin/texture_694CAC.mio0"
+glabel gTextureCow03Right
+.incbin "assets/courses/moo_moo_farm/gTextureCow03Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture694F7C
-.incbin "bin/texture_694F7C.mio0"
+glabel gTextureCow04Left
+.incbin "assets/courses/moo_moo_farm/gTextureCow04Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture695268
-.incbin "bin/texture_695268.mio0"
+glabel gTextureCow04Right
+.incbin "assets/courses/moo_moo_farm/gTextureCow04Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture6955AC
-.incbin "bin/texture_6955AC.mio0"
+glabel gTextureCow05Left
+.incbin "assets/courses/moo_moo_farm/gTextureCow05Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture6958C0
-.incbin "bin/texture_6958C0.mio0"
+glabel gTextureCow05Right
+.incbin "assets/courses/moo_moo_farm/gTextureCow05Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture695BA4
-.incbin "bin/texture_695BA4.mio0"
+glabel gTextureCactus1Left
+.incbin "assets/courses/kalimari_desert/gTextureCactus1Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture695EE4
-.incbin "bin/texture_695EE4.mio0"
+glabel gTextureCactus1Right
+.incbin "assets/courses/kalimari_desert/gTextureCactus1Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture6961E0
-.incbin "bin/texture_6961E0.mio0"
+glabel gTextureCactus2Left
+.incbin "assets/courses/kalimari_desert/gTextureCactus2Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture696488
-.incbin "bin/texture_696488.mio0"
+glabel gTextureCactus2Right
+.incbin "assets/courses/kalimari_desert/gTextureCactus2Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture6967FC
-.incbin "bin/texture_6967FC.mio0"
+glabel gTextureCactus3
+.incbin "assets/courses/kalimari_desert/gTextureCactus3.mio0"
 
 .balign 4, 0x00
 glabel gTextureFinishLineBanner1
@@ -1357,55 +1357,55 @@ glabel gTextureFinishLineBanner8
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant1
-.incbin "assets/piranha_plant/gTexturePiranhaPlant1.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant1.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant2
-.incbin "assets/piranha_plant/gTexturePiranhaPlant2.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant2.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant3
-.incbin "assets/piranha_plant/gTexturePiranhaPlant3.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant3.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant4
-.incbin "assets/piranha_plant/gTexturePiranhaPlant4.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant4.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant5
-.incbin "assets/piranha_plant/gTexturePiranhaPlant5.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant5.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant6
-.incbin "assets/piranha_plant/gTexturePiranhaPlant6.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant6.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant7
-.incbin "assets/piranha_plant/gTexturePiranhaPlant7.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant7.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant8
-.incbin "assets/piranha_plant/gTexturePiranhaPlant8.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant8.mio0"
 
 .balign 4, 0x00
 glabel gTexturePiranhaPlant9
-.incbin "assets/piranha_plant/gTexturePiranhaPlant9.mio0"
+.incbin "assets/courses/mario_raceway/gTexturePiranhaPlant9.mio0"
 
 .balign 4, 0x00
 glabel gTexture6997E0
 .incbin "textures/standalone/texture_6997E0.rgba16.mio0"
 
 .balign 4, 0x00
-glabel gTexture699E24
-.incbin "bin/texture_699E24.mio0"
+glabel gTextureDksJungleParkwayKiwanoFruit1
+.incbin "assets/courses/dks_jungle_parkway/gTextureDksJungleParkwayKiwanoFruit1.mio0"
 
 .balign 4, 0x00
-glabel gTexture69A154
-.incbin "bin/texture_69A154.mio0"
+glabel gTextureDksJungleParkwayKiwanoFruit2
+.incbin "assets/courses/dks_jungle_parkway/gTextureDksJungleParkwayKiwanoFruit2.mio0"
 
 .balign 4, 0x00
-glabel gTexture69A4C0
-.incbin "bin/texture_69A4C0.mio0"
+glabel gTextureDksJungleParkwayKiwanoFruit3
+.incbin "assets/courses/dks_jungle_parkway/gTextureDksJungleParkwayKiwanoFruit3.mio0"
 
 .balign 16, 0x00
 glabel gTextureKartShadow
@@ -1572,7 +1572,7 @@ glabel gTextureLightningBolt1
 
 .balign 4, 0x00
 glabel gTextureGhosts
-.incbin "bin/texture_ghosts.mio0"
+.incbin "assets/courses/banshee_boardwalk/boo_frames.mio0"
 
 .balign 4, 0x00
 glabel gTextureExhaust0

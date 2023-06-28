@@ -218,7 +218,7 @@ def export_image(baserom, asset, asset_list):
     subprocess.run(cmd, check=True)
 
 def export_bin(baserom, asset):
-    asset_filename = os.path.join({asset["output_dir"]}, f'{asset["name"]}.{asset["type"]}')
+    asset_filename = os.path.join(asset["output_dir"], f'{asset["name"]}.{asset["type"]}')
     os.makedirs(asset["output_dir"], exist_ok=True)
 
     with open(asset_filename, "wb") as asset_file:

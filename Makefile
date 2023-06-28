@@ -455,8 +455,6 @@ $(BUILD_DIR)/src/startup_logo.inc.o: src/startup_logo.inc.c
 
 
 
-
-
 #==============================================================================#
 # Common Textures Segment Generation                                           #
 #==============================================================================#
@@ -551,7 +549,6 @@ $(COURSE_TLUT2):
 
 $(COURSE_TLUT3):
 	$(V)$(N64GRAPHICS) -Z $(BUILD_DIR)/$@.inc.c -g $@.png -s u8 -c rgba16 -f ci8 -p textures/courses/$(basename $(notdir $@)).png
-#   tluts
 
 $(COURSE_DATA_TARGETS_O): $(BUILD_DIR)/%/course_data.inc.o : %/course_data.inc.c $(COURSE_TEXTURE_FILES) $(COURSE_TLUT) $(COURSE_TLUT2) $(COURSE_TLUT3)
 	@$(PRINT) "$(GREEN)Compiling Course Data:  $(BLUE)$@ $(NO_COL)\n"

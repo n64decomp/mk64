@@ -140,9 +140,19 @@ struct ActorSpawnData {
 
 // Required for func_80298AC0 due to diff size.
 // members unverified. data located at D_06013F78
+/**
+ * There are nearly 100 trees in DK Jungle Parkway. If they were put into the actor list proper
+ * they would fill it up, leaving no space for stuff like item boxes, shells, bananas, kiwano fruits,
+ * etc.
+ * So, this struct type acts as both spawn data AND a stripped down Actor for those trees.
+ * Give the tree a position, a byte for flags stuffed into an s16 used to indicate tree sub-type,
+ * and an s16 containing as the tree's original Y position.
+**/
 struct UnkActorSpawnData {
     /* 0x00 */ Vec3s pos;
-    /* 0x06 */ s16 someId; // Usually populated, but not necessarily used by all actors types
+    // Techinically only the bottom byte of someId is the "id". The top byte is used for flags.
+    /* 0x06 */ s16 someId;
+    // Stores the tree's original Y position.
     /* 0x08 */ s16 unk8;
 };
 

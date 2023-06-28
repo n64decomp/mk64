@@ -65,26 +65,7 @@ TEXTURE_DATA_MIO0_NAMES := \
 	texture_692888    \
 	texture_692CC0    \
 	texture_69333C    \
-	texture_693790    \
-	texture_693BC4    \
-	texture_693F48    \
-	texture_69429C    \
-	texture_694628    \
-	texture_694990    \
-	texture_694CAC    \
-	texture_694F7C    \
-	texture_695268    \
-	texture_6955AC    \
-	texture_6958C0    \
-	texture_695BA4    \
-	texture_695EE4    \
-	texture_6961E0    \
-	texture_696488    \
-	texture_6967FC    \
-	texture_699E24    \
-	texture_69A154    \
-	texture_69A4C0    \
-	texture_ghosts
+	texture_693790
 
 TEXTURE_DATA_MIO0_FILES := $(addprefix $(BUILD_DIR)/bin/,$(addsuffix .mio0,$(TEXTURE_DATA_MIO0_NAMES)))
 
