@@ -1484,8 +1484,6 @@ BOWSER_KART_PALETTE_PNG := \
 
 BOWSER_EXPORT_SENTINEL := $(BOWSER_KART_DIR)/.export
 
-ASSET_DIRECTORIES += $(BOWSER_KART_DIR)
-
 $(BUILD_DIR)/$(DATA_DIR)/karts/bowser_kart.o: $(BOWSER_KART_FRAME_PNG:%.png=%.mio0) $(BOWSER_KART_PALETTE_PNG:%.png=%.bin)
 
 $(BOWSER_KART_FRAME_PNG:%.png=%.mio0): %.mio0 : %.bin
@@ -1502,3 +1500,9 @@ $(BOWSER_KART_FRAME_PNG) $(BOWSER_KART_PALETTE_PNG): $(BOWSER_EXPORT_SENTINEL) ;
 $(BOWSER_EXPORT_SENTINEL): $(ASSET_DIR)/karts/bowser_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_bowser_kart
+distclean_bowser_kart:
+	rm -rf $(BOWSER_KART_DIR)
+
+distclean_assets: distclean_bowser_kart

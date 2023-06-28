@@ -38,8 +38,6 @@ $(ITEM_WINDOW_DIR)/gTextureItemWindowFakeItemBox.png
 
 ITEM_WINDOW_EXPORT_SENTINEL := $(ITEM_WINDOW_DIR)/.export
 
-ASSET_DIRECTORIES += $(ITEM_WINDOW_DIR)
-
 $(BUILD_DIR)/src/common_textures.inc.o: $(ITEM_WINDOW_PNG:%.png=%.inc.c) $(ITEM_WINDOW_PALETTES:%.png=%.inc.c)
 
 $(ITEM_WINDOW_DIR)/gTexture%.inc.c: $(ITEM_WINDOW_DIR)/gTexture%.png
@@ -53,3 +51,9 @@ $(ITEM_WINDOW_PNG) $(ITEM_WINDOW_PALETTES): $(ITEM_WINDOW_EXPORT_SENTINEL) ;
 $(ITEM_WINDOW_EXPORT_SENTINEL): $(ASSET_DIR)/item_window.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_item_window
+distclean_item_window:
+	rm -rf $(ITEM_WINDOW_DIR)
+
+distclean_assets: distclean_item_window

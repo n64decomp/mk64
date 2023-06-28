@@ -38,8 +38,6 @@ $(TOADS_TURNPIKE_DIR)/gTextureToadsTurnpikeCarSideLod1.png
 
 TOADS_TURNPIKE_EXPORT_SENTINEL := $(TOADS_TURNPIKE_DIR)/.export
 
-ASSET_DIRECTORIES += $(TOADS_TURNPIKE_DIR)
-
 $(BUILD_DIR)/courses/flower_cup/toads_turnpike/course_data.inc.o: $(TOADS_TURNPIKE_PNG:%.png=%.inc.c)
 
 $(TOADS_TURNPIKE_PNG:%.png=%.inc.c): %.inc.c : %.png
@@ -50,3 +48,9 @@ $(TOADS_TURNPIKE_PNG): $(TOADS_TURNPIKE_EXPORT_SENTINEL) ;
 $(TOADS_TURNPIKE_EXPORT_SENTINEL): $(ASSET_DIR)/courses/toads_turnpike.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_toads_turnpike
+distclean_toads_turnpike:
+	rm -rf $(TOADS_TURNPIKE_DIR)
+
+distclean_assets: distclean_toads_turnpike

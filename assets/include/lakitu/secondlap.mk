@@ -22,8 +22,6 @@ $(SECONDLAP_DIR)/gTextureLakituSecondLap16.png
 
 SECONDLAP_EXPORT_SENTINEL := $(SECONDLAP_DIR)/.export
 
-ASSET_DIRECTORIES += $(SECONDLAP_DIR)
-
 $(SECONDLAP_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(SECONDLAP_PALETTE)
 
@@ -37,3 +35,9 @@ $(SECONDLAP_FRAMES) $(SECONDLAP_PALETTE): $(SECONDLAP_EXPORT_SENTINEL) ;
 $(SECONDLAP_EXPORT_SENTINEL): assets/lakitu/secondlap.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_lakitu_secondlap
+distclean_lakitu_secondlap:
+	rm -rf $(SECONDLAP_DIR)
+
+distclean_assets: distclean_lakitu_secondlap

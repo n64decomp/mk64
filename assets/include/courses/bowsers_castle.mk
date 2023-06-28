@@ -14,8 +14,6 @@ THOWMP_SIDE_PNG := $(BOWSERS_CASTLE_DIR)/gTextureThwompSide.png
 
 BOWSERS_CASTLE_EXPORT_SENTINEL := $(BOWSERS_CASTLE_DIR)/.export
 
-ASSET_DIRECTORIES += $(BOWSERS_CASTLE_DIR)
-
 $(BUILD_DIR)/courses/star_cup/bowsers_castle/course_data.inc.o: $(THWOMP_FACE_FRAMES:%.png=%.inc.c) $(THWOMP_PALETTE:%.png=%.inc.c)
 $(BUILD_DIR)/courses/star_cup/bowsers_castle/course_data.inc.o: $(THOWMP_SIDE_PNG:%.png=%.inc.c)
 
@@ -30,3 +28,9 @@ $(THWOMP_PALETTE) $(THWOMP_FACE_FRAMES) $(THOWMP_SIDE_PNG): $(BOWSERS_CASTLE_EXP
 $(BOWSERS_CASTLE_EXPORT_SENTINEL): $(ASSET_DIR)/courses/bowsers_castle.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_bowsers_castle
+distclean_bowsers_castle:
+	rm -rf $(BOWSERS_CASTLE_DIR)
+
+distclean_assets: distclean_bowsers_castle

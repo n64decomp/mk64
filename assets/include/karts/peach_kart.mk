@@ -1484,8 +1484,6 @@ PEACH_KART_PALETTE_PNG := \
 
 PEACH_EXPORT_SENTINEL := $(PEACH_KART_DIR)/.export
 
-ASSET_DIRECTORIES += $(PEACH_KART_DIR)
-
 $(BUILD_DIR)/$(DATA_DIR)/karts/peach_kart.o: $(PEACH_KART_FRAME_PNG:%.png=%.mio0) $(PEACH_KART_PALETTE_PNG:%.png=%.bin)
 
 $(PEACH_KART_FRAME_PNG:%.png=%.mio0): %.mio0 : %.bin
@@ -1502,3 +1500,9 @@ $(PEACH_KART_FRAME_PNG) $(PEACH_KART_PALETTE_PNG): $(PEACH_EXPORT_SENTINEL) ;
 $(PEACH_EXPORT_SENTINEL): $(ASSET_DIR)/karts/peach_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_peach_kart
+distclean_peach_kart:
+	rm -rf $(PEACH_KART_DIR)
+
+distclean_assets: distclean_peach_kart

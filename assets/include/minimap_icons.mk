@@ -14,8 +14,6 @@ $(MINIMAP_ICONS_DIR)/gTextureMiniMapProgressDot.png
 
 MINIMAP_ICONS_EXPORT_SENTINEL := $(MINIMAP_ICONS_DIR)/.export
 
-ASSET_DIRECTORIES += $(MINIMAP_ICONS_DIR)
-
 $(BUILD_DIR)/src/common_textures.inc.o: $(MINIMAP_ICONS_PNG:%.png=%.inc.c)
 
 $(MINIMAP_ICONS_PNG:%.png=%.inc.c): %.inc.c : %.png
@@ -26,3 +24,9 @@ $(MINIMAP_ICONS_PNG): $(MINIMAP_ICONS_EXPORT_SENTINEL) ;
 $(MINIMAP_ICONS_EXPORT_SENTINEL): $(ASSET_DIR)/minimap_icons.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_minimap_icons
+distclean_minimap_icons:
+	rm -rf $(MINIMAP_ICONS_DIR)
+
+distclean_assets: distclean_minimap_icons

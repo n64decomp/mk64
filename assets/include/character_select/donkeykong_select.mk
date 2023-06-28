@@ -21,8 +21,6 @@ $(DONKEYKONG_SELECT_DIR)/donkeykong_face_16.png
 
 DONKEYKONG_SELECT_EXPORT_SENTINEL := $(DONKEYKONG_SELECT_DIR)/.export
 
-ASSET_DIRECTORIES += $(DONKEYKONG_SELECT_DIR)
-
 $(BUILD_DIR)/data/course_player_selection.o: $(DONKEYKONG_SELECT_PNG:%.png=%.mio0)
 
 $(DONKEYKONG_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
@@ -36,3 +34,9 @@ $(DONKEYKONG_SELECT_PNG): $(DONKEYKONG_SELECT_EXPORT_SENTINEL) ;
 $(DONKEYKONG_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/donkeykong_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_donkeykong_select
+distclean_donkeykong_select:
+	rm -rf $(DONKEYKONG_SELECT_DIR)
+
+distclean_assets: distclean_donkeykong_select

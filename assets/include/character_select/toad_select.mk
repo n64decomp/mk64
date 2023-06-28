@@ -21,8 +21,6 @@ $(TOAD_SELECT_DIR)/toad_face_16.png
 
 TOAD_SELECT_EXPORT_SENTINEL := $(TOAD_SELECT_DIR)/.export
 
-ASSET_DIRECTORIES += $(TOAD_SELECT_DIR)
-
 $(BUILD_DIR)/data/course_player_selection.o: $(TOAD_SELECT_PNG:%.png=%.mio0)
 
 $(TOAD_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
@@ -36,3 +34,9 @@ $(TOAD_SELECT_PNG): $(TOAD_SELECT_EXPORT_SENTINEL) ;
 $(TOAD_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/toad_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_toad_select
+distclean_toad_select:
+	rm -rf $(TOAD_SELECT_DIR)
+
+distclean_assets: distclean_toad_select

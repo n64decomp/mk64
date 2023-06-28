@@ -46,8 +46,6 @@ $(BANSHEE_BOARDWALK_DIR)/gTextureBansheBoardwalkAA78.png
 
 BANSHEE_BOARDWALK_EXPORT_SENTINEL := $(BANSHEE_BOARDWALK_DIR)/.export
 
-ASSET_DIRECTORIES += $(BANSHEE_BOARDWALK_DIR)
-
 $(BUILD_DIR)/data/other_textures.o: $(BANSHEE_BOARDWALK_DIR)/boo_frames.mio0
 
 $(BANSHEE_BOARDWALK_DIR)/boo_frames.mio0: $(BANSHEE_BOARDWALK_DIR)/boo_frames.bin
@@ -82,3 +80,9 @@ $(BANSHEE_BOARDWALK_PNG): $(BANSHEE_BOARDWALK_EXPORT_SENTINEL) ;
 $(BANSHEE_BOARDWALK_EXPORT_SENTINEL): $(ASSET_DIR)/courses/banshee_boardwalk.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_banshee_boardwalk
+distclean_banshee_boardwalk:
+	rm -rf $(BANSHEE_BOARDWALK_DIR)
+
+distclean_assets: distclean_banshee_boardwalk

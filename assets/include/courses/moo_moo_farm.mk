@@ -39,8 +39,6 @@ MOO_MOO_FARM_DIRT_PNG := $(MOO_MOO_FARM_DIR)/gTextureMooMooFarmDirt.png
 
 MOO_MOO_FARM_EXPORT_SENTINEL := $(MOO_MOO_FARM_DIR)/.export
 
-ASSET_DIRECTORIES += $(MOO_MOO_FARM_DIR)
-
 $(BUILD_DIR)/courses/mushroom_cup/moo_moo_farm/course_data.inc.o: $(MOLE_PALETTE:%.png=%.inc.c) $(MOLE_FRAMES:%.png=%.inc.c)
 $(BUILD_DIR)/courses/mushroom_cup/moo_moo_farm/course_data.inc.o: $(COW_PALETTE_IMPORT:%.png=%.inc.c)
 $(BUILD_DIR)/courses/mushroom_cup/moo_moo_farm/course_data.inc.o: $(MOO_MOO_FARM_DIRT_PNG:%.png=%.inc.c)
@@ -72,3 +70,9 @@ $(MOO_MOO_FARM_SIGN_PNG) $(MOO_MOO_FARM_DIRT_PNG): $(MOO_MOO_FARM_EXPORT_SENTINE
 $(MOO_MOO_FARM_EXPORT_SENTINEL): $(ASSET_DIR)/courses/moo_moo_farm.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_moo_moo_farm
+distclean_moo_moo_farm:
+	rm -rf $(MOO_MOO_FARM_DIR)
+
+distclean_assets: distclean_moo_moo_farm

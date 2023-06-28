@@ -21,8 +21,6 @@ $(BOWSER_SELECT_DIR)/bowser_face_16.png
 
 BOWSER_SELECT_EXPORT_SENTINEL := $(BOWSER_SELECT_DIR)/.export
 
-ASSET_DIRECTORIES += $(BOWSER_SELECT_DIR)
-
 $(BUILD_DIR)/data/course_player_selection.o: $(BOWSER_SELECT_PNG:%.png=%.mio0)
 
 $(BOWSER_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
@@ -36,3 +34,9 @@ $(BOWSER_SELECT_PNG): $(BOWSER_SELECT_EXPORT_SENTINEL) ;
 $(BOWSER_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/bowser_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_bowser_select
+distclean_bowser_select:
+	rm -rf $(BOWSER_SELECT_DIR)
+
+distclean_assets: distclean_bowser_select

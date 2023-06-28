@@ -14,8 +14,6 @@ $(BLUELIGHT_DIR)/gTextureLakituBlueLight8.png
 
 BLUELIGHT_EXPORT_SENTINEL := $(BLUELIGHT_DIR)/.export
 
-ASSET_DIRECTORIES += $(BLUELIGHT_DIR)
-
 $(BLUELIGHT_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(BLUELIGHT_PALETTE)
 
@@ -29,3 +27,9 @@ $(BLUELIGHT_FRAMES) $(BLUELIGHT_PALETTE): $(BLUELIGHT_EXPORT_SENTINEL) ;
 $(BLUELIGHT_EXPORT_SENTINEL): assets/lakitu/bluelight.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_lakitu_bluelight
+distclean_lakitu_bluelight:
+	rm -rf $(BLUELIGHT_DIR)
+
+distclean_assets: distclean_lakitu_bluelight

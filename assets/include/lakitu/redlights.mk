@@ -22,8 +22,6 @@ $(REDLIGHTS_DIR)/gTextureLakituRedLights16.png
 
 REDLIGHTS_EXPORT_SENTINEL := $(REDLIGHTS_DIR)/.export
 
-ASSET_DIRECTORIES += $(REDLIGHTS_DIR)
-
 $(REDLIGHTS_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(REDLIGHTS_PALETTE)
 
@@ -37,3 +35,9 @@ $(REDLIGHTS_FRAMES) $(REDLIGHTS_PALETTE): $(REDLIGHTS_EXPORT_SENTINEL) ;
 $(REDLIGHTS_EXPORT_SENTINEL): assets/lakitu/redlights.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_lakitu_redlights
+distclean_lakitu_redlights:
+	rm -rf $(REDLIGHTS_DIR)
+
+distclean_assets: distclean_lakitu_redlights

@@ -14,8 +14,6 @@ $(ONOMATOPOEIA_DIR)/gTextureBalloon2.png
 
 ONOMATOPOEIA_EXPORT_SENTINEL := $(ONOMATOPOEIA_DIR)/.export
 
-ASSET_DIRECTORIES += $(ONOMATOPOEIA_DIR)
-
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(ONOMATOPOEIA_PNG:%.png=%.mio0)
 
 $(ONOMATOPOEIA_PNG:%.png=%.mio0): %.mio0 : %.bin
@@ -32,3 +30,9 @@ $(ONOMATOPOEIA_PNG) $(ONOMATOPOEIA_PALETTE): $(ONOMATOPOEIA_EXPORT_SENTINEL) ;
 $(ONOMATOPOEIA_EXPORT_SENTINEL): $(ASSET_DIR)/onomatopoeia.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_onomatopoeia
+distclean_onomatopoeia:
+	rm -rf $(ONOMATOPOEIA_DIR)
+
+distclean_assets: distclean_onomatopoeia

@@ -14,8 +14,6 @@ $(NOLIGHTS_DIR)/gTextureLakituNoLights8.png
 
 NOLIGHTS_EXPORT_SENTINEL := $(NOLIGHTS_DIR)/.export
 
-ASSET_DIRECTORIES += $(NOLIGHTS_DIR)
-
 $(NOLIGHTS_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(NOLIGHTS_PALETTE)
 
@@ -29,3 +27,9 @@ $(NOLIGHTS_FRAMES) $(NOLIGHTS_PALETTE): $(NOLIGHTS_EXPORT_SENTINEL) ;
 $(NOLIGHTS_EXPORT_SENTINEL): assets/lakitu/nolights.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_lakitu_nolights
+distclean_lakitu_nolights:
+	rm -rf $(NOLIGHTS_DIR)
+
+distclean_assets: distclean_lakitu_nolights

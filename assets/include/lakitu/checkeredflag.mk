@@ -38,8 +38,6 @@ $(CHECKEREDFLAG_DIR)/gTextureLakituCheckeredFlag32.png
 
 CHECKEREDFLAG_EXPORT_SENTINEL := $(CHECKEREDFLAG_DIR)/.export
 
-ASSET_DIRECTORIES += $(CHECKEREDFLAG_DIR)
-
 $(CHECKEREDFLAG_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(CHECKEREDFLAG_PALETTE)
 
@@ -53,3 +51,9 @@ $(CHECKEREDFLAG_FRAMES) $(CHECKEREDFLAG_PALETTE): $(CHECKEREDFLAG_EXPORT_SENTINE
 $(CHECKEREDFLAG_EXPORT_SENTINEL): assets/lakitu/checkeredflag.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_lakitu_checkeredflag
+distclean_lakitu_checkeredflag:
+	rm -rf $(CHECKEREDFLAG_DIR)
+
+distclean_assets: distclean_lakitu_checkeredflag

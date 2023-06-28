@@ -21,8 +21,6 @@ $(LUIGI_SELECT_DIR)/luigi_face_16.png
 
 LUIGI_SELECT_EXPORT_SENTINEL := $(LUIGI_SELECT_DIR)/.export
 
-ASSET_DIRECTORIES += $(LUIGI_SELECT_DIR)
-
 $(BUILD_DIR)/data/course_player_selection.o: $(LUIGI_SELECT_PNG:%.png=%.mio0)
 
 $(LUIGI_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
@@ -36,3 +34,9 @@ $(LUIGI_SELECT_PNG): $(LUIGI_SELECT_EXPORT_SENTINEL) ;
 $(LUIGI_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/luigi_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_luigi_select
+distclean_luigi_select:
+	rm -rf $(LUIGI_SELECT_DIR)
+
+distclean_assets: distclean_luigi_select
