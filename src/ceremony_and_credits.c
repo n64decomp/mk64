@@ -17,6 +17,8 @@
 #include "camera.h"
 #include "audio/external.h"
 #include <sounds.h>
+#include "code_80280650.h"
+#include "code_80091750.h"
 
 extern f32 D_80150130[];
 
@@ -203,7 +205,7 @@ void reset_spline(void) {
     D_80287B20 = 0;
 }
 
-void func_80282434(struct CinematicCamera *arg0) {
+void func_80282434(UNUSED struct CinematicCamera *arg0) {
     reset_spline();
 }
 
@@ -244,7 +246,7 @@ UNUSED void func_802825C8(Vec3f arg0, Vec3f arg1, Vec3f arg2, Vec3s arg3) {
 void func_80282700(f32 arg0, Vec3f arg1, f32 *arg2, f32 arg3[], f32 arg4[], f32 arg5[], f32 arg6[])
 {
   f32 B[4];
-  f32 a = arg0;
+
   if (arg0 > 1.0f)
   {
     arg0 = 1.0f;
@@ -373,20 +375,20 @@ dummy_label_888430: ;
 s32 func_80282D90(struct CinematicCamera *camera, struct struct_80286A04 *arg1, struct struct_80286A04 *arg2, s32 arg3) {
     s32 res;
 
-    cutscene_event(func_80282434, camera, 0, 0);
-    func_80282C40(&D_80287818, arg1, arg3);
-    func_80282C40(&D_80287998, arg2, arg3);
+    cutscene_event((CameraEvent)func_80282434, camera, 0, 0);
+    func_80282C40(D_80287818, (struct struct_80282C40 *) arg1, arg3);
+    func_80282C40(D_80287998, (struct struct_80282C40 *) arg2, arg3);
 
     if (0) {}; // debug stub?
 
-    res = move_point_along_spline(camera->lookAt, &camera->unk18, &D_80287818, &sCutsceneSplineSegment, &sCutsceneSplineSegmentProgress) |
-          move_point_along_spline(camera->pos, &camera->unk18, &D_80287998, &sCutsceneSplineSegment, &sCutsceneSplineSegmentProgress);
+    res = move_point_along_spline(camera->lookAt, &camera->unk18, D_80287818, &sCutsceneSplineSegment, &sCutsceneSplineSegmentProgress) |
+          move_point_along_spline(camera->pos, &camera->unk18, D_80287998, &sCutsceneSplineSegment, &sCutsceneSplineSegmentProgress);
     return res;
 }
 
 void func_80282E58(struct CinematicCamera *camera, struct struct_80282C40 *arg1, s32 arg2) {
-    func_80282C40(&D_80287818, arg1, arg2);
-    move_point_along_spline(camera->lookAt, &camera->unk18, &D_80287818, &sCutsceneSplineSegment, &sCutsceneSplineSegmentProgress);
+    func_80282C40(D_80287818, arg1, arg2);
+    move_point_along_spline(camera->lookAt, &camera->unk18, D_80287818, &sCutsceneSplineSegment, &sCutsceneSplineSegmentProgress);
 }
 
 void func_80282EAC(s32 arg0, struct CinematicCamera *arg1, s16 arg2, s16 arg3, s16 arg4)
@@ -412,7 +414,7 @@ void func_80282F00(s16 *arg0, s16 arg1) {
 
 void func_80282F44(s32 arg0, struct CinematicCamera *arg1, Camera *camera) {
     f32 sp5C;
-    s32 pad[2];
+    UNUSED s32 pad[2];
     s16 sp50[2];
     Vec3f pos;
     Vec3f lookat;
@@ -471,7 +473,7 @@ void func_80283240(s16 arg0) {
 s32 cutscene_event(CameraEvent event, struct CinematicCamera *camera, s16 start, s16 end) {
     if (gCutsceneShotTimer >= start) {
         if ((end == -1) || (end >= gCutsceneShotTimer)) {
-            event(camera);
+            event((Camera *)camera);
         }
     }
     return 0;
@@ -632,66 +634,66 @@ s32 func_80283648(Camera *camera) {
     return D_802876D8;
 }
 
-void func_80283968(struct CinematicCamera *camera) {
+void func_80283968(UNUSED struct CinematicCamera *camera) {
     func_8028100C(-0xC6C, 0xD2, -0x1EF);
 }
 
-void func_80283994(struct CinematicCamera *camera) {
+void func_80283994(UNUSED struct CinematicCamera *camera) {
     func_80280FFC();
 }
 
-void func_802839B4(struct CinematicCamera *camera) {
+void func_802839B4(UNUSED struct CinematicCamera *camera) {
     D_802856B8 = 52.0f;
 }
 
-void func_802839CC(struct CinematicCamera *camera) {
+void func_802839CC(UNUSED struct CinematicCamera *camera) {
     D_802856B8 = 0.0f;
 }
 
-void func_802839E0(struct CinematicCamera *camera) {
+void func_802839E0(UNUSED struct CinematicCamera *camera) {
     func_80092C80();
 }
 
 /**
  * Played at beginning of credits.
  */
-void play_sound_welcome(struct CinematicCamera *camera) {
+void play_sound_welcome(UNUSED struct CinematicCamera *camera) {
     if (D_800DC5E4 == 0) {
         play_sound2(SOUND_INTRO_WELCOME);
     }
 }
 
-void func_80283A34(struct CinematicCamera *camera) {
+void func_80283A34(UNUSED struct CinematicCamera *camera) {
     func_800CA0CC();
 }
 
 /**
  * Played after receiving trophy.
  */
-void play_sound_congratulation(struct CinematicCamera *camera) {
+void play_sound_congratulation(UNUSED struct CinematicCamera *camera) {
     play_sound2(SOUND_CEREMONY_CONGRATULATION);
 }
 
 /**
  * Played in ceremony opening with ballons.
  */
-void play_sound_balloon_pop(struct CinematicCamera *camera) {
+void play_sound_balloon_pop(UNUSED struct CinematicCamera *camera) {
     play_sound2(SOUND_CEREMONY_BALLOON_POP);
 }
 
-void play_sound_fish(struct CinematicCamera *camera) {
+void play_sound_fish(UNUSED struct CinematicCamera *camera) {
     play_sound2(SOUND_CEREMONY_FISH);
 }
 
-void play_sound_fish_2(struct CinematicCamera *camera) {
+void play_sound_fish_2(UNUSED struct CinematicCamera *camera) {
     play_sound2(SOUND_CEREMONY_FISH_2);
 }
 
-void play_sound_shoot_trophy(struct CinematicCamera *camera) {
+void play_sound_shoot_trophy(UNUSED struct CinematicCamera *camera) {
     play_sound2(SOUND_CEREMONY_SHOOT_TROPHY);
 }
 
-void play_sound_podium(struct CinematicCamera *camera) {
+void play_sound_podium(UNUSED struct CinematicCamera *camera) {
     play_sound2(SOUND_CEREMONY_PODIUM);
 }
 
@@ -699,50 +701,50 @@ void play_sound_podium(struct CinematicCamera *camera) {
  * Played in background nearly the entire ceremony
  * Begins again or plays louder once the trophy appears.
  */
-void play_sound_trophy(struct CinematicCamera *camera) {
+void play_sound_trophy(UNUSED struct CinematicCamera *camera) {
     play_sound2(SOUND_CEREMONY_TROPHY);
 }
 
-void func_80283B6C(struct CinematicCamera *camera) {
+void func_80283B6C(UNUSED struct CinematicCamera *camera) {
     func_800CA0B8();
     func_800C9060(0, SOUND_ACTION_EXPLOSION);
     func_800CA0A0();
 }
 
-void func_80283BA4(struct CinematicCamera *camera) {
+void func_80283BA4(UNUSED struct CinematicCamera *camera) {
     func_800CA0B8();
     func_800C90F4(0, (gPlayerFour->characterId * 0x10) + 0x29008004);
     func_800CA0A0();
 }
 
-void func_80283BF0(struct CinematicCamera *camera) {
+void func_80283BF0(UNUSED struct CinematicCamera *camera) {
     func_800C8EF8(0x1A);
 }
 
 // 
-void func_80283C14(struct CinematicCamera *camera) {
+void func_80283C14(UNUSED struct CinematicCamera *camera) {
     func_800C8EF8(0x1B);
 }
 
-void func_80283C38(struct CinematicCamera *camera) {
+void func_80283C38(UNUSED struct CinematicCamera *camera) {
     func_800CB134();
 }
 
-void func_80283C58(struct CinematicCamera *camera) {
+void func_80283C58(UNUSED struct CinematicCamera *camera) {
     func_800CB14C();
 }
 
-void func_80283C78(struct CinematicCamera *arg0) {
+void func_80283C78(UNUSED struct CinematicCamera *arg0) {
     if (D_800DC5E4 == 0) {
         func_800C8EF8(0x1C);
     }
 }
 
-void func_80283CA8(struct CinematicCamera *camera) {
+void func_80283CA8(UNUSED struct CinematicCamera *camera) {
     func_800CA008(0, 3);
 }
 
-void func_80283CD0(struct CinematicCamera *camera) {
+void func_80283CD0(UNUSED struct CinematicCamera *camera) {
     if (D_800DC5E4 == 0) {
         func_800CA008(0, 2);
     }
@@ -752,10 +754,9 @@ void func_80283CD0(struct CinematicCamera *camera) {
  * End of credits farewell.
  * "Hey, you're very good. See you next time!"
  */
-void play_sound_farewell(struct CinematicCamera *arg0) {
+void play_sound_farewell(UNUSED struct CinematicCamera *arg0) {
     play_sound2(SOUND_CREDITS_FAREWELL);
 }
-
 
 // Camera rail spline animation
 struct struct_80282C40 D_802856DC[] = {
@@ -874,23 +875,23 @@ struct struct_80282C40 D_80285940[] = {
 
 void func_80283D2C(struct CinematicCamera *camera) {
     D_802856B8 = 120.0f;
-    cutscene_event(&func_80283CA8, camera, 0, 0);
-    cutscene_event(&func_80283A34, camera, 1, 1);
-    cutscene_event(&func_80283BF0, camera, 0, 0);
-    cutscene_event(&play_sound_balloon_pop, camera, 45, 45);
-    cutscene_event(&play_sound_balloon_pop, camera, 65, 65);
-    cutscene_event(&play_sound_balloon_pop, camera, 70, 70);
-    cutscene_event(&play_sound_balloon_pop, camera, 94, 94);
-    cutscene_event(&play_sound_balloon_pop, camera, 110, 110);
-    cutscene_event(&play_sound_balloon_pop, camera, 130, 130);
-    cutscene_event(&play_sound_balloon_pop, camera, 152, 152);
-    cutscene_event(&play_sound_balloon_pop, camera, 160, 160);
-    cutscene_event(&func_80283994, camera, D_80285D10[0].duration - 60, D_80285D10[0].duration - 60);
-    func_80282D90(camera, &D_802856DC, &D_80285718, 0);
+    cutscene_event((CameraEvent)&func_80283CA8, camera, 0, 0);
+    cutscene_event((CameraEvent)&func_80283A34, camera, 1, 1);
+    cutscene_event((CameraEvent)&func_80283BF0, camera, 0, 0);
+    cutscene_event((CameraEvent)&play_sound_balloon_pop, camera, 45, 45);
+    cutscene_event((CameraEvent)&play_sound_balloon_pop, camera, 65, 65);
+    cutscene_event((CameraEvent)&play_sound_balloon_pop, camera, 70, 70);
+    cutscene_event((CameraEvent)&play_sound_balloon_pop, camera, 94, 94);
+    cutscene_event((CameraEvent)&play_sound_balloon_pop, camera, 110, 110);
+    cutscene_event((CameraEvent)&play_sound_balloon_pop, camera, 130, 130);
+    cutscene_event((CameraEvent)&play_sound_balloon_pop, camera, 152, 152);
+    cutscene_event((CameraEvent)&play_sound_balloon_pop, camera, 160, 160);
+    cutscene_event((CameraEvent)&func_80283994, camera, D_80285D10[0].duration - 60, D_80285D10[0].duration - 60);
+    func_80282D90(camera, (struct struct_80286A04 *) D_802856DC, (struct struct_80286A04 *) D_80285718, 0);
 }
 
 void func_80283EA0(struct CinematicCamera *camera) {
-    func_80282D90(camera, &D_80285754, &D_80285784, 0);
+    func_80282D90(camera, (struct struct_80286A04 *) D_80285754, (struct struct_80286A04 *) D_80285784, 0);
 }
 
 void func_80283ED0(struct CinematicCamera *camera) {
@@ -904,9 +905,9 @@ void func_80283EF8(struct CinematicCamera *camera) {
 }
 
 void func_80283F6C(struct CinematicCamera *camera) {
-    cutscene_event(&func_80283ED0, camera, 0, 0);
-    cutscene_event(&func_80283EF8, camera, 0, -1);
-    func_80282E58(camera, &D_802857B4, 0);
+    cutscene_event((CameraEvent)&func_80283ED0, camera, 0, 0);
+    cutscene_event((CameraEvent)&func_80283EF8, camera, 0, -1);
+    func_80282E58(camera, (struct struct_80282C40 *)D_802857B4, 0);
 }
 
 void func_80283FCC(struct CinematicCamera *camera) {
@@ -920,13 +921,13 @@ void func_80283FF4(struct CinematicCamera *camera) {
 }
 
 void func_80284068(struct CinematicCamera *camera) {
-    cutscene_event(&func_80283FCC, camera, 0, 0);
-    cutscene_event(&func_80283FF4, camera, 0, -1);
-    func_80282E58(camera, &D_802857CC, 0);
+    cutscene_event((CameraEvent) &func_80283FCC, camera, 0, 0);
+    cutscene_event((CameraEvent) &func_80283FF4, camera, 0, -1);
+    func_80282E58(camera, (struct struct_80282C40 *) D_802857CC, 0);
 }
 
 void func_802840C8(struct CinematicCamera *camera) {
-    cutscene_event(&func_80283C14, camera, 5, 5);
+    cutscene_event((CameraEvent) &func_80283C14, camera, 5, 5);
 
     switch(D_802876D8) {
         case 2:
@@ -942,7 +943,7 @@ void func_802840C8(struct CinematicCamera *camera) {
 }
 
 void func_80284154(struct CinematicCamera *camera) {
-    func_80282D90(camera, &D_80285910, &D_80285928, 0);
+    func_80282D90(camera, (struct struct_80286A04 *) D_80285910, (struct struct_80286A04 *) D_80285928, 0);
 }
 
 extern struct_80165C18_entry D_80165C20[];
@@ -956,23 +957,23 @@ void func_80284184(struct CinematicCamera *camera)
 }
 
 void func_802841E8(struct CinematicCamera *camera) {
-  func_80282E58(camera, &D_80285940, 0);
+  func_80282E58(camera, (struct struct_80282C40 *) D_80285940, 0);
   vec3f_set_dupe(camera->pos, -3202.0f, 90.0f, -478.0f);
 }
 
 void func_8028422C(struct CinematicCamera *camera) {
-    cutscene_event(&play_sound_shoot_trophy, camera, 6, 6);
-    cutscene_event(&play_sound_trophy, camera, 30, 30);
-    cutscene_event(&func_802841E8, camera, 0, 0);
-    cutscene_event(&func_80284184, camera, 6, -1);
+    cutscene_event((CameraEvent)&play_sound_shoot_trophy, camera, 6, 6);
+    cutscene_event((CameraEvent)&play_sound_trophy, camera, 30, 30);
+    cutscene_event((CameraEvent)&func_802841E8, camera, 0, 0);
+    cutscene_event((CameraEvent)&func_80284184, camera, 6, -1);
 }
 
 void func_802842A8(struct CinematicCamera *camera) {
-    func_80282D90(camera, &D_802858B0, &D_802858C8, 0);
+    func_80282D90(camera, (struct struct_80286A04 *) D_802858B0, (struct struct_80286A04 *) D_802858C8, 0);
 }
 
 void func_802842D8(struct CinematicCamera *camera) {
-    func_80282D90(camera, &D_802857F0, &D_80285850, 0);
+    func_80282D90(camera, (struct struct_80286A04 *) D_802857F0, (struct struct_80286A04 *) D_80285850, 0);
 }
 
 void func_80284308(struct CinematicCamera *camera) {
@@ -987,8 +988,8 @@ void func_80284308(struct CinematicCamera *camera) {
     f32 y;
     f32 z;
 
-    cutscene_event(play_sound_congratulation, camera, 140, 140);
-    func_80282D90(camera, D_802858E0, D_802858F8, 0);
+    cutscene_event((CameraEvent)play_sound_congratulation, camera, 140, 140);
+    func_80282D90(camera, (struct struct_80286A04 *) D_802858E0, (struct struct_80286A04 *) D_802858F8, 0);
 
     ply = *(sp30[0] + D_802874F5);
 
@@ -1126,33 +1127,33 @@ struct Cutscene D_80285D10[] = {
 };
 
 void func_80284418(struct CinematicCamera *camera) {
-    cutscene_event(&play_sound_podium, camera, 0x52, 0x52);
-    cutscene_event(&play_sound_podium, camera, 0x48, 0x48);
-    cutscene_event(&play_sound_podium, camera, 0x3D, 0x3D);
-    func_80282D90(camera, &D_80285A10, &D_80285A4C, 0);
+    cutscene_event((CameraEvent)&play_sound_podium, camera, 0x52, 0x52);
+    cutscene_event((CameraEvent)&play_sound_podium, camera, 0x48, 0x48);
+    cutscene_event((CameraEvent)&play_sound_podium, camera, 0x3D, 0x3D);
+    func_80282D90(camera, (struct struct_80286A04 *) D_80285A10, (struct struct_80286A04 *) D_80285A4C, 0);
 }
 
 void func_80284494(struct CinematicCamera *camera) {
-    cutscene_event(&play_sound_fish_2, camera, 0x1E, 0x1E);
-    cutscene_event(&func_80283968, camera, 0, 0);
-    func_80282D90(camera, &D_80285A88, &D_80285AB8, 0);
+    cutscene_event((CameraEvent)&play_sound_fish_2, camera, 0x1E, 0x1E);
+    cutscene_event((CameraEvent)&func_80283968, camera, 0, 0);
+    func_80282D90(camera, (struct struct_80286A04 *) D_80285A88, (struct struct_80286A04 *) D_80285AB8, 0);
 }
 
 void func_802844FC(struct CinematicCamera *camera) {
-    cutscene_event(&play_sound_fish, camera, 0x3B, 0x3B);
-    func_80282D90(camera, &D_80285AE8, &D_80285B00, 0);
+    cutscene_event((CameraEvent)&play_sound_fish, camera, 0x3B, 0x3B);
+    func_80282D90(camera, (struct struct_80286A04 *) D_80285AE8, (struct struct_80286A04 *) D_80285B00, 0);
 }
 
 void func_8028454C(struct CinematicCamera *camera) {
-    cutscene_event(&func_80283CA8, camera, 0, 0);
-    cutscene_event(&func_80283A34, camera, 1, 1);
-    cutscene_event(&func_80283C38, camera, 0, 0);
-    cutscene_event(&func_80283994, camera, 0x3C, 0x3C);
-    func_80282D90(camera, &D_80285B18, &D_80285B54, 0);
+    cutscene_event((CameraEvent)&func_80283CA8, camera, 0, 0);
+    cutscene_event((CameraEvent)&func_80283A34, camera, 1, 1);
+    cutscene_event((CameraEvent)&func_80283C38, camera, 0, 0);
+    cutscene_event((CameraEvent)&func_80283994, camera, 0x3C, 0x3C);
+    func_80282D90(camera, (struct struct_80286A04 *) D_80285B18, (struct struct_80286A04 *) D_80285B54, 0);
 }
 
 void func_802845EC(struct CinematicCamera *camera) {
-    func_80282D90(camera, &D_80285B90, &D_80285BA8, 0);
+    func_80282D90(camera, (struct struct_80286A04 *) D_80285B90, (struct struct_80286A04 *) D_80285BA8, 0);
 }
 
 void func_8028461C(struct CinematicCamera *camera) {
@@ -1161,9 +1162,9 @@ void func_8028461C(struct CinematicCamera *camera) {
 }
 
 void func_80284648(struct CinematicCamera *camera) {
-    cutscene_event(&func_802845EC, camera, 0, 0);
-    cutscene_event(&func_8028461C, camera, 0x110, 0x110);
-    cutscene_event(&func_80283BA4, camera, 0x115, 0x115);
+    cutscene_event((CameraEvent)&func_802845EC, camera, 0, 0);
+    cutscene_event((CameraEvent)&func_8028461C, camera, 0x110, 0x110);
+    cutscene_event((CameraEvent)&func_80283BA4, camera, 0x115, 0x115);
 }
 
 UNUSED void func_802846AC(void) {
@@ -1171,13 +1172,13 @@ UNUSED void func_802846AC(void) {
 }
 
 void func_802846B4(struct CinematicCamera *camera) {
-    func_80282D90(camera, &D_80285C38, &D_80285C74, 0);
+    func_80282D90(camera, (struct struct_80286A04 *) D_80285C38, (struct struct_80286A04 *) D_80285C74, 0);
 }
 
 // todo: What does this even do?
 void func_802846E4(struct CinematicCamera *camera) {
 
-    func_80282D90(camera, &D_80285CB0, &D_80285CE0, 0);
+    func_80282D90(camera, (struct struct_80286A04 *) D_80285CB0, (struct struct_80286A04 *) D_80285CE0, 0);
     camera->lookAt[0] += (gPlayerFour->pos[0] - -2796.0f); // <-- rodata
     camera->lookAt[1] += (gPlayerFour->pos[1] - -29.0f);
     camera->lookAt[2] += (gPlayerFour->pos[2] - -97.0f);
@@ -1512,26 +1513,26 @@ void func_802847CC(struct CinematicCamera *camera) {
     sp2E = D_80286A04[D_800DC5E4].unkC - (10 - (-(((u16)(u32) D_802856B4))));
     sp2C = D_80286A04[D_800DC5E4].unkC;
 
-    cutscene_event(func_80283CD0, camera, 0, 0);
-    cutscene_event(play_sound_welcome, camera, 8, 8);
-    cutscene_event(func_80283C78, camera, 149, 149);
-    cutscene_event(func_80282434, camera, 0, 0);
+    cutscene_event((CameraEvent)func_80283CD0, camera, 0, 0);
+    cutscene_event((CameraEvent)play_sound_welcome, camera, 8, 8);
+    cutscene_event((CameraEvent)func_80283C78, camera, 149, 149);
+    cutscene_event((CameraEvent)func_80282434, camera, 0, 0);
     switch (D_80286A04[D_800DC5E4].unk0) {
         case 1:
-            cutscene_event(func_802839CC, camera, 0, -1);
-            cutscene_event(func_802839E0, camera, sp2E - 0x14, sp2E - 0x14);
+            cutscene_event((CameraEvent)func_802839CC, camera, 0, -1);
+            cutscene_event((CameraEvent)func_802839E0, camera, sp2E - 0x14, sp2E - 0x14);
             break;
 
         case 2:
-            cutscene_event(func_802839B4, camera, 0, 0);
-            cutscene_event(play_sound_farewell, camera, 247, 247);
-            func_80282D90(camera, D_80286A04[D_800DC5E4].unk4, D_80286A04[D_800DC5E4].unk8, 0);
+            cutscene_event((CameraEvent)func_802839B4, camera, 0, 0);
+            cutscene_event((CameraEvent)play_sound_farewell, camera, 247, 247);
+            func_80282D90(camera, (struct struct_80286A04 *) D_80286A04[D_800DC5E4].unk4, (struct struct_80286A04 *) D_80286A04[D_800DC5E4].unk8, 0);
             break;
         default:
-            cutscene_event(func_802839B4, camera, 0, 0);
-            cutscene_event(func_802839CC, camera, sp2E, sp2E);
-            cutscene_event(func_802839E0, camera, sp2E - 0x14, sp2E - 0x14);
-            func_80282D90(camera, D_80286A04[D_800DC5E4].unk4, D_80286A04[D_800DC5E4].unk8, 0);
+            cutscene_event((CameraEvent)func_802839B4, camera, 0, 0);
+            cutscene_event((CameraEvent)func_802839CC, camera, sp2E, sp2E);
+            cutscene_event((CameraEvent)func_802839E0, camera, sp2E - 0x14, sp2E - 0x14);
+            func_80282D90(camera, (struct struct_80286A04 *) D_80286A04[D_800DC5E4].unk4, (struct struct_80286A04 *) D_80286A04[D_800DC5E4].unk8, 0);
             break;
     }
 
@@ -1560,7 +1561,7 @@ struct struct_80284AE8 {
  * Play the current cutscene until either gCutsceneShotTimer reaches the max time, or c->cutscene is set to 0
  */
 void play_cutscene(struct CinematicCamera *camera) {
-    s32 pad[3];
+    UNUSED s32 pad[3];
     s16 cutsceneDuration;
 
 #define CUTSCENE(id, cutscene) \

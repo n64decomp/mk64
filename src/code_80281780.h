@@ -65,8 +65,8 @@ extern void *D_80284ED0;
 extern s8 gGPOverallRanks[8];
 extern s8 D_8018EDF3;
 
-extern s32 _data_821D10SegmentRomStart;
-extern s32 _data_825800SegmentRomStart;
+extern u8 *_data_821D10SegmentRomStart;
+extern u8 *_data_825800SegmentRomStart;
 extern s32 _course_banshee_boardwalk_dl_mio0SegmentRomStart;
 extern s32 _course_yoshi_valley_dl_mio0SegmentRomStart;
 

@@ -16,6 +16,9 @@
 #include "audio/external.h"
 #include "sounds.h"
 #include <actors.h>
+#include "race_logic.h"
+#include "code_802AAA70.h"
+#include "code_8008C1D0.h"
 
 extern s32 D_8018D1F0;
 
@@ -128,7 +131,6 @@ void func_80072100(s32 *arg0) {
 }
 
 void func_80072120(s32 *arg0, s32 arg1) {
-    s32 var_s0;
     s32 i;
 
     for (i = 0; i < arg1; i++) {
@@ -677,8 +679,8 @@ void func_80073404(s32 arg0, u8 arg1, u8 arg2, Vtx *arg3) {
   D_80165C18[arg0].unk_054 = 0;
 }
 
-void func_80073444(s32 arg0, s32* arg1, s32* arg2, u8 arg3, u16 arg4) {
-    D_80165C18[arg0].unk_068 = arg1;
+void func_80073444(s32 arg0, u8 *texture, u8* arg2, u8 arg3, u16 arg4) {
+    D_80165C18[arg0].unk_068 = (u32 *)texture;
     D_80165C18[arg0].unk_06C = arg2;
     D_80165C18[arg0].unk_0D9 = arg3;
     D_80165C18[arg0].unk_0DA = arg4;
@@ -687,7 +689,7 @@ void func_80073444(s32 arg0, s32* arg1, s32* arg2, u8 arg3, u16 arg4) {
     D_80165C18[arg0].unk_054 = 0;
 }
 
-UNUSED void func_8007348C(s32 arg0, s32* arg1, u8 arg2, u8 arg3, s32 arg4) {
+UNUSED void func_8007348C(s32 arg0, u32* arg1, u8 arg2, u8 arg3, Vtx *arg4) {
     D_80165C18[arg0].unk_060 = arg1;
     D_80165C18[arg0].unk_068 = arg1;
     D_80165C18[arg0].unk_0D9 = arg2;
@@ -731,7 +733,7 @@ UNUSED void func_80073570(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80073570.s")
 #endif 
 
-void func_800735BC(s32 arg0, s32 arg1, f32 arg2) {
+void func_800735BC(s32 arg0, Gfx *arg1, f32 arg2) {
     D_80165C18[arg0].unk_054 = 0;
     D_80165C18[arg0].unk_070 = arg1;
     D_80165C18[arg0].unk_000 = arg2;
@@ -1160,26 +1162,27 @@ void func_80074510(uintptr_t devAddr, void * vaddr, size_t nbytes) {
     D_8018D224 = 1;
 }
 
-void func_80074574(s32 arg0, void *arg1, u16 arg2, u16 arg3) {
-    func_80074510(&_other_texturesSegmentRomStart[SEGMENT_OFFSET(arg0)], arg1, arg2 * arg3);
+void func_80074574(u8 *arg0, void *arg1, u16 arg2, u16 arg3) {
+    func_80074510((uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(arg0)], arg1, arg2 * arg3);
 }
 
-void func_800745C8(s32 arg0, s32 arg1) {
+// todo: arg1 should likely be a u8 *
+void func_800745C8(s32 objectIndex, s32 arg1) {
     s32 phi_a1;
 
-    if ((D_80165C18[arg0].unk_054 & 1) != 0) {
+    if ((D_80165C18[objectIndex].unk_054 & 1) != 0) {
         phi_a1 = 0;
-        if (D_80165C18[arg0].unk_068 != D_80165C18[arg0].unk_060) {
-            D_80165C18[arg0].unk_060 = D_80165C18[arg0].unk_068;
+        if (D_80165C18[objectIndex].unk_068 != D_80165C18[objectIndex].unk_060) {
+            D_80165C18[objectIndex].unk_060 = D_80165C18[objectIndex].unk_068;
         }
 
-        D_80165C18[arg0].unk_054 ^= 2;
-        if ((D_80165C18[arg0].unk_054 & 2) != 0) {
+        D_80165C18[objectIndex].unk_054 ^= 2;
+        if ((D_80165C18[objectIndex].unk_054 & 2) != 0) {
             phi_a1 = 1;
         }
         
-        D_80165C18[arg0].unk_064 = (D_80165C18[arg0].unk_0D9 * D_80165C18[arg0].unk_0DA * phi_a1) + arg1;
-        func_800744A0(arg0);
+        D_80165C18[objectIndex].unk_064 = (u8 *) (D_80165C18[objectIndex].unk_0D9 * D_80165C18[objectIndex].unk_0DA * phi_a1) + arg1;
+        func_800744A0(objectIndex);
     }
 }
 
@@ -1193,7 +1196,7 @@ void func_8007466C(s32 arg0, s32 arg1) {
         if ((D_80165C18[arg0].unk_054 & 2) != 0) {
             phi_a1 = 1;
         }
-        D_80165C18[arg0].unk_064 = (D_80165C18[arg0].unk_0D9 * D_80165C18[arg0].unk_0DA * phi_a1) + arg1;
+        D_80165C18[arg0].unk_064 = (u8 *) (D_80165C18[arg0].unk_0D9 * D_80165C18[arg0].unk_0DA * phi_a1) + arg1;
         func_800744A0(arg0);
     }
 }
@@ -1208,12 +1211,12 @@ void func_80074704(s32 arg0, s32 arg1) {
         if ((D_80165C18[arg0].unk_054 & 2) != 0) {
             phi_a1 = 1;
         }
-        D_80165C18[arg0].unk_064 = (D_80165C18[arg0].unk_0D9 * D_80165C18[arg0].unk_0DA * phi_a1) + arg1;
+        D_80165C18[arg0].unk_064 = (u8 *) (D_80165C18[arg0].unk_0D9 * D_80165C18[arg0].unk_0DA * phi_a1) + arg1;
         func_800744A0(arg0);
     }
 }
 
-s32 func_80074790(s32 arg0, s32 arg1) {
+u8 *func_80074790(s32 arg0, u8 *arg1) {
     s32 phi_a2;
 
     D_80165C18[arg0].unk_054 ^= 4;
@@ -1224,8 +1227,8 @@ s32 func_80074790(s32 arg0, s32 arg1) {
     return (D_80165C18[arg0].unk_0D9 * D_80165C18[arg0].unk_0DA * phi_a2) + arg1;
 }
 
-void func_800747F0(s32 objectIndex, s32 arg1) {
-    s32 sp24;
+void func_800747F0(s32 objectIndex, u8 *arg1) {
+    u8 *sp24;
     if (D_80165C18[objectIndex].unk_0D2 != D_80165C18[objectIndex].unk_0D3) {
         sp24 = D_80165C18[objectIndex].unk_06C + (D_80165C18[objectIndex].unk_0D9 * D_80165C18[objectIndex].unk_0DA * D_80165C18[objectIndex].unk_0D2);
         func_80074574(sp24, (void *) func_80074790(objectIndex, arg1), D_80165C18[objectIndex].unk_0D9, D_80165C18[objectIndex].unk_0DA);
@@ -1234,19 +1237,19 @@ void func_800747F0(s32 objectIndex, s32 arg1) {
     }
 }
 
-void func_80074894(s32 arg0, s32 arg1) {
-    func_800747F0(arg0, arg1);
-    func_800745C8(arg0, arg1);
+void func_80074894(s32 objectIndex, u8 *arg1) {
+    func_800747F0(objectIndex, arg1);
+    func_800745C8(objectIndex, (s32)arg1);
 }
 
-void func_800748C4(s32 arg0, s32 arg1) {
-    func_800747F0(arg0, arg1);
-    func_8007466C(arg0, arg1);
+void func_800748C4(s32 objectIndex, u8 *arg1) {
+    func_800747F0(objectIndex, arg1);
+    func_8007466C(objectIndex, (s32)arg1);
 }
 
-void func_800748F4(s32 arg0, s32 arg1) {
-    func_800747F0(arg0, arg1);
-    func_80074704(arg0, arg1);
+void func_800748F4(s32 objectIndex, u8 *arg1) {
+    func_800747F0(objectIndex, arg1);
+    func_80074704(objectIndex, (s32)arg1);
 }
 
 struct _struct_D_800E6F30_0x3 {
@@ -1343,7 +1346,7 @@ void func_80074924(s32 objectIndex) {
     }
     temp_a0 = sp2C % 8;
     temp_v0_2 = &D_800E6F30[temp_a0];
-    temp_v1 = &D_800E6F48[temp_a0];
+    temp_v1 = (struct _struct_D_800E6F48_0x3 *)&D_800E6F48[temp_a0];
     temp_s0->unk_084[0] = (s16) temp_v0_2->unk0;
     temp_s0->unk_084[1] = (s16) temp_v0_2->unk1;
     temp_s0->unk_084[2] = (s16) temp_v0_2->unk2;
@@ -1518,8 +1521,7 @@ void func_8007542C(s32 arg0) {
 
 void func_80075574(s32 objectIndex, Vec3f arg1, f32 arg2) {
     struct_80165C18_entry *temp_v1;
-    s32 pad0;
-    s32 pad1;
+    UNUSED s32 pad[2];
 
     func_800723A4(objectIndex, 0);
     temp_v1 = &D_80165C18[objectIndex];
@@ -1853,7 +1855,7 @@ void func_8007601C(s32 arg0) {
         if ((func_8007223C(arg0, 0x40000) != 0) && (func_80072354(arg0, 1) != 0)) {
             func_800722A4(arg0, 1);
             func_80075F98(D_80165C18[arg0].unk_004, (u16) D_80165C18[arg0].unk_0BE[1], 1.0f);
-            func_800C9D80(D_80165C18[arg0].unk_004, &D_80165C18[arg0].unk_038, 0x5102800A);
+            func_800C9D80(D_80165C18[arg0].unk_004, D_80165C18[arg0].unk_038, 0x5102800A);
             if (D_80165C18[arg0].unk_0A4 > 0) {
                 D_80165C18[arg0].unk_0A4--;
                 D_80165C18[arg0].unk_04C = 0x5A;
@@ -2062,7 +2064,7 @@ extern s16 D_800E579C[1]; //[15][3];                               /* unable to 
 extern s16 D_800E57F8[1]; //[15][3];                               /* unable to generate initializer */
 
 void func_80076884(s32 arg0) {
-    s32 pad[2];
+    UNUSED s32 pad[2];
     s32 i;
     s16 *var_s2;
     u16 temp_v0;
@@ -2199,7 +2201,7 @@ void func_80076C9C(s32 objectIndex, Vec3f arg1, s16 arg2) {
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
 }
 
-void func_80076D70(Vec3f arg0, f32 arg1, s16 arg2) {
+void func_80076D70(Vec3f arg0, UNUSED f32 arg1, s16 arg2) {
     s32 temp_v0;
 
     temp_v0 = func_80072044(D_8018C870, &D_80183E6C, 0x00000040);
@@ -2268,7 +2270,7 @@ void func_80076FEC(s32 objectIndex, s32 flameIndex) {
     D_80165C18[objectIndex].unk_0D5 = 0xB;
     D_80165C18[objectIndex].unk_064 = D_0D02BC58;
     D_80165C18[objectIndex].unk_06C = D_0D02BC58;
-    D_80165C18[0, objectIndex].unk_000 = 0.8f;
+    D_80165C18[objectIndex].unk_000 = 0.8f;
 
     // Mixing arr + offset and array access... Why?
     // todo: ifdef this to proper array access.
@@ -2320,14 +2322,14 @@ void func_80077138(s32 objectIndex, Vec3f arg1, s32 arg2) {
     }
     temp_v0_3 = random_int(0x000CU);
     if (temp_v0_3 < 9) {
-        func_8005C674(temp_v0_3, &sp30[2], &sp30[1], &sp30);
+        func_8005C674(temp_v0_3, &sp30[2], &sp30[1], sp30);
         D_80165C18[objectIndex].unk_048 = 0;
         D_80165C18[objectIndex].unk_084[0] = sp30[2];
         D_80165C18[objectIndex].unk_084[1] = sp30[1];
         D_80165C18[objectIndex].unk_084[2] = sp30[0];
     } else {
         temp_v0_3 = random_int(3U);
-        func_8005C6B4(temp_v0_3, &sp30[2], &sp30[1], &sp30);
+        func_8005C6B4(temp_v0_3, &sp30[2], &sp30[1], sp30);
         D_80165C18[objectIndex].unk_084[0] = sp30[2];
         D_80165C18[objectIndex].unk_084[1] = sp30[1];
         D_80165C18[objectIndex].unk_084[2] = sp30[0];
@@ -2341,7 +2343,7 @@ void func_80077138(s32 objectIndex, Vec3f arg1, s32 arg2) {
     }
 }
 
-void func_800773D8(s32 arg0, s32 arg1) {
+void func_800773D8(f32 *arg0, s32 arg1) {
     s32 temp_v0 = func_80072044(D_8018C630, &D_80183E5C, 0x80);
     if (temp_v0 != -1) {
         func_80077138(temp_v0, arg0, arg1);
@@ -2354,7 +2356,7 @@ void func_80077428(s32 arg0) {
 }
 
 void func_80077450(s32 objectIndex) {
-    s16 stackPadding0;
+    UNUSED s16 stackPadding0;
     s16 sp3C;
     s16 sp3A;
     s16 sp38;
@@ -2420,16 +2422,16 @@ void func_80077640(void) {
 }
 
 void func_80077700(s32 objectIndex, Vec3f arg1, s32 arg2) {
-    s32 stackPadding1;
-    u16 stackPadding0;
+    UNUSED s32 stackPadding1;
+    UNUSED u16 stackPadding0;
     u16 temp_s0;
     u16 sp3E;
     u16 sp3C;
 
     func_800723A4(objectIndex, 0);
     D_80165C18[objectIndex].unk_0D5 = 7;
-    D_80165C18[objectIndex].unk_060 = (s32 *) D_0D028DD8;
-    D_80165C18[objectIndex].unk_068 = (s32 *) D_0D028DD8;
+    D_80165C18[objectIndex].unk_060 = (u32 *) D_0D028DD8;
+    D_80165C18[objectIndex].unk_068 = (u32 *) D_0D028DD8;
     D_80165C18[objectIndex].unk_000 = 0.1f;
     D_80165C18[objectIndex].unk_044 = arg1[1];
     switch (gCurrentCourseId) {
@@ -2471,7 +2473,7 @@ s32 func_80077A54(Vec3f arg0, s32 arg1) {
     return temp_v0;
 }
 
-void func_80077AB0(Vec3f arg0, s32 arg1) {
+void func_80077AB0(Vec3f arg0, UNUSED s32 arg1) {
     s32 var_s0;
 
     for (var_s0 = 0; var_s0 < D_8018C970_SPAWN_SIZE; var_s0++) {
@@ -2665,15 +2667,15 @@ void func_800780CC(s32 objectIndex, Camera *camera) {
 
 extern s32 D_8018D1F0;
 
-void func_80078170(s32 arg0, s32 arg1) {
-    s32 *phi_s0;
+void func_80078170(s32 arg0, Camera *arg1) {
+    s32 *objectIndex;
     s32 i;
 
-    func_80077D5C();
+    func_80077D5C(arg0);
     for (i = 0; i < D_8018D1F0; i++) {
-        phi_s0 = &D_8018CC80[arg0 + i];
-        if (D_80165C18[*phi_s0].unk_0A6 != 0) {
-            func_800780CC(*phi_s0, arg1);
+        objectIndex = &D_8018CC80[arg0 + i];
+        if (D_80165C18[*objectIndex].unk_0A6 != 0) {
+            func_800780CC(*objectIndex, arg1);
         }
     }
 }
@@ -2682,9 +2684,9 @@ void func_80078220(s32 objectIndex) {
     struct_80165C18_entry *temp_v0;
 
     temp_v0 = &D_80165C18[objectIndex];
-    temp_v0->unk_064 = &D_0D0293D8;
-    temp_v0->unk_06C = (s32) &D_0D0293D8;
-    temp_v0->unk_074 = (s32) &D_0D005770;
+    temp_v0->unk_064 = D_0D0293D8;
+    temp_v0->unk_06C = D_0D0293D8;
+    temp_v0->unk_074 = D_0D005770;
     temp_v0->unk_000 = 0.15f;
     func_80086EF0(objectIndex);
     func_80072488(objectIndex);
@@ -2694,7 +2696,7 @@ void func_80078288(s32 objectIndex) {
     s16 sp3E;
     s16 sp3C;
     s16 sp3A;
-    u16 temp_t3;
+    UNUSED u16 pad;
     u16 temp_t6;
 
     switch (D_80165C18[objectIndex].unk_0AE) {                              /* irregular */
@@ -2847,15 +2849,24 @@ void func_800789AC(s32 arg0, Camera *arg1, Vec3s *arg2) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_800789AC.s")
 #endif
 
-void func_80078A44(s32 arg0, Camera *camera, s32 rot) {
+typedef struct {
+    Vec3su unk0;
+    u16 pad;
+    Vec3su unkA;
+    u16 pad2;
+} test;
+
+typedef u16 testA[44][4];
+
+void func_80078A44(s32 arg0, Camera *camera, u16 rot[][4]) {
   s32 temp_s0;
   s32 i;
 
     for (i = 0; i < D_8018D1F0; i++, arg0++) {
         temp_s0 = D_8018CC80[arg0];
 
-        //                               i * 8 
-        func_800788F8(temp_s0, *(u16 *)((i << 3) + rot), camera);
+        //                              rot[i][0] 
+        func_800788F8(temp_s0, *(u16 *)(rot + i), camera);
         switch (i % 5U) {
             case 0:
                 func_80073CB0(temp_s0, &D_80165C18[temp_s0].unk_0A0, 0x00000028, 0x000000B4, 0x000000FF, 0, -1);
@@ -2880,14 +2891,14 @@ UNUSED void func_80078C68() {
 
 }
 
-extern s32 D_800E6A38;                                /* unable to generate initializer; const */
-extern s32 D_800E6AA8;                                /* unable to generate initializer; const */
-extern s32 D_800E6B00;                                /* unable to generate initializer; const */
-extern s32 D_800E6B38;                                /* unable to generate initializer; const */
-extern s32 D_800E6BA8;                                /* unable to generate initializer; const */
-extern s32 D_800E6C10;                                /* unable to generate initializer; const */
-extern s32 D_800E6C80;                                /* unable to generate initializer; const */
-extern s32 D_800E6DE0;                                /* unable to generate initializer; const */
+extern u16 D_800E6A38[];                                /* unable to generate initializer; const */
+extern u16 D_800E6AA8[];                                /* unable to generate initializer; const */
+extern u16 D_800E6B00[];                                /* unable to generate initializer; const */
+extern u16 D_800E6B38[];                                /* unable to generate initializer; const */
+extern u16 D_800E6BA8[];                                /* unable to generate initializer; const */
+extern u16 D_800E6C10[];                                /* unable to generate initializer; const */
+extern u16 D_800E6C80[][4];                                /* unable to generate initializer; const */
+extern u16 D_800E6DE0[][4];                                /* unable to generate initializer; const */
 
 extern s16 D_8018D200;
 extern s32 D_8018D1F0;
@@ -2898,7 +2909,7 @@ extern s16 D_8018D218;
 
 void func_80078C70(s32 arg0) {
     s32 sp1C;
-    s32 camera;
+    Camera *camera;
 
     if (D_801657C8 == 0) {
         switch (arg0) {                             /* switch 1 */
@@ -2934,42 +2945,42 @@ void func_80078C70(s32 arg0) {
         D_8018D1E8 = 1.7578125 / D_8018D200;
         D_8018D218 = 0xA0;
         switch (gCurrentCourseId) {                          /* switch 2 */
-        case 0:                                     /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6A38);
-            break;
-        case 4:                                     /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6AA8);
-            break;
-        case 5:                                     /* switch 2 */
-            func_80078170(sp1C, camera);
-            break;
-        case 6:                                     /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6B00);
-            break;
-        case 7:                                     /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6B38);
-            break;
-        case 8:                                     /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6A38);
-            break;
-        case 9:                                     /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6AA8);
-            break;
-        case 10:                                    /* switch 2 */
-            func_80078A44(sp1C, camera, &D_800E6C80);
-            break;
-        case 11:                                    /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6C10);
-            break;
-        case 12:                                    /* switch 2 */
-            func_800789AC(sp1C, camera, &D_800E6BA8);
-            break;
-        case 13:                                    /* switch 2 */
-            func_80078A44(sp1C, camera, &D_800E6C80);
-            break;
-        case 14:                                    /* switch 2 */
-            func_80078A44(sp1C, camera, &D_800E6DE0);
-            break;
+            case 0:                                     /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6A38);
+                break;
+            case 4:                                     /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6AA8);
+                break;
+            case 5:                                     /* switch 2 */
+                func_80078170(sp1C, camera);
+                break;
+            case 6:                                     /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6B00);
+                break;
+            case 7:                                     /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6B38);
+                break;
+            case 8:                                     /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6A38);
+                break;
+            case 9:                                     /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6AA8);
+                break;
+            case 10:                                    /* switch 2 */
+                func_80078A44(sp1C, camera, D_800E6C80);
+                break;
+            case 11:                                    /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6C10);
+                break;
+            case 12:                                    /* switch 2 */
+                func_800789AC(sp1C, camera, D_800E6BA8);
+                break;
+            case 13:                                    /* switch 2 */
+                func_80078A44(sp1C, camera, D_800E6C80);
+                break;
+            case 14:                                    /* switch 2 */
+                func_80078A44(sp1C, camera, D_800E6DE0);
+                break;
         }
     }
 }
@@ -3012,7 +3023,7 @@ void func_800790E4(s32 arg0) {
     func_800723A4(D_80183DB8[arg0], 6);
 }
 
-extern s32 D_8018C028;
+extern u8 *D_8018C028;
 
 void func_80079114(s32 objectIndex, s32 arg1, s32 arg2) {
     s32 a;
@@ -3076,7 +3087,7 @@ void func_800791F0(s32 objectIndex, u8 playerId) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_800791F0.s")
 #endif
 
-extern s32 D_0F05EB50;
+extern u8 *D_0F05EB50;
 extern s16 D_801656F0;
 extern s32 D_8018D168;
 extern s32 D_8018D180;
@@ -3086,8 +3097,8 @@ void func_800792D8(s32 objectIndex, s32 arg1) {
         D_801656F0 = 0;
         D_8018D168 = 0;
     }
-    func_80073444(objectIndex, &gTLUTLakituCountdown, &D_0F05EB50, 0x38U, (u16) 0x00000048);
-    D_80165C18[objectIndex].unk_074 = (s32) &D_0D005EB0;
+    func_80073444(objectIndex, (u8 *) gTLUTLakituCountdown, (u8 *) &D_0F05EB50, 0x38U, (u16) 0x00000048);
+    D_80165C18[objectIndex].unk_074 = (Vtx *) &D_0D005EB0;
     D_80165C18[objectIndex].unk_000 = 0.15f;
     func_800721E8(objectIndex, 0x00000010);
     func_80072488(objectIndex);
@@ -3097,10 +3108,10 @@ void func_800792D8(s32 objectIndex, s32 arg1) {
 extern s16 D_801656F0;
 extern s32 D_8018D160;
 extern s32 D_8018D168;
-extern s32 D_800E67B8; // static
+extern u16 D_800E67B8[][4]; // static
 
 void func_80079380(s32 objectIndex, s32 arg1) {
-    s32 pad;
+    UNUSED s32 pad;
     switch (D_80165C18[objectIndex].unk_0A6) {
         case 0:
             break;
@@ -3115,7 +3126,7 @@ void func_80079380(s32 objectIndex, s32 arg1) {
             break;
         case 3:
             func_800721C0(objectIndex, 0x00000010);
-            func_80086F10(objectIndex, 1, (s32) &D_800E67B8);
+            func_80086F10(objectIndex, 1, D_800E67B8);
             func_80072488(objectIndex);
             break;
         case 4:
@@ -3178,23 +3189,23 @@ void func_80079380(s32 objectIndex, s32 arg1) {
     }
 }
 
-extern s32 D_0F07E350;
-extern s32 D_8018C028;
-extern s32 D_800E6834; // static
+extern u8 *D_0F07E350;
+//extern s32 D_8018C028;
+extern u16 D_800E6834[][4]; // static
 
 void func_8007963C(s32 objectIndex, s32 playerIndex) {
     struct_80165C18_entry *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    func_80073444(objectIndex, &gTLUTLakituCheckeredFlag, &D_0F07E350, 0x48U, (u16) 0x00000038);
+    func_80073444(objectIndex, gTLUTLakituCheckeredFlag, (u8 *) &D_0F07E350, 0x48U, (u16) 0x00000038);
     temp_v0 = &D_80165C18[objectIndex];
     temp_v0->unk_064 = D_8018C028;
-    temp_v0->unk_074 = (s32) &D_0D006730;
+    temp_v0->unk_074 = D_0D006730;
     temp_v0->unk_004[2] = 5000.0f;
     temp_v0->unk_004[1] = 5000.0f;
     temp_v0->unk_004[0] = 5000.0f;
     temp_v0->unk_000 = 0.15f;
-    func_80086F10(objectIndex, 2, &D_800E6834);
+    func_80086F10(objectIndex, 2, D_800E6834);
     func_800721E8(objectIndex, 0x00000010);
     func_80072488(objectIndex);
 }
@@ -3262,11 +3273,11 @@ void func_8007993C(s32 objectIndex, Player *player) {
 }
 
 extern Vtx D_0D005F30[];
-extern Gfx D_0F0CCF50[];
+extern u8 D_0F0CCF50;
 
 void func_800799A8(s32 objectIndex, s32 arg1) {
     func_800791F0(objectIndex, arg1);
-    func_80073444(objectIndex, &gTLUTLakituFishing, &D_0F0CCF50, 0x38U, (u16) 0x00000048);
+    func_80073444(objectIndex, gTLUTLakituFishing, &D_0F0CCF50, 0x38U, (u16) 0x00000048);
     D_80165C18[objectIndex].unk_074 = D_0D005F30;
     D_80165C18[objectIndex].unk_000 = 0.15f;
     func_80086E70(objectIndex);
@@ -3276,7 +3287,7 @@ void func_800799A8(s32 objectIndex, s32 arg1) {
     func_800C8F80((u8)arg1, 0x0100FA28);
 }
 
-void func_80079A5C(s32 objectIndex, Player *player) {
+void func_80079A5C(s32 objectIndex, UNUSED Player *player) {
     switch (D_80165C18[objectIndex].unk_0AE) {
     case 0:
         break;
@@ -3435,14 +3446,14 @@ void func_80079D44(s32 objectIndex, s32 playerId) {
     func_80079A5C(objectIndex, temp_s1);
 }
 
-extern Gfx D_0F09DB50[];
-extern s16 D_800E694C[];
+extern u8 *D_0F09DB50[];
+extern u16 D_800E694C[];
 
 void func_8007A060(s32 objectIndex, s32 playerIndex) {
     struct_80165C18_entry *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    func_80073444(objectIndex, &gTLUTLakituSecondLap, &D_0F09DB50, 0x48U, (u16) 0x00000038);
+    func_80073444(objectIndex, gTLUTLakituSecondLap, (u8 *) D_0F09DB50, 0x48U, (u16) 0x00000038);
     temp_v0 = &D_80165C18[objectIndex];
     temp_v0->unk_064 = D_8018C028;
     temp_v0->unk_074 = D_0D006730;
@@ -3486,13 +3497,13 @@ void func_8007A124(s32 objectIndex, s32 playerIndex) {
     }
 }
 
-extern Gfx D_0F0AD750[];
+extern u8 *D_0F0AD750;
 
 void func_8007A228(s32 objectIndex, s32 playerIndex) {
     struct_80165C18_entry *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    func_80073444(objectIndex, &gTLUTLakituFinalLap, &D_0F0AD750, 0x48U, (u16) 0x00000038);
+    func_80073444(objectIndex, gTLUTLakituFinalLap, (u8 *)&D_0F0AD750, 0x48U, (u16) 0x00000038);
     temp_v0 = &D_80165C18[objectIndex];
     temp_v0->unk_064 = D_8018C028;
     temp_v0->unk_074 = D_0D006730;
@@ -3536,13 +3547,13 @@ void func_8007A2EC(s32 objectIndex, s32 playerIndex) {
     }
 }
 
-extern Gfx D_0F0BD350[];
-extern s16 D_800E69B0[1]; // static?
+extern u8 D_0F0BD350[];
+extern u16 D_800E69B0[][4]; // static?
 
 void func_8007A3F0(s32 objectIndex, s32 arg1) {
     f32 var = 5000.0f;
     func_800791F0(objectIndex, arg1);
-    func_80073444(objectIndex, &gTLUTLakituReverse, &D_0F0BD350, 0x48U, (u16) 0x00000038);
+    func_80073444(objectIndex, gTLUTLakituReverse, D_0F0BD350, 0x48U, (u16) 0x00000038);
     D_80165C18[objectIndex].unk_064 = D_8018C028;
     D_80165C18[objectIndex].unk_074 = D_0D006730;
     D_80165C18[objectIndex].unk_004[2] = var;
@@ -3550,13 +3561,13 @@ void func_8007A3F0(s32 objectIndex, s32 arg1) {
     D_80165C18[objectIndex].unk_004[0] = var;
     D_80165C18[objectIndex].unk_000 = 0.15f;
     func_800721E8(objectIndex, 0x00000010);
-    func_80086F10(objectIndex, 6, &D_800E69B0);
+    func_80086F10(objectIndex, 6, D_800E69B0);
     D_80165C18[objectIndex].unk_0D6 = 0;
     func_80072488(objectIndex);
     func_800C8F80((u8)arg1, 0x0100FA28);
 }
 
-extern s16 D_800E69F4[1]; // static?
+extern u16 D_800E69F4[][4]; // static?
 
 void func_8007A4D4(s32 objectIndex, s32 playerId) {
     Player *sp2C = &gPlayerOne[playerId];
@@ -3582,7 +3593,7 @@ void func_8007A4D4(s32 objectIndex, s32 playerId) {
     switch (D_80165C18[objectIndex].unk_0D6) {                              /* switch 1; irregular */
         case 1:                                         /* switch 1 */
             if ((D_80165C18[objectIndex].unk_0A6 >= 3) && ((sp2C->unk_0BC << 9) >= 0)) {
-                func_80086F10(objectIndex, 6, &D_800E69F4);
+                func_80086F10(objectIndex, 6, D_800E69F4);
                 D_80165C18[objectIndex].unk_0D6 = 2;
                 D_80165C18[objectIndex].unk_04C = 0x00000050;
                 func_800C9018((u8) playerId, 0x0100FA28);
@@ -3745,7 +3756,7 @@ void func_8007ABFC(s32 playerId, s32 arg1) {
 }
 
 void func_8007AC9C(s32 playerId) {
-    s32 stackPadding;
+    UNUSED s32 pad;
     Player *player;
     s32 objectIndex;
     struct_80165C18_entry *itemWindow;
@@ -3821,11 +3832,11 @@ u8 gen_random_item(s16 arg0, s16 arg1)
     return randomItem;
 }
 
-u8 func_8007AF40(s16 arg0, s16 arg1) {
+u8 func_8007AF40(UNUSED s16 arg0, s16 arg1) {
     return gen_random_item(arg1, 0);
 }
 
-u8 func_8007AF78(s32 arg0, s16 arg1) {
+u8 func_8007AF78(UNUSED s32 arg0, s16 arg1) {
     return gen_random_item(arg1, 1);
 }
 
@@ -3847,7 +3858,7 @@ extern a D_801643BA[];
 */
 
 s16 func_8007AFB0(s32 objectIndex, s32 arg1) {
-    s32 pad[3];
+    UNUSED s32 pad[3];
     s16 randomItem;
 
     randomItem = (s16) func_8007AF40((s16) gLapCountByPlayerId[arg1], (s16) gGPCurrentRaceRankByPlayerId[arg1]);
@@ -4270,8 +4281,8 @@ void func_8007B34C(s32 playerId) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007B34C.s")
 #endif
 
-void func_8007BB9C(void) {
-    func_8007B34C();
+void func_8007BB9C(s32 arg0) {
+    func_8007B34C(arg0);
 }
 
 #ifdef MIPS_TO_C
@@ -4331,7 +4342,7 @@ void func_8007BD04(s32 playerId) {
 }
 
 void func_8007BDA8(void) {
-    s32 pad;
+    UNUSED s32 pad;
     s32 temp_a0;
 
     func_8007BD04(0);
@@ -4501,12 +4512,12 @@ extern s8 D_801658BC;
 void func_8007C280(void) {
     if (D_801658BC == 1) {
         D_801658BC = 0;
-        func_800723A4(D_80183F28, 0);
+        func_800723A4((s32)D_80183F28, 0);
     }
     
     if (D_80165CBE[D_80183F28[0]].unk[0]) {
-        func_8007BEC8(D_80183F28);
-        func_8007BFB0(D_80183F28);
+        func_8007BEC8((s32)D_80183F28);
+        func_8007BFB0((s32)D_80183F28);
     }
 }
 #else
@@ -4613,13 +4624,13 @@ void func_8007C550(s32 objectIndex) {
     func_8007C4A4(objectIndex);
 }
 
-extern s8 gTLUTBoo[];
-extern s32 *D_80165880;
+extern u8 gTLUTBoo[];
+extern u8 *D_80165880;
 
 void func_8007C5B4(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, &gTLUTBoo, D_80165880, 48, 40);
+    func_80073444(objectIndex, gTLUTBoo, D_80165880, 48, 40);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_004[0] = 0.0f;
     temp_s0->unk_004[1] = 0.0f;
@@ -4708,16 +4719,16 @@ void func_8007C7B4(s32 arg0, s32 arg1) {
     s16 temp_s1_2;
     s16 temp_s4;
     s16 temp_s5;
-    s32 var_s2;
+    s32 *var_s2;
     s32 var_s3;
     s32 *temp_s1;
-    s32 temp_v1;
+    UNUSED s32 *temp_v1;
     //struct_80165C18_entry *temp_s0;
     //s32 i = 0;
     
     temp_s1 = &D_8018BFA8[arg0];
     //sp40   = D_8018BFA8[arg0];
-    var_s2 = &D_800E5D9C;
+    var_s2 = (s32 *)&D_800E5D9C;
 
     do { //for (i = 0; i < 20; i++) {
         var_s3 = *temp_s1;
@@ -4729,14 +4740,14 @@ void func_8007C7B4(s32 arg0, s32 arg1) {
         temp_s4 = random_int(20) - 10;
         temp_s5 = random_int(80) - 40;
         random_int(4096); // burn a card?
-        temp_v1 = var_s2;
+        temp_v1 = (s32 *) var_s2;
         var_s2 += 4;
         temp_s1 += 4;
         D_80165C18[var_s3].unk_010[0] = (f32)temp_s1_2;
-        D_80165C18[var_s3].unk_080 = var_s2;
+        D_80165C18[var_s3].unk_080 = (u16 *) var_s2;
         D_80165C18[var_s3].unk_010[1] = (f32) temp_s4;
         D_80165C18[var_s3].unk_010[2] = (f32) temp_s5;
-    } while (var_s2 != D_800E5DB0);
+    } while (*var_s2 != D_800E5DB0);
 
     func_800C9060(arg1, 0x1900705A);
     if (&D_8018BFA8[arg0] == D_8018BFA8) {
@@ -4936,7 +4947,6 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007CC00.s")
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-extern s32 gTLUTBoo;
 extern s32 D_0F0D0E50;
 extern void *D_8018CF1C;
 
@@ -5139,8 +5149,7 @@ void func_8007D360(s32 objectIndex, s32 arg1) {
 }
 
 void func_8007D6A8(s32 objectIndex, s32 arg1) {
-    s32 stackPadding0;
-    s32 stackPadding1;
+    UNUSED s32 pad[2];
     struct_80165C18_entry *temp_v0;
 
     temp_v0 = &D_80165C18[objectIndex];
@@ -5243,7 +5252,7 @@ void func_8007DA4C(s32 arg0) {
 }
 
 void func_8007DA74(s32 objectIndex) {
-    s32 stackPadding;
+    UNUSED s32 pad;
     if ((D_80165C18[objectIndex].unk_0AE != 0) && (D_80165C18[objectIndex].unk_0AE == 1)) {
         if (func_80087060(objectIndex, 0x0000001E) != 0) {
             D_80165C18[objectIndex].unk_0C6 = 0U;
@@ -6370,7 +6379,7 @@ void func_8007FF5C(s32 arg0)
 {
     switch(D_80165CF5[arg0].unk[0]) {
         case 1:
-            func_8007FB48();
+            func_8007FB48(arg0);
             break;
         case 2:
             func_8007FEA4(arg0);
@@ -6380,18 +6389,18 @@ void func_8007FF5C(s32 arg0)
 
 void func_8007FFC0(s32 objectIndex) {
     switch (D_80165CBE[objectIndex].unk[0]) {                              /* irregular */
-    case 0:
-        break;
-    case 1:
-        func_8007FA08(objectIndex);
-        break;
-    case 3:
-        func_80072568(objectIndex, 0x00000032);
-        break;
-    case 4:
-        func_80072488(objectIndex);
-        func_80086FD4(objectIndex);
-        break;
+        case 0:
+            break;
+        case 1:
+            func_8007FA08(objectIndex);
+            break;
+        case 3:
+            func_80072568(objectIndex, 0x00000032);
+            break;
+        case 4:
+            func_80072488(objectIndex);
+            func_80086FD4(objectIndex);
+            break;
     }
     func_8007E63C(objectIndex);
     func_8007FF5C(objectIndex);
@@ -8093,7 +8102,7 @@ extern UnkStruct_80165CBE D_80165CBE[];
 
 void func_80083474(s32 arg0) {
     if (D_80165CBE[arg0].unk[0] >= 2) {
-        func_80089F24();
+        func_80089F24(arg0);
     }
 }
 
@@ -8938,7 +8947,7 @@ void func_80085024(void) {
 
 }
 
-void func_8008502C(s32 objectIndex, s32 arg1) {
+void func_8008502C(s32 objectIndex, UNUSED s32 arg1) {
     func_80088038(objectIndex, D_80165C18[objectIndex].unk_01C[1], D_80165C18[objectIndex].unk_0C6);
     func_8008BF18(objectIndex);
     func_800873F4(objectIndex);

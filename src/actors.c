@@ -20,9 +20,14 @@
 #include "audio/external.h"
 #include "common_textures.h"
 
-s32 D_802BA050;
-s32 D_802BA054;
-s32 D_802BA058;
+
+// Appears to be textures
+// or tluts
+u8 *D_802BA050;
+u8 *D_802BA054;
+u8 *D_802BA058;
+
+
 struct Actor *D_802BA05C;
 s8 D_802BA060[512]; // tlut 256
 u16 D_802BA260;
@@ -32,19 +37,19 @@ void func_80296A50(struct ShellActor *shell) {
     struct ShellActor *compare;
 
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
-        compare = &gActorList[actorIndex];
+        compare = (struct ShellActor *)&gActorList[actorIndex];
         if ((shell != compare) && !(compare->flags & 0xF) && (compare->type == ACTOR_GREEN_SHELL)) {
             if (compare->state == 2) {
                 func_8000EE58(actorIndex);
             }
             D_8015F6FE -= 1;
-            destroy_actor(compare);
+            destroy_actor((struct Actor *)compare);
             return;
         }
     }
 
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
-        compare = &gActorList[actorIndex];
+        compare = (struct ShellActor *) &gActorList[actorIndex];
         if ((shell != compare) && !(compare->flags & 0xF) && (compare->type == ACTOR_RED_SHELL)) {
             switch(compare->state) {
             case 2:
@@ -56,7 +61,7 @@ void func_80296A50(struct ShellActor *shell) {
                 func_8000EE58(actorIndex);
             case 7:
                 D_8015F6FE -= 1;
-                destroy_actor(compare);
+                destroy_actor((struct Actor *)compare);
                 return;
             default:
                 break;
@@ -65,21 +70,21 @@ void func_80296A50(struct ShellActor *shell) {
     }
 
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
-        compare = &gActorList[actorIndex];
+        compare = (struct ShellActor *) &gActorList[actorIndex];
         if ((shell != compare) && (compare->type == ACTOR_GREEN_SHELL)) {
             switch(compare->state) {
             case 2:
                 func_8000EE58(actorIndex);
             case 7:
                 D_8015F6FE -= 1;
-                destroy_actor(compare);
+                destroy_actor((struct Actor *)compare);
                 return;
             }
         }
     }
 
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
-        compare = &gActorList[actorIndex];
+        compare = (struct ShellActor *)&gActorList[actorIndex];
         if ((shell != compare) && (compare->type == ACTOR_RED_SHELL)) {
             switch(compare->state) {
             case 2:
@@ -91,10 +96,8 @@ void func_80296A50(struct ShellActor *shell) {
                 func_8000EE58(actorIndex);
             case 7:
                 D_8015F6FE -= 1;
-                destroy_actor(compare);
+                destroy_actor((struct Actor *)compare);
                 return;
-            default:
-                break;
             }
         }
     }
@@ -376,8 +379,8 @@ void func_802977E4(Player *arg0) {
 }
 
 void func_80297818(void) {
-    s16 *phi_v0 = &D_802BA060[0];
-    s16 *phi_v1 = VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(gTLUTGreenShell)] + SEGMENT_OFFSET(gTLUTGreenShell));
+    s16 *phi_v0 = (s16 *) &D_802BA060[0];
+    s16 *phi_v1 = (s16 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(gTLUTGreenShell)] + SEGMENT_OFFSET(gTLUTGreenShell));
     s16 temp_a0, temp_a0_2, temp_a0_3, temp_a0_4, temp_a0_5;
     s32 i;
     for (i = 0; i < 256; i++) {
@@ -408,7 +411,7 @@ void func_8029794C(Vec3f arg0, Vec3s arg1, f32 arg2) {
     }
 }
 
-void func_802979F8(struct Actor *arg0, f32 arg1) {
+void func_802979F8(struct Actor *arg0, UNUSED f32 arg1) {
     Vec3f sp24;
     Vec3s sp1C;
 
@@ -627,10 +630,10 @@ void update_obj_piranha_plant(struct PiranhaPlant *arg0) {
 
 // Mario Raceway Load piranha plant textures?
 void func_80298328(Camera *arg0, Mat4 arg1, struct PiranhaPlant *arg2) {
-    s32 pad;
-    s32 addr;
+    UNUSED s32 pad;
+    u8 *addr;
     s16 temp_lo = arg0 - camera1; 
-    s16 phi_t4;
+    s16 animationFrame; // unconfirmed
     s16 temp = arg2->flags;
     f32 temp_f0;
 
@@ -678,10 +681,9 @@ void func_80298328(Camera *arg0, Mat4 arg1, struct PiranhaPlant *arg2) {
                     arg2->visibilityStates[3] = 0;
                     break;
             }
-            phi_t4 = 0;
+            animationFrame = 0;
 
         } else {
-
             switch(temp_lo) {
                 case 0:
                     arg2->visibilityStates[0] = 1;
@@ -695,30 +697,29 @@ void func_80298328(Camera *arg0, Mat4 arg1, struct PiranhaPlant *arg2) {
                 case 3:
                     arg2->visibilityStates[3] = 1;
                     break;
-
             }
 
             switch(temp_lo) {
                 case 0:
-                    phi_t4 = arg2->timers[0];
+                    animationFrame = arg2->timers[0];
                     break;
                 case 1:
-                    phi_t4 = arg2->timers[1];
+                    animationFrame = arg2->timers[1];
                     break;
                 case 2:
-                    phi_t4 = arg2->timers[2];
+                    animationFrame = arg2->timers[2];
                     break;
                 case 3:
-                    phi_t4 = arg2->timers[3];
+                    animationFrame = arg2->timers[3];
                     break;
             }
         }
-        phi_t4 /= 6;
+        animationFrame /= 6;
 
-        if (phi_t4 > 8) {
-            phi_t4 = 8;
+        if (animationFrame > 8) {
+            animationFrame = 8;
         }
-        addr = D_802BA058 + (phi_t4 << 0xB);
+        addr = D_802BA058 + (animationFrame << 0xB);
         gDPLoadTextureBlock(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(addr), G_IM_FMT_CI, G_IM_SIZ_8b, 32, 64, 0, 
             G_TX_MIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
@@ -730,7 +731,7 @@ void func_80298328(Camera *arg0, Mat4 arg1, struct PiranhaPlant *arg2) {
         }
 }
 
-void func_802986B4(Camera *camera, Mat4 arg1, struct Actor *actor) {
+void func_802986B4(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
     u16 temp_s1;
     f32 temp_f0;
     struct ActorSpawnData *var_t1;
@@ -808,7 +809,7 @@ void func_80298AC0(Player *player) {
     Vec3f sp64;
     s32 segment = SEGMENT_NUMBER2(D_06013F78);
     s32 offset = SEGMENT_OFFSET(D_06013F78);
-    struct UnkActorSpawnData *data = VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    struct UnkActorSpawnData *data = (struct UnkActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
 
     while (data->pos[0] != -0x8000) {
         sp64[0] = data->pos[0] * gCourseDirection;
@@ -843,7 +844,7 @@ void func_80298C94(void) {
 void func_80298D10(void) {
     s32 segment = SEGMENT_NUMBER2(D_06013F78);
     s32 offset = SEGMENT_OFFSET(D_06013F78);
-    struct UnkActorSpawnData *temp_v1 = VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    struct UnkActorSpawnData *temp_v1 = (struct UnkActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
 
     while (temp_v1->pos[0] != -0x8000) {
         temp_v1->pos[1] = temp_v1->unk8;
@@ -852,11 +853,11 @@ void func_80298D10(void) {
     }
 }
 
-void func_80298D7C(Camera *camera, Mat4 arg1, struct Actor *actor) {
+void func_80298D7C(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
     s32 segment = SEGMENT_NUMBER2(D_06013F78);
     s32 offset = SEGMENT_OFFSET(D_06013F78);
     struct UnkActorSpawnData *var_s1 = (struct UnkActorSpawnData *)VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
-    s32 stackPadding0;
+    UNUSED s32 pad;
     Vec3f spD4;
     f32 var_f22;
     Mat4  sp90;
@@ -1179,7 +1180,7 @@ void func_8029A11C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     }
 }
 
-void func_8029A23C(Camera *camera, Mat4 arg1, struct Actor *actor) {
+void func_8029A23C(UNUSED Camera *camera, Mat4 arg1, struct Actor *actor) {
     uintptr_t addr;
 
     if (actor->state == 0) { return; }
@@ -1197,10 +1198,10 @@ void func_8029A23C(Camera *camera, Mat4 arg1, struct Actor *actor) {
     gSPDisplayList(gDisplayListHead++, D_06013BB8);
 }
 
-void func_8029A3AC(Camera *camera, Mat4 arg1, struct ShellActor *shell) {
-    s16 pad;
+void func_8029A3AC(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
+    UNUSED s16 pad;
     u16 temp_t8;
-    s32 pad2;
+    UNUSED s32 pad2;
     s16 sp58[15] = // D_802B87E8;
     {
         0x0000, 0x0400, 0x0800, 0x0c00,
@@ -1208,6 +1209,8 @@ void func_8029A3AC(Camera *camera, Mat4 arg1, struct ShellActor *shell) {
         0x1c00, 0x1800, 0x1400, 0x1000,
         0x0c00, 0x0800, 0x0400
     };
+    // todo: Is this making the shell spin?
+    // Is it doing this by modifying a an address?
     uintptr_t phi_t3;
 
     f32 temp_f0 = func_802B80D0(camera->pos, shell->pos, camera->rot[1], 0, D_80150130[camera - camera1], 490000.0f);
@@ -1220,18 +1223,18 @@ void func_8029A3AC(Camera *camera, Mat4 arg1, struct ShellActor *shell) {
         func_802979F8((struct Actor *) shell, 3.4f);
     }
     if (shell->type == ACTOR_BLUE_SPINY_SHELL) {
-        phi_t3 = D_802BA054;
+        phi_t3 = (uintptr_t)D_802BA054;
     } else {
-        phi_t3 = D_802BA050;
+        phi_t3 = (uintptr_t)D_802BA050;
     }
     temp_t8 = (u16) shell->rotVelocity / 4369;
     phi_t3 += sp58[temp_t8];
 
-    arg1[3][0] =  shell->pos[0];
-    arg1[3][1] = (shell->pos[1] - shell->boundingBoxSize) + 1.0f;
-    arg1[3][2] =  shell->pos[2];
+    matrix[3][0] =  shell->pos[0];
+    matrix[3][1] = (shell->pos[1] - shell->boundingBoxSize) + 1.0f;
+    matrix[3][2] =  shell->pos[2];
 
-    if (func_802B4FF8(arg1, 0) == 0) { return; }
+    if (func_802B4FF8(matrix, 0) == 0) { return; }
 
     gDPLoadTextureBlock(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(phi_t3), 
         G_IM_FMT_CI, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, 
@@ -1255,55 +1258,55 @@ UNUSED s16 D_802B8810[] = {
     0x0000, 0x0000, 0xffff, 0xffff
 };
 
-void func_8029A690(Camera *arg0, Mat4 arg1, struct ShellActor *arg2) {
+void func_8029A690(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
     gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTGreenShell);
-    func_8029A3AC(arg0, arg1, arg2);
+    func_8029A3AC(camera, matrix, shell);
 }
 
-void func_8029A75C(Camera *arg0, Mat4 arg1, struct ShellActor *arg2) {
+void func_8029A75C(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
     gDPLoadTLUT_pal256(gDisplayListHead++, &D_802BA060);
-    func_8029A3AC(arg0, arg1, arg2);
+    func_8029A3AC(camera, matrix, shell);
 }
 
 // Middle of a tlut access
-void func_8029A828(Camera *arg0, Mat4 arg1, struct ShellActor *arg2) {
+void func_8029A828(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
     gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTBlueShell);
-    func_8029A3AC(arg0, arg1, arg2);
+    func_8029A3AC(camera, matrix, shell);
 }
 
-void func_8029A8F4(Camera *arg0, Mat4 arg1, struct BananaActor *arg2) {
-    s32 pad[3];
+void func_8029A8F4(Camera *camera, UNUSED Mat4 arg1, struct BananaActor *banana) {
+    UNUSED s32 pad[3];
     Vec3s sp7C;
     Mat4 sp3C;
 
-    f32 temp = func_802B80D0(arg0->pos, arg2->pos, arg0->rot[1], 0, D_80150130[arg0 - camera1], 490000.0f);
+    f32 temp = func_802B80D0(camera->pos, banana->pos, camera->rot[1], 0, D_80150130[camera - camera1], 490000.0f);
     if (temp < 0.0f) {
-        func_80297230(arg0, arg2);
+        func_80297230(camera, (struct Actor *) banana);
         return;
     }
 
-    if ((arg2->pos[1] > D_8015F6EC + 800.0f)) {
-        func_80297230(arg0, arg2);
+    if ((banana->pos[1] > D_8015F6EC + 800.0f)) {
+        func_80297230(camera, (struct Actor *) banana);
         return;
     }
-    if (arg2->pos[1] < (D_8015F6EE - 800.0f)) {
-        func_80297230(arg0, arg2);
+    if (banana->pos[1] < (D_8015F6EE - 800.0f)) {
+        func_80297230(camera, (struct Actor *) banana);
         return;
     }
-    func_802972B8(arg0, arg2);
+    func_802972B8(camera, (struct Actor *) banana);
 
-    if (arg2->state == 5) {
-        func_802B5F74(sp3C, arg2->pos, arg2->rot);
+    if (banana->state == 5) {
+        func_802B5F74(sp3C, banana->pos, banana->rot);
     } else {
         sp7C[0] = 0;
         sp7C[1] = 0;
         sp7C[2] = 0;
-        func_802B5F74(sp3C, arg2->pos, sp7C);
+        func_802B5F74(sp3C, banana->pos, sp7C);
     }
 
     if (func_802B4FF8(sp3C, 0) == 0) { return; }
 
-    if (arg2->state != 5) {
+    if (banana->state != 5) {
         gSPDisplayList(gDisplayListHead++, &D_0D004B48);
     } else {
         gSPDisplayList(gDisplayListHead++, &D_0D004BD8);
@@ -1396,8 +1399,8 @@ UNUSED void func_8029AE14() {
 }
 
 // This likely attaches the paddle wheel to the boat
-void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, Mat4 arg2, u16 arg3) {
-    s32 pad[3];
+void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED Mat4 arg2, u16 arg3) {
+    UNUSED s32 pad[3];
     Vec3f sp120;
     Mat4 spE0;
     Mat4 spA0;
@@ -1432,9 +1435,9 @@ void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, Mat4 arg2, u16 ar
 }
 
 void func_8029B06C(Camera *arg0, struct Actor *arg1) {
-    s32 pad[6];
+    UNUSED s32 pad[6];
     Mat4 spD8;
-    s32 pad2[32];
+    UNUSED s32 pad2[32];
     f32 temp_f0 = func_802B80D0(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, D_80150130[arg0 - camera1], 9000000.0f);
     if (temp_f0 < 0.0f) { return; }
 
@@ -1473,9 +1476,9 @@ void func_8029B06C(Camera *arg0, struct Actor *arg1) {
 }
 
 void func_8029B2E4(Camera *arg0, struct Actor *arg1) {
-    s32 pad[6];
+    UNUSED s32 pad[6];
     Mat4 spC8;
-    s32 pad2[32];
+    UNUSED s32 pad2[32];
     f32 temp_f0;
 
     temp_f0 = func_802B80D0(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, D_80150130[arg0 - camera1], 9000000.0f);
@@ -1505,9 +1508,9 @@ void func_8029B2E4(Camera *arg0, struct Actor *arg1) {
 }
 
 void func_8029B4E0(Camera *arg0, struct Actor *arg1) {
-    s32 pad[6];
+    UNUSED s32 pad[6];
     Mat4 spC8;
-    s32 pad2[32];
+    UNUSED s32 pad2[32];
     f32 temp_f0 = func_802B80D0(arg0->pos,arg1->pos, arg0->rot[1], 2500.0f, D_80150130[arg0 - camera1], 9000000.0f);
 
     if (!(temp_f0 < 0.0f)) {
@@ -1538,9 +1541,9 @@ void func_8029B4E0(Camera *arg0, struct Actor *arg1) {
 }
 
 void func_8029B6EC(Camera *camera, struct Actor* arg1) {
-    s32 pad[6];
+    UNUSED s32 pad[6];
     Mat4 spC8;
-    s32 pad2[32];
+    UNUSED s32 pad2[32];
     f32 temp_f0 = func_802B80D0(camera->pos, arg1->pos, camera->rot[1], 2500.0f, D_80150130[camera - camera1], 9000000.0f);
 
     if (!(temp_f0 < 0.0f)) {
@@ -1571,7 +1574,7 @@ void func_8029B6EC(Camera *camera, struct Actor* arg1) {
 
 // Spins train wheels?
 void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
-    s32 pad[3];
+    UNUSED s32 pad[3];
     Vec3f sp160;
     Mat4 sp120;
     Mat4 spE0;
@@ -1646,7 +1649,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
     vec3f_set(sp160, 17.0f, 12.0f, -12.0f);
-    mtxf_translate(spE0, &sp160);
+    mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
@@ -1655,7 +1658,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
-    vec3f_set(&sp160, -17.0f, 12.0f, -12.0f);
+    vec3f_set(sp160, -17.0f, 12.0f, -12.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -1665,8 +1668,8 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x2D8));
-    vec3f_set(&sp160, 17.0f, 12.0f, -34.0f);
-    mtxf_translate(spE0, &sp160);
+    vec3f_set(sp160, 17.0f, 12.0f, -34.0f);
+    mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
@@ -1831,7 +1834,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x5B0));
     vec3f_set(sp160, 17.0f, 6.0f, -8.0f);
-    mtxf_translate(spE0, &sp160);
+    mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
@@ -1840,7 +1843,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x5B0));
-    vec3f_set(&sp160, -17.0f, 6.0f, -8.0f);
+    vec3f_set(sp160, -17.0f, 6.0f, -8.0f);
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
@@ -1850,8 +1853,8 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
-    vec3f_set(&sp160, 17.0f, 6.0f, -24.0f);
-    mtxf_translate(spE0, &sp160);
+    vec3f_set(sp160, 17.0f, 6.0f, -24.0f);
+    mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
@@ -1876,7 +1879,7 @@ void func_8029CA90(Camera *camera, struct FallingRock *rock) {
     Vec3f sp8C;
     Mat4 sp4C;
     f32 temp_f0;
-    s32 pad[4];
+    UNUSED s32 pad[4];
 
     if (rock->respawnTimer != 0) { return; }
 
@@ -1911,9 +1914,9 @@ void func_8029CA90(Camera *camera, struct FallingRock *rock) {
 void place_piranha_plants(struct ActorSpawnData *spawnData) {
     s32 segment = SEGMENT_NUMBER2(spawnData);
     s32 offset = SEGMENT_OFFSET(spawnData);
-    struct ActorSpawnData *temp_s0 = VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    struct ActorSpawnData *temp_s0 = (struct ActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     struct PiranhaPlant *temp_v1;
-    s32 pad;
+    UNUSED s32 pad;
     Vec3f startingPos;
     Vec3f startingVelocity;
     Vec3s startingRot;
@@ -1943,7 +1946,7 @@ void place_piranha_plants(struct ActorSpawnData *spawnData) {
 void place_palm_trees(struct ActorSpawnData *spawnData) {
     s32 segment = SEGMENT_NUMBER2(spawnData);
     s32 offset = SEGMENT_OFFSET(spawnData);
-    struct ActorSpawnData *temp_s0 = VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    struct ActorSpawnData *temp_s0 = (struct ActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     struct PalmTree *temp_v1;
     Vec3f startingPos;
     Vec3f startingVelocity;
@@ -1970,7 +1973,7 @@ void place_palm_trees(struct ActorSpawnData *spawnData) {
 void func_8029CF0C(struct ActorSpawnData *spawnData, struct FallingRock *rock) {
     s32 segment = SEGMENT_NUMBER2(spawnData);
     s32 offset = SEGMENT_OFFSET(spawnData);
-    struct ActorSpawnData *temp_v0 = VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset); // + (temp_v1 * 8);
+    struct ActorSpawnData *temp_v0 = (struct ActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     Vec3s sp24 = {60, 120, 180};
     temp_v0 += rock->unk_06;
     rock->respawnTimer = sp24[rock->unk_06]; // * 2
@@ -1984,7 +1987,8 @@ void func_8029CF0C(struct ActorSpawnData *spawnData, struct FallingRock *rock) {
 void place_falling_rocks(struct ActorSpawnData *spawnData) {
     s32 addr = SEGMENT_NUMBER2(spawnData);
     s32 offset = SEGMENT_OFFSET(spawnData);
-    struct ActorSpawnData *temp_s0 = VIRTUAL_TO_PHYSICAL2(gSegmentTable[addr]) + offset;
+    // Casting this to prevent warning does not work.
+    struct ActorSpawnData *temp_s0 = (struct ActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[addr] + offset);
     struct FallingRock *temp_v1;
     Vec3f startingPos;
     Vec3f startingVelocity;
@@ -2016,7 +2020,7 @@ void update_obj_falling_rocks(struct FallingRock *rock) {
         return;
     }
     if (rock->pos[1] < D_8015F8E4) {
-        func_8029CF0C(&D_06007230, rock);
+        func_8029CF0C(D_06007230, rock);
     }
     rock->rot[0] += (s16) ((rock->velocity[2] * 5461.0f) / 20.0f);
     rock->rot[2] += (s16) ((rock->velocity[0] * 5461.0f) / 20.0f);
@@ -2081,14 +2085,11 @@ void update_obj_falling_rocks(struct FallingRock *rock) {
 
 // This function may be better named "init_trees_cacti_shrubs"
 void place_segment_06(struct ActorSpawnData *arg0) {
-    s32 stackPadding0;
-    s32 stackPadding1;
-    s32 stackPadding2;
-    s32 stackPadding3;
+    UNUSED s32 pad[4];
     Vec3f position;
     Vec3f velocity;
     Vec3s rotation;
-    s16 stackPadding4;
+    UNUSED s16 pad2;
     s16 actorType;
     struct Actor *temp_s0;
     struct ActorSpawnData *var_s3;
@@ -2165,13 +2166,15 @@ void place_segment_06(struct ActorSpawnData *arg0) {
 }
 
 void place_all_item_boxes(struct ActorSpawnData *spawnData) {
+    s32 segment = SEGMENT_NUMBER2(spawnData);
+    s32 offset = SEGMENT_OFFSET(spawnData);
     s16 temp_s1;
     f32 temp_f0;
-    struct ItemBox *temp_v0;
-    struct ActorSpawnData *temp_s0 = VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(spawnData)]) + SEGMENT_OFFSET(spawnData);
     Vec3f startingPos;
     Vec3f startingVelocity;
     Vec3s startingRot;
+    struct ActorSpawnData *temp_s0 = (struct ActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    //struct ItemBox *itemBox;
 
     if ((gModeSelection == TIME_TRIALS) || (gPlaceItemBoxes == 0)) { return; }
 
@@ -2185,10 +2188,20 @@ void place_all_item_boxes(struct ActorSpawnData *spawnData) {
         startingRot[2] = random_u16();
         temp_s1 = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_ITEM_BOX);
         temp_f0 = func_802AE1C0(startingPos[0], startingPos[1] + 10.0f, startingPos[2]);
-        temp_v0 = (struct ItemBox *) &gActorList[temp_s1];
-        temp_v0->resetDistance = temp_f0;
-        temp_v0->origY = startingPos[1];
-        temp_v0->pos[1] = temp_f0 - 20.0f;
+
+        // Should be struct ItemBox but not enough space in the stack.
+        // It's either the ItemBox or the SEGMENT/OFFSET variables.
+        //itemBox = (struct ItemBox *) &gActorList[temp_s1];
+
+        gActorList[temp_s1].unk_08 = temp_f0;
+        //itemBox->resetDistance = temp_f0;
+        
+        gActorList[temp_s1].velocity[0] = startingPos[1];
+        //itemBox->origY = startingPos[1];
+        
+        gActorList[temp_s1].pos[1] = temp_f0 - 20.0f;
+        //itemBox->pos[1] = temp_f0 - 20.0f;
+
         temp_s0++;
     }
     
@@ -2235,7 +2248,7 @@ void destroy_all_actors(void) {
 }
 
 void place_course_actors(void) {
-    s32 stackPadding0;
+    UNUSED s32 pad;
     Vec3f position;
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };
     Vec3s rotation = { 0, 0, 0 };
@@ -2502,7 +2515,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
     struct ShellActor *compare;
 
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
-        compare = &gActorList[actorIndex];
+        compare = (struct ShellActor *) &gActorList[actorIndex];
         if (!(compare->flags & 0xF)) {
             switch(compare->type) {
             case ACTOR_RED_SHELL:
@@ -2515,8 +2528,8 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                 case 9:
                     func_8000EE58(actorIndex);
                 case 7:
-                    func_8029E7DC(compare);
-                    actor_init(compare, pos, rot, velocity, actorType);
+                    func_8029E7DC((struct Actor *) compare);
+                    actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                     return actorIndex;
                 default:
                     break;
@@ -2527,8 +2540,8 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                 case 2:
                     func_8000EE58(actorIndex);
                 case 7:
-                    func_8029E7DC(compare);
-                    actor_init(compare, pos, rot, velocity, actorType);
+                    func_8029E7DC((struct Actor *) compare);
+                    actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                     return actorIndex;
                 }
                 break;
@@ -2537,8 +2550,8 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                 case 1:
                 case 4:
                 case 5:
-                    func_8029E7DC(compare);
-                    actor_init(compare, pos, rot, velocity, actorType);
+                    func_8029E7DC((struct Actor *) compare);
+                    actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                     return actorIndex;
                 }
                 break;
@@ -2546,8 +2559,8 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                 switch(compare->state) {
                 case 1:
                 case 2:
-                    func_8029E7DC(compare);
-                    actor_init(compare, pos, rot, velocity, actorType);
+                    func_8029E7DC((struct Actor *) compare);
+                    actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                     return actorIndex;
                 }
                 break;
@@ -2558,7 +2571,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
     }
 
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
-        compare = &gActorList[actorIndex];
+        compare = (struct ShellActor *) &gActorList[actorIndex];
         switch(compare->type) {
         case ACTOR_RED_SHELL:
             switch(compare->state) {
@@ -2570,8 +2583,8 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
             case 9:
                 func_8000EE58(actorIndex);
             case 7:
-                func_8029E7DC(compare);
-                actor_init(compare, pos, rot, velocity, actorType);
+                func_8029E7DC((struct Actor *) compare);
+                actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                 return actorIndex;
             default:
                 break;
@@ -2582,8 +2595,8 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
             case 2:
                 func_8000EE58(actorIndex);
             case 7:
-                func_8029E7DC(compare);
-                actor_init(compare, pos, rot, velocity, actorType);
+                func_8029E7DC((struct Actor *) compare);
+                actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                 return actorIndex;
             }
             break;
@@ -2592,8 +2605,8 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
             case 1:
             case 4:
             case 5:
-                func_8029E7DC(compare);
-                actor_init(compare, pos, rot, velocity, actorType);
+                func_8029E7DC((struct Actor *) compare);
+                actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                 return actorIndex;
             }
             break;
@@ -2601,8 +2614,8 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
             switch(compare->state) {
             case 1:
             case 2:
-                func_8029E7DC(compare);
-                actor_init(compare, pos, rot, velocity, actorType);
+                func_8029E7DC((struct Actor *) compare);
+                actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                 return actorIndex;
             }
             break;
@@ -2650,7 +2663,7 @@ UNUSED void func_8029ED98(Player *player, uintptr_t arg1) {
     s32 segment = SEGMENT_NUMBER2(arg1);
     s32 offset = SEGMENT_OFFSET(arg1);
 
-    var_s0 = VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    var_s0 = (struct test *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     while (var_s0->thing[0] != -0x8000) {
         sp64[0] = var_s0->thing[0] * gCourseDirection;
         sp64[1] = var_s0->thing[1];
@@ -2776,7 +2789,7 @@ s32 func_8029F2FC(Player *player, struct PiranhaPlant *plant) {
 }
 
 s32 func_8029F408(Player *player, struct YoshiValleyEgg *egg) {
-    f32 pad[5];
+    UNUSED f32 pad[5];
     f32 z_dist;
     f32 xz_dist;
     f32 x_dist;
@@ -2838,8 +2851,7 @@ s32 func_8029F69C(Player *player, struct Actor *actor) {
     f32 sp44;
     f32 var_f16;
     f32 xz_dist;
-    f32 stackPadding0;
-    f32 stackPadding1;
+    UNUSED f32 pad[2];
     f32 temp_f12;
     f32 temp_f0_4;
     Vec3f sp20;
@@ -3220,10 +3232,9 @@ void func_802A0350(struct Actor *arg0, struct Actor *arg1) {
 }
 
 void func_802A0450(Player *player, struct Actor *actor) {
-    s32 stackPadding0;
+    UNUSED s32 pad;
     s16 temp_lo;
-    s32 stackPadding1;
-    s32 stackPadding2;
+    UNUSED s32 pad2[2];
     s16 temp_v1;
     Player *owner;
     f32 temp_f0;
@@ -3430,7 +3441,7 @@ void func_802A0E44(void) {
     struct Actor *phi_s0;
     struct Actor *temp_a1;
     s32 i, j;
-    s32 pad;
+    UNUSED s32 pad;
 
     for (i = gNumPermanentActors; i < (ACTOR_LIST_SIZE - 1); i++) {
         phi_s0 = &gActorList[i];
@@ -3484,7 +3495,7 @@ void func_802A0E44(void) {
 }
 
 void func_802A1064(struct FakeItemBox *fake_item_box) {
-    if (fake_item_box - (struct FakeItemBox*)gActorList <= (u32)ACTOR_LIST_SIZE) {
+    if ((u32)(fake_item_box - (struct FakeItemBox*)gActorList) <= (u32)ACTOR_LIST_SIZE) {
         if (((fake_item_box->flags & 0x8000) != 0) && (fake_item_box->type == ACTOR_FAKE_ITEM_BOX)) {
             fake_item_box->state = 1;
             fake_item_box->targetY = func_802ABEAC(&fake_item_box->unk30, fake_item_box->pos) + 8.66f;
@@ -3498,12 +3509,12 @@ void update_obj_fake_item_box(struct FakeItemBox *fake_item_box) {
     Player *temp_v0_4 = &gPlayers[temp_v1];
     struct Controller *temp_v1_3;
 
-    s32 pad[7];
+    UNUSED s32 pad[7];
     f32 temp_f2_2;
     f32 temp_f14;
     f32 temp_f16;
     f32 temp_f18;
-    s32 pad2[3];
+    UNUSED s32 pad2[3];
 
     switch(fake_item_box->state) {
         case 0:
@@ -3524,7 +3535,7 @@ void update_obj_fake_item_box(struct FakeItemBox *fake_item_box) {
             fake_item_box->pos[1] = (temp_v0_4->pos[1] - temp_f16) - 1.0f;
             fake_item_box->pos[2] = temp_v0_4->pos[2] - temp_f18;
             func_802ADDC8(&fake_item_box->unk30, fake_item_box->boundingBoxSize, fake_item_box->pos[0], fake_item_box->pos[1], fake_item_box->pos[2]);
-            func_802B4E30(fake_item_box);
+            func_802B4E30((struct Actor *)fake_item_box);
             temp_v1_3 = &gControllers[temp_v1];
             if ((temp_v0_4->unk_000 & 0x4000) != 0) {
 
@@ -3564,7 +3575,7 @@ void update_obj_fake_item_box(struct FakeItemBox *fake_item_box) {
 
         case 2:
             if ((fake_item_box->someTimer >= 0x14) || (fake_item_box->someTimer < 0)) {
-                destroy_actor(fake_item_box);
+                destroy_actor((struct Actor *) fake_item_box);
             } else {
                 fake_item_box->someTimer++;
                 fake_item_box->rot[0] += 0x444;
@@ -3573,7 +3584,7 @@ void update_obj_fake_item_box(struct FakeItemBox *fake_item_box) {
             }
             break;
         default:
-            destroy_actor(fake_item_box);
+            destroy_actor((struct Actor *) fake_item_box);
         break;
     }
 }
@@ -3652,24 +3663,11 @@ void update_obj_item_box(struct ItemBox *itemBox) {
 
 void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
     Vec3s someRot;
-    s32 stackPadding0;
-    s32 stackPadding1;
-    s32 stackPadding2;
+    UNUSED s32 pad[3];
     Vec3f someVec;
     Mat4 someMatrix2;
     Mat4 someMatrix3;
-    s32 stackPadding3;
-    s32 stackPadding4;
-    s32 stackPadding5;
-    s32 stackPadding6;
-    s32 stackPadding7;
-    s32 stackPadding8;
-    s32 stackPadding9;
-    s32 stackPadding10;
-    s32 stackPadding11;
-    s32 stackPadding12;
-    s32 stackPadding13;
-    s32 stackPadding14;
+    UNUSED s32 pad2[12];
     f32 temp_f0_2;
     f32 temp_f0_3;
     f32 temp_f12;
@@ -3801,19 +3799,15 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
 }
 
 void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
-    s32 stackPadding0;
-    s32 stackPadding1;
+    UNUSED s32 pad[2];
     Vec3f someVec1;
     Vec3f someVec2;
     Vec3s someRot;
     f32 thing;
-    s32 stackPadding2;
+    UNUSED s32 pad2;
     Mat4 someMatrix1;
     Mat4 someMatrix2;
-    s32 stackPadding3;
-    s32 stackPadding4;
-    s32 stackPadding5;
-    s32 stackPadding6;
+    UNUSED s32 pad3[4];
     f32 temp_f0;
     f32 temp_f0_2;
     f32 temp_f0_3;
@@ -4014,7 +4008,7 @@ void func_802A27A0(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg, u16 arg3
     }
 }
 
-void func_802A29BC(Camera *arg0, Mat4 arg1, struct Actor *arg2) {
+void func_802A29BC(Camera *arg0, UNUSED Mat4 arg1, struct Actor *arg2) {
     Mat4 sp40;
     f32 unk;
     s16 temp = arg2->flags;
@@ -4024,15 +4018,15 @@ void func_802A29BC(Camera *arg0, Mat4 arg1, struct Actor *arg2) {
         if (!(unk < 0.0f)) {
             gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
             gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-            func_802B5F74(&sp40, arg2->pos, arg2->rot);
-            if (func_802B4FF8(&sp40, 0) != 0) {
+            func_802B5F74(sp40, arg2->pos, arg2->rot);
+            if (func_802B4FF8(sp40, 0) != 0) {
                 gSPDisplayList(gDisplayListHead++, D_06009330);
             }
         }
 }
 
 void func_802A2AD0(Camera *arg0, struct RailroadCrossing *rr_crossing) {
-    Vec3s sp80 = {0, 0, 0};
+    UNUSED Vec3s sp80 = {0, 0, 0};
     Mat4 sp40;
     f32 unk = func_802B80D0(arg0->pos, rr_crossing->pos, arg0->rot[1], 0.0f, D_80150130[arg0 - camera1], 4000000.0f);
 
@@ -4058,7 +4052,7 @@ void func_802A2AD0(Camera *arg0, struct RailroadCrossing *rr_crossing) {
     }
 }
 
-void func_802A2C78(Camera *arg0, Mat4 arg1, struct Actor *arg2) {
+void func_802A2C78(Camera *arg0, UNUSED Mat4 arg1, struct Actor *arg2) {
     Vec3s spA8 = {0, 0, 0};
     Mat4 sp68;
     f32 temp_f0;
@@ -4109,26 +4103,26 @@ void func_802A2C78(Camera *arg0, Mat4 arg1, struct Actor *arg2) {
 
 void func_802A2F34(struct UnkStruct_800DC5EC *arg0) {
     Camera *temp_s1 = arg0->camera;
-    struct Actor *phi_s0;
+    struct Actor *actor;
     s32 i;
     D_8015F8DC = 0;
 
     for (i = 0; i < ACTOR_LIST_SIZE; i++) {
-        phi_s0 = &gActorList[i];
+        actor = &gActorList[i];
 
-        if (phi_s0->flags == 0) { 
+        if (actor->flags == 0) { 
             continue;
         }
 
-        switch(phi_s0->type) {
+        switch(actor->type) {
             case ACTOR_FAKE_ITEM_BOX:
-                func_802A171C(temp_s1, phi_s0);
+                func_802A171C(temp_s1, (struct FakeItemBox *) actor);
                 break;
             case ACTOR_ITEM_BOX:
-                func_802A1EA0(temp_s1, phi_s0);
+                func_802A1EA0(temp_s1, (struct ItemBox *) actor);
                 break;
             case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
-                func_802A1EA0(temp_s1, phi_s0);
+                func_802A1EA0(temp_s1, (struct ItemBox *) actor);
                 break;
         }
     }
@@ -4137,11 +4131,11 @@ void func_802A2F34(struct UnkStruct_800DC5EC *arg0) {
 void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
     Camera *camera = arg0->camera;
     u16 sp92 = arg0->pathCounter;
-    s32 pad[12];
+    UNUSED s32 pad[12];
     s32 i;
 
     struct Actor *actor;
-    Vec3f sp4C = {0.0f, 5.0f, 10.0f};
+    UNUSED Vec3f sp4C = {0.0f, 5.0f, 10.0f};
     f32 sp48 = sins(camera->rot[1] - 0x8000); // unk26;
     f32 temp_f0 = coss(camera->rot[1] - 0x8000);
 
@@ -4217,7 +4211,7 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
                     func_8029A23C(camera, D_801502C0, actor);
                     break;
                 case ACTOR_BANANA:
-                    func_8029A8F4(camera, D_801502C0, actor);
+                    func_8029A8F4(camera, D_801502C0, (struct BananaActor *) actor);
                     break;
                 case ACTOR_GREEN_SHELL:
                     func_8029A690(camera, D_801502C0, (struct ShellActor *) actor);
@@ -4229,7 +4223,7 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
                     func_8029A828(camera, D_801502C0, (struct ShellActor *) actor);
                     break;
                 case ACTOR_PIRANHA_PLANT:
-                    func_80298328(camera, D_801502C0, actor);
+                    func_80298328(camera, D_801502C0, (struct PiranhaPlant *) actor);
                     break;
                 case ACTOR_TRAIN_ENGINE:
                     func_8029B8E8(camera, (struct TrainCar *) actor);
@@ -4256,7 +4250,7 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
                     func_802A2C78(camera, D_801502C0, actor);
                     break;
                 case ACTOR_PADDLE_WHEEL_BOAT:
-                    func_8029AE1C(camera, actor, D_801502C0, sp92);
+                    func_8029AE1C(camera, (struct PaddleWheelBoat *) actor, D_801502C0, sp92);
                     break;
                 case ACTOR_BOX_TRUCK:
                     func_8029B06C(camera, actor);
@@ -4271,10 +4265,10 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
                     func_8029B4E0(camera, actor);
                     break;
                 case ACTOR_RAILROAD_CROSSING:
-                    func_802A2AD0(camera, actor);
+                    func_802A2AD0(camera, (struct RailroadCrossing *) actor);
                     break;
                 case ACTOR_YOSHI_VALLEY_EGG:
-                    func_802A27A0(camera, D_801502C0, actor, sp92);
+                    func_802A27A0(camera, D_801502C0, (struct YoshiValleyEgg *) actor, sp92);
                     break;
             }
     }
@@ -4300,55 +4294,55 @@ void update_simple_objects(void) {
 
         switch (actor->type) {
             case ACTOR_FALLING_ROCK:
-                update_obj_falling_rocks(actor);
+                update_obj_falling_rocks((struct FallingRock *) actor);
                 break;
             case ACTOR_GREEN_SHELL:
-                update_obj_green_shell(actor);
+                update_obj_green_shell((struct ShellActor *) actor);
                 break;
             case ACTOR_RED_SHELL:
-                update_obj_red_blue_shell(actor);
+                update_obj_red_blue_shell((struct ShellActor *) actor);
                 break;
             case ACTOR_BLUE_SPINY_SHELL:
-                update_obj_red_blue_shell(actor);
+                update_obj_red_blue_shell((struct ShellActor *) actor);
                 break;
             case ACTOR_KIWANO_FRUIT:
-                update_obj_kiwano_fruit(actor);
+                update_obj_kiwano_fruit((struct KiwanoFruit *)actor);
                 break;
             case ACTOR_BANANA:
-                update_obj_banana(actor);
+                update_obj_banana((struct BananaActor *) actor);
                 break;
             case ACTOR_PADDLE_WHEEL_BOAT:
-                update_obj_paddle_wheel(actor);
+                update_obj_paddle_wheel((struct PaddleWheelBoat *) actor);
                 break;
             case ACTOR_TRAIN_ENGINE:
-                update_obj_train_engine(actor);
+                update_obj_train_engine((struct TrainCar *) actor);
                 break;
             case ACTOR_TRAIN_TENDER:
-                update_obj_train_car1(actor);
+                update_obj_train_car1((struct TrainCar *) actor);
                 break;
             case ACTOR_TRAIN_PASSENGER_CAR:
-                update_obj_train_car2(actor);
+                update_obj_train_car2((struct TrainCar *) actor);
                 break;
             case ACTOR_ITEM_BOX:
-                update_obj_item_box(actor);
+                update_obj_item_box((struct ItemBox *) actor);
                 break;
             case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
-                update_obj_item_box_hot_air_balloon(actor);
+                update_obj_item_box_hot_air_balloon((struct ItemBox *)actor);
                 break;
             case ACTOR_FAKE_ITEM_BOX:
-                update_obj_fake_item_box(actor);
+                update_obj_fake_item_box((struct FakeItemBox *) actor);
                 break;
             case ACTOR_PIRANHA_PLANT:
-                update_obj_piranha_plant(actor);
+                update_obj_piranha_plant((struct PiranhaPlant *) actor);
                 break;
             case ACTOR_BANANA_BUNCH:
-                update_obj_banana_bunch(actor);
+                update_obj_banana_bunch((struct BananaBunchParent *) actor);
                 break;
             case ACTOR_TRIPLE_GREEN_SHELL:
-                update_obj_triple_shell(actor, ACTOR_GREEN_SHELL);
+                update_obj_triple_shell((TripleShellParent *) actor, ACTOR_GREEN_SHELL);
                 break;
             case ACTOR_TRIPLE_RED_SHELL:
-                update_obj_triple_shell(actor, ACTOR_RED_SHELL);
+                update_obj_triple_shell((TripleShellParent *) actor, ACTOR_RED_SHELL);
                 break;
             case ACTOR_MARIO_RACEWAY_SIGN:
                 update_obj_mario_raceway_sign(actor);
@@ -4357,7 +4351,7 @@ void update_simple_objects(void) {
                 update_obj_wario_stadium_sign(actor);
                 break;
             case ACTOR_RAILROAD_CROSSING:
-                update_obj_railroad_crossing(actor);
+                update_obj_railroad_crossing((struct RailroadCrossing *) actor);
                 break;
             case 2:
             case 3:
@@ -4375,7 +4369,7 @@ void update_simple_objects(void) {
                 update_obj_trees_cacti_shrubs(actor);
                 break;
             case ACTOR_YOSHI_VALLEY_EGG:
-                update_obj_yoshi_valley_egg(actor);
+                update_obj_yoshi_valley_egg((struct YoshiValleyEgg *) actor);
                 break;
             }
         }

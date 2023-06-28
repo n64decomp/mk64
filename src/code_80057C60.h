@@ -5,6 +5,7 @@
 
 // code_80057C60
 
+void func_8005C674(s8 arg0, s16 *arg1, s16 *arg2, s16 *arg3);
 void func_80057C60();
 void func_80057CE4();
 void func_80057DD0();
@@ -161,9 +162,9 @@ void func_800658A0(Player*, s8, s16, s8);
 void func_80066998(Player*, s8, s16, s8);
 
 void func_80067964(Player*, s8, f32, s8, s32);
-void func_80067D3C(Player*, s8, s32, s32, f32, s32);
+void func_80067D3C(Player*, s8, u8*, s32, f32, s32);
 
-void func_8006801C(Player*, s8, s32, s32, f32, s32);
+void func_8006801C(Player*, s8, u8*, s32, f32, s32);
 void func_80068310(Player*, s8, f32, s8, s32);
 void func_80068724(Player*, s8, f32, s8, s32);
 void func_80068AA4(Player*, s8, f32, s8, s32);
@@ -222,7 +223,7 @@ extern u8 gControllerRandom;
 extern struct Controller *gControllerOne;
 extern s32 D_8018D214;
 extern s32 D_8018D2C8[];
-extern uintptr_t D_8018D48C; // Some kind of pointer to some decoded texture(s)
+extern u8 *D_8018D48C; // Some kind of pointer to some decoded texture(s)
 
 extern u16 gPlayerBalloonStatus[8][3]; // D_8018D5F0
 extern s16 gPlayerBalloonCount[];      // D_8018D8C0
@@ -264,7 +265,7 @@ extern s32 D_8018D204;
 extern s32 D_8018D21C;
 extern s32 D_8018D2A4;
 extern s32 D_8018D2BC;
-extern s32 D_8018D480;
-extern s32 D_8018D484;
+extern u8 *D_8018D480;
+extern u8 *D_8018D484;
 
 #endif

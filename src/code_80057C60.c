@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <main.h>
+#include "memory.h"
 #include <variables.h>
 #include <config.h>
 #include <defines.h>
@@ -1097,7 +1098,7 @@ void func_8005A070(void) {
         }
     }
     func_8008C204();
-    func_8008C1E0(&D_80165678, &D_801655F0);
+    func_8008C1E0(&D_80165678, (s32)&D_801655F0);
 }
 
 #ifdef MIPS_TO_C
@@ -2314,7 +2315,7 @@ block_10:
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005C360.s")
 #endif
 
-void func_8005C64C(s32 *arg0) {
+void func_8005C64C(UNUSED s32 *arg0) {
 
 }
 
@@ -2837,49 +2838,53 @@ loop_2:
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005D1F4.s")
 #endif
 
-extern Gfx D_0F05D1E8[];
-extern Gfx D_0F05D420[];
-extern Gfx D_0F05D674[];
-extern Gfx D_0F05DA50[];
-extern Gfx D_0F05DDFC[];
-extern Gfx D_0F05DFC0[];
-extern Gfx D_0F05E19C[];
-extern Gfx D_0F05E3E0[];
-extern s32 D_8018D420;
-extern s32 D_8018D424;
-extern s32 D_8018D438;
-extern s32 D_8018D43C;
-extern s32 D_8018D440;
-extern s32 D_8018D444;
-extern s32 D_8018D448;
-extern s32 D_8018D44C;
-extern s32 D_8018D450;
-extern s32 D_8018D454;
-extern s32 D_8018D458;
-extern s32 D_8018D45C;
-extern s32 D_8018D460;
-extern s32 D_8018D464;
-extern s32 D_8018D468;
-extern s32 D_8018D46C;
-extern s32 D_8018D470;
-extern s32 D_8018D478;
-extern s32 D_8018D480;
-extern s32 D_8018D484;
-extern s32 D_8018D488;
-extern s32 D_8018D494;
-extern s32 D_8018D498;
-extern s32 D_8018D49C;
-extern s32 D_8018D4A0;
-extern s32 D_8018D4A4;
-extern s32 D_8018D4A8;
-extern s32 D_8018D4AC;
-extern s32 D_8018D4B0;
-extern s32 D_8018D4B4;
-extern s32 D_8018D4B8;
-extern s32 D_8018D4BC;
-extern s32 D_8018D4C0;
-extern s32 D_8018D4C4;
-extern s32 D_8018D4C8;
+
+// todo: Import?
+// Appears to be balloons
+extern u8 D_0F05D1E8[]; // unk
+extern u8 D_0F05D420[]; // unk
+extern u8 D_0F05D674[]; // unk
+extern u8 D_0F05DA50[]; // unk
+extern u8 D_0F05DDFC[]; // unk
+extern u8 D_0F05DFC0[]; // unk
+extern u8 D_0F05E19C[]; // balloon top?
+extern u8 D_0F05E3E0[]; // balloon bottom?
+
+
+
+extern u8 *D_8018D420;
+extern u8 *D_8018D424;
+extern u8 *D_8018D438;
+extern u8 *D_8018D43C;
+extern u8 *D_8018D440;
+extern u8 *D_8018D444;
+extern u8 *D_8018D448;
+extern u8 *D_8018D44C;
+extern u8 *D_8018D450;
+extern u8 *D_8018D454;
+extern u8 *D_8018D458;
+extern u8 *D_8018D45C;
+extern u8 *D_8018D460;
+extern u8 *D_8018D464;
+extern u8 *D_8018D468;
+extern u8 *D_8018D46C;
+extern u8 *D_8018D470;
+extern u8 *D_8018D478;
+extern u8 *D_8018D488;
+extern u8 *D_8018D494;
+extern u8 *D_8018D498;
+extern u8 *D_8018D49C;
+extern u8 *D_8018D4A0;
+extern u8 *D_8018D4A4;
+extern u8 *D_8018D4A8;
+extern u8 *D_8018D4AC;
+extern u8 *D_8018D4B0;
+extern u8 *D_8018D4B4;
+extern u8 *D_8018D4B8;
+extern u8 *D_8018D4BC;
+extern u8 *D_8018D4C0;
+extern u8 *D_8018D4C4;
+extern u8 *D_8018D4C8;
 extern u8 gTexture69B03C[];
 extern u8 gTexture69B140[];
 extern u8 gTexture69B378[];
@@ -2910,45 +2915,46 @@ extern u8 gTextureKartShadow[];
 extern u8 gTextureLightningBolt0[];
 extern u8 gTextureLightningBolt1[];
 
+// Appears to load GP Mode race staging balloons and kart shadows.
 void func_8005D290(void) {
-    D_8018D488 = dma_textures(&gTexture69C80C, 0x400, 0x400);
-    D_8018D474 = dma_textures(&gTextureKartShadow, 0x1000, 0x1000);
-    D_8018D420 = dma_textures(&gTexture69B03C, 0x100, 0x100);
-    D_8018D424 = dma_textures(&gTexture69B140, 0x400, 0x400);
-    D_8018D478 = dma_textures(&gTexture69C1E8, 0x200, 0x200);
-    D_8018D480 = dma_textures(&gTexture69BA28, 0x400, 0x400);
-    D_8018D484 = dma_textures(&gTexture69B960, 0x400, 0x400);
-    D_8018D48C = dma_textures(&gTexture69C354, 0x400, 0x400);
-    D_8018D494 = dma_textures(&gTexture69C4E4, 0x400, 0x400);
+    D_8018D488 = dma_textures(gTexture69C80C, 0x400, 0x400);
+    D_8018D474 = dma_textures(gTextureKartShadow, 0x1000, 0x1000);
+    D_8018D420 = dma_textures(gTexture69B03C, 0x100, 0x100);
+    D_8018D424 = dma_textures(gTexture69B140, 0x400, 0x400);
+    D_8018D478 = dma_textures(gTexture69C1E8, 0x200, 0x200);
+    D_8018D480 = dma_textures(gTexture69BA28, 0x400, 0x400);
+    D_8018D484 = dma_textures(gTexture69B960, 0x400, 0x400);
+    D_8018D48C = dma_textures(gTexture69C354, 0x400, 0x400);
+    D_8018D494 = dma_textures(gTexture69C4E4, 0x400, 0x400);
     D_8018D490 = D_8018D48C;
-    D_8018D498 = dma_textures(&gTexture69B378, 0x1000, 0x1000);
-    D_8018D4BC = dma_textures(&D_0F05E19C, 0x800, 0x800);
-    D_8018D4C0 = dma_textures(&D_0F05E3E0, 0x800, 0x800);
-    D_8018D49C = dma_textures(&gTexture69C9C4, 0x200, 0x200);
-    D_8018D4A0 = dma_textures(&gTextureBoingExclamation, 0x800, 0x800);
-    D_8018D4A4 = dma_textures(&D_0F05DDFC, 0x800, 0x800);
-    D_8018D4A8 = dma_textures(&D_0F05DFC0, 0x800, 0x800);
-    D_8018D4AC = dma_textures(&D_0F05D674, 0x800, 0x800);
-    D_8018D4B0 = dma_textures(&D_0F05DA50, 0x800, 0x800);
-    D_8018D4B4 = dma_textures(&D_0F05D1E8, 0x800, 0x800);
-    D_8018D4B8 = dma_textures(&D_0F05D420, 0x800, 0x800);
-    D_8018D438 = dma_textures(&gTexture69CB84, 0x800, 0x800);
-    D_8018D43C = dma_textures(&gTexture69CCEC, 0x800, 0x800);
-    D_8018D440 = dma_textures(&gTexture69CEB8, 0x800, 0x800);
-    D_8018D444 = dma_textures(&gTexture69D148, 0x800, 0x800);
-    D_8018D448 = dma_textures(&gTexture69D4E0, 0x800, 0x800);
-    D_8018D44C = dma_textures(&gTexture69D8FC, 0x800, 0x800);
-    D_8018D450 = dma_textures(&gTexture69DCB4, 0x800, 0x800);
-    D_8018D454 = dma_textures(&gTexture69DFA0, 0x800, 0x800);
-    D_8018D458 = dma_textures(&gTexture69E25C, 0x800, 0x800);
-    D_8018D45C = dma_textures(&gTexture69E518, 0x800, 0x800);
-    D_8018D460 = dma_textures(&gTexture69E7A8, 0x800, 0x800);
-    D_8018D464 = dma_textures(&gTexture69EA18, 0x800, 0x800);
-    D_8018D468 = dma_textures(&gTexture69EC54, 0x800, 0x800);
-    D_8018D46C = dma_textures(&gTexture69EE38, 0x800, 0x800);
-    D_8018D470 = dma_textures(&gTexture69EFE0, 0x800, 0x800);
-    D_8018D4C4 = dma_textures(&gTextureLightningBolt0, 0x800, 0x800);
-    D_8018D4C8 = dma_textures(&gTextureLightningBolt1, 0x800, 0x800);
+    D_8018D498 = dma_textures(gTexture69B378, 0x1000, 0x1000);
+    D_8018D4BC = dma_textures(D_0F05E19C, 0x800, 0x800);
+    D_8018D4C0 = dma_textures(D_0F05E3E0, 0x800, 0x800);
+    D_8018D49C = dma_textures(gTexture69C9C4, 0x200, 0x200);
+    D_8018D4A0 = dma_textures(gTextureBoingExclamation, 0x800, 0x800);
+    D_8018D4A4 = dma_textures(D_0F05DDFC, 0x800, 0x800);
+    D_8018D4A8 = dma_textures(D_0F05DFC0, 0x800, 0x800);
+    D_8018D4AC = dma_textures(D_0F05D674, 0x800, 0x800);
+    D_8018D4B0 = dma_textures(D_0F05DA50, 0x800, 0x800);
+    D_8018D4B4 = dma_textures(D_0F05D1E8, 0x800, 0x800);
+    D_8018D4B8 = dma_textures(D_0F05D420, 0x800, 0x800);
+    D_8018D438 = dma_textures(gTexture69CB84, 0x800, 0x800);
+    D_8018D43C = dma_textures(gTexture69CCEC, 0x800, 0x800);
+    D_8018D440 = dma_textures(gTexture69CEB8, 0x800, 0x800);
+    D_8018D444 = dma_textures(gTexture69D148, 0x800, 0x800);
+    D_8018D448 = dma_textures(gTexture69D4E0, 0x800, 0x800);
+    D_8018D44C = dma_textures(gTexture69D8FC, 0x800, 0x800);
+    D_8018D450 = dma_textures(gTexture69DCB4, 0x800, 0x800);
+    D_8018D454 = dma_textures(gTexture69DFA0, 0x800, 0x800);
+    D_8018D458 = dma_textures(gTexture69E25C, 0x800, 0x800);
+    D_8018D45C = dma_textures(gTexture69E518, 0x800, 0x800);
+    D_8018D460 = dma_textures(gTexture69E7A8, 0x800, 0x800);
+    D_8018D464 = dma_textures(gTexture69EA18, 0x800, 0x800);
+    D_8018D468 = dma_textures(gTexture69EC54, 0x800, 0x800);
+    D_8018D46C = dma_textures(gTexture69EE38, 0x800, 0x800);
+    D_8018D470 = dma_textures(gTexture69EFE0, 0x800, 0x800);
+    D_8018D4C4 = dma_textures(gTextureLightningBolt0, 0x800, 0x800);
+    D_8018D4C8 = dma_textures(gTextureLightningBolt1, 0x800, 0x800);
 }
 
 void func_8005D6C0(Player* player) {
@@ -4082,7 +4088,7 @@ block_19:
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80060504.s")
 #endif
 
-void func_800608E0(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
+void func_800608E0(Player *player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8 arg4) {
     f32 var_f0;
     f32 sp50;
     f32 sp4C;
@@ -4120,9 +4126,9 @@ void func_80060B14(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     }
 }
 
-void func_80060BCC(Player *player, s16 arg1, s32 arg2, s32 arg3) {
+void func_80060BCC(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
     s32 sp54;
-    s32 stackPadding0;
+    UNUSED s32 pad;
     s32 sp4C;
     f32 sp48;
     f32 sp44;
@@ -4207,7 +4213,7 @@ void func_80061224(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     }
 }
 
-void func_800612F8(Player *player, s32 arg1, s32 arg2, s32 arg3) {
+void func_800612F8(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
     s32 var_s2;
 
     for (var_s2 = 0; var_s2 < 10; var_s2++){
@@ -4225,7 +4231,7 @@ void func_800612F8(Player *player, s32 arg1, s32 arg2, s32 arg3) {
     player->unk_046 &= ~0x0008;
 }
 
-void func_80061430(Player *player, s32 arg1, s32 arg2, s32 arg3) {
+void func_80061430(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
     s32 var_s2;
 
     for (var_s2 = 0; var_s2 < 7; var_s2++){
@@ -4277,7 +4283,7 @@ void func_800615AC(Player *player, s16 arg1, s32 arg2, s32 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800615AC.s")
 #endif
 
-void func_80061754(Player *player, s16 arg1, s32 arg2, s32 arg3, s32 arg4) {
+void func_80061754(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED s32 arg4) {
     s32 sp54;
     s16 temp_s1;
     s32 sp4C;
@@ -4324,12 +4330,12 @@ void func_8006199C(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     }
 }
 
-void func_80061A34(Player *player, s16 arg1, s32 arg2, s32 arg3) {
+void func_80061A34(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
     s32 sp54;
-    s32 stackPadding0;
+    UNUSED s32 stackPadding0;
     s32 sp4C;
     f32 sp48;
-    s32 stackPadding1;
+    UNUSED s32 stackPadding1;
 
     sp54 = random_int(0x0168U) - 0xB4;
     sp4C = random_int(6U);
@@ -4384,13 +4390,13 @@ void func_80061D4C(Player *player, s16 arg1, s32 arg2, s32 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80061D4C.s")
 #endif
 
-void func_80061EF4(Player *player, s16 arg1, s32 arg2, s32 arg3) {
-    s32 stackPadding0;
+void func_80061EF4(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
+    UNUSED s32 stackPadding0;
     s32 var_t0 = 0x000000FF;
     s32 var_t1;
     s32 temp_v1;
     f32 var_f2;
-    s32 stackPadding1;
+    UNUSED s32 stackPadding1;
 
     if(1) {};
     temp_v1 = random_int(8U) & 1;
@@ -4504,7 +4510,7 @@ void func_80062484(Player* player, UnkPlayerStruct258* arg1, s32 arg2) {
     arg1->unk_01E = 0;
 }
 
-void func_800624D8(Player *player, s32 arg1, s32 arg2, s32 arg3) {
+void func_800624D8(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
     s32 var_s1;
 
     switch (player->unk_0F8) {
@@ -5009,7 +5015,7 @@ void func_80063D58(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     }
 }
 
-void func_80063FBC(Player *player, s16 arg1, s32 arg2, s32 arg3) {
+void func_80063FBC(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
     f32 sp3C;
     f32 sp38;
     f32 sp34;
@@ -5081,11 +5087,11 @@ void func_800643A8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     }
 }
 
-void func_800644E8(Player *player, s16 arg1, s32 arg2, s32 arg3) {
+void func_800644E8(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
     f32 thing2;
-    s32 stackPadding0;
+    UNUSED s32 stackPadding0;
     s32 thing;
-    s32 stackPadding1;
+    UNUSED s32 stackPadding1;
 
     if (player->unk_258[30 + arg1].unk_01E >= 9) {
         player->unk_258[30 + arg1].unk_01E = 9;
@@ -5109,11 +5115,11 @@ void func_800644E8(Player *player, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-void func_80064664(Player *player, s16 arg1, s32 arg2, s32 arg3) {
+void func_80064664(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
     f32 temp_f4;
-    s32 stackPadding0;
+    UNUSED s32 stackPadding0;
     s32 temp_v1;
-    s32 stackPadding1;
+    UNUSED s32 stackPadding1;
 
     temp_v1 = player->unk_258[30 + arg1].unk_01E;
     temp_f4 = player->unk_258[30 + arg1].unk_024;
@@ -5550,7 +5556,7 @@ void func_8006538C(Player *player, s8 arg1, s16 arg2, s8 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006538C.s")
 #endif
 
-void func_800658A0(Player *player, s8 arg1, s16 arg2, s8 arg3) {
+void func_800658A0(Player *player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp54;
     Vec3s sp4C;
     s16 red;

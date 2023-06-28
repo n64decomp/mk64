@@ -14,6 +14,10 @@
 #include "code_80057C60.h"
 #include "framebuffers.h"
 #include "waypoints.h"
+#include "code_80027D00.h"
+#include "hud_renderer.h"
+
+void func_80020BF4(void);
 
 s8 D_800DDB50[] = {
     0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x00, 0x02
@@ -40,10 +44,10 @@ void func_8001F980(s32 *arg0, s32 *arg1) {
 }
 
 void func_8001F9E4(Player *player, Camera *camera, s8 arg2) {
-    s32 pad;
+    UNUSED s32 pad;
     s32 sp30;
     s32 sp2C;
-    s32 pad2;
+    UNUSED s32 pad2;
 
     get_player_index_for_player(player);
     func_8001F980(&sp30, &sp2C);
@@ -60,7 +64,7 @@ void func_8001F9E4(Player *player, Camera *camera, s8 arg2) {
 }
 
 u16 func_8001FB0C(Player *player, Camera *camera, f32 arg2, f32 arg3) {
-    f32 pad[6];
+    UNUSED f32 pad[6];
     f32 sp64;
     f32 sp60;
     f32 sp5C;
@@ -105,7 +109,7 @@ u16 func_8001FB0C(Player *player, Camera *camera, f32 arg2, f32 arg3) {
     return ret;
 }
 
-u16 func_8001FD78(Player *player, f32 posX, f32 arg2, f32 posZ) {
+u16 func_8001FD78(Player *player, f32 posX, UNUSED f32 arg2, f32 posZ) {
     f32 sp64;
     f32 sp60;
     f32 sp5c;
@@ -289,13 +293,13 @@ void func_80020524(void) {
 
             func_80027560(D_80164AD0[i], D_80164AB0[i], D_80164AC0[i], D_80164AC0[i], D_801651D0[D_80164AC0[i]][D_80164AB0[i]]);
 
-            mio0decode(&D_802DFB80[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]],
-                       &D_802BFB80[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]]);
+            mio0decode((u8 *)&D_802DFB80[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]],
+                       (u8 *)&D_802BFB80[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]]);
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
 
-    mio0decode(&D_802DFB80[D_801651D0[D_80164ABE[D_800DDB58]][D_80164AAE[D_800DDB58]]][D_80164ABE[D_800DDB58]][D_80164AAE[D_800DDB58]],
-               &D_802BFB80[D_801651D0[D_80164ABE[D_800DDB58]][D_80164AAE[D_800DDB58]]][D_80164ABE[D_800DDB58]][D_80164AAE[D_800DDB58]]);
+    mio0decode((u8 *)&D_802DFB80[D_801651D0[D_80164ABE[D_800DDB58]][D_80164AAE[D_800DDB58]]][D_80164ABE[D_800DDB58]][D_80164AAE[D_800DDB58]],
+               (u8 *)&D_802BFB80[D_801651D0[D_80164ABE[D_800DDB58]][D_80164AAE[D_800DDB58]]][D_80164ABE[D_800DDB58]][D_80164AAE[D_800DDB58]]);
 }
 
 #ifdef MIPS_TO_C
@@ -309,7 +313,6 @@ extern s16 D_80164AAE;
 extern s16 D_80164AB0;
 extern s16 D_80164ABE;
 extern s16 D_80164AC0;
-extern Player *D_80164AD0;
 extern u16 gFramebuffer0;
 extern u16 gFramebuffer1;
 extern u16 gFramebuffer2;
@@ -516,12 +519,12 @@ void func_80021244(Player *player, s8 arg1, s8 arg2) {
 }
 
 void func_800212B4(void) {
-    s32 stackPadding0;
-    char *sp3C[8] = {
+    UNUSED s32 pad;
+    UNUSED char *sp3C[8] = {
         "S_MARIO", "S_LUIZI", "S_YOSSY", "S_KINOP",
         "S_DONKY", "S_WARIO", "S_PEACH", "S_KUPPA",
     };
-    char *sp1C[8] = {
+    UNUSED char *sp1C[8] = {
         "J_MARIO", "J_LUIZI", "J_YOSSY", "J_KINOP",
         "J_DONKY", "J_WARIO", "J_PEACH", "J_KUPPA",
     };
@@ -580,108 +583,108 @@ f32 D_800DDBD4[] = {
     0.75f, 0.75f, 0.75f, 0.75f
 };
 
-u8 *gKartMarioWheels0[] = {
+u8 **gKartMarioWheels0[] = {
     gKartMario168Wheel0, gKartMario147Wheel0, gKartMario126Wheel0, gKartMario105Wheel0,
     gKartMario084Wheel0, gKartMario063Wheel0, gKartMario042Wheel0, gKartMario021Wheel0,
     gKartMario000Wheel0
 };
 
-u8 *gKartMarioWheels1[] = {
+u8 **gKartMarioWheels1[] = {
     gKartMario269Wheel0, gKartMario269Wheel0, gKartMario249Wheel0, gKartMario229Wheel0,
     gKartMario229Wheel0, gKartMario229Wheel0, gKartMario209Wheel0, gKartMario189Wheel0,
     gKartMario189Wheel0
 };
 
-u8 *gKartLuigiWheels0[] = {
+u8 **gKartLuigiWheels0[] = {
     gKartLuigi168Wheel0, gKartLuigi147Wheel0, gKartLuigi126Wheel0, gKartLuigi105Wheel0,
     gKartLuigi084Wheel0, gKartLuigi063Wheel0, gKartLuigi042Wheel0, gKartLuigi021Wheel0,
     gKartLuigi000Wheel0
 };
 
-u8 *gKartLuigiWheels1[] = {
+u8 **gKartLuigiWheels1[] = {
     gKartLuigi269Wheel0, gKartLuigi269Wheel0, gKartLuigi249Wheel0, gKartLuigi229Wheel0,
     gKartLuigi229Wheel0, gKartLuigi229Wheel0, gKartLuigi209Wheel0, gKartLuigi189Wheel0,
     gKartLuigi189Wheel0
 };
 
-u8 *gKartBowserWheels0[] = {
+u8 **gKartBowserWheels0[] = {
     gKartBowser168Wheel0, gKartBowser147Wheel0, gKartBowser126Wheel0, gKartBowser105Wheel0,
     gKartBowser084Wheel0, gKartBowser063Wheel0, gKartBowser042Wheel0, gKartBowser021Wheel0,
     gKartBowser000Wheel0
 };
 
-u8 *gKartBowserWheels1[] = {
+u8 **gKartBowserWheels1[] = {
     gKartBowser269Wheel0, gKartBowser269Wheel0, gKartBowser249Wheel0, gKartBowser229Wheel0,
     gKartBowser229Wheel0, gKartBowser229Wheel0, gKartBowser209Wheel0, gKartBowser189Wheel0,
     gKartBowser189Wheel0
 };
 
-u8 *gKartToadWheels0[] = {
+u8 **gKartToadWheels0[] = {
     gKartToad168Wheel0, gKartToad147Wheel0, gKartToad126Wheel0, gKartToad105Wheel0,
     gKartToad084Wheel0, gKartToad063Wheel0, gKartToad042Wheel0, gKartToad021Wheel0,
     gKartToad000Wheel0
 };
 
-u8 *gKartToadWheels1[] = {
+u8 **gKartToadWheels1[] = {
     gKartToad269Wheel0, gKartToad269Wheel0, gKartToad249Wheel0, gKartToad229Wheel0,
     gKartToad229Wheel0, gKartToad229Wheel0, gKartToad209Wheel0, gKartToad189Wheel0,
     gKartToad189Wheel0
 };
 
-u8 *gKartYoshiWheels0[] = {
+u8 **gKartYoshiWheels0[] = {
     gKartYoshi168Wheel0, gKartYoshi147Wheel0, gKartYoshi126Wheel0, gKartYoshi105Wheel0,
     gKartYoshi084Wheel0, gKartYoshi063Wheel0, gKartYoshi042Wheel0, gKartYoshi021Wheel0,
     gKartYoshi000Wheel0
 };
 
-u8 *gKartYoshiWheels1[] = {
+u8 **gKartYoshiWheels1[] = {
     gKartYoshi269Wheel0, gKartYoshi269Wheel0, gKartYoshi249Wheel0, gKartYoshi229Wheel0,
     gKartYoshi229Wheel0, gKartYoshi229Wheel0, gKartYoshi209Wheel0, gKartYoshi189Wheel0,
     gKartYoshi189Wheel0
 };
 
-u8 *gKartDKWheels0[] = {
+u8 **gKartDKWheels0[] = {
     gKartDK168Wheel0, gKartDK147Wheel0, gKartDK126Wheel0, gKartDK105Wheel0,
     gKartDK084Wheel0, gKartDK063Wheel0, gKartDK042Wheel0, gKartDK021Wheel0,
     gKartDK000Wheel0
 };
 
-u8 *gKartDKWheels1[] = {
+u8 **gKartDKWheels1[] = {
     gKartDK269Wheel0, gKartDK269Wheel0, gKartDK249Wheel0, gKartDK229Wheel0,
     gKartDK229Wheel0, gKartDK229Wheel0, gKartDK209Wheel0, gKartDK189Wheel0,
     gKartDK189Wheel0
 };
 
-u8 *gKartPeachWheels0[] = {
+u8 **gKartPeachWheels0[] = {
     gKartPeach168Wheel0, gKartPeach147Wheel0, gKartPeach126Wheel0, gKartPeach105Wheel0,
     gKartPeach084Wheel0, gKartPeach063Wheel0, gKartPeach042Wheel0, gKartPeach021Wheel0,
     gKartPeach000Wheel0
 };
 
-u8 *gKartPeachWheels1[] = {
+u8 **gKartPeachWheels1[] = {
     gKartPeach269Wheel0, gKartPeach269Wheel0, gKartPeach249Wheel0, gKartPeach229Wheel0,
     gKartPeach229Wheel0, gKartPeach229Wheel0, gKartPeach209Wheel0, gKartPeach189Wheel0,
     gKartPeach189Wheel0
 };
 
-u8 *gKartWarioWheels0[] = {
+u8 **gKartWarioWheels0[] = {
     gKartWario168Wheel0, gKartWario147Wheel0, gKartWario126Wheel0, gKartWario105Wheel0,
     gKartWario084Wheel0, gKartWario063Wheel0, gKartWario042Wheel0, gKartWario021Wheel0,
     gKartWario000Wheel0
 };
 
-u8 *gKartWarioWheels1[] = {
+u8 **gKartWarioWheels1[] = {
     gKartWario269Wheel0, gKartWario269Wheel0, gKartWario249Wheel0, gKartWario229Wheel0,
     gKartWario229Wheel0, gKartWario229Wheel0, gKartWario209Wheel0, gKartWario189Wheel0,
     gKartWario189Wheel0
 };
 
-u8 *D_800DDE34[] = {
+u8 ***D_800DDE34[] = {
     gKartMarioWheels0, gKartLuigiWheels0, gKartYoshiWheels0, gKartToadWheels0,
     gKartDKWheels0,    gKartWarioWheels0, gKartPeachWheels0, gKartBowserWheels0
 };
 
-u8 *D_800DDE54[] = {
+u8 ***D_800DDE54[] = {
     gKartMarioWheels1, gKartLuigiWheels1, gKartYoshiWheels1, gKartToadWheels1,
     gKartDKWheels1,    gKartWarioWheels1, gKartPeachWheels1, gKartBowserWheels1
 };
@@ -830,7 +833,7 @@ void func_80021DA8(void) {
 }
 
 void func_80021E10(Mat4 arg0, Vec3f arg1, Vec3s arg2) {
-    f32 stackPadding[3];
+    UNUSED f32 pad[3];
     f32 sin1;
     f32 cos1;
     f32 sin2;
@@ -1125,7 +1128,7 @@ void func_80022BC4(Player *player, UNUSED s8 arg1) {
     player->unk_DB6 = temp_v0;
 }
 
-void func_80022CA8(Player *player, s8 arg1, s8 arg2, s8 arg3) {
+void func_80022CA8(Player *player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
     s16 temp_v0 = player->unk_DA4;
 
     D_800DDBB4[arg1][arg3 + 0x0].v.ob[1] = 18 - (temp_v0 * 2.3);
@@ -1140,7 +1143,7 @@ void func_80022CA8(Player *player, s8 arg1, s8 arg2, s8 arg3) {
  * Seems to stretch/warp a specific players texture for a
  * short period of time. Perhaps does not do anything
  **/
-void func_80022D60(UNUSED Player *player, s8 arg1, s8 arg2, s8 arg3) {
+void func_80022D60(UNUSED Player *player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
     D_800DDBB4[arg1][arg3].v.ob[1] = 21;
     D_800DDBB4[arg1][arg3 + 0x3].v.ob[1] = 21;
 }
@@ -1170,7 +1173,7 @@ void func_80022DB4(Player *player, UNUSED s8 arg1) {
     player->unk_DCC = temp_v0;
 }
 
-void func_80022E84(Player *player, s8 arg1, s8 arg2, s8 arg3) {
+void func_80022E84(Player *player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
     s16 temp_v0 = player->unk_DD2;
 
     D_800DDBB4[arg1][arg3 + 0x0].v.ob[1] = 18 - temp_v0;
@@ -1184,7 +1187,7 @@ void func_80022E84(Player *player, s8 arg1, s8 arg2, s8 arg3) {
 /**
  * Sets player shading/colour.
  */
-void func_80022F14(Player *player, s8 arg1, s32 arg2, f32 arg3) {
+void func_80022F14(UNUSED Player *player, s8 arg1, s32 arg2, f32 arg3) {
     D_80164B10[arg1] = (s16) ((f32)D_80164B10[arg1] - ((D_80164B10[arg1] - ((arg2 >> 16) & 0xFF)) * arg3));
 
     D_80164B20[arg1] = (s16) ((f32)D_80164B20[arg1] - ((D_80164B20[arg1] - ((arg2 >> 8) & 0xFF)) * arg3));
@@ -1192,7 +1195,7 @@ void func_80022F14(Player *player, s8 arg1, s32 arg2, f32 arg3) {
     D_80164B30[arg1] = (s16) ((f32)D_80164B30[arg1] - ((D_80164B30[arg1] - (arg2 & 0xFF)) * arg3));
 }
 
-void func_80023038(Player *player, s8 arg1, s32 arg2, f32 arg3) {
+void func_80023038(UNUSED Player *player, s8 arg1, s32 arg2, f32 arg3) {
     move_u16_towards(&D_80164B40[arg1], (arg2 >> 16) & 0xFF, arg3);
     move_u16_towards(&D_80164B50[arg1], (arg2 >> 8)  & 0xFF, arg3);
     move_u16_towards(&D_80164B60[arg1], arg2 & 0xFF, arg3);
@@ -1202,7 +1205,7 @@ void func_80023038(Player *player, s8 arg1, s32 arg2, f32 arg3) {
  * Activates in the tunnel to shade the player a bit darker
  * Sort of an atmospheric effect.
  */
-s32 func_800230E4(s32 arg0, s8 arg1) {
+s32 func_800230E4(Player *player, s8 arg1) {
     switch (gCurrentCourseId) {
         case 8:
             if (((gNearestWaypointByPlayerId[arg1] >= 0x14F) && (gNearestWaypointByPlayerId[arg1] < 0x158)) 
@@ -1210,8 +1213,8 @@ s32 func_800230E4(s32 arg0, s8 arg1) {
             || ((gNearestWaypointByPlayerId[arg1] >= 0x169) && (gNearestWaypointByPlayerId[arg1] < 0x170)) 
             || ((gNearestWaypointByPlayerId[arg1] >= 0x174) && (gNearestWaypointByPlayerId[arg1] < 0x17A)) 
             || ((gNearestWaypointByPlayerId[arg1] >= 0x17E) && (gNearestWaypointByPlayerId[arg1] < 0x184))) {
-                func_80022F14(arg0, arg1, 0x1C0000, 0.3f);
-                func_80023038(arg0, arg1, 0xE0, 0.3f);
+                func_80022F14(player, arg1, 0x1C0000, 0.3f);
+                func_80023038(player, arg1, 0xE0, 0.3f);
                 D_80164B80[arg1] = 0;
                 return 1;
             }
@@ -1393,7 +1396,7 @@ void func_80023BF0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
 
 void func_80023C84(Player *player, s8 arg1, s8 arg2) {
     Mat4 sp118;
-    Mat4 pad;
+    UNUSED Mat4 pad;
     Vec3f spCC;
     Vec3s spC4;
     s16 temp_t9;
@@ -1401,9 +1404,7 @@ void func_80023C84(Player *player, s8 arg1, s8 arg2) {
     Vec3f spB4;
     f32 spB0;
     f32 spAC;
-    s32 pad2;
-    f32 sp9C;
-    f32 sp38;
+    UNUSED Vec3f pad2;
     f32 var_f2;
 
     temp_t9 = (u16)(player->unk_048[arg2] + player->unk_02C[1] + player->unk_0C0) / 128; // << 7) & 0xFFFF;
@@ -1467,15 +1468,15 @@ void func_80023C84(Player *player, s8 arg1, s8 arg2) {
 
 void func_80024374(Player *player, s8 arg1, s8 arg2) {
     Mat4 sp118;
-    Mat4 pad;
+    UNUSED Mat4 pad;
     Vec3f spCC;
     Vec3s spC4;
     s16 temp_t9;
     s16 spC0;
-    Vec3f stackPadding0;
+    UNUSED Vec3f pad2;
     f32 spB0;
     f32 spAC;
-    Vec3f stackPadding1;
+    UNUSED Vec3f pad3;
     Vec3f sp94 = { 9.0f, 7.0f, 5.0f };
 
     temp_t9 = (u16)(player->unk_048[arg2] + player->unk_02C[1] + player->unk_0C0) / 128;
@@ -2706,6 +2707,6 @@ UNUSED void func_8002701C(void) {
 
 }
 
-UNUSED void func_80027024(s32 arg0, s32 arg1, s32 arg2) {
+UNUSED void func_80027024(UNUSED s32 arg0, UNUSED s32 arg1, UNUSED s32 arg2) {
 
 }

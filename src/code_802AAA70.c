@@ -10,7 +10,7 @@ void nullify_displaylist(uintptr_t addr) {
 
     Gfx *macro;
 
-    macro = VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    macro = (Gfx *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     macro->words.w0 = G_ENDDL << 24;
     macro->words.w1 = 0;
 }
@@ -758,7 +758,7 @@ void func_802AC098(UnkActorInner *arg0, f32 *velocity) {
     }
 }
 
-void func_802AC114(Vec3f arg0, f32 arg1, Vec3f arg2, f32 arg3) {
+void func_802AC114(Vec3f arg0, f32 arg1, Vec3f arg2, UNUSED f32 arg3) {
     f32 temp_f0;
     f32 temp_f12;
     f32 temp_f14;
@@ -2494,7 +2494,7 @@ GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AF5D8.s")
 void func_802AF7B4(uintptr_t addr, s32 uls, s32 ult) {
     s32 segment = SEGMENT_NUMBER2(addr);
     s32 offset = SEGMENT_OFFSET(addr);
-    Gfx *phi_v0 = VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    Gfx *phi_v0 = (Gfx *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     s32 gfxCommand;
 
     uls = (uls << 12) & 0xFFF000;

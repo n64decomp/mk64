@@ -182,7 +182,6 @@ void func_80280A28(Vec3f arg0, Vec3s arg1, f32 arg2) {
 }
 
 #ifdef NON_MATCHING
-extern u32 D_8018D48C;
 
 void func_80280B50(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha) {
     Vec3f sp4C;

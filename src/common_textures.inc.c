@@ -2359,7 +2359,7 @@ s8 D_0D00A958[] = {
 };
 
 // 123/
-s8 D_0D00AB58[] = {
+u8 D_0D00AB58[] = {
     #include "textures/common/132B50_0AB58.rgba16.inc.c"
 };
 
@@ -2394,7 +2394,7 @@ s8 D_0D00C158[] = {
 };
 
 // 0123456789'"!
-s8 D_0D00C558[] = {
+u8 D_0D00C558[] = {
     #include "textures/common/132B50_0C558.rgba16.inc.c"
 };
 
@@ -2652,7 +2652,7 @@ s8 gTLUTItemWindowFakeItemBox[] = {
 };
 
 // UI Item Frames
-s8 gTextureItemWindowNone[] = {
+u8 gTextureItemWindowNone[] = {
     #include "assets/item_window/gTextureItemWindowNone.inc.c"
 };
 
@@ -2716,7 +2716,7 @@ s8 gTextureItemWindowFakeItemBox[] = {
     #include "assets/item_window/gTextureItemWindowFakeItemBox.inc.c"
 };
 
-s8 gTLUTLakituCountdown[][512] = {
+u8 gTLUTLakituCountdown[][512] = {
     {
         #include "assets/lakitu/nolights/gTLUTLakituNoLights.inc.c"
     },
@@ -2736,23 +2736,23 @@ s8 gTLUTLakituCountdown[][512] = {
  * Appears to be animation textures.
 */
 
-s8 gTLUTLakituCheckeredFlag[] = {
+u8 gTLUTLakituCheckeredFlag[] = {
     #include "assets/lakitu/checkeredflag/gTLUTLakituCheckeredFlag.inc.c"
 };
 
-s8 gTLUTLakituSecondLap[] = {
+u8 gTLUTLakituSecondLap[] = {
     #include "assets/lakitu/secondlap/gTLUTLakituSecondLap.inc.c"
 };
 
-s8 gTLUTLakituFinalLap[] = {
+u8 gTLUTLakituFinalLap[] = {
     #include "assets/lakitu/finallap/gTLUTLakituFinalLap.inc.c"
 };
 
-s8 gTLUTLakituReverse[] = {
+u8 gTLUTLakituReverse[] = {
     #include "assets/lakitu/reverse/gTLUTLakituReverse.inc.c"
 };
 
-s8 gTLUTLakituFishing[] = {
+u8 gTLUTLakituFishing[] = {
     #include "assets/lakitu/fishing/gTLUTLakituFishing.inc.c"
 };
 
@@ -2804,7 +2804,7 @@ UNUSED s8 D_0D028958[] = {
 };
 
 // leaf
-s8 D_0D028DD8[] = {
+u8 D_0D028DD8[] = {
     #include "textures/common/132B50_28DD8.rgba16.inc.c"
 };
 
@@ -2815,7 +2815,7 @@ s8 D_0D0291D8[] = {
 
 
 // Cloud smoke or fog?
-s8 D_0D0293D8[] = {
+u8 D_0D0293D8[] = {
     #include "textures/common/132B50_293D8.i4.inc.c"
 };
 
@@ -2835,7 +2835,7 @@ s8 D_0D02A858[] = {
     #include "textures/common/tlut2/132B50_29858.rgba16.ci8.tlut.inc.c"
 };
 
-s8 D_0D02AA58[] = {
+u8 D_0D02AA58[] = {
     #include "textures/common/132B50_2AA58.rgba16.inc.c"
 };
 
@@ -2855,7 +2855,7 @@ s8 D_0D02B858[] = {
     #include "textures/common/132B50_2B858.i8.inc.c"
 };
 
-s8 D_0D02BC58[] = {
+u8 D_0D02BC58[] = {
     #include "textures/common/132B50_2BC58.i8.inc.c"
 };
 

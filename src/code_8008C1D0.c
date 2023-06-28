@@ -23,7 +23,7 @@ void func_8008C1D8(UNUSED s32 *arg0) {
 
 }
 
-void func_8008C1E0(UNUSED s32 arg0, UNUSED s32 arg1)  {
+void func_8008C1E0(UNUSED s32 *arg0, UNUSED s32 arg1)  {
     arg1 = 4;
 }
 

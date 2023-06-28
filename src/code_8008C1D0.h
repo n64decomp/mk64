@@ -7,7 +7,7 @@
 
 void func_unnamed();
 void func_8008C1D8(s32*);
-void func_8008C1E0(s32, s32);
+void func_8008C1E0(s32*, s32);
 void func_unnamed1(s32);
 void func_unnamed2(s32);
 void func_unnamed3();

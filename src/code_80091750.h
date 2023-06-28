@@ -60,6 +60,14 @@ typedef struct {
 
 /* Function Prototypes */
 
+void func_800A7A4C(s32);
+void func_8009DF8C(u32, s8);
+void func_8009DEF8(u32, s8);
+void func_8009D77C(s32,s32,s32);
+void func_8009CBE4(s32, s32, s32);
+void func_800996BC(MkTexture*, s32);
+void func_8009E2A8(s32);
+s32 func_80091D74(void);
 void func_80091EE4(void);
 void func_80091FA4(void);
 void func_80093A30(s32);
@@ -88,7 +96,7 @@ s32  func_80092E1C(s8 *);
 s32  func_80092EE4(s8 *);
 s32  get_string_width(char*);
 void set_text_color(s32);
-void func_800930E4(s32, s32, s32*);
+void func_800930E4(s32, s32, char*);
 void print_text0(s32, s32, char*, s32, f32, f32, s32);
 void func_80093324(s32, s32, char*, s32, f32, f32);
 void func_80093358(s32, s32, char*, s32, f32, f32);
@@ -123,7 +131,7 @@ Gfx *func_80098FC8(Gfx*, s32, s32, s32, s32);
 void dma_copy_base_729a30(u64*, size_t, void*);
 void dma_copy_base_7fa3c0(u64*, size_t, void*);
 void func_80099110();
-void func_80099184(s32);
+void func_80099184(MkTexture*);
 void *segmented_to_virtual_dupe(const void*);
 void *segmented_to_virtual_dupe_2(const void*);
 Gfx *func_8009C204(Gfx*, MkTexture*, s32, s32, s32);
@@ -149,8 +157,8 @@ void func_8009B938();
 void func_8009B954(MkTexture*);
 void func_8009B998();
 Gfx *func_8009B9D0(Gfx*, MkTexture*);
-Gfx *func_8009BA74(Gfx *, MkTexture*, s32, s32);
-Gfx *func_8009BEF0(Gfx*, s32, f32, f32, s32, f32,f32);
+Gfx *func_8009BA74(Gfx *, MkTexture[], s32, s32);
+Gfx *func_8009BEF0(Gfx*, MkTexture*, f32, f32, s32, f32,f32);
 Gfx *func_8009C434(Gfx*, struct_8018DEE0_entry*, s32, s32, s32);
 Gfx *func_8009C708(Gfx*, struct_8018DEE0_entry *, s32, s32, s32, s32);
 void func_8009C918();
@@ -287,7 +295,7 @@ extern Gfx *D_800E84CC[];
 extern Gfx *D_800E84EC[];
 extern Gfx *D_800E850C[];
 
-extern s32 D_8018D9BC;
+extern intptr_t *D_8018D9BC;
 
 extern s16 gGlyphDisplayWidth[]; // D_800EF690
 extern RGBA16 D_800E74A8[5];
@@ -304,7 +312,7 @@ extern char *D_800E7730;
 extern char *D_800E77A8;
 extern char *D_800E77AC;
 extern char *D_800E77B0;
-extern char *D_800E77D8;
+extern char D_800E77D8[];
 extern char *D_800E77E4[0x14];
 extern char *D_800E7860[2];
 extern char *D_800E7A88[4];
@@ -330,7 +338,7 @@ extern f32 D_800F24B4;
 extern f32 D_800F24B8;
 extern f64 D_800F24C0;
 extern s32 D_80165754;
-extern s32 D_8018D9B0;
+extern intptr_t D_8018D9B0;
 extern s8  D_8018D9D8;
 extern s8  D_8018D9D9;
 extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE]; // D_8018D9E0

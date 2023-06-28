@@ -14,11 +14,11 @@
 
 #ifdef NON_MATCHING
 // Nearly matches
-UNUSED s32 func_802B4F60(s32 arg0, Vec3f arg1, s32 arg2, f32 arg3, f32 arg4)
+UNUSED s32 func_802B4F60(UNUSED s32 arg0, Vec3f arg1, UNUSED s32 arg2, UNUSED f32 arg3, UNUSED f32 arg4)
 {
   Mat4 sp30;
   f32 sp2C;
-  f32 a;
+  UNUSED f32 a;
   Vec3f sp1C;
   vec3f_copy(sp1C, arg1);
   sp2C = sp30[3][3] + (((sp1C[0] * sp30[0][3]) + (sp1C[1] * sp30[1][3])) + (sp30[2][3] * sp1C[2]));

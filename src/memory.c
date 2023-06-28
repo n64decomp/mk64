@@ -375,7 +375,7 @@ UNUSED u8 *func_802A841C(u8* arg0, s32 arg1, s32 arg2) {
     return temp_v0;
 }
 
-u8 *dma_textures(u8 *arg0, u32 arg1, u32 arg2) {
+u8 *dma_textures(u8 texture[], u32 arg1, u32 arg2) {
     u8 *temp_v0;
     void *temp_a0;
 
@@ -384,7 +384,7 @@ u8 *dma_textures(u8 *arg0, u32 arg1, u32 arg2) {
     arg1 = ALIGN16(arg1);
     arg2 = ALIGN16(arg2);
     osInvalDCache((void *) temp_a0, arg1);
-    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(arg0)], (void *)temp_a0, arg1, &gDmaMesgQueue);
+    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(texture)], (void *)temp_a0, arg1, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, (int) 1);
     mio0decode((u8 *) temp_a0, temp_v0);
     gNextFreeMemoryAddress += arg2;
@@ -412,7 +412,11 @@ void func_802A86A8(mk64_Vtx *data, u32 arg1) {
     mk64_Vtx_n *vtx_n = (mk64_Vtx_n *) data;
     Vtx *vtx;
     s32 tmp = ALIGN16(arg1 * 0x10);
+#ifdef AVOID_UB
+    u32 i;
+#else
     s32 i;
+#endif
     s8 temp_a0;
     s8 temp_a3;
     s8 flags;
@@ -420,6 +424,7 @@ void func_802A86A8(mk64_Vtx *data, u32 arg1) {
     gHeapEndPtr -= tmp;
     vtx = (Vtx *) gHeapEndPtr;
 
+        // s32 to u32 comparison required for matching.
         for (i = 0; i < arg1; i++) {
             if (gIsMirrorMode) {
                 vtx->n.ob[0] = -vtx_n->ob[0];
@@ -447,7 +452,7 @@ void func_802A86A8(mk64_Vtx *data, u32 arg1) {
         }
 }
 
-void decompress_vtx(u8 *arg0, u32 vertexCount) {
+void decompress_vtx(mk64_Vtx *arg0, u32 vertexCount) {
     s32 size = ALIGN16(vertexCount * 0x18);
     u32 segment = SEGMENT_NUMBER2(arg0);
     u32 offset = SEGMENT_OFFSET(arg0);
@@ -1322,7 +1327,7 @@ u8 *load_course(s32 courseId) {
     u8 *vertexRomEnd;
     UNUSED s32 pad2[2];
     u32 *textures;
-    u8 *vertexStart; // mio0 compressed
+    mk64_Vtx *vertexStart; // mio0 compressed
     u8 *packedStart;
     u32 vertexCount;
     uintptr_t finalDisplaylistOffset;

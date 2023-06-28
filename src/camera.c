@@ -233,7 +233,7 @@ void func_8001CA24(Player *player, f32 arg1) {
     camera->unk_94 = arg1;
 }
 
-void func_8001CA78(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *arg4, f32 *arg5, s16 huh, s8 wut) {
+void func_8001CA78(UNUSED Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *arg4, f32 *arg5, UNUSED s32 huh, UNUSED s32 wut) {
     Mat3 sp74;
     Vec3f sp68;
     Vec3f sp5C;
@@ -243,7 +243,7 @@ void func_8001CA78(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     f32 var_f14;
     f32 temp_f18;
     f32 temp_f16;
-    s32 stackPadding0;
+    UNUSED s32 pad;
     struct TrackWayPoint *temp_s2;
 
     temp_s2 = &D_80164550[0][gWaypointCountByPathIndex[0] - 10];
@@ -497,10 +497,7 @@ void func_8001D53C(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     f32 stackPadding0;
     f32 stackPadding1;
     f32 stackPadding2;
-    f32 stackPadding3;
-    f32 stackPadding4;
-    f32 stackPadding5;
-    f32 stackPadding6;
+    UNUSED f32 pad[4];
     f32 thing;
 
     if (((u16) player->unk_222 == 0) && (camera->unk_A0 == 0.0f)) {
@@ -547,7 +544,7 @@ void func_8001D794(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     Mat3 sp6C;
     Vec3f sp60;
     Vec3f sp54;
-    f32 stackPadding[4];
+    UNUSED f32 stackPadding[4];
     f32 test1;
     f32 test2;
     f32 test3;
@@ -768,19 +765,18 @@ GLOBAL_ASM("asm/non_matchings/camera/func_8001D944.s")
 #endif
 
 void func_8001E0C4(Camera *camera, Player *player, s8 arg2) {
-    s32 stackPadding0[6];
+    UNUSED s32 pad[6];
     f32 temp_f12;
     f32 sp80;
     f32 temp_f14;
-    s32 stackPadding1;
+    UNUSED s32 pad2;
     f32 sp74;
     f32 sp70;
     f32 sp6C;
     Vec3f sp60;
     s16 temp_t7;
     s16 var_a2;
-    s32 stackPadding2[5];
-    s32 stackPadding3[3];
+    UNUSED s32 pad3[8];
     s32 test = 3;
 
     if (player->unk_078 == 0) {
@@ -930,17 +926,17 @@ GLOBAL_ASM("asm/non_matchings/camera/func_8001E45C.s")
 #endif
 
 void func_8001E8E8(Camera *camera, Player *player, s8 arg2) {
-    f32 stackPadding0[6];
+    UNUSED f32 pad[6];
     f32 temp_f12;
     f32 sp88;
     f32 temp_f14;
-    f32 stackPadding1;
+    UNUSED f32 pad2;
     f32 sp7C;
     f32 sp78;
     f32 sp74;
-    Vec3f stackPadding2;
+    UNUSED Vec3f pad3;
     Vec3f sp5C;
-    f32 stackPadding3[10];
+    UNUSED f32 pad4[10];
 
     camera->unk_B0 = 0;
     camera->unk_2C = player->unk_02C[1];

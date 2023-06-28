@@ -86,8 +86,16 @@ struct Unk_800EA06C {
 	/* 0x00 */ Vec3f unk00;
 	/* 0x0C */ u8 unk0C;
 	/* 0x0D */ // u8 compilerPadding0[3];
-} ;
+};
 
+void func_800C35E8(s32);
+u16 func_800C3508(s32);
+void func_800C5278(u8);
+void func_800CB14C(void);
+void func_800C8F80(u8, s32);
+void func_800C9018(u8, s32);
+void func_800C9D0C(s32);
+void func_800C97C4(s32);
 void func_800C13F0();
 void func_800C13FC(OSMesg);
 f32 func_800C1480(u8, u8);
@@ -190,7 +198,7 @@ extern u8 D_800EA1C0;// = 0;
 // Most similar to gGlobalSoundSource from SM64, but I don't know if its really
 // a sound source, its usage makes it look like a 0'd Vec3f for general usage
 extern Vec3f D_800EA1C8;// = {0.0f, 0.0f, 0.0f}
-extern u8 D_800EA1D4;
+extern Vec3f D_800EA1D4;
 extern u8 D_800EA1DC;// = 0;
 extern u8 D_800EA244;
 

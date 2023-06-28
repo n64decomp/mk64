@@ -670,7 +670,7 @@ struct Note *alloc_note_from_decaying(struct NotePool *pool, struct SequenceChan
     return note;
 }
 
-s32 alloc_note_from_active(struct NotePool *pool, struct SequenceChannelLayer *seqLayer) {
+struct Note *alloc_note_from_active(struct NotePool *pool, struct SequenceChannelLayer *seqLayer) {
     struct Note *aNote;
 
     aNote = pop_node_with_lower_prio(&pool->active, seqLayer->seqChannel->notePriority);
@@ -681,7 +681,7 @@ s32 alloc_note_from_active(struct NotePool *pool, struct SequenceChannelLayer *s
         func_800BD8F4(aNote, seqLayer);
         audio_list_push_back(&pool->releasing, &aNote->listItem);
     }
-
+    
     return aNote;
 }
 
