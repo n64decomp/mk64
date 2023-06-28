@@ -378,6 +378,9 @@ distclean: distclean_assets
 	./extract_assets.py --clean
 	make -C tools clean
 
+distclean_assets:
+	rm -rf $(ASSET_DIRECTORIES)
+
 test: $(ROM)
 	$(EMULATOR) $(EMU_FLAGS) $<
 
@@ -400,7 +403,10 @@ $(BUILD_DIR)/%: %.png
 $(BUILD_DIR)/textures/%.mio0: $(BUILD_DIR)/textures/%
 	$(MIO0TOOL) -c $< $@
 
+ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name *.mk)
+ASSET_DIRECTORIES :=
 
+$(foreach inc,$(ASSET_INCLUDES),$(eval include $(inc)))
 
 #==============================================================================#
 # Compressed Segment Generation                                                #
@@ -445,18 +451,6 @@ $(BUILD_DIR)/src/startup_logo.inc.o: src/startup_logo.inc.c
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
 
-
-#==============================================================================#
-# Compressed Segment Generation                                                #
-#==============================================================================#
-
-ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name *.mk)
-ASSET_DIRECTORIES :=
-
-$(foreach inc,$(ASSET_INCLUDES),$(eval include $(inc)))
-
-distclean_assets:
-	rm -rf $(ASSET_DIRECTORIES)
 
 
 
