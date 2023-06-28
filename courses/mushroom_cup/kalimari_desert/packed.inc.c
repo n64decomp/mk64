@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <PR/gbi.h>
-#include <actor_types.h>
 #include <course.h>
 
 Gfx d_course_kalimari_desert_packed_dl_0[] =

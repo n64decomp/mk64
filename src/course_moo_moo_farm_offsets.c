@@ -23,8 +23,8 @@ extern u8 gTexture68CDA0[];
 extern u8 gTexture6442D4[];
 extern u8 gTexture64440C[];
 extern u8 gTexture6446AC[];
-extern u8 gTextureSignMooMooFarm0[];
-extern u8 gTextureSignMooMooFarm1[];
+extern u8 gTextureMooMooFarmSignLeft[];
+extern u8 gTextureMooMooFarmSignRight[];
 extern u8 gTexture64ACAC[];
 extern u8 gTexture66D698[];
 extern u8 gTexture66EBF0[];
@@ -145,8 +145,8 @@ const course_texture moo_moo_farm_textures[] = {
     {gTexture6442D4, 0x0138, 0x0800, 0x0},
     {gTexture64440C, 0x029D, 0x1000, 0x0},
     {gTexture6446AC, 0x0116, 0x0800, 0x0},
-    {gTextureSignMooMooFarm0, 0x0A66, 0x1000, 0x0},
-    {gTextureSignMooMooFarm1, 0x0A64, 0x1000, 0x0},
+    {gTextureMooMooFarmSignLeft, 0x0A66, 0x1000, 0x0},
+    {gTextureMooMooFarmSignRight, 0x0A64, 0x1000, 0x0},
     {gTexture64ACAC, 0x02A3, 0x0800, 0x0},
     {gTexture66D698, 0x0370, 0x0800, 0x0},
     {gTexture66EBF0, 0x0146, 0x0800, 0x0},
