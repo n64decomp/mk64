@@ -1,0 +1,22 @@
+{
+"gTLUTPortraitMario":      {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1A4D8", "width": 16, "height": 16, "type": "rgba16"},
+"gTLUTPortraitLuigi":      {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1A6D8", "width": 16, "height": 16, "type": "rgba16"},
+"gTLUTPortraitPeach":      {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1A8D8", "width": 16, "height": 16, "type": "rgba16"},
+"gTLUTPortraitToad":       {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1AAD8", "width": 16, "height": 16, "type": "rgba16"},
+"gTLUTPortraitYoshi":      {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1ACD8", "width": 16, "height": 16, "type": "rgba16"},
+"gTLUTPortraitDonkeyKong": {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1AED8", "width": 16, "height": 16, "type": "rgba16"},
+"gTLUTPortraitWario":      {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1B0D8", "width": 16, "height": 16, "type": "rgba16"},
+"gTLUTPortraitBowser":     {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1B2D8", "width": 16, "height": 16, "type": "rgba16"},
+"gTLUTPortraitBombKartAndQuestionMark": {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1B4D8", "width": 16, "height": 16, "type": "rgba16"},
+
+"gTexturePortraitMario":        {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1B6D8", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTPortraitMario"},
+"gTexturePortraitLuigi":        {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1BAD8", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTPortraitLuigi"},
+"gTexturePortraitPeach":        {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1BED8", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTPortraitPeach"},
+"gTexturePortraitToad":         {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1C2D8", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTPortraitToad"},
+"gTexturePortraitYoshi":        {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1C6D8", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTPortraitYoshi"},
+"gTexturePortraitDonkeyKong":   {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1CAD8", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTPortraitDonkeyKong"},
+"gTexturePortraitWario":        {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1CED8", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTPortraitWario"},
+"gTexturePortraitBowser":       {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1D2D8", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTPortraitBowser"},
+"gTexturePortraitBombKart":     {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1D6D8", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTPortraitBombKartAndQuestionMark"},
+"gTexturePortraitQuestionMark": {"output_dir": "character_portraits", "rom_offset": "0x132B50", "block_offset": "0x1DAD8", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTPortraitBombKartAndQuestionMark"}
+}

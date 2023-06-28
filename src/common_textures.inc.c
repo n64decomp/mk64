@@ -2497,93 +2497,98 @@ s8 D_0D01A2D8[] = {
 
 // 1A4D8 mario tlut
 s8 gTLUTPortraitMario[] = {
-    #include "textures/common/tlut/gTexturePortraitMario.rgba16.ci8.tlut.inc.c"
+    #include "assets/character_portraits/gTLUTPortraitMario.inc.c"
 };
 
 // 1A6D8 luigi tlut
 s8 gTLUTPortraitLuigi[] = {
-    #include "textures/common/tlut/gTexturePortraitLuigi.rgba16.ci8.tlut.inc.c"
+    #include "assets/character_portraits/gTLUTPortraitLuigi.inc.c"
 };
 
 // 1A8D8 peach tlut
 s8 gTLUTPortraitPeach[] = {
-    #include "textures/common/tlut/gTexturePortraitPeach.rgba16.ci8.tlut.inc.c"
+    #include "assets/character_portraits/gTLUTPortraitPeach.inc.c"
 };
 
 // 1AAD8 toad tlut
 s8 gTLUTPortraitToad[] = {
-    #include "textures/common/tlut/gTexturePortraitToad.rgba16.ci8.tlut.inc.c"
+    #include "assets/character_portraits/gTLUTPortraitToad.inc.c"
 };
 
 // 1ACD8 yoshi tlut
 s8 gTLUTPortraitYoshi[] = {
-    #include "textures/common/tlut/gTexturePortraitYoshi.rgba16.ci8.tlut.inc.c"
+    #include "assets/character_portraits/gTLUTPortraitYoshi.inc.c"
 };
 
 // 1AED8 dk tlut
 s8 gTLUTPortraitDonkeyKong[] = {
-    #include "textures/common/tlut/gTexturePortraitDonkeyKong.rgba16.ci8.tlut.inc.c"
+    #include "assets/character_portraits/gTLUTPortraitDonkeyKong.inc.c"
 };
 
 // 1B0D8 wario tlut
 s8 gTLUTPortraitWario[] = {
-    #include "textures/common/tlut/gTexturePortraitWario.rgba16.ci8.tlut.inc.c"
+    #include "assets/character_portraits/gTLUTPortraitWario.inc.c"
 };
 
 // 1B2D8 bowser tlut
 s8 gTLUTPortraitBowser[] = {
-    #include "textures/common/tlut/gTexturePortraitBowser.rgba16.ci8.tlut.inc.c"
+    #include "assets/character_portraits/gTLUTPortraitBowser.inc.c"
 };
 
 // 1B4D8 bob-omb tlut and question mark?
 s8 gTLUTPortraitBombKartAndQuestionMark[] = {
-    #include "textures/common/tlut/gTexturePortraitBombKartAndQuestionMark.rgba16.ci8.tlut.inc.c"
+    #include "assets/character_portraits/gTLUTPortraitBombKartAndQuestionMark.inc.c"
 };
 
 
 // Mario
 s8 gTexturePortraitMario[] = {
-    #include "textures/common/tlut/gTexturePortraitMario.rgba16.ci8.inc.c"
+    #include "assets/character_portraits/gTexturePortraitMario.inc.c"
 };
 
 // Luigi
 s8 gTexturePortraitLuigi[] = {
-    #include "textures/common/tlut/gTexturePortraitLuigi.rgba16.ci8.inc.c"
+    #include "assets/character_portraits/gTexturePortraitLuigi.inc.c"
 };
 
 // Peach
 s8 gTexturePortraitPeach[] = {
-    #include "textures/common/tlut/gTexturePortraitPeach.rgba16.ci8.inc.c"
+    #include "assets/character_portraits/gTexturePortraitPeach.inc.c"
 };
 
 // Toad
 s8 gTexturePortraitToad[] = {
-    #include "textures/common/tlut/gTexturePortraitToad.rgba16.ci8.inc.c"
+    #include "assets/character_portraits/gTexturePortraitToad.inc.c"
 };
 
 // Yoshi
 s8 gTexturePortraitYoshi[] = {
-    #include "textures/common/tlut/gTexturePortraitYoshi.rgba16.ci8.inc.c"
+    #include "assets/character_portraits/gTexturePortraitYoshi.inc.c"
 };
 
 // Donkey Kong
 s8 gTexturePortraitDonkeyKong[] = {
-    #include "textures/common/tlut/gTexturePortraitDonkeyKong.rgba16.ci8.inc.c"
+    #include "assets/character_portraits/gTexturePortraitDonkeyKong.inc.c"
 };
 
 // Wario
 s8 gTexturePortraitWario[] = {
-    #include "textures/common/tlut/gTexturePortraitWario.rgba16.ci8.inc.c"
+    #include "assets/character_portraits/gTexturePortraitWario.inc.c"
 };
 
 // Bowser
 s8 gTexturePortraitBowser[] = {
-    #include "textures/common/tlut/gTexturePortraitBowser.rgba16.ci8.inc.c"
+    #include "assets/character_portraits/gTexturePortraitBowser.inc.c"
 };
 
-// Mini Bomb Kart & Question Mark
-s8 gTexturePortraitBombKartAndQuestionMark[] = {
-    #include "textures/common/tlut/gTexturePortraitBombKartAndQuestionMark.rgba16.ci8.inc.c"
+// Mini Bomb Kart
+s8 gTexturePortraitBombKart[] = {
+    #include "assets/character_portraits/gTexturePortraitBombKart.inc.c"
+};
+
+// Question Mark
+s8 gTexturePortraitQuestionMark[] = {
+    #include "assets/character_portraits/gTexturePortraitQuestionMark.inc.c"
 };
 
 // 1DED8 tlut item frames
@@ -2758,49 +2763,49 @@ u8 gTLUTLakituFishing[] = {
 
 // unused traffic light tlut
 UNUSED s8 D_0D025ED8[] = {
-    #include "textures/132B50_25ED8_tlut.rgba16.inc.c"
+    #include "assets/unused_traffic_light/gTLUTUnusedTrafficLight.inc.c"
 };
 
 // unused traffic light textures
  
 UNUSED s8 D_0D0260D8[] = {
-    #include "textures/132B50_260D8.rgba16.ci8.inc.c"
+    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight01.inc.c"
 };
 
 UNUSED s8 D_0D026558[] = {
-    #include "textures/132B50_26558.rgba16.ci8.inc.c"
+    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight02.inc.c"
 };
 
 UNUSED s8 D_0D0269D8[] = {
-    #include "textures/132B50_269D8.rgba16.ci8.inc.c"
+    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight03.inc.c"
 };
 
 UNUSED s8 D_0D026E58[] = {
-    #include "textures/132B50_26E58.rgba16.ci8.inc.c"
+    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight04.inc.c"
 };
 
 UNUSED s8 D_0D0272D8[] = {
-    #include "textures/132B50_272D8.rgba16.ci8.inc.c"
+    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight05.inc.c"
 };
 
 UNUSED s8 D_0D027758[] = {
-    #include "textures/132B50_27758.rgba16.ci8.inc.c"
+    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight06.inc.c"
 };
 
 UNUSED s8 D_0D027BD8[] = {
-    #include "textures/132B50_27BD8.rgba16.ci8.inc.c"
+    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight07.inc.c"
 };
 
 UNUSED s8 D_0D028058[] = {
-    #include "textures/132B50_28058.rgba16.ci8.inc.c"
+    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight08.inc.c"
 };
 
 UNUSED s8 D_0D0284D8[] = {
-    #include "textures/132B50_284D8.rgba16.ci8.inc.c"
+    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight09.inc.c"
 };
 
 UNUSED s8 D_0D028958[] = {
-    #include "textures/132B50_28958.rgba16.ci8.inc.c"
+    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight10.inc.c"
 };
 
 // leaf

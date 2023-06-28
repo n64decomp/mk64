@@ -688,104 +688,84 @@ glabel gTextureBowserFace16
 glabel gTextureBowserFace16_end
 
 .align 2, 0x00
-glabel gCoursePreviewMarioRaceway
-.incbin "textures/standalone/course_preview_mario_raceway.rgba16.mio0"
-glabel gCoursePreviewMarioRaceway_end
+glabel gTextureCoursePreviewMarioRaceway
+.incbin "assets/course_previews/gTextureCoursePreviewMarioRaceway.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewChocoMountain
-.incbin "textures/standalone/course_preview_choco_mountain.rgba16.mio0"
-glabel gCoursePreviewChocoMountain_end
+glabel gTextureCoursePreviewChocoMountain
+.incbin "assets/course_previews/gTextureCoursePreviewChocoMountain.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewBowsersCastle
-.incbin "textures/standalone/course_preview_bowsers_castle.rgba16.mio0"
-glabel gCoursePreviewBowsersCastle_end
+glabel gTextureCoursePreviewBowsersCastle
+.incbin "assets/course_previews/gTextureCoursePreviewBowsersCastle.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewBansheeBoardwalk
-.incbin "textures/standalone/course_preview_banshee_boardwalk.rgba16.mio0"
-glabel gCoursePreviewBansheeBoardwalk_end
+glabel gTextureCoursePreviewBansheeBoardwalk
+.incbin "assets/course_previews/gTextureCoursePreviewBansheeBoardwalk.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewYoshiValley
-.incbin "textures/standalone/course_preview_yoshi_valley.rgba16.mio0"
-glabel gCoursePreviewYoshiValley_end
+glabel gTextureCoursePreviewYoshiValley
+.incbin "assets/course_previews/gTextureCoursePreviewYoshiValley.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewFrappeSnowland
-.incbin "textures/standalone/course_preview_frappe_snowland.rgba16.mio0"
-glabel gCoursePreviewFrappeSnowland_end
+glabel gTextureCoursePreviewFrappeSnowland
+.incbin "assets/course_previews/gTextureCoursePreviewFrappeSnowland.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewKoopaTroopaBeach
-.incbin "textures/standalone/course_preview_koopa_troopa_beach.rgba16.mio0"
-glabel gCoursePreviewKoopaTroopaBeach_end
+glabel gTextureCoursePreviewKoopaTroopaBeach
+.incbin "assets/course_previews/gTextureCoursePreviewKoopaTroopaBeach.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewRoyalRaceway
-.incbin "textures/standalone/course_preview_royal_raceway.rgba16.mio0"
-glabel gCoursePreviewRoyalRaceway_end
+glabel gTextureCoursePreviewRoyalRaceway
+.incbin "assets/course_previews/gTextureCoursePreviewRoyalRaceway.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewLuigiRaceway
-.incbin "textures/standalone/course_preview_luigi_raceway.rgba16.mio0"
-glabel gCoursePreviewLuigiRaceway_end
+glabel gTextureCoursePreviewLuigiRaceway
+.incbin "assets/course_previews/gTextureCoursePreviewLuigiRaceway.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewMooMooFarm
-.incbin "textures/standalone/course_preview_moo_moo_farm.rgba16.mio0"
-glabel gCoursePreviewMooMooFarm_end
+glabel gTextureCoursePreviewMooMooFarm
+.incbin "assets/course_previews/gTextureCoursePreviewMooMooFarm.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewToadsTurnpike
-.incbin "textures/standalone/course_preview_toads_turnpike.rgba16.mio0"
-glabel gCoursePreviewToadsTurnpike_end
+glabel gTextureCoursePreviewToadsTurnpike
+.incbin "assets/course_previews/gTextureCoursePreviewToadsTurnpike.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewKalimariDesert
-.incbin "textures/standalone/course_preview_kalimari_desert.rgba16.mio0"
-glabel gCoursePreviewKalimariDesert_end
+glabel gTextureCoursePreviewKalimariDesert
+.incbin "assets/course_previews/gTextureCoursePreviewKalimariDesert.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewSherbetLand
-.incbin "textures/standalone/course_preview_sherbet_land.rgba16.mio0"
-glabel gCoursePreviewSherbetLand_end
+glabel gTextureCoursePreviewSherbetLand
+.incbin "assets/course_previews/gTextureCoursePreviewSherbetLand.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewRainbowRoad
-.incbin "textures/standalone/course_preview_rainbow_road.rgba16.mio0"
-glabel gCoursePreviewRainbowRoad_end
+glabel gTextureCoursePreviewRainbowRoad
+.incbin "assets/course_previews/gTextureCoursePreviewRainbowRoad.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewWarioStadium
-.incbin "textures/standalone/course_preview_wario_stadium.rgba16.mio0"
-glabel gCoursePreviewWarioStadium_end
+glabel gTextureCoursePreviewWarioStadium
+.incbin "assets/course_previews/gTextureCoursePreviewWarioStadium.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewBlockFort
-.incbin "textures/standalone/course_preview_block_fort.rgba16.mio0"
-glabel gCoursePreviewBlockFort_end
+glabel gTextureCoursePreviewBlockFort
+.incbin "assets/course_previews/gTextureCoursePreviewBlockFort.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewSkyscraper
-.incbin "textures/standalone/course_preview_skyscraper.rgba16.mio0"
-glabel gCoursePreviewSkyscraper_end
+glabel gTextureCoursePreviewSkyscraper
+.incbin "assets/course_previews/gTextureCoursePreviewSkyscraper.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewDoubleDeck
-.incbin "textures/standalone/course_preview_double_deck.rgba16.mio0"
-glabel gCoursePreviewDoubleDeck_end
+glabel gTextureCoursePreviewDoubleDeck
+.incbin "assets/course_previews/gTextureCoursePreviewDoubleDeck.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewDksJungleParkway
-.incbin "textures/standalone/course_preview_dks_jungle_parkway.rgba16.mio0"
-glabel gCoursePreviewDksJungleParkway_end
+glabel gTextureCoursePreviewDksJungleParkway
+.incbin "assets/course_previews/gTextureCoursePreviewDksJungleParkway.mio0"
 
 .align 2, 0x00
-glabel gCoursePreviewBigDonut
-.incbin "textures/standalone/course_preview_big_donut.rgba16.mio0"
-glabel gCoursePreviewBigDonut_end
+glabel gTextureCoursePreviewBigDonut
+.incbin "assets/course_previews/gTextureCoursePreviewBigDonut.mio0"
 
 .align 2, 0x00
 glabel gTextureTrophyGold
