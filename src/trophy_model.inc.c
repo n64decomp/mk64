@@ -1,6 +1,6 @@
-#include "types.h"
+#include <types.h>
 
-static Vtx silver_trophy_model[] = {
+Vtx silver_trophy_model[] = {
 
     {{{   203,    -400,       0}, 0, {0, 0}, {0x28, 0x00, 0x00, 0xff}}},
     {{{   164,    -400,    -119}, 0, {0, 0}, {0x28, 0x00, 0x00, 0xff}}},
