@@ -3,21 +3,23 @@
 #include <PR/gbi.h>
 #include <actor_types.h>
 
+#include <courses/battle/skyscraper/packed.inc.h>
+
 Gfx d_course_skyscraper_dl[] = {
     gsDPSetCombineMode(G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA),
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
     gsSPClearGeometryMode(G_CULL_BACK),
-    gsSPDisplayList(0x07000238),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_238),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
-    gsSPDisplayList(0x07000FE8),
-    gsSPDisplayList(0x07000C60),
-    gsSPDisplayList(0x07000B70),
-    gsSPDisplayList(0x070006B8),
-    gsSPDisplayList(0x07000570),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_FE8),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_C60),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_B70),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_6B8),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_570),
     gsSPClearGeometryMode(G_CULL_BACK),
-    gsSPDisplayList(0x070010C8),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_10C8),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };

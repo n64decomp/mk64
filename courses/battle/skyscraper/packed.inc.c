@@ -4,6 +4,8 @@
 #include <actor_types.h>
 #include <course.h>
 
+#include <courses/battle/skyscraper/packed.inc.h>
+
 Gfx d_course_skyscraper_packed_dl_0[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
@@ -81,19 +83,19 @@ Gfx d_course_skyscraper_packed_dl_0[] =
 
 Gfx d_course_skyscraper_packed_dl_238[] =
 {
-    gsSPDisplayList(0x07000000),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_0),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_skyscraper_packed_dl_248[] =
 {
-    gsSPDisplayList(0x07000238),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_238),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_skyscraper_packed_dl_258[] =
 {
-    gsSPDisplayList(0x07000248),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_248),
     gsSPEndDisplayList(),
 };
 
@@ -200,7 +202,7 @@ Gfx d_course_skyscraper_packed_dl_268[] =
 
 Gfx d_course_skyscraper_packed_dl_570[] =
 {
-    gsSPDisplayList(0x07000268),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_268),
     gsSPEndDisplayList(),
 };
 
@@ -249,7 +251,7 @@ Gfx d_course_skyscraper_packed_dl_580[] =
 
 Gfx d_course_skyscraper_packed_dl_6B8[] =
 {
-    gsSPDisplayList(0x07000580),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_580),
     gsSPEndDisplayList(),
 };
 
@@ -412,8 +414,8 @@ Gfx d_course_skyscraper_packed_dl_8D8[] =
 
 Gfx d_course_skyscraper_packed_dl_B70[] =
 {
-    gsSPDisplayList(0x070008D8),
-    gsSPDisplayList(0x070006C8),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_8D8),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_6C8),
     gsSPEndDisplayList(),
 };
 
@@ -450,7 +452,7 @@ Gfx d_course_skyscraper_packed_dl_B88[] =
 
 Gfx d_course_skyscraper_packed_dl_C60[] =
 {
-    gsSPDisplayList(0x07000B88),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_B88),
     gsSPEndDisplayList(),
 };
 
@@ -571,7 +573,7 @@ Gfx d_course_skyscraper_packed_dl_C70[] =
 
 Gfx d_course_skyscraper_packed_dl_FE8[] =
 {
-    gsSPDisplayList(0x07000C70),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_C70),
     gsSPEndDisplayList(),
 };
 
@@ -607,23 +609,23 @@ Gfx d_course_skyscraper_packed_dl_FF8[] =
 
 Gfx d_course_skyscraper_packed_dl_10C8[] =
 {
-    gsSPDisplayList(0x07000FF8),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_FF8),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_skyscraper_packed_dl_10D8[] =
 {
-    gsSPDisplayList(0x070010C8),
-    gsSPDisplayList(0x07000FE8),
-    gsSPDisplayList(0x07000C60),
-    gsSPDisplayList(0x07000B70),
-    gsSPDisplayList(0x070006B8),
-    gsSPDisplayList(0x07000570),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_10C8),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_FE8),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_C60),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_B70),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_6B8),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_570),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_skyscraper_packed_dl_1110[] =
 {
-    gsSPDisplayList(0x070010D8),
+    gsSPDisplayList(d_course_skyscraper_packed_dl_10D8),
     gsSPEndDisplayList(),
 };
