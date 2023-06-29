@@ -4,6 +4,8 @@
 #include <actor_types.h>
 #include <course.h>
 
+#include <courses/special_cup/rainbow_road/packed.inc.h>
+
 Gfx d_course_rainbow_road_packed_dl_0[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
@@ -665,30 +667,30 @@ Gfx d_course_rainbow_road_packed_dl_1168[] =
 
 Gfx d_course_rainbow_road_packed_dl_1318[] =
 {
-    gsSPDisplayList(0x07001168),
-    gsSPDisplayList(0x07000FF0),
-    gsSPDisplayList(0x07000EA8),
-    gsSPDisplayList(0x07000D88),
-    gsSPDisplayList(0x07000B90),
-    gsSPDisplayList(0x07000A48),
-    gsSPDisplayList(0x07000918),
-    gsSPDisplayList(0x07000730),
-    gsSPDisplayList(0x070005C8),
-    gsSPDisplayList(0x07000498),
-    gsSPDisplayList(0x07000308),
-    gsSPDisplayList(0x07000000),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1168),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_FF0),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_EA8),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_D88),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_B90),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_A48),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_918),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_730),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_5C8),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_498),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_308),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_0),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_rainbow_road_packed_dl_1380[] =
 {
-    gsSPDisplayList(0x07001318),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1318),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_rainbow_road_packed_dl_1390[] =
 {
-    gsSPDisplayList(0x07001380),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1380),
     gsSPEndDisplayList(),
 };
 
@@ -1077,18 +1079,18 @@ Gfx d_course_rainbow_road_packed_dl_1D30[] =
 
 Gfx d_course_rainbow_road_packed_dl_1E18[] =
 {
-    gsSPDisplayList(0x07001D30),
-    gsSPDisplayList(0x07001C70),
-    gsSPDisplayList(0x07001BC0),
-    gsSPDisplayList(0x07001B28),
-    gsSPDisplayList(0x07001A20),
-    gsSPDisplayList(0x07001978),
-    gsSPDisplayList(0x07001850),
-    gsSPDisplayList(0x07001758),
-    gsSPDisplayList(0x07001698),
-    gsSPDisplayList(0x070015F8),
-    gsSPDisplayList(0x07001528),
-    gsSPDisplayList(0x070013A0),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1D30),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1C70),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1BC0),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1B28),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1A20),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1978),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1850),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1758),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1698),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_15F8),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1528),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_13A0),
     gsSPEndDisplayList(),
 };
 
@@ -1137,7 +1139,7 @@ Gfx d_course_rainbow_road_packed_dl_1E80[] =
 
 Gfx d_course_rainbow_road_packed_dl_1FB8[] =
 {
-    gsSPDisplayList(0x07001E80),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1E80),
     gsSPEndDisplayList(),
 };
 
@@ -1167,7 +1169,7 @@ Gfx d_course_rainbow_road_packed_dl_1FC8[] =
 
 Gfx d_course_rainbow_road_packed_dl_2068[] =
 {
-    gsSPDisplayList(0x07001FC8),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1FC8),
     gsSPEndDisplayList(),
 };
 
@@ -1186,21 +1188,21 @@ Gfx d_course_rainbow_road_packed_dl_2078[] =
 
 Gfx d_course_rainbow_road_packed_dl_20C0[] =
 {
-    gsSPDisplayList(0x07002078),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_2078),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_rainbow_road_packed_dl_20D0[] =
 {
-    gsSPDisplayList(0x070020C0),
-    gsSPDisplayList(0x07002068),
-    gsSPDisplayList(0x07001FB8),
-    gsSPDisplayList(0x07001E18),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_20C0),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_2068),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1FB8),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_1E18),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_rainbow_road_packed_dl_20F8[] =
 {
-    gsSPDisplayList(0x070020D0),
+    gsSPDisplayList(d_course_rainbow_road_packed_dl_20D0),
     gsSPEndDisplayList(),
 };
