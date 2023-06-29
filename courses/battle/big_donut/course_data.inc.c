@@ -4,17 +4,19 @@
 #include <PR/gbi.h>
 #include <actor_types.h>
 
+#include <courses/battle/big_donut/packed.inc.h>
+
 Gfx d_course_big_donut_dl[] = {
     gsDPSetCombineMode(G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA),
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
     gsSPClearGeometryMode(G_CULL_BACK),
-    gsSPDisplayList(0x07000210),
+    gsSPDisplayList(d_course_big_donut_packed_dl_210),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
-    gsSPDisplayList(0x07000D20),
-    gsSPDisplayList(0x07000AC0),
-    gsSPDisplayList(0x07000450),
+    gsSPDisplayList(d_course_big_donut_packed_dl_D20),
+    gsSPDisplayList(d_course_big_donut_packed_dl_AC0),
+    gsSPDisplayList(d_course_big_donut_packed_dl_450),
     gsSPEndDisplayList(),
 };
 
