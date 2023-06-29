@@ -40,8 +40,6 @@ $(KALIMARI_DESERT_DIR)/gTextureLocomotiveBogie.png
 
 KALIMARI_DESERT_EXPORT_SENTINEL := $(KALIMARI_DESERT_DIR)/.export
 
-ASSET_DIRECTORIES += $(KALIMARI_DESERT_DIR)
-
 $(BUILD_DIR)/courses/mushroom_cup/kalimari_desert/course_data.inc.o: $(KALIMARI_DESERT_PNG:%.png=%.inc.c) $(CACTUS_PALETTE_IMPORT:%.png=%.inc.c)
 
 $(KALIMARI_DESERT_PNG:%.png=%.inc.c) $(CACTUS_PALETTE_IMPORT:%.png=%.inc.c): %.inc.c : %.png
@@ -61,3 +59,9 @@ $(KALIMARI_DESERT_PNG): $(KALIMARI_DESERT_EXPORT_SENTINEL) ;
 $(KALIMARI_DESERT_EXPORT_SENTINEL): $(ASSET_DIR)/courses/kalimari_desert.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_kalimari_desert
+distclean_kalimari_desert:
+	rm -rf $(KALIMARI_DESERT_DIR)
+
+distclean_assets: distclean_kalimari_desert

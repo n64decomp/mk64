@@ -1484,8 +1484,6 @@ MARIO_KART_PALETTE_PNG := \
 
 MARIO_EXPORT_SENTINEL := $(MARIO_KART_DIR)/.export
 
-ASSET_DIRECTORIES += $(MARIO_KART_DIR)
-
 $(BUILD_DIR)/$(DATA_DIR)/karts/mario_kart.o: $(MARIO_KART_FRAME_PNG:%.png=%.mio0) $(MARIO_KART_PALETTE_PNG:%.png=%.bin)
 
 $(MARIO_KART_FRAME_PNG:%.png=%.mio0): %.mio0 : %.bin
@@ -1502,3 +1500,9 @@ $(MARIO_KART_FRAME_PNG) $(MARIO_KART_PALETTE_PNG): $(MARIO_EXPORT_SENTINEL) ;
 $(MARIO_EXPORT_SENTINEL): $(ASSET_DIR)/karts/mario_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_mario_kart
+distclean_mario_kart:
+	rm -rf $(MARIO_KART_DIR)
+
+distclean_assets: distclean_mario_kart

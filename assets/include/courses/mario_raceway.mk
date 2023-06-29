@@ -19,8 +19,6 @@ $(MARIO_RACEWAY_DIR)/gTextureMarioRacewaySignRight.png
 
 PIRANHA_PLANT_EXPORT_SENTINEL := $(MARIO_RACEWAY_DIR)/.export
 
-ASSET_DIRECTORIES += $(MARIO_RACEWAY_DIR)
-
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(PIRANHA_PLANT_FRAMES:%.png=%.mio0)
 
 $(PIRANHA_PLANT_FRAMES:%.png=%.mio0): %.mio0 : %.bin
@@ -39,3 +37,9 @@ $(PIRANHA_PLANT_FRAMES) $(MARIO_RACEWAY_PIRANHA_PLANT_PALETTE) $(MARIO_RACEWAY_S
 $(PIRANHA_PLANT_EXPORT_SENTINEL): $(ASSET_DIR)/courses/mario_raceway.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_mario_raceway
+distclean_mario_raceway:
+	rm -rf $(MARIO_RACEWAY_DIR)
+
+distclean_assets: distclean_mario_raceway

@@ -21,8 +21,6 @@ $(MARIO_SELECT_DIR)/mario_face_16.png
 
 MARIO_SELECT_EXPORT_SENTINEL := $(MARIO_SELECT_DIR)/.export
 
-ASSET_DIRECTORIES += $(MARIO_SELECT_DIR)
-
 $(BUILD_DIR)/data/course_player_selection.o: $(MARIO_SELECT_PNG:%.png=%.mio0)
 
 $(MARIO_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
@@ -36,3 +34,9 @@ $(MARIO_SELECT_PNG): $(MARIO_SELECT_EXPORT_SENTINEL) ;
 $(MARIO_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/mario_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_mario_select
+distclean_mario_select:
+	rm -rf $(MARIO_SELECT_DIR)
+
+distclean_assets: distclean_mario_select

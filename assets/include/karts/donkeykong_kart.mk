@@ -1484,8 +1484,6 @@ DONKEYKONG_KART_PALETTE_PNG := \
 
 DONKEYKONG_EXPORT_SENTINEL := $(DONKEYKONG_KART_DIR)/.export
 
-ASSET_DIRECTORIES += $(DONKEYKONG_KART_DIR)
-
 $(BUILD_DIR)/$(DATA_DIR)/karts/donkeykong_kart.o: $(DONKEYKONG_KART_FRAME_PNG:%.png=%.mio0) $(DONKEYKONG_KART_PALETTE_PNG:%.png=%.bin)
 
 $(DONKEYKONG_KART_FRAME_PNG:%.png=%.mio0): %.mio0 : %.bin
@@ -1502,3 +1500,9 @@ $(DONKEYKONG_KART_FRAME_PNG) $(DONKEYKONG_KART_PALETTE_PNG): $(DONKEYKONG_EXPORT
 $(DONKEYKONG_EXPORT_SENTINEL): $(ASSET_DIR)/karts/donkeykong_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_donkeykong_kart
+distclean_donkeykong_kart:
+	rm -rf $(DONKEYKONG_KART_DIR)
+
+distclean_assets: distclean_donkeykong_kart

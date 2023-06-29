@@ -1484,8 +1484,6 @@ YOSHI_KART_PALETTE_PNG := \
 
 YOSHI_EXPORT_SENTINEL := $(YOSHI_KART_DIR)/.export
 
-ASSET_DIRECTORIES += $(YOSHI_KART_DIR)
-
 $(BUILD_DIR)/$(DATA_DIR)/karts/yoshi_kart.o: $(YOSHI_KART_FRAME_PNG:%.png=%.mio0) $(YOSHI_KART_PALETTE_PNG:%.png=%.bin)
 
 $(YOSHI_KART_FRAME_PNG:%.png=%.mio0): %.mio0 : %.bin
@@ -1502,3 +1500,9 @@ $(YOSHI_KART_FRAME_PNG) $(YOSHI_KART_PALETTE_PNG): $(YOSHI_EXPORT_SENTINEL) ;
 $(YOSHI_EXPORT_SENTINEL): $(ASSET_DIR)/karts/yoshi_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_yoshi_kart
+distclean_yoshi_kart:
+	rm -rf $(YOSHI_KART_DIR)
+
+distclean_assets: distclean_yoshi_kart

@@ -24,8 +24,6 @@ $(DKS_JUNGLE_PARKWAY_DIR)/gTextureDksJungleParkwayKiwanoFruit3.png
 
 DKS_JUNGLE_PARKWAY_EXPORT_SENTINEL := $(DKS_JUNGLE_PARKWAY_DIR)/.export
 
-ASSET_DIRECTORIES += $(DKS_JUNGLE_PARKWAY_DIR)
-
 $(BUILD_DIR)/data/other_textures.o: $(DKS_JUNGLE_PARKWAY_KIWANO_FRAMES:%.png=%.mio0)
 
 $(DKS_JUNGLE_PARKWAY_KIWANO_FRAMES:%.png=%.mio0): %.mio0 : %.bin
@@ -46,3 +44,9 @@ $(DKS_JUNGLE_PARKWAY_PNG): $(DKS_JUNGLE_PARKWAY_EXPORT_SENTINEL) ;
 $(DKS_JUNGLE_PARKWAY_EXPORT_SENTINEL): $(ASSET_DIR)/courses/dks_jungle_parkway.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_dks_junk_parkway
+distclean_dks_junk_parkway:
+	rm -rf $(DKS_JUNGLE_PARKWAY_DIR)
+
+distclean_assets: distclean_dks_junk_parkway

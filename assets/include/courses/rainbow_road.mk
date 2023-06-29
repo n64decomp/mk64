@@ -54,8 +54,6 @@ $(RAINBOW_ROAD_DIR)/gTextureRainbowRoadChainChompEye.png
 
 RAINBOW_ROAD_EXPORT_SENTINEL := $(RAINBOW_ROAD_DIR)/.export
 
-ASSET_DIRECTORIES += $(RAINBOW_ROAD_DIR)
-
 $(BUILD_DIR)/courses/special_cup/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_MUSHROOM_PNG:%.png=%.inc.c)
 $(BUILD_DIR)/courses/special_cup/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_MARIO_PNG:%.png=%.inc.c)
 $(BUILD_DIR)/courses/special_cup/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_BOO_PNG:%.png=%.inc.c)
@@ -102,3 +100,9 @@ $(RAINBOW_ROAD_PNG): $(RAINBOW_ROAD_EXPORT_SENTINEL) ;
 $(RAINBOW_ROAD_EXPORT_SENTINEL): $(ASSET_DIR)/courses/rainbow_road.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_rainbow_road
+distclean_rainbow_road:
+	rm -rf $(RAINBOW_ROAD_DIR)
+
+distclean_assets: distclean_rainbow_road

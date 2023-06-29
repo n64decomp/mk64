@@ -14,8 +14,6 @@ $(GREENSHELL_DIR)/gTextureGreenShell08.png
 
 GREENSHELL_EXPORT_SENTINEL := $(GREENSHELL_DIR)/.export
 
-ASSET_DIRECTORIES += $(GREENSHELL_DIR)
-
 $(GREENSHELL_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(GREENSHELL_PALETTE)
 
@@ -29,3 +27,9 @@ $(GREENSHELL_FRAMES) $(GREENSHELL_PALETTE): $(GREENSHELL_EXPORT_SENTINEL) ;
 $(GREENSHELL_EXPORT_SENTINEL): $(ASSET_DIR)/greenshell.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_greenshell
+distclean_greenshell:
+	rm -rf $(GREENSHELL_DIR)
+
+distclean_assets: distclean_greenshell

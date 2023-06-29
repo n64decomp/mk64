@@ -22,8 +22,6 @@ $(REVERSE_DIR)/gTextureLakituReverse16.png
 
 REVERSE_EXPORT_SENTINEL := $(REVERSE_DIR)/.export
 
-ASSET_DIRECTORIES += $(REVERSE_DIR)
-
 $(REVERSE_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(REVERSE_PALETTE)
 
@@ -37,3 +35,9 @@ $(REVERSE_FRAMES) $(REVERSE_PALETTE): $(REVERSE_EXPORT_SENTINEL) ;
 $(REVERSE_EXPORT_SENTINEL): assets/lakitu/reverse.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_lakitu_reverse
+distclean_lakitu_reverse:
+	rm -rf $(REVERSE_DIR)
+
+distclean_assets: distclean_lakitu_reverse

@@ -1484,8 +1484,6 @@ WARIO_KART_PALETTE_PNG := \
 
 WARIO_EXPORT_SENTINEL := $(WARIO_KART_DIR)/.export
 
-ASSET_DIRECTORIES += $(WARIO_KART_DIR)
-
 $(BUILD_DIR)/$(DATA_DIR)/karts/wario_kart.o: $(WARIO_KART_FRAME_PNG:%.png=%.mio0) $(WARIO_KART_PALETTE_PNG:%.png=%.bin)
 
 $(WARIO_KART_FRAME_PNG:%.png=%.mio0): %.mio0 : %.bin
@@ -1502,3 +1500,9 @@ $(WARIO_KART_FRAME_PNG) $(WARIO_KART_PALETTE_PNG): $(WARIO_EXPORT_SENTINEL) ;
 $(WARIO_EXPORT_SENTINEL): $(ASSET_DIR)/karts/wario_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_wario_kart
+distclean_wario_kart:
+	rm -rf $(WARIO_KART_DIR)
+
+distclean_assets: distclean_wario_kart

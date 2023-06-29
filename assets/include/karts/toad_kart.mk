@@ -1484,8 +1484,6 @@ TOAD_KART_PALETTE_PNG := \
 
 TOAD_EXPORT_SENTINEL := $(TOAD_KART_DIR)/.export
 
-ASSET_DIRECTORIES += $(TOAD_KART_DIR)
-
 $(BUILD_DIR)/$(DATA_DIR)/karts/toad_kart.o: $(TOAD_KART_FRAME_PNG:%.png=%.mio0) $(TOAD_KART_PALETTE_PNG:%.png=%.bin)
 
 $(TOAD_KART_FRAME_PNG:%.png=%.mio0): %.mio0 : %.bin
@@ -1502,3 +1500,9 @@ $(TOAD_KART_FRAME_PNG) $(TOAD_KART_PALETTE_PNG): $(TOAD_EXPORT_SENTINEL) ;
 $(TOAD_EXPORT_SENTINEL): $(ASSET_DIR)/karts/toad_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_toad_kart
+distclean_toad_kart:
+	rm -rf $(TOAD_KART_DIR)
+
+distclean_assets: distclean_toad_kart

@@ -20,8 +20,6 @@ $(KOOPA_TROOPA_BEACH_DIR)/gTextureKoopaTroopaPalmTrunk.png
 
 KOOPA_TROOPA_BEACH_EXPORT_SENTINEL := $(KOOPA_TROOPA_BEACH_DIR)/.export
 
-ASSET_DIRECTORIES += $(KOOPA_TROOPA_BEACH_DIR)
-
 $(BUILD_DIR)/courses/mushroom_cup/koopa_troopa_beach/course_data.inc.o: $(KOOPA_TROOPA_BEACH_CRAB_PALETTE:%.png=%.inc.c) $(KOOPA_TROOPA_BEACH_CRAB_FRAMES:%.png=%.inc.c)
 $(BUILD_DIR)/courses/mushroom_cup/koopa_troopa_beach/course_data.inc.o: $(KOOPA_TROOPA_BEACH_PNG:%.png=%.inc.c)
 
@@ -36,3 +34,9 @@ $(KOOPA_TROOPA_BEACH_CRAB_PALETTE) $(KOOPA_TROOPA_BEACH_CRAB_FRAMES) $(KOOPA_TRO
 $(KOOPA_TROOPA_BEACH_EXPORT_SENTINEL): $(ASSET_DIR)/courses/koopa_troopa_beach.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_koopa_troopa_beach
+distclean_koopa_troopa_beach:
+	rm -rf $(KOOPA_TROOPA_BEACH_DIR)
+
+distclean_assets: distclean_koopa_troopa_beach

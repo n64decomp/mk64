@@ -1484,8 +1484,6 @@ LUIGI_KART_PALETTE_PNG := \
 
 LUIGI_EXPORT_SENTINEL := $(LUIGI_KART_DIR)/.export
 
-ASSET_DIRECTORIES += $(LUIGI_KART_DIR)
-
 $(BUILD_DIR)/$(DATA_DIR)/karts/luigi_kart.o: $(LUIGI_KART_FRAME_PNG:%.png=%.mio0) $(LUIGI_KART_PALETTE_PNG:%.png=%.bin)
 
 $(LUIGI_KART_FRAME_PNG:%.png=%.mio0): %.mio0 : %.bin
@@ -1502,3 +1500,9 @@ $(LUIGI_KART_FRAME_PNG) $(LUIGI_KART_PALETTE_PNG): $(LUIGI_EXPORT_SENTINEL) ;
 $(LUIGI_EXPORT_SENTINEL): $(ASSET_DIR)/karts/luigi_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_luigi_kart
+distclean_luigi_kart:
+	rm -rf $(LUIGI_KART_DIR)
+
+distclean_assets: distclean_luigi_kart

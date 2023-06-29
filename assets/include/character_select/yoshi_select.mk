@@ -21,8 +21,6 @@ $(YOSHI_SELECT_DIR)/yoshi_face_16.png
 
 YOSHI_SELECT_EXPORT_SENTINEL := $(YOSHI_SELECT_DIR)/.export
 
-ASSET_DIRECTORIES += $(YOSHI_SELECT_DIR)
-
 $(BUILD_DIR)/data/course_player_selection.o: $(YOSHI_SELECT_PNG:%.png=%.mio0)
 
 $(YOSHI_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
@@ -36,3 +34,9 @@ $(YOSHI_SELECT_PNG): $(YOSHI_SELECT_EXPORT_SENTINEL) ;
 $(YOSHI_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/yoshi_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_yoshi_select
+distclean_yoshi_select:
+	rm -rf $(YOSHI_SELECT_DIR)
+
+distclean_assets: distclean_yoshi_select

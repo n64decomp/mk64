@@ -21,8 +21,6 @@ $(PEACH_SELECT_DIR)/peach_face_16.png
 
 PEACH_SELECT_EXPORT_SENTINEL := $(PEACH_SELECT_DIR)/.export
 
-ASSET_DIRECTORIES += $(PEACH_SELECT_DIR)
-
 $(BUILD_DIR)/data/course_player_selection.o: $(PEACH_SELECT_PNG:%.png=%.mio0)
 
 $(PEACH_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
@@ -36,3 +34,9 @@ $(PEACH_SELECT_PNG): $(PEACH_SELECT_EXPORT_SENTINEL) ;
 $(PEACH_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/peach_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_peach_select
+distclean_peach_select:
+	rm -rf $(PEACH_SELECT_DIR)
+
+distclean_assets: distclean_peach_select

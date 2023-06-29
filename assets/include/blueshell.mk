@@ -14,8 +14,6 @@ $(BLUE_SHELL_DIR)/gTextureBlueShell8.png
 
 BLUE_SHELL_EXPORT_SENTINEL := $(BLUE_SHELL_DIR)/.export
 
-ASSET_DIRECTORIES += $(BLUE_SHELL_DIR)
-
 $(BLUE_SHELL_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(BLUE_SHELL_PALETTE)
 
@@ -29,3 +27,9 @@ $(BLUE_SHELL_FRAMES) $(BLUE_SHELL_PALETTE): $(BLUE_SHELL_EXPORT_SENTINEL) ;
 $(BLUE_SHELL_EXPORT_SENTINEL): $(ASSET_DIR)/blueshell.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_blueshell
+distclean_blueshell:
+	rm -rf $(BLUE_SHELL_DIR)
+
+distclean_assets: distclean_blueshell

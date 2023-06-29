@@ -379,8 +379,7 @@ distclean: distclean_assets
 	./extract_assets.py --clean
 	make -C tools clean
 
-distclean_assets:
-	rm -rf $(ASSET_DIRECTORIES)
+distclean_assets: ;
 
 test: $(ROM)
 	$(EMULATOR) $(EMU_FLAGS) $<

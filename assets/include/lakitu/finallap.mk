@@ -22,8 +22,6 @@ $(FINALLAP_DIR)/gTextureLakituFinalLap16.png
 
 FINALLAP_EXPORT_SENTINEL := $(FINALLAP_DIR)/.export
 
-ASSET_DIRECTORIES += $(FINALLAP_DIR)
-
 $(FINALLAP_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(FINALLAP_PALETTE)
 
@@ -37,3 +35,9 @@ $(FINALLAP_FRAMES) $(FINALLAP_PALETTE): $(FINALLAP_EXPORT_SENTINEL) ;
 $(FINALLAP_EXPORT_SENTINEL): assets/lakitu/finallap.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_lakitu_finallap
+distclean_lakitu_finallap:
+	rm -rf $(FINALLAP_DIR)
+
+distclean_assets: distclean_lakitu_finallap

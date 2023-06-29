@@ -14,8 +14,6 @@ $(FINISH_LINE_BANNER_DIR)/gTextureFinishLineBanner8.png
 
 FINISH_LINE_BANNER_EXPORT_SENTINEL := $(FINISH_LINE_BANNER_DIR)/.export
 
-ASSET_DIRECTORIES += $(FINISH_LINE_BANNER_DIR)
-
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(FINISH_LINE_BANNER_PNG:%.png=%.mio0)
 
 $(FINISH_LINE_BANNER_PNG:%.png=%.mio0): %.mio0 : %.bin
@@ -34,3 +32,9 @@ $(FINISH_LINE_BANNER_PNG) $(FINISH_LINE_BANNER_PALETTE): $(FINISH_LINE_BANNER_EX
 $(FINISH_LINE_BANNER_EXPORT_SENTINEL): $(ASSET_DIR)/finish_line_banner.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
+
+.PHONY: distclean_finish_line_banner
+distclean_finish_line_banner:
+	rm -rf $(FINISH_LINE_BANNER_DIR)
+
+distclean_assets: distclean_finish_line_banner
