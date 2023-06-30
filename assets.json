@@ -345,8 +345,6 @@
 "textures/common/132B50_293D8.i4.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x132B50", "0x293D8"]}},
 "textures/common/132B50_29458.i8.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x132B50", "0x29458"]}},
 
-"textures/common/tlut2/132B50_29858.rgba16.ci8.png": {"meta":{"dims":[32,128], "pal":"0x2A858"}, "offsets": {"us":["0x132B50", "0x29858"]}},
-
 "textures/common/132B50_2AA58.rgba16.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x132B50", "0x2AA58"]}},
 "textures/common/132B50_2AC58.i8.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x132B50", "0x2AC58"]}},
 "textures/common/132B50_2B058.i8.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x132B50", "0x2B058"]}},
