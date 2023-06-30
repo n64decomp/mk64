@@ -4,6 +4,8 @@
 #include <actor_types.h>
 #include <course.h>
 
+#include <courses/special_cup/dks_jungle_parkway/packed.inc.h>
+
 Gfx d_course_dks_jungle_parkway_packed_dl_0[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
@@ -1655,46 +1657,46 @@ Gfx d_course_dks_jungle_parkway_packed_dl_2E28[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_2E88[] =
 {
-    gsSPDisplayList(0x07002E28),
-    gsSPDisplayList(0x07002DC8),
-    gsSPDisplayList(0x07002D60),
-    gsSPDisplayList(0x07002D00),
-    gsSPDisplayList(0x07002B78),
-    gsSPDisplayList(0x070029F0),
-    gsSPDisplayList(0x07002890),
-    gsSPDisplayList(0x07002788),
-    gsSPDisplayList(0x07002570),
-    gsSPDisplayList(0x07002510),
-    gsSPDisplayList(0x070024B0),
-    gsSPDisplayList(0x07002450),
-    gsSPDisplayList(0x070023F0),
-    gsSPDisplayList(0x07002378),
-    gsSPDisplayList(0x070021C0),
-    gsSPDisplayList(0x07002160),
-    gsSPDisplayList(0x07002100),
-    gsSPDisplayList(0x070020A0),
-    gsSPDisplayList(0x07002040),
-    gsSPDisplayList(0x07001EB8),
-    gsSPDisplayList(0x07001C98),
-    gsSPDisplayList(0x07001B38),
-    gsSPDisplayList(0x07001970),
-    gsSPDisplayList(0x070017D0),
-    gsSPDisplayList(0x070015B0),
-    gsSPDisplayList(0x07001430),
-    gsSPDisplayList(0x070012A8),
-    gsSPDisplayList(0x07001118),
-    gsSPDisplayList(0x07000FD0),
-    gsSPDisplayList(0x07000EC8),
-    gsSPDisplayList(0x07000C90),
-    gsSPDisplayList(0x07000B68),
-    gsSPDisplayList(0x07000A40),
-    gsSPDisplayList(0x07000918),
-    gsSPDisplayList(0x070007E0),
-    gsSPDisplayList(0x070006C8),
-    gsSPDisplayList(0x07000520),
-    gsSPDisplayList(0x07000398),
-    gsSPDisplayList(0x07000200),
-    gsSPDisplayList(0x07000000),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2E28),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2DC8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2D60),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2D00),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2B78),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_29F0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2890),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2788),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2570),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2510),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_24B0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2450),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_23F0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2378),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_21C0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2160),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2100),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_20A0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2040),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_1EB8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_1C98),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_1B38),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_1970),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_17D0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_15B0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_1430),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_12A8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_1118),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_FD0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_EC8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_C90),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_B68),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_A40),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_918),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7E0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6C8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_520),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_398),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_200),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_0),
     gsSPEndDisplayList(),
 };
 
@@ -1814,12 +1816,12 @@ Gfx d_course_dks_jungle_parkway_packed_dl_3228[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_32A0[] =
 {
-    gsSPDisplayList(0x07003228),
-    gsSPDisplayList(0x070031A0),
-    gsSPDisplayList(0x07003130),
-    gsSPDisplayList(0x070030C0),
-    gsSPDisplayList(0x07003058),
-    gsSPDisplayList(0x07002FD0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3228),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_31A0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3130),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_30C0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3058),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2FD0),
     gsSPEndDisplayList(),
 };
 
@@ -1970,14 +1972,14 @@ Gfx d_course_dks_jungle_parkway_packed_dl_35F0[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_3660[] =
 {
-    gsSPDisplayList(0x070035F0),
-    gsSPDisplayList(0x07003588),
-    gsSPDisplayList(0x07003508),
-    gsSPDisplayList(0x07003498),
-    gsSPDisplayList(0x07003420),
-    gsSPDisplayList(0x070033A8),
-    gsSPDisplayList(0x07003348),
-    gsSPDisplayList(0x070032D8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_35F0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3588),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3508),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3498),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3420),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_33A8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3348),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_32D8),
     gsSPEndDisplayList(),
 };
 
@@ -2007,7 +2009,7 @@ Gfx d_course_dks_jungle_parkway_packed_dl_36A8[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_3748[] =
 {
-    gsSPDisplayList(0x070036A8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_36A8),
     gsSPEndDisplayList(),
 };
 
@@ -2112,8 +2114,8 @@ Gfx d_course_dks_jungle_parkway_packed_dl_37C0[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_3A30[] =
 {
-    gsSPDisplayList(0x070037C0),
-    gsSPDisplayList(0x07003758),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_37C0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3758),
     gsSPEndDisplayList(),
 };
 
@@ -2140,24 +2142,24 @@ Gfx d_course_dks_jungle_parkway_packed_dl_3A48[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_3AD0[] =
 {
-    gsSPDisplayList(0x07003A48),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3A48),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_dks_jungle_parkway_packed_dl_3AE0[] =
 {
-    gsSPDisplayList(0x07003AD0),
-    gsSPDisplayList(0x07003A30),
-    gsSPDisplayList(0x07003748),
-    gsSPDisplayList(0x07003660),
-    gsSPDisplayList(0x070032A0),
-    gsSPDisplayList(0x07002E88),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3AD0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3A30),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3748),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3660),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_32A0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_2E88),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_dks_jungle_parkway_packed_dl_3B18[] =
 {
-    gsSPDisplayList(0x07003AE0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3AE0),
     gsSPEndDisplayList(),
 };
 
@@ -2259,10 +2261,10 @@ Gfx d_course_dks_jungle_parkway_packed_dl_3D08[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_3DA8[] =
 {
-    gsSPDisplayList(0x07003D08),
-    gsSPDisplayList(0x07003C50),
-    gsSPDisplayList(0x07003BA8),
-    gsSPDisplayList(0x07003B28),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3D08),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3C50),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3BA8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3B28),
     gsSPEndDisplayList(),
 };
 
@@ -2343,10 +2345,10 @@ Gfx d_course_dks_jungle_parkway_packed_dl_3F30[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_3FA8[] =
 {
-    gsSPDisplayList(0x07003F30),
-    gsSPDisplayList(0x07003EB0),
-    gsSPDisplayList(0x07003E40),
-    gsSPDisplayList(0x07003DD0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3F30),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3EB0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3E40),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3DD0),
     gsSPEndDisplayList(),
 };
 
@@ -2610,10 +2612,10 @@ Gfx d_course_dks_jungle_parkway_packed_dl_4548[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_4760[] =
 {
-    gsSPDisplayList(0x07004548),
-    gsSPDisplayList(0x07004300),
-    gsSPDisplayList(0x07004230),
-    gsSPDisplayList(0x07003FD0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4548),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4300),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4230),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3FD0),
     gsSPEndDisplayList(),
 };
 
@@ -3105,21 +3107,21 @@ Gfx d_course_dks_jungle_parkway_packed_dl_5420[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_54D8[] =
 {
-    gsSPDisplayList(0x07005420),
-    gsSPDisplayList(0x070052C0),
-    gsSPDisplayList(0x070051C8),
-    gsSPDisplayList(0x070050A8),
-    gsSPDisplayList(0x07004FE8),
-    gsSPDisplayList(0x07004EB8),
-    gsSPDisplayList(0x07004DB8),
-    gsSPDisplayList(0x07004D30),
-    gsSPDisplayList(0x07004CA0),
-    gsSPDisplayList(0x07004B90),
-    gsSPDisplayList(0x07004AB0),
-    gsSPDisplayList(0x07004A08),
-    gsSPDisplayList(0x07004948),
-    gsSPDisplayList(0x07004858),
-    gsSPDisplayList(0x07004788),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5420),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_52C0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_51C8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_50A8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4FE8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4EB8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4DB8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4D30),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4CA0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4B90),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4AB0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4A08),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4948),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4858),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4788),
     gsSPEndDisplayList(),
 };
 
@@ -3861,40 +3863,40 @@ Gfx d_course_dks_jungle_parkway_packed_dl_6798[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_6818[] =
 {
-    gsSPDisplayList(0x07006798),
-    gsSPDisplayList(0x07006728),
-    gsSPDisplayList(0x070066B0),
-    gsSPDisplayList(0x07006620),
-    gsSPDisplayList(0x070065A8),
-    gsSPDisplayList(0x07006530),
-    gsSPDisplayList(0x070064C0),
-    gsSPDisplayList(0x07006430),
-    gsSPDisplayList(0x07006368),
-    gsSPDisplayList(0x07006240),
-    gsSPDisplayList(0x070061B0),
-    gsSPDisplayList(0x07006100),
-    gsSPDisplayList(0x07006098),
-    gsSPDisplayList(0x07006008),
-    gsSPDisplayList(0x07005F80),
-    gsSPDisplayList(0x07005EF0),
-    gsSPDisplayList(0x07005E70),
-    gsSPDisplayList(0x07005DF0),
-    gsSPDisplayList(0x07005D68),
-    gsSPDisplayList(0x07005C68),
-    gsSPDisplayList(0x07005BE0),
-    gsSPDisplayList(0x07005B50),
-    gsSPDisplayList(0x07005AB0),
-    gsSPDisplayList(0x07005A50),
-    gsSPDisplayList(0x070059E0),
-    gsSPDisplayList(0x07005970),
-    gsSPDisplayList(0x070058F8),
-    gsSPDisplayList(0x07005890),
-    gsSPDisplayList(0x07005800),
-    gsSPDisplayList(0x07005768),
-    gsSPDisplayList(0x070056B8),
-    gsSPDisplayList(0x07005648),
-    gsSPDisplayList(0x070055D8),
-    gsSPDisplayList(0x07005558),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6798),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6728),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_66B0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6620),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_65A8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6530),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_64C0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6430),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6368),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6240),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_61B0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6100),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6098),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6008),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5F80),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5EF0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5E70),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5DF0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5D68),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5C68),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5BE0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5B50),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5AB0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5A50),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_59E0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5970),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_58F8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5890),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5800),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5768),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_56B8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5648),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_55D8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_5558),
     gsSPEndDisplayList(),
 };
 
@@ -4347,27 +4349,27 @@ Gfx d_course_dks_jungle_parkway_packed_dl_7400[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_7488[] =
 {
-    gsSPDisplayList(0x07007400),
-    gsSPDisplayList(0x07007390),
-    gsSPDisplayList(0x070072A8),
-    gsSPDisplayList(0x070071E8),
-    gsSPDisplayList(0x07007170),
-    gsSPDisplayList(0x070070C0),
-    gsSPDisplayList(0x07007048),
-    gsSPDisplayList(0x07006F98),
-    gsSPDisplayList(0x07006F10),
-    gsSPDisplayList(0x07006E40),
-    gsSPDisplayList(0x07006DD8),
-    gsSPDisplayList(0x07006D68),
-    gsSPDisplayList(0x07006D08),
-    gsSPDisplayList(0x07006C98),
-    gsSPDisplayList(0x07006C38),
-    gsSPDisplayList(0x07006BD0),
-    gsSPDisplayList(0x07006B48),
-    gsSPDisplayList(0x07006AA8),
-    gsSPDisplayList(0x07006A10),
-    gsSPDisplayList(0x070069A0),
-    gsSPDisplayList(0x07006930),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7400),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7390),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_72A8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_71E8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7170),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_70C0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7048),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6F98),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6F10),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6E40),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6DD8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6D68),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6D08),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6C98),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6C38),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6BD0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6B48),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6AA8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6A10),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_69A0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6930),
     gsSPEndDisplayList(),
 };
 
@@ -5304,31 +5306,31 @@ Gfx d_course_dks_jungle_parkway_packed_dl_8E78[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_8F30[] =
 {
-    gsSPDisplayList(0x07008E78),
-    gsSPDisplayList(0x07008C60),
-    gsSPDisplayList(0x07008BA8),
-    gsSPDisplayList(0x07008A40),
-    gsSPDisplayList(0x070089B0),
-    gsSPDisplayList(0x07008800),
-    gsSPDisplayList(0x07008760),
-    gsSPDisplayList(0x070086B0),
-    gsSPDisplayList(0x07008648),
-    gsSPDisplayList(0x070085A0),
-    gsSPDisplayList(0x07008458),
-    gsSPDisplayList(0x07008358),
-    gsSPDisplayList(0x07008140),
-    gsSPDisplayList(0x070080A0),
-    gsSPDisplayList(0x07007FC8),
-    gsSPDisplayList(0x07007F58),
-    gsSPDisplayList(0x07007E50),
-    gsSPDisplayList(0x07007DA0),
-    gsSPDisplayList(0x07007C78),
-    gsSPDisplayList(0x07007B10),
-    gsSPDisplayList(0x07007A88),
-    gsSPDisplayList(0x07007920),
-    gsSPDisplayList(0x070077E8),
-    gsSPDisplayList(0x070076A0),
-    gsSPDisplayList(0x07007538),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_8E78),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_8C60),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_8BA8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_8A40),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_89B0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_8800),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_8760),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_86B0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_8648),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_85A0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_8458),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_8358),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_8140),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_80A0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7FC8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7F58),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7E50),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7DA0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7C78),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7B10),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7A88),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7920),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_77E8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_76A0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7538),
     gsSPEndDisplayList(),
 };
 
@@ -5416,8 +5418,8 @@ Gfx d_course_dks_jungle_parkway_packed_dl_9128[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_9250[] =
 {
-    gsSPDisplayList(0x07009128),
-    gsSPDisplayList(0x07009000),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9128),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9000),
     gsSPEndDisplayList(),
 };
 
@@ -5441,7 +5443,7 @@ Gfx d_course_dks_jungle_parkway_packed_dl_9268[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_92D8[] =
 {
-    gsSPDisplayList(0x07009268),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9268),
     gsSPEndDisplayList(),
 };
 
@@ -5649,14 +5651,14 @@ Gfx d_course_dks_jungle_parkway_packed_dl_9790[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_9838[] =
 {
-    gsSPDisplayList(0x07009790),
-    gsSPDisplayList(0x070096F8),
-    gsSPDisplayList(0x07009630),
-    gsSPDisplayList(0x07009588),
-    gsSPDisplayList(0x070094D0),
-    gsSPDisplayList(0x07009418),
-    gsSPDisplayList(0x07009390),
-    gsSPDisplayList(0x070092E8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9790),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_96F8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9630),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9588),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_94D0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9418),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9390),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_92E8),
     gsSPEndDisplayList(),
 };
 
@@ -5678,7 +5680,7 @@ Gfx d_course_dks_jungle_parkway_packed_dl_9880[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_98E0[] =
 {
-    gsSPDisplayList(0x07009880),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9880),
     gsSPEndDisplayList(),
 };
 
@@ -5730,8 +5732,8 @@ Gfx d_course_dks_jungle_parkway_packed_dl_9988[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_9A20[] =
 {
-    gsSPDisplayList(0x07009988),
-    gsSPDisplayList(0x070098F0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9988),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_98F0),
     gsSPEndDisplayList(),
 };
 
@@ -5785,30 +5787,30 @@ Gfx d_course_dks_jungle_parkway_packed_dl_9A38[] =
 
 Gfx d_course_dks_jungle_parkway_packed_dl_9B98[] =
 {
-    gsSPDisplayList(0x07009A38),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9A38),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_dks_jungle_parkway_packed_dl_9BA8[] =
 {
-    gsSPDisplayList(0x07009B98),
-    gsSPDisplayList(0x07009A20),
-    gsSPDisplayList(0x070098E0),
-    gsSPDisplayList(0x07009838),
-    gsSPDisplayList(0x070092D8),
-    gsSPDisplayList(0x07009250),
-    gsSPDisplayList(0x07008F30),
-    gsSPDisplayList(0x07007488),
-    gsSPDisplayList(0x07006818),
-    gsSPDisplayList(0x070054D8),
-    gsSPDisplayList(0x07004760),
-    gsSPDisplayList(0x07003FA8),
-    gsSPDisplayList(0x07003DA8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9B98),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9A20),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_98E0),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9838),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_92D8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9250),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_8F30),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_7488),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_6818),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_54D8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_4760),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3FA8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_3DA8),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_dks_jungle_parkway_packed_dl_9C18[] =
 {
-    gsSPDisplayList(0x07009BA8),
+    gsSPDisplayList(d_course_dks_jungle_parkway_packed_dl_9BA8),
     gsSPEndDisplayList(),
 };

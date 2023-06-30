@@ -505,7 +505,7 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
 COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
 
-$(COURSE_PACKED_DL):
+$(COURSE_PACKED_DL): %/packed_dl.inc.bin : %/packed.inc.o
 	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $(@D)/packed.inc.elf.map -o $(@D)/packed.inc.elf $(@D)/packed.inc.o --no-check-sections
 # Generate header for packed displaylists
 #   $(DLSYMGEN)
@@ -555,10 +555,10 @@ $(COURSE_DATA_TARGETS_O): $(BUILD_DIR)/%/course_data.inc.o : %/course_data.inc.c
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
-$(COURSE_DATA_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o: $(BUILD_DIR)/%/course_data.inc.o
+$(COURSE_DATA_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o: $(BUILD_DIR)/%/course_data.inc.o $(BUILD_DIR)/%/packed_dl.inc.bin
 # todo: Clean this up if possible. Not really worth the time though.
 	@$(PRINT) "$(GREEN)Compressing Course Data:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $(@D)/course_data.inc.elf.map -o $(@D)/course_data.inc.elf $(@D)/course_data.inc.o --no-check-sections
+	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $(@D)/course_data.inc.elf.map -R $(@D)/packed.inc.elf -o $(@D)/course_data.inc.elf $(@D)/course_data.inc.o --no-check-sections
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/course_data.inc.elf $(@D)/course_data.inc.bin
 	$(V)$(MIO0TOOL) -c $(@D)/course_data.inc.bin $(@D)/course_data.inc.mio0
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/course_data.inc.mio0\"\n\n" > $(@D)/course_data.inc.mio0.s

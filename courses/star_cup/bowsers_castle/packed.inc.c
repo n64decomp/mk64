@@ -3,6 +3,8 @@
 #include <PR/gbi.h>
 #include <course.h>
 
+#include <courses/star_cup/bowsers_castle/packed.inc.h>
+
 Gfx d_course_bowsers_castle_packed_dl_0[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
@@ -102,12 +104,12 @@ Gfx d_course_bowsers_castle_packed_dl_1E8[] =
 
 Gfx d_course_bowsers_castle_packed_dl_248[] =
 {
-    gsSPDisplayList(0x070001E8),
-    gsSPDisplayList(0x07000188),
-    gsSPDisplayList(0x07000120),
-    gsSPDisplayList(0x070000C0),
-    gsSPDisplayList(0x07000060),
-    gsSPDisplayList(0x07000000),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1E8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_188),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_120),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_C0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_60),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_0),
     gsSPEndDisplayList(),
 };
 
@@ -138,7 +140,7 @@ Gfx d_course_bowsers_castle_packed_dl_280[] =
 
 Gfx d_course_bowsers_castle_packed_dl_328[] =
 {
-    gsSPDisplayList(0x07000280),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_280),
     gsSPEndDisplayList(),
 };
 
@@ -163,7 +165,7 @@ Gfx d_course_bowsers_castle_packed_dl_338[] =
 
 Gfx d_course_bowsers_castle_packed_dl_3B0[] =
 {
-    gsSPDisplayList(0x07000338),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_338),
     gsSPEndDisplayList(),
 };
 
@@ -186,22 +188,22 @@ Gfx d_course_bowsers_castle_packed_dl_3C0[] =
 
 Gfx d_course_bowsers_castle_packed_dl_428[] =
 {
-    gsSPDisplayList(0x070003C0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_3C0),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_bowsers_castle_packed_dl_438[] =
 {
-    gsSPDisplayList(0x07000428),
-    gsSPDisplayList(0x070003B0),
-    gsSPDisplayList(0x07000328),
-    gsSPDisplayList(0x07000248),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_428),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_3B0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_328),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_248),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_bowsers_castle_packed_dl_460[] =
 {
-    gsSPDisplayList(0x07000438),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_438),
     gsSPEndDisplayList(),
 };
 
@@ -391,7 +393,7 @@ Gfx d_course_bowsers_castle_packed_dl_470[] =
 
 Gfx d_course_bowsers_castle_packed_dl_A10[] =
 {
-    gsSPDisplayList(0x07000470),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_470),
     gsSPEndDisplayList(),
 };
 
@@ -660,9 +662,9 @@ Gfx d_course_bowsers_castle_packed_dl_D38[] =
 
 Gfx d_course_bowsers_castle_packed_dl_11F8[] =
 {
-    gsSPDisplayList(0x07000D38),
-    gsSPDisplayList(0x07000B80),
-    gsSPDisplayList(0x07000A20),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_D38),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_B80),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_A20),
     gsSPEndDisplayList(),
 };
 
@@ -711,7 +713,7 @@ Gfx d_course_bowsers_castle_packed_dl_1218[] =
 
 Gfx d_course_bowsers_castle_packed_dl_1350[] =
 {
-    gsSPDisplayList(0x07001218),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1218),
     gsSPEndDisplayList(),
 };
 
@@ -1113,18 +1115,18 @@ Gfx d_course_bowsers_castle_packed_dl_1D58[] =
 
 Gfx d_course_bowsers_castle_packed_dl_1E40[] =
 {
-    gsSPDisplayList(0x07001D58),
-    gsSPDisplayList(0x07001C70),
-    gsSPDisplayList(0x07001B88),
-    gsSPDisplayList(0x07001AA0),
-    gsSPDisplayList(0x070019B8),
-    gsSPDisplayList(0x070018D0),
-    gsSPDisplayList(0x070017E8),
-    gsSPDisplayList(0x07001700),
-    gsSPDisplayList(0x07001618),
-    gsSPDisplayList(0x07001530),
-    gsSPDisplayList(0x07001448),
-    gsSPDisplayList(0x07001360),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1D58),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1C70),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1B88),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1AA0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_19B8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_18D0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_17E8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1700),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1618),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1530),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1448),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1360),
     gsSPEndDisplayList(),
 };
 
@@ -1200,8 +1202,8 @@ Gfx d_course_bowsers_castle_packed_dl_1FA0[] =
 
 Gfx d_course_bowsers_castle_packed_dl_2098[] =
 {
-    gsSPDisplayList(0x07001FA0),
-    gsSPDisplayList(0x07001EA8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1FA0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1EA8),
     gsSPEndDisplayList(),
 };
 
@@ -1573,26 +1575,26 @@ Gfx d_course_bowsers_castle_packed_dl_2920[] =
 
 Gfx d_course_bowsers_castle_packed_dl_29A0[] =
 {
-    gsSPDisplayList(0x07002920),
-    gsSPDisplayList(0x070028B8),
-    gsSPDisplayList(0x07002858),
-    gsSPDisplayList(0x070027E8),
-    gsSPDisplayList(0x07002770),
-    gsSPDisplayList(0x07002708),
-    gsSPDisplayList(0x07002698),
-    gsSPDisplayList(0x07002610),
-    gsSPDisplayList(0x07002598),
-    gsSPDisplayList(0x07002528),
-    gsSPDisplayList(0x070024B0),
-    gsSPDisplayList(0x07002450),
-    gsSPDisplayList(0x070023E0),
-    gsSPDisplayList(0x07002378),
-    gsSPDisplayList(0x07002310),
-    gsSPDisplayList(0x07002290),
-    gsSPDisplayList(0x07002228),
-    gsSPDisplayList(0x07002188),
-    gsSPDisplayList(0x07002128),
-    gsSPDisplayList(0x070020B0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2920),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_28B8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2858),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_27E8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2770),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2708),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2698),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2610),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2598),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2528),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_24B0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2450),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_23E0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2378),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2310),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2290),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2228),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2188),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2128),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_20B0),
     gsSPEndDisplayList(),
 };
 
@@ -1646,7 +1648,7 @@ Gfx d_course_bowsers_castle_packed_dl_2A48[] =
 
 Gfx d_course_bowsers_castle_packed_dl_2BA8[] =
 {
-    gsSPDisplayList(0x07002A48),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2A48),
     gsSPEndDisplayList(),
 };
 
@@ -1891,8 +1893,8 @@ Gfx d_course_bowsers_castle_packed_dl_30C8[] =
 
 Gfx d_course_bowsers_castle_packed_dl_32F0[] =
 {
-    gsSPDisplayList(0x070030C8),
-    gsSPDisplayList(0x07002BB8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_30C8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2BB8),
     gsSPEndDisplayList(),
 };
 
@@ -1978,7 +1980,7 @@ Gfx d_course_bowsers_castle_packed_dl_3308[] =
 
 Gfx d_course_bowsers_castle_packed_dl_3568[] =
 {
-    gsSPDisplayList(0x07003308),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_3308),
     gsSPEndDisplayList(),
 };
 
@@ -2105,7 +2107,7 @@ Gfx d_course_bowsers_castle_packed_dl_3578[] =
 
 Gfx d_course_bowsers_castle_packed_dl_3920[] =
 {
-    gsSPDisplayList(0x07003578),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_3578),
     gsSPEndDisplayList(),
 };
 
@@ -2219,7 +2221,7 @@ Gfx d_course_bowsers_castle_packed_dl_3930[] =
 
 Gfx d_course_bowsers_castle_packed_dl_3C70[] =
 {
-    gsSPDisplayList(0x07003930),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_3930),
     gsSPEndDisplayList(),
 };
 
@@ -2392,7 +2394,7 @@ Gfx d_course_bowsers_castle_packed_dl_3C80[] =
 
 Gfx d_course_bowsers_castle_packed_dl_4198[] =
 {
-    gsSPDisplayList(0x07003C80),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_3C80),
     gsSPEndDisplayList(),
 };
 
@@ -2932,11 +2934,11 @@ Gfx d_course_bowsers_castle_packed_dl_4EB8[] =
 
 Gfx d_course_bowsers_castle_packed_dl_51B8[] =
 {
-    gsSPDisplayList(0x07004EB8),
-    gsSPDisplayList(0x07004BB0),
-    gsSPDisplayList(0x070048A8),
-    gsSPDisplayList(0x07004598),
-    gsSPDisplayList(0x070041A8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_4EB8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_4BB0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_48A8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_4598),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_41A8),
     gsSPEndDisplayList(),
 };
 
@@ -3182,18 +3184,18 @@ Gfx d_course_bowsers_castle_packed_dl_5778[] =
 
 Gfx d_course_bowsers_castle_packed_dl_57E8[] =
 {
-    gsSPDisplayList(0x07005778),
-    gsSPDisplayList(0x070056F0),
-    gsSPDisplayList(0x07005678),
-    gsSPDisplayList(0x070055E8),
-    gsSPDisplayList(0x07005560),
-    gsSPDisplayList(0x070054E8),
-    gsSPDisplayList(0x07005448),
-    gsSPDisplayList(0x070053E0),
-    gsSPDisplayList(0x07005378),
-    gsSPDisplayList(0x07005300),
-    gsSPDisplayList(0x07005270),
-    gsSPDisplayList(0x070051E8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_5778),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_56F0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_5678),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_55E8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_5560),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_54E8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_5448),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_53E0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_5378),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_5300),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_5270),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_51E8),
     gsSPEndDisplayList(),
 };
 
@@ -3315,8 +3317,8 @@ Gfx d_course_bowsers_castle_packed_dl_5A78[] =
 
 Gfx d_course_bowsers_castle_packed_dl_5BB0[] =
 {
-    gsSPDisplayList(0x07005A78),
-    gsSPDisplayList(0x07005850),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_5A78),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_5850),
     gsSPEndDisplayList(),
 };
 
@@ -3382,7 +3384,7 @@ Gfx d_course_bowsers_castle_packed_dl_5BC8[] =
 
 Gfx d_course_bowsers_castle_packed_dl_5D88[] =
 {
-    gsSPDisplayList(0x07005BC8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_5BC8),
     gsSPEndDisplayList(),
 };
 
@@ -3592,8 +3594,8 @@ Gfx d_course_bowsers_castle_packed_dl_6200[] =
 
 Gfx d_course_bowsers_castle_packed_dl_63B8[] =
 {
-    gsSPDisplayList(0x07006200),
-    gsSPDisplayList(0x07005D98),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6200),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_5D98),
     gsSPEndDisplayList(),
 };
 
@@ -3692,9 +3694,9 @@ Gfx d_course_bowsers_castle_packed_dl_6580[] =
 
 Gfx d_course_bowsers_castle_packed_dl_6658[] =
 {
-    gsSPDisplayList(0x07006580),
-    gsSPDisplayList(0x070064A8),
-    gsSPDisplayList(0x070063D0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6580),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_64A8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_63D0),
     gsSPEndDisplayList(),
 };
 
@@ -3737,8 +3739,8 @@ Gfx d_course_bowsers_castle_packed_dl_66E8[] =
 
 Gfx d_course_bowsers_castle_packed_dl_6760[] =
 {
-    gsSPDisplayList(0x070066E8),
-    gsSPDisplayList(0x07006678),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_66E8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6678),
     gsSPEndDisplayList(),
 };
 
@@ -3845,7 +3847,7 @@ Gfx d_course_bowsers_castle_packed_dl_6778[] =
 
 Gfx d_course_bowsers_castle_packed_dl_6A80[] =
 {
-    gsSPDisplayList(0x07006778),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6778),
     gsSPEndDisplayList(),
 };
 
@@ -3925,8 +3927,8 @@ Gfx d_course_bowsers_castle_packed_dl_6BC0[] =
 
 Gfx d_course_bowsers_castle_packed_dl_6CA0[] =
 {
-    gsSPDisplayList(0x07006BC0),
-    gsSPDisplayList(0x07006A90),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6BC0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6A90),
     gsSPEndDisplayList(),
 };
 
@@ -4274,18 +4276,18 @@ Gfx d_course_bowsers_castle_packed_dl_7520[] =
 
 Gfx d_course_bowsers_castle_packed_dl_75E8[] =
 {
-    gsSPDisplayList(0x07007520),
-    gsSPDisplayList(0x07007418),
-    gsSPDisplayList(0x07007340),
-    gsSPDisplayList(0x07007288),
-    gsSPDisplayList(0x07007180),
-    gsSPDisplayList(0x070070D0),
-    gsSPDisplayList(0x07007038),
-    gsSPDisplayList(0x07006FA0),
-    gsSPDisplayList(0x07006F08),
-    gsSPDisplayList(0x07006E48),
-    gsSPDisplayList(0x07006D78),
-    gsSPDisplayList(0x07006CB8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7520),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7418),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7340),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7288),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7180),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_70D0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7038),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6FA0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6F08),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6E48),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6D78),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6CB8),
     gsSPEndDisplayList(),
 };
 
@@ -4839,36 +4841,36 @@ Gfx d_course_bowsers_castle_packed_dl_8348[] =
 
 Gfx d_course_bowsers_castle_packed_dl_83B0[] =
 {
-    gsSPDisplayList(0x07008348),
-    gsSPDisplayList(0x070082D8),
-    gsSPDisplayList(0x07008278),
-    gsSPDisplayList(0x07008218),
-    gsSPDisplayList(0x070081B0),
-    gsSPDisplayList(0x07008148),
-    gsSPDisplayList(0x070080E0),
-    gsSPDisplayList(0x07008078),
-    gsSPDisplayList(0x07008008),
-    gsSPDisplayList(0x07007F98),
-    gsSPDisplayList(0x07007F20),
-    gsSPDisplayList(0x07007EA0),
-    gsSPDisplayList(0x07007E28),
-    gsSPDisplayList(0x07007DB8),
-    gsSPDisplayList(0x07007D48),
-    gsSPDisplayList(0x07007CC0),
-    gsSPDisplayList(0x07007C30),
-    gsSPDisplayList(0x07007BB8),
-    gsSPDisplayList(0x07007B50),
-    gsSPDisplayList(0x07007AD8),
-    gsSPDisplayList(0x07007A78),
-    gsSPDisplayList(0x07007A10),
-    gsSPDisplayList(0x07007998),
-    gsSPDisplayList(0x07007908),
-    gsSPDisplayList(0x07007898),
-    gsSPDisplayList(0x07007820),
-    gsSPDisplayList(0x070077A0),
-    gsSPDisplayList(0x07007730),
-    gsSPDisplayList(0x070076C0),
-    gsSPDisplayList(0x07007650),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_8348),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_82D8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_8278),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_8218),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_81B0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_8148),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_80E0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_8078),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_8008),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7F98),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7F20),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7EA0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7E28),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7DB8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7D48),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7CC0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7C30),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7BB8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7B50),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7AD8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7A78),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7A10),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7998),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7908),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7898),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7820),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_77A0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7730),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_76C0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_7650),
     gsSPEndDisplayList(),
 };
 
@@ -5205,12 +5207,12 @@ Gfx d_course_bowsers_castle_packed_dl_8DA8[] =
 
 Gfx d_course_bowsers_castle_packed_dl_8E40[] =
 {
-    gsSPDisplayList(0x07008DA8),
-    gsSPDisplayList(0x07008D10),
-    gsSPDisplayList(0x07008C78),
-    gsSPDisplayList(0x07008BE0),
-    gsSPDisplayList(0x070087E8),
-    gsSPDisplayList(0x070084A8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_8DA8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_8D10),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_8C78),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_8BE0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_87E8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_84A8),
     gsSPEndDisplayList(),
 };
 
@@ -5352,8 +5354,8 @@ Gfx d_course_bowsers_castle_packed_dl_8FA0[] =
 
 Gfx d_course_bowsers_castle_packed_dl_9278[] =
 {
-    gsSPDisplayList(0x07008FA0),
-    gsSPDisplayList(0x07008E78),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_8FA0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_8E78),
     gsSPEndDisplayList(),
 };
 
@@ -5443,10 +5445,10 @@ Gfx d_course_bowsers_castle_packed_dl_9438[] =
 
 Gfx d_course_bowsers_castle_packed_dl_94B0[] =
 {
-    gsSPDisplayList(0x07009438),
-    gsSPDisplayList(0x070093A0),
-    gsSPDisplayList(0x07009328),
-    gsSPDisplayList(0x07009290),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_9438),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_93A0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_9328),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_9290),
     gsSPEndDisplayList(),
 };
 
@@ -5561,44 +5563,44 @@ Gfx d_course_bowsers_castle_packed_dl_94D8[] =
 
 Gfx d_course_bowsers_castle_packed_dl_9820[] =
 {
-    gsSPDisplayList(0x070094D8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_94D8),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_bowsers_castle_packed_dl_9830[] =
 {
-    gsSPDisplayList(0x07009820),
-    gsSPDisplayList(0x070094B0),
-    gsSPDisplayList(0x07009278),
-    gsSPDisplayList(0x07008E40),
-    gsSPDisplayList(0x070083B0),
-    gsSPDisplayList(0x070075E8),
-    gsSPDisplayList(0x07006CA0),
-    gsSPDisplayList(0x07006A80),
-    gsSPDisplayList(0x07006760),
-    gsSPDisplayList(0x07006658),
-    gsSPDisplayList(0x070063B8),
-    gsSPDisplayList(0x07005D88),
-    gsSPDisplayList(0x07005BB0),
-    gsSPDisplayList(0x070057E8),
-    gsSPDisplayList(0x070051B8),
-    gsSPDisplayList(0x07004198),
-    gsSPDisplayList(0x07003C70),
-    gsSPDisplayList(0x07003920),
-    gsSPDisplayList(0x07003568),
-    gsSPDisplayList(0x070032F0),
-    gsSPDisplayList(0x07002BA8),
-    gsSPDisplayList(0x070029A0),
-    gsSPDisplayList(0x07002098),
-    gsSPDisplayList(0x07001E40),
-    gsSPDisplayList(0x07001350),
-    gsSPDisplayList(0x070011F8),
-    gsSPDisplayList(0x07000A10),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_9820),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_94B0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_9278),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_8E40),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_83B0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_75E8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6CA0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6A80),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6760),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_6658),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_63B8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_5D88),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_5BB0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_57E8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_51B8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_4198),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_3C70),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_3920),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_3568),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_32F0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2BA8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_29A0),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_2098),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1E40),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_1350),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_11F8),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_A10),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_bowsers_castle_packed_dl_9910[] =
 {
-    gsSPDisplayList(0x07009830),
+    gsSPDisplayList(d_course_bowsers_castle_packed_dl_9830),
     gsSPEndDisplayList(),
 };

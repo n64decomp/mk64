@@ -4,6 +4,8 @@
 #include <actor_types.h>
 #include <course.h>
 
+#include <courses/battle/double_deck/packed.inc.h>
+
 Gfx d_course_double_deck_packed_dl_0[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
@@ -130,8 +132,8 @@ Gfx d_course_double_deck_packed_dl_210[] =
 
 Gfx d_course_double_deck_packed_dl_3A0[] =
 {
-    gsSPDisplayList(0x07000210),
-    gsSPDisplayList(0x07000000),
+    gsSPDisplayList(d_course_double_deck_packed_dl_210),
+    gsSPDisplayList(d_course_double_deck_packed_dl_0),
     gsSPEndDisplayList(),
 };
 
@@ -251,21 +253,21 @@ Gfx d_course_double_deck_packed_dl_580[] =
 
 Gfx d_course_double_deck_packed_dl_708[] =
 {
-    gsSPDisplayList(0x07000580),
-    gsSPDisplayList(0x070003B8),
+    gsSPDisplayList(d_course_double_deck_packed_dl_580),
+    gsSPDisplayList(d_course_double_deck_packed_dl_3B8),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_double_deck_packed_dl_720[] =
 {
-    gsSPDisplayList(0x07000708),
-    gsSPDisplayList(0x070003A0),
+    gsSPDisplayList(d_course_double_deck_packed_dl_708),
+    gsSPDisplayList(d_course_double_deck_packed_dl_3A0),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_double_deck_packed_dl_738[] =
 {
-    gsSPDisplayList(0x07000720),
+    gsSPDisplayList(d_course_double_deck_packed_dl_720),
     gsSPEndDisplayList(),
 };
 

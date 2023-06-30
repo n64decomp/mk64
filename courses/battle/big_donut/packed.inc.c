@@ -5,6 +5,8 @@
 #include <course.h>
 #include <types.h>
 
+#include <courses/battle/big_donut/packed.inc.h>
+
 Gfx d_course_big_donut_packed_dl_0[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
