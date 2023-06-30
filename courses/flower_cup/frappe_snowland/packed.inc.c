@@ -3,6 +3,8 @@
 #include <PR/gbi.h>
 #include <course.h>
 
+#include <courses/flower_cup/frappe_snowland/packed.inc.h>
+
 Gfx d_course_frappe_snowland_packed_dl_0[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
@@ -26,19 +28,19 @@ Gfx d_course_frappe_snowland_packed_dl_0[] =
 
 Gfx d_course_frappe_snowland_packed_dl_88[] =
 {
-    gsSPDisplayList(0x07000000),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_0),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_frappe_snowland_packed_dl_98[] =
 {
-    gsSPDisplayList(0x07000088),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_88),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_frappe_snowland_packed_dl_A8[] =
 {
-    gsSPDisplayList(0x07000098),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_98),
     gsSPEndDisplayList(),
 };
 
@@ -201,10 +203,10 @@ Gfx d_course_frappe_snowland_packed_dl_370[] =
 
 Gfx d_course_frappe_snowland_packed_dl_520[] =
 {
-    gsSPDisplayList(0x07000370),
-    gsSPDisplayList(0x07000250),
-    gsSPDisplayList(0x070001A0),
-    gsSPDisplayList(0x070000B8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_370),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_250),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1A0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_B8),
     gsSPEndDisplayList(),
 };
 
@@ -302,7 +304,7 @@ Gfx d_course_frappe_snowland_packed_dl_548[] =
 
 Gfx d_course_frappe_snowland_packed_dl_808[] =
 {
-    gsSPDisplayList(0x07000548),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_548),
     gsSPEndDisplayList(),
 };
 
@@ -435,13 +437,13 @@ Gfx d_course_frappe_snowland_packed_dl_AB0[] =
 
 Gfx d_course_frappe_snowland_packed_dl_B30[] =
 {
-    gsSPDisplayList(0x07000AB0),
-    gsSPDisplayList(0x07000A48),
-    gsSPDisplayList(0x070009D8),
-    gsSPDisplayList(0x07000960),
-    gsSPDisplayList(0x070008E0),
-    gsSPDisplayList(0x07000878),
-    gsSPDisplayList(0x07000818),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_AB0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_A48),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_9D8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_960),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_8E0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_878),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_818),
     gsSPEndDisplayList(),
 };
 
@@ -769,23 +771,23 @@ Gfx d_course_frappe_snowland_packed_dl_12E8[] =
 
 Gfx d_course_frappe_snowland_packed_dl_1360[] =
 {
-    gsSPDisplayList(0x070012E8),
-    gsSPDisplayList(0x07001288),
-    gsSPDisplayList(0x07001218),
-    gsSPDisplayList(0x070011B0),
-    gsSPDisplayList(0x07001150),
-    gsSPDisplayList(0x070010E0),
-    gsSPDisplayList(0x07001080),
-    gsSPDisplayList(0x07001018),
-    gsSPDisplayList(0x07000FA0),
-    gsSPDisplayList(0x07000F08),
-    gsSPDisplayList(0x07000E98),
-    gsSPDisplayList(0x07000E18),
-    gsSPDisplayList(0x07000DA0),
-    gsSPDisplayList(0x07000D28),
-    gsSPDisplayList(0x07000CC0),
-    gsSPDisplayList(0x07000BF0),
-    gsSPDisplayList(0x07000B70),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_12E8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1288),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1218),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_11B0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1150),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_10E0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1080),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1018),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_FA0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_F08),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_E98),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_E18),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_DA0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_D28),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_CC0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_BF0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_B70),
     gsSPEndDisplayList(),
 };
 
@@ -918,13 +920,13 @@ Gfx d_course_frappe_snowland_packed_dl_1698[] =
 
 Gfx d_course_frappe_snowland_packed_dl_1708[] =
 {
-    gsSPDisplayList(0x07001698),
-    gsSPDisplayList(0x07001628),
-    gsSPDisplayList(0x070015B0),
-    gsSPDisplayList(0x07001538),
-    gsSPDisplayList(0x070014C8),
-    gsSPDisplayList(0x07001458),
-    gsSPDisplayList(0x070013F0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1698),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1628),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_15B0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1538),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_14C8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1458),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_13F0),
     gsSPEndDisplayList(),
 };
 
@@ -1471,36 +1473,36 @@ Gfx d_course_frappe_snowland_packed_dl_2548[] =
 
 Gfx d_course_frappe_snowland_packed_dl_25D0[] =
 {
-    gsSPDisplayList(0x07002548),
-    gsSPDisplayList(0x070024A0),
-    gsSPDisplayList(0x07002418),
-    gsSPDisplayList(0x07002350),
-    gsSPDisplayList(0x070022C8),
-    gsSPDisplayList(0x07002210),
-    gsSPDisplayList(0x07002160),
-    gsSPDisplayList(0x070020C8),
-    gsSPDisplayList(0x07002018),
-    gsSPDisplayList(0x07001F10),
-    gsSPDisplayList(0x07001E40),
-    gsSPDisplayList(0x07001D60),
-    gsSPDisplayList(0x07001C98),
-    gsSPDisplayList(0x07001BE8),
-    gsSPDisplayList(0x07001B20),
-    gsSPDisplayList(0x07001A08),
-    gsSPDisplayList(0x07001910),
-    gsSPDisplayList(0x07001860),
-    gsSPDisplayList(0x07001748),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_2548),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_24A0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_2418),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_2350),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_22C8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_2210),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_2160),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_20C8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_2018),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1F10),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1E40),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1D60),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1C98),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1BE8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1B20),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1A08),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1910),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1860),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1748),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_frappe_snowland_packed_dl_2670[] =
 {
-    gsSPDisplayList(0x070025D0),
-    gsSPDisplayList(0x07001708),
-    gsSPDisplayList(0x07001360),
-    gsSPDisplayList(0x07000B30),
-    gsSPDisplayList(0x07000808),
-    gsSPDisplayList(0x07000520),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_25D0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1708),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_1360),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_B30),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_808),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_520),
     gsSPEndDisplayList(),
 };
 
@@ -1659,13 +1661,13 @@ Gfx d_course_frappe_snowland_packed_dl_29E8[] =
 
 Gfx d_course_frappe_snowland_packed_dl_2A90[] =
 {
-    gsSPDisplayList(0x070029E8),
-    gsSPDisplayList(0x07002960),
-    gsSPDisplayList(0x070028D0),
-    gsSPDisplayList(0x07002840),
-    gsSPDisplayList(0x070027A8),
-    gsSPDisplayList(0x07002710),
-    gsSPDisplayList(0x070026A8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_29E8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_2960),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_28D0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_2840),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_27A8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_2710),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_26A8),
     gsSPEndDisplayList(),
 };
 
@@ -1688,7 +1690,7 @@ Gfx d_course_frappe_snowland_packed_dl_2AD0[] =
 
 Gfx d_course_frappe_snowland_packed_dl_2B38[] =
 {
-    gsSPDisplayList(0x07002AD0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_2AD0),
     gsSPEndDisplayList(),
 };
 
@@ -1884,7 +1886,7 @@ Gfx d_course_frappe_snowland_packed_dl_2B48[] =
 
 Gfx d_course_frappe_snowland_packed_dl_3118[] =
 {
-    gsSPDisplayList(0x07002B48),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_2B48),
     gsSPEndDisplayList(),
 };
 
@@ -2225,10 +2227,10 @@ Gfx d_course_frappe_snowland_packed_dl_3758[] =
 
 Gfx d_course_frappe_snowland_packed_dl_3B20[] =
 {
-    gsSPDisplayList(0x07003758),
-    gsSPDisplayList(0x070035A8),
-    gsSPDisplayList(0x07003358),
-    gsSPDisplayList(0x07003128),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_3758),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_35A8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_3358),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_3128),
     gsSPEndDisplayList(),
 };
 
@@ -2599,23 +2601,23 @@ Gfx d_course_frappe_snowland_packed_dl_43E8[] =
 
 Gfx d_course_frappe_snowland_packed_dl_4490[] =
 {
-    gsSPDisplayList(0x070043E8),
-    gsSPDisplayList(0x07004378),
-    gsSPDisplayList(0x07004300),
-    gsSPDisplayList(0x07004288),
-    gsSPDisplayList(0x07004208),
-    gsSPDisplayList(0x07004188),
-    gsSPDisplayList(0x07004120),
-    gsSPDisplayList(0x070040B0),
-    gsSPDisplayList(0x07004020),
-    gsSPDisplayList(0x07003F80),
-    gsSPDisplayList(0x07003EF8),
-    gsSPDisplayList(0x07003E68),
-    gsSPDisplayList(0x07003DD8),
-    gsSPDisplayList(0x07003D58),
-    gsSPDisplayList(0x07003CD8),
-    gsSPDisplayList(0x07003BD8),
-    gsSPDisplayList(0x07003B48),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_43E8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4378),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4300),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4288),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4208),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4188),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4120),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_40B0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4020),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_3F80),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_3EF8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_3E68),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_3DD8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_3D58),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_3CD8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_3BD8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_3B48),
     gsSPEndDisplayList(),
 };
 
@@ -2757,13 +2759,13 @@ Gfx d_course_frappe_snowland_packed_dl_47F8[] =
 
 Gfx d_course_frappe_snowland_packed_dl_4880[] =
 {
-    gsSPDisplayList(0x070047F8),
-    gsSPDisplayList(0x07004778),
-    gsSPDisplayList(0x07004700),
-    gsSPDisplayList(0x07004680),
-    gsSPDisplayList(0x07004608),
-    gsSPDisplayList(0x07004590),
-    gsSPDisplayList(0x07004520),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_47F8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4778),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4700),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4680),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4608),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4590),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4520),
     gsSPEndDisplayList(),
 };
 
@@ -3716,33 +3718,33 @@ Gfx d_course_frappe_snowland_packed_dl_6268[] =
 
 Gfx d_course_frappe_snowland_packed_dl_62F8[] =
 {
-    gsSPDisplayList(0x07006268),
-    gsSPDisplayList(0x070061A0),
-    gsSPDisplayList(0x07006088),
-    gsSPDisplayList(0x07005F90),
-    gsSPDisplayList(0x07005EA8),
-    gsSPDisplayList(0x07005E08),
-    gsSPDisplayList(0x07005D90),
-    gsSPDisplayList(0x07005C70),
-    gsSPDisplayList(0x07005BE0),
-    gsSPDisplayList(0x07005B58),
-    gsSPDisplayList(0x07005AC0),
-    gsSPDisplayList(0x07005A20),
-    gsSPDisplayList(0x07005988),
-    gsSPDisplayList(0x070058C0),
-    gsSPDisplayList(0x07005740),
-    gsSPDisplayList(0x070055D0),
-    gsSPDisplayList(0x070054A0),
-    gsSPDisplayList(0x07005330),
-    gsSPDisplayList(0x070051C8),
-    gsSPDisplayList(0x070050D0),
-    gsSPDisplayList(0x07004FF8),
-    gsSPDisplayList(0x07004F00),
-    gsSPDisplayList(0x07004E40),
-    gsSPDisplayList(0x07004D18),
-    gsSPDisplayList(0x07004BA0),
-    gsSPDisplayList(0x070049E0),
-    gsSPDisplayList(0x070048C0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_6268),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_61A0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_6088),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_5F90),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_5EA8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_5E08),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_5D90),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_5C70),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_5BE0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_5B58),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_5AC0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_5A20),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_5988),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_58C0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_5740),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_55D0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_54A0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_5330),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_51C8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_50D0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4FF8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4F00),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4E40),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4D18),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4BA0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_49E0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_48C0),
     gsSPEndDisplayList(),
 };
 
@@ -3817,26 +3819,26 @@ Gfx d_course_frappe_snowland_packed_dl_63D8[] =
 
 Gfx d_course_frappe_snowland_packed_dl_65E0[] =
 {
-    gsSPDisplayList(0x070063D8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_63D8),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_frappe_snowland_packed_dl_65F0[] =
 {
-    gsSPDisplayList(0x070065E0),
-    gsSPDisplayList(0x070062F8),
-    gsSPDisplayList(0x07004880),
-    gsSPDisplayList(0x07004490),
-    gsSPDisplayList(0x07003B20),
-    gsSPDisplayList(0x07003118),
-    gsSPDisplayList(0x07002B38),
-    gsSPDisplayList(0x07002A90),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_65E0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_62F8),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4880),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_4490),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_3B20),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_3118),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_2B38),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_2A90),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_frappe_snowland_packed_dl_6638[] =
 {
-    gsSPDisplayList(0x070065F0),
-    gsSPDisplayList(0x07002670),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_65F0),
+    gsSPDisplayList(d_course_frappe_snowland_packed_dl_2670),
     gsSPEndDisplayList(),
 };

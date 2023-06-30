@@ -3,11 +3,13 @@
 #include <PR/gbi.h>
 #include <actor_types.h>
 
+#include <courses/battle/double_deck/packed.inc.h>
+
 Gfx d_course_double_deck_dl[] = {
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
-    gsSPDisplayList(0x07000708),
-    gsSPDisplayList(0x070003A0),
+    gsSPDisplayList(d_course_double_deck_packed_dl_708),
+    gsSPDisplayList(d_course_double_deck_packed_dl_3A0),
     gsSPEndDisplayList(),
 };
 

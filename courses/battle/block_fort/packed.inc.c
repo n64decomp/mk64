@@ -4,6 +4,8 @@
 #include <actor_types.h>
 #include <course.h>
 
+#include <courses/battle/block_fort/packed.inc.h>
+
 Gfx d_course_block_fort_packed_dl_0[] =
 {
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
@@ -156,12 +158,12 @@ Gfx d_course_block_fort_packed_dl_330[] =
 
 Gfx d_course_block_fort_packed_dl_3F0[] =
 {
-    gsSPDisplayList(0x07000330),
-    gsSPDisplayList(0x07000268),
-    gsSPDisplayList(0x070001D8),
-    gsSPDisplayList(0x07000148),
-    gsSPDisplayList(0x070000B8),
-    gsSPDisplayList(0x07000000),
+    gsSPDisplayList(d_course_block_fort_packed_dl_330),
+    gsSPDisplayList(d_course_block_fort_packed_dl_268),
+    gsSPDisplayList(d_course_block_fort_packed_dl_1D8),
+    gsSPDisplayList(d_course_block_fort_packed_dl_148),
+    gsSPDisplayList(d_course_block_fort_packed_dl_B8),
+    gsSPDisplayList(d_course_block_fort_packed_dl_0),
     gsSPEndDisplayList(),
 };
 
@@ -259,10 +261,10 @@ Gfx d_course_block_fort_packed_dl_5F0[] =
 
 Gfx d_course_block_fort_packed_dl_688[] =
 {
-    gsSPDisplayList(0x070005F0),
-    gsSPDisplayList(0x07000558),
-    gsSPDisplayList(0x070004C0),
-    gsSPDisplayList(0x07000428),
+    gsSPDisplayList(d_course_block_fort_packed_dl_5F0),
+    gsSPDisplayList(d_course_block_fort_packed_dl_558),
+    gsSPDisplayList(d_course_block_fort_packed_dl_4C0),
+    gsSPDisplayList(d_course_block_fort_packed_dl_428),
     gsSPEndDisplayList(),
 };
 
@@ -386,11 +388,11 @@ Gfx d_course_block_fort_packed_dl_938[] =
 
 Gfx d_course_block_fort_packed_dl_9C0[] =
 {
-    gsSPDisplayList(0x07000938),
-    gsSPDisplayList(0x070008B0),
-    gsSPDisplayList(0x07000828),
-    gsSPDisplayList(0x070007A0),
-    gsSPDisplayList(0x070006B0),
+    gsSPDisplayList(d_course_block_fort_packed_dl_938),
+    gsSPDisplayList(d_course_block_fort_packed_dl_8B0),
+    gsSPDisplayList(d_course_block_fort_packed_dl_828),
+    gsSPDisplayList(d_course_block_fort_packed_dl_7A0),
+    gsSPDisplayList(d_course_block_fort_packed_dl_6B0),
     gsSPEndDisplayList(),
 };
 
@@ -754,10 +756,10 @@ Gfx d_course_block_fort_packed_dl_11A8[] =
 
 Gfx d_course_block_fort_packed_dl_14A0[] =
 {
-    gsSPDisplayList(0x070011A8),
-    gsSPDisplayList(0x07000F10),
-    gsSPDisplayList(0x07000C80),
-    gsSPDisplayList(0x070009F0),
+    gsSPDisplayList(d_course_block_fort_packed_dl_11A8),
+    gsSPDisplayList(d_course_block_fort_packed_dl_F10),
+    gsSPDisplayList(d_course_block_fort_packed_dl_C80),
+    gsSPDisplayList(d_course_block_fort_packed_dl_9F0),
     gsSPEndDisplayList(),
 };
 
@@ -790,23 +792,23 @@ Gfx d_course_block_fort_packed_dl_14C8[] =
 
 Gfx d_course_block_fort_packed_dl_1580[] =
 {
-    gsSPDisplayList(0x070014C8),
+    gsSPDisplayList(d_course_block_fort_packed_dl_14C8),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_block_fort_packed_dl_1590[] =
 {
-    gsSPDisplayList(0x07001580),
-    gsSPDisplayList(0x070014A0),
-    gsSPDisplayList(0x070009C0),
-    gsSPDisplayList(0x07000688),
-    gsSPDisplayList(0x070003F0),
+    gsSPDisplayList(d_course_block_fort_packed_dl_1580),
+    gsSPDisplayList(d_course_block_fort_packed_dl_14A0),
+    gsSPDisplayList(d_course_block_fort_packed_dl_9C0),
+    gsSPDisplayList(d_course_block_fort_packed_dl_688),
+    gsSPDisplayList(d_course_block_fort_packed_dl_3F0),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_block_fort_packed_dl_15C0[] =
 {
-    gsSPDisplayList(0x07001590),
+    gsSPDisplayList(d_course_block_fort_packed_dl_1590),
     gsSPEndDisplayList(),
 };
 

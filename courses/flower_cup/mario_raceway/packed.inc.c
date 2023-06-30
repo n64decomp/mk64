@@ -3,6 +3,8 @@
 #include <PR/gbi.h>
 #include <course.h>
 
+#include <courses/flower_cup/mario_raceway/packed.inc.h>
+
 Gfx d_course_mario_raceway_packed_dl_0[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
@@ -41,8 +43,8 @@ Gfx d_course_mario_raceway_packed_dl_70[] =
 
 Gfx d_course_mario_raceway_packed_dl_E0[] =
 {
-    gsSPDisplayList(0x07000070),
-    gsSPDisplayList(0x07000000),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_70),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_0),
     gsSPEndDisplayList(),
 };
 
@@ -65,7 +67,7 @@ Gfx d_course_mario_raceway_packed_dl_F8[] =
 
 Gfx d_course_mario_raceway_packed_dl_160[] =
 {
-    gsSPDisplayList(0x070000F8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_F8),
     gsSPEndDisplayList(),
 };
 
@@ -105,8 +107,8 @@ Gfx d_course_mario_raceway_packed_dl_1D8[] =
 
 Gfx d_course_mario_raceway_packed_dl_240[] =
 {
-    gsSPDisplayList(0x070001D8),
-    gsSPDisplayList(0x07000170),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1D8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_170),
     gsSPEndDisplayList(),
 };
 
@@ -191,25 +193,25 @@ Gfx d_course_mario_raceway_packed_dl_3D8[] =
 
 Gfx d_course_mario_raceway_packed_dl_450[] =
 {
-    gsSPDisplayList(0x070003D8),
-    gsSPDisplayList(0x07000328),
-    gsSPDisplayList(0x070002C0),
-    gsSPDisplayList(0x07000258),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3D8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_328),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2C0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_258),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_mario_raceway_packed_dl_478[] =
 {
-    gsSPDisplayList(0x07000450),
-    gsSPDisplayList(0x07000240),
-    gsSPDisplayList(0x07000160),
-    gsSPDisplayList(0x070000E0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_450),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_240),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_160),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_E0),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_mario_raceway_packed_dl_4A0[] =
 {
-    gsSPDisplayList(0x07000478),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_478),
     gsSPEndDisplayList(),
 };
 
@@ -358,8 +360,8 @@ Gfx d_course_mario_raceway_packed_dl_588[] =
 
 Gfx d_course_mario_raceway_packed_dl_8E8[] =
 {
-    gsSPDisplayList(0x07000588),
-    gsSPDisplayList(0x070004B0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_588),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4B0),
     gsSPEndDisplayList(),
 };
 
@@ -661,14 +663,14 @@ Gfx d_course_mario_raceway_packed_dl_1038[] =
 
 Gfx d_course_mario_raceway_packed_dl_1140[] =
 {
-    gsSPDisplayList(0x07001038),
-    gsSPDisplayList(0x07000F30),
-    gsSPDisplayList(0x07000E28),
-    gsSPDisplayList(0x07000D20),
-    gsSPDisplayList(0x07000C18),
-    gsSPDisplayList(0x07000B10),
-    gsSPDisplayList(0x07000A08),
-    gsSPDisplayList(0x07000900),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1038),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_F30),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_E28),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_D20),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_C18),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_B10),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_A08),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_900),
     gsSPEndDisplayList(),
 };
 
@@ -789,10 +791,10 @@ Gfx d_course_mario_raceway_packed_dl_1438[] =
 
 Gfx d_course_mario_raceway_packed_dl_14A0[] =
 {
-    gsSPDisplayList(0x07001438),
-    gsSPDisplayList(0x070013C0),
-    gsSPDisplayList(0x07001348),
-    gsSPDisplayList(0x07001188),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1438),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_13C0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1348),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1188),
     gsSPEndDisplayList(),
 };
 
@@ -1070,23 +1072,23 @@ Gfx d_course_mario_raceway_packed_dl_1AF8[] =
 
 Gfx d_course_mario_raceway_packed_dl_1B28[] =
 {
-    gsSPDisplayList(0x07001AF8),
-    gsSPDisplayList(0x07001A80),
-    gsSPDisplayList(0x07001A08),
-    gsSPDisplayList(0x07001988),
-    gsSPDisplayList(0x07001950),
-    gsSPDisplayList(0x070018E0),
-    gsSPDisplayList(0x070018B8),
-    gsSPDisplayList(0x07001890),
-    gsSPDisplayList(0x07001850),
-    gsSPDisplayList(0x070017D8),
-    gsSPDisplayList(0x07001770),
-    gsSPDisplayList(0x070016D8),
-    gsSPDisplayList(0x07001668),
-    gsSPDisplayList(0x07001600),
-    gsSPDisplayList(0x07001550),
-    gsSPDisplayList(0x07001500),
-    gsSPDisplayList(0x070014C8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1AF8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1A80),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1A08),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1988),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1950),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_18E0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_18B8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1890),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1850),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_17D8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1770),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_16D8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1668),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1600),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1550),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1500),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_14C8),
     gsSPEndDisplayList(),
 };
 
@@ -1666,34 +1668,34 @@ Gfx d_course_mario_raceway_packed_dl_29B0[] =
 
 Gfx d_course_mario_raceway_packed_dl_2A28[] =
 {
-    gsSPDisplayList(0x070029B0),
-    gsSPDisplayList(0x070028F8),
-    gsSPDisplayList(0x07002870),
-    gsSPDisplayList(0x070027E8),
-    gsSPDisplayList(0x07002760),
-    gsSPDisplayList(0x070026F8),
-    gsSPDisplayList(0x07002680),
-    gsSPDisplayList(0x07002600),
-    gsSPDisplayList(0x07002588),
-    gsSPDisplayList(0x07002510),
-    gsSPDisplayList(0x07002498),
-    gsSPDisplayList(0x07002420),
-    gsSPDisplayList(0x070023B8),
-    gsSPDisplayList(0x07002340),
-    gsSPDisplayList(0x070022B8),
-    gsSPDisplayList(0x07002248),
-    gsSPDisplayList(0x070021C0),
-    gsSPDisplayList(0x07002138),
-    gsSPDisplayList(0x070020B0),
-    gsSPDisplayList(0x07002038),
-    gsSPDisplayList(0x07001FB0),
-    gsSPDisplayList(0x07001F30),
-    gsSPDisplayList(0x07001EA8),
-    gsSPDisplayList(0x07001E30),
-    gsSPDisplayList(0x07001DA8),
-    gsSPDisplayList(0x07001CF8),
-    gsSPDisplayList(0x07001C48),
-    gsSPDisplayList(0x07001BB8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_29B0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_28F8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2870),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_27E8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2760),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_26F8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2680),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2600),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2588),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2510),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2498),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2420),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_23B8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2340),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_22B8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2248),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_21C0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2138),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_20B0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2038),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1FB0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1F30),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1EA8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1E30),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1DA8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1CF8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1C48),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1BB8),
     gsSPEndDisplayList(),
 };
 
@@ -1782,8 +1784,8 @@ Gfx d_course_mario_raceway_packed_dl_2B98[] =
 
 Gfx d_course_mario_raceway_packed_dl_2D68[] =
 {
-    gsSPDisplayList(0x07002B98),
-    gsSPDisplayList(0x07002B10),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2B98),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2B10),
     gsSPEndDisplayList(),
 };
 
@@ -1883,7 +1885,7 @@ Gfx d_course_mario_raceway_packed_dl_2D80[] =
 
 Gfx d_course_mario_raceway_packed_dl_3050[] =
 {
-    gsSPDisplayList(0x07002D80),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2D80),
     gsSPEndDisplayList(),
 };
 
@@ -1957,8 +1959,8 @@ Gfx d_course_mario_raceway_packed_dl_3150[] =
 
 Gfx d_course_mario_raceway_packed_dl_3240[] =
 {
-    gsSPDisplayList(0x07003150),
-    gsSPDisplayList(0x07003060),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3150),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3060),
     gsSPEndDisplayList(),
 };
 
@@ -2066,10 +2068,10 @@ Gfx d_course_mario_raceway_packed_dl_3460[] =
 
 Gfx d_course_mario_raceway_packed_dl_3508[] =
 {
-    gsSPDisplayList(0x07003460),
-    gsSPDisplayList(0x07003388),
-    gsSPDisplayList(0x070032F0),
-    gsSPDisplayList(0x07003258),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3460),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3388),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_32F0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3258),
     gsSPEndDisplayList(),
 };
 
@@ -2719,35 +2721,35 @@ Gfx d_course_mario_raceway_packed_dl_4540[] =
 
 Gfx d_course_mario_raceway_packed_dl_45B0[] =
 {
-    gsSPDisplayList(0x07004540),
-    gsSPDisplayList(0x070044C0),
-    gsSPDisplayList(0x07004458),
-    gsSPDisplayList(0x070043C0),
-    gsSPDisplayList(0x07004348),
-    gsSPDisplayList(0x07004290),
-    gsSPDisplayList(0x07004210),
-    gsSPDisplayList(0x07004188),
-    gsSPDisplayList(0x070040D8),
-    gsSPDisplayList(0x07004028),
-    gsSPDisplayList(0x07003F80),
-    gsSPDisplayList(0x07003EF8),
-    gsSPDisplayList(0x07003E78),
-    gsSPDisplayList(0x07003E00),
-    gsSPDisplayList(0x07003D50),
-    gsSPDisplayList(0x07003CD8),
-    gsSPDisplayList(0x07003C28),
-    gsSPDisplayList(0x07003BB0),
-    gsSPDisplayList(0x07003AB8),
-    gsSPDisplayList(0x070039E8),
-    gsSPDisplayList(0x07003950),
-    gsSPDisplayList(0x070038B8),
-    gsSPDisplayList(0x07003818),
-    gsSPDisplayList(0x07003798),
-    gsSPDisplayList(0x07003728),
-    gsSPDisplayList(0x070036B0),
-    gsSPDisplayList(0x07003630),
-    gsSPDisplayList(0x070035A8),
-    gsSPDisplayList(0x07003530),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4540),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_44C0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4458),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_43C0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4348),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4290),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4210),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4188),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_40D8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4028),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3F80),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3EF8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3E78),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3E00),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3D50),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3CD8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3C28),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3BB0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3AB8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_39E8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3950),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_38B8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3818),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3798),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3728),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_36B0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3630),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_35A8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3530),
     gsSPEndDisplayList(),
 };
 
@@ -3928,52 +3930,52 @@ Gfx d_course_mario_raceway_packed_dl_6528[] =
 
 Gfx d_course_mario_raceway_packed_dl_6598[] =
 {
-    gsSPDisplayList(0x07006528),
-    gsSPDisplayList(0x07006490),
-    gsSPDisplayList(0x070063B0),
-    gsSPDisplayList(0x07006308),
-    gsSPDisplayList(0x070062A0),
-    gsSPDisplayList(0x07006240),
-    gsSPDisplayList(0x07006198),
-    gsSPDisplayList(0x070060F0),
-    gsSPDisplayList(0x07006068),
-    gsSPDisplayList(0x07005F88),
-    gsSPDisplayList(0x07005ED0),
-    gsSPDisplayList(0x07005E58),
-    gsSPDisplayList(0x07005DF0),
-    gsSPDisplayList(0x07005D70),
-    gsSPDisplayList(0x07005CE8),
-    gsSPDisplayList(0x07005C80),
-    gsSPDisplayList(0x07005BC8),
-    gsSPDisplayList(0x07005AE0),
-    gsSPDisplayList(0x07005A48),
-    gsSPDisplayList(0x07005970),
-    gsSPDisplayList(0x07005870),
-    gsSPDisplayList(0x07005768),
-    gsSPDisplayList(0x070056F0),
-    gsSPDisplayList(0x07005608),
-    gsSPDisplayList(0x07005550),
-    gsSPDisplayList(0x070054B0),
-    gsSPDisplayList(0x07005408),
-    gsSPDisplayList(0x07005368),
-    gsSPDisplayList(0x070052B8),
-    gsSPDisplayList(0x07005218),
-    gsSPDisplayList(0x070050E8),
-    gsSPDisplayList(0x07004F90),
-    gsSPDisplayList(0x07004EE8),
-    gsSPDisplayList(0x07004E20),
-    gsSPDisplayList(0x07004D48),
-    gsSPDisplayList(0x07004CB8),
-    gsSPDisplayList(0x07004C28),
-    gsSPDisplayList(0x07004BB8),
-    gsSPDisplayList(0x07004B50),
-    gsSPDisplayList(0x07004AD8),
-    gsSPDisplayList(0x07004A68),
-    gsSPDisplayList(0x070049E8),
-    gsSPDisplayList(0x07004950),
-    gsSPDisplayList(0x07004870),
-    gsSPDisplayList(0x07004780),
-    gsSPDisplayList(0x070046A0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_6528),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_6490),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_63B0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_6308),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_62A0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_6240),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_6198),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_60F0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_6068),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5F88),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5ED0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5E58),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5DF0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5D70),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5CE8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5C80),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5BC8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5AE0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5A48),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5970),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5870),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5768),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_56F0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5608),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5550),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_54B0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5408),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5368),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_52B8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_5218),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_50E8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4F90),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4EE8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4E20),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4D48),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4CB8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4C28),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4BB8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4B50),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4AD8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4A68),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_49E8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4950),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4870),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_4780),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_46A0),
     gsSPEndDisplayList(),
 };
 
@@ -4035,29 +4037,29 @@ Gfx d_course_mario_raceway_packed_dl_6710[] =
 
 Gfx d_course_mario_raceway_packed_dl_68B0[] =
 {
-    gsSPDisplayList(0x07006710),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_6710),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_mario_raceway_packed_dl_68C0[] =
 {
-    gsSPDisplayList(0x070068B0),
-    gsSPDisplayList(0x07006598),
-    gsSPDisplayList(0x070045B0),
-    gsSPDisplayList(0x07003508),
-    gsSPDisplayList(0x07003240),
-    gsSPDisplayList(0x07003050),
-    gsSPDisplayList(0x07002D68),
-    gsSPDisplayList(0x07002A28),
-    gsSPDisplayList(0x07001B28),
-    gsSPDisplayList(0x070014A0),
-    gsSPDisplayList(0x07001140),
-    gsSPDisplayList(0x070008E8),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_68B0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_6598),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_45B0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3508),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3240),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_3050),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2D68),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_2A28),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1B28),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_14A0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_1140),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_8E8),
     gsSPEndDisplayList(),
 };
 
 Gfx d_course_mario_raceway_packed_dl_6928[] =
 {
-    gsSPDisplayList(0x070068C0),
+    gsSPDisplayList(d_course_mario_raceway_packed_dl_68C0),
     gsSPEndDisplayList(),
 };

@@ -3,13 +3,15 @@
 #include <PR/gbi.h>
 #include <actor_types.h>
 
+#include <courses/battle/block_fort/packed.inc.h>
+
 Gfx d_course_block_fort_dl[] = {
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
-    gsSPDisplayList(0x070014A0),
-    gsSPDisplayList(0x070009C0),
-    gsSPDisplayList(0x07000688),
-    gsSPDisplayList(0x070003F0),
+    gsSPDisplayList(d_course_block_fort_packed_dl_14A0),
+    gsSPDisplayList(d_course_block_fort_packed_dl_9C0),
+    gsSPDisplayList(d_course_block_fort_packed_dl_688),
+    gsSPDisplayList(d_course_block_fort_packed_dl_3F0),
     gsSPEndDisplayList(),
 };
 
