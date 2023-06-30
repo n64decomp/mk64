@@ -1604,80 +1604,80 @@ glabel gTextureLogoMarioKart64
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineMarioRaceway
-.incbin "textures/standalone/course_outline_mario_raceway.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineMarioRaceway.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineChocoMountain
-.incbin "textures/standalone/course_outline_choco_mountain.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineChocoMountain.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineBowsersCastle
-.incbin "textures/standalone/course_outline_bowsers_castle.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineBowsersCastle.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineBansheeBoardwalk
-.incbin "textures/standalone/course_outline_banshee_boardwalk.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineBansheeBoardwalk.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineYoshiValley
-.incbin "textures/standalone/course_outline_yoshi_valley.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineYoshiValley.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineFrappeSnowland
-.incbin "textures/standalone/course_outline_frappe_snowland.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineFrappeSnowland.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineKoopaTroopaBeach
-.incbin "textures/standalone/course_outline_koopa_troopa_beach.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineKoopaTroopaBeach.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineRoyalRaceway
-.incbin "textures/standalone/course_outline_royal_raceway.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineRoyalRaceway.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineLuigiRaceway
-.incbin "textures/standalone/course_outline_luigi_raceway.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineLuigiRaceway.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineMooMooFarm
-.incbin "textures/standalone/course_outline_moo_moo_farm.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineMooMooFarm.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineToadsTurnpike
-.incbin "textures/standalone/course_outline_toads_turnpike.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineToadsTurnpike.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineKalimariDesert
-.incbin "textures/standalone/course_outline_kalimari_desert.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineKalimariDesert.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineSherbetLand
-.incbin "textures/standalone/course_outline_sherbet_land.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineSherbetLand.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineRainbowRoad
-.incbin "textures/standalone/course_outline_rainbow_road.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineRainbowRoad.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineWarioStadium
-.incbin "textures/standalone/course_outline_wario_stadium.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineWarioStadium.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineBlockFort
-.incbin "textures/standalone/course_outline_block_fort.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineBlockFort.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineSkyscraper
-.incbin "textures/standalone/course_outline_skyscraper.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineSkyscraper.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineDoubleDeck
-.incbin "textures/standalone/course_outline_double_deck.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineDoubleDeck.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineDksJungleParkway
-.incbin "textures/standalone/course_outline_dks_jungle_parkway.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineDksJungleParkway.mio0"
 
 .balign 4, 0x00
 glabel gTextureCourseOutlineBigDonut
-.incbin "textures/standalone/course_outline_big_donut.i4.mio0"
+.incbin "assets/course_outlines/gTextureCourseOutlineBigDonut.mio0"
