@@ -2830,14 +2830,25 @@ s8 D_0D029458[] = {
 };
 
 // Uses 2A858 as tlut
-s8 D_0D029858[] = {
-    #include "textures/common/tlut2/132B50_29858.rgba16.ci8.inc.c"
+u8 D_0D029858[][1024] = {
+    {
+        #include "assets/bomb/gTextureBomb1.inc.c"
+    },
+    {
+        #include "assets/bomb/gTextureBomb2.inc.c"
+    },
+    {
+        #include "assets/bomb/gTextureBomb3.inc.c"
+    },
+    {
+        #include "assets/bomb/gTextureBomb4.inc.c"
+    },
 };
 
 // Special tlut that uses 0xFFFF as a transparent tail instead of 0x0 or 0x07FE.
 // tlut for 29858
-s8 D_0D02A858[] = {
-    #include "textures/common/tlut2/132B50_29858.rgba16.ci8.tlut.inc.c"
+u8 D_0D02A858[] = {
+        #include "assets/bomb/gTLUTBomb.inc.c"
 };
 
 u8 D_0D02AA58[] = {
