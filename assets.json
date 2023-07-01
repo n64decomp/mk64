@@ -306,7 +306,6 @@
 "textures/common/132B50_03B48.rgba16.png": {"meta":{"dims":[64,32]}, "offsets": {"us":["0x132B50", "0x03B48"]}},
 "textures/common/132B50_06A58.i4.png": {"meta":{"dims":[16,16]}, "offsets": {"us":["0x132B50", "0x06A58"]}},
 "textures/common/132B50_06AD8.ia8.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x132B50", "0x06AD8"]}},
-"textures/common/tlut/132B50_06EF8.rgba16.ci4.png": {"meta":{"dims":[128,32], "pal":"0x06ED8"}, "offsets": {"us":["0x132B50", "0x06EF8"]}},
 "textures/common/132B50_09958.i4.png": {"meta":{"dims":[64,96]}, "offsets": {"us":["0x132B50", "0x09958"]}},
 "textures/common/132B50_0A558.i4.png": {"meta":{"dims":[64,32]}, "offsets": {"us":["0x132B50", "0x0A558"]}},
 "textures/common/132B50_0A958.rgba16.png": {"meta":{"dims":[32,8]}, "offsets": {"us":["0x132B50", "0x0A958"]}},

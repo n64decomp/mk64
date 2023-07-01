@@ -326,7 +326,7 @@ int get_color_index(const rgba comp, const rgba *pal, int mask_value, int pal_si
  * If a value in img is not found in pal, return 0, indicating an error
  * Returns 1 if all values in img are found somewhere in pal
 **/
-int imgpal2rawci(uint8_t *rawci, const rgba *img, const rgba *pal, const uint8_t *wheel_mask, int raw_size, int img_size, int pal_size) {
+int imgpal2rawci(uint8_t *rawci, const rgba *img, const rgba *pal, const uint8_t *wheel_mask, int raw_size, int ci_depth, int img_size, int pal_size) {
    int img_idx;
    int pal_idx;
    int mask_value;
@@ -340,7 +340,19 @@ int imgpal2rawci(uint8_t *rawci, const rgba *img, const rgba *pal, const uint8_t
       }
       pal_idx = get_color_index(img[img_idx], pal, mask_value, pal_size);
       if (pal_idx != -1) {
-         rawci[img_idx] = pal_idx;
+         switch (ci_depth) {
+            case 8:
+                  rawci[img_idx] = pal_idx;
+               break;
+            case 4:
+            {
+               int byte_idx = img_idx / 2;
+               int nibble = 1 - (img_idx % 2);
+               uint8_t mask = 0xF << (4 * (1 - nibble));
+               rawci[byte_idx] = (rawci[byte_idx] & mask) | (pal_idx << (4 * nibble));
+               break;
+            }
+         }
       } else {
          return 0;
       }
@@ -1207,8 +1219,6 @@ int main(int argc, char *argv[])
           * The proper thing to do here would be to:
           *     Expand the config to have separate image and bin file parameters
           *     Add optional argument(s) to specify the new parameters
-          *  In practice what this means is that, as written, when using the -Z mode you MUST set the -f
-          *  argument to `ci8`. Anything else is erroneous
          **/
          switch (config.format.format) {
             case IMG_FORMAT_CI:
@@ -1238,7 +1248,7 @@ int main(int argc, char *argv[])
             wheel_mask = NULL;
          }
 
-         conversion_success = imgpal2rawci(rawci, imgr, palr, wheel_mask, ci_length, img_length, pal_length);
+         conversion_success = imgpal2rawci(rawci, imgr, palr, wheel_mask, ci_length, config.format.depth, img_length, pal_length);
          if (!conversion_success) {
             ERROR("Error converting PNG and TLUT to CI\n");
             exit(EXIT_FAILURE);
