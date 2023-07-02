@@ -723,14 +723,14 @@ s32 check_for_controller_pak(s32 controller) {
 s32 controller_pak_status(void) {
     if (D_800E86F8 != 0) {
         switch (osPfsFindFile(&D_8018E868, D_800E86F0, D_800E86F4, D_800F2E64, D_800F2E74, &D_8018EB84)) {
-            default:
-                D_800E86F8 = 0;
-                break;
             case PFS_READ:
                 return 0;
             case PFS_ERR_INVALID:
                 break;
             case PFS_ERR_NEW_PACK:
+                D_800E86F8 = 0;
+                break;
+            default:
                 D_800E86F8 = 0;
                 break;
         }
