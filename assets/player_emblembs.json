@@ -1,7 +1,0 @@
-{
-"gTLUTPlayerEmblemb":      {"output_dir": "player_emblembs", "rom_offset": "0x132B50", "block_offset": "0x17258", "width": 16, "height": 16, "type": "rgba16"},
-"gTexturePlayerEmblemb1p": {"output_dir": "player_emblembs", "rom_offset": "0x132B50", "block_offset": "0x17458", "width": 64, "height": 32, "type": "ci8", "tlut": "gTLUTPlayerEmblemb"},
-"gTexturePlayerEmblemb2p": {"output_dir": "player_emblembs", "rom_offset": "0x132B50", "block_offset": "0x17C58", "width": 64, "height": 32, "type": "ci8", "tlut": "gTLUTPlayerEmblemb"},
-"gTexturePlayerEmblemb3p": {"output_dir": "player_emblembs", "rom_offset": "0x132B50", "block_offset": "0x18458", "width": 64, "height": 32, "type": "ci8", "tlut": "gTLUTPlayerEmblemb"},
-"gTexturePlayerEmblemb4p": {"output_dir": "player_emblembs", "rom_offset": "0x132B50", "block_offset": "0x18C58", "width": 64, "height": 32, "type": "ci8", "tlut": "gTLUTPlayerEmblemb"}
-}

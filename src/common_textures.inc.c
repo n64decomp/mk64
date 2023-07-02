@@ -2548,22 +2548,22 @@ s8 D_0D016A58[] = {
 
 // tlut for 1p, 2p, 3p, 4p
 u8 D_0D017258[] = {
-    #include "assets/player_emblembs/gTLUTPlayerEmblemb.inc.c"
+    #include "assets/player_emblems/gTLUTPlayerEmblem.inc.c"
 };
 
 // 1p, 2p, 3p, 4p
 u8 D_0D017458[][2048] = {
     {
-        #include "assets/player_emblembs/gTexturePlayerEmblemb1p.inc.c"
+        #include "assets/player_emblems/gTexturePlayerEmblem1p.inc.c"
     },
     {
-        #include "assets/player_emblembs/gTexturePlayerEmblemb2p.inc.c"
+        #include "assets/player_emblems/gTexturePlayerEmblem2p.inc.c"
     },
     {
-        #include "assets/player_emblembs/gTexturePlayerEmblemb3p.inc.c"
+        #include "assets/player_emblems/gTexturePlayerEmblem3p.inc.c"
     },
     {
-        #include "assets/player_emblembs/gTexturePlayerEmblemb4p.inc.c"
+        #include "assets/player_emblems/gTexturePlayerEmblem4p.inc.c"
     },
 };
 
