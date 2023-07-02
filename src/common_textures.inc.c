@@ -1243,12 +1243,12 @@ s8 D_0D006AD8[] = {
 };
 
 // tlut
-s8 D_0D006ED8[] = {
-    #include "textures/common/tlut/132B50_06EF8.rgba16.ci4.tlut.inc.c"
+s8 gTLUTDebugFont[] = {
+    #include "assets/debug_font/gTLUTDebugFont.inc.c"
 };
 
-s8 D_0D006EF8[] = {
-    #include "textures/common/tlut/132B50_06EF8.rgba16.ci4.inc.c"
+s8 gTextureDebugFont[] = {
+    #include "assets/debug_font/gTextureDebugFont.inc.c"
 };
 
 // 0x76F8
@@ -1722,9 +1722,9 @@ Gfx D_0D008060[] = {
 Gfx D_0D008080[] = {
     gsSPDisplayList(D_0D007EF8),
     gsDPSetTextureLUT(G_TT_RGBA16),
-    gsDPLoadTLUT_pal16(0, D_0D006ED8),
+    gsDPLoadTLUT_pal16(0, gTLUTDebugFont),
     gsDPLoadSync(),
-    gsDPLoadTextureBlock_4b(D_0D006EF8, G_IM_FMT_CI, 128, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock_4b(gTextureDebugFont, G_IM_FMT_CI, 128, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSPEndDisplayList(),
 };
 
