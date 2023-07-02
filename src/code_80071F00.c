@@ -3788,10 +3788,6 @@ void func_8007AC9C(s32 playerId) {
 extern u8 sRandomItemIndex;
 extern u8 gControllerRandom;
 extern s32 gRaceFrameCounter;
-extern s8 D_0D008B14[];
-extern s8 D_0D008470[];
-extern s8 D_0D008858[];
-extern s8 D_0D008984[];
 
 // todo: Cleanup this function to use array access and struct if possible.
 u8 gen_random_item(s16 arg0, s16 arg1)
@@ -3806,26 +3802,26 @@ u8 gen_random_item(s16 arg0, s16 arg1)
     if (gModeSelection == VERSUS) {
         switch (gPlayerCountSelection1) {
             case TWO_PLAYERS_SELECTED:
-                curve = segmented_to_virtual((void *) D_0D008790);
+                curve = segmented_to_virtual((void *) gVersus2PlayerItemCurve);
                 break;
             case THREE_PLAYERS_SELECTED:
-                curve = segmented_to_virtual((void *) D_0D008858);
+                curve = segmented_to_virtual((void *) gVersus3PlayerItemCurve);
                 break;
             case FOUR_PLAYERS_SELECTED:
-                curve = segmented_to_virtual((void *) D_0D008984);
+                curve = segmented_to_virtual((void *) gVersus4PlayerItemCurve);
                 break;
         }
         randomItem = *((arg0 * 100) + curve + sRandomItemIndex);
 
     } else if (gModeSelection == BATTLE) {
-        curve = segmented_to_virtual((void *) D_0D008B14);
+        curve = segmented_to_virtual((void *) gBattleItemCurve);
         randomItem = curve[sRandomItemIndex];
     } else { // GP Mode
         if (arg1 == 0) {
-            curve = segmented_to_virtual((void *) D_0D008150);
+            curve = segmented_to_virtual((void *) gGrandPrixHumanItemCurve);
         }
         else {
-            curve = segmented_to_virtual((void *) D_0D008470);
+            curve = segmented_to_virtual((void *) gGrandPrixCPUItemCurve);
         }
         randomItem =  *((arg0 * 100) + curve + sRandomItemIndex);
     }
