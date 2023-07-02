@@ -6947,7 +6947,7 @@ loop_3:
         return;
     case 0x69:
         func_800996BC(segmented_to_virtual_dupe(D_02004A0C), 0);
-        if (func_800B5B94() == 0) {
+        if (controller_pak_status() == 0) {
             func_800B6708();
             return;
         }
@@ -6962,7 +6962,7 @@ loop_3:
         return;
     case 0x8C:
         func_800996BC(segmented_to_virtual_dupe(D_02004A34), 0);
-        if (func_800B5B94() == 0) {
+        if (controller_pak_status() == 0) {
             func_800B6708();
             return;
         }
@@ -7054,7 +7054,7 @@ block_63:
         var_ra->unk1C = (s32) gTimeTrialDataCourseIndex;
         func_800996BC(segmented_to_virtual_dupe(D_02004A0C), 0);
         func_8006EF60();
-        if (func_800B5B94() == 0) {
+        if (controller_pak_status) == 0) {
             func_800B6708();
             return;
         }
@@ -15598,7 +15598,7 @@ void func_800AEDBC(struct_8018D9E0_entry *arg0) {
     if (arg0->unk1C != gTimeTrialDataCourseIndex) {
         arg0->unk1C = (s32) gTimeTrialDataCourseIndex;
         func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4]]));
-        if (func_800B5B94() == 0) {
+        if (controller_pak_status() == 0) {
             func_800B6708();
         } else {
             D_8018EE10[0].ghostDataSaved = 0;

@@ -310,7 +310,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                         return;
                     case 0:
                         func_800B6798();
-                        sp2C = func_800B5B94();
+                        sp2C = controller_pak_status();
                         switch (sp2C) {
                         case -1:
                             D_8018EDEC = 0x46;
