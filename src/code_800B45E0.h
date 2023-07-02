@@ -46,7 +46,7 @@ u8  compute_save_data_checksum_backup_1(void);
 u8  compute_save_data_checksum_backup_2(void);
 s32  validate_save_data_checksum_backup();
 s32  func_800B5B2C(s32);
-s32  func_800B5B94(void);
+s32  controller_pak_status(void);
 s32  func_800B5DA4(void);
 s32  func_800B5F30();
 s32  func_800B6014();
