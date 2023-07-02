@@ -2557,30 +2557,80 @@ u8 D_0D017458[] = {
 };
 
 // font tlut for 12345678
-s8 D_0D019458[] = {
-   #include "textures/common/tlut/132B50_19658.rgba16.ci8.tlut.inc.c"
+u8 gTLUTHudTypeCRankFont[] = {
+   #include "assets/hud_type_c/gTLUTHudTypeCRankFont.inc.c"
 };
  
 // font 12345678
-s8 D_0D019658[] = {
-    #include "textures/common/tlut/132B50_19658.rgba16.ci8.inc.c"
+u8 gTextureHudTypeCRankFont[][256] = {
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankFont1.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankFont2.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankFont3.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankFont4.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankFont5.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankFont6.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankFont7.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankFont8.inc.c"
+    },
 };
 
 // font tlut for 0123456789
-s8 D_0D019E58[] = {
-   #include "textures/common/tlut/132B50_1A058.rgba16.ci8.tlut.inc.c"
+u8 gTLUTHudTypeCRankTinyFont[] = {
+   #include "assets/hud_type_c/gTLUTHudTypeCRankTinyFont.inc.c"
 };
 
 // 0123456789
-s8 D_0D01A058[] = {
-    #include "textures/common/tlut/132B50_1A058.rgba16.ci8.inc.c"
+u8 gTextureHudTypeCRankTinyFont[][64] = {
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont0.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont1.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont2.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont3.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont4.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont5.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont6.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont7.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont8.inc.c"
+    },
+    {
+        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont9.inc.c"
+    },
 };
 
-// some padding or file split?
-
 // Square
-s8 D_0D01A2D8[] = {
-    #include "textures/common/132B50_1A2D8.ia4.inc.c"
+u8 gTextureCharacterPortraitBorder[] = {
+    #include "assets/hud_type_c/gTextureCharacterPortraitBorder.inc.c"
 };
 
 // 1A4D8 mario tlut
@@ -2670,12 +2720,12 @@ s8 gTexturePortraitBowser[] = {
 };
 
 // Mini Bomb Kart
-s8 gTexturePortraitBombKart[] = {
+u8 gTexturePortraitBombKart[] = {
     #include "assets/character_portraits/gTexturePortraitBombKart.inc.c"
 };
 
 // Question Mark
-s8 gTexturePortraitQuestionMark[] = {
+u8 gTexturePortraitQuestionMark[] = {
     #include "assets/character_portraits/gTexturePortraitQuestionMark.inc.c"
 };
 

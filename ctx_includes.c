@@ -78,7 +78,7 @@
 #include "src/camera_junk.h"
 #include "src/ceremony_and_credits.h"
 #include "src/common_textures.h"
-#include "src/credits_01.h"
+#include "src/credits.h"
 #include "src/data_segment2.h"
 #include "src/framebuffers.h"
 #include "src/kart_dma.h"

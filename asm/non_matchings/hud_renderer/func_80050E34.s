@@ -300,8 +300,8 @@ glabel func_80050E34
 /* 051EB8 800512B8 AC590000 */  sw    $t9, ($v0)
 .L800512BC:
 /* 051EBC 800512BC 8E020000 */  lw    $v0, ($s0)
-/* 051EC0 800512C0 3C190D02 */  lui   $t9, %hi(D_0D019E58) # $t9, 0xd02
-/* 051EC4 800512C4 27399E58 */  addiu $t9, %lo(D_0D019E58) # addiu $t9, $t9, -0x61a8
+/* 051EC0 800512C0 3C190D02 */  lui   $t9, %hi(gTLUTHudTypeCRankTinyFont) # $t9, 0xd02
+/* 051EC4 800512C4 27399E58 */  addiu $t9, %lo(gTLUTHudTypeCRankTinyFont) # addiu $t9, $t9, -0x61a8
 /* 051EC8 800512C8 244F0008 */  addiu $t7, $v0, 8
 /* 051ECC 800512CC AE0F0000 */  sw    $t7, ($s0)
 /* 051ED0 800512D0 3C18FD10 */  lui   $t8, 0xfd10
@@ -343,8 +343,8 @@ glabel func_80050E34
 /* 051F60 80051360 AC400004 */  sw    $zero, 4($v0)
 /* 051F64 80051364 AC590000 */  sw    $t9, ($v0)
 /* 051F68 80051368 8FAE00DC */  lw    $t6, 0xdc($sp)
-/* 051F6C 8005136C 3C190D02 */  lui   $t9, %hi(D_0D01A058) # $t9, 0xd02
-/* 051F70 80051370 2739A058 */  addiu $t9, %lo(D_0D01A058) # addiu $t9, $t9, -0x5fa8
+/* 051F6C 8005136C 3C190D02 */  lui   $t9, %hi(gTextureHudTypeCRankTinyFont) # $t9, 0xd02
+/* 051F70 80051370 2739A058 */  addiu $t9, %lo(gTextureHudTypeCRankTinyFont) # addiu $t9, $t9, -0x5fa8
 /* 051F74 80051374 000E7980 */  sll   $t7, $t6, 6
 /* 051F78 80051378 25F80040 */  addiu $t8, $t7, 0x40
 /* 051F7C 8005137C 0C0114A9 */  jal   func_800452A4
@@ -408,8 +408,8 @@ glabel func_80050E34
 /* 05205C 8005145C AFB80034 */  sw    $t8, 0x34($sp)
 /* 052060 80051460 0C012CD7 */  jal   func_8004B35C
 /* 052064 80051464 240700FF */   li    $a3, 255
-/* 052068 80051468 3C040D02 */  lui   $a0, %hi(D_0D01A2D8) # $a0, 0xd02
-/* 05206C 8005146C 2484A2D8 */  addiu $a0, %lo(D_0D01A2D8) # addiu $a0, $a0, -0x5d28
+/* 052068 80051468 3C040D02 */  lui   $a0, %hi(gTextureCharacterPortraitBorder) # $a0, 0xd02
+/* 05206C 8005146C 2484A2D8 */  addiu $a0, %lo(gTextureCharacterPortraitBorder) # addiu $a0, $a0, -0x5d28
 /* 052070 80051470 24050020 */  li    $a1, 32
 /* 052074 80051474 0C011249 */  jal   func_80044924
 /* 052078 80051478 24060020 */   li    $a2, 32

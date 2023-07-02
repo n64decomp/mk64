@@ -427,7 +427,9 @@ typedef struct {
     f32 unk_04;
     char unk_08[0x4];
     f32 unk_0C;
-    char unk_10[0x10];
+    char unk_10[0x4];
+    s32 objectIndex;
+    char unk_18[0x8];
 } struct_D_8018CE10; // size = 0x20
 
 typedef struct
