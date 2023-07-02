@@ -298,9 +298,11 @@ void func_8004F950(s32, s32, s32, s32);
 void func_8004F9CC(s32, s32, s32);
 void func_8004FA78(s32);
 void func_8004FC78(s16, s16, s8);
+void func_8004FDB4(f32, f32, s16, s16, s16, s32, s32, s32, s32);
 
 void func_80050320();
 s32  func_80050644(u16, s32*, s32*);
+void func_80050E34(s32, s32);
 
 void func_800514BC();
 void func_80051638(s32);
@@ -418,7 +420,16 @@ extern UnkActorInner D_8018C830;
 extern u8 *D_8018D1E0;
 extern s32 D_8018D1F0;
 
+extern s32 D_8018D3E0; // some alpha
+extern s32 D_8018D3E4; // some red
+extern s32 D_8018D3E8; // some green
+extern s32 D_8018D3EC; // some blue
+
 extern struct UnkStruct_800DC5EC *D_800DC5F0;
+
+// Probably aren't really part of this file, but don't have a better place to put them
+extern u8 *gPortraitTLUTs[];
+extern u8 *gPortraitTextures[];
 
 extern Lights1 D_800E4638;
 extern Lights1 D_800E4650;
