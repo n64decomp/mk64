@@ -14,7 +14,7 @@ Gfx d_course_double_deck_dl[] = {
 };
 
 // Item box spawn locations.
-struct ActorSpawnData d_course_double_deck_spawn_item_box[] = {
+struct ActorSpawnData d_course_double_deck_item_box_spawns[] = {
     {{ -331, 0, 675 }, { 0 }},
     {{ 18, 30, 295 }, { 0 }},
     {{ -685, 0, -279 }, { 0 }},

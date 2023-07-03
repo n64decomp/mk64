@@ -279,7 +279,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             gDPNoOp(gDisplayListHead++);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            load_surface_map((uintptr_t) D_06019578, arg0);
+            load_surface_map(d_course_koopa_troopa_beach_dl_list2, arg0);
             gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
@@ -732,7 +732,7 @@ void render_koopa_troopa_beach(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gSPDisplayList(gDisplayListHead++, d_course_koopa_troopa_beach_packed_dl_9688);
-    load_surface_map((uintptr_t) koopa_troopa_beach_dls, arg0);
+    load_surface_map((uintptr_t) d_course_koopa_troopa_beach_dl_list1, arg0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);

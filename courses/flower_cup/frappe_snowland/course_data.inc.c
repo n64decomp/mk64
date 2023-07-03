@@ -2731,7 +2731,7 @@ Vtx d_frappe_snowland_tree[] = {
     {{{ 25, -2, 0 }, 0, { 1023, 1945 }, {0xFF, 0xFE, 0xFE, 0xFF }}},
 };
 
-Gfx d_course_frappe_snowland_dl_75A0[] =
+Gfx d_course_frappe_snowland_dl_tree[] =
 {
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),

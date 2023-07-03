@@ -9,8 +9,8 @@ glabel func_80052F20
 /* 053B3C 80052F3C AFA40050 */  sw    $a0, 0x50($sp)
 /* 053B40 80052F40 000F78C0 */  sll   $t7, $t7, 3
 /* 053B44 80052F44 AFBF003C */  sw    $ra, 0x3c($sp)
-/* 053B48 80052F48 3C040600 */  lui   $a0, %hi(D_06006D20) # $a0, 0x600
-/* 053B4C 80052F4C 3C050600 */  lui   $a1, %hi(D_06006F20) # $a1, 0x600
+/* 053B48 80052F48 3C040600 */  lui   $a0, %hi(d_course_frappe_snowland_snow_tlut) # $a0, 0x600
+/* 053B4C 80052F4C 3C050600 */  lui   $a1, %hi(d_course_frappe_snowland_snow) # $a1, 0x600
 /* 053B50 80052F50 01F8C821 */  addu  $t9, $t7, $t8
 /* 053B54 80052F54 AFBE0038 */  sw    $fp, 0x38($sp)
 /* 053B58 80052F58 AFB70034 */  sw    $s7, 0x34($sp)
@@ -22,8 +22,8 @@ glabel func_80052F20
 /* 053B70 80052F70 AFB1001C */  sw    $s1, 0x1c($sp)
 /* 053B74 80052F74 AFB00018 */  sw    $s0, 0x18($sp)
 /* 053B78 80052F78 AFB90044 */  sw    $t9, 0x44($sp)
-/* 053B7C 80052F7C 24A56F20 */  addiu $a1, %lo(D_06006F20) # addiu $a1, $a1, 0x6f20
-/* 053B80 80052F80 24846D20 */  addiu $a0, %lo(D_06006D20) # addiu $a0, $a0, 0x6d20
+/* 053B7C 80052F7C 24A56F20 */  addiu $a1, %lo(d_course_frappe_snowland_snow) # addiu $a1, $a1, 0x6f20
+/* 053B80 80052F80 24846D20 */  addiu $a0, %lo(d_course_frappe_snowland_snow_tlut) # addiu $a0, $a0, 0x6d20
 /* 053B84 80052F84 24060020 */  li    $a2, 32
 /* 053B88 80052F88 0C011B98 */  jal   func_80046E60
 /* 053B8C 80052F8C 24070020 */   li    $a3, 32

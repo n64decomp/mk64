@@ -3912,7 +3912,7 @@ Gfx d_course_sherbet_land_dl_7208[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_sherbet_land_dl_7218[] =
+Gfx d_course_sherbet_land_dl_ice_block[] =
 {
     gsSPDisplayList(d_course_sherbet_land_dl_7208),
     gsSPEndDisplayList(),
@@ -4510,7 +4510,7 @@ Gfx d_course_sherbet_land_dl_9AE8[] =
 };
 
 // 0x9B80 Spawn locations
-struct ActorSpawnData d_course_sherbet_land_spawn_item_box[] = {
+struct ActorSpawnData d_course_sherbet_land_item_box_spawns[] = {
     {{ 168, 0, -1131 }, { 0 }},
     {{ 152, 0, -1111 }, { 0 }},
     {{ 108, 0, -1080 }, { 0 }},

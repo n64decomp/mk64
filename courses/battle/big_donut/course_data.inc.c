@@ -21,7 +21,7 @@ Gfx d_course_big_donut_dl[] = {
 };
 
 // Item box spawn locations
-struct ActorSpawnData d_course_big_donut_spawn_item_box[] = {
+struct ActorSpawnData d_course_big_donut_item_box_spawns[] = {
     {{ -40, 222, 824 }, {0} },
     {{ 125, 200, 573 }, {0} },
     {{ -302, 251, 889 }, {0} },

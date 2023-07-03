@@ -4578,7 +4578,7 @@ Vtx d_course_kalimari_desert_cactus_model2[] = {
     {{{ 6, 0, 0 }, 0, { 1024, 1638 }, {0xFF, 0xFE, 0xFE, 0xFF }}},
 };
 
-Gfx d_course_kalimari_desert_dl_8528[] =
+Gfx d_course_kalimari_desert_dl_cactus1[] =
 {
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
@@ -4597,7 +4597,7 @@ Gfx d_course_kalimari_desert_dl_8528[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_kalimari_desert_dl_8628[] =
+Gfx d_course_kalimari_desert_dl_cactus2[] =
 {
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
@@ -4616,7 +4616,7 @@ Gfx d_course_kalimari_desert_dl_8628[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_kalimari_desert_dl_8728[] =
+Gfx d_course_kalimari_desert_dl_cactus3[] =
 {
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
@@ -4759,7 +4759,7 @@ Vtx d_course_kalimari_desert_crossing_signal_unknown_model11[] = {
 };
 
 // 0x10AE8
-Gfx d_course_kalimari_desert_dl_10AE8[] =
+Gfx d_course_kalimari_desert_dl_crossing_right_active[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
@@ -4800,7 +4800,7 @@ Gfx d_course_kalimari_desert_dl_10AE8[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_kalimari_desert_dl_10C10[] =
+Gfx d_course_kalimari_desert_dl_crossing_left_active[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
@@ -4841,7 +4841,7 @@ Gfx d_course_kalimari_desert_dl_10C10[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_kalimari_desert_dl_10D38[] =
+Gfx d_course_kalimari_desert_dl_crossing_both_inactive[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
@@ -8327,7 +8327,7 @@ Gfx d_course_kalimari_desert_dl_22E00[] =
 };
 
 // 0x22E88
-struct ActorSpawnData d_course_kalimari_desert_item_box_spawn[] = {
+struct ActorSpawnData d_course_kalimari_desert_item_box_spawns[] = {
     {{ -856, 26, -1141 }, { 0 }},
     {{ -846, 26, -1074 }, { 0 }},
     {{ -844, 26, -1098 }, { 0 }},

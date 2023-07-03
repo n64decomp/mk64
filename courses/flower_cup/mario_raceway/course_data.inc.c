@@ -3609,7 +3609,7 @@ Vtx d_course_mario_raceway_piranha_plant_model[] = {
     {{{  15, 30, 0 }, 0, { 2048,    0 }, {0xFF, 0xFF, 0xFE, 0xFF }}},
 };
 
-Gfx d_course_mario_raceway_dl_6990[] =
+Gfx d_course_mario_raceway_dl_piranha_plant[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
@@ -3628,14 +3628,14 @@ Gfx d_course_mario_raceway_dl_6990[] =
 };
 
 // 0x6A28
-Vtx d_course_mario_raceway_sdfuih[4] = {
+Vtx d_course_mario_raceway_tree_model[4] = {
     {{{  40,  10, 0 }, 0, { 1536, 1706 }, { 0xFF, 0xFE, 0xFE, 0xFF }}},
     {{{   0, 100, 0 }, 0, {  512, -341 }, { 0xFF, 0xFE, 0xFE, 0xFF }}},
     {{{ -40,  10, 0 }, 0, { -512, 1706 }, { 0xFF, 0xFE, 0xFE, 0xFF }}},
     {{{   0, -10, 0 }, 0, {  512, 2161 }, { 0xFF, 0xFE, 0xFE, 0xFF }}},
 };
 
-Gfx d_course_mario_raceway_dl_6A68[] =
+Gfx d_course_mario_raceway_dl_tree[] =
 {
     gsSPClearGeometryMode(G_LIGHTING),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
@@ -3646,7 +3646,7 @@ Gfx d_course_mario_raceway_dl_6A68[] =
     gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b, 4, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x00FC),
     gsDPLoadTextureBlock(0x03009000, G_IM_FMT_CI, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
-    gsSPVertex(d_course_mario_raceway_sdfuih, 4, 0),
+    gsSPVertex(d_course_mario_raceway_tree_model, 4, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSP1Triangle(0, 2, 3, 0),
     gsDPSetTextureLUT(G_TT_NONE),
@@ -3884,7 +3884,7 @@ Gfx d_course_mario_raceway_dl_9310[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_mario_raceway_dl_9330[] =
+Gfx d_course_mario_raceway_dl_sign[] =
 {
     gsSPDisplayList(d_course_mario_raceway_dl_9310),
     gsSPDisplayList(d_course_mario_raceway_dl_90B0),

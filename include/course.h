@@ -2,6 +2,7 @@
 #define COURSE_H
 
 #include <ultra64.h>
+#include <PR/gbi.h>
 #include <macros.h>
 
 /**
@@ -10,7 +11,7 @@
 
 // This could be *func(arg) instead.
 struct CourseAddrUnkStruct {
-    uintptr_t addr;
+    Gfx *addr;
     s32 value;
 };
 

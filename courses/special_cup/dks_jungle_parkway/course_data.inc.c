@@ -5831,7 +5831,7 @@ u8 d_course_dks_jungle_parkway_tree2_trunk[] = {
     #include "assets/courses/dks_jungle_parkway/gTextureDksJungleParkwayTree2Trunk.inc.c"
 };
 
-Gfx d_course_dks_jungle_parkway_dl_10CC0[] =
+Gfx d_course_dks_jungle_parkway_dl_tree1[] =
 {
     gsSPVertex(d_course_dks_jungle_parkway_tree_model, 8, 0),
     gsDPTileSync(),
@@ -5873,7 +5873,7 @@ u8 d_course_dks_jungle_parkway_tree4[] = {
     #include "assets/courses/dks_jungle_parkway/gTextureDksJungleParkwayTree3TopLeft.inc.c"
 };
 
-Gfx d_course_dks_jungle_parkway_dl_11DC8[] =
+Gfx d_course_dks_jungle_parkway_dl_tree2[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
@@ -5921,7 +5921,7 @@ u8 d_course_dks_jungle_parkway_tree5[] = {
 };
 
 // 0x12EF0
-Gfx d_course_dks_jungle_parkway_dl_12EF0[] =
+Gfx d_course_dks_jungle_parkway_dl_tree3[] =
 {
     gsSPVertex(d_course_dks_jungle_parkway_model4, 8, 0),
     gsDPTileSync(),
@@ -5983,7 +5983,7 @@ Gfx d_course_dks_jungle_parkway_dl_13878[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_dks_jungle_parkway_dl_138D0[] =
+Gfx d_course_dks_jungle_parkway_dl_palm_tree[] =
 {
     gsSPVertex(d_course_dks_jungle_parkway_palm_tree_model, 16, 0),
     gsSPClearGeometryMode(G_CULL_BACK),
@@ -6022,7 +6022,7 @@ Vtx d_course_dks_jungle_parkway_kiwano_model[] = {
 };
 
 // 0x13BB8
-Gfx d_course_dks_jungle_parkway_dl_13BB8[] =
+Gfx d_course_dks_jungle_parkway_dl_kiwano_fruit[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
@@ -6100,7 +6100,7 @@ Gfx *d_course_dks_jungle_parkway_unknown_dl_list[] = {
     d_course_dks_jungle_parkway_dl_6F10, d_course_dks_jungle_parkway_dl_7080, d_course_dks_jungle_parkway_dl_7008, d_course_dks_jungle_parkway_dl_7108,
 };
 
-struct ActorSpawnData d_course_dks_jungle_parkway_item_box_spawn[] = {
+struct ActorSpawnData d_course_dks_jungle_parkway_item_box_spawns[] = {
     {{ 561, 0, -953 }, { 0 }},
     {{ 599, 0, -954 }, { 0 }},
     {{ 597, 0, -917 }, { 0 }},

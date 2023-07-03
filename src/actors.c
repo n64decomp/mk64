@@ -433,19 +433,19 @@ void func_80297A50(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     if (func_802B4FF8(arg1, 0) != 0) {
         switch (arg2->state) {
         case 0:
-            gSPDisplayList(gDisplayListHead++, D_06013C00);
+            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow1);
             break;
         case 1:
-            gSPDisplayList(gDisplayListHead++, D_06013CA0);
+            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow2);
             break;
         case 2:
-            gSPDisplayList(gDisplayListHead++, D_06013D20);
+            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow3);
             break;
         case 3:
-            gSPDisplayList(gDisplayListHead++, D_06013DA0);
+            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow4);
             break;
         case 4:
-            gSPDisplayList(gDisplayListHead++, D_06013E20);
+            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow5);
             break;
         }
     }
@@ -725,9 +725,9 @@ void func_80298328(Camera *arg0, Mat4 arg1, struct PiranhaPlant *arg2) {
 
 
         if (gCurrentCourseId == COURSE_MARIO_RACEWAY) {
-            gSPDisplayList(gDisplayListHead++, &D_06006990);
+            gSPDisplayList(gDisplayListHead++, &d_course_mario_raceway_dl_piranha_plant);
         } else {
-            gSPDisplayList(gDisplayListHead++, &D_0600D850);
+            gSPDisplayList(gDisplayListHead++, &d_course_royal_raceway_dl_piranha_plant);
         }
 }
 
@@ -765,19 +765,19 @@ void func_802986B4(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
             if ((D_80150112 < 0x80) && (func_802B4FF8(arg1, 0) != 0)) {
                 switch (var_s1->someId) {
                 case 0:
-                    gSPDisplayList(gDisplayListHead++, D_06013C00);
+                    gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow1);
                     break;
                 case 1:
-                    gSPDisplayList(gDisplayListHead++, D_06013CA0);
+                    gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow2);
                     break;
                 case 2:
-                    gSPDisplayList(gDisplayListHead++, D_06013D20);
+                    gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow3);
                     break;
                 case 3:
-                    gSPDisplayList(gDisplayListHead++, D_06013DA0);
+                    gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow4);
                     break;
                 case 4:
-                    gSPDisplayList(gDisplayListHead++, D_06013E20);
+                    gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow5);
                     break;
                 }
             } else {
@@ -913,16 +913,16 @@ dummylabel:
                 gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
                 switch (test) {
                 case 0:
-                    gSPDisplayList(gDisplayListHead++, D_06010CC0);
+                    gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_tree1);
                     break;
                 case 4:
-                    gSPDisplayList(gDisplayListHead++, D_06011DC8);
+                    gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_tree2);
                     break;
                 case 5:
-                    gSPDisplayList(gDisplayListHead++, D_06012EF0);
+                    gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_tree3);
                     break;
                 case 6:
-                    gSPDisplayList(gDisplayListHead++, D_060138D0);
+                    gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_palm_tree);
                     break;
                 }
             } else { break; }
@@ -950,7 +950,7 @@ void func_80299144(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if (func_802B4FF8(arg1, 0) != 0) {
         gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
-        gSPDisplayList(gDisplayListHead++, D_06006A68);
+        gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_tree);
     }
 }
 
@@ -973,7 +973,7 @@ void func_8029930C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if (func_802B4FF8(arg1, 0) != 0) {
         gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
-        gSPDisplayList(gDisplayListHead++, D_06015B48);
+        gSPDisplayList(gDisplayListHead++, d_course_yoshi_valley_dl_tree);
     }
 }
 
@@ -996,7 +996,7 @@ void func_802994D4(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if (func_802B4FF8(arg1, 0) != 0) {
         gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
-        gSPDisplayList(gDisplayListHead++, D_0600D4A0);
+        gSPDisplayList(gDisplayListHead++, d_course_royal_raceway_dl_tree);
     }
 }
 
@@ -1019,7 +1019,7 @@ void func_8029969C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if (func_802B4FF8(arg1, 0) != 0) {
         gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
-        gSPDisplayList(gDisplayListHead++, D_06013F20);
+        gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_tree);
     }
 }
 
@@ -1042,7 +1042,10 @@ void func_80299864(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if (func_802B4FF8(arg1, 0) != 0) {
         gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
-        gSPDisplayList(gDisplayListHead++, D_0600FC70);
+        // Why is a TLUT being used a DL here? That makes no sense
+        // Based on the TLUT being loaded above, this ought to be pointing to another
+        // tree related DL, presumably one not in Moo Moo Farm
+        gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_mole_tlut);
     }
 }
 
@@ -1065,7 +1068,7 @@ void func_80299A2C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if (func_802B4FF8(arg1, 0) != 0) {
         gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
-        gSPDisplayList(gDisplayListHead++, D_0600D578);
+        gSPDisplayList(gDisplayListHead++, d_course_royal_raceway_dl_castle_tree);
     }
 }
 
@@ -1088,7 +1091,7 @@ void func_80299BF4(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if (func_802B4FF8(arg1, 0) != 0) {
         gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
-        gSPDisplayList(gDisplayListHead++, D_060090C8);
+        gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_bush);
     }
 }
 
@@ -1110,7 +1113,7 @@ void func_80299DBC(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     arg1[3][2] = arg2->pos[2];
 
     if (func_802B4FF8(arg1, 0) != 0) {
-        gSPDisplayList(gDisplayListHead++, D_060075A0);
+        gSPDisplayList(gDisplayListHead++, d_course_frappe_snowland_dl_tree);
     }
 }
 
@@ -1132,7 +1135,7 @@ void func_80299EDC(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     arg1[3][2] = arg2->pos[2];
 
     if (func_802B4FF8(arg1, 0) != 0) {
-        gSPDisplayList(gDisplayListHead++, D_06008528);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_cactus1);
     }
 }
 
@@ -1154,7 +1157,7 @@ void func_80299FFC(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     arg1[3][2] = arg2->pos[2];
 
     if (func_802B4FF8(arg1, 0) != 0) {
-        gSPDisplayList(gDisplayListHead++, D_06008628);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_cactus2);
     }
 }
 
@@ -1176,7 +1179,7 @@ void func_8029A11C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     arg1[3][2] = arg2->pos[2];
 
     if (func_802B4FF8(arg1, 0) != 0) {
-        gSPDisplayList(gDisplayListHead++, D_06008728);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_cactus3);
     }
 }
 
@@ -1195,7 +1198,7 @@ void func_8029A23C(UNUSED Camera *camera, Mat4 arg1, struct Actor *actor) {
     gDPLoadTextureBlock(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(addr), 
             G_IM_FMT_CI, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, 
             G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPDisplayList(gDisplayListHead++, D_06013BB8);
+    gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_kiwano_fruit);
 }
 
 void func_8029A3AC(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
@@ -1908,7 +1911,7 @@ void func_8029CA90(Camera *camera, struct FallingRock *rock) {
     if (func_802B4FF8(sp4C, 0) == 0) {
         return;
     }
-    gSPDisplayList(gDisplayListHead++, D_06006FE0);
+    gSPDisplayList(gDisplayListHead++, d_course_choco_mountain_dl_falling_rock);
 }
 
 void place_piranha_plants(struct ActorSpawnData *spawnData) {
@@ -2020,7 +2023,7 @@ void update_obj_falling_rocks(struct FallingRock *rock) {
         return;
     }
     if (rock->pos[1] < D_8015F8E4) {
-        func_8029CF0C(D_06007230, rock);
+        func_8029CF0C(d_course_choco_mountain_falling_rock_spawns, rock);
     }
     rock->rot[0] += (s16) ((rock->velocity[2] * 5461.0f) / 20.0f);
     rock->rot[2] += (s16) ((rock->velocity[0] * 5461.0f) / 20.0f);
@@ -2260,7 +2263,7 @@ void place_course_actors(void) {
     case COURSE_MARIO_RACEWAY:
         place_segment_06(D_06009570);
         place_piranha_plants(D_06009518);
-        place_all_item_boxes(D_06009498);
+        place_all_item_boxes(d_course_mario_raceway_item_box_spawns);
         vec3f_set(position, 150.0f, 40.0f, -1300.0f);
         position[0] *= gCourseDirection;
         addActorToEmptySlot(position, rotation, velocity, ACTOR_MARIO_RACEWAY_SIGN);
@@ -2270,53 +2273,53 @@ void place_course_actors(void) {
         actor->flags |= 0x4000;
         break;
     case COURSE_CHOCO_MOUNTAIN:
-        place_all_item_boxes(D_06007250);
-        place_falling_rocks(D_06007230);
+        place_all_item_boxes(d_course_choco_mountain_item_box_spawns);
+        place_falling_rocks(d_course_choco_mountain_falling_rock_spawns);
         break;
     case COURSE_BOWSER_CASTLE:
         place_segment_06(D_06009290);
-        place_all_item_boxes(D_06009370);
+        place_all_item_boxes(d_course_bowsers_castle_item_box_spawns);
         break;
     case COURSE_BANSHEE_BOARDWALK:
-        place_all_item_boxes(D_0600B3D0);
+        place_all_item_boxes(d_course_banshee_boardwalk_item_box_spawns);
         break;
     case COURSE_YOSHI_VALLEY:
         place_segment_06(D_060180A0);
-        place_all_item_boxes(D_06018110);
+        place_all_item_boxes(d_course_yoshi_valley_item_box_spawns);
         vec3f_set(position, -2300.0f, 0.0f, 634.0f);
         position[0] *= gCourseDirection;
         addActorToEmptySlot(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
         break;
     case COURSE_FRAPPE_SNOWLAND:
         place_segment_06(D_06007718);
-        place_all_item_boxes(D_06007810);
+        place_all_item_boxes(d_course_frappe_snowland_item_box_spawns);
         break;
     case COURSE_KOOPA_BEACH:
         func_802A14BC(328.0f * gCourseDirection, 70.0f, 2541.0f);
-        place_all_item_boxes(D_06018E78);
+        place_all_item_boxes(d_course_koopa_troopa_beach_item_box_spawns);
         place_palm_trees(D_06018F70);
         break;
     case COURSE_ROYAL_RACEWAY:
         place_segment_06(D_0600DA78);
-        place_all_item_boxes(D_0600DB80);
+        place_all_item_boxes(d_course_royal_raceway_item_box_spawns);
         place_piranha_plants(D_0600D9F0);
         break;
     case COURSE_LUIGI_RACEWAY:
         place_segment_06(D_0600FE80);
-        place_all_item_boxes(D_0600FDE8);
+        place_all_item_boxes(d_course_luigi_raceway_item_box_spawns);
         break;
     case COURSE_MOO_MOO_FARM:
         if (gPlayerCountSelection1 != 4) {
             place_segment_06(D_06014330);
         }
-        place_all_item_boxes(D_060143E0);
+        place_all_item_boxes(d_course_moo_moo_farm_item_box_spawns);
         break;
     case COURSE_TOADS_TURNPIKE:
-        place_all_item_boxes(D_06023AE0);
+        place_all_item_boxes(d_course_toads_turnpike_itembox_spawns);
         break;
     case COURSE_KALAMARI_DESERT:
         place_segment_06(D_06022F08);
-        place_all_item_boxes(D_06022E88);
+        place_all_item_boxes(d_course_kalimari_desert_item_box_spawns);
         vec3f_set(position, -1680.0f, 2.0f, 35.0f);
         position[0] *= gCourseDirection;
         rrxing = (struct RailroadCrossing *)&gActorList[addActorToEmptySlot(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
@@ -2336,13 +2339,13 @@ void place_course_actors(void) {
         rrxing->crossingId = 0;
         break;
     case COURSE_SHERBET_LAND:
-        place_all_item_boxes(D_06009B80);
+        place_all_item_boxes(d_course_sherbet_land_item_box_spawns);
         break;
     case COURSE_RAINBOW_ROAD:
-        place_all_item_boxes(D_06016338);
+        place_all_item_boxes(d_course_rainbow_road_item_box_spawns);
         break;
     case COURSE_WARIO_STADIUM:
-        place_all_item_boxes(D_0600CB40);
+        place_all_item_boxes(d_course_wario_stadium_item_box_spawns);
         vec3f_set(position, -131.0f, 83.0f, 286.0f);
         position[0] *= gCourseDirection;
         addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
@@ -2354,21 +2357,21 @@ void place_course_actors(void) {
         addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
         break;
     case COURSE_BLOCK_FORT:
-        place_all_item_boxes(D_06000038);
+        place_all_item_boxes(d_course_block_fort_item_box_spawns);
         break;
     case COURSE_SKYSCRAPER:
-        place_all_item_boxes(D_06000080);
+        place_all_item_boxes(d_course_skyscraper_item_box_spawns);
         break;
     case COURSE_DOUBLE_DECK:
-        place_all_item_boxes(D_06000028);
+        place_all_item_boxes(d_course_double_deck_item_box_spawns);
         break;
     case COURSE_DK_JUNGLE:
-        place_all_item_boxes(D_06013EC0);
+        place_all_item_boxes(d_course_dks_jungle_parkway_item_box_spawns);
         init_kiwano_fruit();
         func_80298D10();
         break;
     case COURSE_BIG_DONUT:
-        place_all_item_boxes(D_06000058);
+        place_all_item_boxes(d_course_big_donut_item_box_spawns);
         break;
     }
     gNumPermanentActors = gNumActors;
@@ -3958,7 +3961,7 @@ void func_802A269C(Camera *arg0, struct Actor *arg1) {
         func_802B5F74(sp38, arg1->pos, arg1->rot);
         if (func_802B4FF8(sp38, 0) != 0) {
 
-            gSPDisplayList(gDisplayListHead++, D_0600CA60);
+            gSPDisplayList(gDisplayListHead++, d_course_wario_stadium_dl_sign);
         }
     }
 }
@@ -3994,8 +3997,8 @@ void func_802A27A0(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg, u16 arg3
         func_802B5F74(sp60, egg->pos, sp5C);
         if (func_802B4FF8(sp60, 0) == 0) { return; }
 
-            gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
-            gSPDisplayList(gDisplayListHead++, D_06016D70);
+        gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
+        gSPDisplayList(gDisplayListHead++, D_06016D70);
     } else {
         arg1[3][0] = egg->pos[0];
         arg1[3][1] = egg->pos[1];
@@ -4003,7 +4006,7 @@ void func_802A27A0(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg, u16 arg3
 
         if (func_802B4FF8(arg1, 0) != 0) {
             gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-            gSPDisplayList(gDisplayListHead++, D_06017FA8);
+            gSPDisplayList(gDisplayListHead++, d_course_yoshi_valley_dl_egg_lod0);
         }
     }
 }
@@ -4014,15 +4017,16 @@ void func_802A29BC(Camera *arg0, UNUSED Mat4 arg1, struct Actor *arg2) {
     s16 temp = arg2->flags;
 
     if (temp & 0x800) { return; }
-        unk = func_802B80D0(arg0->pos, arg2->pos, arg0->rot[1], 0, D_80150130[arg0 - camera1], 16000000.0f);
-        if (!(unk < 0.0f)) {
-            gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
-            gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-            func_802B5F74(sp40, arg2->pos, arg2->rot);
-            if (func_802B4FF8(sp40, 0) != 0) {
-                gSPDisplayList(gDisplayListHead++, D_06009330);
-            }
+
+    unk = func_802B80D0(arg0->pos, arg2->pos, arg0->rot[1], 0, D_80150130[arg0 - camera1], 16000000.0f);
+    if (!(unk < 0.0f)) {
+        gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
+        gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+        func_802B5F74(sp40, arg2->pos, arg2->rot);
+        if (func_802B4FF8(sp40, 0) != 0) {
+            gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_sign);
         }
+    }
 }
 
 void func_802A2AD0(Camera *arg0, struct RailroadCrossing *rr_crossing) {
@@ -4040,12 +4044,12 @@ void func_802A2AD0(Camera *arg0, struct RailroadCrossing *rr_crossing) {
             if (D_801637B8[rr_crossing->crossingId]) {
 
                 if (rr_crossing->someTimer < 20) {
-                    gSPDisplayList(gDisplayListHead++, D_06010AE8);
+                    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_crossing_right_active);
                 } else {
-                    gSPDisplayList(gDisplayListHead++, D_06010C10);
+                    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_crossing_left_active);
                 }
             } else {
-                gSPDisplayList(gDisplayListHead++, D_06010D38);
+                gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_crossing_both_inactive);
             }
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
         }
@@ -4076,23 +4080,23 @@ void func_802A2C78(Camera *arg0, UNUSED Mat4 arg1, struct Actor *arg2) {
 
             switch(arg2->unk_04) {
                 case 0:
-                        gSPDisplayList(gDisplayListHead++, &D_060186B8);
+                        gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_trunk1);
                         gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                        gSPDisplayList(gDisplayListHead++, &D_060185F8);
+                        gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_top1);
                         gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
                         break;
 
                     case 1:
-                        gSPDisplayList(gDisplayListHead++, &D_06018A08);
+                        gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_trunk2);
                         gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                        gSPDisplayList(gDisplayListHead++, &D_06018948);
+                        gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_top2);
                         gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
                         break;
 
                     case 2:
-                        gSPDisplayList(gDisplayListHead++, &D_06018D58);
+                        gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_trunk3);
                         gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                        gSPDisplayList(gDisplayListHead++, &D_06018C98);
+                        gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_top3);
                         gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
                         break;
 
