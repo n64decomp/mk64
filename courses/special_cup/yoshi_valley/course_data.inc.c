@@ -10705,8 +10705,8 @@ Gfx d_course_yoshi_valley_dl_145D0[] =
     gsSPEndDisplayList(),
 };
 
-// 0x145E8 Flag animation?
-u32 d_course_yoshi_valley_unk2[] = {
+// 0x060145E8 Flag animation?
+u32 d_course_yoshi_valley_unk1[] = {
     // Unknown data, doesn't appear to be vertexes.
     0x000012e3,
     0x0f43099f,
@@ -10783,49 +10783,66 @@ u32 d_course_yoshi_valley_unk2[] = {
     0x048c04d1,
     0x3fffc001,
     0x3fff0000,
+};
 
-    // 0x14714
+// 0x06014714
+u32 d_course_yoshi_valley_unk2[] = {
     0x00010000,
     0x00010000,
     0x00010000,
+
     0x00010000,
     0x00010000,
     0x00010000,
+
     0x00010000,
     0x00010000,
     0x00010094,
+
     0x00010092,
     0x00010000,
     0x00010093,
+
     0x00010000,
     0x00010000,
     0x001d0075,
+
     0x00010000,
     0x00010000,
     0x001d0058,
+
     0x00010000,
     0x00010000,
     0x001d003b,
+
     0x00010000,
     0x00010000,
     0x001d001e,
+
     0x00010000,
     0x00010000,
     0x001d0001,
+};
 
-    // 0x14780
+// 0x06014780
+u32 d_course_yoshi_valley_unk3[] = {
     0x00010000,
     0x00000000,
     0x001d0008,
+    d_course_yoshi_valley_unk1,
+    d_course_yoshi_valley_unk2,
+};
 
-    // 0x1478C
-    0x060145E8,
-    0x06014714,
-    0x06014780,
+// 0x06014794
+u32 d_course_yoshi_valley_unk4[] = {
+    d_course_yoshi_valley_unk3,
+};
 
-    // 0x14798
+// 0x06014798
+u32 d_course_yoshi_valley_unk5[] = {
     0x00000001,
     0x00000002,
+
     0x00000000,
     0x00000007,
     0x00000000,
@@ -10836,6 +10853,7 @@ u32 d_course_yoshi_valley_unk2[] = {
 
     0x00000001,
     0x00000002,
+
     0x00000000,
     0x00000007,
     0x00000000,
@@ -10846,6 +10864,7 @@ u32 d_course_yoshi_valley_unk2[] = {
 
     0x00000001,
     0x00000002,
+
     0x00000000,
     0x00000007,
     0x00000000,
@@ -10856,6 +10875,7 @@ u32 d_course_yoshi_valley_unk2[] = {
 
     0x00000001,
     0x00000002,
+
     0x00000000,
     0x00000007,
     0x00000000,
@@ -10866,6 +10886,7 @@ u32 d_course_yoshi_valley_unk2[] = {
 
     0x00000001,
     0x00000002,
+
     0x00000000,
     0x00000007,
     0x00000000,
@@ -10876,6 +10897,7 @@ u32 d_course_yoshi_valley_unk2[] = {
 
     0x00000001,
     0x00000002,
+
     0x00000000,
     0x00000007,
     0x00000000,
@@ -10886,6 +10908,7 @@ u32 d_course_yoshi_valley_unk2[] = {
 
     0x00000001,
     0x00000002,
+
     0x00000000,
     0x00000007,
     0x00000000,
@@ -10896,6 +10919,7 @@ u32 d_course_yoshi_valley_unk2[] = {
 
     0x00000001,
     0x00000002,
+
     0x00000000,
     0x00000007,
     0x00000000,
@@ -10906,22 +10930,34 @@ u32 d_course_yoshi_valley_unk2[] = {
 
     0x00000002,
     0x00000002,
+
     0x00000002,
     0x00000002,
+
     0x00000002,
     0x00000002,
+
     0x00000002,
     0x00000002,
+
     0x00000002,
     0x00000002,
+
     0x00000002,
     0x00000002,
+
     0x00000002,
     0x00000002,
+
     0x00000002,
     0x00000002,
+
     0x00000003,
     0x00000002,
+};
+
+// No idea what this stuff is
+u32 d_course_yoshi_valley_unk6[] = {
     0x00000000,
     0x00000001,
 };

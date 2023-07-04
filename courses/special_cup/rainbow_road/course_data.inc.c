@@ -3412,7 +3412,7 @@ Gfx d_course_rainbow_road_dl_15F18[] =
     gsSPEndDisplayList(),
 };
 
-// 0x15FC8 todo: Format
+// 0x06015FC8
 u32 d_rainbow_road_chomp_jaw_animation[] = {
     // Unknown data, probably not vertexes
     // Seemingly handled by func_80004C30
@@ -3468,46 +3468,62 @@ u32 d_rainbow_road_chomp_jaw_animation[] = {
     0x7e7c78b0,
     0x728d6fb2,
     0x3fff0000,
+};
 
-    // 0x16098
+// 0x06016098
+u32 d_rainbow_road_unk1[] = {
     0x00010000,
     0x00010000,
     0x00010000,
+
     0x00010000,
     0x00010001,
     0x00010000,
+
     0x00010000,
     0x00010000,
     0x0014002a,
+
     0x00010000,
     0x00010000,
     0x00140002,
+
     0x00010000,
     0x00010066,
     0x00010000,
+
     0x00010000,
     0x00010000,
     0x00140052,
+
     0x00010000,
     0x00010000,
     0x0014003e,
-    0x00010000,
-    0x00010000,
 
-    // 0x160f8
+    0x00010000,
+    0x00010000,
     0x00140016,
+};
+
+// 0x060160F8
+u32 d_rainbow_road_unk2[] = {
     0x00010000,
     0x00000000,
     0x00140007,
+    d_rainbow_road_chomp_jaw_animation,
+    d_rainbow_road_unk1,
+};
 
-    // 0x16108
-    0x06015FC8,
-    0x06016098,
-    0x060160F8,
+// 0x0601610C
+u32 d_rainbow_road_unk3[] = {
+    d_rainbow_road_unk2,
+};
 
-    // 0x16114
+// 0x06016110
+u32 d_rainbow_road_unk4[] = {
     0x00000001,
     0x00000002,
+
     0x00000000,
     0x00000007,
     0x00000000,
@@ -3518,6 +3534,7 @@ u32 d_rainbow_road_chomp_jaw_animation[] = {
 
     0x00000001,
     0x00000002,
+
     0x00000000,
     0x00000007,
     0x00000000,
@@ -3536,6 +3553,7 @@ u32 d_rainbow_road_chomp_jaw_animation[] = {
 
     0x00000002,
     0x00000002,
+
     0x00000000,
     0x00000007,
     0x00000000,
@@ -3546,6 +3564,7 @@ u32 d_rainbow_road_chomp_jaw_animation[] = {
 
     0x00000001,
     0x00000002,
+
     0x00000000,
     0x00000007,
     0x00000000,
@@ -3572,10 +3591,16 @@ u32 d_rainbow_road_chomp_jaw_animation[] = {
 
     0x00000002,
     0x00000002,
+
     0x00000002,
     0x00000002,
+
     0x00000003,
     0x00000002,
+};
+
+// No idea what this stuff is
+u32 d_rainbow_road_unk5[] = {
     0x00000000,
     0x00000000,
     0x00000002,
