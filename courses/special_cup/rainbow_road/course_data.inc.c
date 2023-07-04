@@ -2903,7 +2903,7 @@ struct TrackWayPoint d_course_rainbow_road_track_waypoints[] = {
 };
 
 // some textures 0x5400
-u8 d_course_rainbow_road_mushroom_tlut_list[][512] = {
+u8 d_course_rainbow_road_neon_mushroom_tlut_list[][512] = {
     {
         #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMushroom1.inc.c"
     },
@@ -2921,7 +2921,7 @@ u8 d_course_rainbow_road_mushroom_tlut_list[][512] = {
     },
 };
 
-u8 d_course_rainbow_road_mario_tlut_list[][512] = {
+u8 d_course_rainbow_road_neon_mario_tlut_list[][512] = {
     {
         #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMario1.inc.c"
     },
@@ -2939,7 +2939,7 @@ u8 d_course_rainbow_road_mario_tlut_list[][512] = {
     },
 };
 
-u8 d_course_rainbow_road_boo_tlut_list[][512] = {
+u8 d_course_rainbow_road_neon_boo_tlut_list[][512] = {
     {
     #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonBoo1.inc.c"
     },

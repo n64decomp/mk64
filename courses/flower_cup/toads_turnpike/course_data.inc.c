@@ -8386,7 +8386,7 @@ Gfx *d_course_toads_turnpike_dl_list[] = {
 };
 
 // 0x23AE0
-struct ActorSpawnData d_course_toads_turnpike_itembox_spawns[] = {
+struct ActorSpawnData d_course_toads_turnpike_item_box_spawns[] = {
     {{    -18,   0, -1666 }, { 0 }},
     {{    -18,   0, -1748 }, { 0 }},
     {{    -22,   0, -1851 }, { 0 }},

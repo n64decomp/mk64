@@ -1043,8 +1043,9 @@ void func_80299864(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     if (func_802B4FF8(arg1, 0) != 0) {
         gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
         // Why is a TLUT being used a DL here? That makes no sense
-        // Based on the TLUT being loaded above, this ought to be pointing to another
-        // tree related DL, presumably one not in Moo Moo Farm
+        // Based on the TLUT being loaded above, this ought to be be another
+        // tree related DL, presumably one found in a course other than Moo Moo farm
+        //                                 0x0600FC70
         gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_mole_tlut);
     }
 }
@@ -2315,7 +2316,7 @@ void place_course_actors(void) {
         place_all_item_boxes(d_course_moo_moo_farm_item_box_spawns);
         break;
     case COURSE_TOADS_TURNPIKE:
-        place_all_item_boxes(d_course_toads_turnpike_itembox_spawns);
+        place_all_item_boxes(d_course_toads_turnpike_item_box_spawns);
         break;
     case COURSE_KALAMARI_DESERT:
         place_segment_06(D_06022F08);

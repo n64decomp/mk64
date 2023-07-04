@@ -192,7 +192,7 @@ extern struct ActorSpawnData d_course_koopa_troopa_beach_item_box_spawns[];
 extern struct ActorSpawnData D_06018F70[];
 extern struct ActorSpawnData d_course_kalimari_desert_item_box_spawns[];
 extern struct ActorSpawnData D_06022F08[];
-extern struct ActorSpawnData d_course_toads_turnpike_itembox_spawns[];
+extern struct ActorSpawnData d_course_toads_turnpike_item_box_spawns[];
 
 extern struct UnkActorSpawnData D_06013F78[];
 
