@@ -411,7 +411,7 @@ s32 func_800B5218(void) {
     sp24 = phi_a3;
     temp_a1_2 = phi_a2_2->lap1Duration;
     phi_v0_2 = 0;
-edablity   if (temp_a1_2 < (u32) (func_800B4F2C(temp_a0, temp_a1, phi_a2_2, phi_a3) & 0xFFFFF)) {
+    if (temp_a1_2 < (u32) (func_800B4F2C(temp_a0, temp_a1, phi_a2_2, phi_a3) & 0xFFFFF)) {
         temp_v0_2 = &D_8018EB90.allCourseTimeTrialRecords.cupRecords[sp38].courseRecords[sp38].records[0];
         sp20 = temp_v0_2;
         sp24 = phi_a3;
