@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800ECFE4
+.float 0.01
+
+.section .text
+
 glabel func_8000BA14
 /* 00C614 8000BA14 3C0C8016 */  lui   $t4, %hi(D_80164430) # $t4, 0x8016
 /* 00C618 8000BA18 958C4430 */  lhu   $t4, %lo(D_80164430)($t4)

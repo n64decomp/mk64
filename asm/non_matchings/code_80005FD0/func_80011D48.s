@@ -1,3 +1,12 @@
+.section .late_rodata
+
+glabel jpt_800ED0B4
+.word L80011DC4, L80011E20, L80011DF4, L80011DF4
+.word L80011DF4, L80011E20, L80011E20, L80011E20
+.word L80011E20, L80011E20, L80011E20
+
+.section .text
+
 glabel func_80011D48
 /* 012948 80011D48 3C18800E */  lui   $t8, %hi(gCurrentCourseId)
 /* 01294C 80011D4C 8718C5A0 */  lh    $t8, %lo(gCurrentCourseId)($t8)

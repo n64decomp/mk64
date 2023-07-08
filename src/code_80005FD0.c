@@ -17,6 +17,343 @@
 #include "hud_renderer.h"
 #include "code_80057C60.h"
 
+// Strings, presented by google translate!
+// Note that these are EUC-JP encoded, see:
+// https://en.wikipedia.org/wiki/Extended_Unix_Code#EUC-JP
+
+// Force sort immediately after goal
+char *D_800EB710 = "ゴール直後の強制ソート\n";
+// Forced sort immediately after one goal in 2PGP
+char *D_800EB728 = "2PGPで片方がゴール直後の強制ソート\n";
+// rank calculation error
+char *D_800EB74C = "順位計算エラー！！ (num %d) (rank %d) (e_rank %d)\n";
+// Bypass switching error!!!(num %d org_bipas %d bipas %d)
+char *D_800EB780 = "バイパス切り替え エラー!!!(num %d  org_bipas %d  bipas %d)\n";
+char *D_800EB7BC = "(%d) rap %3d  rate_count_F %10.2f  rap_count_F %10.2f  area %5d \n";
+// Enter the maze! enemy %d (%d --> %d)
+char *D_800EB800 = "迷路に突入！ enemy %d (%d --> %d)\n";
+// Out of the maze! enemy %d (%d --> %d)
+char *D_800EB824 = "迷路から出た！ enemy %d (%d --> %d)\n";
+char *D_800EB84C = "enemy voice set (%d  slip_flag %x  weapon %x)\n";
+// Spin Voice! ! (%d , name %d)
+char *D_800EB87C = "スピンヴォイス！！(%d , name %d)\n";
+// Damage voice! ! (%d, name %d)
+char *D_800EB8A0 = "ダメージヴォイス！！(%d, name %d)\n";
+char *D_800EB8C4 = "===== ENEMY DRIVE SUB (%d) =====\n";
+// omission
+char *D_800EB8E8 = "ENEMY END(手抜き)\n\n";
+char *D_800EB8FC = "ENEMY END(手抜き)\n\n";
+char *D_800EB910 = "(1)enemy stick angle over!! (%d)\n";
+char *D_800EB934 = "ENEMY END\n\n";
+char *D_800EB940 = "(2)enemy stick angle over!! (%d)\n";
+char *D_800EB964 = "ENEMY END\n\n";
+// AREA ERR!!! (group not registered at current centerline %d) %d
+char *D_800EB970 = "AREA ERR!!! (現在のセンターライン %d に未登録のグループです) %d\n";
+// AREA ERR!!! (Unregistered group) %d
+char *D_800EB9B4 = "AREA ERR!!! (未登録のグループです) %d\n";
+// get_oga_area_sub_BP() ... Area not found! (b_num = %d)
+char *D_800EB9DC = "get_oga_area_sub_BP() ... エリアが見つからないッス！ (b_num = %d)\n";
+// Status: (%d, %d, %d)
+char *D_800EBA20 = "  状況: (%d, %d, %d) \n";
+char *D_800EBA38 = "<%d> (%d, %d, %d) [%d] lng %f\n";
+// Wario Stadium Jump failed! ! ! (area %d, y %7.2f)
+char *D_800EBA58 = "ワリオスタジアム  ジャンプ失敗！！！ (area %d, y %7.2f)\n";
+// I fell in the water! ! Forced to centerline (num %d: area %d ) (%d,%d,%d)
+char *D_800EBA94 = "水に落ちた！！  センターラインに強制移動しました (num %d: area %d ) (%d,%d,%d)\n";
+// Course match! ! (Slacking: with bump) Forced move to center line (num %d: area %d ==>%d) (group %d) (%d,%d,%d)
+char *D_800EBAE4 = "こーすあうと！！（手抜き中:バンプ有り）  センターラインに強制移動しました (num %d: area %d ==>%d) (group %d) (%d,%d,%d)\n";
+// Course match! ! (Sitting corners: no bump) Forced move to center line (num %d: area %d ==>%d) (group %d) (%d,%d,%d)
+char *D_800EBB60 = "こーすあうと！！（手抜き中:バンプ無し）  センターラインに強制移動しました (num %d: area %d ==>%d) (group %d) (%d,%d,%d)\n";
+// Course match! ! ! Recalculated area (num %d: area %d ==>%d)
+char *D_800EBBDC = "こーすあうと！！！    エリアを再計算しました (num %d: area %d ==>%d)\n";
+// Direct BOM(%d) (%7.2f, %7.2f, %7.2f)
+char *D_800EBC24 = "直接指定のBOM(%d) (%7.2f, %7.2f, %7.2f) \n";
+char *D_800EBC50 = "BOM HIT CHECK\n";
+char *D_800EBC60 = "BOM HIT !!!!! (%d)\n";
+// BOM standby
+char *D_800EBC74 = "BOM待機\n";
+char *D_800EBC80 = "RESULT BOM area(%d)\n";
+// BOM dropped.
+char *D_800EBC98 = "BOM が 落ちました。\n";
+// Tortoise fire pillar SET failed (TABLE IS FULL)
+char *D_800EBCB0 = "カメ用火柱 SET 失敗 (TABLE IS FULL)\n";
+// Red turtle fire pillar set error! (category %d)
+char *D_800EBCD8 = "赤ガメ火柱セットエラー！ (category %d)\n";
+// Blue turtle fire pillar set error! (category %d)
+char *D_800EBD00 = "青ガメ火柱セットエラー！ (category %d)\n";
+// Thorn Turtle Fire Pillar Set Error! (category %d)
+char *D_800EBD28 = "トゲガメ火柱セットエラー！ (category %d)\n";
+// Turtle Fire Pillar Initialization! !
+char *D_800EBD54 = "カメ火柱初期化！！\n";
+// Center line initialization
+char *D_800EBD68 = "センターライン初期化\n";
+char *D_800EBD80 = "MAP NUMBER %d\n";
+char *D_800EBD90 = "center_EX ptr      = %x %x (%x)\n";
+char *D_800EBDB4 = "\n";
+char *D_800EBDB8 = "center_BP[%d] ptr         = %x %x (%x)\n";
+char *D_800EBDE0 = "side_point_L_BP[%d] ptr   = %x %x (%x)\n";
+char *D_800EBE08 = "side_point_R_BP[%d] ptr   = %x %x (%x)\n";
+char *D_800EBE30 = "curve_BP[%d] ptr          = %x %x (%x)\n";
+char *D_800EBE58 = "angle_BP[%d] ptr          = %x %x (%x)\n";
+char *D_800EBE80 = "short_cut_data_BP[%d] ptr = %x %x (%x)\n";
+char *D_800EBEA8 = "\n";
+// Ogawa total memory used = %d
+char *D_800EBEAC = "小川の使用メモリー合計 = %d\n";
+// Enemy initialization
+char *D_800EBECC = "敵初期化\n";
+// End of enemy initialization
+char *D_800EBED8 = "敵初期化終了\n";
+// Bypass CENTER LINE Split start
+char *D_800EBEE8 = "バイパス CENTER LINE 分割開始\n";
+// Read centerline from ROM (map:%d)
+char *D_800EBF08 = "センターラインをROMから読みます (map:%d)\n";
+char *D_800EBF34 = "ROM center (BP%d) line adr. = %x (%x)\n";
+// Calculate centerline (map:%d)
+char *D_800EBF5C = "センターラインを計算します (map:%d)\n";
+char *D_800EBF84 = "center (BP%d) line adr. = %x (%x)\n";
+char *D_800EBFA8 = "BP center_point_number : %d\n";
+// Centerline data error! !
+char *D_800EBFC8 = "センターライン データ エラー！！\n";
+// Bypass CENTER LINE split end (%d -> %d number)
+char *D_800EBFEC = "バイパス CENTER LINE 分割終了 (%d -> %d 個)\n";
+// No center line. (map: %d)
+char *D_800EC01C = "センターラインが ありません。(map:%d)\n";
+// side point calculation (bypass %d)
+char *D_800EC044 = "サイドポイント計算 (バイパス %d)\n";
+// Curve data calculation (bypass %d)
+char *D_800EC068 = "カーブデータ計算 (バイパス %d)\n";
+// No center line. (map: %d)
+char *D_800EC088 = "センターラインが ありません。(map:%d)\n";
+// Angle data calculation (bypass %d)
+char *D_800EC0B0 = "アングルデータ計算 (バイパス %d) \n";
+// No center line. (map: %d)
+char *D_800EC0D4 = "センターラインが ありません。(map:%d)\n";
+// Shortcut data calculation (bypass %d)
+char *D_800EC0FC = "ショートカットデータ計算 (バイパス %d)\n";
+char *D_800EC124 = "extern POINT rom_center_KT%d_BP%d[] = {\n";
+char *D_800EC150 = "\t{%d,%d,%d,%d},\n";
+char *D_800EC164 = "\t0x8000,0x8000,0x8000,0\n};\n\n";
+char *D_800EC184 = "area read from ROM (%d)\n";
+// Normal jump! ! ! (%d)
+char *D_800EC1A0 = "ノーマルジャンプ！！！(%d)\n";
+// Turbo on! ! ! (%d)
+char *D_800EC1BC = "ターボオン！！！(%d)\n";
+// No cutting corners! ! ! (%d)
+char *D_800EC1D4 = "手抜き禁止！！！(%d)\n";
+// Action start data error! (num %d, act %d)
+char *D_800EC1EC = "アクション開始データエラー！(num %d, act %d)\n";
+// Action end data error! (num %d, act %d, old_act_num %d)
+char *D_800EC21C = "アクション終了データエラー！(num %d,  act %d,  old_act_num %d)\n";
+char *D_800EC25C = "SL : center_point_number : %d\n";
+// SL: CENTER LINE split start
+char *D_800EC27C = "SL: CENTER LINE 分割開始\n";
+// SL: CENTER LINE split ended (%d -> %d indivual)
+char *D_800EC298 = "SL: CENTER LINE 分割終了 (%d -> %d 個)\n";
+char *D_800EC2C0 = "SHIP : center_point_number : %d\n";
+// SHIP: CENTER LINE split start
+char *D_800EC2E4 = "SHIP: CENTER LINE 分割開始\n";
+// SHIP: CENTER LINE split ended (%d -> %d indivual)
+char *D_800EC300 = "SHIP: CENTER LINE 分割終了 (%d -> %d 個)\n";
+// General-purpose OBJ character initialization
+char *D_800EC32C = "汎用OBJキャラ初期化\n";
+// SL OBJ settings
+char *D_800EC344 = "SL OBJ設定\n";
+// SHIP OBJ settings
+char *D_800EC350 = "SHIP OBJ設定\n";
+// Track OBJ settings
+char *D_800EC360 = "トラックOBJ設定\n";
+// Bus OBJ setting
+char *D_800EC374 = "バスOBJ設定\n";
+// Tank OBJ setting
+char *D_800EC384 = "タンクOBJ設定\n";
+// RV OBJ settings
+char *D_800EC394 = "RV OBJ設定\n";
+// Generic OBJ character initialization completed
+char *D_800EC3A0 = "汎用OBJキャラ初期化終了\n";
+// horn (num %d, permit %d, %d)
+char *D_800EC3BC = "クラクション (num %d, permit %d, %d)\n";
+char *D_800EC3E4 = "OGA CAMERA INIT (%d)\n";
+char *D_800EC3FC = "OGA CAMERA INIT END\n";
+// High speed camera ERR !!! (ncx = %f)
+char *D_800EC414 = "高速カメラ ERR !!! (ncx = %f)\n";
+// High speed camera ERR !!! (ncz = %f)
+char *D_800EC434 = "高速カメラ ERR !!! (ncz = %f)\n";
+// High speed camera ERR !!! (ecx = %f)
+char *D_800EC454 = "高速カメラ ERR !!! (ecx = %f)\n";
+// High speed camera ERR !!! (ecz = %f)
+char *D_800EC474 = "高速カメラ ERR !!! (ecz = %f)\n";
+char *D_800EC494 = "OGA DRIVERS POINT CAMERA MODE \n";
+char *D_800EC4B4 = "OGA WINNER CAMERA MODE \n";
+char *D_800EC4D0 = "OGA TIMEATTACK QUICK CAMERA INIT \n";
+char *D_800EC4F4 = "OGA BATTLE CAMERA INIT win(%d)\n";
+char *D_800EC514 = "GOAL! <<rank 1>> camera %d  rank %d\n";
+char *D_800EC53C = "GOAL! <<rank 2,3,4>> camera %d  rank %d\n";
+char *D_800EC568 = "GOAL! <<rank 5,6,7,8>> camera %d  rank %d\n";
+// Camera and cart collided! ! !
+char *D_800EC594 = "カメラとカートが衝突しました！！！  (%d)\n";
+char *D_800EC5C0 = "<<< ITEM OBJ NUMBER ERR !! >>> item %d  obj_num %d \n";
+// <<< BANANA SET HOUSE >>> obj_num %d zure %f
+char *D_800EC5F8 = "<<< BANANA SET 失敗 >>> obj_num %d   zure %f \n";
+// BANANA Caught in owner check. (num %d)
+char *D_800EC628 = "BANANA 所有者チェックに引っ掛かりました。(num %d)\n";
+// Reason: EXISTOBJ
+char *D_800EC65C = "理由: EXISTOBJ \n";
+// Reason: category
+char *D_800EC670 = "理由: category \n";
+// Reason: sparam
+char *D_800EC684 = "理由: sparam \n";
+// Reason: num
+char *D_800EC694 = "理由: num \n";
+char *D_800EC6A0 = "BANANA HOLD (num %d  time %d   hold_time %d)\n";
+// Installation Caught in BANANA owner check. (num %d)
+char *D_800EC6D0 = "設置 BANANA 所有者チェックに引っ掛かりました。(num %d)\n";
+// Reason: EXISTOBJ
+char *D_800EC708 = "理由: EXISTOBJ \n";
+// Reason: category
+char *D_800EC71C = "理由: category \n";
+// Reason: sparam
+char *D_800EC730 = "理由: sparam \n";
+// Reason: num
+char *D_800EC740 = "理由: num \n";
+// I put BANANA. (num %d)
+char *D_800EC74C = "BANANA 置きました。 (num %d)\n";
+// <<< BANANA NAGE SET failed >>> obj_num %d
+char *D_800EC76C = "<<< BANANA NAGE SET 失敗 >>> obj_num %d \n";
+// BANANA NAGE MOVE Caught in owner check. (num %d)
+char *D_800EC798 = "BANANA NAGE MOVE 所有者チェックに引っ掛かりました。(num %d)\n";
+// Reason: EXISTOBJ
+char *D_800EC7D8 = "理由: EXISTOBJ \n";
+// Reason: category
+char *D_800EC7EC = "理由: category \n";
+// Reason: sparam
+char *D_800EC800 = "理由: sparam \n";
+// Reason: num
+char *D_800EC810 = "理由: num \n";
+char *D_800EC81C = "BANANA NAGE END 所有者チェックに引っ掛かりました。(num %d)\n";
+// Reason: EXISTOBJ
+char *D_800EC858 = "理由: EXISTOBJ \n";
+// Reason: category
+char *D_800EC86C = "理由: category \n";
+// Reason: sparam
+char *D_800EC880 = "理由: sparam \n";
+// Reason: num
+char *D_800EC890 = "理由: num \n";
+char *D_800EC89C = "G_SHELL HOLD (num %d  time %d   hold_time %d)\n";
+// <<< G_SHELL SET failed >>> obj_num %d
+char *D_800EC8CC = "<<< G_SHELL SET 失敗 >>> obj_num %d \n";
+// <<< G_SHELL SET failed >>> object_count %d
+char *D_800EC8F4 = "<<< G_SHELL SET 失敗 >>> object_count %d \n";
+// G_SHELL Caught in owner check. (num %d)
+char *D_800EC920 = "G_SHELL 所有者チェックに引っ掛かりました。(num %d)\n";
+// Reason: EXISTOBJ
+char *D_800EC954 = "理由: EXISTOBJ \n";
+// Reason: category
+char *D_800EC968 = "理由: category \n";
+// Reason: sparam
+char *D_800EC97C = "理由: sparam \n";
+// Reason: num
+char *D_800EC98C = "理由: num \n";
+// Just before launch G_SHELL Caught in owner check. (num %d)
+char *D_800EC998 = "発射直前 G_SHELL 所有者チェックに引っ掛かりました。(num %d)\n";
+// Reason: EXISTOBJ
+char *D_800EC9D8 = "理由: EXISTOBJ \n";
+// Reason: category
+char *D_800EC9EC = "理由: category \n";
+// Reason: sparam
+char *D_800ECA00 = "理由: sparam \n";
+// Reason: num
+char *D_800ECA10 = "理由: num \n";
+// G_SHELL firing (num %d)
+char *D_800ECA1C = "G_SHELL 発射 (num %d)\n";
+char *D_800ECA34 = "R_SHELL HOLD (num %d  time %d   hold_time %d  obj_num %d)\n";
+// <<< R_SHELL SET failed >>> obj_num %d
+char *D_800ECA70 = "<<< R_SHELL SET 失敗 >>> obj_num %d \n";
+// <<< R_SHELL SET failed >>> object_count %d
+char *D_800ECA98 = "<<< R_SHELL SET 失敗 >>> object_count %d \n";
+// R_SHELL Caught in owner check. (num %d)
+char *D_800ECAC4 = "R_SHELL 所有者チェックに引っ掛かりました。(num %d)\n";
+// Reason: EXISTOBJ
+char *D_800ECAF8 = "理由: EXISTOBJ \n";
+// Reason: category
+char *D_800ECB0C = "理由: category \n";
+// Reason: sparam
+char *D_800ECB20 = "理由: sparam \n";
+// Reason: num
+char *D_800ECB30 = "理由: num \n";
+char *D_800ECB3C = "R_SHELL SHOOT (num %d  time %d   hold_time %d  obj_num %d)\n";
+// Just before launch R_SHELL Caught in owner check. (num %d)
+char *D_800ECB78 = "発射直前 R_SHELL 所有者チェックに引っ掛かりました。(num %d)\n";
+// Reason: EXISTOBJ
+char *D_800ECBB8 = "理由: EXISTOBJ \n";
+// Reason: category
+char *D_800ECBCC = "理由: category \n";
+// Reason: sparam
+char *D_800ECBE0 = "理由: sparam \n";
+// Reason: num
+char *D_800ECBF0 = "理由: num \n";
+// R_SHELL firing (num %d)
+char *D_800ECBFC = "R_SHELL 発射 (num %d)\n";
+char *D_800ECC14 = "S_BANANA HOLD (num %d  time %d   hold_time %d)\n";
+// <<< SUPER_BANANA SET failed >>> obj_num %d
+char *D_800ECC44 = "<<< SUPER_BANANA SET 失敗 >>> obj_num %d \n";
+// <<< SUPER_BANANA SET failed >>> object_count %d
+char *D_800ECC70 = "<<< SUPER_BANANA SET 失敗 >>> object_count %d \n";
+// S_BANANA Caught in owner check. (num %d)
+char *D_800ECCA0 = "S_BANANA 所有者チェックに引っ掛かりました。(num %d)\n";
+// Reason: category
+char *D_800ECCD8 = "理由: category \n";
+// Reason: sparam
+char *D_800ECCEC = "理由: sparam \n";
+// Reason: sb_ok
+char *D_800ECCFC = "理由: sb_ok \n";
+char *D_800ECD0C = "S_BANANA RELEASE (num %d  time %d )\n";
+// <<< FAKE IBOX SET failed >>> obj_num %d
+char *D_800ECD34 = "<<< FAKE IBOX SET 失敗 >>> obj_num %d \n";
+// IBOX Caught in owner check. (num %d)
+char *D_800ECD5C = "IBOX 所有者チェックに引っ掛かりました。(num %d)\n";
+// Reason: EXISTOBJ
+char *D_800ECD90 = "理由: EXISTOBJ \n";
+// Reason: category
+char *D_800ECDA4 = "理由: category \n";
+// Reason: sparam
+char *D_800ECDB8 = "理由: sparam \n";
+// Reason: num
+char *D_800ECDC8 = "理由: num \n";
+char *D_800ECDD4 = "FBOX HOLD (num %d  time %d   hold_time %d)\n";
+// Installation IBOX owner check failed. (num %d)
+char *D_800ECE00 = "設置 IBOX 所有者チェックに引っ掛かりました。(num %d)\n";
+// Reason: EXISTOBJ
+char *D_800ECE38 = "理由: EXISTOBJ \n";
+// Reason: category
+char *D_800ECE4C = "理由: category \n";
+// Reason: sparam
+char *D_800ECE60 = "理由: sparam \n";
+// Reason: num
+char *D_800ECE70 = "理由: num \n";
+// Ray START (%d)
+char *D_800ECE7C = "雷START (%d)\n";
+// Ray END (%d)
+char *D_800ECE8C = "雷END (%d)\n";
+// ---------- Initialization of commendation table
+char *D_800ECE98 = "---------- 表彰台初期化\n";
+// map_number = %d -> 20 Rewriting.
+char *D_800ECEB4 = "map_number = %d - > 20 書き換え中。\n";
+// OGA Recognition move begins
+char *D_800ECEDC = "OGA 表彰 move 開始\n";
+// I called the display of the 4th place person.
+char *D_800ECEF0 = "４位の人の表示をコールしました。\n";
+// Arrive at the podium
+char *D_800ECF14 = "表彰台に到着\n";
+// Everyone gather!
+char *D_800ECF24 = "全員集合！\n";
+// Arrive on the road
+char *D_800ECF30 = "道路に到着\n";
+// 4th place finished
+char *D_800ECF3C = "４位の人終了\n";
+// OGA commendation move end
+char *D_800ECF4C = "OGA 表彰 move 終了\n";
+char *D_800ECF60 = "OGAWA DEBUG DRAW\n";
+
 s16 func_80005FD0(Vec3f arg0, Vec3f arg1) {
     s16 temp_ret;
     s16 phi_v1;
@@ -28,9 +365,6 @@ s16 func_80005FD0(Vec3f arg0, Vec3f arg1) {
     }
     return phi_v1;
 }
-
-#ifdef NEEDS_RODATA
-extern f32 D_800ECF74;// = 0.01f;
 
 s32 func_80006018(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
     f32 temp_f0;
@@ -50,9 +384,6 @@ s32 func_80006018(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f3
     }
     return 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80006018.s")
-#endif
 
 void func_80006114(Vec3f arg0, Vec3f arg1, s16 arg2) {
     f32 x_dist;
@@ -1905,7 +2236,6 @@ void func_800090F0(s32 playerId, Player *player) {
     }
 }
 
-extern f32 D_800ECFA4;
 extern f32 D_8016344C;
 extern f32 gCourseTimer;
 
@@ -1916,7 +2246,7 @@ f32 func_80009258(UNUSED s32 playerId, f32 arg1, f32 arg2) {
     f32 temp_f2 = D_8016344C - arg2;
     f32 temp_f12 = arg1 - D_8016344C;
 
-    return gCourseTimer - ( (D_800ECFA4 * temp_f2) / (temp_f2 + temp_f12) );
+    return gCourseTimer - ( (0.01666666f * temp_f2) / (temp_f2 + temp_f12) );
 }
 
 #ifdef MIPS_TO_C
@@ -3038,15 +3368,11 @@ s32 func_8000B7E4(UNUSED s32 arg0, u16 wayPointIndex) {
 
 s32 func_8000B820(s32 playerIndex) {
     f32 value = D_80163068[playerIndex];
-    // Check if value between 1.1 and -1.1
-    if ((D_800ECFD8 <= value) || (value <= D_800ECFDC)) {
+    if ((1.1f <= value) || (value <= -1.1f)) {
         return 1;
     }
     return 0;
 }
-
-#ifdef NEEDS_RODATA
-extern f32 D_800ECFE0;// = 0.01f;
 
 f32 func_8000B874(f32 posX, f32 posZ, u16 wayPointIndex, s32 pathIndex) {
     f32 x1;
@@ -3073,9 +3399,6 @@ f32 func_8000B874(f32 posX, f32 posZ, u16 wayPointIndex, s32 pathIndex) {
     math = ((2.0f * ((x2 - x1) * (posX - x1) + (z2 - z1) * (posZ - z1))) / squaredDistance) - 1.0f;
     return math;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000B874.s")
-#endif
 
 void func_8000B95C(s32 playerId, u16 wayPointIndex, s32 pathIndex) {
     UNUSED Vec3f pad;
@@ -3228,10 +3551,6 @@ s16 func_8000BD94(f32 posX, f32 posY, f32 posZ, s32 pathIndex) {
     return nearestWayPointIndex;
 }
 
-#ifdef NEEDS_RODATA
-extern f32 D_800ECFE8;// = 1000000.0f;
-extern f32 D_800ECFEC;// = 1000000.0f;
-
 s16 func_8000C0BC(f32 posX, f32 posY, f32 posZ, u16 trackSegment, s32 *pathIndex) {
     struct TrackWayPoint *pathWayPoints;
     struct TrackWayPoint *considerWayPoint;
@@ -3321,12 +3640,6 @@ s16 func_8000C0BC(f32 posX, f32 posY, f32 posZ, u16 trackSegment, s32 *pathIndex
     }
     return nearestWayPointIndex;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000C0BC.s")
-#endif
-
-#ifdef NEEDS_RODATA
-extern f32 D_800ECFF0;// = 250000.0f;
 
 /**
  * Tries to find the waypoint nearest to (posX, posY, posZ)
@@ -3369,12 +3682,6 @@ s16 func_8000C884(f32 posX, f32 posY, f32 posZ, s16 wayPointIndex, s32 pathIndex
     }
     return nearestWayPointIndex;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000C884.s")
-#endif
-
-#ifdef NEEDS_RODATA
-extern f32 D_800ECFF4;// = 160000.0f;
 
 /**
  * Tries to find the waypoint nearest to (posX, posY, posZ)
@@ -3429,9 +3736,6 @@ s16 func_8000C9DC(f32 posX, f32 posY, f32 posZ, s16 wayPointIndex, s32 pathIndex
     }
     return nearestWayPointIndex;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000C9DC.s")
-#endif
 
 void func_8000CBA4(UNUSED f32 posX, f32 posY, UNUSED f32 posZ, s16 *wayPointIndex) {
     s16 var_v0;
@@ -3471,7 +3775,7 @@ s16 func_8000CC88(f32 posX, f32 posY, f32 posZ, Player *player, s32 playerId, s3
 }
 
 #ifdef MIPS_TO_C
-//generated by m2c commit 0927f17aac197848d4ebdf0c6bbad74b01f0851c
+//generated by m2c commit b52d92c2340f6f4ba1aafb464188bb698752fbb0 on Jul-08-2023
 s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 wayPointIndex, Player *player, s32 playerId, s32 pathIndex) {
     s16 sp5E;
     s32 sp48;
@@ -3491,11 +3795,13 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 wayPointIndex, Player *playe
     struct TrackWayPoint *temp_v1;
     struct TrackWayPoint *temp_v1_3;
     struct TrackWayPoint *temp_v1_4;
+    u16 temp_v0;
 
+    temp_v0 = player->unk_000;
     var_f24 = posZ;
     var_f20 = posX;
     var_f22 = posY;
-    if ((player->unk_000 & 0x4000) && !(player->unk_000 & 0x1000)) {
+    if ((temp_v0 & 0x4000) && !(temp_v0 & 0x1000)) {
         temp_v0_2 = func_8000C884(var_f20, var_f22, var_f24, wayPointIndex, pathIndex, (u16) func_802ABD40(player->unk_110.unk3A));
         sp5E = temp_v0_2;
         if (temp_v0_2 == -1) {
@@ -4499,13 +4805,6 @@ void func_8000EEDC(void) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3.s
-extern f32 D_800ED040;// = 0.3f;
-extern f32 D_800ED044;// = 0.45f;
-extern f32 D_800ED048;// = 0.15f;
-extern f32 D_800ED04C;// = 0.9f;
-
 void func_8000EF20(void) {
     s32 someIndex;
     f32 var_f20;
@@ -4549,9 +4848,6 @@ void func_8000EF20(void) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000EF20.s")
-#endif
 
 void func_8000F0E0(void) {
     D_80164670 = 0;
@@ -5476,10 +5772,6 @@ f32 func_80010480(s32 pathIndex, u16 wayPointIndex) {
     return -((temp_f10 * temp_f10_2) - (temp_f8_2 * temp_f8)) / (root2 * root1);
 }
 
-#ifdef NEEDS_RODATA
-extern f64 D_800ED058;// = -0.1;
-extern f64 D_800ED060;// = 0.1;
-
 void func_800107C4(s32 pathIndex) {
     f64 temp_f2;
     s32 temp_t3;
@@ -5533,9 +5825,6 @@ void func_800107C4(s32 pathIndex) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_800107C4.s")
-#endif
 
 // Seemingly calculates the atan2 angle between a wayPoint and its forward neighbor
 s16 func_80010CB0(s32 pathIndex, s32 wayPointIndex) {
@@ -6963,11 +7252,6 @@ void func_800133C4(void) {
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_800133C4.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3.s
-extern f64 D_800ED158;// = 300.0;
-extern f64 D_800ED160;// = -300.0;
-
 void func_80013854(Player *player) {
     s32 someIndex;
     PaddleWheelBoatStuff *tempPaddleWheelBoat;
@@ -6999,9 +7283,6 @@ void func_80013854(Player *player) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80013854.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -7074,11 +7355,6 @@ void func_800139E4(f32 arg0, f32 arg1, s32 arg2, s32 arg3, VehicleStuff *vehicle
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_800139E4.s")
 #endif
 
-#ifdef NEEDS_RODATA
-
-extern f32 D_800ED170;// = -0.7f;
-extern f32 D_800ED174;// = 0.7f;
-
 f32 func_80013C74(s16 arg0, s16 arg1) {
     f32 var_f2;
 
@@ -7111,14 +7387,6 @@ f32 func_80013C74(s16 arg0, s16 arg1) {
     }
     return var_f2;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80013C74.s")
-#endif
-
-#ifdef NEEDS_RODATA
-//generated by m2c commit 3b40ab93768f52ac241c5ae84ef58ef6bc4cb1de
-extern f64 D_800ED178;// = 0.06;
-extern f64 D_800ED180;// = 0.06;
 
 void func_80013D20(VehicleStuff *vehicle) {
     f32 temp_f0_2;
@@ -7183,9 +7451,6 @@ void func_80013D20(VehicleStuff *vehicle) {
     vehicleActor->velocity[1] = vehicle->velocity[1];
     vehicleActor->velocity[2] = vehicle->velocity[2];
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80013D20.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 3b40ab93768f52ac241c5ae84ef58ef6bc4cb1de
@@ -7360,11 +7625,6 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80013F7C.s")
 #endif
 
-#ifdef NEEDS_RODATA
-
-extern f32 D_800ED1A8;// = -0.8;
-extern f32 D_800ED1AC;// = 0.8;
-
 f32 func_800145A8(s16 arg0, f32 arg1, s16 arg2) {
     if (arg2 < 0x28A) {
         switch (arg0) {                             /* switch 1; irregular */
@@ -7403,9 +7663,6 @@ f32 func_800145A8(s16 arg0, f32 arg1, s16 arg2) {
     }
     return arg1;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_800145A8.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 3b40ab93768f52ac241c5ae84ef58ef6bc4cb1de
