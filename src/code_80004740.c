@@ -5,7 +5,6 @@
 #include "math_util.h"
 #include "code_80004740.h"
 #include "memory.h"
-#include <animation.h>
 #include <main.h>
 #include <variables.h>
 #include <PR/gbi.h>
@@ -66,7 +65,7 @@ void func_800048D8(Mat4 dest, Vec3f b, Vec3s c) {
     dest[3][3] = 1.0f;
 }
 
-#ifdef NON_MATCHING
+#if 1
 /*
 https://decomp.me/scratch/v615X
 Leaving this as non-matching due to all the animation stuff being in flux
@@ -103,10 +102,7 @@ void func_80004A1C(animation_type_1 *arg0, s16 *arg1, animation_type_3_triplet a
     func_800048D8(sp4C, sp94, sp8C);
     func_80004740(&gGfxPool->mtxPool[D_8018D120 + 11], sp4C);
     D_80162D7A += 1;
-    // I really don't like the 0x2000000 here, but if it matches, it matches
-    // In decompiled form the mtx pool stuff looks like `&gGfxPool->mtxPool[D_8018D120] + 0x8000002C0`
-    // The `2C0` ought to turn into an 11, like it is a couple lines above. No idea where the 0x2000000 is coming from
-    gSPMatrix(gDisplayListHead++, &gGfxPool->mtxPool[D_8018D120 + 0x2000000 + 11], G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&gGfxPool->mtxPool[D_8018D120+ 11]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     D_8018D120 += 1;
     if (some_segmented_dl != NULL) {
         some_dl = segmented_to_virtual(some_segmented_dl);
