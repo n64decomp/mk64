@@ -3,12 +3,12 @@ glabel func_80080078
 /* 080C7C 8008007C AFBF0024 */  sw    $ra, 0x24($sp)
 /* 080C80 80080080 AFB10020 */  sw    $s1, 0x20($sp)
 /* 080C84 80080084 3C050600 */  lui   $a1, %hi(gTLUTWhomp) # $a1, 0x600
-/* 080C88 80080088 3C060600 */  lui   $a2, %hi(D_06007138) # $a2, 0x600
+/* 080C88 80080088 3C060600 */  lui   $a2, %hi(d_course_bowsers_castle_thwomp_faces) # $a2, 0x600
 /* 080C8C 8008008C 240E0040 */  li    $t6, 64
 /* 080C90 80080090 00808825 */  move  $s1, $a0
 /* 080C94 80080094 AFB0001C */  sw    $s0, 0x1c($sp)
 /* 080C98 80080098 AFAE0010 */  sw    $t6, 0x10($sp)
-/* 080C9C 8008009C 24C67138 */  addiu $a2, %lo(D_06007138) # addiu $a2, $a2, 0x7138
+/* 080C9C 8008009C 24C67138 */  addiu $a2, %lo(d_course_bowsers_castle_thwomp_faces) # addiu $a2, $a2, 0x7138
 /* 080CA0 800800A0 24A56F38 */  addiu $a1, %lo(gTLUTWhomp) # addiu $a1, $a1, 0x6f38
 /* 080CA4 800800A4 0C01CD11 */  jal   func_80073444
 /* 080CA8 800800A8 24070010 */   li    $a3, 16
@@ -20,8 +20,8 @@ glabel func_80080078
 /* 080CC0 800800C0 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 080CC4 800800C4 44812000 */  mtc1  $at, $f4
 /* 080CC8 800800C8 01F88021 */  addu  $s0, $t7, $t8
-/* 080CCC 800800CC 3C190601 */  lui   $t9, %hi(D_06009088) # $t9, 0x601
-/* 080CD0 800800D0 27399088 */  addiu $t9, %lo(D_06009088) # addiu $t9, $t9, -0x6f78
+/* 080CCC 800800CC 3C190601 */  lui   $t9, %hi(d_course_bowsers_castle_dl_thwomp) # $t9, 0x601
+/* 080CD0 800800D0 27399088 */  addiu $t9, %lo(d_course_bowsers_castle_dl_thwomp) # addiu $t9, $t9, -0x6f78
 /* 080CD4 800800D4 2408000C */  li    $t0, 12
 /* 080CD8 800800D8 3C050400 */  lui   $a1, (0x04000220 >> 16) # lui $a1, 0x400
 /* 080CDC 800800DC AE190070 */  sw    $t9, 0x70($s0)

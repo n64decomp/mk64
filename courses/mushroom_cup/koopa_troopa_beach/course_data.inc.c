@@ -8072,7 +8072,7 @@ u8 d_course_koopa_troopa_beach_crab_tlut[] = {
 };
 
 // 0xD828
-u8 d_course_koopa_troopa_beach_crab[][4096] = {
+u8 d_course_koopa_troopa_beach_crab_frames[][4096] = {
     {
         #include "assets/courses/koopa_troopa_beach/gTextureCrab1.inc.c"
     },
@@ -8462,7 +8462,7 @@ Gfx d_course_koopa_troopa_beach_dl_185E8[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_koopa_troopa_beach_dl_185F8[] =
+Gfx d_course_koopa_troopa_beach_dl_tree_top1[] =
 {
     gsSPDisplayList(d_course_koopa_troopa_beach_dl_185E8),
     gsSPEndDisplayList(),
@@ -8496,7 +8496,7 @@ Gfx d_course_koopa_troopa_beach_dl_186A8[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_koopa_troopa_beach_dl_186B8[] =
+Gfx d_course_koopa_troopa_beach_dl_tree_trunk1[] =
 {
     gsSPDisplayList(d_course_koopa_troopa_beach_dl_186A8),
     gsSPEndDisplayList(),
@@ -8571,7 +8571,7 @@ Gfx d_course_koopa_troopa_beach_dl_18938[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_koopa_troopa_beach_dl_18948[] =
+Gfx d_course_koopa_troopa_beach_dl_tree_top2[] =
 {
     gsSPDisplayList(d_course_koopa_troopa_beach_dl_18938),
     gsSPEndDisplayList(),
@@ -8605,7 +8605,7 @@ Gfx d_course_koopa_troopa_beach_dl_189F8[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_koopa_troopa_beach_dl_18A08[] =
+Gfx d_course_koopa_troopa_beach_dl_tree_trunk2[] =
 {
     gsSPDisplayList(d_course_koopa_troopa_beach_dl_189F8),
     gsSPEndDisplayList(),
@@ -8680,7 +8680,7 @@ Gfx d_course_koopa_troopa_beach_dl_18C88[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_koopa_troopa_beach_dl_18C98[] =
+Gfx d_course_koopa_troopa_beach_dl_tree_top3[] =
 {
     gsSPDisplayList(d_course_koopa_troopa_beach_dl_18C88),
     gsSPEndDisplayList(),
@@ -8714,7 +8714,7 @@ Gfx d_course_koopa_troopa_beach_dl_18D48[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_koopa_troopa_beach_dl_18D58[] =
+Gfx d_course_koopa_troopa_beach_dl_tree_trunk3[] =
 {
     gsSPDisplayList(d_course_koopa_troopa_beach_dl_18D48),
     gsSPEndDisplayList(),
@@ -8759,7 +8759,7 @@ Gfx d_course_koopa_troopa_beach_dl_18D68[] =
 };
 
 // 0x18E78
-struct ActorSpawnData d_course_koopa_troopa_beach_item_box_spawn[] = {
+struct ActorSpawnData d_course_koopa_troopa_beach_item_box_spawns[] = {
     {{ -118, 1, -977 }, { 0 }},
     {{ -116, 1, -1009 }, { 0 }},
     {{ -91, 1, -1021 }, { 0 }},
@@ -8920,7 +8920,7 @@ struct CourseAddrUnkStruct d_course_koopa_troopa_beach_addr[] = {
     { 0x00000000, 0x00000000 },
 };
 
-Gfx *d_course_koopa_troopa_beach_dl_list[] = {
+Gfx *d_course_koopa_troopa_beach_dl_list1[] = {
     d_course_koopa_troopa_beach_dl_90, d_course_koopa_troopa_beach_dl_278,
     d_course_koopa_troopa_beach_dl_188, d_course_koopa_troopa_beach_dl_3C0,
     d_course_koopa_troopa_beach_dl_4B0, d_course_koopa_troopa_beach_dl_6E0,
@@ -8995,6 +8995,9 @@ Gfx *d_course_koopa_troopa_beach_dl_list[] = {
     d_course_koopa_troopa_beach_dl_A4D8, d_course_koopa_troopa_beach_dl_A780,
     d_course_koopa_troopa_beach_dl_A8D0, d_course_koopa_troopa_beach_dl_AB88,
     d_course_koopa_troopa_beach_dl_AA38, d_course_koopa_troopa_beach_dl_AC68,
+};
+
+Gfx *d_course_koopa_troopa_beach_dl_list2[] = {
     d_course_koopa_troopa_beach_dl_118, d_course_koopa_troopa_beach_dl_328,
     d_course_koopa_troopa_beach_dl_218, d_course_koopa_troopa_beach_dl_458,
     d_course_koopa_troopa_beach_dl_530, d_course_koopa_troopa_beach_dl_790,

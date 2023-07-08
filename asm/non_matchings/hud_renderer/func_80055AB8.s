@@ -50,7 +50,7 @@ glabel func_80055AB8
 /* 056778 80055B78 340B8000 */  li    $t3, 32768
 /* 05677C 80055B7C 258C62B0 */  addiu $t4, %lo(D_0D0062B0) # addiu $t4, $t4, 0x62b0
 /* 056780 80055B80 3C063F0A */  lui   $a2, (0x3F0A3D71 >> 16) # lui $a2, 0x3f0a
-/* 056784 80055B84 3C070601 */  lui   $a3, %hi(D_06012028) # $a3, 0x601
+/* 056784 80055B84 3C070601 */  lui   $a3, %hi(d_course_rainbow_road_sphere) # $a3, 0x601
 /* 056788 80055B88 240D0020 */  li    $t5, 32
 /* 05678C 80055B8C 240E0040 */  li    $t6, 64
 /* 056790 80055B90 240F0020 */  li    $t7, 32
@@ -64,7 +64,7 @@ glabel func_80055AB8
 /* 0567B0 80055BB0 AFAF001C */  sw    $t7, 0x1c($sp)
 /* 0567B4 80055BB4 AFAE0018 */  sw    $t6, 0x18($sp)
 /* 0567B8 80055BB8 AFAD0014 */  sw    $t5, 0x14($sp)
-/* 0567BC 80055BBC 24E72028 */  addiu $a3, %lo(D_06012028) # addiu $a3, $a3, 0x2028
+/* 0567BC 80055BBC 24E72028 */  addiu $a3, %lo(d_course_rainbow_road_sphere) # addiu $a3, $a3, 0x2028
 /* 0567C0 80055BC0 34C63D71 */  ori   $a2, (0x3F0A3D71 & 0xFFFF) # ori $a2, $a2, 0x3d71
 /* 0567C4 80055BC4 0C011A38 */  jal   func_800468E0
 /* 0567C8 80055BC8 AFAC0010 */   sw    $t4, 0x10($sp)

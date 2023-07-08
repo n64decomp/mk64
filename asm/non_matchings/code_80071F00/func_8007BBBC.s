@@ -24,8 +24,8 @@ glabel func_8007BBBC
 /* 07C814 8007BC14 10000037 */  b     .L8007BCF4
 /* 07C818 8007BC18 8FBF0024 */   lw    $ra, 0x24($sp)
 .L8007BC1C:
-/* 07C81C 8007BC1C 3C050600 */  lui   $a1, %hi(D_06007BA8) # $a1, 0x600
-/* 07C820 8007BC20 24A57BA8 */  addiu $a1, %lo(D_06007BA8) # addiu $a1, $a1, 0x7ba8
+/* 07C81C 8007BC1C 3C050600 */  lui   $a1, %hi(d_course_banshee_boardwalk_dl_cheep_cheep) # $a1, 0x600
+/* 07C820 8007BC20 24A57BA8 */  addiu $a1, %lo(d_course_banshee_boardwalk_dl_cheep_cheep) # addiu $a1, $a1, 0x7ba8
 /* 07C824 8007BC24 0C01CD6F */  jal   func_800735BC
 /* 07C828 8007BC28 3C064000 */   lui   $a2, 0x4000
 /* 07C82C 8007BC2C 02002025 */  move  $a0, $s0

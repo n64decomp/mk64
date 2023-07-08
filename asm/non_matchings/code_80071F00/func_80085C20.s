@@ -23,12 +23,12 @@ glabel func_80085C20
 /* 086858 80085C58 44058000 */  mfc1  $a1, $f16
 /* 08685C 80085C5C 0C022DF5 */  jal   func_8008B7D4
 /* 086860 80085C60 00000000 */   nop   
-/* 086864 80085C64 3C050600 */  lui   $a1, %hi(D_06005400) # $a1, 0x600
-/* 086868 80085C68 3C060601 */  lui   $a2, %hi(D_06008000) # $a2, 0x601
+/* 086864 80085C64 3C050600 */  lui   $a1, %hi(d_course_rainbow_road_neon_mushroom_tlut_list) # $a1, 0x600
+/* 086868 80085C68 3C060601 */  lui   $a2, %hi(d_course_rainbow_road_neon_mushroom) # $a2, 0x601
 /* 08686C 80085C6C 240E0040 */  li    $t6, 64
 /* 086870 80085C70 AFAE0010 */  sw    $t6, 0x10($sp)
-/* 086874 80085C74 24C68000 */  addiu $a2, %lo(D_06008000) # addiu $a2, $a2, -0x8000
-/* 086878 80085C78 24A55400 */  addiu $a1, %lo(D_06005400) # addiu $a1, $a1, 0x5400
+/* 086874 80085C74 24C68000 */  addiu $a2, %lo(d_course_rainbow_road_neon_mushroom) # addiu $a2, $a2, -0x8000
+/* 086878 80085C78 24A55400 */  addiu $a1, %lo(d_course_rainbow_road_neon_mushroom_tlut_list) # addiu $a1, $a1, 0x5400
 /* 08687C 80085C7C 8FA40020 */  lw    $a0, 0x20($sp)
 /* 086880 80085C80 0C01CD11 */  jal   func_80073444
 /* 086884 80085C84 24070040 */   li    $a3, 64

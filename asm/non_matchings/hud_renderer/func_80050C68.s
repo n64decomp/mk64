@@ -51,8 +51,8 @@ glabel func_80050C68
 /* 05190C 80050D0C AC530004 */  sw    $s3, 4($v0)
 /* 051910 80050D10 AC560000 */  sw    $s6, ($v0)
 /* 051914 80050D14 8E020000 */  lw    $v0, ($s0)
-/* 051918 80050D18 3C040D02 */  lui   $a0, %hi(gTexturePortraitBombKartAndQuestionMark) # $a0, 0xd02
-/* 05191C 80050D1C 2484D6D8 */  addiu $a0, %lo(gTexturePortraitBombKartAndQuestionMark) # addiu $a0, $a0, -0x2928
+/* 051918 80050D18 3C040D02 */  lui   $a0, %hi(gTexturePortraitBombKart) # $a0, 0xd02
+/* 05191C 80050D1C 2484D6D8 */  addiu $a0, %lo(gTexturePortraitBombKart) # addiu $a0, $a0, -0x2928
 /* 051920 80050D20 244F0008 */  addiu $t7, $v0, 8
 /* 051924 80050D24 AE0F0000 */  sw    $t7, ($s0)
 /* 051928 80050D28 AC540004 */  sw    $s4, 4($v0)

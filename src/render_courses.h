@@ -74,7 +74,7 @@ extern Gfx banshee_boardwalk_dls[];
 extern Gfx D_0600B278[];
 extern Gfx yoshi_valley_dls[];
 extern u8 frappe_snowland_dls[];
-extern Gfx koopa_troopa_beach_dls[];
+extern Gfx d_course_koopa_troopa_beach_dl_list1[];
 extern Gfx royal_raceway_dls[];
 extern Gfx luigi_raceway_dls[];
 extern s32 D_801625EC;
@@ -95,7 +95,7 @@ extern Gfx wario_stadium_dls[];
 
 extern Gfx D_06009228[];
 extern Gfx D_060164B8[];
-extern Gfx D_06019578[];
+extern Gfx d_course_koopa_troopa_beach_dl_list2[];
 extern Gfx D_090001D0[];
 
 extern Gfx dks_jungle_parkway_dls[];

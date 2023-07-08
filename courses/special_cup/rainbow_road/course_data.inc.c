@@ -2903,92 +2903,82 @@ struct TrackWayPoint d_course_rainbow_road_track_waypoints[] = {
 };
 
 // some textures 0x5400
-u8 d_course_rainbow_road_mushroom_tlut1[] = {
-    #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMushroom1.inc.c"
+u8 d_course_rainbow_road_neon_mushroom_tlut_list[][512] = {
+    {
+        #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMushroom1.inc.c"
+    },
+    {
+        #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMushroom2.inc.c"
+    },
+    {
+        #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMushroom3.inc.c"
+    },
+    {
+        #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMushroom4.inc.c"
+    },
+    {
+        #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMushroom5.inc.c"
+    },
 };
 
-u8 d_course_rainbow_road_mushroom_tlut2[] = {
-    #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMushroom2.inc.c"
+u8 d_course_rainbow_road_neon_mario_tlut_list[][512] = {
+    {
+        #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMario1.inc.c"
+    },
+    {
+        #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMario2.inc.c"
+    },
+    {
+        #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMario3.inc.c"
+    },
+    {
+        #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMario4.inc.c"
+    },
+    {
+        #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMario5.inc.c"
+    },
 };
 
-u8 d_course_rainbow_road_mushroom_tlut3[] = {
-    #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMushroom3.inc.c"
-};
-
-u8 d_course_rainbow_road_mushroom_tlut4[] = {
-    #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMushroom4.inc.c"
-};
-
-u8 d_course_rainbow_road_mushroom_tlut5[] = {
-    #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMushroom5.inc.c"
-};
-
-u8 d_course_rainbow_road_mario_tlut1[] = {
-    #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMario1.inc.c"
-};
-
-u8 d_course_rainbow_road_mario_tlut2[] = {
-    #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMario2.inc.c"
-};
-
-u8 d_course_rainbow_road_mario_tlut3[] = {
-    #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMario3.inc.c"
-};
-
-u8 d_course_rainbow_road_mario_tlut4[] = {
-    #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMario4.inc.c"
-};
-
-u8 d_course_rainbow_road_mario_tlut5[] = {
-    #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonMario5.inc.c"
-};
-
-u8 d_course_rainbow_road_boo_tlut1[] = {
+u8 d_course_rainbow_road_neon_boo_tlut_list[][512] = {
+    {
     #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonBoo1.inc.c"
-};
-
-u8 d_course_rainbow_road_boo_tlut2[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonBoo2.inc.c"
-};
-
-u8 d_course_rainbow_road_boo_tlut3[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonBoo3.inc.c"
-};
-
-u8 d_course_rainbow_road_boo_tlut4[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonBoo4.inc.c"
-};
-
-u8 d_course_rainbow_road_boo_tlut5[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonBoo5.inc.c"
+    },
 };
 
-u8 d_course_rainbow_road_peach_tlut[] = {
+u8 d_course_rainbow_road_static_tluts[][512] = {
+    {
     #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonPeach.inc.c"
-};
-
-u8 d_course_rainbow_road_luigi_tlut[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonLuigi.inc.c"
-};
-
-u8 d_course_rainbow_road_donkey_kong_tlut[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonDonkeyKong.inc.c"
-};
-
-u8 d_course_rainbow_road_yoshi_tlut[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonYoshi.inc.c"
-};
-
-u8 d_course_rainbow_road_bowser_tlut[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonBowser.inc.c"
-};
-
-u8 d_course_rainbow_road_wario_tlut[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonWario.inc.c"
-};
-
-u8 d_course_rainbow_road_toad_tlut[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTLUTRainbowRoadNeonToad.inc.c"
+    },
 };
 
 u8 d_course_rainbow_road_neon_mushroom[] = {
@@ -3003,32 +2993,28 @@ u8 d_course_rainbow_road_neon_boo[] = {
     #include "assets/courses/rainbow_road/gTextureRainbowRoadNeonBoo.inc.c"
 };
 
-u8 d_course_rainbow_road_neon_peach[] = {
+u8 d_course_rainbow_road_static_textures[][4096] = {
+    {
     #include "assets/courses/rainbow_road/gTextureRainbowRoadNeonPeach.inc.c"
-};
-
-u8 d_course_rainbow_road_neon_luigi[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTextureRainbowRoadNeonLuigi.inc.c"
-};
-
-u8 d_course_rainbow_road_neon_donkey_kong[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTextureRainbowRoadNeonDonkeyKong.inc.c"
-};
-
-u8 d_course_rainbow_road_neon_yoshi[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTextureRainbowRoadNeonYoshi.inc.c"
-};
-
-u8 d_course_rainbow_road_neon_bowser[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTextureRainbowRoadNeonBowser.inc.c"
-};
-
-u8 d_course_rainbow_road_neon_wario[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTextureRainbowRoadNeonWario.inc.c"
-};
-
-u8 d_course_rainbow_road_neon_toad[] = {
+    },
+    {
     #include "assets/courses/rainbow_road/gTextureRainbowRoadNeonToad.inc.c"
+    },
 };
 
 // unk data
@@ -3639,7 +3625,7 @@ Gfx d_course_rainbow_road_dl_16220[] =
     gsSPEndDisplayList(),
 };
 
-struct ActorSpawnData d_course_rainbow_road_item_box_spawn[] = {
+struct ActorSpawnData d_course_rainbow_road_item_box_spawns[] = {
     {{ 250, 999, -5279 }, { 0 }},
     {{ 256, 999, -5248 }, { 0 }},
     {{ 279, 999, -5241 }, { 0 }},

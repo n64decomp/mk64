@@ -16,7 +16,7 @@ Gfx d_course_block_fort_dl[] = {
 };
 
 // Item box spawn locations
-struct ActorSpawnData d_course_block_fort_spawn_item_box[] = {
+struct ActorSpawnData d_course_block_fort_item_box_spawns[] = {
     {{ -38, 0, 744 }, {0} },
     {{ 29, 0, 710 }, {0} },
     {{ -13, 0, 685 }, {0} },

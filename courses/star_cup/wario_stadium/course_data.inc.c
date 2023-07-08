@@ -4856,7 +4856,7 @@ Gfx d_course_wario_stadium_dl_CA50[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_wario_stadium_dl_CA60[] =
+Gfx d_course_wario_stadium_dl_sign[] =
 {
     gsSPDisplayList(d_course_wario_stadium_dl_CA50),
     gsSPEndDisplayList(),
@@ -4897,7 +4897,7 @@ Gfx d_course_wario_stadium_dl_CA78[] =
 };
 
 // 0xCB40 Spawn locations
-struct ActorSpawnData d_course_wario_stadium_spawn_item_box[] = {
+struct ActorSpawnData d_course_wario_stadium_item_box_spawns[] = {
     {{ -1652, 0, -2095 }, { -1 }},
     {{ -1653, 0, -2199 }, { -1 }},
     {{ -1667, 0, -2173 }, { -1 }},

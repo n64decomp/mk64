@@ -25,7 +25,7 @@ Gfx d_course_skyscraper_dl[] = {
 };
 
 // Item box spawn locations
-struct ActorSpawnData d_course_skyscraper_spawn_item_box[] = {
+struct ActorSpawnData d_course_skyscraper_item_box_spawns[] = {
     {{ -18, 480, 365 }, { 0 }},
     {{ -272, 480, 312 }, { 0 }},
     {{ -312, 480, 359 }, { 0 }},

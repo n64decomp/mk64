@@ -3880,7 +3880,7 @@ Gfx d_course_banshee_boardwalk_dl_7B78[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_banshee_boardwalk_dl_7BA8[] =
+Gfx d_course_banshee_boardwalk_dl_cheep_cheep[] =
 {
     gsSPDisplayList(d_course_banshee_boardwalk_dl_7B78),
     gsSPEndDisplayList(),
@@ -4023,7 +4023,7 @@ Gfx d_course_banshee_boardwalk_dl_A9C8[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_banshee_boardwalk_dl_A9D8[] =
+Gfx d_course_banshee_boardwalk_dl_trash_bin[] =
 {
     gsSPDisplayList(d_course_banshee_boardwalk_dl_A9C8),
     gsSPEndDisplayList(),
@@ -4100,7 +4100,7 @@ Gfx d_course_banshee_boardwalk_dl_B308[] =
 };
 
 // 0xB3D0
-struct ActorSpawnData d_course_banshee_boardwalk_item_box_spawn[] = {
+struct ActorSpawnData d_course_banshee_boardwalk_item_box_spawns[] = {
     {{ -271, 12, -1629 }, { 0 }},
     {{ -241, 12, -1614 }, { 0 }},
     {{ -196, 12, -1585 }, { 0 }},
