@@ -1,6 +1,13 @@
 #ifndef DEFINES_H
 #define DEFINES_H
 
+
+/**
+ * Options for Controller Pak state
+ */
+#define OK 1
+#define BAD 0
+
 /**
  * Enable debug mode
  * 

@@ -135,12 +135,12 @@ glabel L800AE2E8
 /* 0AF000 800AE400 30989000 */  andi  $t8, $a0, 0x9000
 .L800AE404:
 /* 0AF004 800AE404 1300020E */  beqz  $t8, .L800AEC40
-/* 0AF008 800AE408 3C08800F */   lui   $t0, %hi(D_800E86F8) # $t0, 0x800f
+/* 0AF008 800AE408 3C08800F */   lui   $t0, %hi(controller_pak_1_state) # $t0, 0x800f
 /* 0AF00C 800AE40C 8E190004 */  lw    $t9, 4($s0)
 /* 0AF010 800AE410 24010010 */  li    $at, 16
-/* 0AF014 800AE414 3C048019 */  lui   $a0, %hi(D_8018E868) # $a0, 0x8019
+/* 0AF014 800AE414 3C048019 */  lui   $a0, %hi(gControllerPak1FileHandle) # $a0, 0x8019
 /* 0AF018 800AE418 172100A7 */  bne   $t9, $at, .L800AE6B8
-/* 0AF01C 800AE41C 2484E868 */   addiu $a0, %lo(D_8018E868) # addiu $a0, $a0, -0x1798
+/* 0AF01C 800AE41C 2484E868 */   addiu $a0, %lo(gControllerPak1FileHandle) # addiu $a0, $a0, -0x1798
 /* 0AF020 800AE420 C6100024 */  lwc1  $f16, 0x24($s0)
 /* 0AF024 800AE424 3C01800F */  lui   $at, %hi(D_800F2A00)
 /* 0AF028 800AE428 D4322A00 */  ldc1  $f18, %lo(D_800F2A00)($at)
@@ -148,10 +148,10 @@ glabel L800AE2E8
 /* 0AF030 800AE430 00001825 */  move  $v1, $zero
 /* 0AF034 800AE434 4632003C */  c.lt.d $f0, $f18
 /* 0AF038 800AE438 3C014010 */  li    $at, 0x40100000 # 2.250000
-/* 0AF03C 800AE43C 3C05800F */  lui   $a1, %hi(D_800E86F0) # $a1, 0x800f
-/* 0AF040 800AE440 3C06800F */  lui   $a2, %hi(D_800E86F4) # $a2, 0x800f
+/* 0AF03C 800AE43C 3C05800F */  lui   $a1, %hi(company_code) # $a1, 0x800f
+/* 0AF040 800AE440 3C06800F */  lui   $a2, %hi(game_code) # $a2, 0x800f
 /* 0AF044 800AE444 45000007 */  bc1f  .L800AE464
-/* 0AF048 800AE448 3C07800F */   lui   $a3, %hi(D_800F2E64) # $a3, 0x800f
+/* 0AF048 800AE448 3C07800F */   lui   $a3, %hi(game_name) # $a3, 0x800f
 /* 0AF04C 800AE44C 44812800 */  mtc1  $at, $f5
 /* 0AF050 800AE450 44802000 */  mtc1  $zero, $f4
 /* 0AF054 800AE454 00000000 */  nop
@@ -159,16 +159,16 @@ glabel L800AE2E8
 /* 0AF05C 800AE45C 46203220 */  cvt.s.d $f8, $f6
 /* 0AF060 800AE460 E6080024 */  swc1  $f8, 0x24($s0)
 .L800AE464:
-/* 0AF064 800AE464 810886F8 */  lb    $t0, %lo(D_800E86F8)($t0)
-/* 0AF068 800AE468 3C09800F */  lui   $t1, %hi(D_800F2E74) # $t1, 0x800f
-/* 0AF06C 800AE46C 25292E74 */  addiu $t1, %lo(D_800F2E74) # addiu $t1, $t1, 0x2e74
+/* 0AF064 800AE464 810886F8 */  lb    $t0, %lo(controller_pak_1_state)($t0)
+/* 0AF068 800AE468 3C09800F */  lui   $t1, %hi(ext_code) # $t1, 0x800f
+/* 0AF06C 800AE46C 25292E74 */  addiu $t1, %lo(ext_code) # addiu $t1, $t1, 0x2e74
 /* 0AF070 800AE470 11000021 */  beqz  $t0, .L800AE4F8
-/* 0AF074 800AE474 24E72E64 */   addiu $a3, %lo(D_800F2E64) # addiu $a3, $a3, 0x2e64
-/* 0AF078 800AE478 3C0A8019 */  lui   $t2, %hi(D_8018EB84) # $t2, 0x8019
-/* 0AF07C 800AE47C 254AEB84 */  addiu $t2, %lo(D_8018EB84) # addiu $t2, $t2, -0x147c
+/* 0AF074 800AE474 24E72E64 */   addiu $a3, %lo(game_name) # addiu $a3, $a3, 0x2e64
+/* 0AF078 800AE478 3C0A8019 */  lui   $t2, %hi(gControllerPak1FileNo) # $t2, 0x8019
+/* 0AF07C 800AE47C 254AEB84 */  addiu $t2, %lo(gControllerPak1FileNo) # addiu $t2, $t2, -0x147c
 /* 0AF080 800AE480 AFAA0014 */  sw    $t2, 0x14($sp)
-/* 0AF084 800AE484 94A586F0 */  lhu   $a1, %lo(D_800E86F0)($a1)
-/* 0AF088 800AE488 8CC686F4 */  lw    $a2, %lo(D_800E86F4)($a2)
+/* 0AF084 800AE484 94A586F0 */  lhu   $a1, %lo(company_code)($a1)
+/* 0AF088 800AE488 8CC686F4 */  lw    $a2, %lo(game_code)($a2)
 /* 0AF08C 800AE48C AFA90010 */  sw    $t1, 0x10($sp)
 /* 0AF090 800AE490 0C033E20 */  jal   osPfsFindFile
 /* 0AF094 800AE494 AFA30028 */   sw    $v1, 0x28($sp)
@@ -178,9 +178,9 @@ glabel L800AE2E8
 /* 0AF0A4 800AE4A4 10410012 */  beq   $v0, $at, .L800AE4F0
 /* 0AF0A8 800AE4A8 24010005 */   li    $at, 5
 /* 0AF0AC 800AE4AC 10410012 */  beq   $v0, $at, .L800AE4F8
-/* 0AF0B0 800AE4B0 3C01800F */   lui   $at, %hi(D_800E86F8) # $at, 0x800f
+/* 0AF0B0 800AE4B0 3C01800F */   lui   $at, %hi(controller_pak_1_state) # $at, 0x800f
 /* 0AF0B4 800AE4B4 10000010 */  b     .L800AE4F8
-/* 0AF0B8 800AE4B8 A02086F8 */   sb    $zero, %lo(D_800E86F8)($at)
+/* 0AF0B8 800AE4B8 A02086F8 */   sb    $zero, %lo(controller_pak_1_state)($at)
 .L800AE4BC:
 /* 0AF0BC 800AE4BC 0C02D9C2 */  jal   func_800B6708
 /* 0AF0C0 800AE4C0 00000000 */   nop
@@ -196,18 +196,18 @@ glabel L800AE2E8
 /* 0AF0E8 800AE4E8 10000003 */  b     .L800AE4F8
 /* 0AF0EC 800AE4EC 24030001 */   li    $v1, 1
 .L800AE4F0:
-/* 0AF0F0 800AE4F0 3C01800F */  lui   $at, %hi(D_800E86F8) # $at, 0x800f
-/* 0AF0F4 800AE4F4 A02086F8 */  sb    $zero, %lo(D_800E86F8)($at)
+/* 0AF0F0 800AE4F0 3C01800F */  lui   $at, %hi(controller_pak_1_state) # $at, 0x800f
+/* 0AF0F4 800AE4F4 A02086F8 */  sb    $zero, %lo(controller_pak_1_state)($at)
 .L800AE4F8:
 /* 0AF0F8 800AE4F8 10600006 */  beqz  $v1, .L800AE514
-/* 0AF0FC 800AE4FC 3C0F800F */   lui   $t7, %hi(D_800E86F8) # $t7, 0x800f
+/* 0AF0FC 800AE4FC 3C0F800F */   lui   $t7, %hi(controller_pak_1_state) # $t7, 0x800f
 /* 0AF100 800AE500 3C044900 */  lui   $a0, (0x49008001 >> 16) # lui $a0, 0x4900
 /* 0AF104 800AE504 0C032384 */  jal   play_sound2
 /* 0AF108 800AE508 34848001 */   ori   $a0, (0x49008001 & 0xFFFF) # ori $a0, $a0, 0x8001
 /* 0AF10C 800AE50C 100001CD */  b     .L800AEC44
 /* 0AF110 800AE510 8FBF0024 */   lw    $ra, 0x24($sp)
 .L800AE514:
-/* 0AF114 800AE514 81EF86F8 */  lb    $t7, %lo(D_800E86F8)($t7)
+/* 0AF114 800AE514 81EF86F8 */  lb    $t7, %lo(controller_pak_1_state)($t7)
 /* 0AF118 800AE518 15E00047 */  bnez  $t7, .L800AE638
 /* 0AF11C 800AE51C 00000000 */   nop
 /* 0AF120 800AE520 0C02D7CC */  jal   func_800B5F30
@@ -250,27 +250,27 @@ glabel L800AE590
 .L800AE59C:
 glabel L800AE59C
 /* 0AF19C 800AE59C 10600006 */  beqz  $v1, .L800AE5B8
-/* 0AF1A0 800AE5A0 3C048019 */   lui   $a0, %hi(D_8018E868)
+/* 0AF1A0 800AE5A0 3C048019 */   lui   $a0, %hi(gControllerPak1FileHandle)
 /* 0AF1A4 800AE5A4 3C044900 */  lui   $a0, (0x4900FF07 >> 16) # $a0, 0x4900
 /* 0AF1A8 800AE5A8 0C032384 */  jal   play_sound2
 /* 0AF1AC 800AE5AC 3484FF07 */   ori   $a0, (0x4900FF07 & 0xFFFF) # ori $a0, $a0, 0xff07
 /* 0AF1B0 800AE5B0 100001A4 */  b     .L800AEC44
 /* 0AF1B4 800AE5B4 8FBF0024 */   lw    $ra, 0x24($sp)
 .L800AE5B8:
-/* 0AF1B8 800AE5B8 3C0C800F */  lui   $t4, %hi(D_800F2E74) # $t4, 0x800f
-/* 0AF1BC 800AE5BC 3C0D8019 */  lui   $t5, %hi(D_8018EB84) # $t5, 0x8019
-/* 0AF1C0 800AE5C0 25ADEB84 */  addiu $t5, %lo(D_8018EB84) # addiu $t5, $t5, -0x147c
-/* 0AF1C4 800AE5C4 258C2E74 */  addiu $t4, %lo(D_800F2E74) # addiu $t4, $t4, 0x2e74
-/* 0AF1C8 800AE5C8 3C05800F */  lui   $a1, %hi(D_800E86F0) # $a1, 0x800f
-/* 0AF1CC 800AE5CC 3C06800F */  lui   $a2, %hi(D_800E86F4) # $a2, 0x800f
-/* 0AF1D0 800AE5D0 3C07800F */  lui   $a3, %hi(D_800F2E64) # $a3, 0x800f
-/* 0AF1D4 800AE5D4 24E72E64 */  addiu $a3, %lo(D_800F2E64) # addiu $a3, $a3, 0x2e64
-/* 0AF1D8 800AE5D8 8CC686F4 */  lw    $a2, %lo(D_800E86F4)($a2)
-/* 0AF1DC 800AE5DC 94A586F0 */  lhu   $a1, %lo(D_800E86F0)($a1)
+/* 0AF1B8 800AE5B8 3C0C800F */  lui   $t4, %hi(ext_code) # $t4, 0x800f
+/* 0AF1BC 800AE5BC 3C0D8019 */  lui   $t5, %hi(gControllerPak1FileNo) # $t5, 0x8019
+/* 0AF1C0 800AE5C0 25ADEB84 */  addiu $t5, %lo(gControllerPak1FileNo) # addiu $t5, $t5, -0x147c
+/* 0AF1C4 800AE5C4 258C2E74 */  addiu $t4, %lo(ext_code) # addiu $t4, $t4, 0x2e74
+/* 0AF1C8 800AE5C8 3C05800F */  lui   $a1, %hi(company_code) # $a1, 0x800f
+/* 0AF1CC 800AE5CC 3C06800F */  lui   $a2, %hi(game_code) # $a2, 0x800f
+/* 0AF1D0 800AE5D0 3C07800F */  lui   $a3, %hi(game_name) # $a3, 0x800f
+/* 0AF1D4 800AE5D4 24E72E64 */  addiu $a3, %lo(game_name) # addiu $a3, $a3, 0x2e64
+/* 0AF1D8 800AE5D8 8CC686F4 */  lw    $a2, %lo(game_code)($a2)
+/* 0AF1DC 800AE5DC 94A586F0 */  lhu   $a1, %lo(company_code)($a1)
 /* 0AF1E0 800AE5E0 AFAC0010 */  sw    $t4, 0x10($sp)
 /* 0AF1E4 800AE5E4 AFAD0014 */  sw    $t5, 0x14($sp)
 /* 0AF1E8 800AE5E8 0C033E20 */  jal   osPfsFindFile
-/* 0AF1EC 800AE5EC 2484E868 */   addiu $a0, %lo(D_8018E868) # addiu $a0, $a0, -0x1798
+/* 0AF1EC 800AE5EC 2484E868 */   addiu $a0, %lo(gControllerPak1FileHandle) # addiu $a0, $a0, -0x1798
 /* 0AF1F0 800AE5F0 14400011 */  bnez  $v0, .L800AE638
 /* 0AF1F4 800AE5F4 00000000 */   nop
 /* 0AF1F8 800AE5F8 0C02D9C2 */  jal   func_800B6708
@@ -290,22 +290,22 @@ glabel L800AE59C
 /* 0AF230 800AE630 10000184 */  b     .L800AEC44
 /* 0AF234 800AE634 8FBF0024 */   lw    $ra, 0x24($sp)
 .L800AE638:
-/* 0AF238 800AE638 3C088019 */  lui   $t0, %hi(D_8018EB7C) # $t0, 0x8019
-/* 0AF23C 800AE63C 3C098019 */  lui   $t1, %hi(D_8018EB78) # $t1, 0x8019
-/* 0AF240 800AE640 8D29EB78 */  lw    $t1, %lo(D_8018EB78)($t1)
-/* 0AF244 800AE644 8D08EB7C */  lw    $t0, %lo(D_8018EB7C)($t0)
+/* 0AF238 800AE638 3C088019 */  lui   $t0, %hi(gControllerPak1MaxWriteableFiles) # $t0, 0x8019
+/* 0AF23C 800AE63C 3C098019 */  lui   $t1, %hi(gControllerPak1NumFilesUsed) # $t1, 0x8019
+/* 0AF240 800AE640 8D29EB78 */  lw    $t1, %lo(gControllerPak1NumFilesUsed)($t1)
+/* 0AF244 800AE644 8D08EB7C */  lw    $t0, %lo(gControllerPak1MaxWriteableFiles)($t0)
 /* 0AF248 800AE648 240A0018 */  li    $t2, 24
 /* 0AF24C 800AE64C 3C044900 */  lui   $a0, (0x4900FF07 >> 16) # lui $a0, 0x4900
 /* 0AF250 800AE650 0109082A */  slt   $at, $t0, $t1
 /* 0AF254 800AE654 14200006 */  bnez  $at, .L800AE670
-/* 0AF258 800AE658 3C0B8019 */   lui   $t3, %hi(gControllerPakNumPagesFree) # $t3, 0x8019
+/* 0AF258 800AE658 3C0B8019 */   lui   $t3, %hi(gControllerPak1NumPagesFree) # $t3, 0x8019
 /* 0AF25C 800AE65C AE0A0004 */  sw    $t2, 4($s0)
 /* 0AF260 800AE660 0C032384 */  jal   play_sound2
 /* 0AF264 800AE664 3484FF07 */   ori   $a0, (0x4900FF07 & 0xFFFF) # ori $a0, $a0, 0xff07
 /* 0AF268 800AE668 10000176 */  b     .L800AEC44
 /* 0AF26C 800AE66C 8FBF0024 */   lw    $ra, 0x24($sp)
 .L800AE670:
-/* 0AF270 800AE670 8D6BEB80 */  lw    $t3, %lo(gControllerPakNumPagesFree)($t3)
+/* 0AF270 800AE670 8D6BEB80 */  lw    $t3, %lo(gControllerPak1NumPagesFree)($t3)
 /* 0AF274 800AE674 3C044900 */  lui   $a0, (0x4900FF07 >> 16) # lui $a0, 0x4900
 /* 0AF278 800AE678 240D0018 */  li    $t5, 24
 /* 0AF27C 800AE67C 29610079 */  slti  $at, $t3, 0x79
@@ -661,19 +661,19 @@ glabel L800AE9D4
 glabel L800AEB94
 /* 0AF794 800AEB94 8E08001C */  lw    $t0, 0x1c($s0)
 /* 0AF798 800AEB98 24010001 */  li    $at, 1
-/* 0AF79C 800AEB9C 3C048019 */  lui   $a0, %hi(D_8018E868) # $a0, 0x8019
+/* 0AF79C 800AEB9C 3C048019 */  lui   $a0, %hi(gControllerPak1FileHandle) # $a0, 0x8019
 /* 0AF7A0 800AEBA0 15010020 */  bne   $t0, $at, .L800AEC24
-/* 0AF7A4 800AEBA4 2484E868 */   addiu $a0, %lo(D_8018E868) # addiu $a0, $a0, -0x1798
-/* 0AF7A8 800AEBA8 3C09800F */  lui   $t1, %hi(D_800F2E74) # $t1, 0x800f
-/* 0AF7AC 800AEBAC 3C0A8019 */  lui   $t2, %hi(D_8018EB84) # $t2, 0x8019
-/* 0AF7B0 800AEBB0 254AEB84 */  addiu $t2, %lo(D_8018EB84) # addiu $t2, $t2, -0x147c
-/* 0AF7B4 800AEBB4 25292E74 */  addiu $t1, %lo(D_800F2E74) # addiu $t1, $t1, 0x2e74
-/* 0AF7B8 800AEBB8 3C05800F */  lui   $a1, %hi(D_800E86F0) # $a1, 0x800f
-/* 0AF7BC 800AEBBC 3C06800F */  lui   $a2, %hi(D_800E86F4) # $a2, 0x800f
-/* 0AF7C0 800AEBC0 3C07800F */  lui   $a3, %hi(D_800F2E64) # $a3, 0x800f
-/* 0AF7C4 800AEBC4 24E72E64 */  addiu $a3, %lo(D_800F2E64) # addiu $a3, $a3, 0x2e64
-/* 0AF7C8 800AEBC8 8CC686F4 */  lw    $a2, %lo(D_800E86F4)($a2)
-/* 0AF7CC 800AEBCC 94A586F0 */  lhu   $a1, %lo(D_800E86F0)($a1)
+/* 0AF7A4 800AEBA4 2484E868 */   addiu $a0, %lo(gControllerPak1FileHandle) # addiu $a0, $a0, -0x1798
+/* 0AF7A8 800AEBA8 3C09800F */  lui   $t1, %hi(ext_code) # $t1, 0x800f
+/* 0AF7AC 800AEBAC 3C0A8019 */  lui   $t2, %hi(gControllerPak1FileNo) # $t2, 0x8019
+/* 0AF7B0 800AEBB0 254AEB84 */  addiu $t2, %lo(gControllerPak1FileNo) # addiu $t2, $t2, -0x147c
+/* 0AF7B4 800AEBB4 25292E74 */  addiu $t1, %lo(ext_code) # addiu $t1, $t1, 0x2e74
+/* 0AF7B8 800AEBB8 3C05800F */  lui   $a1, %hi(company_code) # $a1, 0x800f
+/* 0AF7BC 800AEBBC 3C06800F */  lui   $a2, %hi(game_code) # $a2, 0x800f
+/* 0AF7C0 800AEBC0 3C07800F */  lui   $a3, %hi(game_name) # $a3, 0x800f
+/* 0AF7C4 800AEBC4 24E72E64 */  addiu $a3, %lo(game_name) # addiu $a3, $a3, 0x2e64
+/* 0AF7C8 800AEBC8 8CC686F4 */  lw    $a2, %lo(game_code)($a2)
+/* 0AF7CC 800AEBCC 94A586F0 */  lhu   $a1, %lo(company_code)($a1)
 /* 0AF7D0 800AEBD0 AFA90010 */  sw    $t1, 0x10($sp)
 /* 0AF7D4 800AEBD4 0C033E20 */  jal   osPfsFindFile
 /* 0AF7D8 800AEBD8 AFAA0014 */   sw    $t2, 0x14($sp)

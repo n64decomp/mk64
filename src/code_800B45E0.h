@@ -5,6 +5,27 @@
 #include "common_structs.h"
 #include <types.h>
 
+/* define symbols */
+
+#define CONTROLLER_1 0
+#define CONTROLLER_2 1
+#define CONTROLLER_3 2
+#define CONTROLLER_4 3
+
+#define PFS_NO_ERROR 0 // controller pak no error return
+#define PFS_NO_PAK_INSERTED 1 // no pak pressent or wrong device inserted into the controller
+#define PFS_PAK_BAD_READ 2 // controller pak error while data transfer
+#define PFS_FILE_OVERFLOW 4 // too many files written to in the controller pak
+#define PFS_INVALID_DATA -1 // bad arguments, game note does not exist, osPfsInit was not called.
+// controller pak test functions
+#define PFS_NUM_FILES_ERROR -2
+#define PFS_FREE_BLOCKS_ERROR -3
+#define PFS_PAK_STATE_OK -4
+
+#define NO_PAK 0
+#define PAK 1
+#define PAK_NOT_INSERTED -1
+
 union GrandPrixPointsUnion
 {
     u8 grandPrixPointsArray[4];
@@ -46,8 +67,8 @@ u8  compute_save_data_checksum_backup_1(void);
 u8  compute_save_data_checksum_backup_2(void);
 s32  validate_save_data_checksum_backup();
 s32  func_800B5B2C(s32);
-s32  controller_pak_status(void);
-s32  func_800B5DA4(void);
+s32  controller_pak_1_status(void);
+s32  controller_pak_2_status(void);
 s32  func_800B5F30();
 s32  func_800B6014();
 s32  func_800B6088(s32);
@@ -67,9 +88,9 @@ s32  func_800B6A68();
 
 extern u32*        D_800DC714;
 
-extern u16         D_800E86F0;
-extern u32         D_800E86F4; // osPfs gamecode
-extern s8          D_800E86F8;
+extern u16         company_code;
+extern u32         game_code; // osPfs gamecode
+extern s8          controller_pak_1_state; // Whether an error or not has occurred in the Controller Pak
 extern struct_8018EE10_entry D_8018EE10[];
 extern struct_8018EE10_entry *D_8018D9C0;
 extern u8          D_8018ED16; // D_8018EB90.checksum[1]
@@ -78,22 +99,22 @@ extern u8          D_8018ED4E; // D_8018EB90.onlyBestTimeTrialRecords[0].unknown
 extern union GrandPrixPointsUnion D_8018ED10; // Direct reference to the grandPrixPoints section of save data
 extern union GrandPrixPointsUnion D_8018ED88; // D_8018EB90.grandPrixPointsBackup[0]
 
-extern s8          D_800E86FC;
+extern s8          controller_pak_2_state; // Current state of the Controller Pak
 extern const u8    D_800F2E60[];
-extern const u8    D_800F2E64[];
-extern const u8    D_800F2E74[];
+extern const u8    game_name[];
+extern const u8    ext_code[];
 extern OSMesgQueue gSIEventMesgQueue; // D_8014F0B8
 extern u16         D_80162DD6;
 extern s32         D_80162DE0;
 extern s32         D_80162DFC;
-extern OSPfs       D_8018E868;
-extern OSPfs       D_8018E8D0;
+extern OSPfs       gControllerPak1FileHandle;
+extern OSPfs       gControllerPak2FileHandle;
 extern OSPfsState  D_8018E938[];
 extern s32         D_8018EB38[16];
-extern s32         D_8018EB78;
-extern s32         D_8018EB7C;
-extern s32         D_8018EB84; // osPfs file_no receiver/out param
-extern s32         D_8018EB88;
+extern s32         gControllerPak1NumFilesUsed;
+extern s32         gControllerPak1MaxWriteableFiles;
+extern s32         gControllerPak1FileNo; // osPfs file_no receiver/out param
+extern s32         gControllerPak2FileNo;
 extern SaveData    D_8018EB90;
 extern u8          D_8018ED11;
 extern u8          D_8018ED12;
