@@ -1,0 +1,28 @@
+- name: Luigi's Raceway
+  dir: course_data.inc.c
+  type: course
+  assets:
+    - type: gfx
+      offset: 0x0
+    - type: gfx
+      offset: 0x1A8
+    - type: gfx
+      offset: 0x328
+    - type: gfx
+      offset: 0x480
+    - type: path
+      offset: 0xA540
+      length: 5
+    - type: path
+      offset: 0xA6D0
+      length: 8
+    - type: vtx
+      offset: 0xBA90
+      length: 12
+      comment: poor lod
+- name: Koopa Troopa Beach
+  dir: koopa_data.inc.c
+  type: course
+  assets:
+    - type: gfx
+      offset: 0x0
