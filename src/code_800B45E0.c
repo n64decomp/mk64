@@ -704,16 +704,16 @@ s32 validate_save_data_checksum_backup(void)
 // Check if controller has a Controller Pak connected.
 // Return PAK if it does, otherwise return NO_PAK.
 s32 check_for_controller_pak(s32 controller) {
-    u8 controller_bitpattern;
+    u8 controllerBitpattern;
     UNUSED s32 phi_v0;
 
     if ((controller >= MAXCONTROLLERS) || (controller < 0)) {
         return NO_PAK;
     }
 
-    osPfsIsPlug(&gSIEventMesgQueue, &controller_bitpattern);
+    osPfsIsPlug(&gSIEventMesgQueue, &controllerBitpattern);
 	
-    if ((controller_bitpattern & (1 << controller)) != 0) {
+    if ((controllerBitpattern & (1 << controller)) != 0) {
         return PAK;
     }
 
