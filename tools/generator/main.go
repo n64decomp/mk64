@@ -114,20 +114,3 @@ func execute_shell_program(path string, args []string) ([]byte, error) {
 	return output, nil
 }
 
-func generate_model(textBuffer *string, offset int, length int) {
-    *textBuffer += string("some vertex data\n")
-}
-
-func generate_gfx(textBuffer *string, offset int) {
-
-    *textBuffer += string("some gfx\n")
-    return;
-
-	// Call the CLI program and capture its output
-	//cliOutput, err := execute_shell_program("path", "args")
-	//if err != nil {
-	//	log.Println("Error running CLI program:", err)
-	//}
-
-	//textBuffer += string(cliOutput)
-}
