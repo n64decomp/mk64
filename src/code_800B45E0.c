@@ -17,18 +17,18 @@
 #define EEPROM_ADDR(ptr) (((uintptr_t)(ptr) - (uintptr_t)(&D_8018EB90)) / 8)
 
 /*** data ***/
-u16 company_code = PFS_COMPANY_CODE('0', '1');
-u32 game_code = PFS_GAME_CODE('N', 'K', 'T', 'J');
-s8 controller_pak_1_state = BAD;
-s8 controller_pak_2_state = BAD;
+u16 gCompanyCode = PFS_COMPANY_CODE('0', '1');
+u32 gGameCode = PFS_GAME_CODE('N', 'K', 'T', 'J');
+s8 gControllerPak1State = BAD;
+s8 sControllerPak2State = BAD;
 
 /*** rodata ***/
 // default time trial records?
 const u8 D_800F2E60[4] = {0xc0, 0x27, 0x09, 0x00};
-// osPfsFindFile -> game_name ("MARIOKART64" in nosFont)
-const u8 game_name[] = {0x26, 0x1a, 0x2b, 0x22, 0x28, 0x24, 0x1a, 0x2b, 0x2d, 0x16, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00};
+// osPfsFindFile -> gGameName ("MARIOKART64" in nosFont)
+const u8 gGameName[] = {0x26, 0x1a, 0x2b, 0x22, 0x28, 0x24, 0x1a, 0x2b, 0x2d, 0x16, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00};
 // ext_name param to osPfsFindFile (four total bytes, but only one is setable)
-const u8 ext_code[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+const u8 gExtCode[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
 /*** forward declarations ***/
 s32 func_800B58C4(s32 arg0);
@@ -722,22 +722,22 @@ s32 check_for_controller_pak(s32 controller) {
 
 // gives status info about controller pak insterted in controller 1
 s32 controller_pak_1_status(void) {
-    if (controller_pak_1_state) {
-        switch (osPfsFindFile(&gControllerPak1FileHandle, company_code, game_code, game_name, ext_code, &gControllerPak1FileNo)) {
+    if (gControllerPak1State) {
+        switch (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, gGameName, gExtCode, &gControllerPak1FileNote)) {
             case PFS_NO_ERROR:
                 return PFS_NO_ERROR;
             case PFS_ERR_INVALID:
                 break;
             case PFS_ERR_NEW_PACK:
-                controller_pak_1_state = BAD;
+                gControllerPak1State = BAD;
                 break;
             default:
-                controller_pak_1_state = BAD;
+                gControllerPak1State = BAD;
                 break;
         }
     } 
     
-    if (!controller_pak_1_state) {
+    if (!gControllerPak1State) {
         s32 error_code;
         if (check_for_controller_pak(CONTROLLER_1) == NO_PAK) {
             return PFS_NO_PAK_INSERTED;
@@ -757,8 +757,8 @@ s32 controller_pak_1_status(void) {
             }
         }
    
-        controller_pak_1_state = OK;
-        if (osPfsFindFile(&gControllerPak1FileHandle, company_code, game_code, game_name, ext_code, &gControllerPak1FileNo) == PFS_NO_ERROR) {
+        gControllerPak1State = OK;
+        if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, gGameName, gExtCode, &gControllerPak1FileNote) == PFS_NO_ERROR) {
             return PFS_NO_ERROR;
         }
         if (osPfsNumFiles(&gControllerPak1FileHandle, &gControllerPak1NumFilesUsed, &gControllerPak1MaxWriteableFiles) != PFS_NO_ERROR) {
@@ -781,17 +781,17 @@ s32 controller_pak_1_status(void) {
 
 // gives status info about controller pak insterted in controller 2
 s32 controller_pak_2_status(void) {   
-    s32 state_borrow = controller_pak_2_state;
+    s32 state_borrow = sControllerPak2State;
     
     if (state_borrow) {
-        switch (osPfsFindFile(&gControllerPak2FileHandle, company_code, game_code, game_name, ext_code, &gControllerPak2FileNo)) {
+        switch (osPfsFindFile(&gControllerPak2FileHandle, gCompanyCode, gGameCode, gGameName, gExtCode, &gControllerPak2FileNo)) {
         	case PFS_NO_ERROR:
                 return PFS_NO_ERROR;  
         	case PFS_ERR_INVALID:
                 return PFS_INVALID_DATA;
         	default:
         	case PFS_ERR_NEW_PACK:
-                controller_pak_2_state = BAD;
+                sControllerPak2State = BAD;
                 state_borrow = BAD;
         }
     }
@@ -815,9 +815,9 @@ s32 controller_pak_2_status(void) {
             }
         }
 
-        controller_pak_2_state = OK;
+        sControllerPak2State = OK;
             
-        switch (osPfsFindFile(&gControllerPak2FileHandle, company_code, game_code, game_name, ext_code, &gControllerPak2FileNo)) {
+        switch (osPfsFindFile(&gControllerPak2FileHandle, gCompanyCode, gGameCode, gGameName, gExtCode, &gControllerPak2FileNo)) {
         case PFS_NO_ERROR:
             return PFS_NO_ERROR;
         case PFS_ERR_INVALID:
@@ -832,22 +832,22 @@ s32 controller_pak_2_status(void) {
 s32 func_800B5F30(void) {
     s32 error_code;
 
-    if (controller_pak_1_state) {
+    if (gControllerPak1State) {
         return PFS_PAK_STATE_OK;
     }
     if (check_for_controller_pak(CONTROLLER_1) != NO_PAK) {
         error_code = osPfsInit(&gSIEventMesgQueue, &gControllerPak1FileHandle, CONTROLLER_1);
         if (osPfsNumFiles(&gControllerPak1FileHandle, &gControllerPak1NumFilesUsed, &gControllerPak1MaxWriteableFiles) != PFS_NO_ERROR) {
-            controller_pak_1_state = BAD;
+            gControllerPak1State = BAD;
             return PFS_NUM_FILES_ERROR;
         }
         if (osPfsFreeBlocks(&gControllerPak1FileHandle, &gControllerPak1NumPagesFree) != PFS_NO_ERROR) {
-            controller_pak_1_state = BAD;
+            gControllerPak1State = BAD;
             return PFS_FREE_BLOCKS_ERROR;
         }
         gControllerPak1NumPagesFree = gControllerPak1NumPagesFree >> 8;
         if (error_code == PFS_NO_ERROR) {
-            controller_pak_1_state = OK;
+            gControllerPak1State = OK;
         }
         return error_code;
     }
@@ -857,13 +857,13 @@ s32 func_800B5F30(void) {
 s32 func_800B6014(void) {
     s32 error_code;
 
-    if (controller_pak_2_state) {
+    if (sControllerPak2State) {
         return PFS_PAK_STATE_OK;
     }
     if (check_for_controller_pak(CONTROLLER_2) != NO_PAK) {
         error_code = osPfsInit(&gSIEventMesgQueue, &gControllerPak2FileHandle, CONTROLLER_2);
         if (error_code == PFS_NO_ERROR) {
-            controller_pak_2_state = OK;
+            sControllerPak2State = OK;
         }
         return error_code;
     }
@@ -875,7 +875,7 @@ s32 func_800B6088(s32 arg0) {
 
     temp_v1 = &D_8018EE10[arg0];
     temp_v1->checksum = func_800B6828(arg0);
-    return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNo, PFS_WRITE, arg0 * 0x80 /* 0x80 == sizeof(struct_8018EE10_entry) */, sizeof(struct_8018EE10_entry), (u8*) temp_v1);
+    return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_WRITE, arg0 * 0x80 /* 0x80 == sizeof(struct_8018EE10_entry) */, sizeof(struct_8018EE10_entry), (u8*) temp_v1);
 }
 
 #ifdef MIPS_TO_C
@@ -954,7 +954,7 @@ s32 func_800B6178(s32 arg0) {
             var_s1 += 4;
         } while (var_s0 != 0x3C);
     } else {
-        var_v0 = osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNo, 1U, (arg0 * 0x3C00) + 0x100, 0x00003C00, (u8 *) D_800DC714);
+        var_v0 = osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, 1U, (arg0 * 0x3C00) + 0x100, 0x00003C00, (u8 *) D_800DC714);
         var_v1 = var_v0;
         if (var_v0 == 0) {
             temp_s3->ghostDataSaved = 1;
@@ -1064,7 +1064,7 @@ s32 func_800B64EC(s32 arg0) {
         return -1;
     }
 
-    temp_v0 = osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNo, PFS_READ, (arg0 * 0x3C00) + 0x100, 0x3C00, (u8 *) D_800DC714);
+    temp_v0 = osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_READ, (arg0 * 0x3C00) + 0x100, 0x3C00, (u8 *) D_800DC714);
     if (temp_v0 == 0)
     {
         phi_s1 = (u8 *) &D_8018EE10[arg0]; temp_s0 = 0; while (1) {
@@ -1134,7 +1134,7 @@ GLOBAL_ASM("asm/non_matchings/menus/func_800B65F4.s")
 void func_800B6708(void) {
     s32 temp_s0;
 
-    osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNo, PFS_READ, 0, 0x100 /*  2*sizeof(struct_8018EE10_entry) ? */, (u8*) &D_8018EE10);
+    osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_READ, 0, 0x100 /*  2*sizeof(struct_8018EE10_entry) ? */, (u8*) &D_8018EE10);
  
     for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
         if (D_8018EE10[temp_s0].checksum != func_800B6828(temp_s0)) {
@@ -1244,7 +1244,7 @@ s32 func_800B69BC(s32 arg0) {
     }
     offset = arg0 << 7;
     plz->checksum = func_800B6828(arg0);
-    return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNo, PFS_WRITE, offset, sizeof(struct_8018EE10_entry), (u8 *)plz);
+    return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_WRITE, offset, sizeof(struct_8018EE10_entry), (u8 *)plz);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/menus/func_800B69BC.s")
@@ -1255,7 +1255,7 @@ s32 func_800B6A68(void) {
     s32 ret;
     s32 i;
 
-    ret = osPfsAllocateFile(&gControllerPak1FileHandle, company_code, game_code, (u8 *)&game_name, (u8 *)&ext_code, 0x7900, &gControllerPak1FileNo);
+    ret = osPfsAllocateFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8 *)&gGameName, (u8 *)&gExtCode, 0x7900, &gControllerPak1FileNote);
     if (ret == 0) {
         for (i = 0; i < 2; i++) {
             func_800B69BC(i);
@@ -1266,9 +1266,9 @@ s32 func_800B6A68(void) {
 }
 
 void func_8800B6AF8(void) {
-    if (check_for_controller_pak(0)
+    if (check_for_controller_pak(CONTROLLER_1)
         && osPfsInit(&gSIEventMesgQueue, &gControllerPak1FileHandle, 0) == 0
-        && osPfsFindFile(&gControllerPak1FileHandle, company_code, game_code, (u8 *)game_name, (u8 *)ext_code, &gControllerPak1FileNo)
+        && osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8 *)gGameName, (u8 *)gExtCode, &gControllerPak1FileNote)
         && osPfsNumFiles(&gControllerPak1FileHandle, &gControllerPak1NumFilesUsed, &gControllerPak1MaxWriteableFiles) == 0
         && gControllerPak1MaxWriteableFiles < gControllerPak1NumFilesUsed
         && osPfsFreeBlocks(&gControllerPak1FileHandle, &gControllerPak1NumPagesFree) == 0

@@ -576,7 +576,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                 return;
             }
-            res = osPfsFindFile(&gControllerPak1FileHandle, company_code, game_code, (u8 *)game_name, (u8 *)ext_code, &gControllerPak1FileNo);
+            res = osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8 *)gGameName, (u8 *)gExtCode, &gControllerPak1FileNote);
             if (res == PFS_NO_ERROR) {
                 res = func_800B6178(sp38->unk1C);
             }
@@ -894,7 +894,7 @@ void controller_pak_menu_act(struct Controller* controller, UNUSED u16 arg1) {
             if ((buttonAndStickPress & 0x9000) != 0) {
                 play_sound2(SOUND_MENU_SELECT);
                 func_8009E1C0();
-                controller_pak_1_state = 0;
+                gControllerPak1State = BAD;
                 return;
             }
             if ((buttonAndStickPress & 0x300) != 0) {

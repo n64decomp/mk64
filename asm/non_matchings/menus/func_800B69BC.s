@@ -29,11 +29,11 @@ glabel func_800B69BC
 /* 0B7624 800B6A24 AFA80020 */   sw    $t0, 0x20($sp)
 /* 0B7628 800B6A28 8FA80020 */  lw    $t0, 0x20($sp)
 /* 0B762C 800B6A2C 3C048019 */  lui   $a0, %hi(gControllerPak1FileHandle) # $a0, 0x8019
-/* 0B7630 800B6A30 3C058019 */  lui   $a1, %hi(gControllerPak1FileNo) # $a1, 0x8019
+/* 0B7630 800B6A30 3C058019 */  lui   $a1, %hi(gControllerPak1FileNote) # $a1, 0x8019
 /* 0B7634 800B6A34 24090080 */  li    $t1, 128
 /* 0B7638 800B6A38 A102007F */  sb    $v0, 0x7f($t0)
 /* 0B763C 800B6A3C 8FA70024 */  lw    $a3, 0x24($sp)
-/* 0B7640 800B6A40 8CA5EB84 */  lw    $a1, %lo(gControllerPak1FileNo)($a1)
+/* 0B7640 800B6A40 8CA5EB84 */  lw    $a1, %lo(gControllerPak1FileNote)($a1)
 /* 0B7644 800B6A44 AFA90010 */  sw    $t1, 0x10($sp)
 /* 0B7648 800B6A48 2484E868 */  addiu $a0, %lo(gControllerPak1FileHandle) # addiu $a0, $a0, -0x1798
 /* 0B764C 800B6A4C 24060001 */  li    $a2, 1

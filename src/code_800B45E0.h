@@ -88,9 +88,9 @@ s32  func_800B6A68();
 
 extern u32*        D_800DC714;
 
-extern u16         company_code;
-extern u32         game_code; // osPfs gamecode
-extern s8          controller_pak_1_state; // Current state of Controller Pak 1
+extern u16         gCompanyCode;
+extern u32         gGameCode; // osPfs gamecode
+extern s8          gControllerPak1State; // Current state of Controller Pak 1
 extern struct_8018EE10_entry D_8018EE10[];
 extern struct_8018EE10_entry *D_8018D9C0;
 extern u8          D_8018ED16; // D_8018EB90.checksum[1]
@@ -99,10 +99,10 @@ extern u8          D_8018ED4E; // D_8018EB90.onlyBestTimeTrialRecords[0].unknown
 extern union GrandPrixPointsUnion D_8018ED10; // Direct reference to the grandPrixPoints section of save data
 extern union GrandPrixPointsUnion D_8018ED88; // D_8018EB90.grandPrixPointsBackup[0]
 
-extern s8          controller_pak_2_state; // Current state of the Controller Pak 2
+extern s8          sControllerPak2State; // Current state of the Controller Pak 2
 extern const u8    D_800F2E60[];
-extern const u8    game_name[];
-extern const u8    ext_code[];
+extern const u8    gGameName[];
+extern const u8    gExtCode[];
 extern OSMesgQueue gSIEventMesgQueue; // D_8014F0B8
 extern u16         D_80162DD6;
 extern s32         D_80162DE0;
@@ -113,7 +113,7 @@ extern OSPfsState  D_8018E938[];
 extern s32         D_8018EB38[16];
 extern s32         gControllerPak1NumFilesUsed;
 extern s32         gControllerPak1MaxWriteableFiles;
-extern s32         gControllerPak1FileNo; // osPfs file_no receiver/out param
+extern s32         gControllerPak1FileNote; // osPfs file_no receiver/out param
 extern s32         gControllerPak2FileNo;
 extern SaveData    D_8018EB90;
 extern u8          D_8018ED11;

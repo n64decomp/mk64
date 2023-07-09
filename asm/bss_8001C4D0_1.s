@@ -44,7 +44,7 @@ glabel gControllerPak1MaxWriteableFiles
 glabel gControllerPak1NumPagesFree
 .skip 4
 
-glabel gControllerPak1FileNo
+glabel gControllerPak1FileNote
 .skip 4
 
 glabel gControllerPak2FileNo
