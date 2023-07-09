@@ -10944,7 +10944,7 @@ Vtx d_course_yoshi_valley_tree_model[] = {
     {{{ 0, -10, 0 }, 0, { 511, 2137 }, {0xFF, 0xFE, 0xFE, 0xFF }}},
 };
 
-Gfx d_course_yoshi_valley_dl_15B48[] =
+Gfx d_course_yoshi_valley_dl_tree[] =
 {
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
@@ -11214,7 +11214,7 @@ u8 d_course_yoshi_valley_egg[] = {
     #include "assets/courses/yoshi_valley/gTextureYoshiValleyEgg.inc.c"
 };
 
-Gfx d_course_yoshi_valley_dl_17FA8[] =
+Gfx d_course_yoshi_valley_dl_egg_lod0[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
@@ -11271,7 +11271,7 @@ struct ActorSpawnData d_course_yoshi_valley_tree_spawn[] = {
     {{ -32768, 0, 0 }, { 0 }},
 };
 
-struct ActorSpawnData d_course_yoshi_valley_item_box_spawn[] = {
+struct ActorSpawnData d_course_yoshi_valley_item_box_spawns[] = {
     {{ -157, 183, -1413 }, { 0 }},
     {{ -180, 183, -1400 }, { 0 }},
     {{ -206, 183, -1392 }, { 0 }},

@@ -174,10 +174,10 @@ glabel func_80053870
 /* 054704 80053B04 AE580000 */  sw    $t8, ($s2)
 /* 054708 80053B08 35AD0204 */  ori   $t5, (0x00020204 & 0xFFFF) # ori $t5, $t5, 0x204
 /* 05470C 80053B0C 3C19B700 */  lui   $t9, 0xb700
-/* 054710 80053B10 3C040600 */  lui   $a0, %hi(D_06006738) # $a0, 0x600
+/* 054710 80053B10 3C040600 */  lui   $a0, %hi(d_course_bowsers_castle_thwomp_side) # $a0, 0x600
 /* 054714 80053B14 26F75C18 */  addiu $s7, %lo(D_80165C18) # addiu $s7, $s7, 0x5c18
 /* 054718 80053B18 241E00E0 */  li    $fp, 224
-/* 05471C 80053B1C 24846738 */  addiu $a0, %lo(D_06006738) # addiu $a0, $a0, 0x6738
+/* 05471C 80053B1C 24846738 */  addiu $a0, %lo(d_course_bowsers_castle_thwomp_side) # addiu $a0, $a0, 0x6738
 /* 054720 80053B20 24050020 */  li    $a1, 32
 /* 054724 80053B24 24060020 */  li    $a2, 32
 /* 054728 80053B28 AC590000 */  sw    $t9, ($v0)

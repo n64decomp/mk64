@@ -22,12 +22,12 @@ glabel func_80085EF8
 /* 086B2C 80085F2C 44058000 */  mfc1  $a1, $f16
 /* 086B30 80085F30 0C022DF5 */  jal   func_8008B7D4
 /* 086B34 80085F34 00000000 */   nop   
-/* 086B38 80085F38 3C050600 */  lui   $a1, %hi(D_06006800) # $a1, 0x600
-/* 086B3C 80085F3C 3C060601 */  lui   $a2, %hi(D_0600A000) # $a2, 0x601
+/* 086B38 80085F38 3C050600 */  lui   $a1, %hi(d_course_rainbow_road_neon_boo_tlut_list) # $a1, 0x600
+/* 086B3C 80085F3C 3C060601 */  lui   $a2, %hi(d_course_rainbow_road_neon_boo) # $a2, 0x601
 /* 086B40 80085F40 240E0040 */  li    $t6, 64
 /* 086B44 80085F44 AFAE0010 */  sw    $t6, 0x10($sp)
-/* 086B48 80085F48 24C6A000 */  addiu $a2, %lo(D_0600A000) # addiu $a2, $a2, -0x6000
-/* 086B4C 80085F4C 24A56800 */  addiu $a1, %lo(D_06006800) # addiu $a1, $a1, 0x6800
+/* 086B48 80085F48 24C6A000 */  addiu $a2, %lo(d_course_rainbow_road_neon_boo) # addiu $a2, $a2, -0x6000
+/* 086B4C 80085F4C 24A56800 */  addiu $a1, %lo(d_course_rainbow_road_neon_boo_tlut_list) # addiu $a1, $a1, 0x6800
 /* 086B50 80085F50 8FA40020 */  lw    $a0, 0x20($sp)
 /* 086B54 80085F54 0C01CD11 */  jal   func_80073444
 /* 086B58 80085F58 24070040 */   li    $a3, 64

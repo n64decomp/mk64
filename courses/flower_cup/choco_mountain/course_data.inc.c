@@ -3452,7 +3452,7 @@ Gfx d_course_choco_mountain_dl_6F88[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_choco_mountain_dl_6FE0[] =
+Gfx d_course_choco_mountain_dl_falling_rock[] =
 {
     gsSPSetGeometryMode(G_LIGHTING),
     gsDPSetCycleType(G_CYC_2CYCLE),

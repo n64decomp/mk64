@@ -45,10 +45,10 @@ glabel func_8007EC30
 /* 07F8D8 8007ECD8 00003825 */   move  $a3, $zero
 .L8007ECDC:
 /* 07F8DC 8007ECDC 3C050600 */  lui   $a1, %hi(gTLUTWhomp) # $a1, 0x600
-/* 07F8E0 8007ECE0 3C060600 */  lui   $a2, %hi(D_06007138) # $a2, 0x600
+/* 07F8E0 8007ECE0 3C060600 */  lui   $a2, %hi(d_course_bowsers_castle_thwomp_faces) # $a2, 0x600
 /* 07F8E4 8007ECE4 24190040 */  li    $t9, 64
 /* 07F8E8 8007ECE8 AFB90010 */  sw    $t9, 0x10($sp)
-/* 07F8EC 8007ECEC 24C67138 */  addiu $a2, %lo(D_06007138) # addiu $a2, $a2, 0x7138
+/* 07F8EC 8007ECEC 24C67138 */  addiu $a2, %lo(d_course_bowsers_castle_thwomp_faces) # addiu $a2, $a2, 0x7138
 /* 07F8F0 8007ECF0 24A56F38 */  addiu $a1, %lo(gTLUTWhomp) # addiu $a1, $a1, 0x6f38
 /* 07F8F4 8007ECF4 02002025 */  move  $a0, $s0
 /* 07F8F8 8007ECF8 0C01CD11 */  jal   func_80073444
@@ -57,8 +57,8 @@ glabel func_8007EC30
 /* 07F904 8007ED04 44812000 */  mtc1  $at, $f4
 /* 07F908 8007ED08 3C0141F0 */  li    $at, 0x41F00000 # 30.000000
 /* 07F90C 8007ED0C 44813000 */  mtc1  $at, $f6
-/* 07F910 8007ED10 3C080601 */  lui   $t0, %hi(D_06009088) # $t0, 0x601
-/* 07F914 8007ED14 25089088 */  addiu $t0, %lo(D_06009088) # addiu $t0, $t0, -0x6f78
+/* 07F910 8007ED10 3C080601 */  lui   $t0, %hi(d_course_bowsers_castle_dl_thwomp) # $t0, 0x601
+/* 07F914 8007ED14 25089088 */  addiu $t0, %lo(d_course_bowsers_castle_dl_thwomp) # addiu $t0, $t0, -0x6f78
 /* 07F918 8007ED18 2409000C */  li    $t1, 12
 /* 07F91C 8007ED1C 3C050500 */  lui   $a1, (0x05000220 >> 16) # lui $a1, 0x500
 /* 07F920 8007ED20 AE280070 */  sw    $t0, 0x70($s1)

@@ -8487,7 +8487,7 @@ u8 d_course_moo_moo_farm_mole_tlut[] = {
 };
 
 // 0xFE70
-u8 d_course_moo_moo_farm_mole[][2048] = {
+u8 d_course_moo_moo_farm_mole_frames[][2048] = {
     {
         #include "assets/courses/moo_moo_farm/gTextureMole1.inc.c"
     },
@@ -8576,7 +8576,7 @@ Gfx d_course_moo_moo_farm_dl_13B88[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_moo_moo_farm_dl_13C00[] =
+Gfx d_course_moo_moo_farm_dl_cow1[] =
 {
     gsSPDisplayList(d_course_moo_moo_farm_dl_13B88),
     gsDPLoadTextureBlock(0x0300A000, G_IM_FMT_CI, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
@@ -8588,7 +8588,7 @@ Gfx d_course_moo_moo_farm_dl_13C00[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_moo_moo_farm_dl_13CA0[] =
+Gfx d_course_moo_moo_farm_dl_cow2[] =
 {
     gsSPDisplayList(d_course_moo_moo_farm_dl_13B88),
     gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_8b, 1, 0x0300B000),
@@ -8608,7 +8608,7 @@ Gfx d_course_moo_moo_farm_dl_13CA0[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_moo_moo_farm_dl_13D20[] =
+Gfx d_course_moo_moo_farm_dl_cow3[] =
 {
     gsSPDisplayList(d_course_moo_moo_farm_dl_13B88),
     gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_8b, 1, 0x0300C000),
@@ -8628,7 +8628,7 @@ Gfx d_course_moo_moo_farm_dl_13D20[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_moo_moo_farm_dl_13DA0[] =
+Gfx d_course_moo_moo_farm_dl_cow4[] =
 {
     gsSPDisplayList(d_course_moo_moo_farm_dl_13B88),
     gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_8b, 1, 0x0300D000),
@@ -8648,7 +8648,7 @@ Gfx d_course_moo_moo_farm_dl_13DA0[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_moo_moo_farm_dl_13E20[] =
+Gfx d_course_moo_moo_farm_dl_cow5[] =
 {
     gsSPDisplayList(d_course_moo_moo_farm_dl_13B88),
     gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_8b, 1, 0x0300E000),
@@ -8669,7 +8669,7 @@ Gfx d_course_moo_moo_farm_dl_13E20[] =
 };
 
 // 0x13EA0
-Vtx d_course_moo_moo_farm_mole_model[] = {
+Vtx d_course_moo_moo_farm_tree_model[] = {
     {{{ 0, 95, 0 }, 0, { 1024, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }}},
     {{{ -50, 95, 0 }, 0, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }}},
     {{{ -50, -5, 0 }, 0, { 0, 2048 }, {0xFF, 0xFF, 0xFF, 0xFF }}},
@@ -8680,7 +8680,7 @@ Vtx d_course_moo_moo_farm_mole_model[] = {
     {{{ 50, -5, 0 }, 0, { 1023, 2048 }, {0xFF, 0xFF, 0xFF, 0xFF }}},
 };
 
-Gfx d_course_moo_moo_farm_dl_13F20[] =
+Gfx d_course_moo_moo_farm_dl_tree[] =
 {
     gsSPClearGeometryMode(G_LIGHTING),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
@@ -8691,7 +8691,7 @@ Gfx d_course_moo_moo_farm_dl_13F20[] =
     gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b, 4, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x00FC),
     gsDPLoadTextureBlock(0x03009000, G_IM_FMT_CI, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
-    gsSPVertex(d_course_moo_moo_farm_mole_model, 8, 0),
+    gsSPVertex(d_course_moo_moo_farm_tree_model, 8, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsDPLoadTextureBlock(0x03009800, G_IM_FMT_CI, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSP1Quadrangle(4, 5, 6, 7, 0),
@@ -8842,7 +8842,7 @@ struct ActorSpawnData d_course_moo_moo_farm_tree_spawn[] = {
     {{ -32768, 0, 0 }, { 0 }},
 };
 
-struct ActorSpawnData d_course_moo_moo_farm_item_box_spawn[] = {
+struct ActorSpawnData d_course_moo_moo_farm_item_box_spawns[] = {
     {{ -78, 13, -1056 }, { 0 }},
     {{ -42, 13, -1051 }, { 0 }},
     {{ -20, 13, -1053 }, { 0 }},

@@ -7027,7 +7027,7 @@ Gfx d_course_luigi_raceway_dl_FD40[] =
 };
 
 // 0xFDE8
-struct ActorSpawnData d_course_luigi_raceway_item_box_spawn[] = {
+struct ActorSpawnData d_course_luigi_raceway_item_box_spawns[] = {
     {{ -183, -50, -2076 }, { 0 }},
     {{ -169, -50, -2078 }, { 0 }},
     {{ -151, -50, -2079 }, { 0 }},

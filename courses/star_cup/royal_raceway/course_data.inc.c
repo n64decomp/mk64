@@ -7347,7 +7347,7 @@ Vtx d_course_royal_raceway_tree_model[] = {
     {{{ 0, -10, 0 }, 0, { 512, 2076 }, {0xFF, 0xFE, 0xFE, 0xFF }}},
 };
 
-Gfx d_course_royal_raceway_dl_D4A0[] =
+Gfx d_course_royal_raceway_dl_tree[] =
 {
     gsSPClearGeometryMode(G_LIGHTING),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
@@ -7372,7 +7372,7 @@ Vtx d_royal_raceway_peaches_castle_tree_model[] = {
     {{{ 0, -10, 0 }, 0, { 512, 2085 }, {0xFF, 0xFE, 0xFE, 0xFF }}},
 };
 
-Gfx d_course_royal_raceway_dl_D578[] =
+Gfx d_course_royal_raceway_dl_castle_tree[] =
 {
     gsSPClearGeometryMode(G_LIGHTING),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
@@ -7402,7 +7402,7 @@ Vtx d_course_royal_raceway_piranha_plant_model[] = {
     {{{ 15, 30, 0 }, 0, { 2048, 0 }, {0xFF, 0xFF, 0xFE, 0xFF }}},
 };
 
-Gfx d_course_royal_raceway_dl_D858[] =
+Gfx d_course_royal_raceway_dl_piranha_plant[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
@@ -7514,7 +7514,7 @@ struct ActorSpawnData d_course_royal_raceway_tree_spawn[] = {
     {{ -32768, 0, 0 }, { 0 }},
 };
 
-struct ActorSpawnData d_course_royal_raceway_item_box_spawn[] = {
+struct ActorSpawnData d_course_royal_raceway_item_box_spawns[] = {
     {{ -314, 2, -2006 }, { 0 }},
     {{ -290, 3, -2016 }, { 0 }},
     {{ -241, 5, -2057 }, { 0 }},

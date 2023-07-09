@@ -9,14 +9,14 @@ glabel func_80082A4C
 /* 08364C 80082A4C 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 083650 80082A50 AFBF0024 */  sw    $ra, 0x24($sp)
 /* 083654 80082A54 AFB0001C */  sw    $s0, 0x1c($sp)
-/* 083658 80082A58 3C050601 */  lui   $a1, %hi(gTLUTCrab) # $a1, 0x601
-/* 08365C 80082A5C 3C060601 */  lui   $a2, %hi(D_0600D828) # $a2, 0x601
+/* 083658 80082A58 3C050601 */  lui   $a1, %hi(d_course_koopa_troopa_beach_crab_tlut) # $a1, 0x601
+/* 08365C 80082A5C 3C060601 */  lui   $a2, %hi(d_course_koopa_troopa_beach_crab_frames) # $a2, 0x601
 /* 083660 80082A60 240E0040 */  li    $t6, 64
 /* 083664 80082A64 00808025 */  move  $s0, $a0
 /* 083668 80082A68 AFB10020 */  sw    $s1, 0x20($sp)
 /* 08366C 80082A6C AFAE0010 */  sw    $t6, 0x10($sp)
-/* 083670 80082A70 24C6D828 */  addiu $a2, %lo(D_0600D828) # addiu $a2, $a2, -0x27d8
-/* 083674 80082A74 24A5D628 */  addiu $a1, %lo(gTLUTCrab) # addiu $a1, $a1, -0x29d8
+/* 083670 80082A70 24C6D828 */  addiu $a2, %lo(d_course_koopa_troopa_beach_crab_frames) # addiu $a2, $a2, -0x27d8
+/* 083674 80082A74 24A5D628 */  addiu $a1, %lo(d_course_koopa_troopa_beach_crab_tlut) # addiu $a1, $a1, -0x29d8
 /* 083678 80082A78 0C01CD11 */  jal   func_80073444
 /* 08367C 80082A7C 24070040 */   li    $a3, 64
 /* 083680 80082A80 001078C0 */  sll   $t7, $s0, 3

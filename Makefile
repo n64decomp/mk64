@@ -403,7 +403,6 @@ $(BUILD_DIR)/textures/%.mio0: $(BUILD_DIR)/textures/%
 	$(MIO0TOOL) -c $< $@
 
 ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name "*.mk")
-ASSET_DIRECTORIES :=
 
 $(foreach inc,$(ASSET_INCLUDES),$(eval include $(inc)))
 
