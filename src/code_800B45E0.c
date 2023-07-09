@@ -738,14 +738,14 @@ s32 controller_pak_1_status(void) {
     } 
     
     if (!gControllerPak1State) {
-        s32 error_code;
+        s32 errorCode;
         if (check_for_controller_pak(CONTROLLER_1) == NO_PAK) {
             return PFS_NO_PAK_INSERTED;
         }
-        error_code = osPfsInit(&gSIEventMesgQueue, &gControllerPak1FileHandle, CONTROLLER_1);
+        errorCode = osPfsInit(&gSIEventMesgQueue, &gControllerPak1FileHandle, CONTROLLER_1);
 
-        if (error_code) {
-            switch(error_code) {
+        if (errorCode) {
+            switch(errorCode) {
                 case PFS_ERR_NOPACK:
                 case PFS_ERR_DEVICE:
                     return PFS_NO_PAK_INSERTED;
@@ -781,9 +781,9 @@ s32 controller_pak_1_status(void) {
 
 // gives status info about controller pak insterted in controller 2
 s32 controller_pak_2_status(void) {   
-    s32 state_borrow = sControllerPak2State;
+    s32 stateBorrow = sControllerPak2State;
     
-    if (state_borrow) {
+    if (stateBorrow) {
         switch (osPfsFindFile(&gControllerPak2FileHandle, gCompanyCode, gGameCode, gGameName, gExtCode, &gControllerPak2FileNote)) {
         	case PFS_NO_ERROR:
                 return PFS_NO_ERROR;  
@@ -792,18 +792,18 @@ s32 controller_pak_2_status(void) {
         	default:
         	case PFS_ERR_NEW_PACK:
                 sControllerPak2State = BAD;
-                state_borrow = BAD;
+                stateBorrow = BAD;
         }
     }
-    if (!state_borrow) {
-        s32 error_code;
+    if (!stateBorrow) {
+        s32 errorCode;
         if (check_for_controller_pak(CONTROLLER_2) == NO_PAK) {
             return PFS_NO_PAK_INSERTED;
         }
             
-        error_code = osPfsInit(&gSIEventMesgQueue, &gControllerPak2FileHandle, CONTROLLER_2);
-        if (error_code) {
-            switch (error_code) {
+        errorCode = osPfsInit(&gSIEventMesgQueue, &gControllerPak2FileHandle, CONTROLLER_2);
+        if (errorCode) {
+            switch (errorCode) {
             	case PFS_ERR_NOPACK:
             	case PFS_ERR_DEVICE:
                 	return PFS_NO_PAK_INSERTED;
@@ -830,13 +830,13 @@ s32 controller_pak_2_status(void) {
 }
 
 s32 func_800B5F30(void) {
-    s32 error_code;
+    s32 errorCode;
 
     if (gControllerPak1State) {
         return PFS_PAK_STATE_OK;
     }
     if (check_for_controller_pak(CONTROLLER_1) != NO_PAK) {
-        error_code = osPfsInit(&gSIEventMesgQueue, &gControllerPak1FileHandle, CONTROLLER_1);
+        errorCode = osPfsInit(&gSIEventMesgQueue, &gControllerPak1FileHandle, CONTROLLER_1);
         if (osPfsNumFiles(&gControllerPak1FileHandle, &gControllerPak1NumFilesUsed, &gControllerPak1MaxWriteableFiles) != PFS_NO_ERROR) {
             gControllerPak1State = BAD;
             return PFS_NUM_FILES_ERROR;
@@ -846,26 +846,26 @@ s32 func_800B5F30(void) {
             return PFS_FREE_BLOCKS_ERROR;
         }
         gControllerPak1NumPagesFree = gControllerPak1NumPagesFree >> 8;
-        if (error_code == PFS_NO_ERROR) {
+        if (errorCode == PFS_NO_ERROR) {
             gControllerPak1State = OK;
         }
-        return error_code;
+        return errorCode;
     }
     return PAK_NOT_INSERTED;
 }
 
 s32 func_800B6014(void) {
-    s32 error_code;
+    s32 errorCode;
 
     if (sControllerPak2State) {
         return PFS_PAK_STATE_OK;
     }
     if (check_for_controller_pak(CONTROLLER_2) != NO_PAK) {
-        error_code = osPfsInit(&gSIEventMesgQueue, &gControllerPak2FileHandle, CONTROLLER_2);
-        if (error_code == PFS_NO_ERROR) {
+        errorCode = osPfsInit(&gSIEventMesgQueue, &gControllerPak2FileHandle, CONTROLLER_2);
+        if (errorCode == PFS_NO_ERROR) {
             sControllerPak2State = OK;
         }
-        return error_code;
+        return errorCode;
     }
     return PAK_NOT_INSERTED;
 }
