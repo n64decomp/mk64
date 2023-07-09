@@ -114,7 +114,7 @@ extern s32         D_8018EB38[16];
 extern s32         gControllerPak1NumFilesUsed;
 extern s32         gControllerPak1MaxWriteableFiles;
 extern s32         gControllerPak1FileNote; // osPfs file_no receiver/out param
-extern s32         gControllerPak2FileNo;
+extern s32         gControllerPak2FileNote;
 extern SaveData    D_8018EB90;
 extern u8          D_8018ED11;
 extern u8          D_8018ED12;

@@ -47,7 +47,7 @@ glabel gControllerPak1NumPagesFree
 glabel gControllerPak1FileNote
 .skip 4
 
-glabel gControllerPak2FileNo
+glabel gControllerPak2FileNote
 .skip 8
 
 glabel D_8018EB90

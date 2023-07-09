@@ -784,7 +784,7 @@ s32 controller_pak_2_status(void) {
     s32 state_borrow = sControllerPak2State;
     
     if (state_borrow) {
-        switch (osPfsFindFile(&gControllerPak2FileHandle, gCompanyCode, gGameCode, gGameName, gExtCode, &gControllerPak2FileNo)) {
+        switch (osPfsFindFile(&gControllerPak2FileHandle, gCompanyCode, gGameCode, gGameName, gExtCode, &gControllerPak2FileNote)) {
         	case PFS_NO_ERROR:
                 return PFS_NO_ERROR;  
         	case PFS_ERR_INVALID:
@@ -817,7 +817,7 @@ s32 controller_pak_2_status(void) {
 
         sControllerPak2State = OK;
             
-        switch (osPfsFindFile(&gControllerPak2FileHandle, gCompanyCode, gGameCode, gGameName, gExtCode, &gControllerPak2FileNo)) {
+        switch (osPfsFindFile(&gControllerPak2FileHandle, gCompanyCode, gGameCode, gGameName, gExtCode, &gControllerPak2FileNote)) {
         case PFS_NO_ERROR:
             return PFS_NO_ERROR;
         case PFS_ERR_INVALID:
@@ -1102,7 +1102,7 @@ s32 func_800B65F4(s32 arg0, s32 arg1) {
     if ((arg0 != 0) && (arg0 != 1)) {
         return -1;
     }
-    temp_v0 = osPfsReadWriteFile(&gControllerPak2FileHandle, gControllerPak2FileNo, 0U, (arg0 * 0x3C00) + 0x100, 0x00003C00, (u8 *) D_800DC714);
+    temp_v0 = osPfsReadWriteFile(&gControllerPak2FileHandle, gControllerPak2FileNote, 0U, (arg0 * 0x3C00) + 0x100, 0x00003C00, (u8 *) D_800DC714);
     sp34 = temp_v0;
     if (temp_v0 == 0) {
         temp_s3 = &D_8018D9C0[arg0];
@@ -1149,7 +1149,7 @@ void func_800B6798(void) {
     
     tmp = (u8*) D_8018D9C0;
 
-    osPfsReadWriteFile(&gControllerPak2FileHandle, gControllerPak2FileNo, PFS_READ, 0, 0x100 /*  2*sizeof(struct_8018EE10_entry) ? */, tmp);
+    osPfsReadWriteFile(&gControllerPak2FileHandle, gControllerPak2FileNote, PFS_READ, 0, 0x100 /*  2*sizeof(struct_8018EE10_entry) ? */, tmp);
 
     for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
         // if (D_8018D9C0[temp_s0]->checksum != func_800B68F4(temp_s0)) {
