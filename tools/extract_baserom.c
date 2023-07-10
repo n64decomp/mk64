@@ -46,11 +46,20 @@ int main() {
     // Close the input file
     fclose(input);
 
+    // Create a buffer to hold the decompressed data
+    unsigned char* decompressed_buffer = malloc(BUFFER_SIZE);
+    if (decompressed_buffer == NULL) {
+        printf("Error: Failed to allocate memory for the decompressed buffer.\n");
+        free(file_buffer);
+        return 1;
+    }
+
     // Create a list to store the offset mappings
     OffsetMapping* offset_mappings = malloc(sizeof(OffsetMapping) * file_size);
     if (offset_mappings == NULL) {
         printf("Error: Failed to allocate memory for the offset mappings.\n");
         free(file_buffer);
+        free(decompressed_buffer);
         return 1;
     }
 
@@ -65,8 +74,7 @@ int main() {
 
             // Perform MIO0 decoding
             unsigned int decompressed_size = 0;
-            // Your mio0_decode implementation goes here
-            // ...
+            mio0_decode(&file_buffer[i], &decompressed_buffer[new_offset], &decompressed_size);
 
             // Update offsets
             new_offset += decompressed_size;
@@ -83,9 +91,15 @@ int main() {
         return 1;
     }
 
-    // Write the decompressed data to the output file
-    // Your code to write the decompressed data goes here
-    // ...
+    size_t bytes_written = fwrite(decompressed_buffer, 1, new_offset, output);
+    if (bytes_written != new_offset) {
+        printf("Error: Failed to write decompressed data to the output file.");
+        fclose(output);
+        free(file_buffer);
+        free(decompressed_buffer);
+        free(offset_mappings);
+        return 1;
+    }
 
     // Close the output file
     fclose(output);
