@@ -1,22 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "utils.h"
 #include "libmio0.h"
 
+#define ALIGN16(val) (((val) + 0xF) & ~0xF)
+#define ALIGNMENT 0x10
 
-#define BUFFER_SIZE (20 * 1024 * 1024) // 20MB
+typedef signed char            s8;
+typedef unsigned char          u8;
+typedef signed short int       s16;
+typedef unsigned short int     u16;
+typedef signed int             s32;
+typedef unsigned int           u32;
+
 
 typedef struct {
-    unsigned int old_offset;
-    unsigned int new_offset;
+    u32 old_offset;
+    u32 new_offset;
 } OffsetMapping;
+
 
 int main() {
     const char* input_file = "../baserom.us.z64";
     const char* output_file = "decompressed_data.bin";
     const char* text_file = "offset_mappings.txt";
     const char* search_string = "MIO0";
-    const unsigned int alignment = 0x10;
 
     // Open the input file
     FILE* input = fopen(input_file, "rb");
@@ -27,7 +36,7 @@ int main() {
 
     // Get the file size
     fseek(input, 0, SEEK_END);
-    unsigned int file_size = ftell(input);
+    u32 file_size = ftell(input);
     rewind(input);
 
     // Allocate a buffer to hold the entire file
@@ -50,8 +59,27 @@ int main() {
     // Close the input file
     fclose(input);
 
+    // Count mio0 files and calculate size of decompress buffer
+    u32 i = 0;
+    u32 iter;
+    u32 decompress_size = 0;
+    while(i < file_size) {
+        if (strncmp((char*)&file_buffer[i], search_string, strlen(search_string)) == 0) {
+            decompress_size += ALIGN16(read_u32_be(&file_buffer[i + 4]));
+            iter++;
+        }
+        i += ALIGNMENT;
+    }
+    printf("decomp_size: %d", decompress_size);
+    if (decompress_size == 0) {
+        printf("No mio0 files found");
+        free(file_buffer);
+        return 1;
+    }
+
+    // Calculate the size needed for the buffer with alignment
     // Create a buffer to hold the decompressed data
-    unsigned char* decompressed_buffer = malloc(BUFFER_SIZE);
+    unsigned char* decompressed_buffer = malloc(ALIGN16(decompress_size));
     if (decompressed_buffer == NULL) {
         printf("Error: Failed to allocate memory for the decompressed buffer.\n");
         free(file_buffer);
@@ -59,7 +87,7 @@ int main() {
     }
 
     // Create a list to store the offset mappings
-    OffsetMapping* offset_mappings = malloc(sizeof(OffsetMapping) * file_size);
+    OffsetMapping* offset_mappings = malloc(sizeof(OffsetMapping) * iter);
     if (offset_mappings == NULL) {
         printf("Error: Failed to allocate memory for the offset mappings.\n");
         free(file_buffer);
@@ -68,20 +96,19 @@ int main() {
     }
 
     // Find and decompress MIO0 sections
-    unsigned int new_offset = 0;
-    unsigned int num_mappings = 0;
-
-    for (unsigned int i = 0; i < file_size; i += alignment) {
+    u32 new_offset = 0;
+    u32 num_mappings = 0;
+    for (i = 0; i < file_size; i += ALIGNMENT) {
         if (strncmp((char*)&file_buffer[i], search_string, strlen(search_string)) == 0) {
             offset_mappings[num_mappings].old_offset = i;
             offset_mappings[num_mappings].new_offset = new_offset;
 
             // Perform MIO0 decoding
-            unsigned int decompressed_size = 0;
+            u32 decompressed_size = 0;
             mio0_decode(&file_buffer[i], &decompressed_buffer[new_offset], &decompressed_size);
 
             // Update offsets
-            new_offset += decompressed_size;
+            new_offset += ALIGN16(decompressed_size);
             num_mappings++;
         }
     }
@@ -95,6 +122,7 @@ int main() {
         return 1;
     }
 
+    // Write the output file
     size_t bytes_written = fwrite(decompressed_buffer, 1, new_offset, output);
     if (bytes_written != new_offset) {
         printf("Error: Failed to write decompressed data to the output file.");
@@ -120,7 +148,7 @@ int main() {
     }
 
     // Write the offset mappings to the text file
-    for (unsigned int i = 0; i < num_mappings; i++) {
+    for (u32 i = 0; i < num_mappings; i++) {
         fprintf(text_output, "0x%X\t0x%X\n", offset_mappings[i].old_offset, offset_mappings[i].new_offset);
     }
 
