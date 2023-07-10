@@ -1,28 +1,69 @@
 package main
 
+import (
+    "fmt"
+    "io"
+    "log"
+    "strings"
+    "encoding/binary"
+)
 
 type Vtx struct {
-  ob[3] s16 /* x, y, z */
-  flag  u16
-  tc[2] s16 /* texture coord */
-  cn[4] u8  /* colour & alpha */
+  Ob [3]int16 /* x, y, z */
+  Flag  uint16
+  Tc [2]int16 /* texture coord */
+  Cn [4]uint8  /* colour & alpha */
 }
 
-func generate_model(textBuffer *string, offset int, length int) {
+func generate_model(textBuffer *strings.Builder, offset int, length int) {
+    textBuffer.WriteString("\nVtx some_var[] = {\n")
 
-    for _, range in length {
-
-        *textBuffer += string("")
-
+    
+    _, err := rom.Seek(int64(offset), io.SeekStart)
+    if err != nil {
+        log.Fatal("Failed to seek during model generation: ", err)
     }
+    
+    
+    for i := 0; i < length; i++ {
+        // Read the binary data into a Vtx struct
+        var vtx Vtx
+        err = binary.Read(rom, binary.BigEndian, &vtx)
+        if err != nil {
+            log.Fatal("Failed to read binary data:", err)
+        }
+        // Access the values in the Vtx struct
+        x := fmt.Sprint(vtx.Ob[0])
+        y := fmt.Sprint(vtx.Ob[1])
+        z := fmt.Sprint(vtx.Ob[2])
+        flag := fmt.Sprint(vtx.Flag)
+        tc1 := fmt.Sprint(vtx.Tc[0])
+        tc2 := fmt.Sprint(vtx.Tc[1])
+        cn1 := fmt.Sprintf("0x%02X", vtx.Cn[0])
+        cn2 := fmt.Sprintf("0x%02X", vtx.Cn[1])
+        cn3 := fmt.Sprintf("0x%02X", vtx.Cn[2])
+        cn4 := fmt.Sprintf("0x%02X", vtx.Cn[3])
+        textBuffer.WriteString(
+            "    {{ "+ x +", "+ y +", "+ z +"}, "+ flag +", { "+ tc1 +","+ tc2 +"}, { "+ cn1 +", "+ cn2 +", "+ cn3 +", "+ cn4 + "}},")
 
+        if (i != length - 1) {
+            textBuffer.WriteString("\n")
+        }
 
-    *textBuffer += string("some vertex data\n")
+        _, err := rom.Seek(int64(offset + (i * 14)), io.SeekStart)
+        if err != nil {
+            log.Fatal("Failed to seek during model generation: ", err)
+        }
+    }
+    // {{{ -97, -56, 398 }, 0, { 11, 1360 }, {0xF8, 0xF8, 0x76, 0xFF }}},
+    //*textBuffer += fmt.Sprint(n)
+
+    textBuffer.WriteString("\n};\n")
 }
 
-func generate_gfx(textBuffer *string, offset int) {
+func generate_gfx(textBuffer *strings.Builder, offset int) {
 
-    *textBuffer += string("some gfx\n")
+    textBuffer.WriteString("some gfx\n")
     return;
 
 	// Call the CLI program and capture its output
