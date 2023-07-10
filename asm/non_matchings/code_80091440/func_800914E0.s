@@ -1,3 +1,13 @@
+.section .data
+
+glabel D_800E7080
+.float 0.0, -20.0, 150.0
+
+glabel D_800E708C
+.float 0.0, -6.0, 4.0
+
+.section .text
+
 glabel func_800914E0
 /* 0920E0 800914E0 27BDFF90 */  addiu $sp, $sp, -0x70
 /* 0920E4 800914E4 3C0F800E */  lui   $t7, %hi(D_800E7080) # $t7, 0x800e

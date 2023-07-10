@@ -19,6 +19,7 @@
 #include "race_logic.h"
 #include "code_802AAA70.h"
 #include "code_8008C1D0.h"
+#include "code_80091440.h"
 
 extern s32 D_8018D1F0;
 

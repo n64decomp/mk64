@@ -111,8 +111,6 @@ void func_80090868(Player*);
 s32  func_800910E4(Player*);
 void func_800911B4(Player*, s8);
 void func_80091298(Player*, s8);
-void func_80091440(s8);
-void func_800914A0();
 
 // code_80005FD0
 void func_800098FC(u32, Player*);
