@@ -7,6 +7,7 @@
 /* Function Prototypes */
 
 s32 get_player_index_for_player(Player*);
+void func_80027EDC(Player*, s8);
 void func_80028F70();
 void func_80029060();
 void func_80029150();
@@ -36,6 +37,7 @@ void func_8002B8A4(Player*, Player*);
 void func_8002BD58(Player*);
 void func_8002C11C(Player*);
 void func_8002C17C(Player*, s8);
+void func_8002C4F8(Player*, s8);
 void func_8002D268(Player*, Camera*, s8, s8);
 void func_8002E4C4(Player*);
 void func_8002FCA8(Player*, s8);

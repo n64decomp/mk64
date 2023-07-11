@@ -243,9 +243,7 @@ SECTIONS
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
       BUILD_DIR/src/camera.o(.data);
       BUILD_DIR/src/code_8001F980.o(.data);
-      BUILD_DIR/data/data_0DD0A0_1_1.o(.data);
       BUILD_DIR/src/kart_dma.o(.data);
-      BUILD_DIR/data/data_0DD0A0_1_2.o(.data);
       BUILD_DIR/src/kart_attributes.inc.o(.data);
       BUILD_DIR/src/code_80027D00.o(.data);
       BUILD_DIR/src/spawn_players.o(.data);
@@ -280,7 +278,7 @@ SECTIONS
       BUILD_DIR/src/os/_Litob.o(.data);
       BUILD_DIR/src/main.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
-      BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
+      BUILD_DIR/src/code_80005FD0.o(.rodata);
       BUILD_DIR/src/camera.o(.rodata);
       BUILD_DIR/src/code_8001F980.o(.rodata);
       BUILD_DIR/src/code_80027D00.o(.rodata);

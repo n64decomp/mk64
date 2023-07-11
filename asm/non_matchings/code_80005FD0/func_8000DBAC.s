@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800ED004
+.float 0.01
+
+.section .text
+
 glabel func_8000DBAC
 /* 00E7AC 8000DBAC 27BDFF60 */  addiu $sp, $sp, -0xa0
 /* 00E7B0 8000DBB0 AFBF0024 */  sw    $ra, 0x24($sp)
