@@ -1,3 +1,16 @@
+.section .late_rodata
+
+glabel D_800ECFCC
+.float 0.2
+
+glabel D_800ECFD0
+.float 0.2
+
+glabel D_800ECFD4
+.float 0.2
+
+.section .text
+
 glabel func_8000B140
 /* 00BD40 8000B140 000478C0 */  sll   $t7, $a0, 3
 /* 00BD44 8000B144 01E47823 */  subu  $t7, $t7, $a0

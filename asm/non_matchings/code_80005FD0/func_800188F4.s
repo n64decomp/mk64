@@ -1,3 +1,48 @@
+.section .late_rodata
+
+glabel D_800ED2A8
+.double 0.2
+
+glabel D_800ED2B0
+.double 0.7
+
+glabel D_800ED2B8
+.double 0.01
+
+glabel D_800ED2C0
+.double -0.9
+
+glabel D_800ED2C8
+.float -0.9
+.word 0x00000000
+
+glabel D_800ED2D0
+.double 0.8
+
+glabel D_800ED2D8
+.double 0.2
+
+glabel D_800ED2E0
+.double 1.3
+
+glabel D_800ED2E8
+.double 0.01
+
+glabel D_800ED2F0
+.double 0.9
+
+glabel D_800ED2F8
+.float 0.9
+.word 0x00000000
+
+glabel D_800ED300
+.double 1.2
+
+glabel D_800ED308
+.double 3000.0
+
+.section .text
+
 glabel func_800188F4
 /* 0194F4 800188F4 27BDFF48 */  addiu $sp, $sp, -0xb8
 /* 0194F8 800188F8 3C0E800E */  lui   $t6, %hi(gPlayerOne)

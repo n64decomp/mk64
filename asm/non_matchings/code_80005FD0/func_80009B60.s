@@ -1,3 +1,28 @@
+.section .late_rodata
+
+glabel D_800ECFB0
+.float 4.3
+
+glabel D_800ECFB4
+.float 8.33333333
+
+glabel D_800ECFB8
+.float 0.9
+
+glabel D_800ECFBC
+.float -0.9
+
+glabel D_800ECFC0
+.float 0.9
+
+glabel D_800ECFC4
+.float -0.9
+
+glabel D_800ECFC8
+.float 3.33333333
+
+.section .text
+
 glabel func_80009B60
 /* 00A760 80009B60 3C0E800E */  lui   $t6, %hi(gCurrentCourseId)
 /* 00A764 80009B64 85CEC5A0 */  lh    $t6, %lo(gCurrentCourseId)($t6)
