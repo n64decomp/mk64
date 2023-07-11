@@ -144,8 +144,6 @@ extern s32 D_80163488;
 
 extern s32 D_8016337C;
 extern s32 gModeSelection;
-extern f32 D_800ECFD8;// = 1.1f;
-extern f32 D_800ECFDC;// = -1.1f;
 extern struct unk_41F8 D_801641F8[];
 extern s16 D_80164670;
 extern s16 D_80164672;

@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800ECFF8
+.float 250000
+
+.section .text
+
 glabel func_8000D100
 /* 00DD00 8000D100 00077400 */  sll   $t6, $a3, 0x10
 /* 00DD04 8000D104 000E7C03 */  sra   $t7, $t6, 0x10

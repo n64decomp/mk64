@@ -1,3 +1,17 @@
+.section .late_rodata
+
+# This one doesn't appear to be used in anywhere?
+glabel D_800ED280
+.double 10000.0
+
+glabel D_800ED288
+.double 0.1
+
+glabel D_800ED290
+.double 0.1
+
+.section .text
+
 glabel func_800178F4
 /* 0184F4 800178F4 27BDFF60 */  addiu $sp, $sp, -0xa0
 /* 0184F8 800178F8 AFBF0024 */  sw    $ra, 0x24($sp)
