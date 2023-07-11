@@ -7,7 +7,7 @@
 
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
 #define ALIGNMENT 0x10
-#define MEMORY (3 * 1024 * 1024) // 3MB
+#define MEMORY (20 * 1024 * 1024) // 3MB
 
 typedef signed char            s8;
 typedef unsigned char          u8;
@@ -83,6 +83,8 @@ int main() {
     // Find and decompress MIO0 sections
     u32 new_offset = 0;
     u32 num_mappings = 0;
+    u32 uncompressedSizeReal = 0;
+    u32 uncompressedSize = 0;
     for (u32 i = 0; i < baseromSize; i += ALIGNMENT) {
         if (strncmp((char*)&baseromBuffer[i], search_string, strlen(search_string)) == 0) {
             offsetMappings[num_mappings].old_offset = i;
@@ -90,13 +92,27 @@ int main() {
 
             // Perform MIO0 decoding
             u32 decompressed_size = 0;
-            mio0_decode(&baseromBuffer[i], &extractBuffer[new_offset], &decompressed_size);
+            uncompressedSizeReal += mio0_decode(&baseromBuffer[i], &extractBuffer[new_offset], &decompressed_size);
+
+
+            //u/ncompressedSizeReal += *(u32 *)(&extractBuffer[new_offset] - decompressed_size);
+
+            //printf("currOffset: 0x%X\n", i);
+            //printf("endOffset : 0x%X\n", decompressed_size);
+
+            //uncompressedSize     += ALIGN16(read_u32_be(&baseromBuffer[i + 4]));
+            //printf("size: 0x%X\n", uncompressedSize);
+             printf("real: 0x%X\n", ALIGN16(uncompressedSizeReal));
 
             // Update offsets
-            new_offset += ALIGN16(decompressed_size);
+            new_offset += ALIGN16(uncompressedSizeReal);
             num_mappings++;
         }
     }
+
+    printf("\nsizeReal: %d\n", uncompressedSizeReal);
+    printf("\nsizeOffs: %d\n", new_offset);
+    //printf("size    : %d\n", uncompressedSize);
 
     // Open the output file
     FILE* output = fopen(output_file, "wb");
@@ -108,8 +124,8 @@ int main() {
     }
 
     // Write the output file
-    size_t bytes_written = fwrite(extractBuffer, 1, new_offset, output);
-    if (bytes_written != new_offset) {
+    size_t bytes_written = fwrite(extractBuffer, 1, uncompressedSizeReal, output);
+    if (bytes_written != uncompressedSizeReal) {
         printf("Error: Failed to write decompressed data to the output file.");
         fclose(output);
         free(baseromBuffer);
