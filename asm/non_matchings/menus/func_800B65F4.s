@@ -20,12 +20,12 @@ glabel func_800B65F4
 /* 0B7234 800B6634 8DEFC714 */  lw    $t7, %lo(D_800DC714)($t7)
 /* 0B7238 800B6638 00F23823 */  subu  $a3, $a3, $s2
 /* 0B723C 800B663C 00073A80 */  sll   $a3, $a3, 0xa
-/* 0B7240 800B6640 3C048019 */  lui   $a0, %hi(D_8018E8D0) # $a0, 0x8019
-/* 0B7244 800B6644 3C058019 */  lui   $a1, %hi(D_8018EB88) # $a1, 0x8019
+/* 0B7240 800B6640 3C048019 */  lui   $a0, %hi(gControllerPak2FileHandle) # $a0, 0x8019
+/* 0B7244 800B6644 3C058019 */  lui   $a1, %hi(gControllerPak2FileNote) # $a1, 0x8019
 /* 0B7248 800B6648 240E3C00 */  li    $t6, 15360
 /* 0B724C 800B664C AFAE0010 */  sw    $t6, 0x10($sp)
-/* 0B7250 800B6650 8CA5EB88 */  lw    $a1, %lo(D_8018EB88)($a1)
-/* 0B7254 800B6654 2484E8D0 */  addiu $a0, %lo(D_8018E8D0) # addiu $a0, $a0, -0x1730
+/* 0B7250 800B6650 8CA5EB88 */  lw    $a1, %lo(gControllerPak2FileNote)($a1)
+/* 0B7254 800B6654 2484E8D0 */  addiu $a0, %lo(gControllerPak2FileHandle) # addiu $a0, $a0, -0x1730
 /* 0B7258 800B6658 24E70100 */  addiu $a3, $a3, 0x100
 /* 0B725C 800B665C 00003025 */  move  $a2, $zero
 /* 0B7260 800B6660 0C0340F3 */  jal   osPfsReadWriteFile

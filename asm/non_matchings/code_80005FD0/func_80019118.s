@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800ED310
+.double 3000.0
+
+.section .text
+
 glabel func_80019118
 /* 019D18 80019118 00044840 */  sll   $t1, $a0, 1
 /* 019D1C 8001911C 3C0A8016 */  lui   $t2, %hi(gNearestWaypointByPlayerId) # 0x8016

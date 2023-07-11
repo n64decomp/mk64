@@ -1,6 +1,6 @@
 glabel func_800B6014
-/* 0B6C14 800B6014 3C0E800F */  lui   $t6, %hi(D_800E86FC) # $t6, 0x800f
-/* 0B6C18 800B6018 81CE86FC */  lb    $t6, %lo(D_800E86FC)($t6)
+/* 0B6C14 800B6014 3C0E800F */  lui   $t6, %hi(sControllerPak2State) # $t6, 0x800f
+/* 0B6C18 800B6018 81CE86FC */  lb    $t6, %lo(sControllerPak2State)($t6)
 /* 0B6C1C 800B601C 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 0B6C20 800B6020 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 0B6C24 800B6024 11C00003 */  beqz  $t6, .L800B6034
@@ -20,8 +20,8 @@ glabel func_800B6014
 /* 0B6C58 800B6058 14400004 */  bnez  $v0, .L800B606C
 /* 0B6C5C 800B605C 00401825 */   move  $v1, $v0
 /* 0B6C60 800B6060 240F0001 */  li    $t7, 1
-/* 0B6C64 800B6064 3C01800F */  lui   $at, %hi(D_800E86FC) # $at, 0x800f
-/* 0B6C68 800B6068 A02F86FC */  sb    $t7, %lo(D_800E86FC)($at)
+/* 0B6C64 800B6064 3C01800F */  lui   $at, %hi(sControllerPak2State) # $at, 0x800f
+/* 0B6C68 800B6068 A02F86FC */  sb    $t7, %lo(sControllerPak2State)($at)
 .L800B606C:
 /* 0B6C6C 800B606C 10000002 */  b     .L800B6078
 /* 0B6C70 800B6070 00601025 */   move  $v0, $v1

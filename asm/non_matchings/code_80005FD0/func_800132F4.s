@@ -1,3 +1,11 @@
+.section .late_rodata
+
+glabel D_800ED128
+.float 1.66666666
+.word 0x00000000
+
+.section .text
+
 glabel func_800132F4
 /* 013EF4 800132F4 3C058016 */  lui   $a1, %hi(D_801637C0) # $a1, 0x8016
 /* 013EF8 800132F8 3C01800F */  lui   $at, %hi(D_800ED128) # $at, 0x800f
