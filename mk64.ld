@@ -274,7 +274,7 @@ SECTIONS
       BUILD_DIR/src/os/_Litob.o(.data);
       BUILD_DIR/src/main.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
-      BUILD_DIR/data/data_0DD0A0_3.o(.rodata);
+      BUILD_DIR/src/code_80005FD0.o(.rodata);
       BUILD_DIR/src/camera.o(.rodata);
       BUILD_DIR/src/code_8001F980.o(.rodata);
       BUILD_DIR/src/code_80027D00.o(.rodata);

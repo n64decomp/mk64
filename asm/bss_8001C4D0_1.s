@@ -20,10 +20,10 @@ glabel D_8018E85C
 glabel gTextColor
 .skip 8
 
-glabel D_8018E868
+glabel gControllerPak1FileHandle
 .skip 104
 
-glabel D_8018E8D0
+glabel gControllerPak2FileHandle
 .skip 104
 
 glabel D_8018E938
@@ -35,19 +35,19 @@ glabel D_8018EB34
 glabel D_8018EB38
 .skip 64
 
-glabel D_8018EB78
+glabel gControllerPak1NumFilesUsed
 .skip 4
 
-glabel D_8018EB7C
+glabel gControllerPak1MaxWriteableFiles
 .skip 4
 
-glabel gControllerPakNumPagesFree
+glabel gControllerPak1NumPagesFree
 .skip 4
 
-glabel D_8018EB84
+glabel gControllerPak1FileNote
 .skip 4
 
-glabel D_8018EB88
+glabel gControllerPak2FileNote
 .skip 8
 
 glabel D_8018EB90

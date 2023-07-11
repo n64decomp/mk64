@@ -303,44 +303,44 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                     }
                     break;
                 case 0x17:
-                    switch(func_800B5DA4()) {
-                    case -1:
+                    switch(controller_pak_2_status()) {
+                    case PFS_INVALID_DATA:
                         D_8018EDEC = 0x2B;
                         play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                         return;
-                    case 0:
+                    case PFS_NO_ERROR:
                         func_800B6798();
-                        sp2C = controller_pak_status();
+                        sp2C = controller_pak_1_status();
                         switch (sp2C) {
-                        case -1:
+                        case PFS_INVALID_DATA:
                             D_8018EDEC = 0x46;
                             sp38->unk4 = 0;
                             play_sound2(SOUND_MENU_SELECT);
                             break;
-                        case 0:
+                        case PFS_NO_ERROR:
                             func_800B6708();
                             break;
-                        case 1:
+                        case PFS_NO_PAK_INSERTED:
                             D_8018EDEC = 0x34;
                             play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                             break;
-                        case 4:
+                        case PFS_FILE_OVERFLOW:
                             D_8018EDEC = 0x37;
                             play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                             break;
-                        case 2:
+                        case PFS_PAK_BAD_READ:
                         case 3:
                         default:
                             D_8018EDEC = 0x35;
                             play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                             break;
                         }
-                        if (sp2C == -1 && !sp30[0].ghostDataSaved && !sp30[1].ghostDataSaved) {
+                        if (sp2C == PFS_INVALID_DATA && !sp30[0].ghostDataSaved && !sp30[1].ghostDataSaved) {
                             D_8018EDEC = 0x2A;
                             play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                             return;
                         }
-                        if (sp2C == 0) {
+                        if (sp2C == PFS_NO_ERROR) {
                             if (sp30[0].ghostDataSaved) {
                                 D_8018EDEC = 0x28;
                                 play_sound2(SOUND_MENU_SELECT);
@@ -354,11 +354,11 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                         }
                         // else return?
                         return;
-                    case 1:
+                    case PFS_NO_PAK_INSERTED:
                         D_8018EDEC = 0x2C;
                         play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                         return;
-                    case 2:
+                    case PFS_PAK_BAD_READ:
                     default:
                         D_8018EDEC = 0x2D;
                         play_sound2(SOUND_MENU_FILE_NOT_FOUND);
@@ -567,8 +567,8 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
         }
         case 0x3B:
         {
-            res = func_800B5DA4();
-            if (res == 0) {
+            res = controller_pak_2_status();
+            if (res == PFS_NO_ERROR) {
                 res = func_800B65F4(sp38->unk20, sp38->unk1C);
             }
             if (res != 0) {
@@ -576,8 +576,8 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                 return;
             }
-            res = osPfsFindFile(&D_8018E868, D_800E86F0, D_800E86F4, (u8 *)D_800F2E64, (u8 *)D_800F2E74, &D_8018EB84);
-            if (res == 0) {
+            res = osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8 *)gGameName, (u8 *)gExtCode, &gControllerPak1FileNote);
+            if (res == PFS_NO_ERROR) {
                 res = func_800B6178(sp38->unk1C);
             }
             if (res != 0) {
@@ -894,7 +894,7 @@ void controller_pak_menu_act(struct Controller* controller, UNUSED u16 arg1) {
             if ((buttonAndStickPress & 0x9000) != 0) {
                 play_sound2(SOUND_MENU_SELECT);
                 func_8009E1C0();
-                D_800E86F8 = 0;
+                gControllerPak1State = BAD;
                 return;
             }
             if ((buttonAndStickPress & 0x300) != 0) {
@@ -983,13 +983,13 @@ void controller_pak_menu_act(struct Controller* controller, UNUSED u16 arg1) {
             selectedTableRow = D_800E86C4[gControllerPakSelectedTableRow + 2] - 1;
             osPfsState = &D_8018E938[selectedTableRow];
 
-            switch (osPfsDeleteFile(&D_8018E868, osPfsState->company_code, osPfsState->game_code, (u8 *)&osPfsState->game_name, (u8 *)&osPfsState->ext_name)) { 
+            switch (osPfsDeleteFile(&gControllerPak1FileHandle, osPfsState->company_code, osPfsState->game_code, (u8 *)&osPfsState->game_name, (u8 *)&osPfsState->ext_name)) { 
             default:                           
                 gControllerPakMenuSelection = CONTROLLER_PAK_MENU_ERASE_ERROR_NOT_ERASED;
                 return;
             case 0:
                 D_8018EB38[selectedTableRow] = -1;
-                gControllerPakNumPagesFree += (((osPfsState->file_size + 0xFF) >> 8) & 0xFF);
+                gControllerPak1NumPagesFree += (((osPfsState->file_size + 0xFF) >> 8) & 0xFF);
                 gControllerPakMenuSelection = CONTROLLER_PAK_MENU_TABLE_GAME_DATA;
                 return;
             case PFS_ERR_NOPACK:

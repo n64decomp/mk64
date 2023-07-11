@@ -1,3 +1,22 @@
+.section .late_rodata
+
+glabel D_800ED130
+.double 45.0
+
+glabel D_800ED138
+.double 180.0
+
+glabel D_800ED140
+.double 0.2
+
+glabel D_800ED148
+.double 0.04
+
+glabel D_800ED150
+.double 0.02
+
+.section .text
+
 glabel func_800133C4
 /* 013FC4 800133C4 27BDFF38 */  addiu $sp, $sp, -0xc8
 /* 013FC8 800133C8 3C0E8016 */  lui   $t6, %hi(D_801630FC) # $t6, 0x8016

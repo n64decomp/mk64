@@ -1,3 +1,34 @@
+.section .late_rodata
+
+glabel D_800ED4B4
+.float 19.166999817
+
+glabel D_800ED4B8
+.float -3202.475097656
+
+glabel D_800ED4BC
+.float -477.623992920
+
+glabel D_800ED4C0
+.float -3205.080078125
+
+glabel D_800ED4C4
+.float -462.851989746
+
+glabel D_800ED4C8
+.float -3199.870117188
+
+glabel D_800ED4CC
+.float -492.395996094
+
+glabel D_800ED4D0
+.float -2409.197021484
+
+glabel D_800ED4D4
+.float -355.253997803
+
+.section .text
+
 glabel func_8001C05C
 /* 01CC5C 8001C05C 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 01CC60 8001C060 AFBF0014 */  sw    $ra, 0x14($sp)

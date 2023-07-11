@@ -1,3 +1,16 @@
+.section .late_rodata
+
+glabel D_800ED1B8
+.double 90.0
+
+glabel D_800ED1C0
+.double 4.583333333333333
+
+glabel D_800ED1C8
+.double 2.9166666666666665
+
+.section .text
+
 glabel func_800147E0
 /* 0153E0 800147E0 3C0E800E */  lui   $t6, %hi(gCCSelection)
 /* 0153E4 800147E4 8DCEC548 */  lw    $t6, %lo(gCCSelection)($t6)

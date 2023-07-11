@@ -1,3 +1,24 @@
+.section .late_rodata
+
+glabel D_800ED100
+.float 0.42299348
+.word 0x00000000
+
+glabel D_800ED108
+.double 0.1
+
+glabel D_800ED110
+.float 0.72017353
+.word 0x00000000
+
+glabel D_800ED118
+.double 0.1
+
+glabel D_800ED120
+.double 0.01
+
+.section .text
+
 glabel func_80013054
 /* 013C54 80013054 3C048016 */  lui   $a0, %hi(D_801637B8) # $a0, 0x8016
 /* 013C58 80013058 248437B8 */  addiu $a0, %lo(D_801637B8) # addiu $a0, $a0, 0x37b8
