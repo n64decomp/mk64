@@ -82,19 +82,17 @@ int main() {
     }
 
     // Find and decompress MIO0 sections
-    u32 new_offset = 0;
     u32 num_mappings = 0;
     size_t totalUncompressed = 0;
     u32 compressedEndOffset;
     for (u32 i = 0; i < baseromSize; i += ALIGNMENT) {
         if (strncmp((char*)&baseromBuffer[i], search_string, strlen(search_string)) == 0) {
-            new_offset = totalUncompressed;
             offsetMappings[num_mappings].old_offset = i;
-            offsetMappings[num_mappings].new_offset = new_offset;
+            offsetMappings[num_mappings].new_offset = totalUncompressed;
 
             // Perform MIO0 decoding
             compressedEndOffset = 0;
-            totalUncompressed += mio0_decode(&baseromBuffer[i], &extractBuffer[new_offset], &compressedEndOffset);
+            totalUncompressed += mio0_decode(&baseromBuffer[i], &extractBuffer[totalUncompressed], &compressedEndOffset);
 
             // Update offsets
             num_mappings++;
