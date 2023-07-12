@@ -104,7 +104,7 @@ int main() {
         }
     }
     //printf("\nsizeOffs: %d\n", new_offset);
-    printf("Wrote: %d MB\n", totalUncompressed / 1024.0);
+    printf("Wrote: %zukb\n", totalUncompressed);
 
     // Open the output file
     FILE* output = fopen(output_file, "wb");
