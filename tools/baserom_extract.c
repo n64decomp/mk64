@@ -5,9 +5,10 @@
 #include "libmio0.h"
 #include "libtkmk00.h"
 
+#define ALIGN4(val) (((val) + 0x3) & ~0x3)
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
-#define ALIGNMENT 0x10
-#define MEMORY (20 * 1024 * 1024) // 3MB
+#define ALIGNMENT 0x4
+#define MEMORY (100 * 1024 * 1024) // 3MB
 
 typedef signed char            s8;
 typedef unsigned char          u8;
@@ -28,7 +29,7 @@ int main() {
     const char* text_file = "offset_mappings.txt";
     const char* search_string = "MIO0";
     const char* search_string2 = "TKMK00";
-    const s32 fileCount = 918;
+    const s32 fileCount = 3353 * 2;
 
     // Open the input file
     FILE* baserom = fopen(input_file, "rb");
@@ -84,33 +85,37 @@ int main() {
     u32 new_offset = 0;
     u32 num_mappings = 0;
     u32 uncompressedSizeReal = 0;
-    u32 uncompressedSize = 0;
+    u32 compressedEndOffset;
+    //u32 uncompressedSize = 0;
     for (u32 i = 0; i < baseromSize; i += ALIGNMENT) {
         if (strncmp((char*)&baseromBuffer[i], search_string, strlen(search_string)) == 0) {
+printf("\nbi: 0x%X\n", new_offset);
+            new_offset = uncompressedSizeReal;
+printf("ai: 0x%X\n", new_offset);
             offsetMappings[num_mappings].old_offset = i;
             offsetMappings[num_mappings].new_offset = new_offset;
 
             // Perform MIO0 decoding
-            u32 decompressed_size = 0;
-            uncompressedSizeReal += mio0_decode(&baseromBuffer[i], &extractBuffer[new_offset], &decompressed_size);
+            compressedEndOffset = 0;
+            uncompressedSizeReal += mio0_decode(&baseromBuffer[i], &extractBuffer[new_offset], &compressedEndOffset);
 
+            //printf("endOffset : 0x%X\n", compressedEndOffset);
+             //printf("real: 0x%X\n", ALIGN16(uncompressedSizeReal));
 
             //u/ncompressedSizeReal += *(u32 *)(&extractBuffer[new_offset] - decompressed_size);
 
             //printf("currOffset: 0x%X\n", i);
-            //printf("endOffset : 0x%X\n", decompressed_size);
 
             //uncompressedSize     += ALIGN16(read_u32_be(&baseromBuffer[i + 4]));
             //printf("size: 0x%X\n", uncompressedSize);
-             printf("real: 0x%X\n", ALIGN16(uncompressedSizeReal));
 
             // Update offsets
-            new_offset += ALIGN16(uncompressedSizeReal);
             num_mappings++;
+
+            // Skip to the end of the mio0 file, but prevent normal increment so no possible entires are missed.
+            i += ALIGN16(compressedEndOffset) - (ALIGNMENT * 4);
         }
     }
-
-    printf("\nsizeReal: %d\n", uncompressedSizeReal);
     printf("\nsizeOffs: %d\n", new_offset);
     //printf("size    : %d\n", uncompressedSize);
 
