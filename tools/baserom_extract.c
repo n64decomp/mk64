@@ -59,7 +59,7 @@ int main() {
         free(baseromBuffer);
         return 1;
     }
-
+    
     // Close the baserom file
     fclose(baserom);
 
@@ -84,30 +84,17 @@ int main() {
     // Find and decompress MIO0 sections
     u32 new_offset = 0;
     u32 num_mappings = 0;
-    u32 uncompressedSizeReal = 0;
+    size_t totalUncompressed = 0;
     u32 compressedEndOffset;
-    //u32 uncompressedSize = 0;
     for (u32 i = 0; i < baseromSize; i += ALIGNMENT) {
         if (strncmp((char*)&baseromBuffer[i], search_string, strlen(search_string)) == 0) {
-printf("\nbi: 0x%X\n", new_offset);
-            new_offset = uncompressedSizeReal;
-printf("ai: 0x%X\n", new_offset);
+            new_offset = totalUncompressed;
             offsetMappings[num_mappings].old_offset = i;
             offsetMappings[num_mappings].new_offset = new_offset;
 
             // Perform MIO0 decoding
             compressedEndOffset = 0;
-            uncompressedSizeReal += mio0_decode(&baseromBuffer[i], &extractBuffer[new_offset], &compressedEndOffset);
-
-            //printf("endOffset : 0x%X\n", compressedEndOffset);
-             //printf("real: 0x%X\n", ALIGN16(uncompressedSizeReal));
-
-            //u/ncompressedSizeReal += *(u32 *)(&extractBuffer[new_offset] - decompressed_size);
-
-            //printf("currOffset: 0x%X\n", i);
-
-            //uncompressedSize     += ALIGN16(read_u32_be(&baseromBuffer[i + 4]));
-            //printf("size: 0x%X\n", uncompressedSize);
+            totalUncompressed += mio0_decode(&baseromBuffer[i], &extractBuffer[new_offset], &compressedEndOffset);
 
             // Update offsets
             num_mappings++;
@@ -116,8 +103,8 @@ printf("ai: 0x%X\n", new_offset);
             i += ALIGN16(compressedEndOffset) - (ALIGNMENT * 4);
         }
     }
-    printf("\nsizeOffs: %d\n", new_offset);
-    //printf("size    : %d\n", uncompressedSize);
+    //printf("\nsizeOffs: %d\n", new_offset);
+    printf("Wrote: %d MB\n", totalUncompressed / 1024.0);
 
     // Open the output file
     FILE* output = fopen(output_file, "wb");
@@ -129,8 +116,8 @@ printf("ai: 0x%X\n", new_offset);
     }
 
     // Write the output file
-    size_t bytes_written = fwrite(extractBuffer, 1, uncompressedSizeReal, output);
-    if (bytes_written != uncompressedSizeReal) {
+    size_t bytes_written = fwrite(extractBuffer, 1, totalUncompressed, output);
+    if (bytes_written != totalUncompressed) {
         printf("Error: Failed to write decompressed data to the output file.");
         fclose(output);
         free(baseromBuffer);
