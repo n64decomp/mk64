@@ -1,24 +1,24 @@
-name: Mario Kart 64 EU 1.0
-sha1: a729039453210b84f17019dda3f248d5888f7690
+name: Mario Kart 64 US
+sha1: 579c48e211ae952530ffc8738709f078d5dd215e
 options:
-  basename: mk64.eu
-  target_path: baserom.eu.z64
+  basename: mk64.us
+  target_path: baserom.us.z64
   base_path: .
   compiler: IDO
   platform: n64
-  target_path: baserom.eu.z64
-  build_path: build/eu
+  target_path: baserom.us.z64
+  build_path: build/us
   find_file_boundaries: True
   header_encoding: ASCII
-  ld_script_path: mk64.eu.ld
-  asset_path: assets/eu
+  ld_script_path: mk64.us.ld
+  asset_path: assets/us
   # platform: n64
   # undefined_funcs_auto: True
   # undefined_funcs_auto_path: undefined_funcs_auto.txt
   # undefined_syms_auto: True
   # undefined_syms_auto_path: undefined_syms_auto.txt
   # symbol_addrs_path: symbol_addrs.txt
-  asm_path: asm/eu
+  asm_path: asm/us
   # src_path: src
   extensions_path: tools/splat_ext
   mips_abi_float_regs: o32
