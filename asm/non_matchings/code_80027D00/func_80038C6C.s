@@ -1,3 +1,30 @@
+.section .data
+
+glabel D_800E4328
+.float 0.0, 0.0, 1.0
+
+glabel D_800E4334
+.float 0.0, 0.0, 0.0
+
+glabel D_800E4340
+.float 0.0, 0.0, 0.0
+
+glabel D_800E434C
+.float 0.0, 0.0, 0.0
+
+.section .late_rodata
+
+glabel D_800EDE00
+.double 0.12
+
+glabel D_800EDE08
+.double 6000.0
+
+glabel D_800EDE10
+.double 0.02
+
+.section .text
+
 glabel func_80038C6C
 /* 03986C 80038C6C 27BDFEE0 */  addiu $sp, $sp, -0x120
 /* 039870 80038C70 3C0F800E */  lui   $t7, %hi(D_800E4328) # $t7, 0x800e

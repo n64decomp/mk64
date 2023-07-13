@@ -1,3 +1,13 @@
+.section .late_rodata
+
+glabel D_800EF4F8
+.double 0.6666666666666666
+
+glabel D_800EF500
+.double 0.16666666666666666
+
+.section .text
+
 glabel func_8008ACE0
 /* 08B8E0 8008ACE0 44856000 */  mtc1  $a1, $f12
 /* 08B8E4 8008ACE4 3C013FF0 */  li    $at, 0x3FF00000 # 1.875000

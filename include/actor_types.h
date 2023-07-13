@@ -5,6 +5,10 @@
 #include <macros.h>
 #include <common_structs.h>
 
+//#pragma GCC diagnostic push
+//#pragma GCC diagnostic ignored "-Wmicrosoft-extension"
+//#pragma GCC diagnostic ignored "-Wmissing-member-name-in-structure-/-union"
+
 /*
 gActorList should be understood to be populated by generic Actor structs.
 However, for human readability, many functions interacting with actor list elements expect one of the many
@@ -136,9 +140,19 @@ struct ActorSpawnData {
 
 // Required for func_80298AC0 due to diff size.
 // members unverified. data located at D_06013F78
+/**
+ * There are nearly 100 trees in DK Jungle Parkway. If they were put into the actor list proper
+ * they would fill it up, leaving no space for stuff like item boxes, shells, bananas, kiwano fruits,
+ * etc.
+ * So, this struct type acts as both spawn data AND a stripped down Actor for those trees.
+ * Give the tree a position, a byte for flags stuffed into an s16 used to indicate tree sub-type,
+ * and an s16 containing as the tree's original Y position.
+**/
 struct UnkActorSpawnData {
     /* 0x00 */ Vec3s pos;
-    /* 0x06 */ s16 someId; // Usually populated, but not necessarily used by all actors types
+    // Techinically only the bottom byte of someId is the "id". The top byte is used for flags.
+    /* 0x06 */ s16 someId;
+    // Stores the tree's original Y position.
     /* 0x08 */ s16 unk8;
 };
 
@@ -216,7 +230,7 @@ struct PalmTree {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-struct TripleShellParent {
+typedef struct {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 shellsAvailable;
@@ -230,7 +244,7 @@ struct TripleShellParent {
     /* 0x18 */ Vec3f unk_18;
     /* 0x24 */ Vec3f shellIndices; // Indices in gActorList for the shells "owned" by this parent
     /* 0x30 */ UnkActorInner unk30;
-}; // size = 0x70
+} TripleShellParent; // size = 0x70
 
 struct ShellActor {
     /* 0x00 */ s16 type;
@@ -329,4 +343,6 @@ struct BananaActor {
     /* 0x30 */ UnkActorInner unk30;
 }; // size = 0x70
 
-#endif
+//#pragma GCC diagnostic pop
+
+#endif // ACTOR_TYPES_H

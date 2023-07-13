@@ -1,3 +1,13 @@
+.section .late_rodata
+
+glabel jpt_800EE9F0
+.word L800705A0, L800706EC, L800706EC, L800706EC
+.word L800705B4, L800705C8, L80070640, L80070654
+.word L80070668, L8007067C, L80070690, L800706A4
+.word L800706B8, L800706CC, L800706E0
+
+.section .text
+
 glabel func_8007055C
 /* 07115C 8007055C 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 071160 80070560 3C0E800E */  lui   $t6, %hi(gCurrentCourseId) # $t6, 0x800e

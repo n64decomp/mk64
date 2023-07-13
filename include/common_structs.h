@@ -128,8 +128,7 @@ typedef struct {
     /* 0x20 */ s16 unk_020;
     /* 0x22 */ s16 unk_022;
     /* 0x24 */ f32 unk_024;
-    /* 0x28 */ s16 unk_028;
-    /* 0x2A */ s16 unk_02A;
+    /* 0x28 */ f32 unk_028;
     /* 0x2C */ s16 unk_02C;
     /* 0x2E */ s16 unk_02E;
     /* 0x30 */ s16 unk_030;
@@ -149,11 +148,17 @@ typedef struct {
 // This struct is almost identical to the GBI Vtx_t type,
 // except that its missing the "flag" member.
 typedef struct {
-    s16        ob[3];    /* x, y, z */
-    s16        tc[2];    /* texture coord */
-    u8    ca[4];    /* color & alpha */
+    s16 ob[3];    /* x, y, z */
+    s16 tc[2];    /* texture coord */
+    u8  ca[4];    /* color & alpha */
 
 } mk64_Vtx;
+
+typedef struct {
+    s16 ob[3];    /* x, y, z */
+    s16 tc[2];    /* texture coord */
+    s8  n[3];    /* color & alpha */
+} mk64_Vtx_n;
 
 /*
 This struct has been copied (with only minor modifications) from
@@ -233,8 +238,8 @@ typedef struct {
     /* 0x0042 */ s16 unk_042;
     /* 0x0044 */ s16 unk_044;
     /* 0x0046 */ u16 unk_046;
-    /* 0x0048 */ Vec3s unk_048;
-    /* 0x004E */ char unk_04E[0xA];
+    /* 0x0048 */ Vec4s unk_048;
+    /* 0x0050 */ Vec4s unk_050;
     /* 0x0058 */ f32 unk_058;
     /* 0x005C */ f32 unk_05C;
     /* 0x0060 */ f32 unk_060;
@@ -272,14 +277,8 @@ typedef struct {
     /* 0x00C6 */ s16 unk_0C6;
     /* 0x00C8 */ s16 unk_0C8;
     /* 0x00CA */ s16 unk_0CA;
-    /* 0x00CC */ s16 unk_0CC;
-    /* 0x00CE */ s16 unk_0CE;
-    /* 0x00D0 */ s16 unk_0D0;
-    /* 0x00D2 */ s16 unk_0D2;
-    /* 0x00D4 */ s16 unk_0D4;
-    /* 0x00D6 */ s16 unk_0D6;
-    /* 0x00D8 */ s16 unk_0D8;
-    /* 0x00DA */ s16 unk_0DA;
+    /* 0x00CC */ Vec4s unk_0CC;
+    /* 0x00D4 */ Vec4s unk_0D4;
     /* 0x00DC */ s16 boostTimer;
     /* 0x00DE */ u16 unk_0DE;
     /* 0x00E0 */ s16 unk_0E0;
@@ -298,7 +297,7 @@ typedef struct {
     /* 0x010C */ s16 unk_10C;
     /* 0x010E */ char unk_10E[0x2];
     /* 0x0110 */ UnkActorInner unk_110;
-    /* 0x0150 */ f32 unk_150[9];
+    /* 0x0150 */ Mat3 unk_150;
     /* 0x0174 */ Mat3 unk_174;
     /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];
     /* 0x01F8 */ f32 unk_1F8;
@@ -428,7 +427,9 @@ typedef struct {
     f32 unk_04;
     char unk_08[0x4];
     f32 unk_0C;
-    char unk_10[0x10];
+    char unk_10[0x4];
+    s32 objectIndex;
+    char unk_18[0x8];
 } struct_D_8018CE10; // size = 0x20
 
 typedef struct
@@ -517,7 +518,8 @@ typedef struct {
     /* 0x73 */ s8 blinkState;
     /* 0x74 */ s8 unk_74;
     /* 0x75 */ s8 unk_75;
-    /* 0x76 */ s16 itemOverride; // Something related to item generation. If non-zero, it determines the item you get
+    /* 0x76 */ u8 itemOverride; // Something related to item generation. If non-zero, it determines the item you get
+    /* 0x77 */ s8 unk_77;
     // 0x78 to 0x7F appear to be some type of "state" trackers for the lap and timer text during a race start
     // When a race starts those texts (and their afterimages) slide in and "bounce" a bit. These states control the bouncing (somehow)
     /* 0x78 */ s8 unk_78;

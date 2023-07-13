@@ -1,16 +1,27 @@
+.section .late_rodata
+
+glabel D_800EF1C0
+.float 0.2
+.word 0x00000000
+
+glabel D_800EF1C8
+.double 0.1
+
+.section .text
+
 glabel func_8008311C
 /* 083D1C 8008311C 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 083D20 80083120 AFA5002C */  sw    $a1, 0x2c($sp)
 /* 083D24 80083124 AFBF0024 */  sw    $ra, 0x24($sp)
 /* 083D28 80083128 AFB10020 */  sw    $s1, 0x20($sp)
-/* 083D2C 8008312C 3C050601 */  lui   $a1, %hi(D_06014908) # $a1, 0x601
-/* 083D30 80083130 3C060601 */  lui   $a2, %hi(D_06014B08) # $a2, 0x601
+/* 083D2C 8008312C 3C050601 */  lui   $a1, %hi(gTLUTHedgehog) # $a1, 0x601
+/* 083D30 80083130 3C060601 */  lui   $a2, %hi(gTextureHedgehog) # $a2, 0x601
 /* 083D34 80083134 240E0040 */  li    $t6, 64
 /* 083D38 80083138 00808825 */  move  $s1, $a0
 /* 083D3C 8008313C AFB0001C */  sw    $s0, 0x1c($sp)
 /* 083D40 80083140 AFAE0010 */  sw    $t6, 0x10($sp)
-/* 083D44 80083144 24C64B08 */  addiu $a2, %lo(D_06014B08) # addiu $a2, $a2, 0x4b08
-/* 083D48 80083148 24A54908 */  addiu $a1, %lo(D_06014908) # addiu $a1, $a1, 0x4908
+/* 083D44 80083144 24C64B08 */  addiu $a2, %lo(gTextureHedgehog) # addiu $a2, $a2, 0x4b08
+/* 083D48 80083148 24A54908 */  addiu $a1, %lo(gTLUTHedgehog) # addiu $a1, $a1, 0x4908
 /* 083D4C 8008314C 0C01CD11 */  jal   func_80073444
 /* 083D50 80083150 24070040 */   li    $a3, 64
 /* 083D54 80083154 001178C0 */  sll   $t7, $s1, 3
@@ -19,11 +30,11 @@ glabel func_8008311C
 /* 083D60 80083160 27185C18 */  addiu $t8, %lo(D_80165C18) # addiu $t8, $t8, 0x5c18
 /* 083D64 80083164 000F7940 */  sll   $t7, $t7, 5
 /* 083D68 80083168 01F88021 */  addu  $s0, $t7, $t8
-/* 083D6C 8008316C 3C190601 */  lui   $t9, %hi(D_06014908) # $t9, 0x601
-/* 083D70 80083170 3C080601 */  lui   $t0, %hi(D_06014B08) # $t0, 0x601
+/* 083D6C 8008316C 3C190601 */  lui   $t9, %hi(gTLUTHedgehog) # $t9, 0x601
+/* 083D70 80083170 3C080601 */  lui   $t0, %hi(gTextureHedgehog) # $t0, 0x601
 /* 083D74 80083174 3C090D00 */  lui   $t1, %hi(D_0D0060B0) # $t1, 0xd00
-/* 083D78 80083178 27394908 */  addiu $t9, %lo(D_06014908) # addiu $t9, $t9, 0x4908
-/* 083D7C 8008317C 25084B08 */  addiu $t0, %lo(D_06014B08) # addiu $t0, $t0, 0x4b08
+/* 083D78 80083178 27394908 */  addiu $t9, %lo(gTLUTHedgehog) # addiu $t9, $t9, 0x4908
+/* 083D7C 8008317C 25084B08 */  addiu $t0, %lo(gTextureHedgehog) # addiu $t0, $t0, 0x4b08
 /* 083D80 80083180 252960B0 */  addiu $t1, %lo(D_0D0060B0) # addiu $t1, $t1, 0x60b0
 /* 083D84 80083184 AE190060 */  sw    $t9, 0x60($s0)
 /* 083D88 80083188 AE080064 */  sw    $t0, 0x64($s0)

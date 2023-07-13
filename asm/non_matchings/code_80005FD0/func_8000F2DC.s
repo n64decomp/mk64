@@ -26,7 +26,7 @@ glabel func_8000F2DC
 /* 00FF3C 8000F33C 944A0006 */  lhu   $t2, 6($v0)
 /* 00FF40 8000F340 AC6A000C */  sw    $t2, 0xc($v1)
 /* 00FF44 8000F344 94450008 */  lhu   $a1, 8($v0)
-/* 00FF48 8000F348 0C0A9EDC */  jal   func_802A7B70
+/* 00FF48 8000F348 0C0A9EDC */  jal   get_next_available_memory_addr
 /* 00FF4C 8000F34C 00052080 */   sll   $a0, $a1, 2
 /* 00FF50 8000F350 3C018016 */  lui   $at, %hi(D_80163598) # $at, 0x8016
 /* 00FF54 8000F354 3C118016 */  lui   $s1, %hi(D_80163368) # $s1, 0x8016
@@ -49,32 +49,32 @@ glabel func_8000F2DC
 .L8000F398:
 /* 00FF98 8000F398 8E240000 */  lw    $a0, ($s1)
 /* 00FF9C 8000F39C 000458C0 */  sll   $t3, $a0, 3
-/* 00FFA0 8000F3A0 0C0A9EDC */  jal   func_802A7B70
+/* 00FFA0 8000F3A0 0C0A9EDC */  jal   get_next_available_memory_addr
 /* 00FFA4 8000F3A4 01602025 */   move  $a0, $t3
 /* 00FFA8 8000F3A8 8E240000 */  lw    $a0, ($s1)
 /* 00FFAC 8000F3AC AE620000 */  sw    $v0, ($s3)
 /* 00FFB0 8000F3B0 000460C0 */  sll   $t4, $a0, 3
-/* 00FFB4 8000F3B4 0C0A9EDC */  jal   func_802A7B70
+/* 00FFB4 8000F3B4 0C0A9EDC */  jal   get_next_available_memory_addr
 /* 00FFB8 8000F3B8 01802025 */   move  $a0, $t4
 /* 00FFBC 8000F3BC 8E240000 */  lw    $a0, ($s1)
 /* 00FFC0 8000F3C0 AE820000 */  sw    $v0, ($s4)
 /* 00FFC4 8000F3C4 000468C0 */  sll   $t5, $a0, 3
-/* 00FFC8 8000F3C8 0C0A9EDC */  jal   func_802A7B70
+/* 00FFC8 8000F3C8 0C0A9EDC */  jal   get_next_available_memory_addr
 /* 00FFCC 8000F3CC 01A02025 */   move  $a0, $t5
 /* 00FFD0 8000F3D0 8E240000 */  lw    $a0, ($s1)
 /* 00FFD4 8000F3D4 AE420000 */  sw    $v0, ($s2)
 /* 00FFD8 8000F3D8 00047040 */  sll   $t6, $a0, 1
-/* 00FFDC 8000F3DC 0C0A9EDC */  jal   func_802A7B70
+/* 00FFDC 8000F3DC 0C0A9EDC */  jal   get_next_available_memory_addr
 /* 00FFE0 8000F3E0 01C02025 */   move  $a0, $t6
 /* 00FFE4 8000F3E4 8E240000 */  lw    $a0, ($s1)
 /* 00FFE8 8000F3E8 AEC20000 */  sw    $v0, ($s6)
 /* 00FFEC 8000F3EC 00047840 */  sll   $t7, $a0, 1
-/* 00FFF0 8000F3F0 0C0A9EDC */  jal   func_802A7B70
+/* 00FFF0 8000F3F0 0C0A9EDC */  jal   get_next_available_memory_addr
 /* 00FFF4 8000F3F4 01E02025 */   move  $a0, $t7
 /* 00FFF8 8000F3F8 8E240000 */  lw    $a0, ($s1)
 /* 00FFFC 8000F3FC AEE20000 */  sw    $v0, ($s7)
 /* 010000 8000F400 0004C040 */  sll   $t8, $a0, 1
-/* 010004 8000F404 0C0A9EDC */  jal   func_802A7B70
+/* 010004 8000F404 0C0A9EDC */  jal   get_next_available_memory_addr
 /* 010008 8000F408 03002025 */   move  $a0, $t8
 /* 01000C 8000F40C 26B50004 */  addiu $s5, $s5, 4
 /* 010010 8000F410 02B0082B */  sltu  $at, $s5, $s0

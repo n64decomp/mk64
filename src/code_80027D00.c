@@ -8,6 +8,318 @@
 #include "code_8001F980.h"
 #include "code_80027D00.h"
 #include "code_8008C1D0.h"
+#include "code_802AAA70.h"
+#include "waypoints.h"
+#include "audio/external.h"
+
+void func_80028E70(Player*, Camera*, s8, s8);
+void func_800381AC(Player *, struct Controller*, u8);
+
+s16 D_800E3810[] = {
+    1, 2, 3, 4, 5, 6, 7, 0
+};
+
+s16 D_800E3820[] = {
+    0, 2, 3, 4, 5, 6, 7, 0
+};
+
+s16 D_800E3830[] = {
+    0, 1, 3, 4, 5, 6, 7, 0
+};
+
+s16 D_800E3840[] = {
+    0, 1, 2, 4, 5, 6, 7, 0
+};
+
+s16 D_800E3850[] = {
+    0, 1, 2, 3, 5, 6, 7, 0
+};
+
+s16 D_800E3860[] = {
+    0, 1, 2, 3, 4, 6, 7, 0
+};
+
+s16 D_800E3870[] = {
+    0, 1, 2, 3, 4, 5, 7, 0
+};
+
+s16 D_800E3880[] = {
+    0, 1, 2, 3, 4, 5, 6, 0
+};
+
+s16 *D_800E3890[] = {
+    D_800E3810, D_800E3820, D_800E3830, D_800E3840,
+    D_800E3850, D_800E3860, D_800E3870, D_800E3880
+};
+
+s16 D_800E38B0[] = {
+    2, 3, 4, 5, 6, 7
+};
+
+s16 D_800E38BC[] = {
+    1, 3, 4, 5, 6, 7
+};
+
+s16 D_800E38C8[] = {
+    1, 2, 4, 5, 6, 7
+};
+
+s16 D_800E38D4[] = {
+    1, 2, 3, 5, 6, 7
+};
+
+s16 D_800E38E0[] = {
+    1, 2, 3, 4, 6, 7
+};
+
+s16 D_800E38EC[] = {
+    1, 2, 3, 4, 5, 7
+};
+
+s16 D_800E38F8[] = {
+    1, 2, 3, 4, 5, 6
+};
+
+s16 D_800E3904[] = {
+    2, 3, 4, 5, 6, 7
+};
+
+s16 D_800E3910[] = {
+    0, 3, 4, 5, 6, 7
+};
+
+s16 D_800E391C[] = {
+    0, 2, 4, 5, 6, 7
+};
+
+s16 D_800E3928[] = {
+    0, 2, 3, 5, 6, 7
+};
+
+s16 D_800E3934[] = {
+    0, 2, 3, 4, 6, 7
+};
+
+s16 D_800E3940[] = {
+    0, 2, 3, 4, 5, 7
+};
+
+s16 D_800E394C[] = {
+    0, 2, 3, 4, 5, 6
+};
+
+s16 D_800E3958[] = {
+    1, 3, 4, 5, 6, 7
+};
+
+s16 D_800E3964[] = {
+    0, 3, 4, 5, 6, 7
+};
+
+s16 D_800E3970[] = {
+    0, 1, 4, 5, 6, 7
+};
+
+s16 D_800E397C[] = {
+    0, 1, 3, 5, 6, 7
+};
+
+s16 D_800E3988[] = {
+    0, 1, 3, 4, 6, 7
+};
+
+s16 D_800E3994[] = {
+    0, 1, 3, 4, 5, 7
+};
+
+s16 D_800E39A0[] = {
+    0, 1, 3, 4, 5, 6
+};
+
+s16 D_800E39AC[] = {
+    1, 2, 4, 5, 6, 7
+};
+
+s16 D_800E39B8[] = {
+    0, 2, 4, 5, 6, 7
+};
+
+s16 D_800E39C4[] = {
+    0, 1, 4, 5, 6, 7
+};
+
+s16 D_800E39D0[] = {
+    0, 1, 2, 5, 6, 7
+};
+
+s16 D_800E39DC[] = {
+    0, 1, 2, 4, 6, 7
+};
+
+s16 D_800E39E8[] = {
+    0, 1, 2, 4, 5, 7
+};
+
+s16 D_800E39F4[] = {
+    0, 1, 2, 4, 5, 6
+};
+
+s16 D_800E3A00[] = {
+    1, 2, 3, 5, 6, 7
+};
+
+s16 D_800E3A0C[] = {
+    0, 2, 3, 5, 6, 7
+};
+
+s16 D_800E3A18[] = {
+    0, 1, 3, 5, 6, 7
+};
+
+s16 D_800E3A24[] = {
+    0, 1, 2, 5, 6, 7
+};
+
+s16 D_800E3A30[] = {
+    0, 1, 2, 3, 6, 7
+};
+
+s16 D_800E3A3C[] = {
+    0, 1, 2, 3, 5, 7
+};
+
+s16 D_800E3A48[] = {
+    0, 1, 2, 3, 5, 6
+};
+
+s16 D_800E3A54[] = {
+    1, 2, 3, 4, 6, 7
+};
+
+s16 D_800E3A60[] = {
+    0, 2, 3, 4, 6, 7
+};
+
+s16 D_800E3A6C[] = {
+    0, 1, 3, 4, 6, 7
+};
+
+s16 D_800E3A78[] = {
+    0, 1, 2, 3, 6, 7
+};
+
+s16 D_800E3A84[] = {
+    0, 1, 2, 4, 6, 7
+};
+
+s16 D_800E3A90[] = {
+    0, 1, 2, 3, 4, 7
+};
+
+s16 D_800E3A9C[] = {
+    0, 1, 2, 3, 4, 6
+};
+
+s16 D_800E3AA8[] = {
+    1, 2, 3, 4, 5, 7
+};
+
+s16 D_800E3AB4[] = {
+    0, 2, 3, 4, 5, 7
+};
+
+s16 D_800E3AC0[] = {
+    0, 1, 3, 4, 5, 7
+};
+
+s16 D_800E3ACC[] = {
+    0, 1, 2, 3, 5, 7
+};
+
+s16 D_800E3AD8[] = {
+    0, 1, 2, 3, 4, 7
+};
+
+s16 D_800E3AE4[] = {
+    0, 1, 2, 4, 5, 7
+};
+
+s16 D_800E3AF0[] = {
+    0, 1, 2, 3, 4, 5
+};
+
+s16 D_800E3AFC[] = {
+    1, 2, 3, 4, 5, 6
+};
+
+s16 D_800E3B08[] = {
+    0, 2, 3, 4, 5, 6
+};
+
+s16 D_800E3B14[] = {
+    0, 1, 3, 4, 5, 6
+};
+
+s16 D_800E3B20[] = {
+    0, 1, 2, 3, 5, 6
+};
+
+s16 D_800E3B2C[] = {
+    0, 1, 2, 3, 4, 6
+};
+
+s16 D_800E3B38[] = {
+    0, 1, 2, 4, 5, 6
+};
+
+s16 D_800E3B44[] = {
+    0, 1, 2, 3, 4, 5
+};
+
+s16 *D_800E3B50[] = {
+    D_800E38B0, D_800E38B0, D_800E38BC, D_800E38C8,
+    D_800E38D4, D_800E38E0, D_800E38EC, D_800E38F8
+};
+
+s16 *D_800E3B70[] = {
+    D_800E3904, D_800E3904, D_800E3910, D_800E391C,
+    D_800E3928, D_800E3934, D_800E3940, D_800E394C
+};
+
+s16 *D_800E3B90[] = {
+    D_800E3958, D_800E3964, D_800E3964, D_800E3970,
+    D_800E397C, D_800E3988, D_800E3994, D_800E39A0
+};
+
+s16 *D_800E3BB0[] = {
+    D_800E39AC, D_800E39B8, D_800E39C4, D_800E39C4,
+    D_800E39D0, D_800E39DC, D_800E39E8, D_800E39F4
+};
+
+s16 *D_800E3BD0[] = {
+    D_800E3A00, D_800E3A0C, D_800E3A18, D_800E3A24,
+    D_800E3A24, D_800E3A30, D_800E3A3C, D_800E3A48
+};
+
+s16 *D_800E3BF0[] = {
+    D_800E3A54, D_800E3A60, D_800E3A6C, D_800E3A84,
+    D_800E3A78, D_800E3A78, D_800E3A90, D_800E3A9C
+};
+
+s16 *D_800E3C10[] = {
+    D_800E3AA8, D_800E3AB4, D_800E3AC0, D_800E3AE4,
+    D_800E3ACC, D_800E3AD8, D_800E3ACC, D_800E3AF0
+};
+
+s16 *D_800E3C30[] = {
+    D_800E3AFC, D_800E3B08, D_800E3B14, D_800E3B38,
+    D_800E3B20, D_800E3B2C, D_800E3B44, D_800E3B44
+};
+
+s16 **D_800E3C50[] = {
+    D_800E3B50, D_800E3B70, D_800E3B90, D_800E3BB0,
+    D_800E3BD0, D_800E3BF0, D_800E3C10, D_800E3C30
+};
 
 // func_80027D00
 s32 get_player_index_for_player(Player *player) {
@@ -93,409 +405,241 @@ void func_80027DA8(u16 *arg0, s8 arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80027DA8.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-void func_800C8F80(s32, ?, s8);                        /* extern */
-void func_800C9018(s32, ?, s8);                        /* extern */
-void func_800CA288(s32, ?, s8);                        /* extern */
-void func_800CA2B8(s32, s8);                           /* extern */
-void func_800CA2E4(s32, ?, s8);                        /* extern */
-void func_800CA30C(s32, s8);                           /* extern */
-s16 gCurrentCourseId;                               /* unable to generate initializer */
-
-void func_80027EDC(u16 *arg0, s8 playerId) {
-    s16 *sp1C;
-    s16 *temp_v0_10;
-    s16 *temp_v0_12;
-    s16 *temp_v0_13;
-    s16 *temp_v0_15;
-    s16 *temp_v0_16;
-    s16 *temp_v0_17;
-    s16 *temp_v0_18;
-    s16 *temp_v0_20;
-    s16 *temp_v0_21;
-    s16 *temp_v0_23;
-    s16 *temp_v0_24;
-    s16 *temp_v0_26;
-    s16 *temp_v0_27;
-    s16 *temp_v0_29;
-    s16 *temp_v0_30;
-    s16 *temp_v0_32;
-    s16 *temp_v0_33;
-    s16 *temp_v0_35;
-    s16 *temp_v0_36;
-    s16 *temp_v0_38;
-    s16 *temp_v0_39;
-    s16 *temp_v0_3;
-    s16 *temp_v0_40;
-    s16 *temp_v0_41;
-    s16 *temp_v0_43;
-    s16 *temp_v0_44;
-    s16 *temp_v0_46;
-    s16 *temp_v0_47;
-    s16 *temp_v0_4;
-    s16 *temp_v0_6;
-    s16 *temp_v0_7;
-    s16 *temp_v0_9;
-    s16 *var_v0;
-    s16 temp_v0_11;
-    s16 temp_v0_14;
-    s16 temp_v0_19;
-    s16 temp_v0_22;
-    s16 temp_v0_25;
-    s16 temp_v0_28;
-    s16 temp_v0_2;
-    s16 temp_v0_31;
-    s16 temp_v0_34;
-    s16 temp_v0_37;
-    s16 temp_v0_42;
-    s16 temp_v0_45;
-    s16 temp_v0_5;
-    s16 temp_v0_8;
-    s16 var_a0;
-    s8 var_a2;
-    u16 temp_t5;
-    u16 temp_t9;
-    u16 temp_v0;
-
-    temp_v0 = *arg0;
-    var_a2 = playerId;
-    if (((temp_v0 & 0x4000) == 0x4000) && ((temp_v0 & 0x100) != 0x100)) {
-        temp_t9 = (u16) gCurrentCourseId;
-        switch (temp_t9) {                          /* switch 1 */
-        case 0:                                     /* switch 1 */
-            temp_v0_2 = (s16) gNearestWaypointByPlayerId[var_a2];
-            if ((temp_v0_2 >= 0x19B) && (temp_v0_2 < 0x1B9)) {
-                temp_v0_3 = &D_80165300[var_a2];
-                if (*temp_v0_3 != 1) {
-                    sp1C = temp_v0_3;
-                    func_800CA288(var_a2 & 0xFF, 0x55, var_a2);
+void func_80027EDC(Player *player, s8 playerId) {
+    s32 stackPadding;
+    if (((player->unk_000 & 0x4000) == 0x4000) && ((player->unk_000 & 0x100) != 0x100)) {
+        switch (gCurrentCourseId) {           /* switch 1 */
+        case COURSE_MARIO_RACEWAY:                                     /* switch 1 */
+            if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x19B) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA288(playerId, 0x55);
                 }
-                *temp_v0_3 = 1;
-                return;
-            }
-            temp_v0_4 = &D_80165300[var_a2];
-            if (*temp_v0_4 != 0) {
-                sp1C = temp_v0_4;
-                func_800CA2B8(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_4;
-                goto block_127;
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA2B8(playerId);
+                    D_80165300[playerId] = 0;
+                }
             }
             break;
-        case 1:                                     /* switch 1 */
-            temp_v0_5 = (s16) gNearestWaypointByPlayerId[var_a2];
-            if ((temp_v0_5 >= 0xA0) && (temp_v0_5 < 0xB4)) {
-                temp_v0_6 = &D_80165300[var_a2];
-                if (*temp_v0_6 != 1) {
-                    sp1C = temp_v0_6;
-                    func_800CA288(var_a2 & 0xFF, 0x55, var_a2);
+        case COURSE_CHOCO_MOUNTAIN:                                     /* switch 1 */
+            if (((s16)gNearestWaypointByPlayerId[playerId] >= 0xA0) && ((s16)gNearestWaypointByPlayerId[playerId] < 0xB4)) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA288(playerId, 0x55);
                 }
-                *temp_v0_6 = 1;
-                return;
-            }
-            temp_v0_7 = &D_80165300[var_a2];
-            if (*temp_v0_7 != 0) {
-                sp1C = temp_v0_7;
-                func_800CA2B8(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_7;
-                goto block_127;
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA2B8(playerId);
+                    D_80165300[playerId] = 0;
+                }
             }
             break;
-        case 2:                                     /* switch 1 */
-            temp_v0_8 = (s16) gNearestWaypointByPlayerId[var_a2];
-            if ((temp_v0_8 >= 0x29) && (temp_v0_8 < 0x1D2)) {
-                temp_v0_9 = &D_80165300[var_a2];
-                if (*temp_v0_9 != 1) {
-                    sp1C = temp_v0_9;
-                    func_800CA288(var_a2 & 0xFF, 0x41, var_a2);
+        case COURSE_BOWSER_CASTLE:                                     /* switch 1 */
+            if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x29) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x1D2)) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA288(playerId, 0x41);
                 }
-                *temp_v0_9 = 1;
-                return;
-            }
-            temp_v0_10 = &D_80165300[var_a2];
-            if (*temp_v0_10 != 0) {
-                sp1C = temp_v0_10;
-                func_800CA2B8(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_10;
-                goto block_127;
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA2B8(playerId);
+                    D_80165300[playerId] = 0;
+                }
             }
             break;
-        case 3:                                     /* switch 1 */
-            temp_v0_11 = (s16) gNearestWaypointByPlayerId[var_a2];
-            if ((temp_v0_11 >= 0x180) && (temp_v0_11 < 0x1E1)) {
-                temp_v0_12 = &D_80165300[var_a2];
-                if (*temp_v0_12 != 1) {
-                    sp1C = temp_v0_12;
-                    func_800CA288(var_a2 & 0xFF, 0x41, var_a2);
+        case COURSE_BANSHEE_BOARDWALK:                                     /* switch 1 */
+            if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x180) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA288(playerId, 0x41);
                 }
-                *temp_v0_12 = 1;
-                return;
-            }
-            temp_v0_13 = &D_80165300[var_a2];
-            if (*temp_v0_13 != 0) {
-                sp1C = temp_v0_13;
-                func_800CA2B8(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_13;
-                goto block_127;
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA2B8(playerId);
+                    D_80165300[playerId] = 0;
+                }
             }
             break;
-        case 8:                                     /* switch 1 */
-            temp_v0_14 = (s16) gNearestWaypointByPlayerId[var_a2];
-            if ((temp_v0_14 >= 0x145) && (temp_v0_14 < 0x18B)) {
-                temp_v0_15 = &D_80165300[var_a2];
-                if (*temp_v0_15 != 1) {
-                    sp1C = temp_v0_15;
-                    func_800CA288(var_a2 & 0xFF, 0x55, var_a2);
+        case COURSE_LUIGI_RACEWAY:                                     /* switch 1 */
+            if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x145) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x18B)) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA288(playerId, 0x55);
                 }
-                *temp_v0_15 = 1;
-                return;
-            }
-            temp_v0_16 = &D_80165300[var_a2];
-            if (*temp_v0_16 != 0) {
-                sp1C = temp_v0_16;
-                func_800CA2B8(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_16;
-                goto block_127;
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA2B8(playerId);
+                    D_80165300[playerId] = 0;
+                }
             }
             break;
-        case 10:                                    /* switch 1 */
-            if ((temp_v0 & 0x800) != 0x800) {
-                temp_v0_17 = &D_80165300[var_a2];
-                if (*temp_v0_17 != 1) {
-                    sp1C = temp_v0_17;
-                    func_800CA288(var_a2 & 0xFF, 0x1E, var_a2);
+        case COURSE_TOADS_TURNPIKE:                                    /* switch 1 */
+            if ((player->unk_000 & 0x800) != 0x800) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA288(playerId, 0x1e);
                 }
-                *temp_v0_17 = 1;
-                return;
-            }
-            temp_v0_18 = &D_80165300[var_a2];
-            if (*temp_v0_18 != 0) {
-                sp1C = temp_v0_18;
-                func_800CA2B8(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_18;
-                goto block_127;
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA2B8(playerId);
+                    D_80165300[playerId] = 0;
+                }
             }
             break;
-        case 12:                                    /* switch 1 */
-            temp_v0_19 = (s16) gNearestWaypointByPlayerId[var_a2];
-            if ((temp_v0_19 >= 0x11C) && (temp_v0_19 < 0x209)) {
-                temp_v0_20 = &D_80165300[var_a2];
-                if (*temp_v0_20 != 1) {
-                    sp1C = temp_v0_20;
-                    func_800CA288(var_a2 & 0xFF, 0x55, var_a2);
+        case COURSE_SHERBET_LAND:                                    /* switch 1 */
+            if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x11C) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x209)) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA288(playerId, 0x55);
                 }
-                *temp_v0_20 = 1;
-                return;
-            }
-            temp_v0_21 = &D_80165300[var_a2];
-            if (*temp_v0_21 != 0) {
-                sp1C = temp_v0_21;
-                func_800CA2B8(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_21;
-                goto block_127;
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA2B8(playerId);
+                    D_80165300[playerId] = 0;
+                }
             }
             break;
-        case 18:                                    /* switch 1 */
-            temp_v0_22 = (s16) gNearestWaypointByPlayerId[var_a2];
-            if (((temp_v0_22 >= 0) && (temp_v0_22 < 0x65)) || ((temp_v0_22 >= 0x14A) && (temp_v0_22 < 0x21F))) {
-                temp_v0_23 = &D_80165300[var_a2];
-                if (*temp_v0_23 != 2) {
-                    sp1C = temp_v0_23;
-                    func_800C8F80(var_a2 & 0xFF, 0x0170802D, var_a2);
+        case COURSE_DK_JUNGLE:                                    /* switch 1 */
+            if ((((s16)gNearestWaypointByPlayerId[playerId] >=     0) && ((s16)gNearestWaypointByPlayerId[playerId] <  0x65)) ||
+                (((s16)gNearestWaypointByPlayerId[playerId] >= 0x14A) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x21F))) {
+                if (D_80165300[playerId] != 2) {
+                    func_800C8F80(playerId, 0x0170802D);
                 }
-                *temp_v0_23 = 2;
-                return;
+                D_80165300[playerId] = 2;
+            } else {
+                if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x288) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x305)) {
+                    if (D_80165300[playerId] != 1) {
+                        func_800CA288(playerId, 0x55);
+                    }
+                    D_80165300[playerId] = 1;
+                } else {
+                    if (D_80165300[playerId] != 0) {
+                        if (D_80165300[playerId] == 1) {
+                            func_800CA2B8(playerId);
+                        }
+                        if (D_80165300[playerId] == 2) {
+                            func_800C9018(playerId, 0x0170802D);
+                        }
+                        D_80165300[playerId] = 0;
+                    }
+                }
             }
-            if ((temp_v0_22 >= 0x288) && (temp_v0_22 < 0x305)) {
-                temp_v0_24 = &D_80165300[var_a2];
-                if (*temp_v0_24 != 1) {
-                    sp1C = temp_v0_24;
-                    func_800CA288(var_a2 & 0xFF, 0x55, var_a2);
-                }
-                *temp_v0_24 = 1;
-                return;
-            }
-            var_v0 = &D_80165300[var_a2];
-            var_a0 = *var_v0;
-            if (var_a0 != 0) {
-                if (var_a0 == 1) {
-                    sp1C = var_v0;
-                    playerId = var_a2;
-                    func_800CA2B8(var_a2 & 0xFF, var_a2);
-                    var_a2 = playerId;
-                    var_a0 = *var_v0;
-                }
-                if (var_a0 == 2) {
-                    sp1C = var_v0;
-                    func_800C9018(var_a2 & 0xFF, 0x0170802D, var_a2);
-                }
-                goto block_127;
-            }
+            break;
+        default:                                    /* switch 1 */
             break;
         }
     } else {
-        temp_t5 = (u16) gCurrentCourseId;
-        switch (temp_t5) {                          /* switch 2 */
-        case 0:                                     /* switch 2 */
-            temp_v0_25 = (s16) gNearestWaypointByPlayerId[var_a2];
-            if ((temp_v0_25 >= 0x19B) && (temp_v0_25 < 0x1B9)) {
-                temp_v0_26 = &D_80165300[var_a2];
-                if (*temp_v0_26 != 1) {
-                    sp1C = temp_v0_26;
-                    func_800CA2E4(var_a2 & 0xFF, 0x55, var_a2);
+        switch (gCurrentCourseId) {           /* switch 2 */
+        case COURSE_MARIO_RACEWAY:                                     /* switch 2 */
+            if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x19B) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA2E4(playerId, 0x55);
                 }
-                *temp_v0_26 = 1;
-                return;
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA30C(playerId);
+                    D_80165300[playerId] = 0;
+                }
             }
-            temp_v0_27 = &D_80165300[var_a2];
-            if (*temp_v0_27 != 0) {
-                sp1C = temp_v0_27;
-                func_800CA30C(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_27;
-block_127:
-                *var_v0 = 0;
+            break;
+        case COURSE_CHOCO_MOUNTAIN:                                     /* switch 2 */
+            if (((s16)gNearestWaypointByPlayerId[playerId] >= 0xA0) && ((s16)gNearestWaypointByPlayerId[playerId] < 0xB4)) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA2E4(playerId, 0x55);
+                }
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA30C(playerId);
+                    D_80165300[playerId] = 0;
+                }
             }
+            break;
+        case COURSE_BOWSER_CASTLE:                                     /* switch 2 */
+            if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x29) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x1D2)) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA2E4(playerId, 0x41);
+                }
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA30C(playerId);
+                    D_80165300[playerId] = 0;
+                }
+            }
+            break;
+        case COURSE_BANSHEE_BOARDWALK:                                     /* switch 2 */
+            if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x180) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA2E4(playerId, 0x41);
+                }
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA30C(playerId);
+                    D_80165300[playerId] = 0;
+                }
+            }
+            break;
+        case COURSE_LUIGI_RACEWAY:                                     /* switch 2 */
+            if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x145) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x18B)) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA2E4(playerId, 0x55);
+                }
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA30C(playerId);
+                    D_80165300[playerId] = 0;
+                }
+            }
+            break;
+        case COURSE_TOADS_TURNPIKE:                                    /* switch 2 */
+            if ((player->unk_000 & 0x800) != 0x800) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA2E4(playerId, 0x1E);
+                }
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA30C(playerId);
+                    D_80165300[playerId] = 0;
+                }
+            }
+            break;
+        case COURSE_SHERBET_LAND:                                    /* switch 2 */
+            if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x11C) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x209)) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA2E4(playerId, 0x55);
+                }
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA30C(playerId);
+                    D_80165300[playerId] = 0;
+                }
+            }
+            break;
+        case COURSE_DK_JUNGLE:                                    /* switch 2 */
+            if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x288) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x305)) {
+                if (D_80165300[playerId] != 1) {
+                    func_800CA2E4(playerId, 0x55);
+                }
+                D_80165300[playerId] = 1;
+            } else {
+                if (D_80165300[playerId] != 0) {
+                    func_800CA30C(playerId);
+                    D_80165300[playerId] = 0;
+                }
+            }
+            break;
         default:                                    /* switch 2 */
-        default:                                    /* switch 1 */
-            return;
-        case 1:                                     /* switch 2 */
-            temp_v0_28 = (s16) gNearestWaypointByPlayerId[var_a2];
-            if ((temp_v0_28 >= 0xA0) && (temp_v0_28 < 0xB4)) {
-                temp_v0_29 = &D_80165300[var_a2];
-                if (*temp_v0_29 != 1) {
-                    sp1C = temp_v0_29;
-                    func_800CA2E4(var_a2 & 0xFF, 0x55, var_a2);
-                }
-                *temp_v0_29 = 1;
-                return;
-            }
-            temp_v0_30 = &D_80165300[var_a2];
-            if (*temp_v0_30 != 0) {
-                sp1C = temp_v0_30;
-                func_800CA30C(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_30;
-                goto block_127;
-            }
-            break;
-        case 2:                                     /* switch 2 */
-            temp_v0_31 = (s16) gNearestWaypointByPlayerId[var_a2];
-            if ((temp_v0_31 >= 0x29) && (temp_v0_31 < 0x1D2)) {
-                temp_v0_32 = &D_80165300[var_a2];
-                if (*temp_v0_32 != 1) {
-                    sp1C = temp_v0_32;
-                    func_800CA2E4(var_a2 & 0xFF, 0x41, var_a2);
-                }
-                *temp_v0_32 = 1;
-                return;
-            }
-            temp_v0_33 = &D_80165300[var_a2];
-            if (*temp_v0_33 != 0) {
-                sp1C = temp_v0_33;
-                func_800CA30C(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_33;
-                goto block_127;
-            }
-            break;
-        case 3:                                     /* switch 2 */
-            temp_v0_34 = (s16) gNearestWaypointByPlayerId[var_a2];
-            if ((temp_v0_34 >= 0x180) && (temp_v0_34 < 0x1E1)) {
-                temp_v0_35 = &D_80165300[var_a2];
-                if (*temp_v0_35 != 1) {
-                    sp1C = temp_v0_35;
-                    func_800CA2E4(var_a2 & 0xFF, 0x41, var_a2);
-                }
-                *temp_v0_35 = 1;
-                return;
-            }
-            temp_v0_36 = &D_80165300[var_a2];
-            if (*temp_v0_36 != 0) {
-                sp1C = temp_v0_36;
-                func_800CA30C(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_36;
-                goto block_127;
-            }
-            break;
-        case 8:                                     /* switch 2 */
-            temp_v0_37 = (s16) gNearestWaypointByPlayerId[var_a2];
-            if ((temp_v0_37 >= 0x145) && (temp_v0_37 < 0x18B)) {
-                temp_v0_38 = &D_80165300[var_a2];
-                if (*temp_v0_38 != 1) {
-                    sp1C = temp_v0_38;
-                    func_800CA2E4(var_a2 & 0xFF, 0x55, var_a2);
-                }
-                *temp_v0_38 = 1;
-                return;
-            }
-            temp_v0_39 = &D_80165300[var_a2];
-            if (*temp_v0_39 != 0) {
-                sp1C = temp_v0_39;
-                func_800CA30C(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_39;
-                goto block_127;
-            }
-            break;
-        case 10:                                    /* switch 2 */
-            if ((temp_v0 & 0x800) != 0x800) {
-                temp_v0_40 = &D_80165300[var_a2];
-                if (*temp_v0_40 != 1) {
-                    sp1C = temp_v0_40;
-                    func_800CA2E4(var_a2 & 0xFF, 0x1E, var_a2);
-                }
-                *temp_v0_40 = 1;
-                return;
-            }
-            temp_v0_41 = &D_80165300[var_a2];
-            if (*temp_v0_41 != 0) {
-                sp1C = temp_v0_41;
-                func_800CA30C(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_41;
-                goto block_127;
-            }
-            break;
-        case 12:                                    /* switch 2 */
-            temp_v0_42 = (s16) gNearestWaypointByPlayerId[var_a2];
-            if ((temp_v0_42 >= 0x11C) && (temp_v0_42 < 0x209)) {
-                temp_v0_43 = &D_80165300[var_a2];
-                if (*temp_v0_43 != 1) {
-                    sp1C = temp_v0_43;
-                    func_800CA2E4(var_a2 & 0xFF, 0x55, var_a2);
-                }
-                *temp_v0_43 = 1;
-                return;
-            }
-            temp_v0_44 = &D_80165300[var_a2];
-            if (*temp_v0_44 != 0) {
-                sp1C = temp_v0_44;
-                func_800CA30C(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_44;
-                goto block_127;
-            }
-            break;
-        case 18:                                    /* switch 2 */
-            temp_v0_45 = (s16) gNearestWaypointByPlayerId[var_a2];
-            if ((temp_v0_45 >= 0x288) && (temp_v0_45 < 0x305)) {
-                temp_v0_46 = &D_80165300[var_a2];
-                if (*temp_v0_46 != 1) {
-                    sp1C = temp_v0_46;
-                    func_800CA2E4(var_a2 & 0xFF, 0x55, var_a2);
-                }
-                *temp_v0_46 = 1;
-                return;
-            }
-            temp_v0_47 = &D_80165300[var_a2];
-            if (*temp_v0_47 != 0) {
-                sp1C = temp_v0_47;
-                func_800CA30C(var_a2 & 0xFF, var_a2);
-                var_v0 = temp_v0_47;
-                goto block_127;
-            }
             break;
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80027EDC.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -674,7 +818,7 @@ void func_80028E70(void *arg0, s32 arg1, s8 arg2, s8 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80028E70.s")
 #endif
 
-UNUSED void func_80028F5C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+UNUSED void func_80028F5C(UNUSED s32 arg0, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
 
 }
 
@@ -757,10 +901,10 @@ void func_80029200(Player *player, s8 arg1) {
 }
 
 #ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
+//generated by m2c commit 9841ff34ca242f5f14b2eab2b54a7a65ac47d80f
 static f32 D_800DDBD4[8] = { 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f };
 
-void func_8002934C(Player *player, struct Camera *arg1, s8 arg2, s8 arg3) {
+void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     f32 sp50;
     f32 sp28;
     void *sp24;
@@ -798,8 +942,8 @@ void func_8002934C(Player *player, struct Camera *arg1, s8 arg2, s8 arg3) {
     void *temp_a3;
 
     temp_a3 = player + (arg2 * 2);
-    temp_a3->unk48 = atan2s(player->pos[0] - arg1->unk0, player->pos[2] - arg1->unk8);
-    player->unk_244[arg2] = (u16) ((s32) ((player->unk_02E + (s16) temp_a3->unk48 + player->unk_0C0) & 0xFFFF) / 128);
+    player->unk_048[arg2] = atan2s(player->pos[0] - camera->pos[0], player->pos[2] - camera->pos[2]);
+    player->unk_244[arg2] = (u16) ((s32) ((player->unk_02C[1] + player->unk_048[arg2] + player->unk_0C0) & 0xFFFF) / 128);
     temp_v1 = player->unk_0BC;
     temp_f0 = player->unk_230 - player->unk_23C;
     temp_f2 = D_800DDBD4[player->characterId] * 18.0f * player->unk_224;
@@ -835,7 +979,7 @@ void func_8002934C(Player *player, struct Camera *arg1, s8 arg2, s8 arg3) {
     }
     sp24 = temp_a3;
     func_80029200(player, arg2);
-    temp_a0 = (player->unk_02E + temp_a3->unk48 + player->unk_0C0) & 0xFFFF;
+    temp_a0 = (player->unk_02C[1] + temp_a3->unk48 + player->unk_0C0) & 0xFFFF;
     sp20 = temp_a0;
     sp28 = sins((u16) temp_a0);
     move_s16_towards(temp_a3 + 0x50, (s16) (s32) ((coss((u16) temp_a0) * (f32) temp_a3->unkCC) + ((f32) temp_a3->unkD4 * sp28)), 0.5f);
@@ -868,7 +1012,7 @@ block_28:
     if (((player->unk_0BC & 8) == 8) && ((player->unk_0CA & 2) == 2)) {
         temp_a3->unk50 = 0;
     }
-    temp_t9 = (player->unk_02E + temp_a3->unk48 + player->unk_0C0) & 0xFFFF;
+    temp_t9 = (player->unk_02C[1] + temp_a3->unk48 + player->unk_0C0) & 0xFFFF;
     if (((player->unk_0BC & 0x80) == 0x80) || ((player->unk_0BC & 0x40) == 0x40) || ((player->unk_0BC & 0x80000) == 0x80000) || ((player->unk_0BC & 0x800000) == 0x800000) || ((player->unk_0BC & 0x20000) == 0x20000) || (player->unk_044 & 0x800)) {
         if (temp_t9 >= 0x7FF9) {
             temp_t6 = ((s32) (-temp_t9 & 0xFFFF) / var_a1) & 0xFFFF;
@@ -902,7 +1046,7 @@ block_28:
     if (((temp_v1_5 & 0x80000) == 0x80000) || ((temp_v1_5 & 0x800000) == 0x800000) || (player->unk_044 & 0x800)) {
         temp_a3->unk24C = 4U;
     }
-    if (((player->unk_0BC & 0x400) == 0x400) || ((player->unk_0BC & 0x01000000) == 0x01000000) || ((player->unk_0BC & 0x02000000) == 0x02000000) || ((player->unk_0BC << 0xF) < 0) || (player->unk_0BC & 0x80) || (player->unk_0BC & 0x40)) {
+    if (((player->unk_0BC & 0x400) == 0x400) || ((player->unk_0BC & 0x01000000) == 0x01000000) || ((player->unk_0BC & 0x02000000) == 0x02000000) || (player->unk_0BC & 0x10000) || (player->unk_0BC & 0x80) || (player->unk_0BC & 0x40)) {
         var_a2 = 1 << temp_t3;
         player->unk_002 |= var_a2;
         temp_t9_2 = arg3 * 2;
@@ -935,7 +1079,6 @@ block_28:
         player->unk_002 |= var_a2;
     }
 }
-/* Warning: struct Camera is not defined (only forward-declared) */
 #else
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002934C.s")
 #endif
@@ -1175,8 +1318,7 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002A194.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit bece1d6db17040749f77dbbd090363cc6fb926f9
+// Near identical to func_802AC114 in memory.c
 void func_8002A5F4(Vec3f arg0, f32 arg1, Vec3f arg2, f32 arg3, f32 arg4) {
     f32 temp_f0;
     f32 temp_f2;
@@ -1185,6 +1327,9 @@ void func_8002A5F4(Vec3f arg0, f32 arg1, Vec3f arg2, f32 arg3, f32 arg4) {
     f32 temp_f16;
     f32 temp_f18;
     f32 temp_f20;
+    f32 tmp1;
+    f32 tmp2;
+    f32 tmp3;
 
     temp_f0  =  arg2[0];
     temp_f2  =  arg2[1];
@@ -1193,164 +1338,97 @@ void func_8002A5F4(Vec3f arg0, f32 arg1, Vec3f arg2, f32 arg3, f32 arg4) {
     temp_f16 = -arg0[1];
     temp_f18 = -arg0[2];
     temp_f20 = (temp_f14 * temp_f0) + (temp_f16 * temp_f2) + (temp_f18 * temp_f12);
+    tmp1 = temp_f0  - (temp_f20 * temp_f14);
+    tmp2 = temp_f2  - (temp_f20 * temp_f16);
+    tmp3 = temp_f12 - (temp_f20 * temp_f18);
     if (arg1 < -arg4) {
-        arg2[0] = temp_f0  - (temp_f20 * temp_f14) - (temp_f20 * temp_f14 * arg3);
-        arg2[1] = temp_f2  - (temp_f20 * temp_f16) - (temp_f20 * temp_f16 * arg3);
-        arg2[2] = temp_f12 - (temp_f20 * temp_f18) - (temp_f20 * temp_f18 * arg3);
+        arg2[0] = tmp1 - (temp_f20 * temp_f14 * arg3);
+        arg2[1] = tmp2 - (temp_f20 * temp_f16 * arg3);
+        arg2[2] = tmp3 - (temp_f20 * temp_f18 * arg3);
     } else {
-        arg2[0] = temp_f0  - (temp_f20 * temp_f14);
-        arg2[1] = temp_f2  - (temp_f20 * temp_f16);
-        arg2[2] = temp_f12 - (temp_f20 * temp_f18);
+        arg2[0] = tmp1;
+        arg2[1] = tmp2;
+        arg2[2] = tmp3;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002A5F4.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_800C9060(u8, ?); // extern
-void func_800C90F4(?, s32, void *); // extern
-
-void func_8002A704(void *arg0, u8 arg1) {
-    s32 temp_a1;
-    u16 temp_v0;
-    void *temp_a2;
-    void *phi_a2;
-
-    temp_v0 = arg0->unk0;
-    temp_a2 = arg0;
-    arg0->unkBC = arg0->unkBC | 0x2000;
-    arg0->unkC = arg0->unkC & 0xFDFFFFFF;
-    phi_a2 = temp_a2;
-    if (((temp_v0 & 0x4000) == 0x4000) && ((temp_v0 & 0x100) != 0x100)) {
-        temp_a1 = (temp_a2->unk254 * 0x10) + 0x29008001;
-        arg0 = temp_a2;
-        func_800C90F4(0, temp_a1, temp_a2);
-        func_800C9060(arg1, 0x1900A40B);
-        phi_a2 = arg0;
+void func_8002A704(Player *player, s8 arg1) {
+    player->unk_0BC |= 0x2000;
+    player->statusEffects &= ~0x02000000;
+    if (((player->unk_000 & 0x4000) == 0x4000) && ((player->unk_000 & 0x100) != 0x100)) {
+        func_800C90F4(0U, (player->characterId * 0x10) + 0x29008001);
+        func_800C9060(arg1, 0x1900A40BU);
     }
-    phi_a2->unkDC = 0x50;
+    player->boostTimer = 0x0050;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002A704.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_800C9250(s32, s8, s32); // extern
-
-void func_8002A79C(void *arg0, s8 arg1) {
-    s32 temp_v0;
-    s32 temp_v1;
-    u16 temp_v0_2;
-
-    temp_v0 = arg0->unkBC;
-    temp_v1 = temp_v0 & 0x100;
-    if ((temp_v1 != 0x100) && ((temp_v0 & 0x10) != 0x10) && (arg0->unk22A >= 2)) {
-        arg0->unkBC = temp_v0 | 0x100;
-        arg0->unk23A = 0;
-        arg0->unk22A = 0;
-        arg0->unk228 = 0;
+void func_8002A79C(Player *player, s8 arg1) {
+    if (((player->unk_0BC & 0x100) != 0x100) && ((player->unk_0BC & 0x10) != 0x10) && (player->unk_22A >= 2)) {
+        player->unk_0BC |= 0x100;
+        player->unk_23A = 0;
+        player->unk_22A = 0;
+        player->unk_228 = 0;
         if (D_8015F890 != 1) {
-            temp_v0_2 = arg0->unk0;
-            if (((temp_v0_2 & 0x4000) != 0) && ((temp_v0_2 & 0x100) == 0)) {
-                func_800C9250(arg1 & 0xFF, arg1, 0x100);
-                return;
+            if ((player->unk_000 & 0x4000) && !(player->unk_000 & 0x100)) {
+                func_800C9250(arg1);
             }
-            // Duplicate return node #12. Try simplifying control flow for better match
-            return;
+        } else if (player == gPlayerOne) {
+            func_800C9250(arg1);
         }
-        if (arg0 == gPlayerOne) {
-            func_800C9250(arg1 & 0xFF, arg1, 0x100);
-            return;
-        }
-        // Duplicate return node #12. Try simplifying control flow for better match
-        return;
-    }
-    if (temp_v1 == 0x100) {
-        arg0->unk23A = arg0->unk23A + 1;
-        if (arg0->unk23A >= 0x1F) {
-            arg0->unk23A = 0;
-            arg0->unkBC = arg0->unkBC & ~0x100;
-            arg0->unk22A = 0;
-            arg0->unk228 = 0;
+    } else if ((player->unk_0BC & 0x100) == 0x100) {
+        player->unk_23A += 1;
+        if (player->unk_23A >= 0x1F) {
+            player->unk_23A = 0;
+            player->unk_0BC &= ~0x100;
+            player->unk_22A = 0;
+            player->unk_228 = 0;
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002A79C.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_800C9060(s32, ?, s8); // extern
-
-void func_8002A8A4(void *arg0, s8 arg1) {
-    s16 temp_v0;
-    s16 temp_v0_2;
-    s16 temp_v0_3;
-    s16 temp_v0_4;
-    s16 temp_v1;
-    s16 temp_v1_2;
-
-    if ((arg0->unkC0 / 0xB6) > 0) {
-        if ((arg0->unk7C >> 0x10) < -9) {
-            temp_v0 = arg0->unk228;
-            if (temp_v0 < 0x65) {
-                arg0->unk228 = temp_v0 + 1;
+void func_8002A8A4(Player *player, s8 arg1) {
+    if (((s16) player->unk_0C0 / 182) > 0) {
+        if (((s32) player->unk_07C >> 0x10) < -9) {
+            if (player->unk_228 < 0x65) {
+                player->unk_228++;
             }
-            if ((arg0->unk228 == 0x64) && ((arg0->unk0 & 0x4000) != 0)) {
-                func_800C9060(arg1 & 0xFF, 0x1900851E, arg1);
-                return;
+            if ((player->unk_228 == 0x0064) && (player->unk_000 & 0x4000)) {
+                func_800C9060(arg1, 0x1900851EU);
             }
-            // Duplicate return node #30. Try simplifying control flow for better match
-            return;
-        }
-        temp_v0_2 = arg0->unk228;
-        if ((temp_v0_2 >= 0x12) && (temp_v0_2 < 0x64)) {
-            temp_v1 = arg0->unk22A;
-            if (temp_v1 < 3) {
-                arg0->unk22A = temp_v1 + 1;
+        } else {
+            if ((player->unk_228 >= 0x12) && (player->unk_228 < 0x64)) {
+                if (player->unk_22A < 3) {
+                    player->unk_22A++;
+                }
+            }
+            if ((player->unk_228 >= 0xA) && (player->unk_228 < 0x64)) {
+                player->unk_228 = 0x000A;
+            } else {
+                player->unk_228 = 0;
+                player->unk_22A = 0;
             }
         }
-        if ((arg0->unk228 >= 0xA) && (arg0->unk228 < 0x64)) {
-            arg0->unk228 = 0xA;
-            return;
+    } else if (((s32) player->unk_07C >> 0x10) >= 0xA) {
+        if (player->unk_228 < 0x65) {
+            player->unk_228++;
         }
-        arg0->unk228 = 0;
-        goto block_29;
-    }
-    if ((arg0->unk7C >> 0x10) >= 0xA) {
-        temp_v0_3 = arg0->unk228;
-        if (temp_v0_3 < 0x65) {
-            arg0->unk228 = temp_v0_3 + 1;
+        if ((player->unk_228 == 0x0064) && (player->unk_000 & 0x4000)) {
+            func_800C9060(arg1, 0x1900851EU);
         }
-        if ((arg0->unk228 == 0x64) && ((arg0->unk0 & 0x4000) != 0)) {
-            func_800C9060(arg1 & 0xFF, 0x1900851E, arg1);
-            return;
+    } else {
+        if ((player->unk_228 >= 0x12) && (player->unk_228 < 0x64)) {
+            if (player->unk_22A < 3) {
+                player->unk_22A++;
+            }
         }
-        // Duplicate return node #30. Try simplifying control flow for better match
-        return;
-    }
-    temp_v0_4 = arg0->unk228;
-    if ((temp_v0_4 >= 0x12) && (temp_v0_4 < 0x64)) {
-        temp_v1_2 = arg0->unk22A;
-        if (temp_v1_2 < 3) {
-            arg0->unk22A = temp_v1_2 + 1;
+        if ((player->unk_228 >= 0xA) && (player->unk_228 < 0x64)) {
+            player->unk_228 = 0x000A;
+        } else {
+            player->unk_228 = 0;
+            player->unk_22A = 0;
         }
     }
-    if ((arg0->unk228 >= 0xA) && (arg0->unk228 < 0x64)) {
-        arg0->unk228 = 0xA;
-        return;
-    }
-    arg0->unk228 = 0;
-block_29:
-    arg0->unk22A = 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002A8A4.s")
-#endif
 
 void func_8002AA50(Player *player) {
     player->kartHopJerk = gKartHopJerkTable[player->characterId];
@@ -1402,7 +1480,7 @@ void func_8002AAC0(Player *player) {
 }
 
 void func_8002AB70(Player *player) {
-    f64 pad;
+    UNUSED s32 pad[2];
     if (((player->unk_0BC & 8) != 8) && (player->unk_08C > 0.0f)) {
         if (((player->unk_0C4 / 182) < -1) && ((player->unk_0C4 / 182) >= -0x14) && (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
             move_f32_towards(&player->kartGravity, 500.0f, 1.0f);
@@ -1424,26 +1502,26 @@ void func_8002AB70(Player *player) {
     }
     if ((player->unk_0BC & 0x100000) == 0x100000) {
         move_f32_towards(&player->unk_DAC, 20.0f, 1.0f);
-        player->kartGravity = D_800ED7B8;
+        player->kartGravity = 3500.0f;
     }
     if ((player->unk_0BC & 4) == 4) {
         move_f32_towards(&player->unk_DAC, 25.0f, 1.0f);
         player->kartGravity = 1800.0f;
     }
     if ((player->unk_0BC & 0x400) == 0x400) {
-        player->kartGravity = D_800ED7BC;
+        player->kartGravity = 1100.0f;
     }
     if (player->unk_0BC & 0x80000) {
-        player->kartGravity = D_800ED7C0;
+        player->kartGravity = 1500.0f;
     }
     if ((player->unk_044 & 0x800) != 0) {
-        player->kartGravity = D_800ED7C4;
+        player->kartGravity = 1900.0f;
     }
     if ((player->unk_0BC & 0x800000) == 0x800000) {
         player->kartGravity = 300.0f;
     }
     if ((player->unk_0BC & 0x01000000) == 0x01000000) {
-        player->kartGravity = D_800ED7C8;
+        player->kartGravity = 550.0f;
     }
     if ((player->unk_0BC & 0x02000000) == 0x02000000) {
         player->kartGravity = 800.0f;
@@ -1462,86 +1540,83 @@ UNUSED void func_8002AE30(void) {
 
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
 void func_8002AE38(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
-    s16 sp2E;
-    f32 sp28;
-    f32 sp24;
-    u16 sp1A;
-    f32 temp_f16;
-    f32 temp_f2;
-    s16 temp_a0;
-    s16 temp_v0_2;
+    UNUSED s32 pad[4];
     s16 temp_v0_3;
-    s32 temp_lo;
-    s32 temp_t2;
-    s32 temp_t9;
-    s32 temp_v0;
-    s32 var_t7;
+    f32 sp28;
+    f32 temp_f16;
+    s16 temp_a0;
     s32 var_v1;
 
-    sp28 = (sins(-player->unk_02C[1] & 0xFFFF) * player->unk_094) + arg2;
-    temp_f2 = player->unk_094;
-    temp_v0 = player->unk_0BC;
-    temp_f16 = (coss(-player->unk_02C[1] & 0xFFFF) * temp_f2) + arg3;
-    if (((temp_v0 & 0x800) != 0x800) && ((temp_v0 & 0x10) != 0x10) && !(player->unk_044 & 0x4000) && ((((temp_f2 / 18.0f) * 216.0f) <= 8.0f) || ((temp_t2 = (s32) player->unk_07C >> 0x10, ((temp_t2 < 5) != 0)) && (temp_t2 >= -4)))) {
-        if ((temp_v0 & 0x20) == 0x20) {
-            temp_v0_2 = player->unk_0C0;
-            var_t7 = (s32) (f32) (temp_v0_2 - (temp_v0_2 / 10));
-            goto block_33;
+    sp28     = (sins(-player->unk_02C[1]) * player->unk_094) + arg2;
+    temp_f16 = (coss(-player->unk_02C[1]) * player->unk_094) + arg3;
+    if (
+        ((player->unk_0BC & 0x800) != 0x800) &&
+        ((player->unk_0BC & 0x10) != 0x10) &&
+        !(player->unk_044 & 0x4000) &&
+        (
+            (((player->unk_094 / 18.0f) * 216.0f) <= 8.0f) ||
+            (
+                ((player->unk_07C >> 0x10) < 5) &&
+                ((player->unk_07C >> 0x10) > -5)
+            )
+        )) {
+        if ((player->unk_0BC & 0x20) == 0x20) {
+            player->unk_0C0 = (f32)(player->unk_0C0 - (player->unk_0C0 / 10));
+        } else {
+            temp_v0_3 = player->unk_0C0;
+            player->unk_0C0 = player->unk_078 * 9;
+            temp_a0 = player->unk_0C0 - temp_v0_3;
+            player->unk_0C0 = (f32)(temp_v0_3 + (temp_a0 / 15));
         }
-        temp_a0 = player->unk_0C0;
-        player->unk_0C0 = player->unk_078 * 9;
-        player->unk_0C0 = (s16) (s32) (f32) (temp_a0 + ((s16) (player->unk_0C0 - temp_a0) / 15));
-        return;
-    }
-    temp_v0_3 = player->unk_0C0;
-    if (D_801652C0[arg1] & 8) {
-        var_v1 = 2;
     } else {
-        var_v1 = 0;
-    }
-    if ((player->unk_09C >= 200.0f) && (var_v1 == 2) && ((temp_lo = temp_v0_3 / 182, ((temp_lo < 0x10) == 0)) || (temp_lo < -0xF))) {
-        sp2E = temp_v0_3;
-        sp24 = temp_f16;
-        sp1A = atan2s(arg2 - arg4, arg3 - arg5);
-        player->unk_0C0 = sp1A - atan2s(arg2 - sp28, arg3 - temp_f16);
-    } else {
-        sp2E = temp_v0_3;
-        sp24 = temp_f16;
-        sp1A = atan2s(arg2 - arg4, arg3 - arg5);
-        player->unk_0C0 = (sp1A - atan2s(arg2 - sp28, arg3 - temp_f16)) * 2;
-    }
-    if (((player->unk_0BC & 0x10) != 0x10) && (((temp_t9 = (s32) player->unk_07C >> 0x10, (temp_t9 > 0)) && (player->unk_0C0 < 0)) || ((temp_t9 < 0) && (player->unk_0C0 > 0)))) {
-        if (player->unk_0C0 > 0) {
-            player->unk_0C0 = player->unk_078 * 0x14;
+        temp_v0_3 = player->unk_0C0;
+        if (D_801652C0[arg1] & 8) {
+            var_v1 = 2;
+        } else {
+            var_v1 = 0;
         }
-        if (player->unk_0C0 < 0) {
-            player->unk_0C0 = player->unk_078 * 0x14;
+        if ((player->unk_09C >= 200.0f) &&
+            (var_v1 == 2) &&
+            (
+                ((player->unk_0C0 / 182) >= 0x10) ||
+                ((player->unk_0C0 / 182) < -0xF)
+            )) {
+            player->unk_0C0 = atan2s(arg2 - arg4, arg3 - arg5) - atan2s(arg2 - sp28, arg3 - temp_f16);
+        } else {
+            player->unk_0C0 = (atan2s(arg2 - arg4, arg3 - arg5) - atan2s(arg2 - sp28, arg3 - temp_f16)) * 2;
         }
-        player->unk_0C0 = (s16) (s32) (f32) (temp_v0_3 + ((s16) (player->unk_0C0 - temp_v0_3) / 12));
-        return;
+        if (((player->unk_0BC & 0x10) != 0x10) &&
+            (
+                (
+                    ((player->unk_07C >> 0x10) > 0) &&
+                    (player->unk_0C0 < 0)
+                ) ||
+                (
+                    ((player->unk_07C >> 0x10) < 0) &&
+                    (player->unk_0C0 > 0)
+                )
+            )) {
+            if (player->unk_0C0 > 0) {
+                player->unk_0C0 = player->unk_078 * 0x14;
+            }
+            if (player->unk_0C0 < 0) {
+                player->unk_0C0 = player->unk_078 * 0x14;
+            }
+            temp_a0 = player->unk_0C0 - temp_v0_3;
+            player->unk_0C0 = (f32)(temp_v0_3 + (temp_a0 / 12));
+        } else {
+            if (player->unk_0C0 >= 0x1C71) {
+                player->unk_0C0 = 0x1C70;
+            }
+            if (player->unk_0C0 < -0x1C70) {
+                player->unk_0C0 = -0x1C70;
+            }
+            temp_a0 = player->unk_0C0 - temp_v0_3;
+            player->unk_0C0 = (f32)(temp_v0_3 + (temp_a0 / 12));
+        }
     }
-    if (player->unk_0C0 >= 0x1C71) {
-        player->unk_0C0 = 0x1C70;
-    }
-    if (player->unk_0C0 < -0x1C70) {
-        player->unk_0C0 = -0x1C70;
-    }
-    var_t7 = (s32) (f32) (temp_v0_3 + ((s16) (player->unk_0C0 - temp_v0_3) / 12));
-block_33:
-    player->unk_0C0 = (s16) var_t7;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002AE38.s")
-#endif
-
-#ifdef NEEDS_RODATA
-//data_0DD0A0_2.s
-// Might be plain data?
-extern u16 D_800E3C70[10];// = { 0x0003, 0x0016, 0x0026, 0x003c, 0x0050, 0x0069, 0x0090, 0x009d, 0x00a9, 0x00cc };
-extern u16 D_800E3C84[10];// = { 0x000c, 0x0021, 0x002f, 0x0045, 0x005f, 0x007a, 0x0098, 0x00a5, 0x00b3, 0x00d5 };
 
 void func_8002B218(Player *player) {
     u16 someIndex;
@@ -1562,11 +1637,8 @@ void func_8002B218(Player *player) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002B218.s")
-#endif
 
-void func_8002B308(Player *player, s8 arg1, s8 arg2) {
+void func_8002B308(Player *player, s8 arg1, UNUSED s8 arg2) {
     if ((player->statusEffects & 2) == 2) {
         func_8008EAE0(player, arg1);
     }
@@ -1603,7 +1675,7 @@ void func_8002B308(Player *player, s8 arg1, s8 arg2) {
     if ((player->statusEffects & 0x01000000) == 0x01000000) {
         func_8008EAE0(player, arg1);
     }
-    if ((player->statusEffects & 0x800000) == 0x800000) {
+    if ((player->statusEffects & 0x00800000) == 0x00800000) {
         func_8008EC88(player, arg1);
     }
     if ((player->statusEffects & 0x8000) == 0x8000) {
@@ -1623,7 +1695,7 @@ void func_8002B308(Player *player, s8 arg1, s8 arg2) {
     }
 }
 
-void func_8002B5C0(Player *player, s8 arg1, s8 arg2) {
+void func_8002B5C0(Player *player, UNUSED s8 arg1, UNUSED s8 arg2) {
     if (((player->unk_0CA & 8) != 0) || ((player->unk_0CA & 2) != 0)) {
         player->statusEffects &= 0xFE1D0478;
     }
@@ -1689,90 +1761,38 @@ void func_8002B830(Player *player, s8 arg1, s8 arg2) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-extern ? D_801653C0;
-
 void func_8002B8A4(Player *player_one, Player *player_two) {
-    s32 spC;
-    Player *temp_a1;
-    Player *temp_a2;
-    Player *temp_a3;
-    Player *temp_t0;
-    Player *temp_t1;
-    Player *temp_t2;
-    Player *temp_t3;
-    Player *temp_v0;
     s32 var_v1;
 
-    temp_v0 = gPlayerOne;
-    if (player_one == temp_v0) {
-        spC = 0;
-    }
-    temp_a1 = gPlayerTwo;
-    var_v1 = spC;
-    if (player_one == temp_a1) {
-        var_v1 = 1;
-    }
-    temp_a2 = gPlayerThree;
-    if (player_one == temp_a2) {
-        var_v1 = 2;
-    }
-    temp_a3 = gPlayerFour;
-    if (player_one == temp_a3) {
-        var_v1 = 3;
-    }
-    temp_t0 = gPlayerFive;
-    if (player_one == temp_t0) {
-        var_v1 = 4;
-    }
-    temp_t1 = gPlayerSix;
-    if (player_one == temp_t1) {
-        var_v1 = 5;
-    }
-    temp_t2 = gPlayerSeven;
-    if (player_one == temp_t2) {
-        var_v1 = 6;
-    }
-    temp_t3 = gPlayerEight;
-    if (player_one == temp_t3) {
-        var_v1 = 7;
-    }
-    *(&D_801653C0 + (var_v1 * 4)) = player_two;
-    if (player_two == temp_v0) {
-        var_v1 = 0;
-    }
-    if (player_two == temp_a1) {
-        var_v1 = 1;
-    }
-    if (player_two == temp_a2) {
-        var_v1 = 2;
-    }
-    if (player_two == temp_a3) {
-        var_v1 = 3;
-    }
-    if (player_two == temp_t0) {
-        var_v1 = 4;
-    }
-    if (player_two == temp_t1) {
-        var_v1 = 5;
-    }
-    if (player_two == temp_t2) {
-        var_v1 = 6;
-    }
-    if (player_two == temp_t3) {
-        var_v1 = 7;
-    }
-    *(&D_801653C0 + (var_v1 * 4)) = player_one;
+    /*
+    if's are being done bracket-less on purpose,
+    Technically only the `player_one == gPlayerEight` NEEDS to be
+    bracket-less that looks weird
+    */
+    if (player_one == gPlayerOne)   var_v1 = 0;
+    if (player_one == gPlayerTwo)   var_v1 = 1;
+    if (player_one == gPlayerThree) var_v1 = 2;
+    if (player_one == gPlayerFour)  var_v1 = 3;
+    if (player_one == gPlayerFive)  var_v1 = 4;
+    if (player_one == gPlayerSix)   var_v1 = 5;
+    if (player_one == gPlayerSeven) var_v1 = 6;
+    if (player_one == gPlayerEight) var_v1 = 7;
+    D_801653C0[var_v1] = player_two;
+    if (player_two == gPlayerOne)   var_v1 = 0;
+    if (player_two == gPlayerTwo)   var_v1 = 1;
+    if (player_two == gPlayerThree) var_v1 = 2;
+    if (player_two == gPlayerFour)  var_v1 = 3;
+    if (player_two == gPlayerFive)  var_v1 = 4;
+    if (player_two == gPlayerSix)   var_v1 = 5;
+    if (player_two == gPlayerSeven) var_v1 = 6;
+    if (player_two == gPlayerEight) var_v1 = 7;
+    D_801653C0[var_v1] = player_one;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002B8A4.s")
-#endif
 
 #ifdef NON_MATCHING
 // data_0DD0A0_3_0_0.s
 extern f64 D_800ED7D0;// = 4.2;
-void func_8002B9CC(Player *player, s8 arg1, s32 arg2) {
+void func_8002B9CC(Player *player, s8 arg1, UNUSED s32 arg2) {
     f32 temp_f0;
     f32 temp_f2;
     f32 temp_f14;
@@ -1812,7 +1832,7 @@ GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002B9CC.s")
 //generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
 extern s16 D_800E3C98[10];// = { 0x0000, 0x00b6, 0x016c, 0x0222, 0x02d8, 0x038e, 0x0444, 0x04fa, 0x05b0, 0x0666 };
 
-void func_8002BB9C(Player *player, f32 *arg1, f32 *arg2, f32 *arg3) {
+void func_8002BB9C(Player *player, f32 *arg1, f32 *arg2, UNUSED f32 *arg3) {
     Mat3 sp64;
     Vec3f sp58;
     Vec3f sp4C;
@@ -1855,12 +1875,7 @@ void func_8002BB9C(Player *player, f32 *arg1, f32 *arg2, f32 *arg3) {
 #else
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002BB9C.s")
 #endif
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_2.s
-// extern s32 D_800E3CAC;
-// extern s32 D_800E3CC8;
-
+ 
 void func_8002BD58(Player *player) {
     s32 sp2C[7] = { 0x002f0000, 0x00300000, 0x00310000, 0x00320000, 0x00320000, 0x00320000, 0x00320000 };
     s32  spC[8] = { 0x00280000, 0x002c0000, 0x00300000, 0x00320000, 0x00320000, 0x00320000, 0x00320000, 0x00320000 };
@@ -1889,9 +1904,6 @@ void func_8002BD58(Player *player) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002BD58.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
@@ -1966,199 +1978,108 @@ void func_8002C11C(Player *player) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-extern ? D_80165310;
-extern s16 D_80165320;
-extern ? D_80165330;
-s16 gCurrentCourseId;                               /* unable to generate initializer */
-
 void func_8002C17C(Player *player, s8 playerId) {
-    s16 *sp1C;
-    s16 *temp_v1;
-    s16 *temp_v1_2;
-    s16 *temp_v1_3;
-    s16 *temp_v1_4;
-    s16 *temp_v1_5;
-    s16 *temp_v1_6;
-    s16 temp_v0;
-    s32 temp_a0_2;
-    s32 temp_a3;
-    s32 temp_v0_2;
-    s32 temp_v0_3;
-    s32 temp_v0_4;
-    s32 temp_v0_5;
-    s32 temp_v0_6;
-    s32 temp_v0_7;
-    s32 temp_v0_8;
-    s32 temp_v0_9;
-    u16 temp_a0;
-
-    temp_v0 = gCurrentCourseId;
-    switch (temp_v0) {                              /* irregular */
-    case 4:
-        temp_v0_2 = playerId * 2;
-        temp_v1 = temp_v0_2 + &D_80165330;
-        if ((player->unk_110.unk3C[2] >= 600.0f) && (*temp_v1 == 0)) {
-            *temp_v1 = 1;
-            *(&D_80165320 + temp_v0_2) = gNearestWaypointByPlayerId[playerId];
-            *(&D_80165310 + temp_v0_2) = gPathIndexByPlayerId[playerId];
-            return;
-        }
-        temp_v0_3 = playerId * 2;
-        temp_v1_2 = temp_v0_3 + &D_80165330;
-        if (*temp_v1_2 == 0) {
-            *(&D_80165320 + temp_v0_3) = gNearestWaypointByPlayerId[playerId];
-            *(&D_80165310 + temp_v0_3) = gPathIndexByPlayerId[playerId];
-            return;
-        }
-        if (!(player->unk_0BC & 8)) {
-            sp1C = temp_v1_2;
+    switch (gCurrentCourseId) {                              /* irregular */
+    case COURSE_YOSHI_VALLEY:
+        if ((player->unk_110.unk3C[2] >= 600.0f) && (D_80165330[playerId] == 0)) {
+            D_80165330[playerId] = 1;
+            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
+            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
+        } else if (D_80165330[playerId] == 0) {
+            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
+            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
+        } else if (!(player->unk_0BC & 8)) {
             if (func_802ABDF4(player->unk_110.unk3A) == 0) {
-                *temp_v1_2 = 0;
-                return;
-            }
-        }
-        return;
-    case 5:
-        temp_a0 = player->unk_0F8;
-        temp_v0_4 = playerId * 2;
-        if (temp_a0 == 0x000B) {
-            temp_v1_3 = temp_v0_4 + &D_80165330;
-            if (*temp_v1_3 == 0) {
-                *temp_v1_3 = 1;
-                *(&D_80165320 + temp_v0_4) = gNearestWaypointByPlayerId[playerId];
-                *(&D_80165310 + temp_v0_4) = gPathIndexByPlayerId[playerId];
-                return;
-            }
-        }
-        temp_v0_5 = playerId * 2;
-        if (temp_a0 != 0x000B) {
-            *(&D_80165330 + temp_v0_5) = 0;
-            *(&D_80165320 + temp_v0_5) = gNearestWaypointByPlayerId[playerId];
-            *(&D_80165310 + temp_v0_5) = gPathIndexByPlayerId[playerId];
-            return;
-        }
-        break;
-    case 7:
-        temp_a0_2 = player->unk_0BC;
-        temp_v0_6 = playerId * 2;
-        temp_a3 = temp_a0_2 & 0x100000;
-        if (temp_a3 != 0) {
-            temp_v1_4 = temp_v0_6 + &D_80165330;
-            if (*temp_v1_4 == 0) {
-                *temp_v1_4 = 1;
-                *(&D_80165320 + temp_v0_6) = gNearestWaypointByPlayerId[playerId];
-                *(&D_80165310 + temp_v0_6) = gPathIndexByPlayerId[playerId];
-                return;
-            }
-        }
-        if (temp_a3 == 0) {
-            temp_v0_7 = playerId * 2;
-            if (!(temp_a0_2 & 8)) {
-                *(&D_80165330 + temp_v0_7) = 0;
-                *(&D_80165320 + temp_v0_7) = gNearestWaypointByPlayerId[playerId];
-                *(&D_80165310 + temp_v0_7) = gPathIndexByPlayerId[playerId];
-                return;
+                D_80165330[playerId] = 0;
             }
         }
         break;
-    case 13:
-        temp_v0_8 = playerId * 2;
-        temp_v1_5 = temp_v0_8 + &D_80165330;
-        if ((player->unk_110.unk3C[2] >= 600.0f) && (*temp_v1_5 == 0)) {
-            *temp_v1_5 = 1;
-            *(&D_80165320 + temp_v0_8) = gNearestWaypointByPlayerId[playerId];
-            *(&D_80165310 + temp_v0_8) = gPathIndexByPlayerId[playerId];
-            return;
+    case COURSE_FRAPPE_SNOWLAND:
+        if ((player->unk_0F8 == 0x000B) && (D_80165330[playerId] == 0)) {
+            D_80165330[playerId] = 1;
+            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
+            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
+        } else if (player->unk_0F8 != 0x000B) {
+            D_80165330[playerId] = 0;
+            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
+            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
         }
-        temp_v0_9 = playerId * 2;
-        temp_v1_6 = temp_v0_9 + &D_80165330;
-        if (*temp_v1_6 == 0) {
-            *(&D_80165320 + temp_v0_9) = gNearestWaypointByPlayerId[playerId];
-            *(&D_80165310 + temp_v0_9) = gPathIndexByPlayerId[playerId];
-            return;
+        break;
+    case COURSE_ROYAL_RACEWAY:
+        if (((player->unk_0BC & 0x100000) != 0) && (D_80165330[playerId] == 0)) {
+            D_80165330[playerId] = 1;
+            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
+            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
+        } else if (((player->unk_0BC & 0x100000) == 0) && !(player->unk_0BC & 8)) {
+            D_80165330[playerId] = 0;
+            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
+            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
         }
-        if (!(player->unk_0BC & 8) && !(player->unk_0CA & 1)) {
-            *temp_v1_6 = 0;
-            return;
+        break;
+    case COURSE_RAINBOW_ROAD:
+        if ((player->unk_110.unk3C[2] >= 600.0f) && (D_80165330[playerId] == 0)) {
+            D_80165330[playerId] = 1;
+            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
+            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
+        } else if (D_80165330[playerId] == 0) {
+            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
+            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
+        } else if (!((player->unk_0BC & 8) || (player->unk_0CA & 1))) {
+            D_80165330[playerId] = 0;
         }
         break;
     default:
-        *(&D_80165330 + (playerId * 2)) = 0;
+        D_80165330[playerId] = 0;
+        if(1){}
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002C17C.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-void func_8002C17C(Player *, s8);                      /* extern */
-f32 func_802AAB4C();                                /* extern */
-s16 gCurrentCourseId;                               /* unable to generate initializer */
 
 void func_8002C4F8(Player *player, s8 arg1) {
-    f32 *sp24;
-    f32 *var_a2;
-    f32 temp_f0;
-    s16 temp_v0;
-    s16 temp_v0_2;
-    s16 temp_v0_3;
-    u16 temp_t1;
-    u16 temp_t5;
-    u16 temp_v1;
-
-    temp_f0 = func_802AAB4C();
-    var_a2 = &D_801652A0[arg1];
-    *var_a2 = temp_f0;
-    if (player->pos[1] <= temp_f0) {
-        player->unk_0DE |= 2;
+    D_801652A0[arg1] = func_802AAB4C(player);
+    if (player->pos[1] <= D_801652A0[arg1]) {
+        player->unk_0DE |= 0x0002;
     } else {
-        player->unk_0DE &= 0xFFFD;
+        player->unk_0DE &= ~0x0002;
     }
-    if (player->boundingBoxSize < (*var_a2 - player->pos[1])) {
-        temp_t5 = player->unk_0DE | 1;
-        player->unk_0DE = temp_t5;
-        player->unk_0DE = temp_t5 & 0xFFFD;
+    if (player->boundingBoxSize < (D_801652A0[arg1] - player->pos[1])) {
+        player->unk_0DE |= 1;
+        player->unk_0DE &= ~0x0002;
     } else {
-        player->unk_0DE &= 0xFFFE;
+        player->unk_0DE &= ~0x0001;
     }
-    if (player->boundingBoxSize < (*var_a2 - player->pos[1])) {
-        temp_v1 = player->unk_0DE;
-        temp_t1 = temp_v1 | 8;
-        if ((temp_v1 & 4) != 4) {
-            player->unk_0DE = temp_t1;
-            player->unk_0DE = temp_t1 | 4;
-            temp_v0 = gCurrentCourseId;
-            if ((temp_v0 != 6) && (temp_v0 != 0x0010) && (temp_v0 != 0x000D) && ((player->unk_000 & 0x4000) == 0x4000)) {
-                if ((temp_v0 == 2) || (temp_v0 == 0x0013)) {
-                    sp24 = var_a2;
+    if (player->boundingBoxSize < (D_801652A0[arg1] - player->pos[1])) {
+        if ((player->unk_0DE & 4) != 4) {
+            player->unk_0DE |= 8;
+            player->unk_0DE |= 4;
+            if ((gCurrentCourseId != COURSE_KOOPA_BEACH)  &&
+                (gCurrentCourseId != COURSE_SKYSCRAPER)   &&
+                (gCurrentCourseId != COURSE_RAINBOW_ROAD) &&
+                ((player->unk_000 & 0x4000) == 0x4000)) {
+                if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) ||
+                    (gCurrentCourseId == COURSE_BIG_DONUT)) {
                     func_800C9060((u8) arg1, 0x1900801CU);
                 } else {
-                    sp24 = var_a2;
                     func_800C9060((u8) arg1, 0x19008008U);
                 }
-                var_a2 = sp24;
             }
         }
     }
-    temp_v0_2 = gCurrentCourseId;
-    if ((temp_v0_2 == 6) || (temp_v0_2 == 0x0010) || (temp_v0_2 == 0x000D)) {
-        player->unk_0DE &= 0xFFF3;
+    if ((gCurrentCourseId == COURSE_KOOPA_BEACH) ||
+        (gCurrentCourseId == COURSE_SKYSCRAPER)  ||
+        (gCurrentCourseId == COURSE_RAINBOW_ROAD)) {
+        player->unk_0DE &= ~0x000C;
     }
-    if ((player->boundingBoxSize < (*var_a2 - player->pos[1])) && (player->unk_110.unk3C[2] >= 600.0f)) {
+    if ((player->boundingBoxSize < (D_801652A0[arg1] - player->pos[1])) && (player->unk_110.unk3C[2] >= 600.0f)) {
         player->unk_0CA |= 1;
     }
     if (player->unk_110.unk3C[2] >= 600.0f) {
-        player->unk_0CA |= 0x100;
+        player->unk_0CA |= 0x0100;
     } else if ((player->unk_0BC & 8) != 8) {
-        player->unk_0CA &= 0xFEFF;
+        player->unk_0CA &= ~0x0100;
     }
     if ((player->unk_000 & 0x1000) && ((func_802ABDF4(player->unk_110.unk3A) != 0) || (player->unk_0CA & 1))) {
-        temp_v0_3 = player->unk_0CA;
-        if (!(temp_v0_3 & 2) && !(temp_v0_3 & 8) && !(player->unk_0BC & 0x1000)) {
+        if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8) && !(player->unk_0BC & 0x1000)) {
             func_80090778(player);
             func_80090868(player);
         }
@@ -2169,9 +2090,6 @@ void func_8002C4F8(Player *player, s8 arg1) {
     }
     func_8002C17C(player, arg1);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002C4F8.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -2391,58 +2309,39 @@ void func_8002CD48(Player *player, s8 arg1, s8 arg2) {
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002CD48.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 3b40ab93768f52ac241c5ae84ef58ef6bc4cb1de
-void func_8003680C(f32, Player *, s16, s16, s32);      /* extern */
-
+#ifdef NON_MATCHING
 void func_8002D028(Player *player, s8 arg1) {
-    f32 sp54;
-    f32 sp50;
-    f32 sp4C;
-    s16 sp46;
-    s32 sp34;
-    s16 *sp2C;
+    f32 thing0 = 8.0f;
+    f32 thing1 = 182.0f;
+    Vec3f sp4C;
     f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f2;
-    s16 *temp_v0_2;
-    s16 temp_v0;
-    s16 temp_v1;
-    s16 temp_v1_2;
     s16 var_a2;
-    s32 temp_f18;
-    s32 temp_f8;
-    s32 temp_t1;
+    s16 test;
+    f32 temp_f18;
+    s16 temp_t1;
 
-    temp_v0 = D_80165270[arg1];
-    sp34 = arg1 * 2;
-    sp4C = D_80165210[temp_v0];
-    sp50 = 0.0f;
-    sp54 = D_80165230[temp_v0];
-    temp_f0 = 8.0f * 182.0f;
-    temp_v1 = -func_802B5224(player->pos, &sp4C) - player->unk_02C[1];
-    temp_f8 = (s32) temp_f0;
-    var_a2 = temp_v1;
-    temp_f18 = (s32) (-8.0f * 182.0f);
-    if ((s16) temp_f8 < temp_v1) {
-        var_a2 = (s16) temp_f8;
+    sp4C[0] = D_80165210[D_80165270[arg1]];
+    sp4C[1] = 0.0f;
+    sp4C[2] = D_80165230[D_80165270[arg1]];
+    temp_f0 = thing0 * thing1;
+    test = -func_802B5224(player->pos, sp4C) - player->unk_02C[1];
+    var_a2 = test;
+    if ((s16)temp_f0 < test) {
+        var_a2 = temp_f0;
     }
-    if (var_a2 < (s16) temp_f18) {
-        var_a2 = (s16) temp_f18;
+    temp_f18 = -thing0 * thing1;
+    if (test < (s16)temp_f18) {
+        var_a2 = temp_f18;
     }
-    temp_v0_2 = sp34 + D_80165020;
-    sp2C = temp_v0_2;
-    temp_t1 = (s32) (*temp_v0_2 + (s16) (s32) ((f32) (var_a2 * 0x35) / temp_f0)) / 2;
-    sp46 = (s16) temp_t1;
-    func_8003680C(182.0f, player, (s16) temp_t1, var_a2, sp34);
-    *temp_v0_2 = (s16) temp_t1;
-    temp_f0_2 = sp54 - player->pos[2];
-    temp_f2 = sp4C - player->pos[0];
-    if (sqrtf((temp_f0_2 * temp_f0_2) + (temp_f2 * temp_f2)) <= 8.0f) {
+    temp_t1 = (D_80165020[arg1] + (s16) ((var_a2 * 0x35) / temp_f0)) / 2;
+    func_8003680C(player, (s16) temp_t1);
+    D_80165020[arg1] = (s16) temp_t1;
+    temp_f0 = sp4C[2] - player->pos[2];
+    temp_f18 = sp4C[0] - player->pos[0];
+    if (sqrtf((temp_f0 * temp_f0) + (temp_f18 * temp_f18)) <= 8.0f) {
         func_800224F0(&player->unk_02C[1], -0x8000, 0x016C);
-        temp_v1_2 = player->unk_02C[1];
-        if ((temp_v1_2 < -0x7F41) || (temp_v1_2 >= 0x7F42)) {
-            player->unk_000 &= 0xFDFF;
+        if ((player->unk_02C[1] < -0x7F41) || (player->unk_02C[1] > 0x7F41)) {
+            player->unk_000 &= ~0x0200;
         }
         player->unk_08C = 0.0f;
         player->unk_094 = 0.0f;
@@ -2454,9 +2353,9 @@ void func_8002D028(Player *player, s8 arg1) {
         player->unk_034[2] = 0.0f;
         player->unk_0C0 = 0;
         player->unk_078 = 0;
-        return;
+    } else {
+        player->unk_08C = 1200.0f;
     }
-    player->unk_08C = 1200.0f;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002D028.s")
@@ -3533,20 +3432,6 @@ void func_8002FCA8(Player *player, s8 arg1) {
     player->unk_208 = player->unk_088 - var_f12;
 }
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0_0
-extern f64 D_800ED8D8;// = 1.1;
-extern f64 D_800ED8E0;// = 1.1;
-extern f64 D_800ED8E8;// = 1.0125;
-extern f64 D_800ED8F0;// = 1.2;
-extern f64 D_800ED8F8;// = 1.025;
-extern f64 D_800ED900;// = 1.2;
-extern f64 D_800ED908;// = 0.7;
-extern f64 D_800ED910;// = 0.7;
-extern f64 D_800ED918;// = 0.004;
-extern f64 D_800ED920;// = 0.004;
-extern f64 D_800ED928;// = 0.7;
-
 void func_8002FE84(Player *player, f32 arg1) {
     f32 temp_f0_3;
     f32 var_f0;
@@ -3592,27 +3477,6 @@ void func_8002FE84(Player *player, f32 arg1) {
         player->unk_098 = (temp_f0_3 * temp_f0_3) / 25.0f;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002FE84.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0_0
-extern f64 D_800ED940;// = -0.2
-extern f64 D_800ED948;// = -0.55
-extern f64 D_800ED950;// = 0.004
-extern f64 D_800ED958;// = 0.004
-extern f64 D_800ED960;// = 0.01
-extern f64 D_800ED968;// = 0.01
-extern f64 D_800ED970;// = 0.008
-extern f64 D_800ED978;// = 0.008
-extern f64 D_800ED980;// = 0.3
-extern f64 D_800ED988;// = 0.15
-extern f64 D_800ED990;// = 0.05
-extern f64 D_800ED998;// = 0.04
-extern f64 D_800ED9A0;// = -0.85
-extern f64 D_800ED9A8;// = -0.55
-extern f64 D_800ED9B0;// = 0.05
 
 f32 func_80030150(Player *player, s8 arg1) {
     f32 var_f0;
@@ -3624,21 +3488,21 @@ f32 func_80030150(Player *player, s8 arg1) {
     var_f2 = (player->unk_094 / 18.0f) * 216.0f;
     if (var_f2 >= 8.0f) {
         if ((player->unk_0BC & 0x200) != 0x200) {
-            if(1) {}
             if ((s32) player->boundingBoxCorners[3].surfaceType >= 0xF) {
                 // ???????
+                if(1) {}
             } else {
                 var_f0 += D_800E2E90[player->characterId][player->boundingBoxCorners[3].surfaceType];
             }
-            if ((s32) player->boundingBoxCorners[2].surfaceType < 0xF) {
+            
+            if ((s32) player->boundingBoxCorners[2].surfaceType < 0xF) 
                 var_f0 += D_800E2E90[player->characterId][player->boundingBoxCorners[2].surfaceType];
-            }
-            if ((s32) player->boundingBoxCorners[1].surfaceType < 0xF) {
+            
+            if ((s32) player->boundingBoxCorners[1].surfaceType < 0xF) 
                 var_f0 += D_800E2EB0[player->characterId][player->boundingBoxCorners[1].surfaceType];
-            }
-            if ((s32) player->boundingBoxCorners[0].surfaceType < 0xF) {
+            
+            if ((s32) player->boundingBoxCorners[0].surfaceType < 0xF) 
                 var_f0 += D_800E2E90[player->characterId][player->boundingBoxCorners[0].surfaceType];
-            }
         }
         if (((player->unk_0BC & 8) != 8) && ((player->unk_0CA & 2) != 2)) {
             temp_lo = player->unk_0C4 / 182;
@@ -3743,20 +3607,7 @@ f32 func_80030150(Player *player, s8 arg1) {
     func_8002FE84(player, var_f2);
     return (1.0f - player->unk_104) * var_f2;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80030150.s")
-#endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0_0
-extern f32 D_800ED9B8// = 0.35f;
-extern f32 D_800ED9BC// = 0.55f;
-extern f32 D_800ED9C0// = 0.94f;
-extern f32 D_800ED9C4// = 0.85f;
-extern f32 D_800ED9C8// = 0.46f;
-extern f32 D_800ED9CC// = 0.48f;
-extern f32 D_800ED9D0// = 0.3f;
-extern f32 D_800ED9D4// = 0.54f;
 void func_80030A34(Player *player) {
     f32 var_f0;
     f32 var_f2;
@@ -3805,9 +3656,6 @@ void func_80030A34(Player *player) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80030A34.s")
-#endif
 
 // This is likely the function responsible for detecting triple-tap "A" for "fast" acceleration
 void func_80030C34(Player *player) {
@@ -3939,77 +3787,70 @@ player->unk_214 is possibly the max-acceleration allowed
 No speculation on what player->unk_0C4 could be
 */
 void func_80030FC8(Player *player) {
-    f64 some_multiplier;
     s32 player_index;
 
     player_index = get_player_index_for_player(player);
     if (D_80165460[player_index] == 0) {
-        if ((0.0                            <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800ED9D8))) {
-            some_multiplier = D_800ED9E0;
-            player->unk_09C += gKartAccelerationTables[player->characterId][0] + (some_multiplier * (player->unk_0C4 / 182));
+        if ((0.0                     <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.1))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][0] + (0.05 * (player->unk_0C4 / 182));
         }
-        some_multiplier = D_800ED9E8;
-        if (((player->unk_214 * D_800ED9F0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800ED9F8))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][1] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.1) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.2))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][1] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 * D_800EDA00) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA08))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][2] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.2) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.3))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][2] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 * D_800EDA10) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA18))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][3] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.3) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.4))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][3] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 * D_800EDA20) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5       ))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][4] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.4) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][4] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 *        0.5) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA28))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][5] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.5) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.6))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][5] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 * D_800EDA30) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA38))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][6] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.6) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.7))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][6] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 * D_800EDA40) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA48))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][7] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.7) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.8))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][7] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 * D_800EDA50) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA58))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][8] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.8) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.9))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][8] + (0.05 * (player->unk_0C4 / 182));
         }
-        if (((player->unk_214 * D_800EDA60) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0      ))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][9] + (some_multiplier * (player->unk_0C4 / 182));
+        if (((player->unk_214 * 0.9) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0))) {
+            player->unk_09C += gKartAccelerationTables[player->characterId][9] + (0.05 * (player->unk_0C4 / 182));
         }
     } else {
-        if ((0.0                            <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA68))) {
-            some_multiplier = D_800EDA70;
-            player->unk_09C += (gKartAccelerationTables[player->characterId][0] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if ((0.0                     <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.1))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][0] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        some_multiplier = D_800EDA78;
-        if (((player->unk_214 * D_800EDA80) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA88))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][1] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.1) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.2))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][1] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * D_800EDA90) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDA98))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][2] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.2) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.3))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][2] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * D_800EDAA0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDAA8))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][3] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.3) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.4))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][3] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * D_800EDAB0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5       ))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][4] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.4) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][4] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * 0.5)        <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDAB8))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][5] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.5) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.6))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][5] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * D_800EDAC0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDAC8))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][6] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.6) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.7))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][6] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * D_800EDAD0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDAD8))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][7] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.7) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.8))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][7] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * D_800EDAE0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDAE8))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][8] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
-            // Only here to satisfy the compiler gods, may they bless us with byte-for-byte matches
-            if (1) { } if (1) { } if (1) { } if (1) { } if (1) { }
+        if (((player->unk_214 * 0.8) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.9))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][8] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
-        if (((player->unk_214 * D_800EDAF0) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0      ))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][9] + (some_multiplier * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->unk_214 * 0.9) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0))) {
+            player->unk_09C += (gKartAccelerationTables[player->characterId][9] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
         }
     }
     if (player->unk_09C < 0.0f) {
@@ -4036,7 +3877,7 @@ void func_80031F48(Player *player, f32 arg1) {
     if (player->unk_09C <= 0.0f) {
         player->unk_09C = 0.0f;
     }
-    if (player->unk_094 < D_800EDAF8) {
+    if (player->unk_094 < 0.2) {
         player->unk_08C = 0.0f;
     }
     if (player->unk_214 <= player->unk_09C) {
@@ -4174,10 +4015,6 @@ void func_8003221C(Player *player) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0_0
-extern f64 D_800EDB00;// = 0.02;
-extern f64 D_800EDB08;// = 1.2;
 void func_800323E4(Player *player) {
     s32 var_v1;
     f32 test;
@@ -4247,31 +4084,6 @@ void func_800323E4(Player *player) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_800323E4.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0_0
-extern f64 D_800EDB10// = 0.1;
-extern f64 D_800EDB18// = 0.1;
-extern f64 D_800EDB20// = 0.2;
-extern f64 D_800EDB28// = 0.2;
-extern f64 D_800EDB30// = 0.3;
-extern f64 D_800EDB38// = 0.3;
-extern f64 D_800EDB40// = 0.4;
-extern f64 D_800EDB48// = 0.4;
-extern f64 D_800EDB50// = 0.6;
-extern f64 D_800EDB58// = 0.6;
-extern f64 D_800EDB60// = 0.7;
-extern f64 D_800EDB68// = 0.7;
-extern f64 D_800EDB70// = 0.8;
-extern f64 D_800EDB78// = 0.8;
-extern f64 D_800EDB80// = 0.9;
-extern f64 D_800EDB88// = 0.9;
-extern f32 D_800EDB90// = 0.9;
-extern s16 D_801656F0;
-extern s32 gRaceFrameCounter;
 
 void func_80032700(Player *player) {
     s32 temp_v0;
@@ -4328,69 +4140,59 @@ void func_80032700(Player *player) {
     player->unk_044 |= 0x20;
     player->unk_098 = (player->unk_09C * player->unk_09C) / 25.0f;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80032700.s")
-#endif
 
 void func_80032CB0(Player *player, f32 arg1) {
     player->unk_09C -= arg1;
     if (player->unk_09C <= 0.0f) {
         player->unk_09C = 0.0f;
     }
-    if (player->unk_094 < D_800EDB98) {
+    if (player->unk_094 < 0.2) {
         player->unk_08C = 0.0f;
     }
     if (player->unk_214 <= player->unk_09C) {
         player->unk_09C = player->unk_214;
     }
-    if ((f64) player->unk_09C <= (player->unk_214 * D_800EDBA0)) {
-        player->statusEffects &= 0xEFFFFFFF;
+    if ((f64) player->unk_09C <= (player->unk_214 * 0.7)) {
+        player->statusEffects &= ~0x10000000;
     }
-    player->statusEffects &= 0xFDFFFFFF;
-    player->unk_044 &= 0xFFDF;
+    player->statusEffects &= ~0x02000000;
+    player->unk_044 &= ~0x0020;
     player->unk_098 = (player->unk_09C * player->unk_09C) / 25.0f;
 }
 
 void func_80032D94(Player *player) {
-    f64 some_multiplier;
     UNUSED s32 player_index;
 
     player_index = get_player_index_for_player(player);
-    if ((0.0                            <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDBA8))) {
-        some_multiplier = D_800EDBB0;
-        player->unk_09C += gKartAccelerationTables[player->characterId][0] * some_multiplier;
+    if ((0.0                     <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.1))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][0] * 3.2;
     }
-    some_multiplier = D_800EDBB8;
-    if (((player->unk_214 * D_800EDBC0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDBC8))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][1] * some_multiplier;
+    if (((player->unk_214 * 0.1) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.2))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][1] * 3.2;
     }
-    if (((player->unk_214 * D_800EDBD0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDBD8))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][2] * some_multiplier;
+    if (((player->unk_214 * 0.2) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.3))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][2] * 3.2;
     }
-    if (((player->unk_214 * D_800EDBE0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDBE8))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][3] * some_multiplier;
-        if (1) { } if (1) { } if (1) { } if (1) { } if (1) { }
+    if (((player->unk_214 * 0.3) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.4))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][3] * 3.2;
     }
-    if (((player->unk_214 * D_800EDBF0) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5       ))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][4] * some_multiplier;
-        if (1) { } if (1) { } if (1) { } if (1) { } if (1) { }
+    if (((player->unk_214 * 0.4) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][4] * 3.2;
     }
-    if (((player->unk_214 *        0.5) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDBF8))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][5] * some_multiplier;
+    if (((player->unk_214 * 0.5) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.6))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][5] * 3.2;
     }
-    if (((player->unk_214 * D_800EDC00) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDC08))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][6] * some_multiplier;
+    if (((player->unk_214 * 0.6) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.7))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][6] * 3.2;
     }
-    if (((player->unk_214 * D_800EDC10) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDC18))) {
-        some_multiplier = D_800EDC20;
-        player->unk_09C += gKartAccelerationTables[player->characterId][7] * some_multiplier;
+    if (((player->unk_214 * 0.7) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.8))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][7] * 2.8;
     }
-    some_multiplier = D_800EDC28;
-    if (((player->unk_214 * D_800EDC30) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * D_800EDC38))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][8] * some_multiplier;
+    if (((player->unk_214 * 0.8) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.9))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][8] * 2.8;
     }
-    if (((player->unk_214 * D_800EDC40) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0      ))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][9] * some_multiplier;
+    if (((player->unk_214 * 0.9) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0))) {
+        player->unk_09C += gKartAccelerationTables[player->characterId][9] * 2.8;
     }
     if (player->unk_09C < 0.0f) {
         player->unk_09C = 0.0f;
@@ -4408,29 +4210,6 @@ void func_80033280(Player *player, f32 arg1) {
     }
     player->unk_098 = (player->unk_09C * player->unk_09C) / 25.0f;
 }
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0_0
-extern f64 D_800EDC48// = 0.1;
-extern f64 D_800EDC50// = 3.2;
-extern f64 D_800EDC58// = 3.2;
-extern f64 D_800EDC60// = 0.1;
-extern f64 D_800EDC68// = 0.2;
-extern f64 D_800EDC70// = 0.2;
-extern f64 D_800EDC78// = 0.3;
-extern f64 D_800EDC80// = 0.3;
-extern f64 D_800EDC88// = 0.4;
-extern f64 D_800EDC90// = 0.4;
-extern f64 D_800EDC98// = 0.6;
-extern f64 D_800EDCA0// = 0.6;
-extern f64 D_800EDCA8// = 0.7;
-extern f64 D_800EDCB0// = 0.7;
-extern f64 D_800EDCB8// = 0.8;
-extern f64 D_800EDCC0// = 2.8;
-extern f64 D_800EDCC8// = 2.8;
-extern f64 D_800EDCD0// = 0.8;
-extern f64 D_800EDCD8// = 0.9;
-extern f64 D_800EDCE0// = 0.9;
 
 void func_800332E8(Player *player, s32 arg1) {
     if ((D_80165280[arg1] >= 0.0) && (D_80165280[arg1] < ((f64) player->unk_214 * 0.1))) {
@@ -4469,9 +4248,6 @@ void func_800332E8(Player *player, s32 arg1) {
     }
     player->unk_098 = (D_80165280[arg1] * D_80165280[arg1]) / 25.0f;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_800332E8.s")
-#endif
 
 void func_800337CC(Player *player, f32 arg1, s32 arg2) {
     player->unk_044 &= ~0x20;
@@ -4636,169 +4412,166 @@ GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80033A40.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-? func_8002A8A4(f32, f32, Player *, s8);            /* extern */
+//generated by m2c commit 0927f17aac197848d4ebdf0c6bbad74b01f0851c
 ? func_80033884(Player *, s32 *, s32 *, s32, s32, s32, s32); /* extern */
 ? func_80033A40(Player *, s32 *, s32 *, s32, s32, s32, f32); /* extern */
-? func_80036CB4(Player *);                          /* extern */
-s32 func_80038534(struct Controller *);             /* extern */
-static s32 D_800E3DF8[0x9C] = {
-    0,
-    0x3F000000,
-    0x3F000000,
-    0x3F000000,
-    0x3F000000,
-    0x3F000000,
-    0x3F000000,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F000000,
-    0x3F000000,
-    0x3F000000,
-    0x3F000000,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
+f32 D_800E3DF8[0x9C] = {
+    0.0f,
+    0.5f,
+    0.5f,
+    0.5f,
+    0.5f,
+    0.5f,
+    0.5f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.5f,
+    0.5f,
+    0.5f,
+    0.5f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.6f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.7f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
+    0.8f,
 };
 
 void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
@@ -4814,7 +4587,6 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     s32 sp40;
     s32 sp3C;
     s32 sp38;
-    ? *var_t6;
     f32 temp_f0;
     f32 temp_f0_2;
     f32 temp_f0_3;
@@ -4826,14 +4598,14 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     f32 var_f2;
     f32 var_f2_2;
     f32 var_f2_3;
+    s16 temp_v0_3;
     s16 temp_v1_3;
     s16 temp_v1_6;
     s16 var_s1_2;
     s16 var_s1_3;
+    s16 var_t1;
     s32 *temp_v0;
     s32 *temp_v0_2;
-    s32 *var_t7;
-    s32 temp_at;
     s32 temp_f6;
     s32 temp_f8;
     s32 temp_lo;
@@ -4862,7 +4634,6 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     s32 temp_t7;
     s32 temp_t9;
     s32 temp_v0_10;
-    s32 temp_v0_3;
     s32 temp_v0_7;
     s32 temp_v1;
     s32 temp_v1_2;
@@ -4873,7 +4644,6 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     s32 var_a0;
     s32 var_s1;
     s32 var_t0;
-    s32 var_t1;
     s32 var_t4;
     s32 var_v1;
     u16 temp_v0_6;
@@ -4883,17 +4653,8 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     u8 temp_v0_8;
     u8 temp_v0_9;
 
-    var_t7 = D_800E3DF8;
-    var_t6 = &sp44;
     sp2C0 = 0.0f;
-    do {
-        temp_at = *var_t7;
-        var_t7 += 0xC;
-        var_t6 += 0xC;
-        var_t6->unk-C = temp_at;
-        var_t6->unk-8 = (s32) var_t7->unk-8;
-        var_t6->unk-4 = (s32) var_t7->unk-4;
-    } while (var_t7 != (D_800E3DF8 + 0x270));
+    M2C_MEMCPY_ALIGNED(&sp44, D_800E3DF8, 0x270);
     temp_v1 = player->unk_0BC;
     if ((((temp_v1 & 2) != 2) && (((temp_lo = (s16) player->unk_0C0 / 182, ((temp_lo < 7) != 0)) && (temp_lo >= -6)) || ((controller->button & 0x10) != 0x10))) || (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f) || ((temp_v1 & 0x8000) == 0x8000)) {
         sp2BC = 0.0f;
@@ -5011,7 +4772,7 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
             var_t0 = (s32) ((f64) var_t0 * 1.05);
         }
     }
-    sp2E0 = var_t1;
+    sp2E0 = (s32) var_t1;
     sp2CC = var_t0;
     sp2C8 = var_v1;
     func_80033884(player, &sp2D0, &sp2E4, player->unk_07C, 0x0000005A, 0x78000 / var_v1, 0x000001C2);
@@ -5219,7 +4980,7 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
             }
             sp2C4 = var_f2_3;
             sp2C0 = var_f12;
-            func_8002A8A4(var_f12, 0.0f, player, arg2);
+            func_8002A8A4(player, arg2);
         } else {
             temp_t7 = (s32) player->unk_07C >> 0x10;
             var_s1_2 = ((s32) ((temp_t7 * 0xD) + 0x2B1) / 106) - 0x35;
@@ -5232,7 +4993,7 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
             }
             sp2C4 = var_f2_3;
             sp2C0 = var_f12;
-            func_8002A8A4(var_f12, 0.0f, player, arg2);
+            func_8002A8A4(player, arg2);
         }
         var_f0_3 = (player->unk_094 / 18.0f) * 216.0f;
         if ((var_f0_3 >= 0.0f) && (var_f0_3 < 8.0f)) {
@@ -5250,7 +5011,7 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
             player->unk_078 = (s16) (s32) ((f64) player->unk_078 * 0.9);
         } else {
             var_t4 = (s32) ((f64) player->unk_078 * 0.65);
-            goto block_125;
+            goto block_123;
         }
     } else {
         var_s1_3 = (s16) ((s32) player->unk_07C >> 0x10);
@@ -5261,7 +5022,7 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
             player->unk_078 = (s16) (s32) ((f32) var_s1_3 * (var_f2_3 + 6.0f));
         } else {
             var_t4 = (s32) ((f32) var_s1_3 * (var_f2_3 + 1.5f));
-block_125:
+block_123:
             player->unk_078 = (s16) var_t4;
         }
     }
@@ -5273,275 +5034,99 @@ block_125:
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80033AE0.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-? func_80036CB4(f32, Player *, s32);                /* extern */
-static s32 D_800E4068[0xA8] = {
-    0,
-    0x3DCCCCCD,
-    0x3DCCCCCD,
-    0x3E4CCCCD,
-    0x3E99999A,
-    0x3ECCCCCD,
-    0x3F000000,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F19999A,
-    0x3F000000,
-    0x3ECCCCCD,
-    0x3ECCCCCD,
-    0x3ECCCCCD,
-    0x3ECCCCCD,
-    0x3ECCCCCD,
-    0x3ECCCCCD,
-    0x3ECCCCCD,
-    0x3ECCCCCD,
-    0x3ECCCCCD,
-    0x3ECCCCCD,
-    0x3ECCCCCD,
-    0x3ECCCCCD,
-    0x3ECCCCCD,
-    0x3ECCCCCD,
-    0x3ECCCCCD,
-    0x3F000000,
-    0x3F000000,
-    0x3F000000,
-    0x3F000000,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F333333,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F4CCCCD,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-    0x3F19999A,
-};
-static ? D_800E4308;                                /* unable to generate initializer */
-
 void func_8003680C(Player *player, s16 arg1) {
-    s32 sp304;
-    ? sp24;
-    f32 *var_t1;
+    s32 sp304 = 0;
+    UNUSED f32 pad[6];
     f32 var_f0;
-    f32 var_f0_2;
-    s16 temp_v1_2;
     s16 var_v0;
-    s16 var_v0_2;
-    s32 *var_t6;
-    s32 temp_at;
-    s32 temp_t8;
-    s32 temp_v0;
-    s32 temp_v0_2;
-    s32 temp_v0_3;
-    s32 temp_v1;
+    f32 sp44[168] = {
+        0.0f, 0.1f, 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f,
+        0.6f, 0.6f, 0.6f, 0.6f, 0.7f, 0.7f, 0.7f, 0.7f,
+        0.7f, 0.7f, 0.7f, 0.6f, 0.5f, 0.4f, 0.4f, 0.4f,
+        0.4f, 0.4f, 0.4f, 0.4f, 0.4f, 0.4f, 0.4f, 0.4f,
+        0.4f, 0.4f, 0.4f, 0.4f, 0.5f, 0.5f, 0.5f, 0.5f,
+        0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f,
+        0.6f, 0.6f, 0.7f, 0.7f, 0.7f, 0.7f, 0.7f, 0.7f,
+        0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f,
+        0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f,
+        0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f,
+        0.8f, 0.8f, 0.8f, 0.8f, 0.6f, 0.6f, 0.6f, 0.6f,
+        0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f,
+        0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f,
+        0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f,
+        0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f,
+        0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f,
+        0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f,
+        0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f,
+        0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f,
+        0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f,
+        0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f, 0.6f,
+    };
+    f32 sp24[8] = {
+        3.0f, 3.0f, 3.0f, 3.0f, 3.0f, 3.0f, 3.0f, 3.0f,
+    };
 
-    var_t6 = D_800E4068;
-    var_t1 = &sp44[0];
-    sp304 = 0;
-    do {
-        temp_at = *var_t6;
-        var_t6 += 0xC;
-        var_t1 += 0xC;
-        var_t1->unk-C = temp_at;
-        var_t1->unk-8 = (s32) var_t6->unk-8;
-        var_t1->unk-4 = (s32) var_t6->unk-4;
-    } while (var_t6 != (D_800E4068 + 0x2A0));
-    sp24.unk0 = (s32) D_800E4308.unk0;
-    sp24.unk4 = (s32) D_800E4308.unk4;
-    sp24.unkC = (s32) D_800E4308.unkC;
-    sp24.unk8 = (s32) D_800E4308.unk8;
-    sp24.unk10 = (s32) D_800E4308.unk10;
-    sp24.unk14 = (s32) D_800E4308.unk14;
-    sp24.unk1C = (s32) D_800E4308.unk1C;
-    sp24.unk18 = (s32) D_800E4308.unk18;
-    temp_v0 = player->unk_0BC;
-    if (!(temp_v0 & 0x80) && !(temp_v0 & 0x40) && !(temp_v0 & 0x400) && !(temp_v0 & 0x10000) && !(temp_v0 & 0x20000) && !(temp_v0 & 0x01000000) && !(temp_v0 & 0x02000000) && !(temp_v0 & 0x04000000)) {
-        temp_t8 = temp_v0 & 0xDFFFFFFF;
+    if (!((player->unk_0BC & 0x80) ||
+          (player->unk_0BC & 0x40) ||
+          (player->unk_0BC & 0x400) ||
+          (player->unk_0BC & 0x10000) ||
+          (player->unk_0BC & 0x20000) ||
+          (player->unk_0BC & 0x01000000) ||
+          (player->unk_0BC & 0x02000000) ||
+          (player->unk_0BC & 0x04000000))) {
         if (!(((player->unk_094 / 18.0f) * 216.0f) >= 110.0f)) {
-            player->unk_0BC = temp_t8;
+            player->unk_0BC &= ~0x20000000;
             player->unk_228 = 0;
-            if (!(temp_t8 & 0x80) && !(temp_t8 & 0x40)) {
+            if (!(player->unk_0BC & 0x80) && !(player->unk_0BC & 0x40)) {
                 sp304 = (s32) player->unk_07C >> 0x10;
                 move_s32_towards(&sp304, (s32) arg1, 0.35f);
                 sp304 <<= 0x10;
-                temp_v0_2 = player->unk_0BC;
-                temp_v1 = temp_v0_2 & 0x10;
-                if (temp_v1 == 0x10) {
-                    var_f0 = (f32) ((s16) sp304 / 5);
+                if ((player->unk_0BC & 0x10) == 0x10) {
+                    var_f0 = (sp304 >> 0x10) / 5;
                 } else {
                     var_f0 = (f32) (sp304 >> 0x10) / (8.0f + (player->unk_09C / 50.0f));
                 }
                 if (var_f0 < 0.0f) {
                     var_f0 = -var_f0;
                 }
-                if (temp_v1 == 0x10) {
-                    var_f0_2 = (&sp44[0])[(s16) (s32) ((player->unk_094 / 18.0f) * 216.0f)] * var_f0;
+                if ((player->unk_0BC & 0x10) == 0x10) {
+                    var_f0 = sp44[(s16) ((player->unk_094 / 18.0f) * 216.0f)] * var_f0;
                 } else {
-                    var_f0_2 = (sp + (player->characterId * 4))->unk24 * (&sp44[0])[(s16) (s32) ((player->unk_094 / 18.0f) * 216.0f)] * var_f0;
+                    var_f0 = sp44[(s16) ((player->unk_094 / 18.0f) * 216.0f)] * sp24[player->characterId] * var_f0;
                 }
                 player->unk_07C = sp304;
-                if (((temp_v0_2 & 2) != 2) && (temp_v1 != 0x10)) {
-                    if ((temp_v0_2 & 1) != 1) {
-                        player->unk_078 = (s16) (s32) ((f32) (sp304 >> 0x10) * var_f0_2);
+                if (((player->unk_0BC & 2) != 2) && ((player->unk_0BC & 0x10) != 0x10)) {
+                    if ((player->unk_0BC & 1) != 1) {
+                        player->unk_078 = (player->unk_07C >> 0x10) * var_f0;
                     } else {
-                        player->unk_078 = (s16) (s32) ((f64) ((s32) player->unk_07C >> 0x10) * ((f64) var_f0_2 + 1.5));
+                        player->unk_078 = (player->unk_07C >> 0x10) * (var_f0 + 1.5);
                     }
-                } else if ((temp_v0_2 & 8) != 8) {
+                } else if ((player->unk_0BC & 8) != 8) {
                     if (((s16) player->unk_0C0 / 182) > 0) {
-                        var_v0 = (s16) ((s32) player->unk_07C >> 0x10);
+                        var_v0 = player->unk_07C >> 0x10;
                     } else {
-                        var_v0 = (s16) ((s32) player->unk_07C >> 0x10);
+                        var_v0 = player->unk_07C >> 0x10;
                     }
-                    player->unk_078 = (s16) (s32) ((f64) var_v0 * ((f64) var_f0_2 + 3.0));
-                    player->unk_078 = (s16) (s32) ((f64) player->unk_078 * 0.8);
+                    player->unk_078 = var_v0 * (var_f0 + 3.0);
+                    player->unk_078 *= 0.8;
                 } else {
-                    var_v0_2 = (s16) ((s32) player->unk_07C >> 0x10);
+                    var_v0 = (s16) ((s32) player->unk_07C >> 0x10);
                     if (arg1 == 0) {
-                        var_v0_2 = 0;
+                        var_v0 = 0;
                     }
-                    player->unk_078 = (s16) (s32) ((f32) var_v0_2 * var_f0_2);
+                    player->unk_078 = var_v0 * var_f0;
                 }
-                temp_v0_3 = player->unk_0BC;
-                if ((((temp_v0_3 & 2) != 2) && (temp_v1_2 = player->unk_0C0, ((temp_v1_2 < 0x3D) != 0)) && (temp_v1_2 >= -0x3C)) || (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f) || ((temp_v0_3 & 0x8000) == 0x8000)) {
-                    func_80036CB4(216.0f, player, 2);
+                if ((((player->unk_0BC & 2) != 2) &&
+                      (player->unk_0C0 < 0x3D) &&
+                      (player->unk_0C0 > -0x3D)) ||
+                    (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f) ||
+                     ((player->unk_0BC & 0x8000) == 0x8000)) {
+                    func_80036CB4(player);
                 }
             }
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8003680C.s")
-#endif
 
 void func_80036C5C(Player *arg0) {
     if (((arg0->unk_094 / 18.0f) * 216.0f) > 20.0f) {
@@ -5551,188 +5136,133 @@ void func_80036C5C(Player *arg0) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
 void func_80036CB4(Player *player) {
-    s32 var_v0;
-    s32 var_v0_2;
-    s32 var_v1;
+    s32 test;
 
-    var_v0 = player->unk_0BC;
-    var_v1 = var_v0 & 0x10;
-    if ((var_v1 == 0x10) && ((player->unk_000 & 0x4000) == 0x4000)) {
-        var_v0_2 = (s16) player->unk_0C0 / 182;
-        if (var_v0_2 > 0) {
-            var_v0_2 = (s16) player->unk_0C0 / 182;
-            player->unk_07C = (((s32) ((((s32) player->unk_07C >> 0x10) * 0xD) + 0x2B1) / 106) + 0x28) << 0x10;
+    if (((player->unk_0BC & 0x10) == 0x10) && ((player->unk_000 & 0x4000) == 0x4000)) {
+        if ((player->unk_0C0 / 182) > 0) {
+            test = ((((player->unk_07C >> 0x10) * 0xD) + 0x2B1) / 106) + 0x28;
+            player->unk_07C = test << 0x10;
         }
-        if (var_v0_2 < 0) {
-            player->unk_07C = (((s32) ((((s32) player->unk_07C >> 0x10) * 0xD) + 0x2B1) / 106) - 0x35) << 0x10;
+        if ((player->unk_0C0 / 182) < 0) {
+            test = ((((player->unk_07C >> 0x10) * 0xD) + 0x2B1) / 106) - 0x35;
+            player->unk_07C = test << 0x10;
         }
-        var_v0 = player->unk_0BC & ~0x10;
-        player->unk_0BC = var_v0;
-        var_v1 = var_v0 & 0x10;
+        player->unk_0BC &= ~0x10;
     }
-    if ((var_v1 == 0x10) && ((player->unk_000 & 0x4000) != 0x4000)) {
-        player->unk_0BC = var_v0 & ~0x10;
+    if (((player->unk_0BC & 0x10) == 0x10) && ((player->unk_000 & 0x4000) != 0x4000)) {
+        player->unk_0BC &= ~0x10;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80036CB4.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-void func_80036DB4(Player *player, f32 *arg1, f32 *arg2) {
+void func_80036DB4(Player *player, Vec3f arg1, Vec3f arg2) {
+    s16 thing;
+    UNUSED s16 pad;
     f32 sp20;
-    f32 var_f14;
     f32 var_f18;
-    f32 var_f2;
-    f64 var_f10;
-    s16 var_v0;
-    s32 temp_a0;
-    s32 temp_t0;
     s32 temp_t6;
 
-    temp_t0 = player->unk_0BC;
-    if (((temp_t0 & 0x1000) == 0x1000) || ((temp_t0 & 0x20) == 0x20)) {
-        arg1->unk0 = 0.0f;
-        arg1->unk4 = 0.0f;
-        arg1->unk8 = 0.0f;
-        func_802B63B8(arg1, (f32 (*)[3]) player->unk_174[0]);
+    if (((player->unk_0BC & 0x1000) == 0x1000) || ((player->unk_0BC & 0x20) == 0x20)) {
+        arg1[0] = 0.0f;
+        arg1[1] = 0.0f;
+        arg1[2] = 0.0f;
+        func_802B63B8(arg1, player->unk_174);
     } else {
-        temp_a0 = temp_t0 & 0x10;
-        if ((temp_a0 == 0x10) && ((temp_t0 & 2) != 2)) {
-            var_f14 = -player->unk_20C;
-            var_f2 = -(player->unk_094 / 18.0f) * 216.0f;
-            var_f18 = player->unk_208 + (var_f2 * 3.0f) + (var_f14 * 10.0f);
+        if (((player->unk_0BC & 0x10) == 0x10) && ((player->unk_0BC & 2) != 2)) {
+            var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 10.0f);
             sp20 = player->unk_084 * 3.0f;
-        } else if (!(temp_t0 & 0x800) && !(player->unk_044 & 0x4000)) {
-            var_v0 = player->unk_0FA;
-            if (var_v0 > 0) {
-                var_v0 *= -1;
+        } else if (!(player->unk_0BC & 0x800) && !(player->unk_044 & 0x4000)) {
+            thing = player->unk_0FA;
+            if (thing > 0) {
+                thing *= -1;
             }
-            temp_t6 = (s32) player->unk_07C >> 0x10;
+            temp_t6 = player->unk_07C >> 0x10;
             if ((temp_t6 < 0x15) && (temp_t6 >= -0x14)) {
-                if (var_v0 < 0x14) {
-                    var_f14 = -player->unk_20C;
-                    var_f2 = -(player->unk_094 / 18.0f) * 216.0f;
-                    var_f10 = (f64) (player->unk_208 + (var_f2 / 3.0f)) + ((f64) -player->unk_09C * 0.02) + (f64) (var_f14 * 50.0f);
-                    goto block_16;
-                }
-                var_f14 = -player->unk_20C;
-                var_f2 = -(player->unk_094 / 18.0f) * 216.0f;
-                var_f18 = (f32) ((f64) (player->unk_208 + (var_f2 / 3.0f)) + (((f64) temp_t6 * 0.01) + ((f64) -player->unk_09C * 0.05)) + (f64) (var_f14 * 50.0f));
-            } else {
-                var_f14 = -player->unk_20C;
-                var_f2 = -(player->unk_094 / 18.0f) * 216.0f;
-                var_f10 = (f64) (player->unk_208 + (var_f2 / 3.0f)) + (((f64) temp_t6 * 0.1) + ((f64) -player->unk_09C * 0.15)) + (f64) (var_f14 * 50.0f);
-block_16:
-                var_f18 = (f32) var_f10;
-            }
-            sp20 = player->unk_084;
-        } else {
-            var_f14 = -player->unk_20C;
-            var_f2 = -(player->unk_094 / 18.0f) * 216.0f;
-            sp20 = player->unk_084;
-            var_f18 = (f32) ((f64) player->unk_208 + ((f64) var_f2 * 1.5) + (((f64) ((s32) player->unk_07C >> 0x10) * 0.1) + ((f64) -player->unk_09C * 0.05)) + (f64) (var_f14 * 50.0f));
-        }
-        if ((temp_t0 & 0x200) == 0x200) {
-            if ((temp_a0 == 0x10) && ((temp_t0 & 2) != 2)) {
-                var_f18 = player->unk_208 + (var_f2 * 3.0f) + (var_f14 * 10.0f);
-                sp20 = player->unk_084 * 3.0f;
-            } else {
-                sp20 = player->unk_084;
-                var_f18 = player->unk_208 + (var_f2 / 3.0f);
-            }
-        }
-        arg1->unk4 = 0.0f;
-        arg1->unk0 = (player->unk_090 + var_f18) * player->unk_094;
-        arg1->unk8 = (f32) (player->unk_094 * sp20);
-        func_802B63B8(arg1, (f32 (*)[3]) player->unk_174[0]);
-    }
-    arg2->unk0 = arg1->unk0;
-    arg2->unk4 = (f32) arg1->unk4;
-    arg2->unk8 = (f32) arg1->unk8;
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80036DB4.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-void func_800371F4(Player *player, f32 *arg1, f32 *arg2) {
-    f32 sp20;
-    f32 var_f14;
-    f32 var_f18;
-    f32 var_f2;
-    s16 var_v0;
-    s32 temp_a0;
-    s32 temp_t0;
-    s32 temp_t6;
-
-    temp_t0 = player->unk_0BC;
-    if (((temp_t0 & 0x1000) == 0x1000) || ((temp_t0 & 0x20) == 0x20)) {
-        arg1->unk0 = 0.0f;
-        arg1->unk4 = 0.0f;
-        arg1->unk8 = 0.0f;
-        func_802B63B8(arg1, (f32 (*)[3]) player->unk_174[0]);
-    } else {
-        temp_a0 = temp_t0 & 0x10;
-        if ((temp_a0 == 0x10) && ((temp_t0 & 2) != 2)) {
-            var_f2 = -(player->unk_094 / 18.0f) * 216.0f;
-            var_f14 = -player->unk_20C * 50.0f;
-            var_f18 = player->unk_208 + (var_f2 * 3.0f) + var_f14;
-            sp20 = player->unk_084 * 3.0f;
-        } else if (!(temp_t0 & 0x800) && !(player->unk_044 & 0x4000)) {
-            var_v0 = player->unk_0FA;
-            if (var_v0 > 0) {
-                var_v0 *= -1;
-            }
-            temp_t6 = (s32) player->unk_07C >> 0x10;
-            if ((temp_t6 < 0x15) && (temp_t6 >= -0x14)) {
-                if (var_v0 < 0x14) {
-                    var_f2 = -(player->unk_094 / 18.0f) * 216.0f;
-                    var_f14 = -player->unk_20C * 50.0f;
-                    var_f18 = (f32) ((f64) (player->unk_208 + (var_f2 / 3.0f)) + ((f64) -player->unk_09C * 0.02) + (f64) var_f14);
+                if (thing < 0x14) {
+                    var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) + (-player->unk_09C * 0.02) + (-player->unk_20C * 50.0f);
                 } else {
-                    var_f2 = -(player->unk_094 / 18.0f) * 216.0f;
-                    var_f14 = -player->unk_20C * 50.0f;
-                    var_f18 = (f32) (((f64) (player->unk_208 + (var_f2 / 3.0f)) - (((f64) temp_t6 * 0.01) + ((f64) player->unk_09C * 0.05))) + (f64) var_f14);
+                    var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) + ((temp_t6 * 0.01) + (-player->unk_09C * 0.05)) + (-player->unk_20C * 50.0f);
                 }
             } else {
-                var_f2 = -(player->unk_094 / 18.0f) * 216.0f;
-                var_f14 = -player->unk_20C * 50.0f;
-                var_f18 = (f32) (((f64) (player->unk_208 + (var_f2 / 3.0f)) - (((f64) temp_t6 * 0.1) + ((f64) player->unk_09C * 0.15))) + (f64) var_f14);
+                var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) + ((temp_t6 * 0.1) + (-player->unk_09C * 0.15)) + (-player->unk_20C * 50.0f);
             }
             sp20 = player->unk_084;
         } else {
-            var_f2 = -(player->unk_094 / 18.0f) * 216.0f;
-            var_f14 = -player->unk_20C * 50.0f;
+            var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) * 1.5) + (((player->unk_07C >> 0x10) * 0.1) + (-player->unk_09C * 0.05)) + (-player->unk_20C * 50.0f);
             sp20 = player->unk_084;
-            var_f18 = (f32) ((((f64) player->unk_208 + ((f64) var_f2 * 1.5)) - (((f64) ((s32) player->unk_07C >> 0x10) * 0.1) + ((f64) player->unk_09C * 0.05))) + (f64) var_f14);
         }
-        if ((temp_t0 & 0x200) == 0x200) {
-            if ((temp_a0 == 0x10) && ((temp_t0 & 2) != 2)) {
-                var_f18 = player->unk_208 + (var_f2 * 3.0f) + var_f14;
+        if ((player->unk_0BC & 0x200) == 0x200) {
+            if (((player->unk_0BC & 0x10) == 0x10) && ((player->unk_0BC & 2) != 2)) {
+                var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 10.0f);
                 sp20 = player->unk_084 * 3.0f;
             } else {
+                var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f);
                 sp20 = player->unk_084;
-                var_f18 = player->unk_208 + (var_f2 / 3.0f);
             }
         }
-        arg1->unk4 = 0.0f;
-        arg1->unk0 = -(player->unk_090 + var_f18) * player->unk_094;
-        arg1->unk8 = (f32) (player->unk_094 * sp20);
-        func_802B63B8(arg1, (f32 (*)[3]) player->unk_174[0]);
+        arg1[0] = (player->unk_090 + var_f18) * player->unk_094;
+        arg1[1] = 0.0f;
+        arg1[2] = player->unk_094 * sp20;
+        func_802B63B8(arg1, player->unk_174);
     }
-    arg2->unk0 = arg1->unk0;
-    arg2->unk4 = (f32) arg1->unk4;
-    arg2->unk8 = (f32) arg1->unk8;
+    arg2[0] = arg1[0];
+    arg2[1] = arg1[1];
+    arg2[2] = arg1[2];
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_800371F4.s")
-#endif
+
+void func_800371F4(Player *player, Vec3f arg1, Vec3f arg2) {
+    s16 var_v0;
+    f32 sp20;
+    f32 var_f18;
+    s32 temp_t6;
+
+    if (((player->unk_0BC & 0x1000) == 0x1000) || ((player->unk_0BC & 0x20) == 0x20)) {
+        arg1[0] = 0.0f;
+        arg1[1] = 0.0f;
+        arg1[2] = 0.0f;
+        func_802B63B8(arg1, player->unk_174);
+    } else {
+        if (((player->unk_0BC & 0x10) == 0x10) && ((player->unk_0BC & 2) != 2)) {
+            var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 50.0f);
+            sp20 = player->unk_084 * 3.0f;
+        } else if (!(player->unk_0BC & 0x800) && !(player->unk_044 & 0x4000)) {
+            var_v0 = player->unk_0FA;
+            if (var_v0 > 0) {
+                var_v0 *= -1;
+            }
+            temp_t6 = (s32) player->unk_07C >> 0x10;
+            if ((temp_t6 < 0x15) && (temp_t6 >= -0x14)) {
+                if (var_v0 < 0x14) {
+                    var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) + (-player->unk_09C * 0.02) + (-player->unk_20C * 50.0f);
+                } else {
+                    var_f18 = ((player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) - ((temp_t6 * 0.01) + (player->unk_09C * 0.05))) + (-player->unk_20C * 50.0f);
+                }
+            } else {
+                var_f18 = ((player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) - ((temp_t6 * 0.1) + (player->unk_09C * 0.15))) + (-player->unk_20C * 50.0f);
+            }
+            sp20 = player->unk_084;
+        } else {
+            var_f18 = ((player->unk_208 + ((f64) (-(player->unk_094 / 18.0f) * 216.0f) * 1.5)) - (((player->unk_07C >> 0x10) * 0.1) + (player->unk_09C * 0.05))) + (-player->unk_20C * 50.0f);
+            sp20 = player->unk_084;
+        }
+        if ((player->unk_0BC & 0x200) == 0x200) {
+            if (((player->unk_0BC & 0x10) == 0x10) && ((player->unk_0BC & 2) != 2)) {
+                var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 50.0f);
+                sp20 = player->unk_084 * 3.0f;
+            } else {
+                var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f);
+                sp20 = player->unk_084;
+            }
+        }
+        arg1[0] = -(player->unk_090 + var_f18) * player->unk_094;
+        arg1[1] = 0.0f;
+        arg1[2] = player->unk_094 * sp20;
+        func_802B63B8(arg1, player->unk_174);
+    }
+    arg2[0] = arg1[0];
+    arg2[1] = arg1[1];
+    arg2[2] = arg1[2];
+}
 
 void func_80037614(Player *player, Vec3f arg1, Vec3f arg2) {
     f32 var_f12;
@@ -5842,53 +5372,44 @@ void func_80037A4C(Player *player, Vec3f arg1, Vec3f arg2) {
     arg2[2] = arg1[2];
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-void func_80036DB4(f32 *, f32 *);                      /* extern */
-void func_800371F4(f32 *, f32 *);                      /* extern */
+void func_80037BB4(Player *player, Vec3f arg1) {
+    UNUSED s32 pad[3];
+    Vec3f sp20;
 
-void func_80037BB4(Player *player, f32 *arg1) {
-    f32 sp20;
-    s16 temp_v0;
-
-    temp_v0 = player->unk_078;
-    if (temp_v0 == 0) {
-        arg1->unk0 = 0.0f;
-        arg1->unk4 = 0.0f;
-        arg1->unk8 = 0.0f;
-        return;
-    }
-    if (temp_v0 < 0) {
-        if (((player->unk_0BC & 0x20000000) != 0x20000000) || (player->unk_228 >= 0x64)) {
-            player->unk_02E += temp_v0;
-        }
-        if (!(player->unk_000 & 0x1000)) {
-            if (gModeSelection == BATTLE) {
-                func_800378E8(player, &sp20, arg1);
-                return;
+    if (player->unk_078 == 0) {
+        arg1[0] = 0.0f;
+        arg1[1] = 0.0f;
+        arg1[2] = 0.0f;
+    } else {
+        if (player->unk_078 < 0) {
+            if (((player->unk_0BC & 0x20000000) != 0x20000000) || (player->unk_228 >= 0x64)) {
+                player->unk_02C[1] += player->unk_078;
             }
-            func_80036DB4(&sp20, arg1);
-            return;
+            if (!(player->unk_000 & 0x1000)) {
+                if (gModeSelection == BATTLE) {
+                    func_800378E8(player, sp20, arg1);
+                } else {
+                    func_80036DB4(player, sp20, arg1);
+                }
+            } else {
+                func_80037614(player, sp20, arg1);
+            }
+        } else {
+            if (((player->unk_0BC & 0x20000000) != 0x20000000) || (player->unk_228 >= 0x64)) {
+                player->unk_02C[1] += player->unk_078;
+            }
+            if (!(player->unk_000 & 0x1000)) {
+                if (gModeSelection == BATTLE) {
+                    func_80037A4C(player, sp20, arg1);
+                } else {
+                    func_800371F4(player, sp20, arg1);
+                }
+            } else {
+                func_8003777C(player, sp20, arg1);
+            }
         }
-        func_80037614(player, &sp20, arg1);
-        return;
     }
-    if (((player->unk_0BC & 0x20000000) != 0x20000000) || (player->unk_228 >= 0x64)) {
-        player->unk_02E += temp_v0;
-    }
-    if (!(player->unk_000 & 0x1000)) {
-        if (gModeSelection == BATTLE) {
-            func_80037A4C(player, &sp20, arg1);
-            return;
-        }
-        func_800371F4(&sp20, arg1);
-        return;
-    }
-    func_8003777C(player, &sp20, arg1);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80037BB4.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
@@ -6115,129 +5636,112 @@ void func_800382DC(void) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
 s16 func_80038534(struct Controller *controller) {
     s16 temp_a2;
-    s16 temp_t5;
-    s16 temp_t6;
-    s16 temp_t8;
-    s16 temp_v0;
-    s16 var_a1;
     s16 var_a3;
     s16 var_t0;
-    s16 var_v1;
+    s16 temp_v0;
 
     temp_v0 = controller->rawStickX;
     temp_a2 = controller->rawStickY;
     var_a3 = temp_v0;
     var_t0 = temp_a2;
-    if (temp_v0 >= 0xD) {
+
+    if (temp_v0 > 0xC) {
+        var_t0 = (temp_a2 * 0x000C) / temp_v0;
         var_a3 = 0x000C;
-        var_t0 = (s16) ((s32) (temp_a2 * 0x000C) / temp_v0);
     }
     if (var_a3 < -0xC) {
-        temp_t6 = -var_a3;
+        var_t0 = (var_t0 * 0x000C) / -var_a3;
         var_a3 = -0x000C;
-        var_t0 = (s16) ((s32) (var_t0 * 0x000C) / temp_t6);
     }
-    if (var_t0 >= 0xD) {
-        var_a3 = (s16) ((s32) (var_a3 * 0x000C) / var_t0);
+    if (var_t0 > 0xC) {
+        var_a3 = (var_a3 * 0x000C) / var_t0;
         var_t0 = 0x000C;
     }
     if (var_t0 < -0xC) {
-        temp_t5 = -var_t0;
+        var_a3 = (var_a3 * 0x000C) / -var_t0;
         var_t0 = -0x000C;
-        var_a3 = (s16) ((s32) (var_a3 * 0x000C) / temp_t5);
     }
-    if ((temp_v0 >= -0xC) && (temp_v0 < 0xD) && (temp_a2 >= -0xC) && (temp_a2 < 0xD)) {
-        var_v1 = 0;
-        var_a1 = 0;
-    } else {
-        var_v1 = temp_v0 - var_a3;
-        var_a1 = temp_a2 - var_t0;
+    if ((((controller->rawStickX > -0xD) && (controller->rawStickX < 0xD)) && (controller->rawStickY > -0xD)) && (controller->rawStickY < 0xD)) {
+        temp_v0 = 0;
+        temp_a2 = 0;
     }
-    if (var_v1 >= 0x36) {
-        var_a1 = (s16) ((s32) (var_a1 * 0x0035) / var_v1);
-        var_v1 = 0x0035;
+    else {
+        temp_v0 -= var_a3;
+        temp_a2 -= var_t0;
     }
-    if (var_v1 < -0x35) {
-        temp_t8 = -var_v1;
-        var_v1 = -0x0035;
-        var_a1 = (s16) ((s32) (var_a1 * 0x0035) / temp_t8);
+    if (temp_v0 > 0x35) {
+        temp_a2 = (temp_a2 * 0x0035) / temp_v0;
+        temp_v0 = 0x0035;
     }
-    if (var_a1 >= 0x36) {
-        var_v1 = (s16) ((s32) (var_v1 * 0x0035) / var_a1);
-        var_a1 = 0x0035;
+    if (temp_v0 < -0x35) {
+        temp_a2 = (temp_a2 * 0x0035) / -temp_v0;
+        temp_v0 = -0x0035;
     }
-    if (var_a1 < -0x35) {
-        var_v1 = (s16) ((s32) (var_v1 * 0x0035) / (s16) -var_a1);
+    if (temp_a2 > 0x35) {
+        temp_v0 = (temp_v0 * 0x0035) / temp_a2;
+        temp_a2 = 0x0035;
     }
-    return var_v1;
+    if (temp_a2 < -0x35) {
+        temp_v0 = (temp_v0 * 0x0035) / -temp_a2;
+    }
+    return temp_v0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80038534.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
 s16 func_800388B0(struct Controller *controller) {
     s16 temp_a2;
-    s16 temp_t5;
-    s16 temp_t6;
-    s16 temp_v1;
-    s16 var_a1;
     s16 var_a3;
     s16 var_t0;
-    s16 var_v0;
+    s16 temp_v0;
 
-    temp_v1 = controller->rawStickX;
+    temp_v0 = controller->rawStickX;
     temp_a2 = controller->rawStickY;
-    var_a3 = temp_v1;
+    var_a3 = temp_v0;
     var_t0 = temp_a2;
-    if (temp_v1 >= 0xD) {
+
+    if (temp_v0 > 0xC) {
+        var_t0 = (temp_a2 * 0x000C) / temp_v0;
         var_a3 = 0x000C;
-        var_t0 = (s16) ((s32) (temp_a2 * 0x000C) / temp_v1);
     }
     if (var_a3 < -0xC) {
-        temp_t6 = -var_a3;
+        var_t0 = (var_t0 * 0x000C) / -var_a3;
         var_a3 = -0x000C;
-        var_t0 = (s16) ((s32) (var_t0 * 0x000C) / temp_t6);
     }
-    if (var_t0 >= 0xD) {
-        var_a3 = (s16) ((s32) (var_a3 * 0x000C) / var_t0);
+    if (var_t0 > 0xC) {
+        var_a3 = (var_a3 * 0x000C) / var_t0;
         var_t0 = 0x000C;
     }
     if (var_t0 < -0xC) {
-        temp_t5 = -var_t0;
+        var_a3 = (var_a3 * 0x000C) / -var_t0;
         var_t0 = -0x000C;
-        var_a3 = (s16) ((s32) (var_a3 * 0x000C) / temp_t5);
     }
-    if ((temp_v1 >= -0xC) && (temp_v1 < 0xD) && (temp_a2 >= -0xC) && (temp_a2 < 0xD)) {
-        var_v0 = 0;
-        var_a1 = 0;
-    } else {
-        var_v0 = temp_v1 - var_a3;
-        var_a1 = temp_a2 - var_t0;
+    if ((((controller->rawStickX > -0xD) && (controller->rawStickX < 0xD)) && (controller->rawStickY > -0xD)) && (controller->rawStickY < 0xD)) {
+        temp_v0 = 0;
+        temp_a2 = 0;
     }
-    if (var_v0 >= 0x36) {
-        var_a1 = (s16) ((s32) (var_a1 * 0x0035) / var_v0);
-        var_v0 = 0x0035;
+    else {
+        temp_v0 -= var_a3;
+        temp_a2 -= var_t0;
     }
-    if (var_v0 < -0x35) {
-        var_a1 = (s16) ((s32) (var_a1 * 0x0035) / (s16) -var_v0);
+    if (temp_v0 > 0x35) {
+        temp_a2 = (temp_a2 * 0x0035) / temp_v0;
+        temp_v0 = 0x0035;
     }
-    if (var_a1 >= 0x36) {
-        var_a1 = 0x0035;
+    if (temp_v0 < -0x35) {
+        temp_a2 = (temp_a2 * 0x0035) / -temp_v0;
+        temp_v0 = -0x0035;
     }
-    if (var_a1 < -0x35) {
-        var_a1 = -0x0035;
+    if (temp_a2 > 0x35) {
+        temp_v0 = (temp_v0 * 0x0035) / temp_a2;
+        temp_a2 = 0x0035;
     }
-    return var_a1;
+    if (temp_a2 < -0x35) {
+        temp_v0 = (temp_v0 * 0x0035) / -temp_a2;
+        temp_a2 = -0x0035;
+    }
+    return temp_a2;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_800388B0.s")
-#endif
 
 void func_80038BE4(Player *player, s16 arg1) {
     player->unk_09C += (f32) arg1;

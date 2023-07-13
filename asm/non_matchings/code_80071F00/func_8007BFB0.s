@@ -1,3 +1,43 @@
+.section .late_rodata
+
+glabel jpt_800EEE38
+.word L8007C220, L8007C000
+.word L8007C040, L8007C060, L8007C0BC, L8007C0F8
+.word L8007C180, L8007C1B0, L8007C214
+
+glabel D_800EEE5C
+.float -0.2
+
+glabel D_800EEE60
+.double 0.0015
+
+glabel D_800EEE68
+.double 0.0015
+
+glabel D_800EEE70
+.float 0.001
+.word 0x00000000
+
+glabel D_800EEE78
+.double 0.004
+
+glabel D_800EEE80
+.double 0.0002
+
+glabel D_800EEE88
+.double 0.05
+
+glabel D_800EEE90
+.double 0.01
+
+glabel D_800EEE98
+.float 0.000001
+
+glabel D_800EEE9C
+.float 0.001
+
+.section .text
+
 glabel func_8007BFB0
 /* 07CBB0 8007BFB0 000470C0 */  sll   $t6, $a0, 3
 /* 07CBB4 8007BFB4 27BDFFD0 */  addiu $sp, $sp, -0x30

@@ -1,3 +1,149 @@
+.section .data
+
+glabel D_800E3DF8
+.float 0.0, 0.5, 0.5, 0.5
+.float 0.5, 0.5, 0.5, 0.6
+.float 0.6, 0.6, 0.6, 0.6
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.6, 0.6, 0.6, 0.6
+.float 0.6, 0.6, 0.6, 0.6
+.float 0.6, 0.6, 0.6, 0.6
+.float 0.5, 0.5, 0.5, 0.5
+.float 0.6, 0.6, 0.6, 0.6
+.float 0.6, 0.6, 0.6, 0.6
+.float 0.6, 0.6, 0.7, 0.7
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.6, 0.6, 0.6, 0.6
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.7, 0.7, 0.7, 0.7
+.float 0.8, 0.8, 0.8, 0.8
+.float 0.8, 0.8, 0.8, 0.8
+.float 0.8, 0.8, 0.8, 0.8
+.float 0.8, 0.8, 0.8, 0.8
+.float 0.8, 0.8, 0.8, 0.8
+.float 0.8, 0.8, 0.8, 0.8
+.float 0.8, 0.8, 0.8, 0.8
+.float 0.8, 0.8, 0.8, 0.8
+.float 0.8, 0.8, 0.8, 0.8
+.float 0.8, 0.8, 0.8, 0.8
+.float 0.8, 0.8, 0.8, 0.8
+.float 0.8, 0.8, 0.8, 0.8
+
+.section .late_rodata
+
+glabel D_800EDCE8
+.double 1.2
+
+glabel D_800EDCF0
+.double 1.05
+
+glabel D_800EDCF8
+.float 0.9
+
+glabel D_800EDCFC
+.float 0.9
+
+glabel D_800EDD00
+.float 0.9
+
+glabel D_800EDD04
+.float 0.9
+
+glabel D_800EDD08
+.float 0.9
+
+glabel D_800EDD0C
+.float 1.05
+
+glabel D_800EDD10
+.float 1.05
+
+glabel D_800EDD14
+.float 1.05
+
+glabel D_800EDD18
+.float 1.05
+
+glabel D_800EDD1C
+.float 1.05
+
+glabel D_800EDD20
+.float 1.2
+
+glabel D_800EDD24
+.float 1.2
+
+glabel D_800EDD28
+.float 1.2
+
+glabel D_800EDD2C
+.float 1.2
+
+glabel D_800EDD30
+.float 1.2
+
+glabel D_800EDD34
+.float 1.6
+
+glabel D_800EDD38
+.float 1.6
+
+glabel D_800EDD3C
+.float 1.6
+
+glabel D_800EDD40
+.float 1.6
+
+glabel D_800EDD44
+.float 1.6
+
+glabel D_800EDD48
+.float 1.9
+
+glabel D_800EDD4C
+.float 1.9
+
+glabel D_800EDD50
+.float 1.9
+
+glabel D_800EDD54
+.float 1.9
+
+glabel D_800EDD58
+.float 1.9
+
+glabel D_800EDD5C
+.float 1.9
+
+glabel D_800EDD60
+.double 0.15
+
+glabel D_800EDD68
+.double 1.6
+
+glabel D_800EDD70
+.double 0.9
+
+glabel D_800EDD78
+.double 0.65
+
+glabel D_800EDD80
+.double 1.7
+
+.section .text
+
 glabel func_80033AE0
 /* 0346E0 80033AE0 27BDFD18 */  addiu $sp, $sp, -0x2e8
 /* 0346E4 80033AE4 44802000 */  mtc1  $zero, $f4

@@ -1,10 +1,21 @@
+.section .late_rodata
+
+glabel D_800F3648
+.float 100000.0
+
+glabel jpt_800F364C
+.word L800C423C, L800C4268, L800C42A4, L800C42C8
+.word L800C42FC, L800C4330
+
+.section .text
+
 glabel func_800C41CC
 /* 0C4DCC 800C41CC 27ADFFF0 */  addiu $t5, $sp, -0x10
 /* 0C4DD0 800C41D0 ADA40010 */  sw    $a0, 0x10($t5)
-/* 0C4DD4 800C41D4 3C07800F */  lui   $a3, %hi(D_800EA1B8) # $a3, 0x800f
-/* 0C4DD8 800C41D8 24E7A1B8 */  addiu $a3, %lo(D_800EA1B8) # addiu $a3, $a3, -0x5e48
-/* 0C4DDC 800C41DC 3C02800F */  lui   $v0, %hi(D_800EA1BC) # $v0, 0x800f
-/* 0C4DE0 800C41E0 9042A1BC */  lbu   $v0, %lo(D_800EA1BC)($v0)
+/* 0C4DD4 800C41D4 3C07800F */  lui   $a3, %hi(sSoundRequestCount) # $a3, 0x800f
+/* 0C4DD8 800C41D8 24E7A1B8 */  addiu $a3, %lo(sSoundRequestCount) # addiu $a3, $a3, -0x5e48
+/* 0C4DDC 800C41DC 3C02800F */  lui   $v0, %hi(sNumProcessedSoundRequests) # $v0, 0x800f
+/* 0C4DE0 800C41E0 9042A1BC */  lbu   $v0, %lo(sNumProcessedSoundRequests)($v0)
 /* 0C4DE4 800C41E4 90EF0000 */  lbu   $t7, ($a3)
 /* 0C4DE8 800C41E8 308E00FF */  andi  $t6, $a0, 0xff
 /* 0C4DEC 800C41EC 00A03025 */  move  $a2, $a1
@@ -12,8 +23,8 @@ glabel func_800C41CC
 /* 0C4DF4 800C41F4 01C02825 */   move  $a1, $t6
 /* 0C4DF8 800C41F8 3C01800F */  lui   $at, %hi(D_800F3648) # $at, 0x800f
 /* 0C4DFC 800C41FC 3C0B800F */  lui   $t3, %hi(D_800EA1C8) # $t3, 0x800f
-/* 0C4E00 800C4200 3C098019 */  lui   $t1, %hi(D_8018FC20) # $t1, 0x8019
-/* 0C4E04 800C4204 2529FC20 */  addiu $t1, %lo(D_8018FC20) # addiu $t1, $t1, -0x3e0
+/* 0C4E00 800C4200 3C098019 */  lui   $t1, %hi(sSoundRequests) # $t1, 0x8019
+/* 0C4E04 800C4204 2529FC20 */  addiu $t1, %lo(sSoundRequests) # addiu $t1, $t1, -0x3e0
 /* 0C4E08 800C4208 256BA1C8 */  addiu $t3, %lo(D_800EA1C8) # addiu $t3, $t3, -0x5e38
 /* 0C4E0C 800C420C C4203648 */  lwc1  $f0, %lo(D_800F3648)($at)
 /* 0C4E10 800C4210 240A0018 */  li    $t2, 24

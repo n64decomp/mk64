@@ -1,3 +1,16 @@
+.section .late_rodata
+
+glabel jpt_800ED5D8
+.word L8001F4E0, L8001F54C, L8001F5DC, L8001F654
+.word L8001F6D8
+
+.word 0x00000000
+
+glabel D_800ED5F0
+.double 0.8
+
+.section .text
+
 glabel func_8001F394
 /* 01FF94 8001F394 3C0E800E */  lui   $t6, %hi(gPlayerOne) # $t6, 0x800e
 /* 01FF98 8001F398 8DCEC4DC */  lw    $t6, %lo(gPlayerOne)($t6)

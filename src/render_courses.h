@@ -1,8 +1,6 @@
 #ifndef RENDER_COURSES_H
 #define RENDER_COURSES_H
 
-#define ALIGNF(x) (((x) + 0xF) & ~0xF)
-
 struct Unk0CAC {
     s32 unk0;
     u8 unk4;
@@ -10,9 +8,10 @@ struct Unk0CAC {
     u16 unk6;
 };
 
+void func_8029122C(struct UnkStruct_800DC5EC*, s32);
 s32  func_80290C20(Camera*);
 void func_80290CAC(uintptr_t);
-void load_surface_map(s32, struct UnkStruct_800DC5EC*);
+void load_surface_map(uintptr_t, struct UnkStruct_800DC5EC*);
 void func_80291198();
 void func_802911C4();
 void render_mario_raceway(struct UnkStruct_800DC5EC*);
@@ -46,11 +45,10 @@ void func_802969F8();
 
 extern Gfx *gDisplayListHead;
 extern s16 gCurrentCourseId;
-extern u32 gPrevLoadedAddress;
+extern u32 gNextFreeMemoryAddress;
 extern s32 gActiveScreenMode;
 
 extern u16 sRenderedFramebuffer;
-extern uintptr_t *gPhysicalFramebuffers[];
 extern uintptr_t gSegmentTable[];
 
 extern Player gPlayers[];
@@ -60,7 +58,6 @@ extern s32 D_8015F5A0;
 
 extern s32 D_800DC5DC;
 extern s32 D_800DC5E0;
-extern s16 D_802B87D8;
 extern s32 D_802B87C4;
 extern s32 D_802B87C8;
 extern s32 D_802B87CC;
@@ -70,24 +67,24 @@ extern Gfx mario_raceway_dls[];
 extern s32 D_801625EC;
 extern s32 D_801625F0;
 extern s32 D_801625F4;
-extern s16 D_802B87B0;
-extern s16 D_802B87B4;
 extern Gfx choco_mountain_dls[];
 extern s32 D_802B87BC;
 extern Gfx bowsers_castle_dls[];
 extern Gfx banshee_boardwalk_dls[];
 extern Gfx D_0600B278[];
-extern Gfx yoshi_valley_dls;
+extern Gfx yoshi_valley_dls[];
 extern u8 frappe_snowland_dls[];
-extern Gfx koopa_troopa_beach_dls[];
+extern Gfx d_course_koopa_troopa_beach_dl_list1[];
 extern Gfx royal_raceway_dls[];
 extern Gfx luigi_raceway_dls[];
 extern s32 D_801625EC;
 extern s32 D_801625F0;
 extern s32 D_801625F4;
-extern s16 D_802B87B0;
-extern s16 D_802B87B4;
-extern s16 D_802B87D4;
+
+extern Gfx D_06013FF8[];
+extern Gfx D_06014060[];
+extern Lights1 D_800DC610[];
+extern Gfx moo_moo_farm_dls[];
 
 extern Gfx toads_turnpike_dls[];
 
@@ -95,7 +92,11 @@ extern Lights1 D_800DC610[]; // Light data?
 extern u8 kalimari_desert_dls[];
 extern u8 sherbet_land_dls[];
 extern Gfx wario_stadium_dls[];
-extern s16 D_802B87D0;
+
+extern Gfx D_06009228[];
+extern Gfx D_060164B8[];
+extern Gfx d_course_koopa_troopa_beach_dl_list2[];
+extern Gfx D_090001D0[];
 
 extern Gfx dks_jungle_parkway_dls[];
 extern Gfx D_060071B0[];

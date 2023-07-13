@@ -1,3 +1,11 @@
+.section .late_rodata
+
+glabel jpt_800EF518
+.word L8008C1A8, L8008C040, L8008C060, L8008C088
+.word L8008C0B0, L8008C0F8, L8008C140, L8008C168
+
+.section .text
+
 glabel func_8008BFFC
 /* 08CBFC 8008BFFC 000470C0 */  sll   $t6, $a0, 3
 /* 08CC00 8008C000 01C47023 */  subu  $t6, $t6, $a0

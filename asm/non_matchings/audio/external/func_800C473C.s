@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800F3668
+.float 100000.0
+
+.section .text
+
 glabel func_800C473C
 /* 0C533C 800C473C 30AE00FF */  andi  $t6, $a1, 0xff
 /* 0C5340 800C4740 24080030 */  li    $t0, 48
@@ -5,8 +12,8 @@ glabel func_800C473C
 /* 0C5348 800C4748 308700FF */  andi  $a3, $a0, 0xff
 /* 0C534C 800C474C 00077900 */  sll   $t7, $a3, 4
 /* 0C5350 800C4750 01E77823 */  subu  $t7, $t7, $a3
-/* 0C5354 800C4754 3C188019 */  lui   $t8, %hi(D_80191420) # $t8, 0x8019
-/* 0C5358 800C4758 27181420 */  addiu $t8, %lo(D_80191420) # addiu $t8, $t8, 0x1420
+/* 0C5354 800C4754 3C188019 */  lui   $t8, %hi(sSoundBanks) # $t8, 0x8019
+/* 0C5358 800C4758 27181420 */  addiu $t8, %lo(sSoundBanks) # addiu $t8, $t8, 0x1420
 /* 0C535C 800C475C 000F7980 */  sll   $t7, $t7, 6
 /* 0C5360 800C4760 01F83021 */  addu  $a2, $t7, $t8
 /* 0C5364 800C4764 27BDFFC0 */  addiu $sp, $sp, -0x40
@@ -43,8 +50,8 @@ glabel func_800C473C
 /* 0C53DC 800C47DC 93C70043 */  lbu   $a3, 0x43($fp)
 /* 0C53E0 800C47E0 24080030 */  li    $t0, 48
 .L800C47E4:
-/* 0C53E4 800C47E4 3C0E8019 */  lui   $t6, %hi(D_80192AA0) # $t6, 0x8019
-/* 0C53E8 800C47E8 25CE2AA0 */  addiu $t6, %lo(D_80192AA0) # addiu $t6, $t6, 0x2aa0
+/* 0C53E4 800C47E4 3C0E8019 */  lui   $t6, %hi(sSoundBankUsedListBack) # $t6, 0x8019
+/* 0C53E8 800C47E8 25CE2AA0 */  addiu $t6, %lo(sSoundBankUsedListBack) # addiu $t6, $t6, 0x2aa0
 /* 0C53EC 800C47EC 00EE1821 */  addu  $v1, $a3, $t6
 /* 0C53F0 800C47F0 906F0000 */  lbu   $t7, ($v1)
 /* 0C53F4 800C47F4 54AF0005 */  bnel  $a1, $t7, .L800C480C
@@ -62,9 +69,9 @@ glabel func_800C473C
 .L800C4820:
 /* 0C5420 800C4820 904D002A */  lbu   $t5, 0x2a($v0)
 /* 0C5424 800C4824 904C002B */  lbu   $t4, 0x2b($v0)
-/* 0C5428 800C4828 3C188019 */  lui   $t8, %hi(D_80192AA8) # $t8, 0x8019
+/* 0C5428 800C4828 3C188019 */  lui   $t8, %hi(sSoundBankFreeListFront) # $t8, 0x8019
 /* 0C542C 800C482C 01A80019 */  multu $t5, $t0
-/* 0C5430 800C4830 27182AA8 */  addiu $t8, %lo(D_80192AA8) # addiu $t8, $t8, 0x2aa8
+/* 0C5430 800C4830 27182AA8 */  addiu $t8, %lo(sSoundBankFreeListFront) # addiu $t8, $t8, 0x2aa8
 /* 0C5434 800C4834 00F81821 */  addu  $v1, $a3, $t8
 /* 0C5438 800C4838 240A00FF */  li    $t2, 255
 /* 0C543C 800C483C 00007012 */  mflo  $t6

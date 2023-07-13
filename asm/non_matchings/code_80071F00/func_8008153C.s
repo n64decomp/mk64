@@ -1,3 +1,22 @@
+.section .late_rodata
+
+glabel D_800EF0E4
+.float 0.15
+
+glabel D_800EF0E8
+.double 0.8
+
+glabel D_800EF0F0
+.double 0.01
+
+glabel D_800EF0F8
+.double 4.8
+
+glabel D_800EF100
+.double 0.1
+
+.section .text
+
 glabel func_8008153C
 /* 08213C 8008153C 27BDFF80 */  addiu $sp, $sp, -0x80
 /* 082140 80081540 3C0E800E */  lui   $t6, %hi(gPlayerCountSelection1) # $t6, 0x800e

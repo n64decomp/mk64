@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800EE4A8
+.double 268.8
+
+.section .text
+
 glabel func_8005C360
 /* 05CF60 8005C360 3C0E8019 */  lui   $t6, %hi(D_8018CAE9) # $t6, 0x8019
 /* 05CF64 8005C364 91CECAE9 */  lbu   $t6, %lo(D_8018CAE9)($t6)

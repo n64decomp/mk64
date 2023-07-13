@@ -1,3 +1,70 @@
+.section .data
+
+glabel D_800E3CE8
+.float 0.0, 0.0, 1.0
+
+glabel D_800E3CF4
+.float 0.0, 0.0, 0.0
+
+glabel D_800E3D00
+.float 0.0, 0.0, 0.0
+
+glabel D_800E3D0C
+.float 0.0, 0.0, 0.0
+
+glabel D_800E3D18
+.float 0.825, 0.8, 0.725, 0.625
+.float 0.425, 0.3, 0.3, 0.3
+.float 0.3, 0.3, 0.3, 0.3
+.float 0.3, 0.3, 0.3, 0.3
+.float 0.3, 0.3, 0.3, 0.3
+.float 0.3, 0.3, 0.3
+
+.section .late_rodata
+
+glabel D_800ED7E0
+.double 0.925
+
+glabel D_800ED7E8
+.double 0.1
+
+glabel D_800ED7F0
+.float 4500.0
+.word 0x00000000
+
+glabel D_800ED7F8
+.double 0.12
+
+glabel D_800ED800
+.double 6000.0
+
+glabel D_800ED808
+.double 0.6
+
+glabel D_800ED810
+.double 0.12
+
+glabel D_800ED818
+.double 6000.0
+
+glabel D_800ED820
+.double 0.12
+
+glabel D_800ED828
+.double 6000.0
+
+glabel D_800ED830
+.double 0.02
+
+glabel D_800ED838
+.float 2.8
+.word 0x00000000
+
+glabel D_800ED840
+.double 0.08
+
+.section .text
+
 glabel func_8002D268
 /* 02DE68 8002D268 27BDFE70 */  addiu $sp, $sp, -0x190
 /* 02DE6C 8002D26C 3C0F800E */  lui   $t7, %hi(D_800E3CE8) # $t7, 0x800e

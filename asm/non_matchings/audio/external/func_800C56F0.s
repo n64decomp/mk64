@@ -6,8 +6,8 @@ glabel func_800C56F0
 /* 0C6300 800C5700 31F800FF */  andi  $t8, $t7, 0xff
 /* 0C6304 800C5704 0018C900 */  sll   $t9, $t8, 4
 /* 0C6308 800C5708 0338C823 */  subu  $t9, $t9, $t8
-/* 0C630C 800C570C 3C088019 */  lui   $t0, %hi(D_80191420) # $t0, 0x8019
-/* 0C6310 800C5710 25081420 */  addiu $t0, %lo(D_80191420) # addiu $t0, $t0, 0x1420
+/* 0C630C 800C570C 3C088019 */  lui   $t0, %hi(sSoundBanks) # $t0, 0x8019
+/* 0C6310 800C5710 25081420 */  addiu $t0, %lo(sSoundBanks) # addiu $t0, $t0, 0x1420
 /* 0C6314 800C5714 0019C980 */  sll   $t9, $t9, 6
 /* 0C6318 800C5718 AFBF004C */  sw    $ra, 0x4c($sp)
 /* 0C631C 800C571C AFBE0048 */  sw    $fp, 0x48($sp)

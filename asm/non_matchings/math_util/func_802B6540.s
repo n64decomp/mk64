@@ -1,3 +1,13 @@
+.section .late_rodata
+
+glabel D_802B9FB8
+.double 3.141592653589793
+
+glabel D_802B9FC0
+.double 360.0
+
+.section .text
+
 glabel func_802B6540
 /* 11FB50 802B6540 27BDFF50 */  addiu $sp, $sp, -0xb0
 /* 11FB54 802B6544 AFB00020 */  sw    $s0, 0x20($sp)

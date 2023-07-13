@@ -1,6 +1,68 @@
 #ifndef DEFINES_H
 #define DEFINES_H
 
+
+/**
+ * Options for Controller Pak state
+ */
+#define OK 1
+#define BAD 0
+
+/**
+ * Enable debug mode
+ * 
+ * Press start to skip through menus
+ * 
+ * Toggle resource meters by holding R and tapping B. L must not be held.
+ * 
+ * Reset to start screen by holding A, B, R, and R.
+ * 
+ * View player direction and currentPathPoint in a single player race during staging tap L while holding A and B.
+ * Turn off this UI by tapping R while holding A and B.
+ * @bug This looks like it should work at any point in the race.
+ * 
+ * Set player 1 to the final lap by tapping D-pad up.
+ * Set player 1 and player 2 to the final lap by tapping D-pad right.
+ * Set player all players to the final lap by tapping D-pad down.
+ * 
+ * Immediately start the race if any controller presses Z.
+ * 
+ * As the ceremony cutscene starts hold a C or D-pad to switch characters.
+ * C UP        = LUIGI
+ * C LEFT      = YOSHI
+ * C RIGHT     = TOAD
+ * C DOWN      = DK
+ * D-pad UP    = WARIO
+ * D-pad LEFT  = PEACH
+ * D-pad RIGHT = BOWSER
+ * D-pad DOWN  = MARIO
+ *  
+*/
+#define DEBUG_MODE 0
+#define DEBUG_MENU 1
+#define HOLD_ALL_DPAD_AND_C_BUTTONS (U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
+
+/**
+ * Options for gDebugMenuSelection
+ */
+#define DEBUG_MENU_DISABLED 1
+#define DEBUG_MENU_DEBUG_MODE 2
+#define DEBUG_MENU_COURSE 3
+#define DEBUG_MENU_SCREEN_MODE 4
+#define DEBUG_MENU_PLAYER 5
+#define DEBUG_MENU_SOUND_MODE 6
+#define DEBUG_MENU_GIVE_ALL_GOLD_CUP 7
+#define DEBUG_MENU_EXITED 64
+
+/**
+ * Options for gDebugGotoScene
+ */
+#define DEBUG_GOTO_RACING 0
+#define DEBUG_GOTO_ENDING_SEQUENCE 1
+#define DEBUG_GOTO_CREDITS_SEQUENCE_CC_50 2
+#define DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA 3
+
+
 /**
  * Racing terms:
  * Staging means aligning a racecar to the starting line.
@@ -9,7 +71,7 @@
 
 #define PLAYER_INACTIVE             0         // 0x0000
 #define PLAYER_EXISTS               (1 << 15) // 0x8000
-#define PLAYER_CINEMATIC_MODE       (1 << 11) // 0x0800
+#define PLAYER_CINEMATIC_MODE       (1 << 11) // 0x0800 // Also used to track eliminations in Battle mode.
 #define PLAYER_STAGING              (1 <<  9) // 0x0200
 #define PLAYER_START_SEQUENCE       (1 << 13) // 0x2000
 #define PLAYER_CPU                  (1 << 12) // 0x1000
@@ -122,7 +184,7 @@
 #define GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION 5 // Selecting CC for GP and Versus. Selecting "Begin" or "Data" for Time Trials. Unused for Battle
 #define CONFIRM_OK_SELECTION 6
 #define CONFIRM_OK_SELECTION_FROM_BACK_OUT 7
-#define TIME_TRAILS_DATA_SELECTION_FROM_BACK_OUT 8
+#define TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT 8
 
 /**
  * Options for gControllerPakMenuSelection
@@ -137,26 +199,6 @@
 #define CONTROLLER_PAK_MENU_ERASE_ERROR_NOT_ERASED 8
 #define CONTROLLER_PAK_MENU_ERASE_ERROR_NO_PAK 9
 #define CONTROLLER_PAK_MENU_ERASE_ERROR_PAK_CHANGED 10
-
-/**
- * Options for gDebugMenuSelection
- */
-#define DEBUG_MENU_DISABLED 1
-#define DEBUG_MENU_DEBUG_MODE 2
-#define DEBUG_MENU_COURSE 3
-#define DEBUG_MENU_SCREEN_MODE 4
-#define DEBUG_MENU_PLAYER 5
-#define DEBUG_MENU_SOUND_MODE 6
-#define DEBUG_MENU_GIVE_ALL_GOLD_CUP 7
-#define DEBUG_MENU_EXITED 64
-
-/**
- * Options for gDebugGotoScene
- */
-#define DEBUG_GOTO_RACING 0
-#define DEBUG_GOTO_ENDING_SEQUENCE 1
-#define DEBUG_GOTO_CREDITS_SEQUENCE_CC_50 2
-#define DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA 3
 
 /**
  * Options for gScreenModeSelection and gActiveScreenMode

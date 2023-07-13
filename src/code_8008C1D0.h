@@ -7,7 +7,7 @@
 
 void func_unnamed();
 void func_8008C1D8(s32*);
-void func_8008C1E0(s32, s32);
+void func_8008C1E0(s32*, s32);
 void func_unnamed1(s32);
 void func_unnamed2(s32);
 void func_unnamed3();
@@ -108,22 +108,17 @@ void func_8008FF08(Player*, s8);
 void func_80090178(Player*, s8, Vec3f, Vec3f);
 void func_80090778(Player*);
 void func_80090868(Player*);
+s32  func_800910E4(Player*);
 void func_800911B4(Player*, s8);
 void func_80091298(Player*, s8);
-void func_80091440(s8);
-void func_800914A0();
 
 // code_80005FD0
 void func_800098FC(u32, Player*);
 // audio/external.c
-void func_800C90F4(u8, uintptr_t);
-void func_800C9060(u8, s32);
 void func_800C9250(u8);
-void func_800CA24C(u8);
 void func_800CA59C(u8);
 void func_800CA730(u8);
 void func_800CA984(u8);
-void func_800CAACC(u8);
 void func_800CAFC0(u8);
 void func_800CB064(u8);
 
@@ -138,21 +133,10 @@ extern f32 D_800E37B0[];
 extern f32 D_800E3790[];
 extern f32 D_800E37D0[];
 extern f32 D_800E37F0[];
-extern f32 D_800EF568;
-extern f32 D_800EF56C;
-extern f64 D_800EF570;
-extern f32 D_800EF578;
-extern f64 D_800EF580;
-extern f64 D_800EF588;
-extern f64 D_800EF5A0;
-extern f64 D_800EF5A8;
-extern f32 D_800EF678;
-extern f32 D_800EF67C;
 extern u16 D_80152308;
 extern u16 D_8015F6F8;
 extern s16 D_80165190[4][8];
 extern f32 D_80165280[];
-extern s16 D_80165320[];
 extern s32 D_80165420[];
 extern s32 D_80165440[];
 extern s32 D_80165460[];

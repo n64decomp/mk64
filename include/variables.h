@@ -12,7 +12,7 @@ extern s8    gCharacterIdByGPOverallRank[8];        // D_8018D9D0
 extern s8    gCharacterGridSelections[4];           // D_8018EDE4
 extern s8    gCharacterSelections[4];               // D_800E86A8
 extern s8    gControllerPakMenuSelection;           // D_8018EDF0
-extern s32   gControllerPakNumPagesFree;            // D_8018EB80
+extern s32   gControllerPak1NumPagesFree;            // D_8018EB80
 extern s8    gControllerPakSelectedTableRow;        // D_800E86C0
 extern f32   gCourseCompletionPercentByPlayerId[8]; // D_801644D0
 extern f32   gCourseCompletionPercentByRank[8];     // D_80162FD8
@@ -58,7 +58,7 @@ extern s8    gNextDemoId;           // D_800E86BC
 extern u8    gPerCupIndexByCourseId[NUM_COURSES]; // D_800EFD50
 extern s32   gPlayerCountSelection1;
 extern s32   gPlayerIsThrottleActive[];           // D_801653E0
-extern s32   gPlayerPositions[];                  // D_801643B8
+extern s32   gGPCurrentRaceRankByPlayerId[];      // D_801643B8
 
 extern u8    gSaveDataSoundMode;               // D_8018ED14
 extern u8    gSaveDataSoundModeBackup;         // D_8018ED8C

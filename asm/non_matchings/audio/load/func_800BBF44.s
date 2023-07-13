@@ -23,11 +23,11 @@ glabel func_800BBF44
 /* 0BCB98 800BBF98 8C510004 */  lw    $s1, 4($v0)
 .L800BBF9C:
 /* 0BCB9C 800BBF9C 01284821 */  addu  $t1, $t1, $t0
-/* 0BCBA0 800BBFA0 3C0A803B */  lui   $t2, %hi(D_803B1510) # $t2, 0x803b
-/* 0BCBA4 800BBFA4 254A1510 */  addiu $t2, %lo(D_803B1510) # addiu $t2, $t2, 0x1510
+/* 0BCBA0 800BBFA0 3C0A803B */  lui   $t2, %hi(gSequencePlayers) # $t2, 0x803b
+/* 0BCBA4 800BBFA4 254A1510 */  addiu $t2, %lo(gSequencePlayers) # addiu $t2, $t2, 0x1510
 /* 0BCBA8 800BBFA8 000948C0 */  sll   $t1, $t1, 3
 /* 0BCBAC 800BBFAC 012A8021 */  addu  $s0, $t1, $t2
-/* 0BCBB0 800BBFB0 0C02FBCB */  jal   func_800BEF2C
+/* 0BCBB0 800BBFB0 0C02FBCB */  jal   sequence_player_disable
 /* 0BCBB4 800BBFB4 02002025 */   move  $a0, $s0
 /* 0BCBB8 800BBFB8 8FAB0048 */  lw    $t3, 0x48($sp)
 /* 0BCBBC 800BBFBC 27A50028 */  addiu $a1, $sp, 0x28
@@ -36,7 +36,7 @@ glabel func_800BBF44
 /* 0BCBC8 800BBFC8 02202025 */   move  $a0, $s1
 /* 0BCBCC 800BBFCC AFA0002C */  sw    $zero, 0x2c($sp)
 /* 0BCBD0 800BBFD0 AFA00028 */  sw    $zero, 0x28($sp)
-/* 0BCBD4 800BBFD4 0C02EEE8 */  jal   func_800BBBA0
+/* 0BCBD4 800BBFD4 0C02EEE8 */  jal   get_missing_bank
 /* 0BCBD8 800BBFD8 02202025 */   move  $a0, $s1
 /* 0BCBDC 800BBFDC 8FAC002C */  lw    $t4, 0x2c($sp)
 /* 0BCBE0 800BBFE0 24010001 */  li    $at, 1
@@ -68,7 +68,7 @@ glabel func_800BBF44
 .L800BC03C:
 /* 0BCC3C 800BC03C 00002025 */  move  $a0, $zero
 /* 0BCC40 800BC040 24050002 */  li    $a1, 2
-/* 0BCC44 800BC044 0C02E6A4 */  jal   func_800B9A90
+/* 0BCC44 800BC044 0C02E6A4 */  jal   get_bank_or_seq
 /* 0BCC48 800BC048 02203025 */   move  $a2, $s1
 /* 0BCC4C 800BC04C 14400013 */  bnez  $v0, .L800BC09C
 /* 0BCC50 800BC050 00401825 */   move  $v1, $v0
@@ -94,7 +94,7 @@ glabel func_800BBF44
 /* 0BCC98 800BC098 8FBF001C */   lw    $ra, 0x1c($sp)
 .L800BC09C:
 /* 0BCC9C 800BC09C 8FA40040 */  lw    $a0, 0x40($sp)
-/* 0BCCA0 800BC0A0 0C03046C */  jal   func_800C11B0
+/* 0BCCA0 800BC0A0 0C03046C */  jal   init_sequence_player
 /* 0BCCA4 800BC0A4 AFA3003C */   sw    $v1, 0x3c($sp)
 /* 0BCCA8 800BC0A8 8FA3003C */  lw    $v1, 0x3c($sp)
 /* 0BCCAC 800BC0AC 92080000 */  lbu   $t0, ($s0)

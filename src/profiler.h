@@ -44,5 +44,8 @@ void profiler_log_thread4_time(void);
 void profiler_log_gfx_time(enum ProfilerGfxEvent eventID);
 void profiler_log_vblank_time(void);
 void draw_profiler(void);
+void resource_display(void);
+
+extern s32 gEnableResourceMeters;
 
 #endif /* PROFILER_H */

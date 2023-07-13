@@ -1,14 +1,21 @@
+.section .late_rodata
+
+glabel D_800EF108
+.float 0.15
+
+.section .text
+
 glabel func_80081848
 /* 082448 80081848 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 08244C 8008184C AFBF0024 */  sw    $ra, 0x24($sp)
 /* 082450 80081850 AFB00020 */  sw    $s0, 0x20($sp)
-/* 082454 80081854 3C050601 */  lui   $a1, %hi(D_0600FC70) # $a1, 0x601
-/* 082458 80081858 3C060601 */  lui   $a2, %hi(D_0600FE70) # $a2, 0x601
+/* 082454 80081854 3C050601 */  lui   $a1, %hi(d_course_moo_moo_farm_mole_tlut) # $a1, 0x601
+/* 082458 80081858 3C060601 */  lui   $a2, %hi(d_course_moo_moo_farm_mole_frames) # $a2, 0x601
 /* 08245C 8008185C 240E0040 */  li    $t6, 64
 /* 082460 80081860 00808025 */  move  $s0, $a0
 /* 082464 80081864 AFAE0010 */  sw    $t6, 0x10($sp)
-/* 082468 80081868 24C6FE70 */  addiu $a2, %lo(D_0600FE70) # addiu $a2, $a2, -0x190
-/* 08246C 8008186C 24A5FC70 */  addiu $a1, %lo(D_0600FC70) # addiu $a1, $a1, -0x390
+/* 082468 80081868 24C6FE70 */  addiu $a2, %lo(d_course_moo_moo_farm_mole_frames) # addiu $a2, $a2, -0x190
+/* 08246C 8008186C 24A5FC70 */  addiu $a1, %lo(d_course_moo_moo_farm_mole_tlut) # addiu $a1, $a1, -0x390
 /* 082470 80081870 0C01CD11 */  jal   func_80073444
 /* 082474 80081874 24070020 */   li    $a3, 32
 /* 082478 80081878 44800000 */  mtc1  $zero, $f0

@@ -44,123 +44,123 @@ glabel music_sequence_table_end
 .align 4, 0x00
 
 glabel seq_00
-.incbin "music/seq_00.m64"
+.incbin "music/00_seq_00.m64"
 glabel seq_00_end
 
 glabel seq_01
-.incbin "music/seq_01.m64"
+.incbin "music/01_title_screen.m64"
 glabel seq_01_end
 
 glabel seq_02
-.incbin "music/seq_02.m64"
+.incbin "music/02_main_menu.m64"
 glabel seq_02_end
 
 glabel seq_03
-.incbin "music/seq_03.m64"
+.incbin "music/03_racways_wario_stadium.m64"
 glabel seq_03_end
 
 glabel seq_04
-.incbin "music/seq_04.m64"
+.incbin "music/04_moo_moo_fame_yoshi_valley.m64"
 glabel seq_04_end
 
 glabel seq_05
-.incbin "music/seq_05.m64"
+.incbin "music/05_choco_mountain.m64"
 glabel seq_05_end
 
 glabel seq_06
-.incbin "music/seq_06.m64"
+.incbin "music/06_koopa_troopa_beach.m64"
 glabel seq_06_end
 
 glabel seq_07
-.incbin "music/seq_07.m64"
+.incbin "music/07_banshee_boardwalk.m64"
 glabel seq_07_end
 
 glabel seq_08
-.incbin "music/seq_08.m64"
+.incbin "music/08_seq_08.m64"
 glabel seq_08_end
 
 glabel seq_09
-.incbin "music/seq_09.m64"
+.incbin "music/09_seq_09.m64"
 glabel seq_09_end
 
 glabel seq_0A
-.incbin "music/seq_0A.m64"
+.incbin "music/10_kalimari_desert.m64"
 glabel seq_0A_end
 
 glabel seq_0B
-.incbin "music/seq_0B.m64"
+.incbin "music/11_start_grid_gp_vs.m64"
 glabel seq_0B_end
 
 glabel seq_0C
-.incbin "music/seq_0C.m64"
+.incbin "music/12_final_lap_fanfare.m64"
 glabel seq_0C_end
 
 glabel seq_0D
-.incbin "music/seq_0D.m64"
+.incbin "music/13_finish_1st_place.m64"
 glabel seq_0D_end
 
 glabel seq_0E
-.incbin "music/seq_0E.m64"
+.incbin "music/14_finish_2nd_4th_place.m64"
 glabel seq_0E_end
 
 glabel seq_0F
-.incbin "music/seq_0F.m64"
+.incbin "music/15_finish_5th_8th_place.m64"
 glabel seq_0F_end
 
 glabel seq_10
-.incbin "music/seq_10.m64"
+.incbin "music/16_seq_10.m64"
 glabel seq_10_end
 
 glabel seq_11
-.incbin "music/seq_11.m64"
+.incbin "music/17_star_jingle.m64"
 glabel seq_11_end
 
 glabel seq_12
-.incbin "music/seq_12.m64"
+.incbin "music/18_rainbow_road.m64"
 glabel seq_12_end
 
 glabel seq_13
-.incbin "music/seq_13.m64"
+.incbin "music/19_maybe_boo_item.m64"
 glabel seq_13_end
 
 glabel seq_14
-.incbin "music/seq_14.m64"
+.incbin "music/20_game_over.m64"
 glabel seq_14_end
 
 glabel seq_15
-.incbin "music/seq_15.m64"
+.incbin "music/21_toads_turnpike.m64"
 glabel seq_15_end
 
 glabel seq_16
-.incbin "music/seq_16.m64"
+.incbin "music/22_start_gird_time_attack.m64"
 glabel seq_16_end
 
 glabel seq_17
-.incbin "music/seq_17.m64"
+.incbin "music/23_vs_battle_results.m64"
 glabel seq_17_end
 
 glabel seq_18
-.incbin "music/seq_18.m64"
+.incbin "music/24_losing_results.m64"
 glabel seq_18_end
 
 glabel seq_19
-.incbin "music/seq_19.m64"
+.incbin "music/25_battle_arenas.m64"
 glabel seq_19_end
 
 glabel seq_1A
-.incbin "music/seq_1A.m64"
+.incbin "music/26_award_ceremony_buildup.m64"
 glabel seq_1A_end
 
 glabel seq_1B
-.incbin "music/seq_1B.m64"
+.incbin "music/27_award_ceremony_1st_3rd.m64"
 glabel seq_1B_end
 
 glabel seq_1C
-.incbin "music/seq_1C.m64"
+.incbin "music/28_staff_roll.m64"
 glabel seq_1C_end
 
 glabel seq_1D
-.incbin "music/seq_1D.m64"
+.incbin "music/29_award_ceremony_4th_8th.m64"
 glabel seq_1D_end
 # Unknown region BE90D0-BE90E0 [10]
 .byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

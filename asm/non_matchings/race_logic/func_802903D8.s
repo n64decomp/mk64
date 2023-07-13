@@ -1,3 +1,21 @@
+.section .late_rodata
+
+glabel D_802B92A0
+.float 0.1
+
+glabel D_802B92A4
+.float 0.2
+
+glabel D_802B92A8
+.float 0.55
+
+.word 0x00000000
+
+glabel D_802B92B0
+.double 0.85
+
+.section .text
+
 glabel func_802903D8
 /* 0F99E8 802903D8 27BDFF88 */  addiu $sp, $sp, -0x78
 /* 0F99EC 802903DC AFBF0014 */  sw    $ra, 0x14($sp)

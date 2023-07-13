@@ -1,0 +1,11 @@
+{
+"gTLUTBlueShell":      {"output_dir": "blueshell", "rom_offset": "0x132B50", "block_offset": "0x05038", "width": 16, "height": 16, "type": "rgba16"},
+"gTextureBlueShell01": {"output_dir": "blueshell", "rom_offset": "0x68FE20", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTBlueShell"},
+"gTextureBlueShell02": {"output_dir": "blueshell", "rom_offset": "0x69004C", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTBlueShell"},
+"gTextureBlueShell03": {"output_dir": "blueshell", "rom_offset": "0x690284", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTBlueShell"},
+"gTextureBlueShell04": {"output_dir": "blueshell", "rom_offset": "0x6904C4", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTBlueShell"},
+"gTextureBlueShell05": {"output_dir": "blueshell", "rom_offset": "0x690708", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTBlueShell"},
+"gTextureBlueShell06": {"output_dir": "blueshell", "rom_offset": "0x690960", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTBlueShell"},
+"gTextureBlueShell07": {"output_dir": "blueshell", "rom_offset": "0x690BBC", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTBlueShell"},
+"gTextureBlueShell08": {"output_dir": "blueshell", "rom_offset": "0x690DF8", "width": 32, "height": 32, "type": "ci8", "tlut": "gTLUTBlueShell"}
+}

@@ -5,6 +5,8 @@
 #include "textures.h"
 #include "main.h"
 
+extern u32 _course_mario_raceway_dl_mio0SegmentRomStart[];
+
 /* File specific types */
 
 typedef struct {
@@ -49,8 +51,27 @@ typedef struct {
     /* 0x04 */ Gfx *displayList;
 } struct_8018E768_entry; // size = 0x08
 
+typedef struct {
+    /* 0x00 */ s16 column;
+    /* 0x02 */ s16 row;
+    /* 0x04 */ s16 pad0;
+    /* 0x06 */ s16 pad1;
+} Unk_D_800E70A0; // size = 0x08
+
 /* Function Prototypes */
 
+void func_800A7A4C(s32);
+void func_8009DF8C(u32, s8);
+void func_8009DEF8(u32, s8);
+void func_8009D77C(s32,s32,s32);
+void func_8009CBE4(s32, s32, s32);
+void func_800996BC(MkTexture*, s32);
+void func_8009E2A8(s32);
+s32 func_80091D74(void);
+void func_80091EE4(void);
+void func_80091FA4(void);
+void func_80093A30(s32);
+void func_80093A5C(u32);
 f64 exponent_by_squaring(f64, s32);
 f64 func_80091A6C(f64, s32);
 f64 func_80091AC0(f64, s32*);
@@ -67,6 +88,7 @@ void func_800925CC();
 void func_80092604();
 void func_80092630();
 void func_8009265C();
+void func_80092688();
 void func_80092C80();
 s32  char_to_glyph_index(char*);
 s32  func_80092DF8(s8 *);
@@ -74,7 +96,7 @@ s32  func_80092E1C(s8 *);
 s32  func_80092EE4(s8 *);
 s32  get_string_width(char*);
 void set_text_color(s32);
-void func_800930E4(s32, s32, s32*);
+void func_800930E4(s32, s32, char*);
 void print_text0(s32, s32, char*, s32, f32, f32, s32);
 void func_80093324(s32, s32, char*, s32, f32, f32);
 void func_80093358(s32, s32, char*, s32, f32, f32);
@@ -100,6 +122,7 @@ void func_800947B4(struct GfxPool*, s32);
 void func_80094A64(Mtx*);
 void func_80094C60();
 void func_80095574();
+Gfx *func_800958D4(Gfx*, s32, s32, s32, s32, s32);
 Gfx *func_800959A0(Gfx*, s32, s32, s32, s32);
 Gfx *func_800959F8(Gfx*, Vtx*);
 Gfx *func_80098C18(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
@@ -108,15 +131,15 @@ Gfx *func_80098FC8(Gfx*, s32, s32, s32, s32);
 void dma_copy_base_729a30(u64*, size_t, void*);
 void dma_copy_base_7fa3c0(u64*, size_t, void*);
 void func_80099110();
-void func_80099184(s32);
+void func_80099184(MkTexture*);
 void *segmented_to_virtual_dupe(const void*);
 void *segmented_to_virtual_dupe_2(const void*);
 Gfx *func_8009C204(Gfx*, MkTexture*, s32, s32, s32);
 void func_8009CA2C();
 void func_8009CA6C(s32);
+void func_8009969C(MkTexture*);
 void func_80099A94(MkTexture *, s32);
 void func_80099AEC();
-void func_8009E1E4();
 void func_80099E54();
 void func_80099E60(MkTexture *, s32, s32);
 void func_80099EC4();
@@ -134,30 +157,48 @@ void func_8009B938();
 void func_8009B954(MkTexture*);
 void func_8009B998();
 Gfx *func_8009B9D0(Gfx*, MkTexture*);
-Gfx *func_8009BA74(Gfx *, MkTexture*, s32, s32);
-Gfx *func_8009BEF0(Gfx*, s32, f32, f32, s32, f32,f32);
+Gfx *func_8009BA74(Gfx *, MkTexture[], s32, s32);
+Gfx *func_8009BEF0(Gfx*, MkTexture*, f32, f32, s32, f32,f32);
 Gfx *func_8009C434(Gfx*, struct_8018DEE0_entry*, s32, s32, s32);
 Gfx *func_8009C708(Gfx*, struct_8018DEE0_entry *, s32, s32, s32, s32);
 void func_8009C918();
 void func_8009CA2C();
+void func_8009CDDC(s32, s32);
+void func_8009CDFC(s32, s32);
+void func_8009CE1C();
+void func_8009D958(s32, s32);
+void func_8009D978(s32, s32);
+void func_8009DF4C(s32);
+void func_8009DF6C(s32);
+void func_8009DFE0(s32);
+void func_8009E000(s32);
 void func_8009E0F0(s32);
 void func_8009E1C0();
 void func_8009E1E4();
 void func_8009E208();
+void func_8009E230();
 void func_8009E258();
 void func_8009E280();
 void func_8009E5BC();
+void func_8009E5FC(s32);
 void func_8009E620();
 void add_8018D9E0_entry(s32, s32, s32, s8);
 void func_800A08D8(u8, s32, s32);
+s32  func_800A095C(char*, s32, s32, s32);
+void func_800A09E0(struct_8018D9E0_entry*);
 void func_800A0AD0(struct_8018D9E0_entry*);
+void func_800A0DFC();
 void func_800A11D0(struct_8018D9E0_entry*, s32, s32);
+void func_800A1500(struct_8018D9E0_entry*);
 void func_800A15EC(struct_8018D9E0_entry*);
 void func_800A1924(struct_8018D9E0_entry*);
 void func_800A1A20(struct_8018D9E0_entry*);
+void func_800A1F30(struct_8018D9E0_entry*);
+void func_800A2D1C(struct_8018D9E0_entry*);
 void func_800A3C84(struct_8018D9E0_entry*);
 void func_800A4550(s32, s32, s32);
 void func_800A474C(s32, s32, s32);
+void func_800A4A24(struct_8018D9E0_entry*);
 void func_800A4B38(struct_8018D9E0_entry*);
 void func_800A4BC8(struct_8018D9E0_entry*);
 void func_800A4EF8(struct_8018D9E0_entry*);
@@ -165,6 +206,7 @@ void func_800A5084(struct_8018D9E0_entry*);
 void func_800A5360(struct_8018D9E0_entry*);
 void func_800A54EC();
 void func_800A6034(struct_8018D9E0_entry*);
+void func_800A70E8(struct_8018D9E0_entry*);
 void func_800A7258(struct_8018D9E0_entry*);
 void func_800A72FC(struct_8018D9E0_entry*);
 void func_800A7448(struct_8018D9E0_entry*);
@@ -178,8 +220,11 @@ void get_time_record_centiseconds(s32, char*);
 void func_800A8230();
 void func_800A8250();
 void func_800A86E8(struct_8018D9E0_entry*);
+void func_800A890C(s32, struct_8018D9E0_entry*);
+void func_800A8A98(struct_8018D9E0_entry*);
 void func_800A8E14(struct_8018D9E0_entry*);
 void func_800A8EC0(struct_8018D9E0_entry*);
+void func_800A90D4(s32, struct_8018D9E0_entry*);
 void func_800A91D8(struct_8018D9E0_entry*, s32, s32);
 void func_800A9208(struct_8018D9E0_entry*, s32);
 void func_800A9278(struct_8018D9E0_entry*, s32);
@@ -189,6 +234,10 @@ void func_800A940C(struct_8018D9E0_entry*, s32);
 void func_800A94C8(struct_8018D9E0_entry*, s32, s32);
 void func_800A954C(struct_8018D9E0_entry*);
 void func_800A9710(struct_8018D9E0_entry*);
+void func_800A9B9C(struct_8018D9E0_entry*);
+void func_800A9C40(struct_8018D9E0_entry*);
+void func_800A9D5C(struct_8018D9E0_entry*);
+void func_800AA280(struct_8018D9E0_entry*);
 void func_800AAB90(struct_8018D9E0_entry*);
 void func_800AADD4(struct_8018D9E0_entry*);
 void func_800AAE18(struct_8018D9E0_entry*);
@@ -201,18 +250,33 @@ void func_800AAF94(struct_8018D9E0_entry*, s32);
 s32  func_800AAFCC(s32);
 void func_800AB020(struct_8018D9E0_entry*);
 void func_800AB098(struct_8018D9E0_entry*);
+void func_800AB164(struct_8018D9E0_entry*);
 void func_800AB260(struct_8018D9E0_entry*);
 void func_800AB290(struct_8018D9E0_entry*);
+void func_800AB904(struct_8018D9E0_entry*);
+void func_800ABAE8(struct_8018D9E0_entry*);
+void func_800ABB24(struct_8018D9E0_entry*);
+void func_800ABBCC(struct_8018D9E0_entry*);
+void func_800ABC38(struct_8018D9E0_entry*);
+void func_800ABCF4(struct_8018D9E0_entry*);
+void func_800ABEAC(struct_8018D9E0_entry*);
+void func_800ABF68(struct_8018D9E0_entry*);
+void func_800AC128(struct_8018D9E0_entry*);
+void func_800AC300(struct_8018D9E0_entry*);
+void func_800AC324(struct_8018D9E0_entry*);
 void func_800AC978(struct_8018D9E0_entry*);
+void func_800AD1A4(struct_8018D9E0_entry*);
+void func_800ADF48(struct_8018D9E0_entry*);
+void func_800AEC54(struct_8018D9E0_entry*);
+void func_800AEDBC(struct_8018D9E0_entry*);
 void func_800AEE90(struct_8018D9E0_entry*);
 void func_800AEEBC(struct_8018D9E0_entry*);
 void func_800AEEE8(struct_8018D9E0_entry*);
+void func_800AF004(struct_8018D9E0_entry*);
+void func_800AF1AC(struct_8018D9E0_entry*);
 void func_800AF480(struct_8018D9E0_entry*);
 void func_800AF4DC(struct_8018D9E0_entry*);
 void func_800AF740(struct_8018D9E0_entry*);
-
-// code_80057C60.c
-void func_80057CE4();
 
 /* File specific defines */
 
@@ -225,9 +289,13 @@ void func_80057CE4();
 
 extern Gfx D_06009410[];
 
+extern s32  D_800DDB24;
+
 extern Gfx *D_800E84CC[];
 extern Gfx *D_800E84EC[];
 extern Gfx *D_800E850C[];
+
+extern intptr_t *D_8018D9BC;
 
 extern s16 gGlyphDisplayWidth[]; // D_800EF690
 extern RGBA16 D_800E74A8[5];
@@ -244,7 +312,7 @@ extern char *D_800E7730;
 extern char *D_800E77A8;
 extern char *D_800E77AC;
 extern char *D_800E77B0;
-extern char *D_800E77D8;
+extern char D_800E77D8[];
 extern char *D_800E77E4[0x14];
 extern char *D_800E7860[2];
 extern char *D_800E7A88[4];
@@ -270,7 +338,8 @@ extern f32 D_800F24B4;
 extern f32 D_800F24B8;
 extern f64 D_800F24C0;
 extern s32 D_80165754;
-extern s32 D_8018D9B0;
+extern intptr_t D_8018D9B0;
+extern s8  D_8018D9D8;
 extern s8  D_8018D9D9;
 extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE]; // D_8018D9E0
 extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE]; // D_8018DEE0
@@ -282,9 +351,11 @@ extern s32 gNumD_8018E768Entries;                         // D_8018E760
 extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE]; // D_8018E768
 extern s8  gTextColor;                                    // D_8018E860
 extern s8  D_8018ED91;
-extern s32 D_8018E850;
+extern s8  D_8018E838[];
+extern s32 D_8018E840[];
+extern s32 D_8018E850[];
 extern s32 D_8018E854;
-extern s32 D_8018E858;
+extern s32 D_8018E858[];
 extern s32 D_8018E85C;
 extern s32 D_8018EDC0;
 extern f32 D_8018EDC4;
@@ -294,6 +365,7 @@ extern f32 D_8018EDD0;
 extern f32 D_8018EDD4;
 extern f32 D_8018EDD8;
 extern f32 D_8018EDDC;
+extern s8  D_8018EE08;
 extern s8  D_802874F5;
 
 extern u8 _textures_0aSegmentRomStart[];
@@ -301,5 +373,8 @@ extern u8 _textures_0bSegmentRomStart[];
 
 extern s32 D_8018E7A8; // maybe?
 extern s8 D_8018E7B0;  // maybe?
+
+// This is tracking which credit "state" we're in, decides which credits are shown (and probably other stuff)
+extern u16 D_800DC5E4;
 
 #endif

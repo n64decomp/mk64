@@ -18,6 +18,11 @@ struct GfxPool {
     /* 0x28B20 */ struct SPTask spTask;
 }; // size = 0x28B70
 
+struct UnkStruct_8015F584 {
+    u16 unk0;
+    u16 unk2;
+};
+
 void create_thread(OSThread*, OSId, void (*entry)(void *), void*, void*, OSPri);
 void main_func();
 void thread1_idle(void*);
@@ -62,7 +67,11 @@ void thread4_audio(void*);
 extern struct GfxPool *gGfxPool;
 extern Gfx *gDisplayListHead;
 extern struct Controller gControllers[8];
+extern struct Controller *gControllerOne;
+extern s32 D_800DC568;
+extern s32 D_800DC56C[];
 
+extern u32 gPhysicalFramebuffers[];
 extern OSIoMesg gDmaIoMesg;
 extern OSMesg gMainReceivedMesg;
 extern OSMesgQueue gDmaMesgQueue;
@@ -78,6 +87,10 @@ extern u8 *gNmiUnknown5;
 extern u8 *gNmiUnknown6;
 extern s32 gScreenModeSelection;
 
+extern OSContStatus gControllerStatuses[];
+extern struct Controller *gControllerFive;
+extern u8 gControllerBits;
+
 extern s16 sIsController1Unplugged;
 
 extern u64 rspbootTextStart[], rspbootTextEnd[];
@@ -89,7 +102,7 @@ extern u64 gspF3DLXDataStart[];
 extern u64 gGfxSPTaskOutputBuffer[];
 extern u32 gGfxSPTaskOutputBufferSize;
 
-extern u32 gPrevLoadedAddress;
+extern u32 gNextFreeMemoryAddress;
 extern s32 D_8015F734;
 extern u8 _data_segment2SegmentRomStart[];
 extern u8 _data_segment2SegmentRomEnd[];
@@ -108,12 +121,10 @@ extern u16 gIsInQuitToMenuTransition;
 
 
 extern s32 D_8015F788;
-extern s16 D_801625E8;
+extern s16 gDebugPathCount;
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
 
 extern u16 D_800DC5B0;
 extern s32 gPlayerWinningIndex;
-
-extern s32 gEnableResourceMeters;
 
 #endif

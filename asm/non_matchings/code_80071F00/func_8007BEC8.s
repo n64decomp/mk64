@@ -1,3 +1,11 @@
+.section .late_rodata
+
+glabel jpt_800EEE20
+.word L8007BFA0, L8007BF0C, L8007BF1C, L8007BF4C
+.word L8007BF68, L8007BF8C
+
+.section .text
+
 glabel func_8007BEC8
 /* 07CAC8 8007BEC8 000470C0 */  sll   $t6, $a0, 3
 /* 07CACC 8007BECC 01C47023 */  subu  $t6, $t6, $a0

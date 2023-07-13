@@ -1,3 +1,13 @@
+.section .late_rodata
+
+glabel D_800ED270
+.double -10000.0
+
+glabel D_800ED278
+.double 10000.0
+
+.section .text
+
 glabel func_80017054
 /* 017C54 80017054 00077080 */  sll   $t6, $a3, 2
 /* 017C58 80017058 3C0F8016 */  lui   $t7, %hi(D_80164648) # $t7, 0x8016

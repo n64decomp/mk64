@@ -1,15 +1,22 @@
+.section .late_rodata
+
+glabel D_800EF208
+.float 0.1
+
+.section .text
+
 glabel func_80083868
 /* 084468 80083868 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 08446C 8008386C AFBF0024 */  sw    $ra, 0x24($sp)
 /* 084470 80083870 AFB10020 */  sw    $s1, 0x20($sp)
-/* 084474 80083874 3C050600 */  lui   $a1, %hi(D_06004B20) # $a1, 0x600
-/* 084478 80083878 3C060600 */  lui   $a2, %hi(D_06004D20) # $a2, 0x600
+/* 084474 80083874 3C050600 */  lui   $a1, %hi(gTLUTSnowman) # $a1, 0x600
+/* 084478 80083878 3C060600 */  lui   $a2, %hi(gTextureSnowmanHead) # $a2, 0x600
 /* 08447C 8008387C 240E0040 */  li    $t6, 64
 /* 084480 80083880 00808825 */  move  $s1, $a0
 /* 084484 80083884 AFB0001C */  sw    $s0, 0x1c($sp)
 /* 084488 80083888 AFAE0010 */  sw    $t6, 0x10($sp)
-/* 08448C 8008388C 24C64D20 */  addiu $a2, %lo(D_06004D20) # addiu $a2, $a2, 0x4d20
-/* 084490 80083890 24A54B20 */  addiu $a1, %lo(D_06004B20) # addiu $a1, $a1, 0x4b20
+/* 08448C 8008388C 24C64D20 */  addiu $a2, %lo(gTextureSnowmanHead) # addiu $a2, $a2, 0x4d20
+/* 084490 80083890 24A54B20 */  addiu $a1, %lo(gTLUTSnowman) # addiu $a1, $a1, 0x4b20
 /* 084494 80083894 0C01CD11 */  jal   func_80073444
 /* 084498 80083898 24070040 */   li    $a3, 64
 /* 08449C 8008389C 001178C0 */  sll   $t7, $s1, 3

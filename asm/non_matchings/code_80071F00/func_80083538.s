@@ -1,3 +1,19 @@
+.section .late_rodata
+
+glabel D_800EF1E8
+.double 0.001
+
+glabel D_800EF1F0
+.double 0.05
+
+glabel D_800EF1F8
+.double 2.6
+
+glabel D_800EF200
+.double 0.1
+
+.section .text
+
 glabel func_80083538
 /* 084138 80083538 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 08413C 8008353C AFBF001C */  sw    $ra, 0x1c($sp)
@@ -15,10 +31,10 @@ glabel func_80083538
 /* 08416C 8008356C 01EE7823 */  subu  $t7, $t7, $t6
 /* 084170 80083570 000F7940 */  sll   $t7, $t7, 5
 /* 084174 80083574 01F88021 */  addu  $s0, $t7, $t8
-/* 084178 80083578 3C020600 */  lui   $v0, %hi(D_06006F20) # $v0, 0x600
-/* 08417C 8008357C 3C030600 */  lui   $v1, %hi(D_06006D20) # $v1, 0x600
-/* 084180 80083580 24636D20 */  addiu $v1, %lo(D_06006D20) # addiu $v1, $v1, 0x6d20
-/* 084184 80083584 24426F20 */  addiu $v0, %lo(D_06006F20) # addiu $v0, $v0, 0x6f20
+/* 084178 80083578 3C020600 */  lui   $v0, %hi(d_course_frappe_snowland_snow) # $v0, 0x600
+/* 08417C 8008357C 3C030600 */  lui   $v1, %hi(d_course_frappe_snowland_snow_tlut) # $v1, 0x600
+/* 084180 80083580 24636D20 */  addiu $v1, %lo(d_course_frappe_snowland_snow_tlut) # addiu $v1, $v1, 0x6d20
+/* 084184 80083584 24426F20 */  addiu $v0, %lo(d_course_frappe_snowland_snow) # addiu $v0, $v0, 0x6f20
 /* 084188 80083588 AE020064 */  sw    $v0, 0x64($s0)
 /* 08418C 8008358C AE02006C */  sw    $v0, 0x6c($s0)
 /* 084190 80083590 AE030060 */  sw    $v1, 0x60($s0)

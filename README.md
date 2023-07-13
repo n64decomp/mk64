@@ -6,7 +6,7 @@
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=m2c)](https://ci.valandil.ca/job/mk64/job/master/)
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=nonmatching)](https://ci.valandil.ca/job/mk64/job/master/)  
 
-C Files left: ~22 out of 35
+C Files left: ~21 out of 35
 # Mario Kart 64
 
 This repo contains a work-in-progress decompilation of Mario Kart 64 (U) and an in-progress dissassembly of the European 1.0 version. The project pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information.
@@ -91,20 +91,27 @@ Some menu textures are compressed using a format called tkmk00. A byte-matching 
 	mk64
 	├── asm: Handwritten assembly code, rom header and boot
 	│   ├── non_matchings: asm for non-matching sections
-	│   └── audio: assembly code
-	├── bin: Kart textures, course vertex, and textures
+	│   └── os: OS related assembly code
+	├── bin: Data needing import; kart textures, and textures.
+	├── courses: course, model, & DL data, course table, staff ghosts.
 	├── build: Output directory
 	├── data: Data, text, audio banks, and instrument sets.
+	├── docs: Build guides
 	├── include: header files
 	├── courses: level scripts, geo layout, offsets and display lists
 	├── lib: SDK library code
 	├── music: sequences
 	├── src: C source code for the game
-	│   └── audio: sample tables and audio source
+	│   ├── audio: sample tables and audio source
 	│   └── os: libultra
 	├── textures: texture data, bitmaps
+	|   ├── common: textures common to many courses
+	|   ├── courses: course specific textures
+	|   ├── crash screen: crash screen font image
 	│   ├── raw: raw textures
-  	│   └── standalone: whole textures
+  	│   ├── standalone: whole textures
+	|   ├── startup_logo: reflection map
+	|   └── trophy: ceremony cutscene podium and trophy textures
 	└── tools: build tools
 
 ## Contributing

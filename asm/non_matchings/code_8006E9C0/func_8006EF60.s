@@ -10,11 +10,11 @@ glabel func_8006EF60
 /* 06FB80 8006EF80 AFB2001C */  sw    $s2, 0x1c($sp)
 /* 06FB84 8006EF84 3C01FFFF */  lui   $at, 0xffff
 /* 06FB88 8006EF88 3C10800E */  lui   $s0, %hi(D_800E5520) # $s0, 0x800e
-/* 06FB8C 8006EF8C 3C13800E */  lui   $s3, %hi(D_800E54D0) # $s3, 0x800e
+/* 06FB8C 8006EF8C 3C13800E */  lui   $s3, %hi(gCourseOutlineTextures) # $s3, 0x800e
 /* 06FB90 8006EF90 3C148019 */  lui   $s4, %hi(D_8018D248) # $s4, 0x8019
 /* 06FB94 8006EF94 AFBF002C */  sw    $ra, 0x2c($sp)
 /* 06FB98 8006EF98 2694D248 */  addiu $s4, %lo(D_8018D248) # addiu $s4, $s4, -0x2db8
-/* 06FB9C 8006EF9C 267354D0 */  addiu $s3, %lo(D_800E54D0) # addiu $s3, $s3, 0x54d0
+/* 06FB9C 8006EF9C 267354D0 */  addiu $s3, %lo(gCourseOutlineTextures) # addiu $s3, $s3, 0x54d0
 /* 06FBA0 8006EFA0 26105520 */  addiu $s0, %lo(D_800E5520) # addiu $s0, $s0, 0x5520
 /* 06FBA4 8006EFA4 00009025 */  move  $s2, $zero
 /* 06FBA8 8006EFA8 24150014 */  li    $s5, 20

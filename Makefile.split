@@ -65,51 +65,7 @@ TEXTURE_DATA_MIO0_NAMES := \
 	texture_692888    \
 	texture_692CC0    \
 	texture_69333C    \
-	texture_693790    \
-	texture_693BC4    \
-	texture_693F48    \
-	texture_69429C    \
-	texture_694628    \
-	texture_694990    \
-	texture_694CAC    \
-	texture_694F7C    \
-	texture_695268    \
-	texture_6955AC    \
-	texture_6958C0    \
-	texture_695BA4    \
-	texture_695EE4    \
-	texture_6961E0    \
-	texture_696488    \
-	texture_6967FC    \
-	texture_696BAC    \
-	texture_696E3C    \
-	texture_697138    \
-	texture_69743C    \
-	texture_6977F0    \
-	texture_697B10    \
-	texture_697E80    \
-	texture_69811C    \
-	texture_698378    \
-	texture_69859C    \
-	texture_6987FC    \
-	texture_698A40    \
-	texture_698C60    \
-	texture_698E38    \
-	texture_698FF4    \
-	texture_6991F8    \
-	texture_699500    \
-	texture_699E24    \
-	texture_69A154    \
-	texture_69A4C0    \
-	texture_69F158    \
-	texture_69F390    \
-	texture_69F5E4    \
-	texture_69F9C0    \
-	texture_69FD6C    \
-	texture_69FF30    \
-	texture_6A010C    \
-	texture_6A0350    \
-	texture_ghosts
+	texture_693790
 
 TEXTURE_DATA_MIO0_FILES := $(addprefix $(BUILD_DIR)/bin/,$(addsuffix .mio0,$(TEXTURE_DATA_MIO0_NAMES)))
 
@@ -164,3 +120,10 @@ $(MUSIC_DIR)/seq_21.m64
 
 $(BUILD_DIR)/src/startup_logo.inc.elf:             SEGMENT_ADDRESS := 0x06000000
 $(BUILD_DIR)/src/trophy_model.inc.elf:             SEGMENT_ADDRESS := 0x0B000000
+
+
+# COURSES
+
+$(BUILD_DIR)/courses/star_cup/sherbet_land/gfx.inc.elf:             SEGMENT_ADDRESS := 0x06000000
+$(BUILD_DIR)/courses/star_cup/wario_stadium/gfx.inc.elf:             SEGMENT_ADDRESS := 0x06000000
+$(BUILD_DIR)/courses/mushroom_cup/luigi_raceway/gfx.inc.elf:             SEGMENT_ADDRESS := 0x06000000

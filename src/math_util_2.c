@@ -8,6 +8,8 @@
 #include "objects.h"
 
 #include "memory.h"
+#include "code_802AAA70.h"
+#include "code_8001F980.h"
 
 #pragma intrinsic (sqrtf)
 
@@ -333,11 +335,11 @@ void func_80041480(s16 *arg0, s16 arg1, s16 arg2, s16 *arg3) {
     }
 }
 
-s32 vec3f_set_dupe_2_electric_boogaloo(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
+Vec3f *vec3f_set_dupe_2_electric_boogaloo(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
     arg0[0] = arg1;
     arg0[1] = arg2;
     arg0[2] = arg3;
-    return &arg0;
+    return (Vec3f *) &arg0;
 }
 
 Vec3f *func_80041530(Vec3f dest) {
@@ -346,7 +348,7 @@ Vec3f *func_80041530(Vec3f dest) {
     dest[0] = dest[0] * invsqrt;
     dest[1] = dest[1] * invsqrt;
     dest[2] = dest[2] * invsqrt;
-    return  &dest;
+    return (Vec3f *) &dest;
 }
 
 Vec3f *func_80041594(Vec3f arg0, Vec3f arg1, Vec3f arg2) {
@@ -355,7 +357,7 @@ Vec3f *func_80041594(Vec3f arg0, Vec3f arg1, Vec3f arg2) {
     arg0[1] = (arg1[2] * arg2[0]) - (arg2[2] * arg1[0]);
     arg0[2] = (arg1[0] * arg2[1]) - (arg2[0] * arg1[1]);
 
-    return &arg0;
+    return (Vec3f *) &arg0;
 }
 
 UNUSED s32 func_80041608(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
@@ -472,7 +474,7 @@ void func_800419F8(void) {
     D_80165840[2] = sp24[2];
 }
 
-UNUSED func_80041A70(void) {
+UNUSED void func_80041A70(void) {
 
 }
 
@@ -600,7 +602,7 @@ extern s8 D_801658FE;
 extern Mtx D_80183D60[];
 
 void func_80041D34(void) {
-    guOrtho(&D_80183D60, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+    guOrtho((Mtx *)D_80183D60, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
     switch (gActiveScreenMode) {
     case SCREEN_MODE_1P:
         guOrtho(&gGfxPool->mtxPool[5], 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
@@ -644,7 +646,7 @@ UNUSED void func_80042000(u16 arg0) {
     Mat4 matrix;
 
     func_80041AD8(matrix, arg0);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], &matrix);
+    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     D_8018D120++;

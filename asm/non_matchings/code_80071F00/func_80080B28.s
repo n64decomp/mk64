@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800EF0B0
+.double 17.5
+
+.section .text
+
 glabel func_80080B28
 /* 081728 80080B28 000578C0 */  sll   $t7, $a1, 3
 /* 08172C 80080B2C 01E57823 */  subu  $t7, $t7, $a1

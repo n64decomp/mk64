@@ -4,6 +4,7 @@
 #include "camera.h"
 #include "camera_junk.h"
 #include "math_util.h"
+#include "ceremony_and_credits.h"
 
 void setup_camera_ending_sequence(void) {
     Camera *camera;
@@ -37,5 +38,5 @@ void func_802816B8(void) {
     D_80150148 = 1.33333333f;
     D_80150150 = 3.0f;
     D_8015014C = 6800.0f;
-    func_80283430();
+    init_cinematic_camera();
 }

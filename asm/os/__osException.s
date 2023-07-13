@@ -6,6 +6,19 @@
 
 .include "macros.inc"
 
+.section .rodata
+
+glabel D_800F3A00
+.byte 0x00, 0x14, 0x18, 0x18, 0x1c, 0x1c, 0x1c, 0x1c
+.byte 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20
+.byte 0x00, 0x04, 0x08, 0x08, 0x0c, 0x0c, 0x0c, 0x0c
+.byte 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10
+
+glabel jpt_800F3A20
+.word L800D1668, L800D1630, L800D1610, L800D1474
+.word L800D1420, L800D15B4, L800D13E8, L800D13F4
+.word L800D1400
+
 .section .text, "ax"
 
 
@@ -361,8 +374,8 @@ glabel L800D1668
 /* 0D22B0 800D16B0 AD3A0000 */   sw    $k0, ($t1)
 
 .L800D16B4:
-/* 0D22B4 800D16B4 3C01800F */  lui   $at, %hi(D_800EB3B4) # $at, 0x800f
-/* 0D22B8 800D16B8 AC3AB3B4 */  sw    $k0, %lo(D_800EB3B4)($at)
+/* 0D22B4 800D16B4 3C01800F */  lui   $at, %hi(__osFaultedThread) # $at, 0x800f
+/* 0D22B8 800D16B8 AC3AB3B4 */  sw    $k0, %lo(__osFaultedThread)($at)
 /* 0D22BC 800D16BC 24090001 */  li    $t1, 1
 /* 0D22C0 800D16C0 A7490010 */  sh    $t1, 0x10($k0)
 /* 0D22C4 800D16C4 24090002 */  li    $t1, 2

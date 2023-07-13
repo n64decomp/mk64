@@ -3,6 +3,17 @@
 
 #include "common_structs.h"
 
+// todo put this define in types.h or similar.
+// Certain functions are marked as having return values, but do not
+// actually return a value. This causes undefined behavior, which we'd rather
+// avoid on modern GCC. This only impacts -O2 and can matter for both the function
+// itself and functions that call it.
+#ifdef AVOID_UB
+    #define BAD_RETURN(cmd) void
+#else
+    #define BAD_RETURN(cmd) cmd
+#endif
+
 typedef struct {
     /* 0x00 */ Vec3f pos;
     /* 0x0C */ Vec3f lookAt;
@@ -11,7 +22,7 @@ typedef struct {
     // I think these are the "nautical angles" between pos and lookAt
     // rot[0] = pitch, rot[1] = yaw, rot[2] = roll?
     /* 0x24 */ Vec3s rot;
-    /* 0x2A */ s16 rotZ;
+    /* 0x2A */ u16 someBitFlags;
     /* 0x2C */ s16 unk_2C;
     /* 0x2E */ s16 unk_2E;
     /* 0x30 */ Vec3f unk_30;
@@ -39,9 +50,26 @@ typedef struct {
     /* 0xB4 */ f32 unk_B4;
 } Camera; /* size = 0xB8 */
 
+typedef BAD_RETURN(s32) (*CameraEvent)(Camera *c);
+typedef CameraEvent CutsceneShot;
+
 void func_8001CA10(Camera*);
 void func_8001CA24(Player*, f32);
+void func_8001CA78(Player*, Camera*, Vec3f, f32*, f32*, f32*, s32, s32);
+void func_8001D53C(Player*, Camera*, Vec3f, f32*, f32*, f32*, s16, s16);
 void func_8001D794(Player*, Camera*, Vec3f, f32*, f32*, f32*, s16);
+void func_8001E0C4(Camera*, Player*, s8);
+void func_8001E8E8(Camera*, Player*, s8);
+void func_8001F87C(s32);
+void func_8001EE98(Player*, Camera*, s8);
+void func_8001F394(Player*, f32*);
+
+extern s32 D_80164A2C;
+extern f32 D_80164A30;
+extern f32 D_80164A90[];
+extern f32 D_80164AA0[];
+
+extern f32 D_800DDB30[];
 
 extern Camera cameras[];
 extern Camera *camera1;
@@ -52,5 +80,8 @@ extern Camera *camera4;
 extern Player *gPlayerTwo;
 extern Player *gPlayerThree;
 extern Player *gPlayerFour;
+
+// Actually define in main.c, probably need to add to main.h
+extern u16 D_80152300[];
 
 #endif

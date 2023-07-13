@@ -873,102 +873,102 @@ MkTexture D_02001B04[2] = {
 };
 
 MkTexture D_02001B2C[2] = {
-    {0, 0, gCoursePreviewMarioRaceway, 128, 78, 0, 0, 0x3157, 0},
+    {0, 0, gTextureCoursePreviewMarioRaceway, 128, 78, 0, 0, 0x3157, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001B54[2] = {
-    {0, 0, gCoursePreviewChocoMountain, 128, 78, 0, 0, 0x2a24, 0},
+    {0, 0, gTextureCoursePreviewChocoMountain, 128, 78, 0, 0, 0x2a24, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001B7C[2] = {
-    {0, 0, gCoursePreviewBowsersCastle, 128, 78, 0, 0, 0x30de, 0},
+    {0, 0, gTextureCoursePreviewBowsersCastle, 128, 78, 0, 0, 0x30de, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001BA4[2] = {
-    {0, 0, gCoursePreviewBansheeBoardwalk, 128, 78, 0, 0, 0x26ad, 0},
+    {0, 0, gTextureCoursePreviewBansheeBoardwalk, 128, 78, 0, 0, 0x26ad, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001BCC[2] = {
-    {0, 0, gCoursePreviewYoshiValley, 128, 78, 0, 0, 0x3a41, 0},
+    {0, 0, gTextureCoursePreviewYoshiValley, 128, 78, 0, 0, 0x3a41, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001BF4[2] = {
-    {0, 0, gCoursePreviewFrappeSnowland, 128, 78, 0, 0, 0x2409, 0},
+    {0, 0, gTextureCoursePreviewFrappeSnowland, 128, 78, 0, 0, 0x2409, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001C1C[2] = {
-    {0, 0, gCoursePreviewKoopaTroopaBeach, 128, 78, 0, 0, 0x2323, 0},
+    {0, 0, gTextureCoursePreviewKoopaTroopaBeach, 128, 78, 0, 0, 0x2323, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001C44[2] = {
-    {0, 0, gCoursePreviewRoyalRaceway, 128, 78, 0, 0, 0x2821, 0},
+    {0, 0, gTextureCoursePreviewRoyalRaceway, 128, 78, 0, 0, 0x2821, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001C6C[2] = {
-    {0, 0, gCoursePreviewLuigiRaceway, 128, 78, 0, 0, 0x2d74, 0},
+    {0, 0, gTextureCoursePreviewLuigiRaceway, 128, 78, 0, 0, 0x2d74, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001C94[2] = {
-    {0, 0, gCoursePreviewMooMooFarm, 128, 78, 0, 0, 0x25c7, 0},
+    {0, 0, gTextureCoursePreviewMooMooFarm, 128, 78, 0, 0, 0x25c7, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001CBC[2] = {
-    {0, 0, gCoursePreviewToadsTurnpike, 128, 78, 0, 0, 0x299a, 0},
+    {0, 0, gTextureCoursePreviewToadsTurnpike, 128, 78, 0, 0, 0x299a, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001CE4[2] = {
-    {0, 0, gCoursePreviewKalimariDesert, 128, 78, 0, 0, 0x280a, 0},
+    {0, 0, gTextureCoursePreviewKalimariDesert, 128, 78, 0, 0, 0x280a, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001D0C[2] = {
-    {0, 0, gCoursePreviewSherbetLand, 128, 78, 0, 0, 0x300e, 0},
+    {0, 0, gTextureCoursePreviewSherbetLand, 128, 78, 0, 0, 0x300e, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001D34[2] = {
-    {0, 0, gCoursePreviewRainbowRoad, 128, 78, 0, 0, 0x2824, 0},
+    {0, 0, gTextureCoursePreviewRainbowRoad, 128, 78, 0, 0, 0x2824, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001D5C[2] = {
-    {0, 0, gCoursePreviewWarioStadium, 128, 78, 0, 0, 0x32d3, 0},
+    {0, 0, gTextureCoursePreviewWarioStadium, 128, 78, 0, 0, 0x32d3, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001D84[2] = {
-    {0, 0, gCoursePreviewBlockFort, 128, 78, 0, 0, 0x2528, 0},
+    {0, 0, gTextureCoursePreviewBlockFort, 128, 78, 0, 0, 0x2528, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001DAC[2] = {
-    {0, 0, gCoursePreviewSkyscraper, 128, 78, 0, 0, 0x26f0, 0},
+    {0, 0, gTextureCoursePreviewSkyscraper, 128, 78, 0, 0, 0x26f0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001DD4[2] = {
-    {0, 0, gCoursePreviewDoubleDeck, 128, 78, 0, 0, 0x28f7, 0},
+    {0, 0, gTextureCoursePreviewDoubleDeck, 128, 78, 0, 0, 0x28f7, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001DFC[2] = {
-    {0, 0, gCoursePreviewDksJungleParkway, 128, 78, 0, 0, 0x3ee4, 0},
+    {0, 0, gTextureCoursePreviewDksJungleParkway, 128, 78, 0, 0, 0x3ee4, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
 MkTexture D_02001E24[2] = {
-    {0, 0, gCoursePreviewBigDonut, 128, 78, 0, 0, 0x2f5c, 0},
+    {0, 0, gTextureCoursePreviewBigDonut, 128, 78, 0, 0, 0x2f5c, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
@@ -2514,7 +2514,7 @@ MkTexture D_02004C3C[2] = {
 };
 
 MkTexture D_02004C64[2] = {
-    {0, 0, gCoursePreviewMarioRaceway, 128, 78, 23, 112, 0x1e3d, 0},
+    {0, 0, gTextureCoursePreviewMarioRaceway, 128, 78, 23, 112, 0x1e3d, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 

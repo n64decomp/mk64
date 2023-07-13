@@ -1,3 +1,28 @@
+.section .late_rodata
+
+glabel D_800ECFB0
+.float 4.3
+
+glabel D_800ECFB4
+.float 8.33333333
+
+glabel D_800ECFB8
+.float 0.9
+
+glabel D_800ECFBC
+.float -0.9
+
+glabel D_800ECFC0
+.float 0.9
+
+glabel D_800ECFC4
+.float -0.9
+
+glabel D_800ECFC8
+.float 3.33333333
+
+.section .text
+
 glabel func_80009B60
 /* 00A760 80009B60 3C0E800E */  lui   $t6, %hi(gCurrentCourseId)
 /* 00A764 80009B64 85CEC5A0 */  lh    $t6, %lo(gCurrentCourseId)($t6)
@@ -443,9 +468,9 @@ glabel func_80009B60
 /* 00ADC4 8000A1C4 01685821 */  addu  $t3, $t3, $t0
 /* 00ADC8 8000A1C8 1539000E */  bne   $t1, $t9, .L8000A204
 /* 00ADCC 8000A1CC 8FAE0038 */   lw    $t6, 0x38($sp)
-/* 00ADD0 8000A1D0 3C0F8016 */  lui   $t7, %hi(gPlayerPositions)
+/* 00ADD0 8000A1D0 3C0F8016 */  lui   $t7, %hi(gGPCurrentRaceRankByPlayerId)
 /* 00ADD4 8000A1D4 01EE7821 */  addu  $t7, $t7, $t6
-/* 00ADD8 8000A1D8 8DEF43B8 */  lw    $t7, %lo(gPlayerPositions)($t7)
+/* 00ADD8 8000A1D8 8DEF43B8 */  lw    $t7, %lo(gGPCurrentRaceRankByPlayerId)($t7)
 /* 00ADDC 8000A1DC 956B334C */  lhu   $t3, %lo(D_8016334C)($t3) # 0x334c($t3)
 /* 00ADE0 8000A1E0 3C0C8016 */  lui   $t4, %hi(D_80163210) # $t4, 0x8016
 /* 00ADE4 8000A1E4 258C3210 */  addiu $t4, %lo(D_80163210) # addiu $t4, $t4, 0x3210

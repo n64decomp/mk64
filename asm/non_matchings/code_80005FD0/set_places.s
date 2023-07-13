@@ -325,11 +325,11 @@ glabel set_places
 /* 007878 80006C78 25290001 */   addiu $t1, $t1, 1
 .L80006C7C:
 /* 00787C 80006C7C 3C028016 */  lui   $v0, %hi(D_801643E0) # $v0, 0x8016
-/* 007880 80006C80 3C038016 */  lui   $v1, %hi(gPlayerPositions) # $v1, 0x8016
+/* 007880 80006C80 3C038016 */  lui   $v1, %hi(gGPCurrentRaceRankByPlayerId) # $v1, 0x8016
 /* 007884 80006C84 3C058016 */  lui   $a1, %hi(D_801643D8) # $a1, 0x8016
 /* 007888 80006C88 27A40080 */  addiu $a0, $sp, 0x80
 /* 00788C 80006C8C 24A543D8 */  addiu $a1, %lo(D_801643D8) # addiu $a1, $a1, 0x43d8
-/* 007890 80006C90 246343B8 */  addiu $v1, %lo(gPlayerPositions) # addiu $v1, $v1, 0x43b8
+/* 007890 80006C90 246343B8 */  addiu $v1, %lo(gGPCurrentRaceRankByPlayerId) # addiu $v1, $v1, 0x43b8
 /* 007894 80006C94 244243E0 */  addiu $v0, %lo(D_801643E0) # addiu $v0, $v0, 0x43e0
 /* 007898 80006C98 24090001 */  li    $t1, 1
 .L80006C9C:
@@ -349,8 +349,8 @@ glabel set_places
 /* 0078D0 80006CD0 27184360 */  addiu $t8, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t8, $t8, 0x4360
 /* 0078D4 80006CD4 00007840 */  sll   $t7, $zero, 1
 /* 0078D8 80006CD8 00007080 */  sll   $t6, $zero, 2
-/* 0078DC 80006CDC 3C068016 */  lui   $a2, %hi(gPlayerPositions) # $a2, 0x8016
-/* 0078E0 80006CE0 24C643B8 */  addiu $a2, %lo(gPlayerPositions) # addiu $a2, $a2, 0x43b8
+/* 0078DC 80006CDC 3C068016 */  lui   $a2, %hi(gGPCurrentRaceRankByPlayerId) # $a2, 0x8016
+/* 0078E0 80006CE0 24C643B8 */  addiu $a2, %lo(gGPCurrentRaceRankByPlayerId) # addiu $a2, $a2, 0x43b8
 /* 0078E4 80006CE4 008E1021 */  addu  $v0, $a0, $t6
 /* 0078E8 80006CE8 01F85021 */  addu  $t2, $t7, $t8
 /* 0078EC 80006CEC 24090001 */  li    $t1, 1
@@ -369,12 +369,12 @@ glabel set_places
 .L80006D1C:
 /* 00791C 80006D1C 3C0E8016 */   lui   $t6, %hi(gGPCurrentRacePlayerIdByRank) # $t6, 0x8016
 /* 007920 80006D20 25CE4360 */  addiu $t6, %lo(gGPCurrentRacePlayerIdByRank) # addiu $t6, $t6, 0x4360
-/* 007924 80006D24 3C068016 */  lui   $a2, %hi(gPlayerPositions) # $a2, 0x8016
+/* 007924 80006D24 3C068016 */  lui   $a2, %hi(gGPCurrentRaceRankByPlayerId) # $a2, 0x8016
 /* 007928 80006D28 000BC040 */  sll   $t8, $t3, 1
 /* 00792C 80006D2C 000BC880 */  sll   $t9, $t3, 2
 /* 007930 80006D30 00991021 */  addu  $v0, $a0, $t9
 /* 007934 80006D34 030E5021 */  addu  $t2, $t8, $t6
-/* 007938 80006D38 24C643B8 */  addiu $a2, %lo(gPlayerPositions) # addiu $a2, $a2, 0x43b8
+/* 007938 80006D38 24C643B8 */  addiu $a2, %lo(gGPCurrentRaceRankByPlayerId) # addiu $a2, $a2, 0x43b8
 /* 00793C 80006D3C 25690001 */  addiu $t1, $t3, 1
 .L80006D40:
 /* 007940 80006D40 8C430000 */  lw    $v1, ($v0)

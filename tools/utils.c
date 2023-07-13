@@ -37,6 +37,23 @@ float read_f32_be(unsigned char *buf)
    return ret.f;
 }
 
+void *memset16safe(void *m, uint16_t val, size_t count)
+{
+    char *buf = m;
+    union 
+    {
+        uint8_t d8[2];
+        uint16_t d16;
+    }u16 = {.d16 = val};
+
+    while(count--) 
+    {
+        *buf++ = u16.d8[0];
+        *buf++ = u16.d8[1];
+    }
+    return m;
+}
+
 int is_power2(unsigned int val)
 {
    while (((val & 1) == 0) && (val > 1)) {

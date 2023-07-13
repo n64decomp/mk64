@@ -4,13 +4,20 @@
 #include "common_structs.h"
 #include "camera.h"
 
+void func_8008BFFC(s32);
+void func_8008B038(s32);
+void func_8008AE9C(s32);
+void func_8008AB10(s32);
+void func_8008AA3C(s32);
 void func_80086E70(s32);
 void func_80086EAC(s32, s32, s16);
 void func_80086EF0(s32);
-void func_80086F10(s32, s32, s32);
+void func_80086F10(s32, s32, u16[][4]);
 void func_80086F60(s32);
 s32  func_80086FA4(s32);
 void func_80086FD4(s32);
+void func_80089F24(s32);
+void func_8008B78C(s32);
 void func_8008701C(s32, s32);
 s32  func_80087060(s32, s32);
 s32  func_80087104(s32, u16);
@@ -77,7 +84,7 @@ s32  func_8008A0B4(s32, Player*, Camera*, u16);
 s32  func_8008A140(s32, Camera*, u16);
 void func_8008A1D0(s32, s32, s32, s32);
 void func_8008A2CC(s32, s32, u16);
-u32  func_8008A364(s32, s32, u16, s32);
+s32  func_8008A364(s32, s32, u16, s32);
 void func_8008A454(s32, s32, s32);
 void func_8008A4CC(s32);
 void func_8008A610(s32);
@@ -98,13 +105,13 @@ void func_8008ADC0();
 void func_8008ADC8();
 void func_8008AE8C();
 void func_8008AE94();
-void func_8008ADD0(s32, f32);
+void func_8008ADD0(s32*, f32);
 void func_8008AFE0(s32, f32);
 void func_8008B018();
 void func_8008B020();
 void func_8008B028();
 void func_8008B030();
-void func_8008ACE0(s32,f32);
+void func_8008ACE0(s32*,f32);
 void func_8008B17C(s32, f32);
 void func_8008B1B4();
 void func_8008B1BC();
@@ -137,6 +144,8 @@ extern s32 D_80183DA8;
 extern s32 D_80183DC8;
 extern f32 gVBlankTimer;
 extern UnkActorInner D_8018C3B0;
+extern Player *gPlayerOne;
 extern Player *gPlayerOneCopy;
+extern s16 gCurrentCourseId;
 
 #endif

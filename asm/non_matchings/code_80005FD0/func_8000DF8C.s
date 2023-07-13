@@ -1,3 +1,35 @@
+.section .late_rodata
+
+glabel jpt_800ED008
+.word L8000E1F4, L8000E45C, L8000E618, L8000E968
+.word L8000E634
+
+glabel D_800ED01C
+.float -2409.197021
+
+glabel D_800ED020
+.float -355.253998
+
+glabel D_800ED024
+.float 0.01
+
+glabel D_800ED028
+.double -1000.0
+
+glabel D_800ED030
+.float 0.3
+
+glabel D_800ED034
+.float 2.3
+
+glabel D_800ED038
+.float 2.3
+
+glabel D_800ED03C
+.float 0.15
+
+.section .text
+
 glabel func_8000DF8C
 /* 00EB8C 8000DF8C 00047880 */  sll   $t7, $a0, 2
 /* 00EB90 8000DF90 01E47821 */  addu  $t7, $t7, $a0

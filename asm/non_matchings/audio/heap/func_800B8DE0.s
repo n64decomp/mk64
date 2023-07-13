@@ -1,8 +1,8 @@
 glabel func_800B8DE0
-/* 0B99E0 800B8DE0 3C03803B */  lui   $v1, %hi(D_803B03C0) # $v1, 0x803b
-/* 0B99E4 800B8DE4 3C02803B */  lui   $v0, %hi(D_803B0400) # $v0, 0x803b
-/* 0B99E8 800B8DE8 24420400 */  addiu $v0, %lo(D_803B0400) # addiu $v0, $v0, 0x400
-/* 0B99EC 800B8DEC 246303C0 */  addiu $v1, %lo(D_803B03C0) # addiu $v1, $v1, 0x3c0
+/* 0B99E0 800B8DE0 3C03803B */  lui   $v1, %hi(gBankLoadStatus) # $v1, 0x803b
+/* 0B99E4 800B8DE4 3C02803B */  lui   $v0, %hi(gSeqLoadStatus) # $v0, 0x803b
+/* 0B99E8 800B8DE8 24420400 */  addiu $v0, %lo(gSeqLoadStatus) # addiu $v0, $v0, 0x400
+/* 0B99EC 800B8DEC 246303C0 */  addiu $v1, %lo(gBankLoadStatus) # addiu $v1, $v1, 0x3c0
 /* 0B99F0 800B8DF0 24040005 */  li    $a0, 5
 /* 0B99F4 800B8DF4 906E0000 */  lbu   $t6, ($v1)
 .L800B8DF8:
@@ -15,8 +15,8 @@ glabel func_800B8DE0
 /* 0B9A0C 800B8E0C 5420FFFA */  bnel  $at, $zero, .L800B8DF8
 /* 0B9A10 800B8E10 906E0000 */   lbu   $t6, ($v1)
 /* 0B9A14 800B8E14 3C03803B */  lui   $v1, %hi(D_803B0380) # $v1, 0x803b
-/* 0B9A18 800B8E18 3C02803B */  lui   $v0, %hi(D_803B03C0) # $v0, 0x803b
-/* 0B9A1C 800B8E1C 244203C0 */  addiu $v0, %lo(D_803B03C0) # addiu $v0, $v0, 0x3c0
+/* 0B9A18 800B8E18 3C02803B */  lui   $v0, %hi(gBankLoadStatus) # $v0, 0x803b
+/* 0B9A1C 800B8E1C 244203C0 */  addiu $v0, %lo(gBankLoadStatus) # addiu $v0, $v0, 0x3c0
 /* 0B9A20 800B8E20 24630380 */  addiu $v1, %lo(D_803B0380) # addiu $v1, $v1, 0x380
 /* 0B9A24 800B8E24 906F0000 */  lbu   $t7, ($v1)
 .L800B8E28:
@@ -28,10 +28,10 @@ glabel func_800B8DE0
 /* 0B9A38 800B8E38 0062082B */  sltu  $at, $v1, $v0
 /* 0B9A3C 800B8E3C 5420FFFA */  bnel  $at, $zero, .L800B8E28
 /* 0B9A40 800B8E40 906F0000 */   lbu   $t7, ($v1)
-/* 0B9A44 800B8E44 3C03803B */  lui   $v1, %hi(D_803B0400) # $v1, 0x803b
+/* 0B9A44 800B8E44 3C03803B */  lui   $v1, %hi(gSeqLoadStatus) # $v1, 0x803b
 /* 0B9A48 800B8E48 3C02803B */  lui   $v0, %hi(D_803B0500) # $v0, 0x803b
 /* 0B9A4C 800B8E4C 24420500 */  addiu $v0, %lo(D_803B0500) # addiu $v0, $v0, 0x500
-/* 0B9A50 800B8E50 24630400 */  addiu $v1, %lo(D_803B0400) # addiu $v1, $v1, 0x400
+/* 0B9A50 800B8E50 24630400 */  addiu $v1, %lo(gSeqLoadStatus) # addiu $v1, $v1, 0x400
 /* 0B9A54 800B8E54 90780000 */  lbu   $t8, ($v1)
 .L800B8E58:
 /* 0B9A58 800B8E58 50980003 */  beql  $a0, $t8, .L800B8E68

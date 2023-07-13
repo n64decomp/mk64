@@ -1,3 +1,19 @@
+.section .late_rodata
+
+glabel D_800EF2A8
+.double 0.0002
+
+glabel D_800EF2B0
+.double 0.04
+
+glabel D_800EF2B8
+.double 0.05
+
+glabel D_800EF2C0
+.double 0.1
+
+.section .text
+
 glabel func_80083FD0
 /* 084BD0 80083FD0 000670C0 */  sll   $t6, $a2, 3
 /* 084BD4 80083FD4 01C67023 */  subu  $t6, $t6, $a2
@@ -23,8 +39,8 @@ glabel func_80083FD0
 /* 084C24 80084024 A6060092 */  sh    $a2, 0x92($s0)
 /* 084C28 80084028 0C01C8E9 */  jal   func_800723A4
 /* 084C2C 8008402C 00002825 */   move  $a1, $zero
-/* 084C30 80084030 3C020600 */  lui   $v0, %hi(D_060068E8) # $v0, 0x600
-/* 084C34 80084034 244268E8 */  addiu $v0, %lo(D_060068E8) # addiu $v0, $v0, 0x68e8
+/* 084C30 80084030 3C020600 */  lui   $v0, %hi(d_course_sherbet_land_ice) # $v0, 0x600
+/* 084C34 80084034 244268E8 */  addiu $v0, %lo(d_course_sherbet_land_ice) # addiu $v0, $v0, 0x68e8
 /* 084C38 80084038 AE020060 */  sw    $v0, 0x60($s0)
 /* 084C3C 8008403C AE020068 */  sw    $v0, 0x68($s0)
 /* 084C40 80084040 0C0ADF8D */  jal   random_int

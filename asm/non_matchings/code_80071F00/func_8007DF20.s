@@ -1,3 +1,13 @@
+.section .late_rodata
+
+glabel D_800EEF44
+.float 1765.0
+
+glabel D_800EEF48
+.float -1765.0
+
+.section .text
+
 glabel func_8007DF20
 /* 07EB20 8007DF20 000470C0 */  sll   $t6, $a0, 3
 /* 07EB24 8007DF24 01C47023 */  subu  $t6, $t6, $a0
@@ -8,9 +18,9 @@ glabel func_8007DF20
 /* 07EB38 8007DF38 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 07EB3C 8007DF3C 44812000 */  mtc1  $at, $f4
 /* 07EB40 8007DF40 27BDFFE0 */  addiu $sp, $sp, -0x20
-/* 07EB44 8007DF44 3C180601 */  lui   $t8, %hi(D_0600A9D8) # $t8, 0x601
+/* 07EB44 8007DF44 3C180601 */  lui   $t8, %hi(d_course_banshee_boardwalk_dl_trash_bin) # $t8, 0x601
 /* 07EB48 8007DF48 AFBF0014 */  sw    $ra, 0x14($sp)
-/* 07EB4C 8007DF4C 2718A9D8 */  addiu $t8, %lo(D_0600A9D8) # addiu $t8, $t8, -0x5628
+/* 07EB4C 8007DF4C 2718A9D8 */  addiu $t8, %lo(d_course_banshee_boardwalk_dl_trash_bin) # addiu $t8, $t8, -0x5628
 /* 07EB50 8007DF50 AC580070 */  sw    $t8, 0x70($v0)
 /* 07EB54 8007DF54 AC40004C */  sw    $zero, 0x4c($v0)
 /* 07EB58 8007DF58 A4400092 */  sh    $zero, 0x92($v0)

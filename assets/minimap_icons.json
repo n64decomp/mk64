@@ -1,0 +1,12 @@
+{
+"gTextureMiniMapFinishLine":     {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2CC58", "width": 8, "height": 8, "type": "rgba16"},
+"gTextureMiniMapKartMario":      {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2CCD8", "width": 8, "height": 8, "type": "rgba16"},
+"gTextureMiniMapKartLuigi":      {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2CD58", "width": 8, "height": 8, "type": "rgba16"},
+"gTextureMiniMapKartYoshi":      {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2CDD8", "width": 8, "height": 8, "type": "rgba16"},
+"gTextureMiniMapKartToad":       {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2CE58", "width": 8, "height": 8, "type": "rgba16"},
+"gTextureMiniMapKartDonkeyKong": {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2CED8", "width": 8, "height": 8, "type": "rgba16"},
+"gTextureMiniMapKartWario":      {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2CF58", "width": 8, "height": 8, "type": "rgba16"},
+"gTextureMiniMapKartPeach":      {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2CFD8", "width": 8, "height": 8, "type": "rgba16"},
+"gTextureMiniMapKartBowser":     {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2D058", "width": 8, "height": 8, "type": "rgba16"},
+"gTextureMiniMapProgressDot":    {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2D0D8", "width": 8, "height": 8, "type": "rgba16"}
+}

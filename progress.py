@@ -20,6 +20,10 @@ def GetNonMatchingFunctions(files):
     functions = []
 
     for file in files:
+        # credits.c contains Japanese characters which are not supported by utf-8
+        # To prevent errors it cannot be included.
+        if (file == "src/credits.c"):
+            continue
         with open(file) as f:
             functions += re.findall(NON_MATCHING_PATTERN, f.read(), re.DOTALL)
 
@@ -29,6 +33,8 @@ def CountMipsToCFunctions(files):
     functions = []
 
     for file in files:
+        if (file == "src/credits.c"):
+            continue
         with open(file) as f:
             functions += re.findall(MIPS_TO_C_FUNC_COUNT_PATTERN, f.read(), re.DOTALL)
 
@@ -37,6 +43,8 @@ def CountNonMatchingFunctions(files):
     functions = []
 
     for file in files:
+        if (file == "src/credits.c"):
+            continue
         with open(file) as f:
             functions += re.findall(NON_MATCHING_FUNC_COUNT_PATTERN, f.read(), re.DOTALL)
 
@@ -69,7 +77,7 @@ mainSegFiles2 = [
     "asm/non_matchings/code_80005FD0",
     "asm/non_matchings/code_8001F980",
     "asm/non_matchings/code_80027D00",
-    "asm/non_matchings/code_800431B0",
+    "asm/non_matchings/hud_renderer",
     "asm/non_matchings/code_80057C60",
     "asm/non_matchings/code_8006E9C0",
     "asm/non_matchings/code_80071F00",
@@ -90,7 +98,8 @@ seg2Files2 = [
 ]
 seg3Files2 = [
     "asm/non_matchings/code_80280650",
-    "asm/non_matchings/code_80281FA0",
+    "asm/non_matchings/code_802AAA70",
+    "asm/non_matchings/ceremony_and_credits",
 ]
 audioFiles2 = [
     "asm/non_matchings/audio"
@@ -156,9 +165,10 @@ mainSegFiles = [
     "build/us/src/code_800029B0",
     "build/us/src/code_80004740",
     "build/us/src/code_80005FD0",
+    "build/us/src/camera",
     "build/us/src/code_8001F980",
     "build/us/src/code_80027D00",
-    "build/us/src/code_800431B0",
+    "build/us/src/hud_renderer",
     "build/us/src/code_80057C60",
     "build/us/src/code_8006E9C0",
     "build/us/src/code_80071F00",
@@ -190,7 +200,8 @@ seg3Files = [
     "build/us/src/code_80280650",
     "build/us/src/code_80281780",
     "build/us/src/code_80281C40",
-    "build/us/src/code_80281FA0",
+    "build/us/src/code_802AAA70",
+    "build/us/src/ceremony_and_credits",
 ]
 segAudioFiles = [
     "build/us/src/audio/effects",

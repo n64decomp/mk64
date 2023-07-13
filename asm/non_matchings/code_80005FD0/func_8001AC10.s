@@ -1,3 +1,26 @@
+.section .late_rodata
+
+glabel jpt_800ED404
+.word L8001ACAC, L8001AD64, L8001AF34, L8001AFD8
+.word L8001B4AC, L8001B528, L8001B5B8, L8001B630
+.word L8001B6AC, L8001B738, L8001B7BC, L8001B838
+.word L8001B90C, L8001BA38, L8001BA98, L8001BB30
+.word L8001BE30, L8001BE30, L8001BE30, L8001BE30
+.word L8001BE30, L8001BE30, L8001BC28, L8001BC64
+.word L8001BE30, L8001BC8C, L8001BCBC, L8001BCE0
+.word L8001BD10, L8001BD34, L8001BD60, L8001BD94
+.word L8001BDC8, L8001BDE4, L8001B0EC, L8001B2C4
+.word L8001B3B4
+
+glabel D_800ED498
+.double 0.4
+
+glabel jpt_800ED4A0
+.word L8001B970, L8001B988, L8001B9A0, L8001B9B8
+.word L8001B9D0
+
+.section .text
+
 glabel func_8001AC10
 /* 01B810 8001AC10 000478C0 */  sll   $t7, $a0, 3
 /* 01B814 8001AC14 01E47823 */  subu  $t7, $t7, $a0
@@ -65,8 +88,8 @@ glabel L8001ACAC
 /* 01B908 8001AD08 10200012 */  beqz  $at, .L8001AD54
 /* 01B90C 8001AD0C 00000000 */   nop
 /* 01B910 8001AD10 8C634390 */  lw    $v1, %lo(gLapCountByPlayerId)($v1) # 0x4390($v1)
-/* 01B914 8001AD14 3C068016 */  lui   $a2, %hi(gPlayerPositions) # $a2, 0x8016
-/* 01B918 8001AD18 24C643B8 */  addiu $a2, %lo(gPlayerPositions) # addiu $a2, $a2, 0x43b8
+/* 01B914 8001AD14 3C068016 */  lui   $a2, %hi(gGPCurrentRaceRankByPlayerId) # $a2, 0x8016
+/* 01B918 8001AD18 24C643B8 */  addiu $a2, %lo(gGPCurrentRaceRankByPlayerId) # addiu $a2, $a2, 0x43b8
 /* 01B91C 8001AD1C 28610003 */  slti  $at, $v1, 3
 /* 01B920 8001AD20 1020000C */  beqz  $at, .L8001AD54
 /* 01B924 8001AD24 00C26821 */   addu  $t5, $a2, $v0
@@ -90,11 +113,11 @@ glabel L8001ACAC
 glabel L8001AD64
 /* 01B964 8001AD64 8FA20030 */  lw    $v0, 0x30($sp)
 /* 01B968 8001AD68 3C0E8016 */  lui   $t6, %hi(gLapCountByPlayerId) # 0x8016
-/* 01B96C 8001AD6C 3C068016 */  lui   $a2, %hi(gPlayerPositions) # $a2, 0x8016
+/* 01B96C 8001AD6C 3C068016 */  lui   $a2, %hi(gGPCurrentRaceRankByPlayerId) # $a2, 0x8016
 /* 01B970 8001AD70 00027880 */  sll   $t7, $v0, 2
 /* 01B974 8001AD74 01CF7021 */  addu  $t6, $t6, $t7
 /* 01B978 8001AD78 8DCE4390 */  lw    $t6, %lo(gLapCountByPlayerId)($t6) # 0x4390($t6)
-/* 01B97C 8001AD7C 24C643B8 */  addiu $a2, %lo(gPlayerPositions) # addiu $a2, $a2, 0x43b8
+/* 01B97C 8001AD7C 24C643B8 */  addiu $a2, %lo(gGPCurrentRaceRankByPlayerId) # addiu $a2, $a2, 0x43b8
 /* 01B980 8001AD80 3C038016 */  lui   $v1, %hi(D_80163478) # $v1, 0x8016
 /* 01B984 8001AD84 19C0004B */  blez  $t6, .L8001AEB4
 /* 01B988 8001AD88 00000000 */   nop

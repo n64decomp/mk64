@@ -1,3 +1,27 @@
+.section .data
+
+glabel D_800E3D98
+.float 0.0, 0.0, 1.0
+
+glabel D_800E3DA4
+.float 0.0, 0.0, 0.0
+
+glabel D_800E3DB0
+.float 0.0, 0.0, 0.0
+
+glabel D_800E3DBC
+.float 0.0, 0.0, 0.0
+
+.section .late_rodata
+
+glabel D_800ED898
+.double 0.12
+
+glabel D_800ED8A0
+.double 6000.0
+
+.section .text
+
 glabel control_cpu_movement
 /* 02FF5C 8002F35C 27BDFF00 */  addiu $sp, $sp, -0x100
 /* 02FF60 8002F360 3C18800E */  lui   $t8, %hi(D_800E3D98) # $t8, 0x800e

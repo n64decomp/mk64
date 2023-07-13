@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800ED6D8
+.double 0.8
+
+.section .text
+
 glabel func_800256F4
 /* 0262F4 800256F4 27BDFE90 */  addiu $sp, $sp, -0x170
 /* 0262F8 800256F8 3C188016 */  lui   $t8, %hi(D_8015F890) # $t8, 0x8016

@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include "types.h"
+#include "memory.h"
 #include "variables.h"
 #include "waypoints.h"
 #include "actors.h"
@@ -9,14 +10,19 @@
 #include "audio/external.h"
 #include "code_800029B0.h"
 #include <defines.h>
+#include "code_802AAA70.h"
+#include "memory.h"
+#include "code_80091750.h"
+#include "skybox_and_splitscreen.h"
+#include "code_8006E9C0.h"
+#include "spawn_players.h"
+#include "staff_ghosts.h"
+#include "render_courses.h"
 
 extern u16 D_800DC5A8;
 
-extern struct Controller *gControllerOne[];
-
 extern s32 D_800DC510;
 extern u16 D_8015F6FE;
-extern s16 D_800DC5B8;
 extern u16 D_80152308;
 extern s32 D_802BA038;
 extern s16 D_802BA048;
@@ -32,39 +38,23 @@ extern s8 gCupSelection;
 
 extern s32 gScreenModeSelection;
 extern u32 D_8015F730;
-extern u32 D_8015F734;
-extern u32 gPrevLoadedAddress;
+extern s32 D_8015F734;
+extern u32 gNextFreeMemoryAddress;
 extern s32 D_80150120;
 
 extern f32 D_8015F738, D_8015F748, D_8015F758, D_8015F768, D_8015F778;
 extern Vec3f D_802B91C8;
-
-// gfx?
-extern s8 D_0F04F45C[];
-extern s8 D_0F04FE28[];
-extern s8 D_0F050118[];
-extern s8 D_0F051C54[];
-extern s8 D_0F051FD8[];
-extern s8 D_0F05232C[];
-extern s8 D_0F0526B8[];
-extern s8 D_0F052A20[];
-extern s8 D_0F052D3C[];
-extern s8 D_0F05300C[];
-extern s8 D_0F0532F8[];
-extern s8 D_0F05363C[];
-extern s8 D_0F053950[];
 
 extern struct ActorSpawnData D_06009570[];
 extern struct ActorSpawnData D_06014330[];
 
 extern f32 gCourseDirection;
 
-extern s16 D_800DC5C8;
 
 
 s32 D_800DC5E0 = 32;
 
-s16 D_800DC5E4 = 0;
+u16 D_800DC5E4 = 0;
 
 // TODO: gPlayerWinningIndex (D_800DC5E8) accessed as word, D_800DC5EB as u8
 s32 gPlayerWinningIndex = 0;
@@ -75,9 +65,9 @@ struct UnkStruct_800DC5EC *D_800DC5F0 = &D_8015F480[1];
 struct UnkStruct_800DC5EC *D_800DC5F4 = &D_8015F480[2];
 struct UnkStruct_800DC5EC *D_800DC5F8 = &D_8015F480[3];
 u16 D_800DC5FC = 0;
-u8 *pAppNmiBuffer = &osAppNmiBuffer;
+u8 *pAppNmiBuffer = (u8 *) &osAppNmiBuffer;
 s32 gIsMirrorMode = 0;
-f32 D_800DC608 =  1.0f;
+f32 vtxStretchY =  1.0f;
 Lights1 D_800DC610[] = {
     gdSPDefLights1(175, 175, 175, 255, 255, 255, 0, 0, 120),
     gdSPDefLights1(115, 115, 115, 255, 255, 255, 0, 0, 120),
@@ -120,12 +110,12 @@ void setup_race(void) {
     if (gCurrentCourseId != gCurrentlyLoadedCourseId) {
         D_80150120 = 0;
         gCurrentlyLoadedCourseId = gCurrentCourseId;
-        gPrevLoadedAddress = D_8015F734;
+        gNextFreeMemoryAddress = D_8015F734;
         load_course(gCurrentCourseId);
         func_80295D88();
-        D_8015F730 = gPrevLoadedAddress;
+        D_8015F730 = gNextFreeMemoryAddress;
     } else {
-        gPrevLoadedAddress = D_8015F730;
+        gNextFreeMemoryAddress = D_8015F730;
     }
     func_802969F8();
     func_80005310();
@@ -162,7 +152,7 @@ void setup_race(void) {
         func_800CB2C4();
     }
 
-    controller = *gControllerOne;
+    controller = gControllerOne;
 
     for (i = 0; i < 7; i++, controller++){
         controller->rawStickX = 0;
@@ -232,11 +222,11 @@ void func_80003040(void) {
     gCourseDirection = 1.0f;
 
     gPlayerCountSelection1 = 1;
-    set_segment_base_addr(3, (gPrevLoadedAddress + 0xFFFF7000));
+    set_segment_base_addr(0x3, (void *) (gNextFreeMemoryAddress + 0xFFFF7000));
     destroy_all_actors();
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            func_802A84F4(D_0F04F45C, 0x35B, 0x800);
+            dma_textures(D_0F04F45C, 0x35B, 0x800);
             place_segment_06(D_06009570);
             break;
         case COURSE_BOWSER_CASTLE:
@@ -248,21 +238,21 @@ void func_80003040(void) {
         case COURSE_YOSHI_VALLEY:
             vec3f_set(position, -2300.0f, 0.0f, 634.0f);
             position[0] *= gCourseDirection;
-            func_8029EC88(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
+            addActorToEmptySlot(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
             break;
         case COURSE_MOO_MOO_FARM:
-            func_802A84F4(D_0F04FE28, 0x3E8, 0x800);
-            func_802A84F4(D_0F050118, 0x3E8, 0x800);
-            func_802A84F4(D_0F051C54, 0x400, 0x800);
-            func_802A84F4(D_0F051FD8, 0x400, 0x800);
-            func_802A84F4(D_0F05232C, 0x400, 0x800);
-            func_802A84F4(D_0F0526B8, 0x400, 0x800);
-            func_802A84F4(D_0F052A20, 0x400, 0x800);
-            func_802A84F4(D_0F052D3C, 0x400, 0x800);
-            func_802A84F4(D_0F05300C, 0x400, 0x800);
-            func_802A84F4(D_0F0532F8, 0x400, 0x800);
-            func_802A84F4(D_0F05363C, 0x400, 0x800);
-            func_802A84F4(D_0F053950, 0x400, 0x800);
+            dma_textures(D_0F04FE28, 0x3E8, 0x800);
+            dma_textures(D_0F050118, 0x3E8, 0x800);
+            dma_textures(D_0F051C54, 0x400, 0x800);
+            dma_textures(D_0F051FD8, 0x400, 0x800);
+            dma_textures(D_0F05232C, 0x400, 0x800);
+            dma_textures(D_0F0526B8, 0x400, 0x800);
+            dma_textures(D_0F052A20, 0x400, 0x800);
+            dma_textures(D_0F052D3C, 0x400, 0x800);
+            dma_textures(D_0F05300C, 0x400, 0x800);
+            dma_textures(D_0F0532F8, 0x400, 0x800);
+            dma_textures(D_0F05363C, 0x400, 0x800);
+            dma_textures(D_0F053950, 0x400, 0x800);
             place_segment_06(D_06014330);
             break;
         case COURSE_SHERBET_LAND:
@@ -276,11 +266,11 @@ void func_80003040(void) {
             break;
         case COURSE_WARIO_STADIUM:
             vec3f_set(position, -131.0f, 83.0f, 286.0f);
-            func_8029EC88(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
             vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
-            func_8029EC88(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
             vec3f_set(position, -2622.0f, 79.0f, 739.0f);
-            func_8029EC88(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
             func_802AF8BC(0x7000C50, 0x64, 0xFF, 0xFF, 0xFF);
             func_802AF8BC(0x7000BD8, 0x64, 0xFF, 0xFF, 0xFF);
             func_802AF8BC(0x7000B60, 0x64, 0xFF, 0xFF, 0xFF);

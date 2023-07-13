@@ -1,3 +1,24 @@
+.section .late_rodata
+
+glabel D_800EE840
+.float 0.3
+.word 0x00000000
+
+glabel D_800EE848
+.double 1.8
+
+glabel D_800EE850
+.float 1.8
+.word 0x00000000
+
+glabel D_800EE858
+.double 0.3
+
+glabel D_800EE860
+.float 0.3
+
+.section .text
+
 glabel func_8006AFD0
 /* 06BBD0 8006AFD0 27BDFE80 */  addiu $sp, $sp, -0x180
 /* 06BBD4 8006AFD4 3C19800E */  lui   $t9, %hi(D_800E4934) # $t9, 0x800e

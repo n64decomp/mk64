@@ -1,3 +1,19 @@
+.section .late_rodata
+
+glabel D_800ED798
+.double 3.6
+
+glabel D_800ED7A0
+.double 3.6
+
+glabel D_800ED7A8
+.double 2.6
+
+glabel D_800ED7B0
+.double 2.6
+
+.section .text
+
 glabel func_80029B4C
 /* 02A74C 80029B4C 27BDFF58 */  addiu $sp, $sp, -0xa8
 /* 02A750 80029B50 AFBF0024 */  sw    $ra, 0x24($sp)

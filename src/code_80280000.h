@@ -18,17 +18,13 @@ extern f32 D_80150130[4];
 extern s16 gCreditsCourseId;
 extern u16 D_80150112;
 extern s16 D_80164AF0;
-extern u32 D_8018D120;
-extern mk64_surface_map_ram (*D_8015F580)[];
-extern u16 D_8015F588; // Number of entires in D_8015F580
 
 extern u16 gIsInQuitToMenuTransition, gQuitToMenuTransitionCounter;
 extern s32 D_802874A0;
 
 extern u16 D_80164714, D_80164716, D_80164718;
 extern u16 D_800DC5E4;
-extern u32 gGamestate;
-extern u32 D_802874FC;
+extern s32 D_802874FC;
 
 extern u16 D_800DC518;
 
