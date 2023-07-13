@@ -8,7 +8,7 @@
 #define ALIGN4(val) (((val) + 0x3) & ~0x3)
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
 #define ALIGNMENT 0x4
-#define MEMORY (100 * 1024 * 1024) // 3MB
+#define MEMORY (20 * 1024 * 1024) // 3MB
 
 typedef signed char            s8;
 typedef unsigned char          u8;
@@ -29,21 +29,21 @@ int main() {
     const char* text_file = "offset_mappings.txt";
     const char* search_string = "MIO0";
     const char* search_string2 = "TKMK00";
-    const s32 fileCount = 3353 * 2;
+    const s32 fileCount = 3354;
 
-    // Open the input file
+    // Open the baserom
     FILE* baserom = fopen(input_file, "rb");
     if (baserom == NULL) {
         printf("Error: Failed to open input file '%s'.\n", input_file);
         return 1;
     }
 
-    // Get the file size
+    // Get baserom file size
     fseek(baserom, 0, SEEK_END);
     u32 baseromSize = ftell(baserom);
     rewind(baserom);
 
-    // Allocate a buffer to hold the entire file
+    // Allocate a buffer to hold the baserom (required for libmio0).
     unsigned char* baseromBuffer = malloc(baseromSize);
     if (baseromBuffer == NULL) {
         printf("Error: Failed to allocate memory for the file buffer.\n");
@@ -51,7 +51,7 @@ int main() {
         return 1;
     }
 
-    // Read the file into the buffer
+    // Read baserom into the buffer
     size_t baseromBufferSize = fread(baseromBuffer, 1, baseromSize, baserom);
     if (baseromBufferSize != baseromSize) {
         printf("Error: Failed to read the input file '%s'.\n", input_file);
@@ -63,7 +63,6 @@ int main() {
     // Close the baserom file
     fclose(baserom);
 
-    // Calculate the size needed for the buffer with alignment
     // Create a buffer to hold the decompressed data
     unsigned char* extractBuffer = malloc(MEMORY);
     if (extractBuffer == NULL) {
@@ -72,7 +71,7 @@ int main() {
         return 1;
     }
 
-    // Map rom offsets to new extracted location offsets
+    // Create buffer to map rom offsets to new extracted location offsets
     OffsetMapping* offsetMappings = malloc((sizeof(OffsetMapping) * fileCount));
     if (offsetMappings == NULL) {
         printf("Error: Failed to allocate memory for the offset mappings.\n");
@@ -97,14 +96,12 @@ int main() {
             // Update offsets
             num_mappings++;
 
-            // Skip to the end of the mio0 file, but prevent normal increment so no possible entires are missed.
+            // Skip to the end of the mio0 file, but decrement four times to prevent missing an entry.
             i += ALIGN16(compressedEndOffset) - (ALIGNMENT * 4);
         }
     }
-    //printf("\nsizeOffs: %d\n", new_offset);
-    printf("Wrote: %zukb\n", totalUncompressed);
 
-    // Open the output file
+    // Open the file to write extracted data
     FILE* output = fopen(output_file, "wb");
     if (output == NULL) {
         printf("Error: Failed to open output file '%s'.\n", output_file);
@@ -113,7 +110,7 @@ int main() {
         return 1;
     }
 
-    // Write the output file
+    // Write extracted data to disk
     size_t bytes_written = fwrite(extractBuffer, 1, totalUncompressed, output);
     if (bytes_written != totalUncompressed) {
         printf("Error: Failed to write decompressed data to the output file.");
@@ -127,9 +124,8 @@ int main() {
     // Close the output file
     fclose(output);
 
-    printf("Decompressed data has been written to '%s'.\n", output_file);
 
-    // Open the text file for writing
+    // Open the offset mappings text file for writing
     FILE* text_output = fopen(text_file, "w");
     if (text_output == NULL) {
         printf("Error: Failed to open text output file '%s'.\n", text_file);
@@ -143,9 +139,12 @@ int main() {
         fprintf(text_output, "0x%X\t0x%X\n", offsetMappings[i].old_offset, offsetMappings[i].new_offset);
     }
 
-    // Close the text file
+    // Close the offset mappings text file
     fclose(text_output);
 
+    // Print to console
+    printf("Wrote: %zukb\n", totalUncompressed);
+    printf("Decompressed data has been written to '%s'.\n", output_file);
     printf("Offset mappings have been written to '%s'.\n", text_file);
 
     // Clean up
