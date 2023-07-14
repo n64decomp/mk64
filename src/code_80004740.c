@@ -65,12 +65,6 @@ void func_800048D8(Mat4 dest, Vec3f b, Vec3s c) {
     dest[3][3] = 1.0f;
 }
 
-#if 1
-/*
-https://decomp.me/scratch/v615X
-Leaving this as non-matching due to all the animation stuff being in flux
-But, as stuff currently stands, it is technically matching
-*/
 void func_80004A1C(animation_type_1 *arg0, s16 *arg1, animation_type_3_triplet arg2, s32 arg3) {
     Vec3f sp94;
     Vec3s sp8C;
@@ -109,17 +103,7 @@ void func_80004A1C(animation_type_1 *arg0, s16 *arg1, animation_type_3_triplet a
         gSPDisplayList(gDisplayListHead++, some_dl);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80004740/func_80004A1C.s")
-#endif
 
-#ifdef NON_MATCHING
-/*
-https://decomp.me/scratch/DCV5v
-Leaving this as non-matching due to all the animation stuff being in flux
-But, as stuff currently stands, it is technically matching
-There is some really silly type-casting being done to arg0. I don't see a way around it :/
-*/
 void func_80004C30(u32 *arg0, animation_type_2 *arg1, s16 arg2) {
     u32 *temp;
     s16 *sp40;
@@ -167,15 +151,7 @@ void func_80004C30(u32 *arg0, animation_type_2 *arg1, s16 arg2) {
         arg0 += ((animation_type_1*)arg0)->size;
     } while (new_var != 3);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80004740/func_80004C30.s")
-#endif
 
-#ifdef NON_MATCHING
-/*
-Leaving this as non-matching due to all the animation stuff being in flux
-But, as stuff currently stands, it is technically matching
-*/
 s16 func_80004DFC(animation_type_1 *arg0, animation_type_2 **arg1, s16 arg2, s16 arg3) {
     animation_type_1 *sp24;
     animation_type_2 *temp_v0;
@@ -194,9 +170,6 @@ s16 func_80004DFC(animation_type_1 *arg0, animation_type_2 **arg1, s16 arg2, s16
     }
     return arg3;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80004740/func_80004DFC.s")
-#endif
 
 s16 func_80004EAC(void *addr, s16 offset) {
     uintptr_t *item = segmented_to_virtual(addr);
