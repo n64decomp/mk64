@@ -265,6 +265,8 @@ void func_800AC128(struct_8018D9E0_entry*);
 void func_800AC300(struct_8018D9E0_entry*);
 void func_800AC324(struct_8018D9E0_entry*);
 void func_800AC978(struct_8018D9E0_entry*);
+void func_800ACA14(struct_8018D9E0_entry*);
+void func_800ACC50(struct_8018D9E0_entry*);
 void func_800AD1A4(struct_8018D9E0_entry*);
 void func_800ADF48(struct_8018D9E0_entry*);
 void func_800AEC54(struct_8018D9E0_entry*);
