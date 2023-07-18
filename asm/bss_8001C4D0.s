@@ -1761,6 +1761,8 @@ glabel D_8018D9D9
 glabel D_8018D9E0
 .skip 1280
 
+# The size of D_8018DEE0 should be
+# 384, D_8018DEE4 is fake
 glabel D_8018DEE0
 .skip 4
 
@@ -1776,6 +1778,8 @@ glabel D_8018E0E8
 glabel gD_8018E118TotalSize
 .skip 8
 
+# The size of D_8018E118 should be
+# 1600, D_8018E11C and D_8018E124 are fake
 glabel D_8018E118
 .skip 4
 
