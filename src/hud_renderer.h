@@ -404,7 +404,6 @@ extern s32 D_80165860;
 extern s32 D_8016586C;
 extern s32 D_80165878;
 extern s32 D_8016589C;
-extern s16 D_80165CB8[8];
 extern u16 D_801656C0;
 extern u16 D_801656D0;
 extern u16 D_801656E0;

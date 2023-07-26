@@ -4,9 +4,6 @@
 #include "common_structs.h"
 #include "camera.h"
 
-void func_8007BBBC(s32);
-void func_8007B34C(s32);
-void func_800789AC(s32, Camera*, u16*);
 void func_80077D5C(s32);
 s32  find_unused_obj_index(s32*);
 void func_80071F6C(s32*);
@@ -31,6 +28,8 @@ void func_8007CC00(void);
 void func_8007FB48(s32);
 void func_8007FA08(s32);
 void func_8007E63C(s32);
+void func_8007ED6C(s32);
+void func_8007EE5C(s32);
 void func_80072408(s32);
 void func_80072428(s32);
 void func_80072488(s32);
@@ -53,6 +52,7 @@ void func_80072998(s32);
 void func_800729B4(s32, s32);
 void func_800729D0(s32, s32);
 void func_80072A78(s32, s32);
+s32  func_80072AAC(s32, s32, s32);
 s32  func_80072B48(s32, s32);
 void func_80072C00(s32, s32, s32, s32);
 void func_80072D3C(s32, s32, s32, s32, s32);
@@ -175,6 +175,8 @@ void func_80078288(s32);
 void func_800786EC(s32);
 void func_80078790();
 void func_80078838();
+void func_800788F8(s32, u16, Camera*);
+void func_800789AC(s32, Camera*, Vec4s*);
 void func_80078C68();
 void func_80078C70(s32);
 void func_80078F64();
@@ -182,6 +184,8 @@ void func_80079054(s32);
 void func_80079084(s32);
 void func_800790B4(s32);
 void func_800790E4(s32);
+void func_80079114(s32, s32, s32);
+void func_800791F0(s32, s32);
 void func_800797AC(s32);
 void func_80079860(s32);
 void func_8007993C(s32, Player*);
@@ -198,16 +202,25 @@ void func_8007AC9C(s32);
 u8   gen_random_item(s16, s16);
 u8   func_8007AF40(s16, s16);
 u8   func_8007AF78(s32, s16);
+void func_8007B34C(s32);
 void func_8007BB9C();
+void func_8007BBBC(s32);
 void func_8007BD04(s32);
 void func_8007BDA8();
+void func_8007BDE0(s32);
+void func_8007BEC8(s32);
+void func_8007BFB0(s32);
+void func_8007C280();
 void func_8007C2F8(s32);
 void func_8007C340();
 void func_8007C360(s32, Camera*);
 void func_8007C420(s32, Player*, Camera*);
 void func_8007C4A4(s32);
 void func_8007C550(s32);
+void func_8007C5B4(s32);
+void func_8007C684(s32);
 void func_8007C49C();
+s32  func_8007C9F8();
 void func_8007D360(s32, s32);
 void func_8007D6A8(s32, s32);
 void func_8007D714(s32);
@@ -218,43 +231,88 @@ void func_8007DA4C(s32);
 void func_8007DA74(s32);
 void func_8007DAF8(s32, s32);
 void func_8007DDC0(s32);
+void func_8007DF20(s32);
 void func_8007E1F4(s32);
 void func_8007E358(s32);
 void func_8007E3EC(s32);
 void func_8007E4C4();
 s32  func_8007E50C(s32, Player*, Camera*);
 s32  func_8007E59C(s32);
+void func_8007EC30(s32);
 void func_8007EFBC(s32);
 void func_8007F280(s32);
 void func_8007F544(s32);
+void func_8007F5A8(s32);
 void func_8007F660(s32, s32, s32);
 void func_8007F6C4(s32, s32);
 s32  func_8007F75C(s32);
 void func_8007F8D8();
+void func_8007FA08(s32);
 void func_8007FEA4(s32);
+void func_8007FF5C(s32);
+void func_8007FFC0(s32);
+void func_80080078(s32);
+void func_800801FC(s32);
+void func_800802C0(s32);
+void func_80080408(s32);
+void func_80080524(s32);
 void func_800806BC(s32);
 void func_8008078C(s32);
 void func_8008085C(s32);
 void func_80080A14(s32, Player*);
 void func_80080A4C(s32, s32);
+void func_80080DE4(s32);
+void func_80081080(s32);
+void func_800810F4(s32);
 void func_80081208();
 void func_80081210();
+void func_8008153C(s32);
 void func_80081790(s32);
+void func_80081848(s32);
 void func_80081924(s32);
+void func_80081D34(s32);
+void func_8008275C(s32);
+void func_80082A4C(s32);
+void func_80082B34(s32, s32);
 void func_80082C30(s32);
+void func_80082E18(s32);
+void func_80082E5C();
 void func_80083060(s32);
+void func_8008311C(s32, s32);
 void func_80083248(s32);
+void func_800833D0(s32, s32);
+void func_80083474(s32);
+void func_800834B8();
+void func_80083538(s32, Vec3f, s32, s32);
 void func_8008379C(s32);
+void func_80083868(s32);
 void func_80083948(s32);
+void func_80083A94(s32);
+void func_80083B0C(s32);
 void func_80083BE4(s32);
+void func_80083C04(s32);
 void func_80083F18(s32);
 void func_80085024();
 void func_8008502C(s32, s32);
 void func_80085080(s32);
+void func_800853DC(s32);
 void func_80085534(s32);
+void func_80085768(s32);
+void func_800857C0();
 void func_80085BB4(s32);
+void func_80085C20(s32);
+void func_80085CA0(s32);
+void func_80085DB8(s32);
+void func_80085E38(s32);
+void func_80085EF8(s32);
+void func_80085F74(s32);
+void func_80086074(s32, s32);
+void func_80086110(s32, s32);
+void func_80086158(s32, s32);
+void func_800861E0();
 void func_80086424(s32);
 void func_80086604();
+void func_80086C6C(s32);
 void func_80086D80();
 
 s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, uintptr_t devAddr, void *vAddr, size_t nbytes, OSMesgQueue *mq);
@@ -266,16 +324,60 @@ extern OSMesgQueue gDmaMesgQueue;
 extern OSMesg gMainReceivedMesg;
 extern OSIoMesg gDmaIoMesg;
 
+// From Luigi Raceway course data, haven't created a .h file for it yet
+extern Gfx D_0600F960[]; // d_course_luigi_raceway_dl_F960
+
+// From Bowser's Castle course data, haven't created a .h file for it yet
+extern Gfx d_course_bowsers_castle_dl_thwomp[];
+extern u8 d_course_bowsers_castle_thwomp_faces[];
+extern u8 gTLUTWhomp[];
+
+// From Koopa Troopa Beach course data, haven't created a .h file for it yet
+extern u8 d_course_koopa_troopa_beach_crab_frames[];
+extern u8 d_course_koopa_troopa_beach_crab_tlut[];
+
+// From Banshee Boardwalk course data, haven't created a .h file for it yet
+extern Gfx d_course_banshee_boardwalk_dl_cheep_cheep[];
+extern Gfx d_course_banshee_boardwalk_dl_trash_bin[];
+
+// From Moo Moo Farm course data, haven't created a .h file for it yet
+extern u8 D_06013670[]; // d_course_moo_moo_farm_mole_dirt
+extern u8 d_course_moo_moo_farm_mole_frames[][2048];
+
+// From Yoshi Valley course data, haven't created a .h file for it yet
+extern u8 gTLUTHedgehog[];
+extern u8 gTextureHedgehog[];
+
+// From Frappe Snowland course data, haven't created a .h file for it yet
+extern u8 d_course_frappe_snowland_snow_tlut[];
+extern u8 d_course_frappe_snowland_snow[];
+extern u8 gTLUTSnowman[];
+extern u8 gTextureSnowmanHead[];
+extern u8 gTextureSnowmanBody[];
+
+// From Rainbow Road course data, haven't created a .h file for it yet
+extern u8 d_course_rainbow_road_neon_mushroom_tlut_list[];
+extern u8 d_course_rainbow_road_neon_mushroom[];
+extern u8 d_course_rainbow_road_neon_mario_tlut_list[];
+extern u8 d_course_rainbow_road_neon_mario[];
+extern u8 d_course_rainbow_road_neon_boo_tlut_list[];
+extern u8 d_course_rainbow_road_neon_boo[];
+extern u8 d_course_rainbow_road_static_tluts[][512];
+extern u8 d_course_rainbow_road_static_textures[][4096];
+
+extern s8  D_801658CE;
 extern s32 D_80162DF8;
 extern s32 D_80165598;
 extern s16 D_80165740;
 extern s8  D_801657B4;
 extern Vec3su D_8016582C;
+extern s8  D_801658F4;
 extern s32 D_80183D5C;
 extern s32 D_80183EA8;
 extern s16 D_8018CFE8;
 extern f32 D_8018D01C;
 extern s32 D_8018D140;
+extern s32 D_8018D158;
 extern s32 D_8018D224;
 extern u8* D_8018D490;
 

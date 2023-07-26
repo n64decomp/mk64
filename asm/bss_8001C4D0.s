@@ -589,48 +589,16 @@ glabel D_80165908
 glabel D_80165A90
 .skip 392
 
+# object list begin
+# D_80165C18 should be of size 123,200 (0xE0 * 0x226)
+# D_80165C94 through D_80165CF5 are all fake variables
 glabel D_80165C18
-.skip 8
-
-glabel D_80165C20
-.skip 8
-
-glabel D_80165C28
-.skip 4
-
-glabel D_80165C2C
-.skip 4
-
-glabel D_80165C30
-.skip 16
-
-glabel D_80165C40
-.skip 20
-
-glabel D_80165C54
-.skip 16
-
-glabel D_80165C64
-.skip 8
-
-glabel D_80165C6C
-.skip 4
-
-glabel D_80165C70
-.skip 36
+.skip 124
 
 glabel D_80165C94
-.skip 32
+.skip 40
 
-glabel D_80165CB4
-.skip 4
-
-glabel D_80165CB8
-.skip 2
-
-glabel D_80165CBA
-.skip 2
-
+# Currently referenced in func_800534E8.s, but that function is in NEEDS_RODATA state
 glabel D_80165CBC
 .skip 2
 
@@ -638,58 +606,17 @@ glabel D_80165CBE
 .skip 8
 
 glabel D_80165CC6
-.skip 2
-
-glabel D_80165CC8
-.skip 16
-
-glabel D_80165CD8
-.skip 10
-
-glabel D_80165CE2
-.skip 1
-
-glabel D_80165CE3
-.skip 1
-
-glabel D_80165CE4
-.skip 1
-
-glabel D_80165CE5
-.skip 2
-
-glabel D_80165CE7
-.skip 3
-
-glabel D_80165CEA
-.skip 3
+.skip 39
 
 glabel D_80165CED
-.skip 1
-
-glabel D_80165CEE
-.skip 1
-
-glabel D_80165CEF
-.skip 1
-
-glabel D_80165CF0
 .skip 3
 
-glabel D_80165CF3
-.skip 1
-
-glabel D_80165CF4
-.skip 1
+glabel D_80165CF0
+.skip 5
 
 glabel D_80165CF5
-.skip 205
-
-glabel D_80165DC2
-.skip 22
-
-glabel D_80165DD8
-.skip 122752
+.skip 122979
+# object list end
 
 glabel D_80183D58
 .skip 4

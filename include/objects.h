@@ -67,7 +67,7 @@ typedef struct
     /* 0xD5 */ u8  unk_0D5;
     /* 0xD6 */ u8  unk_0D6;
     /* 0xD7 */ u8  unk_0D7;
-    /* 0xD8 */ s8  unk_0D8;
+    /* 0xD8 */ u8  unk_0D8;
     /* 0xD9 */ u8  unk_0D9;
     /* 0xDA */ u8  unk_0DA;
     /* 0xDB */ u8  unk_0DB;
@@ -98,6 +98,14 @@ extern s16 D_80165750;
  * The objects found at the indices in each list appears to be course dependent
  **/ 
 
+#define NUM_CRABS 0xA
+#define NUM_NEON_SIGNS 0xA
+
+/**
+ * Crabs in Koopa Troopa Beach
+ * Hot air balloon in Luigi Raceway?
+ * Neon signs in Rainbow Road?
+**/
 extern s32 D_80183EA0[];
 /**
  * Snowmen in Frappe Snowlad

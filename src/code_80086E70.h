@@ -124,6 +124,7 @@ void func_8008B844(s32);
 void func_8008B888(s32, u16, u16, u16);
 void func_8008B8BC(s32, u16, u16, u16);
 void func_8008B8F0(s32, f32, f32, f32);
+void func_8008B928(s32, s16, s16, s16, s16[][4]);
 void func_8008BA40(s32, s16, u16);
 void func_8008BAB4(s32, s16, u16);
 void func_8008BB28(s32, s16, u16);
