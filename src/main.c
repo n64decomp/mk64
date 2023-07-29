@@ -1137,20 +1137,6 @@ void update_gamestate(void) {
         }
 }
 
-#if VARIABLE_WATCH_DEBUG_LIST
-u8 sDisplayDebugMenu = 0;
-		
-void crash_game() {
-	u32 *p;
-
-	p = (u32*) 0x80000000;
-	while (TRUE) {
-		*p = 0;
-		p++;
-	}
-}
-#endif
-
 void thread5_game_loop(UNUSED void *arg) {
     osCreateMesgQueue(&gGfxVblankQueue, gGfxMesgBuf, 1);
     osCreateMesgQueue(&gGameVblankQueue, &gGameMesgBuf, 1);

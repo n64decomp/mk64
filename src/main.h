@@ -63,9 +63,6 @@ void func_80002658();
 void update_gamestate();
 void thread5_game_loop(void*);
 void thread4_audio(void*);
-#if DEBUG
-void crash_game();
-#endif
 
 extern struct GfxPool *gGfxPool;
 extern Gfx *gDisplayListHead;
