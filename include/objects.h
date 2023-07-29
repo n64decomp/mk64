@@ -90,6 +90,8 @@ extern s32 gItemWindowObjectByPlayerId[];
 // Used for loop bounds when accessing D_80183EA0
 extern s16 D_80165750;
 
+extern UnkActorInner D_8018C0B0[];
+
 /**
  * D_80183EA0, D_80183F28, D_8018BFA8, and D_8018C030 are all lists of indices in D_80165C18.
  * func_80070190 initializes them in such a way that the indicies in each list are not adjacent.
@@ -167,8 +169,15 @@ extern s32 D_8018C970[];
 // Next free spot in D_8018C970? Wraps back around to 0 if it gets bigger than D_8018C970_SIZE
 extern s32 D_80183E7C;
 
+#define D_8018CC80_SIZE 0x64
 // List of object list indices used by the clouds and stars in some stages
 // Also used for snowflakes like D_8018C1B0? Not sure what's up with that
 extern s32 D_8018CC80[];
+// Number of used spots in D_8018CC80?
+extern s32 D_8018D1F0;
+// Next free spot in D_8018CC80?
+extern s32 D_8018D1F8;
+// Something related to the display of the clouds/stars?
+extern s8 D_8018D230;
 
 #endif

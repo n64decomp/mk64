@@ -22,8 +22,6 @@
 #include "code_8008C1D0.h"
 #include "code_80091440.h"
 
-extern s32 D_8018D1F0;
-
 
 s32 find_unused_obj_index(s32* arg0) {
     s32 temp_v0;
@@ -2643,17 +2641,15 @@ void func_800780CC(s32 objectIndex, Camera *camera) {
     }
 }
 
-extern s32 D_8018D1F0;
-
 void func_80078170(s32 arg0, Camera *arg1) {
-    s32 *objectIndex;
+    s32 objectIndex;
     s32 i;
 
     func_80077D5C(arg0);
     for (i = 0; i < D_8018D1F0; i++) {
-        objectIndex = &D_8018CC80[arg0 + i];
-        if (D_80165C18[*objectIndex].unk_0A6 != 0) {
-            func_800780CC(*objectIndex, arg1);
+        objectIndex = D_8018CC80[arg0 + i];
+        if (D_80165C18[objectIndex].unk_0A6 != 0) {
+            func_800780CC(objectIndex, arg1);
         }
     }
 }
@@ -2879,7 +2875,6 @@ extern u16 D_800E6C80[][4];                                /* unable to generate
 extern u16 D_800E6DE0[][4];                                /* unable to generate initializer; const */
 
 extern s16 D_8018D200;
-extern s32 D_8018D1F0;
 extern s16 D_8018D208;
 extern s16 D_8018D210;
 extern f32 D_8018D1E8;
@@ -5497,7 +5492,7 @@ void func_8007E3EC(s32 objectIndex) {
 }
 
 void func_8007E4C4(void) {
-    s32 objectIndex = D_80183EA8;
+    s32 objectIndex = D_80183EA0[2];
     func_8007E3EC(objectIndex);
     if (gModeSelection != TIME_TRIALS) {
         func_8007E1F4(objectIndex);

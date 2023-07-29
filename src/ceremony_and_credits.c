@@ -946,12 +946,10 @@ void func_80284154(struct CinematicCamera *camera) {
     func_80282D90(camera, (struct struct_80286A04 *) D_80285910, (struct struct_80286A04 *) D_80285928, 0);
 }
 
-extern s32 D_80183EAC;
-
 void func_80284184(struct CinematicCamera *camera)
 {
   f32 trophy;
-  trophy = ((D_80165C18[D_80183EAC].unk_004[1] - camera->lookAt[1]) * 0.9f) + camera->lookAt[1];
+  trophy = ((D_80165C18[D_80183EA0[3]].unk_004[1] - camera->lookAt[1]) * 0.9f) + camera->lookAt[1];
   f32_lerp(&camera->pos[1], trophy, 0.5);
 }
 

@@ -4,6 +4,13 @@
 #include "common_structs.h"
 #include "camera.h"
 
+// This struct is used by a lot of different objects
+// Stars, clouds, exahust smoke (I think?)
+typedef struct {
+    Vec3su pos;
+    u16 id;
+} StarSpawn;
+
 void func_80077D5C(s32);
 s32  find_unused_obj_index(s32*);
 void func_80071F6C(s32*);
@@ -364,6 +371,7 @@ extern u8 d_course_rainbow_road_neon_boo_tlut_list[];
 extern u8 d_course_rainbow_road_neon_boo[];
 extern u8 d_course_rainbow_road_static_tluts[][512];
 extern u8 d_course_rainbow_road_static_textures[][4096];
+extern u8 d_course_rainbow_road_sphere[];
 
 extern s8  D_801658CE;
 extern s32 D_80162DF8;
@@ -373,7 +381,6 @@ extern s8  D_801657B4;
 extern Vec3su D_8016582C;
 extern s8  D_801658F4;
 extern s32 D_80183D5C;
-extern s32 D_80183EA8;
 extern s16 D_8018CFE8;
 extern f32 D_8018D01C;
 extern s32 D_8018D140;

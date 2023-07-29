@@ -765,9 +765,12 @@ glabel D_8018C028
 glabel D_8018C030
 .skip 128
 
+# Array of (4) UnkActorInners?
 glabel D_8018C0B0
 .skip 256
 
+# begin D_8018C1B0, should be 512 bytes big
+# D_8018C1D8 through D_8018C278 are fake variables
 glabel D_8018C1B0
 .skip 40
 
@@ -775,23 +778,18 @@ glabel D_8018C1D8
 .skip 80
 
 glabel D_8018C228
-.skip 4
-
-glabel D_8018C22C
-.skip 76
+.skip 80
 
 glabel D_8018C278
 .skip 312
+# end D_8018C1B0
 
+# Some UnkActorInner
 glabel D_8018C3B0
-.skip 4
+.skip 64
 
-glabel D_8018C3B4
-.skip 6
-
-glabel D_8018C3BA
-.skip 54
-
+# begin D_8018C3F0, should be 512 bytes big
+# D_8018C404 and D_8018C490 are fake variables
 glabel D_8018C3F0
 .skip 20
 
@@ -800,10 +798,14 @@ glabel D_8018C404
 
 glabel D_8018C490
 .skip 352
+# end D_8018C3F0
 
+# Maybe some unused UnkActorInner?
 glabel D_8018C5F0
 .skip 64
 
+# begin D_8018C630, should be 512 bytes big
+# D_8018C6A8 and D_8018C6B0 are fake variables
 glabel D_8018C630
 .skip 120
 
@@ -812,7 +814,9 @@ glabel D_8018C6A8
 
 glabel D_8018C6B0
 .skip 384
+# end D_8018C630
 
+# Some UnkActorInner
 glabel D_8018C830
 .skip 64
 
@@ -822,6 +826,9 @@ glabel D_8018C870
 glabel D_8018C970
 .skip 256
 
+# some hud related list begin
+# D_8018CA70 should be of size 528 (0x84 * 0x4)
+# D_8018CA74 through D_8018CC7D are all fake
 glabel D_8018CA70
 .skip 4
 
@@ -917,15 +924,13 @@ glabel D_8018CC6E
 
 glabel D_8018CC7D
 .skip 3
+# some hud related list end
 
 glabel D_8018CC80
 .skip 400
 
 glabel D_8018CE10
-.skip 20
-
-glabel D_8018CE24
-.skip 236
+.skip 256
 
 glabel D_8018CF10
 .skip 4

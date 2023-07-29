@@ -3004,36 +3004,34 @@ u8 D_0D02AA58[] = {
     #include "textures/common/132B50_2AA58.rgba16.inc.c"
 };
 
-s8 D_0D02AC58[] = {
-    #include "textures/common/132B50_2AC58.i8.inc.c"
+u8 D_0D02AC58[][1024] = {
+    {
+        #include "textures/common/132B50_2AC58.i8.inc.c"
+    },
+    {
+        #include "textures/common/132B50_2B058.i8.inc.c"
+    },
+    {
+        #include "textures/common/132B50_2B458.i8.inc.c"
+    },
+    {
+        #include "textures/common/132B50_2B858.i8.inc.c"
+    },
 };
 
-s8 D_0D02B058[] = {
-    #include "textures/common/132B50_2B058.i8.inc.c"
-};
-
-s8 D_0D02B458[] = {
-    #include "textures/common/132B50_2B458.i8.inc.c"
-};
-
-s8 D_0D02B858[] = {
-    #include "textures/common/132B50_2B858.i8.inc.c"
-};
-
-u8 D_0D02BC58[] = {
-    #include "textures/common/132B50_2BC58.i8.inc.c"
-};
-
-s8 D_0D02C058[] = {
-    #include "textures/common/132B50_2C058.i8.inc.c"
-};
-
-s8 D_0D02C458[] = {
-    #include "textures/common/132B50_2C458.i8.inc.c"
-};
-
-s8 D_0D02C858[] = {
-    #include "textures/common/132B50_2C858.i8.inc.c"
+u8 D_0D02BC58[][1024] = {
+    {
+        #include "textures/common/132B50_2BC58.i8.inc.c"
+    },
+    {
+        #include "textures/common/132B50_2C058.i8.inc.c"
+    },
+    {
+        #include "textures/common/132B50_2C458.i8.inc.c"
+    },
+    {
+        #include "textures/common/132B50_2C858.i8.inc.c"
+    },
 };
 
 // minimap cars
