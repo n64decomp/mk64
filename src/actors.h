@@ -388,7 +388,7 @@ extern u8 gTextureShrub[];
 
 extern s8 D_800DC628[];
 extern s8 D_800DC630[];
-extern u16 D_800DC5FC;
+extern u16 gIsGamePaused;
 extern s8 D_802B8864[];
 
 extern u16 D_800DC5BC;

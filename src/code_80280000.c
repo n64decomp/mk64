@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
+#include <debug.h>
 #include <PR/gu.h>
 
 #include "main.h"
@@ -75,7 +76,7 @@ void func_80280268(s32 arg0) {
 
 void credits_loop(void) {
     Camera *camera = &cameras[0];
-
+	
     f32 temp_f12;
     f32 temp;
     f32 temp_f14;
@@ -103,6 +104,9 @@ void credits_loop(void) {
         } else {
             func_80280000();
             func_80280038();
+#if VARIABLE_WATCH_DEBUG_LIST
+			display_debug_watch_list();
+#endif
             gDPFullSync(gDisplayListHead++);
             gSPEndDisplayList(gDisplayListHead++);
         }

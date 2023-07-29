@@ -5188,7 +5188,7 @@ void func_8009CA6C(s32 arg0) {
         temp_v1->words.w0 = 0x06000000;
         temp_v1->words.w1 = (u32) &D_0D0076F8;
         phi_a1 = 0;
-        if ((arg0 != 4) && (D_800DC5FC != 0)) {
+        if ((arg0 != 4) && (gIsGamePaused != 0)) {
             phi_a1 = 1;
         }
         temp_t0 = *(&D_8018E7AC + arg0);
@@ -5444,7 +5444,7 @@ void func_8009CE64(s32 *arg0, s32 arg2, s32 arg3) {
                             break;
                         }
                         if (var_a1_2 != 0) {
-                            D_800DC5FC = 0;
+                            gIsGamePaused = 0;
                         }
                     }
                     temp_v0_5 = find_8018D9E0_entry(0x000000BD);
@@ -9877,7 +9877,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A4A24.s")
 #endif
 
 void func_800A4B38(struct_8018D9E0_entry *arg0) {
-    if (D_800DC5FC != 0) {
+    if (gIsGamePaused != 0) {
         switch (gModeSelection) {
             case TIME_TRIALS:
                 func_800A4BC8(arg0);
@@ -10002,13 +10002,13 @@ void func_800A4EF8(struct_8018D9E0_entry *arg0) {
     s32 phi_s1;
     s32 phi_s0;
 
-    temp_v0 = (D_800DC5FC << 6) - 0x40 + &D_8015F480;
+    temp_v0 = (gIsGamePaused << 6) - 0x40 + &D_8015F480;
     temp_v1 = temp_v0->unk30;
     temp_t0 = temp_v0->unk32;
     temp_t3 = (s32) temp_v0->unk2C / 2;
     temp_t4 = (s32) temp_v0->unk2E / 2;
     gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3, temp_t0 + temp_t4, 0, 0, 0, 0x8C);
-    temp_s3 = ((gScreenModeSelection << 5) + (D_800DC5FC * 8)) - 8 + &D_800E8540;
+    temp_s3 = ((gScreenModeSelection << 5) + (gIsGamePaused * 8)) - 8 + &D_800E8540;
     phi_a1 = 0;
     phi_s2 = 0;
     do {
@@ -10082,13 +10082,13 @@ void func_800A5084(struct_8018D9E0_entry *arg0) {
     s32 phi_s1;
     s8 **phi_s2;
 
-    temp_v0 = (D_800DC5FC << 6) - 0x40 + &D_8015F480;
+    temp_v0 = (gIsGamePaused << 6) - 0x40 + &D_8015F480;
     temp_v1 = temp_v0->unk30;
     temp_t0 = temp_v0->unk32;
     temp_t3 = (s32) temp_v0->unk2C / 2;
     temp_t4 = (s32) temp_v0->unk2E / 2;
     gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3, temp_t0 + temp_t4, 0, 0, 0, 0x8C);
-    temp_s3 = ((gScreenModeSelection << 5) + (D_800DC5FC * 8)) - 8 + &D_800E85C0;
+    temp_s3 = ((gScreenModeSelection << 5) + (gIsGamePaused * 8)) - 8 + &D_800E85C0;
     temp_s0 = (s32) ((((f32) get_string_width(D_800E7500[gCupSelection]) * 1.0f) + 10.0f) / 2.0f);
     temp_s1 = (s32) ((((f32) get_string_width(D_800E76CC[gCCSelection]) * 1.0f) + 10.0f) / 2.0f);
     set_text_color(3);
@@ -10141,13 +10141,13 @@ void func_800A5360(struct_8018D9E0_entry *arg0) {
     s32 phi_s1;
     s32 phi_s0;
 
-    temp_v0 = (D_800DC5FC << 6) - 0x40 + &D_8015F480;
+    temp_v0 = (gIsGamePaused << 6) - 0x40 + &D_8015F480;
     temp_v1 = temp_v0->unk30;
     temp_t0 = temp_v0->unk32;
     temp_t3 = (s32) temp_v0->unk2C / 2;
     temp_t4 = (s32) temp_v0->unk2E / 2;
     gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3, temp_t0 + temp_t4, 0, 0, 0, 0x8C);
-    temp_s3 = ((gScreenModeSelection << 5) + (D_800DC5FC * 8)) - 8 + &D_800E8600;
+    temp_s3 = ((gScreenModeSelection << 5) + (gIsGamePaused * 8)) - 8 + &D_800E8600;
     phi_a1 = 0;
     phi_s2 = 0;
     do {
@@ -10190,7 +10190,7 @@ void func_800A54EC(void) {
     s32 temp_t2;
     ? *phi_v1;
 
-    if (D_800DC5FC != 0) {
+    if (gIsGamePaused != 0) {
         temp_t2 = gModeSelection;
         sp40 = temp_t2;
         temp_v1 = gDisplayListHead;
@@ -10213,13 +10213,13 @@ void func_800A54EC(void) {
             phi_v1 = &D_800E8538;
             break;
         case VERSUS:
-            phi_v1 = ((gScreenModeSelection << 5) + (D_800DC5FC * 8)) - 8 + &D_800E8540;
+            phi_v1 = ((gScreenModeSelection << 5) + (gIsGamePaused * 8)) - 8 + &D_800E8540;
             break;
         case GRAND_PRIX:
-            phi_v1 = ((gScreenModeSelection << 5) + (D_800DC5FC * 8)) - 8 + &D_800E85C0;
+            phi_v1 = ((gScreenModeSelection << 5) + (gIsGamePaused * 8)) - 8 + &D_800E85C0;
             break;
         case BATTLE:
-            phi_v1 = ((gScreenModeSelection << 5) + (D_800DC5FC * 8)) - 8 + &D_800E8600;
+            phi_v1 = ((gScreenModeSelection << 5) + (gIsGamePaused * 8)) - 8 + &D_800E8600;
             break;
         }
         sp50 = phi_v1->unk0 - 8;
@@ -14873,7 +14873,7 @@ void func_800ADF48(struct_8018D9E0_entry *arg0) {
     s32 stackPadding;
     struct Controller *controller;
 
-    if (D_800DC5FC != 0) {
+    if (gIsGamePaused != 0) {
         switch (arg0->unk4) {
         case 0:
             arg0->unk4 = D_800F0B50[gModeSelection];
@@ -14894,7 +14894,7 @@ void func_800ADF48(struct_8018D9E0_entry *arg0) {
         case 43:
         case 44:
             if (func_800B4520() == 0) {
-                controller = &gControllers[D_800DC5FC - 1];
+                controller = &gControllers[gIsGamePaused - 1];
                 if ((controller->buttonPressed | controller->stickPressed) & 0x800) {
                     if (D_800F0B50[gModeSelection] < arg0->unk4) {
                         arg0->unk4--;
@@ -14925,7 +14925,7 @@ void func_800ADF48(struct_8018D9E0_entry *arg0) {
                 if (controller->buttonPressed & 0x9000) {
                     if (arg0->unk4 == D_800F0B50[gModeSelection]) {
                         arg0->unk4 = 0;
-                        D_800DC5FC = 0;
+                        gIsGamePaused = 0;
                         func_8028DF38();
                         func_800C9F90(0U);
                     } else {

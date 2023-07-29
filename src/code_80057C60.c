@@ -910,7 +910,7 @@ void func_80059AC8(void) {
     s32 var_s0;
     s32 var_s1;
 
-    if (D_800DC5FC == 0) {
+    if (gIsGamePaused == 0) {
         func_8008C1D8(&D_80165678);
         gRaceFrameCounter += 1;
         var_s2 = D_8018CF68;
@@ -1082,7 +1082,7 @@ void func_8005A070(void) {
     D_8018D120 = 0;
     D_801655C0 = 0;
     func_80041D34();
-    if (D_800DC5FC == 0) {
+    if (gIsGamePaused == 0) {
         func_8005C728();
         if (gGamestate == ENDING_SEQUENCE) {
             func_80086604();

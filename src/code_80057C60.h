@@ -234,7 +234,7 @@ extern struct UnkStruct_800DC5EC *D_800DC5F0;
 extern struct UnkStruct_800DC5EC *D_800DC5F4;
 extern struct UnkStruct_800DC5EC *D_800DC5F8;
 
-extern u16 D_800DC5FC;
+extern u16 gIsGamePaused;
 
 extern s32 D_80164394;
 extern s32 D_80164398;

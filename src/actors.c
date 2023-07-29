@@ -881,7 +881,7 @@ void func_80298D7C(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
             continue;
         }
 
-        if ((test & 0x0400) && ((D_800DC5FC == 0) || (camera == camera1))) {
+        if ((test & 0x0400) && ((gIsGamePaused == 0) || (camera == camera1))) {
             var_s1->pos[1] += 0xA;
             if (var_s1->pos[1] >= 0x321) {
                 var_s1->someId |= 0x0800;

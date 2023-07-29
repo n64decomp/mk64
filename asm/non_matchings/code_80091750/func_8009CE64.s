@@ -169,8 +169,8 @@ glabel L8009D0AC
 /* 09DCB4 8009D0B4 A3380000 */  sb    $t8, ($t9)
 .L8009D0B8:
 /* 09DCB8 8009D0B8 10A00002 */  beqz  $a1, .L8009D0C4
-/* 09DCBC 8009D0BC 3C01800E */   lui   $at, %hi(D_800DC5FC) # $at, 0x800e
-/* 09DCC0 8009D0C0 A420C5FC */  sh    $zero, %lo(D_800DC5FC)($at)
+/* 09DCBC 8009D0BC 3C01800E */   lui   $at, %hi(gIsGamePaused) # $at, 0x800e
+/* 09DCC0 8009D0C0 A420C5FC */  sh    $zero, %lo(gIsGamePaused)($at)
 .L8009D0C4:
 /* 09DCC4 8009D0C4 0C02ABCC */  jal   find_8018D9E0_entry
 /* 09DCC8 8009D0C8 240400BD */   li    $a0, 189
