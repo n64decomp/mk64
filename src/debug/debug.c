@@ -205,6 +205,7 @@ static void u64_to_string(variableWatchAttributes *attribute, u32 variable, u8 b
 			indexesToFillAByte = 3;
 			break;
 		case DECIMAL:
+			bufferedString[stringLength] = '\0';
 			return;
 		case HEXIDECIMAL:
 			indexesToFillAByte = 2;
