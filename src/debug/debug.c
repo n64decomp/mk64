@@ -3,7 +3,7 @@
 #include "debug.inc.c"
 #include <libc/stdio.h>
 
-#if VARIABLE_WATCH_DEBUG_LIST
+#if DISPLAY_DEBUG_INFO
 
 u8 sDisplayListState = OK;
 

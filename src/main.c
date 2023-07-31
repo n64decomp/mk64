@@ -814,7 +814,7 @@ void race_logic_loop(void) {
     func_802A4300();
     func_800591B4();
     func_80093E20();
-#if VARIABLE_WATCH_DEBUG_LIST
+#if DISPLAY_DEBUG_INFO
 	display_debug_watch_list();	 
 #endif
     gDPFullSync(gDisplayListHead++);
@@ -835,7 +835,7 @@ void race_logic_loop(void) {
  */
 
 void game_state_handler(void) {
-#if VARIABLE_WATCH_DEBUG_LIST
+#if DISPLAY_DEBUG_INFO
 	if ((gControllerOne->button & L_TRIG) &&
 		(gControllerOne->button & R_TRIG) &&
 		(gControllerOne->button & Z_TRIG) &&
@@ -863,7 +863,7 @@ void game_state_handler(void) {
             init_rcp();
             // gGfxPool->mtxPool->m or gGfxPool?
             func_80094A64((Mtx *) gGfxPool->mtxPool->m);
-#if VARIABLE_WATCH_DEBUG_LIST
+#if DISPLAY_DEBUG_INFO
 			display_debug_watch_list();	 
 #endif
             break;

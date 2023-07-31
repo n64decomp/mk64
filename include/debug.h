@@ -5,22 +5,22 @@
 #include <defines.h>
 
 /**
- * This is a debug watch list to display variables and address at runtime.
- * to enable it change VARIABLE_WATCH_DEBUG_LIST to 1 or 0 to disable it
+ * Debug watch list to display variables and address at runtime.
+ * to enable it change DISPLAY_DEBUG_INFO to 1 or 0 to disable it
  * and compile with DEBUG=1 "make DEBUG=1".
  * To edit the variables displayed edit the structure array in src/debug/debug.inc.c.
  *
  * Additional features
  * Holding L + R + Z + A will start the creditis sequence.
- * holding L + R + Z + B will start the ending sequence.
+ * Holding L + R + Z + B will start the ending sequence.
  */
-#define VARIABLE_WATCH_DEBUG_LIST 0
-#if VARIABLE_WATCH_DEBUG_LIST
+#define DISPLAY_DEBUG_INFO 0
+#if DISPLAY_DEBUG_INFO
 
 #define CHARACTER_BUFFER_SIZE 200 // size of the string buffer
 
 /** 
- * This is the possition of the displayed text.
+ * This is the position of the displayed text.
  * It's calculated from the top left.
  */
 #define TEXT_Y_POSSITION -0x8

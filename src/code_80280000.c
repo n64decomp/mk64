@@ -104,7 +104,7 @@ void credits_loop(void) {
         } else {
             func_80280000();
             func_80280038();
-#if VARIABLE_WATCH_DEBUG_LIST
+#if DISPLAY_DEBUG_INFO
 			display_debug_watch_list();
 #endif
             gDPFullSync(gDisplayListHead++);

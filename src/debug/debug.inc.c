@@ -2,7 +2,7 @@
 #include <debug.h>
 #include "all_variables.h"
 
-#if VARIABLE_WATCH_DEBUG_LIST
+#if DISPLAY_DEBUG_INFO
 
 extern s32 gGlobalTimer;
 
