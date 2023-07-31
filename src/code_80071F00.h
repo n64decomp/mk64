@@ -1,6 +1,7 @@
 #ifndef CODE_80071F00_H
 #define CODE_80071F00_H
 
+#include "code_80004740.h"
 #include "common_structs.h"
 #include "camera.h"
 
@@ -31,12 +32,6 @@ s32  func_80072320(s32, s32);
 s32  func_80072354(s32, s32);
 void func_80072388(s32, s32);
 void func_800723A4(s32, s32);
-void func_8007CC00(void);
-void func_8007FB48(s32);
-void func_8007FA08(s32);
-void func_8007E63C(s32);
-void func_8007ED6C(s32);
-void func_8007EE5C(s32);
 void func_80072408(s32);
 void func_80072428(s32);
 void func_80072488(s32);
@@ -69,7 +64,7 @@ s32  func_800730BC(s32, s32, s32, s32, s32, s32);
 s32  func_8007326C(s32, s32, s32, s32, s32, s32);
 void func_80073404(s32, u8, u8, Vtx*);
 void func_80073444(s32, u8*, u8*, u8, u16);
-void func_8007348C(s32, u32*, u8, u8, Vtx *);
+void func_8007348C(s32, u8*, u8, u8, Vtx *);
 void func_800734D4();
 void func_800734DC(s32);
 void func_80073514(s32);
@@ -217,6 +212,7 @@ void func_8007BDA8();
 void func_8007BDE0(s32);
 void func_8007BEC8(s32);
 void func_8007BFB0(s32);
+void func_8007CC00();
 void func_8007C280();
 void func_8007C2F8(s32);
 void func_8007C340();
@@ -231,6 +227,7 @@ s32  func_8007C9F8();
 void func_8007D360(s32, s32);
 void func_8007D6A8(s32, s32);
 void func_8007D714(s32);
+void func_8007D794(s32);
 s32  func_8007D804(s32);
 void func_8007D8AC(s32);
 void func_8007D8D4(s32, s32);
@@ -238,14 +235,17 @@ void func_8007DA4C(s32);
 void func_8007DA74(s32);
 void func_8007DAF8(s32, s32);
 void func_8007DDC0(s32);
-void func_8007DF20(s32);
+void init_bb_trash_bin(s32);
 void func_8007E1F4(s32);
 void func_8007E358(s32);
 void func_8007E3EC(s32);
 void func_8007E4C4();
 s32  func_8007E50C(s32, Player*, Camera*);
 s32  func_8007E59C(s32);
+void func_8007E63C(s32);
 void func_8007EC30(s32);
+void func_8007ED6C(s32);
+void func_8007EE5C(s32);
 void func_8007EFBC(s32);
 void func_8007F280(s32);
 void func_8007F544(s32);
@@ -255,6 +255,7 @@ void func_8007F6C4(s32, s32);
 s32  func_8007F75C(s32);
 void func_8007F8D8();
 void func_8007FA08(s32);
+void func_8007FB48(s32);
 void func_8007FEA4(s32);
 void func_8007FF5C(s32);
 void func_8007FFC0(s32);
@@ -268,6 +269,7 @@ void func_8008078C(s32);
 void func_8008085C(s32);
 void func_80080A14(s32, Player*);
 void func_80080A4C(s32, s32);
+void func_80080B28(s32, s32);
 void func_80080DE4(s32);
 void func_80081080(s32);
 void func_800810F4(s32);
@@ -279,7 +281,7 @@ void func_80081848(s32);
 void func_80081924(s32);
 void func_80081D34(s32);
 void func_8008275C(s32);
-void func_80082A4C(s32);
+void init_ktb_crab(s32);
 void func_80082B34(s32, s32);
 void func_80082C30(s32);
 void func_80082E18(s32);
@@ -306,6 +308,7 @@ void func_800853DC(s32);
 void func_80085534(s32);
 void func_80085768(s32);
 void func_800857C0();
+void func_80085878(s32, s32);
 void func_80085BB4(s32);
 void func_80085C20(s32);
 void func_80085CA0(s32);
@@ -372,6 +375,8 @@ extern u8 d_course_rainbow_road_neon_boo[];
 extern u8 d_course_rainbow_road_static_tluts[][512];
 extern u8 d_course_rainbow_road_static_textures[][4096];
 extern u8 d_course_rainbow_road_sphere[];
+extern animation_type_2 *D_0601610C[]; // d_rainbow_road_unk3
+extern u32 D_06016110[]; // d_rainbow_road_unk4
 
 extern s8  D_801658CE;
 extern s32 D_80162DF8;
@@ -385,6 +390,7 @@ extern s16 D_8018CFE8;
 extern f32 D_8018D01C;
 extern s32 D_8018D140;
 extern s32 D_8018D158;
+extern s32 D_8018D1EC;
 extern s32 D_8018D224;
 extern u8* D_8018D490;
 

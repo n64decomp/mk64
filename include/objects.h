@@ -9,8 +9,8 @@
 
 typedef struct
 {
-    /* 0x00 */ f32 unk_000;
-    /* 0x04 */ Vec3f unk_004;
+    /* 0x00 */ f32 sizeScaling;
+    /* 0x04 */ Vec3f pos;
     /* 0x10 */ Vec3f unk_010;
     /* 0x1C */ Vec3f unk_01C;
     /* 0x28 */ Vec3f unk_028;
@@ -23,13 +23,17 @@ typedef struct
     /* 0x54 */ s32 unk_054;
     /* 0x58 */ s32 unk_058;
     /* 0x5C */ s32 unk_05C;
-    /* 0x60 */ u32 *unk_060;
-    /* 0x64 */ u8 *unk_064; // ptr to a texture
-    /* 0x68 */ u32 *unk_068;
-    /* 0x6C */ u8 *unk_06C; // ptr to a texture
+    /* 0x60 */ u8 *activeTLUT;
+    /* 0x64 */ u8 *activeTexture;
+    /**
+     * "list" is something of a misnomer for the names here
+     * they can be pointers to just 1 tlut/texture, but it is common for one or the other
+     * to be a pointer to an array of tluts/textures.
+    **/
+    /* 0x68 */ u8 *tlutList; // I feel like this should actually be `u8 (*tlutList)[512]`, but that causes mismatches
+    /* 0x6C */ u8 *textureList;
     /* 0x70 */ Gfx *unk_070;
-    // For at least 1 object type this is meant to be a Vtx*. See func_800555BC
-    /* 0x74 */ Vtx *unk_074;
+    /* 0x74 */ Vtx *unk_074; // For at least 1 object type this is meant to be a Vtx*. See func_800555BC
     /* 0x78 */ s8  unk_078[0x04];
     /* 0x7C */ s32 unk_07C;
     /* 0x80 */ u16 *unk_080; // unk_080[][4]?
@@ -41,13 +45,13 @@ typedef struct
     /* 0xA0 */ s16 unk_0A0;
     /* 0xA2 */ s16 unk_0A2;
     /* 0xA4 */ s16 unk_0A4;
-    /* 0xA6 */ s16 unk_0A6;
+    /* 0xA6 */ s16 unk_0A6; // Usually a state tracker
     /* 0xA8 */ s16 unk_0A8;
     /* 0xAA */ s16 unk_0AA;
     /* 0xAC */ s16 unk_0AC;
     /* 0xAE */ s16 unk_0AE;
     /* 0xB0 */ s16 unk_0B0;
-    /* 0xB2 */ Vec3su unk_0B2;
+    /* 0xB2 */ Vec3su unk_0B2; // rotation, I think
     /* 0xB8 */ Vec3su unk_0B8;
     /* 0xBE */ Vec3su unk_0BE;
     /* 0xC4 */ u16 unk_0C4;
@@ -68,8 +72,8 @@ typedef struct
     /* 0xD6 */ u8  unk_0D6;
     /* 0xD7 */ u8  unk_0D7;
     /* 0xD8 */ u8  unk_0D8;
-    /* 0xD9 */ u8  unk_0D9;
-    /* 0xDA */ u8  unk_0DA;
+    /* 0xD9 */ u8  textureWidth;
+    /* 0xDA */ u8  textureHeight;
     /* 0xDB */ u8  unk_0DB;
     /* 0xDC */ u8  unk_0DC;
     /* 0xDD */ u8  unk_0DD;
@@ -107,6 +111,7 @@ extern UnkActorInner D_8018C0B0[];
  * Crabs in Koopa Troopa Beach
  * Hot air balloon in Luigi Raceway?
  * Neon signs in Rainbow Road?
+ * Thwomps in Bower's Castle?
 **/
 extern s32 D_80183EA0[];
 /**
@@ -179,5 +184,7 @@ extern s32 D_8018D1F0;
 extern s32 D_8018D1F8;
 // Something related to the display of the clouds/stars?
 extern s8 D_8018D230;
+// Some sort of limiter on how many of some object type can spawn
+extern s32 D_8018D3C4;
 
 #endif

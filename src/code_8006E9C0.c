@@ -219,14 +219,14 @@ void func_8006EE7C(s32 objectIndex) {
     temp_v0 = &D_80165C18[objectIndex];
     temp_v0->unk_0A4 = 0;
     temp_v0->unk_0D2 = temp_v0->unk_0A4;
-    temp_v0->unk_068 = (s32 *) gTLUTItemWindowNone;
-    temp_v0->unk_060 = (s32 *) gTLUTItemWindowNone;
-    temp_v0->unk_06C = gTextureItemWindowNone;
-    temp_v0->unk_064 = gTextureItemWindowNone;
+    temp_v0->tlutList = (s32 *) gTLUTItemWindowNone;
+    temp_v0->activeTLUT = (s32 *) gTLUTItemWindowNone;
+    temp_v0->textureList = gTextureItemWindowNone;
+    temp_v0->activeTexture = gTextureItemWindowNone;
     temp_v0->unk_04C = -1;
     temp_v0->unk_09C = 0x00A0;  // Screen X position
     temp_v0->unk_09E = -0x0020; // Screen Y position
-    temp_v0->unk_000 = 1.0f;
+    temp_v0->sizeScaling = 1.0f;
 }
 
 #ifdef MIPS_TO_C
@@ -1068,8 +1068,8 @@ void func_80070250(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
     temp_v0->unk_0A4 = 0;
     temp_v0->unk_0BE[1] = arg2->pos[0];
     temp_v0->unk_09E = arg2->pos[1];
-    temp_v0->unk_000 = (f32) arg2->pos[2] / 100.0;
-    temp_v0->unk_064 = &D_8018D220[arg2->id];
+    temp_v0->sizeScaling = (f32) arg2->pos[2] / 100.0;
+    temp_v0->activeTexture = &D_8018D220[arg2->id];
     func_80073404(objectIndex, 0x40U, 0x20U, D_0D005FB0);
     temp_v0->unk_0A0 = 0x00FF;
 }
@@ -1099,7 +1099,7 @@ void func_80070328(StarSpawn *arg0) {
  * They have no true x/y/z position, instead they seem to be kept in a position relative to the
  * player they hang around. There is however an x/y position for where they should be on screen
  * when they are visbile (unk_09E[0] and [1]).
- * unk_000 is some sort of size scaling on the start texture.
+ * sizeScaling is some sort of size scaling on the start texture.
  * unk_0A2 is an alpha value, used to make the star twinkle.
 **/
 void func_800703E0(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
@@ -1111,8 +1111,8 @@ void func_800703E0(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
     temp_v0->unk_0A4 = 1;
     temp_v0->unk_0BE[1] = arg2->pos[0]; // No idea
     temp_v0->unk_09E = arg2->pos[1]; // screen Y position
-    temp_v0->unk_000 = (f32)arg2->pos[2] / 100.0; // some type of scaling on the texture
-    temp_v0->unk_064 = D_0D0293D8;
+    temp_v0->sizeScaling = (f32)arg2->pos[2] / 100.0; // some type of scaling on the texture
+    temp_v0->activeTexture = D_0D0293D8;
     func_80073404(objectIndex, 0x10U, 0x10U, D_0D005770);
 }
 
@@ -1380,9 +1380,9 @@ void func_80070780(void) {
         var_s1_2 = &D_800E5728;
         temp_v0_2 = &D_80165C18[temp_s0_2];
         var_s2_2 = D_8018BFA8;
-        temp_v0_2->unk_004[1] = 80.0f;
-        temp_v0_2->unk_004[0] = (f32) ((f64) D_8018D01C * -68.0);
-        temp_v0_2->unk_004[2] = -1840.0f;
+        temp_v0_2->pos[1] = 80.0f;
+        temp_v0_2->pos[0] = (f32) ((f64) D_8018D01C * -68.0);
+        temp_v0_2->pos[2] = -1840.0f;
         do {
             temp_s0_3 = *var_s2_2;
             func_800723A4(temp_s0_3, 0);
@@ -1390,10 +1390,10 @@ void func_80070780(void) {
             temp_v0_3 = &D_80165C18[temp_s0_3];
             var_s3_2 += 1;
             var_s2_2 += 4;
-            temp_v0_3->unk_004[1] = (f32) var_s1_2->unk2;
-            temp_v0_3->unk_004[0] = (f32) var_s1_2->unk0 * D_8018D01C;
+            temp_v0_3->pos[1] = (f32) var_s1_2->unk2;
+            temp_v0_3->pos[0] = (f32) var_s1_2->unk0 * D_8018D01C;
             temp_v0_3->unk_0BE[1] = 0;
-            temp_v0_3->unk_004[2] = (f32) var_s1_2->unk4;
+            temp_v0_3->pos[2] = (f32) var_s1_2->unk4;
             if (temp_t9 != 0) {
                 temp_v0_3->unk_0BE[1] = 0x8000;
             }
@@ -1435,7 +1435,7 @@ void func_80070780(void) {
                 temp_f0 = (f32) var_s1_4->unk0 * D_8018D01C;
                 temp_v0_5 = &D_80165C18[temp_s0_5];
                 temp_v0_5->unk_010[0] = temp_f0;
-                temp_v0_5->unk_004[0] = temp_f0;
+                temp_v0_5->pos[0] = temp_f0;
                 temp_f10 = var_s1_4->unk4;
                 temp_t1 = var_s1_4->unk6;
                 temp_t5 = var_v1->unk4;
@@ -1444,13 +1444,13 @@ void func_80070780(void) {
                 var_v1 += 6;
                 var_s2_3 += 4;
                 temp_v0_5->unk_044 = temp_f0_2;
-                temp_v0_5->unk_004[1] = temp_f0_2;
+                temp_v0_5->pos[1] = temp_f0_2;
                 var_s1_4 += 8;
                 temp_f0_3 = (f32) temp_f10;
                 temp_v0_5->unk_0D5 = (u8) temp_t1;
                 temp_v0_5->unk_09E = temp_t5;
                 temp_v0_5->unk_010[2] = temp_f0_3;
-                temp_v0_5->unk_004[2] = temp_f0_3;
+                temp_v0_5->pos[2] = temp_f0_3;
                 temp_v0_5->unk_09C = (s16) (s32) temp_f4;
             } while (var_v1 != &D_800E5EE6);
             return;
@@ -1508,11 +1508,11 @@ void func_80070780(void) {
                 var_v1_3 += 8;
                 var_s1_7 += 4;
                 temp_v0_8->unk_010[0] = temp_f0_4;
-                temp_v0_8->unk_004[0] = temp_f0_4;
+                temp_v0_8->pos[0] = temp_f0_4;
                 temp_f0_5 = (f32) temp_f6_2;
                 temp_v0_8->unk_01C[0] = temp_f18 * D_8018D01C;
                 temp_v0_8->unk_010[2] = temp_f0_5;
-                temp_v0_8->unk_004[2] = temp_f0_5;
+                temp_v0_8->pos[2] = temp_f0_5;
                 temp_v0_8->unk_01C[2] = (f32) temp_f8_2;
             } while (var_v1_3 != &D_800E5FD0);
         }
@@ -1628,12 +1628,12 @@ block_75:
                 func_800723A4(temp_s0_10, 0);
                 temp_v0_9 = &D_80165C18[temp_s0_10];
                 sp4C = temp_v0_9;
-                temp_v0_9->unk_004[2] = (f32) var_s2_6->unk4;
-                temp_v0_9->unk_004[0] = (f32) var_s2_6->unk0 * D_8018D01C;
+                temp_v0_9->pos[2] = (f32) var_s2_6->unk4;
+                temp_v0_9->pos[0] = (f32) var_s2_6->unk0 * D_8018D01C;
                 func_800887C0(temp_s0_10);
                 var_s2_6 += 6;
                 var_s1_11 += 4;
-                temp_v0_9->unk_000 = 0.7f;
+                temp_v0_9->sizeScaling = 0.7f;
             } while ((u32) var_s2_6 < (u32) &D_800E641A);
             var_s0_8 = D_8018C3F0;
             do {

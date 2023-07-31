@@ -1119,9 +1119,9 @@ void func_8005A14C(s32 playerId) {
             }
         }
         if (player->unk_0BC & 0x40000000) {
-            f32_step_towards(&D_80165C18[objectIndex].unk_000, 0.3f, 0.02f);
+            f32_step_towards(&D_80165C18[objectIndex].sizeScaling, 0.3f, 0.02f);
         } else {
-            f32_step_towards(&D_80165C18[objectIndex].unk_000, 0.6f, 0.02f);
+            f32_step_towards(&D_80165C18[objectIndex].sizeScaling, 0.6f, 0.02f);
         }
         if (player->unk_0BC & 0x04000000) {
             u16_step_up_towards(&D_80165C18[objectIndex].unk_0BE[0], 0x0C00U, 0x0100U);
@@ -1145,7 +1145,7 @@ void func_8005A14C(s32 playerId) {
             D_80165C18[objectIndex].unk_028[2] = 0.0f;
             D_80165C18[objectIndex].unk_028[1] = 0.0f;
             D_80165C18[objectIndex].unk_028[0] = 0.0f;
-            D_80165C18[objectIndex].unk_000 = 0.6f;
+            D_80165C18[objectIndex].sizeScaling = 0.6f;
             D_80165C18[objectIndex].unk_0A0 = 0x00FF;
         }
     }

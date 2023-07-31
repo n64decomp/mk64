@@ -114,11 +114,11 @@ UNUSED void func_80087258(s32 objectIndex, UNUSED s32 arg1, f32 arg2) {
 }
 
 UNUSED s32 func_80087294(s32 objectIndex, Player *player) {
-    return func_80041770(player->pos[0], D_80165C18[objectIndex].unk_004[0], player->pos[2], D_80165C18[objectIndex].unk_004[2]);
+    return func_80041770(player->pos[0], D_80165C18[objectIndex].pos[0], player->pos[2], D_80165C18[objectIndex].pos[2]);
 }
 
 s32 func_800872D8(s32 objectIndex, Camera *camera) {
-    return atan2s(D_80165C18[objectIndex].unk_004[0] - camera->pos[0], D_80165C18[objectIndex].unk_004[2] - camera->pos[2]);
+    return atan2s(D_80165C18[objectIndex].pos[0] - camera->pos[0], D_80165C18[objectIndex].pos[2] - camera->pos[2]);
 }
 
 u16 func_80087324(s32 objectIndex) {
@@ -285,7 +285,7 @@ s32 func_80087B84(s32 objectIndex, f32 arg1, f32 arg2) {
         D_80165C18[objectIndex].unk_038[1] = -arg1;
     }
     func_800877C4(objectIndex);
-    if (D_80165C18[objectIndex].unk_004[1] <= arg2) {
+    if (D_80165C18[objectIndex].pos[1] <= arg2) {
         func_800721E8(objectIndex, 8);
         func_80086FD4(objectIndex);
         sp24 = 1;
@@ -556,12 +556,12 @@ s32 func_8008847C(s32 objectIndex) {
     sp2C = 0;
     func_800721E8(objectIndex, 0x00800000);
     if (func_8007223C(objectIndex, 0x00000400) != 0) {
-        func_802ADDC8(&D_8018C3B0, 10.0f, D_80165C18[objectIndex].unk_004[0], 20.0f, D_80165C18[objectIndex].unk_004[2]);
+        func_802ADDC8(&D_8018C3B0, 10.0f, D_80165C18[objectIndex].pos[0], 20.0f, D_80165C18[objectIndex].pos[2]);
         if (D_8018C3B0.unk34 == 1) {
             sp2C = 1;
             func_800721C0(objectIndex, 0x00800000);
         }
-        D_80165C18[objectIndex].unk_044 = func_802ABE30(D_80165C18[objectIndex].unk_004[0], 0.0f, D_80165C18[objectIndex].unk_004[2], D_8018C3B0.unk3A);
+        D_80165C18[objectIndex].unk_044 = func_802ABE30(D_80165C18[objectIndex].pos[0], 0.0f, D_80165C18[objectIndex].pos[2], D_8018C3B0.unk3A);
     }
     return sp2C;
 }
@@ -572,12 +572,12 @@ s32 func_80088538(s32 objectIndex) {
     sp2C = 0;
     func_800721E8(objectIndex, 0x00800000);
     if (func_8007223C(objectIndex, 0x00000400) != 0) {
-        func_802ADDC8(&D_8018C3B0, 10.0f, D_80165C18[objectIndex].unk_004[0], 20.0f, D_80165C18[objectIndex].unk_004[2]);
+        func_802ADDC8(&D_8018C3B0, 10.0f, D_80165C18[objectIndex].pos[0], 20.0f, D_80165C18[objectIndex].pos[2]);
         if (D_8018C3B0.unk34 == 1) {
             sp2C = 1;
             func_800721C0(objectIndex, 0x00800000);
         }
-        D_80165C18[objectIndex].unk_044 = func_802ABE30(D_80165C18[objectIndex].unk_004[0], 0.0f, D_80165C18[objectIndex].unk_004[2], D_8018C3B0.unk3A);
+        D_80165C18[objectIndex].unk_044 = func_802ABE30(D_80165C18[objectIndex].pos[0], 0.0f, D_80165C18[objectIndex].pos[2], D_8018C3B0.unk3A);
         D_80165C18[objectIndex].unk_0B8[0] = atan2s(D_8018C3B0.unk60[2], D_8018C3B0.unk60[1]) + 0x4000;
         D_80165C18[objectIndex].unk_0B8[2] = atan2s(D_8018C3B0.unk60[0], D_8018C3B0.unk60[1]);
     }
@@ -590,12 +590,12 @@ s32 func_8008861C(s32 objectIndex) {
     sp2C = 0;
     func_800721E8(objectIndex, 0x00800000);
     if (func_8007223C(objectIndex, 0x00000400) != 0) {
-        func_802ADDC8(&D_8018C3B0, 10.0f, D_80165C18[objectIndex].unk_004[0], 20.0f, D_80165C18[objectIndex].unk_004[2]);
+        func_802ADDC8(&D_8018C3B0, 10.0f, D_80165C18[objectIndex].pos[0], 20.0f, D_80165C18[objectIndex].pos[2]);
         if (D_8018C3B0.unk34 == 1) {
             sp2C = 1;
             func_800721C0(objectIndex, 0x00800000);
         }
-        D_80165C18[objectIndex].unk_044 = func_802ABE30(D_80165C18[objectIndex].unk_004[0], 0.0f, D_80165C18[objectIndex].unk_004[2], D_8018C3B0.unk3A);
+        D_80165C18[objectIndex].unk_044 = func_802ABE30(D_80165C18[objectIndex].pos[0], 0.0f, D_80165C18[objectIndex].pos[2], D_8018C3B0.unk3A);
         D_80165C18[objectIndex].unk_01C[0] = D_8018C3B0.unk60[0];
         D_80165C18[objectIndex].unk_01C[1] = D_8018C3B0.unk60[1];
         D_80165C18[objectIndex].unk_01C[2] = D_8018C3B0.unk60[2];
@@ -604,10 +604,10 @@ s32 func_8008861C(s32 objectIndex) {
 }
 
 void func_800886F4(s32 objectIndex) {
-    func_802ADDC8(&D_8018C3B0, 10.0f, D_80165C18[objectIndex].unk_004[0], 20.0f, D_80165C18[objectIndex].unk_004[2]);
+    func_802ADDC8(&D_8018C3B0, 10.0f, D_80165C18[objectIndex].pos[0], 20.0f, D_80165C18[objectIndex].pos[2]);
     if (D_8018C3B0.unk34 == 1) {
         func_800721C0(objectIndex, 0x00800000);
-        D_80165C18[objectIndex].unk_044 = func_802ABE30(D_80165C18[objectIndex].unk_004[0], 0.0f, D_80165C18[objectIndex].unk_004[2], D_8018C3B0.unk3A);
+        D_80165C18[objectIndex].unk_044 = func_802ABE30(D_80165C18[objectIndex].pos[0], 0.0f, D_80165C18[objectIndex].pos[2], D_8018C3B0.unk3A);
         D_80165C18[objectIndex].unk_0B8[0] = atan2s(D_8018C3B0.unk60[2], D_8018C3B0.unk60[1]) + 0x4000;
         D_80165C18[objectIndex].unk_0B8[2] = atan2s(D_8018C3B0.unk60[0], D_8018C3B0.unk60[1]);
         return;
@@ -616,10 +616,10 @@ void func_800886F4(s32 objectIndex) {
 }
 
 void func_800887C0(s32 objectIndex) {
-    func_802ADDC8(&D_8018C3B0, 10.0f, D_80165C18[objectIndex].unk_004[0], 20.0f, D_80165C18[objectIndex].unk_004[2]);
+    func_802ADDC8(&D_8018C3B0, 10.0f, D_80165C18[objectIndex].pos[0], 20.0f, D_80165C18[objectIndex].pos[2]);
     if (D_8018C3B0.unk34 == 1) {
         func_800721C0(objectIndex, 0x00800000);
-        D_80165C18[objectIndex].unk_044 = func_802ABE30(D_80165C18[objectIndex].unk_004[0], 0.0f, D_80165C18[objectIndex].unk_004[2], D_8018C3B0.unk3A);
+        D_80165C18[objectIndex].unk_044 = func_802ABE30(D_80165C18[objectIndex].pos[0], 0.0f, D_80165C18[objectIndex].pos[2], D_8018C3B0.unk3A);
         D_80165C18[objectIndex].unk_038[0] = D_8018C3B0.unk60[0];
         D_80165C18[objectIndex].unk_038[1] = D_8018C3B0.unk60[1];
         D_80165C18[objectIndex].unk_038[2] = D_8018C3B0.unk60[2];
@@ -632,8 +632,8 @@ UNUSED s32 func_80088880(s32 objectIndex, Player *player) {
     s32 temp_f10;
     s32 temp_f6;
 
-    temp_f10 = D_80165C18[objectIndex].unk_004[0] - player->pos[0];
-    temp_f6  = D_80165C18[objectIndex].unk_004[2] - player->pos[2];
+    temp_f10 = D_80165C18[objectIndex].pos[0] - player->pos[0];
+    temp_f6  = D_80165C18[objectIndex].pos[2] - player->pos[2];
     return (temp_f10 * temp_f10) + (temp_f6 * temp_f6);
 }
 
@@ -642,9 +642,9 @@ UNUSED s32 func_800888E8(s32 objectIndex, Player *player) {
     s32 temp_f18;
     s32 temp_f6;
 
-    temp_f10 = D_80165C18[objectIndex].unk_004[0] - player->pos[0];
-    temp_f6  = D_80165C18[objectIndex].unk_004[1] - player->pos[1];
-    temp_f18 = D_80165C18[objectIndex].unk_004[2] - player->pos[2];
+    temp_f10 = D_80165C18[objectIndex].pos[0] - player->pos[0];
+    temp_f6  = D_80165C18[objectIndex].pos[1] - player->pos[1];
+    temp_f18 = D_80165C18[objectIndex].pos[2] - player->pos[2];
     return (temp_f10 * temp_f10) + (temp_f6 * temp_f6) + (temp_f18 * temp_f18);
 }
 
@@ -652,8 +652,8 @@ u32 func_8008896C(s32 objectIndex, Camera *camera) {
     s32 temp_f10;
     s32 temp_f6;
 
-    temp_f10 = D_80165C18[objectIndex].unk_004[0] - camera->pos[0];
-    temp_f6  = D_80165C18[objectIndex].unk_004[2] - camera->pos[2];
+    temp_f10 = D_80165C18[objectIndex].pos[0] - camera->pos[0];
+    temp_f6  = D_80165C18[objectIndex].pos[2] - camera->pos[2];
     return (temp_f10 * temp_f10) + (temp_f6 * temp_f6);
 }
 
@@ -662,9 +662,9 @@ UNUSED s32 func_800889D4(s32 objectIndex, Camera *camera) {
     s32 temp_f18;
     s32 temp_f6;
 
-    temp_f10 = D_80165C18[objectIndex].unk_004[0] - camera->pos[0];
-    temp_f6  = D_80165C18[objectIndex].unk_004[1] - camera->pos[1];
-    temp_f18 = D_80165C18[objectIndex].unk_004[2] - camera->pos[2];
+    temp_f10 = D_80165C18[objectIndex].pos[0] - camera->pos[0];
+    temp_f6  = D_80165C18[objectIndex].pos[1] - camera->pos[1];
+    temp_f18 = D_80165C18[objectIndex].pos[2] - camera->pos[2];
     return (temp_f10 * temp_f10) + (temp_f6 * temp_f6) + (temp_f18 * temp_f18);
 }
 
@@ -674,8 +674,8 @@ s32 func_80088A58(s32 objectIndex, Player *player, f32 arg2) {
     s32 var_v1;
 
     var_v1 = 0;
-    temp_f0 = D_80165C18[objectIndex].unk_004[0] - player->pos[0];
-    temp_f2 = D_80165C18[objectIndex].unk_004[2] - player->pos[2];
+    temp_f0 = D_80165C18[objectIndex].pos[0] - player->pos[0];
+    temp_f2 = D_80165C18[objectIndex].pos[2] - player->pos[2];
     if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) <= (arg2 * arg2)) {
         var_v1 = 1;
     }
@@ -689,8 +689,8 @@ s32 func_80088AC0(s32 objectIndex, Player *player, f32 arg2, f32 arg3) {
     s32 var_v1;
 
     var_v1 = 0;
-    temp_f0 = D_80165C18[objectIndex].unk_004[0] - player->pos[0];
-    temp_f2 = D_80165C18[objectIndex].unk_004[2] - player->pos[2];
+    temp_f0 = D_80165C18[objectIndex].pos[0] - player->pos[0];
+    temp_f2 = D_80165C18[objectIndex].pos[2] - player->pos[2];
     temp_f12 = (temp_f0 * temp_f0) + (temp_f2 * temp_f2);
     if (((arg2 * arg2) <= temp_f12) && (temp_f12 <= (arg3 * arg3))) {
         var_v1 = 1;
@@ -705,9 +705,9 @@ s32 func_80088B40(s32 objectIndex, Player *player, f32 arg2) {
     s32 var_v1;
 
     var_v1 = 0;
-    temp_f0  = D_80165C18[objectIndex].unk_004[0] - player->pos[0];
-    temp_f2  = D_80165C18[objectIndex].unk_004[1] - player->pos[1];
-    temp_f12 = D_80165C18[objectIndex].unk_004[2] - player->pos[2];
+    temp_f0  = D_80165C18[objectIndex].pos[0] - player->pos[0];
+    temp_f2  = D_80165C18[objectIndex].pos[1] - player->pos[1];
+    temp_f12 = D_80165C18[objectIndex].pos[2] - player->pos[2];
     if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12)) <= (arg2 * arg2)) {
         var_v1 = 1;
     }
@@ -720,8 +720,8 @@ s32 func_80088BB8(s32 objectIndex, Camera *camera, f32 arg2) {
     s32 var_v1;
 
     var_v1 = 0;
-    temp_f0 = D_80165C18[objectIndex].unk_004[0] - camera->pos[0];
-    temp_f2 = D_80165C18[objectIndex].unk_004[2] - camera->pos[2];
+    temp_f0 = D_80165C18[objectIndex].pos[0] - camera->pos[0];
+    temp_f2 = D_80165C18[objectIndex].pos[2] - camera->pos[2];
     if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) <= (arg2 * arg2)) {
         var_v1 = 1;
     }
@@ -735,8 +735,8 @@ UNUSED s32 func_80088C20(s32 objectIndex, Camera *camera, f32 arg2, f32 arg3) {
     s32 var_v1;
 
     var_v1 = 0;
-    temp_f0  = D_80165C18[objectIndex].unk_004[0] - camera->pos[0];
-    temp_f2  = D_80165C18[objectIndex].unk_004[2] - camera->pos[2];
+    temp_f0  = D_80165C18[objectIndex].pos[0] - camera->pos[0];
+    temp_f2  = D_80165C18[objectIndex].pos[2] - camera->pos[2];
     temp_f12 = (temp_f0 * temp_f0) + (temp_f2 * temp_f2);
     if (((arg2 * arg2) <= temp_f12) && (temp_f12 <= (arg3 * arg3))) {
         var_v1 = 1;
@@ -751,9 +751,9 @@ UNUSED s32 func_80088CA0(s32 objectIndex, Camera *camera, f32 arg2) {
     s32 var_v1;
 
     var_v1 = 0;
-    temp_f0  = D_80165C18[objectIndex].unk_004[0] - camera->pos[0];
-    temp_f2  = D_80165C18[objectIndex].unk_004[1] - camera->pos[1];
-    temp_f12 = D_80165C18[objectIndex].unk_004[2] - camera->pos[2];
+    temp_f0  = D_80165C18[objectIndex].pos[0] - camera->pos[0];
+    temp_f2  = D_80165C18[objectIndex].pos[1] - camera->pos[1];
+    temp_f12 = D_80165C18[objectIndex].pos[2] - camera->pos[2];
     if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12)) <= (arg2 * arg2)) {
         var_v1 = 1;
     }
@@ -767,8 +767,8 @@ s32 func_80088D18(s32 objectIndex, Player *player) {
     s32 var_v1;
 
     var_v1 = 0;
-    temp_f0  = D_80165C18[objectIndex].unk_004[0] - player->pos[0];
-    temp_f2  = D_80165C18[objectIndex].unk_004[2] - player->pos[2];
+    temp_f0  = D_80165C18[objectIndex].pos[0] - player->pos[0];
+    temp_f2  = D_80165C18[objectIndex].pos[2] - player->pos[2];
     temp_f12 = D_80165C18[objectIndex].unk_0C8 + player->boundingBoxSize;
     if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) <= (temp_f12 * temp_f12)) {
         var_v1 = 1;
@@ -784,9 +784,9 @@ s32 func_80088DA4(s32 objectIndex, Player *player) {
     s32 var_v1;
 
     var_v1 = 0;
-    temp_f0  = D_80165C18[objectIndex].unk_004[0] - player->pos[0];
-    temp_f2  = D_80165C18[objectIndex].unk_004[1] - player->pos[1];
-    temp_f12 = D_80165C18[objectIndex].unk_004[2] - player->pos[2];
+    temp_f0  = D_80165C18[objectIndex].pos[0] - player->pos[0];
+    temp_f2  = D_80165C18[objectIndex].pos[1] - player->pos[1];
+    temp_f12 = D_80165C18[objectIndex].pos[2] - player->pos[2];
     temp_f14 = D_80165C18[objectIndex].unk_0C8 + player->boundingBoxSize;
     if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12)) <= (temp_f14 * temp_f14)) {
         var_v1 = 1;
@@ -799,7 +799,7 @@ UNUSED s32 func_80088E48(s32 objectIndex, Player *player, f32 arg2) {
     s32 var_v1;
 
     var_v1 = 0;
-    temp_f0 = D_80165C18[objectIndex].unk_004[1] - player->pos[1];
+    temp_f0 = D_80165C18[objectIndex].pos[1] - player->pos[1];
     if ((temp_f0 * temp_f0) <= (arg2 * arg2)) {
         var_v1 = 1;
     }
@@ -814,9 +814,9 @@ s32 func_80088E98(s32 objectIndex, Player *player, f32 arg2) {
     s32 var_v1;
 
     var_v1 = 0;
-    temp_f0  = D_80165C18[objectIndex].unk_004[0] - player->pos[0];
-    var_f2   = D_80165C18[objectIndex].unk_004[1] - player->pos[1];
-    temp_f12 = D_80165C18[objectIndex].unk_004[2] - player->pos[2];
+    temp_f0  = D_80165C18[objectIndex].pos[0] - player->pos[0];
+    var_f2   = D_80165C18[objectIndex].pos[1] - player->pos[1];
+    temp_f12 = D_80165C18[objectIndex].pos[2] - player->pos[2];
     temp_f14 = D_80165C18[objectIndex].unk_0C8 + player->boundingBoxSize;
     if (var_f2 < 0.0f) {
         var_f2 = -var_f2;
@@ -830,7 +830,7 @@ s32 func_80088E98(s32 objectIndex, Player *player, f32 arg2) {
 f32 func_80088F54(s32 objectIndex, Player *player) {
     f32 var_f2;
 
-    var_f2 = D_80165C18[objectIndex].unk_004[1] - player->unk_074;
+    var_f2 = D_80165C18[objectIndex].pos[1] - player->unk_074;
     if (var_f2 < 0.0f) {
         var_f2 = -var_f2;
     }
@@ -841,7 +841,7 @@ UNUSED s32 func_80088F94(s32 objectIndex, Player *player, f32 arg2) {
     f32 var_f0;
     s32 var_v1;
 
-    var_f0 = D_80165C18[objectIndex].unk_004[1] - player->unk_074;
+    var_f0 = D_80165C18[objectIndex].pos[1] - player->unk_074;
     var_v1 = 0;
     if (var_f0 < 0.0f) {
         var_f0 = -var_f0;
@@ -943,13 +943,13 @@ f32 func_8008933C(Player *player, s32 objectIndex, f32 arg2, f32 arg3) {
         player->unk_046 |= 2;
         player->unk_0BC |= 0x8000;
         temp_v1->unk_18[6] = 4;
-        something = (player->pos[0] - temp_v0->unk_004[0]) * temp_v0->unk_038[0];
+        something = (player->pos[0] - temp_v0->pos[0]) * temp_v0->unk_038[0];
         if (something >= 0.0f) {
             temp_v1->unk_04[0] = (-player->unk_034[0] * arg2) + (temp_v0->unk_038[0] * arg3);
         } else {
             temp_v1->unk_04[0] = -player->unk_034[0] * arg2;
         }
-        something = (player->pos[2] - temp_v0->unk_004[2]) * temp_v0->unk_038[2];
+        something = (player->pos[2] - temp_v0->pos[2]) * temp_v0->unk_038[2];
         if (something >= 0.0f) {
             temp_v1->unk_04[2] = (-player->unk_034[2] * arg2) + (temp_v0->unk_038[2] * arg3);
         } else {
@@ -1180,8 +1180,8 @@ s32 func_8008A0B4(s32 objectIndex, Player *player, Camera *camera, u16 arg3) {
     s32 var_t0;
 
     var_t0 = 0;
-    x_diff = D_80165C18[objectIndex].unk_004[0] - player->pos[0];
-    z_diff = D_80165C18[objectIndex].unk_004[2] - player->pos[2];
+    x_diff = D_80165C18[objectIndex].pos[0] - player->pos[0];
+    z_diff = D_80165C18[objectIndex].pos[2] - player->pos[2];
     temp_t3 = ((u16) camera->rot[1] - atan2s(x_diff, z_diff)) + (arg3 >> 1);
     if ((temp_t3 >= 0) && (arg3 >= temp_t3)) {
         var_t0 = 1;
@@ -1194,7 +1194,7 @@ s32 func_8008A140(s32 objectIndex, Camera *camera, u16 arg2) {
     s32 var_t0;
 
     var_t0 = 0;
-    temp_t2 = (func_80041770(camera->pos[0], D_80165C18[objectIndex].unk_004[0], camera->pos[2], D_80165C18[objectIndex].unk_004[2]) + ((s32) arg2 / 2)) - camera->rot[1];
+    temp_t2 = (func_80041770(camera->pos[0], D_80165C18[objectIndex].pos[0], camera->pos[2], D_80165C18[objectIndex].pos[2]) + ((s32) arg2 / 2)) - camera->rot[1];
     if ((temp_t2 >= 0) && (arg2 >= temp_t2)) {
         var_t0 = 1;
     }
@@ -1950,9 +1950,9 @@ void func_8008B80C(s32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 void func_8008B844(s32 arg0) {
     f32 temp_f0 = D_80165C18[arg0].unk_010[0];
 
-    D_80165C18[arg0].unk_004[0] = D_80165C18[arg0].unk_028[0] + temp_f0;
-    D_80165C18[arg0].unk_004[1] = D_80165C18[arg0].unk_028[1] + temp_f0;
-    D_80165C18[arg0].unk_004[2] = D_80165C18[arg0].unk_028[2] + temp_f0;
+    D_80165C18[arg0].pos[0] = D_80165C18[arg0].unk_028[0] + temp_f0;
+    D_80165C18[arg0].pos[1] = D_80165C18[arg0].unk_028[1] + temp_f0;
+    D_80165C18[arg0].pos[2] = D_80165C18[arg0].unk_028[2] + temp_f0;
 }
 
 void func_8008B888(s32 arg0, u16 arg1, u16 arg2, u16 arg3) {
@@ -2058,9 +2058,9 @@ void func_8008BEA4(s32 objectIndex, u16 arg1, u16 arg2) {
 }
 
 void func_8008BF18(s32 objectIndex) {
-    D_80165C18[objectIndex].unk_004[0] = D_80165C18[objectIndex].unk_010[0] + D_80165C18[objectIndex].unk_028[0];
-    D_80165C18[objectIndex].unk_004[1] = D_80165C18[objectIndex].unk_010[1] + D_80165C18[objectIndex].unk_028[1];
-    D_80165C18[objectIndex].unk_004[2] = D_80165C18[objectIndex].unk_010[2] + D_80165C18[objectIndex].unk_028[2];
+    D_80165C18[objectIndex].pos[0] = D_80165C18[objectIndex].unk_010[0] + D_80165C18[objectIndex].unk_028[0];
+    D_80165C18[objectIndex].pos[1] = D_80165C18[objectIndex].unk_010[1] + D_80165C18[objectIndex].unk_028[1];
+    D_80165C18[objectIndex].pos[2] = D_80165C18[objectIndex].unk_010[2] + D_80165C18[objectIndex].unk_028[2];
 }
 
 #ifdef MIPS_TO_C
@@ -2072,9 +2072,9 @@ void func_8008BF64(s32 objectIndex) {
     struct_80165C18_entry *temp_v0;
 
     temp_v0 = &D_80165C18[objectIndex];
-    D_80183E40.unk0 = (f32) temp_v0->unk_004[0];
-    D_80183E40.unk4 = (f32) temp_v0->unk_004[1];
-    D_80183E40.unk8 = (f32) temp_v0->unk_004[2];
+    D_80183E40.unk0 = (f32) temp_v0->pos[0];
+    D_80183E40.unk4 = (f32) temp_v0->pos[1];
+    D_80183E40.unk8 = (f32) temp_v0->pos[2];
     D_80183E80.unk0 = (u16) temp_v0->unk_0BE[0];
     D_80183E80.unk2 = (u16) temp_v0->unk_0BE[1];
     D_80183E80.unk4 = (u16) temp_v0->unk_0BE[2];
@@ -2084,8 +2084,8 @@ GLOBAL_ASM("asm/non_matchings/code_80086E70/func_8008BF64.s")
 #endif
 
 void func_8008BFC0(s32 objectIndex) {
-    D_80165C18[objectIndex].unk_09C = D_80165C18[objectIndex].unk_004[0];
-    D_80165C18[objectIndex].unk_09E = D_80165C18[objectIndex].unk_004[1];
+    D_80165C18[objectIndex].unk_09C = D_80165C18[objectIndex].pos[0];
+    D_80165C18[objectIndex].unk_09E = D_80165C18[objectIndex].pos[1];
 }
 
 #ifdef MIPS_TO_C
