@@ -69,27 +69,27 @@ exactly what you're doing.
 #define ACTOR_IS_NOT_EXPIRED 0xF // The actor possesses some kind of collision and can be removed
 
 // Actor shell->state (green, red and blue)
-#define HELD_SHELL 0 // A shell is being held by the player with Z.
-#define RELEASED_SHELL 1 // The shell is in the processed of being shot. (Only applies to single shells.)
-#define MOVING_SHELL 2 // The shell has been shot and is now in a moving state where it goes forwards.
-#define RED_SHELL_LOCK_ON 3 // A red shell has found a target and is semi hastily appraching it.
-#define A_TRIPLE_GREEN_SHELL 4 // A green triple shell. Once it's shot it's of course no longer a triple shell.
+#define HELD_SHELL 0 // Single shell that has not been dropped. (probably holding Z).
+#define RELEASED_SHELL 1 // This is the short window where single shells aren't being held or launched.
+#define MOVING_SHELL 2 // Moving towards its target after being shot.
+#define RED_SHELL_LOCK_ON 3 // Red shell is targeting.
+#define A_TRIPLE_GREEN_SHELL 4 // Loses triple shell state when shot.
 #define GREEN_SHELL_HIT_A_RACER 5 // A racer has been hit by a green shell.
-#define A_TRIPLE_RED_SHELL 6 // A red triple shell. Once it's shot it's of course no longer a triple shell.
-#define DESTROYED_SHELL 7 // The shell actor doesn't "exist" anymore. (It probably hit something).
+#define A_TRIPLE_RED_SHELL 6 // Loses triple shell state when shot.
+#define DESTROYED_SHELL 7 // Collision with the shell.
 #define BLUE_SHELL_LOCK_ON 8 // A blue shell has found a target and is hastily approaching it.
 #define BLUE_SHELL_TARGET_ELIMINATED 9 // Mission completed, well done boss.
 // Actor banana->state
-#define HELD_BANANA 0 // A banana being held by the player with Z
-#define DROPPED_BANANA 1 // A banana in the state of being dropped on the ground
+#define HELD_BANANA 0 // Single banana that has not been dropped.
+#define DROPPED_BANANA 1 // A banana in the state of being dropped on the ground (it only last for a few frames).
 #define FIRST_BANANA_BUNCH_BANANA 2 // The first banana of the banana bunch
-#define BANANA_BUNCH_BANANA 3 // Every banana of the banana bunch expept the first one.
-#define GROUND_BANANA 4 // A banana sitting on the ground.
-#define DESTROYED_BANANA 5 // The banana actor doesn't "exist" anymore. (It probably was hit).
+#define BANANA_BUNCH_BANANA 3 // Every banana of the banana bunch except the first one.
+#define BANANA_ON_GROUND 4 // A banana sitting on the ground.
+#define DESTROYED_BANANA 5 // Collision with the banana.
 // Actor fakeItemBox->state
-#define HELD_FAKE_ITEM_BOX 0 // A fake item box being held by the player with Z
-#define PLACED_FAKE_ITEM_BOX 1 // A fake item box is placed on the ground where it stays in the same state
-#define DESTROYED_FAKE_ITEM_BOX 2 // A fake item box has been hit by a clueless player
+#define HELD_FAKE_ITEM_BOX 0 // Ttem box is being held be Z.
+#define FAKE_ITEM_BOX_ON_GROUND 1 // Item box is on the ground.
+#define DESTROYED_FAKE_ITEM_BOX 2 // Collision with fake item box.
 
 struct Actor {
     /* 0x00 */ s16 type;

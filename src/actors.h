@@ -5,7 +5,7 @@
 #include "actor_types.h"
 
 void func_8029E158(void);
-void cleanup_dead_player_red_and_green_shells(struct ShellActor*);
+void cleanup_red_and_green_shells(struct ShellActor*);
 void actor_init(struct Actor*, f32*, s16*, f32*, s16);
 void func_80297230(Camera*, struct Actor*);
 void func_802972B8(Camera*, struct Actor*);
@@ -129,11 +129,8 @@ extern struct Actor gActorList[];
 extern Player gPlayers[];
 extern u16 gNumActors;
 extern u16 gNumPermanentActors;
-/** 
- * Incremented by one every time the player spawns a new shell actor.
- * Decremented onces 21 have been spawned
- */
-extern u16 gNumPlayerSpawnedShells; 
+// A cleaning routine runs once twenty-one shells have spawned.
+extern u16 gNumSpawnedShells; 
 extern u16 D_802BA260; // Box Truck sub-type?
 
 extern Player *gPlayerOne;

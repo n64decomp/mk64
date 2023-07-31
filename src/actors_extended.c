@@ -832,7 +832,7 @@ void update_obj_banana(struct BananaActor *banana) {
             destroy_actor((struct Actor *) banana);
         }
         break;
-    case GROUND_BANANA:
+    case BANANA_ON_GROUND:
         banana->flags |= 0xC000;
         banana->flags &= ~0x1000;
         break;

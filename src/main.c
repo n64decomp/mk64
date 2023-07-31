@@ -1170,7 +1170,7 @@ void thread5_game_loop(UNUSED void *arg) {
         read_controllers();
         game_state_handler();
         end_master_display_list();
-        display_and_vsync();	
+        display_and_vsync();
     }
 }
 
