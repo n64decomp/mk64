@@ -114,8 +114,8 @@ glabel func_8000DD78
 /* 00EB28 8000DF28 02402025 */  move  $a0, $s2
 /* 00EB2C 8000DF2C 0C0AB772 */  jal   func_802ADDC8
 /* 00EB30 8000DF30 A6090044 */   sh    $t1, 0x44($s0)
-/* 00EB34 8000DF34 3C0B8016 */  lui   $t3, %hi(D_801641F8) # $t3, 0x8016
-/* 00EB38 8000DF38 256B41F8 */  addiu $t3, %lo(D_801641F8) # addiu $t3, $t3, 0x41f8
+/* 00EB34 8000DF34 3C0B8016 */  lui   $t3, %hi(gUnexpiredActorsList) # $t3, 0x8016
+/* 00EB38 8000DF38 256B41F8 */  addiu $t3, %lo(gUnexpiredActorsList) # addiu $t3, $t3, 0x41f8
 /* 00EB3C 8000DF3C 26520040 */  addiu $s2, $s2, 0x40
 /* 00EB40 8000DF40 26730018 */  addiu $s3, $s3, 0x18
 /* 00EB44 8000DF44 164BFFAC */  bne   $s2, $t3, .L8000DDF8

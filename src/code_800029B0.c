@@ -22,7 +22,7 @@
 extern u16 D_800DC5A8;
 
 extern s32 D_800DC510;
-extern u16 D_8015F6FE;
+extern u16 gNumPlayerSpawnedShells;
 extern u16 D_80152308;
 extern s32 D_802BA038;
 extern s16 D_802BA048;
@@ -122,7 +122,7 @@ void setup_race(void) {
     func_8003D080();
     func_8006E9C0();
     D_800DC510 = 0;
-    D_8015F6FE = 0;
+    gNumPlayerSpawnedShells = 0;
     D_800DC5B8 = 0;
     D_80152308 = 0;
     D_802BA038 = -1;

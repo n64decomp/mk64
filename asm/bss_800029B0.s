@@ -124,7 +124,7 @@ glabel D_8015F6FA
 glabel D_8015F6FC
 .skip 2
 
-glabel D_8015F6FE
+glabel gNumPlayerSpawnedShells
 .skip 2
 
 glabel D_8015F700
