@@ -814,8 +814,8 @@ void race_logic_loop(void) {
     func_802A4300();
     func_800591B4();
     func_80093E20();
-#if DISPLAY_DEBUG_INFO
-	display_debug_watch_list();	 
+#if DVDL
+	display_dvdl();	 
 #endif
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
@@ -835,7 +835,7 @@ void race_logic_loop(void) {
  */
 
 void game_state_handler(void) {
-#if DISPLAY_DEBUG_INFO
+#if DVDL
 	if ((gControllerOne->button & L_TRIG) &&
 		(gControllerOne->button & R_TRIG) &&
 		(gControllerOne->button & Z_TRIG) &&
@@ -863,8 +863,8 @@ void game_state_handler(void) {
             init_rcp();
             // gGfxPool->mtxPool->m or gGfxPool?
             func_80094A64((Mtx *) gGfxPool->mtxPool->m);
-#if DISPLAY_DEBUG_INFO
-			display_debug_watch_list();	 
+#if DVDL
+			display_dvdl();	 
 #endif
             break;
         case RACING:

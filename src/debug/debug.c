@@ -3,7 +3,7 @@
 #include "debug.inc.c"
 #include <libc/stdio.h>
 
-#if DISPLAY_DEBUG_INFO
+#if DVDL
 
 u8 sDisplayListState = OK;
 
@@ -13,7 +13,7 @@ static void u64_to_string(variableWatchAttributes *, u32, u8);
 static u32 _strlen(const char *);
 static void _memcpy(char *, const char *, u32);
 
-void display_debug_watch_list(void) {
+void display_dvdl(void) {
 	u32 variable;
 	u32 i, vNameLen;
 	u32 arraySize = sizeof(gMainVariableWatchList) / sizeof(variableWatchAttributes);

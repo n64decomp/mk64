@@ -5,8 +5,8 @@
 #include <defines.h>
 
 /**
- * Debug watch list to display variables and address at runtime.
- * to enable it change DISPLAY_DEBUG_INFO to 1 or 0 to disable it
+ * Debug Variable Display List (DVDL), display variables and address at runtime.
+ * to enable it change DVDL to 1 or 0 to disable it
  * and compile with DEBUG=1 "make DEBUG=1".
  * To edit the variables displayed edit the structure array in src/debug/debug.inc.c.
  *
@@ -14,8 +14,8 @@
  * Holding L + R + Z + A will start the creditis sequence.
  * Holding L + R + Z + B will start the ending sequence.
  */
-#define DISPLAY_DEBUG_INFO 0
-#if DISPLAY_DEBUG_INFO
+#define DVDL 0
+#if DVDL
 
 #define CHARACTER_BUFFER_SIZE 200 // size of the string buffer
 
@@ -42,7 +42,7 @@
 #define BINARY 2
 
 /** 
- * This structure is the heart of this debug display list.
+ * This structure is the heart of the DVDL.
  * only the first 4 attributes should be set by the user, the other 2 are used by the program.
  */
 typedef struct
@@ -70,7 +70,7 @@ extern variableWatchAttributes gMainVariableWatchList[];
  * ending sequence and creditis. It does not display during loading time because
  * the RSP is not initialized during that portion of the code.
  */
-void display_debug_watch_list(void);
+void display_dvdl(void);
 
 #endif
 

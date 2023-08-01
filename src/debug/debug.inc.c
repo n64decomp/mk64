@@ -2,12 +2,12 @@
 #include <debug.h>
 #include "all_variables.h"
 
-#if DISPLAY_DEBUG_INFO
+#if DVDL
 
 extern s32 gGlobalTimer;
 
 /** 
- * Edit this to edit what displays on the screen while the debug watch list is active.
+ * Edit this to edit what displays on the screen while the DVDL is active.
  * The Size of the structure array is calculated at compile time.
  */
 variableWatchAttributes gMainVariableWatchList[] = {

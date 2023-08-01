@@ -104,8 +104,8 @@ void credits_loop(void) {
         } else {
             func_80280000();
             func_80280038();
-#if DISPLAY_DEBUG_INFO
-			display_debug_watch_list();
+#if DVDL
+			display_dvdl();
 #endif
             gDPFullSync(gDisplayListHead++);
             gSPEndDisplayList(gDisplayListHead++);

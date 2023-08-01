@@ -485,7 +485,7 @@ void ending_sequence_loop(void) {
     func_80281D00();
     func_80281540();
 #if VARIABLE_WATCH_DEBUG_LIST
-	display_debug_watch_list();	 
+	display_dvdl();	 
 #endif
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
