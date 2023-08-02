@@ -12,6 +12,7 @@
 #include "waypoints.h"
 #include "audio/external.h"
 
+extern s16 D_801633F8;
 extern s32 D_8018D168;
 extern s32 D_800DC510;
 
@@ -380,8 +381,8 @@ void func_80027DA8(Player *arg0, s8 arg1) {
 void func_80027EDC(Player *player, s8 playerId) {
     s32 stackPadding;
     if (((player->unk_000 & 0x4000) == 0x4000) && ((player->unk_000 & 0x100) != 0x100)) {
-        switch (gCurrentCourseId) {           /* switch 1 */
-        case COURSE_MARIO_RACEWAY:                                     /* switch 1 */
+        switch (gCurrentCourseId) {
+        case COURSE_MARIO_RACEWAY:
             if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x19B) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA288(playerId, 0x55);
@@ -394,7 +395,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        case COURSE_CHOCO_MOUNTAIN:                                     /* switch 1 */
+        case COURSE_CHOCO_MOUNTAIN:
             if (((s16)gNearestWaypointByPlayerId[playerId] >= 0xA0) && ((s16)gNearestWaypointByPlayerId[playerId] < 0xB4)) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA288(playerId, 0x55);
@@ -407,7 +408,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        case COURSE_BOWSER_CASTLE:                                     /* switch 1 */
+        case COURSE_BOWSER_CASTLE:
             if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x29) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x1D2)) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA288(playerId, 0x41);
@@ -420,7 +421,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        case COURSE_BANSHEE_BOARDWALK:                                     /* switch 1 */
+        case COURSE_BANSHEE_BOARDWALK:
             if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x180) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA288(playerId, 0x41);
@@ -433,7 +434,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        case COURSE_LUIGI_RACEWAY:                                     /* switch 1 */
+        case COURSE_LUIGI_RACEWAY:
             if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x145) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x18B)) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA288(playerId, 0x55);
@@ -446,7 +447,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        case COURSE_TOADS_TURNPIKE:                                    /* switch 1 */
+        case COURSE_TOADS_TURNPIKE:
             if ((player->unk_000 & 0x800) != 0x800) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA288(playerId, 0x1e);
@@ -459,7 +460,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        case COURSE_SHERBET_LAND:                                    /* switch 1 */
+        case COURSE_SHERBET_LAND:
             if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x11C) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x209)) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA288(playerId, 0x55);
@@ -472,7 +473,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        case COURSE_DK_JUNGLE:                                    /* switch 1 */
+        case COURSE_DK_JUNGLE:
             if ((((s16)gNearestWaypointByPlayerId[playerId] >=     0) && ((s16)gNearestWaypointByPlayerId[playerId] <  0x65)) ||
                 (((s16)gNearestWaypointByPlayerId[playerId] >= 0x14A) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x21F))) {
                 if (D_80165300[playerId] != 2) {
@@ -498,12 +499,12 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        default:                                    /* switch 1 */
+        default:
             break;
         }
     } else {
-        switch (gCurrentCourseId) {           /* switch 2 */
-        case COURSE_MARIO_RACEWAY:                                     /* switch 2 */
+        switch (gCurrentCourseId) {
+        case COURSE_MARIO_RACEWAY:
             if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x19B) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA2E4(playerId, 0x55);
@@ -516,7 +517,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        case COURSE_CHOCO_MOUNTAIN:                                     /* switch 2 */
+        case COURSE_CHOCO_MOUNTAIN:
             if (((s16)gNearestWaypointByPlayerId[playerId] >= 0xA0) && ((s16)gNearestWaypointByPlayerId[playerId] < 0xB4)) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA2E4(playerId, 0x55);
@@ -529,7 +530,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        case COURSE_BOWSER_CASTLE:                                     /* switch 2 */
+        case COURSE_BOWSER_CASTLE:
             if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x29) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x1D2)) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA2E4(playerId, 0x41);
@@ -542,7 +543,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        case COURSE_BANSHEE_BOARDWALK:                                     /* switch 2 */
+        case COURSE_BANSHEE_BOARDWALK:
             if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x180) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA2E4(playerId, 0x41);
@@ -555,7 +556,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        case COURSE_LUIGI_RACEWAY:                                     /* switch 2 */
+        case COURSE_LUIGI_RACEWAY:
             if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x145) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x18B)) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA2E4(playerId, 0x55);
@@ -568,7 +569,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        case COURSE_TOADS_TURNPIKE:                                    /* switch 2 */
+        case COURSE_TOADS_TURNPIKE:
             if ((player->unk_000 & 0x800) != 0x800) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA2E4(playerId, 0x1E);
@@ -581,7 +582,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        case COURSE_SHERBET_LAND:                                    /* switch 2 */
+        case COURSE_SHERBET_LAND:
             if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x11C) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x209)) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA2E4(playerId, 0x55);
@@ -594,7 +595,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        case COURSE_DK_JUNGLE:                                    /* switch 2 */
+        case COURSE_DK_JUNGLE:
             if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x288) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x305)) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA2E4(playerId, 0x55);
@@ -607,99 +608,72 @@ void func_80027EDC(Player *player, s8 playerId) {
                 }
             }
             break;
-        default:                                    /* switch 2 */
+        default:
             break;
         }
     }
 }
-
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-void control_cpu_movement(Player *, Camera *, s8, s8); /* extern */
-void func_8002D028(s8);                                /* extern */
-void func_8002E594(Player *, Camera *, s8, s8);        /* extern */
-void func_8002F730(Player *, Camera *, s8, s8);        /* extern */
-extern s16 D_801633F8;
 
 void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     u16 sp1E;
-    s16 temp_v0_7;
-    s32 temp_t4;
-    s32 temp_v0_2;
-    u16 temp_v0;
-    u16 temp_v0_3;
-    u16 temp_v0_4;
-    u16 temp_v0_5;
-    u16 temp_v0_6;
-
-    temp_v0 = player->unk_000;
-    if (!(temp_v0 & 0x2000)) {
-        switch (gActiveScreenMode) {                        /* irregular */
-        case SCREEN_MODE_1P:
-            sp1E = func_8001FB0C(player, camera1, (f32) D_8016557C, 0.0f);
-            break;
-        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-            temp_v0_3 = func_8001FB0C(player, camera1, (f32) D_8016557C, 0.0f);
-            sp1E = temp_v0_3;
-            if (temp_v0_3 == 1) {
-
-            } else {
+    
+    if (!(player->unk_000 & 0x2000)) {
+        switch (gActiveScreenMode) {
+            case 0:
+                sp1E = func_8001FB0C(player, camera1, (f32) D_8016557C, 0.0f);
+                break;
+            case 1:
+            case 2:
+                sp1E = func_8001FB0C(player, camera1, (f32) D_8016557C, 0.0f);
+                if (sp1E == 1) break;
                 sp1E = func_8001FB0C(player, camera2, (f32) D_8016557C, 0.0f);
-            }
-            break;
-        case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            temp_v0_4 = func_8001FB0C(player, camera1, (f32) D_8016557C, 0.0f);
-            sp1E = temp_v0_4;
-            if (temp_v0_4 == 1) {
-
-            } else {
-                temp_v0_5 = func_8001FB0C(player, camera2, (f32) D_8016557C, 0.0f);
-                sp1E = temp_v0_5;
-                if (temp_v0_5 == 1) {
-
+                break;
+            case 3:
+                sp1E = func_8001FB0C(player, camera1, (f32) D_8016557C, 0.0f); 
+                if (sp1E == 1) break;
+                sp1E = func_8001FB0C(player, camera2, (f32) D_8016557C, 0.0f);    
+                if (sp1E == 1) break; 
+                sp1E = func_8001FB0C(player, camera3, (f32) D_8016557C, 0.0f);        
+                if (sp1E == 1) break; 
+                sp1E = func_8001FB0C(player, camera4, (f32) D_8016557C, 0.0f);
+                break;   
+        }
+        if ((sp1E == 1) || 
+            ((player->unk_000 & 0x100) == 0x100) || 
+            (gModeSelection == 3) || 
+            ((player->unk_0CA & 2) != 0) || 
+            (player->unk_0CA & 8) || 
+            ((*((&D_801633F8) + (arg2))) == ((s16) 1U))) {
+                player->unk_0BC &= ~0x1000;
+                if (((player->unk_0BC & 0x80) == 0x80) || 
+                    ((player->unk_0BC & 0x40) == 0x40) || 
+                    ((player->unk_0BC & 0x400) == 0x400) || 
+                    ((player->unk_0BC & 0x4000) == 0x4000) || 
+                    ((player->unk_0BC & 0x80000) == 0x80000) || 
+                    ((player->unk_0BC & 0x800000) == 0x800000) || 
+                    ((player->unk_0BC & 0x01000000) == 0x01000000) || 
+                    ((player->unk_0BC & 0x02000000) == 0x02000000) || 
+                    ((player->unk_0BC & 0x20000) == 0x20000) || 
+                    (player->unk_044 & 0x800)) {
+                        func_8002E594(player, camera, arg3, arg2);
                 } else {
-                    temp_v0_6 = func_8001FB0C(player, camera3, (f32) D_8016557C, 0.0f);
-                    sp1E = temp_v0_6;
-                    if (temp_v0_6 == 1) {
-
-                    } else {
-                        sp1E = func_8001FB0C(player, camera4, (f32) D_8016557C, 0.0f);
-                    }
+                    func_8002D268(player, camera, arg3, arg2);
                 }
-            }
-            break;
+        } else {
+            control_cpu_movement(player, camera, arg3, arg2);
         }
-        if ((sp1E == 1) || ((player->unk_000 & 0x100) == 0x100) || (gModeSelection == BATTLE) || (temp_v0_7 = player->unk_0CA, ((temp_v0_7 & 2) != 0)) || (temp_v0_7 & 8) || (*(&D_801633F8 + (arg2 * 2)) == (s16) 1U)) {
-            temp_t4 = player->unk_0BC & ~0x1000;
-            player->unk_0BC = temp_t4;
-            if (((temp_t4 & 0x80) == 0x80) || ((temp_t4 & 0x40) == 0x40) || ((temp_t4 & 0x400) == 0x400) || ((temp_t4 & 0x4000) == 0x4000) || ((temp_t4 & 0x80000) == 0x80000) || ((temp_t4 & 0x800000) == 0x800000) || ((temp_t4 & 0x01000000) == 0x01000000) || ((temp_t4 & 0x02000000) == 0x02000000) || ((temp_t4 & 0x20000) == 0x20000) || (player->unk_044 & 0x800)) {
-                func_8002E594(player, camera, arg3, arg2);
-                return;
-            }
-            func_8002D268(player, camera, arg3, arg2);
-            return;
-        }
-        control_cpu_movement(player, camera, arg3, arg2);
-        return;
-    }
-    if ((temp_v0 & 0x200) == 0x200) {
-        func_8002D028(arg2);
+    } else if ((player->unk_000 & 0x200) == 0x200) {
+        func_8002D028(player, arg2);
         func_8002F730(player, camera, arg3, arg2);
-        return;
-    }
-    if (temp_v0 & 0x80) {
+    } else if (player->unk_000 & 0x80) {
         func_8002D268(player, camera, arg3, arg2);
-        return;
+    } else {
+        if ((player->unk_000 & 0x4000) != 0x4000) {
+            player->unk_09C = 50.0f;
+        }
+        player->unk_0BC &= ~8;
     }
-    if ((temp_v0 & 0x4000) != 0x4000) {
-        player->unk_09C = 50.0f;
-    }
-    player->unk_0BC &= ~8;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80028864.s")
-#endif
 
 void func_80028C44(Player *arg0, s32 arg1, s8 arg2, s8 arg3) { 
     if ((arg0->unk_000 & 0x2000) == 0) {
