@@ -73,9 +73,9 @@ exactly what you're doing.
 #define RELEASED_SHELL 1 // This is the short window where single shells aren't being held or launched.
 #define MOVING_SHELL 2 // Moving towards its target after being shot.
 #define RED_SHELL_LOCK_ON 3 // Red shell is targeting.
-#define A_TRIPLE_GREEN_SHELL 4 // Loses triple shell state when shot.
+#define TRIPLE_GREEN_SHELL 4 // Loses triple shell state when shot.
 #define GREEN_SHELL_HIT_A_RACER 5 // A racer has been hit by a green shell.
-#define A_TRIPLE_RED_SHELL 6 // Loses triple shell state when shot.
+#define TRIPLE_RED_SHELL 6 // Loses triple shell state when shot.
 #define DESTROYED_SHELL 7 // Collision with the shell.
 #define BLUE_SHELL_LOCK_ON 8 // A blue shell has found a target and is hastily approaching it.
 #define BLUE_SHELL_TARGET_ELIMINATED 9 // Mission completed, well done boss.
