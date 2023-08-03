@@ -129,7 +129,11 @@ extern struct Actor gActorList[];
 extern Player gPlayers[];
 extern u16 gNumActors;
 extern u16 gNumPermanentActors;
-// A cleaning routine runs once twenty-one shells have spawned.
+
+/**
+ * Incremented by one every time the player spawns a new shell actor.
+ * Decremented onces 21 have been spawned and shell actor is expired
+ */
 extern u16 gNumSpawnedShells; 
 extern u16 D_802BA260; // Box Truck sub-type?
 

@@ -57,7 +57,7 @@ void cleanup_red_and_green_shells(struct ShellActor *shell) {
             switch(compare->state) {
             	case MOVING_SHELL:
             	case RED_SHELL_LOCK_ON:
-            	case A_TRIPLE_GREEN_SHELL:
+            	case TRIPLE_GREEN_SHELL:
             	case GREEN_SHELL_HIT_A_RACER:
             	case BLUE_SHELL_LOCK_ON:
             	case BLUE_SHELL_TARGET_ELIMINATED:
@@ -92,7 +92,7 @@ void cleanup_red_and_green_shells(struct ShellActor *shell) {
             switch(compare->state) {
             	case MOVING_SHELL:
             	case RED_SHELL_LOCK_ON:
-            	case A_TRIPLE_GREEN_SHELL:
+            	case TRIPLE_GREEN_SHELL:
             	case GREEN_SHELL_HIT_A_RACER:
             	case BLUE_SHELL_LOCK_ON:
             	case BLUE_SHELL_TARGET_ELIMINATED:
@@ -2531,7 +2531,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                 	switch(compare->state) {
                 		case MOVING_SHELL:
                 		case RED_SHELL_LOCK_ON:
-                		case A_TRIPLE_GREEN_SHELL:
+                		case TRIPLE_GREEN_SHELL:
                 		case GREEN_SHELL_HIT_A_RACER:
                 		case BLUE_SHELL_LOCK_ON:
                 		case BLUE_SHELL_TARGET_ELIMINATED:
@@ -2586,7 +2586,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
             	switch(compare->state) {
             		case MOVING_SHELL:
             		case RED_SHELL_LOCK_ON:
-            		case A_TRIPLE_GREEN_SHELL:
+            		case TRIPLE_GREEN_SHELL:
             		case GREEN_SHELL_HIT_A_RACER:
             		case BLUE_SHELL_LOCK_ON:
             		case BLUE_SHELL_TARGET_ELIMINATED:
@@ -3071,7 +3071,7 @@ void func_8029FDC8(struct Actor *actor) {
                 		shell->state = GREEN_SHELL_HIT_A_RACER;
                 		shell->velocity[1] = 3.0f;
                 		break;
-            		case A_TRIPLE_GREEN_SHELL:
+            		case TRIPLE_GREEN_SHELL:
                 		func_802B02B4(shell, ACTOR_GREEN_SHELL);
                 		break;
             		default:
@@ -3085,7 +3085,7 @@ void func_8029FDC8(struct Actor *actor) {
             	switch (shell->state) {
             		case MOVING_SHELL:
             		case RED_SHELL_LOCK_ON:
-            		case A_TRIPLE_GREEN_SHELL:
+            		case TRIPLE_GREEN_SHELL:
             		case GREEN_SHELL_HIT_A_RACER:
             		case BLUE_SHELL_LOCK_ON:
             		case BLUE_SHELL_TARGET_ELIMINATED:
@@ -3111,7 +3111,7 @@ void func_8029FDC8(struct Actor *actor) {
             	switch (shell->state) {
             		case MOVING_SHELL:
             		case RED_SHELL_LOCK_ON:
-            		case A_TRIPLE_GREEN_SHELL:
+            		case TRIPLE_GREEN_SHELL:
             		case GREEN_SHELL_HIT_A_RACER:
             		case BLUE_SHELL_LOCK_ON:
             		case BLUE_SHELL_TARGET_ELIMINATED:
@@ -3125,7 +3125,7 @@ void func_8029FDC8(struct Actor *actor) {
                 		shell->state = DESTROYED_SHELL;
                 		shell->velocity[1] = 3.0f;
                 		break;
-            		case A_TRIPLE_RED_SHELL:
+            		case TRIPLE_RED_SHELL:
                			func_802B02B4(shell, ACTOR_RED_SHELL);
                			break;
            			default:
@@ -3149,14 +3149,14 @@ void func_8029FDC8(struct Actor *actor) {
 void func_802A00E8(struct Actor *arg0, struct Actor *arg1) {
     switch(arg0->type) {
         case ACTOR_GREEN_SHELL:
-            if ((arg0->state == HELD_SHELL) || (arg0->state == A_TRIPLE_GREEN_SHELL)) {
+            if ((arg0->state == HELD_SHELL) || (arg0->state == TRIPLE_GREEN_SHELL)) {
                 arg0->flags |= 0x200;
                 func_800C98B8(arg0->pos, arg0->velocity, 0x19019053);
                 return;
             }
             break;
         case ACTOR_RED_SHELL:
-            if ((arg0->state == HELD_SHELL) || (arg0->state == A_TRIPLE_RED_SHELL)) {
+            if ((arg0->state == HELD_SHELL) || (arg0->state == TRIPLE_RED_SHELL)) {
                 arg0->flags |= 0x200;
                 func_800C98B8(arg0->pos, arg0->velocity, 0x19019053);
             	return;
@@ -3180,14 +3180,14 @@ void func_802A00E8(struct Actor *arg0, struct Actor *arg1) {
 
     switch(arg1->type) {
         case ACTOR_GREEN_SHELL:
-            if ((arg1->state == HELD_SHELL) || (arg1->state == A_TRIPLE_GREEN_SHELL)) {
+            if ((arg1->state == HELD_SHELL) || (arg1->state == TRIPLE_GREEN_SHELL)) {
             	arg1->flags |= 0x200;
             	func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
         		return;
             }
             break;
         case ACTOR_RED_SHELL:
-            if ((arg1->state == HELD_SHELL) || (arg1->state == A_TRIPLE_RED_SHELL)) {
+            if ((arg1->state == HELD_SHELL) || (arg1->state == TRIPLE_RED_SHELL)) {
                 arg1->flags |= 0x200;
                 func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
                 return;

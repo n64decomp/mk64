@@ -317,12 +317,12 @@ s32 func_802B0E14(s16 arg0) {
     }
     temp = (struct ShellActor*) &gActorList[arg0];
     if (temp->type == ACTOR_GREEN_SHELL) {
-        if (temp->state == A_TRIPLE_GREEN_SHELL) {
+        if (temp->state == TRIPLE_GREEN_SHELL) {
             return 1;
         }
         return 0;
     }
-    if (temp->state == A_TRIPLE_RED_SHELL) {
+    if (temp->state == TRIPLE_RED_SHELL) {
         return 1;
     }
     return 0;
@@ -576,10 +576,10 @@ s32 func_802B19EC(TripleShellParent *parent, Player *player, s16 shellType, u16 
     shell->flags = 0x9000;
     switch (shellType) {
     case ACTOR_GREEN_SHELL:
-        shell->state = A_TRIPLE_GREEN_SHELL;
+        shell->state = TRIPLE_GREEN_SHELL;
         break;
     case ACTOR_RED_SHELL:
-        shell->state = A_TRIPLE_RED_SHELL;
+        shell->state = TRIPLE_RED_SHELL;
         break;
     }
     shell->rotVelocity = 0;
@@ -1246,7 +1246,7 @@ void update_obj_green_shell(struct ShellActor *shell) {
             shell->flags |= 0x80;
         }
         break;
-    case A_TRIPLE_GREEN_SHELL:
+    case TRIPLE_GREEN_SHELL:
         player = &gPlayers[shell->playerId];
         parent = (TripleShellParent *) &gActorList[shell->parentIndex];
         if (parent->type != ACTOR_TRIPLE_GREEN_SHELL) {
@@ -1627,7 +1627,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
                 }
             } else {
                 if (player->currentRank == 0) {
-                    shell->state = A_TRIPLE_GREEN_SHELL;
+                    shell->state = TRIPLE_GREEN_SHELL;
                     shell->someTimer = 0x0258;
                     temp_v0 = gNearestWaypointByPlayerId[player - gPlayerOne] + 8;
                     if ((s32) D_80164430 < temp_v0) {
@@ -1667,7 +1667,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
     case RED_SHELL_LOCK_ON:
         func_802B3E7C(shell, &gPlayers[shell->targetPlayer]);
         break;
-    case A_TRIPLE_GREEN_SHELL:
+    case TRIPLE_GREEN_SHELL:
         func_802B3B44(shell);
         if (shell->someTimer == 0) {
             if ((shell->flags & 0xF) == 0) {
@@ -1688,7 +1688,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
             shell->state = RED_SHELL_LOCK_ON;
         }
         break;
-    case A_TRIPLE_RED_SHELL:
+    case TRIPLE_RED_SHELL:
         player = &gPlayers[shell->playerId];
         parent = (TripleShellParent *) &gActorList[shell->parentIndex];
         if (parent->type != ACTOR_TRIPLE_RED_SHELL) {

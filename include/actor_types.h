@@ -87,7 +87,7 @@ exactly what you're doing.
 #define BANANA_ON_GROUND 4 // A banana sitting on the ground.
 #define DESTROYED_BANANA 5 // Collision with the banana.
 // Actor fakeItemBox->state
-#define HELD_FAKE_ITEM_BOX 0 // Ttem box is being held be Z.
+#define HELD_FAKE_ITEM_BOX 0 // Item box is being held be Z.
 #define FAKE_ITEM_BOX_ON_GROUND 1 // Item box is on the ground.
 #define DESTROYED_FAKE_ITEM_BOX 2 // Collision with fake item box.
 
