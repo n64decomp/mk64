@@ -216,7 +216,7 @@ extern s8 D_801657E6;
 extern s32 D_8018D2AC;
 extern u16 D_800DC5B8;
 extern s8 D_801657F0;
-extern s8 D_80165800;
+extern s8 D_80165800[2];
 extern s8 D_80165801;
 extern s8 D_801657B0;
 extern u8 gControllerRandom;
