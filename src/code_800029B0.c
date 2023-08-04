@@ -22,7 +22,7 @@
 extern u16 D_800DC5A8;
 
 extern s32 D_800DC510;
-extern u16 D_8015F6FE;
+extern u16 gNumSpawnedShells;
 extern u16 D_80152308;
 extern s32 D_802BA038;
 extern s16 D_802BA048;
@@ -64,7 +64,7 @@ struct UnkStruct_800DC5EC *D_800DC5EC = &D_8015F480[0];
 struct UnkStruct_800DC5EC *D_800DC5F0 = &D_8015F480[1];
 struct UnkStruct_800DC5EC *D_800DC5F4 = &D_8015F480[2];
 struct UnkStruct_800DC5EC *D_800DC5F8 = &D_8015F480[3];
-u16 D_800DC5FC = 0;
+u16 gIsGamePaused = 0;
 u8 *pAppNmiBuffer = (u8 *) &osAppNmiBuffer;
 s32 gIsMirrorMode = 0;
 f32 vtxStretchY =  1.0f;
@@ -122,7 +122,7 @@ void setup_race(void) {
     func_8003D080();
     func_8006E9C0();
     D_800DC510 = 0;
-    D_8015F6FE = 0;
+    gNumSpawnedShells = 0;
     D_800DC5B8 = 0;
     D_80152308 = 0;
     D_802BA038 = -1;

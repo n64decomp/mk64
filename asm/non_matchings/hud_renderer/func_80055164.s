@@ -25,8 +25,8 @@ glabel func_80055164
 /* 055DC0 800551C0 24640004 */  addiu $a0, $v1, 4
 /* 055DC4 800551C4 0C010B80 */  jal   func_80042E00
 /* 055DC8 800551C8 246500BE */   addiu $a1, $v1, 0xbe
-/* 055DCC 800551CC 3C0B800E */  lui   $t3, %hi(D_800DC5FC) # $t3, 0x800e
-/* 055DD0 800551D0 956BC5FC */  lhu   $t3, %lo(D_800DC5FC)($t3)
+/* 055DCC 800551CC 3C0B800E */  lui   $t3, %hi(gIsGamePaused) # $t3, 0x800e
+/* 055DD0 800551D0 956BC5FC */  lhu   $t3, %lo(gIsGamePaused)($t3)
 /* 055DD4 800551D4 8FA30018 */  lw    $v1, 0x18($sp)
 /* 055DD8 800551D8 00003025 */  move  $a2, $zero
 /* 055DDC 800551DC 5560000B */  bnel  $t3, $zero, .L8005520C

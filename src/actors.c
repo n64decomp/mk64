@@ -20,7 +20,6 @@
 #include "audio/external.h"
 #include "common_textures.h"
 
-
 // Appears to be textures
 // or tluts
 u8 *D_802BA050;
@@ -32,17 +31,21 @@ struct Actor *D_802BA05C;
 s8 D_802BA060[512]; // tlut 256
 u16 D_802BA260;
 
-void func_80296A50(struct ShellActor *shell) {
+/**
+ * Once the amount of spawned player red and green shell count has reached 21 or higher
+ * the game will cleanup any dead red or green shells by deleting their actors.
+ */
+void cleanup_red_and_green_shells(struct ShellActor *shell) {
     s32 actorIndex;
     struct ShellActor *compare;
 
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
         compare = (struct ShellActor *)&gActorList[actorIndex];
-        if ((shell != compare) && !(compare->flags & 0xF) && (compare->type == ACTOR_GREEN_SHELL)) {
-            if (compare->state == 2) {
+        if ((shell != compare) && !(compare->flags & ACTOR_IS_NOT_EXPIRED) && (compare->type == ACTOR_GREEN_SHELL)) {
+            if (compare->state == MOVING_SHELL) {
                 func_8000EE58(actorIndex);
             }
-            D_8015F6FE -= 1;
+            gNumSpawnedShells -= 1;
             destroy_actor((struct Actor *)compare);
             return;
         }
@@ -50,21 +53,21 @@ void func_80296A50(struct ShellActor *shell) {
 
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
         compare = (struct ShellActor *) &gActorList[actorIndex];
-        if ((shell != compare) && !(compare->flags & 0xF) && (compare->type == ACTOR_RED_SHELL)) {
+        if ((shell != compare) && !(compare->flags & ACTOR_IS_NOT_EXPIRED) && (compare->type == ACTOR_RED_SHELL)) {
             switch(compare->state) {
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 8:
-            case 9:
-                func_8000EE58(actorIndex);
-            case 7:
-                D_8015F6FE -= 1;
-                destroy_actor((struct Actor *)compare);
-                return;
-            default:
-                break;
+            	case MOVING_SHELL:
+            	case RED_SHELL_LOCK_ON:
+            	case TRIPLE_GREEN_SHELL:
+            	case GREEN_SHELL_HIT_A_RACER:
+            	case BLUE_SHELL_LOCK_ON:
+            	case BLUE_SHELL_TARGET_ELIMINATED:
+                	func_8000EE58(actorIndex);
+            	case DESTROYED_SHELL:
+                	gNumSpawnedShells -= 1;
+                	destroy_actor((struct Actor *)compare);
+                	return;
+            	default:
+                	break;
             }
         }
     }
@@ -73,12 +76,12 @@ void func_80296A50(struct ShellActor *shell) {
         compare = (struct ShellActor *) &gActorList[actorIndex];
         if ((shell != compare) && (compare->type == ACTOR_GREEN_SHELL)) {
             switch(compare->state) {
-            case 2:
-                func_8000EE58(actorIndex);
-            case 7:
-                D_8015F6FE -= 1;
-                destroy_actor((struct Actor *)compare);
-                return;
+            	case MOVING_SHELL:
+                	func_8000EE58(actorIndex);
+            	case DESTROYED_SHELL:
+                	gNumSpawnedShells -= 1;
+                	destroy_actor((struct Actor *)compare);
+                	return;
             }
         }
     }
@@ -87,17 +90,17 @@ void func_80296A50(struct ShellActor *shell) {
         compare = (struct ShellActor *)&gActorList[actorIndex];
         if ((shell != compare) && (compare->type == ACTOR_RED_SHELL)) {
             switch(compare->state) {
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 8:
-            case 9:
-                func_8000EE58(actorIndex);
-            case 7:
-                D_8015F6FE -= 1;
-                destroy_actor((struct Actor *)compare);
-                return;
+            	case MOVING_SHELL:
+            	case RED_SHELL_LOCK_ON:
+            	case TRIPLE_GREEN_SHELL:
+            	case GREEN_SHELL_HIT_A_RACER:
+            	case BLUE_SHELL_LOCK_ON:
+            	case BLUE_SHELL_TARGET_ELIMINATED:
+                	func_8000EE58(actorIndex);
+            	case DESTROYED_SHELL:
+                	gNumSpawnedShells -= 1;
+                	destroy_actor((struct Actor *)compare);
+                	return;
             }
         }
     }
@@ -119,7 +122,7 @@ void actor_init(struct Actor *actor, Vec3f startingPos, Vec3s startingRot, Vec3f
     case ACTOR_BOX_TRUCK:
         if ((s32) D_802BA260 >= 3) {
             D_802BA260 = 0;
-        }
+		}
         actor->state = (s16) D_802BA260;
         D_802BA260 += 1;
         break;
@@ -150,25 +153,25 @@ void actor_init(struct Actor *actor, Vec3f startingPos, Vec3s startingRot, Vec3f
         actor->boundingBoxSize = 2.0f;
         break;
     case ACTOR_GREEN_SHELL:
-        D_8015F6FE += 1;
+        gNumSpawnedShells += 1;
         actor->unk_04 = 0;
         actor->boundingBoxSize = 4.0f;
         actor->flags = actor->flags | 0x4000 | 0x2000 | 0x1000;
-        if ((s32) D_8015F6FE >= 0x15) {
-            func_80296A50((struct ShellActor *) actor);
+        if ((s32) gNumSpawnedShells >= 0x15) {
+            cleanup_red_and_green_shells((struct ShellActor *) actor);
         }
         break;
     case ACTOR_RED_SHELL:
-        D_8015F6FE += 1;
+        gNumSpawnedShells += 1;
         actor->unk_04 = 0;
         actor->boundingBoxSize = 4.0f;
         actor->flags = actor->flags | 0x4000 | 0x2000 | 0x1000;
-        if ((s32) D_8015F6FE >= 0x15) {
-            func_80296A50((struct ShellActor *) actor);
+        if ((s32) gNumSpawnedShells >= 0x15) {
+            cleanup_red_and_green_shells((struct ShellActor *) actor);
         }
         break;
     case 2:
-        D_8015F6FE += 1;
+        gNumSpawnedShells += 1;
         actor->flags |= 0x4000;
         actor->state = 0x0043;
         actor->boundingBoxSize = 3.0f;
@@ -286,7 +289,7 @@ void func_80297230(Camera *arg0, struct Actor *arg1) {
 }
 
 void func_802972B8(Camera *arg0, struct Actor *arg1) {
-        switch(arg0 - camera1) {
+   	switch(arg0 - camera1) {
         case 0:
             arg1->flags |= 1;
             break;
@@ -881,7 +884,7 @@ void func_80298D7C(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
             continue;
         }
 
-        if ((test & 0x0400) && ((D_800DC5FC == 0) || (camera == camera1))) {
+        if ((test & 0x0400) && ((gIsGamePaused == 0) || (camera == camera1))) {
             var_s1->pos[1] += 0xA;
             if (var_s1->pos[1] >= 0x321) {
                 var_s1->someId |= 0x0800;
@@ -1222,6 +1225,7 @@ void func_8029A3AC(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
         func_80297230(camera, (struct Actor *)shell);
         return;
     }
+
     func_802972B8(camera, (struct Actor *) shell);
     if (temp_f0 < 40000.0f) {
         func_802979F8((struct Actor *) shell, 3.4f);
@@ -1297,6 +1301,7 @@ void func_8029A8F4(Camera *camera, UNUSED Mat4 arg1, struct BananaActor *banana)
         func_80297230(camera, (struct Actor *) banana);
         return;
     }
+
     func_802972B8(camera, (struct Actor *) banana);
 
     if (banana->state == 5) {
@@ -2520,56 +2525,56 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
 
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
         compare = (struct ShellActor *) &gActorList[actorIndex];
-        if (!(compare->flags & 0xF)) {
+        if (!(compare->flags & ACTOR_IS_NOT_EXPIRED)) {
             switch(compare->type) {
-            case ACTOR_RED_SHELL:
-                switch(compare->state) {
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 8:
-                case 9:
-                    func_8000EE58(actorIndex);
-                case 7:
-                    func_8029E7DC((struct Actor *) compare);
-                    actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
-                    return actorIndex;
-                default:
-                    break;
-                }
-                break;
-            case ACTOR_GREEN_SHELL:
-                switch(compare->state) {
-                case 2:
-                    func_8000EE58(actorIndex);
-                case 7:
-                    func_8029E7DC((struct Actor *) compare);
-                    actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
-                    return actorIndex;
-                }
-                break;
-            case ACTOR_BANANA:
-                switch(compare->state) {
-                case 1:
-                case 4:
-                case 5:
-                    func_8029E7DC((struct Actor *) compare);
-                    actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
-                    return actorIndex;
-                }
-                break;
-            case ACTOR_FAKE_ITEM_BOX:
-                switch(compare->state) {
-                case 1:
-                case 2:
-                    func_8029E7DC((struct Actor *) compare);
-                    actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
-                    return actorIndex;
-                }
-                break;
-            default:
-                break;
+            	case ACTOR_RED_SHELL:
+                	switch(compare->state) {
+                		case MOVING_SHELL:
+                		case RED_SHELL_LOCK_ON:
+                		case TRIPLE_GREEN_SHELL:
+                		case GREEN_SHELL_HIT_A_RACER:
+                		case BLUE_SHELL_LOCK_ON:
+                		case BLUE_SHELL_TARGET_ELIMINATED:
+                    		func_8000EE58(actorIndex);
+                		case DESTROYED_SHELL:
+                    		func_8029E7DC((struct Actor *) compare);
+                    		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
+                    		return actorIndex;
+                		default:
+                    		break;
+                	}
+                	break;
+            	case ACTOR_GREEN_SHELL:
+                	switch(compare->state) {
+                		case MOVING_SHELL:
+                    		func_8000EE58(actorIndex);
+                		case DESTROYED_SHELL:
+                    		func_8029E7DC((struct Actor *) compare);
+                    		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
+                    		return actorIndex;
+                	}
+                	break;
+            	case ACTOR_BANANA:
+                	switch(compare->state) {
+                		case DROPPED_BANANA:
+                		case BANANA_ON_GROUND:
+                		case DESTROYED_BANANA:
+                    		func_8029E7DC((struct Actor *) compare);
+                    		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
+                    		return actorIndex;
+                	}
+                	break;
+            	case ACTOR_FAKE_ITEM_BOX:
+                	switch(compare->state) {
+                		case FAKE_ITEM_BOX_ON_GROUND:
+                		case DESTROYED_FAKE_ITEM_BOX:
+                    		func_8029E7DC((struct Actor *) compare);
+                    		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
+                    		return actorIndex;
+                	}
+                	break;
+            	default:
+                	break;
             }
         }
     }
@@ -2577,54 +2582,54 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
         compare = (struct ShellActor *) &gActorList[actorIndex];
         switch(compare->type) {
-        case ACTOR_RED_SHELL:
-            switch(compare->state) {
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 8:
-            case 9:
-                func_8000EE58(actorIndex);
-            case 7:
-                func_8029E7DC((struct Actor *) compare);
-                actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
-                return actorIndex;
-            default:
-                break;
-            }
-            break;
-        case ACTOR_GREEN_SHELL:
-            switch(compare->state) {
-            case 2:
-                func_8000EE58(actorIndex);
-            case 7:
-                func_8029E7DC((struct Actor *) compare);
-                actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
-                return actorIndex;
-            }
-            break;
-        case ACTOR_BANANA:
-            switch(compare->state) {
-            case 1:
-            case 4:
-            case 5:
-                func_8029E7DC((struct Actor *) compare);
-                actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
-                return actorIndex;
-            }
-            break;
-        case ACTOR_FAKE_ITEM_BOX:
-            switch(compare->state) {
-            case 1:
-            case 2:
-                func_8029E7DC((struct Actor *) compare);
-                actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
-                return actorIndex;
-            }
-            break;
-        default:
-            break;
+        	case ACTOR_RED_SHELL:
+            	switch(compare->state) {
+            		case MOVING_SHELL:
+            		case RED_SHELL_LOCK_ON:
+            		case TRIPLE_GREEN_SHELL:
+            		case GREEN_SHELL_HIT_A_RACER:
+            		case BLUE_SHELL_LOCK_ON:
+            		case BLUE_SHELL_TARGET_ELIMINATED:
+                		func_8000EE58(actorIndex);
+            		case DESTROYED_SHELL:
+                		func_8029E7DC((struct Actor *) compare);
+                		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
+                		return actorIndex;
+            		default:
+                		break;
+            	}
+            	break;
+        	case ACTOR_GREEN_SHELL:
+            	switch(compare->state) {
+            		case MOVING_SHELL:
+                		func_8000EE58(actorIndex);
+            		case DESTROYED_SHELL:
+                		func_8029E7DC((struct Actor *) compare);
+                		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
+                		return actorIndex;
+            	}
+            	break;
+        	case ACTOR_BANANA:
+            	switch(compare->state) {
+            		case DROPPED_BANANA:
+            		case BANANA_ON_GROUND:
+            		case DESTROYED_BANANA:
+                		func_8029E7DC((struct Actor *) compare);
+                		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
+                		return actorIndex;
+            	}
+            	break;
+        	case ACTOR_FAKE_ITEM_BOX:
+            	switch(compare->state) {
+            		case FAKE_ITEM_BOX_ON_GROUND:
+            		case DESTROYED_FAKE_ITEM_BOX:
+                		func_8029E7DC((struct Actor *) compare);
+                		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
+                		return actorIndex;
+            	}
+            	break;
+        	default:
+            	break;
         }
     }
 
@@ -3028,144 +3033,144 @@ void func_8029FDC8(struct Actor *actor) {
     Player *player;
 
     switch (actor->type) {
-    case ACTOR_BANANA:
-        banana = (struct BananaActor *)actor;
-        switch (banana->state) {
-        case 2:
-        case 3:
-            func_802B0570(banana);
-            break;
-        case 0:
-            player = &gPlayers[banana->playerId];
-            player->statusEffects &= ~0x00040000;
-            /* fallthrough */
-        case 4:
-            banana->flags = -0x8000;
-            banana->unk_04 = 0x003C;
-            banana->state = 5;
-            banana->velocity[1] = 3.0f;
-            break;
-        case 1:
-        case 5:
-        default:
-            break;
-        }
-        break;
-    case ACTOR_GREEN_SHELL:
-        shell = (struct ShellActor *)actor;
-        if (shell->state != 5) {
-            switch (shell->state) {
-            case 2:
-                func_8000EE58(actor - gActorList);
-                /* fallthrough */
-            case 0:
-            case 1:
-                shell->flags = -0x8000;
-                shell->rotAngle = 0;
-                shell->someTimer = 0x003C;
-                shell->state = 5;
-                shell->velocity[1] = 3.0f;
-                break;
-            case 4:
-                func_802B02B4(shell, ACTOR_GREEN_SHELL);
-                break;
-            default:
-                break;
-            }
-        }
-        break;
-    case ACTOR_BLUE_SPINY_SHELL:
-        shell = (struct ShellActor *)actor;
-        if (shell->state != 7) {
-            switch (shell->state) {
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 8:
-            case 9:
-                func_800C9EF4(shell->pos, 0x51018008);
-                func_8000EE58(actor - gActorList);
-                /* fallthrough */
-            case 0:
-            case 1:
-                shell->flags = -0x8000;
-                shell->rotAngle = 0;
-                shell->someTimer = 0x003C;
-                shell->state = 7;
-                shell->velocity[1] = 3.0f;
-                break;
-            default:
-                break;
-            }
-        }
-        break;
-    case ACTOR_RED_SHELL:
-        shell = (struct ShellActor *)actor;
-        if (shell->state != 7) {
-            switch (shell->state) {
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 8:
-            case 9:
-                func_8000EE58(actor - gActorList);
-                /* fallthrough */
-            case 0:
-            case 1:
-                shell->flags = -0x8000;
-                shell->rotAngle = 0;
-                shell->someTimer = 0x003C;
-                shell->state = 7;
-                shell->velocity[1] = 3.0f;
-                break;
-            case 6:
-                func_802B02B4(shell, ACTOR_RED_SHELL);
-                break;
-            default:
-                break;
-            }
-        }
-        break;
-    case ACTOR_FAKE_ITEM_BOX:
-        fakeItemBox = (struct FakeItemBox *)actor;
-        player = &gPlayers[(s16)fakeItemBox->playerId];
-        if (fakeItemBox->state == 0) {
-            player->statusEffects &= ~0x00040000;
-        }
-        fakeItemBox->state = 2;
-        fakeItemBox->flags = -0x8000;
-        fakeItemBox->someTimer = 0;
-        break;
+    	case ACTOR_BANANA:
+        	banana = (struct BananaActor *)actor;
+        	switch (banana->state) {
+        		case FIRST_BANANA_BUNCH_BANANA:
+        		case BANANA_BUNCH_BANANA:
+            		func_802B0570(banana);
+            		break;
+        		case HELD_BANANA:
+            		player = &gPlayers[banana->playerId];
+            		player->statusEffects &= ~0x00040000;
+            		/* fallthrough */
+        		case BANANA_ON_GROUND:
+            		banana->flags = -0x8000;
+            		banana->unk_04 = 0x003C;
+            		banana->state = 5;
+            		banana->velocity[1] = 3.0f;
+            		break;
+        		case DROPPED_BANANA:
+        		case DESTROYED_BANANA:
+        		default:
+            		break;
+        	}
+        	break;
+    	case ACTOR_GREEN_SHELL:
+        	shell = (struct ShellActor *)actor;
+        	if (shell->state != GREEN_SHELL_HIT_A_RACER) {
+            	switch (shell->state) {
+            		case MOVING_SHELL:
+                		func_8000EE58(actor - gActorList);
+                		/* fallthrough */
+            		case HELD_SHELL:
+            		case RELEASED_SHELL:
+                		shell->flags = -0x8000;
+                		shell->rotAngle = 0;
+                		shell->someTimer = 0x003C;
+                		shell->state = GREEN_SHELL_HIT_A_RACER;
+                		shell->velocity[1] = 3.0f;
+                		break;
+            		case TRIPLE_GREEN_SHELL:
+                		func_802B02B4(shell, ACTOR_GREEN_SHELL);
+                		break;
+            		default:
+                		break;
+            	}
+        	}
+        	break;
+    	case ACTOR_BLUE_SPINY_SHELL:
+        	shell = (struct ShellActor *)actor;
+        	if (shell->state != DESTROYED_SHELL) {
+            	switch (shell->state) {
+            		case MOVING_SHELL:
+            		case RED_SHELL_LOCK_ON:
+            		case TRIPLE_GREEN_SHELL:
+            		case GREEN_SHELL_HIT_A_RACER:
+            		case BLUE_SHELL_LOCK_ON:
+            		case BLUE_SHELL_TARGET_ELIMINATED:
+                		func_800C9EF4(shell->pos, 0x51018008);
+                		func_8000EE58(actor - gActorList);
+                		/* fallthrough */
+            		case HELD_SHELL:
+            		case RELEASED_SHELL:
+                		shell->flags = -0x8000;
+                		shell->rotAngle = 0;
+                		shell->someTimer = 0x003C;
+                		shell->state = DESTROYED_SHELL;
+                		shell->velocity[1] = 3.0f;
+                		break;
+            		default:
+                		break;
+            	}
+        	}
+        	break;
+    	case ACTOR_RED_SHELL:
+        	shell = (struct ShellActor *)actor;
+        	if (shell->state != DESTROYED_SHELL) {
+            	switch (shell->state) {
+            		case MOVING_SHELL:
+            		case RED_SHELL_LOCK_ON:
+            		case TRIPLE_GREEN_SHELL:
+            		case GREEN_SHELL_HIT_A_RACER:
+            		case BLUE_SHELL_LOCK_ON:
+            		case BLUE_SHELL_TARGET_ELIMINATED:
+                		func_8000EE58(actor - gActorList);
+                		/* fallthrough */
+            		case HELD_SHELL:
+            		case RELEASED_SHELL:
+                		shell->flags = -0x8000;
+                		shell->rotAngle = 0;
+                		shell->someTimer = 0x003C;
+                		shell->state = DESTROYED_SHELL;
+                		shell->velocity[1] = 3.0f;
+                		break;
+            		case TRIPLE_RED_SHELL:
+               			func_802B02B4(shell, ACTOR_RED_SHELL);
+               			break;
+           			default:
+               			break;
+            	}
+        	}
+        	break;
+    	case ACTOR_FAKE_ITEM_BOX:
+        	fakeItemBox = (struct FakeItemBox *)actor;
+        	player = &gPlayers[(s16)fakeItemBox->playerId];
+        	if (fakeItemBox->state == HELD_FAKE_ITEM_BOX) {
+            	player->statusEffects &= ~0x00040000;
+        	}
+        	fakeItemBox->state = DESTROYED_FAKE_ITEM_BOX;
+        	fakeItemBox->flags = -0x8000;
+        	fakeItemBox->someTimer = 0;
+        	break;
     }
 }
 
 void func_802A00E8(struct Actor *arg0, struct Actor *arg1) {
     switch(arg0->type) {
         case ACTOR_GREEN_SHELL:
-            if ((arg0->state == 0) || (arg0->state == 4)) {
+            if ((arg0->state == HELD_SHELL) || (arg0->state == TRIPLE_GREEN_SHELL)) {
                 arg0->flags |= 0x200;
                 func_800C98B8(arg0->pos, arg0->velocity, 0x19019053);
                 return;
             }
             break;
         case ACTOR_RED_SHELL:
-            if ((arg0->state == 0) || (arg0->state == 6)) {
+            if ((arg0->state == HELD_SHELL) || (arg0->state == TRIPLE_RED_SHELL)) {
                 arg0->flags |= 0x200;
                 func_800C98B8(arg0->pos, arg0->velocity, 0x19019053);
-            return;
+            	return;
             }
             break;
         case ACTOR_BLUE_SPINY_SHELL:
-            if (arg0->state == 0) {
+            if (arg0->state == HELD_SHELL) {
                 arg0->flags |= 0x200;
                 func_800C98B8(arg0->pos, arg0->velocity, 0x19019053);
                 return;
             }
             break;
         case ACTOR_FAKE_ITEM_BOX:
-            if (arg0->state == 0) {
+            if (arg0->state == HELD_FAKE_ITEM_BOX) {
                 arg0->flags |= 0x200;
                 func_800C98B8(arg0->pos, arg0->velocity, 0x19019053);
                 return;
@@ -3175,28 +3180,28 @@ void func_802A00E8(struct Actor *arg0, struct Actor *arg1) {
 
     switch(arg1->type) {
         case ACTOR_GREEN_SHELL:
-            if ((arg1->state == 0) || (arg1->state == 4)) {
-            arg1->flags |= 0x200;
-            func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
-        return;
+            if ((arg1->state == HELD_SHELL) || (arg1->state == TRIPLE_GREEN_SHELL)) {
+            	arg1->flags |= 0x200;
+            	func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
+        		return;
             }
             break;
         case ACTOR_RED_SHELL:
-            if ((arg1->state == 0) || (arg1->state == 6)) {
+            if ((arg1->state == HELD_SHELL) || (arg1->state == TRIPLE_RED_SHELL)) {
                 arg1->flags |= 0x200;
                 func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
                 return;
             }
             break;
         case ACTOR_BLUE_SPINY_SHELL:
-            if (arg1->state == 0) {
+            if (arg1->state == HELD_SHELL) {
                 arg1->flags |= 0x200;
                 func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
                 return;
             }
             break;
         case ACTOR_FAKE_ITEM_BOX:
-            if (arg1->state == 0) {
+            if (arg1->state == HELD_FAKE_ITEM_BOX) {
                 arg1->flags |= 0x200;
                 func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
                 return;
@@ -3218,14 +3223,14 @@ void func_802A0350(struct Actor *arg0, struct Actor *arg1) {
             return;
         }
         if (arg0->type == ACTOR_BLUE_SPINY_SHELL) {
-            if (arg0->state == 0) {
+            if (arg0->state == HELD_SHELL) {
                 func_8029FDC8(arg0);
             }
         } else {
             func_8029FDC8(arg0);
         }
         if (arg1->type == ACTOR_BLUE_SPINY_SHELL) {
-            if (arg1->state == 0) {
+            if (arg1->state == HELD_SHELL) {
                 func_8029FDC8(arg1);
             }
         } else {
@@ -3692,6 +3697,7 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
         func_80297230(camera, (struct Actor *) fakeItemBox);
         return;
     }
+
     func_802972B8(camera, (struct Actor *) fakeItemBox);
     someRot[0] = 0;
     someRot[1] = fakeItemBox->rot[1];

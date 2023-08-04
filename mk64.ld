@@ -115,7 +115,10 @@ SECTIONS
       BUILD_DIR/src/audio/seqplayer.o(.text);
       BUILD_DIR/src/audio/external.o(.text);
       BUILD_DIR/src/audio/port_eu.o(.text);
-
+#if DEBUG
+	  BUILD_DIR/src/debug/debug.o(.text);
+	  BUILD_DIR/src/os/sprintf.o(.text);
+#endif
       BUILD_DIR/src/os/osCreateThread.o(.text);
       BUILD_DIR/src/os/osInitialize.o(.text);
       BUILD_DIR/src/os/osStartThread.o(.text);
@@ -259,7 +262,11 @@ SECTIONS
       BUILD_DIR/src/audio/heap.o(.data);
       BUILD_DIR/src/audio/load.o(.data);
       BUILD_DIR/src/audio/playback.o(.data);
-      BUILD_DIR/src/audio/effects.o(.data);
+      BUILD_DIR/src/audio/effects.o(.data);	
+#if DEBUG
+	  BUILD_DIR/src/debug/debug.o(.data);
+	  BUILD_DIR/src/os/sprintf.o(.data);
+#endif
       BUILD_DIR/data/data_0DD0A0_2_1_1.o(.rodata);
       BUILD_DIR/src/os/osInitialize.o(.data*);
       BUILD_DIR/src/os/osCreateViManager.o(.data);
@@ -301,6 +308,10 @@ SECTIONS
       BUILD_DIR/src/audio/seqplayer.o(.rodata);
       BUILD_DIR/src/audio/external.o(.rodata);
       BUILD_DIR/src/audio/port_eu.o(.rodata);
+#if DEBUG
+	  BUILD_DIR/src/debug/debug.o(.rodata);
+	  BUILD_DIR/src/os/sprintf.o(.rodata);
+#endif
       BUILD_DIR/src/os/guRotateF.o(.rodata);
       BUILD_DIR/src/os/guPerspectiveF.o(.rodata);
       BUILD_DIR/asm/os/__osException.o(.rodata);
@@ -332,6 +343,10 @@ SECTIONS
       BUILD_DIR/asm/bss_8001C4D0_1.o(.bss);
       BUILD_DIR/src/code_800AF9B0.o(.bss);
       BUILD_DIR/src/menus.o(.bss);
+#if DEBUG
+	  BUILD_DIR/src/debug/debug.o(.bss);
+	  BUILD_DIR/src/os/sprintf.o(.bss);
+#endif
       BUILD_DIR/asm/bss_main_audio.o(.bss);
       BUILD_DIR/src/os/osCreateViManager.o(.bss);
       BUILD_DIR/src/os/osCreatePiManager.o(.bss);

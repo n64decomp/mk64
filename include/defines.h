@@ -15,7 +15,7 @@
  * 
  * Toggle resource meters by holding R and tapping B. L must not be held.
  * 
- * Reset to start screen by holding A, B, R, and R.
+ * Reset to start screen by holding A, B, R, and L.
  * 
  * View player direction and currentPathPoint in a single player race during staging tap L while holding A and B.
  * Turn off this UI by tapping R while holding A and B.

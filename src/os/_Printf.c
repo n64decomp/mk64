@@ -3,6 +3,12 @@
 #include <string.h>
 #include "printf.h"
 
+#if DEBUG
+#define STATIC
+#else
+#define STATIC static
+#endif
+
 #define ATOI(i, a)                                                                                     \
     for (i = 0; *a >= '0' && *a <= '9'; a++)                                                           \
         if (i < 999)                                                                                   \
@@ -31,7 +37,7 @@ const u32 flags_arr[] = { FLAGS_SPACE, FLAGS_PLUS, FLAGS_MINUS, FLAGS_HASH, FLAG
 char _spaces[] = "                                ";
 char _zeroes[] = "00000000000000000000000000000000";
 
-static void _Putfld(printf_struct *, va_list *, u8, u8 *);
+STATIC void _Putfld(printf_struct *, va_list *, u8, u8 *);
 
 s32 _Printf(char *(*prout)(char *, const char *, size_t), char *dst, const char *fmt, va_list args) {
     printf_struct sp78;
@@ -111,7 +117,7 @@ s32 _Printf(char *(*prout)(char *, const char *, size_t), char *dst, const char 
     }
 }
 
-static void _Putfld(printf_struct *a0, va_list *args, u8 type, u8 *buff) {
+STATIC void _Putfld(printf_struct *a0, va_list *args, u8 type, u8 *buff) {
     a0->part1_len = a0->num_leading_zeros = a0->part2_len = a0->num_mid_zeros = a0->part3_len =
         a0->num_trailing_zeros = 0;
 

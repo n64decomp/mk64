@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <types.h>
+#include <debug.h>
 #include <common_structs.h>
 #include "main.h"
 #include "memory.h"
@@ -483,6 +484,9 @@ void ending_sequence_loop(void) {
     }
     func_80281D00();
     func_80281540();
+#if VARIABLE_WATCH_DEBUG_LIST
+	display_dvdl();	 
+#endif
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
 }

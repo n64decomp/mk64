@@ -55,7 +55,7 @@ glabel func_8001EE98
 /* 01FB58 8001EF58 24020003 */   li    $v0, 3
 /* 01FB5C 8001EF5C 95EFC51C */  lhu   $t7, %lo(D_800DC51C)($t7)
 /* 01FB60 8001EF60 24030001 */  li    $v1, 1
-/* 01FB64 8001EF64 3C19800E */  lui   $t9, %hi(D_800DC5FC) # $t9, 0x800e
+/* 01FB64 8001EF64 3C19800E */  lui   $t9, %hi(gIsGamePaused) # $t9, 0x800e
 /* 01FB68 8001EF68 146F0006 */  bne   $v1, $t7, .L8001EF84
 .L8001EF6C:
 /* 01FB6C 8001EF6C 0010C040 */   sll   $t8, $s0, 1
@@ -65,7 +65,7 @@ glabel func_8001EE98
 /* 01FB7C 8001EF7C 100000BB */  b     .L8001F26C
 /* 01FB80 8001EF80 24030001 */   li    $v1, 1
 .L8001EF84:
-/* 01FB84 8001EF84 9739C5FC */  lhu   $t9, %lo(D_800DC5FC)($t9)
+/* 01FB84 8001EF84 9739C5FC */  lhu   $t9, %lo(gIsGamePaused)($t9)
 /* 01FB88 8001EF88 3C0B8015 */  lui   $t3, %hi(D_80152300) # $t3, 0x8015
 /* 01FB8C 8001EF8C 256B2300 */  addiu $t3, %lo(D_80152300) # addiu $t3, $t3, 0x2300
 /* 01FB90 8001EF90 1479000C */  bne   $v1, $t9, .L8001EFC4
@@ -124,8 +124,8 @@ glabel func_8001EE98
 /* 01FC54 8001F054 10000085 */  b     .L8001F26C
 /* 01FC58 8001F058 A4820006 */   sh    $v0, 6($a0)
 .L8001F05C:
-/* 01FC5C 8001F05C 3C18800E */  lui   $t8, %hi(D_800DC5FC) # $t8, 0x800e
-/* 01FC60 8001F060 9718C5FC */  lhu   $t8, %lo(D_800DC5FC)($t8)
+/* 01FC5C 8001F05C 3C18800E */  lui   $t8, %hi(gIsGamePaused) # $t8, 0x800e
+/* 01FC60 8001F060 9718C5FC */  lhu   $t8, %lo(gIsGamePaused)($t8)
 /* 01FC64 8001F064 3C018016 */  lui   $at, %hi(D_80164A88) # $at, 0x8016
 /* 01FC68 8001F068 A0204A88 */  sb    $zero, %lo(D_80164A88)($at)
 /* 01FC6C 8001F06C 1478000D */  bne   $v1, $t8, .L8001F0A4
@@ -169,7 +169,7 @@ glabel func_8001EE98
 /* 01FCF8 8001F0F8 11C10004 */  beq   $t6, $at, .L8001F10C
 /* 01FCFC 8001F0FC 00000000 */   nop
 /* 01FD00 8001F100 95EFC51C */  lhu   $t7, %lo(D_800DC51C)($t7)
-/* 01FD04 8001F104 3C18800E */  lui   $t8, %hi(D_800DC5FC) # $t8, 0x800e
+/* 01FD04 8001F104 3C18800E */  lui   $t8, %hi(gIsGamePaused) # $t8, 0x800e
 /* 01FD08 8001F108 146F0009 */  bne   $v1, $t7, .L8001F130
 .L8001F10C:
 /* 01FD0C 8001F10C 3C018015 */   lui   $at, %hi(D_80152300) # $at, 0x8015
@@ -182,7 +182,7 @@ glabel func_8001EE98
 /* 01FD28 8001F128 10000050 */  b     .L8001F26C
 /* 01FD2C 8001F12C A4222306 */   sh    $v0, %lo(D_80152300+0x6)($at)
 .L8001F130:
-/* 01FD30 8001F130 9718C5FC */  lhu   $t8, %lo(D_800DC5FC)($t8)
+/* 01FD30 8001F130 9718C5FC */  lhu   $t8, %lo(gIsGamePaused)($t8)
 /* 01FD34 8001F134 3C0A8015 */  lui   $t2, %hi(D_80152300) # $t2, 0x8015
 /* 01FD38 8001F138 254A2300 */  addiu $t2, %lo(D_80152300) # addiu $t2, $t2, 0x2300
 /* 01FD3C 8001F13C 1478000E */  bne   $v1, $t8, .L8001F178
@@ -228,7 +228,7 @@ glabel func_8001EE98
 /* 01FDD0 8001F1D0 0010C840 */   sll   $t9, $s0, 1
 /* 01FDD4 8001F1D4 9718F894 */  lhu   $t8, %lo(D_8015F894)($t8)
 /* 01FDD8 8001F1D8 24010002 */  li    $at, 2
-/* 01FDDC 8001F1DC 3C08800E */  lui   $t0, %hi(D_800DC5FC) # $t0, 0x800e
+/* 01FDDC 8001F1DC 3C08800E */  lui   $t0, %hi(gIsGamePaused) # $t0, 0x800e
 /* 01FDE0 8001F1E0 17010005 */  bne   $t8, $at, .L8001F1F8
 .L8001F1E4:
 /* 01FDE4 8001F1E4 0010C840 */   sll   $t9, $s0, 1
@@ -238,7 +238,7 @@ glabel func_8001EE98
 /* 01FDF0 8001F1F0 1000001E */  b     .L8001F26C
 /* 01FDF4 8001F1F4 A4222300 */   sh    $v0, %lo(D_80152300)($at) # 0x2300
 .L8001F1F8:
-/* 01FDF8 8001F1F8 9508C5FC */  lhu   $t0, %lo(D_800DC5FC)($t0)
+/* 01FDF8 8001F1F8 9508C5FC */  lhu   $t0, %lo(gIsGamePaused)($t0)
 /* 01FDFC 8001F1FC 3C0C8015 */  lui   $t4, %hi(D_80152300) # $t4, 0x8015
 /* 01FE00 8001F200 258C2300 */  addiu $t4, %lo(D_80152300) # addiu $t4, $t4, 0x2300
 /* 01FE04 8001F204 1468000E */  bne   $v1, $t0, .L8001F240
@@ -270,8 +270,8 @@ glabel func_8001EE98
 /* 01FE64 8001F264 240D0001 */  li    $t5, 1
 /* 01FE68 8001F268 A48D0000 */  sh    $t5, ($a0)
 .L8001F26C:
-/* 01FE6C 8001F26C 3C0E800E */  lui   $t6, %hi(D_800DC5FC) # $t6, 0x800e
-/* 01FE70 8001F270 95CEC5FC */  lhu   $t6, %lo(D_800DC5FC)($t6)
+/* 01FE6C 8001F26C 3C0E800E */  lui   $t6, %hi(gIsGamePaused) # $t6, 0x800e
+/* 01FE70 8001F270 95CEC5FC */  lhu   $t6, %lo(gIsGamePaused)($t6)
 /* 01FE74 8001F274 3C188015 */  lui   $t8, %hi(D_80152300) # $t8, 0x8015
 /* 01FE78 8001F278 27182300 */  addiu $t8, %lo(D_80152300) # addiu $t8, $t8, 0x2300
 /* 01FE7C 8001F27C 15C00040 */  bnez  $t6, .L8001F380

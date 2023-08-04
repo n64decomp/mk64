@@ -886,7 +886,7 @@ loop_2:
             }
             if ((temp_s0->buttonPressed & START_BUTTON) && (temp_v0_3 = temp_s0->button, ((temp_v0_3 & R_TRIG) == 0)) && !(temp_v0_3 & L_TRIG)) {
                 func_8028DF00();
-                D_800DC5FC = ((s32) (temp_s0 - gControllerOne) >> 4) + 1;
+                gIsGamePaused = ((s32) (temp_s0 - gControllerOne) >> 4) + 1;
                 temp_s0->buttonPressed = 0;
                 func_800C9F90(1);
                 D_80162DF0 = 1;

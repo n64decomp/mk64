@@ -14,12 +14,12 @@ struct struct_801642D8 {
     /* 0xC */ s32 unkC;
 };
 
-struct unk_41F8 {
+struct unexpiredActors {
     s32 unk0;
     s32 unk4;
     s32 unk8;
     u16 unkC;
-    u16 unkE;
+    u16 actorIndex;
     s16 unk10;
     // s16 compilerPadding;
     u32 unk14;
@@ -144,7 +144,7 @@ extern s32 D_80163488;
 
 extern s32 D_8016337C;
 extern s32 gModeSelection;
-extern struct unk_41F8 D_801641F8[];
+extern struct unexpiredActors gUnexpiredActorsList[];
 extern s16 D_80164670;
 extern s16 D_80164672;
 extern s16 D_80164674;

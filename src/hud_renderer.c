@@ -5202,7 +5202,7 @@ void func_80055164(s32 objectIndex) {
         temp_a3->words.w1 = (u32) D_0D0077A0;
         sp18 = temp_v1;
         func_80042E00(temp_v1->unk_004, (s16 *) temp_v1->unk_0BE, temp_v1->unk_000);
-        if (D_800DC5FC == 0) {
+        if (gIsGamePaused == 0) {
             sp18 = temp_v1;
             temp_v1->unk_0A2 = func_80004DFC(temp_v1->unk_070, temp_v1->unk_074, 0, temp_v1->unk_0A2);
             return;
@@ -5254,7 +5254,7 @@ void func_800552BC(s32 objectIndex) {
         gDisplayListHead = temp_a0 + 8;
         temp_a0->words.w0 = 0x06000000;
         temp_a0->words.w1 = (u32) D_0D0077D0;
-        if (D_800DC5FC == 0) {
+        if (gIsGamePaused == 0) {
             sp18 = temp_v1;
             temp_v1->unk_0A2 = func_80004DFC(temp_v1->unk_070, temp_v1->unk_074, 0, temp_v1->unk_0A2);
             return;
@@ -6198,8 +6198,8 @@ void func_80057778(void) {
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
-void debug_print_str2(s32 arg0, s32 arg1, char *arg2) {
-    debug_print_string(&arg0, &arg1, arg2);
+void debug_print_str2(s32 xPos, s32 yPos, char *str) {
+    debug_print_string(&xPos, &yPos, str);
 }
 
 void print_str_num(s32 arg0, s32 arg1, char *arg2, u32 arg3) {

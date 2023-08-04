@@ -54,10 +54,10 @@ void func_802B02B4(struct ShellActor *shell, s32 shellType) {
 
     switch(shellType) {
         case ACTOR_GREEN_SHELL:
-            shell->state = 5;
+            shell->state = GREEN_SHELL_HIT_A_RACER;
             break;
         case ACTOR_RED_SHELL:
-            shell->state = 7;
+            shell->state = DESTROYED_SHELL;
             break;
     }
 }
@@ -65,7 +65,7 @@ void func_802B02B4(struct ShellActor *shell, s32 shellType) {
 // Sets velocities for a banana, used when a racer runs into
 // a banana bunch.
 void func_802B039C(struct BananaActor *banana) {
-    banana->state = 1;
+    banana->state = DROPPED_BANANA;
     banana->unk_04 = 0x00B4;
     banana->velocity[0] = ((f32) (random_int(0x00C8) - 0x64) * 0.015);
     banana->velocity[1] = ((f32)  random_int(0x00C8)) * 0.015;
@@ -103,7 +103,7 @@ void func_802B0570(struct BananaActor *banana) {
     }
     banana->flags = -0x8000;
     banana->unk_04 = 0x003C;
-    banana->state = 5;
+    banana->state = DESTROYED_BANANA;
     banana->velocity[1] = 3.0f;
     temp_v0_2 = (struct BananaBunchParent *) &gActorList[banana->parentIndex];
     temp_v0_2->bananaIndices[0] = -1;
@@ -138,7 +138,7 @@ void func_802B0648(struct BananaBunchParent *banana_bunch) {
         return;
     }
 
-    banana->state = 1;
+    banana->state = DROPPED_BANANA;
     banana->unk_04 = 0x00B4;
     banana->velocity[0] = 0.0f;
     banana->velocity[1] = 1.5f;
@@ -177,7 +177,7 @@ void func_802B0788(s16 rawStickY, struct BananaBunchParent *banana_bunch, Player
         return;
     }
 
-    banana->state = 1;
+    banana->state = DROPPED_BANANA;
     banana->unk_04 = 0x001E;
     if (banana->elderIndex != -1) {
         elderBanana = (struct BananaActor*)&gActorList[banana->elderIndex];
@@ -203,10 +203,10 @@ s32 func_802B09C0(s16 bananaId) {
         return 0;
     }
     banana = (struct BananaActor*) &gActorList[bananaId];
-    if (banana->state == 2) {
+    if (banana->state == FIRST_BANANA_BUNCH_BANANA) {
         return 1;
     }
-    if (banana->state == 3) {
+    if (banana->state == BANANA_BUNCH_BANANA) {
         return 1;
     }
     return 0;
@@ -317,12 +317,12 @@ s32 func_802B0E14(s16 arg0) {
     }
     temp = (struct ShellActor*) &gActorList[arg0];
     if (temp->type == ACTOR_GREEN_SHELL) {
-        if (temp->state == 4) {
+        if (temp->state == TRIPLE_GREEN_SHELL) {
             return 1;
         }
         return 0;
     }
-    if (temp->state == 6) {
+    if (temp->state == TRIPLE_RED_SHELL) {
         return 1;
     }
     return 0;
@@ -432,7 +432,7 @@ void update_obj_triple_shell(TripleShellParent *parent, s16 shellType) {
                     shell->velocity[0] = someVelocity[0];
                     shell->velocity[1] = someVelocity[1];
                     shell->velocity[2] = someVelocity[2];
-                    shell->state = 2;
+                    shell->state = MOVING_SHELL;
                     shell->someTimer = 0x001E;
                     func_800C9060(parent->playerId, 0x19008004);
                     func_800C90F4(parent->playerId, (player->characterId * 0x10) + 0x29008000);
@@ -457,7 +457,7 @@ void update_obj_triple_shell(TripleShellParent *parent, s16 shellType) {
                     shell->velocity[0] = someVelocity[0];
                     shell->velocity[1] = someVelocity[1];
                     shell->velocity[2] = someVelocity[2];
-                    shell->state = 2;
+                    shell->state = MOVING_SHELL;
                     shell->someTimer = 0x001E;
                     func_800C90F4(parent->playerId, (player->characterId * 0x10) + 0x29008000);
                     func_800C9060(parent->playerId, 0x19008004);
@@ -482,7 +482,7 @@ void update_obj_triple_shell(TripleShellParent *parent, s16 shellType) {
                     shell->velocity[0] = someVelocity[0];
                     shell->velocity[1] = someVelocity[1];
                     shell->velocity[2] = someVelocity[2];
-                    shell->state = 2;
+                    shell->state = MOVING_SHELL;
                     shell->someTimer = 0x001E;
                     func_800C9060(parent->playerId, 0x19008004);
                     func_800C90F4(parent->playerId, (player->characterId * 0x10) + 0x29008000);
@@ -576,10 +576,10 @@ s32 func_802B19EC(TripleShellParent *parent, Player *player, s16 shellType, u16 
     shell->flags = 0x9000;
     switch (shellType) {
     case ACTOR_GREEN_SHELL:
-        shell->state = 4;
+        shell->state = TRIPLE_GREEN_SHELL;
         break;
     case ACTOR_RED_SHELL:
-        shell->state = 6;
+        shell->state = TRIPLE_RED_SHELL;
         break;
     }
     shell->rotVelocity = 0;
@@ -617,7 +617,7 @@ s32 func_802B1C9C(Player *player) {
     startingPos[2] = player->pos[2];
     func_802AD950(&shell->unk30, shell->boundingBoxSize + 1.0f, shell->pos[0], shell->pos[1], shell->pos[2], startingPos[0], startingPos[1], startingPos[2]);
     func_802B4E30((struct Actor *)shell);
-    shell->state = 0;
+    shell->state = HELD_SHELL;
     shell->rotVelocity = 0;
     shell->rotAngle = -0x8000;
     shell->playerId = player - gPlayerOne;
@@ -650,7 +650,7 @@ s32 func_802B1E48(Player *player) {
     startingPos[2] = player->pos[2];
     func_802AD950(&shell->unk30, shell->boundingBoxSize + 1.0f, shell->pos[0], shell->pos[1], shell->pos[2], startingPos[0], startingPos[1], startingPos[2]);
     func_802B4E30((struct Actor *)shell);
-    shell->state = 0;
+    shell->state = HELD_SHELL;
     shell->rotVelocity = 0;
     shell->rotAngle = player->unk_02C[1] - 0x8000;
     shell->playerId = player - gPlayerOne;
@@ -686,7 +686,7 @@ void update_obj_banana(struct BananaActor *banana) {
 
     player = &gPlayers[banana->rot[0]];
     switch (banana->state) {
-    case 0:
+    case HELD_BANANA:
         temp_f2  = player->pos[0] - banana->pos[0];
         temp_f14 = player->pos[1] - banana->pos[1];
         temp_f16 = player->pos[2] - banana->pos[2];
@@ -739,7 +739,7 @@ void update_obj_banana(struct BananaActor *banana) {
             }
         }
         break;
-    case 1:
+    case DROPPED_BANANA:
         if (banana->unk_04 != 0) {
             banana->unk_04 -= 1;
             if (banana->unk_04 == 0) {
@@ -769,7 +769,7 @@ void update_obj_banana(struct BananaActor *banana) {
             }
         }
         break;
-    case 2:
+    case FIRST_BANANA_BUNCH_BANANA:
         someVelocity[0] = 0.0f;
         someVelocity[1] = 0.0f;
         someVelocity[2] = -5.0f;
@@ -796,7 +796,7 @@ void update_obj_banana(struct BananaActor *banana) {
         func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
         func_802B4E30((struct Actor *) banana);
         break;
-    case 3:
+    case BANANA_BUNCH_BANANA:
         elderBanana = (struct BananaActor*)&gActorList[banana->elderIndex];
         temp_f2  = elderBanana->pos[0] - banana->pos[0];
         temp_f14 = elderBanana->pos[1] - banana->pos[1];
@@ -818,7 +818,7 @@ void update_obj_banana(struct BananaActor *banana) {
         func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
         func_802B4E30((struct Actor *) banana);
         break;
-    case 5:
+    case DESTROYED_BANANA:
         banana->velocity[1] -= 0.3f;
         if (banana->velocity[1] < -5.0f) {
             banana->velocity[1] = -5.0f;
@@ -832,7 +832,7 @@ void update_obj_banana(struct BananaActor *banana) {
             destroy_actor((struct Actor *) banana);
         }
         break;
-    case 4:
+    case BANANA_ON_GROUND:
         banana->flags |= 0xC000;
         banana->flags &= ~0x1000;
         break;
@@ -987,7 +987,7 @@ s32 func_802B2D70(Player *player) {
     }
     banana = (struct BananaActor *) &gActorList[actorIndex];
     banana->playerId = playerId;
-    banana->state = 0;
+    banana->state = HELD_BANANA;
     banana->unk_04 = 0x0014;
     player->statusEffects |= 0x40000;
     return actorIndex;
@@ -1129,7 +1129,7 @@ void update_obj_green_shell(struct ShellActor *shell) {
     }
     shell->rotVelocity += 0x71C;
     switch (shell->state) {
-    case 0:
+    case HELD_SHELL:
         player = &gPlayers[shell->playerId];
         func_802B0210(&player->unk_110, &shell->unk30);
         somePosVel[0] = 0.0f;
@@ -1178,7 +1178,7 @@ void update_obj_green_shell(struct ShellActor *shell) {
             }
         }
         break;
-    case 1:
+    case RELEASED_SHELL:
         player = &gPlayers[shell->playerId];
         if (shell->rotAngle > 0) {
             shell->rotAngle -= 0xE38;
@@ -1221,7 +1221,7 @@ void update_obj_green_shell(struct ShellActor *shell) {
             shell->pos[2] = player->pos[2] + somePosVel[2];
         }
         break;
-    case 2:
+    case MOVING_SHELL:
         if (shell->parentIndex > 0) {
             shell->parentIndex -= 1;
             if (shell->parentIndex == 0) {
@@ -1246,7 +1246,7 @@ void update_obj_green_shell(struct ShellActor *shell) {
             shell->flags |= 0x80;
         }
         break;
-    case 4:
+    case TRIPLE_GREEN_SHELL:
         player = &gPlayers[shell->playerId];
         parent = (TripleShellParent *) &gActorList[shell->parentIndex];
         if (parent->type != ACTOR_TRIPLE_GREEN_SHELL) {
@@ -1267,7 +1267,7 @@ void update_obj_green_shell(struct ShellActor *shell) {
             func_802B4E30((struct Actor *) shell);
         }
         break;
-    case 5:
+    case GREEN_SHELL_HIT_A_RACER:
         // Somehow, this fake match affects stack management up in case 2
         shell->velocity[1] -= (0, 0.3f);
         if (shell->velocity[1] < -5.0f) {
@@ -1508,7 +1508,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
 
     shell->rotVelocity += 0x71C;
     switch (shell->state) {
-    case 0:
+    case HELD_SHELL:
         player = &gPlayers[shell->playerId];
         func_802B0210(&player->unk_110, &shell->unk30);
         somePosVel[0] = 0.0f;
@@ -1539,7 +1539,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
 
         if ((controller->buttonDepressed & 0x2000) != 0) {
             controller->buttonDepressed &= ~0x2000;
-            shell->state = 1;
+            shell->state = RELEASED_SHELL;
             if (player->unk_0C0 > 0) {
                 shell->rotAngle = 0x78E3;
             } else {
@@ -1547,12 +1547,12 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
             }
         }
         break;
-    case 1:
+    case RELEASED_SHELL:
         player = &gPlayers[shell->playerId];
         if (shell->rotAngle > 0) {
             shell->rotAngle -= 0x71C;
             if (shell->rotAngle < 0) {
-                shell->state = 2;
+                shell->state = MOVING_SHELL;
                 func_800C9060(shell->playerId, 0x19008004U);
                 func_800C90F4(shell->playerId, (player->characterId * 0x10) + 0x29008000);
                 if (pad13 == ACTOR_RED_SHELL) {
@@ -1565,7 +1565,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
         } else {
             shell->rotAngle += 0x71C;
             if (shell->rotAngle > 0) {
-                shell->state = 2;
+                shell->state = MOVING_SHELL;
                 func_800C9060(shell->playerId, 0x19008004U);
                 func_800C90F4(shell->playerId, (player->characterId * 0x10) + 0x29008000);
                 if (pad13 == ACTOR_RED_SHELL) {
@@ -1576,7 +1576,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
                 }
             }
         }
-        if (shell->state == 2) {
+        if (shell->state == MOVING_SHELL) {
             shell->someTimer = 0x001E;
             temp_f0 = 8.0f;
             if (player->unk_094 > 8.0f) {
@@ -1599,14 +1599,14 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
             shell->pos[2] = player->pos[2] + somePosVel[2];
         }
         break;
-    case 2:
+    case MOVING_SHELL:
         player = &gPlayers[shell->playerId];
         shell->someTimer -= 1;
         if (shell->someTimer == 0) {
             shell->flags &= 0xEFFF;
             if (shell->type == ACTOR_BLUE_SPINY_SHELL) {
                 shell->targetPlayer = gPlayerPositionLUT[0];
-                shell->state = 8;
+                shell->state = BLUE_SHELL_LOCK_ON;
                 shell->shellId = 1000.0f;
                 temp_v0 = gNearestWaypointByPlayerId[player - gPlayerOne] + 8;
                 if ((s32) D_80164430 < temp_v0) {
@@ -1621,13 +1621,13 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
                     shell->velocity[1] = 3.0f;
                     shell->pathIndex = 0;
                     shell->someTimer = 0x003C;
-                    shell->state = 7;
+                    shell->state = DESTROYED_SHELL;
                 } else {
-                    shell->state = 3;
+                    shell->state = RED_SHELL_LOCK_ON;
                 }
             } else {
                 if (player->currentRank == 0) {
-                    shell->state = 4;
+                    shell->state = TRIPLE_GREEN_SHELL;
                     shell->someTimer = 0x0258;
                     temp_v0 = gNearestWaypointByPlayerId[player - gPlayerOne] + 8;
                     if ((s32) D_80164430 < temp_v0) {
@@ -1635,7 +1635,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
                     }
                     shell->pathIndex = temp_v0;
                 } else if (player->currentRank >= 5) {
-                    shell->state = 5;
+                    shell->state = GREEN_SHELL_HIT_A_RACER;
                     shell->shellId = 1000.0f;
                     temp_v0 = gNearestWaypointByPlayerId[player - gPlayerOne] + 8;
                     if ((s32) D_80164430 < temp_v0) {
@@ -1644,7 +1644,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
                     shell->pathIndex = temp_v0;
                     shell->targetPlayer = gPlayerPositionLUT[player->currentRank - 1];
                 } else {
-                    shell->state = 3;
+                    shell->state = RED_SHELL_LOCK_ON;
                     shell->shellId = 1000.0f;
                     shell->targetPlayer = gPlayerPositionLUT[player->currentRank - 1];
                 }
@@ -1664,10 +1664,10 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
         func_802B4E30((struct Actor *) shell);
         func_802B4104(shell);
         break;
-    case 3:
+    case RED_SHELL_LOCK_ON:
         func_802B3E7C(shell, &gPlayers[shell->targetPlayer]);
         break;
-    case 4:
+    case TRIPLE_GREEN_SHELL:
         func_802B3B44(shell);
         if (shell->someTimer == 0) {
             if ((shell->flags & 0xF) == 0) {
@@ -1677,7 +1677,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
             }
         }
         break;
-    case 5:
+    case GREEN_SHELL_HIT_A_RACER:
         func_802B3B44(shell);
         player = &gPlayers[shell->targetPlayer];
         temp_f0 = player->pos[0];
@@ -1685,10 +1685,10 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
         temp_f2 = player->pos[2];
         temp_f2 -= shell->pos[2];
         if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 40000.0f) {
-            shell->state = 3;
+            shell->state = RED_SHELL_LOCK_ON;
         }
         break;
-    case 6:
+    case TRIPLE_RED_SHELL:
         player = &gPlayers[shell->playerId];
         parent = (TripleShellParent *) &gActorList[shell->parentIndex];
         if (parent->type != ACTOR_TRIPLE_RED_SHELL) {
@@ -1709,7 +1709,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
             func_802B4E30((struct Actor *) shell);
         }
         break;
-    case 7:
+    case DESTROYED_SHELL:
         shell->velocity[1] -= 0.3f;
         if (shell->velocity[1] < -5.0f) {
             shell->velocity[1] = -5.0f;
@@ -1721,7 +1721,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
             destroy_actor((struct Actor *) shell);
         }
         break;
-    case 8:
+    case BLUE_SHELL_LOCK_ON:
         func_802B3B44(shell);
         shell->targetPlayer = gPlayerPositionLUT[0];
         player = &gPlayers[gPlayerPositionLUT[0]];
@@ -1730,7 +1730,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
         temp_f2 = player->pos[2];
         temp_f2 -= shell->pos[2];
         if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 40000.0f) {
-            shell->state = 9;
+            shell->state = BLUE_SHELL_TARGET_ELIMINATED;
         }
         break;
     case 9:
