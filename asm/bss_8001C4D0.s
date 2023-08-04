@@ -589,48 +589,16 @@ glabel D_80165908
 glabel D_80165A90
 .skip 392
 
+# object list begin
+# D_80165C18 should be of size 123,200 (0xE0 * 0x226)
+# D_80165C94 through D_80165CF5 are all fake variables
 glabel D_80165C18
-.skip 8
-
-glabel D_80165C20
-.skip 8
-
-glabel D_80165C28
-.skip 4
-
-glabel D_80165C2C
-.skip 4
-
-glabel D_80165C30
-.skip 16
-
-glabel D_80165C40
-.skip 20
-
-glabel D_80165C54
-.skip 16
-
-glabel D_80165C64
-.skip 8
-
-glabel D_80165C6C
-.skip 4
-
-glabel D_80165C70
-.skip 36
+.skip 124
 
 glabel D_80165C94
-.skip 32
+.skip 40
 
-glabel D_80165CB4
-.skip 4
-
-glabel D_80165CB8
-.skip 2
-
-glabel D_80165CBA
-.skip 2
-
+# Currently referenced in func_800534E8.s, but that function is in NEEDS_RODATA state
 glabel D_80165CBC
 .skip 2
 
@@ -638,58 +606,17 @@ glabel D_80165CBE
 .skip 8
 
 glabel D_80165CC6
-.skip 2
-
-glabel D_80165CC8
-.skip 16
-
-glabel D_80165CD8
-.skip 10
-
-glabel D_80165CE2
-.skip 1
-
-glabel D_80165CE3
-.skip 1
-
-glabel D_80165CE4
-.skip 1
-
-glabel D_80165CE5
-.skip 2
-
-glabel D_80165CE7
-.skip 3
-
-glabel D_80165CEA
-.skip 3
+.skip 39
 
 glabel D_80165CED
-.skip 1
-
-glabel D_80165CEE
-.skip 1
-
-glabel D_80165CEF
-.skip 1
-
-glabel D_80165CF0
 .skip 3
 
-glabel D_80165CF3
-.skip 1
-
-glabel D_80165CF4
-.skip 1
+glabel D_80165CF0
+.skip 5
 
 glabel D_80165CF5
-.skip 205
-
-glabel D_80165DC2
-.skip 22
-
-glabel D_80165DD8
-.skip 122752
+.skip 122979
+# object list end
 
 glabel D_80183D58
 .skip 4
@@ -838,9 +765,12 @@ glabel D_8018C028
 glabel D_8018C030
 .skip 128
 
+# Array of (4) UnkActorInners?
 glabel D_8018C0B0
 .skip 256
 
+# begin D_8018C1B0, should be 512 bytes big
+# D_8018C1D8 through D_8018C278 are fake variables
 glabel D_8018C1B0
 .skip 40
 
@@ -848,23 +778,18 @@ glabel D_8018C1D8
 .skip 80
 
 glabel D_8018C228
-.skip 4
-
-glabel D_8018C22C
-.skip 76
+.skip 80
 
 glabel D_8018C278
 .skip 312
+# end D_8018C1B0
 
+# Some UnkActorInner
 glabel D_8018C3B0
-.skip 4
+.skip 64
 
-glabel D_8018C3B4
-.skip 6
-
-glabel D_8018C3BA
-.skip 54
-
+# begin D_8018C3F0, should be 512 bytes big
+# D_8018C404 and D_8018C490 are fake variables
 glabel D_8018C3F0
 .skip 20
 
@@ -873,10 +798,14 @@ glabel D_8018C404
 
 glabel D_8018C490
 .skip 352
+# end D_8018C3F0
 
+# Maybe some unused UnkActorInner?
 glabel D_8018C5F0
 .skip 64
 
+# begin D_8018C630, should be 512 bytes big
+# D_8018C6A8 and D_8018C6B0 are fake variables
 glabel D_8018C630
 .skip 120
 
@@ -885,7 +814,9 @@ glabel D_8018C6A8
 
 glabel D_8018C6B0
 .skip 384
+# end D_8018C630
 
+# Some UnkActorInner
 glabel D_8018C830
 .skip 64
 
@@ -895,6 +826,9 @@ glabel D_8018C870
 glabel D_8018C970
 .skip 256
 
+# some hud related list begin
+# D_8018CA70 should be of size 528 (0x84 * 0x4)
+# D_8018CA74 through D_8018CC7D are all fake
 glabel D_8018CA70
 .skip 4
 
@@ -990,15 +924,13 @@ glabel D_8018CC6E
 
 glabel D_8018CC7D
 .skip 3
+# some hud related list end
 
 glabel D_8018CC80
 .skip 400
 
 glabel D_8018CE10
-.skip 20
-
-glabel D_8018CE24
-.skip 236
+.skip 256
 
 glabel D_8018CF10
 .skip 4

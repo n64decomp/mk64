@@ -96,7 +96,6 @@ void func_80047EC4(Vec3f, Vec3su, f32, u8*, u8*, Vtx*, s32, s32, s32, s32);
 void func_80047F40(Vec3f, Vec3su, f32, u8*, u8*, Vtx*, s32, s32, s32, s32);
 void func_80047FBC(Vec3f, Vec3su, f32, u8*, u8*, Vtx*, s32, s32, s32, s32);
 
-void func_80052F20(s32);
 void func_80048038(Vec3f, Vec3su, f32, u8*, u8*, Vtx*, s32, s32, s32, s32);
 void func_800480B4(Vec3f, Vec3su, f32, u8*, u8*, Vtx*, s32, s32, s32, s32);
 void func_80048130(Vec3f, Vec3su, f32, u8*, u8*, Vtx*, s32, s32, s32, s32, s32);
@@ -325,6 +324,7 @@ void func_80052590(s32);
 void func_80052C60();
 void func_80052D70(s32);
 void func_80052E30(s32);
+void func_80052F20(s32);
 
 void func_8005309C(s32);
 void func_8005327C(s32);
@@ -351,14 +351,18 @@ void func_80054EB8(s32);
 void func_80054F04(s32);
 
 void func_800550A4(s32);
+void func_80055164(s32);
 void func_80055228(s32);
+void func_800552BC(s32);
 void func_80055380(s32);
 void func_80055458(s32, s32);
 void func_80055528(s32);
 void func_800555BC(s32, s32);
 void func_8005568C(s32);
 void func_800557AC();
+void func_800557B4(s32, u32, u32);
 void func_8005592C(s32);
+void func_80055AB8(s32, s32);
 void func_80055C38(s32);
 void func_80055CCC(s32, s32);
 void func_80055E68(s32);
@@ -404,21 +408,19 @@ extern s32 D_80165860;
 extern s32 D_8016586C;
 extern s32 D_80165878;
 extern s32 D_8016589C;
-extern s16 D_80165CB8[8];
 extern u16 D_801656C0;
 extern u16 D_801656D0;
 extern u16 D_801656E0;
 
+extern Camera *D_8018CF14;
 extern s32 D_80183DD8[];
 extern Vec3f D_80183E40;
 extern Vec3f D_80183E50;
 extern Vec3f D_80183E70;
 extern Vec3su D_80183E80;
 extern Vec3su D_80183E98;
-extern s32 D_80183EAC;
 extern UnkActorInner D_8018C830;
 extern u8 *D_8018D1E0;
-extern s32 D_8018D1F0;
 
 extern s32 D_8018D3E0; // some alpha
 extern s32 D_8018D3E4; // some red

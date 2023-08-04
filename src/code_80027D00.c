@@ -1733,9 +1733,9 @@ void func_8002B9CC(Player *player, s8 arg1, UNUSED s32 arg2) {
     f32 temp_f14;
 
     if ((player->unk_046 & 2) == 2) {
-        temp_f0  = D_8018CE10[arg1].unk_04;
+        temp_f0  = D_8018CE10[arg1].unk_04[0];
         temp_f2  = 0;
-        temp_f14 = D_8018CE10[arg1].unk_0C;
+        temp_f14 = D_8018CE10[arg1].unk_04[2];
         if (sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f14 * temp_f14)) >= 6.5) {
             player->unk_08C /= 4;
             player->unk_09C /= 4;

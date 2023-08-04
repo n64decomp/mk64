@@ -27,7 +27,7 @@ glabel func_8007E00C
 /* 07EC50 8007E050 03000008 */  jr    $t8
 /* 07EC54 8007E054 00000000 */   nop   
 glabel L8007E058
-/* 07EC58 8007E058 0C01F7C8 */  jal   func_8007DF20
+/* 07EC58 8007E058 0C01F7C8 */  jal   init_bb_trash_bin
 /* 07EC5C 8007E05C 00C02025 */   move  $a0, $a2
 /* 07EC60 8007E060 1000004E */  b     .L8007E19C
 /* 07EC64 8007E064 8FBF002C */   lw    $ra, 0x2c($sp)

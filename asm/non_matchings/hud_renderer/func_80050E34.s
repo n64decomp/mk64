@@ -16,7 +16,7 @@ glabel func_80050E34
 /* 051A6C 80050E6C 3C108016 */  lui   $s0, %hi(gLapCountByPlayerId) # 0x8016
 /* 051A70 80050E70 0004C080 */  sll   $t8, $a0, 2
 /* 051A74 80050E74 0004C940 */  sll   $t9, $a0, 5
-/* 051A78 80050E78 3C0D8019 */  lui   $t5, %hi(D_8018CE24) # 0x8019
+/* 051A78 80050E78 3C0D8019 */  lui   $t5, %hi(D_8018CE10) # 0x8019
 /* 051A7C 80050E7C AFBF002C */  sw    $ra, 0x2c($sp)
 /* 051A80 80050E80 AFB10028 */  sw    $s1, 0x28($sp)
 /* 051A84 80050E84 AFA500DC */  sw    $a1, 0xdc($sp)
@@ -28,7 +28,7 @@ glabel func_80050E34
 /* 051A9C 80050E9C 8E104390 */  lw    $s0, %lo(gLapCountByPlayerId)($s0) # 0x4390($s0)
 /* 051AA0 80050EA0 94510254 */  lhu   $s1, 0x254($v0)
 /* 051AA4 80050EA4 15C10004 */  bne   $t6, $at, .L80050EB8
-/* 051AA8 80050EA8 8DADCE24 */   lw    $t5, %lo(D_8018CE24)($t5) # -0x31dc($t5)
+/* 051AA8 80050EA8 8DADCE24 */   lw    $t5, %lo(D_8018CE10 + 0x14)($t5) # -0x31dc($t5)
 /* 051AAC 80050EAC 240F0012 */  li    $t7, 18
 /* 051AB0 80050EB0 10000003 */  b     .L80050EC0
 /* 051AB4 80050EB4 AFAF00C4 */   sw    $t7, 0xc4($sp)
