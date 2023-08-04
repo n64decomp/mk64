@@ -132,7 +132,7 @@ extern u16 gNumPermanentActors;
 
 /**
  * Incremented by one every time the player spawns a new shell actor.
- * Decremented onces 21 have been spawned and shell actor is expired
+ * A cleaning routine runs once twenty-one shells have spawned.
  */
 extern u16 gNumSpawnedShells; 
 extern u16 D_802BA260; // Box Truck sub-type?
