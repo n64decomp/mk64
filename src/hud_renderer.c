@@ -5111,7 +5111,7 @@ void func_80055164(s32 objectIndex) {
     if (D_80165C18[objectIndex].unk_0A6 >= 2) {
         gSPDisplayList(gDisplayListHead++, D_0D0077A0);
         func_80042E00(D_80165C18[objectIndex].pos, D_80165C18[objectIndex].unk_0BE, D_80165C18[objectIndex].sizeScaling);
-        if (D_800DC5FC == 0) {
+        if (gIsGamePaused == 0) {
             D_80165C18[objectIndex].unk_0A2 = func_80004DFC((animation_type_1 *) D_80165C18[objectIndex].unk_070, (animation_type_2 **) D_80165C18[objectIndex].unk_074, 0, D_80165C18[objectIndex].unk_0A2);
         } else {
             func_80004DFC((animation_type_1 *) D_80165C18[objectIndex].unk_070, (animation_type_2 **) D_80165C18[objectIndex].unk_074, 0, D_80165C18[objectIndex].unk_0A2);
@@ -5136,7 +5136,7 @@ void func_800552BC(s32 objectIndex) {
     if (D_80165C18[objectIndex].unk_0A6 >= 2) {
         func_80042E00(D_80165C18[objectIndex].pos, D_80165C18[objectIndex].unk_0BE, D_80165C18[objectIndex].sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0077D0);
-        if (D_800DC5FC == 0) {
+        if (gIsGamePaused == 0) {
             D_80165C18[objectIndex].unk_0A2 = func_80004DFC((animation_type_1 *) D_80165C18[objectIndex].unk_070, (animation_type_2 **) D_80165C18[objectIndex].unk_074, 0, D_80165C18[objectIndex].unk_0A2);
         } else {
             func_80004DFC((animation_type_1 *) D_80165C18[objectIndex].unk_070, (animation_type_2 **) D_80165C18[objectIndex].unk_074, 0, D_80165C18[objectIndex].unk_0A2);
