@@ -102,9 +102,9 @@ void func_8005DAD8(UnkPlayerStruct258*, s16, s16, s16);
 void func_800608E0(Player*, s16, s32, s8, s8);
 void func_80060B14(Player*, s16, s32, s8, s8);
 void func_80060BCC(Player*, s16, s32, s32);
-void func_80060F50(Player*, s16, s8, s8);
+void func_80060F50(Player*, s16, s8, s8, s8);
 
-void func_80061094(Player*, s16, s8, s8);
+void func_80061094(Player*, s16, s8, s8, s8);
 void func_80061130(Player*, s16, s32, s8, s8);
 void func_80061224(Player*, s16, s32, s8, s8);
 void func_800612F8(Player*, s32, s32, s32);

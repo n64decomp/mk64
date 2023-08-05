@@ -522,15 +522,15 @@ typedef struct {
     /* 0x77 */ s8 unk_77;
     // 0x78 to 0x7F appear to be some type of "state" trackers for the lap and timer text during a race start
     // When a race starts those texts (and their afterimages) slide in and "bounce" a bit. These states control the bouncing (somehow)
-    /* 0x78 */ s8 unk_78;
-    /* 0x79 */ s8 unk_79;
-    /* 0x7A */ s8 unk_7A;
-    /* 0x7B */ s8 unk_7B;
-    /* 0x7C */ s8 unk_7C;
-    /* 0x7D */ s8 unk_7D;
-    /* 0x7E */ s8 unk_7E;
-    /* 0x7F */ s8 unk_7F;
-    /* 0x80 */ s8 unk_80;
+    /* 0x78 */ u8 unk_78;
+    /* 0x79 */ u8 unk_79;
+    /* 0x7A */ u8 unk_7A;
+    /* 0x7B */ u8 unk_7B;
+    /* 0x7C */ u8 unk_7C;
+    /* 0x7D */ u8 unk_7D;
+    /* 0x7E */ u8 unk_7E;
+    /* 0x7F */ u8 unk_7F;
+    /* 0x80 */ u8 unk_80;
     /* 0x81 */ s8 unk_81;
     /* 0x82 */ s8 unk_82;
     /* 0x83 */ s8 unk_83;
