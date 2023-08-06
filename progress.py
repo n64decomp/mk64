@@ -33,6 +33,7 @@ def GetNonMatchingFunctions(files):
 def CountMipsToCFunctions(files):
     functions = []
     for file in files:
+        # Disclude euc-jp generated files
         if (file == "src/credits.jp.c"):
             continue
         if (file == "src/code_80005FD0.jp.c"):
@@ -45,6 +46,7 @@ def CountNonMatchingFunctions(files):
     functions = []
 
     for file in files:
+        # Disclude euc-jp generated files
         if (file == "src/credits.jp.c"):
             continue
         if (file == "src/code_80005FD0.jp.c"):

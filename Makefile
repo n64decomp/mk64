@@ -546,7 +546,7 @@ $(COURSE_DATA_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o: $(BUILD_DIR)/%/co
 
 
 #==============================================================================#
-# Converted US to EUC-JP Encoding                                              #
+# Convert utf8 to euc-jp Encoding                                              #
 #==============================================================================#
 
 src/credits.jp.c: src/credits.c
