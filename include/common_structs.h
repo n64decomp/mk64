@@ -461,13 +461,23 @@ typedef struct {
     /* 0x0C */ u32 someTimer1;
     /* 0x10 */ u32 timeLastTouchedFinishLine; // Sum of time of all completed laps
     // Times at which each lap was completed
-    /* 0x14 */ u32 lap1CompletionTime;
-    /* 0x18 */ u32 lap2CompletionTime;
-    /* 0x1C */ u32 lap3CompletionTime;
+    union {
+        struct {
+            /* 0x14 */ u32 lap1CompletionTime;
+            /* 0x18 */ u32 lap2CompletionTime;
+            /* 0x1C */ u32 lap3CompletionTime;
+        };
+        u32 lapCompletionTimes[3];
+    };
     // Time each lap took to complete
-    /* 0x20 */ u32 lap1Duration;
-    /* 0x24 */ u32 lap2Duration;
-    /* 0x28 */ u32 lap3Duration;
+    union {
+        struct {
+            /* 0x20 */ u32 lap1Duration;
+            /* 0x24 */ u32 lap2Duration;
+            /* 0x28 */ u32 lap3Duration;
+        };
+        u32 lapDurations[3];
+    };
     // Integer parts of the player's X/Y/X coordinates
     /* 0x2C */ s32 posXInt;
     /* 0x30 */ s32 posYInt;
@@ -531,7 +541,7 @@ typedef struct {
     /* 0x7E */ u8 unk_7E;
     /* 0x7F */ u8 unk_7F;
     /* 0x80 */ u8 unk_80;
-    /* 0x81 */ s8 unk_81;
+    /* 0x81 */ u8 unk_81;
     /* 0x82 */ s8 unk_82;
     /* 0x83 */ s8 unk_83;
 } struct_8018CA70_entry; // size = 0x84
