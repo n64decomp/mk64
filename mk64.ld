@@ -287,7 +287,7 @@ SECTIONS
       BUILD_DIR/src/os/_Litob.o(.data);
       BUILD_DIR/src/main.o(.rodata);
       BUILD_DIR/src/code_800029B0.o(.rodata);
-      BUILD_DIR/src/code_80005FD0.o(.rodata);
+      BUILD_DIR/src/code_80005FD0.jp.o(.rodata);
       BUILD_DIR/src/camera.o(.rodata);
       BUILD_DIR/src/code_8001F980.o(.rodata);
       BUILD_DIR/src/code_80027D00.o(.rodata);
@@ -428,11 +428,11 @@ SECTIONS
       BUILD_DIR/src/code_80280650.o(.data);
       BUILD_DIR/data/data_credits_128480.o(.data);
       BUILD_DIR/src/dl_unk_80284EE0.inc.o(.data);
-      BUILD_DIR/src/credits.o(.data);
+      BUILD_DIR/src/credits.jp.o(.data);
       BUILD_DIR/src/ceremony_and_credits.o(.data);
       BUILD_DIR/src/code_80280650.o(.rodata);
       BUILD_DIR/src/camera_junk.o(.rodata);
-      BUILD_DIR/src/credits.o(.rodata);
+      BUILD_DIR/src/credits.jp.o(.rodata);
       BUILD_DIR/src/ceremony_and_credits.o(.rodata);
    }
    END_SEG(code_80280000)

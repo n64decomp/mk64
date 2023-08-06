@@ -549,6 +549,20 @@ $(COURSE_DATA_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o: $(BUILD_DIR)/%/co
 # Source Code Generation                                                       #
 #==============================================================================#
 
+EUC_JP_FILES = src/credits.c src/code_80005FD0.c
+
+O_FILES += $(foreach file,$(EUC_JP_FILES),$(file:%.c=$(BUILD_DIR)/%.jp.o))
+
+%.jp.o: %.jp.c
+	$(call print,Compiling:,$<,$@)
+	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+	$(V)$(CC) -c $(CFLAGS) -o $@ $<
+	$(PYTHON) tools/set_o32abi_bit.py $@
+
+$(BUILD_DIR)/%.jp.c: %.c
+	$(call print,Encoding:,$<,$@)
+	iconv -t EUC-JP -f UTF-8 $< -o $@
+
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
