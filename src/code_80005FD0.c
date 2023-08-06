@@ -22,71 +22,71 @@
 // https://en.wikipedia.org/wiki/Extended_Unix_Code#EUC-JP
 
 // Force sort immediately after goal
-char *D_800EB710 = "¥´¡¼¥ëÄ¾¸å¤Î¶¯À©¥½¡¼¥È\n";
+char *D_800EB710 = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½Î¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n";
 // Forced sort immediately after one goal in 2PGP
-char *D_800EB728 = "2PGP¤ÇÊÒÊý¤¬¥´¡¼¥ëÄ¾¸å¤Î¶¯À©¥½¡¼¥È\n";
+char *D_800EB728 = "2PGPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½Î¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n";
 // rank calculation error
-char *D_800EB74C = "½ç°Ì·×»»¥¨¥é¡¼¡ª¡ª (num %d) (rank %d) (e_rank %d)\n";
+char *D_800EB74C = "ï¿½ï¿½Ì·×»ï¿½ï¿½ï¿½ï¿½é¡¼ï¿½ï¿½ï¿½ï¿½ (num %d) (rank %d) (e_rank %d)\n";
 // Bypass switching error!!!(num %d org_bipas %d bipas %d)
-char *D_800EB780 = "¥Ð¥¤¥Ñ¥¹ÀÚ¤êÂØ¤¨ ¥¨¥é¡¼!!!(num %d  org_bipas %d  bipas %d)\n";
+char *D_800EB780 = "ï¿½Ð¥ï¿½ï¿½Ñ¥ï¿½ï¿½Ú¤ï¿½ï¿½Ø¤ï¿½ ï¿½ï¿½ï¿½é¡¼!!!(num %d  org_bipas %d  bipas %d)\n";
 char *D_800EB7BC = "(%d) rap %3d  rate_count_F %10.2f  rap_count_F %10.2f  area %5d \n";
 // Enter the maze! enemy %d (%d --> %d)
-char *D_800EB800 = "ÌÂÏ©¤ËÆÍÆþ¡ª enemy %d (%d --> %d)\n";
+char *D_800EB800 = "ï¿½ï¿½Ï©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ enemy %d (%d --> %d)\n";
 // Out of the maze! enemy %d (%d --> %d)
-char *D_800EB824 = "ÌÂÏ©¤«¤é½Ð¤¿¡ª enemy %d (%d --> %d)\n";
+char *D_800EB824 = "ï¿½ï¿½Ï©ï¿½ï¿½ï¿½ï¿½Ð¤ï¿½ï¿½ï¿½ enemy %d (%d --> %d)\n";
 char *D_800EB84C = "enemy voice set (%d  slip_flag %x  weapon %x)\n";
 // Spin Voice! ! (%d , name %d)
-char *D_800EB87C = "¥¹¥Ô¥ó¥ô¥©¥¤¥¹¡ª¡ª(%d , name %d)\n";
+char *D_800EB87C = "ï¿½ï¿½ï¿½Ô¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(%d , name %d)\n";
 // Damage voice! ! (%d, name %d)
-char *D_800EB8A0 = "¥À¥á¡¼¥¸¥ô¥©¥¤¥¹¡ª¡ª(%d, name %d)\n";
+char *D_800EB8A0 = "ï¿½ï¿½ï¿½á¡¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(%d, name %d)\n";
 char *D_800EB8C4 = "===== ENEMY DRIVE SUB (%d) =====\n";
 // omission
-char *D_800EB8E8 = "ENEMY END(¼êÈ´¤­)\n\n";
-char *D_800EB8FC = "ENEMY END(¼êÈ´¤­)\n\n";
+char *D_800EB8E8 = "ENEMY END(ï¿½ï¿½È´ï¿½ï¿½)\n\n";
+char *D_800EB8FC = "ENEMY END(ï¿½ï¿½È´ï¿½ï¿½)\n\n";
 char *D_800EB910 = "(1)enemy stick angle over!! (%d)\n";
 char *D_800EB934 = "ENEMY END\n\n";
 char *D_800EB940 = "(2)enemy stick angle over!! (%d)\n";
 char *D_800EB964 = "ENEMY END\n\n";
 // AREA ERR!!! (group not registered at current centerline %d) %d
-char *D_800EB970 = "AREA ERR!!! (¸½ºß¤Î¥»¥ó¥¿¡¼¥é¥¤¥ó %d ¤ËÌ¤ÅÐÏ¿¤Î¥°¥ë¡¼¥×¤Ç¤¹) %d\n";
+char *D_800EB970 = "AREA ERR!!! (ï¿½ï¿½ï¿½ß¤Î¥ï¿½ï¿½ó¥¿¡ï¿½ï¿½é¥¤ï¿½ï¿½ %d ï¿½ï¿½Ì¤ï¿½ï¿½Ï¿ï¿½Î¥ï¿½ï¿½ë¡¼ï¿½×¤Ç¤ï¿½) %d\n";
 // AREA ERR!!! (Unregistered group) %d
-char *D_800EB9B4 = "AREA ERR!!! (Ì¤ÅÐÏ¿¤Î¥°¥ë¡¼¥×¤Ç¤¹) %d\n";
+char *D_800EB9B4 = "AREA ERR!!! (Ì¤ï¿½ï¿½Ï¿ï¿½Î¥ï¿½ï¿½ë¡¼ï¿½×¤Ç¤ï¿½) %d\n";
 // get_oga_area_sub_BP() ... Area not found! (b_num = %d)
-char *D_800EB9DC = "get_oga_area_sub_BP() ... ¥¨¥ê¥¢¤¬¸«¤Ä¤«¤é¤Ê¤¤¥Ã¥¹¡ª (b_num = %d)\n";
+char *D_800EB9DC = "get_oga_area_sub_BP() ... ï¿½ï¿½ï¿½ê¥¢ï¿½ï¿½ï¿½ï¿½ï¿½Ä¤ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½Ã¥ï¿½ï¿½ï¿½ (b_num = %d)\n";
 // Status: (%d, %d, %d)
-char *D_800EBA20 = "  ¾õ¶·: (%d, %d, %d) \n";
+char *D_800EBA20 = "  ï¿½ï¿½ï¿½ï¿½: (%d, %d, %d) \n";
 char *D_800EBA38 = "<%d> (%d, %d, %d) [%d] lng %f\n";
 // Wario Stadium Jump failed! ! ! (area %d, y %7.2f)
-char *D_800EBA58 = "¥ï¥ê¥ª¥¹¥¿¥¸¥¢¥à  ¥¸¥ã¥ó¥×¼ºÇÔ¡ª¡ª¡ª (area %d, y %7.2f)\n";
+char *D_800EBA58 = "ï¿½ï¿½ê¥ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½×¼ï¿½ï¿½Ô¡ï¿½ï¿½ï¿½ï¿½ï¿½ (area %d, y %7.2f)\n";
 // I fell in the water! ! Forced to centerline (num %d: area %d ) (%d,%d,%d)
-char *D_800EBA94 = "¿å¤ËÍî¤Á¤¿¡ª¡ª  ¥»¥ó¥¿¡¼¥é¥¤¥ó¤Ë¶¯À©°ÜÆ°¤·¤Þ¤·¤¿ (num %d: area %d ) (%d,%d,%d)\n";
+char *D_800EBA94 = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½é¥¤ï¿½ï¿½Ë¶ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ (num %d: area %d ) (%d,%d,%d)\n";
 // Course match! ! (Slacking: with bump) Forced move to center line (num %d: area %d ==>%d) (group %d) (%d,%d,%d)
-char *D_800EBAE4 = "¤³¡¼¤¹¤¢¤¦¤È¡ª¡ª¡Ê¼êÈ´¤­Ãæ:¥Ð¥ó¥×Í­¤ê¡Ë  ¥»¥ó¥¿¡¼¥é¥¤¥ó¤Ë¶¯À©°ÜÆ°¤·¤Þ¤·¤¿ (num %d: area %d ==>%d) (group %d) (%d,%d,%d)\n";
+char *D_800EBAE4 = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½È´ï¿½ï¿½ï¿½ï¿½:ï¿½Ð¥ï¿½ï¿½Í­ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½é¥¤ï¿½ï¿½Ë¶ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ (num %d: area %d ==>%d) (group %d) (%d,%d,%d)\n";
 // Course match! ! (Sitting corners: no bump) Forced move to center line (num %d: area %d ==>%d) (group %d) (%d,%d,%d)
-char *D_800EBB60 = "¤³¡¼¤¹¤¢¤¦¤È¡ª¡ª¡Ê¼êÈ´¤­Ãæ:¥Ð¥ó¥×Ìµ¤·¡Ë  ¥»¥ó¥¿¡¼¥é¥¤¥ó¤Ë¶¯À©°ÜÆ°¤·¤Þ¤·¤¿ (num %d: area %d ==>%d) (group %d) (%d,%d,%d)\n";
+char *D_800EBB60 = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½È´ï¿½ï¿½ï¿½ï¿½:ï¿½Ð¥ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½é¥¤ï¿½ï¿½Ë¶ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ (num %d: area %d ==>%d) (group %d) (%d,%d,%d)\n";
 // Course match! ! ! Recalculated area (num %d: area %d ==>%d)
-char *D_800EBBDC = "¤³¡¼¤¹¤¢¤¦¤È¡ª¡ª¡ª    ¥¨¥ê¥¢¤òºÆ·×»»¤·¤Þ¤·¤¿ (num %d: area %d ==>%d)\n";
+char *D_800EBBDC = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½    ï¿½ï¿½ï¿½ê¥¢ï¿½ï¿½Æ·×»ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ (num %d: area %d ==>%d)\n";
 // Direct BOM(%d) (%7.2f, %7.2f, %7.2f)
-char *D_800EBC24 = "Ä¾ÀÜ»ØÄê¤ÎBOM(%d) (%7.2f, %7.2f, %7.2f) \n";
+char *D_800EBC24 = "Ä¾ï¿½Ü»ï¿½ï¿½ï¿½ï¿½BOM(%d) (%7.2f, %7.2f, %7.2f) \n";
 char *D_800EBC50 = "BOM HIT CHECK\n";
 char *D_800EBC60 = "BOM HIT !!!!! (%d)\n";
 // BOM standby
-char *D_800EBC74 = "BOMÂÔµ¡\n";
+char *D_800EBC74 = "BOMï¿½Ôµï¿½\n";
 char *D_800EBC80 = "RESULT BOM area(%d)\n";
 // BOM dropped.
-char *D_800EBC98 = "BOM ¤¬ Íî¤Á¤Þ¤·¤¿¡£\n";
+char *D_800EBC98 = "BOM ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½\n";
 // Tortoise fire pillar SET failed (TABLE IS FULL)
-char *D_800EBCB0 = "¥«¥áÍÑ²ÐÃì SET ¼ºÇÔ (TABLE IS FULL)\n";
+char *D_800EBCB0 = "ï¿½ï¿½ï¿½ï¿½ï¿½Ñ²ï¿½ï¿½ï¿½ SET ï¿½ï¿½ï¿½ï¿½ (TABLE IS FULL)\n";
 // Red turtle fire pillar set error! (category %d)
-char *D_800EBCD8 = "ÀÖ¥¬¥á²ÐÃì¥»¥Ã¥È¥¨¥é¡¼¡ª (category %d)\n";
+char *D_800EBCD8 = "ï¿½Ö¥ï¿½ï¿½ï¿½ï¿½ï¿½ì¥»ï¿½Ã¥È¥ï¿½ï¿½é¡¼ï¿½ï¿½ (category %d)\n";
 // Blue turtle fire pillar set error! (category %d)
-char *D_800EBD00 = "ÀÄ¥¬¥á²ÐÃì¥»¥Ã¥È¥¨¥é¡¼¡ª (category %d)\n";
+char *D_800EBD00 = "ï¿½Ä¥ï¿½ï¿½ï¿½ï¿½ï¿½ì¥»ï¿½Ã¥È¥ï¿½ï¿½é¡¼ï¿½ï¿½ (category %d)\n";
 // Thorn Turtle Fire Pillar Set Error! (category %d)
-char *D_800EBD28 = "¥È¥²¥¬¥á²ÐÃì¥»¥Ã¥È¥¨¥é¡¼¡ª (category %d)\n";
+char *D_800EBD28 = "ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì¥»ï¿½Ã¥È¥ï¿½ï¿½é¡¼ï¿½ï¿½ (category %d)\n";
 // Turtle Fire Pillar Initialization! !
-char *D_800EBD54 = "¥«¥á²ÐÃì½é´ü²½¡ª¡ª\n";
+char *D_800EBD54 = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n";
 // Center line initialization
-char *D_800EBD68 = "¥»¥ó¥¿¡¼¥é¥¤¥ó½é´ü²½\n";
+char *D_800EBD68 = "ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½é¥¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n";
 char *D_800EBD80 = "MAP NUMBER %d\n";
 char *D_800EBD90 = "center_EX ptr      = %x %x (%x)\n";
 char *D_800EBDB4 = "\n";
@@ -98,90 +98,90 @@ char *D_800EBE58 = "angle_BP[%d] ptr          = %x %x (%x)\n";
 char *D_800EBE80 = "short_cut_data_BP[%d] ptr = %x %x (%x)\n";
 char *D_800EBEA8 = "\n";
 // Ogawa total memory used = %d
-char *D_800EBEAC = "¾®Àî¤Î»ÈÍÑ¥á¥â¥ê¡¼¹ç·× = %d\n";
+char *D_800EBEAC = "ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Ñ¥ï¿½ï¿½ê¡¼ï¿½ï¿½ï¿½ = %d\n";
 // Enemy initialization
-char *D_800EBECC = "Å¨½é´ü²½\n";
+char *D_800EBECC = "Å¨ï¿½ï¿½ï¿½ï¿½ï¿½\n";
 // End of enemy initialization
-char *D_800EBED8 = "Å¨½é´ü²½½ªÎ»\n";
+char *D_800EBED8 = "Å¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»\n";
 // Bypass CENTER LINE Split start
-char *D_800EBEE8 = "¥Ð¥¤¥Ñ¥¹ CENTER LINE Ê¬³ä³«»Ï\n";
+char *D_800EBEE8 = "ï¿½Ð¥ï¿½ï¿½Ñ¥ï¿½ CENTER LINE Ê¬ï¿½ä³«ï¿½ï¿½\n";
 // Read centerline from ROM (map:%d)
-char *D_800EBF08 = "¥»¥ó¥¿¡¼¥é¥¤¥ó¤òROM¤«¤éÆÉ¤ß¤Þ¤¹ (map:%d)\n";
+char *D_800EBF08 = "ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½é¥¤ï¿½ï¿½ï¿½ROMï¿½ï¿½ï¿½ï¿½ï¿½É¤ß¤Þ¤ï¿½ (map:%d)\n";
 char *D_800EBF34 = "ROM center (BP%d) line adr. = %x (%x)\n";
 // Calculate centerline (map:%d)
-char *D_800EBF5C = "¥»¥ó¥¿¡¼¥é¥¤¥ó¤ò·×»»¤·¤Þ¤¹ (map:%d)\n";
+char *D_800EBF5C = "ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½é¥¤ï¿½ï¿½ï¿½×»ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ (map:%d)\n";
 char *D_800EBF84 = "center (BP%d) line adr. = %x (%x)\n";
 char *D_800EBFA8 = "BP center_point_number : %d\n";
 // Centerline data error! !
-char *D_800EBFC8 = "¥»¥ó¥¿¡¼¥é¥¤¥ó ¥Ç¡¼¥¿ ¥¨¥é¡¼¡ª¡ª\n";
+char *D_800EBFC8 = "ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½é¥¤ï¿½ï¿½ ï¿½Ç¡ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½é¡¼ï¿½ï¿½ï¿½ï¿½\n";
 // Bypass CENTER LINE split end (%d -> %d number)
-char *D_800EBFEC = "¥Ð¥¤¥Ñ¥¹ CENTER LINE Ê¬³ä½ªÎ» (%d -> %d ¸Ä)\n";
+char *D_800EBFEC = "ï¿½Ð¥ï¿½ï¿½Ñ¥ï¿½ CENTER LINE Ê¬ï¿½ä½ªÎ» (%d -> %d ï¿½ï¿½)\n";
 // No center line. (map: %d)
-char *D_800EC01C = "¥»¥ó¥¿¡¼¥é¥¤¥ó¤¬ ¤¢¤ê¤Þ¤»¤ó¡£(map:%d)\n";
+char *D_800EC01C = "ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½é¥¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½(map:%d)\n";
 // side point calculation (bypass %d)
-char *D_800EC044 = "¥µ¥¤¥É¥Ý¥¤¥ó¥È·×»» (¥Ð¥¤¥Ñ¥¹ %d)\n";
+char *D_800EC044 = "ï¿½ï¿½ï¿½ï¿½ï¿½É¥Ý¥ï¿½ï¿½ï¿½È·×»ï¿½ (ï¿½Ð¥ï¿½ï¿½Ñ¥ï¿½ %d)\n";
 // Curve data calculation (bypass %d)
-char *D_800EC068 = "¥«¡¼¥Ö¥Ç¡¼¥¿·×»» (¥Ð¥¤¥Ñ¥¹ %d)\n";
+char *D_800EC068 = "ï¿½ï¿½ï¿½ï¿½ï¿½Ö¥Ç¡ï¿½ï¿½ï¿½ï¿½×»ï¿½ (ï¿½Ð¥ï¿½ï¿½Ñ¥ï¿½ %d)\n";
 // No center line. (map: %d)
-char *D_800EC088 = "¥»¥ó¥¿¡¼¥é¥¤¥ó¤¬ ¤¢¤ê¤Þ¤»¤ó¡£(map:%d)\n";
+char *D_800EC088 = "ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½é¥¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½(map:%d)\n";
 // Angle data calculation (bypass %d)
-char *D_800EC0B0 = "¥¢¥ó¥°¥ë¥Ç¡¼¥¿·×»» (¥Ð¥¤¥Ñ¥¹ %d) \n";
+char *D_800EC0B0 = "ï¿½ï¿½ï¿½ó¥°¥ï¿½Ç¡ï¿½ï¿½ï¿½ï¿½×»ï¿½ (ï¿½Ð¥ï¿½ï¿½Ñ¥ï¿½ %d) \n";
 // No center line. (map: %d)
-char *D_800EC0D4 = "¥»¥ó¥¿¡¼¥é¥¤¥ó¤¬ ¤¢¤ê¤Þ¤»¤ó¡£(map:%d)\n";
+char *D_800EC0D4 = "ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½é¥¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½(map:%d)\n";
 // Shortcut data calculation (bypass %d)
-char *D_800EC0FC = "¥·¥ç¡¼¥È¥«¥Ã¥È¥Ç¡¼¥¿·×»» (¥Ð¥¤¥Ñ¥¹ %d)\n";
+char *D_800EC0FC = "ï¿½ï¿½ï¿½ç¡¼ï¿½È¥ï¿½ï¿½Ã¥È¥Ç¡ï¿½ï¿½ï¿½ï¿½×»ï¿½ (ï¿½Ð¥ï¿½ï¿½Ñ¥ï¿½ %d)\n";
 char *D_800EC124 = "extern POINT rom_center_KT%d_BP%d[] = {\n";
 char *D_800EC150 = "\t{%d,%d,%d,%d},\n";
 char *D_800EC164 = "\t0x8000,0x8000,0x8000,0\n};\n\n";
 char *D_800EC184 = "area read from ROM (%d)\n";
 // Normal jump! ! ! (%d)
-char *D_800EC1A0 = "¥Î¡¼¥Þ¥ë¥¸¥ã¥ó¥×¡ª¡ª¡ª(%d)\n";
+char *D_800EC1A0 = "ï¿½Î¡ï¿½ï¿½Þ¥ë¥¸ï¿½ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½ï¿½(%d)\n";
 // Turbo on! ! ! (%d)
-char *D_800EC1BC = "¥¿¡¼¥Ü¥ª¥ó¡ª¡ª¡ª(%d)\n";
+char *D_800EC1BC = "ï¿½ï¿½ï¿½ï¿½ï¿½Ü¥ï¿½ï¿½ó¡ª¡ï¿½ï¿½ï¿½(%d)\n";
 // No cutting corners! ! ! (%d)
-char *D_800EC1D4 = "¼êÈ´¤­¶Ø»ß¡ª¡ª¡ª(%d)\n";
+char *D_800EC1D4 = "ï¿½ï¿½È´ï¿½ï¿½ï¿½Ø»ß¡ï¿½ï¿½ï¿½ï¿½ï¿½(%d)\n";
 // Action start data error! (num %d, act %d)
-char *D_800EC1EC = "¥¢¥¯¥·¥ç¥ó³«»Ï¥Ç¡¼¥¿¥¨¥é¡¼¡ª(num %d, act %d)\n";
+char *D_800EC1EC = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó³«»Ï¥Ç¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é¡¼ï¿½ï¿½(num %d, act %d)\n";
 // Action end data error! (num %d, act %d, old_act_num %d)
-char *D_800EC21C = "¥¢¥¯¥·¥ç¥ó½ªÎ»¥Ç¡¼¥¿¥¨¥é¡¼¡ª(num %d,  act %d,  old_act_num %d)\n";
+char *D_800EC21C = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ç¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é¡¼ï¿½ï¿½(num %d,  act %d,  old_act_num %d)\n";
 char *D_800EC25C = "SL : center_point_number : %d\n";
 // SL: CENTER LINE split start
-char *D_800EC27C = "SL: CENTER LINE Ê¬³ä³«»Ï\n";
+char *D_800EC27C = "SL: CENTER LINE Ê¬ï¿½ä³«ï¿½ï¿½\n";
 // SL: CENTER LINE split ended (%d -> %d indivual)
-char *D_800EC298 = "SL: CENTER LINE Ê¬³ä½ªÎ» (%d -> %d ¸Ä)\n";
+char *D_800EC298 = "SL: CENTER LINE Ê¬ï¿½ä½ªÎ» (%d -> %d ï¿½ï¿½)\n";
 char *D_800EC2C0 = "SHIP : center_point_number : %d\n";
 // SHIP: CENTER LINE split start
-char *D_800EC2E4 = "SHIP: CENTER LINE Ê¬³ä³«»Ï\n";
+char *D_800EC2E4 = "SHIP: CENTER LINE Ê¬ï¿½ä³«ï¿½ï¿½\n";
 // SHIP: CENTER LINE split ended (%d -> %d indivual)
-char *D_800EC300 = "SHIP: CENTER LINE Ê¬³ä½ªÎ» (%d -> %d ¸Ä)\n";
+char *D_800EC300 = "SHIP: CENTER LINE Ê¬ï¿½ä½ªÎ» (%d -> %d ï¿½ï¿½)\n";
 // General-purpose OBJ character initialization
-char *D_800EC32C = "ÈÆÍÑOBJ¥­¥ã¥é½é´ü²½\n";
+char *D_800EC32C = "ï¿½ï¿½ï¿½ï¿½OBJï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n";
 // SL OBJ settings
-char *D_800EC344 = "SL OBJÀßÄê\n";
+char *D_800EC344 = "SL OBJï¿½ï¿½ï¿½ï¿½\n";
 // SHIP OBJ settings
-char *D_800EC350 = "SHIP OBJÀßÄê\n";
+char *D_800EC350 = "SHIP OBJï¿½ï¿½ï¿½ï¿½\n";
 // Track OBJ settings
-char *D_800EC360 = "¥È¥é¥Ã¥¯OBJÀßÄê\n";
+char *D_800EC360 = "ï¿½È¥ï¿½Ã¥ï¿½OBJï¿½ï¿½ï¿½ï¿½\n";
 // Bus OBJ setting
-char *D_800EC374 = "¥Ð¥¹OBJÀßÄê\n";
+char *D_800EC374 = "ï¿½Ð¥ï¿½OBJï¿½ï¿½ï¿½ï¿½\n";
 // Tank OBJ setting
-char *D_800EC384 = "¥¿¥ó¥¯OBJÀßÄê\n";
+char *D_800EC384 = "ï¿½ï¿½ï¿½ï¿½OBJï¿½ï¿½ï¿½ï¿½\n";
 // RV OBJ settings
-char *D_800EC394 = "RV OBJÀßÄê\n";
+char *D_800EC394 = "RV OBJï¿½ï¿½ï¿½ï¿½\n";
 // Generic OBJ character initialization completed
-char *D_800EC3A0 = "ÈÆÍÑOBJ¥­¥ã¥é½é´ü²½½ªÎ»\n";
+char *D_800EC3A0 = "ï¿½ï¿½ï¿½ï¿½OBJï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»\n";
 // horn (num %d, permit %d, %d)
-char *D_800EC3BC = "¥¯¥é¥¯¥·¥ç¥ó (num %d, permit %d, %d)\n";
+char *D_800EC3BC = "ï¿½ï¿½ï¿½é¥¯ï¿½ï¿½ï¿½ï¿½ï¿½ (num %d, permit %d, %d)\n";
 char *D_800EC3E4 = "OGA CAMERA INIT (%d)\n";
 char *D_800EC3FC = "OGA CAMERA INIT END\n";
 // High speed camera ERR !!! (ncx = %f)
-char *D_800EC414 = "¹âÂ®¥«¥á¥é ERR !!! (ncx = %f)\n";
+char *D_800EC414 = "ï¿½ï¿½Â®ï¿½ï¿½ï¿½ï¿½ï¿½ ERR !!! (ncx = %f)\n";
 // High speed camera ERR !!! (ncz = %f)
-char *D_800EC434 = "¹âÂ®¥«¥á¥é ERR !!! (ncz = %f)\n";
+char *D_800EC434 = "ï¿½ï¿½Â®ï¿½ï¿½ï¿½ï¿½ï¿½ ERR !!! (ncz = %f)\n";
 // High speed camera ERR !!! (ecx = %f)
-char *D_800EC454 = "¹âÂ®¥«¥á¥é ERR !!! (ecx = %f)\n";
+char *D_800EC454 = "ï¿½ï¿½Â®ï¿½ï¿½ï¿½ï¿½ï¿½ ERR !!! (ecx = %f)\n";
 // High speed camera ERR !!! (ecz = %f)
-char *D_800EC474 = "¹âÂ®¥«¥á¥é ERR !!! (ecz = %f)\n";
+char *D_800EC474 = "ï¿½ï¿½Â®ï¿½ï¿½ï¿½ï¿½ï¿½ ERR !!! (ecz = %f)\n";
 char *D_800EC494 = "OGA DRIVERS POINT CAMERA MODE \n";
 char *D_800EC4B4 = "OGA WINNER CAMERA MODE \n";
 char *D_800EC4D0 = "OGA TIMEATTACK QUICK CAMERA INIT \n";
@@ -190,168 +190,168 @@ char *D_800EC514 = "GOAL! <<rank 1>> camera %d  rank %d\n";
 char *D_800EC53C = "GOAL! <<rank 2,3,4>> camera %d  rank %d\n";
 char *D_800EC568 = "GOAL! <<rank 5,6,7,8>> camera %d  rank %d\n";
 // Camera and cart collided! ! !
-char *D_800EC594 = "¥«¥á¥é¤È¥«¡¼¥È¤¬¾×ÆÍ¤·¤Þ¤·¤¿¡ª¡ª¡ª  (%d)\n";
+char *D_800EC594 = "ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½È¤ï¿½ï¿½ï¿½ï¿½Í¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  (%d)\n";
 char *D_800EC5C0 = "<<< ITEM OBJ NUMBER ERR !! >>> item %d  obj_num %d \n";
 // <<< BANANA SET HOUSE >>> obj_num %d zure %f
-char *D_800EC5F8 = "<<< BANANA SET ¼ºÇÔ >>> obj_num %d   zure %f \n";
+char *D_800EC5F8 = "<<< BANANA SET ï¿½ï¿½ï¿½ï¿½ >>> obj_num %d   zure %f \n";
 // BANANA Caught in owner check. (num %d)
-char *D_800EC628 = "BANANA ½êÍ­¼Ô¥Á¥§¥Ã¥¯¤Ë°ú¤Ã³Ý¤«¤ê¤Þ¤·¤¿¡£(num %d)\n";
+char *D_800EC628 = "BANANA ï¿½ï¿½Í­ï¿½Ô¥ï¿½ï¿½ï¿½ï¿½Ã¥ï¿½ï¿½Ë°ï¿½ï¿½Ã³Ý¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½(num %d)\n";
 // Reason: EXISTOBJ
-char *D_800EC65C = "ÍýÍ³: EXISTOBJ \n";
+char *D_800EC65C = "ï¿½ï¿½Í³: EXISTOBJ \n";
 // Reason: category
-char *D_800EC670 = "ÍýÍ³: category \n";
+char *D_800EC670 = "ï¿½ï¿½Í³: category \n";
 // Reason: sparam
-char *D_800EC684 = "ÍýÍ³: sparam \n";
+char *D_800EC684 = "ï¿½ï¿½Í³: sparam \n";
 // Reason: num
-char *D_800EC694 = "ÍýÍ³: num \n";
+char *D_800EC694 = "ï¿½ï¿½Í³: num \n";
 char *D_800EC6A0 = "BANANA HOLD (num %d  time %d   hold_time %d)\n";
 // Installation Caught in BANANA owner check. (num %d)
-char *D_800EC6D0 = "ÀßÃÖ BANANA ½êÍ­¼Ô¥Á¥§¥Ã¥¯¤Ë°ú¤Ã³Ý¤«¤ê¤Þ¤·¤¿¡£(num %d)\n";
+char *D_800EC6D0 = "ï¿½ï¿½ï¿½ï¿½ BANANA ï¿½ï¿½Í­ï¿½Ô¥ï¿½ï¿½ï¿½ï¿½Ã¥ï¿½ï¿½Ë°ï¿½ï¿½Ã³Ý¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½(num %d)\n";
 // Reason: EXISTOBJ
-char *D_800EC708 = "ÍýÍ³: EXISTOBJ \n";
+char *D_800EC708 = "ï¿½ï¿½Í³: EXISTOBJ \n";
 // Reason: category
-char *D_800EC71C = "ÍýÍ³: category \n";
+char *D_800EC71C = "ï¿½ï¿½Í³: category \n";
 // Reason: sparam
-char *D_800EC730 = "ÍýÍ³: sparam \n";
+char *D_800EC730 = "ï¿½ï¿½Í³: sparam \n";
 // Reason: num
-char *D_800EC740 = "ÍýÍ³: num \n";
+char *D_800EC740 = "ï¿½ï¿½Í³: num \n";
 // I put BANANA. (num %d)
-char *D_800EC74C = "BANANA ÃÖ¤­¤Þ¤·¤¿¡£ (num %d)\n";
+char *D_800EC74C = "BANANA ï¿½Ö¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½ (num %d)\n";
 // <<< BANANA NAGE SET failed >>> obj_num %d
-char *D_800EC76C = "<<< BANANA NAGE SET ¼ºÇÔ >>> obj_num %d \n";
+char *D_800EC76C = "<<< BANANA NAGE SET ï¿½ï¿½ï¿½ï¿½ >>> obj_num %d \n";
 // BANANA NAGE MOVE Caught in owner check. (num %d)
-char *D_800EC798 = "BANANA NAGE MOVE ½êÍ­¼Ô¥Á¥§¥Ã¥¯¤Ë°ú¤Ã³Ý¤«¤ê¤Þ¤·¤¿¡£(num %d)\n";
+char *D_800EC798 = "BANANA NAGE MOVE ï¿½ï¿½Í­ï¿½Ô¥ï¿½ï¿½ï¿½ï¿½Ã¥ï¿½ï¿½Ë°ï¿½ï¿½Ã³Ý¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½(num %d)\n";
 // Reason: EXISTOBJ
-char *D_800EC7D8 = "ÍýÍ³: EXISTOBJ \n";
+char *D_800EC7D8 = "ï¿½ï¿½Í³: EXISTOBJ \n";
 // Reason: category
-char *D_800EC7EC = "ÍýÍ³: category \n";
+char *D_800EC7EC = "ï¿½ï¿½Í³: category \n";
 // Reason: sparam
-char *D_800EC800 = "ÍýÍ³: sparam \n";
+char *D_800EC800 = "ï¿½ï¿½Í³: sparam \n";
 // Reason: num
-char *D_800EC810 = "ÍýÍ³: num \n";
-char *D_800EC81C = "BANANA NAGE END ½êÍ­¼Ô¥Á¥§¥Ã¥¯¤Ë°ú¤Ã³Ý¤«¤ê¤Þ¤·¤¿¡£(num %d)\n";
+char *D_800EC810 = "ï¿½ï¿½Í³: num \n";
+char *D_800EC81C = "BANANA NAGE END ï¿½ï¿½Í­ï¿½Ô¥ï¿½ï¿½ï¿½ï¿½Ã¥ï¿½ï¿½Ë°ï¿½ï¿½Ã³Ý¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½(num %d)\n";
 // Reason: EXISTOBJ
-char *D_800EC858 = "ÍýÍ³: EXISTOBJ \n";
+char *D_800EC858 = "ï¿½ï¿½Í³: EXISTOBJ \n";
 // Reason: category
-char *D_800EC86C = "ÍýÍ³: category \n";
+char *D_800EC86C = "ï¿½ï¿½Í³: category \n";
 // Reason: sparam
-char *D_800EC880 = "ÍýÍ³: sparam \n";
+char *D_800EC880 = "ï¿½ï¿½Í³: sparam \n";
 // Reason: num
-char *D_800EC890 = "ÍýÍ³: num \n";
+char *D_800EC890 = "ï¿½ï¿½Í³: num \n";
 char *D_800EC89C = "G_SHELL HOLD (num %d  time %d   hold_time %d)\n";
 // <<< G_SHELL SET failed >>> obj_num %d
-char *D_800EC8CC = "<<< G_SHELL SET ¼ºÇÔ >>> obj_num %d \n";
+char *D_800EC8CC = "<<< G_SHELL SET ï¿½ï¿½ï¿½ï¿½ >>> obj_num %d \n";
 // <<< G_SHELL SET failed >>> object_count %d
-char *D_800EC8F4 = "<<< G_SHELL SET ¼ºÇÔ >>> object_count %d \n";
+char *D_800EC8F4 = "<<< G_SHELL SET ï¿½ï¿½ï¿½ï¿½ >>> object_count %d \n";
 // G_SHELL Caught in owner check. (num %d)
-char *D_800EC920 = "G_SHELL ½êÍ­¼Ô¥Á¥§¥Ã¥¯¤Ë°ú¤Ã³Ý¤«¤ê¤Þ¤·¤¿¡£(num %d)\n";
+char *D_800EC920 = "G_SHELL ï¿½ï¿½Í­ï¿½Ô¥ï¿½ï¿½ï¿½ï¿½Ã¥ï¿½ï¿½Ë°ï¿½ï¿½Ã³Ý¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½(num %d)\n";
 // Reason: EXISTOBJ
-char *D_800EC954 = "ÍýÍ³: EXISTOBJ \n";
+char *D_800EC954 = "ï¿½ï¿½Í³: EXISTOBJ \n";
 // Reason: category
-char *D_800EC968 = "ÍýÍ³: category \n";
+char *D_800EC968 = "ï¿½ï¿½Í³: category \n";
 // Reason: sparam
-char *D_800EC97C = "ÍýÍ³: sparam \n";
+char *D_800EC97C = "ï¿½ï¿½Í³: sparam \n";
 // Reason: num
-char *D_800EC98C = "ÍýÍ³: num \n";
+char *D_800EC98C = "ï¿½ï¿½Í³: num \n";
 // Just before launch G_SHELL Caught in owner check. (num %d)
-char *D_800EC998 = "È¯¼ÍÄ¾Á° G_SHELL ½êÍ­¼Ô¥Á¥§¥Ã¥¯¤Ë°ú¤Ã³Ý¤«¤ê¤Þ¤·¤¿¡£(num %d)\n";
+char *D_800EC998 = "È¯ï¿½ï¿½Ä¾ï¿½ï¿½ G_SHELL ï¿½ï¿½Í­ï¿½Ô¥ï¿½ï¿½ï¿½ï¿½Ã¥ï¿½ï¿½Ë°ï¿½ï¿½Ã³Ý¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½(num %d)\n";
 // Reason: EXISTOBJ
-char *D_800EC9D8 = "ÍýÍ³: EXISTOBJ \n";
+char *D_800EC9D8 = "ï¿½ï¿½Í³: EXISTOBJ \n";
 // Reason: category
-char *D_800EC9EC = "ÍýÍ³: category \n";
+char *D_800EC9EC = "ï¿½ï¿½Í³: category \n";
 // Reason: sparam
-char *D_800ECA00 = "ÍýÍ³: sparam \n";
+char *D_800ECA00 = "ï¿½ï¿½Í³: sparam \n";
 // Reason: num
-char *D_800ECA10 = "ÍýÍ³: num \n";
+char *D_800ECA10 = "ï¿½ï¿½Í³: num \n";
 // G_SHELL firing (num %d)
-char *D_800ECA1C = "G_SHELL È¯¼Í (num %d)\n";
+char *D_800ECA1C = "G_SHELL È¯ï¿½ï¿½ (num %d)\n";
 char *D_800ECA34 = "R_SHELL HOLD (num %d  time %d   hold_time %d  obj_num %d)\n";
 // <<< R_SHELL SET failed >>> obj_num %d
-char *D_800ECA70 = "<<< R_SHELL SET ¼ºÇÔ >>> obj_num %d \n";
+char *D_800ECA70 = "<<< R_SHELL SET ï¿½ï¿½ï¿½ï¿½ >>> obj_num %d \n";
 // <<< R_SHELL SET failed >>> object_count %d
-char *D_800ECA98 = "<<< R_SHELL SET ¼ºÇÔ >>> object_count %d \n";
+char *D_800ECA98 = "<<< R_SHELL SET ï¿½ï¿½ï¿½ï¿½ >>> object_count %d \n";
 // R_SHELL Caught in owner check. (num %d)
-char *D_800ECAC4 = "R_SHELL ½êÍ­¼Ô¥Á¥§¥Ã¥¯¤Ë°ú¤Ã³Ý¤«¤ê¤Þ¤·¤¿¡£(num %d)\n";
+char *D_800ECAC4 = "R_SHELL ï¿½ï¿½Í­ï¿½Ô¥ï¿½ï¿½ï¿½ï¿½Ã¥ï¿½ï¿½Ë°ï¿½ï¿½Ã³Ý¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½(num %d)\n";
 // Reason: EXISTOBJ
-char *D_800ECAF8 = "ÍýÍ³: EXISTOBJ \n";
+char *D_800ECAF8 = "ï¿½ï¿½Í³: EXISTOBJ \n";
 // Reason: category
-char *D_800ECB0C = "ÍýÍ³: category \n";
+char *D_800ECB0C = "ï¿½ï¿½Í³: category \n";
 // Reason: sparam
-char *D_800ECB20 = "ÍýÍ³: sparam \n";
+char *D_800ECB20 = "ï¿½ï¿½Í³: sparam \n";
 // Reason: num
-char *D_800ECB30 = "ÍýÍ³: num \n";
+char *D_800ECB30 = "ï¿½ï¿½Í³: num \n";
 char *D_800ECB3C = "R_SHELL SHOOT (num %d  time %d   hold_time %d  obj_num %d)\n";
 // Just before launch R_SHELL Caught in owner check. (num %d)
-char *D_800ECB78 = "È¯¼ÍÄ¾Á° R_SHELL ½êÍ­¼Ô¥Á¥§¥Ã¥¯¤Ë°ú¤Ã³Ý¤«¤ê¤Þ¤·¤¿¡£(num %d)\n";
+char *D_800ECB78 = "È¯ï¿½ï¿½Ä¾ï¿½ï¿½ R_SHELL ï¿½ï¿½Í­ï¿½Ô¥ï¿½ï¿½ï¿½ï¿½Ã¥ï¿½ï¿½Ë°ï¿½ï¿½Ã³Ý¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½(num %d)\n";
 // Reason: EXISTOBJ
-char *D_800ECBB8 = "ÍýÍ³: EXISTOBJ \n";
+char *D_800ECBB8 = "ï¿½ï¿½Í³: EXISTOBJ \n";
 // Reason: category
-char *D_800ECBCC = "ÍýÍ³: category \n";
+char *D_800ECBCC = "ï¿½ï¿½Í³: category \n";
 // Reason: sparam
-char *D_800ECBE0 = "ÍýÍ³: sparam \n";
+char *D_800ECBE0 = "ï¿½ï¿½Í³: sparam \n";
 // Reason: num
-char *D_800ECBF0 = "ÍýÍ³: num \n";
+char *D_800ECBF0 = "ï¿½ï¿½Í³: num \n";
 // R_SHELL firing (num %d)
-char *D_800ECBFC = "R_SHELL È¯¼Í (num %d)\n";
+char *D_800ECBFC = "R_SHELL È¯ï¿½ï¿½ (num %d)\n";
 char *D_800ECC14 = "S_BANANA HOLD (num %d  time %d   hold_time %d)\n";
 // <<< SUPER_BANANA SET failed >>> obj_num %d
-char *D_800ECC44 = "<<< SUPER_BANANA SET ¼ºÇÔ >>> obj_num %d \n";
+char *D_800ECC44 = "<<< SUPER_BANANA SET ï¿½ï¿½ï¿½ï¿½ >>> obj_num %d \n";
 // <<< SUPER_BANANA SET failed >>> object_count %d
-char *D_800ECC70 = "<<< SUPER_BANANA SET ¼ºÇÔ >>> object_count %d \n";
+char *D_800ECC70 = "<<< SUPER_BANANA SET ï¿½ï¿½ï¿½ï¿½ >>> object_count %d \n";
 // S_BANANA Caught in owner check. (num %d)
-char *D_800ECCA0 = "S_BANANA ½êÍ­¼Ô¥Á¥§¥Ã¥¯¤Ë°ú¤Ã³Ý¤«¤ê¤Þ¤·¤¿¡£(num %d)\n";
+char *D_800ECCA0 = "S_BANANA ï¿½ï¿½Í­ï¿½Ô¥ï¿½ï¿½ï¿½ï¿½Ã¥ï¿½ï¿½Ë°ï¿½ï¿½Ã³Ý¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½(num %d)\n";
 // Reason: category
-char *D_800ECCD8 = "ÍýÍ³: category \n";
+char *D_800ECCD8 = "ï¿½ï¿½Í³: category \n";
 // Reason: sparam
-char *D_800ECCEC = "ÍýÍ³: sparam \n";
+char *D_800ECCEC = "ï¿½ï¿½Í³: sparam \n";
 // Reason: sb_ok
-char *D_800ECCFC = "ÍýÍ³: sb_ok \n";
+char *D_800ECCFC = "ï¿½ï¿½Í³: sb_ok \n";
 char *D_800ECD0C = "S_BANANA RELEASE (num %d  time %d )\n";
 // <<< FAKE IBOX SET failed >>> obj_num %d
-char *D_800ECD34 = "<<< FAKE IBOX SET ¼ºÇÔ >>> obj_num %d \n";
+char *D_800ECD34 = "<<< FAKE IBOX SET ï¿½ï¿½ï¿½ï¿½ >>> obj_num %d \n";
 // IBOX Caught in owner check. (num %d)
-char *D_800ECD5C = "IBOX ½êÍ­¼Ô¥Á¥§¥Ã¥¯¤Ë°ú¤Ã³Ý¤«¤ê¤Þ¤·¤¿¡£(num %d)\n";
+char *D_800ECD5C = "IBOX ï¿½ï¿½Í­ï¿½Ô¥ï¿½ï¿½ï¿½ï¿½Ã¥ï¿½ï¿½Ë°ï¿½ï¿½Ã³Ý¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½(num %d)\n";
 // Reason: EXISTOBJ
-char *D_800ECD90 = "ÍýÍ³: EXISTOBJ \n";
+char *D_800ECD90 = "ï¿½ï¿½Í³: EXISTOBJ \n";
 // Reason: category
-char *D_800ECDA4 = "ÍýÍ³: category \n";
+char *D_800ECDA4 = "ï¿½ï¿½Í³: category \n";
 // Reason: sparam
-char *D_800ECDB8 = "ÍýÍ³: sparam \n";
+char *D_800ECDB8 = "ï¿½ï¿½Í³: sparam \n";
 // Reason: num
-char *D_800ECDC8 = "ÍýÍ³: num \n";
+char *D_800ECDC8 = "ï¿½ï¿½Í³: num \n";
 char *D_800ECDD4 = "FBOX HOLD (num %d  time %d   hold_time %d)\n";
 // Installation IBOX owner check failed. (num %d)
-char *D_800ECE00 = "ÀßÃÖ IBOX ½êÍ­¼Ô¥Á¥§¥Ã¥¯¤Ë°ú¤Ã³Ý¤«¤ê¤Þ¤·¤¿¡£(num %d)\n";
+char *D_800ECE00 = "ï¿½ï¿½ï¿½ï¿½ IBOX ï¿½ï¿½Í­ï¿½Ô¥ï¿½ï¿½ï¿½ï¿½Ã¥ï¿½ï¿½Ë°ï¿½ï¿½Ã³Ý¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½(num %d)\n";
 // Reason: EXISTOBJ
-char *D_800ECE38 = "ÍýÍ³: EXISTOBJ \n";
+char *D_800ECE38 = "ï¿½ï¿½Í³: EXISTOBJ \n";
 // Reason: category
-char *D_800ECE4C = "ÍýÍ³: category \n";
+char *D_800ECE4C = "ï¿½ï¿½Í³: category \n";
 // Reason: sparam
-char *D_800ECE60 = "ÍýÍ³: sparam \n";
+char *D_800ECE60 = "ï¿½ï¿½Í³: sparam \n";
 // Reason: num
-char *D_800ECE70 = "ÍýÍ³: num \n";
+char *D_800ECE70 = "ï¿½ï¿½Í³: num \n";
 // Ray START (%d)
-char *D_800ECE7C = "ÍëSTART (%d)\n";
+char *D_800ECE7C = "ï¿½ï¿½START (%d)\n";
 // Ray END (%d)
-char *D_800ECE8C = "ÍëEND (%d)\n";
+char *D_800ECE8C = "ï¿½ï¿½END (%d)\n";
 // ---------- Initialization of commendation table
-char *D_800ECE98 = "---------- É½¾´Âæ½é´ü²½\n";
+char *D_800ECE98 = "---------- É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n";
 // map_number = %d -> 20 Rewriting.
-char *D_800ECEB4 = "map_number = %d - > 20 ½ñ¤­´¹¤¨Ãæ¡£\n";
+char *D_800ECEB4 = "map_number = %d - > 20 ï¿½ñ¤­´ï¿½ï¿½ï¿½ï¿½æ¡£\n";
 // OGA Recognition move begins
-char *D_800ECEDC = "OGA É½¾´ move ³«»Ï\n";
+char *D_800ECEDC = "OGA É½ï¿½ï¿½ move ï¿½ï¿½ï¿½ï¿½\n";
 // I called the display of the 4th place person.
-char *D_800ECEF0 = "£´°Ì¤Î¿Í¤ÎÉ½¼¨¤ò¥³¡¼¥ë¤·¤Þ¤·¤¿¡£\n";
+char *D_800ECEF0 = "ï¿½ï¿½ï¿½Ì¤Î¿Í¤ï¿½É½ï¿½ï¿½ï¿½ò¥³¡ï¿½ï¿½ë¤·ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½\n";
 // Arrive at the podium
-char *D_800ECF14 = "É½¾´Âæ¤ËÅþÃå\n";
+char *D_800ECF14 = "É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n";
 // Everyone gather!
-char *D_800ECF24 = "Á´°÷½¸¹ç¡ª\n";
+char *D_800ECF24 = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç¡ª\n";
 // Arrive on the road
-char *D_800ECF30 = "Æ»Ï©¤ËÅþÃå\n";
+char *D_800ECF30 = "Æ»Ï©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n";
 // 4th place finished
-char *D_800ECF3C = "£´°Ì¤Î¿Í½ªÎ»\n";
+char *D_800ECF3C = "ï¿½ï¿½ï¿½Ì¤Î¿Í½ï¿½Î»\n";
 // OGA commendation move end
-char *D_800ECF4C = "OGA É½¾´ move ½ªÎ»\n";
+char *D_800ECF4C = "OGA É½ï¿½ï¿½ move ï¿½ï¿½Î»\n";
 char *D_800ECF60 = "OGAWA DEBUG DRAW\n";
 
 s16 func_80005FD0(Vec3f arg0, Vec3f arg1) {

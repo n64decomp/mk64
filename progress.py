@@ -20,9 +20,10 @@ def GetNonMatchingFunctions(files):
     functions = []
 
     for file in files:
-        # credits.c contains Japanese characters which are not supported by utf-8
-        # To prevent errors it cannot be included.
-        if (file == "src/credits.c") or (file == "src/code_80005FD0.c"):
+        # Disclude euc-jp generated files
+        if (file == "src/credits.jp.c"):
+            continue
+        if (file == "src/code_80005FD0.jp.c"):
             continue
         with open(file) as f:
             functions += re.findall(NON_MATCHING_PATTERN, f.read(), re.DOTALL)
@@ -31,9 +32,10 @@ def GetNonMatchingFunctions(files):
 
 def CountMipsToCFunctions(files):
     functions = []
-
     for file in files:
-        if (file == "src/credits.c"):
+        if (file == "src/credits.jp.c"):
+            continue
+        if (file == "src/code_80005FD0.jp.c"):
             continue
         with open(file) as f:
             functions += re.findall(MIPS_TO_C_FUNC_COUNT_PATTERN, f.read(), re.DOTALL)
@@ -43,7 +45,9 @@ def CountNonMatchingFunctions(files):
     functions = []
 
     for file in files:
-        if (file == "src/credits.c"):
+        if (file == "src/credits.jp.c"):
+            continue
+        if (file == "src/code_80005FD0.jp.c"):
             continue
         with open(file) as f:
             functions += re.findall(NON_MATCHING_FUNC_COUNT_PATTERN, f.read(), re.DOTALL)
