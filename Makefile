@@ -332,6 +332,7 @@ export LANG := C
 MIO0TOOL              := $(TOOLS_DIR)/mio0
 N64CKSUM              := $(TOOLS_DIR)/n64cksum
 N64GRAPHICS           := $(TOOLS_DIR)/n64graphics
+TEXTCONV              := $(TOOLS_DIR)/textconv
 DLPACKER              := $(TOOLS_DIR)/displaylist_packer
 DLSYMGEN              := $(PYTHON) $(TOOLS_DIR)/generate_segment_headers.py
 MODELSYMGEN           := $(PYTHON) $(TOOLS_DIR)/generate_vertice_count.py
@@ -544,12 +545,22 @@ $(COURSE_DATA_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o: $(BUILD_DIR)/%/co
 	$(AS) $(ASFLAGS) -o $@ $(@D)/course_data.inc.mio0.s
 
 
+#==============================================================================#
+# Converted US to EUC-JP Encoding                                              #
+#==============================================================================#
+
+src/credits.jp.c: src/credits.c
+	$(V)$(TEXTCONV) tools/charmap.txt $< $@
+
+src/code_80005FD0.jp.c: src/code_80005FD0.c
+	$(V)$(TEXTCONV) tools/charmap.txt $< $@
+
 
 #==============================================================================#
 # Source Code Generation                                                       #
 #==============================================================================#
 
-$(BUILD_DIR)/%.o: %.c
+$(BUILD_DIR)/%.o: %.c src/code_80005FD0.jp.c src/credits.jp.c
 	$(call print,Compiling:,$<,$@)
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
