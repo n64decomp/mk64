@@ -251,6 +251,8 @@ SECTIONS
       BUILD_DIR/src/code_80027D00.o(.data);
       BUILD_DIR/src/spawn_players.o(.data);
       BUILD_DIR/data/data_code_80071F00.o(.data);
+      BUILD_DIR/src/code_80057C60.o(.data);
+      BUILD_DIR/data/data_code_80071F00_2.o(.data);
       BUILD_DIR/src/code_8008C1D0.o(.data);
       BUILD_DIR/src/code_80091440.o(.data);
       BUILD_DIR/data/data_code_80091750.o(.data);

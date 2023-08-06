@@ -40,6 +40,12 @@ glabel D_800EE830
 glabel D_800EE838
 .double 0.2
 
+.section .data
+
+glabel D_800E4914
+.float 9.0, 10.0, 9.0, 8.0
+.float 10.0, 9.5, 9.5, 11.0
+
 .section .text
 
 glabel func_8006A7C0
