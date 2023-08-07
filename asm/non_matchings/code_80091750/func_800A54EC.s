@@ -1,6 +1,6 @@
 glabel func_800A54EC
-/* 0A60EC 800A54EC 3C0B800E */  lui   $t3, %hi(D_800DC5FC) # $t3, 0x800e
-/* 0A60F0 800A54F0 256BC5FC */  addiu $t3, %lo(D_800DC5FC) # addiu $t3, $t3, -0x3a04
+/* 0A60EC 800A54EC 3C0B800E */  lui   $t3, %hi(gIsGamePaused) # $t3, 0x800e
+/* 0A60F0 800A54F0 256BC5FC */  addiu $t3, %lo(gIsGamePaused) # addiu $t3, $t3, -0x3a04
 /* 0A60F4 800A54F4 956E0000 */  lhu   $t6, ($t3)
 /* 0A60F8 800A54F8 27BDFFA8 */  addiu $sp, $sp, -0x58
 /* 0A60FC 800A54FC AFBF0024 */  sw    $ra, 0x24($sp)
@@ -76,8 +76,8 @@ glabel func_800A54EC
 /* 0A6214 800A5614 0301C824 */  and   $t9, $t8, $at
 /* 0A6218 800A5618 AC790004 */  sw    $t9, 4($v1)
 /* 0A621C 800A561C 852E0000 */  lh    $t6, ($t1)
-/* 0A6220 800A5620 3C0B800E */  lui   $t3, %hi(D_800DC5FC) # $t3, 0x800e
-/* 0A6224 800A5624 256BC5FC */  addiu $t3, %lo(D_800DC5FC) # addiu $t3, $t3, -0x3a04
+/* 0A6220 800A5620 3C0B800E */  lui   $t3, %hi(gIsGamePaused) # $t3, 0x800e
+/* 0A6224 800A5624 256BC5FC */  addiu $t3, %lo(gIsGamePaused) # addiu $t3, $t3, -0x3a04
 /* 0A6228 800A5628 25CC0001 */  addiu $t4, $t6, 1
 /* 0A622C 800A562C 11400018 */  beqz  $t2, .L800A5690
 /* 0A6230 800A5630 A52C0000 */   sh    $t4, ($t1)

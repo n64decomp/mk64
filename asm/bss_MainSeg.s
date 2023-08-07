@@ -89,7 +89,7 @@ glabel D_80164038
 glabel D_801640F4
 .skip 260
 
-glabel D_801641F8
+glabel gUnexpiredActorsList
 .skip 224
 
 glabel D_801642D8

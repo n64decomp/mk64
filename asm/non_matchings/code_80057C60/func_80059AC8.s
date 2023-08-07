@@ -1,7 +1,7 @@
 glabel func_80059AC8
 /* 05A6C8 80059AC8 27BDFFD0 */  addiu $sp, $sp, -0x30
-/* 05A6CC 80059ACC 3C0E800E */  lui   $t6, %hi(D_800DC5FC) # $t6, 0x800e
-/* 05A6D0 80059AD0 95CEC5FC */  lhu   $t6, %lo(D_800DC5FC)($t6)
+/* 05A6CC 80059ACC 3C0E800E */  lui   $t6, %hi(gIsGamePaused) # $t6, 0x800e
+/* 05A6D0 80059AD0 95CEC5FC */  lhu   $t6, %lo(gIsGamePaused)($t6)
 /* 05A6D4 80059AD4 AFBF002C */  sw    $ra, 0x2c($sp)
 /* 05A6D8 80059AD8 AFB40028 */  sw    $s4, 0x28($sp)
 /* 05A6DC 80059ADC AFB30024 */  sw    $s3, 0x24($sp)

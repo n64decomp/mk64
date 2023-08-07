@@ -1,6 +1,6 @@
 glabel func_800ADF48
-/* 0AEB48 800ADF48 3C0E800E */  lui   $t6, %hi(D_800DC5FC) # $t6, 0x800e
-/* 0AEB4C 800ADF4C 95CEC5FC */  lhu   $t6, %lo(D_800DC5FC)($t6)
+/* 0AEB48 800ADF48 3C0E800E */  lui   $t6, %hi(gIsGamePaused) # $t6, 0x800e
+/* 0AEB4C 800ADF4C 95CEC5FC */  lhu   $t6, %lo(gIsGamePaused)($t6)
 /* 0AEB50 800ADF50 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 0AEB54 800ADF54 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 0AEB58 800ADF58 11C000AA */  beqz  $t6, .L800AE204
@@ -27,8 +27,8 @@ glabel L800ADFA0
 /* 0AEBA4 800ADFA4 AFA50020 */   sw    $a1, 0x20($sp)
 /* 0AEBA8 800ADFA8 14400097 */  bnez  $v0, .L800AE208
 /* 0AEBAC 800ADFAC 8FA50020 */   lw    $a1, 0x20($sp)
-/* 0AEBB0 800ADFB0 3C08800E */  lui   $t0, %hi(D_800DC5FC) # $t0, 0x800e
-/* 0AEBB4 800ADFB4 9508C5FC */  lhu   $t0, %lo(D_800DC5FC)($t0)
+/* 0AEBB0 800ADFB0 3C08800E */  lui   $t0, %hi(gIsGamePaused) # $t0, 0x800e
+/* 0AEBB4 800ADFB4 9508C5FC */  lhu   $t0, %lo(gIsGamePaused)($t0)
 /* 0AEBB8 800ADFB8 3C0B800F */  lui   $t3, %hi(gControllers) # $t3, 0x800f
 /* 0AEBBC 800ADFBC 256B6910 */  addiu $t3, %lo(gControllers) # addiu $t3, $t3, 0x6910
 /* 0AEBC0 800ADFC0 00084900 */  sll   $t1, $t0, 4
@@ -146,13 +146,13 @@ glabel L800ADFA0
 /* 0AED6C 800AE16C 8CA80004 */  lw    $t0, 4($a1)
 /* 0AED70 800AE170 01495021 */  addu  $t2, $t2, $t1
 /* 0AED74 800AE174 814A0B50 */  lb    $t2, %lo(D_800F0B50)($t2) # 0xb50($t2)
-/* 0AED78 800AE178 3C01800E */  lui   $at, %hi(D_800DC5FC) # $at, 0x800e
+/* 0AED78 800AE178 3C01800E */  lui   $at, %hi(gIsGamePaused) # $at, 0x800e
 /* 0AED7C 800AE17C 2404001E */  li    $a0, 30
 /* 0AED80 800AE180 150A0008 */  bne   $t0, $t2, .L800AE1A4
 /* 0AED84 800AE184 00000000 */   nop   
 /* 0AED88 800AE188 ACA00004 */  sw    $zero, 4($a1)
 /* 0AED8C 800AE18C 0C0A37CE */  jal   func_8028DF38
-/* 0AED90 800AE190 A420C5FC */   sh    $zero, %lo(D_800DC5FC)($at)
+/* 0AED90 800AE190 A420C5FC */   sh    $zero, %lo(gIsGamePaused)($at)
 /* 0AED94 800AE194 0C0327E4 */  jal   func_800C9F90
 /* 0AED98 800AE198 00002025 */   move  $a0, $zero
 /* 0AED9C 800AE19C 1000001B */  b     .L800AE20C

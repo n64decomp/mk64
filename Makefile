@@ -25,7 +25,8 @@ TARGET_N64 ?= 1
 COMPILER ?= ido
 $(eval $(call validate-option,COMPILER,ido gcc))
 
-
+# options for debuging. Set this to 1 and modify the macros in include/debug.h
+DEBUG ?= 0
 
 # VERSION - selects the version of the game to build
 #   us - builds the 1997 North American version
@@ -41,6 +42,11 @@ else ifeq ($(VERSION), eu)
   DEFINES += VERSION_EU=1 
   GRUCODE   ?= f3d_old
   VERSION_ASFLAGS := --defsym VERSION_EU=1
+endif
+
+ifeq ($(DEBUG),1)
+  DEFINES += DEBUG=1
+  COMPARE ?= 0
 endif
 
 TARGET := mk64.$(VERSION)
@@ -193,7 +199,7 @@ DATA_DIR       := data
 INCLUDE_DIRS   := include
 
 # Directories containing source files
-SRC_DIRS       := src src/audio src/os src/os/math courses
+SRC_DIRS       := src src/audio src/debug src/os src/os/math courses
 ASM_DIRS       := asm asm/audio asm/os asm/os/non_matchings $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
 
 
@@ -561,9 +567,6 @@ $(GLOBAL_ASM_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(A
 
 $(GLOBAL_ASM_AUDIO_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
-$(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT) #repeat for other files
-	$(V)$(CPP) $(CPPFLAGS) $(DEF_INC_CFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
-
 
 
 #==============================================================================#
@@ -622,11 +625,10 @@ $(BUILD_DIR)/src/common_textures.inc.mio0.o: $(BUILD_DIR)/src/common_textures.in
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"src/common_textures.inc.mio0\"\n\n" > build/us/src/common_textures.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.s
 
-# todo: Make this work
 # Run linker script through the C preprocessor
-#$(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
-#	$(call print,Preprocessing linker script:,$<,$@)
-#	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
+$(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
+	$(call print,Preprocessing linker script:,$<,$@)
+	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
 $(ELF): $(COURSE_DATA_TARGETS) $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_MODEL_TARGETS) undefined_syms.txt

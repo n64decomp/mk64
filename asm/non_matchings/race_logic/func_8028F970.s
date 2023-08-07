@@ -66,12 +66,12 @@ glabel func_8028F970
 /* 0F9070 8028FA60 00000000 */   nop
 /* 0F9074 8028FA64 3C0B800E */  lui   $t3, %hi(gControllerOne) # $t3, 0x800e
 /* 0F9078 8028FA68 8D6BC4BC */  lw    $t3, %lo(gControllerOne)($t3)
-/* 0F907C 8028FA6C 3C01800E */  lui   $at, %hi(D_800DC5FC) # $at, 0x800e
+/* 0F907C 8028FA6C 3C01800E */  lui   $at, %hi(gIsGamePaused) # $at, 0x800e
 /* 0F9080 8028FA70 24040001 */  li    $a0, 1
 /* 0F9084 8028FA74 020B6023 */  subu  $t4, $s0, $t3
 /* 0F9088 8028FA78 000C6903 */  sra   $t5, $t4, 4
 /* 0F908C 8028FA7C 25AE0001 */  addiu $t6, $t5, 1
-/* 0F9090 8028FA80 A42EC5FC */  sh    $t6, %lo(D_800DC5FC)($at)
+/* 0F9090 8028FA80 A42EC5FC */  sh    $t6, %lo(gIsGamePaused)($at)
 /* 0F9094 8028FA84 0C0327E4 */  jal   func_800C9F90
 /* 0F9098 8028FA88 A6000006 */   sh    $zero, 6($s0)
 /* 0F909C 8028FA8C 3C0F800E */  lui   $t7, %hi(gModeSelection) # $t7, 0x800e
