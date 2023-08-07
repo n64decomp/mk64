@@ -872,7 +872,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     s32 var_v0_3;
     u16 temp_t6_2;
     u16 temp_t8;
-    u16 rrarytemp_v0;
+    u16 temp_v0;
     u16 var_a0;
     void *temp_a3;
 
