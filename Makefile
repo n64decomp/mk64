@@ -218,14 +218,20 @@ include $(MAKEFILE_SPLIT)
 
 COURSE_ASM_FILES := $(wildcard courses/*/*/packed.s)
 
-C_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
+# These are files that need to be encoded into EUC-JP in order for the ROM to match
+# We filter them out from the regular C_FILES since we don't need nor want the
+# UTF-8 versions getting compiled
+EUC_JP_FILES := src/credits.c src/code_80005FD0.c
+C_FILES := $(filter-out $(EUC_JP_FILES),$(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c)))
 S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s)) $(COURSE_ASM_FILES)
 COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(wildcard $(dir)/*.inc.c))
 
 # Object files
-O_FILES := $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
-		   $(foreach file,$(COURSE_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
-           $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file:.s=.o)) \
+O_FILES := \
+  $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
+  $(foreach file,$(COURSE_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
+  $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file:.s=.o)) \
+  $(EUC_JP_FILES:%.c=$(BUILD_DIR)/%.jp.o)
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d) $(BUILD_DIR)/$(LD_SCRIPT).d
@@ -549,16 +555,6 @@ $(COURSE_DATA_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o: $(BUILD_DIR)/%/co
 # Source Code Generation                                                       #
 #==============================================================================#
 
-EUC_JP_FILES = src/credits.c src/code_80005FD0.c
-
-O_FILES += $(foreach file,$(EUC_JP_FILES),$(file:%.c=$(BUILD_DIR)/%.jp.o))
-
-%.jp.o: %.jp.c
-	$(call print,Compiling:,$<,$@)
-	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) tools/set_o32abi_bit.py $@
-
 $(BUILD_DIR)/%.jp.c: %.c
 	$(call print,Encoding:,$<,$@)
 	iconv -t EUC-JP -f UTF-8 $< -o $@
@@ -576,6 +572,8 @@ $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 
 $(BUILD_DIR)/%.o: %.s $(MIO0_FILES) $(RAW_TEXTURE_FILES)
 	$(AS) $(ASFLAGS) -o $@ $<
+
+$(EUC_JP_FILES:%.c=$(BUILD_DIR)/%.jp.o): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
 $(GLOBAL_ASM_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 

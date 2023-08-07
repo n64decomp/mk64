@@ -84,7 +84,7 @@ SECTIONS
       BUILD_DIR/src/code_80004740.o(.text);
       BUILD_DIR/src/staff_ghosts.o(.text);
       BUILD_DIR/asm/unused_overflow_check.o(.text);
-      BUILD_DIR/src/code_80005FD0.o(.text);
+      BUILD_DIR/src/code_80005FD0.jp.o(.text);
       BUILD_DIR/src/camera.o(.text);
       BUILD_DIR/src/code_8001F980.o(.text);
       BUILD_DIR/src/kart_dma.o(.text);
