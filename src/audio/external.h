@@ -146,6 +146,7 @@ void func_800CA388(u8);
 void func_800CA414(u16, u16);
 void func_800CA49C(u8);
 void func_800CAACC(u8);
+void func_800CAEC4(u8, f32);
 void func_800CB134();
 void func_800CB2C4(void);
 void func_800C5CB8(void);
