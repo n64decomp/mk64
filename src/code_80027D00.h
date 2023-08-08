@@ -68,10 +68,12 @@ void func_8003777C(Player*, Vec3f, Vec3f);
 void func_800378E8(Player*, Vec3f, Vec3f);
 void func_80037A4C(Player*, Vec3f, Vec3f);
 void func_80037BB4(Player*player, Vec3f);
+void func_80033AE0(Player*, struct Controller*, s8);
 void func_800382DC();
 s16  func_80038534(struct Controller*);
 s16  func_800388B0(struct Controller*);
 void func_80038BE4(Player*, s16);
+void func_80038C6C(Player*, Camera*, s8, s8);
 
 /* This is where I'd put my static data, if I had any */
 
