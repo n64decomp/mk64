@@ -5148,10 +5148,10 @@ extern s8 D_800EA168;
 
 void func_800CAC60(UNUSED s32 arg0) {
     if ((D_800EA108 == 0) && (D_800EA0F0 == 0)) {
-        play_sound(0x1900F00CU, D_800EA1C8, 0U, D_800EA1D4, D_800EA1D4, &D_800EA1DC);
+        play_sound(SOUND_ACTION_EXPLOSION_2, D_800EA1C8, 0U, D_800EA1D4, D_800EA1D4, &D_800EA1DC);
         if ((D_800EA10C[0] != 1) && (D_800EA10C[1] != 1)) {
             func_800C36C4(0, 1, 0x37U, 5);
-            play_sound(0x5101C00CU, D_800EA1C8, 0U, D_800EA1D4, D_800EA1D4, &D_800EA1DC);
+            play_sound(SOUND_ITEM_THUNDERBOLT, D_800EA1C8, 0U, D_800EA1D4, D_800EA1D4, &D_800EA1DC);
             D_800EA168 = 1;
         }
     }
