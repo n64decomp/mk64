@@ -5,7 +5,7 @@
 #include "actor_types.h"
 
 void func_8029E158(void);
-void func_80296A50(struct ShellActor*);
+void cleanup_red_and_green_shells(struct ShellActor*);
 void actor_init(struct Actor*, f32*, s16*, f32*, s16);
 void func_80297230(Camera*, struct Actor*);
 void func_802972B8(Camera*, struct Actor*);
@@ -129,7 +129,12 @@ extern struct Actor gActorList[];
 extern Player gPlayers[];
 extern u16 gNumActors;
 extern u16 gNumPermanentActors;
-extern u16 D_8015F6FE; // Shell count? But why does actor type 2 (some kind of shrub?) increase it and not blue shells?
+
+/**
+ * Incremented by one every time the player spawns a new shell actor.
+ * A cleaning routine runs once twenty-one shells have spawned.
+ */
+extern u16 gNumSpawnedShells; 
 extern u16 D_802BA260; // Box Truck sub-type?
 
 extern Player *gPlayerOne;
@@ -388,7 +393,7 @@ extern u8 gTextureShrub[];
 
 extern s8 D_800DC628[];
 extern s8 D_800DC630[];
-extern u16 D_800DC5FC;
+extern u16 gIsGamePaused;
 extern s8 D_802B8864[];
 
 extern u16 D_800DC5BC;

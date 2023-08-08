@@ -296,8 +296,8 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_110.unk60[2] = 0.0f;
 
     D_80165300[playerIndex] = 0;
-    D_8018CE10[playerIndex].unk_04 = 0.0f;
-    D_8018CE10[playerIndex].unk_0C = 0.0f;
+    D_8018CE10[playerIndex].unk_04[0] = 0.0f;
+    D_8018CE10[playerIndex].unk_04[2] = 0.0f;
     func_80295BF8(playerIndex);
     func_8005D6C0(player);
     func_8006B87C(player, playerIndex);

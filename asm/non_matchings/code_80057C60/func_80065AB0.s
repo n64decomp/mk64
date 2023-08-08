@@ -1,3 +1,10 @@
+.section .data
+
+glabel D_800E48C8
+.word 0x00ffffff, 0x00ffff00, 0x00ff9600
+
+.section .text
+
 glabel func_80065AB0
 /* 0666B0 80065AB0 27BDFF40 */  addiu $sp, $sp, -0xc0
 /* 0666B4 80065AB4 AFA600C8 */  sw    $a2, 0xc8($sp)

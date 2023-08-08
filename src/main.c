@@ -32,7 +32,7 @@
 #include "render_courses.h"
 #include "actors.h"
 #include "staff_ghosts.h"
-#include <defines.h>
+#include <debug.h>
 
 // Declarations (not in this file)
 void func_80091B78(void);
@@ -538,7 +538,7 @@ void race_logic_loop(void) {
 
     D_80150112 = 0;
     D_80164AF0 = 0;
-    if (D_800DC5FC != 0) {
+    if (gIsGamePaused != 0) {
         func_80290B14();
     }
     if (gIsInQuitToMenuTransition != 0) {
@@ -557,8 +557,7 @@ void race_logic_loop(void) {
         case SCREEN_MODE_1P:
             gTickSpeed = 2;
             staff_ghosts_loop();
-            if (D_800DC5FC == 0) {
-
+            if (gIsGamePaused == 0) {
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E) {
                         gCourseTimer += 0.01666666; // 1 / 60
@@ -623,7 +622,7 @@ void race_logic_loop(void) {
             } else {
                 gTickSpeed = 2;
             }
-            if (D_800DC5FC == 0) {
+            if (gIsGamePaused == 0) {
                     for (i = 0; i < gTickSpeed; i++) {
                         if (D_8015011E != 0) {
                             gCourseTimer += 0.01666666;
@@ -669,7 +668,7 @@ void race_logic_loop(void) {
                 gTickSpeed = 2;
             }
 
-            if (D_800DC5FC == 0) {
+            if (gIsGamePaused == 0) {
                     for (i = 0; i < gTickSpeed; i++) {
                         if (D_8015011E != 0) {
                             gCourseTimer += 0.01666666;
@@ -737,7 +736,7 @@ void race_logic_loop(void) {
                         break;
                 }
             }
-            if (D_800DC5FC == 0) {
+            if (gIsGamePaused == 0) {
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E != 0) {
                         gCourseTimer += 0.01666666;
@@ -815,6 +814,9 @@ void race_logic_loop(void) {
     func_802A4300();
     func_800591B4();
     func_80093E20();
+#if DVDL
+	display_dvdl();	 
+#endif
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
 }
@@ -833,6 +835,20 @@ void race_logic_loop(void) {
  */
 
 void game_state_handler(void) {
+#if DVDL
+	if ((gControllerOne->button & L_TRIG) &&
+		(gControllerOne->button & R_TRIG) &&
+		(gControllerOne->button & Z_TRIG) &&
+		(gControllerOne->button & A_BUTTON)) {
+			gGamestateNext = CREDITS_SEQUENCE;
+	} else if ((gControllerOne->button & L_TRIG) &&	
+		(gControllerOne->button & R_TRIG) &&
+		(gControllerOne->button & Z_TRIG) &&
+		(gControllerOne->button & B_BUTTON)) {
+			gGamestateNext = ENDING_SEQUENCE;
+	}
+#endif
+
     switch (gGamestate) {
         case 7:
             game_init_clear_framebuffer();
@@ -847,6 +863,9 @@ void game_state_handler(void) {
             init_rcp();
             // gGfxPool->mtxPool->m or gGfxPool?
             func_80094A64((Mtx *) gGfxPool->mtxPool->m);
+#if DVDL
+			display_dvdl();	 
+#endif
             break;
         case RACING:
             race_logic_loop();

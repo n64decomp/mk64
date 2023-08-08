@@ -65,6 +65,32 @@ exactly what you're doing.
 
 #define ACTOR_LIST_SIZE 100
 
+// Actor flags
+#define ACTOR_IS_NOT_EXPIRED 0xF // The actor possesses some kind of collision and can be removed
+
+// Actor shell->state (green, red and blue)
+#define HELD_SHELL 0 // Single shell that has not been dropped. (probably holding Z).
+#define RELEASED_SHELL 1 // This is the short window where single shells aren't being held or launched.
+#define MOVING_SHELL 2 // Moving towards its target after being shot.
+#define RED_SHELL_LOCK_ON 3 // Red shell is targeting.
+#define TRIPLE_GREEN_SHELL 4 // Loses triple shell state when shot.
+#define GREEN_SHELL_HIT_A_RACER 5 // A racer has been hit by a green shell.
+#define TRIPLE_RED_SHELL 6 // Loses triple shell state when shot.
+#define DESTROYED_SHELL 7 // Collision with the shell.
+#define BLUE_SHELL_LOCK_ON 8 // A blue shell has found a target and is hastily approaching it.
+#define BLUE_SHELL_TARGET_ELIMINATED 9 // Mission completed, well done boss.
+// Actor banana->state
+#define HELD_BANANA 0 // Single banana that has not been dropped.
+#define DROPPED_BANANA 1 // A banana in the state of being dropped on the ground (it only last for a few frames).
+#define FIRST_BANANA_BUNCH_BANANA 2 // The first banana of the banana bunch
+#define BANANA_BUNCH_BANANA 3 // Every banana of the banana bunch except the first one.
+#define BANANA_ON_GROUND 4 // A banana sitting on the ground.
+#define DESTROYED_BANANA 5 // Collision with the banana.
+// Actor fakeItemBox->state
+#define HELD_FAKE_ITEM_BOX 0 // Item box is being held be Z.
+#define FAKE_ITEM_BOX_ON_GROUND 1 // Item box is on the ground.
+#define DESTROYED_FAKE_ITEM_BOX 2 // Collision with fake item box.
+
 struct Actor {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;

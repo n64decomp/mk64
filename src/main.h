@@ -116,7 +116,7 @@ extern s16 gCurrentlyLoadedCourseId;
 extern s16 gCurrentCourseId;
 
 extern s16 D_80164AF0;
-extern u16 D_800DC5FC;
+extern u16 gIsGamePaused; // 1 if the game is paused and 0 if the game is not paused
 extern u16 gIsInQuitToMenuTransition;
 
 

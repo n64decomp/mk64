@@ -107,7 +107,7 @@ void func_800C1E2C(Camera*, Vec3f, struct Unk_8018EFD8*);
 void func_800C1F8C();
 f32 *func_800C21E8(Vec3f, u32);
 void func_800C3448(s32);
-void func_800C36C4(s32, s32, u8, s8);
+void func_800C36C4(s32, u32, u8, s8);
 void func_800C4084(u16);
 void play_sound(u32, f32*, u8, f32*, f32*, u8*);
 void func_800C41CC(u8, struct Unk_80191420*);

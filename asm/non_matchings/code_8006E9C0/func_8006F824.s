@@ -30,8 +30,8 @@ glabel func_8006F824
 /* 070494 8006F894 A0490000 */  sb    $t1, ($v0)
 /* 070498 8006F898 10800008 */  beqz  $a0, .L8006F8BC
 /* 07049C 8006F89C A04A0001 */   sb    $t2, 1($v0)
-/* 0704A0 8006F8A0 3C0B800E */  lui   $t3, %hi(D_800DC5FC) # $t3, 0x800e
-/* 0704A4 8006F8A4 956BC5FC */  lhu   $t3, %lo(D_800DC5FC)($t3)
+/* 0704A0 8006F8A0 3C0B800E */  lui   $t3, %hi(gIsGamePaused) # $t3, 0x800e
+/* 0704A4 8006F8A4 956BC5FC */  lhu   $t3, %lo(gIsGamePaused)($t3)
 /* 0704A8 8006F8A8 3C044900 */  lui   $a0, (0x4900801C >> 16) # lui $a0, 0x4900
 /* 0704AC 8006F8AC 55600004 */  bnel  $t3, $zero, .L8006F8C0
 /* 0704B0 8006F8B0 8FBF0014 */   lw    $ra, 0x14($sp)

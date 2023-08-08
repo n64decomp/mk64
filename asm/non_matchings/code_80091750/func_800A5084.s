@@ -1,8 +1,8 @@
 glabel func_800A5084
 /* 0A5C84 800A5084 27BDFFB0 */  addiu $sp, $sp, -0x50
 /* 0A5C88 800A5088 AFB00034 */  sw    $s0, 0x34($sp)
-/* 0A5C8C 800A508C 3C10800E */  lui   $s0, %hi(D_800DC5FC) # $s0, 0x800e
-/* 0A5C90 800A5090 2610C5FC */  addiu $s0, %lo(D_800DC5FC) # addiu $s0, $s0, -0x3a04
+/* 0A5C8C 800A508C 3C10800E */  lui   $s0, %hi(gIsGamePaused) # $s0, 0x800e
+/* 0A5C90 800A5090 2610C5FC */  addiu $s0, %lo(gIsGamePaused) # addiu $s0, $s0, -0x3a04
 /* 0A5C94 800A5094 960E0000 */  lhu   $t6, ($s0)
 /* 0A5C98 800A5098 3C198016 */  lui   $t9, %hi(D_8015F480) # $t9, 0x8016
 /* 0A5C9C 800A509C 2739F480 */  addiu $t9, %lo(D_8015F480) # addiu $t9, $t9, -0xb80

@@ -424,9 +424,7 @@ typedef struct {
 
 typedef struct {
     char unk_00[0x4];
-    f32 unk_04;
-    char unk_08[0x4];
-    f32 unk_0C;
+    Vec3f unk_04;
     char unk_10[0x4];
     s32 objectIndex;
     char unk_18[0x8];
