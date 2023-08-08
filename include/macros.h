@@ -64,6 +64,4 @@
 // aligns an address to the next 16 bytes
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
 
-#define SQUARE(x) ((x) * (x))
-
 #endif
