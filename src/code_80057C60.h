@@ -108,9 +108,9 @@ void func_80060504(Player*, s16, s32, s32);
 void func_800608E0(Player*, s16, s32, s8, s8);
 void func_80060B14(Player*, s16, s32, s8, s8);
 void func_80060BCC(Player*, s16, s32, s32);
-void func_80060F50(Player*, s16, s8, s8);
+void func_80060F50(Player*, s16, s8, s8, s8);
 
-void func_80061094(Player*, s16, s8, s8);
+void func_80061094(Player*, s16, s8, s8, s8);
 void func_80061130(Player*, s16, s32, s8, s8);
 void func_80061224(Player*, s16, s32, s8, s8);
 void func_800612F8(Player*, s32, s32, s8);
@@ -166,10 +166,10 @@ void func_800652D4(Vec3f, Vec3s, f32);
 void func_8006538C(Player*, s8, s16, s8);
 void func_800658A0(Player*, s8, s16, s8);
 
-void func_800664E0(Player*, s32, s16, s8);
+void func_800664E0(Player*, s8, s16, s8);
 void func_80066998(Player*, s8, s16, s8);
 
-void func_80067280(Player*, s32, s16, s8);
+void func_80067280(Player*, s8, s16, s8);
 void func_80067964(Player*, s8, f32, s8, s8);
 void func_80067D3C(Player*, s8, u8*, s8, f32, s32);
 
@@ -238,7 +238,7 @@ extern s8 D_801657E6;
 extern s32 D_8018D2AC;
 extern u16 D_800DC5B8;
 extern s8 D_801657F0;
-extern s8 D_80165800;
+extern s8 D_80165800[2];
 extern s8 D_80165801;
 extern s8 D_801657B0;
 extern u8 gControllerRandom;

@@ -19,7 +19,7 @@ UNUSED void func_unnamed(void) {
 
 }
 
-void func_8008C1D8(UNUSED s32 *arg0) {
+s32 func_8008C1D8(UNUSED s32 *arg0) {
 
 }
 
