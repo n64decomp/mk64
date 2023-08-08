@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
+#include <mk64.h>
 #include "variables.h"
 #include "kart_attributes.h"
 #include "memory.h"
