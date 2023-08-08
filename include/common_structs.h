@@ -12,6 +12,12 @@ typedef s16 Vec4s[4];
 typedef f32 Mat3[3][3];
 typedef f32 Mat4[4][4];
 
+// might not be real, used by func_8002C954
+typedef struct
+{
+	f32 x, y, z;
+} Vec3fs;
+
 #define COURSE_NULL 0xFF
 
 typedef enum {
@@ -327,7 +333,7 @@ typedef struct {
     /* 0x0244 */ u16 unk_244[4]; // [0] Active texture group
     /* 0x024C */ u16 unk_24C[4];
     /* 0x0254 */ u16 characterId;
-    /* 0x0256 */ s16 unk_256;
+    /* 0x0256 */ u16 unk_256;
     /* 0x0258 */ UnkPlayerStruct258 unk_258[40];
     /* 0x0D98 */ s16 unk_D98;
     /* 0x0D9A */ s16 unk_D9A;
