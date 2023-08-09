@@ -435,7 +435,7 @@ s32 func_800061DC(Vec3f arg0, f32 arg1, s32 arg2) {
         break;
     }
     var_v1 = arg2;
-    if (D_800DC51C == 0) {
+    if (!gDemoMode) {
         var_a0 = gPlayerOne;
         for(var_a1 = 0; var_a1 < D_8018EDF3; var_a1++, var_a0++) {
             if (((var_a0->unk_000 & 0x4000) != 0) && ((var_a0->unk_000 & 0x1000) == 0)) {
@@ -1902,7 +1902,7 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
             }
             if (var_a1 != 1) {
                 if (temp_f2 < var_f12) {
-                    if ((D_800DC51C == (u16) 1) && (gCurrentCourseId != 0x0014)) {
+                    if ((gDemoMode) && (gCurrentCourseId != 0x0014)) {
                         func_80030FC8(player);
                         return;
                     }
@@ -2035,7 +2035,7 @@ s32 func_800088D8(s32 arg0, s16 arg1, s16 arg2) {
     temp_t2 = var_a1 * 8;
     temp_a3 = D_800DCBB4[gCurrentCourseId] + (temp_t2 * 2);
     if (arg2 == 0) {
-        if (D_800DC51C == (u16) 1) {
+        if (gDemoMode) {
             temp_a2 = D_80164450[arg0].unk2 - D_80164450[D_80164386].unk2;
             var_a1_2 = temp_a2;
             if (temp_a2 < 0) {
@@ -4894,7 +4894,7 @@ void func_8000F124(void) {
         temp_v0->unk-2 = 0;
         phi_v0 = temp_v0;
     } while (temp_v0 != &D_8016334C);
-    if (D_800DC51C != 1) {
+    if (!gDemoMode) {
         phi_s1 = &D_80163348;
         phi_s0 = 0;
         if (gModeSelection == GRAND_PRIX) {
@@ -5494,7 +5494,7 @@ void func_8000F628(void) {
     } while (temp_s3 < 8);
     D_801637BC.unk0 = 0;
     D_801637BC.unk2 = 0;
-    if (D_800DC51C == 0) {
+    if (!gDemoMode) {
         var_v0 = &D_80163344;
         var_s0_2 = 0;
         if (gModeSelection == GRAND_PRIX) {
@@ -5582,7 +5582,7 @@ void func_8000F628(void) {
     if (D_8018EE08 == (s8) 1U) {
         var_s2_3 = &D_80163330;
         var_s0_4 = 0;
-        if (D_800DC51C == 1) {
+        if (gDemoMode) {
             do {
                 if (var_s2_3->unk0 == 1) {
                     temp_s1 = &gPlayers[var_s0_4];
@@ -7888,7 +7888,7 @@ void func_80014DE4(s32 arg0) {
     temp_v1 = temp_v0 + &D_80164678;
     *temp_v1 = *(&D_80164670 + temp_v0);
     temp_a1 = gModeSelection;
-    if ((temp_a1 != TIME_TRIALS) && ((gCupCourseSelection == CUP_COURSE_ONE) || (D_800DC51C == 1))) {
+    if ((temp_a1 != TIME_TRIALS) && ((gCupCourseSelection == CUP_COURSE_ONE) || (gDemoMode))) {
         goto block_8;
     }
     temp_a2 = *temp_v1;

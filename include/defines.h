@@ -62,6 +62,12 @@
 #define DEBUG_GOTO_CREDITS_SEQUENCE_CC_50 2
 #define DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA 3
 
+/**
+ * Jump to demo mode from the debug menu
+ * using L and A
+ */
+#define DEMO_MODE_ACTIVE 1
+#define DEMO_MODE_INACTIVE 0
 
 /**
  * Racing terms:

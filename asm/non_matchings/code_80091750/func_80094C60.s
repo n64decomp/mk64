@@ -271,8 +271,8 @@ glabel L80094FF0
 /* 095C74 80095074 00003025 */  move  $a2, $zero
 /* 095C78 80095078 0C027994 */  jal   add_8018D9E0_entry
 /* 095C7C 8009507C 24070006 */   li    $a3, 6
-/* 095C80 80095080 3C01800E */  lui   $at, %hi(D_800DC51C) # $at, 0x800e
-/* 095C84 80095084 A420C51C */  sh    $zero, %lo(D_800DC51C)($at)
+/* 095C80 80095080 3C01800E */  lui   $at, %hi(gDemoMode) # $at, 0x800e
+/* 095C84 80095084 A420C51C */  sh    $zero, %lo(gDemoMode)($at)
 /* 095C88 80095088 3C018019 */  lui   $at, %hi(D_8018EE08) # $at, 0x8019
 /* 095C8C 8009508C 10000128 */  b     .L80095530
 /* 095C90 80095090 A020EE08 */   sb    $zero, %lo(D_8018EE08)($at)

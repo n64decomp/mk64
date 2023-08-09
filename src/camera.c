@@ -1097,7 +1097,7 @@ void func_8001EE98(Player *player, Camera *camera, s8 arg2) {
     }
     switch (gModeSelection) {                       /* irregular */
     case 0:
-        if (((player->unk_000 & 0x800) == 0x800) || (D_800DC51C == 1)) {
+        if (((player->unk_000 & 0x800) == 0x800) || (gDemoMode)) {
             D_80152300[var_s0] = 3;
         } else if (gIsGamePaused == 1) {
             func_8001A0A4((s32) &D_80152300[var_s0], (s32) camera, (s32) player, (s32) arg2, var_s0);
@@ -1106,7 +1106,7 @@ void func_8001EE98(Player *player, Camera *camera, s8 arg2) {
         }
         break;
     case 3:
-        if ((D_800DC51C == (u16) 1) || ((D_8015F894 == 2) && (D_80164A89 == 1))) {
+        if ((gDemoMode) || ((D_8015F894 == 2) && (D_80164A89 == 1))) {
             if (D_80164A88 == 0) {
                 func_80019ED0();
             }
@@ -1130,7 +1130,7 @@ void func_8001EE98(Player *player, Camera *camera, s8 arg2) {
         }
         break;
     case 1:
-        if (((gPlayerOne->unk_000 & 0x800) == 0x800) || (D_800DC51C == (u16) 1)) {
+        if (((gPlayerOne->unk_000 & 0x800) == 0x800) || (gDemoMode)) {
             D_80152300->unk0 = 3;
             *(D_80152300 + 2) = 3;
             *(D_80152300 + 4) = 3;
@@ -1149,7 +1149,7 @@ void func_8001EE98(Player *player, Camera *camera, s8 arg2) {
         }
         break;
     case 2:
-        if (((player->unk_000 & 0x800) == 0x800) || (D_800DC51C == (u16) 1) || (D_8015F894 == 2)) {
+        if (((player->unk_000 & 0x800) == 0x800) || (gDemoMode) || (D_8015F894 == 2)) {
             D_80152300[var_s0] = 3;
         } else {
             if (gIsGamePaused == (u16) 1) {

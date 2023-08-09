@@ -1428,7 +1428,7 @@ void func_80094C60(void) {
                 add_8018D9E0_entry(4, 0, 0, 2);
             }
             add_8018D9E0_entry(5, 0, 0, 6);
-            D_800DC51C = 0;
+            gDemoMode = DEMO_MODE_INACTIVE;
             D_8018EE08 = 0;
             break;
         case MAIN_MENU:
@@ -5504,7 +5504,7 @@ block_74:
                 gMenuSelection -= 1;
                 break;
             case 2:                                 /* switch 3 */
-                D_800DC51C = 1;
+                gDemoMode = DEMO_MODE_ACTIVE;
                 D_8018EE08 = 1;
                 gGamestateNext = 4;
                 gCCSelection = (s32) 1;

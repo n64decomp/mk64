@@ -12,8 +12,8 @@ glabel func_8000F124
 /* 00FD48 8000F148 24420002 */  addiu $v0, $v0, 2
 /* 00FD4C 8000F14C 1443FFFE */  bne   $v0, $v1, .L8000F148
 /* 00FD50 8000F150 A440FFFE */   sh    $zero, -2($v0)
-/* 00FD54 8000F154 3C0E800E */  lui   $t6, %hi(D_800DC51C)
-/* 00FD58 8000F158 95CEC51C */  lhu   $t6, %lo(D_800DC51C)($t6)
+/* 00FD54 8000F154 3C0E800E */  lui   $t6, %hi(gDemoMode)
+/* 00FD58 8000F158 95CEC51C */  lhu   $t6, %lo(gDemoMode)($t6)
 /* 00FD5C 8000F15C 24010001 */  li    $at, 1
 /* 00FD60 8000F160 3C0F800E */  lui   $t7, %hi(gModeSelection)
 /* 00FD64 8000F164 51C10050 */  beql  $t6, $at, .L8000F2A8

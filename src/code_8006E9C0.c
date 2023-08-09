@@ -702,7 +702,7 @@ void func_8006F8CC(void) {
         D_80165800.unk0 = D_80165832.unk0;
         D_80165800.unk1 = D_80165832.unk1;
     }
-    if (D_800DC51C != 0) {
+    if (gDemoMode) {
         D_801657F0 = 0;
     }
 }

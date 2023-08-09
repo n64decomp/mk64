@@ -334,7 +334,7 @@ void func_8008C8C4(Player* player, s8 arg1) {
     if ((D_80165460[arg1] == 1) && ((player->unk_000 & 0x4000) == 0x4000)) {
         player->unk_09C = (f32) (player->unk_09C + 100.0f);
     }
-    if ((gModeSelection == VERSUS) && ((player->unk_000 & 0x1000) == 0x1000) && (D_800DC51C == 0) && ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[arg1] != 0)) {
+    if ((gModeSelection == VERSUS) && ((player->unk_000 & 0x1000) == 0x1000) && (!gDemoMode) && ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[arg1] != 0)) {
         player->statusEffects = (s32) (player->statusEffects | 0x400000);
     }
 }
@@ -1027,7 +1027,7 @@ void func_8008E6C0(Player *player, s8 arg1)
     player->unk_0E0 = 0;
 
     if (((player->unk_000 & 0x4000) == 0x4000) && ((player->unk_000 & 0x100) != 0x100)) {
-        if (((gModeSelection == VERSUS) && ((player->unk_000 & 0x1000) != 0)) && (D_800DC51C == 0)) {
+        if (((gModeSelection == VERSUS) && ((player->unk_000 & 0x1000) != 0)) && (!gDemoMode)) {
             func_800CA24C(arg1);
         }
 
@@ -1035,7 +1035,7 @@ void func_8008E6C0(Player *player, s8 arg1)
         }
 
         func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008005);
-        if (((gModeSelection == VERSUS) && ((player->unk_000 & 0x1000) != 0)) && (D_800DC51C == 0)) {
+        if (((gModeSelection == VERSUS) && ((player->unk_000 & 0x1000) != 0)) && (!gDemoMode)) {
             func_800CA24C(arg1);
         }
         func_800C9060(arg1, SOUND_ACTION_EXPLOSION);

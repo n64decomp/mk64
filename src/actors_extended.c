@@ -706,7 +706,7 @@ void update_obj_banana(struct BananaActor *banana) {
         func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
         func_802B4E30((struct Actor *) banana);
         if ((player->unk_000 & 0x4000) != 0) {
-            if (D_800DC51C != 0) {
+            if (gDemoMode) {
                 controller = gControllerOne;
             } else {
                 controller = &gControllers[banana->rot[0]];
@@ -1528,7 +1528,7 @@ void update_obj_red_blue_shell(struct ShellActor *shell) {
         }
 
         if ((player->unk_000 & 0x4000) != 0) {
-            if (D_800DC51C != 0) {
+            if (gDemoMode) {
                 controller = gControllerOne;
             } else {
                 controller = &gControllers[shell->playerId];

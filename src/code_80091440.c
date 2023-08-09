@@ -1,5 +1,10 @@
 #include "variables.h"
 #include "code_80091440.h"
+#include "camera.h"
+#include "math_util.h"
+#include "main.h"
+#include <actor_types.h>
+#include "code_802AAA70.h"
 
 void func_80091440(s8 arg0) {
     if ((gPlayers[arg0].unk_044 & 0x800) == 0) {

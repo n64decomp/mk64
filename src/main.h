@@ -71,6 +71,8 @@ extern struct Controller *gControllerOne;
 extern s32 D_800DC568;
 extern s32 D_800DC56C[];
 
+extern u16 D_80152308;
+
 extern u32 gPhysicalFramebuffers[];
 extern OSIoMesg gDmaIoMesg;
 extern OSMesg gMainReceivedMesg;
