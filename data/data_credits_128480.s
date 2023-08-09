@@ -18,7 +18,7 @@ glabel D_80284E50
 .word 0x00207F20
 .word 0x007F7F20
 
-glabel D_80284E60
+glabel sRandomSeed16
 .word 0x00000000
 
 glabel D_80284E64

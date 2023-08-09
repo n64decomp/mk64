@@ -11,7 +11,7 @@ glabel func_8028118C
 /* 1247D4 80281194 AFB00018 */  sw    $s0, 0x18($sp)
 /* 1247D8 80281198 AFA40020 */  sw    $a0, 0x20($sp)
 /* 1247DC 8028119C AFA50024 */  sw    $a1, 0x24($sp)
-/* 1247E0 802811A0 0C0A0203 */  jal   func_8028080C
+/* 1247E0 802811A0 0C0A0203 */  jal   random_float_between_0_and_1
 /* 1247E4 802811A4 AFA60028 */   sw    $a2, 0x28($sp)
 /* 1247E8 802811A8 3C0E8028 */  lui   $t6, %hi(D_802874BE) # $t6, 0x8028
 /* 1247EC 802811AC 85CE74BE */  lh    $t6, %lo(D_802874BE)($t6)
