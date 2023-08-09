@@ -172,6 +172,8 @@ void func_8009DF4C(s32);
 void func_8009DF6C(s32);
 void func_8009DFE0(s32);
 void func_8009E000(s32);
+void func_8009E020(s32, s32);
+void func_8009E088(s32, s32);
 void func_8009E0F0(s32);
 void func_8009E1C0();
 void func_8009E1E4();
