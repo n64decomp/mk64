@@ -240,7 +240,7 @@ void func_800581C8(void) {
         func_80054BE8(0);
         return;
     }
-    if (D_800DC51C == 0) {
+    if (!gDemoMode) {
         func_800532A4(0);
     }
     func_800588F4(0);
@@ -252,7 +252,7 @@ void func_800582CC(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     func_8001C3C4(1);
-    if (D_800DC51C == 0) {
+    if (!gDemoMode) {
         func_800532A4(1);
     }
     func_800588F4(1);
@@ -263,7 +263,7 @@ void func_80058394(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[9]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     func_8001C3C4(2);
-    if (D_800DC51C == 0) {
+    if (!gDemoMode) {
         func_800532A4(2);
     }
     func_800588F4(2);
@@ -275,7 +275,7 @@ void func_8005845C(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[4]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[10]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     func_8001C3C4(3);
-    if ((D_800DC51C == 0) && (gPlayerCountSelection1 == 4)) {
+    if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
         func_800532A4(3);
     }
     func_800588F4(3);
@@ -484,56 +484,56 @@ void func_80058C20(u32 arg0) {
                 func_80058F48();
                 break;
             case 1:
-                if (D_800DC51C == 0) {
+                if (!gDemoMode) {
                     func_80059358();
                     break;
                 }
 
                 break;
             case 2:
-                if (D_800DC51C == 0) {
+                if (!gDemoMode) {
                     func_800593F0();
                     break;
                 }
 
                 break;
             case 3:
-                if (D_800DC51C == 0) {
+                if (!gDemoMode) {
                     func_800594F0();
                     break;
                 }
 
                 break;
             case 4:
-                if (D_800DC51C == 0) {
+                if (!gDemoMode) {
                     func_80059528();
                     break;
                 }
 
                 break;
             case 8:
-                if (D_800DC51C == 0) {
+                if (!gDemoMode) {
                     func_800596A8();
                     break;
                 }
 
                 break;
             case 9:
-                if (D_800DC51C == 0) {
+                if (!gDemoMode) {
                     func_80059710();
                     break;
                 }
 
                 break;
             case 10:
-                if (D_800DC51C == 0) {
+                if (!gDemoMode) {
                     func_80059750();
                     break;
                 }
 
                 break;
             case 11:
-                if ((D_800DC51C == 0) && (gPlayerCountSelection1 == 4)) {
+                if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
                     func_800597B8();
                 }
                 break;
@@ -551,56 +551,56 @@ void func_80058DB4(u32 arg0) {
             func_80058F78();
             break;
         case 1:
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 func_80059360();
                 break;
             }
 
             break;
         case 2:
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 func_800593F8();
                 break;
             }
 
             break;
         case 3:
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 func_800594F8();
                 break;
             }
 
             break;
         case 4:
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 func_80059530();
                 break;
             }
 
             break;
         case 8:
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 func_800596D8();
                 break;
             }
 
             break;
         case 9:
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 func_80059718();
                 break;
             }
 
             break;
         case 10:
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 func_80059780();
                 break;
             }
 
             break;
         case 11:
-            if ((D_800DC51C == 0) && (gPlayerCountSelection1 == 4)) {
+            if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
                 func_800597E8();
             }
             break;
@@ -617,7 +617,7 @@ void func_80058F48(void) {
 void func_80058F78(void) {
     if (D_801657B0 == 0) {
         func_80041EF4();
-        if ((D_800DC51C == 0) && (D_8018D188 != 0) && (D_801657D8 == 0)) {
+        if ((!gDemoMode) && (D_8018D188 != 0) && (D_801657D8 == 0)) {
             func_8004E638(0);
             if (D_801657E4 != 2) {
                 func_8004FA78(0);
@@ -699,7 +699,7 @@ void func_800591B4(void) {
                 if (D_801657F0 != 0) {
                     func_800514BC();
                 }
-                if ((D_800DC51C == 0) && (D_801657E8 != 0)) {
+                if ((!gDemoMode) && (D_801657E8 != 0)) {
                     if (D_80165800[0] != 0) {
                         func_8004EE54(0);
                         if (gModeSelection != BATTLE) {
@@ -906,7 +906,7 @@ void func_8005995C(void) {
 
 void func_80059A88(s32 arg0) {
     func_80059820(arg0);
-    if (D_800DC51C == 0) {
+    if (!gDemoMode) {
         func_8007A948(arg0);
         func_8007BB9C(arg0);
     }
@@ -984,7 +984,7 @@ void func_80059D00(void) {
             if (D_8018D214 == 0) {
                 func_80059820(0);
                 func_8005B914();
-                if (D_800DC51C == 0) {
+                if (!gDemoMode) {
                     func_8007AA44(0);
                 }
                 func_80078C70(0);
@@ -1005,14 +1005,14 @@ void func_80059D00(void) {
             func_800598D4(1);
             func_80059820(0);
             func_8005D0FC(0);
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 func_8007AA44(0);
             }
             func_80078C70(1);
             func_8005D1F4(0);
             func_80059820(1);
             func_8005D0FC(1);
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 func_8007AA44(1);
             }
             func_80078C70(2);
@@ -1024,14 +1024,14 @@ void func_80059D00(void) {
             func_800598D4(1);
             func_80059820(0);
             func_8005D0FC(0);
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 func_8007AA44(0);
             }
             func_80078C70(3);
             func_8005D1F4(0);
             func_80059820(1);
             func_8005D0FC(1);
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 func_8007AA44(1);
             }
             func_80078C70(4);
@@ -1045,26 +1045,26 @@ void func_80059D00(void) {
             func_800598D4(3);
             func_80059820(0);
             func_8005D0FC(0);
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 func_8007AA44(0);
             }
             func_8005D1F4(0);
             func_80059820(1);
             func_8005D0FC(1);
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 func_8007AA44(1);
             }
             func_8005D1F4(1);
             func_80059820(2);
             func_8005D0FC(2);
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 func_8007AA44(2);
             }
             func_8005D1F4(2);
             if (gPlayerCountSelection1 == 4) {
                 func_80059820(3);
                 func_8005D0FC(3);
-                if ((D_800DC51C == 0) && (gPlayerCountSelection1 == 4)) {
+                if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
                     func_8007AA44(3);
                 }
                 func_8005D1F4(3);
@@ -1206,7 +1206,7 @@ void func_8005A3C0(void) {
                 } else {
                     D_801657F0 = 1;
                 }
-                if (D_800DC51C != 0) {
+                if (gDemoMode) {
                     D_801657F0 = 0;
                 }
             }

@@ -104,7 +104,7 @@ extern Vp D_802B8880[];
 extern Gfx  D_0D0077A0[];
 
 extern s32  gGamestate;
-extern u16  D_800DC51C;
+extern u16  gDemoMode;
 extern s32  D_800DC540;
 extern u16  gIsGamePaused;
 

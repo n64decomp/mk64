@@ -82,7 +82,7 @@ extern s32 D_8018D930[];
 extern Gfx D_0D008C78[];
 extern Gfx D_0D008D58[];
 
-extern u16 D_800DC51C;
+extern u16 gDemoMode;
 extern s32 D_800DDB58;
 extern void *D_800DDB5C[];
 extern Vtx *D_800DDBB4[];

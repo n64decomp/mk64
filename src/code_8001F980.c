@@ -31,7 +31,7 @@ void *D_800DDB5C[3] = {
 };
 
 void func_8001F980(s32 *arg0, s32 *arg1) {
-    if ((D_800DC51C == 1) || (D_80164A28 != 0) || (D_8015F894 != 0)) {
+    if ((gDemoMode == 1) || (D_80164A28 != 0) || (D_8015F894 != 0)) {
         *arg0 = 0xAA;
     } else {
         *arg0 = 0;

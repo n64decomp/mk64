@@ -228,7 +228,7 @@ extern s8 D_801657B2;
 extern s8 D_801657C8;
 extern s32 D_8018D22C;
 extern s32 gGamestate;
-extern u16 D_800DC51C;
+extern u16 gDemoMode;
 extern s8 D_8018EDF3;
 extern s8 D_80165898;
 extern u16 D_8015F894;

@@ -43,17 +43,17 @@ glabel func_8001EE98
 /* 01FB2C 8001EF2C 8FAC0038 */   lw    $t4, 0x38($sp) # 0x38($sp)
 /* 01FB30 8001EF30 24010003 */  li    $at, 3
 /* 01FB34 8001EF34 1041002C */  beq   $v0, $at, .L8001EFE8
-/* 01FB38 8001EF38 3C0C800E */   lui   $t4, %hi(D_800DC51C) # 0x800e # Possible red herring. Not a pointer.
+/* 01FB38 8001EF38 3C0C800E */   lui   $t4, %hi(gDemoMode) # 0x800e # Possible red herring. Not a pointer.
 /* 01FB3C 8001EF3C 100000CB */  b     .L8001F26C
 /* 01FB40 8001EF40 00000000 */   nop
 /* 01FB44 8001EF44 958D0000 */  lhu   $t5, ($t4)
 .L8001EF48:
 /* 01FB48 8001EF48 24010800 */  li    $at, 2048
-/* 01FB4C 8001EF4C 3C0F800E */  lui   $t7, %hi(D_800DC51C) # $t7, 0x800e
+/* 01FB4C 8001EF4C 3C0F800E */  lui   $t7, %hi(gDemoMode) # $t7, 0x800e
 /* 01FB50 8001EF50 31AE0800 */  andi  $t6, $t5, 0x800
 /* 01FB54 8001EF54 11C10005 */  beq   $t6, $at, .L8001EF6C
 /* 01FB58 8001EF58 24020003 */   li    $v0, 3
-/* 01FB5C 8001EF5C 95EFC51C */  lhu   $t7, %lo(D_800DC51C)($t7)
+/* 01FB5C 8001EF5C 95EFC51C */  lhu   $t7, %lo(gDemoMode)($t7)
 /* 01FB60 8001EF60 24030001 */  li    $v1, 1
 /* 01FB64 8001EF64 3C19800E */  lui   $t9, %hi(gIsGamePaused) # $t9, 0x800e
 /* 01FB68 8001EF68 146F0006 */  bne   $v1, $t7, .L8001EF84
@@ -92,7 +92,7 @@ glabel func_8001EE98
 /* 01FBE0 8001EFE0 100000A2 */  b     .L8001F26C
 /* 01FBE4 8001EFE4 00000000 */   nop
 .L8001EFE8:
-/* 01FBE8 8001EFE8 958CC51C */  lhu   $t4, %lo(D_800DC51C)($t4)
+/* 01FBE8 8001EFE8 958CC51C */  lhu   $t4, %lo(gDemoMode)($t4)
 /* 01FBEC 8001EFEC 3C0D8016 */  lui   $t5, %hi(D_8015F894) # $t5, 0x8016
 /* 01FBF0 8001EFF0 3C0F8016 */  lui   $t7, %hi(D_80164A88) # $t7, 0x8016
 /* 01FBF4 8001EFF4 106C0009 */  beq   $v1, $t4, .L8001F01C
@@ -162,13 +162,13 @@ glabel func_8001EE98
 .L8001F0E0:
 /* 01FCE0 8001F0E0 8D8CC4DC */  lw    $t4, %lo(gPlayerOne)($t4)
 /* 01FCE4 8001F0E4 24010800 */  li    $at, 2048
-/* 01FCE8 8001F0E8 3C0F800E */  lui   $t7, %hi(D_800DC51C) # $t7, 0x800e
+/* 01FCE8 8001F0E8 3C0F800E */  lui   $t7, %hi(gDemoMode) # $t7, 0x800e
 /* 01FCEC 8001F0EC 958D0000 */  lhu   $t5, ($t4)
 /* 01FCF0 8001F0F0 24020003 */  li    $v0, 3
 /* 01FCF4 8001F0F4 31AE0800 */  andi  $t6, $t5, 0x800
 /* 01FCF8 8001F0F8 11C10004 */  beq   $t6, $at, .L8001F10C
 /* 01FCFC 8001F0FC 00000000 */   nop
-/* 01FD00 8001F100 95EFC51C */  lhu   $t7, %lo(D_800DC51C)($t7)
+/* 01FD00 8001F100 95EFC51C */  lhu   $t7, %lo(gDemoMode)($t7)
 /* 01FD04 8001F104 3C18800E */  lui   $t8, %hi(gIsGamePaused) # $t8, 0x800e
 /* 01FD08 8001F108 146F0009 */  bne   $v1, $t7, .L8001F130
 .L8001F10C:
@@ -218,11 +218,11 @@ glabel func_8001EE98
 .L8001F1AC:
 /* 01FDAC 8001F1AC 958D0000 */  lhu   $t5, ($t4)
 /* 01FDB0 8001F1B0 24010800 */  li    $at, 2048
-/* 01FDB4 8001F1B4 3C0F800E */  lui   $t7, %hi(D_800DC51C) # $t7, 0x800e
+/* 01FDB4 8001F1B4 3C0F800E */  lui   $t7, %hi(gDemoMode) # $t7, 0x800e
 /* 01FDB8 8001F1B8 31AE0800 */  andi  $t6, $t5, 0x800
 /* 01FDBC 8001F1BC 11C10009 */  beq   $t6, $at, .L8001F1E4
 /* 01FDC0 8001F1C0 24020003 */   li    $v0, 3
-/* 01FDC4 8001F1C4 95EFC51C */  lhu   $t7, %lo(D_800DC51C)($t7)
+/* 01FDC4 8001F1C4 95EFC51C */  lhu   $t7, %lo(gDemoMode)($t7)
 /* 01FDC8 8001F1C8 3C188016 */  lui   $t8, %hi(D_8015F894) # $t8, 0x8016
 /* 01FDCC 8001F1CC 506F0006 */  beql  $v1, $t7, .L8001F1E8
 /* 01FDD0 8001F1D0 0010C840 */   sll   $t9, $s0, 1

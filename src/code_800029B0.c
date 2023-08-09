@@ -18,12 +18,12 @@
 #include "spawn_players.h"
 #include "staff_ghosts.h"
 #include "render_courses.h"
+#include "main.h"
 
 extern u16 D_800DC5A8;
 
 extern s32 D_800DC510;
 extern u16 gNumSpawnedShells;
-extern u16 D_80152308;
 extern s32 D_802BA038;
 extern s16 D_802BA048;
 
@@ -147,7 +147,7 @@ void setup_race(void) {
             D_8015F8D0[0] = D_80164490->wayPointX;
         }
     }
-    if (D_800DC51C == 0) {
+    if (!gDemoMode) {
         func_800CA008(gPlayerCountSelection1 - 1, gCurrentCourseId + 4);
         func_800CB2C4();
     }

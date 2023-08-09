@@ -453,8 +453,8 @@ glabel func_8000F628
 /* 0108FC 8000FCFC A4A0FFFE */  sh    $zero, -2($a1)
 /* 010900 8000FD00 1420FECD */  bnez  $at, .L8000F838
 /* 010904 8000FD04 A4C2FFFE */   sh    $v0, -2($a2)
-/* 010908 8000FD08 3C15800E */  lui   $s5, %hi(D_800DC51C)
-/* 01090C 8000FD0C 26B5C51C */  addiu $s5, %lo(D_800DC51C) # addiu $s5, $s5, -0x3ae4
+/* 010908 8000FD08 3C15800E */  lui   $s5, %hi(gDemoMode)
+/* 01090C 8000FD0C 26B5C51C */  addiu $s5, %lo(gDemoMode) # addiu $s5, $s5, -0x3ae4
 /* 010910 8000FD10 96B80000 */  lhu   $t8, ($s5)
 /* 010914 8000FD14 3C028016 */  lui   $v0, %hi(D_801637BC) # $v0, 0x8016
 /* 010918 8000FD18 244237BC */  addiu $v0, %lo(D_801637BC) # addiu $v0, $v0, 0x37bc

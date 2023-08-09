@@ -274,8 +274,8 @@ glabel L8009D214
 /* 09DE28 8009D228 AC990000 */   sw    $t9, ($a0)
 glabel L8009D22C
 /* 09DE2C 8009D22C 240E0001 */  li    $t6, 1
-/* 09DE30 8009D230 3C01800E */  lui   $at, %hi(D_800DC51C) # $at, 0x800e
-/* 09DE34 8009D234 A42EC51C */  sh    $t6, %lo(D_800DC51C)($at)
+/* 09DE30 8009D230 3C01800E */  lui   $at, %hi(gDemoMode) # $at, 0x800e
+/* 09DE34 8009D234 A42EC51C */  sh    $t6, %lo(gDemoMode)($at)
 /* 09DE38 8009D238 24050001 */  li    $a1, 1
 /* 09DE3C 8009D23C 3C018019 */  lui   $at, %hi(D_8018EE08) # $at, 0x8019
 /* 09DE40 8009D240 A025EE08 */  sb    $a1, %lo(D_8018EE08)($at)

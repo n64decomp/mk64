@@ -1201,9 +1201,9 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 gDebugMenuSelection = DEBUG_MENU_EXITED;
 
                 if (controller->button & CONT_L) {
-                    D_800DC51C = 1;
+                    gDemoMode = DEMO_MODE_ACTIVE;
                 } else {
-                    D_800DC51C = 0;
+                    gDemoMode = DEMO_MODE_INACTIVE;
                 }
 
                 if (controller->button & Z_TRIG) {

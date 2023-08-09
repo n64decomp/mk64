@@ -1627,7 +1627,7 @@ s32 func_802AB6C4(void *, void *, f32, f32, f32, s32); // extern
 extern u8 D_8014F110;
 extern s32 D_8015F584;
 
-s32 func_802ADDC8(void *arg0, void *arg1, f32 arg2, f32 arg3, f32 arg4) {
+s32 func_802ADDC8(UnkActorInner *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     s16 temp_v0_4;
     s16 temp_v1;
     s32 temp_f4;

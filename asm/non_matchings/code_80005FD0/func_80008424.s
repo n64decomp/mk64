@@ -251,10 +251,10 @@ glabel func_80008424
 /* 00939C 8000879C 50A8004B */  beql  $a1, $t0, .L800088CC
 /* 0093A0 800087A0 8FBF0014 */   lw    $ra, 0x14($sp)
 /* 0093A4 800087A4 460C103C */  c.lt.s $f2, $f12
-/* 0093A8 800087A8 3C0C800E */  lui   $t4, %hi(D_800DC51C)
+/* 0093A8 800087A8 3C0C800E */  lui   $t4, %hi(gDemoMode)
 /* 0093AC 800087AC 45020035 */  bc1fl .L80008884
 /* 0093B0 800087B0 8CEB00BC */   lw    $t3, 0xbc($a3)
-/* 0093B4 800087B4 958CC51C */  lhu   $t4, %lo(D_800DC51C)($t4)
+/* 0093B4 800087B4 958CC51C */  lhu   $t4, %lo(gDemoMode)($t4)
 /* 0093B8 800087B8 3C0E8016 */  lui   $t6, %hi(D_80163330) # 0x8016
 /* 0093BC 800087BC 3C0D800E */  lui   $t5, %hi(gCurrentCourseId)
 /* 0093C0 800087C0 150C0009 */  bne   $t0, $t4, .L800087E8

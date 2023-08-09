@@ -67,7 +67,7 @@ extern u16 D_800DC5B8;
 extern s32 gMenuSelection;
 
 extern s8 D_8018EE08;
-extern u16 D_800DC51C;
+extern u16 gDemoMode;
 extern f32 D_80150118;
 extern u16 D_800DC518;
 extern u16 D_8015011E;
@@ -539,7 +539,7 @@ void start_race(void) {
     s32 i;
 
     D_8015011E = -1;
-    if (D_800DC51C == 0) {
+    if (!gDemoMode) {
         func_8028EC98(gCurrentCourseId);
     }
 
@@ -976,7 +976,7 @@ void func_8028FCBC(void) {
     }
     switch (D_800DC510) {
         case 0:
-            if (D_800DC51C == 0) {
+            if (!gDemoMode) {
                 if (gModeSelection == GRAND_PRIX) {
                     func_800C8EF8(11);
                     play_sound2(SOUND_ACTION_REV_ENGINE);
@@ -1040,7 +1040,7 @@ void func_8028FCBC(void) {
             func_8028F4E8();
             break;
         case 2:
-            if (D_800DC51C) {
+            if (gDemoMode) {
                 start_race();
             }
             if ((gEnableDebugMode) && (gControllerFive->buttonPressed & Z_TRIG)) {

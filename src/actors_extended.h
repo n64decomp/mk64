@@ -55,7 +55,7 @@ extern struct Controller *gControllerSix;
 extern struct Controller *gControllerSeven;
 extern struct Controller *gControllerEight;
 
-extern u16 D_800DC51C;
+extern u16 gDemoMode;
 extern s16 D_8015F6E8;
 extern s16 D_8015F6EA;
 extern s16 D_8015F6F0;
