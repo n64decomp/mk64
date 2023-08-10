@@ -3,7 +3,8 @@
 
 void crash_screen_draw(OSThread* thread);
 
-#define CRASH_SCREEN_ENHANCEMENT
+// Add this to the top of main.c or crash_screen.c
+//#define CRASH_SCREEN_ENHANCEMENT
 
 
 
