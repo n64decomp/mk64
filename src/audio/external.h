@@ -88,7 +88,7 @@ struct Unk_800EA06C {
 	/* 0x0D */ // u8 compilerPadding0[3];
 };
 
-void func_800C35E8(s32);
+void func_800C35E8(u8);
 u16 func_800C3508(s32);
 void func_800C5278(u8);
 void func_800CB14C(void);
@@ -148,7 +148,7 @@ void func_800CA49C(u8);
 void func_800CAACC(u8);
 void func_800CAEC4(u8, f32);
 void func_800CB134();
-void func_800CB2C4(void);
+void func_800CB2C4();
 void func_800C5CB8(void);
 
 // Based on SM64, this should be part of data.c's BSS section. Somehow.
