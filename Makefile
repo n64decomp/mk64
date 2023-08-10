@@ -25,7 +25,8 @@ TARGET_N64 ?= 1
 COMPILER ?= ido
 $(eval $(call validate-option,COMPILER,ido gcc))
 
-# options for debuging. Set this to 1 and modify the macros in include/debug.h
+# Add debug tools with 'make DEBUG=1' and modify the macros in include/debug.h
+# Run make clean first. Add '#define CRASH_SCREEN_ENHANCEMENT' to the top of main.c
 DEBUG ?= 0
 
 # VERSION - selects the version of the game to build

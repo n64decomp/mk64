@@ -33,6 +33,7 @@
 #include "actors.h"
 #include "staff_ghosts.h"
 #include <debug.h>
+#include "crash_screen.h"
 
 // Declarations (not in this file)
 void func_80091B78(void);
@@ -133,7 +134,7 @@ Gfx *gDisplayListHead;
 struct SPTask *gGfxSPTask;
 s32 D_801502A0;
 s32 D_801502A4;
-u32 gPhysicalFramebuffers[3];
+u16 *gPhysicalFramebuffers[3];
 u32 D_801502B4;
 UNUSED u32 D_801502B8;
 UNUSED u32 D_801502BC;
@@ -435,7 +436,6 @@ void config_gfx_pool(void) {
  * Yields to the VI framerate twice, locking the game at 30 FPS.
  * Selects the next framebuffer to be rendered and displayed.
  */
-void crash_screen_set_framebuffer(uintptr_t*);
 void display_and_vsync(void) {
     profiler_log_thread5_time(BEFORE_DISPLAY_LISTS);
     osRecvMesg(&gGfxVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
@@ -445,7 +445,8 @@ void display_and_vsync(void) {
     osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
     profiler_log_thread5_time(THREAD5_END);
     osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-    crash_screen_set_framebuffer((uintptr_t *) gPhysicalFramebuffers[sRenderedFramebuffer]);
+    crash_screen_set_framebuffer(gPhysicalFramebuffers[sRenderedFramebuffer]);
+
     if (++sRenderedFramebuffer == 3) {
         sRenderedFramebuffer = 0;
     }
@@ -1032,16 +1033,15 @@ void thread3_video(UNUSED void *arg0) {
     OSMesg msg;
     UNUSED s32 pad[4];
 
-    gPhysicalFramebuffers[0] = (u32) &gFramebuffer0;
-    gPhysicalFramebuffers[1] = (u32) &gFramebuffer1;
-    gPhysicalFramebuffers[2] = (u32) &gFramebuffer2;
+    gPhysicalFramebuffers[0] = (u16 *) &gFramebuffer0;
+    gPhysicalFramebuffers[1] = (u16 *) &gFramebuffer1;
+    gPhysicalFramebuffers[2] = (u16 *) &gFramebuffer2;
 
     // Clear framebuffer.
     framebuffer1 = (u64 *) &gFramebuffer1;
     for (i = 0; i < 19200; i++) {
         framebuffer1[i] = 0;
     }
-
     setup_mesg_queues();
     setup_game_memory();
 
@@ -1144,6 +1144,7 @@ void thread5_game_loop(UNUSED void *arg) {
     if (!wasSoftReset) {
         clear_nmi_buffer();
     }
+
     set_vblank_handler(2, &gGameVblankHandler, &gGameVblankQueue, (OSMesg) OS_EVENT_SW2);
     // These variables track stats such as player wins.
     // In the event of a console reset, it remembers them.
