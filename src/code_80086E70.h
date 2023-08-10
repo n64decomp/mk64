@@ -53,7 +53,10 @@ s32  func_80087E08(s32, f32, f32, f32, s16, s32);
 s32  func_80087F14(s32, f32, f32, f32, s16, s32);
 void func_80088038(s32, f32, u16);
 void func_800880DC();
+void func_800880E4(s32);
 void func_80088150(s32);
+void func_80088178(s32, s32);
+s32  func_800882B0(s32, s32);
 s32  func_8008847C(s32);
 s32  func_80088538(s32);
 s32  func_8008861C(s32);
@@ -106,6 +109,9 @@ void func_8008A850(s32);
 s32  func_8008A870(Player*);
 s32  func_8008A890(Camera*);
 s32  func_8008A8B0(s16, s16);
+void func_8008A920(s32);
+void func_8008A9B8(s32);
+void func_8008AB10(s32);
 void func_8008ABC0(s32);
 void func_8008AC40(s32);
 void func_8008ACC0();
@@ -116,13 +122,15 @@ void func_8008ADC0();
 void func_8008ADC8();
 void func_8008AE8C();
 void func_8008AE94();
-void func_8008ADD0(s32*, f32);
+void func_8008AE9C(s32);
+void func_8008ADD0(f32*, f32);
 void func_8008AFE0(s32, f32);
 void func_8008B018();
 void func_8008B020();
 void func_8008B028();
 void func_8008B030();
-void func_8008ACE0(s32*,f32);
+void func_8008B038(s32);
+void func_8008ACE0(f32*,f32);
 void func_8008B17C(s32, f32);
 void func_8008B1B4();
 void func_8008B1BC();
@@ -146,18 +154,26 @@ void func_8008BE0C(s32, s16, u16);
 void func_8008BEA4(s32, u16, u16);
 void func_8008BFC0(s32);
 void func_8008BF18(s32);
+void func_8008BF64(s32);
 void func_8008C1B8();
 void func_8008C1C0();
 
 // This may be a list of tilemap flags on a per-camera basis
 extern s16 D_8018CF68[];
 extern s32 gPlayerCountSelection1;
-extern s32 D_80183DA8;
-extern s32 D_80183DC8;
+extern f32 D_80183DA8[];
+extern f32 D_80183DC8[];
 extern f32 gVBlankTimer;
 extern UnkActorInner D_8018C3B0;
 extern Player *gPlayerOne;
 extern Player *gPlayerOneCopy;
 extern s16 gCurrentCourseId;
+
+extern Vec4s D_80165760;
+extern Vec4s D_80165770;
+extern Vec4s D_80165780;
+
+extern Vec3f D_80183E40;
+extern Vec3su D_80183E80;
 
 #endif
