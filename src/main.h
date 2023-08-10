@@ -73,7 +73,7 @@ extern s32 D_800DC56C[];
 
 extern u16 D_80152308;
 
-extern u32 gPhysicalFramebuffers[];
+extern u16 *gPhysicalFramebuffers[];
 extern OSIoMesg gDmaIoMesg;
 extern OSMesg gMainReceivedMesg;
 extern OSMesgQueue gDmaMesgQueue;

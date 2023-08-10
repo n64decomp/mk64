@@ -1,12 +1,20 @@
 #include <ultra64.h>
 #include <macros.h>
-#include "types.h"
+#include <types.h>
+#include <config.h>
+#include <stdarg.h>
+#include <string.h>
+#include "crash_screen.h"
+
+#ifdef CRASH_SCREEN_ENHANCEMENT
+#include "debug/crash_screen_enhancement.h"
+#endif
 
 OSThread D_80162790;
 ALIGNED8 u8 gDebugThreadStack[0x400];
 OSMesgQueue D_80162D40;
 OSMesg D_80162D58;
-uintptr_t *pFramebuffer;
+u16 *pFramebuffer;
 s32 sButtonSequenceIndex;
 
 #define DRAW_CODE 0xFFFF
@@ -212,17 +220,17 @@ void thread9_crash_screen(UNUSED void *arg0)
     osSetEventMesg(10, &D_80162D40, (OSMesg) 16);
     sButtonSequenceIndex = 0;
 
-    while (1) {
+    while (TRUE) {
         osRecvMesg(&D_80162D40, &mesg, 1);
         thread = get_faulted_thread();
         
         if (thread) {
             // Run only on the first iteration.
             if (sCounter == 0) {
-                crash_screen_draw_square((u16 *)pFramebuffer);
-                //#define SKIP_DRAW_SQUARE
-                #ifndef SKIP_DRAW_SQUARE
-                while(1)
+                crash_screen_draw_square(pFramebuffer);
+//#define SKIP_DRAW_SQUARE
+#ifndef SKIP_DRAW_SQUARE
+                while(TRUE)
                 {
                     read_controllers();
 
@@ -239,8 +247,12 @@ void thread9_crash_screen(UNUSED void *arg0)
                         break;
                     }
                 }
-                #endif
-                crash_screen_draw_info((u16 *) pFramebuffer, thread);
+#endif
+#ifdef CRASH_SCREEN_ENHANCEMENT
+                crash_screen_draw(thread);
+#else
+                crash_screen_draw_info(pFramebuffer, thread);
+#endif
                 
             }
             if (sCounter < 5) {        
@@ -250,7 +262,7 @@ void thread9_crash_screen(UNUSED void *arg0)
     }
 }
 
-void crash_screen_set_framebuffer(uintptr_t *framebuffer) {
+void crash_screen_set_framebuffer(u16 *framebuffer) {
     pFramebuffer = framebuffer;
 }
 
