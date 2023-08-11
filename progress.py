@@ -84,14 +84,10 @@ seg2Files2 = [
     "asm/non_matchings/actors",
     "asm/non_matchings/math_util",
     "asm/non_matchings/memory",
+    "asm/non_matchings/code_802AAA70",
     "asm/non_matchings/race_logic",
     "asm/non_matchings/render_courses",
     "asm/non_matchings/skybox",
-]
-seg3Files2 = [
-    "asm/non_matchings/code_80280650",
-    "asm/non_matchings/code_802AAA70",
-    "asm/non_matchings/ceremony_and_credits",
 ]
 audioFiles2 = [
     "asm/non_matchings/audio"
@@ -106,10 +102,6 @@ def GetNonMatchingSize(path):
 
     elif (path == "seg2"):
         for file in seg2Files2: 
-            size += getData(file)
-
-    elif (path == "seg3"):
-        for file in seg3Files2: 
             size += getData(file)
 
     elif (path == "os"):
@@ -149,7 +141,6 @@ mapFile = ReadAllLines("build/us/mk64.us.map")
 src = 0
 mainSeg = 0
 seg2 = 0
-seg3 = 0
 audio = 0
 libultra = 0
 
@@ -182,18 +173,10 @@ seg2Files = [
     "build/us/src/actors_extended",
     "build/us/src/math_util",
     "build/us/src/memory",
+    "build/us/src/code_802AAA70",
     "build/us/src/race_logic",
     "build/us/src/render_courses",
     "build/us/src/skybox_and_splitscreen",
-]
-seg3Files = [
-    "build/us/src/camera_junk",
-    "build/us/src/code_80280000",
-    "build/us/src/code_80280650",
-    "build/us/src/code_80281780",
-    "build/us/src/code_80281C40",
-    "build/us/src/code_802AAA70",
-    "build/us/src/ceremony_and_credits",
 ]
 segAudioFiles = [
     "build/us/src/audio/effects",
@@ -224,9 +207,6 @@ for line in mapFile:
             if (objFile.startswith(tuple(seg2Files))):
                 seg2 += size
 
-            if (objFile.startswith(tuple(seg3Files))):
-                seg3 += size
-
             if (objFile.startswith("build/us/src/os")):
                 libultra += size
 
@@ -236,7 +216,6 @@ for line in mapFile:
 nonMatchingASM = GetNonMatchingSize("asm/non_matchings")
 nonMatchingMain = GetNonMatchingSize("main")
 nonMatchingSeg2 = GetNonMatchingSize("seg2")
-nonMatchingSeg3 = GetNonMatchingSize("seg3")
 nonMatchingLibultra = GetNonMatchingSize("os")
 nonMatchingASMAudio = GetNonMatchingSize("audio")
 
@@ -248,14 +227,13 @@ mainSeg += libultra
 mainSeg -= nonMatchingMain
 
 seg2 -= nonMatchingSeg2
-seg3 -= nonMatchingSeg3
 audio -= nonMatchingASMAudio
 libultra -= nonMatchingLibultra
 
 
 mainSeg_size = 831024
 seg2_size = 174224
-seg3_size = 20032
+# Segment 3 size = 20032
 mk64Code_size = 1025280
 # handwritten is likely 4400 bytes which brings us to the grand total of 53248.
 # for now the total is just a guess. 544 being non_matching funcs.
@@ -280,7 +258,6 @@ libultraPct = 100 * libultra / libultra_size
 audioPct = 100 * audio / audio_size
 mainSegPct = 100 * mainSeg / mainSeg_size
 seg2Pct = 100 * seg2 / seg2_size
-seg3Pct = 100 * seg3 / seg3_size
 
 bytesPerHeartPiece = text_size // 80
 
@@ -329,7 +306,7 @@ elif args.format == 'text':
     print(str(libultra) + "/" + str(libultra_size) + " bytes " + adjective + " in libultra " + str(libultraPct) + "%\n")
     print(str(mainSeg) + "/" + str(mainSeg_size) + " bytes " + adjective + " in mainSeg " + str(mainSegPct) + "%\n")
     print(str(seg2) + "/" + str(seg2_size) + " bytes " + adjective + " in seg2 " + str(seg2Pct) + "%\n")
-    print(str(seg3) + "/" + str(seg3_size) + " bytes " + adjective + " in seg3 " + str(seg3Pct) + "%\n")
+    print(str(20032) + "/" + str(20032) + "   bytes " + adjective + " in seg3 " + str(100.0) + "%\n")
     print("------------------------------------\n")
 
     heartPieces = int(src / bytesPerHeartPiece)

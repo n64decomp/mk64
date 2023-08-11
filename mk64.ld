@@ -424,17 +424,17 @@ SECTIONS
    BEGIN_SEG(code_80280000, SEG_80280000)
    {
       BUILD_DIR/src/code_80280000.o(.text);
-      BUILD_DIR/src/code_80280650.o(.text);
+      BUILD_DIR/src/podium_ceremony_actors.o(.text);
       BUILD_DIR/src/camera_junk.o(.text);
       BUILD_DIR/src/code_80281780.o(.text);
       BUILD_DIR/src/code_80281C40.o(.text);
       BUILD_DIR/src/ceremony_and_credits.o(.text);
-      BUILD_DIR/src/code_80280650.o(.data);
-      BUILD_DIR/data/data_credits_128480.o(.data);
+      BUILD_DIR/src/podium_ceremony_actors.o(.data);
+      BUILD_DIR/src/code_80281780.o(.data);
       BUILD_DIR/src/dl_unk_80284EE0.inc.o(.data);
       BUILD_DIR/src/credits.jp.o(.data);
       BUILD_DIR/src/ceremony_and_credits.o(.data);
-      BUILD_DIR/src/code_80280650.o(.rodata);
+      BUILD_DIR/src/podium_ceremony_actors.o(.rodata);
       BUILD_DIR/src/camera_junk.o(.rodata);
       BUILD_DIR/src/credits.jp.o(.rodata);
       BUILD_DIR/src/ceremony_and_credits.o(.rodata);
@@ -443,6 +443,8 @@ SECTIONS
 
    BEGIN_NOLOAD(code_80280000) {
       BUILD_DIR/asm/bss_credits.o(.bss);
+      BUILD_DIR/src/podium_ceremony_actors.o(.bss);
+      BUILD_DIR/src/code_80281C40.o(.bss);
       BUILD_DIR/src/ceremony_and_credits.o(.bss);
    }
    END_NOLOAD(code_80280000)

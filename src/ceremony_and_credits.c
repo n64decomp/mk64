@@ -17,7 +17,7 @@
 #include "camera.h"
 #include "audio/external.h"
 #include <sounds.h>
-#include "code_80280650.h"
+#include "podium_ceremony_actors.h"
 #include "code_80091750.h"
 
 extern f32 D_80150130[];

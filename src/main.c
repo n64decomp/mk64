@@ -23,7 +23,7 @@
 #include "audio/external.h"
 #include "code_800029B0.h"
 #include "code_80280000.h"
-#include "code_80280650.h"
+#include "podium_ceremony_actors.h"
 #include "code_80091750.h"
 #include "code_80057C60.h"
 #include "profiler.h"
@@ -872,7 +872,7 @@ void game_state_handler(void) {
             race_logic_loop();
             break;
         case ENDING_SEQUENCE:
-            ending_sequence_loop();
+            podium_ceremony_loop();
             break;
         case CREDITS_SEQUENCE:
             credits_loop();

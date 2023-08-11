@@ -7,10 +7,23 @@
 #include "hud_renderer.h"
 #include "code_80057C60.h"
 #include "code_80091750.h"
-#include "code_80280650.h"
+#include "podium_ceremony_actors.h"
 #include "code_80281C40.h"
 #include "ceremony_and_credits.h"
 #include "code_8001F980.h"
+
+struct UnkStruct80287560 {
+    s16 unk0;
+    s16 unk2;
+    s32 unk4;
+    s32 unk8;
+}; // 0xC
+
+/** bss **/
+u32 gMenuSelectionFromEndingSequence;
+s32 D_80287554;
+s32 D_80281C40_pad[2];
+struct UnkStruct80287560 D_80287560[30];
 
 void func_80281C40(void) {
     s32 i;
