@@ -6,7 +6,7 @@
 #include "math_util.h"
 #include "ceremony_and_credits.h"
 
-void setup_camera_ending_sequence(void) {
+void setup_camera_podium_ceremony(void) {
     Camera *camera;
     f32 x_dist;
     f32 y_dist;
@@ -23,7 +23,7 @@ void setup_camera_ending_sequence(void) {
     camera->rot[2] = 0;
 }
 
-// GP Ending sequence camera settings?
+// GP podium ceremony camera settings?
 void func_802816B8(void) {
     cameras[0].pos[0] = -3133.0f;
     cameras[0].pos[1] = 19.0f;

@@ -3,7 +3,7 @@
 
 /* Function Prototypes */
 
-void setup_camera_ending_sequence();
+void setup_camera_podium_ceremony();
 void func_802816B8();
 
 // guPerspective params
