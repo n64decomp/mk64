@@ -47,20 +47,20 @@ glabel D_802874F8
 glabel D_802874FC
 .skip 4
 
-glabel D_80287500
-.skip 64
+#glabel D_80287500
+#.skip 64
 
-glabel D_80287540
-.skip 16
+#glabel D_80287540
+#.skip 16
 
-glabel gMenuSelectionFromEndingSequence
-.skip 4
+#glabel gMenuSelectionFromEndingSequence
+#.skip 4
 
-glabel D_80287554
-.skip 12
+#glabel D_80287554
+#.skip 12
 
-glabel D_80287560
-.skip 368
+#glabel D_80287560 80281C40.c
+#.skip 368
 
 #glabel sCutsceneShot # Begin 80281fa0.c
 #.skip 2

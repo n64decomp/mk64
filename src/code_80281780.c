@@ -9,10 +9,15 @@
 #include "spawn_players.h"
 #include "skybox_and_splitscreen.h"
 #include "code_8006E9C0.h"
-#include "code_80280650.h"
+#include "podium_ceremony_actors.h"
 #include "code_80281780.h"
 #include "code_80005FD0.h"
 #include "code_802AAA70.h"
+#include "code_80281C40.h"
+
+u8 defaultCharacterIds[] = {
+    1, 2, 3, 4, 5, 6, 7, 0
+};
 
 void debug_switch_character_ceremony_cutscene(void) {
     if (gEnableDebugMode) {
@@ -41,8 +46,9 @@ void debug_switch_character_ceremony_cutscene(void) {
             } else {
                 gCharacterSelections[0] = MARIO;
             }
-            // D_80284ED0 appears to be unused.
-            bcopy(&D_80284ED0, &gCharacterIdByGPOverallRank, 8);
+            // todo: confirm this.
+            // Resets gCharacterIdByGPOverallRank to default?
+            bcopy(&defaultCharacterIds, &gCharacterIdByGPOverallRank, 8);
         }
     }
 }
@@ -137,7 +143,7 @@ void load_ceremony_cutscene(void) {
     func_8003D080();
     func_8006E9C0();
     func_8001C05C();
-    func_80280FB0();
+    balloons_and_fireworks_init();
     func_802816B8();
     func_80093E60();
     D_801625F8 = (s32) gHeapEndPtr - gNextFreeMemoryAddress;
