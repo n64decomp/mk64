@@ -197,7 +197,7 @@ void func_8006B8B4(Player*, s8);
 void func_8006B974(s32, s8, s8);
 void func_8006B9CC(Player*, s8);
 void func_8006BA94(Player*, s8, s8);
-void func_8006BB34(Vec3f, f32, s16, s16);
+void render_balloon(Vec3f, f32, s16, s16);
 
 void func_8006C0C8(Vec3f, f32, s32, s16);
 void func_8006C294(Vec3f, f32, s32, s16);

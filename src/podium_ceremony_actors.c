@@ -161,19 +161,19 @@ void func_80280884(void) {
 
 extern s16 D_802874CA;
 
-void balloon_update(CeremonyActor *arg0) {
-    func_8006BB34(arg0->pos, 1.0f, arg0->unk2E, arg0->unk2C);
-    arg0->pos[1] += 0.8f;
-    arg0->unk2E = sins(arg0->unk30) * arg0->unk34;
-    arg0->unk30 += arg0->unk32;
-    arg0->timer++;
+void balloon_update(CeremonyActor *actor) {
+    render_balloon(actor->pos, 1.0f, actor->unk2E, actor->unk2C);
+    actor->pos[1] += 0.8f;
+    actor->unk2E = sins(actor->unk30) * actor->unk34;
+    actor->unk30 += actor->unk32;
+    actor->timer++;
 
     // Delete actor
-    if (arg0->timer > 800) {
-        arg0->isActive = 0;
+    if (actor->timer > 800) {
+        actor->isActive = 0;
     }
     if (D_802874CA == 1) {
-        arg0->isActive = 0;
+        actor->isActive = 0;
     }
 }
 
@@ -277,11 +277,11 @@ void firework_update(Firework *actor) {
     actor->unk44 += 1;
 }
 
-void unused_80280FA0(UNUSED s32 arg0) {
+void unused_80280FA0(UNUSED CeremonyActor *actor) {
 
 }
 
-void unused_80280FA8(UNUSED s32 arg0) {
+void unused_80280FA8(UNUSED CeremonyActor *actor) {
 
 }
 
@@ -382,7 +382,7 @@ void spawn_timer(void) {
     sActorTimer += 1;
 }
 
-void *D_80284E94[][3] = {
+void *sUpdate[][3] = {
     // Dummy actor
     {unused_80280FA8, unused_80280FA0, 0},
     // Balloon
@@ -395,7 +395,7 @@ void *D_80284E94[][3] = {
 
 extern s16 D_802874D0;
 
-void func_80281438(void) {
+void update_actors_loop(void) {
     void (*func)(void *);
     CeremonyActor *actor;
     s32 i;
@@ -404,11 +404,13 @@ void func_80281438(void) {
     D_802874D0 = 0;
     for (i = 0; i < 3; i++) {
         actor = sPodiumActorList;
+        // High loop count to produce randomness? May also be a sort of delta?
+        // If this was for random, wouldn't it make everything move farther?
         for (j = 0; j < 200; j++) {
-
+            // @bug Check should be outside of this loop
             if (actor->isActive & 1) {
 
-                func = D_80284E94[actor->type][i];
+                func = sUpdate[actor->type][i];
 
                 if (func != 0) {
                     func(actor);

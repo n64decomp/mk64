@@ -73,7 +73,7 @@ void func_80281D00(void) {
     gSPDisplayList(gDisplayListHead++, &D_00284F70);
     func_800212B4();
     gSPDisplayList(gDisplayListHead++, &D_00284EE0);
-    func_80281438();
+    update_actors_loop();
     func_80058090(0);
     func_80021B0C();
     gSPDisplayList(gDisplayListHead++, &D_00284EE0);

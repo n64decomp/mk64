@@ -6267,7 +6267,7 @@ extern Vtx D_800E5250[];                                /* unable to generate in
 extern Vtx D_800E5290[];                                /* unable to generate initializer */
 extern u8 D_800E52D0[];                                /* unable to generate initializer */
 
-void func_8006BB34(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
+void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     Mat4 sp108;
     Vec3f spFC;
     Vec3s spF4;
@@ -6319,7 +6319,7 @@ void func_8006BB34(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     D_80164AF0 += 1;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006BB34.s")
+GLOBAL_ASM("asm/non_matchings/code_80057C60/render_balloon.s")
 #endif
 
 void func_8006C0C8(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha) {

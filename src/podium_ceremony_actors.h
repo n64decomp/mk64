@@ -71,7 +71,7 @@ typedef struct {
     /* 0x48 */ s32 unk48;
 } Firework;
 
-void func_80281438(void);
+void update_actors_loop(void);
 void func_80280650();
 void set_initial_position(CeremonyActor*);
 CeremonyActor *find_available_entry();
@@ -83,8 +83,6 @@ void func_80280884();
 void firework_cone_update_and_spawn_burst(Firework *);
 void func_80280A28(Vec3f, Vec3s, f32 );
 void render_fireworks(Vec3f, f32, s32, s16);
-void unused_80280FA0(s32);
-void unused_80280FA8(s32);
 void balloons_and_fireworks_init();
 void func_80280FFC();
 void func_8028100C(s32, s32, s32);
