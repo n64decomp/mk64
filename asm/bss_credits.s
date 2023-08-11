@@ -29,7 +29,7 @@ glabel D_802874D4
 glabel D_802874D8
 .skip 8
 
-glabel D_802874E0
+glabel sActorTimer
 .skip 20
 
 glabel D_802874F4
@@ -41,7 +41,7 @@ glabel D_802874F5
 glabel D_802874F6
 .skip 2
 
-glabel D_802874F8
+glabel sPodiumActorList
 .skip 4
 
 glabel D_802874FC

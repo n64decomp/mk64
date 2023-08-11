@@ -10,7 +10,7 @@ glabel D_800E4994
 
 .section .text
 
-glabel func_8006BB34
+glabel render_balloon
 /* 06C734 8006BB34 27BDFEB8 */  addiu $sp, $sp, -0x148
 /* 06C738 8006BB38 3C18800E */  lui   $t8, %hi(D_800E4974) # $t8, 0x800e
 /* 06C73C 8006BB3C AFBF0024 */  sw    $ra, 0x24($sp)
