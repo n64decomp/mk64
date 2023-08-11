@@ -78,7 +78,6 @@ mainSegFiles2 = [
     "asm/non_matchings/code_80091750",
     "asm/non_matchings/crash_screen",
     "asm/non_matchings/menus",
-    "asm/non_matchings/staff_ghosts",
 ]
 seg2Files2 = [
     "asm/non_matchings/actors",
