@@ -85,6 +85,9 @@ typedef struct
 extern struct_80165C18_entry D_80165C18[];
 
 // This are other lists of indices in D_80165C18.
+/**
+ * Lakitu?
+**/
 extern s32 D_80183DB8[];
 extern s32 D_80183DD8[];
 
@@ -93,6 +96,13 @@ extern s32 gItemWindowObjectByPlayerId[];
 
 // Used for loop bounds when accessing D_80183EA0
 extern s16 D_80165750;
+// These seem to be limits on different object types in Moo Moo Farm
+// See func_80070780 in code_8006E9C0.c
+extern s32 D_8018D1C8;
+extern s32 D_8018D1D0;
+extern s32 D_8018D1D8;
+// Limit on some object type (ice chips?) in Sherbet Land
+extern s32 D_8018D3C0;
 
 extern UnkActorInner D_8018C0B0[];
 
@@ -112,10 +122,13 @@ extern UnkActorInner D_8018C0B0[];
  * Hot air balloon in Luigi Raceway?
  * Neon signs in Rainbow Road?
  * Thwomps in Bower's Castle?
+ * Penguins in Sherbet Land?
 **/
 extern s32 D_80183EA0[];
 /**
- * Snowmen in Frappe Snowlad
+ * Snowmen in Frappe Snowland
+ * Chain Chomps in RaindbowRoad?
+ * Trophy in award ceremony?
 **/
 extern s32 D_80183F28[];
 extern s32 D_8018BFA8[];
@@ -145,6 +158,8 @@ extern s16 D_8018D174;
 extern s32 D_8018C3F0[];
 // Next free spot in D_8018C3F0? Wraps back around to 0 if it gets bigger than D_8018C3F0_SIZE
 extern s32 D_80183E4C;
+// Controls number of come object type placed into D_8018C3F0 on Frappe Snowland. So, maybe snowmen/snowflakes?
+extern s32 D_8018D3BC;
 
 #define D_8018C630_SIZE 0x80
 extern s32 D_8018C630[];
