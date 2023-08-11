@@ -16,6 +16,7 @@ void func_80086F10(s32, s32, u16[][4]);
 void func_80086F60(s32);
 s32  func_80086FA4(s32);
 void func_80086FD4(s32);
+void func_8008B724(s32);
 void func_8008B78C(s32);
 void func_8008701C(s32, s32);
 s32  func_80087060(s32, s32);

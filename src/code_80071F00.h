@@ -224,6 +224,8 @@ void func_8007C5B4(s32);
 void func_8007C684(s32);
 void func_8007C49C();
 s32  func_8007C9F8();
+void func_8007CE0C(s32);
+void func_8007CEDC(s32);
 void func_8007D360(s32, s32);
 void func_8007D6A8(s32, s32);
 void func_8007D714(s32);
@@ -267,10 +269,13 @@ void func_80080524(s32);
 void func_800806BC(s32);
 void func_8008078C(s32);
 void func_8008085C(s32);
+void func_800808CC(s32);
 void func_80080A14(s32, Player*);
 void func_80080A4C(s32, s32);
 void func_80080B28(s32, s32);
 void func_80080DE4(s32);
+void func_80080E8C(s32, s32, s32);
+void func_80080FEC(s32);
 void func_80081080(s32);
 void func_800810F4(s32);
 void func_80081208();
@@ -279,20 +284,31 @@ void func_8008153C(s32);
 void func_80081790(s32);
 void func_80081848(s32);
 void func_80081924(s32);
+void func_80081A88(s32);
+void func_80081AFC(s32, s32);
 void func_80081D34(s32);
+void func_80081FF4(s32, s32);
+void func_800821AC(s32, s32);
+void func_800821FC();
+void func_8008241C(s32, s32);
+void func_80082714(s32, s32);
 void func_8008275C(s32);
 void init_ktb_crab(s32);
 void func_80082B34(s32, s32);
 void func_80082C30(s32);
 void func_80082E18(s32);
 void func_80082E5C();
+void func_80082F1C(s32, s32);
+void func_80083018(s32, s32);
 void func_80083060(s32);
+void func_80083080();
 void func_8008311C(s32, s32);
 void func_80083248(s32);
 void func_800833D0(s32, s32);
 void func_80083474(s32);
 void func_800834B8();
 void func_80083538(s32, Vec3f, s32, s32);
+void func_800836F0(Vec3f);
 void func_8008379C(s32);
 void func_80083868(s32);
 void func_80083948(s32);
@@ -300,15 +316,27 @@ void func_80083A94(s32);
 void func_80083B0C(s32);
 void func_80083BE4(s32);
 void func_80083C04(s32);
+void func_80083D60();
 void func_80083F18(s32);
+void func_80083FD0(s32, s32, s32);
+void func_8008421C(s32, s32);
+void func_800842C8();
+void func_80084430(s32, s32);
+void func_8008453C(s32, s32);
+void func_800845C8(s32, s32);
+void func_80084B7C(s32, s32);
+void func_80084D2C(s32, s32);
 void func_80085024();
 void func_8008502C(s32, s32);
 void func_80085080(s32);
+void func_800850B0(s32, s32);
 void func_800853DC(s32);
 void func_80085534(s32);
 void func_80085768(s32);
 void func_800857C0();
 void func_80085878(s32, s32);
+void func_800859C8(s32, s32);
+void func_80085AA8();
 void func_80085BB4(s32);
 void func_80085C20(s32);
 void func_80085CA0(s32);
@@ -320,8 +348,13 @@ void func_80086074(s32, s32);
 void func_80086110(s32, s32);
 void func_80086158(s32, s32);
 void func_800861E0();
+void func_8008629C(s32, s32);
 void func_80086424(s32);
+void func_80086528(s32, s32);
 void func_80086604();
+void func_80086700(s32);
+void func_80086940(s32);
+void func_80086C14(s32);
 void func_80086C6C(s32);
 void func_80086D80();
 
@@ -349,6 +382,10 @@ extern u8 d_course_koopa_troopa_beach_crab_tlut[];
 // From Banshee Boardwalk course data, haven't created a .h file for it yet
 extern Gfx d_course_banshee_boardwalk_dl_cheep_cheep[];
 extern Gfx d_course_banshee_boardwalk_dl_trash_bin[];
+extern u8 gTLUTBoo[];
+
+// from other_textures.s
+extern u8 D_0F0D0E50[]; // gTextureGhosts
 
 // From Moo Moo Farm course data, haven't created a .h file for it yet
 extern u8 D_06013670[]; // d_course_moo_moo_farm_mole_dirt
@@ -365,6 +402,11 @@ extern u8 gTLUTSnowman[];
 extern u8 gTextureSnowmanHead[];
 extern u8 gTextureSnowmanBody[];
 
+// From Sherbet Land course data, haven't created a .h file for it yet
+extern u32 D_06008EB0[]; // d_course_sherbet_land_unk_data1
+extern animation_type_2 D_06009AC8[]; // d_course_sherbet_land_unk_data11
+extern u8 d_course_sherbet_land_ice[];
+
 // From Rainbow Road course data, haven't created a .h file for it yet
 extern u8 d_course_rainbow_road_neon_mushroom_tlut_list[];
 extern u8 d_course_rainbow_road_neon_mushroom[];
@@ -377,6 +419,18 @@ extern u8 d_course_rainbow_road_static_textures[][4096];
 extern u8 d_course_rainbow_road_sphere[];
 extern animation_type_2 *D_0601610C[]; // d_rainbow_road_unk3
 extern u32 D_06016110[]; // d_rainbow_road_unk4
+
+// Seemingly a pointer to Lakitu texture(s)
+extern u8 *D_8018C028;
+// Seemingly a list of textures for Lakitu
+// Never explicitly given data, data appears to be placed here
+// via some type of DMA.
+// I'm also not certain about its dimensions
+// I think the entires in this array are way over-sized
+extern u8 D_80183FA8[4][0x2000];
+
+// Something related to the rotation(?) of ice in Sherbet Land
+extern u16 D_801657A2;
 
 extern s8  D_801658CE;
 extern s32 D_80162DF8;
@@ -393,5 +447,22 @@ extern s32 D_8018D158;
 extern s32 D_8018D1EC;
 extern s32 D_8018D224;
 extern u8* D_8018D490;
+
+// Trophy DLs I think?
+// trophy_model.inc.c
+extern Gfx D_0B0069D8[];
+extern Gfx D_0B006A28[];
+extern Gfx D_0B006A78[];
+extern Gfx D_0B006AC8[];
+extern Gfx D_0B006B18[];
+extern Gfx D_0B006B68[];
+extern Gfx D_0B0075F0[];
+extern Gfx D_0B008040[];
+extern Gfx D_0B008A90[];
+
+// This is either 3 Vec3s as separate variables or an array of s16's or an array of vec3s.
+// The other entries appear to be unused.
+// data/data_code_80071F00_2.s
+extern Vec3s D_800E634C[3]; // static?
 
 #endif

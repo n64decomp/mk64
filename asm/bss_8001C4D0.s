@@ -591,7 +591,7 @@ glabel D_80165A90
 
 # object list begin
 # D_80165C18 should be of size 123,200 (0xE0 * 0x226)
-# D_80165C94 through D_80165CF5 are all fake variables
+# D_80165C94 through D_80165CED are all fake variables
 glabel D_80165C18
 .skip 124
 
@@ -609,13 +609,7 @@ glabel D_80165CC6
 .skip 39
 
 glabel D_80165CED
-.skip 3
-
-glabel D_80165CF0
-.skip 5
-
-glabel D_80165CF5
-.skip 122979
+.skip 122987
 # object list end
 
 glabel D_80183D58

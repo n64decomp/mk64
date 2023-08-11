@@ -82,7 +82,7 @@ void func_80043104(s32);
 
 /* This is where I'd put my static data, if I had any */
 
-extern Vec3s D_80165834;
+extern Vec3su D_80165834;
 extern s8    D_80165840[];
 extern s8    D_801658FE;
 extern s32   D_8018D120;
