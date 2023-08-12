@@ -111,7 +111,7 @@
 #include "src/code_800AF9B0.h"
 #include "src/code_800B45E0.h"
 #include "src/code_80280000.h"
-#include "src/code_80280650.h"
+#include "src/podium_ceremony_actors.h"
 #include "src/code_80281780.h"
 #include "src/code_80281C40.h"
 #include "src/code_802AAA70.h"
