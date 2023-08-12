@@ -83,6 +83,7 @@
 #define PLAYER_CPU                  (1 << 12) // 0x1000
 #define PLAYER_HUMAN                (1 << 14) // 0x4000
 #define PLAYER_INVISIBLE_OR_BOMB    (1 <<  8) // 0x0100
+#define PLAYER_UNKNOWN_0x40            (1 <<  6) // 0x0040
 // unused?
 #define PLAYER_UNKNOWN              (1 << 10) // 0x0400
 

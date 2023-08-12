@@ -13,9 +13,6 @@
 #include "render_courses.h"
 #include "skybox_and_splitscreen.h"
 
-f32 gFloatArray802B8790[] = {
-    1.2, 1.0, 0.9, 0.7, 2.0, 1.8, 0.9, 2.3
-};
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
 UNUSED s32 D_802B87B8 = 0;
