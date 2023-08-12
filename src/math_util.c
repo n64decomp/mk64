@@ -5,11 +5,12 @@
 #include <main.h>
 #include "framebuffers.h"
 #include <PR/rcp.h>
-// Location based from sm64.
-// This may need to be moved before framebuffers.c
-// If math_util has data that does not line-up with trig_tables.
-#include "trig_tables.inc.c"
+#include <trig_tables.h>
+
 #pragma intrinsic (sqrtf)
+
+s32 D_802B91C0[2] = { 13, 13 };
+Vec3f D_802B91C8 = { 0.0f, 0.0f, 0.0f };
 
 
 #ifdef NON_MATCHING

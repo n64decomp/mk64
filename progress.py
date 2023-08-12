@@ -84,7 +84,6 @@ seg2Files2 = [
     "asm/non_matchings/math_util",
     "asm/non_matchings/memory",
     "asm/non_matchings/code_802AAA70",
-    "asm/non_matchings/race_logic",
     "asm/non_matchings/render_courses",
     "asm/non_matchings/skybox",
 ]

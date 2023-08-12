@@ -3,6 +3,8 @@
 #include "config.h"
 #include "framebuffers.h"
 
+#include "trig_tables.inc.c"
+
 u16 gRandomSeed16;
 
 u8 randomSeedPadding[216];

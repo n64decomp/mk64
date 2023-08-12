@@ -369,7 +369,6 @@ s16 func_80005FD0(Vec3f arg0, Vec3f arg1) {
 s32 func_80006018(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
     f32 temp_f0;
     f32 temp_f18;
-    s32 var_v0;
 
     temp_f0 = sqrtf((arg2 * arg2) + (arg3 * arg3));
     if (temp_f0 < 0.01f) {
@@ -5774,7 +5773,7 @@ f32 func_80010480(s32 pathIndex, u16 wayPointIndex) {
 
 void func_800107C4(s32 pathIndex) {
     f64 temp_f2;
-    s32 temp_t3;
+    UNUSED s32 pad;
     s32 var_a2;
     s32 var_s0;
     s32 var_t2;

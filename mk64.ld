@@ -384,13 +384,14 @@ SECTIONS
       BUILD_DIR/src/code_802AAA70.o(.text);
       BUILD_DIR/src/actors_extended.o(.text);
       BUILD_DIR/src/math_util.o(.text);
+      BUILD_DIR/src/race_logic.o(.data);
       BUILD_DIR/src/render_courses.o(.data);
       BUILD_DIR/src/actors.o(.data);
       BUILD_DIR/src/skybox_and_splitscreen.o(.data);
       BUILD_DIR/src/memory.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);
       BUILD_DIR/src/actors_extended.o(.data);
-      BUILD_DIR/src/race_logic.o(.data);
+      BUILD_DIR/src/math_util.o(.data);
       BUILD_DIR/src/race_logic.o(.rodata);
       BUILD_DIR/src/render_courses.o(.rodata);
       BUILD_DIR/src/actors.o(.rodata);
@@ -503,7 +504,7 @@ SECTIONS
    /* 0x802BA370 724220-729A30 [0x5810] */
    BEGIN_SEG(data_802BA370, SEG_802BA370)
    {
-        BUILD_DIR/src/math_util.o(.data);
+        BUILD_DIR/src/framebuffers.o(.data);
         . = ALIGN(0x10);
    }
    END_SEG(data_802BA370)
