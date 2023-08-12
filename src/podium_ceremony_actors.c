@@ -397,17 +397,16 @@ extern s16 D_802874D0;
 
 void update_actors_loop(void) {
     void (*func)(void *);
-    CeremonyActor *actor;
     s32 i;
     s32 j;
     spawn_timer();
     D_802874D0 = 0;
+
+    // Why do we loop over the actor list three times?
+    // Actors don't with no loop. fireworks don't spawn if the iterator is 2.
     for (i = 0; i < 3; i++) {
-        actor = sPodiumActorList;
-        // High loop count to produce randomness? May also be a sort of delta?
-        // If this was for random, wouldn't it make everything move farther?
+        CeremonyActor *actor = sPodiumActorList;
         for (j = 0; j < 200; j++) {
-            // @bug Check should be outside of this loop
             if (actor->isActive & 1) {
 
                 func = sUpdate[actor->type][i];

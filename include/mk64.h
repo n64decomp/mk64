@@ -26,6 +26,4 @@
 #define SET_HIGH_S16_OF_32(var, x) ((((s16 *)&(var))[0]) = (x))
 #endif
 
-#define SQUARE(x) ((x) * (x))
-
 #endif // MK64_H
