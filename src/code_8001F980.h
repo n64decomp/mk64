@@ -3,6 +3,7 @@
 
 #include "types.h"
 #include "common_structs.h"
+#include "framebuffers.h"
 
 #define SOME_TEXTURE_POINTER_MATH 0x800
 
@@ -12,10 +13,11 @@ void func_8001F980(s32*, s32*);
 void func_8001F9E4(Player*, Camera*, s8);
 u16  func_8001FB0C(Player*, Camera*, f32, f32);
 u16  func_8001FD78(Player*, f32, f32, f32);
-void func_80020000(Player*, Camera*, u8, u8);
-void func_8002088C();
-void func_80020F1C();
+void func_80020000(Player*, Camera*, s8, s8);
 void func_80020524();
+void func_8002088C();
+void func_80020BF4();
+void func_80020F1C();
 void func_80021244(Player*, s8, s8);
 void func_800212B4();
 void func_800215DC();
@@ -31,7 +33,6 @@ void func_80021F84(Mat4, f32);
 void func_80021FF8(Mtx*, Mat4);
 void func_80022180(Mtx*, Mat4);
 s32  func_800224F0(s16*, s16, s16);
-void func_8002276C();
 void move_s32_towards(s32*, s32, f32);
 void move_f32_towards(f32*, f32, f32);
 void move_s16_towards(s16*, s16, f32);
@@ -53,12 +54,22 @@ void func_800235AC(Player*, s8);
 void func_80023BF0(Player*, s8, s8, s8);
 void func_80023C84(Player*, s8, s8);
 void func_80024374(Player*, s8, s8);
+void func_800248D0(Player*, s8, s8, s8);
+void func_800256F4(Player*, s8, s8, s8);
+void func_80025DE8(Player*, s8, s8, s8);
+void func_800262E0(Player*, s8, s8, s8);
+void func_800267AC(Player*, s8, s8);
 void func_80026A48(Player*, s8);
+void func_80026B4C(Player*, s8, s8, s8);
 void func_80030A34(Player*);
 void func_8002701C();
 void func_80027024(s32, s32, s32);
 
 /* This is where I'd put my static data, if I had any */
+
+extern struct_D_802F1F80 *D_80164B04;
+extern u8 *D_80164B08;
+extern u8 *D_80164B0C;
 
 extern u16 D_8015F894;
 
