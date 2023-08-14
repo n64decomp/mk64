@@ -118,6 +118,7 @@ extern struct SoundMultiPool gSeqLoadedPool;    // D_803AFC48
 extern struct SoundMultiPool gBankLoadedPool;   // D_803AFE18
 extern struct Unk1Pool gUnkPool1;               // D_803B01B8
 extern u8 gBankLoadStatus[64];                  // D_803B03C0
+extern u8 gUnkLoadStatus[64];
 extern u8 gSeqLoadStatus[256];                  // D_803B0400
 extern struct SoundMultiPool gUnusedLoadedPool; // D_803AFFE8
 extern struct SoundAllocPool gSeqAndBankPool;   // D_803AFC18

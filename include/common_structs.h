@@ -223,6 +223,21 @@ typedef struct {
 #define BACK_LEFT_TYRE   2
 #define BACK_RIGHT_TYRE  3
 
+struct UnkPlayerInner {
+    /* 0xDB4 */ s16 unk0;
+    /* 0xDB6 */ s16 unk2;
+    /* 0xDB8 */ f32 unk4;
+    /* 0xDBC */ f32 unk8;
+    /* 0xDC0 */ f32 unkC;
+    /* 0xDC4 */ f32 unk10;
+    /* 0xDC8 */ f32 unk14;
+    /* 0xDCC */ s16 unk18;
+    /* 0xDCE */ s16 unk1A;
+    /* 0xDD0 */ s16 unk1C;
+    /* 0xDD2 */ s16 unk1E;
+    /* 0xDD4 */ s16 unk20;
+};
+
 typedef struct {
     /* 0x0000 */ u16 unk_000; // playerType?
     /* 0x0002 */ u16 unk_002;
@@ -344,18 +359,18 @@ typedef struct {
     /* 0x0DA8 */ f32 unk_DA8;
     /* 0x0DAC */ f32 unk_DAC;
     /* 0x0DB0 */ f32 unk_DB0;
-    /* 0x0DB4 */ s16 unk_DB4;
-    /* 0x0DB6 */ s16 unk_DB6;
-    /* 0x0DB8 */ f32 unk_DB8;
-    /* 0x0DBC */ f32 unk_DBC;
-    /* 0x0DC0 */ f32 unk_DC0;
-    /* 0x0DC4 */ f32 unk_DC4;
-    /* 0x0DC8 */ f32 unk_DC8;
-    /* 0x0DCC */ s16 unk_DCC;
-    /* 0x0DCE */ s16 unk_DCE;
-    /* 0x0DD0 */ s16 unk_DD0;
-    /* 0x0DD2 */ s16 unk_DD2;
-    /* 0x0DD4 */ s16 unk_DD4;
+    /* 0x0DB4 */ struct UnkPlayerInner unk_DB4;
+    /* 0x0DB6 */ // s16 unk_DB6;
+    /* 0x0DB8 */ // f32 unk_DB8;
+    /* 0x0DBC */ //f32 unk_DBC;
+    /* 0x0DC0 */ // f32 unk_DC0;
+    /* 0x0DC4 */ // f32 unk_DC4;
+    /* 0x0DC8 */ // f32 unk_DC8;
+    /* 0x0DCC */ // s16 unk_DCC;
+    /* 0x0DCE */ // s16 unk_DCE;
+    /* 0x0DD0 */ // s16 unk_DD0;
+    /* 0x0DD2 */ // s16 unk_DD2;
+    /* 0x0DD4 */ // s16 unk_DD4;
 } Player; // size = 0xDD8
 
 typedef struct {

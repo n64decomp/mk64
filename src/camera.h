@@ -15,6 +15,13 @@
 #endif
 
 typedef struct {
+    f32 unk_0;
+    s16 unk_4;
+    s16 unk_6;
+    s16 unk_8;
+} UnkCameraInner;
+
+typedef struct {
     /* 0x00 */ Vec3f pos;
     /* 0x0C */ Vec3f lookAt;
     // This is expected to be a normalized vector, indicates what direction is "up" for the camera
@@ -32,12 +39,8 @@ typedef struct {
     /* 0x50 */ s32 unk_50;
     /* 0x54 */ UnkActorInner unk_54;
     // When you hit a wall (or another driver) the camera's pos and lookAt bounce up and down. This is the velocity(?) of that bouncing
-    /* 0x94 */ f32 unk_94;
-    /* 0x98 */ s16 unk_98;
-    /* 0x9A */ s16 unk_9A;
+    /* 0x94 */ UnkCameraInner unk_94;
     // Timer for wall-hit bounce. Counts up instead of down
-    /* 0x9C */ s16 unk_9C;
-    /* 0x9E */ s16 pad_9E;
     /* 0xA0 */ f32 unk_A0;
     /* 0xA4 */ s32 unk_A4;
     /* 0xA8 */ s32 unk_A8;

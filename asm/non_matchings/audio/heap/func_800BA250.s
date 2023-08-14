@@ -235,7 +235,7 @@ glabel func_800BA250
 /* 0BB1B0 800BA5B0 8ECD0024 */  lw    $t5, 0x24($s6)
 /* 0BB1B4 800BA5B4 0C02E4C0 */  jal   temporary_pools_init
 /* 0BB1B8 800BA5B8 AC8D0008 */   sw    $t5, 8($a0)
-/* 0BB1BC 800BA5BC 0C02E378 */  jal   func_800B8DE0
+/* 0BB1BC 800BA5BC 0C02E378 */  jal   reset_bank_and_seq_load_status
 /* 0BB1C0 800BA5C0 00000000 */   nop   
 /* 0BB1C4 800BA5C4 3C05803B */  lui   $a1, %hi(gMaxSimultaneousNotes) # $a1, 0x803b
 /* 0BB1C8 800BA5C8 8CA570B0 */  lw    $a1, %lo(gMaxSimultaneousNotes)($a1)

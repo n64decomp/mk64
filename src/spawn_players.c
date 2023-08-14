@@ -108,13 +108,13 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_D9A = 0;
     player->unk_DA4 = 0;
     player->unk_DA6 = 0;
-    player->unk_DB4 = 0;
-    player->unk_DB6 = 0;
-    player->unk_DCC = 0;
-    player->unk_DCE = 0;
-    player->unk_DD0 = 0;
-    player->unk_DD2 = 0;
-    player->unk_DD4 = 0;
+    player->unk_DB4.unk0 = 0;
+    player->unk_DB4.unk2 = 0;
+    player->unk_DB4.unk18 = 0;
+    player->unk_DB4.unk1A = 0;
+    player->unk_DB4.unk1C = 0;
+    player->unk_DB4.unk1E = 0;
+    player->unk_DB4.unk20 = 0;
 
 
     player->unk_042 = 0;
@@ -158,11 +158,11 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_DA0 = 0.0f;
     player->unk_DA8 = 0.0f;
     player->unk_DB0 = 0.0f;
-    player->unk_DB8 = 0.0f;
-    player->unk_DBC = 0.0f;
-    player->unk_DC0 = 0.0f;
-    player->unk_DC4 = 0.0f;
-    player->unk_DC8 = 0.0f;
+    player->unk_DB4.unk4 = 0.0f;
+    player->unk_DB4.unk8 = 0.0f;
+    player->unk_DB4.unkC = 0.0f;
+    player->unk_DB4.unk10 = 0.0f;
+    player->unk_DB4.unk14 = 0.0f;
     player->unk_084 = 0.0f;
     player->unk_088 = 0.0f;
     player->unk_08C = 0.0f;
@@ -1040,7 +1040,7 @@ void func_8003CD98(Player *player, Camera *camera, s8 arg2, s8 arg3) {
 
 void func_8003D080(void) {
     UNUSED s32 pad;
-    Player* ptr = &gPlayers[0];
+    Player* player = &gPlayers[0];
 
     func_8005D290();
     if (gGamestate == ENDING_SEQUENCE) {
@@ -1054,18 +1054,18 @@ void func_8003D080(void) {
                 switch (gModeSelection) {
                     case GRAND_PRIX:
                         if (gCurrentCourseId == 10) {
-                            func_8001C4D0(0.0f, ptr->pos[1], D_8016524C, ptr->unk_02C[1], 8, 0);
+                            camera_init(0.0f, player->pos[1], D_8016524C, player->unk_02C[1], 8, 0);
                         } else {
-                            func_8001C4D0((D_80165210[7] + D_80165210[6]) / 2, ptr->pos[1], D_8016524C, ptr->unk_02C[1], 8, 0);
+                            camera_init((D_80165210[7] + D_80165210[6]) / 2, player->pos[1], D_8016524C, player->unk_02C[1], 8, 0);
                         }
                         break;
 
                     case TIME_TRIALS:
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 0);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 0);
                         break;
 
                     default:
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 10, 0);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 10, 0);
                         break;
                 }
                 break;
@@ -1074,45 +1074,45 @@ void func_8003D080(void) {
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                 switch (gModeSelection) {
                     case GRAND_PRIX:
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 0);
-                        ptr++;
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 1);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 0);
+                        player++;
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 1);
                         break;
 
                     case BATTLE:
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 0);
-                        ptr++;
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 1);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 9, 0);
+                        player++;
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 9, 1);
                         break;
 
                     default:
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 0);
-                        ptr++;
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 1);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 0);
+                        player++;
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 1);
                         break;
                 }
                 break;
 
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
                 if (gModeSelection == BATTLE) {
-                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 0);
-                    ptr++;
-                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 1);
-                    ptr++;
-                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 2);
+                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 9, 0);
+                    player++;
+                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 9, 1);
+                    player++;
+                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 9, 2);
                     if (gPlayerCountSelection1 == 4) {
-                        ptr++;
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 9, 3);
+                        player++;
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 9, 3);
                     }
                 } else {
-                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 0);
-                    ptr++;
-                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 1);
-                    ptr++;
-                    func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 2);
+                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 0);
+                    player++;
+                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 1);
+                    player++;
+                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 2);
                     if (gPlayerCountSelection1 == 4) {
-                        ptr++;
-                        func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 1, 3);
+                        player++;
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 3);
                     }
                 }
                 break;
@@ -1120,24 +1120,24 @@ void func_8003D080(void) {
     } else {
         switch (gActiveScreenMode) {
             case SCREEN_MODE_1P:
-                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 0);
+                camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 0);
                 break;
 
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 0);
-                ptr++;
-                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 1);
+                camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 0);
+                player++;
+                camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 1);
                 break;
 
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
-                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 0);
-                ptr++;
-                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 1);
-                ptr++;
-                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 2);
-                ptr++;
-                func_8001C4D0(ptr->pos[0], ptr->pos[1], ptr->pos[2], ptr->unk_02C[1], 3, 3);
+                camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 0);
+                player++;
+                camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 1);
+                player++;
+                camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 2);
+                player++;
+                camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 3);
                 break;
         }
     }
@@ -1199,8 +1199,8 @@ void func_8003DB5C(void) {
     Player *player = gPlayerOne;
     s32 i;
 
-    func_8001C4D0(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 0);
-    func_8001C4D0(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 1);
+    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 0);
+    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 1);
 
     for (i = 0; i < 8; i++, player++) {
         func_80027A20(player, i, 1, 0);
