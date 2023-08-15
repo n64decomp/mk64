@@ -28,6 +28,7 @@ struct unexpiredActors {
 
 /* Function Prototypes */
 
+f32 func_80014EE4(f32 arg0, s32 arg1);
 void func_8001C14C(void);
 void func_800070F4(void);
 void func_80019DF4(void);
@@ -119,13 +120,15 @@ void func_80015390(Camera*, Player*, s32);
 void func_8001968C();
 void func_8001C05C();
 void func_80019DE4();
-void func_8001A0A4(s16*, Camera*, Player*, s32, s32);
-void func_8001A0DC(s16*, Camera*, Player*, s8, s32);
+void func_8001A0A4(u16*, Camera*, Player*, s8, s32);
+void func_8001A0DC(u16*, Camera*, Player*, s8, s32);
 s32  func_8001A310(s32, s32);
 void func_8001ABE0(s32, s32);
 void func_8001ABEC(struct struct_801642D8*);
 void func_8001C3C4(s32);
 void func_8001C42C();
+void func_80019ED0(void);
+void func_8001A588(u16*, Camera*, Player*, s8, s32);
 
 /* This is where I'd put my static data, if I had any */
 // 0 or 1, only 1 when when in extra (mirror) mode
@@ -149,7 +152,7 @@ extern s16 D_80164670;
 extern s16 D_80164672;
 extern s16 D_80164674;
 extern s16 D_80164676;
-extern s16 D_80164678;
+extern s16 D_80164678[]; // Size 4? Is the three below this fake?
 extern s16 D_8016467A;
 extern s16 D_8016467C;
 extern s16 D_8016467E;

@@ -537,8 +537,8 @@ void func_8008D3C4(Player* player, s8 arg1) {
 
     player->unk_0BC |= 0x2000;
     player->statusEffects &= ~0x200;
-    player->unk_DB4 = 0;
-    player->unk_DBC = 8.0f;
+    player->unk_DB4.unk0 = 0;
+    player->unk_DB4.unk8 = 8.0f;
     
     if (D_8015F890 != 1) {
         if (((player->unk_000 & 0x4000) == 0x4000) && ((player->unk_000 & 0x100) != 0x100)) {
@@ -712,9 +712,9 @@ void func_8008DABC(Player *player, s8 arg1) {
     func_8008C354(player, arg1);
 
     if ((player->unk_0BC & 0x4000000) == 0) {
-        player->unk_DB6 = 0;
+        player->unk_DB4.unk2 = 0;
         player->unk_238 = 0;
-        player->unk_DC4 = 4.5f;
+        player->unk_DB4.unk10 = 4.5f;
         D_8018D990[arg1] = 0;
         player->unk_0BC &= ~0x08000010;
         D_80165190[0][arg1] = 1;
@@ -751,7 +751,7 @@ void func_8008DC08(Player* player, s8 arg1) {
 
     switch (D_8018D990[arg1]) { 
     case 0:
-        player->unk_DC4 = 4.5f;
+        player->unk_DB4.unk10 = 4.5f;
         if (player->unk_238 < 0x3D) {
             ++player->unk_238;
         }
@@ -780,7 +780,7 @@ void func_8008DC08(Player* player, s8 arg1) {
 
         break;
     case 1:
-        player->unk_DC4 = 4.5f;
+        player->unk_DB4.unk10 = 4.5f;
         player->pos[1] += 0.13;
         ++player->unk_238;
         
@@ -817,7 +817,7 @@ void func_8008DC08(Player* player, s8 arg1) {
             D_8018D990[arg1] = 3;
         }
 
-        player->unk_DC4 = 4.5f;
+        player->unk_DB4.unk10 = 4.5f;
         player->pos[1] -= 0.085;
 
         if ((player->unk_0BC & 8) != 8) {
@@ -828,9 +828,9 @@ void func_8008DC08(Player* player, s8 arg1) {
         func_8008D9C0(player);
         break;
     case 3:
-        player->unk_DC4 = 3.0f;
+        player->unk_DB4.unk10 = 3.0f;
         player->unk_0BC &= ~0x04000000;
-        player->unk_DB6 = 0;
+        player->unk_DB4.unk2 = 0;
         player->unk_0BC |= 0x08000000;
         player->unk_224 = 1.0f;
         player->boundingBoxSize = gKartBoundingBoxSizeTable[player->characterId];
@@ -937,8 +937,8 @@ void func_8008E3C0(Player* player, UNUSED s8 arg1) {
     player->unk_0BC &= ~0x40000000;
     player->unk_224 = 1.0f;
     player->boundingBoxSize = gKartBoundingBoxSizeTable[player->characterId];
-    player->unk_DC4 = 3.0f;
-    player->unk_DB6 = 0;
+    player->unk_DB4.unk10 = 3.0f;
+    player->unk_DB4.unk2 = 0;
     player->unk_0BC |= 0x08000000;
     
     if ((player->unk_0BC & 0x20000) == 0x20000) {
@@ -1167,8 +1167,8 @@ void func_8008EC88(Player* player, s8 arg1) {
 
     player->unk_0BC |= 0x100000;
     player->statusEffects &= ~0x00800000;
-    player->unk_DB4 = 0;
-    player->unk_DBC = 8.0f;
+    player->unk_DB4.unk0 = 0;
+    player->unk_DB4.unk8 = 8.0f;
     if (D_8015F890 != 1) {
         if (((player->unk_000 & 0x4000) == 0x4000) && ((player->unk_000 & 0x100) == 0)) {
             func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008001);
@@ -1772,9 +1772,9 @@ void func_80090778(Player* player) {
     func_8008C354(player, playerIndex);
     func_8008F86C(player, playerIndex);
  
-    player->unk_DB4 = 0;
+    player->unk_DB4.unk0 = 0;
     player->unk_0C2 = 0;
-    player->unk_DBC = 0.0f;
+    player->unk_DB4.unk8 = 0.0f;
     if ((player->unk_0BC & 0x40000000) == 0x40000000) {
         if ((player->unk_0BC & 0x20000) == 0x20000) {
             player->unk_0BC &= ~0x20000;
@@ -2059,11 +2059,11 @@ void func_80091298(Player *player, s8 arg1) {
         if (player->unk_0B2 == 0) {
             if ((player->pos[1] - (player->boundingBoxSize + 1.0f)) <= spC[arg1]) {
                 player->pos[1] = (f32) ((f64) (spC[arg1] + player->boundingBoxSize) + 1.08);
-                player->unk_DCC = 0;
+                player->unk_DB4.unk18 = 0;
                 player->unk_0A8 = 0;
                 player->unk_07C = 0;
                 player->unk_0C0 = 0;
-                player->unk_DC0 = 3.0f;
+                player->unk_DB4.unkC = 3.0f;
                 player->unk_044 &= ~0x800;
                 player->kartGravity = gKartGravityTable[player->characterId];
                 player->unk_0D4[0] = 0;

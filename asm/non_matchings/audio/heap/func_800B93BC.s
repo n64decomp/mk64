@@ -35,8 +35,8 @@ glabel func_800B93BC
 .L800B9438:
 /* 0BA038 800B9438 25CEFFE8 */  addiu $t6, %lo(gUnusedLoadedPool) # addiu $t6, $t6, -0x18
 /* 0BA03C 800B943C 160E0005 */  bne   $s0, $t6, .L800B9454
-/* 0BA040 800B9440 3C0F803B */   lui   $t7, %hi(D_803B0380) # $t7, 0x803b
-/* 0BA044 800B9444 25EF0380 */  addiu $t7, %lo(D_803B0380) # addiu $t7, $t7, 0x380
+/* 0BA040 800B9440 3C0F803B */   lui   $t7, %hi(gUnkLoadStatus) # $t7, 0x803b
+/* 0BA044 800B9444 25EF0380 */  addiu $t7, %lo(gUnkLoadStatus) # addiu $t7, $t7, 0x380
 /* 0BA048 800B9448 24180002 */  li    $t8, 2
 /* 0BA04C 800B944C A3B80033 */  sb    $t8, 0x33($sp)
 /* 0BA050 800B9450 AFAF0034 */  sw    $t7, 0x34($sp)

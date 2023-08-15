@@ -47,7 +47,7 @@ glabel D_803B0360
 glabel D_803B0370
 .skip 16
 
-glabel D_803B0380
+glabel gUnkLoadStatus
 .skip 64
 
 glabel gBankLoadStatus

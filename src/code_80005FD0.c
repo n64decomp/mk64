@@ -4850,7 +4850,7 @@ void func_8000EF20(void) {
 
 void func_8000F0E0(void) {
     D_80164670 = 0;
-    D_80164678 = 0;
+    D_80164678[0] = 0;
     D_80164672 = 0;
     D_8016467A = 0;
     D_80164674 = 0;
@@ -9988,7 +9988,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8001933C.s")
 #endif
 
 void func_8001968C(void) {
-    D_80164678 = 3;
+    D_80164678[0] = 3;
 }
 
 #ifdef MIPS_TO_C
@@ -10433,12 +10433,12 @@ void func_80019FB4(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80019FB4.s")
 #endif
 
-void func_8001A0A4(UNUSED s16 *arg0, UNUSED Camera *arg1, UNUSED Player *arg2, UNUSED s32 arg3, s32 arg4) {
+void func_8001A0A4(UNUSED u16 *arg0, UNUSED Camera *arg1, UNUSED Player *arg2, UNUSED s8 arg3, s32 arg4) {
     func_80019FB4(arg4);
     func_80019C50(arg4);
 }
 
-void func_8001A0DC(s16 *arg0, Camera *arg1, Player *arg2, s8 arg3, s32 arg4) {
+void func_8001A0DC(u16 *arg0, Camera *arg1, Player *arg2, s8 arg3, s32 arg4) {
     func_8001A0A4(arg0, arg1, arg2, arg3, arg4);
     func_80019D2C(arg1, arg2, arg4);
 }
@@ -10648,7 +10648,7 @@ extern u32 D_801646C8;
 extern u16 D_801646CC;
 extern ? D_801646D0;
 
-void func_8001A588(s32 arg0, Camera *camera, u16 *arg2, s8 arg3, s32 arg4) {
+void func_8001A588(u16 *arg0, Camera *camera, Player *arg2, s8 arg3, s32 arg4) {
     s32 sp44;
     s16 *sp24;
     f64 temp_f0;

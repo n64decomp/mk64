@@ -890,20 +890,20 @@ void func_80022B50(Player *player, UNUSED s8 arg1) {
     f32 temp_f0;
     s16 var_v0;
 
-    var_v0 = player->unk_DB6;
-    temp_f0 = player->unk_DC4;
+    var_v0 = player->unk_DB4.unk2;
+    temp_f0 = player->unk_DB4.unk10;
     if (var_v0 < 5) {
         var_v0++;
     }
 
     player->unk_DA4 = (var_v0 * temp_f0) - (0.7 * (var_v0 * var_v0));
-    player->unk_DC4 = temp_f0;
-    player->unk_DB6 = var_v0;
+    player->unk_DB4.unk10 = temp_f0;
+    player->unk_DB4.unk2 = var_v0;
 }
 
 void func_80022BC4(Player *player, UNUSED s8 arg1) {
-    f32 temp_f0 = player->unk_DC4;
-    s16 temp_v0 = player->unk_DB6;
+    f32 temp_f0 = player->unk_DB4.unk10;
+    s16 temp_v0 = player->unk_DB4.unk2;
     s16 temp_f16;
 
     temp_v0++;
@@ -923,8 +923,8 @@ void func_80022BC4(Player *player, UNUSED s8 arg1) {
         temp_f16 = 0;
     }
     player->unk_DA4 = temp_f16;
-    player->unk_DC4 = temp_f0;
-    player->unk_DB6 = temp_v0;
+    player->unk_DB4.unk10 = temp_f0;
+    player->unk_DB4.unk2 = temp_v0;
 }
 
 void func_80022CA8(Player *player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
@@ -948,8 +948,8 @@ void func_80022D60(UNUSED Player *player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
 }
 
 void func_80022DB4(Player *player, UNUSED s8 arg1) {
-    f32 temp_f0 = player->unk_DC0;
-    s16 temp_v0 = player->unk_DCC;
+    f32 temp_f0 = player->unk_DB4.unkC;
+    s16 temp_v0 = player->unk_DB4.unk18;
     s16 temp_f16;
 
     temp_v0++;
@@ -967,13 +967,13 @@ void func_80022DB4(Player *player, UNUSED s8 arg1) {
     if (temp_f16 <= 0) {
         temp_f16 = 0;
     }
-    player->unk_DD2 = temp_f16;
-    player->unk_DC0 = temp_f0;
-    player->unk_DCC = temp_v0;
+    player->unk_DB4.unk1E = temp_f16;
+    player->unk_DB4.unkC = temp_f0;
+    player->unk_DB4.unk18 = temp_v0;
 }
 
 void func_80022E84(Player *player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
-    s16 temp_v0 = player->unk_DD2;
+    s16 temp_v0 = player->unk_DB4.unk1E;
 
     D_800DDBB4[arg1][arg3 + 0x0].v.ob[1] = 18 - temp_v0;
     D_800DDBB4[arg1][arg3 + 0x1].v.ob[1] = 9 - temp_v0;
