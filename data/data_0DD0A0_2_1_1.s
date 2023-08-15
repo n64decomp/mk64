@@ -1,6 +1,6 @@
 .include "macros.inc"
 
-.section .rodata
+.section .data
 
 glabel D_800E9A40
 .asciiz "Audio:Track:Warning: No Free Notetrack\n"
@@ -408,97 +408,3 @@ glabel D_800EA244
 
 .asciiz "SEQ FADE OUT TIME %d\n"
 .balign 4
-
-.word 0x00000000, 0x00000000, 0x00000000
-
-# Begin port_eu.c data
-
-glabel D_800EA3A0
-.byte 0x00, 0x00, 0x00, 0x00
-
-glabel D_800EA3A4
-.byte 0x00, 0x00, 0x00, 0x00
-
-glabel D_800EA3A8
-.word D_801937C0
-
-glabel D_800EA3AC
-.word D_801937D8
-
-glabel D_800EA3B0
-.word D_801937F0
-
-glabel D_800EA3B4
-.word D_80193808
-
-.asciiz "DAC:Lost 1 Frame.\n"
-.balign 4
-
-.asciiz "DMA: Request queue over.( %d )\n"
-.balign 4
-
-.asciiz "DMA [ %d lines] TIMEOUT\n"
-.balign 4
-
-.asciiz "Warning: WaveDmaQ contains %d msgs.\n"
-.balign 4
-
-.asciiz "Audio:now-max tasklen is %d / %d\n"
-.balign 4
-
-.asciiz "Audio:Warning:ABI Tasklist length over (%d)\n"
-.balign 4
-
-glabel D_800EA484
-.word 0x00000080
-
-.asciiz "AudioSend: %d -> %d (%d)\n"
-.balign 4
-
-glabel D_800EA4A4
-.word 0x00000000
-
-.asciiz "Undefined Port Command %d\n"
-.balign 4
-
-.word 0x00000000, 0x00000000, 0x00000000
-
-.balign 4
-glabel D_800EA4D0
-.word 0x01284fff
-
-glabel D_800EA4D4
-.word 0x01145fff
-
-glabel D_800EA4D8
-.word 0x000068b0, 0x01180100, D_800EA4D0, 0x7fff0000
-.word 0x00002a00, 0x00004600, 0x00000000, 0x00005800
-.word 0x00002800, 0x00000000, 0x000068b0, 0x01140100
-.word D_800EA4D0, 0x7fff0000, 0x00002a00, 0x00004600
-.word 0x00000000, 0x00005800, 0x00002800, 0x00000000
-.word 0x000068b0, 0x011c0100, D_800EA4D0, 0x7fff0000
-.word 0x00002a00, 0x00004600, 0x00000000, 0x00005800
-.word 0x00002800, 0x00000000, 0x000068b0, 0x011c0100
-.word D_800EA4D0, 0x7fff0000, 0x00002a00, 0x00004600
-.word 0x00000000, 0x00005800, 0x00002800, 0x00000000
-.word 0x000068b0, 0x01100100, D_800EA4D0, 0x7fff0000
-.word 0x00002a00, 0x00004600, 0x00000000, 0x00004800
-.word 0x00002000, 0x00000000, 0x000068b0, 0x01100100
-.word D_800EA4D4, 0x7fff0000, 0x00002a00, 0x00004600
-.word 0x00000000, 0x00004800, 0x00002000, 0x00000000
-.word 0x1c000000
-
-glabel D_800EA5CC
-.hword 0x0030, 0x0000
-
-glabel D_800EA5D0
-.word 0x00048c00
-
-glabel D_800EA5D4
-.word 0x00002600
-
-glabel D_800EA5D8
-.word 0x00000000
-
-glabel D_800EA5DC
-.word 0x00000000
