@@ -84,7 +84,4 @@ extern Player *gPlayerTwo;
 extern Player *gPlayerThree;
 extern Player *gPlayerFour;
 
-// Actually define in main.c, probably need to add to main.h
-extern u16 D_80152300[];
-
 #endif
