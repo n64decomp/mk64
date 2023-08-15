@@ -73,33 +73,3 @@ glabel D_801930D0
 
 glabel D_80193318
 .skip 1192
-
-glabel D_801937C0
-.skip 24
-
-glabel D_801937D8
-.skip 24
-
-glabel D_801937F0
-.skip 24
-
-glabel D_80193808
-.skip 24
-
-glabel D_80193820
-.skip 2048
-
-glabel D_80194020
-.skip 8
-
-glabel D_80194028
-.skip 16
-
-glabel D_80194038
-.skip 4
-
-glabel D_8019403C
-.skip 4
-
-glabel D_80194040
-.skip 16

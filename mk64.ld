@@ -265,13 +265,15 @@ SECTIONS
       BUILD_DIR/src/audio/heap.o(.data);
       BUILD_DIR/src/audio/load.o(.data);
       BUILD_DIR/src/audio/playback.o(.data);
-      BUILD_DIR/src/audio/effects.o(.data);	
+      BUILD_DIR/src/audio/effects.o(.data);
 #if DEBUG
      BUILD_DIR/src/debug/crash_screen_enhancement.o(.data);
 	  BUILD_DIR/src/debug/debug.o(.data);
 	  BUILD_DIR/src/os/sprintf.o(.data);
 #endif
-      BUILD_DIR/data/data_0DD0A0_2_1_1.o(.rodata);
+      BUILD_DIR/data/data_0DD0A0_2_1_1.o(.data);
+      BUILD_DIR/src/audio/port_eu.o(.data);
+      BUILD_DIR/data/data_0DD0A0_2_1_2.o(.data);
       BUILD_DIR/src/os/osInitialize.o(.data*);
       BUILD_DIR/src/os/osCreateViManager.o(.data);
       BUILD_DIR/src/os/osViTable.o(.data);
@@ -354,6 +356,8 @@ SECTIONS
 	  BUILD_DIR/src/os/sprintf.o(.bss);
 #endif
       BUILD_DIR/asm/bss_main_audio.o(.bss);
+      BUILD_DIR/src/audio/port_eu.o(.bss);
+      BUILD_DIR/asm/bss_main_audio2.o(.bss);
       BUILD_DIR/src/os/osCreateViManager.o(.bss);
       BUILD_DIR/src/os/osCreatePiManager.o(.bss);
       BUILD_DIR/src/os/osSetEventMesg.o(.bss);
