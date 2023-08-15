@@ -6,8 +6,6 @@
 #include "audio/playback.h"
 #include "audio/seqplayer.h"
 
-extern struct SoundAllocPool gNotesAndBuffersPool;
-
 /**
  * Given that (almost) all of these are format strings, it is highly likely
  * that they are meant to be used in some sort of printf variant. But I don't
@@ -154,9 +152,6 @@ void func_800B90E0(struct SoundAllocPool *pool) {
     pool->numAllocatedEntries = 0;
     pool->cur = pool->start;
 }
-
-extern s32 D_800EA5D0;
-extern u8 D_803B71B0[];
 
 // inspired by sound_init_main_pools in sm64
 void func_800B90F0(s32 arg0) {
@@ -605,8 +600,6 @@ void func_800B9BE4(f32 arg0, f32 arg1, u16 *arg2) {
 #else
 GLOBAL_ASM("asm/non_matchings/audio/heap/func_800B9BE4.s")
 #endif
-
-extern s8 gNumSynthesisReverbs;
 
 // inspired by decrease_reverb_gain from SM64
 void func_800B9FB8(void) {

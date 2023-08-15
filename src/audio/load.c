@@ -357,10 +357,6 @@ block_27:
 GLOBAL_ASM("asm/non_matchings/audio/load/func_800BAD0C.s")
 #endif
 
-extern u32 D_803B70A8; // sDmaBufSize
-extern s32 gMaxSimultaneousNotes; // gMaxSimultaneousNotes
-extern struct AudioBufferParametersEU gAudioBufferParameters; // gAudioBufferParameters
-//extern struct SoundAllocPool gNotesAndBuffersPool; // remove when possible. This is in heap.h
 // init_sample_dma_buffers
 void func_800BB030(UNUSED s32 arg0) {
     s32 i;
@@ -921,7 +917,6 @@ block_11:
 GLOBAL_ASM("asm/non_matchings/audio/load/func_800BBDDC.s")
 #endif
 
-extern volatile s32 D_800EA5DC;
 //load_sequence
 void func_800BBEF0(u32 player, u32 seqId, s32 loadAsync) {
     if (!loadAsync) {

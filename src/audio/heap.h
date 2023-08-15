@@ -92,6 +92,7 @@ struct PoolSplit2 {
     u32 wantTemporary;
 }; // size = 0x8
 
+void reset_bank_and_seq_load_status();
 void discard_bank(s32 bankId);
 void discard_sequence(s32 seqId);
 void *soundAlloc(struct SoundAllocPool *pool, u32 size);
@@ -100,14 +101,23 @@ void persistent_pool_clear(struct PersistentPool *persistent);
 void temporary_pool_clear(struct TemporaryPool *temporary);
 void *get_bank_or_seq(s32 poolIdx, s32 arg1, s32 id);
 void *get_bank_or_seq_inner(s32 poolIdx, s32 arg1, s32 bankId);
+void func_800B9BE4(f32, f32, u16*);
 void func_800B90E0(struct SoundAllocPool *pool);
+void func_800B90F0(s32);
+void func_800B914C(struct PoolSplit*);
+void func_800B9FB8();
 void seq_and_bank_pool_init(struct PoolSplit2 *a);
 void persistent_pools_init(struct PoolSplit *a);
 void temporary_pools_init(struct PoolSplit *a);
 void *unk_pool1_lookup(s32 poolIdx, s32 id);
 
+extern s32 D_800EA5D0;
+extern u8 D_803B71B0[];
+
+
 // Note: In some .asm files D_803AFBC8 has been replaced with gLeftVolRampings
 // That is almost certainly incorrect, but I don't know how to fix it at this point
+extern s8 gNumSynthesisReverbs;                 // D_803AFBC3
 extern struct SoundAllocPool gLeftVolRampings;
 extern struct SoundAllocPool gAudioSessionPool; // D_803AFBC8
 extern struct SoundAllocPool gAudioInitPool;    // D_803AFBD8
