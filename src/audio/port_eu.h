@@ -12,17 +12,17 @@ void func_800CBBB8(u32, s32);
 void func_800CBBE8(u32, s8);
 void func_800CBF48();
 
-extern struct EuAudioCmd D_80193820[0x100];
-
-extern OSMesg *D_80194020;
-extern OSMesg *D_80194028;
-extern OSMesg *D_80194038;
-extern OSMesg *D_8019403C;
-
 extern OSMesgQueue D_801937C0;
 extern OSMesgQueue D_801937D8;
 extern OSMesgQueue D_801937F0;
 extern OSMesgQueue D_80193808;
+
+extern struct EuAudioCmd D_80193820[0x100];
+
+extern OSMesg D_80194020[];
+extern OSMesg D_80194028[];
+extern OSMesg D_80194038[];
+extern OSMesg D_8019403C[];
 
 extern u8 D_800EA3A0[];
 extern u8 D_800EA3A4[];

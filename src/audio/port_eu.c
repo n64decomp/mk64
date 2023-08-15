@@ -4,6 +4,19 @@
 #include "audio/port_eu.h"
 #include "audio/load.h"
 
+OSMesgQueue D_801937C0;
+OSMesgQueue D_801937D8;
+OSMesgQueue D_801937F0;
+OSMesgQueue D_80193808;
+
+struct EuAudioCmd D_80193820[0x100];
+
+// Seems oversized by 1
+OSMesg D_80194020[2];
+OSMesg D_80194028[4];
+OSMesg D_80194038[1];
+OSMesg D_8019403C[1];
+
 u8 D_800EA3A0[] = { 0, 0, 0, 0 };
 
 u8 D_800EA3A4[] = { 0, 0, 0, 0 };
@@ -259,10 +272,10 @@ void func_800CBA64(s32 playerIndex, s32 fadeInTime) {
 void func_800CBAB4(void) {
     D_800EA3A0[0] = 0;
     D_800EA3A4[0] = 0;
-    osCreateMesgQueue(D_800EA3A8, &D_80194020, 1);
-    osCreateMesgQueue(D_800EA3AC, &D_80194028, 4);
-    osCreateMesgQueue(D_800EA3B0, &D_80194038, 1);
-    osCreateMesgQueue(D_800EA3B4, &D_8019403C, 1);
+    osCreateMesgQueue(D_800EA3A8, D_80194020, 1);
+    osCreateMesgQueue(D_800EA3AC, D_80194028, 4);
+    osCreateMesgQueue(D_800EA3B0, D_80194038, 1);
+    osCreateMesgQueue(D_800EA3B4, D_8019403C, 1);
 }
 
 void func_800CBB48(s32 arg0, s32 *arg1) {
