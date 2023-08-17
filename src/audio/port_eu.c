@@ -298,22 +298,26 @@ void func_800CBBE8(u32 arg0, s8 arg1) {
     func_800CBB48(arg0, &sp34);
 }
 
-extern OSMesgQueue* D_800EA3AC[];
-
-extern static s32 D_800EA4A4;
-void func_800CBC24(void) 
+// TODO: clenanup, something's weird with the variables. D_800EA4A4 is probably EuAudioCmd bc of the + 0x100
+void func_800CBC24(void)
 {
-    OSMesg *tmp;
-
-    if (D_800EA4A4 < (((D_800EA3A0 - D_800EA3A4) + 0x100) & 0xFF)) 
-    {
-        D_800EA4A4 = (((D_800EA3A0 - D_800EA3A4) + 0x100) & 0xFF);
-    }
-    tmp = ((D_800EA3A4 & 0xFF) << 8) | (D_800EA3A0 & 0xFF);
-    
-    osSendMesg(*D_800EA3AC, tmp, 0);
-    
-    D_800EA3A4 = D_800EA3A0;
+  s32 temp_t6;
+  s32 test;
+  OSMesg thing;
+  temp_t6 = D_800EA3A0[0] - D_800EA3A4[0];
+  test = (u8) temp_t6;
+  test = (test + 0x100) & 0xFF;
+  do
+  {
+  }
+  while (0);
+  if (D_800EA4A4 < test)
+  {
+    D_800EA4A4 = test;
+  }
+  thing = (OSMesg) ((D_800EA3A0[0] & 0xFF) | ((D_800EA3A4[0] & 0xFF) << 8));
+  osSendMesg(D_800EA3AC, thing, 0);
+  D_800EA3A4[0] = D_800EA3A0[0];
 }
 
 

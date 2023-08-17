@@ -4181,7 +4181,7 @@ block_4:
 GLOBAL_ASM("asm/non_matchings/audio/external/func_800C90F4.s")
 #endif
 
-void func_800C9250(char arg0) 
+void func_800C9250(u8 arg0) 
 {
     func_800C90F4(arg0, (gPlayers[arg0].characterId * 0x10) + (gAudioRandom & 1) + 0x29008001);
 }
