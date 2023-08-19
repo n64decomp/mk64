@@ -301,6 +301,8 @@ void func_8004FDB4(f32, f32, s16, s16, s16, s32, s32, s32, s32);
 
 void func_80050320();
 s32  func_80050644(u16, s32*, s32*);
+void func_800507D8(u16, s32*, s32*);
+void func_80050C68();
 void func_80050E34(s32, s32);
 
 void func_800514BC();
@@ -372,14 +374,17 @@ void func_80055FA0(s32, s32);
 
 void func_80056160(s32);
 void func_80056188(s32);
+void func_800563DC(s32, s32, s32);
 void func_800568A0(s32, s32);
 void func_8005669C(s32, s32, s32);
 void func_800569F4(s32);
 void func_80056A40(s32, s32);
 void func_80056A94(s32);
 void func_80056AC0(s32);
+void func_80056E24(s32, Vec3f);
+void func_80056FCC(s32);
 
-//void debug_print_number(s32*, s32*, u8*,u32);
+void func_80057114(s32);
 void func_8005762C(s32*,s32*,s32,u32);
 void func_80057330();
 void func_80057338();
@@ -390,6 +395,8 @@ void func_800573D4();
 void func_800573DC();
 void func_800573E4(s32, s32, s8);
 void debug_wrap_text(s32*, s32*);
+void debug_print_string(s32*, s32*, char*);
+void debug_print_number(s32*, s32*, s32, u32);
 void func_80057708();
 void load_debug_font();
 void func_80057778();
@@ -403,6 +410,10 @@ void func_80057960(s32, s32, char*, u32);
 void func_800579B8(s32, s32, char*);
 void func_800579F8(s32, s32, char*, u32);
 void func_80057A50(s32, s32, char*, u32);
+void func_80057AA8(s32, s32, char*, u32);
+void func_80057B14(s32, s32, char*, u32);
+void func_80057B80(s32, s32, char*, u32);
+void func_80057BEC(s32, s32, char*, u32);
 
 extern s32 D_80165860;
 extern s32 D_8016586C;

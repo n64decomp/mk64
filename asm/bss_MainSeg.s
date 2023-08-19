@@ -71,23 +71,27 @@ glabel D_80163DD8
 glabel D_80163DE4
 .skip 4
 
+# D_80163DE8 should actually be of size 588 (0x54 * 7)
+# D_80163E2C is a fake variable
 glabel D_80163DE8
-.skip 66
-
-glabel D_80163E2A
-.skip 2
+.skip 68
 
 glabel D_80163E2C
 .skip 520
+# end D_80163DE8
 
 glabel D_80164034
 .skip 4
 
+# Seemingly an array of UnkActorInner, related to the VS mode Bomb Karts
+# D_80164038 should be of size 448 (0x40 * 7)
+# D_801640F4 is a fake variable
 glabel D_80164038
 .skip 188
 
 glabel D_801640F4
 .skip 260
+# end D_80164038
 
 glabel gUnexpiredActorsList
 .skip 224

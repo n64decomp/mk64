@@ -19,6 +19,7 @@
 #include "common_textures.h"
 #include "audio/external.h"
 #include "objects.h"
+#include "bomb_kart.h"
 
 // WARNING: this macro is undef'd at the end of this file
 #define MAKE_RGB(r,g,b) (((r) << 0x10) | ((g) << 0x08) | (b << 0x00))
@@ -2536,31 +2537,25 @@ void func_8005D18C(void) {
         }
     }
 }
-extern u16 D_80163DE8[];
-extern struct_80165C18_entry D_80164034[];
 
 void func_8005D1F4(s32 arg0)
 {
+    s32 playerWaypoint;
+    s32 bombWaypoint;
     s32 var_a2;
-    u16 temp_a0;
-    struct_8018CA70_entry* temp_v1;
-    u16 new_var3;
-    if (gModeSelection == 2) {
-        u16 waypoint = gNearestWaypointByPlayerId[arg0];
-        temp_v1 = &D_8018CA70[arg0];
-        temp_v1->unk_74 = 0;
-        for (var_a2 = 0; var_a2 != 294; var_a2 += 42) {
-            temp_a0 = D_80163DE8[var_a2 + 0x22];
-            if ((temp_a0 != 4) && (temp_a0 != 0)) {
-                new_var3 = D_80163DE8[var_a2 + 0x21];
-                if (((new_var3 - waypoint) >= (-5)) && (new_var3 - waypoint) < 0x1F) {
-                    temp_v1->unk_74 = 1;
-                    return;
-                }
-            }
-        }
+    s32 waypointDiff;
 
-        var_a2 = 0;
+    if (gModeSelection == 2) {
+        playerWaypoint = gNearestWaypointByPlayerId[arg0];
+        D_8018CA70[arg0].unk_74 = 0;
+        for (var_a2 = 0; var_a2 < NUM_BOMB_KARTS_VERSUS; var_a2++) {
+            if ((D_80163DE8[var_a2].state == BOMB_STATE_EXPLODED) || (D_80163DE8[var_a2].state == BOMB_STATE_INACTIVE)) continue;
+            bombWaypoint = D_80163DE8[var_a2].wayPointIndex;
+            waypointDiff = bombWaypoint - playerWaypoint;
+            if ((waypointDiff < -5) || (waypointDiff > 0x1E)) continue;
+            D_8018CA70[arg0].unk_74 = 1;
+            break;
+        }
     }
 }
 
