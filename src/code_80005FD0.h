@@ -33,6 +33,7 @@ s16  func_80005FD0(Vec3f, Vec3f);
 s32  func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
 void func_80006114(Vec3f, Vec3f, s16);
 s32  func_800061DC(Vec3f, f32, s32);
+void set_places(void);
 
 void func_800070F4(void);
 void func_800074D4();
@@ -164,9 +165,15 @@ extern s16 D_80162EB0;
 extern u16 D_801631E0[8];
 extern s32 D_80163488;
 
+
 extern s32 D_8016337C;
+extern s16 D_80164378[];
+extern s32 D_801643E0[];
 extern s32 gModeSelection;
 extern struct unexpiredActors gUnexpiredActorsList[];
+extern s16 D_8016348C;
+extern s32 D_801643E0[];
+extern s32 D_80164408[];
 extern s16 D_80164670;
 extern s16 D_80164672;
 extern s16 D_80164674;
