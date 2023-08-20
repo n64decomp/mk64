@@ -95,7 +95,7 @@ void func_800CB14C(void);
 void func_800C8F80(u8, s32);
 void func_800C9018(u8, s32);
 void func_800C9D0C(s32);
-void func_800C97C4(s32);
+void func_800C97C4(u8);
 void func_800C13F0();
 void func_800C13FC(OSMesg);
 f32 func_800C1480(u8, u8);
