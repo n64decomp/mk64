@@ -4,7 +4,6 @@
 #include "common_structs.h"
 
 #define OBJECT_LIST_SIZE 0x226
-#define D_80183DD8_SIZE  7
 #define SOME_OBJECT_INDEX_LIST_SIZE 32
 
 typedef struct
@@ -89,7 +88,6 @@ extern struct_80165C18_entry D_80165C18[];
  * Lakitu?
 **/
 extern s32 D_80183DB8[];
-extern s32 D_80183DD8[];
 
 // Appears to be a list of object list indices for the Item Window part of the HUD
 extern s32 gItemWindowObjectByPlayerId[];
