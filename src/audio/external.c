@@ -1076,9 +1076,6 @@ block_11:
 GLOBAL_ASM("asm/non_matchings/audio/external/func_800C2A2C.s")
 #endif
 
-extern u8 D_800EA1E4;
-extern u32 D_80192CD0[];
-
 void func_800C3448(s32 arg0) {
     D_80192CD0[D_800EA1E4] = arg0;
     D_800EA1E4 += 1;
@@ -1152,8 +1149,6 @@ s32 func_800C357C(s32 arg0) {
 #else
 GLOBAL_ASM("asm/non_matchings/audio/external/func_800C357C.s")
 #endif
-
-extern unsigned char D_80192CC6[];
 
 void func_800C35E8(u8 arg0) {
     D_80192CC6[arg0] = 0;
@@ -2609,17 +2604,6 @@ void func_800C5BD0(void) {
     }
 }
 
-
-void func_800C2474();
-void func_800C284C(u8, u8, u8, s32);
-
-void func_800C2474(void);
-void func_800C3F70(void);
-void func_800C5A3C(void);
-void func_800C400C(void);
-void func_800C5BD0(void);
-
-extern u8 D_800E9DA0;
 
 void func_800C5C40(void) {
 
@@ -4832,9 +4816,6 @@ void func_800CAC08() {
     }
 }
 
-extern u8 D_800EA10C[];
-extern s8 D_800EA168;
-
 void func_800CAC60(UNUSED s32 arg0) {
     if ((D_800EA108 == 0) && (D_800EA0F0 == 0)) {
         play_sound(SOUND_ACTION_EXPLOSION_2, D_800EA1C8, 0U, D_800EA1D4, D_800EA1D4, &D_800EA1DC);
@@ -4845,11 +4826,6 @@ void func_800CAC60(UNUSED s32 arg0) {
         }
     }
 }
-
-
-extern int func_800C56F0();                                 /* extern */
-extern s8 D_800EA168;
-extern u8 D_800EA170[];
 
 void func_800CAD40(UNUSED s32 arg0) {
     if (D_800EA108 == 0) {
@@ -4953,8 +4929,6 @@ block_4:
 GLOBAL_ASM("asm/non_matchings/audio/external/func_800CAEC4.s")
 #endif
 
-extern u8 D_800EA170[];
-
 void func_800CAFC0(u8 arg0) {
 
     if (D_800EA108 == 0) {
@@ -5051,13 +5025,6 @@ void func_800CB14C(void) {
 #else
 GLOBAL_ASM("asm/non_matchings/audio/external/func_800CB14C.s")
 #endif
-
-extern void func_800C2274(s32);                                 /* extern */
-extern void func_800C3478();                                  /* extern */
-extern void func_800C3724();                                  /* extern */
-extern void func_800C59C4();                                  /* extern */
-extern void func_800C8CCC();                                  /* extern */
-extern void func_800CBC24();                                  /* extern */
 
 // run audio?
 void func_800CB2C4() {
