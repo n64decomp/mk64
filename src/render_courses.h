@@ -2,15 +2,15 @@
 #define RENDER_COURSES_H
 
 struct Unk0CAC {
-    s32 unk0;
-    u8 unk4;
-    u8 unk5;
-    u16 unk6;
+    s32 unk0; // Some gfx ptr
+    u8 unk4; // surface type
+    u8 unk5; // flags
+    u16 unk6; // Some thing?
 };
 
 void func_8029122C(struct UnkStruct_800DC5EC*, s32);
 s32  func_80290C20(Camera*);
-void func_80290CAC(uintptr_t);
+void parse_course_displaylists(uintptr_t);
 void load_surface_map(uintptr_t, struct UnkStruct_800DC5EC*);
 void func_80291198();
 void func_802911C4();
@@ -155,7 +155,7 @@ extern s32 gGamestate;
 extern s32 gModeSelection;
 extern u16 gNumActors;
 extern s32 D_8015F58C;
-extern mk64_surface_map_ram *D_8015F580;
+extern mk64_surface_map_ram *gSurfaceMap;
 extern s32 gCCSelection;
 
 #endif

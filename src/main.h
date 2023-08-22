@@ -23,6 +23,8 @@ struct UnkStruct_8015F584 {
     u16 unk2;
 };
 
+extern struct UnkStruct_8015F584 D_8014F110[];
+
 void create_thread(OSThread*, OSId, void (*entry)(void *), void*, void*, OSPri);
 void main_func();
 void thread1_idle(void*);

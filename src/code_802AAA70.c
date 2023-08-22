@@ -1,9 +1,18 @@
+#include <ultra64.h>
+#include <macros.h>
+#include <PR/gbi.h>
+#include <mk64.h>
+#include <common_structs.h>
+#include <actor_types.h>
+#include "main.h"
+#include "memory.h"
 #include "code_802AAA70.h"
 #include "math_util.h"
 #include "variables.h"
-#include <actor_types.h>
 
-// Used for the choco mountain guard rail
+#pragma intrinsic (sqrtf)
+
+// Used to delete the choco mountain guard rail
 void nullify_displaylist(uintptr_t addr) {
     s32 segment = SEGMENT_NUMBER2(addr);
     s32 offset = SEGMENT_OFFSET(addr);
@@ -11,23 +20,23 @@ void nullify_displaylist(uintptr_t addr) {
     Gfx *macro;
 
     macro = (Gfx *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
-    macro->words.w0 = G_ENDDL << 24;
+    macro->words.w0 = (G_ENDDL << 24);
     macro->words.w1 = 0;
 }
 
-void func_802AAAAC(UnkActorInner *arg0) {
-    arg0->unk36 = 0x1388;
-    arg0->unk38 = 0x1388;
-    arg0->unk3A = 0x1388;
-    arg0->unk30 = 0;
-    arg0->unk32 = 0;
-    arg0->unk34 = 0;
-    arg0->unk3C[0] = 0;
-    arg0->unk3C[1] = 0;
-    arg0->unk3C[2] = 0;
-    vec3f_set(arg0->unk48, 0.0f, 0.0f, 1.0f);
-    vec3f_set(arg0->unk54, 1.0f, 0.0f, 0.0f);
-    vec3f_set(arg0->unk60, 0.0f, 1.0f, 0.0f);
+void func_802AAAAC(Collision *collision) {
+    collision->unk36 = 5000;
+    collision->unk38 = 5000;
+    collision->unk3A = 5000;
+    collision->unk30 = 0;
+    collision->unk32 = 0;
+    collision->unk34 = 0;
+    collision->unk3C[0] = 0;
+    collision->unk3C[1] = 0;
+    collision->unk3C[2] = 0;
+    vec3f_set(collision->unk48, 0.0f, 0.0f, 1.0f);
+    vec3f_set(collision->unk54, 1.0f, 0.0f, 0.0f);
+    vec3f_set(collision->unk60, 0.0f, 1.0f, 0.0f);
 }
 
 f32 func_802AAB4C(Player *player) {
@@ -37,1777 +46,1367 @@ f32 func_802AAB4C(Player *player) {
 
     playerX = player->pos[0];
     playerZ = player->pos[2];
-    switch (gCurrentCourseId) {                     /* irregular */
-    case COURSE_BOWSER_CASTLE:
-        if (playerX > 1859.0f) {
-            return D_8015F8E4;
-        }
-        if (playerX < 1549.0f) {
-            return D_8015F8E4;
-        }
-        if (playerZ > -1102.0f) {
-            return D_8015F8E4;
-        }
-        if (playerZ < -1402.0f) {
-            return D_8015F8E4;
-        }
-        return 20.0f;
-    case COURSE_KOOPA_BEACH:
-        if (playerX > 239.0f) {
-            return D_8015F8E4;
-        }
-        if (playerX < 67.0f) {
-            return D_8015F8E4;
-        }
-        if (playerZ > 2405.0f) {
-            return D_8015F8E4;
-        }
-        if (playerZ < 2233.0f) {
-            return D_8015F8E4;
-        }
-        return 0.8f;
-    case COURSE_SHERBET_LAND:
-        if ((func_802ABD10(player->unk_110.unk3A) & 0xFF) == 5) {
-            return (f32) (D_8015F6EE - 0xA);
-        }
-        return D_8015F8E4;
-    case COURSE_DK_JUNGLE:
-        temp_v1 = func_802ABD40(player->unk_110.unk3A) & 0xFF;
-        if (temp_v1 == 0xFF) {
-            if ((func_802ABD10(player->unk_110.unk3A) & 0xFF) == 0xF) {
-                return -475.0f;
+    switch (gCurrentCourseId) {
+        case COURSE_BOWSER_CASTLE:
+            if (playerX > 1859.0f) {
+                return D_8015F8E4;
             }
-            if (playerX > -478.0f) {
+            if (playerX < 1549.0f) {
+                return D_8015F8E4;
+            }
+            if (playerZ > -1102.0f) {
+                return D_8015F8E4;
+            }
+            if (playerZ < -1402.0f) {
+                return D_8015F8E4;
+            }
+            return 20.0f;
+        case COURSE_KOOPA_BEACH:
+            if (playerX > 239.0f) {
+                return D_8015F8E4;
+            }
+            if (playerX < 67.0f) {
+                return D_8015F8E4;
+            }
+            if (playerZ > 2405.0f) {
+                return D_8015F8E4;
+            }
+            if (playerZ < 2233.0f) {
+                return D_8015F8E4;
+            }
+            return 0.8f;
+        case COURSE_SHERBET_LAND:
+            if ((get_surface_type(player->unk_110.unk3A) & 0xFF) == 5) {
+                return (f32) (D_8015F6EE - 0xA);
+            }
+            return D_8015F8E4;
+        case COURSE_DK_JUNGLE:
+            temp_v1 = func_802ABD40(player->unk_110.unk3A) & 0xFF;
+            if (temp_v1 == 0xFF) {
+                if ((get_surface_type(player->unk_110.unk3A) & 0xFF) == 0xF) {
+                    return -475.0f;
+                }
+                if (playerX > -478.0f) {
+                    return -33.9f;
+                }
+                if (playerX < -838.0f) {
+                    return -475.0f;
+                }
+                if (playerZ > -436.0f) {
+                    return -475.0f;
+                }
+                if (playerZ < -993.0f) {
+                    return -33.9f;
+                }
+                if (playerZ < playerX) {
+                    return -475.0f;
+                }
                 return -33.9f;
             }
-            if (playerX < -838.0f) {
-                return -475.0f;
-            }
-            if (playerZ > -436.0f) {
-                return -475.0f;
-            }
-            if (playerZ < -993.0f) {
-                return -33.9f;
-            }
-            if (playerZ < playerX) {
+            if (temp_v1 >= 0x14) {
                 return -475.0f;
             }
             return -33.9f;
-        }
-        if (temp_v1 >= 0x14) {
-            return -475.0f;
-        }
-        return -33.9f;
-    default:
-        return D_8015F8E4;
+        default:
+            return D_8015F8E4;
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 0927f17aac197848d4ebdf0c6bbad74b01f0851c
-static f32 D_802B9E48 = -0.9f;
-
-s32 func_802AAE4C(UnkActorInner *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, u16 arg5) {
-    f32 sp6C;
-    f32 sp64;
-    f32 sp3C;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    Vtx *temp_a0;
-    Vtx *temp_a2;
-    Vtx *temp_a3;
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f0_3;
-    f32 temp_f0_4;
+s32 func_802AAE4C(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
+    mk64_surface_map_ram *surfaceMap = &gSurfaceMap[index];
+    UNUSED f32 pad;
+    f32 x3;
+    UNUSED f32 pad2;
+    f32 z3;
+    UNUSED f32 pad3[4];
+    f32 x2;
+    f32 z2;
+    f32 x1;
+    f32 z1;
     f32 temp_f0_5;
     f32 temp_f10;
-    f32 temp_f12;
-    f32 temp_f12_2;
-    f32 temp_f14;
-    f32 temp_f14_2;
-    f32 temp_f16;
-    f32 temp_f2;
-    f32 temp_f2_2;
-    f32 temp_f2_3;
-    f32 temp_f4;
-    f32 temp_f8;
-    mk64_surface_map_ram *temp_v1;
-    s32 var_v0;
-    s32 var_v0_2;
-
-    temp_v1 = &D_8015F580[arg5];
-    temp_f0 = temp_v1->gravity;
-    var_v0_2 = 1;
-    if (temp_f0 < D_802B9E48) {
-        return 0;
-    }
-    if (arg2 < (f32) temp_v1->vtx3[0]) {
-        return 0;
-    }
-    if (arg4 < (f32) temp_v1->vtx3[2]) {
-        return 0;
-    }
-    if ((f32) temp_v1->vtx2[0] < arg2) {
-        return 0;
-    }
-    if ((f32) temp_v1->vtx2[2] < arg4) {
-        return 0;
-    }
-    sp2C = temp_f0;
-    if (arg3 < ((f32) temp_v1->vtx3[1] - (arg1 * 3.0f))) {
-        return 0;
-    }
-    temp_a0 = temp_v1->vtxs[0];
-    temp_a3 = temp_v1->vtxs[2];
-    temp_a2 = temp_v1->vtxs[1];
-    sp6C = (f32) temp_a3->v.ob[0];
-    sp8 = arg4;
-    sp10 = arg2;
-    temp_f8 = (f32) temp_a0->v.ob[2] - arg4;
-    sp64 = (f32) temp_a3->v.ob[2];
-    temp_f4 = (f32) temp_a2->v.ob[0] - arg2;
-    sp28 = temp_f8;
-    sp24 = temp_f4;
-    sp20 = (f32) temp_a0->v.ob[0] - arg2;
-    temp_f0_2 = temp_f8 * temp_f4;
-    sp8 = temp_f8;
-    spC = temp_f4;
-    sp1C = (f32) temp_a2->v.ob[2] - arg4;
-    temp_f2 = sp20 * sp1C;
-    temp_f10 = temp_f0_2 - temp_f2;
-    sp18 = temp_f10;
-    sp3C = temp_f10;
-    if (temp_f2 == temp_f0_2) {
-        sp14 = arg4;
-        temp_f0_3 = sp6C - sp10;
-        temp_f2_2 = sp64 - arg4;
-        if ((((sp1C * temp_f0_3) - (spC * temp_f2_2)) * ((temp_f2_2 * sp20) - (temp_f0_3 * sp8))) < 0.0f) {
-            var_v0_2 = 0;
-        }
-    } else {
-        temp_f2_3 = sp64 - arg4;
-        temp_f0_4 = sp6C - arg2;
-        temp_f14 = sp24 * temp_f2_3;
-        temp_f12 = sp1C * temp_f0_4;
-        if (temp_f14 == temp_f12) {
-            if ((sp3C * ((temp_f2_3 * sp20) - (temp_f0_4 * sp28))) < 0.0f) {
-                var_v0_2 = 0;
-            }
-        } else {
-            temp_f16 = temp_f12 - temp_f14;
-            if ((sp18 * temp_f16) < 0.0f) {
-                var_v0_2 = 0;
-            } else {
-                temp_f14_2 = temp_f0_4 * sp28;
-                temp_f12_2 = temp_f2_3 * sp20;
-                if ((temp_f14_2 != temp_f12_2) && ((temp_f16 * (temp_f12_2 - temp_f14_2)) < 0.0f)) {
-                    var_v0_2 = 0;
-                }
-            }
-        }
-    }
-    if (var_v0_2 == 0) {
-        return 0;
-    }
-    temp_f0_5 = ((temp_v1->height * arg2) + (sp2C * arg3) + (temp_v1->rotation * arg4) + temp_v1->height2) - arg1;
-    if (temp_f0_5 > 0.0f) {
-        if (temp_f0_5 < arg0->unk3C[2]) {
-            arg0->unk34 = 1;
-            arg0->unk3A = arg5;
-            arg0->unk3C[2] = temp_f0_5;
-            arg0->unk60[0] = temp_v1->height;
-            arg0->unk60[1] = temp_v1->gravity;
-            arg0->unk60[2] = temp_v1->rotation;
-        }
-        return 0;
-    }
-    var_v0 = 0;
-    if (temp_f0_5 > -16.0f) {
-        arg0->unk34 = 1;
-        arg0->unk3A = arg5;
-        arg0->unk3C[2] = temp_f0_5;
-        var_v0 = 1;
-        arg0->unk60[0] = temp_v1->height;
-        arg0->unk60[1] = temp_v1->gravity;
-        arg0->unk60[2] = temp_v1->rotation;
-    }
-    return var_v0;
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AAE4C.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit 0927f17aac197848d4ebdf0c6bbad74b01f0851c
-s32 func_802AB288(UnkActorInner *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, u16 arg5) {
-    f32 sp70;
-    f32 sp6C;
-    f32 sp3C;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp14;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    Vtx *temp_a0;
-    Vtx *temp_a2;
-    Vtx *temp_a3;
-    f32 temp_f0;
-    f32 temp_f0_2;
     f32 temp_f0_3;
-    f32 temp_f0_4;
-    f32 temp_f12;
-    f32 temp_f12_2;
-    f32 temp_f14;
-    f32 temp_f14_2;
-    f32 temp_f16;
-    f32 temp_f2;
     f32 temp_f2_2;
-    f32 temp_f2_3;
-    f32 temp_f2_4;
-    f32 temp_f4;
-    f32 temp_f6;
-    f32 temp_f8;
-    mk64_surface_map_ram *temp_v1;
-    s32 var_v0;
-    s32 var_v0_2;
+    s32 bool = 1;
 
-    temp_v1 = &D_8015F580[arg5];
-    var_v0_2 = 1;
-    if (arg2 < (f32) temp_v1->vtx3[0]) {
+    if (surfaceMap->gravity < -0.9f)
         return 0;
-    }
-    if ((f32) temp_v1->vtx2[0] < arg2) {
+    if (surfaceMap->vtx31 > posX)
         return 0;
-    }
-    if ((f32) temp_v1->vtx2[1] < arg3) {
+    if (surfaceMap->vtx33 > posZ)
         return 0;
-    }
-    if (arg3 < (f32) temp_v1->vtx3[1]) {
+    if (surfaceMap->vtx21 < posX)
         return 0;
-    }
-    temp_f2 = arg1 * 3.0f;
-    if (arg4 < ((f32) temp_v1->vtx3[2] - temp_f2)) {
+    if (surfaceMap->vtx23 < posZ)
         return 0;
-    }
-    if (((f32) temp_v1->vtx2[2] + temp_f2) < arg4) {
+    if ((surfaceMap->vtx32 - boundingBoxSize * 3.0f) > posY)
         return 0;
-    }
-    temp_a0 = temp_v1->vtxs[0];
-    temp_a3 = temp_v1->vtxs[2];
-    temp_a2 = temp_v1->vtxs[1];
-    sp70 = (f32) temp_a3->v.ob[0];
-    sp8 = arg3;
-    sp10 = arg2;
-    temp_f4 = (f32) temp_a0->v.ob[1] - arg3;
-    sp6C = (f32) temp_a3->v.ob[1];
-    temp_f8 = (f32) temp_a2->v.ob[0] - arg2;
-    sp2C = temp_f4;
-    sp28 = temp_f8;
-    sp24 = (f32) temp_a0->v.ob[0] - arg2;
-    temp_f0 = temp_f4 * temp_f8;
-    sp8 = temp_f4;
-    spC = temp_f8;
-    sp20 = (f32) temp_a2->v.ob[1] - arg3;
-    temp_f2_2 = sp24 * sp20;
-    temp_f6 = temp_f0 - temp_f2_2;
-    sp1C = temp_f6;
-    sp3C = temp_f6;
-    if (temp_f2_2 == temp_f0) {
-        sp14 = arg3;
-        temp_f0_2 = sp70 - sp10;
-        temp_f2_3 = sp6C - arg3;
-        if ((((sp20 * temp_f0_2) - (spC * temp_f2_3)) * ((temp_f2_3 * sp24) - (temp_f0_2 * sp8))) < 0.0f) {
-            var_v0_2 = 0;
+
+    x1 = surfaceMap->vtxPoly1->v.ob[0];
+    z1 = surfaceMap->vtxPoly1->v.ob[2];
+
+    x2 = surfaceMap->vtxPoly2->v.ob[0];
+    z2 = surfaceMap->vtxPoly2->v.ob[2];
+
+    x3 = surfaceMap->vtxPoly3->v.ob[0];
+    z3 = surfaceMap->vtxPoly3->v.ob[2];
+
+    temp_f10 = (z1 - posZ) * (x2 - posX) - (x1 - posX) * (z2 - posZ);
+
+    if (!temp_f10) {
+
+        temp_f0_3 = (z2 - posZ) * (x3 - posX) - (x2 - posX) * (z3 - posZ);
+
+        temp_f2_2 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
+
+        if ((temp_f0_3 * temp_f2_2) < 0.0f) {
+            bool = 0;
         }
     } else {
-        temp_f2_4 = sp6C - arg3;
-        temp_f0_3 = sp70 - arg2;
-        temp_f14 = sp28 * temp_f2_4;
-        temp_f12 = sp20 * temp_f0_3;
-        if (temp_f14 == temp_f12) {
-            if ((sp3C * ((temp_f2_4 * sp24) - (temp_f0_3 * sp2C))) < 0.0f) {
-                var_v0_2 = 0;
+
+        temp_f0_3 = (z2 - posZ) * (x3 - posX) - (x2 - posX) * (z3 - posZ);
+
+        if (!temp_f0_3) {
+            temp_f2_2 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
+
+            if ((temp_f10 * temp_f2_2) < 0.0f) {
+                bool = 0;
             }
         } else {
-            temp_f16 = temp_f12 - temp_f14;
-            if ((sp1C * temp_f16) < 0.0f) {
-                var_v0_2 = 0;
+            if ((temp_f10 * temp_f0_3) < 0.0f) {
+                bool = 0;
             } else {
-                temp_f14_2 = temp_f0_3 * sp2C;
-                temp_f12_2 = temp_f2_4 * sp24;
-                if ((temp_f14_2 != temp_f12_2) && ((temp_f16 * (temp_f12_2 - temp_f14_2)) < 0.0f)) {
-                    var_v0_2 = 0;
+                temp_f2_2 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
+                if (temp_f2_2 != 0) {
+                    if ((temp_f0_3 * temp_f2_2) < 0.0f) {
+                        bool = 0;
+                    }
                 }
             }
         }
     }
-    if (var_v0_2 == 0) {
+    if (!bool) {
         return 0;
     }
-    temp_f0_4 = ((temp_v1->height * arg2) + (temp_v1->gravity * arg3) + (temp_v1->rotation * arg4) + temp_v1->height2) - arg1;
+    temp_f0_5 = ((surfaceMap->height * posX) + (surfaceMap->gravity * posY) + (surfaceMap->rotation * posZ)
+                 + surfaceMap->height2)
+                - boundingBoxSize;
+    if (temp_f0_5 > 0.0f) {
+        if (collision->unk3C[2] > temp_f0_5) {
+            collision->unk34 = 1;
+            collision->unk3A = index;
+            collision->unk3C[2] = temp_f0_5;
+            collision->unk60[0] = surfaceMap->height;
+            collision->unk60[1] = surfaceMap->gravity;
+            collision->unk60[2] = surfaceMap->rotation;
+        }
+        return 0;
+    }
+
+    if (temp_f0_5 > -16.0f) {
+        collision->unk34 = 1;
+        collision->unk3A = index;
+        collision->unk3C[2] = temp_f0_5;
+        collision->unk60[0] = surfaceMap->height;
+        collision->unk60[1] = surfaceMap->gravity;
+        collision->unk60[2] = surfaceMap->rotation;
+        return 1;
+    }
+    return 0;
+}
+
+
+s32 func_802AB288(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
+    mk64_surface_map_ram *surfaceMap = &gSurfaceMap[index];
+    UNUSED f32 pad[6];
+    f32 x3;
+    f32 y3;
+    UNUSED f32 pad2[1];
+    
+    UNUSED f32 pad3[5];
+    f32 x2;
+    f32 y2;
+    f32 x1;
+    f32 y1;
+    f32 temp_f0_4;
+    f32 temp_f2_2;
+    f32 temp_f0_2;
+    f32 temp_f2_3;
+    s32 bool = 1;
+
+    if (surfaceMap->vtx31 > posX) {
+        return 0;
+    }
+    if (surfaceMap->vtx21 < posX) {
+        return 0;
+    }
+    if (surfaceMap->vtx22 < posY) {
+        return 0;
+    }
+    if (surfaceMap->vtx32 > posY) {
+        return 0;
+    }
+
+    if ((surfaceMap->vtx33 - boundingBoxSize * 3.0f) > posZ) {
+        return 0;
+    }
+    if ((surfaceMap->vtx23 + boundingBoxSize * 3.0f) < posZ) {
+        return 0;
+    }
+
+    x1 = surfaceMap->vtxPoly1->v.ob[0];
+    y1 = surfaceMap->vtxPoly1->v.ob[1];
+
+    x2 = surfaceMap->vtxPoly2->v.ob[0];
+    y2 = surfaceMap->vtxPoly2->v.ob[1];
+
+    x3 = surfaceMap->vtxPoly3->v.ob[0];
+    y3 = surfaceMap->vtxPoly3->v.ob[1];
+
+    temp_f2_2 = (y1 - posY) * (x2 - posX) - (x1 - posX) * (y2 - posY);
+
+    if (!temp_f2_2) {
+
+        temp_f0_2 = (y2 - posY) * (x3 - posX) - (x2 - posX) * (y3 - posY);
+
+        temp_f2_3 = (y3 - posY) * (x1 - posX) - (x3 - posX) * (y1 - posY);
+
+        if ((temp_f0_2 * temp_f2_3) < 0.0f) {
+            bool = 0;
+        }
+    } else {
+        temp_f0_2 = (y2 - posY) * (x3 - posX) - (x2 - posX) * (y3 - posY);
+        if (!temp_f0_2) {
+            temp_f2_3 = (y3 - posY) * (x1 - posX) - (x3 - posX) * (y1 - posY);
+            if (temp_f2_2 * temp_f2_3 < 0.0f) {
+                bool = 0;
+            }
+        } else {
+            if ((temp_f2_2 * temp_f0_2) < 0.0f) {
+                bool = 0;
+            } else {
+                temp_f2_3 = ((y3 - posY) * (x1 - posX)) - ((x3 - posX) * (y1 - posY));
+                if (temp_f2_3 != 0) {
+                    if ((temp_f0_2 * temp_f2_3) < 0.0f) {
+                        bool = 0;
+                    }
+                }
+            }
+        }
+    }
+    if (!bool) {
+        return 0;
+    }
+    temp_f0_4 = ((surfaceMap->height * posX) + (surfaceMap->gravity * posY) + (surfaceMap->rotation * posZ) + surfaceMap->height2) - boundingBoxSize;
     if (temp_f0_4 > 0.0f) {
-        if (temp_f0_4 < arg0->unk3C[0]) {
-            arg0->unk30 = 1;
-            arg0->unk36 = arg5;
-            arg0->unk3C[0] = temp_f0_4;
-            arg0->unk48[0] = temp_v1->height;
-            arg0->unk48[1] = temp_v1->gravity;
-            arg0->unk48[2] = temp_v1->rotation;
+        if (temp_f0_4 < collision->unk3C[0]) {
+            collision->unk30 = 1;
+            collision->unk36 = index;
+            collision->unk3C[0] = temp_f0_4;
+            collision->unk48[0] = surfaceMap->height;
+            collision->unk48[1] = surfaceMap->gravity;
+            collision->unk48[2] = surfaceMap->rotation;
         }
         return 0;
     }
-    var_v0 = 0;
+
     if (temp_f0_4 > -16.0f) {
-        arg0->unk30 = 1;
-        arg0->unk36 = arg5;
-        arg0->unk3C[0] = temp_f0_4;
-        var_v0 = 1;
-        arg0->unk48[0] = temp_v1->height;
-        arg0->unk48[1] = temp_v1->gravity;
-        arg0->unk48[2] = temp_v1->rotation;
+        collision->unk30 = 1;
+        collision->unk36 = index;
+        collision->unk3C[0] = temp_f0_4;
+        collision->unk48[0] = surfaceMap->height;
+        collision->unk48[1] = surfaceMap->gravity;
+        collision->unk48[2] = surfaceMap->rotation;
+        return 1;
     }
-    return var_v0;
+    return 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AB288.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 0927f17aac197848d4ebdf0c6bbad74b01f0851c
-s32 func_802AB6C4(UnkActorInner *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, u16 arg5) {
-    f32 sp68;
-    f32 sp64;
-    f32 sp38;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp24;
+
+s32 func_802AB6C4(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
+    mk64_surface_map_ram *surfaceMap = &gSurfaceMap[index];
+    s32 bool = 1;
+    UNUSED f32 pad[7];
     f32 sp20;
-    f32 sp1C;
-    f32 sp14;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    Vtx *temp_a0;
-    Vtx *temp_a2;
-    Vtx *temp_a3;
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f0_3;
-    f32 temp_f0_4;
-    f32 temp_f0_5;
-    f32 temp_f10;
-    f32 temp_f12;
-    f32 temp_f12_2;
-    f32 temp_f14;
-    f32 temp_f14_2;
-    f32 temp_f16;
-    f32 temp_f2;
-    f32 temp_f2_2;
-    f32 temp_f2_3;
-    f32 temp_f4;
-    f32 temp_f6;
-    mk64_surface_map_ram *temp_v1;
-    s32 var_v0;
-    s32 var_v0_2;
-
-    temp_v1 = &D_8015F580[arg5];
-    var_v0_2 = 1;
-    if (arg4 < (f32) temp_v1->vtx3[2]) {
-        return 0;
-    }
-    if ((f32) temp_v1->vtx2[2] < arg4) {
-        return 0;
-    }
-    if ((f32) temp_v1->vtx2[1] < arg3) {
-        return 0;
-    }
-    if (arg3 < (f32) temp_v1->vtx3[1]) {
-        return 0;
-    }
-    temp_f0 = arg1 * 3.0f;
-    if (arg2 < ((f32) temp_v1->vtx3[0] - temp_f0)) {
-        return 0;
-    }
-    if (((f32) temp_v1->vtx2[0] + temp_f0) < arg2) {
-        return 0;
-    }
-    temp_a0 = temp_v1->vtxs[0];
-    temp_a3 = temp_v1->vtxs[2];
-    temp_a2 = temp_v1->vtxs[1];
-    sp64 = (f32) temp_a3->v.ob[2];
-    sp8 = arg3;
-    sp10 = arg4;
-    temp_f6 = (f32) temp_a0->v.ob[1] - arg3;
-    sp68 = (f32) temp_a3->v.ob[1];
-    temp_f10 = (f32) temp_a2->v.ob[2] - arg4;
-    sp2C = temp_f6;
-    sp28 = temp_f10;
-    sp24 = (f32) temp_a0->v.ob[2] - arg4;
-    temp_f0_2 = temp_f6 * temp_f10;
-    sp8 = temp_f6;
-    spC = temp_f10;
-    sp20 = (f32) temp_a2->v.ob[1] - arg3;
-    temp_f2 = sp24 * sp20;
-    temp_f4 = temp_f0_2 - temp_f2;
-    sp1C = temp_f4;
-    sp38 = temp_f4;
-    if (temp_f2 == temp_f0_2) {
-        sp14 = arg3;
-        temp_f0_3 = sp64 - sp10;
-        temp_f2_2 = sp68 - arg3;
-        if ((((sp20 * temp_f0_3) - (spC * temp_f2_2)) * ((temp_f2_2 * sp24) - (temp_f0_3 * sp8))) < 0.0f) {
-            var_v0_2 = 0;
-        }
-    } else {
-        temp_f2_3 = sp68 - arg3;
-        temp_f0_4 = sp64 - arg4;
-        temp_f14 = sp28 * temp_f2_3;
-        temp_f12 = sp20 * temp_f0_4;
-        if (temp_f14 == temp_f12) {
-            if ((sp38 * ((temp_f2_3 * sp24) - (temp_f0_4 * sp2C))) < 0.0f) {
-                var_v0_2 = 0;
-            }
-        } else {
-            temp_f16 = temp_f12 - temp_f14;
-            if ((sp1C * temp_f16) < 0.0f) {
-                var_v0_2 = 0;
-            } else {
-                temp_f14_2 = temp_f0_4 * sp2C;
-                temp_f12_2 = temp_f2_3 * sp24;
-                if ((temp_f14_2 != temp_f12_2) && ((temp_f16 * (temp_f12_2 - temp_f14_2)) < 0.0f)) {
-                    var_v0_2 = 0;
-                }
-            }
-        }
-    }
-    if (var_v0_2 == 0) {
-        return 0;
-    }
-    temp_f0_5 = ((temp_v1->height * arg2) + (temp_v1->gravity * arg3) + (temp_v1->rotation * arg4) + temp_v1->height2) - arg1;
-    if (temp_f0_5 > 0.0f) {
-        if (temp_f0_5 < arg0->unk3C[1]) {
-            arg0->unk32 = 1;
-            arg0->unk38 = arg5;
-            arg0->unk3C[1] = temp_f0_5;
-            arg0->unk54[0] = temp_v1->height;
-            arg0->unk54[1] = temp_v1->gravity;
-            arg0->unk54[2] = temp_v1->rotation;
-        }
-        return 0;
-    }
-    var_v0 = 0;
-    if (temp_f0_5 > -16.0f) {
-        arg0->unk32 = 1;
-        arg0->unk38 = arg5;
-        arg0->unk3C[1] = temp_f0_5;
-        var_v0 = 1;
-        arg0->unk54[0] = temp_v1->height;
-        arg0->unk54[1] = temp_v1->gravity;
-        arg0->unk54[2] = temp_v1->rotation;
-    }
-    return var_v0;
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AB6C4.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit 0927f17aac197848d4ebdf0c6bbad74b01f0851c
-s32 func_802ABB04(f32 arg0, f32 arg1, s32 arg2) {
+    f32 temp_f8;
+    UNUSED f32 pad2[5];
     f32 sp6C;
-    f32 sp64;
-    f32 sp60;
-    f32 sp58;
-    f32 sp3C;
-    f32 sp28;
-    f32 sp20;
-    f32 sp1C;
-    Vtx *temp_a0;
-    Vtx *temp_a1;
-    Vtx *temp_a3;
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f0_3;
-    f32 temp_f10;
-    f32 temp_f12;
-    f32 temp_f14;
-    f32 temp_f16;
-    f32 temp_f16_2;
-    f32 temp_f18;
-    f32 temp_f20;
-    f32 temp_f22;
-    f32 temp_f2;
+    f32 sp70;
+    f32 temp_f4;
+    f32 sp24;
+    f32 temp_f0_4;
     f32 temp_f2_2;
+    f32 temp_f0_2;
     f32 temp_f2_3;
-    f32 temp_f6;
-    mk64_surface_map_ram *temp_v0;
-    s32 var_v1;
+    if (surfaceMap->vtx33 > posZ) {
+        return 0;
+    }
+    if (surfaceMap->vtx23 < posZ) {
+        return 0;
+    }
+    if (surfaceMap->vtx22 < posY) {
+        return 0;
+    }
+    if (surfaceMap->vtx32 > posY) {
+        return 0;
+    }
+    if ((surfaceMap->vtx31 - (boundingBoxSize * 3.0f)) > posX) {
+        return 0;
+    }
+    if ((surfaceMap->vtx21 + (boundingBoxSize * 3.0f)) < posX) {
+        return 0;
+    }
 
-    temp_v0 = &D_8015F580[arg2 & 0xFFFF];
-    temp_a1 = temp_v0->vtxs[1];
-    temp_a0 = temp_v0->vtxs[0];
-    var_v1 = 1;
-    sp60 = (f32) temp_a1->v.ob[0];
-    temp_f20 = (f32) temp_a0->v.ob[2] - arg1;
-    sp58 = (f32) temp_a1->v.ob[2];
-    temp_a3 = temp_v0->vtxs[2];
-    temp_f22 = (f32) temp_a0->v.ob[0] - arg0;
-    sp6C = (f32) temp_a3->v.ob[0];
-    temp_f10 = sp60 - arg0;
-    temp_f0 = temp_f20 * temp_f10;
-    sp28 = temp_f10;
-    sp64 = (f32) temp_a3->v.ob[2];
-    temp_f6 = sp58 - arg1;
-    temp_f2 = temp_f22 * temp_f6;
-    sp20 = temp_f6;
-    sp1C = temp_f0 - temp_f2;
-    sp3C = sp1C;
-    if (temp_f2 == temp_f0) {
-        temp_f0_2 = sp6C - arg0;
-        temp_f2_2 = sp64 - arg1;
-        if ((((temp_f6 * temp_f0_2) - (temp_f10 * temp_f2_2)) * ((temp_f2_2 * temp_f22) - (temp_f0_2 * temp_f20))) < 0.0f) {
-            var_v1 = 0;
+    sp24 = surfaceMap->vtxPoly1->v.ob[2];
+    temp_f4 = surfaceMap->vtxPoly1->v.ob[1];
+
+    sp70 = surfaceMap->vtxPoly2->v.ob[2];
+    sp6C = surfaceMap->vtxPoly2->v.ob[1];
+
+    temp_f8 = surfaceMap->vtxPoly3->v.ob[2];
+    sp20 = surfaceMap->vtxPoly3->v.ob[1];
+
+    temp_f2_2 = (temp_f4 - posY) * (sp70 - posZ) - (sp24 - posZ) * (sp6C - posY);
+
+    if (!temp_f2_2) {
+
+        temp_f0_2 = ((sp6C - posY) * (temp_f8 - posZ)) - ((sp70 - posZ) * (sp20 - posY));
+
+        temp_f2_3 = ((sp20 - posY) * (sp24 - posZ)) - ((temp_f8 - posZ) * (temp_f4 - posY));
+
+        if ((temp_f0_2 * temp_f2_3) < 0.0f) {
+            bool = 0;
         }
     } else {
-        temp_f2_3 = sp64 - arg1;
-        temp_f0_3 = sp6C - arg0;
-        temp_f18 = sp28 * temp_f2_3;
-        temp_f16 = sp20 * temp_f0_3;
-        if (temp_f18 == temp_f16) {
-            if ((sp3C * ((temp_f2_3 * temp_f22) - (temp_f0_3 * temp_f20))) < 0.0f) {
-                var_v1 = 0;
+
+        temp_f0_2 = ((sp6C - posY) * (temp_f8 - posZ)) - ((sp70 - posZ) * (sp20 - posY));
+
+        if (temp_f0_2 == 0) {
+            temp_f2_3 = ((sp20 - posY) * (sp24 - posZ)) - ((temp_f8 - posZ) * (temp_f4 - posY));
+
+            if ((temp_f2_2 * temp_f2_3) < 0.0f) {
+                bool = 0;
             }
         } else {
-            temp_f12 = temp_f16 - temp_f18;
-            if ((sp1C * temp_f12) < 0.0f) {
-                var_v1 = 0;
+
+            if ((temp_f2_2 * temp_f0_2) < 0.0f) {
+                bool = 0;
             } else {
-                temp_f16_2 = temp_f0_3 * temp_f20;
-                temp_f14 = temp_f2_3 * temp_f22;
-                if ((temp_f16_2 != temp_f14) && ((temp_f12 * (temp_f14 - temp_f16_2)) < 0.0f)) {
-                    var_v1 = 0;
+                temp_f2_3 = ((sp20 - posY) * (sp24 - posZ)) - ((temp_f8 - posZ) * (temp_f4 - posY));
+                if (temp_f2_3 != 0) {
+                    if ((temp_f0_2 * temp_f2_3) < 0.0f) {
+                        bool = 0;
+                    }
                 }
             }
         }
     }
-    return var_v1;
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802ABB04.s")
-#endif
+    if (!bool) {
+        return 0;
+    }
 
-s8 func_802ABD10(u16 arg0) {
-    mk64_surface_map_ram *tile = &D_8015F580[arg0];
+    temp_f0_4 = ((((surfaceMap->height * posX) + (surfaceMap->gravity * posY)) + (surfaceMap->rotation * posZ))
+                 + surfaceMap->height2)
+                - boundingBoxSize;
+
+    if (temp_f0_4 > 0.0f) {
+        if (temp_f0_4 < collision->unk3C[1]) {
+            collision->unk32 = 1;
+            collision->unk38 = index;
+            collision->unk3C[1] = temp_f0_4;
+            collision->unk54[0] = surfaceMap->height;
+            collision->unk54[1] = surfaceMap->gravity;
+            collision->unk54[2] = surfaceMap->rotation;
+        }
+        return 0;
+    }
+    if (temp_f0_4 > (-16.0f)) {
+        collision->unk32 = 1;
+        collision->unk38 = index;
+        collision->unk3C[1] = temp_f0_4;
+        collision->unk54[0] = surfaceMap->height;
+        collision->unk54[1] = surfaceMap->gravity;
+        collision->unk54[2] = surfaceMap->rotation;
+        return 1;
+    }
+    return 0;
+}
+
+s32 func_802ABB04(f32 posX, f32 posZ, u16 index) {
+    mk64_surface_map_ram *surfaceMap = &gSurfaceMap[index];
+    UNUSED f32 pad;
+    f32 x3;
+    UNUSED f32 pad2;
+    f32 z3;
+    f32 x2;
+    UNUSED f32 pad3;
+    f32 z2;
+    f32 x1;
+    f32 z1;
+    UNUSED f32 pad4[4];
+    f32 temp_f2_2;
+    f32 temp_f2_3;
+    f32 temp_f0_2;
+    s32 bool = 1;
+
+    x1 = surfaceMap->vtxPoly1->v.ob[0];
+    z1 = surfaceMap->vtxPoly1->v.ob[2];
+
+    x2 = surfaceMap->vtxPoly2->v.ob[0];
+    z2 = surfaceMap->vtxPoly2->v.ob[2];
+
+    x3 = surfaceMap->vtxPoly3->v.ob[0];
+    z3 = surfaceMap->vtxPoly3->v.ob[2];
+
+    temp_f2_2 = (z1 - posZ) * (x2 - posX) - (x1 - posX) * (z2 - posZ);
+
+    if (!temp_f2_2) {
+
+        temp_f0_2 = (z2 - posZ) * (x3 - posX) - (x2 - posX) * (z3 - posZ);
+
+        temp_f2_3 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
+
+        if ((temp_f0_2 * temp_f2_3) < 0.0f) {
+            bool = 0;
+        }
+    } else {
+        temp_f0_2 = (z2 - posZ) * (x3 - posX) - (x2 - posX) * (z3 - posZ);
+        if (!temp_f0_2) {
+            temp_f2_3 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
+            if (temp_f2_2 * temp_f2_3 < 0.0f) {
+                bool = 0;
+            }
+        } else {
+            if ((temp_f2_2 * temp_f0_2) < 0.0f) {
+                bool = 0;
+            } else {
+                temp_f2_3 = ((z3 - posZ) * (x1 - posX)) - ((x3 - posX) * (z1 - posZ));
+                if (temp_f2_3 != 0) {
+                    if ((temp_f0_2 * temp_f2_3) < 0.0f) {
+                        bool = 0;
+                    }
+                }
+            }
+        }
+    }
+    return bool;
+}
+
+s8 get_surface_type(u16 index) {
+    mk64_surface_map_ram *tile = &gSurfaceMap[index];
     return tile->surfaceType;
 }
 
-s16 func_802ABD40(u16 arg0) {
-    mk64_surface_map_ram *tile = &D_8015F580[arg0];
+s16 func_802ABD40(u16 index) {
+    mk64_surface_map_ram *tile = &gSurfaceMap[index];
     return tile->flags & 0xFF;
 }
 
-s16 func_802ABD7C(u16 arg0) {
-    mk64_surface_map_ram *tile = &D_8015F580[arg0];
+s16 func_802ABD7C(u16 index) {
+    mk64_surface_map_ram *tile = &gSurfaceMap[index];
     return tile->flags & 0x1000;
 }
 
-s16 func_802ABDB8(u16 arg0) {
-    mk64_surface_map_ram *tile = &D_8015F580[arg0];
+s16 func_802ABDB8(u16 index) {
+    mk64_surface_map_ram *tile = &gSurfaceMap[index];
     return tile->flags & 0x400;
 }
 
-s16 func_802ABDF4(u16 arg0) {
-    mk64_surface_map_ram *tile = &D_8015F580[arg0];
+s16 func_802ABDF4(u16 index) {
+    mk64_surface_map_ram *tile = &gSurfaceMap[index];
     return tile->flags & 0x800;
 }
 
-f32 func_802ABE30(f32 arg0, f32 arg1, f32 arg2, u16 arg3) {
-    mk64_surface_map_ram *tile = &D_8015F580[arg3];
+f32 func_802ABE30(f32 x, f32 y, f32 z, u16 index) {
+    mk64_surface_map_ram *tile = &gSurfaceMap[index];
     if (tile->gravity == 0.0f) {
-        return arg1;
+        return y;
     }
-    return ((tile->height * arg0) + (tile->rotation * arg2) + tile->height2) / -tile->gravity;
+    return ((tile->height * x) + (tile->rotation * z) + tile->height2) / -tile->gravity;
 }
 
-f32 func_802ABEAC(UnkActorInner *arg0, Vec3f arg1) {
-    if (arg0->unk34 == 1) {
-        return func_802ABE30(arg1[0], arg1[1], arg1[2], arg0->unk3A);
+f32 func_802ABEAC(Collision *collision, Vec3f pos) {
+    if (collision->unk34 == 1) {
+        return func_802ABE30(pos[0], pos[1], pos[2], collision->unk3A);
     }
-    if (arg0->unk30 == 1) {
-        return func_802ABE30(arg1[0], arg1[1], arg1[2], arg0->unk36);
+    if (collision->unk30 == 1) {
+        return func_802ABE30(pos[0], pos[1], pos[2], collision->unk36);
     }
-    if (arg0->unk32 == 1) {
-        return func_802ABE30(arg1[0], arg1[1], arg1[2], arg0->unk38);
+    if (collision->unk32 == 1) {
+        return func_802ABE30(pos[0], pos[1], pos[2], collision->unk38);
     }
-    return arg1[1];
+    return pos[1];
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 9841ff34ca242f5f14b2eab2b54a7a65ac47d80f
-void process_shell_collision(f32 *arg0, f32 arg1, f32 *velocity, f32 arg3) {
-    f32 sp40;
-    f32 sp3C;
-    f32 sp38;
-    f32 sp24;
-    f32 spC;
-    f32 sp8;
-    f32 sp4;
-    f32 sp0;
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f10;
-    f32 temp_f12;
-    f32 temp_f12_2;
-    f32 temp_f14;
-    f32 temp_f14_2;
-    f32 temp_f16_2;
-    f32 temp_f16_3;
-    f32 temp_f18;
-    f32 temp_f2;
-    f32 temp_f2_2;
-    f32 temp_f6;
-    f64 temp_f16;
+void process_shell_collision(Vec3f pos, UNUSED f32 boundingBoxSize, Vec3f velocity, UNUSED f32 unk) {
+    f32 magnitude;
+    f32 dotProduct;
+    f32 x;
+    f32 scaleX;
+    f32 scaleY;
+    f32 scaleZ;
+    f32 y;
+    f32 z;
+    UNUSED f32 x2;
+    UNUSED f32 y2;
+    f32 velocityMagnitude;
+    UNUSED f32 z2;
+    f32 temp;
 
-    temp_f2 = velocity->unk0;
-    temp_f12 = velocity->unk4;
-    temp_f14 = velocity->unk8;
-    temp_f0 = sqrtf((temp_f2 * temp_f2) + (temp_f12 * temp_f12) + (temp_f14 * temp_f14));
-    temp_f16 = (f64) temp_f0;
-    sp24 = temp_f0;
-    if ((temp_f16 > 4.5) || (temp_f16 < 3.5)) {
-        sp24 = 4.0f;
+    x = velocity[0];
+    y = velocity[1];
+    z = velocity[2];
+    velocityMagnitude = sqrtf((x * x) + (y * y) + (z * z));
+
+    if ((velocityMagnitude > 4.5) || (velocityMagnitude < 3.5)) {
+        velocityMagnitude = 4.0f;
     }
-    temp_f10 = arg0->unk8;
-    sp4 = temp_f10;
-    temp_f16_2 = arg0->unk0;
-    temp_f18 = arg0->unk4;
-    temp_f0_2 = (temp_f10 * temp_f14) + ((temp_f16_2 * temp_f2) + (temp_f18 * temp_f12));
-    sp0 = temp_f16_2 * temp_f0_2;
-    spC = temp_f18 * temp_f0_2;
-    sp40 = temp_f2 - sp0;
-    sp3C = temp_f12 - spC;
-    temp_f6 = temp_f10 * temp_f0_2;
-    sp8 = temp_f6;
-    sp38 = temp_f14 - temp_f6;
-    temp_f2_2 = sp40 - sp0;
-    temp_f12_2 = sp3C - spC;
-    temp_f14_2 = sp38 - temp_f6;
-    temp_f16_3 = (1.0f / sqrtf((temp_f2_2 * temp_f2_2) + (temp_f12_2 * temp_f12_2) + (temp_f14_2 * temp_f14_2))) * sp24;
-    velocity->unk0 = temp_f2_2 * temp_f16_3;
-    velocity->unk4 = (f32) (temp_f12_2 * temp_f16_3);
-    velocity->unk8 = (f32) (temp_f14_2 * temp_f16_3);
+
+    x2 = pos[0];
+    y2 = pos[1];
+    z2 = pos[2];
+
+    dotProduct = (pos[0] * x) + (pos[1] * y) + (pos[2] * z);
+    scaleX = x - dotProduct * pos[0];
+    scaleY = y - dotProduct * pos[1];
+    scaleZ = z - dotProduct * pos[2];
+
+    x = scaleX - dotProduct * pos[0];
+    y = scaleY - dotProduct * pos[1];
+    z = scaleZ - dotProduct * pos[2];
+
+    magnitude = sqrtf((x * x) + (y * y) + (z * z));
+
+    temp = 1.0f / magnitude * velocityMagnitude;
+
+    velocity[0] = x * temp;
+    velocity[1] = y * temp;
+    velocity[2] = z * temp;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/process_shell_collision.s")
-#endif
 
-void func_802AC098(UnkActorInner *arg0, f32 *velocity) {
-    if (arg0->unk3C[0] < 0.0f) {
-        process_shell_collision(arg0->unk48, arg0->unk3C[0], velocity, 2.0f);
+void shell_collision(Collision *collision, Vec3f velocity) {
+    if (collision->unk3C[0] < 0.0f) {
+        process_shell_collision(collision->unk48, collision->unk3C[0], velocity, 2.0f);
     }
 
-    if (arg0->unk3C[1] < 0.0f) {
-        process_shell_collision(arg0->unk54, arg0->unk3C[1], velocity, 2.0f);
+    if (collision->unk3C[1] < 0.0f) {
+        process_shell_collision(collision->unk54, collision->unk3C[1], velocity, 2.0f);
     }
 }
 
-void func_802AC114(Vec3f arg0, f32 arg1, Vec3f arg2, UNUSED f32 arg3) {
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f14;
-    f32 temp_f16;
-    f32 temp_f18;
-    f32 temp_f20;
-    f32 temp_f2;
-    f32 tmp1;
-    f32 tmp2;
-    f32 tmp3;
+/**
+ * Adjusts the position of pos2 based on pos1 but in the orthogonal direction to pos2.
+ */
+void func_802AC114(Vec3f pos1, f32 boundingBoxSize, Vec3f pos2, UNUSED f32 unk) {
+    f32 x1;
+    f32 y1;
+    f32 z1;
+    f32 x2;
+    f32 y2;
+    f32 z2;
+    f32 dotProduct;
+    f32 orthoX;
+    f32 orthoY;
+    f32 orthoZ;
 
-    temp_f0 = arg2[0];
-    temp_f2 = arg2[1];
-    temp_f12 = arg2[2];
-    temp_f14 = -arg0[0];
-    temp_f16 = -arg0[1];
-    temp_f18 = -arg0[2];
-    temp_f20 = (temp_f14 * temp_f0) + (temp_f16 * temp_f2) + (temp_f18 * temp_f12);
-    tmp1 = temp_f0  - (temp_f20 * temp_f14);
-    tmp2 = temp_f2  - (temp_f20 * temp_f16);
-    tmp3 = temp_f12 - (temp_f20 * temp_f18);
-    if (arg1 < -3.5) {
-        arg2[0] = tmp1 - (temp_f20 * temp_f14 * 0.5f);
-        arg2[1] = tmp2 - (temp_f20 * temp_f16 * 0.5f);
-        arg2[2] = tmp3 - (temp_f20 * temp_f18 * 0.5f);
+    x2 = pos2[0];
+    y2 = pos2[1];
+    z2 = pos2[2];
+    x1 = -pos1[0];
+    y1 = -pos1[1];
+    z1 = -pos1[2];
+
+    dotProduct = (x1 * x2) + (y1 * y2) + (z1 * z2);
+
+    orthoX = x2  - (dotProduct * x1);
+    orthoY = y2  - (dotProduct * y1);
+    orthoZ = z2 - (dotProduct * z1);
+
+    if (boundingBoxSize < -3.5) {
+        pos2[0] = orthoX - (dotProduct * x1 * 0.5f);
+        pos2[1] = orthoY - (dotProduct * y1 * 0.5f);
+        pos2[2] = orthoZ - (dotProduct * z1 * 0.5f);
     } else {
-        arg2[0] = tmp1;
-        arg2[1] = tmp2;
-        arg2[2] = tmp3;
+        pos2[0] = orthoX;
+        pos2[1] = orthoY;
+        pos2[2] = orthoZ;
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit bece1d6db17040749f77dbbd090363cc6fb926f9
-mk64_surface_map_ram *func_802AAE4C(s16 *, ?, f32, f32, f32, s32); /* extern */
-mk64_surface_map_ram *func_802AB288(s16 *, ?, f32, f32, f32, s32); /* extern */
-mk64_surface_map_ram *func_802AB6C4(s16 *, ?, f32, f32, f32, s32); /* extern */
-extern u8 D_8014F110;
-extern s32 D_8015F584;
-extern s16 D_8015F6E8;
-extern s16 D_8015F6EA;
-extern s16 D_8015F6F0;
-extern s16 D_8015F6F2;
-
-UNUSED mk64_surface_map_ram *func_802AC22C(void *arg0) {
-    f32 spE4;
-    f32 spE0;
-    f32 spDC;
-    s16 spD4;
-    s16 spD2;
-    s16 spD0;
-    s32 sp70;
-    f32 temp_f22;
-    f32 temp_f24;
-    f32 temp_f26;
-    s16 temp_v0_2;
-    s16 temp_v1;
-    s32 temp_at;
-    s32 temp_f4;
-    s32 temp_f6;
-    s32 temp_t3;
-    s32 var_s2;
-    u16 temp_s0;
-    u16 temp_v1_3;
-    u16 var_s1;
-    u16 var_v0;
-    u8 temp_v0;
-    void *temp_v1_2;
-
-    spD0 = 0;
-    spD2 = 0;
-    spD4 = 0;
-    spDC = 1000.0f;
-    spE0 = 1000.0f;
-    spE4 = 1000.0f;
-    temp_v0 = arg0->unkD;
-    temp_f22 = arg0->unk0;
-    temp_f24 = arg0->unk4;
-    temp_f26 = arg0->unk8;
-    switch (temp_v0) {                              /* irregular */
-    case 0x80:
-        if (func_802AB6C4(&spD0, 0x40A00000, temp_f22, temp_f24, temp_f26, (s32) arg0->unkE) == (mk64_surface_map_ram *)1) {
-            arg0->unk10 = func_802ABE30(temp_f22, temp_f24, temp_f26, arg0->unkE);
-            return (mk64_surface_map_ram *)1;
-        }
-    default:
-block_10:
-        temp_v0_2 = D_8015F6EA;
-        temp_v1 = D_8015F6F2;
-        temp_f4 = (s32) ((temp_f22 - (f32) temp_v0_2) / (f32) ((s32) (D_8015F6E8 - temp_v0_2) / 32));
-        temp_f6 = (s32) ((temp_f26 - (f32) temp_v1) / (f32) ((s32) (D_8015F6F0 - temp_v1) / 32));
-        if ((s16) temp_f4 < 0) {
-            return NULL;
-        }
-        if ((s16) temp_f6 < 0) {
-            return NULL;
-        }
-        if ((s16) temp_f4 >= 0x20) {
-            return NULL;
-        }
-        if ((s16) temp_f6 >= 0x20) {
-            return NULL;
-        }
-        temp_v1_2 = ((s16) ((s16) temp_f4 + ((s16) temp_f6 << 5)) * 4) + &D_8014F110;
-        var_v0 = temp_v1_2->unk2;
-        sp70 = (s32) var_v0;
-        if (var_v0 == 0) {
-            return NULL;
-        }
-        var_s1 = temp_v1_2->unk0;
-        var_s2 = 0;
-        if (sp70 > 0) {
-loop_22:
-            temp_s0 = *(D_8015F584 + (var_s1 * 2));
-            var_v0 = (u16) &D_8015F580[temp_s0];
-            temp_v1_3 = var_v0->unk0;
-            if ((temp_v1_3 & 0x4000) != 0) {
-                if (arg0->unkE != temp_s0) {
-                    var_v0 = func_802AAE4C(&spD0, 0x40A00000, temp_f22, temp_f24, temp_f26, (s32) temp_s0);
-                    if (var_v0 == (u16) (mk64_surface_map_ram *)1) {
-                        arg0->unk10 = func_802ABE30(temp_f22, temp_f24, temp_f26, temp_s0 & 0xFFFF);
-                        arg0->unkD = 0x40U;
-                        arg0->unkE = temp_s0;
-                        arg0->unkC = (s8) D_8015F580[temp_s0].surfaceType;
-                        if ((D_8015F580[temp_s0].flags & 0x1000) != 0) {
-                            arg0->unk14 = (mk64_surface_map_ram *)1;
-                            return (mk64_surface_map_ram *)1;
-                        }
-                        arg0->unk14 = NULL;
-                        return (mk64_surface_map_ram *)1;
-                    }
-                }
-                goto block_37;
-            }
-            if ((temp_v1_3 & 0x8000) != 0) {
-                if ((var_v0->unk1C != 1.0f) && (arg0->unkE != temp_s0)) {
-                    var_v0 = func_802AB6C4(&spD0, 0x40A00000, temp_f22, temp_f24, temp_f26, (s32) temp_s0);
-                    if (var_v0 == (u16) (mk64_surface_map_ram *)1) {
-                        arg0->unk10 = func_802ABE30(temp_f22, temp_f24, temp_f26, temp_s0 & 0xFFFF);
-                        arg0->unkD = 0x80U;
-                        arg0->unkE = temp_s0;
-                        arg0->unkC = (s8) D_8015F580[temp_s0].surfaceType;
-                        return (mk64_surface_map_ram *)1;
-                    }
-                }
-                goto block_37;
-            }
-            if ((var_v0->unk24 != 1.0f) && (arg0->unkE != temp_s0)) {
-                var_v0 = func_802AB288(&spD0, 0x40A00000, temp_f22, temp_f24, temp_f26, (s32) temp_s0);
-                if (var_v0 == (u16) (mk64_surface_map_ram *)1) {
-                    arg0->unk10 = func_802ABE30(temp_f22, temp_f24, temp_f26, temp_s0 & 0xFFFF);
-                    arg0->unkD = 0x20U;
-                    arg0->unkE = temp_s0;
-                    arg0->unkC = (s8) D_8015F580[temp_s0].surfaceType;
-                    return (mk64_surface_map_ram *)1;
-                }
-            }
-block_37:
-            temp_t3 = (var_s2 + 1) & 0xFFFF;
-            temp_at = temp_t3 < sp70;
-            var_s2 = temp_t3;
-            var_s1 = (var_s1 + 1) & 0xFFFF;
-            if (temp_at == 0) {
-                goto block_38;
-            }
-            goto loop_22;
-        }
-block_38:
-        arg0->unk10 = temp_f24;
-        arg0->unkC = 0;
-        return (mk64_surface_map_ram *) var_v0;
-    case 0x40:
-        if (func_802AAE4C(&spD0, 0x40A00000, temp_f22, temp_f24, temp_f26, (s32) arg0->unkE) == (mk64_surface_map_ram *)1) {
-            arg0->unk10 = func_802ABE30(temp_f22, temp_f24, temp_f26, arg0->unkE);
-            return (mk64_surface_map_ram *)1;
-        }
-        goto block_10;
-    case 0x20:
-        if (func_802AB288(&spD0, 0x40A00000, temp_f22, temp_f24, temp_f26, (s32) arg0->unkE) == (mk64_surface_map_ram *)1) {
-            arg0->unk10 = func_802ABE30(temp_f22, temp_f24, temp_f26, arg0->unkE);
-            return (mk64_surface_map_ram *)1;
-        }
-        goto block_10;
-    }
-}
-#else
+// m2c removed because no need to match.
+// UNUSED mk64_surface_map_ram *func_802AC22C(void *arg)
+// todo: Remove this asm from non_matchings.
 GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AC22C.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 0927f17aac197848d4ebdf0c6bbad74b01f0851c
-s32 func_802AC760(UnkActorInner *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, u16 arg5, f32 arg6, f32 arg7, f32 arg8) {
-    f32 sp6C;
-    f32 sp64;
-    f32 sp38;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    Vtx *temp_a0;
-    Vtx *temp_a2;
-    Vtx *temp_a3;
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f0_3;
+s32 is_colliding_with_drivable_surface(Collision *collision, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 index, f32 posX, f32 posY, f32 posZ) {
+    mk64_surface_map_ram *tile = &gSurfaceMap[index];
+    UNUSED s32 pad;
+    f32 x4;
+    UNUSED f32 y4;
+    f32 z4;
+    f32 x3;
+    UNUSED f32 y3;
+    f32 z3;
+    f32 x2;
+    UNUSED f32 y2;
+    f32 z2;
     f32 temp_f0_4;
-    f32 temp_f10;
-    f32 temp_f12;
-    f32 temp_f12_2;
-    f32 temp_f12_3;
-    f32 temp_f14;
-    f32 temp_f14_2;
-    f32 temp_f14_3;
-    f32 temp_f16;
-    f32 temp_f16_2;
-    f32 temp_f18;
-    f32 temp_f2;
-    f32 temp_f2_2;
-    f32 temp_f2_3;
-    f32 temp_f2_4;
-    f32 temp_f4;
-    f32 temp_f6;
-    mk64_surface_map_ram *temp_v1;
-    s32 var_v0;
+    f32 temp;
+    UNUSED s32 pad2[2];
+    f32 area;
+    f32 area2;
+    f32 area3;
+    s32 bool = 1;
 
-    temp_v1 = &D_8015F580[arg5];
-    var_v0 = 1;
-    if (arg2 < (f32) temp_v1->vtx3[0]) {
+    if (tile->vtx31 > x1) {
         return 0;
     }
-    if (arg4 < (f32) temp_v1->vtx3[2]) {
+    if (tile->vtx33 > z1) {
         return 0;
     }
-    if ((f32) temp_v1->vtx2[0] < arg2) {
+    if (tile->vtx21 < x1) {
         return 0;
     }
-    if ((f32) temp_v1->vtx2[2] < arg4) {
+    if (tile->vtx23 < z1) {
         return 0;
     }
-    if (arg3 < ((f32) temp_v1->vtx3[1] - (arg1 * 3.0f))) {
+    if ((tile->vtx32 - boundingBoxSize * 3.0f) > y1) {
         return 0;
     }
-    temp_a0 = temp_v1->vtxs[0];
-    temp_a3 = temp_v1->vtxs[2];
-    temp_a2 = temp_v1->vtxs[1];
-    sp6C = (f32) temp_a3->v.ob[0];
-    sp8 = arg4;
-    sp10 = arg2;
-    temp_f6 = (f32) temp_a0->v.ob[2] - arg4;
-    sp64 = (f32) temp_a3->v.ob[2];
-    temp_f4 = (f32) temp_a2->v.ob[0] - arg2;
-    sp28 = temp_f6;
-    sp24 = temp_f4;
-    sp20 = (f32) temp_a0->v.ob[0] - arg2;
-    temp_f0 = temp_f6 * temp_f4;
-    sp8 = temp_f6;
-    spC = temp_f4;
-    temp_f18 = sp8;
-    sp1C = (f32) temp_a2->v.ob[2] - arg4;
-    temp_f2 = sp20 * sp1C;
-    temp_f10 = temp_f0 - temp_f2;
-    sp18 = temp_f10;
-    sp38 = temp_f10;
-    if (temp_f2 == temp_f0) {
-        sp8 = arg4;
-        temp_f0_2 = sp6C - sp10;
-        temp_f2_2 = sp64 - arg4;
-        if ((((sp1C * temp_f0_2) - (spC * temp_f2_2)) * ((temp_f2_2 * sp20) - (temp_f0_2 * temp_f18))) < 0.0f) {
-            var_v0 = 0;
+
+    x2 = (f32) tile->vtxPoly1->v.ob[0];
+    z2 = (f32) tile->vtxPoly1->v.ob[2];
+
+    x3 = (f32) tile->vtxPoly2->v.ob[0];
+    z3 = (f32) tile->vtxPoly2->v.ob[2];
+
+    x4 = (f32) tile->vtxPoly3->v.ob[0];
+    z4 = (f32) tile->vtxPoly3->v.ob[2];
+
+    area = (z2 - z1) * (x3 - x1) - (x2 - x1) * (z3 - z1);
+
+    if (area == 0) {
+        area2 = (z3 - z1) * (x4 - x1) - (x3 - x1) * (z4 - z1);
+        area3 = (z4 - z1) * (x2 - x1) - (x4 - x1) * (z2 - z1);
+        if (area2 * area3 < 0.0f) {
+            bool = 0;
         }
     } else {
-        temp_f2_3 = sp64 - arg4;
-        temp_f0_3 = sp6C - arg2;
-        temp_f14 = sp24 * temp_f2_3;
-        temp_f12 = sp1C * temp_f0_3;
-        if (temp_f14 == temp_f12) {
-            if ((sp38 * ((temp_f2_3 * sp20) - (temp_f0_3 * sp28))) < 0.0f) {
-                var_v0 = 0;
+
+        area2 = (z3 - z1) * (x4 - x1) - (x3 - x1) * (z4 - z1);
+
+
+        if (area2 == 0) {
+
+            area3 = (z4 - z1) * (x2 - x1) - (x4 - x1) * (z2 - z1);
+
+            if (area * area3 < 0.0f) {
+                bool = 0;
             }
         } else {
-            temp_f16 = temp_f12 - temp_f14;
-            if ((sp18 * temp_f16) < 0.0f) {
-                var_v0 = 0;
+            if ((area * area2) < 0.0f) {
+                bool = 0;
             } else {
-                temp_f14_2 = temp_f0_3 * sp28;
-                temp_f12_2 = temp_f2_3 * sp20;
-                if ((temp_f14_2 != temp_f12_2) && ((temp_f16 * (temp_f12_2 - temp_f14_2)) < 0.0f)) {
-                    var_v0 = 0;
+                area3 = (z4- z1) * (x2 - x1) - (x4 - x1) * (z2 - z1);
+                if (area3 != 0) {
+                    if (area2 * area3 < 0.0f) {
+                        bool = 0;
+                    }
                 }
             }
         }
     }
-    if (var_v0 == 0) {
+    if (bool == 0) {
         return 0;
     }
-    temp_f2_4 = temp_v1->height;
-    temp_f12_3 = temp_v1->gravity;
-    temp_f14_3 = temp_v1->rotation;
-    temp_f16_2 = temp_v1->height2;
-    temp_f0_4 = (temp_f2_4 * arg2) + (temp_f12_3 * arg3) + (temp_f14_3 * arg4) + temp_f16_2;
-    if (arg1 < temp_f0_4) {
-        if (temp_f0_4 < arg0->unk3C[2]) {
-            arg0->unk34 = 1;
-            arg0->unk3A = arg5;
-            arg0->unk3C[2] = temp_f0_4 - arg1;
-            arg0->unk60[0] = temp_v1->height;
-            arg0->unk60[1] = temp_v1->gravity;
-            arg0->unk60[2] = temp_v1->rotation;
+
+    temp_f0_4 = (tile->height * x1) + (tile->gravity * y1) + (tile->rotation * z1) + tile->height2;
+
+    if (temp_f0_4 > boundingBoxSize) {
+        if (collision->unk3C[2] > temp_f0_4) {
+            collision->unk34 = 1;
+            collision->unk3A = index;
+            collision->unk3C[2] = temp_f0_4 - boundingBoxSize;
+            collision->unk60[0] = tile->height;
+            collision->unk60[1] = tile->gravity;
+            collision->unk60[2] = tile->rotation;
         }
         return 0;
     }
-    if (((temp_f2_4 * arg6) + (temp_f12_3 * arg7) + (temp_f14_3 * arg8) + temp_f16_2) < 0.0f) {
+
+    temp = (tile->height * posX) + (tile->gravity * posY) + (tile->rotation * posZ) + tile->height2;
+
+    if (temp < 0.0f) {
         return 0;
     }
-    arg0->unk34 = 1;
-    arg0->unk3A = arg5;
-    arg0->unk3C[2] = temp_f0_4 - arg1;
-    arg0->unk60[0] = temp_v1->height;
-    arg0->unk60[1] = temp_v1->gravity;
-    arg0->unk60[2] = temp_v1->rotation;
-    return 1;
+        collision->unk34 = 1;
+        collision->unk3A = index;
+        collision->unk3C[2] = temp_f0_4 - boundingBoxSize;
+        collision->unk60[0] = tile->height;
+        collision->unk60[1] = tile->gravity;
+        collision->unk60[2] = tile->rotation;
+        return 1;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AC760.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 0927f17aac197848d4ebdf0c6bbad74b01f0851c
-s32 func_802ACBA4(UnkActorInner *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, u16 arg5, f32 arg6, f32 arg7, f32 arg8) {
-    f32 sp70;
-    f32 sp6C;
-    f32 sp48;
-    f32 sp3C;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp14;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    Vtx *temp_a0;
-    Vtx *temp_a2;
-    Vtx *temp_a3;
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f0_3;
+/**
+ * Wall collision
+*/
+s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 arg5, f32 arg6, f32 arg7, f32 arg8) {
+    mk64_surface_map_ram *tile = &gSurfaceMap[arg5];
+    UNUSED s32 pad[6];
+    f32 x4;
+    f32 y4;
+    f32 x3;
+    f32 y3;
+    f32 x2;
+    f32 y2;
+    UNUSED s32 pad2[3];
     f32 temp_f0_4;
-    f32 temp_f0_5;
-    f32 temp_f10;
-    f32 temp_f12;
-    f32 temp_f12_2;
-    f32 temp_f12_3;
-    f32 temp_f14;
-    f32 temp_f14_2;
-    f32 temp_f14_3;
-    f32 temp_f16;
-    f32 temp_f16_2;
-    f32 temp_f2;
-    f32 temp_f2_2;
-    f32 temp_f2_3;
-    f32 temp_f2_4;
-    f32 temp_f2_5;
-    f32 temp_f4;
     f32 temp_f4_2;
-    f32 temp_f6;
-    f32 temp_f8;
-    f32 var_f10;
-    mk64_surface_map_ram *temp_v1;
-    s32 var_v0;
+    UNUSED s32 pad3[2]; 
+    f32 area;
+    f32 area2;
+    f32 area3;
+    s32 bool = 1;
+    if (tile->vtx31 > x1) {
+        return 0;
+    }
+    if (tile->vtx21 < x1) {
+        return 0;
+    }
+    if (tile->vtx22 < y1) {
+        return 0;
+    }
+    if (tile->vtx32 > y1) {
+        return 0;
+    }
+    if ((tile->vtx33 - boundingBoxSize * 3.0f) > z1) {
+        return 0;
+    }
+    if ((tile->vtx23 + boundingBoxSize * 3.0f) < z1) {
+        return 0;
+    }
 
-    temp_v1 = &D_8015F580[arg5];
-    var_v0 = 1;
-    if (arg2 < (f32) temp_v1->vtx3[0]) {
-        return 0;
-    }
-    if ((f32) temp_v1->vtx2[0] < arg2) {
-        return 0;
-    }
-    if ((f32) temp_v1->vtx2[1] < arg3) {
-        return 0;
-    }
-    if (arg3 < (f32) temp_v1->vtx3[1]) {
-        return 0;
-    }
-    temp_f2 = arg1 * 3.0f;
-    if (arg4 < ((f32) temp_v1->vtx3[2] - temp_f2)) {
-        return 0;
-    }
-    if (((f32) temp_v1->vtx2[2] + temp_f2) < arg4) {
-        return 0;
-    }
-    temp_a0 = temp_v1->vtxs[0];
-    temp_a3 = temp_v1->vtxs[2];
-    temp_a2 = temp_v1->vtxs[1];
-    sp70 = (f32) temp_a3->v.ob[0];
-    sp8 = arg3;
-    sp10 = arg2;
-    temp_f10 = (f32) temp_a0->v.ob[1] - arg3;
-    sp6C = (f32) temp_a3->v.ob[1];
-    temp_f6 = (f32) temp_a2->v.ob[0] - arg2;
-    sp2C = temp_f10;
-    sp28 = temp_f6;
-    sp24 = (f32) temp_a0->v.ob[0] - arg2;
-    temp_f0 = temp_f10 * temp_f6;
-    sp8 = temp_f10;
-    spC = temp_f6;
-    sp20 = (f32) temp_a2->v.ob[1] - arg3;
-    temp_f2_2 = sp24 * sp20;
-    temp_f4 = temp_f0 - temp_f2_2;
-    sp1C = temp_f4;
-    sp3C = temp_f4;
-    if (temp_f2_2 == temp_f0) {
-        sp14 = arg3;
-        temp_f0_2 = sp70 - sp10;
-        temp_f2_3 = sp6C - arg3;
-        if ((((sp20 * temp_f0_2) - (spC * temp_f2_3)) * ((temp_f2_3 * sp24) - (temp_f0_2 * sp8))) < 0.0f) {
-            var_v0 = 0;
+    x2 = (f32) tile->vtxPoly1->v.ob[0];
+    y2 = (f32) tile->vtxPoly1->v.ob[1];
+
+    x3 = (f32) tile->vtxPoly2->v.ob[0];
+    y3 = (f32) tile->vtxPoly2->v.ob[1];
+
+    x4 = (f32) tile->vtxPoly3->v.ob[0];
+    y4 = (f32) tile->vtxPoly3->v.ob[1];
+
+    area = (y2 - y1) * (x3 - x1) - (x2 - x1) * (y3 - y1);
+
+    if (area == 0) {
+        area2 = (y3 - y1) * (x4 - x1) - (x3 - x1) * (y4 - y1);
+        area3 = (y4 - y1) * (x2 - x1) - (x4 - x1) * (y2 - y1);
+
+
+        if (area2 * area3 < 0.0f) {
+            bool = 0;
         }
     } else {
-        temp_f2_4 = sp6C - arg3;
-        temp_f0_3 = sp70 - arg2;
-        temp_f14 = sp28 * temp_f2_4;
-        temp_f12 = sp20 * temp_f0_3;
-        if (temp_f14 == temp_f12) {
-            if ((sp3C * ((temp_f2_4 * sp24) - (temp_f0_3 * sp2C))) < 0.0f) {
-                var_v0 = 0;
+
+        area2 = (y3 - y1) * (x4 - x1) - (x3 - x1) * (y4 - y1);
+
+        if (area2 == 0) {
+            area3 = (y4 - y1) * (x2 - x1) - (x4 - x1) * (y2 - y1);
+
+
+            if ((area * area3) < 0.0f) {
+                bool = 0;
             }
         } else {
-            temp_f16 = temp_f12 - temp_f14;
-            if ((sp1C * temp_f16) < 0.0f) {
-                var_v0 = 0;
+            if ((area * area2) < 0.0f) {
+                bool = 0;
             } else {
-                temp_f14_2 = temp_f0_3 * sp2C;
-                temp_f12_2 = temp_f2_4 * sp24;
-                if ((temp_f14_2 != temp_f12_2) && ((temp_f16 * (temp_f12_2 - temp_f14_2)) < 0.0f)) {
-                    var_v0 = 0;
+                area3 = (y4 - y1) * (x2 - x1) - (x4 - x1) * (y2 - y1);
+
+                if (area3 != 0) {
+                    if ((area2 * area3) < 0.0f) {
+                        bool = 0;
+                    }
                 }
             }
         }
     }
-    if (var_v0 == 0) {
+    if (bool == 0) {
         return 0;
     }
-    temp_f2_5 = temp_v1->height;
-    temp_f12_3 = temp_v1->gravity;
-    temp_f14_3 = temp_v1->rotation;
-    temp_f16_2 = temp_v1->height2;
-    temp_f0_4 = (temp_f2_5 * arg2) + (temp_f12_3 * arg3) + (temp_f14_3 * arg4) + temp_f16_2;
-    if (temp_v1->flags & 0x200) {
-        temp_f4_2 = (temp_f2_5 * arg6) + (temp_f12_3 * arg7) + (temp_f14_3 * arg8) + temp_f16_2;
-        sp48 = temp_f4_2;
+
+    temp_f0_4 = ((tile->height * x1) + (tile->gravity * y1) + (tile->rotation * z1)) + tile->height2;
+    if (tile->flags & 0x200) {
+        temp_f4_2 = ((tile->height * arg6) + (tile->gravity * arg7) + (tile->rotation * arg8)) + tile->height2;
+        //sp48 = temp_f4_2;
         if ((temp_f0_4 > 0.0f) && (temp_f4_2 > 0.0f)) {
-            if (temp_f0_4 < arg1) {
-                arg0->unk30 = 1;
-                arg0->unk36 = arg5;
-                arg0->unk3C[0] = temp_f0_4 - arg1;
-                arg0->unk48[0] = temp_v1->height;
-                arg0->unk48[1] = temp_v1->gravity;
-                arg0->unk48[2] = temp_v1->rotation;
+            if (temp_f0_4 < boundingBoxSize) {
+                arg->unk30 = 1;
+                arg->unk36 = arg5;
+                arg->unk3C[0] = temp_f0_4 - boundingBoxSize;
+                arg->unk48[0] = tile->height;
+                arg->unk48[1] = tile->gravity;
+                arg->unk48[2] = tile->rotation;
                 return 1;
             }
             return 0;
         }
-        if ((temp_f0_4 < 0.0f) && (sp48 < 0.0f)) {
-            temp_f0_5 = temp_f0_4 * -1.0f;
-            if (temp_f0_5 < arg1) {
-                arg0->unk30 = 1;
-                arg0->unk36 = arg5;
-                arg0->unk3C[0] = temp_f0_5 - arg1;
-                arg0->unk48[0] = -temp_v1->height;
-                arg0->unk48[1] = -temp_v1->gravity;
-                arg0->unk48[2] = -temp_v1->rotation;
+
+        if ((temp_f0_4 < 0.0f) && (temp_f4_2 < 0.0f)) {
+            temp_f0_4 *= -1.0f;
+            if (temp_f0_4 < boundingBoxSize) {
+                arg->unk30 = 1;
+                arg->unk36 = arg5;
+                arg->unk3C[0] = temp_f0_4 - boundingBoxSize;
+                arg->unk48[0] = -tile->height;
+                arg->unk48[1] = -tile->gravity;
+                arg->unk48[2] = -tile->rotation;
                 return 1;
             }
             return 0;
         }
-        if ((temp_f0_4 > 0.0f) && (sp48 < 0.0f)) {
-            arg0->unk30 = 1;
-            arg0->unk36 = arg5;
-            arg0->unk3C[0] = -(temp_f0_4 + arg1);
-            arg0->unk48[0] = -temp_v1->height;
-            arg0->unk48[1] = -temp_v1->gravity;
-            var_f10 = -temp_v1->rotation;
-            arg0->unk48[2] = var_f10;
+        if ((temp_f0_4 > 0.0f) && (temp_f4_2 < 0.0f)) {
+            arg->unk30 = 1;
+            arg->unk36 = arg5;
+            arg->unk3C[0] = -(temp_f0_4 + boundingBoxSize);
+            arg->unk48[0] = -tile->height;
+            arg->unk48[1] = -tile->gravity;
+            arg->unk48[2] = -tile->rotation;
             return 1;
         }
-        if ((temp_f0_4 < 0.0f) && (sp48 > 0.0f)) {
-            arg0->unk30 = 1;
-            arg0->unk36 = arg5;
-            arg0->unk3C[0] = temp_f0_4 + arg1;
-            arg0->unk48[0] = temp_v1->height;
-            arg0->unk48[1] = temp_v1->gravity;
-            arg0->unk48[2] = temp_v1->rotation;
+        if ((temp_f0_4 < 0.0f) && (temp_f4_2 > 0.0f)) {
+            arg->unk30 = 1;
+            arg->unk36 = arg5;
+            arg->unk3C[0] = temp_f0_4 + boundingBoxSize;
+            arg->unk48[0] = tile->height;
+            arg->unk48[1] = tile->gravity;
+            arg->unk48[2] = tile->rotation;
             return 1;
         }
         if (temp_f0_4 == 0.0f) {
-            if (sp48 >= 0.0f) {
-                arg0->unk30 = 1;
-                arg0->unk36 = arg5;
-                arg0->unk3C[0] = sp48 + arg1;
-                arg0->unk48[0] = temp_v1->height;
-                arg0->unk48[1] = temp_v1->gravity;
-                arg0->unk48[2] = temp_v1->rotation;
+            if (temp_f4_2 >= 0.0f) {
+                arg->unk30 = 1;
+                arg->unk36 = arg5;
+                arg->unk3C[0] = temp_f4_2 + boundingBoxSize;
+                arg->unk48[0] = tile->height;
+                arg->unk48[1] = tile->gravity;
+                arg->unk48[2] = tile->rotation;
                 return 1;
             }
-            arg0->unk30 = 1;
-            arg0->unk36 = arg5;
-            arg0->unk3C[0] = -(sp48 + arg1);
-            arg0->unk48[0] = temp_v1->height;
-            arg0->unk48[1] = temp_v1->gravity;
-            var_f10 = temp_v1->rotation;
-            arg0->unk48[2] = var_f10;
+            arg->unk30 = 1;
+            arg->unk36 = arg5;
+            arg->unk3C[0] = -(temp_f4_2 + boundingBoxSize);
+            arg->unk48[0] = tile->height;
+            arg->unk48[1] = tile->gravity;
+            arg->unk48[2] = tile->rotation;
             return 1;
         }
         return 0;
     }
-    if (arg1 < temp_f0_4) {
-        if (temp_f0_4 < arg0->unk3C[0]) {
-            arg0->unk30 = 1;
-            arg0->unk36 = arg5;
-            arg0->unk3C[0] = temp_f0_4 - arg1;
-            arg0->unk48[0] = temp_v1->height;
-            arg0->unk48[1] = temp_v1->gravity;
-            arg0->unk48[2] = temp_v1->rotation;
+    if (temp_f0_4 > boundingBoxSize) {
+        if (temp_f0_4 < arg->unk3C[0]) {
+            arg->unk30 = 1;
+            arg->unk36 = arg5;
+            arg->unk3C[0] = temp_f0_4 - boundingBoxSize;
+            arg->unk48[0] = tile->height;
+            arg->unk48[1] = tile->gravity;
+            arg->unk48[2] = tile->rotation;
         }
         return 0;
     }
-    temp_f8 = (temp_f2_5 * arg6) + (temp_f12_3 * arg7) + (temp_f14_3 * arg8) + temp_f16_2;
-    sp48 = temp_f8;
-    if (temp_f8 < 0.0f) {
+
+    temp_f4_2 = (tile->height * arg6) + (tile->gravity * arg7) + (tile->rotation * arg8) + tile->height2;
+    if (temp_f4_2 < 0.0f) {
         return 0;
     }
-    arg0->unk30 = 1;
-    arg0->unk36 = arg5;
-    arg0->unk3C[0] = temp_f0_4 - arg1;
-    arg0->unk48[0] = temp_v1->height;
-    arg0->unk48[1] = temp_v1->gravity;
-    var_f10 = temp_v1->rotation;
-block_54:
-    arg0->unk48[2] = var_f10;
+    arg->unk30 = 1;
+    arg->unk36 = arg5;
+    arg->unk3C[0] = temp_f0_4 - boundingBoxSize;
+    arg->unk48[0] = tile->height;
+    arg->unk48[1] = tile->gravity;
+    arg->unk48[2] = tile->rotation;
     return 1;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802ACBA4.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 0927f17aac197848d4ebdf0c6bbad74b01f0851c
-s32 func_802AD278(UnkActorInner *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, u16 arg5, f32 arg6, f32 arg7, f32 arg8) {
-    f32 sp68;
-    f32 sp64;
-    f32 sp44;
-    f32 sp38;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp14;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    Vtx *temp_a0;
-    Vtx *temp_a2;
-    Vtx *temp_a3;
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f0_3;
+/**
+ * This is actually more like colliding with face X/Y/Z
+*/
+s32 is_colliding_with_wall1(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 arg5, f32 arg6, f32 arg7, f32 arg8) {
+    mk64_surface_map_ram *tile = &gSurfaceMap[arg5];
+    s32 bool = 1;
+    UNUSED s32 pad[7];
+    f32 y4;
+    f32 z4;
+    f32 y3;
+    f32 z3;
+    f32 y2;
+    f32 z2;
+    UNUSED s32 pad3[2];
     f32 temp_f0_4;
-    f32 temp_f0_5;
-    f32 temp_f0_6;
-    f32 temp_f10;
-    f32 temp_f10_2;
-    f32 temp_f12;
-    f32 temp_f12_2;
-    f32 temp_f12_3;
-    f32 temp_f14;
-    f32 temp_f14_2;
-    f32 temp_f14_3;
-    f32 temp_f16;
-    f32 temp_f16_2;
-    f32 temp_f2;
-    f32 temp_f2_2;
-    f32 temp_f2_3;
-    f32 temp_f2_4;
-    f32 temp_f4;
-    f32 temp_f6;
-    f32 temp_f8;
-    f32 var_f8;
-    mk64_surface_map_ram *temp_v1;
-    s32 var_v0;
+    f32 temp_f4_2;
+    UNUSED s32 pad4[2]; 
+    f32 area;
+    f32 area2;
+    f32 area3;
 
-    temp_v1 = &D_8015F580[arg5];
-    var_v0 = 1;
-    if (arg4 < (f32) temp_v1->vtx3[2]) {
+    if (tile->vtx33 > z1) {
         return 0;
     }
-    if ((f32) temp_v1->vtx2[2] < arg4) {
+    if (tile->vtx23 < z1) {
         return 0;
     }
-    if ((f32) temp_v1->vtx2[1] < arg3) {
+    if (tile->vtx22 < y1) {
         return 0;
     }
-    if (arg3 < (f32) temp_v1->vtx3[1]) {
+    if (tile->vtx32 > y1) {
         return 0;
     }
-    temp_f0 = arg1 * 3.0f;
-    if (arg2 < ((f32) temp_v1->vtx3[0] - temp_f0)) {
+    if ((tile->vtx31 - boundingBoxSize * 3.0f) > x1) {
         return 0;
     }
-    if (((f32) temp_v1->vtx2[0] + temp_f0) < arg2) {
+    if ((tile->vtx21 + boundingBoxSize * 3.0f) < x1) {
         return 0;
     }
-    temp_a0 = temp_v1->vtxs[0];
-    temp_a3 = temp_v1->vtxs[2];
-    temp_a2 = temp_v1->vtxs[1];
-    sp64 = (f32) temp_a3->v.ob[2];
-    sp8 = arg3;
-    sp10 = arg4;
-    temp_f8 = (f32) temp_a0->v.ob[1] - arg3;
-    sp68 = (f32) temp_a3->v.ob[1];
-    temp_f6 = (f32) temp_a2->v.ob[2] - arg4;
-    sp2C = temp_f8;
-    sp28 = temp_f6;
-    sp24 = (f32) temp_a0->v.ob[2] - arg4;
-    temp_f0_2 = temp_f8 * temp_f6;
-    sp8 = temp_f8;
-    spC = temp_f6;
-    sp20 = (f32) temp_a2->v.ob[1] - arg3;
-    temp_f2 = sp24 * sp20;
-    temp_f10 = temp_f0_2 - temp_f2;
-    sp1C = temp_f10;
-    sp38 = temp_f10;
-    if (temp_f2 == temp_f0_2) {
-        sp14 = arg3;
-        temp_f0_3 = sp64 - sp10;
-        temp_f2_2 = sp68 - arg3;
-        if ((((sp20 * temp_f0_3) - (spC * temp_f2_2)) * ((temp_f2_2 * sp24) - (temp_f0_3 * sp8))) < 0.0f) {
-            var_v0 = 0;
+
+    z2 = (f32) tile->vtxPoly1->v.ob[2];
+    y2 = (f32) tile->vtxPoly1->v.ob[1];
+
+    z3 = (f32) tile->vtxPoly2->v.ob[2];
+    y3 = (f32) tile->vtxPoly2->v.ob[1];
+
+    z4 = (f32) tile->vtxPoly3->v.ob[2];
+    y4 = (f32) tile->vtxPoly3->v.ob[1];
+
+    area = (y2 - y1) * (z3 - z1) - (z2 - z1) * (y3 - y1);
+
+    if (area == 0) {
+        area2 = (y3 - y1) * (z4 - z1) - (z3 - z1) * (y4 - y1);
+        area3 = (y4 - y1) * (z2 - z1) - (z4 - z1) * (y2 - y1);
+
+
+        if (area2 * area3 < 0.0f) {
+            bool = 0;
         }
     } else {
-        temp_f2_3 = sp68 - arg3;
-        temp_f0_4 = sp64 - arg4;
-        temp_f14 = sp28 * temp_f2_3;
-        temp_f12 = sp20 * temp_f0_4;
-        if (temp_f14 == temp_f12) {
-            if ((sp38 * ((temp_f2_3 * sp24) - (temp_f0_4 * sp2C))) < 0.0f) {
-                var_v0 = 0;
+
+        area2 = (y3 - y1) * (z4 - z1) - (z3 - z1) * (y4 - y1);
+
+        if (area2 == 0) {
+            area3 = (y4 - y1) * (z2 - z1) - (z4 - z1) * (y2 - y1);
+
+
+            if ((area * area3) < 0.0f) {
+                bool = 0;
             }
         } else {
-            temp_f16 = temp_f12 - temp_f14;
-            if ((sp1C * temp_f16) < 0.0f) {
-                var_v0 = 0;
+            if ((area * area2) < 0.0f) {
+                bool = 0;
             } else {
-                temp_f14_2 = temp_f0_4 * sp2C;
-                temp_f12_2 = temp_f2_3 * sp24;
-                if ((temp_f14_2 != temp_f12_2) && ((temp_f16 * (temp_f12_2 - temp_f14_2)) < 0.0f)) {
-                    var_v0 = 0;
+                area3 = (y4 - y1) * (z2 - z1) - (z4 - z1) * (y2 - y1);
+
+                if (area3 != 0) {
+                    if ((area2 * area3) < 0.0f) {
+                        bool = 0;
+                    }
                 }
             }
         }
     }
-    if (var_v0 == 0) {
+    if (bool == 0) {
         return 0;
     }
-    temp_f2_4 = temp_v1->height;
-    temp_f12_3 = temp_v1->gravity;
-    temp_f14_3 = temp_v1->rotation;
-    temp_f16_2 = temp_v1->height2;
-    temp_f0_5 = (temp_f2_4 * arg2) + (temp_f12_3 * arg3) + (temp_f14_3 * arg4) + temp_f16_2;
-    if (temp_v1->flags & 0x200) {
-        temp_f10_2 = (temp_f2_4 * arg6) + (temp_f12_3 * arg7) + (temp_f14_3 * arg8) + temp_f16_2;
-        sp44 = temp_f10_2;
-        if ((temp_f0_5 > 0.0f) && (temp_f10_2 > 0.0f)) {
-            if (temp_f0_5 < arg1) {
-                arg0->unk32 = 1;
-                arg0->unk38 = arg5;
-                arg0->unk3C[1] = temp_f0_5 - arg1;
-                arg0->unk54[0] = temp_v1->height;
-                arg0->unk54[1] = temp_v1->gravity;
-                arg0->unk54[2] = temp_v1->rotation;
+
+    temp_f0_4 = ((tile->height * x1) + (tile->gravity * y1) + (tile->rotation * z1)) + tile->height2;
+    if (tile->flags & 0x200) {
+        temp_f4_2 = ((tile->height * arg6) + (tile->gravity * arg7) + (tile->rotation * arg8)) + tile->height2;
+        //sp48 = temp_f4_2;
+        if ((temp_f0_4 > 0.0f) && (temp_f4_2 > 0.0f)) {
+            if (temp_f0_4 < boundingBoxSize) {
+                arg->unk32 = 1;
+                arg->unk38 = arg5;
+                arg->unk3C[1] = temp_f0_4 - boundingBoxSize;
+                arg->unk54[0] = tile->height;
+                arg->unk54[1] = tile->gravity;
+                arg->unk54[2] = tile->rotation;
                 return 1;
             }
             return 0;
         }
-        if ((temp_f0_5 < 0.0f) && (sp44 < 0.0f)) {
-            temp_f0_6 = temp_f0_5 * -1.0f;
-            if (temp_f0_6 < arg1) {
-                arg0->unk32 = 1;
-                arg0->unk38 = arg5;
-                arg0->unk3C[1] = temp_f0_6 - arg1;
-                arg0->unk54[0] = -temp_v1->height;
-                arg0->unk54[1] = -temp_v1->gravity;
-                arg0->unk54[2] = -temp_v1->rotation;
+
+        if ((temp_f0_4 < 0.0f) && (temp_f4_2 < 0.0f)) {
+            temp_f0_4 *= -1.0f;
+            if (temp_f0_4 < boundingBoxSize) {
+                arg->unk32 = 1;
+                arg->unk38 = arg5;
+                arg->unk3C[1] = temp_f0_4 - boundingBoxSize;
+                arg->unk54[0] = -tile->height;
+                arg->unk54[1] = -tile->gravity;
+                arg->unk54[2] = -tile->rotation;
                 return 1;
             }
             return 0;
         }
-        if ((temp_f0_5 > 0.0f) && (sp44 < 0.0f)) {
-            arg0->unk32 = 1;
-            arg0->unk38 = arg5;
-            arg0->unk3C[1] = -(temp_f0_5 + arg1);
-            arg0->unk54[0] = -temp_v1->height;
-            arg0->unk54[1] = -temp_v1->gravity;
-            var_f8 = -temp_v1->rotation;
-            arg0->unk54[2] = var_f8;
+        if ((temp_f0_4 > 0.0f) && (temp_f4_2 < 0.0f)) {
+            arg->unk32 = 1;
+            arg->unk38 = arg5;
+            arg->unk3C[1] = -(temp_f0_4 + boundingBoxSize);
+            arg->unk54[0] = -tile->height;
+            arg->unk54[1] = -tile->gravity;
+            arg->unk54[2] = -tile->rotation;
             return 1;
         }
-        if ((temp_f0_5 < 0.0f) && (sp44 > 0.0f)) {
-            arg0->unk32 = 1;
-            arg0->unk38 = arg5;
-            arg0->unk3C[1] = temp_f0_5 + arg1;
-            arg0->unk54[0] = temp_v1->height;
-            arg0->unk54[1] = temp_v1->gravity;
-            arg0->unk54[2] = temp_v1->rotation;
+        if ((temp_f0_4 < 0.0f) && (temp_f4_2 > 0.0f)) {
+            arg->unk32 = 1;
+            arg->unk38 = arg5;
+            arg->unk3C[1] = temp_f0_4 + boundingBoxSize;
+            arg->unk54[0] = tile->height;
+            arg->unk54[1] = tile->gravity;
+            arg->unk54[2] = tile->rotation;
             return 1;
         }
-        if (temp_f0_5 == 0.0f) {
-            if (sp44 >= 0.0f) {
-                arg0->unk32 = 1;
-                arg0->unk38 = arg5;
-                arg0->unk3C[1] = sp44 + arg1;
-                arg0->unk54[0] = temp_v1->height;
-                arg0->unk54[1] = temp_v1->gravity;
-                arg0->unk54[2] = temp_v1->rotation;
+        if (temp_f0_4 == 0.0f) {
+            if (temp_f4_2 >= 0.0f) {
+                arg->unk32 = 1;
+                arg->unk38 = arg5;
+                arg->unk3C[1] = temp_f4_2 + boundingBoxSize;
+                arg->unk54[0] = tile->height;
+                arg->unk54[1] = tile->gravity;
+                arg->unk54[2] = tile->rotation;
                 return 1;
             }
-            arg0->unk32 = 1;
-            arg0->unk38 = arg5;
-            arg0->unk3C[1] = -(sp44 + arg1);
-            arg0->unk54[0] = temp_v1->height;
-            arg0->unk54[1] = temp_v1->gravity;
-            var_f8 = temp_v1->rotation;
-            arg0->unk54[2] = var_f8;
+            arg->unk32 = 1;
+            arg->unk38 = arg5;
+            arg->unk3C[1] = -(temp_f4_2 + boundingBoxSize);
+            arg->unk54[0] = tile->height;
+            arg->unk54[1] = tile->gravity;
+            arg->unk54[2] = tile->rotation;
             return 1;
         }
         return 0;
     }
-    if (arg1 < temp_f0_5) {
-        if (temp_f0_5 < arg0->unk3C[1]) {
-            arg0->unk32 = 1;
-            arg0->unk38 = arg5;
-            arg0->unk3C[1] = temp_f0_5 - arg1;
-            arg0->unk54[0] = temp_v1->height;
-            arg0->unk54[1] = temp_v1->gravity;
-            arg0->unk54[2] = temp_v1->rotation;
+    if (temp_f0_4 > boundingBoxSize) {
+        if (arg->unk3C[1] > temp_f0_4) {
+            arg->unk32 = 1;
+            arg->unk38 = arg5;
+            arg->unk3C[1] = temp_f0_4 - boundingBoxSize;
+            arg->unk54[0] = tile->height;
+            arg->unk54[1] = tile->gravity;
+            arg->unk54[2] = tile->rotation;
         }
         return 0;
     }
-    temp_f4 = (temp_f2_4 * arg6) + (temp_f12_3 * arg7) + (temp_f14_3 * arg8) + temp_f16_2;
-    sp44 = temp_f4;
-    if (temp_f4 < 0.0f) {
+
+    temp_f4_2 = (tile->height * arg6) + (tile->gravity * arg7) + (tile->rotation * arg8) + tile->height2;
+    if (temp_f4_2 < 0.0f) {
         return 0;
     }
-    arg0->unk32 = 1;
-    arg0->unk38 = arg5;
-    arg0->unk3C[1] = temp_f0_5 - arg1;
-    arg0->unk54[0] = temp_v1->height;
-    arg0->unk54[1] = temp_v1->gravity;
-    var_f8 = temp_v1->rotation;
-    arg0->unk54[2] = var_f8;
+    arg->unk32 = 1;
+    arg->unk38 = arg5;
+    arg->unk3C[1] = temp_f0_4 - boundingBoxSize;
+    arg->unk54[0] = tile->height;
+    arg->unk54[1] = tile->gravity;
+    arg->unk54[2] = tile->rotation;
     return 1;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AD278.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit a8f43e46d33dcb7e04d9cdc44a10b3daf4c92c3b
-s32 func_802AC760(f32, f32, f32, f32, f32, f32, f32, f32, f32); /* extern */
-s32 func_802ACBA4(UnkActorInner *, f32, f32, f32, f32, s32, f32, f32, f32); /* extern */
-s32 func_802AD278(UnkActorInner *, f32, f32, f32, f32, s32, f32, f32, f32); /* extern */
-extern u8 D_8014F110;
-extern s32 D_8015F584;
+extern u16 *D_8015F584;
 extern s16 D_8015F6E8;
 extern s16 D_8015F6EA;
 extern s16 D_8015F6F0;
 extern s16 D_8015F6F2;
 
-s32 func_802AD950(UnkActorInner *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
-    s16 temp_v0_4;
-    s16 temp_v1;
-    s32 temp_f10;
-    s32 temp_f16;
-    s32 temp_t7;
+u16 func_802AD950(Collision *collision, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2) {
+    s32 temp_v0_4;
+    s32 temp_v1;
+    s16 temp_f10;
+    s16 temp_f16;
     u16 temp_s6;
-    u16 temp_v0;
-    u16 temp_v0_2;
-    u16 temp_v0_3;
-    u16 temp_v0_5;
-    u16 temp_v1_3;
-    void *temp_v1_2;
-    s32 phi_s4;
-    s32 phi_s4_2;
+    u16 surfaceIndex;
+    s16 temp_v1_2;
+
     u16 phi_s2;
-    s32 phi_s3;
-    s32 phi_s4_3;
-    s32 phi_s4_4;
-    s32 phi_s4_5;
-    s32 phi_s4_6;
 
-    arg0->unk30 = 0;
-    arg0->unk32 = 0;
-    arg0->unk34 = 0;
-    arg0->unk3C = 1000.0f;
-    arg0->unk40 = 1000.0f;
-    arg0->unk44 = 1000.0f;
-    temp_v0 = arg0->unk3A;
-    phi_s4_6 = 0;
-    if (((s32) temp_v0 < (s32) D_8015F588) && (func_802AC760(arg1, arg2, arg3, arg4, (bitwise f32) temp_v0, arg5, arg6, arg7) == 1)) {
-        phi_s4_6 = 0x00004000;
+
+
+    u16 flags = 0;
+    s32 temp1;
+    s32 temp2;
+    
+    u16 i;
+
+    collision->unk30 = 0;
+    collision->unk32 = 0;
+    collision->unk34 = 0;
+    collision->unk3C[0] = 1000.0f;
+    collision->unk3C[1] = 1000.0f;
+    collision->unk3C[2] = 1000.0f;
+
+    if ((s32) collision->unk3A < (s32) D_8015F588) {
+        if (is_colliding_with_drivable_surface(collision, boundingBoxSize, x1, y1, z1, collision->unk3A, x2, y2, z2) == 1) {
+            flags |= 0x4000;
+        }
     }
-    temp_v0_2 = arg0->unk36;
-    phi_s4_4 = phi_s4_6;
-    if (((s32) temp_v0_2 < (s32) D_8015F588) && (func_802ACBA4(arg0, arg1, arg2, arg3, arg4, (s32) temp_v0_2, arg5, arg6, arg7) == 1)) {
-        phi_s4_4 = (phi_s4_6 | 0x2000) & 0xFFFF;
+
+    if ((s32) collision->unk36 < (s32) D_8015F588) {
+        if (is_colliding_with_wall2(collision, boundingBoxSize, x1, y1, z1, collision->unk36, x2, y2, z2) == 1) {
+            flags |= 0x2000;
+        }
     }
-    temp_v0_3 = arg0->unk38;
-    phi_s4 = phi_s4_4;
-    if (((s32) temp_v0_3 < (s32) D_8015F588) && (func_802AD278(arg0, arg1, arg2, arg3, arg4, (s32) temp_v0_3, arg5, arg6, arg7) == 1)) {
-        phi_s4 = (phi_s4_4 | 0x8000) & 0xFFFF;
+
+    if ((s32) collision->unk38 < (s32) D_8015F588) {
+        if (is_colliding_with_wall1(collision, boundingBoxSize, x1, y1, z1, collision->unk38, x2, y2, z2) == 1) {
+            flags |= 0x8000;
+        }
     }
-    phi_s4_2 = phi_s4;
-    phi_s4_3 = phi_s4;
-    if (phi_s4 == 0x0000E000) {
-        goto block_39;
+
+    if (flags == (0x4000 | 0x2000 | 0x8000)) {
+        return flags;
     }
-    temp_v0_4 = D_8015F6EA;
-    temp_v1 = D_8015F6F2;
-    temp_f10 = (s32) ((arg2 - (f32) temp_v0_4) / (f32) ((s32) (D_8015F6E8 - temp_v0_4) / 32));
-    temp_f16 = (s32) ((arg4 - (f32) temp_v1) / (f32) ((s32) (D_8015F6F0 - temp_v1) / 32));
-    if ((s16) temp_f10 < 0) {
+
+
+    temp_v0_4 = (s32) D_8015F6E8 - D_8015F6EA;
+    temp_v1 = (s32) D_8015F6F0 - D_8015F6F2;
+
+    temp1 = temp_v0_4 / 32;
+    temp2 = temp_v1 / 32;
+
+    temp_f10 = (x1 - D_8015F6EA) / temp1;
+    temp_f16 = (z1 - D_8015F6F2) / temp2;
+
+    if (temp_f10 < 0) {
         return 0;
     }
-    if ((s16) temp_f16 < 0) {
+    if (temp_f16 < 0) {
         return 0;
     }
-    if ((s16) temp_f10 >= 0x20) {
+    if (temp_f10 >= 32) {
         return 0;
     }
-    if ((s16) temp_f16 >= 0x20) {
+    if (temp_f16 >= 32) {
         return 0;
     }
-    temp_v1_2 = ((s16) ((s16) temp_f10 + ((s16) temp_f16 << 5)) * 4) + &D_8014F110;
-    temp_s6 = temp_v1_2->unk2;
-    phi_s3 = 0;
+
+    temp_v1_2 = (temp_f10 + temp_f16 * 32);
+    temp_s6 = D_8014F110[temp_v1_2].unk2;
+
     if (temp_s6 == 0) {
+        return flags;
+    }
 
-    } else {
-        phi_s2 = temp_v1_2->unk0;
-        if ((s32) temp_s6 > 0) {
-loop_22:
-            phi_s4_3 = phi_s4_2;
-            phi_s4_5 = phi_s4_2;
-            if (phi_s4_2 == 0x0000E000) {
+    phi_s2 = D_8014F110[temp_v1_2].unk0;
 
-            } else {
-                temp_v0_5 = *(D_8015F584 + (phi_s2 * 2));
-                temp_v1_3 = D_8015F580[temp_v0_5].flags;
-                if ((temp_v1_3 & 0x4000) != 0) {
-                    if (((phi_s4_2 & 0x4000) == 0) && (arg0->unk3A != temp_v0_5) && (func_802AC760((bitwise f32) arg0, arg1, arg2, arg3, arg4, (bitwise f32) temp_v0_5, arg5, arg6, arg7) == 1)) {
-                        phi_s4_5 = (phi_s4_2 | 0x4000) & 0xFFFF;
+    for (i = 0; i < temp_s6; i++) {
+        if (flags == (0x4000 | 0x2000 | 0x8000)) {
+            return flags;
+        }
+
+        surfaceIndex = D_8015F584[phi_s2];
+
+        if ((gSurfaceMap[surfaceIndex].flags & 0x4000)) {
+            if ((flags & 0x4000) == 0) {
+                if (surfaceIndex != collision->unk3A) {
+                    if (is_colliding_with_drivable_surface(collision, boundingBoxSize, x1, y1, z1, surfaceIndex, x2, y2, z2) == 1) {
+                        flags |= 0x4000;
                     }
-                } else if ((temp_v1_3 & 0x8000) != 0) {
-                    if (((phi_s4_2 & 0x8000) == 0) && (arg0->unk38 != temp_v0_5) && (func_802AD278(arg0, arg1, arg2, arg3, arg4, (s32) temp_v0_5, arg5, arg6, arg7) == 1)) {
-                        phi_s4_5 = (phi_s4_2 | 0x8000) & 0xFFFF;
-                    }
-                } else if (((phi_s4_2 & 0x2000) == 0) && (arg0->unk36 != temp_v0_5) && (func_802ACBA4(arg0, arg1, arg2, arg3, arg4, (s32) temp_v0_5, arg5, arg6, arg7) == 1)) {
-                    phi_s4_5 = (phi_s4_2 | 0x2000) & 0xFFFF;
                 }
-                temp_t7 = (phi_s3 + 1) & 0xFFFF;
-                phi_s4_2 = phi_s4_5;
-                phi_s2 = (phi_s2 + 1) & 0xFFFF;
-                phi_s3 = temp_t7;
-                phi_s4_3 = phi_s4_5;
-                if (temp_t7 < (s32) temp_s6) {
-                    goto loop_22;
+            }
+        } else if ((gSurfaceMap[surfaceIndex].flags & 0x8000) != 0) {
+            if ((flags & 0x8000) == 0) {
+                if (surfaceIndex != collision->unk38) {
+                    if (is_colliding_with_wall1(collision, boundingBoxSize, x1, y1, z1, surfaceIndex, x2, y2, z2) == 1) {
+                        flags |= 0x8000;
+                    }
+                }
+            }
+        } else if ((flags & 0x2000) == 0) {
+            if (surfaceIndex != collision->unk36) {
+                if (is_colliding_with_wall2(collision, boundingBoxSize, x1, y1, z1, surfaceIndex, x2, y2, z2) == 1) {
+                    flags |= 0x2000;
                 }
             }
         }
+        phi_s2++;
+        
     }
-block_39:
-    return phi_s4_3;
+    return flags;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AD950.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-s32 func_802AAE4C(void *, f32, f32, f32, f32, s32); // extern
-s32 func_802AB288(void *, void *, f32, f32, f32, s32); // extern
-s32 func_802AB6C4(void *, void *, f32, f32, f32, s32); // extern
-extern u8 D_8014F110;
-extern s32 D_8015F584;
-
-s32 func_802ADDC8(UnkActorInner *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    s16 temp_v0_4;
-    s16 temp_v1;
+u16 func_802ADDC8(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ) {
+    u16 temp_v1;
     s32 temp_f4;
     s32 temp_f6;
-    s32 temp_t7;
-    u16 temp_s6;
-    u16 temp_v0;
-    u16 temp_v0_2;
-    u16 temp_v0_3;
-    u16 temp_v0_5;
-    u16 temp_v1_3;
-    void *temp_v1_2;
-    s32 phi_s4;
-    s32 phi_s4_2;
-    u16 phi_s2;
-    s32 phi_s3;
-    s32 phi_s4_3;
-    s32 phi_s4_4;
-    s32 phi_s4_5;
-    s32 phi_s4_6;
+    u16 temp_v0_4;
+    s32 temp1;
+    s32 temp2;
+    s16 temp_f10;
+    s16 temp_f16;
+    s16 temp;
+    u16 i;
 
-    arg0->unk0 = 0;
-    arg0->unk2 = 0;
-    arg0->unk4 = 0;
-    arg0->unkC = 1000.0f;
-    arg0->unk10 = 1000.0f;
-    arg0->unk14 = 1000.0f;
-    temp_v0 = arg0->unkA;
-    phi_s4_6 = 0;
-    if ((temp_v0 < D_8015F588) && (func_802AAE4C(arg1, arg2, arg3, arg4, (bitwise f32) temp_v0) == 1)) {
-        phi_s4_6 = 0x4000;
+    u16 var_s2;
+    u16 var_s4;
+
+    collision->unk30 = 0;
+    collision->unk32 = 0;
+    collision->unk34 = 0;
+    collision->unk3C[0] = 1000.0f;
+    collision->unk3C[1] = 1000.0f;
+    collision->unk3C[2] = 1000.0f;
+    var_s4 = 0;
+    if (collision->unk3A < D_8015F588) {
+        if (func_802AAE4C(collision, boundingBoxSize, posX, posY, posZ, collision->unk3A) == 1) {
+            var_s4 |= 0x4000;
+        }
     }
-    temp_v0_2 = arg0->unk6;
-    phi_s4_4 = phi_s4_6;
-    if ((temp_v0_2 < D_8015F588) && (func_802AB288(arg0, arg1, arg2, arg3, arg4, temp_v0_2) == 1)) {
-        phi_s4_4 = (phi_s4_6 | 0x2000) & 0xFFFF;
+    if (collision->unk36 < D_8015F588) {
+        if (func_802AB288(collision, boundingBoxSize, posX, posY, posZ, collision->unk36) == 1) {
+            var_s4 |= 0x2000;
+        }
     }
-    temp_v0_3 = arg0->unk8;
-    phi_s4 = phi_s4_4;
-    if ((temp_v0_3 < D_8015F588) && (func_802AB6C4(arg0, arg1, arg2, arg3, arg4, temp_v0_3) == 1)) {
-        phi_s4 = (phi_s4_4 | 0x8000) & 0xFFFF;
+    if (collision->unk38 < D_8015F588) {
+        if (func_802AB6C4(collision, boundingBoxSize, posX, posY, posZ, collision->unk38 ) == 1) {
+            var_s4 |= 0x8000;
+        }
     }
-    phi_s4_2 = phi_s4;
-    phi_s4_3 = phi_s4;
-    if (phi_s4 == 0xE000) {
-        goto block_39;
+    if (var_s4 == (0x4000 | 0x2000 | 0x8000)) {
+        return var_s4;
     }
-    temp_v0_4 = D_8015F6EA;
-    temp_v1 = D_8015F6F2;
-    temp_f4 = (arg2 - temp_v0_4) / ((D_8015F6E8 - temp_v0_4) / 0x20);
-    temp_f6 = (arg4 - temp_v1) / ((D_8015F6F0 - temp_v1) / 0x20);
-    if (temp_f4 < 0) {
+    
+    temp_f4 = (s32) D_8015F6E8 - D_8015F6EA;
+    temp_f6 = (s32) D_8015F6F0 - D_8015F6F2;
+
+    temp1 = temp_f4 / 32;
+    temp2 = temp_f6 / 32;
+
+    temp_f10 = (posX - D_8015F6EA) / temp1;
+    temp_f16 = (posZ - D_8015F6F2) / temp2;
+
+    
+    if (temp_f10 < 0) {
         return 0;
+    }
+    if (temp_f16 < 0) {
+        return 0;
+    }
+    if (temp_f10 >= 32) {
+        return 0;
+    }
+    if (temp_f16 >= 32) {
+        return 0;
+    }
+
+    temp = temp_f10 + temp_f16 * 32;
+    temp_v1 = D_8014F110[temp].unk2;
+    if (temp_v1 == 0) {
+        return var_s4;
+    }
+    var_s2 = D_8014F110[temp].unk0;
+
+    for (i = 0; i < temp_v1; i++) {
+        if (var_s4 == (0x8000 | 0x4000 | 0x2000)) {
+            return var_s4;
+        }
+        temp_v0_4 = D_8015F584[var_s2];
+        if (gSurfaceMap[temp_v0_4].flags & 0x4000) {
+            if (!(var_s4 & 0x4000)) {
+                if (temp_v0_4 != collision->unk3A) {
+                    if (func_802AAE4C(collision, boundingBoxSize, posX, posY, posZ, temp_v0_4) == 1) {
+                        var_s4 |= 0x4000;
+                    }
+                }
+            }
+        } else if (gSurfaceMap[temp_v0_4].flags & 0x8000) {
+            if (!(var_s4 & 0x8000)) {
+                if (temp_v0_4 != collision->unk38) {
+                    if (func_802AB6C4(collision, boundingBoxSize, posX, posY, posZ, temp_v0_4) == 1) {
+                        var_s4 |= 0x8000;
+                    }
+                }
+            }
+        } else {
+            if (!(var_s4 & 0x2000)) {
+                if (temp_v0_4 != collision->unk36) {
+                    if (func_802AB288(collision, boundingBoxSize, posX, posY, posZ, temp_v0_4) == 1) {
+                        var_s4 |= 0x2000;
+                    }
+                }
+            }
+        }
+        var_s2++;
+    }
+    return var_s4;
+}
+
+extern u8 D_8014F1110;
+
+extern u16 *D_8015F584;
+extern s16 D_8015F6E8;
+extern s16 D_8015F6EA;
+extern s16 D_8015F6F0;
+extern s16 D_8015F6F2;
+
+f32 func_802AE1C0(f32 posX, f32 posY, f32 posZ) {
+    f32 temp_f0;
+    s16 temp_f4;
+    s16 temp_f6;
+    s16 temp_f66;
+
+    u16 index;
+    u16 iter;
+    u16 phi_s1;
+    f32 phi_f20 = -3000.0f;
+    u16 i;
+
+    s32 a;
+    s32 b;
+    s32 c;
+    s32 d;
+
+    a = (D_8015F6E8 - D_8015F6EA);
+    b = (D_8015F6F0 - D_8015F6F2);
+    c = a / 32;
+    d = b / 32;
+
+    temp_f4 = (s16) ((posX - D_8015F6EA) / c);
+    temp_f6 = (s16) ((posZ - D_8015F6F2) / d);
+    temp_f66 = temp_f4 + (temp_f6 * 32);
+    iter = D_8014F110[temp_f66].unk2;
+
+    if (temp_f4 < 0) {
+        return 3000.0f;
     }
     if (temp_f6 < 0) {
-        return 0;
+        return 3000.0f;
     }
-    if (temp_f4 >= 0x20) {
-        return 0;
+    if (temp_f4 >= 32) {
+        return 3000.0f;
     }
-    if (temp_f6 >= 0x20) {
-        return 0;
+    if (temp_f6 >= 32) {
+        return 3000.0f;
     }
-    temp_v1_2 = ((temp_f4 + (temp_f6 << 5)) * 4) + &D_8014F110;
-    temp_s6 = temp_v1_2->unk2;
-    phi_s3 = 0;
-    if (temp_s6 == 0) {
+    if (iter == 0) {
+        return 3000.0f;
+    }
 
-    } else {
-        phi_s2 = temp_v1_2->unk0;
-        if (temp_s6 > 0) {
-loop_22:
-            phi_s4_3 = phi_s4_2;
-            phi_s4_5 = phi_s4_2;
-            if (phi_s4_2 == 0xE000) {
+    phi_s1 = D_8014F110[temp_f66].unk0;
 
-            } else {
-                temp_v0_5 = *(D_8015F584 + (phi_s2 * 2));
-                temp_v1_3 = *(D_8015F580 + (temp_v0_5 * 0x2C));
-                if ((temp_v1_3 & 0x4000) != 0) {
-                    if (((phi_s4_2 & 0x4000) == 0) && (arg0->unkA != temp_v0_5) && (func_802AAE4C(arg0, (bitwise f32) arg1, arg2, arg3, arg4, temp_v0_5) == 1)) {
-                        phi_s4_5 = (phi_s4_2 | 0x4000) & 0xFFFF;
-                    }
-                } else if ((temp_v1_3 & 0x8000) != 0) {
-                    if (((phi_s4_2 & 0x8000) == 0) && (arg0->unk8 != temp_v0_5) && (func_802AB6C4(arg0, arg1, arg2, arg3, arg4, temp_v0_5) == 1)) {
-                        phi_s4_5 = (phi_s4_2 | 0x8000) & 0xFFFF;
-                    }
-                } else if (((phi_s4_2 & 0x2000) == 0) && (arg0->unk6 != temp_v0_5) && (func_802AB288(arg0, arg1, arg2, arg3, arg4, temp_v0_5) == 1)) {
-                    phi_s4_5 = (phi_s4_2 | 0x2000) & 0xFFFF;
-                }
-                temp_t7 = (phi_s3 + 1) & 0xFFFF;
-                phi_s4_2 = phi_s4_5;
-                phi_s2 = (phi_s2 + 1) & 0xFFFF;
-                phi_s3 = temp_t7;
-                phi_s4_3 = phi_s4_5;
-                if (temp_t7 < temp_s6) {
-                    goto loop_22;
-                }
+    for (i = 0; i < iter; i++) {
+
+        index = D_8015F584[phi_s1];
+
+        if ((gSurfaceMap[index].flags & 0x4000) && (func_802ABB04(posX, posZ, index) == 1)) {
+            temp_f0 = func_802ABE30(posX, posY, posZ, index);
+            if ((temp_f0 <= posY) && (phi_f20 < temp_f0)) {
+                phi_f20 = temp_f0;
             }
         }
+        phi_s1++;
     }
-block_39:
-    return phi_s4_3;
+    return phi_f20;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802ADDC8.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-09-2022
-s32 func_802ABB04(f32, f32, s32);                   /* extern */
-extern ? D_8014F110;
-extern s32 D_8015F584;
-static f32 D_802B9E4C = -3000.0f;
-static f32 D_802B9E50 = 3000.0f;
-static f32 D_802B9E54 = 3000.0f;
-static f32 D_802B9E58 = 3000.0f;
-static f32 D_802B9E5C = 3000.0f;
-static f32 D_802B9E60 = 3000.0f;
+extern s16 D_8015F6EC;
 
-f32 func_802AE1C0(f32 arg0, f32 arg1, f32 arg2) {
-    f32 temp_f0;
-    f32 var_f20;
-    s32 temp_at;
-    s32 temp_f4;
-    s32 temp_f6;
-    s32 temp_t0;
-    s32 temp_t9;
-    s32 var_s2;
-    u16 temp_s0;
-    u16 temp_t1;
-    u16 var_s1;
-    void *temp_t2;
-
-    var_f20 = D_802B9E4C;
-    temp_f4 = (s32) ((arg0 - (f32) D_8015F6EA) / (f32) ((s32) (D_8015F6E8 - D_8015F6EA) / 32));
-    temp_f6 = (s32) ((arg2 - (f32) D_8015F6F2) / (f32) ((s32) (D_8015F6F0 - D_8015F6F2) / 32));
-    temp_t0 = (s16) temp_f6 << 5;
-    temp_t2 = ((s16) ((s16) temp_f4 + temp_t0) * 4) + &D_8014F110;
-    temp_t1 = temp_t2->unk2;
-    if ((s16) temp_f4 < 0) {
-        return D_802B9E50;
-    }
-    if ((s16) temp_f6 & 0x04000000) {
-        return D_802B9E54;
-    }
-    if ((s16) temp_f4 >= 0x20) {
-        return D_802B9E58;
-    }
-    if (temp_t0 >= 0x400) {
-        return D_802B9E5C;
-    }
-    if (temp_t1 == 0) {
-        return D_802B9E60;
-    }
-    var_s1 = temp_t2->unk0;
-    var_s2 = 0;
-    if ((s32) temp_t1 > 0) {
-        do {
-            temp_s0 = *(D_8015F584 + (var_s1 * 2));
-            if ((D_8015F580[temp_s0].flags & 0x4000) && (func_802ABB04(arg0, arg2, temp_s0 & 0xFFFF) == 1)) {
-                temp_f0 = func_802ABE30(arg0, arg1, arg2, temp_s0 & 0xFFFF);
-                if ((temp_f0 <= arg1) && (var_f20 < temp_f0)) {
-                    var_f20 = temp_f0;
-                }
-            }
-            temp_t9 = (var_s2 + 1) & 0xFFFF;
-            temp_at = temp_t9 < (s32) temp_t1;
-            var_s2 = temp_t9;
-            var_s1 = (var_s1 + 1) & 0xFFFF;
-        } while (temp_at != 0);
-    }
-    return var_f20;
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AE1C0.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit 0927f17aac197848d4ebdf0c6bbad74b01f0851c
 extern s32 D_8015F59C;
 extern s32 D_8015F5A0;
 extern s32 D_8015F5A4;
@@ -1817,381 +1416,386 @@ extern s16 D_8015F6F0;
 extern s16 D_8015F6F2;
 extern s16 D_8015F6FA;
 extern s16 D_8015F6FC;
-static f32 D_802B9E64 = -0.9f;
-static f32 D_802B9E68 = 0.9f;
-static f32 D_802B9E6C = 0.1f;
-static f32 D_802B9E70 = -0.1f;
 
-void func_802AE434(Vtx *arg0, Vtx *arg1, Vtx *arg2, s8 arg3, u16 arg4) {
-    s16 spBA;
-    s16 spB8;
-    s16 spB6;
-    s16 spB2;
-    s16 spAC;
-    s16 spAA;
-    f32 sp58;
-    f32 sp54;
-    f32 sp50;
-    f32 sp4C;
+void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 areaId) {
+    mk64_surface_map_ram *tile = &gSurfaceMap[D_8015F588];
+    s16 x2;
+    s16 z2;
+    u16 poly1Flag;
+    s16 x3;
+    s16 x1;
+    s16 y1;
+    s16 z1;
+    u16 poly2Flag;
+    s16 y2;
+    u16 poly3Flag;
+    u16 flags;
+    s16 y3;
+    s16 z3;
+
+    /* Unused variables places around doubles for dramatic effect */
+    UNUSED s32 pad2[7];
+
+    f64 crossProductX;
+    f64 crossProductY;
+    f64 crossProductZ;
+    f64 magnitude;
+
+    UNUSED s32 pad3[3];
+
+    f32 normalX;
+    f32 normalY;
+    f32 normalZ;
+    f32 distance;
+
     s16 sp4A;
     s16 sp48;
+    s16 sp46;
     s16 sp44;
     s16 sp42;
-    Vtx *sp1C;                                      /* compiler-managed */
-    f64 sp10;
-    f64 sp8;
-    f64 sp0;
-    Vtx *temp_t1;
-    Vtx *temp_t2;
-    Vtx *temp_t6;
-    f32 temp_f0;
-    f32 temp_f18_2;
-    f32 temp_f4_2;
-    f64 temp_f12;
-    f64 temp_f14;
-    f64 temp_f16;
-    f64 temp_f18;
-    f64 temp_f2;
-    f64 temp_f4;
-    f64 temp_f8;
-    mk64_surface_map_ram *temp_t0;
-    s16 var_a0;
-    s16 var_a1;
-    s16 var_a2;
-    s16 var_a3;
-    s16 var_t1;
-    s16 var_t2;
-    s16 var_t3;
-    s16 var_t4;
-    s16 var_t5;
-    s16 var_v0;
-    s16 var_v1;
-    s32 temp_a0;
-    s32 temp_a1;
-    s32 temp_a2;
-    s32 temp_a3;
-    s32 temp_v0;
-    s32 temp_v1;
-    u16 temp_a0_2;
-    u16 temp_a3_2;
-    u16 temp_v1_2;
-    u16 var_a1_2;
-    u16 var_t8;
-    u16 var_t9;
+    s16 sp40;
 
-    temp_t0 = &D_8015F580[D_8015F588];
-    temp_t0->vtxs[0] = arg0;
-    temp_t0->vtxs[1] = arg1;
-    temp_t0->vtxs[2] = arg2;
-    if ((arg0->v.flag != 4) || (arg1->v.flag != 4) || (temp_t0->vtxs[2]->v.flag != 4)) {
-        temp_t6 = temp_t0->vtxs[0];
-        sp1C = temp_t6;
-        temp_t1 = temp_t0->vtxs[1];
-        temp_t2 = temp_t0->vtxs[2];
-        var_a0 = temp_t6->v.ob[0];
-        var_t3 = temp_t1->v.ob[0];
-        var_a2 = temp_t6->v.ob[1];
-        var_a1 = temp_t6->v.ob[2];
-        var_a3 = temp_t1->v.ob[1];
-        var_t4 = temp_t1->v.ob[2];
-        var_t5 = temp_t2->v.ob[0];
-        var_v0 = temp_t2->v.ob[1];
-        var_v1 = temp_t2->v.ob[2];
-        if ((var_a0 == var_t3) && (var_a1 == var_t4)) {
-            temp_t0->vtxs[2] = arg1;
-            temp_t0->vtxs[1] = arg2;
-            var_a0 = arg0->v.ob[0];
-            var_a2 = arg0->v.ob[1];
-            var_a1 = arg0->v.ob[2];
-            var_t3 = arg1->v.ob[0];
-            var_a3 = arg1->v.ob[1];
-            var_t4 = arg1->v.ob[2];
-            var_t5 = arg2->v.ob[0];
-            var_v0 = arg2->v.ob[1];
-            var_v1 = arg2->v.ob[2];
-        }
-        if (var_a0 >= var_t3) {
-            if (var_a0 >= var_t5) {
-                sp4A = var_a0;
-            } else {
-                goto block_12;
-            }
-        } else if (var_t3 >= var_t5) {
-            sp4A = var_t3;
-        } else {
-block_12:
-            sp4A = var_t5;
-        }
-        if (var_a1 >= var_t4) {
-            if (var_a1 >= var_v1) {
-                sp48 = var_a1;
-            } else {
-                goto block_19;
-            }
-        } else if (var_t4 >= var_v1) {
-            sp48 = var_t4;
-        } else {
-block_19:
-            sp48 = var_v1;
-        }
-        if (var_a2 >= var_a3) {
-            if (var_a2 >= var_v0) {
-                sp42 = var_a2;
-            } else {
-                goto block_26;
-            }
-        } else if (var_a3 >= var_v0) {
-            sp42 = var_a3;
-        } else {
-block_26:
-            sp42 = var_v0;
-        }
-        if (var_t3 >= var_a0) {
-            if (var_t5 >= var_a0) {
-                sp44 = var_a0;
-            } else {
-                goto block_33;
-            }
-        } else if (var_t5 >= var_t3) {
-            sp44 = var_t3;
-        } else {
-block_33:
-            sp44 = var_t5;
-        }
-        if (var_a3 >= var_a2) {
-            if (var_v0 >= var_a2) {
-                var_t2 = var_a2;
-            } else {
-                var_t2 = var_v0;
-            }
-        } else if (var_v0 >= var_a3) {
-            var_t2 = var_a3;
-        } else {
-            var_t2 = var_v0;
-        }
-        if (var_t4 >= var_a1) {
-            if (var_v1 >= var_a1) {
-                var_t1 = var_a1;
-            } else {
-                var_t1 = var_v1;
-            }
-        } else if (var_v1 >= var_t4) {
-            var_t1 = var_t4;
-        } else {
-            var_t1 = var_v1;
-        }
-        spAA = var_v1;
-        spB8 = var_a2;
-        spB2 = var_a3;
-        spAC = var_v0;
-        temp_v0 = spB2 - spB8;
-        temp_v1 = spAA - var_t4;
-        spB6 = var_a1;
-        spBA = var_a0;
-        temp_a0 = var_t4 - spB6;
-        temp_a1 = spAC - spB2;
-        temp_a2 = var_t5 - var_t3;
-        temp_a3 = var_t3 - spBA;
-        temp_f12 = (f64) ((temp_v0 * temp_v1) - (temp_a0 * temp_a1));
-        temp_f18 = temp_f12 * temp_f12;
-        sp10 = temp_f18;
-        temp_f14 = (f64) ((temp_a0 * temp_a2) - (temp_a3 * temp_v1));
-        temp_f8 = temp_f14 * temp_f14;
-        sp8 = temp_f8;
-        temp_f16 = (f64) ((temp_a3 * temp_a1) - (temp_v0 * temp_a2));
-        temp_f4 = temp_f16 * temp_f16;
-        sp0 = temp_f4;
-        temp_f2 = (f64) sqrtf((f32) (temp_f18 + temp_f8 + temp_f4));
-        if ((temp_f2 != 0.0) && ((temp_f0 = (f32) ((f64) (f32) temp_f12 / temp_f2), sp58 = temp_f0, temp_f4_2 = (f32) ((f64) (f32) temp_f14 / temp_f2), sp1C = temp_f4_2, sp54 = temp_f4_2, temp_f18_2 = (f32) ((f64) (f32) temp_f16 / temp_f2), sp50 = temp_f18_2, sp4C = -(((f32) spBA * temp_f0) + (temp_f4_2 * (f32) spB8) + (temp_f18_2 * (f32) spB6)), (D_8015F59C == 0)) || (!(temp_f4_2 < D_802B9E64) && !(D_802B9E68 < temp_f4_2))) && ((D_8015F5A0 == 0) || !(sp1C < D_802B9E6C) || !(D_802B9E70 < sp1C))) {
-            temp_t0->vtx2[0] = sp4A;
-            temp_t0->vtx3[2] = var_t1;
-            temp_t0->vtx3[1] = var_t2;
-            temp_t0->vtx3[0] = sp44;
-            temp_t0->vtx2[1] = sp42;
-            temp_t0->vtx2[2] = sp48;
-            if (sp44 < D_8015F6EA) {
-                D_8015F6EA = sp44;
-            }
-            if (var_t2 < D_8015F6EE) {
-                D_8015F6EE = var_t2;
-            }
-            if (var_t1 < D_8015F6F2) {
-                D_8015F6F2 = var_t1;
-            }
-            if (D_8015F6E8 < sp4A) {
-                D_8015F6E8 = sp4A;
-            }
-            if (D_8015F6EC < sp42) {
-                D_8015F6EC = sp42;
-            }
-            if (D_8015F6F0 < sp48) {
-                D_8015F6F0 = sp48;
-            }
-            temp_t0->height = sp58;
-            temp_t0->gravity = sp54;
-            var_a1_2 = arg4;
-            temp_t0->rotation = sp50;
-            temp_t0->height2 = sp4C;
-            temp_t0->surfaceType = (u16) arg3;
-            D_8015F6FA = 0;
-            D_8015F6FC = 0;
-            temp_a3_2 = temp_t0->vtxs[0]->v.flag;
-            temp_v1_2 = temp_t0->vtxs[1]->v.flag;
-            temp_a0_2 = temp_t0->vtxs[2]->v.flag;
-            if ((temp_a3_2 == 1) && (temp_v1_2 == 1) && (temp_a0_2 == 1)) {
-                var_t8 = (arg4 | 0x400) & 0xFFFF;
-                goto block_81;
-            }
-            if ((temp_a3_2 == 2) && (temp_v1_2 == 2) && (temp_a0_2 == 2)) {
-                var_a1_2 = (arg4 | 0x800) & 0xFFFF;
-            } else if ((temp_a3_2 == 3) && (temp_v1_2 == 3) && (temp_a0_2 == 3)) {
-                var_a1_2 = (arg4 | 0x1000) & 0xFFFF;
-            } else if (D_8015F5A4 != 0) {
-                var_t8 = (arg4 | 0x200) & 0xFFFF;
-block_81:
-                var_a1_2 = var_t8;
-            }
-            temp_t0->flags = var_a1_2;
-            if (sp10 <= sp8) {
-                var_t9 = var_a1_2 | 0x4000;
-                if (sp0 <= sp8) {
-                    goto block_89;
-                }
-            }
-            if ((sp8 < sp10) && (sp0 <= sp10)) {
-                temp_t0->flags |= 0x8000;
-            } else {
-                var_t9 = temp_t0->flags | 0x2000;
-block_89:
-                temp_t0->flags = var_t9;
-            }
-            D_8015F588 += 1;
+    tile->vtxPoly1 = vtx1;
+    tile->vtxPoly2 = vtx2;
+    tile->vtxPoly3 = vtx3;
+    if ((tile->vtxPoly1->v.flag == 4) && 
+        (tile->vtxPoly2->v.flag == 4) && 
+        (tile->vtxPoly3->v.flag == 4)) {
+        
+        return;
+    }
+
+    x1 = tile->vtxPoly1->v.ob[0];
+    y1 = tile->vtxPoly1->v.ob[1];
+    z1 = tile->vtxPoly1->v.ob[2];
+    x2 = tile->vtxPoly2->v.ob[0];
+    y2 = tile->vtxPoly2->v.ob[1];
+    z2 = tile->vtxPoly2->v.ob[2];
+    x3 = tile->vtxPoly3->v.ob[0];
+    y3 = tile->vtxPoly3->v.ob[1];
+    z3 = tile->vtxPoly3->v.ob[2];
+    if ((x1 == x2) && (z1 == z2)) {
+        tile->vtxPoly1 = vtx1;
+        tile->vtxPoly3 = vtx2;
+        tile->vtxPoly2 = vtx3;
+        x1 = tile->vtxPoly1->v.ob[0];
+        y1 = tile->vtxPoly1->v.ob[1];
+        z1 = tile->vtxPoly1->v.ob[2];
+        x2 = tile->vtxPoly3->v.ob[0];
+        y2 = tile->vtxPoly3->v.ob[1];
+        z2 = tile->vtxPoly3->v.ob[2];
+        x3 = tile->vtxPoly2->v.ob[0];
+        y3 = tile->vtxPoly2->v.ob[1];
+        z3 = tile->vtxPoly2->v.ob[2];
+    }
+    if (x1 >= x2) {
+        if (x1 >= x3) {
+            sp4A = x1;
+        } else
+            sp4A = x3;
+
+    } else if (x2 >= x3) {
+        sp4A = x2;
+    } else
+        sp4A = x3;
+
+    if (z1 >= z2) {
+
+        if (z1 >= z3) {
+            sp48 = z1;
+        } else
+            sp48 = z3;
+
+    } else if (z2 >= z3) {
+        sp48 = z2;
+    } else
+        sp48 = z3;
+
+    if (y1 >= y2) {
+
+        if (y1 >= y3) {
+            sp42 = y1;
+        } else
+            sp42 = y3;
+
+    } else if (y2 >= y3) {
+        sp42 = y2;
+    } else
+        sp42 = y3;
+
+    if (x1 <= x2) {
+        if (x1 <= x3) {
+            sp44 = x1;
+        } else
+            sp44 = x3;
+
+    } else if (x2 <= x3) {
+        sp44 = x2;
+    } else
+        sp44 = x3;
+
+    if (y1 <= y2) {
+        if (y1 <= y3) {
+            sp46 = y1;
+        } else
+            sp46 = y3;
+
+    } else if (y2 <= y3) {
+        sp46 = y2;
+    } else
+        sp46 = y3;
+
+    if (z1 <= z2) {
+        if (z1 <= z3) {
+            sp40 = z1;
+        } else
+            sp40 = z3;
+
+    } else if (z2 <= z3) {
+        sp40 = z2;
+    } else
+        sp40 = z3;
+
+    crossProductX = (((y2 - y1) * (z3 - z2)) - ((z2 - z1) * (y3 - y2)));
+    crossProductY = (((z2 - z1) * (x3 - x2)) - ((x2 - x1) * (z3 - z2)));
+    crossProductZ = (((x2 - x1) * (y3 - y2)) - ((y2 - y1) * (x3 - x2)));
+
+    // length of the cross product
+    magnitude = sqrtf((crossProductX * crossProductX) + (crossProductY * crossProductY) + (crossProductZ * crossProductZ));
+
+    if (!magnitude) {
+        return;
+    }
+
+    normalX = (f32) crossProductX / magnitude;
+    normalY = (f32) crossProductY / magnitude;
+    normalZ = (f32) crossProductZ / magnitude;
+
+    // Distance from x to plane (cross product's normal).
+    distance = -((normalX * x1) + (normalY * y1) + (normalZ * z1));
+
+    // Return if normalY is not vertical.
+    // Could be checking if the surface is a floor
+    if (D_8015F59C) {
+        if (normalY < -0.9f) {
+            return;
+        } else if (normalY > 0.9f) {
+            return;
         }
     }
+
+    // Return if normalY is not horizontal
+    // Could be checking if the surface is a wall
+    if (D_8015F5A0) {
+        if ((normalY < 0.1f) && (normalY > -0.1f)) {
+            return;
+        }
+    }
+
+    tile->vtx21 = sp4A;
+    tile->vtx23 = sp48;
+    tile->vtx31 = sp44;
+    tile->vtx33 = sp40;
+    tile->vtx32 = sp46;
+    tile->vtx22 = sp42;
+
+    if (sp44 < D_8015F6EA) {
+        D_8015F6EA = sp44;
+    }
+    if (sp46 < D_8015F6EE) {
+        D_8015F6EE = sp46;
+    }
+    if (sp40 < D_8015F6F2) {
+        D_8015F6F2 = sp40;
+    }
+    if (sp4A > D_8015F6E8) {
+        D_8015F6E8 = sp4A;
+    }
+    if (sp42 > D_8015F6EC) {
+        D_8015F6EC = sp42;
+    }
+    if (sp48 > D_8015F6F0) {
+        D_8015F6F0 = sp48;
+    }
+    
+    tile->height = normalX;
+    tile->gravity = normalY;
+    tile->rotation = normalZ;
+    tile->height2 = distance;
+
+    tile->surfaceType = (u16) surfaceType;
+
+    crossProductX = crossProductX * crossProductX;
+    crossProductY = crossProductY * crossProductY;
+    crossProductZ = crossProductZ * crossProductZ;
+
+    D_8015F6FA = 0;
+    D_8015F6FC = 0;
+
+    poly1Flag = tile->vtxPoly1->v.flag;
+    poly2Flag = tile->vtxPoly2->v.flag;
+    poly3Flag = tile->vtxPoly3->v.flag;
+
+    flags = areaId;
+
+    if ((poly1Flag == 1) && (poly2Flag == 1) && (poly3Flag == 1)) {
+        flags |= 0x400;
+    } else if ((poly1Flag == 2) && (poly2Flag == 2) && (poly3Flag == 2)) {
+        flags |= 0x800;
+    } else if ((poly1Flag == 3) && (poly2Flag == 3) && (poly3Flag == 3)) {
+        flags |= 0x1000;
+    } else if (D_8015F5A4 != 0) {
+        flags |= 0x200;
+    }
+
+    tile->flags = flags;
+
+    // Y is the significant axis
+    if ((crossProductX <= crossProductY) && (crossProductY >= crossProductZ)) {
+        tile->flags |= 0x4000;
+    // X is the significant axis
+    } else if ((crossProductX > crossProductY) && (crossProductX >= crossProductZ)) {
+        tile->flags |= 0x8000;
+    // Z is the significant axis
+    } else {
+        tile->flags |= 0x2000;
+    }
+    D_8015F588++;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AE434.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_802AE434(s32, s32, s32, s8, s32); // extern
-extern ? D_8015F668;
+/**
+ * Triangle contains three indices that are used to get the actual vertices.
+ */
+void set_vtx_from_triangle(u32 triangle, s8 surfaceType, u16 areaId) {
+    u32 vert1 = ( ( triangle & 0x00FF0000 ) >> 16 ) / 2;
+    u32 vert2 = ( ( triangle & 0x0000FF00 ) >>  8 ) / 2;
+    u32 vert3 = (   triangle & 0x000000FF )         / 2;
 
-void func_802AEB14(s32 arg0, s8 arg1, u16 arg2) {
-    func_802AE434(*(&D_8015F668 + ((((arg0 & 0xFF0000) >> 0x10) >> 1) * 4)), *(&D_8015F668 + ((((arg0 & 0xFF00) >> 8) >> 1) * 4)), *(&D_8015F668 + (((arg0 & 0xFF) >> 1) * 4)), arg1, arg2);
+    Vtx *vtx1 = vtxBuffer[vert1];
+    Vtx *vtx2 = vtxBuffer[vert2];
+    Vtx *vtx3 = vtxBuffer[vert3];
+
+    func_802AE434(vtx1, vtx2, vtx3, surfaceType, areaId);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AEB14.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_802AE434(s32, s32, s32, s8, s32); // extern
-extern ? D_8015F668;
+void set_vtx_from_tri2(u32 triangle1, u32 triangle2, s8 surfaceType, u16 areaId) {
+    UNUSED s32 pad[2];
+    u32 vert1 = ( ( triangle1 & 0x00FF0000 ) >> 16 ) / 2;
+    u32 vert2 = ( ( triangle1 & 0x0000FF00 ) >>  8 ) / 2;
+    u32 vert3 = (   triangle1 & 0x000000FF )         / 2;
 
-void func_802AEBA4(s32 arg0, s32 arg1, s8 arg2, u16 arg3) {
-    s32 sp28;
-    s32 sp24;
-    s32 sp20;
+    // This is actually triangle 2; vert 1,2,3.
+    u32 vert4 = ( ( triangle2 & 0x00FF0000 ) >> 16 ) / 2;
+    u32 vert5 = ( ( triangle2 & 0x0000FF00 ) >>  8 ) / 2;
+    u32 vert6 = (   triangle2 & 0x000000FF )         / 2;
 
-    sp28 = *(&D_8015F668 + ((((arg1 & 0xFF0000) >> 0x10) >> 1) * 4));
-    sp24 = *(&D_8015F668 + ((((arg1 & 0xFF00) >> 8) >> 1) * 4));
-    sp20 = *(&D_8015F668 + (((arg1 & 0xFF) >> 1) * 4));
-    func_802AE434(*(&D_8015F668 + ((((arg0 & 0xFF0000) >> 0x10) >> 1) * 4)), *(&D_8015F668 + ((((arg0 & 0xFF00) >> 8) >> 1) * 4)), *(&D_8015F668 + (((arg0 & 0xFF) >> 1) * 4)), arg2, arg3);
-    func_802AE434(sp28, sp24, sp20, arg2, arg3);
+    Vtx *vtx1 = vtxBuffer[vert1];
+    Vtx *vtx2 = vtxBuffer[vert2];
+    Vtx *vtx3 = vtxBuffer[vert3];
+
+    Vtx *vtx4 = vtxBuffer[vert4];
+    Vtx *vtx5 = vtxBuffer[vert5];
+    Vtx *vtx6 = vtxBuffer[vert6];
+
+    // Triangle 1
+    func_802AE434(vtx1, vtx2, vtx3, surfaceType, areaId);
+    // Triangle 2
+    func_802AE434(vtx4, vtx5, vtx6, surfaceType, areaId);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AEBA4.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_802AE434(s32, s32, s32, s8, s32); // extern
-extern ? D_8015F668;
+void set_vtx_from_quadrangle(u32 line, s8 surfaceType, u16 areaId) {
+    UNUSED s32 pad[6];
+    Vtx *vtx1;
+    Vtx *vtx2;
+    Vtx *vtx3;
+    Vtx *vtx4;
 
-void func_802AECA0(s32 arg0, s8 arg1, u16 arg2) {
-    s32 sp2C;
-    s32 sp24;
-    s32 sp20;
-    s32 temp_a0;
-    s32 temp_a2;
+    u32 vert1 = ( ( line & 0x00FF0000 ) >> 16 ) / 2;
+    u32 vert2 = ( ( line & 0x0000FF00 ) >>  8 ) / 2;
+    u32 vert3 = (   line & 0x000000FF )         / 2;
+    u32 vert4 = ( ( line & 0xFF000000 ) >> 24 ) / 2;
 
-    temp_a0 = *(&D_8015F668 + ((((arg0 & 0xFF0000) >> 0x10) >> 1) * 4));
-    temp_a2 = *(&D_8015F668 + (((arg0 & 0xFF) >> 1) * 4));
-    sp2C = temp_a0;
-    sp24 = temp_a2;
-    sp20 = *(&D_8015F668 + ((((arg0 & 0xFF000000) >> 0x18) >> 1) * 4));
-    func_802AE434(temp_a0, *(&D_8015F668 + ((((arg0 & 0xFF00) >> 8) >> 1) * 4)), temp_a2, arg1, arg2);
-    func_802AE434(temp_a0, sp24, sp20, arg1, arg2);
+    vtx1 = vtxBuffer[vert1];
+    vtx2 = vtxBuffer[vert2];
+    vtx3 = vtxBuffer[vert3];
+    vtx4 = vtxBuffer[vert4];
+    
+    // Triangle 1
+    func_802AE434(vtx1, vtx2, vtx3, surfaceType, areaId);
+    // Triangle 2
+    func_802AE434(vtx1, vtx3, vtx4, surfaceType, areaId);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AECA0.s")
-#endif
 
-void func_802AED6C(Vtx *arg0, s32 arg1, s32 arg2) {
-    Vtx *var_v0;
-    s32 var_v1;
-    s32 segment = SEGMENT_NUMBER2(arg0);
-    s32 offset = SEGMENT_OFFSET(arg0);
-    var_v0 = (Vtx *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
-    for (var_v1 = 0; var_v1 != arg1; var_v1++)
-    {
-        D_8015F668[arg2++] = var_v0++;
+/**
+ * Generates a list of pointers to course vtx.
+ */
+void set_vtx_buffer(uintptr_t addr, u32 numVertices, u32 bufferIndex) {
+    u32 i;
+    u32 segment = SEGMENT_NUMBER2(addr);
+    u32 offset = SEGMENT_OFFSET(addr);
+    Vtx *vtx = (Vtx *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    for (i = 0; i < numVertices; i++) {
+        vtxBuffer[bufferIndex] = vtx;
+        vtx++;
+        bufferIndex++;
     }
 }
+/**
+ * @return 1 intersecting triangle, 0 not intersecting.
+ */
+s32 is_line_intersecting_rectangle(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 x1, s16 z1, s16 x2, s16 z2) {
+    f32 xOffset;
+    f32 projectedPoint;
+    f32 zOffset;
 
-s32 func_802AEE1C(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7) {
-    f32 temp_f0;
-    f32 temp_f18;
-    f32 temp_f2;
-
-    temp_f0 = arg6 - arg4;
-    temp_f2 = arg7 - arg5;
-    if (temp_f0 == 0.0f) {
-        if (arg4 < arg0) {
+    xOffset = x2 - x1;
+    zOffset = z2 - z1;
+    // Line is vertical
+    if (xOffset == 0.0f) {
+        if (x1 < minX) {
             return 0;
         }
-        if (arg1 < arg4) {
+        if (maxX < x1) {
             return 0;
         }
-        if (temp_f2 > 0.0f) {
-            if ((arg5 < arg2) && (arg3 < arg7)) {
+        if (zOffset > 0.0f) {
+            if ((z1 < minZ) && (maxZ < z2)) {
                 return 1;
             }
-        } else if ((arg7 < arg2) && (arg3 < arg5)) {
+        } else if ((z2 < minZ) && (maxZ < z1)) {
             return 1;
         }
     } else {
-        if (temp_f2 == 0.0f) {
-            if (arg5 < arg2) {
+        // Line is horizontal
+        if (zOffset == 0.0f) {
+            if (z1 < minZ) {
                 return 0;
             }
-            if (arg3 < arg5) {
+            if (maxZ < z1) {
                 return 0;
             }
-            if (temp_f0 > 0.0f) {
-                if ((arg4 < arg0) && (arg1 < arg6)) {
+            if (xOffset > 0.0f) {
+                if ((x1 < minX) && (maxX < x2)) {
                     return 1;
                 }
-            } else if ((arg6 < arg0) && (arg1 < arg4)) {
+            } else if ((x2 < minX) && (maxX < x1)) {
                 return 1;
             }
         } else {
-            temp_f18 = ((temp_f0 / temp_f2) * (arg2 - arg5)) + arg4;
-            if ((arg0 <= temp_f18) && (temp_f18 <= arg1)) {
+            projectedPoint = ((xOffset / zOffset) * (minZ - z1)) + x1;
+            if ((minX <= projectedPoint) && (projectedPoint <= maxX)) {
                 return 1;
             }
-            temp_f18 = ((temp_f0 / temp_f2) * (arg3 - arg5)) + arg4;
-            if ((arg0 <= temp_f18) && (temp_f18 <= arg1)) {
+            projectedPoint = ((xOffset / zOffset) * (maxZ - z1)) + x1;
+            if ((minX <= projectedPoint) && (projectedPoint <= maxX)) {
                 return 1;
             }
-            temp_f18 = ((temp_f2 / temp_f0) * (arg0 - arg4)) + arg5;
-            if ((arg2 <= temp_f18) && (temp_f18 <= arg3)) {
+            projectedPoint = ((zOffset / xOffset) * (minX - x1)) + z1;
+            if ((minZ <= projectedPoint) && (projectedPoint <= maxZ)) {
                 return 1;
             }
-            temp_f18 = ((temp_f2 / temp_f0) * (arg1 - arg4)) + arg5;
-            if ((arg2 <= temp_f18) && (temp_f18 <= arg3)) {
+            projectedPoint = ((zOffset / xOffset) * (maxX - x1)) + z1;
+            if ((minZ <= projectedPoint) && (projectedPoint <= maxZ)) {
                 return 1;
             }
         }
@@ -2199,481 +1803,412 @@ s32 func_802AEE1C(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s1
     return 0;
 }
 
-s32 func_802AF0FC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, u16 surfaceMapIndex) {
-    mk64_surface_map_ram *temp_v0;
-    s16 vx1;
-    s16 vz1;
-    s16 vx2;
-    s16 vz2;
-    s16 vx3;
-    s16 vz3;
+s32 is_triangle_intersecting_bounding_box(s16 minX, s16 maxX, s16 minZ, s16 maxZ, u16 index) {
+    mk64_surface_map_ram *surfaceMap = &gSurfaceMap[index];
+    s16 x1;
+    s16 z1;
+    s16 x2;
+    s16 z2;
+    s16 x3;
+    s16 z3;
 
-    temp_v0 = &D_8015F580[surfaceMapIndex];
-    vx1 = temp_v0->vtxs[0]->v.ob[0];
-    vz1 = temp_v0->vtxs[0]->v.ob[2];
-    vx2 = temp_v0->vtxs[1]->v.ob[0];
-    vz2 = temp_v0->vtxs[1]->v.ob[2];
-    vx3 = temp_v0->vtxs[2]->v.ob[0];
-    vz3 = temp_v0->vtxs[2]->v.ob[2];
-    if ((vx1 >= arg0) && (arg1 >= vx1) && (vz1 >= arg2) && (arg3 >= vz1)) {
+    x1 = surfaceMap->vtxPoly1->v.ob[0];
+    z1 = surfaceMap->vtxPoly1->v.ob[2];
+    x2 = surfaceMap->vtxPoly2->v.ob[0];
+    z2 = surfaceMap->vtxPoly2->v.ob[2];
+    x3 = surfaceMap->vtxPoly3->v.ob[0];
+    z3 = surfaceMap->vtxPoly3->v.ob[2];
+    if ((x1 >= minX) && (maxX >= x1) && (z1 >= minZ) && (maxZ >= z1)) {
         return 1;
     }
-    if ((vx2 >= arg0) && (arg1 >= vx2) && (vz2 >= arg2) && (arg3 >= vz2)) {
+    if ((x2 >= minX) && (maxX >= x2) && (z2 >= minZ) && (maxZ >= z2)) {
         return 1;
     }
-    if ((vx3 >= arg0) && (arg1 >= vx3) && (vz3 >= arg2) && (arg3 >= vz3)) {
+    if ((x3 >= minX) && (maxX >= x3) && (z3 >= minZ) && (maxZ >= z3)) {
         return 1;
     }
-    if (func_802AEE1C(arg0, arg1, arg2, arg3, vx1, vz1, vx2, vz2) == 1) {
+    if (is_line_intersecting_rectangle(minX, maxX, minZ, maxZ, x1, z1, x2, z2) == 1) {
         return 1;
     }
-    if (func_802AEE1C(arg0, arg1, arg2, arg3, vx2, vz2, vx3, vz3) == 1) {
+    if (is_line_intersecting_rectangle(minX, maxX, minZ, maxZ, x2, z2, x3, z3) == 1) {
         return 1;
     }
-    if (func_802AEE1C(arg0, arg1, arg2, arg3, vx3, vz3, vx1, vz1) == 1) {
+    if (is_line_intersecting_rectangle(minX, maxX, minZ, maxZ, x3, z3, x1, z1) == 1) {
         return 1;
     }
     return 0;
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 0927f17aac197848d4ebdf0c6bbad74b01f0851c
-extern ? D_8014F110;
-extern s32 D_8015F584;
 extern u16 D_8015F58A;
 extern s16 D_8015F6E8;
 extern s16 D_8015F6EA;
 extern s16 D_8015F6F0;
 extern s16 D_8015F6F2;
-extern s32 gNextFreeMemoryAddress;
 
+/**
+ * Appears to initialize some variables and struct members after
+ * course displaylists have been parsed.
+ */
 void func_802AF314(void) {
-    s32 sp4C;
-    ? *var_v0;
+    mk64_surface_map_ram *tile;
+    s32 i, j, k;
+    UNUSED s32 pad[5];
     s16 temp_a1;
     s16 temp_a3;
     s16 temp_s1;
     s16 temp_s2;
     s32 temp_fp;
     s32 temp_s6;
-    s32 var_s0;
-    s32 var_s3;
-    s32 var_s5;
-    s32 var_s7;
-    void *temp_v0;
-    void *temp_v0_2;
+    s32 temp1;
+    s32 temp2;
+    s32 index;
+    temp1 = (s32) D_8015F6E8 - D_8015F6EA;
+    temp2 = (s32) D_8015F6F0 - D_8015F6F2;
 
-    var_v0 = &D_8014F110;
-    do {
-        var_v0 += 0x10;
-        var_v0->unk-A = 0;
-        var_v0->unk-6 = 0;
-        var_v0->unk-2 = 0;
-        var_v0->unk-E = 0;
-    } while (var_v0 != &gNumActors);
+    temp_s6 = temp1 / 32;
+    temp_fp = temp2 / 32;
+
+    for (i = 0; i < 1024; i++) {
+        D_8014F110[i].unk2 = 0;
+    }
+
     D_8015F58A = 0;
-    D_8015F584 = gNextFreeMemoryAddress;
-    var_s7 = 0;
-    temp_s6 = (s32) (D_8015F6E8 - D_8015F6EA) / 32;
-    temp_fp = (s32) (D_8015F6F0 - D_8015F6F2) / 32;
-    do {
-        var_s5 = 0;
-        sp4C = temp_fp * var_s7;
-loop_4:
-        var_s0 = 0;
-        var_s3 = 0;
-        temp_s1 = (D_8015F6EA + (temp_s6 * var_s5)) - 0x14;
-        temp_s2 = (D_8015F6F2 + sp4C) - 0x14;
-        if ((s32) D_8015F588 > 0) {
-            do {
-                temp_a3 = temp_s2 + temp_fp + 0x28;
-                temp_v0 = var_s3 + D_8015F580;
-                if ((temp_v0->unkE >= temp_s2) && (temp_a3 >= temp_v0->unk8)) {
-                    temp_a1 = temp_s1 + temp_s6 + 0x28;
-                    if ((temp_v0->unkA >= temp_s1) && (temp_a1 >= temp_v0->unk4)) {
-                        if (func_802AF0FC(temp_s1, temp_a1, temp_s2, temp_a3, (u16) var_s0) == 1) {
-                            temp_v0_2 = (((var_s7 << 5) + var_s5) * 4) + &D_8014F110;
-                            if (temp_v0_2->unk2 == 0) {
-                                temp_v0_2->unk0 = (u16) D_8015F58A;
-                            }
-                            temp_v0_2->unk2 = (u16) (temp_v0_2->unk2 + 1);
-                            *(D_8015F584 + (D_8015F58A * 2)) = (s16) var_s0;
-                            D_8015F58A += 1;
-                        }
+    // @bug possibly bug. Allocate memory but not increment the pointer.
+    // This is bad, dumb code, and more importantly it's bad dumb code that doesn't make any sense here.
+    // It is incremented after this function completes using a different variable.
+    // Not good.
+    D_8015F584 = (u16 *) gNextFreeMemoryAddress;
+
+    for (j = 0; j < 32; j++) {
+        for (k = 0; k < 32; k++) {
+            index = k + j * 32;
+
+            temp_s1 = (D_8015F6EA + (temp_s6 * k)) - 20;
+            temp_s2 = (D_8015F6F2 + (temp_fp * j)) - 20;
+
+            temp_a1 = temp_s1 + temp_s6 + 40;
+            temp_a3 = temp_s2 + temp_fp + 40;
+
+            for (i = 0; i < D_8015F588; i++) {
+                tile = gSurfaceMap + i;
+                if (tile->vtx23 < temp_s2) { continue; }
+                if (tile->vtx33 > temp_a3) { continue; }
+                if (tile->vtx21 < temp_s1) { continue; }
+                if (tile->vtx31 > temp_a1) { continue; }
+
+                if (is_triangle_intersecting_bounding_box(temp_s1, temp_a1, temp_s2, temp_a3, (u16) i) == 1) {
+                    if (D_8014F110[index].unk2 == 0) {
+                        D_8014F110[index].unk0 = D_8015F58A;
                     }
+                    D_8014F110[index].unk2++;
+                    D_8015F584[D_8015F58A] = (s16) i;
+                    D_8015F58A++;
                 }
-                var_s0 += 1;
-                var_s3 += 0x2C;
-            } while (var_s0 < (s32) D_8015F588);
+            }
+
         }
-        var_s5 += 1;
-        if (var_s5 != 0x20) {
-            goto loop_4;
-        }
-        var_s7 += 1;
-    } while (var_s7 != 0x20);
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AF314.s")
-#endif
-
-void func_802AF588(s32 arg0) {
-    func_802AF5D8(arg0, -1, 0xFF);
+    }
 }
 
-void func_802AF5AC(s32 arg0, s8 arg1) {
-    func_802AF5D8(arg0, arg1, 0xFF);
+/**
+ * Recursive search for vtx and set surfaceTypes to -1 and areaId's to 0xFF
+ */
+void set_vertex_data_with_defaults(Gfx *gfx) {
+    find_and_set_vertex_data(gfx, -1, 0xFF);
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_802AEB14(u32, s8, s32); // extern
-void func_802AEBA4(u32, u32, s8, s32); // extern
-void func_802AECA0(u32, s8, s32); // extern
-void func_802AED6C(u32, s32, u32); // extern
+/**
+ * Recursive search for vtx and set areaId's to 0xFF
+ */
+void set_vertex_data_with_default_area_id(Gfx *gfx, s8 surfaceType) {
+    find_and_set_vertex_data(gfx, surfaceType, 0xFF);
+}
+
 extern s16 D_8015F6FA;
 extern s16 D_8015F6FC;
-extern uintptr_t gSegmentTable;
+extern u32 D_8015F58C;
 
-void func_802AF5D8(u32 arg0, s8 arg1, s32 arg2) {
-    s32 temp_s5;
-    s32 temp_v0;
-    u32 temp_s0;
-    u32 temp_s1;
-    void *phi_s3;
-    s32 phi_s6;
-    s32 phi_s6_2;
+/**
+ * Recursive search and set for vertex data 
+ */
+void find_and_set_vertex_data(Gfx *addr, s8 surfaceType, u16 areaId) {
+    s32 opcode;
+    uintptr_t lo;
+    uintptr_t hi;
+    s32 i;
 
-    D_8015F6FA = 0;
-    temp_s5 = arg2 & 0xFFFF;
-    D_8015F6FC = 0;
-    phi_s3 = *(&gSegmentTable + ((arg0 >> 0x18) * 4)) + (arg0 & 0xFFFFFF) + 0x80000000;
-    phi_s6_2 = 0;
-loop_1:
-    temp_s0 = phi_s3->unk0;
-    temp_s1 = phi_s3->unk4;
-    temp_v0 = temp_s0 & 0xFF000000;
-    if (temp_v0 == 0x6000000) {
-        func_802AF5D8(temp_s1, arg1, temp_s5 & 0xFFFF);
-        phi_s6 = phi_s6_2 + 1;
-        goto block_12;
-    }
-    if (temp_v0 == 0x4000000) {
-        func_802AED6C(temp_s1, (temp_s0 >> 0xA) & 0x3F, ((temp_s0 >> 0x10) & 0xFF) >> 1);
-        phi_s6 = phi_s6_2 + 1;
-        goto block_12;
-    }
-    if (temp_v0 == 0xBF000000) {
-        D_8015F58C += 1;
-        func_802AEB14(temp_s1, arg1, temp_s5 & 0xFFFF);
-        phi_s6 = phi_s6_2 + 1;
-        goto block_12;
-    }
-    if (temp_v0 == 0xB1000000) {
-        D_8015F58C += 2;
-        func_802AEBA4(temp_s0, temp_s1, arg1, temp_s5 & 0xFFFF);
-        phi_s6 = phi_s6_2 + 1;
-        goto block_12;
-    }
-    if (temp_v0 == 0xB5000000) {
-        D_8015F58C += 2;
-        func_802AECA0(temp_s1, arg1, temp_s5 & 0xFFFF);
-        phi_s6 = phi_s6_2 + 1;
-        goto block_12;
-    }
-    phi_s6 = phi_s6_2 + 1;
-    if (temp_v0 != 0xB8000000) {
-block_12:
-        phi_s3 += 8;
-        phi_s6_2 = phi_s6;
-        if (phi_s6 != 0x1FFF) {
-            goto loop_1;
-        }
-    }
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AF5D8.s")
-#endif
-
-void func_802AF7B4(uintptr_t addr, s32 uls, s32 ult) {
     s32 segment = SEGMENT_NUMBER2(addr);
     s32 offset = SEGMENT_OFFSET(addr);
-    Gfx *phi_v0 = (Gfx *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
-    s32 gfxCommand;
+    Gfx *gfx = (Gfx *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    D_8015F6FA = 0;
+    D_8015F6FC = 0;
+
+    for (i = 0; i < 0x1FFF; i++) {
+        lo = gfx->words.w0;
+        hi = gfx->words.w1;
+        opcode = GFX_GET_OPCODE(lo);
+
+        if (opcode == (G_DL << 24)) {
+            // G_DL's hi contains an addr to another DL.
+            find_and_set_vertex_data((Gfx *) hi, surfaceType, areaId);
+
+        } else if (opcode == (G_VTX << 24)) {
+            set_vtx_buffer(hi, (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1);
+
+        } else if (opcode == (G_TRI1 << 24)) {
+            D_8015F58C += 1;
+            set_vtx_from_triangle(hi, surfaceType, areaId);
+
+        } else if (opcode == (G_TRI2 << 24)) {
+            D_8015F58C += 2;
+            set_vtx_from_tri2(lo, hi, surfaceType, areaId);
+
+        } else if (opcode == (G_QUAD << 24)) {
+            D_8015F58C += 2;
+            set_vtx_from_quadrangle(hi, surfaceType, areaId);
+
+        } else if (opcode == (G_ENDDL << 24)) {
+            break;
+        }
+
+        gfx++;
+    }
+}
+
+/**
+ * Search for G_SETTILESIZE and set its args.
+ */
+void find_and_set_tile_size(uintptr_t addr, s32 uls, s32 ult) {
+    u32 segment = SEGMENT_NUMBER2(addr);
+    u32 offset = SEGMENT_OFFSET(addr);
+    Gfx *gfx = (Gfx *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    u32 opcode;
 
     uls = (uls << 12) & 0xFFF000;
     ult &= 0xFFF;
 
-    while(1) {
+    while(TRUE) {
 
-        gfxCommand = phi_v0->words.w0 & 0xFF000000;
+        opcode = GFX_GET_OPCODE(gfx->words.w0);
 
-        if (gfxCommand == G_ENDDL << 24) {
+        if (opcode == (u32) G_ENDDL << 24) {
             break;
-        } else if (gfxCommand == (G_SETTILESIZE << 24)) {
-            phi_v0->words.w0 = 0xF2000000 | uls | ult;
+        } else if (opcode == (u32) (G_SETTILESIZE << 24)) {
+            gfx->words.w0 = (G_SETTILESIZE << 24) | uls | ult;
 
-            break;
+             break;
         }
-        phi_v0++;
+        gfx++;
     }
 }
 
-void func_802AF83C(Vtx *arg0, u32 vertexCount, s32 arg2, s8 arg3, u8 arg4, u8 arg5, u8 arg6) {
-    s32 segment = SEGMENT_NUMBER2(arg0);
-    s32 offset = SEGMENT_OFFSET(arg0);
-    Vtx *phi_v0 = (Vtx *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
-    u32 var_v1 = 0;
+void set_vertex_colours(uintptr_t addr, u32 vertexCount, UNUSED s32 vert3, s8 alpha, u8 red, u8 green, u8 blue) {
+    s32 segment = SEGMENT_NUMBER2(addr);
+    s32 offset = SEGMENT_OFFSET(addr);
+    s32 i;
+    Vtx *vtx = (Vtx *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
 
-    // For some, unholy reason this can't be a for loop
-    // I just want to turn this into
-    // for (var_v1 = 0; var_v1 < vertexCount; var_v1++)
-    //     phi_v0[var_v1].n.n[0] ...
-    if(1){}
-    while (var_v1 < vertexCount) {
-        if (arg4) {
-            phi_v0->n.n[0] = arg4;
-            phi_v0->n.n[1] = arg5;
-            phi_v0->n.n[2] = arg6;
+    for (i = 0; (u32)i < vertexCount; i++) {
+        if (red) {
+            vtx->v.cn[0] = red;
+            vtx->v.cn[1] = green;
+            vtx->v.cn[2] = blue;
         }
-        phi_v0->n.a = arg3;
-        var_v1++;
-        phi_v0++;
+        vtx->v.cn[3] = alpha;
+        vtx++;
     }
 }
 
-void func_802AF8BC(Gfx *displayList, s8 arg1, u8 arg2, u8 arg3, u8 arg4) {
-    uintptr_t upperWord;
-    uintptr_t lowerWord;
-    s32 command;
+/**
+ * Recursive search for Veretices and set their colour values.
+ */
+void find_vtx_and_set_colours(uintptr_t displayList, s8 alpha, u8 red, u8 green, u8 blue) {
     s32 segment = SEGMENT_NUMBER2(displayList);
     s32 offset = SEGMENT_OFFSET(displayList);
-    Gfx *phi_v0 = (Gfx *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    Gfx *gfx = (Gfx *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    uintptr_t lo;
+    uintptr_t hi;
+    s32 opcode;
 
-    do {
-        upperWord = phi_v0->words.w0;
-        lowerWord = phi_v0->words.w1;
-        command = upperWord & 0xFF000000;
-        if (command == (G_ENDDL << 24)) break;
-        if (command == (G_DL << 24)) {
-            func_802AF8BC(lowerWord, arg1, arg2, arg3, arg4);
-        } else if (command == (G_VTX << 24)) {
-            func_802AF83C(lowerWord, (upperWord >> 0xA) & 0x3F, ((upperWord >> 0x10) & 0xFF) >> 1, arg1, arg2, arg3, arg4);
+    while(TRUE) {
+        lo = gfx->words.w0;
+        hi = gfx->words.w1;
+        opcode = GFX_GET_OPCODE(lo);
+        if (opcode == (G_ENDDL << 24)) {
+            break;
+        } else if (opcode == (G_DL << 24)) {
+            find_vtx_and_set_colours(hi, alpha, red, green, blue);
+        } else if (opcode == (G_VTX << 24)) {
+            // G_VTX contains an addr hi
+            set_vertex_colours(hi, (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1, alpha, red, green, blue);
         }
-        phi_v0++;
-    } while(1);
+        gfx++;
+    }
 }
 
-void func_802AF9F0(Vec3f arg0, f32 arg1, Vec3f arg2) {
-    arg2[0] -= arg0[0] * arg1;
-    arg2[1] -= arg0[1] * arg1;
-    arg2[2] -= arg0[2] * arg1;
+void subtract_scaled_vector(Vec3f pos1, f32 boundingBoxSize, Vec3f pos2) {
+    pos2[0] -= pos1[0] * boundingBoxSize;
+    pos2[1] -= pos1[1] * boundingBoxSize;
+    pos2[2] -= pos1[2] * boundingBoxSize;
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 6b6e1390bf30013247343623194964ff13d0c45b
-s32 func_802AC760(s16 *, f32, f32, f32, f32, s32, f32, f32, f32); /* extern */
-s32 func_802ACBA4(s16 *, f32, f32, f32, f32, s32, f32, f32, f32); /* extern */
-s32 func_802AD278(s16 *, f32, f32, f32, f32, s32, f32, f32, f32); /* extern */
-extern ? D_8014F110;
-extern s32 D_8015F584;
-extern s16 D_8015F6E8;
-extern s16 D_8015F6EA;
-extern s16 D_8015F6F0;
-extern s16 D_8015F6F2;
-
-s32 func_802AFA34(Player *player, KartBoundingBoxCorner *corner, f32 cornerPos[0], f32 cornerPos[1], f32 cornerPos[2]) {
-    f32 sp128;
-    f32 sp11C;
-    f32 sp110;
-    f32 sp10C;
-    f32 sp108;
-    f32 sp104;
-    s16 sp102;
-    s16 sp100;
-    s16 spFE;
-    s16 spFC;
-    s16 spFA;
-    s16 spF8;
-    f32 spD4;
-    s32 sp8C;
+u16 process_collision(Player *player, KartBoundingBoxCorner *corner, f32 cornerPosX, f32 cornerPosY, f32 cornerPosZ) {
+    Collision wtf;
+    Collision *collision = &wtf;
+    UNUSED s32 pad;
+    u16 i;
+    u16 surfaceMapIndex;
+    u16 iter;
+    u16 phi_s2;
+    f32 cornerPos1;
+    f32 cornerPos2;
+    f32 cornerPos3;
+    f32 boundingBoxSize;
     f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f0_3;
-    f32 temp_f0_4;
-    f32 temp_f0_5;
-    f32 temp_f0_6;
-    f32 temp_f20;
-    f32 temp_f22;
-    f32 temp_f24;
-    f32 temp_f26;
-    f32 temp_f2;
-    f32 temp_f2_2;
-    f32 temp_f2_3;
-    f32 temp_f2_4;
-    f32 temp_f2_5;
-    f32 temp_f2_6;
-    mk64_surface_map_ram *temp_v0_4;
-    s16 temp_v0_2;
-    s16 temp_v1;
-    s32 temp_at;
-    s32 temp_f10;
-    s32 temp_f16;
-    s32 temp_t6;
-    s32 var_s2;
-    u16 temp_s0;
-    u16 temp_v0_3;
-    u16 temp_v1_3;
-    u16 var_s1;
-    u8 temp_v0;
-    void *temp_v1_2;
+    
+    s32 temp_v0_2;
+    s32 temp_v1;
 
-    sp104 = 1000.0f;
-    sp108 = 1000.0f;
-    sp10C = 1000.0f;
-    temp_f20 = player->boundingBoxSize;
-    spFE = 0x1388;
-    sp100 = 0x1388;
-    sp102 = 0x1388;
-    spF8 = 0;
-    spFA = 0;
-    spFC = 0;
-    temp_v0 = corner->surfaceFlags;
-    temp_f22 = corner->cornerPos[0];
-    temp_f24 = corner->cornerPos[1];
-    temp_f26 = corner->cornerPos[2];
-    switch (temp_v0) {                              /* irregular */
-    case 0x80:
-        if (func_802AD278(&spF8, temp_f20, temp_f22, temp_f24, temp_f26, (s32) corner->surfaceMapIndex, cornerPos[0], cornerPos[1], cornerPos[2]) == 1) {
-            temp_f0 = func_802ABE30(temp_f22, temp_f24, temp_f26, corner->surfaceMapIndex);
-            temp_f2 = player->pos[1];
-            if (!(temp_f2 < temp_f0) && !((2.0f * temp_f20) < (temp_f2 - temp_f0))) {
-                corner->cornerGroundY = temp_f0;
-                func_802AF9F0(&sp11C, sp108, &corner->cornerPos[0]);
-                return 1;
-            }
-        }
-    default:
-block_22:
-        temp_v0_2 = D_8015F6EA;
-        temp_v1 = D_8015F6F2;
-        temp_f10 = (s32) ((temp_f22 - (f32) temp_v0_2) / (f32) ((s32) (D_8015F6E8 - temp_v0_2) / 32));
-        temp_f16 = (s32) ((temp_f26 - (f32) temp_v1) / (f32) ((s32) (D_8015F6F0 - temp_v1) / 32));
-        if ((s16) temp_f10 < 0) {
-            goto block_57;
-        }
-        if ((s16) temp_f16 < 0) {
-            goto block_57;
-        }
-        if ((s16) temp_f10 >= 0x20) {
-            goto block_57;
-        }
-        if ((s16) temp_f16 >= 0x20) {
-            goto block_57;
-        }
-        temp_v1_2 = ((s16) ((s16) temp_f10 + ((s16) temp_f16 << 5)) * 4) + &D_8014F110;
-        temp_v0_3 = temp_v1_2->unk2;
-        sp8C = (s32) temp_v0_3;
-        if (temp_v0_3 == 0) {
-            goto block_57;
-        }
-        var_s1 = temp_v1_2->unk0;
-        var_s2 = 0;
-        if (sp8C > 0) {
-loop_34:
-            temp_s0 = *(D_8015F584 + (var_s1 * 2));
-            temp_v0_4 = &D_8015F580[temp_s0];
-            temp_v1_3 = temp_v0_4->flags;
-            if (temp_v1_3 & 0x4000) {
-                if ((corner->surfaceMapIndex != temp_s0) && (func_802AC760(&spF8, temp_f20, temp_f22, temp_f24, temp_f26, (s32) temp_s0, cornerPos[0], cornerPos[1], cornerPos[2]) == 1)) {
-                    temp_f0_2 = func_802ABE30(temp_f22, temp_f24, temp_f26, temp_s0 & 0xFFFF);
-                    temp_f2_2 = player->pos[1];
-                    if (!(temp_f2_2 < temp_f0_2) && !((2.0f * temp_f20) < (temp_f2_2 - temp_f0_2))) {
-                        spD4 = temp_f0_2;
-                        func_802AF9F0(&sp128, sp10C, &corner->cornerPos[0]);
-                        corner->cornerGroundY = spD4;
-                        corner->surfaceFlags = 0x40;
-                        corner->surfaceMapIndex = temp_s0;
-                        corner->surfaceType = (u8) D_8015F580[temp_s0].surfaceType;
-                        if (D_8015F580[temp_s0].flags & 0x1000) {
-                            corner->unk_14 = 1;
-                            return 1;
-                        }
-                        corner->unk_14 = 0;
-                        return 1;
-                    }
-                }
-                goto block_55;
-            }
-            if (temp_v1_3 & 0x8000) {
-                if ((temp_v0_4->gravity != 0.0f) && (corner->surfaceMapIndex != temp_s0) && (func_802AD278(&spF8, temp_f20, temp_f22, temp_f24, temp_f26, (s32) temp_s0, cornerPos[0], cornerPos[1], cornerPos[2]) == 1)) {
-                    temp_f0_3 = func_802ABE30(temp_f22, temp_f24, temp_f26, temp_s0 & 0xFFFF);
-                    temp_f2_3 = player->pos[1];
-                    if (!(temp_f2_3 < temp_f0_3) && !((2.0f * temp_f20) < (temp_f2_3 - temp_f0_3))) {
-                        corner->cornerGroundY = temp_f0_3;
-                        func_802AF9F0(&sp11C, sp108, &corner->cornerPos[0]);
-                        corner->cornerGroundY = func_802ABE30(temp_f22, temp_f24, temp_f26, temp_s0 & 0xFFFF);
-                        corner->surfaceFlags = 0x80;
-                        corner->surfaceMapIndex = temp_s0;
-                        corner->surfaceType = (u8) D_8015F580[temp_s0].surfaceType;
-                        return 1;
-                    }
-                }
-                goto block_55;
-            }
-            if ((temp_v0_4->gravity != 0.0f) && (corner->surfaceMapIndex != temp_s0) && (func_802ACBA4(&spF8, temp_f20, temp_f22, temp_f24, temp_f26, (s32) temp_s0, cornerPos[0], cornerPos[1], cornerPos[2]) == 1)) {
-                temp_f0_4 = func_802ABE30(temp_f22, temp_f24, temp_f26, temp_s0 & 0xFFFF);
-                temp_f2_4 = player->pos[1];
-                if (!(temp_f2_4 < temp_f0_4) && !((2.0f * temp_f20) < (temp_f2_4 - temp_f0_4))) {
-                    corner->cornerGroundY = temp_f0_4;
-                    func_802AF9F0(&sp110, sp104, &corner->cornerPos[0]);
-                    corner->surfaceFlags = 0x20;
-                    corner->surfaceMapIndex = temp_s0;
-                    corner->surfaceType = (u8) D_8015F580[temp_s0].surfaceType;
+    s16 temp_f10;
+    s16 temp_f16;
+    s16 temp_v1_2;
+
+    s32 temp1;
+    s32 temp2;
+    UNUSED s32 pad2[9];
+
+    collision->unk3C[0] = 1000.0f;
+    collision->unk3C[1] = 1000.0f;
+    collision->unk3C[2] = 1000.0f;
+    boundingBoxSize = player->boundingBoxSize;
+    collision->unk36 = 5000;
+    collision->unk38 = 5000;
+    collision->unk3A = 5000;
+    collision->unk30 = 0;
+    collision->unk32 = 0;
+    collision->unk34 = 0;
+    cornerPos1 = corner->cornerPos[0];
+    cornerPos2 = corner->cornerPos[1];
+    cornerPos3 = corner->cornerPos[2];
+    switch (corner->surfaceFlags) {
+        case 0x80:
+            if (is_colliding_with_wall1(collision, boundingBoxSize, cornerPos1, cornerPos2, cornerPos3, corner->surfaceMapIndex, cornerPosX, cornerPosY, cornerPosZ) == 1) {
+                temp_f0 = func_802ABE30(cornerPos1, cornerPos2, cornerPos3, corner->surfaceMapIndex);
+                if ((!(temp_f0 > player->pos[1])) && !((player->pos[1] - temp_f0) > (2 * boundingBoxSize))) {
+                    corner->cornerGroundY = temp_f0;
+                    subtract_scaled_vector(collision->unk54, collision->unk3C[1], corner->cornerPos);
                     return 1;
                 }
             }
-block_55:
-            temp_t6 = (var_s2 + 1) & 0xFFFF;
-            temp_at = temp_t6 < sp8C;
-            var_s2 = temp_t6;
-            var_s1 = (var_s1 + 1) & 0xFFFF;
-            if (temp_at == 0) {
-                goto block_56;
+            break;
+        case 0x40:
+            if (is_colliding_with_drivable_surface(collision, boundingBoxSize, cornerPos1, cornerPos2, cornerPos3, corner->surfaceMapIndex, cornerPosX, cornerPosY, cornerPosZ) == 1) {
+                temp_f0 = func_802ABE30(cornerPos1, cornerPos2, cornerPos3, corner->surfaceMapIndex);
+                if (!(player->pos[1] < temp_f0) && !((2 * boundingBoxSize) < (player->pos[1] - temp_f0))) {
+                    corner->cornerGroundY = temp_f0;
+                    subtract_scaled_vector(collision->unk60, collision->unk3C[2], corner->cornerPos);
+                    return 1;
+                }
             }
-            goto loop_34;
-        }
-block_56:
-        corner->cornerGroundY = temp_f24;
-        corner->surfaceType = 0;
-block_57:
-        return 0;
-    case 0x40:
-        if (func_802AC760(&spF8, temp_f20, temp_f22, temp_f24, temp_f26, (s32) corner->surfaceMapIndex, cornerPos[0], cornerPos[1], cornerPos[2]) == 1) {
-            temp_f0_5 = func_802ABE30(temp_f22, temp_f24, temp_f26, corner->surfaceMapIndex);
-            temp_f2_5 = player->pos[1];
-            if (!(temp_f2_5 < temp_f0_5) && !((2.0f * temp_f20) < (temp_f2_5 - temp_f0_5))) {
-                corner->cornerGroundY = temp_f0_5;
-                func_802AF9F0(&sp128, sp10C, &corner->cornerPos[0]);
-                return 1;
+            break;
+        case 0x20:
+            if (is_colliding_with_wall2(collision, boundingBoxSize, cornerPos1, cornerPos2, cornerPos3, corner->surfaceMapIndex, cornerPosX, cornerPosY, cornerPosZ) == 1) {
+                temp_f0 = func_802ABE30(cornerPos1, cornerPos2, cornerPos3, corner->surfaceMapIndex);
+                if (!(player->pos[1] < temp_f0) && !((2 * boundingBoxSize) < (player->pos[1] - temp_f0))) {
+                    corner->cornerGroundY = temp_f0;
+                    subtract_scaled_vector(collision->unk48, collision->unk3C[0], corner->cornerPos);
+                    return 1;
+                }
             }
-        }
-        goto block_22;
-    case 0x20:
-        if (func_802ACBA4(&spF8, temp_f20, temp_f22, temp_f24, temp_f26, (s32) corner->surfaceMapIndex, cornerPos[0], cornerPos[1], cornerPos[2]) == 1) {
-            temp_f0_6 = func_802ABE30(temp_f22, temp_f24, temp_f26, corner->surfaceMapIndex);
-            temp_f2_6 = player->pos[1];
-            if (!(temp_f2_6 < temp_f0_6) && !((2.0f * temp_f20) < (temp_f2_6 - temp_f0_6))) {
-                corner->cornerGroundY = temp_f0_6;
-                func_802AF9F0(&sp110, sp104, &corner->cornerPos[0]);
-                return 1;
-            }
-        }
-        goto block_22;
-    case 0x0:
-        goto block_22;
+            break;
+        case 0:
+            break;
     }
+
+    // If the surface flags are not set then try setting them.
+        
+    temp_v0_2 = (s32) D_8015F6E8 - D_8015F6EA;
+    temp_v1 = (s32) D_8015F6F0 - D_8015F6F2;
+
+    temp1 = temp_v0_2 / 32;
+    temp2 = temp_v1 / 32;
+
+    temp_f10 = (cornerPos1 - D_8015F6EA) / temp1;
+    temp_f16 = (cornerPos3 - D_8015F6F2) / temp2;
+
+
+    if (temp_f10 < 0) { return 0; }
+    if (temp_f16 < 0) { return 0; }
+    if (temp_f10 >= 32) { return 0; }
+    if (temp_f16 >= 32) { return 0; }
+
+
+    temp_v1_2 = temp_f10 + temp_f16 * 32;
+    iter = D_8014F110[temp_v1_2].unk2;
+
+    if (iter == 0) { return 0; }
+
+    phi_s2 = D_8014F110[temp_v1_2].unk0;
+
+    for (i = 0; i < iter; i++) {
+        surfaceMapIndex = D_8015F584[phi_s2];
+        if (gSurfaceMap[surfaceMapIndex].flags & 0x4000) {
+            if (surfaceMapIndex != corner->surfaceMapIndex) {
+                if (is_colliding_with_drivable_surface(collision, boundingBoxSize, cornerPos1, cornerPos2, cornerPos3, surfaceMapIndex, cornerPosX, cornerPosY, cornerPosZ) == 1) {
+                    temp_f0 = func_802ABE30(cornerPos1, cornerPos2, cornerPos3, surfaceMapIndex);
+
+                    if (!(player->pos[1] < temp_f0) && !((2 * boundingBoxSize) < (player->pos[1] - temp_f0))) {
+                        subtract_scaled_vector(collision->unk60, collision->unk3C[2], corner->cornerPos);
+                        corner->cornerGroundY = temp_f0;
+                        corner->surfaceType = (u8) gSurfaceMap[surfaceMapIndex].surfaceType;
+                        corner->surfaceFlags = 0x40;
+                        corner->surfaceMapIndex = surfaceMapIndex;
+                        if (gSurfaceMap[surfaceMapIndex].flags & 0x1000) {
+                            corner->unk_14 = 1;
+                        } else {
+                            corner->unk_14 = 0;
+                        }
+                        return 1;
+                    }
+                }
+            }
+        } else if (gSurfaceMap[surfaceMapIndex].flags & 0x8000) {
+            if (gSurfaceMap[surfaceMapIndex].gravity != 0.0f) {
+                if (surfaceMapIndex != corner->surfaceMapIndex) {
+                    if (is_colliding_with_wall1(collision, boundingBoxSize, cornerPos1, cornerPos2, cornerPos3, surfaceMapIndex, cornerPosX, cornerPosY, cornerPosZ) == 1) {
+                        temp_f0 = func_802ABE30(cornerPos1, cornerPos2, cornerPos3, surfaceMapIndex);
+                        if (!(player->pos[1] < temp_f0) && !((2 * boundingBoxSize) < (player->pos[1] - temp_f0))) {
+                            corner->cornerGroundY = temp_f0;
+                            subtract_scaled_vector(collision->unk54, collision->unk3C[1], corner->cornerPos);
+                            corner->cornerGroundY = func_802ABE30(cornerPos1, cornerPos2, cornerPos3, surfaceMapIndex);
+                            corner->surfaceType = (u8) gSurfaceMap[surfaceMapIndex].surfaceType;
+                            corner->surfaceFlags = 0x80;
+                            corner->surfaceMapIndex = surfaceMapIndex;
+                            return 1;
+                        }
+                    }
+                }
+            }
+        } else {
+            if (gSurfaceMap[surfaceMapIndex].gravity != 0.0f) {
+                if (surfaceMapIndex != corner->surfaceMapIndex) {
+                    if (is_colliding_with_wall2(collision, boundingBoxSize, cornerPos1, cornerPos2, cornerPos3, surfaceMapIndex, cornerPosX, cornerPosY, cornerPosZ) == 1) {
+                        temp_f0 = func_802ABE30(cornerPos1, cornerPos2, cornerPos3, surfaceMapIndex);
+                        if (!(player->pos[1] < temp_f0) && !((2 * boundingBoxSize) < (player->pos[1] - temp_f0))) {
+                            corner->cornerGroundY = temp_f0;
+                            subtract_scaled_vector(collision->unk48, collision->unk3C[0], corner->cornerPos);
+                            corner->surfaceType = (u8) gSurfaceMap[surfaceMapIndex].surfaceType;
+                            corner->surfaceFlags = 0x20;
+                            corner->surfaceMapIndex = surfaceMapIndex;
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
+        phi_s2++;
+    }
+    corner->cornerGroundY = cornerPos2;
+    corner->surfaceType = 0;
+    return 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_802AAA70/func_802AFA34.s")
-#endif

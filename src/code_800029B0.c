@@ -230,10 +230,10 @@ void func_80003040(void) {
             place_segment_06(D_06009570);
             break;
         case COURSE_BOWSER_CASTLE:
-            func_802AF8BC(0x7001350, 0x32, 0, 0, 0);
+            find_vtx_and_set_colours(0x7001350, 0x32, 0, 0, 0);
             break;
         case COURSE_BANSHEE_BOARDWALK:
-            func_802AF8BC(0x7000878, -0x80, 0, 0, 0);
+            find_vtx_and_set_colours(0x7000878, -0x80, 0, 0, 0);
             break;
         case COURSE_YOSHI_VALLEY:
             vec3f_set(position, -2300.0f, 0.0f, 634.0f);
@@ -256,13 +256,13 @@ void func_80003040(void) {
             place_segment_06(D_06014330);
             break;
         case COURSE_SHERBET_LAND:
-            func_802AF8BC(0x7001EB8, -0x4C, 0xFF, 0xFF, 0xFF);
-            func_802AF8BC(0x7002308, -0x6A, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x7001EB8, -0x4C, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x7002308, -0x6A, 0xFF, 0xFF, 0xFF);
             break;
         case COURSE_RAINBOW_ROAD:
-            func_802AF8BC(0x7002068, -0x6A, 0xFF, 0xFF, 0xFF);
-            func_802AF8BC(0x7001E18, -0x6A, 0xFF, 0xFF, 0xFF);
-            func_802AF8BC(0x7001318, -1, 0xFF, 0xFF, 0);
+            find_vtx_and_set_colours(0x7002068, -0x6A, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x7001E18, -0x6A, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x7001318, -1, 0xFF, 0xFF, 0);
             break;
         case COURSE_WARIO_STADIUM:
             vec3f_set(position, -131.0f, 83.0f, 286.0f);
@@ -271,17 +271,17 @@ void func_80003040(void) {
             addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
             vec3f_set(position, -2622.0f, 79.0f, 739.0f);
             addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
-            func_802AF8BC(0x7000C50, 0x64, 0xFF, 0xFF, 0xFF);
-            func_802AF8BC(0x7000BD8, 0x64, 0xFF, 0xFF, 0xFF);
-            func_802AF8BC(0x7000B60, 0x64, 0xFF, 0xFF, 0xFF);
-            func_802AF8BC(0x7000AE8, 0x64, 0xFF, 0xFF, 0xFF);
-            func_802AF8BC(0x7000CC8, 0x64, 0xFF, 0xFF, 0xFF);
-            func_802AF8BC(0x7000D50, 0x64, 0xFF, 0xFF, 0xFF);
-            func_802AF8BC(0x7000DD0, 0x64, 0xFF, 0xFF, 0xFF);
-            func_802AF8BC(0x7000E48, 0x64, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x7000C50, 0x64, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x7000BD8, 0x64, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x7000B60, 0x64, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x7000AE8, 0x64, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x7000CC8, 0x64, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x7000D50, 0x64, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x7000DD0, 0x64, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x7000E48, 0x64, 0xFF, 0xFF, 0xFF);
             break;
         case COURSE_DK_JUNGLE:
-            func_802AF8BC(0x7003FA8, 0x78, 0xFF, 0xFF, 0xFF);
+            find_vtx_and_set_colours(0x7003FA8, 0x78, 0xFF, 0xFF, 0xFF);
             break;
         default:
             break;

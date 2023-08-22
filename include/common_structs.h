@@ -120,7 +120,7 @@ typedef struct {
     /* 0x24 */ Vec3f unk54;
     /* 0x30 */ Vec3f unk60;
     /* 0x3C */ f32 unk6C;
-} UnkActorInner;
+} Collision;
 
 typedef struct {
     /* 0x00 */ Vec3f unk_000;
@@ -181,9 +181,15 @@ typedef struct {
         //bit 4: 1 = out of bounds
         //bit 3: 1 = player tumbles upon contact (may fall right through)
     /* 0x02 */ u16 surfaceType;
-    /* 0x04 */ s16 vtx3[3]; //X, Y, Z of poly's third vertex
-    /* 0x0A */ s16 vtx2[3]; //X, Y, Z of poly's second vertex
-    /* 0x10 */ Vtx *vtxs[3]; //pointer to the 3 vertices of this poly
+    /* 0x04 */ s16 vtx31;
+               s16 vtx32;
+               s16 vtx33; //X, Y, Z of poly's third vertex
+               s16 vtx21;
+               s16 vtx22;
+    /* 0x0A */ s16 vtx23; //X, Y, Z of poly's second vertex
+    /* 0x10 */ Vtx *vtxPoly1; //pointer to the 3 vertices of this poly
+               Vtx *vtxPoly2;
+               Vtx *vtxPoly3;
         //unsure why this exists along with a copy of two of the vertices.
         //both are involved in hit detection.
     /* 0x1C */ f32 height;
@@ -208,7 +214,7 @@ typedef struct {
     // Close to being a copy of the top byte of the surface_map "flag" member
     /* 0x0D */ u8  surfaceFlags;
     // Don't know if "tile" is right the right term
-    // D_8015F580 is a pointer to an array of "tile" structs. This is an index to that array
+    // gSurfaceMap is a pointer to an array of "tile" structs. This is an index to that array
     /* 0x0E */ u16 surfaceMapIndex;
     // cornerPos places the corner "in the air" as it were, this member indicates the Y position of the corner's "on the ground" sibling
     // On flat ground this value should be cornerY - gKartBoundingBoxTable[characterId]
@@ -317,7 +323,7 @@ typedef struct {
     /* 0x0108 */ f32 unk_108;
     /* 0x010C */ s16 unk_10C;
     /* 0x010E */ char unk_10E[0x2];
-    /* 0x0110 */ UnkActorInner unk_110;
+    /* 0x0110 */ Collision unk_110;
     /* 0x0150 */ Mat3 unk_150;
     /* 0x0174 */ Mat3 unk_174;
     /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];

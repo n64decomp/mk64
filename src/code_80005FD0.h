@@ -140,7 +140,7 @@ extern s8  D_8018EDF3;
 extern f32 D_800DCA4C[];
 
 // See bss_80005FD0.s
-extern UnkActorInner D_80162E70;
+extern Collision D_80162E70;
 extern s16 D_80162EB0;
 extern u16 D_801631E0[8];
 extern s32 D_80163488;

@@ -4,7 +4,7 @@
 #include "common_structs.h"
 #include "actor_types.h"
 
-void func_802B0210(UnkActorInner*, UnkActorInner*);
+void func_802B0210(Collision*, Collision*);
 void func_802B02B4(struct ShellActor*, s32);
 void func_802B039C(struct BananaActor*);
 void func_802B0464(s16);

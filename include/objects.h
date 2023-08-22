@@ -104,7 +104,7 @@ extern s32 D_8018D1D8;
 // Limit on some object type (ice chips?) in Sherbet Land
 extern s32 D_8018D3C0;
 
-extern UnkActorInner D_8018C0B0[];
+extern Collision D_8018C0B0[];
 
 /**
  * D_80183EA0, D_80183F28, D_8018BFA8, and D_8018C030 are all lists of indices in D_80165C18.

@@ -169,7 +169,7 @@ glabel func_8002A194
 /* 02B028 8002A428 E60A01FC */  swc1  $f10, 0x1fc($s0)
 /* 02B02C 8002A42C E61201F8 */  swc1  $f18, 0x1f8($s0)
 .L8002A430:
-/* 02B030 8002A430 0C0AAF44 */  jal   func_802ABD10
+/* 02B030 8002A430 0C0AAF44 */  jal   get_surface_type
 /* 02B034 8002A434 9604011A */   lhu   $a0, 0x11a($s0)
 /* 02B038 8002A438 304300FF */  andi  $v1, $v0, 0xff
 /* 02B03C 8002A43C 960C0254 */  lhu   $t4, 0x254($s0)

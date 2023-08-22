@@ -23,7 +23,7 @@ Specialized structs are customizable so long as the following member specificati
 In general:
     0x00 -> s16 type
     0x02 -> s16 flags
-    0x30 -> UnkActorInner unk30
+    0x30 -> Collision unk30
 
 If player can collide with the actor:
     0x0C -> f32 boundingBoxSize
@@ -102,7 +102,7 @@ struct Actor {
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
 extern struct Actor gActorList[ACTOR_LIST_SIZE]; // D_8015F9B8
@@ -125,7 +125,7 @@ struct TrainCar {
     /* 0x10 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
 struct RailroadCrossing {
@@ -139,7 +139,7 @@ struct RailroadCrossing {
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
 struct FallingRock {
@@ -153,7 +153,7 @@ struct FallingRock {
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
 struct ActorSpawnData {
@@ -197,7 +197,7 @@ struct YoshiValleyEgg {
     // Note, pathCenter[1] should be understood to be the Y velocity of the egg
     // pathCenter[0] and pathCenter[2] are the X,Z coordinates of the center of the path
     /* 0x24 */ Vec3f pathCenter;
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
 struct KiwanoFruit {
@@ -213,7 +213,7 @@ struct KiwanoFruit {
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
 struct PaddleWheelBoat {
@@ -227,7 +227,7 @@ struct PaddleWheelBoat {
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
 struct PiranhaPlant {
@@ -239,7 +239,7 @@ struct PiranhaPlant {
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec4s timers; // A per-camera timer. Might be more appropriate to call this state
     /* 0x2C */ f32 unk_02C;
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
 // Copied from PiranhaPlant, may not be accurate.
@@ -253,7 +253,7 @@ struct PalmTree {
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec4s timers; // A per-camera timer. Might be more appropriate to call this state
     /* 0x2C */ f32 unk_02C;
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
 typedef struct {
@@ -269,7 +269,7 @@ typedef struct {
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f unk_18;
     /* 0x24 */ Vec3f shellIndices; // Indices in gActorList for the shells "owned" by this parent
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 } TripleShellParent; // size = 0x70
 
 struct ShellActor {
@@ -295,7 +295,7 @@ struct ShellActor {
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity; // All 0 until the shell is fired
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
 struct ItemBox {
@@ -313,7 +313,7 @@ struct ItemBox {
     /* 0x24 */ f32 origY; // Original Y position. Basically the Y position the box will reset to after being touched
     /* 0x28 */ f32 unk_028;
     /* 0x2C */ f32 unk_02C;
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
 struct FakeItemBox {
@@ -329,7 +329,7 @@ struct FakeItemBox {
     /* 0x24 */ f32 playerId;
     /* 0x28 */ f32 targetY;
     /* 0x2C */ f32 unk_02C;
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
 struct BananaBunchParent {
@@ -344,7 +344,7 @@ struct BananaBunchParent {
     /* 0x1C */ s16 bananasAvailable;
     /* 0x1E */ s16 unk_1E;
     /* 0x20 */ f32 unk_20[4];
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
 struct BananaActor {
@@ -366,7 +366,7 @@ struct BananaActor {
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
-    /* 0x30 */ UnkActorInner unk30;
+    /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
 //#pragma GCC diagnostic pop

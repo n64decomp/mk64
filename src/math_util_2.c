@@ -439,7 +439,7 @@ s32 func_800418E8(f32 arg0, f32 arg1, Vec3f arg2) {
     return atan2s(arg0 - arg2[1], arg1 - arg2[2]);
 }
 
-s32 func_80041924(UnkActorInner *arg0, Vec3f arg1) {
+s32 func_80041924(Collision *arg0, Vec3f arg1) {
     s32 ret = 0;
 
     func_802ADDC8(arg0, 10.0f, arg1[0], arg1[1], arg1[2]);
