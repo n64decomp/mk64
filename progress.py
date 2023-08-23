@@ -279,7 +279,7 @@ if args.format == 'shield-json':
 elif args.format  == 'totalBadge':
     print(str(round(((mk64Code_size - text_size) / mk64Code_size) * 100, 2))+"%")
 elif args.format == 'gameBadge':
-    print(str(round(srcPct, 2))+"%")
+    print(str(round(((mk64Code_size - text_size) / (mk64Code_size - audio_size)) * 100, 2))+"%")
 elif args.format == 'audioBadge':
     print(str(round(audioPct, 2))+"%")
 elif args.format == 'bytesToDecompile':
