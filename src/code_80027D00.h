@@ -7,8 +7,16 @@
 /* Function Prototypes */
 
 s32 get_player_index_for_player(Player*);
+void func_80027DA8(Player*, s8);
 void func_80027EDC(Player*, s8);
+
+void func_80028864(Player*, Camera*, s8, s8);
+void func_80028C44(Player*, Camera*, s8, s8);
+void func_80028D3C(Player*, Camera*, s8, s8);
+void func_80028E70(Player*, Camera*, s8, s8);
+void func_80028F5C(s32, s32, s32, s32);
 void func_80028F70();
+
 void func_80029060();
 void func_80029150();
 void func_80029158();
@@ -17,6 +25,7 @@ void func_800291F0();
 void func_800291F8();
 void func_80029200(Player*, s8);
 void func_8002934C(Player*, Camera*, s8, s8);
+
 void func_8002A194(Player*, f32, f32, f32);
 void func_8002A5F4(Vec3f, f32, Vec3f, f32, f32);
 void func_8002A704(Player*, s8);
@@ -29,19 +38,32 @@ void func_8002AE20();
 void func_8002AE28();
 void func_8002AE30();
 void func_8002AE38(Player*, s8, f32, f32, f32, f32);
+
 void func_8002B218(Player*);
 void func_8002B308(Player*, s8, s8);
 void func_8002B5C0(Player*, s8, s8);
 void func_8002B830(Player*, s8, s8);
 void func_8002B8A4(Player*, Player*);
+void func_8002B9CC(Player*, s8, s32);
 void func_8002BD58(Player*);
+void func_8002BF4C(Player*, u8);
+
 void func_8002C11C(Player*);
 void func_8002C17C(Player*, s8);
 void func_8002C4F8(Player*, s8);
+void func_8002C7E4(Player*, s8, s8);
+void func_8002C954(Player*, s8, Vec3f);
+void func_8002CD48(Player*, s8, s8);
+
+void func_8002D028(Player*, s8);
 void func_8002D268(Player*, Camera*, s8, s8);
+
 void func_8002E4C4(Player*);
+void control_cpu_movement(Player*,Camera*, s8, s8);
+
 void func_8002FCA8(Player*, s8);
 void func_8002FE84(Player*, f32);
+
 f32  func_80030150(Player*, s8);
 void func_80030A34(Player*);
 void func_80030C34(Player*);
@@ -58,17 +80,26 @@ void func_80033280(Player*, f32);
 void func_800332E8(Player*, s32);
 void func_800337CC(Player*, f32, s32);
 void func_80033850(Player*, f32);
+void func_80033884(Player*, s32*, s32*, s32, s32, s32, s32);
+void func_80033940(Player*, s32*, s32, s32, f32);
+void func_800339C4(Player*, s32*, s32, s32, f32);
+void func_80033A40(Player*, s32*, s32*, s32, s32, s32, f32);
+void func_80033AE0(Player*, struct Controller*, s8);
+
 void func_8003680C(Player*, s16);
 void func_80036C5C(Player*);
 void func_80036CB4(Player*);
 void func_80036DB4(Player*, Vec3f, Vec3f);
+
 void func_800371F4(Player*, Vec3f, Vec3f);
 void func_80037614(Player*, Vec3f, Vec3f);
 void func_8003777C(Player*, Vec3f, Vec3f);
 void func_800378E8(Player*, Vec3f, Vec3f);
 void func_80037A4C(Player*, Vec3f, Vec3f);
 void func_80037BB4(Player*player, Vec3f);
-void func_80033AE0(Player*, struct Controller*, s8);
+void func_80037CFC(Player*, struct Controller*, s8);
+
+void func_800381AC(Player*, struct Controller*, s8);
 void func_800382DC();
 s16  func_80038534(struct Controller*);
 s16  func_800388B0(struct Controller*);
