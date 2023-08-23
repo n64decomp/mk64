@@ -18,7 +18,7 @@
 #include "sounds.h"
 #include <actors.h>
 #include "race_logic.h"
-#include "code_802AAA70.h"
+#include "collision.h"
 #include "code_8008C1D0.h"
 #include "code_80091440.h"
 #include "code_80091750.h"

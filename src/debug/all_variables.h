@@ -29,7 +29,7 @@
 #include <podium_ceremony_actors.h>
 #include <code_80281780.h>
 #include <code_80281C40.h>
-#include <code_802AAA70.h>
+#include <collision.h>
 #include <common_textures.h>
 #include <credits.h>
 #include <data_segment2.h>

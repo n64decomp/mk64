@@ -10,7 +10,7 @@
 #include "audio/external.h"
 #include "code_800029B0.h"
 #include <defines.h>
-#include "code_802AAA70.h"
+#include "collision.h"
 #include "memory.h"
 #include "code_80091750.h"
 #include "skybox_and_splitscreen.h"

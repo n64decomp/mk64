@@ -80,12 +80,7 @@ mainSegFiles2 = [
     "asm/non_matchings/menus",
 ]
 seg2Files2 = [
-    "asm/non_matchings/actors",
     "asm/non_matchings/math_util",
-    "asm/non_matchings/memory",
-    "asm/non_matchings/code_802AAA70",
-    "asm/non_matchings/render_courses",
-    "asm/non_matchings/skybox",
 ]
 audioFiles2 = [
     "asm/non_matchings/audio"
@@ -171,7 +166,7 @@ seg2Files = [
     "build/us/src/actors_extended",
     "build/us/src/math_util",
     "build/us/src/memory",
-    "build/us/src/code_802AAA70",
+    "build/us/src/collision",
     "build/us/src/race_logic",
     "build/us/src/render_courses",
     "build/us/src/skybox_and_splitscreen",

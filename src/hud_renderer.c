@@ -21,7 +21,7 @@
 #include "hud_renderer.h"
 #include "code_80071F00.h"
 #include "code_80091750.h"
-#include "code_802AAA70.h"
+#include "collision.h"
 #include "main.h"
 #include "code_80086E70.h"
 

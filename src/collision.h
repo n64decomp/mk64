@@ -1,5 +1,5 @@
-#ifndef CODE_802AAA70_H
-#define CODE_802AAA70_H
+#ifndef collision_H
+#define collision_H
 
 #include "common_structs.h"
 

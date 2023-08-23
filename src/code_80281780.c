@@ -12,7 +12,7 @@
 #include "podium_ceremony_actors.h"
 #include "code_80281780.h"
 #include "code_80005FD0.h"
-#include "code_802AAA70.h"
+#include "collision.h"
 #include "code_80281C40.h"
 
 u8 defaultCharacterIds[] = {

@@ -9,7 +9,7 @@
 #include "code_8001F980.h"
 #include "code_80027D00.h"
 #include "code_8008C1D0.h"
-#include "code_802AAA70.h"
+#include "collision.h"
 #include "waypoints.h"
 #include "audio/external.h"
 

@@ -10,7 +10,7 @@
 #include "math_util.h"
 #include "memory.h"
 #include "code_80281780.h"
-#include "code_802AAA70.h"
+#include "collision.h"
 #include "render_courses.h"
 #include "skybox_and_splitscreen.h"
 

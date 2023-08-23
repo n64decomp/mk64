@@ -10,7 +10,7 @@
 #include "code_8001F980.h"
 #include "code_80027D00.h"
 #include "code_80071F00.h"
-#include "code_802AAA70.h"
+#include "collision.h"
 #include "variables.h"
 #include <actor_types.h>
 #include "vehicles.h"
