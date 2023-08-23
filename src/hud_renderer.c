@@ -23,7 +23,7 @@
 #include "hud_renderer.h"
 #include "code_80071F00.h"
 #include "code_80091750.h"
-#include "code_802AAA70.h"
+#include "collision.h"
 #include "main.h"
 #include "code_80086E70.h"
 
@@ -1485,7 +1485,7 @@ UNUSED void func_8004A5E4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *a
     func_8004A414(arg0, arg1, arg2, texture, arg4, 16, 16, 16, 16);
 }
 
-void func_8004A630(UnkActorInner *arg0, Vec3f arg1, f32 arg2) {
+void func_8004A630(Collision *arg0, Vec3f arg1, f32 arg2) {
     if (func_80041924(arg0, arg1) != 0) {
         D_80183E50[0] = arg1[0];
         D_80183E50[1] = func_802ABE30(arg1[0], 0.0f, arg1[2], arg0->unk3A) + 0.8;

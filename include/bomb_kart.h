@@ -55,7 +55,7 @@ typedef struct {
 extern s32 D_80183DD8[NUM_BOMB_KARTS_MAX];
 
 extern struct_D_80163DE8_entry D_80163DE8[NUM_BOMB_KARTS_MAX];
-extern UnkActorInner D_80164038[NUM_BOMB_KARTS_MAX];
+extern Collision D_80164038[NUM_BOMB_KARTS_MAX];
 
 // data/data_0DD0A0_1.s
 extern BombKartSpawn D_800DCC08[NUM_COURSES][NUM_BOMB_KARTS_MAX];

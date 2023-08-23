@@ -61,7 +61,7 @@
 #glabel D_8015F572 # end of player wrapper
 #.skip 14
 
-glabel D_8015F580
+glabel gSurfaceMap
 .skip 4
 
 glabel D_8015F584
@@ -88,7 +88,7 @@ glabel D_8015F5A0
 glabel D_8015F5A4
 .skip 196
 
-glabel D_8015F668
+glabel vtxBuffer
 .skip 128
 
 glabel D_8015F6E8

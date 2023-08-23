@@ -162,7 +162,7 @@ void func_8004A488(Vec3f, Vec3su, f32, u8*, Vtx*, s32, s32, s32, s32);
 void func_8004A4FC(Vec3f, Vec3su, f32, u8*, Vtx*, s32, s32, s32, s32);
 void func_8004A570(Vec3f, Vec3su, f32, u8*, Vtx*, s32, s32, s32, s32);
 void func_8004A5E4(Vec3f, Vec3su, f32, u8*, Vtx*);
-void func_8004A630(UnkActorInner*, Vec3f, f32);
+void func_8004A630(Collision*, Vec3f, f32);
 void func_8004A6EC(s32, f32);
 void func_8004A7AC(s32, f32);
 void func_8004A870(s32, f32);
@@ -430,7 +430,7 @@ extern Vec3f D_80183E50;
 extern Vec3f D_80183E70;
 extern Vec3su D_80183E80;
 extern Vec3su D_80183E98;
-extern UnkActorInner D_8018C830;
+extern Collision D_8018C830;
 extern u8 *D_8018D1E0;
 
 extern s32 D_8018D3E0; // some alpha

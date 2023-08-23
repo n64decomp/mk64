@@ -95,7 +95,7 @@ switch(type) {
         k.push("Vtx_t d_course__dl[] = {");
         break;
     case 2:
-        k.push("struct CourseAddrUnkStruct d_course__dl[] = {");
+        k.push("TrackSections d_course__dl[] = {");
         break;
 }
 for (i = 0; i < f.length; i += iter) {

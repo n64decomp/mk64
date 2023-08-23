@@ -9,10 +9,11 @@
  * @file Include for course gfx.inc.c.
 */
 
-// This could be *func(arg) instead.
-struct CourseAddrUnkStruct {
+typedef struct {
     Gfx *addr;
-    s32 value;
-};
+    u8 surfaceType;
+    u8 sectionId;
+    u16 flags;
+} TrackSections;
 
 #endif // COURSE_H

@@ -116,7 +116,7 @@ glabel func_80029B4C
 /* 02A8CC 80029CCC C7B00088 */  lwc1  $f16, 0x88($sp)
 /* 02A8D0 80029CD0 8FA70084 */  lw    $a3, 0x84($sp)
 /* 02A8D4 80029CD4 8FA60080 */  lw    $a2, 0x80($sp)
-/* 02A8D8 80029CD8 0C0ABE8D */  jal   func_802AFA34
+/* 02A8D8 80029CD8 0C0ABE8D */  jal   process_collision
 /* 02A8DC 80029CDC E7B00010 */   swc1  $f16, 0x10($sp)
 /* 02A8E0 80029CE0 C7AC0048 */  lwc1  $f12, 0x48($sp)
 /* 02A8E4 80029CE4 3C01800F */  lui   $at, %hi(D_800ED7A0)
@@ -159,7 +159,7 @@ glabel func_80029B4C
 /* 02A978 80029D78 C7B20088 */  lwc1  $f18, 0x88($sp)
 /* 02A97C 80029D7C 8FA70084 */  lw    $a3, 0x84($sp)
 /* 02A980 80029D80 8FA60080 */  lw    $a2, 0x80($sp)
-/* 02A984 80029D84 0C0ABE8D */  jal   func_802AFA34
+/* 02A984 80029D84 0C0ABE8D */  jal   process_collision
 /* 02A988 80029D88 E7B20010 */   swc1  $f18, 0x10($sp)
 /* 02A98C 80029D8C 3C01800F */  lui   $at, %hi(D_800ED7A8)
 /* 02A990 80029D90 D7A00038 */  ldc1  $f0, 0x38($sp)
@@ -202,7 +202,7 @@ glabel func_80029B4C
 /* 02AA24 80029E24 C7AA0088 */  lwc1  $f10, 0x88($sp)
 /* 02AA28 80029E28 8FA70084 */  lw    $a3, 0x84($sp)
 /* 02AA2C 80029E2C 8FA60080 */  lw    $a2, 0x80($sp)
-/* 02AA30 80029E30 0C0ABE8D */  jal   func_802AFA34
+/* 02AA30 80029E30 0C0ABE8D */  jal   process_collision
 /* 02AA34 80029E34 E7AA0010 */   swc1  $f10, 0x10($sp)
 /* 02AA38 80029E38 3C01800F */  lui   $at, %hi(D_800ED7B0)
 /* 02AA3C 80029E3C D7A20028 */  ldc1  $f2, 0x28($sp)
@@ -241,7 +241,7 @@ glabel func_80029B4C
 /* 02AAC0 80029EC0 C7A60088 */  lwc1  $f6, 0x88($sp)
 /* 02AAC4 80029EC4 8FA70084 */  lw    $a3, 0x84($sp)
 /* 02AAC8 80029EC8 8FA60080 */  lw    $a2, 0x80($sp)
-/* 02AACC 80029ECC 0C0ABE8D */  jal   func_802AFA34
+/* 02AACC 80029ECC 0C0ABE8D */  jal   process_collision
 /* 02AAD0 80029ED0 E7A60010 */   swc1  $f6, 0x10($sp)
 /* 02AAD4 80029ED4 8E0D00BC */  lw    $t5, 0xbc($s0)
 /* 02AAD8 80029ED8 31AE0008 */  andi  $t6, $t5, 8
@@ -388,7 +388,7 @@ glabel func_80029B4C
 /* 02ACF0 8002A0F0 00000000 */  nop   
 /* 02ACF4 8002A0F4 A60C00C4 */  sh    $t4, 0xc4($s0)
 .L8002A0F8:
-/* 02ACF8 8002A0F8 0C0AAF44 */  jal   func_802ABD10
+/* 02ACF8 8002A0F8 0C0AAF44 */  jal   get_surface_type
 /* 02ACFC 8002A0FC 9604011A */   lhu   $a0, 0x11a($s0)
 /* 02AD00 8002A100 304D00FF */  andi  $t5, $v0, 0xff
 /* 02AD04 8002A104 31A3FFFF */  andi  $v1, $t5, 0xffff

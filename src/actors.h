@@ -12,7 +12,7 @@ void func_802972B8(Camera*, struct Actor*);
 void func_80297340(Camera*);
 void func_80297524(uintptr_t, s32, s32);
 void func_802976D8(Vec3s);
-void func_802976EC(UnkActorInner*, Vec3s);
+void func_802976EC(Collision*, Vec3s);
 void func_80297760(struct Actor*, Vec3f);
 void func_802977B0(Player*);
 void func_802977E4(Player*);

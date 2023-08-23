@@ -58,7 +58,7 @@ s32 func_80041770(f32, f32, f32, f32);
 u16 func_800417B4(u16, u16);
 s32 func_800418AC(f32, f32, Vec3f);
 s32 func_800418E8(f32, f32, Vec3f);
-s32 func_80041924(UnkActorInner*, Vec3f);
+s32 func_80041924(Collision*, Vec3f);
 s32 func_80041980(Vec3f, Camera*, u16);
 void func_800419F8();
 void func_80041A78(Mat4, s32, s32);

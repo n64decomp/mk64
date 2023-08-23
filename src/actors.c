@@ -15,7 +15,7 @@
 #include "code_80005FD0.h"
 #include "code_80071F00.h"
 #include "code_8008C1D0.h"
-#include "code_802AAA70.h"
+#include "collision.h"
 #include <sounds.h>
 #include "audio/external.h"
 #include "common_textures.h"
@@ -342,7 +342,7 @@ void func_802976D8(Vec3s arg0) {
     arg0[2] = 0;
 }
 
-void func_802976EC(UnkActorInner *arg0, Vec3s arg1) {
+void func_802976EC(Collision *arg0, Vec3s arg1) {
     f32 x, y, z;
 
     if (arg0->unk34 == 0) {
@@ -498,7 +498,7 @@ void update_obj_kiwano_fruit(struct KiwanoFruit *fruit) {
     }
     switch (fruit->state) {                               /* irregular */
     case 0:
-        if ((func_802ABD10(player->unk_110.unk3A) & 0xFF) != 8) {
+        if ((get_surface_type(player->unk_110.unk3A) & 0xFF) != 8) {
             return;
         }
         fruit->state = 1;
@@ -838,7 +838,7 @@ void func_80298C94(void) {
 
     for (index = 0; index < 4; index++){
         // wtf is up with the << 0x18 >> 0x18? is it some weird type conversion? 
-        if (((gPlayers[index].unk_000 & 0xC000) != 0) && (((func_802ABD10(gPlayers[index].unk_110.unk3A) << 0x18) >> 0x18) == 8)) {
+        if (((gPlayers[index].unk_000 & 0xC000) != 0) && (((get_surface_type(gPlayers[index].unk_110.unk3A) << 0x18) >> 0x18) == 8)) {
             func_80298AC0(&gPlayers[index]);
         }
     }
@@ -1973,8 +1973,8 @@ void place_palm_trees(struct ActorSpawnData *spawnData) {
         temp_v1 = (struct PalmTree *) &gActorList[temp];
 
         temp_v1->visibilityStates[0] = temp_s0->someId;
-        func_802ADDC8((UnkActorInner *) &temp_v1->unk30, 5.0f, temp_v1->pos[0], temp_v1->pos[1], temp_v1->pos[2]);
-        func_802976EC((UnkActorInner *) &temp_v1->unk30, temp_v1->unk10);
+        func_802ADDC8((Collision *) &temp_v1->unk30, 5.0f, temp_v1->pos[0], temp_v1->pos[1], temp_v1->pos[2]);
+        func_802976EC((Collision *) &temp_v1->unk30, temp_v1->unk10);
         temp_s0++;
     }
 }
@@ -2014,7 +2014,7 @@ void place_falling_rocks(struct ActorSpawnData *spawnData) {
         temp_v1 = (struct FallingRock *) &gActorList[temp];
 
         temp_v1->unk_06 = temp_s0->someId;
-        func_802AAAAC((UnkActorInner *) &temp_v1->unk30);
+        func_802AAAAC((Collision *) &temp_v1->unk30);
         temp_s0++;
     }
 }

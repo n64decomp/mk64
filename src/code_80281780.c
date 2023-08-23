@@ -12,7 +12,7 @@
 #include "podium_ceremony_actors.h"
 #include "code_80281780.h"
 #include "code_80005FD0.h"
-#include "code_802AAA70.h"
+#include "collision.h"
 #include "code_80281C40.h"
 
 u8 defaultCharacterIds[] = {
@@ -124,19 +124,19 @@ void load_ceremony_cutscene(void) {
     D_8015F588 = (u16)0;
     D_800DC5BC = (u16)0;
     D_800DC5C8 = (u16)0;
-    D_8015F580 = (mk64_surface_map_ram *) gNextFreeMemoryAddress;
+    gSurfaceMap = (mk64_surface_map_ram *) gNextFreeMemoryAddress;
     // @bug these segmented addresses need to be symbols for mobility
     // This syntax is required to match
-    func_802AF5AC(0x70067E8, -1);
-    func_802AF5AC(0x700AEF8, -1);
-    func_802AF5AC(0x700A970, 8);
-    func_802AF5AC(0x700AC30, 8);
-    func_802AF5AC(0x7000CE0, 0x10);
-    func_802AF5AC(0x7000E88, 0x10);
-    func_802AF5AC(0x700A618, -1);
-    func_802AF5AC(0x700A618, -1);
-    func_802AF5AC(0x70023F8, 1);
-    func_802AF5AC(0x7002478, 1);
+    set_vertex_data_with_default_section_id(0x70067E8, -1);
+    set_vertex_data_with_default_section_id(0x700AEF8, -1);
+    set_vertex_data_with_default_section_id(0x700A970, 8);
+    set_vertex_data_with_default_section_id(0x700AC30, 8);
+    set_vertex_data_with_default_section_id(0x7000CE0, 0x10);
+    set_vertex_data_with_default_section_id(0x7000E88, 0x10);
+    set_vertex_data_with_default_section_id(0x700A618, -1);
+    set_vertex_data_with_default_section_id(0x700A618, -1);
+    set_vertex_data_with_default_section_id(0x70023F8, 1);
+    set_vertex_data_with_default_section_id(0x7002478, 1);
     func_80295C6C();
     debug_switch_character_ceremony_cutscene();
     func_802818BC();

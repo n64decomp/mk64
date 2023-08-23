@@ -385,7 +385,7 @@ SECTIONS
       BUILD_DIR/src/actors.o(.text);
       BUILD_DIR/src/skybox_and_splitscreen.o(.text);
       BUILD_DIR/src/memory.o(.text);
-      BUILD_DIR/src/code_802AAA70.o(.text);
+      BUILD_DIR/src/collision.o(.text);
       BUILD_DIR/src/actors_extended.o(.text);
       BUILD_DIR/src/math_util.o(.text);
       BUILD_DIR/src/race_logic.o(.data);
@@ -401,7 +401,7 @@ SECTIONS
       BUILD_DIR/src/actors.o(.rodata);
       BUILD_DIR/src/skybox_and_splitscreen.o(.rodata);
       BUILD_DIR/src/memory.o(.rodata);
-      BUILD_DIR/src/code_802AAA70.o(.rodata);
+      BUILD_DIR/src/collision.o(.rodata);
       BUILD_DIR/src/actors_extended.o(.rodata);
       BUILD_DIR/src/math_util.o(.rodata);
    }

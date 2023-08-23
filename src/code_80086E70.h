@@ -165,7 +165,7 @@ extern s32 gPlayerCountSelection1;
 extern f32 D_80183DA8[];
 extern f32 D_80183DC8[];
 extern f32 gVBlankTimer;
-extern UnkActorInner D_8018C3B0;
+extern Collision D_8018C3B0;
 extern Player *gPlayerOne;
 extern Player *gPlayerOneCopy;
 extern s16 gCurrentCourseId;

@@ -7,14 +7,14 @@
 #include "waypoints.h"
 #include "code_80005FD0.h"
 #include "code_80091750.h"
-#include "code_802AAA70.h"
+#include "collision.h"
 #include "actors.h"
 #include "actors_extended.h"
 #include "audio/external.h"
 #include "code_80071F00.h"
 #include "code_8008C1D0.h"
 
-void func_802B0210(UnkActorInner *arg0, UnkActorInner *arg1) {
+void func_802B0210(Collision *arg0, Collision *arg1) {
     arg1->unk30 = arg0->unk30;
     arg1->unk32 = arg0->unk32;
     arg1->unk34 = arg0->unk34;
@@ -1241,7 +1241,7 @@ void update_obj_green_shell(struct ShellActor *shell) {
         func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], somePos2[0], somePos2[1], somePos2[2]);
         func_802B4E30((struct Actor *) shell);
         if ((shell->unk30.unk3C[0] < 0.0f) || (shell->unk30.unk3C[1] < 0.0f)) {
-            func_802AC098(&shell->unk30, shell->velocity);
+            shell_collision(&shell->unk30, shell->velocity);
             func_800C98B8(shell->pos, shell->velocity, 0x19008054U);
             shell->flags |= 0x80;
         }

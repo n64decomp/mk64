@@ -196,10 +196,10 @@ glabel func_802AC22C
 /* 115B14 802AC504 3C0F8016 */  lui   $t7, %hi(D_8015F584) # $t7, 0x8016
 /* 115B18 802AC508 8DEFF584 */  lw    $t7, %lo(D_8015F584)($t7)
 /* 115B1C 802AC50C 0011C040 */  sll   $t8, $s1, 1
-/* 115B20 802AC510 3C088016 */  lui   $t0, %hi(D_8015F580) # $t0, 0x8016
+/* 115B20 802AC510 3C088016 */  lui   $t0, %hi(gSurfaceMap) # $t0, 0x8016
 /* 115B24 802AC514 01F8C821 */  addu  $t9, $t7, $t8
 /* 115B28 802AC518 97300000 */  lhu   $s0, ($t9)
-/* 115B2C 802AC51C 8D08F580 */  lw    $t0, %lo(D_8015F580)($t0)
+/* 115B2C 802AC51C 8D08F580 */  lw    $t0, %lo(gSurfaceMap)($t0)
 /* 115B30 802AC520 0010A080 */  sll   $s4, $s0, 2
 /* 115B34 802AC524 0290A023 */  subu  $s4, $s4, $s0
 /* 115B38 802AC528 0014A080 */  sll   $s4, $s4, 2
@@ -228,16 +228,16 @@ glabel func_802AC22C
 /* 115B94 802AC584 0C0AAF8C */  jal   func_802ABE30
 /* 115B98 802AC588 3207FFFF */   andi  $a3, $s0, 0xffff
 /* 115B9C 802AC58C E6600010 */  swc1  $f0, 0x10($s3)
-/* 115BA0 802AC590 3C0B8016 */  lui   $t3, %hi(D_8015F580) # $t3, 0x8016
-/* 115BA4 802AC594 8D6BF580 */  lw    $t3, %lo(D_8015F580)($t3)
+/* 115BA0 802AC590 3C0B8016 */  lui   $t3, %hi(gSurfaceMap) # $t3, 0x8016
+/* 115BA4 802AC594 8D6BF580 */  lw    $t3, %lo(gSurfaceMap)($t3)
 /* 115BA8 802AC598 240E0040 */  li    $t6, 64
-/* 115BAC 802AC59C 3C0F8016 */  lui   $t7, %hi(D_8015F580) # $t7, 0x8016
+/* 115BAC 802AC59C 3C0F8016 */  lui   $t7, %hi(gSurfaceMap) # $t7, 0x8016
 /* 115BB0 802AC5A0 01746021 */  addu  $t4, $t3, $s4
 /* 115BB4 802AC5A4 958D0002 */  lhu   $t5, 2($t4)
 /* 115BB8 802AC5A8 A26E000D */  sb    $t6, 0xd($s3)
 /* 115BBC 802AC5AC A670000E */  sh    $s0, 0xe($s3)
 /* 115BC0 802AC5B0 A26D000C */  sb    $t5, 0xc($s3)
-/* 115BC4 802AC5B4 8DEFF580 */  lw    $t7, %lo(D_8015F580)($t7)
+/* 115BC4 802AC5B4 8DEFF580 */  lw    $t7, %lo(gSurfaceMap)($t7)
 /* 115BC8 802AC5B8 24020001 */  li    $v0, 1
 /* 115BCC 802AC5BC 01F4C021 */  addu  $t8, $t7, $s4
 /* 115BD0 802AC5C0 97190000 */  lhu   $t9, ($t8)
@@ -277,8 +277,8 @@ glabel func_802AC22C
 /* 115C50 802AC640 0C0AAF8C */  jal   func_802ABE30
 /* 115C54 802AC644 3207FFFF */   andi  $a3, $s0, 0xffff
 /* 115C58 802AC648 E6600010 */  swc1  $f0, 0x10($s3)
-/* 115C5C 802AC64C 3C0B8016 */  lui   $t3, %hi(D_8015F580) # $t3, 0x8016
-/* 115C60 802AC650 8D6BF580 */  lw    $t3, %lo(D_8015F580)($t3)
+/* 115C5C 802AC64C 3C0B8016 */  lui   $t3, %hi(gSurfaceMap) # $t3, 0x8016
+/* 115C60 802AC650 8D6BF580 */  lw    $t3, %lo(gSurfaceMap)($t3)
 /* 115C64 802AC654 240E0080 */  li    $t6, 128
 /* 115C68 802AC658 24020001 */  li    $v0, 1
 /* 115C6C 802AC65C 01746021 */  addu  $t4, $t3, $s4
@@ -311,8 +311,8 @@ glabel func_802AC22C
 /* 115CD4 802AC6C4 0C0AAF8C */  jal   func_802ABE30
 /* 115CD8 802AC6C8 3207FFFF */   andi  $a3, $s0, 0xffff
 /* 115CDC 802AC6CC E6600010 */  swc1  $f0, 0x10($s3)
-/* 115CE0 802AC6D0 3C188016 */  lui   $t8, %hi(D_8015F580) # $t8, 0x8016
-/* 115CE4 802AC6D4 8F18F580 */  lw    $t8, %lo(D_8015F580)($t8)
+/* 115CE0 802AC6D0 3C188016 */  lui   $t8, %hi(gSurfaceMap) # $t8, 0x8016
+/* 115CE4 802AC6D4 8F18F580 */  lw    $t8, %lo(gSurfaceMap)($t8)
 /* 115CE8 802AC6D8 24090020 */  li    $t1, 32
 /* 115CEC 802AC6DC 24020001 */  li    $v0, 1
 /* 115CF0 802AC6E0 0314C821 */  addu  $t9, $t8, $s4

@@ -10,7 +10,7 @@
 #include "code_8001F980.h"
 #include "code_80027D00.h"
 #include "code_80071F00.h"
-#include "code_802AAA70.h"
+#include "collision.h"
 #include "variables.h"
 #include <actor_types.h>
 #include "vehicles.h"
@@ -3095,7 +3095,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000D100.s")
 
 s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32 *pathIndex) {
     UNUSED s32 pad;
-    UnkActorInner sp24;
+    Collision sp24;
 
     func_802ADDC8(&sp24, 10.0f, posX, posY, posZ);
     return func_8000C0BC(posX, posY, posZ, func_802ABD40(sp24.unk3A), pathIndex);
@@ -3469,7 +3469,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000DBAC.s")
 #endif
 
 void func_8000DD78(void) {
-    UnkActorInner *var_s2;
+    Collision *var_s2;
     f32 startingXPos;
     f32 startingZPos;
     f32 startingYPos;
@@ -3532,7 +3532,7 @@ extern f32 D_80162FB0;
 extern f32 D_80162FC0;
 extern s16 D_8016347C;
 extern s16 D_8016347E;
-extern ? D_80164038;
+extern Collision D_80164038;
 extern u16 D_8016443E;
 extern s32 D_8016455C;
 extern u16 D_801645CE;
@@ -3558,7 +3558,7 @@ void func_8000DF8C(s32 arg0) {
     s32 sp48;                                       /* compiler-managed */
     s32 sp44;
     Player *var_v0;
-    UnkActorInner *temp_a0_4;
+    Collision *temp_a0_4;
     f32 temp_f0;
     f32 temp_f0_2;
     f32 temp_f0_3;
