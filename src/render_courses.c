@@ -810,6 +810,7 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC *arg0) {
         }
         /**
          * The jumbo television screen is split into six sections each section is copied one at a time.
+         * This is done to fit within the n64's texture size requirements; 64x32
          */
         switch (currentScreenSection) {
             case 0:
