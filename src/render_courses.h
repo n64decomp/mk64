@@ -1,13 +1,6 @@
 #ifndef RENDER_COURSES_H
 #define RENDER_COURSES_H
 
-struct Unk0CAC {
-    s32 unk0; // Some gfx ptr
-    u8 unk4; // surface type
-    u8 unk5; // flags
-    u16 unk6; // Some thing?
-};
-
 void func_8029122C(struct UnkStruct_800DC5EC*, s32);
 s32  func_80290C20(Camera*);
 void parse_course_displaylists(uintptr_t);
