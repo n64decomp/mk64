@@ -24,6 +24,11 @@ u8   get_missing_bank(u32 seqId, s32 *nonNullCount, s32 *nullCount);
 void patch_sound(struct AudioBankSound *sound, u8 *memBase, u8 *offsetBase);
 void patch_audio_bank(struct AudioBank *mem, u8 *offset, u32 numInstruments, u32 numDrums);
 
+extern u32 D_803B70A8; // sDmaBufSize
+// This is really data, not a volatile
+// found in data/data_0DD0A0_2_1_2.s
+extern volatile s32 D_800EA5DC;
+
 extern struct Note *gNotes;
 extern struct SequencePlayer gSequencePlayers[SEQUENCE_PLAYERS];
 extern struct SequenceChannel gSequenceChannels[SEQUENCE_CHANNELS];

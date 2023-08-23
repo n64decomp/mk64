@@ -18,8 +18,6 @@ extern s16 D_801633F8;
 extern s32 D_8018D168;
 extern s32 D_800DC510;
 
-void func_80028E70(Player*, Camera*, s8, s8);
-
 s16 D_800E3810[] = {
     1, 2, 3, 4, 5, 6, 7, 0
 };
@@ -615,8 +613,6 @@ void func_80027EDC(Player *player, s8 playerId) {
     }
 }
 
-void control_cpu_movement(Player*,Camera*, s8, s8);
-
 void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     u16 sp1E;
     
@@ -678,77 +674,77 @@ void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     }
 }
 
-void func_80028C44(Player *arg0, s32 arg1, s8 arg2, s8 arg3) { 
-    if ((arg0->unk_000 & 0x2000) == 0) {
-        arg0->unk_0BC &= ~0x1000;
-        if (((arg0->unk_0BC & 0x80) == 0x80) || 
-            ((arg0->unk_0BC & 0x40) == 0x40) || 
-            ((arg0->unk_0BC & 0x400) == 0x400) || 
-            ((arg0->unk_0BC & 0x4000) == 0x4000) || 
-            ((arg0->unk_0BC & 0x80000) == 0x80000) || 
-            ((arg0->unk_0BC & 0x800000) == 0x800000) || 
-            ((arg0->unk_0BC & 0x1000000) == 0x1000000) || 
-            ((arg0->unk_0BC & 0x2000000) == 0x2000000) || 
-            ((arg0->unk_0BC & 0x20000) == 0x20000) || 
-            ((arg0->unk_044 & 0x800) != 0)) {
-                func_8002E594(arg0, arg1, arg3, arg2);
+void func_80028C44(Player *player, Camera *camera, s8 arg2, s8 arg3) { 
+    if ((player->unk_000 & 0x2000) == 0) {
+        player->unk_0BC &= ~0x1000;
+        if (((player->unk_0BC & 0x80) == 0x80) || 
+            ((player->unk_0BC & 0x40) == 0x40) || 
+            ((player->unk_0BC & 0x400) == 0x400) || 
+            ((player->unk_0BC & 0x4000) == 0x4000) || 
+            ((player->unk_0BC & 0x80000) == 0x80000) || 
+            ((player->unk_0BC & 0x800000) == 0x800000) || 
+            ((player->unk_0BC & 0x1000000) == 0x1000000) || 
+            ((player->unk_0BC & 0x2000000) == 0x2000000) || 
+            ((player->unk_0BC & 0x20000) == 0x20000) || 
+            ((player->unk_044 & 0x800) != 0)) {
+                func_8002E594(player, camera, arg3, arg2);
         } else {
-			func_8002D268(arg0, arg1, arg3, arg2);
+			func_8002D268(player, camera, arg3, arg2);
 		}
     } else {
-		arg0->unk_0BC &= -9;
+		player->unk_0BC &= -9;
 	}
 }
 
-void func_80028D3C(Player *arg0, s32 arg1, s8 arg2, s8 arg3) {
-   if (((arg0->unk_000 & 0x2000) == 0) &&
+void func_80028D3C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
+   if (((player->unk_000 & 0x2000) == 0) &&
        (D_800DC510 != 5) || 
-       (arg0->unk_0CA & 2) != 0 || 
-       (arg0->unk_0CA & 8) != 0 || 
-       (arg0->unk_0BC & 0x4F010CC0) != 0) {
-            arg0->unk_0BC &= ~0x1000;
+       (player->unk_0CA & 2) != 0 || 
+       (player->unk_0CA & 8) != 0 || 
+       (player->unk_0BC & 0x4F010CC0) != 0) {
+            player->unk_0BC &= ~0x1000;
        
-            if (((arg0->unk_0BC & 0x80) == 0x80) || 
-                ((arg0->unk_0BC & 0x40) == 0x40) || 
-                ((arg0->unk_0BC & 0x400) == 0x400) || 
-                ((arg0->unk_0BC & 0x4000) == 0x4000) || 
-                ((arg0->unk_0BC & 0x80000) == 0x80000) || 
-                ((arg0->unk_0BC & 0x800000) == 0x800000) || 
-                ((arg0->unk_0BC & 0x1000000) == 0x1000000) || 
-                ((arg0->unk_0BC & 0x2000000) == 0x2000000) || 
-                ((arg0->unk_0BC & 0x20000) == 0x20000) || 
-                ((arg0->unk_044 & 0x800) != 0)) {
-                    func_8002E594(arg0, arg1, arg3, arg2);
+            if (((player->unk_0BC & 0x80) == 0x80) || 
+                ((player->unk_0BC & 0x40) == 0x40) || 
+                ((player->unk_0BC & 0x400) == 0x400) || 
+                ((player->unk_0BC & 0x4000) == 0x4000) || 
+                ((player->unk_0BC & 0x80000) == 0x80000) || 
+                ((player->unk_0BC & 0x800000) == 0x800000) || 
+                ((player->unk_0BC & 0x1000000) == 0x1000000) || 
+                ((player->unk_0BC & 0x2000000) == 0x2000000) || 
+                ((player->unk_0BC & 0x20000) == 0x20000) || 
+                ((player->unk_044 & 0x800) != 0)) {
+                    func_8002E594(player, camera, arg3, arg2);
             } else {
-                func_8002D268(arg0, arg1, arg3, arg2);
+                func_8002D268(player, camera, arg3, arg2);
             }
     } else {
-        arg0->unk_0BC = arg0->unk_0BC & ~8;
+        player->unk_0BC = player->unk_0BC & ~8;
     }
 }
 
-void func_80028E70(Player *arg0, Camera *arg1, s8 arg2, s8 arg3)  {
-    if ((arg0->unk_000 & 0x8000) == 0x8000) {
+void func_80028E70(Player *player, Camera *camera, s8 arg2, s8 arg3)  {
+    if ((player->unk_000 & 0x8000) == 0x8000) {
         switch (gGamestate) {
             case ENDING_SEQUENCE:
-                if (!(arg0->unk_000 & 0x2000)) {
-                    func_80038C6C(arg0, arg1, arg3, arg2);
+                if (!(player->unk_000 & 0x2000)) {
+                    func_80038C6C(player, camera, arg3, arg2);
                 } else {
-                    arg0->unk_0BC &= ~8;
+                    player->unk_0BC &= ~8;
                 }         
                 break;
             default: 
-                func_80027DA8(arg0, arg2);
+                func_80027DA8(player, arg2);
                 switch (gModeSelection) {
                     case TIME_TRIALS:
                     case VERSUS:
-                        func_80028C44(arg0, arg1, arg2, arg3);
+                        func_80028C44(player, camera, arg2, arg3);
                         break;
                     case BATTLE:
-                        func_80028D3C(arg0, arg1, arg2, arg3);
+                        func_80028D3C(player, camera, arg2, arg3);
                         break;
                     default:
-                        func_80028864(arg0, arg1, arg2, arg3);
+                        func_80028864(player, camera, arg2, arg3);
                         break;
                 } 
                 break;
@@ -839,9 +835,7 @@ void func_80029200(Player *player, s8 arg1) {
 }
 
 #ifdef MIPS_TO_C
-//generated by m2c commit 9841ff34ca242f5f14b2eab2b54a7a65ac47d80f
-static f32 D_800DDBD4[8] = { 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f };
-
+//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Aug-17-2023
 void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     f32 sp50;
     f32 sp28;
@@ -889,19 +883,19 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         if ((temp_v1 & 0x40000000) == 0x40000000) {
             sp24 = temp_a3;
             sp50 = temp_f2;
-            temp_a3->unkCC = (s16) (s32) ((f64) func_802B7C40(temp_f0 / temp_f2) * 1.6);
+            player->unk_0CC[arg2] = (s16) (s32) ((f64) func_802B7C40(temp_f0 / temp_f2) * 1.6);
         } else {
             sp24 = temp_a3;
             sp50 = temp_f2;
-            temp_a3->unkCC = (s16) (func_802B7C40(temp_f0 / temp_f2) * 2);
+            player->unk_0CC[arg2] = func_802B7C40(temp_f0 / temp_f2) * 2;
         }
     }
     if ((player->unk_0BC & 0x04000000) == 0x04000000) {
-        temp_a3->unkCC = (s16) (s32) player->unk_D9C;
+        player->unk_0CC[arg2] = (s16) (s32) player->unk_D9C;
     }
     if ((player->unk_0BC & 8) != 8) {
         sp24 = temp_a3;
-        temp_a3->unkD4 = (s16) (s32) ((f64) func_802B7C40((player->unk_1F8 - player->unk_1FC) / temp_f2) * 0.9);
+        player->unk_0D4[arg2] = (s16) (s32) ((f64) func_802B7C40((player->unk_1F8 - player->unk_1FC) / temp_f2) * 0.9);
     } else {
         temp_v0 = player->unk_244[arg2];
         if (((s32) temp_v0 >= 0) && ((s32) temp_v0 < 0x101)) {
@@ -910,7 +904,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
             var_f0 = player->pos[1] - player->rotY;
         }
         sp24 = temp_a3;
-        temp_a3->unkD4 = (s16) (s32) ((f64) func_802B7C40(var_f0 / temp_f2) * 0.5);
+        player->unk_0D4[arg2] = (s16) (s32) ((f64) func_802B7C40(var_f0 / temp_f2) * 0.5);
     }
     if ((player->unk_0BC & 0x04000000) == 0x04000000) {
         temp_a3->unkD4 = (s16) (s32) player->unk_D9C;
@@ -1022,10 +1016,8 @@ GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002934C.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-s32 func_802AFA34(Player *, KartBoundingBoxCorner *, f32, f32, f32); /* extern */
-void func_802B6540(f32, f32 (*)[3], ?, ?, ?, s32);     /* extern */
-static f32 D_800DDBD4[8] = { 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f };
+//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Aug-17-2023
+? func_802AFA34(Player *, KartBoundingBoxCorner *, f32, f32, f32); /* extern */
 
 void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     f32 sp94;
@@ -1064,7 +1056,7 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
         var_f12 = (D_800DDBD4[player->characterId] / 2.0f) * 18.0f;
     }
     sp48 = var_f12;
-    func_802B6540(var_f12, (f32 (*)[3]) &sp5C[0], 0, 0x3F800000, 0, player->unk_02E + player->unk_0C0);
+    func_802B6540((f32 (*)[3]) &sp5C[0], 0.0f, 1.0f, 0.0f, (s16) (player->unk_02C[1] + player->unk_0C0));
     temp_f0 = (f64) sp48;
     temp_f2 = sp48 - 2.0f;
     sp8C = (f32) (temp_f0 - 3.6);
@@ -1168,11 +1160,6 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80029B4C.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_1_1.s
-// might be plain data?
-extern f32 D_800DDBD4[8];// = { 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f, 0.75f };
-
 void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     s32 stackPadding[2];
     f32 temp_f12;
@@ -1252,9 +1239,6 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002A194.s")
-#endif
 
 // Near identical to func_802AC114 in memory.c
 void func_8002A5F4(Vec3f arg0, f32 arg1, Vec3f arg2, f32 arg3, f32 arg4) {
@@ -2059,12 +2043,13 @@ void func_8002C7E4(Player *player, s8 arg1, s8 arg2) {
     }
 }
 
-#ifdef NON_MATCHING
-void func_8002C954(Player *player, s8 arg1, Vec3fs *arg2) {
+void func_8002C954(Player *player, s8 arg1, Vec3f arg2) {
     f32 temp_f0;
     f32 var_f14;
-    Vec3fs *new_var;
-        
+    f32 xdist;
+    f32 ydist;
+    f32 zdist;
+
     temp_f0 = player->pos[1] - player->unk_074;
     if ((((player->unk_0BC & 0x10000) != 0x10000) && 
         ((player->unk_0BC & 0x100000) == 0x100000) || 
@@ -2084,7 +2069,6 @@ void func_8002C954(Player *player, s8 arg1, Vec3fs *arg2) {
         }
         player->unk_046 |= 0x20;
     }
-    new_var = arg2;
     if (((player->unk_000 & 0x4000) == 0x4000) && (((player->unk_094 / 18.0f) * 216.0f) > 30.0f)) {
         func_8001CA24(player, 3.0f);
     }
@@ -2097,8 +2081,11 @@ void func_8002C954(Player *player, s8 arg1, Vec3fs *arg2) {
         func_80031F48(player, 18.0f);
     }
     if ((player->unk_000 & 0x4000) == 0x4000) {
-        Vec3fs *vec = &D_80165070[arg1];
-        var_f14 = sqrtf((((vec->x - arg2->x) * (vec->x - arg2->x)) + ((vec->y - new_var->y) * (vec->y - new_var->y))) + ((vec->z - arg2->z) * (vec->z - arg2->z))) / 3; 
+        xdist = D_80165070[arg1][0] - arg2[0];
+        var_f14 = D_80165070[arg1][1] - arg2[1];
+        ydist = var_f14; // okay
+        zdist = D_80165070[arg1][2] - arg2[2];
+        var_f14 = sqrtf((xdist * xdist) + (ydist * ydist) + (zdist * zdist)) / 3; 
         if (var_f14 >= 1.0) {
             var_f14 = 1.0f;
         }
@@ -2121,9 +2108,6 @@ void func_8002C954(Player *player, s8 arg1, Vec3fs *arg2) {
         player->unk_08C /= 2;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002C954.s")
-#endif
 
 void func_8002CD48(Player *player, s8 arg1, s8 arg2) {
     if (((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) {
@@ -2250,25 +2234,16 @@ GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002D028.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-? func_80027EDC(Player *, s8);                      /* extern */
+//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Aug-17-2023
 ? func_80029B4C(Player *, f32, f32, f32);           /* extern */
-? func_8002A79C(Player *, s8);                      /* extern */
-? func_8002AE38(Player *, s8, f32, f32, f32, f32);  /* extern */
 ? func_8002BB9C(Player *, f32 *, f32 *, s8, s32, f32 *); /* extern */
-? func_8002BF4C(Player *, s8);                      /* extern */
-? func_8002C4F8(Player *, s8);                      /* extern */
-? func_8002C7E4(f32, f32, Player *, s8, s8);        /* extern */
-? func_8002C954(Player *, s8, f32 *);               /* extern */
-? func_8002CD48(Player *, s8, s8);                  /* extern */
-? func_80037BB4(Player *, f32 *);                   /* extern */
 ? func_800CADD0(u8, f32);                           /* extern */
+s16 gCurrentCourseId;                               /* unable to generate initializer */
 static ? D_800E3CE8;                                /* unable to generate initializer */
 static ? D_800E3CF4;                                /* unable to generate initializer */
 static ? D_800E3D00;                                /* unable to generate initializer */
 static ? D_800E3D0C;                                /* unable to generate initializer */
-f32 D_800E3D18[0x17];
-s16 gCurrentCourseId;                               /* unable to generate initializer */
+static ? D_800E3D18;                                /* unable to generate initializer */
 
 void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     f32 sp18C;
@@ -2296,21 +2271,16 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     f32 sp60;
     f32 *sp58;
     struct_D_8018CE10 *sp54;
-    ? *var_t7;
     f32 *temp_a1;
+    f32 *temp_v0_17;
     f32 *temp_v0_18;
-    f32 *temp_v0_19;
-    f32 *var_t6;
-    f32 temp_at;
     f32 temp_f0;
     f32 temp_f0_2;
     f32 temp_f0_7;
     f32 temp_f0_8;
     f32 temp_f0_9;
-    f32 temp_f12;
+    f32 temp_f12_3;
     f32 temp_f12_4;
-    f32 temp_f12_5;
-    f32 temp_f14;
     f32 temp_f2;
     f32 temp_f2_2;
     f32 temp_f2_6;
@@ -2323,12 +2293,11 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     f64 temp_f0_4;
     f64 temp_f0_5;
     f64 temp_f0_6;
+    f64 temp_f12;
     f64 temp_f12_2;
-    f64 temp_f12_3;
     f64 temp_f2_3;
     f64 temp_f2_4;
     f64 temp_f2_5;
-    s16 temp_t6;
     s16 temp_v0_11;
     s16 temp_v0_13;
     s16 temp_v0_15;
@@ -2339,7 +2308,6 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     s16 temp_v0_9;
     s32 temp_t4;
     s32 temp_t4_2;
-    s32 temp_v0_16;
     s32 temp_v0_2;
     s32 temp_v0_3;
     s32 temp_v1;
@@ -2347,12 +2315,15 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     s32 var_v1;
     s32 var_v1_2;
     struct_D_8018CE10 *temp_t9;
+    u16 temp_t6_2;
     u16 temp_v0;
     u16 temp_v0_10;
     u16 temp_v0_12;
     u16 temp_v0_14;
-    u16 temp_v0_17;
+    u16 temp_v0_16;
     u16 temp_v0_8;
+    void *temp_t6;
+    void *temp_t7;
 
     sp184.unk0 = D_800E3CE8.unk0;
     sp184.unk4 = (s32) D_800E3CE8.unk4;
@@ -2364,20 +2335,13 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     sp16C.unk4 = (s32) D_800E3D00.unk4;
     sp16C.unk8 = (s32) D_800E3D00.unk8;
     sp160.unk0 = D_800E3D0C.unk0;
-    var_t6 = D_800E3D18;
-    var_t7 = &sp104;
     sp160.unk4 = (s32) D_800E3D0C.unk4;
     sp160.unk8 = (s32) D_800E3D0C.unk8;
-    do {
-        temp_at = *var_t6;
-        var_t6 += 0xC;
-        var_t7 += 0xC;
-        var_t7->unk-C = temp_at;
-        var_t7->unk-8 = (s32) var_t6->unk-8;
-        var_t7->unk-4 = (s32) var_t6->unk-4;
-    } while (var_t6 != (D_800E3D18 + 0x54));
-    var_t7->unk0 = (f32) var_t6->unk0;
-    var_t7->unk4 = (s32) var_t6->unk4;
+    M2C_MEMCPY_ALIGNED(&sp104, &D_800E3D18, 0x54);
+    temp_t7 = &sp104 + 0x54;
+    temp_t6 = &D_800E3D18 + 0x54;
+    temp_t7->unk0 = (s32) temp_t6->unk0;
+    temp_t7->unk4 = (s32) temp_t6->unk4;
     sp7C = 0;
     func_80027EDC(player, arg3);
     func_8002C11C(player);
@@ -2387,7 +2351,7 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     func_8002B830(player, arg3, arg2);
     temp_v0 = player->unk_000;
     if (((temp_v0 & 0x4000) == 0x4000) && ((temp_v0 & 0x100) != 0x100)) {
-        func_8002BF4C(player, arg3);
+        func_8002BF4C(player, (u8) arg3);
     }
     func_8002CD48(player, arg3, arg2);
     if (((player->unk_0BC & 0x20000000) == 0x20000000) && (player->unk_228 >= 0x64)) {
@@ -2448,30 +2412,28 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     sp17C = 0.0f;
     sp58 = temp_a1;
     func_802B63B8(&sp178, (f32 (*)[3]) temp_a1);
-    temp_f14 = spAC;
-    temp_f12 = temp_f14 + sp180;
     spB4 += sp178;
-    spAC = temp_f12;
-    func_8002C7E4(temp_f12, temp_f14, player, arg3, arg2);
+    spAC += sp180;
+    func_8002C7E4(player, arg3, arg2);
     sp18C = func_80030150(player, arg3);
     func_802B63B8(&sp184, (f32 (*)[3]) sp58);
     sp98 = player->unk_034[0];
     sp9C = player->unk_034[1];
     spA0 = player->unk_034[2];
-    if (((player->unk_10C < 3) && ((s32) (u16) player->unk_256 < 3)) || ((player->unk_0BC & 0x2000) == 0x2000)) {
+    if (((player->unk_10C < 3) && ((s32) player->unk_256 < 3)) || ((player->unk_0BC & 0x2000) == 0x2000)) {
         temp_t4 = (s32) player->unk_07C >> 0x10;
         if ((temp_t4 >= 0x28) || (temp_t4 < -0x27)) {
             temp_f0_3 = (f64) sp98;
-            temp_f12_2 = (f64) sp7C;
+            temp_f12 = (f64) sp7C;
             temp_f2_3 = (f64) spA0;
-            sp98 = (f32) (temp_f0_3 + ((((f64) (sp184 + spB4 + sp160) - (temp_f0_3 * (0.12 * (f64) player->kartFriction))) / 6000.0) / (((f64) player->unk_20C * 0.6) + 1.0 + temp_f12_2)));
-            spA0 = (f32) (temp_f2_3 + ((((f64) (sp18C + spAC + sp168) - (temp_f2_3 * (0.12 * (f64) player->kartFriction))) / 6000.0) / (((f64) player->unk_20C * 0.6) + 1.0 + temp_f12_2)));
+            sp98 = (f32) (temp_f0_3 + ((((f64) (sp184 + spB4 + sp160) - (temp_f0_3 * (0.12 * (f64) player->kartFriction))) / 6000.0) / (((f64) player->unk_20C * 0.6) + 1.0 + temp_f12)));
+            spA0 = (f32) (temp_f2_3 + ((((f64) (sp18C + spAC + sp168) - (temp_f2_3 * (0.12 * (f64) player->kartFriction))) / 6000.0) / (((f64) player->unk_20C * 0.6) + 1.0 + temp_f12)));
         } else {
             temp_f0_4 = (f64) sp98;
-            temp_f12_3 = (f64) (sp7C + 1);
+            temp_f12_2 = (f64) (sp7C + 1);
             temp_f2_4 = (f64) spA0;
-            sp98 = (f32) (temp_f0_4 + ((((f64) (sp184 + spB4 + sp160) - (temp_f0_4 * (0.12 * (f64) player->kartFriction))) / 6000.0) / temp_f12_3));
-            spA0 = (f32) (temp_f2_4 + ((((f64) (sp18C + spAC + sp168) - (temp_f2_4 * (0.12 * (f64) player->kartFriction))) / 6000.0) / temp_f12_3));
+            sp98 = (f32) (temp_f0_4 + ((((f64) (sp184 + spB4 + sp160) - (temp_f0_4 * (0.12 * (f64) player->kartFriction))) / 6000.0) / temp_f12_2));
+            spA0 = (f32) (temp_f2_4 + ((((f64) (sp18C + spAC + sp168) - (temp_f2_4 * (0.12 * (f64) player->kartFriction))) / 6000.0) / temp_f12_2));
         }
     } else {
         temp_f0_5 = (f64) sp98;
@@ -2494,16 +2456,16 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     temp_f0_7 = player->pos[0];
     spF0 = temp_f0_7;
     temp_f2_6 = player->pos[2];
-    temp_f12_4 = player->pos[1];
+    temp_f12_3 = player->pos[1];
     spE8 = temp_f2_6;
     player->rotX = temp_f0_7;
     player->rotZ = temp_f2_6;
-    player->rotY = temp_f12_4;
+    player->rotY = temp_f12_3;
     temp_t9 = &D_8018CE10[arg3];
     sp54 = temp_t9;
-    spFC = temp_t9->unk_04 + (temp_f0_7 + player->unk_034[0]);
-    spF8 = player->unk_034[1] + temp_f12_4;
-    spF4 = temp_t9->unk_0C + (spE8 + player->unk_034[2]);
+    spFC = temp_t9->unk_04[0] + (temp_f0_7 + player->unk_034[0]);
+    spF8 = player->unk_034[1] + temp_f12_3;
+    spF4 = temp_t9->unk_04[2] + (spE8 + player->unk_034[2]);
     temp_v0_6 = player->unk_0CA;
     if (((temp_v0_6 & 2) != 2) && ((temp_v0_6 & 8) != 8) && ((player->unk_0BC & 0x04000000) != 0x04000000) && !(temp_v0_6 & 1)) {
         func_8002AAC0(player);
@@ -2597,12 +2559,12 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     if (spA8 >= 0.0f) {
         spA8 = player->unk_110.unk3C[1];
         if (spA8 >= 0.0f) {
-            temp_v0_14 = (u16) player->unk_256;
+            temp_v0_14 = player->unk_256;
             player->unk_046 &= 0xFFDF;
             if (temp_v0_14 != 0) {
-                temp_t6 = temp_v0_14 + 1;
-                player->unk_256 = temp_t6;
-                if ((temp_t6 & 0xFFFF) >= 0xA) {
+                temp_t6_2 = temp_v0_14 + 1;
+                player->unk_256 = temp_t6_2;
+                if ((temp_t6_2 & 0xFFFF) >= 0xA) {
                     player->unk_256 = 0;
                 }
             }
@@ -2617,7 +2579,7 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         func_8008F5A4(player, arg3);
     }
     player->unk_074 = func_802ABE30(spFC, spF8, spF4, player->unk_110.unk3A);
-    if (((player->unk_000 & 0x4000) == 0x4000) && ((temp_v0_16 = gActiveScreenMode, (temp_v0_16 == 0)) || (temp_v0_16 == 2) || (temp_v0_16 == 1))) {
+    if (((player->unk_000 & 0x4000) == 0x4000) && ((gActiveScreenMode == 0) || (gActiveScreenMode == 2) || (gActiveScreenMode == 1))) {
         func_80029B4C(player, spFC, spF8, spF4);
     } else {
         func_8002A194(player, spFC, spF8, spF4);
@@ -2625,16 +2587,16 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     func_8002AE38(player, arg3, spF0, spE8, spFC, spF4);
     player->unk_22C = player->unk_094;
     player->unk_094 = sqrtf((spA0 * spA0) + (sp98 * sp98));
-    if ((player->unk_08C <= 0.0f) && ((f64) player->unk_094 <= 0.08) && (sp54->unk_04 == 0.0f) && (sp54->unk_0C == 0.0f)) {
+    if ((player->unk_08C <= 0.0f) && ((f64) player->unk_094 <= 0.08) && (sp54->unk_04[0] == 0.0f) && (sp54->unk_04[2] == 0.0f)) {
         sp98 += sp98 * -1.0f;
         spA0 += spA0 * -1.0f;
     } else {
         player->pos[0] = spFC;
         player->pos[2] = spF4;
     }
-    temp_v0_17 = player->unk_000;
+    temp_v0_16 = player->unk_000;
     player->pos[1] = spF8;
-    if ((temp_v0_17 & 0x4000) && !(temp_v0_17 & 0x1000)) {
+    if ((temp_v0_16 & 0x4000) && !(temp_v0_16 & 0x1000)) {
         func_8002BB9C(player, &spFC, &spF4, arg2, (s32) arg3, &sp98);
     }
     player->unk_064 = sp178;
@@ -2642,20 +2604,20 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     player->unk_034[0] = sp98;
     player->unk_034[1] = sp9C;
     player->unk_034[2] = spA0;
-    temp_v0_18 = D_80165070[arg3];
-    temp_v0_18->unk0 = sp98;
-    temp_v0_18->unk4 = sp9C;
-    temp_v0_18->unk8 = spA0;
+    temp_v0_17 = D_80165070[arg3];
+    temp_v0_17->unk0 = sp98;
+    temp_v0_17->unk4 = sp9C;
+    temp_v0_17->unk8 = spA0;
     if ((player->unk_000 & 0x4000) == 0x4000) {
         temp_f2_7 = player->unk_094;
-        temp_v0_19 = &gKartTopSpeedTable[player->characterId];
-        temp_f12_5 = *temp_v0_19;
-        if (temp_f12_5 < temp_f2_7) {
-            temp_f0_8 = temp_f12_5 / temp_f2_7;
+        temp_v0_18 = &gKartTopSpeedTable[player->characterId];
+        temp_f12_4 = *temp_v0_18;
+        if (temp_f12_4 < temp_f2_7) {
+            temp_f0_8 = temp_f12_4 / temp_f2_7;
             player->unk_034[0] *= temp_f0_8;
             player->unk_034[1] *= temp_f0_8;
             player->unk_034[2] *= temp_f0_8;
-            player->unk_094 = *temp_v0_19;
+            player->unk_094 = *temp_v0_18;
         }
     }
     if ((player->unk_044 & 1) == 1) {
@@ -2692,13 +2654,8 @@ void func_8002E4C4(Player *player) {
 }
 
 #ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
+//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Aug-17-2023
 ? func_80029B4C(Player *, f32, f32, f32);           /* extern */
-? func_8002AE38(Player *, s8, f32, f32, f32, f32);  /* extern */
-? func_8002C4F8(Player *, s8);                      /* extern */
-? func_8002C7E4(Player *, s8, s8);                  /* extern */
-? func_8002C954(Player *, s8, f32 *);               /* extern */
-? func_8002CD48(Player *, s8, s8);                  /* extern */
 ? func_800CADD0(u8, f32);                           /* extern */
 static ? D_800E3D74;                                /* unable to generate initializer */
 static ? D_800E3D80;                                /* unable to generate initializer */
@@ -2726,7 +2683,7 @@ void func_8002E594(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     f32 *sp40;
     f32 *temp_a0;
     f32 *temp_a0_2;
-    f32 *temp_v0_13;
+    f32 *temp_v0_12;
     f32 temp_f0;
     f32 temp_f0_5;
     f32 temp_f0_6;
@@ -2741,7 +2698,6 @@ void func_8002E594(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     f64 temp_f0_4;
     f64 temp_f2;
     f64 temp_f2_2;
-    s16 temp_t8;
     s16 temp_v0_10;
     s16 temp_v0_4;
     s16 temp_v0_6;
@@ -2751,13 +2707,13 @@ void func_8002E594(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     s32 temp_t5;
     s32 temp_v0;
     s32 temp_v0_11;
-    s32 temp_v0_12;
     s32 temp_v0_2;
     s32 temp_v0_3;
     s32 temp_v1_4;
     s32 var_v0;
     s32 var_v0_2;
     struct_D_8018CE10 *temp_v0_5;
+    u16 temp_t8;
     u16 temp_v0_9;
     u16 temp_v1;
     u16 temp_v1_2;
@@ -2798,7 +2754,7 @@ void func_8002E594(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         temp_a0 = player->unk_174[0];
         sp40 = temp_a0;
         func_802B6540((f32 (*)[3]) temp_a0, player->unk_058, player->unk_05C, player->unk_060, (s16) (s32) player->unk_02C[1]);
-        func_802B6540((f32 (*)[3]) player->unk_150, player->unk_058, player->unk_05C, player->unk_060, (s16) (s32) player->unk_0AE);
+        func_802B6540((f32 (*)[3]) player->unk_150[0], player->unk_058, player->unk_05C, player->unk_060, (s16) (s32) player->unk_0AE);
     } else {
         temp_a0_2 = player->unk_174[0];
         sp40 = temp_a0_2;
@@ -2806,14 +2762,14 @@ void func_8002E594(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     }
     spF4 = func_80030150(player, arg3);
     if (sp46 == 1) {
-        func_802B63B8(&spEC, (f32 (*)[3]) player->unk_150);
+        func_802B63B8(&spEC, (f32 (*)[3]) player->unk_150[0]);
     } else {
         func_802B63B8(&spEC, (f32 (*)[3]) sp40);
     }
     sp54 = player->unk_034[0];
     sp58 = player->unk_034[1];
     sp5C = player->unk_034[2];
-    if ((player->unk_10C < 3) && ((s32) (u16) player->unk_256 < 3) && (temp_v0_3 = player->unk_0BC, ((temp_v0_3 & 0x400) != 0x400)) && ((temp_v0_3 & 0x01000000) != 0x01000000) && ((temp_v0_3 & 0x02000000) != 0x02000000)) {
+    if ((player->unk_10C < 3) && ((s32) player->unk_256 < 3) && (temp_v0_3 = player->unk_0BC, ((temp_v0_3 & 0x400) != 0x400)) && ((temp_v0_3 & 0x01000000) != 0x01000000) && ((temp_v0_3 & 0x02000000) != 0x02000000)) {
         temp_f0_2 = (f64) sp54;
         temp_f2 = (f64) sp5C;
         sp54 = (f32) (temp_f0_2 + ((((f64) (spEC + sp80 + spD4) - (temp_f0_2 * (0.12 * (f64) player->kartFriction))) / 6000.0) / (f64) ((player->unk_20C * 5.0f) + 1.0f)));
@@ -2840,10 +2796,10 @@ void func_8002E594(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     player->rotY = temp_f2_3;
     player->rotZ = temp_f18;
     temp_v0_5 = &D_8018CE10[arg3];
-    spD0 = temp_v0_5->unk_04 + (temp_f0_5 + player->unk_034[0]);
+    spD0 = temp_v0_5->unk_04[0] + (temp_f0_5 + player->unk_034[0]);
     spCC = player->unk_034[1] + temp_f2_3;
     spB4 = temp_f18;
-    temp_f6 = temp_v0_5->unk_0C + (temp_f18 + player->unk_034[2]);
+    temp_f6 = temp_v0_5->unk_04[2] + (temp_f18 + player->unk_034[2]);
     spC8 = temp_f6;
     func_8002AAC0(player);
     temp_f4 = spCC + player->kartHopVelocity;
@@ -2945,7 +2901,7 @@ block_63:
     if (sp74 >= 0.0f) {
         sp74 = player->unk_110.unk3C[1];
         if (sp74 >= 0.0f) {
-            temp_v0_9 = (u16) player->unk_256;
+            temp_v0_9 = player->unk_256;
             player->unk_046 &= 0xFFDF;
             if (temp_v0_9 != 0) {
                 temp_t8 = temp_v0_9 + 1;
@@ -2965,17 +2921,17 @@ block_63:
         func_8008F5A4(player, arg3);
     }
     player->unk_074 = func_802ABE30(spD0, spCC, spC8, player->unk_110.unk3A);
-    if (((player->unk_000 & 0x4000) == 0x4000) && ((temp_v0_11 = gActiveScreenMode, (temp_v0_11 == 0)) || (temp_v0_11 == 2) || (temp_v0_11 == 1))) {
+    if (((player->unk_000 & 0x4000) == 0x4000) && ((gActiveScreenMode == 0) || (gActiveScreenMode == 2) || (gActiveScreenMode == 1))) {
         func_80029B4C(player, spD0, spCC, spC8);
     } else {
         func_8002A194(player, spD0, spCC, spC8);
     }
     func_8002AE38(player, arg3, spBC, spB4, spD0, spC8);
     player->unk_22C = player->unk_094;
-    temp_v0_12 = player->unk_0BC;
+    temp_v0_11 = player->unk_0BC;
     player->unk_094 = sqrtf((sp5C * sp5C) + (sp54 * sp54));
-    temp_v1_4 = temp_v0_12 & 0x400;
-    if (((temp_v1_4 != 0x400) && (player->unk_08C <= 0.0f) && ((f64) player->unk_094 < 0.13)) || ((temp_v1_4 != 0x400) && (player->unk_08C <= 0.0f) && ((f64) player->unk_094 < 0.2) && ((temp_v0_12 & 1) == 1))) {
+    temp_v1_4 = temp_v0_11 & 0x400;
+    if (((temp_v1_4 != 0x400) && (player->unk_08C <= 0.0f) && ((f64) player->unk_094 < 0.13)) || ((temp_v1_4 != 0x400) && (player->unk_08C <= 0.0f) && ((f64) player->unk_094 < 0.2) && ((temp_v0_11 & 1) == 1))) {
         sp54 += sp54 * -1.0f;
         sp5C += sp5C * -1.0f;
     } else {
@@ -2990,14 +2946,14 @@ block_63:
     player->unk_034[2] = sp5C;
     if ((player->unk_000 & 0x4000) == 0x4000) {
         temp_f2_4 = player->unk_094;
-        temp_v0_13 = &gKartTopSpeedTable[player->characterId];
-        temp_f12 = *temp_v0_13;
+        temp_v0_12 = &gKartTopSpeedTable[player->characterId];
+        temp_f12 = *temp_v0_12;
         if (temp_f12 < temp_f2_4) {
             temp_f0_6 = temp_f12 / temp_f2_4;
             player->unk_034[0] *= temp_f0_6;
             player->unk_034[1] *= temp_f0_6;
             player->unk_034[2] *= temp_f0_6;
-            player->unk_094 = *temp_v0_13;
+            player->unk_094 = *temp_v0_12;
         }
     }
     func_8002C4F8(player, arg3);
@@ -3006,140 +2962,105 @@ block_63:
 GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002E594.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-//? func_8002CD48(Player *, s8, s8);                  /* extern */
-//static ? D_800E3D98;                                /* unable to generate initializer */
-//static ? D_800E3DA4;                                /* unable to generate initializer */
-//static ? D_800E3DB0;                                /* unable to generate initializer */
-//static ? D_800E3DBC;                                /* unable to generate initializer */
-
-void func_802B63B8(Vec3f, Mat3);
-
 void control_cpu_movement(Player *player, Camera *camera, s8 arg2, s8 arg3) {
-    f32 spFC;
-    f32 spF4;
-    //? spE8;
-    f32 spDC;
-    f32 spD0;
+    Vec3f spF4 = {0.0f, 0.0f, 1.0f};
+    Vec3f spE8 = {0.0f, 0.0f, 0.0f};
+    Vec3f spDC = {0.0f, 0.0f, 0.0f};
+    Vec3f spD0 = {0.0f, 0.0f, 0.0f};
     f32 spCC;
+    f32 stackPadding00;
     f32 spC4;
+    f32 stackPadding01;
+    f32 stackPadding02;
+    f32 stackPadding03;
+    f32 stackPadding04;
+    f32 stackPadding05;
+    f32 stackPadding06;
+    f32 stackPadding07;
+    f32 stackPadding08;
+    f32 stackPadding09;
+    f32 stackPadding10;
+    f32 stackPadding11;
+    f32 stackPadding12;
+    f32 stackPadding13;
+    f32 stackPadding14;
+    f32 stackPadding15;
     f32 sp84;
+    f32 stackPadding16;
     f32 sp7C;
-    f32 sp70;
-    f32 sp6C;
-    f32 sp68;
-    f32 sp40;
-    f32 *sp3C;
-    f32 *temp_a1;
-    f32 *temp_v0;
-    f32 *temp_v1;
+    f32 stackPadding17;
+    f32 stackPadding18;
+    Vec3f sp68;
+    f32 stackPadding19;
+    f32 stackPadding20;
+    f32 stackPadding21;
+    f32 stackPadding22;
+    f32 stackPadding23;
+    f32 stackPadding24;
+    f32 stackPadding25;
+    f32 stackPadding26;
     f32 temp_f0_2;
-    f32 temp_f12;
-    f32 temp_f12_2;
-    f32 temp_f14;
-    f32 temp_f2_2;
-    f32 temp_f8;
-    f32 temp_f8_2;
-    f64 temp_f0;
-    f64 temp_f2;
-    s32 temp_t1;
-
-    Vec3f D_800E3D98 = { 0, 0, 1.0 };
-    Vec3f D_800E3DA4 = { 0, 0, 0 };
-    Vec3f D_800E3DB0 = { 0, 0, 0 };
-    Vec3f D_800E3DBC = { 0, 0, 0 };
-
-
-    //spF4.unk0 = D_800E3D98.unk0;
-    //spF4.unk4 = (s32) D_800E3D98.unk4;
-    //spF4.unk8 = (s32) D_800E3D98.unk8;
-    //spE8.unk0 = (s32) D_800E3DA4.unk0;
-    //spE8.unk8 = (s32) D_800E3DA4.unk8;
-    //spE8.unk4 = (s32) D_800E3DA4.unk4;
-    //spDC.unk0 = D_800E3DB0.unk0;
-    //spDC.unk4 = (s32) D_800E3DB0.unk4;
-    //spDC.unk8 = (s32) D_800E3DB0.unk8;
-    //spD0.unk0 = D_800E3DBC.unk0;
-    //spD0.unk4 = (s32) D_800E3DBC.unk4;
-    //spD0.unk8 = (s32) D_800E3DBC.unk8;
+    f32 test;
     player->unk_0BC |= 0x1000;
     player->unk_044 |= 0x10;
-    sp40 = D_80164510[arg3];
+    test = D_80164510[arg3];
     player->unk_204 = 0;
     player->unk_0BC &= ~0x10;
     func_8002B830(player, arg3, arg2);
     func_8002CD48(player, arg3, arg2);
-    sp84 = spDC + (0.0f * player->unk_064);
-    sp7C = D_800E3DA4[1] + (0.0f * player->unk_06C);
+    sp84 = spDC[0] + (0 * player->unk_064);
+    sp7C = spDC[2] + (0 * player->unk_06C);
     player->unk_10C = 0;
     player->unk_256 = 0;
-    player->unk_0BC &= 0xFFFF7FFF;
-    temp_a1 = player->unk_174[0];
-    spFC = func_80030150(player, arg3);
-    sp3C = temp_a1;
-    func_802B63B8(D_800E3D98, temp_a1);
-    sp6C = 0.0f;
-    sp68 = player->unk_034[0];
-    sp70 = player->unk_034[2];
-    temp_f0 = (f64) sp68;
-    temp_f2 = (f64) sp70;
-    temp_f8 = (f32) (temp_f0 + (((f64) (spF4 + sp84 + spD0) - (temp_f0 * (0.12 * (f64) player->kartFriction))) / 6000.0));
-    sp68 = temp_f8;
-    temp_f8_2 = (f32) (temp_f2 + (((f64) (spFC + sp7C + D_800E3DA4[1]) - (temp_f2 * (0.12 * (f64) player->kartFriction))) / 6000.0));
-    sp70 = temp_f8_2;
-    temp_f12 = player->pos[0];
-    temp_f14 = player->pos[2];
-    player->rotX = temp_f12;
-    player->rotZ = temp_f14;
-    player->rotY = sp40;
-    spCC = player->unk_034[0] + temp_f12;
-    spC4 = player->unk_034[2] + temp_f14;
+    player->unk_0BC &= ~0x8000;
+    spF4[2] = func_80030150(player, arg3);
+    func_802B63B8(spF4, player->unk_174);
+    sp68[0] = player->unk_034[0];
+    sp68[1] = 0;
+    sp68[2] = player->unk_034[2];
+    sp68[0] += (((spF4[0] + sp84) + spD0[0]) - (sp68[0] * (0.12 * player->kartFriction))) / 6000.0;
+    sp68[2] += (((spF4[2] + sp7C) + spD0[2]) - (sp68[2] * (0.12 * player->kartFriction))) / 6000.0;
+    player->rotX = player->pos[0];
+    player->rotY = test;
+    player->rotZ = player->pos[2];
+    spCC = player->pos[0] + player->unk_034[0];
+    spC4 = player->pos[2] + player->unk_034[2];
     player->unk_0C0 = 0;
-    player->kartHopJerk = 0.0f;
-    player->kartHopAcceleration = 0.0f;
-    player->kartHopVelocity = 0.0f;
-    func_802B6540((f32 (*)[3]) sp3C, player->unk_058, player->unk_05C, player->unk_060, (s16) (s32) player->unk_02C[1]);
+    player->kartHopJerk = 0;
+    player->kartHopAcceleration = 0;
+    player->kartHopVelocity = 0;
+    func_802B6540(player->unk_174, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
     player->unk_0C2 = 0;
-    temp_t1 = player->unk_0BC & ~2;
-    player->unk_0BC = temp_t1;
-    player->unk_0BC = temp_t1 & ~8;
+    player->unk_0BC &= ~2;
+    player->unk_0BC &= ~8;
     player->unk_0C4 = 0;
     player->unk_206 = 0;
+    stackPadding26 = (sp68[0] * sp68[0]) + (sp68[2] * sp68[2]);
     player->unk_22C = player->unk_094;
-    player->unk_094 = sqrtf((sp70 * sp70) + (temp_f8 * temp_f8));
+    player->unk_094 = sqrtf(stackPadding26);
     player->pos[0] = spCC;
     player->pos[2] = spC4;
-    player->unk_064 = 0.0f;
-    player->unk_06C = 0.0f;
-    player->pos[1] = sp40;
-    temp_v0 = D_80165070[arg3];
-    player->unk_034[0] = sp68;
-    player->unk_034[1] = sp6C;
-    player->unk_034[2] = sp70;
-    D_80165070[arg3][0] = sp68;
-    D_80165070[arg3][1] = sp6C;
-    D_80165070[arg3][2] = temp_f8_2;
-    temp_f2_2 = player->unk_094;
-    temp_v1 = &gKartTopSpeedTable[player->characterId];
-    temp_f12_2 = *temp_v1;
-    if (temp_f12_2 < temp_f2_2) {
-        temp_f0_2 = temp_f12_2 / temp_f2_2;
+    player->pos[1] = test;
+    player->unk_064 = 0;
+    player->unk_06C = 0;
+    player->unk_034[0] = sp68[0];
+    player->unk_034[1] = sp68[1];
+    player->unk_034[2] = sp68[2];
+    D_80165070[arg3][0] = sp68[0];
+    D_80165070[arg3][1] = sp68[1];
+    D_80165070[arg3][2] = sp68[2];
+    if (gKartTopSpeedTable[player->characterId] < player->unk_094) {
+        temp_f0_2 = gKartTopSpeedTable[player->characterId] / player->unk_094;
         player->unk_034[0] *= temp_f0_2;
         player->unk_034[1] *= temp_f0_2;
         player->unk_034[2] *= temp_f0_2;
-        player->unk_094 = *temp_v1;
+        player->unk_094 = gKartTopSpeedTable[player->characterId];
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/control_cpu_movement.s")
-#endif
 
 #ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
+//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Aug-16-2023
 ? func_80029B4C(Player *, f32, f32, f32);           /* extern */
-? func_8002AE38(Player *, s8, f32, f32, f32, f32);  /* extern */
-? func_80037BB4(? *);                               /* extern */
 static ? D_800E3DC8;                                /* unable to generate initializer */
 static ? D_800E3DD4;                                /* unable to generate initializer */
 static ? D_800E3DE0;                                /* unable to generate initializer */
@@ -3150,7 +3071,7 @@ void func_8002F730(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     f32 spF4;
     f32 spE8;
     ? spDC;
-    ? spD0;
+    f32 spD0;
     f32 spCC;
     f32 spC8;
     f32 spC4;
@@ -3168,8 +3089,8 @@ void func_8002F730(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     f32 sp44;
     f32 sp34;
     f32 *temp_a1;
+    f32 *temp_v0;
     f32 *temp_v0_2;
-    f32 *temp_v0_3;
     f32 temp_f0_2;
     f32 temp_f10;
     f32 temp_f12_2;
@@ -3182,7 +3103,6 @@ void func_8002F730(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     f64 temp_f0;
     f64 temp_f12;
     f64 temp_f2;
-    s32 temp_v0;
 
     spF4.unk0 = D_800E3DC8.unk0;
     spF4.unk4 = (s32) D_800E3DC8.unk4;
@@ -3193,10 +3113,10 @@ void func_8002F730(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     spDC.unk0 = (s32) D_800E3DE0.unk0;
     spDC.unk4 = (s32) D_800E3DE0.unk4;
     spDC.unk8 = (s32) D_800E3DE0.unk8;
-    spD0.unk0 = (s32) D_800E3DEC.unk0;
+    spD0.unk0 = D_800E3DEC.unk0;
     spD0.unk4 = (s32) D_800E3DEC.unk4;
     spD0.unk8 = (s32) D_800E3DEC.unk8;
-    func_80037BB4(&spD0);
+    func_80037BB4(player, &spD0);
     sp84 = player->unk_064 * 0.0f;
     sp7C = player->unk_06C * 0.0f;
     temp_a1 = player->unk_174[0];
@@ -3241,7 +3161,7 @@ void func_8002F730(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         func_8003F46C(player, &sp5C, &sp68, &spE8, &sp78, &spCC, &spC8, &spC4);
     }
     player->unk_074 = func_802ABE30(spCC, spC8, spC4, player->unk_110.unk3A);
-    if (((player->unk_000 & 0x4000) == 0x4000) && ((temp_v0 = gActiveScreenMode, (temp_v0 == 0)) || (temp_v0 == 2) || (temp_v0 == 1))) {
+    if (((player->unk_000 & 0x4000) == 0x4000) && ((gActiveScreenMode == 0) || (gActiveScreenMode == 2) || (gActiveScreenMode == 1))) {
         func_80029B4C(player, spCC, spC8, spC4);
     } else {
         func_8002A194(player, spCC, spC8, spC4);
@@ -3263,20 +3183,20 @@ void func_8002F730(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     player->unk_034[0] = sp68;
     player->unk_034[1] = sp6C;
     player->unk_034[2] = sp70;
-    temp_v0_2 = D_80165070[arg3];
-    temp_v0_2->unk0 = sp68;
-    temp_v0_2->unk4 = sp6C;
-    temp_v0_2->unk8 = sp70;
+    temp_v0 = D_80165070[arg3];
+    temp_v0->unk0 = sp68;
+    temp_v0->unk4 = sp6C;
+    temp_v0->unk8 = sp70;
     if ((player->unk_000 & 0x4000) == 0x4000) {
         temp_f2_3 = player->unk_094;
-        temp_v0_3 = &gKartTopSpeedTable[player->characterId];
-        temp_f12_2 = *temp_v0_3;
+        temp_v0_2 = &gKartTopSpeedTable[player->characterId];
+        temp_f12_2 = *temp_v0_2;
         if (temp_f12_2 < temp_f2_3) {
             temp_f0_2 = temp_f12_2 / temp_f2_3;
             player->unk_034[0] *= temp_f0_2;
             player->unk_034[1] *= temp_f0_2;
             player->unk_034[2] *= temp_f0_2;
-            player->unk_094 = *temp_v0_3;
+            player->unk_094 = *temp_v0_2;
         }
     }
 }
@@ -4241,167 +4161,8 @@ void func_80033A40(Player *player, s32 *arg1, s32 *arg2, s32 arg3, s32 arg4, s32
 }
 
 #ifdef MIPS_TO_C
-//generated by m2c commit 0927f17aac197848d4ebdf0c6bbad74b01f0851c
-? func_80033884(Player *, s32 *, s32 *, s32, s32, s32, s32); /* extern */
-? func_80033A40(Player *, s32 *, s32 *, s32, s32, s32, f32); /* extern */
-f32 D_800E3DF8[0x9C] = {
-    0.0f,
-    0.5f,
-    0.5f,
-    0.5f,
-    0.5f,
-    0.5f,
-    0.5f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.5f,
-    0.5f,
-    0.5f,
-    0.5f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.6f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.7f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-    0.8f,
-};
+//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Aug-16-2023
+static ? D_800E3DF8;                                /* unable to generate initializer */
 
 void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     s32 sp2E4;
@@ -4483,7 +4244,7 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     u8 temp_v0_9;
 
     sp2C0 = 0.0f;
-    M2C_MEMCPY_ALIGNED(&sp44, D_800E3DF8, 0x270);
+    M2C_MEMCPY_ALIGNED(&sp44, &D_800E3DF8, 0x270);
     temp_v1 = player->unk_0BC;
     if ((((temp_v1 & 2) != 2) && (((temp_lo = (s16) player->unk_0C0 / 182, ((temp_lo < 7) != 0)) && (temp_lo >= -6)) || ((controller->button & 0x10) != 0x10))) || (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f) || ((temp_v1 & 0x8000) == 0x8000)) {
         sp2BC = 0.0f;

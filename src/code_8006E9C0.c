@@ -5,6 +5,7 @@
 #include "code_8006E9C0.h"
 #include "code_80071F00.h"
 #include "objects.h"
+#include "bomb_kart.h"
 #include "variables.h"
 #include "common_textures.h"
 #include <sounds.h>
@@ -1047,7 +1048,7 @@ void func_80070190(void) {
         find_unused_obj_index(&D_8018C030[loopIndex]);
     }
 
-    for(loopIndex = 0; loopIndex < D_80183DD8_SIZE; loopIndex++) {
+    for(loopIndex = 0; loopIndex < NUM_BOMB_KARTS_VERSUS; loopIndex++) {
         find_unused_obj_index(&D_80183DD8[loopIndex]);
     }
 }
