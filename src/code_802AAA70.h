@@ -23,7 +23,7 @@ s32   is_line_intersecting_rectangle(s16, s16, s16, s16, s16, s16, s16, s16);
 s32   is_triangle_intersecting_bounding_box(s16, s16, s16, s16, u16);
 void  func_802AF314();
 void  set_vertex_data_with_defaults(Gfx*);
-void  set_vertex_data_with_default_area_id(Gfx*, s8);
+void  set_vertex_data_with_default_section_id(Gfx*, s8);
 void  find_and_set_vertex_data(Gfx*, s8, u16);
 void  find_and_set_tile_size(uintptr_t, s32, s32);
 void  set_vertex_colours(u32, u32, s32, s8, u8, u8, u8);

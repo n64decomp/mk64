@@ -1417,7 +1417,7 @@ extern s16 D_8015F6F2;
 extern s16 D_8015F6FA;
 extern s16 D_8015F6FC;
 
-void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 areaId) {
+void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 sectionId) {
     mk64_surface_map_ram *tile = &gSurfaceMap[D_8015F588];
     s16 x2;
     s16 z2;
@@ -1636,7 +1636,7 @@ void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 areaId) 
     poly2Flag = tile->vtxPoly2->v.flag;
     poly3Flag = tile->vtxPoly3->v.flag;
 
-    flags = areaId;
+    flags = sectionId;
 
     if ((poly1Flag == 1) && (poly2Flag == 1) && (poly3Flag == 1)) {
         flags |= 0x400;
@@ -1666,7 +1666,7 @@ void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 areaId) 
 /**
  * Triangle contains three indices that are used to get the actual vertices.
  */
-void set_vtx_from_triangle(u32 triangle, s8 surfaceType, u16 areaId) {
+void set_vtx_from_triangle(u32 triangle, s8 surfaceType, u16 sectionId) {
     u32 vert1 = ( ( triangle & 0x00FF0000 ) >> 16 ) / 2;
     u32 vert2 = ( ( triangle & 0x0000FF00 ) >>  8 ) / 2;
     u32 vert3 = (   triangle & 0x000000FF )         / 2;
@@ -1675,10 +1675,10 @@ void set_vtx_from_triangle(u32 triangle, s8 surfaceType, u16 areaId) {
     Vtx *vtx2 = vtxBuffer[vert2];
     Vtx *vtx3 = vtxBuffer[vert3];
 
-    func_802AE434(vtx1, vtx2, vtx3, surfaceType, areaId);
+    func_802AE434(vtx1, vtx2, vtx3, surfaceType, sectionId);
 }
 
-void set_vtx_from_tri2(u32 triangle1, u32 triangle2, s8 surfaceType, u16 areaId) {
+void set_vtx_from_tri2(u32 triangle1, u32 triangle2, s8 surfaceType, u16 sectionId) {
     UNUSED s32 pad[2];
     u32 vert1 = ( ( triangle1 & 0x00FF0000 ) >> 16 ) / 2;
     u32 vert2 = ( ( triangle1 & 0x0000FF00 ) >>  8 ) / 2;
@@ -1698,12 +1698,12 @@ void set_vtx_from_tri2(u32 triangle1, u32 triangle2, s8 surfaceType, u16 areaId)
     Vtx *vtx6 = vtxBuffer[vert6];
 
     // Triangle 1
-    func_802AE434(vtx1, vtx2, vtx3, surfaceType, areaId);
+    func_802AE434(vtx1, vtx2, vtx3, surfaceType, sectionId);
     // Triangle 2
-    func_802AE434(vtx4, vtx5, vtx6, surfaceType, areaId);
+    func_802AE434(vtx4, vtx5, vtx6, surfaceType, sectionId);
 }
 
-void set_vtx_from_quadrangle(u32 line, s8 surfaceType, u16 areaId) {
+void set_vtx_from_quadrangle(u32 line, s8 surfaceType, u16 sectionId) {
     UNUSED s32 pad[6];
     Vtx *vtx1;
     Vtx *vtx2;
@@ -1721,9 +1721,9 @@ void set_vtx_from_quadrangle(u32 line, s8 surfaceType, u16 areaId) {
     vtx4 = vtxBuffer[vert4];
     
     // Triangle 1
-    func_802AE434(vtx1, vtx2, vtx3, surfaceType, areaId);
+    func_802AE434(vtx1, vtx2, vtx3, surfaceType, sectionId);
     // Triangle 2
-    func_802AE434(vtx1, vtx3, vtx4, surfaceType, areaId);
+    func_802AE434(vtx1, vtx3, vtx4, surfaceType, sectionId);
 }
 
 /**
@@ -1911,16 +1911,16 @@ void func_802AF314(void) {
 }
 
 /**
- * Recursive search for vtx and set surfaceTypes to -1 and areaId's to 0xFF
+ * Recursive search for vtx and set surfaceTypes to -1 and sectionId's to 0xFF
  */
 void set_vertex_data_with_defaults(Gfx *gfx) {
     find_and_set_vertex_data(gfx, -1, 0xFF);
 }
 
 /**
- * Recursive search for vtx and set areaId's to 0xFF
+ * Recursive search for vtx and set sectionId's to 0xFF
  */
-void set_vertex_data_with_default_area_id(Gfx *gfx, s8 surfaceType) {
+void set_vertex_data_with_default_section_id(Gfx *gfx, s8 surfaceType) {
     find_and_set_vertex_data(gfx, surfaceType, 0xFF);
 }
 
@@ -1931,7 +1931,7 @@ extern u32 D_8015F58C;
 /**
  * Recursive search and set for vertex data 
  */
-void find_and_set_vertex_data(Gfx *addr, s8 surfaceType, u16 areaId) {
+void find_and_set_vertex_data(Gfx *addr, s8 surfaceType, u16 sectionId) {
     s32 opcode;
     uintptr_t lo;
     uintptr_t hi;
@@ -1950,22 +1950,22 @@ void find_and_set_vertex_data(Gfx *addr, s8 surfaceType, u16 areaId) {
 
         if (opcode == (G_DL << 24)) {
             // G_DL's hi contains an addr to another DL.
-            find_and_set_vertex_data((Gfx *) hi, surfaceType, areaId);
+            find_and_set_vertex_data((Gfx *) hi, surfaceType, sectionId);
 
         } else if (opcode == (G_VTX << 24)) {
             set_vtx_buffer(hi, (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1);
 
         } else if (opcode == (G_TRI1 << 24)) {
             D_8015F58C += 1;
-            set_vtx_from_triangle(hi, surfaceType, areaId);
+            set_vtx_from_triangle(hi, surfaceType, sectionId);
 
         } else if (opcode == (G_TRI2 << 24)) {
             D_8015F58C += 2;
-            set_vtx_from_tri2(lo, hi, surfaceType, areaId);
+            set_vtx_from_tri2(lo, hi, surfaceType, sectionId);
 
         } else if (opcode == (G_QUAD << 24)) {
             D_8015F58C += 2;
-            set_vtx_from_quadrangle(hi, surfaceType, areaId);
+            set_vtx_from_quadrangle(hi, surfaceType, sectionId);
 
         } else if (opcode == (G_ENDDL << 24)) {
             break;

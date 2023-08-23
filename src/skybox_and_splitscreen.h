@@ -48,7 +48,7 @@ void func_802A6BB0();
 void func_802A6E94();
 void func_802A7178();
 void func_802A74BC();
-void func_802A7658(s32, s32, s32, s32, u16*, u16*);
+void copy_framebuffer(s32, s32, s32, s32, u16*, u16*);
 void func_802A7728();
 void func_802A7940();
 

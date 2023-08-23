@@ -127,16 +127,16 @@ void load_ceremony_cutscene(void) {
     gSurfaceMap = (mk64_surface_map_ram *) gNextFreeMemoryAddress;
     // @bug these segmented addresses need to be symbols for mobility
     // This syntax is required to match
-    set_vertex_data_with_default_area_id(0x70067E8, -1);
-    set_vertex_data_with_default_area_id(0x700AEF8, -1);
-    set_vertex_data_with_default_area_id(0x700A970, 8);
-    set_vertex_data_with_default_area_id(0x700AC30, 8);
-    set_vertex_data_with_default_area_id(0x7000CE0, 0x10);
-    set_vertex_data_with_default_area_id(0x7000E88, 0x10);
-    set_vertex_data_with_default_area_id(0x700A618, -1);
-    set_vertex_data_with_default_area_id(0x700A618, -1);
-    set_vertex_data_with_default_area_id(0x70023F8, 1);
-    set_vertex_data_with_default_area_id(0x7002478, 1);
+    set_vertex_data_with_default_section_id(0x70067E8, -1);
+    set_vertex_data_with_default_section_id(0x700AEF8, -1);
+    set_vertex_data_with_default_section_id(0x700A970, 8);
+    set_vertex_data_with_default_section_id(0x700AC30, 8);
+    set_vertex_data_with_default_section_id(0x7000CE0, 0x10);
+    set_vertex_data_with_default_section_id(0x7000E88, 0x10);
+    set_vertex_data_with_default_section_id(0x700A618, -1);
+    set_vertex_data_with_default_section_id(0x700A618, -1);
+    set_vertex_data_with_default_section_id(0x70023F8, 1);
+    set_vertex_data_with_default_section_id(0x7002478, 1);
     func_80295C6C();
     debug_switch_character_ceremony_cutscene();
     func_802818BC();

@@ -3,6 +3,7 @@
 #include <common_structs.h>
 #include <defines.h>
 #include <types.h>
+#include <course.h>
 #include <packed_displaylist_symbols_gen.h>
 #include "main.h"
 #include "actors.h"
@@ -23,7 +24,7 @@ s32 D_802B87C8 = 0;
 s32 D_802B87CC = 0;
 s16 D_802B87D0 = 0;
 s16 D_802B87D4 = 0;
-s16 D_802B87D8 = 0;
+s16 currentScreenSection = 0;
 
 s32 func_80290C20(Camera *camera) {
     if (camera->unk_54.unk34 == 0) {
@@ -41,25 +42,25 @@ s32 func_80290C20(Camera *camera) {
 void parse_course_displaylists(uintptr_t arg0) {
     s32 segment = SEGMENT_NUMBER2(arg0);
     s32 offset = SEGMENT_OFFSET(arg0);
-    struct Unk0CAC *data = (struct Unk0CAC *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    TrackSections *data = (TrackSections *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
 
-    while(data->unk0 != 0) {
-        if (data->unk6 & 0x8000) {
+    while(data->addr != 0) {
+        if (data->flags & 0x8000) {
             D_8015F59C = 1;
         } else {
             D_8015F59C = 0;
         }
-        if (data->unk6 & 0x2000) {
+        if (data->flags & 0x2000) {
             D_8015F5A0 = 1;
         } else {
             D_8015F5A0 = 0;
         }
-        if (data->unk6 & 0x4000) {
+        if (data->flags & 0x4000) {
             D_8015F5A4 = 1;
         } else {
             D_8015F5A4 = 0;
         }
-        find_and_set_vertex_data(data->unk0, data->unk4, data->unk5);
+        find_and_set_vertex_data(data->addr, data->surfaceType, data->sectionId);
         data++;
     }
 }
@@ -792,6 +793,8 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC *arg0) {
 
     D_800DC5DC = 88;
     D_800DC5E0 = 72;
+
+    // Render only the first player camera onto the television billboard. Screen agnostic screens of other players).
     if ((gActiveScreenMode == SCREEN_MODE_1P) && (sp22 >= 10) && (sp22 < 17)) {
 
         prevFrame = (s16)sRenderedFramebuffer - 1;
@@ -801,29 +804,32 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC *arg0) {
         } else if (prevFrame >= 3) {
             prevFrame = 0;
         }
-        D_802B87D8++;
-        if (D_802B87D8 >= 6) {
-            D_802B87D8 = 0;
+        currentScreenSection++;
+        if (currentScreenSection >= 6) {
+            currentScreenSection = 0;
         }
-        switch (D_802B87D8) {
-        case 0:
-            func_802A7658(D_800DC5DC, D_800DC5E0, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xF800));
-            break;
-        case 1:
-            func_802A7658(D_800DC5DC + 64, D_800DC5E0, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x10800));
-            break;
-        case 2:
-            func_802A7658(D_800DC5DC, D_800DC5E0 + 32, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x11800));
-            break;
-        case 3:
-            func_802A7658(D_800DC5DC + 64, D_800DC5E0 + 32, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x12800));
-            break;
-        case 4:
-            func_802A7658(D_800DC5DC, D_800DC5E0 + 64, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x13800));
-            break;
-        case 5:
-            func_802A7658(D_800DC5DC + 64, D_800DC5E0 + 64, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x14800));
-            break;
+        /**
+         * The jumbo television screen is split into six sections each section is copied one at a time.
+         */
+        switch (currentScreenSection) {
+            case 0:
+                copy_framebuffer(D_800DC5DC, D_800DC5E0, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xF800));
+                break;
+            case 1:
+                copy_framebuffer(D_800DC5DC + 64, D_800DC5E0, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x10800));
+                break;
+            case 2:
+                copy_framebuffer(D_800DC5DC, D_800DC5E0 + 32, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x11800));
+                break;
+            case 3:
+                copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 32, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x12800));
+                break;
+            case 4:
+                copy_framebuffer(D_800DC5DC, D_800DC5E0 + 64, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x13800));
+                break;
+            case 5:
+                copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 64, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x14800));
+                break;
         }
     }
 }
@@ -1000,28 +1006,28 @@ void render_wario_stadium(struct UnkStruct_800DC5EC *arg0) {
         } else if (prevFrame >= 3) {
             prevFrame = 0;
         }
-        D_802B87D8++;
-        if (D_802B87D8 > 5) {
-            D_802B87D8 = 0;
+        currentScreenSection++;
+        if (currentScreenSection > 5) {
+            currentScreenSection = 0;
         }
-        switch (D_802B87D8) {
+        switch (currentScreenSection) {
         case 0:
-            func_802A7658(D_800DC5DC, D_800DC5E0, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x8800));
+            copy_framebuffer(D_800DC5DC, D_800DC5E0, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x8800));
             break;
         case 1:
-            func_802A7658(D_800DC5DC + 64, D_800DC5E0, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x9800));
+            copy_framebuffer(D_800DC5DC + 64, D_800DC5E0, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x9800));
             break;
         case 2:
-            func_802A7658(D_800DC5DC, D_800DC5E0 + 32, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xA800));
+            copy_framebuffer(D_800DC5DC, D_800DC5E0 + 32, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xA800));
             break;
         case 3:
-            func_802A7658(D_800DC5DC + 64, D_800DC5E0 + 32, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xB800));
+            copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 32, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xB800));
             break;
         case 4:
-            func_802A7658(D_800DC5DC, D_800DC5E0 + 64, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xC800));
+            copy_framebuffer(D_800DC5DC, D_800DC5E0 + 64, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xC800));
             break;
         case 5:
-            func_802A7658(D_800DC5DC + 64, D_800DC5E0 + 64, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xD800));
+            copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 64, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xD800));
             break;
         }
     }
@@ -1429,19 +1435,19 @@ void func_80295D88(void) {
             find_vtx_and_set_colours(d_course_wario_stadium_packed_dl_E48, 100, 255, 255, 255);
             break;
         case COURSE_BLOCK_FORT:
-            set_vertex_data_with_default_area_id(d_course_block_fort_packed_dl_15C0, 1);
+            set_vertex_data_with_default_section_id(d_course_block_fort_packed_dl_15C0, 1);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
         case COURSE_SKYSCRAPER:
-            set_vertex_data_with_default_area_id(d_course_skyscraper_packed_dl_1110, 1);
-            set_vertex_data_with_default_area_id(d_course_skyscraper_packed_dl_258, 1);
+            set_vertex_data_with_default_section_id(d_course_skyscraper_packed_dl_1110, 1);
+            set_vertex_data_with_default_section_id(d_course_skyscraper_packed_dl_258, 1);
             func_80295C6C();
 
             D_8015F8E4 = -480.0f;
             break;
         case COURSE_DOUBLE_DECK:
-            set_vertex_data_with_default_area_id(d_course_double_deck_packed_dl_738, 1);
+            set_vertex_data_with_default_section_id(d_course_double_deck_packed_dl_738, 1);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
@@ -1452,11 +1458,11 @@ void func_80295D88(void) {
             find_vtx_and_set_colours(d_course_dks_jungle_parkway_packed_dl_3FA8, 120, 255, 255, 255);
             break;
         case COURSE_BIG_DONUT:
-            set_vertex_data_with_default_area_id(d_course_big_donut_packed_dl_1018, 6);
-            set_vertex_data_with_default_area_id(d_course_big_donut_packed_dl_450, 6);
-            set_vertex_data_with_default_area_id(d_course_big_donut_packed_dl_AC0, 6);
-            set_vertex_data_with_default_area_id(d_course_big_donut_packed_dl_B58, 6);
-            set_vertex_data_with_default_area_id(d_course_big_donut_packed_dl_230, 6);
+            set_vertex_data_with_default_section_id(d_course_big_donut_packed_dl_1018, 6);
+            set_vertex_data_with_default_section_id(d_course_big_donut_packed_dl_450, 6);
+            set_vertex_data_with_default_section_id(d_course_big_donut_packed_dl_AC0, 6);
+            set_vertex_data_with_default_section_id(d_course_big_donut_packed_dl_B58, 6);
+            set_vertex_data_with_default_section_id(d_course_big_donut_packed_dl_230, 6);
             func_80295C6C();
             D_8015F8E4 = 100.0f;
             break;
