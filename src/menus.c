@@ -14,6 +14,7 @@
 #include "code_800B45E0.h"
 #include "main.h"
 #include "staff_ghosts.h"
+#include "save_data.h"
 #include <sounds.h>
 
 /** Externs to be put into headers **/
@@ -268,7 +269,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 sp38->unk8 = -1;
             }
             if (sp2C && gSoundMode != sp38->unk4) {
-                gSaveDataSoundMode = gSoundMode;
+                gSaveData.main.soundMode = gSoundMode;
                 write_save_data_grand_prix_points_and_sound_mode();
                 update_save_data_backup();
                 sp38->unk4 = gSoundMode;
@@ -277,7 +278,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 func_8009E280();
                 play_sound2(SOUND_MENU_GO_BACK);
                 if (gSoundMode != sp38->unk4) {
-                    gSaveDataSoundMode = gSoundMode;
+                    gSaveData.main.soundMode = gSoundMode;
                     write_save_data_grand_prix_points_and_sound_mode();
                     update_save_data_backup();
                     sp38->unk4 = gSoundMode;
@@ -705,7 +706,7 @@ void course_data_menu_act(struct Controller *controller, UNUSED u16 arg1) {
             }
 
             sp28 = find_8018D9E0_entry_dupe(0xE8);
-            sp24 = &D_8018EB90.allCourseTimeTrialRecords
+            sp24 = &gSaveData.allCourseTimeTrialRecords
                 .cupRecords[gTimeTrialDataCourseIndex / 4]
                 .courseRecords[gTimeTrialDataCourseIndex % 4];
             if (gCourseRecordsMenuSelection == 2 && func_800B639C(gTimeTrialDataCourseIndex) < 0) {
@@ -1131,7 +1132,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
                 func_800B44BC();
-                gSaveDataSoundMode = gSoundMode;
+                gSaveData.main.soundMode = gSoundMode;
                 write_save_data_grand_prix_points_and_sound_mode();
                 update_save_data_backup();
             }
@@ -1142,7 +1143,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
                 func_800B44BC();
-                gSaveDataSoundMode = gSoundMode;
+                gSaveData.main.soundMode = gSoundMode;
                 write_save_data_grand_prix_points_and_sound_mode();
             }
             if (btnAndStick & U_JPAD) {

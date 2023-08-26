@@ -8338,7 +8338,7 @@ void func_800A1BE0(struct_8018D9E0_entry *arg0) {
             phi_s2 = 1;
             switch (phi_s0) {                       /* irregular */
             case 1:
-                if (D_8018EB90.allCourseTimeTrialRecords.cupRecords[((s32) temp_v0 / 4)].courseRecords[((s32) temp_v0 % 4)].records[0].unk12 == 0) {
+                if (gSaveData.allCourseTimeTrialRecords.cupRecords[((s32) temp_v0 / 4)].courseRecords[((s32) temp_v0 % 4)].records[0].unk12 == 0) {
 block_9:
                     phi_s1 = 1;
                 }

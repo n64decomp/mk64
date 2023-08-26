@@ -13,6 +13,9 @@
 
 #define sqr(x) ((x) * (x))
 
+// Here to appease the pragma gods
+double fabs(double x);
+
 void func_802B4FF0();
 void func_802B5794(Mat4, Vec3f, Vec3f);
 s32  func_802B4FF8(Mat4, s32);
@@ -36,7 +39,7 @@ void func_802B5A44(Mat4, s16);
 void func_802B5AAC(Mat4, s16);
 void func_802B5CAC(s16, s16, Vec3f);
 void func_802B5D30(s16, s16, s32);
-void func_802B5D64(uintptr_t, s16, s32, s32);
+void func_802B5D64(uintptr_t, s16, s16, s32);
 void func_802B5F00(Mat4, f32);
 void func_802B5F74(Mat4, Vec3f, Vec3s);
 void func_802B60B4(Mat4, Vec3s, Vec3s);
@@ -54,6 +57,7 @@ void func_802B75F8(Mtx*, Mat4);
 u16  atan2_lookup(f32, f32);
 u16  atan2s(f32, f32);
 f32  func_802B79B8(f32, f32);
+f32  func_802B79F0(f32, f32);
 u16  func_802B7B50(f32, f32);
 void func_802B7C18(f32);
 s16  func_802B7C40(f32);
@@ -69,6 +73,7 @@ f32  sins(u16);
 f32  coss(u16);
 s32  func_802B8058(u16, u16, u16);
 f32  func_802B80D0(Vec3f, Vec3f, u16, f32, f32, f32);
+void func_802B8414(uintptr_t, Mat4, s16, s16, s32);
 
 extern u16 gRandomSeed16;
 
