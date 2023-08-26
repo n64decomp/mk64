@@ -52,8 +52,8 @@ glabel func_800B5218
 /* 0B5ED4 800B52D4 10200021 */  beqz  $at, .L800B535C
 /* 0B5ED8 800B52D8 00001025 */   move  $v0, $zero
 /* 0B5EDC 800B52DC 8FA30038 */  lw    $v1, 0x38($sp)
-/* 0B5EE0 800B52E0 3C0C8019 */  lui   $t4, %hi(D_8018EB90) # $t4, 0x8019
-/* 0B5EE4 800B52E4 258CEB90 */  addiu $t4, %lo(D_8018EB90) # addiu $t4, $t4, -0x1470
+/* 0B5EE0 800B52E0 3C0C8019 */  lui   $t4, %hi(gSaveData) # $t4, 0x8019
+/* 0B5EE4 800B52E4 258CEB90 */  addiu $t4, %lo(gSaveData) # addiu $t4, $t4, -0x1470
 /* 0B5EE8 800B52E8 04610003 */  bgez  $v1, .L800B52F8
 /* 0B5EEC 800B52EC 0003C083 */   sra   $t8, $v1, 2
 /* 0B5EF0 800B52F0 24610003 */  addiu $at, $v1, 3

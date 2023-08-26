@@ -40,10 +40,6 @@ extern s8    gHumanPlayerCount;
 
 extern s32   gIsMirrorMode; // D_800DC604
 
-extern f32   gKartFrictionTable[];
-extern f32   gKartBoundingBoxTable[];
-extern f32   gKartGravityTable[];
-
 extern f32   gLapCompletionPercentByPlayerId[8]; // D_801644A8
 extern s32   gLapCountByPlayerId[8];             // D_80164390
 
@@ -60,8 +56,6 @@ extern s32   gPlayerCountSelection1;
 extern s32   gPlayerIsThrottleActive[];           // D_801653E0
 extern s32   gGPCurrentRaceRankByPlayerId[];      // D_801643B8
 
-extern u8    gSaveDataSoundMode;               // D_8018ED14
-extern u8    gSaveDataSoundModeBackup;         // D_8018ED8C
 //extern u32   gScreenModeSelection;             // D_800DC530
 extern u32   gSegmentTable[16];                // D_80150258
 extern OSMesgQueue gSIEventMesgQueue;          // D_8014F0B8
@@ -82,8 +76,6 @@ extern Player* gPlayerSix;
 extern Player* gPlayerSeven;
 extern Player* gPlayerEight;
 extern Player* gPlayerOneCopy;
-
-extern SaveData D_8018EB90;
 
 extern struct_8018CA70_entry D_8018CA70[];
 

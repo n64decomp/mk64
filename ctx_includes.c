@@ -15,6 +15,7 @@
 #include "include/kart_attributes.h"
 #include "include/macros.h"
 #include "include/objects.h"
+#include "include/save_data.h"
 #include "include/segment_symbols.h"
 #include "include/segments.h"
 #include "include/sounds.h"

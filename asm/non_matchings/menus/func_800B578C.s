@@ -2,8 +2,8 @@ glabel func_800B578C
 /* 0B638C 800B578C 000470C0 */  sll   $t6, $a0, 3
 /* 0B6390 800B5790 01C47023 */  subu  $t6, $t6, $a0
 /* 0B6394 800B5794 000E70C0 */  sll   $t6, $t6, 3
-/* 0B6398 800B5798 3C188019 */  lui   $t8, %hi(D_8018EB90) # $t8, 0x8019
-/* 0B639C 800B579C 2718EB90 */  addiu $t8, %lo(D_8018EB90) # addiu $t8, $t8, -0x1470
+/* 0B6398 800B5798 3C188019 */  lui   $t8, %hi(gSaveData) # $t8, 0x8019
+/* 0B639C 800B579C 2718EB90 */  addiu $t8, %lo(gSaveData) # addiu $t8, $t8, -0x1470
 /* 0B63A0 800B57A0 25CF0188 */  addiu $t7, $t6, 0x188
 /* 0B63A4 800B57A4 01F83021 */  addu  $a2, $t7, $t8
 /* 0B63A8 800B57A8 00001825 */  move  $v1, $zero
