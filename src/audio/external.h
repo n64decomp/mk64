@@ -88,7 +88,7 @@ struct Unk_800EA06C {
 	/* 0x0D */ // u8 compilerPadding0[3];
 };
 
-void func_800C13F0();
+void func_800C13F0(void);
 void func_800C13FC(OSMesg);
 f32  func_800C1480(u8, u8);
 s8   func_800C15D0(u8, u8, u8);
@@ -96,16 +96,16 @@ f32  func_800C1934(u8, u8);
 struct Unk_8018EFD8 *func_800C1C88(u8, Vec3f, Vec3f, f32*, u8, u32);
 void func_800C1DA4(Camera*, Vec3s, struct Unk_8018EFD8*);
 void func_800C1E2C(Camera*, Vec3f, struct Unk_8018EFD8*);
-void func_800C1F8C();
+void func_800C1F8C(void);
 
 f32 *func_800C21E8(Vec3f, u32);
 void func_800C2274(s32);
-void func_800C2474();
+void func_800C2474(void);
 void func_800C284C(u8, u8, u8, s32);
 
-void func_800C3724();
+void func_800C3724(void);
 void func_800C3448(s32);
-void func_800C3478();
+void func_800C3478(void);
 u16  func_800C3508(s32);
 void func_800C35E8(u8);
 void func_800C36C4(s32, u32, u8, s8);
@@ -115,25 +115,25 @@ void func_800C400C(void);
 void func_800C4084(u16);
 void play_sound(u32, f32*, u8, f32*, f32*, u8*);
 void func_800C41CC(u8, struct Unk_80191420*);
-void func_800C4398();
+void func_800C4398(void);
 
 void func_800C5278(u8);
 void func_800C5578(Vec3f, u32);
-u8   func_800C56F0();
-void func_800C5848();
+u8   func_800C56F0(u32);
+void func_800C5848(void);
 void func_800C58B8(u8, u8, u16);
-void func_800C59C4();
+void func_800C59C4(void);
 void func_800C5A3C(void);
 void func_800C5BD0(void);
-void func_800C5C40();
-void func_800C5CB8();
+void func_800C5C40(void);
+void func_800C5CB8(void);
 
 void func_800C6758(u8);
 
 void func_800C86D8(u8);
 void func_800C8770(u8);
-void func_800C89E4();
-void func_800C8CCC();
+void func_800C89E4(void);
+void func_800C8CCC(void);
 void play_sound2(s32);
 void func_800C8EAC(u16);
 void func_800C8EF8(u16);
@@ -151,13 +151,13 @@ void func_800C9EF4(Vec3f, u32);
 void func_800C9F90(u8);
 
 void func_800CA008(u8, u8);
-void func_800CA0A0();
-void func_800CA0B8();
-void func_800CA0CC();
-void func_800CA0E4();
-void func_800CA118();
+void func_800CA0A0(void);
+void func_800CA0B8(void);
+void func_800CA0CC(void);
+void func_800CA0E4(void);
+void func_800CA118(s32);
 void func_800CA24C(u8);
-void func_800CA270();
+void func_800CA270(void);
 void func_800CA288(u8, s8);
 void func_800CA2B8(u8);
 void func_800CA2E4(u8, s8);
@@ -172,10 +172,10 @@ void func_800CAD40(s32);
 void func_800CAEC4(u8, f32);
 void func_800CAFC0(u8);
 
-void func_800CB134();
+void func_800CB134(void);
 void func_800CB14C(void);
-void func_800CB2C4();
-void func_800CBC24();
+void func_800CB2C4(void);
+void func_800CBC24(void);
 
 // Based on SM64, this should be part of data.c's BSS section. Somehow.
 extern s32 gAudioErrorFlags;

@@ -8,15 +8,13 @@ s32 func_80281880(s32 arg0);
 void func_802818BC(void);
 void load_ceremony_cutscene(void);
 
-extern u32 set_segment_base_addr();
+extern void func_80093E60(void);
 
-extern void func_80093E60();
+extern void func_802816B8(void);
 
-extern void func_802816B8();
+extern void func_80295C6C(void);
 
-extern void func_80295C6C();
-
-extern void func_802A4D18();
+extern void func_802A4D18(void);
 
 extern s16 gCurrentCourseId;
 extern u16 D_800DC5B4;

@@ -10726,6 +10726,6 @@ UNUSED void func_8001C42C(void) {
         }
         func_80057C60();
         gSPDisplayList(gDisplayListHead++, D_0D0076F8);
-        func_80057CE4(&gDisplayListHead);
+        func_80057CE4();
     }
 }

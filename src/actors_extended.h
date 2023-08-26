@@ -28,7 +28,7 @@ s32  func_802B2C40(Player*);
 s32  func_802B2D70(Player*);
 void func_802B2EBC(Player*);
 void func_802B2FA0(Player*);
-void func_802B30EC();
+void func_802B30EC(void);
 void update_obj_green_shell(struct ShellActor*);
 void func_802B3B44(struct ShellActor*);
 void func_802B3E7C(struct ShellActor*, Player*);

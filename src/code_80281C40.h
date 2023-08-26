@@ -3,9 +3,9 @@
 
 /* Function Prototypes */
 
-void func_80281C40();
+void func_80281C40(void);
 void func_80281CB4(s32, s32, s32, s32);
-void func_80281D00();
+void func_80281D00(void);
 
 extern s32 D_802874FC;
 

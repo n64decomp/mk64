@@ -14,7 +14,7 @@
 void audio_dma_copy_immediate(uintptr_t devAddr, void *vAddr, size_t nbytes);
 void audio_dma_copy_async(uintptr_t, void*, size_t, OSMesgQueue*, OSIoMesg*);
 void audio_dma_partial_copy_async(uintptr_t*, u8**, ssize_t*, OSMesgQueue*, OSIoMesg*);
-void decrease_sample_dma_ttls();
+void decrease_sample_dma_ttls(void);
 void func_800BB030(s32);
 s32  func_800BB304(struct AudioBankSample*);
 s32  func_800BB388(s32 bankId, s32 instId, s32 arg2);

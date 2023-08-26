@@ -16,7 +16,7 @@
 // Here to appease the pragma gods
 double fabs(double x);
 
-void func_802B4FF0();
+void func_802B4FF0(void);
 void func_802B5794(Mat4, Vec3f, Vec3f);
 s32  func_802B4FF8(Mat4, s32);
 f32  func_802B51E8(Vec3f, Vec3f);
@@ -65,7 +65,7 @@ void func_802B7C6C(f32);
 s16  func_802B7CA8(f32);
 f32 func_802B7CE8(f32);
 s16  func_802B7D28(f32);
-u16  random_u16();
+u16  random_u16(void);
 u16  random_int(u16);
 s16  func_802B7F34(f32, f32, f32, f32);
 void func_802B7F7C(Vec3f, Vec3f, Vec3s);

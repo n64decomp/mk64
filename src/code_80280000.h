@@ -5,11 +5,11 @@
 
 /* Function Prototypes */
 
-void func_80280000();
-void func_80280038();
+void func_80280000(void);
+void func_80280038(void);
 void func_80280268(s32 arg0);
-void credits_loop();
-void load_credits();
+void credits_loop(void);
+void load_credits(void);
 
 extern Gfx *gDisplayListHead;
 

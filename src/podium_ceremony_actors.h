@@ -72,27 +72,27 @@ typedef struct {
 } Firework;
 
 void update_actors_loop(void);
-void func_80280650();
+void func_80280650(void);
 void set_initial_position(CeremonyActor*);
-CeremonyActor *find_available_entry();
+CeremonyActor *find_available_entry(void);
 CeremonyActor *new_actor(ActorInitParams*);
-u16  random_u16_credits();
-f32  random_float_between_0_and_1();
+u16  random_u16_credits(void);
+f32  random_float_between_0_and_1(void);
 f32  random_who_knows(f32);
-void func_80280884();
+void func_80280884(void);
 void firework_cone_update_and_spawn_burst(Firework *);
 void func_80280A28(Vec3f, Vec3s, f32 );
 void render_fireworks(Vec3f, f32, s32, s16);
-void balloons_and_fireworks_init();
-void func_80280FFC();
+void balloons_and_fireworks_init(void);
+void func_80280FFC(void);
 void func_8028100C(s32, s32, s32);
-void func_8028150C();
-void func_80281520();
-void func_80281528();
-void func_80281530();
-void func_80281538();
-void func_80281540();
-void podium_ceremony_loop();
+void func_8028150C(void);
+void func_80281520(void);
+void func_80281528(void);
+void func_80281530(void);
+void func_80281538(void);
+void func_80281540(void);
+void podium_ceremony_loop(void);
 
 
 extern CeremonyActor *sPodiumActorList;
