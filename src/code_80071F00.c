@@ -3543,7 +3543,7 @@ void func_8007A4D4(s32 objectIndex, s32 playerId) {
     }
     switch (D_80165C18[objectIndex].unk_0D6) {                              /* switch 1; irregular */
         case 1:                                         /* switch 1 */
-            if ((D_80165C18[objectIndex].unk_0A6 >= 3) && ((sp2C->unk_0BC << 9) >= 0)) {
+            if ((D_80165C18[objectIndex].unk_0A6 >= 3) && (!(sp2C->unk_0BC & 0x400000))) {
                 func_80086F10(objectIndex, 6, D_800E69F4);
                 D_80165C18[objectIndex].unk_0D6 = 2;
                 D_80165C18[objectIndex].unk_04C = 0x00000050;

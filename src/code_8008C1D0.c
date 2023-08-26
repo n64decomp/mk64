@@ -1341,8 +1341,8 @@ void func_8008F3F4(Player* player, UNUSED s8 arg1) {
 void func_8008F494(Player* player, s8 arg1) {
     if ((((player->unk_0BC & 0x80) != 0) ||
          ((player->unk_0BC & 0x40) != 0) ||
-         ((player->unk_0BC << 7) < 0) ||
-         ((player->unk_0BC << 6) < 0) ||
+         ((player->unk_0BC & 0x01000000)) ||
+         ((player->unk_0BC & 0x02000000)) ||
          ((player->unk_0BC & 0x400) != 0)) && (gModeSelection == BATTLE)) {
         player->unk_044 |= 0x8000;
     }

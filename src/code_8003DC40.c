@@ -278,7 +278,7 @@ void func_8003F734(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         *arg5 += arg1[1] * player->unk_110.unk3C[0] * 0.1;
         *arg6 += arg1[2] * player->unk_110.unk3C[0] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1, 0);
-        if (((player->unk_0BC << 0xF) >= 0) && ((player->unk_0BC & 8) == 0)) {
+        if ((!(player->unk_0BC & 0x10000)) && ((player->unk_0BC & 8) == 0)) {
             arg2[1] *= -1e-05;
         }
     } else {
@@ -291,7 +291,7 @@ void func_8003F734(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         }
         *arg6 += arg1[2] * player->unk_110.unk3C[0] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1.2f, 0);
-        if (((player->unk_0BC << 0xF) >= 0) && ((player->unk_0BC & 8) == 0)) {
+        if ((!(player->unk_0BC & 0x10000)) && ((player->unk_0BC & 8) == 0)) {
             arg2[1] *= -1e-05;
         }
     }
@@ -332,7 +332,7 @@ void func_8003FBAC(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         *arg5 += arg1[1] * player->unk_110.unk3C[1] * 0.1;
         *arg6 += arg1[2] * player->unk_110.unk3C[1] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1, 0);
-        if (((player->unk_0BC << 0xF) >= 0) && ((player->unk_0BC & 8) == 0)) {
+        if ((!(player->unk_0BC & 0x10000)) && ((player->unk_0BC & 8) == 0)) {
             arg2[1] *= -1e-05;
         }
     } else {
@@ -345,7 +345,7 @@ void func_8003FBAC(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         }
         *arg6 += arg1[2] * player->unk_110.unk3C[1] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1.2f, 0);
-        if (((player->unk_0BC << 0xF) >= 0) && ((player->unk_0BC & 8) == 0)) {
+        if ((!(player->unk_0BC & 0x10000)) && ((player->unk_0BC & 8) == 0)) {
             arg2[1] *= -1e-05;
         }
     }

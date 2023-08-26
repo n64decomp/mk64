@@ -10,6 +10,9 @@ s32 get_player_index_for_player(Player*);
 void func_80027DA8(Player*, s8);
 void func_80027EDC(Player*, s8);
 
+void func_80029B4C(Player *, f32, f32, f32);
+void func_8002F730(Player *player, Camera *camera, s8 arg2, s8 arg3);
+
 void func_80028864(Player*, Camera*, s8, s8);
 void func_80028C44(Player*, Camera*, s8, s8);
 void func_80028D3C(Player*, Camera*, s8, s8);

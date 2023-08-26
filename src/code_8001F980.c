@@ -1359,7 +1359,7 @@ void func_800248D0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
         }
         sp14C[1] = player->unk_048[arg2];
         sp14C[2] = player->unk_050[arg2];
-        if ((player->unk_0BC & 0x04000000) == 0x04000000) {
+        if (((s32)player->unk_0BC & 0x04000000) == 0x04000000) {
             func_80062B18(&sp148, &sp144, &sp140, 0.0f, 8.0f, 0.0f, -player->unk_048[arg2], player->unk_050[arg2]);
             sp154[1] = (player->pos[1] - player->boundingBoxSize) + player->unk_108;
             sp154[0] = player->pos[0] + sp148;
