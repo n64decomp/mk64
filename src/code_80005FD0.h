@@ -36,7 +36,7 @@ s32  func_800061DC(Vec3f, f32, s32);
 void set_places(void);
 
 void func_800070F4(void);
-void func_800074D4();
+void func_800074D4(void);
 s32  func_80007BF8(u16, u16, u16, u16, u16);
 
 void func_80008DC0(s32);
@@ -68,7 +68,7 @@ s16  func_8000D33C(f32, f32, f32, s16, s32);
 s16  func_8000D6D0(Vec3f, s16*, f32, f32, s32, s32);
 s16  func_8000D940(Vec3f, s16*, f32, f32, s32);
 s16  func_8000DBAC(Vec3f, s16*, f32);
-void func_8000DD78();
+void func_8000DD78(void);
 void func_8000DF8C(s32);
 
 s32  func_8000ED14(s32, s16);
@@ -76,12 +76,12 @@ s32  func_8000ED80(s32);
 s32  func_8000EDC8(s32);
 s32  func_8000EE10(s32);
 void func_8000EE58(s32);
-void func_8000EEDC();
-void func_8000EF20();
-void func_8000EF20();
+void func_8000EEDC(void);
+void func_8000EF20(void);
+void func_8000EF20(void);
 
-void func_8000F0E0();
-void func_8000F124();
+void func_8000F0E0(void);
+void func_8000F124(void);
 void func_8000F2BC(struct TrackWayPoint*, size_t);
 
 void func_80010218(s32);
@@ -97,12 +97,12 @@ void func_80011AB8(s32);
 void func_80011AE4(s32);
 
 void func_80012220(VehicleStuff*);
-void func_800122D8();
+void func_800122D8(void);
 void func_80012A48(TrainCarStuff*, s16);
-void func_80012AC0();
+void func_80012AC0(void);
 void func_80012DC0(s32, Player*);
 
-void func_800133C4();
+void func_800133C4(void);
 void func_80013854(Player*);
 f32  func_80013C74(s16, s16);
 void func_80013D20(VehicleStuff*);
@@ -110,29 +110,29 @@ void func_80013F7C(s32, Player*, VehicleStuff*, f32, f32, s32, u32);
 
 f32  func_800145A8(s16, f32, s16);
 void func_800146B8(s32, s32, VehicleStuff*);
-void func_8001487C();
+void func_8001487C(void);
 void func_800148C4(s32, Player*);
 void func_8001490C(s32);
-void func_800149D0();
+void func_800149D0(void);
 void func_80014A18(s32, Player*);
 void func_80014A60(s32);
-void func_80014B24();
+void func_80014B24(void);
 void func_80014B6C(s32, Player*);
 void func_80014BB4(s32);
-void func_80014C78();
+void func_80014C78(void);
 void func_80014CC0(s32, Player*);
 void func_80014D08(s32);
 void func_80014D30(s32, s32);
 f32  func_80014EE4(f32 arg0, s32 arg1);
 
-void func_8001530C();
+void func_8001530C(void);
 void func_80015314(s32, s32, s32);
 void func_80015390(Camera*, Player*, s32);
 
-void func_8001968C();
+void func_8001968C(void);
 void func_80019C50(s32);
 void func_80019D2C(Camera*, Player*, s32);
-void func_80019DE4();
+void func_80019DE4(void);
 void func_80019DF4(void);
 void func_80019E58(void);
 void func_80019ED0(void);
@@ -145,10 +145,10 @@ void func_8001A588(u16*, Camera*, Player*, s8, s32);
 void func_8001ABE0(s32, s32);
 void func_8001ABEC(struct struct_801642D8*);
 
-void func_8001C05C();
+void func_8001C05C(void);
 void func_8001C14C(void);
 void func_8001C3C4(s32);
-void func_8001C42C();
+void func_8001C42C(void);
 
 /* This is where I'd put my static data, if I had any */
 // 0 or 1, only 1 when when in extra (mirror) mode

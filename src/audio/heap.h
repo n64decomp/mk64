@@ -92,7 +92,7 @@ struct PoolSplit2 {
     u32 wantTemporary;
 }; // size = 0x8
 
-void reset_bank_and_seq_load_status();
+void reset_bank_and_seq_load_status(void);
 void discard_bank(s32 bankId);
 void discard_sequence(s32 seqId);
 void *soundAlloc(struct SoundAllocPool *pool, u32 size);
@@ -105,7 +105,7 @@ void func_800B9BE4(f32, f32, u16*);
 void func_800B90E0(struct SoundAllocPool *pool);
 void func_800B90F0(s32);
 void func_800B914C(struct PoolSplit*);
-void func_800B9FB8();
+void func_800B9FB8(void);
 void seq_and_bank_pool_init(struct PoolSplit2 *a);
 void persistent_pools_init(struct PoolSplit *a);
 void temporary_pools_init(struct PoolSplit *a);

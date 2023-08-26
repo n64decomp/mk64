@@ -8294,14 +8294,14 @@ void func_800A1A20(struct_8018D9E0_entry *arg0) {
     func_80093324(0x2D, arg0->row + 0x28, (char *)&D_800E77D8, 0, 0.75f, 0.75f);
     func_800936B8(0xA5, arg0->row + 0x28, D_800E77E4[courseId], 1, 0.75f, 0.75f);
     set_text_color(TEXT_YELLOW);
-    func_80093324(0xA0, arg0->row + 0x86, D_800E7728, 0, 0.75f, 0.75f);
+    func_80093324(0xA0, arg0->row + 0x86, D_800E7728[0], 0, 0.75f, 0.75f);
     // Print the 3 Lap Time Trial records
     for(recordType = TIME_TRIAL_3LAP_RECORD_1, rowOffset = 0; recordType < TIME_TRIAL_1LAP_RECORD; recordType++, rowOffset += 0xD){
         set_text_color(TEXT_RED);
         func_800A474C(recordType, 0x96, arg0->row + rowOffset + 0x92);
     }
     set_text_color(TEXT_YELLOW);
-    func_80093324(0xA0, arg0->row + 0xD5, D_800E772C, 0, 0.75f, 0.75f);
+    func_80093324(0xA0, arg0->row + 0xD5, D_800E7728[1], 0, 0.75f, 0.75f);
     func_800A474C(TIME_TRIAL_1LAP_RECORD, 0x96, arg0->row + 0xE1);
 }
 
@@ -9385,13 +9385,13 @@ void func_800A3C84(struct_8018D9E0_entry *arg0) {
         func_800A4550(recordType, arg0->column + 0x17, arg0->row + rowOffset + 0x37);
     }
     set_text_color(TEXT_YELLOW);
-    func_80093324(0xB4 - arg0->column, arg0->row + 0x86, D_800E7728, 0, 0.75f, 0.75f);
+    func_80093324(0xB4 - arg0->column, arg0->row + 0x86, D_800E7728[0], 0, 0.75f, 0.75f);
     for(recordType = 0, rowOffset = 0; recordType < TIME_TRIAL_1LAP_RECORD; recordType += 1, rowOffset += 0xD){
         set_text_color(TEXT_RED);
         func_800A474C(recordType, 0xAA - arg0->column, arg0->row + rowOffset + 0x92);
     }
     set_text_color(TEXT_YELLOW);
-    func_80093324(0xB4 - arg0->column, arg0->row + 0xD5, D_800E772C, 0, 0.75f, 0.75f);
+    func_80093324(0xB4 - arg0->column, arg0->row + 0xD5, D_800E7728[1], 0, 0.75f, 0.75f);
     func_800A474C(TIME_TRIAL_1LAP_RECORD, 0xAA - arg0->column, arg0->row + 0xE1);
 }
 

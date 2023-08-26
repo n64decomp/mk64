@@ -18,14 +18,14 @@ void func_80028C44(Player*, Camera*, s8, s8);
 void func_80028D3C(Player*, Camera*, s8, s8);
 void func_80028E70(Player*, Camera*, s8, s8);
 void func_80028F5C(s32, s32, s32, s32);
-void func_80028F70();
+void func_80028F70(void);
 
-void func_80029060();
-void func_80029150();
-void func_80029158();
-void func_800291E8();
-void func_800291F0();
-void func_800291F8();
+void func_80029060(void);
+void func_80029150(void);
+void func_80029158(void);
+void func_800291E8(void);
+void func_800291F0(void);
+void func_800291F8(void);
 void func_80029200(Player*, s8);
 void func_8002934C(Player*, Camera*, s8, s8);
 
@@ -37,9 +37,9 @@ void func_8002A8A4(Player*, s8);
 void func_8002AA50(Player*);
 void func_8002AAC0(Player*);
 void func_8002AB70(Player*);
-void func_8002AE20();
-void func_8002AE28();
-void func_8002AE30();
+void func_8002AE20(void);
+void func_8002AE28(void);
+void func_8002AE30(void);
 void func_8002AE38(Player*, s8, f32, f32, f32, f32);
 
 void func_8002B218(Player*);
@@ -103,7 +103,7 @@ void func_80037BB4(Player*player, Vec3f);
 void func_80037CFC(Player*, struct Controller*, s8);
 
 void func_800381AC(Player*, struct Controller*, s8);
-void func_800382DC();
+void func_800382DC(void);
 s16  func_80038534(struct Controller*);
 s16  func_800388B0(struct Controller*);
 void func_80038BE4(Player*, s16);

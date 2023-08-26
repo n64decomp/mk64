@@ -29,14 +29,14 @@
 /* Function Prototypes */
 
 void func_800B45E0(s32);
-void write_save_data_grand_prix_points_and_sound_mode();
+void write_save_data_grand_prix_points_and_sound_mode(void);
 void func_800B46D0(void);
 void func_800B4728(s32);
-void reset_save_data_grand_prix_points_and_sound_mode();
+void reset_save_data_grand_prix_points_and_sound_mode(void);
 u8   func_800B4874(s32);
 s32  func_800B639C(s32);
-u8   compute_save_data_checksum_1();
-u8   compute_save_data_checksum_2();
+u8   compute_save_data_checksum_1(void);
+u8   compute_save_data_checksum_2(void);
 void load_save_data(void);
 void func_800B4A9C(s32);
 void validate_save_data(void);
@@ -44,7 +44,7 @@ void populate_time_trial_record(u8 *timeTrialRecord, u32 time, s32 characterId);
 u32  func_800B4DF4(u8*);
 s32  func_800B4E24(s32);
 u32  func_800B4EB4(s32, s32);
-s32  func_800B4F2C();
+s32  func_800B4F2C(void);
 s32  func_800B4FB0(s32);
 s32  func_800B5020(u32, s32);
 void func_800B5404(s32, s32);
@@ -53,21 +53,21 @@ u8   func_800B54EC(s32, s32);
 s32  func_800B5020(u32 time, s32 charId);
 u8   func_800B5508(s32, s32, s32);
 s32  func_800B5530(s32);
-s32  func_800B555C();
-s32  func_800B557C();
+s32  func_800B555C(void);
+s32  func_800B557C(void);
 void func_800B559C(s32);
 s32  func_800B578C(s32);
 s32  func_800B5888(s32);
 s32  func_800B58C4(s32);
-void update_save_data_backup();
-u8  compute_save_data_checksum_backup_1(void);
-u8  compute_save_data_checksum_backup_2(void);
-s32  validate_save_data_checksum_backup();
+void update_save_data_backup(void);
+u8   compute_save_data_checksum_backup_1(void);
+u8   compute_save_data_checksum_backup_2(void);
+s32  validate_save_data_checksum_backup(void);
 s32  func_800B5B2C(s32);
 s32  controller_pak_1_status(void);
 s32  controller_pak_2_status(void);
-s32  func_800B5F30();
-s32  func_800B6014();
+s32  func_800B5F30(void);
+s32  func_800B6014(void);
 s32  func_800B6088(s32);
 u8   func_800B60E8(s32);
 s32  func_800B6178(s32);
@@ -78,7 +78,7 @@ void func_800B6798(void);
 u8   func_800B6828(s32);
 u8   func_800B68F4(s32);
 s32  func_800B69BC(s32);
-s32  func_800B6A68();
+s32  func_800B6A68(void);
 
 /* data */
 // these might not be in this file, but for now...

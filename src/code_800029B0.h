@@ -3,11 +3,11 @@
 
 /* Function Prototypes */
 
-void func_800029B0();
-void setup_race();
-void func_80002DAC();
-void clear_nmi_buffer();
-void func_80003040();
+void func_800029B0(void);
+void setup_race(void);
+void func_80002DAC(void);
+void clear_nmi_buffer(void);
+void func_80003040(void);
 
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
 extern struct UnkStruct_800DC5EC *D_800DC5F0;

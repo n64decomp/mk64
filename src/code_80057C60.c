@@ -147,7 +147,7 @@ void func_80057FC4(u32 arg0) {
         return;
     }
     gSPDisplayList(gDisplayListHead++, &D_0D0076F8);
-    func_80041EF4(&gDisplayListHead);
+    func_80041EF4();
 
     if ((D_801657C8 != 0)){
         return;
@@ -453,7 +453,7 @@ void func_800588F4(s32 arg0) {
     }
 }
 
-void func_80058B58() {
+void func_80058B58(s32 arg0) {
     switch(gCurrentCourseId) {
         case COURSE_FRAPPE_SNOWLAND:
             if (gGamestate != 9) {
@@ -465,7 +465,7 @@ void func_80058B58() {
             }
             break;
         case COURSE_SHERBET_LAND:
-            func_80052C60();
+            func_80052C60(arg0);
             break;
     }
 }

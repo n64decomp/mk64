@@ -4,22 +4,22 @@
 #include "common_structs.h"
 #include "code_80071F00.h"
 
-void func_8006E9C0();
-void func_8006EA5C();
+void func_8006E9C0(void);
+void func_8006EA5C(void);
 void func_8006EB10(void);
-void func_8006ED60();
+void func_8006ED60(void);
 u8  *func_8006ED94(u8*, u8*, u32, u32);
-void func_8006EE44();
+void func_8006EE44(void);
 void func_8006EE7C(s32);
 void func_8006FA94(void);
 void func_80070148(void);
-void func_80070190();
+void func_80070190(void);
 void func_80070250(s32, s32, StarSpawn*);
 void func_80070328(StarSpawn*);
 void func_800703E0(s32, s32, StarSpawn*);
 void func_800704A0(StarSpawn*);
 void func_8007055C(void);
-void func_80070714();
+void func_80070714(void);
 void func_80071428(void);
 void func_80071818(void);
 void func_80071C28(void);
