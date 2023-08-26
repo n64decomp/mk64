@@ -6392,7 +6392,7 @@ void func_80013854(Player *player) {
     f32 playerZ;
     f32 playerY;
 
-    if (((player->unk_0BC << 7) >= 0) && ((player->unk_0BC << 6) >= 0)) {
+    if (!((player->unk_0BC & 0x01000000)) && (!(player->unk_0BC & 0x02000000))) {
         playerX = player->pos[0];
         playerY = player->pos[1];
         playerZ = player->pos[2];
