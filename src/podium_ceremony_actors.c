@@ -288,7 +288,7 @@ void unused_80280FA8(UNUSED CeremonyActor *actor) {
 void balloons_and_fireworks_init(void) {
     sActorTimer = 0;
     sPodiumActorList = (CeremonyActor *) get_next_available_memory_addr(sizeof(CeremonyActor) * 200);
-    bzero(sPodiumActorList, 0x3B60);
+    bzero(sPodiumActorList, (sizeof(CeremonyActor) * 200));
     new_actor(&initDummy);
 }
 
