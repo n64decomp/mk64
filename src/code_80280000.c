@@ -129,7 +129,7 @@ void load_credits(void) {
     D_800DC5EC->screenStartY = 120;
     gScreenModeSelection = SCREEN_MODE_1P;
     gActiveScreenMode = SCREEN_MODE_1P;
-    gNextFreeMemoryAddress = D_8015F734;
+    gNextFreeMemoryAddress = FreeMemoryResetAnchor;
     load_course(gCurrentCourseId);
     D_8015F730 = gNextFreeMemoryAddress;
     set_segment_base_addr(0xB, (void *) decompress_segments((u8 *)&_data_821D10SegmentRomStart, (u8 *)&_data_825800SegmentRomStart));

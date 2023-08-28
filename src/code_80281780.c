@@ -101,7 +101,7 @@ void load_ceremony_cutscene(void) {
     D_800DC5EC->screenStartX = 160;
     D_800DC5EC->screenStartY = 120;
     gScreenModeSelection = SCREEN_MODE_1P;
-    gNextFreeMemoryAddress = (s32) D_8015F734;
+    gNextFreeMemoryAddress = (s32) FreeMemoryResetAnchor;
     gActiveScreenMode = SCREEN_MODE_1P;
     gModeSelection = GRAND_PRIX;
     load_course(gCurrentCourseId);

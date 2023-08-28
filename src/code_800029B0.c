@@ -38,7 +38,7 @@ extern s8 gCupSelection;
 
 extern s32 gScreenModeSelection;
 extern u32 D_8015F730;
-extern s32 D_8015F734;
+extern s32 FreeMemoryResetAnchor;
 extern u32 gNextFreeMemoryAddress;
 extern s32 D_80150120;
 
@@ -110,7 +110,7 @@ void setup_race(void) {
     if (gCurrentCourseId != gCurrentlyLoadedCourseId) {
         D_80150120 = 0;
         gCurrentlyLoadedCourseId = gCurrentCourseId;
-        gNextFreeMemoryAddress = D_8015F734;
+        gNextFreeMemoryAddress = FreeMemoryResetAnchor;
         load_course(gCurrentCourseId);
         func_80295D88();
         D_8015F730 = gNextFreeMemoryAddress;
