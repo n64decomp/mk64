@@ -107,7 +107,7 @@ extern u64 gGfxSPTaskOutputBuffer[];
 extern u32 gGfxSPTaskOutputBufferSize;
 
 extern u32 gNextFreeMemoryAddress;
-extern s32 D_8015F734;
+extern s32 FreeMemoryResetAnchor;
 extern u8 _data_segment2SegmentRomStart[];
 extern u8 _data_segment2SegmentRomEnd[];
 extern u8 _common_texturesSegmentRomStart[];

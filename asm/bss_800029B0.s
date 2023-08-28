@@ -154,7 +154,7 @@ glabel gHeapEndPtr # 0x8015F72C
 glabel D_8015F730
 .word 0x00000000
 
-glabel D_8015F734
+glabel FreeMemoryResetAnchor
 .word 0x00000000
 
 glabel D_8015F738

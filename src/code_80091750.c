@@ -225,10 +225,10 @@ void func_80091B78(void) {
         }
     }
     if (gMenuSelection == LOGO_INTRO_MENU) {
-        gNextFreeMemoryAddress = D_8015F734;
+        gNextFreeMemoryAddress = FreeMemoryResetAnchor;
         set_segment_base_addr(6, decompress_segments((u8 *) &_data_825800SegmentRomStart, (u8 *) &_course_mario_raceway_dl_mio0SegmentRomStart));
     }
-    gNextFreeMemoryAddress = D_8015F734;
+    gNextFreeMemoryAddress = FreeMemoryResetAnchor;
     // Hypothetically, this should be a ptr... But only hypothetically.
     D_8018D9B0 = (intptr_t) get_next_available_memory_addr(0x000900B0);
     D_8018D9B4 = (uintptr_t *) get_next_available_memory_addr(0x0000CE00);
