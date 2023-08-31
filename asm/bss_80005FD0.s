@@ -279,7 +279,7 @@ glabel D_801634F0
 glabel D_801634F4
 .skip 4
 
-glabel D_801634F8
+glabel D_801634F8 # array ptrs below may be fake
 .skip 4
 
 glabel D_801634FC

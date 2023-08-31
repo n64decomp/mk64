@@ -26,7 +26,7 @@ extern struct TrackWayPoint *D_80164570[];
 extern s16 *D_80164580[];
 // Based on func_80010DBC this may be angles between waypoints
 // D_80164590[i] = atan2(waypoint_i, waypoint_i+1)?
-extern u16 *D_80164590[];
+extern s16 *D_80164590[];
 // No idea. Adjacency list?
 extern s16 *D_801645A0[];
 
