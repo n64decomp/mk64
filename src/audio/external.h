@@ -79,7 +79,7 @@ struct Unk_80191420 {
 	/* 0x29 */ u8  freshness;
 	/* 0x2A */ u8  prev;
 	/* 0x2B */ u8  next;
-	/* 0x2C */ s32 unk2C;
+	/* 0x2C */ u8 unk2C;
 }; // size = 0x30
 
 struct Unk_800EA06C {
