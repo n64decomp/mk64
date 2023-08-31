@@ -1,3 +1,11 @@
+.section .late_rodata
+
+glabel jpt_800F261C
+.word L800AB1B8, L800AB250, L800AB1E4, L800AB1F8
+.word L800AB250
+
+.section .text
+
 glabel func_800AB164
 /* 0ABD64 800AB164 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 0ABD68 800AB168 3C0F8019 */  lui   $t7, %hi(gCupSelection) # $t7, 0x8019

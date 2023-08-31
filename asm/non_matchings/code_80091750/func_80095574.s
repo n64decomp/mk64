@@ -1,3 +1,68 @@
+.section .rodata
+
+glabel D_800F0B58
+.asciiz "debug_mode"
+
+.balign 4
+glabel D_800F0B64
+.asciiz "*"
+
+.balign 4
+glabel D_800F0B68
+.asciiz "*"
+
+.balign 4
+glabel D_800F0B6C
+.asciiz "*"
+
+.balign 4
+glabel D_800F0B70
+.asciiz "*"
+
+.balign 4
+glabel D_800F0B74
+.asciiz "*"
+
+.balign 4
+glabel D_800F0B78
+.asciiz "*"
+
+.balign 4
+glabel D_800F0B7C
+.asciiz "on"
+
+.balign 4
+glabel D_800F0B80
+.asciiz "off"
+
+.balign 4
+glabel D_800F0B84
+.asciiz "map_number"
+
+.balign 4
+glabel D_800F0B90
+.asciiz "screen_mode"
+
+.balign 4
+glabel D_800F0B9C
+.asciiz "player"
+
+.balign 4
+glabel D_800F0BA4
+.asciiz "sound mode"
+
+.balign 4
+glabel D_800F0BB0
+.asciiz "push b to get all goldcup"
+
+.section .late_rodata
+
+glabel jpt_800F1048
+.word L80095600, L8009561C, L80095638, L80095654
+.word L80095670, L8009568C
+
+.section .text
+
 glabel func_80095574
 /* 096174 80095574 3C0E8019 */  lui   $t6, %hi(D_8018EE0C) # $t6, 0x8019
 /* 096178 80095578 81CEEE0C */  lb    $t6, %lo(D_8018EE0C)($t6)

@@ -1,3 +1,11 @@
+.section .late_rodata
+
+glabel jpt_800F24C8
+.word L800A9748, L800A9748, L800A9770, L800A9750
+.word L800A9750, L800A9758, L800A9760, L800A9768
+
+.section .text
+
 glabel func_800A9710
 /* 0AA310 800A9710 3C0E8019 */  lui   $t6, %hi(gControllerPakMenuSelection) # $t6, 0x8019
 /* 0AA314 800A9714 81CEEDF0 */  lb    $t6, %lo(gControllerPakMenuSelection)($t6)

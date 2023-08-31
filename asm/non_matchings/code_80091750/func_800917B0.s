@@ -1,3 +1,13 @@
+.section .late_rodata
+
+glabel D_800F0CB0
+.double 2147483647.0
+
+glabel D_800F0CB8
+.double -2147483647.0
+
+.section .text
+
 glabel func_800917B0
 /* 0923B0 800917B0 3C01800F */  lui   $at, %hi(D_800F0CB0)
 /* 0923B4 800917B4 D4240CB0 */  ldc1  $f4, %lo(D_800F0CB0)($at)

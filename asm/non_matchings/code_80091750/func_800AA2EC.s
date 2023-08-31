@@ -1,3 +1,11 @@
+.section .late_rodata
+
+glabel jpt_800F2580
+.word L800AA328, L800AA328, L800AA328, L800AA328
+.word L800AA334, L800AA334, L800AA334, L800AA334
+
+.section .text
+
 glabel func_800AA2EC
 /* 0AAEEC 800AA2EC 3C0E8019 */  lui   $t6, %hi(gMainMenuSelectionDepth) # $t6, 0x8019
 /* 0AAEF0 800AA2F0 81CEEDED */  lb    $t6, %lo(gMainMenuSelectionDepth)($t6)

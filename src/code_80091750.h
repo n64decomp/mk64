@@ -301,18 +301,14 @@ extern Gfx *D_800E850C[];
 
 extern intptr_t *D_8018D9BC;
 
-extern s16 gGlyphDisplayWidth[]; // D_800EF690
 extern RGBA16 D_800E74A8[5];
 extern RGBA16 D_800E74D0[3];
 extern char *D_800E7500[9];
 extern char *D_800E7524[];
-extern char *D_800E7574[8];
-extern char *D_800E7678[];
 extern char *D_800E76CC[4];
 extern char *D_800E76DC[4];
 extern char *D_800E7728[];
 extern char *D_800E7730;
-extern char *D_800E77A8;
 extern char *D_800E77AC;
 extern char *D_800E77B0;
 extern char D_800E77D8[];
@@ -324,7 +320,7 @@ extern char *D_800E7A9C[2];
 extern MkTexture *D_800E7D74[0x14];
 extern MkTexture *D_800E7DC4[0x17];
 extern MkAnimation *D_800E7E34[0x14];
-extern s32 gGlyphTextureLUT[]; // D_800E7E84
+extern MkTexture *gGlyphTextureLUT[]; // D_800E7E84
 extern MkTexture *D_800E82B4[5];
 extern f32 D_800E8530;
 extern f32 D_800E8534;

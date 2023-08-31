@@ -1,3 +1,13 @@
+.section .late_rodata
+
+glabel jpt_800F2688
+.word L800AC488, L800AC4EC, L800AC580, L800AC5D0
+.word L800AC5D0, L800AC5D0, L800AC5D0, L800AC738
+.word L800AC78C, L800AC7CC, L800AC878, L800AC8A0
+.word L800AC8E0, L800AC968
+
+.section .text
+
 glabel func_800AC458
 /* 0AD058 800AC458 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 0AD05C 800AC45C AFBF0014 */  sw    $ra, 0x14($sp)
@@ -18,21 +28,21 @@ glabel L800AC488
 /* 0AD094 800AC494 ACF80004 */  sw    $t8, 4($a3)
 /* 0AD098 800AC498 3C028019 */  lui   $v0, %hi(D_8018D9BC) # $v0, 0x8019
 /* 0AD09C 800AC49C 2442D9BC */  addiu $v0, %lo(D_8018D9BC) # addiu $v0, $v0, -0x2644
-/* 0AD0A0 800AC4A0 3C19800F */  lui   $t9, %hi(gGP1stPlaceReward) # $t9, 0x800f
-/* 0AD0A4 800AC4A4 83390B18 */  lb    $t9, %lo(gGP1stPlaceReward)($t9)
+/* 0AD0A0 800AC4A0 3C19800F */  lui   $t9, %hi(gGPPointRewards) # $t9, 0x800f
+/* 0AD0A4 800AC4A4 83390B18 */  lb    $t9, %lo(gGPPointRewards)($t9)
 /* 0AD0A8 800AC4A8 8C4A0000 */  lw    $t2, ($v0)
-/* 0AD0AC 800AC4AC 3C0B800F */  lui   $t3, %hi(gGP2ndPlaceReward) # $t3, 0x800f
-/* 0AD0B0 800AC4B0 3C0D800F */  lui   $t5, %hi(gGP3rdPlaceReward) # $t5, 0x800f
+/* 0AD0AC 800AC4AC 3C0B800F */  lui   $t3, %hi(gGPPointRewards + 1) # $t3, 0x800f
+/* 0AD0B0 800AC4B0 3C0D800F */  lui   $t5, %hi(gGPPointRewards + 2) # $t5, 0x800f
 /* 0AD0B4 800AC4B4 A1590000 */  sb    $t9, ($t2)
 /* 0AD0B8 800AC4B8 8C4C0000 */  lw    $t4, ($v0)
-/* 0AD0BC 800AC4BC 816B0B19 */  lb    $t3, %lo(gGP2ndPlaceReward)($t3)
-/* 0AD0C0 800AC4C0 3C0F800F */  lui   $t7, %hi(gGP4thPlaceReward) # $t7, 0x800f
+/* 0AD0BC 800AC4BC 816B0B19 */  lb    $t3, %lo(gGPPointRewards + 1)($t3)
+/* 0AD0C0 800AC4C0 3C0F800F */  lui   $t7, %hi(gGPPointRewards + 3) # $t7, 0x800f
 /* 0AD0C4 800AC4C4 A18B0001 */  sb    $t3, 1($t4)
 /* 0AD0C8 800AC4C8 8C4E0000 */  lw    $t6, ($v0)
-/* 0AD0CC 800AC4CC 81AD0B1A */  lb    $t5, %lo(gGP3rdPlaceReward)($t5)
+/* 0AD0CC 800AC4CC 81AD0B1A */  lb    $t5, %lo(gGPPointRewards + 2)($t5)
 /* 0AD0D0 800AC4D0 A1CD0002 */  sb    $t5, 2($t6)
 /* 0AD0D4 800AC4D4 8C580000 */  lw    $t8, ($v0)
-/* 0AD0D8 800AC4D8 81EF0B1B */  lb    $t7, %lo(gGP4thPlaceReward)($t7)
+/* 0AD0D8 800AC4D8 81EF0B1B */  lb    $t7, %lo(gGPPointRewards + 3)($t7)
 /* 0AD0DC 800AC4DC A30F0003 */  sb    $t7, 3($t8)
 /* 0AD0E0 800AC4E0 8CF9000C */  lw    $t9, 0xc($a3)
 /* 0AD0E4 800AC4E4 10000120 */  b     .L800AC968

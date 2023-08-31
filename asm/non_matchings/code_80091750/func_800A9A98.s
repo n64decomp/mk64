@@ -1,3 +1,16 @@
+.section .rodata
+
+glabel D_800F0CA0
+.byte 0x03, 0x03, 0x03, 0x02, 0x00, 0x02, 0x02
+
+glabel D_800F0CA7 # Second OK menu button
+.byte 0x01, 0x03, 0x02, 0x00
+
+glabel D_800F0CAB # Third OK menu button
+.byte 0x00, 0x03, 0x03, 0x02, 0x00
+
+.section .text
+
 glabel func_800A9A98
 /* 0AA698 800A9A98 8C820000 */  lw    $v0, ($a0)
 /* 0AA69C 800A9A9C 2401000F */  li    $at, 15

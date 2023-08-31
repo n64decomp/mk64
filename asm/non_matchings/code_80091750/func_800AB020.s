@@ -1,3 +1,11 @@
+.section .late_rodata
+
+glabel jpt_800F25F4
+.word L800AB090, L800AB044, L800AB088, L800AB090
+.word L800AB04C
+
+.section .text
+
 glabel func_800AB020
 /* 0ABC20 800AB020 8C8E0004 */  lw    $t6, 4($a0)
 /* 0ABC24 800AB024 2DC10005 */  sltiu $at, $t6, 5

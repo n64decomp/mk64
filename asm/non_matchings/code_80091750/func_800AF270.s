@@ -1,3 +1,11 @@
+.section .late_rodata
+
+glabel jpt_800F2ABC
+.word L800AF2C8, L800AF2F4, L800AF34C, L800AF408
+.word L800AF46C
+
+.section .text
+
 glabel func_800AF270
 /* 0AFE70 800AF270 3C058028 */  lui   $a1, %hi(D_802874D8) # $a1, 0x8028
 /* 0AFE74 800AF274 24A574D8 */  addiu $a1, %lo(D_802874D8) # addiu $a1, $a1, 0x74d8

@@ -1,3 +1,19 @@
+.section .rodata
+
+glabel D_800F0C7C
+# NOT A HYPHEN
+# EUC-JP 0xa1 0xbc
+#.asciiz "ー"
+.byte 0xa1, 0xbc, 0x00
+.align 4
+
+.section .late_rodata
+
+glabel D_800F1F24
+.float 0.65
+
+.section .text
+
 glabel func_800A69C8
 /* 0A75C8 800A69C8 27BDFF78 */  addiu $sp, $sp, -0x88
 /* 0A75CC 800A69CC AFB7004C */  sw    $s7, 0x4c($sp)
@@ -124,8 +140,8 @@ glabel func_800A69C8
 /* 0A7780 800A6B80 4481A000 */  mtc1  $at, $f20
 /* 0A7784 800A6B84 0C024C36 */  jal   set_text_color
 /* 0A7788 800A6B88 00002025 */   move  $a0, $zero
-/* 0A778C 800A6B8C 3C05800E */  lui   $a1, %hi(D_800E7302) # $a1, 0x800e
-/* 0A7790 800A6B90 84A57302 */  lh    $a1, %lo(D_800E7302)($a1)
+/* 0A778C 800A6B8C 3C05800E */  lui   $a1, %hi(D_800E7300 + 2) # $a1, 0x800e
+/* 0A7790 800A6B90 84A57302 */  lh    $a1, %lo(D_800E7300 + 2)($a1)
 /* 0A7794 800A6B94 3C06800F */  lui   $a2, %hi(D_800F0C7C) # $a2, 0x800f
 /* 0A7798 800A6B98 24C60C7C */  addiu $a2, %lo(D_800F0C7C) # addiu $a2, $a2, 0xc7c
 /* 0A779C 800A6B9C 2404009E */  li    $a0, 158
