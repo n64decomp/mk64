@@ -1,3 +1,14 @@
+.section .rodata
+
+glabel D_800F0BCC
+.asciiz "effectcount < 0 !!!!!!(kawano)\n"
+
+.balign 4
+glabel D_800F0BEC
+.asciiz "MAX effectcount(760) over!!!!(kawano)\n"
+
+.section .text
+
 glabel func_80095BD0
 /* 0967D0 80095BD0 3C098016 */  lui   $t1, %hi(D_80164AF0) # $t1, 0x8016
 /* 0967D4 80095BD4 25294AF0 */  addiu $t1, %lo(D_80164AF0) # addiu $t1, $t1, 0x4af0

@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800F1F34
+.float 1.2
+
+.section .text
+
 glabel func_800A761C
 /* 0A821C 800A761C 27BDFFB0 */  addiu $sp, $sp, -0x50
 /* 0A8220 800A7620 AFB00028 */  sw    $s0, 0x28($sp)

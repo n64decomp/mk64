@@ -1,3 +1,62 @@
+.section .late_rodata
+
+glabel jpt_800F2750
+.word L800AD31C, L800AD380, L800ADF34, L800ADF34
+.word L800ADF34, L800AD438, L800AD438, L800AD438
+.word L800AD438, L800AD438, L800AD438, L800AD8E8
+.word L800AD8E8, L800AD8E8, L800AD8E8, L800AD8E8
+.word L800AD8E8, L800AD954, L800AD954, L800ADB5C
+.word L800ADBA4, L800ADBA4, L800ADF34, L800ADF34
+.word L800ADF34, L800ADD64, L800AD8E8, L800ADF34
+.word L800ADF34, L800ADF34, L800ADE14, L800ADF30
+
+glabel D_800F27D0
+.double 4.2
+
+glabel D_800F27D8
+.double 4.2
+
+glabel D_800F27E0
+.double 4.2
+
+glabel jpt_800F27E8
+.word L800AD728, L800AD728, L800AD718, L800AD764
+.word L800AD738, L800AD758, L800AD758, L800AD758
+.word L800AD758, L800AD758, L800AD758, L800AD758
+.word L800AD758, L800AD748, L800AD738
+
+.word 0x00000000
+
+glabel D_800F2828
+.double 4.2
+
+glabel D_800F2830
+.double 4.2
+
+glabel D_800F2838
+.double 4.2
+
+glabel D_800F2840
+.double 4.2
+
+glabel D_800F2848
+.double 4.2
+
+glabel D_800F2850
+.double 4.2
+
+glabel D_800F2858
+.double 4.2
+
+glabel D_800F2860
+.double 4.2
+
+glabel jpt_800F2868
+.word L800ADE80, L800ADEA0, L800ADEB0, L800ADEC0
+.word L800ADED0
+
+.section .text
+
 glabel func_800AD2E8
 /* 0ADEE8 800AD2E8 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 0ADEEC 800AD2EC AFBF0024 */  sw    $ra, 0x24($sp)
@@ -19,21 +78,21 @@ glabel L800AD31C
 /* 0ADF28 800AD328 AE180004 */  sw    $t8, 4($s0)
 /* 0ADF2C 800AD32C 3C028019 */  lui   $v0, %hi(D_8018D9BC) # $v0, 0x8019
 /* 0ADF30 800AD330 2442D9BC */  addiu $v0, %lo(D_8018D9BC) # addiu $v0, $v0, -0x2644
-/* 0ADF34 800AD334 3C19800F */  lui   $t9, %hi(gGP1stPlaceReward) # $t9, 0x800f
-/* 0ADF38 800AD338 83390B18 */  lb    $t9, %lo(gGP1stPlaceReward)($t9)
+/* 0ADF34 800AD334 3C19800F */  lui   $t9, %hi(gGPPointRewards) # $t9, 0x800f
+/* 0ADF38 800AD338 83390B18 */  lb    $t9, %lo(gGPPointRewards)($t9)
 /* 0ADF3C 800AD33C 8C480000 */  lw    $t0, ($v0)
-/* 0ADF40 800AD340 3C09800F */  lui   $t1, %hi(gGP2ndPlaceReward) # $t1, 0x800f
-/* 0ADF44 800AD344 3C0B800F */  lui   $t3, %hi(gGP3rdPlaceReward) # $t3, 0x800f
+/* 0ADF40 800AD340 3C09800F */  lui   $t1, %hi(gGPPointRewards + 1) # $t1, 0x800f
+/* 0ADF44 800AD344 3C0B800F */  lui   $t3, %hi(gGPPointRewards + 2) # $t3, 0x800f
 /* 0ADF48 800AD348 A1190000 */  sb    $t9, ($t0)
 /* 0ADF4C 800AD34C 8C4A0000 */  lw    $t2, ($v0)
-/* 0ADF50 800AD350 81290B19 */  lb    $t1, %lo(gGP2ndPlaceReward)($t1)
-/* 0ADF54 800AD354 3C0D800F */  lui   $t5, %hi(gGP4thPlaceReward) # $t5, 0x800f
+/* 0ADF50 800AD350 81290B19 */  lb    $t1, %lo(gGPPointRewards + 1)($t1)
+/* 0ADF54 800AD354 3C0D800F */  lui   $t5, %hi(gGPPointRewards + 3) # $t5, 0x800f
 /* 0ADF58 800AD358 A1490001 */  sb    $t1, 1($t2)
 /* 0ADF5C 800AD35C 8C4C0000 */  lw    $t4, ($v0)
-/* 0ADF60 800AD360 816B0B1A */  lb    $t3, %lo(gGP3rdPlaceReward)($t3)
+/* 0ADF60 800AD360 816B0B1A */  lb    $t3, %lo(gGPPointRewards + 2)($t3)
 /* 0ADF64 800AD364 A18B0002 */  sb    $t3, 2($t4)
 /* 0ADF68 800AD368 8C4E0000 */  lw    $t6, ($v0)
-/* 0ADF6C 800AD36C 81AD0B1B */  lb    $t5, %lo(gGP4thPlaceReward)($t5)
+/* 0ADF6C 800AD36C 81AD0B1B */  lb    $t5, %lo(gGPPointRewards + 3)($t5)
 /* 0ADF70 800AD370 A1CD0003 */  sb    $t5, 3($t6)
 /* 0ADF74 800AD374 8E0F000C */  lw    $t7, 0xc($s0)
 /* 0ADF78 800AD378 100002EE */  b     .L800ADF34

@@ -32,6 +32,1271 @@ s32 code_80091750_pad_2[2];
 s8 D_8018E838[4]; // Import to C was required for matching.
 s32 D_8018E83C;
 
+Unk_D_800E70A0 D_800E70A0[] = {
+    {  0x3d, 0x11, 0x00, 0x00 },
+    {  0x15, 0x3e, 0x00, 0x00 },
+    {  0x5c, 0x3e, 0x00, 0x00 },
+    {  0xa3, 0x3e, 0x00, 0x00 },
+    {  0xea, 0x3e, 0x00, 0x00 },
+    { 0x10a, 0xc8, 0x00, 0x00 },
+    {  0x15, 0xc8, 0x00, 0x00 },
+    {  0x55, 0xc8, 0x00, 0x00 },
+    {  0x00, 0x00, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E70E8[] = {
+    {  0x40, 0x41, 0x00, 0x00 },
+    {  0x40, 0x53, 0x00, 0x00 },
+    {  0x40, 0x65, 0x00, 0x00 },
+    {  0x40, 0x77, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E7108[][4] = {
+    {
+        {  0x18, 0x3f, 0x00, 0x00 },
+        {  0x5d, 0x3f, 0x00, 0x00 },
+        {  0xa2, 0x3f, 0x00, 0x00 },
+        {  0xe7, 0x3f, 0x00, 0x00 },
+    },
+    {
+        {  0x18, 0x91, 0x00, 0x00 },
+        {  0x5d, 0x91, 0x00, 0x00 },
+        {  0xa2, 0x91, 0x00, 0x00 },
+        {  0xe7, 0x91, 0x00, 0x00 },
+    },
+};
+
+Unk_D_800E70A0 D_800E7148[] = {
+    {  0x17, 0x3b, 0x00, 0x00 },
+    {  0x5d, 0x3b, 0x00, 0x00 },
+    {  0xa2, 0x3b, 0x00, 0x00 },
+    {  0xe8, 0x3b, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E7168[] = {
+    {  0x17, 0x70, 0x00, 0x00 },
+    {  0x57, 0x70, 0x00, 0x00 },
+    {  0x17, 0x97, 0x00, 0x00 },
+    {  0x57, 0x97, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E7188[][4] = {
+    {
+        {  0x80, 0x58, 0x00, 0x00 },
+        {  0x00, 0x00, 0x00, 0x00 },
+        {  0x00, 0x00, 0x00, 0x00 },
+        {  0x00, 0x00, 0x00, 0x00 },
+    },
+    {
+        {  0x80, 0x3f, 0x00, 0x00 },
+        {  0x80, 0x91, 0x00, 0x00 },
+        {  0x00, 0x00, 0x00, 0x00 },
+        {  0x00, 0x00, 0x00, 0x00 },
+    },
+    {
+        {  0x5a, 0x58, 0x00, 0x00 },
+        {  0xa6, 0x58, 0x00, 0x00 },
+        {  0x00, 0x00, 0x00, 0x00 },
+        {  0x00, 0x00, 0x00, 0x00 },
+    },
+    {
+        {  0x5a, 0x3f, 0x00, 0x00 },
+        {  0xa6, 0x3f, 0x00, 0x00 },
+        {  0x5a, 0x91, 0x00, 0x00 },
+        {  0xa6, 0x91, 0x00, 0x00 },
+    },
+};
+
+Unk_D_800E70A0 D_800E7208[][2] = {
+    {
+        {   0x9d, 0x70, 0x00, 0x00 },
+        {  0x128, 0x81, 0x00, 0x00 },
+    },
+    {
+        {   0x9d, 0x88, 0x00, 0x00 },
+        {  0x128, 0x99, 0x00, 0x00 },
+    },
+    {
+        {   0x9d, 0xa0, 0x00, 0x00 },
+        {  0x128, 0xb1, 0x00, 0x00 },
+    },
+    {
+        {   0x9d, 0xb8, 0x00, 0x00 },
+        {  0x128, 0xc9, 0x00, 0x00 },
+    },
+};
+
+Unk_D_800E70A0 D_800E7248[] = {
+    {  0xff6a, 0x3b, 0x00, 0x00 },
+    {   0x172, 0x3b, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E7258[] = {
+    {  0x17, 0x3b, 0x00, 0x00 },
+    {  0xc5, 0x3b, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E7268[] = {
+    {  0x28, 0x73, 0x00, 0x00 },
+    {  0x28, 0x3c, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E7278[] = {
+    {  0x3e, 0x43, 0x00, 0x00 },
+    {  0xa1, 0x43, 0x00, 0x00 },
+    {  0x3e, 0xc5, 0x00, 0x00 },
+    {  0xa1, 0xc5, 0x00, 0x00 },
+
+    {  0xffc0,   0xf0, 0x00, 0x00 },
+    {   0x140,   0xf0, 0x00, 0x00 },
+    {  0xffc0, 0xffc0, 0x00, 0x00 },
+    {  0xffc0, 0xffc0, 0x00, 0x00 },
+
+    {  0xffc0, 0xffc0, 0x00, 0x00 },
+    {   0x140, 0xffc0, 0x00, 0x00 },
+    {  0xffc0,   0xf0, 0x00, 0x00 },
+    {  0xffc0, 0xffc0, 0x00, 0x00 },
+
+    {  0xffc0, 0xffc0, 0x00, 0x00 },
+    {   0x140, 0xffc0, 0x00, 0x00 },
+    {  0xffc0,   0xf0, 0x00, 0x00 },
+    {   0x140,   0xf0, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E72F8[] = {
+    {  0x140, 0x23, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E7300[][4] = {
+    {
+        {  0x50, 0x23, 0x00, 0x00 },
+        {  0xb0, 0x23, 0x00, 0x00 },
+        {  0x00, 0x00, 0x00, 0x00 },
+        {  0x00, 0x00, 0x00, 0x00 },
+    },
+    {
+        {  0x32, 0x23, 0x00, 0x00 },
+        {  0x80, 0x23, 0x00, 0x00 },
+        {  0xce, 0x23, 0x00, 0x00 },
+        {  0x00, 0x00, 0x00, 0x00 },
+    },
+    {
+        {  0x18, 0x23, 0x00, 0x00 },
+        {  0x5d, 0x23, 0x00, 0x00 },
+        {  0xa2, 0x23, 0x00, 0x00 },
+        {  0xe7, 0x23, 0x00, 0x00 },
+    },
+};
+
+Unk_D_800E70A0 D_800E7360[] = {
+    {  0x61, 0xa7, 0x00, 0x00 },
+    {  0x61, 0xb6, 0x00, 0x00 },
+    {  0x61, 0xc5, 0x00, 0x00 },
+    {  0x61, 0xd4, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E7380[] = {
+    {   0x30, 0x4b, 0x00, 0x00 },
+    {  0x109, 0x4b, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E7390[] = {
+    {  0xad, 0x8d, 0x00, 0x00 },
+    {  0xad, 0x9a, 0x00, 0x00 },
+    {  0xad, 0xa7, 0x00, 0x00 },
+    {  0xad, 0xb4, 0x00, 0x00 },
+    {  0xad, 0xc1, 0x00, 0x00 },
+    {  0xad, 0xce, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E73C0[] = {
+    {  0xac, 0xa5, 0x00, 0x00 },
+    {  0xac, 0xc3, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E73D0[] = {
+    {  0xc0, 0xb3, 0x00, 0x00 },
+    {  0xc0, 0xc2, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E73E0[] = {
+    {  0x61, 0x94, 0x00, 0x00 },
+    {  0x61, 0xa1, 0x00, 0x00 },
+    {  0x61, 0xae, 0x00, 0x00 },
+    {  0x61, 0xbb, 0x00, 0x00 },
+    {  0x61, 0xc8, 0x00, 0x00 },
+    {  0x61, 0xd5, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E7410[] = {
+    {  0x52, 0x90, 0x00, 0x00 },
+    {  0x52, 0xa4, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E7420[] = {
+    {  0x76, 0x95, 0x00, 0x00 },
+    {  0x76, 0xa4, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E7430[] = {
+    {  0x17, 0xa, 0x00, 0x00 },
+    {  0x5d, 0xa, 0x00, 0x00 },
+    {  0xa2, 0xa, 0x00, 0x00 },
+    {  0xe8, 0xa, 0x00, 0x00 },
+    {  0x17, 0xa, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E7458[] = {
+    {   0x14a,  0x32, 0x00, 0x00 },
+    {  0xff60,  0xd4, 0x00, 0x00 },
+    {    0xa0, 0x10e, 0x00, 0x00 },
+    {  0xff60,  0xbe, 0x00, 0x00 },
+    {   0x143,  0x5a, 0x00, 0x00 },
+};
+
+Unk_D_800E70A0 D_800E7480[] = {
+    {  0xa0,  0x32, 0x00, 0x00 },
+    {  0x9b,  0xd4, 0x00, 0x00 },
+    {  0xa0,  0x50, 0x00, 0x00 },
+    {  0x9b,  0xbe, 0x00, 0x00 },
+    {  0x80,  0x5a, 0x00, 0x00 },
+};
+
+RGBA16 D_800E74A8[] = {
+    {  0x00,  0xf3, 0xf3, 0xff },
+    {  0xff,  0xa8, 0xc3, 0xff },
+    {  0xff,  0xfe, 0x7a, 0xff },
+    {  0x7b,  0xfc, 0x7b, 0xff },
+    {  0xff,  0xff, 0x00, 0xff },
+};
+
+RGBA16 D_800E74D0[] = {
+    {  0x00,  0xf3, 0xf3, 0xff },
+    {  0xff,  0xa8, 0xc3, 0xff },
+    {  0xff,  0xff, 0x00, 0xff },
+};
+
+RGBA16 D_800E74E8[] = {
+    {  0xff,  0xaf, 0xaf, 0xff },
+    {  0xaf,  0xff, 0xaf, 0xff },
+    {  0xaf,  0xaf, 0xff, 0xff },
+};
+
+const s16 gGlyphDisplayWidth[] = {
+    0x000c, 0x000d, 0x000b, 0x000b, 0x000a, 0x000b, 0x000b, 0x000d,
+    0x0007, 0x000a, 0x000c, 0x000a, 0x0012, 0x000d, 0x000c, 0x000c,
+    0x000c, 0x000c, 0x000b, 0x000d, 0x000c, 0x000c, 0x0012, 0x000d,
+    0x000c, 0x000c, 0x000a, 0x000a, 0x000a, 0x0006, 0x001e, 0x0006,
+    0x000a, 0x0008, 0x000b, 0x000c, 0x000c, 0x000d, 0x000a, 0x000b,
+    0x000a, 0x000a, 0x0008, 0x001c, 0x000a, 0x0010, 0x000f, 0x0010,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000e, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000e, 0x000f, 0x000e,
+    0x000f, 0x000e, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000e, 0x000e, 0x000e, 0x000e, 0x000e,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000e, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000e, 0x000f, 0x000e,
+    0x000f, 0x000e, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000e, 0x000e, 0x000e, 0x000e, 0x000e,
+    0x000b, 0x000f, 0x000f, 0x000f, 0x000f, 0x001d, 0x001d, 0x001d,
+    0x001d, 0x001d, 0x001d, 0x001d, 0x001d, 0x001d, 0x001d, 0x000f,
+    0x000f, 0x0017, 0x000f, 0x0017, 0x0017, 0x0017, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f,
+};
+
+char *D_800E7500[] = {
+    "mushroom cup",
+    "flower cup",
+    "star cup",
+    "special cup",
+    "battle",
+    // ????
+    "mushroom cup",
+    "flower cup",
+    "star cup",
+    "special cup",
+};
+
+char *D_800E7524[] = {
+    "mario raceway",
+    "choco mountain",
+    "bowser's castle",
+    "banshee boardwalk",
+    "yoshi valley",
+    "frappe snowland",
+    "koopa troopa beach",
+    "royal raceway",
+    "luigi raceway",
+    "moo moo farm",
+    "toad's turnpike",
+    "kalimari desert",
+    "sherbet land",
+    "rainbow road",
+    "wario stadium",
+    "block fort",
+    "skyscraper",
+    "double deck",
+    "d.k.'s jungle parkway",
+    "big donut",
+};
+
+char *D_800E7574[] = {
+    "mario raceway",
+    "choco mountain",
+    "bowser's castle",
+    "banshee boardwalk",
+    "yoshi valley",
+    "frappe snowland",
+    "koopa troopa beach",
+    "royal raceway",
+    "luigi raceway",
+    "moo moo farm",
+    "toad's turnpike",
+    "kalimari desert",
+    "sherbet land",
+    "rainbow road",
+    "wario stadium",
+    "block fort",
+    "skyscraper",
+    "double deck",
+    "d.k.'s jungle parkway",
+    "big donut",
+};
+
+char *D_800E75C4[] = {
+    "mario raceway",
+    "choco mountain",
+    "bowser's castle",
+    "banshee boardwalk",
+    "yoshi valley",
+    "frappe snowland",
+    "koopa troopa beach",
+    "royal raceway",
+    "luigi raceway",
+    "moo moo farm",
+    "toad's turnpike",
+    "kalimari desert",
+    "sherbet land",
+    "rainbow road",
+    "wario stadium",
+    "block fort",
+    "skyscraper",
+    "double deck",
+    "d.k.'s jungle parkway",
+    "big donut",
+};
+
+char *gDebugCourseNames[] = {
+    "m circuit",
+    "mountain",
+    "castle",
+    "ghost",
+    "maze",
+    "snow",
+    "beach",
+    "p circuit",
+    "l circuit",
+    "farm",
+    "highway",
+    "desert",
+    "sherbet",
+    "rainbow",
+    "stadium",
+    "block",
+    "skyscraper",
+    "deck",
+    "jungle",
+    "doughnut",
+};
+
+const u8 gPerCupIndexByCourseId[] = {
+    3, 2, 3, 2,
+    1, 1, 2, 2,
+    0, 1, 0, 3,
+    1, 3, 0, 1,
+    3, 2, 0, 0,
+};
+
+const u8 D_800EFD64[] = { 0, 1, 4, 3, 5, 6, 2, 7 };
+
+// Maps course IDs (as defined in the COURSES enum) to the cup they belong to
+u8 gCupSelectionByCourseId[] = {
+      FLOWER_CUP,   FLOWER_CUP,     STAR_CUP,  SPECIAL_CUP,
+     SPECIAL_CUP,   FLOWER_CUP, MUSHROOM_CUP,     STAR_CUP,
+    MUSHROOM_CUP, MUSHROOM_CUP,   FLOWER_CUP, MUSHROOM_CUP,
+        STAR_CUP,  SPECIAL_CUP,     STAR_CUP,   BATTLE_CUP,
+      BATTLE_CUP,   BATTLE_CUP,  SPECIAL_CUP,   BATTLE_CUP,
+};
+
+char *D_800E7678[] = {
+    "none",
+    "bronze",
+    "silver",
+    "gold",
+};
+
+char *gDebugCharacterNames[] = {
+    "MARIO",
+    "LUIGI",
+    "YOSHI",
+    "KINOPIO",
+    "D.KONG",
+    "WARIO",
+    "PEACH",
+    "KOOPA",
+};
+
+char *D_800E76A8[] = {
+    "MARIO",
+    "LUIGI",
+    "YOSHI",
+    "TOAD",
+    "D.K.",
+    "WARIO",
+    "PEACH",
+    "BOWSER",
+    "ーーーー", // NOT HYPHENS!!! These are EUC-JP characters (0xa1 0xbc)
+};
+
+char *D_800E76CC[] = {
+    "50(",
+    "100(",
+    "150(",
+    "extra",
+};
+
+char *D_800E76DC[] = {
+    "50(",
+    "100(",
+    "150(",
+    "extra",
+};
+
+char *gDebugScreenModeNames[] = {
+    "1p",
+    "2players UD",
+    "2players LR",
+    "3players",
+    "4players",
+};
+
+char *gDebugSoundModeNames[] = {
+    "stereo",
+    "head phone",
+    "xxx",
+    "monaural",
+};
+
+char *gSoundModeNames[] = {
+    "STEREO",
+    "HEADPHONE",
+    "",
+    "MONO"
+};
+
+char *D_800E7720[] = {
+    "WINNER!",
+    "LOSER!",
+};
+
+char *D_800E7728[] = {
+    "BEST RECORDS",
+    "BEST LAP",
+};
+
+// Might need a const?
+char *D_800E7730 = "LAP TIME";
+
+char *D_800E7734[] = {
+    "LAP 1",
+    "LAP 2",
+    "LAP 3",
+    "TOTAL",
+};
+
+char *D_800E7744[] = {
+    // The s/n/r/t here are not ASCII, they are EUC-JP characters
+    // 0xae 0xf3/0xae 0xee/0xae 0xf2/0xae 0xf4
+    "1 ｓ",
+    "2 ｎ",
+    "3 ｒ",
+    "4 ｔ",
+    "5 ｔ",
+    " ",
+};
+
+char *D_800E775C[] = {
+    "CONTINUE GAME",
+    "RETRY",
+    "COURSE CHANGE",
+    "DRIVER CHANGE",
+    "QUIT",
+    "REPLAY",
+    "SAVE GHOST",
+};
+
+char *D_800E7778[] = {
+    "VS MATCH RANKING",
+    "BATTLE RANKING",
+};
+
+// This is plain data, it should not end up in rodata
+char D_800E7780[] = "NOW-MEET THE COURSE GHOST!!!";
+
+char *D_800E77A0[] = {
+    "CONNECT A CONTROLLER TO SOCKET 1,",
+    "THEN POWER ON AGAIN"
+};
+
+char *D_800E77A8[] = {
+    "BATTLE GAME",
+    "POP OPPOSING PLAYER'S BALLOONS",
+    "WHEN ALL 3 ARE GONE,THEY ARE OUT!",
+};
+
+// This is plain data, it should not end up in rodata
+char D_800E77B4[] = "a BUTTON*SEE DATA  B BUTTON*EXIT";
+
+// This is plain data, it should not end up in rodata
+char D_800E77D8[] = "distance";
+
+char *D_800E77E4[] = {
+    "567m",
+    "687m",
+    "777m",
+    "747m",
+    "772m",
+    "734m",
+    "691m",
+    "1025m",
+    "717m",
+    "527m",
+    "1036m",
+    "753m",
+    "756m",
+    "2000m",
+    "1591m",
+    "",
+    "",
+    "",
+    "893m",
+    "",
+};
+
+char *D_800E7834[] = {
+    "return to menu",
+    "erase records for this course",
+    "erase ghost from this course",
+};
+
+char *D_800E7840[] = {
+    "quit",
+    "erase",
+};
+
+char *D_800E7848[] = {
+    "THE BEST RECORDS AND BEST",
+    "LAP FOR THIS COURSE WILL BE",
+    "ERASED.  IS THIS OK?",
+    "GHOST DATA FOR THIS",
+    "COURSE WILL BE ERASED.",
+    "IS THIS OK?",
+};
+
+char *D_800E7860[] = {
+    "UNABLE TO ERASE ",
+    "GHOST DATA",
+};
+
+char *D_800E7868[] = {
+    "RETURN TO GAME SELECT",
+    "SOUND MODE",
+    "COPY N64 CONTROLLER PAK",
+    "ERASE ALL DATA",
+};
+
+char *D_800E7878[] = {
+    "ALL SAVED DATA WILL BE",
+    "PERMANENTLY ERASED.",
+    "ARE YOU REALLY SURE?",
+};
+
+char *D_800E7884[] = {
+    "",
+    "ALL SAVED DATA",
+    "HAS BEEN NOW ERASED.",
+};
+
+char *D_800E7890[][4] = {
+    {
+        "CONTROLLER 1 DOES NOT HAVE ",
+        "N64 CONTROLLER PAK",
+        "",
+        "",
+    },
+    {
+        "UNABLE TO READ ",
+        "N64 CONTROLLER PAK DATA ",
+        "FROM CONTROLLER 1",
+        "",
+    },
+    {
+        "UNABLE TO CREATE GAME DATA ",
+        "FROM CONTROLLER 1 ",
+        "N64 CONTROLLER PAK",
+        "",
+    },
+    {
+        "UNABLE TO COPY GHOST ",
+        "-- INSUFFICIENT FREE PAGES ",
+        "IN CONTROLLER 1 ",
+        "N64 CONTROLLER PAK",
+    },
+};
+
+char *D_800E78D0[][4] = {
+    {
+        "NO GHOST DATA ",
+        "IN CONTROLLER 2 ",
+        "N64 CONTROLLER PAK",
+        "NO MARIO KART 64 DATA ",
+    },
+    {
+        "PRESENT IN CONTROLLER 2 ",
+        "N64 CONTROLLER PAK",
+        "CONTROLLER 2 ",
+        "DOES NOT HAVE ",
+    },
+    {
+        "N64 CONTROLLER PAK SET",
+        "UNABLE TO READ DATA ",
+        "FROM CONTROLLER 2 ",
+        "N64 CONTROLLER PAK",
+    },
+};
+
+char *D_800E7900[][3] = {
+    {
+        "UNABLE TO COPY DATA ",
+        "FROM CONTROLLER 1 ",
+        "N64 CONTROLLER PAK",
+    },
+    {
+        "UNABLE TO READ DATA ",
+        "FROM CONTROLLER 2 ",
+        "N64 CONTROLLER PAK",
+    },
+};
+
+char *D_800E7918[] = {
+    "CONTROLLER 1",
+    "CONTROLLER 2",
+};
+
+char *D_800E7920[] = {
+    "WHICH FILE DO YOU WANT TO MAKE A COPY OF?",
+    "TO WHICH FILE DO YOU WANT TO COPY?",
+};
+
+char *D_800E7928[] = {
+    "CURRENT DATA WILL BE ERASED,",
+    "IS THIS OK?",
+};
+
+char *D_800E7930[] = {
+    "QUIT",
+    "COPY",
+};
+
+char *D_800E7938[] = {
+    "COPYING",
+    "DATA COPY COMPLETED",
+};
+
+char *D_800E7940[][4] = {
+    {
+        "NO N64 CONTROLLER PAK DETECTED",
+        "TO SAVE GHOST DATA, ",
+        "INSERT N64 CONTROLLER PAK ",
+        "INTO CONTROLLER 1",
+    },
+    {
+        "UNABLE TO READ ",
+        "N64 CONTROLLER PAK DATA",
+        "",
+        "",
+    },
+    {
+        "",
+        "",
+        "",
+        "",
+    },
+    {
+        "INSUFFICIENT FREE PAGES AVAILABLE ",
+        "IN N64 CONTROLLER PAK TO CREATE ",
+        "GAME DATA, PLEASE FREE 121 PAGES.",
+        "SEE INSTRUCTION BOOKLET FOR DETAILS.",
+    },
+};
+
+// Unused?
+char *D_800E7980[] = {
+    "TO SAVE GHOST DATA, ",
+    "INSERT N64 CONTROLLER PAK ",
+    "INTO CONTROLLER 1",
+};
+
+char *D_800E798C[][7] = {
+    {
+        "N64 CONTROLLER PAK ",
+        "NOT DETECTED. ",
+        "IF YOU WANT TO SAVE ",
+        "THE GHOST DATA, ",
+        "PLEASE INSERT ",
+        "N64 CONTROLLER PAK ",
+        "INTO CONTROLLER 1",
+    },
+    {
+        "",
+        "UNABLE TO SAVE ",
+        "     THE GHOST",
+        "",
+        "",
+        "",
+        "",
+    },
+    {
+        "",
+        "UNABLE TO SAVE ",
+        "     THE GHOST",
+        "",
+        "",
+        "",
+        "",
+    },
+    {
+        "INSUFFICIENT ",
+        "FREE PAGES AVAILABLE ",
+        "",
+        "-- GHOST DATA ",
+        "COULD NOT BE SAVED",
+        "",
+        "",
+    },
+    {
+        "",
+        "CANNOT CREATE ",
+        "     GAME DATA",
+        "",
+        "",
+        "",
+        "",
+    },
+    {
+        "",
+        "THIS GHOST IS ",
+        "     ALREADY SAVED",
+        "",
+        "",
+        "",
+        "",
+    },
+};
+
+char *D_800E7A34[] = {
+    "RACE DATA CANNOT ",
+    "BE SAVED FOR GHOST",
+};
+
+char *D_800E7A3C[] = {
+    "SELECT THE FILE ",
+    "YOU WANT TO SAVE",
+};
+
+// Might need a const?
+char *D_800E7A44 = "NO DATA";
+
+char *D_800E7A48[] = {
+    "CREATING ",
+    "MARIO KART 64 ",
+    "GAME DATA",
+};
+
+char *D_800E7A54[] = {
+    "CANNOT CREATE GAME DATA",
+    "",
+    "",
+};
+
+char *D_800E7A60[] = {
+    "THE PREVIOUS DATA ",
+    "WILL BE ERASED, ",
+    "IS THIS OK?",
+};
+
+char *D_800E7A6C[] = {
+    "QUIT",
+    "SAVE",
+};
+
+char *D_800E7A74[] = {
+    "SAVING GHOST DATA",
+    "",
+    "PLEASE WAIT",
+};
+
+char *D_800E7A80[] = {
+    "UNABLE TO SAVE ",
+    "THE GHOST",
+};
+
+char *D_800E7A88[] = {
+    "YOU ARE AWARDED THE",
+    "GOLD CUP",
+    "SILVER CUP",
+    "BRONZE CUP",
+};
+
+// Might need a const?
+char *D_800E7A98 = "MAYBE NEXT TIME!";
+
+char *D_800E7A9C[] = {
+    "CONGRATULATIONS!",
+    "WHAT A PITY!",
+};
+
+char *D_800E7AA4[] = {
+    "YOU PLACED",
+    "    st",
+    "    nd",
+    "    rd",
+    "    th",
+    "    th",
+    "    th",
+    "    th",
+    "    th",
+};
+
+const s8 gGPPointRewards[] = { 9, 6, 3, 1 };
+const s8 D_800F0B1C[] = {
+    0, 0, 1, 0,
+    1, 0, 1, 2,
+    0, 1, 2, 3,
+};
+const s8 D_800F0B28[] = {
+    0, 1, 2, 1, 2, 1, 2, 1,
+    2, 0, 0, 1, 2, 2, 1, 2,
+    2, 1, 2, 2, 1, 2, 2, 1,
+    2, 2, 1, 3, 3, 3, 3, 3,
+    3, 3, 3, 3, 3, 3, 3, 3,
+};
+
+const s8 D_800F0B50[] = { 0x1f, 0x0b, 0x15, 0x29 };
+const s8 D_800F0B54[] = { 0x20, 0x0f, 0x18, 0x2c };
+
+RGBA16 D_800E7AC8[] = {
+    { 0x00, 0x00, 0x00, 0x00 },
+    { 0xff, 0xff, 0xff, 0xff },
+    { 0x00, 0x00, 0x50, 0xff },
+    { 0xff, 0xff, 0xff, 0xff },
+};
+
+RGBA16 D_800E7AE8[] = {
+    { 0x00, 0x00, 0x00, 0xff },
+    { 0xff, 0xff, 0xff, 0xff },
+};
+
+MkTexture *D_800E7AF8[] = {
+    D_02000000, D_02000028, D_02000050, D_02000078,
+    D_020000A0, D_020000C8, D_020000F0, D_02000118,
+    D_02000140, D_02000168, D_02000190, D_020001B8,
+    D_020001E0, D_02000208, D_02000230, D_02000258,
+    D_02000280, D_020002A8, D_020002D0, D_020002F8,
+    D_02000320, D_02000348, D_02000370, D_02000398,
+    D_020003C0, D_020003E8, D_02000410, D_02000438,
+    D_02000460, D_02000488, D_020004B0, D_020004D8,
+    D_02000500, D_02000528, D_02000550, D_02000578,
+    D_020005A0, D_020005C8, D_020005F0, D_02000618,
+    D_02000640, D_02000668, D_02000690, D_020006B8,
+    D_020006E0, D_02000708, D_02000730, D_02000758,
+    D_02000780, D_020007A8, D_020007D0, D_020007F8,
+    D_02000820, D_02000848, D_02000870, D_02000898,
+    D_020008C0, D_020008E8, D_02000910, D_02000938,
+    D_02000960, D_02000988, D_020009B0, D_020009D8,
+    D_02000A00, D_02000A28, D_02000A50, D_02000A78,
+    D_02000AA0, D_02000AC8, D_02000AF0, D_02000B18,
+    D_02000B40, D_02000B68, D_02000B90, D_02000BB8,
+    D_02000BE0, D_02000C08, D_02000C30, D_02000C58,
+    D_02000C80, D_02000CA8, D_02000CD0, D_02000CF8,
+    D_02000D20, D_02000D48, D_02000D70, D_02000D98,
+    D_02000DC0, D_02000DE8, D_02000E10, D_02000E38,
+    D_02000E60, D_02000E88, D_02000EB0, D_02000ED8,
+    D_02000F00, D_02000F28, D_02000F50, D_02000F78,
+    D_02000FA0, D_02000FC8, D_02000FF0, D_02001018,
+    D_02001040, D_02001068, D_02001090, D_020010B8,
+};
+
+MkTexture *D_800E7CA8[] = {
+    D_020010E0, D_02001108, D_02001130, D_02001158,
+    D_02001180, D_020011A8, D_020011D0, D_020011F8,
+    D_02001220, D_02001248, D_02001270, D_02001298,
+    D_020012C0, D_020012E8, D_02001310, D_02001338,
+    D_02001360, D_02001388, D_020013B0, D_020013D8,
+    D_02001400, D_02001428, D_02001450, D_02001478,
+    D_020014A0,
+};
+
+MkTexture *D_800E7D0C[] = {
+    D_020016BC, D_020016E4, D_0200170C, D_02001734,
+    D_0200175C, D_02001784, D_020017AC, D_020017D4,
+    D_020017FC, D_02001824,
+};
+
+MkAnimation *D_800E7D34[] = {
+    D_0200198C, D_0200199C, D_020019AC, D_020019BC,
+    D_020019CC, D_020019DC,
+};
+
+MkTexture *D_800E7D4C[] = {
+    D_02004598, D_020045C0,
+};
+
+MkTexture *D_800E7D54[] = {
+    D_02001A8C, D_02001A64, D_02001AB4, D_02001A14,
+    D_02001B04, D_020019EC, D_02001ADC, D_02001A3C,
+};
+
+MkTexture *D_800E7D74[] = {
+    D_02001B2C, D_02001B54, D_02001B7C, D_02001BA4,
+    D_02001BCC, D_02001BF4, D_02001C1C, D_02001C44,
+    D_02001C6C, D_02001C94, D_02001CBC, D_02001CE4,
+    D_02001D0C, D_02001D34, D_02001D5C, D_02001D84,
+    D_02001DAC, D_02001DD4, D_02001DFC, D_02001E24,
+};
+
+MkTexture *D_800E7DC4[] = {
+    D_02004EA8, D_02004ED0, D_02004EF8, D_02004F20,
+    D_02004F48, D_02004F70, D_02004F98, D_02004FC0,
+    D_02004FE8, D_02005010, D_02005038, D_02005060,
+    D_02005088, D_020050B0, D_020050D8, D_02005100,
+    D_02005128, D_02005150, D_02005178, D_020051A0,
+};
+
+// Unused?
+MkAnimation *D_800E7E14[] = {
+    D_020020BC, D_020020CC, D_020020DC,
+};
+
+MkAnimation *D_800E7E20[] = {
+    D_020020DC, D_020020EC, D_020020FC, D_0200210C,
+    D_0200210C,
+};
+
+MkAnimation *D_800E7E34[] = {
+    D_02001E64, D_02001E74, D_02001E84, D_02001E94,
+    D_02001EA4, D_02001EB4, D_02001EC4, D_02001ED4,
+    D_02001EE4, D_02001EF4, D_02001F04, D_02001F14,
+    D_02001F24, D_02001F34, D_02001F44, D_02001F54,
+    D_02001F64, D_02001F74, D_02001F84, D_02001F94,
+};
+
+MkTexture *gGlyphTextureLUT[] = {
+    D_0200211C, D_02002144, D_0200216C, D_02002194,
+    D_020021BC, D_020021E4, D_0200220C, D_02002234,
+    D_0200225C, D_02002284, D_020022AC, D_020022D4,
+    D_020022FC, D_02002324, D_0200234C, D_02002374,
+    D_0200239C, D_020023C4, D_020023EC, D_02002414,
+    D_0200243C, D_02002464, D_0200248C, D_020024B4,
+    D_020024DC, D_02002504, D_0200252C, D_02002554,
+    D_0200257C, D_020025A4, D_02004584, D_0200261C,
+    D_02002694, D_020026BC, D_020026E4, D_0200270C,
+    D_02002734, D_0200275C, D_02002784, D_020027AC,
+    D_020027D4, D_020027FC, D_020025CC, D_02002644,
+    D_020025F4, D_0200266C, D_02004534, D_02004584,
+    D_02002824, D_0200284C, D_02002874, D_0200289C,
+    D_020028C4, D_020028EC, D_02002F54, D_02002914,
+    D_02002F7C, D_0200293C, D_02002FA4, D_02002964,
+    D_02002FCC, D_0200298C, D_02002FF4, D_020029B4,
+    D_0200301C, D_020029DC, D_02003044, D_02002A04,
+    D_0200306C, D_02002A2C, D_02003094, D_02002A54,
+    D_020030BC, D_02002A7C, D_020030E4, D_02002AA4,
+    D_0200310C, D_020033B4, D_02002ACC, D_02003134,
+    D_02002AF4, D_0200315C, D_02002B1C, D_02003184,
+    D_02002B44, D_02002B6C, D_02002B94, D_02002BBC,
+    D_02002BE4, D_02002C0C, D_020031AC,
+};
+
+MkTexture *D_800E7FF0[] = {
+    D_02003274, D_02002C34, D_020031D4, D_0200329C,
+    D_02002C5C, D_020031FC, D_020032C4, D_02002C84,
+    D_02003224, D_020032EC, D_02002CAC, D_0200324C,
+    D_02003314, D_02002CD4, D_02002CFC, D_02002D24,
+    D_02002D4C, D_02002D74, D_0200333C, D_02002D9C,
+    D_02003364, D_02002DC4, D_0200338C, D_02002DEC,
+    D_02002E14, D_02002E3C, D_02002E64, D_02002E8C,
+    D_02002EB4, D_02002EDC, D_02002F04, D_02002F2C,
+    D_020033DC, D_02003404, D_0200342C, D_02003454,
+    D_0200347C, D_020034A4, D_020034CC, D_020034F4,
+    D_0200351C, D_02003544, D_0200356C, D_02003BD4,
+};
+
+MkTexture *D_800E80A0[] = {
+    D_02003594, D_02003BFC, D_020035BC, D_02003C24,
+    D_020035E4, D_02003C4C, D_0200360C, D_02003C74,
+    D_02003634, D_02003C9C, D_0200365C, D_02003CC4,
+    D_02003684, D_02003CEC, D_020036AC, D_02003D14,
+    D_020036D4, D_02003D3C, D_020036FC, D_02003D64,
+    D_02003724, D_02003D8C, D_02004034, D_0200374C,
+    D_02003DB4, D_02003774, D_02003DDC, D_0200379C,
+    D_02003E04,
+};
+
+MkTexture *D_800E8114[] = {
+    D_020037C4, D_020037EC, D_02003814, D_0200383C,
+    D_02003864, D_0200388C, D_02003E2C, D_02003EF4,
+    D_020038B4, D_02003E54, D_02003F1C, D_020038DC,
+    D_02003E7C, D_02003F44, D_02003904, D_02003EA4,
+    D_02003F6C, D_0200392C, D_02003ECC, D_02003F94,
+    D_02003954, D_0200397C, D_020039A4, D_020039CC,
+};
+
+MkTexture *D_800E8174[] = {
+    D_020039F4, D_02003FBC,
+};
+
+MkTexture *D_800E817C[] = {
+    D_02003A1C, D_02003FE4, D_02003A44, D_0200400C,
+    D_02003A6C, D_02003A94, D_02003ABC, D_02003AE4,
+    D_02003B0C, D_02003B34, D_02003B5C, D_02003B84,
+    D_02003BAC, D_0200405C, D_02004084, D_020040AC,
+    D_020040D4, D_020040FC, D_020043CC, D_02004444,
+    D_0200437C, D_020043F4, D_02004124, D_0200414C,
+    D_02004174, D_0200419C,
+};
+
+MkTexture *D_800E81E4[] = {
+    D_020041C4, D_020041EC, D_02004214, D_0200423C,
+    D_02004264, D_0200428C, D_020042B4, D_020042DC,
+    D_02004354, D_020043A4, D_0200441C, D_0200446C,
+    D_02004494, D_020044BC, D_02004304, D_0200432C,
+    D_020044E4, D_0200450C,
+};
+
+MkTexture *D_800E822C[] = {
+    D_02004534, D_0200455C,
+};
+
+MkTexture *D_800E8234[] = {
+    D_02004688, D_020047DC, D_020046D8, D_02004804,
+    D_0200473C, D_0200482C,
+};
+
+MkTexture *D_800E824C[] = {
+    D_0200478C, D_02004854,
+};
+
+MkTexture *D_800E8254[] = {
+    D_02004660, D_02004688, D_020046D8, D_0200473C,
+    D_0200478C, D_0200487C, D_020048A4, D_020048CC,
+};
+
+MkTexture *D_800E8274[] = {
+    D_020048F4, D_0200491C, D_02004944, D_0200496C,
+    D_020049BC, D_02004994, D_020049E4, D_02004A34,
+};
+
+MkTexture *D_800E8294[] = {
+    D_020048F4, D_0200491C, D_02004944, D_0200496C,
+    D_020049BC, D_02004994, D_020049E4, D_02004A34,
+};
+
+MkTexture *D_800E82B4[] = {
+    D_02004A5C, D_02004A98, D_02004AD4, D_02004B10,
+    D_02004B9C,
+};
+
+MkTexture *D_800E82C8[] = {
+    D_02004BC4, D_02004BEC, D_02004C14, D_02004C3C,
+    D_02004C64, D_02004C8C, D_02004CF0, D_02004D54,
+    D_02004DB8, D_02004E1C, D_02004E80, D_02004BC4,
+    D_02004BEC, D_02004C14, D_02004C3C, D_02004C64,
+    D_02004C8C, D_02004CF0, D_02004D54, D_02004DB8,
+    D_02004E1C, D_02004E80,
+};
+
+MkAnimation *D_800E8320[] = {
+    D_02006708, D_020068F0, D_02006CC0, D_02006EA8,
+    D_02007090, D_02007280, D_02007468, D_02006AD8,
+};
+
+MkAnimation *D_800E8340[] = {
+    D_02006778, D_02006960, D_02006D30, D_02006F18,
+    D_02007100, D_020072F0, D_020074D8, D_02006B48,
+};
+
+MkAnimation *D_800E8360[] = {
+    D_02006708, D_020068F0, D_02006CC0, D_02006EA8,
+    D_02007090, D_02007280, D_02007468, D_02006AD8,
+};
+
+MkAnimation *gCharacterCelebrateAnimation[] = {
+    D_02006718, D_02006900, D_02006CD0, D_02006EB8,
+    D_020070A0, D_02007290, D_02007478, D_02006AE8,
+};
+
+MkAnimation *D_800E83A0[] = {
+    D_02006778, D_02006960, D_02006D30, D_02006F18,
+    D_02007100, D_020072F0, D_020074D8, D_02006B48,
+};
+
+MkAnimation *gCharacterDeselectAnimation[] = {
+    D_02006788, D_02006970, D_02006D40, D_02006F28,
+    D_02007110, D_02007300, D_020074E8, D_02006B58,
+};
+
+MkAnimation *gCharacterSingleBlinkAnimation[] = {
+    D_020067E0, D_020069C8, D_02006D98, D_02006F80,
+    D_02007170, D_02007358, D_02007540, D_02006BB0,
+};
+
+MkAnimation *gCharacterDoubleBlinkAnimation[] = {
+    D_02006838, D_02006A20, D_02006DF0, D_02006FD8,
+    D_020071C8, D_020073B0, D_02007598, D_02006C08,
+};
+
+MkAnimation *gCharacterDefeatAnimation[] = {
+    D_020068E0, D_02006AC8, D_02006E98, D_02007080,
+    D_02007270, D_02007458, D_02007640, D_02006CB0,
+};
+
+s32 D_800E8440[] = {
+    0x0a, 0x0a, 0x0a, 0x0a,
+    0x0a, 0x0a, 0x0a, 0x0a,
+};
+
+s32 D_800E8460[] = {
+    0x09, 0x09, 0x09, 0x09,
+    0x0a, 0x09, 0x09, 0x09,
+};
+
+s32 D_800E8480[] = {
+    0x09, 0x09, 0x09, 0x09,
+    0x09, 0x09, 0x09, 0x09,
+};
+
+s32 D_800E84A0[] = {
+    0x13, 0x13, 0x13, 0x13,
+    0x13, 0x13, 0x13, 0x13,
+};
+
+Vtx *D_800E84C0[] = {
+    D_02007BB8, D_02007CD8, D_02007DF8,
+};
+
+Gfx *D_800E84CC[] = {
+    D_02007838, D_02007858, D_02007878, D_02007898,
+    D_020078B8, D_020078D8, D_020078F8, D_02007918,
+};
+
+Gfx *D_800E84EC[] = {
+    D_02007938, D_02007958, D_02007978, D_02007998,
+    D_020079B8, D_020079D8, D_020079F8, D_02007A18,
+};
+
+Gfx *D_800E850C[] = {
+    D_02007A38, D_02007A58, D_02007A78, D_02007A98,
+    D_02007AB8, D_02007AD8, D_02007AF8, D_02007B18,
+};
+
+s8 D_800E852C = 1;
+
+f32 D_800E8530 = 0.0f;
+
+f32 D_800E8534 = 3.0f;
+
+Unk_D_800E70A0 D_800E8538 = { 0x69, 0x9b, 0x00, 0x00 };
+
+Unk_D_800E70A0 D_800E8540[][4] = {
+    {
+        { 0x82, 0x64, 0x00, 0x00 },
+        { 0x82, 0x64, 0x00, 0x00 },
+        { 0x82, 0x64, 0x00, 0x00 },
+        { 0x82, 0x64, 0x00, 0x00 },
+    },
+    {
+        { 0x6e, 0x28, 0x00, 0x00 },
+        { 0x6e, 0xa0, 0x00, 0x00 },
+        { 0x6e, 0x28, 0x00, 0x00 },
+        { 0x6e, 0xa0, 0x00, 0x00 },
+    },
+    {
+        { 0x28, 0x64, 0x00, 0x00 },
+        { 0xb2, 0x64, 0x00, 0x00 },
+        { 0x28, 0x64, 0x00, 0x00 },
+        { 0xb2, 0x64, 0x00, 0x00 },
+    },
+    {
+        { 0x28, 0x28, 0x00, 0x00 },
+        { 0xb2, 0x28, 0x00, 0x00 },
+        { 0x28, 0xa0, 0x00, 0x00 },
+        { 0xb2, 0xa0, 0x00, 0x00 },
+    },
+};
+
+Unk_D_800E70A0 D_800E85C0[][4] = {
+    {
+        { 0x69, 0x8c, 0x00, 0x00 },
+        { 0x78, 0x64, 0x00, 0x00 },
+        { 0x78, 0x64, 0x00, 0x00 },
+        { 0x78, 0x64, 0x00, 0x00 },
+    },
+    {
+        { 0x69, 0x55, 0x00, 0x00 },
+        { 0x69, 0xcd, 0x00, 0x00 },
+        { 0x78, 0x28, 0x00, 0x00 },
+        { 0x78, 0xa0, 0x00, 0x00 },
+    },
+};
+
+Unk_D_800E70A0 D_800E8600[][4] = {
+    {
+        { 0x78, 0x64, 0x00, 0x00 },
+        { 0x78, 0x64, 0x00, 0x00 },
+        { 0x78, 0x64, 0x00, 0x00 },
+        { 0x78, 0x64, 0x00, 0x00 },
+    },
+    {
+        { 0x6e, 0x28, 0x00, 0x00 },
+        { 0x6e, 0xa0, 0x00, 0x00 },
+        { 0x6e, 0x28, 0x00, 0x00 },
+        { 0x6e, 0xa0, 0x00, 0x00 },
+    },
+    {
+        { 0x28, 0x64, 0x00, 0x00 },
+        { 0xb2, 0x64, 0x00, 0x00 },
+        { 0x28, 0x64, 0x00, 0x00 },
+        { 0xb2, 0x64, 0x00, 0x00 },
+    },
+    {
+        { 0x28, 0x28, 0x00, 0x00 },
+        { 0xb2, 0x28, 0x00, 0x00 },
+        { 0x28, 0xa0, 0x00, 0x00 },
+        { 0xb2, 0xa0, 0x00, 0x00 },
+    },
+};
+
 f64 exponent_by_squaring(f64 base, s32 exponent) {
     s32 positive_exponent;
     f64 result;
@@ -523,10 +1788,6 @@ void func_8009265C(void) {
     add_8018D9E0_entry(0x12B, 0, 0, 2);
 }
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-// jpt_800F0CD8
-
 void func_80092688(void) {
     switch (D_800DC5E4) {
     case 0:
@@ -635,111 +1896,86 @@ void func_80092688(void) {
         return;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80092688.s")
-#endif
 
 void func_80092C80(void) {
     D_8018ED91 = 1;
 }
 
-#ifdef NEEDS_RODATA
 // Originally func_80092C90
 // Some kind of lookup function, seems to return an index to be used
 // to get a character's width in pixels
-// This technically matches, but due to linker alignment shenanigans actually
-// matching will have to wait
 s32 char_to_glyph_index(char *character) {
-    s32 index = 1;
+    s32 var_v1;
+    s8 temp_v0;
 
-    // Uppercase Letters
-    if ((*character >= 0x61) && (*character < 0x7B)) {
-        index = *character - 0x61;
-    // Lowercase Letters
-    } else if ((*character >= 0x41) && (*character < 0x5B)) {
-        index = *character - 0x41;
-    // Numbers
-    } else if ((*character >= 0x30) && (*character < 0x3A)) {
-        index = *character - 0x10;
-    // Space
-    } else if (*character == 0x20) {
-        index = -1;
-    // Interpreting characters as signed numbers, so check if the character is "negative"
-    } else if (*character < 0) {
-        // Handling katakana characters
-        switch (*character) {                          /* switch 1 */
-        case 0xA4:                                   /* switch 1 */
-            // WARNING: Not sure about the arguments to the following 3 functions, its not clear
-            // what they exepct
-            index = func_80092E1C(character + 1);
+    temp_v0 = *character;
+    var_v1 = 1;
+    if ((temp_v0 >= 'a') && (temp_v0 <= 'z')) {
+        var_v1 = temp_v0 - 0x61;
+    } else if ((temp_v0 >= 'A') && (temp_v0 <= 'Z')) {
+        var_v1 = temp_v0 - 0x41;
+    } else if ((temp_v0 >= '0') && (temp_v0 <= '9')) {
+        var_v1 = temp_v0 - 0x10;
+    } else if (temp_v0 == ' ') {
+        var_v1 = -1;
+    } else if (temp_v0 < 0) {
+        // Handling EUC-JUP characters
+        switch (temp_v0) {                          /* irregular */
+        case -92: // 0xA4
+            var_v1 = func_80092E1C(character + 1);
             break;
-        case 0xA5:                                   /* switch 1 */
-            index = func_80092DF8(character + 1);
+        case -91: // 0xA5
+            var_v1 = func_80092DF8(character + 1);
             break;
-        case 0xAB:                                   /* switch 1 */
-        case 0xA3:                                   /* switch 1 */
-        case 0xA1:                                   /* switch 1 */
-            index = func_80092EE4(character);
+        case -95: // 0xA1
+        case -93: // 0xA3
+        case -85: // 0xAB
+            var_v1 = func_80092EE4(character);
             break;
         }
     } else {
-        switch (*character) {                          /* switch 2 */
-        // !
-        case 0x21:                                  /* switch 2 */
-            index = 0x1A;
+        switch (temp_v0) {
+        case '!':
+            var_v1 = 0x0000001A;
             break;
-        // -
-        case 0x2D:                                  /* switch 2 */
-            index = 0x1B;
+        case '-':
+            var_v1 = 0x0000001B;
             break;
-        // ?
-        case 0x3F:                                  /* switch 2 */
-            index = 0x1C;
+        case '?':
+            var_v1 = 0x0000001C;
             break;
-        // '
-        case 0x27:                                  /* switch 2 */
-            index = 0x1D;
+        case '\'':
+            var_v1 = 0x0000001D;
             break;
-        // $
-        // Doesn't appear to have a texture?
-        case 0x24:                                  /* switch 2 */
-            index = 0x1E;
+        case '$':
+            var_v1 = 0x0000001E;
             break;
-        // .
-        case 0x2E:                                  /* switch 2 */
-            index = 0x1F;
+        case '.':
+            var_v1 = 0x0000001F;
             break;
-        // "
-        case 0x22:                                  /* switch 2 */
-            index = 0x2A;
+        case '\"':
+            var_v1 = 0x0000002A;
             break;
-        // *
-        case 0x2A:                                  /* switch 2 */
-            index = 0x2B;
+        case '*':
+            var_v1 = 0x0000002B;
             break;
-        // +
-        case 0x2B:                                  /* switch 2 */
-            index = 0x2C;
+        case '+':
+            var_v1 = 0x0000002C;
             break;
-        // (
         // Displayed as "cc"
-        case 0x28:                                  /* switch 2 */
-            index = 0x2D;
+        case '(':
+            var_v1 = 0x0000002D;
             break;
-        // ,
-        case 0x2C:                                  /* switch 2 */
-            index = 0x2E;
+        case ',':
+            var_v1 = 0x0000002E;
             break;
-        default:                                    /* switch 2 */
-            index = -2;
+        default:
+            var_v1 = -2;
             break;
         }
     }
-    return index;
+    return var_v1;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/char_to_glyph_index.s")
-#endif
 
 s32 func_80092DF8(s8 *arg) {
     return func_80092E1C(arg) + 0x50;
@@ -1071,8 +2307,6 @@ void text_draw(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y
     print_text2(column, row, text, tracking, x_scale, y_scale, 2);
 }
 
-extern s8 D_800F0B1C[];
-
 void func_80093A30(s32 arg0) {
     func_8009E2A8(D_800F0B1C[arg0]);
 }
@@ -1305,11 +2539,7 @@ void func_800947B4(struct GfxPool *arg0, UNUSED s32 arg1) {
     gSPDisplayList(gDisplayListHead++, D_02007650);
 }
 
-#ifdef NEEDS_RODATA
-// Non-matching due to .rodata diffs resulting from the switch/case
-// jump table
-// Renders menu graphics?
-void func_80094A64(GfxPool *arg0) {
+void func_80094A64(Mtx *arg0) {
     D_8018D120 = 0;
     D_80164AF0 = 0;
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_802B8880));
@@ -1344,9 +2574,6 @@ void func_80094A64(GfxPool *arg0) {
     gDPPipeSync(gDisplayListHead++);
     gSPDisplayList(gDisplayListHead++, D_020076B0);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80094A64.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -1514,51 +2741,9 @@ void func_80094C60(void) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80094C60.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern char *D_800F0B58[];// = "debug_mode";
-extern char *D_800F0B64[];// = "*";
-extern char *D_800F0B68[];// = "*";
-extern char *D_800F0B6C[];// = "*";
-extern char *D_800F0B70[];// = "*";
-extern char *D_800F0B74[];// = "*";
-extern char *D_800F0B78[];// = "*";
-extern char *D_800F0B7C[];// = "on";
-extern char *D_800F0B80[];// = "off";
-extern char *D_800F0B84[];// = "map_number";
-extern char *D_800F0B90[];// = "screen_mode";
-extern char *D_800F0B9C[];// = "player";
-extern char *D_800F0BA4[];// = "sound mode";
-extern char *D_800F0BB0[];// = "push b to get all goldcup";
-// I think all these are plain data, don't know which file they belong in
-extern char *gDebugCourseNames[0x14];// = {
-//     "m circuit",
-//     "mountain",
-//     "castle",
-//     "ghost",
-//     "maze",
-//     "snow",
-//     "beach",
-//     "p circuit",
-//     "l circuit",
-//     "farm",
-//     "highway",
-//     "desert",
-//     "sherbet",
-//     "rainbow",
-//     "stadium",
-//     "block",
-//     "skyscraper",
-//     "deck",
-//     "jungle",
-//     "doughnut",
-// };
-extern char *gDebugCharacterNames[8];// = { "MARIO", "LUIGI", "YOSHI", "KINOPIO", "D.KONG", "WARIO", "PEACH", "KOOPA" };
-extern char *gDebugScreenModeNames[5];// = { "1p", "2players UD", "2players LR", "3players", "4players" };
-extern char *gDebugSoundModeNames[4];// = { "stereo", "head phone", "xxx", "monaural" };
-
 void func_80095574(void) {
     s32 var_v0;
+
     if ((D_8018EE0C < 3) || (D_8018E7B0 != 0)) {
         func_800A8230();
     }
@@ -1593,7 +2778,7 @@ void func_80095574(void) {
         if ((gCurrentCourseId >= 0x14) || (gCurrentCourseId < 0)) {
             gCurrentCourseId = 0;
         }
-        print_str_num(0x00000050, 0x0000006E, "map_number", (s32) gCurrentCourseId);
+        print_str_num(0x00000050, 0x0000006E, "map_number", gCurrentCourseId);
         if (gCurrentCourseId < 0xA) {
             var_v0 = 0;
         } else {
@@ -1625,9 +2810,6 @@ void func_80095574(void) {
     }
     gSPDisplayList(gDisplayListHead++, D_020076E0);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80095574.s")
-#endif
 
 // While this matches, its a little screwy
 // This function seemingly needs to return a Gfx*, but doing that explicity doesn't match
@@ -7810,11 +8992,6 @@ block_58:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009F5E0.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// I think this is rodata? It looks like its all the font textures
-// data_0DD0A0_2_0
-extern MkTexture *D_800E7AF8[0x6C];
-
 void func_800A08D8(u8 arg0, s32 column, s32 row) {
     if (arg0 >= 0x10) {
         arg0 -= 0x10;
@@ -7826,9 +9003,6 @@ void func_800A08D8(u8 arg0, s32 column, s32 row) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A08D8.s")
-#endif
 
 // Walks through `someString` for `len` charcters, seemingly even going over null terminators.
 // Returns a count of all non-terminator characters walked over.
@@ -7944,11 +9118,6 @@ void func_800A0B80(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A0B80.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-// Probably the textures for numbers 0-9
-extern MkTexture *D_800E7D0C[0xA];
-
 void func_800A0DFC(void) {
     s32 temp_t6;
     s32 var_s0;
@@ -7963,9 +9132,6 @@ void func_800A0DFC(void) {
         var_s1 -= 9;
     } while (var_s0 != 0);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A0DFC.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 06ada559d7a32fdab49fa2d619cdfa027615bcda
@@ -8192,10 +9358,6 @@ block_4:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A143C.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E7168[];                       /* unable to generate initializer */
-
 void func_800A1500(struct_8018D9E0_entry *arg0) {
     struct_8018D9E0_entry *temp_v0;
     Unk_D_800E70A0 *temp_v0_2;
@@ -8226,9 +9388,6 @@ void func_800A1500(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A1500.s")
-#endif
 
 void func_800A15EC(struct_8018D9E0_entry *arg0) {
     s16 courseId = gCupCourseOrder[(arg0->type - 0x7C) / 4][(arg0->type - 0x7C) % 4];
@@ -8425,10 +9584,6 @@ void func_800A1DE0(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A1DE0.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_2_0.s
-extern char *D_800E7860[2];// = { "UNABLE TO ERASE ", "GHOST DATA" };
-
 void func_800A1F30(struct_8018D9E0_entry *unused) {
     s32 row;
     s32 text;
@@ -8438,9 +9593,6 @@ void func_800A1F30(struct_8018D9E0_entry *unused) {
         func_80093324(0x2A, row, D_800E7860[text], 0, 0.75f, 0.75f);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A1F30.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 06ada559d7a32fdab49fa2d619cdfa027615bcda
@@ -9378,7 +10530,7 @@ void func_800A3C84(struct_8018D9E0_entry *arg0) {
     s32 rowOffset;
 
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(arg0->column + 0x43, arg0->row + 0x19, D_800E7574[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, D_800F1CC8, D_800F1CC8);
+    draw_text(arg0->column + 0x43, arg0->row + 0x19, D_800E7574[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 0.6f, 0.6f);
     set_text_color(TEXT_YELLOW);
     draw_text(arg0->column + 0x46, arg0->row + 0x28, D_800E7730, 0, 0.75f, 0.75f);
     for(recordType = 0, rowOffset = 0; recordType < TIME_TRIAL_3LAP_RECORD_5; recordType += 1, rowOffset += 0xF){
@@ -9850,13 +11002,6 @@ block_21:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A474C.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f32 D_800F1DCC;// = 0.85f;
-extern f32 D_800F1DD0;// = 0.85f;
-// data_0DD0A0_2_0.s
-extern char D_800E7780[];// = "NOW-MEET THE COURSE GHOST!!!";
-
 void func_800A4A24(struct_8018D9E0_entry *arg0) {
     s32 stackPadding0;
     s32 temp_t0;
@@ -9867,14 +11012,11 @@ void func_800A4A24(struct_8018D9E0_entry *arg0) {
 
     temp_t0 = 0x140 - arg0->column;
     temp_t1 = arg0->row;
-    temp_t2 = (s32) ((get_string_width("NOW-MEET THE COURSE GHOST!!!") + 8) * someMultiplier) / 2;
+    temp_t2 = (s32) ((get_string_width(D_800E7780) + 8) * someMultiplier) / 2;
     gDisplayListHead = draw_box(gDisplayListHead, temp_t0 - temp_t2, (temp_t1 - thing) + 4, temp_t2 + temp_t0, temp_t1 + 4, 0, 0, 0, 0x00000064);
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(arg0->column - 3, arg0->row, "NOW-MEET THE COURSE GHOST!!!", 0, 0.85f, 0.85f);
+    draw_text(arg0->column - 3, arg0->row, D_800E7780, 0, 0.85f, 0.85f);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A4A24.s")
-#endif
 
 void func_800A4B38(struct_8018D9E0_entry *arg0) {
     if (gIsGamePaused != 0) {
@@ -10561,10 +11703,10 @@ void func_800A6034(struct_8018D9E0_entry *arg0) {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, arg0->unk1C);
         text = D_800E7500[D_800DC540];
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-        func_80093754(arg0->column + 0x41, arg0->row + 0xA0, text, 0, D_800F1F04, 1.0f);
+        func_80093754(arg0->column + 0x41, arg0->row + 0xA0, text, 0, 0.85f, 1.0f);
         text = D_800E7524[gCurrentCourseId];
         set_text_color((s32) gCurrentCourseId % 4);
-        func_80093754(arg0->column + 0x41, arg0->row + 0xC3, text, 0, D_800F1F08, D_800F1F0C);
+        func_80093754(arg0->column + 0x41, arg0->row + 0xC3, text, 0, 0.65f, 0.85f);
     }
 }
 
@@ -10800,72 +11942,46 @@ void func_800A66A8(struct_8018D9E0_entry *arg0, f32 *arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A66A8.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-void func_800A79F4(u8, s8 *);                          /* extern */
-extern s32 gNmiUnknown1;
-extern s32 gNmiUnknown4;
-extern s32 gPlayerWinningIndex;
-static ? D_800E7300;                                /* unable to generate initializer */
-static s16 D_800E7302;                              /* unable to generate initializer */
-static ? D_800E7380;                                /* unable to generate initializer */
-static s8 *D_800E7720[2] = { "WINNER!", "LOSER!" };
-static s8 D_800F0C7C[3] = { 0xA1, 0xBC, 0 };        /* const */
-
 void func_800A69C8(s32 arg0) {
-    s8 sp74;
-    u8 *sp68;
-    ? *var_s1;
-    ? *var_s2;
-    s32 temp_v0;
+    Unk_D_800E70A0 *thing;
+    s32 stackPadding1;
     s32 var_s0;
+    s8 sp74[5];
     s32 var_v1;
     s8 *temp_s3;
     u8 *var_s4;
 
-    var_s0 = 0;
-    if (D_8018EDF3 > 0) {
-        var_s2 = &D_800E7380;
-        var_s1 = &D_800E7300;
-        var_s4 = sp68;
-        do {
-            temp_v0 = gModeSelection;
-            var_v1 = 0;
-            switch (temp_v0) {                      /* irregular */
-            case VERSUS:
-                if (gGPCurrentRaceRankByPlayerId[var_s0] != 0) {
-                    var_v1 = 1;
-                }
-                var_s4 = gNmiUnknown1 + var_s0;
-                break;
-            case BATTLE:
-                if (var_s0 != gPlayerWinningIndex) {
-                    var_v1 = 1;
-                }
-                var_s4 = gNmiUnknown4 + var_s0;
-                break;
+    for (var_s0 = 0; var_s0 < D_8018EDF3; var_s0++) {
+        var_v1 = 0;
+        thing = &D_800E7300[0][var_s0];
+        switch (gModeSelection) {               /* irregular */
+        case 2:
+            if (gGPCurrentRaceRankByPlayerId[var_s0] != 0) {
+                var_v1 = 1;
             }
-            temp_s3 = D_800E7720[var_v1];
-            if (var_v1 != 0) {
-                set_text_color(0);
-            } else {
-                set_text_color((s32) gGlobalTimer % 3);
+            var_s4 = &gNmiUnknown1[var_s0];
+            break;
+        case 3:
+            if (var_s0 != gPlayerWinningIndex) {
+                var_v1 = 1;
             }
-            func_800A79F4(*var_s4, &sp74);
-            text_draw(var_s1->unk0 + 0x10, var_s1->unk2 + 0x75, &sp74, 0, 1.0f, 1.0f);
-            func_80093754((s32) var_s2->unk0, (s32) var_s2->unk2, temp_s3, 0, 0.65f, 1.0f);
-            var_s0 += 1;
-            var_s1 += 8;
-            var_s2 += 8;
-        } while (var_s0 < D_8018EDF3);
-        sp68 = var_s4;
+            var_s4 = &gNmiUnknown4[var_s0];
+            break;
+        }
+        temp_s3 = D_800E7720[var_v1];
+        if (var_v1 != 0) {
+            set_text_color(TEXT_BLUE);
+        } else {
+            set_text_color((s32) gGlobalTimer % 3);
+        }
+        func_800A79F4(var_s4[0], sp74);
+        text_draw(thing->column + 0x10, thing->row + 0x75, sp74, 0, 1.0f, 1.0f);
+        func_80093754(D_800E7380[var_s0].column, D_800E7380[var_s0].row, temp_s3, 0, 0.65f, 1.0f);
     }
-    set_text_color(0);
-    text_draw(0x0000009E, D_800E7302 + 0x6D, D_800F0C7C, 0, 1.0f, 1.0f);
+    set_text_color(TEXT_BLUE);
+    // Not a hyphen, that is an EUC-JP character
+    text_draw(0x0000009E, D_800E7300[0][0].row + 0x6D, "ー", 0, 1.0f, 1.0f);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A69C8.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
@@ -10979,64 +12095,44 @@ void func_800A6D94(s32 arg0, s32 arg1, s32 arg2) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A6D94.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-static ? D_800E7300;                                /* unable to generate initializer */
-static s8 D_800F0C80[8] = { 0x31, 0x20, 0xA3, -0x0D, 0x20, 0xA1, 0xBC, 0 }; /* const */
-static s8 D_800F0C88[8] = { 0x32, 0x20, 0xA3, -0x12, 0x20, 0xA1, 0xBC, 0 }; /* const */
-static s8 D_800F0C90[8] = { 0x33, 0x20, 0xA3, -0x0E, 0x20, 0xA1, 0xBC, 0 }; /* const */
-
-void func_800A6E94(s32 arg0, s32 arg1, s32 arg2) {
-    s8 sp40;
-    s32 sp3C;
-    s32 sp38;
-    u8 *sp30;
-    s32 temp_t8;
+// The ｓ/ｎ/ｒ/ー are not ASCII characters, they're EUC-JP characters
+void func_800A6E94(s32 arg0, s32 arg1, u8 *arg2) {
+    s32 stackPadding0;
     u8 *temp_v0;
-    void *temp_s0;
+    Unk_D_800E70A0 *temp_s0;
+    char sp40[3];
+    s32 rank;
+    // Everything about this variable is bizarre
+    u32 sp38 = -1;
 
-    temp_t8 = gGPCurrentRaceRankByPlayerId[arg1];
-    sp3C = temp_t8;
-    if (temp_t8 == 0) {
-        set_text_color((s32) gGlobalTimer % 3);
+    temp_s0 = &D_800E7300[arg0 - 2][arg1];
+    rank = gGPCurrentRaceRankByPlayerId[arg1];
+    if (rank == ++sp38) {
+        set_text_color(gGlobalTimer % 3);
     } else {
-        set_text_color(3);
+        set_text_color(TEXT_YELLOW);
     }
-    temp_s0 = ((arg0 << 5) + (arg1 * 8)) - 0x40 + &D_800E7300;
-    text_draw(temp_s0->unk0 + 4, temp_s0->unk2 + 0x5A, D_800F0C80, 0, 0.8f, 0.8f);
-    temp_v0 = (arg1 * 3) + arg2;
-    sp30 = temp_v0;
-    convert_number_to_ascii((s32) *temp_v0, &sp40);
-    text_draw(temp_s0->unk0 + 0x2D, temp_s0->unk2 + 0x5A, &sp40, 0, 0.8f, 0.8f);
-    if (sp3C == 1) {
-        sp38 = 1;
-        set_text_color((s32) gGlobalTimer % 3);
+    text_draw(temp_s0->column + 4, temp_s0->row + 0x5A, "1 ｓ ー", 0, 0.8f, 0.8f);
+    temp_v0 = arg2 + (arg1 * 3);
+    convert_number_to_ascii(temp_v0[0], sp40);
+    text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x5A, sp40, 0, 0.8f, 0.8f);
+    if (rank == ++sp38) {
+        set_text_color(gGlobalTimer % 3);
     } else {
-        sp38 = 1;
-        set_text_color(0);
+        set_text_color(TEXT_BLUE);
     }
-    sp38 = sp38;
-    text_draw(temp_s0->unk0 + 4, temp_s0->unk2 + 0x69, D_800F0C88, 0, 0.8f, 0.8f);
-    convert_number_to_ascii((s32) sp30->unk1, &sp40);
-    text_draw(temp_s0->unk0 + 0x2D, temp_s0->unk2 + 0x69, &sp40, 0, 0.8f, 0.8f);
-    if ((sp38 + 1) == sp3C) {
-        set_text_color((s32) gGlobalTimer % 3);
+    text_draw(temp_s0->column + 4, temp_s0->row + 0x69, "2 ｎ ー", 0, 0.8f, 0.8f);
+    convert_number_to_ascii(temp_v0[1], sp40);
+    text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x69, sp40, 0, 0.8f, 0.8f);
+    if (++sp38 == rank) {
+        set_text_color(gGlobalTimer % 3);
     } else {
-        set_text_color(2);
+        set_text_color(TEXT_RED);
     }
-    text_draw(temp_s0->unk0 + 4, temp_s0->unk2 + 0x78, D_800F0C90, 0, 0.8f, 0.8f);
-    convert_number_to_ascii((s32) sp30->unk2, &sp40);
-    text_draw(temp_s0->unk0 + 0x2D, temp_s0->unk2 + 0x78, &sp40, 0, 0.8f, 0.8f);
+    text_draw(temp_s0->column + 4, temp_s0->row + 0x78, "3 ｒ ー", 0, 0.8f, 0.8f);
+    convert_number_to_ascii(temp_v0[2], sp40);
+    text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x78, sp40, 0, 0.8f, 0.8f);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A6E94.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f32 D_800F1F2C;// = 0x45f;
-// data_0DD0A0_2_0.s
-extern char *D_800E7A34[2];// = { "RACE DATA CANNOT ", "BE SAVED FOR GHOST" };
 
 void func_800A70E8(struct_8018D9E0_entry *arg0) {
     s32 var_s0;
@@ -11063,9 +12159,6 @@ void func_800A70E8(struct_8018D9E0_entry *arg0) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A70E8.s")
-#endif
 
 // Shading layer of the grand prix podium result screen
 void func_800A7258(struct_8018D9E0_entry *arg0) {
@@ -11119,7 +12212,7 @@ void func_800A75A0(struct_8018D9E0_entry *arg0) {
     }
 
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(arg0->column, arg0->row, D_800E7A9C[topThree], 0, D_800F1F30, D_800F1F30);
+    draw_text(arg0->column, arg0->row, D_800E7A9C[topThree], 0, 1.3f, 1.3f);
 }
 
 #ifdef MIPS_TO_C
@@ -11240,18 +12333,14 @@ void get_time_record_centiseconds(s32 timeRecord, char *buffer) {
     convert_number_to_ascii(timeRecord % 0x64, buffer);
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_800A79F4(s32 arg0, void *arg1) {
-    arg1->unk0 = -0x5D;
-    arg1->unk1 = (arg0 / 0xA) - 0x50;
-    arg1->unk2 = -0x5D;
-    arg1->unk3 = (arg0 % 0xA) - 0x50;
-    arg1->unk4 = 0;
+// Converts a 2-digit number to EUC-JP by the looks of it
+void func_800A79F4(s32 arg0, char *arg1) {
+    arg1[0] = 0xA3;
+    arg1[1] = (arg0 / 0xA) - 0x50;
+    arg1[2] = 0xA3;
+    arg1[3] = (arg0 % 0xA) - 0x50;
+    arg1[4] = '\0';
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A79F4.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-12-2022
@@ -11957,10 +13046,6 @@ void func_800A890C(s32 arg0, struct_8018D9E0_entry *arg1) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E7208[][2];                    /* unable to generate initializer */
-
 void func_800A8A98(struct_8018D9E0_entry *arg0) {
     s32 temp_s2;
     s32 temp_s3;
@@ -11983,9 +13068,6 @@ void func_800A8A98(struct_8018D9E0_entry *arg0) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A8A98.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 06ada559d7a32fdab49fa2d619cdfa027615bcda
@@ -12046,16 +13128,16 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A8CA4.s")
 
 void func_800A8E14(UNUSED struct_8018D9E0_entry *arg0) {
     set_text_color(TEXT_YELLOW);
-    draw_text(0x98, 0x44, D_800E77A8, 0, 1.0f, 1.0f);
-    func_80093324(0x17, 0x58, D_800E77AC, 0, D_800F24A8, D_800F24AC);
-    func_80093324(0x17, 0x6A, D_800E77B0, 0, D_800F24B0, D_800F24B4);
+    draw_text(0x98, 0x44, D_800E77A8[0], 0, 1.0f, 1.0f);
+    func_80093324(0x17, 0x58, D_800E77A8[1], 0, 0.7f, 0.8f);
+    func_80093324(0x17, 0x6A, D_800E77A8[2], 0, 0.7f, 0.8f);
 }
 
 void func_800A8EC0(struct_8018D9E0_entry *arg0) {
     if (arg0->unk20 != 0) {
         func_8009A76C(arg0->D_8018DEE0_index, arg0->column, arg0->row, -1);
         set_text_color(TEXT_YELLOW);
-        func_80093324(arg0->column + 0x20, arg0->row + 0x28, D_800E7678[arg0->unk20], 0, D_800F24B8, D_800F24B8);
+        func_80093324(arg0->column + 0x20, arg0->row + 0x28, D_800E7678[arg0->unk20], 0, 0.7f, 0.7f);
     }
 }
 
@@ -12284,7 +13366,7 @@ void func_800A954C(struct_8018D9E0_entry *arg0) {
         arg0->unk20 = (s32) (u32) ((((f32) (0xC - arg0->unk1C) * 127.0f) / 12.0f) + 128.0f);
     } else {
     // Move highlight from red to  yellow
-        arg0->unk20 = (s32) (u32) ((((f64) (f32) arg0->unk1C * D_800F24C0) / 12.0) + 128.0);
+        arg0->unk20 = (s32) (u32) ((((f64) (f32) arg0->unk1C * 127.0) / 12.0) + 128.0);
     }
     arg0->unk1C++;
     if (arg0->unk1C >= 0xC) {
@@ -12293,13 +13375,6 @@ void func_800A954C(struct_8018D9E0_entry *arg0) {
         arg0->unk4 ^= 1;
     }
 }
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_2_0.s
-// I think this is rodata?
-extern MkAnimation *D_800E7D34[6];// = { D_0200198C, D_0200199C, D_020019AC, D_020019BC, D_020019CC, D_020019DC }; /* const */
-// data_0DD0A0_3_0.s
-// jpt_800F24C8
 
 void func_800A9710(struct_8018D9E0_entry *arg0) {
     s32 phi_v0;
@@ -12331,9 +13406,6 @@ void func_800A9710(struct_8018D9E0_entry *arg0) {
         func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E7D34[phi_v0]));
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A9710.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 06ada559d7a32fdab49fa2d619cdfa027615bcda
@@ -12547,9 +13619,6 @@ void func_800A9A98(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A9A98.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-// jpt_800F24E8
 void func_800A9B9C(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 0:
@@ -12578,13 +13647,7 @@ void func_800A9B9C(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A9B9C.s")
-#endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-// jpt_800F24FC
 void func_800A9C40(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 0:
@@ -12625,15 +13688,6 @@ void func_800A9C40(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A9C40.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E70A0[];                          /* unable to generate initializer */
-// data/data_0DD0A0_3_0.s
-// jpt_800F2510
 
 void func_800A9D5C(struct_8018D9E0_entry *arg0) {
     Unk_D_800E70A0 *temp_v0;
@@ -12667,9 +13721,6 @@ void func_800A9D5C(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A9D5C.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -12837,10 +13888,6 @@ block_37:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A9E58.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E70A0[];
-
 void func_800AA280(struct_8018D9E0_entry *arg0) {
     Unk_D_800E70A0 *temp_v0;
 
@@ -12852,9 +13899,6 @@ void func_800AA280(struct_8018D9E0_entry *arg0) {
         func_800A91D8(arg0, temp_v0->column, temp_v0->row);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AA280.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit b52d92c2340f6f4ba1aafb464188bb698752fbb0 on Jul-16-2023
@@ -13152,10 +14196,6 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AA69C.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-// jpt_800F25B8
-
 void func_800AAA9C(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 3:
@@ -13192,13 +14232,7 @@ void func_800AAA9C(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AAA9C.s")
-#endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-// jpt_800F25CC
 void func_800AAB90(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 1:
@@ -13226,9 +14260,6 @@ void func_800AAB90(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AAB90.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 0927f17aac197848d4ebdf0c6bbad74b01f0851c
@@ -13449,9 +14480,6 @@ s32 func_800AAFCC(s32 arg0) {
     return -1;
 }
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-// jpt_800F25F4
 void func_800AB020(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 1:
@@ -13477,12 +14505,7 @@ void func_800AB020(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB020.s")
-#endif
 
-#ifdef NEEDS_RODATA
-// Needs jpt_800F2608
 void func_800AB098(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 0:
@@ -13519,15 +14542,6 @@ void func_800AB098(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB098.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E7148[4];                          /* unable to generate initializer */
-// data/data_0DD0A0_3_0.s
-// jpt_800F261C
 
 void func_800AB164(struct_8018D9E0_entry *arg0) {
     Unk_D_800E70A0 *thing = &D_800E7148[arg0->type - 0x53];
@@ -13560,9 +14574,6 @@ void func_800AB164(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB164.s")
-#endif
 
 void func_800AB260(struct_8018D9E0_entry *arg0) {
     s32 temp = (arg0->type - 0x58);
@@ -13719,11 +14730,6 @@ void func_800AB314(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB314.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E7248[];                                /* unable to generate initializer */
-extern Unk_D_800E70A0 D_800E7258[];                                /* unable to generate initializer */
-
 void func_800AB904(struct_8018D9E0_entry *arg0) {
     Unk_D_800E70A0 *temp_a1;
 
@@ -13743,9 +14749,6 @@ void func_800AB904(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB904.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit c5625f046032f9746ce523be6766af27204fcbe9 on Jan-28-2023
@@ -13793,11 +14796,6 @@ void func_800AB9B0(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB9B0.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-
-extern Unk_D_800E70A0 D_800E7430[]; /* unable to generate initializer; const */
-
 void func_800ABAE8(struct_8018D9E0_entry *arg0) {
     s32 phi_v1;
 
@@ -13809,13 +14807,6 @@ void func_800ABAE8(struct_8018D9E0_entry *arg0) {
     arg0->column = D_800E7430[phi_v1].column;
     arg0->row = D_800E7430[phi_v1].row;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ABAE8.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E7430[];
 
 void func_800ABB24(struct_8018D9E0_entry *arg0) {
     Unk_D_800E70A0 *temp_v1;
@@ -13830,13 +14821,6 @@ void func_800ABB24(struct_8018D9E0_entry *arg0) {
         arg0->unk20 = (s32) (arg0->unk20 + 1) % 3;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ABB24.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E7430[];
 
 void func_800ABBCC(struct_8018D9E0_entry *arg0) {
     s32 temp_v0;
@@ -13847,9 +14831,6 @@ void func_800ABBCC(struct_8018D9E0_entry *arg0) {
     arg0->column = (s32) temp_v1->column;
     arg0->row = temp_v1->row + ((temp_v0 % 4) * 0x32) + 0x14;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ABBCC.s")
-#endif
 
 void func_800ABC38(struct_8018D9E0_entry *arg0) {
     // Huh?
@@ -13879,13 +14860,6 @@ void func_800ABC38(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-extern char *D_800E7500[9];// = { "mushroom cup", "flower cup", "star cup", "special cup", "battle", "mushroom cup", "flower cup", "star cup", "special cup", };
-extern f64 D_800F2630;// = 0.05;
-extern f64 D_800F2638;// = 0.0085;
-extern f64 D_800F2640;// = 0.4;
 
 void func_800ABCF4(struct_8018D9E0_entry *arg0) {
     f64 temp_f0;
@@ -13920,9 +14894,6 @@ void func_800ABCF4(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ABCF4.s")
-#endif
 
 void func_800ABEAC(struct_8018D9E0_entry *arg0) {
     s32 why = 1;
@@ -13951,14 +14922,6 @@ void func_800ABEAC(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f64 D_800F2648;// = 0.05;
-extern f64 D_800F2650;// = 0.0085;
-extern f64 D_800F2658;// = 0.4;
-// this is plain data?
-extern char *D_800E7524[0x14];
 
 void func_800ABF68(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
@@ -13990,17 +14953,6 @@ void func_800ABF68(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ABF68.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f64 D_800F2660;// = 0.07;
-extern f64 D_800F2668;// = 0.6;
-extern f64 D_800F2670;// = 0.004;
-extern f64 D_800F2678;// = 0.8;
-extern f64 D_800F2680;// = 0.002;
 
 void func_800AC128(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
@@ -14039,9 +14991,6 @@ void func_800AC128(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AC128.s")
-#endif
 
 void func_800AC300(struct_8018D9E0_entry *arg0) {
     if (arg0->unk20 < ++arg0->unk1C) {
@@ -14313,11 +15262,6 @@ void func_800AC978(struct_8018D9E0_entry *arg0) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// rodata_code_80091750
-extern f64 D_800F26C0 = 4.2;
-extern f64 D_800F26C8 = 4.2;
-extern f64 D_800F26D0 = 4.2;
 void func_800ACA14(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {                              /* irregular */
     case 0:
@@ -14369,16 +15313,6 @@ void func_800ACA14(struct_8018D9E0_entry *arg0) {
         arg0->unk20++;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ACA14.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// rodata_code_80091750
-// jpt_800F26D8
-extern f64 D_800F2710 = 4.2;
-extern f64 D_800F2718 = 4.2;
-extern f64 D_800F2720 = 4.2;
 
 void func_800ACC50(struct_8018D9E0_entry *arg0) {
     s32 var_s0;
@@ -14453,9 +15387,6 @@ void func_800ACC50(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ACC50.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -14582,10 +15513,6 @@ block_11:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ACF40.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-// jpt_800F273C
-
 void func_800AD1A4(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 0:
@@ -14631,9 +15558,6 @@ void func_800AD1A4(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AD1A4.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-12-2022
@@ -14859,16 +15783,6 @@ block_56:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AD2E8.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-// jpt_800F287C
-extern f64 D_800F2930;// = 4.2;
-extern f64 D_800F2938;// = 4.2;
-extern f64 D_800F2940;// = 4.2;
-// plain data I think?
-extern s8 D_800F0B50[];// = {31, 11, 21, 41};
-extern s8 D_800F0B54[];// = {32, 15, 24, 44};
-
 void func_800ADF48(struct_8018D9E0_entry *arg0) {
     s32 stackPadding;
     struct Controller *controller;
@@ -14946,9 +15860,6 @@ void func_800ADF48(struct_8018D9E0_entry *arg0) {
         arg0->unk4 = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ADF48.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-12-2022
@@ -15314,16 +16225,10 @@ block_107:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AE218.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-// jpt_800F2A88
-// data_0DD0A0_2_0.s
-extern char D_800E7780[];// = "NOW-MEET THE COURSE GHOST!!!";
-
 void func_800AEC54(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 0:
-        arg0->column = (get_string_width("NOW-MEET THE COURSE GHOST!!!") / 2) + 0x140;
+        arg0->column = (get_string_width(D_800E7780) / 2) + 0x140;
         arg0->row = 0x000000DA;
         arg0->unk4 = 1;
         func_800C90F4(0U, (D_80162DE4 * 0x10) + 0x29008001);
@@ -15351,7 +16256,7 @@ void func_800AEC54(struct_8018D9E0_entry *arg0) {
         // Purposeful fallthrough
     case 3:
         func_800A94C8(arg0, 0x000000A0, -1);
-        if (((arg0->column + 0x14) == -(get_string_width("NOW-MEET THE COURSE GHOST!!!") / 2)) && (arg0->unk4 == 3)) {
+        if (((arg0->column + 0x14) == -(get_string_width(D_800E7780) / 2)) && (arg0->unk4 == 3)) {
             arg0->unk4 = 4;
         }
         break;
@@ -15359,9 +16264,6 @@ void func_800AEC54(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AEC54.s")
-#endif
 
 void func_800AEDBC(struct_8018D9E0_entry *arg0) {
     if (arg0->unk1C != gTimeTrialDataCourseIndex) {
@@ -15456,10 +16358,6 @@ void func_800AEF74(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AEF74.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-// jpt_800F2A9C
-extern struct Controller *gControllerFive;
 void func_800AF004(struct_8018D9E0_entry *arg0) {
     s32 temp_t1;
 
@@ -15508,14 +16406,6 @@ void func_800AF004(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AF004.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E7458[0];                       /* unable to generate initializer */
-extern Unk_D_800E70A0 D_800E7480[0];                       /* unable to generate initializer */
 
 void func_800AF1AC(struct_8018D9E0_entry *arg0) {
     Unk_D_800E70A0 *temp_v0_2;
@@ -15539,9 +16429,6 @@ void func_800AF1AC(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AF1AC.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit c5625f046032f9746ce523be6766af27204fcbe9 on Jan-28-2023
@@ -15665,11 +16552,6 @@ void func_800AF480(struct_8018D9E0_entry *arg0) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// Needs jpt_800F2AD0
-extern f64 D_800F2AE8;// 0.05;
-extern f64 D_800F2AF0;// 0.0085;
-extern f64 D_800F2AF8;// 0.4;
 void func_800AF4DC(struct_8018D9E0_entry *arg0) {
     s32 pad;
     s32 temp_v0;
@@ -15721,15 +16603,7 @@ void func_800AF4DC(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AF4DC.s")
-#endif
 
-#ifdef NEEDS_RODATA
-// Needs jpt_800F2B00
-extern f64 D_800F2B18;// 0.05;
-extern f64 D_800F2B20;// 0.0085;
-extern f64 D_800F2B28;// 0.4;
 void func_800AF740(struct_8018D9E0_entry *arg0) {
     s32 pad;
     s32 temp_v0;
@@ -15781,6 +16655,3 @@ void func_800AF740(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AF740.s")
-#endif

@@ -1,3 +1,34 @@
+.section .rodata
+
+glabel D_800F0C34
+.asciiz "driver's points"
+
+.balign 4
+glabel D_800F0C44
+.asciiz "round"
+
+.section .late_rodata
+
+glabel D_800F1CAC
+.float 0.8
+
+glabel D_800F1CB0
+.float 0.7
+
+glabel D_800F1CB4
+.float 0.7
+
+glabel D_800F1CB8
+.float 0.6
+
+glabel D_800F1CBC
+.float 0.6
+
+glabel D_800F1CC0
+.float 0.6
+
+.section .text
+
 glabel func_800A34A8
 /* 0A40A8 800A34A8 27BDFF78 */  addiu $sp, $sp, -0x88
 /* 0A40AC 800A34AC AFBF0044 */  sw    $ra, 0x44($sp)

@@ -1,3 +1,13 @@
+.section .late_rodata
+
+glabel D_800F0CC0
+.double 1.414213562373095
+
+glabel D_800F0CC8
+.double 0.6931471805599453
+
+.section .text
+
 glabel func_8009186C
 /* 09246C 8009186C 44801800 */  mtc1  $zero, $f3
 /* 092470 80091870 44801000 */  mtc1  $zero, $f2

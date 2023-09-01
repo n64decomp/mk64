@@ -1,3 +1,19 @@
+.section .rodata
+
+glabel D_800F0C54
+.asciiz "'"
+
+.balign 4
+glabel D_800F0C58
+.asciiz "\""
+
+.section .late_rodata
+
+glabel D_800F1DC8
+.float 0.65
+
+.section .text
+
 glabel func_800A474C
 /* 0A534C 800A474C 27BDFFB0 */  addiu $sp, $sp, -0x50
 /* 0A5350 800A4750 3C0E800E */  lui   $t6, %hi(gGamestate) # $t6, 0x800e

@@ -1,3 +1,22 @@
+.section .rodata
+
+glabel D_800F0C98
+.asciiz "'"
+.balign 4
+
+glabel D_800F0C9C
+.asciiz "\""
+
+.section .late_rodata
+
+glabel D_800F24A0
+.float 0.6
+
+glabel D_800F24A4
+.float 0.65
+
+.section .text
+
 glabel func_800A874C
 /* 0A934C 800A874C 27BDFFA0 */  addiu $sp, $sp, -0x60
 /* 0A9350 800A8750 AFB00030 */  sw    $s0, 0x30($sp)
