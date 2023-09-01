@@ -430,7 +430,7 @@ const u8 gPerCupIndexByCourseId[] = {
 
 const u8 D_800EFD64[] = { 0, 1, 4, 3, 5, 6, 2, 7 };
 
-// Defining this as a [][4] fixes the problem, for some reason
+// Maps course IDs (as defined in the COURSES enum) to the cup they belong to
 u8 gCupSelectionByCourseId[] = {
       FLOWER_CUP,   FLOWER_CUP,     STAR_CUP,  SPECIAL_CUP,
      SPECIAL_CUP,   FLOWER_CUP, MUSHROOM_CUP,     STAR_CUP,
@@ -992,6 +992,10 @@ MkTexture *D_800E7DC4[] = {
     D_02004FE8, D_02005010, D_02005038, D_02005060,
     D_02005088, D_020050B0, D_020050D8, D_02005100,
     D_02005128, D_02005150, D_02005178, D_020051A0,
+};
+
+// Unused?
+MkAnimation *D_800E7E14[] = {
     D_020020BC, D_020020CC, D_020020DC,
 };
 
@@ -1784,10 +1788,6 @@ void func_8009265C(void) {
     add_8018D9E0_entry(0x12B, 0, 0, 2);
 }
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-// jpt_800F0CD8
-
 void func_80092688(void) {
     switch (D_800DC5E4) {
     case 0:
@@ -1896,111 +1896,86 @@ void func_80092688(void) {
         return;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80092688.s")
-#endif
 
 void func_80092C80(void) {
     D_8018ED91 = 1;
 }
 
-#ifdef NEEDS_RODATA
 // Originally func_80092C90
 // Some kind of lookup function, seems to return an index to be used
 // to get a character's width in pixels
-// This technically matches, but due to linker alignment shenanigans actually
-// matching will have to wait
 s32 char_to_glyph_index(char *character) {
-    s32 index = 1;
+    s32 var_v1;
+    s8 temp_v0;
 
-    // Uppercase Letters
-    if ((*character >= 0x61) && (*character < 0x7B)) {
-        index = *character - 0x61;
-    // Lowercase Letters
-    } else if ((*character >= 0x41) && (*character < 0x5B)) {
-        index = *character - 0x41;
-    // Numbers
-    } else if ((*character >= 0x30) && (*character < 0x3A)) {
-        index = *character - 0x10;
-    // Space
-    } else if (*character == 0x20) {
-        index = -1;
-    // Interpreting characters as signed numbers, so check if the character is "negative"
-    } else if (*character < 0) {
-        // Handling katakana characters
-        switch (*character) {                          /* switch 1 */
-        case 0xA4:                                   /* switch 1 */
-            // WARNING: Not sure about the arguments to the following 3 functions, its not clear
-            // what they exepct
-            index = func_80092E1C(character + 1);
+    temp_v0 = *character;
+    var_v1 = 1;
+    if ((temp_v0 >= 'a') && (temp_v0 <= 'z')) {
+        var_v1 = temp_v0 - 0x61;
+    } else if ((temp_v0 >= 'A') && (temp_v0 <= 'Z')) {
+        var_v1 = temp_v0 - 0x41;
+    } else if ((temp_v0 >= '0') && (temp_v0 <= '9')) {
+        var_v1 = temp_v0 - 0x10;
+    } else if (temp_v0 == ' ') {
+        var_v1 = -1;
+    } else if (temp_v0 < 0) {
+        // Handling EUC-JUP characters
+        switch (temp_v0) {                          /* irregular */
+        case -92: // 0xA4
+            var_v1 = func_80092E1C(character + 1);
             break;
-        case 0xA5:                                   /* switch 1 */
-            index = func_80092DF8(character + 1);
+        case -91: // 0xA5
+            var_v1 = func_80092DF8(character + 1);
             break;
-        case 0xAB:                                   /* switch 1 */
-        case 0xA3:                                   /* switch 1 */
-        case 0xA1:                                   /* switch 1 */
-            index = func_80092EE4(character);
+        case -95: // 0xA1
+        case -93: // 0xA3
+        case -85: // 0xAB
+            var_v1 = func_80092EE4(character);
             break;
         }
     } else {
-        switch (*character) {                          /* switch 2 */
-        // !
-        case 0x21:                                  /* switch 2 */
-            index = 0x1A;
+        switch (temp_v0) {
+        case '!':
+            var_v1 = 0x0000001A;
             break;
-        // -
-        case 0x2D:                                  /* switch 2 */
-            index = 0x1B;
+        case '-':
+            var_v1 = 0x0000001B;
             break;
-        // ?
-        case 0x3F:                                  /* switch 2 */
-            index = 0x1C;
+        case '?':
+            var_v1 = 0x0000001C;
             break;
-        // '
-        case 0x27:                                  /* switch 2 */
-            index = 0x1D;
+        case '\'':
+            var_v1 = 0x0000001D;
             break;
-        // $
-        // Doesn't appear to have a texture?
-        case 0x24:                                  /* switch 2 */
-            index = 0x1E;
+        case '$':
+            var_v1 = 0x0000001E;
             break;
-        // .
-        case 0x2E:                                  /* switch 2 */
-            index = 0x1F;
+        case '.':
+            var_v1 = 0x0000001F;
             break;
-        // "
-        case 0x22:                                  /* switch 2 */
-            index = 0x2A;
+        case '\"':
+            var_v1 = 0x0000002A;
             break;
-        // *
-        case 0x2A:                                  /* switch 2 */
-            index = 0x2B;
+        case '*':
+            var_v1 = 0x0000002B;
             break;
-        // +
-        case 0x2B:                                  /* switch 2 */
-            index = 0x2C;
+        case '+':
+            var_v1 = 0x0000002C;
             break;
-        // (
         // Displayed as "cc"
-        case 0x28:                                  /* switch 2 */
-            index = 0x2D;
+        case '(':
+            var_v1 = 0x0000002D;
             break;
-        // ,
-        case 0x2C:                                  /* switch 2 */
-            index = 0x2E;
+        case ',':
+            var_v1 = 0x0000002E;
             break;
-        default:                                    /* switch 2 */
-            index = -2;
+        default:
+            var_v1 = -2;
             break;
         }
     }
-    return index;
+    return var_v1;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/char_to_glyph_index.s")
-#endif
 
 s32 func_80092DF8(s8 *arg) {
     return func_80092E1C(arg) + 0x50;
@@ -2564,11 +2539,7 @@ void func_800947B4(struct GfxPool *arg0, UNUSED s32 arg1) {
     gSPDisplayList(gDisplayListHead++, D_02007650);
 }
 
-#ifdef NEEDS_RODATA
-// Non-matching due to .rodata diffs resulting from the switch/case
-// jump table
-// Renders menu graphics?
-void func_80094A64(GfxPool *arg0) {
+void func_80094A64(Mtx *arg0) {
     D_8018D120 = 0;
     D_80164AF0 = 0;
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_802B8880));
@@ -2603,9 +2574,6 @@ void func_80094A64(GfxPool *arg0) {
     gDPPipeSync(gDisplayListHead++);
     gSPDisplayList(gDisplayListHead++, D_020076B0);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80094A64.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -2773,51 +2741,9 @@ void func_80094C60(void) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80094C60.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern char *D_800F0B58[];// = "debug_mode";
-extern char *D_800F0B64[];// = "*";
-extern char *D_800F0B68[];// = "*";
-extern char *D_800F0B6C[];// = "*";
-extern char *D_800F0B70[];// = "*";
-extern char *D_800F0B74[];// = "*";
-extern char *D_800F0B78[];// = "*";
-extern char *D_800F0B7C[];// = "on";
-extern char *D_800F0B80[];// = "off";
-extern char *D_800F0B84[];// = "map_number";
-extern char *D_800F0B90[];// = "screen_mode";
-extern char *D_800F0B9C[];// = "player";
-extern char *D_800F0BA4[];// = "sound mode";
-extern char *D_800F0BB0[];// = "push b to get all goldcup";
-// I think all these are plain data, don't know which file they belong in
-extern char *gDebugCourseNames[0x14];// = {
-//     "m circuit",
-//     "mountain",
-//     "castle",
-//     "ghost",
-//     "maze",
-//     "snow",
-//     "beach",
-//     "p circuit",
-//     "l circuit",
-//     "farm",
-//     "highway",
-//     "desert",
-//     "sherbet",
-//     "rainbow",
-//     "stadium",
-//     "block",
-//     "skyscraper",
-//     "deck",
-//     "jungle",
-//     "doughnut",
-// };
-extern char *gDebugCharacterNames[8];// = { "MARIO", "LUIGI", "YOSHI", "KINOPIO", "D.KONG", "WARIO", "PEACH", "KOOPA" };
-extern char *gDebugScreenModeNames[5];// = { "1p", "2players UD", "2players LR", "3players", "4players" };
-extern char *gDebugSoundModeNames[4];// = { "stereo", "head phone", "xxx", "monaural" };
-
 void func_80095574(void) {
     s32 var_v0;
+
     if ((D_8018EE0C < 3) || (D_8018E7B0 != 0)) {
         func_800A8230();
     }
@@ -2852,7 +2778,7 @@ void func_80095574(void) {
         if ((gCurrentCourseId >= 0x14) || (gCurrentCourseId < 0)) {
             gCurrentCourseId = 0;
         }
-        print_str_num(0x00000050, 0x0000006E, "map_number", (s32) gCurrentCourseId);
+        print_str_num(0x00000050, 0x0000006E, "map_number", gCurrentCourseId);
         if (gCurrentCourseId < 0xA) {
             var_v0 = 0;
         } else {
@@ -2884,9 +2810,6 @@ void func_80095574(void) {
     }
     gSPDisplayList(gDisplayListHead++, D_020076E0);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80095574.s")
-#endif
 
 // While this matches, its a little screwy
 // This function seemingly needs to return a Gfx*, but doing that explicity doesn't match
@@ -9069,11 +8992,6 @@ block_58:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009F5E0.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// I think this is rodata? It looks like its all the font textures
-// data_0DD0A0_2_0
-extern MkTexture *D_800E7AF8[0x6C];
-
 void func_800A08D8(u8 arg0, s32 column, s32 row) {
     if (arg0 >= 0x10) {
         arg0 -= 0x10;
@@ -9085,9 +9003,6 @@ void func_800A08D8(u8 arg0, s32 column, s32 row) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A08D8.s")
-#endif
 
 // Walks through `someString` for `len` charcters, seemingly even going over null terminators.
 // Returns a count of all non-terminator characters walked over.
@@ -9203,11 +9118,6 @@ void func_800A0B80(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A0B80.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-// Probably the textures for numbers 0-9
-extern MkTexture *D_800E7D0C[0xA];
-
 void func_800A0DFC(void) {
     s32 temp_t6;
     s32 var_s0;
@@ -9222,9 +9132,6 @@ void func_800A0DFC(void) {
         var_s1 -= 9;
     } while (var_s0 != 0);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A0DFC.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 06ada559d7a32fdab49fa2d619cdfa027615bcda
@@ -9451,10 +9358,6 @@ block_4:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A143C.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E7168[];                       /* unable to generate initializer */
-
 void func_800A1500(struct_8018D9E0_entry *arg0) {
     struct_8018D9E0_entry *temp_v0;
     Unk_D_800E70A0 *temp_v0_2;
@@ -9485,9 +9388,6 @@ void func_800A1500(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A1500.s")
-#endif
 
 void func_800A15EC(struct_8018D9E0_entry *arg0) {
     s16 courseId = gCupCourseOrder[(arg0->type - 0x7C) / 4][(arg0->type - 0x7C) % 4];
@@ -9684,10 +9584,6 @@ void func_800A1DE0(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A1DE0.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_2_0.s
-extern char *D_800E7860[2];// = { "UNABLE TO ERASE ", "GHOST DATA" };
-
 void func_800A1F30(struct_8018D9E0_entry *unused) {
     s32 row;
     s32 text;
@@ -9697,9 +9593,6 @@ void func_800A1F30(struct_8018D9E0_entry *unused) {
         func_80093324(0x2A, row, D_800E7860[text], 0, 0.75f, 0.75f);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A1F30.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 06ada559d7a32fdab49fa2d619cdfa027615bcda
@@ -11109,13 +11002,6 @@ block_21:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A474C.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f32 D_800F1DCC;// = 0.85f;
-extern f32 D_800F1DD0;// = 0.85f;
-// data_0DD0A0_2_0.s
-extern char D_800E7780[];// = "NOW-MEET THE COURSE GHOST!!!";
-
 void func_800A4A24(struct_8018D9E0_entry *arg0) {
     s32 stackPadding0;
     s32 temp_t0;
@@ -11126,14 +11012,11 @@ void func_800A4A24(struct_8018D9E0_entry *arg0) {
 
     temp_t0 = 0x140 - arg0->column;
     temp_t1 = arg0->row;
-    temp_t2 = (s32) ((get_string_width("NOW-MEET THE COURSE GHOST!!!") + 8) * someMultiplier) / 2;
+    temp_t2 = (s32) ((get_string_width(D_800E7780) + 8) * someMultiplier) / 2;
     gDisplayListHead = draw_box(gDisplayListHead, temp_t0 - temp_t2, (temp_t1 - thing) + 4, temp_t2 + temp_t0, temp_t1 + 4, 0, 0, 0, 0x00000064);
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(arg0->column - 3, arg0->row, "NOW-MEET THE COURSE GHOST!!!", 0, 0.85f, 0.85f);
+    draw_text(arg0->column - 3, arg0->row, D_800E7780, 0, 0.85f, 0.85f);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A4A24.s")
-#endif
 
 void func_800A4B38(struct_8018D9E0_entry *arg0) {
     if (gIsGamePaused != 0) {
@@ -12059,72 +11942,46 @@ void func_800A66A8(struct_8018D9E0_entry *arg0, f32 *arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A66A8.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-void func_800A79F4(u8, s8 *);                          /* extern */
-extern s32 gNmiUnknown1;
-extern s32 gNmiUnknown4;
-extern s32 gPlayerWinningIndex;
-static ? D_800E7300;                                /* unable to generate initializer */
-static s16 D_800E7302;                              /* unable to generate initializer */
-static ? D_800E7380;                                /* unable to generate initializer */
-static s8 *D_800E7720[2] = { "WINNER!", "LOSER!" };
-static s8 D_800F0C7C[3] = { 0xA1, 0xBC, 0 };        /* const */
-
 void func_800A69C8(s32 arg0) {
-    s8 sp74;
-    u8 *sp68;
-    ? *var_s1;
-    ? *var_s2;
-    s32 temp_v0;
+    Unk_D_800E70A0 *thing;
+    s32 stackPadding1;
     s32 var_s0;
+    s8 sp74[5];
     s32 var_v1;
     s8 *temp_s3;
     u8 *var_s4;
 
-    var_s0 = 0;
-    if (D_8018EDF3 > 0) {
-        var_s2 = &D_800E7380;
-        var_s1 = &D_800E7300;
-        var_s4 = sp68;
-        do {
-            temp_v0 = gModeSelection;
-            var_v1 = 0;
-            switch (temp_v0) {                      /* irregular */
-            case VERSUS:
-                if (gGPCurrentRaceRankByPlayerId[var_s0] != 0) {
-                    var_v1 = 1;
-                }
-                var_s4 = gNmiUnknown1 + var_s0;
-                break;
-            case BATTLE:
-                if (var_s0 != gPlayerWinningIndex) {
-                    var_v1 = 1;
-                }
-                var_s4 = gNmiUnknown4 + var_s0;
-                break;
+    for (var_s0 = 0; var_s0 < D_8018EDF3; var_s0++) {
+        var_v1 = 0;
+        thing = &D_800E7300[0][var_s0];
+        switch (gModeSelection) {               /* irregular */
+        case 2:
+            if (gGPCurrentRaceRankByPlayerId[var_s0] != 0) {
+                var_v1 = 1;
             }
-            temp_s3 = D_800E7720[var_v1];
-            if (var_v1 != 0) {
-                set_text_color(0);
-            } else {
-                set_text_color((s32) gGlobalTimer % 3);
+            var_s4 = &gNmiUnknown1[var_s0];
+            break;
+        case 3:
+            if (var_s0 != gPlayerWinningIndex) {
+                var_v1 = 1;
             }
-            func_800A79F4(*var_s4, &sp74);
-            text_draw(var_s1->unk0 + 0x10, var_s1->unk2 + 0x75, &sp74, 0, 1.0f, 1.0f);
-            func_80093754((s32) var_s2->unk0, (s32) var_s2->unk2, temp_s3, 0, 0.65f, 1.0f);
-            var_s0 += 1;
-            var_s1 += 8;
-            var_s2 += 8;
-        } while (var_s0 < D_8018EDF3);
-        sp68 = var_s4;
+            var_s4 = &gNmiUnknown4[var_s0];
+            break;
+        }
+        temp_s3 = D_800E7720[var_v1];
+        if (var_v1 != 0) {
+            set_text_color(TEXT_BLUE);
+        } else {
+            set_text_color((s32) gGlobalTimer % 3);
+        }
+        func_800A79F4(var_s4[0], sp74);
+        text_draw(thing->column + 0x10, thing->row + 0x75, sp74, 0, 1.0f, 1.0f);
+        func_80093754(D_800E7380[var_s0].column, D_800E7380[var_s0].row, temp_s3, 0, 0.65f, 1.0f);
     }
-    set_text_color(0);
-    text_draw(0x0000009E, D_800E7302 + 0x6D, D_800F0C7C, 0, 1.0f, 1.0f);
+    set_text_color(TEXT_BLUE);
+    // Not a hyphen, that is an EUC-JP character
+    text_draw(0x0000009E, D_800E7300[0][0].row + 0x6D, "ー", 0, 1.0f, 1.0f);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A69C8.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
@@ -12238,64 +12095,44 @@ void func_800A6D94(s32 arg0, s32 arg1, s32 arg2) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A6D94.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-static ? D_800E7300;                                /* unable to generate initializer */
-static s8 D_800F0C80[8] = { 0x31, 0x20, 0xA3, -0x0D, 0x20, 0xA1, 0xBC, 0 }; /* const */
-static s8 D_800F0C88[8] = { 0x32, 0x20, 0xA3, -0x12, 0x20, 0xA1, 0xBC, 0 }; /* const */
-static s8 D_800F0C90[8] = { 0x33, 0x20, 0xA3, -0x0E, 0x20, 0xA1, 0xBC, 0 }; /* const */
-
-void func_800A6E94(s32 arg0, s32 arg1, s32 arg2) {
-    s8 sp40;
-    s32 sp3C;
-    s32 sp38;
-    u8 *sp30;
-    s32 temp_t8;
+// The ｓ/ｎ/ｒ/ー are not ASCII characters, they're EUC-JP characters
+void func_800A6E94(s32 arg0, s32 arg1, u8 *arg2) {
+    s32 stackPadding0;
     u8 *temp_v0;
-    void *temp_s0;
+    Unk_D_800E70A0 *temp_s0;
+    char sp40[3];
+    s32 rank;
+    // Everything about this variable is bizarre
+    u32 sp38 = -1;
 
-    temp_t8 = gGPCurrentRaceRankByPlayerId[arg1];
-    sp3C = temp_t8;
-    if (temp_t8 == 0) {
-        set_text_color((s32) gGlobalTimer % 3);
+    temp_s0 = &D_800E7300[arg0 - 2][arg1];
+    rank = gGPCurrentRaceRankByPlayerId[arg1];
+    if (rank == ++sp38) {
+        set_text_color(gGlobalTimer % 3);
     } else {
-        set_text_color(3);
+        set_text_color(TEXT_YELLOW);
     }
-    temp_s0 = ((arg0 << 5) + (arg1 * 8)) - 0x40 + &D_800E7300;
-    text_draw(temp_s0->unk0 + 4, temp_s0->unk2 + 0x5A, D_800F0C80, 0, 0.8f, 0.8f);
-    temp_v0 = (arg1 * 3) + arg2;
-    sp30 = temp_v0;
-    convert_number_to_ascii((s32) *temp_v0, &sp40);
-    text_draw(temp_s0->unk0 + 0x2D, temp_s0->unk2 + 0x5A, &sp40, 0, 0.8f, 0.8f);
-    if (sp3C == 1) {
-        sp38 = 1;
-        set_text_color((s32) gGlobalTimer % 3);
+    text_draw(temp_s0->column + 4, temp_s0->row + 0x5A, "1 ｓ ー", 0, 0.8f, 0.8f);
+    temp_v0 = arg2 + (arg1 * 3);
+    convert_number_to_ascii(temp_v0[0], sp40);
+    text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x5A, sp40, 0, 0.8f, 0.8f);
+    if (rank == ++sp38) {
+        set_text_color(gGlobalTimer % 3);
     } else {
-        sp38 = 1;
-        set_text_color(0);
+        set_text_color(TEXT_BLUE);
     }
-    sp38 = sp38;
-    text_draw(temp_s0->unk0 + 4, temp_s0->unk2 + 0x69, D_800F0C88, 0, 0.8f, 0.8f);
-    convert_number_to_ascii((s32) sp30->unk1, &sp40);
-    text_draw(temp_s0->unk0 + 0x2D, temp_s0->unk2 + 0x69, &sp40, 0, 0.8f, 0.8f);
-    if ((sp38 + 1) == sp3C) {
-        set_text_color((s32) gGlobalTimer % 3);
+    text_draw(temp_s0->column + 4, temp_s0->row + 0x69, "2 ｎ ー", 0, 0.8f, 0.8f);
+    convert_number_to_ascii(temp_v0[1], sp40);
+    text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x69, sp40, 0, 0.8f, 0.8f);
+    if (++sp38 == rank) {
+        set_text_color(gGlobalTimer % 3);
     } else {
-        set_text_color(2);
+        set_text_color(TEXT_RED);
     }
-    text_draw(temp_s0->unk0 + 4, temp_s0->unk2 + 0x78, D_800F0C90, 0, 0.8f, 0.8f);
-    convert_number_to_ascii((s32) sp30->unk2, &sp40);
-    text_draw(temp_s0->unk0 + 0x2D, temp_s0->unk2 + 0x78, &sp40, 0, 0.8f, 0.8f);
+    text_draw(temp_s0->column + 4, temp_s0->row + 0x78, "3 ｒ ー", 0, 0.8f, 0.8f);
+    convert_number_to_ascii(temp_v0[2], sp40);
+    text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x78, sp40, 0, 0.8f, 0.8f);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A6E94.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f32 D_800F1F2C;// = 0x45f;
-// data_0DD0A0_2_0.s
-extern char *D_800E7A34[2];// = { "RACE DATA CANNOT ", "BE SAVED FOR GHOST" };
 
 void func_800A70E8(struct_8018D9E0_entry *arg0) {
     s32 var_s0;
@@ -12322,9 +12159,6 @@ void func_800A70E8(struct_8018D9E0_entry *arg0) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A70E8.s")
-#endif
 
 // Shading layer of the grand prix podium result screen
 void func_800A7258(struct_8018D9E0_entry *arg0) {
@@ -12499,18 +12333,14 @@ void get_time_record_centiseconds(s32 timeRecord, char *buffer) {
     convert_number_to_ascii(timeRecord % 0x64, buffer);
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-void func_800A79F4(s32 arg0, void *arg1) {
-    arg1->unk0 = -0x5D;
-    arg1->unk1 = (arg0 / 0xA) - 0x50;
-    arg1->unk2 = -0x5D;
-    arg1->unk3 = (arg0 % 0xA) - 0x50;
-    arg1->unk4 = 0;
+// Converts a 2-digit number to EUC-JP by the looks of it
+void func_800A79F4(s32 arg0, char *arg1) {
+    arg1[0] = 0xA3;
+    arg1[1] = (arg0 / 0xA) - 0x50;
+    arg1[2] = 0xA3;
+    arg1[3] = (arg0 % 0xA) - 0x50;
+    arg1[4] = '\0';
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A79F4.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-12-2022
@@ -13216,10 +13046,6 @@ void func_800A890C(s32 arg0, struct_8018D9E0_entry *arg1) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E7208[][2];                    /* unable to generate initializer */
-
 void func_800A8A98(struct_8018D9E0_entry *arg0) {
     s32 temp_s2;
     s32 temp_s3;
@@ -13242,9 +13068,6 @@ void func_800A8A98(struct_8018D9E0_entry *arg0) {
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A8A98.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 06ada559d7a32fdab49fa2d619cdfa027615bcda
@@ -13553,13 +13376,6 @@ void func_800A954C(struct_8018D9E0_entry *arg0) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_2_0.s
-// I think this is rodata?
-extern MkAnimation *D_800E7D34[6];// = { D_0200198C, D_0200199C, D_020019AC, D_020019BC, D_020019CC, D_020019DC }; /* const */
-// data_0DD0A0_3_0.s
-// jpt_800F24C8
-
 void func_800A9710(struct_8018D9E0_entry *arg0) {
     s32 phi_v0;
 
@@ -13590,9 +13406,6 @@ void func_800A9710(struct_8018D9E0_entry *arg0) {
         func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E7D34[phi_v0]));
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A9710.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 06ada559d7a32fdab49fa2d619cdfa027615bcda
@@ -13806,9 +13619,6 @@ void func_800A9A98(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A9A98.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-// jpt_800F24E8
 void func_800A9B9C(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 0:
@@ -13837,13 +13647,7 @@ void func_800A9B9C(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A9B9C.s")
-#endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-// jpt_800F24FC
 void func_800A9C40(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 0:
@@ -13884,15 +13688,6 @@ void func_800A9C40(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A9C40.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E70A0[];                          /* unable to generate initializer */
-// data/data_0DD0A0_3_0.s
-// jpt_800F2510
 
 void func_800A9D5C(struct_8018D9E0_entry *arg0) {
     Unk_D_800E70A0 *temp_v0;
@@ -13926,9 +13721,6 @@ void func_800A9D5C(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A9D5C.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -14096,10 +13888,6 @@ block_37:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A9E58.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E70A0[];
-
 void func_800AA280(struct_8018D9E0_entry *arg0) {
     Unk_D_800E70A0 *temp_v0;
 
@@ -14111,9 +13899,6 @@ void func_800AA280(struct_8018D9E0_entry *arg0) {
         func_800A91D8(arg0, temp_v0->column, temp_v0->row);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AA280.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit b52d92c2340f6f4ba1aafb464188bb698752fbb0 on Jul-16-2023
@@ -14411,10 +14196,6 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AA69C.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-// jpt_800F25B8
-
 void func_800AAA9C(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 3:
@@ -14451,13 +14232,7 @@ void func_800AAA9C(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AAA9C.s")
-#endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-// jpt_800F25CC
 void func_800AAB90(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 1:
@@ -14485,9 +14260,6 @@ void func_800AAB90(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AAB90.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 0927f17aac197848d4ebdf0c6bbad74b01f0851c
@@ -14708,9 +14480,6 @@ s32 func_800AAFCC(s32 arg0) {
     return -1;
 }
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-// jpt_800F25F4
 void func_800AB020(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 1:
@@ -14736,12 +14505,7 @@ void func_800AB020(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB020.s")
-#endif
 
-#ifdef NEEDS_RODATA
-// Needs jpt_800F2608
 void func_800AB098(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 0:
@@ -14778,15 +14542,6 @@ void func_800AB098(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB098.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E7148[4];                          /* unable to generate initializer */
-// data/data_0DD0A0_3_0.s
-// jpt_800F261C
 
 void func_800AB164(struct_8018D9E0_entry *arg0) {
     Unk_D_800E70A0 *thing = &D_800E7148[arg0->type - 0x53];
@@ -14819,9 +14574,6 @@ void func_800AB164(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB164.s")
-#endif
 
 void func_800AB260(struct_8018D9E0_entry *arg0) {
     s32 temp = (arg0->type - 0x58);
@@ -14978,11 +14730,6 @@ void func_800AB314(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB314.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E7248[];                                /* unable to generate initializer */
-extern Unk_D_800E70A0 D_800E7258[];                                /* unable to generate initializer */
-
 void func_800AB904(struct_8018D9E0_entry *arg0) {
     Unk_D_800E70A0 *temp_a1;
 
@@ -15002,9 +14749,6 @@ void func_800AB904(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB904.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit c5625f046032f9746ce523be6766af27204fcbe9 on Jan-28-2023
@@ -15052,11 +14796,6 @@ void func_800AB9B0(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB9B0.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-
-extern Unk_D_800E70A0 D_800E7430[]; /* unable to generate initializer; const */
-
 void func_800ABAE8(struct_8018D9E0_entry *arg0) {
     s32 phi_v1;
 
@@ -15068,13 +14807,6 @@ void func_800ABAE8(struct_8018D9E0_entry *arg0) {
     arg0->column = D_800E7430[phi_v1].column;
     arg0->row = D_800E7430[phi_v1].row;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ABAE8.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E7430[];
 
 void func_800ABB24(struct_8018D9E0_entry *arg0) {
     Unk_D_800E70A0 *temp_v1;
@@ -15089,13 +14821,6 @@ void func_800ABB24(struct_8018D9E0_entry *arg0) {
         arg0->unk20 = (s32) (arg0->unk20 + 1) % 3;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ABB24.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E7430[];
 
 void func_800ABBCC(struct_8018D9E0_entry *arg0) {
     s32 temp_v0;
@@ -15106,9 +14831,6 @@ void func_800ABBCC(struct_8018D9E0_entry *arg0) {
     arg0->column = (s32) temp_v1->column;
     arg0->row = temp_v1->row + ((temp_v0 % 4) * 0x32) + 0x14;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ABBCC.s")
-#endif
 
 void func_800ABC38(struct_8018D9E0_entry *arg0) {
     // Huh?
@@ -15138,13 +14860,6 @@ void func_800ABC38(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-extern char *D_800E7500[9];// = { "mushroom cup", "flower cup", "star cup", "special cup", "battle", "mushroom cup", "flower cup", "star cup", "special cup", };
-extern f64 D_800F2630;// = 0.05;
-extern f64 D_800F2638;// = 0.0085;
-extern f64 D_800F2640;// = 0.4;
 
 void func_800ABCF4(struct_8018D9E0_entry *arg0) {
     f64 temp_f0;
@@ -15179,9 +14894,6 @@ void func_800ABCF4(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ABCF4.s")
-#endif
 
 void func_800ABEAC(struct_8018D9E0_entry *arg0) {
     s32 why = 1;
@@ -15210,14 +14922,6 @@ void func_800ABEAC(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f64 D_800F2648;// = 0.05;
-extern f64 D_800F2650;// = 0.0085;
-extern f64 D_800F2658;// = 0.4;
-// this is plain data?
-extern char *D_800E7524[0x14];
 
 void func_800ABF68(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
@@ -15249,17 +14953,6 @@ void func_800ABF68(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ABF68.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-extern f64 D_800F2660;// = 0.07;
-extern f64 D_800F2668;// = 0.6;
-extern f64 D_800F2670;// = 0.004;
-extern f64 D_800F2678;// = 0.8;
-extern f64 D_800F2680;// = 0.002;
 
 void func_800AC128(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
@@ -15298,9 +14991,6 @@ void func_800AC128(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AC128.s")
-#endif
 
 void func_800AC300(struct_8018D9E0_entry *arg0) {
     if (arg0->unk20 < ++arg0->unk1C) {
@@ -15572,11 +15262,6 @@ void func_800AC978(struct_8018D9E0_entry *arg0) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// rodata_code_80091750
-extern f64 D_800F26C0 = 4.2;
-extern f64 D_800F26C8 = 4.2;
-extern f64 D_800F26D0 = 4.2;
 void func_800ACA14(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {                              /* irregular */
     case 0:
@@ -15628,16 +15313,6 @@ void func_800ACA14(struct_8018D9E0_entry *arg0) {
         arg0->unk20++;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ACA14.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// rodata_code_80091750
-// jpt_800F26D8
-extern f64 D_800F2710 = 4.2;
-extern f64 D_800F2718 = 4.2;
-extern f64 D_800F2720 = 4.2;
 
 void func_800ACC50(struct_8018D9E0_entry *arg0) {
     s32 var_s0;
@@ -15712,9 +15387,6 @@ void func_800ACC50(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ACC50.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -15841,10 +15513,6 @@ block_11:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ACF40.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-// jpt_800F273C
-
 void func_800AD1A4(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 0:
@@ -15890,9 +15558,6 @@ void func_800AD1A4(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AD1A4.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-12-2022
@@ -16118,16 +15783,6 @@ block_56:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AD2E8.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-// jpt_800F287C
-extern f64 D_800F2930;// = 4.2;
-extern f64 D_800F2938;// = 4.2;
-extern f64 D_800F2940;// = 4.2;
-// plain data I think?
-extern s8 D_800F0B50[];// = {31, 11, 21, 41};
-extern s8 D_800F0B54[];// = {32, 15, 24, 44};
-
 void func_800ADF48(struct_8018D9E0_entry *arg0) {
     s32 stackPadding;
     struct Controller *controller;
@@ -16205,9 +15860,6 @@ void func_800ADF48(struct_8018D9E0_entry *arg0) {
         arg0->unk4 = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800ADF48.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-12-2022
@@ -16573,16 +16225,10 @@ block_107:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AE218.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data_0DD0A0_3_0.s
-// jpt_800F2A88
-// data_0DD0A0_2_0.s
-extern char D_800E7780[];// = "NOW-MEET THE COURSE GHOST!!!";
-
 void func_800AEC54(struct_8018D9E0_entry *arg0) {
     switch (arg0->unk4) {
     case 0:
-        arg0->column = (get_string_width("NOW-MEET THE COURSE GHOST!!!") / 2) + 0x140;
+        arg0->column = (get_string_width(D_800E7780) / 2) + 0x140;
         arg0->row = 0x000000DA;
         arg0->unk4 = 1;
         func_800C90F4(0U, (D_80162DE4 * 0x10) + 0x29008001);
@@ -16610,7 +16256,7 @@ void func_800AEC54(struct_8018D9E0_entry *arg0) {
         // Purposeful fallthrough
     case 3:
         func_800A94C8(arg0, 0x000000A0, -1);
-        if (((arg0->column + 0x14) == -(get_string_width("NOW-MEET THE COURSE GHOST!!!") / 2)) && (arg0->unk4 == 3)) {
+        if (((arg0->column + 0x14) == -(get_string_width(D_800E7780) / 2)) && (arg0->unk4 == 3)) {
             arg0->unk4 = 4;
         }
         break;
@@ -16618,9 +16264,6 @@ void func_800AEC54(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AEC54.s")
-#endif
 
 void func_800AEDBC(struct_8018D9E0_entry *arg0) {
     if (arg0->unk1C != gTimeTrialDataCourseIndex) {
@@ -16715,10 +16358,6 @@ void func_800AEF74(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AEF74.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_3_0.s
-// jpt_800F2A9C
-extern struct Controller *gControllerFive;
 void func_800AF004(struct_8018D9E0_entry *arg0) {
     s32 temp_t1;
 
@@ -16767,14 +16406,6 @@ void func_800AF004(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AF004.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-extern Unk_D_800E70A0 D_800E7458[0];                       /* unable to generate initializer */
-extern Unk_D_800E70A0 D_800E7480[0];                       /* unable to generate initializer */
 
 void func_800AF1AC(struct_8018D9E0_entry *arg0) {
     Unk_D_800E70A0 *temp_v0_2;
@@ -16798,9 +16429,6 @@ void func_800AF1AC(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AF1AC.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit c5625f046032f9746ce523be6766af27204fcbe9 on Jan-28-2023
@@ -16924,11 +16552,6 @@ void func_800AF480(struct_8018D9E0_entry *arg0) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// Needs jpt_800F2AD0
-extern f64 D_800F2AE8;// 0.05;
-extern f64 D_800F2AF0;// 0.0085;
-extern f64 D_800F2AF8;// 0.4;
 void func_800AF4DC(struct_8018D9E0_entry *arg0) {
     s32 pad;
     s32 temp_v0;
@@ -16980,15 +16603,7 @@ void func_800AF4DC(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AF4DC.s")
-#endif
 
-#ifdef NEEDS_RODATA
-// Needs jpt_800F2B00
-extern f64 D_800F2B18;// 0.05;
-extern f64 D_800F2B20;// 0.0085;
-extern f64 D_800F2B28;// 0.4;
 void func_800AF740(struct_8018D9E0_entry *arg0) {
     s32 pad;
     s32 temp_v0;
@@ -17040,6 +16655,3 @@ void func_800AF740(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AF740.s")
-#endif

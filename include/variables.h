@@ -22,12 +22,9 @@ extern const s16 gCupCourseOrder[NUM_CUPS][NUM_COURSES_PER_CUP]; // D_800F2BB4
 extern s8    gCupCourseSelection;                   // D_8018EE0B
 extern char *gCupNames[];                           // D_800E7500
 extern s8    gCupSelection;                         // D_8018EE09
-// Maps course IDs (as defined in the COURSES enum) to the cup they belong to
-extern u8    gCupSelectionByCourseId[20];  // D_800E7664
 extern s16   gCurrentCourseId;                      // D_800DC5A0
 
 extern s8    gDebugMenuSelection;                   // D_8018EDEF
-extern char *gDebugSoundModeNames[NUM_SOUND_MODES]; // D_800E7700
 extern Gfx  *gDisplayListHead;                      // D_80150298
 
 extern u16   gEnableDebugMode; // D_800DC520
