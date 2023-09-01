@@ -27,7 +27,7 @@
 #include "code_80091750.h"
 #include "code_80057C60.h"
 #include "profiler.h"
-#include "code_80027D00.h"
+#include "player_controller.h"
 #include "code_8001F980.h"
 #include "render_courses.h"
 #include "actors.h"

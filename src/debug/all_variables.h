@@ -14,7 +14,7 @@
 #include <code_80004740.h>
 #include <code_80005FD0.h>
 #include <code_8001F980.h>
-#include <code_80027D00.h>
+#include <player_controller.h>
 #include <code_8003DC40.h>
 #include <code_80057C60.h>
 #include <code_8006E9C0.h>

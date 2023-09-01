@@ -88,7 +88,7 @@ SECTIONS
       BUILD_DIR/src/camera.o(.text);
       BUILD_DIR/src/code_8001F980.o(.text);
       BUILD_DIR/src/kart_dma.o(.text);
-      BUILD_DIR/src/code_80027D00.o(.text);
+      BUILD_DIR/src/player_controller.o(.text);
       BUILD_DIR/src/spawn_players.o(.text);
       BUILD_DIR/src/code_8003DC40.o(.text);
       BUILD_DIR/asm/unused_mio0_decode.o(.text);
@@ -249,7 +249,7 @@ SECTIONS
       BUILD_DIR/src/code_8001F980.o(.data);
       BUILD_DIR/src/kart_dma.o(.data);
       BUILD_DIR/src/kart_attributes.inc.o(.data);
-      BUILD_DIR/src/code_80027D00.o(.data);
+      BUILD_DIR/src/player_controller.o(.data);
       BUILD_DIR/src/spawn_players.o(.data);
       BUILD_DIR/data/data_code_80071F00.o(.data);
       BUILD_DIR/src/code_80057C60.o(.data);
@@ -294,7 +294,7 @@ SECTIONS
       BUILD_DIR/src/code_80005FD0.jp.o(.rodata);
       BUILD_DIR/src/camera.o(.rodata);
       BUILD_DIR/src/code_8001F980.o(.rodata);
-      BUILD_DIR/src/code_80027D00.o(.rodata);
+      BUILD_DIR/src/player_controller.o(.rodata);
       BUILD_DIR/src/spawn_players.o(.rodata);
       BUILD_DIR/src/code_8003DC40.o(.rodata);
       BUILD_DIR/src/hud_renderer.o(.rodata);

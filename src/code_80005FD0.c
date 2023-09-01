@@ -8,7 +8,7 @@
 #include "actors.h"
 #include "code_80005FD0.h"
 #include "code_8001F980.h"
-#include "code_80027D00.h"
+#include "player_controller.h"
 #include "code_80071F00.h"
 #include "collision.h"
 #include "variables.h"

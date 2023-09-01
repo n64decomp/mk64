@@ -1,5 +1,5 @@
-#ifndef CODE_80027D00_H
-#define CODE_80027D00_H
+#ifndef player_controller_H
+#define player_controller_H
 
 #include "common_structs.h"
 #include "camera.h"
