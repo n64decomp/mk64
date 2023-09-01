@@ -1081,6 +1081,8 @@ void func_800C3448(s32 arg0) {
     D_800EA1E4 += 1;
 }
 
+extern u8 D_800EA1E8;
+
 void func_800C3478(void) {
     for(D_800EA1E8; D_800EA1E4 != D_800EA1E8;) {
         func_800C2A2C(D_80192CD0[D_800EA1E8++]);
