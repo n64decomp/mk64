@@ -222,7 +222,7 @@ COURSE_ASM_FILES := $(wildcard courses/*/*/packed.s)
 # These are files that need to be encoded into EUC-JP in order for the ROM to match
 # We filter them out from the regular C_FILES since we don't need nor want the
 # UTF-8 versions getting compiled
-EUC_JP_FILES := src/credits.c src/code_80005FD0.c
+EUC_JP_FILES := src/credits.c src/code_80005FD0.c src/code_80091750.c
 C_FILES := $(filter-out $(EUC_JP_FILES),$(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c)))
 S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s)) $(COURSE_ASM_FILES)
 COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(wildcard $(dir)/*.inc.c))

@@ -1,3 +1,22 @@
+.section .rodata
+
+glabel D_800F0C2C
+.asciiz "'"
+
+.balign 4
+glabel D_800F0C30
+.asciiz "\""
+
+.section .late_rodata
+
+glabel D_800F1CA4
+.float 0.7
+
+glabel D_800F1CA8
+.float 0.65
+
+.section .text
+
 glabel func_800A32B4
 /* 0A3EB4 800A32B4 00077040 */  sll   $t6, $a3, 1
 /* 0A3EB8 800A32B8 3C0F8016 */  lui   $t7, %hi(gGPCurrentRacePlayerIdByRank) # 0x8016

@@ -1,3 +1,31 @@
+.section .rodata
+
+glabel D_800F0C1C
+.asciiz "results"
+
+.balign 4
+glabel D_800F0C24
+.asciiz "round"
+
+.section .late_rodata
+
+glabel D_800F1C90
+.float 0.7
+
+glabel D_800F1C94
+.float 0.7
+
+glabel D_800F1C98
+.float 0.6
+
+glabel D_800F1C9C
+.float 0.6
+
+glabel D_800F1CA0
+.float 0.6
+
+.section .text
+
 glabel func_800A2EB8
 /* 0A3AB8 800A2EB8 27BDFF88 */  addiu $sp, $sp, -0x78
 /* 0A3ABC 800A2EBC AFB40030 */  sw    $s4, 0x30($sp)

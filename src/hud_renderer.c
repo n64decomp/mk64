@@ -5828,7 +5828,7 @@ void debug_print_str2(s32 xPos, s32 yPos, char *str) {
     debug_print_string(&xPos, &yPos, str);
 }
 
-void print_str_num(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
+void print_str_num(s32 arg0, s32 arg1, char *arg2, s32 arg3) {
     debug_print_string(&arg0, &arg1, arg2);
     debug_print_number(&arg0, &arg1, arg3, 10);
 }

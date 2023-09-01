@@ -1,3 +1,27 @@
+.section .rodata
+
+glabel D_800F0C5C
+.asciiz "'"
+
+.balign 4
+glabel D_800F0C60
+.asciiz "\""
+
+.balign 4
+glabel D_800F0C64
+.asciiz "'"
+
+.balign 4
+glabel D_800F0C68
+.asciiz "\""
+
+.section .late_rodata
+
+glabel D_800F1DD4
+.float 0.8
+
+.section .text
+
 glabel func_800A4BC8
 /* 0A57C8 800A4BC8 27BDFF88 */  addiu $sp, $sp, -0x78
 /* 0A57CC 800A4BCC AFB00038 */  sw    $s0, 0x38($sp)
@@ -181,8 +205,8 @@ glabel func_800A4BC8
 /* 0A5A90 800A4E90 24060001 */  li    $a2, 1
 /* 0A5A94 800A4E94 0C024870 */  jal   func_800921C0
 /* 0A5A98 800A4E98 2484FFF5 */   addiu $a0, $a0, -0xb
-/* 0A5A9C 800A4E9C 3C0D800F */  lui   $t5, %hi(D_800E853A) # $t5, 0x800f
-/* 0A5AA0 800A4EA0 85AD853A */  lh    $t5, %lo(D_800E853A)($t5)
+/* 0A5A9C 800A4E9C 3C0D800F */  lui   $t5, %hi(D_800E8538 + 2) # $t5, 0x800f
+/* 0A5AA0 800A4EA0 85AD853A */  lh    $t5, %lo(D_800E8538 + 2)($t5)
 /* 0A5AA4 800A4EA4 3C04800F */  lui   $a0, %hi(D_800E8538) # $a0, 0x800f
 /* 0A5AA8 800A4EA8 84848538 */  lh    $a0, %lo(D_800E8538)($a0)
 /* 0A5AAC 800A4EAC 8E460000 */  lw    $a2, ($s2)

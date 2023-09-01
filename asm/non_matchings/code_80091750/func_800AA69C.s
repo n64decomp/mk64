@@ -1,3 +1,11 @@
+.section .late_rodata
+
+glabel jpt_800F25A0
+.word L800AA6F4, L800AA7CC, L800AA8A4, L800AA8F0
+.word L800AA9C4, L800AA9C4
+
+.section .text
+
 glabel func_800AA69C
 /* 0AB29C 800AA69C 27BDFFC0 */  addiu $sp, $sp, -0x40
 /* 0AB2A0 800AA6A0 AFB00018 */  sw    $s0, 0x18($sp)
