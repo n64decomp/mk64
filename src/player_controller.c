@@ -7,7 +7,7 @@
 #include "memory.h"
 #include "math_util.h"
 #include "code_8001F980.h"
-#include "code_80027D00.h"
+#include "player_controller.h"
 #include "code_8008C1D0.h"
 #include "collision.h"
 #include "waypoints.h"
@@ -1133,7 +1133,7 @@ void func_80029B4C(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80029B4C.s")
+GLOBAL_ASM("asm/non_matchings/player_controller/func_80029B4C.s")
 #endif
 
 void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
@@ -1723,7 +1723,7 @@ void func_8002B9CC(Player *player, s8 arg1, UNUSED s32 arg2) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002B9CC.s")
+GLOBAL_ASM("asm/non_matchings/player_controller/func_8002B9CC.s")
 #endif
 
 #ifdef NON_MATCHING
@@ -1771,7 +1771,7 @@ void func_8002BB9C(Player *player, f32 *arg1, f32 *arg2, UNUSED f32 *arg3) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002BB9C.s")
+GLOBAL_ASM("asm/non_matchings/player_controller/func_8002BB9C.s")
 #endif
  
 void func_8002BD58(Player *player) {
@@ -2206,7 +2206,7 @@ void func_8002D028(Player *player, s8 arg1) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002D028.s")
+GLOBAL_ASM("asm/non_matchings/player_controller/func_8002D028.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -2612,7 +2612,7 @@ void func_8002D268(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     func_8002C4F8(player, arg3);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002D268.s")
+GLOBAL_ASM("asm/non_matchings/player_controller/func_8002D268.s")
 #endif
 
 void func_8002E4C4(Player *player) {
@@ -2935,7 +2935,7 @@ block_63:
     func_8002C4F8(player, arg3);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002E594.s")
+GLOBAL_ASM("asm/non_matchings/player_controller/func_8002E594.s")
 #endif
 
 void control_cpu_movement(Player *player, Camera *camera, s8 arg2, s8 arg3) {
@@ -3141,7 +3141,7 @@ void func_8002F730(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_8002F730.s")
+GLOBAL_ASM("asm/non_matchings/player_controller/func_8002F730.s")
 #endif
 
 void func_8002FCA8(Player *player, s8 arg1) {
@@ -4475,7 +4475,7 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80033AE0.s")
+GLOBAL_ASM("asm/non_matchings/player_controller/func_80033AE0.s")
 #endif
 
 void func_8003680C(Player *player, s16 arg1) {
@@ -5301,5 +5301,5 @@ void func_80038C6C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     func_8002C4F8(player, arg3);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80027D00/func_80038C6C.s")
+GLOBAL_ASM("asm/non_matchings/player_controller/func_80038C6C.s")
 #endif

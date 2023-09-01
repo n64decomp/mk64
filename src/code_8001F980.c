@@ -15,7 +15,7 @@
 #include "code_8008C1D0.h"
 #include "framebuffers.h"
 #include "waypoints.h"
-#include "code_80027D00.h"
+#include "player_controller.h"
 #include "hud_renderer.h"
 #include "common_textures.h"
 #include "skybox_and_splitscreen.h"

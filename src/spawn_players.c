@@ -7,7 +7,7 @@
 #include "kart_dma.h"
 #include "camera.h"
 #include "math_util.h"
-#include "code_80027D00.h"
+#include "player_controller.h"
 #include "code_80057C60.h"
 #include "collision.h"
 #include "render_courses.h"

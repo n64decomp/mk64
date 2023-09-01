@@ -13,7 +13,7 @@
 #include "hud_renderer.h"
 #include "podium_ceremony_actors.h"
 #include "camera_junk.h"
-#include "code_80027D00.h"
+#include "player_controller.h"
 #include "code_80057C60.h"
 #include "code_80005FD0.h"
 #include "code_80281C40.h"

@@ -101,7 +101,7 @@
 #include "src/code_80004740.h"
 #include "src/code_80005FD0.h"
 #include "src/code_8001F980.h"
-#include "src/code_80027D00.h"
+#include "src/player_controller.h"
 #include "src/code_8003DC40.h"
 #include "src/hud_renderer.h"
 #include "src/code_80057C60.h"

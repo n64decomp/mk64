@@ -2,7 +2,7 @@
 #include <macros.h>
 #include "math_util.h"
 #include "common_structs.h"
-#include "code_80027D00.h"
+#include "player_controller.h"
 #include "code_8008C1D0.h"
 #include "code_8003DC40.h"
 
