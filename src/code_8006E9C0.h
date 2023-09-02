@@ -25,6 +25,10 @@ void func_80071818(void);
 void func_80071C28(void);
 void func_80071A20(void);
 
+extern s16 D_800E5520[];
+extern s16 D_800E5548[];
+extern s32 gCourseOutlineTextures[0x14];
+
 extern s32 gScreenModeSelection;
 extern s8 *gTextureLogoMarioKart64;
 extern s16 D_80165730;
@@ -38,6 +42,12 @@ extern intptr_t D_8018D9B0;
 // Destination for decompressed exhaust textures (I think)
 // I'm not how much I like this "pointer to an array" setup, but if it matches it matches
 extern u8 (*D_8018D220)[1024];
+
+extern s32 D_8018D240;
+extern s16 D_8018D2B0;
+extern s16 D_8018D2B8;
+extern s32 D_80183DA0;
+extern s32 D_80183DBC;
 
 extern struct_8018CA70_entry D_8018CA70[];
 // These are all *technically* hardcoded references to spots in D_8018CA70, but there's something weird
