@@ -1010,7 +1010,7 @@ s32 func_800B64EC(s32 arg0) {
             ++phi_s1;
             if ((++temp_s0) == 0x3C) {
                 func_8000522C();
-                D_80162DD4[0] = 0;
+                D_80162DD4 = 0;
                 D_80162DE0 = (s32) D_8018EE10[arg0].characterId;
                 D_80162DFC = D_8018EE10[arg0].unk_00;
                 break;

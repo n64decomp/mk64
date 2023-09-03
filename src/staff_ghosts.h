@@ -29,6 +29,9 @@ extern s32 func_80040174(void *, s32, s32);
 
 extern s32 D_80162DC8;
 extern s32 D_80162DCC;
+extern u16 D_80162DD4;
+extern u16 D_80162DD6;
+extern u16 D_80162DD8;
 extern s32 D_80162E00;
 extern s32 D_80162DF0;
 extern s32 D_80162DF8;
