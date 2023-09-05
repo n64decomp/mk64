@@ -10,7 +10,7 @@ glabel func_800A6D94
 /* 0A79B4 800A6DB4 24020001 */  li    $v0, 1
 .L800A6DB8:
 /* 0A79B8 800A6DB8 8FB80044 */  lw    $t8, 0x44($sp)
-/* 0A79BC 800A6DBC 3C04800E */  lui   $a0, %hi(gModeSelection)
+/* 0A79BC 800A6DBC 3C04800E */  lui   $a0, %hi(gGlobalTimer)
 /* 0A79C0 800A6DC0 00D8C821 */  addu  $t9, $a2, $t8
 /* 0A79C4 800A6DC4 93280000 */  lbu   $t0, ($t9)
 /* 0A79C8 800A6DC8 10400005 */  beqz  $v0, .L800A6DE0
@@ -20,7 +20,7 @@ glabel func_800A6D94
 /* 0A79D8 800A6DD8 10000008 */  b     .L800A6DFC
 /* 0A79DC 800A6DDC 8FA40024 */   lw    $a0, 0x24($sp)
 .L800A6DE0:
-/* 0A79E0 800A6DE0 8C84C54C */  lw    $a0, %lo(gModeSelection + 0x10)($a0)
+/* 0A79E0 800A6DE0 8C84C54C */  lw    $a0, %lo(gGlobalTimer)($a0)
 /* 0A79E4 800A6DE4 24010003 */  li    $at, 3
 /* 0A79E8 800A6DE8 0081001A */  div   $zero, $a0, $at
 /* 0A79EC 800A6DEC 00002010 */  mfhi  $a0
