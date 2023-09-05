@@ -6190,6 +6190,8 @@ void func_8006AFD0(Player *player, s16 arg1, s8 arg2, s8 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006AFD0.s")
 #endif
 
+extern void func_8006A50C(Player*, f32, f32, s8, s8, s16);
+
 void func_8006B7E4(Player* player, s8 arg1) {
     func_8006A50C(player, 0.0f, 0.0f, arg1, (s8) 0, (s16) 0);
     func_8006A50C(player, 1.5f, 2.0f, arg1, (s8) 1, (s16) 0x1C70);
