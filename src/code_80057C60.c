@@ -2186,31 +2186,6 @@ void func_8005C6B4(s8 arg0, s16* arg1, s16* arg2, s16* arg3) {
     }
 }
 
-void func_8005C674(s8, s16*, s16*, s16*);
-void func_8005C980();
-
-extern s32 D_80165590;
-extern s32 D_80165594;
-extern s32 D_80165598;
-extern s32 D_8016559C;
-extern s32 D_801655A4;
-extern s32 D_801655AC;
-extern s32 D_801655B4;
-extern s32 D_801655BC;
-extern s32 D_801655C4;
-extern s32 D_801655CC;
-extern s32 D_801655D8;
-extern s32 D_801655E8;
-extern s32 D_801655F8;
-extern s32 D_80165608;
-extern s32 D_80165618;
-extern s32 D_80165628;
-extern s8 D_801658A8;
-extern s32 D_8018D2AC;
-extern s32 D_8018D400;
-extern s32 D_8018D40C;
-extern s32 D_8018D410;
-
 void func_8005C728(void) {
     s16 sp26;
     s16 sp24;

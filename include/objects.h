@@ -121,14 +121,22 @@ extern Collision D_8018C0B0[];
  * Neon signs in Rainbow Road?
  * Thwomps in Bower's Castle?
  * Penguins in Sherbet Land?
+ * Flag Poles in Yoshi Valley?
 **/
 extern s32 D_80183EA0[];
 /**
  * Snowmen in Frappe Snowland
  * Chain Chomps in RaindbowRoad?
  * Trophy in award ceremony?
+ * Seagulls in Koopa Troopa Beach?
 **/
 extern s32 D_80183F28[];
+
+#define NUM_BOOS 0xA
+
+/**
+ * Boos in Banshee Boardwalk
+**/
 extern s32 D_8018BFA8[];
 extern s32 D_8018C030[];
 
