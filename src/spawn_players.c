@@ -12,6 +12,7 @@
 #include "collision.h"
 #include "render_courses.h"
 #include "spawn_players.h"
+#include "staff_ghosts.h"
 #include "code_80005FD0.h"
 
 // arg4 is height? Or something like that?
@@ -150,9 +151,9 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_224 = 1.0f;
     player->unk_DAC = 1.0f;
 
-    player->unk_064 = 0.0f;
-    player->unk_068 = 0.0f;
-    player->unk_06C = 0.0f;
+    player->unk_064[0] = 0.0f;
+    player->unk_064[1] = 0.0f;
+    player->unk_064[2] = 0.0f;
     player->boostPower = 0.0f;
     player->unk_D9C = 0.0f;
     player->unk_DA0 = 0.0f;
@@ -491,12 +492,12 @@ void func_8003A59C(f32 *arg0, f32 *arg1, f32 arg2) {
         spawn_player(gPlayerThree,   2, arg0[1], arg1[1], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
     } else if (D_8015F890 != 1) {
         spawn_player(gPlayerOneCopy, 0, arg0[0], arg1[0], arg2, 32768.0f, gCharacterSelections[0], PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
-        if (D_80162DD4[0] == 0) {
+        if (D_80162DD4 == 0) {
             spawn_player(gPlayerTwo, 1, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE0, PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_INVISIBLE_OR_BOMB);
         } else {
             spawn_player(gPlayerTwo, 1, arg0[0], arg1[0], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
         }
-        if (D_80162DD4[1] == 0) {
+        if (D_80162DD6 == 0) {
             spawn_player(gPlayerThree, 2, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE4, PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_INVISIBLE_OR_BOMB);
         } else {
             spawn_player(gPlayerThree, 2, arg0[1], arg1[1], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
@@ -508,7 +509,7 @@ void func_8003A59C(f32 *arg0, f32 *arg1, f32 arg2) {
         } else {
             spawn_player(gPlayerTwo, 1, arg0[0], arg1[0], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
         }
-        if (D_80162DD4[1] == 0) {
+        if (D_80162DD6 == 0) {
             spawn_player(gPlayerThree, 2, arg0[0], arg1[0], arg2, 32768.0f, D_80162DE4, PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_INVISIBLE_OR_BOMB);
         } else {
             spawn_player(gPlayerThree, 2, arg0[1], arg1[1], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);

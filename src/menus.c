@@ -1807,7 +1807,7 @@ void func_800B3F74(s32 menuSelection) {
     gDebugGotoScene = DEBUG_GOTO_RACING;
     D_8018EDFB = 0;
     D_8016556E = 0;
-    *D_80162DD4 = 1;
+    D_80162DD4 = 1;
     D_80162DD8 = 1;
     D_80162E00 = 0;
     D_80162DC8 = 1;

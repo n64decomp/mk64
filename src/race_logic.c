@@ -81,7 +81,6 @@ extern s32 gScreenModeSelection;
 extern s32 D_8018D2AC;
 extern s32 gActiveScreenMode;
 extern s16 gCurrentCourseId;
-extern u16 D_80162DD4[];
 extern u16 D_8015F890;
 extern u32 D_800DC5AC;
 extern u16 gEnableDebugMode;
