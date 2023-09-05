@@ -1691,8 +1691,6 @@ void func_8002B9CC(Player *player, s8 arg1, UNUSED s32 arg2) {
                 func_8008C73C(player, arg1);
             }
         }
-        // There's some register allocation mismatching here. Its unclear what the cause is
-        // and the permtuer didn't find anything
         temp = (-(s16)func_802B5224(player->pos, &player->rotX));
         temp2 = (player->unk_02C[1] - player->unk_0C0);
         temp = temp - temp2;
