@@ -256,7 +256,7 @@ void func_8003F46C(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
     }
 }
 
-void func_8003F734(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4, f32 *arg5, f32 *arg6) {
+void func_8003F734(Player *player, Vec3f arg1, Vec3f arg2, f32 *arg3, f32 *arg4, f32 *arg5, f32 *arg6) {
     f32 temp_f12;
     f32 temp_f14;
     f32 temp_f0_2;
@@ -310,7 +310,7 @@ void func_8003F734(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
     }
 }
 
-void func_8003FBAC(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4, f32 *arg5, f32 *arg6) {
+void func_8003FBAC(Player *player, Vec3f arg1, Vec3f arg2, f32 *arg3, f32 *arg4, f32 *arg5, f32 *arg6) {
     f32 temp_f0_2;
     f32 temp_f12;
     f32 temp_f14;

@@ -270,9 +270,7 @@ typedef struct {
     /* 0x0058 */ f32 unk_058;
     /* 0x005C */ f32 unk_05C;
     /* 0x0060 */ f32 unk_060;
-    /* 0x0064 */ f32 unk_064;
-    /* 0x0068 */ f32 unk_068;
-    /* 0x006C */ f32 unk_06C;
+    /* 0x0064 */ Vec3f unk_064;
     /* 0x0070 */ f32 boundingBoxSize;
     /* 0x0074 */ f32 unk_074;
     /* 0x0078 */ s16 unk_078;
@@ -329,7 +327,7 @@ typedef struct {
     /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];
     /* 0x01F8 */ f32 unk_1F8;
     /* 0x01FC */ f32 unk_1FC;
-    /* 0x0200 */ s32 unk_200;
+    /* 0x0200 */ u32 unk_200; // May be s32. but less casting required if u32
     /* 0x0204 */ s16 unk_204;
     /* 0x0206 */ s16 unk_206;
     /* 0x0208 */ f32 unk_208;

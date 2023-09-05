@@ -6,6 +6,8 @@
 
 /* Function Prototypes */
 
+void func_8002E594(Player*, Camera*, s8, s8);
+
 s32 get_player_index_for_player(Player*);
 void func_80027DA8(Player*, s8);
 void func_80027EDC(Player*, s8);
@@ -49,7 +51,7 @@ void func_8002B830(Player*, s8, s8);
 void func_8002B8A4(Player*, Player*);
 void func_8002B9CC(Player*, s8, s32);
 void func_8002BD58(Player*);
-void func_8002BF4C(Player*, u8);
+void func_8002BF4C(Player*, s8);
 
 void func_8002C11C(Player*);
 void func_8002C17C(Player*, s8);

@@ -4762,7 +4762,7 @@ u8 D_800EA108 = 0;
 static f32 D_800EA110[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 f32 D_800EA1D4[3];                                  /* unable to generate initializer */
 
-void func_800CADD0(s32 arg0, f32 arg1) {
+void func_800CADD0(u8 arg0, f32 arg1) {
     f32 *temp_a1;
     f32 *temp_v0_2;
     f32 var_f12;
