@@ -151,9 +151,9 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_224 = 1.0f;
     player->unk_DAC = 1.0f;
 
-    player->unk_064 = 0.0f;
-    player->unk_068 = 0.0f;
-    player->unk_06C = 0.0f;
+    player->unk_064[0] = 0.0f;
+    player->unk_064[1] = 0.0f;
+    player->unk_064[2] = 0.0f;
     player->boostPower = 0.0f;
     player->unk_D9C = 0.0f;
     player->unk_DA0 = 0.0f;

@@ -14,6 +14,7 @@ s16   func_802ABDF4(u16);
 f32   func_802ABE30(f32, f32, f32, u16);
 f32   func_802ABEAC(Collision*, Vec3f);
 void  process_shell_collision(Vec3f, f32, Vec3f, f32);
+u16 process_collision(Player *player, KartBoundingBoxCorner *corner, f32 cornerPosX, f32 cornerPosY, f32 cornerPosZ);
 void  func_802AC114(Vec3f, f32, Vec3f, f32);
 u16   func_802AD950(Collision*, f32, f32, f32, f32, f32, f32, f32);
 u16   func_802ADDC8(Collision*, f32, f32, f32, f32);
