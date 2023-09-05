@@ -101,7 +101,6 @@ extern u16  D_80150112;
 
 extern u16  D_8015F890;
 
-extern u16  D_80162DD4[];
 extern u16  D_80162DD8;
 extern s32  D_80162DE0;
 extern s32  D_80162DE4;
