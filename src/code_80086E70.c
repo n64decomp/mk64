@@ -1588,13 +1588,13 @@ void func_8008B478(s32 objectIndex, s32 arg1) {
         func_8008B1D4(objectIndex);
     }
 
-    sp34 = (f32)(f64)((f32)D_80165C18[objectIndex].unk_098 / 10000.0);
+    sp34 = ((f32)D_80165C18[objectIndex].unk_098 / 10000.0);
     func_8008B17C(objectIndex, sp34);
     if (func_8007223C(objectIndex, 0x800) != 0) {
         func_8008AFE0(objectIndex, sp34);
     }
 
-    var_f6 = D_80165C18[objectIndex].unk_07C[0][3]; // we need to load, THEN multiply
+    var_f6 = D_80165C18[objectIndex].unk_07C[0][3];
     temp = D_80165C18[objectIndex].unk_07C[0][7];
 
     D_80165C18[objectIndex].unk_09A = 10000.0 / (((temp - var_f6) * sp34) + var_f6);
