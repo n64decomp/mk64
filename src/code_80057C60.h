@@ -83,6 +83,7 @@ void func_8005C654(s32*);
 void func_8005C65C(s32);
 void func_8005C6B4(s8, s16*, s16*, s16*);
 void func_8005C728(void);
+void func_8005C980(void);
 void func_8005CB60(s32, s32);
 
 void func_8005D0FC(s32);
@@ -311,6 +312,29 @@ extern s16 gGPCurrentRaceCharacterIdByRank[];
 extern s16 D_8018CF98[];
 extern Camera *D_8018CF14;
 extern Player *D_8018CF1C;
+
+
+extern s32 D_80165590;
+extern s32 D_80165594;
+extern s32 D_80165598;
+extern s32 D_8016559C;
+extern s32 D_801655A4;
+extern s32 D_801655AC;
+extern s32 D_801655B4;
+extern s32 D_801655BC;
+extern s32 D_801655C4;
+extern s32 D_801655CC;
+extern s32 D_801655D8;
+extern s32 D_801655E8;
+extern s32 D_801655F8;
+extern s32 D_80165608;
+extern s32 D_80165618;
+extern s32 D_80165628;
+extern s8 D_801658A8;
+extern s32 D_8018D2AC;
+extern s32 D_8018D400;
+extern s32 D_8018D40C;
+extern s32 D_8018D410;
 
 extern s32 D_8018D120;
 extern s32 D_8018D170;

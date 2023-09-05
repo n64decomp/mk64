@@ -5,12 +5,19 @@
 #include "common_structs.h"
 #include "camera.h"
 
+#define NUM_YV_FLAG_POLES 4
+
 // This struct is used by a lot of different objects
 // Stars, clouds, exahust smoke (I think?)
 typedef struct {
     Vec3su pos;
     u16 id;
 } StarSpawn;
+
+typedef struct {
+    Vec3s pos;
+    u16 rot;
+} YVFlagPoleSpawn;
 
 void func_80077D5C(s32);
 s32  find_unused_obj_index(s32*);
@@ -204,6 +211,8 @@ void func_8007AC9C(s32);
 u8   gen_random_item(s16, s16);
 u8   func_8007AF40(s16, s16);
 u8   func_8007AF78(s32, s16);
+s16  func_8007AFB0(s32, s32);
+s32  func_8007B040(s32, s32);
 void func_8007B34C(s32);
 void func_8007BB9C(s32);
 void func_8007BBBC(s32);
@@ -212,6 +221,7 @@ void func_8007BDA8(void);
 void func_8007BDE0(s32);
 void func_8007BEC8(s32);
 void func_8007BFB0(s32);
+void func_8007CA70(void);
 void func_8007CC00(void);
 void func_8007C280(void);
 void func_8007C2F8(s32);
@@ -393,6 +403,8 @@ extern u8 d_course_moo_moo_farm_mole_frames[][2048];
 
 // From Yoshi Valley course data, haven't created a .h file for it yet
 extern u8 gTLUTHedgehog[];
+extern animation_type_2 *D_06014794[];
+extern u32 D_06014798[];
 extern u8 gTextureHedgehog[];
 
 // From Frappe Snowland course data, haven't created a .h file for it yet
@@ -404,7 +416,7 @@ extern u8 gTextureSnowmanBody[];
 
 // From Sherbet Land course data, haven't created a .h file for it yet
 extern u32 D_06008EB0[]; // d_course_sherbet_land_unk_data1
-extern animation_type_2 D_06009AC8[]; // d_course_sherbet_land_unk_data11
+extern animation_type_2 *D_06009AC8[]; // d_course_sherbet_land_unk_data11
 extern u8 d_course_sherbet_land_ice[];
 
 // From Rainbow Road course data, haven't created a .h file for it yet
@@ -428,6 +440,8 @@ extern u8 *D_8018C028;
 // I'm also not certain about its dimensions
 // I think the entires in this array are way over-sized
 extern u8 D_80183FA8[4][0x2000];
+
+extern YVFlagPoleSpawn D_800E5DF4[NUM_YV_FLAG_POLES];
 
 // Something related to the rotation(?) of ice in Sherbet Land
 extern u16 D_801657A2;
@@ -464,5 +478,7 @@ extern Gfx D_0B008A90[];
 // The other entries appear to be unused.
 // data/data_code_80071F00_2.s
 extern Vec3s D_800E634C[3]; // static?
+extern Vtx D_800E4470[];
+extern Vtx D_800E44B0[];
 
 #endif

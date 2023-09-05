@@ -591,22 +591,16 @@ glabel D_80165A90
 
 # object list begin
 # D_80165C18 should be of size 123,200 (0xE0 * 0x226)
-# D_80165C94 through D_80165CED are all fake variables
+# D_80165CBC, D_80165CBE, and D_80165CED are all fake variables
 glabel D_80165C18
-.skip 124
-
-glabel D_80165C94
-.skip 40
+.skip 164
 
 # Currently referenced in func_800534E8.s, but that function is in NEEDS_RODATA state
 glabel D_80165CBC
 .skip 2
 
 glabel D_80165CBE
-.skip 8
-
-glabel D_80165CC6
-.skip 39
+.skip 47
 
 glabel D_80165CED
 .skip 122987
@@ -1667,16 +1661,7 @@ glabel gGPPointsByCharacterId
 # List of character IDs indicating where each character
 # is in the Grand Prix standings
 glabel gCharacterIdByGPOverallRank
-.skip 1
-
-glabel D_8018D9D1
-.skip 1
-
-glabel D_8018D9D2
-.skip 1
-
-glabel D_8018D9D3
-.skip 5
+.skip 8
 
 glabel D_8018D9D8
 .skip 1
