@@ -38,7 +38,7 @@ typedef struct
     /* 0x80 */ Vec4s *unk_080; // unk_080[][4]?
     /* 0x84 */ s16 unk_084[0xA];
     /* 0x98 */ u16 unk_098;
-    /* 0x9A */ s16 unk_09A;
+    /* 0x9A */ u16 unk_09A;
     /* 0x9C */ s16 unk_09C;
     /* 0x9E */ s16 unk_09E;
     /* 0xA0 */ s16 unk_0A0;
