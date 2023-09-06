@@ -164,7 +164,6 @@ extern struct ActorSpawnData d_course_mario_raceway_item_box_spawns[];
 extern struct ActorSpawnData D_06009518[];
 extern struct ActorSpawnData D_06009570[];
 extern struct ActorSpawnData d_course_sherbet_land_item_box_spawns[];
-extern struct ActorSpawnData d_course_banshee_boardwalk_item_box_spawns[];
 extern struct ActorSpawnData d_course_wario_stadium_item_box_spawns[];
 extern struct ActorSpawnData D_0600D9F0[];
 extern struct ActorSpawnData D_0600DA78[];

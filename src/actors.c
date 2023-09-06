@@ -20,6 +20,7 @@
 #include <sounds.h>
 #include "audio/external.h"
 #include "common_textures.h"
+#include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 
 // Appears to be textures
 // or tluts

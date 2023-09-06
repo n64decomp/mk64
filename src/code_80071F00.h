@@ -389,11 +389,6 @@ extern u8 gTLUTWhomp[];
 extern u8 d_course_koopa_troopa_beach_crab_frames[];
 extern u8 d_course_koopa_troopa_beach_crab_tlut[];
 
-// From Banshee Boardwalk course data, haven't created a .h file for it yet
-extern Gfx d_course_banshee_boardwalk_dl_cheep_cheep[];
-extern Gfx d_course_banshee_boardwalk_dl_trash_bin[];
-extern u8 gTLUTBoo[];
-
 // from other_textures.s
 extern u8 D_0F0D0E50[]; // gTextureGhosts
 

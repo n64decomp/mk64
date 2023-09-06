@@ -14,6 +14,7 @@
 #include "collision.h"
 #include "render_courses.h"
 #include "skybox_and_splitscreen.h"
+#include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -685,7 +686,7 @@ void render_banshee_boardwalk(struct UnkStruct_800DC5EC *arg0) {
     mtxf_translate(spCC, spA8);
     func_802B4FF8(spCC, 0);
 
-    gSPDisplayList(gDisplayListHead++, D_0600B278);
+    gSPDisplayList(gDisplayListHead++, d_course_banshee_boardwalk_dl_B278);
     gDPPipeSync(gDisplayListHead++);
 }
 
@@ -1127,7 +1128,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, D_06009148);
             break;
         case COURSE_BANSHEE_BOARDWALK:
-            gSPDisplayList(gDisplayListHead++, D_0600B308);
+            gSPDisplayList(gDisplayListHead++, d_course_banshee_boardwalk_dl_B308);
             break;
         case COURSE_YOSHI_VALLEY:
             gSPDisplayList(gDisplayListHead++, D_06018020);
@@ -1350,7 +1351,7 @@ void func_80295D88(void) {
             D_801625EC = 0;
             D_801625F4 = 0;
             D_801625F0 = 0;
-            parse_course_displaylists((uintptr_t) D_0600B458);
+            parse_course_displaylists((uintptr_t) d_course_banshee_boardwalk_track_sections);
             func_80295C6C();
             find_vtx_and_set_colours(d_course_banshee_boardwalk_packed_dl_878, 128, 0, 0, 0);
             D_8015F8E4 = -80.0f;
@@ -1508,7 +1509,7 @@ void func_802966A0(void) {
             if (D_802B87BC >= 0x100) {
                 D_802B87BC = 0;
             }
-            find_and_set_tile_size((uintptr_t) D_0600B278, 0, D_802B87BC);
+            find_and_set_tile_size((uintptr_t) d_course_banshee_boardwalk_dl_B278, 0, D_802B87BC);
             break;
         case COURSE_ROYAL_RACEWAY:
             D_802B87BC -= 20;

@@ -23,6 +23,7 @@
 #include "code_80091440.h"
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
+#include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 
 
 s32 find_unused_obj_index(s32* arg0) {
@@ -4427,13 +4428,13 @@ void func_8007C550(s32 objectIndex) {
     func_8007C4A4(objectIndex);
 }
 
-extern u8 gTLUTBoo[];
+extern u8 d_course_banshee_boardwalk_boo_tlut[];
 extern u8 *D_80165880;
 
 void func_8007C5B4(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTBoo, D_80165880, 48, 40);
+    func_80073444(objectIndex, d_course_banshee_boardwalk_boo_tlut, D_80165880, 48, 40);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->pos[0] = 0.0f;
     temp_s0->pos[1] = 0.0f;
@@ -4714,7 +4715,7 @@ void func_8007CC00(void) {
 void func_8007CE0C(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTBoo, D_0F0D0E50, 0x30U, (u16) 0x00000028);
+    func_80073444(objectIndex, d_course_banshee_boardwalk_boo_tlut, D_0F0D0E50, 0x30U, (u16) 0x00000028);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_0D2 = 0x1C;
     temp_s0->pos[0] = 0.0f;
