@@ -387,7 +387,7 @@ s32 func_800B5218(void) {
     return var_v0;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B5218.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B5218.s")
 #endif
 
 void func_800B536C(s32 arg0) {
@@ -531,7 +531,7 @@ void func_800B559C(s32 course) {
     osEepromLongWrite(&gSIEventMesgQueue, ((u32) (temp_s2_2 - &gSaveData) >> 3) & 0xFF, temp_s2_2->bestThreelaps[0], 0x00000038);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B559C.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B559C.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -576,7 +576,7 @@ loop_2:
     return (var_v1 % 256) & 0xFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B578C.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B578C.s")
 #endif
 
 s32 func_800B5888(s32 arg0) {
@@ -837,7 +837,7 @@ u8 func_800B60E8(s32 arg0)
 }
 
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B60E8.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B60E8.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -927,7 +927,7 @@ s32 func_800B6178(s32 arg0) {
     return var_v1;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B6178.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B6178.s")
 #endif
 
 s32 func_800B6348(s32 arg0) {
@@ -1061,7 +1061,7 @@ block_9:
     return sp34;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B65F4.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B65F4.s")
 #endif
 
 void func_800B6708(void) {
@@ -1126,7 +1126,7 @@ u8 func_800B6828(s32 arg0) {
     return var_v1 & 0xFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B6828.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B6828.s")
 #endif
 
 #ifdef MIPS_TO_C
@@ -1156,7 +1156,7 @@ s32 func_800B68F4(s32 arg0) {
     return temp_a1 & 0xFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B68F4.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B68F4.s")
 #endif
 
 #ifdef NON_MATCHING
@@ -1180,7 +1180,7 @@ s32 func_800B69BC(s32 arg0) {
     return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_WRITE, offset, sizeof(struct_8018EE10_entry), (u8 *)plz);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B69BC.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B69BC.s")
 #endif
 
 s32 func_800B6A68(void) {
