@@ -68,19 +68,19 @@ void func_802818BC(void) {
     s32 temp_v0_2;
 
     if (D_8018EDF3 != TWO_PLAYERS_SELECTED) {
-        D_802874D8.unk_1D = func_80281880(0);
-        D_802874D8.unk_1E = gCharacterSelections[0];
+        D_802874D8.unk1D = func_80281880(0);
+        D_802874D8.unk1E = gCharacterSelections[0];
         return;
     }
     // weird pattern but if it matches it matches
     temp_v0 = sp1C = func_80281880(0);
     temp_v0_2 = func_80281880(1);
     if (sp1C < temp_v0_2) {
-        D_802874D8.unk_1E = gCharacterSelections[0];
-        D_802874D8.unk_1D = temp_v0;
+        D_802874D8.unk1E = gCharacterSelections[0];
+        D_802874D8.unk1D = temp_v0;
     } else {
-        D_802874D8.unk_1E = gCharacterSelections[1];
-        D_802874D8.unk_1D = temp_v0_2;
+        D_802874D8.unk1E = gCharacterSelections[1];
+        D_802874D8.unk1D = temp_v0_2;
     }
 }
 

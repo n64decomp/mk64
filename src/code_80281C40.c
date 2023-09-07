@@ -10,6 +10,7 @@
 #include "podium_ceremony_actors.h"
 #include "code_80281C40.h"
 #include "ceremony_and_credits.h"
+#include "podium_ceremony_actors.h"
 #include "code_8001F980.h"
 
 struct UnkStruct80287560 {

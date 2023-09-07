@@ -378,12 +378,6 @@ typedef struct {
 } Player; // size = 0xDD8
 
 typedef struct {
-    /* 0x00 */ char unk_00[0x1D];
-    /* 0x1D */ s8 unk_1D;
-    /* 0x1E */ s8 unk_1E;
-} struct_D_802874D8;
-
-typedef struct {
     s16 unk_00;
     char unk_02[0xE];
     s16 unk_10;

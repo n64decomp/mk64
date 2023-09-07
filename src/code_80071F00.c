@@ -22,6 +22,7 @@
 #include "code_8008C1D0.h"
 #include "code_80091440.h"
 #include "code_80091750.h"
+#include "podium_ceremony_actors.h"
 
 
 s32 find_unused_obj_index(s32* arg0) {
@@ -8345,7 +8346,7 @@ void func_80086604(void) {
     s32 temp_s0;
     s32 var_s2;
 
-    if ((D_8016347C != 0) && (D_802874F5 < 3)) {
+    if ((D_8016347C != 0) && (D_802874D8.unk1D < 3)) {
         var_s1 = D_80183EA0;
         if (D_801658C6 == 0) {
             do {
@@ -8373,7 +8374,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80086604.s")
 
 void func_80086700(s32 objectIndex) {
     if (gCCSelection < CC_150) {
-        switch (D_802874F5) {                       /* switch 1; irregular */
+        switch (D_802874D8.unk1D) {                       /* switch 1; irregular */
         case 0:                                     /* switch 1 */
             D_80165C18[objectIndex].unk_070 = D_0B0069D8;
             break;
@@ -8387,7 +8388,7 @@ void func_80086700(s32 objectIndex) {
             break;
         }
     } else {
-        switch (D_802874F5) {                       /* irregular */
+        switch (D_802874D8.unk1D) {                       /* irregular */
         case 0:
             D_80165C18[objectIndex].unk_070 = D_0B006A28;
             break;
@@ -8442,8 +8443,7 @@ void func_80086940(s32 objectIndex) {
         func_80086FD4(objectIndex);
         temp_s0->unk_010[1] = 90.0f;
         temp_s0->unk_028[1] = 60.0f;
-        temp_v0 = D_802874F5;
-        switch (temp_v0) {                          /* switch 1; irregular */
+        switch (D_802874D8.unk1D) {
         case 1:                                     /* switch 1 */
             temp_s0->unk_010[0] = (f32) ((f64) temp_s0->unk_010[0] - 3.0);
             temp_s0->unk_010[2] = (f32) ((f64) temp_s0->unk_010[2] + 15.0);

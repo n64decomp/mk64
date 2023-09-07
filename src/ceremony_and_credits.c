@@ -489,7 +489,6 @@ s32 func_80283330(s32 arg0) {
     return D_802876D8;
 }
 
-extern s8 D_802874F5;
 extern s32 D_802876D8;
 
 // todo: Does this match as a return of s8?
@@ -502,7 +501,7 @@ s32 func_8028336C(UNUSED struct CinematicCamera *arg0, UNUSED Camera *camera) {
   switch (gGamestate)
   {
     case ENDING_SEQUENCE:
-      D_802876D8 = sp20[D_802874F5];
+      D_802876D8 = sp20[D_802874D8.unk1D];
       break;
 
     case CREDITS_SEQUENCE:
@@ -988,7 +987,7 @@ void func_80284308(struct CinematicCamera *camera) {
     cutscene_event((CameraEvent)play_sound_congratulation, camera, 140, 140);
     func_80282D90(camera, (struct struct_80286A04 *) D_802858E0, (struct struct_80286A04 *) D_802858F8, 0);
 
-    ply = *(sp30[0] + D_802874F5);
+    ply = *(sp30[0] + D_802874D8.unk1D);
 
     x = ply->pos[0] - gPlayerOne->pos[0];
     y = ply->pos[1] - gPlayerOne->pos[1];

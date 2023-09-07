@@ -115,11 +115,11 @@ SECTIONS
       BUILD_DIR/src/audio/seqplayer.o(.text);
       BUILD_DIR/src/audio/external.o(.text);
       BUILD_DIR/src/audio/port_eu.o(.text);
-#if DEBUG
-     BUILD_DIR/src/debug/crash_screen_enhancement.o(.text);
-	  BUILD_DIR/src/debug/debug.o(.text);
-	  BUILD_DIR/src/os/sprintf.o(.text);
-#endif
+      #if DEBUG
+         BUILD_DIR/src/debug/crash_screen_enhancement.o(.text);
+         BUILD_DIR/src/debug/debug.o(.text);
+         BUILD_DIR/src/os/sprintf.o(.text);
+      #endif
       BUILD_DIR/src/os/osCreateThread.o(.text);
       BUILD_DIR/src/os/osInitialize.o(.text);
       BUILD_DIR/src/os/osStartThread.o(.text);
@@ -447,7 +447,7 @@ SECTIONS
    END_SEG(code_80280000)
 
    BEGIN_NOLOAD(code_80280000) {
-      BUILD_DIR/asm/bss_credits.o(.bss);
+      BUILD_DIR/src/code_80280000.o(.bss);
       BUILD_DIR/src/podium_ceremony_actors.o(.bss);
       BUILD_DIR/src/code_80281C40.o(.bss);
       BUILD_DIR/src/ceremony_and_credits.o(.bss);
