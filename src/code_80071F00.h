@@ -380,11 +380,6 @@ extern OSIoMesg gDmaIoMesg;
 // From Luigi Raceway course data, haven't created a .h file for it yet
 extern Gfx D_0600F960[]; // d_course_luigi_raceway_dl_F960
 
-// From Bowser's Castle course data, haven't created a .h file for it yet
-extern Gfx d_course_bowsers_castle_dl_thwomp[];
-extern u8 d_course_bowsers_castle_thwomp_faces[];
-extern u8 gTLUTWhomp[];
-
 // From Koopa Troopa Beach course data, haven't created a .h file for it yet
 extern u8 d_course_koopa_troopa_beach_crab_frames[];
 extern u8 d_course_koopa_troopa_beach_crab_tlut[];

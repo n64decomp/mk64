@@ -23,6 +23,7 @@
 #include "code_80091440.h"
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
+#include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 #include "courses/special_cup/rainbow_road/course_data.inc.h"
 #include "courses/special_cup/yoshi_valley/course_data.inc.h"
@@ -5511,7 +5512,7 @@ void func_8007EC30(s32 objectIndex) {
         func_8008B888(objectIndex, 0U, 0xC000U, 0U);
         func_8008B8BC(objectIndex, 0U, 0xC000U, 0U);
     }
-    func_80073444(objectIndex, gTLUTWhomp, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s1->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s1->unk_0C8 = 0x000C;
     temp_s1->sizeScaling = 1.0f;
@@ -5554,7 +5555,7 @@ void func_8007ED6C(s32 objectIndex) {
 void func_8007EE5C(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTWhomp, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->sizeScaling = 1.0f;
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
@@ -5853,7 +5854,7 @@ void func_8007F8D8(void) {
 void func_8007FA08(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTWhomp, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s0->unk_0C8 = 0x000C;
@@ -6038,7 +6039,7 @@ void func_8007FFC0(s32 objectIndex) {
 void func_80080078(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTWhomp, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s0->unk_0C8 = 0x000C;
@@ -6105,7 +6106,7 @@ void func_800802C0(s32 objectIndex) {
 
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_0D8 = 0;
-    func_80073444(objectIndex, gTLUTWhomp, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s0->unk_0D2 = 0;
     temp_s0->unk_0C8 = 0x000C;
@@ -6162,7 +6163,7 @@ void func_80080408(s32 objectIndex) {
 void func_80080524(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTWhomp, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s0->unk_0C8 = 0x000C;

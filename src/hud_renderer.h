@@ -453,7 +453,7 @@ extern Lights1 D_800E4698;
 extern s8 D_800E5670[];
 extern s8 D_800E566A[];
 
-extern u8 gTLUTWhomp[]; // Some type of pallette?
+extern u8 d_course_bowsers_castle_thwomp_tlut[]; // Some type of pallette?
 
 extern Gfx *gDisplayListHead;
 

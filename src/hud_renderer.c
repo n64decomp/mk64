@@ -26,6 +26,7 @@
 #include "collision.h"
 #include "main.h"
 #include "code_80086E70.h"
+#include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 #include "courses/special_cup/rainbow_road/course_data.inc.h"
 
@@ -4468,7 +4469,7 @@ void func_800536C8(s32 objectIndex) {
         func_800534E8(objectIndex);
         gSPDisplayList(gDisplayListHead++, D_0D007828);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
-        gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTWhomp);
+        gDPLoadTLUT_pal256(gDisplayListHead++, d_course_bowsers_castle_thwomp_tlut);
         func_8004544C(D_80165C18[objectIndex].activeTexture, 0x00000010, 0x00000040, 4);
         gSPDisplayList(gDisplayListHead++, D_80165C18[objectIndex].unk_070);
     }

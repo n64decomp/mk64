@@ -20,6 +20,7 @@
 #include <sounds.h>
 #include "audio/external.h"
 #include "common_textures.h"
+#include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 #include "courses/special_cup/dks_jungle_parkway/course_data.inc.h"
 #include "courses/special_cup/rainbow_road/course_data.inc.h"
@@ -2288,7 +2289,7 @@ void place_course_actors(void) {
         place_falling_rocks(d_course_choco_mountain_falling_rock_spawns);
         break;
     case COURSE_BOWSER_CASTLE:
-        place_segment_06(D_06009290);
+        place_segment_06(d_course_bowsers_castle_tree_spawn);
         place_all_item_boxes(d_course_bowsers_castle_item_box_spawns);
         break;
     case COURSE_BANSHEE_BOARDWALK:

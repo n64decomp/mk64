@@ -14,6 +14,7 @@
 #include "collision.h"
 #include "render_courses.h"
 #include "skybox_and_splitscreen.h"
+#include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 #include "courses/special_cup/dks_jungle_parkway/course_data.inc.h"
 #include "courses/special_cup/rainbow_road/course_data.inc.h"
@@ -238,7 +239,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
                 if (cameraRot < 0xA000) { return; }
                 if (cameraRot > 0xE000) { return; }
             }
-            gSPDisplayList(gDisplayListHead++, D_06009228);
+            gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_9228);
             break;
         case COURSE_BANSHEE_BOARDWALK:
             gDPPipeSync(gDisplayListHead++);
@@ -1128,7 +1129,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, D_060071B0);
             break;
         case COURSE_BOWSER_CASTLE:
-            gSPDisplayList(gDisplayListHead++, D_06009148);
+            gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_9148);
             break;
         case COURSE_BANSHEE_BOARDWALK:
             gSPDisplayList(gDisplayListHead++, d_course_banshee_boardwalk_dl_B308);
@@ -1344,7 +1345,7 @@ void func_80295D88(void) {
             D_8015F8E4 = -80.0f;
             break;
         case COURSE_BOWSER_CASTLE:
-            parse_course_displaylists((uintptr_t) D_060093D8);
+            parse_course_displaylists((uintptr_t) d_course_bowsers_castle_addr);
             func_80295C6C();
             find_vtx_and_set_colours(d_course_bowsers_castle_packed_dl_1350, 0x32, 0, 0, 0);
             D_8015F8E4 = -50.0f;

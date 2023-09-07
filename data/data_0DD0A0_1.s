@@ -26,7 +26,7 @@ glabel nullPath
 glabel gCoursePathTable
 .word D_06005568, nullPath,   nullPath,   nullPath
 .word D_06004480, nullPath,   nullPath,   nullPath
-.word D_06004F90, nullPath,   nullPath,   nullPath
+.word d_course_bowsers_castle_unknown_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_banshee_boardwalk_unknown_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_yoshi_valley_unknown_waypoints0, d_course_yoshi_valley_unknown_waypoints1, d_course_yoshi_valley_unknown_waypoints2, d_course_yoshi_valley_unknown_waypoints3
 .word D_060034A0, nullPath,   nullPath,   nullPath
@@ -49,7 +49,7 @@ glabel gCoursePathTable
 glabel D_800DC8D0
 .word D_060057B0, nullPath,   nullPath,   nullPath
 .word D_060047F0, nullPath,   nullPath,   nullPath
-.word D_060051D0, nullPath,   nullPath,   nullPath
+.word d_course_bowsers_castle_track_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_banshee_boardwalk_track_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_yoshi_valley_track_waypoints0, d_course_yoshi_valley_track_waypoints1, d_course_yoshi_valley_track_waypoints2, d_course_yoshi_valley_track_waypoints3
 .word D_060036E8, nullPath,   nullPath,   nullPath

@@ -75,13 +75,11 @@ extern u8 kalimari_desert_dls[];
 extern u8 sherbet_land_dls[];
 extern Gfx wario_stadium_dls[];
 
-extern Gfx D_06009228[];
 extern Gfx d_course_koopa_troopa_beach_dl_list2[];
 extern Gfx D_090001D0[];
 
 extern Gfx D_060071B0[];
 extern Gfx D_060076A0[];
-extern Gfx D_06009148[];
 extern Gfx D_06009348[];
 extern Gfx D_06009AE8[];
 extern Gfx D_0600CA78[];
@@ -96,7 +94,6 @@ extern u16 D_800DC518;
 
 extern Gfx D_060072D0[];
 extern Gfx D_060079A0[];
-extern Gfx D_060093D8[];
 extern Gfx D_06009650[];
 extern Gfx D_06009C20[];
 extern Gfx D_0600CC38[];
