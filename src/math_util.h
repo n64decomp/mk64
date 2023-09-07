@@ -16,6 +16,7 @@
 // Here to appease the pragma gods
 double fabs(double x);
 
+void func_802B6A84(Mat3, s16, f32, f32, f32);
 void func_802B4FF0(void);
 void func_802B5794(Mat4, Vec3f, Vec3f);
 s32  func_802B4FF8(Mat4, s32);
@@ -53,7 +54,7 @@ void func_802B6540(Mat3, f32, f32, f32, s16);
 void func_802B6BC0(Mat4, s16, f32, f32, f32);
 void func_802B6D58(Mat4, Vec3f, Vec3f);
 void func_802B71CC(Mat4, Mat4, Mat4);
-void func_802B75F8(Mtx*, Mat4);
+void mtxf_to_mtx(Mtx*, Mat4);
 u16  atan2_lookup(f32, f32);
 u16  atan2s(f32, f32);
 f32  func_802B79B8(f32, f32);
