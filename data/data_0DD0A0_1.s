@@ -28,7 +28,7 @@ glabel gCoursePathTable
 .word D_06004480, nullPath,   nullPath,   nullPath
 .word D_06004F90, nullPath,   nullPath,   nullPath
 .word d_course_banshee_boardwalk_unknown_waypoints, nullPath,   nullPath,   nullPath
-.word D_0600D780, D_0600D9C8, D_0600DC18, D_0600DEA8
+.word d_course_yoshi_valley_unknown_waypoints0, d_course_yoshi_valley_unknown_waypoints1, d_course_yoshi_valley_unknown_waypoints2, d_course_yoshi_valley_unknown_waypoints3
 .word D_060034A0, nullPath,   nullPath,   nullPath
 .word D_0600ADE0, nullPath,   nullPath,   nullPath
 .word D_0600B5B8, nullPath,   nullPath,   nullPath
@@ -51,7 +51,7 @@ glabel D_800DC8D0
 .word D_060047F0, nullPath,   nullPath,   nullPath
 .word D_060051D0, nullPath,   nullPath,   nullPath
 .word d_course_banshee_boardwalk_track_waypoints, nullPath,   nullPath,   nullPath
-.word D_0600E150, D_0600F680, D_06010B58, D_06012090
+.word d_course_yoshi_valley_track_waypoints0, d_course_yoshi_valley_track_waypoints1, d_course_yoshi_valley_track_waypoints2, d_course_yoshi_valley_track_waypoints3
 .word D_060036E8, nullPath,   nullPath,   nullPath
 .word D_0600B1A8, D_0600C4B0, nullPath,   nullPath
 .word D_0600B828, nullPath,   nullPath,   nullPath

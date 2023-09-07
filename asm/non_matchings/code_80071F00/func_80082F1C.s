@@ -12,10 +12,10 @@ glabel func_80082F1C
 /* 083B28 80082F28 25EF5C18 */  addiu $t7, %lo(D_80165C18) # addiu $t7, $t7, 0x5c18
 /* 083B2C 80082F2C 000E7140 */  sll   $t6, $t6, 5
 /* 083B30 80082F30 01CF1021 */  addu  $v0, $t6, $t7
-/* 083B34 80082F34 3C180601 */  lui   $t8, %hi(D_06014798) # $t8, 0x601
-/* 083B38 80082F38 3C190601 */  lui   $t9, %hi(D_06014794) # $t9, 0x601
-/* 083B3C 80082F3C 27184798 */  addiu $t8, %lo(D_06014798) # addiu $t8, $t8, 0x4798
-/* 083B40 80082F40 27394794 */  addiu $t9, %lo(D_06014794) # addiu $t9, $t9, 0x4794
+/* 083B34 80082F34 3C180601 */  lui   $t8, %hi(d_course_yoshi_valley_unk5) # $t8, 0x601
+/* 083B38 80082F38 3C190601 */  lui   $t9, %hi(d_course_yoshi_valley_unk4) # $t9, 0x601
+/* 083B3C 80082F3C 27184798 */  addiu $t8, %lo(d_course_yoshi_valley_unk5) # addiu $t8, $t8, 0x4798
+/* 083B40 80082F40 27394794 */  addiu $t9, %lo(d_course_yoshi_valley_unk4) # addiu $t9, $t9, 0x4794
 /* 083B44 80082F44 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 083B48 80082F48 AC580070 */  sw    $t8, 0x70($v0)
 /* 083B4C 80082F4C AC590074 */  sw    $t9, 0x74($v0)

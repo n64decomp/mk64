@@ -396,12 +396,6 @@ extern u8 D_0F0D0E50[]; // gTextureGhosts
 extern u8 D_06013670[]; // d_course_moo_moo_farm_mole_dirt
 extern u8 d_course_moo_moo_farm_mole_frames[][2048];
 
-// From Yoshi Valley course data, haven't created a .h file for it yet
-extern u8 gTLUTHedgehog[];
-extern animation_type_2 *D_06014794[];
-extern u32 D_06014798[];
-extern u8 gTextureHedgehog[];
-
 // From Frappe Snowland course data, haven't created a .h file for it yet
 extern u8 d_course_frappe_snowland_snow_tlut[];
 extern u8 d_course_frappe_snowland_snow[];

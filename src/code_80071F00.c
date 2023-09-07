@@ -25,6 +25,7 @@
 #include "podium_ceremony_actors.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 #include "courses/special_cup/rainbow_road/course_data.inc.h"
+#include "courses/special_cup/yoshi_valley/course_data.inc.h"
 
 
 s32 find_unused_obj_index(s32* arg0) {
@@ -7149,8 +7150,8 @@ void func_80082E5C(void) {
 // https://decomp.me/scratch/RquH0
 // Gollygee I sure love register allocation :^)
 void func_80082F1C(s32 objectIndex, s32 arg1) {
-    D_80165C18[objectIndex].unk_070 = D_06014798;
-    D_80165C18[objectIndex].unk_074 = D_06014794;
+    D_80165C18[objectIndex].unk_070 = d_course_yoshi_valley_unk5;
+    D_80165C18[objectIndex].unk_074 = d_course_yoshi_valley_unk4;
     D_80165C18[objectIndex].sizeScaling = 0.027f;
     func_80072488(objectIndex);
     func_8008B7D4(objectIndex, D_800E5DF4[arg1].pos[0] * D_8018D01C, D_800E5DF4[arg1].pos[1], D_800E5DF4[arg1].pos[2]);
@@ -7192,10 +7193,10 @@ void func_80083080(void) {
 void func_8008311C(s32 objectIndex, s32 arg1) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTHedgehog, gTextureHedgehog, 0x40U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_yoshi_valley_hedgehog_tlut, d_course_yoshi_valley_hedgehog, 0x40U, (u16) 0x00000040);
     temp_s0 = &D_80165C18[objectIndex];
-    temp_s0->activeTLUT = gTLUTHedgehog;
-    temp_s0->activeTexture = gTextureHedgehog;
+    temp_s0->activeTLUT = d_course_yoshi_valley_hedgehog_tlut;
+    temp_s0->activeTexture = d_course_yoshi_valley_hedgehog;
     temp_s0->unk_074 = D_0D0060B0;
     temp_s0->sizeScaling = 0.2f;
     temp_s0->unk_0D2 = 0;

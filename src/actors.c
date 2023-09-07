@@ -23,6 +23,7 @@
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 #include "courses/special_cup/dks_jungle_parkway/course_data.inc.h"
 #include "courses/special_cup/rainbow_road/course_data.inc.h"
+#include "courses/special_cup/yoshi_valley/course_data.inc.h"
 
 // Appears to be textures
 // or tluts
@@ -2294,7 +2295,7 @@ void place_course_actors(void) {
         place_all_item_boxes(d_course_banshee_boardwalk_item_box_spawns);
         break;
     case COURSE_YOSHI_VALLEY:
-        place_segment_06(D_060180A0);
+        place_segment_06(d_course_yoshi_valley_tree_spawn);
         place_all_item_boxes(d_course_yoshi_valley_item_box_spawns);
         vec3f_set(position, -2300.0f, 0.0f, 634.0f);
         position[0] *= gCourseDirection;
@@ -4009,7 +4010,7 @@ void func_802A27A0(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg, u16 arg3
         if (func_802B4FF8(sp60, 0) == 0) { return; }
 
         gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
-        gSPDisplayList(gDisplayListHead++, D_06016D70);
+        gSPDisplayList(gDisplayListHead++, d_course_yoshi_valley_dl_16D70);
     } else {
         arg1[3][0] = egg->pos[0];
         arg1[3][1] = egg->pos[1];

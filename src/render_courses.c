@@ -17,6 +17,7 @@
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 #include "courses/special_cup/dks_jungle_parkway/course_data.inc.h"
 #include "courses/special_cup/rainbow_road/course_data.inc.h"
+#include "courses/special_cup/yoshi_valley/course_data.inc.h"
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -698,7 +699,7 @@ void render_yoshi_valley(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    load_surface_map((uintptr_t) yoshi_valley_dls, arg0);
+    load_surface_map((uintptr_t) d_course_yoshi_valley_dl_list, arg0);
     gDPPipeSync(gDisplayListHead++);
 }
 
@@ -1133,7 +1134,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, d_course_banshee_boardwalk_dl_B308);
             break;
         case COURSE_YOSHI_VALLEY:
-            gSPDisplayList(gDisplayListHead++, D_06018020);
+            gSPDisplayList(gDisplayListHead++, d_course_yoshi_valley_dl_18020);
             break;
         case COURSE_FRAPPE_SNOWLAND:
             gSPDisplayList(gDisplayListHead++, D_060076A0);
@@ -1359,8 +1360,8 @@ void func_80295D88(void) {
             D_8015F8E4 = -80.0f;
             break;
         case COURSE_YOSHI_VALLEY:
-            func_802B5D64((uintptr_t) D_06016558, -0x38F0, 0x1C70, 1);
-            parse_course_displaylists((uintptr_t) D_06018240);
+            func_802B5D64(&d_course_yoshi_valley_lights4, -0x38F0, 0x1C70, 1);
+            parse_course_displaylists((uintptr_t) d_course_yoshi_valley_addr);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
