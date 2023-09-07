@@ -38,14 +38,14 @@ glabel func_8009CE64
 /* 09DA88 8009CE88 24060002 */  li    $a2, 2
 /* 09DA8C 8009CE8C 24070003 */  li    $a3, 3
 /* 09DA90 8009CE90 10660006 */  beq   $v1, $a2, .L8009CEAC
-/* 09DA94 8009CE94 3C0E8028 */   lui   $t6, %hi(D_802874F5) # $t6, 0x8028
+/* 09DA94 8009CE94 3C0E8028 */   lui   $t6, %hi(D_802874D8+0x1D) # $t6, 0x8028
 /* 09DA98 8009CE98 24070003 */  li    $a3, 3
 /* 09DA9C 8009CE9C 10670003 */  beq   $v1, $a3, .L8009CEAC
 /* 09DAA0 8009CEA0 00000000 */   nop
 /* 09DAA4 8009CEA4 1000000B */  b     .L8009CED4
 /* 09DAA8 8009CEA8 00000000 */   nop
 .L8009CEAC:
-/* 09DAAC 8009CEAC 81CE74F5 */  lb    $t6, %lo(D_802874F5)($t6)
+/* 09DAAC 8009CEAC 81CE74F5 */  lb    $t6, %lo(D_802874D8+0x1D)($t6)
 /* 09DAB0 8009CEB0 3C028019 */  lui   $v0, %hi(gCupSelection) # $v0, 0x8019
 /* 09DAB4 8009CEB4 2442EE09 */  addiu $v0, %lo(gCupSelection) # addiu $v0, $v0, -0x11f7
 /* 09DAB8 8009CEB8 29C10003 */  slti  $at, $t6, 3

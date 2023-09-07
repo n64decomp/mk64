@@ -913,7 +913,7 @@ f32 func_802B79B8(f32 arg0, f32 arg1) {
     return atan2s(arg0, arg1);
 }
 
-f32 func_802B79F0(f32 arg0, f32 arg1) {
+UNUSED f32 func_802B79F0(f32 arg0, f32 arg1) {
     f64 halfpi;
     f32 temp_f0;
     UNUSED f32 pad;

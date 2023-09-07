@@ -29,10 +29,10 @@ glabel func_8001C14C
 /* 01CDB4 8001C1B4 56D90015 */  bnel  $s6, $t9, .L8001C20C
 /* 01CDB8 8001C1B8 3C013FF0 */   lui   $at, 0x3ff0
 /* 01CDBC 8001C1BC 95083E2C */  lhu   $t0, %lo(D_80163E2C)($t0)
-/* 01CDC0 8001C1C0 3C098028 */  lui   $t1, %hi(D_802874F5) # $t1, 0x8028
+/* 01CDC0 8001C1C0 3C098028 */  lui   $t1, %hi(D_802874D8+0x1D) # $t1, 0x8028
 /* 01CDC4 8001C1C4 55000011 */  bnel  $t0, $zero, .L8001C20C
 /* 01CDC8 8001C1C8 3C013FF0 */   lui   $at, 0x3ff0
-/* 01CDCC 8001C1CC 812974F5 */  lb    $t1, %lo(D_802874F5)($t1)
+/* 01CDCC 8001C1CC 812974F5 */  lb    $t1, %lo(D_802874D8+0x1D)($t1)
 /* 01CDD0 8001C1D0 3C1E8016 */  lui   $fp, %hi(D_80163484) # $fp, 0x8016
 /* 01CDD4 8001C1D4 27DE3484 */  addiu $fp, %lo(D_80163484) # addiu $fp, $fp, 0x3484
 /* 01CDD8 8001C1D8 29210003 */  slti  $at, $t1, 3

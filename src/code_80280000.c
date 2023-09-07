@@ -18,10 +18,15 @@
 #include "code_8006E9C0.h"
 #include "code_800029B0.h"
 #include "ceremony_and_credits.h"
+#include "podium_ceremony_actors.h"
 #include "code_80281C40.h"
 #include "code_80057C60.h"
 #include "actors.h"
 #include "render_courses.h"
+
+
+s32 D_802874A0;
+//s32 D_802874A4[5];
 
 void func_80280000(void) {
     func_802966A0();

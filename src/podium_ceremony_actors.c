@@ -64,6 +64,24 @@ ActorInitParams initDummy = {
     0, 0, 0, 0,
 };
 
+// This array appears to always be zero.
+// This may not be an array, it appears to contain uninitialized random values to seed the random generator.
+// The first index used; D_802874BE (7), requires to be an array.
+// Based on that, the whole thing is now an array.
+s16 D_802874B0[17];
+
+Gfx *D_802874D4; // ptr to gDisplayListHead
+
+struct_D_802874D8 D_802874D8; // 31 bytes
+
+//s32 sActorTimer;
+
+//u8 D_802874F4;
+//u8 D_802874F5;
+//u8 D_802874F6;
+CeremonyActor *sPodiumActorList;
+s32 D_802874FC;
+
 void func_80280650(void) {
 
 }
@@ -159,7 +177,7 @@ void func_80280884(void) {
 
 }
 
-extern s16 D_802874CA;
+//extern s16 D_802874CA;
 
 void balloon_update(CeremonyActor *actor) {
     render_balloon(actor->pos, 1.0f, actor->unk2E, actor->unk2C);
@@ -172,7 +190,7 @@ void balloon_update(CeremonyActor *actor) {
     if (actor->timer > 800) {
         actor->isActive = 0;
     }
-    if (D_802874CA == 1) {
+    if (D_802874B0[13] == 1) {
         actor->isActive = 0;
     }
 }
@@ -286,14 +304,14 @@ void unused_80280FA8(UNUSED CeremonyActor *actor) {
 }
 
 void balloons_and_fireworks_init(void) {
-    sActorTimer = 0;
+    D_802874D8.actorTimer = 0;
     sPodiumActorList = (CeremonyActor *) get_next_available_memory_addr(sizeof(CeremonyActor) * 200);
     bzero(sPodiumActorList, (sizeof(CeremonyActor) * 200));
     new_actor(&initDummy);
 }
 
 void func_80280FFC(void) {
-    D_802874F4 = 1;
+    D_802874D8.unk1C = 1;
 }
 
 void func_8028100C(UNUSED s32 arg0, UNUSED s32 arg1, UNUSED s32 arg2) {
@@ -320,25 +338,26 @@ void spawn_balloons(s32 arg0, s32 arg1, s32 arg2) {
     }
 }
 
-extern s16 D_802874BE[];
-extern s16 D_802874C6;
-extern s16 D_802874C8;
+//extern s16 D_802874BE[3];
+//extern s16 D_802874C6;
+//extern s16 D_802874C8;
 extern s32 fireworkColour[];
 
 /**
  * The explosive effect when the firework's charge detonates
  * resulting in a small variety of amusing colours.
+ * D_802874BE appears to be zero.
 */
 void spawn_firework_cone(s32 arg0, s32 arg1, s32 arg2) {
     f32 num;
     static u32 D_80287540;
 
-    if (((f32) random_float_between_0_and_1() * (D_802874BE[0] + 0xD)) < 1.0f) {
+    if (((f32) random_float_between_0_and_1() * (D_802874B0[7] + 0xD)) < 1.0f) {
         Firework *cone;
         cone = (Firework *) new_actor(&initBurst);
         cone->pos[0] = random_who_knows(0.0f) + arg0;
-        cone->pos[1] = random_who_knows((f32) (D_802874C6 + 100)) + (f32) arg1;
-        cone->pos[2] = random_who_knows((f32) (D_802874C8 + 700)) + (f32) arg2;
+        cone->pos[1] = random_who_knows((f32) (D_802874B0[11] + 100)) + (f32) arg1;
+        cone->pos[2] = random_who_knows((f32) (D_802874B0[12] + 700)) + (f32) arg2;
         
         num = 1.1f;
 
@@ -353,11 +372,9 @@ void spawn_firework_cone(s32 arg0, s32 arg1, s32 arg2) {
     }
 }
 
-extern s16 D_802874C4;
-extern s32 sActorTimer;
+//extern s16 D_802874C4;
+//extern s32 sActorTimer;
 extern Mat4 D_80287500;
-
-extern s8 D_802874F5;
 
 /**
  * Allegedly controls fireworks movement.
@@ -367,19 +384,19 @@ void spawn_timer(void) {
     f32 lookAtY;
 
     guLookAtF(D_80287500, camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
-    if (D_802874F5 < 3) {
-        if (sActorTimer < 300) {
+    if (D_802874D8.unk1D < 3) {
+        if (D_802874D8.actorTimer < 300) {
             lookAtY = camera->lookAt[1];
             spawn_firework_cone(-0xE0E, (s32) (((lookAtY - camera->pos[1]) * 1.5f) + lookAtY), -0x258);
         }
-        if (sActorTimer == 120) {
-            spawn_balloons(-0xC6C, (s32) ((f32) D_802874C4 + 210.0f), -0x1EF);
+        if (D_802874D8.actorTimer == 120) {
+            spawn_balloons(-0xC6C, (s32) ((f32) D_802874B0[10] + 210.0f), -0x1EF);
         }
-    } else if (sActorTimer == 2) {
-        spawn_balloons(-0xC6C, (s32) ((f32) D_802874C4 + 210.0f), -0x1EF);
+    } else if (D_802874D8.actorTimer == 2) {
+        spawn_balloons(-0xC6C, (s32) ((f32) D_802874B0[10] + 210.0f), -0x1EF);
     }
     
-    sActorTimer += 1;
+    D_802874D8.actorTimer += 1;
 }
 
 void *sUpdate[][3] = {
@@ -393,14 +410,14 @@ void *sUpdate[][3] = {
     {firework_cone_update_and_spawn_burst, 0, firework_update},
 };
 
-extern s16 D_802874D0;
+//extern s16 D_802874D0;
 
 void update_actors_loop(void) {
     void (*func)(void *);
     s32 i;
     s32 j;
     spawn_timer();
-    D_802874D0 = 0;
+    D_802874B0[16] = 0;
 
     // Why do we loop over the actor list three times?
     // Actors don't with no loop. fireworks don't spawn if the iterator is 2.
@@ -453,7 +470,7 @@ void podium_ceremony_loop(void) {
     func_80059AC8();
     func_80059AC8();
     func_8005A070();
-    if (D_802874F4 != 0) {
+    if (D_802874D8.unk1C != 0) {
         func_8001C14C();
         func_800097E0();
     }

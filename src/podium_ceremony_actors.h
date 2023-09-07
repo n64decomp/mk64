@@ -10,6 +10,17 @@ enum ActorType {
     FireworkBurst,
 };
 
+// unk
+typedef struct {
+    /* 0x00 */ s32 unk0;
+    /* 0x04 */ s32 unk4;
+    /* 0x08 */ s32 actorTimer;
+    /* 0x0C */ u8 unk[16]; // 10 bytes
+    /* 0x1C */ s8 unk1C;
+    /* 0x1D */ s8 unk1D;
+    /* 0x1E */ s8 unk1E; // gCharacterSelections
+} struct_D_802874D8;
+
 typedef struct {
     s16 type;
     Vec3s unk2;
@@ -94,16 +105,15 @@ void func_80281538(void);
 void func_80281540(void);
 void podium_ceremony_loop(void);
 
-
+extern struct_D_802874D8 D_802874D8;
 extern CeremonyActor *sPodiumActorList;
+extern s32 D_802874FC;
 
 extern ActorInitParams initBalloon;
 extern ActorInitParams initCone;
 extern ActorInitParams initInitUnk;
 extern ActorInitParams initBurst;
 
-extern s32  sActorTimer;
-extern s8   D_802874F4;
 extern Gfx *D_802874D4;
 extern s32  D_802874FC;
 extern Mat4 D_80287500;

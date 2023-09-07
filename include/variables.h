@@ -79,7 +79,6 @@ extern struct_8018CA70_entry D_8018CA70[];
 extern Mtx D_80183D60[];
 
 extern struct_D_8018CE10 D_8018CE10[];
-extern struct_D_802874D8 D_802874D8;
 
 //extern struct GfxPool *gGfxPool; // D_8014EF40
 

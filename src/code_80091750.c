@@ -22,6 +22,7 @@
 #include "common_textures.h"
 #include "math_util.h"
 #include "save_data.h"
+#include "podium_ceremony_actors.h"
 // TODO: Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
@@ -6382,7 +6383,7 @@ void func_8009CE64(s32 arg0) {
     if (gGamestate == (s32) 5) {
         if ((gCCSelection != 2) && (gCCSelection != 3)) {
 
-        } else if ((D_802874F5 < 3) && (gCupSelection == 3)) {
+        } else if ((D_802874D8.unk1D < 3) && (gCupSelection == 3)) {
             var_a1 = 1;
         }
         if (var_a1 != 0) {
@@ -7763,7 +7764,6 @@ Gfx *func_80096CD8(Gfx *, ?, ?, ?, s32);            /* extern */
 ? func_800A1780(struct_8018D9E0_entry *);           /* extern */
 ? func_800A1FB0(struct_8018D9E0_entry *);           /* extern */
 ? func_800A638C(struct_8018D9E0_entry *);           /* extern */
-extern s8 D_802874F6;
 s16 gCurrentCourseId;                               /* unable to generate initializer */
 
 void func_8009F5E0(struct_8018D9E0_entry *arg0) {
@@ -8291,7 +8291,7 @@ block_58:
             return;
         case 0x130:                                 /* switch 6 */
             if (arg0->unk4 != 0) {
-                gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E7D54[D_800EFD64[D_802874F6]]), arg0->column, arg0->row);
+                gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E7D54[D_800EFD64[D_802874D8.unk1E]]), arg0->column, arg0->row);
                 func_8009A7EC(arg0->D_8018DEE0_index, arg0->column, arg0->row, 0, arg0->unk1C);
                 return;
             }
@@ -10471,7 +10471,7 @@ void func_800A7448(struct_8018D9E0_entry *arg0) {
     UNUSED s32 pad;
     s32 sp40;
     s32 sp3C;
-    s32 thing = D_802874F5;
+    s32 thing = D_802874D8.unk1D;
     if (thing >= 3) {
         set_text_color(TEXT_YELLOW);
         draw_text(arg0->column, arg0->row, D_800E7A98, 0, 0.75f, 0.75f);
@@ -10489,7 +10489,7 @@ void func_800A75A0(struct_8018D9E0_entry *arg0) {
     UNUSED s32 pad;
     s32 topThree;
 
-    if (D_802874F5 < 3) {
+    if (D_802874D8.unk1D < 3) {
         topThree = 0;
     } else {
         topThree = 1;
@@ -10507,7 +10507,7 @@ void func_800A761C(struct_8018D9E0_entry *arg0) {
     s8 sp3C[3];
     s32 temp_a0;
 
-    temp_a0 = D_802874F5 + 1;
+    temp_a0 = D_802874D8.unk1D + 1;
     func_800A79F4(temp_a0, sp3C);
     sp48 = ((get_string_width(D_800E7AA4[0]) + 5) * 1.2f) / 2;
     sp44 = ((get_string_width(D_800E7AA4[temp_a0]) + 5) * 1.2f) / 2;
@@ -14182,7 +14182,7 @@ void func_800AF004(struct_8018D9E0_entry *arg0) {
         if ((arg0->unk1C >= 0x65) && ((gControllerFive->buttonPressed != 0) || (gControllerFive->stickPressed != 0))) {
             arg0->unk4 = 6;
             arg0->unk1C = 0;
-            if (D_802874F5 < 3) {
+            if (D_802874D8.unk1D < 3) {
                 play_sound2(SOUND_MENU_OK_CLICKED);
             } else {
                 play_sound2(SOUND_ACTION_CONTINUE_UNKNOWN);
@@ -14231,7 +14231,7 @@ void func_800AF270(struct_8018D9E0_entry *arg0) {
     Unk_D_800E70A0 *thing;
 
     temp_v1 = arg0->type - 0x12C;
-    sp30 = D_802874D8.unk_1E;
+    sp30 = D_802874D8.unk1E;
     temp_v0 = D_800EFD64[sp30];
     switch (arg0->unk4) {
     case 0:
@@ -14251,7 +14251,7 @@ void func_800AF270(struct_8018D9E0_entry *arg0) {
     case 2:
         arg0->unk20++;
         if (arg0->unk20 >= 0x1F) {
-            if (D_802874D8.unk_1D >= 3) {
+            if (D_802874D8.unk1D >= 3) {
                 arg0->unk4 = 4;
                 func_800CA0B8();
                 func_800C90F4(0U, (sp30 * 0x10) + 0x29008003);

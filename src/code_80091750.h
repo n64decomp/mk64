@@ -373,7 +373,6 @@ extern f32 D_8018EDD4;
 extern f32 D_8018EDD8;
 extern f32 D_8018EDDC;
 extern s8  D_8018EE08;
-extern s8  D_802874F5;
 
 extern u8 _textures_0aSegmentRomStart[];
 extern u8 _textures_0bSegmentRomStart[];
