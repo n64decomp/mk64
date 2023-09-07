@@ -21,6 +21,7 @@
 #include "audio/external.h"
 #include "common_textures.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
+#include "courses/special_cup/dks_jungle_parkway/course_data.inc.h"
 
 // Appears to be textures
 // or tluts
@@ -812,8 +813,8 @@ void func_802986B4(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
 
 void func_80298AC0(Player *player) {
     Vec3f sp64;
-    s32 segment = SEGMENT_NUMBER2(D_06013F78);
-    s32 offset = SEGMENT_OFFSET(D_06013F78);
+    s32 segment = SEGMENT_NUMBER2(d_course_dks_jungle_parkway_tree_spawn);
+    s32 offset = SEGMENT_OFFSET(d_course_dks_jungle_parkway_tree_spawn);
     struct UnkActorSpawnData *data = (struct UnkActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
 
     while (data->pos[0] != -0x8000) {
@@ -847,8 +848,8 @@ void func_80298C94(void) {
 }
 
 void func_80298D10(void) {
-    s32 segment = SEGMENT_NUMBER2(D_06013F78);
-    s32 offset = SEGMENT_OFFSET(D_06013F78);
+    s32 segment = SEGMENT_NUMBER2(d_course_dks_jungle_parkway_tree_spawn);
+    s32 offset = SEGMENT_OFFSET(d_course_dks_jungle_parkway_tree_spawn);
     struct UnkActorSpawnData *temp_v1 = (struct UnkActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
 
     while (temp_v1->pos[0] != -0x8000) {
@@ -859,8 +860,8 @@ void func_80298D10(void) {
 }
 
 void func_80298D7C(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
-    s32 segment = SEGMENT_NUMBER2(D_06013F78);
-    s32 offset = SEGMENT_OFFSET(D_06013F78);
+    s32 segment = SEGMENT_NUMBER2(d_course_dks_jungle_parkway_tree_spawn);
+    s32 offset = SEGMENT_OFFSET(d_course_dks_jungle_parkway_tree_spawn);
     struct UnkActorSpawnData *var_s1 = (struct UnkActorSpawnData *)VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     UNUSED s32 pad;
     Vec3f spD4;
@@ -1429,8 +1430,8 @@ void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED Mat4 arg2,
         func_802B5F74(spE0, boat->pos, boat->boatRot);
         if (func_802B4FF8(spE0, 1) != 0) {
 
-            gSPDisplayList(gDisplayListHead++, &D_0600E730);
-            gSPDisplayList(gDisplayListHead++, &D_0600E058);
+            gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_E730);
+            gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_E058);
 
             func_802B59DC(spE0, boat->wheelRot);
             vec3f_set(sp120, 0, 16.0f, -255.0f);
@@ -1438,7 +1439,7 @@ void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED Mat4 arg2,
             func_802B71CC(sp60, spE0, spA0);
             if (func_802B4FF8(sp60, 3) != 0) {
                 gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                gSPDisplayList(gDisplayListHead++, &D_0600FC28);
+                gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_FC28);
                 gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
                 gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
             }

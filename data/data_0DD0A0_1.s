@@ -42,7 +42,7 @@ glabel gCoursePathTable
 .word nullPath,   nullPath,   nullPath,   nullPath
 .word nullPath,   nullPath,   nullPath,   nullPath
 .word nullPath,   nullPath,   nullPath,   nullPath
-.word D_060071F0, nullPath,   nullPath,   nullPath
+.word d_course_dks_jungle_parkway_unknown_waypoints, nullPath,   nullPath,   nullPath
 .word nullPath,   nullPath,   nullPath,   nullPath
 .word D_0B008AA8, D_0B008B68, D_0B008C20, D_0B008CE0
 
@@ -65,7 +65,7 @@ glabel D_800DC8D0
 .word nullPath,   nullPath,   nullPath,   nullPath
 .word nullPath,   nullPath,   nullPath,   nullPath
 .word nullPath,   nullPath,   nullPath,   nullPath
-.word D_06007620, nullPath,   nullPath,   nullPath
+.word d_course_dks_jungle_parkway_track_waypoints, nullPath,   nullPath,   nullPath
 .word nullPath,   nullPath,   nullPath,   nullPath
 .word nullPath,   nullPath,   nullPath,   nullPath
 

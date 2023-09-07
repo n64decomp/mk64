@@ -15,6 +15,7 @@
 #include "render_courses.h"
 #include "skybox_and_splitscreen.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
+#include "courses/special_cup/dks_jungle_parkway/course_data.inc.h"
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -1092,7 +1093,7 @@ void render_dks_jungle_parkway(struct UnkStruct_800DC5EC *arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
-    load_surface_map((uintptr_t) dks_jungle_parkway_dls, arg0);
+    load_surface_map((uintptr_t) d_course_dks_jungle_parkway_unknown_dl_list, arg0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
@@ -1173,7 +1174,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, D_sherbet_land_06000000);
             break;
         case COURSE_DK_JUNGLE:
-            gSPDisplayList(gDisplayListHead++, D_06013C30);
+            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_13C30);
             break;
         case COURSE_BIG_DONUT:
             gSPDisplayList(gDisplayListHead++, D_sherbet_land_06000000);
@@ -1455,7 +1456,7 @@ void func_80295D88(void) {
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
         case COURSE_DK_JUNGLE:
-            parse_course_displaylists((uintptr_t) D_06014338);
+            parse_course_displaylists((uintptr_t) d_course_dks_jungle_parkway_addr);
             func_80295C6C();
             D_8015F8E4 =  -475.0f;
             find_vtx_and_set_colours(d_course_dks_jungle_parkway_packed_dl_3FA8, 120, 255, 255, 255);
