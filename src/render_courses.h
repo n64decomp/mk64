@@ -77,7 +77,6 @@ extern u8 sherbet_land_dls[];
 extern Gfx wario_stadium_dls[];
 
 extern Gfx D_06009228[];
-extern Gfx D_060164B8[];
 extern Gfx d_course_koopa_troopa_beach_dl_list2[];
 extern Gfx D_090001D0[];
 
@@ -90,7 +89,6 @@ extern Gfx D_0600CA78[];
 extern Gfx D_0600D8E8[];
 extern Gfx D_0600FD40[];
 extern Gfx D_06014088[];
-extern Gfx D_06016220[];
 extern Gfx D_06018020[];
 extern Gfx D_06018D68[];
 extern Gfx D_06022E00[];
@@ -107,7 +105,6 @@ extern Gfx D_0600CC38[];
 extern Gfx D_0600DC28[];
 extern Gfx D_0600FF28[];
 extern Gfx D_060144B8[];
-extern Gfx D_06016440[];
 extern Gfx D_06016558[];
 extern Gfx D_06018240[];
 extern Gfx D_06018FD8[];

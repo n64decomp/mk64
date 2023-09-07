@@ -27,6 +27,7 @@
 #include "main.h"
 #include "code_80086E70.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
+#include "courses/special_cup/rainbow_road/course_data.inc.h"
 
 void func_800431B0(Vec3f arg0, Vec3su arg1, f32 arg2, Vtx *vtx) {
     func_80042E00(arg0, arg1, arg2);

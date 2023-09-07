@@ -22,6 +22,7 @@
 #include "common_textures.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 #include "courses/special_cup/dks_jungle_parkway/course_data.inc.h"
+#include "courses/special_cup/rainbow_road/course_data.inc.h"
 
 // Appears to be textures
 // or tluts

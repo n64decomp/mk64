@@ -16,6 +16,7 @@
 #include "skybox_and_splitscreen.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 #include "courses/special_cup/dks_jungle_parkway/course_data.inc.h"
+#include "courses/special_cup/rainbow_road/course_data.inc.h"
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -314,7 +315,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             mtxf_identity(matrix);
             func_802B4FF8(matrix, 0);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            load_surface_map((uintptr_t) &D_060164B8, arg0);
+            load_surface_map((uintptr_t) &d_course_rainbow_road_dl_list, arg0);
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
             gDPPipeSync(gDisplayListHead++);
@@ -1159,7 +1160,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, D_06009AE8);
             break;
         case COURSE_RAINBOW_ROAD:
-            gSPDisplayList(gDisplayListHead++, D_06016220);
+            gSPDisplayList(gDisplayListHead++, d_course_rainbow_road_dl_16220);
             break;
         case COURSE_WARIO_STADIUM:
             gSPDisplayList(gDisplayListHead++, D_0600CA78);
@@ -1415,7 +1416,7 @@ void func_80295D88(void) {
             break;
         case COURSE_RAINBOW_ROAD:
             D_800DC5C8 = 1;
-            parse_course_displaylists((uintptr_t) D_06016440);
+            parse_course_displaylists((uintptr_t) d_course_rainbow_road_addr);
             func_80295C6C();
             D_8015F8E4 = 0.0f;
             find_vtx_and_set_colours(d_course_rainbow_road_packed_dl_2068, -0x6A, 255, 255, 255);

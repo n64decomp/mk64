@@ -173,7 +173,6 @@ extern struct ActorSpawnData D_0600FE80[];
 extern struct ActorSpawnData D_06014200[];
 extern struct ActorSpawnData D_06014330[];
 extern struct ActorSpawnData d_course_moo_moo_farm_item_box_spawns[];
-extern struct ActorSpawnData d_course_rainbow_road_item_box_spawns[];
 extern struct ActorSpawnData D_060180A0[];
 extern struct ActorSpawnData d_course_yoshi_valley_item_box_spawns[];
 extern struct ActorSpawnData d_course_koopa_troopa_beach_item_box_spawns[];

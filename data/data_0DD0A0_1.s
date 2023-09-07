@@ -37,7 +37,7 @@ glabel gCoursePathTable
 .word D_06003B80, nullPath,   nullPath,   nullPath
 .word D_06006AC8, nullPath,   nullPath,   nullPath
 .word D_06004BF8, nullPath,   nullPath,   nullPath
-.word D_060019D0, nullPath,   nullPath,   nullPath
+.word d_course_rainbow_road_unknown_waypoints, nullPath,   nullPath,   nullPath
 .word D_060056A0, nullPath,   nullPath,   nullPath
 .word nullPath,   nullPath,   nullPath,   nullPath
 .word nullPath,   nullPath,   nullPath,   nullPath
@@ -60,7 +60,7 @@ glabel D_800DC8D0
 .word D_06003D30, nullPath,   nullPath,   nullPath
 .word D_06006EC0, nullPath,   nullPath,   nullPath
 .word D_06004DE8, nullPath,   nullPath,   nullPath
-.word D_06001CF8, nullPath,   nullPath,   nullPath
+.word d_course_rainbow_road_track_waypoints, nullPath,   nullPath,   nullPath
 .word D_06005908, nullPath,   nullPath,   nullPath
 .word nullPath,   nullPath,   nullPath,   nullPath
 .word nullPath,   nullPath,   nullPath,   nullPath

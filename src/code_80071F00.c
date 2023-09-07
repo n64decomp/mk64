@@ -24,6 +24,7 @@
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
+#include "courses/special_cup/rainbow_road/course_data.inc.h"
 
 
 s32 find_unused_obj_index(s32* arg0) {
@@ -8038,8 +8039,8 @@ void func_80085878(s32 objectIndex, s32 arg1) {
 
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_0D8 = 1;
-    temp_s0->unk_070 = D_06016110;
-    temp_s0->unk_074 = D_0601610C;
+    temp_s0->unk_070 = d_rainbow_road_unk4;
+    temp_s0->unk_074 = d_rainbow_road_unk3;
     temp_s0->sizeScaling = 0.03f;
     temp_s0->unk_0C8 = 0x000A;
     func_800721C0(objectIndex, 0x04000200);
@@ -8049,7 +8050,7 @@ void func_80085878(s32 objectIndex, s32 arg1) {
     func_8008B80C(objectIndex, temp_v0->wayPointX, temp_v0->wayPointY, temp_v0->wayPointZ);
     func_8008B888(objectIndex, 0U, 0U, 0U);
     temp_s0->unk_034 = 4.0f;
-    temp_s0->unk_0A4 = func_80004EAC(D_0601610C, 0);
+    temp_s0->unk_0A4 = func_80004EAC(d_rainbow_road_unk3, 0);
     func_80072488(objectIndex);
 }
 

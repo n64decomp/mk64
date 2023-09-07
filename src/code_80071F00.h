@@ -414,19 +414,6 @@ extern u32 D_06008EB0[]; // d_course_sherbet_land_unk_data1
 extern animation_type_2 *D_06009AC8[]; // d_course_sherbet_land_unk_data11
 extern u8 d_course_sherbet_land_ice[];
 
-// From Rainbow Road course data, haven't created a .h file for it yet
-extern u8 d_course_rainbow_road_neon_mushroom_tlut_list[];
-extern u8 d_course_rainbow_road_neon_mushroom[];
-extern u8 d_course_rainbow_road_neon_mario_tlut_list[];
-extern u8 d_course_rainbow_road_neon_mario[];
-extern u8 d_course_rainbow_road_neon_boo_tlut_list[];
-extern u8 d_course_rainbow_road_neon_boo[];
-extern u8 d_course_rainbow_road_static_tluts[][512];
-extern u8 d_course_rainbow_road_static_textures[][4096];
-extern u8 d_course_rainbow_road_sphere[];
-extern animation_type_2 *D_0601610C[]; // d_rainbow_road_unk3
-extern u32 D_06016110[]; // d_rainbow_road_unk4
-
 // Seemingly a pointer to Lakitu texture(s)
 extern u8 *D_8018C028;
 // Seemingly a list of textures for Lakitu
