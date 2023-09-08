@@ -1,6 +1,6 @@
 glabel func_800120C8
-/* 012CC8 800120C8 3C040600 */  lui   $a0, %hi(D_06006C60) # $a0, 0x600
-/* 012CCC 800120CC 24846C60 */  addiu $a0, %lo(D_06006C60) # addiu $a0, $a0, 0x6c60
+/* 012CC8 800120C8 3C040600 */  lui   $a0, %hi(d_course_kalimari_desert_track_unknown_waypoints) # $a0, 0x600
+/* 012CCC 800120CC 24846C60 */  addiu $a0, %lo(d_course_kalimari_desert_track_unknown_waypoints) # addiu $a0, $a0, 0x6c60
 /* 012CD0 800120D0 00047602 */  srl   $t6, $a0, 0x18
 /* 012CD4 800120D4 000E7880 */  sll   $t7, $t6, 2
 /* 012CD8 800120D8 3C188015 */  lui   $t8, %hi(gSegmentTable) # 0x8015

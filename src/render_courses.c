@@ -14,6 +14,7 @@
 #include "collision.h"
 #include "render_courses.h"
 #include "skybox_and_splitscreen.h"
+#include "courses/mushroom_cup/kalimari_desert/course_data.inc.h"
 #include "courses/flower_cup/choco_mountain/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/flower_cup/mario_raceway/course_data.inc.h"
@@ -1163,7 +1164,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, d_course_toads_turnpike_dl_23930);
             break;
         case COURSE_KALAMARI_DESERT:
-            gSPDisplayList(gDisplayListHead++, D_06022E00);
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22E00);
             break;
         case COURSE_SHERBET_LAND:
             gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_9AE8);
@@ -1412,7 +1413,7 @@ void func_80295D88(void) {
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
         case COURSE_KALAMARI_DESERT:
-            parse_course_displaylists((uintptr_t) D_06023070);
+            parse_course_displaylists((uintptr_t) d_course_kalimari_desert_addr);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;

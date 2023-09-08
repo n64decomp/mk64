@@ -20,6 +20,7 @@
 #include <sounds.h>
 #include "audio/external.h"
 #include "common_textures.h"
+#include "courses/mushroom_cup/kalimari_desert/course_data.inc.h"
 #include "courses/flower_cup/choco_mountain/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/flower_cup/mario_raceway/course_data.inc.h"
@@ -1613,21 +1614,21 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (temp_f0 < 122500.0f) {
 
-        gSPDisplayList(gDisplayListHead++, D_0601C0F0);
-        gSPDisplayList(gDisplayListHead++, D_0601B978);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1C0F0);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1B978);
 
     } else if (temp_f0 < 640000.0f) {
 
-        gSPDisplayList(gDisplayListHead++, D_0601D670);
-        gSPDisplayList(gDisplayListHead++, D_0601D160);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D670);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D160);
     } else {
-        gSPDisplayList(gDisplayListHead++, D_0601E910);
-        gSPDisplayList(gDisplayListHead++, D_0601E480);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E910);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E480);
     }
     if (1440000.0f < temp_f0) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    gSPDisplayList(gDisplayListHead++, D_06022D28);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
 
     func_802B59DC(sp120, actor->wheelRot);
     vec3f_set(sp160, 17.0f, 6.0f, 32.0f);
@@ -1636,7 +1637,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, actor->wheelRot);
@@ -1646,7 +1647,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
@@ -1656,7 +1657,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
@@ -1666,7 +1667,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
@@ -1676,7 +1677,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022D70);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
@@ -1686,7 +1687,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022D70);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x2D8));
@@ -1696,7 +1697,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022D70);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x2D8));
@@ -1706,7 +1707,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022D70);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
@@ -1728,17 +1729,17 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
 
     if (temp_f0 < 250000.0f) {
 
-        gSPDisplayList(gDisplayListHead++, D_0601F228);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1F228);
 
     } else if (temp_f0 < 1000000.0f) {
-        gSPDisplayList(gDisplayListHead++, D_0601F708);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1F708);
     } else {
-        gSPDisplayList(gDisplayListHead++, D_0601FAF8);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1FAF8);
     }
     if (1440000.0f < temp_f0) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    gSPDisplayList(gDisplayListHead++, D_06022D28);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
 
     func_802B59DC(sp120, actor->wheelRot);
     vec3f_set(sp160, 17.0f, 6.0f, 8.0f);
@@ -1747,7 +1748,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, actor->wheelRot);
@@ -1757,7 +1758,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
@@ -1767,7 +1768,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
@@ -1776,7 +1777,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     func_802B71CC(spA0, sp120, spE0);
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
@@ -1798,21 +1799,21 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (temp_f0 < 250000.0f) {
 
-        gSPDisplayList(gDisplayListHead++, D_06020A20);
-        gSPDisplayList(gDisplayListHead++, D_06020A08);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_20A20);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_20A08);
 
     } else if (temp_f0 < 1000000.0f) {
 
-        gSPDisplayList(gDisplayListHead++, D_06021550);
-        gSPDisplayList(gDisplayListHead++, D_06021220);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21550);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21220);
     } else {
-        gSPDisplayList(gDisplayListHead++, D_06021C90);
-        gSPDisplayList(gDisplayListHead++, D_06021A80);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21C90);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21A80);
     }
     if (1440000.0f < temp_f0) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    gSPDisplayList(gDisplayListHead++, D_06022D28);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
 
     func_802B59DC(sp120, actor->wheelRot);
     vec3f_set(sp160, 17.0f, 6.0f, 28.0f);
@@ -1821,7 +1822,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, actor->wheelRot);
@@ -1831,7 +1832,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x222));
@@ -1841,7 +1842,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x222));
@@ -1851,7 +1852,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x5B0));
@@ -1861,7 +1862,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x5B0));
@@ -1871,7 +1872,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
@@ -1881,7 +1882,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
@@ -1891,7 +1892,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
@@ -2337,7 +2338,7 @@ void place_course_actors(void) {
         place_all_item_boxes(d_course_toads_turnpike_item_box_spawns);
         break;
     case COURSE_KALAMARI_DESERT:
-        place_segment_06(D_06022F08);
+        place_segment_06(d_course_kalimari_desert_cactus_spawn);
         place_all_item_boxes(d_course_kalimari_desert_item_box_spawns);
         vec3f_set(position, -1680.0f, 2.0f, 35.0f);
         position[0] *= gCourseDirection;

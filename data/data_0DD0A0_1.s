@@ -35,7 +35,7 @@ glabel gCoursePathTable
 .word D_0600A540, nullPath,   nullPath,   nullPath
 .word D_0600EC80, nullPath,   nullPath,   nullPath
 .word d_course_toads_turnpike_unknown_waypoints, nullPath,   nullPath,   nullPath
-.word D_06006AC8, nullPath,   nullPath,   nullPath
+.word d_course_kalimari_desert_unknown_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_sherbet_land_uknown_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_rainbow_road_unknown_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_wario_stadium_unknown_waypoints, nullPath,   nullPath,   nullPath
@@ -58,7 +58,7 @@ glabel D_800DC8D0
 .word D_0600A6D0, nullPath,   nullPath,   nullPath
 .word D_0600EDE8, nullPath,   nullPath,   nullPath
 .word d_course_toads_turnpike_track_waypoints, nullPath,   nullPath,   nullPath
-.word D_06006EC0, nullPath,   nullPath,   nullPath
+.word d_course_kalimari_desert_track_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_sherbet_land_track_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_rainbow_road_track_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_wario_staduim_track_waypoints, nullPath,   nullPath,   nullPath
