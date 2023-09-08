@@ -161,7 +161,6 @@ extern struct ActorSpawnData d_course_frappe_snowland_item_box_spawns[];
 extern struct ActorSpawnData d_course_mario_raceway_item_box_spawns[];
 extern struct ActorSpawnData D_06009518[];
 extern struct ActorSpawnData D_06009570[];
-extern struct ActorSpawnData d_course_wario_stadium_item_box_spawns[];
 extern struct ActorSpawnData d_course_luigi_raceway_item_box_spawns[];
 extern struct ActorSpawnData D_0600FE80[];
 extern struct ActorSpawnData D_06014200[];
@@ -229,7 +228,6 @@ extern s32 D_80162DF8;
 
 extern Gfx d_course_mario_raceway_dl_piranha_plant[];
 extern Gfx d_course_mario_raceway_dl_sign[];
-extern Gfx d_course_wario_stadium_dl_sign[];
 extern Gfx d_course_kalimari_desert_dl_crossing_right_active[];
 extern Gfx d_course_kalimari_desert_dl_crossing_left_active[];
 extern Gfx d_course_kalimari_desert_dl_crossing_both_inactive[];

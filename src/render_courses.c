@@ -17,6 +17,7 @@
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/royal_raceway/course_data.inc.h"
 #include "courses/star_cup/sherbet_land/course_data.inc.h"
+#include "courses/star_cup/wario_stadium/course_data.inc.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 #include "courses/special_cup/dks_jungle_parkway/course_data.inc.h"
 #include "courses/special_cup/rainbow_road/course_data.inc.h"
@@ -1167,7 +1168,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, d_course_rainbow_road_dl_16220);
             break;
         case COURSE_WARIO_STADIUM:
-            gSPDisplayList(gDisplayListHead++, D_0600CA78);
+            gSPDisplayList(gDisplayListHead++, d_course_wario_stadium_dl_CA78);
             break;
         case COURSE_BLOCK_FORT:
             gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_0);
@@ -1431,7 +1432,7 @@ void func_80295D88(void) {
             }
             break;
         case COURSE_WARIO_STADIUM:
-            parse_course_displaylists((uintptr_t) D_0600CC38);
+            parse_course_displaylists((uintptr_t) d_course_wario_stadium_addr);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             find_vtx_and_set_colours(d_course_wario_stadium_packed_dl_C50, 100, 255, 255, 255);
