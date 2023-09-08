@@ -1,6 +1,7 @@
 #include <PR/ultratypes.h>
 #include <PR/mbi.h>
 #include "course_offsets.h"
+#include "courses/flower_cup/toads_turnpike/course_data.inc.h"
 
 extern u8 gTexture645134[];
 extern u8 gTexture64FE68[];
@@ -22,34 +23,10 @@ extern u8 gTextureRoad5[];
 extern u8 gTextureSignToadRed[];
 extern u8 gTexture668228[];
 extern Gfx D_toads_turnpike_0D005398[];
-extern Gfx D_toads_turnpike_06019518[];
 extern Gfx D_toads_turnpike_0D0053B0[];
-extern Gfx D_toads_turnpike_06019020[];
-extern Gfx D_toads_turnpike_0601A068[];
-extern Gfx D_toads_turnpike_06019DF0[];
 extern Gfx D_toads_turnpike_0D0053C8[];
-extern Gfx D_toads_turnpike_0601A6C8[];
 extern Gfx D_toads_turnpike_0D0053F0[];
-extern Gfx D_toads_turnpike_0601A5F8[];
 extern Gfx D_toads_turnpike_0D005418[];
-extern Gfx D_toads_turnpike_0601BE48[];
-extern Gfx D_toads_turnpike_0601B778[];
-extern Gfx D_toads_turnpike_0601CAA8[];
-extern Gfx D_toads_turnpike_0601C700[];
-extern Gfx D_toads_turnpike_0601D018[];
-extern Gfx D_toads_turnpike_0601CE70[];
-extern Gfx D_toads_turnpike_0601EB48[];
-extern Gfx D_toads_turnpike_0601E458[];
-extern Gfx D_toads_turnpike_06020008[];
-extern Gfx D_toads_turnpike_0601F9D0[];
-extern Gfx D_toads_turnpike_060205A8[];
-extern Gfx D_toads_turnpike_06020510[];
-extern Gfx D_toads_turnpike_06021E28[];
-extern Gfx D_toads_turnpike_06021780[];
-extern Gfx D_toads_turnpike_06023078[];
-extern Gfx D_toads_turnpike_06022BA0[];
-extern Gfx D_toads_turnpike_06023848[];
-extern Gfx D_toads_turnpike_060237F8[];
 
 const course_texture toads_turnpike_textures[] = {
     {gTexture645134, 0x052C, 0x0800, 0x0},
@@ -76,30 +53,30 @@ const course_texture toads_turnpike_textures[] = {
 
 const Gfx toads_turnpike_dl_0[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
-    gsSPDisplayList(D_toads_turnpike_06019518),
+    gsSPDisplayList(d_course_toads_turnpike_dl_19518),
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D0053B0),
-    gsSPDisplayList(D_toads_turnpike_06019020),
+    gsSPDisplayList(d_course_toads_turnpike_dl_19020),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };
 
 const Gfx toads_turnpike_dl_1[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
-    gsSPDisplayList(D_toads_turnpike_0601A068),
+    gsSPDisplayList(d_course_toads_turnpike_dl_1A068),
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D0053B0),
-    gsSPDisplayList(D_toads_turnpike_06019DF0),
+    gsSPDisplayList(d_course_toads_turnpike_dl_19DF0),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };
 
 const Gfx toads_turnpike_dl_2[] = {
     gsSPDisplayList(D_toads_turnpike_0D0053C8),
-    gsSPDisplayList(D_toads_turnpike_0601A6C8),
+    gsSPDisplayList(d_course_toads_turnpike_dl_1A6C8),
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D0053F0),
-    gsSPDisplayList(D_toads_turnpike_0601A5F8),
+    gsSPDisplayList(d_course_toads_turnpike_dl_1A5F8),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D005418),
     gsSPEndDisplayList(),
@@ -107,30 +84,30 @@ const Gfx toads_turnpike_dl_2[] = {
 
 const Gfx toads_turnpike_dl_3[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
-    gsSPDisplayList(D_toads_turnpike_0601BE48),
+    gsSPDisplayList(d_course_toads_turnpike_dl_1BE48),
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D0053B0),
-    gsSPDisplayList(D_toads_turnpike_0601B778),
+    gsSPDisplayList(d_course_toads_turnpike_dl_1B778),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };
 
 const Gfx toads_turnpike_dl_4[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
-    gsSPDisplayList(D_toads_turnpike_0601CAA8),
+    gsSPDisplayList(d_course_toads_turnpike_dl_1CAA8),
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D0053B0),
-    gsSPDisplayList(D_toads_turnpike_0601C700),
+    gsSPDisplayList(d_course_toads_turnpike_dl_1C700),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };
 
 const Gfx toads_turnpike_dl_5[] = {
     gsSPDisplayList(D_toads_turnpike_0D0053C8),
-    gsSPDisplayList(D_toads_turnpike_0601D018),
+    gsSPDisplayList(d_course_toads_turnpike_dl_1D018),
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D0053F0),
-    gsSPDisplayList(D_toads_turnpike_0601CE70),
+    gsSPDisplayList(d_course_toads_turnpike_dl_1CE70),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D005418),
     gsSPEndDisplayList(),
@@ -138,30 +115,30 @@ const Gfx toads_turnpike_dl_5[] = {
 
 const Gfx toads_turnpike_dl_6[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
-    gsSPDisplayList(D_toads_turnpike_0601EB48),
+    gsSPDisplayList(d_course_toads_turnpike_dl_1EB48),
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D0053B0),
-    gsSPDisplayList(D_toads_turnpike_0601E458),
+    gsSPDisplayList(d_course_toads_turnpike_dl_1E458),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };
 
 const Gfx toads_turnpike_dl_7[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
-    gsSPDisplayList(D_toads_turnpike_06020008),
+    gsSPDisplayList(d_course_toads_turnpike_dl_20008),
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D0053B0),
-    gsSPDisplayList(D_toads_turnpike_0601F9D0),
+    gsSPDisplayList(d_course_toads_turnpike_dl_1F9D0),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };
 
 const Gfx toads_turnpike_dl_8[] = {
     gsSPDisplayList(D_toads_turnpike_0D0053C8),
-    gsSPDisplayList(D_toads_turnpike_060205A8),
+    gsSPDisplayList(d_course_toads_turnpike_dl_205A8),
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D0053F0),
-    gsSPDisplayList(D_toads_turnpike_06020510),
+    gsSPDisplayList(d_course_toads_turnpike_dl_20510),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D005418),
     gsSPEndDisplayList(),
@@ -169,30 +146,30 @@ const Gfx toads_turnpike_dl_8[] = {
 
 const Gfx toads_turnpike_dl_9[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
-    gsSPDisplayList(D_toads_turnpike_06021E28),
+    gsSPDisplayList(d_course_toads_turnpike_dl_21E28),
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D0053B0),
-    gsSPDisplayList(D_toads_turnpike_06021780),
+    gsSPDisplayList(d_course_toads_turnpike_dl_21780),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };
 
 const Gfx toads_turnpike_dl_10[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
-    gsSPDisplayList(D_toads_turnpike_06023078),
+    gsSPDisplayList(d_course_toads_turnpike_dl_23078),
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D0053B0),
-    gsSPDisplayList(D_toads_turnpike_06022BA0),
+    gsSPDisplayList(d_course_toads_turnpike_dl_22BA0),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };
 
 const Gfx toads_turnpike_dl_11[] = {
     gsSPDisplayList(D_toads_turnpike_0D0053C8),
-    gsSPDisplayList(D_toads_turnpike_06023848),
+    gsSPDisplayList(d_course_toads_turnpike_dl_23848),
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D0053F0),
-    gsSPDisplayList(D_toads_turnpike_060237F8),
+    gsSPDisplayList(d_course_toads_turnpike_dl_237F8),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPDisplayList(D_toads_turnpike_0D005418),
     gsSPEndDisplayList(),

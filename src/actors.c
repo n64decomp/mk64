@@ -23,6 +23,7 @@
 #include "courses/flower_cup/choco_mountain/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/flower_cup/mario_raceway/course_data.inc.h"
+#include "courses/flower_cup/toads_turnpike/course_data.inc.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/royal_raceway/course_data.inc.h"
 #include "courses/star_cup/sherbet_land/course_data.inc.h"
@@ -1470,13 +1471,13 @@ void func_8029B06C(Camera *arg0, struct Actor *arg1) {
 
             switch(arg1->state) {
                 case 0:
-                    gSPDisplayList(gDisplayListHead++, &D_06023858);
+                    gSPDisplayList(gDisplayListHead++, &d_course_toads_turnpike_dl_23858);
                     break;
                 case 1:
-                    gSPDisplayList(gDisplayListHead++, &D_060238A0);
+                    gSPDisplayList(gDisplayListHead++, &d_course_toads_turnpike_dl_238A0);
                     break;
                 case 2:
-                    gSPDisplayList(gDisplayListHead++, &D_060238E8);
+                    gSPDisplayList(gDisplayListHead++, &d_course_toads_turnpike_dl_238E8);
                     break;
             }
 

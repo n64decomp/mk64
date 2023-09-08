@@ -67,8 +67,6 @@ extern Gfx D_06014060[];
 extern Lights1 D_800DC610[];
 extern Gfx moo_moo_farm_dls[];
 
-extern Gfx toads_turnpike_dls[];
-
 extern Lights1 D_800DC610[]; // Light data?
 extern u8 kalimari_desert_dls[];
 extern u8 sherbet_land_dls[];
@@ -81,7 +79,6 @@ extern Gfx D_0600FD40[];
 extern Gfx D_06014088[];
 extern Gfx D_06018D68[];
 extern Gfx D_06022E00[];
-extern Gfx D_06023930[];
 extern u16 D_800DC518;
 extern u16 D_8015F58A;
 
@@ -89,7 +86,6 @@ extern Gfx D_0600FF28[];
 extern Gfx D_060144B8[];
 extern Gfx D_06018FD8[];
 extern Gfx D_06023070[];
-extern Gfx D_06023B68[];
 extern u16 D_800DC5BC;                                     /* unable to generate initializer */
 extern s32 gGamestate;
 extern s32 gModeSelection;

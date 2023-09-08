@@ -17,6 +17,7 @@
 #include "courses/flower_cup/choco_mountain/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/flower_cup/mario_raceway/course_data.inc.h"
+#include "courses/flower_cup/toads_turnpike/course_data.inc.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/royal_raceway/course_data.inc.h"
 #include "courses/star_cup/sherbet_land/course_data.inc.h"
@@ -926,7 +927,7 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_PASS2);
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2);
 
-    load_surface_map((uintptr_t) toads_turnpike_dls, arg0);
+    load_surface_map((uintptr_t) d_course_toads_turnpike_dl_list, arg0);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_PASS2);
@@ -1159,7 +1160,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, D_06014088);
             break;
         case COURSE_TOADS_TURNPIKE:
-            gSPDisplayList(gDisplayListHead++, D_06023930);
+            gSPDisplayList(gDisplayListHead++, d_course_toads_turnpike_dl_23930);
             break;
         case COURSE_KALAMARI_DESERT:
             gSPDisplayList(gDisplayListHead++, D_06022E00);
@@ -1406,7 +1407,7 @@ void func_80295D88(void) {
             D_801625F0 = 4;
             D_802B87B0 = 993;
             D_802B87B4 = 1000;
-            parse_course_displaylists((uintptr_t) D_06023B68);
+            parse_course_displaylists((uintptr_t) d_course_toads_turnpike_addr);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;

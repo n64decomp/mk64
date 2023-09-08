@@ -163,7 +163,6 @@ extern struct ActorSpawnData d_course_koopa_troopa_beach_item_box_spawns[];
 extern struct ActorSpawnData D_06018F70[];
 extern struct ActorSpawnData d_course_kalimari_desert_item_box_spawns[];
 extern struct ActorSpawnData D_06022F08[];
-extern struct ActorSpawnData d_course_toads_turnpike_item_box_spawns[];
 
 extern Gfx d_course_kalimari_desert_dl_cactus1[];
 extern Gfx d_course_kalimari_desert_dl_cactus2[];
@@ -230,9 +229,6 @@ extern Gfx d_course_koopa_troopa_beach_dl_tree_top2[];
 extern Gfx d_course_koopa_troopa_beach_dl_tree_trunk2[];
 extern Gfx d_course_koopa_troopa_beach_dl_tree_top3[];
 extern Gfx d_course_koopa_troopa_beach_dl_tree_trunk3[];
-extern Gfx D_06023858[];
-extern Gfx D_060238A0[];
-extern Gfx D_060238E8[];
 
 extern Gfx D_0D001750[];
 extern Gfx D_0D001780[];
