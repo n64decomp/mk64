@@ -20,6 +20,7 @@
 #include <sounds.h>
 #include "audio/external.h"
 #include "common_textures.h"
+#include "courses/flower_cup/choco_mountain/course_data.inc.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/royal_raceway/course_data.inc.h"
 #include "courses/star_cup/sherbet_land/course_data.inc.h"
@@ -1919,7 +1920,7 @@ void func_8029CA90(Camera *camera, struct FallingRock *rock) {
             if (func_802B4FF8(sp4C, 0) == 0) {
                 return;
             }
-            gSPDisplayList(gDisplayListHead++, D_06006F88);
+            gSPDisplayList(gDisplayListHead++, d_course_choco_mountain_dl_6F88);
         }
     }
     func_802B5F74(sp4C, rock->pos, rock->rot);

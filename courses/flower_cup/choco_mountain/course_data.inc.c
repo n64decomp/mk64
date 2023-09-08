@@ -7,8 +7,6 @@
 
 #include <courses/flower_cup/choco_mountain/packed.inc.h>
 
-// todo: replace hard-coded addresses with variables.
-
 Gfx d_course_choco_mountain_dl_0[] =
 {
     gsSPNumLights(1),

@@ -14,6 +14,7 @@
 #include "collision.h"
 #include "render_courses.h"
 #include "skybox_and_splitscreen.h"
+#include "courses/flower_cup/choco_mountain/course_data.inc.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/royal_raceway/course_data.inc.h"
 #include "courses/star_cup/sherbet_land/course_data.inc.h"
@@ -1129,7 +1130,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, D_06009348);
             break;
         case COURSE_CHOCO_MOUNTAIN:
-            gSPDisplayList(gDisplayListHead++, D_060071B0);
+            gSPDisplayList(gDisplayListHead++, d_course_choco_mountain_dl_71B8);
             break;
         case COURSE_BOWSER_CASTLE:
             gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_9148);
@@ -1342,7 +1343,7 @@ void func_80295D88(void) {
                 nullify_displaylist(d_course_choco_mountain_packed_dl_340);
                 nullify_displaylist(d_course_choco_mountain_packed_dl_3C8);
             }
-            parse_course_displaylists((uintptr_t) &D_060072D0);
+            parse_course_displaylists((uintptr_t) &d_course_choco_mountain_addr);
             func_802B5CAC(0x238E, 0x31C7, D_8015F590);
             func_80295C6C();
             D_8015F8E4 = -80.0f;

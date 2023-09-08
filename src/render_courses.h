@@ -78,17 +78,14 @@ extern Gfx wario_stadium_dls[];
 extern Gfx d_course_koopa_troopa_beach_dl_list2[];
 extern Gfx D_090001D0[];
 
-extern Gfx D_060071B0[];
-extern Gfx D_060076A0[];
-extern Gfx D_06009348[];
 extern Gfx D_0600FD40[];
 extern Gfx D_06014088[];
 extern Gfx D_06018D68[];
 extern Gfx D_06022E00[];
 extern Gfx D_06023930[];
 extern u16 D_800DC518;
+extern u16 D_8015F58A;
 
-extern Gfx D_060072D0[];
 extern Gfx D_060079A0[];
 extern Gfx D_06009650[];
 extern Gfx D_0600FF28[];

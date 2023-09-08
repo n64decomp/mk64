@@ -154,8 +154,6 @@ extern struct ActorSpawnData d_course_double_deck_item_box_spawns[];
 extern struct ActorSpawnData d_course_block_fort_item_box_spawns[];
 extern struct ActorSpawnData d_course_big_donut_item_box_spawns[];
 extern struct ActorSpawnData d_course_skyscraper_item_box_spawns[];
-extern struct ActorSpawnData d_course_choco_mountain_falling_rock_spawns[];
-extern struct ActorSpawnData d_course_choco_mountain_item_box_spawns[];
 extern struct ActorSpawnData D_06007718[];
 extern struct ActorSpawnData d_course_frappe_snowland_item_box_spawns[];
 extern struct ActorSpawnData d_course_mario_raceway_item_box_spawns[];
@@ -173,8 +171,6 @@ extern struct ActorSpawnData D_06022F08[];
 extern struct ActorSpawnData d_course_toads_turnpike_item_box_spawns[];
 
 extern Gfx d_course_mario_raceway_dl_tree[];
-extern Gfx D_06006F88[];
-extern Gfx d_course_choco_mountain_dl_falling_rock[];
 extern Gfx d_course_frappe_snowland_dl_tree[];
 extern Gfx d_course_kalimari_desert_dl_cactus1[];
 extern Gfx d_course_kalimari_desert_dl_cactus2[];
