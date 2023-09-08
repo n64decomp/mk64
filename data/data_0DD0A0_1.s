@@ -32,7 +32,7 @@ glabel gCoursePathTable
 .word d_course_frappe_unknown_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_koopa_troopa_beach_unknown_waypoints0, nullPath,   nullPath,   nullPath
 .word d_course_royal_raceway_unknown_waypoints, nullPath,   nullPath,   nullPath
-.word D_0600A540, nullPath,   nullPath,   nullPath
+.word d_course_luigi_raceway_unknown_waypoints, nullPath,   nullPath,   nullPath
 .word D_0600EC80, nullPath,   nullPath,   nullPath
 .word d_course_toads_turnpike_unknown_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_kalimari_desert_unknown_waypoints, nullPath,   nullPath,   nullPath
@@ -55,7 +55,7 @@ glabel D_800DC8D0
 .word d_course_frappe_track_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_koopa_troopa_beach_track_waypoints0, d_course_koopa_troopa_beach_track_waypoints1, nullPath,   nullPath
 .word d_course_royal_raceway_track_waypoints, nullPath,   nullPath,   nullPath
-.word D_0600A6D0, nullPath,   nullPath,   nullPath
+.word d_course_luigi_raceway_track_waypoints, nullPath,   nullPath,   nullPath
 .word D_0600EDE8, nullPath,   nullPath,   nullPath
 .word d_course_toads_turnpike_track_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_kalimari_desert_track_waypoints, nullPath,   nullPath,   nullPath

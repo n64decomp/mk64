@@ -24,6 +24,7 @@
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
 #include "courses/mushroom_cup/koopa_troopa_beach/course_data.inc.h"
+#include "courses/mushroom_cup/luigi_raceway/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/sherbet_land/course_data.inc.h"
@@ -7944,7 +7945,7 @@ void func_80085214(void) {
 
 void func_800853DC(s32 objectIndex) {
     D_80165C18[objectIndex].sizeScaling = 1.0f;
-    D_80165C18[objectIndex].unk_070 = D_0600F960;
+    D_80165C18[objectIndex].unk_070 = d_course_luigi_raceway_dl_F960;
     if (gGamestate != 9) {
         func_8008B7D4(objectIndex, D_8018D01C * -176.0, 0.0f, -2323.0f);
         func_8008B80C(objectIndex, 0.0f, 300.0f, 0.0f);

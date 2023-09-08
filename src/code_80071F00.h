@@ -377,9 +377,6 @@ extern OSMesgQueue gDmaMesgQueue;
 extern OSMesg gMainReceivedMesg;
 extern OSIoMesg gDmaIoMesg;
 
-// From Luigi Raceway course data, haven't created a .h file for it yet
-extern Gfx D_0600F960[]; // d_course_luigi_raceway_dl_F960
-
 // from other_textures.s
 extern u8 D_0F0D0E50[]; // gTextureGhosts
 

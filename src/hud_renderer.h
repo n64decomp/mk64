@@ -459,9 +459,5 @@ extern Gfx *gDisplayListHead;
 
 // Stuff from undefined_syms.txt, don't know where else to put them
 extern u8  D_06013670[];
-extern Gfx D_0600F650[];
-extern Gfx D_0600F960[];
-extern Gfx D_0600FA20[];
-extern Gfx D_0600FBE0[];
 
 #endif

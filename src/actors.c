@@ -22,6 +22,7 @@
 #include "common_textures.h"
 #include "courses/mushroom_cup/kalimari_desert/course_data.inc.h"
 #include "courses/mushroom_cup/koopa_troopa_beach/course_data.inc.h"
+#include "courses/mushroom_cup/luigi_raceway/course_data.inc.h"
 #include "courses/flower_cup/choco_mountain/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/flower_cup/mario_raceway/course_data.inc.h"
@@ -2326,7 +2327,7 @@ void place_course_actors(void) {
         place_piranha_plants(d_course_royal_raceway_piranha_plant_spawn);
         break;
     case COURSE_LUIGI_RACEWAY:
-        place_segment_06(D_0600FE80);
+        place_segment_06(d_course_luigi_raceway_tree_spawn);
         place_all_item_boxes(d_course_luigi_raceway_item_box_spawns);
         break;
     case COURSE_MOO_MOO_FARM:

@@ -16,6 +16,7 @@
 #include "skybox_and_splitscreen.h"
 #include "courses/mushroom_cup/kalimari_desert/course_data.inc.h"
 #include "courses/mushroom_cup/koopa_troopa_beach/course_data.inc.h"
+#include "courses/mushroom_cup/luigi_raceway/course_data.inc.h"
 #include "courses/flower_cup/choco_mountain/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/flower_cup/mario_raceway/course_data.inc.h"
@@ -1156,7 +1157,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, d_course_royal_raceway_dl_D8E8);
             break;
         case COURSE_LUIGI_RACEWAY:
-            gSPDisplayList(gDisplayListHead++, D_0600FD40);
+            gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_FD40);
             break;
         case COURSE_MOO_MOO_FARM:
             gSPDisplayList(gDisplayListHead++, D_06014088);
@@ -1394,7 +1395,7 @@ void func_80295D88(void) {
             D_8015F8E4 = -60.0f;
             break;
         case COURSE_LUIGI_RACEWAY:
-            parse_course_displaylists((uintptr_t) D_0600FF28);
+            parse_course_displaylists((uintptr_t) d_course_luigi_raceway_addr);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;

@@ -154,8 +154,6 @@ extern struct ActorSpawnData d_course_double_deck_item_box_spawns[];
 extern struct ActorSpawnData d_course_block_fort_item_box_spawns[];
 extern struct ActorSpawnData d_course_big_donut_item_box_spawns[];
 extern struct ActorSpawnData d_course_skyscraper_item_box_spawns[];
-extern struct ActorSpawnData d_course_luigi_raceway_item_box_spawns[];
-extern struct ActorSpawnData D_0600FE80[];
 extern struct ActorSpawnData D_06014200[];
 extern struct ActorSpawnData D_06014330[];
 extern struct ActorSpawnData d_course_moo_moo_farm_item_box_spawns[];

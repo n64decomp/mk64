@@ -26,6 +26,7 @@
 #include "collision.h"
 #include "main.h"
 #include "code_80086E70.h"
+#include "courses/mushroom_cup/luigi_raceway/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/royal_raceway/course_data.inc.h"
@@ -5285,14 +5286,14 @@ void func_80055CCC(s32 objectIndex, s32 cameraId) {
         test = D_80165C18[objectIndex].pos[1] - D_80165C18[objectIndex].unk_044;
         func_8004A6EC(objectIndex, (20.0 / test) + 0.5);
         if (func_80072270(objectIndex, 0x00100000) != 0) {
-            func_80043328(D_80165C18[objectIndex].pos, (u16 *) D_80165C18[objectIndex].unk_0BE, D_80165C18[objectIndex].sizeScaling, D_0600F960);
-            gSPDisplayList(gDisplayListHead++, D_0600F650);
+            func_80043328(D_80165C18[objectIndex].pos, (u16 *) D_80165C18[objectIndex].unk_0BE, D_80165C18[objectIndex].sizeScaling, d_course_luigi_raceway_dl_F960);
+            gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_F650);
         } else {
             D_80183E80[0] = (s16) D_80165C18[objectIndex].unk_0BE[0];
             D_80183E80[1] = (s16) (func_800418AC(D_80165C18[objectIndex].pos[0], D_80165C18[objectIndex].pos[2], camera->pos) + 0x8000);
             D_80183E80[2] = (u16) D_80165C18[objectIndex].unk_0BE[2];
-            func_80043328(D_80165C18[objectIndex].pos, D_80183E80, D_80165C18[objectIndex].sizeScaling, D_0600FBE0);
-            gSPDisplayList(gDisplayListHead++, D_0600FA20);
+            func_80043328(D_80165C18[objectIndex].pos, D_80183E80, D_80165C18[objectIndex].sizeScaling, d_course_luigi_raceway_dl_FBE0);
+            gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_FA20);
             if (gPlayerCountSelection1 == 1) {
                 D_80165C18[objectIndex].unk_0BE[1] = 0;
             }
