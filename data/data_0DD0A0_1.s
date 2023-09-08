@@ -24,7 +24,7 @@ glabel nullPath
 
 # segmented address of up to four course paths per course
 glabel gCoursePathTable
-.word D_06005568, nullPath,   nullPath,   nullPath
+.word d_course_mario_raceway_unknown_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_choco_mountain_unknown_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_bowsers_castle_unknown_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_banshee_boardwalk_unknown_waypoints, nullPath,   nullPath,   nullPath
@@ -47,7 +47,7 @@ glabel gCoursePathTable
 .word D_0B008AA8, D_0B008B68, D_0B008C20, D_0B008CE0
 
 glabel D_800DC8D0
-.word D_060057B0, nullPath,   nullPath,   nullPath
+.word d_course_mario_raceway_track_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_choco_mountain_track_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_bowsers_castle_track_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_banshee_boardwalk_track_waypoints, nullPath,   nullPath,   nullPath

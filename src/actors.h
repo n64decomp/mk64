@@ -154,9 +154,6 @@ extern struct ActorSpawnData d_course_double_deck_item_box_spawns[];
 extern struct ActorSpawnData d_course_block_fort_item_box_spawns[];
 extern struct ActorSpawnData d_course_big_donut_item_box_spawns[];
 extern struct ActorSpawnData d_course_skyscraper_item_box_spawns[];
-extern struct ActorSpawnData d_course_mario_raceway_item_box_spawns[];
-extern struct ActorSpawnData D_06009518[];
-extern struct ActorSpawnData D_06009570[];
 extern struct ActorSpawnData d_course_luigi_raceway_item_box_spawns[];
 extern struct ActorSpawnData D_0600FE80[];
 extern struct ActorSpawnData D_06014200[];
@@ -168,7 +165,6 @@ extern struct ActorSpawnData d_course_kalimari_desert_item_box_spawns[];
 extern struct ActorSpawnData D_06022F08[];
 extern struct ActorSpawnData d_course_toads_turnpike_item_box_spawns[];
 
-extern Gfx d_course_mario_raceway_dl_tree[];
 extern Gfx d_course_kalimari_desert_dl_cactus1[];
 extern Gfx d_course_kalimari_desert_dl_cactus2[];
 extern Gfx d_course_kalimari_desert_dl_cactus3[];
@@ -219,8 +215,6 @@ extern s32 gGamestate;
 extern s32 gGamestate;
 extern s32 D_80162DF8;
 
-extern Gfx d_course_mario_raceway_dl_piranha_plant[];
-extern Gfx d_course_mario_raceway_dl_sign[];
 extern Gfx d_course_kalimari_desert_dl_crossing_right_active[];
 extern Gfx d_course_kalimari_desert_dl_crossing_left_active[];
 extern Gfx d_course_kalimari_desert_dl_crossing_both_inactive[];

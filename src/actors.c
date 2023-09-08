@@ -22,6 +22,7 @@
 #include "common_textures.h"
 #include "courses/flower_cup/choco_mountain/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
+#include "courses/flower_cup/mario_raceway/course_data.inc.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/royal_raceway/course_data.inc.h"
 #include "courses/star_cup/sherbet_land/course_data.inc.h"
@@ -2278,8 +2279,8 @@ void place_course_actors(void) {
     gNumPermanentActors = 0;
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
-        place_segment_06(D_06009570);
-        place_piranha_plants(D_06009518);
+        place_segment_06(d_course_mario_raceway_tree_spawns);
+        place_piranha_plants(d_course_mario_raceway_piranha_plant_spawns);
         place_all_item_boxes(d_course_mario_raceway_item_box_spawns);
         vec3f_set(position, 150.0f, 40.0f, -1300.0f);
         position[0] *= gCourseDirection;

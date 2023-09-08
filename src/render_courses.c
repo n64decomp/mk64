@@ -16,6 +16,7 @@
 #include "skybox_and_splitscreen.h"
 #include "courses/flower_cup/choco_mountain/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
+#include "courses/flower_cup/mario_raceway/course_data.inc.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/royal_raceway/course_data.inc.h"
 #include "courses/star_cup/sherbet_land/course_data.inc.h"
@@ -1128,7 +1129,7 @@ void render_big_donut(struct UnkStruct_800DC5EC *arg0) {
 void func_8029569C(void) {
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            gSPDisplayList(gDisplayListHead++, D_06009348);
+            gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_9348);
             break;
         case COURSE_CHOCO_MOUNTAIN:
             gSPDisplayList(gDisplayListHead++, d_course_choco_mountain_dl_71B8);
@@ -1321,7 +1322,7 @@ void func_80295D88(void) {
             } else {
                 set_vertex_data_with_defaults(d_course_mario_raceway_packed_dl_2D68);
             }
-            parse_course_displaylists((uintptr_t) D_06009650);
+            parse_course_displaylists((uintptr_t) d_course_mario_raceway_addr);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;

@@ -19,6 +19,7 @@
 #include "staff_ghosts.h"
 #include "render_courses.h"
 #include "main.h"
+#include "courses/flower_cup/mario_raceway/course_data.inc.h"
 
 extern u16 D_800DC5A8;
 
@@ -38,7 +39,6 @@ extern s32 D_80150120;
 
 extern Vec3f D_802B91C8;
 
-extern struct ActorSpawnData D_06009570[];
 extern struct ActorSpawnData D_06014330[];
 
 
@@ -305,7 +305,7 @@ void func_80003040(void) {
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             dma_textures(D_0F04F45C, 0x35B, 0x800);
-            place_segment_06(D_06009570);
+            place_segment_06(d_course_mario_raceway_tree_spawns);
             break;
         case COURSE_BOWSER_CASTLE:
             find_vtx_and_set_colours(0x7001350, 0x32, 0, 0, 0);

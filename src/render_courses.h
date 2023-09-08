@@ -85,7 +85,6 @@ extern Gfx D_06023930[];
 extern u16 D_800DC518;
 extern u16 D_8015F58A;
 
-extern Gfx D_06009650[];
 extern Gfx D_0600FF28[];
 extern Gfx D_060144B8[];
 extern Gfx D_06018FD8[];
