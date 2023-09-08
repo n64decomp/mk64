@@ -457,7 +457,4 @@ extern u8 d_course_bowsers_castle_thwomp_tlut[]; // Some type of pallette?
 
 extern Gfx *gDisplayListHead;
 
-// Stuff from undefined_syms.txt, don't know where else to put them
-extern u8  D_06013670[];
-
 #endif

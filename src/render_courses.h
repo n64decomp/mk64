@@ -61,8 +61,6 @@ extern Gfx banshee_boardwalk_dls[];
 extern Gfx royal_raceway_dls[];
 extern Gfx luigi_raceway_dls[];
 
-extern Gfx D_06013FF8[];
-extern Gfx D_06014060[];
 extern Lights1 D_800DC610[];
 extern Gfx moo_moo_farm_dls[];
 
@@ -73,11 +71,9 @@ extern Gfx wario_stadium_dls[];
 
 extern Gfx D_090001D0[];
 
-extern Gfx D_06014088[];
 extern u16 D_800DC518;
 extern u16 D_8015F58A;
 
-extern Gfx D_060144B8[];
 extern u16 D_800DC5BC;                                     /* unable to generate initializer */
 extern s32 gGamestate;
 extern s32 gModeSelection;

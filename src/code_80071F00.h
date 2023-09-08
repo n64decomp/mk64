@@ -380,10 +380,6 @@ extern OSIoMesg gDmaIoMesg;
 // from other_textures.s
 extern u8 D_0F0D0E50[]; // gTextureGhosts
 
-// From Moo Moo Farm course data, haven't created a .h file for it yet
-extern u8 D_06013670[]; // d_course_moo_moo_farm_mole_dirt
-extern u8 d_course_moo_moo_farm_mole_frames[][2048];
-
 // Seemingly a pointer to Lakitu texture(s)
 extern u8 *D_8018C028;
 // Seemingly a list of textures for Lakitu

@@ -27,6 +27,7 @@
 #include "main.h"
 #include "code_80086E70.h"
 #include "courses/mushroom_cup/luigi_raceway/course_data.inc.h"
+#include "courses/mushroom_cup/moo_moo_farm/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/royal_raceway/course_data.inc.h"
@@ -5020,7 +5021,7 @@ void func_80054F04(s32 cameraId) {
 
     sp44 = &camera1[cameraId];
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
-    func_80043D50(D_06013670, 0x00000010, 0x00000010);
+    func_80043D50(d_course_moo_moo_farm_mole_dirt, 0x00000010, 0x00000010);
     for (var_s2 = 0; var_s2 < D_8018C3F0_SIZE; var_s2++) {
         objectIndex = D_8018C3F0[var_s2];
         object = &D_80165C18[objectIndex];

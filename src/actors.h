@@ -154,11 +154,6 @@ extern struct ActorSpawnData d_course_double_deck_item_box_spawns[];
 extern struct ActorSpawnData d_course_block_fort_item_box_spawns[];
 extern struct ActorSpawnData d_course_big_donut_item_box_spawns[];
 extern struct ActorSpawnData d_course_skyscraper_item_box_spawns[];
-extern struct ActorSpawnData D_06014200[];
-extern struct ActorSpawnData D_06014330[];
-extern struct ActorSpawnData d_course_moo_moo_farm_item_box_spawns[];
-
-extern Gfx d_course_moo_moo_farm_dl_tree[];
 
 extern s8 D_0D004C68[];
 extern Gfx D_0D005338[];
@@ -183,13 +178,6 @@ extern Mat4 D_801502C0;
 extern s32 gGamestate;
 extern s32 gGamestate;
 extern s32 D_80162DF8;
-
-extern u8 d_course_moo_moo_farm_mole_tlut[];
-extern Gfx d_course_moo_moo_farm_dl_cow1[];
-extern Gfx d_course_moo_moo_farm_dl_cow2[];
-extern Gfx d_course_moo_moo_farm_dl_cow3[];
-extern Gfx d_course_moo_moo_farm_dl_cow4[];
-extern Gfx d_course_moo_moo_farm_dl_cow5[];
 
 extern Gfx D_0D001750[];
 extern Gfx D_0D001780[];

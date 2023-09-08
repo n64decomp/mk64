@@ -25,6 +25,7 @@
 #include "podium_ceremony_actors.h"
 #include "courses/mushroom_cup/koopa_troopa_beach/course_data.inc.h"
 #include "courses/mushroom_cup/luigi_raceway/course_data.inc.h"
+#include "courses/mushroom_cup/moo_moo_farm/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/sherbet_land/course_data.inc.h"
@@ -6563,8 +6564,8 @@ void func_8008153C(s32 objectIndex) {
             if (D_80165C18[loopObjectIndex].unk_0A6 != 0) continue;
 
             func_800723A4(loopObjectIndex, 0);
-            D_80165C18[loopObjectIndex].activeTLUT = D_06013670;
-            D_80165C18[loopObjectIndex].tlutList = D_06013670;
+            D_80165C18[loopObjectIndex].activeTLUT = d_course_moo_moo_farm_mole_dirt;
+            D_80165C18[loopObjectIndex].tlutList = d_course_moo_moo_farm_mole_dirt;
             D_80165C18[loopObjectIndex].sizeScaling = 0.15f;
             D_80165C18[loopObjectIndex].unk_038[1] = random_int(0x000AU);
             D_80165C18[loopObjectIndex].unk_038[1] = (D_80165C18[loopObjectIndex].unk_038[1] * 0.1) + 4.8;

@@ -23,6 +23,7 @@
 #include "courses/mushroom_cup/kalimari_desert/course_data.inc.h"
 #include "courses/mushroom_cup/koopa_troopa_beach/course_data.inc.h"
 #include "courses/mushroom_cup/luigi_raceway/course_data.inc.h"
+#include "courses/mushroom_cup/moo_moo_farm/course_data.inc.h"
 #include "courses/flower_cup/choco_mountain/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/flower_cup/mario_raceway/course_data.inc.h"
@@ -758,8 +759,8 @@ void func_802986B4(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
     struct ActorSpawnData *var_s5;
     Vec3f sp88;
     u32 soundThing = 0x1901904D;
-    s32 segment = SEGMENT_NUMBER2(D_06014200);
-    s32 offset = SEGMENT_OFFSET(D_06014200);
+    s32 segment = SEGMENT_NUMBER2(d_course_moo_moo_farm_cow_spawn);
+    s32 offset = SEGMENT_OFFSET(d_course_moo_moo_farm_cow_spawn);
     
     var_t1 = (struct ActorSpawnData*)VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     D_8015F704 = 6.4e7f;
@@ -2332,7 +2333,7 @@ void place_course_actors(void) {
         break;
     case COURSE_MOO_MOO_FARM:
         if (gPlayerCountSelection1 != 4) {
-            place_segment_06(D_06014330);
+            place_segment_06(d_course_moo_moo_farm_tree_spawn);
         }
         place_all_item_boxes(d_course_moo_moo_farm_item_box_spawns);
         break;

@@ -17,6 +17,7 @@
 #include "courses/mushroom_cup/kalimari_desert/course_data.inc.h"
 #include "courses/mushroom_cup/koopa_troopa_beach/course_data.inc.h"
 #include "courses/mushroom_cup/luigi_raceway/course_data.inc.h"
+#include "courses/mushroom_cup/moo_moo_farm/course_data.inc.h"
 #include "courses/flower_cup/choco_mountain/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/flower_cup/mario_raceway/course_data.inc.h"
@@ -871,17 +872,17 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
 
     if ((temp_s0 < 14) && (temp_s0 > 10)) {
         if ((temp_s1 == 2) || (temp_s1 == 3) || (temp_s1 == 1))
-            gSPDisplayList(gDisplayListHead++, D_06013FF8);
+            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
         
     } else if (temp_s0 < 16) {
-            gSPDisplayList(gDisplayListHead++, D_06013FF8);
+            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
     } else if (temp_s0 < 19) {
         if (temp_s1 != 2) 
-            gSPDisplayList(gDisplayListHead++, D_06013FF8);
+            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
         
     } else if (temp_s0 < 20) {
         if (temp_s1 == 0) 
-            gSPDisplayList(gDisplayListHead++, D_06013FF8);
+            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
         
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
@@ -898,17 +899,17 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
     }
     if (temp_s0 < 4) {
         if (temp_s1 != 0) 
-            gSPDisplayList(gDisplayListHead++, D_06014060);
+            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
         
     } else if (temp_s0 < 8) {
         if (temp_s1 == 2) 
-            gSPDisplayList(gDisplayListHead++, D_06014060);
+            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
         
     } else if (temp_s0 >= 22) {
-            gSPDisplayList(gDisplayListHead++, D_06014060);
+            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
     } else if (temp_s0 >= 18) {
         if ((temp_s1 == 0) || (temp_s1 == 3)) 
-            gSPDisplayList(gDisplayListHead++, D_06014060);
+            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
         
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
@@ -1160,7 +1161,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_FD40);
             break;
         case COURSE_MOO_MOO_FARM:
-            gSPDisplayList(gDisplayListHead++, D_06014088);
+            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14088);
             break;
         case COURSE_TOADS_TURNPIKE:
             gSPDisplayList(gDisplayListHead++, d_course_toads_turnpike_dl_23930);
@@ -1400,7 +1401,7 @@ void func_80295D88(void) {
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
         case COURSE_MOO_MOO_FARM:
-            parse_course_displaylists((uintptr_t) D_060144B8);
+            parse_course_displaylists((uintptr_t) d_course_moo_moo_farm_addr);
             func_80295C6C();
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
