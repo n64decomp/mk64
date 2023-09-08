@@ -15,6 +15,7 @@
 #include "render_courses.h"
 #include "skybox_and_splitscreen.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
+#include "courses/star_cup/royal_raceway/course_data.inc.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 #include "courses/special_cup/dks_jungle_parkway/course_data.inc.h"
 #include "courses/special_cup/rainbow_road/course_data.inc.h"
@@ -1144,7 +1145,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, D_06018D68);
             break;
         case COURSE_ROYAL_RACEWAY:
-            gSPDisplayList(gDisplayListHead++, D_0600D8E8);
+            gSPDisplayList(gDisplayListHead++, d_course_royal_raceway_dl_D8E8);
             break;
         case COURSE_LUIGI_RACEWAY:
             gSPDisplayList(gDisplayListHead++, D_0600FD40);
@@ -1380,7 +1381,7 @@ void func_80295D88(void) {
             find_vtx_and_set_colours(d_course_koopa_troopa_beach_packed_dl_358, -0x6A, 255, 255, 255);
             break;
         case COURSE_ROYAL_RACEWAY:
-            parse_course_displaylists((uintptr_t) D_0600DC28);
+            parse_course_displaylists((uintptr_t) d_course_royal_raceway_addr);
             func_80295C6C();
             D_8015F8E4 = -60.0f;
             break;

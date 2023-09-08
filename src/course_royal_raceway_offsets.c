@@ -1,5 +1,6 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
+#include "courses/star_cup/royal_raceway/course_data.inc.h"
 
 extern u8 gTexture64619C[];
 extern u8 gTexture645134[];
@@ -44,138 +45,6 @@ extern u8 gTextureFencePostWooden[];
 extern u8 gTexture648508[];
 extern u8 gTexture6449D4[];
 extern u8 gTexture67FE0C[];
-extern u8 D_royal_raceway_06000000[];
-extern u8 D_royal_raceway_06000360[];
-extern u8 D_royal_raceway_06000258[];
-extern u8 D_royal_raceway_06000470[];
-extern u8 D_royal_raceway_060006D0[];
-extern u8 D_royal_raceway_06000A48[];
-extern u8 D_royal_raceway_060008E0[];
-extern u8 D_royal_raceway_06000B40[];
-extern u8 D_royal_raceway_06000DA0[];
-extern u8 D_royal_raceway_06001180[];
-extern u8 D_royal_raceway_06000F40[];
-extern u8 D_royal_raceway_060012C0[];
-extern u8 D_royal_raceway_06001538[];
-extern u8 D_royal_raceway_06001850[];
-extern u8 D_royal_raceway_06001610[];
-extern u8 D_royal_raceway_060019B0[];
-extern u8 D_royal_raceway_06001BB8[];
-extern u8 D_royal_raceway_06001E88[];
-extern u8 D_royal_raceway_06001C40[];
-extern u8 D_royal_raceway_06002018[];
-extern u8 D_royal_raceway_060021A8[];
-extern u8 D_royal_raceway_06002428[];
-extern u8 D_royal_raceway_06002210[];
-extern u8 D_royal_raceway_060025F0[];
-extern u8 D_royal_raceway_060026F0[];
-extern u8 D_royal_raceway_060029A0[];
-extern u8 D_royal_raceway_060027B8[];
-extern u8 D_royal_raceway_06002B78[];
-extern u8 D_royal_raceway_06002C20[];
-extern u8 D_royal_raceway_06002FE0[];
-extern u8 D_royal_raceway_06002DD0[];
-extern u8 D_royal_raceway_060031F8[];
-extern u8 D_royal_raceway_060033B0[];
-extern u8 D_royal_raceway_06003748[];
-extern u8 D_royal_raceway_06003580[];
-extern u8 D_royal_raceway_06003960[];
-extern u8 D_royal_raceway_06003AD8[];
-extern u8 D_royal_raceway_06003D38[];
-extern u8 D_royal_raceway_06003BA8[];
-extern u8 D_royal_raceway_06003ED8[];
-extern u8 D_royal_raceway_06003FA0[];
-extern u8 D_royal_raceway_060041D8[];
-extern u8 D_royal_raceway_06004048[];
-extern u8 D_royal_raceway_06004380[];
-extern u8 D_royal_raceway_06004438[];
-extern u8 D_royal_raceway_060045A0[];
-extern u8 D_royal_raceway_060044C0[];
-extern u8 D_royal_raceway_060046A0[];
-extern u8 D_royal_raceway_06004750[];
-extern u8 D_royal_raceway_06004930[];
-extern u8 D_royal_raceway_06004800[];
-extern u8 D_royal_raceway_06004A38[];
-extern u8 D_royal_raceway_06004AE0[];
-extern u8 D_royal_raceway_06004D00[];
-extern u8 D_royal_raceway_06004BA8[];
-extern u8 D_royal_raceway_06004DF8[];
-extern u8 D_royal_raceway_06004EC0[];
-extern u8 D_royal_raceway_060050F0[];
-extern u8 D_royal_raceway_06004F80[];
-extern u8 D_royal_raceway_060051D0[];
-extern u8 D_royal_raceway_060052F0[];
-extern u8 D_royal_raceway_060054F8[];
-extern u8 D_royal_raceway_060053B8[];
-extern u8 D_royal_raceway_06005598[];
-extern u8 D_royal_raceway_060056C0[];
-extern u8 D_royal_raceway_06005890[];
-extern u8 D_royal_raceway_06005758[];
-extern u8 D_royal_raceway_06005900[];
-extern u8 D_royal_raceway_06005A40[];
-extern u8 D_royal_raceway_06005CA0[];
-extern u8 D_royal_raceway_06005B28[];
-extern u8 D_royal_raceway_06005D08[];
-extern u8 D_royal_raceway_06005EB8[];
-extern u8 D_royal_raceway_06006118[];
-extern u8 D_royal_raceway_06005FD8[];
-extern u8 D_royal_raceway_060061B0[];
-extern u8 D_royal_raceway_06006378[];
-extern u8 D_royal_raceway_06006780[];
-extern u8 D_royal_raceway_06006538[];
-extern u8 D_royal_raceway_060068C8[];
-extern u8 D_royal_raceway_06006BC0[];
-extern u8 D_royal_raceway_060070C0[];
-extern u8 D_royal_raceway_06006E20[];
-extern u8 D_royal_raceway_060072B8[];
-extern u8 D_royal_raceway_060075C0[];
-extern u8 D_royal_raceway_060078E8[];
-extern u8 D_royal_raceway_06007778[];
-extern u8 D_royal_raceway_06007AD0[];
-extern u8 D_royal_raceway_06007BD8[];
-extern u8 D_royal_raceway_06007ED8[];
-extern u8 D_royal_raceway_06007DB0[];
-extern u8 D_royal_raceway_06008068[];
-extern u8 D_royal_raceway_060081C0[];
-extern u8 D_royal_raceway_060084A0[];
-extern u8 D_royal_raceway_06008398[];
-extern u8 D_royal_raceway_06008620[];
-extern u8 D_royal_raceway_06008770[];
-extern u8 D_royal_raceway_060088B0[];
-extern u8 D_royal_raceway_06008838[];
-extern u8 D_royal_raceway_06008930[];
-extern u8 D_royal_raceway_060089F0[];
-extern u8 D_royal_raceway_06008CD8[];
-extern u8 D_royal_raceway_06008C58[];
-extern u8 D_royal_raceway_06008EB8[];
-extern u8 D_royal_raceway_06008FA8[];
-extern u8 D_royal_raceway_060092D0[];
-extern u8 D_royal_raceway_06009218[];
-extern u8 D_royal_raceway_060094E8[];
-extern u8 D_royal_raceway_06009678[];
-extern u8 D_royal_raceway_060099A0[];
-extern u8 D_royal_raceway_06009900[];
-extern u8 D_royal_raceway_06009B30[];
-extern u8 D_royal_raceway_06009D58[];
-extern u8 D_royal_raceway_0600A0A8[];
-extern u8 D_royal_raceway_06009FE8[];
-extern u8 D_royal_raceway_0600A200[];
-extern u8 D_royal_raceway_0600A478[];
-extern u8 D_royal_raceway_0600A728[];
-extern u8 D_royal_raceway_0600A600[];
-extern u8 D_royal_raceway_0600A8A8[];
-extern u8 D_royal_raceway_0600A9D0[];
-extern u8 D_royal_raceway_0600AC28[];
-extern u8 D_royal_raceway_0600AB28[];
-extern u8 D_royal_raceway_0600AD90[];
-extern u8 D_royal_raceway_0600AE70[];
-extern u8 D_royal_raceway_0600B040[];
-extern u8 D_royal_raceway_0600AFB0[];
-extern u8 D_royal_raceway_0600B188[];
-extern u8 D_royal_raceway_0600B230[];
-extern u8 D_royal_raceway_0600B3E8[];
-extern u8 D_royal_raceway_0600B2E0[];
-extern u8 D_royal_raceway_0600B508[];
 
 const course_texture royal_raceway_textures[] = {
     {gTexture64619C, 0x0124, 0x0800, 0x0},
@@ -224,137 +93,137 @@ const course_texture royal_raceway_textures[] = {
     {0x00000000    , 0x0000, 0x0000, 0x0},
 };
 
-const u8 *royal_raceway_dls[] = {
-    D_royal_raceway_06000000,
-    D_royal_raceway_06000360,
-    D_royal_raceway_06000258,
-    D_royal_raceway_06000470,
-    D_royal_raceway_060006D0,
-    D_royal_raceway_06000A48,
-    D_royal_raceway_060008E0,
-    D_royal_raceway_06000B40,
-    D_royal_raceway_06000DA0,
-    D_royal_raceway_06001180,
-    D_royal_raceway_06000F40,
-    D_royal_raceway_060012C0,
-    D_royal_raceway_06001538,
-    D_royal_raceway_06001850,
-    D_royal_raceway_06001610,
-    D_royal_raceway_060019B0,
-    D_royal_raceway_06001BB8,
-    D_royal_raceway_06001E88,
-    D_royal_raceway_06001C40,
-    D_royal_raceway_06002018,
-    D_royal_raceway_060021A8,
-    D_royal_raceway_06002428,
-    D_royal_raceway_06002210,
-    D_royal_raceway_060025F0,
-    D_royal_raceway_060026F0,
-    D_royal_raceway_060029A0,
-    D_royal_raceway_060027B8,
-    D_royal_raceway_06002B78,
-    D_royal_raceway_06002C20,
-    D_royal_raceway_06002FE0,
-    D_royal_raceway_06002DD0,
-    D_royal_raceway_060031F8,
-    D_royal_raceway_060033B0,
-    D_royal_raceway_06003748,
-    D_royal_raceway_06003580,
-    D_royal_raceway_06003960,
-    D_royal_raceway_06003AD8,
-    D_royal_raceway_06003D38,
-    D_royal_raceway_06003BA8,
-    D_royal_raceway_06003ED8,
-    D_royal_raceway_06003FA0,
-    D_royal_raceway_060041D8,
-    D_royal_raceway_06004048,
-    D_royal_raceway_06004380,
-    D_royal_raceway_06004438,
-    D_royal_raceway_060045A0,
-    D_royal_raceway_060044C0,
-    D_royal_raceway_060046A0,
-    D_royal_raceway_06004750,
-    D_royal_raceway_06004930,
-    D_royal_raceway_06004800,
-    D_royal_raceway_06004A38,
-    D_royal_raceway_06004AE0,
-    D_royal_raceway_06004D00,
-    D_royal_raceway_06004BA8,
-    D_royal_raceway_06004DF8,
-    D_royal_raceway_06004EC0,
-    D_royal_raceway_060050F0,
-    D_royal_raceway_06004F80,
-    D_royal_raceway_060051D0,
-    D_royal_raceway_060052F0,
-    D_royal_raceway_060054F8,
-    D_royal_raceway_060053B8,
-    D_royal_raceway_06005598,
-    D_royal_raceway_060056C0,
-    D_royal_raceway_06005890,
-    D_royal_raceway_06005758,
-    D_royal_raceway_06005900,
-    D_royal_raceway_06005A40,
-    D_royal_raceway_06005CA0,
-    D_royal_raceway_06005B28,
-    D_royal_raceway_06005D08,
-    D_royal_raceway_06005EB8,
-    D_royal_raceway_06006118,
-    D_royal_raceway_06005FD8,
-    D_royal_raceway_060061B0,
-    D_royal_raceway_06006378,
-    D_royal_raceway_06006780,
-    D_royal_raceway_06006538,
-    D_royal_raceway_060068C8,
-    D_royal_raceway_06006BC0,
-    D_royal_raceway_060070C0,
-    D_royal_raceway_06006E20,
-    D_royal_raceway_060072B8,
-    D_royal_raceway_060075C0,
-    D_royal_raceway_060078E8,
-    D_royal_raceway_06007778,
-    D_royal_raceway_06007AD0,
-    D_royal_raceway_06007BD8,
-    D_royal_raceway_06007ED8,
-    D_royal_raceway_06007DB0,
-    D_royal_raceway_06008068,
-    D_royal_raceway_060081C0,
-    D_royal_raceway_060084A0,
-    D_royal_raceway_06008398,
-    D_royal_raceway_06008620,
-    D_royal_raceway_06008770,
-    D_royal_raceway_060088B0,
-    D_royal_raceway_06008838,
-    D_royal_raceway_06008930,
-    D_royal_raceway_060089F0,
-    D_royal_raceway_06008CD8,
-    D_royal_raceway_06008C58,
-    D_royal_raceway_06008EB8,
-    D_royal_raceway_06008FA8,
-    D_royal_raceway_060092D0,
-    D_royal_raceway_06009218,
-    D_royal_raceway_060094E8,
-    D_royal_raceway_06009678,
-    D_royal_raceway_060099A0,
-    D_royal_raceway_06009900,
-    D_royal_raceway_06009B30,
-    D_royal_raceway_06009D58,
-    D_royal_raceway_0600A0A8,
-    D_royal_raceway_06009FE8,
-    D_royal_raceway_0600A200,
-    D_royal_raceway_0600A478,
-    D_royal_raceway_0600A728,
-    D_royal_raceway_0600A600,
-    D_royal_raceway_0600A8A8,
-    D_royal_raceway_0600A9D0,
-    D_royal_raceway_0600AC28,
-    D_royal_raceway_0600AB28,
-    D_royal_raceway_0600AD90,
-    D_royal_raceway_0600AE70,
-    D_royal_raceway_0600B040,
-    D_royal_raceway_0600AFB0,
-    D_royal_raceway_0600B188,
-    D_royal_raceway_0600B230,
-    D_royal_raceway_0600B3E8,
-    D_royal_raceway_0600B2E0,
-    D_royal_raceway_0600B508,
+const Gfx *royal_raceway_dls[] = {
+    d_course_royal_raceway_dl_0,
+    d_course_royal_raceway_dl_360,
+    d_course_royal_raceway_dl_258,
+    d_course_royal_raceway_dl_470,
+    d_course_royal_raceway_dl_6D0,
+    d_course_royal_raceway_dl_A48,
+    d_course_royal_raceway_dl_8E0,
+    d_course_royal_raceway_dl_B40,
+    d_course_royal_raceway_dl_DA0,
+    d_course_royal_raceway_dl_1180,
+    d_course_royal_raceway_dl_F40,
+    d_course_royal_raceway_dl_12C0,
+    d_course_royal_raceway_dl_1538,
+    d_course_royal_raceway_dl_1850,
+    d_course_royal_raceway_dl_1610,
+    d_course_royal_raceway_dl_19B0,
+    d_course_royal_raceway_dl_1BB8,
+    d_course_royal_raceway_dl_1E88,
+    d_course_royal_raceway_dl_1C40,
+    d_course_royal_raceway_dl_2018,
+    d_course_royal_raceway_dl_21A8,
+    d_course_royal_raceway_dl_2428,
+    d_course_royal_raceway_dl_2210,
+    d_course_royal_raceway_dl_25F0,
+    d_course_royal_raceway_dl_26F0,
+    d_course_royal_raceway_dl_29A0,
+    d_course_royal_raceway_dl_27B8,
+    d_course_royal_raceway_dl_2B78,
+    d_course_royal_raceway_dl_2C20,
+    d_course_royal_raceway_dl_2FE0,
+    d_course_royal_raceway_dl_2DD0,
+    d_course_royal_raceway_dl_31F8,
+    d_course_royal_raceway_dl_33B0,
+    d_course_royal_raceway_dl_3748,
+    d_course_royal_raceway_dl_3580,
+    d_course_royal_raceway_dl_3960,
+    d_course_royal_raceway_dl_3AD8,
+    d_course_royal_raceway_dl_3D38,
+    d_course_royal_raceway_dl_3BA8,
+    d_course_royal_raceway_dl_3ED8,
+    d_course_royal_raceway_dl_3FA0,
+    d_course_royal_raceway_dl_41D8,
+    d_course_royal_raceway_dl_4048,
+    d_course_royal_raceway_dl_4380,
+    d_course_royal_raceway_dl_4438,
+    d_course_royal_raceway_dl_45A0,
+    d_course_royal_raceway_dl_44C0,
+    d_course_royal_raceway_dl_46A0,
+    d_course_royal_raceway_dl_4750,
+    d_course_royal_raceway_dl_4930,
+    d_course_royal_raceway_dl_4800,
+    d_course_royal_raceway_dl_4A38,
+    d_course_royal_raceway_dl_4AE0,
+    d_course_royal_raceway_dl_4D00,
+    d_course_royal_raceway_dl_4BA8,
+    d_course_royal_raceway_dl_4DF8,
+    d_course_royal_raceway_dl_4EC0,
+    d_course_royal_raceway_dl_50F0,
+    d_course_royal_raceway_dl_4F80,
+    d_course_royal_raceway_dl_51D0,
+    d_course_royal_raceway_dl_52F0,
+    d_course_royal_raceway_dl_54F8,
+    d_course_royal_raceway_dl_53B8,
+    d_course_royal_raceway_dl_5598,
+    d_course_royal_raceway_dl_56C0,
+    d_course_royal_raceway_dl_5890,
+    d_course_royal_raceway_dl_5758,
+    d_course_royal_raceway_dl_5900,
+    d_course_royal_raceway_dl_5A40,
+    d_course_royal_raceway_dl_5CA0,
+    d_course_royal_raceway_dl_5B28,
+    d_course_royal_raceway_dl_5D08,
+    d_course_royal_raceway_dl_5EB8,
+    d_course_royal_raceway_dl_6118,
+    d_course_royal_raceway_dl_5FD8,
+    d_course_royal_raceway_dl_61B0,
+    d_course_royal_raceway_dl_6378,
+    d_course_royal_raceway_dl_6780,
+    d_course_royal_raceway_dl_6538,
+    d_course_royal_raceway_dl_68C8,
+    d_course_royal_raceway_dl_6BC0,
+    d_course_royal_raceway_dl_70C0,
+    d_course_royal_raceway_dl_6E20,
+    d_course_royal_raceway_dl_72B8,
+    d_course_royal_raceway_dl_75C0,
+    d_course_royal_raceway_dl_78E8,
+    d_course_royal_raceway_dl_7778,
+    d_course_royal_raceway_dl_7AD0,
+    d_course_royal_raceway_dl_7BD8,
+    d_course_royal_raceway_dl_7ED8,
+    d_course_royal_raceway_dl_7DB0,
+    d_course_royal_raceway_dl_8068,
+    d_course_royal_raceway_dl_81C0,
+    d_course_royal_raceway_dl_84A0,
+    d_course_royal_raceway_dl_8398,
+    d_course_royal_raceway_dl_8620,
+    d_course_royal_raceway_dl_8770,
+    d_course_royal_raceway_dl_88B0,
+    d_course_royal_raceway_dl_8838,
+    d_course_royal_raceway_dl_8930,
+    d_course_royal_raceway_dl_89F0,
+    d_course_royal_raceway_dl_8CD8,
+    d_course_royal_raceway_dl_8C58,
+    d_course_royal_raceway_dl_8EB8,
+    d_course_royal_raceway_dl_8FA8,
+    d_course_royal_raceway_dl_92D0,
+    d_course_royal_raceway_dl_9218,
+    d_course_royal_raceway_dl_94E8,
+    d_course_royal_raceway_dl_9678,
+    d_course_royal_raceway_dl_99A0,
+    d_course_royal_raceway_dl_9900,
+    d_course_royal_raceway_dl_9B30,
+    d_course_royal_raceway_dl_9D58,
+    d_course_royal_raceway_dl_A0A8,
+    d_course_royal_raceway_dl_9FE8,
+    d_course_royal_raceway_dl_A200,
+    d_course_royal_raceway_dl_A478,
+    d_course_royal_raceway_dl_A728,
+    d_course_royal_raceway_dl_A600,
+    d_course_royal_raceway_dl_A8A8,
+    d_course_royal_raceway_dl_A9D0,
+    d_course_royal_raceway_dl_AC28,
+    d_course_royal_raceway_dl_AB28,
+    d_course_royal_raceway_dl_AD90,
+    d_course_royal_raceway_dl_AE70,
+    d_course_royal_raceway_dl_B040,
+    d_course_royal_raceway_dl_AFB0,
+    d_course_royal_raceway_dl_B188,
+    d_course_royal_raceway_dl_B230,
+    d_course_royal_raceway_dl_B3E8,
+    d_course_royal_raceway_dl_B2E0,
+    d_course_royal_raceway_dl_B508,
 };

@@ -21,6 +21,7 @@
 #include "audio/external.h"
 #include "common_textures.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
+#include "courses/star_cup/royal_raceway/course_data.inc.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 #include "courses/special_cup/dks_jungle_parkway/course_data.inc.h"
 #include "courses/special_cup/rainbow_road/course_data.inc.h"
@@ -2312,9 +2313,9 @@ void place_course_actors(void) {
         place_palm_trees(D_06018F70);
         break;
     case COURSE_ROYAL_RACEWAY:
-        place_segment_06(D_0600DA78);
+        place_segment_06(d_course_royal_raceway_tree_spawn);
         place_all_item_boxes(d_course_royal_raceway_item_box_spawns);
-        place_piranha_plants(D_0600D9F0);
+        place_piranha_plants(d_course_royal_raceway_piranha_plant_spawn);
         break;
     case COURSE_LUIGI_RACEWAY:
         place_segment_06(D_0600FE80);
