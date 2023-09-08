@@ -398,11 +398,6 @@ extern u8 gTLUTSnowman[];
 extern u8 gTextureSnowmanHead[];
 extern u8 gTextureSnowmanBody[];
 
-// From Sherbet Land course data, haven't created a .h file for it yet
-extern u32 D_06008EB0[]; // d_course_sherbet_land_unk_data1
-extern animation_type_2 *D_06009AC8[]; // d_course_sherbet_land_unk_data11
-extern u8 d_course_sherbet_land_ice[];
-
 // Seemingly a pointer to Lakitu texture(s)
 extern u8 *D_8018C028;
 // Seemingly a list of textures for Lakitu

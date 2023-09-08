@@ -28,6 +28,7 @@
 #include "code_80086E70.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/royal_raceway/course_data.inc.h"
+#include "courses/star_cup/sherbet_land/course_data.inc.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 #include "courses/special_cup/rainbow_road/course_data.inc.h"
 

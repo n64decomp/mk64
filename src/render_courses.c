@@ -16,6 +16,7 @@
 #include "skybox_and_splitscreen.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/royal_raceway/course_data.inc.h"
+#include "courses/star_cup/sherbet_land/course_data.inc.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 #include "courses/special_cup/dks_jungle_parkway/course_data.inc.h"
 #include "courses/special_cup/rainbow_road/course_data.inc.h"
@@ -1160,7 +1161,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, D_06022E00);
             break;
         case COURSE_SHERBET_LAND:
-            gSPDisplayList(gDisplayListHead++, D_06009AE8);
+            gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_9AE8);
             break;
         case COURSE_RAINBOW_ROAD:
             gSPDisplayList(gDisplayListHead++, d_course_rainbow_road_dl_16220);
@@ -1169,19 +1170,19 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, D_0600CA78);
             break;
         case COURSE_BLOCK_FORT:
-            gSPDisplayList(gDisplayListHead++, D_sherbet_land_06000000);
+            gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_0);
             break;
         case COURSE_SKYSCRAPER:
-            gSPDisplayList(gDisplayListHead++, D_sherbet_land_06000000);
+            gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_0);
             break;
         case COURSE_DOUBLE_DECK:
-            gSPDisplayList(gDisplayListHead++, D_sherbet_land_06000000);
+            gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_0);
             break;
         case COURSE_DK_JUNGLE:
             gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_13C30);
             break;
         case COURSE_BIG_DONUT:
-            gSPDisplayList(gDisplayListHead++, D_sherbet_land_06000000);
+            gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_0);
             break;
     }
 }
@@ -1411,7 +1412,7 @@ void func_80295D88(void) {
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
         case COURSE_SHERBET_LAND:
-            parse_course_displaylists((uintptr_t) D_06009C20);
+            parse_course_displaylists((uintptr_t) d_course_sherbet_land_addr);
             func_80295C6C();
             D_8015F8E4 = -18.0f;
             find_vtx_and_set_colours(d_course_sherbet_land_packed_dl_1EB8, -0x4C, 255, 255, 255);

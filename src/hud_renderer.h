@@ -459,7 +459,6 @@ extern Gfx *gDisplayListHead;
 
 // Stuff from undefined_syms.txt, don't know where else to put them
 extern u8  D_06013670[];
-extern Gfx d_course_sherbet_land_dl_ice_block[];
 extern Gfx D_0600F650[];
 extern Gfx D_0600F960[];
 extern Gfx D_0600FA20[];
