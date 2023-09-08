@@ -150,11 +150,6 @@ extern u16 D_80150112;
 extern uintptr_t gSegmentTable[];
 extern s16 gPlaceItemBoxes;
 
-extern struct ActorSpawnData d_course_double_deck_item_box_spawns[];
-extern struct ActorSpawnData d_course_block_fort_item_box_spawns[];
-extern struct ActorSpawnData d_course_big_donut_item_box_spawns[];
-extern struct ActorSpawnData d_course_skyscraper_item_box_spawns[];
-
 extern s8 D_0D004C68[];
 extern Gfx D_0D005338[];
 extern Gfx D_0D005368[];

@@ -20,6 +20,10 @@
 #include <sounds.h>
 #include "audio/external.h"
 #include "common_textures.h"
+#include "courses/battle/big_donut/course_data.inc.h"
+#include "courses/battle/block_fort/course_data.inc.h"
+#include "courses/battle/double_deck/course_data.inc.h"
+#include "courses/battle/skyscraper/course_data.inc.h"
 #include "courses/mushroom_cup/kalimari_desert/course_data.inc.h"
 #include "courses/mushroom_cup/koopa_troopa_beach/course_data.inc.h"
 #include "courses/mushroom_cup/luigi_raceway/course_data.inc.h"

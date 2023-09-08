@@ -75,10 +75,6 @@ D_03008800 = 0x03008800;
 
 D_05FF8DB8 = 0x05FF8DB8;
 
-d_course_double_deck_item_box_spawns = 0x06000028;
-d_course_block_fort_item_box_spawns = 0x06000038;
-d_course_big_donut_item_box_spawns = 0x06000058;
-d_course_skyscraper_item_box_spawns = 0x06000080;
 D_06000224 = 0x06000224;
 D_060093F8 = 0x060093F8;
 D_06009410 = 0x06009410;
