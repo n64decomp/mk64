@@ -476,7 +476,7 @@ void podium_ceremony_loop(void) {
     }
     func_80281D00();
     func_80281540();
-#if VARIABLE_WATCH_DEBUG_LIST
+#if DVDL
 	display_dvdl();	 
 #endif
     gDPFullSync(gDisplayListHead++);
