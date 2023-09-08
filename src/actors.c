@@ -21,6 +21,7 @@
 #include "audio/external.h"
 #include "common_textures.h"
 #include "courses/mushroom_cup/kalimari_desert/course_data.inc.h"
+#include "courses/mushroom_cup/koopa_troopa_beach/course_data.inc.h"
 #include "courses/flower_cup/choco_mountain/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/flower_cup/mario_raceway/course_data.inc.h"
@@ -2317,7 +2318,7 @@ void place_course_actors(void) {
     case COURSE_KOOPA_BEACH:
         func_802A14BC(328.0f * gCourseDirection, 70.0f, 2541.0f);
         place_all_item_boxes(d_course_koopa_troopa_beach_item_box_spawns);
-        place_palm_trees(D_06018F70);
+        place_palm_trees(d_course_koopa_troopa_beach_tree_spawn);
         break;
     case COURSE_ROYAL_RACEWAY:
         place_segment_06(d_course_royal_raceway_tree_spawn);

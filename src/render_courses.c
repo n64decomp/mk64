@@ -15,6 +15,7 @@
 #include "render_courses.h"
 #include "skybox_and_splitscreen.h"
 #include "courses/mushroom_cup/kalimari_desert/course_data.inc.h"
+#include "courses/mushroom_cup/koopa_troopa_beach/course_data.inc.h"
 #include "courses/flower_cup/choco_mountain/course_data.inc.h"
 #include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/flower_cup/mario_raceway/course_data.inc.h"
@@ -1149,7 +1150,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, d_course_frappe_snowland_dl_76A0);
             break;
         case COURSE_KOOPA_BEACH:
-            gSPDisplayList(gDisplayListHead++, D_06018D68);
+            gSPDisplayList(gDisplayListHead++, d_course_koopa_troopa_beach_dl_18D68);
             break;
         case COURSE_ROYAL_RACEWAY:
             gSPDisplayList(gDisplayListHead++, d_course_royal_raceway_dl_D8E8);
@@ -1380,7 +1381,7 @@ void func_80295D88(void) {
             D_8015F8E4 = -50.0f;
             break;
         case COURSE_KOOPA_BEACH:
-            parse_course_displaylists((uintptr_t) D_06018FD8);
+            parse_course_displaylists((uintptr_t) d_course_koopa_troopa_beach_addr);
             func_80295C6C();
             find_vtx_and_set_colours(d_course_koopa_troopa_beach_packed_dl_ADE0, -0x6A, 255, 255, 255);
             find_vtx_and_set_colours(d_course_koopa_troopa_beach_packed_dl_A540, -0x6A, 255, 255, 255);

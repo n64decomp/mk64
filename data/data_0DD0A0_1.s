@@ -30,7 +30,7 @@ glabel gCoursePathTable
 .word d_course_banshee_boardwalk_unknown_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_yoshi_valley_unknown_waypoints0, d_course_yoshi_valley_unknown_waypoints1, d_course_yoshi_valley_unknown_waypoints2, d_course_yoshi_valley_unknown_waypoints3
 .word d_course_frappe_unknown_waypoints, nullPath,   nullPath,   nullPath
-.word D_0600ADE0, nullPath,   nullPath,   nullPath
+.word d_course_koopa_troopa_beach_unknown_waypoints0, nullPath,   nullPath,   nullPath
 .word d_course_royal_raceway_unknown_waypoints, nullPath,   nullPath,   nullPath
 .word D_0600A540, nullPath,   nullPath,   nullPath
 .word D_0600EC80, nullPath,   nullPath,   nullPath
@@ -53,7 +53,7 @@ glabel D_800DC8D0
 .word d_course_banshee_boardwalk_track_waypoints, nullPath,   nullPath,   nullPath
 .word d_course_yoshi_valley_track_waypoints0, d_course_yoshi_valley_track_waypoints1, d_course_yoshi_valley_track_waypoints2, d_course_yoshi_valley_track_waypoints3
 .word d_course_frappe_track_waypoints, nullPath,   nullPath,   nullPath
-.word D_0600B1A8, D_0600C4B0, nullPath,   nullPath
+.word d_course_koopa_troopa_beach_track_waypoints0, d_course_koopa_troopa_beach_track_waypoints1, nullPath,   nullPath
 .word d_course_royal_raceway_track_waypoints, nullPath,   nullPath,   nullPath
 .word D_0600A6D0, nullPath,   nullPath,   nullPath
 .word D_0600EDE8, nullPath,   nullPath,   nullPath

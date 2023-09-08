@@ -58,7 +58,6 @@ extern Gfx choco_mountain_dls[];
 extern s32 D_802B87BC;
 extern Gfx bowsers_castle_dls[];
 extern Gfx banshee_boardwalk_dls[];
-extern Gfx d_course_koopa_troopa_beach_dl_list1[];
 extern Gfx royal_raceway_dls[];
 extern Gfx luigi_raceway_dls[];
 
@@ -72,18 +71,15 @@ extern u8 kalimari_desert_dls[];
 extern u8 sherbet_land_dls[];
 extern Gfx wario_stadium_dls[];
 
-extern Gfx d_course_koopa_troopa_beach_dl_list2[];
 extern Gfx D_090001D0[];
 
 extern Gfx D_0600FD40[];
 extern Gfx D_06014088[];
-extern Gfx D_06018D68[];
 extern u16 D_800DC518;
 extern u16 D_8015F58A;
 
 extern Gfx D_0600FF28[];
 extern Gfx D_060144B8[];
-extern Gfx D_06018FD8[];
 extern u16 D_800DC5BC;                                     /* unable to generate initializer */
 extern s32 gGamestate;
 extern s32 gModeSelection;

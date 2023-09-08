@@ -380,10 +380,6 @@ extern OSIoMesg gDmaIoMesg;
 // From Luigi Raceway course data, haven't created a .h file for it yet
 extern Gfx D_0600F960[]; // d_course_luigi_raceway_dl_F960
 
-// From Koopa Troopa Beach course data, haven't created a .h file for it yet
-extern u8 d_course_koopa_troopa_beach_crab_frames[];
-extern u8 d_course_koopa_troopa_beach_crab_tlut[];
-
 // from other_textures.s
 extern u8 D_0F0D0E50[]; // gTextureGhosts
 

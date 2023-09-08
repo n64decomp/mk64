@@ -159,8 +159,6 @@ extern struct ActorSpawnData D_0600FE80[];
 extern struct ActorSpawnData D_06014200[];
 extern struct ActorSpawnData D_06014330[];
 extern struct ActorSpawnData d_course_moo_moo_farm_item_box_spawns[];
-extern struct ActorSpawnData d_course_koopa_troopa_beach_item_box_spawns[];
-extern struct ActorSpawnData D_06018F70[];
 
 extern Gfx d_course_moo_moo_farm_dl_tree[];
 
@@ -194,12 +192,6 @@ extern Gfx d_course_moo_moo_farm_dl_cow2[];
 extern Gfx d_course_moo_moo_farm_dl_cow3[];
 extern Gfx d_course_moo_moo_farm_dl_cow4[];
 extern Gfx d_course_moo_moo_farm_dl_cow5[];
-extern Gfx d_course_koopa_troopa_beach_dl_tree_top1[];
-extern Gfx d_course_koopa_troopa_beach_dl_tree_trunk1[];
-extern Gfx d_course_koopa_troopa_beach_dl_tree_top2[];
-extern Gfx d_course_koopa_troopa_beach_dl_tree_trunk2[];
-extern Gfx d_course_koopa_troopa_beach_dl_tree_top3[];
-extern Gfx d_course_koopa_troopa_beach_dl_tree_trunk3[];
 
 extern Gfx D_0D001750[];
 extern Gfx D_0D001780[];
