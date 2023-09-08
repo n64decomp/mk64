@@ -26,6 +26,7 @@
 #include "collision.h"
 #include "main.h"
 #include "code_80086E70.h"
+#include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/royal_raceway/course_data.inc.h"
 #include "courses/star_cup/sherbet_land/course_data.inc.h"

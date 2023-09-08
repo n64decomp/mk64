@@ -58,7 +58,6 @@ extern Gfx choco_mountain_dls[];
 extern s32 D_802B87BC;
 extern Gfx bowsers_castle_dls[];
 extern Gfx banshee_boardwalk_dls[];
-extern u8 frappe_snowland_dls[];
 extern Gfx d_course_koopa_troopa_beach_dl_list1[];
 extern Gfx royal_raceway_dls[];
 extern Gfx luigi_raceway_dls[];
@@ -86,7 +85,6 @@ extern Gfx D_06023930[];
 extern u16 D_800DC518;
 extern u16 D_8015F58A;
 
-extern Gfx D_060079A0[];
 extern Gfx D_06009650[];
 extern Gfx D_0600FF28[];
 extern Gfx D_060144B8[];

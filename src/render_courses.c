@@ -15,6 +15,7 @@
 #include "render_courses.h"
 #include "skybox_and_splitscreen.h"
 #include "courses/flower_cup/choco_mountain/course_data.inc.h"
+#include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/royal_raceway/course_data.inc.h"
 #include "courses/star_cup/sherbet_land/course_data.inc.h"
@@ -722,7 +723,7 @@ void render_frappe_snowland(struct UnkStruct_800DC5EC *arg0) {
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    load_surface_map((uintptr_t) frappe_snowland_dls, arg0);
+    load_surface_map((uintptr_t) d_course_frappe_snowland_dl_list, arg0);
 }
 
 void render_koopa_troopa_beach(struct UnkStruct_800DC5EC *arg0) {
@@ -1142,7 +1143,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, d_course_yoshi_valley_dl_18020);
             break;
         case COURSE_FRAPPE_SNOWLAND:
-            gSPDisplayList(gDisplayListHead++, D_060076A0);
+            gSPDisplayList(gDisplayListHead++, d_course_frappe_snowland_dl_76A0);
             break;
         case COURSE_KOOPA_BEACH:
             gSPDisplayList(gDisplayListHead++, D_06018D68);
@@ -1371,7 +1372,7 @@ void func_80295D88(void) {
             D_8015F8E4 = D_8015F6EE - 10.0f;
             break;
         case COURSE_FRAPPE_SNOWLAND:
-            parse_course_displaylists((uintptr_t) D_060079A0);
+            parse_course_displaylists((uintptr_t) d_course_frappe_snowland_addr);
             func_80295C6C();
             D_8015F8E4 = -50.0f;
             break;

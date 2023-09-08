@@ -23,6 +23,7 @@
 #include "code_80091440.h"
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
+#include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/sherbet_land/course_data.inc.h"
 #include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
@@ -7334,7 +7335,7 @@ void func_8008379C(s32 objectIndex) {
 void func_80083868(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTSnowman, gTextureSnowmanHead, 0x40U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_frappe_snowland_snowman_tlut, d_course_frappe_snowland_snowman_head, 0x40U, (u16) 0x00000040);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_074 = D_0D0061B0;
     temp_s0->sizeScaling = 0.1f;
@@ -7397,7 +7398,7 @@ void func_80083A94(s32 objectIndex) {
 }
 
 void func_80083B0C(s32 objectIndex) {
-    func_80073444(objectIndex, gTLUTSnowman, gTextureSnowmanBody, 0x40U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_frappe_snowland_snowman_tlut, d_course_frappe_snowland_snowman_body, 0x40U, (u16) 0x00000040);
     D_80165C18[objectIndex].unk_074 = D_0D0060B0;
     D_80165C18[objectIndex].sizeScaling = 0.1f;
     D_80165C18[objectIndex].unk_0D2 = 0;

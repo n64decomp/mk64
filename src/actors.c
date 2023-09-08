@@ -21,6 +21,7 @@
 #include "audio/external.h"
 #include "common_textures.h"
 #include "courses/flower_cup/choco_mountain/course_data.inc.h"
+#include "courses/flower_cup/frappe_snowland/course_data.inc.h"
 #include "courses/star_cup/bowsers_castle/course_data.inc.h"
 #include "courses/star_cup/royal_raceway/course_data.inc.h"
 #include "courses/star_cup/sherbet_land/course_data.inc.h"
@@ -2307,7 +2308,7 @@ void place_course_actors(void) {
         addActorToEmptySlot(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
         break;
     case COURSE_FRAPPE_SNOWLAND:
-        place_segment_06(D_06007718);
+        place_segment_06(d_course_frappe_snowland_tree_spawns);
         place_all_item_boxes(d_course_frappe_snowland_item_box_spawns);
         break;
     case COURSE_KOOPA_BEACH:
