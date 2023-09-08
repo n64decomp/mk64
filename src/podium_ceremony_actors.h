@@ -7,7 +7,7 @@ enum ActorType {
     Initial,
     Balloon,
     FireworkCone,
-    FireworkBurst,
+    FireworkBurst
 };
 
 // unk

@@ -4,9 +4,10 @@
 #include <debug.h>
 #include <PR/gu.h>
 
-#include "main.h"
-#include "variables.h"
-#include "types.h"
+#include <main.h>
+#include <code_800029B0.h>
+#include <variables.h>
+#include <types.h>
 #include "camera.h"
 #include "memory.h"
 #include "math_util.h"
@@ -134,7 +135,7 @@ void load_credits(void) {
     D_800DC5EC->screenStartY = 120;
     gScreenModeSelection = SCREEN_MODE_1P;
     gActiveScreenMode = SCREEN_MODE_1P;
-    gNextFreeMemoryAddress = FreeMemoryResetAnchor;
+    gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     load_course(gCurrentCourseId);
     D_8015F730 = gNextFreeMemoryAddress;
     set_segment_base_addr(0xB, (void *) decompress_segments((u8 *)&_data_821D10SegmentRomStart, (u8 *)&_data_825800SegmentRomStart));

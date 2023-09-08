@@ -8,6 +8,7 @@
 #include "camera.h"
 #include "waypoints.h"
 #include "staff_ghosts.h"
+#include "main.h"
 #include "code_800029B0.h"
 #include "code_80057C60.h"
 #include "code_80071F00.h"
@@ -22,33 +23,6 @@
 #include "math.h"
 
 #pragma intrinsic (sqrtf)
-
-extern Player *gPlayerTwo;
-extern Player *gPlayerThree;
-extern Player *gPlayerFour;
-extern Player *gPlayerOneCopy;
-extern Player *gPlayerTwoCopy;
-
-extern struct Controller gControllers[];
-extern struct Controller *gControllerOne;
-extern struct Controller *gControllerThree;
-extern struct Controller *gControllerFour;
-extern struct Controller *gControllerFive;
-extern struct Controller *gControllerSix;
-extern struct Controller *gControllerSeven;
-
-extern struct UnkStruct_800DC5EC D_8015F480[];
-extern struct UnkStruct_800DC5EC *D_800DC5EC;
-extern struct UnkStruct_800DC5EC *D_800DC5F0;
-extern struct UnkStruct_800DC5EC *D_800DC5F4;
-extern struct UnkStruct_800DC5EC *D_800DC5F8;
-
-extern u8 *gNmiUnknown1;
-extern u8 *gNmiUnknown2;
-extern u8 *gNmiUnknown3;
-extern u8 *gNmiUnknown4;
-extern u8 *gNmiUnknown5;
-extern u8 *gNmiUnknown6;
 
 extern s16 gPlayerBalloonCount[];
 extern s16 D_8016348C;
@@ -81,18 +55,13 @@ extern s32 gScreenModeSelection;
 extern s32 D_8018D2AC;
 extern s32 gActiveScreenMode;
 extern s16 gCurrentCourseId;
-extern u16 D_8015F890;
 extern u32 D_800DC5AC;
 extern u16 gEnableDebugMode;
 extern s32 gPlayerWinningIndex;
 extern u16 gIsInQuitToMenuTransition, gQuitToMenuTransitionCounter;
 extern s32 D_802B91E0;
-extern s16 D_8015F8F2[];
 
-extern f32 D_8015F8D8;
 extern f32 D_80150148;
-
-extern u16 D_8015F894;
 
 u16 D_802BA030;
 u16 D_802BA032;
@@ -563,8 +532,8 @@ void start_race(void) {
 f32 func_8028EE8C(s32 arg0) {
     f32 temp_v0 = gPlayers[arg0].pos[2];
     f32 temp_v1 = gPlayers[arg0].rotZ;
-    f32 temp_f14 = D_8015F8D8 - temp_v0;
-    f32 temp_f16 = temp_v1 - D_8015F8D8;
+    f32 temp_f14 = D_8015F8D0[2] - temp_v0;
+    f32 temp_f16 = temp_v1 - D_8015F8D0[2];
     return gCourseTimer - ((0.01666666f * temp_f14) / (temp_f14 + temp_f16));
 }
 
@@ -631,7 +600,7 @@ void func_8028EF28(void) {
                                     *(gNmiUnknown1 + i) = 99;
                                 }
                                 D_800DC510 = 5;
-                                i = D_8015F8F2[0];
+                                i = gPlayerPositionLUT[1];
                                 gPlayers[i].statusEffects |= 0x200000;
                                 gPlayers[i].unk_000 |= PLAYER_CPU;
                                 func_800CA118((u8)i);
@@ -645,7 +614,7 @@ void func_8028EF28(void) {
                                 }
                                 if (currentPosition == 1) {
                                     D_800DC510 = 5;
-                                    i = D_8015F8F2[1];
+                                    i = gPlayerPositionLUT[2];
                                     *(gNmiUnknown2 + i * 3 + 2) += 1;
                                     if (*(gNmiUnknown2 + i * 3 + 2) > 99) {
                                         *(gNmiUnknown2 + i * 3 + 2) = 99;
@@ -664,7 +633,7 @@ void func_8028EF28(void) {
                                 }
                                 if (currentPosition == 2) {
                                     D_800DC510 = 5;
-                                    i = D_8015F8F2[2];
+                                    i = gPlayerPositionLUT[3];
                                     gPlayers[i].statusEffects |= 0x200000;
                                     gPlayers[i].unk_000 |= PLAYER_CPU;
                                     func_800CA118((u8)i);

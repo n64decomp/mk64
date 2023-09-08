@@ -341,8 +341,6 @@ extern s32  D_800DDB24;
 extern s16 D_80164478[];
 extern u8 *D_8018D9BC;
 
-extern s16 D_8015F892;
-
 extern s8  D_800E86D0[];
 extern s32 D_80165754;
 extern intptr_t D_8018D9B0;

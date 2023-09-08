@@ -31,8 +31,4 @@ void  set_vertex_colours(u32, u32, s32, s8, u8, u8, u8);
 void  find_vtx_and_set_colours(uintptr_t, s8, u8, u8, u8);
 void  subtract_scaled_vector(Vec3f, f32, Vec3f);
 
-extern Vtx *vtxBuffer[];
-extern s16 D_8015F6EE;
-extern f32 D_8015F8E4;
-
 #endif

@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <main.h>
+#include "code_800029B0.h"
 #include <types.h>
 #include <common_structs.h>
 #include <variables.h>

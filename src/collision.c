@@ -9,6 +9,7 @@
 #include "collision.h"
 #include "math_util.h"
 #include "variables.h"
+#include "code_800029B0.h"
 
 #pragma intrinsic (sqrtf)
 
@@ -1109,12 +1110,6 @@ s32 is_colliding_with_wall1(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
     return 1;
 }
 
-extern u16 *D_8015F584;
-extern s16 D_8015F6E8;
-extern s16 D_8015F6EA;
-extern s16 D_8015F6F0;
-extern s16 D_8015F6F2;
-
 u16 func_802AD950(Collision *collision, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2) {
     s32 temp_v0_4;
     s32 temp_v1;
@@ -1339,12 +1334,6 @@ u16 func_802ADDC8(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY,
 
 extern u8 D_8014F1110;
 
-extern u16 *D_8015F584;
-extern s16 D_8015F6E8;
-extern s16 D_8015F6EA;
-extern s16 D_8015F6F0;
-extern s16 D_8015F6F2;
-
 f32 func_802AE1C0(f32 posX, f32 posY, f32 posZ) {
     f32 temp_f0;
     s16 temp_f4;
@@ -1404,18 +1393,6 @@ f32 func_802AE1C0(f32 posX, f32 posY, f32 posZ) {
     }
     return phi_f20;
 }
-
-extern s16 D_8015F6EC;
-
-extern s32 D_8015F59C;
-extern s32 D_8015F5A0;
-extern s32 D_8015F5A4;
-extern s16 D_8015F6E8;
-extern s16 D_8015F6EA;
-extern s16 D_8015F6F0;
-extern s16 D_8015F6F2;
-extern s16 D_8015F6FA;
-extern s16 D_8015F6FC;
 
 void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 sectionId) {
     mk64_surface_map_ram *tile = &gSurfaceMap[D_8015F588];
@@ -1839,12 +1816,6 @@ s32 is_triangle_intersecting_bounding_box(s16 minX, s16 maxX, s16 minZ, s16 maxZ
     return 0;
 }
 
-extern u16 D_8015F58A;
-extern s16 D_8015F6E8;
-extern s16 D_8015F6EA;
-extern s16 D_8015F6F0;
-extern s16 D_8015F6F2;
-
 /**
  * Appears to initialize some variables and struct members after
  * course displaylists have been parsed.
@@ -1924,8 +1895,6 @@ void set_vertex_data_with_default_section_id(Gfx *gfx, s8 surfaceType) {
     find_and_set_vertex_data(gfx, surfaceType, 0xFF);
 }
 
-extern s16 D_8015F6FA;
-extern s16 D_8015F6FC;
 extern u32 D_8015F58C;
 
 /**

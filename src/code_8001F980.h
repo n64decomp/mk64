@@ -71,8 +71,6 @@ extern struct_D_802F1F80 *D_80164B04;
 extern u8 *D_80164B08;
 extern u8 *D_80164B0C;
 
-extern u16 D_8015F894;
-
 extern s32 D_80164A28;
 extern s16 D_80164AAE[];
 extern s16 D_80164AB0[];

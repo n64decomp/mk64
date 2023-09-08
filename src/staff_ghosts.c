@@ -3,11 +3,12 @@
 #include <types.h>
 #include <common_structs.h>
 #include <defines.h>
+#include <functions.h>
+#include "code_800029B0.h"
 #include "framebuffers.h"
 #include "code_800B45E0.h"
 #include "staff_ghosts.h"
 #include "code_80091750.h"
-#include "functions.h"
 
 extern s32 mio0encode(s32 input, s32, s32);
 extern s32 func_80040174(void *, s32, s32);
@@ -62,7 +63,6 @@ extern u8 _kart_texturesSegmentRomStart;
 extern s16 gCurrentCourseId;
 extern s32 gModeSelection;
 extern s32 gActiveScreenMode;
-extern u16 D_8015F890;
 extern s32 gLapCountByPlayerId[];
 extern s32 D_8018CA78;
 

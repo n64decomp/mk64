@@ -266,11 +266,11 @@ SECTIONS
       BUILD_DIR/src/audio/load.o(.data);
       BUILD_DIR/src/audio/playback.o(.data);
       BUILD_DIR/src/audio/effects.o(.data);
-#if DEBUG
-     BUILD_DIR/src/debug/crash_screen_enhancement.o(.data);
-	  BUILD_DIR/src/debug/debug.o(.data);
-	  BUILD_DIR/src/os/sprintf.o(.data);
-#endif
+      #if DEBUG
+         BUILD_DIR/src/debug/crash_screen_enhancement.o(.data);
+         BUILD_DIR/src/debug/debug.o(.data);
+         BUILD_DIR/src/os/sprintf.o(.data);
+      #endif
       BUILD_DIR/data/data_0DD0A0_2_1_1.o(.data);
       BUILD_DIR/src/audio/port_eu.o(.data);
       BUILD_DIR/data/data_0DD0A0_2_1_2.o(.data);
@@ -314,11 +314,11 @@ SECTIONS
       BUILD_DIR/src/audio/seqplayer.o(.rodata);
       BUILD_DIR/src/audio/external.o(.rodata);
       BUILD_DIR/src/audio/port_eu.o(.rodata);
-#if DEBUG
-     BUILD_DIR/src/debug/crash_screen_enhancement.o(.rodata);
-	  BUILD_DIR/src/debug/debug.o(.rodata);
-	  BUILD_DIR/src/os/sprintf.o(.rodata);
-#endif
+      #if DEBUG
+         BUILD_DIR/src/debug/crash_screen_enhancement.o(.rodata);
+         BUILD_DIR/src/debug/debug.o(.rodata);
+         BUILD_DIR/src/os/sprintf.o(.rodata);
+      #endif
       BUILD_DIR/src/os/guRotateF.o(.rodata);
       BUILD_DIR/src/os/guPerspectiveF.o(.rodata);
       BUILD_DIR/asm/os/__osException.o(.rodata);
@@ -336,8 +336,6 @@ SECTIONS
    BEGIN_NOLOAD(main) {
       BUILD_DIR/src/main.o(.bss);
       BUILD_DIR/src/code_800029B0.o(.bss);
-      BUILD_DIR/asm/bss_800029B0.o(.bss);
-
       BUILD_DIR/src/profiler.o(.bss);
       BUILD_DIR/src/crash_screen.o(.bss);
       BUILD_DIR/src/code_80004740.o(.bss);
@@ -350,11 +348,11 @@ SECTIONS
       BUILD_DIR/asm/bss_8001C4D0_1.o(.bss);
       BUILD_DIR/src/code_800AF9B0.o(.bss);
       BUILD_DIR/src/menus.o(.bss);
-#if DEBUG
-     BUILD_DIR/src/debug/crash_screen_enhancement.o(.bss);
-	  BUILD_DIR/src/debug/debug.o(.bss);
-	  BUILD_DIR/src/os/sprintf.o(.bss);
-#endif
+      #if DEBUG
+         BUILD_DIR/src/debug/crash_screen_enhancement.o(.bss);
+         BUILD_DIR/src/debug/debug.o(.bss);
+         BUILD_DIR/src/os/sprintf.o(.bss);
+      #endif
       BUILD_DIR/asm/bss_main_audio.o(.bss);
       BUILD_DIR/src/audio/port_eu.o(.bss);
       BUILD_DIR/asm/bss_main_audio2.o(.bss);
@@ -415,8 +413,8 @@ SECTIONS
       BUILD_DIR/src/framebuffers.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
       BUILD_DIR/asm/bss_audio.o(.bss*);
-      . = ALIGN(0x8);
       BUILD_DIR/asm/bss_sptask_audio.o(.bss);
+      . = ALIGN(0x8);
    }
    END_NOLOAD(code_8028DF00)
 

@@ -2,7 +2,8 @@
 #include <macros.h>
 #include <defines.h>
 #include <mk64.h>
-#include "variables.h"
+#include <variables.h>
+#include "code_800029B0.h"
 #include "kart_attributes.h"
 #include "memory.h"
 #include "math_util.h"

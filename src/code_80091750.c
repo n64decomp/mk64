@@ -3,7 +3,9 @@
 #include <defines.h>
 #include <PR/ultratypes.h>
 #include <config.h>
-
+#include <variables.h>
+#include <sounds.h>
+#include "code_800029B0.h"
 #include "code_80091750.h"
 #include "code_80005FD0.h"
 #include "menus.h"
@@ -12,8 +14,6 @@
 #include "credits.h"
 #include "data_segment2.h"
 #include "code_800AF9B0.h"
-#include "variables.h"
-#include <sounds.h>
 #include "code_80281780.h"
 #include "memory.h"
 #include "audio/external.h"
@@ -1485,10 +1485,10 @@ void func_80091B78(void) {
         }
     }
     if (gMenuSelection == LOGO_INTRO_MENU) {
-        gNextFreeMemoryAddress = FreeMemoryResetAnchor;
+        gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
         set_segment_base_addr(6, decompress_segments((u8 *) &_data_825800SegmentRomStart, (u8 *) &_course_mario_raceway_dl_mio0SegmentRomStart));
     }
-    gNextFreeMemoryAddress = FreeMemoryResetAnchor;
+    gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     // Hypothetically, this should be a ptr... But only hypothetically.
     D_8018D9B0 = (intptr_t) get_next_available_memory_addr(0x000900B0);
     D_8018D9B4 = (uintptr_t *) get_next_available_memory_addr(0x0000CE00);

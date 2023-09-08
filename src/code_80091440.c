@@ -1,9 +1,10 @@
-#include "variables.h"
+#include <variables.h>
+#include <actor_types.h>
+#include "main.h"
+#include "code_800029B0.h"
 #include "code_80091440.h"
 #include "camera.h"
 #include "math_util.h"
-#include "main.h"
-#include <actor_types.h>
 #include "collision.h"
 
 void func_80091440(s8 arg0) {
@@ -20,9 +21,7 @@ void func_800914A0(void) {
     }
 }
 
-extern u32 D_8015F718[3];
-
-void func_800914E0(void) {
+UNUSED void func_800914E0(void) {
     UNUSED Vec3f sp64 = {0.0f, -20.0f, 150.0f};
     UNUSED Vec3f sp58 = {0.0f, -6.0f, 4.0f};
     uintptr_t segment = SEGMENT_NUMBER2(D_8015F718[0]);

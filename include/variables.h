@@ -59,8 +59,6 @@ extern OSMesgQueue gSIEventMesgQueue;          // D_8014F0B8
 extern u8    gSoundMode;                       // D_8018EDF2
 extern char *gSoundModeNames[NUM_SOUND_MODES]; // D_800E7710
 
-// Indexed by Player ID. Track time in seconds since player has last crossed the finish line
-extern f32   gTimePlayerLastTouchedFinishLine[8]; // D_8015F898
 extern s8    gTimeTrialDataCourseIndex;           // D_8018EDF7
 
 extern Player gPlayers[8];
@@ -82,9 +80,6 @@ extern struct_D_8018CE10 D_8018CE10[];
 
 //extern struct GfxPool *gGfxPool; // D_8014EF40
 
-extern mk64_surface_map_ram *gSurfaceMap; // This is techinally a pointer to an array, but declaring it as such create regalloc issues elsewhere
-extern u16 D_8015F588; // Number of entires in gSurfaceMap
-
 extern Vec3f D_80165070[];
 
 extern Vp D_802B8880[];
@@ -97,8 +92,6 @@ extern s32  D_800DC540;
 extern u16  gIsGamePaused;
 
 extern u16  D_80150112;
-
-extern u16  D_8015F890;
 
 extern u16  D_80162DD8;
 extern s32  D_80162DE0;

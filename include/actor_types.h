@@ -105,6 +105,7 @@ struct Actor {
     /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
+// Duplicate declare for simplicity when externing actors & packed files.
 extern struct Actor gActorList[ACTOR_LIST_SIZE]; // D_8015F9B8
 
 /*

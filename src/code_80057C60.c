@@ -1,7 +1,8 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <PR/gbi.h>
-#include <main.h>
+#include "main.h"
+#include "code_800029B0.h"
 #include "memory.h"
 #include <variables.h>
 #include <config.h>
@@ -2326,7 +2327,6 @@ extern s16 gCurrentCourseId;
 extern s32 gModeSelection;
 extern Player* gPlayerOne;
 extern s32 gScreenModeSelection;
-extern f32 gTimePlayerLastTouchedFinishLine[8];
 
 void func_8005CB60(s32 playerId, s32 arg1)
 {
