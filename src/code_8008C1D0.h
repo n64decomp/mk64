@@ -136,7 +136,6 @@ extern f32 D_800E37B0[];
 extern f32 D_800E3790[];
 extern f32 D_800E37D0[];
 extern f32 D_800E37F0[];
-extern u16 D_8015F6F8;
 extern s16 D_80165190[4][8];
 extern f32 D_80165280[];
 extern s32 D_80165420[];

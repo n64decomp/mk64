@@ -31,28 +31,12 @@ extern s32 D_80287554;
 extern f32 D_801647A4;
 extern f32 D_80150130[];
 
-extern s32 FreeMemoryResetAnchor;
-
-extern s32 D_8015F730;
-
-extern f32 D_8015F8E4;
-extern s16 D_8015F6EA;
-extern s16 D_8015F6EE;
-extern s16 D_8015F6F2;
-extern s16 D_8015F6E8;
-extern s16 D_8015F6EC; // s16 or u16?
-extern s16 D_8015F6F0;
-extern s32 D_8015F59C;
 extern s32 D_8015F5A0;
-extern s32 D_8015F58C;
 
 extern s32 D_00821D10;
 extern s32 D_00825800;
 extern s32 D_00831DC0;
 extern s32 D_00835BA0;
-
-extern s32 D_801625F8;
-extern f32 D_801625FC;
 
 extern struct Controller *gControllerOne;
 extern s8 gCharacterSelections[];

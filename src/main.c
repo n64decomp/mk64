@@ -521,7 +521,7 @@ void setup_game_memory(void) {
     set_segment_base_addr(0xD, (void *) sp38);
 
     gNextFreeMemoryAddress += sp40;
-    FreeMemoryResetAnchor = gNextFreeMemoryAddress;
+    gFreeMemoryResetAnchor = gNextFreeMemoryAddress;
 }
 
 /**

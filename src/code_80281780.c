@@ -14,6 +14,7 @@
 #include "code_80005FD0.h"
 #include "collision.h"
 #include "code_80281C40.h"
+#include <code_800029B0.h>
 
 u8 defaultCharacterIds[] = {
     1, 2, 3, 4, 5, 6, 7, 0
@@ -101,7 +102,7 @@ void load_ceremony_cutscene(void) {
     D_800DC5EC->screenStartX = 160;
     D_800DC5EC->screenStartY = 120;
     gScreenModeSelection = SCREEN_MODE_1P;
-    gNextFreeMemoryAddress = (s32) FreeMemoryResetAnchor;
+    gNextFreeMemoryAddress = (s32) gFreeMemoryResetAnchor;
     gActiveScreenMode = SCREEN_MODE_1P;
     gModeSelection = GRAND_PRIX;
     load_course(gCurrentCourseId);

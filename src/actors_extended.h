@@ -44,22 +44,6 @@ extern f32 D_802B9F68;
 
 extern s16 gPlayerBalloonCount[];
 
-extern struct Actor gActorList[];
-extern Player gPlayers[];
-extern Player *gPlayerOne;
-extern Player *gPlayerTwo;
-extern Player *gPlayerThree;
-extern struct Controller gControllers[];
-extern struct Controller *gControllerOne;
-extern struct Controller *gControllerSix;
-extern struct Controller *gControllerSeven;
-extern struct Controller *gControllerEight;
-
 extern u16 gDemoMode;
-extern s16 D_8015F6E8;
-extern s16 D_8015F6EA;
-extern s16 D_8015F6F0;
-extern s16 D_8015F6F2;
-extern s16 gPlayerPositionLUT[];
 
 #endif // ACTORS_EXTENDED_H

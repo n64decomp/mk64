@@ -3,22 +3,21 @@
 #include <defines.h>
 #include <global.h>
 #include <common_structs.h>
-
 #include "menus.h"
 
+#include "main.h"
+#include "code_800029B0.h"
 #include "actors.h"
 #include "audio/external.h"
 #include "code_80005FD0.h"
 #include "code_80091750.h"
 #include "code_800AF9B0.h"
 #include "code_800B45E0.h"
-#include "main.h"
 #include "staff_ghosts.h"
 #include "save_data.h"
 #include <sounds.h>
 
 /** Externs to be put into headers **/
-extern s16 D_8015F892; // bss unknown
 extern u32 D_800DC5AC; // data? from this file or another (main.c?)?
 extern void rmonPrintf(const char *, ...); // not in a libultra header?
 

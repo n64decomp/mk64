@@ -1,5 +1,6 @@
-#include "global.h"
+#include <global.h>
 #include <defines.h>
+#include "code_800029B0.h"
 #include "kart_attributes.h"
 #include "memory.h"
 #include "waypoints.h"

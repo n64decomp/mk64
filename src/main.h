@@ -68,10 +68,33 @@ void thread4_audio(void*);
 
 extern struct GfxPool *gGfxPool;
 extern Gfx *gDisplayListHead;
-extern struct Controller gControllers[8];
+extern struct Controller gControllers[];
 extern struct Controller *gControllerOne;
+extern struct Controller *gControllerTwo;
+extern struct Controller *gControllerThree;
+extern struct Controller *gControllerFour;
+extern struct Controller *gControllerFive;
+extern struct Controller *gControllerSix;
+extern struct Controller *gControllerSeven;
+extern struct Controller *gControllerEight;
 extern s32 D_800DC568;
 extern s32 D_800DC56C[];
+
+
+extern Player gPlayers[];
+extern Player *gPlayerOne;
+extern Player *gPlayerTwo;
+extern Player *gPlayerThree;
+extern Player *gPlayerFour;
+extern Player *gPlayerFive;
+extern Player *gPlayerSix;
+extern Player *gPlayerSeven;
+extern Player *gPlayerEight;
+
+extern Player *gPlayerOneCopy;
+extern Player *gPlayerTwoCopy;
+extern UNUSED Player *gPlayerThreeCopy;
+extern UNUSED Player *gPlayerFourCopy;
 
 extern u16 D_80152308;
 
@@ -82,20 +105,11 @@ extern OSMesgQueue gDmaMesgQueue;
 extern s32 gGamestateNext;
 extern s32 gActiveScreenMode;
 extern f32 gVBlankTimer;
-extern u8 *pAppNmiBuffer;
-extern u8 *gNmiUnknown1;
-extern u8 *gNmiUnknown2;
-extern u8 *gNmiUnknown3;
-extern u8 *gNmiUnknown4;
-extern u8 *gNmiUnknown5;
-extern u8 *gNmiUnknown6;
 extern s32 gScreenModeSelection;
 
 extern OSContStatus gControllerStatuses[];
 extern struct Controller *gControllerFive;
 extern u8 gControllerBits;
-
-extern s16 sIsController1Unplugged;
 
 extern u64 rspbootTextStart[], rspbootTextEnd[];
 extern u64 gspF3DEXTextStart[], gspF3DEXTextEnd[];
@@ -106,14 +120,11 @@ extern u64 gspF3DLXDataStart[];
 extern u64 gGfxSPTaskOutputBuffer[];
 extern u32 gGfxSPTaskOutputBufferSize;
 
-extern u32 gNextFreeMemoryAddress;
-extern s32 FreeMemoryResetAnchor;
 extern u8 _data_segment2SegmentRomStart[];
 extern u8 _data_segment2SegmentRomEnd[];
 extern u8 _common_texturesSegmentRomStart[];
 extern u8 _common_texturesSegmentRomEnd[];
 extern u8 _data_802BA370SegmentRomStart[];
-extern u32 gHeapEndPtr;
 extern u32 *D_801978D0; // Segment? Keeps track of segmented addresses?
 
 extern s16 gCurrentlyLoadedCourseId;
@@ -123,9 +134,6 @@ extern s16 D_80164AF0;
 extern u16 gIsGamePaused; // 1 if the game is paused and 0 if the game is not paused
 extern u16 gIsInQuitToMenuTransition;
 
-
-extern s32 D_8015F788;
-extern s16 gDebugPathCount;
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
 
 extern u16 D_800DC5B0;

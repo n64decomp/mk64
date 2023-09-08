@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <defines.h>
 #include "math_util.h"
+#include "code_800029B0.h"
 #include "memory.h"
 #include "waypoints.h"
 #include "camera.h"
@@ -1749,10 +1750,6 @@ extern f32 D_0D009418;
 extern f32 D_0D009568;
 extern f32 D_0D0096B8;
 extern f32 D_0D009808;
-extern s16 D_8015F6E8;
-extern s16 D_8015F6EA;
-extern s16 D_8015F6F0;
-extern s16 D_8015F6F2;
 extern f32 D_80162FA0;
 extern s16 D_80162FD0;
 extern s16 D_80162FF8;

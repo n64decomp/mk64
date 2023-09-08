@@ -1,9 +1,12 @@
 #include <ultra64.h>
 #include <macros.h>
-#include "types.h"
+#include <types.h>
+#include <functions.h>
+#include <variables.h>
+#include <defines.h>
+#include <sounds.h>
+#include "code_800029B0.h"
 #include "math_util.h"
-#include "functions.h"
-#include "variables.h"
 #include "kart_attributes.h"
 #include "waypoints.h"
 #include "code_80005FD0.h"
@@ -13,8 +16,6 @@
 #include "code_80057C60.h"
 #include "code_8008C1D0.h"
 #include "audio/external.h"
-#include <defines.h>
-#include <sounds.h>
 
 UNUSED void func_unnamed(void) {
 

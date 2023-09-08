@@ -38,7 +38,6 @@ void func_802969F8(void);
 
 extern Gfx *gDisplayListHead;
 extern s16 gCurrentCourseId;
-extern u32 gNextFreeMemoryAddress;
 extern s32 gActiveScreenMode;
 
 extern u16 sRenderedFramebuffer;
@@ -47,19 +46,14 @@ extern uintptr_t gSegmentTable[];
 extern Player gPlayers[];
 
 extern s32 D_8015F59C;
-extern s32 D_8015F5A0;
 
 extern s32 D_800DC5DC;
 extern s32 D_800DC5E0;
 extern s32 D_802B87C4;
 extern s32 D_802B87C8;
 extern s32 D_802B87CC;
-extern s32 D_8015F5A4;
 extern s32 gScreenModeSelection;
 extern Gfx mario_raceway_dls[];
-extern s32 D_801625EC;
-extern s32 D_801625F0;
-extern s32 D_801625F4;
 extern Gfx choco_mountain_dls[];
 extern s32 D_802B87BC;
 extern Gfx bowsers_castle_dls[];
@@ -70,9 +64,6 @@ extern u8 frappe_snowland_dls[];
 extern Gfx d_course_koopa_troopa_beach_dl_list1[];
 extern Gfx royal_raceway_dls[];
 extern Gfx luigi_raceway_dls[];
-extern s32 D_801625EC;
-extern s32 D_801625F0;
-extern s32 D_801625F4;
 
 extern Gfx D_06013FF8[];
 extern Gfx D_06014060[];
@@ -110,21 +101,7 @@ extern Gfx D_06022E00[];
 extern Gfx D_06023930[];
 extern Gfx D_sherbet_land_06000000[];
 extern u16 D_800DC518;
-extern u16 D_8015F58A;
 
-extern u16 D_8015F700;
-extern u16 D_8015F702;
-extern f32 D_8015F8E8;
-extern f32 D_8015F8E4;
-
-extern s16 D_8015F6EA;
-extern s16 D_8015F6F2;
-extern s16 D_8015F6EE;
-extern u16 D_8015F588;
-extern s16 D_8015F6F4;
-extern s16 D_8015F6F6;
-extern s16 D_8015F6F4;
-extern s16 D_8015F6F6;
 extern Gfx D_060072D0[];
 extern Gfx D_060079A0[];
 extern Gfx D_060093D8[];
@@ -142,13 +119,10 @@ extern Gfx D_06018240[];
 extern Gfx D_06018FD8[];
 extern Gfx D_06023070[];
 extern Gfx D_06023B68[];
-extern Vec3f D_8015F590;
 extern u16 D_800DC5BC;                                     /* unable to generate initializer */
 extern s32 gGamestate;
 extern s32 gModeSelection;
 extern u16 gNumActors;
-extern s32 D_8015F58C;
-extern mk64_surface_map_ram *gSurfaceMap;
 extern s32 gCCSelection;
 
 #endif

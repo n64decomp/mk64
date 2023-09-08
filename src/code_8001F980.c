@@ -2,8 +2,9 @@
 #include <macros.h>
 #include <common_structs.h>
 #include <defines.h>
-#include "types.h"
-#include "variables.h"
+#include <types.h>
+#include <variables.h>
+#include "code_800029B0.h"
 #include "math_util.h"
 #include "math_util_2.h"
 #include "main.h"

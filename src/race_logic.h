@@ -37,10 +37,8 @@ void func_802903B0(void);
 void func_802909F0(void);
 void func_80290B14(void);
 
-extern f32 gTimePlayerLastTouchedFinishLine[];
 extern f32 gLapCompletionPercentByPlayerId[];
 extern s32 gGPCurrentRaceRankByPlayerId[]; // D_801643B8 (position for each player)
-extern s16 gPlayerPositionLUT[]; // D_8015F8F0 (player index at each position)
 extern u16 D_80162DD6;
 
 #endif

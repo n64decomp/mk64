@@ -6,6 +6,7 @@
 #include <variables.h>
 #include <segments.h>
 #include "main.h"
+#include "code_800029B0.h"
 #include "memory.h"
 #include "math_util.h"
 

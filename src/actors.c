@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <PR/os.h>
 #include "types.h"
+#include "code_800029B0.h"
 #include <common_structs.h>
 #include <actor_types.h>
 #include <defines.h>

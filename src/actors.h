@@ -125,16 +125,9 @@ extern s8 D_802BA060[512]; // tlut 256
 extern u16 D_802BA260;
 
 extern s32   gPlayerCountSelection1;
-extern struct Actor gActorList[];
 extern Player gPlayers[];
 extern u16 gNumActors;
-extern u16 gNumPermanentActors;
 
-/**
- * Incremented by one every time the player spawns a new shell actor.
- * A cleaning routine runs once twenty-one shells have spawned.
- */
-extern u16 gNumSpawnedShells; 
 extern u16 D_802BA260; // Box Truck sub-type?
 
 extern Player *gPlayerOne;
@@ -145,7 +138,6 @@ extern s32 gActiveScreenMode;
 extern u16 gNearestWaypointByPlayerId[];
 
 extern Camera *camera1;
-extern struct Actor gActorList[];
 extern Gfx *gDisplayListHead;
 extern s32 gModeSelection;
 extern s16 gCurrentCourseId;
@@ -154,13 +146,6 @@ extern u16 D_801637B8[];
 extern Lights1 D_800DC610[];
 
 extern u16 D_80150112;
-extern u16 D_8015F700;
-extern u16 D_8015F702;
-extern f32 D_8015F704;
-extern Vec3f D_8015F708;
-extern f32 D_8015F8E4;
-
-extern f32 gCourseDirection;
 
 extern uintptr_t gSegmentTable[];
 extern s16 gPlaceItemBoxes;
@@ -256,16 +241,8 @@ extern Gfx toads_turnpike_dl_11[];
 
 extern Mat4 D_801502C0;
 
-extern s16 D_8015F6EC;
-extern s16 D_8015F6EE;
-
 extern s32 gGamestate;
 extern s32 gGamestate;
-extern s32 D_8015F8DC;
-extern s32 D_8015F8E0;
-extern s32 D_801625EC;
-extern s32 D_801625F0;
-extern s32 D_801625F4;
 extern s32 D_80162DF8;
 
 extern Gfx d_course_mario_raceway_dl_piranha_plant[];
@@ -397,7 +374,5 @@ extern u16 gIsGamePaused;
 extern s8 D_802B8864[];
 
 extern u16 D_800DC5BC;
-
-extern Vec3f D_8015F8D0;
 
 #endif // ACTORS_H

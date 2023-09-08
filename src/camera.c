@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <common_structs.h>
 #include <defines.h>
+#include "code_800029B0.h"
 #include "camera.h"
 #include "math_util.h"
 #include "memory.h"

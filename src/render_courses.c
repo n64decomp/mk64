@@ -3,6 +3,7 @@
 #include <common_structs.h>
 #include <defines.h>
 #include <types.h>
+#include <code_800029B0.h>
 #include <course.h>
 #include <packed_displaylist_symbols_gen.h>
 #include "main.h"

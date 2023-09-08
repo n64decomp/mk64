@@ -71,9 +71,6 @@ extern u16 sRenderingFramebuffer;
 extern s32 D_800DC5D0;
 extern s32 D_800DC5D4;
 extern s32 D_800DC5D8;
-extern s32 D_801625EC;
-extern s32 D_801625F0;
-extern s32 D_801625F4;
 extern u16 D_800DC5BC;
 extern struct GfxPool *gGfxPool;
 extern f32 D_80150130[];
@@ -85,9 +82,7 @@ extern f32 D_80150150;
 
 extern u16 D_800DC5C8;
 extern u16 D_800DC5B8;
-extern s32 D_8015F788;
 extern struct UnkStruct_800DC5EC D_8015F480[];
-extern s32 D_8015F790[];
 
 extern struct Controller gControllers[];
 extern Player gPlayers[];
