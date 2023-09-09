@@ -610,10 +610,9 @@ ifeq ($(COMPILER),ido)
 endif
 
 #==============================================================================#
-# Compile Trophy Model(s)                                                      #
+# Compile Trophy Model(s) and Podium Models                                    #
 #==============================================================================#
 
-# trophy_model.inc.c
 $(BUILD_DIR)/src/trophy_model.inc.mio0.o: $(BUILD_DIR)/src/trophy_model.inc.o
 	@$(PRINT) "$(GREEN)Compressing Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/src/trophy_model.inc.elf.map -o $(BUILD_DIR)/src/trophy_model.inc.elf $(BUILD_DIR)/src/trophy_model.inc.o --no-check-sections
@@ -626,7 +625,6 @@ $(BUILD_DIR)/src/trophy_model.inc.mio0.o: $(BUILD_DIR)/src/trophy_model.inc.o
 # Compile Startup Logo                                                         #
 #==============================================================================#
 
-# startup_logo.inc.c
 $(BUILD_DIR)/src/startup_logo.inc.mio0.o: src/startup_logo.inc.c
 	@$(PRINT) "$(GREEN)Compressing Startup Logo:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $(BUILD_DIR)/src/startup_logo.inc.elf.map -o $(BUILD_DIR)/src/startup_logo.inc.elf $(BUILD_DIR)/src/startup_logo.inc.o --no-check-sections
