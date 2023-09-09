@@ -505,7 +505,13 @@ void setup_game_memory(void) {
     init_seg_8028DF00();
     gHeapEndPtr = SEG_8028DF00;
     set_segment_base_addr(0, (void *) SEG_START);
-    initialize_memory_pool((uintptr_t) &D_801978D0, (uintptr_t) 0x80242F00);
+    // Memory pool size of 0xAB630
+    // todo: is it possible to shift this value?
+#ifdef AVOID_UB
+    initialize_memory_pool((uintptr_t) &_mainSegNoloadEnd, (uintptr_t) (&_mainSegNoloadEnd[0] + 0xAB630));
+#else
+    initialize_memory_pool((uintptr_t) &_mainSegNoloadEnd, (uintptr_t) 0x80242F00);
+#endif
     func_80000BEC();
     osInvalDCache((void *) SEG_802BA370, 0x5810);
     osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_data_802BA370SegmentRomStart, (void *) SEG_802BA370, 0x5810, &gDmaMesgQueue);

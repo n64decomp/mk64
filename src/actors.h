@@ -72,7 +72,7 @@ void place_palm_trees(struct ActorSpawnData*);
 void func_8029CF0C(struct ActorSpawnData*, struct FallingRock*);
 void place_falling_rocks(struct ActorSpawnData*);
 void update_obj_falling_rocks(struct FallingRock*);
-void place_segment_06(struct ActorSpawnData*);
+void spawn_foliage(struct ActorSpawnData*);
 void place_all_item_boxes(struct ActorSpawnData*);
 void init_kiwano_fruit(void);
 void destroy_all_actors(void);

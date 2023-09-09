@@ -154,6 +154,7 @@ ifeq ($(filter clean distclean,$(MAKECMDGOALS)),)
 endif
 
 
+
 #==============================================================================#
 # Universal Dependencies                                                       #
 #==============================================================================#
@@ -185,6 +186,7 @@ ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
   $(info Building ROM...)
 
 endif
+
 
 
 #==============================================================================#
@@ -334,6 +336,8 @@ endif
 
 # Prevent a crash with -sopt
 export LANG := C
+
+
 
 #==============================================================================#
 # Miscellaneous Tools                                                          #
@@ -510,6 +514,7 @@ COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.i
 	$(V)$(DLPACKER) $< $@
 
 
+
 #==============================================================================#
 # Course Geography Generation                                                  #
 #==============================================================================#
@@ -529,6 +534,8 @@ COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.i
 # Geography and packed displaylists are compressed together rather than separately.
 %/model.inc.mio0.s: %/model.inc.mio0 %/packed_dl.inc.bin
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.inc.bin\"\n\n.balign 0x10\n" > $@
+
+
 
 #==============================================================================#
 # Course Data Generation                                                       #
@@ -609,8 +616,10 @@ ifeq ($(COMPILER),ido)
     $(BUILD_DIR)/src/audio/external.o:  OPT_FLAGS := -O2 -framepointer
 endif
 
+
+
 #==============================================================================#
-# Compile Trophy Model(s) and Podium Models                                    #
+# Compile Trophy and Podium Models                                             #
 #==============================================================================#
 
 $(BUILD_DIR)/src/trophy_model.inc.mio0.o: $(BUILD_DIR)/src/trophy_model.inc.o
@@ -620,6 +629,8 @@ $(BUILD_DIR)/src/trophy_model.inc.mio0.o: $(BUILD_DIR)/src/trophy_model.inc.o
 	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/trophy_model.inc.bin $(BUILD_DIR)/src/trophy_model.inc.mio0
 	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel trophy_model\n\n.incbin \"build/us/src/trophy_model.inc.mio0\"\n\n.balign 16\nglabel data_821D10_end\n" > build/us/src/trophy_model.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.s
+
+
 
 #==============================================================================#
 # Compile Startup Logo                                                         #
@@ -632,6 +643,8 @@ $(BUILD_DIR)/src/startup_logo.inc.mio0.o: src/startup_logo.inc.c
 	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/startup_logo.inc.bin $(BUILD_DIR)/src/startup_logo.inc.mio0
 	printf ".include \"macros.inc\"\n\n.data\n\n\n\n.balign 4\n\n\nglabel startup_logo\n\n.incbin \"build/us/src/startup_logo.inc.mio0\"\n\n.balign 16\n\nglabel data_825800_end\n" > build/us/src/startup_logo.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/startup_logo.inc.mio0.s
+
+
 
 #==============================================================================#
 # Compile Common Textures                                                      #
@@ -651,6 +664,8 @@ LDFLAGS += -R $(BUILD_DIR)/src/common_textures.inc.elf
 
 %/common_textures.inc.mio0.s: %/common_textures.inc.mio0
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
+
+
 
 #==============================================================================#
 # Finalize and Link                                                            #
