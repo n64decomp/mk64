@@ -3051,7 +3051,7 @@ void func_800792D8(s32 objectIndex, s32 arg1) {
         D_8018D168 = 0;
     }
     func_80073444(objectIndex, (u8 *) gTLUTLakituCountdown, (u8 *) &D_0F05EB50, 0x38U, (u16) 0x00000048);
-    D_80165C18[objectIndex].unk_074 = (Vtx *) &D_0D005EB0;
+    D_80165C18[objectIndex].unk_074 = (Vtx *) D_0D005EB0;
     D_80165C18[objectIndex].sizeScaling = 0.15f;
     func_800721E8(objectIndex, 0x00000010);
     func_80072488(objectIndex);
@@ -3225,7 +3225,6 @@ void func_8007993C(s32 objectIndex, Player *player) {
     func_800722CC(objectIndex, 2);
 }
 
-extern Vtx D_0D005F30[];
 extern u8 D_0F0CCF50;
 
 void func_800799A8(s32 objectIndex, s32 arg1) {
