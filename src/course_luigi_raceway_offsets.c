@@ -1,5 +1,6 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
+#include "courses/mushroom_cup/luigi_raceway/course_data.inc.h"
 
 extern u8 gTextureSignShellShot0[];
 extern u8 gTextureSignShellShot1[];
@@ -41,126 +42,6 @@ extern u8 gTextureSignNintendoRed0[];
 extern u8 gTextureSignNintendoRed1[];
 extern u8 gTextureSignYoshi[];
 extern u8 gTextureCheckerboardBlueGray[];
-extern u8 D_luigi_raceway_06000000[];
-extern u8 D_luigi_raceway_06000328[];
-extern u8 D_luigi_raceway_060001A8[];
-extern u8 D_luigi_raceway_06000480[];
-extern u8 D_luigi_raceway_060006E0[];
-extern u8 D_luigi_raceway_060009F8[];
-extern u8 D_luigi_raceway_06000868[];
-extern u8 D_luigi_raceway_06000B48[];
-extern u8 D_luigi_raceway_06000D80[];
-extern u8 D_luigi_raceway_06001058[];
-extern u8 D_luigi_raceway_06000EE8[];
-extern u8 D_luigi_raceway_06001198[];
-extern u8 D_luigi_raceway_06001398[];
-extern u8 D_luigi_raceway_060016D8[];
-extern u8 D_luigi_raceway_06001538[];
-extern u8 D_luigi_raceway_06001888[];
-extern u8 D_luigi_raceway_06001B00[];
-extern u8 D_luigi_raceway_06001E30[];
-extern u8 D_luigi_raceway_06001C78[];
-extern u8 D_luigi_raceway_06001FD0[];
-extern u8 D_luigi_raceway_06002240[];
-extern u8 D_luigi_raceway_06002518[];
-extern u8 D_luigi_raceway_06002348[];
-extern u8 D_luigi_raceway_06002658[];
-extern u8 D_luigi_raceway_06002860[];
-extern u8 D_luigi_raceway_06002BC0[];
-extern u8 D_luigi_raceway_06002978[];
-extern u8 D_luigi_raceway_06002D00[];
-extern u8 D_luigi_raceway_06002F08[];
-extern u8 D_luigi_raceway_060032C0[];
-extern u8 D_luigi_raceway_06002FF8[];
-extern u8 D_luigi_raceway_06003408[];
-extern u8 D_luigi_raceway_06003610[];
-extern u8 D_luigi_raceway_06003928[];
-extern u8 D_luigi_raceway_060036A8[];
-extern u8 D_luigi_raceway_06003AB0[];
-extern u8 D_luigi_raceway_06003C18[];
-extern u8 D_luigi_raceway_06003EB0[];
-extern u8 D_luigi_raceway_06003CA0[];
-extern u8 D_luigi_raceway_06004058[];
-extern u8 D_luigi_raceway_06004198[];
-extern u8 D_luigi_raceway_06004440[];
-extern u8 D_luigi_raceway_06004240[];
-extern u8 D_luigi_raceway_06004638[];
-extern u8 D_luigi_raceway_06004720[];
-extern u8 D_luigi_raceway_06004A18[];
-extern u8 D_luigi_raceway_06004828[];
-extern u8 D_luigi_raceway_06004C60[];
-extern u8 D_luigi_raceway_06004CF8[];
-extern u8 D_luigi_raceway_06004FD8[];
-extern u8 D_luigi_raceway_06004E38[];
-extern u8 D_luigi_raceway_06005220[];
-extern u8 D_luigi_raceway_060052D0[];
-extern u8 D_luigi_raceway_06005558[];
-extern u8 D_luigi_raceway_06005420[];
-extern u8 D_luigi_raceway_06005728[];
-extern u8 D_luigi_raceway_060057F8[];
-extern u8 D_luigi_raceway_06005A60[];
-extern u8 D_luigi_raceway_06005940[];
-extern u8 D_luigi_raceway_06005BA0[];
-extern u8 D_luigi_raceway_06005CB8[];
-extern u8 D_luigi_raceway_06005F08[];
-extern u8 D_luigi_raceway_06005E10[];
-extern u8 D_luigi_raceway_06006018[];
-extern u8 D_luigi_raceway_06006150[];
-extern u8 D_luigi_raceway_06006350[];
-extern u8 D_luigi_raceway_06006288[];
-extern u8 D_luigi_raceway_06006400[];
-extern u8 D_luigi_raceway_06006558[];
-extern u8 D_luigi_raceway_06006608[];
-extern u8 D_luigi_raceway_060065B0[];
-extern u8 D_luigi_raceway_06006658[];
-extern u8 D_luigi_raceway_060066B8[];
-extern u8 D_luigi_raceway_060067A0[];
-extern u8 D_luigi_raceway_06006708[];
-extern u8 D_luigi_raceway_06006810[];
-extern u8 D_luigi_raceway_060068C0[];
-extern u8 D_luigi_raceway_06006A00[];
-extern u8 D_luigi_raceway_06006930[];
-extern u8 D_luigi_raceway_06006A90[];
-extern u8 D_luigi_raceway_06006B58[];
-extern u8 D_luigi_raceway_06006DA0[];
-extern u8 D_luigi_raceway_06006C40[];
-extern u8 D_luigi_raceway_06006EB0[];
-extern u8 D_luigi_raceway_06006FF0[];
-extern u8 D_luigi_raceway_06007248[];
-extern u8 D_luigi_raceway_06007110[];
-extern u8 D_luigi_raceway_06007388[];
-extern u8 D_luigi_raceway_060074B0[];
-extern u8 D_luigi_raceway_06007750[];
-extern u8 D_luigi_raceway_060075F0[];
-extern u8 D_luigi_raceway_06007928[];
-extern u8 D_luigi_raceway_06007A18[];
-extern u8 D_luigi_raceway_06007CD0[];
-extern u8 D_luigi_raceway_06007BB0[];
-extern u8 D_luigi_raceway_06007EE8[];
-extern u8 D_luigi_raceway_06007FA0[];
-extern u8 D_luigi_raceway_06008260[];
-extern u8 D_luigi_raceway_06008158[];
-extern u8 D_luigi_raceway_06008450[];
-extern u8 D_luigi_raceway_06008508[];
-extern u8 D_luigi_raceway_06008790[];
-extern u8 D_luigi_raceway_060086F8[];
-extern u8 D_luigi_raceway_06008958[];
-extern u8 D_luigi_raceway_06008A70[];
-extern u8 D_luigi_raceway_06008D68[];
-extern u8 D_luigi_raceway_06008CC8[];
-extern u8 D_luigi_raceway_06008F00[];
-extern u8 D_luigi_raceway_06009058[];
-extern u8 D_luigi_raceway_06009408[];
-extern u8 D_luigi_raceway_06009310[];
-extern u8 D_luigi_raceway_060095A0[];
-extern u8 D_luigi_raceway_060097B0[];
-extern u8 D_luigi_raceway_06009AD0[];
-extern u8 D_luigi_raceway_060099C0[];
-extern u8 D_luigi_raceway_06009C50[];
-extern u8 D_luigi_raceway_06009E58[];
-extern u8 D_luigi_raceway_0600A178[];
-extern u8 D_luigi_raceway_0600A028[];
-extern u8 D_luigi_raceway_0600A320[];
 
 const course_texture luigi_raceway_textures[] = {
     {gTextureSignShellShot0, 0x038C, 0x1000, 0x0},
@@ -207,124 +88,124 @@ const course_texture luigi_raceway_textures[] = {
 };
 
 const u8 *luigi_raceway_dls[] = {
-    D_luigi_raceway_06000000,
-    D_luigi_raceway_06000328,
-    D_luigi_raceway_060001A8,
-    D_luigi_raceway_06000480,
-    D_luigi_raceway_060006E0,
-    D_luigi_raceway_060009F8,
-    D_luigi_raceway_06000868,
-    D_luigi_raceway_06000B48,
-    D_luigi_raceway_06000D80,
-    D_luigi_raceway_06001058,
-    D_luigi_raceway_06000EE8,
-    D_luigi_raceway_06001198,
-    D_luigi_raceway_06001398,
-    D_luigi_raceway_060016D8,
-    D_luigi_raceway_06001538,
-    D_luigi_raceway_06001888,
-    D_luigi_raceway_06001B00,
-    D_luigi_raceway_06001E30,
-    D_luigi_raceway_06001C78,
-    D_luigi_raceway_06001FD0,
-    D_luigi_raceway_06002240,
-    D_luigi_raceway_06002518,
-    D_luigi_raceway_06002348,
-    D_luigi_raceway_06002658,
-    D_luigi_raceway_06002860,
-    D_luigi_raceway_06002BC0,
-    D_luigi_raceway_06002978,
-    D_luigi_raceway_06002D00,
-    D_luigi_raceway_06002F08,
-    D_luigi_raceway_060032C0,
-    D_luigi_raceway_06002FF8,
-    D_luigi_raceway_06003408,
-    D_luigi_raceway_06003610,
-    D_luigi_raceway_06003928,
-    D_luigi_raceway_060036A8,
-    D_luigi_raceway_06003AB0,
-    D_luigi_raceway_06003C18,
-    D_luigi_raceway_06003EB0,
-    D_luigi_raceway_06003CA0,
-    D_luigi_raceway_06004058,
-    D_luigi_raceway_06004198,
-    D_luigi_raceway_06004440,
-    D_luigi_raceway_06004240,
-    D_luigi_raceway_06004638,
-    D_luigi_raceway_06004720,
-    D_luigi_raceway_06004A18,
-    D_luigi_raceway_06004828,
-    D_luigi_raceway_06004C60,
-    D_luigi_raceway_06004CF8,
-    D_luigi_raceway_06004FD8,
-    D_luigi_raceway_06004E38,
-    D_luigi_raceway_06005220,
-    D_luigi_raceway_060052D0,
-    D_luigi_raceway_06005558,
-    D_luigi_raceway_06005420,
-    D_luigi_raceway_06005728,
-    D_luigi_raceway_060057F8,
-    D_luigi_raceway_06005A60,
-    D_luigi_raceway_06005940,
-    D_luigi_raceway_06005BA0,
-    D_luigi_raceway_06005CB8,
-    D_luigi_raceway_06005F08,
-    D_luigi_raceway_06005E10,
-    D_luigi_raceway_06006018,
-    D_luigi_raceway_06006150,
-    D_luigi_raceway_06006350,
-    D_luigi_raceway_06006288,
-    D_luigi_raceway_06006400,
-    D_luigi_raceway_06006558,
-    D_luigi_raceway_06006608,
-    D_luigi_raceway_060065B0,
-    D_luigi_raceway_06006658,
-    D_luigi_raceway_060066B8,
-    D_luigi_raceway_060067A0,
-    D_luigi_raceway_06006708,
-    D_luigi_raceway_06006810,
-    D_luigi_raceway_060068C0,
-    D_luigi_raceway_06006A00,
-    D_luigi_raceway_06006930,
-    D_luigi_raceway_06006A90,
-    D_luigi_raceway_06006B58,
-    D_luigi_raceway_06006DA0,
-    D_luigi_raceway_06006C40,
-    D_luigi_raceway_06006EB0,
-    D_luigi_raceway_06006FF0,
-    D_luigi_raceway_06007248,
-    D_luigi_raceway_06007110,
-    D_luigi_raceway_06007388,
-    D_luigi_raceway_060074B0,
-    D_luigi_raceway_06007750,
-    D_luigi_raceway_060075F0,
-    D_luigi_raceway_06007928,
-    D_luigi_raceway_06007A18,
-    D_luigi_raceway_06007CD0,
-    D_luigi_raceway_06007BB0,
-    D_luigi_raceway_06007EE8,
-    D_luigi_raceway_06007FA0,
-    D_luigi_raceway_06008260,
-    D_luigi_raceway_06008158,
-    D_luigi_raceway_06008450,
-    D_luigi_raceway_06008508,
-    D_luigi_raceway_06008790,
-    D_luigi_raceway_060086F8,
-    D_luigi_raceway_06008958,
-    D_luigi_raceway_06008A70,
-    D_luigi_raceway_06008D68,
-    D_luigi_raceway_06008CC8,
-    D_luigi_raceway_06008F00,
-    D_luigi_raceway_06009058,
-    D_luigi_raceway_06009408,
-    D_luigi_raceway_06009310,
-    D_luigi_raceway_060095A0,
-    D_luigi_raceway_060097B0,
-    D_luigi_raceway_06009AD0,
-    D_luigi_raceway_060099C0,
-    D_luigi_raceway_06009C50,
-    D_luigi_raceway_06009E58,
-    D_luigi_raceway_0600A178,
-    D_luigi_raceway_0600A028,
-    D_luigi_raceway_0600A320,
+    d_course_luigi_raceway_dl_0,
+    d_course_luigi_raceway_dl_328,
+    d_course_luigi_raceway_dl_1A8,
+    d_course_luigi_raceway_dl_480,
+    d_course_luigi_raceway_dl_6E0,
+    d_course_luigi_raceway_dl_9F8,
+    d_course_luigi_raceway_dl_868,
+    d_course_luigi_raceway_dl_B48,
+    d_course_luigi_raceway_dl_D80,
+    d_course_luigi_raceway_dl_1058,
+    d_course_luigi_raceway_dl_EE8,
+    d_course_luigi_raceway_dl_1198,
+    d_course_luigi_raceway_dl_1398,
+    d_course_luigi_raceway_dl_16D8,
+    d_course_luigi_raceway_dl_1538,
+    d_course_luigi_raceway_dl_1888,
+    d_course_luigi_raceway_dl_1B00,
+    d_course_luigi_raceway_dl_1E30,
+    d_course_luigi_raceway_dl_1C78,
+    d_course_luigi_raceway_dl_1FD0,
+    d_course_luigi_raceway_dl_2240,
+    d_course_luigi_raceway_dl_2518,
+    d_course_luigi_raceway_dl_2348,
+    d_course_luigi_raceway_dl_2658,
+    d_course_luigi_raceway_dl_2860,
+    d_course_luigi_raceway_dl_2BC0,
+    d_course_luigi_raceway_dl_2978,
+    d_course_luigi_raceway_dl_2D00,
+    d_course_luigi_raceway_dl_2F08,
+    d_course_luigi_raceway_dl_32C0,
+    d_course_luigi_raceway_dl_2FF8,
+    d_course_luigi_raceway_dl_3408,
+    d_course_luigi_raceway_dl_3610,
+    d_course_luigi_raceway_dl_3928,
+    d_course_luigi_raceway_dl_36A8,
+    d_course_luigi_raceway_dl_3AB0,
+    d_course_luigi_raceway_dl_3C18,
+    d_course_luigi_raceway_dl_3EB0,
+    d_course_luigi_raceway_dl_3CA0,
+    d_course_luigi_raceway_dl_4058,
+    d_course_luigi_raceway_dl_4198,
+    d_course_luigi_raceway_dl_4440,
+    d_course_luigi_raceway_dl_4240,
+    d_course_luigi_raceway_dl_4638,
+    d_course_luigi_raceway_dl_4720,
+    d_course_luigi_raceway_dl_4A18,
+    d_course_luigi_raceway_dl_4828,
+    d_course_luigi_raceway_dl_4C60,
+    d_course_luigi_raceway_dl_4CF8,
+    d_course_luigi_raceway_dl_4FD8,
+    d_course_luigi_raceway_dl_4E38,
+    d_course_luigi_raceway_dl_5220,
+    d_course_luigi_raceway_dl_52D0,
+    d_course_luigi_raceway_dl_5558,
+    d_course_luigi_raceway_dl_5420,
+    d_course_luigi_raceway_dl_5728,
+    d_course_luigi_raceway_dl_57F8,
+    d_course_luigi_raceway_dl_5A60,
+    d_course_luigi_raceway_dl_5940,
+    d_course_luigi_raceway_dl_5BA0,
+    d_course_luigi_raceway_dl_5CB8,
+    d_course_luigi_raceway_dl_5F08,
+    d_course_luigi_raceway_dl_5E10,
+    d_course_luigi_raceway_dl_6018,
+    d_course_luigi_raceway_dl_6150,
+    d_course_luigi_raceway_dl_6350,
+    d_course_luigi_raceway_dl_6288,
+    d_course_luigi_raceway_dl_6400,
+    d_course_luigi_raceway_dl_6558,
+    d_course_luigi_raceway_dl_6608,
+    d_course_luigi_raceway_dl_65B0,
+    d_course_luigi_raceway_dl_6658,
+    d_course_luigi_raceway_dl_66B8,
+    d_course_luigi_raceway_dl_67A0,
+    d_course_luigi_raceway_dl_6708,
+    d_course_luigi_raceway_dl_6810,
+    d_course_luigi_raceway_dl_68C0,
+    d_course_luigi_raceway_dl_6A00,
+    d_course_luigi_raceway_dl_6930,
+    d_course_luigi_raceway_dl_6A90,
+    d_course_luigi_raceway_dl_6B58,
+    d_course_luigi_raceway_dl_6DA0,
+    d_course_luigi_raceway_dl_6C40,
+    d_course_luigi_raceway_dl_6EB0,
+    d_course_luigi_raceway_dl_6FF0,
+    d_course_luigi_raceway_dl_7248,
+    d_course_luigi_raceway_dl_7110,
+    d_course_luigi_raceway_dl_7388,
+    d_course_luigi_raceway_dl_74B0,
+    d_course_luigi_raceway_dl_7750,
+    d_course_luigi_raceway_dl_75F0,
+    d_course_luigi_raceway_dl_7928,
+    d_course_luigi_raceway_dl_7A18,
+    d_course_luigi_raceway_dl_7CD0,
+    d_course_luigi_raceway_dl_7BB0,
+    d_course_luigi_raceway_dl_7EE8,
+    d_course_luigi_raceway_dl_7FA0,
+    d_course_luigi_raceway_dl_8260,
+    d_course_luigi_raceway_dl_8158,
+    d_course_luigi_raceway_dl_8450,
+    d_course_luigi_raceway_dl_8508,
+    d_course_luigi_raceway_dl_8790,
+    d_course_luigi_raceway_dl_86F8,
+    d_course_luigi_raceway_dl_8958,
+    d_course_luigi_raceway_dl_8A70,
+    d_course_luigi_raceway_dl_8D68,
+    d_course_luigi_raceway_dl_8CC8,
+    d_course_luigi_raceway_dl_8F00,
+    d_course_luigi_raceway_dl_9058,
+    d_course_luigi_raceway_dl_9408,
+    d_course_luigi_raceway_dl_9310,
+    d_course_luigi_raceway_dl_95A0,
+    d_course_luigi_raceway_dl_97B0,
+    d_course_luigi_raceway_dl_9AD0,
+    d_course_luigi_raceway_dl_99C0,
+    d_course_luigi_raceway_dl_9C50,
+    d_course_luigi_raceway_dl_9E58,
+    d_course_luigi_raceway_dl_A178,
+    d_course_luigi_raceway_dl_A028,
+    d_course_luigi_raceway_dl_A320,
 };

@@ -32,11 +32,11 @@ glabel func_8008241C
 /* 083030 80082430 25EF5C18 */  addiu $t7, %lo(D_80165C18) # addiu $t7, $t7, 0x5c18
 /* 083034 80082434 000E7140 */  sll   $t6, $t6, 5
 /* 083038 80082438 01CF8021 */  addu  $s0, $t6, $t7
-/* 08303C 8008243C 3C180601 */  lui   $t8, %hi(D_060169B0) # $t8, 0x601
-/* 083040 80082440 3C190601 */  lui   $t9, %hi(D_06016B60) # $t9, 0x601
+/* 08303C 8008243C 3C180601 */  lui   $t8, %hi(d_course_koopa_troopa_beach_unk4) # $t8, 0x601
+/* 083040 80082440 3C190601 */  lui   $t9, %hi(d_course_koopa_troopa_beach_unk_data5) # $t9, 0x601
 /* 083044 80082444 24020001 */  li    $v0, 1
-/* 083048 80082448 271869B0 */  addiu $t8, %lo(D_060169B0) # addiu $t8, $t8, 0x69b0
-/* 08304C 8008244C 27396B60 */  addiu $t9, %lo(D_06016B60) # addiu $t9, $t9, 0x6b60
+/* 083048 80082448 271869B0 */  addiu $t8, %lo(d_course_koopa_troopa_beach_unk4) # addiu $t8, $t8, 0x69b0
+/* 08304C 8008244C 27396B60 */  addiu $t9, %lo(d_course_koopa_troopa_beach_unk_data5) # addiu $t9, $t9, 0x6b60
 /* 083050 80082450 A20200D8 */  sb    $v0, 0xd8($s0)
 /* 083054 80082454 AE180070 */  sw    $t8, 0x70($s0)
 /* 083058 80082458 AE190074 */  sw    $t9, 0x74($s0)

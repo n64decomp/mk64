@@ -20,6 +20,7 @@
 #include <sounds.h>
 #include "audio/external.h"
 #include "common_textures.h"
+#include "courses/all_course_data.h"
 
 // Appears to be textures
 // or tluts
@@ -743,8 +744,8 @@ void func_802986B4(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
     struct ActorSpawnData *var_s5;
     Vec3f sp88;
     u32 soundThing = 0x1901904D;
-    s32 segment = SEGMENT_NUMBER2(D_06014200);
-    s32 offset = SEGMENT_OFFSET(D_06014200);
+    s32 segment = SEGMENT_NUMBER2(d_course_moo_moo_farm_cow_spawn);
+    s32 offset = SEGMENT_OFFSET(d_course_moo_moo_farm_cow_spawn);
     
     var_t1 = (struct ActorSpawnData*)VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     D_8015F704 = 6.4e7f;
@@ -811,8 +812,8 @@ void func_802986B4(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
 
 void func_80298AC0(Player *player) {
     Vec3f sp64;
-    s32 segment = SEGMENT_NUMBER2(D_06013F78);
-    s32 offset = SEGMENT_OFFSET(D_06013F78);
+    s32 segment = SEGMENT_NUMBER2(d_course_dks_jungle_parkway_tree_spawn);
+    s32 offset = SEGMENT_OFFSET(d_course_dks_jungle_parkway_tree_spawn);
     struct UnkActorSpawnData *data = (struct UnkActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
 
     while (data->pos[0] != -0x8000) {
@@ -846,8 +847,8 @@ void func_80298C94(void) {
 }
 
 void func_80298D10(void) {
-    s32 segment = SEGMENT_NUMBER2(D_06013F78);
-    s32 offset = SEGMENT_OFFSET(D_06013F78);
+    s32 segment = SEGMENT_NUMBER2(d_course_dks_jungle_parkway_tree_spawn);
+    s32 offset = SEGMENT_OFFSET(d_course_dks_jungle_parkway_tree_spawn);
     struct UnkActorSpawnData *temp_v1 = (struct UnkActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
 
     while (temp_v1->pos[0] != -0x8000) {
@@ -858,8 +859,8 @@ void func_80298D10(void) {
 }
 
 void func_80298D7C(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
-    s32 segment = SEGMENT_NUMBER2(D_06013F78);
-    s32 offset = SEGMENT_OFFSET(D_06013F78);
+    s32 segment = SEGMENT_NUMBER2(d_course_dks_jungle_parkway_tree_spawn);
+    s32 offset = SEGMENT_OFFSET(d_course_dks_jungle_parkway_tree_spawn);
     struct UnkActorSpawnData *var_s1 = (struct UnkActorSpawnData *)VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     UNUSED s32 pad;
     Vec3f spD4;
@@ -1428,8 +1429,8 @@ void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED Mat4 arg2,
         func_802B5F74(spE0, boat->pos, boat->boatRot);
         if (func_802B4FF8(spE0, 1) != 0) {
 
-            gSPDisplayList(gDisplayListHead++, &D_0600E730);
-            gSPDisplayList(gDisplayListHead++, &D_0600E058);
+            gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_E730);
+            gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_E058);
 
             func_802B59DC(spE0, boat->wheelRot);
             vec3f_set(sp120, 0, 16.0f, -255.0f);
@@ -1437,7 +1438,7 @@ void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED Mat4 arg2,
             func_802B71CC(sp60, spE0, spA0);
             if (func_802B4FF8(sp60, 3) != 0) {
                 gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                gSPDisplayList(gDisplayListHead++, &D_0600FC28);
+                gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_FC28);
                 gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
                 gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
             }
@@ -1459,13 +1460,13 @@ void func_8029B06C(Camera *arg0, struct Actor *arg1) {
 
             switch(arg1->state) {
                 case 0:
-                    gSPDisplayList(gDisplayListHead++, &D_06023858);
+                    gSPDisplayList(gDisplayListHead++, &d_course_toads_turnpike_dl_23858);
                     break;
                 case 1:
-                    gSPDisplayList(gDisplayListHead++, &D_060238A0);
+                    gSPDisplayList(gDisplayListHead++, &d_course_toads_turnpike_dl_238A0);
                     break;
                 case 2:
-                    gSPDisplayList(gDisplayListHead++, &D_060238E8);
+                    gSPDisplayList(gDisplayListHead++, &d_course_toads_turnpike_dl_238E8);
                     break;
             }
 
@@ -1601,21 +1602,21 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (temp_f0 < 122500.0f) {
 
-        gSPDisplayList(gDisplayListHead++, D_0601C0F0);
-        gSPDisplayList(gDisplayListHead++, D_0601B978);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1C0F0);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1B978);
 
     } else if (temp_f0 < 640000.0f) {
 
-        gSPDisplayList(gDisplayListHead++, D_0601D670);
-        gSPDisplayList(gDisplayListHead++, D_0601D160);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D670);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D160);
     } else {
-        gSPDisplayList(gDisplayListHead++, D_0601E910);
-        gSPDisplayList(gDisplayListHead++, D_0601E480);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E910);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E480);
     }
     if (1440000.0f < temp_f0) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    gSPDisplayList(gDisplayListHead++, D_06022D28);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
 
     func_802B59DC(sp120, actor->wheelRot);
     vec3f_set(sp160, 17.0f, 6.0f, 32.0f);
@@ -1624,7 +1625,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, actor->wheelRot);
@@ -1634,7 +1635,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
@@ -1644,7 +1645,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
@@ -1654,7 +1655,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
@@ -1664,7 +1665,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022D70);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
@@ -1674,7 +1675,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022D70);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x2D8));
@@ -1684,7 +1685,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022D70);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x2D8));
@@ -1694,7 +1695,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022D70);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
@@ -1716,17 +1717,17 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
 
     if (temp_f0 < 250000.0f) {
 
-        gSPDisplayList(gDisplayListHead++, D_0601F228);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1F228);
 
     } else if (temp_f0 < 1000000.0f) {
-        gSPDisplayList(gDisplayListHead++, D_0601F708);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1F708);
     } else {
-        gSPDisplayList(gDisplayListHead++, D_0601FAF8);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1FAF8);
     }
     if (1440000.0f < temp_f0) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    gSPDisplayList(gDisplayListHead++, D_06022D28);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
 
     func_802B59DC(sp120, actor->wheelRot);
     vec3f_set(sp160, 17.0f, 6.0f, 8.0f);
@@ -1735,7 +1736,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, actor->wheelRot);
@@ -1745,7 +1746,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
@@ -1755,7 +1756,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
@@ -1764,7 +1765,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     func_802B71CC(spA0, sp120, spE0);
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
@@ -1786,21 +1787,21 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (temp_f0 < 250000.0f) {
 
-        gSPDisplayList(gDisplayListHead++, D_06020A20);
-        gSPDisplayList(gDisplayListHead++, D_06020A08);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_20A20);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_20A08);
 
     } else if (temp_f0 < 1000000.0f) {
 
-        gSPDisplayList(gDisplayListHead++, D_06021550);
-        gSPDisplayList(gDisplayListHead++, D_06021220);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21550);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21220);
     } else {
-        gSPDisplayList(gDisplayListHead++, D_06021C90);
-        gSPDisplayList(gDisplayListHead++, D_06021A80);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21C90);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21A80);
     }
     if (1440000.0f < temp_f0) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    gSPDisplayList(gDisplayListHead++, D_06022D28);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
 
     func_802B59DC(sp120, actor->wheelRot);
     vec3f_set(sp160, 17.0f, 6.0f, 28.0f);
@@ -1809,7 +1810,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, actor->wheelRot);
@@ -1819,7 +1820,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x222));
@@ -1829,7 +1830,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x222));
@@ -1839,7 +1840,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x5B0));
@@ -1849,7 +1850,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x5B0));
@@ -1859,7 +1860,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
@@ -1869,7 +1870,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
@@ -1879,7 +1880,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     if (func_802B4FF8(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, D_06022DB8);
+    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
@@ -1911,7 +1912,7 @@ void func_8029CA90(Camera *camera, struct FallingRock *rock) {
             if (func_802B4FF8(sp4C, 0) == 0) {
                 return;
             }
-            gSPDisplayList(gDisplayListHead++, D_06006F88);
+            gSPDisplayList(gDisplayListHead++, d_course_choco_mountain_dl_6F88);
         }
     }
     func_802B5F74(sp4C, rock->pos, rock->rot);
@@ -2268,8 +2269,8 @@ void place_course_actors(void) {
     gNumPermanentActors = 0;
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
-        place_segment_06(D_06009570);
-        place_piranha_plants(D_06009518);
+        place_segment_06(d_course_mario_raceway_tree_spawns);
+        place_piranha_plants(d_course_mario_raceway_piranha_plant_spawns);
         place_all_item_boxes(d_course_mario_raceway_item_box_spawns);
         vec3f_set(position, 150.0f, 40.0f, -1300.0f);
         position[0] *= gCourseDirection;
@@ -2284,40 +2285,40 @@ void place_course_actors(void) {
         place_falling_rocks(d_course_choco_mountain_falling_rock_spawns);
         break;
     case COURSE_BOWSER_CASTLE:
-        place_segment_06(D_06009290);
+        place_segment_06(d_course_bowsers_castle_tree_spawn);
         place_all_item_boxes(d_course_bowsers_castle_item_box_spawns);
         break;
     case COURSE_BANSHEE_BOARDWALK:
         place_all_item_boxes(d_course_banshee_boardwalk_item_box_spawns);
         break;
     case COURSE_YOSHI_VALLEY:
-        place_segment_06(D_060180A0);
+        place_segment_06(d_course_yoshi_valley_tree_spawn);
         place_all_item_boxes(d_course_yoshi_valley_item_box_spawns);
         vec3f_set(position, -2300.0f, 0.0f, 634.0f);
         position[0] *= gCourseDirection;
         addActorToEmptySlot(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
         break;
     case COURSE_FRAPPE_SNOWLAND:
-        place_segment_06(D_06007718);
+        place_segment_06(d_course_frappe_snowland_tree_spawns);
         place_all_item_boxes(d_course_frappe_snowland_item_box_spawns);
         break;
     case COURSE_KOOPA_BEACH:
         func_802A14BC(328.0f * gCourseDirection, 70.0f, 2541.0f);
         place_all_item_boxes(d_course_koopa_troopa_beach_item_box_spawns);
-        place_palm_trees(D_06018F70);
+        place_palm_trees(d_course_koopa_troopa_beach_tree_spawn);
         break;
     case COURSE_ROYAL_RACEWAY:
-        place_segment_06(D_0600DA78);
+        place_segment_06(d_course_royal_raceway_tree_spawn);
         place_all_item_boxes(d_course_royal_raceway_item_box_spawns);
-        place_piranha_plants(D_0600D9F0);
+        place_piranha_plants(d_course_royal_raceway_piranha_plant_spawn);
         break;
     case COURSE_LUIGI_RACEWAY:
-        place_segment_06(D_0600FE80);
+        place_segment_06(d_course_luigi_raceway_tree_spawn);
         place_all_item_boxes(d_course_luigi_raceway_item_box_spawns);
         break;
     case COURSE_MOO_MOO_FARM:
         if (gPlayerCountSelection1 != 4) {
-            place_segment_06(D_06014330);
+            place_segment_06(d_course_moo_moo_farm_tree_spawn);
         }
         place_all_item_boxes(d_course_moo_moo_farm_item_box_spawns);
         break;
@@ -2325,7 +2326,7 @@ void place_course_actors(void) {
         place_all_item_boxes(d_course_toads_turnpike_item_box_spawns);
         break;
     case COURSE_KALAMARI_DESERT:
-        place_segment_06(D_06022F08);
+        place_segment_06(d_course_kalimari_desert_cactus_spawn);
         place_all_item_boxes(d_course_kalimari_desert_item_box_spawns);
         vec3f_set(position, -1680.0f, 2.0f, 35.0f);
         position[0] *= gCourseDirection;
@@ -4006,7 +4007,7 @@ void func_802A27A0(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg, u16 arg3
         if (func_802B4FF8(sp60, 0) == 0) { return; }
 
         gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
-        gSPDisplayList(gDisplayListHead++, D_06016D70);
+        gSPDisplayList(gDisplayListHead++, d_course_yoshi_valley_dl_16D70);
     } else {
         arg1[3][0] = egg->pos[0];
         arg1[3][1] = egg->pos[1];

@@ -166,7 +166,7 @@ struct ActorSpawnData {
 };
 
 // Required for func_80298AC0 due to diff size.
-// members unverified. data located at D_06013F78
+// members unverified. data located at d_course_dks_jungle_parkway_tree_spawn
 /**
  * There are nearly 100 trees in DK Jungle Parkway. If they were put into the actor list proper
  * they would fill it up, leaving no space for stuff like item boxes, shells, bananas, kiwano fruits,

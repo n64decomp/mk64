@@ -1,5 +1,7 @@
 #include <PR/ultratypes.h>
+#include "PR/gbi.h"
 #include "course_offsets.h"
+#include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
 
 extern u8 gTexture6447C4[];
 extern u8 gTexture676FB0[];
@@ -23,106 +25,6 @@ extern u8 gTextureSignWoodenBack1[];
 extern u8 gTextureSignWoodRedArrow[];
 extern u8 gTexture68D940[];
 extern u8 gTexture685AC0[];
-extern u8 D_banshee_boardwalk_060000A0[];
-extern u8 D_banshee_boardwalk_06000210[];
-extern u8 D_banshee_boardwalk_06000160[];
-extern u8 D_banshee_boardwalk_06000270[];
-extern u8 D_banshee_boardwalk_06000358[];
-extern u8 D_banshee_boardwalk_060004F0[];
-extern u8 D_banshee_boardwalk_06000408[];
-extern u8 D_banshee_boardwalk_06000540[];
-extern u8 D_banshee_boardwalk_06000620[];
-extern u8 D_banshee_boardwalk_060007C0[];
-extern u8 D_banshee_boardwalk_060006D0[];
-extern u8 D_banshee_boardwalk_06000870[];
-extern u8 D_banshee_boardwalk_06000940[];
-extern u8 D_banshee_boardwalk_06000AD0[];
-extern u8 D_banshee_boardwalk_060009E0[];
-extern u8 D_banshee_boardwalk_06000B80[];
-extern u8 D_banshee_boardwalk_06000C30[];
-extern u8 D_banshee_boardwalk_06000D80[];
-extern u8 D_banshee_boardwalk_06000CD0[];
-extern u8 D_banshee_boardwalk_06000E10[];
-extern u8 D_banshee_boardwalk_06000EE0[];
-extern u8 D_banshee_boardwalk_06001000[];
-extern u8 D_banshee_boardwalk_06000F50[];
-extern u8 D_banshee_boardwalk_06001070[];
-extern u8 D_banshee_boardwalk_06001160[];
-extern u8 D_banshee_boardwalk_060012A8[];
-extern u8 D_banshee_boardwalk_060011C8[];
-extern u8 D_banshee_boardwalk_060012E8[];
-extern u8 D_banshee_boardwalk_060013F0[];
-extern u8 D_banshee_boardwalk_06001520[];
-extern u8 D_banshee_boardwalk_06001448[];
-extern u8 D_banshee_boardwalk_06001580[];
-extern u8 D_banshee_boardwalk_06001678[];
-extern u8 D_banshee_boardwalk_060017A0[];
-extern u8 D_banshee_boardwalk_060016B8[];
-extern u8 D_banshee_boardwalk_06001820[];
-extern u8 D_banshee_boardwalk_060018D8[];
-extern u8 D_banshee_boardwalk_06001A30[];
-extern u8 D_banshee_boardwalk_06001940[];
-extern u8 D_banshee_boardwalk_06001B00[];
-extern u8 D_banshee_boardwalk_06001BA0[];
-extern u8 D_banshee_boardwalk_06001CC8[];
-extern u8 D_banshee_boardwalk_06001C20[];
-extern u8 D_banshee_boardwalk_06001D90[];
-extern u8 D_banshee_boardwalk_06001E28[];
-extern u8 D_banshee_boardwalk_06001F40[];
-extern u8 D_banshee_boardwalk_06001EA0[];
-extern u8 D_banshee_boardwalk_06002028[];
-extern u8 D_banshee_boardwalk_060020A0[];
-extern u8 D_banshee_boardwalk_060021C8[];
-extern u8 D_banshee_boardwalk_06002138[];
-extern u8 D_banshee_boardwalk_060022D8[];
-extern u8 D_banshee_boardwalk_06002340[];
-extern u8 D_banshee_boardwalk_060024E8[];
-extern u8 D_banshee_boardwalk_06002448[];
-extern u8 D_banshee_boardwalk_06002610[];
-extern u8 D_banshee_boardwalk_06002650[];
-extern u8 D_banshee_boardwalk_06002790[];
-extern u8 D_banshee_boardwalk_06002718[];
-extern u8 D_banshee_boardwalk_06002868[];
-extern u8 D_banshee_boardwalk_060028A8[];
-extern u8 D_banshee_boardwalk_06002A18[];
-extern u8 D_banshee_boardwalk_06002980[];
-extern u8 D_banshee_boardwalk_06002AE0[];
-extern u8 D_banshee_boardwalk_06002B88[];
-extern u8 D_banshee_boardwalk_06002CE0[];
-extern u8 D_banshee_boardwalk_06002C30[];
-extern u8 D_banshee_boardwalk_06002DB0[];
-extern u8 D_banshee_boardwalk_06002E20[];
-extern u8 D_banshee_boardwalk_06002FA0[];
-extern u8 D_banshee_boardwalk_06002EE0[];
-extern u8 D_banshee_boardwalk_06003050[];
-extern u8 D_banshee_boardwalk_06003100[];
-extern u8 D_banshee_boardwalk_060032B0[];
-extern u8 D_banshee_boardwalk_06003200[];
-extern u8 D_banshee_boardwalk_06003390[];
-extern u8 D_banshee_boardwalk_06003468[];
-extern u8 D_banshee_boardwalk_06003660[];
-extern u8 D_banshee_boardwalk_060035A0[];
-extern u8 D_banshee_boardwalk_06003710[];
-extern u8 D_banshee_boardwalk_060037F0[];
-extern u8 D_banshee_boardwalk_06003980[];
-extern u8 D_banshee_boardwalk_06003920[];
-extern u8 D_banshee_boardwalk_06003A20[];
-extern u8 D_banshee_boardwalk_06003AF8[];
-extern u8 D_banshee_boardwalk_06003C40[];
-extern u8 D_banshee_boardwalk_06003C00[];
-extern u8 D_banshee_boardwalk_06003CD0[];
-extern u8 D_banshee_boardwalk_06003D98[];
-extern u8 D_banshee_boardwalk_06003EF0[];
-extern u8 D_banshee_boardwalk_06003EB0[];
-extern u8 D_banshee_boardwalk_06003F60[];
-extern u8 D_banshee_boardwalk_06004038[];
-extern u8 D_banshee_boardwalk_06004188[];
-extern u8 D_banshee_boardwalk_06004118[];
-extern u8 D_banshee_boardwalk_060041F0[];
-extern u8 D_banshee_boardwalk_060042D0[];
-extern u8 D_banshee_boardwalk_06004428[];
-extern u8 D_banshee_boardwalk_060043A8[];
-extern u8 D_banshee_boardwalk_06004480[];
 
 const course_texture banshee_boardwalk_textures[] = {
     {gTexture6447C4, 0x0106, 0x0800, 0x0},
@@ -150,105 +52,105 @@ const course_texture banshee_boardwalk_textures[] = {
     {0x00000000    , 0x0000, 0x0000, 0x0},
 };
 
-const u8 *banshee_boardwalk_dls[] = {
-    D_banshee_boardwalk_060000A0,
-    D_banshee_boardwalk_06000210,
-    D_banshee_boardwalk_06000160,
-    D_banshee_boardwalk_06000270,
-    D_banshee_boardwalk_06000358,
-    D_banshee_boardwalk_060004F0,
-    D_banshee_boardwalk_06000408,
-    D_banshee_boardwalk_06000540,
-    D_banshee_boardwalk_06000620,
-    D_banshee_boardwalk_060007C0,
-    D_banshee_boardwalk_060006D0,
-    D_banshee_boardwalk_06000870,
-    D_banshee_boardwalk_06000940,
-    D_banshee_boardwalk_06000AD0,
-    D_banshee_boardwalk_060009E0,
-    D_banshee_boardwalk_06000B80,
-    D_banshee_boardwalk_06000C30,
-    D_banshee_boardwalk_06000D80,
-    D_banshee_boardwalk_06000CD0,
-    D_banshee_boardwalk_06000E10,
-    D_banshee_boardwalk_06000EE0,
-    D_banshee_boardwalk_06001000,
-    D_banshee_boardwalk_06000F50,
-    D_banshee_boardwalk_06001070,
-    D_banshee_boardwalk_06001160,
-    D_banshee_boardwalk_060012A8,
-    D_banshee_boardwalk_060011C8,
-    D_banshee_boardwalk_060012E8,
-    D_banshee_boardwalk_060013F0,
-    D_banshee_boardwalk_06001520,
-    D_banshee_boardwalk_06001448,
-    D_banshee_boardwalk_06001580,
-    D_banshee_boardwalk_06001678,
-    D_banshee_boardwalk_060017A0,
-    D_banshee_boardwalk_060016B8,
-    D_banshee_boardwalk_06001820,
-    D_banshee_boardwalk_060018D8,
-    D_banshee_boardwalk_06001A30,
-    D_banshee_boardwalk_06001940,
-    D_banshee_boardwalk_06001B00,
-    D_banshee_boardwalk_06001BA0,
-    D_banshee_boardwalk_06001CC8,
-    D_banshee_boardwalk_06001C20,
-    D_banshee_boardwalk_06001D90,
-    D_banshee_boardwalk_06001E28,
-    D_banshee_boardwalk_06001F40,
-    D_banshee_boardwalk_06001EA0,
-    D_banshee_boardwalk_06002028,
-    D_banshee_boardwalk_060020A0,
-    D_banshee_boardwalk_060021C8,
-    D_banshee_boardwalk_06002138,
-    D_banshee_boardwalk_060022D8,
-    D_banshee_boardwalk_06002340,
-    D_banshee_boardwalk_060024E8,
-    D_banshee_boardwalk_06002448,
-    D_banshee_boardwalk_06002610,
-    D_banshee_boardwalk_06002650,
-    D_banshee_boardwalk_06002790,
-    D_banshee_boardwalk_06002718,
-    D_banshee_boardwalk_06002868,
-    D_banshee_boardwalk_060028A8,
-    D_banshee_boardwalk_06002A18,
-    D_banshee_boardwalk_06002980,
-    D_banshee_boardwalk_06002AE0,
-    D_banshee_boardwalk_06002B88,
-    D_banshee_boardwalk_06002CE0,
-    D_banshee_boardwalk_06002C30,
-    D_banshee_boardwalk_06002DB0,
-    D_banshee_boardwalk_06002E20,
-    D_banshee_boardwalk_06002FA0,
-    D_banshee_boardwalk_06002EE0,
-    D_banshee_boardwalk_06003050,
-    D_banshee_boardwalk_06003100,
-    D_banshee_boardwalk_060032B0,
-    D_banshee_boardwalk_06003200,
-    D_banshee_boardwalk_06003390,
-    D_banshee_boardwalk_06003468,
-    D_banshee_boardwalk_06003660,
-    D_banshee_boardwalk_060035A0,
-    D_banshee_boardwalk_06003710,
-    D_banshee_boardwalk_060037F0,
-    D_banshee_boardwalk_06003980,
-    D_banshee_boardwalk_06003920,
-    D_banshee_boardwalk_06003A20,
-    D_banshee_boardwalk_06003AF8,
-    D_banshee_boardwalk_06003C40,
-    D_banshee_boardwalk_06003C00,
-    D_banshee_boardwalk_06003CD0,
-    D_banshee_boardwalk_06003D98,
-    D_banshee_boardwalk_06003EF0,
-    D_banshee_boardwalk_06003EB0,
-    D_banshee_boardwalk_06003F60,
-    D_banshee_boardwalk_06004038,
-    D_banshee_boardwalk_06004188,
-    D_banshee_boardwalk_06004118,
-    D_banshee_boardwalk_060041F0,
-    D_banshee_boardwalk_060042D0,
-    D_banshee_boardwalk_06004428,
-    D_banshee_boardwalk_060043A8,
-    D_banshee_boardwalk_06004480,
+const Gfx *banshee_boardwalk_dls[] = {
+    d_course_banshee_boardwalk_dl_A0,
+    d_course_banshee_boardwalk_dl_210,
+    d_course_banshee_boardwalk_dl_160,
+    d_course_banshee_boardwalk_dl_270,
+    d_course_banshee_boardwalk_dl_358,
+    d_course_banshee_boardwalk_dl_4F0,
+    d_course_banshee_boardwalk_dl_408,
+    d_course_banshee_boardwalk_dl_540,
+    d_course_banshee_boardwalk_dl_620,
+    d_course_banshee_boardwalk_dl_7C0,
+    d_course_banshee_boardwalk_dl_6D0,
+    d_course_banshee_boardwalk_dl_870,
+    d_course_banshee_boardwalk_dl_940,
+    d_course_banshee_boardwalk_dl_AD0,
+    d_course_banshee_boardwalk_dl_9E0,
+    d_course_banshee_boardwalk_dl_B80,
+    d_course_banshee_boardwalk_dl_C30,
+    d_course_banshee_boardwalk_dl_D80,
+    d_course_banshee_boardwalk_dl_CD0,
+    d_course_banshee_boardwalk_dl_E10,
+    d_course_banshee_boardwalk_dl_EE0,
+    d_course_banshee_boardwalk_dl_1000,
+    d_course_banshee_boardwalk_dl_F50,
+    d_course_banshee_boardwalk_dl_1070,
+    d_course_banshee_boardwalk_dl_1160,
+    d_course_banshee_boardwalk_dl_12A8,
+    d_course_banshee_boardwalk_dl_11C8,
+    d_course_banshee_boardwalk_dl_12E8,
+    d_course_banshee_boardwalk_dl_13F0,
+    d_course_banshee_boardwalk_dl_1520,
+    d_course_banshee_boardwalk_dl_1448,
+    d_course_banshee_boardwalk_dl_1580,
+    d_course_banshee_boardwalk_dl_1678,
+    d_course_banshee_boardwalk_dl_17A0,
+    d_course_banshee_boardwalk_dl_16B8,
+    d_course_banshee_boardwalk_dl_1820,
+    d_course_banshee_boardwalk_dl_18D8,
+    d_course_banshee_boardwalk_dl_1A30,
+    d_course_banshee_boardwalk_dl_1940,
+    d_course_banshee_boardwalk_dl_1B00,
+    d_course_banshee_boardwalk_dl_1BA0,
+    d_course_banshee_boardwalk_dl_1CC8,
+    d_course_banshee_boardwalk_dl_1C20,
+    d_course_banshee_boardwalk_dl_1D90,
+    d_course_banshee_boardwalk_dl_1E28,
+    d_course_banshee_boardwalk_dl_1F40,
+    d_course_banshee_boardwalk_dl_1EA0,
+    d_course_banshee_boardwalk_dl_2028,
+    d_course_banshee_boardwalk_dl_20A0,
+    d_course_banshee_boardwalk_dl_21C8,
+    d_course_banshee_boardwalk_dl_2138,
+    d_course_banshee_boardwalk_dl_22D8,
+    d_course_banshee_boardwalk_dl_2340,
+    d_course_banshee_boardwalk_dl_24E8,
+    d_course_banshee_boardwalk_dl_2448,
+    d_course_banshee_boardwalk_dl_2610,
+    d_course_banshee_boardwalk_dl_2650,
+    d_course_banshee_boardwalk_dl_2790,
+    d_course_banshee_boardwalk_dl_2718,
+    d_course_banshee_boardwalk_dl_2868,
+    d_course_banshee_boardwalk_dl_28A8,
+    d_course_banshee_boardwalk_dl_2A18,
+    d_course_banshee_boardwalk_dl_2980,
+    d_course_banshee_boardwalk_dl_2AE0,
+    d_course_banshee_boardwalk_dl_2B88,
+    d_course_banshee_boardwalk_dl_2CE0,
+    d_course_banshee_boardwalk_dl_2C30,
+    d_course_banshee_boardwalk_dl_2DB0,
+    d_course_banshee_boardwalk_dl_2E20,
+    d_course_banshee_boardwalk_dl_2FA0,
+    d_course_banshee_boardwalk_dl_2EE0,
+    d_course_banshee_boardwalk_dl_3050,
+    d_course_banshee_boardwalk_dl_3100,
+    d_course_banshee_boardwalk_dl_32B0,
+    d_course_banshee_boardwalk_dl_3200,
+    d_course_banshee_boardwalk_dl_3390,
+    d_course_banshee_boardwalk_dl_3468,
+    d_course_banshee_boardwalk_dl_3660,
+    d_course_banshee_boardwalk_dl_35A0,
+    d_course_banshee_boardwalk_dl_3710,
+    d_course_banshee_boardwalk_dl_37F0,
+    d_course_banshee_boardwalk_dl_3980,
+    d_course_banshee_boardwalk_dl_3920,
+    d_course_banshee_boardwalk_dl_3A20,
+    d_course_banshee_boardwalk_dl_3AF8,
+    d_course_banshee_boardwalk_dl_3C40,
+    d_course_banshee_boardwalk_dl_3C00,
+    d_course_banshee_boardwalk_dl_3CD0,
+    d_course_banshee_boardwalk_dl_3D98,
+    d_course_banshee_boardwalk_dl_3EF0,
+    d_course_banshee_boardwalk_dl_3EB0,
+    d_course_banshee_boardwalk_dl_3F60,
+    d_course_banshee_boardwalk_dl_4038,
+    d_course_banshee_boardwalk_dl_4188,
+    d_course_banshee_boardwalk_dl_4118,
+    d_course_banshee_boardwalk_dl_41F0,
+    d_course_banshee_boardwalk_dl_42D0,
+    d_course_banshee_boardwalk_dl_4428,
+    d_course_banshee_boardwalk_dl_43A8,
+    d_course_banshee_boardwalk_dl_4480,
 };

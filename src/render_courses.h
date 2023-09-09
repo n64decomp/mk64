@@ -58,67 +58,22 @@ extern Gfx choco_mountain_dls[];
 extern s32 D_802B87BC;
 extern Gfx bowsers_castle_dls[];
 extern Gfx banshee_boardwalk_dls[];
-extern Gfx D_0600B278[];
-extern Gfx yoshi_valley_dls[];
-extern u8 frappe_snowland_dls[];
-extern Gfx d_course_koopa_troopa_beach_dl_list1[];
 extern Gfx royal_raceway_dls[];
 extern Gfx luigi_raceway_dls[];
 
-extern Gfx D_06013FF8[];
-extern Gfx D_06014060[];
 extern Lights1 D_800DC610[];
 extern Gfx moo_moo_farm_dls[];
-
-extern Gfx toads_turnpike_dls[];
 
 extern Lights1 D_800DC610[]; // Light data?
 extern u8 kalimari_desert_dls[];
 extern u8 sherbet_land_dls[];
 extern Gfx wario_stadium_dls[];
 
-extern Gfx D_06009228[];
-extern Gfx D_060164B8[];
-extern Gfx d_course_koopa_troopa_beach_dl_list2[];
 extern Gfx D_090001D0[];
 
-extern Gfx dks_jungle_parkway_dls[];
-extern Gfx D_060071B0[];
-extern Gfx D_060076A0[];
-extern Gfx D_06009148[];
-extern Gfx D_06009348[];
-extern Gfx D_06009AE8[];
-extern Gfx D_0600B308[];
-extern Gfx D_0600CA78[];
-extern Gfx D_0600D8E8[];
-extern Gfx D_0600FD40[];
-extern Gfx D_06013C30[];
-extern Gfx D_06014088[];
-extern Gfx D_06016220[];
-extern Gfx D_06018020[];
-extern Gfx D_06018D68[];
-extern Gfx D_06022E00[];
-extern Gfx D_06023930[];
-extern Gfx D_sherbet_land_06000000[];
 extern u16 D_800DC518;
+extern u16 D_8015F58A;
 
-extern Gfx D_060072D0[];
-extern Gfx D_060079A0[];
-extern Gfx D_060093D8[];
-extern Gfx D_06009650[];
-extern Gfx D_06009C20[];
-extern Gfx D_0600B458[];
-extern Gfx D_0600CC38[];
-extern Gfx D_0600DC28[];
-extern Gfx D_0600FF28[];
-extern Gfx D_06014338[];
-extern Gfx D_060144B8[];
-extern Gfx D_06016440[];
-extern Gfx D_06016558[];
-extern Gfx D_06018240[];
-extern Gfx D_06018FD8[];
-extern Gfx D_06023070[];
-extern Gfx D_06023B68[];
 extern u16 D_800DC5BC;                                     /* unable to generate initializer */
 extern s32 gGamestate;
 extern s32 gModeSelection;

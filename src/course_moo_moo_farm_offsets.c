@@ -1,5 +1,6 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
+#include "courses/mushroom_cup/moo_moo_farm/course_data.inc.h"
 
 extern u8 gTextureWoodDoor0[];
 extern u8 gTextureGrass2[];
@@ -29,98 +30,6 @@ extern u8 gTexture64ACAC[];
 extern u8 gTexture66D698[];
 extern u8 gTexture66EBF0[];
 extern u8 gTextureWheelSteamEngineReal[];
-extern u8 D_moo_moo_farm_06000088[];
-extern u8 D_moo_moo_farm_06000598[];
-extern u8 D_moo_moo_farm_06000338[];
-extern u8 D_moo_moo_farm_060008A0[];
-extern u8 D_moo_moo_farm_06000B00[];
-extern u8 D_moo_moo_farm_06000FE0[];
-extern u8 D_moo_moo_farm_06000D70[];
-extern u8 D_moo_moo_farm_060012B8[];
-extern u8 D_moo_moo_farm_06001530[];
-extern u8 D_moo_moo_farm_06001A20[];
-extern u8 D_moo_moo_farm_06001790[];
-extern u8 D_moo_moo_farm_06001D00[];
-extern u8 D_moo_moo_farm_06001F58[];
-extern u8 D_moo_moo_farm_06002470[];
-extern u8 D_moo_moo_farm_06002190[];
-extern u8 D_moo_moo_farm_060027A8[];
-extern u8 D_moo_moo_farm_06002A10[];
-extern u8 D_moo_moo_farm_06002F20[];
-extern u8 D_moo_moo_farm_06002C38[];
-extern u8 D_moo_moo_farm_06003238[];
-extern u8 D_moo_moo_farm_060034A0[];
-extern u8 D_moo_moo_farm_060039F8[];
-extern u8 D_moo_moo_farm_060036B8[];
-extern u8 D_moo_moo_farm_06003CB0[];
-extern u8 D_moo_moo_farm_06003EB8[];
-extern u8 D_moo_moo_farm_06004428[];
-extern u8 D_moo_moo_farm_06004098[];
-extern u8 D_moo_moo_farm_060046D8[];
-extern u8 D_moo_moo_farm_06004910[];
-extern u8 D_moo_moo_farm_06004E00[];
-extern u8 D_moo_moo_farm_06004AD0[];
-extern u8 D_moo_moo_farm_06005040[];
-extern u8 D_moo_moo_farm_06005290[];
-extern u8 D_moo_moo_farm_06005758[];
-extern u8 D_moo_moo_farm_06005458[];
-extern u8 D_moo_moo_farm_06005990[];
-extern u8 D_moo_moo_farm_06005BF8[];
-extern u8 D_moo_moo_farm_060060A8[];
-extern u8 D_moo_moo_farm_06005DF0[];
-extern u8 D_moo_moo_farm_060062D0[];
-extern u8 D_moo_moo_farm_06006548[];
-extern u8 D_moo_moo_farm_06006A70[];
-extern u8 D_moo_moo_farm_06006778[];
-extern u8 D_moo_moo_farm_06006CB8[];
-extern u8 D_moo_moo_farm_06006FF0[];
-extern u8 D_moo_moo_farm_060074C8[];
-extern u8 D_moo_moo_farm_06007218[];
-extern u8 D_moo_moo_farm_06007718[];
-extern u8 D_moo_moo_farm_06007A80[];
-extern u8 D_moo_moo_farm_06007F78[];
-extern u8 D_moo_moo_farm_06007CD8[];
-extern u8 D_moo_moo_farm_060081E8[];
-extern u8 D_moo_moo_farm_060084D0[];
-extern u8 D_moo_moo_farm_060089A0[];
-extern u8 D_moo_moo_farm_06008728[];
-extern u8 D_moo_moo_farm_06008C00[];
-extern u8 D_moo_moo_farm_06008F18[];
-extern u8 D_moo_moo_farm_060093D0[];
-extern u8 D_moo_moo_farm_06009178[];
-extern u8 D_moo_moo_farm_06009640[];
-extern u8 D_moo_moo_farm_06009938[];
-extern u8 D_moo_moo_farm_06009DF8[];
-extern u8 D_moo_moo_farm_06009BB0[];
-extern u8 D_moo_moo_farm_0600A010[];
-extern u8 D_moo_moo_farm_0600A2C0[];
-extern u8 D_moo_moo_farm_0600A7B0[];
-extern u8 D_moo_moo_farm_0600A568[];
-extern u8 D_moo_moo_farm_0600A9C8[];
-extern u8 D_moo_moo_farm_0600ACB0[];
-extern u8 D_moo_moo_farm_0600B230[];
-extern u8 D_moo_moo_farm_0600B020[];
-extern u8 D_moo_moo_farm_0600B478[];
-extern u8 D_moo_moo_farm_0600B798[];
-extern u8 D_moo_moo_farm_0600BCE8[];
-extern u8 D_moo_moo_farm_0600BB00[];
-extern u8 D_moo_moo_farm_0600BF10[];
-extern u8 D_moo_moo_farm_0600C180[];
-extern u8 D_moo_moo_farm_0600C6D8[];
-extern u8 D_moo_moo_farm_0600C4F8[];
-extern u8 D_moo_moo_farm_0600C950[];
-extern u8 D_moo_moo_farm_0600CBC8[];
-extern u8 D_moo_moo_farm_0600D140[];
-extern u8 D_moo_moo_farm_0600CF58[];
-extern u8 D_moo_moo_farm_0600D408[];
-extern u8 D_moo_moo_farm_0600D6B0[];
-extern u8 D_moo_moo_farm_0600DC70[];
-extern u8 D_moo_moo_farm_0600DA50[];
-extern u8 D_moo_moo_farm_0600DF60[];
-extern u8 D_moo_moo_farm_0600E1D8[];
-extern u8 D_moo_moo_farm_0600E708[];
-extern u8 D_moo_moo_farm_0600E4B0[];
-extern u8 D_moo_moo_farm_0600EA18[];
 
 const course_texture moo_moo_farm_textures[] = {
     {gTextureWoodDoor0, 0x0294, 0x1000, 0x0},
@@ -155,96 +64,96 @@ const course_texture moo_moo_farm_textures[] = {
 };
 
 const u8 *moo_moo_farm_dls[] = {
-    D_moo_moo_farm_06000088,
-    D_moo_moo_farm_06000598,
-    D_moo_moo_farm_06000338,
-    D_moo_moo_farm_060008A0,
-    D_moo_moo_farm_06000B00,
-    D_moo_moo_farm_06000FE0,
-    D_moo_moo_farm_06000D70,
-    D_moo_moo_farm_060012B8,
-    D_moo_moo_farm_06001530,
-    D_moo_moo_farm_06001A20,
-    D_moo_moo_farm_06001790,
-    D_moo_moo_farm_06001D00,
-    D_moo_moo_farm_06001F58,
-    D_moo_moo_farm_06002470,
-    D_moo_moo_farm_06002190,
-    D_moo_moo_farm_060027A8,
-    D_moo_moo_farm_06002A10,
-    D_moo_moo_farm_06002F20,
-    D_moo_moo_farm_06002C38,
-    D_moo_moo_farm_06003238,
-    D_moo_moo_farm_060034A0,
-    D_moo_moo_farm_060039F8,
-    D_moo_moo_farm_060036B8,
-    D_moo_moo_farm_06003CB0,
-    D_moo_moo_farm_06003EB8,
-    D_moo_moo_farm_06004428,
-    D_moo_moo_farm_06004098,
-    D_moo_moo_farm_060046D8,
-    D_moo_moo_farm_06004910,
-    D_moo_moo_farm_06004E00,
-    D_moo_moo_farm_06004AD0,
-    D_moo_moo_farm_06005040,
-    D_moo_moo_farm_06005290,
-    D_moo_moo_farm_06005758,
-    D_moo_moo_farm_06005458,
-    D_moo_moo_farm_06005990,
-    D_moo_moo_farm_06005BF8,
-    D_moo_moo_farm_060060A8,
-    D_moo_moo_farm_06005DF0,
-    D_moo_moo_farm_060062D0,
-    D_moo_moo_farm_06006548,
-    D_moo_moo_farm_06006A70,
-    D_moo_moo_farm_06006778,
-    D_moo_moo_farm_06006CB8,
-    D_moo_moo_farm_06006FF0,
-    D_moo_moo_farm_060074C8,
-    D_moo_moo_farm_06007218,
-    D_moo_moo_farm_06007718,
-    D_moo_moo_farm_06007A80,
-    D_moo_moo_farm_06007F78,
-    D_moo_moo_farm_06007CD8,
-    D_moo_moo_farm_060081E8,
-    D_moo_moo_farm_060084D0,
-    D_moo_moo_farm_060089A0,
-    D_moo_moo_farm_06008728,
-    D_moo_moo_farm_06008C00,
-    D_moo_moo_farm_06008F18,
-    D_moo_moo_farm_060093D0,
-    D_moo_moo_farm_06009178,
-    D_moo_moo_farm_06009640,
-    D_moo_moo_farm_06009938,
-    D_moo_moo_farm_06009DF8,
-    D_moo_moo_farm_06009BB0,
-    D_moo_moo_farm_0600A010,
-    D_moo_moo_farm_0600A2C0,
-    D_moo_moo_farm_0600A7B0,
-    D_moo_moo_farm_0600A568,
-    D_moo_moo_farm_0600A9C8,
-    D_moo_moo_farm_0600ACB0,
-    D_moo_moo_farm_0600B230,
-    D_moo_moo_farm_0600B020,
-    D_moo_moo_farm_0600B478,
-    D_moo_moo_farm_0600B798,
-    D_moo_moo_farm_0600BCE8,
-    D_moo_moo_farm_0600BB00,
-    D_moo_moo_farm_0600BF10,
-    D_moo_moo_farm_0600C180,
-    D_moo_moo_farm_0600C6D8,
-    D_moo_moo_farm_0600C4F8,
-    D_moo_moo_farm_0600C950,
-    D_moo_moo_farm_0600CBC8,
-    D_moo_moo_farm_0600D140,
-    D_moo_moo_farm_0600CF58,
-    D_moo_moo_farm_0600D408,
-    D_moo_moo_farm_0600D6B0,
-    D_moo_moo_farm_0600DC70,
-    D_moo_moo_farm_0600DA50,
-    D_moo_moo_farm_0600DF60,
-    D_moo_moo_farm_0600E1D8,
-    D_moo_moo_farm_0600E708,
-    D_moo_moo_farm_0600E4B0,
-    D_moo_moo_farm_0600EA18,
+    d_course_moo_moo_farm_dl_88,
+    d_course_moo_moo_farm_dl_598,
+    d_course_moo_moo_farm_dl_338,
+    d_course_moo_moo_farm_dl_8A0,
+    d_course_moo_moo_farm_dl_B00,
+    d_course_moo_moo_farm_dl_FE0,
+    d_course_moo_moo_farm_dl_D70,
+    d_course_moo_moo_farm_dl_12B8,
+    d_course_moo_moo_farm_dl_1530,
+    d_course_moo_moo_farm_dl_1A20,
+    d_course_moo_moo_farm_dl_1790,
+    d_course_moo_moo_farm_dl_1D00,
+    d_course_moo_moo_farm_dl_1F58,
+    d_course_moo_moo_farm_dl_2470,
+    d_course_moo_moo_farm_dl_2190,
+    d_course_moo_moo_farm_dl_27A8,
+    d_course_moo_moo_farm_dl_2A10,
+    d_course_moo_moo_farm_dl_2F20,
+    d_course_moo_moo_farm_dl_2C38,
+    d_course_moo_moo_farm_dl_3238,
+    d_course_moo_moo_farm_dl_34A0,
+    d_course_moo_moo_farm_dl_39F8,
+    d_course_moo_moo_farm_dl_36B8,
+    d_course_moo_moo_farm_dl_3CB0,
+    d_course_moo_moo_farm_dl_3EB8,
+    d_course_moo_moo_farm_dl_4428,
+    d_course_moo_moo_farm_dl_4098,
+    d_course_moo_moo_farm_dl_46D8,
+    d_course_moo_moo_farm_dl_4910,
+    d_course_moo_moo_farm_dl_4E00,
+    d_course_moo_moo_farm_dl_4AD0,
+    d_course_moo_moo_farm_dl_5040,
+    d_course_moo_moo_farm_dl_5290,
+    d_course_moo_moo_farm_dl_5758,
+    d_course_moo_moo_farm_dl_5458,
+    d_course_moo_moo_farm_dl_5990,
+    d_course_moo_moo_farm_dl_5BF8,
+    d_course_moo_moo_farm_dl_60A8,
+    d_course_moo_moo_farm_dl_5DF0,
+    d_course_moo_moo_farm_dl_62D0,
+    d_course_moo_moo_farm_dl_6548,
+    d_course_moo_moo_farm_dl_6A70,
+    d_course_moo_moo_farm_dl_6778,
+    d_course_moo_moo_farm_dl_6CB8,
+    d_course_moo_moo_farm_dl_6FF0,
+    d_course_moo_moo_farm_dl_74C8,
+    d_course_moo_moo_farm_dl_7218,
+    d_course_moo_moo_farm_dl_7718,
+    d_course_moo_moo_farm_dl_7A80,
+    d_course_moo_moo_farm_dl_7F78,
+    d_course_moo_moo_farm_dl_7CD8,
+    d_course_moo_moo_farm_dl_81E8,
+    d_course_moo_moo_farm_dl_84D0,
+    d_course_moo_moo_farm_dl_89A0,
+    d_course_moo_moo_farm_dl_8728,
+    d_course_moo_moo_farm_dl_8C00,
+    d_course_moo_moo_farm_dl_8F18,
+    d_course_moo_moo_farm_dl_93D0,
+    d_course_moo_moo_farm_dl_9178,
+    d_course_moo_moo_farm_dl_9640,
+    d_course_moo_moo_farm_dl_9938,
+    d_course_moo_moo_farm_dl_9DF8,
+    d_course_moo_moo_farm_dl_9BB0,
+    d_course_moo_moo_farm_dl_A010,
+    d_course_moo_moo_farm_dl_A2C0,
+    d_course_moo_moo_farm_dl_A7B0,
+    d_course_moo_moo_farm_dl_A568,
+    d_course_moo_moo_farm_dl_A9C8,
+    d_course_moo_moo_farm_dl_ACB0,
+    d_course_moo_moo_farm_dl_B230,
+    d_course_moo_moo_farm_dl_B020,
+    d_course_moo_moo_farm_dl_B478,
+    d_course_moo_moo_farm_dl_B798,
+    d_course_moo_moo_farm_dl_BCE8,
+    d_course_moo_moo_farm_dl_BB00,
+    d_course_moo_moo_farm_dl_BF10,
+    d_course_moo_moo_farm_dl_C180,
+    d_course_moo_moo_farm_dl_C6D8,
+    d_course_moo_moo_farm_dl_C4F8,
+    d_course_moo_moo_farm_dl_C950,
+    d_course_moo_moo_farm_dl_CBC8,
+    d_course_moo_moo_farm_dl_D140,
+    d_course_moo_moo_farm_dl_CF58,
+    d_course_moo_moo_farm_dl_D408,
+    d_course_moo_moo_farm_dl_D6B0,
+    d_course_moo_moo_farm_dl_DC70,
+    d_course_moo_moo_farm_dl_DA50,
+    d_course_moo_moo_farm_dl_DF60,
+    d_course_moo_moo_farm_dl_E1D8,
+    d_course_moo_moo_farm_dl_E708,
+    d_course_moo_moo_farm_dl_E4B0,
+    d_course_moo_moo_farm_dl_EA18,
 };

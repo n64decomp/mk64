@@ -1,6 +1,6 @@
 glabel func_80012190
-/* 012D90 80012190 3C040600 */  lui   $a0, %hi(D_06007520) # $a0, 0x600
-/* 012D94 80012194 24847520 */  addiu $a0, %lo(D_06007520) # addiu $a0, $a0, 0x7520
+/* 012D90 80012190 3C040600 */  lui   $a0, %hi(d_frappe_snowland_tree) # $a0, 0x600
+/* 012D94 80012194 24847520 */  addiu $a0, %lo(d_frappe_snowland_tree) # addiu $a0, $a0, 0x7520
 /* 012D98 80012198 00047602 */  srl   $t6, $a0, 0x18
 /* 012D9C 8001219C 000E7880 */  sll   $t7, $t6, 2
 /* 012DA0 800121A0 3C188015 */  lui   $t8, %hi(gSegmentTable) # 0x8015

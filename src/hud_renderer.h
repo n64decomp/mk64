@@ -453,16 +453,8 @@ extern Lights1 D_800E4698;
 extern s8 D_800E5670[];
 extern s8 D_800E566A[];
 
-extern u8 gTLUTWhomp[]; // Some type of pallette?
+extern u8 d_course_bowsers_castle_thwomp_tlut[]; // Some type of pallette?
 
 extern Gfx *gDisplayListHead;
-
-// Stuff from undefined_syms.txt, don't know where else to put them
-extern u8  D_06013670[];
-extern Gfx d_course_sherbet_land_dl_ice_block[];
-extern Gfx D_0600F650[];
-extern Gfx D_0600F960[];
-extern Gfx D_0600FA20[];
-extern Gfx D_0600FBE0[];
 
 #endif

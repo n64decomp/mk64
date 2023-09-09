@@ -377,60 +377,8 @@ extern OSMesgQueue gDmaMesgQueue;
 extern OSMesg gMainReceivedMesg;
 extern OSIoMesg gDmaIoMesg;
 
-// From Luigi Raceway course data, haven't created a .h file for it yet
-extern Gfx D_0600F960[]; // d_course_luigi_raceway_dl_F960
-
-// From Bowser's Castle course data, haven't created a .h file for it yet
-extern Gfx d_course_bowsers_castle_dl_thwomp[];
-extern u8 d_course_bowsers_castle_thwomp_faces[];
-extern u8 gTLUTWhomp[];
-
-// From Koopa Troopa Beach course data, haven't created a .h file for it yet
-extern u8 d_course_koopa_troopa_beach_crab_frames[];
-extern u8 d_course_koopa_troopa_beach_crab_tlut[];
-
-// From Banshee Boardwalk course data, haven't created a .h file for it yet
-extern Gfx d_course_banshee_boardwalk_dl_cheep_cheep[];
-extern Gfx d_course_banshee_boardwalk_dl_trash_bin[];
-extern u8 gTLUTBoo[];
-
 // from other_textures.s
 extern u8 D_0F0D0E50[]; // gTextureGhosts
-
-// From Moo Moo Farm course data, haven't created a .h file for it yet
-extern u8 D_06013670[]; // d_course_moo_moo_farm_mole_dirt
-extern u8 d_course_moo_moo_farm_mole_frames[][2048];
-
-// From Yoshi Valley course data, haven't created a .h file for it yet
-extern u8 gTLUTHedgehog[];
-extern animation_type_2 *D_06014794[];
-extern u32 D_06014798[];
-extern u8 gTextureHedgehog[];
-
-// From Frappe Snowland course data, haven't created a .h file for it yet
-extern u8 d_course_frappe_snowland_snow_tlut[];
-extern u8 d_course_frappe_snowland_snow[];
-extern u8 gTLUTSnowman[];
-extern u8 gTextureSnowmanHead[];
-extern u8 gTextureSnowmanBody[];
-
-// From Sherbet Land course data, haven't created a .h file for it yet
-extern u32 D_06008EB0[]; // d_course_sherbet_land_unk_data1
-extern animation_type_2 *D_06009AC8[]; // d_course_sherbet_land_unk_data11
-extern u8 d_course_sherbet_land_ice[];
-
-// From Rainbow Road course data, haven't created a .h file for it yet
-extern u8 d_course_rainbow_road_neon_mushroom_tlut_list[];
-extern u8 d_course_rainbow_road_neon_mushroom[];
-extern u8 d_course_rainbow_road_neon_mario_tlut_list[];
-extern u8 d_course_rainbow_road_neon_mario[];
-extern u8 d_course_rainbow_road_neon_boo_tlut_list[];
-extern u8 d_course_rainbow_road_neon_boo[];
-extern u8 d_course_rainbow_road_static_tluts[][512];
-extern u8 d_course_rainbow_road_static_textures[][4096];
-extern u8 d_course_rainbow_road_sphere[];
-extern animation_type_2 *D_0601610C[]; // d_rainbow_road_unk3
-extern u32 D_06016110[]; // d_rainbow_road_unk4
 
 // Seemingly a pointer to Lakitu texture(s)
 extern u8 *D_8018C028;

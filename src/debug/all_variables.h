@@ -62,8 +62,6 @@
 #include <macros.h>
 #include <mk64.h>
 #include <objects.h>
-// #include <packed_displaylist_symbols_gen.h> does not work
-#include <packed_displaylist_symbols.h>
 #include <segments.h>
 #include <segment_symbols.h>
 #include <sounds.h>

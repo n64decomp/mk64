@@ -3214,7 +3214,7 @@ Gfx d_course_wario_stadium_dl_5588[] =
 
 
 // 0x56A0
-struct TrackWayPoint d_course_unknown_waypoints_dl[] = {
+struct TrackWayPoint d_course_wario_stadium_unknown_waypoints[] = {
     {16, 0, 7, 0},
     {11, 0, -25, 0},
     {8, 0, -227, 0},
@@ -3294,7 +3294,7 @@ struct TrackWayPoint d_course_unknown_waypoints_dl[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_track_waypoints_dl[] = {
+struct TrackWayPoint d_course_wario_staduim_track_waypoints[] = {
     {13, 0, -9, 1},
     {11, 0, -28, 1},
     {11, 0, -48, 1},
