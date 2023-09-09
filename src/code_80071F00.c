@@ -23,6 +23,7 @@
 #include "code_80091440.h"
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
+#include "courses/all_course_data.h"
 
 
 s32 find_unused_obj_index(s32* arg0) {
@@ -4427,13 +4428,13 @@ void func_8007C550(s32 objectIndex) {
     func_8007C4A4(objectIndex);
 }
 
-extern u8 gTLUTBoo[];
+extern u8 d_course_banshee_boardwalk_boo_tlut[];
 extern u8 *D_80165880;
 
 void func_8007C5B4(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTBoo, D_80165880, 48, 40);
+    func_80073444(objectIndex, d_course_banshee_boardwalk_boo_tlut, D_80165880, 48, 40);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->pos[0] = 0.0f;
     temp_s0->pos[1] = 0.0f;
@@ -4714,7 +4715,7 @@ void func_8007CC00(void) {
 void func_8007CE0C(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTBoo, D_0F0D0E50, 0x30U, (u16) 0x00000028);
+    func_80073444(objectIndex, d_course_banshee_boardwalk_boo_tlut, D_0F0D0E50, 0x30U, (u16) 0x00000028);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_0D2 = 0x1C;
     temp_s0->pos[0] = 0.0f;
@@ -5508,7 +5509,7 @@ void func_8007EC30(s32 objectIndex) {
         func_8008B888(objectIndex, 0U, 0xC000U, 0U);
         func_8008B8BC(objectIndex, 0U, 0xC000U, 0U);
     }
-    func_80073444(objectIndex, gTLUTWhomp, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s1->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s1->unk_0C8 = 0x000C;
     temp_s1->sizeScaling = 1.0f;
@@ -5551,7 +5552,7 @@ void func_8007ED6C(s32 objectIndex) {
 void func_8007EE5C(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTWhomp, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->sizeScaling = 1.0f;
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
@@ -5850,7 +5851,7 @@ void func_8007F8D8(void) {
 void func_8007FA08(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTWhomp, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s0->unk_0C8 = 0x000C;
@@ -6035,7 +6036,7 @@ void func_8007FFC0(s32 objectIndex) {
 void func_80080078(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTWhomp, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s0->unk_0C8 = 0x000C;
@@ -6102,7 +6103,7 @@ void func_800802C0(s32 objectIndex) {
 
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_0D8 = 0;
-    func_80073444(objectIndex, gTLUTWhomp, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s0->unk_0D2 = 0;
     temp_s0->unk_0C8 = 0x000C;
@@ -6159,7 +6160,7 @@ void func_80080408(s32 objectIndex) {
 void func_80080524(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTWhomp, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s0->unk_0C8 = 0x000C;
@@ -6555,8 +6556,8 @@ void func_8008153C(s32 objectIndex) {
             if (D_80165C18[loopObjectIndex].unk_0A6 != 0) continue;
 
             func_800723A4(loopObjectIndex, 0);
-            D_80165C18[loopObjectIndex].activeTLUT = D_06013670;
-            D_80165C18[loopObjectIndex].tlutList = D_06013670;
+            D_80165C18[loopObjectIndex].activeTLUT = d_course_moo_moo_farm_mole_dirt;
+            D_80165C18[loopObjectIndex].tlutList = d_course_moo_moo_farm_mole_dirt;
             D_80165C18[loopObjectIndex].sizeScaling = 0.15f;
             D_80165C18[loopObjectIndex].unk_038[1] = random_int(0x000AU);
             D_80165C18[loopObjectIndex].unk_038[1] = (D_80165C18[loopObjectIndex].unk_038[1] * 0.1) + 4.8;
@@ -6898,8 +6899,8 @@ void func_800821FC(void) {
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-extern ? D_060169B0;
-extern ? D_06016B60;
+extern ? d_course_koopa_troopa_beach_unk4;
+extern ? d_course_koopa_troopa_beach_unk_data5;
 extern f32 D_8018D01C;
 extern s32 gGamestate;
 static ? D_800E6034;                                /* unable to generate initializer */
@@ -6920,8 +6921,8 @@ void func_8008241C(s32 objectIndex, s32 arg1) {
 
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_0D8 = 1;
-    temp_s0->unk_070 = (s32) &D_060169B0;
-    temp_s0->unk_074 = (s32) &D_06016B60;
+    temp_s0->unk_070 = (s32) &d_course_koopa_troopa_beach_unk4;
+    temp_s0->unk_074 = (s32) &d_course_koopa_troopa_beach_unk_data5;
     temp_s0->unk_0DD = 1;
     temp_s0->sizeScaling = 0.2f;
     temp_v0 = random_int(0x00C8U);
@@ -7147,8 +7148,8 @@ void func_80082E5C(void) {
 // https://decomp.me/scratch/RquH0
 // Gollygee I sure love register allocation :^)
 void func_80082F1C(s32 objectIndex, s32 arg1) {
-    D_80165C18[objectIndex].unk_070 = D_06014798;
-    D_80165C18[objectIndex].unk_074 = D_06014794;
+    D_80165C18[objectIndex].unk_070 = d_course_yoshi_valley_unk5;
+    D_80165C18[objectIndex].unk_074 = d_course_yoshi_valley_unk4;
     D_80165C18[objectIndex].sizeScaling = 0.027f;
     func_80072488(objectIndex);
     func_8008B7D4(objectIndex, D_800E5DF4[arg1].pos[0] * D_8018D01C, D_800E5DF4[arg1].pos[1], D_800E5DF4[arg1].pos[2]);
@@ -7190,10 +7191,10 @@ void func_80083080(void) {
 void func_8008311C(s32 objectIndex, s32 arg1) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTHedgehog, gTextureHedgehog, 0x40U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_yoshi_valley_hedgehog_tlut, d_course_yoshi_valley_hedgehog, 0x40U, (u16) 0x00000040);
     temp_s0 = &D_80165C18[objectIndex];
-    temp_s0->activeTLUT = gTLUTHedgehog;
-    temp_s0->activeTexture = gTextureHedgehog;
+    temp_s0->activeTLUT = d_course_yoshi_valley_hedgehog_tlut;
+    temp_s0->activeTexture = d_course_yoshi_valley_hedgehog;
     temp_s0->unk_074 = D_0D0060B0;
     temp_s0->sizeScaling = 0.2f;
     temp_s0->unk_0D2 = 0;
@@ -7329,7 +7330,7 @@ void func_8008379C(s32 objectIndex) {
 void func_80083868(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
-    func_80073444(objectIndex, gTLUTSnowman, gTextureSnowmanHead, 0x40U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_frappe_snowland_snowman_tlut, d_course_frappe_snowland_snowman_head, 0x40U, (u16) 0x00000040);
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_074 = D_0D0061B0;
     temp_s0->sizeScaling = 0.1f;
@@ -7392,7 +7393,7 @@ void func_80083A94(s32 objectIndex) {
 }
 
 void func_80083B0C(s32 objectIndex) {
-    func_80073444(objectIndex, gTLUTSnowman, gTextureSnowmanBody, 0x40U, (u16) 0x00000040);
+    func_80073444(objectIndex, d_course_frappe_snowland_snowman_tlut, d_course_frappe_snowland_snowman_body, 0x40U, (u16) 0x00000040);
     D_80165C18[objectIndex].unk_074 = D_0D0060B0;
     D_80165C18[objectIndex].sizeScaling = 0.1f;
     D_80165C18[objectIndex].unk_0D2 = 0;
@@ -7569,8 +7570,8 @@ void func_800842C8(void) {
 
 #ifdef MIPS_TO_C
 //generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Aug-10-2023
-extern Gfx D_06008EB0;
-extern Vtx D_06009AC8;
+extern Gfx d_course_sherbet_land_unk_data1;
+extern Vtx d_course_sherbet_land_unk_data11;
 static s16 D_800E659C[4];                           /* unable to generate initializer */
 static s16 D_800E6668[4];                           /* unable to generate initializer */
 static s16 (*D_800E672C[2])[4] = { (s16 (*)[4]) D_800E659C, (s16 (*)[4]) D_800E6668 };
@@ -7580,8 +7581,8 @@ void func_80084430(s32 objectIndex, s32 arg1) {
 
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_0D8 = 0;
-    temp_s0->unk_070 = &D_06008EB0;
-    temp_s0->unk_074 = &D_06009AC8;
+    temp_s0->unk_070 = &d_course_sherbet_land_unk_data1;
+    temp_s0->unk_074 = &d_course_sherbet_land_unk_data11;
     temp_s0->unk_0C8 = 0x000C;
     temp_s0->unk_09C = 1;
     temp_s0->sizeScaling = 0.2f;
@@ -7591,7 +7592,7 @@ void func_80084430(s32 objectIndex, s32 arg1) {
     func_80086EF0(objectIndex);
     temp_s0->unk_080 = *D_800E672C;
     func_800721C0(objectIndex, 0x04000800);
-    temp_s0->unk_0A4 = func_80004EAC(&D_06009AC8, 0);
+    temp_s0->unk_0A4 = func_80004EAC(&d_course_sherbet_land_unk_data11, 0);
     func_80072488(objectIndex);
 }
 #else
@@ -7618,8 +7619,8 @@ void func_800845C8(s32 objectIndex, s32 arg1) {
 
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_0D8 = 0;
-    temp_s0->unk_070 = D_06008EB0;
-    temp_s0->unk_074 = D_06009AC8;
+    temp_s0->unk_070 = d_course_sherbet_land_unk_data1;
+    temp_s0->unk_074 = d_course_sherbet_land_unk_data11;
     temp_s0->unk_0C8 = 4;
     temp_s0->unk_09C = 2;
     temp_s0->unk_04C = random_int(0x012CU);
@@ -7712,7 +7713,7 @@ void func_800845C8(s32 objectIndex, s32 arg1) {
     }
     func_80086EF0(objectIndex);
     temp_s0->unk_034 = 0.0f;
-    temp_s0->unk_0A4 = func_80004EAC(D_06009AC8, 0);
+    temp_s0->unk_0A4 = func_80004EAC(d_course_sherbet_land_unk_data11, 0);
     func_80072488(objectIndex);
 }
 
@@ -7785,7 +7786,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
             D_80165C18[objectIndex].unk_09C = 1;
             D_80165C18[objectIndex].unk_0D8 = 1;
             D_80165C18[objectIndex].unk_0D2 = 0;
-            D_80165C18[objectIndex].unk_0A4 = func_80004EAC(D_06009AC8, D_80165C18[objectIndex].unk_0D8);
+            D_80165C18[objectIndex].unk_0A4 = func_80004EAC(d_course_sherbet_land_unk_data11, D_80165C18[objectIndex].unk_0D8);
             func_800726CC(objectIndex, 3);
             func_80086FD4(objectIndex);
             if (func_80072354(objectIndex, 0x00000020) != 0) {
@@ -7825,7 +7826,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
             func_800722A4(objectIndex, 2);
             D_80165C18[objectIndex].unk_0D8 = 2;
             D_80165C18[objectIndex].unk_0D2 = 0;
-            D_80165C18[objectIndex].unk_0A4 = func_80004EAC(D_06009AC8, D_80165C18[objectIndex].unk_0D8);
+            D_80165C18[objectIndex].unk_0A4 = func_80004EAC(d_course_sherbet_land_unk_data11, D_80165C18[objectIndex].unk_0D8);
             func_800726CC(objectIndex, 3);
             func_80086FD4(objectIndex);
         }
@@ -7834,7 +7835,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
         if (func_80072354(objectIndex, 2) != 0) {
             D_80165C18[objectIndex].unk_0D8 = 0;
             D_80165C18[objectIndex].unk_0D2 = 0;
-            D_80165C18[objectIndex].unk_0A4 = func_80004EAC(D_06009AC8, D_80165C18[objectIndex].unk_0D8);
+            D_80165C18[objectIndex].unk_0A4 = func_80004EAC(d_course_sherbet_land_unk_data11, D_80165C18[objectIndex].unk_0D8);
             D_80165C18[objectIndex].unk_0C6 += 0x8000;
             func_800726CC(objectIndex, 2);
             func_8008701C(objectIndex, 1);
@@ -7937,7 +7938,7 @@ void func_80085214(void) {
 
 void func_800853DC(s32 objectIndex) {
     D_80165C18[objectIndex].sizeScaling = 1.0f;
-    D_80165C18[objectIndex].unk_070 = D_0600F960;
+    D_80165C18[objectIndex].unk_070 = d_course_luigi_raceway_dl_F960;
     if (gGamestate != 9) {
         func_8008B7D4(objectIndex, D_8018D01C * -176.0, 0.0f, -2323.0f);
         func_8008B80C(objectIndex, 0.0f, 300.0f, 0.0f);
@@ -8037,8 +8038,8 @@ void func_80085878(s32 objectIndex, s32 arg1) {
 
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_0D8 = 1;
-    temp_s0->unk_070 = D_06016110;
-    temp_s0->unk_074 = D_0601610C;
+    temp_s0->unk_070 = d_rainbow_road_unk4;
+    temp_s0->unk_074 = d_rainbow_road_unk3;
     temp_s0->sizeScaling = 0.03f;
     temp_s0->unk_0C8 = 0x000A;
     func_800721C0(objectIndex, 0x04000200);
@@ -8048,7 +8049,7 @@ void func_80085878(s32 objectIndex, s32 arg1) {
     func_8008B80C(objectIndex, temp_v0->wayPointX, temp_v0->wayPointY, temp_v0->wayPointZ);
     func_8008B888(objectIndex, 0U, 0U, 0U);
     temp_s0->unk_034 = 4.0f;
-    temp_s0->unk_0A4 = func_80004EAC(D_0601610C, 0);
+    temp_s0->unk_0A4 = func_80004EAC(d_rainbow_road_unk3, 0);
     func_80072488(objectIndex);
 }
 

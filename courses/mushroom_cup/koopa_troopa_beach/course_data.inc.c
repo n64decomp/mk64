@@ -6766,7 +6766,7 @@ Gfx d_course_koopa_troopa_beach_dl_AD40[] =
 };
 
 // 0xADE0 path
-struct TrackWayPoint d_course_koopa_troopa_beach_unknown_waypoints[] = {
+struct TrackWayPoint d_course_koopa_troopa_beach_unknown_waypoints0[] = {
     {-34, 0, 103, 0},
     {-34, 0, 60, 0},
     {-38, 0, -184, 0},
@@ -6829,9 +6829,9 @@ struct TrackWayPoint d_course_koopa_troopa_beach_unknown_waypoints[] = {
     {-30, 0, 237, 0},
     {-32, 0, 136, 0},
     {-32768, 0, 0, 0},
+};
 
-
-
+struct TrackWayPoint d_course_koopa_troopa_beach_unknown_waypoints1[] = {
     {-27, 0, 101, 7},
     {-31, 0, 76, 7},
     {-27, 0, -187, 7},
@@ -6893,7 +6893,7 @@ struct TrackWayPoint d_course_koopa_troopa_beach_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_koopa_troopa_beach_track_waypoints[] = {
+struct TrackWayPoint d_course_koopa_troopa_beach_track_waypoints0[] = {
     {-34, 1, 81, 1},
     {-34, 1, 61, 1},
     {-34, 1, 41, 1},
@@ -7503,9 +7503,9 @@ struct TrackWayPoint d_course_koopa_troopa_beach_track_waypoints[] = {
     {-33, 1, 121, 1},
     {-33, 1, 101, 1},
     {-32768, -32768, -32768, 0},
+};
 
-
-
+struct TrackWayPoint d_course_koopa_troopa_beach_track_waypoints1[] = {
     {-29, 1, 88, 1},
     {-29, 1, 68, 1},
     {-29, 1, 48, 1},
@@ -9188,7 +9188,6 @@ TrackSections d_course_koopa_troopa_beach_addr[] = {
     { d_course_koopa_troopa_beach_packed_dl_3F60, 10, 32, 0x0000 },
     { d_course_koopa_troopa_beach_packed_dl_42E0, 10, 33, 0x0000 },
     { d_course_koopa_troopa_beach_packed_dl_43C0, 10, 34, 0x0000 },
-
     { d_course_koopa_troopa_beach_packed_dl_45C8, 10, 35, 0x0000 },
     { d_course_koopa_troopa_beach_packed_dl_7F70, 12, 1, 0x0000 },
     { d_course_koopa_troopa_beach_packed_dl_8028, 12, 2, 0x0000 },
@@ -9223,7 +9222,7 @@ TrackSections d_course_koopa_troopa_beach_addr[] = {
     { d_course_koopa_troopa_beach_packed_dl_8980, 12, 30, 0x0000 },
     { d_course_koopa_troopa_beach_packed_dl_7608, 1, 37, 0x0000 },
     { d_course_koopa_troopa_beach_packed_dl_7538, 1, 37, 0x0000 },
-       { d_course_koopa_troopa_beach_packed_dl_7430, 1, 37, 0x0000 },
+    { d_course_koopa_troopa_beach_packed_dl_7430, 1, 37, 0x0000 },
     { d_course_koopa_troopa_beach_packed_dl_9B20, 12, 255, 0x0000 },
     { d_course_koopa_troopa_beach_packed_dl_9B78, 1, 255, 0x0000 },
     { 0x00000000, 0, 0, 0x0000 },

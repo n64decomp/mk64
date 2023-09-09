@@ -1,5 +1,6 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
+#include "courses/mushroom_cup/kalimari_desert/course_data.inc.h"
 
 extern u8 gTexture6684F8[];
 extern u8 gTextureSignLuigis0[];
@@ -26,86 +27,6 @@ extern u8 gTextureSignShellShot0[];
 extern u8 gTextureSignShellShot1[];
 extern u8 gTextureSignKoopaAir0[];
 extern u8 gTextureSignKoopaAir1[];
-extern u8 D_kalimari_desert_06000000[];
-extern u8 D_kalimari_desert_06000258[];
-extern u8 D_kalimari_desert_06000100[];
-extern u8 D_kalimari_desert_06000310[];
-extern u8 D_kalimari_desert_060004A0[];
-extern u8 D_kalimari_desert_06000778[];
-extern u8 D_kalimari_desert_060005C0[];
-extern u8 D_kalimari_desert_06000858[];
-extern u8 D_kalimari_desert_06000A58[];
-extern u8 D_kalimari_desert_06000CD0[];
-extern u8 D_kalimari_desert_06000B38[];
-extern u8 D_kalimari_desert_06000DD0[];
-extern u8 D_kalimari_desert_06000F68[];
-extern u8 D_kalimari_desert_06001258[];
-extern u8 D_kalimari_desert_06001030[];
-extern u8 D_kalimari_desert_06001350[];
-extern u8 D_kalimari_desert_060014C0[];
-extern u8 D_kalimari_desert_060017C8[];
-extern u8 D_kalimari_desert_06001588[];
-extern u8 D_kalimari_desert_060018C8[];
-extern u8 D_kalimari_desert_06001A58[];
-extern u8 D_kalimari_desert_06001D48[];
-extern u8 D_kalimari_desert_06001B38[];
-extern u8 D_kalimari_desert_06001E80[];
-extern u8 D_kalimari_desert_06002000[];
-extern u8 D_kalimari_desert_060022D8[];
-extern u8 D_kalimari_desert_060020E0[];
-extern u8 D_kalimari_desert_06002458[];
-extern u8 D_kalimari_desert_060025D0[];
-extern u8 D_kalimari_desert_06002868[];
-extern u8 D_kalimari_desert_060026E8[];
-extern u8 D_kalimari_desert_060029C0[];
-extern u8 D_kalimari_desert_06002B40[];
-extern u8 D_kalimari_desert_06002DE8[];
-extern u8 D_kalimari_desert_06002C88[];
-extern u8 D_kalimari_desert_06002F30[];
-extern u8 D_kalimari_desert_06003068[];
-extern u8 D_kalimari_desert_060032F8[];
-extern u8 D_kalimari_desert_060031C0[];
-extern u8 D_kalimari_desert_06003460[];
-extern u8 D_kalimari_desert_06003590[];
-extern u8 D_kalimari_desert_06003818[];
-extern u8 D_kalimari_desert_06003718[];
-extern u8 D_kalimari_desert_06003998[];
-extern u8 D_kalimari_desert_06003AC0[];
-extern u8 D_kalimari_desert_06003DB8[];
-extern u8 D_kalimari_desert_06003CA0[];
-extern u8 D_kalimari_desert_06003FB0[];
-extern u8 D_kalimari_desert_060040A8[];
-extern u8 D_kalimari_desert_06004358[];
-extern u8 D_kalimari_desert_06004280[];
-extern u8 D_kalimari_desert_06004538[];
-extern u8 D_kalimari_desert_06004630[];
-extern u8 D_kalimari_desert_060049E0[];
-extern u8 D_kalimari_desert_06004908[];
-extern u8 D_kalimari_desert_06004BA0[];
-extern u8 D_kalimari_desert_06004CF0[];
-extern u8 D_kalimari_desert_06004FB0[];
-extern u8 D_kalimari_desert_06004EF8[];
-extern u8 D_kalimari_desert_06005100[];
-extern u8 D_kalimari_desert_06005208[];
-extern u8 D_kalimari_desert_06005470[];
-extern u8 D_kalimari_desert_060053A0[];
-extern u8 D_kalimari_desert_060055C8[];
-extern u8 D_kalimari_desert_06005730[];
-extern u8 D_kalimari_desert_06005978[];
-extern u8 D_kalimari_desert_06005898[];
-extern u8 D_kalimari_desert_06005AD0[];
-extern u8 D_kalimari_desert_06005BE8[];
-extern u8 D_kalimari_desert_06005DF8[];
-extern u8 D_kalimari_desert_06005D20[];
-extern u8 D_kalimari_desert_06005F20[];
-extern u8 D_kalimari_desert_06006028[];
-extern u8 D_kalimari_desert_060062F8[];
-extern u8 D_kalimari_desert_060061B0[];
-extern u8 D_kalimari_desert_060063E0[];
-extern u8 D_kalimari_desert_060065B0[];
-extern u8 D_kalimari_desert_06006838[];
-extern u8 D_kalimari_desert_060066F0[];
-extern u8 D_kalimari_desert_06006940[];
 
 const course_texture kalimari_desert_textures[] = {
     {gTexture6684F8, 0x010D, 0x0800, 0x0},
@@ -137,84 +58,84 @@ const course_texture kalimari_desert_textures[] = {
 };
 
 const u8 *kalimari_desert_dls[] = {
-    D_kalimari_desert_06000000,
-    D_kalimari_desert_06000258,
-    D_kalimari_desert_06000100,
-    D_kalimari_desert_06000310,
-    D_kalimari_desert_060004A0,
-    D_kalimari_desert_06000778,
-    D_kalimari_desert_060005C0,
-    D_kalimari_desert_06000858,
-    D_kalimari_desert_06000A58,
-    D_kalimari_desert_06000CD0,
-    D_kalimari_desert_06000B38,
-    D_kalimari_desert_06000DD0,
-    D_kalimari_desert_06000F68,
-    D_kalimari_desert_06001258,
-    D_kalimari_desert_06001030,
-    D_kalimari_desert_06001350,
-    D_kalimari_desert_060014C0,
-    D_kalimari_desert_060017C8,
-    D_kalimari_desert_06001588,
-    D_kalimari_desert_060018C8,
-    D_kalimari_desert_06001A58,
-    D_kalimari_desert_06001D48,
-    D_kalimari_desert_06001B38,
-    D_kalimari_desert_06001E80,
-    D_kalimari_desert_06002000,
-    D_kalimari_desert_060022D8,
-    D_kalimari_desert_060020E0,
-    D_kalimari_desert_06002458,
-    D_kalimari_desert_060025D0,
-    D_kalimari_desert_06002868,
-    D_kalimari_desert_060026E8,
-    D_kalimari_desert_060029C0,
-    D_kalimari_desert_06002B40,
-    D_kalimari_desert_06002DE8,
-    D_kalimari_desert_06002C88,
-    D_kalimari_desert_06002F30,
-    D_kalimari_desert_06003068,
-    D_kalimari_desert_060032F8,
-    D_kalimari_desert_060031C0,
-    D_kalimari_desert_06003460,
-    D_kalimari_desert_06003590,
-    D_kalimari_desert_06003818,
-    D_kalimari_desert_06003718,
-    D_kalimari_desert_06003998,
-    D_kalimari_desert_06003AC0,
-    D_kalimari_desert_06003DB8,
-    D_kalimari_desert_06003CA0,
-    D_kalimari_desert_06003FB0,
-    D_kalimari_desert_060040A8,
-    D_kalimari_desert_06004358,
-    D_kalimari_desert_06004280,
-    D_kalimari_desert_06004538,
-    D_kalimari_desert_06004630,
-    D_kalimari_desert_060049E0,
-    D_kalimari_desert_06004908,
-    D_kalimari_desert_06004BA0,
-    D_kalimari_desert_06004CF0,
-    D_kalimari_desert_06004FB0,
-    D_kalimari_desert_06004EF8,
-    D_kalimari_desert_06005100,
-    D_kalimari_desert_06005208,
-    D_kalimari_desert_06005470,
-    D_kalimari_desert_060053A0,
-    D_kalimari_desert_060055C8,
-    D_kalimari_desert_06005730,
-    D_kalimari_desert_06005978,
-    D_kalimari_desert_06005898,
-    D_kalimari_desert_06005AD0,
-    D_kalimari_desert_06005BE8,
-    D_kalimari_desert_06005DF8,
-    D_kalimari_desert_06005D20,
-    D_kalimari_desert_06005F20,
-    D_kalimari_desert_06006028,
-    D_kalimari_desert_060062F8,
-    D_kalimari_desert_060061B0,
-    D_kalimari_desert_060063E0,
-    D_kalimari_desert_060065B0,
-    D_kalimari_desert_06006838,
-    D_kalimari_desert_060066F0,
-    D_kalimari_desert_06006940,
+    d_course_kalimari_desert_dl_0,
+    d_course_kalimari_desert_dl_258,
+    d_course_kalimari_desert_dl_100,
+    d_course_kalimari_desert_dl_310,
+    d_course_kalimari_desert_dl_4A0,
+    d_course_kalimari_desert_dl_778,
+    d_course_kalimari_desert_dl_5C0,
+    d_course_kalimari_desert_dl_858,
+    d_course_kalimari_desert_dl_A58,
+    d_course_kalimari_desert_dl_CD0,
+    d_course_kalimari_desert_dl_B38,
+    d_course_kalimari_desert_dl_DD0,
+    d_course_kalimari_desert_dl_F68,
+    d_course_kalimari_desert_dl_1258,
+    d_course_kalimari_desert_dl_1030,
+    d_course_kalimari_desert_dl_1350,
+    d_course_kalimari_desert_dl_14C0,
+    d_course_kalimari_desert_dl_17C8,
+    d_course_kalimari_desert_dl_1588,
+    d_course_kalimari_desert_dl_18C8,
+    d_course_kalimari_desert_dl_1A58,
+    d_course_kalimari_desert_dl_1D48,
+    d_course_kalimari_desert_dl_1B38,
+    d_course_kalimari_desert_dl_1E80,
+    d_course_kalimari_desert_dl_2000,
+    d_course_kalimari_desert_dl_22D8,
+    d_course_kalimari_desert_dl_20E0,
+    d_course_kalimari_desert_dl_2458,
+    d_course_kalimari_desert_dl_25D0,
+    d_course_kalimari_desert_dl_2868,
+    d_course_kalimari_desert_dl_26E8,
+    d_course_kalimari_desert_dl_29C0,
+    d_course_kalimari_desert_dl_2B40,
+    d_course_kalimari_desert_dl_2DE8,
+    d_course_kalimari_desert_dl_2C88,
+    d_course_kalimari_desert_dl_2F30,
+    d_course_kalimari_desert_dl_3068,
+    d_course_kalimari_desert_dl_32F8,
+    d_course_kalimari_desert_dl_31C0,
+    d_course_kalimari_desert_dl_3460,
+    d_course_kalimari_desert_dl_3590,
+    d_course_kalimari_desert_dl_3818,
+    d_course_kalimari_desert_dl_3718,
+    d_course_kalimari_desert_dl_3998,
+    d_course_kalimari_desert_dl_3AC0,
+    d_course_kalimari_desert_dl_3DB8,
+    d_course_kalimari_desert_dl_3CA0,
+    d_course_kalimari_desert_dl_3FB0,
+    d_course_kalimari_desert_dl_40A8,
+    d_course_kalimari_desert_dl_4358,
+    d_course_kalimari_desert_dl_4280,
+    d_course_kalimari_desert_dl_4538,
+    d_course_kalimari_desert_dl_4630,
+    d_course_kalimari_desert_dl_49E0,
+    d_course_kalimari_desert_dl_4908,
+    d_course_kalimari_desert_dl_4BA0,
+    d_course_kalimari_desert_dl_4CF0,
+    d_course_kalimari_desert_dl_4FB0,
+    d_course_kalimari_desert_dl_4EF8,
+    d_course_kalimari_desert_dl_5100,
+    d_course_kalimari_desert_dl_5208,
+    d_course_kalimari_desert_dl_5470,
+    d_course_kalimari_desert_dl_53A0,
+    d_course_kalimari_desert_dl_55C8,
+    d_course_kalimari_desert_dl_5730,
+    d_course_kalimari_desert_dl_5978,
+    d_course_kalimari_desert_dl_5898,
+    d_course_kalimari_desert_dl_5AD0,
+    d_course_kalimari_desert_dl_5BE8,
+    d_course_kalimari_desert_dl_5DF8,
+    d_course_kalimari_desert_dl_5D20,
+    d_course_kalimari_desert_dl_5F20,
+    d_course_kalimari_desert_dl_6028,
+    d_course_kalimari_desert_dl_62F8,
+    d_course_kalimari_desert_dl_61B0,
+    d_course_kalimari_desert_dl_63E0,
+    d_course_kalimari_desert_dl_65B0,
+    d_course_kalimari_desert_dl_6838,
+    d_course_kalimari_desert_dl_66F0,
+    d_course_kalimari_desert_dl_6940,
 };

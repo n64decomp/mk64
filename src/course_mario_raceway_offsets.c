@@ -1,5 +1,6 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
+#include "courses/flower_cup/mario_raceway/course_data.inc.h"
 
 extern u8 gTextureCheckerboardYellowPink[];
 extern u8 gTexture64619C[];
@@ -31,74 +32,6 @@ extern u8 gTextureSignShellShot0[];
 extern u8 gTextureSignShellShot1[];
 extern u8 gTextureSignKoopaAir0[];
 extern u8 gTextureSignKoopaAir1[];
-extern u8 D_mario_raceway_06000000[];
-extern u8 D_mario_raceway_060001D0[];
-extern u8 D_mario_raceway_060000E8[];
-extern u8 D_mario_raceway_060002C8[];
-extern u8 D_mario_raceway_060003A8[];
-extern u8 D_mario_raceway_06000568[];
-extern u8 D_mario_raceway_06000478[];
-extern u8 D_mario_raceway_06000668[];
-extern u8 D_mario_raceway_06000750[];
-extern u8 D_mario_raceway_06000928[];
-extern u8 D_mario_raceway_06000828[];
-extern u8 D_mario_raceway_06000A00[];
-extern u8 D_mario_raceway_06000B08[];
-extern u8 D_mario_raceway_06000DC8[];
-extern u8 D_mario_raceway_06000C20[];
-extern u8 D_mario_raceway_06000F60[];
-extern u8 D_mario_raceway_060010A8[];
-extern u8 D_mario_raceway_06001408[];
-extern u8 D_mario_raceway_06001210[];
-extern u8 D_mario_raceway_060015C8[];
-extern u8 D_mario_raceway_06001740[];
-extern u8 D_mario_raceway_06001A30[];
-extern u8 D_mario_raceway_06001850[];
-extern u8 D_mario_raceway_06001B70[];
-extern u8 D_mario_raceway_06001CF8[];
-extern u8 D_mario_raceway_06001F68[];
-extern u8 D_mario_raceway_06001DE0[];
-extern u8 D_mario_raceway_060020A0[];
-extern u8 D_mario_raceway_060021E8[];
-extern u8 D_mario_raceway_06002418[];
-extern u8 D_mario_raceway_060022E0[];
-extern u8 D_mario_raceway_06002558[];
-extern u8 D_mario_raceway_06002680[];
-extern u8 D_mario_raceway_060028B0[];
-extern u8 D_mario_raceway_06002790[];
-extern u8 D_mario_raceway_06002A10[];
-extern u8 D_mario_raceway_06002B40[];
-extern u8 D_mario_raceway_06002DC0[];
-extern u8 D_mario_raceway_06002C98[];
-extern u8 D_mario_raceway_06002EF8[];
-extern u8 D_mario_raceway_06003038[];
-extern u8 D_mario_raceway_060032D8[];
-extern u8 D_mario_raceway_060031F0[];
-extern u8 D_mario_raceway_06003458[];
-extern u8 D_mario_raceway_060035D0[];
-extern u8 D_mario_raceway_06003830[];
-extern u8 D_mario_raceway_06003748[];
-extern u8 D_mario_raceway_06003960[];
-extern u8 D_mario_raceway_06003AA0[];
-extern u8 D_mario_raceway_06003D68[];
-extern u8 D_mario_raceway_06003C08[];
-extern u8 D_mario_raceway_06003EB8[];
-extern u8 D_mario_raceway_06004038[];
-extern u8 D_mario_raceway_060042A0[];
-extern u8 D_mario_raceway_06004150[];
-extern u8 D_mario_raceway_060043D8[];
-extern u8 D_mario_raceway_060044F8[];
-extern u8 D_mario_raceway_06004738[];
-extern u8 D_mario_raceway_06004610[];
-extern u8 D_mario_raceway_06004840[];
-extern u8 D_mario_raceway_06004910[];
-extern u8 D_mario_raceway_06004B78[];
-extern u8 D_mario_raceway_06004A60[];
-extern u8 D_mario_raceway_06004CD8[];
-extern u8 D_mario_raceway_06004DC8[];
-extern u8 D_mario_raceway_06004FF0[];
-extern u8 D_mario_raceway_06004ED0[];
-extern u8 D_mario_raceway_06005150[];
 
 const course_texture mario_raceway_textures[] = {
     {gTextureCheckerboardYellowPink, 0x0149, 0x0800, 0x0},
@@ -135,72 +68,72 @@ const course_texture mario_raceway_textures[] = {
 };
 
 const u8 *mario_raceway_dls[] = {
-    D_mario_raceway_06000000,
-    D_mario_raceway_060001D0,
-    D_mario_raceway_060000E8,
-    D_mario_raceway_060002C8,
-    D_mario_raceway_060003A8,
-    D_mario_raceway_06000568,
-    D_mario_raceway_06000478,
-    D_mario_raceway_06000668,
-    D_mario_raceway_06000750,
-    D_mario_raceway_06000928,
-    D_mario_raceway_06000828,
-    D_mario_raceway_06000A00,
-    D_mario_raceway_06000B08,
-    D_mario_raceway_06000DC8,
-    D_mario_raceway_06000C20,
-    D_mario_raceway_06000F60,
-    D_mario_raceway_060010A8,
-    D_mario_raceway_06001408,
-    D_mario_raceway_06001210,
-    D_mario_raceway_060015C8,
-    D_mario_raceway_06001740,
-    D_mario_raceway_06001A30,
-    D_mario_raceway_06001850,
-    D_mario_raceway_06001B70,
-    D_mario_raceway_06001CF8,
-    D_mario_raceway_06001F68,
-    D_mario_raceway_06001DE0,
-    D_mario_raceway_060020A0,
-    D_mario_raceway_060021E8,
-    D_mario_raceway_06002418,
-    D_mario_raceway_060022E0,
-    D_mario_raceway_06002558,
-    D_mario_raceway_06002680,
-    D_mario_raceway_060028B0,
-    D_mario_raceway_06002790,
-    D_mario_raceway_06002A10,
-    D_mario_raceway_06002B40,
-    D_mario_raceway_06002DC0,
-    D_mario_raceway_06002C98,
-    D_mario_raceway_06002EF8,
-    D_mario_raceway_06003038,
-    D_mario_raceway_060032D8,
-    D_mario_raceway_060031F0,
-    D_mario_raceway_06003458,
-    D_mario_raceway_060035D0,
-    D_mario_raceway_06003830,
-    D_mario_raceway_06003748,
-    D_mario_raceway_06003960,
-    D_mario_raceway_06003AA0,
-    D_mario_raceway_06003D68,
-    D_mario_raceway_06003C08,
-    D_mario_raceway_06003EB8,
-    D_mario_raceway_06004038,
-    D_mario_raceway_060042A0,
-    D_mario_raceway_06004150,
-    D_mario_raceway_060043D8,
-    D_mario_raceway_060044F8,
-    D_mario_raceway_06004738,
-    D_mario_raceway_06004610,
-    D_mario_raceway_06004840,
-    D_mario_raceway_06004910,
-    D_mario_raceway_06004B78,
-    D_mario_raceway_06004A60,
-    D_mario_raceway_06004CD8,
-    D_mario_raceway_06004DC8,
-    D_mario_raceway_06004FF0,
-    D_mario_raceway_06004ED0,
-    D_mario_raceway_06005150,
+    d_course_mario_raceway_dl_0,
+    d_course_mario_raceway_dl_1D0,
+    d_course_mario_raceway_dl_E8,
+    d_course_mario_raceway_dl_2C8,
+    d_course_mario_raceway_dl_3A8,
+    d_course_mario_raceway_dl_568,
+    d_course_mario_raceway_dl_478,
+    d_course_mario_raceway_dl_668,
+    d_course_mario_raceway_dl_750,
+    d_course_mario_raceway_dl_928,
+    d_course_mario_raceway_dl_828,
+    d_course_mario_raceway_dl_A00,
+    d_course_mario_raceway_dl_B08,
+    d_course_mario_raceway_dl_DC8,
+    d_course_mario_raceway_dl_C20,
+    d_course_mario_raceway_dl_F60,
+    d_course_mario_raceway_dl_10A8,
+    d_course_mario_raceway_dl_1408,
+    d_course_mario_raceway_dl_1210,
+    d_course_mario_raceway_dl_15C8,
+    d_course_mario_raceway_dl_1740,
+    d_course_mario_raceway_dl_1A30,
+    d_course_mario_raceway_dl_1850,
+    d_course_mario_raceway_dl_1B70,
+    d_course_mario_raceway_dl_1CF8,
+    d_course_mario_raceway_dl_1F68,
+    d_course_mario_raceway_dl_1DE0,
+    d_course_mario_raceway_dl_20A0,
+    d_course_mario_raceway_dl_21E8,
+    d_course_mario_raceway_dl_2418,
+    d_course_mario_raceway_dl_22E0,
+    d_course_mario_raceway_dl_2558,
+    d_course_mario_raceway_dl_2680,
+    d_course_mario_raceway_dl_28B0,
+    d_course_mario_raceway_dl_2790,
+    d_course_mario_raceway_dl_2A10,
+    d_course_mario_raceway_dl_2B40,
+    d_course_mario_raceway_dl_2DC0,
+    d_course_mario_raceway_dl_2C98,
+    d_course_mario_raceway_dl_2EF8,
+    d_course_mario_raceway_dl_3038,
+    d_course_mario_raceway_dl_32D8,
+    d_course_mario_raceway_dl_31F0,
+    d_course_mario_raceway_dl_3458,
+    d_course_mario_raceway_dl_35D0,
+    d_course_mario_raceway_dl_3830,
+    d_course_mario_raceway_dl_3748,
+    d_course_mario_raceway_dl_3960,
+    d_course_mario_raceway_dl_3AA0,
+    d_course_mario_raceway_dl_3D68,
+    d_course_mario_raceway_dl_3C08,
+    d_course_mario_raceway_dl_3EB8,
+    d_course_mario_raceway_dl_4038,
+    d_course_mario_raceway_dl_42A0,
+    d_course_mario_raceway_dl_4150,
+    d_course_mario_raceway_dl_43D8,
+    d_course_mario_raceway_dl_44F8,
+    d_course_mario_raceway_dl_4738,
+    d_course_mario_raceway_dl_4610,
+    d_course_mario_raceway_dl_4840,
+    d_course_mario_raceway_dl_4910,
+    d_course_mario_raceway_dl_4B78,
+    d_course_mario_raceway_dl_4A60,
+    d_course_mario_raceway_dl_4CD8,
+    d_course_mario_raceway_dl_4DC8,
+    d_course_mario_raceway_dl_4FF0,
+    d_course_mario_raceway_dl_4ED0,
+    d_course_mario_raceway_dl_5150,
 };

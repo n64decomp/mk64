@@ -57,8 +57,8 @@ glabel func_8005217C
 /* 052E58 80052258 AC580004 */  sw    $t8, 4($v0)
 /* 052E5C 8005225C AC4F0000 */  sw    $t7, ($v0)
 /* 052E60 80052260 8C620000 */  lw    $v0, ($v1)
-/* 052E64 80052264 3C0E0600 */  lui   $t6, %hi(D_06007B38) # $t6, 0x600
-/* 052E68 80052268 25CE7B38 */  addiu $t6, %lo(D_06007B38) # addiu $t6, $t6, 0x7b38
+/* 052E64 80052264 3C0E0600 */  lui   $t6, %hi(d_course_banshee_boardwalk_dl_7B38) # $t6, 0x600
+/* 052E68 80052268 25CE7B38 */  addiu $t6, %lo(d_course_banshee_boardwalk_dl_7B38) # addiu $t6, $t6, 0x7b38
 /* 052E6C 8005226C 24590008 */  addiu $t9, $v0, 8
 /* 052E70 80052270 AC790000 */  sw    $t9, ($v1)
 /* 052E74 80052274 AC4E0004 */  sw    $t6, 4($v0)
@@ -82,8 +82,8 @@ glabel func_8005217C
 /* 052EBC 800522BC AC580004 */  sw    $t8, 4($v0)
 /* 052EC0 800522C0 AC4F0000 */  sw    $t7, ($v0)
 /* 052EC4 800522C4 8C620000 */  lw    $v0, ($v1)
-/* 052EC8 800522C8 3C0E0600 */  lui   $t6, %hi(D_06007978) # $t6, 0x600
-/* 052ECC 800522CC 25CE7978 */  addiu $t6, %lo(D_06007978) # addiu $t6, $t6, 0x7978
+/* 052EC8 800522C8 3C0E0600 */  lui   $t6, %hi(d_course_banshee_boardwalk_dl_7978) # $t6, 0x600
+/* 052ECC 800522CC 25CE7978 */  addiu $t6, %lo(d_course_banshee_boardwalk_dl_7978) # addiu $t6, $t6, 0x7978
 /* 052ED0 800522D0 24590008 */  addiu $t9, $v0, 8
 /* 052ED4 800522D4 AC790000 */  sw    $t9, ($v1)
 /* 052ED8 800522D8 AC4E0004 */  sw    $t6, 4($v0)
@@ -107,8 +107,8 @@ glabel func_8005217C
 /* 052F20 80052320 AC580004 */  sw    $t8, 4($v0)
 /* 052F24 80052324 AC4F0000 */  sw    $t7, ($v0)
 /* 052F28 80052328 8C620000 */  lw    $v0, ($v1)
-/* 052F2C 8005232C 3C0E0600 */  lui   $t6, %hi(D_060078C0) # $t6, 0x600
-/* 052F30 80052330 25CE78C0 */  addiu $t6, %lo(D_060078C0) # addiu $t6, $t6, 0x78c0
+/* 052F2C 8005232C 3C0E0600 */  lui   $t6, %hi(d_course_banshee_boardwalk_dl_78C0) # $t6, 0x600
+/* 052F30 80052330 25CE78C0 */  addiu $t6, %lo(d_course_banshee_boardwalk_dl_78C0) # addiu $t6, $t6, 0x78c0
 /* 052F34 80052334 24590008 */  addiu $t9, $v0, 8
 /* 052F38 80052338 AC790000 */  sw    $t9, ($v1)
 /* 052F3C 8005233C AC4E0004 */  sw    $t6, 4($v0)
@@ -132,8 +132,8 @@ glabel func_8005217C
 /* 052F84 80052384 AC580004 */  sw    $t8, 4($v0)
 /* 052F88 80052388 AC4F0000 */  sw    $t7, ($v0)
 /* 052F8C 8005238C 8C620000 */  lw    $v0, ($v1)
-/* 052F90 80052390 3C0E0600 */  lui   $t6, %hi(D_06007650) # $t6, 0x600
-/* 052F94 80052394 25CE7650 */  addiu $t6, %lo(D_06007650) # addiu $t6, $t6, 0x7650
+/* 052F90 80052390 3C0E0600 */  lui   $t6, %hi(d_course_banshee_boardwalk_dl_7650) # $t6, 0x600
+/* 052F94 80052394 25CE7650 */  addiu $t6, %lo(d_course_banshee_boardwalk_dl_7650) # addiu $t6, $t6, 0x7650
 /* 052F98 80052398 24590008 */  addiu $t9, $v0, 8
 /* 052F9C 8005239C AC790000 */  sw    $t9, ($v1)
 /* 052FA0 800523A0 AC4E0004 */  sw    $t6, 4($v0)

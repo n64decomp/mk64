@@ -4121,7 +4121,7 @@ struct ActorSpawnData d_course_banshee_boardwalk_item_box_spawns[] = {
 };
 
 // 0xB458
-TrackSections d_course_banshee_boardwalk_addr[] = {
+TrackSections d_course_banshee_boardwalk_track_sections[] = {
     { d_course_banshee_boardwalk_packed_dl_1DA0, 4, 255, 0x0000 },
     { d_course_banshee_boardwalk_packed_dl_5498, 4, 255, 0x0000 },
     { d_course_banshee_boardwalk_packed_dl_27D0, 6, 1, 0x2000 },

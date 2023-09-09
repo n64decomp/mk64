@@ -6433,7 +6433,7 @@ struct TrackWayPoint d_course_royal_raceway_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint track_waypoints[] = {
+struct TrackWayPoint d_course_royal_raceway_track_waypoints[] = {
     {-62, 0, -331, 1},
     {-61, 0, -350, 2},
     {-61, 0, -371, 2},

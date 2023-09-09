@@ -1,5 +1,6 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
+#include "courses/star_cup/bowsers_castle/course_data.inc.h"
 
 extern u8 gTexture64313C[];
 extern u8 gTexture6528DC[];
@@ -29,114 +30,6 @@ extern u8 gTexture66CA98[];
 extern u8 gTexture673990[];
 extern u8 gTexture67A370[];
 extern u8 gTexture67A91C[];
-extern u8 D_bowsers_castle_06000000[];
-extern u8 D_bowsers_castle_06000230[];
-extern u8 D_bowsers_castle_06000110[];
-extern u8 D_bowsers_castle_06000398[];
-extern u8 D_bowsers_castle_06000428[];
-extern u8 D_bowsers_castle_06000640[];
-extern u8 D_bowsers_castle_060004F0[];
-extern u8 D_bowsers_castle_060007A0[];
-extern u8 D_bowsers_castle_06000860[];
-extern u8 D_bowsers_castle_060009F8[];
-extern u8 D_bowsers_castle_060008E8[];
-extern u8 D_bowsers_castle_06000AE0[];
-extern u8 D_bowsers_castle_06000B88[];
-extern u8 D_bowsers_castle_06000D20[];
-extern u8 D_bowsers_castle_06000C08[];
-extern u8 D_bowsers_castle_06000E00[];
-extern u8 D_bowsers_castle_06000EA8[];
-extern u8 D_bowsers_castle_06001040[];
-extern u8 D_bowsers_castle_06000F08[];
-extern u8 D_bowsers_castle_06001138[];
-extern u8 D_bowsers_castle_060011F0[];
-extern u8 D_bowsers_castle_06001290[];
-extern u8 D_bowsers_castle_06001248[];
-extern u8 D_bowsers_castle_060012D0[];
-extern u8 D_bowsers_castle_06001330[];
-extern u8 D_bowsers_castle_06001370[];
-extern u8 D_bowsers_castle_06001350[];
-extern u8 D_bowsers_castle_060013A0[];
-extern u8 D_bowsers_castle_060013C0[];
-extern u8 D_bowsers_castle_06001448[];
-extern u8 D_bowsers_castle_060013E0[];
-extern u8 D_bowsers_castle_06001488[];
-extern u8 D_bowsers_castle_060014B0[];
-extern u8 D_bowsers_castle_06001590[];
-extern u8 D_bowsers_castle_06001520[];
-extern u8 D_bowsers_castle_06001608[];
-extern u8 D_bowsers_castle_06001690[];
-extern u8 D_bowsers_castle_06001788[];
-extern u8 D_bowsers_castle_06001710[];
-extern u8 D_bowsers_castle_060017D0[];
-extern u8 D_bowsers_castle_06001818[];
-extern u8 D_bowsers_castle_060018C0[];
-extern u8 D_bowsers_castle_06001860[];
-extern u8 D_bowsers_castle_06001928[];
-extern u8 D_bowsers_castle_06001960[];
-extern u8 D_bowsers_castle_060019F8[];
-extern u8 D_bowsers_castle_060019A8[];
-extern u8 D_bowsers_castle_06001A40[];
-extern u8 D_bowsers_castle_06001A90[];
-extern u8 D_bowsers_castle_06001B10[];
-extern u8 D_bowsers_castle_06001AD8[];
-extern u8 D_bowsers_castle_06001B58[];
-extern u8 D_bowsers_castle_06001BB0[];
-extern u8 D_bowsers_castle_06001C38[];
-extern u8 D_bowsers_castle_06001C10[];
-extern u8 D_bowsers_castle_06001C60[];
-extern u8 D_bowsers_castle_06001C98[];
-extern u8 D_bowsers_castle_06001DF8[];
-extern u8 D_bowsers_castle_06001CD0[];
-extern u8 D_bowsers_castle_06001EB0[];
-extern u8 D_bowsers_castle_06001FA0[];
-extern u8 D_bowsers_castle_06002130[];
-extern u8 D_bowsers_castle_06002008[];
-extern u8 D_bowsers_castle_060021F0[];
-extern u8 D_bowsers_castle_060022E8[];
-extern u8 D_bowsers_castle_060024B8[];
-extern u8 D_bowsers_castle_06002398[];
-extern u8 D_bowsers_castle_06002578[];
-extern u8 D_bowsers_castle_06002688[];
-extern u8 D_bowsers_castle_06002880[];
-extern u8 D_bowsers_castle_06002760[];
-extern u8 D_bowsers_castle_06002958[];
-extern u8 D_bowsers_castle_06002A60[];
-extern u8 D_bowsers_castle_06002C48[];
-extern u8 D_bowsers_castle_06002B80[];
-extern u8 D_bowsers_castle_06002D08[];
-extern u8 D_bowsers_castle_06002DF8[];
-extern u8 D_bowsers_castle_06002FB0[];
-extern u8 D_bowsers_castle_06002F30[];
-extern u8 D_bowsers_castle_06003050[];
-extern u8 D_bowsers_castle_06003158[];
-extern u8 D_bowsers_castle_060032C0[];
-extern u8 D_bowsers_castle_06003230[];
-extern u8 D_bowsers_castle_06003338[];
-extern u8 D_bowsers_castle_06003480[];
-extern u8 D_bowsers_castle_060035D0[];
-extern u8 D_bowsers_castle_06003508[];
-extern u8 D_bowsers_castle_06003678[];
-extern u8 D_bowsers_castle_060037D8[];
-extern u8 D_bowsers_castle_060039E0[];
-extern u8 D_bowsers_castle_060038F8[];
-extern u8 D_bowsers_castle_06003B00[];
-extern u8 D_bowsers_castle_06003C08[];
-extern u8 D_bowsers_castle_06003EA8[];
-extern u8 D_bowsers_castle_06003D78[];
-extern u8 D_bowsers_castle_06003FF0[];
-extern u8 D_bowsers_castle_060040F0[];
-extern u8 D_bowsers_castle_06004358[];
-extern u8 D_bowsers_castle_06004278[];
-extern u8 D_bowsers_castle_06004488[];
-extern u8 D_bowsers_castle_060045D8[];
-extern u8 D_bowsers_castle_06004820[];
-extern u8 D_bowsers_castle_06004748[];
-extern u8 D_bowsers_castle_06004998[];
-extern u8 D_bowsers_castle_06004A98[];
-extern u8 D_bowsers_castle_06004CE8[];
-extern u8 D_bowsers_castle_06004C00[];
-extern u8 D_bowsers_castle_06004EA8[];
 
 const course_texture bowsers_castle_textures[] = {
     {gTexture64313C, 0x01B8, 0x0800, 0x0},
@@ -171,112 +64,112 @@ const course_texture bowsers_castle_textures[] = {
 };
 
 const u8 *bowsers_castle_dls[] = {
-    D_bowsers_castle_06000000,
-    D_bowsers_castle_06000230,
-    D_bowsers_castle_06000110,
-    D_bowsers_castle_06000398,
-    D_bowsers_castle_06000428,
-    D_bowsers_castle_06000640,
-    D_bowsers_castle_060004F0,
-    D_bowsers_castle_060007A0,
-    D_bowsers_castle_06000860,
-    D_bowsers_castle_060009F8,
-    D_bowsers_castle_060008E8,
-    D_bowsers_castle_06000AE0,
-    D_bowsers_castle_06000B88,
-    D_bowsers_castle_06000D20,
-    D_bowsers_castle_06000C08,
-    D_bowsers_castle_06000E00,
-    D_bowsers_castle_06000EA8,
-    D_bowsers_castle_06001040,
-    D_bowsers_castle_06000F08,
-    D_bowsers_castle_06001138,
-    D_bowsers_castle_060011F0,
-    D_bowsers_castle_06001290,
-    D_bowsers_castle_06001248,
-    D_bowsers_castle_060012D0,
-    D_bowsers_castle_06001330,
-    D_bowsers_castle_06001370,
-    D_bowsers_castle_06001350,
-    D_bowsers_castle_060013A0,
-    D_bowsers_castle_060013C0,
-    D_bowsers_castle_06001448,
-    D_bowsers_castle_060013E0,
-    D_bowsers_castle_06001488,
-    D_bowsers_castle_060014B0,
-    D_bowsers_castle_06001590,
-    D_bowsers_castle_06001520,
-    D_bowsers_castle_06001608,
-    D_bowsers_castle_06001690,
-    D_bowsers_castle_06001788,
-    D_bowsers_castle_06001710,
-    D_bowsers_castle_060017D0,
-    D_bowsers_castle_06001818,
-    D_bowsers_castle_060018C0,
-    D_bowsers_castle_06001860,
-    D_bowsers_castle_06001928,
-    D_bowsers_castle_06001960,
-    D_bowsers_castle_060019F8,
-    D_bowsers_castle_060019A8,
-    D_bowsers_castle_06001A40,
-    D_bowsers_castle_06001A90,
-    D_bowsers_castle_06001B10,
-    D_bowsers_castle_06001AD8,
-    D_bowsers_castle_06001B58,
-    D_bowsers_castle_06001BB0,
-    D_bowsers_castle_06001C38,
-    D_bowsers_castle_06001C10,
-    D_bowsers_castle_06001C60,
-    D_bowsers_castle_06001C98,
-    D_bowsers_castle_06001DF8,
-    D_bowsers_castle_06001CD0,
-    D_bowsers_castle_06001EB0,
-    D_bowsers_castle_06001FA0,
-    D_bowsers_castle_06002130,
-    D_bowsers_castle_06002008,
-    D_bowsers_castle_060021F0,
-    D_bowsers_castle_060022E8,
-    D_bowsers_castle_060024B8,
-    D_bowsers_castle_06002398,
-    D_bowsers_castle_06002578,
-    D_bowsers_castle_06002688,
-    D_bowsers_castle_06002880,
-    D_bowsers_castle_06002760,
-    D_bowsers_castle_06002958,
-    D_bowsers_castle_06002A60,
-    D_bowsers_castle_06002C48,
-    D_bowsers_castle_06002B80,
-    D_bowsers_castle_06002D08,
-    D_bowsers_castle_06002DF8,
-    D_bowsers_castle_06002FB0,
-    D_bowsers_castle_06002F30,
-    D_bowsers_castle_06003050,
-    D_bowsers_castle_06003158,
-    D_bowsers_castle_060032C0,
-    D_bowsers_castle_06003230,
-    D_bowsers_castle_06003338,
-    D_bowsers_castle_06003480,
-    D_bowsers_castle_060035D0,
-    D_bowsers_castle_06003508,
-    D_bowsers_castle_06003678,
-    D_bowsers_castle_060037D8,
-    D_bowsers_castle_060039E0,
-    D_bowsers_castle_060038F8,
-    D_bowsers_castle_06003B00,
-    D_bowsers_castle_06003C08,
-    D_bowsers_castle_06003EA8,
-    D_bowsers_castle_06003D78,
-    D_bowsers_castle_06003FF0,
-    D_bowsers_castle_060040F0,
-    D_bowsers_castle_06004358,
-    D_bowsers_castle_06004278,
-    D_bowsers_castle_06004488,
-    D_bowsers_castle_060045D8,
-    D_bowsers_castle_06004820,
-    D_bowsers_castle_06004748,
-    D_bowsers_castle_06004998,
-    D_bowsers_castle_06004A98,
-    D_bowsers_castle_06004CE8,
-    D_bowsers_castle_06004C00,
-    D_bowsers_castle_06004EA8,
+    d_course_bowsers_castle_dl_0,
+    d_course_bowsers_castle_dl_230,
+    d_course_bowsers_castle_dl_110,
+    d_course_bowsers_castle_dl_398,
+    d_course_bowsers_castle_dl_428,
+    d_course_bowsers_castle_dl_640,
+    d_course_bowsers_castle_dl_4F0,
+    d_course_bowsers_castle_dl_7A0,
+    d_course_bowsers_castle_dl_860,
+    d_course_bowsers_castle_dl_9F8,
+    d_course_bowsers_castle_dl_8E8,
+    d_course_bowsers_castle_dl_AE0,
+    d_course_bowsers_castle_dl_B88,
+    d_course_bowsers_castle_dl_D20,
+    d_course_bowsers_castle_dl_C08,
+    d_course_bowsers_castle_dl_E00,
+    d_course_bowsers_castle_dl_EA8,
+    d_course_bowsers_castle_dl_1040,
+    d_course_bowsers_castle_dl_F08,
+    d_course_bowsers_castle_dl_1138,
+    d_course_bowsers_castle_dl_11F0,
+    d_course_bowsers_castle_dl_1290,
+    d_course_bowsers_castle_dl_1248,
+    d_course_bowsers_castle_dl_12D0,
+    d_course_bowsers_castle_dl_1330,
+    d_course_bowsers_castle_dl_1370,
+    d_course_bowsers_castle_dl_1350,
+    d_course_bowsers_castle_dl_13A0,
+    d_course_bowsers_castle_dl_13C0,
+    d_course_bowsers_castle_dl_1448,
+    d_course_bowsers_castle_dl_13E0,
+    d_course_bowsers_castle_dl_1488,
+    d_course_bowsers_castle_dl_14B0,
+    d_course_bowsers_castle_dl_1590,
+    d_course_bowsers_castle_dl_1520,
+    d_course_bowsers_castle_dl_1608,
+    d_course_bowsers_castle_dl_1690,
+    d_course_bowsers_castle_dl_1788,
+    d_course_bowsers_castle_dl_1710,
+    d_course_bowsers_castle_dl_17D0,
+    d_course_bowsers_castle_dl_1818,
+    d_course_bowsers_castle_dl_18C0,
+    d_course_bowsers_castle_dl_1860,
+    d_course_bowsers_castle_dl_1928,
+    d_course_bowsers_castle_dl_1960,
+    d_course_bowsers_castle_dl_19F8,
+    d_course_bowsers_castle_dl_19A8,
+    d_course_bowsers_castle_dl_1A40,
+    d_course_bowsers_castle_dl_1A90,
+    d_course_bowsers_castle_dl_1B10,
+    d_course_bowsers_castle_dl_1AD8,
+    d_course_bowsers_castle_dl_1B58,
+    d_course_bowsers_castle_dl_1BB0,
+    d_course_bowsers_castle_dl_1C38,
+    d_course_bowsers_castle_dl_1C10,
+    d_course_bowsers_castle_dl_1C60,
+    d_course_bowsers_castle_dl_1C98,
+    d_course_bowsers_castle_dl_1DF8,
+    d_course_bowsers_castle_dl_1CD0,
+    d_course_bowsers_castle_dl_1EB0,
+    d_course_bowsers_castle_dl_1FA0,
+    d_course_bowsers_castle_dl_2130,
+    d_course_bowsers_castle_dl_2008,
+    d_course_bowsers_castle_dl_21F0,
+    d_course_bowsers_castle_dl_22E8,
+    d_course_bowsers_castle_dl_24B8,
+    d_course_bowsers_castle_dl_2398,
+    d_course_bowsers_castle_dl_2578,
+    d_course_bowsers_castle_dl_2688,
+    d_course_bowsers_castle_dl_2880,
+    d_course_bowsers_castle_dl_2760,
+    d_course_bowsers_castle_dl_2958,
+    d_course_bowsers_castle_dl_2A60,
+    d_course_bowsers_castle_dl_2C48,
+    d_course_bowsers_castle_dl_2B80,
+    d_course_bowsers_castle_dl_2D08,
+    d_course_bowsers_castle_dl_2DF8,
+    d_course_bowsers_castle_dl_2FB0,
+    d_course_bowsers_castle_dl_2F30,
+    d_course_bowsers_castle_dl_3050,
+    d_course_bowsers_castle_dl_3158,
+    d_course_bowsers_castle_dl_32C0,
+    d_course_bowsers_castle_dl_3230,
+    d_course_bowsers_castle_dl_3338,
+    d_course_bowsers_castle_dl_3480,
+    d_course_bowsers_castle_dl_35D0,
+    d_course_bowsers_castle_dl_3508,
+    d_course_bowsers_castle_dl_3678,
+    d_course_bowsers_castle_dl_37D8,
+    d_course_bowsers_castle_dl_39E0,
+    d_course_bowsers_castle_dl_38F8,
+    d_course_bowsers_castle_dl_3B00,
+    d_course_bowsers_castle_dl_3C08,
+    d_course_bowsers_castle_dl_3EA8,
+    d_course_bowsers_castle_dl_3D78,
+    d_course_bowsers_castle_dl_3FF0,
+    d_course_bowsers_castle_dl_40F0,
+    d_course_bowsers_castle_dl_4358,
+    d_course_bowsers_castle_dl_4278,
+    d_course_bowsers_castle_dl_4488,
+    d_course_bowsers_castle_dl_45D8,
+    d_course_bowsers_castle_dl_4820,
+    d_course_bowsers_castle_dl_4748,
+    d_course_bowsers_castle_dl_4998,
+    d_course_bowsers_castle_dl_4A98,
+    d_course_bowsers_castle_dl_4CE8,
+    d_course_bowsers_castle_dl_4C00,
+    d_course_bowsers_castle_dl_4EA8,
 };

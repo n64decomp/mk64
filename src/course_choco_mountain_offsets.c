@@ -1,5 +1,6 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
+#include "courses/flower_cup/choco_mountain/course_data.inc.h"
 
 extern u8 gTexture64619C[];
 extern u8 gTexture64647C[];
@@ -21,102 +22,6 @@ extern u8 gTexture67B864[];
 extern u8 gTexture67DC20[];
 extern u8 gTextureSignYoshi[];
 extern u8 gTextureCheckerboardBlueGray[];
-extern u8 D_choco_mountain_06000000[];
-extern u8 D_choco_mountain_06000150[];
-extern u8 D_choco_mountain_060000B0[];
-extern u8 D_choco_mountain_06000208[];
-extern u8 D_choco_mountain_060002A8[];
-extern u8 D_choco_mountain_06000410[];
-extern u8 D_choco_mountain_06000330[];
-extern u8 D_choco_mountain_060004D8[];
-extern u8 D_choco_mountain_06000588[];
-extern u8 D_choco_mountain_060006C0[];
-extern u8 D_choco_mountain_06000618[];
-extern u8 D_choco_mountain_06000750[];
-extern u8 D_choco_mountain_060007E8[];
-extern u8 D_choco_mountain_06000908[];
-extern u8 D_choco_mountain_06000878[];
-extern u8 D_choco_mountain_06000990[];
-extern u8 D_choco_mountain_06000A28[];
-extern u8 D_choco_mountain_06000BB8[];
-extern u8 D_choco_mountain_06000B10[];
-extern u8 D_choco_mountain_06000C40[];
-extern u8 D_choco_mountain_06000D30[];
-extern u8 D_choco_mountain_06000EA0[];
-extern u8 D_choco_mountain_06000DF8[];
-extern u8 D_choco_mountain_06000F38[];
-extern u8 D_choco_mountain_06001000[];
-extern u8 D_choco_mountain_06001150[];
-extern u8 D_choco_mountain_060010A8[];
-extern u8 D_choco_mountain_060011D8[];
-extern u8 D_choco_mountain_06001280[];
-extern u8 D_choco_mountain_060013E0[];
-extern u8 D_choco_mountain_06001330[];
-extern u8 D_choco_mountain_06001488[];
-extern u8 D_choco_mountain_06001528[];
-extern u8 D_choco_mountain_060016B8[];
-extern u8 D_choco_mountain_060015E8[];
-extern u8 D_choco_mountain_06001788[];
-extern u8 D_choco_mountain_06001810[];
-extern u8 D_choco_mountain_06001970[];
-extern u8 D_choco_mountain_060018B8[];
-extern u8 D_choco_mountain_06001A40[];
-extern u8 D_choco_mountain_06001AC8[];
-extern u8 D_choco_mountain_06001C18[];
-extern u8 D_choco_mountain_06001B70[];
-extern u8 D_choco_mountain_06001CC8[];
-extern u8 D_choco_mountain_06001D50[];
-extern u8 D_choco_mountain_06001E98[];
-extern u8 D_choco_mountain_06001E08[];
-extern u8 D_choco_mountain_06001F40[];
-extern u8 D_choco_mountain_06001FE0[];
-extern u8 D_choco_mountain_06002168[];
-extern u8 D_choco_mountain_060020C8[];
-extern u8 D_choco_mountain_06002228[];
-extern u8 D_choco_mountain_060022D8[];
-extern u8 D_choco_mountain_06002468[];
-extern u8 D_choco_mountain_060023C8[];
-extern u8 D_choco_mountain_06002538[];
-extern u8 D_choco_mountain_06002600[];
-extern u8 D_choco_mountain_06002780[];
-extern u8 D_choco_mountain_060026D8[];
-extern u8 D_choco_mountain_06002840[];
-extern u8 D_choco_mountain_06002908[];
-extern u8 D_choco_mountain_06002A88[];
-extern u8 D_choco_mountain_060029B8[];
-extern u8 D_choco_mountain_06002B38[];
-extern u8 D_choco_mountain_06002C08[];
-extern u8 D_choco_mountain_06002D50[];
-extern u8 D_choco_mountain_06002C98[];
-extern u8 D_choco_mountain_06002DE8[];
-extern u8 D_choco_mountain_06002EA0[];
-extern u8 D_choco_mountain_06002FD0[];
-extern u8 D_choco_mountain_06002F28[];
-extern u8 D_choco_mountain_06003070[];
-extern u8 D_choco_mountain_06003120[];
-extern u8 D_choco_mountain_060032B0[];
-extern u8 D_choco_mountain_060031D8[];
-extern u8 D_choco_mountain_06003368[];
-extern u8 D_choco_mountain_06003438[];
-extern u8 D_choco_mountain_06003618[];
-extern u8 D_choco_mountain_06003550[];
-extern u8 D_choco_mountain_060036F0[];
-extern u8 D_choco_mountain_060037D0[];
-extern u8 D_choco_mountain_060039A8[];
-extern u8 D_choco_mountain_060038E8[];
-extern u8 D_choco_mountain_06003A80[];
-extern u8 D_choco_mountain_06003B60[];
-extern u8 D_choco_mountain_06003CB8[];
-extern u8 D_choco_mountain_06003C18[];
-extern u8 D_choco_mountain_06003D70[];
-extern u8 D_choco_mountain_06003E18[];
-extern u8 D_choco_mountain_06003FA8[];
-extern u8 D_choco_mountain_06003EE0[];
-extern u8 D_choco_mountain_06004090[];
-extern u8 D_choco_mountain_06004138[];
-extern u8 D_choco_mountain_060042C8[];
-extern u8 D_choco_mountain_060041F8[];
-extern u8 D_choco_mountain_060043C8[];
 
 const course_texture choco_mountain_textures[] = {
     {gTexture64619C, 0x0124, 0x0800, 0x0},
@@ -142,101 +47,101 @@ const course_texture choco_mountain_textures[] = {
     {0x00000000    , 0x0000, 0x0000, 0x0},
 };
 
-const u8 *choco_mountain_dls[] = {
-    D_choco_mountain_06000000,
-    D_choco_mountain_06000150,
-    D_choco_mountain_060000B0,
-    D_choco_mountain_06000208,
-    D_choco_mountain_060002A8,
-    D_choco_mountain_06000410,
-    D_choco_mountain_06000330,
-    D_choco_mountain_060004D8,
-    D_choco_mountain_06000588,
-    D_choco_mountain_060006C0,
-    D_choco_mountain_06000618,
-    D_choco_mountain_06000750,
-    D_choco_mountain_060007E8,
-    D_choco_mountain_06000908,
-    D_choco_mountain_06000878,
-    D_choco_mountain_06000990,
-    D_choco_mountain_06000A28,
-    D_choco_mountain_06000BB8,
-    D_choco_mountain_06000B10,
-    D_choco_mountain_06000C40,
-    D_choco_mountain_06000D30,
-    D_choco_mountain_06000EA0,
-    D_choco_mountain_06000DF8,
-    D_choco_mountain_06000F38,
-    D_choco_mountain_06001000,
-    D_choco_mountain_06001150,
-    D_choco_mountain_060010A8,
-    D_choco_mountain_060011D8,
-    D_choco_mountain_06001280,
-    D_choco_mountain_060013E0,
-    D_choco_mountain_06001330,
-    D_choco_mountain_06001488,
-    D_choco_mountain_06001528,
-    D_choco_mountain_060016B8,
-    D_choco_mountain_060015E8,
-    D_choco_mountain_06001788,
-    D_choco_mountain_06001810,
-    D_choco_mountain_06001970,
-    D_choco_mountain_060018B8,
-    D_choco_mountain_06001A40,
-    D_choco_mountain_06001AC8,
-    D_choco_mountain_06001C18,
-    D_choco_mountain_06001B70,
-    D_choco_mountain_06001CC8,
-    D_choco_mountain_06001D50,
-    D_choco_mountain_06001E98,
-    D_choco_mountain_06001E08,
-    D_choco_mountain_06001F40,
-    D_choco_mountain_06001FE0,
-    D_choco_mountain_06002168,
-    D_choco_mountain_060020C8,
-    D_choco_mountain_06002228,
-    D_choco_mountain_060022D8,
-    D_choco_mountain_06002468,
-    D_choco_mountain_060023C8,
-    D_choco_mountain_06002538,
-    D_choco_mountain_06002600,
-    D_choco_mountain_06002780,
-    D_choco_mountain_060026D8,
-    D_choco_mountain_06002840,
-    D_choco_mountain_06002908,
-    D_choco_mountain_06002A88,
-    D_choco_mountain_060029B8,
-    D_choco_mountain_06002B38,
-    D_choco_mountain_06002C08,
-    D_choco_mountain_06002D50,
-    D_choco_mountain_06002C98,
-    D_choco_mountain_06002DE8,
-    D_choco_mountain_06002EA0,
-    D_choco_mountain_06002FD0,
-    D_choco_mountain_06002F28,
-    D_choco_mountain_06003070,
-    D_choco_mountain_06003120,
-    D_choco_mountain_060032B0,
-    D_choco_mountain_060031D8,
-    D_choco_mountain_06003368,
-    D_choco_mountain_06003438,
-    D_choco_mountain_06003618,
-    D_choco_mountain_06003550,
-    D_choco_mountain_060036F0,
-    D_choco_mountain_060037D0,
-    D_choco_mountain_060039A8,
-    D_choco_mountain_060038E8,
-    D_choco_mountain_06003A80,
-    D_choco_mountain_06003B60,
-    D_choco_mountain_06003CB8,
-    D_choco_mountain_06003C18,
-    D_choco_mountain_06003D70,
-    D_choco_mountain_06003E18,
-    D_choco_mountain_06003FA8,
-    D_choco_mountain_06003EE0,
-    D_choco_mountain_06004090,
-    D_choco_mountain_06004138,
-    D_choco_mountain_060042C8,
-    D_choco_mountain_060041F8,
-    D_choco_mountain_060043C8,
+const Gfx *choco_mountain_dls[] = {
+    d_course_choco_mountain_dl_0,
+    d_course_choco_mountain_dl_150,
+    d_course_choco_mountain_dl_B0,
+    d_course_choco_mountain_dl_208,
+    d_course_choco_mountain_dl_2A8,
+    d_course_choco_mountain_dl_410,
+    d_course_choco_mountain_dl_330,
+    d_course_choco_mountain_dl_4D8,
+    d_course_choco_mountain_dl_588,
+    d_course_choco_mountain_dl_6C0,
+    d_course_choco_mountain_dl_618,
+    d_course_choco_mountain_dl_750,
+    d_course_choco_mountain_dl_7E8,
+    d_course_choco_mountain_dl_908,
+    d_course_choco_mountain_dl_878,
+    d_course_choco_mountain_dl_990,
+    d_course_choco_mountain_dl_A28,
+    d_course_choco_mountain_dl_BB8,
+    d_course_choco_mountain_dl_B10,
+    d_course_choco_mountain_dl_C40,
+    d_course_choco_mountain_dl_D30,
+    d_course_choco_mountain_dl_EA0,
+    d_course_choco_mountain_dl_DF8,
+    d_course_choco_mountain_dl_F38,
+    d_course_choco_mountain_dl_1000,
+    d_course_choco_mountain_dl_1150,
+    d_course_choco_mountain_dl_10A8,
+    d_course_choco_mountain_dl_11D8,
+    d_course_choco_mountain_dl_1280,
+    d_course_choco_mountain_dl_13E0,
+    d_course_choco_mountain_dl_1330,
+    d_course_choco_mountain_dl_1488,
+    d_course_choco_mountain_dl_1528,
+    d_course_choco_mountain_dl_16B8,
+    d_course_choco_mountain_dl_15E8,
+    d_course_choco_mountain_dl_1788,
+    d_course_choco_mountain_dl_1810,
+    d_course_choco_mountain_dl_1970,
+    d_course_choco_mountain_dl_18B8,
+    d_course_choco_mountain_dl_1A40,
+    d_course_choco_mountain_dl_1AC8,
+    d_course_choco_mountain_dl_1C18,
+    d_course_choco_mountain_dl_1B70,
+    d_course_choco_mountain_dl_1CC8,
+    d_course_choco_mountain_dl_1D50,
+    d_course_choco_mountain_dl_1E98,
+    d_course_choco_mountain_dl_1E08,
+    d_course_choco_mountain_dl_1F40,
+    d_course_choco_mountain_dl_1FE0,
+    d_course_choco_mountain_dl_2168,
+    d_course_choco_mountain_dl_20C8,
+    d_course_choco_mountain_dl_2228,
+    d_course_choco_mountain_dl_22D8,
+    d_course_choco_mountain_dl_2468,
+    d_course_choco_mountain_dl_23C8,
+    d_course_choco_mountain_dl_2538,
+    d_course_choco_mountain_dl_2600,
+    d_course_choco_mountain_dl_2780,
+    d_course_choco_mountain_dl_26D8,
+    d_course_choco_mountain_dl_2840,
+    d_course_choco_mountain_dl_2908,
+    d_course_choco_mountain_dl_2A88,
+    d_course_choco_mountain_dl_29B8,
+    d_course_choco_mountain_dl_2B38,
+    d_course_choco_mountain_dl_2C08,
+    d_course_choco_mountain_dl_2D50,
+    d_course_choco_mountain_dl_2C98,
+    d_course_choco_mountain_dl_2DE8,
+    d_course_choco_mountain_dl_2EA0,
+    d_course_choco_mountain_dl_2FD0,
+    d_course_choco_mountain_dl_2F28,
+    d_course_choco_mountain_dl_3070,
+    d_course_choco_mountain_dl_3120,
+    d_course_choco_mountain_dl_32B0,
+    d_course_choco_mountain_dl_31D8,
+    d_course_choco_mountain_dl_3368,
+    d_course_choco_mountain_dl_3438,
+    d_course_choco_mountain_dl_3618,
+    d_course_choco_mountain_dl_3550,
+    d_course_choco_mountain_dl_36F0,
+    d_course_choco_mountain_dl_37D0,
+    d_course_choco_mountain_dl_39A8,
+    d_course_choco_mountain_dl_38E8,
+    d_course_choco_mountain_dl_3A80,
+    d_course_choco_mountain_dl_3B60,
+    d_course_choco_mountain_dl_3CB8,
+    d_course_choco_mountain_dl_3C18,
+    d_course_choco_mountain_dl_3D70,
+    d_course_choco_mountain_dl_3E18,
+    d_course_choco_mountain_dl_3FA8,
+    d_course_choco_mountain_dl_3EE0,
+    d_course_choco_mountain_dl_4090,
+    d_course_choco_mountain_dl_4138,
+    d_course_choco_mountain_dl_42C8,
+    d_course_choco_mountain_dl_41F8,
+    d_course_choco_mountain_dl_43C8,
 };

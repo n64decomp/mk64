@@ -7407,7 +7407,7 @@ Gfx d_course_yoshi_valley_dl_D540[] =
 
 
 // 0xD780
-struct TrackWayPoint d_course_yoshi_valley_unknown_waypoints[] = {
+struct TrackWayPoint d_course_yoshi_valley_unknown_waypoints0[] = {
     {-3, 0, -4, 0},
     {-3, 0, -20, 0},
     {-3, 0, -261, 0},
@@ -7481,6 +7481,9 @@ struct TrackWayPoint d_course_yoshi_valley_unknown_waypoints[] = {
     {-24, 0, 295, 0},
     {-3, 0, 24, 0},
     {-32768, 0, 0, 0},
+};
+
+struct TrackWayPoint d_course_yoshi_valley_unknown_waypoints1[] = {
     {-6, 0, -5, 1},
     {-6, 0, -21, 1},
     {-5, 0, -434, 1},
@@ -7555,6 +7558,9 @@ struct TrackWayPoint d_course_yoshi_valley_unknown_waypoints[] = {
     {-23, 0, 328, 1},
     {-2, 0, 33, 1},
     {-32768, 0, 0, 0},
+};
+
+struct TrackWayPoint d_course_yoshi_valley_unknown_waypoints2[] = {
     {-3, 0, -3, 4},
     {-3, 0, -19, 4},
     {0, 0, -268, 4},
@@ -7637,6 +7643,9 @@ struct TrackWayPoint d_course_yoshi_valley_unknown_waypoints[] = {
     {-29, 0, 300, 4},
     {-6, 0, 21, 4},
     {-32768, 0, 0, 0},
+};
+
+struct TrackWayPoint d_course_yoshi_valley_unknown_waypoints3[] = {
     {-2, 0, -1, 7},
     {0, 0, -18, 7},
     {-2, 0, -268, 7},
@@ -7724,7 +7733,7 @@ struct TrackWayPoint d_course_yoshi_valley_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_yoshi_valley_track_waypoints[] = {
+struct TrackWayPoint d_course_yoshi_valley_track_waypoints0[] = {
     {-3, 180, -12, 1},
     {-3, 180, -32, 2},
     {-3, 180, -52, 2},
@@ -8403,6 +8412,9 @@ struct TrackWayPoint d_course_yoshi_valley_track_waypoints[] = {
     {-4, 180, 18, 1},
     {-3, 180, -1, 1},
     {-32768, -32768, -32768, 0},
+};
+
+struct TrackWayPoint d_course_yoshi_valley_track_waypoints1[] = {
     {-6, 180, -13, 1},
     {-5, 180, -33, 2},
     {-5, 180, -53, 2},
@@ -9070,6 +9082,9 @@ struct TrackWayPoint d_course_yoshi_valley_track_waypoints[] = {
     {-7, 180, 25, 1},
     {-6, 180, 5, 1},
     {-32768, -32768, -32768, 0},
+};
+
+struct TrackWayPoint d_course_yoshi_valley_track_waypoints2[] = {
     {-3, 180, -11, 1},
     {-2, 180, -31, 2},
     {-2, 180, -51, 2},
@@ -9749,6 +9764,9 @@ struct TrackWayPoint d_course_yoshi_valley_track_waypoints[] = {
     {-4, 180, 13, 1},
     {-3, 180, -6, 1},
     {-32768, -32768, -32768, 0},
+};
+
+struct TrackWayPoint d_course_yoshi_valley_track_waypoints3[] = {
     {-1, 180, -9, 1},
     {0, 180, -29, 2},
     {0, 180, -49, 2},

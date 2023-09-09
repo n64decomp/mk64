@@ -494,64 +494,63 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 
 
 #==============================================================================#
-# Course Packed Displaylists and Geography Generation                          #
+# Course Packed Displaylists Generation                                        #
 #==============================================================================#
 
-# todo: Fix DLSYMGEN & MODELSYMGEN scripts
-
-COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
 COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
 
-$(COURSE_PACKED_DL): %/packed_dl.inc.bin : %/packed.inc.o
-	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $(@D)/packed.inc.elf.map -o $(@D)/packed.inc.elf $(@D)/packed.inc.o --no-check-sections
-# Generate header for packed displaylists
-#   $(DLSYMGEN)
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/packed.inc.elf $(@D)/packed.inc.bin
-	$(DLPACKER) $(@D)/packed.inc.bin $(@D)/packed_dl.inc.bin
+%/packed.inc.elf: %/packed.inc.o
+	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -o $@ $< --no-check-sections
 
-# Elf the course data to include symbol addresses then convert to binary and compress to mio0. The mio0 file is converted to an object file so that the linker can link it.
-$(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c $(COURSE_PACKED_DL)
-	@$(PRINT) "$(GREEN)Compressing Course Geography and Packed Displaylists:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=0F000000 -Map $(@D)/model.inc.elf.map -o $(@D)/model.inc.elf $(@D)/model.inc.o --no-check-sections
-# Generate model vertice count header
-#	$(MODELSYMGEN)
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/model.inc.elf $(@D)/model.inc.bin
-	$(V)$(MIO0TOOL) -c $(@D)/model.inc.bin $(@D)/model.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.inc.bin\"\n\n.balign 0x10\n" > $(@D)/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $@ $(@D)/model.inc.mio0.s
+%/packed.inc.bin: %/packed.inc.elf
+	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
+
+%/packed_dl.inc.bin: %/packed.inc.bin
+	@$(PRINT) "$(GREEN)Compressing Packed Displaylists:  $(BLUE)$@ $(NO_COL)\n"
+	$(V)$(DLPACKER) $< $@
 
 
+#==============================================================================#
+# Course Geography Generation                                                  #
+#==============================================================================#
+
+COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
+
+%/model.inc.elf: %/model.inc.o
+	$(V)$(LD) -t -e 0 -Ttext=0F000000 -Map $@.map -o $@ $< --no-check-sections
+
+%/model.inc.bin: %/model.inc.elf
+	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
+
+%/model.inc.mio0: %/model.inc.bin
+	@$(PRINT) "$(GREEN)Compressing Course Geography:  $(BLUE)$@ $(NO_COL)\n"
+	$(V)$(MIO0TOOL) -c $< $@
+
+# Geography and packed displaylists are compressed together rather than separately.
+%/model.inc.mio0.s: %/model.inc.mio0 %/packed_dl.inc.bin
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.inc.bin\"\n\n.balign 0x10\n" > $@
 
 #==============================================================================#
 # Course Data Generation                                                       #
 #==============================================================================#
 
-COURSE_TEXTURE_FILES := $(foreach dir,textures/courses,$(subst .png, , $(wildcard $(dir)/*)))
-COURSE_TLUT := $(foreach dir,textures/courses/tlut,$(subst .png, , $(wildcard $(dir)/*)))
+COURSE_DATA_ELFS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.inc.elf)
+LDFLAGS += $(foreach elf,$(COURSE_DATA_ELFS),-R $(elf))
 
 COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.inc.mio0.o)
-COURSE_DATA_TARGETS_O := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.inc.o)
 
-$(COURSE_TEXTURE_FILES):
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8
+%/course_data.inc.elf: %/course_data.inc.o %/packed.inc.elf
+	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -R $*/packed.inc.elf -o $@ $< --no-check-sections
 
-$(COURSE_TLUT):
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8 -c $(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(COURSE_TLUT))), ,$(COURSE_TLUT)))) -p $(BUILD_DIR)/$@.tlut.inc.c
+%/course_data.inc.bin: %/course_data.inc.elf
+	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-$(COURSE_DATA_TARGETS_O): $(BUILD_DIR)/%/course_data.inc.o : %/course_data.inc.c $(COURSE_TEXTURE_FILES) $(COURSE_TLUT)
-	@$(PRINT) "$(GREEN)Compiling Course Data:  $(BLUE)$@ $(NO_COL)\n"
-	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) tools/set_o32abi_bit.py $@
-
-$(COURSE_DATA_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o: $(BUILD_DIR)/%/course_data.inc.o $(BUILD_DIR)/%/packed_dl.inc.bin
-# todo: Clean this up if possible. Not really worth the time though.
+%/course_data.inc.mio0: %/course_data.inc.bin
 	@$(PRINT) "$(GREEN)Compressing Course Data:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $(@D)/course_data.inc.elf.map -R $(@D)/packed.inc.elf -o $(@D)/course_data.inc.elf $(@D)/course_data.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/course_data.inc.elf $(@D)/course_data.inc.bin
-	$(V)$(MIO0TOOL) -c $(@D)/course_data.inc.bin $(@D)/course_data.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/course_data.inc.mio0\"\n\n" > $(@D)/course_data.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $@ $(@D)/course_data.inc.mio0.s
+	$(V)$(MIO0TOOL) -c $< $@
+
+%/course_data.inc.mio0.s: %/course_data.inc.mio0
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
 
 
 
