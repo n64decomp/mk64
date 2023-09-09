@@ -241,7 +241,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
             gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
-            gDPNoOp(gDisplayListHead++);
+            gDPSetBlendMask(gDisplayListHead++, 0xFF);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
             gSPDisplayList(gDisplayListHead++, 0x07000878);
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
@@ -253,7 +253,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
             gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
-            gDPNoOp(gDisplayListHead++);
+            gDPSetBlendMask(gDisplayListHead++, 0xFF);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
 
             switch (pathCounter) {
@@ -275,7 +275,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             func_802B4FF8(matrix, 0);
 
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
-            gDPNoOp(gDisplayListHead++);
+            gDPSetBlendMask(gDisplayListHead++, 0xFF);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
             load_surface_map(d_course_koopa_troopa_beach_dl_list2, arg0);
@@ -289,7 +289,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             gDPPipeSync(gDisplayListHead++);
             gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
             gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-            gDPNoOp(gDisplayListHead++);
+            gDPSetBlendMask(gDisplayListHead++, 0xFF);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
             gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
             gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
@@ -322,7 +322,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
             gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
-            gDPNoOp(gDisplayListHead++);
+            gDPSetBlendMask(gDisplayListHead++, 0xFF);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
             gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
             gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
@@ -344,7 +344,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             gDPPipeSync(gDisplayListHead++);
             gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
             gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-            gDPNoOp(gDisplayListHead++);
+            gDPSetBlendMask(gDisplayListHead++, 0xFF);
             gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
             gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
 

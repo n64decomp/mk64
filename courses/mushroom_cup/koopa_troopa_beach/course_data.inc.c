@@ -8474,7 +8474,7 @@ Gfx d_course_koopa_troopa_beach_dl_16630[] =
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
     gsDPLoadTextureBlock(d_course_koopa_troopa_beach_bird_wing, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPVertex(d_course_koopa_troopa_beach_bird_model, 3, 0),
-    gsSP1Quadrangle(0, 1, 2, 1, 0),
+    gsSP2Triangles(0, 1, 2, 0, 0, 2, 1, 0),
     gsSPEndDisplayList(),
 };
 
@@ -8494,7 +8494,7 @@ Gfx d_course_koopa_troopa_beach_dl_16850[] =
 {
     gsSPVertex(d_course_koopa_troopa_beach_bird_wing_model, 8, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
-    gsSP1Quadrangle(4, 5, 6, 7, 0),
+    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),
     gsSPEndDisplayList(),
 };
 
@@ -8514,7 +8514,7 @@ Gfx d_course_koopa_troopa_beach_dl_168F0[] =
 {
     gsSPVertex(d_course_koopa_troopa_beach_bird_wing_2_model, 8, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
-    gsSP1Quadrangle(4, 5, 6, 7, 0),
+    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),
     gsSPEndDisplayList(),
 };
 
@@ -8534,7 +8534,7 @@ Gfx d_course_koopa_troopa_beach_dl_16990[] =
 {
     gsSPVertex(d_course_koopa_troopa_beach_bird_wing_3_model, 8, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
-    gsSP1Quadrangle(4, 5, 6, 7, 0),
+    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),
     gsSPEndDisplayList(),
 };
 

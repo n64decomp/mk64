@@ -7359,7 +7359,7 @@ Gfx d_course_royal_raceway_dl_tree[] =
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x00FC),
     gsDPLoadTextureBlock(0x03009000, G_IM_FMT_CI, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSPVertex(d_course_royal_raceway_tree_model, 4, 0),
-    gsSP1Quadrangle(0, 1, 2, 3, 0),
+    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsDPSetTextureLUT(G_TT_NONE),
     gsSPEndDisplayList(),
 };
@@ -7384,7 +7384,7 @@ Gfx d_course_royal_raceway_dl_castle_tree[] =
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x00FC),
     gsDPLoadTextureBlock(0x03009800, G_IM_FMT_CI, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSPVertex(d_royal_raceway_peaches_castle_tree_model, 4, 0),
-    gsSP1Quadrangle(0, 1, 2, 3, 0),
+    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsDPSetTextureLUT(G_TT_NONE),
     gsSPEndDisplayList(),
 };
@@ -7415,7 +7415,7 @@ Gfx d_course_royal_raceway_dl_piranha_plant[] =
     gsDPSetTextureLUT(G_TT_RGBA16),
     gsDPLoadTLUT_pal256(d_course_royal_raceway_piranha_plant_tlut),
     gsSPVertex(d_course_royal_raceway_piranha_plant_model, 4, 0),
-    gsSP1Quadrangle(0, 1, 2, 3, 0),
+    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsDPSetTextureLUT(G_TT_NONE),
     gsSPEndDisplayList(),
 };

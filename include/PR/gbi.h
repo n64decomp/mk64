@@ -148,13 +148,15 @@
 #define G_LINE3D		(G_IMMFIRST-10)
 #define G_RDPHALF_1		(G_IMMFIRST-11)
 #define G_RDPHALF_2		(G_IMMFIRST-12)
+#define G_RDPHALF_CONT	(G_IMMFIRST-13) // From F3D_OLD used to render lap & timer UI.
 #if (defined(F3DEX_GBI)||defined(F3DLP_GBI))
-#  define G_MODIFYVTX		(G_IMMFIRST-13)
+#ifndef F3D_OLD
+#  define G_MODIFYVTX		(G_IMMFIRST-13) // older versions of f3dex still used G_RDPHALF_CONT
+#endif
 #  define G_TRI2		(G_IMMFIRST-14)
 #  define G_BRANCH_Z		(G_IMMFIRST-15)
 #  define G_LOAD_UCODE		(G_IMMFIRST-16)
 #  define G_QUAD            (G_IMMFIRST-10)
-#  define G_RDPHALF_CONT	(G_IMMFIRST-13) // From F3D_OLD used to render lap & timer UI.
 #endif
 
 /* We are overloading 2 of the immediate commands
@@ -474,8 +476,6 @@
 #define G_ACMUX_PRIM_LOD_FRAC	6
 #define G_ACMUX_1		        6
 #define G_ACMUX_0		        7
-// Invalid alpha combiner constant for unused func_8004B5A8.
-#define G_ACMUX_PRIMITIVE_ALPHA 10
 
 /* typical CC cycle 1 modes */
 #define	G_CC_PRIMITIVE              0, 0, 0, PRIMITIVE, 0, 0, 0, PRIMITIVE
@@ -2010,6 +2010,12 @@ typedef union {
 #  define __gsSPLine3D_w1f(v0, v1, wd, flag)			\
      (((flag) == 0) ? __gsSPLine3D_w1(v0, v1, wd):		\
 	              __gsSPLine3D_w1(v1, v0, wd))
+
+// Only used on old F3DEX revisions, removed on latest revisions.
+#define __gsSP1Quadrangle_w1(v0, v1, v2, v3)			\
+     (_SHIFTL((v3)*2,24,8)|_SHIFTL((v0)*2,16,8)|\
+	  _SHIFTL((v1)*2,8,8)|_SHIFTL((v2)*2,0,8))
+
 #  define __gsSP1Quadrangle_w1f(v0, v1, v2, v3, flag)	\
   (((flag) == 0) ? __gsSP1Triangle_w1(v0, v1, v2):      \
    ((flag) == 1) ? __gsSP1Triangle_w1(v1, v2, v3):      \
@@ -2161,6 +2167,26 @@ typedef union {
 	__gsSPLine3D_w1f(v0, v1, wd, flag)				\
 }}
 
+// Early F3DEX revisions use the actual quadrangle command
+// without a flag argument, this was added for compatibility.
+#ifdef F3D_OLD
+/***
+ ***  1 Quadrangle
+ ***/
+#define gSP1Quadrangle(v0, v1, v2, v3, flag)                  \
+{{                                                            \
+        Gfx *_g = (Gfx *)(pkt);                               \
+                                                              \
+        _g->words.w0 = _SHIFTL(G_QUAD, 24, 8);                \
+        _g->words.w1 =  __gsSP1Quadrangle_w1(v0, v1, v2, v3); \
+}}
+
+#define gsSP1Quadrangle(v0, v1, v2, v3, flag)                 \
+{{                                                            \
+        _SHIFTL(G_QUAD, 24, 8),                               \
+        __gsSP1Quadrangle_w1(v0, v1, v2, v3)                  \
+}}
+#else
 /***
  ***  1 Quadrangle
  ***/
@@ -2173,27 +2199,13 @@ typedef union {
         _g->words.w1 =  __gsSP1Quadrangle_w2f(v0, v1, v2, v3, flag);    \
 }
 
-// Unmodified gsSP1Quadrangle
 #define gsSP1Quadrangle(v0, v1, v2, v3, flag)                           \
 {{                                                                      \
         (_SHIFTL(G_TRI2, 24, 8)|                                        \
          __gsSP1Quadrangle_w1f(v0, v1, v2, v3, flag)),                  \
          __gsSP1Quadrangle_w2f(v0, v1, v2, v3, flag)                    \
 }}
-/**
- * Modified to match startup_logo.inc.c
- * Likely due to a development version of gbi.h
- */
-#define __mk_gsSP1Triangle_w1(v0, v1, v2, v3)			                \
-     (_SHIFTL((v3)*2,24,8)|_SHIFTL((v0)*2,16,8)|\
-	  _SHIFTL((v1)*2,8,8)|_SHIFTL((v2)*2,0,8))
-
-#define mk_gsSP1Quadrangle(v0, v1, v2, v3)                                 \
-{{                                                                      \
-        _SHIFTL(G_QUAD, 24, 8),                                         \
-        __mk_gsSP1Triangle_w1(v0, v1, v2, v3)                           \
-}}
-
+#endif
 #endif	/* F3DEX_GBI_2 */
 
 #if	(defined(F3DLP_GBI)||defined(F3DEX_GBI))
@@ -2226,6 +2238,7 @@ typedef union {
 	gsSP1Triangle(v10, v11, v12, flag1)
 #endif	/* F3DEX_GBI/F3DLP_GBI */
 
+#ifndef F3D_OLD
 #if	(defined(F3DEX_GBI)||defined(F3DLP_GBI))
 #define gSPCullDisplayList(pkt,vstart,vend)				\
 {									\
@@ -2241,8 +2254,8 @@ typedef union {
 	_SHIFTL(G_CULLDL, 24, 8) | _SHIFTL((vstart)*2, 0, 16),		\
 	_SHIFTL((vend)*2, 0, 16)					\
 }}
-
-#else
+#endif
+#else /* F3D_OLD */
 #define gSPCullDisplayList(pkt,vstart,vend)				\
 {									\
 	Gfx *_g = (Gfx *)(pkt);						\
@@ -2282,12 +2295,12 @@ typedef union {
 /*
  * r should be one of: FRUSTRATIO_1, FRUSTRATIO_2, FRUSTRATIO_3, ... FRUSTRATIO_6
  */
-#define gSPClipRatio(pkt)						\
+#define gSPClipRatio(pkt, r)						\
 {									\
-	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RNX, FR_NEG_FRUSTRATIO_1);		\
-	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RNY, FR_NEG_FRUSTRATIO_1);		\
-	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RPX, FR_POS_FRUSTRATIO_1);		\
-	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RPY, FR_POS_FRUSTRATIO_1);		\
+	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RNX, FR_NEG_##r);		\
+	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RNY, FR_NEG_##r);		\
+	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RPX, FR_POS_##r);		\
+	gMoveWd(pkt, G_MW_CLIP, G_MWO_CLIP_RPY, FR_POS_##r);		\
 }
 
 #define gsSPClipRatio(r)						\
@@ -4493,16 +4506,6 @@ typedef union {
 	(_SHIFTL(cG, 24, 8) | _SHIFTL(sG, 16, 8) | _SHIFTL(cB, 8, 8) |	\
 	 _SHIFTL(sB, 0, 8))						\
 }}
-
-// Current spot for custom raw gDPHalf1 commands
-// that mk64 seems to use
-
-#define gDPHalf1(pkt, data) \
-{ \
-	Gfx *_g = pkt; \
-	_g->words.w0 = _SHIFTL(G_RDPHALF_1, 24, 8);    \
-	_g->words.w1 = data;    \
-}
 
 #define gDPNoParam(pkt, cmd)						\
 {									\

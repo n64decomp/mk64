@@ -2743,9 +2743,9 @@ Gfx d_course_frappe_snowland_dl_tree[] =
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x00FC),
     gsDPLoadTextureBlock(0x03009000, G_IM_FMT_CI, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSPVertex(d_frappe_snowland_tree, 8, 0),
-    gsSP1Quadrangle(0, 1, 2, 3, 0),
+    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsDPLoadTextureBlock(0x03009800, G_IM_FMT_CI, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
-    gsSP1Quadrangle(4, 5, 6, 7, 0),
+    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),
     gsDPSetTextureLUT(G_TT_NONE),
     gsSPEndDisplayList(),
 };
