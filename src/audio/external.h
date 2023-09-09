@@ -91,8 +91,8 @@ struct Unk_800EA06C {
 // Similar to Unk_8018EFD8
 // Should look like 5 f32's, then 4 u8's, then 9 f32's.
 struct Unk_800E9F7C {
-    f32 posX;
-    f32 unk4[4];
+    Vec3f pos;
+    f32 unk4[2];
 	s8 unk14[4];
 	f32 unk18[9];
 }; // Size is still 0x3C.
