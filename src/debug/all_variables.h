@@ -70,7 +70,9 @@
 #include <ultra64.h>
 #include <variables.h>
 #include <vehicles.h>
-#include <vertice_count_gen.h>
 #include <waypoints.h>
+
+#include <courses/all_course_data.h>
+#include <courses/all_course_packed.h>
 
 #endif
