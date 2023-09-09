@@ -18,7 +18,7 @@
 #include "hud_renderer.h"
 #include "code_80057C60.h"
 #include "bomb_kart.h"
-#include "courses/flower_cup/frappe_snowland/course_data.inc.h"
+#include "courses/all_course_data.h"
 
 // Strings, presented by google translate!
 // Note that these are EUC-JP encoded, see:

@@ -19,7 +19,7 @@
 #include "staff_ghosts.h"
 #include "render_courses.h"
 #include "main.h"
-#include "courses/flower_cup/mario_raceway/course_data.inc.h"
+#include "courses/all_course_data.h"
 
 extern u16 D_800DC5A8;
 

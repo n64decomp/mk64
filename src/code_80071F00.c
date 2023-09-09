@@ -23,15 +23,7 @@
 #include "code_80091440.h"
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
-#include "courses/mushroom_cup/koopa_troopa_beach/course_data.inc.h"
-#include "courses/mushroom_cup/luigi_raceway/course_data.inc.h"
-#include "courses/mushroom_cup/moo_moo_farm/course_data.inc.h"
-#include "courses/flower_cup/frappe_snowland/course_data.inc.h"
-#include "courses/star_cup/bowsers_castle/course_data.inc.h"
-#include "courses/star_cup/sherbet_land/course_data.inc.h"
-#include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
-#include "courses/special_cup/rainbow_road/course_data.inc.h"
-#include "courses/special_cup/yoshi_valley/course_data.inc.h"
+#include "courses/all_course_data.h"
 
 
 s32 find_unused_obj_index(s32* arg0) {

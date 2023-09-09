@@ -494,7 +494,6 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 # Course Packed Displaylists Generation                                        #
 #==============================================================================#
 
-# Kind of weird how these are used by the model.inc.mio.s file, rather than the ROM itself :/
 COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
 
 %/packed.inc.elf: %/packed.inc.o
@@ -524,6 +523,7 @@ COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.i
 	@$(PRINT) "$(GREEN)Compressing Course Geography:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(MIO0TOOL) -c $< $@
 
+# Geography and packed displaylists are compressed together rather than separately.
 %/model.inc.mio0.s: %/model.inc.mio0 %/packed_dl.inc.bin
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.inc.bin\"\n\n.balign 0x10\n" > $@
 

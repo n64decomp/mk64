@@ -11,7 +11,7 @@
 #include <sounds.h>
 #include <functions.h>
 #include "audio/external.h"
-#include "courses/special_cup/banshee_boardwalk/course_data.inc.h"
+#include "courses/all_course_data.h"
 
 void func_8006E9C0(void) {
 
