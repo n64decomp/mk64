@@ -2167,8 +2167,9 @@ typedef union {
 	__gsSPLine3D_w1f(v0, v1, wd, flag)				\
 }}
 
-// Early F3DEX revisions use the actual quadrangle command
-// without a flag argument, this was added for compatibility.
+// Early revision of quadrangle command uses G_QUAD instead of G_TRI2.
+// It does not have a flag argument, this was added for compatibility.
+// MK64: Appears to only be used in startup_logo.inc.c
 #ifdef F3D_OLD
 /***
  ***  1 Quadrangle
