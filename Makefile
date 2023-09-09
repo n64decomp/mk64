@@ -610,10 +610,9 @@ ifeq ($(COMPILER),ido)
 endif
 
 #==============================================================================#
-# Compress Segmented Data                                                      #
+# Compile Trophy Model(s) and Podium Models                                    #
 #==============================================================================#
 
-# trophy_model.inc.c
 $(BUILD_DIR)/src/trophy_model.inc.mio0.o: $(BUILD_DIR)/src/trophy_model.inc.o
 	@$(PRINT) "$(GREEN)Compressing Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/src/trophy_model.inc.elf.map -o $(BUILD_DIR)/src/trophy_model.inc.elf $(BUILD_DIR)/src/trophy_model.inc.o --no-check-sections
@@ -622,7 +621,10 @@ $(BUILD_DIR)/src/trophy_model.inc.mio0.o: $(BUILD_DIR)/src/trophy_model.inc.o
 	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel trophy_model\n\n.incbin \"build/us/src/trophy_model.inc.mio0\"\n\n.balign 16\nglabel data_821D10_end\n" > build/us/src/trophy_model.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.s
 
-# startup_logo.inc.c
+#==============================================================================#
+# Compile Startup Logo                                                         #
+#==============================================================================#
+
 $(BUILD_DIR)/src/startup_logo.inc.mio0.o: src/startup_logo.inc.c
 	@$(PRINT) "$(GREEN)Compressing Startup Logo:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $(BUILD_DIR)/src/startup_logo.inc.elf.map -o $(BUILD_DIR)/src/startup_logo.inc.elf $(BUILD_DIR)/src/startup_logo.inc.o --no-check-sections
@@ -631,14 +633,28 @@ $(BUILD_DIR)/src/startup_logo.inc.mio0.o: src/startup_logo.inc.c
 	printf ".include \"macros.inc\"\n\n.data\n\n\n\n.balign 4\n\n\nglabel startup_logo\n\n.incbin \"build/us/src/startup_logo.inc.mio0\"\n\n.balign 16\n\nglabel data_825800_end\n" > build/us/src/startup_logo.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/startup_logo.inc.mio0.s
 
-# common_textures.inc.c
-$(BUILD_DIR)/src/common_textures.inc.mio0.o: $(BUILD_DIR)/src/common_textures.inc.o
+#==============================================================================#
+# Compile Common Textures                                                      #
+#==============================================================================#
+
+LDFLAGS += -R $(BUILD_DIR)/src/common_textures.inc.elf
+
+%/common_textures.inc.elf: %/common_textures.inc.o
+	$(V)$(LD) -t -e 0 -Ttext=0D000000 -Map $@.map -o $@ $< --no-check-sections
+
+%/common_textures.inc.bin: %/common_textures.inc.elf
+	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
+
+%/common_textures.inc.mio0: %/common_textures.inc.bin
 	@$(PRINT) "$(GREEN)Compressing Common Textures:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=0D000000 --unresolved-symbols=ignore-all -Map $(BUILD_DIR)/src/common_textures.inc.elf.map -o $(BUILD_DIR)/src/common_textures.inc.elf $(BUILD_DIR)/src/common_textures.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/common_textures.inc.elf $(BUILD_DIR)/src/common_textures.inc.bin
-	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/common_textures.inc.bin $(BUILD_DIR)/src/common_textures.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"src/common_textures.inc.mio0\"\n\n" > build/us/src/common_textures.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.s
+	$(V)$(MIO0TOOL) -c $< $@
+
+%/common_textures.inc.mio0.s: %/common_textures.inc.mio0
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
+
+#==============================================================================#
+# Finalize and Link                                                            #
+#==============================================================================#
 
 # Run linker script through the C preprocessor
 $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)

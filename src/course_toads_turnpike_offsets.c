@@ -1,5 +1,6 @@
 #include <PR/ultratypes.h>
 #include <PR/mbi.h>
+#include "common_textures.h"
 #include "course_offsets.h"
 #include "courses/flower_cup/toads_turnpike/course_data.inc.h"
 
@@ -22,11 +23,6 @@ extern u8 gTexture65127C[];
 extern u8 gTextureRoad5[];
 extern u8 gTextureSignToadRed[];
 extern u8 gTexture668228[];
-extern Gfx D_toads_turnpike_0D005398[];
-extern Gfx D_toads_turnpike_0D0053B0[];
-extern Gfx D_toads_turnpike_0D0053C8[];
-extern Gfx D_toads_turnpike_0D0053F0[];
-extern Gfx D_toads_turnpike_0D005418[];
 
 const course_texture toads_turnpike_textures[] = {
     {gTexture645134, 0x052C, 0x0800, 0x0},
