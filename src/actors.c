@@ -3727,14 +3727,14 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
         } else if ((fakeItemBox->rot[1] >= 0xC711) && (fakeItemBox->rot[1] < 0xD1BA)) {
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         } else {
-            gDPNoOp(gDisplayListHead++);
+            gDPSetBlendMask(gDisplayListHead++, 0xFF);
             gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
         }
         gSPDisplayList(gDisplayListHead++, D_0D003090);
     } else {
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
         gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-        gDPNoOp(gDisplayListHead++);
+        gDPSetBlendMask(gDisplayListHead++, 0xFF);
         thing = fakeItemBox->someTimer;
         func_802B5F74(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
         if (thing < 10.0f) {
@@ -3873,7 +3873,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
             } else if ((item_box->rot[1] >= 0xC711) && (item_box->rot[1] < 0xD1BA)) {
                 gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
             } else {
-                gDPNoOp(gDisplayListHead++);
+                gDPSetBlendMask(gDisplayListHead++, 0xFF);
                 gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
             }
             gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -3881,7 +3881,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
         } else {
             gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            gDPNoOp(gDisplayListHead++);
+            gDPSetBlendMask(gDisplayListHead++, 0xFF);
             thing = item_box->someTimer;
             func_802B5F74(someMatrix1, item_box->pos, item_box->rot);
             if (thing < 10.0f) {

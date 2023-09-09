@@ -2526,7 +2526,7 @@ void func_80094660(struct GfxPool *arg0, UNUSED s32 arg1) {
     move_segment_table_to_dmem();
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     guPerspective(&arg0->mtxPool[0], &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
-    gDPHalf1(gDisplayListHead++, perspNorm);
+    gSPPerspNormalize(gDisplayListHead++, perspNorm);
     guLookAt(&arg0->mtxPool[7], 0.0f, 0.0f, (f32) D_8018EDC0, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
     func_800942D0();
     gDPPipeSync(gDisplayListHead++);
@@ -2538,7 +2538,7 @@ void func_800947B4(struct GfxPool *arg0, UNUSED s32 arg1) {
     u16 perspNorm;
     move_segment_table_to_dmem();
     guPerspective(&arg0->mtxPool[1], &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
-    gDPHalf1(gDisplayListHead++, perspNorm);
+    gSPPerspNormalize(gDisplayListHead++, perspNorm);
     guLookAt(&arg0->mtxPool[8], 0.0f, 0.0f, (f32) D_8018EDC0, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
     guRotate(&arg0->mtxPool[0x32B], D_8018EDC8, 1.0f, 0, 0);
     guRotate(&arg0->mtxPool[0x32C], D_8018EDCC, 0, 1.0f, 0);

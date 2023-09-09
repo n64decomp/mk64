@@ -260,10 +260,13 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->msgqueue = &gGfxVblankQueue;
     gGfxSPTask->msg = (OSMesg) 2;
     gGfxSPTask->task.t.type = M_GFXTASK;
-    gGfxSPTask->task.t.flags = (1 << 1);
+    gGfxSPTask->task.t.flags = OS_TASK_DP_WAIT;
     gGfxSPTask->task.t.ucode_boot = rspbootTextStart;
     gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspbootTextEnd - (u8 *) rspbootTextStart);
-    if (gGamestate != RACING || gPlayerCountSelection1 - 1 == 0) {
+    // Use F3DEX on non-racing states and if there's only one player.
+    // Otherwise use F3DLX which has a simple subpixel calculation.
+    // http://n64devkit.square7.ch/n64man/ucode/gspF3DEX.htm
+    if (gGamestate != RACING || gPlayerCountSelection1 == 1) {
         gGfxSPTask->task.t.ucode = gspF3DEXTextStart;
         gGfxSPTask->task.t.ucode_data = gspF3DEXDataStart;
     } else {
@@ -271,7 +274,7 @@ void create_gfx_task_structure(void) {
         gGfxSPTask->task.t.ucode_data = gspF3DLXDataStart;
     }
     gGfxSPTask->task.t.flags = 0;
-    gGfxSPTask->task.t.flags = (1 << 1);
+    gGfxSPTask->task.t.flags = OS_TASK_DP_WAIT;
     gGfxSPTask->task.t.ucode_size = SP_UCODE_SIZE;
     gGfxSPTask->task.t.ucode_data_size = SP_UCODE_DATA_SIZE;
     gGfxSPTask->task.t.dram_stack = (u64 *) &gGfxSPTaskStack;
@@ -282,7 +285,7 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->task.t.data_size = (gDisplayListHead - gGfxPool->gfxPool) * sizeof(Gfx);
     func_8008C214();
     gGfxSPTask->task.t.yield_data_ptr = (u64 *) &gGfxSPTaskYieldBuffer;
-    gGfxSPTask->task.t.yield_data_size = 0xD00; /* Not equal to OS_YIELD_DATA_SIZE */
+    gGfxSPTask->task.t.yield_data_size = OS_YIELD_DATA_SIZE;
 }
 
 

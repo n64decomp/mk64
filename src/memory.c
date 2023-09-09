@@ -524,7 +524,7 @@ void unpack_clear_geometry_mode(Gfx *arg0, UNUSED u8 *arg1, UNUSED s8 arg2) {
 }
 
 void unpack_cull_displaylist(Gfx *arg0, UNUSED u8 *arg1, UNUSED s8 arg2) {
-    Gfx macro[] = {gsSPCullDisplayList(0, 160)};
+    Gfx macro[] = {gsSPCullDisplayList(0, 7)};
     arg0[sGfxSeekPosition].words.w0 = macro->words.w0;
     arg0[sGfxSeekPosition].words.w1 = macro->words.w1;
     sGfxSeekPosition++;

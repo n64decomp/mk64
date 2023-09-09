@@ -37,11 +37,11 @@ $(eval $(call validate-option,VERSION,us eu))
 
 ifeq      ($(VERSION),us)
   DEFINES += VERSION_US=1
-  GRUCODE   ?= f3d_old
+  GRUCODE   ?= f3dex_old
   VERSION_ASFLAGS := --defsym VERSION_US=1
 else ifeq ($(VERSION), eu)
   DEFINES += VERSION_EU=1 
-  GRUCODE   ?= f3d_old
+  GRUCODE   ?= f3dex_old
   VERSION_ASFLAGS := --defsym VERSION_EU=1
 endif
 
@@ -57,15 +57,18 @@ BASEROM := baserom.$(VERSION).z64
 
 
 # GRUCODE - selects which RSP microcode to use.
-#   f3d_old - default, version 0.95. An early version of f3d.
-#   f3dex2  - A newer, unsupported version
+#   f3dex_old - default, version 0.95. An early version of F3DEX.
+#   f3dex     - latest version of F3DEX, used on iQue and Lodgenet.
+#   f3dex2    - F3DEX2, currently unsupported.
 # Note that 3/4 player mode uses F3DLX
-$(eval $(call validate-option,GRUCODE,f3d_old f3dex2))
+$(eval $(call validate-option,GRUCODE,f3dex_old f3dex f3dex2))
 
-ifeq ($(GRUCODE), f3dex2) # Fast3DEX2
-  DEFINES += F3DEX_GBI_2 F3DEX_GBI_SHARED=1
-else
+ifeq ($(GRUCODE),f3dex_old) # Fast3DEX 0.95
   DEFINES += F3DEX_GBI=1 F3D_OLD=1
+else ifeq ($(GRUCODE),f3dex) # Fast3DEX 1.23
+  DEFINES += F3DEX_GBI=1 F3DEX_GBI_SHARED=1
+else ifeq ($(GRUCODE),f3dex2) # Fast3DEX2
+  DEFINES += F3DEX_GBI_2=1 F3DEX_GBI_SHARED=1
 endif
 
 

@@ -10670,7 +10670,7 @@ Vtx d_course_yoshi_valley_flag_2_model[] = {
 Gfx d_course_yoshi_valley_dl_144A8[] =
 {
     gsSPVertex(d_course_yoshi_valley_flag_2_model, 4, 0),
-    gsSP1Quadrangle(0, 1, 2, 3, 0),
+    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSPEndDisplayList(),
 };
 
@@ -10706,7 +10706,7 @@ Gfx d_course_yoshi_valley_dl_14558[] =
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPVertex(d_course_yoshi_valley_flag_4_model, 4, 0),
-    gsSP1Quadrangle(0, 1, 2, 3, 0),
+    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSPEndDisplayList(),
 };
 
@@ -11020,7 +11020,7 @@ Gfx d_course_yoshi_valley_dl_tree[] =
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x00FC),
     gsDPLoadTextureBlock(0x03009000, G_IM_FMT_CI, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSPVertex(d_course_yoshi_valley_tree_model, 4, 0),
-    gsSP1Quadrangle(0, 1, 2, 3, 0),
+    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsDPSetTextureLUT(G_TT_NONE),
     gsSPEndDisplayList(),
 };
@@ -11229,7 +11229,7 @@ Gfx d_course_yoshi_valley_dl_16D70[] =
     gsSP1Triangle(19, 29, 20, 0),
     gsSPVertex(d_course_yoshi_valley_egg_model2, 31, 0),
     gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-    gsSP1Quadrangle(6, 7, 8, 9, 0),
+    gsSP2Triangles(6, 7, 8, 0, 6, 8, 9, 0),
     gsSP2Triangles(9, 8, 10, 0, 11, 12, 0, 0),
     gsSP2Triangles(13, 14, 15, 0, 16, 17, 4, 0),
     gsSP2Triangles(18, 19, 20, 0, 19, 21, 22, 0),
@@ -11237,7 +11237,7 @@ Gfx d_course_yoshi_valley_dl_16D70[] =
     gsSP2Triangles(26, 23, 27, 0, 23, 25, 27, 0),
     gsSP1Triangle(28, 29, 30, 0),
     gsSPVertex(d_course_yoshi_valley_egg_model3, 32, 0),
-    gsSP1Quadrangle(0, 1, 2, 3, 0),
+    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
     gsSP2Triangles(4, 8, 5, 0, 9, 10, 11, 0),
     gsSP2Triangles(12, 13, 14, 0, 15, 16, 17, 0),
@@ -11257,9 +11257,9 @@ Gfx d_course_yoshi_valley_dl_16D70[] =
     gsSP2Triangles(27, 28, 25, 0, 29, 30, 31, 0),
     gsSPVertex(d_course_yoshi_valley_egg_model5, 26, 0),
     gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-    gsSP1Quadrangle(4, 6, 7, 5, 0),
+    gsSP2Triangles(4, 6, 7, 0, 4, 7, 5, 0),
     gsSP2Triangles(8, 9, 10, 0, 11, 12, 13, 0),
-    gsSP1Quadrangle(12, 14, 15, 13, 0),
+    gsSP2Triangles(12, 14, 15, 0, 12, 15, 13, 0),
     gsSP2Triangles(16, 17, 18, 0, 17, 19, 18, 0),
     gsSP2Triangles(18, 19, 20, 0, 21, 22, 23, 0),
     gsSP1Triangle(22, 24, 25, 0),
