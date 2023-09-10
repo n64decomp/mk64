@@ -305,7 +305,7 @@ void func_80003040(void) {
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             dma_textures(D_0F04F45C, 0x35B, 0x800);
-            place_segment_06(d_course_mario_raceway_tree_spawns);
+            spawn_foliage(d_course_mario_raceway_tree_spawns);
             break;
         case COURSE_BOWSER_CASTLE:
             find_vtx_and_set_colours(0x7001350, 0x32, 0, 0, 0);
@@ -331,7 +331,7 @@ void func_80003040(void) {
             dma_textures(D_0F0532F8, 0x400, 0x800);
             dma_textures(D_0F05363C, 0x400, 0x800);
             dma_textures(D_0F053950, 0x400, 0x800);
-            place_segment_06(d_course_moo_moo_farm_tree_spawn);
+            spawn_foliage(d_course_moo_moo_farm_tree_spawn);
             break;
         case COURSE_SHERBET_LAND:
             find_vtx_and_set_colours(0x7001EB8, -0x4C, 0xFF, 0xFF, 0xFF);

@@ -564,29 +564,9 @@ void update_obj_kiwano_fruit(struct KiwanoFruit *fruit) {
     }
 }
 
-void update_obj_paddle_wheel(struct PaddleWheelBoat *boat) {
-    boat->wheelRot += 0x38E;
-}
+#include "actors/boat.inc.c"
 
-// wheels
-void update_obj_train_engine(struct TrainCar *arg0) {
-    arg0->wheelRot -= 0x666;
-
-    if (arg0->unk_08 != 0.0f) {
-        arg0->unk_08 = 0.0f;
-        func_800C9D80(arg0->pos, arg0->velocity, 0x51018000);
-    }
-}
-
-// wheels
-void update_obj_train_car1(struct TrainCar *tender) {
-    tender->wheelRot -= 0x4FA;
-}
-
-// wheels
-void update_obj_train_car2(struct TrainCar *arg0) {
-    arg0->wheelRot -= 0x666;
-}
+#include "actors/train.inc.c"
 
 void update_obj_piranha_plant(struct PiranhaPlant *arg0) {
     if ((arg0->flags & 0x800) == 0) {
@@ -1981,121 +1961,10 @@ void place_palm_trees(struct ActorSpawnData *spawnData) {
     }
 }
 
-void func_8029CF0C(struct ActorSpawnData *spawnData, struct FallingRock *rock) {
-    s32 segment = SEGMENT_NUMBER2(spawnData);
-    s32 offset = SEGMENT_OFFSET(spawnData);
-    struct ActorSpawnData *temp_v0 = (struct ActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
-    Vec3s sp24 = {60, 120, 180};
-    temp_v0 += rock->unk_06;
-    rock->respawnTimer = sp24[rock->unk_06]; // * 2
-    rock->pos[0] = (f32) temp_v0->pos[0] * gCourseDirection;
-    rock->pos[1] = (f32) temp_v0->pos[1] + 10.0f;
-    rock->pos[2] = (f32) temp_v0->pos[2];
-    vec3f_set(rock->velocity, 0, 0, 0);
-    vec3s_set(rock->rot, 0, 0, 0);
-}
+#include "actors/falling_rocks.inc.c"
 
-void place_falling_rocks(struct ActorSpawnData *spawnData) {
-    s32 addr = SEGMENT_NUMBER2(spawnData);
-    s32 offset = SEGMENT_OFFSET(spawnData);
-    // Casting this to prevent warning does not work.
-    struct ActorSpawnData *temp_s0 = (struct ActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[addr] + offset);
-    struct FallingRock *temp_v1;
-    Vec3f startingPos;
-    Vec3f startingVelocity;
-    Vec3s startingRot;
-    s16 temp;
-
-    while (temp_s0->pos[0] != -0x8000) {
-        startingPos[0] = temp_s0->pos[0] * gCourseDirection;
-        startingPos[1] = temp_s0->pos[1] + 10.0f;
-        startingPos[2] = temp_s0->pos[2];
-        vec3f_set(startingVelocity, 0, 0, 0);
-        vec3s_set(startingRot, 0, 0, 0);
-        temp = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_FALLING_ROCK);
-        temp_v1 = (struct FallingRock *) &gActorList[temp];
-
-        temp_v1->unk_06 = temp_s0->someId;
-        func_802AAAAC((Collision *) &temp_v1->unk30);
-        temp_s0++;
-    }
-}
-
-void update_obj_falling_rocks(struct FallingRock *rock) {
-    Vec3f unkVec;
-    f32 pad0;
-    f32 pad1;
-
-    if (rock->respawnTimer != 0) {
-        rock->respawnTimer -= 1;
-        return;
-    }
-    if (rock->pos[1] < D_8015F8E4) {
-        func_8029CF0C(d_course_choco_mountain_falling_rock_spawns, rock);
-    }
-    rock->rot[0] += (s16) ((rock->velocity[2] * 5461.0f) / 20.0f);
-    rock->rot[2] += (s16) ((rock->velocity[0] * 5461.0f) / 20.0f);
-    rock->velocity[1] -= 0.1;
-    if (rock->velocity[1] < (-2.0f)) {
-        rock->velocity[1] = -2.0f;
-    }
-    rock->pos[0] += rock->velocity[0];
-    rock->pos[1] += rock->velocity[1];
-    rock->pos[2] += rock->velocity[2];
-    pad1 = rock->velocity[1];
-    func_802ADDC8(&rock->unk30, 10.0f, rock->pos[0], rock->pos[1], rock->pos[2]);
-    pad0 = rock->unk30.unk3C[2];
-    if (pad0 < 0.0f) {
-        unkVec[0] = -rock->unk30.unk60[0];
-        unkVec[1] = -rock->unk30.unk60[1];
-        unkVec[2] = -rock->unk30.unk60[2];
-        rock->pos[0] += unkVec[0] * rock->unk30.unk3C[2];
-        rock->pos[1] += unkVec[1] * rock->unk30.unk3C[2];
-        rock->pos[2] += unkVec[2] * rock->unk30.unk3C[2];
-        func_802AC114(unkVec, pad0, rock->velocity, 2.0f);
-        rock->velocity[1] = -1.2f * pad1;
-        func_800C98B8(rock->pos, rock->velocity, 0x1900800FU);
-    }
-    pad0 = rock->unk30.unk3C[0];
-    if (pad0 < 0.0f) {
-        unkVec[1] = -rock->unk30.unk48[1];
-        if (unkVec[1] == 0.0f) {
-            rock->velocity[1] *= -1.2f;
-            return;
-        }
-        else {
-            unkVec[0] = -rock->unk30.unk48[0];
-            unkVec[2] = -rock->unk30.unk48[2];
-            rock->pos[0] += unkVec[0] * rock->unk30.unk3C[0];
-            rock->pos[1] += unkVec[1] * rock->unk30.unk3C[0];
-            rock->pos[2] += unkVec[2] * rock->unk30.unk3C[0];
-            func_802AC114(unkVec, pad0, rock->velocity, 2.0f);
-            rock->velocity[1] = -1.2f * pad1;
-            func_800C98B8(rock->pos, rock->velocity, 0x1900800FU);
-        }
-    }
-    pad0 = rock->unk30.unk3C[1];
-    if (pad0 < 0.0f) {
-        unkVec[1] = -rock->unk30.unk54[1];
-        if (unkVec[1] == 0.0f) {
-            rock->velocity[1] *= -1.2f;
-        }
-        else {
-            unkVec[0] = -rock->unk30.unk54[0];
-            unkVec[2] = -rock->unk30.unk54[2];
-            rock->pos[0] += unkVec[0] * rock->unk30.unk3C[1];
-            rock->pos[1] += unkVec[1] * rock->unk30.unk3C[1];
-            rock->pos[2] += unkVec[2] * rock->unk30.unk3C[1];
-            pad1 = rock->velocity[1];
-            func_802AC114(unkVec, pad0, rock->velocity, 2.0f);
-            rock->velocity[1] = -1.2f * pad1;
-            func_800C98B8(rock->pos, rock->velocity, 0x1900800FU);
-        }
-    }
-}
-
-// This function may be better named "init_trees_cacti_shrubs"
-void place_segment_06(struct ActorSpawnData *arg0) {
+// Trees, cacti, shrubs, etc.
+void spawn_foliage(struct ActorSpawnData *arg0) {
     UNUSED s32 pad[4];
     Vec3f position;
     Vec3f velocity;
@@ -2269,7 +2138,7 @@ void place_course_actors(void) {
     gNumPermanentActors = 0;
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
-        place_segment_06(d_course_mario_raceway_tree_spawns);
+        spawn_foliage(d_course_mario_raceway_tree_spawns);
         place_piranha_plants(d_course_mario_raceway_piranha_plant_spawns);
         place_all_item_boxes(d_course_mario_raceway_item_box_spawns);
         vec3f_set(position, 150.0f, 40.0f, -1300.0f);
@@ -2285,21 +2154,21 @@ void place_course_actors(void) {
         place_falling_rocks(d_course_choco_mountain_falling_rock_spawns);
         break;
     case COURSE_BOWSER_CASTLE:
-        place_segment_06(d_course_bowsers_castle_tree_spawn);
+        spawn_foliage(d_course_bowsers_castle_tree_spawn);
         place_all_item_boxes(d_course_bowsers_castle_item_box_spawns);
         break;
     case COURSE_BANSHEE_BOARDWALK:
         place_all_item_boxes(d_course_banshee_boardwalk_item_box_spawns);
         break;
     case COURSE_YOSHI_VALLEY:
-        place_segment_06(d_course_yoshi_valley_tree_spawn);
+        spawn_foliage(d_course_yoshi_valley_tree_spawn);
         place_all_item_boxes(d_course_yoshi_valley_item_box_spawns);
         vec3f_set(position, -2300.0f, 0.0f, 634.0f);
         position[0] *= gCourseDirection;
         addActorToEmptySlot(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
         break;
     case COURSE_FRAPPE_SNOWLAND:
-        place_segment_06(d_course_frappe_snowland_tree_spawns);
+        spawn_foliage(d_course_frappe_snowland_tree_spawns);
         place_all_item_boxes(d_course_frappe_snowland_item_box_spawns);
         break;
     case COURSE_KOOPA_BEACH:
@@ -2308,17 +2177,17 @@ void place_course_actors(void) {
         place_palm_trees(d_course_koopa_troopa_beach_tree_spawn);
         break;
     case COURSE_ROYAL_RACEWAY:
-        place_segment_06(d_course_royal_raceway_tree_spawn);
+        spawn_foliage(d_course_royal_raceway_tree_spawn);
         place_all_item_boxes(d_course_royal_raceway_item_box_spawns);
         place_piranha_plants(d_course_royal_raceway_piranha_plant_spawn);
         break;
     case COURSE_LUIGI_RACEWAY:
-        place_segment_06(d_course_luigi_raceway_tree_spawn);
+        spawn_foliage(d_course_luigi_raceway_tree_spawn);
         place_all_item_boxes(d_course_luigi_raceway_item_box_spawns);
         break;
     case COURSE_MOO_MOO_FARM:
         if (gPlayerCountSelection1 != 4) {
-            place_segment_06(d_course_moo_moo_farm_tree_spawn);
+            spawn_foliage(d_course_moo_moo_farm_tree_spawn);
         }
         place_all_item_boxes(d_course_moo_moo_farm_item_box_spawns);
         break;
@@ -2326,7 +2195,7 @@ void place_course_actors(void) {
         place_all_item_boxes(d_course_toads_turnpike_item_box_spawns);
         break;
     case COURSE_KALAMARI_DESERT:
-        place_segment_06(d_course_kalimari_desert_cactus_spawn);
+        spawn_foliage(d_course_kalimari_desert_cactus_spawn);
         place_all_item_boxes(d_course_kalimari_desert_item_box_spawns);
         vec3f_set(position, -1680.0f, 2.0f, 35.0f);
         position[0] *= gCourseDirection;

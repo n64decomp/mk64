@@ -19,6 +19,10 @@ glabel jpt_800F3A20
 .word L800D1420, L800D15B4, L800D13E8, L800D13F4
 .word L800D1400
 
+.section .bss
+glabel D_801976A0
+.skip 432
+
 .section .text, "ax"
 
 
