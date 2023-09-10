@@ -974,7 +974,7 @@ void displaylist_unpack(uintptr_t *data, uintptr_t finalDisplaylistOffset, u32 a
     sGfxSeekPosition = 0;
     sPackedSeekPosition = 0;
 
-    while(1) {
+    while(TRUE) {
 
         // Seek to the next byte
         opcode = packed_dl[sPackedSeekPosition++];

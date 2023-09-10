@@ -19,7 +19,7 @@
 
 #define CHARACTER_BUFFER_SIZE 200 // size of the string buffer
 
-/** 
+/**
  * This is the position of the displayed text.
  * It's calculated from the top left.
  */

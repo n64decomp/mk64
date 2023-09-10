@@ -10,6 +10,12 @@
 #include <sounds.h>
 #include "port_eu.h"
 
+/** bss
+s8 D_8018EF10;
+
+*/
+
+
 // Requires void in the argument list to match properly.
 void func_800C13F0(void) {
 }

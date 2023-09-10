@@ -5121,7 +5121,7 @@ s32 func_8009A374(MkAnimation *arg0) {
     while (D_8018DEE0[var_a1].visible != 0) {
         var_a1++;
         if (var_a1 >= 0x10) {
-            while(1){}
+            while(TRUE);
         }
     }
     temp_v1 = &D_8018DEE0[var_a1];

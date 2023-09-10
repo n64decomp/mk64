@@ -355,7 +355,7 @@ SECTIONS
       #endif
       BUILD_DIR/asm/bss_main_audio.o(.bss);
       BUILD_DIR/src/audio/port_eu.o(.bss);
-      BUILD_DIR/asm/bss_main_audio2.o(.bss);
+      BUILD_DIR/src/os/osInitialize.o(.bss);
       BUILD_DIR/src/os/osCreateViManager.o(.bss);
       BUILD_DIR/src/os/osCreatePiManager.o(.bss);
       BUILD_DIR/src/os/osSetEventMesg.o(.bss);
@@ -369,9 +369,8 @@ SECTIONS
       BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.bss);
       BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.bss);
       BUILD_DIR/src/os/osEepromWrite.o(.bss);
-      BUILD_DIR/asm/bss_after_ostimer.o(.bss);
+      BUILD_DIR/asm/os/__osException.o(.bss);
       BUILD_DIR/src/os/osLeoDiskInit.o(.bss);
-      BUILD_DIR/asm/bss_after_diskinit.o(.bss);
    }
    END_NOLOAD(main)
    
