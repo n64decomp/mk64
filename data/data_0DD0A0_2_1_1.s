@@ -202,29 +202,41 @@ glabel D_800E9F78
 .byte 0x00, 0x00, 0x00, 0x00
 
 glabel D_800E9F7C
-.float 0.0, 0.0, 0.0, 1.0
-
-glabel D_800E9F8C
+.float 0.0, 0.0, 0.0
 .float 1.0
+.float 1.0
+.byte 0x00
+.balign 4
+.float 3800.0, 3.4, 0.4
+.float -1.0, 0.4, 1100.0
+.float 630.0, 3600.0, 1.0
 
-glabel D_800E9F90
-.byte 0x00, 0x00, 0x00, 0x00
+.float 0.0, 0.0, 0.0
+.float 1.0
+.float 1.0
+.byte 0x00
+.balign 4
+.float 3800.0, 3.4, 0.4
+.float -1.0, 0.4, 1100.0
+.float 630.0, 3600.0, 1.0
 
-glabel D_800E9F94
-.float 3800.0, 3.4
-.float 0.4, -1.0, 0.4, 1100.0
-.float 630.0, 3600.0, 1.0, 0.0
-.float 0.0, 0.0, 1.0, 1.0
-.float 0.0, 3800.0, 3.4, 0.4
-.float -1.0, 0.4, 1100.0, 630.0
-.float 3600.0, 1.0, 0.0, 0.0
-.float 0.0, 1.0, 1.0, 0.0
-.float 3800.0, 3.4, 0.4, -1.0
-.float 0.4, 1100.0, 630.0, 3600.0
-.float 1.0, 0.0, 0.0, 0.0
-.float 1.0, 1.0, 0.0, 3800.0
-.float 3.4, 0.4, -1.0, 0.4
-.float 1100.0, 630.0, 3600.0, 1.0
+.float 0.0, 0.0, 0.0
+.float 1.0
+.float 1.0
+.byte 0x00
+.balign 4
+.float 3800.0, 3.4, 0.4
+.float -1.0, 0.4, 1100.0
+.float 630.0, 3600.0, 1.0
+
+.float 0.0, 0.0, 0.0
+.float 1.0
+.float 1.0
+.byte 0x00
+.balign 4
+.float 3800.0, 3.4, 0.4
+.float -1.0, 0.4, 1100.0
+.float 630.0, 3600.0, 1.0
 
 .macro Entry800EA06C f0, f1, f2, b0
 .float \f0, \f1, \f2

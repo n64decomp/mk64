@@ -36,6 +36,23 @@ struct Unk_8018FC20 {
 	/* 0x14 */ u8  *unk14;
 }; // size = 0x18
 
+struct Unk_800E9F7C {
+	/* 0x00 */ Vec3f pos;
+	/* 0x0C */ f32 unk_0C;
+	/* 0x10 */ f32 unk_10;
+	/* 0x14 */ s8 unk_14;
+	/* 0x15 */ // s8 comilerPadding[3];
+	/* 0x18 */ f32 unk_18;
+	/* 0x1C */ f32 unk_1C;
+	/* 0x20 */ f32 unk_20;
+	/* 0x24 */ f32 unk_24;
+	/* 0x28 */ f32 unk_28;
+	/* 0x2C */ f32 unk_2C;
+	/* 0x30 */ f32 unk_30;
+	/* 0x34 */ f32 unk_34;
+	/* 0x38 */ f32 unk_38;
+} ; // size = 0x3C
+
 // I'm speculating that this struct has something to do with
 // the doppler effect that happens to some sounds
 struct Unk_8018EFD8 {
@@ -88,15 +105,6 @@ struct Unk_800EA06C {
 	/* 0x0D */ // u8 compilerPadding0[3];
 };
 
-// Similar to Unk_8018EFD8
-// Should look like 5 f32's, then 4 u8's, then 9 f32's.
-struct Unk_800E9F7C {
-    Vec3f pos;
-    f32 unk4[2];
-	s8 unk14[4];
-	f32 unk18[9];
-}; // Size is still 0x3C.
-
 void func_800C94A4(u8);
 void func_800CADD0(u8, f32);
 void func_800C13F0(void);
@@ -115,9 +123,10 @@ void func_800C2474(void);
 void func_800C284C(u8, u8, u8, s32);
 
 void func_800C3724(void);
-void func_800C3448(s32);
+void func_800C3448(u32);
 void func_800C3478(void);
 u16  func_800C3508(s32);
+u8   func_800C357C(s32);
 void func_800C35E8(u8);
 void func_800C36C4(s32, u32, u8, s8);
 void func_800C3F70(void);
@@ -127,35 +136,58 @@ void func_800C4084(u16);
 void play_sound(u32, f32*, u8, f32*, f32*, u8*);
 void func_800C41CC(u8, struct Unk_80191420*);
 void func_800C4398(void);
+void func_800C473C(u8, u8);
+void func_800C4888(u8);
+void func_800C4FE4(u8);
 
 void func_800C5278(u8);
+void func_800C5384(u8, f32*);
+void func_800C54B8(u8, s32);
+void func_800C550C(s32);
 void func_800C5578(Vec3f, u32);
 u8   func_800C56F0(u32);
 void func_800C5848(void);
 void func_800C58B8(u8, u8, u16);
+void func_800C5968(u8);
 void func_800C59C4(void);
 void func_800C5A3C(void);
 void func_800C5BD0(void);
 void func_800C5C40(void);
 void func_800C5CB8(void);
+void func_800C5D04(u8);
+void func_800C5E38(u8);
 
+void func_800C6108(u8);
+void func_800C64A0(u8);
 void func_800C6758(u8);
+void func_800C683C(u8);
 
+void func_800C70A8(u8);
+void func_800C76C0(u8);
+
+void func_800C847C(u8);
 void func_800C86D8(u8);
 void func_800C8770(u8);
 void func_800C8920(void);
 void func_800C89E4(void);
+void func_800C8AE4(void);
+void func_800C8C7C(u8);
 void func_800C8CCC(void);
 void play_sound2(s32);
 void func_800C8EAC(u16);
 void func_800C8EF8(u16);
 void func_800C8F44(u8);
-void func_800C8F80(u8, s32);
+void func_800C8F80(u8, u32);
 
 void func_800C9018(u8, s32);
 void func_800C9060(u8, u32);
-void func_800C90F4(u8, uintptr_t);
+void func_800C90F4(u8, u32);
+void func_800C9250(u8);
+void func_800C92CC(u8, u32);
+void func_800C94A4(u8);
 void func_800C97C4(u8);
+void func_800C98B8(Vec3f, Vec3f, u32);
+void func_800C99E0(Vec3f, s32);
 void func_800C9A88(u8);
 void func_800C9D0C(u8);
 void func_800C9D80(Vec3f, Vec3f, u32);
@@ -167,7 +199,7 @@ void func_800CA0A0(void);
 void func_800CA0B8(void);
 void func_800CA0CC(void);
 void func_800CA0E4(void);
-void func_800CA118(s32);
+void func_800CA118(u8);
 void func_800CA24C(u8);
 void func_800CA270(void);
 void func_800CA288(u8, s8);
@@ -178,8 +210,11 @@ void func_800CA330(u8);
 void func_800CA388(u8);
 void func_800CA414(u16, u16);
 void func_800CA49C(u8);
+void func_800CA59C(u8);
+void func_800CA984(u8);
 void func_800CAACC(u8);
-void func_800CAC08();
+void func_800CAB4C(u8);
+void func_800CAC08(void);
 void func_800CAC60(s32);
 void func_800CAD40(s32);
 void func_800CAEC4(u8, f32);
@@ -217,13 +252,33 @@ extern u32 D_80192CD0[];
 
 // Data entries
 extern u8  D_800E9DA0;
+extern f32 D_800E9DC4[4];// = { 1.0f, 1.0f, 1.0f, 1.0f };
+extern f32 D_800E9DD4[4];// = { 0.0f, 0.0f, 0.0f, 0.0f };
+extern f32 D_800E9DE4[4];// = { 0.0f, 0.0f, 0.0f, 0.0f };
+extern f32 D_800E9DF4[8];// = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
+extern s32 D_800E9E14[4];// = { 0, 0, 0, 0 };
+extern s32 D_800E9E24[4];// = { 0, 0, 0, 0 };
+extern s32 D_800E9E34[8];
 extern f32 D_800E9E54[4];// = { 0.0f, 0.0f, 0.0f, 0.0f }; /* const */
+extern f32 D_800E9E64[4];// = { 0.0f, 0.0f, 0.0f, 0.0f };
 extern s32 D_800E9E74[4];// = { 0, 0, 0, 0 };          /* const */
+extern s32 D_800E9E84[4];
+extern u32 D_800E9E94[4];
+extern s32 D_800E9EA4[4];// = { 0, 0, 0, 0 };
+extern f32 D_800E9EB4[4];// = { 0.0f, 0.0f, 0.0f, 0.0f };
+extern f32 D_800E9EC4[4];// = { 0.0f, 0.0f, 0.0f, 0.0f };
+extern f32 D_800E9ED4[4];// = { 0.0f, 0.0f, 0.0f, 0.0f };
+extern f32 D_800E9EE4[4];// = { 0.0f, 0.0f, 0.0f, 0.0f };
+extern f32 D_800E9EF4[4];
+extern f32 D_800E9F04[4];// = { 1.0f, 1.0f, 1.0f, 1.0f };
 extern f32 D_800E9F14[4];// = { 1.0f, 1.0f, 1.0f, 1.0f }; /* const */
 extern u8  D_800E9F24[8];// = { 0, 0, 0, 0, 0, 0, 0, 0 };
+extern u8  D_800E9F2C[8];// = { 0, 0, 0, 0, 0, 0, 0, 0 };
 extern f32 D_800E9F34[8];// = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f }; /* const */
 extern f32 D_800E9F54[4];// = { 1.0f, 1.0f, 1.0f, 1.0f }; /* const */
-extern u8  D_800E9F2C[8];// = { 0, 0, 0, 0, 0, 0, 0, 0 };
+extern u8  D_800E9F74[4];
+extern u8  D_800E9F78[4];
+extern struct Unk_800E9F7C D_800E9F7C[4];
 extern u8  D_800E9F90[];
 extern struct Unk_800EA06C D_800EA06C[8];
 extern u8  D_800EA0EC[];
@@ -232,15 +287,21 @@ extern u8  D_800EA0F4;
 extern u8  D_800EA104;
 extern u8  D_800EA108;// = 0;
 extern u8  D_800EA10C[];
+extern f32 D_800EA110[4];// = { 0.0f, 0.0f, 0.0f, 0.0f };
+extern f32 D_800EA120[4];
+extern f32 D_800EA130[4];
+extern f32 D_800EA150;// = 1.4f;
+extern u8  D_800EA154[];
 extern u16 D_800EA15C;
 extern u16 D_800EA160;
 extern u8  D_800EA164;
 extern s8  D_800EA168;
 extern u8  D_800EA170[];
-extern s16 D_800EA174;// = 0;
+extern u16 D_800EA174;// = 0;
 extern f32 D_800EA178;
 extern f32 D_800EA17C;
 extern u16 D_800EA180;// = 0;                          /* const */
+extern u16 D_800EA184;
 extern u8 D_800EA1C0;// = 0;
 // Most similar to gGlobalSoundSource from SM64, but I don't know if its really
 // a sound source, its usage makes it look like a 0'd Vec3f for general usage
@@ -248,6 +309,7 @@ extern Vec3f D_800EA1C8;// = {0.0f, 0.0f, 0.0f}
 extern Vec3f D_800EA1D4;
 extern u8 D_800EA1DC;// = 0;
 extern u8 D_800EA1E4;
+extern u8 D_800EA1E8;
 extern u8 D_800EA244;
 
 extern s8 D_800EA16C;
