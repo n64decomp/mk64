@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_skyscraper_packed_dl_0[];
 extern Gfx d_course_skyscraper_packed_dl_238[];
@@ -18,4 +19,6 @@ extern Gfx d_course_skyscraper_packed_dl_FE8[];
 extern Gfx d_course_skyscraper_packed_dl_FF8[];
 extern Gfx d_course_skyscraper_packed_dl_10C8[];
 extern Gfx d_course_skyscraper_packed_dl_10D8[];
-extern Gfx d_course_skyscraper_packed_dl_1110[];
+extern Gfx d_course_skyscraper_packed_dl_1110[2];
+
+#define d_course_skyscraper_packed_end GET_PACKED_END(d_course_skyscraper_packed_dl_1110)

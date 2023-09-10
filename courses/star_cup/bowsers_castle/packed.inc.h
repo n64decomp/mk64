@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_bowsers_castle_packed_dl_0[];
 extern Gfx d_course_bowsers_castle_packed_dl_60[];
@@ -174,4 +175,6 @@ extern Gfx d_course_bowsers_castle_packed_dl_94B0[];
 extern Gfx d_course_bowsers_castle_packed_dl_94D8[];
 extern Gfx d_course_bowsers_castle_packed_dl_9820[];
 extern Gfx d_course_bowsers_castle_packed_dl_9830[];
-extern Gfx d_course_bowsers_castle_packed_dl_9910[];
+extern Gfx d_course_bowsers_castle_packed_dl_9910[2];
+
+#define d_course_bowsers_castle_packed_end GET_PACKED_END(d_course_bowsers_castle_packed_dl_9910)

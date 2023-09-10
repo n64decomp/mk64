@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_royal_raceway_packed_dl_0[];
 extern Gfx d_course_royal_raceway_packed_dl_A8[];
@@ -322,4 +323,6 @@ extern Gfx d_course_royal_raceway_packed_dl_AEF8[];
 extern Gfx d_course_royal_raceway_packed_dl_AF28[];
 extern Gfx d_course_royal_raceway_packed_dl_B030[];
 extern Gfx d_course_royal_raceway_packed_dl_B040[];
-extern Gfx d_course_royal_raceway_packed_dl_B120[];
+extern Gfx d_course_royal_raceway_packed_dl_B120[2];
+
+#define d_course_royal_raceway_packed_end GET_PACKED_END(d_course_royal_raceway_packed_dl_B120)

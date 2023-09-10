@@ -1,17 +1,9 @@
 #include <ultra64.h>
 #include <macros.h>
 #include "types.h"
-#include <packed_dl_end.h>
-#include <course_vertex_count.h>
 #include "courseTable.h"
-
-/**
- * vertex_count is generated from tools/generate_vertice_count.py
- * It takes the size of the vertex variable from objdump using the model.inc.elf file.
- * From there it divides the size by fourteen bytes (the size of a single vertex).
- * It then generates the header file with definitions of vertex_count.
- * This tool is ran during the compile process.
-*/
+#include "all_course_model.h"
+#include "all_course_packed.h"
 
 struct courseTable gCourseTable[] = {{
 	_course_mario_raceway_dl_mio0SegmentRomStart, _course_mario_raceway_dl_mio0SegmentRomEnd,

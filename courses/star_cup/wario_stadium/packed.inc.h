@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_wario_stadium_packed_dl_0[];
 extern Gfx d_course_wario_stadium_packed_dl_60[];
@@ -259,4 +260,6 @@ extern Gfx d_course_wario_stadium_packed_dl_A228[];
 extern Gfx d_course_wario_stadium_packed_dl_A248[];
 extern Gfx d_course_wario_stadium_packed_dl_A448[];
 extern Gfx d_course_wario_stadium_packed_dl_A458[];
-extern Gfx d_course_wario_stadium_packed_dl_A4A8[];
+extern Gfx d_course_wario_stadium_packed_dl_A4A8[3];
+
+#define d_course_wario_stadium_packed_end GET_PACKED_END(d_course_wario_stadium_packed_dl_A4A8)

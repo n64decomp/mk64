@@ -347,8 +347,6 @@ MIO0TOOL              := $(TOOLS_DIR)/mio0
 N64CKSUM              := $(TOOLS_DIR)/n64cksum
 N64GRAPHICS           := $(TOOLS_DIR)/n64graphics
 DLPACKER              := $(TOOLS_DIR)/displaylist_packer
-DLSYMGEN              := $(PYTHON) $(TOOLS_DIR)/new_packed_end.py
-MODELSYMGEN           := $(PYTHON) $(TOOLS_DIR)/new_vertex_count.py
 BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
 ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
@@ -501,13 +499,7 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 # Course Packed Displaylists Generation                                        #
 #==============================================================================#
 
-COURSE_PACKED_DL_ELFS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed.inc.elf)
 COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
-
-$(BUILD_DIR)/include/packed_dl_end.h: $(COURSE_PACKED_DL_ELFS)
-	$(V)$(DLSYMGEN) $@ $^
-
-courses/courseTable.inc.c: $(BUILD_DIR)/include/packed_dl_end.h
 
 %/packed.inc.elf: %/packed.inc.o
 	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -o $@ $< --no-check-sections
@@ -525,13 +517,7 @@ courses/courseTable.inc.c: $(BUILD_DIR)/include/packed_dl_end.h
 # Course Geography Generation                                                  #
 #==============================================================================#
 
-COURSE_MODEL_ELFS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.elf)
 COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
-
-$(BUILD_DIR)/include/course_vertex_count.h: $(COURSE_MODEL_ELFS)
-	$(V)$(MODELSYMGEN) $@ $^
-
-courses/courseTable.inc.c: $(BUILD_DIR)/include/course_vertex_count.h
 
 %/model.inc.elf: %/model.inc.o
 	$(V)$(LD) -t -e 0 -Ttext=0F000000 -Map $@.map -o $@ $< --no-check-sections

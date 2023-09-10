@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_koopa_troopa_beach_packed_dl_0[];
 extern Gfx d_course_koopa_troopa_beach_packed_dl_B0[];
@@ -307,4 +308,6 @@ extern Gfx d_course_koopa_troopa_beach_packed_dl_B0A0[];
 extern Gfx d_course_koopa_troopa_beach_packed_dl_B168[];
 extern Gfx d_course_koopa_troopa_beach_packed_dl_B208[];
 extern Gfx d_course_koopa_troopa_beach_packed_dl_B230[];
-extern Gfx d_course_koopa_troopa_beach_packed_dl_B2B0[];
+extern Gfx d_course_koopa_troopa_beach_packed_dl_B2B0[2];
+
+#define d_course_koopa_troopa_beach_packed_end GET_PACKED_END(d_course_koopa_troopa_beach_packed_dl_B2B0)

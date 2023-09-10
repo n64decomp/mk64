@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_luigi_raceway_packed_dl_0[];
 extern Gfx d_course_luigi_raceway_packed_dl_68[];
@@ -357,4 +358,6 @@ extern Gfx d_course_luigi_raceway_packed_dl_C540[];
 extern Gfx d_course_luigi_raceway_packed_dl_C5C0[];
 extern Gfx d_course_luigi_raceway_packed_dl_C640[];
 extern Gfx d_course_luigi_raceway_packed_dl_C668[];
-extern Gfx d_course_luigi_raceway_packed_dl_C730[];
+extern Gfx d_course_luigi_raceway_packed_dl_C730[2];
+
+#define d_course_luigi_raceway_packed_end GET_PACKED_END(d_course_luigi_raceway_packed_dl_C730)

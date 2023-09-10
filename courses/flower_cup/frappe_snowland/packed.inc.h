@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_frappe_snowland_packed_dl_0[];
 extern Gfx d_course_frappe_snowland_packed_dl_88[];
@@ -140,4 +141,6 @@ extern Gfx d_course_frappe_snowland_packed_dl_62F8[];
 extern Gfx d_course_frappe_snowland_packed_dl_63D8[];
 extern Gfx d_course_frappe_snowland_packed_dl_65E0[];
 extern Gfx d_course_frappe_snowland_packed_dl_65F0[];
-extern Gfx d_course_frappe_snowland_packed_dl_6638[];
+extern Gfx d_course_frappe_snowland_packed_dl_6638[3];
+
+#define d_course_frappe_snowland_packed_end GET_PACKED_END(d_course_frappe_snowland_packed_dl_6638)

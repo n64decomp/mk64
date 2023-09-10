@@ -64,4 +64,12 @@
 // aligns an address to the next 16 bytes
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
 
+/**
+ * (u8*) dl : Cast array down to u8's
+ * + sizeof(dl) : go to the end of the array
+ * - sizeof(dl[0]) : walk back 1 Gfx macro
+ * - 0x07000000 : get just the offset
+ **/
+#define GET_PACKED_END(dl) (((u8*) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)
+
 #endif

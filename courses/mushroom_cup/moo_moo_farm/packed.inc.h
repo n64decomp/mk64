@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_moo_moo_farm_packed_dl_0[];
 extern Gfx d_course_moo_moo_farm_packed_dl_28[];
@@ -229,4 +230,6 @@ extern Gfx d_course_moo_moo_farm_packed_dl_64D0[];
 extern Gfx d_course_moo_moo_farm_packed_dl_6578[];
 extern Gfx d_course_moo_moo_farm_packed_dl_6618[];
 extern Gfx d_course_moo_moo_farm_packed_dl_66D0[];
-extern Gfx d_course_moo_moo_farm_packed_dl_6730[];
+extern Gfx d_course_moo_moo_farm_packed_dl_6730[2];
+
+#define d_course_moo_moo_farm_packed_end GET_PACKED_END(d_course_moo_moo_farm_packed_dl_6730)

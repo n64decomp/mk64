@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_choco_mountain_packed_dl_0[];
 extern Gfx d_course_choco_mountain_packed_dl_98[];
@@ -126,4 +127,6 @@ extern Gfx d_course_choco_mountain_packed_dl_59A0[];
 extern Gfx d_course_choco_mountain_packed_dl_5A00[];
 extern Gfx d_course_choco_mountain_packed_dl_5A70[];
 extern Gfx d_course_choco_mountain_packed_dl_5A98[];
-extern Gfx d_course_choco_mountain_packed_dl_5AE0[];
+extern Gfx d_course_choco_mountain_packed_dl_5AE0[2];
+
+#define d_course_choco_mountain_packed_end GET_PACKED_END(d_course_choco_mountain_packed_dl_5AE0)
