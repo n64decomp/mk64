@@ -3898,40 +3898,30 @@ extern void func_800C8920();                                  /* extern */
 extern void func_800C8AE4();                                  /* extern */
 
 void func_800C8CCC() {
-    u8 var_s0;
-    s32 var_v0;
+    u8 i;
 
-    var_v0 = D_800EA1C0 + 1;
-    var_s0 = 0;
-    if (var_v0 > 0) {
-        do {
-            func_800C5D04(var_s0);
-            func_800C5E38(var_s0);
-            func_800C6108(var_s0);
-            func_800C64A0(var_s0);
-            func_800C6758(var_s0);
-            func_800C683C(var_s0);
-            func_800C70A8(var_s0);
-            func_800C76C0(var_s0);
-            func_800C847C(var_s0);
-            func_800C86D8(var_s0);
-            var_v0 = D_800EA1C0 + 1;
-            var_s0++;
-        } while (var_s0 < var_v0);
-        var_s0 = 0;
+    for (i = 0; i < D_800EA1C0 + 1; i++) {
+        func_800C5D04(i);
+        func_800C5E38(i);
+        func_800C6108(i);
+        func_800C64A0(i);
+        func_800C6758(i);
+        func_800C683C(i);
+        func_800C70A8(i);
+        func_800C76C0(i);
+        func_800C847C(i);
+        func_800C86D8(i);
     }
     if (gModeSelection == 0) {
-        do {
-            func_800C8770(var_s0);
-            func_800C8C7C(var_s0);
-            var_s0++;
-        } while (var_s0 < 8);
-    } else if (var_v0 > 0) {
-        do {
-            func_800C8770(var_s0);
-            func_800C8C7C(var_s0);
-            var_s0++;
-        } while (var_s0 < (D_800EA1C0 + 1));
+        for(i = 0; i < 8; i++) {
+            func_800C8770(i);
+            func_800C8C7C(i);
+        }
+    } else {
+        for(i = 0; i < D_800EA1C0 + 1; i++) {
+            func_800C8770(i);
+            func_800C8C7C(i);
+        }
     }
     func_800C8920();
     func_800C89E4();
