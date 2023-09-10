@@ -88,6 +88,15 @@ struct Unk_800EA06C {
 	/* 0x0D */ // u8 compilerPadding0[3];
 };
 
+// Similar to Unk_8018EFD8
+// Should look like 5 f32's, then 4 u8's, then 9 f32's.
+struct Unk_800E9F7C {
+    Vec3f pos;
+    f32 unk4[2];
+	s8 unk14[4];
+	f32 unk18[9];
+}; // Size is still 0x3C.
+
 void func_800C94A4(u8);
 void func_800CADD0(u8, f32);
 void func_800C13F0(void);
@@ -134,6 +143,7 @@ void func_800C6758(u8);
 
 void func_800C86D8(u8);
 void func_800C8770(u8);
+void func_800C8920(void);
 void func_800C89E4(void);
 void func_800C8CCC(void);
 void play_sound2(s32);
@@ -169,6 +179,7 @@ void func_800CA388(u8);
 void func_800CA414(u16, u16);
 void func_800CA49C(u8);
 void func_800CAACC(u8);
+void func_800CAC08();
 void func_800CAC60(s32);
 void func_800CAD40(s32);
 void func_800CAEC4(u8, f32);
