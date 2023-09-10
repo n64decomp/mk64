@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_yoshi_valley_packed_dl_0[];
 extern Gfx d_course_yoshi_valley_packed_dl_A8[];
@@ -238,4 +239,6 @@ extern Gfx d_course_yoshi_valley_packed_dl_7F58[];
 extern Gfx d_course_yoshi_valley_packed_dl_7FC8[];
 extern Gfx d_course_yoshi_valley_packed_dl_8050[];
 extern Gfx d_course_yoshi_valley_packed_dl_8110[];
-extern Gfx d_course_yoshi_valley_packed_dl_8150[];
+extern Gfx d_course_yoshi_valley_packed_dl_8150[2];
+
+#define d_course_yoshi_valley_packed_end GET_PACKED_END(d_course_yoshi_valley_packed_dl_8150)

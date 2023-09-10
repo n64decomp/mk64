@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_mario_raceway_packed_dl_0[];
 extern Gfx d_course_mario_raceway_packed_dl_70[];
@@ -172,4 +173,6 @@ extern Gfx d_course_mario_raceway_packed_dl_6598[];
 extern Gfx d_course_mario_raceway_packed_dl_6710[];
 extern Gfx d_course_mario_raceway_packed_dl_68B0[];
 extern Gfx d_course_mario_raceway_packed_dl_68C0[];
-extern Gfx d_course_mario_raceway_packed_dl_6928[];
+extern Gfx d_course_mario_raceway_packed_dl_6928[2];
+
+#define d_course_mario_raceway_packed_end GET_PACKED_END(d_course_mario_raceway_packed_dl_6928)

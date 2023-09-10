@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_big_donut_packed_dl_0[];
 extern Gfx d_course_big_donut_packed_dl_210[];
@@ -19,4 +20,6 @@ extern Gfx d_course_big_donut_packed_dl_F08[];
 extern Gfx d_course_big_donut_packed_dl_F90[];
 extern Gfx d_course_big_donut_packed_dl_1018[];
 extern Gfx d_course_big_donut_packed_dl_1040[];
-extern Gfx d_course_big_donut_packed_dl_1070[];
+extern Gfx d_course_big_donut_packed_dl_1070[2];
+
+#define d_course_big_donut_packed_end GET_PACKED_END(d_course_big_donut_packed_dl_1070)

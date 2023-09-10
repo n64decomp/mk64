@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_block_fort_packed_dl_0[];
 extern Gfx d_course_block_fort_packed_dl_B8[];
@@ -27,4 +28,6 @@ extern Gfx d_course_block_fort_packed_dl_14C8[];
 extern Gfx d_course_block_fort_packed_dl_1580[];
 extern Gfx d_course_block_fort_packed_dl_1590[];
 extern Gfx d_course_block_fort_packed_dl_15C0[];
-extern Gfx d_course_block_fort_packed_dl_15D0[];
+extern Gfx d_course_block_fort_packed_dl_15D0[1];
+
+#define d_course_block_fort_packed_end GET_PACKED_END(d_course_block_fort_packed_dl_15D0)

@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_toads_turnpike_packed_dl_0[];
 extern Gfx d_course_toads_turnpike_packed_dl_68[];
@@ -116,4 +117,6 @@ extern Gfx d_course_toads_turnpike_packed_dl_6848[];
 extern Gfx d_course_toads_turnpike_packed_dl_6908[];
 extern Gfx d_course_toads_turnpike_packed_dl_6AB8[];
 extern Gfx d_course_toads_turnpike_packed_dl_6AD8[];
-extern Gfx d_course_toads_turnpike_packed_dl_6B08[];
+extern Gfx d_course_toads_turnpike_packed_dl_6B08[2];
+
+#define d_course_toads_turnpike_packed_end GET_PACKED_END(d_course_toads_turnpike_packed_dl_6B08)

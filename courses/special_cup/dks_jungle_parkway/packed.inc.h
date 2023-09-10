@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_dks_jungle_parkway_packed_dl_0[];
 extern Gfx d_course_dks_jungle_parkway_packed_dl_200[];
@@ -202,4 +203,6 @@ extern Gfx d_course_dks_jungle_parkway_packed_dl_9A20[];
 extern Gfx d_course_dks_jungle_parkway_packed_dl_9A38[];
 extern Gfx d_course_dks_jungle_parkway_packed_dl_9B98[];
 extern Gfx d_course_dks_jungle_parkway_packed_dl_9BA8[];
-extern Gfx d_course_dks_jungle_parkway_packed_dl_9C18[];
+extern Gfx d_course_dks_jungle_parkway_packed_dl_9C18[2];
+
+#define d_course_dks_jungle_parkway_packed_end GET_PACKED_END(d_course_dks_jungle_parkway_packed_dl_9C18)

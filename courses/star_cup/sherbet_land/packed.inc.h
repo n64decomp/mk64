@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_sherbet_land_packed_dl_0[];
 extern Gfx d_course_sherbet_land_packed_dl_C0[];
@@ -100,4 +101,6 @@ extern Gfx d_course_sherbet_land_packed_dl_36B8[];
 extern Gfx d_course_sherbet_land_packed_dl_3728[];
 extern Gfx d_course_sherbet_land_packed_dl_3788[];
 extern Gfx d_course_sherbet_land_packed_dl_37E0[];
-extern Gfx d_course_sherbet_land_packed_dl_3848[];
+extern Gfx d_course_sherbet_land_packed_dl_3848[2];
+
+#define d_course_sherbet_land_packed_end GET_PACKED_END(d_course_sherbet_land_packed_dl_3848)

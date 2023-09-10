@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_rainbow_road_packed_dl_0[];
 extern Gfx d_course_rainbow_road_packed_dl_308[];
@@ -35,4 +36,6 @@ extern Gfx d_course_rainbow_road_packed_dl_2068[];
 extern Gfx d_course_rainbow_road_packed_dl_2078[];
 extern Gfx d_course_rainbow_road_packed_dl_20C0[];
 extern Gfx d_course_rainbow_road_packed_dl_20D0[];
-extern Gfx d_course_rainbow_road_packed_dl_20F8[];
+extern Gfx d_course_rainbow_road_packed_dl_20F8[2];
+
+#define d_course_rainbow_road_packed_end GET_PACKED_END(d_course_rainbow_road_packed_dl_20F8)

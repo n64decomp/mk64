@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_kalimari_desert_packed_dl_0[];
 extern Gfx d_course_kalimari_desert_packed_dl_68[];
@@ -304,4 +305,6 @@ extern Gfx d_course_kalimari_desert_packed_dl_A458[];
 extern Gfx d_course_kalimari_desert_packed_dl_A4D0[];
 extern Gfx d_course_kalimari_desert_packed_dl_A548[];
 extern Gfx d_course_kalimari_desert_packed_dl_A5F0[];
-extern Gfx d_course_kalimari_desert_packed_dl_A670[];
+extern Gfx d_course_kalimari_desert_packed_dl_A670[2];
+
+#define d_course_kalimari_desert_packed_end GET_PACKED_END(d_course_kalimari_desert_packed_dl_A670)

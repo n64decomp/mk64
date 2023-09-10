@@ -1,4 +1,5 @@
 #include <PR/gbi.h>
+#include "macros.h"
 
 extern Gfx d_course_banshee_boardwalk_packed_dl_0[];
 extern Gfx d_course_banshee_boardwalk_packed_dl_60[];
@@ -191,4 +192,6 @@ extern Gfx d_course_banshee_boardwalk_packed_dl_7138[];
 extern Gfx d_course_banshee_boardwalk_packed_dl_71B0[];
 extern Gfx d_course_banshee_boardwalk_packed_dl_7228[];
 extern Gfx d_course_banshee_boardwalk_packed_dl_72B8[];
-extern Gfx d_course_banshee_boardwalk_packed_dl_7338[];
+extern Gfx d_course_banshee_boardwalk_packed_dl_7338[2];
+
+#define d_course_banshee_boardwalk_packed_end GET_PACKED_END(d_course_banshee_boardwalk_packed_dl_7338)
