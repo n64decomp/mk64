@@ -86,10 +86,10 @@ glabel create_next_audio_frame_task
 /* 0CC064 800CB464 00791821 */  addu  $v1, $v1, $t9
 /* 0CC068 800CB468 8463718C */  lh    $v1, %lo(D_803B718C)($v1) # 0x718c($v1)
 /* 0CC06C 800CB46C 00104080 */  sll   $t0, $s0, 2
-/* 0CC070 800CB470 3C04803B */  lui   $a0, %hi(D_803B7180) # 0x803b
+/* 0CC070 800CB470 3C04803B */  lui   $a0, %hi(gAiBuffers) # 0x803b
 /* 0CC074 800CB474 10600004 */  beqz  $v1, .L800CB488
 /* 0CC078 800CB478 00882021 */   addu  $a0, $a0, $t0
-/* 0CC07C 800CB47C 8C847180 */  lw    $a0, %lo(D_803B7180)($a0) # 0x7180($a0)
+/* 0CC07C 800CB47C 8C847180 */  lw    $a0, %lo(gAiBuffers)($a0) # 0x7180($a0)
 /* 0CC080 800CB480 0C03443C */  jal   osAiSetNextBuffer
 /* 0CC084 800CB484 00032880 */   sll   $a1, $v1, 2
 .L800CB488:
@@ -152,58 +152,58 @@ glabel create_next_audio_frame_task
 /* 0CC14C 800CB54C 00003025 */   move  $a2, $zero
 /* 0CC150 800CB550 2401FFFF */  li    $at, -1
 /* 0CC154 800CB554 10410007 */  beq   $v0, $at, .L800CB574
-/* 0CC158 800CB558 3C10803B */   lui   $s0, %hi(D_803B0500) # $s0, 0x803b
+/* 0CC158 800CB558 3C10803B */   lui   $s0, %hi(gAudioResetStatus) # $s0, 0x803b
 /* 0CC15C 800CB55C 8FCA0058 */  lw    $t2, 0x58($fp)
-/* 0CC160 800CB560 3C01803B */  lui   $at, %hi(D_803B0501) # $at, 0x803b
-/* 0CC164 800CB564 26100500 */  addiu $s0, %lo(D_803B0500) # addiu $s0, $s0, 0x500
+/* 0CC160 800CB560 3C01803B */  lui   $at, %hi(gAudioResetPresetIdToLoad) # $at, 0x803b
+/* 0CC164 800CB564 26100500 */  addiu $s0, %lo(gAudioResetStatus) # addiu $s0, $s0, 0x500
 /* 0CC168 800CB568 240B0005 */  li    $t3, 5
-/* 0CC16C 800CB56C A02A0501 */  sb    $t2, %lo(D_803B0501)($at)
+/* 0CC16C 800CB56C A02A0501 */  sb    $t2, %lo(gAudioResetPresetIdToLoad)($at)
 /* 0CC170 800CB570 A20B0000 */  sb    $t3, ($s0)
 .L800CB574:
-/* 0CC174 800CB574 3C10803B */  lui   $s0, %hi(D_803B0500) # $s0, 0x803b
-/* 0CC178 800CB578 26100500 */  addiu $s0, %lo(D_803B0500) # addiu $s0, $s0, 0x500
+/* 0CC174 800CB574 3C10803B */  lui   $s0, %hi(gAudioResetStatus) # $s0, 0x803b
+/* 0CC178 800CB578 26100500 */  addiu $s0, %lo(gAudioResetStatus) # addiu $s0, $s0, 0x500
 /* 0CC17C 800CB57C 920C0000 */  lbu   $t4, ($s0)
 /* 0CC180 800CB580 1180000F */  beqz  $t4, .L800CB5C0
 /* 0CC184 800CB584 00000000 */   nop   
-/* 0CC188 800CB588 0C02E803 */  jal   func_800BA00C
+/* 0CC188 800CB588 0C02E803 */  jal   audio_shut_down_and_reset_step
 /* 0CC18C 800CB58C 00000000 */   nop   
 /* 0CC190 800CB590 1440000B */  bnez  $v0, .L800CB5C0
 /* 0CC194 800CB594 00000000 */   nop   
 /* 0CC198 800CB598 920D0000 */  lbu   $t5, ($s0)
 /* 0CC19C 800CB59C 3C04800F */  lui   $a0, %hi(D_800EA3B4) # $a0, 0x800f
-/* 0CC1A0 800CB5A0 3C05803B */  lui   $a1, %hi(D_803B0501) # $a1, 0x803b
+/* 0CC1A0 800CB5A0 3C05803B */  lui   $a1, %hi(gAudioResetPresetIdToLoad) # $a1, 0x803b
 /* 0CC1A4 800CB5A4 15A00004 */  bnez  $t5, .L800CB5B8
 /* 0CC1A8 800CB5A8 00003025 */   move  $a2, $zero
 /* 0CC1AC 800CB5AC 8C84A3B4 */  lw    $a0, %lo(D_800EA3B4)($a0)
 /* 0CC1B0 800CB5B0 0C033630 */  jal   osSendMesg
-/* 0CC1B4 800CB5B4 90A50501 */   lbu   $a1, %lo(D_803B0501)($a1)
+/* 0CC1B4 800CB5B4 90A50501 */   lbu   $a1, %lo(gAudioResetPresetIdToLoad)($a1)
 .L800CB5B8:
 /* 0CC1B8 800CB5B8 1000008F */  b     .L800CB7F8
 /* 0CC1BC 800CB5BC 00001025 */   move  $v0, $zero
 .L800CB5C0:
 /* 0CC1C0 800CB5C0 3C02803B */  lui   $v0, %hi(D_803B70C0) # $v0, 0x803b
 /* 0CC1C4 800CB5C4 8C4270C0 */  lw    $v0, %lo(D_803B70C0)($v0)
-/* 0CC1C8 800CB5C8 3C0F803B */  lui   $t7, %hi(D_803B70D8) # $t7, 0x803b
-/* 0CC1CC 800CB5CC 3C12803B */  lui   $s2, %hi(D_803B70D4) # $s2, 0x803b
+/* 0CC1C8 800CB5C8 3C0F803B */  lui   $t7, %hi(gAudioTasks) # $t7, 0x803b
+/* 0CC1CC 800CB5CC 3C12803B */  lui   $s2, %hi(gAudioTask) # $s2, 0x803b
 /* 0CC1D0 800CB5D0 00027080 */  sll   $t6, $v0, 2
 /* 0CC1D4 800CB5D4 01C27021 */  addu  $t6, $t6, $v0
 /* 0CC1D8 800CB5D8 000E7100 */  sll   $t6, $t6, 4
-/* 0CC1DC 800CB5DC 25EF70D8 */  addiu $t7, %lo(D_803B70D8) # addiu $t7, $t7, 0x70d8
-/* 0CC1E0 800CB5E0 265270D4 */  addiu $s2, %lo(D_803B70D4) # addiu $s2, $s2, 0x70d4
+/* 0CC1DC 800CB5DC 25EF70D8 */  addiu $t7, %lo(gAudioTasks) # addiu $t7, $t7, 0x70d8
+/* 0CC1E0 800CB5E0 265270D4 */  addiu $s2, %lo(gAudioTask) # addiu $s2, $s2, 0x70d4
 /* 0CC1E4 800CB5E4 01CFC021 */  addu  $t8, $t6, $t7
 /* 0CC1E8 800CB5E8 AE580000 */  sw    $t8, ($s2)
-/* 0CC1EC 800CB5EC 3C08803B */  lui   $t0, %hi(D_803B70C8) # 0x803b
+/* 0CC1EC 800CB5EC 3C08803B */  lui   $t0, %hi(gAudioCmdBuffers) # 0x803b
 /* 0CC1F0 800CB5F0 3C10803B */  lui   $s0, %hi(D_803B70C4) # $s0, 0x803b
 /* 0CC1F4 800CB5F4 0002C880 */  sll   $t9, $v0, 2
 /* 0CC1F8 800CB5F8 8E1070C4 */  lw    $s0, %lo(D_803B70C4)($s0)
 /* 0CC1FC 800CB5FC 01194021 */  addu  $t0, $t0, $t9
-/* 0CC200 800CB600 8D0870C8 */  lw    $t0, %lo(D_803B70C8)($t0) # 0x70c8($t0)
-/* 0CC204 800CB604 3C0A803B */  lui   $t2, %hi(D_803B7180) # $t2, 0x803b
-/* 0CC208 800CB608 3C01803B */  lui   $at, %hi(D_803B70D0) # $at, 0x803b
-/* 0CC20C 800CB60C 254A7180 */  addiu $t2, %lo(D_803B7180) # addiu $t2, $t2, 0x7180
+/* 0CC200 800CB600 8D0870C8 */  lw    $t0, %lo(gAudioCmdBuffers)($t0) # 0x70c8($t0)
+/* 0CC204 800CB604 3C0A803B */  lui   $t2, %hi(gAiBuffers) # $t2, 0x803b
+/* 0CC208 800CB608 3C01803B */  lui   $at, %hi(gAudioCmd) # $at, 0x803b
+/* 0CC20C 800CB60C 254A7180 */  addiu $t2, %lo(gAiBuffers) # addiu $t2, $t2, 0x7180
 /* 0CC210 800CB610 00104880 */  sll   $t1, $s0, 2
 /* 0CC214 800CB614 012A3821 */  addu  $a3, $t1, $t2
-/* 0CC218 800CB618 AC2870D0 */  sw    $t0, %lo(D_803B70D0)($at)
+/* 0CC218 800CB618 AC2870D0 */  sw    $t0, %lo(gAudioCmd)($at)
 /* 0CC21C 800CB61C 8CEB0000 */  lw    $t3, ($a3)
 /* 0CC220 800CB620 3C05803B */  lui   $a1, %hi(gAudioBufferParameters) # $a1, 0x803b
 /* 0CC224 800CB624 24A57088 */  addiu $a1, %lo(gAudioBufferParameters) # addiu $a1, $a1, 0x7088
@@ -239,10 +239,10 @@ glabel create_next_audio_frame_task
 /* 0CC294 800CB694 8C84A3AC */  lw    $a0, %lo(D_800EA3AC)($a0)
 /* 0CC298 800CB698 0C0335D4 */  jal   osRecvMesg
 /* 0CC29C 800CB69C AFC70040 */   sw    $a3, 0x40($fp)
-/* 0CC2A0 800CB6A0 3C10803B */  lui   $s0, %hi(D_803B70D0) # $s0, 0x803b
+/* 0CC2A0 800CB6A0 3C10803B */  lui   $s0, %hi(gAudioCmd) # $s0, 0x803b
 /* 0CC2A4 800CB6A4 2401FFFF */  li    $at, -1
 /* 0CC2A8 800CB6A8 10410003 */  beq   $v0, $at, .L800CB6B8
-/* 0CC2AC 800CB6AC 261070D0 */   addiu $s0, %lo(D_803B70D0) # addiu $s0, $s0, 0x70d0
+/* 0CC2AC 800CB6AC 261070D0 */   addiu $s0, %lo(gAudioCmd) # addiu $s0, $s0, 0x70d0
 /* 0CC2B0 800CB6B0 0C032F2C */  jal   func_800CBCB0
 /* 0CC2B4 800CB6B4 8FC40054 */   lw    $a0, 0x54($fp)
 .L800CB6B8:
@@ -297,7 +297,7 @@ glabel create_next_audio_frame_task
 /* 0CC378 800CB778 2508B830 */  addiu $t0, %lo(aspMainTextStart) # addiu $t0, $t0, -0x47d0
 /* 0CC37C 800CB77C 24091000 */  li    $t1, 4096
 /* 0CC380 800CB780 000C68C0 */  sll   $t5, $t4, 3
-/* 0CC384 800CB784 3C18803B */  lui   $t8, %hi(D_803B70C8) # 0x803b
+/* 0CC384 800CB784 3C18803B */  lui   $t8, %hi(gAudioCmdBuffers) # 0x803b
 /* 0CC388 800CB788 00107080 */  sll   $t6, $s0, 2
 /* 0CC38C 800CB78C 030EC021 */  addu  $t8, $t8, $t6
 /* 0CC390 800CB790 AC600004 */  sw    $zero, 4($v1)
@@ -311,7 +311,7 @@ glabel create_next_audio_frame_task
 /* 0CC3B0 800CB7B0 AC600024 */  sw    $zero, 0x24($v1)
 /* 0CC3B4 800CB7B4 AC600028 */  sw    $zero, 0x28($v1)
 /* 0CC3B8 800CB7B8 AC60002C */  sw    $zero, 0x2c($v1)
-/* 0CC3BC 800CB7BC 8F1870C8 */  lw    $t8, %lo(D_803B70C8)($t8) # 0x70c8($t8)
+/* 0CC3BC 800CB7BC 8F1870C8 */  lw    $t8, %lo(gAudioCmdBuffers)($t8) # 0x70c8($t8)
 /* 0CC3C0 800CB7C0 3C08800F */  lui   $t0, %hi(D_800EA484) # $t0, 0x800f
 /* 0CC3C4 800CB7C4 AC780030 */  sw    $t8, 0x30($v1)
 /* 0CC3C8 800CB7C8 8FD90070 */  lw    $t9, 0x70($fp)

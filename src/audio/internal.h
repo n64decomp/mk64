@@ -512,8 +512,10 @@ struct AudioSessionSettingsEU {
     /* 0x0E */ u16 unk3; // always 0
     /* 0x10 */ u32 persistentSeqMem;
     /* 0x14 */ u32 persistentBankMem;
-    /* 0x18, 0x1C */ u32 temporarySeqMem;
-    /* 0x1C, 0x20 */ u32 temporaryBankMem;
+    /* 0x18 */ u32 unk_18;
+    /* 0x1C */ u32 temporarySeqMem;
+    /* 0x20 */ u32 temporaryBankMem;
+    /* 0x24 */ u32 unk_24;
 }; // 0x30 on shindou
 
 struct AudioSessionSettings {
@@ -547,40 +549,20 @@ struct AudioBufferParametersEU {
 
 struct EuAudioCmd {
     union {
-#if IS_BIG_ENDIAN
         struct {
             u8 op;
             u8 arg1;
             u8 arg2;
             u8 arg3;
         } s;
-#else
-        struct {
-            u8 arg3;
-            u8 arg2;
-            u8 arg1;
-            u8 op;
-        } s;
-#endif
         s32 first;
     } u;
     union {
         s32 as_s32;
         u32 as_u32;
         f32 as_f32;
-#if IS_BIG_ENDIAN
         u8 as_u8;
         s8 as_s8;
-#else
-        struct {
-            u8 pad0[3];
-            u8 as_u8;
-        };
-        struct {
-            u8 pad1[3];
-            s8 as_s8;
-        };
-#endif
     } u2;
 };
 

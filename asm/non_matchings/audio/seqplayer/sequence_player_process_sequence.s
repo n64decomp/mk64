@@ -45,7 +45,7 @@ glabel jpt_800F3430
 
 .section .text
 
-glabel func_800C08CC
+glabel sequence_player_process_sequence
 /* 0C14CC 800C08CC 27BDFFA0 */  addiu $sp, $sp, -0x60
 /* 0C14D0 800C08D0 AFBF002C */  sw    $ra, 0x2c($sp)
 /* 0C14D4 800C08D4 AFB30028 */  sw    $s3, 0x28($sp)
@@ -169,10 +169,10 @@ glabel func_800C08CC
 /* 0C168C 800C0A8C 9628000A */  lhu   $t0, 0xa($s1)
 .L800C0A90:
 /* 0C1690 800C0A90 96290008 */  lhu   $t1, 8($s1)
-/* 0C1694 800C0A94 3C03803B */  lui   $v1, %hi(D_803B70B4) # $v1, 0x803b
+/* 0C1694 800C0A94 3C03803B */  lui   $v1, %hi(gTempoInternalToExternal) # $v1, 0x803b
 /* 0C1698 800C0A98 01095021 */  addu  $t2, $t0, $t1
 /* 0C169C 800C0A9C A62A000A */  sh    $t2, 0xa($s1)
-/* 0C16A0 800C0AA0 846370B4 */  lh    $v1, %lo(D_803B70B4)($v1)
+/* 0C16A0 800C0AA0 846370B4 */  lh    $v1, %lo(gTempoInternalToExternal)($v1)
 /* 0C16A4 800C0AA4 3142FFFF */  andi  $v0, $t2, 0xffff
 /* 0C16A8 800C0AA8 0043082A */  slt   $at, $v0, $v1
 /* 0C16AC 800C0AAC 5420019C */  bnel  $at, $zero, .L800C1120
@@ -371,7 +371,7 @@ glabel L800C0D50
 /* 0C1954 800C0D54 02002025 */   move  $a0, $s0
 /* 0C1958 800C0D58 240100DD */  li    $at, 221
 /* 0C195C 800C0D5C 16410007 */  bne   $s2, $at, .L800C0D7C
-/* 0C1960 800C0D60 3C03803B */   lui   $v1, %hi(D_803B70B4) # $v1, 0x803b
+/* 0C1960 800C0D60 3C03803B */   lui   $v1, %hi(gTempoInternalToExternal) # $v1, 0x803b
 /* 0C1964 800C0D64 304A00FF */  andi  $t2, $v0, 0xff
 /* 0C1968 800C0D68 000A5880 */  sll   $t3, $t2, 2
 /* 0C196C 800C0D6C 016A5823 */  subu  $t3, $t3, $t2
@@ -388,7 +388,7 @@ glabel L800C0D50
 /* 0C1994 800C0D94 01D8C821 */  addu  $t9, $t6, $t8
 /* 0C1998 800C0D98 A6390008 */  sh    $t9, 8($s1)
 .L800C0D9C:
-/* 0C199C 800C0D9C 846370B4 */  lh    $v1, %lo(D_803B70B4)($v1)
+/* 0C199C 800C0D9C 846370B4 */  lh    $v1, %lo(gTempoInternalToExternal)($v1)
 /* 0C19A0 800C0DA0 96220008 */  lhu   $v0, 8($s1)
 /* 0C19A4 800C0DA4 24090001 */  li    $t1, 1
 /* 0C19A8 800C0DA8 0062082A */  slt   $at, $v1, $v0
@@ -635,7 +635,7 @@ glabel L800C10A0
 /* 0C1CF4 800C10F4 55C10007 */  bnel  $t6, $at, .L800C1114
 /* 0C1CF8 800C10F8 24420004 */   addiu $v0, $v0, 4
 /* 0C1CFC 800C10FC AFA20034 */  sw    $v0, 0x34($sp)
-/* 0C1D00 800C1100 0C02FF64 */  jal   func_800BFD90
+/* 0C1D00 800C1100 0C02FF64 */  jal   sequence_channel_process_script
 /* 0C1D04 800C1104 AFA30030 */   sw    $v1, 0x30($sp)
 /* 0C1D08 800C1108 8FA20034 */  lw    $v0, 0x34($sp)
 /* 0C1D0C 800C110C 8FA30030 */  lw    $v1, 0x30($sp)

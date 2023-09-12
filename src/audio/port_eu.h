@@ -3,6 +3,7 @@
 
 #include "audio/internal.h"
 
+void eu_process_audio_cmd(struct EuAudioCmd*);
 void seq_player_fade_to_zero_volume(s32 arg0, s32 fadeOutTime);
 void func_800CBA64(s32 playerIndex, s32 fadeInTime);
 void func_800CBAB4(void);
@@ -17,7 +18,7 @@ extern OSMesgQueue D_801937D8;
 extern OSMesgQueue D_801937F0;
 extern OSMesgQueue D_80193808;
 
-extern struct EuAudioCmd D_80193820[0x100];
+extern struct EuAudioCmd sAudioCmd[0x100];
 
 extern OSMesg D_80194020[];
 extern OSMesg D_80194028[];

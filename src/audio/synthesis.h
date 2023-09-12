@@ -97,8 +97,7 @@ extern struct AudioBufferParametersEU gAudioBufferParameters;
 extern s32 gMaxSimultaneousNotes;
 
 extern struct SynthesisReverb gSynthesisReverbs[4];
-extern s8 gNumSynthesisReverbs;
-extern struct NoteSubEu *gNoteSubsEu;
+
 /*
 SO
 gLeftVolRampings is almost certainly gAudioSessionPool (D_803AFBC8) in disguise, but since
