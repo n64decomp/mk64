@@ -906,7 +906,7 @@ void controller_pak_menu_act(struct Controller* controller, UNUSED u16 arg1) {
         case CONTROLLER_PAK_MENU_TABLE_GAME_DATA:
             if ((buttonAndStickPress & 0x9000) != 0) {
                 selectedTableRow = D_800E86C4[gControllerPakSelectedTableRow + 2] - 1;
-                if (D_8018EB38[selectedTableRow] == 0) {
+                if (pfsError[selectedTableRow] == 0) {
                     gControllerPakMenuSelection = CONTROLLER_PAK_MENU_QUIT;
                     play_sound2(SOUND_MENU_SELECT);
                     return;
@@ -981,14 +981,14 @@ void controller_pak_menu_act(struct Controller* controller, UNUSED u16 arg1) {
             return;
         case CONTROLLER_PAK_MENU_ERASING:
             selectedTableRow = D_800E86C4[gControllerPakSelectedTableRow + 2] - 1;
-            osPfsState = &D_8018E938[selectedTableRow];
+            osPfsState = &pfsState[selectedTableRow];
 
             switch (osPfsDeleteFile(&gControllerPak1FileHandle, osPfsState->company_code, osPfsState->game_code, (u8 *)&osPfsState->game_name, (u8 *)&osPfsState->ext_name)) { 
             default:                           
                 gControllerPakMenuSelection = CONTROLLER_PAK_MENU_ERASE_ERROR_NOT_ERASED;
                 return;
             case 0:
-                D_8018EB38[selectedTableRow] = -1;
+                pfsError[selectedTableRow] = -1;
                 gControllerPak1NumPagesFree += (((osPfsState->file_size + 0xFF) >> 8) & 0xFF);
                 gControllerPakMenuSelection = CONTROLLER_PAK_MENU_TABLE_GAME_DATA;
                 return;

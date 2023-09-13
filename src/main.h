@@ -98,6 +98,8 @@ extern UNUSED Player *gPlayerFourCopy;
 
 extern u16 D_80152308;
 
+extern s32 gModeSelection;
+
 extern u16 *gPhysicalFramebuffers[];
 extern OSIoMesg gDmaIoMesg;
 extern OSMesg gMainReceivedMesg;

@@ -1410,7 +1410,7 @@ void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 sectionI
     s16 y3;
     s16 z3;
 
-    /* Unused variables places around doubles for dramatic effect */
+    /* Unused variables placed around doubles for dramatic effect */
     UNUSED s32 pad2[7];
 
     f64 crossProductX;

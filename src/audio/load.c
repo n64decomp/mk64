@@ -17,6 +17,66 @@ struct SharedDma {
     /*0xE*/ u8 ttl;           // duration after which the DMA can be discarded
 };                            // size = 0x10
 
+//struct Note *gNotes; // 0x803B1508
+
+struct SequencePlayer gSequencePlayers[SEQUENCE_PLAYERS];
+struct SequenceChannel gSequenceChannels[SEQUENCE_CHANNELS];
+struct SequenceChannelLayer gSequenceLayers[SEQUENCE_LAYERS];
+struct SequenceChannel gSequenceChannelNone;
+// D_803B5F5C
+struct AudioListItem gLayerFreeList;
+struct NotePool gNoteFreeLists;
+OSMesgQueue gCurrAudioFrameDmaQueue;
+OSMesg gCurrAudioFrameDmaMesgBufs[AUDIO_FRAME_DMA_QUEUE_SIZE];
+OSIoMesg gCurrAudioFrameDmaIoMesgBufs[AUDIO_FRAME_DMA_QUEUE_SIZE];
+OSMesgQueue D_803B6720;
+OSMesg D_803B6738;
+
+OSIoMesg D_803B6740;
+struct SharedDma sSampleDmas[0x70];
+u32 gSampleDmaNumListItems;
+u32 sSampleDmaListSize1;
+s32 D_803B6E60;
+s32 load_bss_pad;
+
+u8 sSampleDmaReuseQueue1[256]; // sSampleDmaReuseQueue1
+u8 sSampleDmaReuseQueue2[256]; // sSampleDmaReuseQueue2
+u8 sSampleDmaReuseQueueTail1; // sSampleDmaReuseQueueTail1
+u8 sSampleDmaReuseQueueTail2; // sSampleDmaReuseQueueTail2
+u8 sSampleDmaReuseQueueHead1; // sSampleDmaReuseQueueHead1
+u8 sSampleDmaReuseQueueHead2; // sSampleDmaReuseQueueHead2
+
+s32 D_803B706C;
+s32 D_803B7070;
+s32 D_803B7074;
+u8 *gAlBankSets;
+u16 D_803B707C;
+struct CtlEntry *gCtlEntries;
+struct AudioBufferParametersEU gAudioBufferParameters;
+u32 D_803B70A8;
+s32 D_803B70AC;
+s32 gMaxSimultaneousNotes;
+s16 D_803B70B4;
+s8 gAudioLibSoundMode;
+s32 D_803B70B8; // According to sm64 this is s8 not s32
+s32 gCurrAudioFrameDmaCount; // file split around here?
+s32 D_803B70C0;
+s32 D_803B70C4;
+s32 D_803B70C8[2]; // probably wrong
+s32 D_803B70D0;
+struct SPTask *D_803B70D4; // gAudioTask?
+struct SPTask D_803B70D8[2]; // gAudioTasks?
+f32 D_803B7178;
+s32 D_803B717C;
+void *D_803B7180[3]; // unconfirmed, osAiSetNextBuffer vaddr
+u32 D_803B718C; // osAiSetNextBuffer nbytes
+s16 load_bss_pad3;
+u16 D_803B7192; // unconfirmed
+u32 gAudioRandom;
+s32 gAudioErrorFlags;
+u32 D_803B71A0[4]; // unconfirmed
+u8 D_803B71B0[4]; // unconfirmed
+
 extern OSMesgQueue D_803B6720;
 extern OSIoMesg D_803B6740;
 
@@ -24,17 +84,10 @@ extern OSMesgQueue gCurrAudioFrameDmaQueue; // gCurrAudioFrameDmaQueue
 extern OSMesg gCurrAudioFrameDmaMesgBufs[AUDIO_FRAME_DMA_QUEUE_SIZE]; // gCurrAudioFrameDmaMesgBufs
 extern OSIoMesg gCurrAudioFrameDmaIoMesgBufs[AUDIO_FRAME_DMA_QUEUE_SIZE]; // gCurrAudioFrameDmaIoMesgBufs
 
-extern struct SharedDma sSampleDmas[0x60]; // sSampleDmas
 extern u32 gSampleDmaNumListItems; // gSampleDmaNumListItems
 extern u32 sSampleDmaListSize1; // sSampleDmaListSize1
 extern s32 D_803B6E60; // sUnused80226B40
 
-extern u8 sSampleDmaReuseQueue1[256]; // sSampleDmaReuseQueue1
-extern u8 sSampleDmaReuseQueue2[256]; // sSampleDmaReuseQueue2
-extern u8 sSampleDmaReuseQueueTail1; // sSampleDmaReuseQueueTail1
-extern u8 sSampleDmaReuseQueueTail2; // sSampleDmaReuseQueueTail2
-extern u8 sSampleDmaReuseQueueHead1; // sSampleDmaReuseQueueHead1
-extern u8 sSampleDmaReuseQueueHead2; // sSampleDmaReuseQueueHead2
 
 /**
  * Given that (almost) all of these are format strings, it is highly likely
@@ -1019,7 +1072,6 @@ GLOBAL_ASM("asm/non_matchings/audio/load/func_800BBF44.s")
 extern s8 D_803B0500;
 extern s8 D_803B0501;
 extern OSMesgQueue D_803B6720;
-extern void *D_803B6738;
 extern s32 *D_803B706C;
 extern s32 *D_803B7070;
 extern s32 *D_803B7074;

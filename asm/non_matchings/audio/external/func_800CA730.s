@@ -85,11 +85,11 @@ glabel func_800CA730
 /* 0CB474 800CA874 1500003A */  bnez  $t0, .L800CA960
 /* 0CB478 800CA878 00000000 */   nop   
 /* 0CB47C 800CA87C 9129FC08 */  lbu   $t1, %lo(D_8018FC08)($t1)
-/* 0CB480 800CA880 3C0A803B */  lui   $t2, %hi(D_803B1658) # $t2, 0x803b
+/* 0CB480 800CA880 3C0A803B */  lui   $t2, %hi(gSequencePlayers+0x148) # $t2, 0x803b
 /* 0CB484 800CA884 3C041101 */  lui   $a0, 0x1101
 /* 0CB488 800CA888 11200030 */  beqz  $t1, .L800CA94C
 /* 0CB48C 800CA88C 00000000 */   nop   
-/* 0CB490 800CA890 8D4A1658 */  lw    $t2, %lo(D_803B1658)($t2)
+/* 0CB490 800CA890 8D4A1658 */  lw    $t2, %lo(gSequencePlayers+0x148)($t2)
 /* 0CB494 800CA894 24040001 */  li    $a0, 1
 /* 0CB498 800CA898 000A5FC2 */  srl   $t3, $t2, 0x1f
 /* 0CB49C 800CA89C 1560000B */  bnez  $t3, .L800CA8CC

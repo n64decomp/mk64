@@ -36,6 +36,38 @@ s32 code_80091750_pad_2[2];
 s8 D_8018E838[4]; // Import to C was required for matching.
 s32 D_8018E83C;
 
+s32 D_8018E840[4]; // This may all be one big array.
+s32 D_8018E850[2]; // This is probably incorrect. Fix after decomping code.
+s32 D_8018E858[2];
+s8 gTextColor;
+s32 D_8018E864_pad;
+OSPfs       gControllerPak1FileHandle;
+OSPfs       gControllerPak2FileHandle;
+OSPfsState pfsState[16];
+s32 pfsError[16]; // 0 = Ok, anything else = error.
+s32 gControllerPak1NumFilesUsed;
+s32 gControllerPak1MaxWriteableFiles;
+
+
+s32 gControllerPak1NumPagesFree;
+s32 gControllerPak1FileNote;
+s32 gControllerPak2FileNote;
+s32 code_80091750_bss_pad2;
+SaveData gSaveData;
+
+u8 D_8018ED90;
+u8 D_8018ED91;
+s32 s8018ED94;
+f32 D_8018ED98; // Rotation
+f32 D_8018ED9C; // Rotation
+
+f32 D_8018EDA0; // Rotation
+f32 D_8018EDA4;
+f32 D_8018EDA8;
+f32 D_8018EDAC;
+
+
+
 Unk_D_800E70A0 D_800E70A0[] = {
     {  0x3d, 0x11, 0x00, 0x00 },
     {  0x15, 0x3e, 0x00, 0x00 },
@@ -1552,7 +1584,7 @@ s32 func_80091D74(void) {
     }
 
     for (i = 0; i < 16; i++) {
-        D_8018EB38[i] = osPfsFileState(&gControllerPak1FileHandle, i, D_8018E938 + i);
+        pfsError[i] = osPfsFileState(&gControllerPak1FileHandle, i, pfsState + i);
     }
 
     if (osPfsFreeBlocks(&gControllerPak1FileHandle, &gControllerPak1NumPagesFree)) {
@@ -1688,6 +1720,7 @@ void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
     s32 temp_t8_2;
     s32 temp_t9;
     void *temp_a2;
+    s32 i;
 
     if ((arg0 >= 4) && (arg0 < 6)) {
         temp_t8 = *arg2 + 0x10;
@@ -1698,8 +1731,10 @@ void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
         }
         var_s0 = D_800E84C0;
         temp_s4 = (((arg0 * 4) + (((s32) gGlobalTimer % 2) * 2)) - 6) * 0x10;
-        do {
-            temp_v0 = segmented_to_virtual_dupe_2(*var_s0);
+
+
+        for (i = 0; i < 12; i++) {
+            temp_v0 = (Vtx *) segmented_to_virtual_dupe_2(D_800E84C0[i]);
             temp_a0 = *arg2;
             temp_a2 = temp_v0 + temp_s4;
             temp_a1 = 0x100 - temp_a0;
@@ -1719,7 +1754,30 @@ void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
             temp_a2->unk1D = (s8) temp_t9;
             temp_a2->unk1E = (s8) temp_t7;
             temp_a2->unk1F = (s8) temp_t8_2;
-        } while (var_s0 != D_800E84CC);
+        }
+
+        //do {
+            // temp_v0 = segmented_to_virtual_dupe_2(*var_s0);
+            // temp_a0 = *arg2;
+            // temp_a2 = temp_v0 + temp_s4;
+            // temp_a1 = 0x100 - temp_a0;
+            // var_s0 += 4;
+            // temp_t0 = (*arg1 * 2) + 2;
+            // temp_v1 = &temp_v0[temp_t0];
+            // temp_v1_2 = &temp_v0[(temp_t0 % 6) + 2];
+            // temp_t6 = (s32) ((temp_a1 * temp_v1->v.cn[0]) + (temp_a0 * temp_v1_2->v.cn[0])) / 256;
+            // temp_a2->unkC = (s8) temp_t6;
+            // temp_t9 = (s32) ((temp_a1 * temp_v1->v.cn[1]) + (temp_a0 * temp_v1_2->v.cn[1])) / 256;
+            // temp_a2->unkD = (s8) temp_t9;
+            // temp_t7 = (s32) ((temp_a1 * temp_v1->v.cn[2]) + (temp_a0 * temp_v1_2->v.cn[2])) / 256;
+            // temp_a2->unkE = (s8) temp_t7;
+            // temp_t8_2 = (s32) ((temp_a1 * temp_v1->v.cn[3]) + (temp_a0 * temp_v1_2->v.cn[3])) / 256;
+            // temp_a2->unkF = (s8) temp_t8_2;
+            // temp_a2->unk1C = (s8) temp_t6;
+            // temp_a2->unk1D = (s8) temp_t9;
+            // temp_a2->unk1E = (s8) temp_t7;
+            // temp_a2->unk1F = (s8) temp_t8_2;
+        //} while (var_s0 != D_800E84CC);
     }
 }
 #else
@@ -2451,7 +2509,7 @@ void func_80093F10(void) {
     gSPDisplayList(gDisplayListHead++, D_02007F18);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
     func_80092290(4, D_8018E850, D_8018E858);
-    func_80092290(5, (s32 *) &D_8018E854, (s32 *) &D_8018E85C);
+    func_80092290(5, (s32 *) &D_8018E850[1], (s32 *) &D_8018E858[1]);
     func_8009C918();
     func_80099A70();
     func_80099E54();
@@ -2471,7 +2529,7 @@ void func_800940EC(s32 arg0) {
     D_80164AF0++;
     gSPDisplayList(gDisplayListHead++, D_02007F18);
     func_80092290(4, D_8018E850, D_8018E858);
-    func_80092290(5, (s32 *) &D_8018E854, (s32 *) &D_8018E85C);
+    func_80092290(5, (s32 *) &D_8018E850[1], (s32 *) &D_8018E858[1]);
     func_80092148();
     func_80099A70();
     func_80099E54();
@@ -2567,7 +2625,7 @@ void func_80094A64(Mtx *arg0) {
     gSPDisplayList(gDisplayListHead++, D_02007650);
     func_80094C60();
     func_80092290(4, &D_8018E850, &D_8018E858);
-    func_80092290(5, &D_8018E854, &D_8018E85C);
+    func_80092290(5, &D_8018E850[1], &D_8018E858[1]);
     func_80099A70();
     func_8009C918();
     switch (gMenuSelection) {
@@ -7282,8 +7340,6 @@ s32 func_8009A478(void *, s32);                     /* extern */
 s32 func_800B5218();                                /* extern */
 extern ? D_801640F4;
 extern u32 D_8018CA78;
-extern s8 D_8018ED90;
-extern s32 D_8018ED94;
 u64 gTexture7ED50C[0x32];
 
 void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
@@ -7346,7 +7402,7 @@ loop_3:
     var_ra->type = type;
     switch (type) {                                 /* irregular */
     case 0xFA:
-        D_8018ED94 = 0;
+        s8018ED94 = 0;
         D_800E8530 = 0.0f;
         D_800E8534 = 3.0f;
         D_8018EDC0 = 0x000009C4;
@@ -8422,7 +8478,7 @@ void func_800A0AD0(UNUSED struct_8018D9E0_entry *arg0) {
 
 #ifdef MIPS_TO_C
 //generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-extern ? D_8018EB34;
+//extern ? D_8018EB34;
 
 void func_800A0B80(struct_8018D9E0_entry *arg0) {
     ? *temp_s4;
@@ -8458,8 +8514,12 @@ void func_800A0B80(struct_8018D9E0_entry *arg0) {
             }
             temp_v0_2 = *var_s6;
             temp_s2 = arg0->row + temp_s1 + 1;
+                // Note this appears to actually be the very end of pfsState
+                // Perhaps 8018E938[temp_v0_2].game_name[15].
+                // It must be a fake ptr.
             if (*(&D_8018EB34 + (temp_v0_2 * 4)) == 0) {
-                temp_s4 = &D_8018E938[temp_v0_2].unk-20;
+
+                temp_s4 = &pfsState[temp_v0_2].unk-20;
                 temp_s1_2 = func_800A095C(temp_s4 + 0xE, 0x00000010, 0x0000004F, temp_s2) * 8;
                 if (temp_s4->unkA != 0) {
                     func_800A08D8(0x3CU, temp_s1_2 + 0x4F, temp_s2);
@@ -10191,13 +10251,7 @@ void func_800A638C(struct_8018D9E0_entry *arg0) {
 
 #ifdef MIPS_TO_C
 //generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-? guMtxCatL(Mtx *, Mtx *, Mtx *);                   /* extern */
-extern f32 D_8018ED98;
-extern f32 D_8018ED9C;
-extern f32 D_8018EDA0;
-extern f32 D_8018EDA4;
-extern f32 D_8018EDA8;
-extern f32 D_8018EDAC;
+// ? guMtxCatL(Mtx *, Mtx *, Mtx *);                   /* extern */
 
 void func_800A66A8(struct_8018D9E0_entry *arg0, s16 *arg1) {
     Gfx *temp_v0;
@@ -10608,7 +10662,6 @@ void func_800A79F4(s32 arg0, char *arg1) {
 ? func_800AC458(struct_8018D9E0_entry *);           /* extern */
 ? func_800ACF40(struct_8018D9E0_entry *);           /* extern */
 ? func_800AEF14(struct_8018D9E0_entry *);           /* extern */
-extern s32 D_8018ED94;
 
 void func_800A7A4C(s32 arg0) {
     f32 temp_f18;
@@ -10639,22 +10692,22 @@ block_7:
         if (var_v1 != 0) {
             switch (temp_v0) {                      /* switch 8; irregular */
             case 0xFA:                              /* switch 8 */
-                if (D_8018ED94 < 0x50) {
+                if (s8018ED94 < 0x50) {
                     D_800E8534 = 3.0f;
-                } else if (D_8018ED94 < 0x5A) {
+                } else if (s8018ED94 < 0x5A) {
                     temp_f0 = (f64) D_800E8530;
                     if (temp_f0 < 1.0) {
                         D_800E8530 = (f32) (temp_f0 + 0.1);
                     }
                     D_800E8534 = (f32) ((f64) D_800E8534 + 0.1);
-                } else if (D_8018ED94 < 0xA0) {
+                } else if (s8018ED94 < 0xA0) {
                     D_800E8534 = (f32) ((f64) D_800E8534 + 0.1);
-                } else if (D_8018ED94 < 0x190) {
+                } else if (s8018ED94 < 0x190) {
                     D_800E8534 = (f32) ((f64) D_800E8534 + 0.3);
                 }
                 temp_f18 = D_8018EDCC - D_800E8534;
                 D_8018EDCC = temp_f18;
-                D_8018ED94 += 1;
+                s8018ED94 += 1;
                 if (temp_f18 < -360.0f) {
                     D_8018EDCC = temp_f18 + 360.0f;
                 }
@@ -14108,7 +14161,6 @@ void func_800AEEE8(struct_8018D9E0_entry *arg0) {
 }
 
 extern u32 D_8018CA78;
-extern s8 D_8018ED90;
 
 void func_800AEF14(s32* arg0) {
     if (D_8018CAE0 != 0) {

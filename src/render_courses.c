@@ -41,41 +41,41 @@ s32 func_80290C20(Camera *camera) {
     return 0;
 }
 
-void parse_course_displaylists(uintptr_t arg0) {
-    s32 segment = SEGMENT_NUMBER2(arg0);
-    s32 offset = SEGMENT_OFFSET(arg0);
-    TrackSections *data = (TrackSections *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+void parse_course_displaylists(uintptr_t addr) {
+    s32 segment = SEGMENT_NUMBER2(addr);
+    s32 offset = SEGMENT_OFFSET(addr);
+    TrackSections *section = (TrackSections *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
 
-    while(data->addr != 0) {
-        if (data->flags & 0x8000) {
+    while(section->addr != 0) {
+        if (section->flags & 0x8000) {
             D_8015F59C = 1;
         } else {
             D_8015F59C = 0;
         }
-        if (data->flags & 0x2000) {
+        if (section->flags & 0x2000) {
             D_8015F5A0 = 1;
         } else {
             D_8015F5A0 = 0;
         }
-        if (data->flags & 0x4000) {
+        if (section->flags & 0x4000) {
             D_8015F5A4 = 1;
         } else {
             D_8015F5A4 = 0;
         }
-        find_and_set_vertex_data(data->addr, data->surfaceType, data->sectionId);
-        data++;
+        find_and_set_vertex_data(section->addr, section->surfaceType, section->sectionId);
+        section++;
     }
 }
 
 extern u16 D_80152300[];
 
-void load_surface_map(uintptr_t arg0, struct UnkStruct_800DC5EC *arg1) {
+void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     Player *temp_t1 = arg1->player;
     Camera *temp_a2 = arg1->camera;
-    u32 segment = SEGMENT_NUMBER2(arg0);
-    u32 offset = SEGMENT_OFFSET(arg0);
+    u32 segment = SEGMENT_NUMBER2(addr);
+    u32 offset = SEGMENT_OFFSET(addr);
     // todo: Should be Gfx*
-    s32 *addr = (s32 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    s32 *gfx = (s32 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     s16 var_a3;
     s16 temp_v1;
     s16 sp1E;
@@ -178,7 +178,7 @@ void load_surface_map(uintptr_t arg0, struct UnkStruct_800DC5EC *arg1) {
     }
     arg1->pathCounter = temp_v1;
     temp_v1 = ((temp_v1 - 1) * 4) + var_a3;
-    gSPDisplayList(gDisplayListHead++, addr[temp_v1]);
+    gSPDisplayList(gDisplayListHead++, gfx[temp_v1]);
 }
 
 void func_80291198(void) {
