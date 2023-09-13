@@ -71,18 +71,18 @@ glabel func_800A0B80
 /* 0A1884 800A0C84 24C60001 */   addiu $a2, $a2, 1
 /* 0A1888 800A0C88 82C20000 */  lb    $v0, ($s6)
 .L800A0C8C:
-/* 0A188C 800A0C8C 3C0D8019 */  lui   $t5, %hi(D_8018EB34) # 0x8019
+/* 0A188C 800A0C8C 3C0D8019 */  lui   $t5, %hi(pfsState+0x1FC) # 0x8019
 /* 0A1890 800A0C90 8EEB0010 */  lw    $t3, 0x10($s7)
 /* 0A1894 800A0C94 00026080 */  sll   $t4, $v0, 2
 /* 0A1898 800A0C98 01AC6821 */  addu  $t5, $t5, $t4
-/* 0A189C 800A0C9C 8DADEB34 */  lw    $t5, %lo(D_8018EB34)($t5) # -0x14cc($t5)
+/* 0A189C 800A0C9C 8DADEB34 */  lw    $t5, %lo(pfsState+0x1FC)($t5) # -0x14cc($t5)
 /* 0A18A0 800A0CA0 01719021 */  addu  $s2, $t3, $s1
 /* 0A18A4 800A0CA4 26520001 */  addiu $s2, $s2, 1
 /* 0A18A8 800A0CA8 15A0003B */  bnez  $t5, .L800A0D98
 /* 0A18AC 800A0CAC 2406004F */   li    $a2, 79
 /* 0A18B0 800A0CB0 00027140 */  sll   $t6, $v0, 5
-/* 0A18B4 800A0CB4 3C188019 */  lui   $t8, %hi(D_8018E938) # $t8, 0x8019
-/* 0A18B8 800A0CB8 2718E938 */  addiu $t8, %lo(D_8018E938) # addiu $t8, $t8, -0x16c8
+/* 0A18B4 800A0CB4 3C188019 */  lui   $t8, %hi(pfsState) # $t8, 0x8019
+/* 0A18B8 800A0CB8 2718E938 */  addiu $t8, %lo(pfsState) # addiu $t8, $t8, -0x16c8
 /* 0A18BC 800A0CBC 25CFFFE0 */  addiu $t7, $t6, -0x20
 /* 0A18C0 800A0CC0 01F8A021 */  addu  $s4, $t7, $t8
 /* 0A18C4 800A0CC4 2684000E */  addiu $a0, $s4, 0xe

@@ -105,12 +105,10 @@ extern s32         D_80162DE0;
 extern s32         D_80162DFC;
 extern OSPfs       gControllerPak1FileHandle;
 extern OSPfs       gControllerPak2FileHandle;
-extern OSPfsState  D_8018E938[];
-extern s32         D_8018EB38[16];
+extern OSPfsState  pfsState[16];
+extern s32         pfsError[16];
 extern s32         gControllerPak1NumFilesUsed;
 extern s32         gControllerPak1MaxWriteableFiles;
-extern s32         gControllerPak1FileNote; // osPfs file_no receiver/out param
-extern s32         gControllerPak2FileNote;
 extern s8          D_8018EDE5;
 extern s8          D_8018EDE6;
 extern s8          D_8018EDE7;

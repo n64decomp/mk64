@@ -340,12 +340,12 @@ SECTIONS
       BUILD_DIR/src/crash_screen.o(.bss);
       BUILD_DIR/src/code_80004740.o(.bss);
       BUILD_DIR/src/staff_ghosts.o(.bss);
+      BUILD_DIR/src/code_80005FD0.jp.o(.bss);
       BUILD_DIR/asm/bss_80005FD0.o(.bss);
       BUILD_DIR/asm/bss_MainSeg.o(.bss);
       BUILD_DIR/src/camera.o(.bss);
       BUILD_DIR/asm/bss_8001C4D0.o(.bss);
       BUILD_DIR/src/code_80091750.jp.o(.bss);
-      BUILD_DIR/asm/bss_8001C4D0_1.o(.bss);
       BUILD_DIR/src/code_800AF9B0.o(.bss);
       BUILD_DIR/src/menus.o(.bss);
       #if DEBUG
@@ -353,6 +353,7 @@ SECTIONS
          BUILD_DIR/src/debug/debug.o(.bss);
          BUILD_DIR/src/os/sprintf.o(.bss);
       #endif
+      BUILD_DIR/src/audio/external.o(.bss);
       BUILD_DIR/asm/bss_main_audio.o(.bss);
       BUILD_DIR/src/audio/port_eu.o(.bss);
       BUILD_DIR/src/os/osInitialize.o(.bss);
@@ -412,7 +413,7 @@ SECTIONS
       BUILD_DIR/src/framebuffers.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
       BUILD_DIR/asm/bss_audio.o(.bss*);
-      BUILD_DIR/asm/bss_sptask_audio.o(.bss);
+      BUILD_DIR/src/audio/load.o(.bss);
       . = ALIGN(0x8);
    }
    END_NOLOAD(code_8028DF00)

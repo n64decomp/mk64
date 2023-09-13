@@ -12,7 +12,6 @@ extern s8    gCharacterIdByGPOverallRank[8];        // D_8018D9D0
 extern s8    gCharacterGridSelections[4];           // D_8018EDE4
 extern s8    gCharacterSelections[4];               // D_800E86A8
 extern s8    gControllerPakMenuSelection;           // D_8018EDF0
-extern s32   gControllerPak1NumPagesFree;            // D_8018EB80
 extern s8    gControllerPakSelectedTableRow;        // D_800E86C0
 extern f32   gCourseCompletionPercentByPlayerId[8]; // D_801644D0
 extern f32   gCourseCompletionPercentByRank[8];     // D_80162FD8

@@ -355,7 +355,8 @@ extern Gfx *D_8018E75C;                                   // D_8018E75C
 extern s32 gNumD_8018E768Entries;                         // D_8018E760
 extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE]; // D_8018E768
 extern s8  gTextColor;                                    // D_8018E860
-extern s8  D_8018ED91;
+extern u8  D_8018ED90;
+extern u8  D_8018ED91;
 extern s8  D_8018E838[];
 extern s32 D_8018E840[];
 extern s32 D_8018E850[];
@@ -526,5 +527,9 @@ extern Unk_D_800E70A0 D_800E8538[];
 extern Unk_D_800E70A0 D_800E8540[][4];
 extern Unk_D_800E70A0 D_800E85C0[][4];
 extern Unk_D_800E70A0 D_800E8600[][4];
+
+extern s32 gControllerPak1NumPagesFree;
+extern s32 gControllerPak1FileNote;
+extern s32 gControllerPak2FileNote;
 
 #endif

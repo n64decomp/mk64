@@ -4,6 +4,7 @@
 #include <common_structs.h>
 #include <defines.h>
 #include <functions.h>
+#include "main.h"
 #include "code_800029B0.h"
 #include "framebuffers.h"
 #include "code_800B45E0.h"
@@ -60,20 +61,8 @@ u32 *D_800DC714 = (u32 *) &D_802BFB80[1][1][3];
 
 extern u8 _kart_texturesSegmentRomStart;
 
-extern s16 gCurrentCourseId;
-extern s32 gModeSelection;
-extern s32 gActiveScreenMode;
 extern s32 gLapCountByPlayerId[];
 extern s32 D_8018CA78;
-
-extern Player *gPlayerOne;
-extern Player* gPlayerTwo;
-extern Player *gPlayerThree;
-
-extern struct Controller *gControllerSix;
-extern struct Controller *gControllerSeven;
-extern struct Controller *gControllerEight;
-extern struct Controller *gControllerOne;
 
 extern StaffGhost *d_mario_raceway_staff_ghost;
 extern StaffGhost *d_royal_raceway_staff_ghost;

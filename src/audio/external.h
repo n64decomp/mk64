@@ -242,7 +242,6 @@ extern struct Unk_80191420 sSoundBanks[SOUND_BANK_COUNT][20];
 extern u8 sSoundBankUsedListBack[SOUND_BANK_COUNT];
 extern u8 sSoundBankFreeListFront[SOUND_BANK_COUNT];
 extern u8 sNumSoundsInBank[SOUND_BANK_COUNT];
-extern u8 sSoundBankDisabled[12]; // size??
 extern u8 sNumProcessedSoundRequests;
 extern u8 sSoundRequestCount;
 extern struct Unk_8018FC20 sSoundRequests[0x100];

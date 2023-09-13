@@ -1,22 +1,22 @@
 .include "macros.inc"
 
 .section .bss
-.skip 96
 
-glabel D_80162E70
-.skip 64
 
-glabel D_80162EB0
-.skip 2
+#glabel D_80162E70
+#.skip 64
 
-glabel D_80162EB2
-.skip 6
+#glabel D_80162EB0
+#.skip 2
 
-glabel D_80162EB8
-.skip 80
+#glabel D_80162EB2
+#.skip 6
 
-glabel D_80162F08
-.skip 8
+#glabel D_80162EB8
+#.skip 80
+
+#glabel D_80162F08 # fake ptr
+#.skip 8
 
 glabel D_80162F10
 .skip 64
