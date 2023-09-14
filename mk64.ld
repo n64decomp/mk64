@@ -412,8 +412,9 @@ SECTIONS
       BUILD_DIR/src/memory.o(.bss);
       BUILD_DIR/src/framebuffers.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
-      BUILD_DIR/asm/bss_audio.o(.bss*);
+      BUILD_DIR/src/audio/heap.o(.bss*);
       BUILD_DIR/src/audio/load.o(.bss);
+      BUILD_DIR/src/audio/data.o(.bss);
       . = ALIGN(0x8);
    }
    END_NOLOAD(code_8028DF00)

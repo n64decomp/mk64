@@ -425,3 +425,20 @@ f32 gDefaultPanVolume[128] = {
     0.184465f, 0.172295f, 0.160098f, 0.147877f, 0.135634f, 0.12337f,  0.111087f, 0.098786f,
     0.086471f, 0.074143f, 0.061803f, 0.049454f, 0.037097f, 0.024734f, 0.012368f, 0.0f
 };
+
+s32 D_803B70C0;
+s32 D_803B70C4;
+u64 *gAudioCmdBuffers[2]; // probably wrong
+u64 *gAudioCmd;
+struct SPTask *gAudioTask; // gAudioTask?
+struct SPTask gAudioTasks[2]; // gAudioTasks?
+f32 D_803B7178;
+s32 gRefreshRate;
+s16 *gAiBuffers[3]; // unconfirmed, osAiSetNextBuffer vaddr
+u32 D_803B718C; // osAiSetNextBuffer nbytes
+s16 load_bss_pad3;
+u16 D_803B7192; // unconfirmed
+u32 gAudioRandom;
+s32 gAudioErrorFlags;
+u32 D_803B71A0[4]; // unconfirmed
+u8 D_803B71B0[4]; // unconfirmed
