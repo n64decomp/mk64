@@ -547,6 +547,57 @@ struct AudioBufferParametersEU {
     /*0x1C*/ f32 unkUpdatesPerFrameScaled; // 3.0f / (1280.0f * updatesPerFrame)
 };
 
+/**
+ * This definition comes from SM64. For reasons not fully understood
+ * eu_process_audio_cmd does not match properly if this definition
+ * is used.
+ * We're either:
+ *     Missing a compiler -D for IS_BIG_ENDIAN
+ *     or
+ *     The version of that function in MK64 is significantly different
+ *     from its SM64 counterpart
+ * Or we just have a poor understanding of this part of the system.
+
+struct EuAudioCmd {
+    union {
+#if IS_BIG_ENDIAN
+        struct {
+            u8 op;
+            u8 arg1;
+            u8 arg2;
+            u8 arg3;
+        } s;
+#else
+        struct {
+            u8 arg3;
+            u8 arg2;
+            u8 arg1;
+            u8 op;
+        } s;
+#endif
+        s32 first;
+    } u;
+    union {
+        s32 as_s32;
+        u32 as_u32;
+        f32 as_f32;
+#if IS_BIG_ENDIAN
+        u8 as_u8;
+        s8 as_s8;
+#else
+        struct {
+            u8 pad0[3];
+            u8 as_u8;
+        };
+        struct {
+            u8 pad1[3];
+            s8 as_s8;
+        };
+#endif
+    } u2;
+};
+**/
+
 struct EuAudioCmd {
     union {
         struct {
