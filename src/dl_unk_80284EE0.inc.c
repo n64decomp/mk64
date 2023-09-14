@@ -37,7 +37,7 @@ extern Gfx D_070006D0[];
 extern Gfx D_070004D0[];
 extern Gfx D_07000840[];
 
-// Unknown displaylists
+// Init RDP - RSP (Ceremony)
 Gfx D_80284EE0[] = {
     gsDPSetCycleType(G_CYC_1CYCLE),
     gsDPPipelineMode(G_PM_1PRIMITIVE),
@@ -59,6 +59,7 @@ Gfx D_80284EE0[] = {
     gsSPEndDisplayList(),
 };
 
+// Peach's Castle (Ceremony)
 Gfx D_80284F70[] = {
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
