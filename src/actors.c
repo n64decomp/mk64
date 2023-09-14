@@ -30,7 +30,7 @@ u8 *D_802BA058;
 
 
 struct Actor *D_802BA05C;
-s8 D_802BA060[512]; // tlut 256
+s8 gTLUTRedShell[512]; // tlut 256
 u16 D_802BA260;
 
 /**
@@ -383,21 +383,22 @@ void func_802977E4(Player *arg0) {
     arg0->boundingBoxCorners[2].unk_14 &= 0xFFFD;
 }
 
-void func_80297818(void) {
-    s16 *phi_v0 = (s16 *) &D_802BA060[0];
-    s16 *phi_v1 = (s16 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(gTLUTGreenShell)] + SEGMENT_OFFSET(gTLUTGreenShell));
-    s16 temp_a0, temp_a0_2, temp_a0_3, temp_a0_4, temp_a0_5;
+// invert green and red on green shell texture
+void init_red_shell_texture(void) {
+    s16 *red_shell_texture = (s16 *) &gTLUTRedShell[0];
+    s16 *green_shell_texture = (s16 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(gTLUTGreenShell)] + SEGMENT_OFFSET(gTLUTGreenShell));
+    s16 color_pixel, red_color, green_color, blue_color, alpha_color;
     s32 i;
     for (i = 0; i < 256; i++) {
-        temp_a0 = *phi_v1;
-        temp_a0_2 = temp_a0 & 0xF800;
-        temp_a0_3 = temp_a0 & 0x7C0;
-        temp_a0_4 = temp_a0 & 0x3E;
-        temp_a0_5 = temp_a0 & 0x1;
+        color_pixel = *green_shell_texture;
+        red_color = color_pixel & 0xF800;
+        green_color = color_pixel & 0x7C0;
+        blue_color = color_pixel & 0x3E;
+        alpha_color = color_pixel & 0x1;
 
-        *phi_v0 = (temp_a0_2 >> 5) | (temp_a0_3 << 5) | temp_a0_4 | temp_a0_5;
-        phi_v1++;
-        phi_v0++;
+        *red_shell_texture = (red_color >> 5) | (green_color << 5) | blue_color | alpha_color; // invert color
+        green_shell_texture++;
+        red_shell_texture++;
     }
 }
 
@@ -428,8 +429,9 @@ void func_802979F8(struct Actor *arg0, UNUSED f32 arg1) {
     }
 }
 
+// render cow on moo moo farm
 void func_80297A50(Camera *camera, Mat4 arg1, struct Actor *arg2) {
-    if (func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], 4000000.0f) < 0) { return; }
+    if (func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 4000000.0f) < 0) { return; }
 
     arg1[3][0] = arg2->pos[0];
     arg1[3][1] = arg2->pos[1];
@@ -624,7 +626,7 @@ void func_80298328(Camera *arg0, Mat4 arg1, struct PiranhaPlant *arg2) {
 
     if (temp & 0x800) { return; }
 
-        temp_f0 = func_802B80D0(arg0->pos, arg2->pos, arg0->rot[1], 0, D_80150130[arg0 - camera1], 1000000.0f);
+        temp_f0 = func_802B80D0(arg0->pos, arg2->pos, arg0->rot[1], 0, fovPlayers[arg0 - camera1], 1000000.0f);
 
         if (temp_f0 < 0.0f) {
 
@@ -738,7 +740,7 @@ void func_802986B4(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
         sp88[0] = var_s1->pos[0] * gCourseDirection;
         sp88[1] = var_s1->pos[1];
         sp88[2] = var_s1->pos[2];
-        temp_f0 = func_802B80D0(camera->pos, sp88, camera->rot[1], 0.0f, D_80150130[camera - camera1], 4000000.0f);
+        temp_f0 = func_802B80D0(camera->pos, sp88, camera->rot[1], 0.0f, fovPlayers[camera - camera1], 4000000.0f);
         if (temp_f0 > 0.0f) {
             if (temp_f0 < D_8015F704) {
                 D_8015F704 = temp_f0;
@@ -876,7 +878,7 @@ void func_80298D7C(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
         spD4[1] = var_s1->pos[1];
         spD4[2] = var_s1->pos[2];
 
-        if (func_802B80D0(camera->pos, spD4, camera->rot[1], 0.0f, D_80150130[camera - camera1], var_f22) < 0.0f) {
+        if (func_802B80D0(camera->pos, spD4, camera->rot[1], 0.0f, fovPlayers[camera - camera1], var_f22) < 0.0f) {
             var_s1++;
             continue;
         }
@@ -916,13 +918,13 @@ dummylabel:
     }
 }
 
-void func_80299144(Camera *camera, Mat4 arg1, struct Actor *arg2) {
+void render_obj_tree_mario_raceway(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], 16000000.0f);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 16000000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -939,13 +941,13 @@ void func_80299144(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     }
 }
 
-void func_8029930C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
+void render_obj_tree_yoshi_valley(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], 4000000.0f);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -962,13 +964,13 @@ void func_8029930C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     }
 }
 
-void func_802994D4(Camera *camera, Mat4 arg1, struct Actor *arg2) {
+void render_obj_tree_royal_raceway(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], 4000000.0f);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -985,13 +987,14 @@ void func_802994D4(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     }
 }
 
-void func_8029969C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
+// render tree in moo moo farm ?
+void render_obj_tree_moo_moo_farm(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], 6250000.0f);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 6250000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1014,7 +1017,7 @@ void func_80299864(Camera *camera, Mat4 arg1, struct Actor *arg2) {
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], 4000000.0f);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1035,13 +1038,14 @@ void func_80299864(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     }
 }
 
+// render tree in bowser castle ?
 void func_80299A2C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], 4000000.0f);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1058,13 +1062,14 @@ void func_80299A2C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     }
 }
 
+// render bush in bowser castle ?
 void func_80299BF4(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], 640000.0f);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 640000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1081,13 +1086,14 @@ void func_80299BF4(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     }
 }
 
+// render tree in frappe snowland ?
 void func_80299DBC(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], 4000000.0f);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1103,13 +1109,14 @@ void func_80299DBC(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     }
 }
 
+// render cactus1 in kalimari desert ?
 void func_80299EDC(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], 4000000.0f);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1125,13 +1132,14 @@ void func_80299EDC(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     }
 }
 
+// render cactus2 in kalimari desert ?
 void func_80299FFC(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], 4000000.0f);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1147,13 +1155,14 @@ void func_80299FFC(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     }
 }
 
+// render cactus3 in kalimari desert ?
 void func_8029A11C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
     if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], 4000000.0f);
+    temp_f0 = func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1169,6 +1178,7 @@ void func_8029A11C(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     }
 }
 
+// render kiwano fruit in DK's jungle parkway ?
 void func_8029A23C(UNUSED Camera *camera, Mat4 arg1, struct Actor *actor) {
     uintptr_t addr;
 
@@ -1202,7 +1212,7 @@ void func_8029A3AC(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
     // Is it doing this by modifying a an address?
     uintptr_t phi_t3;
 
-    f32 temp_f0 = func_802B80D0(camera->pos, shell->pos, camera->rot[1], 0, D_80150130[camera - camera1], 490000.0f);
+    f32 temp_f0 = func_802B80D0(camera->pos, shell->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 490000.0f);
     if (temp_f0 < 0.0f) {
         func_80297230(camera, (struct Actor *)shell);
         return;
@@ -1248,17 +1258,20 @@ UNUSED s16 D_802B8810[] = {
     0x0000, 0x0000, 0xffff, 0xffff
 };
 
+// render green shell ?
 void func_8029A690(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
     gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTGreenShell);
     func_8029A3AC(camera, matrix, shell);
 }
 
+// render red shell ?
 void func_8029A75C(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
-    gDPLoadTLUT_pal256(gDisplayListHead++, &D_802BA060);
+    gDPLoadTLUT_pal256(gDisplayListHead++, &gTLUTRedShell); // this also means gTLUTRedShell
     func_8029A3AC(camera, matrix, shell);
 }
 
 // Middle of a tlut access
+// render blue shell ?
 void func_8029A828(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
     gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTBlueShell);
     func_8029A3AC(camera, matrix, shell);
@@ -1269,7 +1282,7 @@ void func_8029A8F4(Camera *camera, UNUSED Mat4 arg1, struct BananaActor *banana)
     Vec3s sp7C;
     Mat4 sp3C;
 
-    f32 temp = func_802B80D0(camera->pos, banana->pos, camera->rot[1], 0, D_80150130[camera - camera1], 490000.0f);
+    f32 temp = func_802B80D0(camera->pos, banana->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 490000.0f);
     if (temp < 0.0f) {
         func_80297230(camera, (struct Actor *) banana);
         return;
@@ -1347,7 +1360,7 @@ UNUSED void func_8029ABD4(f32 *pos, s16 state) {
 }
 
 void func_8029AC18(Camera *camera, Mat4 arg1, struct Actor *arg2) {
-    if (func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, D_80150130[camera - camera1], 4000000.0f) < 0) { return; }
+    if (func_802B80D0(camera->pos, arg2->pos, camera->rot[1], 0, fovPlayers[camera - camera1], 4000000.0f) < 0) { return; }
 
     arg1[3][0] = arg2->pos[0];
     arg1[3][1] = arg2->pos[1] - arg2->boundingBoxSize;
@@ -1399,7 +1412,7 @@ void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED Mat4 arg2,
     f32 temp;
 
     if ((arg3 > 20) && (arg3 < 25)) { return; }
-        temp = func_802B80D0(arg0->pos, boat->pos, arg0->rot[1], 90000.0f, D_80150130[arg0 - camera1], 9000000.0f);
+        temp = func_802B80D0(arg0->pos, boat->pos, arg0->rot[1], 90000.0f, fovPlayers[arg0 - camera1], 9000000.0f);
 
     if (temp < 0.0f) { return; }
 
@@ -1429,7 +1442,7 @@ void func_8029B06C(Camera *arg0, struct Actor *arg1) {
     UNUSED s32 pad[6];
     Mat4 spD8;
     UNUSED s32 pad2[32];
-    f32 temp_f0 = func_802B80D0(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, D_80150130[arg0 - camera1], 9000000.0f);
+    f32 temp_f0 = func_802B80D0(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, fovPlayers[arg0 - camera1], 9000000.0f);
     if (temp_f0 < 0.0f) { return; }
 
         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -1472,7 +1485,7 @@ void func_8029B2E4(Camera *arg0, struct Actor *arg1) {
     UNUSED s32 pad2[32];
     f32 temp_f0;
 
-    temp_f0 = func_802B80D0(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, D_80150130[arg0 - camera1], 9000000.0f);
+    temp_f0 = func_802B80D0(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, fovPlayers[arg0 - camera1], 9000000.0f);
     if (temp_f0 < 0.0f) { return; }
 
         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -1502,7 +1515,7 @@ void func_8029B4E0(Camera *arg0, struct Actor *arg1) {
     UNUSED s32 pad[6];
     Mat4 spC8;
     UNUSED s32 pad2[32];
-    f32 temp_f0 = func_802B80D0(arg0->pos,arg1->pos, arg0->rot[1], 2500.0f, D_80150130[arg0 - camera1], 9000000.0f);
+    f32 temp_f0 = func_802B80D0(arg0->pos,arg1->pos, arg0->rot[1], 2500.0f, fovPlayers[arg0 - camera1], 9000000.0f);
 
     if (!(temp_f0 < 0.0f)) {
 
@@ -1535,7 +1548,7 @@ void func_8029B6EC(Camera *camera, struct Actor* arg1) {
     UNUSED s32 pad[6];
     Mat4 spC8;
     UNUSED s32 pad2[32];
-    f32 temp_f0 = func_802B80D0(camera->pos, arg1->pos, camera->rot[1], 2500.0f, D_80150130[camera - camera1], 9000000.0f);
+    f32 temp_f0 = func_802B80D0(camera->pos, arg1->pos, camera->rot[1], 2500.0f, fovPlayers[camera - camera1], 9000000.0f);
 
     if (!(temp_f0 < 0.0f)) {
 
@@ -1571,7 +1584,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     Mat4 spE0;
     Mat4 spA0;
 
-    f32 temp_f0 = func_802B80D0(camera->pos, actor->pos, camera->rot[1], 2500.0f, D_80150130[camera - camera1], 9000000.0f);
+    f32 temp_f0 = func_802B80D0(camera->pos, actor->pos, camera->rot[1], 2500.0f, fovPlayers[camera - camera1], 9000000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1686,7 +1699,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     Mat4 spE0;
     Mat4 spA0;
 
-    f32 temp_f0 = func_802B80D0(camera->pos, actor->pos, camera->rot[1], 625.0f, D_80150130[camera - camera1], 9000000.0f);
+    f32 temp_f0 = func_802B80D0(camera->pos, actor->pos, camera->rot[1], 625.0f, fovPlayers[camera - camera1], 9000000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1756,7 +1769,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     Mat4 spE0;
     Mat4 spA0;
 
-    f32 temp_f0 = func_802B80D0(camera->pos, actor->pos, camera->rot[1], 2025.0f, D_80150130[camera - camera1], 9000000.0f);
+    f32 temp_f0 = func_802B80D0(camera->pos, actor->pos, camera->rot[1], 2025.0f, fovPlayers[camera - camera1], 9000000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1874,7 +1887,7 @@ void func_8029CA90(Camera *camera, struct FallingRock *rock) {
 
     if (rock->respawnTimer != 0) { return; }
 
-    temp_f0 = func_802B80D0(camera->pos, rock->pos, camera->rot[1], 400.0f, D_80150130[camera - camera1], 4000000.0f);
+    temp_f0 = func_802B80D0(camera->pos, rock->pos, camera->rot[1], 400.0f, fovPlayers[camera - camera1], 4000000.0f);
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -2349,7 +2362,7 @@ void func_8029E158(void) {
         dma_textures(D_0F058550, 0x00000364U, 0x00000400U);
         break;
     }
-    func_80297818();
+    init_red_shell_texture();
     destroy_all_actors();
     place_course_actors();
     func_800122D8();
@@ -3317,6 +3330,7 @@ void evaluate_player_collision(void) {
     }
 }
 
+// it's look like to check collision between item and other different item
 void func_802A0E44(void) {
     struct Actor *phi_s0;
     struct Actor *temp_a1;
@@ -3556,7 +3570,7 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
     f32 temp_f2_2;
     f32 someMultiplier;
 
-    if (func_802B80D0(camera->pos, fakeItemBox->pos, camera->rot[1], 2500.0f, D_80150130[camera - camera1], 1000000.0f) < 0) {
+    if (func_802B80D0(camera->pos, fakeItemBox->pos, camera->rot[1], 2500.0f, fovPlayers[camera - camera1], 1000000.0f) < 0) {
         func_80297230(camera, (struct Actor *) fakeItemBox);
         return;
     }
@@ -3697,7 +3711,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
     f32 temp_f2_2;
     f32 someMultiplier;
 
-    temp_f0 = func_802B80D0(camera->pos, item_box->pos, camera->rot[1], 0.0f, D_80150130[camera - camera1], 4000000.0f);
+    temp_f0 = func_802B80D0(camera->pos, item_box->pos, camera->rot[1], 0.0f, fovPlayers[camera - camera1], 4000000.0f);
     if (!(temp_f0 < 0.0f) && !(600000.0f < temp_f0)) {
         if ((item_box->state == 2) && (temp_f0 < 100000.0f)) {
             someRot[0] = 0;
@@ -3830,7 +3844,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
 
 void func_802A269C(Camera *arg0, struct Actor *arg1) {
     Mat4 sp38;
-    f32 unk = func_802B80D0(arg0->pos, arg1->pos, arg0->rot[1], 0, D_80150130[arg0 - camera1], 16000000.0f);
+    f32 unk = func_802B80D0(arg0->pos, arg1->pos, arg0->rot[1], 0, fovPlayers[arg0 - camera1], 16000000.0f);
 
     if (!(unk < 0.0f)) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -3851,7 +3865,7 @@ void func_802A27A0(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg, u16 arg3
     f32 temp_f0;
 
     if (gGamestate != CREDITS_SEQUENCE) {
-        temp_f0 = func_802B80D0(arg0->pos, egg->pos, arg0->rot[1], 200.0f, D_80150130[arg0 - camera1], 16000000.0f);
+        temp_f0 = func_802B80D0(arg0->pos, egg->pos, arg0->rot[1], 200.0f, fovPlayers[arg0 - camera1], 16000000.0f);
         if (temp_f0 < 0.0f) {
             return;
         }
@@ -3896,7 +3910,7 @@ void func_802A29BC(Camera *arg0, UNUSED Mat4 arg1, struct Actor *arg2) {
 
     if (temp & 0x800) { return; }
 
-    unk = func_802B80D0(arg0->pos, arg2->pos, arg0->rot[1], 0, D_80150130[arg0 - camera1], 16000000.0f);
+    unk = func_802B80D0(arg0->pos, arg2->pos, arg0->rot[1], 0, fovPlayers[arg0 - camera1], 16000000.0f);
     if (!(unk < 0.0f)) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -3910,7 +3924,7 @@ void func_802A29BC(Camera *arg0, UNUSED Mat4 arg1, struct Actor *arg2) {
 void func_802A2AD0(Camera *arg0, struct RailroadCrossing *rr_crossing) {
     UNUSED Vec3s sp80 = {0, 0, 0};
     Mat4 sp40;
-    f32 unk = func_802B80D0(arg0->pos, rr_crossing->pos, arg0->rot[1], 0.0f, D_80150130[arg0 - camera1], 4000000.0f);
+    f32 unk = func_802B80D0(arg0->pos, rr_crossing->pos, arg0->rot[1], 0.0f, fovPlayers[arg0 - camera1], 4000000.0f);
 
     if (!(unk < 0.0f)) {
         func_802B5F74(sp40, rr_crossing->pos, rr_crossing->rot);
@@ -3944,7 +3958,7 @@ void func_802A2C78(Camera *arg0, UNUSED Mat4 arg1, struct Actor *arg2) {
         return;
     }
 
-    temp_f0 = func_802B80D0(arg0->pos, arg2->pos, arg0->rot[1], 0.0f, D_80150130[arg0 - camera1], 4000000.0f);
+    temp_f0 = func_802B80D0(arg0->pos, arg2->pos, arg0->rot[1], 0.0f, fovPlayers[arg0 - camera1], 4000000.0f);
 
     if (!(temp_f0 < 0.0f)) {
         if (((temp_v0 & 0x400) == 0) && (temp_f0 < 250000.0f)) {
@@ -4010,9 +4024,10 @@ void func_802A2F34(struct UnkStruct_800DC5EC *arg0) {
     }
 }
 
-void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
+// look like to be a function that draws the actors
+void render_simple_objects(struct UnkStruct_800DC5EC *arg0) {
     Camera *camera = arg0->camera;
-    u16 sp92 = arg0->pathCounter;
+    u16 pathCounter = arg0->pathCounter;
     UNUSED s32 pad[12];
     s32 i;
 
@@ -4054,36 +4069,36 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
         }
             switch (actor->type) {
                 case 2:
-                    func_80299144(camera, D_801502C0, actor);
+                    render_obj_tree_mario_raceway(camera, D_801502C0, actor);
                     break;
                 case 3:
-                    func_8029930C(camera, D_801502C0, actor);
+                    render_obj_tree_yoshi_valley(camera, D_801502C0, actor);
                     break;
                 case 4:
-                    func_802994D4(camera, D_801502C0, actor);
+                    render_obj_tree_royal_raceway(camera, D_801502C0, actor);
                     break;
-                case 19:
-                    func_8029969C(camera, D_801502C0, actor);
+                case 19: // tree moo moo farm
+                    render_obj_tree_moo_moo_farm(camera, D_801502C0, actor);
                     break;
                 case 26:
                     func_80299864(camera, D_801502C0, actor);
                     break;
-                case 28:
+                case 28: // tree bowser castle
                     func_80299A2C(camera, D_801502C0, actor);
                     break;
-                case 33:
+                case 33: // bush bowser castle
                     func_80299BF4(camera, D_801502C0, actor);
                     break;
-                case 29:
+                case 29: // tree snow land
                     func_80299DBC(camera, D_801502C0, actor);
                     break;
-                case 30:
+                case 30: // cactus1 kalimari desert
                     func_80299EDC(camera, D_801502C0, actor);
                     break;
-                case 31:
+                case 31: // cactus2 kalimari desert
                     func_80299FFC(camera, D_801502C0, actor);
                     break;
-                case 32:
+                case 32: // cactus3 kalimari desert
                     func_8029A11C(camera, D_801502C0, actor);
                     break;
                 case ACTOR_FALLING_ROCK:
@@ -4116,7 +4131,7 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
                 case ACTOR_TRAIN_PASSENGER_CAR:
                     func_8029C3CC(camera, (struct TrainCar *) actor);
                     break;
-                case 18:
+                case ACTOR_COW:
                     func_80297A50(camera, D_801502C0, actor);
                     break;
                 case 20:
@@ -4132,7 +4147,7 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
                     func_802A2C78(camera, D_801502C0, actor);
                     break;
                 case ACTOR_PADDLE_WHEEL_BOAT:
-                    func_8029AE1C(camera, (struct PaddleWheelBoat *) actor, D_801502C0, sp92);
+                    func_8029AE1C(camera, (struct PaddleWheelBoat *) actor, D_801502C0, pathCounter);
                     break;
                 case ACTOR_BOX_TRUCK:
                     func_8029B06C(camera, actor);
@@ -4150,7 +4165,7 @@ void func_802A3008(struct UnkStruct_800DC5EC *arg0) {
                     func_802A2AD0(camera, (struct RailroadCrossing *) actor);
                     break;
                 case ACTOR_YOSHI_VALLEY_EGG:
-                    func_802A27A0(camera, D_801502C0, (struct YoshiValleyEgg *) actor, sp92);
+                    func_802A27A0(camera, D_801502C0, (struct YoshiValleyEgg *) actor, pathCounter);
                     break;
             }
     }

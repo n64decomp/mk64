@@ -117,7 +117,7 @@ s32 D_80150120;
 s32 gMenuSelectionFromQuit;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
-f32 D_80150130[4];
+f32 fovPlayers[4]; // look like to be the fov of each character
 //f32 D_80150134;
 //f32 D_80150138;
 //f32 D_8015013C;

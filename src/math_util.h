@@ -21,7 +21,7 @@ void func_802B4FF0(void);
 void func_802B5794(Mat4, Vec3f, Vec3f);
 s32  func_802B4FF8(Mat4, s32);
 f32  func_802B51E8(Vec3f, Vec3f);
-u32  func_802B5224(Vec3f, Vec3f);
+u32  get_angle_two_point(Vec3f, Vec3f);
 u32  func_802B5258(Vec3f, Vec3s);
 void vec3f_set(Vec3f, f32, f32, f32);
 void vec3s_set(Vec3s, s16, s16, s16);
@@ -72,7 +72,7 @@ s16  func_802B7F34(f32, f32, f32, f32);
 void func_802B7F7C(Vec3f, Vec3f, Vec3s);
 f32  sins(u16);
 f32  coss(u16);
-s32  func_802B8058(u16, u16, u16);
+s32  is_visible_between_angle(u16, u16, u16);
 f32  func_802B80D0(Vec3f, Vec3f, u16, f32, f32, f32);
 void func_802B8414(uintptr_t, Mat4, s16, s16, s32);
 

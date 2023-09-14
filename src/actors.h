@@ -16,7 +16,7 @@ void func_802976EC(Collision*, Vec3s);
 void func_80297760(struct Actor*, Vec3f);
 void func_802977B0(Player*);
 void func_802977E4(Player*);
-void func_80297818(void);
+void init_red_shell_texture(void);
 void func_80297944(void);
 void func_8029794C(Vec3f, Vec3s, f32);
 void func_802979F8(struct Actor*, f32);
@@ -35,10 +35,10 @@ void func_80298AC0(Player*);
 void func_80298D7C(Camera*, Mat4, struct Actor*);
 void func_80298C94(void);
 void func_80298D10(void);
-void func_80299144(Camera*, Mat4, struct Actor*);
-void func_8029930C(Camera*, Mat4, struct Actor*);
-void func_802994D4(Camera*, Mat4, struct Actor*);
-void func_8029969C(Camera*, Mat4, struct Actor*);
+void render_obj_tree_mario_raceway(Camera*, Mat4, struct Actor*);
+void render_obj_tree_yoshi_valley(Camera*, Mat4, struct Actor*);
+void render_obj_tree_royal_raceway(Camera*, Mat4, struct Actor*);
+void render_obj_tree_moo_moo_farm(Camera*, Mat4, struct Actor*);
 void func_80299864(Camera*, Mat4, struct Actor*);
 void func_80299A2C(Camera*, Mat4, struct Actor*);
 void func_80299BF4(Camera*, Mat4, struct Actor*);
@@ -108,7 +108,7 @@ void func_802A29BC(Camera*, Mat4, struct Actor*);
 void func_802A2AD0(Camera*, struct RailroadCrossing*);
 void func_802A2C78(Camera*, Mat4, struct Actor*);
 void func_802A2F34(struct UnkStruct_800DC5EC*);
-void func_802A3008(struct UnkStruct_800DC5EC*);
+void render_simple_objects(struct UnkStruct_800DC5EC*);
 void update_simple_objects(void);
 
 // audio/external.c
@@ -121,7 +121,7 @@ extern u8 *D_802BA050;
 extern u8 *D_802BA054;
 extern u8 *D_802BA058;
 extern struct Actor *D_802BA05C;
-extern s8 D_802BA060[512]; // tlut 256
+extern s8 gTLUTRedShell[512]; // tlut 256
 extern u16 D_802BA260;
 
 extern s32   gPlayerCountSelection1;
@@ -141,7 +141,7 @@ extern Camera *camera1;
 extern Gfx *gDisplayListHead;
 extern s32 gModeSelection;
 extern s16 gCurrentCourseId;
-extern f32 D_80150130[];
+extern f32 fovPlayers[];
 extern u16 D_801637B8[];
 extern Lights1 D_800DC610[];
 

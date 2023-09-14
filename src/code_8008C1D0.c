@@ -1890,7 +1890,7 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
     case 2:
         func_80090178(player, arg1, sp44, sp38);
         // Fakematch found by Verti, who knows what's going on here
-        player->unk_02C[1] = (u16) -func_802B5224(sp44, sp38) & 0xFFFF;
+        player->unk_02C[1] = (u16) -get_angle_two_point(sp44, sp38) & 0xFFFF;
         player->pos[0] = sp44[0];
         player->pos[1] = sp44[1] + 40.0f;
         player->pos[2] = sp44[2];

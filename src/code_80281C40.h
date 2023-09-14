@@ -14,6 +14,6 @@ extern Gfx D_00284EE0[];
 
 extern f32 D_80150148, D_8015014C, D_80150150;
 
-extern f32 D_80150130[];
+extern f32 fovPlayers[];
 
 #endif

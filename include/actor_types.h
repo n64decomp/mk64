@@ -51,6 +51,7 @@ exactly what you're doing.
 #define ACTOR_TRIPLE_GREEN_SHELL       0x15
 #define ACTOR_TRIPLE_RED_SHELL         0x16
 #define ACTOR_MARIO_RACEWAY_SIGN       0x17
+#define ACTOR_COW                      0x18
 #define ACTOR_PALM_TREE                0x19
 #define ACTOR_WARIO_STADIUM_SIGN       0x23
 #define ACTOR_BOX_TRUCK                0x25

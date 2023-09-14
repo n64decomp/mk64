@@ -373,7 +373,7 @@ s16 func_80005FD0(Vec3f arg0, Vec3f arg1) {
     s16 temp_ret;
     s16 phi_v1;
 
-    temp_ret = func_802B5224(arg0, arg1);
+    temp_ret = get_angle_two_point(arg0, arg1);
     phi_v1 = temp_ret;
     if (gIsMirrorMode != 0) {
         phi_v1 = -temp_ret;
@@ -2087,7 +2087,7 @@ block_63:
                                 }
                             }
                             sp3C = var_t0_2;
-                            sp40->unk_02E = -func_802B5224(sp40->pos, &D_80162FA0);
+                            sp40->unk_02E = -get_angle_two_point(sp40->pos, &D_80162FA0);
                         } else {
                             sp40->unk_02E = (s16) D_80164590[D_80163448][(s32) (D_801630E0 + 4) % (s32) D_80164430];
                         }
@@ -2106,7 +2106,7 @@ block_63:
                 }
                 if (var_v0 != 0) {
                     temp_v1_4 = sp34 + &D_80163300;
-                    *temp_v1_4 = -func_802B5224(&sp40->rotX, sp40->pos);
+                    *temp_v1_4 = -get_angle_two_point(&sp40->rotX, sp40->pos);
                     var_a0_2 = (s16) ((s32) ((s16) D_801631DC[(s32) (D_80162FCE + 2) % (s32) D_80164430] * 0x168) / 65535);
                     var_a1 = (s16) ((s32) (*temp_v1_4 * 0x168) / 65535);
                     if (var_a0_2 < -0xB4) {
@@ -2207,7 +2207,7 @@ block_63:
                 sp20 = temp_t0_2;
                 *temp_v1_7 = D_80162FA0.unk8;
                 temp_f2_2 = 1.5f * 182.0f;
-                temp_v1_8 = -func_802B5224(sp1C, &D_80162FA0) - sp40->unk_02E;
+                temp_v1_8 = -get_angle_two_point(sp1C, &D_80162FA0) - sp40->unk_02E;
                 temp_f10 = (s32) temp_f2_2;
                 var_a2 = temp_v1_8;
                 temp_f6 = (s32) (-1.5f * 182.0f);
@@ -3705,7 +3705,7 @@ void func_8000DF8C(s32 arg0) {
             D_80162FC0.unk0 = (f32) temp_v0_2->wayPointX + sp118;
             D_80162FC0.unk4 = (f32) temp_v0_2->wayPointY;
             D_80162FC0.unk8 = (f32) ((f32) temp_v0_2->wayPointZ + (f32) (temp_f10 * 25.0));
-            spC2 = (u16) ((s32) (func_802B5224(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
+            spC2 = (u16) ((s32) (get_angle_two_point(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
             break;
         case 2:
             temp_v0_3 = ((s32) (var_s1 + 4) % 360) & 0xFFFF;
@@ -3730,7 +3730,7 @@ void func_8000DF8C(s32 arg0) {
             D_80162FC0.unk0 = (f32) temp_v0_4->wayPointX + sp118;
             D_80162FC0.unk4 = (f32) temp_v0_4->wayPointY;
             D_80162FC0.unk8 = (f32) ((f32) temp_v0_4->wayPointZ + (f32) (temp_f8 * 25.0));
-            spC2 = (u16) ((s32) (func_802B5224(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
+            spC2 = (u16) ((s32) (get_angle_two_point(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
         default:
             break;
         case 3:
@@ -3756,7 +3756,7 @@ void func_8000DF8C(s32 arg0) {
                     D_80162FC0.unk0 = (f32) temp_v1->unk0;
                     D_80162FC0.unk4 = (f32) temp_v1->unk2;
                     D_80162FC0.unk8 = (f32) temp_v1->unk4;
-                    spC2 = (u16) ((s32) (func_802B5224(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
+                    spC2 = (u16) ((s32) (get_angle_two_point(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
                 } else {
                     D_80162FB0.unk0 = var_f22;
                     D_80162FB0.unk4 = var_f20;
@@ -3764,7 +3764,7 @@ void func_8000DF8C(s32 arg0) {
                     D_80162FC0.unk0 = -2409.197f;
                     D_80162FC0.unk4 = 0.0f;
                     D_80162FC0.unk8 = -355.254f;
-                    spC2 = (u16) ((s32) (func_802B5224(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
+                    spC2 = (u16) ((s32) (get_angle_two_point(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
                 }
                 temp_f14 = ((D_80162FC0.unk0 + D_80162FB0.unk0) * 0.5f) - var_f22;
                 spF8 = temp_f14;
@@ -3802,7 +3802,7 @@ void func_8000DF8C(s32 arg0) {
                 var_f6 += 4294967296.0f;
             }
             var_f20 += 3.0f - (var_f6 * 0.3f);
-            spC2 = (u16) ((s32) (func_802B5224(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
+            spC2 = (u16) ((s32) (get_angle_two_point(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
             break;
         }
         if (sp4C == 4) {
@@ -4930,7 +4930,7 @@ s16 func_80010CB0(s32 pathIndex, s32 wayPointIndex) {
     sp24[0] = temp_v0->wayPointX;
     sp24[1] = temp_v0->wayPointY;
     sp24[2] = temp_v0->wayPointZ;
-    ret = func_802B5224(sp30, sp24);
+    ret = get_angle_two_point(sp30, sp24);
     return -ret;
 }
 
@@ -6503,7 +6503,7 @@ void func_80013D20(VehicleStuff *vehicle) {
     sp34[0] = vehicle->position[1];
     sp34[1] = 0.0f;
     sp34[2] = sqrtf((temp_f0_3 * temp_f0_3) + (temp_f2_2 * temp_f2_2));
-    thing = func_802B5224(sp40, sp34);
+    thing = get_angle_two_point(sp40, sp34);
     func_800224F0(&vehicle->rotation[0], -thing, 100);
     vehicle->velocity[0] = vehicle->position[0] - sp5C;
     vehicle->velocity[1] = vehicle->position[1] - sp58;
