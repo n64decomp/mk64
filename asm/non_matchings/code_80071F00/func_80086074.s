@@ -17,7 +17,7 @@ glabel func_80086074
 /* 086CB0 800860B0 8C470008 */  lw    $a3, 8($v0)
 /* 086CB4 800860B4 44054000 */  mfc1  $a1, $f8
 /* 086CB8 800860B8 0C022DF5 */  jal   func_8008B7D4
-/* 086CBC 800860BC 00000000 */   nop   
+/* 086CBC 800860BC 00000000 */   nop
 /* 086CC0 800860C0 8FA80024 */  lw    $t0, 0x24($sp)
 /* 086CC4 800860C4 3C0A0600 */  lui   $t2, %hi(d_course_rainbow_road_static_tluts) # $t2, 0x600
 /* 086CC8 800860C8 3C0C0601 */  lui   $t4, %hi(d_course_rainbow_road_static_textures) # $t4, 0x601
@@ -37,4 +37,4 @@ glabel func_80086074
 /* 086D00 80086100 8FBF001C */  lw    $ra, 0x1c($sp)
 /* 086D04 80086104 27BD0020 */  addiu $sp, $sp, 0x20
 /* 086D08 80086108 03E00008 */  jr    $ra
-/* 086D0C 8008610C 00000000 */   nop   
+/* 086D0C 8008610C 00000000 */   nop

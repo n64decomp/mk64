@@ -1605,7 +1605,7 @@ void func_80091EE4(void) {
     if ((D_8018EDFB != 0) && (tmp == 0)) {
         temp_s2 = (gCupSelection * 4) + gCupCourseSelection;
         func_800B6708();
-        
+
         for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
             if ((D_8018EE10[temp_s0].ghostDataSaved != 0) && (temp_s2 == D_8018EE10[temp_s0].courseIndex)) {
                 func_800B64EC(temp_s0);
@@ -4698,9 +4698,9 @@ void func_80099110(void) {
 
 /**
  * Differs from memory.c with `+ 0x8` instead of `| 0x8`
- * 
- * @param addr 
- * @return void* 
+ *
+ * @param addr
+ * @return void*
  */
 void *segmented_to_virtual_dupe(const void *addr) {
     size_t segment = (uintptr_t) addr >> 24;
@@ -8434,7 +8434,7 @@ void func_800A08D8(u8 arg0, s32 column, s32 row) {
 s32 func_800A095C(char *someString, s32 len, s32 column, s32 row) {
     s32 tempColumn;
     s32 nonTerminatorCount;
-    
+
     nonTerminatorCount = 0;
     tempColumn = column;
     for (; len != 0; len--, tempColumn += 8) {
@@ -12376,7 +12376,7 @@ escape:
  * search for. If no entry with that "type" is found, this
  * function will enter a `while(1)` loop, hard-locking the
  * game.
- * 
+ *
  * In practice this never appears to happen, but that is
  * probably as much a matter of luck as it is good
  * reasoning on the original author(s) part.

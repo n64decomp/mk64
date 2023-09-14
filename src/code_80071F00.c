@@ -292,7 +292,7 @@ s32 func_8007278C(s32 arg0, s32 arg1) {
         func_80072488(arg0);
         phi_v1 = 1;
     }
-    
+
     return phi_v1;
 }
 
@@ -311,7 +311,7 @@ UNUSED s32 func_8007281C(s32 arg0, s32 arg1) {
         func_80072488(arg0);
         phi_a2 = 1;
     }
-    
+
     return phi_a2;
 }
 
@@ -330,7 +330,7 @@ UNUSED s32 func_800728B0(s32 arg0, s32 arg1, s32 arg2) {
         func_80072488(arg0);
         phi_a3 = 1;
     }
-    
+
     return phi_a3;
 }
 
@@ -359,7 +359,7 @@ void func_800729D0(s32 arg0, s32 arg1) {
 }
 
 void func_800729EC(s32 arg0) {
-    u32 temp_v1 = 1; 
+    u32 temp_v1 = 1;
     s32 i;
 
     start_race();
@@ -476,7 +476,7 @@ void func_80072D3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
         } else {
             D_80165C18[arg0].unk_0D2 = arg2;
         }
-        
+
         if (D_80165C18[arg0].unk_0D4 < 0) {
             D_80165C18[arg0].unk_0D4 = 1;
             if (D_80165C18[arg0].unk_0CC > 0) {
@@ -704,7 +704,7 @@ UNUSED void func_80073570(s32 objectIndex) {
         D_8018D1EC = 0;
     }
     (*test)++;
-} 
+}
 
 void func_800735BC(s32 arg0, Gfx *arg1, f32 arg2) {
     D_80165C18[arg0].unk_054 = 0;
@@ -951,7 +951,7 @@ s32 func_80073E18(s32 arg0, u16* arg1, u16 arg2, s32 arg3) {
         *arg1 += arg2;
         D_80165C18[arg0].unk_048 = temp_v1;
     }
-    
+
     return phi_t0;
 }
 
@@ -1023,7 +1023,7 @@ s32 func_8007401C(s32 arg0, f32* arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5, s
             }
         }
     }
-    
+
     return phi_a3;
 }
 
@@ -1062,7 +1062,7 @@ s32 func_800741B4(s32 arg0, f32* arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5, s
             }
         }
     }
-    
+
     return 0;
 }
 
@@ -1153,7 +1153,7 @@ void func_800745C8(s32 objectIndex, s32 arg1) {
         if ((D_80165C18[objectIndex].unk_054 & 2) != 0) {
             phi_a1 = 1;
         }
-        
+
         D_80165C18[objectIndex].activeTexture = (u8 *) (D_80165C18[objectIndex].textureWidth * D_80165C18[objectIndex].textureHeight * phi_a1) + arg1;
         func_800744A0(objectIndex);
     }
@@ -1177,7 +1177,7 @@ void func_8007466C(s32 arg0, s32 arg1) {
 
 void func_80074704(s32 arg0, s32 arg1) {
     s32 phi_a1;
-    
+
     if ((D_80165C18[arg0].unk_054 & 1) != 0) {
         D_80165C18[arg0].activeTLUT = D_80165C18[arg0].tlutList;
         D_80165C18[arg0].unk_054 ^= 2;
@@ -1557,7 +1557,7 @@ void func_80075714(s32 objectIndex) {
     case 0:
         break;
     }
-    
+
     func_8008BF18(objectIndex);
 }
 
@@ -1659,7 +1659,7 @@ s32 func_80075A6C(s32 arg0, Vec3f arg1, f32 arg2) {
             func_800759EC(temp_v0, arg1, arg2);
         }
     }
-    
+
     return temp_v0;
 }
 
@@ -2236,7 +2236,7 @@ void func_80076F2C(void) {
         }
     }
 }
- 
+
 extern s16 D_800E6788[1]; // todo: fix this extern
 void func_80076FEC(s32 objectIndex, s32 flameIndex) {
     func_800723A4(objectIndex, 3);
@@ -2837,7 +2837,7 @@ void func_80078A44(s32 arg0, Camera *camera, u16 rot[][4]) {
     for (i = 0; i < D_8018D1F0; i++, arg0++) {
         temp_s0 = D_8018CC80[arg0];
 
-        //                              rot[i][0] 
+        //                              rot[i][0]
         func_800788F8(temp_s0, *(u16 *)(rot + i), camera);
         switch (i % 5U) {
             case 0:
@@ -2887,27 +2887,27 @@ void func_80078C70(s32 arg0) {
         case 0:                                     /* switch 1 */
             sp1C = 0;
             camera = camera1;
-            D_8018D200 = fovPlayers[0] + 40.0f;
+            D_8018D200 = zoomPlayers[0] + 40.0f;
             break;
         case 1:                                     /* switch 1 */
             sp1C = 0;
             camera = camera1;
-            D_8018D200 = fovPlayers[0] + 40.0f;
+            D_8018D200 = zoomPlayers[0] + 40.0f;
             break;
         case 2:                                     /* switch 1 */
             camera = camera2;
             sp1C = D_8018D1F0;
-            D_8018D200 = fovPlayers[1] + 40.0f;
+            D_8018D200 = zoomPlayers[1] + 40.0f;
             break;
         case 3:                                     /* switch 1 */
             sp1C = 0;
             camera = camera1;
-            D_8018D200 = fovPlayers[0] + 40.0f;
+            D_8018D200 = zoomPlayers[0] + 40.0f;
             break;
         case 4:                                     /* switch 1 */
             camera = camera2;
             sp1C = D_8018D1F0;
-            D_8018D200 = fovPlayers[1] + 40.0f;
+            D_8018D200 = zoomPlayers[1] + 40.0f;
             break;
         }
 
@@ -3779,7 +3779,7 @@ s16 func_8007AFB0(s32 objectIndex, s32 arg1) {
     s16 randomItem;
 
     randomItem = func_8007AF40(gLapCountByPlayerId[arg1], gGPCurrentRaceRankByPlayerId[arg1]);
-    
+
     if (D_8018CA70[arg1].itemOverride != 0) {
         randomItem = (s16) D_8018CA70[arg1].itemOverride;
         D_8018CA70[arg1].itemOverride = 0;
@@ -4514,7 +4514,7 @@ void func_8007C7B4(s32 arg0, s32 arg1) {
     UNUSED s32 *temp_v1;
     //struct_80165C18_entry *temp_s0;
     //s32 i = 0;
-    
+
     temp_s1 = &D_8018BFA8[arg0];
     //sp40   = D_8018BFA8[arg0];
     var_s2 = (s32 *)&D_800E5D9C;
@@ -6572,7 +6572,7 @@ void func_8008153C(s32 objectIndex) {
 }
 
 void func_80081790(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {   
+    switch (D_80165C18[objectIndex].unk_0A6) {
     case 0:
         break;                           /* irregular */
     case 1:

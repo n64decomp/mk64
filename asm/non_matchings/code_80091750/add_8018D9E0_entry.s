@@ -523,7 +523,7 @@ glabel L8009ECAC
 /* 09F8D0 8009ECD0 8FBF001C */   lw    $ra, 0x1c($sp)
 glabel L8009ECD4
 /* 09F8D4 8009ECD4 0C01BB91 */  jal   func_8006EE44
-/* 09F8D8 8009ECD8 00000000 */   nop   
+/* 09F8D8 8009ECD8 00000000 */   nop
 /* 09F8DC 8009ECDC 3C028019 */  lui   $v0, %hi(gD_8018E118TotalSize) # $v0, 0x8019
 /* 09F8E0 8009ECE0 2442E110 */  addiu $v0, %lo(gD_8018E118TotalSize) # addiu $v0, $v0, -0x1ef0
 /* 09F8E4 8009ECE4 8C590000 */  lw    $t9, ($v0)

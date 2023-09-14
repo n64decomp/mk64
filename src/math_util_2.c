@@ -500,7 +500,7 @@ void func_80041A78(Mat4 arg0, s32 arg1, s32 arg2) {
 void func_80041AD8(Mat4 arg0, u16 arg1) {
     f32 sp1C = sins(arg1);
     f32 temp_f0 = coss(arg1);
-    
+
     arg0[0][0] = temp_f0;
     arg0[1][0] = -sp1C;
     arg0[1][1] = temp_f0;
@@ -562,12 +562,12 @@ void func_80041BBC(Mat4 arg0, u16 arg1, f32 arg2) {
 
 /**
  * @brief arg1 and arg2 are s32's into floats?!?
- * 
- * @param arg0 
- * @param arg1 
- * @param arg2 
- * @param arg3 
- * @param arg4 
+ *
+ * @param arg0
+ * @param arg1
+ * @param arg2
+ * @param arg3
+ * @param arg4
  */
 void func_80041C64(Mat4 arg0, s32 arg1, s32 arg2, u16 arg3, f32 arg4) {
   f32 sp24 = sins(arg3);
@@ -796,7 +796,7 @@ void func_80042760(Mat4 arg0, Vec3f arg1, Vec3f arg2, f32 arg3) {
 /**
  * @brief Tried to put the definitions in the declares. However, sp3C wants to be at the top.
  * Something may be possible with some padding. Couldn't find a way though. So we get big mess.
- * 
+ *
  * @param arg0
  * @param arg1
  **/

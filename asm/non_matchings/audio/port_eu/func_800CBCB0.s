@@ -58,7 +58,7 @@ glabel func_800CBCB0
 /* 0CC968 800CBD68 00005812 */  mflo  $t3
 /* 0CC96C 800CBD6C 02AB1821 */  addu  $v1, $s5, $t3
 /* 0CC970 800CBD70 11800005 */  beqz  $t4, .L800CBD88
-/* 0CC974 800CBD74 00000000 */   nop   
+/* 0CC974 800CBD74 00000000 */   nop
 /* 0CC978 800CBD78 0C032E06 */  jal   eu_process_audio_cmd
 /* 0CC97C 800CBD7C 02002025 */   move  $a0, $s0
 /* 0CC980 800CBD80 10000062 */  b     .L800CBF0C
@@ -122,7 +122,7 @@ glabel func_800CBCB0
 /* 0CCA50 800CBE50 00280821 */  addu  $at, $at, $t0
 /* 0CCA54 800CBE54 8C2839C0 */  lw    $t0, %lo(jpt_800F39C0)($at)
 /* 0CCA58 800CBE58 01000008 */  jr    $t0
-/* 0CCA5C 800CBE5C 00000000 */   nop   
+/* 0CCA5C 800CBE5C 00000000 */   nop
 glabel L800CBE60
 /* 0CCA60 800CBE60 904B0001 */  lbu   $t3, 1($v0)
 /* 0CCA64 800CBE64 C6060004 */  lwc1  $f6, 4($s0)

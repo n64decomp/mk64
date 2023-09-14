@@ -270,7 +270,7 @@ int mio0_encode(const unsigned char *in, unsigned int length, unsigned char *out
    // compute final sizes and offsets
    // +7 so int division accounts for all bits
    bit_length = ((bit_idx + 7) / 8);
-   
+
    // compressed data after control bits and aligned to 4-byte boundary
    comp_offset = ALIGN(MIO0_HEADER_LENGTH + bit_length, 4);
    uncomp_offset = comp_offset + comp_idx;

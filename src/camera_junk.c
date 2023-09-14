@@ -14,7 +14,7 @@ void setup_camera_podium_ceremony(void) {
 
     camera = &cameras[0];
     func_80283648(camera);
-    
+
     x_dist = camera->lookAt[0] - camera->pos[0];
     y_dist = camera->lookAt[1] - camera->pos[1];
     z_dist = camera->lookAt[2] - camera->pos[2];
@@ -34,7 +34,7 @@ void func_802816B8(void) {
     cameras[0].up[0] = 0.0f;
     cameras[0].up[1] = 1.0f;
     cameras[0].up[2] = 0.0f;
-    fovPlayers[0] = 40.0f;
+    zoomPlayers[0] = 40.0f;
     D_80150148 = 1.33333333f;
     D_80150150 = 3.0f;
     D_8015014C = 6800.0f;

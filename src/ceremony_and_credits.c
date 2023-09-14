@@ -20,7 +20,7 @@
 #include "podium_ceremony_actors.h"
 #include "code_80091750.h"
 
-extern f32 fovPlayers[];
+extern f32 zoomPlayers[];
 
 f32 D_802856B0 = 98.0f;
 f32 D_802856B4 = 12.0f;
@@ -113,9 +113,9 @@ s32 f32_lerp(f32 *dest, f32 src, f32 lerp) {
     if (lerp > 1.0f) {
         lerp = 1.0f;
     }
-    
+
     *dest = *dest + ((src - *dest) * lerp);
-    
+
     if (src == *dest) {
         return 0;
     }
@@ -133,7 +133,7 @@ UNUSED s32 func_80282200(Vec3s arg0, s16 arg1, s16 arg2) {
         temp_v0 += arg1;
         arg0[0] = temp_v0;
     }
-    
+
     if (arg1 == arg0[0]) {
         return 0;
     }
@@ -143,7 +143,7 @@ UNUSED s32 func_80282200(Vec3s arg0, s16 arg1, s16 arg2) {
 // Calculates fade in/out
 s32 set_transition_colour_fade_alpha_ending(f32 *arg0, f32 arg1, f32 arg2) {
     f32 temp_f0 = arg1 - *arg0;
-   
+
     if (arg2 < 0.0f) {
         arg2 = -1.0f * arg2;
     }
@@ -309,7 +309,7 @@ s32 move_point_along_spline(Vec3f p, f32 *arg1, struct struct_80283430 spline[],
     }
 
     func_80282700(u, p, arg1, controlPoints[0], controlPoints[1], controlPoints[2], controlPoints[3]);
-    
+
     if (spline[*splineSegment + 1].unk2 != 0) {
         firstSpeed = 1.0f / spline[*splineSegment + 1].unk2;
     }
@@ -349,7 +349,7 @@ void func_80282C40(struct struct_80283430 *arg0, struct struct_80282C40 *arg1, s
   s32 i = 0;
   s32 j = 0;
   func_80282BE4(&arg0[j], arg1[j].unk0, arg1[j].unk3, arg1[j].unk4, arg1[j].unk6, arg2);
-  
+
     j++;
     goto dummy_label_888430;
   while(TRUE) {
@@ -365,7 +365,7 @@ dummy_label_888430: ;
           func_80282BE4(&arg0[j], arg1->unk0, arg1[i].unk3, arg1[i].unk4, arg1[i].unk6, arg2);
           func_80282BE4(&arg0[j + 1], arg1->unk0, 0, arg1[i].unk4, arg1[i].unk6, arg2);
           func_80282BE4(&arg0[j + 2], arg1->unk0, 0, arg1[i].unk4, arg1[i].unk6, arg2);
-          func_80282BE4(&arg0[j + 3], -1, 0, arg1[i].unk4, arg1[i].unk6, arg2);   
+          func_80282BE4(&arg0[j + 3], -1, 0, arg1[i].unk4, arg1[i].unk6, arg2);
           break;
       }
   }
@@ -543,7 +543,7 @@ void init_cinematic_camera(void) {
     camera->unk68 = 0.0f;
     camera->unk6C = 0;
     camera->unk6E = 0;
-    camera->unk20 = fovPlayers[0];
+    camera->unk20 = zoomPlayers[0];
     sCutsceneShot = 0;
     gCutsceneShotTimer = 0;
     D_802876D4 = 0;
@@ -626,7 +626,7 @@ s32 func_80283648(Camera *camera) {
     }
     func_80282F44(0, new_var, camera);
     func_80282F44(1, new_var, camera);
-    func_80283100(new_var, fovPlayers);
+    func_80283100(new_var, zoomPlayers);
     vec3f_copy_dupe(new_var->unk30, camera->pos);
     vec3f_copy_dupe(new_var->unk24, camera->lookAt);
     vec3f_copy_dupe(new_var->unk3C, camera->up);
@@ -720,7 +720,7 @@ void func_80283BF0(UNUSED struct CinematicCamera *camera) {
     func_800C8EF8(0x1A);
 }
 
-// 
+//
 void func_80283C14(UNUSED struct CinematicCamera *camera) {
     func_800C8EF8(0x1B);
 }
@@ -1536,7 +1536,7 @@ void func_802847CC(struct CinematicCamera *camera) {
         sp2C = D_80286B34[D_800DC5E4];
     }
 
-    if (gCutsceneShotTimer == sp2C) {    
+    if (gCutsceneShotTimer == sp2C) {
         if (D_80286A04[D_800DC5E4].unk0 != 2) {
             func_80280268(D_80286A04[D_800DC5E4 + 1].unk1);
         }
@@ -1583,7 +1583,7 @@ void play_cutscene(struct CinematicCamera *camera) {
 #undef CUTSCENE
 
     if ((cutsceneDuration != 0) && ((gCutsceneShotTimer & 0xC000) == 0)) {
-                
+
                 if (gCutsceneShotTimer < 16383) {
                     gCutsceneShotTimer++;
                 }
@@ -1603,12 +1603,12 @@ void play_cutscene(struct CinematicCamera *camera) {
                     reset_spline();
                 }
     }
-    
+
 }
 
 /**
  * Scene transition
- * 
+ *
  * Sliding black borders that open horizontally to display scene.
  * Used at the beginning of award ceremony and throughout credits.
  */

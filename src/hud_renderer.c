@@ -145,7 +145,7 @@ UNUSED void func_8004398C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 
     gSPVertex(gDisplayListHead++, vtx, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D006940);
 }
-    
+
 s32 func_80043A54(s32 arg0) {
     s32 temp_a1;
     s32 phi_v0;
@@ -1125,7 +1125,7 @@ void func_800485C4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *te
 
     func_8004B2BC(arg3);
     func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
-    
+
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
 }
 
@@ -2425,7 +2425,7 @@ void func_8004DF5C(s32 arg0, s32 arg1, u8 *texture, s32 width, s32 arg4, s32 hei
     s32 var_s0 = var_s0 = arg1 - (arg4 / 2);
     u8 *img = texture;
     s32 i;
-    
+
     for (i = 0; i < arg4 / height; i++) {
             func_800452A4(img, width, height);
             func_8004B97C(arg0 - (width / 2), var_s0, width, height, 1);
@@ -3376,7 +3376,7 @@ block_20:
 #else
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800508C0.s")
 #endif
- 
+
 void func_80050C68(void) {
     s32 stackPadding0;
     s32 sp88;
@@ -5343,7 +5343,7 @@ void func_80055FA0(s32 objectIndex, UNUSED s32 arg1) {
         gSPDisplayList(gDisplayListHead++, object->unk_070);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(someMatrix2);
-        func_802B4FF8(someMatrix2, 0);
+        render_set_position(someMatrix2, 0);
     }
 }
 
@@ -5701,18 +5701,18 @@ UNUSED void func_800573BC(void) {
 }
 
 UNUSED void func_800573C4(void) {
-    
+
 }
 
 UNUSED void func_800573CC(void) {
-    
+
 }
 UNUSED void func_800573D4(void) {
-    
+
 }
 
 UNUSED void func_800573DC(void) {
-    
+
 }
 
 
@@ -5759,7 +5759,7 @@ void debug_print_number(s32 *x, s32 *y, s32 number, u32 numDigits)
         debug_wrap_text(x, y);
         n = -number;
     }
-      
+
     *D_801657B8 = -1;
     ptr = D_801657B8;
     if (n != 0) {
@@ -5771,7 +5771,7 @@ void debug_print_number(s32 *x, s32 *y, s32 number, u32 numDigits)
     } else {
         *++ptr = 0;
     }
-    
+
     do {
         func_800573E4(*x, *y, *ptr--);
         debug_wrap_text(x, y);
@@ -5788,7 +5788,7 @@ void func_8005762C(s32 *x, s32 *y, s32 pathCount, u32 numDigits) {
     s8 *ptr;
     s32 count;
     s8 remainder;
-    
+
     debug_wrap_text(x, y);
     *D_801657B8 = -1;
     ptr = D_801657B8;
@@ -5804,7 +5804,7 @@ void func_8005762C(s32 *x, s32 *y, s32 pathCount, u32 numDigits) {
     } else {
         *++ptr = 0;
     }
-    
+
     do {
         func_800573E4(*x, *y, *ptr--);
         debug_wrap_text(x, y);

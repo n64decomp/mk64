@@ -38,27 +38,27 @@ pipeline {
             script: "python3 progress.py totalBadge",
             returnStdout: true).trim()
           totalProgBadge.setStatus(progress)
-          
+
           progress = sh(
             script: "python3 progress.py gameBadge",
             returnStdout: true).trim()
           gameCodeProgBadge.setStatus(progress)
-          
+
           progress = sh(
             script: "python3 progress.py audioBadge",
             returnStdout: true).trim()
           audioProgBadge.setStatus(progress)
-          
+
           progress = sh(
             script: "python3 progress.py bytesToDecompile",
             returnStdout: true).trim()
           bytesToDecompile.setStatus(progress)
-          
+
           progress = sh(
             script: "python3 progress.py m2cFuncs",
             returnStdout: true).trim()
           m2cFuncs.setStatus(progress)
-          
+
           progress = sh(
             script: "python3 progress.py nonmatchingFuncs",
             returnStdout: true).trim()

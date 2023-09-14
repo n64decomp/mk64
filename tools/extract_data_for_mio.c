@@ -150,7 +150,7 @@ uint16_t u16be(uint16_t val) {
     return __builtin_bswap16(val);
 #else
     return val;
-#endif    
+#endif
 }
 
 static bool elf_get_section_range(uint8_t *file, const char *searched_name, uint32_t *address, uint32_t *offset, uint32_t *size, uint32_t *section_index) {

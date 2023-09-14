@@ -34,4 +34,4 @@ glabel func_8001A348
 /* 01AFC8 8001A3C8 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 01AFCC 8001A3CC 27BD0028 */  addiu $sp, $sp, 0x28
 /* 01AFD0 8001A3D0 03E00008 */  jr    $ra
-/* 01AFD4 8001A3D4 00000000 */   nop   
+/* 01AFD4 8001A3D4 00000000 */   nop

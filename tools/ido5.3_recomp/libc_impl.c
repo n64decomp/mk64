@@ -193,7 +193,7 @@ static int g_file_max = 3;
 #if defined(__CYGWIN__) || (defined(__linux__) && defined(__aarch64__))
 #define RUNTIME_PAGESIZE
 /* ARM64 linux can have page sizes of 4kb, 16kb, or 64kb */
-/* Set in main before running the translated code */ 
+/* Set in main before running the translated code */
 static size_t g_Pagesize;
 
 #define TRUNC_PAGE(x) ((x) & ~(g_Pagesize - 1))
@@ -230,7 +230,7 @@ static void memory_allocate(uint8_t *mem, uint32_t start, uint32_t end)
 {
     assert(start >= MEM_REGION_START);
     assert(end <= MEM_REGION_START + MEM_REGION_SIZE);
-    // `start` will be passed to mmap, 
+    // `start` will be passed to mmap,
     // so it has to be host aligned in order to keep the guest's pages valid
     assert(start == TRUNC_PAGE(start));
 #ifdef __CYGWIN__
@@ -318,7 +318,7 @@ void mmap_initial_data_range(uint8_t *mem, uint32_t start, uint32_t end) {
     custom_libc_data_addr = end;
 #ifdef __APPLE__
     end += vm_page_size;
-#else 
+#else
     end += 4096;
 #endif /* __APPLE__ */
     memory_allocate(mem, start, end);
@@ -401,7 +401,7 @@ uint32_t wrapper_realloc(uint8_t *mem, uint32_t data_addr, uint32_t size) {
 }
 
 void wrapper_free(uint8_t *mem, uint32_t data_addr) {
-    // NOP
+    // nop
 }
 #else
 

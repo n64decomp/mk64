@@ -21,7 +21,7 @@ glabel func_800A0FA4
 /* 0A1BD0 800A0FD0 002E0821 */  addu  $at, $at, $t6
 /* 0A1BD4 800A0FD4 8C2E1B00 */  lw    $t6, %lo(jpt_800F1B00)($at)
 /* 0A1BD8 800A0FD8 01C00008 */  jr    $t6
-/* 0A1BDC 800A0FDC 00000000 */   nop   
+/* 0A1BDC 800A0FDC 00000000 */   nop
 glabel L800A0FE0
 /* 0A1BE0 800A0FE0 3C19800F */  lui   $t9, %hi(D_800E8234) # $t9, 0x800f
 /* 0A1BE4 800A0FE4 27398234 */  addiu $t9, %lo(D_800E8234) # addiu $t9, $t9, -0x7dcc

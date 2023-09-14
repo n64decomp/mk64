@@ -309,7 +309,7 @@ void func_800514BC(void);
 void func_80051638(s32);
 void func_800517C8(void);
 void func_80051ABC(s16, s32);
-void func_80051C60(s16, s32); 
+void func_80051C60(s16, s32);
 void func_80051EBC(void);
 void func_80051EF8(void);
 void func_80051F9C(void);

@@ -936,7 +936,7 @@ int main(int argc, char *argv[])
    int length = 0;
    int flength;
    int res;
-   
+
    int valid = parse_arguments(argc, argv, &config);
    if (!valid || !valid_config(&config)) {
       print_usage();

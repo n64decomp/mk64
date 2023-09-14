@@ -85,7 +85,7 @@ glabel func_8006F008
 /* 06FC38 8006F038 3C038019 */   lui   $v1, %hi(D_8018D2C0) # $v1, 0x8019
 /* 06FC3C 8006F03C 3C01BF80 */  li    $at, 0xBF800000 # -1.000000
 /* 06FC40 8006F040 44813000 */  mtc1  $at, $f6
-/* 06FC44 8006F044 00000000 */  nop   
+/* 06FC44 8006F044 00000000 */  nop
 /* 06FC48 8006F048 E4460000 */  swc1  $f6, ($v0)
 .L8006F04C:
 /* 06FC4C 8006F04C 3C088019 */  lui   $t0, %hi(D_8018D2D8) # $t0, 0x8019
@@ -110,7 +110,7 @@ glabel func_8006F008
 /* 06FC98 8006F098 5020000B */  beql  $at, $zero, .L8006F0C8
 /* 06FC9C 8006F09C 2C810014 */   sltiu $at, $a0, 0x14
 /* 06FCA0 8006F0A0 0C01BBBA */  jal   func_8006EEE8
-/* 06FCA4 8006F0A4 00000000 */   nop   
+/* 06FCA4 8006F0A4 00000000 */   nop
 /* 06FCA8 8006F0A8 3C038019 */  lui   $v1, %hi(D_8018D2C0) # $v1, 0x8019
 /* 06FCAC 8006F0AC 3C04800E */  lui   $a0, %hi(gCurrentCourseId) # $a0, 0x800e
 /* 06FCB0 8006F0B0 3C088019 */  lui   $t0, %hi(D_8018D2D8) # $t0, 0x8019
@@ -126,7 +126,7 @@ glabel func_8006F008
 /* 06FCD4 8006F0D4 00390821 */  addu  $at, $at, $t9
 /* 06FCD8 8006F0D8 8C39E950 */  lw    $t9, %lo(jpt_800EE950)($at)
 /* 06FCDC 8006F0DC 03200008 */  jr    $t9
-/* 06FCE0 8006F0E0 00000000 */   nop   
+/* 06FCE0 8006F0E0 00000000 */   nop
 glabel L8006F0E4
 /* 06FCE4 8006F0E4 3C040F0D */  lui   $a0, %hi(gTextureExhaust5) # $a0, 0xf0d
 /* 06FCE8 8006F0E8 248470CC */  addiu $a0, %lo(gTextureExhaust5) # addiu $a0, $a0, 0x70cc
@@ -617,4 +617,4 @@ glabel L8006F734
 /* 070414 8006F814 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 070418 8006F818 27BD0018 */  addiu $sp, $sp, 0x18
 /* 07041C 8006F81C 03E00008 */  jr    $ra
-/* 070420 8006F820 00000000 */   nop   
+/* 070420 8006F820 00000000 */   nop

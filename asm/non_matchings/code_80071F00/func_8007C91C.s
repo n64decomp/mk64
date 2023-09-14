@@ -55,4 +55,4 @@ glabel func_8007C91C
 .L8007C9EC:
 /* 07D5EC 8007C9EC A420D048 */  sh    $zero, %lo(D_8018D048)($at) # -0x2fb8($at)
 /* 07D5F0 8007C9F0 03E00008 */  jr    $ra
-/* 07D5F4 8007C9F4 00000000 */   nop   
+/* 07D5F4 8007C9F4 00000000 */   nop

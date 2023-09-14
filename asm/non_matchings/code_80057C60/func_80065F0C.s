@@ -43,7 +43,7 @@ glabel func_80065F0C
 /* 066BB0 80065FB0 46105482 */  mul.s $f18, $f10, $f16
 /* 066BB4 80065FB4 44069000 */  mfc1  $a2, $f18
 /* 066BB8 80065FB8 0C0194B5 */  jal   func_800652D4
-/* 066BBC 80065FBC 00000000 */   nop   
+/* 066BBC 80065FBC 00000000 */   nop
 /* 066BC0 80065FC0 8FA20044 */  lw    $v0, 0x44($sp)
 /* 066BC4 80065FC4 24010008 */  li    $at, 8
 /* 066BC8 80065FC8 3C118015 */  lui   $s1, %hi(gDisplayListHead) # $s1, 0x8015
@@ -55,7 +55,7 @@ glabel func_80065F0C
 /* 066BE0 80065FE0 25EF8C90 */  addiu $t7, %lo(D_0D008C90) # addiu $t7, $t7, -0x7370
 /* 066BE4 80065FE4 3C0E0600 */  lui   $t6, 0x600
 /* 066BE8 80065FE8 44193000 */  mfc1  $t9, $f6
-/* 066BEC 80065FEC 00000000 */  nop   
+/* 066BEC 80065FEC 00000000 */  nop
 /* 066BF0 80065FF0 532100D0 */  beql  $t9, $at, .L80066334
 /* 066BF4 80065FF4 8E300000 */   lw    $s0, ($s1)
 /* 066BF8 80065FF8 84450560 */  lh    $a1, 0x560($v0)

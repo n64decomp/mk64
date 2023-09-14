@@ -11,7 +11,7 @@ Use, duplication or disclosure by the Government is subject to restrictions as s
 
 ## Product Support
 
-Freeware products are not supported by Silicon Graphics or any of its support providers. The software contained in this package is made available through the generous efforts of their authors. Although they are interested in your feedback, they are under no obligation to address bugs, enhancements, or answer questions. 
+Freeware products are not supported by Silicon Graphics or any of its support providers. The software contained in this package is made available through the generous efforts of their authors. Although they are interested in your feedback, they are under no obligation to address bugs, enhancements, or answer questions.
 
 ----
 

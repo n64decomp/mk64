@@ -33,7 +33,7 @@ glabel func_8006D194
 /* 06DDF0 8006D1F0 00280821 */  addu  $at, $at, $t0
 /* 06DDF4 8006D1F4 8C28E8D0 */  lw    $t0, %lo(jpt_800EE8D0)($at)
 /* 06DDF8 8006D1F8 01000008 */  jr    $t0
-/* 06DDFC 8006D1FC 00000000 */   nop   
+/* 06DDFC 8006D1FC 00000000 */   nop
 glabel L8006D200
 /* 06DE00 8006D200 00112E00 */  sll   $a1, $s1, 0x18
 /* 06DE04 8006D204 00123600 */  sll   $a2, $s2, 0x18

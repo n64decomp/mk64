@@ -996,8 +996,8 @@ s32 func_802B2D70(Player *player) {
 
 /**
  * Strikes players with thunder
- * 
- * @param Activating player (not to be struck) 
+ *
+ * @param Activating player (not to be struck)
  */
 void func_802B2EBC(Player *player) {
     s32 index;

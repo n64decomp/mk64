@@ -47,7 +47,7 @@ glabel bzero
 /* 0CE6D8 800CDAD8 AC80FFFC */   sw    $zero, -4($a0)
 .L800CDADC:
 /* 0CE6DC 800CDADC 18A00005 */  blez  $a1, .L800CDAF4
-/* 0CE6E0 800CDAE0 00000000 */   nop   
+/* 0CE6E0 800CDAE0 00000000 */   nop
 /* 0CE6E4 800CDAE4 00A42821 */  addu  $a1, $a1, $a0
 .L800CDAE8:
 /* 0CE6E8 800CDAE8 24840001 */  addiu $a0, $a0, 1
@@ -55,6 +55,6 @@ glabel bzero
 /* 0CE6F0 800CDAF0 A080FFFF */   sb    $zero, -1($a0)
 .L800CDAF4:
 /* 0CE6F4 800CDAF4 03E00008 */  jr    $ra
-/* 0CE6F8 800CDAF8 00000000 */   nop   
+/* 0CE6F8 800CDAF8 00000000 */   nop
 
-/* 0CE6FC 800CDAFC 00000000 */  nop   
+/* 0CE6FC 800CDAFC 00000000 */  nop

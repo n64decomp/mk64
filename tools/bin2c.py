@@ -48,6 +48,6 @@ while True:
 	if (off <= lineCount - 16):
 		fi.write(",")
 	elif (off >= lineCount -16):
-		fi.write("\n")    
+		fi.write("\n")
 
 	off += 0x10

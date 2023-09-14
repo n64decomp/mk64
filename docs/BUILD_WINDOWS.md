@@ -5,11 +5,11 @@
 > Building decomp using msys on Windows is a journey..  A journey akin to crawling over broken glass in the dark.
 - leogames
 
-The extraneous and convoluted process to building mk64 decomp on Windows begins with disabling your anti-virus program or adding an exception to the mk64 decomp folder and the msys2 installation folder. 
+The extraneous and convoluted process to building mk64 decomp on Windows begins with disabling your anti-virus program or adding an exception to the mk64 decomp folder and the msys2 installation folder.
 Please note that this action may impact the security of your system. Prior to proceeding, make sure to understand the increased security risks that may result from this step. Nobody except you, is responsible and liable for your system and its security.
 
 ### Preamble
-Any misteps may require a complete uninstall of `MSYS2 MinGW x64` and restarting from the very beginning.  
+Any misteps may require a complete uninstall of `MSYS2 MinGW x64` and restarting from the very beginning.
 It is unknown if `MSYS MinGW x32` is supported (most likely not).
 
 ### Step 1: Download MSYS2 MinGW x64
@@ -44,7 +44,7 @@ For some reason on Windows capstone is inside of a capstone folder.
 
 
 ### Step 4: Get Binutils
-Download and install the mips64 tool chain:  
+Download and install the mips64 tool chain:
 https://github.com/N64-tools/mips64-gcc-toolchain
 
 Merge the inner folders (bin, share, etc.) with the respective folders in `C:\msys64\mingw64\`
@@ -90,7 +90,7 @@ gcc libc_impl.c uld_c.c -o uld -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
 gcc libc_impl.c umerge_c.c -o umerge -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
 gcc libc_impl.c uopt_c.c -o uopt -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
 ```
-`-O2` is an optional optimization flag.  
+`-O2` is an optional optimization flag.
 
 ### Step 8: Compile mk64 in `MSYS2 MinGW x64`
 In `/mk64/` run:

@@ -424,7 +424,7 @@
 #endif	/* _LANGUAGE_ASSEMBLY */
 
 /*
- * floating-point status register 
+ * floating-point status register
  */
 #define FPCSR_FS	0x01000000	/* flush denorm to zero */
 #define	FPCSR_C		0x00800000	/* condition bit */	

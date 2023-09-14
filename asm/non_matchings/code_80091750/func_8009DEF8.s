@@ -22,4 +22,4 @@ glabel func_8009DEF8
 /* 09EB40 8009DF40 AC20E7E0 */  sw    $zero, %lo(D_8018E7E0)($at)
 .L8009DF44:
 /* 09EB44 8009DF44 03E00008 */  jr    $ra
-/* 09EB48 8009DF48 00000000 */   nop   
+/* 09EB48 8009DF48 00000000 */   nop

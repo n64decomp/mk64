@@ -82,4 +82,4 @@ glabel func_8004EE54
 .L8004EF90:
 /* 04FB90 8004EF90 27BD0038 */  addiu $sp, $sp, 0x38
 /* 04FB94 8004EF94 03E00008 */  jr    $ra
-/* 04FB98 8004EF98 00000000 */   nop   
+/* 04FB98 8004EF98 00000000 */   nop

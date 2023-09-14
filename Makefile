@@ -40,7 +40,7 @@ ifeq      ($(VERSION),us)
   GRUCODE   ?= f3dex_old
   VERSION_ASFLAGS := --defsym VERSION_US=1
 else ifeq ($(VERSION), eu)
-  DEFINES += VERSION_EU=1 
+  DEFINES += VERSION_EU=1
   GRUCODE   ?= f3dex_old
   VERSION_ASFLAGS := --defsym VERSION_EU=1
 endif
@@ -688,7 +688,7 @@ $(ROM): $(ELF)
 $(BUILD_DIR)/$(TARGET).hex: $(TARGET).z64
 	xxd $< > $@
 
-$(BUILD_DIR)/$(TARGET).objdump: $(ELF) 
+$(BUILD_DIR)/$(TARGET).objdump: $(ELF)
 	$(OBJDUMP) -D $< > $@
 
 

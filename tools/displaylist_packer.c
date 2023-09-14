@@ -67,7 +67,7 @@ void pack(FILE *input_file, FILE *output_file) {
     uint32_t p6;
     uint16_t p7;
     uint64_t compare;
-    
+
 
     // Read every u32 in the input file and concatenate a string based on the value
     uint64_t cmd;
@@ -132,7 +132,7 @@ void pack(FILE *input_file, FILE *output_file) {
 
                 if (p4 == 0x70) {
                     cmd |= 0x300000000;
-                    
+
                 }
 
                 if (cmd == 0xF3000000073FF100) {
@@ -168,9 +168,9 @@ void pack(FILE *input_file, FILE *output_file) {
                 fread(&cmd, sizeof(uint64_t), 1, input_file);
                 cmd = swap_endian(cmd);
                 p6 = (uint32_t)cmd;
-                
+
                 compare = ((uint64_t) p5 << 32 ) | p6;
-                
+
                 switch (compare) {
                     case 0xF51011000007C07C:
                         data[count++] = 0x2C;

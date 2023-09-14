@@ -3,12 +3,12 @@ const fs = require('fs');
 const { exit } = require('process');
 
 /**
- * Call this script like 
- * 
+ * Call this script like
+ *
  * node app.js input_file_here output_file_here
  */
 if (process.argv.length !== 4 && process.argv.length !== 5 ) {
-  console.error(`Error! Usage: ./${process.argv[1].split('/').slice(-1)[0]} input_file output_file`) 
+  console.error(`Error! Usage: ./${process.argv[1].split('/').slice(-1)[0]} input_file output_file`)
   exit(1);
 }
 // get the name of the file to read
@@ -122,7 +122,7 @@ for (i = 0; i < f.length; i += iter) {
         //if (last != 0) { // not the first line? add the skip info
         //    k.push(`.skip ${newLast-last}`) // .skip ##
         //    k.push('') // blank line
-        //} 
+        //}
         //last = newLast; // save what the last glbael line was
         //k.push(i) // glabel D_###
     //}

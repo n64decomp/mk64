@@ -397,7 +397,7 @@ typedef struct {
 } struct_D_8018CE10; // size = 0x20
 
 typedef struct
-{ 
+{
     // Something related to time trial ghost data?
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ u8  ghostDataSaved;

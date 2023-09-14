@@ -37,7 +37,7 @@ glabel func_80069DB8
 /* 06AA44 80069E44 46105482 */  mul.s $f18, $f10, $f16
 /* 06AA48 80069E48 44069000 */  mfc1  $a2, $f18
 /* 06AA4C 80069E4C 0C0194B5 */  jal   func_800652D4
-/* 06AA50 80069E50 00000000 */   nop   
+/* 06AA50 80069E50 00000000 */   nop
 /* 06AA54 80069E54 3C038015 */  lui   $v1, %hi(gDisplayListHead) # $v1, 0x8015
 /* 06AA58 80069E58 24630298 */  addiu $v1, %lo(gDisplayListHead) # addiu $v1, $v1, 0x298
 /* 06AA5C 80069E5C 8C620000 */  lw    $v0, ($v1)
@@ -152,4 +152,4 @@ glabel func_80069DB8
 .L8006A010:
 /* 06AC10 8006A010 27BD0068 */  addiu $sp, $sp, 0x68
 /* 06AC14 8006A014 03E00008 */  jr    $ra
-/* 06AC18 8006A018 00000000 */   nop   
+/* 06AC18 8006A018 00000000 */   nop

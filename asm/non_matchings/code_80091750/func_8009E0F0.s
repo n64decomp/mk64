@@ -36,7 +36,7 @@ glabel func_8009E0F0
 /* 09ED70 8009E170 A1C00003 */   sb    $zero, 3($t6)
 .L8009E174:
 /* 09ED74 8009E174 03E00008 */  jr    $ra
-/* 09ED78 8009E178 00000000 */   nop   
+/* 09ED78 8009E178 00000000 */   nop
 
 /* 09ED7C 8009E17C 3C038019 */  lui   $v1, %hi(D_8018E7AC) # $v1, 0x8019
 /* 09ED80 8009E180 2463E7AC */  addiu $v1, %lo(D_8018E7AC) # addiu $v1, $v1, -0x1854
@@ -56,4 +56,4 @@ glabel func_8009E0F0
 /* 09EDB4 8009E1B4 AC20E7E0 */  sw    $zero, %lo(D_8018E7E0)($at)
 .L8009E1B8:
 /* 09EDB8 8009E1B8 03E00008 */  jr    $ra
-/* 09EDBC 8009E1BC 00000000 */   nop   
+/* 09EDBC 8009E1BC 00000000 */   nop

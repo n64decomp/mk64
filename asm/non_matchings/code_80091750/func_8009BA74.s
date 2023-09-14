@@ -1,5 +1,5 @@
 .section .late_rodata
- 
+
 glabel jpt_800F1060
 .word L8009BB00, L8009BB14, L8009BB28, L8009BB44
 .word L8009BB64
@@ -42,7 +42,7 @@ glabel func_8009BA74
 /* 09C6F0 8009BAF0 002F0821 */  addu  $at, $at, $t7
 /* 09C6F4 8009BAF4 8C2F1060 */  lw    $t7, %lo(jpt_800F1060)($at)
 /* 09C6F8 8009BAF8 01E00008 */  jr    $t7
-/* 09C6FC 8009BAFC 00000000 */   nop   
+/* 09C6FC 8009BAFC 00000000 */   nop
 glabel L8009BB00
 /* 09C700 8009BB00 02001025 */  move  $v0, $s0
 /* 09C704 8009BB04 AC530000 */  sw    $s3, ($v0)

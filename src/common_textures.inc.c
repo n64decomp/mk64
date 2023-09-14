@@ -65,12 +65,12 @@ Vtx D_0D0012A0[] = {
     {{{     0,      20,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{    -4,       0,       0}, 0, {0, 0}, {0xa6, 0xfe, 0x23, 0x00}}},
 };
-Vtx D_0D0012D0[] = { 
+Vtx D_0D0012D0[] = {
     {{{     4,       0,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{     0,      20,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{    -4,       0,       0}, 0, {0, 0}, {0x00, 0x9c, 0x23, 0x00}}},
 };
-Vtx D_0D001300[] = {  
+Vtx D_0D001300[] = {
     {{{     4,       0,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{     0,      20,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x00}}},
     {{{    -4,       0,       0}, 0, {0, 0}, {0x00, 0x94, 0xa5, 0x00}}},
@@ -123,7 +123,7 @@ Vtx D_0D001390[] = {
     {{{    40,     100,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Vtx D_0D001590[] = {
+Vtx finishPostVertex[] = {
     {{{   -92,       0,       0}, 0, {0, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -89,       0,       0}, 0, {990, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -89,     115,       0}, 0, {990, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -244,7 +244,7 @@ Gfx D_0D001840[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx D_0D001AB8[] = {
+Gfx finishPostModel[] = {
     gsSPClearGeometryMode(G_CULL_BACK),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, 0x03008000),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
@@ -252,7 +252,7 @@ Gfx D_0D001AB8[] = {
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 124, 124),
-    gsSPVertex(D_0D001590, 24, 0),
+    gsSPVertex(finishPostVertex, 24, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, 0x03008800),
@@ -284,7 +284,7 @@ Gfx D_0D001B90[] = {
     gsSPDisplayList(D_0D001840),
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
-    gsSPDisplayList(D_0D001AB8),
+    gsSPDisplayList(finishPostModel),
     gsDPPipeSync(),
     gsSPEndDisplayList(),
 };
@@ -293,7 +293,7 @@ Gfx D_0D001BD8[] = {
     gsDPPipeSync(),
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
-    gsSPDisplayList(D_0D001AB8),
+    gsSPDisplayList(finishPostModel),
     gsDPSetCombineMode(G_CC_DECALRGB, G_CC_DECALRGB),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
@@ -310,7 +310,7 @@ Gfx D_0D001C20[] = {
     gsSPDisplayList(D_0D001840),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2),
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_PASS2),
-    gsSPDisplayList(D_0D001AB8),
+    gsSPDisplayList(finishPostModel),
     gsSPClearGeometryMode(G_FOG),
     gsDPSetCycleType(G_CYC_1CYCLE),
     gsDPPipeSync(),
@@ -323,7 +323,7 @@ Gfx D_0D001C88[] = {
     gsSPSetGeometryMode(G_FOG),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2),
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_PASS2),
-    gsSPDisplayList(D_0D001AB8),
+    gsSPDisplayList(finishPostModel),
     gsDPSetCombineMode(G_CC_DECALRGB, G_CC_PASS2),
     gsSPDisplayList(D_0D001B68),
     gsSPClearGeometryMode(G_FOG),
@@ -340,7 +340,7 @@ Vtx D_0D001CE8[] = {
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x80}}},
 };
 
-Vtx D_0D001D28[] = {
+Vtx itemBoxQuestionMarkVertex[] = {
     {{{     3,      -5,       0}, 0, {1024, 1945}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,       5,       0}, 0, {1024, 65434}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,       5,       0}, 0, {0, 65434}, {0xff, 0xff, 0xff, 0xff}}},
@@ -377,7 +377,7 @@ Vtx D_0D001E28[] = {
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
 };
 
-Vtx D_0D001E58[] = {  
+Vtx D_0D001E58[] = {
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
@@ -414,14 +414,14 @@ Gfx D_0D002EE8[] = {
     gsSPEndDisplayList(),
 };
 
-Vtx D_0D002F40[] = {
+Vtx reverseItemBoxQuestionMarkVertex[] = {
     {{{    -3,       5,       0}, 0, {1024, 2048}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,      -5,       0}, 0, {1024, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,      -5,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,       5,       0}, 0, {0, 2048}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Gfx D_0D002F80[] = {
+Gfx reverseItemBoxQuestionMarkModel[] = {
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
@@ -435,13 +435,13 @@ Gfx D_0D002F80[] = {
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 256),
-    gsSPVertex(D_0D002F40, 4, 0),
+    gsSPVertex(reverseItemBoxQuestionMarkVertex, 4, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };
 
-Gfx D_0D003008[] = {
+Gfx itemBoxQuestionMarkModel[] = {
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
@@ -455,7 +455,7 @@ Gfx D_0D003008[] = {
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 256),
-    gsSPVertex(D_0D001D28, 4, 0),
+    gsSPVertex(itemBoxQuestionMarkVertex, 4, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
@@ -559,7 +559,7 @@ Gfx D_0D003288[] = {
     gsSPEndDisplayList(),
 };
 
-Vtx D_0D003298[] = {
+Vtx bananaVertex[] = {
     {{{     4,      -3,       0}, 0, {1228, 1024}, {0xff, 0xfe, 0xfe, 0xff}}},
     {{{     0,       4,       0}, 0, {512, 65332}, {0xc1, 0xff, 0x00, 0xff}}},
     {{{    -4,      -3,       0}, 0, {65332, 1024}, {0xff, 0xfe, 0xfe, 0xff}}},
@@ -567,7 +567,7 @@ Vtx D_0D003298[] = {
     {{{     0,      -3,      -4}, 0, {65332, 1024}, {0xd3, 0xda, 0xad, 0xff}}},
 };
 
-Vtx D_0D0032E8[] = {
+Vtx FlatBananaVertex[] = {
     {{{     6,      -3,       0}, 0, {2048, 1024}, {0xff, 0xfe, 0xfe, 0xff}}},
     {{{     0,       4,       0}, 0, {1023, 65127}, {0xc1, 0xff, 0x00, 0xff}}},
     {{{    -6,      -3,       0}, 0, {0, 1024}, {0xff, 0xfe, 0xfe, 0xff}}},
@@ -582,12 +582,12 @@ s8 gBananaTexture[] = {
     #include "textures/common/132B50_03348.rgba16.inc.c"
 };
 
-s8 D_0D003B48[] = {
+s8 gFlatBananaTexture[] = {
     #include "textures/common/132B50_03B48.rgba16.inc.c"
 };
 
 // 0x4B48
-Gfx D_0D004B48[] = {
+Gfx bananaModel[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA),
@@ -601,7 +601,7 @@ Gfx D_0D004B48[] = {
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),
     gsSPClearGeometryMode(G_CULL_BACK | G_LIGHTING),
-    gsSPVertex(D_0D003298, 5, 0),
+    gsSPVertex(bananaVertex, 5, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSP1Triangle(3, 1, 4, 0),
     gsSPSetGeometryMode(G_CULL_BACK),
@@ -609,7 +609,7 @@ Gfx D_0D004B48[] = {
 };
 
 
-Gfx D_0D004BD8[] = {
+Gfx FlatBananaModel[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA),
@@ -617,13 +617,13 @@ Gfx D_0D004BD8[] = {
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 252, 124),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_0D003B48),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gFlatBananaTexture),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 128),
     gsSPClearGeometryMode(G_CULL_BACK | G_LIGHTING),
-    gsSPVertex(D_0D0032E8, 6, 0),
+    gsSPVertex(FlatBananaVertex, 6, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSP1Triangle(3, 4, 5, 0),
     gsSPSetGeometryMode(G_CULL_BACK),
@@ -684,7 +684,7 @@ Gfx D_0D005308[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx D_0D005338[] = {
+Gfx D_0D005338[] = { // normal shell
     gsSPDisplayList(D_0D005308),
     gsSPVertex(D_0D005238, 4, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -693,7 +693,7 @@ Gfx D_0D005338[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx D_0D005368[] = {
+Gfx D_0D005368[] = { // mirrored shell
     gsSPDisplayList(D_0D005308),
     gsSPVertex(D_0D005278, 4, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -962,7 +962,7 @@ Vtx D_0D005EB0[] = {
     {{{   -28,       0,       0}, 0, {0, 2240}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -28,       0,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
-    
+
 Vtx D_0D005F00[] = {
     {{{    27,       0,       0}, 0, {3520, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    27,      35,       0}, 0, {3520, 2240}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1007,13 +1007,13 @@ Vtx D_0D006030[] = {
     {{{   -32,     -32,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0xff}}},
 };
 
-Vtx D_0D006080[] = {  
+Vtx D_0D006080[] = {
     {{{    31,     -32,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0xff}}},
     {{{    31,      31,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0xff}}},
     {{{   -32,      31,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0xff}}},
 };
 
-Vtx D_0D0060B0[] = {  
+Vtx D_0D0060B0[] = {
     {{{   -32,     -31,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,     -31,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,       0,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1035,13 +1035,13 @@ Vtx D_0D006130[] = {
     {{{   -32,       0,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Vtx D_0D006180[] = {  
+Vtx D_0D006180[] = {
     {{{    31,       0,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,      31,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      31,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Vtx D_0D0061B0[] = { 
+Vtx D_0D0061B0[] = {
     {{{   -32,     -31,     -12}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,     -31,     -12}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,       0,     -12}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1057,13 +1057,13 @@ Vtx D_0D0061B0[] = {
     {{{   -32,       0,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Vtx D_0D006280[] = {  
+Vtx D_0D006280[] = {
     {{{    31,       0,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,      31,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      31,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Vtx D_0D0062B0[] = {  
+Vtx D_0D0062B0[] = {
     {{{   -32,     -32,      20}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,     -32,      20}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,      31,      20}, 0, {4032, 4032}, {0xff, 0xff, 0xff, 0xff}}},
@@ -2710,7 +2710,7 @@ u8 D_0D017458[][2048] = {
 u8 gTLUTHudTypeCRankFont[] = {
    #include "assets/hud_type_c/gTLUTHudTypeCRankFont.inc.c"
 };
- 
+
 // font 12345678
 u8 gTextureHudTypeCRankFont[][256] = {
     {
@@ -3055,7 +3055,7 @@ UNUSED s8 D_0D025ED8[] = {
 };
 
 // unused traffic light textures
- 
+
 UNUSED s8 D_0D0260D8[] = {
     #include "assets/unused_traffic_light/gTextureUnusedTrafficLight01.inc.c"
 };

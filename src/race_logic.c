@@ -868,7 +868,7 @@ void func_8028F970(void) {
             return;
         }
     }
-    
+
     if (gEnableDebugMode) {
         if (gModeSelection == BATTLE) {
             // do stuff?
@@ -1137,7 +1137,7 @@ void func_802903B0(void) {
 void func_802903D8(Player *playerOne, Player *playerTwo) {
     f32 sp70 = (playerOne->boundingBoxSize + playerTwo->boundingBoxSize) - 5.0f;
     f32 temp_f0;
-    f32 sp74; 
+    f32 sp74;
     Vec3f sp60;
     Vec3f sp54;
     f32 temp_f0_2;

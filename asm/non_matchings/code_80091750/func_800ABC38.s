@@ -29,11 +29,11 @@ glabel func_800ABC38
 .L800ABC98:
 /* 0AC898 800ABC98 8DEFC53C */  lw    $t7, %lo(gModeSelection)($t7)
 /* 0AC89C 800ABC9C 15E00008 */  bnez  $t7, .L800ABCC0
-/* 0AC8A0 800ABCA0 00000000 */   nop   
+/* 0AC8A0 800ABCA0 00000000 */   nop
 /* 0AC8A4 800ABCA4 8F18C538 */  lw    $t8, %lo(gPlayerCountSelection1)($t8)
 /* 0AC8A8 800ABCA8 3C198019 */  lui   $t9, %hi(D_8018EE08) # $t9, 0x8019
 /* 0AC8AC 800ABCAC 14780004 */  bne   $v1, $t8, .L800ABCC0
-/* 0AC8B0 800ABCB0 00000000 */   nop   
+/* 0AC8B0 800ABCB0 00000000 */   nop
 /* 0AC8B4 800ABCB4 8339EE08 */  lb    $t9, %lo(D_8018EE08)($t9)
 /* 0AC8B8 800ABCB8 53200004 */  beql  $t9, $zero, .L800ABCCC
 /* 0AC8BC 800ABCBC 8C820010 */   lw    $v0, 0x10($a0)
@@ -53,4 +53,4 @@ glabel func_800ABC38
 /* 0AC8E4 800ABCE4 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 0AC8E8 800ABCE8 27BD0018 */  addiu $sp, $sp, 0x18
 /* 0AC8EC 800ABCEC 03E00008 */  jr    $ra
-/* 0AC8F0 800ABCF0 00000000 */   nop   
+/* 0AC8F0 800ABCF0 00000000 */   nop
