@@ -1,6 +1,6 @@
 glabel func_800BB584
-/* 0BC184 800BB584 3C03803B */  lui   $v1, %hi(D_803B7074) # $v1, 0x803b
-/* 0BC188 800BB588 8C637074 */  lw    $v1, %lo(D_803B7074)($v1)
+/* 0BC184 800BB584 3C03803B */  lui   $v1, %hi(gAlTbl) # $v1, 0x803b
+/* 0BC188 800BB588 8C637074 */  lw    $v1, %lo(gAlTbl)($v1)
 /* 0BC18C 800BB58C 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 0BC190 800BB590 000478C0 */  sll   $t7, $a0, 3
 /* 0BC194 800BB594 AFBF0014 */  sw    $ra, 0x14($sp)

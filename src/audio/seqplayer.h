@@ -32,9 +32,11 @@ s16 m64_read_s16(struct M64ScriptState *state);
 u16 m64_read_compressed_u16(struct M64ScriptState *state);
 void seq_channel_layer_process_script(struct SequenceChannelLayer *layer);
 u8 get_instrument(struct SequenceChannel *seqChannel, u8 instId, struct Instrument **instOut, struct AdsrSettings *adsr);
+void sequence_player_process_sequence(struct SequencePlayer*);
+void process_sequences(s32);
 void set_instrument(struct SequenceChannel *seqChannel, u8 instId);
 void sequence_channel_set_volume(struct SequenceChannel *seqChannel, u8 volume);
-// void process_sequences(s32 iterationsRemaining);
+void sequence_channel_process_script(struct SequenceChannel*);
 void init_sequence_player(u32 player);
 void init_sequence_players(void);
 
