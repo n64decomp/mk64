@@ -44,6 +44,9 @@ void func_80281CB4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     }
 }
 
+extern Gfx D_80284F70[];
+extern Gfx D_80284EE0[];
+
 void func_80281D00(void) {
     Camera *camera = &cameras[0];
     UNUSED s32 pad[3];
@@ -71,13 +74,13 @@ void func_80281D00(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     mtxf_identity(matrix);
     func_802B4FF8(matrix, 0);
-    gSPDisplayList(gDisplayListHead++, &D_00284F70);
+    gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284F70));
     func_800212B4();
-    gSPDisplayList(gDisplayListHead++, &D_00284EE0);
+    gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284EE0));
     update_actors_loop();
     func_80058090(0);
     func_80021B0C();
-    gSPDisplayList(gDisplayListHead++, &D_00284EE0);
+    gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284EE0));
     func_80093F10();
     transition_sliding_borders();
     func_80281C40();
