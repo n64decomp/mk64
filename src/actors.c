@@ -429,8 +429,7 @@ void func_802979F8(struct Actor *arg0, UNUSED f32 arg1) {
     }
 }
 
-// render cow on moo moo farm
-void func_80297A50(Camera *camera, Mat4 arg1, struct Actor *arg2) {
+void render_obj_cow(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     if (is_visible_from_camera_with_distance(camera->pos, arg2->pos, camera->rot[1], 0, zoomPlayers[camera - camera1], 4000000.0f) < 0) { return; }
 
     arg1[3][0] = arg2->pos[0];
@@ -616,7 +615,7 @@ void update_obj_piranha_plant(struct PiranhaPlant *arg0) {
 }
 
 // Mario Raceway Load piranha plant textures?
-void func_80298328(Camera *arg0, Mat4 arg1, struct PiranhaPlant *arg2) {
+void render_obj_piranha_plant(Camera *arg0, Mat4 arg1, struct PiranhaPlant *arg2) {
     UNUSED s32 pad;
     u8 *addr;
     s16 temp_lo = arg0 - camera1;
@@ -1267,7 +1266,8 @@ void render_obj_blue_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell
     render_obj_shell(camera, matrix, shell);
 }
 
-void func_8029A8F4(Camera *camera, UNUSED Mat4 arg1, struct BananaActor *banana) {
+// a little strange this render banana
+void render_obj_banana(Camera *camera, UNUSED Mat4 arg1, struct BananaActor *banana) {
     UNUSED s32 pad[3];
     Vec3s sp7C;
     Mat4 sp3C;
@@ -1566,7 +1566,7 @@ void func_8029B6EC(Camera *camera, struct Actor* arg1) {
     }
 }
 
-// Spins train wheels?
+// Spins train wheels? render of train engine ? (not sure)
 void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     UNUSED s32 pad[3];
     Vec3f sp160;
@@ -4099,7 +4099,7 @@ void render_simple_objects(struct UnkStruct_800DC5EC *arg0) {
                     render_obj_kiwano_fruit_dks_jungle_parkway(camera, D_801502C0, actor);
                     break;
                 case ACTOR_BANANA:
-                    func_8029A8F4(camera, D_801502C0, (struct BananaActor *) actor);
+                    render_obj_banana(camera, D_801502C0, (struct BananaActor *) actor);
                     break;
                 case ACTOR_GREEN_SHELL:
                     render_obj_green_shell(camera, D_801502C0, (struct ShellActor *) actor);
@@ -4111,7 +4111,7 @@ void render_simple_objects(struct UnkStruct_800DC5EC *arg0) {
                     render_obj_blue_shell(camera, D_801502C0, (struct ShellActor *) actor);
                     break;
                 case ACTOR_PIRANHA_PLANT:
-                    func_80298328(camera, D_801502C0, (struct PiranhaPlant *) actor);
+                    render_obj_piranha_plant(camera, D_801502C0, (struct PiranhaPlant *) actor);
                     break;
                 case ACTOR_TRAIN_ENGINE:
                     func_8029B8E8(camera, (struct TrainCar *) actor);
@@ -4123,7 +4123,7 @@ void render_simple_objects(struct UnkStruct_800DC5EC *arg0) {
                     func_8029C3CC(camera, (struct TrainCar *) actor);
                     break;
                 case ACTOR_COW:
-                    func_80297A50(camera, D_801502C0, actor);
+                    render_obj_cow(camera, D_801502C0, actor);
                     break;
                 case 0x14:
                     func_8029AC18(camera, D_801502C0, actor);
