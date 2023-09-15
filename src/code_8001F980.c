@@ -53,7 +53,7 @@ void func_8001F9E4(Player *player, Camera *camera, s8 arg2) {
 
     get_player_index_for_player(player);
     func_8001F980(&sp30, &sp2C);
-
+ 
     player->unk_002 &= ~(2 << (arg2 * 4));
     player->unk_002 &= ~(8 << (arg2 * 4));
 
@@ -368,7 +368,7 @@ void func_800212B4(void) {
 }
 
 // Hello, you've found the location of the bulk of the data section for this file
-// For reasons beyound human comprehension it MUST be placed somewhere below
+// For reasons beyound human comprehension it MUST be placed somewhere below 
 // func_800212B4
 
 s32 junk[] = {0, 0, 0};
@@ -1008,10 +1008,10 @@ void func_80023038(UNUSED Player *player, s8 arg1, s32 arg2, f32 arg3) {
 s32 func_800230E4(Player *player, s8 arg1) {
     switch (gCurrentCourseId) {
         case 8:
-            if (((gNearestWaypointByPlayerId[arg1] >= 0x14F) && (gNearestWaypointByPlayerId[arg1] < 0x158))
-            || ((gNearestWaypointByPlayerId[arg1] >= 0x15E) && (gNearestWaypointByPlayerId[arg1] < 0x164))
-            || ((gNearestWaypointByPlayerId[arg1] >= 0x169) && (gNearestWaypointByPlayerId[arg1] < 0x170))
-            || ((gNearestWaypointByPlayerId[arg1] >= 0x174) && (gNearestWaypointByPlayerId[arg1] < 0x17A))
+            if (((gNearestWaypointByPlayerId[arg1] >= 0x14F) && (gNearestWaypointByPlayerId[arg1] < 0x158)) 
+            || ((gNearestWaypointByPlayerId[arg1] >= 0x15E) && (gNearestWaypointByPlayerId[arg1] < 0x164)) 
+            || ((gNearestWaypointByPlayerId[arg1] >= 0x169) && (gNearestWaypointByPlayerId[arg1] < 0x170)) 
+            || ((gNearestWaypointByPlayerId[arg1] >= 0x174) && (gNearestWaypointByPlayerId[arg1] < 0x17A)) 
             || ((gNearestWaypointByPlayerId[arg1] >= 0x17E) && (gNearestWaypointByPlayerId[arg1] < 0x184))) {
                 func_80022F14(player, arg1, 0x1C0000, 0.3f);
                 func_80023038(player, arg1, 0xE0, 0.3f);
@@ -1138,7 +1138,7 @@ void func_800235AC(Player *player, s8 arg1) {
     }
     if ((player->unk_0BC & 0x200) != 0) {
         temp = (s32)gCourseTimer - D_8018D930[arg1];
-        if (temp <= 8) {
+        if (temp <= 8) { 
 
             if (temp >= 7) {
                 D_80164B80[arg1] += 10;
@@ -1209,7 +1209,7 @@ void func_80023C84(Player *player, s8 arg1, s8 arg2) {
 
     temp_t9 = (u16)(player->unk_048[arg2] + player->unk_02C[1] + player->unk_0C0) / 128; // << 7) & 0xFFFF;
     spC0 = -player->unk_02C[1] - player->unk_0C0;
-
+  
     spB0 = -coss(temp_t9 << 7) * 2;
     spAC = -sins(temp_t9 << 7) * 2;
 
@@ -1229,11 +1229,11 @@ void func_80023C84(Player *player, s8 arg1, s8 arg2) {
         spB4[0] = player->unk_110.unk60[0];
         spB4[2] = player->unk_110.unk60[2];
         spB4[1] = player->unk_110.unk60[1];
-
+        
         spCC[0] = player->pos[0] + ((spB0 * sins(spC0)) + (spAC * coss(spC0)));
         spCC[1] = player->unk_074 + 1.0f;
         spCC[2] = player->pos[2] + ((spB0 * coss(spC0)) - (spAC * sins(spC0)));
-        func_80042A20(sp118, spB4, spCC, (spC0 + player->unk_042), D_800DDBD4[player->characterId] * player->unk_224
+        func_80042A20(sp118, spB4, spCC, (spC0 + player->unk_042), D_800DDBD4[player->characterId] * player->unk_224 
         * var_f2);
     } else {
         spC4[0] = player->unk_0C4;

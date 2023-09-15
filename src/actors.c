@@ -383,7 +383,7 @@ void func_802977E4(Player *arg0) {
     arg0->boundingBoxCorners[2].unk_14 &= 0xFFFD;
 }
 
-// invert green and red on green shell texture
+// Invert green and red on green shell texture
 void init_red_shell_texture(void) {
     s16 *red_shell_texture = (s16 *) &gTLUTRedShell[0];
     s16 *green_shell_texture = (s16 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(gTLUTGreenShell)] + SEGMENT_OFFSET(gTLUTGreenShell));
@@ -396,7 +396,7 @@ void init_red_shell_texture(void) {
         blue_color = color_pixel & 0x3E;
         alpha_color = color_pixel & 0x1;
 
-        *red_shell_texture = (red_color >> 5) | (green_color << 5) | blue_color | alpha_color; // invert color
+        *red_shell_texture = (red_color >> 5) | (green_color << 5) | blue_color | alpha_color; // Invert color
         green_shell_texture++;
         red_shell_texture++;
     }
@@ -1170,7 +1170,6 @@ void render_obj_tree_cactus3_kalimari_desert(Camera *camera, Mat4 arg1, struct A
     }
 }
 
-// render kiwano fruit in DK's jungle parkway ?
 void render_obj_kiwano_fruit_dks_jungle_parkway(UNUSED Camera *camera, Mat4 arg1, struct Actor *actor) {
     uintptr_t addr;
 
@@ -1219,8 +1218,8 @@ void render_obj_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
     } else {
         phi_t3 = (uintptr_t)D_802BA050;
     }
-    temp_t8 = (u16) shell->rotVelocity / 4369; // give a number between 0-15
-    phi_t3 += sp58[temp_t8]; // I think it jump in sprite sheet
+    temp_t8 = (u16) shell->rotVelocity / 4369; // Give a number between 0-15
+    phi_t3 += sp58[temp_t8]; // Select sprite
 
     matrix[3][0] =  shell->pos[0];
     matrix[3][1] = (shell->pos[1] - shell->boundingBoxSize) + 1.0f;
@@ -1232,7 +1231,7 @@ void render_obj_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
         G_IM_FMT_CI, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP,
         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
-    if (temp_t8 < 8) { // reverse shell ?
+    if (temp_t8 < 8) { // Reverse shell ?
         gSPDisplayList(gDisplayListHead++, D_0D005338);
     } else {
         gSPDisplayList(gDisplayListHead++, D_0D005368);
@@ -1266,7 +1265,7 @@ void render_obj_blue_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell
     render_obj_shell(camera, matrix, shell);
 }
 
-// a little strange this render banana
+// A little strange this render banana
 void render_obj_banana(Camera *camera, UNUSED Mat4 arg1, struct BananaActor *banana) {
     UNUSED s32 pad[3];
     Vec3s sp7C;
@@ -1303,7 +1302,7 @@ void render_obj_banana(Camera *camera, UNUSED Mat4 arg1, struct BananaActor *ban
     if (banana->state != 5) {
         gSPDisplayList(gDisplayListHead++, &bananaModel);
     } else {
-        gSPDisplayList(gDisplayListHead++, &FlatBananaModel);
+        gSPDisplayList(gDisplayListHead++, &flatBananaModel);
     }
 }
 
@@ -1566,7 +1565,7 @@ void func_8029B6EC(Camera *camera, struct Actor* arg1) {
     }
 }
 
-// Spins train wheels? render of train engine ? (not sure)
+// Spins train wheels?
 void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     UNUSED s32 pad[3];
     Vec3f sp160;
@@ -3320,7 +3319,7 @@ void evaluate_player_collision(void) {
     }
 }
 
-// it's look like to check collision between item and other different item
+// It's look like to check collision between item and other different item
 void func_802A0E44(void) {
     struct Actor *phi_s0;
     struct Actor *temp_a1;
@@ -4015,7 +4014,6 @@ void func_802A2F34(struct UnkStruct_800DC5EC *arg0) {
     }
 }
 
-// look like to be a function that draws the actors
 void render_simple_objects(struct UnkStruct_800DC5EC *arg0) {
     Camera *camera = arg0->camera;
     u16 pathCounter = arg0->pathCounter;
@@ -4246,7 +4244,7 @@ void update_simple_objects(void) {
             case ACTOR_TREE_ROYAL_RACEWAY:
             case ACTOR_TREE_MOO_MOO_FARM:
             case ACTOR_PALM_TREE:
-            case 0x1A: // a plant?
+            case 0x1A: // A plant?
             case 0X1B:
             case ACTOR_TREE_BOWSERS_CASTLE:
             case ACTOR_TREE_FRAPPE_SNOWLAND:

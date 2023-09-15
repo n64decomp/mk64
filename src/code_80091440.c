@@ -39,7 +39,7 @@ UNUSED void func_800914E0(void) {
     camera->up[0] = 0;
     camera->up[1] = 1;
     camera->up[2] = 0;
-
+        
     if(1) {} // waa?
 
     temp = temp2 - temp3;

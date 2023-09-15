@@ -681,7 +681,7 @@ struct Note *alloc_note_from_active(struct NotePool *pool, struct SequenceChanne
         func_800BD8F4(aNote, seqLayer);
         audio_list_push_back(&pool->releasing, &aNote->listItem);
     }
-
+    
     return aNote;
 }
 

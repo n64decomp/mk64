@@ -4147,7 +4147,7 @@ void func_8000F2DC(void) {
     D_80163368[1] = (s32) ptr->unk2;
     D_80163368[2] = (s32) ptr->unk4;
     D_80163368[3] = (s32) ptr->unk6;
-
+    
     temp = ptr->unk8;
     D_80163598 = (uintptr_t *) get_next_available_memory_addr(temp * 4);
 

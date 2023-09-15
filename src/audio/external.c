@@ -2281,7 +2281,7 @@ void func_800C5384(u8 arg0, f32 *arg1)
 }
 
 struct UnkStruct {
-    s32 unk0;
+    s32 unk0;    
     char filler4[0x20];
     s32 unk24;
     char filler28[0x8];
@@ -3753,7 +3753,7 @@ void func_800C90F4(u8 playerId, u32 arg1) {
     }
 }
 
-void func_800C9250(u8 arg0)
+void func_800C9250(u8 arg0) 
 {
     func_800C90F4(arg0, (gPlayers[arg0].characterId * 0x10) + (gAudioRandom & 1) + 0x29008001);
 }
@@ -3989,7 +3989,7 @@ void func_800C9EF4(Vec3f arg0, u32 arg1) {
     u8 i;
 
     for (i = 0; i < D_800EA1C0 + 1; i++) {
-        temp = func_800C21E8(arg0, arg1);
+        temp = func_800C21E8(arg0, arg1); 
         if (temp != NULL) {
             func_800C5578(temp, arg1);
         }
@@ -4400,11 +4400,11 @@ void func_800CAFC0(u8 arg0) {
 
 void func_800CB064(u8 arg0)
 {
-    if (D_800EA108 == 0)
+    if (D_800EA108 == 0) 
     {
         if (D_800EA170[arg0] == 1)
         {
-            if ((u8) D_800EA168 == 0)
+            if ((u8) D_800EA168 == 0) 
             {
                 func_800C36C4(0, 1U, 0x7FU, 0x19);
             }

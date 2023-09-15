@@ -1074,10 +1074,10 @@ void func_80070328(StarSpawn *arg0) {
 
 /**
  * This function is part of the spawning for the "stars" in some stages
- *
+ * 
  * arg2 is a pointer to some type of spawn data for the stars, although it not super clear
  * what types each element is. It seems like its a bunch of u16's, so maybe a Vec4su?
- *
+ * 
  * The stars in Wario's Stadium, Toad's Turnpike, and Rainbow Road are not part of the skybox.
  * They are instead objects that seemingly hover in the air around the player
  * They have no true x/y/z position, instead they seem to be kept in a position relative to the
@@ -1129,7 +1129,7 @@ void func_8007055C(void) {
         if (D_8018EDF3 == 1) {
             var_s4 = 0x32;
         } else {
-            var_s4 = 0x19;
+            var_s4 = 0x19; 
         }
         for (var_s0 = 0; var_s0 < var_s4; var_s0++) {
             find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]);

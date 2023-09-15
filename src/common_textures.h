@@ -71,7 +71,7 @@ extern Vtx FlatBananaVertex[];
 extern s8  gBananaTexture[];
 extern s8  gFlatBananaTexture[];
 extern Gfx bananaModel[];
-extern Gfx FlatBananaModel[];
+extern Gfx flatBananaModel[];
 extern s8  D_0D004C68[];
 extern s8  gTLUTGreenShell[];
 extern s8  gTLUTBlueShell[];

@@ -198,7 +198,7 @@ extern Gfx D_0D003188[];
 extern Gfx D_0D0031B8[];
 extern Gfx D_0D0031E8[];
 extern Gfx bananaModel[];
-extern Gfx FlatBananaModel[];
+extern Gfx flatBananaModel[];
 
 extern u8 D_0F04CBE0[];
 extern u8 D_0F04CE30[];

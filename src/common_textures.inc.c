@@ -609,7 +609,7 @@ Gfx bananaModel[] = {
 };
 
 
-Gfx FlatBananaModel[] = {
+Gfx flatBananaModel[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA),
