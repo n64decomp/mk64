@@ -40,13 +40,13 @@ float read_f32_be(unsigned char *buf)
 void *memset16safe(void *m, uint16_t val, size_t count)
 {
     char *buf = m;
-    union
+    union 
     {
         uint8_t d8[2];
         uint16_t d16;
     }u16 = {.d16 = val};
 
-    while(count--)
+    while(count--) 
     {
         *buf++ = u16.d8[0];
         *buf++ = u16.d8[1];

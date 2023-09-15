@@ -42,7 +42,7 @@ def import_c_file(in_file) -> str:
         cpp = ['clang', '-E', '-P', '-x', 'c', '-Wno-trigraphs']
     else:
         cpp = ['gcc', '-E', '-P']
-
+    
     cpp_getdefines = [*cpp, "-dM", *CPP_FLAGS, in_file]
     cpp_procfile = [*cpp, *CPP_FLAGS, in_file]
 

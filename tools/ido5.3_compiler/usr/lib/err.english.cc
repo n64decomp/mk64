@@ -367,12 +367,12 @@ Unknown Signal %s
 1) An unknown signal has been caught
 2) 2 Nested signals
 line
-Warning:
-Fatal:
+Warning: 
+Fatal: 
 Source not available
 Too many errors... goodbye.
 There is a limit of 30 errors before aborting.
-Error:
+Error: 
 reserved
 reserved
 Unknown Control Statement
@@ -441,7 +441,7 @@ Unable to open temporary file for compiling %s
 2) The file system is full.
 3) System errors beyond the scope of the compiler.
 %s: Hangup
-%s: Interrupt
+%s: Interrupt 
 %s: Quit (ASCII FS)
 %s: Illegal instruction (not reset when caught)
 %s: Trace trap (not reset when caught)
@@ -520,8 +520,8 @@ A preprocessing string or character constant token was not
 terminated.  Note that preprocessing directives are processed
 after the source file has been divided into preprocessing tokens.
 2.1.1.2(30) 3.1(18) 3.8
-%s: %s:
-%s: %s:
+%s: %s: 
+%s: %s: 
 %s: %s: Unterminated comment
 %s: %s: Unknown directive type %s
 %s: %s: #elif or #else after #else directive
@@ -641,11 +641,11 @@ If both parameter type lists are present, corresponding
 parameters shall have compatible types.
 3.5.4.3(15)
 Function %s is redeclared with an incompatible argument type (after default argument promotion), which could lead to undefined run-time behaviour.
-The redeclaration could cause arguments at a call site to be passed
+The redeclaration could cause arguments at a call site to be passed 
 inconsistently with what the function implementation expects, and
 parameters would therefore be accessed erroneously when executing the
-function body.  Note that a float argument is promoted to a double
-when passed (potentially through fp registers) to an unprototyped
+function body.  Note that a float argument is promoted to a double 
+when passed (potentially through fp registers) to an unprototyped 
 function.
 3.5.4.3(15)
 prototype and non-prototype declaration found for %s, ellipsis terminator not allowed
@@ -742,8 +742,8 @@ scalar lvalue.  An assignment operator shall have a modifiable lvalue
 as its left operand.
 3.3.2.4(36), 3.3.3.1(24), 3.2.2.1(5)
 The left-hand side of the '.' operator must be an addressable lvalue, when a bit-field is not contained within a unit of 32 bits alignment.
-This is a restriction in our implementation, which can be worked
-around by always accessing long long bit-fields indirectly (i.e.
+This is a restriction in our implementation, which can be worked 
+around by always accessing long long bit-fields indirectly (i.e. 
 by means of the '->' operator).
 This expression is not an lvalue.
 3.2.2.1
@@ -1116,7 +1116,7 @@ an intrinsic pragma.
 weak definition for '%s' is later redefined; pragma weak ignored.
 definition of primary name '%s' not found; pragma weak ignored.
 definition of secondary name '%s' not found; pragma weak ignored.
-primary name '%s' is declared as a common or external, and is not defined
+primary name '%s' is declared as a common or external, and is not defined 
 with initial value within this file; pragma weak ignored.
 useless '%s' storage class ignored
 array of functions not allowed
@@ -1241,8 +1241,8 @@ Internal error: yacc cannot initialize itself.
 The cfe option %s may not be in future releases.  We suggest that you not use this option!
 Incompatible char and unsigned char versions of a type
 Lshift with undefined behaviour.
-Lshift with a negative right operand, or a right operand that is greater
-than or equal to the width in bits of the promoted left operand, results
+Lshift with a negative right operand, or a right operand that is greater 
+than or equal to the width in bits of the promoted left operand, results 
 in undefined behaviour.
 3.3.7(11)
 useless type name in declaration, possibly a semicolon is missing.
@@ -1250,11 +1250,11 @@ Type was ignored.
 constant initializer expression is invalid (refers to automatic variables).
 All the expressions in an initializer for an object that has static storage
 duration or in the initializer list for an object that has aggregate or
-union type shall be constant expressions.  Otherwise, unexpected results
+union type shall be constant expressions.  Otherwise, unexpected results 
 may occur.
 3.5.7(32) and 3.4
 invalid explicit or implicit conversion of an address constant to an integral value in a constant initializing expression.
-An address constant in a constant initializing expression can neither
-initialize a bit-field nor be directly or indirectly converted to an
+An address constant in a constant initializing expression can neither 
+initialize a bit-field nor be directly or indirectly converted to an 
 integral type of size different from an address type.
 6.4

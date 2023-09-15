@@ -20,7 +20,7 @@ s32 __osContRamRead(OSMesgQueue *mq, int channel, u16 address, u8 *buffer) {
     ret = __osSiRawStartDma(OS_WRITE, &__osPfsPifRam);
     osRecvMesg(mq, NULL, OS_MESG_BLOCK);
     do {
-
+        
         for (i = 0; i < 16; i++) {
             __osPfsPifRam.ramarray[i] = 0xFF;
         }

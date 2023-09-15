@@ -37,24 +37,24 @@ for i in range(it):
     if bRunIt:
         if (len(sys.argv) > 4): # if symbol_name arg exists
             print("Gfx "+sys.argv[4]+str(hex(offset+start).split('x')[-1].upper())+"[] = ")
-
+            
         os.system(execStr+hex(offset+start))
         if debug:
             print((execStr+hex(offset+start)))
         bRunIt = False
         calls += 1
-
+        
     r.seek(start+offset)
     data = r.read(4).hex().upper()
     if data == "B8000000":
         bRunIt = True
         if debug:
             print("Running next: "+hex(offset+start))
-
+   
     if str(data) == "00000000":
         print("Found no DL command");
         break;
-
+        
     offset += 8
 
 print("Program exited at: "+hex(offset+start))
