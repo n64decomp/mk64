@@ -3435,7 +3435,7 @@ Gfx d_course_choco_mountain_dl_6F48[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_choco_mountain_dl_6F88[] = // in link with rock
+Gfx d_course_choco_mountain_dl_6F88[] =
 {
     gsSPTexture(0xFFFF, 0xFFFF, 1, 1, G_OFF),
     gsDPNoOp(),
