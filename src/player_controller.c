@@ -630,11 +630,11 @@ void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
                 sp1E = func_8001FB0C(player, camera2, (f32) D_8016557C, 0.0f);
                 break;
             case 3:
-                sp1E = func_8001FB0C(player, camera1, (f32) D_8016557C, 0.0f);
+                sp1E = func_8001FB0C(player, camera1, (f32) D_8016557C, 0.0f); 
                 if (sp1E == 1) break;
-                sp1E = func_8001FB0C(player, camera2, (f32) D_8016557C, 0.0f);
-                if (sp1E == 1) break;
-                sp1E = func_8001FB0C(player, camera3, (f32) D_8016557C, 0.0f);
+                sp1E = func_8001FB0C(player, camera2, (f32) D_8016557C, 0.0f);    
+                if (sp1E == 1) break; 
+                sp1E = func_8001FB0C(player, camera3, (f32) D_8016557C, 0.0f);        
                 if (sp1E == 1) break;
                 sp1E = func_8001FB0C(player, camera4, (f32) D_8016557C, 0.0f);
                 break;   

@@ -483,7 +483,7 @@ void func_802A4A0C(Vtx *vtx, struct UnkStruct_800DC5EC *arg1, UNUSED s32 arg2, U
     vtx[2].v.ob[1] = temp_t5;
     vtx[4].v.ob[1] = temp_t5;
     vtx[7].v.ob[1] = temp_t5;
-
+    
     init_rdp();
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER | G_LIGHTING);
