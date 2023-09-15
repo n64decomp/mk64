@@ -90,7 +90,7 @@ void crash_screen_draw_square(u16 *framebuffer)
    // new_var = i;
   // for (i = 0; i < 2; i++)
   do // (var_s0 = 0x2E; var_s0 != 0x2C; var_s0--)
-  {
+  { 
      row = 0x2E - i;
     for (row = var_s2; row < var_s0; row++)
     {
@@ -101,7 +101,7 @@ void crash_screen_draw_square(u16 *framebuffer)
     }
       var_s0--;
     var_s2 = 6 + i;
-
+      
   } while(var_s0 != var_s3);
 
   osWritebackDCacheAll();
@@ -116,11 +116,11 @@ GLOBAL_ASM("asm/non_matchings/crash_screen/crash_screen_draw_square.s")
  * Line 1: threadId - address of faulted instruction - error code
  * Line 2: Address in the return address register
  * Line 3: Machine code of faulted instruction
- *
+ * 
  * The R4300i manual discusses exceptions in more depth.
- *
- * @param framebuffer
- * @param faulted thread
+ * 
+ * @param framebuffer 
+ * @param faulted thread 
  **/
 
 //                     0xRGBA
@@ -223,7 +223,7 @@ void thread9_crash_screen(UNUSED void *arg0)
     while (TRUE) {
         osRecvMesg(&D_80162D40, &mesg, 1);
         thread = get_faulted_thread();
-
+        
         if (thread) {
             // Run only on the first iteration.
             if (sCounter == 0) {
@@ -253,9 +253,9 @@ void thread9_crash_screen(UNUSED void *arg0)
 #else
                 crash_screen_draw_info(pFramebuffer, thread);
 #endif
-
+                
             }
-            if (sCounter < 5) {
+            if (sCounter < 5) {        
                 sCounter++;
             }
         }

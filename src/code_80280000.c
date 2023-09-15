@@ -49,7 +49,7 @@ void func_80280038(void) {
     func_802A53A4();
     init_rdp();
     func_80057FC4(0);
-
+    
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
     guPerspective(&gGfxPool->mtxPool[1], &perspNorm, zoomPlayers[0], D_80150148, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);

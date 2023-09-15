@@ -733,7 +733,7 @@ void func_80028E70(Player *player, Camera *camera, s8 arg2, s8 arg3)  {
                     func_80038C6C(player, camera, arg3, arg2);
                 } else {
                     player->unk_0BC &= ~8;
-                }        
+                }         
                 break;
             default: 
                 func_80027DA8(player, arg2);
@@ -2359,9 +2359,9 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
             player->unk_DB4.unk18 = 0;
             player->unk_0B6 |= 0x100;
             if ((((player->unk_000 & 0x4000) == 0x4000) 
-                && ((player->unk_0BC & 0x100000) == 0x100000)) 
+                && ((player->unk_0BC & 0x100000) == 0x100000))  
                 && ((player->unk_000 & 0x100) != 0x100)) 
-
+            
                 func_800C9060(arg3, 0x1900A60AU);
             else if (((player->unk_000 & 0x4000) == 0x4000) && ((player->unk_000 & 0x100) != 0x100))
             {
@@ -2591,11 +2591,11 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     posX = player->pos[0];
     posY = player->pos[1];
     posZ = player->pos[2];
-    
+        
     player->rotX = player->pos[0];
     player->rotY = player->pos[1];
     player->rotZ = player->pos[2];
-    
+        
     spD0 = posX + player->unk_034[0] + D_8018CE10[arg3].unk_04[0];
     spCC = posY + player->unk_034[1];
     spC8 = posZ + player->unk_034[2] + D_8018CE10[arg3].unk_04[2];

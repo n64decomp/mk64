@@ -1684,9 +1684,9 @@ u8 *gKartPalettes[] = {
 /**
  * @brief Place DMA mio0 compressed character textures in a buffer.
  * Later, this data becomes decompressed.
- *
+ * 
  * The player struct tracks the texture indices to load.
- *
+ * 
  * @param player
  * @param arg1 Appears to be character index; 0-7.
  * @param arg2 Rom buffer index appears to always be 0-3. Sometimes subtracted by 2.
@@ -1730,7 +1730,7 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
             osInvalDCache(&D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
             osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], &D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId], &gDmaMesgQueue);
         }
-    } else if (((temp & 0x400) == 0x400) || ((temp & 0x01000000) == 0x01000000) ||
+    } else if (((temp & 0x400) == 0x400) || ((temp & 0x01000000) == 0x01000000) || 
         ((temp & 0x02000000) == 0x02000000) || ((temp & 0x10000) == 0x10000))
     {
         osInvalDCache(&D_802DFB80[arg4][arg3][arg1], 0x780);

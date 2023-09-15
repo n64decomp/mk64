@@ -91,7 +91,7 @@ u32 func_802B5258(Vec3f arg0, Vec3s arg1) {
     f32 temp_v2;
     temp_v1 = arg1[0] - arg0[0];
     temp_v2 = arg1[2] - arg0[2];
-
+    
     return atan2s(temp_v1, temp_v2);
 }
 
@@ -165,7 +165,7 @@ void mtxf_identity(Mat4 mtx) {
         for (k = 0; k < 4; k++) {
             mtx[i][k] = (i == k) ? 1.0f : 0.0f;
         }
-    }
+    } 
 }
 
 void func_802B5450(Mat4 arg0, Mat4 arg1, Vec3f arg2) {
@@ -610,11 +610,11 @@ void func_802B6540(Mat3 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4) {
     mtx2[0][0] = cossValue;
     mtx2[2][1] = 0;
     mtx2[1][2] = 0;
-
+    
     mtx2[1][1] = 1;
     mtx2[2][0] = sinValue;
     mtx2[0][2] = -sinValue;
-
+    
     mtx2[2][2] = cossValue;
     mtx2[1][0] = 0;
     mtx2[0][1] = 0;
@@ -626,7 +626,7 @@ void func_802B6540(Mat3 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4) {
                 matrix[i][j] = (i == j) ? 1.0f : 0.0f;
             }
         }
-
+        
     } else if (arg2 == -1) {
 
         for (i = 0; i < 3; i++) {
@@ -634,16 +634,16 @@ void func_802B6540(Mat3 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4) {
                 matrix[i][j] = (i == j) ? 1.0f : 0.0f;
             }
         }
-
+        
         matrix[1][1] = -1;
-
+        
     } else {
         a = (f32) -(360.0 - ((f64) (func_802B7CE8(arg2) * 180.0f) / 3.141592653589793));
         b = -arg3 / sqrtf((arg1 * arg1) + (arg3 * arg3));
         c = 0;
         d = arg1 / sqrtf((arg1 * arg1) + (arg3 * arg3));
         func_802B6A84(matrix, a, b, c, d);
-
+    
     }
     arg0[0][0] = (mtx2[0][0] * matrix[0][0]) + (mtx2[0][1] * matrix[1][0]) + (mtx2[0][2] * matrix[2][0]);
     arg0[1][0] = (mtx2[1][0] * matrix[0][0]) + (mtx2[1][1] * matrix[1][0]) + (mtx2[1][2] * matrix[2][0]);
@@ -669,7 +669,7 @@ UNUSED void func_802B68F8(Mat3 matrix, f32 arg1, f32 arg2, f32 arg3) {
 
     if (arg2 == 1) {
         for (i = 0; i < 3; i++) {
-            for (j = 0; j < 3; j++) {
+            for (j = 0; j < 3; j++) { 
                 matrix[i][j] = (i == j) ? 1.0f : 0.0f;
             }
         }
@@ -844,7 +844,7 @@ void mtxf_to_mtx(Mtx *dest, Mat4 src) {
 
 /**
  * Comment from sm64 unverified. mk64 verison is modified
- *
+ * 
  * Helper function for atan2s. Does a look up of the arctangent of y/x assuming
  * the resulting angle is in range [0, 0x2000] (1/8 of a circle).
  */

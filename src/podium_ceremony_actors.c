@@ -92,7 +92,7 @@ void set_initial_position(CeremonyActor *actor) {
     actor->pos[0] = params->unk2[0];
     actor->pos[1] = params->unk2[1];
     actor->pos[2] = params->unk2[2];
-
+    
     // Place value in the high bits of s16.
     // Example: 85, 0b01010101 -> 0b0101010100000000
     actor->unkA = params->unk8 << 8;
@@ -151,7 +151,7 @@ u16 random_u16_credits(void) {
 
     temp1 = ((temp1 & 0x00FF) << 1) ^ sRandomSeed16;
     temp2 = (temp1 >> 1) ^ 0xFF80;
-
+    
     if ((temp1 & 1) == 0) {
         if (temp2 == 43605) {
             sRandomSeed16 = 0;
@@ -358,7 +358,7 @@ void spawn_firework_cone(s32 arg0, s32 arg1, s32 arg2) {
         cone->pos[0] = random_who_knows(0.0f) + arg0;
         cone->pos[1] = random_who_knows((f32) (D_802874B0[11] + 100)) + (f32) arg1;
         cone->pos[2] = random_who_knows((f32) (D_802874B0[12] + 700)) + (f32) arg2;
-
+        
         num = 1.1f;
 
         // Wrap the counter from zero to three
@@ -395,7 +395,7 @@ void spawn_timer(void) {
     } else if (D_802874D8.actorTimer == 2) {
         spawn_balloons(-0xC6C, (s32) ((f32) D_802874B0[10] + 210.0f), -0x1EF);
     }
-
+    
     D_802874D8.actorTimer += 1;
 }
 

@@ -25,7 +25,7 @@ struct UnkStruct_802B8CD4 {
     s16 unk2;
     s32 unk4;
     s32 unk8;
-    s32 fill;
+    s32 fill; 
 };
 
 struct AllocOnlyPool {

@@ -82,7 +82,7 @@ static u32 variable_to_u64(variableWatchAttributes *attribute) {
 	u32 variable;
 
 	switch (attribute->variableSize) {
-		case sizeof(u8):
+		case sizeof(u8): 
 			variable = *((u8*) attribute->variablePointer);
 			break;
 		case sizeof(u16):	
@@ -103,7 +103,7 @@ static void round_up_float(u32 *variable, u8 variableSize) {
 	switch (variableSize) {
 		case sizeof(u64):
 		case sizeof(u32):
-			*variable = (u32) (*(f32*) &*variable);
+			*variable = (u32) (*(f32*) &*variable); 
 			break;
 		default:
 			sDisplayListState = BAD;
@@ -187,7 +187,7 @@ static void u64_to_string(variableWatchAttributes *attribute, u32 variable, u8 b
 	}
 
 	bufferedString -= stringLength;	
-	upperIndex = stringLength - 1;
+	upperIndex = stringLength - 1; 
 
 	// flip string 4321 --> 1234
 	for (lowerIndex = 0; lowerIndex < stringLength >> 1; lowerIndex++) {

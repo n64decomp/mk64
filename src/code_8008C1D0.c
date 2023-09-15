@@ -1445,7 +1445,7 @@ void func_8008F8DC(Player* arg0, s8 arg1) {
     tmp = ((s32) gCourseTimer) - D_8018D950[arg1];
     if (tmp < 7) {
         arg0->unk_0C6 -= 2;
- 
+  
         if (arg0->unk_0C6 < 0x61) {
             arg0->unk_0C6 = 0x60;
         }

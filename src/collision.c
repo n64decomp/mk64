@@ -223,7 +223,7 @@ s32 func_802AB288(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
     f32 x3;
     f32 y3;
     UNUSED f32 pad2[1];
-
+    
     UNUSED f32 pad3[5];
     f32 x2;
     f32 y2;
@@ -764,7 +764,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
     UNUSED s32 pad2[3];
     f32 temp_f0_4;
     f32 temp_f4_2;
-    UNUSED s32 pad3[2];
+    UNUSED s32 pad3[2]; 
     f32 area;
     f32 area2;
     f32 area3;
@@ -945,7 +945,7 @@ s32 is_colliding_with_wall1(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
     UNUSED s32 pad3[2];
     f32 temp_f0_4;
     f32 temp_f4_2;
-    UNUSED s32 pad4[2];
+    UNUSED s32 pad4[2]; 
     f32 area;
     f32 area2;
     f32 area3;
@@ -1126,7 +1126,7 @@ u16 func_802AD950(Collision *collision, f32 boundingBoxSize, f32 x1, f32 y1, f32
     u16 flags = 0;
     s32 temp1;
     s32 temp2;
-
+    
     u16 i;
 
     collision->unk30 = 0;
@@ -1221,7 +1221,7 @@ u16 func_802AD950(Collision *collision, f32 boundingBoxSize, f32 x1, f32 y1, f32
             }
         }
         phi_s2++;
-
+        
     }
     return flags;
 }
@@ -1266,7 +1266,7 @@ u16 func_802ADDC8(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY,
     if (var_s4 == (0x4000 | 0x2000 | 0x8000)) {
         return var_s4;
     }
-
+    
     temp_f4 = (s32) D_8015F6E8 - D_8015F6EA;
     temp_f6 = (s32) D_8015F6F0 - D_8015F6F2;
 
@@ -1276,7 +1276,7 @@ u16 func_802ADDC8(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY,
     temp_f10 = (posX - D_8015F6EA) / temp1;
     temp_f16 = (posZ - D_8015F6F2) / temp2;
 
-
+    
     if (temp_f10 < 0) {
         return 0;
     }
@@ -1435,10 +1435,10 @@ void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 sectionI
     tile->vtxPoly1 = vtx1;
     tile->vtxPoly2 = vtx2;
     tile->vtxPoly3 = vtx3;
-    if ((tile->vtxPoly1->v.flag == 4) &&
-        (tile->vtxPoly2->v.flag == 4) &&
+    if ((tile->vtxPoly1->v.flag == 4) && 
+        (tile->vtxPoly2->v.flag == 4) && 
         (tile->vtxPoly3->v.flag == 4)) {
-
+        
         return;
     }
 
@@ -1594,7 +1594,7 @@ void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 sectionI
     if (sp48 > D_8015F6F0) {
         D_8015F6F0 = sp48;
     }
-
+    
     tile->height = normalX;
     tile->gravity = normalY;
     tile->rotation = normalZ;
@@ -1696,7 +1696,7 @@ void set_vtx_from_quadrangle(u32 line, s8 surfaceType, u16 sectionId) {
     vtx2 = vtxBuffer[vert2];
     vtx3 = vtxBuffer[vert3];
     vtx4 = vtxBuffer[vert4];
-
+    
     // Triangle 1
     func_802AE434(vtx1, vtx2, vtx3, surfaceType, sectionId);
     // Triangle 2
@@ -1898,7 +1898,7 @@ void set_vertex_data_with_default_section_id(Gfx *gfx, s8 surfaceType) {
 extern u32 D_8015F58C;
 
 /**
- * Recursive search and set for vertex data
+ * Recursive search and set for vertex data 
  */
 void find_and_set_vertex_data(Gfx *addr, s8 surfaceType, u16 sectionId) {
     s32 opcode;
@@ -2034,7 +2034,7 @@ u16 process_collision(Player *player, KartBoundingBoxCorner *corner, f32 cornerP
     f32 cornerPos3;
     f32 boundingBoxSize;
     f32 temp_f0;
-
+    
     s32 temp_v0_2;
     s32 temp_v1;
 
@@ -2095,7 +2095,7 @@ u16 process_collision(Player *player, KartBoundingBoxCorner *corner, f32 cornerP
     }
 
     // If the surface flags are not set then try setting them.
-
+        
     temp_v0_2 = (s32) D_8015F6E8 - D_8015F6EA;
     temp_v1 = (s32) D_8015F6F0 - D_8015F6F2;
 
