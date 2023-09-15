@@ -374,7 +374,7 @@ SECTIONS
       BUILD_DIR/src/os/osLeoDiskInit.o(.bss);
    }
    END_NOLOAD(main)
-
+   
    /* 0x8028DF00 0F7510-123640 [2C130] */
    BEGIN_SEG(code_8028DF00, SEG_8028DF00)
    {
@@ -420,7 +420,7 @@ SECTIONS
    END_NOLOAD(code_8028DF00)
 
    _code_8028DF00SegmentNoloadSize = SIZEOF(.code_8028DF00.noload) + 0x10;
-
+   
    _code_8028DF00SegmentNoloadSizeHi = _code_8028DF00SegmentNoloadSize >> 16;
    _code_8028DF00SegmentNoloadSizeLo = _code_8028DF00SegmentNoloadSize & 0xFFFF;
 
@@ -454,7 +454,7 @@ SECTIONS
    END_NOLOAD(code_80280000)
 
    _code_80280000SegmentNoloadSize = SIZEOF(.code_80280000.noload) + 0x10;
-
+   
    _code_80280000SegmentNoloadSizeHi = _code_80280000SegmentNoloadSize >> 16;
    _code_80280000SegmentNoloadSizeLo = _code_80280000SegmentNoloadSize & 0xFFFF;
 
@@ -590,7 +590,7 @@ SECTIONS
    COURSE_OFFSETS_SEG(course_big_donut_offsets, 0x09000000)
 
    /* Segment 0xF Course Geography (0x4 uncompressed) and Segment 0x7 Packed Displaylists */
-
+   
    COURSE_VERT_SEG(flower_cup/mario_raceway,mario_raceway_vertex)
    COURSE_VERT_SEG(flower_cup/choco_mountain,choco_mountain_vertex)
    COURSE_VERT_SEG(star_cup/bowsers_castle,bowsers_castle_vertex)

@@ -52,7 +52,7 @@ def ReadAllLines(fileName):
 
 def GetFiles(path, ext):
     files = []
-
+    
     for r, d, f in os.walk(path):
         for file in f:
             if file.endswith(ext):
@@ -90,18 +90,18 @@ def GetNonMatchingSize(path):
     size = 0
 
     if (path == "main"):
-        for file in mainSegFiles2:
+        for file in mainSegFiles2: 
             size += getData(file)
 
     elif (path == "seg2"):
-        for file in seg2Files2:
+        for file in seg2Files2: 
             size += getData(file)
 
     elif (path == "os"):
             size = getData("asm/os/func_800CE720.s")
 
     elif (path == "audio"):
-        for file in audioFiles2:
+        for file in audioFiles2: 
             size += getData(file)
 
     else: size = getData("asm/non_matchings")
@@ -193,7 +193,7 @@ for line in mapFile:
         if (section == ".text"):
             if (objFile.startswith("build/us/src")):
                 src += size
-
+            
             if (objFile.startswith(tuple(mainSegFiles))):
                 mainSeg += size
 
@@ -260,7 +260,7 @@ bytesPerHeartPiece = text_size // 80
 #    timestamp = str(git_object.committed_date)
 #    git_hash = git_object.hexsha
 
-#    csv_list = [str(version), timestamp, git_hash,
+#    csv_list = [str(version), timestamp, git_hash, 
 #        str(text_size), str(mk64Code_size), str(src), str(srcPct),
 #        str(audio), str(audio_size), str(audioPct), str(libultra),
 #        str(libultra_size), str(libultraPct), str(seg2), str(seg2_size),
