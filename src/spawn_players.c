@@ -402,7 +402,7 @@ void func_80039AE4(void) {
 
 void func_80039DA4(void) {
     s32 i;
-
+    
     s32 sp2C[] = {
         7, 6, 5, 4,
         3, 2, 1, 0,
