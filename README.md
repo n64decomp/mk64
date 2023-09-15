@@ -4,7 +4,7 @@
 
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=bytesLeft)](https://ci.valandil.ca/job/mk64/job/master/)
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=m2c)](https://ci.valandil.ca/job/mk64/job/master/)
-[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=nonmatching)](https://ci.valandil.ca/job/mk64/job/master/)
+[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=nonmatching)](https://ci.valandil.ca/job/mk64/job/master/)  
 
 C files left: ~7 out of 40 (not counting audio)
 # Mario Kart 64
@@ -45,7 +45,7 @@ Review the n64decomp/sm64 readme for instructions to compile in other distributi
 
 #### Windows
 
-Compiling on Windows requires `MSYS2 MinGW x64`. The setup process is a tad intensive.
+Compiling on Windows requires `MSYS2 MinGW x64`. The setup process is a tad intensive.  
 
 [Instructions here](docs/BUILD_WINDOWS.md)
 
@@ -71,9 +71,9 @@ make
 
 ## Progress
 
-The source is in a 'shiftable' state that may allow modding but glitches may exist. Keep in-mind the code-base will alter significantly overtime. Feedback that raises awareness of new shift issues are welcome as a comment on issue #6. Note that some segments must be moved manually to prevent them colliding into each other.
+The source is in a 'shiftable' state that may allow modding but glitches may exist. Keep in-mind the code-base will alter significantly overtime. Feedback that raises awareness of new shift issues are welcome as a comment on issue #6. Note that some segments must be moved manually to prevent them colliding into each other.  
 
-Some menu textures are compressed using a format called tkmk00. A byte-matching compressor/decompressor does not yet exist.
+Some menu textures are compressed using a format called tkmk00. A byte-matching compressor/decompressor does not yet exist.   
 
 ## Project Structure
 	
@@ -91,7 +91,7 @@ Some menu textures are compressed using a format called tkmk00. A byte-matching 
 	├── lib: SDK library code
 	├── music: sequences
 	├── src: C source code for the game
-	|   ├── debug: custom debug code
+	|   ├── debug: custom debug code 
 	│   ├── audio: sample tables and audio source
 	│   └── os: libultra
 	├── textures: texture data, bitmaps
