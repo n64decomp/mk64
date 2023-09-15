@@ -89,7 +89,7 @@ glabel func_800BAD0C
 /* 0BBA4C 800BAE4C 91250000 */  lbu   $a1, ($t1)
 /* 0BBA50 800BAE50 8FA80040 */  lw    $t0, 0x40($sp)
 /* 0BBA54 800BAE54 11E5000E */  beq   $t7, $a1, .L800BAE90
-/* 0BBA58 800BAE58 00000000 */   nop
+/* 0BBA58 800BAE58 00000000 */   nop   
 /* 0BBA5C 800BAE5C 10C0000C */  beqz  $a2, .L800BAE90
 /* 0BBA60 800BAE60 3C0C803B */   lui   $t4, %hi(sSampleDmaReuseQueue2) # $t4, 0x803b
 /* 0BBA64 800BAE64 258C6F68 */  addiu $t4, %lo(sSampleDmaReuseQueue2) # addiu $t4, $t4, 0x6f68

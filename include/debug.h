@@ -41,7 +41,7 @@
 #define OCTAL 8
 #define BINARY 2
 
-/**
+/** 
  * This structure is the heart of the DVDL.
  * only the first 4 attributes should be set by the user, the other 2 are used by the program.
  */
@@ -57,7 +57,7 @@ typedef struct
 
 /**
  * This structure array is what you edit to display in the list.
- * First index is the variable name, second is a pointer to the variable and
+ * First index is the variable name, second is a pointer to the variable and 
  * third is the size of the variable.
  *
  * initilized in debug/debug.inc.c
@@ -65,7 +65,7 @@ typedef struct
 extern variableWatchAttributes gMainVariableWatchList[];
 
 /**
- * This is what calls the debug watch list. Because of how mk64 was programed,
+ * This is what calls the debug watch list. Because of how mk64 was programed, 
  * It's called at 4 different parts of the code. One for menus, race,
  * ending sequence and creditis. It does not display during loading time because
  * the RSP is not initialized during that portion of the code.

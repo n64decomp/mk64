@@ -30,4 +30,4 @@ glabel func_8007C280
 .L8007C2EC:
 /* 07CEEC 8007C2EC 27BD0020 */  addiu $sp, $sp, 0x20
 /* 07CEF0 8007C2F0 03E00008 */  jr    $ra
-/* 07CEF4 8007C2F4 00000000 */   nop
+/* 07CEF4 8007C2F4 00000000 */   nop   

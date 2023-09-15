@@ -7,7 +7,7 @@
 .word  0x0000000F               /* Clockrate setting*/
 .word  entry_point               /* Entrypoint */
 
-/* Revision */
+/* Revision */  
 .word  0x00001446 /* NTSC-U */
 
 .word  0x3E5055B6               /* Checksum 1 */

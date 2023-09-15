@@ -31,4 +31,4 @@ glabel func_8004EF9C
 /* 04FC10 8004F010 8FBF0034 */  lw    $ra, 0x34($sp)
 /* 04FC14 8004F014 27BD0038 */  addiu $sp, $sp, 0x38
 /* 04FC18 8004F018 03E00008 */  jr    $ra
-/* 04FC1C 8004F01C 00000000 */   nop
+/* 04FC1C 8004F01C 00000000 */   nop   

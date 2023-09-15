@@ -95,12 +95,12 @@ glabel func_8009CBE4
 /* 09D940 8009CD40 00007012 */  mflo  $t6
 /* 09D944 8009CD44 030E7823 */  subu  $t7, $t8, $t6
 /* 09D948 8009CD48 17200002 */  bnez  $t9, .L8009CD54
-/* 09D94C 8009CD4C 00000000 */   nop
+/* 09D94C 8009CD4C 00000000 */   nop   
 /* 09D950 8009CD50 0007000D */  break 7
 .L8009CD54:
 /* 09D954 8009CD54 AFAF0020 */  sw    $t7, 0x20($sp)
 /* 09D958 8009CD58 0C02637E */  jal   draw_box
-/* 09D95C 8009CD5C 00000000 */   nop
+/* 09D95C 8009CD5C 00000000 */   nop   
 /* 09D960 8009CD60 8FB9006C */  lw    $t9, 0x6c($sp)
 /* 09D964 8009CD64 3C018015 */  lui   $at, %hi(gDisplayListHead) # $at, 0x8015
 /* 09D968 8009CD68 AC220298 */  sw    $v0, %lo(gDisplayListHead)($at)
@@ -133,4 +133,4 @@ glabel func_8009CBE4
 /* 09D9CC 8009CDCC 8FB00030 */  lw    $s0, 0x30($sp)
 /* 09D9D0 8009CDD0 27BD0068 */  addiu $sp, $sp, 0x68
 /* 09D9D4 8009CDD4 03E00008 */  jr    $ra
-/* 09D9D8 8009CDD8 00000000 */   nop
+/* 09D9D8 8009CDD8 00000000 */   nop   

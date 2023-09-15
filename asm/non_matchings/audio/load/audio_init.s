@@ -68,9 +68,9 @@ glabel audio_init
 /* 0BCD9C 800BC19C 10410015 */  beq   $v0, $at, .L800BC1F4
 /* 0BCDA0 800BC1A0 24010002 */   li    $at, 2
 /* 0BCDA4 800BC1A4 1041000B */  beq   $v0, $at, .L800BC1D4
-/* 0BCDA8 800BC1A8 00000000 */   nop
+/* 0BCDA8 800BC1A8 00000000 */   nop   
 /* 0BCDAC 800BC1AC 10000011 */  b     .L800BC1F4
-/* 0BCDB0 800BC1B0 00000000 */   nop
+/* 0BCDB0 800BC1B0 00000000 */   nop   
 .L800BC1B4:
 /* 0BCDB4 800BC1B4 3C01800F */  lui   $at, %hi(D_800F2EA0) # $at, 0x800f
 /* 0BCDB8 800BC1B8 C4242EA0 */  lwc1  $f4, %lo(D_800F2EA0)($at)
@@ -99,7 +99,7 @@ glabel audio_init
 /* 0BCE0C 800BC20C AC39717C */  sw    $t9, %lo(gRefreshRate)($at)
 .L800BC210:
 /* 0BCE10 800BC210 0C032FD2 */  jal   func_800CBF48
-/* 0BCE14 800BC214 00000000 */   nop
+/* 0BCE14 800BC214 00000000 */   nop   
 /* 0BCE18 800BC218 3C02803B */  lui   $v0, %hi(D_803B718C) # $v0, 0x803b
 /* 0BCE1C 800BC21C 3C04803B */  lui   $a0, %hi(D_803B7192) # $a0, 0x803b
 /* 0BCE20 800BC220 24847192 */  addiu $a0, %lo(D_803B7192) # addiu $a0, $a0, 0x7192
@@ -328,7 +328,7 @@ glabel audio_init
 /* 0BD188 800BC588 0C02E41F */  jal   sound_alloc_pool_init
 /* 0BD18C 800BC58C 8E060000 */   lw    $a2, ($s0)
 /* 0BD190 800BC590 0C030497 */  jal   init_sequence_players
-/* 0BD194 800BC594 00000000 */   nop
+/* 0BD194 800BC594 00000000 */   nop   
 /* 0BD198 800BC598 3C0F7655 */  lui   $t7, (0x76557364 >> 16) # lui $t7, 0x7655
 /* 0BD19C 800BC59C 3C18800F */  lui   $t8, %hi(gAudioLoadLock) # $t8, 0x800f
 /* 0BD1A0 800BC5A0 2718A5DC */  addiu $t8, %lo(gAudioLoadLock) # addiu $t8, $t8, -0x5a24

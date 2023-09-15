@@ -39,4 +39,4 @@ glabel func_800BB584
 /* 0BC214 800BB614 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 0BC218 800BB618 27BD0020 */  addiu $sp, $sp, 0x20
 /* 0BC21C 800BB61C 03E00008 */  jr    $ra
-/* 0BC220 800BB620 00000000 */   nop
+/* 0BC220 800BB620 00000000 */   nop   

@@ -27,4 +27,4 @@ glabel func_8004E78C
 /* 04F3F0 8004E7F0 8FBF0014 */  lw    $ra, 0x14($sp)
 /* 04F3F4 8004E7F4 27BD0020 */  addiu $sp, $sp, 0x20
 /* 04F3F8 8004E7F8 03E00008 */  jr    $ra
-/* 04F3FC 8004E7FC 00000000 */   nop
+/* 04F3FC 8004E7FC 00000000 */   nop   

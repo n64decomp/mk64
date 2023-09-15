@@ -108,9 +108,9 @@ extern Collision D_8018C0B0[];
  * D_80183EA0, D_80183F28, D_8018BFA8, and D_8018C030 are all lists of indices in D_80165C18.
  * func_80070190 initializes them in such a way that the indicies in each list are not adjacent.
  * First D_80183EA0 gets an unused index, then D_80183F28, then D_8018BFA8, then D_8018C030, and then it loops.
- *
+ * 
  * The objects found at the indices in each list appears to be course dependent
- **/
+ **/ 
 
 #define NUM_CRABS 0xA
 #define NUM_NEON_SIGNS 0xA

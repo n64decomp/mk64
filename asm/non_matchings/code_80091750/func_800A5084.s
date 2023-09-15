@@ -86,7 +86,7 @@ glabel func_800A5084
 /* 0A5DCC 800A51CC 4600218D */  trunc.w.s $f6, $f4
 /* 0A5DD0 800A51D0 44103000 */  mfc1  $s0, $f6
 /* 0A5DD4 800A51D4 0C024C0D */  jal   get_string_width
-/* 0A5DD8 800A51D8 00000000 */   nop
+/* 0A5DD8 800A51D8 00000000 */   nop   
 /* 0A5DDC 800A51DC 44824000 */  mtc1  $v0, $f8
 /* 0A5DE0 800A51E0 3C014120 */  li    $at, 0x41200000 # 10.000000
 /* 0A5DE4 800A51E4 44819000 */  mtc1  $at, $f18
@@ -100,7 +100,7 @@ glabel func_800A5084
 /* 0A5E04 800A5204 4600428D */  trunc.w.s $f10, $f8
 /* 0A5E08 800A5208 44115000 */  mfc1  $s1, $f10
 /* 0A5E0C 800A520C 0C024C36 */  jal   set_text_color
-/* 0A5E10 800A5210 00000000 */   nop
+/* 0A5E10 800A5210 00000000 */   nop   
 /* 0A5E14 800A5214 824B0000 */  lb    $t3, ($s2)
 /* 0A5E18 800A5218 86650002 */  lh    $a1, 2($s3)
 /* 0A5E1C 800A521C 241800A0 */  li    $t8, 160

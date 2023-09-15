@@ -17,14 +17,14 @@ glabel create_next_audio_frame_task
 /* 0CBF6C 800CB36C AFB10028 */  sw    $s1, 0x28($sp)
 /* 0CBF70 800CB370 AFB00024 */  sw    $s0, 0x24($sp)
 /* 0CBF74 800CB374 17000002 */  bnez  $t8, .L800CB380
-/* 0CBF78 800CB378 00000000 */   nop
+/* 0CBF78 800CB378 00000000 */   nop   
 /* 0CBF7C 800CB37C 0007000D */  break 7
 .L800CB380:
 /* 0CBF80 800CB380 2401FFFF */  li    $at, -1
 /* 0CBF84 800CB384 17010004 */  bne   $t8, $at, .L800CB398
 /* 0CBF88 800CB388 3C018000 */   lui   $at, 0x8000
 /* 0CBF8C 800CB38C 15E10002 */  bne   $t7, $at, .L800CB398
-/* 0CBF90 800CB390 00000000 */   nop
+/* 0CBF90 800CB390 00000000 */   nop   
 /* 0CBF94 800CB394 0006000D */  break 6
 .L800CB398:
 /* 0CBF98 800CB398 3C04800F */  lui   $a0, %hi(D_800EA3A8) # $a0, 0x800f
@@ -54,31 +54,31 @@ glabel create_next_audio_frame_task
 /* 0CBFF4 800CB3F4 39090001 */  xori  $t1, $t0, 1
 /* 0CBFF8 800CB3F8 ACA90000 */  sw    $t1, ($a1)
 /* 0CBFFC 800CB3FC 14600002 */  bnez  $v1, .L800CB408
-/* 0CC000 800CB400 00000000 */   nop
+/* 0CC000 800CB400 00000000 */   nop   
 /* 0CC004 800CB404 0007000D */  break 7
 .L800CB408:
 /* 0CC008 800CB408 2401FFFF */  li    $at, -1
 /* 0CC00C 800CB40C 14610004 */  bne   $v1, $at, .L800CB420
 /* 0CC010 800CB410 3C018000 */   lui   $at, 0x8000
 /* 0CC014 800CB414 15810002 */  bne   $t4, $at, .L800CB420
-/* 0CC018 800CB418 00000000 */   nop
+/* 0CC018 800CB418 00000000 */   nop   
 /* 0CC01C 800CB41C 0006000D */  break 6
 .L800CB420:
 /* 0CC020 800CB420 AC8D0000 */  sw    $t5, ($a0)
 /* 0CC024 800CB424 01A07025 */  move  $t6, $t5
 /* 0CC028 800CB428 14600002 */  bnez  $v1, .L800CB434
-/* 0CC02C 800CB42C 00000000 */   nop
+/* 0CC02C 800CB42C 00000000 */   nop   
 /* 0CC030 800CB430 0007000D */  break 7
 .L800CB434:
 /* 0CC034 800CB434 2401FFFF */  li    $at, -1
 /* 0CC038 800CB438 14610004 */  bne   $v1, $at, .L800CB44C
 /* 0CC03C 800CB43C 3C018000 */   lui   $at, 0x8000
 /* 0CC040 800CB440 15E10002 */  bne   $t7, $at, .L800CB44C
-/* 0CC044 800CB444 00000000 */   nop
+/* 0CC044 800CB444 00000000 */   nop   
 /* 0CC048 800CB448 0006000D */  break 6
 .L800CB44C:
 /* 0CC04C 800CB44C 0C034438 */  jal   osAiGetLength
-/* 0CC050 800CB450 00000000 */   nop
+/* 0CC050 800CB450 00000000 */   nop   
 /* 0CC054 800CB454 0002C082 */  srl   $t8, $v0, 2
 /* 0CC058 800CB458 0010C840 */  sll   $t9, $s0, 1
 /* 0CC05C 800CB45C 3C03803B */  lui   $v1, %hi(D_803B718C) # 0x803b
@@ -130,7 +130,7 @@ glabel create_next_audio_frame_task
 .L800CB500:
 /* 0CC100 800CB500 8E510008 */  lw    $s1, 8($s2)
 /* 0CC104 800CB504 1220000A */  beqz  $s1, .L800CB530
-/* 0CC108 800CB508 00000000 */   nop
+/* 0CC108 800CB508 00000000 */   nop   
 /* 0CC10C 800CB50C 1A200008 */  blez  $s1, .L800CB530
 /* 0CC110 800CB510 00008025 */   move  $s0, $zero
 /* 0CC114 800CB514 02402025 */  move  $a0, $s2
@@ -164,11 +164,11 @@ glabel create_next_audio_frame_task
 /* 0CC178 800CB578 26100500 */  addiu $s0, %lo(gAudioResetStatus) # addiu $s0, $s0, 0x500
 /* 0CC17C 800CB57C 920C0000 */  lbu   $t4, ($s0)
 /* 0CC180 800CB580 1180000F */  beqz  $t4, .L800CB5C0
-/* 0CC184 800CB584 00000000 */   nop
+/* 0CC184 800CB584 00000000 */   nop   
 /* 0CC188 800CB588 0C02E803 */  jal   audio_shut_down_and_reset_step
-/* 0CC18C 800CB58C 00000000 */   nop
+/* 0CC18C 800CB58C 00000000 */   nop   
 /* 0CC190 800CB590 1440000B */  bnez  $v0, .L800CB5C0
-/* 0CC194 800CB594 00000000 */   nop
+/* 0CC194 800CB594 00000000 */   nop   
 /* 0CC198 800CB598 920D0000 */  lbu   $t5, ($s0)
 /* 0CC19C 800CB59C 3C04800F */  lui   $a0, %hi(D_800EA3B4) # $a0, 0x800f
 /* 0CC1A0 800CB5A0 3C05803B */  lui   $a1, %hi(gAudioResetPresetIdToLoad) # $a1, 0x803b
@@ -233,7 +233,7 @@ glabel create_next_audio_frame_task
 /* 0CC280 800CB680 3C04800F */  lui   $a0, %hi(D_800EA3AC) # $a0, 0x800f
 /* 0CC284 800CB684 0043082A */  slt   $at, $v0, $v1
 /* 0CC288 800CB688 10200002 */  beqz  $at, .L800CB694
-/* 0CC28C 800CB68C 00000000 */   nop
+/* 0CC28C 800CB68C 00000000 */   nop   
 /* 0CC290 800CB690 A6220000 */  sh    $v0, ($s1)
 .L800CB694:
 /* 0CC294 800CB694 8C84A3AC */  lw    $a0, %lo(D_800EA3AC)($a0)

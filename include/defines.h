@@ -10,23 +10,23 @@
 
 /**
  * Enable debug mode
- *
+ * 
  * Press start to skip through menus
- *
+ * 
  * Toggle resource meters by holding R and tapping B. L must not be held.
- *
+ * 
  * Reset to start screen by holding A, B, R, and L.
- *
+ * 
  * View player direction and currentPathPoint in a single player race during staging tap L while holding A and B.
  * Turn off this UI by tapping R while holding A and B.
  * @bug This looks like it should work at any point in the race.
- *
+ * 
  * Set player 1 to the final lap by tapping D-pad up.
  * Set player 1 and player 2 to the final lap by tapping D-pad right.
  * Set player all players to the final lap by tapping D-pad down.
- *
+ * 
  * Immediately start the race if any controller presses Z.
- *
+ * 
  * As the ceremony cutscene starts hold a C or D-pad to switch characters.
  * C UP        = LUIGI
  * C LEFT      = YOSHI
@@ -36,7 +36,7 @@
  * D-pad LEFT  = PEACH
  * D-pad RIGHT = BOWSER
  * D-pad DOWN  = MARIO
- *
+ *  
 */
 #define DEBUG_MODE 0
 #define DEBUG_MENU 1

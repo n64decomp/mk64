@@ -87,7 +87,7 @@ glabel crash_screen_draw_square
 /* 004E60 80004260 1690FFCA */  bne   $s4, $s0, .L8000418C
 /* 004E64 80004264 26520001 */   addiu $s2, $s2, 1
 /* 004E68 80004268 0C033624 */  jal   osWritebackDCacheAll
-/* 004E6C 8000426C 00000000 */   nop
+/* 004E6C 8000426C 00000000 */   nop   
 /* 004E70 80004270 0C033684 */  jal   osViSwapBuffer
 /* 004E74 80004274 02602025 */   move  $a0, $s3
 /* 004E78 80004278 8FBF002C */  lw    $ra, 0x2c($sp)

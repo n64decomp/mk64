@@ -25,7 +25,7 @@ glabel func_8007E00C
 /* 07EC48 8007E048 00380821 */  addu  $at, $at, $t8
 /* 07EC4C 8007E04C 8C38EF4C */  lw    $t8, %lo(jpt_800EEF4C)($at)
 /* 07EC50 8007E050 03000008 */  jr    $t8
-/* 07EC54 8007E054 00000000 */   nop
+/* 07EC54 8007E054 00000000 */   nop   
 glabel L8007E058
 /* 07EC58 8007E058 0C01F7C8 */  jal   init_bb_trash_bin
 /* 07EC5C 8007E05C 00C02025 */   move  $a0, $a2
@@ -52,7 +52,7 @@ glabel L8007E084
 /* 07ECA8 8007E0A8 8D29C548 */  lw    $t1, %lo(gCCSelection)($t1)
 /* 07ECAC 8007E0AC 29210002 */  slti  $at, $t1, 2
 /* 07ECB0 8007E0B0 10200007 */  beqz  $at, .L8007E0D0
-/* 07ECB4 8007E0B4 00000000 */   nop
+/* 07ECB4 8007E0B4 00000000 */   nop   
 /* 07ECB8 8007E0B8 0C01F5C5 */  jal   func_8007D714
 /* 07ECBC 8007E0BC 24040001 */   li    $a0, 1
 /* 07ECC0 8007E0C0 0C01F5C5 */  jal   func_8007D714
@@ -121,4 +121,4 @@ glabel L8007E198
 /* 07ED9C 8007E19C 8FB00028 */  lw    $s0, 0x28($sp)
 /* 07EDA0 8007E1A0 27BD0030 */  addiu $sp, $sp, 0x30
 /* 07EDA4 8007E1A4 03E00008 */  jr    $ra
-/* 07EDA8 8007E1A8 00000000 */   nop
+/* 07EDA8 8007E1A8 00000000 */   nop   
