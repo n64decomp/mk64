@@ -77,7 +77,7 @@ f32 func_802B51E8(Vec3f arg0, Vec3f arg1) {
     return (temp_f2 * temp_f2) + (temp_f12 * temp_f12) + temp_f14 + temp_f14;
 }
 //u32 atan2s(f32, f32);  // might be s32
-u32 get_angle_two_point(Vec3f arg0, Vec3f arg1) {
+u32 get_angle_between_cooridates(Vec3f arg0, Vec3f arg1) {
     f32 temp_v1;
     f32 temp_v2;
     temp_v1 = arg1[0] - arg0[0];
@@ -1051,8 +1051,10 @@ s32 is_visible_between_angle(u16 arg0, u16 arg1, u16 arg2) {
     return 1;
 }
 
-// if object is not visible, return -1.0f else return distance
-f32 is_visible_from_camera_with_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, f32 minDistance, f32 fov, f32 maxDistance) {
+/**
+ * Returns distance or -1.0f if exceeds render distance.
+*/
+f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, f32 minDistance, f32 fov, f32 maxDistance) {
     u16 angleObject;
     UNUSED u16 pad;
     u16 temp_v0;
@@ -1086,7 +1088,7 @@ f32 is_visible_from_camera_with_distance(Vec3f cameraPos, Vec3f objectPos, u16 o
         return -1.0f;
     }
 
-    angleObject = get_angle_two_point(cameraPos, objectPos);
+    angleObject = get_angle_between_cooridates(cameraPos, objectPos);
     minus_fov_angle = (orientationY - extended_fov);
     plus_fov_angle = (orientationY + extended_fov);
 

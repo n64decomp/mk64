@@ -21,7 +21,7 @@ void func_802B4FF0(void);
 void func_802B5794(Mat4, Vec3f, Vec3f);
 s32  render_set_position(Mat4, s32);
 f32  func_802B51E8(Vec3f, Vec3f);
-u32  get_angle_two_point(Vec3f, Vec3f);
+u32  get_angle_between_cooridates(Vec3f, Vec3f);
 u32  func_802B5258(Vec3f, Vec3s);
 void vec3f_set(Vec3f, f32, f32, f32);
 void vec3s_set(Vec3s, s16, s16, s16);

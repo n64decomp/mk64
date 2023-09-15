@@ -143,7 +143,7 @@ UNUSED s32 func_80282200(Vec3s arg0, s16 arg1, s16 arg2) {
 // Calculates fade in/out
 s32 set_transition_colour_fade_alpha_ending(f32 *arg0, f32 arg1, f32 arg2) {
     f32 temp_f0 = arg1 - *arg0;
-    
+   
     if (arg2 < 0.0f) {
         arg2 = -1.0f * arg2;
     }
@@ -349,7 +349,7 @@ void func_80282C40(struct struct_80283430 *arg0, struct struct_80282C40 *arg1, s
   s32 i = 0;
   s32 j = 0;
   func_80282BE4(&arg0[j], arg1[j].unk0, arg1[j].unk3, arg1[j].unk4, arg1[j].unk6, arg2);
-
+  
     j++;
     goto dummy_label_888430;
   while(TRUE) {

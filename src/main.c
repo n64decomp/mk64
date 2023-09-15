@@ -825,7 +825,7 @@ void race_logic_loop(void) {
     func_800591B4();
     func_80093E20();
 #if DVDL
-	display_dvdl();	
+	display_dvdl();	 
 #endif
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
@@ -874,7 +874,7 @@ void game_state_handler(void) {
             // gGfxPool->mtxPool->m or gGfxPool?
             func_80094A64((Mtx *) gGfxPool->mtxPool->m);
 #if DVDL
-			display_dvdl();	
+			display_dvdl();  
 #endif
             break;
         case RACING:

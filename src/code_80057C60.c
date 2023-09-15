@@ -980,7 +980,7 @@ void func_80059D00(void) {
     func_8005A380();
 
     if (D_801657AE == 0) {
-        switch (gScreenModeSelection) {
+        switch (gScreenModeSelection) {  
         case SCREEN_MODE_1P:
             func_800598D4(0);
             if (D_8018D214 == 0) {
@@ -990,7 +990,7 @@ void func_80059D00(void) {
                     func_8007AA44(0);
                 }
                 func_80078C70(0);
-                if (D_8018CAE0 == 0) {  
+                if (D_8018CAE0 == 0) {
                     func_8005C360((gPlayerOneCopy->unk_094 / 18.0f) * 216.0f);
                 }
                 func_8005D0FC(0);
@@ -6912,7 +6912,7 @@ void func_8006E058(void) {
             if ((gPlayerTwo->unk_000 & 0x100) == 0x100) {
                 func_8006E420(gPlayerTwo, 1, 0);
             }
-            
+           
             if ((gPlayerThree->unk_000 & 0x100) == 0x100) {
                 func_8006E420(gPlayerThree, 2, 0);
                 break;
@@ -6939,7 +6939,7 @@ void func_8006E058(void) {
         break;
     case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
     case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-        switch (gModeSelection) {    
+        switch (gModeSelection) {   
         case GRAND_PRIX:
             func_8006E420(gPlayerOne, 0, 0);
             func_8006E420(gPlayerTwo, 1, 0);
