@@ -7,6 +7,19 @@
 #define DEFAULT_LEN_1CH 0x180
 #define DEFAULT_LEN_2CH 0x300
 
+#define DMEM_ADDR_TEMP 0x0
+#define DMEM_ADDR_RESAMPLED 0x20
+#define DMEM_ADDR_RESAMPLED2 0x1A0
+#define DMEM_ADDR_UNCOMPRESSED_NOTE 0x180
+#define DMEM_ADDR_NOTE_PAN_TEMP 0x200
+#define DMEM_ADDR_STEREO_STRONG_TEMP_DRY 0x200
+#define DMEM_ADDR_STEREO_STRONG_TEMP_WET 0x340
+#define DMEM_ADDR_COMPRESSED_ADPCM_DATA 0x3f0
+#define DMEM_ADDR_LEFT_CH 0x540
+#define DMEM_ADDR_RIGHT_CH 0x6C0
+#define DMEM_ADDR_WET_LEFT_CH 0x840
+#define DMEM_ADDR_WET_RIGHT_CH 0x9C0
+
 /*
 Its not clear what values these macros should have. Neither version seem to
 line up for MK64. Maybe each game has unique values for these? I don't know
@@ -91,10 +104,12 @@ Acmd *synthesis_resample_and_mix_reverb(Acmd*, s32, s16, s16);
 Acmd *synthesis_load_reverb_samples(Acmd*, s16, s16);
 Acmd *load_wave_samples(Acmd *acmd, struct NoteSubEu *noteSubEu, struct NoteSynthesisState *synthesisState, s32 nSamplesToLoad);
 Acmd *final_resample(Acmd *acmd, struct NoteSynthesisState *synthesisState, s32 count, u16 pitch, u16 dmemIn, u32 flags);
+Acmd *func_800B86A0(Acmd *cmd, struct NoteSubEu *note, struct NoteSynthesisState *synthesisState, s32 nSamples, u16 inBuf, s32 headsetPanSettings, u32 flags);
 Acmd *note_apply_headset_pan_effects(Acmd *acmd, struct NoteSubEu *noteSubEu, struct NoteSynthesisState *note, s32 bufLen, s32 flags, s32 leftRight);
 
-extern struct AudioBufferParametersEU gAudioBufferParameters;
-extern s32 gMaxSimultaneousNotes;
+// These 2 are almost certainly misnamed and misplaced
+extern u64 gGfxSPTaskOutputBuffer[0x3F00];
+extern u32 gGfxSPTaskOutputBufferSize;
 
 extern struct SynthesisReverb gSynthesisReverbs[4];
 

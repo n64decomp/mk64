@@ -273,7 +273,7 @@ SECTIONS
       #endif
       BUILD_DIR/data/data_0DD0A0_2_1_1.o(.data);
       BUILD_DIR/src/audio/port_eu.o(.data);
-      BUILD_DIR/data/data_0DD0A0_2_1_2.o(.data);
+      BUILD_DIR/src/audio/audio_session_presets.o(.data);
       BUILD_DIR/src/os/osInitialize.o(.data*);
       BUILD_DIR/src/os/osCreateViManager.o(.data);
       BUILD_DIR/src/os/osViTable.o(.data);

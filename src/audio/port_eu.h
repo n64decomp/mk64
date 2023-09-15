@@ -11,6 +11,8 @@ void func_800CBB48(s32, s32*);
 void func_800CBB88(u32, f32);
 void func_800CBBB8(u32, s32);
 void func_800CBBE8(u32, s8);
+void func_800CBC24(void);
+void func_800CBCB0(u32 arg0);
 void func_800CBF48(void);
 
 extern OSMesgQueue D_801937C0;

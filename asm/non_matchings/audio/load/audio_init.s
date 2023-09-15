@@ -23,8 +23,8 @@ glabel audio_init
 /* 0BCCFC 800BC0FC AFB00014 */  sw    $s0, 0x14($sp)
 /* 0BCD00 800BC100 25CEA5DC */  addiu $t6, %lo(gAudioLoadLock) # addiu $t6, $t6, -0x5a24
 /* 0BCD04 800BC104 ADC00000 */  sw    $zero, ($t6)
-/* 0BCD08 800BC108 3C04800F */  lui   $a0, %hi(D_800EA5D0) # $a0, 0x800f
-/* 0BCD0C 800BC10C 8C84A5D0 */  lw    $a0, %lo(D_800EA5D0)($a0)
+/* 0BCD08 800BC108 3C04800F */  lui   $a0, %hi(gAudioHeapSize) # $a0, 0x800f
+/* 0BCD0C 800BC10C 8C84A5D0 */  lw    $a0, %lo(gAudioHeapSize)($a0)
 /* 0BCD10 800BC110 00001825 */  move  $v1, $zero
 /* 0BCD14 800BC114 3C0A803B */  lui   $t2, %hi(D_803B71A0) # $t2, 0x803b
 /* 0BCD18 800BC118 04810003 */  bgez  $a0, .L800BC128
@@ -100,23 +100,23 @@ glabel audio_init
 .L800BC210:
 /* 0BCE10 800BC210 0C032FD2 */  jal   func_800CBF48
 /* 0BCE14 800BC214 00000000 */   nop   
-/* 0BCE18 800BC218 3C02803B */  lui   $v0, %hi(D_803B718C) # $v0, 0x803b
+/* 0BCE18 800BC218 3C02803B */  lui   $v0, %hi(gAiBufferLengths) # $v0, 0x803b
 /* 0BCE1C 800BC21C 3C04803B */  lui   $a0, %hi(D_803B7192) # $a0, 0x803b
 /* 0BCE20 800BC220 24847192 */  addiu $a0, %lo(D_803B7192) # addiu $a0, $a0, 0x7192
-/* 0BCE24 800BC224 2442718C */  addiu $v0, %lo(D_803B718C) # addiu $v0, $v0, 0x718c
+/* 0BCE24 800BC224 2442718C */  addiu $v0, %lo(gAiBufferLengths) # addiu $v0, $v0, 0x718c
 /* 0BCE28 800BC228 240300A0 */  li    $v1, 160
 .L800BC22C:
 /* 0BCE2C 800BC22C 24420002 */  addiu $v0, $v0, 2
 /* 0BCE30 800BC230 0044082B */  sltu  $at, $v0, $a0
 /* 0BCE34 800BC234 1420FFFD */  bnez  $at, .L800BC22C
 /* 0BCE38 800BC238 A443FFFE */   sh    $v1, -2($v0)
-/* 0BCE3C 800BC23C 3C18803B */  lui   $t8, %hi(D_803B70B8) # $t8, 0x803b
-/* 0BCE40 800BC240 271870B8 */  addiu $t8, %lo(D_803B70B8) # addiu $t8, $t8, 0x70b8
+/* 0BCE3C 800BC23C 3C18803B */  lui   $t8, %hi(gAudioUpdatesPerFrame) # $t8, 0x803b
+/* 0BCE40 800BC240 271870B8 */  addiu $t8, %lo(gAudioUpdatesPerFrame) # addiu $t8, $t8, 0x70b8
 /* 0BCE44 800BC244 AF000000 */  sw    $zero, ($t8)
-/* 0BCE48 800BC248 3C01803B */  lui   $at, %hi(D_803B70C0) # $at, 0x803b
-/* 0BCE4C 800BC24C AC2070C0 */  sw    $zero, %lo(D_803B70C0)($at)
-/* 0BCE50 800BC250 3C01803B */  lui   $at, %hi(D_803B70C4) # $at, 0x803b
-/* 0BCE54 800BC254 AC2070C4 */  sw    $zero, %lo(D_803B70C4)($at)
+/* 0BCE48 800BC248 3C01803B */  lui   $at, %hi(gAudioTaskIndex) # $at, 0x803b
+/* 0BCE4C 800BC24C AC2070C0 */  sw    $zero, %lo(gAudioTaskIndex)($at)
+/* 0BCE50 800BC250 3C01803B */  lui   $at, %hi(gCurrAiBufferIndex) # $at, 0x803b
+/* 0BCE54 800BC254 AC2070C4 */  sw    $zero, %lo(gCurrAiBufferIndex)($at)
 /* 0BCE58 800BC258 3C01803B */  lui   $at, %hi(gAudioLibSoundMode) # $at, 0x803b
 /* 0BCE5C 800BC25C A02070B6 */  sb    $zero, %lo(gAudioLibSoundMode)($at)
 /* 0BCE60 800BC260 3C02803B */  lui   $v0, %hi(gAudioTasks) # $v0, 0x803b
@@ -140,14 +140,14 @@ glabel audio_init
 /* 0BCEA8 800BC2A8 3C01803B */  lui   $at, %hi(gCurrAudioFrameDmaCount) # $at, 0x803b
 /* 0BCEAC 800BC2AC AC2070BC */  sw    $zero, %lo(gCurrAudioFrameDmaCount)($at)
 /* 0BCEB0 800BC2B0 3C01803B */  lui   $at, %hi(gSampleDmaNumListItems) # $at, 0x803b
-/* 0BCEB4 800BC2B4 3C04800F */  lui   $a0, %hi(D_800EA5D4) # $a0, 0x800f
+/* 0BCEB4 800BC2B4 3C04800F */  lui   $a0, %hi(gAudioInitPoolSize) # $a0, 0x800f
 /* 0BCEB8 800BC2B8 AC206E58 */  sw    $zero, %lo(gSampleDmaNumListItems)($at)
 /* 0BCEBC 800BC2BC 0C02E43C */  jal   func_800B90F0
-/* 0BCEC0 800BC2C0 8C84A5D4 */   lw    $a0, %lo(D_800EA5D4)($a0)
+/* 0BCEC0 800BC2C0 8C84A5D4 */   lw    $a0, %lo(gAudioInitPoolSize)($a0)
 /* 0BCEC4 800BC2C4 3C06803B */  lui   $a2, %hi(gAiBuffers) # $a2, 0x803b
 /* 0BCEC8 800BC2C8 3C14803B */  lui   $s4, %hi(gAudioInitPool) # $s4, 0x803b
-/* 0BCECC 800BC2CC 3C11803B */  lui   $s1, %hi(D_803B718C) # $s1, 0x803b
-/* 0BCED0 800BC2D0 2631718C */  addiu $s1, %lo(D_803B718C) # addiu $s1, $s1, 0x718c
+/* 0BCECC 800BC2CC 3C11803B */  lui   $s1, %hi(gAiBufferLengths) # $s1, 0x803b
+/* 0BCED0 800BC2D0 2631718C */  addiu $s1, %lo(gAiBufferLengths) # addiu $s1, $s1, 0x718c
 /* 0BCED4 800BC2D4 2694FBD8 */  addiu $s4, %lo(gAudioInitPool) # addiu $s4, $s4, -0x428
 /* 0BCED8 800BC2D8 24C67180 */  addiu $a2, %lo(gAiBuffers) # addiu $a2, $a2, 0x7180
 /* 0BCEDC 800BC2DC 24100A00 */  li    $s0, 2560

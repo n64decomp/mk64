@@ -5,19 +5,9 @@
 #include "audio/heap.h"
 #include "audio/internal.h"
 #include "audio/playback.h"
+#include "audio/synthesis.h"
 
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
-struct SharedDma {
-    /*0x0*/ u8 *buffer;       // target, points to pre-allocated buffer
-    /*0x4*/ uintptr_t source; // device address
-    /*0x8*/ u16 sizeUnused;   // set to bufSize, never read
-    /*0xA*/ u16 bufSize;      // size of buffer
-    /*0xC*/ u8 unused2;       // set to 0, never read
-    /*0xD*/ u8 reuseIndex;    // position in sSampleDmaReuseQueue1/2, if ttl == 0
-    /*0xE*/ u8 ttl;           // duration after which the DMA can be discarded
-};                            // size = 0x10
-
-//struct Note *gNotes; // 0x803B1508
 
 struct SequencePlayer gSequencePlayers[SEQUENCE_PLAYERS];
 struct SequenceChannel gSequenceChannels[SEQUENCE_CHANNELS];
@@ -58,19 +48,8 @@ s32 gMaxAudioCmds;
 s32 gMaxSimultaneousNotes;
 s16 gTempoInternalToExternal;
 s8 gAudioLibSoundMode;
-s32 D_803B70B8; // According to sm64 this is s8 not s32
+s32 gAudioUpdatesPerFrame;
 s32 gCurrAudioFrameDmaCount; // file split around here?
-
-extern OSMesgQueue D_803B6720;
-extern OSIoMesg D_803B6740;
-
-extern OSMesgQueue gCurrAudioFrameDmaQueue; // gCurrAudioFrameDmaQueue
-extern OSMesg gCurrAudioFrameDmaMesgBufs[AUDIO_FRAME_DMA_QUEUE_SIZE]; // gCurrAudioFrameDmaMesgBufs
-extern OSIoMesg gCurrAudioFrameDmaIoMesgBufs[AUDIO_FRAME_DMA_QUEUE_SIZE]; // gCurrAudioFrameDmaIoMesgBufs
-
-extern u32 gSampleDmaNumListItems; // gSampleDmaNumListItems
-extern u32 sSampleDmaListSize1; // sSampleDmaListSize1
-extern s32 D_803B6E60; // sUnused80226B40
 
 
 /**
@@ -179,9 +158,7 @@ void decrease_sample_dma_ttls() {
     D_803B6E60 = 0;
 }
 
-#ifdef MIPS_TO_C
-// dma_sample_data 3000 score diff
-void *func_800BAD0C(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
+void *dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
     s32 hasDma = FALSE;
     struct SharedDma *dma;
     uintptr_t dmaDevAddr;
@@ -201,10 +178,8 @@ void *func_800BAD0C(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
                     // Move the DMA out of the reuse queue, by swapping it with the
                     // tail, and then incrementing the tail.
                     if (dma->reuseIndex != sSampleDmaReuseQueueTail2) {
-                        sSampleDmaReuseQueue2[dma->reuseIndex] =
-                            sSampleDmaReuseQueue2[sSampleDmaReuseQueueTail2];
-                        sSampleDmas[sSampleDmaReuseQueue2[sSampleDmaReuseQueueTail2]].reuseIndex =
-                            dma->reuseIndex;
+                        sSampleDmaReuseQueue2[dma->reuseIndex] = sSampleDmaReuseQueue2[sSampleDmaReuseQueueTail2];
+                        sSampleDmas[sSampleDmaReuseQueue2[sSampleDmaReuseQueueTail2]].reuseIndex = dma->reuseIndex;
                     }
                     sSampleDmaReuseQueueTail2++;
                 }
@@ -214,35 +189,35 @@ void *func_800BAD0C(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
             }
         }
 
-        if (sSampleDmaReuseQueueTail2 != sSampleDmaReuseQueueHead2 && arg2 != 0) {
+        if ((sSampleDmaReuseQueueTail2 != sSampleDmaReuseQueueHead2) && (arg2 != 0)) {
             // Allocate a DMA from reuse queue 2. This queue can be empty, since
             // TTL 60 is pretty large.
-            dmaIndex = sSampleDmaReuseQueue2[sSampleDmaReuseQueueTail2];
-            sSampleDmaReuseQueueTail2++;
-            dma = sSampleDmas + dmaIndex;
+            dmaIndex = sSampleDmaReuseQueue2[sSampleDmaReuseQueueTail2++];
+            dma = &sSampleDmas[dmaIndex];
             hasDma = TRUE;
         }
     } else {
-        dma = sSampleDmas;
-        dma += *dmaIndexRef;
-        bufferPos = devAddr - dma->source;
-        if (0 <= bufferPos && (size_t) bufferPos <= dma->bufSize - size) {
-            // We already have DMA for this memory range.
-            if (dma->ttl == 0) {
-                // Move the DMA out of the reuse queue, by swapping it with the
-                // tail, and then incrementing the tail.
-                if (dma->reuseIndex != sSampleDmaReuseQueueTail1) {
-                    if (1) {
+        dma = &sSampleDmas[*dmaIndexRef];
+        for (i = 0; i < sSampleDmaListSize1; dma = &sSampleDmas[i++]) {
+            bufferPos = devAddr - dma->source;
+            if (0 <= bufferPos && (size_t) bufferPos <= dma->bufSize - size) {
+                // We already have DMA for this memory range.
+                if (dma->ttl == 0) {
+                    // Move the DMA out of the reuse queue, by swapping it with the
+                    // tail, and then incrementing the tail.
+                    if (dma->reuseIndex != sSampleDmaReuseQueueTail1) {
+                        if (1) {
+                        }
+                        sSampleDmaReuseQueue1[dma->reuseIndex] =
+                            sSampleDmaReuseQueue1[sSampleDmaReuseQueueTail1];
+                        sSampleDmas[sSampleDmaReuseQueue1[sSampleDmaReuseQueueTail1]].reuseIndex =
+                            dma->reuseIndex;
                     }
-                    sSampleDmaReuseQueue1[dma->reuseIndex] =
-                        sSampleDmaReuseQueue1[sSampleDmaReuseQueueTail1];
-                    sSampleDmas[sSampleDmaReuseQueue1[sSampleDmaReuseQueueTail1]].reuseIndex =
-                        dma->reuseIndex;
+                    sSampleDmaReuseQueueTail1++;
                 }
-                sSampleDmaReuseQueueTail1++;
+                dma->ttl = 2;
+                return dma->buffer + (devAddr - dma->source);
             }
-            dma->ttl = 2;
-            return dma->buffer + (devAddr - dma->source);
         }
     }
 
@@ -250,7 +225,7 @@ void *func_800BAD0C(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
         // Allocate a DMA from reuse queue 1. This queue will hopefully never
         // be empty, since TTL 2 is so small.
         dmaIndex = sSampleDmaReuseQueue1[sSampleDmaReuseQueueTail1++];
-        dma = sSampleDmas + dmaIndex;
+        dma = &sSampleDmas[dmaIndex];
         hasDma = TRUE;
     }
 
@@ -264,131 +239,6 @@ void *func_800BAD0C(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
     *dmaIndexRef = dmaIndex;
     return (devAddr - dmaDevAddr) + dma->buffer;
 }
-
-extern ? gCurrAudioFrameDmaIoMesgBufs;
-extern OSMesgQueue gCurrAudioFrameDmaQueue;
-extern u32 sSampleDmaListSize1;
-extern ? sSampleDmaReuseQueue1;
-extern ? sSampleDmaReuseQueue2;
-extern u8 sSampleDmaReuseQueueHead2;
-extern u8 sSampleDmaReuseQueueTail1;
-extern u8 sSampleDmaReuseQueueTail2;
-extern ? sSampleDmas;
-
-void *func_800BAD0C(u32 devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
-    void *sp40;
-    s32 sp30;
-    s32 temp_t9;
-    s32 temp_t9_2;
-    s32 temp_t9_3;
-    s32 temp_v0_2;
-    s32 temp_v0_4;
-    s32 var_t2;
-    s32 var_t3;
-    u16 temp_v0_6;
-    u32 temp_s0;
-    u32 var_v1;
-    u32 var_v1_2;
-    u8 *temp_v0_3;
-    u8 *temp_v0_5;
-    u8 temp_a0;
-    u8 temp_a3;
-    u8 temp_t2;
-    u8 temp_v0;
-    void *temp_t0;
-    void *var_a0;
-    void *var_t0;
-
-    var_t3 = 0;
-    if ((arg2 != 0) || (temp_v0 = *dmaIndexRef, var_v1 = 0, ((temp_v0 < (u32) sSampleDmaListSize1) == 0))) {
-        var_v1_2 = sSampleDmaListSize1;
-        if (var_v1_2 < (u32) gSampleDmaNumListItems) {
-            var_a0 = (var_v1_2 * 0x10) + &sSampleDmas;
-loop_4:
-            temp_t0 = var_a0;
-            temp_v0_2 = devAddr - var_a0->unk4;
-            if ((temp_v0_2 >= 0) && ((u32) (var_a0->unkA - size) >= (u32) temp_v0_2)) {
-                if ((var_a0->unkE == 0) && (sSampleDmaReuseQueueHead2 != sSampleDmaReuseQueueTail2)) {
-                    temp_a3 = var_a0->unkD;
-                    temp_v0_3 = &sSampleDmaReuseQueue2 + sSampleDmaReuseQueueTail2;
-                    if (sSampleDmaReuseQueueTail2 != temp_a3) {
-                        *(&sSampleDmaReuseQueue2 + temp_a3) = *temp_v0_3;
-                        (&sSampleDmas + (*temp_v0_3 * 0x10))->unkD = (u8) var_a0->unkD;
-                    }
-                    sSampleDmaReuseQueueTail2 += 1;
-                }
-                var_a0->unkE = 0x3CU;
-                *dmaIndexRef = (u8) var_v1_2;
-                return (var_a0->unk0 + devAddr) - var_a0->unk4;
-            }
-            var_v1_2 += 1;
-            var_a0 += 0x10;
-            if (var_v1_2 >= (u32) gSampleDmaNumListItems) {
-                sp40 = temp_t0;
-                goto block_14;
-            }
-            goto loop_4;
-        }
-block_14:
-        var_t0 = sp40;
-        if ((sSampleDmaReuseQueueHead2 != sSampleDmaReuseQueueTail2) && (arg2 != 0)) {
-            temp_t2 = *(&sSampleDmaReuseQueue2 + sSampleDmaReuseQueueTail2);
-            temp_t9 = temp_t2 * 0x10;
-            sSampleDmaReuseQueueTail2 += 1;
-            var_t0 = &sSampleDmas + temp_t9;
-            var_t3 = 1;
-            sp30 = (s32) temp_t2;
-        }
-        goto block_27;
-    }
-    var_t0 = &sSampleDmas + (temp_v0 * 0x10);
-    if (sSampleDmaListSize1 != 0) {
-loop_19:
-        temp_t9_2 = var_v1 * 0x10;
-        var_v1 += 1;
-        temp_v0_4 = devAddr - var_t0->unk4;
-        if ((temp_v0_4 >= 0) && ((u32) (var_t0->unkA - size) >= (u32) temp_v0_4)) {
-            if (var_t0->unkE == 0) {
-                temp_a0 = var_t0->unkD;
-                temp_v0_5 = &sSampleDmaReuseQueue1 + sSampleDmaReuseQueueTail1;
-                if (sSampleDmaReuseQueueTail1 != temp_a0) {
-                    *(&sSampleDmaReuseQueue1 + temp_a0) = *temp_v0_5;
-                    (&sSampleDmas + (*temp_v0_5 * 0x10))->unkD = (u8) var_t0->unkD;
-                }
-                sSampleDmaReuseQueueTail1 += 1;
-            }
-            var_t0->unkE = 2U;
-            return (var_t0->unk0 + devAddr) - var_t0->unk4;
-        }
-        var_t0 = &sSampleDmas + temp_t9_2;
-        if (var_v1 >= (u32) sSampleDmaListSize1) {
-            goto block_27;
-        }
-        goto loop_19;
-    }
-block_27:
-    var_t2 = sp30;
-    if (var_t3 == 0) {
-        var_t2 = (s32) *(&sSampleDmaReuseQueue1 + sSampleDmaReuseQueueTail1);
-        sSampleDmaReuseQueueTail1 += 1;
-        var_t0 = &sSampleDmas + (var_t2 * 0x10);
-    }
-    temp_v0_6 = var_t0->unkA;
-    temp_s0 = devAddr & ~0xF;
-    var_t0->unkE = 2;
-    var_t0->unk4 = temp_s0;
-    var_t0->unk8 = temp_v0_6;
-    temp_t9_3 = gCurrAudioFrameDmaCount * 0x18;
-    gCurrAudioFrameDmaCount += 1;
-    sp30 = var_t2;
-    sp40 = var_t0;
-    osPiStartDma(temp_t9_3 + &gCurrAudioFrameDmaIoMesgBufs, 0, 0, temp_s0, var_t0->unk0, (u32) temp_v0_6, &gCurrAudioFrameDmaQueue);
-    *dmaIndexRef = (u8) var_t2;
-    return (devAddr - temp_s0) + var_t0->unk0;
-}
-#else
-GLOBAL_ASM("asm/non_matchings/audio/load/func_800BAD0C.s")
-#endif
 
 // init_sample_dma_buffers
 void func_800BB030(UNUSED s32 arg0) {
@@ -506,27 +356,20 @@ s32 func_800BB388(s32 bankId, s32 instId, s32 arg2) {
 #endif
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Aug-14-2023
-void func_800BB43C(void *arg0, s32 arg1) {
-    s32 var_v0;
-    void *var_a2;
-
-    var_v0 = 0;
-    var_a2 = arg0;
-    if (arg0->unk2 > 0) {
-        do {
-            var_v0 += 1;
-            if (var_a2->unk8 != 0) {
-                var_a2->unk4 = (s32) (var_a2->unk4 + arg1);
-            }
-            var_a2 += 8;
-        } while (var_v0 < arg0->unk2);
+// This appears to be a modified version of alSeqFileNew
+// from src/os/alBankNew.c
+// Or maybe its patch_seq_file from SM64's load_sh.c?
+void func_800BB43C(ALSeqFile *f, u8 *base) {
+#define PATCH(SRC, BASE, TYPE) SRC = (TYPE)((uintptr_t) SRC + (uintptr_t) BASE)
+    int i;
+    u8 *wut = base;
+    for (i = 0; i < f->seqCount; i++) {
+        if (f->seqArray[i].len != 0)
+            PATCH(f->seqArray[i].offset, wut, u8 *);
     }
+#undef PATCH
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/load/func_800BB43C.s")
-#endif
+
 
 void patch_sound(struct AudioBankSound *sound, u8 *memBase, u8 *offsetBase) {
     struct AudioBankSample *sample;
@@ -562,12 +405,8 @@ void patch_sound(struct AudioBankSound *sound, u8 *memBase, u8 *offsetBase) {
 #undef PATCH
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Sep-12-2023
+// There does not appear to an SM64 counterpart to this function
 void func_800BB584(s32 bankId) {
-    s32 sp18;
-    struct CtlEntry *temp_v0;
-    struct CtlEntry *temp_v0_2;
     u8 *var_a1;
 
     if (gAlTbl->seqArray[bankId].len == 0) {
@@ -575,15 +414,10 @@ void func_800BB584(s32 bankId) {
     } else {
         var_a1 = gAlTbl->seqArray[bankId].offset;
     }
-    temp_v0 = &gCtlEntries[bankId];
-    sp18 = bankId * 0xC;
-    patch_audio_bank((struct AudioBank *) (temp_v0->instruments - 4), var_a1, (u32) temp_v0->numInstruments, (u32) temp_v0->numDrums);
-    temp_v0_2 = &gCtlEntries[bankId];
-    temp_v0_2->drums = temp_v0_2->instruments->unk-4;
+    // wtf is up with the `gCtlEntries[bankId].instruments - 1` stuff?
+    patch_audio_bank((gCtlEntries[bankId].instruments - 1), var_a1, gCtlEntries[bankId].numInstruments, gCtlEntries[bankId].numDrums);
+    gCtlEntries[bankId].drums = *(gCtlEntries[bankId].instruments - 1);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/load/func_800BB584.s")
-#endif
 
 void patch_audio_bank(struct AudioBank *mem, u8 *offset, u32 numInstruments, u32 numDrums) {
     struct Instrument *instrument;
@@ -918,89 +752,44 @@ void load_sequence_internal(u32 player, u32 seqId, s32 loadAsync) {
     seqPlayer->scriptState.pc = sequenceData;
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Aug-14-2023
-? func_800B90F0(s32);                               /* extern */
-? audio_shut_down_and_reset_step();                                  /* extern */
-? func_800BB43C(s32 *, ? *);                        /* extern */
-extern s8 gAudioResetStatus;
-extern s8 gAudioResetPresetIdToLoad;
-extern OSMesgQueue D_803B6720;
-extern void *D_803B6738;
-extern s32 *gSeqFileHeader;
-extern s32 *gAlCtlHeader;
-extern s32 *gAlTbl;
-extern s16 gSequenceCount;
-extern s32 D_803B70B8;
-extern s32 D_803B70C0;
-extern s32 D_803B70C4;
-extern s32 gAudioTask;
-extern ? gAudioTasks;
-extern f32 D_803B7178;
-extern s32 gRefreshRate;
-extern void *gAiBuffers;
-extern ? D_803B718C;
-extern ? D_803B7192;
-extern ? D_803B71A0;
-extern ? D_803B71B0;
-extern ? _audio_banksSegmentRomStart;
-extern ? _audio_tablesSegmentRomStart;
-extern ? _instrument_setsSegmentRomStart;
-extern ? _sequencesSegmentRomStart;
-extern void *gCurrAudioFrameDmaMesgBufs;
-extern OSMesgQueue gCurrAudioFrameDmaQueue;
-extern s32 gSampleDmaNumListItems;
-static s32 D_800EA5D0 = 0x00048C00;
-static s32 D_800EA5D4 = 0x00002600;
-static u32 D_800EA5D8 = 0;
-static s32 gAudioLoadLock = 0;
+#ifdef NON_MATCHING
+//https://decomp.me/scratch/5FBUM
+// There is some wild bullshit going on in this function
+// It is an unholy cross between SM64's EU and Shindou
+// verions of this function, with the for loop towards
+// the bottom resembling stuff from bank_load_async
+extern u8 _audio_banksSegmentRomStart;
+extern u8 _audio_tablesSegmentRomStart;
+extern u8 _instrument_setsSegmentRomStart;
+extern u8 _sequencesSegmentRomStart;
 
-void audio_init(void) {
-    s32 sp8C;
-    s32 sp60;
-    void **sp3C;
-    ? *var_v0;
-    ? *var_v0_3;
-    s16 temp_s3;
-    s16 temp_t1;
-    s32 *temp_v0;
-    s32 *temp_v0_2;
-    s32 *temp_v0_3;
-    s32 temp_t7;
-    s32 var_s0_2;
-    s32 var_s1;
-    s32 var_v1;
-    s32 var_v1_2;
-    u32 *var_v0_2;
-    u32 temp_a1;
-    u32 temp_a1_2;
-    u32 temp_a1_3;
-    u32 var_s0;
-    u8 *temp_v0_4;
-    void **var_a2;
-    void *temp_t3;
-    void *temp_t7_2;
+void audio_init() {
+    UNUSED s8 pad[16];
+    s32 i, j, k;
+    UNUSED s32 lim1; // lim1 unused in EU
+    u32 sp60[2];
+    s32 UNUSED lim2, lim3;
+    UNUSED s32 size;
+    UNUSED u64 *ptr64;
+    void *data;
+    UNUSED s32 one = 1;
+    u8 *test;
 
     gAudioLoadLock = 0;
-    temp_t7 = (s32) D_800EA5D0 / 8;
-    if (temp_t7 > 0) {
-        var_v0 = &D_803B71B0;
-        do {
-            var_v0 += 8;
-            var_v0->unk-4 = 0;
-            var_v0->unk-8 = 0;
-        } while ((u32) var_v0 < (u32) ((temp_t7 * 8) + &D_803B71B0));
+
+    for (i = 0; i < gAudioHeapSize / 8; i++) {
+        ((u64 *) D_803B71B0)[i] = 0;
     }
-    var_v0_2 = &gGfxSPTaskOutputBufferSize;
-    var_s0 = (u32) (&D_803B71A0 - &gGfxSPTaskOutputBufferSize) >> 3;
-    if ((s32) var_s0 >= 0) {
-        do {
-            var_s0 -= 1;
-            var_v0_2->unk4 = 0;
-            var_v0_2->unk0 = 0;
-            var_v0_2 += 8;
-        } while ((s32) var_s0 >= 0);
+
+#ifdef TARGET_N64
+    // It seems boot.s doesn't clear the .bss area for audio, so do it here.
+    lim3 = ((uintptr_t) &D_803B71A0 - (uintptr_t) &gGfxSPTaskOutputBufferSize) / 8;
+    ptr64 = &gGfxSPTaskOutputBufferSize;
+    for (k = lim3; k >= 0; k--) {
+        *ptr64++ = 0;
     }
+#endif
+
     switch (osTvType) {                             /* irregular */
     case 0:
         D_803B7178 = 20.03042f;
@@ -1010,94 +799,77 @@ void audio_init(void) {
         D_803B7178 = 16.546f;
         gRefreshRate = 0x0000003C;
         break;
-    default:
     case 1:
+    default:
         D_803B7178 = 16.713f;
         gRefreshRate = 0x0000003C;
         break;
     }
-    func_800CBF48(&gGfxSPTaskOutputBufferSize);
-    var_v0_3 = &D_803B718C;
-    do {
-        var_v0_3 += 2;
-        var_v0_3->unk-2 = 0x00A0;
-    } while ((u32) var_v0_3 < (u32) &D_803B7192);
-    D_803B70B8 = 0;
-    D_803B70C0 = 0;
-    D_803B70C4 = 0;
+    func_800CBF48();
+    for (i = 0; i < NUMAIBUFFERS; i++) {
+        gAiBufferLengths[i] = 0xa0;
+    }
+
+    gAudioTaskIndex = gAudioUpdatesPerFrame = 0;
+    gCurrAiBufferIndex = 0;
     gAudioLibSoundMode = 0;
-    gAudioTask = 0;
-    gAudioTasks.unk34 = 0;
-    gAudioTasks.unk84 = 0;
+    gAudioTask = NULL;
+    gAudioTasks[0].task.t.data_size = 0;
+    gAudioTasks[1].task.t.data_size = 0;
     osCreateMesgQueue(&D_803B6720, &D_803B6738, 1);
-    osCreateMesgQueue(&gCurrAudioFrameDmaQueue, &gCurrAudioFrameDmaMesgBufs, 0x00000040);
+    osCreateMesgQueue(&gCurrAudioFrameDmaQueue, gCurrAudioFrameDmaMesgBufs,
+                      ARRAY_COUNT(gCurrAudioFrameDmaMesgBufs));
     gCurrAudioFrameDmaCount = 0;
     gSampleDmaNumListItems = 0;
-    func_800B90F0(D_800EA5D4);
-    var_a2 = &gAiBuffers;
-    do {
-        sp3C = var_a2;
-        var_v1 = 0;
-        *var_a2 = soundAlloc(&gAudioInitPool, 0x00000A00U);
-loop_18:
-        *(*var_a2 + var_v1) = 0;
-        (*var_a2 + var_v1)->unk2 = 0;
-        (*var_a2 + var_v1)->unk4 = 0;
-        temp_t7_2 = *var_a2 + var_v1;
-        var_v1 += 8;
-        temp_t7_2->unk6 = 0;
-        if (var_v1 != 0xA00) {
-            goto loop_18;
+
+    sound_init_main_pools(gAudioInitPoolSize);
+
+    for (i = 0; i < NUMAIBUFFERS; i++) {
+        gAiBuffers[i] = soundAlloc(&gAudioInitPool, AIBUFFER_LEN);
+
+        for (j = 0; j < (s32) (AIBUFFER_LEN / sizeof(s16)); j++) {
+            gAiBuffers[i][j] = 0;
         }
-        var_a2 += 4;
-    } while ((u32) var_a2 < (u32) &D_803B718C);
-    gAudioResetPresetIdToLoad = 0;
-    gAudioResetStatus = 1;
-    audio_shut_down_and_reset_step();
-    gSeqFileHeader = &sp60;
-    audio_dma_copy_immediate((u32) &_sequencesSegmentRomStart, &sp60, 0x00000010U);
-    temp_t1 = gSeqFileHeader->unk2;
-    temp_a1 = (((temp_t1 & 0xFFFF) * 8) + 0x13) & ~0xF;
-    gSequenceCount = temp_t1;
-    temp_v0 = soundAlloc(&gAudioInitPool, temp_a1);
-    gSeqFileHeader = temp_v0;
-    audio_dma_copy_immediate((u32) &_sequencesSegmentRomStart, temp_v0, temp_a1);
-    func_800BB43C(gSeqFileHeader, &_sequencesSegmentRomStart);
-    gAlCtlHeader = &sp60;
-    audio_dma_copy_immediate((u32) &_audio_banksSegmentRomStart, &sp60, 0x00000010U);
-    temp_s3 = gAlCtlHeader->unk2;
-    temp_a1_2 = ((temp_s3 * 8) + 0x13) & ~0xF;
-    temp_v0_2 = soundAlloc(&gAudioInitPool, temp_a1_2);
-    gAlCtlHeader = temp_v0_2;
-    audio_dma_copy_immediate((u32) &_audio_banksSegmentRomStart, temp_v0_2, temp_a1_2);
-    func_800BB43C(gAlCtlHeader, &_audio_banksSegmentRomStart);
-    gCtlEntries = soundAlloc(&gAudioInitPool, temp_s3 * 0xC);
-    var_v1_2 = 0;
-    if (temp_s3 > 0) {
-        var_s1 = 0;
-        var_s0_2 = 0;
-        do {
-            sp8C = var_v1_2;
-            audio_dma_copy_immediate((gAlCtlHeader + var_s1)->unk4, &sp60, 0x00000010U);
-            (gCtlEntries + var_s0_2)->unk1 = (s8) sp60;
-            var_v1_2 = sp8C + 1;
-            temp_t3 = gCtlEntries + var_s0_2;
-            var_s0_2 += 0xC;
-            var_s1 += 8;
-            temp_t3->unk2 = (s8) sp64;
-        } while (var_v1_2 != temp_s3);
     }
-    gAlTbl = &sp60;
-    audio_dma_copy_immediate((u32) &_audio_tablesSegmentRomStart, &sp60, 0x00000010U);
-    temp_a1_3 = ((gAlTbl->unk2 * 8) + 0x13) & ~0xF;
-    temp_v0_3 = soundAlloc(&gAudioInitPool, temp_a1_3);
-    gAlTbl = temp_v0_3;
-    audio_dma_copy_immediate((u32) &_audio_tablesSegmentRomStart, temp_v0_3, temp_a1_3);
-    func_800BB43C(gAlTbl, &_audio_tablesSegmentRomStart);
-    temp_v0_4 = soundAlloc(&gAudioInitPool, 0x00000100U);
-    gAlBankSets = temp_v0_4;
-    audio_dma_copy_immediate((u32) &_instrument_setsSegmentRomStart, temp_v0_4, 0x00000100U);
-    sound_alloc_pool_init(&gUnkPool1.pool, soundAlloc(&gAudioInitPool, D_800EA5D8), D_800EA5D8);
+
+    gAudioResetPresetIdToLoad = 0;
+    gAudioResetStatus = one;
+    audio_shut_down_and_reset_step();
+    gSeqFileHeader = (ALSeqFile *) sp60;
+    test = &_sequencesSegmentRomStart;
+    audio_dma_copy_immediate(test, gSeqFileHeader, 0x00000010U);
+    gSequenceCount = gSeqFileHeader->seqCount;
+    size = gSequenceCount * sizeof(ALSeqData) + 4;
+    size = ALIGN16(size);
+    gSeqFileHeader = soundAlloc(&gAudioInitPool, size);
+    audio_dma_copy_immediate(test, gSeqFileHeader, size);
+    func_800BB43C(gSeqFileHeader, test);
+    gAlCtlHeader = (ALSeqFile *) sp60;
+    test = &_audio_banksSegmentRomStart;
+    audio_dma_copy_immediate(test, gAlCtlHeader, 0x00000010U);
+    size = ALIGN16(gAlCtlHeader->seqCount * sizeof(ALSeqData) + 4);
+    gAlCtlHeader = soundAlloc(&gAudioInitPool, size);
+    audio_dma_copy_immediate(test, gAlCtlHeader, size);
+    func_800BB43C(gAlCtlHeader, test);
+    gCtlEntries = soundAlloc(&gAudioInitPool, size * 0xC);
+    for (i = 0; i < size; i++) {
+        audio_dma_copy_immediate(gAlCtlHeader->seqArray[i].offset, sp60, 0x00000010U);
+        if(size) {}
+        if(1) {}
+        gCtlEntries[i].numInstruments = sp60[0];
+        gCtlEntries[i].numDrums = sp60[1];
+    }
+    gAlTbl = (ALSeqFile *) sp60;
+    test = &_audio_tablesSegmentRomStart;
+    audio_dma_copy_immediate(test, gAlTbl, 0x00000010U);
+    size = gAlTbl->seqCount * sizeof(ALSeqData) + 4;
+    size = ALIGN16(size);
+    gAlTbl = soundAlloc(&gAudioInitPool, size);
+    audio_dma_copy_immediate(test, gAlTbl, size);
+    func_800BB43C(gAlTbl, test);
+    gAlBankSets = soundAlloc(&gAudioInitPool, 0x00000100U);
+    audio_dma_copy_immediate((u32) &_instrument_setsSegmentRomStart, gAlBankSets, 0x00000100U);
+    sound_alloc_pool_init(&gUnkPool1.pool, soundAlloc(&gAudioInitPool, (u32) D_800EA5D8), (u32) D_800EA5D8);
     init_sequence_players();
     gAudioLoadLock = 0x76557364;
 }
