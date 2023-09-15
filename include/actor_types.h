@@ -36,6 +36,9 @@ Other members are more flexible, and even the non-general specifications can be 
 exactly what you're doing.
 */
 
+#define ACTOR_TREE_MARIO_RACEWAY       0x02
+#define ACTOR_TREE_YOSHI_VALLEY        0x03
+#define ACTOR_TREE_ROYAL_RACEWAY       0x04
 #define ACTOR_FALLING_ROCK             0x05
 #define ACTOR_BANANA                   0x06
 #define ACTOR_GREEN_SHELL              0x07
@@ -48,11 +51,18 @@ exactly what you're doing.
 #define ACTOR_TRAIN_ENGINE             0x0F
 #define ACTOR_TRAIN_TENDER             0x10
 #define ACTOR_TRAIN_PASSENGER_CAR      0x11
+#define ACTOR_TREE_MOO_MOO_FARM        0x13
 #define ACTOR_TRIPLE_GREEN_SHELL       0x15
 #define ACTOR_TRIPLE_RED_SHELL         0x16
 #define ACTOR_MARIO_RACEWAY_SIGN       0x17
 #define ACTOR_COW                      0x18
 #define ACTOR_PALM_TREE                0x19
+#define ACTOR_TREE_BOWSERS_CASTLE      0x1C
+#define ACTOR_TREE_FRAPPE_SNOWLAND     0x1D
+#define ACTOR_CACTUS1_KALAMARI_DESERT  0x1E
+#define ACTOR_CACTUS2_KALAMARI_DESERT  0x1F
+#define ACTOR_CACTUS3_KALAMARI_DESERT  0x20
+#define ACTOR_BUSH_BOWSERS_CASTLE      0x21
 #define ACTOR_WARIO_STADIUM_SIGN       0x23
 #define ACTOR_BOX_TRUCK                0x25
 #define ACTOR_PADDLE_WHEEL_BOAT        0x26
