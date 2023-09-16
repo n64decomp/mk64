@@ -250,7 +250,7 @@ glabel func_800B7C30
 /* 0B8BCC 800B7FCC 00008012 */  mflo  $s0
 /* 0B8BD0 800B7FD0 2610001F */  addiu $s0, $s0, 0x1f
 /* 0B8BD4 800B7FD4 02012824 */  and   $a1, $s0, $at
-/* 0B8BD8 800B7FD8 0C02EB43 */  jal   func_800BAD0C
+/* 0B8BD8 800B7FD8 0C02EB43 */  jal   dma_sample_data
 /* 0B8BDC 800B7FDC 00A08025 */   move  $s0, $a1
 /* 0B8BE0 800B7FE0 8FAB011C */  lw    $t3, 0x11c($sp)
 /* 0B8BE4 800B7FE4 8FAC0118 */  lw    $t4, 0x118($sp)
