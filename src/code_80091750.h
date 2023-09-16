@@ -61,8 +61,8 @@ typedef struct {
 /* Function Prototypes */
 
 void func_800A7A4C(s32);
-void func_8009DF8C(u32, s8);
-void func_8009DEF8(u32, s8);
+void func_8009DF8C(u32, u32);
+void func_8009DEF8(u32, u32);
 void func_8009D77C(s32,s32,s32);
 void func_8009CBE4(s32, s32, s32);
 void func_800996BC(MkTexture*, s32);
