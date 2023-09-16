@@ -70,6 +70,7 @@ expected/*
 /assets/**/*.mio0
 /assets/**/*.raw
 /assets/**/*.inc.c
+/assets/**/*.inc.*vtx
 /music/**/*.m64
 /sound/**/*.m64
 /sound/**/*.aiff

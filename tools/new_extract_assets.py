@@ -66,6 +66,15 @@ def asset_from_block(asset_block, asset):
         asset_size = asset["width"] * asset["height"] * 4
     elif asset["type"] in { "bin" }:
         asset_size = asset["size"]
+    elif asset["type"] in { "mk64vtx", "vtx" }:
+        if "count" in asset:
+            if asset["type"] == "vtx":
+                vertex_size = 16
+            else:
+                vertex_size = 14
+            asset_size = asset["count"] * vertex_size
+        else:
+            asset_size = -1
     else:
         print("TODO: raise an exception here")
         return None
@@ -76,7 +85,14 @@ def asset_from_block(asset_block, asset):
     # similarly silly raw block handling work.
     # For MIO0 and TKMK this should make no difference
     asset_block.seek(block_offset, os.SEEK_CUR)
-    asset_data = asset_block.read(asset_size)
+    # Use -1 to indicate that the given asset is the entire file rather than
+    #   some small portion of it
+    # Only currently relevant for course model vertex lists, and only if
+    #   we choose to leave the list size out of the asset json file
+    if asset_size == -1:
+        asset_data = asset_block.read()
+    else:
+        asset_data = asset_block.read(asset_size)
 
     asset_file = tempfile.NamedTemporaryFile(mode="wb", prefix="raw_asset_")
     asset_file.write(asset_data)
@@ -226,12 +242,35 @@ def export_bin(baserom, asset):
         asset_data = baserom.read(int(asset["size"], 16))
         asset_file.write(asset_data)
 
+def export_vtx(baserom, asset):
+    raw_asset_file = get_asset_raw(baserom, asset)
+    inc_filename = os.path.join(asset["output_dir"], f'{asset["name"]}.inc.{asset["type"]}')
+    os.makedirs(asset["output_dir"], exist_ok=True)
+
+    if asset["type"] == "vtx":
+        vtx_struct = struct.Struct(">hhhhhhBBBB")
+        vtx_format = "{{{{{{ {0}, {1}, {2}, }}, {3}, {{ {4}, {5} }}, {{ 0x{6:02x}, 0x{7:02x}, 0x{8:02x}, 0x{9:02x} }}}}}},\n"
+    else:
+        vtx_struct = struct.Struct(">hhhhhBBBB")
+        vtx_format = "{{{{ {0}, {1}, {2} }}, {{ {3}, {4} }}, {{ 0x{5:02x}, 0x{6:02x}, 0x{7:02x}, 0x{8:02x} }}}},\n"
+
+    asset_filename = os.path.join(asset["output_dir"], f'{asset["name"]}.inc.{asset["type"]}')
+    #obj_filename = os.path.join(asset["output_dir"], f'{asset["name"]}.obj')
+    #vtx_obj_format = "v {0} {1} {2}\n"
+
+    #with open(raw_asset_file.name, "rb") as f, open(inc_filename, "w") as inc_out, open("obj_filename", "w") as obj_out:
+    with open(raw_asset_file.name, "rb") as f, open(inc_filename, "w") as inc_out:
+        for vtx in vtx_struct.iter_unpack(f.read()):
+            inc_out.write(vtx_format.format(*vtx))
+            #obj_out.write(vtx_obj_format.format(*vtx[:3]))
+
 # TODO: use a proper argument parser
 baserom_name = sys.argv[1]
 # really, this should be a list of json files, that way we can just do $< in the Makefile
 assest_json_file = sys.argv[2]
 
 image_types = { "rgba16", "rgba32", "ci4", "ci8", "i4", "i8", "ia4", "ia8", "ia16", "ia1" }
+vtx_types = { "mk64vtx", "vtx" }
 # Types that extracted as-is from the ROM. No decompression or converting, just rip the bytes out of the ROM
 # Hopefully some day in the future we'll be able to properly extract m64 types (music of one variety or another)
 raw_types = { "bin", "m64" }
@@ -251,6 +290,8 @@ try:
                 export_image(baserom, asset, asset_list)
             elif asset["type"] in raw_types:
                 export_bin(baserom, asset)
+            elif asset["type"] in vtx_types:
+                export_vtx(baserom, asset)
             else:
                 # Should we raise here?
                 print(f"Unexpected asset type {0}", asset["type"])

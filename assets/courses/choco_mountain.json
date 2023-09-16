@@ -1,4 +1,6 @@
 {
 "gTextureChocoMountainWall": {"output_dir": "choco_mountain", "rom_offset": "0x82B620", "block_offset": "0x05B38", "width": 32, "height": 32, "type": "rgba16"},
-"gTextureChocoMountainRock": {"output_dir": "choco_mountain", "rom_offset": "0x82B620", "block_offset": "0x06338", "width": 32, "height": 32, "type": "rgba16"}
+"gTextureChocoMountainRock": {"output_dir": "choco_mountain", "rom_offset": "0x82B620", "block_offset": "0x06338", "width": 32, "height": 32, "type": "rgba16"},
+"gModelChocoMountain6B38":   {"output_dir": "choco_mountain", "rom_offset": "0x82B620", "block_offset": "0x06B38", "count": 15, "type": "vtx"},
+"gCourseModelChocoMountain": {"output_dir": "choco_mountain", "rom_offset": "0x89B510", "type": "mk64vtx"}
 }
