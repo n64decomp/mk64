@@ -107,7 +107,7 @@ u8 gControllerBits;
 
 struct UnkStruct_8015F584 D_8014F110[1024];
 u16 gNumActors;
-u16 D_80150112;
+u16 gRenderedActorsCount;
 s32 gTickSpeed;
 f32 D_80150118;
 u16 wasSoftReset;
@@ -117,7 +117,7 @@ s32 D_80150120;
 s32 gMenuSelectionFromQuit;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
-f32 zoomPlayers[4]; // look like to be the fov of each character
+f32 gCameraZoom[4]; // look like to be the fov of each character
 //f32 D_80150134;
 //f32 D_80150138;
 //f32 D_8015013C;
@@ -546,7 +546,7 @@ void race_logic_loop(void) {
     s16 i;
     u16 rotY;
 
-    D_80150112 = 0;
+    gRenderedActorsCount = 0;
     D_80164AF0 = 0;
     if (gIsGamePaused != 0) {
         func_80290B14();
@@ -579,7 +579,7 @@ void race_logic_loop(void) {
                     func_80028F70();
                     func_8028F474();
                     func_80059AC8();
-                    update_simple_objects();
+                    update_course_actors();
                     func_802966A0();
                     func_8028FCBC();
 
@@ -646,7 +646,7 @@ void race_logic_loop(void) {
                         func_80029150();
                         func_8028F474();
                         func_80059AC8();
-                        update_simple_objects();
+                        update_course_actors();
                         func_802966A0();
                         func_8028FCBC();
                     }
@@ -692,7 +692,7 @@ void race_logic_loop(void) {
                         func_80029150();
                         func_8028F474();
                         func_80059AC8();
-                        update_simple_objects();
+                        update_course_actors();
                         func_802966A0();
                         func_8028FCBC();
                     }
@@ -764,7 +764,7 @@ void race_logic_loop(void) {
                     func_800291F8();
                     func_8028F474();
                     func_80059AC8();
-                    update_simple_objects();
+                    update_course_actors();
                     func_802966A0();
                     func_8028FCBC();
                 }

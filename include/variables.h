@@ -90,7 +90,7 @@ extern u16  gDemoMode;
 extern s32  D_800DC540;
 extern u16  gIsGamePaused;
 
-extern u16  D_80150112;
+extern u16  gRenderedActorsCount;
 
 extern u16  D_80162DD8;
 extern s32  D_80162DE0;

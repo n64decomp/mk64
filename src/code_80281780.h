@@ -29,7 +29,7 @@ extern struct UnkStruct_800DC5EC *D_800DC5EC;
 
 extern s32 D_80287554;
 extern f32 D_801647A4;
-extern f32 zoomPlayers[];
+extern f32 gCameraZoom[];
 
 extern s32 D_8015F5A0;
 

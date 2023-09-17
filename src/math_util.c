@@ -40,27 +40,27 @@ UNUSED void func_802B4FF0() {
 }
 
 // set the position, rotation and mode of where to render the next object
-s32 render_set_position(Mat4 arg0, s32 arg1) {
-    if (D_80150112 >= 0x80) {
+s32 is_rendered_then_set_position(Mat4 arg0, s32 arg1) {
+    if (gRenderedActorsCount >= 0x80) {
         return 0;
     }
-    mtxf_to_mtx(&gGfxPool->mtxPool[D_80150112 + 0x32B], arg0);
+    mtxf_to_mtx(&gGfxPool->mtxPool[gRenderedActorsCount + 0x32B], arg0);
     switch (arg1) {                                 /* irregular */
         case 0:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80150112 + 0x32B]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-            D_80150112 += 1;
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[gRenderedActorsCount + 0x32B]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            gRenderedActorsCount += 1;
             break;
         case 1:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80150112 + 0x32B]), G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-            D_80150112 += 1;
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[gRenderedActorsCount + 0x32B]), G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            gRenderedActorsCount += 1;
             break;
         case 3:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80150112 + 0x32B]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-            D_80150112 += 1;
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[gRenderedActorsCount + 0x32B]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gRenderedActorsCount += 1;
             break;
         case 2:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80150112 + 0x32B]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-            D_80150112 += 1;
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[gRenderedActorsCount + 0x32B]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gRenderedActorsCount += 1;
             break;
     }
     return 1;
@@ -77,7 +77,7 @@ f32 func_802B51E8(Vec3f arg0, Vec3f arg1) {
     return (temp_f2 * temp_f2) + (temp_f12 * temp_f12) + temp_f14 + temp_f14;
 }
 //u32 atan2s(f32, f32);  // might be s32
-u32 get_angle_between_cooridates(Vec3f arg0, Vec3f arg1) {
+u32 get_angle_between_points(Vec3f arg0, Vec3f arg1) {
     f32 temp_v1;
     f32 temp_v2;
     temp_v1 = arg1[0] - arg0[0];
@@ -1088,7 +1088,7 @@ f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY
         return -1.0f;
     }
 
-    angleObject = get_angle_between_cooridates(cameraPos, objectPos);
+    angleObject = get_angle_between_points(cameraPos, objectPos);
     minus_fov_angle = (orientationY - extended_fov);
     plus_fov_angle = (orientationY + extended_fov);
 

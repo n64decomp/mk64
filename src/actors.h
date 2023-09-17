@@ -108,8 +108,8 @@ void func_802A29BC(Camera*, Mat4, struct Actor*);
 void func_802A2AD0(Camera*, struct RailroadCrossing*);
 void func_802A2C78(Camera*, Mat4, struct Actor*);
 void func_802A2F34(struct UnkStruct_800DC5EC*);
-void render_simple_objects(struct UnkStruct_800DC5EC*);
-void update_simple_objects(void);
+void render_course_actors(struct UnkStruct_800DC5EC*);
+void update_course_actors(void);
 
 // audio/external.c
 extern void func_800C98B8(Vec3f, Vec3f, u32);
@@ -141,11 +141,11 @@ extern Camera *camera1;
 extern Gfx *gDisplayListHead;
 extern s32 gModeSelection;
 extern s16 gCurrentCourseId;
-extern f32 zoomPlayers[];
+extern f32 gCameraZoom[];
 extern u16 D_801637B8[];
 extern Lights1 D_800DC610[];
 
-extern u16 D_80150112;
+extern u16 gRenderedActorsCount;
 
 extern uintptr_t gSegmentTable[];
 extern s16 gPlaceItemBoxes;
@@ -188,7 +188,7 @@ extern Gfx D_0D001BD8[];
 extern Gfx D_0D001C20[];
 extern Gfx D_0D001C88[];
 extern Gfx D_0D002EE8[];
-extern Gfx reverseItemBoxQuestionMarkModel[];
+extern Gfx fakeItemBoxModel[];
 extern Gfx itemBoxQuestionMarkModel[];
 extern Gfx D_0D003090[];
 extern Gfx D_0D0030F8[];

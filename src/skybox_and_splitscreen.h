@@ -73,7 +73,7 @@ extern s32 D_800DC5D4;
 extern s32 D_800DC5D8;
 extern u16 D_800DC5BC;
 extern struct GfxPool *gGfxPool;
-extern f32 zoomPlayers[];
+extern f32 gCameraZoom[];
 extern u16 D_800DC5B4;
 extern f32 D_80150148;
 extern f32 D_8015014C;

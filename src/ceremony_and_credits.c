@@ -20,7 +20,7 @@
 #include "podium_ceremony_actors.h"
 #include "code_80091750.h"
 
-extern f32 zoomPlayers[];
+extern f32 gCameraZoom[];
 
 f32 D_802856B0 = 98.0f;
 f32 D_802856B4 = 12.0f;
@@ -543,7 +543,7 @@ void init_cinematic_camera(void) {
     camera->unk68 = 0.0f;
     camera->unk6C = 0;
     camera->unk6E = 0;
-    camera->unk20 = zoomPlayers[0];
+    camera->unk20 = gCameraZoom[0];
     sCutsceneShot = 0;
     gCutsceneShotTimer = 0;
     D_802876D4 = 0;
@@ -626,7 +626,7 @@ s32 func_80283648(Camera *camera) {
     }
     func_80282F44(0, new_var, camera);
     func_80282F44(1, new_var, camera);
-    func_80283100(new_var, zoomPlayers);
+    func_80283100(new_var, gCameraZoom);
     vec3f_copy_dupe(new_var->unk30, camera->pos);
     vec3f_copy_dupe(new_var->unk24, camera->lookAt);
     vec3f_copy_dupe(new_var->unk3C, camera->up);

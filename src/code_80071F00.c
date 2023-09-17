@@ -2887,27 +2887,27 @@ void func_80078C70(s32 arg0) {
         case 0:                                     /* switch 1 */
             sp1C = 0;
             camera = camera1;
-            D_8018D200 = zoomPlayers[0] + 40.0f;
+            D_8018D200 = gCameraZoom[0] + 40.0f;
             break;
         case 1:                                     /* switch 1 */
             sp1C = 0;
             camera = camera1;
-            D_8018D200 = zoomPlayers[0] + 40.0f;
+            D_8018D200 = gCameraZoom[0] + 40.0f;
             break;
         case 2:                                     /* switch 1 */
             camera = camera2;
             sp1C = D_8018D1F0;
-            D_8018D200 = zoomPlayers[1] + 40.0f;
+            D_8018D200 = gCameraZoom[1] + 40.0f;
             break;
         case 3:                                     /* switch 1 */
             sp1C = 0;
             camera = camera1;
-            D_8018D200 = zoomPlayers[0] + 40.0f;
+            D_8018D200 = gCameraZoom[0] + 40.0f;
             break;
         case 4:                                     /* switch 1 */
             camera = camera2;
             sp1C = D_8018D1F0;
-            D_8018D200 = zoomPlayers[1] + 40.0f;
+            D_8018D200 = gCameraZoom[1] + 40.0f;
             break;
         }
 
@@ -6981,7 +6981,7 @@ void func_8008275C(s32 objectIndex) {
         D_80165C18[objectIndex].unk_028[1] *= 2.5;
         D_80165C18[objectIndex].unk_028[2] *= 2.0;
         func_8008BF18(objectIndex);
-        D_80165C18[objectIndex].unk_0BE[1] = get_angle_between_cooridates(D_80165C18[objectIndex].unk_01C, D_80165C18[objectIndex].pos);
+        D_80165C18[objectIndex].unk_0BE[1] = get_angle_between_points(D_80165C18[objectIndex].unk_01C, D_80165C18[objectIndex].pos);
         break;
     }
     func_800873F4(objectIndex);
@@ -8084,7 +8084,7 @@ void func_80085AA8(void) {
             func_800859C8(temp_s2, var_s4);
             func_80040EC4(temp_s0->unk_01C, temp_s0->unk_028);
             func_8000D940(temp_s0->unk_028, &temp_s0->unk_084[8], temp_s0->unk_034, temp_s0->unk_044, 0);
-            temp_s0->unk_0BE[1] = get_angle_between_cooridates(temp_s0->unk_01C, temp_s0->unk_028);
+            temp_s0->unk_0BE[1] = get_angle_between_points(temp_s0->unk_01C, temp_s0->unk_028);
             func_8008BF18(temp_s2);
             func_80089CBC(temp_s2, 30.0f);
         }

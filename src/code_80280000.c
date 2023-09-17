@@ -42,7 +42,7 @@ void func_80280038(void) {
     UNUSED s32 pad;
     Mat4 matrix;
 
-    D_80150112 = 0;
+    gRenderedActorsCount = 0;
     D_80164AF0 = 0;
     D_8018D120 = 0;
     init_rdp();
@@ -51,16 +51,16 @@ void func_80280038(void) {
     func_80057FC4(0);
     
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPool[1], &perspNorm, zoomPlayers[0], D_80150148, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPool[1], &perspNorm, gCameraZoom[0], D_80150148, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     gCurrentCourseId = gCreditsCourseId;
     mtxf_identity(matrix);
-    render_set_position(matrix, 0);
+    is_rendered_then_set_position(matrix, 0);
     func_80295A38(D_800DC5EC);
-    render_simple_objects(D_800DC5EC);
+    render_course_actors(D_800DC5EC);
     func_80058090(0);
     func_80058538(0);
     transition_sliding_borders();
@@ -128,7 +128,7 @@ void load_credits(void) {
     func_802A4D18();
     func_802A74BC();
     camera->unk_B4 = 60.0f;
-    zoomPlayers[0] = 60.0f;
+    gCameraZoom[0] = 60.0f;
     D_800DC5EC->screenWidth = SCREEN_WIDTH;
     D_800DC5EC->screenHeight = SCREEN_HEIGHT;
     D_800DC5EC->screenStartX = 160;

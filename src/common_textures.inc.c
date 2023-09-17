@@ -421,7 +421,7 @@ Vtx reverseItemBoxQuestionMarkVertex[] = {
     {{{     3,       5,       0}, 0, {0, 2048}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Gfx reverseItemBoxQuestionMarkModel[] = {
+Gfx fakeItemBoxModel[] = {
     gsSPClearGeometryMode(G_CULL_BACK),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
@@ -559,7 +559,7 @@ Gfx D_0D003288[] = {
     gsSPEndDisplayList(),
 };
 
-Vtx bananaVertex[] = {
+Vtx gBananaVertex[] = {
     {{{     4,      -3,       0}, 0, {1228, 1024}, {0xff, 0xfe, 0xfe, 0xff}}},
     {{{     0,       4,       0}, 0, {512, 65332}, {0xc1, 0xff, 0x00, 0xff}}},
     {{{    -4,      -3,       0}, 0, {65332, 1024}, {0xff, 0xfe, 0xfe, 0xff}}},
@@ -567,7 +567,7 @@ Vtx bananaVertex[] = {
     {{{     0,      -3,      -4}, 0, {65332, 1024}, {0xd3, 0xda, 0xad, 0xff}}},
 };
 
-Vtx FlatBananaVertex[] = {
+Vtx gFlatBananaVertices[] = {
     {{{     6,      -3,       0}, 0, {2048, 1024}, {0xff, 0xfe, 0xfe, 0xff}}},
     {{{     0,       4,       0}, 0, {1023, 65127}, {0xc1, 0xff, 0x00, 0xff}}},
     {{{    -6,      -3,       0}, 0, {0, 1024}, {0xff, 0xfe, 0xfe, 0xff}}},
@@ -601,7 +601,7 @@ Gfx bananaModel[] = {
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),
     gsSPClearGeometryMode(G_CULL_BACK | G_LIGHTING),
-    gsSPVertex(bananaVertex, 5, 0),
+    gsSPVertex(gBananaVertex, 5, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSP1Triangle(3, 1, 4, 0),
     gsSPSetGeometryMode(G_CULL_BACK),
@@ -623,7 +623,7 @@ Gfx flatBananaModel[] = {
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 128),
     gsSPClearGeometryMode(G_CULL_BACK | G_LIGHTING),
-    gsSPVertex(FlatBananaVertex, 6, 0),
+    gsSPVertex(gFlatBananaVertices, 6, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSP1Triangle(3, 4, 5, 0),
     gsSPSetGeometryMode(G_CULL_BACK),
