@@ -96,6 +96,101 @@ extern Player *gPlayerTwoCopy;
 extern UNUSED Player *gPlayerThreeCopy;
 extern UNUSED Player *gPlayerFourCopy;
 
+extern s32 D_800FD850[3];
+extern struct GfxPool gGfxPools[2];
+extern struct GfxPool *gGfxPool;
+
+extern s32 gfxPool_padding;
+extern struct VblankHandler gGameVblankHandler;
+extern struct VblankHandler sSoundVblankHandler;
+extern OSMesgQueue gDmaMesgQueue, gGameVblankQueue, gGfxVblankQueue, unused_gMsgQueue, gIntrMesgQueue, gSPTaskMesgQueue;
+extern OSMesgQueue sSoundMesgQueue;
+extern OSMesg sSoundMesgBuf[1];
+extern OSMesg gDmaMesgBuf[1], gGameMesgBuf;
+extern OSMesg gGfxMesgBuf[1];
+extern OSMesg gIntrMesgBuf[16], gSPTaskMesgBuf[16];
+extern OSMesg gMainReceivedMesg;
+extern OSIoMesg gDmaIoMesg;
+extern OSMesgQueue gSIEventMesgQueue;
+extern OSMesg gSIEventMesgBuf[3];
+
+extern OSContStatus gControllerStatuses[4];
+
+extern OSContPad gControllerPads[4];
+extern u8 gControllerBits;
+
+extern struct UnkStruct_8015F584 D_8014F110[1024];
+extern u16 gNumActors;
+extern u16 D_80150112;
+extern s32 gTickSpeed;
+extern f32 D_80150118;
+extern u16 wasSoftReset;
+extern u16 D_8015011E;
+
+extern s32 D_80150120;
+extern s32 gMenuSelectionFromQuit;
+extern f32 D_80150130[4];
+
+extern f32 D_80150148;
+extern f32 D_8015014C;
+extern f32 D_80150150;
+
+extern struct D_80150158 gD_80150158[16];
+extern uintptr_t gSegmentTable[16];
+extern Gfx *gDisplayListHead;
+extern struct SPTask *gGfxSPTask;
+extern s32 D_801502A0;
+extern s32 D_801502A4;
+extern u16 *gPhysicalFramebuffers[3];
+extern u32 D_801502B4;
+extern UNUSED u32 D_801502B8;
+extern UNUSED u32 D_801502BC;
+extern Mat4 D_801502C0;
+
+extern s32 padding[2048];
+
+extern u16 D_80152300[4];
+extern u16 D_80152308;
+
+extern OSThread gIdleThread;
+extern ALIGNED8 u8 gIdleThreadStack[STACKSIZE]; // Based on sm64 and padding between bss symbols.
+extern OSThread gVideoThread;
+extern ALIGNED8 u8 gVideoThreadStack[STACKSIZE];
+extern OSThread gGameLoopThread;
+extern ALIGNED8 u8 gGameLoopThreadStack[STACKSIZE];
+extern OSThread gAudioThread;
+extern ALIGNED8 u8 gAudioThreadStack[STACKSIZE];
+
+extern u8 gGfxSPTaskYieldBuffer[4352];
+extern u32 gGfxSPTaskStack[256];
+extern OSMesg gPIMesgBuf[32];
+extern OSMesgQueue gPIMesgQueue;
+
+extern s32 gGamestate;
+extern u16 D_800DC510;
+extern u16 D_800DC514;
+extern u16 D_800DC518;
+extern u16 gDemoMode;
+extern u16 gEnableDebugMode;
+extern s32 gGamestateNext;
+extern s32 gActiveScreenMode;
+extern s32 gScreenModeSelection;
+extern s32 gPlayerCountSelection1;
+
+extern s32 gModeSelection;
+extern s32 D_800DC540;
+extern s32 D_800DC544;
+extern s32 gCCSelection;
+extern s32 gGlobalTimer;
+// Framebuffer rendering values (max 3)
+extern u16 sRenderedFramebuffer;
+extern u16 sRenderingFramebuffer;
+extern s32 D_800DC568;
+extern s32 D_800DC56C[8];
+extern s16 sNumVBlanks;
+extern f32 gVBlankTimer;
+extern f32 gCourseTimer;
+
 extern u16 D_80152308;
 
 extern s32 gModeSelection;
