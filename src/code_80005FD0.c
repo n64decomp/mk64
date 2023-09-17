@@ -10435,7 +10435,7 @@ extern Struct80163418 D_80163428;
 extern Struct80163418 D_80163438;
 
 void func_8001C05C(void) {
-    init_seg_8028DF00();
+    init_segment_racing();
     gCurrentCourseId = COURSE_AWARD_CEREMONY;
     D_8016347C = 0;
     D_8016347E = 0;

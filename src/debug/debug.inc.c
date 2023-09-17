@@ -53,6 +53,28 @@ variableWatchAttributes gMainVariableWatchList[] = {
 		DISPLAY_FLOAT_NUMBER,
 		0, 0
 	},
+	{
+		"Torque 9C: ",
+		&gPlayers[0].unk_09C,
+		sizeof(gPlayerOne->unk_09C),
+		DISPLAY_FLOAT_NUMBER,
+		0, 0
+	},
+	{
+		"Top Speed 214: ",
+		&gPlayers[0].unk_214,
+		sizeof(gPlayerOne->unk_214),
+		DISPLAY_FLOAT_NUMBER,
+		0, 0
+	},
+	{
+		"Accel Offset C4: ",
+		&gPlayers[0].unk_0C4,
+		sizeof(gPlayerOne->unk_0C4),
+		DISPLAY_SIGNED_NUMBER,
+		0, 0
+	},
+
 };
 
 #endif
