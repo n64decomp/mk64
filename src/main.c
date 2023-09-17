@@ -1128,7 +1128,7 @@ void update_gamestate(void) {
             break;
         case RACING:
             // @bug Reloading this segment makes random_u16() deterministic for player spawn order.
-            // In laymens terms, random_u16() outputs the same value everytime.
+            // In laymens terms, random_u16() outputs the same value every time.
             init_seg_8028DF00();
             setup_race();
             break;

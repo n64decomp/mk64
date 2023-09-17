@@ -378,38 +378,38 @@ SECTIONS
    /* 0x8028DF00 0F7510-123640 [2C130] */
    BEGIN_SEG(code_8028DF00, SEG_8028DF00)
    {
-      BUILD_DIR/src/race_logic.o(.text);
-      BUILD_DIR/src/render_courses.o(.text);
-      BUILD_DIR/src/actors.o(.text);
-      BUILD_DIR/src/skybox_and_splitscreen.o(.text);
-      BUILD_DIR/src/memory.o(.text);
-      BUILD_DIR/src/collision.o(.text);
-      BUILD_DIR/src/actors_extended.o(.text);
-      BUILD_DIR/src/math_util.o(.text);
-      BUILD_DIR/src/race_logic.o(.data);
-      BUILD_DIR/src/render_courses.o(.data);
-      BUILD_DIR/src/actors.o(.data);
-      BUILD_DIR/src/skybox_and_splitscreen.o(.data);
-      BUILD_DIR/src/memory.o(.data);
+      BUILD_DIR/src/racing/race_logic.o(.text);
+      BUILD_DIR/src/racing/render_courses.o(.text);
+      BUILD_DIR/src/racing/actors.o(.text);
+      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.text);
+      BUILD_DIR/src/racing/memory.o(.text);
+      BUILD_DIR/src/racing/collision.o(.text);
+      BUILD_DIR/src/racing/actors_extended.o(.text);
+      BUILD_DIR/src/racing/math_util.o(.text);
+      BUILD_DIR/src/racing/race_logic.o(.data);
+      BUILD_DIR/src/racing/render_courses.o(.data);
+      BUILD_DIR/src/racing/actors.o(.data);
+      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.data);
+      BUILD_DIR/src/racing/memory.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);
-      BUILD_DIR/src/actors_extended.o(.data);
-      BUILD_DIR/src/math_util.o(.data);
-      BUILD_DIR/src/race_logic.o(.rodata);
-      BUILD_DIR/src/render_courses.o(.rodata);
-      BUILD_DIR/src/actors.o(.rodata);
-      BUILD_DIR/src/skybox_and_splitscreen.o(.rodata);
-      BUILD_DIR/src/memory.o(.rodata);
-      BUILD_DIR/src/collision.o(.rodata);
-      BUILD_DIR/src/actors_extended.o(.rodata);
-      BUILD_DIR/src/math_util.o(.rodata);
+      BUILD_DIR/src/racing/actors_extended.o(.data);
+      BUILD_DIR/src/racing/math_util.o(.data);
+      BUILD_DIR/src/racing/race_logic.o(.rodata);
+      BUILD_DIR/src/racing/render_courses.o(.rodata);
+      BUILD_DIR/src/racing/actors.o(.rodata);
+      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.rodata);
+      BUILD_DIR/src/racing/memory.o(.rodata);
+      BUILD_DIR/src/racing/collision.o(.rodata);
+      BUILD_DIR/src/racing/actors_extended.o(.rodata);
+      BUILD_DIR/src/racing/math_util.o(.rodata);
    }
    END_SEG(code_8028DF00)
 
 	BEGIN_NOLOAD(code_8028DF00)
    {
-      BUILD_DIR/src/race_logic.o(.bss);
-      BUILD_DIR/src/actors.o(.bss);
-      BUILD_DIR/src/memory.o(.bss);
+      BUILD_DIR/src/racing/race_logic.o(.bss);
+      BUILD_DIR/src/racing/actors.o(.bss);
+      BUILD_DIR/src/racing/memory.o(.bss);
       BUILD_DIR/src/framebuffers.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
       BUILD_DIR/src/audio/heap.o(.bss*);
