@@ -90,7 +90,7 @@ extern u16  gDemoMode;
 extern s32  D_800DC540;
 extern u16  gIsGamePaused;
 
-extern u16  D_80150112;
+extern u16  gMatrixObjectCount;
 
 extern u16  D_80162DD8;
 extern s32  D_80162DE0;
@@ -99,7 +99,7 @@ extern s32  D_80162DE8;
 
 extern f32  D_80164510[];
 extern s32  D_80164A28;
-extern s16  D_80164AF0;
+extern s16  gMatrixEffectCount;
 
 extern s16  D_80165020[];
 extern s16  D_801650D0[4][8];
@@ -148,7 +148,7 @@ extern s8   D_801657E8;
 
 extern s8   D_801658FE;
 
-extern s32  D_8018D120;
+extern s32  gMatrixHudCount;
 extern s32  D_8018D900[];
 
 extern s8   D_8018EDEC;

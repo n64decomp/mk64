@@ -10,8 +10,8 @@ glabel D_800F0BEC
 .section .text
 
 glabel func_80095BD0
-/* 0967D0 80095BD0 3C098016 */  lui   $t1, %hi(D_80164AF0) # $t1, 0x8016
-/* 0967D4 80095BD4 25294AF0 */  addiu $t1, %lo(D_80164AF0) # addiu $t1, $t1, 0x4af0
+/* 0967D0 80095BD0 3C098016 */  lui   $t1, %hi(gMatrixEffectCount) # $t1, 0x8016
+/* 0967D4 80095BD4 25294AF0 */  addiu $t1, %lo(gMatrixEffectCount) # addiu $t1, $t1, 0x4af0
 /* 0967D8 80095BD8 85220000 */  lh    $v0, ($t1)
 /* 0967DC 80095BDC 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 0967E0 80095BE0 AFB00020 */  sw    $s0, 0x20($sp)
@@ -52,10 +52,10 @@ glabel func_80095BD0
 /* 096860 80095C60 E7A40010 */   swc1  $f4, 0x10($sp)
 /* 096864 80095C64 3C0B0102 */  lui   $t3, (0x01020040 >> 16) # lui $t3, 0x102
 /* 096868 80095C68 8FA40040 */  lw    $a0, 0x40($sp)
-/* 09686C 80095C6C 3C098016 */  lui   $t1, %hi(D_80164AF0) # $t1, 0x8016
+/* 09686C 80095C6C 3C098016 */  lui   $t1, %hi(gMatrixEffectCount) # $t1, 0x8016
 /* 096870 80095C70 356B0040 */  ori   $t3, (0x01020040 & 0xFFFF) # ori $t3, $t3, 0x40
 /* 096874 80095C74 02001025 */  move  $v0, $s0
-/* 096878 80095C78 25294AF0 */  addiu $t1, %lo(D_80164AF0) # addiu $t1, $t1, 0x4af0
+/* 096878 80095C78 25294AF0 */  addiu $t1, %lo(gMatrixEffectCount) # addiu $t1, $t1, 0x4af0
 /* 09687C 80095C7C AC4B0000 */  sw    $t3, ($v0)
 /* 096880 80095C80 852D0000 */  lh    $t5, ($t1)
 /* 096884 80095C84 3C0C8015 */  lui   $t4, %hi(gGfxPool) # $t4, 0x8015
