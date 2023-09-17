@@ -205,7 +205,7 @@ DATA_DIR       := data
 INCLUDE_DIRS   := include
 
 # Directories containing source files
-SRC_DIRS       := src src/audio src/debug src/os src/os/math courses
+SRC_DIRS       := src src/racing src/ending src/audio src/debug src/os src/os/math courses
 ASM_DIRS       := asm asm/audio asm/os asm/unused asm/os/non_matchings $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
 
 
@@ -227,7 +227,7 @@ COURSE_ASM_FILES := $(wildcard courses/*/*/packed.s)
 # These are files that need to be encoded into EUC-JP in order for the ROM to match
 # We filter them out from the regular C_FILES since we don't need nor want the
 # UTF-8 versions getting compiled
-EUC_JP_FILES := src/credits.c src/code_80005FD0.c src/code_80091750.c
+EUC_JP_FILES := src/ending/credits.c src/code_80005FD0.c src/code_80091750.c
 C_FILES := $(filter-out $(EUC_JP_FILES),$(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c)))
 S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s)) $(COURSE_ASM_FILES)
 COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(wildcard $(dir)/*.inc.c))
@@ -245,8 +245,10 @@ DEP_FILES := $(O_FILES:.o=.d) $(BUILD_DIR)/$(LD_SCRIPT).d
 # Files with GLOBAL_ASM blocks
 GLOBAL_ASM_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/*.c)
 GLOBAL_ASM_AUDIO_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/audio/*.c)
+GLOBAL_ASM_RACING_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/racing/*.c)
 GLOBAL_ASM_O_FILES = $(foreach file,$(GLOBAL_ASM_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
 GLOBAL_ASM_AUDIO_O_FILES = $(foreach file,$(GLOBAL_ASM_AUDIO_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
+GLOBAL_ASM_RACING_O_FILES = $(foreach file,$(GLOBAL_ASM_RACING_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
 
 
 
@@ -289,7 +291,7 @@ ifeq ($(TARGET_N64),1)
   CC_CFLAGS := -fno-builtin
 endif
 
-INCLUDE_DIRS := include $(BUILD_DIR) $(BUILD_DIR)/include src .
+INCLUDE_DIRS := include $(BUILD_DIR) $(BUILD_DIR)/include src src/racing src/ending .
 ifeq ($(TARGET_N64),1)
   INCLUDE_DIRS += include/libc
 endif
@@ -587,7 +589,7 @@ $(GLOBAL_ASM_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(A
 
 $(GLOBAL_ASM_AUDIO_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
-
+$(GLOBAL_ASM_RACING_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
 #==============================================================================#
 # Libultra Definitions                                                         #

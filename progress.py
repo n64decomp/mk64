@@ -162,14 +162,14 @@ mainSegFiles = [
     "build/us/src/staff_ghosts",
 ]
 seg2Files = [
-    "build/us/src/actors",
-    "build/us/src/actors_extended",
-    "build/us/src/math_util",
-    "build/us/src/memory",
-    "build/us/src/collision",
-    "build/us/src/race_logic",
-    "build/us/src/render_courses",
-    "build/us/src/skybox_and_splitscreen",
+    "build/us/src/racing/actors",
+    "build/us/src/racing/actors_extended",
+    "build/us/src/racing/math_util",
+    "build/us/src/racing/memory",
+    "build/us/src/racing/collision",
+    "build/us/src/racing/race_logic",
+    "build/us/src/racing/render_courses",
+    "build/us/src/racing/skybox_and_splitscreen",
 ]
 segAudioFiles = [
     "build/us/src/audio/effects",
@@ -279,7 +279,7 @@ if args.format == 'shield-json':
 elif args.format  == 'totalBadge':
     print(str(round(((mk64Code_size - text_size) / mk64Code_size) * 100, 2))+"%")
 elif args.format == 'gameBadge':
-    print(str(round(((mk64Code_size - text_size) / (mk64Code_size - audio_size)) * 100, 2))+"%")
+    print(str(round((((mk64Code_size - audio_size) - (text_size - audio)) / (mk64Code_size - audio_size)) * 100, 2))+"%")
 elif args.format == 'audioBadge':
     print(str(round(audioPct, 2))+"%")
 elif args.format == 'bytesToDecompile':

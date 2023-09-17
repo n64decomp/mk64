@@ -142,7 +142,7 @@ extern Gfx *gDisplayListHead;
 extern s32 gModeSelection;
 extern s16 gCurrentCourseId;
 extern f32 D_80150130[];
-extern u16 D_801637B8[];
+extern u16 isCrossingTriggeredByIndex[];
 extern Lights1 D_800DC610[];
 
 extern u16 gMatrixObjectCount;

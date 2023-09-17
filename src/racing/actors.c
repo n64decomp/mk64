@@ -1314,7 +1314,7 @@ void update_obj_wario_stadium_sign(struct Actor *arg0) {
  **/
 void update_obj_railroad_crossing(struct RailroadCrossing *crossing) {
     // If train close?
-    if (D_801637B8[crossing->crossingId] != 0) {
+    if (isCrossingTriggeredByIndex[crossing->crossingId] != 0) {
         // Timer++
         crossing->someTimer++;
         // Reset timer
@@ -3920,7 +3920,7 @@ void func_802A2AD0(Camera *arg0, struct RailroadCrossing *rr_crossing) {
             gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
 
-            if (D_801637B8[rr_crossing->crossingId]) {
+            if (isCrossingTriggeredByIndex[rr_crossing->crossingId]) {
 
                 if (rr_crossing->someTimer < 20) {
                     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_crossing_right_active);

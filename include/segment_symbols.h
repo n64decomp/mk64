@@ -3,12 +3,12 @@
 
 extern u8 _mainSegNoloadEnd[];
 
-extern u8 _code_80280000SegmentStart[];
-extern u8 _code_80280000SegmentRomStart[];
-extern u8 _code_80280000SegmentRomEnd[];
+extern u8 _endingSequencesSegmentStart[];
+extern u8 _endingSequencesSegmentRomStart[];
+extern u8 _endingSequencesSegmentRomEnd[];
 
-extern u8 _code_8028DF00SegmentStart[];
-extern u8 _code_8028DF00SegmentRomStart[];
-extern u8 _code_8028DF00SegmentRomEnd[];
+extern u8 _racingSegmentStart[];
+extern u8 _racingSegmentRomStart[];
+extern u8 _racingSegmentRomEnd[];
 
 #endif
