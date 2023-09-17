@@ -85,6 +85,6 @@ void func_80043104(s32);
 extern Vec3su D_80165834;
 extern s8    D_80165840[];
 extern s8    D_801658FE;
-extern s32   D_8018D120;
+extern s32   gMatrixHudCount;
 
 #endif // MATH_UTIL_2_H

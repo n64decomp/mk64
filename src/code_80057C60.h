@@ -335,7 +335,7 @@ extern s32 D_8018D400;
 extern s32 D_8018D40C;
 extern s32 D_8018D410;
 
-extern s32 D_8018D120;
+extern s32 gMatrixHudCount;
 extern s32 D_8018D170;
 extern s32 D_8018D178;
 extern s32 D_8018D188;

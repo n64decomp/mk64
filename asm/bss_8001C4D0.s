@@ -64,7 +64,7 @@ glabel D_80164AC0
 glabel D_80164AD0
 .skip 32
 
-glabel D_80164AF0
+glabel gMatrixEffectCount
 .skip 20
 
 glabel D_80164B04
@@ -1171,7 +1171,7 @@ glabel D_8018D110
 glabel D_8018D114
 .skip 12
 
-glabel D_8018D120
+glabel gMatrixHudCount
 .skip 32
 
 glabel D_8018D140

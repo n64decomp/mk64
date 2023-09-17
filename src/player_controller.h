@@ -189,7 +189,7 @@ extern s16 *D_800E3C10[];
 extern s16 *D_800E3C30[];
 extern s16 **D_800E3C50[];
 
-extern s16 D_80164AF0;
+extern s16 gMatrixEffectCount;
 extern Player *D_801653C0[8];
 
 extern s16 D_801656F0;

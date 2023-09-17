@@ -99,8 +99,8 @@ glabel render_balloon
 /* 06C888 8006BC88 27A40108 */  addiu $a0, $sp, 0x108
 /* 06C88C 8006BC8C 0C0087E1 */  jal   func_80021F84
 /* 06C890 8006BC90 8FA5014C */   lw    $a1, 0x14c($sp)
-/* 06C894 8006BC94 3C198016 */  lui   $t9, %hi(D_80164AF0) # $t9, 0x8016
-/* 06C898 8006BC98 87394AF0 */  lh    $t9, %lo(D_80164AF0)($t9)
+/* 06C894 8006BC94 3C198016 */  lui   $t9, %hi(gMatrixEffectCount) # $t9, 0x8016
+/* 06C898 8006BC98 87394AF0 */  lh    $t9, %lo(gMatrixEffectCount)($t9)
 /* 06C89C 8006BC9C 3C188015 */  lui   $t8, %hi(gGfxPool) # $t8, 0x8015
 /* 06C8A0 8006BCA0 8F18EF40 */  lw    $t8, %lo(gGfxPool)($t8)
 /* 06C8A4 8006BCA4 00197180 */  sll   $t6, $t9, 6
@@ -116,9 +116,9 @@ glabel render_balloon
 /* 06C8CC 8006BCCC 37390040 */  ori   $t9, (0x01020040 & 0xFFFF) # ori $t9, $t9, 0x40
 /* 06C8D0 8006BCD0 244F0008 */  addiu $t7, $v0, 8
 /* 06C8D4 8006BCD4 AC6F0000 */  sw    $t7, ($v1)
-/* 06C8D8 8006BCD8 3C0E8016 */  lui   $t6, %hi(D_80164AF0) # $t6, 0x8016
+/* 06C8D8 8006BCD8 3C0E8016 */  lui   $t6, %hi(gMatrixEffectCount) # $t6, 0x8016
 /* 06C8DC 8006BCDC AC590000 */  sw    $t9, ($v0)
-/* 06C8E0 8006BCE0 85CE4AF0 */  lh    $t6, %lo(D_80164AF0)($t6)
+/* 06C8E0 8006BCE0 85CE4AF0 */  lh    $t6, %lo(gMatrixEffectCount)($t6)
 /* 06C8E4 8006BCE4 3C188015 */  lui   $t8, %hi(gGfxPool) # $t8, 0x8015
 /* 06C8E8 8006BCE8 8F18EF40 */  lw    $t8, %lo(gGfxPool)($t8)
 /* 06C8EC 8006BCEC 000E7980 */  sll   $t7, $t6, 6
@@ -360,8 +360,8 @@ glabel render_balloon
 /* 06CC9C 8006C09C AC6F0000 */  sw    $t7, ($v1)
 /* 06CCA0 8006C0A0 AC4E0004 */  sw    $t6, 4($v0)
 /* 06CCA4 8006C0A4 AC590000 */  sw    $t9, ($v0)
-/* 06CCA8 8006C0A8 3C028016 */  lui   $v0, %hi(D_80164AF0) # $v0, 0x8016
-/* 06CCAC 8006C0AC 24424AF0 */  addiu $v0, %lo(D_80164AF0) # addiu $v0, $v0, 0x4af0
+/* 06CCA8 8006C0A8 3C028016 */  lui   $v0, %hi(gMatrixEffectCount) # $v0, 0x8016
+/* 06CCAC 8006C0AC 24424AF0 */  addiu $v0, %lo(gMatrixEffectCount) # addiu $v0, $v0, 0x4af0
 /* 06CCB0 8006C0B0 84580000 */  lh    $t8, ($v0)
 /* 06CCB4 8006C0B4 8FBF0024 */  lw    $ra, 0x24($sp)
 /* 06CCB8 8006C0B8 27BD0148 */  addiu $sp, $sp, 0x148

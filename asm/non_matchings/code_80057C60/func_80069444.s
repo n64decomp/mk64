@@ -146,12 +146,12 @@ glabel func_80069444
 /* 06A284 80069684 24630298 */  addiu $v1, %lo(gDisplayListHead) # addiu $v1, $v1, 0x298
 /* 06A288 80069688 8C620000 */  lw    $v0, ($v1)
 /* 06A28C 8006968C 3C190D01 */  lui   $t9, %hi(D_0D008E48) # $t9, 0xd01
-/* 06A290 80069690 3C058016 */  lui   $a1, %hi(D_80164AF0) # $a1, 0x8016
+/* 06A290 80069690 3C058016 */  lui   $a1, %hi(gMatrixEffectCount) # $a1, 0x8016
 /* 06A294 80069694 24580008 */  addiu $t8, $v0, 8
 /* 06A298 80069698 AC780000 */  sw    $t8, ($v1)
 /* 06A29C 8006969C 27398E48 */  addiu $t9, %lo(D_0D008E48) # addiu $t9, $t9, -0x71b8
 /* 06A2A0 800696A0 3C0E0600 */  lui   $t6, 0x600
-/* 06A2A4 800696A4 24A54AF0 */  addiu $a1, %lo(D_80164AF0) # addiu $a1, $a1, 0x4af0
+/* 06A2A4 800696A4 24A54AF0 */  addiu $a1, %lo(gMatrixEffectCount) # addiu $a1, $a1, 0x4af0
 /* 06A2A8 800696A8 AC4E0000 */  sw    $t6, ($v0)
 /* 06A2AC 800696AC AC590004 */  sw    $t9, 4($v0)
 /* 06A2B0 800696B0 84AF0000 */  lh    $t7, ($a1)

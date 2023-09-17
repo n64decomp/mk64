@@ -286,8 +286,8 @@ glabel func_8006AFD0
 /* 06BFA8 8006B3A8 4405A000 */  mfc1  $a1, $f20
 /* 06BFAC 8006B3AC 0C0087E1 */  jal   func_80021F84
 /* 06BFB0 8006B3B0 02002025 */   move  $a0, $s0
-/* 06BFB4 8006B3B4 3C198016 */  lui   $t9, %hi(D_80164AF0) # $t9, 0x8016
-/* 06BFB8 8006B3B8 87394AF0 */  lh    $t9, %lo(D_80164AF0)($t9)
+/* 06BFB4 8006B3B4 3C198016 */  lui   $t9, %hi(gMatrixEffectCount) # $t9, 0x8016
+/* 06BFB8 8006B3B8 87394AF0 */  lh    $t9, %lo(gMatrixEffectCount)($t9)
 /* 06BFBC 8006B3BC 3C0F8015 */  lui   $t7, %hi(gGfxPool) # $t7, 0x8015
 /* 06BFC0 8006B3C0 8DEFEF40 */  lw    $t7, %lo(gGfxPool)($t7)
 /* 06BFC4 8006B3C4 0019C180 */  sll   $t8, $t9, 6
@@ -303,9 +303,9 @@ glabel func_8006AFD0
 /* 06BFEC 8006B3EC 37390040 */  ori   $t9, (0x01020040 & 0xFFFF) # ori $t9, $t9, 0x40
 /* 06BFF0 8006B3F0 244E0008 */  addiu $t6, $v0, 8
 /* 06BFF4 8006B3F4 AC6E0000 */  sw    $t6, ($v1)
-/* 06BFF8 8006B3F8 3C188016 */  lui   $t8, %hi(D_80164AF0) # $t8, 0x8016
+/* 06BFF8 8006B3F8 3C188016 */  lui   $t8, %hi(gMatrixEffectCount) # $t8, 0x8016
 /* 06BFFC 8006B3FC AC590000 */  sw    $t9, ($v0)
-/* 06C000 8006B400 87184AF0 */  lh    $t8, %lo(D_80164AF0)($t8)
+/* 06C000 8006B400 87184AF0 */  lh    $t8, %lo(gMatrixEffectCount)($t8)
 /* 06C004 8006B404 3C0F8015 */  lui   $t7, %hi(gGfxPool) # $t7, 0x8015
 /* 06C008 8006B408 8DEFEF40 */  lw    $t7, %lo(gGfxPool)($t7)
 /* 06C00C 8006B40C 00187180 */  sll   $t6, $t8, 6
@@ -544,8 +544,8 @@ glabel func_8006AFD0
 /* 06C3B0 8006B7B0 AC6E0000 */  sw    $t6, ($v1)
 /* 06C3B4 8006B7B4 AC580004 */  sw    $t8, 4($v0)
 /* 06C3B8 8006B7B8 AC590000 */  sw    $t9, ($v0)
-/* 06C3BC 8006B7BC 3C028016 */  lui   $v0, %hi(D_80164AF0) # $v0, 0x8016
-/* 06C3C0 8006B7C0 24424AF0 */  addiu $v0, %lo(D_80164AF0) # addiu $v0, $v0, 0x4af0
+/* 06C3BC 8006B7BC 3C028016 */  lui   $v0, %hi(gMatrixEffectCount) # $v0, 0x8016
+/* 06C3C0 8006B7C0 24424AF0 */  addiu $v0, %lo(gMatrixEffectCount) # addiu $v0, $v0, 0x4af0
 /* 06C3C4 8006B7C4 844F0000 */  lh    $t7, ($v0)
 /* 06C3C8 8006B7C8 8FBF0034 */  lw    $ra, 0x34($sp)
 /* 06C3CC 8006B7CC 8FB00030 */  lw    $s0, 0x30($sp)

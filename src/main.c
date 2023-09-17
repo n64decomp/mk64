@@ -107,7 +107,7 @@ u8 gControllerBits;
 
 struct UnkStruct_8015F584 D_8014F110[1024];
 u16 gNumActors;
-u16 D_80150112;
+u16 gMatrixObjectCount;
 s32 gTickSpeed;
 f32 D_80150118;
 u16 wasSoftReset;
@@ -546,8 +546,8 @@ void race_logic_loop(void) {
     s16 i;
     u16 rotY;
 
-    D_80150112 = 0;
-    D_80164AF0 = 0;
+    gMatrixObjectCount = 0;
+    gMatrixEffectCount = 0;
     if (gIsGamePaused != 0) {
         func_80290B14();
     }
@@ -871,8 +871,7 @@ void game_state_handler(void) {
             osViBlack(0);
             update_menus();
             init_rcp();
-            // gGfxPool->mtxPool->m or gGfxPool?
-            func_80094A64((Mtx *) gGfxPool->mtxPool->m);
+            func_80094A64(gGfxPool);
 #if DVDL
 			display_dvdl();	 
 #endif
