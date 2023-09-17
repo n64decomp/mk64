@@ -39,8 +39,8 @@ extern u32 gAudioRandom;
 extern s16 gTatumsPerBeat; // D_800EA5CC
 extern volatile s32 gAudioLoadLock; // D_800EA5DC
 
-extern s32 D_803B70C0;
-extern s32 D_803B70C4;
+extern s32 gAudioTaskIndex;
+extern s32 gCurrAiBufferIndex;
 extern u64 *gAudioCmdBuffers[2]; // probably wrong
 extern u64 *gAudioCmd; // D_803B70D0
 extern struct SPTask *gAudioTask; // D_803B70D4
@@ -48,12 +48,20 @@ extern struct SPTask gAudioTasks[2]; // D_803B70D8
 extern f32 D_803B7178;
 extern s32 gRefreshRate;
 extern s16 *gAiBuffers[NUMAIBUFFERS]; // D_803B7180
-extern u32 D_803B718C; // osAiSetNextBuffer nbytes
-extern s16 load_bss_pad3;
+extern s16 gAiBufferLengths[NUMAIBUFFERS]; // osAiSetNextBuffer nbytes
 extern u16 D_803B7192; // unconfirmed
 extern u32 gAudioRandom;
 extern s32 gAudioErrorFlags;
 extern u32 D_803B71A0[4]; // unconfirmed
 extern u8 D_803B71B0[4]; // unconfirmed
+
+extern struct ReverbSettingsEU sReverbSettings[];
+extern struct AudioSessionSettingsEU gAudioSessionPresets[];
+extern s8 gUnusedCount800EA5C8;
+extern s16 gTatumsPerBeat;
+extern s32 gAudioHeapSize;
+extern s32 gAudioInitPoolSize;
+extern s32 D_800EA5D8;
+extern volatile s32 gAudioLoadLock;
 
 #endif
