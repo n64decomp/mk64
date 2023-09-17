@@ -39,8 +39,8 @@ UNUSED void func_802B4FF0() {
 
 }
 
-// set the position, rotation and mode of where to render the next object
-s32 is_rendered_then_set_position(Mat4 arg0, s32 arg1) {
+// set the position, rotation and mode of where to render the next object and check number of object already render
+s32 render_set_position(Mat4 arg0, s32 arg1) {
     if (gRenderedActorsCount >= 0x80) {
         return 0;
     }

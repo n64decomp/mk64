@@ -58,7 +58,7 @@ void func_80280038(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     gCurrentCourseId = gCreditsCourseId;
     mtxf_identity(matrix);
-    is_rendered_then_set_position(matrix, 0);
+    render_set_position(matrix, 0);
     func_80295A38(D_800DC5EC);
     render_course_actors(D_800DC5EC);
     func_80058090(0);

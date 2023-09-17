@@ -788,7 +788,7 @@ void func_802A59A4(void) {
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
@@ -796,7 +796,7 @@ void func_802A59A4(void) {
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5EC);
     func_80058090(0);
@@ -835,7 +835,7 @@ void func_802A5CB4(void) {
 
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
@@ -845,7 +845,7 @@ void func_802A5CB4(void) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5EC);
     func_80058090(1);
@@ -884,7 +884,7 @@ void func_802A5FAC(void) {
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
@@ -892,7 +892,7 @@ void func_802A5FAC(void) {
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5F0);
     func_80058090(2);
@@ -933,7 +933,7 @@ void func_802A62A4(void) {
 
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
@@ -941,7 +941,7 @@ void func_802A62A4(void) {
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5EC);
     func_80058090(3);
@@ -982,7 +982,7 @@ void func_802A65B8(void) {
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
@@ -990,7 +990,7 @@ void func_802A65B8(void) {
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5F0);
     func_80058090(4);
@@ -1029,7 +1029,7 @@ void func_802A68CC(void) {
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
@@ -1037,7 +1037,7 @@ void func_802A68CC(void) {
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5EC);
     func_80058090(8);
@@ -1076,7 +1076,7 @@ void func_802A6BB0(void) {
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
@@ -1084,7 +1084,7 @@ void func_802A6BB0(void) {
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5F0);
     func_80058090(9);
@@ -1123,7 +1123,7 @@ void func_802A6E94(void) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[9]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[9]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
@@ -1131,7 +1131,7 @@ void func_802A6E94(void) {
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[9]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5F4);
     func_80058090(10);
@@ -1178,7 +1178,7 @@ void func_802A7178(void) {
     if (D_800DC5C8 == 0) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[10]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[10]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
@@ -1186,7 +1186,7 @@ void func_802A7178(void) {
     if (D_800DC5C8 == 1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[10]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        is_rendered_then_set_position(matrix, 0);
+        render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5F8);
     func_80058090(11);
