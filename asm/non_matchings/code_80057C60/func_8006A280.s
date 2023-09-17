@@ -147,12 +147,12 @@ glabel func_8006A280
 /* 06B0C4 8006A4C4 AC4E0000 */  sw    $t6, ($v0)
 /* 06B0C8 8006A4C8 8C620000 */  lw    $v0, ($v1)
 /* 06B0CC 8006A4CC 3C0E0D01 */  lui   $t6, %hi(D_0D008DA0) # $t6, 0xd01
-/* 06B0D0 8006A4D0 3C078016 */  lui   $a3, %hi(D_80164AF0) # $a3, 0x8016
+/* 06B0D0 8006A4D0 3C078016 */  lui   $a3, %hi(gMatrixEffectCount) # $a3, 0x8016
 /* 06B0D4 8006A4D4 244F0008 */  addiu $t7, $v0, 8
 /* 06B0D8 8006A4D8 AC6F0000 */  sw    $t7, ($v1)
 /* 06B0DC 8006A4DC 25CE8DA0 */  addiu $t6, %lo(D_0D008DA0) # addiu $t6, $t6, -0x7260
 /* 06B0E0 8006A4E0 3C180600 */  lui   $t8, 0x600
-/* 06B0E4 8006A4E4 24E74AF0 */  addiu $a3, %lo(D_80164AF0) # addiu $a3, $a3, 0x4af0
+/* 06B0E4 8006A4E4 24E74AF0 */  addiu $a3, %lo(gMatrixEffectCount) # addiu $a3, $a3, 0x4af0
 /* 06B0E8 8006A4E8 AC580000 */  sw    $t8, ($v0)
 /* 06B0EC 8006A4EC AC4E0004 */  sw    $t6, 4($v0)
 /* 06B0F0 8006A4F0 84F90000 */  lh    $t9, ($a3)

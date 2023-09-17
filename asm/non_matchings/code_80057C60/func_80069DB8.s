@@ -137,12 +137,12 @@ glabel func_80069DB8
 /* 06ABD4 80069FD4 AC580000 */  sw    $t8, ($v0)
 /* 06ABD8 80069FD8 8C620000 */  lw    $v0, ($v1)
 /* 06ABDC 80069FDC 3C180D01 */  lui   $t8, %hi(D_0D008DA0) # $t8, 0xd01
-/* 06ABE0 80069FE0 3C078016 */  lui   $a3, %hi(D_80164AF0) # $a3, 0x8016
+/* 06ABE0 80069FE0 3C078016 */  lui   $a3, %hi(gMatrixEffectCount) # $a3, 0x8016
 /* 06ABE4 80069FE4 24590008 */  addiu $t9, $v0, 8
 /* 06ABE8 80069FE8 AC790000 */  sw    $t9, ($v1)
 /* 06ABEC 80069FEC 27188DA0 */  addiu $t8, %lo(D_0D008DA0) # addiu $t8, $t8, -0x7260
 /* 06ABF0 80069FF0 3C0F0600 */  lui   $t7, 0x600
-/* 06ABF4 80069FF4 24E74AF0 */  addiu $a3, %lo(D_80164AF0) # addiu $a3, $a3, 0x4af0
+/* 06ABF4 80069FF4 24E74AF0 */  addiu $a3, %lo(gMatrixEffectCount) # addiu $a3, $a3, 0x4af0
 /* 06ABF8 80069FF8 AC4F0000 */  sw    $t7, ($v0)
 /* 06ABFC 80069FFC AC580004 */  sw    $t8, 4($v0)
 /* 06AC00 8006A000 84EE0000 */  lh    $t6, ($a3)

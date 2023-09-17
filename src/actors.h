@@ -145,7 +145,7 @@ extern f32 D_80150130[];
 extern u16 D_801637B8[];
 extern Lights1 D_800DC610[];
 
-extern u16 D_80150112;
+extern u16 gMatrixObjectCount;
 
 extern uintptr_t gSegmentTable[];
 extern s16 gPlaceItemBoxes;

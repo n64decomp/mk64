@@ -184,8 +184,8 @@ glabel func_80053870
 /* 05472C 80053B2C 0C010F54 */  jal   func_80043D50
 /* 054730 80053B30 AC4D0004 */   sw    $t5, 4($v0)
 /* 054734 80053B34 3C078019 */  lui   $a3, %hi(D_8018C630) # $a3, 0x8019
-/* 054738 80053B38 3C168019 */  lui   $s6, %hi(D_8018D120) # $s6, 0x8019
-/* 05473C 80053B3C 26D6D120 */  addiu $s6, %lo(D_8018D120) # addiu $s6, $s6, -0x2ee0
+/* 054738 80053B38 3C168019 */  lui   $s6, %hi(gMatrixHudCount) # $s6, 0x8019
+/* 05473C 80053B3C 26D6D120 */  addiu $s6, %lo(gMatrixHudCount) # addiu $s6, $s6, -0x2ee0
 /* 054740 80053B40 24E7C630 */  addiu $a3, %lo(D_8018C630) # addiu $a3, $a3, -0x39d0
 /* 054744 80053B44 2415FFFF */  li    $s5, -1
 /* 054748 80053B48 24140003 */  li    $s4, 3
