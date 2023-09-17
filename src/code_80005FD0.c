@@ -535,17 +535,17 @@ void set_places(void) {
     s32 temp_a0;
     s32 var_t1_3;
 
-    switch (gModeSelection) {                       /* irregular */
-    case BATTLE:
-    default:
-        return; // HEY! returns, not breaks
-    case GRAND_PRIX:
-    case TIME_TRIALS:
-        var_t4 = 8;
-        break;
-    case VERSUS:
-        var_t4 = D_8018EDF3;
-        break;
+    switch (gModeSelection) {
+        case BATTLE:
+        default:
+            return; // HEY! returns, not breaks
+        case GRAND_PRIX:
+        case TIME_TRIALS:
+            var_t4 = 8;
+            break;
+        case VERSUS:
+            var_t4 = D_8018EDF3;
+            break;
     }
 
     if (D_8016348C == 0) {
@@ -623,17 +623,17 @@ void func_800070F4(void) {
     s32 var_a3;
     s32 var_a2;
 
-    switch (gModeSelection) {                       /* irregular */
-    case BATTLE:
-    default:
-        return; // HEY! returns, not breaks
-    case GRAND_PRIX:
-    case TIME_TRIALS:
-        var_a2 = 8;
-        break;
-    case VERSUS:
-        var_a2 = D_8018EDF3;
-        break;
+    switch (gModeSelection) {
+        case BATTLE:
+        default:
+            return; // HEY! returns, not breaks
+        case GRAND_PRIX:
+        case TIME_TRIALS:
+            var_a2 = 8;
+            break;
+        case VERSUS:
+            var_a2 = D_8018EDF3;
+            break;
     }
 
     for (var_a3 = 0; var_a3 < var_a2; var_a3++) {

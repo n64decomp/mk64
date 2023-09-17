@@ -427,29 +427,29 @@ SECTIONS
    /* 0x80280000 123640-12AAE0 [74A0] */
    BEGIN_SEG(code_80280000, SEG_80280000)
    {
-      BUILD_DIR/src/code_80280000.o(.text);
-      BUILD_DIR/src/podium_ceremony_actors.o(.text);
-      BUILD_DIR/src/camera_junk.o(.text);
-      BUILD_DIR/src/code_80281780.o(.text);
-      BUILD_DIR/src/code_80281C40.o(.text);
-      BUILD_DIR/src/ceremony_and_credits.o(.text);
-      BUILD_DIR/src/podium_ceremony_actors.o(.data);
-      BUILD_DIR/src/code_80281780.o(.data);
-      BUILD_DIR/src/dl_unk_80284EE0.inc.o(.data);
-      BUILD_DIR/src/credits.jp.o(.data);
-      BUILD_DIR/src/ceremony_and_credits.o(.data);
-      BUILD_DIR/src/podium_ceremony_actors.o(.rodata);
-      BUILD_DIR/src/camera_junk.o(.rodata);
-      BUILD_DIR/src/credits.jp.o(.rodata);
-      BUILD_DIR/src/ceremony_and_credits.o(.rodata);
+      BUILD_DIR/src/ending/code_80280000.o(.text);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.text);
+      BUILD_DIR/src/ending/camera_junk.o(.text);
+      BUILD_DIR/src/ending/code_80281780.o(.text);
+      BUILD_DIR/src/ending/code_80281C40.o(.text);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.text);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.data);
+      BUILD_DIR/src/ending/code_80281780.o(.data);
+      BUILD_DIR/src/ending/dl_unk_80284EE0.inc.o(.data);
+      BUILD_DIR/src/ending/credits.jp.o(.data);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.data);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.rodata);
+      BUILD_DIR/src/ending/camera_junk.o(.rodata);
+      BUILD_DIR/src/ending/credits.jp.o(.rodata);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.rodata);
    }
    END_SEG(code_80280000)
 
    BEGIN_NOLOAD(code_80280000) {
-      BUILD_DIR/src/code_80280000.o(.bss);
-      BUILD_DIR/src/podium_ceremony_actors.o(.bss);
-      BUILD_DIR/src/code_80281C40.o(.bss);
-      BUILD_DIR/src/ceremony_and_credits.o(.bss);
+      BUILD_DIR/src/ending/code_80280000.o(.bss);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.bss);
+      BUILD_DIR/src/ending/code_80281C40.o(.bss);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.bss);
    }
    END_NOLOAD(code_80280000)
 
