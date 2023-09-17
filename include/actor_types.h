@@ -51,11 +51,11 @@ exactly what you're doing.
 #define ACTOR_TRAIN_ENGINE             0x0F
 #define ACTOR_TRAIN_TENDER             0x10
 #define ACTOR_TRAIN_PASSENGER_CAR      0x11
+#define ACTOR_COW                      0x12
 #define ACTOR_TREE_MOO_MOO_FARM        0x13
 #define ACTOR_TRIPLE_GREEN_SHELL       0x15
 #define ACTOR_TRIPLE_RED_SHELL         0x16
 #define ACTOR_MARIO_RACEWAY_SIGN       0x17
-#define ACTOR_COW                      0x18
 #define ACTOR_PALM_TREE                0x19
 #define ACTOR_TREE_BOWSERS_CASTLE      0x1C
 #define ACTOR_TREE_FRAPPE_SNOWLAND     0x1D
