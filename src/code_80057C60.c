@@ -231,8 +231,8 @@ void func_80058090(u32 arg0) {
 void func_800581C8(void) {
 
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
     func_8001C3C4(0);
     if (gGamestate == ENDING_SEQUENCE) {
@@ -251,8 +251,8 @@ void func_800581C8(void) {
 void func_800582CC(void) {
 
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     func_8001C3C4(1);
     if (!gDemoMode) {
         func_800532A4(1);
@@ -262,8 +262,8 @@ void func_800582CC(void) {
 
 void func_80058394(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[9]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     func_8001C3C4(2);
     if (!gDemoMode) {
         func_800532A4(2);
@@ -274,8 +274,8 @@ void func_80058394(void) {
 void func_8005845C(void) {
 
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[4]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[10]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     func_8001C3C4(3);
     if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
         func_800532A4(3);
@@ -328,8 +328,8 @@ void func_80058538(u32 arg0) {
 
 void func_80058640(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     if (gGamestate != ENDING_SEQUENCE) {
         func_80058B58(0);
     }
@@ -337,22 +337,22 @@ void func_80058640(void) {
 
 void func_800586FC(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     func_80058B58(1);
 }
 
 void func_800587A4(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[9]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     func_80058B58(2);
 }
 
 void func_8005884C(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[4]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[10]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     func_80058B58(3);
 }
 
@@ -1080,7 +1080,7 @@ void func_80059D00(void) {
 
 void func_8005A070(void) {
     func_8008C1D8(&D_80165678);
-    D_8018D120 = 0;
+    gMatrixHudCount = 0;
     D_801655C0 = 0;
     func_80041D34();
     if (gIsGamePaused == 0) {
@@ -4648,8 +4648,8 @@ void func_800652D4(Vec3f arg0, Vec3s arg1, f32 arg2) {
 
     func_80021E10(sp20, arg0, arg1);
     func_80021F84(sp20, arg2);
-    func_80022180(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB], sp20);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    func_80022180(&gGfxPool->mtxEffect[gMatrixEffectCount], sp20);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 void func_8006538C(Player *player, s8 arg1, s16 arg2, s8 arg3) {
@@ -4700,7 +4700,7 @@ void func_8006538C(Player *player, s8 arg1, s16 arg2, s8 arg3) {
             func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
             gSPDisplayList(gDisplayListHead++, D_0D008E48);
         }
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 
@@ -4728,7 +4728,7 @@ void func_800658A0(Player *player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         func_8004B35C(red, green, blue, alpha);
         gSPDisplayList(gDisplayListHead++, D_0D008E48);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 
@@ -4781,7 +4781,7 @@ void func_80065AB0(Player *player, s8 arg1, s16 arg2, s8 arg3) {
             gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
             gSPDisplayList(gDisplayListHead++, D_0D008E48);
         }
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -5030,7 +5030,7 @@ void func_80065F0C(Player *player, s32 arg1, s16 arg2, s8 arg3) {
             temp_s0_31->words.w0 = 0x06000000;
             temp_s0_31->words.w1 = (u32) D_0D008DA0;
         }
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -5062,7 +5062,7 @@ void func_800664E0(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         func_8004B35C(red, green, blue, alpha);
         gSPDisplayList(gDisplayListHead++, D_0D008E48);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 
@@ -5097,7 +5097,7 @@ void func_80066714(Player *player, s32 arg1, s16 arg2, s8 arg3) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
         gSPVertex(gDisplayListHead++, D_800E8B00, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -5128,7 +5128,7 @@ void func_80066998(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         func_8004B35C(red, green, blue, alpha);
         gSPDisplayList(gDisplayListHead++, D_0D008E48);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 
@@ -5178,7 +5178,7 @@ void func_80066BAC(Player *player, s32 arg1, s16 arg2, s8 arg3) {
             gSPVertex(gDisplayListHead++, &D_800E8900[1][player->unk_258[arg2].unk_038], 4, 0);
             gSPDisplayList(gDisplayListHead++, D_0D008DA0);
         }
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -5218,7 +5218,7 @@ void func_80067280(Player *player, s8 arg1, s16 arg2, s8 arg3) {
             func_8004B35C(red, green, blue, alpha & 0xFFFFFFFF); // huh?
             gSPDisplayList(gDisplayListHead++, D_0D008E48);
         }
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 
@@ -5254,7 +5254,7 @@ void func_80067604(Player *player, s8 arg1, s16 arg2, s8 arg3) {
             func_8004B72C(0x000000FF, 0x000000FF, 0x000000DF, 0x000000FF, 0x0000005F, 0, 0x00000060);
             gSPDisplayList(gDisplayListHead++, D_0D008E48);
         }
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -5291,7 +5291,7 @@ void func_80067964(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D4B0, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPVertex(gDisplayListHead++, D_800E8800, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -5321,7 +5321,7 @@ void func_80067D3C(Player *player, s8 arg1, u8 *texture, s8 arg3, f32 arg4, s32 
 
         func_8004B414(red, green, blue, 0x000000FF);
         gSPDisplayList(gDisplayListHead++, D_0D008E20);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 
@@ -5348,7 +5348,7 @@ void func_8006801C(Player *player, s8 arg1, u8 *texture, s8 arg3, f32 arg4, s32 
 
         func_8004B414(red, green, blue, 0x000000FF);
         gSPDisplayList(gDisplayListHead++, D_0D008E20);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 
@@ -5381,7 +5381,7 @@ void func_80068310(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D4B8, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPVertex(gDisplayListHead++, D_800E88C0, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -5415,7 +5415,7 @@ void func_80068724(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C8, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPVertex(gDisplayListHead++, D_800E8A40, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -5445,7 +5445,7 @@ void func_80068AA4(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
         gSPVertex(gDisplayListHead++, D_800E8B40, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -5480,7 +5480,7 @@ void func_80068DA0(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D4A8, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPVertex(gDisplayListHead++, D_800E8BC0, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -5513,7 +5513,7 @@ void func_800691B8(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
         gSPVertex(gDisplayListHead++, D_800E87C0, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
-        D_80164AF0++;
+        gMatrixEffectCount++;
     }
 }
 #else
@@ -5561,7 +5561,7 @@ void func_80069444(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         test = envRed;
         func_8004B72C(primRed, primGreen, primBlue, (s16)test, envGreen, envBlue, primAlpha);
         gSPDisplayList(gDisplayListHead++, D_0D008E48);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -5592,7 +5592,7 @@ void func_800696CC(Player *player, s8 arg1, s16 arg2, s8 arg3, f32 arg4) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
         gSPVertex(gDisplayListHead++, D_800E87C0, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -5624,7 +5624,7 @@ void func_80069938(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
         gSPVertex(gDisplayListHead++, D_800E87C0, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -5655,7 +5655,7 @@ void func_80069BA8(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         func_8004B35C(red, green, blue, alpha);
         gSPDisplayList(gDisplayListHead++, D_0D008E48);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 
@@ -5683,7 +5683,7 @@ void func_80069DB8(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
         gSPVertex(gDisplayListHead++, D_800E8740, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -5710,7 +5710,7 @@ void func_8006A01C(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
         gSPVertex(gDisplayListHead++, D_0D008B78, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
-        D_80164AF0++;
+        gMatrixEffectCount++;
     }
 }
 
@@ -5745,7 +5745,7 @@ void func_8006A280(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
         gSPVertex(gDisplayListHead++, D_800E8780, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
     }
 }
 #else
@@ -6142,9 +6142,9 @@ void func_8006AFD0(Player *player, s16 arg1, s8 arg2, s8 arg3) {
     sp130 = (s16) (s32) (((f32) *(&D_8018D7D0 + (((s8) arg1 * 6) + temp_t6)) - ((f32) *(&D_8018D860 + (((s8) arg1 * 6) + temp_t6)) * sp58)) - (sins(unksp46) * (f32) (*sp3C * 8)));
     func_80021E10((f32 (*)[4]) &sp140[0], &sp134, &sp12C);
     func_80021F84((f32 (*)[4]) &sp140[0], var_f20);
-    func_80022180(&gGfxPool->mtxPool[D_80164AF0] + 0xFAC0, (f32 (*)[4]) &sp140[0]);
+    func_80022180(&gGfxPool->mtxEffect[gMatrixEffectCount], (f32 (*)[4]) &sp140[0]);
 
-    gSPMatrix(gDisplayListHead++, PHYSICAL_TO_VIRTUAL(&gGfxPool->mtxPool[D_80164AF0] + 0xFAC0), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, PHYSICAL_TO_VIRTUAL(&gGfxPool->mtxEffect[gMatrixEffectCount], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008DB8);
     gDPLoadTLUT_pal256(gDisplayListHead++, 0x800E52D0);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -6159,7 +6159,7 @@ void func_8006AFD0(Player *player, s16 arg1, s8 arg2, s8 arg3) {
     gSPVertex(gDisplayListHead++, D_800E5290, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D008C78);
     gSPTexture(gDisplayListHead++, 0x0001, 0x0001, 0, G_TX_RENDERTILE, G_OFF);
-    D_80164AF0++;
+    gMatrixEffectCount++;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006AFD0.s")
@@ -6265,8 +6265,8 @@ void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     spF4[2] = arg2;
     func_80021E10(sp108[0], spFC, spF4);
     func_80021F84(sp108[0], arg1);
-    func_80022180(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB], sp108);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    func_80022180(&gGfxPool->mtxEffect[gMatrixEffectCount], sp108);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008DB8);
     gDPLoadTLUT_pal256(gDisplayListHead++, D_800E52D0);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -6280,7 +6280,7 @@ void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     gSPVertex(gDisplayListHead++, D_800E5290, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D008C78);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
-    D_80164AF0 += 1;
+    gMatrixEffectCount += 1;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80057C60/render_balloon.s")
@@ -6310,7 +6310,7 @@ void func_8006C0C8(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha) {
     // ???????????????????????????????????
     func_8004B35C(red, green, blue, alpha);
     gSPDisplayList(gDisplayListHead++, D_0D008E48);
-    D_80164AF0 += 1;
+    gMatrixEffectCount += 1;
 }
 
 #ifdef NEEDS_RODATA
@@ -6340,7 +6340,7 @@ void func_8006C294(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
     gSPVertex(gDisplayListHead++, D_800E87C0, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D008DA0);
-    D_80164AF0 += 1;
+    gMatrixEffectCount += 1;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006C294.s")
@@ -6366,7 +6366,7 @@ void func_8006C4D4(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha, s16 arg4) {
     gDPLoadTextureBlock(gDisplayListHead++, D_0D02AC58[arg4], G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     func_8004B414(red, green, blue, alpha);
     gSPDisplayList(gDisplayListHead++, D_0D008E48);
-    D_80164AF0 += 1;
+    gMatrixEffectCount += 1;
 }
 
 #ifdef NON_MATCHING

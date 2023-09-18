@@ -121,7 +121,7 @@ void func_800940EC(s32);
 void func_800942D0(void);
 void func_80094660(struct GfxPool*, s32);
 void func_800947B4(struct GfxPool*, s32);
-void func_80094A64(Mtx*);
+void func_80094A64(struct GfxPool*);
 void func_80094C60(void);
 void func_80095574(void);
 Gfx *func_800958D4(Gfx*, s32, s32, s32, s32, s32);

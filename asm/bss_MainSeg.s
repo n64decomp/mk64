@@ -11,7 +11,7 @@ glabel D_801636B0
 glabel D_801637AC #
 .skip 12
 
-glabel D_801637B8 # Crossing activated bit field
+glabel isCrossingTriggeredByIndex # Crossing activated boolean
 .skip 4
 
 glabel D_801637BC # CrossingTimer

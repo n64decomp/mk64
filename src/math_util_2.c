@@ -605,61 +605,58 @@ void func_80041D34(void) {
     guOrtho((Mtx *)D_80183D60, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
     switch (gActiveScreenMode) {
     case SCREEN_MODE_1P:
-        guOrtho(&gGfxPool->mtxPool[5], 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+        guOrtho(&gGfxPool->mtxOrtho, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
         break;
     case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-        guOrtho(&gGfxPool->mtxPool[5], 0.0f, 160.0f, 120.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+        guOrtho(&gGfxPool->mtxOrtho, 0.0f, 160.0f, 120.0f, 0.0f, -1.0f, 1.0f, 1.0f);
         break;
     case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
         if (D_801658FE == 0) {
-            guOrtho(&gGfxPool->mtxPool[5], 0.0f, 320.0f, 120.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+            guOrtho(&gGfxPool->mtxOrtho, 0.0f, 320.0f, 120.0f, 0.0f, -1.0f, 1.0f, 1.0f);
         }
         else {
-            guOrtho(&gGfxPool->mtxPool[5], 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+            guOrtho(&gGfxPool->mtxOrtho, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
         }
         break;
     case SCREEN_MODE_3P_4P_SPLITSCREEN:
-        guOrtho(&gGfxPool->mtxPool[5], 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+        guOrtho(&gGfxPool->mtxOrtho, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
         break;
     }
 }
 
 void func_80041EF4(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[5]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxOrtho), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 }
 
-extern s32 D_8018D120;
+extern s32 gMatrixHudCount;
 //void func_80022180(Mtx*, Mat4);
 
 UNUSED void func_80041F54(s32 arg0, s32 arg1) {
     Mat4 matrix;
 
     func_80041A78(matrix, arg0, arg1);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
+    func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120++;
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 UNUSED void func_80042000(u16 arg0) {
     Mat4 matrix;
 
     func_80041AD8(matrix, arg0);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
+    func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120++;
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 UNUSED void func_800420A8(f32 arg0) {
     Mat4 matrix;
 
     func_80041B68(matrix, arg0);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
+    func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120++;
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
 }
 
@@ -667,33 +664,29 @@ UNUSED void func_8004214C(u16 arg1, f32 arg2) {
     Mat4 matrix;
 
     func_80041BBC(matrix, arg1, arg2);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
+    func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120++;
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 UNUSED void func_800421FC(s32 arg0, s32 arg1, f32 arg2) {
     Mat4 matrix;
 
     func_80041A78(matrix, arg0, arg1);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
+    func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120++;
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     func_80041B68(matrix, arg2);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-    D_8018D120++;
+    func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 }
 
 void func_80042330(s32 arg0, s32 arg1, u16 arg2, f32 arg3) {
     Mat4 matrix;
     func_80041C64(matrix, arg0, arg1, arg2, arg3);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120++;
+    func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 UNUSED void func_800423F0(Mat4 arg0, u16 arg1, u16 arg2, u16 arg3) {
@@ -944,18 +937,16 @@ void func_80042E00(Vec3f arg0, Vec3su arg1, f32 arg2) {
     Mat4 matrix;
 
     func_800425D0(matrix, arg0, arg1, arg2);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120++;
+    func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 UNUSED void func_80042EB8(Vec3f arg0, Vec3f arg1, f32 arg2) {
     Mat4 matrix;
 
     func_80042760(matrix, arg0, arg1, arg2);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120++;
+    func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 
@@ -967,27 +958,24 @@ void func_80042F70(Vec3f arg0, Vec3su arg1, f32 arg2) {
     sp20[1] = arg1[1] + 0x8000;
     sp20[2] = arg1[2];
     func_800425D0(matrix, arg0, sp20, arg2);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
+    func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120++;
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 void func_80043050(Vec3f arg0,Vec3f arg1, f32 arg2) {
     Mat4 matrix;
 
     func_80042A20(matrix, arg1, arg0, 0, arg2);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], matrix);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120++;
+    func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 void func_80043104(s32 arg0) {
     Mat4 sp20;
 
     func_800427DC(arg0, sp20);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], sp20);
+    func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], sp20);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120++;
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }

@@ -233,8 +233,8 @@ void func_80280A28(Vec3f arg0, Vec3s arg1, f32 arg2) {
     mtx[2][0] = D_80287500[0][2] * arg2;
     mtx[2][1] = D_80287500[1][2] * arg2;
     mtx[2][2] = D_80287500[2][2] * arg2;
-    func_80022180(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB], mtx);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    func_80022180(&gGfxPool->mtxEffect[gMatrixEffectCount], mtx);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 void render_fireworks(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha) {
@@ -260,7 +260,7 @@ void render_fireworks(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha) {
     // ???????????????????????????????????
     func_8004B35C(red, green, blue, alpha);
     gSPDisplayList(gDisplayListHead++, D_0D008E48);
-    D_80164AF0 += 1;
+    gMatrixEffectCount += 1;
 }
 
 void firework_update(Firework *actor) {
@@ -462,7 +462,7 @@ void func_80281540(void) {
 }
 
 void podium_ceremony_loop(void) {
-    gRenderedActorsCount = 0;
+    gMatrixObjectCount = 0;
     D_802874FC = 0;
     setup_camera_podium_ceremony();
     func_80028F70();

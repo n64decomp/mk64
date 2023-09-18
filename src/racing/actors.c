@@ -7,6 +7,7 @@
 #include <actor_types.h>
 #include <defines.h>
 #include <PR/gbi.h>
+#include "main.h"
 #include "math_util.h"
 #include "memory.h"
 #include "actors_extended.h"
@@ -752,7 +753,7 @@ void func_802986B4(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
             arg1[3][0] = sp88[0];
             arg1[3][1] = sp88[1];
             arg1[3][2] = sp88[2];
-            if ((gRenderedActorsCount < 0x80) && (render_set_position(arg1, 0) != 0)) {
+            if ((gMatrixObjectCount < MTX_OBJECT_POOL_SIZE) && (func_802B4FF8(arg1, 0) != 0)) {
                 switch (var_s1->someId) {
                 case 0:
                     gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow1);
@@ -890,14 +891,14 @@ void func_80298D7C(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
         test = (s16)test;
         if (test == 6) {
             func_802B5F74(sp90, spD4, sp88);
-            if (!(gRenderedActorsCount < 0x80)) { break; }
+            if (!(gMatrixObjectCount < MTX_OBJECT_POOL_SIZE)) { break; }
             render_set_position(sp90, 0);
             goto dummylabel;
         } else {
             arg1[3][0] = spD4[0];
             arg1[3][1] = spD4[1];
             arg1[3][2] = spD4[2];
-            if (gRenderedActorsCount < 0x80) {
+            if (gMatrixObjectCount < MTX_OBJECT_POOL_SIZE) {
                 render_set_position(arg1, 0);
 dummylabel:
                 gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1325,7 +1326,7 @@ void update_actor_wario_stadium_sign(struct Actor *arg0) {
  **/
 void update_actor_railroad_crossing(struct RailroadCrossing *crossing) {
     // If train close?
-    if (D_801637B8[crossing->crossingId] != 0) {
+    if (isCrossingTriggeredByIndex[crossing->crossingId] != 0) {
         // Timer++
         crossing->someTimer++;
         // Reset timer
@@ -3944,7 +3945,7 @@ void func_802A2AD0(Camera *arg0, struct RailroadCrossing *rr_crossing) {
             gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
 
-            if (D_801637B8[rr_crossing->crossingId]) {
+            if (isCrossingTriggeredByIndex[rr_crossing->crossingId]) {
 
                 if (rr_crossing->someTimer < 20) {
                     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_crossing_right_active);
