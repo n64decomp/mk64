@@ -414,7 +414,7 @@ Gfx D_0D002EE8[] = {
     gsSPEndDisplayList(),
 };
 
-Vtx reverseItemBoxQuestionMarkVertex[] = {
+Vtx common_fake_item_box_question_mark_vertices[] = {
     {{{    -3,       5,       0}, 0, {1024, 2048}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,      -5,       0}, 0, {1024, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,      -5,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -435,7 +435,7 @@ Gfx fakeItemBoxModel[] = {
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 256),
-    gsSPVertex(reverseItemBoxQuestionMarkVertex, 4, 0),
+    gsSPVertex(common_fake_item_box_question_mark_vertices, 4, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),

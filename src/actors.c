@@ -1275,12 +1275,12 @@ void render_actor_blue_shell(Camera *camera, Mat4 matrix, struct ShellActor *she
 
 // A little strange this render banana
 void render_actor_banana(Camera *camera, UNUSED Mat4 arg1, struct BananaActor *banana) {
-    UNUSED s32 pad[3];
+    UNUSED s32 pad[2];
+    s32 maxObjectsReached;
     Vec3s sp7C;
     Mat4 sp3C;
 
     f32 temp = is_within_render_distance(camera->pos, banana->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 490000.0f);
-    s32 maxObjectsReached;
     if (temp < 0.0f) {
         func_80297230(camera, (struct Actor *) banana);
         return;
@@ -1577,14 +1577,14 @@ void func_8029B6EC(Camera *camera, struct Actor* arg1) {
 
 // Spins train wheels?
 void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
-    UNUSED s32 pad[3];
+    UNUSED s32 pad[2];
+    s32 maxObjectsReached;
     Vec3f sp160;
     Mat4 sp120;
     Mat4 spE0;
     Mat4 spA0;
 
     f32 temp_f0 = is_within_render_distance(camera->pos, actor->pos, camera->rot[1], 2500.0f, gCameraZoom[camera - camera1], 9000000.0f);
-    s32 maxObjectsReached;
 
     if (temp_f0 < 0.0f) { return; }
 
@@ -1709,15 +1709,13 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     Mat4 spA0;
 
     f32 temp_f0 = is_within_render_distance(camera->pos, actor->pos, camera->rot[1], 625.0f, gCameraZoom[camera - camera1], 9000000.0f);
-    s32 maxObjectsReached;
 
     if (temp_f0 < 0.0f) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
     func_802B5F74(sp120, actor->pos, actor->rot);
-    maxObjectsReached = render_set_position(sp120, 0) == 0;
-    if (maxObjectsReached) { return; }
+    if (render_set_position(sp120, 0) == 0) { return; }
 
     if (temp_f0 < 250000.0f) {
 
@@ -1738,8 +1736,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
-    if (maxObjectsReached) { return; }
+    if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -1749,8 +1746,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
-    if (maxObjectsReached) { return; }
+    if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -1760,8 +1756,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
-    if (maxObjectsReached) { return; }
+    if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -1771,8 +1766,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
-    if (maxObjectsReached) { return; }
+    if (render_set_position(spA0, 3) == 0) { return; }
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
@@ -1785,15 +1779,14 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     Mat4 spA0;
 
     f32 temp_f0 = is_within_render_distance(camera->pos, actor->pos, camera->rot[1], 2025.0f, gCameraZoom[camera - camera1], 9000000.0f);
-    s32 maxObjectsReached;
 
     if (temp_f0 < 0.0f) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
     func_802B5F74(sp120, actor->pos, actor->rot);
-    maxObjectsReached = render_set_position(sp120, 0) == 0;
-    if (maxObjectsReached) { return; }
+
+    if (render_set_position(sp120, 0) == 0) { return; }
 
     if (temp_f0 < 250000.0f) {
 
@@ -1818,8 +1811,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
-    if (maxObjectsReached) { return; }
+    if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -1829,8 +1821,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
-    if (maxObjectsReached) { return; }
+    if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -1840,8 +1831,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
-    if (maxObjectsReached) { return; }
+    if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -1851,8 +1841,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
-    if (maxObjectsReached) { return; }
+    if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -1862,8 +1851,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
-    if (maxObjectsReached) { return; }
+    if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -1873,8 +1861,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
-    if (maxObjectsReached) { return; }
+    if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -1884,8 +1871,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
-    if (maxObjectsReached) { return; }
+    if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -1895,8 +1881,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     mtxf_translate(spE0, sp160);
     func_802B71CC(spA0, sp120, spE0);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
-    if (maxObjectsReached) { return; }
+    if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
@@ -3889,7 +3874,6 @@ void func_802A27A0(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg, u16 arg3
     Vec3s sp5C;
     Vec3f sp54;
     f32 temp_f0;
-    s32 maxObjectsReached;
 
     if (gGamestate != CREDITS_SEQUENCE) {
         temp_f0 = is_within_render_distance(arg0->pos, egg->pos, arg0->rot[1], 200.0f, gCameraZoom[arg0 - camera1], 16000000.0f);
@@ -3914,8 +3898,7 @@ void func_802A27A0(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg, u16 arg3
         sp5C[1] = egg->eggRot;
         sp5C[2] = 0;
         func_802B5F74(sp60, egg->pos, sp5C);
-        maxObjectsReached = render_set_position(sp60, 0) == 0;
-        if (maxObjectsReached) { return; }
+        if (render_set_position(sp60, 0) == 0) { return; }
 
         gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
         gSPDisplayList(gDisplayListHead++, d_course_yoshi_valley_dl_16D70);

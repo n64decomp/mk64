@@ -52,7 +52,7 @@ extern Vtx D_0D001E88[];
 extern Vtx D_0D001EB8[];
 extern s8  gItemBoxQuestionMark_Texture[];
 extern Gfx D_0D002EE8[];
-extern Vtx reverseItemBoxQuestionMarkVertex[];
+extern Vtx common_fake_item_box_question_mark_vertices[];
 extern Gfx fakeItemBoxModel[];
 extern Gfx itemBoxQuestionMarkModel[];
 extern Gfx D_0D003090[];
