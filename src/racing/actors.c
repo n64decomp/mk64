@@ -753,7 +753,7 @@ void func_802986B4(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
             arg1[3][0] = sp88[0];
             arg1[3][1] = sp88[1];
             arg1[3][2] = sp88[2];
-            if ((gMatrixObjectCount < MTX_OBJECT_POOL_SIZE) && (func_802B4FF8(arg1, 0) != 0)) {
+            if ((gMatrixObjectCount < MTX_OBJECT_POOL_SIZE) && (render_set_position(arg1, 0) != 0)) {
                 switch (var_s1->someId) {
                 case 0:
                     gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_cow1);
