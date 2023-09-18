@@ -1,6 +1,6 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
-#include "courses/flower_cup/choco_mountain/course_data.inc.h"
+#include "courses/choco_mountain/course_data.inc.h"
 
 extern u8 gTexture64619C[];
 extern u8 gTexture64647C[];

@@ -2,7 +2,7 @@
 #include <macros.h>
 #include "types.h"
 #include "courseTable.h"
-#include "all_course_model.h"
+#include "all_course_vtx.h"
 #include "all_course_packed.h"
 
 struct courseTable gCourseTable[] = {{
