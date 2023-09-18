@@ -123,7 +123,7 @@ Vtx D_0D001390[] = {
     {{{    40,     100,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Vtx finishPostVertex[] = {
+Vtx common_vertex_finish_post[] = {
     {{{   -92,       0,       0}, 0, {0, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -89,       0,       0}, 0, {990, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -89,     115,       0}, 0, {990, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -252,7 +252,7 @@ Gfx finishPostModel[] = {
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 124, 124),
-    gsSPVertex(finishPostVertex, 24, 0),
+    gsSPVertex(common_vertex_finish_post, 24, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, 0x03008800),
