@@ -6,6 +6,7 @@ glabel D_800F0C98
 
 glabel D_800F0C9C
 .asciiz "\""
+.balign 4
 
 .section .late_rodata
 
