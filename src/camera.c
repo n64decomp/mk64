@@ -43,7 +43,7 @@ extern f32 D_80164A48[4];
 extern f32 D_80164A78[];
 extern s8 D_80164A88;
 extern s8 D_80164A89;
-extern f32 D_80150130[4];
+extern f32 gCameraZoom[4];
 
 void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cameraId) {
     Player *player = gPlayerOne;
@@ -152,27 +152,27 @@ void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cam
 
         if (D_80164678[cameraId] == 0) {
             if (D_80164A28 == 1) {
-                D_80150130[cameraId] = 80.0f;
+                gCameraZoom[cameraId] = 80.0f;
             } else {
-                D_80150130[cameraId] = 40.0f;
+                gCameraZoom[cameraId] = 40.0f;
             }
-            camera->unk_B4 = D_80150130[cameraId];
+            camera->unk_B4 = gCameraZoom[cameraId];
         }
         if (D_80164678[cameraId] == 1) {
             if (D_80164A28 == 1) {
-                D_80150130[cameraId] = 100.0f;
+                gCameraZoom[cameraId] = 100.0f;
             } else {
-                D_80150130[cameraId] = 60.0f;
+                gCameraZoom[cameraId] = 60.0f;
             }
-            camera->unk_B4 = D_80150130[cameraId];
+            camera->unk_B4 = gCameraZoom[cameraId];
         }
         if (D_80164678[cameraId] == 2) {
             if (D_80164A28 == 1) {
-                D_80150130[cameraId] = 100.0f;
+                gCameraZoom[cameraId] = 100.0f;
             } else {
-                D_80150130[cameraId] = 60.0f;
+                gCameraZoom[cameraId] = 60.0f;
             }
-            camera->unk_B4 = D_80150130[cameraId];
+            camera->unk_B4 = gCameraZoom[cameraId];
             D_80164A38[cameraId] = 20.0f;
             D_80164A48[cameraId] = 1.5f;
             D_80164A78[cameraId] = 1.0f;

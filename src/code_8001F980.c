@@ -1246,9 +1246,9 @@ void func_80023C84(Player *player, s8 arg1, s8 arg2) {
         func_80021E10(sp118, spCC, spC4);
         func_80021F84(sp118, D_800DDBD4[player->characterId] * player->unk_224);
     }
-    func_80022180(&gGfxPool->mtxPool[arg1 + (arg2 << 3) + 0x3AB], sp118);
+    func_80022180(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)], sp118);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[arg1 + (arg2 << 3) + 0x3AB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008D58);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D474, G_IM_FMT_I, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR
@@ -1295,8 +1295,8 @@ void func_80024374(Player *player, s8 arg1, s8 arg2) {
 
     func_80021E10(sp118, spCC, spC4);
     func_80021F84(sp118, D_800DDBD4[player->characterId] * player->unk_224);
-    func_80022180(&gGfxPool->mtxPool[arg1 + (arg2 << 3) + 0x3AB], sp118);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[arg1 + (arg2 << 3) + 0x3AB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    func_80022180(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)], sp118);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008D58);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D474, G_IM_FMT_I, G_IM_SIZ_8b, 64, 32, 0,
@@ -1382,17 +1382,17 @@ void func_800248D0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     }
     func_80021E10(sp1A4, sp154, sp14C);
     func_80021F84(sp1A4, D_800DDBD4[player->characterId] * player->unk_224);
-    func_80022180(&gGfxPool->mtxPool[arg1 + (arg2 * 8) + 0x3CB], sp1A4);
+    func_80022180(&gGfxPool->mtxKart[arg1 + (arg2 * 8)], sp1A4);
     if ((player->unk_0BC & 0x80000000) == 0x80000000) {
         if (arg2 == arg1) {
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[arg1 + (arg2 * 8) + 0x3CB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             gSPDisplayList(gDisplayListHead++, D_0D008CD8);
             gDPLoadTLUT_pal256(gDisplayListHead++, D_80164B04);
             gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
             func_8004B614(D_80164B10[arg1], D_80164B20[arg1], D_80164B30[arg1], D_80164B40[arg1], D_80164B50[arg1], D_80164B60[arg1], (s32) player->unk_0C6);
             gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
         } else {
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[arg1 + (arg2 * 8) + 0x3CB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             gSPDisplayList(gDisplayListHead++, D_0D008CD8);
             gDPLoadTLUT_pal256(gDisplayListHead++, D_80164B04);
             gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -1400,7 +1400,7 @@ void func_800248D0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
             gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
         }
     } else if (((player->unk_0CA & 4) == 4) || (player->statusEffects & 0x08000000) || (player->statusEffects & 0x04000000)) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[arg1 + (arg2 * 8) + 0x3CB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, D_0D008CD8);
         gDPLoadTLUT_pal256(gDisplayListHead++, D_80164B04);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -1408,7 +1408,7 @@ void func_800248D0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
         gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[arg1 + (arg2 * 8) + 0x3CB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, D_0D008CD8);
         gDPLoadTLUT_pal256(gDisplayListHead++, D_80164B04);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -1478,8 +1478,8 @@ void func_800256F4(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     }
     func_80021E10(sp12C, spDC, spD4);
     func_80021F84(sp12C, D_800DDBD4[player->characterId] * player->unk_224);
-    func_80022180(&gGfxPool->mtxPool[arg1 + (arg2 * 8) + 0x3CB], sp12C);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[arg1 + (arg2 * 8) + 0x3CB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    func_80022180(&gGfxPool->mtxKart[arg1 + (arg2 * 8)], sp12C);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008CD8);
     gDPLoadTLUT_pal256(gDisplayListHead++, D_80164B04);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -1508,8 +1508,8 @@ void func_80025DE8(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     sp94[2] = player->unk_050[arg2];
     func_80021E10(spA8, sp9C, sp94);
     func_80021F84(spA8, D_800DDBD4[player->characterId] * player->unk_224);
-    func_80022180(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB], spA8);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    func_80022180(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008D10);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
     func_8004B614((s32) D_80164B10[arg1], (s32) D_80164B20[arg1], (s32) D_80164B30[arg1], (s32) D_80164B40[arg1], (s32) D_80164B50[arg1], (s32) D_80164B60[arg1], 0x00000040);
@@ -1521,7 +1521,7 @@ void func_80025DE8(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     gSPVertex(gDisplayListHead++, &D_800DDBB4[arg1][arg3 + 4], 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D008C78);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
-    D_80164AF0 += 1;
+    gMatrixEffectCount += 1;
 }
 
 void func_800262E0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
@@ -1542,8 +1542,8 @@ void func_800262E0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     }
     func_80021E10(spA8, sp9C, sp94);
     func_80021F84(spA8, D_800DDBD4[player->characterId] * player->unk_224);
-    func_80022180(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB], spA8);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    func_80022180(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008CD8);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
     func_8004B614((s32) D_80164B10[arg1], (s32) D_80164B20[arg1], (s32) D_80164B30[arg1], (s32) D_80164B40[arg1], (s32) D_80164B50[arg1], (s32) D_80164B60[arg1], (s16) player->unk_0C6 / 2);
@@ -1555,7 +1555,7 @@ void func_800262E0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     gSPVertex(gDisplayListHead++, &D_800DDBB4[arg1][arg3 + 4], 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D008C78);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
-    D_80164AF0 += 1;
+    gMatrixEffectCount += 1;
 }
 
 void func_800267AC(Player *player, s8 arg1, s8 arg2) {

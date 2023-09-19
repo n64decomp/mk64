@@ -363,8 +363,8 @@ glabel func_80065F0C
 /* 0670A8 800664A8 AE180000 */  sw    $t8, ($s0)
 /* 0670AC 800664AC AE190004 */  sw    $t9, 4($s0)
 .L800664B0:
-/* 0670B0 800664B0 3C028016 */  lui   $v0, %hi(D_80164AF0) # $v0, 0x8016
-/* 0670B4 800664B4 24424AF0 */  addiu $v0, %lo(D_80164AF0) # addiu $v0, $v0, 0x4af0
+/* 0670B0 800664B0 3C028016 */  lui   $v0, %hi(gMatrixEffectCount) # $v0, 0x8016
+/* 0670B4 800664B4 24424AF0 */  addiu $v0, %lo(gMatrixEffectCount) # addiu $v0, $v0, 0x4af0
 /* 0670B8 800664B8 844E0000 */  lh    $t6, ($v0)
 /* 0670BC 800664BC 25CF0001 */  addiu $t7, $t6, 1
 /* 0670C0 800664C0 A44F0000 */  sh    $t7, ($v0)

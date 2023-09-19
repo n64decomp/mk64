@@ -38,7 +38,7 @@ void place_falling_rocks(struct ActorSpawnData *spawnData) {
     }
 }
 
-void update_obj_falling_rocks(struct FallingRock *rock) {
+void update_actor_falling_rocks(struct FallingRock *rock) {
     Vec3f unkVec;
     f32 pad0;
     f32 pad1;

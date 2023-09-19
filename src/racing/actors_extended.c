@@ -213,7 +213,7 @@ s32 func_802B09C0(s16 bananaId) {
     return 0;
 }
 
-void update_obj_banana_bunch(struct BananaBunchParent *banana_bunch) {
+void update_actor_banana_bunch(struct BananaBunchParent *banana_bunch) {
     UNUSED s32 pad[2];
     Player *owner;
     struct Controller *controller;
@@ -329,7 +329,7 @@ s32 func_802B0E14(s16 arg0) {
     return 0;
 }
 
-void update_obj_triple_shell(TripleShellParent *parent, s16 shellType) {
+void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
     UNUSED s32 pad[2];
     s16 playerId;
     UNUSED s32 pad2;
@@ -665,7 +665,7 @@ void func_802B1FFC(Player *player) {
     gActorList[func_802B1E48(player)].type = ACTOR_BLUE_SPINY_SHELL;
 }
 
-void update_obj_banana(struct BananaActor *banana) {
+void update_actor_banana(struct BananaActor *banana) {
     UNUSED f32 pad;
     Player *player;
     struct BananaActor *elderBanana;
@@ -1103,7 +1103,7 @@ void func_802B30EC(void) {
     }
 }
 
-void update_obj_green_shell(struct ShellActor *shell) {
+void update_actor_green_shell(struct ShellActor *shell) {
     Player *player;
     UNUSED f32 pad9;
     UNUSED f32 padA;
@@ -1469,7 +1469,7 @@ void func_802B4104(struct ShellActor *shell) {
     }
 }
 
-void update_obj_red_blue_shell(struct ShellActor *shell) {
+void update_actor_red_blue_shell(struct ShellActor *shell) {
     UNUSED f32 pad9;
     Player *player;
     f32 temp_f0;

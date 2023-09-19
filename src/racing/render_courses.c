@@ -211,24 +211,24 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
     playerDirection = arg0->playerDirection;
     switch (arg1) {
         case 0:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
             break;
         case 1:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
             break;
         case 2:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[9]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
             break;
         case 3:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[4]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[10]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
             break;
     }
     mtxf_identity(matrix);
-    func_802B4FF8(matrix, 0);
+    render_set_position(matrix, 0);
     switch (gCurrentCourseId) {
         case COURSE_BOWSER_CASTLE:
             if (gActiveScreenMode != 0) { return; }
@@ -277,7 +277,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             vector[1] = D_8015F8E4;
             vector[2] = 0.0f;
             mtxf_translate(matrix, vector);
-            func_802B4FF8(matrix, 0);
+            render_set_position(matrix, 0);
 
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
             gDPSetBlendMask(gDisplayListHead++, 0xFF);
@@ -300,7 +300,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
 
             mtxf_identity(matrix);
-            func_802B4FF8(matrix, 0);
+            render_set_position(matrix, 0);
             load_surface_map((uintptr_t) &D_090001D0, arg0);
 
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
@@ -315,7 +315,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
         case COURSE_RAINBOW_ROAD:
             gDPPipeSync(gDisplayListHead++);
             mtxf_identity(matrix);
-            func_802B4FF8(matrix, 0);
+            render_set_position(matrix, 0);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
             load_surface_map((uintptr_t) &d_course_rainbow_road_dl_list, arg0);
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
@@ -333,7 +333,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
 
             mtxf_identity(matrix);
-            func_802B4FF8(matrix, 0);
+            render_set_position(matrix, 0);
 
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
@@ -354,7 +354,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
 
             mtxf_identity(matrix);
-            func_802B4FF8(matrix, 0);
+            render_set_position(matrix, 0);
 
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
@@ -714,7 +714,7 @@ void render_banshee_boardwalk(struct UnkStruct_800DC5EC *arg0) {
     spA8[1] = -82.0f;
     spA8[2] = camera->pos[2];
     mtxf_translate(spCC, spA8);
-    func_802B4FF8(spCC, 0);
+    render_set_position(spCC, 0);
 
     gSPDisplayList(gDisplayListHead++, d_course_banshee_boardwalk_dl_B278);
     gDPPipeSync(gDisplayListHead++);

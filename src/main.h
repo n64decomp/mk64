@@ -10,10 +10,49 @@
 #define MESG_START_GFX_SPTASK 103
 #define MESG_NMI_REQUEST 104
 
-#define MTX_POOL_SIZE 0x0683
+#define MTX_HUD_POOL_SIZE 800
+
+#ifdef AVOID_UB
+#define MTX_HUD_POOL_SIZE_MAX MTX_HUD_POOL_SIZE
+#else
+#define MTX_HUD_POOL_SIZE_MAX MTX_HUD_POOL_SIZE - 50
+#endif
+
+#define MTX_OBJECT_POOL_SIZE 128
+
+// TODO: Verify with proper documentation
+// functions called by mtxShadow multiply by 8
+// 8 CPU Players * 4 real players in coop
+#define MTX_SHADOW_POOL_SIZE 8 * 4
+
+// TODO: Verify with proper documentation
+// functions called by mtxKart multiply by 8
+// 8 CPU Players * 4 real players in coop
+#define MTX_KART_POOL_SIZE 8 * 4
+
+#define MTX_EFFECT_POOL_SIZE 660
+
+// func_80095BD0 sets an OOB pool size max check (760)
+#ifdef AVOID_UB
+#define MTX_EFFECT_POOL_SIZE_MAX MTX_EFFECT_POOL_SIZE
+#else
+#define MTX_EFFECT_POOL_SIZE_MAX MTX_EFFECT_POOL_SIZE + 100
+#endif
+
 #define GFX_POOL_SIZE 0x1D4C
+
 struct GfxPool {
-    /* 0x00000 */ Mtx mtxPool[MTX_POOL_SIZE];
+    /* 0x00000 */ Mtx mtxScreen; // Matrix for skybox and startup logo
+    /* 0x00040 */ Mtx mtxPersp[4]; // Matrix for perspective screen modes
+    /* 0x00140 */ Mtx mtxOrtho; // Matrix for ortho hud screen modes
+    /* 0x00180 */ Mtx mtxUnk; // Matrix unused
+    /* 0x001C0 */ Mtx mtxLookAt[4]; // Matrix for lookat screen modes
+    /* 0x002C0 */ Mtx mtxHud[MTX_HUD_POOL_SIZE]; // Matrix hud elements and 2D related effects
+    /* 0x0CAC0 */ Mtx mtxObject[MTX_OBJECT_POOL_SIZE]; // Matrix course objects
+    /* 0x0EAC0 */ Mtx mtxShadow[MTX_SHADOW_POOL_SIZE]; // Matrix shadow characters
+    /* 0x0F2C0 */ Mtx mtxKart[MTX_KART_POOL_SIZE]; // Matrix kart characters
+    /* 0x0FAC0 */ Mtx mtxEffect[MTX_EFFECT_POOL_SIZE]; // Matrix misc effects
+    /* 0x19FC0 */ Mtx mtxArr[4]; // Matrix unused array
     /* 0x1A0C0 */ Gfx gfxPool[GFX_POOL_SIZE];
     /* 0x28B20 */ struct SPTask spTask;
 }; // size = 0x28B70
@@ -43,8 +82,8 @@ void *clear_framebuffer(s32);
 void rendering_init(void);
 void config_gfx_pool(void);
 void display_and_vsync(void);
-void init_seg_80280000(void);
-void init_seg_8028DF00(void);
+void init_segment_ending_sequences(void);
+void init_segment_racing(void);
 void dma_copy(u8*, u8*, u32);
 void setup_game_memory(void);
 void game_init_clear_framebuffer(void);
@@ -227,7 +266,7 @@ extern u32 *D_801978D0; // Segment? Keeps track of segmented addresses?
 extern s16 gCurrentlyLoadedCourseId;
 extern s16 gCurrentCourseId;
 
-extern s16 D_80164AF0;
+extern s16 gMatrixEffectCount;
 extern u16 gIsGamePaused; // 1 if the game is paused and 0 if the game is not paused
 extern u16 gIsInQuitToMenuTransition;
 

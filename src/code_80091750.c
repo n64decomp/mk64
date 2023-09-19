@@ -2446,17 +2446,16 @@ UNUSED void func_80093C90(void) {
 
 void func_80093C98(s32 arg0) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
-    guOrtho(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    D_80164AF0++;
+    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007F18);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
     func_800A8250();
     if (arg0 == 0) {
         func_800A54EC();
         func_8009CA6C(4);
-        D_80165754 = D_80164AF0;
-        D_80164AF0 = 0;
+        D_80165754 = gMatrixEffectCount;
+        gMatrixEffectCount = 0;
     }
 }
 
@@ -2503,9 +2502,8 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_80093E60.s")
 
 void func_80093F10(void) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
-    guOrtho(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    D_80164AF0++;
+    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007F18);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
     func_80092290(4, D_8018E850, D_8018E858);
@@ -2518,15 +2516,14 @@ void func_80093F10(void) {
     func_80099EC4();
     func_8009CA2C();
     gSPDisplayList(gDisplayListHead++, D_02007F48);
-    D_80164AF0 = 0;
+    gMatrixEffectCount = 0;
 }
 
 void func_800940EC(s32 arg0) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
-    guOrtho(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    D_80164AF0++;
+    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007F18);
     func_80092290(4, D_8018E850, D_8018E858);
     func_80092290(5, (s32 *) &D_8018E850[1], (s32 *) &D_8018E858[1]);
@@ -2546,9 +2543,9 @@ void func_800942D0(void) {
     f32 var_f26;
     s32 var_s2;
     s32 thing;
-    test = &gGfxPool->mtxPool[0x32B];
-    gSPMatrix(gDisplayListHead++, &gGfxPool->mtxPool[0], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, &gGfxPool->mtxPool[7], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    test = &gGfxPool->mtxObject[0];
+    gSPMatrix(gDisplayListHead++, &gGfxPool->mtxScreen, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, &gGfxPool->mtxLookAt[0], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     guRotate(test, D_8018EDC8, 1.0f, 0.0f, 0.0f);
     guRotate(test + 1, D_8018EDCC, 0.0f, 1.0f, 0.0f);
     guScale( test + 2, 1.0f, 1.0f, D_8018EDC4);
@@ -2583,9 +2580,9 @@ void func_80094660(struct GfxPool *arg0, UNUSED s32 arg1) {
     u16 perspNorm;
     move_segment_table_to_dmem();
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    guPerspective(&arg0->mtxPool[0], &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
+    guPerspective(&arg0->mtxScreen, &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    guLookAt(&arg0->mtxPool[7], 0.0f, 0.0f, (f32) D_8018EDC0, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    guLookAt(&arg0->mtxLookAt[0], 0.0f, 0.0f, (f32) D_8018EDC0, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
     func_800942D0();
     gDPPipeSync(gDisplayListHead++);
     gDPSetTexturePersp(gDisplayListHead++, G_TP_NONE);
@@ -2595,33 +2592,33 @@ void func_80094660(struct GfxPool *arg0, UNUSED s32 arg1) {
 void func_800947B4(struct GfxPool *arg0, UNUSED s32 arg1) {
     u16 perspNorm;
     move_segment_table_to_dmem();
-    guPerspective(&arg0->mtxPool[1], &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
+    guPerspective(&arg0->mtxPersp[0], &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    guLookAt(&arg0->mtxPool[8], 0.0f, 0.0f, (f32) D_8018EDC0, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-    guRotate(&arg0->mtxPool[0x32B], D_8018EDC8, 1.0f, 0, 0);
-    guRotate(&arg0->mtxPool[0x32C], D_8018EDCC, 0, 1.0f, 0);
-    guRotate(&arg0->mtxPool[0x32D], D_8018EDD0, 0, 0, 1.0f);
-    guScale(&arg0->mtxPool[0x32E], D_8018EDC4, D_8018EDC4, D_8018EDC4);
-    guTranslate(&arg0->mtxPool[0x32F], D_8018EDD4, D_8018EDD8, D_8018EDDC);
-    gSPMatrix(gDisplayListHead++, &arg0->mtxPool[1],     G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, &arg0->mtxPool[8],     G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPMatrix(gDisplayListHead++, &arg0->mtxPool[0x32B], G_MTX_NOPUSH | G_MTX_MUL  | G_MTX_MODELVIEW);
-    gSPMatrix(gDisplayListHead++, &arg0->mtxPool[0x32C], G_MTX_NOPUSH | G_MTX_MUL  | G_MTX_MODELVIEW);
-    gSPMatrix(gDisplayListHead++, &arg0->mtxPool[0x32D], G_MTX_NOPUSH | G_MTX_MUL  | G_MTX_MODELVIEW);
-    gSPMatrix(gDisplayListHead++, &arg0->mtxPool[0x32E], G_MTX_NOPUSH | G_MTX_MUL  | G_MTX_MODELVIEW);
-    gSPMatrix(gDisplayListHead++, &arg0->mtxPool[0x32F], G_MTX_NOPUSH | G_MTX_MUL  | G_MTX_MODELVIEW);
+    guLookAt(&arg0->mtxLookAt[1], 0.0f, 0.0f, (f32) D_8018EDC0, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    guRotate(&arg0->mtxObject[0], D_8018EDC8, 1.0f, 0, 0);
+    guRotate(&arg0->mtxObject[1], D_8018EDCC, 0, 1.0f, 0);
+    guRotate(&arg0->mtxObject[2], D_8018EDD0, 0, 0, 1.0f);
+    guScale(&arg0->mtxObject[3], D_8018EDC4, D_8018EDC4, D_8018EDC4);
+    guTranslate(&arg0->mtxObject[4], D_8018EDD4, D_8018EDD8, D_8018EDDC);
+    gSPMatrix(gDisplayListHead++, &arg0->mtxPersp[0],     G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, &arg0->mtxLookAt[1],     G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, &arg0->mtxObject[0], G_MTX_NOPUSH | G_MTX_MUL  | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, &arg0->mtxObject[1], G_MTX_NOPUSH | G_MTX_MUL  | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, &arg0->mtxObject[2], G_MTX_NOPUSH | G_MTX_MUL  | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, &arg0->mtxObject[3], G_MTX_NOPUSH | G_MTX_MUL  | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, &arg0->mtxObject[4], G_MTX_NOPUSH | G_MTX_MUL  | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_02007FC8);
     func_800B0004();
     gSPDisplayList(gDisplayListHead++, D_02007650);
 }
 
-void func_80094A64(Mtx *arg0) {
-    D_8018D120 = 0;
-    D_80164AF0 = 0;
+void func_80094A64(struct GfxPool *pool) {
+    gMatrixHudCount = 0;
+    gMatrixEffectCount = 0;
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_802B8880));
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
-    guOrtho(arg0, 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
-    gSPMatrix(gDisplayListHead++, arg0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guOrtho(&pool->mtxScreen, 0.0f, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0.0f, -100.0f, 100.0f, 1.0f);
+    gSPMatrix(gDisplayListHead++, &pool->mtxScreen, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007650);
     func_80094C60();
     func_80092290(4, &D_8018E850, &D_8018E858);
@@ -2984,16 +2981,16 @@ Gfx *func_80095BD0(Gfx *arg0, s32 arg1, s32 arg2, s32 arg3, u32 arg4, s32 arg5, 
     s32 temp_a3;
     s32 temp_v0;
 
-    if (D_80164AF0 < 0x2F7) {
-        sp28 = &gGfxPool->mtxPool[D_80164AF0] + 0xFAC0;
-        if (D_80164AF0 < 0) {
+    if (gMatrixEffectCount <= MTX_EFFECT_POOL_SIZE_MAX) {
+        sp28 = &gGfxPool->mtxEffect[gMatrixEffectCount];
+        if (gMatrixEffectCount < 0) {
             rmonPrintf("effectcount < 0 !!!!!!(kawano)\n");
         }
         func_80095AE0(sp28, arg2, arg3, arg6, arg7);
         arg0->words.w0 = 0x01020040;
-        arg0->words.w1 = (s32) (&gGfxPool->mtxPool[D_80164AF0] + 0xFAC0) & 0x1FFFFFFF;
+        arg0->words.w1 = (s32) (&gGfxPool->mtxEffect[gMatrixEffectCount]) & 0x1FFFFFFF;
         temp_s0_2 = arg0 + 8;
-        D_80164AF0 += 1;
+        gMatrixEffectCount += 1;
         temp_s0_2->words.w0 = (((arg4 >> 1) - 1) & 0xFFF) | 0xFD880000;
         temp_s0_3 = temp_s0_2 + 8;
         temp_s0_2->words.w1 = (u32) arg1;
@@ -9930,9 +9927,8 @@ void func_800A54EC(void) {
     if (gIsGamePaused != 0) {
         sp48 = find_8018D9E0_entry(0x000000C7);
         gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
-        guOrtho(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_80164AF0 + 0x3EB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-        D_80164AF0 += 1;
+        guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
         switch (gModeSelection) {                          /* irregular */
         default:
             var_v1 = huh; // This is digusting and dumb and broken
@@ -10240,7 +10236,7 @@ void func_800A66A8(struct_8018D9E0_entry *arg0, s16 *arg1) {
     f32 temp_f2;
     f64 temp_f0;
 
-    temp_s1 = &gGfxPool->mtxPool[D_80164AF0] + 0xFAC0;
+    temp_s1 = &gGfxPool->mtxEffect[gMatrixEffectCount];
     temp_f0 = (f64) arg0->unk24;
     if (temp_f0 > 1.5) {
         arg0->unk24 = (f32) (temp_f0 * 0.95);
@@ -10270,9 +10266,9 @@ void func_800A66A8(struct_8018D9E0_entry *arg0, s16 *arg1) {
     temp_v0 = gDisplayListHead;
     gDisplayListHead = temp_v0 + 8;
     temp_v0->words.w0 = 0x01020040;
-    temp_v0->words.w1 = (s32) (&gGfxPool->mtxPool[D_80164AF0] + 0xFAC0) & 0x1FFFFFFF;
+    temp_v0->words.w1 = (s32) (&gGfxPool->mtxEffect[gMatrixEffectCount]) & 0x1FFFFFFF;
     temp_v0_2 = gDisplayListHead;
-    D_80164AF0 += 1;
+    gMatrixEffectCount += 1;
     gDisplayListHead = temp_v0_2 + 8;
     temp_v0_2->words.w0 = 0xB6000000;
     temp_v0_2->words.w1 = 0x00020000;

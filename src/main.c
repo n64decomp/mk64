@@ -107,7 +107,7 @@ u8 gControllerBits;
 
 struct UnkStruct_8015F584 D_8014F110[1024];
 u16 gNumActors;
-u16 D_80150112;
+u16 gMatrixObjectCount;
 s32 gTickSpeed;
 f32 D_80150118;
 u16 wasSoftReset;
@@ -117,7 +117,7 @@ s32 D_80150120;
 s32 gMenuSelectionFromQuit;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
-f32 D_80150130[4];
+f32 gCameraZoom[4]; // look like to be the fov of each character
 //f32 D_80150134;
 //f32 D_80150138;
 //f32 D_8015013C;
@@ -459,20 +459,20 @@ void display_and_vsync(void) {
     gGlobalTimer++;
 }
 
-void init_seg_80280000(void) {
-    bzero((void *) SEG_80280000, 0xDF00);
+void init_segment_ending_sequences(void) {
+    bzero((void *) SEG_ENDING_SEQUENCES, 0xDF00);
     osWritebackDCacheAll();
-    dma_copy((u8 *) SEG_80280000, (u8 *) &_code_80280000SegmentRomStart, ALIGN16((u32)&_code_80280000SegmentRomEnd - (u32)&_code_80280000SegmentRomStart));
-    osInvalICache((void *) SEG_80280000, 0xDF00);
-    osInvalDCache((void *) SEG_80280000, 0xDF00);
+    dma_copy((u8 *) SEG_ENDING_SEQUENCES, (u8 *) &_endingSequencesSegmentRomStart, ALIGN16((u32)&_endingSequencesSegmentRomEnd - (u32)&_endingSequencesSegmentRomStart));
+    osInvalICache((void *) SEG_ENDING_SEQUENCES, 0xDF00);
+    osInvalDCache((void *) SEG_ENDING_SEQUENCES, 0xDF00);
 }
 
-void init_seg_8028DF00(void) {
-    bzero((void *) SEG_8028DF00, 0x2C470);
+void init_segment_racing(void) {
+    bzero((void *) SEG_RACING, 0x2C470);
     osWritebackDCacheAll();
-    dma_copy((u8 *) SEG_8028DF00, (u8 *) &_code_8028DF00SegmentRomStart, ALIGN16((u32)&_code_8028DF00SegmentRomEnd - (u32)&_code_8028DF00SegmentRomStart));
-    osInvalICache((void *) SEG_8028DF00, 0x2C470);
-    osInvalDCache((void *) SEG_8028DF00, 0x2C470);
+    dma_copy((u8 *) SEG_RACING, (u8 *) &_racingSegmentRomStart, ALIGN16((u32)&_racingSegmentRomEnd - (u32)&_racingSegmentRomStart));
+    osInvalICache((void *) SEG_RACING, 0x2C470);
+    osInvalDCache((void *) SEG_RACING, 0x2C470);
 }
 
 void dma_copy(u8 *dest, u8 *romAddr, u32 size) {
@@ -502,8 +502,8 @@ void setup_game_memory(void) {
     u32 sp38;
     UNUSED s32 unknown_padding;
 
-    init_seg_8028DF00();
-    gHeapEndPtr = SEG_8028DF00;
+    init_segment_racing();
+    gHeapEndPtr = SEG_RACING;
     set_segment_base_addr(0, (void *) SEG_START);
     // Memory pool size of 0xAB630
     // todo: is it possible to shift this value?
@@ -519,7 +519,7 @@ void setup_game_memory(void) {
     set_segment_base_addr(2, (void *) load_data((uintptr_t) &_data_segment2SegmentRomStart, (uintptr_t) &_data_segment2SegmentRomEnd));
     sp2C = (u32)&_common_texturesSegmentRomEnd - (u32)&_common_texturesSegmentRomStart;
     sp2C = ALIGN16(sp2C);
-    texture_seg = SEG_8028DF00-sp2C;
+    texture_seg = SEG_RACING-sp2C;
     osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_common_texturesSegmentRomStart, (void *) texture_seg, sp2C, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
@@ -546,8 +546,8 @@ void race_logic_loop(void) {
     s16 i;
     u16 rotY;
 
-    D_80150112 = 0;
-    D_80164AF0 = 0;
+    gMatrixObjectCount = 0;
+    gMatrixEffectCount = 0;
     if (gIsGamePaused != 0) {
         func_80290B14();
     }
@@ -579,7 +579,7 @@ void race_logic_loop(void) {
                     func_80028F70();
                     func_8028F474();
                     func_80059AC8();
-                    update_simple_objects();
+                    update_course_actors();
                     func_802966A0();
                     func_8028FCBC();
 
@@ -646,7 +646,7 @@ void race_logic_loop(void) {
                         func_80029150();
                         func_8028F474();
                         func_80059AC8();
-                        update_simple_objects();
+                        update_course_actors();
                         func_802966A0();
                         func_8028FCBC();
                     }
@@ -692,7 +692,7 @@ void race_logic_loop(void) {
                         func_80029150();
                         func_8028F474();
                         func_80059AC8();
-                        update_simple_objects();
+                        update_course_actors();
                         func_802966A0();
                         func_8028FCBC();
                     }
@@ -764,7 +764,7 @@ void race_logic_loop(void) {
                     func_800291F8();
                     func_8028F474();
                     func_80059AC8();
-                    update_simple_objects();
+                    update_course_actors();
                     func_802966A0();
                     func_8028FCBC();
                 }
@@ -825,7 +825,7 @@ void race_logic_loop(void) {
     func_800591B4();
     func_80093E20();
 #if DVDL
-	display_dvdl();	 
+	display_dvdl();  
 #endif
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
@@ -871,10 +871,9 @@ void game_state_handler(void) {
             osViBlack(0);
             update_menus();
             init_rcp();
-            // gGfxPool->mtxPool->m or gGfxPool?
-            func_80094A64((Mtx *) gGfxPool->mtxPool->m);
+            func_80094A64(gGfxPool);
 #if DVDL
-			display_dvdl();	 
+			display_dvdl();  
 #endif
             break;
         case RACING:
@@ -1128,19 +1127,19 @@ void update_gamestate(void) {
             break;
         case RACING:
             // @bug Reloading this segment makes random_u16() deterministic for player spawn order.
-            // In laymens terms, random_u16() outputs the same value everytime.
-            init_seg_8028DF00();
+            // In laymens terms, random_u16() outputs the same value every time.
+            init_segment_racing();
             setup_race();
             break;
         case ENDING_SEQUENCE:
             gCurrentlyLoadedCourseId = COURSE_NULL;
-            init_seg_80280000();
+            init_segment_ending_sequences();
             load_ceremony_cutscene();
             break;
         case CREDITS_SEQUENCE:
             gCurrentlyLoadedCourseId = COURSE_NULL;
-            init_seg_8028DF00();
-            init_seg_80280000();
+            init_segment_racing();
+            init_segment_ending_sequences();
             load_credits();
             break;
         }

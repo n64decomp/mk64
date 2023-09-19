@@ -373,7 +373,7 @@ s16 func_80005FD0(Vec3f arg0, Vec3f arg1) {
     s16 temp_ret;
     s16 phi_v1;
 
-    temp_ret = func_802B5224(arg0, arg1);
+    temp_ret = get_angle_between_points(arg0, arg1);
     phi_v1 = temp_ret;
     if (gIsMirrorMode != 0) {
         phi_v1 = -temp_ret;
@@ -535,17 +535,17 @@ void set_places(void) {
     s32 temp_a0;
     s32 var_t1_3;
 
-    switch (gModeSelection) {                       /* irregular */
-    case BATTLE:
-    default:
-        return; // HEY! returns, not breaks
-    case GRAND_PRIX:
-    case TIME_TRIALS:
-        var_t4 = 8;
-        break;
-    case VERSUS:
-        var_t4 = D_8018EDF3;
-        break;
+    switch (gModeSelection) {
+        case BATTLE:
+        default:
+            return; // HEY! returns, not breaks
+        case GRAND_PRIX:
+        case TIME_TRIALS:
+            var_t4 = 8;
+            break;
+        case VERSUS:
+            var_t4 = D_8018EDF3;
+            break;
     }
 
     if (D_8016348C == 0) {
@@ -623,17 +623,17 @@ void func_800070F4(void) {
     s32 var_a3;
     s32 var_a2;
 
-    switch (gModeSelection) {                       /* irregular */
-    case BATTLE:
-    default:
-        return; // HEY! returns, not breaks
-    case GRAND_PRIX:
-    case TIME_TRIALS:
-        var_a2 = 8;
-        break;
-    case VERSUS:
-        var_a2 = D_8018EDF3;
-        break;
+    switch (gModeSelection) {
+        case BATTLE:
+        default:
+            return; // HEY! returns, not breaks
+        case GRAND_PRIX:
+        case TIME_TRIALS:
+            var_a2 = 8;
+            break;
+        case VERSUS:
+            var_a2 = D_8018EDF3;
+            break;
     }
 
     for (var_a3 = 0; var_a3 < var_a2; var_a3++) {
@@ -1624,13 +1624,13 @@ void func_800097E0(void) {
         }
 
         switch(gCurrentCourseId) {
-            case 11:
+            case COURSE_KALAMARI_DESERT:
                 func_80012AC0();
                 break;
-            case 18:
+            case COURSE_DK_JUNGLE:
                 func_800133C4();
                 break;
-            case 10:
+            case COURSE_TOADS_TURNPIKE:
                 func_8001487C();
                 func_800149D0();
                 func_80014B24();
@@ -2087,7 +2087,7 @@ block_63:
                                 }
                             }
                             sp3C = var_t0_2;
-                            sp40->unk_02E = -func_802B5224(sp40->pos, &D_80162FA0);
+                            sp40->unk_02E = -get_angle_between_points(sp40->pos, &D_80162FA0);
                         } else {
                             sp40->unk_02E = (s16) D_80164590[D_80163448][(s32) (D_801630E0 + 4) % (s32) D_80164430];
                         }
@@ -2106,7 +2106,7 @@ block_63:
                 }
                 if (var_v0 != 0) {
                     temp_v1_4 = sp34 + &D_80163300;
-                    *temp_v1_4 = -func_802B5224(&sp40->rotX, sp40->pos);
+                    *temp_v1_4 = -get_angle_between_points(&sp40->rotX, sp40->pos);
                     var_a0_2 = (s16) ((s32) ((s16) D_801631DC[(s32) (D_80162FCE + 2) % (s32) D_80164430] * 0x168) / 65535);
                     var_a1 = (s16) ((s32) (*temp_v1_4 * 0x168) / 65535);
                     if (var_a0_2 < -0xB4) {
@@ -2207,7 +2207,7 @@ block_63:
                 sp20 = temp_t0_2;
                 *temp_v1_7 = D_80162FA0.unk8;
                 temp_f2_2 = 1.5f * 182.0f;
-                temp_v1_8 = -func_802B5224(sp1C, &D_80162FA0) - sp40->unk_02E;
+                temp_v1_8 = -get_angle_between_points(sp1C, &D_80162FA0) - sp40->unk_02E;
                 temp_f10 = (s32) temp_f2_2;
                 var_a2 = temp_v1_8;
                 temp_f6 = (s32) (-1.5f * 182.0f);
@@ -3705,7 +3705,7 @@ void func_8000DF8C(s32 arg0) {
             D_80162FC0.unk0 = (f32) temp_v0_2->wayPointX + sp118;
             D_80162FC0.unk4 = (f32) temp_v0_2->wayPointY;
             D_80162FC0.unk8 = (f32) ((f32) temp_v0_2->wayPointZ + (f32) (temp_f10 * 25.0));
-            spC2 = (u16) ((s32) (func_802B5224(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
+            spC2 = (u16) ((s32) (get_angle_between_points(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
             break;
         case 2:
             temp_v0_3 = ((s32) (var_s1 + 4) % 360) & 0xFFFF;
@@ -3730,7 +3730,7 @@ void func_8000DF8C(s32 arg0) {
             D_80162FC0.unk0 = (f32) temp_v0_4->wayPointX + sp118;
             D_80162FC0.unk4 = (f32) temp_v0_4->wayPointY;
             D_80162FC0.unk8 = (f32) ((f32) temp_v0_4->wayPointZ + (f32) (temp_f8 * 25.0));
-            spC2 = (u16) ((s32) (func_802B5224(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
+            spC2 = (u16) ((s32) (get_angle_between_points(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
         default:
             break;
         case 3:
@@ -3756,7 +3756,7 @@ void func_8000DF8C(s32 arg0) {
                     D_80162FC0.unk0 = (f32) temp_v1->unk0;
                     D_80162FC0.unk4 = (f32) temp_v1->unk2;
                     D_80162FC0.unk8 = (f32) temp_v1->unk4;
-                    spC2 = (u16) ((s32) (func_802B5224(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
+                    spC2 = (u16) ((s32) (get_angle_between_points(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
                 } else {
                     D_80162FB0.unk0 = var_f22;
                     D_80162FB0.unk4 = var_f20;
@@ -3764,7 +3764,7 @@ void func_8000DF8C(s32 arg0) {
                     D_80162FC0.unk0 = -2409.197f;
                     D_80162FC0.unk4 = 0.0f;
                     D_80162FC0.unk8 = -355.254f;
-                    spC2 = (u16) ((s32) (func_802B5224(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
+                    spC2 = (u16) ((s32) (get_angle_between_points(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
                 }
                 temp_f14 = ((D_80162FC0.unk0 + D_80162FB0.unk0) * 0.5f) - var_f22;
                 spF8 = temp_f14;
@@ -3802,7 +3802,7 @@ void func_8000DF8C(s32 arg0) {
                 var_f6 += 4294967296.0f;
             }
             var_f20 += 3.0f - (var_f6 * 0.3f);
-            spC2 = (u16) ((s32) (func_802B5224(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
+            spC2 = (u16) ((s32) (get_angle_between_points(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
             break;
         }
         if (sp4C == 4) {
@@ -4137,6 +4137,7 @@ extern uintptr_t *D_80163598;
 // An array of 21 items. The final element is for podium ceremony.
 extern struct _struct_D_800DD9D0_0x10 D_800DD9D0[];
 
+// Appears to allocate memory for each course.
 void func_8000F2DC(void) {
 
     struct _struct_D_800DD9D0_0x10 *ptr = &D_800DD9D0[gCurrentCourseId];
@@ -4176,7 +4177,7 @@ void func_8000F2DC(void) {
         func_8000F2BC(D_80164570[i], D_80163368[i]);
     }
 
-    // Skips several cpu cycles.
+    // Skip several cpu cycles.
     for (i = 0; i < 4; i++) {}
 
     for (i = 0; i < 4; i++) {
@@ -4191,15 +4192,15 @@ void func_8000F2DC(void) {
 
     D_80164430 = *gWaypointCountByPathIndex;
     switch (gCurrentCourseId) {
-        case 11:
+        case COURSE_KALAMARI_DESERT:
             func_800120C8();
             func_800127E0();
             break;
-        case 18:
+        case COURSE_DK_JUNGLE:
             func_80012190();
             func_800132F4();
             break;
-        case 10:
+        case COURSE_TOADS_TURNPIKE:
             func_800147E0();
             func_80014934();
             func_80014A88();
@@ -4700,64 +4701,59 @@ void func_8000F628(void) {
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000F628.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit bece1d6db17040749f77dbbd090363cc6fb926f9
-u16 func_80011014(struct TrackWayPoint *, u16 *, s32, s32); /* extern */
-static ? D_800DC8D0;                                /* unable to generate initializer */
-static ? gCoursePathTable;                          /* unable to generate initializer */
-s16 gCurrentCourseId;                               /* unable to generate initializer */
+//                dest                        src                size   pathIndex
+u16 func_80011014(struct TrackWayPoint *, struct TrackWayPoint *, s32, s32); /* extern */
 
+extern uintptr_t gCoursePathTable[20][4];
+extern uintptr_t D_800DC8D0[20][4];
+
+// @arg index from 0 to 3.
+
+// Processes course path by index.
+// @arg index from 0 to 3.
+// Each course can have 1-4 course paths.
 void func_800100F0(s32 pathIndex) {
-    struct TrackWayPoint *sp30;
-    u16 *sp2C;
-    s32 sp24;
-    s16 sp1A;
-    s16 temp_v0;
-    s16 var_a2;
-    s32 temp_t9;
-    s32 var_v0;
-    s32 var_v1;
-    u16 *temp_v0_2;
-    u16 *var_a0;
-    u16 *var_at;
 
-    temp_v0 = gCurrentCourseId;
-    temp_t9 = pathIndex * 4;
-    if ((s32) D_800DCA4C[temp_v0] >= 0) {
-        sp30 = D_80164550[pathIndex];
-        if (temp_v0 != 0x0014) {
-            var_v0 = process_path_data(sp30, segmented_to_virtual_dupe_2(*(&D_800DC8D0 + ((temp_v0 * 0x10) + temp_t9))));
-            var_at = &gWaypointCountByPathIndex[pathIndex];
-            goto block_9;
-        }
-        sp1A = 1;
-        temp_v0_2 = segmented_to_virtual_dupe_2(*(&gCoursePathTable + ((temp_v0 * 0x10) + temp_t9)));
-        sp2C = temp_v0_2;
-        var_a0 = temp_v0_2;
-        var_a2 = 1;
-        var_v1 = 0;
-loop_4:
-        if (*var_a0 == 0x8000) {
-            sp24 = var_v1 - 1;
-            var_a2 = 0;
+    struct TrackWayPoint *ptr;
+    struct TrackWayPoint *pathDest;
+    struct TrackWayPoint *path;
+    s32 var_v0;
+    s32 sp24;
+    s32 pad[2];
+    s16 bInvalidPath;
+    s32 i;
+
+    // cast required
+    if ((s32)D_800DCA4C[gCurrentCourseId] >= 0) {
+        pathDest = D_80164550[pathIndex];
+            bInvalidPath = 1;
+        if (gCurrentCourseId != COURSE_AWARD_CEREMONY) {
+            var_v0 = process_path_data(pathDest, segmented_to_virtual_dupe_2(D_800DC8D0[gCurrentCourseId][pathIndex]));
+            gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
         } else {
-            var_v1 += 1;
-            var_a0 += 8;
-            if (var_v1 != 0xBB8) {
-                goto loop_4;
+            // Course path included in course_data which has already been loaded into memory.
+            // This is how we get the addr to our path data.
+            path = segmented_to_virtual_dupe_2(gCoursePathTable[gCurrentCourseId][pathIndex]);
+            ptr = path;
+
+            for (i = 0; i < 3000; i++, ptr++) {
+                if ((u16)ptr->wayPointX == 0x8000 ) {
+                    sp24 = i - 1;
+                    bInvalidPath = 0;
+                    break;
+                }
             }
-        }
-        if (var_a2 == 0) {
-            var_v0 = func_80011014(sp30, sp2C, sp24, pathIndex);
-            var_at = &gWaypointCountByPathIndex[pathIndex];
-block_9:
-            *var_at = (u16) var_v0;
+
+            // If path data higher than 3000 something has gone wrong.
+            // Skip processing the data.
+            // todo: Confirm this comment
+            if (!bInvalidPath) {
+                var_v0 = func_80011014(pathDest, path, sp24, pathIndex);
+                gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
+            }
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_800100F0.s")
-#endif
 
 void func_80010218(s32 pathIndex) {
     f32 wayPointWidth;
@@ -4930,7 +4926,7 @@ s16 func_80010CB0(s32 pathIndex, s32 wayPointIndex) {
     sp24[0] = temp_v0->wayPointX;
     sp24[1] = temp_v0->wayPointY;
     sp24[2] = temp_v0->wayPointZ;
-    ret = func_802B5224(sp30, sp24);
+    ret = get_angle_between_points(sp30, sp24);
     return -ret;
 }
 
@@ -5180,6 +5176,7 @@ block_29:
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80011014.s")
 #endif
 
+// Returns number of waypoints processed.
 s32 process_path_data(struct TrackWayPoint *dest, struct TrackWayPoint *src) {
     s16 temp_a0;
     s16 temp_a2;
@@ -5214,6 +5211,7 @@ s32 process_path_data(struct TrackWayPoint *dest, struct TrackWayPoint *src) {
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
 extern f64 D_800ED078;
 
+//             blank memory  segmented waypoints    waypoint size
 s32 func_8001168C(s16 *arg0, void *arg1, s32 arg2) {
     f32 spC8;
     f32 spC4;
@@ -5599,39 +5597,30 @@ void func_80011EC0(s32 arg0, Player *player, s32 arg2, s32 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80011EC0.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-s32 func_8001168C(void *, u16 *, s32); // extern
-extern ? d_course_kalimari_desert_track_unknown_waypoints;
 extern s16 D_80162EB0;
-extern void *D_80163598;
 extern s32 D_8016359C;
-extern uintptr_t gSegmentTable;
+f32 func_802AE1C0(f32, f32, f32);
+
+s32 func_8001168C(void *, struct TrackWayPoint *, s32);
+
 
 void func_800120C8(void) {
-    void *sp18;
-    u16 *temp_a1;
-    void *temp_a0;
-    u16 *phi_v0;
-    s32 phi_v1;
+    s32 i;
+    s16 *temp;
+    struct TrackWayPoint *waypoint = (struct TrackWayPoint *) VIRTUAL_TO_PHYSICAL2(
+        gSegmentTable[SEGMENT_NUMBER2(d_course_kalimari_desert_track_unknown_waypoints)]
+                    + SEGMENT_OFFSET(d_course_kalimari_desert_track_unknown_waypoints));
 
-    temp_a1 = *(&gSegmentTable + ((&d_course_kalimari_desert_track_unknown_waypoints >> 0x18) * 4)) + (&d_course_kalimari_desert_track_unknown_waypoints & 0xFFFFFF) + 0x80000000;
-    phi_v0 = temp_a1;
-    phi_v1 = 0;
-loop_1:
-    phi_v0 += 8;
-    if (*phi_v0 != 0x8000) {
-        phi_v1 += 1;
-        goto loop_1;
+    for (i = 0; ; i++) {
+        if ((u16)waypoint[i].wayPointX == 0x8000) {
+            break;
+        }
     }
-    temp_a0 = D_80163598;
-    sp18 = temp_a0;
-    D_8016359C = func_8001168C(temp_a0, temp_a1, phi_v1 - 1);
-    D_80162EB0 = func_802AE1C0(temp_a0->unk0, 2000.0f, temp_a0->unk2);
+
+    temp = (s16 *)D_80163598;
+    D_8016359C = func_8001168C(temp , waypoint, i - 1);
+    D_80162EB0 = func_802AE1C0(temp[0], 2000.0f, temp[1]);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_800120C8.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
@@ -5706,20 +5695,20 @@ void func_800122D8(void) {
     switch (gCurrentCourseId) {
     case COURSE_KALAMARI_DESERT:
         for(loopIndex = 0; loopIndex < NUM_TRAINS; loopIndex++) {
-            tempLocomotive = &D_801635A0[loopIndex].locomotive;
+            tempLocomotive = &sTrains[loopIndex].locomotive;
             origXPos = tempLocomotive->position[0];
             origZPos = tempLocomotive->position[2];
-            trainCarYRot = func_8000DBAC(tempLocomotive->position, &tempLocomotive->wayPointIndex, D_801635A0[loopIndex].someMultiplier);
+            trainCarYRot = func_8000DBAC(tempLocomotive->position, &tempLocomotive->wayPointIndex, sTrains[loopIndex].someMultiplier);
             tempLocomotive->velocity[0] = tempLocomotive->position[0] - origXPos;
             tempLocomotive->velocity[2] = tempLocomotive->position[2] - origZPos;
             vec3s_set(trainCarRot, 0, trainCarYRot, 0);
             tempLocomotive->actorIndex = addActorToEmptySlot(tempLocomotive->position, trainCarRot, tempLocomotive->velocity, ACTOR_TRAIN_ENGINE);
 
-            tempTender = &D_801635A0[loopIndex].tender;
+            tempTender = &sTrains[loopIndex].tender;
             if (tempTender->isActive == 1) {
                 origXPos = tempTender->position[0];
                 origZPos = tempTender->position[2];
-                trainCarYRot = func_8000DBAC(tempTender->position, &tempTender->wayPointIndex, D_801635A0[loopIndex].someMultiplier);
+                trainCarYRot = func_8000DBAC(tempTender->position, &tempTender->wayPointIndex, sTrains[loopIndex].someMultiplier);
                 tempTender->velocity[0] = tempTender->position[0] - origXPos;
                 tempTender->velocity[2] = tempTender->position[2] - origZPos;
                 vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -5727,11 +5716,11 @@ void func_800122D8(void) {
             }
 
             for(loopIndex2 = 0; loopIndex2 < NUM_PASSENGER_CAR_ENTRIES; loopIndex2++) {
-                tempPassengerCar = &D_801635A0[loopIndex].passengerCars[loopIndex2];
+                tempPassengerCar = &sTrains[loopIndex].passengerCars[loopIndex2];
                 if (tempPassengerCar->isActive == 1) {
                     origXPos = tempPassengerCar->position[0];
                     origZPos = tempPassengerCar->position[2];
-                    trainCarYRot = func_8000DBAC(tempPassengerCar->position, &tempPassengerCar->wayPointIndex, D_801635A0[loopIndex].someMultiplier);
+                    trainCarYRot = func_8000DBAC(tempPassengerCar->position, &tempPassengerCar->wayPointIndex, sTrains[loopIndex].someMultiplier);
                     tempPassengerCar->velocity[0] = tempPassengerCar->position[0] - origXPos;
                     tempPassengerCar->velocity[2] = tempPassengerCar->position[2] - origZPos;
                     vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -5779,122 +5768,99 @@ void func_800122D8(void) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
 extern s16 D_80162EB0;
 
-// arg1 struct tbd
-void func_80012780(TrainCarStuff *trainCar, void *arg1, s16 arg2) {
-    trainCar->position[0] = (f32) arg1->unk0;
+void func_80012780(TrainCarStuff *trainCar, s16 *arg1, u16 arg2) {
+    trainCar->position[0] = (f32) arg1[0];
     trainCar->position[1] = (f32) D_80162EB0;
+    trainCar->position[2] = (f32) arg1[1];
     trainCar->actorIndex = -1;
     trainCar->wayPointIndex = arg2;
     trainCar->isActive = 0;
     trainCar->velocity[0] = 0.0f;
     trainCar->velocity[1] = 0.0f;
     trainCar->velocity[2] = 0.0f;
-    trainCar->position[2] = (f32) arg1->unk2;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80012780.s")
-#endif
 
-#ifdef MIPS_TO_C
+
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-void func_80012780(TrainStuff *, s32, s32);            /* extern */
+//void func_80012780(TrainStuff *, s32, s32);            /* extern */
 extern s16 D_80162FCC;
-extern s32 D_80163598;
+//extern s32 D_80163598
 extern s32 D_8016359C;
-extern TrainStuff D_801635C4;
-extern s32 gScreenModeSelection;
+//extern TrainStuff D_801635C4;
+//extern s32 gScreenModeSelection;
 
+// This is really Vec2s D_80163598[465] but that does not match.
+// Likely because this is a shared pointer between courses.
+extern uintptr_t *D_80163598;
+
+/**
+ * Set waypoint spawn locations for each rolling stock
+ * The railroad has 465 waypoints
+ */
 void func_800127E0(void) {
-    TrainStuff *sp4C;
-    TrainCarStuff *var_s2;
-    TrainStuff *var_a2;
-    TrainStuff *var_s6;
-    TrainStuff *var_s6_2;
-    TrainStuff *var_s6_3;
-    TrainStuff *var_s7;
-    TrainStuff *var_s7_2;
-    s32 temp_t3;
-    s32 temp_t4;
-    s32 temp_t6;
-    s32 temp_t9;
-    s32 temp_v0;
-    s32 temp_v0_2;
-    s32 var_fp;
-    s32 var_s0;
-    s32 var_s1;
-    void *temp_v0_3;
+    u16 waypointOffset;
+    TrainCarStuff * ptr1;
+    s32 * ptr2;
+    s32 i;
+    s32 j;
 
-    sp4C = &D_801635C4;
-    var_s6 = D_801635A0;
-    var_s7 = D_801635A0;
-    var_fp = 0;
-    do {
-        temp_v0 = D_8016359C;
-        var_s6->someMultiplier = 5.0f;
-        var_s1 = 0;
-        var_s2 = var_s7->passengerCars;
-        var_s0 = ((s32) (((s32) (var_fp * temp_v0) / 2) + 0xA0) % temp_v0) & 0xFFFF;
-loop_2:
-        temp_t3 = (var_s0 + 4) & 0xFFFF;
-        temp_t4 = temp_t3 * 4;
-        var_s0 = temp_t3;
-        func_80012780((TrainStuff *) var_s2, temp_t4 + D_80163598, temp_t3 & 0xFFFF);
-        var_s1 += 0x24;
-        var_s2 += 0x24;
-        if (var_s1 != 0xB4) {
-            goto loop_2;
+    for (i = 0; i < 2; i++) {
+        // outputs 160 or 392 depending on the train
+        // Wraps the value around to always output a valid waypoint.
+        waypointOffset = (((i * D_8016359C) / 2) + 160) % D_8016359C;
+        // 120.0f is about the maximum usable value
+        sTrains[i].someMultiplier = 5.0f;
+        for (j = 0; j < 5; j++) {
+            waypointOffset += 4;
+            ptr1 = &sTrains[i].passengerCars[j];
+            ptr2 = &D_80163598[waypointOffset];      
+            func_80012780(ptr1, ptr2, waypointOffset);
         }
-        temp_t6 = (var_s0 + 3) & 0xFFFF;
-        func_80012780(sp4C, (temp_t6 * 4) + D_80163598, temp_t6 & 0xFFFF);
-        temp_t9 = (temp_t6 + 4) & 0xFFFF;
-        func_80012780(var_s6, (temp_t9 * 4) + D_80163598, temp_t9 & 0xFFFF);
-        var_fp += 1;
-        sp4C += 0x10C;
-        var_s6 += 0x10C;
-        var_s7 += 0x10C;
-        var_s6->unk-8 = 0;
-    } while (var_fp < 2);
-    var_a2 = D_801635A0;
-    var_s6_2 = D_801635A0;
-    switch (gScreenModeSelection) {                            /* irregular */
-    case SCREEN_MODE_1P:
-        var_s7_2 = D_801635A0;
-        do {
-            var_s6_2->tender.isActive = 1;
-            var_a2->passengerCars[0].isActive = 1;
-            var_a2 += 0x10C;
-            var_s6_2 += 0x10C;
-            temp_v0_3 = var_s7_2 + (1 * 0x24);
-            var_s7_2->passengerCars[1].isActive = 1;
-            temp_v0_3->unk6C = 1;
-            temp_v0_3->unk90 = 1;
-            temp_v0_3->unkB4 = 1;
-            var_s7_2 += 0x10C;
-            var_s6_2->unk-8 = 6;
-        } while (var_a2 != D_801637B8);
-        break;
-    case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-    case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-        var_s6_3 = D_801635A0;
-        if (gModeSelection != GRAND_PRIX) {
-            do {
-                var_s6_3 += 0x10C;
-                var_s6_3->unk-E8 = 1;
-                var_s6_3->unk-34 = 1;
-                var_s6_3->unk-8 = 2;
-            } while (var_s6_3 != D_801637B8);
-        }
-        break;
+        // Smaller offset for the tender
+        waypointOffset += 3;
+        ptr1 = &sTrains[i].tender;
+        ptr2 = &D_80163598[waypointOffset];      
+        func_80012780(ptr1, ptr2, waypointOffset);
+        
+        waypointOffset += 4;
+        ptr1 = &sTrains[i].locomotive;
+        ptr2 = &D_80163598[waypointOffset];
+        func_80012780(&sTrains[i].locomotive, ptr2, waypointOffset);
+        
+        sTrains[i].numCars = 0;
     }
+    
+    // Spawn all rolling stock in single player mode.
+    switch (gScreenModeSelection) {
+        case 0: // single player
+            for (i = 0; i < 2; i++) {
+                sTrains[i].tender.isActive = 1;
+    
+                // Same line required for matching...
+                for (j = 0; j < 5; j++) { sTrains[i].passengerCars[j].isActive = 1; }
+                
+                sTrains[i].numCars = 6;
+            }
+            break;
+        
+        // Spawn locomotive, tender, and one passenger car in versus 2/3 player mode.
+        case 1: // multiplayer fall-through
+        case 2:
+            if (gModeSelection != 0) {
+                for (i = 0; i < 2; i++) {
+                    sTrains[i].tender.isActive = 1;
+                    sTrains[i].passengerCars[4].isActive = 1;
+                    sTrains[i].numCars = 2;
+                }
+            }
+            break;
+    
+    }
+    
     D_80162FCC = 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_800127E0.s")
-#endif
 
 void func_80012A48(TrainCarStuff *trainCar, s16 arg1) {
     struct TrainCar *trainCarActor;
@@ -5912,108 +5878,88 @@ void func_80012A48(TrainCarStuff *trainCar, s16 arg1) {
     trainCarActor->velocity[2] = trainCar->velocity[2];
 }
 
-#ifdef MIPS_TO_C
+//#ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-s32 func_800755FC(s32, f32 *, f32);                   /* extern */
+s32 func_800755FC(s32, Vec3f, f32);                   /* extern */
+s16 func_800DBAC(Vec3f, Vec3s, f32);
 extern s16 D_80162FCC;
-extern f32 D_801635A4;
-extern s16 D_801635BC;
+extern Vec3f D_801635A4;
+extern Vec3s D_801635BC;
+
 
 void func_80012AC0(void) {
-    f32 sp98;
-    f32 sp94;
-    f32 sp90;
-    TrainStuff *sp7C;
-    TrainCarStuff *temp_s0_2;
-    TrainCarStuff *temp_s0_3;
-    TrainStuff *var_s1;
-    TrainStuff *var_s3;
-    f32 *var_s6;
+    s32 pad[3];
     f32 temp_f20;
-    f32 temp_f20_2;
-    f32 temp_f20_3;
-    f32 temp_f22;
-    f32 temp_f22_2;
-    f32 temp_f22_3;
-    s16 *var_fp;
-    s16 temp_a1;
-    s16 temp_a1_2;
-    s16 temp_s1;
-    s16 temp_t0;
-    s16 temp_v0;
-    s32 temp_v0_3;
-    s32 var_s2;
-    s32 var_s7;
+    TrainCarStuff *car;
     u16 temp_s0;
-    u16 temp_v0_2;
+    s16 temp_v0;
+    f32 temp_f22;
+    s32 i;
+    s32 j;
+    Vec3f sp90;
 
     D_80162FCC += 1;
-    var_s3 = D_801635A0;
-    var_fp = &D_801635BC;
-    var_s6 = &D_801635A4;
-    sp7C = D_801635A0;
-    var_s7 = 0;
-    do {
-        temp_s0 = (u16) var_s3->locomotive.wayPointIndex;
-        temp_f20 = var_s3->locomotive.position[0];
-        temp_f22 = var_s3->locomotive.position[2];
-        temp_v0 = func_8000DBAC(var_s6, var_fp, var_s3->someMultiplier);
-        temp_t0 = temp_v0;
-        temp_s1 = temp_v0;
-        var_s3->locomotive.velocity[0] = var_s3->locomotive.position[0] - temp_f20;
-        var_s3->locomotive.velocity[2] = var_s3->locomotive.position[2] - temp_f22;
-        func_80012A48(&var_s3->locomotive, temp_t0);
-        temp_v0_2 = (u16) var_s3->locomotive.wayPointIndex;
-        if ((temp_s0 != temp_v0_2) && ((temp_v0_2 == 0x00BE) || (temp_v0_2 == 0x0140))) {
-            func_800C98B8(var_s6, var_s3->locomotive.velocity, 0x1901800EU);
-        } else if (random_int(0x0064U) == 0) {
-            func_800C98B8(var_s6, var_s3->locomotive.velocity, 0x1901800DU);
+
+    for (i = 0; i < 2; i++) {
+        temp_s0 = (u16) sTrains[i].locomotive.wayPointIndex;
+
+        temp_f20 = sTrains[i].locomotive.position[0];
+        temp_f22 = sTrains[i].locomotive.position[2];
+
+        temp_v0 = func_8000DBAC(sTrains[i].locomotive.position, &sTrains[i].locomotive.wayPointIndex, sTrains[i].someMultiplier);
+
+        sTrains[i].locomotive.velocity[0] = sTrains[i].locomotive.position[0] - temp_f20;
+        sTrains[i].locomotive.velocity[2] = sTrains[i].locomotive.position[2] - temp_f22;
+
+        func_80012A48(&sTrains[i].locomotive, temp_v0);
+        //temp_v0_2 = (u16) sTrains[i].locomotive.wayPointIndex;
+        if ((temp_s0 != sTrains[i].locomotive.wayPointIndex)
+            && ((sTrains[i].locomotive.wayPointIndex == 0x00BE)
+            || (sTrains[i].locomotive.wayPointIndex == 0x0140))) {
+            func_800C98B8(sTrains[i].locomotive.position, sTrains[i].locomotive.velocity, 0x1901800E);
+        } else if (random_int(100) == 0) {
+            func_800C98B8(sTrains[i].locomotive.position, sTrains[i].locomotive.velocity, 0x1901800D);
+            //if ((sTrains && sTrains) && sTrains) {}
         }
-        temp_v0_3 = func_800061DC(var_s6, 2000.0f, var_s3->someFlags);
-        var_s3->someFlags = temp_v0_3;
-        if ((((s16) D_80162FCC % 5) == 0) && (temp_v0_3 != 0)) {
-            sp90 = var_s3->locomotive.position[0];
-            sp94 = (f32) ((f64) var_s3->locomotive.position[1] + 65.0);
-            sp98 = (f32) ((f64) var_s3->locomotive.position[2] + 25.0);
-            func_80006114(&sp90, var_s6, temp_s1);
-            func_800755FC(var_s7, &sp90, 1.1f);
+       // temp_v0_3 = func_800061DC(&D_801635A4, 2000.0f, sTrains[i].someFlags);
+        sTrains[i].someFlags = func_800061DC(sTrains[i].locomotive.position, 2000.0f, sTrains[i].someFlags);
+        if ((((s16) D_80162FCC % 5) == 0) && (sTrains[i].someFlags != 0)) {
+            sp90[0] = sTrains[i].locomotive.position[0];
+            sp90[1] = (f32) ((f64) sTrains[i].locomotive.position[1] + 65.0);
+            sp90[2] = (f32) ((f64) sTrains[i].locomotive.position[2] + 25.0);
+            func_80006114(sp90, sTrains[i].locomotive.position, temp_v0);
+            func_800755FC(i, sp90, 1.1f);
         }
-        temp_s0_2 = &var_s3->tender;
-        if (var_s3->tender.isActive == 1) {
-            temp_f20_2 = temp_s0_2->position[0];
-            temp_f22_2 = temp_s0_2->position[2];
-            temp_a1 = func_8000DBAC(temp_s0_2->position, &temp_s0_2->wayPointIndex, var_s3->someMultiplier);
-            temp_s0_2->velocity[0] = temp_s0_2->position[0] - temp_f20_2;
-            temp_s0_2->velocity[2] = temp_s0_2->position[2] - temp_f22_2;
-            func_80012A48(temp_s0_2, temp_a1);
+
+        car = &sTrains[i].tender;
+
+        if (car->isActive == 1) {
+            temp_f20 = car->position[0];
+            temp_f22 = car->position[2];
+            temp_v0 = func_8000DBAC(car->position, &car->wayPointIndex, sTrains[i].someMultiplier);
+            car->velocity[0] = car->position[0] - temp_f20;
+            car->velocity[2] = car->position[2] - temp_f22;
+            func_80012A48(car, temp_v0);
         }
-        var_s2 = 0;
-        var_s1 = sp7C;
-loop_13:
-        temp_s0_3 = var_s1->passengerCars;
-        if (var_s1->passengerCars[0].isActive == 1) {
-            temp_f20_3 = temp_s0_3->position[0];
-            temp_f22_3 = temp_s0_3->position[2];
-            temp_a1_2 = func_8000DBAC(temp_s0_3->position, &temp_s0_3->wayPointIndex, var_s3->someMultiplier);
-            temp_s0_3->velocity[0] = temp_s0_3->position[0] - temp_f20_3;
-            temp_s0_3->velocity[2] = temp_s0_3->position[2] - temp_f22_3;
-            func_80012A48(temp_s0_3, temp_a1_2);
+
+        for (j = 0; j < 5; j++) {
+            car = &sTrains[i].passengerCars[j];
+            if (car->isActive == 1) {
+                temp_f20 = car->position[0];
+                temp_f22 = car->position[2];
+
+                temp_v0 = func_8000DBAC(car->position, &car->wayPointIndex, sTrains[i].someMultiplier);
+                car->velocity[0] = car->position[0] - temp_f20;
+                car->velocity[2] = car->position[2] - temp_f22;
+                func_80012A48(car, temp_v0);
+            }
         }
-        var_s2 += 0x24;
-        var_s1 += 0x24;
-        if (var_s2 != 0xB4) {
-            goto loop_13;
-        }
-        var_s7 += 1;
-        sp7C += 0x10C;
-        var_s3 += 0x10C;
-        var_s6 += 0x10C;
-        var_fp += 0x10C;
-    } while (var_s7 != 2);
+    }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80012AC0.s")
-#endif
+
+//#else
+//GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80012AC0.s")
+//#endif
 
 void func_80012DC0(s32 playerId, Player *player) {
     TrainCarStuff *trainCar;
@@ -6029,7 +5975,7 @@ void func_80012DC0(s32 playerId, Player *player) {
             playerPosX = player->pos[0];
             playerPosZ = player->pos[2];
             for (trainIndex = 0; trainIndex < NUM_TRAINS; trainIndex++) {
-                trainCar = &D_801635A0[trainIndex].locomotive;
+                trainCar = &sTrains[trainIndex].locomotive;
                 x_dist = playerPosX - trainCar->position[0];
                 z_dist = playerPosZ - trainCar->position[2];
                 if ((x_dist > -100.0) && (x_dist < 100.0)) {
@@ -6037,7 +5983,7 @@ void func_80012DC0(s32 playerId, Player *player) {
                         if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
                             player->statusEffects |= 0x400000;
                         }
-                        trainCar = &D_801635A0[trainIndex].tender;
+                        trainCar = &sTrains[trainIndex].tender;
                         if (trainCar->isActive == 1) {
                             if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
                                 player->statusEffects |= 0x400000;
@@ -6047,7 +5993,7 @@ void func_80012DC0(s32 playerId, Player *player) {
                 }
 
                 for (passengerCarIndex = 0; passengerCarIndex < NUM_PASSENGER_CAR_ENTRIES; passengerCarIndex++) {
-                    trainCar = &D_801635A0[trainIndex].passengerCars[passengerCarIndex];
+                    trainCar = &sTrains[trainIndex].passengerCars[passengerCarIndex];
                     x_dist = playerPosX - trainCar->position[0];
                     z_dist = playerPosZ - trainCar->position[2];
                     if (trainCar->isActive == 1) {
@@ -6065,93 +6011,71 @@ void func_80012DC0(s32 playerId, Player *player) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
 extern s32 D_8016359C;
-extern u16 D_801637BC;
+extern u16 D_801637BC[2];
 
+/**
+ * Appears to check if the train is close to the crossing.
+ * Implements D_801637BC as a counter
+*/
 void func_80013054(void) {
-    TrainStuff *var_v1;
-    f32 var_f8;
-    f64 temp_f12;
-    f64 temp_f16;
-    f64 temp_f18;
-    u16 *var_a0;
-    u16 *var_v1_2;
-    u16 temp_t7;
+    f32 temp_f16;
+    f32 temp_f18;
+    f32 temp_f12;
+    s32 i;
+    isCrossingTriggeredByIndex[0] = 0;
+    isCrossingTriggeredByIndex[1] = 0;
 
-    D_801637B8->unk0 = 0;
-    D_801637B8->unk2 = 0U;
-    temp_f12 = (f64) 0.42299348f;
-    temp_f18 = (f64) 0.72017354f;
-    var_v1 = D_801635A0;
-    do {
-        temp_t7 = (u16) var_v1->locomotive.wayPointIndex;
-        var_f8 = (f32) temp_t7;
-        if ((s32) temp_t7 < 0) {
-            var_f8 += 4294967296.0f;
+    for (i = 0; i < 2; i++) {
+        temp_f16 = sTrains[i].locomotive.wayPointIndex / ((f32) D_8016359C);
+        temp_f18 = 0.72017354f;
+        temp_f12 = 0.42299348f;
+
+        if (((temp_f12 - 0.1) < temp_f16) 
+            && (temp_f16 < ((((f64) sTrains[i].numCars) * 0.01) + (temp_f12 + 0.01)))) {
+
+            isCrossingTriggeredByIndex[0] = 1;
         }
-        temp_f16 = (f64) (var_f8 / (f32) D_8016359C);
-        if (((temp_f12 - 0.1) < temp_f16) && (temp_f16 < (((f64) var_v1->numCars * 0.01) + (temp_f12 + 0.01)))) {
-            D_801637B8->unk0 = 1;
+        if (((temp_f18 - 0.1) < temp_f16) 
+            && (temp_f16 < ((((f64) sTrains[i].numCars) * 0.01) + (temp_f18 + 0.01)))) {
+
+            isCrossingTriggeredByIndex[1] = 1;
         }
-        if (((temp_f18 - 0.1) < temp_f16) && (temp_f16 < (((f64) var_v1->numCars * 0.01) + (temp_f18 + 0.01)))) {
-            D_801637B8->unk2 = 1U;
-        }
-        var_v1 += 0x10C;
-    } while ((u32) var_v1 < (u32) D_801637B8);
-    var_a0 = &D_801637BC;
-    var_v1_2 = D_801637B8;
-    do {
-        if (*var_v1_2 == 1) {
-            *var_a0 += 1;
+    }
+
+    for (i = 0; i < 2; i++) {
+        if (isCrossingTriggeredByIndex[i] == 1) {
+            D_801637BC[i] += 1;
         } else {
-            *var_a0 = 0;
+            D_801637BC[i] = 0;
         }
-        var_a0 += 2;
-        var_v1_2 += 2;
-    } while (var_a0 != D_801637C0);
+    }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80013054.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-extern s16 D_801631E0;
-extern ? D_801634D8;
-extern u16 D_801637BC;
+extern s16 D_801634D8[8];
 extern u16 D_801637BE;
-s16 gCurrentCourseId;                               /* unable to generate initializer */
 
 void func_800131DC(s32 playerId) {
-    u16 *sp18;
-    s16 temp_v0_2;
-    s16 temp_v0_3;
-    s32 temp_v0;
-    u16 *temp_v1;
+    D_801634D8[playerId] = 0;
+    if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
+        if ((!(D_801631E0[playerId] != 0))
+           || (func_800061DC(gPlayers[playerId].pos, 1000.0f, 0))) {
 
-    temp_v0 = playerId * 2;
-    temp_v1 = temp_v0 + &D_801634D8;
-    *temp_v1 = 0;
-    if ((gCurrentCourseId == 0x000B) && ((*(&D_801631E0 + temp_v0) == 0) || (sp18 = temp_v1, (func_800061DC((playerId * 0xDD8) + 0x14 + gPlayers, 1000.0f, 0) != 0)))) {
-        if ((D_801637B8->unk2 == 1) && ((s32) D_801637BE >= 0xF1)) {
-            temp_v0_2 = D_80162FCE;
-            if ((temp_v0_2 >= 0xB1) && (temp_v0_2 < 0xB6)) {
-                *temp_v1 = 1;
+            if ((isCrossingTriggeredByIndex[1] == 1) 
+                && ((D_801637BE) > 240)) {
+            
+                if ((D_80162FCE > 176) && (D_80162FCE < 182)) {
+                    D_801634D8[playerId] = 1;
+                }
             }
-        }
-        if ((D_801637B8->unk0 == 1) && ((s32) D_801637BC >= 0xF1)) {
-            temp_v0_3 = D_80162FCE;
-            if ((temp_v0_3 >= 0x132) && (temp_v0_3 < 0x136)) {
-                *temp_v1 = 1;
+            if ((isCrossingTriggeredByIndex[0] == 1) && (( D_801637BC[0]) > 240)) {
+                if ((D_80162FCE >= 306) && (D_80162FCE < 0x136)) {
+                    D_801634D8[playerId] = 1;
+                }
             }
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_800131DC.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
@@ -6503,7 +6427,7 @@ void func_80013D20(VehicleStuff *vehicle) {
     sp34[0] = vehicle->position[1];
     sp34[1] = 0.0f;
     sp34[2] = sqrtf((temp_f0_3 * temp_f0_3) + (temp_f2_2 * temp_f2_2));
-    thing = func_802B5224(sp40, sp34);
+    thing = get_angle_between_points(sp40, sp34);
     func_800224F0(&vehicle->rotation[0], -thing, 100);
     vehicle->velocity[0] = vehicle->position[0] - sp5C;
     vehicle->velocity[1] = vehicle->position[1] - sp58;
@@ -10511,7 +10435,7 @@ extern Struct80163418 D_80163428;
 extern Struct80163418 D_80163438;
 
 void func_8001C05C(void) {
-    init_seg_8028DF00();
+    init_segment_racing();
     gCurrentCourseId = COURSE_AWARD_CEREMONY;
     D_8016347C = 0;
     D_8016347E = 0;

@@ -376,40 +376,40 @@ SECTIONS
    END_NOLOAD(main)
    
    /* 0x8028DF00 0F7510-123640 [2C130] */
-   BEGIN_SEG(code_8028DF00, SEG_8028DF00)
+   BEGIN_SEG(racing, SEG_RACING)
    {
-      BUILD_DIR/src/race_logic.o(.text);
-      BUILD_DIR/src/render_courses.o(.text);
-      BUILD_DIR/src/actors.o(.text);
-      BUILD_DIR/src/skybox_and_splitscreen.o(.text);
-      BUILD_DIR/src/memory.o(.text);
-      BUILD_DIR/src/collision.o(.text);
-      BUILD_DIR/src/actors_extended.o(.text);
-      BUILD_DIR/src/math_util.o(.text);
-      BUILD_DIR/src/race_logic.o(.data);
-      BUILD_DIR/src/render_courses.o(.data);
-      BUILD_DIR/src/actors.o(.data);
-      BUILD_DIR/src/skybox_and_splitscreen.o(.data);
-      BUILD_DIR/src/memory.o(.data);
+      BUILD_DIR/src/racing/race_logic.o(.text);
+      BUILD_DIR/src/racing/render_courses.o(.text);
+      BUILD_DIR/src/racing/actors.o(.text);
+      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.text);
+      BUILD_DIR/src/racing/memory.o(.text);
+      BUILD_DIR/src/racing/collision.o(.text);
+      BUILD_DIR/src/racing/actors_extended.o(.text);
+      BUILD_DIR/src/racing/math_util.o(.text);
+      BUILD_DIR/src/racing/race_logic.o(.data);
+      BUILD_DIR/src/racing/render_courses.o(.data);
+      BUILD_DIR/src/racing/actors.o(.data);
+      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.data);
+      BUILD_DIR/src/racing/memory.o(.data);
       BUILD_DIR/courses/courseTable.inc.o(.data);
-      BUILD_DIR/src/actors_extended.o(.data);
-      BUILD_DIR/src/math_util.o(.data);
-      BUILD_DIR/src/race_logic.o(.rodata);
-      BUILD_DIR/src/render_courses.o(.rodata);
-      BUILD_DIR/src/actors.o(.rodata);
-      BUILD_DIR/src/skybox_and_splitscreen.o(.rodata);
-      BUILD_DIR/src/memory.o(.rodata);
-      BUILD_DIR/src/collision.o(.rodata);
-      BUILD_DIR/src/actors_extended.o(.rodata);
-      BUILD_DIR/src/math_util.o(.rodata);
+      BUILD_DIR/src/racing/actors_extended.o(.data);
+      BUILD_DIR/src/racing/math_util.o(.data);
+      BUILD_DIR/src/racing/race_logic.o(.rodata);
+      BUILD_DIR/src/racing/render_courses.o(.rodata);
+      BUILD_DIR/src/racing/actors.o(.rodata);
+      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.rodata);
+      BUILD_DIR/src/racing/memory.o(.rodata);
+      BUILD_DIR/src/racing/collision.o(.rodata);
+      BUILD_DIR/src/racing/actors_extended.o(.rodata);
+      BUILD_DIR/src/racing/math_util.o(.rodata);
    }
-   END_SEG(code_8028DF00)
+   END_SEG(racing)
 
-	BEGIN_NOLOAD(code_8028DF00)
+	BEGIN_NOLOAD(racing)
    {
-      BUILD_DIR/src/race_logic.o(.bss);
-      BUILD_DIR/src/actors.o(.bss);
-      BUILD_DIR/src/memory.o(.bss);
+      BUILD_DIR/src/racing/race_logic.o(.bss);
+      BUILD_DIR/src/racing/actors.o(.bss);
+      BUILD_DIR/src/racing/memory.o(.bss);
       BUILD_DIR/src/framebuffers.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
       BUILD_DIR/src/audio/heap.o(.bss*);
@@ -417,46 +417,46 @@ SECTIONS
       BUILD_DIR/src/audio/data.o(.bss);
       . = ALIGN(0x8);
    }
-   END_NOLOAD(code_8028DF00)
+   END_NOLOAD(racing)
 
-   _code_8028DF00SegmentNoloadSize = SIZEOF(.code_8028DF00.noload) + 0x10;
+   _racingSegmentNoloadSize = SIZEOF(.racing.noload) + 0x10;
    
-   _code_8028DF00SegmentNoloadSizeHi = _code_8028DF00SegmentNoloadSize >> 16;
-   _code_8028DF00SegmentNoloadSizeLo = _code_8028DF00SegmentNoloadSize & 0xFFFF;
+   _racingSegmentNoloadSizeHi = _racingSegmentNoloadSize >> 16;
+   _racingSegmentNoloadSizeLo = _racingSegmentNoloadSize & 0xFFFF;
 
    /* 0x80280000 123640-12AAE0 [74A0] */
-   BEGIN_SEG(code_80280000, SEG_80280000)
+   BEGIN_SEG(endingSequences, SEG_ENDING_SEQUENCES)
    {
-      BUILD_DIR/src/code_80280000.o(.text);
-      BUILD_DIR/src/podium_ceremony_actors.o(.text);
-      BUILD_DIR/src/camera_junk.o(.text);
-      BUILD_DIR/src/code_80281780.o(.text);
-      BUILD_DIR/src/code_80281C40.o(.text);
-      BUILD_DIR/src/ceremony_and_credits.o(.text);
-      BUILD_DIR/src/podium_ceremony_actors.o(.data);
-      BUILD_DIR/src/code_80281780.o(.data);
-      BUILD_DIR/src/dl_unk_80284EE0.inc.o(.data);
-      BUILD_DIR/src/credits.jp.o(.data);
-      BUILD_DIR/src/ceremony_and_credits.o(.data);
-      BUILD_DIR/src/podium_ceremony_actors.o(.rodata);
-      BUILD_DIR/src/camera_junk.o(.rodata);
-      BUILD_DIR/src/credits.jp.o(.rodata);
-      BUILD_DIR/src/ceremony_and_credits.o(.rodata);
+      BUILD_DIR/src/ending/code_80280000.o(.text);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.text);
+      BUILD_DIR/src/ending/camera_junk.o(.text);
+      BUILD_DIR/src/ending/code_80281780.o(.text);
+      BUILD_DIR/src/ending/code_80281C40.o(.text);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.text);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.data);
+      BUILD_DIR/src/ending/code_80281780.o(.data);
+      BUILD_DIR/src/ending/dl_unk_80284EE0.inc.o(.data);
+      BUILD_DIR/src/ending/credits.jp.o(.data);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.data);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.rodata);
+      BUILD_DIR/src/ending/camera_junk.o(.rodata);
+      BUILD_DIR/src/ending/credits.jp.o(.rodata);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.rodata);
    }
-   END_SEG(code_80280000)
+   END_SEG(endingSequences)
 
-   BEGIN_NOLOAD(code_80280000) {
-      BUILD_DIR/src/code_80280000.o(.bss);
-      BUILD_DIR/src/podium_ceremony_actors.o(.bss);
-      BUILD_DIR/src/code_80281C40.o(.bss);
-      BUILD_DIR/src/ceremony_and_credits.o(.bss);
+   BEGIN_NOLOAD(endingSequences) {
+      BUILD_DIR/src/ending/code_80280000.o(.bss);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.bss);
+      BUILD_DIR/src/ending/code_80281C40.o(.bss);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.bss);
    }
-   END_NOLOAD(code_80280000)
+   END_NOLOAD(endingSequences)
 
-   _code_80280000SegmentNoloadSize = SIZEOF(.code_80280000.noload) + 0x10;
+   _endingSequencesSegmentNoloadSize = SIZEOF(.endingSequences.noload) + 0x10;
    
-   _code_80280000SegmentNoloadSizeHi = _code_80280000SegmentNoloadSize >> 16;
-   _code_80280000SegmentNoloadSizeLo = _code_80280000SegmentNoloadSize & 0xFFFF;
+   _endingSequencesSegmentNoloadSizeHi = _endingSequencesSegmentNoloadSize >> 16;
+   _endingSequencesSegmentNoloadSizeLo = _endingSequencesSegmentNoloadSize & 0xFFFF;
 
 
 

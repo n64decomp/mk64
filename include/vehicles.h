@@ -25,7 +25,7 @@ typedef struct {
 	/* 0x02 */ s16 compilerPadding;
 	/* 0x04 */ Vec3f position;
 	/* 0x10 */ Vec3f velocity;
-	/* 0x1C */ s16 wayPointIndex;
+	/* 0x1C */ u16 wayPointIndex;
 	/* 0x1E */ s16 actorIndex;
 	/* 0x20 */ s32 unused; // Not read or written. Could be padding?
 } TrainCarStuff; // size = 0x24;
@@ -78,7 +78,7 @@ typedef struct {
 	/* 0x32 */ // s16 compilerPadding2;
 } VehicleStuff; // size = 0x34
 
-extern TrainStuff D_801635A0[];
+extern TrainStuff sTrains[];
 
 // This is an array, maybe they intended to have multiple boats at some point in development?
 extern PaddleWheelBoatStuff D_801637C0[];

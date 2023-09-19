@@ -96,7 +96,7 @@ void load_ceremony_cutscene(void) {
     func_802A4D18();
     func_802A74BC();
     camera->unk_B4 = 60.0f;
-    D_80150130[0] = 60.0f;
+    gCameraZoom[0] = 60.0f;
     D_800DC5EC->screenWidth = SCREEN_WIDTH;
     D_800DC5EC->screenHeight = SCREEN_HEIGHT;
     D_800DC5EC->screenStartX = 160;

@@ -435,9 +435,9 @@ void func_802A487C(Vtx *arg0, UNUSED struct UnkStruct_800DC5EC *arg1, UNUSED s32
 
         gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
         gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER | G_LIGHTING);
-        guOrtho(&gGfxPool->mtxPool[0], 0.0f, 320.0f, 0.0f, 240.0f, 0.0f, 5.0f, 1.0f);
+        guOrtho(&gGfxPool->mtxScreen, 0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, 0.0f, 5.0f, 1.0f);
         gSPPerspNormalize(gDisplayListHead++, 0xFFFF);
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxScreen), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_0D008E98), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPVertex(gDisplayListHead++, &arg0[4], 4, 0);
         gSP2Triangles(gDisplayListHead++, 0, 3, 1, 0, 1, 3, 2, 0);
@@ -487,9 +487,9 @@ void func_802A4A0C(Vtx *vtx, struct UnkStruct_800DC5EC *arg1, UNUSED s32 arg2, U
     init_rdp();
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER | G_LIGHTING);
-    guOrtho(&gGfxPool->mtxPool[0], 0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, 0.0f, 5.0f, 1.0f);
+    guOrtho(&gGfxPool->mtxScreen, 0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, 0.0f, 5.0f, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, 0xFFFF);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxScreen), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_0D008E98), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPVertex(gDisplayListHead++, &vtx[0], 4, 0);
     gSP2Triangles(gDisplayListHead++, 0, 3, 1, 0, 1, 3, 2, 0);
@@ -567,22 +567,22 @@ void func_802A4D18(void) {
 void func_802A4EF4(void) {
     switch(gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            func_8001F394(gPlayerOne, &D_80150130[0]);
+            func_8001F394(gPlayerOne, &gCameraZoom[0]);
             break;
 
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-            func_8001F394(gPlayerOne, &D_80150130[0]);
-            func_8001F394(gPlayerTwo, &D_80150130[1]);
+            func_8001F394(gPlayerOne, &gCameraZoom[0]);
+            func_8001F394(gPlayerTwo, &gCameraZoom[1]);
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-            func_8001F394(gPlayerOne, &D_80150130[0]);
-            func_8001F394(gPlayerTwo, &D_80150130[1]);
+            func_8001F394(gPlayerOne, &gCameraZoom[0]);
+            func_8001F394(gPlayerTwo, &gCameraZoom[1]);
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            func_8001F394(gPlayerOne, &D_80150130[0]);
-            func_8001F394(gPlayerTwo, &D_80150130[1]);
-            func_8001F394(gPlayerThree, &D_80150130[2]);
-            func_8001F394(gPlayerFour, &D_80150130[3]);
+            func_8001F394(gPlayerOne, &gCameraZoom[0]);
+            func_8001F394(gPlayerTwo, &gCameraZoom[1]);
+            func_8001F394(gPlayerThree, &gCameraZoom[2]);
+            func_8001F394(gPlayerFour, &gCameraZoom[3]);
             break;
     }
 }
@@ -598,9 +598,9 @@ void func_802A5004(void) {
 
     func_802A39E0(D_800DC5F0);
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130[1]);
+        func_802A4A0C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80057FC4(2);
-        func_802A487C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130[1]);
+        func_802A487C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80093A30(2);
     }
 }
@@ -615,9 +615,9 @@ void func_802A50EC(void) {
 
     func_802A39E0(D_800DC5EC);
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130[0]);
+        func_802A4A0C((Vtx *) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80057FC4(1);
-        func_802A487C((Vtx *) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130[0]);
+        func_802A487C((Vtx *) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80093A30(1);
     }
 }
@@ -632,9 +632,9 @@ void func_802A51D4(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130[0]);
+        func_802A4A0C((Vtx *) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80057FC4(3);
-        func_802A487C((Vtx *) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130[0]);
+        func_802A487C((Vtx *) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80093A30(3);
     }
 }
@@ -649,9 +649,9 @@ void func_802A52BC(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130[1]);
+        func_802A4A0C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80057FC4(4);
-        func_802A487C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130[1]);
+        func_802A487C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80093A30(4);
     }
 }
@@ -668,11 +668,11 @@ void func_802A53A4(void) {
     init_z_buffer();
     select_framebuffer();
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8890, D_800DC5EC, 0x140, 0xF0, &D_80150130[0]);
+        func_802A4A0C((Vtx *) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         if (gGamestate != CREDITS_SEQUENCE) {
             func_80057FC4(0);
         }
-        func_802A487C((Vtx *) D_802B8890, D_800DC5EC, 0x140, 0xF0, &D_80150130[0]);
+        func_802A487C((Vtx *) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         func_80093A30(0);
     }
 }
@@ -687,9 +687,9 @@ void func_802A54A8(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8890, D_800DC5EC, 0x140, 0xF0, &D_80150130[0]);
+        func_802A4A0C((Vtx *) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         func_80057FC4(8);
-        func_802A487C((Vtx *) D_802B8890, D_800DC5EC, 0x140, 0xF0, &D_80150130[0]);
+        func_802A487C((Vtx *) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         func_80093A30(8);
     }
 }
@@ -704,9 +704,9 @@ void func_802A5590(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130[1]);
+        func_802A4A0C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80057FC4(9);
-        func_802A487C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130[1]);
+        func_802A487C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80093A30(9);
     }
 }
@@ -721,9 +721,9 @@ void func_802A5678(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8990, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130[2]);
+        func_802A4A0C((Vtx *) D_802B8990, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
         func_80057FC4(10);
-        func_802A487C((Vtx *) D_802B8990, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130[2]);
+        func_802A487C((Vtx *) D_802B8990, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
         func_80093A30(10);
     }
 }
@@ -757,9 +757,9 @@ void func_802A5760(void) {
         func_802A39E0(D_800DC5F8);
 
         if (D_800DC5B4 != 0) {
-            func_802A4A0C(D_802B8A10, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130[3]);
+            func_802A4A0C(D_802B8A10, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[3]);
             func_80057FC4(11);
-            func_802A487C(D_802B8A10, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &D_80150130[3]);
+            func_802A487C(D_802B8A10, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[3]);
             func_80093A30(11);
         }
     }
@@ -778,27 +778,27 @@ void func_802A59A4(void) {
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    guPerspective(&gGfxPool->mtxPool[1], &perspNorm, D_80150130[0], D_80150148, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], D_80150148, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-    guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2],
+    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2],
              camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0],
              camera->up[1], camera->up[2]);
     if (D_800DC5C8 == 0) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     func_80295A38(D_800DC5EC);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     }
-    func_802A3008(D_800DC5EC);
+    render_course_actors(D_800DC5EC);
     func_80058090(0);
     func_800212B4();
     func_8029122C(D_800DC5EC, 0);
@@ -826,28 +826,28 @@ void func_802A5CB4(void) {
     func_802A3730(D_800DC5EC);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPool[1], &perspNorm, D_80150130[0], D_80150148, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], D_80150148, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     if (D_800DC5C8 == 0) {
 
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     func_80295A38(D_800DC5EC);
     if (D_800DC5C8 == 1) {
 
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     }
-    func_802A3008(D_800DC5EC);
+    render_course_actors(D_800DC5EC);
     func_80058090(1);
     func_800212B4();
     func_8029122C(D_800DC5EC, 0);
@@ -876,25 +876,25 @@ void func_802A5FAC(void) {
     func_802A3730(D_800DC5F0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPool[2], &perspNorm, D_80150130[1], D_80150148, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], D_80150148, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[8], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[1], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     if (D_800DC5C8 == 0) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     func_80295A38(D_800DC5F0);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     }
-    func_802A3008(D_800DC5F0);
+    render_course_actors(D_800DC5F0);
     func_80058090(2);
     func_800215DC();
     func_8029122C(D_800DC5F0, 1);
@@ -924,26 +924,26 @@ void func_802A62A4(void) {
     func_802A3730(D_800DC5EC);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPool[1], &perspNorm, D_80150130[0], D_80150148, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], D_80150148, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     if (D_800DC5C8 == 0) {
 
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     func_80295A38(D_800DC5EC);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     }
-    func_802A3008(D_800DC5EC);
+    render_course_actors(D_800DC5EC);
     func_80058090(3);
     func_800212B4();
     func_8029122C(D_800DC5EC, 0);
@@ -974,25 +974,25 @@ void func_802A65B8(void) {
     func_802A3730(D_800DC5F0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPool[2], &perspNorm, D_80150130[1], D_80150148, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], D_80150148, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[8], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[1], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     if (D_800DC5C8 == 0) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     func_80295A38(D_800DC5F0);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     }
-    func_802A3008(D_800DC5F0);
+    render_course_actors(D_800DC5F0);
     func_80058090(4);
     func_800215DC();
     func_8029122C(D_800DC5F0, 1);
@@ -1021,25 +1021,25 @@ void func_802A68CC(void) {
     func_802A3730(D_800DC5EC);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPool[1], &perspNorm, D_80150130[0], D_80150148, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], D_80150148, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[7], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     if (D_800DC5C8 == 0) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     func_80295A38(D_800DC5EC);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     }
-    func_802A3008(D_800DC5EC);
+    render_course_actors(D_800DC5EC);
     func_80058090(8);
     func_800212B4();
     func_8029122C(D_800DC5EC, 0);
@@ -1068,25 +1068,25 @@ void func_802A6BB0(void) {
     func_802A3730(D_800DC5F0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPool[2], &perspNorm, D_80150130[1], D_80150148, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], D_80150148, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-    guLookAt(&gGfxPool->mtxPool[8], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    guLookAt(&gGfxPool->mtxLookAt[1], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
     if (D_800DC5C8 == 0) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     func_80295A38(D_800DC5F0);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[8]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     }
-    func_802A3008(D_800DC5F0);
+    render_course_actors(D_800DC5F0);
     func_80058090(9);
     func_800215DC();
     func_8029122C(D_800DC5F0, 1);
@@ -1115,25 +1115,25 @@ void func_802A6E94(void) {
     func_802A3730(D_800DC5F4);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPool[3], &perspNorm, D_80150130[2], D_80150148, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[2], &perspNorm, gCameraZoom[2], D_80150148, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[9], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[2], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
     if (D_800DC5C8 == 0) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[9]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[9]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     func_80295A38(D_800DC5F4);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[9]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     }
-    func_802A3008(D_800DC5F4);
+    render_course_actors(D_800DC5F4);
     func_80058090(10);
     func_8002186C();
     func_8029122C(D_800DC5F4, 2);
@@ -1171,24 +1171,24 @@ void func_802A7178(void) {
     func_802A3730(D_800DC5F8);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPool[4], &perspNorm, D_80150130[3], D_80150148, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[3], &perspNorm, gCameraZoom[3], D_80150148, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[4]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxPool[10], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[3], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
     if (D_800DC5C8 == 0) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[10]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[10]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     func_80295A38(D_800DC5F8);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[10]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
-        func_802B4FF8(matrix, 0);
+        render_set_position(matrix, 0);
     }
-    func_802A3008(D_800DC5F8);
+    render_course_actors(D_800DC5F8);
     func_80058090(11);
     func_800219BC();
     func_8029122C(D_800DC5F8, 3);
