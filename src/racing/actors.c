@@ -1311,9 +1311,9 @@ void render_actor_banana(Camera *camera, UNUSED Mat4 arg1, struct BananaActor *b
     if (maxObjectsReached) { return; }
 
     if (banana->state != 5) {
-        gSPDisplayList(gDisplayListHead++, &bananaModel);
+        gSPDisplayList(gDisplayListHead++, &common_model_banana);
     } else {
-        gSPDisplayList(gDisplayListHead++, &flatBananaModel);
+        gSPDisplayList(gDisplayListHead++, &common_texture_flat_banana);
     }
 }
 
@@ -3604,7 +3604,7 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
 
         if (!render_set_position(someMatrix2, 0)) { return; }
 
-        gSPDisplayList(gDisplayListHead++, fakeItemBoxModel);
+        gSPDisplayList(gDisplayListHead++, common_model_fake_itembox);
         func_802B5F74(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
         func_802B5F00(someMatrix2, fakeItemBox->sizeScaling);
 
