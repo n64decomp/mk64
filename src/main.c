@@ -117,7 +117,7 @@ s32 D_80150120;
 s32 gMenuSelectionFromQuit;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
-f32 D_80150130[4];
+f32 gCameraZoom[4]; // look like to be the fov of each character
 //f32 D_80150134;
 //f32 D_80150138;
 //f32 D_8015013C;
@@ -579,7 +579,7 @@ void race_logic_loop(void) {
                     func_80028F70();
                     func_8028F474();
                     func_80059AC8();
-                    update_simple_objects();
+                    update_course_actors();
                     func_802966A0();
                     func_8028FCBC();
 
@@ -646,7 +646,7 @@ void race_logic_loop(void) {
                         func_80029150();
                         func_8028F474();
                         func_80059AC8();
-                        update_simple_objects();
+                        update_course_actors();
                         func_802966A0();
                         func_8028FCBC();
                     }
@@ -692,7 +692,7 @@ void race_logic_loop(void) {
                         func_80029150();
                         func_8028F474();
                         func_80059AC8();
-                        update_simple_objects();
+                        update_course_actors();
                         func_802966A0();
                         func_8028FCBC();
                     }
@@ -764,7 +764,7 @@ void race_logic_loop(void) {
                     func_800291F8();
                     func_8028F474();
                     func_80059AC8();
-                    update_simple_objects();
+                    update_course_actors();
                     func_802966A0();
                     func_8028FCBC();
                 }
@@ -825,7 +825,7 @@ void race_logic_loop(void) {
     func_800591B4();
     func_80093E20();
 #if DVDL
-	display_dvdl();	 
+	display_dvdl();  
 #endif
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
@@ -873,7 +873,7 @@ void game_state_handler(void) {
             init_rcp();
             func_80094A64(gGfxPool);
 #if DVDL
-			display_dvdl();	 
+			display_dvdl();  
 #endif
             break;
         case RACING:

@@ -14,7 +14,7 @@ void load_credits(void);
 extern Gfx *gDisplayListHead;
 
 extern f32 D_80150148, D_8015014C, D_80150150;
-extern f32 D_80150130[4];
+extern f32 gCameraZoom[4];
 extern s16 gCreditsCourseId;
 extern u16 gMatrixObjectCount;
 extern s16 gMatrixEffectCount;

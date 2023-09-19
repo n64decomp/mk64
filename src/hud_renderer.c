@@ -5321,7 +5321,7 @@ void func_80055FA0(s32 objectIndex, UNUSED s32 arg1) {
         gSPDisplayList(gDisplayListHead++, object->unk_070);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(someMatrix2);
-        func_802B4FF8(someMatrix2, 0);
+        render_set_position(someMatrix2, 0);
     }
 }
 
