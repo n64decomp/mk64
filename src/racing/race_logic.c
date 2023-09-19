@@ -36,9 +36,7 @@ extern s32 D_80150120;
 extern s32 gModeSelection;
 extern s32 gPlayerCountSelection1;
 extern u16 D_802BA048;
-extern s32 D_800DC510;
 
-extern s32 gMenuSelectionFromQuit;
 extern u16 D_800DC5B4;
 extern u16 D_800DC5B0;
 extern u16 D_800DC5B8;

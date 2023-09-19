@@ -23,7 +23,6 @@
 
 extern u16 D_800DC5A8;
 
-extern s32 D_800DC510;
 extern s32 D_802BA038;
 extern s16 D_802BA048;
 

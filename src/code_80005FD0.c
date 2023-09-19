@@ -1,13 +1,13 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
+
 #include "math_util.h"
 #include "code_800029B0.h"
-#include "memory.h"
+#include "racing/memory.h"
 #include "waypoints.h"
 #include "camera.h"
 #include "actors.h"
-#include "code_80005FD0.h"
 #include "code_8001F980.h"
 #include "player_controller.h"
 #include "code_80071F00.h"
@@ -20,6 +20,10 @@
 #include "bomb_kart.h"
 #include "courses/all_course_data.h"
 #include "common_textures.h"
+#include "common_structs.h"
+#include "main.h"
+
+#include "code_80005FD0.h"
 
 extern UnkCommonTextureStruct0 *D_800DC720[];
 

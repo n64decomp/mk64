@@ -107,6 +107,16 @@ void thread4_audio(void*);
 
 extern struct GfxPool *gGfxPool;
 extern Gfx *gDisplayListHead;
+
+extern struct VblankHandler *gVblankHandler1;
+extern struct VblankHandler *gVblankHandler2;
+
+extern struct SPTask *gActiveSPTask;
+extern struct SPTask *sCurrentAudioSPTask;
+extern struct SPTask* sCurrentDisplaySPTask;
+extern struct SPTask* sNextAudioSPTask;
+extern struct SPTask* sNextDisplaySPTask;
+
 extern struct Controller gControllers[];
 extern struct Controller *gControllerOne;
 extern struct Controller *gControllerTwo;
@@ -137,7 +147,6 @@ extern UNUSED Player *gPlayerFourCopy;
 
 extern s32 D_800FD850[3];
 extern struct GfxPool gGfxPools[2];
-extern struct GfxPool *gGfxPool;
 
 extern s32 gfxPool_padding;
 extern struct VblankHandler gGameVblankHandler;
@@ -176,7 +185,6 @@ extern f32 D_80150150;
 
 extern struct D_80150158 gD_80150158[16];
 extern uintptr_t gSegmentTable[16];
-extern Gfx *gDisplayListHead;
 extern struct SPTask *gGfxSPTask;
 extern s32 D_801502A0;
 extern s32 D_801502A4;
@@ -192,13 +200,13 @@ extern u16 D_80152300[4];
 extern u16 D_80152308;
 
 extern OSThread gIdleThread;
-extern ALIGNED8 u8 gIdleThreadStack[STACKSIZE]; // Based on sm64 and padding between bss symbols.
+extern ALIGNED8 u8 gIdleThreadStack[]; // Based on sm64 and padding between bss symbols.
 extern OSThread gVideoThread;
-extern ALIGNED8 u8 gVideoThreadStack[STACKSIZE];
+extern ALIGNED8 u8 gVideoThreadStack[];
 extern OSThread gGameLoopThread;
-extern ALIGNED8 u8 gGameLoopThreadStack[STACKSIZE];
+extern ALIGNED8 u8 gGameLoopThreadStack[];
 extern OSThread gAudioThread;
-extern ALIGNED8 u8 gAudioThreadStack[STACKSIZE];
+extern ALIGNED8 u8 gAudioThreadStack[];
 
 extern u8 gGfxSPTaskYieldBuffer[4352];
 extern u32 gGfxSPTaskStack[256];
@@ -206,8 +214,9 @@ extern OSMesg gPIMesgBuf[32];
 extern OSMesgQueue gPIMesgQueue;
 
 extern s32 gGamestate;
-extern u16 D_800DC510;
-extern u16 D_800DC514;
+#ifndef STRANGE_MAIN_HEADER_H
+extern s32 D_800DC510;
+#endif
 extern u16 D_800DC518;
 extern u16 gDemoMode;
 extern u16 gEnableDebugMode;

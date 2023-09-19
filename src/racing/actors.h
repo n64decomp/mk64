@@ -3,6 +3,7 @@
 
 #include "types.h"
 #include "actor_types.h"
+#include "main.h"
 
 void func_8029E158(void);
 void cleanup_red_and_green_shells(struct ShellActor*);
@@ -131,14 +132,12 @@ extern u16 gNumActors;
 extern u16 D_802BA260; // Box Truck sub-type?
 
 extern Player *gPlayerOne;
-extern struct Controller gControllers[];
 
 extern s32 gActiveScreenMode;
 
 extern u16 gNearestWaypointByPlayerId[];
 
 extern Camera *camera1;
-extern Gfx *gDisplayListHead;
 extern s32 gModeSelection;
 extern s16 gCurrentCourseId;
 extern f32 gCameraZoom[];

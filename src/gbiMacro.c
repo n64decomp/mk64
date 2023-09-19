@@ -7,7 +7,6 @@
 
 extern s16 D_800E43A8;
 extern Mtx D_0D008E98;
-extern Gfx* gDisplayListHead;
 
 // rsp init
 UNUSED void gfx_func_80040D00(void) {

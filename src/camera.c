@@ -2,10 +2,11 @@
 #include <macros.h>
 #include <common_structs.h>
 #include <defines.h>
+#include <libc/math.h>
 #include "code_800029B0.h"
 #include "camera.h"
 #include "math_util.h"
-#include "memory.h"
+#include "racing/memory.h"
 #include "waypoints.h"
 #include "variables.h"
 #include "code_8001F980.h"
@@ -13,7 +14,6 @@
 #include "code_80057C60.h"
 #include "code_80005FD0.h"
 #include "main.h"
-#include <libc/math.h>
 
 f32 D_800DDB30[] = { 0.4f, 0.6f, 0.275f, 0.3f };
 

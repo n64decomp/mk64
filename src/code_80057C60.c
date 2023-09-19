@@ -1,9 +1,12 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <PR/gbi.h>
+
+#include "code_80057C60.h"
 #include "main.h"
+#include "actors.h"
 #include "code_800029B0.h"
-#include "memory.h"
+#include "racing/memory.h"
 #include <variables.h>
 #include <config.h>
 #include <defines.h>
@@ -12,7 +15,6 @@
 #include "code_80005FD0.h"
 #include "code_8001F980.h"
 #include "hud_renderer.h"
-#include "code_80057C60.h"
 #include "code_80071F00.h"
 #include "code_80086E70.h"
 #include "code_8008C1D0.h"
@@ -21,6 +23,7 @@
 #include "audio/external.h"
 #include "objects.h"
 #include "bomb_kart.h"
+
 
 // WARNING: this macro is undef'd at the end of this file
 #define MAKE_RGB(r,g,b) (((r) << 0x10) | ((g) << 0x08) | (b << 0x00))
@@ -1160,8 +1163,6 @@ void func_8005A380(void) {
 }
 
 extern s8 D_801657F8;
-
-extern struct Controller *gControllerOne;
 extern struct Controller *gControllerTwo;
 extern struct Controller *gControllerThree;
 extern struct Controller *gControllerFour;

@@ -1,6 +1,8 @@
 #ifndef RENDER_COURSES_H
 #define RENDER_COURSES_H
 
+#include "main.h"
+
 void func_8029122C(struct UnkStruct_800DC5EC*, s32);
 s32  func_80290C20(Camera*);
 void parse_course_displaylists(uintptr_t);
@@ -36,7 +38,6 @@ void func_80295D88(void);
 void func_802966A0(void);
 void func_802969F8(void);
 
-extern Gfx *gDisplayListHead;
 extern s16 gCurrentCourseId;
 extern s32 gActiveScreenMode;
 

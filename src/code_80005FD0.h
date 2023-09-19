@@ -1,9 +1,7 @@
 #ifndef CODE_80005FD0_H
 #define CODE_80005FD0_H
 
-#include "common_structs.h"
 #include "vehicles.h"
-#include "waypoints.h"
 
 struct struct_801642D8 {
     /* 0x0 */ u16 unk0;
@@ -192,7 +190,6 @@ extern u16 D_80163E2A;
 extern Gfx D_0D0076F8[];
 
 extern struct Controller *gControllerThree;
-extern Gfx *gDisplayListHead;
 extern s32 D_800DDB20;
 
 #endif

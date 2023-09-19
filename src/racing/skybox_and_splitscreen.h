@@ -3,6 +3,8 @@
 
 #define G_CLEAR_ALL_MODES 0xFFFFFFFF
 
+#include "main.h"
+
 /* Function Prototypes */
 
 void func_802A4A0C(Vtx*, struct UnkStruct_800DC5EC*, s32, s32, f32*);
@@ -52,8 +54,6 @@ void copy_framebuffer(s32, s32, s32, s32, u16*, u16*);
 void func_802A7728(void);
 void func_802A7940(void);
 
-extern Gfx *gDisplayListHead;
-
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
 extern struct UnkStruct_800DC5EC *D_800DC5F0;
 extern struct UnkStruct_800DC5EC *D_800DC5F4;
@@ -64,7 +64,6 @@ extern u16 gIsInQuitToMenuTransition;
 extern u16 gQuitToMenuTransitionCounter;
 extern s32 gMenuSelection;
 extern s32 D_800E86A4;
-extern s32 gMenuSelectionFromQuit;
 
 extern u32 D_801502B4;
 extern u16 sRenderingFramebuffer;
@@ -72,7 +71,6 @@ extern s32 D_800DC5D0;
 extern s32 D_800DC5D4;
 extern s32 D_800DC5D8;
 extern u16 D_800DC5BC;
-extern struct GfxPool *gGfxPool;
 extern f32 gCameraZoom[];
 extern u16 D_800DC5B4;
 extern f32 D_80150148;
@@ -84,7 +82,6 @@ extern u16 D_800DC5C8;
 extern u16 D_800DC5B8;
 extern struct UnkStruct_800DC5EC D_8015F480[];
 
-extern struct Controller gControllers[];
 extern Player gPlayers[];
 extern s32 D_800DC5DC;
 extern s32 D_800DC5E0;

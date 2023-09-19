@@ -1,3 +1,4 @@
+#define STRANGE_MAIN_HEADER_H
 #include <ultra64.h>
 #include <PR/os.h>
 #include <macros.h>
@@ -6,7 +7,7 @@
 #include "config.h"
 #include "profiler.h"
 #include "main.h"
-#include "memory.h"
+#include "racing/memory.h"
 #include "menus.h"
 #include "segments.h"
 #include "segment_symbols.h"
@@ -165,6 +166,7 @@ OSMesg gPIMesgBuf[32];
 OSMesgQueue gPIMesgQueue;
 
 s32 gGamestate = 0xFFFF;
+// it's in reality one s32 not two u16
 u16 D_800DC510 = 0;
 u16 D_800DC514 = 0;
 u16 D_800DC518 = 0;

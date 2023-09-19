@@ -24,7 +24,6 @@ extern s8    gCupSelection;                         // D_8018EE09
 extern s16   gCurrentCourseId;                      // D_800DC5A0
 
 extern s8    gDebugMenuSelection;                   // D_8018EDEF
-extern Gfx  *gDisplayListHead;                      // D_80150298
 
 extern u16   gEnableDebugMode; // D_800DC520
 
@@ -76,8 +75,6 @@ extern struct_8018CA70_entry D_8018CA70[];
 extern Mtx D_80183D60[];
 
 extern struct_D_8018CE10 D_8018CE10[];
-
-//extern struct GfxPool *gGfxPool; // D_8014EF40
 
 extern Vec3f D_80165070[];
 

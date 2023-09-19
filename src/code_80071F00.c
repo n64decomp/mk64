@@ -2,10 +2,12 @@
 #include <macros.h>
 #include <defines.h>
 #include <functions.h>
+
 #include "memory.h"
 #include "camera.h"
 #include "math_util.h"
 #include "math_util_2.h"
+#include "hud_renderer.h"
 #include "objects.h"
 #include "waypoints.h"
 #include "variables.h"
