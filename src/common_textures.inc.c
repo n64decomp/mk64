@@ -609,7 +609,7 @@ Gfx common_model_banana[] = {
 };
 
 
-Gfx common_texture_flat_banana[] = {
+Gfx common_model_flat_banana[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA),

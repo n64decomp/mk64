@@ -1313,7 +1313,7 @@ void render_actor_banana(Camera *camera, UNUSED Mat4 arg1, struct BananaActor *b
     if (banana->state != 5) {
         gSPDisplayList(gDisplayListHead++, &common_model_banana);
     } else {
-        gSPDisplayList(gDisplayListHead++, &common_texture_flat_banana);
+        gSPDisplayList(gDisplayListHead++, &common_model_flat_banana);
     }
 }
 
