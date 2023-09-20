@@ -15,53 +15,13 @@ OUTPUT_ARCH (mips)
     _##name##SegmentRomEnd = __romPos + SIZEOF(.name); \
     __romPos += SIZEOF(.name);
 
-#define MIO0_SEG(name) \
-   BEGIN_SEG(name##_mio0, 0x0) \
-   { \
-      BUILD_DIR/bin/name.mio0.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name##_mio0)
-
-#define COURSE_DATA_SEG(dir, name) \
-   BEGIN_SEG(name##_mio0, 0x06000000) \
-   { \
-      BUILD_DIR/courses/dir/course_data.inc.mio0.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name##_mio0)
-
-#define COURSE_OFFSETS_SEG(name, addr) \
-   BEGIN_SEG(name, addr) \
-   { \
-      BUILD_DIR/src/name.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name)
-
-#define COURSE_VERT_SEG(dir, name) \
-   BEGIN_SEG(name, 0x0F000000) \
-   { \
-      BUILD_DIR/courses/dir/model.inc.mio0.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name)
-
-#define COURSE_PACKED_SEG(dir, name) \
-   BEGIN_SEG(name, 0x07000000) \
-   { \
-      BUILD_DIR/courses/dir/packed.inc.mio0.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name)
-	
 #define BEGIN_NOLOAD(name) \
     _##name##SegNoloadStart = ADDR(.name.noload); \
     .name.noload (NOLOAD) :
 	
 #define END_NOLOAD(name) \
     _##name##SegNoloadEnd = ADDR(.name.noload) + SIZEOF(.name.noload);
-	
+
 SECTIONS
 {
    __romPos = 0;
@@ -534,7 +494,7 @@ SECTIONS
             0x828400 -> 0x8028DE30 (0xD0) */
    BEGIN_SEG(data_821D10, 0x0B000000)
    {
-      BUILD_DIR/src/trophy_model.inc.mio0.o(.data);
+      BUILD_DIR/src/ending/ceremony_data.inc.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(data_821D10)
@@ -548,26 +508,42 @@ SECTIONS
 
    /* Segment Six Course Data (Displaylists, models, textures, course paths, etc.) */
 
-   COURSE_DATA_SEG(flower_cup/mario_raceway,course_mario_raceway_dl)
-   COURSE_DATA_SEG(flower_cup/choco_mountain,course_choco_mountain_dl)
-   COURSE_DATA_SEG(star_cup/bowsers_castle,course_bowsers_castle_dl)
-   COURSE_DATA_SEG(special_cup/banshee_boardwalk,course_banshee_boardwalk_dl)
-   COURSE_DATA_SEG(special_cup/yoshi_valley,course_yoshi_valley_dl)
-   COURSE_DATA_SEG(flower_cup/frappe_snowland,course_frappe_snowland_dl)
-   COURSE_DATA_SEG(mushroom_cup/koopa_troopa_beach,course_koopa_troopa_beach_dl)
-   COURSE_DATA_SEG(star_cup/royal_raceway,course_royal_raceway_dl)
-   COURSE_DATA_SEG(mushroom_cup/luigi_raceway,course_luigi_raceway_dl)
-   COURSE_DATA_SEG(mushroom_cup/moo_moo_farm,course_moo_moo_farm_dl)
-   COURSE_DATA_SEG(flower_cup/toads_turnpike,course_toads_turnpike_dl)
-   COURSE_DATA_SEG(mushroom_cup/kalimari_desert,course_kalimari_desert_dl)
-   COURSE_DATA_SEG(star_cup/sherbet_land,course_sherbet_land_dl)
-   COURSE_DATA_SEG(special_cup/rainbow_road,course_rainbow_road_dl)
-   COURSE_DATA_SEG(star_cup/wario_stadium,course_wario_stadium_dl)
-   COURSE_DATA_SEG(battle/block_fort,course_block_fort_dl)
-   COURSE_DATA_SEG(battle/skyscraper,course_skyscraper_dl)
-   COURSE_DATA_SEG(battle/double_deck,course_double_deck_dl)
-   COURSE_DATA_SEG(special_cup/dks_jungle_parkway,course_dks_jungle_parkway_dl)
-   COURSE_DATA_SEG(battle/big_donut,course_big_donut_dl)
+   #define COURSE_DATA_SEG(dir, name) \
+      BEGIN_SEG(name##_mio0, 0x06000000) \
+      { \
+         BUILD_DIR/courses/dir/course_data.inc.mio0.o(.data); \
+         . = ALIGN(0x10); \
+      } \
+      END_SEG(name##_mio0)
+
+   COURSE_DATA_SEG(mario_raceway,course_mario_raceway_dl)
+   COURSE_DATA_SEG(choco_mountain,course_choco_mountain_dl)
+   COURSE_DATA_SEG(bowsers_castle,course_bowsers_castle_dl)
+   COURSE_DATA_SEG(banshee_boardwalk,course_banshee_boardwalk_dl)
+   COURSE_DATA_SEG(yoshi_valley,course_yoshi_valley_dl)
+   COURSE_DATA_SEG(frappe_snowland,course_frappe_snowland_dl)
+   COURSE_DATA_SEG(koopa_troopa_beach,course_koopa_troopa_beach_dl)
+   COURSE_DATA_SEG(royal_raceway,course_royal_raceway_dl)
+   COURSE_DATA_SEG(luigi_raceway,course_luigi_raceway_dl)
+   COURSE_DATA_SEG(moo_moo_farm,course_moo_moo_farm_dl)
+   COURSE_DATA_SEG(toads_turnpike,course_toads_turnpike_dl)
+   COURSE_DATA_SEG(kalimari_desert,course_kalimari_desert_dl)
+   COURSE_DATA_SEG(sherbet_land,course_sherbet_land_dl)
+   COURSE_DATA_SEG(rainbow_road,course_rainbow_road_dl)
+   COURSE_DATA_SEG(wario_stadium,course_wario_stadium_dl)
+   COURSE_DATA_SEG(block_fort,course_block_fort_dl)
+   COURSE_DATA_SEG(skyscraper,course_skyscraper_dl)
+   COURSE_DATA_SEG(double_deck,course_double_deck_dl)
+   COURSE_DATA_SEG(dks_jungle_parkway,course_dks_jungle_parkway_dl)
+   COURSE_DATA_SEG(big_donut,course_big_donut_dl)
+
+   #define COURSE_OFFSETS_SEG(name, addr) \
+      BEGIN_SEG(name, addr) \
+      { \
+         BUILD_DIR/src/name.o(.data); \
+         . = ALIGN(0x10); \
+      } \
+      END_SEG(name)
 
    COURSE_OFFSETS_SEG(course_mario_raceway_offsets, 0x09000000)
    COURSE_OFFSETS_SEG(course_choco_mountain_offsets, 0x09000000)
@@ -592,26 +568,34 @@ SECTIONS
 
    /* Segment 0xF Course Geography (0x4 uncompressed) and Segment 0x7 Packed Displaylists */
    
-   COURSE_VERT_SEG(flower_cup/mario_raceway,mario_raceway_vertex)
-   COURSE_VERT_SEG(flower_cup/choco_mountain,choco_mountain_vertex)
-   COURSE_VERT_SEG(star_cup/bowsers_castle,bowsers_castle_vertex)
-   COURSE_VERT_SEG(special_cup/banshee_boardwalk,banshee_boardwalk_vertex)
-   COURSE_VERT_SEG(special_cup/yoshi_valley,yoshi_valley_vertex)
-   COURSE_VERT_SEG(flower_cup/frappe_snowland,frappe_snowland_vertex)
-   COURSE_VERT_SEG(mushroom_cup/koopa_troopa_beach,koopa_troopa_beach_vertex)
-   COURSE_VERT_SEG(star_cup/royal_raceway,royal_raceway_vertex)
-   COURSE_VERT_SEG(mushroom_cup/luigi_raceway,luigi_raceway_vertex)
-   COURSE_VERT_SEG(mushroom_cup/moo_moo_farm,moo_moo_farm_vertex)
-   COURSE_VERT_SEG(flower_cup/toads_turnpike,toads_turnpike_vertex)
-   COURSE_VERT_SEG(mushroom_cup/kalimari_desert,kalimari_desert_vertex)
-   COURSE_VERT_SEG(star_cup/sherbet_land,sherbet_land_vertex)
-   COURSE_VERT_SEG(special_cup/rainbow_road,rainbow_road_vertex)
-   COURSE_VERT_SEG(star_cup/wario_stadium,wario_stadium_vertex)
-   COURSE_VERT_SEG(battle/block_fort,block_fort_vertex)
-   COURSE_VERT_SEG(battle/skyscraper,skyscraper_vertex)
-   COURSE_VERT_SEG(battle/double_deck,double_deck_vertex)
-   COURSE_VERT_SEG(special_cup/dks_jungle_parkway,dks_jungle_parkway_vertex)
-   COURSE_VERT_SEG(battle/big_donut,big_donut_vertex)
+   #define COURSE_VERT_SEG(dir, name) \
+      BEGIN_SEG(name, 0x0F000000) \
+      { \
+         BUILD_DIR/courses/dir/course_geography.inc.mio0.o(.data); \
+         . = ALIGN(0x10); \
+      } \
+      END_SEG(name)
+
+   COURSE_VERT_SEG(mario_raceway,mario_raceway_vertex)
+   COURSE_VERT_SEG(choco_mountain,choco_mountain_vertex)
+   COURSE_VERT_SEG(bowsers_castle,bowsers_castle_vertex)
+   COURSE_VERT_SEG(banshee_boardwalk,banshee_boardwalk_vertex)
+   COURSE_VERT_SEG(yoshi_valley,yoshi_valley_vertex)
+   COURSE_VERT_SEG(frappe_snowland,frappe_snowland_vertex)
+   COURSE_VERT_SEG(koopa_troopa_beach,koopa_troopa_beach_vertex)
+   COURSE_VERT_SEG(royal_raceway,royal_raceway_vertex)
+   COURSE_VERT_SEG(luigi_raceway,luigi_raceway_vertex)
+   COURSE_VERT_SEG(moo_moo_farm,moo_moo_farm_vertex)
+   COURSE_VERT_SEG(toads_turnpike,toads_turnpike_vertex)
+   COURSE_VERT_SEG(kalimari_desert,kalimari_desert_vertex)
+   COURSE_VERT_SEG(sherbet_land,sherbet_land_vertex)
+   COURSE_VERT_SEG(rainbow_road,rainbow_road_vertex)
+   COURSE_VERT_SEG(wario_stadium,wario_stadium_vertex)
+   COURSE_VERT_SEG(block_fort,block_fort_vertex)
+   COURSE_VERT_SEG(skyscraper,skyscraper_vertex)
+   COURSE_VERT_SEG(double_deck,double_deck_vertex)
+   COURSE_VERT_SEG(dks_jungle_parkway,dks_jungle_parkway_vertex)
+   COURSE_VERT_SEG(big_donut,big_donut_vertex)
 
    BEGIN_SEG(audio_banks, 0x0)
    {

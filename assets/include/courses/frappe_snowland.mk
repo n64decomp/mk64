@@ -17,9 +17,9 @@ $(FRAPPE_SNOWLAND_DIR)/gTextureFrappeSnowlandTreeRight.png \
 
 FRAPPE_SNOWLAND_EXPORT_SENTINEL := $(FRAPPE_SNOWLAND_DIR)/.export
 
-$(BUILD_DIR)/courses/flower_cup/frappe_snowland/course_data.inc.o: $(FRAPPE_SNOWLAND_SNOWMAN_PNG:%.png=%.inc.c) $(FRAPPE_SNOWLAND_SNOW_PNG:%.png=%.inc.c)
-$(BUILD_DIR)/courses/flower_cup/frappe_snowland/course_data.inc.o: $(FRAPPE_SNOWLAND_SNOWMAN_PALETTE:%.png=%.inc.c) $(FRAPPE_SNOWLAND_SNOW_PALETTE:%.png=%.inc.c)
-$(BUILD_DIR)/courses/flower_cup/frappe_snowland/course_data.inc.o: $(FRAPPE_SNOWLAND_TREE_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/courses/frappe_snowland/course_data.inc.o: $(FRAPPE_SNOWLAND_SNOWMAN_PNG:%.png=%.inc.c) $(FRAPPE_SNOWLAND_SNOW_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/courses/frappe_snowland/course_data.inc.o: $(FRAPPE_SNOWLAND_SNOWMAN_PALETTE:%.png=%.inc.c) $(FRAPPE_SNOWLAND_SNOW_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/courses/frappe_snowland/course_data.inc.o: $(FRAPPE_SNOWLAND_TREE_PALETTE:%.png=%.inc.c)
 
 $(FRAPPE_SNOWLAND_SNOWMAN_PNG:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(FRAPPE_SNOWLAND_SNOWMAN_PALETTE)
