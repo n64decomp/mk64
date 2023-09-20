@@ -24,7 +24,6 @@ s32 sButtonSequenceIndex;
 
 extern void osSetEventMesg(OSEvent, OSMesgQueue *, OSMesg);
 extern s32 osRecvMesg(OSMesgQueue *, OSMesg *, s32);
-extern void read_controllers();
 
 s32 sCounter = 0;
 
