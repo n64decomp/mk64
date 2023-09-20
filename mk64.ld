@@ -15,37 +15,13 @@ OUTPUT_ARCH (mips)
     _##name##SegmentRomEnd = __romPos + SIZEOF(.name); \
     __romPos += SIZEOF(.name);
 
-#define COURSE_DATA_SEG(dir, name) \
-   BEGIN_SEG(name##_mio0, 0x06000000) \
-   { \
-      BUILD_DIR/courses/dir/course_data.inc.mio0.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name##_mio0)
-
-#define COURSE_OFFSETS_SEG(name, addr) \
-   BEGIN_SEG(name, addr) \
-   { \
-      BUILD_DIR/src/name.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name)
-
-#define COURSE_VERT_SEG(dir, name) \
-   BEGIN_SEG(name, 0x0F000000) \
-   { \
-      BUILD_DIR/courses/dir/course_geography.inc.mio0.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name)
-	
 #define BEGIN_NOLOAD(name) \
     _##name##SegNoloadStart = ADDR(.name.noload); \
     .name.noload (NOLOAD) :
 	
 #define END_NOLOAD(name) \
     _##name##SegNoloadEnd = ADDR(.name.noload) + SIZEOF(.name.noload);
-	
+
 SECTIONS
 {
    __romPos = 0;
@@ -532,6 +508,14 @@ SECTIONS
 
    /* Segment Six Course Data (Displaylists, models, textures, course paths, etc.) */
 
+   #define COURSE_DATA_SEG(dir, name) \
+      BEGIN_SEG(name##_mio0, 0x06000000) \
+      { \
+         BUILD_DIR/courses/dir/course_data.inc.mio0.o(.data); \
+         . = ALIGN(0x10); \
+      } \
+      END_SEG(name##_mio0)
+
    COURSE_DATA_SEG(mario_raceway,course_mario_raceway_dl)
    COURSE_DATA_SEG(choco_mountain,course_choco_mountain_dl)
    COURSE_DATA_SEG(bowsers_castle,course_bowsers_castle_dl)
@@ -552,6 +536,14 @@ SECTIONS
    COURSE_DATA_SEG(double_deck,course_double_deck_dl)
    COURSE_DATA_SEG(dks_jungle_parkway,course_dks_jungle_parkway_dl)
    COURSE_DATA_SEG(big_donut,course_big_donut_dl)
+
+   #define COURSE_OFFSETS_SEG(name, addr) \
+      BEGIN_SEG(name, addr) \
+      { \
+         BUILD_DIR/src/name.o(.data); \
+         . = ALIGN(0x10); \
+      } \
+      END_SEG(name)
 
    COURSE_OFFSETS_SEG(course_mario_raceway_offsets, 0x09000000)
    COURSE_OFFSETS_SEG(course_choco_mountain_offsets, 0x09000000)
@@ -576,6 +568,14 @@ SECTIONS
 
    /* Segment 0xF Course Geography (0x4 uncompressed) and Segment 0x7 Packed Displaylists */
    
+   #define COURSE_VERT_SEG(dir, name) \
+      BEGIN_SEG(name, 0x0F000000) \
+      { \
+         BUILD_DIR/courses/dir/course_geography.inc.mio0.o(.data); \
+         . = ALIGN(0x10); \
+      } \
+      END_SEG(name)
+
    COURSE_VERT_SEG(mario_raceway,mario_raceway_vertex)
    COURSE_VERT_SEG(choco_mountain,choco_mountain_vertex)
    COURSE_VERT_SEG(bowsers_castle,bowsers_castle_vertex)
