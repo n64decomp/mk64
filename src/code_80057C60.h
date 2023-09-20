@@ -228,8 +228,6 @@ void func_8006E940(Player*, s8, s8);
 extern s8 D_801657B2;
 extern s8 D_801657C8;
 extern s32 D_8018D22C;
-extern s32 gGamestate;
-extern u16 gDemoMode;
 extern s8 D_8018EDF3;
 extern s8 D_80165898;
 extern Gfx D_0D0076F8[];
@@ -242,7 +240,6 @@ extern s8 D_80165800[2];
 extern s8 D_80165801;
 extern s8 D_801657B0;
 extern u8 gControllerRandom;
-extern struct Controller *gControllerOne;
 extern s32 D_8018D214;
 extern s32 D_8018D2C8[];
 extern u8 *D_8018D420;
@@ -286,7 +283,6 @@ extern u8 *D_8018D4C8;
 
 extern u16 gPlayerBalloonStatus[8][3]; // D_8018D5F0
 extern s16 gPlayerBalloonCount[];      // D_8018D8C0
-extern s32 gScreenModeSelection;       // D_800DC530
 
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
 extern struct UnkStruct_800DC5EC *D_800DC5F0;
@@ -309,7 +305,6 @@ extern s8  D_801657E8;
 extern s8  D_8018CAE0;
 extern s16 gGPCurrentRaceCharacterIdByRank[];
 extern s16 D_8018CF98[];
-extern Camera *D_8018CF14;
 extern Player *D_8018CF1C;
 
 

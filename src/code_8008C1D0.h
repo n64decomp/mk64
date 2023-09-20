@@ -127,7 +127,6 @@ void func_800CB064(u8);
 
 /* This is where I'd put my static data, if I had any */
 
-extern u16 gDemoMode;
 extern f32 D_800E3710[];
 extern f32 D_800E3730[];
 extern f32 D_800E3750[];

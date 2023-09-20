@@ -1,22 +1,23 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <PR/gbi.h>
-#include <main.h>
-#include "code_800029B0.h"
 #include <types.h>
-#include <common_structs.h>
 #include <variables.h>
 #include <config.h>
+
+#include "skybox_and_splitscreen.h"
+#include "code_800029B0.h"
+#include <common_structs.h>
 #include "memory.h"
 #include "camera.h"
 #include "common_textures.h"
-#include "skybox_and_splitscreen.h"
 #include "code_8001F980.h"
 #include "code_80057C60.h"
 #include "code_80091750.h"
 #include "actors.h"
 #include "render_courses.h"
 #include "math_util.h"
+#include "main.h"
 
 
 Vp D_802B8880[] = {
@@ -1291,8 +1292,6 @@ void copy_framebuffer(s32 arg0, s32 arg1, s32 width, s32 height, u16 *source, u1
 
 extern s32 D_800DC5DC;
 extern s32 D_800DC5E0;
-extern uintptr_t gSegmentTable[];
-extern u16 sRenderedFramebuffer;
 
 void func_802A7728(void) {
     s16 temp_v0;

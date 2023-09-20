@@ -1,13 +1,14 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
+
+#include "code_80005FD0.h"
 #include "math_util.h"
 #include "code_800029B0.h"
-#include "memory.h"
+#include "racing/memory.h"
 #include "waypoints.h"
 #include "camera.h"
 #include "actors.h"
-#include "code_80005FD0.h"
 #include "code_8001F980.h"
 #include "player_controller.h"
 #include "code_80071F00.h"
@@ -20,6 +21,9 @@
 #include "bomb_kart.h"
 #include "courses/all_course_data.h"
 #include "common_textures.h"
+#include "common_structs.h"
+#include "main.h"
+
 
 extern UnkCommonTextureStruct0 *D_800DC720[];
 
@@ -1409,7 +1413,6 @@ void func_800090F0(s32 playerId, Player *player) {
 }
 
 extern f32 D_8016344C;
-extern f32 gCourseTimer;
 
 /**
  * Helps calculate time since player last touched finishline.
@@ -5789,7 +5792,6 @@ extern s16 D_80162FCC;
 //extern s32 D_80163598
 extern s32 D_8016359C;
 //extern TrainStuff D_801635C4;
-//extern s32 gScreenModeSelection;
 
 // This is really Vec2s D_80163598[465] but that does not match.
 // Likely because this is a shared pointer between courses.

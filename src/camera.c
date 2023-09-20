@@ -2,10 +2,12 @@
 #include <macros.h>
 #include <common_structs.h>
 #include <defines.h>
-#include "code_800029B0.h"
+#include <libc/math.h>
+
 #include "camera.h"
+#include "code_800029B0.h"
 #include "math_util.h"
-#include "memory.h"
+#include "racing/memory.h"
 #include "waypoints.h"
 #include "variables.h"
 #include "code_8001F980.h"
@@ -13,7 +15,6 @@
 #include "code_80057C60.h"
 #include "code_80005FD0.h"
 #include "main.h"
-#include <libc/math.h>
 
 f32 D_800DDB30[] = { 0.4f, 0.6f, 0.275f, 0.3f };
 
@@ -43,7 +44,6 @@ extern f32 D_80164A48[4];
 extern f32 D_80164A78[];
 extern s8 D_80164A88;
 extern s8 D_80164A89;
-extern f32 gCameraZoom[4];
 
 void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cameraId) {
     Player *player = gPlayerOne;

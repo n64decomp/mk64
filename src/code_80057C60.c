@@ -1,9 +1,12 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <PR/gbi.h>
+
+#include "code_80057C60.h"
 #include "main.h"
+#include "actors.h"
 #include "code_800029B0.h"
-#include "memory.h"
+#include "racing/memory.h"
 #include <variables.h>
 #include <config.h>
 #include <defines.h>
@@ -12,7 +15,6 @@
 #include "code_80005FD0.h"
 #include "code_8001F980.h"
 #include "hud_renderer.h"
-#include "code_80057C60.h"
 #include "code_80071F00.h"
 #include "code_80086E70.h"
 #include "code_8008C1D0.h"
@@ -21,6 +23,7 @@
 #include "audio/external.h"
 #include "objects.h"
 #include "bomb_kart.h"
+
 
 // WARNING: this macro is undef'd at the end of this file
 #define MAKE_RGB(r,g,b) (((r) << 0x10) | ((g) << 0x08) | (b << 0x00))
@@ -915,7 +918,6 @@ void func_80059A88(s32 arg0) {
 }
 
 extern s32 D_80165678;
-extern s32 gGamestate;
 extern s32 gRaceFrameCounter;
 
 void func_80059AC8(void) {
@@ -1160,11 +1162,6 @@ void func_8005A380(void) {
 }
 
 extern s8 D_801657F8;
-
-extern struct Controller *gControllerOne;
-extern struct Controller *gControllerTwo;
-extern struct Controller *gControllerThree;
-extern struct Controller *gControllerFour;
 
 void func_8006F824(s32);
 
@@ -1791,7 +1788,6 @@ extern f32 D_8018D078[8];
 extern f32 D_8018D0C8[8];
 extern s32 D_8018D1CC;
 extern s32 gGPCurrentRaceRankByPlayerId[];
-extern s32 gModeSelection;
 
 void func_8005B7A0(void) {
     f32 temp_f0;
@@ -2254,7 +2250,6 @@ extern s32 D_8018D3F8;
 extern s16 gGPCurrentRaceCharacterIdByRank[8];
 extern s16 gGPCurrentRacePlayerIdByRank[8];
 extern s32 gGPCurrentRaceRankByPlayerId[8];
-extern Player *gPlayerOne;
 
 void func_8005C980(void) {
     s32 var_v0;
@@ -6594,9 +6589,6 @@ void func_80069938(Player *, s8, s16, s8);             /* extern */
 void func_80069BA8(Player *, s8, s16, s8);             /* extern */
 void func_80069DB8(Player *, s8, s16, s8);             /* extern */
 void func_8006A01C(Player *, s8, s16, s8);             /* extern */
-
-extern s32 gActiveScreenMode;
-extern s32 gModeSelection;
 
 void func_8006D474(Player *player, s8 arg1, s8 arg2) {
     s16 var_s2;

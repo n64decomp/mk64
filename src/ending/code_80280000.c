@@ -24,6 +24,7 @@
 #include "code_80057C60.h"
 #include "actors.h"
 #include "render_courses.h"
+#include "main.h"
 
 
 s32 D_802874A0;

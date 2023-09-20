@@ -1,3 +1,4 @@
+#define STRANGE_MAIN_HEADER_H
 #include <ultra64.h>
 #include <PR/os.h>
 #include <macros.h>
@@ -6,7 +7,7 @@
 #include "config.h"
 #include "profiler.h"
 #include "main.h"
-#include "memory.h"
+#include "racing/memory.h"
 #include "menus.h"
 #include "segments.h"
 #include "segment_symbols.h"
@@ -165,6 +166,7 @@ OSMesg gPIMesgBuf[32];
 OSMesgQueue gPIMesgQueue;
 
 s32 gGamestate = 0xFFFF;
+// D_800DC510 is externed as an s32 in other files. D_800DC514 is only used in main.c, likely a developer mistake.
 u16 D_800DC510 = 0;
 u16 D_800DC514 = 0;
 u16 D_800DC518 = 0;
@@ -264,7 +266,7 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->task.t.ucode_boot = rspbootTextStart;
     gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspbootTextEnd - (u8 *) rspbootTextStart);
     // The split-screen multiplayer racing state uses F3DLX which has a simple subpixel calculation.
-    // Singleplayer race mode and all other game states use F3DEX. 
+    // Singleplayer race mode and all other game states use F3DEX.
     // http://n64devkit.square7.ch/n64man/ucode/gspF3DEX.htm
     if (gGamestate != RACING || gPlayerCountSelection1 == 1) {
         gGfxSPTask->task.t.ucode = gspF3DEXTextStart;
@@ -300,7 +302,7 @@ void init_controllers(void) {
     }
 }
 
-void update_controller(s32 index) { 
+void update_controller(s32 index) {
     struct Controller *controller = &gControllers[index];
     u16 stick;
 
@@ -534,8 +536,8 @@ void setup_game_memory(void) {
 }
 
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
 void game_init_clear_framebuffer(void) {
     gGamestateNext = 0; // = START_MENU_FROM_QUIT?
@@ -825,7 +827,7 @@ void race_logic_loop(void) {
     func_800591B4();
     func_80093E20();
 #if DVDL
-	display_dvdl();  
+	display_dvdl();
 #endif
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
@@ -839,7 +841,7 @@ void race_logic_loop(void) {
  * State 3) Process race related logic
  * State 4) Ending sequence
  * State 5) Credits
- * 
+ *
  * Note that the state doesn't flip-flop at random but is permanent
  * until the state changes (ie. Exit menus and start a race).
  */
@@ -873,7 +875,7 @@ void game_state_handler(void) {
             init_rcp();
             func_80094A64(gGfxPool);
 #if DVDL
-			display_dvdl();  
+			display_dvdl();
 #endif
             break;
         case RACING:
@@ -995,7 +997,7 @@ void handle_sp_complete(void) {
     struct SPTask *curSPTask = gActiveSPTask;
 
     gActiveSPTask = NULL;
-    
+
     if (curSPTask->state == SPTASK_STATE_INTERRUPTED) {
         // handle_vblank tried to start an audio task while there was already a
         // gfx task running, so it had to interrupt the gfx task. That interruption
@@ -1103,9 +1105,9 @@ void func_80002658(void) {
 }
 
 /**
- * Sets courseId to NULL if 
- * 
- * 
+ * Sets courseId to NULL if
+ *
+ *
  */
 void update_gamestate(void) {
     switch (gGamestate) {

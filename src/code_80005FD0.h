@@ -1,9 +1,8 @@
 #ifndef CODE_80005FD0_H
 #define CODE_80005FD0_H
 
-#include "common_structs.h"
 #include "vehicles.h"
-#include "waypoints.h"
+#include "camera.h"
 
 struct struct_801642D8 {
     /* 0x0 */ u16 unk0;
@@ -84,7 +83,6 @@ void func_8000EF20(void);
 
 void func_8000F0E0(void);
 void func_8000F124(void);
-void func_8000F2BC(struct TrackWayPoint*, size_t);
 
 void func_80010218(s32);
 f32  func_80010480(s32, u16);
@@ -94,7 +92,6 @@ void func_80010DBC(s32);
 f32  func_80010F40(f32, f32, f32, s32);
 f32  func_80010FA0(f32, f32, f32, s32);
 
-s32  process_path_data(struct TrackWayPoint*, struct TrackWayPoint*);
 void func_80011AB8(s32);
 void func_80011AE4(s32);
 
@@ -171,7 +168,6 @@ extern s32 D_80163488;
 extern s32 D_8016337C;
 extern s16 D_80164378[];
 extern s32 D_801643E0[];
-extern s32 gModeSelection;
 extern struct unexpiredActors gUnexpiredActorsList[];
 extern s16 D_8016348C;
 extern s32 D_801643E0[];
@@ -191,8 +187,6 @@ extern s16 D_801646CC;
 extern u16 D_80163E2A;
 extern Gfx D_0D0076F8[];
 
-extern struct Controller *gControllerThree;
-extern Gfx *gDisplayListHead;
 extern s32 D_800DDB20;
 
 #endif

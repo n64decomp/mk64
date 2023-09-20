@@ -44,6 +44,4 @@ extern f32 D_802B9F68;
 
 extern s16 gPlayerBalloonCount[];
 
-extern u16 gDemoMode;
-
 #endif // ACTORS_EXTENDED_H

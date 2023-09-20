@@ -89,8 +89,4 @@ extern Camera *camera2;
 extern Camera *camera3;
 extern Camera *camera4;
 
-extern Player *gPlayerTwo;
-extern Player *gPlayerThree;
-extern Player *gPlayerFour;
-
 #endif

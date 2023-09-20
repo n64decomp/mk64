@@ -2,6 +2,7 @@
 #define hud_renderer_H
 
 #include "common_structs.h"
+#include "main.h"
 
 void func_80045738(u8*, u8*, s32, s32);
 void func_80057114(s32);
@@ -454,7 +455,5 @@ extern s8 D_800E5670[];
 extern s8 D_800E566A[];
 
 extern u8 d_course_bowsers_castle_thwomp_tlut[]; // Some type of pallette?
-
-extern Gfx *gDisplayListHead;
 
 #endif

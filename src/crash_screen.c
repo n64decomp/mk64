@@ -4,7 +4,9 @@
 #include <config.h>
 #include <stdarg.h>
 #include <string.h>
+
 #include "crash_screen.h"
+#include "main.h"
 
 #ifdef CRASH_SCREEN_ENHANCEMENT
 #include "debug/crash_screen_enhancement.h"
@@ -22,9 +24,6 @@ s32 sButtonSequenceIndex;
 
 extern void osSetEventMesg(OSEvent, OSMesgQueue *, OSMesg);
 extern s32 osRecvMesg(OSMesgQueue *, OSMesg *, s32);
-extern void read_controllers();
-
-extern struct Controller *gControllerOne;
 
 s32 sCounter = 0;
 

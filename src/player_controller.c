@@ -3,22 +3,23 @@
 #include <defines.h>
 #include <mk64.h>
 #include <variables.h>
+
+#include "player_controller.h"
 #include "code_800029B0.h"
 #include "kart_attributes.h"
-#include "memory.h"
+#include "racing/memory.h"
 #include "math_util.h"
 #include "code_8001F980.h"
-#include "player_controller.h"
 #include "code_8008C1D0.h"
 #include "collision.h"
 #include "waypoints.h"
 #include "audio/external.h"
 #include "code_8003DC40.h"
+#include "main.h"
 
 extern s8 D_80164A89;
 extern s16 D_801633F8;
 extern s32 D_8018D168;
-extern s32 D_800DC510;
 
 s16 D_800E3810[] = {
     1, 2, 3, 4, 5, 6, 7, 0

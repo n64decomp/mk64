@@ -1,12 +1,14 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <PR/os.h>
-#include "types.h"
-#include "code_800029B0.h"
+#include <sounds.h>
 #include <common_structs.h>
 #include <actor_types.h>
 #include <defines.h>
 #include <PR/gbi.h>
+#include <types.h>
+
+#include "code_800029B0.h"
 #include "main.h"
 #include "math_util.h"
 #include "memory.h"
@@ -18,10 +20,10 @@
 #include "code_80071F00.h"
 #include "code_8008C1D0.h"
 #include "collision.h"
-#include <sounds.h>
 #include "audio/external.h"
 #include "common_textures.h"
 #include "courses/all_course_data.h"
+#include "main.h"
 
 // Appears to be textures
 // or tluts
