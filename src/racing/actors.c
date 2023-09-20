@@ -317,7 +317,7 @@ void func_80297340(Camera *arg0) {
 
     if (gGamestate == CREDITS_SEQUENCE) { return; }
 
-    mtxf_translate(sp38, D_8015F8D0); 
+    mtxf_translate(sp38, D_8015F8D0);
 
     maxObjectsReached = render_set_position(sp38, 0) == 0;
     if (maxObjectsReached) { return; }
@@ -623,7 +623,7 @@ void update_actor_piranha_plant(struct PiranhaPlant *arg0) {
 void render_actor_piranha_plant(Camera *arg0, Mat4 arg1, struct PiranhaPlant *arg2) {
     UNUSED s32 pad;
     u8 *addr;
-    s16 temp_lo = arg0 - camera1; 
+    s16 temp_lo = arg0 - camera1;
     s16 animationFrame; // unconfirmed
     s16 temp = arg2->flags;
     f32 temp_f0;
@@ -713,7 +713,7 @@ void render_actor_piranha_plant(Camera *arg0, Mat4 arg1, struct PiranhaPlant *ar
             animationFrame = 8;
         }
         addr = D_802BA058 + (animationFrame << 0xB);
-        gDPLoadTextureBlock(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(addr), G_IM_FMT_CI, G_IM_SIZ_8b, 32, 64, 0, 
+        gDPLoadTextureBlock(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(addr), G_IM_FMT_CI, G_IM_SIZ_8b, 32, 64, 0,
             G_TX_MIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
 
@@ -734,7 +734,7 @@ void func_802986B4(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
     u32 soundThing = 0x1901904D;
     s32 segment = SEGMENT_NUMBER2(d_course_moo_moo_farm_cow_spawn);
     s32 offset = SEGMENT_OFFSET(d_course_moo_moo_farm_cow_spawn);
-    
+
     var_t1 = (struct ActorSpawnData*)VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     D_8015F704 = 6.4e7f;
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -779,7 +779,7 @@ void func_802986B4(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
         }
         var_s1++;
     }
-    
+
     if ((camera == camera1) && (var_s5 != NULL)) {
         if (D_8015F700 == 0) {
             temp_s1 = var_s5 - var_t1;
@@ -827,7 +827,7 @@ void func_80298C94(void) {
     s32 index;
 
     for (index = 0; index < 4; index++){
-        // wtf is up with the << 0x18 >> 0x18? is it some weird type conversion? 
+        // wtf is up with the << 0x18 >> 0x18? is it some weird type conversion?
         if (((gPlayers[index].unk_000 & 0xC000) != 0) && (((get_surface_type(gPlayers[index].unk_110.unk3A) << 0x18) >> 0x18) == 8)) {
             func_80298AC0(&gPlayers[index]);
         }
@@ -1191,8 +1191,8 @@ void render_actor_kiwano_fruit_dks_jungle_parkway(UNUSED Camera *camera, Mat4 ar
     if (maxObjectsReached) { return; }
 
     addr = (actor->rot[0] << 0xA) + 0x03009000; // Can this be a real symbol? Doesn't match.
-    gDPLoadTextureBlock(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(addr), 
-            G_IM_FMT_CI, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, 
+    gDPLoadTextureBlock(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(addr),
+            G_IM_FMT_CI, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP,
             G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_kiwano_fruit);
 }
@@ -1238,8 +1238,8 @@ void render_actor_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
     maxObjectsReached = render_set_position(matrix, 0) == 0;
     if (maxObjectsReached) { return; }
 
-    gDPLoadTextureBlock(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(phi_t3), 
-        G_IM_FMT_CI, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, 
+    gDPLoadTextureBlock(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(phi_t3),
+        G_IM_FMT_CI, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP,
         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
     if (temp_t8 < 8) { // Reverse shell ?
@@ -2101,16 +2101,16 @@ void place_all_item_boxes(struct ActorSpawnData *spawnData) {
 
         gActorList[temp_s1].unk_08 = temp_f0;
         //itemBox->resetDistance = temp_f0;
-        
+
         gActorList[temp_s1].velocity[0] = startingPos[1];
         //itemBox->origY = startingPos[1];
-        
+
         gActorList[temp_s1].pos[1] = temp_f0 - 20.0f;
         //itemBox->pos[1] = temp_f0 - 20.0f;
 
         temp_s0++;
     }
-    
+
 }
 
 void init_kiwano_fruit(void) {
@@ -2136,7 +2136,7 @@ void init_kiwano_fruit(void) {
 }
 
 /**
- * Destroys actors via zeroing some of the member data 
+ * Destroys actors via zeroing some of the member data
  * Key word some. When spawning a new actor,
  * members such as pos and rot should be set to prevent using expired data
  **/
@@ -2402,12 +2402,12 @@ void func_8029E7DC(struct Actor *actor) {
  * Next, it destroys the actor via zeroing its flags and type.
  * Note that the data from its other members still exist.
  * Actors are expected to set members such as pos and rot data if used. Not doing so could result in the use of expired data.
- * 
+ *
  * This method does not require modification to gActorList directly.
  * No popping members of gActorList. The list is always the size of ACTOR_LIST_SIZE.
  * Actors are members of gActorList by definition.
- * 
- * @param Actor to destroy 
+ *
+ * @param Actor to destroy
  */
 void destroy_actor(struct Actor *actor) {
     func_8029E7DC(actor);
@@ -4020,7 +4020,7 @@ void func_802A2F34(struct UnkStruct_800DC5EC *arg0) {
     for (i = 0; i < ACTOR_LIST_SIZE; i++) {
         actor = &gActorList[i];
 
-        if (actor->flags == 0) { 
+        if (actor->flags == 0) {
             continue;
         }
 
