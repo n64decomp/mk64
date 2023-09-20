@@ -222,14 +222,14 @@ ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) inc
 MAKEFILE_SPLIT = Makefile.split
 include $(MAKEFILE_SPLIT)
 
-COURSE_ASM_FILES := $(wildcard courses/*/*/packed.s)
+# COURSE_ASM_FILES := $(wildcard courses/*/*/packed.s)
 
 # These are files that need to be encoded into EUC-JP in order for the ROM to match
 # We filter them out from the regular C_FILES since we don't need nor want the
 # UTF-8 versions getting compiled
 EUC_JP_FILES := src/ending/credits.c src/code_80005FD0.c src/code_80091750.c
 C_FILES := $(filter-out $(EUC_JP_FILES),$(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c)))
-S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s)) $(COURSE_ASM_FILES)
+S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s))
 COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(wildcard $(dir)/*.inc.c))
 
 # Object files
@@ -501,7 +501,7 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 # Course Packed Displaylists Generation                                        #
 #==============================================================================#
 
-COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
+# COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
 
 %/packed.inc.elf: %/packed.inc.o
 	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -o $@ $< --no-check-sections
@@ -521,19 +521,19 @@ COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.i
 
 COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
 
-%/model.inc.elf: %/model.inc.o
+%/vertices.inc.elf: %/vertices.inc.o
 	$(V)$(LD) -t -e 0 -Ttext=0F000000 -Map $@.map -o $@ $< --no-check-sections
 
-%/model.inc.bin: %/model.inc.elf
+%/vertices.inc.bin: %/vertices.inc.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-%/model.inc.mio0: %/model.inc.bin
+%/vertices.inc.mio0: %/vertices.inc.bin
 	@$(PRINT) "$(GREEN)Compressing Course Geography:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(MIO0TOOL) -c $< $@
 
 # Geography and packed displaylists are compressed together rather than separately.
-%/model.inc.mio0.s: %/model.inc.mio0 %/packed_dl.inc.bin
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.inc.bin\"\n\n.balign 0x10\n" > $@
+%/model.inc.mio0.s: %/vertices.inc.mio0 %/packed_dl.inc.bin
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.inc.bin\"\n\n.balign 0x10\n" > $@
 
 
 
@@ -677,7 +677,7 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
-$(ELF): $(COURSE_DATA_TARGETS) $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_MODEL_TARGETS) undefined_syms.txt
+$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_MODEL_TARGETS) undefined_syms.txt
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) $(LDFLAGS) -o $@
 

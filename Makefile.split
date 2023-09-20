@@ -22,9 +22,9 @@ COURSE_NAMES :=        \
 	dks_jungle_parkway \
 	big_donut
 
-COURSE_DL_NAMES := $(addprefix course_,$(addsuffix _dl,$(COURSE_NAMES)))
-COURSE_DL_MIO0_FILES := $(addprefix $(BUILD_DIR)/bin/,$(addsuffix .mio0,$(COURSE_DL_NAMES)))
-COURSE_DL_MIO0_OBJ_FILES := $(COURSE_DL_MIO0_FILES:.mio0=.mio0.o)
+# COURSE_DL_NAMES := $(addprefix course_,$(addsuffix _dl,$(COURSE_NAMES)))
+# COURSE_DL_MIO0_FILES := $(addprefix $(BUILD_DIR)/bin/,$(addsuffix .mio0,$(COURSE_DL_NAMES)))
+# COURSE_DL_MIO0_OBJ_FILES := $(COURSE_DL_MIO0_FILES:.mio0=.mio0.o)
 
 
 # COURSE_VERTEX_NAMES := $(addprefix course_,$(addsuffix _vertex,$(COURSE_NAMES)))
