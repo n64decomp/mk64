@@ -40,7 +40,7 @@ $(KALIMARI_DESERT_DIR)/gTextureLocomotiveBogie.png
 
 KALIMARI_DESERT_EXPORT_SENTINEL := $(KALIMARI_DESERT_DIR)/.export
 
-$(BUILD_DIR)/courses/mushroom_cup/kalimari_desert/course_data.inc.o: $(KALIMARI_DESERT_PNG:%.png=%.inc.c) $(CACTUS_PALETTE_IMPORT:%.png=%.inc.c)
+$(BUILD_DIR)/courses/kalimari_desert/course_data.inc.o: $(KALIMARI_DESERT_PNG:%.png=%.inc.c) $(CACTUS_PALETTE_IMPORT:%.png=%.inc.c)
 
 $(KALIMARI_DESERT_PNG:%.png=%.inc.c) $(CACTUS_PALETTE_IMPORT:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16

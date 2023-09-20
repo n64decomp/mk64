@@ -1,6 +1,6 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
-#include "courses/flower_cup/mario_raceway/course_data.inc.h"
+#include "courses/mario_raceway/course_data.inc.h"
 
 extern u8 gTextureCheckerboardYellowPink[];
 extern u8 gTexture64619C[];

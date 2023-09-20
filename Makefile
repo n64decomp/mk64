@@ -210,7 +210,7 @@ ASM_DIRS       := asm asm/audio asm/os asm/unused asm/os/non_matchings $(DATA_DI
 
 
 # Directories containing course source and data files
-COURSE_DIRS := $(shell find courses -mindepth 2 -type d)
+COURSE_DIRS := $(shell find courses -mindepth 1 -type d)
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 

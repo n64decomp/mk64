@@ -32,8 +32,8 @@ $(DKS_JUNGLE_PARKWAY_KIWANO_FRAMES:%.png=%.mio0): %.mio0 : %.bin
 $(DKS_JUNGLE_PARKWAY_KIWANO_FRAMES:%.png=%.bin): %.bin : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(DKS_JUNGLE_PARKWAY_KIWANO_PALETTE)
 
-$(BUILD_DIR)/courses/special_cup/dks_jungle_parkway/course_data.inc.o: $(DKS_JUNGLE_PARKWAY_KIWANO_PALETTE:%.png=%.inc.c)
-$(BUILD_DIR)/courses/special_cup/dks_jungle_parkway/course_data.inc.o: $(DKS_JUNGLE_PARKWAY_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/courses/dks_jungle_parkway/course_data.inc.o: $(DKS_JUNGLE_PARKWAY_KIWANO_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/courses/dks_jungle_parkway/course_data.inc.o: $(DKS_JUNGLE_PARKWAY_PNG:%.png=%.inc.c)
 
 $(DKS_JUNGLE_PARKWAY_PNG:%.png=%.inc.c) $(DKS_JUNGLE_PARKWAY_KIWANO_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16

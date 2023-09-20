@@ -8,7 +8,7 @@ $(WARIO_STADIUM_DIR)/gTextureWarioStadiumSignBottomRight.png
 
 WARIO_STADIUM_EXPORT_SENTINEL := $(WARIO_STADIUM_DIR)/.export
 
-$(BUILD_DIR)/courses/star_cup/wario_stadium/course_data.inc.o: $(WARIO_STADIUM_SIGN:%.png=%.inc.c)
+$(BUILD_DIR)/courses/wario_stadium/course_data.inc.o: $(WARIO_STADIUM_SIGN:%.png=%.inc.c)
 
 $(WARIO_STADIUM_SIGN:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
