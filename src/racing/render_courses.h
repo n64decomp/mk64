@@ -1,8 +1,6 @@
 #ifndef RENDER_COURSES_H
 #define RENDER_COURSES_H
 
-#include "main.h"
-
 void func_8029122C(struct UnkStruct_800DC5EC*, s32);
 s32  func_80290C20(Camera*);
 void parse_course_displaylists(uintptr_t);
@@ -42,9 +40,6 @@ extern s16 gCurrentCourseId;
 extern s32 gActiveScreenMode;
 
 extern u16 sRenderedFramebuffer;
-extern uintptr_t gSegmentTable[];
-
-extern Player gPlayers[];
 
 extern s32 D_8015F59C;
 
@@ -78,7 +73,6 @@ extern u16 D_8015F58A;
 extern u16 D_800DC5BC;                                     /* unable to generate initializer */
 extern s32 gGamestate;
 extern s32 gModeSelection;
-extern u16 gNumActors;
 extern s32 gCCSelection;
 
 #endif

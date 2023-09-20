@@ -90,10 +90,6 @@ void  unpack_texture_on(Gfx*, u8*, s8);
 void  unpack_texture_off(Gfx*, u8*, s8);
 u8 *load_course(s32);
 
-// main.c
-extern struct D_80150158 gD_80150158[];
-extern s32 D_801502A0;
-
 extern u8 _other_texturesSegmentRomStart[];
 
 #endif // MEMORY_H

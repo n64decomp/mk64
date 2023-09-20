@@ -1163,9 +1163,6 @@ void func_8005A380(void) {
 }
 
 extern s8 D_801657F8;
-extern struct Controller *gControllerTwo;
-extern struct Controller *gControllerThree;
-extern struct Controller *gControllerFour;
 
 void func_8006F824(s32);
 
@@ -2257,7 +2254,6 @@ extern s32 D_8018D3F8;
 extern s16 gGPCurrentRaceCharacterIdByRank[8];
 extern s16 gGPCurrentRacePlayerIdByRank[8];
 extern s32 gGPCurrentRaceRankByPlayerId[8];
-extern Player *gPlayerOne;
 
 void func_8005C980(void) {
     s32 var_v0;

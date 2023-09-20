@@ -3,8 +3,6 @@
 
 #define G_CLEAR_ALL_MODES 0xFFFFFFFF
 
-#include "main.h"
-
 /* Function Prototypes */
 
 void func_802A4A0C(Vtx*, struct UnkStruct_800DC5EC*, s32, s32, f32*);
@@ -73,19 +71,14 @@ extern s32 D_800DC5D8;
 extern u16 D_800DC5BC;
 extern f32 gCameraZoom[];
 extern u16 D_800DC5B4;
-extern f32 D_80150148;
-extern f32 D_8015014C;
-extern f32 D_80150150;
 
 
 extern u16 D_800DC5C8;
 extern u16 D_800DC5B8;
 extern struct UnkStruct_800DC5EC D_8015F480[];
 
-extern Player gPlayers[];
 extern s32 D_800DC5DC;
 extern s32 D_800DC5E0;
-extern uintptr_t gSegmentTable[];
 extern u16 sRenderedFramebuffer;
 
 #endif

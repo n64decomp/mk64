@@ -3,6 +3,8 @@
 #include <defines.h>
 #include <functions.h>
 
+#include "code_80071F00.h"
+#include "main.h"
 #include "memory.h"
 #include "camera.h"
 #include "math_util.h"
@@ -13,7 +15,6 @@
 #include "variables.h"
 #include "code_80005FD0.h"
 #include "code_80057C60.h"
-#include "code_80071F00.h"
 #include "code_80086E70.h"
 #include "common_textures.h"
 #include "audio/external.h"

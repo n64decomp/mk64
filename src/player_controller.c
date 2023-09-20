@@ -3,12 +3,13 @@
 #include <defines.h>
 #include <mk64.h>
 #include <variables.h>
+
+#include "player_controller.h"
 #include "code_800029B0.h"
 #include "kart_attributes.h"
 #include "racing/memory.h"
 #include "math_util.h"
 #include "code_8001F980.h"
-#include "player_controller.h"
 #include "code_8008C1D0.h"
 #include "collision.h"
 #include "waypoints.h"

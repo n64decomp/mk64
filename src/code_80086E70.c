@@ -2,16 +2,18 @@
 #include <macros.h>
 #include <common_structs.h>
 #include <types.h>
+
+#include "code_80086E70.h"
 #include "camera.h"
 #include "objects.h"
 #include "math_util.h"
 #include "math_util_2.h"
 #include "memory.h"
 #include "code_80071F00.h"
-#include "code_80086E70.h"
 #include "collision.h"
 #include "audio/external.h"
 #include "variables.h"
+#include "main.h"
 
 void func_80086E70(s32 arg0) {
     D_80165C18[arg0].unk_0AE = 1;// * 0xE0)) = 1;

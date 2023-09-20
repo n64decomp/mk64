@@ -1,10 +1,12 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <common_structs.h>
-#include "camera.h"
+
 #include "camera_junk.h"
+#include "camera.h"
 #include "math_util.h"
 #include "ceremony_and_credits.h"
+#include "main.h"
 
 void setup_camera_podium_ceremony(void) {
     Camera *camera;

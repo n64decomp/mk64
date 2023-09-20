@@ -1,5 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
+
+#include "code_800029B0.h"
 #include "types.h"
 #include "memory.h"
 #include "variables.h"
@@ -8,7 +10,6 @@
 #include "actor_types.h"
 #include "math_util.h"
 #include "audio/external.h"
-#include "code_800029B0.h"
 #include <defines.h>
 #include "collision.h"
 #include "memory.h"
@@ -34,7 +35,6 @@ extern s8 gCupSelection;
 
 
 extern s32 gScreenModeSelection;
-extern s32 D_80150120;
 
 extern Vec3f D_802B91C8;
 

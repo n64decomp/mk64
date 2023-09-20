@@ -52,23 +52,10 @@ extern s32   gPlayerIsThrottleActive[];           // D_801653E0
 extern s32   gGPCurrentRaceRankByPlayerId[];      // D_801643B8
 
 //extern u32   gScreenModeSelection;             // D_800DC530
-extern u32   gSegmentTable[16];                // D_80150258
-extern OSMesgQueue gSIEventMesgQueue;          // D_8014F0B8
 extern u8    gSoundMode;                       // D_8018EDF2
 extern char *gSoundModeNames[NUM_SOUND_MODES]; // D_800E7710
 
 extern s8    gTimeTrialDataCourseIndex;           // D_8018EDF7
-
-extern Player gPlayers[8];
-extern Player* gPlayerOne;
-extern Player* gPlayerTwo;
-extern Player* gPlayerThree;
-extern Player* gPlayerFour;
-extern Player* gPlayerFive;
-extern Player* gPlayerSix;
-extern Player* gPlayerSeven;
-extern Player* gPlayerEight;
-extern Player* gPlayerOneCopy;
 
 extern struct_8018CA70_entry D_8018CA70[];
 

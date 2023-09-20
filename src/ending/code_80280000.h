@@ -2,7 +2,6 @@
 #define CODE_80280000_H
 
 #include "common_structs.h"
-#include "main.h"
 
 /* Function Prototypes */
 
@@ -12,7 +11,6 @@ void func_80280268(s32 arg0);
 void credits_loop(void);
 void load_credits(void);
 
-extern f32 D_80150148, D_8015014C, D_80150150;
 extern f32 gCameraZoom[4];
 extern s16 gCreditsCourseId;
 extern u16 gMatrixObjectCount;

@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <memory.h>
 #include <defines.h>
+
 #include "code_8006E9C0.h"
 #include "code_80071F00.h"
 #include "objects.h"
@@ -12,6 +13,7 @@
 #include <functions.h>
 #include "audio/external.h"
 #include "courses/all_course_data.h"
+#include "main.h"
 
 void func_8006E9C0(void) {
 

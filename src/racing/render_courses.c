@@ -3,15 +3,16 @@
 #include <common_structs.h>
 #include <defines.h>
 #include <types.h>
-#include <code_800029B0.h>
 #include <course.h>
+
+#include "render_courses.h"
+#include "code_800029B0.h"
 #include "main.h"
 #include "actors.h"
 #include "math_util.h"
 #include "memory.h"
 #include "code_80281780.h"
 #include "collision.h"
-#include "render_courses.h"
 #include "skybox_and_splitscreen.h"
 #include "courses/all_course_data.h"
 #include "courses/all_course_packed.h"

@@ -12,8 +12,6 @@ extern u16 gIsInQuitToMenuTransition;
 extern Gfx D_00284F70[];
 extern Gfx D_00284EE0[];
 
-extern f32 D_80150148, D_8015014C, D_80150150;
-
 extern f32 gCameraZoom[];
 
 #endif

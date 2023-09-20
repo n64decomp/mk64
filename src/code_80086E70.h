@@ -172,8 +172,6 @@ extern f32 D_80183DA8[];
 extern f32 D_80183DC8[];
 extern f32 gVBlankTimer;
 extern Collision D_8018C3B0;
-extern Player *gPlayerOne;
-extern Player *gPlayerOneCopy;
 extern s16 gCurrentCourseId;
 
 extern Vec4s D_80165760;

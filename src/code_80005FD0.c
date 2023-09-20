@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <defines.h>
 
+#include "code_80005FD0.h"
 #include "math_util.h"
 #include "code_800029B0.h"
 #include "racing/memory.h"
@@ -23,7 +24,6 @@
 #include "common_structs.h"
 #include "main.h"
 
-#include "code_80005FD0.h"
 
 extern UnkCommonTextureStruct0 *D_800DC720[];
 

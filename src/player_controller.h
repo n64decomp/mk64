@@ -195,12 +195,4 @@ extern Player *D_801653C0[8];
 extern s16 D_801656F0;
 extern s32 gRaceFrameCounter;
 
-extern struct Controller *gControllerEight;
-extern struct Controller *gControllerFour;
-extern struct Controller *gControllerOne;
-extern struct Controller *gControllerSeven;
-extern struct Controller *gControllerSix;
-extern struct Controller *gControllerThree;
-extern struct Controller *gControllerTwo;
-
 #endif

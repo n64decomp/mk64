@@ -373,10 +373,6 @@ s32 osRecvMesg(OSMesgQueue*, OSMesg*, s32);
 
 extern s8 D_8018EDF3;
 
-extern OSMesgQueue gDmaMesgQueue;
-extern OSMesg gMainReceivedMesg;
-extern OSIoMesg gDmaIoMesg;
-
 // from other_textures.s
 extern u8 D_0F0D0E50[]; // gTextureGhosts
 

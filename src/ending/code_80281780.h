@@ -38,7 +38,6 @@ extern s32 D_00825800;
 extern s32 D_00831DC0;
 extern s32 D_00835BA0;
 
-extern struct Controller *gControllerOne;
 extern s8 gCharacterSelections[];
 extern u16 gEnableDebugMode;
 

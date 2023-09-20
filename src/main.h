@@ -62,8 +62,6 @@ struct UnkStruct_8015F584 {
     u16 unk2;
 };
 
-extern struct UnkStruct_8015F584 D_8014F110[];
-
 void create_thread(OSThread*, OSId, void (*entry)(void *), void*, void*, OSPri);
 void main_func(void);
 void thread1_idle(void*);
@@ -105,8 +103,6 @@ void update_gamestate(void);
 void thread5_game_loop(void*);
 void thread4_audio(void*);
 
-extern struct GfxPool *gGfxPool;
-extern Gfx *gDisplayListHead;
 
 extern struct VblankHandler *gVblankHandler1;
 extern struct VblankHandler *gVblankHandler2;
@@ -126,9 +122,6 @@ extern struct Controller *gControllerFive;
 extern struct Controller *gControllerSix;
 extern struct Controller *gControllerSeven;
 extern struct Controller *gControllerEight;
-extern s32 D_800DC568;
-extern s32 D_800DC56C[];
-
 
 extern Player gPlayers[];
 extern Player *gPlayerOne;
@@ -142,34 +135,33 @@ extern Player *gPlayerEight;
 
 extern Player *gPlayerOneCopy;
 extern Player *gPlayerTwoCopy;
-extern UNUSED Player *gPlayerThreeCopy;
-extern UNUSED Player *gPlayerFourCopy;
 
-extern s32 D_800FD850[3];
-extern struct GfxPool gGfxPools[2];
+extern s32 D_800FD850[];
+extern struct GfxPool gGfxPools[];
+extern struct GfxPool *gGfxPool;
 
 extern s32 gfxPool_padding;
 extern struct VblankHandler gGameVblankHandler;
 extern struct VblankHandler sSoundVblankHandler;
 extern OSMesgQueue gDmaMesgQueue, gGameVblankQueue, gGfxVblankQueue, unused_gMsgQueue, gIntrMesgQueue, gSPTaskMesgQueue;
 extern OSMesgQueue sSoundMesgQueue;
-extern OSMesg sSoundMesgBuf[1];
-extern OSMesg gDmaMesgBuf[1], gGameMesgBuf;
-extern OSMesg gGfxMesgBuf[1];
-extern OSMesg gIntrMesgBuf[16], gSPTaskMesgBuf[16];
+extern OSMesg sSoundMesgBuf[];
+extern OSMesg gDmaMesgBuf[], gGameMesgBuf;
+extern OSMesg gGfxMesgBuf[];
+extern OSMesg gIntrMesgBuf[], gSPTaskMesgBuf[];
 extern OSMesg gMainReceivedMesg;
 extern OSIoMesg gDmaIoMesg;
 extern OSMesgQueue gSIEventMesgQueue;
-extern OSMesg gSIEventMesgBuf[3];
+extern OSMesg gSIEventMesgBuf[];
 
-extern OSContStatus gControllerStatuses[4];
+extern OSContStatus gControllerStatuses[];
 
-extern OSContPad gControllerPads[4];
+extern OSContPad gControllerPads[];
 extern u8 gControllerBits;
 
-extern struct UnkStruct_8015F584 D_8014F110[1024];
+extern struct UnkStruct_8015F584 D_8014F110[];
 extern u16 gNumActors;
-extern u16 D_80150112;
+extern u16 gMatrixObjectCount;
 extern s32 gTickSpeed;
 extern f32 D_80150118;
 extern u16 wasSoftReset;
@@ -177,26 +169,25 @@ extern u16 D_8015011E;
 
 extern s32 D_80150120;
 extern s32 gMenuSelectionFromQuit;
-extern f32 D_80150130[4];
+extern f32 gCameraZoom[];
 
 extern f32 D_80150148;
 extern f32 D_8015014C;
 extern f32 D_80150150;
 
-extern struct D_80150158 gD_80150158[16];
-extern uintptr_t gSegmentTable[16];
+extern struct D_80150158 gD_80150158[];
+extern uintptr_t gSegmentTable[];
+extern Gfx *gDisplayListHead;
 extern struct SPTask *gGfxSPTask;
 extern s32 D_801502A0;
 extern s32 D_801502A4;
-extern u16 *gPhysicalFramebuffers[3];
+extern u16 *gPhysicalFramebuffers[];
 extern u32 D_801502B4;
-extern UNUSED u32 D_801502B8;
-extern UNUSED u32 D_801502BC;
 extern Mat4 D_801502C0;
 
-extern s32 padding[2048];
+extern s32 padding[];
 
-extern u16 D_80152300[4];
+extern u16 D_80152300[];
 extern u16 D_80152308;
 
 extern OSThread gIdleThread;
@@ -208,9 +199,9 @@ extern ALIGNED8 u8 gGameLoopThreadStack[];
 extern OSThread gAudioThread;
 extern ALIGNED8 u8 gAudioThreadStack[];
 
-extern u8 gGfxSPTaskYieldBuffer[4352];
-extern u32 gGfxSPTaskStack[256];
-extern OSMesg gPIMesgBuf[32];
+extern u8 gGfxSPTaskYieldBuffer[];
+extern u32 gGfxSPTaskStack[];
+extern OSMesg gPIMesgBuf[];
 extern OSMesgQueue gPIMesgQueue;
 
 extern s32 gGamestate;
@@ -234,27 +225,12 @@ extern s32 gGlobalTimer;
 extern u16 sRenderedFramebuffer;
 extern u16 sRenderingFramebuffer;
 extern s32 D_800DC568;
-extern s32 D_800DC56C[8];
+extern s32 D_800DC56C[];
 extern s16 sNumVBlanks;
 extern f32 gVBlankTimer;
 extern f32 gCourseTimer;
 
-extern u16 D_80152308;
-
-extern s32 gModeSelection;
-
-extern u16 *gPhysicalFramebuffers[];
-extern OSIoMesg gDmaIoMesg;
-extern OSMesg gMainReceivedMesg;
-extern OSMesgQueue gDmaMesgQueue;
-extern s32 gGamestateNext;
-extern s32 gActiveScreenMode;
-extern f32 gVBlankTimer;
-extern s32 gScreenModeSelection;
-
-extern OSContStatus gControllerStatuses[];
-extern struct Controller *gControllerFive;
-extern u8 gControllerBits;
+// end of definition of main.c variables
 
 extern u64 rspbootTextStart[], rspbootTextEnd[];
 extern u64 gspF3DEXTextStart[], gspF3DEXTextEnd[];

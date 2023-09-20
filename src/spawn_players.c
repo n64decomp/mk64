@@ -1,5 +1,7 @@
 #include <global.h>
 #include <defines.h>
+
+#include "spawn_players.h"
 #include "code_800029B0.h"
 #include "kart_attributes.h"
 #include "memory.h"
@@ -12,10 +14,10 @@
 #include "code_80057C60.h"
 #include "collision.h"
 #include "render_courses.h"
-#include "spawn_players.h"
 #include "staff_ghosts.h"
 #include "code_80005FD0.h"
 #include "podium_ceremony_actors.h"
+#include "main.h"
 
 // arg4 is height? Or something like that?
 void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingColumn, f32 arg4, f32 arg5, u16 characterId, s16 playerType) {

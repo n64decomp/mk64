@@ -3,7 +3,6 @@
 
 #include "types.h"
 #include "actor_types.h"
-#include "main.h"
 
 void func_8029E158(void);
 void cleanup_red_and_green_shells(struct ShellActor*);
@@ -126,12 +125,9 @@ extern s8 gTLUTRedShell[512]; // tlut 256
 extern u16 D_802BA260;
 
 extern s32   gPlayerCountSelection1;
-extern Player gPlayers[];
-extern u16 gNumActors;
 
 extern u16 D_802BA260; // Box Truck sub-type?
 
-extern Player *gPlayerOne;
 
 extern s32 gActiveScreenMode;
 
@@ -146,7 +142,6 @@ extern Lights1 D_800DC610[];
 
 extern u16 gMatrixObjectCount;
 
-extern uintptr_t gSegmentTable[];
 extern s16 gPlaceItemBoxes;
 
 extern s8 D_0D004C68[];

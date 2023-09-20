@@ -2,6 +2,7 @@
 #define CODE_80005FD0_H
 
 #include "vehicles.h"
+#include "camera.h"
 
 struct struct_801642D8 {
     /* 0x0 */ u16 unk0;
@@ -82,7 +83,6 @@ void func_8000EF20(void);
 
 void func_8000F0E0(void);
 void func_8000F124(void);
-void func_8000F2BC(struct TrackWayPoint*, size_t);
 
 void func_80010218(s32);
 f32  func_80010480(s32, u16);
@@ -92,7 +92,6 @@ void func_80010DBC(s32);
 f32  func_80010F40(f32, f32, f32, s32);
 f32  func_80010FA0(f32, f32, f32, s32);
 
-s32  process_path_data(struct TrackWayPoint*, struct TrackWayPoint*);
 void func_80011AB8(s32);
 void func_80011AE4(s32);
 
@@ -189,7 +188,6 @@ extern s16 D_801646CC;
 extern u16 D_80163E2A;
 extern Gfx D_0D0076F8[];
 
-extern struct Controller *gControllerThree;
 extern s32 D_800DDB20;
 
 #endif

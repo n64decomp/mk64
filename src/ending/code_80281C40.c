@@ -1,6 +1,8 @@
 #include <ultra64.h>
 #include <PR/gu.h>
 #include <macros.h>
+
+#include "code_80281C40.h"
 #include "main.h"
 #include "math_util.h"
 #include "skybox_and_splitscreen.h"
@@ -8,7 +10,6 @@
 #include "code_80057C60.h"
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
-#include "code_80281C40.h"
 #include "ceremony_and_credits.h"
 #include "podium_ceremony_actors.h"
 #include "code_8001F980.h"

@@ -3,8 +3,9 @@
 #include <common_structs.h>
 #include <defines.h>
 #include <libc/math.h>
-#include "code_800029B0.h"
+
 #include "camera.h"
+#include "code_800029B0.h"
 #include "math_util.h"
 #include "racing/memory.h"
 #include "waypoints.h"

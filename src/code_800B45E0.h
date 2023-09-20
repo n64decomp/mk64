@@ -99,7 +99,6 @@ extern s8          sControllerPak2State; // Current state of the Controller Pak 
 extern const u8    D_800F2E60[];
 extern const u8    gGameName[];
 extern const u8    gExtCode[];
-extern OSMesgQueue gSIEventMesgQueue; // D_8014F0B8
 extern u16         D_80162DD6;
 extern s32         D_80162DE0;
 extern s32         D_80162DFC;
