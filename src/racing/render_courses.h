@@ -37,9 +37,6 @@ void func_802966A0(void);
 void func_802969F8(void);
 
 extern s16 gCurrentCourseId;
-extern s32 gActiveScreenMode;
-
-extern u16 sRenderedFramebuffer;
 
 extern s32 D_8015F59C;
 
@@ -48,7 +45,6 @@ extern s32 D_800DC5E0;
 extern s32 D_802B87C4;
 extern s32 D_802B87C8;
 extern s32 D_802B87CC;
-extern s32 gScreenModeSelection;
 extern Gfx mario_raceway_dls[];
 extern Gfx choco_mountain_dls[];
 extern s32 D_802B87BC;
@@ -67,12 +63,8 @@ extern Gfx wario_stadium_dls[];
 
 extern Gfx D_090001D0[];
 
-extern u16 D_800DC518;
 extern u16 D_8015F58A;
 
 extern u16 D_800DC5BC;                                     /* unable to generate initializer */
-extern s32 gGamestate;
-extern s32 gModeSelection;
-extern s32 gCCSelection;
 
 #endif

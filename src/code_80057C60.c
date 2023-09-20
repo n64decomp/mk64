@@ -918,7 +918,6 @@ void func_80059A88(s32 arg0) {
 }
 
 extern s32 D_80165678;
-extern s32 gGamestate;
 extern s32 gRaceFrameCounter;
 
 void func_80059AC8(void) {
@@ -1789,7 +1788,6 @@ extern f32 D_8018D078[8];
 extern f32 D_8018D0C8[8];
 extern s32 D_8018D1CC;
 extern s32 gGPCurrentRaceRankByPlayerId[];
-extern s32 gModeSelection;
 
 void func_8005B7A0(void) {
     f32 temp_f0;
@@ -6692,9 +6690,6 @@ void func_80069938(Player *, s8, s16, s8);             /* extern */
 void func_80069BA8(Player *, s8, s16, s8);             /* extern */
 void func_80069DB8(Player *, s8, s16, s8);             /* extern */
 void func_8006A01C(Player *, s8, s16, s8);             /* extern */
-
-extern s32 gActiveScreenMode;
-extern s32 gModeSelection;
 
 void func_8006D474(Player *player, s8 arg1, s8 arg2) {
     s16 var_s2;

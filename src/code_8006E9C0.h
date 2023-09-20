@@ -29,7 +29,6 @@ extern s16 D_800E5520[];
 extern s16 D_800E5548[];
 extern s32 gCourseOutlineTextures[0x14];
 
-extern s32 gScreenModeSelection;
 extern s8 *gTextureLogoMarioKart64;
 extern s16 D_80165730;
 extern s16 D_80165740;

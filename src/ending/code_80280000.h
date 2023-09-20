@@ -11,9 +11,7 @@ void func_80280268(s32 arg0);
 void credits_loop(void);
 void load_credits(void);
 
-extern f32 gCameraZoom[4];
 extern s16 gCreditsCourseId;
-extern u16 gMatrixObjectCount;
 extern s16 gMatrixEffectCount;
 
 extern u16 gIsInQuitToMenuTransition, gQuitToMenuTransitionCounter;
@@ -21,7 +19,5 @@ extern s32 D_802874A0;
 
 extern u16 D_80164714, D_80164716, D_80164718;
 extern u16 D_800DC5E4;
-
-extern u16 D_800DC518;
 
 #endif

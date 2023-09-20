@@ -20,16 +20,12 @@ extern s16 gCurrentCourseId;
 extern u16 D_800DC5B4;
 
 extern s32 gIsMirrorMode;
-extern s32 gScreenModeSelection;
-extern s32 gActiveScreenMode;
-extern s32 gModeSelection;
 extern u16 D_800DC5BC;
 extern u16 D_800DC5C8;
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
 
 extern s32 D_80287554;
 extern f32 D_801647A4;
-extern f32 gCameraZoom[];
 
 extern s32 D_8015F5A0;
 
@@ -39,7 +35,6 @@ extern s32 D_00831DC0;
 extern s32 D_00835BA0;
 
 extern s8 gCharacterSelections[];
-extern u16 gEnableDebugMode;
 
 extern u8 defaultCharacterIds[];
 extern s8 gGPOverallRanks[8];

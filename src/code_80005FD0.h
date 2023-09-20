@@ -168,7 +168,6 @@ extern s32 D_80163488;
 extern s32 D_8016337C;
 extern s16 D_80164378[];
 extern s32 D_801643E0[];
-extern s32 gModeSelection;
 extern struct unexpiredActors gUnexpiredActorsList[];
 extern s16 D_8016348C;
 extern s32 D_801643E0[];

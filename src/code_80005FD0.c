@@ -1413,7 +1413,6 @@ void func_800090F0(s32 playerId, Player *player) {
 }
 
 extern f32 D_8016344C;
-extern f32 gCourseTimer;
 
 /**
  * Helps calculate time since player last touched finishline.
@@ -5793,7 +5792,6 @@ extern s16 D_80162FCC;
 //extern s32 D_80163598
 extern s32 D_8016359C;
 //extern TrainStuff D_801635C4;
-//extern s32 gScreenModeSelection;
 
 // This is really Vec2s D_80163598[465] but that does not match.
 // Likely because this is a shared pointer between courses.

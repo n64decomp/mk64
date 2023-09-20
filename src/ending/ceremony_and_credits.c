@@ -20,8 +20,6 @@
 #include "podium_ceremony_actors.h"
 #include "code_80091750.h"
 
-extern f32 gCameraZoom[];
-
 f32 D_802856B0 = 98.0f;
 f32 D_802856B4 = 12.0f;
 f32 D_802856B8 = 52.0f;

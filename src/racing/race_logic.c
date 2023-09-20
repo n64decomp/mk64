@@ -27,11 +27,8 @@
 extern s16 gPlayerBalloonCount[];
 extern s16 D_8016348C;
 extern s8 gCupCourseSelection;
-extern s32 D_800DC544;
 
 extern s32 gLapCountByPlayerId[];
-extern s32 gModeSelection;
-extern s32 gPlayerCountSelection1;
 extern u16 D_802BA048;
 
 extern u16 D_800DC5B4;
@@ -40,16 +37,9 @@ extern u16 D_800DC5B8;
 extern s32 gMenuSelection;
 
 extern s8 D_8018EE08;
-extern u16 gDemoMode;
-extern u16 D_800DC518;
-extern float gCourseTimer;
-extern float gVBlankTimer;
-extern s32 gScreenModeSelection;
 extern s32 D_8018D2AC;
-extern s32 gActiveScreenMode;
 extern s16 gCurrentCourseId;
 extern u32 D_800DC5AC;
-extern u16 gEnableDebugMode;
 extern s32 gPlayerWinningIndex;
 extern u16 gIsInQuitToMenuTransition, gQuitToMenuTransitionCounter;
 extern s32 D_802B91E0;

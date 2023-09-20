@@ -57,19 +57,15 @@ extern struct UnkStruct_800DC5EC *D_800DC5F0;
 extern struct UnkStruct_800DC5EC *D_800DC5F4;
 extern struct UnkStruct_800DC5EC *D_800DC5F8;
 extern u16 D_800DC5B0;
-extern s32 gGamestateNext;
 extern u16 gIsInQuitToMenuTransition;
 extern u16 gQuitToMenuTransitionCounter;
 extern s32 gMenuSelection;
 extern s32 D_800E86A4;
 
-extern u32 D_801502B4;
-extern u16 sRenderingFramebuffer;
 extern s32 D_800DC5D0;
 extern s32 D_800DC5D4;
 extern s32 D_800DC5D8;
 extern u16 D_800DC5BC;
-extern f32 gCameraZoom[];
 extern u16 D_800DC5B4;
 
 
@@ -79,6 +75,5 @@ extern struct UnkStruct_800DC5EC D_8015F480[];
 
 extern s32 D_800DC5DC;
 extern s32 D_800DC5E0;
-extern u16 sRenderedFramebuffer;
 
 #endif

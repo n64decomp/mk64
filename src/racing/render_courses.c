@@ -68,8 +68,6 @@ void parse_course_displaylists(uintptr_t addr) {
     }
 }
 
-extern u16 D_80152300[];
-
 void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     Player *temp_t1 = arg1->player;
     Camera *temp_a2 = arg1->camera;

@@ -1292,7 +1292,6 @@ void copy_framebuffer(s32 arg0, s32 arg1, s32 width, s32 height, u16 *source, u1
 
 extern s32 D_800DC5DC;
 extern s32 D_800DC5E0;
-extern u16 sRenderedFramebuffer;
 
 void func_802A7728(void) {
     s16 temp_v0;

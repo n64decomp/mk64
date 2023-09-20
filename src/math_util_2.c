@@ -597,7 +597,6 @@ void func_80041D24(void) {
 }
 
 void guOrtho(Mtx *, f32, f32, f32, f32, f32, f32, f32); /* extern */
-extern s32 gActiveScreenMode;
 extern s8 D_801658FE;
 extern Mtx D_80183D60[];
 

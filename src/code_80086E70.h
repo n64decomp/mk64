@@ -167,10 +167,8 @@ void func_8008C1C0(s32);
 
 // This may be a list of tilemap flags on a per-camera basis
 extern s16 D_8018CF68[];
-extern s32 gPlayerCountSelection1;
 extern f32 D_80183DA8[];
 extern f32 D_80183DC8[];
-extern f32 gVBlankTimer;
 extern Collision D_8018C3B0;
 extern s16 gCurrentCourseId;
 

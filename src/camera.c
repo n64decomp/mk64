@@ -44,7 +44,6 @@ extern f32 D_80164A48[4];
 extern f32 D_80164A78[];
 extern s8 D_80164A88;
 extern s8 D_80164A89;
-extern f32 gCameraZoom[4];
 
 void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cameraId) {
     Player *player = gPlayerOne;

@@ -124,23 +124,14 @@ extern struct Actor *D_802BA05C;
 extern s8 gTLUTRedShell[512]; // tlut 256
 extern u16 D_802BA260;
 
-extern s32   gPlayerCountSelection1;
-
 extern u16 D_802BA260; // Box Truck sub-type?
-
-
-extern s32 gActiveScreenMode;
 
 extern u16 gNearestWaypointByPlayerId[];
 
 extern Camera *camera1;
-extern s32 gModeSelection;
 extern s16 gCurrentCourseId;
-extern f32 gCameraZoom[];
 extern u16 isCrossingTriggeredByIndex[];
 extern Lights1 D_800DC610[];
-
-extern u16 gMatrixObjectCount;
 
 extern s16 gPlaceItemBoxes;
 
@@ -162,10 +153,6 @@ extern Gfx toads_turnpike_dl_9[];
 extern Gfx toads_turnpike_dl_10[];
 extern Gfx toads_turnpike_dl_11[];
 
-extern Mat4 D_801502C0;
-
-extern s32 gGamestate;
-extern s32 gGamestate;
 extern s32 D_80162DF8;
 
 extern Gfx D_0D001750[];
