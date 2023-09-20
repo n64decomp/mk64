@@ -424,5 +424,6 @@ extern Gfx D_0B008A90[];
 extern Vec3s D_800E634C[3]; // static?
 extern Vtx D_800E4470[];
 extern Vtx D_800E44B0[];
+extern u8 *D_800E4570[];
 
 #endif

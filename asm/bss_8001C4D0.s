@@ -595,7 +595,6 @@ glabel D_80165A90
 glabel D_80165C18
 .skip 164
 
-# Currently referenced in func_800534E8.s, but that function is in NEEDS_RODATA state
 glabel D_80165CBC
 .skip 2
 

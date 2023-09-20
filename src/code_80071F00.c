@@ -28,6 +28,66 @@
 #include "podium_ceremony_actors.h"
 #include "courses/all_course_data.h"
 
+// TODO: unused?
+f32 D_800E43B0[] = { 
+    65536.0, 0.0,     1.0, 0.0,
+    0.0,     65536.0, 0.0, 1.0,
+    0.0,     0.0,     0.0, 0.0,
+    0.0,     0.0,     0.0, 0.0
+};
+
+Vtx D_800E43F0[] = {
+    {{{  -24,  -19,    0}, 0, {    0,    0}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+    {{{   23,  -19,    0}, 0, { 3008,    0}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+    {{{   23,   20,    0}, 0, { 3008, 2496}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+    {{{  -24,   20,    0}, 0, {    0, 2496}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+    {{{  -24,  -19,    0}, 0, { 3008,    0}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+    {{{   23,  -19,    0}, 0, {    0,    0}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+    {{{   23,   20,    0}, 0, {    0, 2496}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+    {{{  -24,   20,    0}, 0, { 3008, 2496}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+};
+
+Vtx D_800E4470[] = {
+    {{{  -24,  -19,    0}, 0, {    0,    0}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+    {{{   23,  -19,    0}, 0, { 3008,    0}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+    {{{   23,   20,    0}, 0, { 3008, 2496}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+    {{{  -24,   20,    0}, 0, {    0, 2496}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+};
+
+Vtx D_800E44B0[] = {
+    {{{  -24,  -19,    0}, 0, { 3008,    0}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+    {{{   23,  -19,    0}, 0, {    0,    0}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+    {{{   23,   20,    0}, 0, {    0, 2496}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+    {{{  -24,   20,    0}, 0, { 3008, 2496}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
+};
+
+u8 *gItemWindowTLUTs[] = {
+    gTLUTItemWindowNone, gTLUTItemWindowBanana, gTLUTItemWindowBananaBunch, gTLUTItemWindowGreenShell,
+    gTLUTItemWindowTripleGreenShell, gTLUTItemWindowRedShell, gTLUTItemWindowTripleRedShell, gTLUTItemWindowBlueShell,
+    gTLUTItemWindowThunderBolt, gTLUTItemWindowFakeItemBox, gTLUTItemWindowStar, gTLUTItemWindowBoo,
+    gTLUTItemWindowMushroom, gTLUTItemWindowDoubleMushroom, gTLUTItemWindowTripleMushroom, gTLUTItemWindowSuperMushroom
+};
+
+u8 *gItemWindowTextures[] = {
+    gTextureItemWindowNone, gTextureItemWindowBanana, gTextureItemWindowBananaBunch, gTextureItemWindowGreenShell,
+    gTextureItemWindowTripleGreenShell, gTextureItemWindowRedShell, gTextureItemWindowTripleRedShell, gTextureItemWindowBlueShell,
+    gTextureItemWindowThunderBolt, gTextureItemWindowFakeItemBox, gTextureItemWindowStar, gTextureItemWindowBoo,
+    gTextureItemWindowMushroom, gTextureItemWindowDoubleMushroom, gTextureItemWindowTripleMushroom, gTextureItemWindowSuperMushroom
+};
+
+u8 *D_800E4570[] = {
+    D_0D00B158, D_0D00B558, D_0D00B958
+};
+
+u8 *gPortraitTLUTs[] = {
+    gTLUTPortraitMario, gTLUTPortraitLuigi, gTLUTPortraitYoshi, gTLUTPortraitToad,
+    gTLUTPortraitDonkeyKong, gTLUTPortraitWario, gTLUTPortraitPeach, gTLUTPortraitBowser
+};
+
+u8 *gPortraitTextures[] = {
+    gTexturePortraitMario, gTexturePortraitLuigi, gTexturePortraitYoshi, gTexturePortraitToad,
+    gTexturePortraitDonkeyKong, gTexturePortraitWario, gTexturePortraitPeach, gTexturePortraitBowser
+};
 
 s32 find_unused_obj_index(s32* arg0) {
     s32 temp_v0;
