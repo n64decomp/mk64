@@ -222,8 +222,6 @@ ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) inc
 MAKEFILE_SPLIT = Makefile.split
 include $(MAKEFILE_SPLIT)
 
-# COURSE_ASM_FILES := $(wildcard courses/*/*/packed.s)
-
 # These are files that need to be encoded into EUC-JP in order for the ROM to match
 # We filter them out from the regular C_FILES since we don't need nor want the
 # UTF-8 versions getting compiled
@@ -501,14 +499,13 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 # Course Packed Displaylists Generation                                        #
 #==============================================================================#
 
-# COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
-
 %/course_displaylists.inc.elf: %/course_displaylists.inc.o
 	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -o $@ $< --no-check-sections
 
 %/course_displaylists.inc.bin: %/course_displaylists.inc.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
+# Displaylists are packed using a custom format 
 %/course_displaylists_packed.inc.bin: %/course_displaylists.inc.bin
 	@$(PRINT) "$(GREEN)Compressing Course Displaylists:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(DLPACKER) $< $@
@@ -531,7 +528,7 @@ COURSE_GEOGRAPHY_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/cou
 	@$(PRINT) "$(GREEN)Compressing Course Geography:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(MIO0TOOL) -c $< $@
 
-# Geography and packed displaylists are compressed together rather than separately.
+# Course vertices and displaylists are included together due to no alignment between the two files.
 %/course_geography.inc.mio0.s: %/course_vertices.inc.mio0 %/course_displaylists_packed.inc.bin
 	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
 
