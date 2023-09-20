@@ -34,7 +34,7 @@ OUTPUT_ARCH (mips)
 #define COURSE_VERT_SEG(dir, name) \
    BEGIN_SEG(name, 0x0F000000) \
    { \
-      BUILD_DIR/courses/dir/model.inc.mio0.o(.data); \
+      BUILD_DIR/courses/dir/course_geography.inc.mio0.o(.data); \
       . = ALIGN(0x10); \
    } \
    END_SEG(name)
