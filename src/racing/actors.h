@@ -4,20 +4,17 @@
 #include "types.h"
 #include "actor_types.h"
 
-void func_8029E158(void);
 void cleanup_red_and_green_shells(struct ShellActor*);
 void actor_init(struct Actor*, Vec3f, s16*, f32*, s16);
 void func_80297230(Camera*, struct Actor*);
 void func_802972B8(Camera*, struct Actor*);
 void func_80297340(Camera*);
-void func_80297524(uintptr_t, s32, s32);
 void func_802976D8(Vec3s);
 void func_802976EC(Collision*, Vec3s);
 void func_80297760(struct Actor*, Vec3f);
 void func_802977B0(Player*);
 void func_802977E4(Player*);
 void init_red_shell_texture(void);
-void func_80297944(void);
 void func_8029794C(Vec3f, Vec3s, f32);
 void func_802979F8(struct Actor*, f32);
 void render_actor_cow(Camera*, Mat4, struct Actor*);
@@ -32,9 +29,9 @@ void update_actor_piranha_plant(struct PiranhaPlant*);
 void render_actor_piranha_plant(Camera*, Mat4, struct PiranhaPlant*);
 void func_802986B4(Camera*, Mat4, struct Actor*);
 void func_80298AC0(Player*);
-void func_80298D7C(Camera*, Mat4, struct Actor*);
 void func_80298C94(void);
 void func_80298D10(void);
+void func_80298D7C(Camera*, Mat4, struct Actor*);
 void render_actor_tree_mario_raceway(Camera*, Mat4, struct Actor*);
 void render_actor_tree_yoshi_valley(Camera*, Mat4, struct Actor*);
 void render_actor_tree_royal_raceway(Camera*, Mat4, struct Actor*);
@@ -55,9 +52,7 @@ void render_actor_banana(Camera*, Mat4, struct BananaActor*);
 void update_actor_wario_stadium_sign(struct Actor*);
 void update_actor_railroad_crossing(struct RailroadCrossing*);
 void update_actor_mario_raceway_sign(struct Actor*);
-void func_8029ABD4(Vec3f, s16);
 void func_8029AC18(Camera*, Mat4, struct Actor*);
-void func_8029AE14(void);
 void func_8029AE1C(Camera*, struct PaddleWheelBoat*, Mat4, u16);
 void func_8029B06C(Camera*, struct Actor*);
 void func_8029B2E4(Camera*, struct Actor*);
@@ -77,6 +72,7 @@ void place_all_item_boxes(struct ActorSpawnData*);
 void init_kiwano_fruit(void);
 void destroy_all_actors(void);
 void place_course_actors(void);
+void func_8029E158(void);
 void func_8029E7DC(struct Actor*);
 void destroy_actor(struct Actor*);
 s16  func_8029E890(f32*, s16*, f32*, s16);
@@ -115,16 +111,14 @@ void update_course_actors(void);
 extern void func_800C98B8(Vec3f, Vec3f, u32);
 extern void func_800C99E0(Vec3f, s32);
 
-extern Vec3f D_802B91C8;
-
 extern u8 *D_802BA050;
 extern u8 *D_802BA054;
 extern u8 *D_802BA058;
 extern struct Actor *D_802BA05C;
-extern s8 gTLUTRedShell[512]; // tlut 256
-extern u16 D_802BA260;
-
+extern s8 gTLUTRedShell[]; // tlut 256
 extern u16 D_802BA260; // Box Truck sub-type?
+
+// end of definition of actor.c variables
 
 extern u16 gNearestWaypointByPlayerId[];
 
@@ -252,5 +246,7 @@ extern u16 gIsGamePaused;
 extern s8 D_802B8864[];
 
 extern u16 D_800DC5BC;
+
+extern Vec3f D_802B91C8;
 
 #endif // ACTORS_H
