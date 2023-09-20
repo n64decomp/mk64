@@ -6,7 +6,7 @@
 #include <waypoints.h>
 #include <course.h>
 
-#include <courses/moo_moo_farm/displaylists.inc.h>
+#include <courses/moo_moo_farm/course_displaylists.inc.h>
 
 Gfx d_course_moo_moo_farm_dl_0[] =
 {

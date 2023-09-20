@@ -6,7 +6,7 @@
 #include <waypoints.h>
 #include <course.h>
 
-#include <courses/banshee_boardwalk/displaylists.inc.h>
+#include <courses/banshee_boardwalk/course_displaylists.inc.h>
 
 Gfx d_course_banshee_boardwalk_dl_0[] =
 {

@@ -6,7 +6,7 @@
 #include <waypoints.h>
 #include <course.h>
 
-#include <courses/luigi_raceway/displaylists.inc.h>
+#include <courses/luigi_raceway/course_displaylists.inc.h>
 
 Gfx d_course_luigi_raceway_dl_0[] =
 {

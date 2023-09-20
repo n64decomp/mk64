@@ -5,7 +5,7 @@
 #include <course.h>
 #include <types.h>
 
-#include <courses/big_donut/displaylists.inc.h>
+#include <courses/big_donut/course_displaylists.inc.h>
 
 Gfx d_course_big_donut_packed_dl_0[] =
 {

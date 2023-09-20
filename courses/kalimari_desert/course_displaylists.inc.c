@@ -3,7 +3,7 @@
 #include <PR/gbi.h>
 #include <course.h>
 
-#include <courses/kalimari_desert/displaylists.inc.h>
+#include <courses/kalimari_desert/course_displaylists.inc.h>
 
 Gfx d_course_kalimari_desert_packed_dl_0[] =
 {

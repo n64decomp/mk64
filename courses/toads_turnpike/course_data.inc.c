@@ -6,7 +6,7 @@
 #include <waypoints.h>
 #include <course.h>
 
-#include <courses/toads_turnpike/displaylists.inc.h>
+#include <courses/toads_turnpike/course_displaylists.inc.h>
 
 Gfx d_course_toads_turnpike_dl_0[] =
 {

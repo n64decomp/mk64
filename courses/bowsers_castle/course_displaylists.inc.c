@@ -3,7 +3,7 @@
 #include <PR/gbi.h>
 #include <course.h>
 
-#include <courses/bowsers_castle/displaylists.inc.h>
+#include <courses/bowsers_castle/course_displaylists.inc.h>
 
 Gfx d_course_bowsers_castle_packed_dl_0[] =
 {

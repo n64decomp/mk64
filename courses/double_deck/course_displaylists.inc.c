@@ -4,7 +4,7 @@
 #include <actor_types.h>
 #include <course.h>
 
-#include <courses/double_deck/displaylists.inc.h>
+#include <courses/double_deck/course_displaylists.inc.h>
 
 Gfx d_course_double_deck_packed_dl_0[] =
 {

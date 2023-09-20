@@ -4,7 +4,7 @@
 #include <actor_types.h>
 #include <course.h>
 
-#include <courses/wario_stadium/displaylists.inc.h>
+#include <courses/wario_stadium/course_displaylists.inc.h>
 
 Gfx d_course_wario_stadium_packed_dl_0[] =
 {

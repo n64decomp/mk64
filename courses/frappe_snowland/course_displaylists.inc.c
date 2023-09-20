@@ -3,7 +3,7 @@
 #include <PR/gbi.h>
 #include <course.h>
 
-#include <courses/frappe_snowland/displaylists.inc.h>
+#include <courses/frappe_snowland/course_displaylists.inc.h>
 
 Gfx d_course_frappe_snowland_packed_dl_0[] =
 {

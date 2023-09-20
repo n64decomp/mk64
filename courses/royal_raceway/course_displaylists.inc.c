@@ -4,7 +4,7 @@
 #include <actor_types.h>
 #include <course.h>
 
-#include <courses/royal_raceway/displaylists.inc.h>
+#include <courses/royal_raceway/course_displaylists.inc.h>
 
 Gfx d_course_royal_raceway_packed_dl_0[] =
 {
