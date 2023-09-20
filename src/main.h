@@ -191,7 +191,7 @@ extern u16 D_80152300[];
 extern u16 D_80152308;
 
 extern OSThread gIdleThread;
-extern ALIGNED8 u8 gIdleThreadStack[]; // Based on sm64 and padding between bss symbols.
+extern ALIGNED8 u8 gIdleThreadStack[];
 extern OSThread gVideoThread;
 extern ALIGNED8 u8 gVideoThreadStack[];
 extern OSThread gGameLoopThread;
@@ -221,7 +221,6 @@ extern s32 D_800DC540;
 extern s32 D_800DC544;
 extern s32 gCCSelection;
 extern s32 gGlobalTimer;
-// Framebuffer rendering values (max 3)
 extern u16 sRenderedFramebuffer;
 extern u16 sRenderingFramebuffer;
 extern s32 D_800DC568;
