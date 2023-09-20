@@ -7,7 +7,7 @@
 #include <course.h>
 #include <code_80004740.h>
 
-#include <courses/rainbow_road/packed.inc.h>
+#include <courses/rainbow_road/displaylists.inc.h>
 
 Gfx d_course_rainbow_road_dl_0[] =
 {

@@ -503,14 +503,14 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 
 # COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
 
-%/packed.inc.elf: %/packed.inc.o
+%/displaylists.inc.elf: %/displaylists.inc.o
 	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -o $@ $< --no-check-sections
 
-%/packed.inc.bin: %/packed.inc.elf
+%/displaylists.inc.bin: %/displaylists.inc.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-%/packed_dl.inc.bin: %/packed.inc.bin
-	@$(PRINT) "$(GREEN)Compressing Packed Displaylists:  $(BLUE)$@ $(NO_COL)\n"
+%/displaylists_packed.inc.bin: %/displaylists.inc.bin
+	@$(PRINT) "$(GREEN)Compressing Course Displaylists:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(DLPACKER) $< $@
 
 
@@ -532,8 +532,8 @@ COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.i
 	$(V)$(MIO0TOOL) -c $< $@
 
 # Geography and packed displaylists are compressed together rather than separately.
-%/model.inc.mio0.s: %/vertices.inc.mio0 %/packed_dl.inc.bin
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.inc.bin\"\n\n.balign 0x10\n" > $@
+%/model.inc.mio0.s: %/vertices.inc.mio0 %/displaylists_packed.inc.bin
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
 
 
 
@@ -546,8 +546,8 @@ LDFLAGS += $(foreach elf,$(COURSE_DATA_ELFS),-R $(elf))
 
 COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.inc.mio0.o)
 
-%/course_data.inc.elf: %/course_data.inc.o %/packed.inc.elf
-	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -R $*/packed.inc.elf -o $@ $< --no-check-sections
+%/course_data.inc.elf: %/course_data.inc.o %/displaylists.inc.elf
+	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -R $*/displaylists.inc.elf -o $@ $< --no-check-sections
 
 %/course_data.inc.bin: %/course_data.inc.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@

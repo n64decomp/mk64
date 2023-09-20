@@ -3,7 +3,7 @@
 #include <PR/gbi.h>
 #include <course.h>
 
-#include <courses/koopa_troopa_beach/packed.inc.h>
+#include <courses/koopa_troopa_beach/displaylists.inc.h>
 
 Gfx d_course_koopa_troopa_beach_packed_dl_0[] =
 {

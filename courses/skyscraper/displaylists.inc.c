@@ -4,7 +4,7 @@
 #include <actor_types.h>
 #include <course.h>
 
-#include <courses/skyscraper/packed.inc.h>
+#include <courses/skyscraper/displaylists.inc.h>
 
 Gfx d_course_skyscraper_packed_dl_0[] =
 {

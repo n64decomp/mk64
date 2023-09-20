@@ -7,7 +7,7 @@
 #include <course.h>
 #include <code_80004740.h>
 
-#include <courses/sherbet_land/packed.inc.h>
+#include <courses/sherbet_land/displaylists.inc.h>
 
 Gfx d_course_sherbet_land_dl_0[] =
 {

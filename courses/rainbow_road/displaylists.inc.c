@@ -4,7 +4,7 @@
 #include <actor_types.h>
 #include <course.h>
 
-#include <courses/rainbow_road/packed.inc.h>
+#include <courses/rainbow_road/displaylists.inc.h>
 
 Gfx d_course_rainbow_road_packed_dl_0[] =
 {

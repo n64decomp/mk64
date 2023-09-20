@@ -15,14 +15,6 @@ OUTPUT_ARCH (mips)
     _##name##SegmentRomEnd = __romPos + SIZEOF(.name); \
     __romPos += SIZEOF(.name);
 
-#define MIO0_SEG(name) \
-   BEGIN_SEG(name##_mio0, 0x0) \
-   { \
-      BUILD_DIR/bin/name.mio0.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name##_mio0)
-
 #define COURSE_DATA_SEG(dir, name) \
    BEGIN_SEG(name##_mio0, 0x06000000) \
    { \
@@ -43,14 +35,6 @@ OUTPUT_ARCH (mips)
    BEGIN_SEG(name, 0x0F000000) \
    { \
       BUILD_DIR/courses/dir/model.inc.mio0.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name)
-
-#define COURSE_PACKED_SEG(dir, name) \
-   BEGIN_SEG(name, 0x07000000) \
-   { \
-      BUILD_DIR/courses/dir/packed.inc.mio0.o(.data); \
       . = ALIGN(0x10); \
    } \
    END_SEG(name)

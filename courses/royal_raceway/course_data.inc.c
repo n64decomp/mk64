@@ -6,7 +6,7 @@
 #include <waypoints.h>
 #include <course.h>
 
-#include <courses/royal_raceway/packed.inc.h>
+#include <courses/royal_raceway/displaylists.inc.h>
 
 Gfx d_course_royal_raceway_dl_0[] =
 {

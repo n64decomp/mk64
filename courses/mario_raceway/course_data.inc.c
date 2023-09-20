@@ -6,7 +6,7 @@
 #include <course.h>
 #include <waypoints.h>
 
-#include "packed.inc.h"
+#include "displaylists.inc.h"
 
 Gfx d_course_mario_raceway_dl_0[] =
 {

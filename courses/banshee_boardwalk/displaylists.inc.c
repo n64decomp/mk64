@@ -4,7 +4,7 @@
 #include <actor_types.h>
 #include <course.h>
 
-#include <courses/banshee_boardwalk/packed.inc.h>
+#include <courses/banshee_boardwalk/displaylists.inc.h>
 
 Gfx d_course_banshee_boardwalk_packed_dl_0[] =
 {

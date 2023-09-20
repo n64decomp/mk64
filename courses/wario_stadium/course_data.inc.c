@@ -6,7 +6,7 @@
 #include <waypoints.h>
 #include <course.h>
 
-#include <courses/wario_stadium/packed.inc.h>
+#include <courses/wario_stadium/displaylists.inc.h>
 
 Gfx d_course_wario_stadium_dl_0[] =
 {

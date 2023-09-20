@@ -7,7 +7,7 @@
 #include <course.h>
 #include <code_80004740.h>
 
-#include <courses/yoshi_valley/packed.inc.h>
+#include <courses/yoshi_valley/displaylists.inc.h>
 
 Gfx d_course_yoshi_valley_dl_0[] =
 {

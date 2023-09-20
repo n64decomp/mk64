@@ -4,7 +4,7 @@
 #include <actor_types.h>
 #include <course.h>
 
-#include <courses/sherbet_land/packed.inc.h>
+#include <courses/sherbet_land/displaylists.inc.h>
 
 Gfx d_course_sherbet_land_packed_dl_0[] =
 {

@@ -6,7 +6,7 @@
 #include <waypoints.h>
 #include <course.h>
 
-#include <courses/bowsers_castle/packed.inc.h>
+#include <courses/bowsers_castle/displaylists.inc.h>
 
 Gfx d_course_bowsers_castle_dl_0[] =
 {

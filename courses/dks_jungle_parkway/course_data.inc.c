@@ -6,7 +6,7 @@
 #include <waypoints.h>
 #include <course.h>
 
-#include <courses/dks_jungle_parkway/packed.inc.h>
+#include <courses/dks_jungle_parkway/displaylists.inc.h>
 
 Gfx d_course_dks_jungle_parkway_dl_0[] =
 {
