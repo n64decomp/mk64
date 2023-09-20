@@ -38,7 +38,7 @@ s16 D_800E4730[] = {
 	0x0000, 0x0000, 0x0000,
     // I'm not convinced these aren't just padding, but stuff doesn't match
     // without them :/
-    0x0000, 0x0000,
+    0x0000
 };
 
 u8 **D_800E4770[] = {
@@ -2157,8 +2157,6 @@ void func_8005C654(s32 *arg0) {
 void func_8005C65C(s32 arg0) {
     D_8018D2C8[arg0] = 1;
 }
-
-extern s16 D_800E4730[];
 
 void func_8005C674(s8 index, s16 *x, s16 *y, s16 *z) {
     s16 *src = &D_800E4730[index * 3];
@@ -5066,10 +5064,6 @@ void func_800664E0(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// data/data_800E8700.s
-extern Vtx D_800E8B00[];                                /* unable to generate initializer */
-
 void func_80066714(Player *player, s32 arg1, s16 arg2, s8 arg3) {
     Vec3f sp5C;
     Vec3s sp54;
@@ -5100,9 +5094,6 @@ void func_80066714(Player *player, s32 arg1, s16 arg2, s8 arg3) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80066714.s")
-#endif
 
 void func_80066998(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp54;
@@ -5132,11 +5123,7 @@ void func_80066998(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// data/data_800E8700.s
-extern Vtx D_800E8900[][4];                               /* unable to generate initializer */
-
-void func_80066BAC(Player *player, s32 arg1, s16 arg2, s8 arg3) {
+void func_80066BAC(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     Vec3f spDC;
     Vec3s spD4;
     s32 stackPadding;
@@ -5181,9 +5168,6 @@ void func_80066BAC(Player *player, s32 arg1, s16 arg2, s8 arg3) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80066BAC.s")
-#endif
 
 void func_80067280(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp7C;
@@ -5261,12 +5245,8 @@ void func_80067604(Player *player, s8 arg1, s16 arg2, s8 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80067604.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// data/data_code_80071F00.s
-extern u8  D_800E52D0[];                                /* unable to generate initializer */
-// data/data_800E8700.s
-extern Vtx D_800E8800[];                                /* unable to generate initializer */
-extern Vtx D_800E8840[];                                /* unable to generate initializer */
+// data/data_code_80071F00_2.s
+extern u8 D_800E52D0[];
 
 void func_80067964(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
     Vec3f sp9C;
@@ -5294,9 +5274,6 @@ void func_80067964(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80067964.s")
-#endif
 
 void func_80067D3C(Player *player, s8 arg1, u8 *texture, s8 arg3, f32 arg4, s32 arg5) {
     Vec3f sp7C;
@@ -5352,12 +5329,8 @@ void func_8006801C(Player *player, s8 arg1, u8 *texture, s8 arg3, f32 arg4, s32 
     }
 }
 
-#ifdef NEEDS_RODATA
-// data/data_code_80071F00.s
-extern u8 D_800E52D0[];                                /* unable to generate initializer */
-// data/data_800E8700.s
-extern Vtx D_800E8880[];                                /* unable to generate initializer */
-extern Vtx D_800E88C0[];                                /* unable to generate initializer */
+// data/data_code_80071F00_2.s
+extern u8 D_800E52D0[];
 
 void func_80068310(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
     s32 stackPadding[16]; // huh?
@@ -5384,14 +5357,6 @@ void func_80068310(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80068310.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_800E8700.s
-extern Vtx D_800E8A00[];                                /* unable to generate initializer */
-extern Vtx D_800E8A40[];                                /* unable to generate initializer */
 
 void func_80068724(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
     s32 stackPadding[16]; // huh?
@@ -5418,13 +5383,6 @@ void func_80068724(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80068724.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_800E8700.s
-extern Vtx D_800E8B40[];                                  /* unable to generate initializer */
 
 void func_80068AA4(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
     Vec3f sp64;
@@ -5448,16 +5406,9 @@ void func_80068AA4(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80068AA4.s")
-#endif
 
-#ifdef NEEDS_RODATA
-// data/data_code_80071F00.s
-extern u8 D_800E52D0[];                                /* unable to generate initializer */
-// data/data_800E8700.s
-extern Vtx D_800E8B80[];                                /* unable to generate initializer */
-extern Vtx D_800E8BC0[];                                /* unable to generate initializer */
+// data/data_code_80071F00_2.s
+extern u8 D_800E52D0[];
 
 void func_80068DA0(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
     Vec3f sp9C;
@@ -5483,13 +5434,6 @@ void func_80068DA0(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80068DA0.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_800E8700.s
-extern Vtx D_800E87C0[];
 
 void func_800691B8(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp5C;
@@ -5516,14 +5460,6 @@ void func_800691B8(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gMatrixEffectCount++;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800691B8.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_code_80071F00.s
-extern s32 D_800E47DC[0xC];
-extern s32 D_800E480C[0xC];
 
 void func_80069444(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp74;
@@ -5545,6 +5481,7 @@ void func_80069444(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         envGreen = (D_800E480C[player->unk_258[30 + arg2].unk_038] >> 8) & 0xFF;
         envBlue = D_800E480C[player->unk_258[30 + arg2].unk_038] & 0xFF;
         primAlpha = player->unk_258[30 + arg2].unk_03E;
+
         sp74[0] = player->unk_258[30 + arg2].unk_000[0];
         sp74[1] = player->unk_258[30 + arg2].unk_000[1];
         sp74[2] = player->unk_258[30 + arg2].unk_000[2];
@@ -5564,13 +5501,7 @@ void func_80069444(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80069444.s")
-#endif
 
-#ifdef NEEDS_RODATA
-// data/data_800E8700.s
-extern Vtx D_800E87C0[];                                /* unable to generate initializer */
 void func_800696CC(Player *player, s8 arg1, s16 arg2, s8 arg3, f32 arg4) {
     Vec3f sp5C;
     Vec3s sp54;
@@ -5595,13 +5526,6 @@ void func_800696CC(Player *player, s8 arg1, s16 arg2, s8 arg3, f32 arg4) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_800696CC.s")
-#endif
-
-#ifdef NEEDS_RODATA
-// data/data_800E8700.s
-extern Vtx D_800E87C0[];                                /* unable to generate initializer */
 
 void func_80069938(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp5C;
@@ -5627,9 +5551,6 @@ void func_80069938(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80069938.s")
-#endif
 
 void func_80069BA8(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp54;
@@ -5659,10 +5580,6 @@ void func_80069BA8(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// data/data_800E8700.s
-extern Vtx D_800E8740[];                                /* unable to generate initializer */
-
 void func_80069DB8(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp5C;
     Vec3s sp54;
@@ -5686,9 +5603,6 @@ void func_80069DB8(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80069DB8.s")
-#endif
 
 void func_8006A01C(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp54;
@@ -5713,12 +5627,6 @@ void func_8006A01C(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gMatrixEffectCount++;
     }
 }
-
-#ifdef NEEDS_RODATA
-// data/data_code_80071F00.s
-static u8 **D_800E47A0[0xF];
-// data/data_800E8700.s
-extern Vtx D_800E8780[];                                /* unable to generate initializer */
 
 void func_8006A280(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp5C;
@@ -5748,9 +5656,6 @@ void func_8006A280(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006A280.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
@@ -6225,11 +6130,10 @@ void func_8006BA94(Player* player, s8 playerIndex, s8 arg2) {
     }
 }
 
-#ifdef NEEDS_RODATA
-// data/data_code_80071F00.s
-extern Vtx D_800E5250[];                                /* unable to generate initializer */
-extern Vtx D_800E5290[];                                /* unable to generate initializer */
-extern u8 D_800E52D0[];                                /* unable to generate initializer */
+// data/data_code_80071F00_2.s
+extern Vtx D_800E5250[];
+extern Vtx D_800E5290[];
+extern u8 D_800E52D0[];
 
 void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     Mat4 sp108;
@@ -6275,16 +6179,13 @@ void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D4BC, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, D_800E5250, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D008C78);
-    // Not sure what to make of the `- 0x40`, it matches, but it looks weird to me
+    // D_8018D4C0 is correct. But interestingly, IDO seems to set "-0x40" to a different register so the texture still looks fine.
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C0 - 0x40, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, D_800E5290, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D008C78);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
     gMatrixEffectCount += 1;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/render_balloon.s")
-#endif
 
 void func_8006C0C8(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha) {
     Vec3f sp4C;
@@ -6313,10 +6214,6 @@ void func_8006C0C8(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha) {
     gMatrixEffectCount += 1;
 }
 
-#ifdef NEEDS_RODATA
-// data/data_800E8700.s
-extern Vtx D_800E87C0[];                                /* unable to generate initializer */
-
 void func_8006C294(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha) {
     Vec3f sp5C;
     Vec3s sp54;
@@ -6342,9 +6239,6 @@ void func_8006C294(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha) {
     gSPDisplayList(gDisplayListHead++, D_0D008DA0);
     gMatrixEffectCount += 1;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006C294.s")
-#endif
 
 void func_8006C4D4(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha, s16 arg4) {
     Vec3f sp4C;
@@ -6547,7 +6441,8 @@ void func_8006C9B8(Player *player, s16 arg1, s8 arg2, s8 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006C9B8.s")
 #endif
 
-#ifdef NEEDS_RODATA
+#ifdef NON_MATCHING
+// Something really wrong with arg3 on these functions, could be fake?
 void func_80062C74(Player *player, s16 arg1, s32 arg2, s32 arg3);
 void func_80064184(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3);
 void func_800630C0(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3);
@@ -6556,6 +6451,8 @@ void func_80063268(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3);
 
 extern s32 gActiveScreenMode;
 
+// Replacing arg3 with 0 seems to make the percentage higher.
+// func_80060504 args could be wrong as well.
 void func_8006CEC0(Player *arg0, s16 arg1, s8 arg2, s8 arg3) {
     u16 temp_v0_3;
     s32 sp20 = arg1;
@@ -6603,7 +6500,8 @@ void func_8006CEC0(Player *arg0, s16 arg1, s8 arg2, s8 arg3) {
                 && ((arg0->unk_0BC & 0x400) != 0x400)
                 && ((arg0->unk_0BC & 0x01000000) != 0x01000000))  {
                 if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100))  {
-                    func_80060504(arg0, arg1, sp20, arg2, arg3);
+                    //func_80060504(arg0, arg1, sp20, arg2, arg3);
+                    func_80060504(arg0, sp20, arg2, arg3);
                 }
             }
             break;
@@ -6617,7 +6515,8 @@ void func_8006CEC0(Player *arg0, s16 arg1, s8 arg2, s8 arg3) {
                 && ((arg0->unk_0BC & 0x400) != 0x400)
                 && ((arg0->unk_0BC & 0x01000000) != 0x01000000)) {
                 if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100))  {
-                    func_80060504(arg0, arg1, sp20, arg2, arg3);
+                    //func_80060504(arg0, arg1, sp20, arg2, arg3);
+                    func_80060504(arg0, sp20, arg2, arg3);
                 }
             }
             break;
