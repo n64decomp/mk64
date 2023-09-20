@@ -449,7 +449,7 @@ $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
-$(BUILD_DIR)/src/trophy_model.inc.o: src/trophy_model.inc.c
+$(BUILD_DIR)/src/ceremony_data.inc.o: src/ceremony_data.inc.c
 	@$(PRINT) "$(GREEN)Compiling Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/reflection_map_brass.rgba16.inc.c -g textures/trophy/reflection_map_brass.rgba16.png -f rgba16 -s u8
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/reflection_map_silver.rgba16.inc.c -g textures/trophy/reflection_map_silver.rgba16.png -f rgba16 -s u8
@@ -619,13 +619,13 @@ endif
 # Compile Trophy and Podium Models                                             #
 #==============================================================================#
 
-$(BUILD_DIR)/src/trophy_model.inc.mio0.o: $(BUILD_DIR)/src/trophy_model.inc.o
+$(BUILD_DIR)/src/ceremony_data.inc.mio0.o: $(BUILD_DIR)/src/ceremony_data.inc.o
 	@$(PRINT) "$(GREEN)Compressing Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/src/trophy_model.inc.elf.map -o $(BUILD_DIR)/src/trophy_model.inc.elf $(BUILD_DIR)/src/trophy_model.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/trophy_model.inc.elf $(BUILD_DIR)/src/trophy_model.inc.bin
-	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/trophy_model.inc.bin $(BUILD_DIR)/src/trophy_model.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel trophy_model\n\n.incbin \"build/us/src/trophy_model.inc.mio0\"\n\n.balign 16\nglabel data_821D10_end\n" > build/us/src/trophy_model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.s
+	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/src/ceremony_data.inc.elf.map -o $(BUILD_DIR)/src/ceremony_data.inc.elf $(BUILD_DIR)/src/ceremony_data.inc.o --no-check-sections
+	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/ceremony_data.inc.elf $(BUILD_DIR)/src/ceremony_data.inc.bin
+	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/ceremony_data.inc.bin $(BUILD_DIR)/src/ceremony_data.inc.mio0
+	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"build/us/src/ceremony_data.inc.mio0\"\n\n.balign 16\nglabel data_821D10_end\n" > build/us/src/ceremony_data.inc.mio0.s
+	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/ceremony_data.inc.mio0.s
 
 
 
@@ -674,7 +674,7 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
-$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
+$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) $(LDFLAGS) -o $@
 
