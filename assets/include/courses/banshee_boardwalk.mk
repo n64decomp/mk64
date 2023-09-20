@@ -63,9 +63,9 @@ $(BANSHEE_BOARDWALK_DIR)/boo_frames.bin: $(BANSHEE_BOARDWALK_BOO_FRAMES:%.png=%.
 $(BANSHEE_BOARDWALK_BOO_FRAMES:%.png=%.bin): %.bin : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(BANSHEE_BOARDWALK_BOO_PALETTE)
 
-$(BUILD_DIR)/courses/special_cup/banshee_boardwalk/course_data.inc.o: $(BANSHEE_BOARDWALK_BOO_PALETTE:%.png=%.inc.c)
-$(BUILD_DIR)/courses/special_cup/banshee_boardwalk/course_data.inc.o: $(BANSHEE_BOARDWALK_BAT_PALETTE:%.png=%.inc.c) $(BANSHEE_BOARDWALK_BAT_FRAMES:%.png=%.inc.c)
-$(BUILD_DIR)/courses/special_cup/banshee_boardwalk/course_data.inc.o: $(BANSHEE_BOARDWALK_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/courses/banshee_boardwalk/course_data.inc.o: $(BANSHEE_BOARDWALK_BOO_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/courses/banshee_boardwalk/course_data.inc.o: $(BANSHEE_BOARDWALK_BAT_PALETTE:%.png=%.inc.c) $(BANSHEE_BOARDWALK_BAT_FRAMES:%.png=%.inc.c)
+$(BUILD_DIR)/courses/banshee_boardwalk/course_data.inc.o: $(BANSHEE_BOARDWALK_PNG:%.png=%.inc.c)
 
 $(BANSHEE_BOARDWALK_BAT_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(BANSHEE_BOARDWALK_BAT_PALETTE)

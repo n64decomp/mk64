@@ -1,5 +1,5 @@
-#ifndef ALL_COURSE_DATA_H
-#define ALL_COURSE_DATA_H
+#ifndef ALL_COURSE_MODEL_H
+#define ALL_COURSE_MODEL_H
 
 #include "macros.h"
 #include "common_structs.h"
@@ -52,4 +52,4 @@ extern mk64_Vtx d_course_wario_stadium_vertex[0x17B3];
 #define d_course_sherbet_land_vertex_count       ARRAY_COUNT(d_course_sherbet_land_vertex)
 #define d_course_wario_stadium_vertex_count      ARRAY_COUNT(d_course_wario_stadium_vertex)
 
-#endif
+#endif // ALL_COURSE_MODEL_H

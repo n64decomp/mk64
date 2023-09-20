@@ -20,8 +20,8 @@ $(KOOPA_TROOPA_BEACH_DIR)/gTextureKoopaTroopaPalmTrunk.png
 
 KOOPA_TROOPA_BEACH_EXPORT_SENTINEL := $(KOOPA_TROOPA_BEACH_DIR)/.export
 
-$(BUILD_DIR)/courses/mushroom_cup/koopa_troopa_beach/course_data.inc.o: $(KOOPA_TROOPA_BEACH_CRAB_PALETTE:%.png=%.inc.c) $(KOOPA_TROOPA_BEACH_CRAB_FRAMES:%.png=%.inc.c)
-$(BUILD_DIR)/courses/mushroom_cup/koopa_troopa_beach/course_data.inc.o: $(KOOPA_TROOPA_BEACH_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/courses/koopa_troopa_beach/course_data.inc.o: $(KOOPA_TROOPA_BEACH_CRAB_PALETTE:%.png=%.inc.c) $(KOOPA_TROOPA_BEACH_CRAB_FRAMES:%.png=%.inc.c)
+$(BUILD_DIR)/courses/koopa_troopa_beach/course_data.inc.o: $(KOOPA_TROOPA_BEACH_PNG:%.png=%.inc.c)
 
 $(KOOPA_TROOPA_BEACH_CRAB_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(KOOPA_TROOPA_BEACH_CRAB_PALETTE)

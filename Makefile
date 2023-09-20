@@ -210,7 +210,7 @@ ASM_DIRS       := asm asm/audio asm/os asm/unused asm/os/non_matchings $(DATA_DI
 
 
 # Directories containing course source and data files
-COURSE_DIRS := $(shell find courses -mindepth 2 -type d)
+COURSE_DIRS := $(shell find courses -mindepth 1 -type d)
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 
@@ -222,14 +222,12 @@ ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) inc
 MAKEFILE_SPLIT = Makefile.split
 include $(MAKEFILE_SPLIT)
 
-COURSE_ASM_FILES := $(wildcard courses/*/*/packed.s)
-
 # These are files that need to be encoded into EUC-JP in order for the ROM to match
 # We filter them out from the regular C_FILES since we don't need nor want the
 # UTF-8 versions getting compiled
 EUC_JP_FILES := src/ending/credits.c src/code_80005FD0.c src/code_80091750.c
 C_FILES := $(filter-out $(EUC_JP_FILES),$(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c)))
-S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s)) $(COURSE_ASM_FILES)
+S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s))
 COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(wildcard $(dir)/*.inc.c))
 
 # Object files
@@ -451,7 +449,7 @@ $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
-$(BUILD_DIR)/src/trophy_model.inc.o: src/trophy_model.inc.c
+$(BUILD_DIR)/src/ending/ceremony_data.inc.o: src/ending/ceremony_data.inc.c
 	@$(PRINT) "$(GREEN)Compiling Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/reflection_map_brass.rgba16.inc.c -g textures/trophy/reflection_map_brass.rgba16.png -f rgba16 -s u8
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/reflection_map_silver.rgba16.inc.c -g textures/trophy/reflection_map_silver.rgba16.png -f rgba16 -s u8
@@ -501,16 +499,15 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 # Course Packed Displaylists Generation                                        #
 #==============================================================================#
 
-COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
-
-%/packed.inc.elf: %/packed.inc.o
+%/course_displaylists.inc.elf: %/course_displaylists.inc.o
 	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -o $@ $< --no-check-sections
 
-%/packed.inc.bin: %/packed.inc.elf
+%/course_displaylists.inc.bin: %/course_displaylists.inc.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-%/packed_dl.inc.bin: %/packed.inc.bin
-	@$(PRINT) "$(GREEN)Compressing Packed Displaylists:  $(BLUE)$@ $(NO_COL)\n"
+# Displaylists are packed using a custom format 
+%/course_displaylists_packed.inc.bin: %/course_displaylists.inc.bin
+	@$(PRINT) "$(GREEN)Compressing Course Displaylists:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(DLPACKER) $< $@
 
 
@@ -519,21 +516,21 @@ COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.i
 # Course Geography Generation                                                  #
 #==============================================================================#
 
-COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
+COURSE_GEOGRAPHY_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_geography.inc.mio0.o)
 
-%/model.inc.elf: %/model.inc.o
+%/course_vertices.inc.elf: %/course_vertices.inc.o
 	$(V)$(LD) -t -e 0 -Ttext=0F000000 -Map $@.map -o $@ $< --no-check-sections
 
-%/model.inc.bin: %/model.inc.elf
+%/course_vertices.inc.bin: %/course_vertices.inc.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-%/model.inc.mio0: %/model.inc.bin
+%/course_vertices.inc.mio0: %/course_vertices.inc.bin
 	@$(PRINT) "$(GREEN)Compressing Course Geography:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(MIO0TOOL) -c $< $@
 
-# Geography and packed displaylists are compressed together rather than separately.
-%/model.inc.mio0.s: %/model.inc.mio0 %/packed_dl.inc.bin
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.inc.bin\"\n\n.balign 0x10\n" > $@
+# Course vertices and displaylists are included together due to no alignment between the two files.
+%/course_geography.inc.mio0.s: %/course_vertices.inc.mio0 %/course_displaylists_packed.inc.bin
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
 
 
 
@@ -546,8 +543,8 @@ LDFLAGS += $(foreach elf,$(COURSE_DATA_ELFS),-R $(elf))
 
 COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.inc.mio0.o)
 
-%/course_data.inc.elf: %/course_data.inc.o %/packed.inc.elf
-	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -R $*/packed.inc.elf -o $@ $< --no-check-sections
+%/course_data.inc.elf: %/course_data.inc.o %/course_displaylists.inc.elf
+	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -R $*/course_displaylists.inc.elf -o $@ $< --no-check-sections
 
 %/course_data.inc.bin: %/course_data.inc.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
@@ -622,13 +619,13 @@ endif
 # Compile Trophy and Podium Models                                             #
 #==============================================================================#
 
-$(BUILD_DIR)/src/trophy_model.inc.mio0.o: $(BUILD_DIR)/src/trophy_model.inc.o
+$(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o: $(BUILD_DIR)/src/ending/ceremony_data.inc.o
 	@$(PRINT) "$(GREEN)Compressing Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/src/trophy_model.inc.elf.map -o $(BUILD_DIR)/src/trophy_model.inc.elf $(BUILD_DIR)/src/trophy_model.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/trophy_model.inc.elf $(BUILD_DIR)/src/trophy_model.inc.bin
-	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/trophy_model.inc.bin $(BUILD_DIR)/src/trophy_model.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel trophy_model\n\n.incbin \"build/us/src/trophy_model.inc.mio0\"\n\n.balign 16\nglabel data_821D10_end\n" > build/us/src/trophy_model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.s
+	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/src/ending/ceremony_data.inc.elf.map -o $(BUILD_DIR)/src/ending/ceremony_data.inc.elf $(BUILD_DIR)/src/ending/ceremony_data.inc.o --no-check-sections
+	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/ending/ceremony_data.inc.elf $(BUILD_DIR)/src/ending/ceremony_data.inc.bin
+	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/ending/ceremony_data.inc.bin $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0
+	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"build/us/src/ending/ceremony_data.inc.mio0\"\n\n.balign 16\nglabel data_821D10_end\n" > build/us/src/ending/ceremony_data.inc.mio0.s
+	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.s
 
 
 
@@ -677,7 +674,7 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
-$(ELF): $(COURSE_DATA_TARGETS) $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_MODEL_TARGETS) undefined_syms.txt
+$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) $(LDFLAGS) -o $@
 

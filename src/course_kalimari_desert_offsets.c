@@ -1,6 +1,6 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
-#include "courses/mushroom_cup/kalimari_desert/course_data.inc.h"
+#include "courses/kalimari_desert/course_data.inc.h"
 
 extern u8 gTexture6684F8[];
 extern u8 gTextureSignLuigis0[];
