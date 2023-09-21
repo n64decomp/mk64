@@ -5,7 +5,7 @@ CC := gcc
 CFLAGS := -I . -Wall -Wextra -Wno-unused-parameter -pedantic -std=c99 -O2 -s
 
 # Tools to compile
-PROGRAMS := mio0 n64graphics displaylist_packer n64cksum tkmk00 extract_data_for_mio
+PROGRAMS := mio0 n64graphics baserom_extract displaylist_packer n64cksum tkmk00 extract_data_for_mio
 
 
 
@@ -21,6 +21,8 @@ displaylist_packer_CFLAGS  := -Wno-unused-result
 
 mio0_SOURCES := libmio0.c
 mio0_CFLAGS := -DMIO0_STANDALONE
+
+baserom_extract_SOURCES := baserom_extract.c utils.c libmio0.c
 
 tkmk00_SOURCES := libtkmk00.c utils.c
 tkmk00_CFLAGS := -DTKMK00_STANDALONE
