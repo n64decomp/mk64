@@ -73,6 +73,7 @@ expected/*
 /music/**/*.m64
 /sound/**/*.m64
 /sound/**/*.aiff
+/courses/**/*.vtx
 !/textures/**/*custom*.png
 !/textures/**/*custom*/**/*.png
 !/sound/**/*custom*.m64

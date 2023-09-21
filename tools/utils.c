@@ -237,16 +237,16 @@ void generate_filename(const char *in_name, char *out_name, char *extension)
    sprintf(out_name, "%s.%s", tmp_name, extension);
 }
 
-char *basename(const char *name)
-{
-   const char *base = name;
-   while (*name) {
-      if (*name++ == '/') {
-         base = name;
-      }
-   }
-   return (char *)base;
-}
+// char *basename(const char *name)
+// {
+//    const char *base = name;
+//    while (*name) {
+//       if (*name++ == '/') {
+//          base = name;
+//       }
+//    }
+//    return (char *)base;
+// }
 
 void make_dir(const char *dir_name)
 {
