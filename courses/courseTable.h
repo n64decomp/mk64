@@ -186,4 +186,14 @@ extern u8 _course_big_donut_offsetsSegmentRomEnd[];
 extern u8 d_course_big_donut_packed[];
 extern u32 big_donut_textures[];
 
+
+extern u8 _course_custom_mio0SegmentStart[];
+extern u8 _course_custom_mio0SegmentRomEnd[];
+extern u8 _course_custom_vertexSegmentStart[];
+extern u8 _course_custom_vertexSegmentRomEnd[];
+extern u8 _course_custom_offsetsSegmentStart[];
+extern u8 _course_custom_offsetsSegmentEnd[];
+extern u8 d_course_custom_packed[];
+extern u32 course_custom_textures[];
+
 #endif // COURSE_TABLE_H

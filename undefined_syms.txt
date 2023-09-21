@@ -172,7 +172,7 @@ D_0F0BD350 = 0x0F0BD350;
 D_0F0CCF50 = 0x0F0CCF50;
 D_0F0D0E50 = 0x0F0D0E50;
 
-
+d_course_custom_vertex = 0x0F000000;
 d_course_mario_raceway_vertex = 0x0F000000;
 d_course_moo_moo_farm_vertex = 0x0F000000;
 d_course_luigi_raceway_vertex = 0x0F000000;

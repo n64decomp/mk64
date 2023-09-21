@@ -42,6 +42,7 @@ typedef enum {
     /* 0x12 */ COURSE_DK_JUNGLE,
     /* 0x13 */ COURSE_BIG_DONUT,
     /* 0x14 */ COURSE_AWARD_CEREMONY,
+               COURSE_CUSTOM,
     /* 0x15 */ NUM_COURSES
 } COURSES;
 

@@ -536,6 +536,7 @@ SECTIONS
    COURSE_DATA_SEG(double_deck,course_double_deck_dl)
    COURSE_DATA_SEG(dks_jungle_parkway,course_dks_jungle_parkway_dl)
    COURSE_DATA_SEG(big_donut,course_big_donut_dl)
+   COURSE_DATA_SEG(custom,course_custom)
 
    #define COURSE_OFFSETS_SEG(name, addr) \
       BEGIN_SEG(name, addr) \
@@ -565,6 +566,7 @@ SECTIONS
    COURSE_OFFSETS_SEG(course_double_deck_offsets, 0x09000000)
    COURSE_OFFSETS_SEG(course_dks_jungle_parkway_offsets, 0x09000000)
    COURSE_OFFSETS_SEG(course_big_donut_offsets, 0x09000000)
+   COURSE_OFFSETS_SEG(course_custom_offsets, 0x09000000)
 
    /* Segment 0xF Course Geography (0x4 uncompressed) and Segment 0x7 Packed Displaylists */
    
@@ -596,6 +598,7 @@ SECTIONS
    COURSE_VERT_SEG(double_deck,double_deck_vertex)
    COURSE_VERT_SEG(dks_jungle_parkway,dks_jungle_parkway_vertex)
    COURSE_VERT_SEG(big_donut,big_donut_vertex)
+   COURSE_VERT_SEG(custom,course_custom_vertex)
 
    BEGIN_SEG(audio_banks, 0x0)
    {

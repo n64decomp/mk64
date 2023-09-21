@@ -1056,18 +1056,18 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
         {
             if (btnAndStick & R_JPAD) {
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
-                if (gCurrentCourseId < 0x13) {
-                    gCurrentCourseId += 1;
+                if (gCurrentCourseId < 0x14) {
+                    gCurrentCourseId = 0x14;
                 } else {
-                    gCurrentCourseId = 0;
+                    gCurrentCourseId = 0x14;
                 }
             }
             if (btnAndStick & L_JPAD) {
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
                 if (gCurrentCourseId > 0) {
-                    gCurrentCourseId -= 1;
+                    gCurrentCourseId = 0x14;
                 } else {
-                    gCurrentCourseId = 0x13;
+                    gCurrentCourseId = 0x14;
                 }
             }
             if (btnAndStick & U_JPAD) {

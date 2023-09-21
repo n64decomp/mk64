@@ -28,5 +28,6 @@
 #include "courses/royal_raceway/course_displaylists.inc.h"
 #include "courses/sherbet_land/course_displaylists.inc.h"
 #include "courses/wario_stadium/course_displaylists.inc.h"
+#include "courses/custom/course_displaylists.inc.h"
 
 #endif // ALL_COURSE_PACKED_H

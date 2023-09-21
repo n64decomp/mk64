@@ -1189,6 +1189,22 @@ void render_big_donut(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000230));
 }
 
+void render_custom(struct UnkStruct_800DC5EC *arg0) {
+
+    gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
+    gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
+        gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
+        gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+
+
+    // d_course_big_donut_packed_dl_450
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000000));
+
+}
+
 void func_8029569C(void) {
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
@@ -1251,6 +1267,8 @@ void func_8029569C(void) {
         case COURSE_BIG_DONUT:
             gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_0);
             break;
+        case COURSE_CUSTOM:
+            gSPDisplayList(gDisplayListHead++, 0x07000000);
     }
 }
 
@@ -1323,6 +1341,8 @@ void func_80295A38(struct UnkStruct_800DC5EC *arg0) {
     case COURSE_BIG_DONUT:
         render_big_donut(arg0);
         break;
+    case COURSE_CUSTOM:
+        render_custom(arg0);
     }
 }
 

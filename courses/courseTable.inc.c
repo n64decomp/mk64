@@ -145,5 +145,12 @@ struct courseTable gCourseTable[] = {{
         d_course_big_donut_vertex, d_course_big_donut_vertex_count,
         d_course_big_donut_packed, d_course_big_donut_packed_end,
         big_donut_textures, 0, 0x0000,
+}, {
+	_course_custom_mio0SegmentStart, _course_custom_mio0SegmentRomEnd,
+        _course_custom_vertexSegmentStart, _course_custom_vertexSegmentRomEnd,
+        _course_custom_offsetsSegmentStart, _course_custom_offsetsSegmentEnd,
+        d_course_custom_vertex, d_course_custom_vertex_count,
+        d_course_custom_packed, d_course_custom_packed_end,
+        course_custom_textures, 0, 0x0000,
 }};
 

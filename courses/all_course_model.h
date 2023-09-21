@@ -30,6 +30,7 @@ extern mk64_Vtx d_course_bowsers_castle_vertex[0x2537];
 extern mk64_Vtx d_course_royal_raceway_vertex[0x2072];
 extern mk64_Vtx d_course_sherbet_land_vertex[0xA76];
 extern mk64_Vtx d_course_wario_stadium_vertex[0x17B3];
+extern mk64_Vtx d_course_custom_vertex[4];
 
 #define d_course_big_donut_vertex_count          ARRAY_COUNT(d_course_big_donut_vertex)
 #define d_course_block_fort_vertex_count         ARRAY_COUNT(d_course_block_fort_vertex)
@@ -51,5 +52,6 @@ extern mk64_Vtx d_course_wario_stadium_vertex[0x17B3];
 #define d_course_royal_raceway_vertex_count      ARRAY_COUNT(d_course_royal_raceway_vertex)
 #define d_course_sherbet_land_vertex_count       ARRAY_COUNT(d_course_sherbet_land_vertex)
 #define d_course_wario_stadium_vertex_count      ARRAY_COUNT(d_course_wario_stadium_vertex)
+#define d_course_custom_vertex_count      ARRAY_COUNT(d_course_custom_vertex)
 
 #endif // ALL_COURSE_MODEL_H

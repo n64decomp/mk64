@@ -452,6 +452,7 @@ char *gDebugCourseNames[] = {
     "deck",
     "jungle",
     "doughnut",
+    "custom",
 };
 
 const u8 gPerCupIndexByCourseId[] = {
