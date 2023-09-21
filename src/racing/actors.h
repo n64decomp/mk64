@@ -122,7 +122,6 @@ extern u16 D_802BA260; // Box Truck sub-type?
 
 extern u16 gNearestWaypointByPlayerId[];
 
-extern Camera *camera1;
 extern s16 gCurrentCourseId;
 extern u16 isCrossingTriggeredByIndex[];
 extern Lights1 D_800DC610[];

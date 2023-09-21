@@ -68,9 +68,19 @@ void func_8001E0C4(Camera*, Player*, s8);
 void func_8001E45C(Camera*, Player*, s8);
 void func_8001E8E8(Camera*, Player*, s8);
 void func_8001EA0C(Camera*, Player*, s8);
-void func_8001F87C(s32);
 void func_8001EE98(Player*, Camera*, s8);
 void func_8001F394(Player*, f32*);
+void func_8001F87C(s32);
+
+extern f32 D_800DDB30[];
+
+extern Camera cameras[];
+extern Camera *camera1;
+extern Camera *camera2;
+extern Camera *camera3;
+extern Camera *camera4;
+
+// end of camera.c variables
 
 extern s8 D_80164A89;
 
@@ -81,12 +91,5 @@ extern f32 D_80164A30;
 extern f32 D_80164A90[];
 extern f32 D_80164AA0[];
 
-extern f32 D_800DDB30[];
-
-extern Camera cameras[];
-extern Camera *camera1;
-extern Camera *camera2;
-extern Camera *camera3;
-extern Camera *camera4;
 
 #endif
