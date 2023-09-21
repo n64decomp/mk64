@@ -4,7 +4,6 @@
 #include <global.h>
 #include <common_structs.h>
 
-#define NOT_INCLUDE_CONST_MENU
 #include "menus.h"
 #include "main.h"
 #include "code_800029B0.h"

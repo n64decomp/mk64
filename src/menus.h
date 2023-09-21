@@ -88,18 +88,16 @@ extern s8 D_800E86D0[];
 extern s8 unref_800E86E0[];
 extern u32 sVIGammaOffDitherOn;
 
-#ifndef NOT_INCLUDE_CONST_MENU
-extern s8 D_800F2B50[];
-extern s8 D_800F2B58[];
-extern s8 D_800F2B60[5][3];
-extern s32 gGameModeFromNumPlayersAndRowSelection[5][3];
-extern s8 D_800F2BAC[];
-extern s16 gCupCourseOrder[5][4];
+extern const s8 D_800F2B50[5];
+extern const s8 D_800F2B58[5];
+extern const s8 D_800F2B60[5][3];
+extern const s32 gGameModeFromNumPlayersAndRowSelection[5][3];
+extern const s8 D_800F2BAC[8];
+extern const s16 gCupCourseOrder[NUM_CUPS][NUM_COURSES_PER_CUP];
 
-extern s8 D_800F2BDC[];
+extern const s8 D_800F2BDC[8];
 
-extern union GameModePack D_800F2BE4;
-#endif
+extern const union GameModePack D_800F2BE4;
 
 // end of menus.c variables
 
