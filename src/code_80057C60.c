@@ -23,6 +23,7 @@
 #include "audio/external.h"
 #include "objects.h"
 #include "bomb_kart.h"
+#include "menus.h"
 
 
 // WARNING: this macro is undef'd at the end of this file

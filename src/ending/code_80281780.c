@@ -17,6 +17,7 @@
 #include "code_80281C40.h"
 #include "code_800029B0.h"
 #include "main.h"
+#include "menus.h"
 
 u8 defaultCharacterIds[] = {
     1, 2, 3, 4, 5, 6, 7, 0

@@ -152,8 +152,6 @@ void func_8001C42C(void);
 /* This is where I'd put my static data, if I had any */
 // 0 or 1, only 1 when when in extra (mirror) mode
 extern s16 D_8016347A;
-// Might belong in menus.h?
-extern s8  D_8018EDF3;
 
 // Suspected to be the "width" of each wayPoint. See data_0DD0A0_1.s
 extern f32 D_800DCA4C[];

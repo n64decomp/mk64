@@ -348,7 +348,6 @@ extern s32  D_800DDB24;
 extern s16 D_80164478[];
 extern u8 *D_8018D9BC;
 
-extern s8  D_800E86D0[];
 extern s32 D_80165754;
 extern intptr_t D_8018D9B0;
 extern s8  D_8018D9D8;
@@ -370,15 +369,6 @@ extern s32 D_8018E850[];
 extern s32 D_8018E854;
 extern s32 D_8018E858[];
 extern s32 D_8018E85C;
-extern s32 D_8018EDC0;
-extern f32 D_8018EDC4;
-extern f32 D_8018EDC8;
-extern f32 D_8018EDCC;
-extern f32 D_8018EDD0;
-extern f32 D_8018EDD4;
-extern f32 D_8018EDD8;
-extern f32 D_8018EDDC;
-extern s8  D_8018EE08;
 
 extern s32 D_8018E7B8[];
 extern s32 D_8018E7E0;
