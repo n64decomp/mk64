@@ -246,6 +246,4 @@ extern s8 D_802B8864[];
 
 extern u16 D_800DC5BC;
 
-extern Vec3f D_802B91C8;
-
 #endif // ACTORS_H

@@ -33,8 +33,6 @@ extern s8 D_8018EDF3;
 
 extern s8 gCupSelection;
 
-extern Vec3f D_802B91C8;
-
 extern struct ActorSpawnData d_course_moo_moo_farm_tree_spawn[];
 
 
