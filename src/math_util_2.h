@@ -29,9 +29,9 @@ void func_8004214C(u16, f32);
 void func_800421FC(s32, s32, f32);
 void func_800423F0(Mat4, u16, u16, u16);
 void func_8004252C(Mat4, u16, u16);
-void func_80042984(Mat4, f32);
-void func_800429B8(Mat4, f32);
-void func_800429EC(Mat4, f32);
+void mtxf_mult_first_column(Mat4, f32);
+void mtxf_mult_second_column(Mat4, f32);
+void mtxf_mult_third_column(Mat4, f32);
 void func_80042B5C(Vec3f, Vec3f, Vec3s);
 void func_80042EB8(Vec3f, Vec3f, f32);
 

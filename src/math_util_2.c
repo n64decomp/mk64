@@ -835,25 +835,25 @@ void func_800427DC(s32 arg0, Mat4 arg1) {
     arg1[3][3] = 1.0f;
 }
 
-UNUSED void func_80042984(Mat4 arg0, f32 arg1) {
+UNUSED void mtxf_mult_first_column(Mat4 arg0, f32 arg1) {
     arg0[0][0] *= arg1;
     arg0[1][0] *= arg1;
     arg0[2][0] *= arg1;
 }
 
-UNUSED void func_800429B8(Mat4 arg0, f32 arg1) {
+UNUSED void mtxf_mult_second_column(Mat4 arg0, f32 arg1) {
     arg0[0][1] *= arg1;
     arg0[1][1] *= arg1;
     arg0[2][1] *= arg1;
 }
 
-UNUSED void func_800429EC(Mat4 arg0, f32 arg1) {
+UNUSED void mtxf_mult_third_column(Mat4 arg0, f32 arg1) {
     arg0[0][2] *= arg1;
     arg0[1][2] *= arg1;
     arg0[2][2] *= arg1;
 }
 
-void func_80042A20(Mat4 arg0, Vec3f arg1, Vec3f arg2, u16 arg3, f32 arg4) {
+void func_80042A20(Mat4 dest, Vec3f arg1, Vec3f arg2, u16 arg3, f32 arg4) {
     Vec3f sp44;
     Vec3f sp38;
     Vec3f sp2C;
@@ -864,22 +864,22 @@ void func_80042A20(Mat4 arg0, Vec3f arg1, Vec3f arg2, u16 arg3, f32 arg4) {
     func_80041530(sp38);
     func_80041594(sp2C, sp38, arg1);
     func_80041530(sp2C);
-    arg0[0][0] = sp38[0] * arg4;
-    arg0[0][1] = sp38[1] * arg4;
-    arg0[0][2] = sp38[2] * arg4;
-    arg0[3][0] = arg2[0];
-    arg0[1][0] = arg1[0] * arg4;
-    arg0[1][1] = arg1[1] * arg4;
-    arg0[1][2] = arg1[2] * arg4;
-    arg0[3][1] = arg2[1];
-    arg0[2][0] = sp2C[0] * arg4;
-    arg0[2][1] = sp2C[1] * arg4;
-    arg0[2][2] = sp2C[2] * arg4;
-    arg0[3][2] = arg2[2];
-    arg0[0][3] = 0.0f;
-    arg0[1][3] = 0.0f;
-    arg0[2][3] = 0.0f;
-    arg0[3][3] = 1.0f;
+    dest[0][0] = sp38[0] * arg4;
+    dest[0][1] = sp38[1] * arg4;
+    dest[0][2] = sp38[2] * arg4;
+    dest[3][0] = arg2[0];
+    dest[1][0] = arg1[0] * arg4;
+    dest[1][1] = arg1[1] * arg4;
+    dest[1][2] = arg1[2] * arg4;
+    dest[3][1] = arg2[1];
+    dest[2][0] = sp2C[0] * arg4;
+    dest[2][1] = sp2C[1] * arg4;
+    dest[2][2] = sp2C[2] * arg4;
+    dest[3][2] = arg2[2];
+    dest[0][3] = 0.0f;
+    dest[1][3] = 0.0f;
+    dest[2][3] = 0.0f;
+    dest[3][3] = 1.0f;
 }
 
 UNUSED void func_80042B5C(Vec3f arg0, Vec3f arg1, Vec3s arg2) {
