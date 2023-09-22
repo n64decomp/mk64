@@ -44,6 +44,7 @@ void mtxf_translate_vec3f_mat3(Vec3f, Mat3);
 void mtxf_translate_vec3f_mat4(Vec3f, Mat4);
 void func_802B64C4(Vec3f, s16);
 void func_802B6540(Mat3, f32, f32, f32, s16);
+void func_802B6A84(Mat3, s16, f32, f32, f32);
 void func_802B6BC0(Mat4, s16, f32, f32, f32);
 void func_802B6D58(Mat4, Vec3f, Vec3f);
 void mtxf_multiplication(Mat4, Mat4, Mat4);
