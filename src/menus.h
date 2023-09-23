@@ -11,6 +11,13 @@ enum MenuOptionsCursorPositions {
     MENU_OPTIONS_CSRPOS_SOUNDMODE = 0x16
 };
 
+// needs to be a union (or array...?) to go into rodata as a const
+// terrible for endianness... Best guess as to what this is for..
+union GameModePack {
+    u8  modes[4];
+    s32 word;
+};
+
 /* functions */
 void update_menus(void);
 void options_menu_act(struct Controller *, u16);
@@ -28,23 +35,8 @@ void func_800B3F74(s32);
 void func_800B44AC(void);
 void func_800B44BC(void);
 s32  func_800B4520(void);
-void func_800B4560(s32, s32);
 
 /* data */
-extern s32 gMenuSelection;
-extern s32 D_800E86A4;
-extern s8 gCharacterSelections[4];
-extern s8 D_800E86AC[4];
-extern s8 D_800E86B0[4][3];
-extern s8 gNextDemoId;
-extern s8 gControllerPakSelectedTableRow;
-extern s8 D_800E86C4[12];
-extern s8 D_800E86D0[16];
-
-extern const s8 D_800F2B60[5][3];
-extern const s32 gGameModeFromNumPlayersAndRowSelection[5][3];
-extern const s16 gCupCourseOrder[5][4];
-
 extern s32 D_8018EDC0;
 extern f32 D_8018EDC4;
 extern f32 D_8018EDC8;
@@ -54,8 +46,9 @@ extern f32 D_8018EDD4;
 extern f32 D_8018EDD8;
 extern f32 D_8018EDDC;
 extern s32 D_8018EDE0;
-extern s8 gCharacterGridSelections[4];
-extern s8 D_8018EDE8[4];
+
+extern s8 gCharacterGridSelections[];
+extern s8 D_8018EDE8[];
 extern s8 D_8018EDEC;
 extern s8 gMainMenuSelectionDepth;
 extern s8 D_8018EDEE;
@@ -74,10 +67,38 @@ extern s8 gDebugGotoScene;
 extern s8 D_8018EDFB;
 extern s8 D_8018EDFC;
 extern s32 gMenuTimingCounter;
+extern s32 gMenuDelayTimer;
 extern s8 D_8018EE08;
 extern s8 gCupSelection;
+extern s8 D_8018EE0A;
 extern s8 gCupCourseSelection;
 extern s8 D_8018EE0C;
-extern struct_8018EE10_entry D_8018EE10[2];
+extern struct_8018EE10_entry D_8018EE10[];
+
+extern s32 gMenuSelection;
+extern s32 D_800E86A4;
+extern s8 gCharacterSelections[];
+
+extern s8 D_800E86AC[];
+extern s8 D_800E86B0[4][3];
+extern s8 gNextDemoId;
+extern s8 gControllerPakSelectedTableRow;
+extern s8 D_800E86C4[];
+extern s8 D_800E86D0[];
+extern s8 unref_800E86E0[];
+extern u32 sVIGammaOffDitherOn;
+
+extern const s8 D_800F2B50[5];
+extern const s8 D_800F2B58[5];
+extern const s8 D_800F2B60[5][3];
+extern const s32 gGameModeFromNumPlayersAndRowSelection[5][3];
+extern const s8 D_800F2BAC[8];
+extern const s16 gCupCourseOrder[NUM_CUPS][NUM_COURSES_PER_CUP];
+
+extern const s8 D_800F2BDC[8];
+
+extern const union GameModePack D_800F2BE4;
+
+// end of menus.c variables
 
 #endif /* MENUS_H */

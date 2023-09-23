@@ -21,6 +21,7 @@
 #include "render_courses.h"
 #include "main.h"
 #include "courses/all_course_data.h"
+#include "menus.h"
 
 extern u16 D_800DC5A8;
 
@@ -28,12 +29,6 @@ extern s32 D_802BA038;
 extern s16 D_802BA048;
 
 extern s16 gCurrentlyLoadedCourseId;
-
-extern s8 D_8018EDF3;
-
-extern s8 gCupSelection;
-
-extern Vec3f D_802B91C8;
 
 extern struct ActorSpawnData d_course_moo_moo_farm_tree_spawn[];
 

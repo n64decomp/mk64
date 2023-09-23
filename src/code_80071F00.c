@@ -27,6 +27,7 @@
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
 #include "courses/all_course_data.h"
+#include "menus.h"
 
 // TODO: unused?
 f32 D_800E43B0[] = { 

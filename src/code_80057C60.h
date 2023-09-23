@@ -228,7 +228,6 @@ void func_8006E940(Player*, s8, s8);
 extern s8 D_801657B2;
 extern s8 D_801657C8;
 extern s32 D_8018D22C;
-extern s8 D_8018EDF3;
 extern s8 D_80165898;
 extern Gfx D_0D0076F8[];
 extern s8 D_801657E4;
