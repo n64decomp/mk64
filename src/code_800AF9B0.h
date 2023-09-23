@@ -12,6 +12,5 @@ void func_800B0004(void);
 
 extern s16         gCurrentCourseId; // D_800DC5A0
 extern s32         gIsMirrorMode; // D_800DC5F4
-extern s32         D_800E86A4;
 
 #endif /* CODE_800AF9B0_H */

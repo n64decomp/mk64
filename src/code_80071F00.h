@@ -371,8 +371,6 @@ void func_80086D80(void);
 s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, uintptr_t devAddr, void *vAddr, size_t nbytes, OSMesgQueue *mq);
 s32 osRecvMesg(OSMesgQueue*, OSMesg*, s32);
 
-extern s8 D_8018EDF3;
-
 // from other_textures.s
 extern u8 D_0F0D0E50[]; // gTextureGhosts
 

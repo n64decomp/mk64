@@ -6,20 +6,10 @@
 #include "common_structs.h"
 
 extern s8    gCharacterIdByGPOverallRank[8];        // D_8018D9D0
-extern s8    gCharacterGridSelections[4];           // D_8018EDE4
-extern s8    gCharacterSelections[4];               // D_800E86A8
-extern s8    gControllerPakMenuSelection;           // D_8018EDF0
-extern s8    gControllerPakSelectedTableRow;        // D_800E86C0
 extern f32   gCourseCompletionPercentByPlayerId[8]; // D_801644D0
 extern f32   gCourseCompletionPercentByRank[8];     // D_80162FD8
-extern s8    gCourseRecordsMenuSelection;           // D_8018EDF8
-extern const s16 gCupCourseOrder[NUM_CUPS][NUM_COURSES_PER_CUP]; // D_800F2BB4
-extern s8    gCupCourseSelection;                   // D_8018EE0B
 extern char *gCupNames[];                           // D_800E7500
-extern s8    gCupSelection;                         // D_8018EE09
 extern s16   gCurrentCourseId;                      // D_800DC5A0
-
-extern s8    gDebugMenuSelection;                   // D_8018EDEF
 
 extern s8    gGPPointsByCharacterId[8];       // D_8018D9C8
 extern s16   gGPCurrentRacePlayerIdByRank[8]; // D_80164360
@@ -31,21 +21,14 @@ extern s32   gIsMirrorMode; // D_800DC604
 extern f32   gLapCompletionPercentByPlayerId[8]; // D_801644A8
 extern s32   gLapCountByPlayerId[8];             // D_80164390
 
-extern s32   gMenuTimingCounter; // D_8018EE00
 extern s32   gMenuSelection;     // D_800E86A0
-
-// Indicates the ID of the next title screen demo that will be played
-extern s8    gNextDemoId;           // D_800E86BC
 
 // Maps course IDs (as defined in the COURSES enum) to an index in a given cup's track order
 extern const u8    gPerCupIndexByCourseId[]; // D_800EFD50
 extern s32   gPlayerIsThrottleActive[];           // D_801653E0
 extern s32   gGPCurrentRaceRankByPlayerId[];      // D_801643B8
 
-extern u8    gSoundMode;                       // D_8018EDF2
 extern char *gSoundModeNames[NUM_SOUND_MODES]; // D_800E7710
-
-extern s8    gTimeTrialDataCourseIndex;           // D_8018EDF7
 
 extern struct_8018CA70_entry D_8018CA70[];
 
@@ -119,7 +102,5 @@ extern s8   D_801658FE;
 
 extern s32  gMatrixHudCount;
 extern s32  D_8018D900[];
-
-extern s8   D_8018EDEC;
 
 #endif
