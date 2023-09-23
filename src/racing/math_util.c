@@ -137,7 +137,7 @@ UNUSED void *vec3f_set_return(Vec3f dest, f32 x, f32 y, f32 z) {
     return &dest;
 }
 
-// copy mat1 to mat2
+// Copy mat1 to mat2
 void mtxf_copy(Mat4 mat1, Mat4 mat2) {
     s32 row;
     s32 column;
@@ -156,7 +156,7 @@ void mtxf_copy_n_element(s32 *dest, s32 *src, s32 n) {
    }
 }
 
-// transform a matrix to a matrix identity
+// Transform a matrix to a matrix identity
 void mtxf_identity(Mat4 mtx) {
     register s32 i;
     register s32 k;
@@ -168,7 +168,7 @@ void mtxf_identity(Mat4 mtx) {
     }
 }
 
-// add a translation vector to a matrix, mat is the matrix to add, dest is the destination matrix, pos is the translation vector
+// Add a translation vector to a matrix, mat is the matrix to add, dest is the destination matrix, pos is the translation vector
 void add_translate_mat4_vec3f(Mat4 mat, Mat4 dest, Vec3f pos) {
     dest[3][0] = mat[3][0] + pos[0];
     dest[3][1] = mat[3][1] + pos[1];
@@ -195,7 +195,7 @@ void add_translate_mat4_vec3f(Mat4 mat, Mat4 dest, Vec3f pos) {
      */
 }
 
-// more lite version of add_translate_mat4_vec3f
+// Light version of add_translate_mat4_vec3f
 UNUSED void add_translate_mat4_vec3f_lite(Mat4 mat, Mat4 dest, Vec3f pos) {
     dest[3][0] = mat[3][0] + pos[0];
     dest[3][1] = mat[3][1] + pos[1];

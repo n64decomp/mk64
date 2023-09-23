@@ -546,7 +546,7 @@ void mtxf_scale_x_y(Mat4 dest, f32 scale) {
     dest[1][1] = scale;
 }
 
-void mtxf_rotate_z_scale_x_y(Mat4 dest, u16 angle, f32 scale) {
+UNUSED void mtxf_rotate_z_scale_x_y(Mat4 dest, u16 angle, f32 scale) {
     f32 sin_theta = sins(angle);
     f32 cos_theta = coss(angle) * scale;
 
