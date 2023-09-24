@@ -6,7 +6,7 @@ CXXFLAGS := -Wall -Wextra -std=c++11
 TARGET := extractor
 
 # Source files
-SRCS := main.cpp open_baserom.cpp
+SRCS := Main.cpp OpenBaserom.cpp Yaml.cpp
 
 # Object files (automatically generated from source files)
 OBJS := $(SRCS:.cpp=.o)
@@ -23,7 +23,7 @@ all: $(TARGET)
 
 # Rule to build the executable
 $(TARGET): $(OBJS) $(LIBMIO0_OBJ)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LIBMIO0_OBJ)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LIBMIO0_OBJ) -lyaml-cpp
 
 # Rule to compile source files into object files
 %.o: %.cpp $(HEADERS)

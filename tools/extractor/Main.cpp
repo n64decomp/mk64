@@ -1,6 +1,8 @@
 #include <iostream>
 
-#include "open_baserom.hpp"
+#include "OpenBaserom.hpp"
+#include "Yaml.hpp"
+#include "Main.hpp"
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
@@ -15,21 +17,22 @@ int main(int argc, char* argv[]) {
 
     YamlInit();
 
-    //switch(data_type) {
+    // yamlData from Yaml.cpp
+
+    //switch(yamlData->data_type) {
         // case course_data:
             // pseaudo_code_example_generator();
         // break;
     //}
 
 
-    RunTests();
+
+    //RunTests();
 
     // Close baserom // Should be done automatically at the end of the program without a clsoe?.
 
     return 0;
 }
-
-
 
 void RunTests() {
     // Print the offset mappings

@@ -1,5 +1,7 @@
 course: mario_raceway
+data:
     - type: gfx
+      name: multi_gfx
       offset: 0x0
       end: 0x5228
 
@@ -35,27 +37,27 @@ course: mario_raceway
       offset: 0x6B08
 
     - type: vtx
-      name: 06006B88
+      name: h06006B88
       offset: 0x6B88
 
     - type: vtx
-      name: 06006D68
+      name: h06006D68
       offset: 0x6D68
 
     - type: vtx
-      name: 06006EE8
+      name: h06006EE8
       offset: 0x6EE8
 
     - type: vtx
-      name: 06006F48
+      name: h06006F48
       offset: 0x6F48
 
     - type: vtx
-      name: 06006FA8
+      name: h06006FA8
       offset: 0x6FA8
 
     - type: vtx
-      name: 06007008
+      name: h06007008
       offset: 0x7008
 
     - type: texture

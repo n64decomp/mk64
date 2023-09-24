@@ -1,9 +1,11 @@
-#ifndef OPEN_BASEROM_HPP
-#define OPEN_BASEROM_HPP
+#ifndef OPEN_MAIN_HPP
+#define OPEN_MAIN_HPP
 
 #pragma once
 
 
+void RunTests();
 
 
-#endif // OPEN_BASEROM_HPP
+
+#endif // OPEN_MAIN_HPP
