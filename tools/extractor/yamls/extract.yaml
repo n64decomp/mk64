@@ -1,0 +1,54 @@
+course: mario_raceway
+    - type: gfx
+    offset: 0
+    - type: gfx
+    offset: 0xE8
+    - type: gfx
+    offset: 0x1D0
+    - type: gfx
+    offset: 0x2C8
+    - type: gfx
+    offset: 0x3A8
+    - type: gfx
+    offset: 0x478
+    - type: gfx
+    offset: 0x568
+    - type: gfx
+    offset: 0x668
+    - type: gfx
+    offset: 0x750
+    - type: gfx
+    offset: 0x828
+    - type: gfx
+    offset: 0x928
+    - type: gfx
+    offset: 0xA00
+    - type: gfx
+    offset: 0xB08
+    - type: gfx
+    offset: 0xC20
+    - type: gfx
+    offset: 0xDC8
+    - type: gfx
+    offset: 0xF60
+    - type: gfx
+    offset: 0x10A8
+    - type: gfx
+    offset: 0x1210
+    - type: gfx
+    offset: 0x1408
+    - type: gfx
+    offset: 0x15C8
+    - type: gfx
+    offset: 0x1740
+    - type: gfx
+    offset: 0x1850
+    - type: gfx
+    offset: 0x1A30
+    - type: gfx
+    offset: 0x1B70
+    
+
+
+
+    type: waypoint

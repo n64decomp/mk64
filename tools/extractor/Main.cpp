@@ -11,7 +11,9 @@ int main(int argc, char* argv[]) {
     //const char* filename = argv[1];
 
     // Loads baserom and offset mappings into memory
-    file_init(argv[1], argv[2]);
+    BaseromInit(argv[1], argv[2]);
+
+    YamlInit();
 
     //switch(data_type) {
         // case course_data:
@@ -20,7 +22,7 @@ int main(int argc, char* argv[]) {
     //}
 
 
-    run_tests();
+    RunTests();
 
     // Close baserom // Should be done automatically at the end of the program without a clsoe?.
 
@@ -29,7 +31,7 @@ int main(int argc, char* argv[]) {
 
 
 
-void run_tests() {
+void RunTests() {
     // Print the offset mappings
     for (const auto& entry : offsetMap) {
         std::cout << "Offset 1: 0x" << std::hex << entry.first << " Offset 2: 0x" << entry.second << std::endl;

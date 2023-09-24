@@ -1,0 +1,118 @@
+course: mario_raceway
+    - type: gfx
+      offset: 0x0
+      end: 0x5228
+
+    - type: waypoints
+      name: unknown_waypoints
+      offset: 0x5568
+
+    - type: waypoints
+      name: track_waypoints
+      offset: 0x57B0
+    - type: tlut
+      name: piranha_plant_tlut
+      path: "assets/courses/mario_raceway/gTLUTMarioRacewayPiranhaPlant.inc.c"
+      offset: 0x6740
+
+    - type: vtx
+      name: piranha_plant_model
+      offset: 0x6950
+    - type: gfx
+      name: piranha_plant_dl
+      offset: 0x6990
+
+    - type: vtx
+      name: tree_model
+      offset: 0x6A28
+
+    - type: gfx
+      name: tree_dl
+      offset: 0x6A68
+
+    - type: vtx
+      name: sign_model
+      offset: 0x6B08
+
+    - type: vtx
+      name: 06006B88
+      offset: 0x6B88
+
+    - type: vtx
+      name: 06006D68
+      offset: 0x6D68
+
+    - type: vtx
+      name: 06006EE8
+      offset: 0x6EE8
+
+    - type: vtx
+      name: 06006F48
+      offset: 0x6F48
+
+    - type: vtx
+      name: 06006FA8
+      offset: 0x6FA8
+
+    - type: vtx
+      name: 06007008
+      offset: 0x7008
+
+    - type: texture
+      name: sign_left
+      path: "assets/courses/mario_raceway/gTextureMarioRacewaySignLeft.inc.c"
+      offset: 0x7068
+
+    - type: texture
+      name: sign_right
+      path: "assets/courses/mario_raceway/gTextureMarioRacewaySignRight.inc.c"
+      offset: 0x8068
+
+    - type: gfx
+      name: 9068_dl
+      offset: 0x9068
+
+    - type: gfx
+      name: 90B0_dl
+      offset: 0x90B0
+
+    - type: gfx
+      name: 90C0_dl
+      offset: 0x90C0
+
+    - type: gfx
+      name: 9190_dl
+      offset: 0x9190
+
+    - type: gfx
+      name: 9250_dl
+      offset: 0x9250
+
+    - type: gfx
+      name: 9310
+      offset: 0x9310
+
+    - type: gfx
+      name: sign_dl
+      offset: 0x9330
+
+    - type: gfx
+      name: 9348_dl
+      offset: 0x9348
+
+    - type: actor_spawn
+      name: item_box_spawns
+      offset: 0x9498
+
+    - type: actor_spawn
+      name: piranha_plant_spawns
+      offset: 0x9518
+
+    - type: actor_spawn
+      name: tree_spawns
+      offset: 0x9570
+
+    - type: track_sections
+      name: track_sections
+      offset: 0x9650
+

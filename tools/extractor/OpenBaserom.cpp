@@ -12,14 +12,14 @@ std::vector<char> buffer;
 std::map<int, int> offsetMap; // Define a map to store offset mappings
 
 
-void file_init(const char* baseromFile, const char* offsetsFile) {
-    baserom(baseromFile);
-    offsets(offsetsFile);
+void BaseromInit(const char* baseromFile, const char* offsetsFile) {
+    Baserom(baseromFile);
+    Offsets(offsetsFile);
 
 }
 
 // Opens baserom_extract
-void baserom(const char* filename) {
+void Baserom(const char* filename) {
 
     std::ifstream file(filename, std::ios::binary);
 
@@ -47,7 +47,7 @@ void baserom(const char* filename) {
     // No need to explicitly close the file; it will be closed when 'file' goes out of scope.
 }
 
-void offsets(const char* offsetsFile) {
+void Offsets(const char* offsetsFile) {
     std::ifstream file(offsetsFile); // Use offsetsFile instead of filename
 
     if (!file) {
