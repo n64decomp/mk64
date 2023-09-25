@@ -12664,15 +12664,15 @@ void func_800AB9B0(struct_8018D9E0_entry *arg0) {
 }
 
 void func_800ABAE8(struct_8018D9E0_entry *arg0) {
-    s32 phi_v1;
+    s32 count;
 
     if (arg0->type == 0x8C) {
-        phi_v1 = 4;
+        count = 4;
     } else {
-        phi_v1 = arg0->type - 0x78;
+        count = arg0->type - 0x78;
     }
-    arg0->column = D_800E7430[phi_v1].column;
-    arg0->row = D_800E7430[phi_v1].row;
+    arg0->column = D_800E7430[count].column;
+    arg0->row = D_800E7430[count].row;
 }
 
 void func_800ABB24(struct_8018D9E0_entry *arg0) {
