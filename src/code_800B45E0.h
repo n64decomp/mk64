@@ -92,7 +92,6 @@ extern u32*        D_800DC714;
 extern u16         gCompanyCode;
 extern u32         gGameCode; // osPfs gamecode
 extern s8          gControllerPak1State; // Current state of Controller Pak 1
-extern struct_8018EE10_entry D_8018EE10[];
 extern struct_8018EE10_entry *D_8018D9C0;
 
 extern s8          sControllerPak2State; // Current state of the Controller Pak 2
@@ -111,12 +110,6 @@ extern s32         gControllerPak1MaxWriteableFiles;
 extern s8          D_8018EDE5;
 extern s8          D_8018EDE6;
 extern s8          D_8018EDE7;
-extern u8          gSoundMode; // D_8018EDF2
-extern s8          gTimeTrialDataCourseIndex; // D_8018EDF7
-extern s8          gCourseRecordsMenuSelection; // D_8018EDF8
-extern s32         gMenuTimingCounter; // D_8018EE00
-extern s8          gCupSelection; // D_8018EE09
-extern s8          gCupCourseSelection; // D_8018EE0B
 
 
 #endif /* CODE_800B045E0_H */

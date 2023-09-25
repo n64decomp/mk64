@@ -64,6 +64,11 @@ f32  coss(u16);
 s32  is_visible_between_angle(u16, u16, u16);
 f32  is_within_render_distance(Vec3f, Vec3f, u16, f32, f32, f32);
 
+extern s32 D_802B91C0[];
+extern Vec3f D_802B91C8;
+
+// end of math_util.c variables
+
 extern u16 gRandomSeed16;
 
 #endif // MATH_UTIL_H

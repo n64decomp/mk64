@@ -73,7 +73,7 @@ f32 func_802B51E8(Vec3f arg0, Vec3f arg1) {
     sub_z = arg1[2] - arg0[2];
     return (sub_x * sub_x) + (sub_y * sub_y) + sub_z + sub_z;
 }
-//u32 atan2s(f32, f32);  // might be s32
+
 u32 get_angle_between_points(Vec3f arg0, Vec3f arg1) {
     f32 temp_v1;
     f32 temp_v2;

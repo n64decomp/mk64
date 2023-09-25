@@ -23,7 +23,7 @@
 #include "common_textures.h"
 #include "common_structs.h"
 #include "main.h"
-
+#include "menus.h"
 
 extern UnkCommonTextureStruct0 *D_800DC720[];
 

@@ -34,11 +34,8 @@ extern s32 D_00825800;
 extern s32 D_00831DC0;
 extern s32 D_00835BA0;
 
-extern s8 gCharacterSelections[];
-
 extern u8 defaultCharacterIds[];
 extern s8 gGPOverallRanks[8];
-extern s8 D_8018EDF3;
 
 extern u8 *_data_821D10SegmentRomStart;
 extern u8 *_data_825800SegmentRomStart;

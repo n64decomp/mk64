@@ -18,6 +18,7 @@
 #include "render_courses.h"
 #include "math_util.h"
 #include "main.h"
+#include "menus.h"
 
 
 Vp D_802B8880[] = {

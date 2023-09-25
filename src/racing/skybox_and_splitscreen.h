@@ -59,8 +59,6 @@ extern struct UnkStruct_800DC5EC *D_800DC5F8;
 extern u16 D_800DC5B0;
 extern u16 gIsInQuitToMenuTransition;
 extern u16 gQuitToMenuTransitionCounter;
-extern s32 gMenuSelection;
-extern s32 D_800E86A4;
 
 extern s32 D_800DC5D0;
 extern s32 D_800DC5D4;

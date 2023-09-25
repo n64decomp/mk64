@@ -34,7 +34,6 @@ extern s16 D_80165730;
 extern s16 D_80165740;
 extern s16 D_80165748;
 extern s32 D_80183D5C;
-extern s8  D_8018EDF3;
 extern u8 *D_8018D1E0;
 extern intptr_t D_8018D9B0;
 
