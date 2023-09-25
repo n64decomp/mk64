@@ -1,6 +1,7 @@
-#include <string>
-#include <iostream>
 #include <fstream>
+#include <iostream>
+#include <sstream>
+#include <string>
 #include <vector>
 
 #include "libmio0.h"
@@ -37,7 +38,7 @@ std::vector<model_location> all_models = {
 typedef struct {
     short ob[3];    /* x, y, z */
     short tc[2];    /* texture coord */
-    unsigned char n[3];    /* color & alpha */
+    char n[3];    /* color & alpha */
 } mk64_Vtx_n;
 
 std::ifstream & operator >> (std::ifstream &in, mk64_Vtx_n &vtx) {
@@ -54,12 +55,11 @@ inline short bswap(short in) {
 // argv[1] -> path to baserom file
 int main(int argc, char **argv) {
     int err;
-    uint8_t opcode;
-    uint8_t data_byte;
-    uint16_t data_short;
-    short vtx_index;
-    short v1, v2, v3;
     mk64_Vtx_n vtx;
+    std::stringstream vtx_string;
+    std::stringstream vtx_tc_string;
+    std::stringstream vtx_norm_string;
+    std::stringstream model_string;
     std::ofstream vtx_obj;
     std::ofstream model_inc;
     std::ifstream model_bytes;
@@ -77,50 +77,66 @@ int main(int argc, char **argv) {
 
         if (err != 0) {
             std::cout << "Something wrong occurred when decoding " << model.course_name << "'s model" << std::endl;
-            goto loop_cleanup;
+            continue;
         }
 
         // Should probably confirm that the file open actually worked
-        vtx_obj.open(vtx_obj_path,           std::ios::out | std::ios::trunc);
-        model_inc.open(model_inc_path,       std::ios::out | std::ios::trunc);
-        model_bytes.open(uncompressed_model, std::ios::in  | std::ios::binary);
-
+        model_bytes.open(uncompressed_model, std::ios::in | std::ios::binary);
         while(model_bytes >> vtx) {
             // I hate all forms of string manipulation in C/++
             // If we could use gpp 13+ we could use the `fmt` feature to make this cleaner
             // I also don't know if the bswap'ing is necessary everywhere or just on my machine
-            model_inc << "{" \
+            model_string << "{" \
                 << "{ " << std::to_string(bswap(vtx.ob[0]))  << ", " << std::to_string(bswap(vtx.ob[1])) << ", " << std::to_string(bswap(vtx.ob[2])) << " }, " \
                 << "{ " << std::to_string(bswap(vtx.tc[0]))  << ", " << std::to_string(bswap(vtx.tc[1])) << " }, " \
                 << "{ " << std::to_string(vtx.n[0]) << ", " << std::to_string(vtx.n[1]) << ", " << std::to_string(vtx.n[2]) << " }" \
                 << "}," << std::endl;
-            vtx_obj << "v "  \
+            vtx_string << "v "  \
                     << std::to_string(bswap(vtx.ob[0])) << " " << std::to_string(bswap(vtx.ob[1])) << " " << std::to_string(bswap(vtx.ob[2])) \
                     << std::endl;
             // Further processing will be required to get these numbers correct
             // vt needs to be converted to a floating point value between 0 and 1
             //     I'm not sure how to do that in this case
-            // vn currently has the "flag" variable shoved inside it, so we'd need to extract just the
-            //     normals from it before writing it out to a file
-            //vtx_obj << "vt " << std::to_string(bswap(vtx.tc[0])) << " " << std::to_string(bswap(vtx.tc[1])) << std::endl;
-            //vtx_obj << "vn " << std::to_string(vtx.n[0]) << " " << std::to_string(vtx.n[1]) << " " << std::to_string(vtx.n[2]) << std::endl;
+            //vtx_tc_string << "vt " << std::to_string(bswap(vtx.tc[0])) << " " << std::to_string(bswap(vtx.tc[1])) << std::endl;
+            // Using signed chars to ensure the normals are signed before being divided
+            char n1 = vtx.n[0] & 0xFC;
+            char n2 = vtx.n[1] & 0xFC;
+            char n3 = vtx.n[2];
+            vtx_norm_string << "vn " \
+                            << std::to_string(n1 / 128.0f) << " " \
+                            << std::to_string(n2 / 128.0f) << " " \
+                            << std::to_string(n3 / 128.0f) \
+                            << std::endl;
         }
-
-loop_cleanup:
         model_bytes.close();
-        model_inc.close();
+
+        vtx_obj.open(vtx_obj_path, std::ios::out | std::ios::trunc);
+        vtx_obj << vtx_string.rdbuf() /*<< vtx_tc_string.rdbuf()*/ << vtx_norm_string.rdbuf();
         vtx_obj.close();
+
+        model_inc.open(model_inc_path, std::ios::out | std::ios::trunc);
+        model_inc << model_string.rdbuf();
+        model_inc.close();
+
     }
+
+    int num_tris;
+    uint8_t opcode;
+    uint16_t data_short;
+    short vtx_index;
+    short v1, v2, v3;
+    std::stringstream face_string;
+    int object_num = 0;
+    int face_group_num = 0;
 
     for (auto model : all_models) {
         vtx_obj_path   = "./courses/" + model.course_name + "/course.obj";
 
         // Should probably confirm that the file open actually worked
-        vtx_obj.open(vtx_obj_path, std::ios::out | std::ios::app);
         model_bytes.open(argv[1],  std::ios::in  | std::ios::binary);
         model_bytes.seekg(model.packed_dl_rom_offset);
-
-        while(model_bytes.read(&opcode, 1)) {
+        face_string << "o object" << std::to_string(object_num++) << std::endl;
+        while(model_bytes.read(reinterpret_cast<char*>(&opcode), 1)) {
             if (opcode == 0xFF) {
                 break;
             }
@@ -135,31 +151,29 @@ loop_cleanup:
                 // 3 bytes including opcode
                 model_bytes.read(reinterpret_cast<char*>(&data_short), 2);
                 vtx_index = data_short + 1;
+                face_string << "g face_group" << std::to_string(face_group_num++) << std::endl;
             } else if (opcode == 0x28) { // unpack_vtx1, gsSPVertex
                 // 5 bytes including the opcode
                 model_bytes.read(reinterpret_cast<char*>(&data_short), 2);
                 vtx_index = data_short + 1;
                 // Only need the vertex "address", skip the other 2 bytes
                 model_bytes.seekg(2, std::ios_base::cur);
-            } else if (opcode == 0x29) { // unpack_triangle, gsSP1Triangle
-                // 3 bytes including opcode
-                // bottom 2 bytes looke like:
-                // Byte 3   Byte 2
+            } else if ((opcode == 0x29) || (opcode == 0x58)) {
+                /**
+                 * 0x29: unpack_triangle, gsSP1Triangle
+                 *       3 bytes including opcode
+                 * 0x58: unpack_quadrangle, gsSP2Triangles
+                 *       5 bytes including opcode
+                 **/
+                if (opcode == 0x29) {
+                    num_tris = 1;
+                } else {
+                    num_tris = 2;
+                }
+                // Each 2-byte holding the vertex indices looks like:
+                // Byte 2   Byte 1
                 // X3333322 22211111
-                model_bytes.read(reinterpret_cast<char*>(&data_short), 2);
-                v1  = data_short & 0x1F;
-                v2  = (data_short  >>  5) & 7;
-                v2 |= ((data_short >>  8) & 3) << 3;
-                v3  = (data_short  >> 10) & 0x1F;
-                v1 += vtx_index;
-                v2 += vtx_index;
-                v3 += vtx_index;
-                vtx_obj << "f " \
-                        << std::to_string(v1) << " " << std::to_string(v2) << " " << std::to_string(v3) \
-                        << std::endl;
-            } else if (opcode == 0x58) { // unpack_quadrangle, gsSP2Triangles
-                // 5 bytes including opcode
-                for (auto tri = 0; tri < 2; tri++) {
+                for (auto tri = 0; tri < num_tris; tri++) {
                     model_bytes.read(reinterpret_cast<char*>(&data_short), 2);
                     v1  = data_short & 0x1F;
                     v2  = (data_short  >>  5) & 7;
@@ -168,9 +182,12 @@ loop_cleanup:
                     v1 += vtx_index;
                     v2 += vtx_index;
                     v3 += vtx_index;
-                    vtx_obj << "f " \
-                            << std::to_string(v1) << " " << std::to_string(v2) << " " << std::to_string(v3) \
-                            << std::endl;
+                    face_string << "f ";
+                    //         v index                /       vt index                 /     vn index
+                    face_string << std::to_string(v1) << "/" /*<< std::to_string(v1)*/ << "/" << std::to_string(v1) << " ";
+                    face_string << std::to_string(v2) << "/" /*<< std::to_string(v2)*/ << "/" << std::to_string(v2) << " ";
+                    face_string << std::to_string(v3) << "/" /*<< std::to_string(v3)*/ << "/" << std::to_string(v3) << " ";
+                    face_string << std::endl;
                 }
             } else if (
                 ((0x00 <= opcode) && (opcode <= 0x19)) ||
@@ -198,7 +215,9 @@ loop_cleanup:
                  * 0x57: unpack_clear_geometry_mode, 
                  **/
                 // Only 1 byte, the opcode
-                ;
+                if (opcode == 0x2A) {
+                    face_string << "o object" << std::to_string(object_num++) << std::endl;
+                }
             } else if (
                 ((0x1A <= opcode) && (opcode <= 0x1F)) ||
                  (opcode == 0x2B) || (opcode == 0x2C)) {
@@ -222,8 +241,10 @@ loop_cleanup:
                 break;
             }
         }
-
         model_bytes.close();
+
+        vtx_obj.open(vtx_obj_path, std::ios::out | std::ios::app);
+        vtx_obj << face_string.rdbuf();
         vtx_obj.close();
     }
     return 0;
