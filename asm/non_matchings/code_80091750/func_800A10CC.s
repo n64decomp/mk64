@@ -36,7 +36,7 @@ glabel func_800A10CC
 /* 0A1D34 800A1134 24070122 */  li    $a3, 290
 /* 0A1D38 800A1138 AFA00014 */  sw    $zero, 0x14($sp)
 /* 0A1D3C 800A113C AFA00018 */  sw    $zero, 0x18($sp)
-/* 0A1D40 800A1140 0C026306 */  jal   func_80098C18
+/* 0A1D40 800A1140 0C026306 */  jal   draw_box_fill
 /* 0A1D44 800A1144 AFA0001C */   sw    $zero, 0x1c($sp)
 /* 0A1D48 800A1148 AE220000 */  sw    $v0, ($s1)
 /* 0A1D4C 800A114C 8E130004 */  lw    $s3, 4($s0)

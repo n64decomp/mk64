@@ -673,7 +673,7 @@ glabel L8009FD90
 /* 0A09EC 8009FDEC AFAA0010 */  sw    $t2, 0x10($sp)
 /* 0A09F0 8009FDF0 24E70039 */  addiu $a3, $a3, 0x39
 /* 0A09F4 8009FDF4 00592821 */  addu  $a1, $v0, $t9
-/* 0A09F8 8009FDF8 0C025673 */  jal   func_800959CC
+/* 0A09F8 8009FDF8 0C025673 */  jal   draw_flash_select_case_fast
 /* 0A09FC 8009FDFC 00603025 */   move  $a2, $v1
 /* 0A0A00 8009FE00 AE020000 */  sw    $v0, ($s0)
 /* 0A0A04 8009FE04 8E23001C */  lw    $v1, 0x1c($s1)
@@ -695,7 +695,7 @@ glabel L8009FD90
 /* 0A0A40 8009FE40 AFAD0018 */  sw    $t5, 0x18($sp)
 /* 0A0A44 8009FE44 AFAC0014 */  sw    $t4, 0x14($sp)
 /* 0A0A48 8009FE48 8E040000 */  lw    $a0, ($s0)
-/* 0A0A4C 8009FE4C 0C026306 */  jal   func_80098C18
+/* 0A0A4C 8009FE4C 0C026306 */  jal   draw_box_fill
 /* 0A0A50 8009FE50 00482821 */   addu  $a1, $v0, $t0
 /* 0A0A54 8009FE54 AE020000 */  sw    $v0, ($s0)
 /* 0A0A58 8009FE58 8E23001C */  lw    $v1, 0x1c($s1)
@@ -830,7 +830,7 @@ glabel L8009FF90
 /* 0A0C30 800A0030 AFB80018 */  sw    $t8, 0x18($sp)
 /* 0A0C34 800A0034 AFAF0014 */  sw    $t7, 0x14($sp)
 /* 0A0C38 800A0038 8E040000 */  lw    $a0, ($s0)
-/* 0A0C3C 800A003C 0C026306 */  jal   func_80098C18
+/* 0A0C3C 800A003C 0C026306 */  jal   draw_box_fill
 /* 0A0C40 800A0040 24A7003F */   addiu $a3, $a1, 0x3f
 /* 0A0C44 800A0044 1000001A */  b     .L800A00B0
 /* 0A0C48 800A0048 AE020000 */   sw    $v0, ($s0)
@@ -842,7 +842,7 @@ glabel L8009FF90
 /* 0A0C5C 800A005C AFAA0010 */  sw    $t2, 0x10($sp)
 /* 0A0C60 800A0060 00603025 */  move  $a2, $v1
 /* 0A0C64 800A0064 00402825 */  move  $a1, $v0
-/* 0A0C68 800A0068 0C025668 */  jal   func_800959A0
+/* 0A0C68 800A0068 0C025668 */  jal   draw_flash_select_case_slow
 /* 0A0C6C 800A006C 2447003F */   addiu $a3, $v0, 0x3f
 /* 0A0C70 800A0070 1000000F */  b     .L800A00B0
 /* 0A0C74 800A0074 AE020000 */   sw    $v0, ($s0)
@@ -858,7 +858,7 @@ glabel L8009FF90
 /* 0A0C98 800A0098 AFAF0020 */  sw    $t7, 0x20($sp)
 /* 0A0C9C 800A009C AFAE001C */  sw    $t6, 0x1c($sp)
 /* 0A0CA0 800A00A0 8E040000 */  lw    $a0, ($s0)
-/* 0A0CA4 800A00A4 0C026306 */  jal   func_80098C18
+/* 0A0CA4 800A00A4 0C026306 */  jal   draw_box_fill
 /* 0A0CA8 800A00A8 24A7003F */   addiu $a3, $a1, 0x3f
 /* 0A0CAC 800A00AC AE020000 */  sw    $v0, ($s0)
 .L800A00B0:
@@ -1076,7 +1076,7 @@ glabel L800A037C
 /* 0A0FA4 800A03A4 AFAF0018 */  sw    $t7, 0x18($sp)
 /* 0A0FA8 800A03A8 AFAE0014 */  sw    $t6, 0x14($sp)
 /* 0A0FAC 800A03AC 8E040000 */  lw    $a0, ($s0)
-/* 0A0FB0 800A03B0 0C026306 */  jal   func_80098C18
+/* 0A0FB0 800A03B0 0C026306 */  jal   draw_box_fill
 /* 0A0FB4 800A03B4 24A7003F */   addiu $a3, $a1, 0x3f
 /* 0A0FB8 800A03B8 AE020000 */  sw    $v0, ($s0)
 /* 0A0FBC 800A03BC 3C09800E */  lui   $t1, %hi(gCCSelection) # $t1, 0x800e
@@ -1135,7 +1135,7 @@ glabel L800A0428
 /* 0A1084 800A0484 AFAF0018 */  sw    $t7, 0x18($sp)
 /* 0A1088 800A0488 AFAE0014 */  sw    $t6, 0x14($sp)
 /* 0A108C 800A048C 8E040000 */  lw    $a0, ($s0)
-/* 0A1090 800A0490 0C026306 */  jal   func_80098C18
+/* 0A1090 800A0490 0C026306 */  jal   draw_box_fill
 /* 0A1094 800A0494 24A7003F */   addiu $a3, $a1, 0x3f
 /* 0A1098 800A0498 1000001A */  b     .L800A0504
 /* 0A109C 800A049C AE020000 */   sw    $v0, ($s0)
@@ -1147,7 +1147,7 @@ glabel L800A0428
 /* 0A10B0 800A04B0 AFA90010 */  sw    $t1, 0x10($sp)
 /* 0A10B4 800A04B4 00603025 */  move  $a2, $v1
 /* 0A10B8 800A04B8 00402825 */  move  $a1, $v0
-/* 0A10BC 800A04BC 0C025668 */  jal   func_800959A0
+/* 0A10BC 800A04BC 0C025668 */  jal   draw_flash_select_case_slow
 /* 0A10C0 800A04C0 2447003F */   addiu $a3, $v0, 0x3f
 /* 0A10C4 800A04C4 1000000F */  b     .L800A0504
 /* 0A10C8 800A04C8 AE020000 */   sw    $v0, ($s0)
@@ -1164,7 +1164,7 @@ glabel L800A0428
 /* 0A10EC 800A04EC AFAE0020 */  sw    $t6, 0x20($sp)
 /* 0A10F0 800A04F0 AFAD001C */  sw    $t5, 0x1c($sp)
 /* 0A10F4 800A04F4 8E040000 */  lw    $a0, ($s0)
-/* 0A10F8 800A04F8 0C026306 */  jal   func_80098C18
+/* 0A10F8 800A04F8 0C026306 */  jal   draw_box_fill
 /* 0A10FC 800A04FC 24A7003F */   addiu $a3, $a1, 0x3f
 /* 0A1100 800A0500 AE020000 */  sw    $v0, ($s0)
 .L800A0504:

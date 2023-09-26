@@ -117,10 +117,10 @@ void func_800947B4(struct GfxPool*, s32);
 void func_80094A64(struct GfxPool*);
 void func_80094C60(void);
 void func_80095574(void);
-Gfx *func_800958D4(Gfx*, s32, s32, s32, s32, s32);
-Gfx *func_800959A0(Gfx*, s32, s32, s32, s32);
+Gfx *draw_flash_select_case(Gfx*, s32, s32, s32, s32, s32);
+Gfx *draw_flash_select_case_slow(Gfx*, s32, s32, s32, s32);
 Gfx *func_800959F8(Gfx*, Vtx*);
-Gfx *func_80098C18(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
+Gfx *draw_box_fill(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *draw_box(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *func_80098FC8(Gfx*, s32, s32, s32, s32);
 void dma_copy_base_729a30(u64*, size_t, void*);
@@ -378,7 +378,7 @@ extern s32 D_8018CA78;
 extern u8 _textures_0aSegmentRomStart[];
 extern u8 _textures_0bSegmentRomStart[];
 
-extern s32 D_8018E7A8; // maybe?
+extern s32 gCycleFlashMenu; // maybe?
 extern s8 D_8018E7B0;  // maybe?
 
 // This is tracking which credit "state" we're in, decides which credits are shown (and probably other stuff)

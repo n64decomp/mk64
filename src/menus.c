@@ -1973,7 +1973,7 @@ void func_800B3F74(s32 menuSelection) {
 }
 
 void func_800B44AC(void) {
-    D_8018E7A8 = 0x20;
+    gCycleFlashMenu = 0x20;
 }
 
 void func_800B44BC(void) {

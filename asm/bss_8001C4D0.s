@@ -1711,7 +1711,7 @@ glabel gNumD_8018E768Entries
 glabel D_8018E768
 .skip 64
 
-glabel D_8018E7A8
+glabel gCycleFlashMenu
 .skip 4
 
 glabel D_8018E7AC
