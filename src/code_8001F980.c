@@ -57,15 +57,15 @@ void func_8001F9E4(Player *player, Camera *camera, s8 arg2) {
     player->unk_002 &= ~(2 << (arg2 * 4));
     player->unk_002 &= ~(8 << (arg2 * 4));
 
-    if (func_8001FB0C(player, camera, (f32) (D_80165578 + sp30), (f32) (D_8016557A + sp2C)) == 1) {
+    if (check_player_camera_collision(player, camera, (f32) (D_80165578 + sp30), (f32) (D_8016557A + sp2C)) == 1) {
         player->unk_002 |= 2 << (arg2 * 4);
     }
-    if (func_8001FB0C(player, camera, (f32) D_80165580, (f32) D_80165582) == 1) {
+    if (check_player_camera_collision(player, camera, (f32) D_80165580, (f32) D_80165582) == 1) {
         player->unk_002 |= 8 << (arg2 * 4);
     }
 }
 
-u16 func_8001FB0C(Player *player, Camera *camera, f32 arg2, f32 arg3) {
+u16 check_player_camera_collision(Player *player, Camera *camera, f32 arg2, f32 arg3) {
     UNUSED f32 pad[6];
     f32 sp64;
     f32 sp60;
@@ -166,7 +166,7 @@ void func_80020000(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         func_8001F980(&sp4C, &sp48);
         temp_v0_2 = 1 << (arg3 << 2);
         if ((temp_v0 == (player->unk_002 & temp_v0)) && (temp_v0_2 == (player->unk_002 & temp_v0_2))) {
-            if ((func_8001FB0C(player, camera, D_80165570 + sp4C, D_80165572 + sp48) == 1) & 0xFFFF) {
+            if ((check_player_camera_collision(player, camera, D_80165570 + sp4C, D_80165572 + sp48) == 1) & 0xFFFF) {
                 D_80164AB0[D_800DDB58] = (s16) arg2;
                 D_80164AC0[D_800DDB58] = (s16) arg3;
                 D_80164AD0[D_800DDB58] = player;
@@ -180,7 +180,7 @@ void func_80020000(Player *player, Camera *camera, s8 arg2, s8 arg3) {
                     D_801651D0[arg3][arg2] = 0;
                 }
             } else {
-                if ((func_8001FB0C(player, camera, D_80165574 + sp4C, D_80165576) == 1) & 0xFFFF) {
+                if ((check_player_camera_collision(player, camera, D_80165574 + sp4C, D_80165576) == 1) & 0xFFFF) {
                     if ((sRenderingFramebuffer == D_800DDB50[arg2]) || ((D_801650D0[arg3][arg2] - player->unk_244[arg3]) > 0x13) || ((D_801650D0[arg3][arg2] - player->unk_244[arg3]) < -0x13) || (D_80165190[arg3][arg2] == (s16) 1U)) {
                         D_80164AB0[D_800DDB58] = (s16) arg2;
                         D_80164AC0[D_800DDB58] = (s16) arg3;
@@ -632,32 +632,26 @@ void func_80021DA8(void) {
     func_8006E940(gPlayerFour, 3, 3);
 }
 
-void func_80021E10(Mat4 arg0, Vec3f arg1, Vec3s arg2) {
+void mtxf_translate_rotate(Mat4 arg0, Vec3f arg1, Vec3s arg2) {
     UNUSED f32 pad[3];
-    f32 sin1;
-    f32 cos1;
-    f32 sin2;
-    f32 cos2;
-    f32 sin3;
-    f32 cos3;
+    f32 sinX = sins(arg2[0]);
+    f32 cosX = coss(arg2[0]);
+    f32 sinY = sins(arg2[1]);
+    f32 cosY = coss(arg2[1]);
+    f32 sinZ = sins(arg2[2]);
+    f32 cosZ = coss(arg2[2]);
 
-    sin1 = sins(arg2[0]);
-    cos1 = coss(arg2[0]);
-    sin2 = sins(arg2[1]);
-    cos2 = coss(arg2[1]);
-    sin3 = sins(arg2[2]);
-    cos3 = coss(arg2[2]);
-    arg0[0][0] = (cos2 * cos3) + ((sin1 * sin2) * sin3);
-    arg0[1][0] = (-cos2 * sin3) + ((sin1 * sin2) * cos3);
-    arg0[2][0] = cos1 * sin2;
+    arg0[0][0] = (cosY * cosZ) + ((sinX * sinY) * sinZ);
+    arg0[1][0] = (-cosY * sinZ) + ((sinX * sinY) * cosZ);
+    arg0[2][0] = cosX * sinY;
     arg0[3][0] = arg1[0];
-    arg0[0][1] = cos1 * sin3;
-    arg0[1][1] = cos1 * cos3;
-    arg0[2][1] = -sin1;
+    arg0[0][1] = cosX * sinZ;
+    arg0[1][1] = cosX * cosZ;
+    arg0[2][1] = -sinX;
     arg0[3][1] = arg1[1];
-    arg0[0][2] = (-sin2 * cos3) + ((sin1 * cos2) * sin3);
-    arg0[1][2] = (sin2 * sin3) + ((sin1 * cos2) * cos3);
-    arg0[2][2] = cos1 * cos2;
+    arg0[0][2] = (-sinY * cosZ) + ((sinX * cosY) * sinZ);
+    arg0[1][2] = (sinY * sinZ) + ((sinX * cosY) * cosZ);
+    arg0[2][2] = cosX * cosY;
     arg0[3][2] = arg1[2];
     arg0[0][3] = 0.0f;
     arg0[1][3] = 0.0f;
@@ -1243,7 +1237,7 @@ void func_80023C84(Player *player, s8 arg1, s8 arg2) {
         spCC[0] = player->pos[0] +  ((spB0 * sins(spC0)) + (spAC * coss(spC0)));
         spCC[1] = player->unk_074 + 1.0f;
         spCC[2] = player->pos[2] + ((spB0 * coss(spC0)) - (spAC * sins(spC0)));
-        func_80021E10(sp118, spCC, spC4);
+        mtxf_translate_rotate(sp118, spCC, spC4);
         func_80021F84(sp118, D_800DDBD4[player->characterId] * player->unk_224);
     }
     convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)], sp118);
@@ -1293,7 +1287,7 @@ void func_80024374(Player *player, s8 arg1, s8 arg2) {
     spCC[2] = player->pos[2] + ((spB0 * coss(spC0)) - (spAC * sins(spC0)));
     spCC[1] = D_80165C18[D_80183EA0[arg1]].pos[1] + sp94[arg1];
 
-    func_80021E10(sp118, spCC, spC4);
+    mtxf_translate_rotate(sp118, spCC, spC4);
     func_80021F84(sp118, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)], sp118);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -1380,7 +1374,7 @@ void func_800248D0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
         D_80164B08 = &D_802BFB80[D_801651D0[arg2][arg1]][arg2 - 1][arg1 - 4].pixel_index_array[0];
         D_80164B0C = &D_802BFB80[D_801651D0[arg2][arg1]][arg2 - 1][arg1 - 4].pixel_index_array[0x7C0];
     }
-    func_80021E10(sp1A4, sp154, sp14C);
+    mtxf_translate_rotate(sp1A4, sp154, sp14C);
     func_80021F84(sp1A4, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxKart[arg1 + (arg2 * 8)], sp1A4);
     if ((player->unk_0BC & 0x80000000) == 0x80000000) {
@@ -1476,7 +1470,7 @@ void func_800256F4(Player *player, s8 arg1, s8 arg2, s8 arg3) {
         D_80164B08 = &D_802BFB80[D_801651D0[arg2][arg1]][arg2 - 1][arg1 - 4].pixel_index_array[0];
         D_80164B0C = &D_802BFB80[D_801651D0[arg2][arg1]][arg2 - 1][arg1 - 4].pixel_index_array[0x7C0];
     }
-    func_80021E10(sp12C, spDC, spD4);
+    mtxf_translate_rotate(sp12C, spDC, spD4);
     func_80021F84(sp12C, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxKart[arg1 + (arg2 * 8)], sp12C);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -1506,7 +1500,7 @@ void func_80025DE8(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     sp94[0] = -0x00B6;
     sp94[1] = player->unk_048[arg2];
     sp94[2] = player->unk_050[arg2];
-    func_80021E10(spA8, sp9C, sp94);
+    mtxf_translate_rotate(spA8, sp9C, sp94);
     func_80021F84(spA8, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -1540,7 +1534,7 @@ void func_800262E0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     } else {
         arg3 = 0;
     }
-    func_80021E10(spA8, sp9C, sp94);
+    mtxf_translate_rotate(spA8, sp9C, sp94);
     func_80021F84(spA8, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);

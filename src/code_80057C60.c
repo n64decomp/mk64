@@ -4640,7 +4640,7 @@ void func_800651F4(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
 void func_800652D4(Vec3f arg0, Vec3s arg1, f32 arg2) {
     Mat4 sp20;
 
-    func_80021E10(sp20, arg0, arg1);
+    mtxf_translate_rotate(sp20, arg0, arg1);
     func_80021F84(sp20, arg2);
     convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp20);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -6041,7 +6041,7 @@ void func_8006AFD0(Player *player, s16 arg1, s8 arg2, s8 arg3) {
     sp12E = sp54->unk48;
     sp58 = coss(unksp46);
     sp130 = (s16) (s32) (((f32) *(&D_8018D7D0 + (((s8) arg1 * 6) + temp_t6)) - ((f32) *(&D_8018D860 + (((s8) arg1 * 6) + temp_t6)) * sp58)) - (sins(unksp46) * (f32) (*sp3C * 8)));
-    func_80021E10((f32 (*)[4]) &sp140[0], &sp134, &sp12C);
+    mtxf_translate_rotate((f32 (*)[4]) &sp140[0], &sp134, &sp12C);
     func_80021F84((f32 (*)[4]) &sp140[0], var_f20);
     convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], (f32 (*)[4]) &sp140[0]);
 
@@ -6163,7 +6163,7 @@ void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     spF4[0] = 0;
     spF4[1] = camera1->rot[1];
     spF4[2] = arg2;
-    func_80021E10(sp108[0], spFC, spF4);
+    mtxf_translate_rotate(sp108[0], spFC, spF4);
     func_80021F84(sp108[0], arg1);
     convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp108);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);

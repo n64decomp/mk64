@@ -11,7 +11,7 @@
 
 void func_8001F980(s32*, s32*);
 void func_8001F9E4(Player*, Camera*, s8);
-u16  func_8001FB0C(Player*, Camera*, f32, f32);
+u16  check_player_camera_collision(Player*, Camera*, f32, f32);
 u16  func_8001FD78(Player*, f32, f32, f32);
 void func_80020000(Player*, Camera*, s8, s8);
 void func_80020524(void);
@@ -27,7 +27,7 @@ void func_80021B0C(void);
 void func_80021C78(void);
 void func_80021D40(void);
 void func_80021DA8(void);
-void func_80021E10(Mat4, Vec3f, Vec3s);
+void mtxf_translate_rotate(Mat4, Vec3f, Vec3s);
 void func_80021F50(Mat4, Vec3f);
 void func_80021F84(Mat4, f32);
 void func_80021FF8(Mtx*, Mat4);

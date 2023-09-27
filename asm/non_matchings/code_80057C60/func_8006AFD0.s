@@ -280,7 +280,7 @@ glabel func_8006AFD0
 /* 06BF90 8006B390 46044181 */  sub.s $f6, $f8, $f4
 /* 06BF94 8006B394 4600348D */  trunc.w.s $f18, $f6
 /* 06BF98 8006B398 440E9000 */  mfc1  $t6, $f18
-/* 06BF9C 8006B39C 0C008784 */  jal   func_80021E10
+/* 06BF9C 8006B39C 0C008784 */  jal   mtxf_translate_rotate
 /* 06BFA0 8006B3A0 A7AE0130 */   sh    $t6, 0x130($sp)
 /* 06BFA4 8006B3A4 27B00140 */  addiu $s0, $sp, 0x140
 /* 06BFA8 8006B3A8 4405A000 */  mfc1  $a1, $f20
