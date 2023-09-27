@@ -465,7 +465,7 @@ void func_802B5D64(uintptr_t arg0, s16 arg1, s16 arg2, s32 arg3) {
 }
 
 // multiply a matrix with a number
-void mtxf_multiplication_number(Mat4 mat, f32 coef) {
+void mtxf_scale(Mat4 mat, f32 coef) {
     mat[0][0] *= coef;
     mat[1][0] *= coef;
     mat[2][0] *= coef;

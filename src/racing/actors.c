@@ -414,7 +414,7 @@ void func_8029794C(Vec3f arg0, Vec3s arg1, f32 arg2) {
     arg0[1] += 2.0f;
 
     func_802B5F74(sp20, arg0, arg1);
-    mtxf_multiplication_number(sp20, arg2);
+    mtxf_scale(sp20, arg2);
     if (render_set_position(sp20, 0) != 0) {
 
         gSPDisplayList(gDisplayListHead++, D_0D007B20);
@@ -1526,7 +1526,7 @@ void func_8029B4E0(Camera *arg0, struct Actor *arg1) {
 
 
         func_802B5F74(spC8, arg1->pos, arg1->rot);
-        mtxf_multiplication_number(spC8, 0.1f);
+        mtxf_scale(spC8, 0.1f);
         if (render_set_position(spC8, 0) != 0) {
 
             if (gActiveScreenMode == SCREEN_MODE_1P) {
@@ -3601,14 +3601,14 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
     someRot[1] = fakeItemBox->rot[1];
     someRot[2] = 0;
     func_802B5F74(someMatrix2, fakeItemBox->pos, someRot);
-    mtxf_multiplication_number(someMatrix2, fakeItemBox->sizeScaling);
+    mtxf_scale(someMatrix2, fakeItemBox->sizeScaling);
     if (fakeItemBox->state != 2) {
 
         if (!render_set_position(someMatrix2, 0)) { return; }
 
         gSPDisplayList(gDisplayListHead++, common_model_fake_itembox);
         func_802B5F74(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
-        mtxf_multiplication_number(someMatrix2, fakeItemBox->sizeScaling);
+        mtxf_scale(someMatrix2, fakeItemBox->sizeScaling);
 
         if (!render_set_position(someMatrix2, 0)) { return; }
 
@@ -3638,7 +3638,7 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
         } else {
             someMultiplier = 1.0f - ((thing - 10.0f) * 0.1f);
         }
-        mtxf_multiplication_number(someMatrix2, someMultiplier);
+        mtxf_scale(someMatrix2, someMultiplier);
         if (fakeItemBox->someTimer & 1) {
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         } else {
@@ -3786,7 +3786,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
             } else {
                 someMultiplier = 1.0f - ((thing - 10.0f) * 0.1f);
             }
-            mtxf_multiplication_number(someMatrix1, someMultiplier);
+            mtxf_scale(someMatrix1, someMultiplier);
             if (item_box->someTimer & 1) {
                 gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
             } else {
