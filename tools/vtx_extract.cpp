@@ -1,5 +1,8 @@
+#include <algorithm>
 #include <fstream>
 #include <iostream>
+#include <iterator>
+#include <map>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -7,46 +10,87 @@
 #include "libmio0.h"
 
 typedef struct {
+    std::string course_name;
     uint32_t model_rom_offset;
     uint32_t packed_dl_rom_offset;
-    std::string course_name;
+    std::map<uint32_t, std::string> textures;
 } model_location;
 
 std::vector<model_location> all_models = {
-    { 0x88fa10, 0x899104, "mario_raceway"      },
-    { 0x89b510, 0x8A55C4, "choco_mountain"     },
-    { 0x8a7640, 0x8B59A8, "bowsers_castle"     },
-    { 0x8b9630, 0x8BFF18, "banshee_boardwalk"  },
-    { 0x8c2510, 0x8CA2A0, "yoshi_valley"       },
-    { 0x8cc900, 0x8D6624, "frappe_snowland"    },
-    { 0x8d8e50, 0x8E8BC8, "koopa_troopa_beach" },
-    { 0x8ec390, 0x8FAFF0, "royal_raceway"      },
-    { 0x8fe640, 0x907E40, "luigi_raceway"      },
-    { 0x90b3e0, 0x918ECC, "moo_moo_farm"       },
-    { 0x91b980, 0x925F50, "toads_turnpike"     },
-    { 0x928c70, 0x934004, "kalimari_desert"    },
-    { 0x936fd0, 0x93B9C8, "sherbet_land"       },
-    { 0x93cc60, 0x9426BC, "rainbow_road"       },
-    { 0x9438c0, 0x94E28C, "wario_stadium"      },
-    { 0x951780, 0x953058, "block_fort"         },
-    { 0x953890, 0x954F08, "skyscraper"         },
-    { 0x955620, 0x9562F4, "double_deck"        },
-    { 0x956670, 0x960ACC, "dks_jungle_parkway" },
-    { 0x963ef0, 0x965A74, "big_donut"          },
+    { "mario_raceway", 0x88fa10, 0x899104,
+        // This works, but is very painful to setup
+        // We'd probably have to create a master material file
+        //   that all courses would reference, rather than one-per-course
+        {
+            { 0x00000, "checkerboard_yellow_pink" },
+            { 0x00800, "texture_64619C" },
+            { 0x01000, "grass_1" },
+            { 0x01800, "texture_64BB60" },
+            { 0x02000, "grass_7" },
+            { 0x02800, "grass_5" },
+            { 0x03000, "flag_red" },
+            { 0x03800, "texture_663F90" },
+            { 0x04000, "texture_6642A4" },
+            { 0x04800, "texture_6640B4" },
+            { 0x05000, "grass_10" },
+            { 0x05800, "texture_6684F8" },
+            { 0x06000, "sign_luigis_0" },
+            { 0x07000, "sign_luigis_1" },
+            { 0x08000, "sign_mario_star_0" },
+            { 0x09000, "sign_mario_star_1" },
+            { 0x0A000, "texture_66C8F4" },
+            { 0x0A800, "sign_nintendo_red_0" },
+            { 0x0B800, "sign_nintendo_red_1" },
+            { 0x0C800, "texture_670AC8" },
+            { 0x0D800, "texture_674354" },
+            { 0x0E000, "road_0" },
+            { 0x0F000, "road_finish_0" },
+            { 0x10000, "texture_67B9B0" },
+            { 0x10800, "sign_yoshi" },
+            { 0x11800, "checkerboard_blue_gray" },
+            { 0x12800, "sign_shell_shot_0" },
+            { 0x13800, "sign_shell_shot_1" },
+            { 0x14800, "sign_koopa_air_0" },
+            { 0x15800, "sign_koopa_air_1" },
+        }
+    },
+    // { 0x89b510, 0x8A55C4, "choco_mountain"     },
+    // { 0x8a7640, 0x8B59A8, "bowsers_castle"     },
+    // { 0x8b9630, 0x8BFF18, "banshee_boardwalk"  },
+    // { 0x8c2510, 0x8CA2A0, "yoshi_valley"       },
+    // { 0x8cc900, 0x8D6624, "frappe_snowland"    },
+    // { 0x8d8e50, 0x8E8BC8, "koopa_troopa_beach" },
+    // { 0x8ec390, 0x8FAFF0, "royal_raceway"      },
+    // { 0x8fe640, 0x907E40, "luigi_raceway"      },
+    // { 0x90b3e0, 0x918ECC, "moo_moo_farm"       },
+    // { 0x91b980, 0x925F50, "toads_turnpike"     },
+    // { 0x928c70, 0x934004, "kalimari_desert"    },
+    // { 0x936fd0, 0x93B9C8, "sherbet_land"       },
+    // { 0x93cc60, 0x9426BC, "rainbow_road"       },
+    // { 0x9438c0, 0x94E28C, "wario_stadium"      },
+    // { 0x951780, 0x953058, "block_fort"         },
+    // { 0x953890, 0x954F08, "skyscraper"         },
+    // { 0x955620, 0x9562F4, "double_deck"        },
+    // { 0x956670, 0x960ACC, "dks_jungle_parkway" },
+    // { 0x963ef0, 0x965A74, "big_donut"          },
 };
 
 typedef struct {
     short ob[3];    /* x, y, z */
     short tc[2];    /* texture coord */
-    char n[3];    /* color & alpha */
-} mk64_Vtx_n;
+    unsigned char  ca[4];    /* color & alpha */
+} mk64_Vtx;
 
-std::ifstream & operator >> (std::ifstream &in, mk64_Vtx_n &vtx) {
-    // This is highly dependent on the `mk64_Vtx_n` type having no padding between its elements
+std::istream & operator >> (std::istream &in, mk64_Vtx &vtx) {
+    // This is highly dependent on the `mk64_Vtx` type having no padding between its elements
     // And that is the case, but its worth noting that its kind of brittle
-    in.read(reinterpret_cast<char*>(&vtx), sizeof(mk64_Vtx_n));
+    in.read(reinterpret_cast<char*>(&vtx), sizeof(mk64_Vtx));
     return in;
 }
+
+typedef struct {
+    float u, v;
+} uv;
 
 inline short bswap(short in) {
     return ((in & 0xFF) << 8) | ((in >> 8) & 0xFF);
@@ -55,11 +99,17 @@ inline short bswap(short in) {
 // argv[1] -> path to baserom file
 int main(int argc, char **argv) {
     int err;
-    mk64_Vtx_n vtx;
-    std::stringstream vtx_string;
-    std::stringstream vtx_tc_string;
-    std::stringstream vtx_norm_string;
-    std::stringstream model_string;
+    int num_tris;
+    uint8_t opcode, data_byte;
+    uint16_t data_short;
+    uint32_t texture_addr;
+    float texture_height, texture_width, texture_extra_multi;
+    short vtx_index;
+    short v1, v2, v3;
+    int object_num = 0;
+    int face_group_num = 0;
+    std::vector<mk64_Vtx> vtx_list;
+    std::map<short, uv> uv_list;
     std::ofstream vtx_obj;
     std::ofstream model_inc;
     std::ifstream model_bytes;
@@ -70,6 +120,12 @@ int main(int argc, char **argv) {
     std::string uncompressed_model = "./temp.model.bin";
 
     for (auto model : all_models) {
+        // This might be inefficient, but declaring these outside the loop
+        // will(?) cause their internal buffers to balloon.
+        std::stringstream vtx_string;
+        std::stringstream vtx_tc_string;
+        std::stringstream model_string;
+        std::stringstream face_string;
         vtx_obj_path   = "./courses/" + model.course_name + "/course.obj";
         model_inc_path = "./courses/" + model.course_name + "/course.vtx";
 
@@ -82,55 +138,36 @@ int main(int argc, char **argv) {
 
         // Should probably confirm that the file open actually worked
         model_bytes.open(uncompressed_model, std::ios::in | std::ios::binary);
-        while(model_bytes >> vtx) {
-            // I hate all forms of string manipulation in C/++
-            // If we could use gpp 13+ we could use the `fmt` feature to make this cleaner
-            // I also don't know if the bswap'ing is necessary everywhere or just on my machine
-            model_string << "{" \
-                << "{ " << std::to_string(bswap(vtx.ob[0]))  << ", " << std::to_string(bswap(vtx.ob[1])) << ", " << std::to_string(bswap(vtx.ob[2])) << " }, " \
-                << "{ " << std::to_string(bswap(vtx.tc[0]))  << ", " << std::to_string(bswap(vtx.tc[1])) << " }, " \
-                << "{ " << std::to_string(vtx.n[0]) << ", " << std::to_string(vtx.n[1]) << ", " << std::to_string(vtx.n[2]) << " }" \
-                << "}," << std::endl;
-            vtx_string << "v "  \
-                    << std::to_string(bswap(vtx.ob[0])) << " " << std::to_string(bswap(vtx.ob[1])) << " " << std::to_string(bswap(vtx.ob[2])) \
-                    << std::endl;
-            // Further processing will be required to get these numbers correct
-            // vt needs to be converted to a floating point value between 0 and 1
-            //     I'm not sure how to do that in this case
-            //vtx_tc_string << "vt " << std::to_string(bswap(vtx.tc[0])) << " " << std::to_string(bswap(vtx.tc[1])) << std::endl;
-            // Using signed chars to ensure the normals are signed before being divided
-            char n1 = vtx.n[0] & 0xFC;
-            char n2 = vtx.n[1] & 0xFC;
-            char n3 = vtx.n[2];
-            vtx_norm_string << "vn " \
-                            << std::to_string(n1 / 128.0f) << " " \
-                            << std::to_string(n2 / 128.0f) << " " \
-                            << std::to_string(n3 / 128.0f) \
-                            << std::endl;
-        }
+        std::copy(
+            std::istream_iterator<mk64_Vtx>(model_bytes),
+            std::istream_iterator<mk64_Vtx>(),
+            std::back_inserter(vtx_list)
+            );
         model_bytes.close();
 
-        vtx_obj.open(vtx_obj_path, std::ios::out | std::ios::trunc);
-        vtx_obj << vtx_string.rdbuf() /*<< vtx_tc_string.rdbuf()*/ << vtx_norm_string.rdbuf();
-        vtx_obj.close();
+        for (auto vtx : vtx_list) {
+            /**
+             * I hate all forms of string manipulation in C/++
+             * If we could use gpp 13+ we could use the `fmt` feature to make this cleaner
+             * I also don't know if the bswap'ing is necessary everywhere or just on my machine
+             **/
+            model_string << "{";
+            model_string << "{ ";
+            model_string << std::to_string(bswap(vtx.ob[0]))  << ", " << std::to_string(bswap(vtx.ob[1])) << ", " << std::to_string(bswap(vtx.ob[2]));
+            model_string << " }, ";
+            model_string << "{ ";
+            model_string << std::to_string(bswap(vtx.tc[0]))  << ", " << std::to_string(bswap(vtx.tc[1]));
+            model_string << " }, ";
+            model_string << "{ ";
+            model_string << std::to_string(vtx.ca[0]) << ", " << std::to_string(vtx.ca[1]) << ", " << std::to_string(vtx.ca[2]) << ", 0x00";
+            model_string << " }";
+            model_string << "},";
+            model_string << std::endl;
 
-        model_inc.open(model_inc_path, std::ios::out | std::ios::trunc);
-        model_inc << model_string.rdbuf();
-        model_inc.close();
-
-    }
-
-    int num_tris;
-    uint8_t opcode;
-    uint16_t data_short;
-    short vtx_index;
-    short v1, v2, v3;
-    std::stringstream face_string;
-    int object_num = 0;
-    int face_group_num = 0;
-
-    for (auto model : all_models) {
-        vtx_obj_path   = "./courses/" + model.course_name + "/course.obj";
+            vtx_string << "v ";
+            vtx_string << std::to_string(bswap(vtx.ob[0])) << " " << std::to_string(bswap(vtx.ob[1])) << " " << std::to_string(bswap(vtx.ob[2]));
+            vtx_string << std::endl;
+        }
 
         // Should probably confirm that the file open actually worked
         model_bytes.open(argv[1],  std::ios::in  | std::ios::binary);
@@ -183,16 +220,40 @@ int main(int argc, char **argv) {
                     v2 += vtx_index;
                     v3 += vtx_index;
                     face_string << "f ";
-                    //         v index                /       vt index                 /     vn index
-                    face_string << std::to_string(v1) << "/" /*<< std::to_string(v1)*/ << "/" << std::to_string(v1) << " ";
-                    face_string << std::to_string(v2) << "/" /*<< std::to_string(v2)*/ << "/" << std::to_string(v2) << " ";
-                    face_string << std::to_string(v3) << "/" /*<< std::to_string(v3)*/ << "/" << std::to_string(v3) << " ";
+                    //             v index                /     vt index               /
+                    face_string << std::to_string(v1) << "/" << std::to_string(v1) << "/" << " ";
+                    face_string << std::to_string(v2) << "/" << std::to_string(v2) << "/" << " ";
+                    face_string << std::to_string(v3) << "/" << std::to_string(v3) << "/" << " ";
                     face_string << std::endl;
+                    /**
+                     * Supposedly, the tc values need to be scaled down into the range 0.0 to 1.0
+                     * However, doing the expected scaling will leave several u/v values well outside that range
+                     * Blender doesn't care however. For some reason.
+                     **/
+                    uv_list[v1 - 1].u = (bswap(vtx_list[v1 - 1].tc[0] * texture_extra_multi) / 32.0f) / texture_height;
+                    uv_list[v2 - 1].u = (bswap(vtx_list[v2 - 1].tc[0] * texture_extra_multi) / 32.0f) / texture_height;
+                    uv_list[v3 - 1].u = (bswap(vtx_list[v3 - 1].tc[0] * texture_extra_multi) / 32.0f) / texture_height;
+                    uv_list[v1 - 1].v = 1.0 - ((bswap(vtx_list[v1 - 1].tc[1] * texture_extra_multi) / 32.0f) / texture_width);
+                    uv_list[v2 - 1].v = 1.0 - ((bswap(vtx_list[v2 - 1].tc[1] * texture_extra_multi) / 32.0f) / texture_width);
+                    uv_list[v3 - 1].v = 1.0 - ((bswap(vtx_list[v3 - 1].tc[1] * texture_extra_multi) / 32.0f) / texture_width);
                 }
+            } else if (opcode == 0x2A) { // unpack_end_displaylist, 
+                // Only 1 byte, the opcode
+                face_string << "o object" << std::to_string(object_num++) << std::endl;
+            } else if ((opcode == 0x26) || (opcode == 0x27)) {
+                /**
+                 * 0x26: unpack_texture_on, 
+                 * 0x27: unpack_texture_off, 
+                 **/
+                // Only 1 byte, the opcode
+                if (opcode == 0x26) {
+                    texture_extra_multi = 0xFFFF / 65536.0f;
+                } else {
+                    texture_extra_multi = 0x0001 / 65536.0f;
+                }
+                std::cout << std::to_string(texture_extra_multi) << std::endl;
             } else if (
                 ((0x00 <= opcode) && (opcode <= 0x19)) ||
-                 (opcode == 0x26) || (opcode == 0x27)  ||
-                 (opcode == 0x2A) ||
                 ((0x2D <= opcode) && (opcode <= 0x2F)) ||
                 ((0x53 <= opcode) && (opcode <= 0x57))) {
                 /**
@@ -202,9 +263,6 @@ int main(int argc, char **argv) {
                  * 0x17: unpack_combine_mode_shade, 
                  * 0x18: unpack_render_mode_opaque, 
                  * 0x19: unpack_render_mode_tex_edge, 
-                 * 0x26: unpack_texture_on, 
-                 * 0x27: unpack_texture_off, 
-                 * 0x2A: unpack_end_displaylist, 
                  * 0x2D: unpack_cull_displaylist, 
                  * 0x2E: unpack_combine_mode4, 
                  * 0x2F: unpack_render_mode_translucent, 
@@ -215,9 +273,7 @@ int main(int argc, char **argv) {
                  * 0x57: unpack_clear_geometry_mode, 
                  **/
                 // Only 1 byte, the opcode
-                if (opcode == 0x2A) {
-                    face_string << "o object" << std::to_string(object_num++) << std::endl;
-                }
+                ;
             } else if (
                 ((0x1A <= opcode) && (opcode <= 0x1F)) ||
                  (opcode == 0x2B) || (opcode == 0x2C)) {
@@ -227,13 +283,40 @@ int main(int argc, char **argv) {
                  **/
                 // 3 bytes including the opcode
                 model_bytes.seekg(2, std::ios_base::cur);
-            } else if (
-                ((0x20 <= opcode) && (opcode <= 0x25)) ||
-                 (opcode == 0x30)) {
-                /**
-                 * 0x20 - 0x25: unpack_tile_load_sync, 
-                 * 0x30: unpack_spline_3D, 
-                 **/
+            } else if ((0x20 <= opcode) && (opcode <= 0x25)) { // unpack_tile_load_sync, 
+                // 4 bytes including the opcode
+                switch (opcode) {
+                case 0x20:
+                    texture_height = 32.0f;
+                    texture_width  = 32.0f;
+                    break;
+                case 0x21:
+                    texture_height = 64.0f;
+                    texture_width  = 32.0f;
+                    break;
+                case 0x22:
+                    texture_height = 32.0f;
+                    texture_width  = 64.0f;
+                    break;
+                case 0x23:
+                    texture_height = 32.0f;
+                    texture_width  = 32.0f;
+                    break;
+                case 0x24:
+                    texture_height = 64.0f;
+                    texture_width  = 32.0f;
+                    break;
+                case 0x25:
+                    texture_height = 32.0f;
+                    texture_width  = 64.0f;
+                    break;
+                }
+                model_bytes.read(reinterpret_cast<char*>(&data_byte), 1);
+                texture_addr = data_byte;
+                texture_addr <<= 11;
+                face_string << "usemtl " << model.textures[texture_addr] << std::endl;
+                model_bytes.seekg(2, std::ios_base::cur);
+            } else if (opcode == 0x30) { // unpack_spline_3D
                 // 4 bytes including the opcode
                 model_bytes.seekg(3, std::ios_base::cur);
             } else {
@@ -243,9 +326,17 @@ int main(int argc, char **argv) {
         }
         model_bytes.close();
 
-        vtx_obj.open(vtx_obj_path, std::ios::out | std::ios::app);
-        vtx_obj << face_string.rdbuf();
+        for (auto tc : uv_list) {
+            vtx_tc_string << "vt " << std::to_string(tc.second.u) << " " << std::to_string(tc.second.v) << std::endl;
+        }
+
+        vtx_obj.open(vtx_obj_path, std::ios::out | std::ios::trunc);
+        vtx_obj << vtx_string.rdbuf() << vtx_tc_string.rdbuf() << face_string.rdbuf();
         vtx_obj.close();
+
+        model_inc.open(model_inc_path, std::ios::out | std::ios::trunc);
+        model_inc << model_string.rdbuf();
+        model_inc.close();
     }
     return 0;
 }
