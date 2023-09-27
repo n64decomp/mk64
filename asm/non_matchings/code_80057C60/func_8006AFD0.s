@@ -294,7 +294,7 @@ glabel func_8006AFD0
 /* 06BFC8 8006B3C8 3401FAC0 */  li    $at, 64192
 /* 06BFCC 8006B3CC 01F82021 */  addu  $a0, $t7, $t8
 /* 06BFD0 8006B3D0 00812021 */  addu  $a0, $a0, $at
-/* 06BFD4 8006B3D4 0C008860 */  jal   func_80022180
+/* 06BFD4 8006B3D4 0C008860 */  jal   convert_to_fixed_point_matrix
 /* 06BFD8 8006B3D8 02002825 */   move  $a1, $s0
 /* 06BFDC 8006B3DC 3C038015 */  lui   $v1, %hi(gDisplayListHead) # $v1, 0x8015
 /* 06BFE0 8006B3E0 24630298 */  addiu $v1, %lo(gDisplayListHead) # addiu $v1, $v1, 0x298

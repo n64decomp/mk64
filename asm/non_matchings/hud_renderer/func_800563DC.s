@@ -49,7 +49,7 @@ glabel func_800563DC
 /* 057098 80056498 A6290004 */  sh    $t1, 4($s1)
 /* 05709C 8005649C 34C6CCCD */  ori   $a2, (0x3E4CCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 0570A0 800564A0 02602025 */  move  $a0, $s3
-/* 0570A4 800564A4 0C010B80 */  jal   func_80042E00
+/* 0570A4 800564A4 0C010B80 */  jal   rsp_set_matrix_transformation
 /* 0570A8 800564A8 02202825 */   move  $a1, $s1
 /* 0570AC 800564AC 3C148015 */  lui   $s4, %hi(gDisplayListHead) # $s4, 0x8015
 /* 0570B0 800564B0 26940298 */  addiu $s4, %lo(gDisplayListHead) # addiu $s4, $s4, 0x298

@@ -28,7 +28,7 @@ glabel func_800562E4
 /* 056F4C 8005634C 3C063E4C */  lui   $a2, (0x3E4CCCCD >> 16) # lui $a2, 0x3e4c
 /* 056F50 80056350 34C6CCCD */  ori   $a2, (0x3E4CCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 056F54 80056354 24A53E80 */  addiu $a1, %lo(D_80183E80) # addiu $a1, $a1, 0x3e80
-/* 056F58 80056358 0C010B80 */  jal   func_80042E00
+/* 056F58 80056358 0C010B80 */  jal   rsp_set_matrix_transformation
 /* 056F5C 8005635C 24843E40 */   addiu $a0, %lo(D_80183E40) # addiu $a0, $a0, 0x3e40
 /* 056F60 80056360 8FAC001C */  lw    $t4, 0x1c($sp)
 /* 056F64 80056364 3C0E0D03 */  lui   $t6, %hi(D_0D02AC58) # $t6, 0xd03

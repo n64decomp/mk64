@@ -212,7 +212,7 @@ glabel func_80053870
 /* 054798 80053B98 26736930 */  addiu $s3, %lo(D_0D006930) # addiu $s3, $s3, 0x6930
 /* 05479C 80053B9C 8E060000 */  lw    $a2, ($s0)
 /* 0547A0 80053BA0 26315C00 */  addiu $s1, %lo(D_0D005C00) # addiu $s1, $s1, 0x5c00
-/* 0547A4 80053BA4 0C010B80 */  jal   func_80042E00
+/* 0547A4 80053BA4 0C010B80 */  jal   rsp_set_matrix_transformation
 /* 0547A8 80053BA8 AFA70044 */   sw    $a3, 0x44($sp)
 /* 0547AC 80053BAC 8E420000 */  lw    $v0, ($s2)
 /* 0547B0 80053BB0 8FA70044 */  lw    $a3, 0x44($sp)

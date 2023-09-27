@@ -37,7 +37,7 @@ void func_800B45E0(s32 arg0) {
                                                         .cupRecords[arg0 / 4] \
                                                         .courseRecords[arg0 % 4];
 
-    courseTimeTrialRecordsPtr->unknownBytes[5] = func_800B4874(arg0);
+    courseTimeTrialRecordsPtr->checksum = checksum_timetrial_records(arg0);
     osEepromLongWrite(&gSIEventMesgQueue, EEPROM_ADDR(courseTimeTrialRecordsPtr), (u8 *)courseTimeTrialRecordsPtr, sizeof(CourseTimeTrialRecords));
 }
 
@@ -82,7 +82,7 @@ void func_800B4728(s32 arg0) {
     }
 
     courseTimeTrialRecords->unknownBytes[0] = 0;
-    courseTimeTrialRecords->unknownBytes[5] = func_800B4874(arg0);
+    courseTimeTrialRecords->checksum = checksum_timetrial_records(arg0);
     func_800B45E0(arg0);
 }
 
@@ -98,8 +98,8 @@ void reset_save_data_grand_prix_points_and_sound_mode(void) {
     write_save_data_grand_prix_points_and_sound_mode();
 }
 
-// checksum_timetrial_records
-u8 func_800B4874(s32 courseIdx) {
+// create a magic number based on the time trial records
+u8 checksum_timetrial_records(s32 courseIdx) {
     s32 j;
     s32 i;
     s32 ret;
@@ -169,7 +169,7 @@ void func_800B4A9C(s32 course) {
     func_800B4FB0(course);
     if(sp24) {}
 
-    if (sp24->unknownBytes[5] != func_800B4874(course)) {
+    if (sp24->checksum != checksum_timetrial_records(course)) {
         func_800B4728(course);
         if (func_800B58C4(course) == 0) {
             s32 a3 = 0;
@@ -502,7 +502,7 @@ void func_800B559C(s32 course) {
             var_a0 = D_800F2E60;
             temp_a2 = &gSaveData.allCourseTimeTrialRecords.cupRecords[var_s1 / 4].courseRecords[var_s1 % 4];
             var_v0 = 0;
-            if (temp_a2->unknownBytes[5] != func_800B4874(var_s1)) {
+            if (temp_a2->checksum != checksum_timetrial_records(var_s1)) {
                 do {
                     temp_v1 = temp_s2 + ((var_s1 % 8) * 3) + var_v0;
                     var_v0 += 1;

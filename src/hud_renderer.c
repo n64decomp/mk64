@@ -29,19 +29,19 @@
 #include "courses/all_course_data.h"
 
 void func_800431B0(Vec3f arg0, Vec3su arg1, f32 arg2, Vtx *vtx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPVertex(gDisplayListHead++, vtx, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D006940);
 }
 
 void func_80043220(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, &D_0D0077A0);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
 
 UNUSED void func_80043288(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0077A0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPDisplayList(gDisplayListHead++, gfx);
@@ -49,25 +49,25 @@ UNUSED void func_80043288(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
 }
 
 void func_80043328(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0077D0);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
 
 UNUSED void func_80043390(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0077F8);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
 
 UNUSED void func_800433F8(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007828);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
 
 UNUSED void func_80043460(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007828);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPDisplayList(gDisplayListHead++, gfx);
@@ -75,7 +75,7 @@ UNUSED void func_80043460(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
 }
 
 void func_80043500(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007850);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPDisplayList(gDisplayListHead++, gfx);
@@ -83,7 +83,7 @@ void func_80043500(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
 }
 
 void func_800435A0(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx, s32 arg4) {
-    func_80042F70(arg0, arg1, arg2);
+    rsp_set_matrix_transformation_inverted_x_y_orientation(arg0, arg1, arg2);
 
     gSPDisplayList(gDisplayListHead++, D_0D007878);
     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, 0xFF, 0xFF, arg4);
@@ -93,7 +93,7 @@ void func_800435A0(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx, s32 arg4) {
 }
 
 UNUSED void func_80043668(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
@@ -626,14 +626,14 @@ void func_80045B74(Vtx *arg0) {
 }
 
 UNUSED void func_80045BBC(Vec3f arg0, Vec3su arg1, f32 arg2, Vtx *arg3) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
     gSPVertex(gDisplayListHead++, arg3, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D006940);
 }
 
 UNUSED void func_80045C48(Vec3f arg0, Vec3su arg1, f32 arg2, Vtx *arg3) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0078D0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPVertex(gDisplayListHead++, arg3, 4, 0);
@@ -795,25 +795,25 @@ UNUSED void func_80046794(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture, V
 }
 
 void func_80046808(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007948);
     func_80045E10(texture, arg4, arg5, arg6, arg8);
 }
 
 UNUSED void func_80046874(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     func_80045E10(texture, arg4, arg5, arg6, arg8);
 }
 
 void func_800468E0(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     func_80045F18(texture, arg4, arg5, arg6, arg8, arg9);
 }
 
 UNUSED void func_80046954(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     func_80045E10(texture, arg4, arg5, arg6, arg8);
@@ -821,14 +821,14 @@ UNUSED void func_80046954(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *a
 }
 
 void func_80046A00(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007948);
     func_80043D50(texture, arg5, arg6);
     func_80045B74(arg4);
 }
 
 UNUSED void func_80046A68(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     func_800462A8(texture, arg4, arg5, arg6, arg8);
 }
@@ -1015,110 +1015,110 @@ UNUSED void func_80047D40(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *
 }
 
 UNUSED void func_80047DCC(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007CB8);
     func_80047068(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 void func_80047E48(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007CD8);
     func_80047270(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 UNUSED void func_80047EC4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D18);
     func_80047068(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 void func_80047F40(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D38);
     func_80047270(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 UNUSED void func_80047FBC(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D58);
     func_80047270(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 UNUSED void func_80048038(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D98);
     func_80047068(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 void func_800480B4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     func_80047270(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 void func_80048130(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     func_8004747C(tlut, texture, arg5, arg6, arg7, arg8, arg9, argA);
 }
 
 UNUSED void func_800481B4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     func_8004768C(tlut, texture, arg5, arg6, arg7, arg8);
 }
 
 UNUSED void func_80048228(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
     func_8004B2BC(arg3);
     func_80047068(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_800482AC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007DD8);
     func_8004B2BC(arg3);
     func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 UNUSED void func_80048330(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E38);
     func_8004B2BC(arg3);
     func_80047068(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_800483B4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E58);
     func_8004B2BC(arg3);
     func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_80048438(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007DF8);
     func_8004B2BC(arg3);
     func_80047068(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_800484BC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E18);
     func_8004B2BC(arg3);
     func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_80048540(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E98);
     func_8004B2BC(arg3);
     func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_800485C4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E98);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
@@ -1459,25 +1459,25 @@ void func_8004A384(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s
 }
 
 void func_8004A414(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
     func_800492D4(texture, arg4, arg5, arg6, arg7, arg8);
 }
 
 UNUSED void func_8004A488(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
     func_800492D4(texture, arg4, arg5, arg6, arg7, arg8);
 }
 
 UNUSED void func_8004A4FC(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007AC0);
     func_800492D4(texture, arg4, arg5, arg6, arg7, arg8);
 }
 
 UNUSED void func_8004A570(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007AE0);
     func_800492D4(texture, arg4, arg5, arg6, arg7, arg8);
 }
@@ -1491,7 +1491,7 @@ void func_8004A630(Collision *arg0, Vec3f arg1, f32 arg2) {
         D_80183E50[0] = arg1[0];
         D_80183E50[1] = func_802ABE30(arg1[0], 0.0f, arg1[2], arg0->unk3A) + 0.8;
         D_80183E50[2] = arg1[2];
-        func_80043050(D_80183E50, arg0->unk60, arg2);
+        rsp_set_matrix_transl_rot_scale(D_80183E50, arg0->unk60, arg2);
         gSPDisplayList(gDisplayListHead++, D_0D007B98);
     }
 }
@@ -1504,7 +1504,7 @@ void func_8004A6EC(s32 objectIndex, f32 arg1) {
         D_80183E50[0] = temp_v0->pos[0];
         D_80183E50[1] = temp_v0->unk_044 + 0.8;
         D_80183E50[2] = temp_v0->pos[2];
-        func_80042E00(D_80183E50, temp_v0->unk_0B8, arg1);
+        rsp_set_matrix_transformation(D_80183E50, temp_v0->unk_0B8, arg1);
         gSPDisplayList(gDisplayListHead++, D_0D007B20);
     }
 }
@@ -1520,7 +1520,7 @@ void func_8004A7AC(s32 objectIndex, f32 arg1) {
         D_80183E98[0] = 0x4000;
         D_80183E98[1] = 0;
         D_80183E98[2] = 0;
-        func_80042E00(D_80183E50, D_80183E98, arg1);
+        rsp_set_matrix_transformation(D_80183E50, D_80183E98, arg1);
         gSPDisplayList(gDisplayListHead++, D_0D007B20);
     }
 }
@@ -1534,20 +1534,20 @@ void func_8004A870(s32 objectIndex, f32 arg1) {
         D_80183E50[0] = temp_v0->pos[0];
         D_80183E50[1] = temp_v0->unk_044 + 0.8;
         D_80183E50[2] = temp_v0->pos[2];
-        func_80042A20(sp30, temp_v0->unk_01C, D_80183E50, 0U, arg1);
-        func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
+        set_transform_matrix(sp30, temp_v0->unk_01C, D_80183E50, 0U, arg1);
+        convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, D_0D007B98);
     }
 }
 
 void func_8004A9B8(f32 arg0) {
-    func_80043050(D_80183E50, D_80183E70, arg0);
+    rsp_set_matrix_transl_rot_scale(D_80183E50, D_80183E70, arg0);
     gSPDisplayList(gDisplayListHead++, D_0D007C10);
 }
 
 UNUSED void func_8004AA10(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007AE0);
     func_8004B6C4(D_80165860, D_8016586C, D_80165878);
     func_800497CC(texture, arg4, arg5, arg6, arg7, arg8);
@@ -3422,7 +3422,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
         object->pos[0] = object->unk_028[0] + ((f32) (spD0 + 0x20));
         object->pos[1] = object->unk_028[1] + ((f32) (spC4 + spCC));
         object->pos[2] = object->unk_028[2];
-        func_80042E00(object->pos, object->unk_0BE, object->sizeScaling);
+        rsp_set_matrix_transformation(object->pos, object->unk_0BE, object->sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0069E0);
     } else {
         gDPLoadTLUT_pal256(gDisplayListHead++, gPortraitTLUTs[characterId]);
@@ -3437,7 +3437,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
         object->pos[0] = object->unk_028[0] + ((f32) (spD0 + 0x20));
         object->pos[1] = object->unk_028[1] + ((f32) (spC4 + spCC));
         object->pos[2] = object->unk_028[2];
-        func_80042E00(object->pos, object->unk_0BE, object->sizeScaling);
+        rsp_set_matrix_transformation(object->pos, object->unk_0BE, object->sizeScaling);
         if (spB8 != 0) {
             gSPDisplayList(gDisplayListHead++, D_0D0069F8);
         } else {
@@ -3455,7 +3455,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
             gSPDisplayList(gDisplayListHead++, D_0D007A40);
             func_8004B35C(D_8018D3E4, D_8018D3E8, D_8018D3EC, 0x000000FF);
             func_80044924(gTextureCharacterPortraitBorder, 0x00000020, 0x00000020);
-            func_80042E00(object->pos, object->unk_0BE, object->sizeScaling);
+            rsp_set_matrix_transformation(object->pos, object->unk_0BE, object->sizeScaling);
             gSPDisplayList(gDisplayListHead++, D_0D0069E0);
         }
     }
@@ -3526,7 +3526,7 @@ void func_80051638(UNUSED s32 arg0) {
         if (leafIndex != -1) {
             object = &D_80165C18[leafIndex];
             if ((object->unk_0A6 >= 2) && (object->unk_0D5 == 7) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
-                func_80043104(leafIndex);
+                rsp_set_matrix_D_80165C18(leafIndex);
                 gSPDisplayList(gDisplayListHead++, D_0D0069C8);
             }
         }
@@ -3545,7 +3545,7 @@ void func_800517C8(void) {
     for (someIndex = 0; someIndex < NUM_SNOWFLAKES; someIndex++) {
         snowflakeIndex = D_8018C1B0[someIndex];
         if (D_80165C18[snowflakeIndex].unk_0A6 >= 2) {
-            func_80043104(snowflakeIndex);
+            rsp_set_matrix_D_80165C18(snowflakeIndex);
             gSPDisplayList(gDisplayListHead++, D_0D006980);
         }
     }
@@ -3863,7 +3863,7 @@ void func_8005217C(s32 arg0) {
         sp50 = temp_a3;
         if (func_8007223C(temp_a3, 0x00000010) != 0) {
             sp50 = temp_a3;
-            func_80042E00(temp_v1->pos, (s16 *) temp_v1->unk_0BE, temp_v1->sizeScaling);
+            rsp_set_matrix_transformation(temp_v1->pos, (s16 *) temp_v1->unk_0BE, temp_v1->sizeScaling);
             func_800520C0(sp50);
 
             gSPDisplayList(gDisplayListHead++, D_0D007828);
@@ -4131,7 +4131,7 @@ void func_800528EC(s32 arg0) {
             if (temp_v0_8 != -1) {
                 temp_v1 = &D_80165C18[temp_v0_8];
                 if (temp_v1->unk_0A6 > 0) {
-                    func_80042E00(temp_v1->pos, &D_80183E80, temp_v1->sizeScaling);
+                    rsp_set_matrix_transformation(temp_v1->pos, &D_80183E80, temp_v1->sizeScaling);
                     temp_v0_9 = gDisplayListHead;
                     gDisplayListHead = temp_v0_9 + 8;
                     temp_v0_9->words.w1 = (u32) D_0D005BD0;
@@ -4150,7 +4150,7 @@ void func_800528EC(s32 arg0) {
             if (temp_v0_11 != -1) {
                 temp_v1_2 = &D_80165C18[temp_v0_11];
                 if ((temp_v1_2->unk_0A6 > 0) && (arg0 == temp_v1_2->unk_084[7]) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
-                    func_80042E00(temp_v1_2->pos, &D_80183E80, temp_v1_2->sizeScaling);
+                    rsp_set_matrix_transformation(temp_v1_2->pos, &D_80183E80, temp_v1_2->sizeScaling);
                     temp_v0_12 = gDisplayListHead;
                     gDisplayListHead = temp_v0_12 + 8;
                     temp_v0_12->words.w1 = (u32) D_0D005BD0;
@@ -4294,7 +4294,7 @@ void func_80052F20(s32 cameraId) {
                 func_8008A364(objectIndex, cameraId, 0x2AABU, 0x000001F4);
                 if (func_8007223C(objectIndex, 0x00040000) != 0) {
                     temp_s1->unk_0B2[1] = func_800418AC(temp_s1->pos[0], temp_s1->pos[2], sp44->pos);
-                    func_80043104(objectIndex);
+                    rsp_set_matrix_D_80165C18(objectIndex);
                     gSPDisplayList(gDisplayListHead++, D_0D0069E0);
                 }
             }
@@ -4416,7 +4416,7 @@ void func_800534E8(s32 objectIndex) {
 void func_800536C8(s32 objectIndex) {
     if ((D_80165C18[objectIndex].unk_0A6 >= 2) && (func_80072354(objectIndex, 0x00000040) != 0)) {
         func_8004A7AC(objectIndex, 1.75f);
-        func_80042E00(D_80165C18[objectIndex].pos, D_80165C18[objectIndex].unk_0B2, D_80165C18[objectIndex].sizeScaling);
+        rsp_set_matrix_transformation(D_80165C18[objectIndex].pos, D_80165C18[objectIndex].unk_0B2, D_80165C18[objectIndex].sizeScaling);
         func_800534E8(objectIndex);
         gSPDisplayList(gDisplayListHead++, D_0D007828);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -4535,7 +4535,7 @@ void func_80053870(s32 cameraId) {
             temp_s0 = &D_80165C18[temp_s1_3];
             if ((temp_s0->unk_0A6 > 0) && (temp_s0->unk_0D5 == 3) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 sp44 = var_a3;
-                func_80042E00(temp_s0->pos, temp_s0->unk_0B2, temp_s0->sizeScaling);
+                rsp_set_matrix_transformation(temp_s0->pos, temp_s0->unk_0B2, temp_s0->sizeScaling);
                 temp_v0_10 = gDisplayListHead;
                 gDisplayListHead = temp_v0_10 + 8;
                 temp_v0_10->words.w0 = 0x04000C2F;
@@ -4592,7 +4592,7 @@ void func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 vertexIndex) {
     if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
         temp_v0 = &D_80165C18[objectIndex];
         D_80183E80[2] = (s16) (temp_v0->unk_084[6] + 0x8000);
-        func_80042E00(temp_v0->pos, (u16 *) D_80183E80, temp_v0->sizeScaling);
+        rsp_set_matrix_transformation(temp_v0->pos, (u16 *) D_80183E80, temp_v0->sizeScaling);
         func_8004B1C8((s32) temp_v0->unk_084[0], (s32) temp_v0->unk_084[1], (s32) temp_v0->unk_084[2], (s32) temp_v0->unk_084[3], (s32) temp_v0->unk_084[4], (s32) temp_v0->unk_084[5], (s32) temp_v0->unk_0A0);
         gSPVertex(gDisplayListHead++, &D_0D0060B0[vertexIndex], 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D006940);
@@ -4884,7 +4884,7 @@ void func_80054AFC(s32 objectIndex, Vec3f arg1) {
     D_80183E80[1] = func_800418AC(D_80165C18[objectIndex].pos[0], D_80165C18[objectIndex].pos[2], arg1);
     D_80183E80[2] = (u16) D_80165C18[objectIndex].unk_0B2[2];
     func_8004B138((s32) D_80165C18[objectIndex].unk_084[0], (s32) D_80165C18[objectIndex].unk_084[1], (s32) D_80165C18[objectIndex].unk_084[2], (s32) D_80165C18[objectIndex].unk_0A0);
-    func_80042E00(D_80165C18[objectIndex].pos, (u16 *) D_80183E80, D_80165C18[objectIndex].sizeScaling);
+    rsp_set_matrix_transformation(D_80165C18[objectIndex].pos, (u16 *) D_80183E80, D_80165C18[objectIndex].sizeScaling);
     gSPVertex(gDisplayListHead++, D_0D005AE0, 4, 0);
     gSPDisplayList(gDisplayListHead++, D_0D006940);
 }
@@ -4974,7 +4974,7 @@ void func_80054F04(s32 cameraId) {
             func_8008A364(objectIndex, cameraId, 0x2AABU, 0x000000C8);
             if ((func_8007223C(objectIndex, 0x00040000) != 0) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 object->unk_0B2[1] = func_800418AC(object->pos[0], object->pos[2], sp44->pos);
-                func_80043104(objectIndex);
+                rsp_set_matrix_D_80165C18(objectIndex);
                 gSPDisplayList(gDisplayListHead++, D_0D006980);
             }
         }
@@ -5001,7 +5001,7 @@ void func_800550A4(s32 arg0) {
 void func_80055164(s32 objectIndex) {
     if (D_80165C18[objectIndex].unk_0A6 >= 2) {
         gSPDisplayList(gDisplayListHead++, D_0D0077A0);
-        func_80042E00(D_80165C18[objectIndex].pos, D_80165C18[objectIndex].unk_0BE, D_80165C18[objectIndex].sizeScaling);
+        rsp_set_matrix_transformation(D_80165C18[objectIndex].pos, D_80165C18[objectIndex].unk_0BE, D_80165C18[objectIndex].sizeScaling);
         if (gIsGamePaused == 0) {
             D_80165C18[objectIndex].unk_0A2 = func_80004DFC((animation_type_1 *) D_80165C18[objectIndex].unk_070, (animation_type_2 **) D_80165C18[objectIndex].unk_074, 0, D_80165C18[objectIndex].unk_0A2);
         } else {
@@ -5025,7 +5025,7 @@ void func_80055228(s32 cameraId) {
 
 void func_800552BC(s32 objectIndex) {
     if (D_80165C18[objectIndex].unk_0A6 >= 2) {
-        func_80042E00(D_80165C18[objectIndex].pos, D_80165C18[objectIndex].unk_0BE, D_80165C18[objectIndex].sizeScaling);
+        rsp_set_matrix_transformation(D_80165C18[objectIndex].pos, D_80165C18[objectIndex].unk_0BE, D_80165C18[objectIndex].sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0077D0);
         if (gIsGamePaused == 0) {
             D_80165C18[objectIndex].unk_0A2 = func_80004DFC((animation_type_1 *) D_80165C18[objectIndex].unk_070, (animation_type_2 **) D_80165C18[objectIndex].unk_074, 0, D_80165C18[objectIndex].unk_0A2);
@@ -5129,7 +5129,7 @@ void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
                     sp34[0] = temp_s0->pos[0];
                     sp34[1] = temp_s0->pos[1] - 1.0;
                     sp34[2] = temp_s0->pos[2];
-                    func_80042F70(sp34, temp_s0->unk_0B2, temp_s0->sizeScaling);
+                    rsp_set_matrix_transformation_inverted_x_y_orientation(sp34, temp_s0->unk_0B2, temp_s0->sizeScaling);
                     gSPDisplayList(gDisplayListHead++, D_0D0077D0);
                     func_80004DFC((animation_type_1 *) temp_s0->unk_070, (animation_type_2 **) temp_s0->unk_074, (s16) temp_s0->unk_0D8, (s16) temp_s0->unk_0D2);
                 }
@@ -5137,7 +5137,7 @@ void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
                 func_8004A7AC(objectIndex, 1.5f);
             }
         }
-        func_80042E00(temp_s0->pos, temp_s0->unk_0B2, temp_s0->sizeScaling);
+        rsp_set_matrix_transformation(temp_s0->pos, temp_s0->unk_0B2, temp_s0->sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0077D0);
         func_80004DFC((animation_type_1 *) temp_s0->unk_070, (animation_type_2 **) temp_s0->unk_074, (s16) temp_s0->unk_0D8, (s16) temp_s0->unk_0D2);
     }
@@ -5201,7 +5201,7 @@ void func_80055AB8(s32 objectIndex, s32 cameraId) {
             D_80183E80[2] = 0x8000;
             func_800468E0(D_80183E40, D_80183E80, 0.54f, d_course_rainbow_road_sphere, D_0D0062B0, 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
         } else {
-            func_80042E00(D_80165C18[objectIndex].pos, D_80165C18[objectIndex].unk_0BE, D_80165C18[objectIndex].sizeScaling);
+            rsp_set_matrix_transformation(D_80165C18[objectIndex].pos, D_80165C18[objectIndex].unk_0BE, D_80165C18[objectIndex].sizeScaling);
             gSPDisplayList(gDisplayListHead++, D_0D0077D0);
             func_80004DFC((animation_type_1 *) D_80165C18[objectIndex].unk_070, (animation_type_2 **) D_80165C18[objectIndex].unk_074, 0, (s16) D_80165C18[objectIndex].unk_0D2);
         }
@@ -5287,8 +5287,8 @@ void func_80055FA0(s32 objectIndex, UNUSED s32 arg1) {
     if (object->unk_0A6 >= 2) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        func_800425D0(someMatrix1,object->pos, object->unk_0BE, object->sizeScaling);
-        func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], someMatrix1);
+        mtxf_set_matrix_transformation(someMatrix1,object->pos, object->unk_0BE, object->sizeScaling);
+        convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], someMatrix1);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, D_0D0077A0);
         gSPDisplayList(gDisplayListHead++, object->unk_070);
@@ -5356,7 +5356,7 @@ void func_800562E4(s32 arg0, s32 arg1, s32 arg2) {
     D_8016586C = temp_a1;
     D_80165878 = temp_a2;
     func_8004B138(temp_a0, temp_a1, temp_a2, arg2);
-    func_80042E00(&D_80183E40, &D_80183E80, 0.2f);
+    rsp_set_matrix_transformation(&D_80183E40, &D_80183E80, 0.2f);
     func_80044BF8((arg1 << 0xA) + D_0D02AC58, 0x00000020, 0x00000020);
     temp_v0_2 = gDisplayListHead;
     gDisplayListHead = temp_v0_2 + 8;
@@ -5401,7 +5401,7 @@ void func_800563DC(s32 objectIndex, s32 cameraId, s32 arg2) {
     D_80183E40.unk8 = temp_f14;
     D_80183E80.unk2 = func_800418AC(temp_f12, temp_f14, camera1[cameraId].pos);
     D_80183E80.unk4 = 0x8000;
-    func_80042E00(&D_80183E40, &D_80183E80, 0.2f);
+    rsp_set_matrix_transformation(&D_80183E40, &D_80183E80, 0.2f);
     temp_v0_2 = gDisplayListHead;
     gDisplayListHead = temp_v0_2 + 8;
     temp_v0_2->words.w0 = 0x06000000;
@@ -5460,8 +5460,8 @@ void func_800568A0(s32 objectIndex, s32 playerId) {
     D_80183E50[0] = D_80165C18[objectIndex].pos[0];
     D_80183E50[1] = D_80165C18[objectIndex].unk_044 + 0.8;
     D_80183E50[2] = D_80165C18[objectIndex].pos[2];
-    func_80042A20(sp30, player->unk_110.unk60, D_80183E50, 0U, 0.5f);
-    func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
+    set_transform_matrix(sp30, player->unk_110.unk60, D_80183E50, 0U, 0.5f);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D007B98);
 }
@@ -5578,8 +5578,8 @@ void func_80056FCC(s32 bombIndex) {
     D_80183E50[0] = temp_v0->bombPos[0];
     D_80183E50[1] = temp_v0->yPos + 1.0;
     D_80183E50[2] = temp_v0->bombPos[2];
-    func_80042A20(sp30, D_80164038[bombIndex].unk60, D_80183E50, 0U, 0.5f);
-    func_80022180(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
+    set_transform_matrix(sp30, D_80164038[bombIndex].unk60, D_80183E50, 0U, 0.5f);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_LOAD | G_MTX_NOPUSH| G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D007B98);
 }

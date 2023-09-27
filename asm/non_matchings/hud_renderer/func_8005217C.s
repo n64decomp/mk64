@@ -24,7 +24,7 @@ glabel func_8005217C
 /* 052DD4 800521D4 24640004 */  addiu $a0, $v1, 4
 /* 052DD8 800521D8 246500BE */  addiu $a1, $v1, 0xbe
 /* 052DDC 800521DC 8C660000 */  lw    $a2, ($v1)
-/* 052DE0 800521E0 0C010B80 */  jal   func_80042E00
+/* 052DE0 800521E0 0C010B80 */  jal   rsp_set_matrix_transformation
 /* 052DE4 800521E4 AFA70050 */   sw    $a3, 0x50($sp)
 /* 052DE8 800521E8 0C014830 */  jal   func_800520C0
 /* 052DEC 800521EC 8FA40050 */   lw    $a0, 0x50($sp)

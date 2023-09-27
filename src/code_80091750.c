@@ -5698,7 +5698,7 @@ void func_8009B998(void) {
 Gfx *func_8009B9D0(Gfx *displayListHead, MkTexture *textures) {
     Gfx *displayList;
     UNUSED s32 pad;
-    s32 found;
+    bool found;
     s32 index;
 
     found = FALSE;
@@ -10119,7 +10119,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A5738.s")
 void func_800A6034(struct_8018D9E0_entry *arg0) {
     char *text;
 
-    if (D_801657E8 != 1) {
+    if (D_801657E8 != TRUE) {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, arg0->unk1C);
         text = D_800E7500[D_800DC540];
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);

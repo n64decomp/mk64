@@ -629,7 +629,7 @@ void func_80058F78(void) {
                 func_8004FA78(0);
                 func_8004E78C(0);
                 func_8004EB38(0);
-                if (D_801657E6 != 0) {
+                if (D_801657E6 != FALSE) {
                     func_8004ED40(0);
                 }
             }
@@ -702,10 +702,10 @@ void func_800591B4(void) {
 
         if (D_8018D188 != 0) {
             if (D_801657D8 == 0) {
-                if (D_801657F0 != 0) {
+                if (D_801657F0 != FALSE) {
                     func_800514BC();
                 }
-                if ((!gDemoMode) && (D_801657E8 != 0)) {
+                if ((!gDemoMode) && (D_801657E8 != FALSE)) {
                     if (D_80165800[0] != 0) {
                         func_8004EE54(0);
                         if (gModeSelection != BATTLE) {
@@ -1167,7 +1167,7 @@ extern s8 D_801657F8;
 void func_8006F824(s32);
 
 void func_8005A3C0(void) {
-    s32 b = FALSE;
+    bool b = FALSE;
     if ((gGamestate != 5) && (gGamestate != 9) && !D_8018D204) {
         switch (gPlayerCountSelection1) {
         case 1:
@@ -1202,12 +1202,12 @@ void func_8005A3C0(void) {
                     b = TRUE;
                 }
                 if (D_80165800[0] && D_80165800[1]) {
-                    D_801657F0 = 0;
+                    D_801657F0 = FALSE;
                 } else {
-                    D_801657F0 = 1;
+                    D_801657F0 = TRUE;
                 }
                 if (gDemoMode) {
-                    D_801657F0 = 0;
+                    D_801657F0 = FALSE;
                 }
             }
             break;
@@ -1334,7 +1334,7 @@ void func_8005A99C(void) {
                 func_8005AA34();
             }
             if (gPlayerCountSelection1 == 3) {
-                D_801657E8 = 1;
+                D_801657E8 = TRUE;
             }
             D_8018D188 = (s32) 1;
             D_8018D170 = (s32) 1;
@@ -2302,9 +2302,9 @@ extern u32 D_80165658[];
 extern s8 D_801657E3;
 extern s8 D_801657E4;
 extern s8 D_801657E5;
-extern s8 D_801657E6;
-extern s8 D_801657E8;
-extern s8 D_801657F0;
+extern bool8 D_801657E6;
+extern bool8 D_801657E8;
+extern bool8 D_801657F0;
 extern s8 D_80165800[2];
 extern s32 D_8016587C;
 extern s8 D_80165898;
@@ -2389,9 +2389,9 @@ void func_8005CB60(s32 playerId, s32 arg1)
             case 3:
                 if ((D_8018D114 == 0) || (D_8018D114 == 1)) {
                     D_801657E4 = 0;
-                    D_801657E6 = 0;
-                    D_801657F0 = 0;
-                    D_801657E8 = 1;
+                    D_801657E6 = FALSE;
+                    D_801657F0 = FALSE;
+                    D_801657E8 = TRUE;
                     D_80165800[0] = 1;
                     D_80165800[1] = 1;
                     D_8018D204 = 1;
@@ -4642,7 +4642,7 @@ void func_800652D4(Vec3f arg0, Vec3s arg1, f32 arg2) {
 
     func_80021E10(sp20, arg0, arg1);
     func_80021F84(sp20, arg2);
-    func_80022180(&gGfxPool->mtxEffect[gMatrixEffectCount], sp20);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp20);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
@@ -6043,7 +6043,7 @@ void func_8006AFD0(Player *player, s16 arg1, s8 arg2, s8 arg3) {
     sp130 = (s16) (s32) (((f32) *(&D_8018D7D0 + (((s8) arg1 * 6) + temp_t6)) - ((f32) *(&D_8018D860 + (((s8) arg1 * 6) + temp_t6)) * sp58)) - (sins(unksp46) * (f32) (*sp3C * 8)));
     func_80021E10((f32 (*)[4]) &sp140[0], &sp134, &sp12C);
     func_80021F84((f32 (*)[4]) &sp140[0], var_f20);
-    func_80022180(&gGfxPool->mtxEffect[gMatrixEffectCount], (f32 (*)[4]) &sp140[0]);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], (f32 (*)[4]) &sp140[0]);
 
     gSPMatrix(gDisplayListHead++, PHYSICAL_TO_VIRTUAL(&gGfxPool->mtxEffect[gMatrixEffectCount], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008DB8);
@@ -6165,7 +6165,7 @@ void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     spF4[2] = arg2;
     func_80021E10(sp108[0], spFC, spF4);
     func_80021F84(sp108[0], arg1);
-    func_80022180(&gGfxPool->mtxEffect[gMatrixEffectCount], sp108);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp108);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008DB8);
     gDPLoadTLUT_pal256(gDisplayListHead++, D_800E52D0);
@@ -6723,14 +6723,14 @@ void func_8006D474(Player *player, s8 arg1, s8 arg2) {
 }
 
 void func_8006DC54(Player* player, s8 arg1, s8 arg2) {
-    s16 temp_s0;
-    s32 temp_v0;
+    s16 i;
+    s32 bitwiseMask;
 
-    temp_v0 = 8 << (arg2 * 4);
-    if (temp_v0 == (player->unk_002 & temp_v0)) {
-        for (temp_s0 = 0; temp_s0 < 10; ++temp_s0) {
-            if (player->unk_258[temp_s0].unk_012 == 7) {
-                func_800658A0(player, arg1, temp_s0, arg2);
+    bitwiseMask = 8 << (arg2 * 4);
+    if (bitwiseMask == (player->unk_002 & bitwiseMask)) {
+        for (i = 0; i < 10; ++i) {
+            if (player->unk_258[i].unk_012 == 7) {
+                func_800658A0(player, arg1, i, arg2);
             }
         }
     }

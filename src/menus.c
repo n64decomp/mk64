@@ -32,7 +32,7 @@ f32 D_8018EDD8;
 f32 D_8018EDDC;
 s32 D_8018EDE0;
 s8 gCharacterGridSelections[4]; // map from player id to current grid position
-s8 D_8018EDE8[4]; // bool8; map player id to isCharSelected on CSS
+bool8 D_8018EDE8[4]; // map player id to isCharSelected on CSS
 s8 D_8018EDEC;
 s8 gMainMenuSelectionDepth;
 s8 D_8018EDEE; // grid screen state?
@@ -224,7 +224,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
     struct_8018D9E0_entry *sp38;
     s32 res;
     struct_8018EE10_entry *sp30;
-    s32 sp2C; // cursorWasMoved or communicateStoredAction
+    bool sp2C; // cursorWasMoved or communicateStoredAction
     UNUSED u32 pad;
 
     btnAndStick = (controller->buttonPressed | controller->stickPressed);
@@ -1260,7 +1260,7 @@ void func_800B28C8(void) {
 void main_menu_act(struct Controller *controller, u16 arg1) {
     u16 btnAndStick; // sp2E
     s32 sp28;
-    s32 sp24;
+    bool sp24;
     s32 newMode; // temp_v1_2?
 
     btnAndStick = controller->buttonPressed | controller->stickPressed;
@@ -1496,7 +1496,7 @@ GLOBAL_ASM("asm/non_matchings/menus/main_menu_act.s")
 #endif
 
 // check if there is no currently selected and/or hovered character at grid position `gridId`
-s32 is_character_spot_free(s32 gridId) {
+bool is_character_spot_free(s32 gridId) {
     s32 i;
     for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
         if (gridId == gCharacterGridSelections[i]) {

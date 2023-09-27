@@ -703,24 +703,24 @@ UNUSED void func_80021FF8(Mtx *arg0, Mat4 arg1) {
     arg0->m[3][3] = arg1[3][3] * someMultiplier;
 }
 
-void func_80022180(Mtx *arg0, Mat4 arg1) {
+void convert_to_fixed_point_matrix(Mtx *fixedPointMatrix, Mat4 arg1) {
     f32 someMultiplier = 65536.0f;
-    arg0->m[0][0] = ((s32) (arg1[0][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[0][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    arg0->m[0][1] = ((s32) (arg1[0][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[0][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    arg0->m[0][2] = ((s32) (arg1[1][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[1][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    arg0->m[0][3] = ((s32) (arg1[1][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[1][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    arg0->m[1][0] = ((s32) (arg1[2][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[2][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    arg0->m[1][1] = ((s32) (arg1[2][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[2][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    arg0->m[1][2] = ((s32) (arg1[3][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[3][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    arg0->m[1][3] = ((s32) (arg1[3][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[3][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    arg0->m[2][0] = ((s32) (arg1[0][0] * someMultiplier) << 0x10)      | ((s32) (arg1[0][1] * someMultiplier) & 0xFFFF);
-    arg0->m[2][1] = ((s32) (arg1[0][2] * someMultiplier) << 0x10)      | ((s32) (arg1[0][3] * someMultiplier) & 0xFFFF);
-    arg0->m[2][2] = ((s32) (arg1[1][0] * someMultiplier) << 0x10)      | ((s32) (arg1[1][1] * someMultiplier) & 0xFFFF);
-    arg0->m[2][3] = ((s32) (arg1[1][2] * someMultiplier) << 0x10)      | ((s32) (arg1[1][3] * someMultiplier) & 0xFFFF);
-    arg0->m[3][0] = ((s32) (arg1[2][0] * someMultiplier) << 0x10)      | ((s32) (arg1[2][1] * someMultiplier) & 0xFFFF);
-    arg0->m[3][1] = ((s32) (arg1[2][2] * someMultiplier) << 0x10)      | ((s32) (arg1[2][3] * someMultiplier) & 0xFFFF);
-    arg0->m[3][2] = ((s32) (arg1[3][0] * someMultiplier) << 0x10)      | ((s32) (arg1[3][1] * someMultiplier) & 0xFFFF);
-    arg0->m[3][3] = ((s32) (arg1[3][2] * someMultiplier) << 0x10)      | ((s32) (arg1[3][3] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[0][0] = ((s32) (arg1[0][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[0][1] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[0][1] = ((s32) (arg1[0][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[0][3] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[0][2] = ((s32) (arg1[1][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[1][1] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[0][3] = ((s32) (arg1[1][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[1][3] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[1][0] = ((s32) (arg1[2][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[2][1] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[1][1] = ((s32) (arg1[2][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[2][3] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[1][2] = ((s32) (arg1[3][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[3][1] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[1][3] = ((s32) (arg1[3][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[3][3] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[2][0] = ((s32) (arg1[0][0] * someMultiplier) << 0x10)      | ((s32) (arg1[0][1] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[2][1] = ((s32) (arg1[0][2] * someMultiplier) << 0x10)      | ((s32) (arg1[0][3] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[2][2] = ((s32) (arg1[1][0] * someMultiplier) << 0x10)      | ((s32) (arg1[1][1] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[2][3] = ((s32) (arg1[1][2] * someMultiplier) << 0x10)      | ((s32) (arg1[1][3] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[3][0] = ((s32) (arg1[2][0] * someMultiplier) << 0x10)      | ((s32) (arg1[2][1] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[3][1] = ((s32) (arg1[2][2] * someMultiplier) << 0x10)      | ((s32) (arg1[2][3] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[3][2] = ((s32) (arg1[3][0] * someMultiplier) << 0x10)      | ((s32) (arg1[3][1] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[3][3] = ((s32) (arg1[3][2] * someMultiplier) << 0x10)      | ((s32) (arg1[3][3] * someMultiplier) & 0xFFFF);
 }
 
 s32 func_800224F0(s16 *arg0, s16 arg1, s16 arg2) {
@@ -1233,7 +1233,7 @@ void func_80023C84(Player *player, s8 arg1, s8 arg2) {
         spCC[0] = player->pos[0] + ((spB0 * sins(spC0)) + (spAC * coss(spC0)));
         spCC[1] = player->unk_074 + 1.0f;
         spCC[2] = player->pos[2] + ((spB0 * coss(spC0)) - (spAC * sins(spC0)));
-        func_80042A20(sp118, spB4, spCC, (spC0 + player->unk_042), D_800DDBD4[player->characterId] * player->unk_224 
+        set_transform_matrix(sp118, spB4, spCC, (spC0 + player->unk_042), D_800DDBD4[player->characterId] * player->unk_224 
         * var_f2);
     } else {
         spC4[0] = player->unk_0C4;
@@ -1246,7 +1246,7 @@ void func_80023C84(Player *player, s8 arg1, s8 arg2) {
         func_80021E10(sp118, spCC, spC4);
         func_80021F84(sp118, D_800DDBD4[player->characterId] * player->unk_224);
     }
-    func_80022180(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)], sp118);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)], sp118);
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008D58);
@@ -1295,7 +1295,7 @@ void func_80024374(Player *player, s8 arg1, s8 arg2) {
 
     func_80021E10(sp118, spCC, spC4);
     func_80021F84(sp118, D_800DDBD4[player->characterId] * player->unk_224);
-    func_80022180(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)], sp118);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)], sp118);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008D58);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
@@ -1382,7 +1382,7 @@ void func_800248D0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     }
     func_80021E10(sp1A4, sp154, sp14C);
     func_80021F84(sp1A4, D_800DDBD4[player->characterId] * player->unk_224);
-    func_80022180(&gGfxPool->mtxKart[arg1 + (arg2 * 8)], sp1A4);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxKart[arg1 + (arg2 * 8)], sp1A4);
     if ((player->unk_0BC & 0x80000000) == 0x80000000) {
         if (arg2 == arg1) {
             gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -1478,7 +1478,7 @@ void func_800256F4(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     }
     func_80021E10(sp12C, spDC, spD4);
     func_80021F84(sp12C, D_800DDBD4[player->characterId] * player->unk_224);
-    func_80022180(&gGfxPool->mtxKart[arg1 + (arg2 * 8)], sp12C);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxKart[arg1 + (arg2 * 8)], sp12C);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008CD8);
     gDPLoadTLUT_pal256(gDisplayListHead++, D_80164B04);
@@ -1508,7 +1508,7 @@ void func_80025DE8(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     sp94[2] = player->unk_050[arg2];
     func_80021E10(spA8, sp9C, sp94);
     func_80021F84(spA8, D_800DDBD4[player->characterId] * player->unk_224);
-    func_80022180(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008D10);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -1542,7 +1542,7 @@ void func_800262E0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     }
     func_80021E10(spA8, sp9C, sp94);
     func_80021F84(spA8, D_800DDBD4[player->characterId] * player->unk_224);
-    func_80022180(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008CD8);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
