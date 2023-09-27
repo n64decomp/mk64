@@ -502,8 +502,11 @@ $(BUILD_DIR)/src/data/common_textures.inc.o: src/data/common_textures.inc.c $(TE
 # Course Packed Displaylists Generation                                        #
 #==============================================================================#
 
-%/course_displaylists.inc.elf: %/course_displaylists.inc.o
-	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -o $@ $< --no-check-sections
+%/course_textures.linkonly.elf: %/course_textures.linkonly.o
+	$(V)$(LD) -t -e 0 -Ttext=05000000 -Map $@.map -o $@ $< --no-check-sections
+
+%/course_displaylists.inc.elf: %/course_displaylists.inc.o %/course_textures.linkonly.elf
+	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -R $*/course_textures.linkonly.elf -o $@ $< --no-check-sections
 
 %/course_displaylists.inc.bin: %/course_displaylists.inc.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
