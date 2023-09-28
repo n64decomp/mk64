@@ -29,7 +29,7 @@ void func_80021D40(void);
 void func_80021DA8(void);
 void mtxf_translate_rotate(Mat4, Vec3f, Vec3s);
 void func_80021F50(Mat4, Vec3f);
-void mtxf_scale(Mat4, f32);
+void mtxf_scale2(Mat4, f32);
 void func_80021FF8(Mtx*, Mat4);
 void convert_to_fixed_point_matrix(Mtx*, Mat4);
 s32  func_800224F0(s16*, s16, s16);

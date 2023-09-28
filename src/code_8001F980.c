@@ -665,7 +665,7 @@ UNUSED void func_80021F50(Mat4 arg0, Vec3f arg1) {
     arg0[3][2] += arg1[2];
 }
 
-void mtxf_scale(Mat4 arg0, f32 scale) {
+void mtxf_scale2(Mat4 arg0, f32 scale) {
     arg0[0][0] *= scale;
     arg0[1][0] *= scale;
     arg0[2][0] *= scale;
@@ -1238,7 +1238,7 @@ void func_80023C84(Player *player, s8 arg1, s8 arg2) {
         spCC[1] = player->unk_074 + 1.0f;
         spCC[2] = player->pos[2] + ((spB0 * coss(spC0)) - (spAC * sins(spC0)));
         mtxf_translate_rotate(sp118, spCC, spC4);
-        mtxf_scale(sp118, D_800DDBD4[player->characterId] * player->unk_224);
+        mtxf_scale2(sp118, D_800DDBD4[player->characterId] * player->unk_224);
     }
     convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)], sp118);
 
@@ -1288,7 +1288,7 @@ void func_80024374(Player *player, s8 arg1, s8 arg2) {
     spCC[1] = D_80165C18[D_80183EA0[arg1]].pos[1] + sp94[arg1];
 
     mtxf_translate_rotate(sp118, spCC, spC4);
-    mtxf_scale(sp118, D_800DDBD4[player->characterId] * player->unk_224);
+    mtxf_scale2(sp118, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)], sp118);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008D58);
@@ -1375,7 +1375,7 @@ void player_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
         D_80164B0C = &D_802BFB80[D_801651D0[arg2][arg1]][arg2 - 1][arg1 - 4].pixel_index_array[0x7C0];
     }
     mtxf_translate_rotate(sp1A4, sp154, sp14C);
-    mtxf_scale(sp1A4, D_800DDBD4[player->characterId] * player->unk_224);
+    mtxf_scale2(sp1A4, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxKart[arg1 + (arg2 * 8)], sp1A4);
     if ((player->unk_0BC & 0x80000000) == 0x80000000) {
         if (arg2 == arg1) {
@@ -1471,7 +1471,7 @@ void ghost_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
         D_80164B0C = &D_802BFB80[D_801651D0[arg2][arg1]][arg2 - 1][arg1 - 4].pixel_index_array[0x7C0];
     }
     mtxf_translate_rotate(sp12C, spDC, spD4);
-    mtxf_scale(sp12C, D_800DDBD4[player->characterId] * player->unk_224);
+    mtxf_scale2(sp12C, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxKart[arg1 + (arg2 * 8)], sp12C);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008CD8);
@@ -1501,7 +1501,7 @@ void func_80025DE8(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     sp94[1] = player->unk_048[arg2];
     sp94[2] = player->unk_050[arg2];
     mtxf_translate_rotate(spA8, sp9C, sp94);
-    mtxf_scale(spA8, D_800DDBD4[player->characterId] * player->unk_224);
+    mtxf_scale2(spA8, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008D10);
@@ -1535,7 +1535,7 @@ void player_mirror_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
         arg3 = 0;
     }
     mtxf_translate_rotate(spA8, sp9C, sp94);
-    mtxf_scale(spA8, D_800DDBD4[player->characterId] * player->unk_224);
+    mtxf_scale2(spA8, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008CD8);
