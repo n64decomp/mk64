@@ -283,7 +283,7 @@ typedef struct {
     /* 0x0090 */ f32 unk_090;
     /* 0x0094 */ f32 unk_094;
     /* 0x0098 */ f32 unk_098;
-    /* 0x009C */ f32 unk_09C;
+    /* 0x009C */ f32 currentSpeed;
     /* 0x00A0 */ f32 unk_0A0;
     /* 0x00A4 */ f32 unk_0A4;
     /* 0x00A8 */ s16 unk_0A8;
@@ -298,7 +298,7 @@ typedef struct {
     /* 0x00BC */ u32 unk_0BC;
     /* 0x00C0 */ s16 unk_0C0;
     /* 0x00C2 */ s16 unk_0C2;
-    /* 0x00C4 */ s16 unk_0C4;
+    /* 0x00C4 */ s16 slopAccel;
     /* 0x00C6 */ s16 unk_0C6;
     /* 0x00C8 */ s16 unk_0C8;
     /* 0x00CA */ s16 unk_0CA;
@@ -333,7 +333,7 @@ typedef struct {
     /* 0x0208 */ f32 unk_208;
     /* 0x020C */ f32 unk_20C;
     /* 0x0210 */ f32 unk_210;
-    /* 0x0214 */ f32 unk_214;
+    /* 0x0214 */ f32 topSpeed;
     /* 0x0218 */ f32 unk_218;
     /* 0x021C */ f32 unk_21C;
     /* 0x0220 */ s16 nearestWaypointId; // ??

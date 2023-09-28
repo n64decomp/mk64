@@ -671,7 +671,7 @@ void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         func_8002D268(player, camera, arg3, arg2);
     } else {
         if ((player->unk_000 & 0x4000) != 0x4000) {
-            player->unk_09C = 50.0f;
+            player->currentSpeed = 50.0f;
         }
         player->unk_0BC &= ~8;
     }
@@ -808,31 +808,31 @@ void func_800291F8(void) {
 }
 
 void func_80029200(Player *player, s8 arg1) {
-    if ((s32) player->unk_0C4 < -0x71B) {
+    if ((s32) player->slopAccel < -0x71B) {
         player->unk_24C[arg1] = 0;
     }
-    if (((s32) player->unk_0C4 < -0x4F9) && ((s32) player->unk_0C4 >= -0x71B)) {
+    if (((s32) player->slopAccel < -0x4F9) && ((s32) player->slopAccel >= -0x71B)) {
         player->unk_24C[arg1] = 1;
     }
-    if ((player->unk_0C4 < -0x221) && (player->unk_0C4 >= -0x4F9)) {
+    if ((player->slopAccel < -0x221) && (player->slopAccel >= -0x4F9)) {
         player->unk_24C[arg1] = 2;
     }
-    if ((player->unk_0C4 < -0x16B) && (player->unk_0C4 >= -0x221)) {
+    if ((player->slopAccel < -0x16B) && (player->slopAccel >= -0x221)) {
         player->unk_24C[arg1] = 3;
     }
-    if ((player->unk_0C4 < 0x16C) && (player->unk_0C4 >= -0x16B)) {
+    if ((player->slopAccel < 0x16C) && (player->slopAccel >= -0x16B)) {
         player->unk_24C[arg1] = 4;
     }
-    if ((player->unk_0C4 >= 0x16C) && (player->unk_0C4 < 0x222)) {
+    if ((player->slopAccel >= 0x16C) && (player->slopAccel < 0x222)) {
         player->unk_24C[arg1] = 5;
     }
-    if ((player->unk_0C4 >= 0x222) && (player->unk_0C4 < 0x4FA)) {
+    if ((player->slopAccel >= 0x222) && (player->slopAccel < 0x4FA)) {
         player->unk_24C[arg1] = 6;
     }
-    if ((player->unk_0C4 >= 0x4FA) && (player->unk_0C4 < 0x71C)) {
+    if ((player->slopAccel >= 0x4FA) && (player->slopAccel < 0x71C)) {
         player->unk_24C[arg1] = 7;
     }
-    if (player->unk_0C4 >= 0x71C) {
+    if (player->slopAccel >= 0x71C) {
         player->unk_24C[arg1] = 8;
     }
 }
@@ -1084,7 +1084,7 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     }
     if ((player->unk_0BC & 8) != 8) {
         temp_f0_2 = player->unk_1F8 - player->unk_1FC;
-        move_s16_towards(&player->unk_0C4, func_802B7C40(temp_f0_2 / temp_f2_3), 0.5f);
+        move_s16_towards(&player->slopAccel, func_802B7C40(temp_f0_2 / temp_f2_3), 0.5f);
     }
     else {
         temp_f0_2 = player->rotY - arg2;
@@ -1095,10 +1095,10 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
         else {
             temp_v0 *= 10;
         }
-        move_s16_towards(&player->unk_0C4, temp_v0, 0.5f);
+        move_s16_towards(&player->slopAccel, temp_v0, 0.5f);
     }
     if (((player->unk_0BC & 8) == 8) && ((player->unk_0CA & 2) == 2)) {
-        player->unk_0C4 = (s16) ((s32) player->unk_D9C);
+        player->slopAccel = (s16) ((s32) player->unk_D9C);
     }
     player->unk_0F8 = get_surface_type(player->unk_110.unk3A) & 0xFF;
     if (player->unk_0F8 == 0xFE) {
@@ -1165,7 +1165,7 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     player->unk_206 = -func_802B7C40(temp_f0 / var_f20);
     if ((player->unk_0BC & 8) != 8) {
         temp_f0 = (player->unk_1F8 - player->unk_1FC);
-        move_s16_towards(&player->unk_0C4, func_802B7C40(temp_f0 / var_f20), 0.5f);
+        move_s16_towards(&player->slopAccel, func_802B7C40(temp_f0 / var_f20), 0.5f);
     } else {
         temp_f0 = player->rotY - arg2;
         temp_v0 = func_802B7C40(temp_f0 / var_f20);
@@ -1174,7 +1174,7 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
         } else {
             var_a1 = temp_v0 * 0xA;
         }
-        move_s16_towards(&player->unk_0C4, var_a1, 0.5f);
+        move_s16_towards(&player->slopAccel, var_a1, 0.5f);
     }
     if (func_802ABD7C(player->unk_110.unk3A) != 0) {
         player->boundingBoxCorners[3].unk_14 |= 1;
@@ -1357,7 +1357,7 @@ void func_8002AAC0(Player *player) {
 void func_8002AB70(Player *player) {
     UNUSED s32 pad[2];
     if (((player->unk_0BC & 8) != 8) && (player->unk_08C > 0.0f)) {
-        if (((player->unk_0C4 / 182) < -1) && ((player->unk_0C4 / 182) >= -0x14) && (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
+        if (((player->slopAccel / 182) < -1) && ((player->slopAccel / 182) >= -0x14) && (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
             move_f32_towards(&player->kartGravity, 500.0f, 1.0f);
             move_f32_towards(&player->unk_DAC, 3.0f, 0.05f);
         } else {
@@ -1451,7 +1451,7 @@ void func_8002AE38(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
         } else {
             var_v1 = 0;
         }
-        if ((player->unk_09C >= 200.0f) &&
+        if ((player->currentSpeed >= 200.0f) &&
             (var_v1 == 2) &&
             (
                 ((player->unk_0C0 / 182) >= 0x10) ||
@@ -1677,7 +1677,7 @@ void func_8002B9CC(Player *player, s8 arg1, UNUSED s32 arg2) {
         temp_f14 = D_8018CE10[arg1].unk_04[2];
         if (sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f14 * temp_f14)) >= 6.5) {
             player->unk_08C /= 4;
-            player->unk_09C /= 4;
+            player->currentSpeed /= 4;
             if (!(player->unk_0BC & 0x80) && !(player->unk_0BC & 0x40)) {
                 func_8008C73C(player, arg1);
             }
@@ -1688,7 +1688,7 @@ void func_8002B9CC(Player *player, s8 arg1, UNUSED s32 arg2) {
         temp_f14 = D_80165070[arg1][2] - player->unk_034[2];
         if (sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f14 * temp_f14)) >= 4.2) {
             player->unk_08C /= 4;
-            player->unk_09C /= 4;
+            player->currentSpeed /= 4;
             if (!(player->unk_0BC & 0x80) && !(player->unk_0BC & 0x40)) {
                 func_8008C73C(player, arg1);
             }
@@ -2040,7 +2040,7 @@ void func_8002C954(Player *player, s8 arg1, Vec3f arg2) {
     if (player->unk_256 >= 0xA) {
         player->unk_256 = 0;
     }
-    if ((player->unk_0C4 >= 0) && (((player->unk_094 / 18.0f) * 216.0f) > 5.0f)) {
+    if ((player->slopAccel >= 0) && (((player->unk_094 / 18.0f) * 216.0f) > 5.0f)) {
         func_80031F48(player, 18.0f);
     }
     if ((player->unk_000 & 0x4000) == 0x4000) {
@@ -2799,7 +2799,7 @@ void control_cpu_movement(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg
     player->unk_0C2 = 0;
     player->unk_0BC &= ~2;
     player->unk_0BC &= ~8;
-    player->unk_0C4 = 0;
+    player->slopAccel = 0;
     player->unk_206 = 0;
     toSqrt = (sp68[0] * sp68[0]) + (sp68[2] * sp68[2]);
     player->unk_22C = player->unk_094;
@@ -2956,7 +2956,7 @@ void func_8002FCA8(Player *player, s8 arg1) {
     } else {
         var_v1 = 0;
     }
-    if ((player->unk_09C >= 200.0f) && (var_v1 == 2)) {
+    if ((player->currentSpeed >= 200.0f) && (var_v1 == 2)) {
         temp_lo = (s16) player->unk_0C0 / 182;
         if ((temp_lo > 0xF) || (temp_lo < -0xF)) {
             var_f0 += 1.0;
@@ -2981,19 +2981,19 @@ void func_8002FE84(Player *player, f32 arg1) {
     s32 test;
 
     if ((player->unk_0BC & 0x4000) == 0x4000) {
-        player->unk_098 = ((player->unk_09C * player->unk_09C) / 25.0f) * 1.1;
+        player->unk_098 = ((player->currentSpeed * player->currentSpeed) / 25.0f) * 1.1;
         return;
     }
     
     // Huh?
     if (((player->unk_0BC & 0xFFFFFFFF) & 8) == 8) {
-        player->unk_098 = ((player->unk_09C * player->unk_09C) / 25.0f) * 1.1;
+        player->unk_098 = ((player->currentSpeed * player->currentSpeed) / 25.0f) * 1.1;
         return;
     }
 
     var_f0 = 0.0f;
     player->unk_098 = arg1;
-    temp_lo = player->unk_0C4 / 182;
+    temp_lo = player->slopAccel / 182;
     if ((temp_lo > 0x11) || (temp_lo < -0x11)) {
         var_f0 += (temp_lo * 0.0125) / 1.2;
     } else {
@@ -3015,7 +3015,7 @@ void func_8002FE84(Player *player, f32 arg1) {
     }
     player->unk_098 = arg1 * (1.0 + (var_f0 * 0.7));
     if ((player->unk_0BC & 0x20) == 0x20) {
-        temp_f0_3 = player->unk_09C + 180.0f;
+        temp_f0_3 = player->currentSpeed + 180.0f;
         player->unk_098 = (temp_f0_3 * temp_f0_3) / 25.0f;
     }
 }
@@ -3047,7 +3047,7 @@ f32 func_80030150(Player *player, s8 arg1) {
                 var_f0 += D_800E2E90[player->characterId][player->boundingBoxCorners[0].surfaceType];
         }
         if (((player->unk_0BC & 8) != 8) && ((player->unk_0CA & 2) != 2)) {
-            temp_lo = player->unk_0C4 / 182;
+            temp_lo = player->slopAccel / 182;
             if (var_f2 >= 20.0f) {
                 if ((temp_lo > 0x11) || (temp_lo < -0x11)) {
                     var_f0 -= ((temp_lo * 0.0126) / 3.0);
@@ -3104,7 +3104,7 @@ f32 func_80030150(Player *player, s8 arg1) {
     } else {
         player->unk_0A0 = 0.0f;
         player->unk_0E8 = 0.0f;
-        if (((s16) player->unk_0C4 / 182) < 0) {
+        if (((s16) player->slopAccel / 182) < 0) {
             var_f0 += -0.85;
             if (player->unk_0BC & 0x40000000) {
                 var_f0 += -0.55;
@@ -3227,7 +3227,7 @@ void func_80030C34(Player *player) {
     if (player == gPlayerEight) {
         var_v0 = 7;
     }
-    if (D_80165460[var_v0] == 0) {
+    if (gIsPlayerTripleA[var_v0] == FALSE) {
         if (gPlayerIsThrottleActive[var_v0] == 1) {
             if ((D_80165420[var_v0] < 2) || (D_80165420[var_v0] >= 9)) {
                 D_80165440[var_v0] = 0;
@@ -3247,7 +3247,7 @@ void func_80030C34(Player *player) {
             D_80165400[var_v0] = 1;
         }
         if (D_80165440[var_v0] == 5) {
-            D_80165460[var_v0] = 1;
+            gIsPlayerTripleA[var_v0] = TRUE;
             D_80165480[var_v0] = 0x00000078;
             D_80165440[var_v0] = 0;
             D_80165420[var_v0] = 0;
@@ -3255,7 +3255,7 @@ void func_80030C34(Player *player) {
     } else {
         D_80165480[var_v0]--;
         if (D_80165480[var_v0] <= 0) {
-            D_80165460[var_v0] = 0;
+            gIsPlayerTripleA[var_v0] = FALSE;
         }
     }
 }
@@ -3287,7 +3287,7 @@ void func_80030E00(Player *player) {
     if (player == gPlayerEight) {
         var_v0 = 7;
     }
-    if (D_80165460[var_v0] == 0) {
+    if (gIsPlayerTripleA[var_v0] == FALSE) {
         if (gPlayerIsThrottleActive[var_v0] == 0) {
             if ((D_80165420[var_v0] < 2) || (D_80165420[var_v0] >= 9)) {
                 D_80165440[var_v0] = 0;
@@ -3307,7 +3307,7 @@ void func_80030E00(Player *player) {
             D_80165400[var_v0] = 1;
         }
         if (D_80165440[var_v0] == 5) {
-            D_80165460[var_v0] = 1;
+            gIsPlayerTripleA[var_v0] = TRUE;
             D_80165480[var_v0] = 0x00000078;
             D_80165440[var_v0] = 0;
             D_80165420[var_v0] = 0;
@@ -3315,94 +3315,86 @@ void func_80030E00(Player *player) {
     } else {
         D_80165480[var_v0]--;
         if (D_80165480[var_v0] <= 0) {
-            D_80165460[var_v0] = 0;
+            gIsPlayerTripleA[var_v0] = FALSE;
         }
     }
 }
 
-/*
-D_80165460 appears to track on a per-player index whether they're doing regular or "fast" accleration
-"fast" acceleration is triggered by triple tapping "A" instead of just pressing-and-holding
-gKartAccelerationTables may actually be something more like gKartJerkTables, with player->unk_09C being player accleration
-gKartTable800E36B0 is some sort of per-character multiplier to the jerk that is only used when triple-tap "A" is used
-player->unk_214 is possibly the max-acceleration allowed
-No speculation on what player->unk_0C4 could be
-*/
-void func_80030FC8(Player *player) {
+void player_speed(Player *player) {
     s32 player_index;
 
     player_index = get_player_index_for_player(player);
-    if (D_80165460[player_index] == 0) {
-        if ((0.0                     <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.1))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][0] + (0.05 * (player->unk_0C4 / 182));
+    if (gIsPlayerTripleA[player_index] == FALSE) {
+        if ((0.0                     <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.1))) {
+            player->currentSpeed += gKartAccelerationTables[player->characterId][0] + (0.05 * (player->slopAccel / 182));
         }
-        if (((player->unk_214 * 0.1) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.2))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][1] + (0.05 * (player->unk_0C4 / 182));
+        if (((player->topSpeed * 0.1) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.2))) {
+            player->currentSpeed += gKartAccelerationTables[player->characterId][1] + (0.05 * (player->slopAccel / 182));
         }
-        if (((player->unk_214 * 0.2) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.3))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][2] + (0.05 * (player->unk_0C4 / 182));
+        if (((player->topSpeed * 0.2) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.3))) {
+            player->currentSpeed += gKartAccelerationTables[player->characterId][2] + (0.05 * (player->slopAccel / 182));
         }
-        if (((player->unk_214 * 0.3) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.4))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][3] + (0.05 * (player->unk_0C4 / 182));
+        if (((player->topSpeed * 0.3) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.4))) {
+            player->currentSpeed += gKartAccelerationTables[player->characterId][3] + (0.05 * (player->slopAccel / 182));
         }
-        if (((player->unk_214 * 0.4) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][4] + (0.05 * (player->unk_0C4 / 182));
+        if (((player->topSpeed * 0.4) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.5))) {
+            player->currentSpeed += gKartAccelerationTables[player->characterId][4] + (0.05 * (player->slopAccel / 182));
         }
-        if (((player->unk_214 * 0.5) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.6))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][5] + (0.05 * (player->unk_0C4 / 182));
+        if (((player->topSpeed * 0.5) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.6))) {
+            player->currentSpeed += gKartAccelerationTables[player->characterId][5] + (0.05 * (player->slopAccel / 182));
         }
-        if (((player->unk_214 * 0.6) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.7))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][6] + (0.05 * (player->unk_0C4 / 182));
+        if (((player->topSpeed * 0.6) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.7))) {
+            player->currentSpeed += gKartAccelerationTables[player->characterId][6] + (0.05 * (player->slopAccel / 182));
         }
-        if (((player->unk_214 * 0.7) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.8))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][7] + (0.05 * (player->unk_0C4 / 182));
+        if (((player->topSpeed * 0.7) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.8))) {
+            player->currentSpeed += gKartAccelerationTables[player->characterId][7] + (0.05 * (player->slopAccel / 182));
         }
-        if (((player->unk_214 * 0.8) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.9))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][8] + (0.05 * (player->unk_0C4 / 182));
+        if (((player->topSpeed * 0.8) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.9))) {
+            player->currentSpeed += gKartAccelerationTables[player->characterId][8] + (0.05 * (player->slopAccel / 182));
         }
-        if (((player->unk_214 * 0.9) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0))) {
-            player->unk_09C += gKartAccelerationTables[player->characterId][9] + (0.05 * (player->unk_0C4 / 182));
+        if (((player->topSpeed * 0.9) <= player->currentSpeed) && (player->currentSpeed <= (player->topSpeed * 1.0))) {
+            player->currentSpeed += gKartAccelerationTables[player->characterId][9] + (0.05 * (player->slopAccel / 182));
         }
     } else {
-        if ((0.0                     <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.1))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][0] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if ((0.0                     <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.1))) {
+            player->currentSpeed += (gKartAccelerationTables[player->characterId][0] + (0.05 * (player->slopAccel / 182))) * gKartTripleABoost[player->characterId];
         }
-        if (((player->unk_214 * 0.1) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.2))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][1] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->topSpeed * 0.1) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.2))) {
+            player->currentSpeed += (gKartAccelerationTables[player->characterId][1] + (0.05 * (player->slopAccel / 182))) * gKartTripleABoost[player->characterId];
         }
-        if (((player->unk_214 * 0.2) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.3))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][2] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->topSpeed * 0.2) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.3))) {
+            player->currentSpeed += (gKartAccelerationTables[player->characterId][2] + (0.05 * (player->slopAccel / 182))) * gKartTripleABoost[player->characterId];
         }
-        if (((player->unk_214 * 0.3) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.4))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][3] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->topSpeed * 0.3) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.4))) {
+            player->currentSpeed += (gKartAccelerationTables[player->characterId][3] + (0.05 * (player->slopAccel / 182))) * gKartTripleABoost[player->characterId];
         }
-        if (((player->unk_214 * 0.4) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][4] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->topSpeed * 0.4) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.5))) {
+            player->currentSpeed += (gKartAccelerationTables[player->characterId][4] + (0.05 * (player->slopAccel / 182))) * gKartTripleABoost[player->characterId];
         }
-        if (((player->unk_214 * 0.5) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.6))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][5] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->topSpeed * 0.5) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.6))) {
+            player->currentSpeed += (gKartAccelerationTables[player->characterId][5] + (0.05 * (player->slopAccel / 182))) * gKartTripleABoost[player->characterId];
         }
-        if (((player->unk_214 * 0.6) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.7))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][6] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->topSpeed * 0.6) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.7))) {
+            player->currentSpeed += (gKartAccelerationTables[player->characterId][6] + (0.05 * (player->slopAccel / 182))) * gKartTripleABoost[player->characterId];
         }
-        if (((player->unk_214 * 0.7) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.8))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][7] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->topSpeed * 0.7) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.8))) {
+            player->currentSpeed += (gKartAccelerationTables[player->characterId][7] + (0.05 * (player->slopAccel / 182))) * gKartTripleABoost[player->characterId];
         }
-        if (((player->unk_214 * 0.8) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.9))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][8] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->topSpeed * 0.8) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.9))) {
+            player->currentSpeed += (gKartAccelerationTables[player->characterId][8] + (0.05 * (player->slopAccel / 182))) * gKartTripleABoost[player->characterId];
         }
-        if (((player->unk_214 * 0.9) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0))) {
-            player->unk_09C += (gKartAccelerationTables[player->characterId][9] + (0.05 * (player->unk_0C4 / 182))) * gKartTable800E36B0[player->characterId];
+        if (((player->topSpeed * 0.9) <= player->currentSpeed) && (player->currentSpeed <= (player->topSpeed * 1.0))) {
+            player->currentSpeed += (gKartAccelerationTables[player->characterId][9] + (0.05 * (player->slopAccel / 182))) * gKartTripleABoost[player->characterId];
         }
     }
-    if (player->unk_09C < 0.0f) {
-        player->unk_09C = 0.0f;
+    if (player->currentSpeed < 0.0f) {
+        player->currentSpeed = 0.0f;
     }
-    if (player->unk_214 <= player->unk_09C) {
-        player->unk_09C = player->unk_214;
+    if (player->topSpeed <= player->currentSpeed) {
+        player->currentSpeed = player->topSpeed;
     }
     if (!((player->unk_0BC & 8)) || ((player->unk_0BC & 0x40000000))) {
-        player->unk_08C = (player->unk_09C * player->unk_09C) / 25.0f;
+        player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
     }
     player->unk_044 |= 0x20;
     if ((player->statusEffects * 8) < 0) {
@@ -3415,18 +3407,18 @@ void func_80031F48(Player *player, f32 arg1) {
     s32 player_index;
     player_index = get_player_index_for_player(player);
 
-    player->unk_09C -= arg1;
-    if (player->unk_09C <= 0.0f) {
-        player->unk_09C = 0.0f;
+    player->currentSpeed -= arg1;
+    if (player->currentSpeed <= 0.0f) {
+        player->currentSpeed = 0.0f;
     }
     if (player->unk_094 < 0.2) {
         player->unk_08C = 0.0f;
     }
-    if (player->unk_214 <= player->unk_09C) {
-        player->unk_09C = player->unk_214;
+    if (player->topSpeed <= player->currentSpeed) {
+        player->currentSpeed = player->topSpeed;
     }
     if ((player->unk_0BC & 8) != 8) {
-        player->unk_08C = (player->unk_09C * player->unk_09C) / 25.0f;
+        player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
     }
     player->unk_044 &= 0xFFDF;
     if ((player->statusEffects * 8) < 0) {
@@ -3633,35 +3625,35 @@ void func_80032700(Player *player) {
     s32 test;
 
     temp_v0 = get_player_index_for_player(player);
-    if ((player->unk_09C >= 0.0) && (player->unk_09C < (player->unk_214 * 0.1))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][0] * 3.0;
+    if ((player->currentSpeed >= 0.0) && (player->currentSpeed < (player->topSpeed * 0.1))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][0] * 3.0;
     }
-    if (((player->unk_214 * 0.1) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.2))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][1] * 3.0;
+    if (((player->topSpeed * 0.1) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.2))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][1] * 3.0;
     }
-    if (((player->unk_214 * 0.2) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.3))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][2] * 3.0;
+    if (((player->topSpeed * 0.2) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.3))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][2] * 3.0;
     }
-    if (((player->unk_214 * 0.3) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.4))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][3] * 3.0;
+    if (((player->topSpeed * 0.3) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.4))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][3] * 3.0;
     }
-    if (((player->unk_214 * 0.4) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][4] * 3.0;
+    if (((player->topSpeed * 0.4) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.5))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][4] * 3.0;
     }
-    if (((player->unk_214 * 0.5) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.6))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][5] * 3.0;
+    if (((player->topSpeed * 0.5) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.6))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][5] * 3.0;
     }
-    if (((player->unk_214 * 0.6) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.7))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][6] * 2.5;
+    if (((player->topSpeed * 0.6) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.7))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][6] * 2.5;
     }
-    if (((player->unk_214 * 0.7) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.8))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][7] * 2.5;
+    if (((player->topSpeed * 0.7) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.8))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][7] * 2.5;
     }
-    if (((player->unk_214 * 0.8) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.9))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][8] * 2.5;
+    if (((player->topSpeed * 0.8) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.9))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][8] * 2.5;
     }
-    if (((player->unk_214 * 0.9) <= player->unk_09C) && (player->unk_09C <= player->unk_214 * 1.0)) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][9] * 2.5;
+    if (((player->topSpeed * 0.9) <= player->currentSpeed) && (player->currentSpeed <= player->topSpeed * 1.0)) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][9] * 2.5;
     }
     if (D_801656F0 == 1) {
         test = gRaceFrameCounter - D_801652E0[temp_v0];
@@ -3672,7 +3664,7 @@ void func_80032700(Player *player) {
         }
         if ((test < var_v0) && ((player->unk_044 & 0x20) != 0x20)) {
             player->statusEffects |= 0x02000000;
-        } else if ((player->unk_214 * 0.9f) <= player->unk_09C) {
+        } else if ((player->topSpeed * 0.9f) <= player->currentSpeed) {
             if ((player->statusEffects & 0x02000000) != 0x02000000) {
                 player->statusEffects |= 0x10000000;
                 player->statusEffects &= ~0x02000000;
@@ -3680,108 +3672,108 @@ void func_80032700(Player *player) {
         }
     }
     player->unk_044 |= 0x20;
-    player->unk_098 = (player->unk_09C * player->unk_09C) / 25.0f;
+    player->unk_098 = (player->currentSpeed * player->currentSpeed) / 25.0f;
 }
 
 void func_80032CB0(Player *player, f32 arg1) {
-    player->unk_09C -= arg1;
-    if (player->unk_09C <= 0.0f) {
-        player->unk_09C = 0.0f;
+    player->currentSpeed -= arg1;
+    if (player->currentSpeed <= 0.0f) {
+        player->currentSpeed = 0.0f;
     }
     if (player->unk_094 < 0.2) {
         player->unk_08C = 0.0f;
     }
-    if (player->unk_214 <= player->unk_09C) {
-        player->unk_09C = player->unk_214;
+    if (player->topSpeed <= player->currentSpeed) {
+        player->currentSpeed = player->topSpeed;
     }
-    if ((f64) player->unk_09C <= (player->unk_214 * 0.7)) {
+    if ((f64) player->currentSpeed <= (player->topSpeed * 0.7)) {
         player->statusEffects &= ~0x10000000;
     }
     player->statusEffects &= ~0x02000000;
     player->unk_044 &= ~0x0020;
-    player->unk_098 = (player->unk_09C * player->unk_09C) / 25.0f;
+    player->unk_098 = (player->currentSpeed * player->currentSpeed) / 25.0f;
 }
 
 void func_80032D94(Player *player) {
     UNUSED s32 player_index;
 
     player_index = get_player_index_for_player(player);
-    if ((0.0                     <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.1))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][0] * 3.2;
+    if ((0.0                     <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.1))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][0] * 3.2;
     }
-    if (((player->unk_214 * 0.1) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.2))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][1] * 3.2;
+    if (((player->topSpeed * 0.1) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.2))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][1] * 3.2;
     }
-    if (((player->unk_214 * 0.2) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.3))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][2] * 3.2;
+    if (((player->topSpeed * 0.2) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.3))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][2] * 3.2;
     }
-    if (((player->unk_214 * 0.3) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.4))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][3] * 3.2;
+    if (((player->topSpeed * 0.3) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.4))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][3] * 3.2;
     }
-    if (((player->unk_214 * 0.4) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.5))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][4] * 3.2;
+    if (((player->topSpeed * 0.4) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.5))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][4] * 3.2;
     }
-    if (((player->unk_214 * 0.5) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.6))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][5] * 3.2;
+    if (((player->topSpeed * 0.5) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.6))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][5] * 3.2;
     }
-    if (((player->unk_214 * 0.6) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.7))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][6] * 3.2;
+    if (((player->topSpeed * 0.6) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.7))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][6] * 3.2;
     }
-    if (((player->unk_214 * 0.7) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.8))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][7] * 2.8;
+    if (((player->topSpeed * 0.7) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.8))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][7] * 2.8;
     }
-    if (((player->unk_214 * 0.8) <= player->unk_09C) && (player->unk_09C < (player->unk_214 * 0.9))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][8] * 2.8;
+    if (((player->topSpeed * 0.8) <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.9))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][8] * 2.8;
     }
-    if (((player->unk_214 * 0.9) <= player->unk_09C) && (player->unk_09C <= (player->unk_214 * 1.0))) {
-        player->unk_09C += gKartAccelerationTables[player->characterId][9] * 2.8;
+    if (((player->topSpeed * 0.9) <= player->currentSpeed) && (player->currentSpeed <= (player->topSpeed * 1.0))) {
+        player->currentSpeed += gKartAccelerationTables[player->characterId][9] * 2.8;
     }
-    if (player->unk_09C < 0.0f) {
-        player->unk_09C = 0.0f;
+    if (player->currentSpeed < 0.0f) {
+        player->currentSpeed = 0.0f;
     }
-    player->unk_098 = (player->unk_09C * player->unk_09C) / 25.0f;
+    player->unk_098 = (player->currentSpeed * player->currentSpeed) / 25.0f;
 }
 
 void func_80033280(Player *player, f32 arg1) {
-    player->unk_09C -= arg1;
-    if (player->unk_09C <= 0.0f) {
-        player->unk_09C = 0.0f;
+    player->currentSpeed -= arg1;
+    if (player->currentSpeed <= 0.0f) {
+        player->currentSpeed = 0.0f;
     }
-    if (player->unk_214 <= player->unk_09C) {
-        player->unk_09C = player->unk_214;
+    if (player->topSpeed <= player->currentSpeed) {
+        player->currentSpeed = player->topSpeed;
     }
-    player->unk_098 = (player->unk_09C * player->unk_09C) / 25.0f;
+    player->unk_098 = (player->currentSpeed * player->currentSpeed) / 25.0f;
 }
 
 void func_800332E8(Player *player, s32 arg1) {
-    if ((D_80165280[arg1] >= 0.0) && (D_80165280[arg1] < ((f64) player->unk_214 * 0.1))) {
+    if ((D_80165280[arg1] >= 0.0) && (D_80165280[arg1] < ((f64) player->topSpeed * 0.1))) {
         D_80165280[arg1] += gKartAccelerationTables[player->characterId][0] * 3.2;
     }
-    if (((player->unk_214 * 0.1) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->unk_214 * 0.2))) {
+    if (((player->topSpeed * 0.1) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->topSpeed * 0.2))) {
         D_80165280[arg1] += gKartAccelerationTables[player->characterId][1] * 3.2;
     }
-    if (((player->unk_214 * 0.2) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->unk_214 * 0.3))) {
+    if (((player->topSpeed * 0.2) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->topSpeed * 0.3))) {
         D_80165280[arg1] += gKartAccelerationTables[player->characterId][2] * 3.2;
     }
-    if (((player->unk_214 * 0.3) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->unk_214 * 0.4))) {
+    if (((player->topSpeed * 0.3) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->topSpeed * 0.4))) {
         D_80165280[arg1] += gKartAccelerationTables[player->characterId][3] * 3.2;
     }
-    if (((player->unk_214 * 0.4) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->unk_214 * 0.5))) {
+    if (((player->topSpeed * 0.4) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->topSpeed * 0.5))) {
         D_80165280[arg1] += gKartAccelerationTables[player->characterId][4] * 3.2;
     }
-    if (((player->unk_214 * 0.5) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->unk_214 * 0.6))) {
+    if (((player->topSpeed * 0.5) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->topSpeed * 0.6))) {
         D_80165280[arg1] += gKartAccelerationTables[player->characterId][5] * 3.2;
     }
-    if (((player->unk_214 * 0.6) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->unk_214 * 0.7))) {
+    if (((player->topSpeed * 0.6) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->topSpeed * 0.7))) {
         D_80165280[arg1] += gKartAccelerationTables[player->characterId][6] * 3.2;
     }
-    if (((player->unk_214 * 0.7) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->unk_214 * 0.8))) {
+    if (((player->topSpeed * 0.7) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->topSpeed * 0.8))) {
         D_80165280[arg1] += gKartAccelerationTables[player->characterId][7] * 2.8;
     }
-    if (((player->unk_214 * 0.8) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->unk_214 * 0.9))) {
+    if (((player->topSpeed * 0.8) <= D_80165280[arg1]) && (D_80165280[arg1] < (player->topSpeed * 0.9))) {
         D_80165280[arg1] += gKartAccelerationTables[player->characterId][8] * 2.8;
     }
-    if (((player->unk_214 * 0.9) <= D_80165280[arg1]) && (D_80165280[arg1] <= (player->unk_214 * 1.0))) {
+    if (((player->topSpeed * 0.9) <= D_80165280[arg1]) && (D_80165280[arg1] <= (player->topSpeed * 1.0))) {
         D_80165280[arg1] += gKartAccelerationTables[player->characterId][9] * 2.8;
     }
     player->unk_044 |= 0x20;
@@ -3797,8 +3789,8 @@ void func_800337CC(Player *player, f32 arg1, s32 arg2) {
     if (D_80165280[arg2] <= 0.0f) {
         D_80165280[arg2] = 0.0f;
     }
-    if (player->unk_214 <= D_80165280[arg2]) {
-        D_80165280[arg2] = player->unk_214;
+    if (player->topSpeed <= D_80165280[arg2]) {
+        D_80165280[arg2] = player->topSpeed;
     }
     player->unk_098 = (D_80165280[arg2] * D_80165280[arg2]) / 25.0f;
 }
@@ -4128,7 +4120,7 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     }
     else
     {
-        var_f2_2 = ((f32) (sp2E4 >> 0x10)) / (8.0f + (player->unk_09C / 50.0f));
+        var_f2_2 = ((f32) (sp2E4 >> 0x10)) / (8.0f + (player->currentSpeed / 50.0f));
     }
     if (var_f2_2 < 0.0f)
     {
@@ -4313,7 +4305,7 @@ void func_8003680C(Player *player, s16 arg1) {
                 if ((player->unk_0BC & 0x10) == 0x10) {
                     var_f0 = (sp304 >> 0x10) / 5;
                 } else {
-                    var_f0 = (f32) (sp304 >> 0x10) / (8.0f + (player->unk_09C / 50.0f));
+                    var_f0 = (f32) (sp304 >> 0x10) / (8.0f + (player->currentSpeed / 50.0f));
                 }
                 if (var_f0 < 0.0f) {
                     var_f0 = -var_f0;
@@ -4408,16 +4400,16 @@ void func_80036DB4(Player *player, Vec3f arg1, Vec3f arg2) {
             temp_t6 = player->unk_07C >> 0x10;
             if ((temp_t6 < 0x15) && (temp_t6 >= -0x14)) {
                 if (thing < 0x14) {
-                    var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) + (-player->unk_09C * 0.02) + (-player->unk_20C * 50.0f);
+                    var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) + (-player->currentSpeed * 0.02) + (-player->unk_20C * 50.0f);
                 } else {
-                    var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) + ((temp_t6 * 0.01) + (-player->unk_09C * 0.05)) + (-player->unk_20C * 50.0f);
+                    var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) + ((temp_t6 * 0.01) + (-player->currentSpeed * 0.05)) + (-player->unk_20C * 50.0f);
                 }
             } else {
-                var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) + ((temp_t6 * 0.1) + (-player->unk_09C * 0.15)) + (-player->unk_20C * 50.0f);
+                var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) + ((temp_t6 * 0.1) + (-player->currentSpeed * 0.15)) + (-player->unk_20C * 50.0f);
             }
             sp20 = player->unk_084;
         } else {
-            var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) * 1.5) + (((player->unk_07C >> 0x10) * 0.1) + (-player->unk_09C * 0.05)) + (-player->unk_20C * 50.0f);
+            var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) * 1.5) + (((player->unk_07C >> 0x10) * 0.1) + (-player->currentSpeed * 0.05)) + (-player->unk_20C * 50.0f);
             sp20 = player->unk_084;
         }
         if ((player->unk_0BC & 0x200) == 0x200) {
@@ -4462,16 +4454,16 @@ void func_800371F4(Player *player, Vec3f arg1, Vec3f arg2) {
             temp_t6 = (s32) player->unk_07C >> 0x10;
             if ((temp_t6 < 0x15) && (temp_t6 >= -0x14)) {
                 if (var_v0 < 0x14) {
-                    var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) + (-player->unk_09C * 0.02) + (-player->unk_20C * 50.0f);
+                    var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) + (-player->currentSpeed * 0.02) + (-player->unk_20C * 50.0f);
                 } else {
-                    var_f18 = ((player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) - ((temp_t6 * 0.01) + (player->unk_09C * 0.05))) + (-player->unk_20C * 50.0f);
+                    var_f18 = ((player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) - ((temp_t6 * 0.01) + (player->currentSpeed * 0.05))) + (-player->unk_20C * 50.0f);
                 }
             } else {
-                var_f18 = ((player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) - ((temp_t6 * 0.1) + (player->unk_09C * 0.15))) + (-player->unk_20C * 50.0f);
+                var_f18 = ((player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) - ((temp_t6 * 0.1) + (player->currentSpeed * 0.15))) + (-player->unk_20C * 50.0f);
             }
             sp20 = player->unk_084;
         } else {
-            var_f18 = ((player->unk_208 + ((f64) (-(player->unk_094 / 18.0f) * 216.0f) * 1.5)) - (((player->unk_07C >> 0x10) * 0.1) + (player->unk_09C * 0.05))) + (-player->unk_20C * 50.0f);
+            var_f18 = ((player->unk_208 + ((f64) (-(player->unk_094 / 18.0f) * 216.0f) * 1.5)) - (((player->unk_07C >> 0x10) * 0.1) + (player->currentSpeed * 0.05))) + (-player->unk_20C * 50.0f);
             sp20 = player->unk_084;
         }
         if ((player->unk_0BC & 0x200) == 0x200) {
@@ -4666,24 +4658,24 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
             player->unk_0BC &= ~1;
             if ((!(player->unk_0BC & 0x100000)) && (!(player->unk_0BC & 4))) {
                 if (((player->unk_094 / 18.0f) * 216.0f) <= 12.0f) {
-                    if (controller->button & 0x8000) {
-                        if (controller->button & 0x4000) {
+                    if (controller->button & A_BUTTON) {
+                        if (controller->button & B_BUTTON) {
                             player->unk_0BC |= 0x20;
                             if ((player->unk_0BC & 0x20) != 0x20) {
-                                player->unk_09C += 100.0f;
+                                player->currentSpeed += 100.0f;
                             }
                         }
                     }
                 }
                 if (((player->unk_0BC & 0x20) == 0x20) && 
-                    (((controller->button & 0x4000) == 0) || 
-                    (!(controller->button & 0x8000)))) {
+                    (((controller->button & B_BUTTON) == 0) || 
+                    (!(controller->button & A_BUTTON)))) {
                         player->unk_0BC &= ~0x20;
                 }
             }
             if ((player->unk_044 & 1) != 1) {
-                if (controller->button & 0x8000) {
-                    func_80030FC8(player);
+                if (controller->button & A_BUTTON) {
+                    player_speed(player);
                     func_80030E00(player);
                 } else {
                     if (gModeSelection == 3)
@@ -4696,7 +4688,7 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
                     }
                     func_80030C34(player);
                 }
-                if (controller->button & 0x4000) {
+                if (controller->button & B_BUTTON) {
                     func_800323E4(player);
                     func_8003221C(player);
                 } else {
@@ -4707,23 +4699,23 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
             if ((!(player->unk_0BC & 0x100000)) && (!(player->unk_0BC & 4))) {
                 if (((func_800388B0(controller) < (-0x31)) && 
                     (((player->unk_094 / 18.0f) * 216.0f) <= 5.0f)) && 
-                    (controller->button & 0x4000)) {
-                        player->unk_09C = 140.0f;
+                    (controller->button & B_BUTTON)) {
+                        player->currentSpeed = 140.0f;
                         player->unk_044 |= 1;
-                        player->unk_08C = (player->unk_09C * player->unk_09C) / 25.0f;
+                        player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
                         player->unk_20C = 0.0f;
                 }
-                if ((func_800388B0(controller) >= -0x1D) || (!(controller->button & 0x4000))) {
+                if ((func_800388B0(controller) >= -0x1D) || (!(controller->button & B_BUTTON))) {
                     if ((player->unk_044 & 1) == 1) {
                         player->unk_044 &= 0xFFFE;
-                        player->unk_09C = 0.0f;
+                        player->currentSpeed = 0.0f;
                     }
                 }
             }
     } else {
         if ((player->unk_0BC & 0x4000) == 0x4000){
-            if (controller->button & 0x8000) {
-                func_80030FC8(player);
+            if (controller->button & A_BUTTON) {
+                player_speed(player);
             } else {
                 func_80031F48(player, 5.0f);
             }
@@ -4732,7 +4724,7 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
             ((player->unk_0BC & 0x40) == 0x40)) || 
             ((player->unk_0BC & 0x01000000) == 0x01000000)) || 
             ((player->unk_0BC & 0x02000000) == 0x02000000)) {
-                if (controller->button & 0x8000) {
+                if (controller->button & A_BUTTON) {
                     func_80030E00(player);
                     func_800332E8(player, arg2);
                     return;
@@ -4749,7 +4741,7 @@ void func_800381AC(Player *player, struct Controller *controller, s8 arg2) {
         ((player->unk_000 & 0x1000) != 0x1000)) {
             if ((player->unk_000 & 0x2000) != 0x2000) {
                 if (((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) {
-                    if (controller->button & 0x8000) {
+                    if (controller->button & A_BUTTON) {
                         func_80032D94(player);
                     } else {
                         func_80033280(player, 5.0f);
@@ -4764,7 +4756,7 @@ void func_800381AC(Player *player, struct Controller *controller, s8 arg2) {
                         D_801652E0[arg2] = gRaceFrameCounter;
                     }
                 }
-                if (controller->button & 0x8000) {
+                if (controller->button & A_BUTTON) {
                     func_80032700(player);
                 } else {
                     func_80032CB0(player, 5.0f);
@@ -4939,15 +4931,15 @@ s16 func_800388B0(struct Controller *controller) {
 }
 
 void func_80038BE4(Player *player, s16 arg1) {
-    player->unk_09C += (f32) arg1;
-    if (player->unk_09C < 0.0f) {
-        player->unk_09C = 0.0f;
+    player->currentSpeed += (f32) arg1;
+    if (player->currentSpeed < 0.0f) {
+        player->currentSpeed = 0.0f;
     }
-    if (player->unk_09C >= 250.0f) {
-        player->unk_09C = 250.0f;
+    if (player->currentSpeed >= 250.0f) {
+        player->currentSpeed = 250.0f;
     }
     player->unk_044 |= 0x20;
-    player->unk_08C = (player->unk_09C * player->unk_09C) / 25.0f;
+    player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
 }
 
 void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
@@ -4980,7 +4972,7 @@ void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     
     player->unk_084 = -10.0f;
     player->unk_088 = 28.0f;
-    player->unk_214 = 250.0f;
+    player->topSpeed = 250.0f;
     func_8002B830(player, arg3, arg2);
     func_8002CD48(player, arg3, arg2);
     player->unk_02C[1] += player->unk_078;

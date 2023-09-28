@@ -39,7 +39,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
             player->unk_084 = D_800E2400[gCCSelection][player->characterId];
             player->unk_088 = D_800E24B4[gCCSelection][player->characterId];
             player->unk_210 = D_800E2568[gCCSelection][player->characterId];
-            player->unk_214 = D_800E261C[gCCSelection][player->characterId];
+            player->topSpeed = gTopSpeedTable[gCCSelection][player->characterId];
             break;
 
         // Uses 100CC values
@@ -47,14 +47,14 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
             player->unk_084 = D_800E2400[1][player->characterId];
             player->unk_088 = D_800E24B4[1][player->characterId];
             player->unk_210 = D_800E2568[1][player->characterId];
-            player->unk_214 = D_800E261C[1][player->characterId];
+            player->topSpeed = gTopSpeedTable[1][player->characterId];
             break;
 
         case BATTLE:
             player->unk_084 = D_800E2400[4][player->characterId];
             player->unk_088 = D_800E24B4[4][player->characterId];
             player->unk_210 = D_800E2568[4][player->characterId];
-            player->unk_214 = D_800E261C[4][player->characterId];
+            player->topSpeed = gTopSpeedTable[4][player->characterId];
             break;
     }
 
@@ -99,7 +99,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_0E8 = 0.0f;
     player->unk_0A0 = 0.0f;
     player->unk_104 = 0.0f;
-    player->unk_09C = 0.0f;
+    player->currentSpeed = 0.0f;
     player->unk_20C = 0.0f;
     player->unk_DAC = 0.0f;
     player->unk_044 = 0;
@@ -109,7 +109,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
 
 
     player->unk_206 = 0;
-    player->unk_0C4 = 0;
+    player->slopAccel = 0;
     player->unk_D98 = 0;
     player->unk_D9A = 0;
     player->unk_DA4 = 0;
@@ -175,7 +175,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_090 = 0.0f;
     player->unk_094 = 0.0f;
     player->unk_098 = 0.0f;
-    player->unk_09C = 0.0f;
+    player->currentSpeed = 0.0f;
     player->unk_0A0 = 0.0f;
     player->unk_0A4 = 0.0f;
     player->unk_0B8 = 0.0f;
@@ -218,7 +218,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
 
     D_80165420[idx] = 0;
     D_80165440[idx] = 0;
-    D_80165460[idx] = 0;
+    gIsPlayerTripleA[idx] = FALSE;
     D_80165480[idx] = 0;
     D_801654E0[idx] = 0;
     D_80165500[idx] = 0;

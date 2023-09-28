@@ -75,7 +75,7 @@ extern s16  D_80165300[];
 extern s32  D_80165400[];
 extern s32  D_80165420[];
 extern s32  D_80165440[];
-extern s32  D_80165460[];
+extern bool  gIsPlayerTripleA[];
 extern s32  D_80165480[];
 extern s32  D_801654A0[];
 extern s32  D_801654C0[];

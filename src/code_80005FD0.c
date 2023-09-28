@@ -790,7 +790,7 @@ void func_80007D04(s32 playerId, Player *player) {
     if (gGPCurrentRaceRankByPlayerId[playerId] < 2) {
         if (((s16) (temp_t2 - temp_t1) >= 0x191) && ((s16)gGPCurrentRaceRankByPlayerId[temp_v1] >= 6)) {
             player->unk_0BC &= ~0x200000;
-            func_80030FC8(player);
+            player_speed(player);
             var_t5 = 4;
             var_at = &D_801634C0 + (playerId * 2);
         } else {
@@ -825,18 +825,18 @@ void func_80007D04(s32 playerId, Player *player) {
             }
             if (temp_t2 < temp_t1) {
                 player->unk_0BC |= 0x200000;
-                func_80030FC8(player);
+                player_speed(player);
                 *(&D_801634C0 + (playerId * 2)) = 1;
             } else {
                 temp_v0 = playerId * 2;
                 if (temp_t2 < (temp_t1 + var_v0 + 0x32)) {
                     player->unk_0BC &= ~0x200000;
-                    func_80030FC8(player);
+                    player_speed(player);
                     *(&D_801634C0 + (playerId * 2)) = 3;
                 } else if (*(&D_801631E0 + temp_v0) == 0) {
                     player->unk_0BC &= ~0x200000;
                     sp1C = temp_v0;
-                    func_80030FC8(player);
+                    player_speed(player);
                     *(&D_801634C0 + temp_v0) = 2;
                 } else {
                     player->unk_0BC &= ~0x200000;
@@ -850,7 +850,7 @@ void func_80007D04(s32 playerId, Player *player) {
         *var_at = var_t5;
     } else {
         player->unk_0BC |= 0x200000;
-        func_80030FC8(player);
+        player_speed(player);
         *(&D_801634C0 + (playerId * 2)) = 3;
     }
 }
@@ -1002,7 +1002,7 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
         temp_t5 = arg0 * 2;
         if ((*(&D_801634D8 + temp_t5) == (s16) 1) && !(temp_v1 & 0x80000200)) {
             func_80031F48(player, 10.0f);
-            if ((f64) player->unk_09C == 0.0) {
+            if ((f64) player->currentSpeed == 0.0) {
                 player->unk_034[0] = 0.0f;
                 player->unk_034[2] = 0.0f;
             }
@@ -1022,13 +1022,13 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
             }
             if (temp_f2 < var_f0) {
                 player->unk_0BC = temp_v1 & 0xFFDFFFFF;
-                func_80030FC8(player);
+                player_speed(player);
                 return;
             }
             if (player->unk_000 & 0x800) {
                 if (temp_f2 < var_f12) {
                     player->unk_0BC = temp_v1 & 0xFFDFFFFF;
-                    func_80030FC8(player);
+                    player_speed(player);
                     return;
                 }
                 player->unk_0BC = temp_v1 & 0xFFDFFFFF;
@@ -1039,7 +1039,7 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
                 temp_v0_3 = arg0 * 4;
                 if (func_800088D8(var_f12, arg0, *(&D_80164392 + temp_v0_3), *(&D_8016440A + temp_v0_3), player) == 1) {
                     player->unk_0BC |= 0x200000;
-                    func_80030FC8(player);
+                    player_speed(player);
                     return;
                 }
                 player->unk_0BC &= 0xFFDFFFFF;
@@ -1053,7 +1053,7 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
                 sp34 = temp_f2;
                 sp1C = temp_t5;
                 sp28 = 1;
-                func_80030FC8(player);
+                player_speed(player);
                 var_a1 = 1;
                 var_f12 = arg1;
                 break;
@@ -1062,7 +1062,7 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
                 sp34 = temp_f2;
                 sp1C = temp_t5;
                 sp28 = 1;
-                func_80030FC8(player);
+                player_speed(player);
                 var_a1 = 1;
                 var_f12 = arg1;
                 break;
@@ -1079,7 +1079,7 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
             if (var_a1 != 1) {
                 if (temp_f2 < var_f12) {
                     if ((gDemoMode) && (gCurrentCourseId != 0x0014)) {
-                        func_80030FC8(player);
+                        player_speed(player);
                         return;
                     }
                     temp_v0_5 = arg0 * 4;
@@ -1089,7 +1089,7 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
                     }
                     if (func_800088D8(var_f12, arg0, *(&D_80164392 + temp_v0_5), *(&D_8016440A + temp_v0_5), player) == 1) {
                         player->unk_0BC |= 0x200000;
-                        func_80030FC8(player);
+                        player_speed(player);
                         return;
                     }
                     player->unk_0BC &= 0xFFDFFFFF;

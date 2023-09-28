@@ -158,7 +158,7 @@ void func_80020000(Player *player, Camera *camera, s8 arg2, s8 arg3) {
                 func_8002934C(player, camera, arg3, arg2);
             } else {
                 func_8002934C(player, camera, arg3, arg2);
-                player->unk_0C4 = 0;
+                player->slopAccel = 0;
                 player->unk_206 = 0;
                 player->unk_050[arg3] = 0;
             }
@@ -632,31 +632,31 @@ void func_80021DA8(void) {
     func_8006E940(gPlayerFour, 3, 3);
 }
 
-void mtxf_translate_rotate(Mat4 arg0, Vec3f arg1, Vec3s arg2) {
+void mtxf_translate_rotate(Mat4 dest, Vec3f pos, Vec3s orientation) {
     UNUSED f32 pad[3];
-    f32 sinX = sins(arg2[0]);
-    f32 cosX = coss(arg2[0]);
-    f32 sinY = sins(arg2[1]);
-    f32 cosY = coss(arg2[1]);
-    f32 sinZ = sins(arg2[2]);
-    f32 cosZ = coss(arg2[2]);
+    f32 sinX = sins(orientation[0]);
+    f32 cosX = coss(orientation[0]);
+    f32 sinY = sins(orientation[1]);
+    f32 cosY = coss(orientation[1]);
+    f32 sinZ = sins(orientation[2]);
+    f32 cosZ = coss(orientation[2]);
 
-    arg0[0][0] = (cosY * cosZ) + ((sinX * sinY) * sinZ);
-    arg0[1][0] = (-cosY * sinZ) + ((sinX * sinY) * cosZ);
-    arg0[2][0] = cosX * sinY;
-    arg0[3][0] = arg1[0];
-    arg0[0][1] = cosX * sinZ;
-    arg0[1][1] = cosX * cosZ;
-    arg0[2][1] = -sinX;
-    arg0[3][1] = arg1[1];
-    arg0[0][2] = (-sinY * cosZ) + ((sinX * cosY) * sinZ);
-    arg0[1][2] = (sinY * sinZ) + ((sinX * cosY) * cosZ);
-    arg0[2][2] = cosX * cosY;
-    arg0[3][2] = arg1[2];
-    arg0[0][3] = 0.0f;
-    arg0[1][3] = 0.0f;
-    arg0[2][3] = 0.0f;
-    arg0[3][3] = 1.0f;
+    dest[0][0] = (cosY * cosZ) + ((sinX * sinY) * sinZ);
+    dest[1][0] = (-cosY * sinZ) + ((sinX * sinY) * cosZ);
+    dest[2][0] = cosX * sinY;
+    dest[3][0] = pos[0];
+    dest[0][1] = cosX * sinZ;
+    dest[1][1] = cosX * cosZ;
+    dest[2][1] = -sinX;
+    dest[3][1] = pos[1];
+    dest[0][2] = (-sinY * cosZ) + ((sinX * cosY) * sinZ);
+    dest[1][2] = (sinY * sinZ) + ((sinX * cosY) * cosZ);
+    dest[2][2] = cosX * cosY;
+    dest[3][2] = pos[2];
+    dest[0][3] = 0.0f;
+    dest[1][3] = 0.0f;
+    dest[2][3] = 0.0f;
+    dest[3][3] = 1.0f;
 }
 
 UNUSED void func_80021F50(Mat4 arg0, Vec3f arg1) {
@@ -665,16 +665,16 @@ UNUSED void func_80021F50(Mat4 arg0, Vec3f arg1) {
     arg0[3][2] += arg1[2];
 }
 
-void func_80021F84(Mat4 arg0, f32 arg1) {
-    arg0[0][0] *= arg1;
-    arg0[1][0] *= arg1;
-    arg0[2][0] *= arg1;
-    arg0[0][1] *= arg1;
-    arg0[1][1] *= arg1;
-    arg0[2][1] *= arg1;
-    arg0[0][2] *= arg1;
-    arg0[1][2] *= arg1;
-    arg0[2][2] *= arg1;
+void mtxf_scale(Mat4 arg0, f32 scale) {
+    arg0[0][0] *= scale;
+    arg0[1][0] *= scale;
+    arg0[2][0] *= scale;
+    arg0[0][1] *= scale;
+    arg0[1][1] *= scale;
+    arg0[2][1] *= scale;
+    arg0[0][2] *= scale;
+    arg0[1][2] *= scale;
+    arg0[2][2] *= scale;
 }
 
 UNUSED void func_80021FF8(Mtx *arg0, Mat4 arg1) {
@@ -1230,7 +1230,7 @@ void func_80023C84(Player *player, s8 arg1, s8 arg2) {
         set_transform_matrix(sp118, spB4, spCC, (spC0 + player->unk_042), D_800DDBD4[player->characterId] * player->unk_224 
         * var_f2);
     } else {
-        spC4[0] = player->unk_0C4;
+        spC4[0] = player->slopAccel;
         spC4[1] = spC0;
         spC4[2] = player->unk_206 * 2;
 
@@ -1238,7 +1238,7 @@ void func_80023C84(Player *player, s8 arg1, s8 arg2) {
         spCC[1] = player->unk_074 + 1.0f;
         spCC[2] = player->pos[2] + ((spB0 * coss(spC0)) - (spAC * sins(spC0)));
         mtxf_translate_rotate(sp118, spCC, spC4);
-        func_80021F84(sp118, D_800DDBD4[player->characterId] * player->unk_224);
+        mtxf_scale(sp118, D_800DDBD4[player->characterId] * player->unk_224);
     }
     convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)], sp118);
 
@@ -1288,7 +1288,7 @@ void func_80024374(Player *player, s8 arg1, s8 arg2) {
     spCC[1] = D_80165C18[D_80183EA0[arg1]].pos[1] + sp94[arg1];
 
     mtxf_translate_rotate(sp118, spCC, spC4);
-    func_80021F84(sp118, D_800DDBD4[player->characterId] * player->unk_224);
+    mtxf_scale(sp118, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)], sp118);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008D58);
@@ -1308,7 +1308,7 @@ void func_80024374(Player *player, s8 arg1, s8 arg2) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void func_800248D0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
+void player_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     s32 stackPadding00;
     Mat4 sp1A4;
     s32 stackPadding01;
@@ -1375,7 +1375,7 @@ void func_800248D0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
         D_80164B0C = &D_802BFB80[D_801651D0[arg2][arg1]][arg2 - 1][arg1 - 4].pixel_index_array[0x7C0];
     }
     mtxf_translate_rotate(sp1A4, sp154, sp14C);
-    func_80021F84(sp1A4, D_800DDBD4[player->characterId] * player->unk_224);
+    mtxf_scale(sp1A4, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxKart[arg1 + (arg2 * 8)], sp1A4);
     if ((player->unk_0BC & 0x80000000) == 0x80000000) {
         if (arg2 == arg1) {
@@ -1419,7 +1419,7 @@ void func_800248D0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
 }
 
-void func_800256F4(Player *player, s8 arg1, s8 arg2, s8 arg3) {
+void ghost_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     s32 stackPadding00;
     Mat4 sp12C;
     s32 stackPadding01;
@@ -1471,7 +1471,7 @@ void func_800256F4(Player *player, s8 arg1, s8 arg2, s8 arg3) {
         D_80164B0C = &D_802BFB80[D_801651D0[arg2][arg1]][arg2 - 1][arg1 - 4].pixel_index_array[0x7C0];
     }
     mtxf_translate_rotate(sp12C, spDC, spD4);
-    func_80021F84(sp12C, D_800DDBD4[player->characterId] * player->unk_224);
+    mtxf_scale(sp12C, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxKart[arg1 + (arg2 * 8)], sp12C);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008CD8);
@@ -1501,7 +1501,7 @@ void func_80025DE8(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     sp94[1] = player->unk_048[arg2];
     sp94[2] = player->unk_050[arg2];
     mtxf_translate_rotate(spA8, sp9C, sp94);
-    func_80021F84(spA8, D_800DDBD4[player->characterId] * player->unk_224);
+    mtxf_scale(spA8, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008D10);
@@ -1518,14 +1518,14 @@ void func_80025DE8(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     gMatrixEffectCount += 1;
 }
 
-void func_800262E0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
+void player_mirror_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     Mat4 spA8;
     Vec3f sp9C;
     Vec3s sp94;
 
     sp94[0] = 0;
     sp94[1] = player->unk_048[arg2];
-    sp94[2] = player->unk_050[arg2] + 0x8000;
+    sp94[2] = player->unk_050[arg2] + 0x8000; // invert Y
     sp9C[0] = player->pos[0];
     sp9C[1] = player->unk_074 + (4.0f * player->unk_224);
     sp9C[2] = player->pos[2];
@@ -1535,7 +1535,7 @@ void func_800262E0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
         arg3 = 0;
     }
     mtxf_translate_rotate(spA8, sp9C, sp94);
-    func_80021F84(spA8, D_800DDBD4[player->characterId] * player->unk_224);
+    mtxf_scale(spA8, D_800DDBD4[player->characterId] * player->unk_224);
     convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008CD8);
@@ -1577,13 +1577,13 @@ void func_800267AC(Player *player, s8 arg1, s8 arg2) {
         }
     }
     if ((player->unk_000 & 0x100) != 0x100) {
-        func_800248D0(player, arg1, arg2, var_v1);
+        player_render(player, arg1, arg2, var_v1);
     } else {
-        func_800256F4(player, arg1, arg2, var_v1);
+        ghost_render(player, arg1, arg2, var_v1);
     }
     osRecvMesg(&gDmaMesgQueue, &sp34, OS_MESG_BLOCK);
     if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->unk_0F8 == 9) && ((player->unk_0CA & 1) != 1) && (player->unk_110.unk3C[2] <= 30.0f)) {
-        func_800262E0(player, arg1, arg2, var_v1);
+        player_mirror_render(player, arg1, arg2, var_v1);
     }
     if (player->boostPower >= 2.0f) {
         func_80025DE8(player, arg1, arg2, var_v1);

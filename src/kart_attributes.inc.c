@@ -61,23 +61,23 @@ f32 *D_800E2568[5] = {
 };
 
 //  Mario  Luigi  Yoshi  Toad   D.K.   Wario  Peach  Bowser
-f32 D_800E257C[] = { // 50CC
+f32 gTopSpeed50cc[] = { // 50CC
     290.0, 290.0, 294.0, 294.0, 290.0, 290.0, 294.0, 290.0,
 };
-f32 D_800E259C[] = { // 100CC
+f32 gTopSpeed100cc[] = { // 100CC
     310.0, 310.0, 314.0, 314.0, 310.0, 310.0, 314.0, 310.0,
 };
-f32 D_800E25BC[] = { // 150CC
+f32 gTopSpeed150cc[] = { // 150CC
     320.0, 320.0, 324.0, 324.0, 320.0, 320.0, 324.0, 320.0,
 };
-f32 D_800E25DC[] = {  // Extra
+f32 gTopSpeedExtra[] = {  // Extra
     310.0, 310.0, 314.0, 314.0, 310.0, 310.0, 314.0, 310.0,
 };
-f32 D_800E25FC[] = { // Battle mode
+f32 gTopSpeedBattle[] = { // Battle mode
     245.0, 245.0, 245.0, 245.0, 245.0, 245.0, 245.0, 245.0,
 };
-f32 *D_800E261C[5] = {
-    D_800E257C, D_800E259C, D_800E25BC, D_800E25DC, D_800E25FC,
+f32 *gTopSpeedTable[5] = {
+    gTopSpeed50cc, gTopSpeed100cc, gTopSpeed150cc, gTopSpeedExtra, gTopSpeedBattle,
 };
 
 //  Mario      Luigi       Yoshi      Toad       D.K.      Wario      Peach      Bowser
@@ -397,7 +397,7 @@ f32 gKartTurnSpeedReductionTable0[] = {
 f32 gKartTurnSpeedReductionTable1[] = {
     0.0,    0.0,    0.002,  0.002, -0.002, -0.002,  0.002, -0.002,
 };
-f32 gKartTable800E36B0[] = {
+f32 gKartTripleABoost[] = {
     2.0,    2.0,    3.0,    3.0,    1.5,    1.5,    3.0,    3.0,
 };
 f32 gKartHopInitialVelocityTable[] = {

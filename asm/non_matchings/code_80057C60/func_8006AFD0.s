@@ -284,7 +284,7 @@ glabel func_8006AFD0
 /* 06BFA0 8006B3A0 A7AE0130 */   sh    $t6, 0x130($sp)
 /* 06BFA4 8006B3A4 27B00140 */  addiu $s0, $sp, 0x140
 /* 06BFA8 8006B3A8 4405A000 */  mfc1  $a1, $f20
-/* 06BFAC 8006B3AC 0C0087E1 */  jal   func_80021F84
+/* 06BFAC 8006B3AC 0C0087E1 */  jal   mtxf_scale
 /* 06BFB0 8006B3B0 02002025 */   move  $a0, $s0
 /* 06BFB4 8006B3B4 3C198016 */  lui   $t9, %hi(gMatrixEffectCount) # $t9, 0x8016
 /* 06BFB8 8006B3B8 87394AF0 */  lh    $t9, %lo(gMatrixEffectCount)($t9)
