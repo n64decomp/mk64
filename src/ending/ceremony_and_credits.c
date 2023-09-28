@@ -64,7 +64,7 @@ void vec3s_clear(Vec3s arg0) {
     arg0[0] = arg0[1] = arg0[2] = 0;
 }
 
-void vec3f_copy_dupe(Vec3f dest, Vec3f src) {
+void vec3f_copy_return_dupe(Vec3f dest, Vec3f src) {
     dest[0] = src[0];
     dest[1] = src[1];
     dest[2] = src[2];
@@ -87,7 +87,7 @@ void func_80282048(void) {
 UNUSED void func_80282050(Vec3f dest, Vec3f src, s16 angle) {
     Vec3f sp2C;
 
-    vec3f_copy_dupe(sp2C, src);
+    vec3f_copy_return_dupe(sp2C, src);
     dest[0] = (sp2C[2] * sins(angle)) + (sp2C[0] * coss(angle));
     dest[1] = sp2C[1];
     dest[2] = (sp2C[2] * coss(angle)) - (sp2C[0] * sins(angle));
@@ -96,7 +96,7 @@ UNUSED void func_80282050(Vec3f dest, Vec3f src, s16 angle) {
 UNUSED void func_802820F8(f32 *dest, f32 *src, s16 angle) {
     Vec3f sp2C;
 
-    vec3f_copy_dupe(sp2C, src);
+    vec3f_copy_return_dupe(sp2C, src);
     dest[2] = (sp2C[2] * coss(angle)) - (sp2C[1] * sins(angle));
     dest[1] = (sp2C[2] * sins(angle)) + (sp2C[1] * coss(angle));
     dest[0] = sp2C[0];
@@ -231,7 +231,7 @@ UNUSED void func_802825C8(Vec3f arg0, Vec3f arg1, Vec3f arg2, Vec3s arg3) {
     Vec3f sp30;
 
     // What's up with this? Why do we copy arg1 to an unused local variable?
-    vec3f_copy_dupe(sp3C, arg1);
+    vec3f_copy_return_dupe(sp3C, arg1);
     sp30[2] = -((arg2[2] * coss(arg3[0])) - (arg2[1] * sins(arg3[0])));
     sp30[1] =   (arg2[2] * sins(arg3[0])) + (arg2[1] * coss(arg3[0]));
     sp30[0] = arg2[0];
@@ -581,13 +581,13 @@ s32 func_80283648(Camera *camera) {
     struct CinematicCamera *new_var = &D_802876E0;
 
     func_80283428();
-    vec3f_copy_dupe(sp58, camera->pos);
-    vec3f_copy_dupe(sp4C, camera->lookAt);
-    vec3f_copy_dupe(sp40, camera->up);
+    vec3f_copy_return_dupe(sp58, camera->pos);
+    vec3f_copy_return_dupe(sp4C, camera->lookAt);
+    vec3f_copy_return_dupe(sp40, camera->up);
     new_var->cutscene = func_8028336C(new_var, camera);
     if (new_var->cutscene != 0) {
-        vec3f_copy_dupe(new_var->lookAt, camera->pos);
-        vec3f_copy_dupe(new_var->pos, camera->lookAt);
+        vec3f_copy_return_dupe(new_var->lookAt, camera->pos);
+        vec3f_copy_return_dupe(new_var->pos, camera->lookAt);
         play_cutscene(new_var);
         func_80282454(new_var->lookAt, new_var->pos, &sp64, &sp6E, &sp6C);
         if (sp6E >= 0x3800) {
@@ -615,8 +615,8 @@ s32 func_80283648(Camera *camera) {
         camera->up[0] = sins(var_f2) * coss(sp6C);
         camera->up[1] = coss(var_f2);
         camera->up[2] = -sins(var_f2) * sins(sp6C);
-        vec3f_copy_dupe(camera->pos, new_var->lookAt);
-        vec3f_copy_dupe(camera->lookAt, new_var->pos);
+        vec3f_copy_return_dupe(camera->pos, new_var->lookAt);
+        vec3f_copy_return_dupe(camera->lookAt, new_var->pos);
         if ((gGamestate == CREDITS_SEQUENCE) && (gIsMirrorMode != 0)) {
             camera->pos[0] = -camera->pos[0];
             camera->lookAt[0] = -camera->lookAt[0];
@@ -625,9 +625,9 @@ s32 func_80283648(Camera *camera) {
     func_80282F44(0, new_var, camera);
     func_80282F44(1, new_var, camera);
     func_80283100(new_var, gCameraZoom);
-    vec3f_copy_dupe(new_var->unk30, camera->pos);
-    vec3f_copy_dupe(new_var->unk24, camera->lookAt);
-    vec3f_copy_dupe(new_var->unk3C, camera->up);
+    vec3f_copy_return_dupe(new_var->unk30, camera->pos);
+    vec3f_copy_return_dupe(new_var->unk24, camera->lookAt);
+    vec3f_copy_return_dupe(new_var->unk3C, camera->up);
     return D_802876D8;
 }
 
@@ -892,7 +892,7 @@ void func_80283EA0(struct CinematicCamera *camera) {
 }
 
 void func_80283ED0(struct CinematicCamera *camera) {
-    vec3f_copy_dupe(camera->pos, gPlayerTwo->pos);
+    vec3f_copy_return_dupe(camera->pos, gPlayerTwo->pos);
 }
 
 void func_80283EF8(struct CinematicCamera *camera) {
@@ -908,7 +908,7 @@ void func_80283F6C(struct CinematicCamera *camera) {
 }
 
 void func_80283FCC(struct CinematicCamera *camera) {
-    vec3f_copy_dupe(camera->pos, gPlayerThree->pos);
+    vec3f_copy_return_dupe(camera->pos, gPlayerThree->pos);
 }
 
 void func_80283FF4(struct CinematicCamera *camera) {
