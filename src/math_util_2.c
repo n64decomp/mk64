@@ -45,10 +45,10 @@ UNUSED s32 func_80040EA4(s32 *arg0, s32 arg1) {
     return phi_v1;
 }
 
-void func_80040EC4(Vec3f arg0, Vec3f arg1) {
-    arg0[0] = arg1[0];
-    arg0[1] = arg1[1];
-    arg0[2] = arg1[2];
+void vec3f_copy(Vec3f dest, Vec3f arg1) {
+    dest[0] = arg1[0];
+    dest[1] = arg1[1];
+    dest[2] = arg1[2];
 }
 
 s32 f32_step_up_towards(f32 *value, f32 target, f32 step) {
@@ -351,23 +351,23 @@ Vec3f *vec_normalize(Vec3f dest) {
     return (Vec3f *) &dest;
 }
 
-Vec3f *vec_cross_product(Vec3f arg0, Vec3f arg1, Vec3f arg2) {
+Vec3f *vec_cross_product(Vec3f dest, Vec3f arg1, Vec3f arg2) {
 
-    arg0[0] = (arg1[1] * arg2[2]) - (arg2[1] * arg1[2]);
-    arg0[1] = (arg1[2] * arg2[0]) - (arg2[2] * arg1[0]);
-    arg0[2] = (arg1[0] * arg2[1]) - (arg2[0] * arg1[1]);
+    dest[0] = (arg1[1] * arg2[2]) - (arg2[1] * arg1[2]);
+    dest[1] = (arg1[2] * arg2[0]) - (arg2[2] * arg1[0]);
+    dest[2] = (arg1[0] * arg2[1]) - (arg2[0] * arg1[1]);
 
-    return (Vec3f *) &arg0;
+    return (Vec3f *) &dest;
 }
 
-UNUSED s32 is_within_distance_2d(f32 x1, f32 y1, f32 x2, f32 y2, f32 dist) {
+UNUSED s32 is_within_distance_2d(f32 x1, f32 y1, f32 x2, f32 y2, f32 distance) {
     f32 x;
     f32 y;
     s32 ret = 0;
 
     x = x2 - x1;
     y = y2 - y1;
-    if (((x * x) + (y * y)) <= (dist * dist)) {
+    if (((x * x) + (y * y)) <= (distance * distance)) {
         ret = 1;
     }
     return ret;
@@ -478,117 +478,124 @@ UNUSED void func_80041A70(void) {
 
 }
 
-void func_80041A78(Mat4 arg0, s32 arg1, s32 arg2) {
+void mtfx_translation_x_y(Mat4 arg0, s32 x, s32 y) {
     arg0[0][0] = 1.0f;
     arg0[1][1] = 1.0f;
     arg0[2][2] = 1.0f;
     arg0[1][0] = 0.0f;
     arg0[2][0] = 0.0f;
     arg0[0][1] = 0.0f;
-    arg0[3][0] = arg1;
+    arg0[3][0] = x;
     arg0[2][1] = 0.0f;
     arg0[0][2] = 0.0f;
     arg0[1][2] = 0.0f;
     arg0[3][2] = 0.0f;
-    arg0[3][1] = arg2;
+    arg0[3][1] = y;
     arg0[0][3] = 0.0f;
     arg0[1][3] = 0.0f;
     arg0[2][3] = 0.0f;
     arg0[3][3] = 1.0f;
+
+    /*
+     * 1 0 0 x
+     * 0 1 0 y
+     * 0 0 1 0
+     * 0 0 0 1    
+     */
 }
 
-void func_80041AD8(Mat4 arg0, u16 arg1) {
-    f32 sp1C = sins(arg1);
-    f32 temp_f0 = coss(arg1);
-    
-    arg0[0][0] = temp_f0;
-    arg0[1][0] = -sp1C;
-    arg0[1][1] = temp_f0;
-    arg0[0][1] = sp1C;
-    arg0[2][0] = 0.0f;
-    arg0[3][0] = 0.0f;
-    arg0[2][1] = 0.0f;
-    arg0[3][1] = 0.0f;
-    arg0[0][2] = 0.0f;
-    arg0[1][2] = 0.0f;
-    arg0[3][2] = 0.0f;
-    arg0[0][3] = 0.0f;
-    arg0[1][3] = 0.0f;
-    arg0[2][3] = 0.0f;
-    arg0[2][2] = 1.0f;
-    arg0[3][3] = 1.0f;
+void mtxf_u16_rotate_z(Mat4 dest, u16 angle) {
+    f32 sin_theta = sins(angle);
+    f32 cos_theta = coss(angle);
+
+    dest[0][0] = cos_theta;
+    dest[1][0] = -sin_theta;
+    dest[1][1] = cos_theta;
+    dest[0][1] = sin_theta;
+    dest[2][0] = 0.0f;
+    dest[3][0] = 0.0f;
+    dest[2][1] = 0.0f;
+    dest[3][1] = 0.0f;
+    dest[0][2] = 0.0f;
+    dest[1][2] = 0.0f;
+    dest[3][2] = 0.0f;
+    dest[0][3] = 0.0f;
+    dest[1][3] = 0.0f;
+    dest[2][3] = 0.0f;
+    dest[2][2] = 1.0f;
+    dest[3][3] = 1.0f;
 }
 
-void func_80041B68(Mat4 arg0, f32 arg1) {
-    arg0[1][0] = 0.0f;
-    arg0[2][0] = 0.0f;
-    arg0[3][0] = 0.0f;
-    arg0[0][1] = 0.0f;
-    arg0[2][1] = 0.0f;
-    arg0[3][1] = 0.0f;
-    arg0[0][2] = 0.0f;
-    arg0[1][2] = 0.0f;
-    arg0[3][2] = 0.0f;
-    arg0[0][3] = 0.0f;
-    arg0[1][3] = 0.0f;
-    arg0[2][3] = 0.0f;
-    arg0[2][2] = 1.0f;
-    arg0[3][3] = 1.0f;
-    arg0[0][0] = arg1;
-    arg0[1][1] = arg1;
+void mtxf_scale_x_y(Mat4 dest, f32 scale) {
+    dest[1][0] = 0.0f;
+    dest[2][0] = 0.0f;
+    dest[3][0] = 0.0f;
+    dest[0][1] = 0.0f;
+    dest[2][1] = 0.0f;
+    dest[3][1] = 0.0f;
+    dest[0][2] = 0.0f;
+    dest[1][2] = 0.0f;
+    dest[3][2] = 0.0f;
+    dest[0][3] = 0.0f;
+    dest[1][3] = 0.0f;
+    dest[2][3] = 0.0f;
+    dest[2][2] = 1.0f;
+    dest[3][3] = 1.0f;
+    dest[0][0] = scale;
+    dest[1][1] = scale;
 }
 
-void func_80041BBC(Mat4 arg0, u16 arg1, f32 arg2) {
-    f32 sp1C = sins(arg1);
-    f32 temp_f12 = coss(arg1) * arg2;
+UNUSED void mtxf_rotate_z_scale_x_y(Mat4 dest, u16 angle, f32 scale) {
+    f32 sin_theta = sins(angle);
+    f32 cos_theta = coss(angle) * scale;
 
-    arg0[2][0] = 0.0f;
-    arg0[0][0] = temp_f12;
-    arg0[1][1] = temp_f12;
-    arg0[2][1] = 0.0f;
-    arg0[1][0] = -sp1C * arg2;
-    arg0[0][2] = 0.0f;
-    arg0[1][2] = 0.0f;
-    arg0[0][1] = sp1C * arg2;
-    arg0[3][2] = 0.0f;
-    arg0[0][3] = 0.0f;
-    arg0[1][3] = 0.0f;
-    arg0[2][3] = 0.0f;
-    arg0[3][0] = 1.0f;
-    arg0[3][1] = 1.0f;
-    arg0[2][2] = 1.0f;
-    arg0[3][3] = 1.0f;
+    dest[2][0] = 0.0f;
+    dest[0][0] = cos_theta;
+    dest[1][1] = cos_theta;
+    dest[2][1] = 0.0f;
+    dest[1][0] = -sin_theta * scale;
+    dest[0][2] = 0.0f;
+    dest[1][2] = 0.0f;
+    dest[0][1] = sin_theta * scale;
+    dest[3][2] = 0.0f;
+    dest[0][3] = 0.0f;
+    dest[1][3] = 0.0f;
+    dest[2][3] = 0.0f;
+    dest[3][0] = 1.0f;
+    dest[3][1] = 1.0f;
+    dest[2][2] = 1.0f;
+    dest[3][3] = 1.0f;
 }
 
 /**
  * @brief arg1 and arg2 are s32's into floats?!?
- * 
- * @param arg0 
- * @param arg1 
- * @param arg2 
- * @param arg3 
- * @param arg4 
+ *
+ * @param dest
+ * @param x
+ * @param y
+ * @param angle
+ * @param scale
  */
-void func_80041C64(Mat4 arg0, s32 arg1, s32 arg2, u16 arg3, f32 arg4) {
-  f32 sp24 = sins(arg3);
-  f32 temp_f12 = coss(arg3) * arg4;
+void mtxf_translation_x_y_rotate_z_scale_x_y(Mat4 dest, s32 x, s32 y, u16 angle, f32 scale) {
+  f32 sin_theta = sins(angle);
+  f32 cos_theta = coss(angle) * scale;
 
-  arg0[2][0] = 0.0f;
-  arg0[0][0] = temp_f12;
-  arg0[1][0] = (-sp24) * arg4;
-  arg0[3][0] = (f32) arg1;
-  arg0[1][1] = temp_f12;
-  arg0[0][1] = sp24 * arg4;
-  arg0[2][1] = 0.0f;
-  arg0[3][1] = (f32) arg2;
-  arg0[0][2] = 0.0f;
-  arg0[1][2] = 0.0f;
-  arg0[2][2] = 1.0f;
-  arg0[3][3] = 1.0f;
-  arg0[3][2] = 0.0f;
-  arg0[0][3] = 0.0f;
-  arg0[1][3] = 0.0f;
-  arg0[2][3] = 0.0f;
+  dest[2][0] = 0.0f;
+  dest[0][0] = cos_theta;
+  dest[1][0] = (-sin_theta) * scale;
+  dest[3][0] = (f32) x;
+  dest[1][1] = cos_theta;
+  dest[0][1] = sin_theta * scale;
+  dest[2][1] = 0.0f;
+  dest[3][1] = (f32) y;
+  dest[0][2] = 0.0f;
+  dest[1][2] = 0.0f;
+  dest[2][2] = 1.0f;
+  dest[3][3] = 1.0f;
+  dest[3][2] = 0.0f;
+  dest[0][3] = 0.0f;
+  dest[1][3] = 0.0f;
+  dest[2][3] = 0.0f;
 }
 
 // Likely D_801658**[index] = 1; * denotes wildcard
@@ -631,59 +638,59 @@ void func_80041EF4(void) {
 extern s32 gMatrixHudCount;
 //void convert_to_fixed_point_matrix(Mtx*, Mat4);
 
-UNUSED void func_80041F54(s32 arg0, s32 arg1) {
+UNUSED void func_80041F54(s32 x, s32 y) {
     Mat4 matrix;
 
-    func_80041A78(matrix, arg0, arg1);
+    mtfx_translation_x_y(matrix, x, y);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
-UNUSED void func_80042000(u16 arg0) {
+UNUSED void func_80042000(u16 angle_z) {
     Mat4 matrix;
 
-    func_80041AD8(matrix, arg0);
+    mtxf_u16_rotate_z(matrix, angle_z);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
-UNUSED void func_800420A8(f32 arg0) {
+UNUSED void func_800420A8(f32 scale) {
     Mat4 matrix;
 
-    func_80041B68(matrix, arg0);
+    mtxf_scale_x_y(matrix, scale);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
 }
 
-UNUSED void func_8004214C(u16 arg1, f32 arg2) {
+UNUSED void func_8004214C(u16 angle, f32 scale) {
     Mat4 matrix;
 
-    func_80041BBC(matrix, arg1, arg2);
+    mtxf_rotate_z_scale_x_y(matrix, angle, scale);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
-UNUSED void func_800421FC(s32 arg0, s32 arg1, f32 arg2) {
+UNUSED void func_800421FC(s32 x, s32 y, f32 scale) {
     Mat4 matrix;
 
-    func_80041A78(matrix, arg0, arg1);
+    mtfx_translation_x_y(matrix, x, y);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
-    func_80041B68(matrix, arg2);
+    mtxf_scale_x_y(matrix, scale);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 }
 
-void func_80042330(s32 arg0, s32 arg1, u16 arg2, f32 arg3) {
+void func_80042330(s32 x, s32 y, u16 angle, f32 scale) {
     Mat4 matrix;
-    func_80041C64(matrix, arg0, arg1, arg2, arg3);
+    mtxf_translation_x_y_rotate_z_scale_x_y(matrix, x, y, angle, scale);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
@@ -726,18 +733,18 @@ UNUSED void func_800423F0(Mat4 arg0, u16 arg1, u16 arg2, u16 arg3) {
 UNUSED void func_8004252C(Mat4 arg0, u16 arg1, u16 arg2) {
     f32 sp2C = sins(arg1);
     f32 sp28 = coss(arg1);
-    f32 sp24 = sins(arg2);
-    f32 temp_f0 = coss(arg2);
+    f32 sin_theta_y = sins(arg2);
+    f32 cos_theta_y = coss(arg2);
 
-    arg0[1][0] = sp2C * sp24;
-    arg0[2][0] = sp28 * sp24;
+    arg0[1][0] = sp2C * sin_theta_y;
+    arg0[2][0] = sp28 * sin_theta_y;
     arg0[0][1] = 0.0f;
-    arg0[0][0] = temp_f0;
+    arg0[0][0] = cos_theta_y;
     arg0[2][1] = -sp2C;
-    arg0[0][2] = -sp24;
+    arg0[0][2] = -sin_theta_y;
     arg0[1][1] = sp28;
-    arg0[1][2] = sp2C * temp_f0;
-    arg0[2][2] = sp28 * temp_f0;
+    arg0[1][2] = sp2C * cos_theta_y;
+    arg0[2][2] = sp28 * cos_theta_y;
 }
 
 void mtxf_set_matrix_transformation(Mat4 transformMatrix, Vec3f translationVector, Vec3su rotationVector, f32 scalingFactor) {
@@ -788,7 +795,7 @@ void mtxf_set_matrix_scale_transl(Mat4 transformMatrix, Vec3f vec1, Vec3f vec2, 
 /**
  * @brief Tried to put the definitions in the declares. However, sp3C wants to be at the top.
  * Something may be possible with some padding. Couldn't find a way though. So we get big mess.
- * 
+ *
  * @param arg0
  * @param arg1
  **/
@@ -827,19 +834,19 @@ void mtxf_set_matrix_D_80165C18(s32 transformIndex, Mat4 transformMatrix) {
     transformMatrix[3][3] = 1.0f;
 }
 
-UNUSED void func_80042984(Mat4 arg0, f32 arg1) {
+UNUSED void mtxf_mult_first_column(Mat4 arg0, f32 arg1) {
     arg0[0][0] *= arg1;
     arg0[1][0] *= arg1;
     arg0[2][0] *= arg1;
 }
 
-UNUSED void func_800429B8(Mat4 arg0, f32 arg1) {
+UNUSED void mtxf_mult_second_column(Mat4 arg0, f32 arg1) {
     arg0[0][1] *= arg1;
     arg0[1][1] *= arg1;
     arg0[2][1] *= arg1;
 }
 
-UNUSED void func_800429EC(Mat4 arg0, f32 arg1) {
+UNUSED void mtxf_mult_third_column(Mat4 arg0, f32 arg1) {
     arg0[0][2] *= arg1;
     arg0[1][2] *= arg1;
     arg0[2][2] *= arg1;

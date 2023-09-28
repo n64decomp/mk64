@@ -1018,7 +1018,7 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     sp8C[0] = var_f12 - 3.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = var_f12 - 2.0f;
-    func_802B63B8(sp8C, sp5C);
+    mtxf_translate_vec3f_mat3(sp8C, sp5C);
     sp80[0] = player->boundingBoxCorners[0].cornerPos[0];
     sp80[1] = player->boundingBoxCorners[0].cornerPos[1];
     sp80[2] = player->boundingBoxCorners[0].cornerPos[2];
@@ -1030,7 +1030,7 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     sp8C[0] = (-var_f12) + 3.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = var_f12 - 2.0f;
-    func_802B63B8(sp8C, sp5C);
+    mtxf_translate_vec3f_mat3(sp8C, sp5C);
     sp80[0] = player->boundingBoxCorners[1].cornerPos[0];
     sp80[1] = player->boundingBoxCorners[1].cornerPos[1];
     sp80[2] = player->boundingBoxCorners[1].cornerPos[2];
@@ -1042,7 +1042,7 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     sp8C[0] = var_f12 - 2.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = (-var_f12) + 4.0f;
-    func_802B63B8(sp8C, sp5C);
+    mtxf_translate_vec3f_mat3(sp8C, sp5C);
     sp80[0] = player->boundingBoxCorners[2].cornerPos[0];
     sp80[1] = player->boundingBoxCorners[2].cornerPos[1];
     sp80[2] = player->boundingBoxCorners[2].cornerPos[2];
@@ -1054,7 +1054,7 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     sp8C[0] = (-var_f12) + 2.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = (-var_f12) + 4.0f;
-    func_802B63B8(sp8C, sp5C);
+    mtxf_translate_vec3f_mat3(sp8C, sp5C);
     sp80[0] = player->boundingBoxCorners[3].cornerPos[0];
     sp80[1] = player->boundingBoxCorners[3].cornerPos[1];
     sp80[2] = player->boundingBoxCorners[3].cornerPos[2];
@@ -1728,13 +1728,13 @@ void func_8002BB9C(Player *player, f32 *arg1, f32 *arg2, UNUSED s8 arg3, UNUSED 
     sp58[1] = 0;
     sp58[2] = *arg2;
     
-    func_802B63B8(sp58, sp64);
+    mtxf_translate_vec3f_mat3(sp58, sp64);
     
     sp4C[0] = player->rotX;
     sp4C[1] = 0;
     sp4C[2] = player->rotZ;
     
-    func_802B63B8(sp4C, sp64);
+    mtxf_translate_vec3f_mat3(sp4C, sp64);
 
     var_v0 = -(s16)get_angle_between_points(sp58, sp4C);
     t0 = player->unk_02C[1];
@@ -2282,12 +2282,12 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
         sp178[2] = 0.0f;
     }
     sp178[1] = 0.0f;
-    func_802B63B8(sp178, player->unk_174);
+    mtxf_translate_vec3f_mat3(sp178, player->unk_174);
     spB4 += sp178[0];
     spAC += sp178[2];
     func_8002C7E4(player, arg3, arg2);
     sp184[2] = func_80030150(player, arg3);
-    func_802B63B8(sp184, player->unk_174);
+    mtxf_translate_vec3f_mat3(sp184, player->unk_174);
     sp98[0] = player->unk_034[0];
     sp98[1] = player->unk_034[1];
     sp98[2] = player->unk_034[2];
@@ -2563,9 +2563,9 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     }
     spEC[2] = func_80030150(player, arg3);
     if (sp46 == 1) {
-        func_802B63B8(spEC, player->unk_150);
+        mtxf_translate_vec3f_mat3(spEC, player->unk_150);
     } else {
-        func_802B63B8(spEC, player->unk_174);
+        mtxf_translate_vec3f_mat3(spEC, player->unk_174);
     }
     sp54[0] = player->unk_034[0];
     sp54[1] = player->unk_034[1];
@@ -2780,7 +2780,7 @@ void control_cpu_movement(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg
     player->unk_256 = 0;
     player->unk_0BC &= ~0x8000;
     spF4[2] = func_80030150(player, arg3);
-    func_802B63B8(spF4, player->unk_174);
+    mtxf_translate_vec3f_mat3(spF4, player->unk_174);
     sp68[0] = player->unk_034[0];
     sp68[1] = 0;
     sp68[2] = player->unk_034[2];
@@ -2852,7 +2852,7 @@ void func_8002F730(Player *player, UNUSED Camera *camera, UNUSED s8 arg2, s8 arg
     sp7C = player->unk_064[2] * 0;
     spF4[2] = func_80030150(player, arg3);
 
-    func_802B63B8(spF4, player->unk_174);
+    mtxf_translate_vec3f_mat3(spF4, player->unk_174);
 
     sp68[0] = player->unk_034[0];
     sp68[1] = player->unk_034[1];
@@ -4387,7 +4387,7 @@ void func_80036DB4(Player *player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
-        func_802B63B8(arg1, player->unk_174);
+        mtxf_translate_vec3f_mat3(arg1, player->unk_174);
     } else {
         if (((player->unk_0BC & 0x10) == 0x10) && ((player->unk_0BC & 2) != 2)) {
             var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 10.0f);
@@ -4424,7 +4424,7 @@ void func_80036DB4(Player *player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = (player->unk_090 + var_f18) * player->unk_094;
         arg1[1] = 0.0f;
         arg1[2] = player->unk_094 * sp20;
-        func_802B63B8(arg1, player->unk_174);
+        mtxf_translate_vec3f_mat3(arg1, player->unk_174);
     }
     arg2[0] = arg1[0];
     arg2[1] = arg1[1];
@@ -4441,7 +4441,7 @@ void func_800371F4(Player *player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
-        func_802B63B8(arg1, player->unk_174);
+        mtxf_translate_vec3f_mat3(arg1, player->unk_174);
     } else {
         if (((player->unk_0BC & 0x10) == 0x10) && ((player->unk_0BC & 2) != 2)) {
             var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 50.0f);
@@ -4478,7 +4478,7 @@ void func_800371F4(Player *player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = -(player->unk_090 + var_f18) * player->unk_094;
         arg1[1] = 0.0f;
         arg1[2] = player->unk_094 * sp20;
-        func_802B63B8(arg1, player->unk_174);
+        mtxf_translate_vec3f_mat3(arg1, player->unk_174);
     }
     arg2[0] = arg1[0];
     arg2[1] = arg1[1];
@@ -4493,7 +4493,7 @@ void func_80037614(Player *player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
-        func_802B63B8(arg1, player->unk_174);
+        mtxf_translate_vec3f_mat3(arg1, player->unk_174);
     } else {
         if (((player->unk_0BC & 0x10) == 0x10) && ((player->unk_0BC & 2) != 2)) {
             var_f2 = ((-(player->unk_094 / 18.0f) * 216.0f) * 2) + -80.0f;
@@ -4505,7 +4505,7 @@ void func_80037614(Player *player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = (var_f2 + 28.0f) * player->unk_094;
         arg1[1] = 0.0f;
         arg1[2] = var_f12 * player->unk_094;
-        func_802B63B8(arg1, player->unk_174);
+        mtxf_translate_vec3f_mat3(arg1, player->unk_174);
     }
     arg2[0] = arg1[0];
     arg2[1] = arg1[1];
@@ -4520,7 +4520,7 @@ void func_8003777C(Player *player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
-        func_802B63B8(arg1, player->unk_174);
+        mtxf_translate_vec3f_mat3(arg1, player->unk_174);
     } else {
         if (((player->unk_0BC & 0x10) == 0x10) && ((player->unk_0BC & 2) != 2)) {
             var_f2 = ((-(player->unk_094 / 18.0f) * 216.0f) * 2) + -80.0f;
@@ -4532,7 +4532,7 @@ void func_8003777C(Player *player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = -(var_f2 + 28.0f) * player->unk_094;
         arg1[1] = 0.0f;
         arg1[2] = var_f12 * player->unk_094;
-        func_802B63B8(arg1, player->unk_174);
+        mtxf_translate_vec3f_mat3(arg1, player->unk_174);
     }
     arg2[0] = arg1[0];
     arg2[1] = arg1[1];
@@ -4547,7 +4547,7 @@ void func_800378E8(Player *player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
-        func_802B63B8(arg1, player->unk_174);
+        mtxf_translate_vec3f_mat3(arg1, player->unk_174);
     } else {
         if ((player->unk_0BC & 0x10) == 0x10) {
             var_f2 = player->unk_208 + (-(player->unk_094 / 18.0f) * 216.0f * 5.0f) + (-player->unk_20C * 10.0f);
@@ -4559,7 +4559,7 @@ void func_800378E8(Player *player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = (player->unk_090 + var_f2) * player->unk_094;
         arg1[1] = 0.0f;
         arg1[2] = player->unk_094 * var_f12;
-        func_802B63B8(arg1, player->unk_174);
+        mtxf_translate_vec3f_mat3(arg1, player->unk_174);
     }
     arg2[0] = arg1[0];
     arg2[1] = arg1[1];
@@ -4574,7 +4574,7 @@ void func_80037A4C(Player *player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
-        func_802B63B8(arg1, player->unk_174);
+        mtxf_translate_vec3f_mat3(arg1, player->unk_174);
     } else {
         if ((player->unk_0BC & 0x10) == 0x10) {
             var_f2 = player->unk_208 + (-(player->unk_094 / 18.0f) * 216.0f * 5.0f) + (-player->unk_20C * 50.0f);
@@ -4586,7 +4586,7 @@ void func_80037A4C(Player *player, Vec3f arg1, Vec3f arg2) {
         arg1[0] = -(player->unk_090 + var_f2) * player->unk_094;
         arg1[1] = 0.0f;
         arg1[2] = player->unk_094 * var_f12;
-        func_802B63B8(arg1, player->unk_174);
+        mtxf_translate_vec3f_mat3(arg1, player->unk_174);
     }
     arg2[0] = arg1[0];
     arg2[1] = arg1[1];
@@ -4986,11 +4986,11 @@ void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     sp108[2] = 0;
     sp108[1] = 0;
     sp108[0] = 0;
-    func_802B63B8(sp108, player->unk_174);
+    mtxf_translate_vec3f_mat3(sp108, player->unk_174);
     spA4 += sp108[0];
     sp9C += sp108[2];
     sp114[2] = player->unk_08C;
-    func_802B63B8(sp114, player->unk_174); 
+    mtxf_translate_vec3f_mat3(sp114, player->unk_174); 
     
     sp88[0] = player->unk_034[0];
     sp88[1] = player->unk_034[1];

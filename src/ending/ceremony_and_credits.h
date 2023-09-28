@@ -114,7 +114,7 @@ void vec3f_set_dupe(Vec3f, f32, f32, f32);
 void vec3s_set_dupe(Vec3s, s16, s16, s16);
 void vec3f_clear(Vec3f);
 void vec3s_clear(Vec3s);
-void vec3f_copy_dupe(Vec3f, Vec3f);
+void vec3f_copy_return_dupe(Vec3f, Vec3f);
 void vec3s_copy_dupe(Vec3s, Vec3s);
 void func_80282040(void);
 void func_80282048(void);

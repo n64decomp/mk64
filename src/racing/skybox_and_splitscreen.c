@@ -465,11 +465,11 @@ void func_802A4A0C(Vtx *vtx, struct UnkStruct_800DC5EC *arg1, UNUSED s32 arg2, U
     sp5C[2] = 30000.0f;
     func_802B5564(matrix1, &sp128, camera->unk_B4, D_80150148, D_80150150, D_8015014C, 1.0f);
     func_802B5794(matrix2, camera->pos, camera->lookAt);
-    func_802B71CC(matrix3, matrix1, matrix2);
+    mtxf_multiplication(matrix3, matrix1, matrix2);
 
     sp58 = ((matrix3[0][3] * sp5C[0]) + (matrix3[1][3] * sp5C[1]) + (matrix3[2][3] * sp5C[2])) + matrix3[3][3];
 
-    func_802B6434(sp5C, matrix3);
+    mtxf_translate_vec3f_mat4(sp5C, matrix3);
 
     temp_f0 = (1.0 / sp58);
 

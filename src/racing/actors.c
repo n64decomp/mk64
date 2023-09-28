@@ -113,9 +113,9 @@ void cleanup_red_and_green_shells(struct ShellActor *shell) {
 
 // Sets introductory values for a new actor (ex. Banana).
 void actor_init(struct Actor *actor, Vec3f startingPos, Vec3s startingRot, Vec3f startingVelocity, s16 actorType) {
-    vec3f_copy(actor->pos, startingPos);
+    vec3f_copy_return(actor->pos, startingPos);
     vec3s_copy(actor->rot, startingRot);
-    vec3f_copy(actor->velocity, startingVelocity);
+    vec3f_copy_return(actor->velocity, startingVelocity);
     actor->type = actorType;
     actor->flags = -0x8000;
     actor->unk_04 = 0;
@@ -414,7 +414,7 @@ void func_8029794C(Vec3f arg0, Vec3s arg1, f32 arg2) {
     arg0[1] += 2.0f;
 
     func_802B5F74(sp20, arg0, arg1);
-    func_802B5F00(sp20, arg2);
+    mtxf_scale(sp20, arg2);
     if (render_set_position(sp20, 0) != 0) {
 
         gSPDisplayList(gDisplayListHead++, D_0D007B20);
@@ -1427,10 +1427,10 @@ void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED Mat4 arg2,
             gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_E730);
             gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_E058);
 
-            func_802B59DC(spE0, boat->wheelRot);
+            mtxf_rotate_x(spE0, boat->wheelRot);
             vec3f_set(sp120, 0, 16.0f, -255.0f);
             mtxf_translate(spA0, sp120);
-            func_802B71CC(sp60, spE0, spA0);
+            mtxf_multiplication(sp60, spE0, spA0);
             if (render_set_position(sp60, 3) != 0) {
                 gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
                 gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_FC28);
@@ -1526,7 +1526,7 @@ void func_8029B4E0(Camera *arg0, struct Actor *arg1) {
 
 
         func_802B5F74(spC8, arg1->pos, arg1->rot);
-        func_802B5F00(spC8, 0.1f);
+        mtxf_scale(spC8, 0.1f);
         if (render_set_position(spC8, 0) != 0) {
 
             if (gActiveScreenMode == SCREEN_MODE_1P) {
@@ -1615,10 +1615,10 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
 
-    func_802B59DC(sp120, actor->wheelRot);
+    mtxf_rotate_x(sp120, actor->wheelRot);
     vec3f_set(sp160, 17.0f, 6.0f, 32.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
@@ -1626,10 +1626,10 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, actor->wheelRot);
+    mtxf_rotate_x(sp120, actor->wheelRot);
     vec3f_set(sp160, -17.0, 6.0f, 32.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
@@ -1637,10 +1637,10 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
+    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x16C));
     vec3f_set(sp160, 17.0f, 6.0f, 16.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
@@ -1648,10 +1648,10 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
+    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x16C));
     vec3f_set(sp160, -17.0f, 6.0f, 16.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
@@ -1659,10 +1659,10 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
+    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x444));
     vec3f_set(sp160, 17.0f, 12.0f, -12.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
@@ -1670,10 +1670,10 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
+    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x444));
     vec3f_set(sp160, -17.0f, 12.0f, -12.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
@@ -1681,10 +1681,10 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, (s16) (actor->wheelRot + 0x2D8));
+    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x2D8));
     vec3f_set(sp160, 17.0f, 12.0f, -34.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
@@ -1692,10 +1692,10 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, (s16) (actor->wheelRot + 0x2D8));
+    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x2D8));
     vec3f_set(sp160, -17.0f, 12.0f, -34.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
@@ -1734,40 +1734,40 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
 
-    func_802B59DC(sp120, actor->wheelRot);
+    mtxf_rotate_x(sp120, actor->wheelRot);
     vec3f_set(sp160, 17.0f, 6.0f, 8.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, actor->wheelRot);
+    mtxf_rotate_x(sp120, actor->wheelRot);
     vec3f_set(sp160, -17.0, 6.0f, 8.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
+    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x444));
     vec3f_set(sp160, 17.0f, 6.0f, -8.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, (s16) (actor->wheelRot + 0x444));
+    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x444));
     vec3f_set(sp160, -17.0f, 6.0f, -8.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     if (render_set_position(spA0, 3) == 0) { return; }
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
@@ -1809,80 +1809,80 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
 
-    func_802B59DC(sp120, actor->wheelRot);
+    mtxf_rotate_x(sp120, actor->wheelRot);
     vec3f_set(sp160, 17.0f, 6.0f, 28.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, actor->wheelRot);
+    mtxf_rotate_x(sp120, actor->wheelRot);
     vec3f_set(sp160, -17.0, 6.0f, 28.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, (s16) (actor->wheelRot + 0x222));
+    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x222));
     vec3f_set(sp160, 17.0f, 6.0f, 12.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, (s16) (actor->wheelRot + 0x222));
+    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x222));
     vec3f_set(sp160, -17.0f, 6.0f, 12.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, (s16) (actor->wheelRot + 0x5B0));
+    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x5B0));
     vec3f_set(sp160, 17.0f, 6.0f, -8.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, (s16) (actor->wheelRot + 0x5B0));
+    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x5B0));
     vec3f_set(sp160, -17.0f, 6.0f, -8.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
+    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x16C));
     vec3f_set(sp160, 17.0f, 6.0f, -24.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    func_802B59DC(sp120, (s16) (actor->wheelRot + 0x16C));
+    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x16C));
     vec3f_set(sp160, -17.0f, 6.0f, -24.0f);
     mtxf_translate(spE0, sp160);
-    func_802B71CC(spA0, sp120, spE0);
+    mtxf_multiplication(spA0, sp120, spE0);
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
@@ -3601,14 +3601,14 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
     someRot[1] = fakeItemBox->rot[1];
     someRot[2] = 0;
     func_802B5F74(someMatrix2, fakeItemBox->pos, someRot);
-    func_802B5F00(someMatrix2, fakeItemBox->sizeScaling);
+    mtxf_scale(someMatrix2, fakeItemBox->sizeScaling);
     if (fakeItemBox->state != 2) {
 
         if (!render_set_position(someMatrix2, 0)) { return; }
 
         gSPDisplayList(gDisplayListHead++, common_model_fake_itembox);
         func_802B5F74(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
-        func_802B5F00(someMatrix2, fakeItemBox->sizeScaling);
+        mtxf_scale(someMatrix2, fakeItemBox->sizeScaling);
 
         if (!render_set_position(someMatrix2, 0)) { return; }
 
@@ -3638,7 +3638,7 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
         } else {
             someMultiplier = 1.0f - ((thing - 10.0f) * 0.1f);
         }
-        func_802B5F00(someMatrix2, someMultiplier);
+        mtxf_scale(someMatrix2, someMultiplier);
         if (fakeItemBox->someTimer & 1) {
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         } else {
@@ -3648,7 +3648,7 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
         someVec[0] = 0.0f;
         someVec[1] = temp_f2;
         someVec[2] = thing;
-        func_802B5450(someMatrix2, someMatrix3, someVec);
+        add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
         if (!render_set_position(someMatrix3, 0)) { return; }
 
@@ -3658,7 +3658,7 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
         someVec[0] = temp_f2_2;
         someVec[1] = 2.3f * thing;
         someVec[2] = temp_f12;
-        func_802B5450(someMatrix2, someMatrix3, someVec);
+        add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
         if (!render_set_position(someMatrix3, 0)) { return; }
 
@@ -3667,7 +3667,7 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
         someVec[0] = temp_f2_2;
         someVec[1] = 1.2f * thing;
         someVec[2] = temp_f0_2;
-        func_802B5450(someMatrix2, someMatrix3, someVec);
+        add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
         if (!render_set_position(someMatrix3, 0)) { return; }
 
@@ -3680,7 +3680,7 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
         someVec[0] = 0.0f;
         someVec[1] = 1.8f * thing;
         someVec[2] = -1.0f * thing;
-        func_802B5450(someMatrix2, someMatrix3, someVec);
+        add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
         if (!render_set_position(someMatrix3, 0)) { return; }
 
@@ -3689,7 +3689,7 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
         someVec[0] = temp_f0_3;
         someVec[1] = 0.6f * thing;
         someVec[2] = temp_f0_2;
-        func_802B5450(someMatrix2, someMatrix3, someVec);
+        add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
         if (!render_set_position(someMatrix3, 0)) { return; }
 
@@ -3697,7 +3697,7 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
         someVec[0] = temp_f0_3;
         someVec[1] = temp_f2;
         someVec[2] = temp_f12;
-        func_802B5450(someMatrix2, someMatrix3, someVec);
+        add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
 
         if (!render_set_position(someMatrix3, 0)) { return; }
 
@@ -3786,7 +3786,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
             } else {
                 someMultiplier = 1.0f - ((thing - 10.0f) * 0.1f);
             }
-            func_802B5F00(someMatrix1, someMultiplier);
+            mtxf_scale(someMatrix1, someMultiplier);
             if (item_box->someTimer & 1) {
                 gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
             } else {
@@ -3796,7 +3796,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
             someVec1[0] = 0.0f;
             someVec1[1] = temp_f2;
             someVec1[2] = thing;
-            func_802B5450(someMatrix1, someMatrix2, someVec1);
+            add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
 
             if (!render_set_position(someMatrix2, 0)) { return; }
 
@@ -3806,7 +3806,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
             someVec1[0] = temp_f2_2;
             someVec1[1] = 2.3f * thing;
             someVec1[2] = temp_f12;
-            func_802B5450(someMatrix1, someMatrix2, someVec1);
+            add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
 
             if (!render_set_position(someMatrix2, 0)) { return; }
 
@@ -3815,7 +3815,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
             someVec1[0] = temp_f2_2;
             someVec1[1] = 1.2f * thing;
             someVec1[2] = temp_f0_2;
-            func_802B5450(someMatrix1, someMatrix2, someVec1);
+            add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
 
             if (!render_set_position(someMatrix2, 0)) { return; }
 
@@ -3828,7 +3828,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
             someVec1[0] = 0.0f;
             someVec1[1] = 1.8f * thing;
             someVec1[2] = -1.0f * thing;
-            func_802B5450(someMatrix1, someMatrix2, someVec1);
+            add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
 
             if (!render_set_position(someMatrix2, 0)) { return; }
 
@@ -3837,7 +3837,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
             someVec1[0] = temp_f0_3;
             someVec1[1] = 0.6f * thing;
             someVec1[2] = temp_f0_2;
-            func_802B5450(someMatrix1, someMatrix2, someVec1);
+            add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
 
             if (!render_set_position(someMatrix2, 0)) { return; }
 
@@ -3845,7 +3845,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
             someVec1[0] = temp_f0_3;
             someVec1[1] = temp_f2;
             someVec1[2] = temp_f12;
-            func_802B5450(someMatrix1, someMatrix2, someVec1);
+            add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
 
             if (!render_set_position(someMatrix2, 0)) { return; }
 
