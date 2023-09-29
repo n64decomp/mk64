@@ -2142,7 +2142,7 @@ Vtx D_0D008C38[] = {
     {{{    -2,       2,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Gfx D_0D008C78[] = {
+Gfx squarePlainRender[] = {
     gsSP1Triangle(0, 1, 2, 0),
     gsSP1Triangle(0, 2, 3, 0),
     gsSPEndDisplayList(),
@@ -2195,7 +2195,7 @@ Gfx D_0D008D58[] = {
 };
 
 Gfx D_0D008DA0[] = {
-    gsSPDisplayList(D_0D008C78),
+    gsSPDisplayList(squarePlainRender),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
     gsSPEndDisplayList(),
 };

@@ -411,7 +411,7 @@ glabel func_8006AFD0
 /* 06C19C 8006B59C AC4F0004 */  sw    $t7, 4($v0)
 /* 06C1A0 8006B5A0 8C620000 */  lw    $v0, ($v1)
 /* 06C1A4 8006B5A4 3C19F550 */  lui   $t9, 0xf550
-/* 06C1A8 8006B5A8 3C1F0D01 */  lui   $ra, %hi(D_0D008C78) # $ra, 0xd01
+/* 06C1A8 8006B5A8 3C1F0D01 */  lui   $ra, %hi(squarePlainRender) # $ra, 0xd01
 /* 06C1AC 8006B5AC 244E0008 */  addiu $t6, $v0, 8
 /* 06C1B0 8006B5B0 AC6E0000 */  sw    $t6, ($v1)
 /* 06C1B4 8006B5B4 AC580004 */  sw    $t8, 4($v0)
@@ -454,16 +454,16 @@ glabel func_8006AFD0
 /* 06C248 8006B648 AC580000 */  sw    $t8, ($v0)
 /* 06C24C 8006B64C AC4F0004 */  sw    $t7, 4($v0)
 /* 06C250 8006B650 8C620000 */  lw    $v0, ($v1)
-/* 06C254 8006B654 3C18800E */  lui   $t8, %hi(D_800E5250) # $t8, 0x800e
+/* 06C254 8006B654 3C18800E */  lui   $t8, %hi(baloonVertexPlane1) # $t8, 0x800e
 /* 06C258 8006B658 3C190400 */  lui   $t9, (0x0400103F >> 16) # lui $t9, 0x400
 /* 06C25C 8006B65C 244E0008 */  addiu $t6, $v0, 8
 /* 06C260 8006B660 AC6E0000 */  sw    $t6, ($v1)
 /* 06C264 8006B664 3739103F */  ori   $t9, (0x0400103F & 0xFFFF) # ori $t9, $t9, 0x103f
-/* 06C268 8006B668 27185250 */  addiu $t8, %lo(D_800E5250) # addiu $t8, $t8, 0x5250
+/* 06C268 8006B668 27185250 */  addiu $t8, %lo(baloonVertexPlane1) # addiu $t8, $t8, 0x5250
 /* 06C26C 8006B66C AC580004 */  sw    $t8, 4($v0)
 /* 06C270 8006B670 AC590000 */  sw    $t9, ($v0)
 /* 06C274 8006B674 8C620000 */  lw    $v0, ($v1)
-/* 06C278 8006B678 27FF8C78 */  addiu $ra, %lo(D_0D008C78) # addiu $ra, $ra, -0x7388
+/* 06C278 8006B678 27FF8C78 */  addiu $ra, %lo(squarePlainRender) # addiu $ra, $ra, -0x7388
 /* 06C27C 8006B67C 3C19FD50 */  lui   $t9, 0xfd50
 /* 06C280 8006B680 244F0008 */  addiu $t7, $v0, 8
 /* 06C284 8006B684 AC6F0000 */  sw    $t7, ($v1)
@@ -523,12 +523,12 @@ glabel func_8006AFD0
 /* 06C35C 8006B75C AC580000 */  sw    $t8, ($v0)
 /* 06C360 8006B760 AC4F0004 */  sw    $t7, 4($v0)
 /* 06C364 8006B764 8C620000 */  lw    $v0, ($v1)
-/* 06C368 8006B768 3C18800E */  lui   $t8, %hi(D_800E5290) # $t8, 0x800e
+/* 06C368 8006B768 3C18800E */  lui   $t8, %hi(baloonVertexPlane2) # $t8, 0x800e
 /* 06C36C 8006B76C 3C190400 */  lui   $t9, (0x0400103F >> 16) # lui $t9, 0x400
 /* 06C370 8006B770 244E0008 */  addiu $t6, $v0, 8
 /* 06C374 8006B774 AC6E0000 */  sw    $t6, ($v1)
 /* 06C378 8006B778 3739103F */  ori   $t9, (0x0400103F & 0xFFFF) # ori $t9, $t9, 0x103f
-/* 06C37C 8006B77C 27185290 */  addiu $t8, %lo(D_800E5290) # addiu $t8, $t8, 0x5290
+/* 06C37C 8006B77C 27185290 */  addiu $t8, %lo(baloonVertexPlane2) # addiu $t8, $t8, 0x5290
 /* 06C380 8006B780 AC580004 */  sw    $t8, 4($v0)
 /* 06C384 8006B784 AC590000 */  sw    $t9, ($v0)
 /* 06C388 8006B788 8C620000 */  lw    $v0, ($v1)

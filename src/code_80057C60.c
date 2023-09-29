@@ -5146,7 +5146,7 @@ void func_80066BAC(Player *player, s8 arg1, s16 arg2, s8 arg3) {
             gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
             gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C4, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             gSPVertex(gDisplayListHead++, &D_800E8900[0][player->unk_258[arg2].unk_038], 4, 0);
-            gSPDisplayList(gDisplayListHead++, D_0D008C78);
+            gSPDisplayList(gDisplayListHead++, squarePlainRender);
             gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C8, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             gSPVertex(gDisplayListHead++, &D_800E8900[1][player->unk_258[arg2].unk_038], 4, 0);
             gSPDisplayList(gDisplayListHead++, D_0D008DA0);
@@ -5156,7 +5156,7 @@ void func_80066BAC(Player *player, s8 arg1, s16 arg2, s8 arg3) {
             gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
             gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C8, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             gSPVertex(gDisplayListHead++, &D_800E8900[0][player->unk_258[arg2].unk_038], 4, 0);
-            gSPDisplayList(gDisplayListHead++, D_0D008C78);
+            gSPDisplayList(gDisplayListHead++, squarePlainRender);
             gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C4, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             gSPVertex(gDisplayListHead++, &D_800E8900[1][player->unk_258[arg2].unk_038], 4, 0);
             gSPDisplayList(gDisplayListHead++, D_0D008DA0);
@@ -5263,7 +5263,7 @@ void func_80067964(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D4AC, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPVertex(gDisplayListHead++, D_800E8840, 4, 0);
-        gSPDisplayList(gDisplayListHead++, D_0D008C78);
+        gSPDisplayList(gDisplayListHead++, squarePlainRender);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D4B0, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPVertex(gDisplayListHead++, D_800E8800, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
@@ -5346,7 +5346,7 @@ void func_80068310(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D4B4, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPVertex(gDisplayListHead++, D_800E8880, 4, 0);
-        gSPDisplayList(gDisplayListHead++, D_0D008C78);
+        gSPDisplayList(gDisplayListHead++, squarePlainRender);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D4B8, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPVertex(gDisplayListHead++, D_800E88C0, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
@@ -5372,7 +5372,7 @@ void func_80068724(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C4, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPVertex(gDisplayListHead++, D_800E8A00, 4, 0);
-        gSPDisplayList(gDisplayListHead++, D_0D008C78);
+        gSPDisplayList(gDisplayListHead++, squarePlainRender);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C8, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 64, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPVertex(gDisplayListHead++, D_800E8A40, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
@@ -5423,7 +5423,7 @@ void func_80068DA0(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D4A4, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPVertex(gDisplayListHead++, D_800E8B80, 4, 0);
-        gSPDisplayList(gDisplayListHead++, D_0D008C78);
+        gSPDisplayList(gDisplayListHead++, squarePlainRender);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D4A8, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         gSPVertex(gDisplayListHead++, D_800E8BC0, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
@@ -5910,8 +5910,8 @@ extern ? D_8018D860;
 extern ? D_8018D890;
 static ? D_800E4934;                                /* unable to generate initializer */
 static ? D_800E4954;                                /* unable to generate initializer */
-static ? D_800E5250;                                /* unable to generate initializer */
-static ? D_800E5290;                                /* unable to generate initializer */
+static ? baloonVertexPlane1;                                /* unable to generate initializer */
+static ? baloonVertexPlane2;                                /* unable to generate initializer */
 static ? D_800E52D0;                                /* unable to generate initializer */
 
 void func_8006AFD0(Player *player, s16 arg1, s8 arg2, s8 arg3) {
@@ -6054,11 +6054,11 @@ void func_8006AFD0(Player *player, s16 arg1, s8 arg2, s8 arg3) {
     
     gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D4BC, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, D_800E5250, 4, 0);
-    gSPDisplayList(gDisplayListHead++, D_0D008C78);
+    gSPVertex(gDisplayListHead++, baloonVertexPlane1, 4, 0);
+    gSPDisplayList(gDisplayListHead++, squarePlainRender);
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C0 - 0x40, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, D_800E5290, 4, 0);
-    gSPDisplayList(gDisplayListHead++, D_0D008C78);
+    gSPVertex(gDisplayListHead++, baloonVertexPlane2, 4, 0);
+    gSPDisplayList(gDisplayListHead++, squarePlainRender);
     gSPTexture(gDisplayListHead++, 0x0001, 0x0001, 0, G_TX_RENDERTILE, G_OFF);
     gMatrixEffectCount++;
 }
@@ -6127,8 +6127,8 @@ void func_8006BA94(Player* player, s8 playerIndex, s8 arg2) {
 }
 
 // data/data_code_80071F00_2.s
-extern Vtx D_800E5250[];
-extern Vtx D_800E5290[];
+extern Vtx baloonVertexPlane1[];
+extern Vtx baloonVertexPlane2[];
 extern u8 D_800E52D0[];
 
 void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
@@ -6173,12 +6173,12 @@ void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     func_8004B614(primRed, primGreen, primBlue, envRed, envGreen, envBlue, 0x000000D8);
     gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D4BC, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, D_800E5250, 4, 0);
-    gSPDisplayList(gDisplayListHead++, D_0D008C78);
+    gSPVertex(gDisplayListHead++, baloonVertexPlane1, 4, 0);
+    gSPDisplayList(gDisplayListHead++, squarePlainRender);
     // D_8018D4C0 is correct. But interestingly, IDO seems to set "-0x40" to a different register so the texture still looks fine.
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C0 - 0x40, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, D_800E5290, 4, 0);
-    gSPDisplayList(gDisplayListHead++, D_0D008C78);
+    gSPVertex(gDisplayListHead++, baloonVertexPlane2, 4, 0);
+    gSPDisplayList(gDisplayListHead++, squarePlainRender);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
     gMatrixEffectCount += 1;
 }

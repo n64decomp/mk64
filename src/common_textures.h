@@ -217,7 +217,7 @@ extern Vtx D_0D008B78[];
 extern Vtx D_0D008BB8[];
 extern Vtx D_0D008BF8[];
 extern Vtx D_0D008C38[];
-extern Gfx D_0D008C78[];
+extern Gfx squarePlainRender[];
 extern Gfx D_0D008C90[];
 extern Gfx D_0D008CD8[];
 extern Gfx D_0D008D10[];

@@ -88,7 +88,7 @@ extern s32 D_80164B80[];
 extern u8 *D_8018D474;
 extern s32 D_8018D930[];
 
-extern Gfx D_0D008C78[];
+extern Gfx squarePlainRender[];
 extern Gfx D_0D008D58[];
 
 extern s32 D_800DDB58;
