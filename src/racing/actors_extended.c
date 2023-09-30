@@ -359,7 +359,7 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     func_800C9060(playerId, 0x19008012);
                     parent->shellsAvailable += 1;
                 }
-                parent->state = SPAWN_SECOND_SHELL;
+                parent->state = SPAWN_THIRD_SHELL;
             }
         } else {
             if (someRotAngle < 0x2AAA) {
@@ -367,7 +367,7 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     func_800C9060(playerId, 0x19008012);
                     parent->shellsAvailable += 1;
                 }
-                parent->state = SPAWN_SECOND_SHELL;
+                parent->state = SPAWN_THIRD_SHELL;
             }
         }
         break;
@@ -378,14 +378,14 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     func_800C9060(playerId, 0x19008012);
                     parent->shellsAvailable += 1;
                 }
-                parent->state = SPAWN_THIRD_SHELL;
+                parent->state = 3;
             }
         } else if ((someRotAngle < 0xD555) && (someRotAngle >= 0xCE39)) {
             if (init_triple_shell(parent, &gPlayers[playerId], shellType, 2U) != -1) {
                 func_800C9060(playerId, 0x19008012);
                 parent->shellsAvailable += 1;
             }
-            parent->state = SPAWN_THIRD_SHELL;
+            parent->state = 3;
         }
         break;
     case 3:
