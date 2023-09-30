@@ -826,7 +826,7 @@ void func_80089020(s32 playerId, f32 *arg1) {
     } else {
         var_f2 = -*arg1;
     }
-    if (player->unk_0BC & 0xC0) {
+    if (player->effect & 0xC0) {
         if (gCurrentCourseId == COURSE_SHERBET_LAND) {
             if (var_f2 <= 0.5) {
                 var_f0 = 0.025f;
@@ -893,7 +893,7 @@ f32 func_8008933C(Player *player, s32 objectIndex, f32 arg2, f32 arg3) {
     if (temp_v1->unk_18[6] == 0) {
         temp_v0 = &D_80165C18[objectIndex];
         player->unk_046 |= 2;
-        player->unk_0BC |= 0x8000;
+        player->effect |= 0x8000;
         temp_v1->unk_18[6] = 4;
         something = (player->pos[0] - temp_v0->pos[0]) * temp_v0->unk_038[0];
         if (something >= 0.0f) {
@@ -962,7 +962,7 @@ void func_800896D4(s32 objectIndex, f32 arg1, f32 arg2) {
     player = gPlayerOne;
     if (func_8007223C(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((D_80165C18[objectIndex].unk_0A6 != 0) && !(player->unk_0BC & 0x80000200) && (func_80088D18(objectIndex, player) != 0)) {
+            if ((D_80165C18[objectIndex].unk_0A6 != 0) && !(player->effect & 0x80000200) && (func_80088D18(objectIndex, player) != 0)) {
                 func_8008933C(player, objectIndex, arg1, arg2 * 1.1);
                 if (func_8007223C(objectIndex, 0x04000000) != 0) {
                     func_80072180();
@@ -980,9 +980,9 @@ void func_80089820(s32 objectIndex, f32 arg1, f32 arg2, u32 arg3) {
     func_800721E8(objectIndex, 0x02000000);
     if (func_8007223C(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((D_80165C18[objectIndex].unk_0A6 != 0) && !(player->unk_0BC & 0x80000000)) {
+            if ((D_80165C18[objectIndex].unk_0A6 != 0) && !(player->effect & 0x80000000)) {
                 if ((player->unk_000 & 0x8000) && !(player->unk_000 & 0x100) && (func_80088D18(objectIndex, player) != 0)) {
-                    if (player->unk_0BC & 0x200) {
+                    if (player->effect & 0x200) {
                         func_800721C0(objectIndex, 0x02000000);
                     } else {
                         if (func_8007223C(objectIndex, 0x04000000) != 0) {
@@ -1005,7 +1005,7 @@ void func_80089A04(s32 objectIndex, f32 arg1, f32 arg2) {
     player = gPlayerOne;
     if (func_8007223C(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((D_80165C18[objectIndex].unk_0A6 != 0) && !(player->unk_0BC & 0x80000200) && (func_80088DA4(objectIndex, player) != 0)) {
+            if ((D_80165C18[objectIndex].unk_0A6 != 0) && !(player->effect & 0x80000200) && (func_80088DA4(objectIndex, player) != 0)) {
                 func_8008933C(player, objectIndex, arg1, arg2 * 1.1);
                 if (func_8007223C(objectIndex, 0x04000000) != 0) {
                     func_80072180();
@@ -1026,9 +1026,9 @@ s32 func_80089B50(s32 objectIndex) {
     player = gPlayerOne;
     if (func_8007223C(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++, test++) {
-            if ((D_80165C18[objectIndex].unk_0A6 != 0) && !(player->unk_0BC & 0x81000000) && (player->unk_000 & 0x8000) && !(player->unk_000 & 0x100) && (func_80088D18(objectIndex, player) != 0)) {
-                if (!(player->unk_0BC & 0x200)) {
-                    player->statusEffects |= 0x400000;
+            if ((D_80165C18[objectIndex].unk_0A6 != 0) && !(player->effect & 0x81000000) && (player->unk_000 & 0x8000) && !(player->unk_000 & 0x100) && (func_80088D18(objectIndex, player) != 0)) {
+                if (!(player->effect & 0x200)) {
+                    player->statusEffects |= REVERSE_EFFECT;
                     if (func_8007223C(objectIndex, 0x04000000) != 0) {
                         func_80072180();
                     }
@@ -1051,10 +1051,10 @@ s32 func_80089CBC(s32 objectIndex, f32 arg1) {
     player = gPlayerOne;
     if (func_8007223C(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((D_80165C18[objectIndex].unk_0A6 != 0) && !(player->unk_0BC & 0x81000000)) {
+            if ((D_80165C18[objectIndex].unk_0A6 != 0) && !(player->effect & 0x81000000)) {
                 if ((player->unk_000 & 0x8000) && !(player->unk_000 & 0x100) && (func_80088E98(objectIndex, player, arg1) != 0)) {
-                    if (!(player->unk_0BC & 0x200)) {
-                        player->statusEffects |= 0x400000;
+                    if (!(player->effect & 0x200)) {
+                        player->statusEffects |= REVERSE_EFFECT;
                         if (func_8007223C(objectIndex, 0x04000000) != 0) {
                             func_80072180();
                         }
@@ -1076,8 +1076,8 @@ s32 func_80089E18(s32 objectIndex) {
     player = gPlayerOne;
     if (func_8007223C(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((D_80165C18[objectIndex].unk_0A6 != 0) && !(player->unk_0BC & 0x800000C0) && (func_80088D18(objectIndex, player) != 0)) {
-                if (player->unk_0BC & 0x200) {
+            if ((D_80165C18[objectIndex].unk_0A6 != 0) && !(player->effect & 0x800000C0) && (func_80088D18(objectIndex, player) != 0)) {
+                if (player->effect & 0x200) {
                     var_s6 = 1;
                 } else {
                     player->statusEffects |= 1;
@@ -1097,7 +1097,7 @@ s32 func_80089F24(s32 objectIndex) {
     player = gPlayerOne;
     if (func_8007223C(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((D_80165C18[objectIndex].unk_0A6 != 0) && !(player->unk_0BC & 0x800002C0)) {
+            if ((D_80165C18[objectIndex].unk_0A6 != 0) && !(player->effect & 0x800002C0)) {
                 if ((player->unk_000 & 0x8000) && !(player->unk_000 & 0x100) && (func_80088D18(objectIndex, player) != 0)) {
                     var_s7 = 1;
                     if (func_8007223C(objectIndex, 0x04000000) != 0) {

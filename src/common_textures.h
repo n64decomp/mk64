@@ -219,7 +219,7 @@ extern Vtx D_0D008BF8[];
 extern Vtx D_0D008C38[];
 extern Gfx squarePlainRender[];
 extern Gfx D_0D008C90[];
-extern Gfx D_0D008CD8[];
+extern Gfx gSettingRenderCharacter[];
 extern Gfx D_0D008D10[];
 extern Gfx D_0D008D58[];
 extern Gfx D_0D008DA0[];

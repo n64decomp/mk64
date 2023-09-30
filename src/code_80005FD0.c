@@ -514,13 +514,13 @@ void func_800065D0(s32 arg0, Player *player) {
             *(&D_80163270 + temp_v0) = 1;
             temp_a3 = &gPlayers[arg0];
             *temp_v1 = 5;
-            temp_a3->unk_0BC |= 0x400000;
+            temp_a3->effect |= 0x400000;
         }
     } else if ((var_t1 < 0x2D) || (var_t1 >= 0x13C)) {
         *(&D_80163270 + temp_v0) = 0;
         *(&D_80163258 + temp_v0) = 0;
         temp_a3_2 = &gPlayers[arg0];
-        temp_a3_2->unk_0BC &= 0xFFBFFFFF;
+        temp_a3_2->effect &= 0xFFBFFFFF;
     }
     *temp_a2 = temp_a1;
 }
@@ -789,7 +789,7 @@ void func_80007D04(s32 playerId, Player *player) {
     temp_t2 = D_80164450[playerId];
     if (gGPCurrentRaceRankByPlayerId[playerId] < 2) {
         if (((s16) (temp_t2 - temp_t1) >= 0x191) && ((s16)gGPCurrentRaceRankByPlayerId[temp_v1] >= 6)) {
-            player->unk_0BC &= ~0x200000;
+            player->effect &= ~0x200000;
             player_speed(player);
             var_t5 = 4;
             var_at = &D_801634C0 + (playerId * 2);
@@ -824,22 +824,22 @@ void func_80007D04(s32 playerId, Player *player) {
                 break;
             }
             if (temp_t2 < temp_t1) {
-                player->unk_0BC |= 0x200000;
+                player->effect |= 0x200000;
                 player_speed(player);
                 *(&D_801634C0 + (playerId * 2)) = 1;
             } else {
                 temp_v0 = playerId * 2;
                 if (temp_t2 < (temp_t1 + var_v0 + 0x32)) {
-                    player->unk_0BC &= ~0x200000;
+                    player->effect &= ~0x200000;
                     player_speed(player);
                     *(&D_801634C0 + (playerId * 2)) = 3;
                 } else if (*(&D_801631E0 + temp_v0) == 0) {
-                    player->unk_0BC &= ~0x200000;
+                    player->effect &= ~0x200000;
                     sp1C = temp_v0;
                     player_speed(player);
                     *(&D_801634C0 + temp_v0) = 2;
                 } else {
-                    player->unk_0BC &= ~0x200000;
+                    player->effect &= ~0x200000;
                     sp1C = temp_v0;
                     func_80031F48(player, 1.0f);
                     var_t5 = -1;
@@ -849,7 +849,7 @@ void func_80007D04(s32 playerId, Player *player) {
         }
         *var_at = var_t5;
     } else {
-        player->unk_0BC |= 0x200000;
+        player->effect |= 0x200000;
         player_speed(player);
         *(&D_801634C0 + (playerId * 2)) = 3;
     }
@@ -991,7 +991,7 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
     s32 var_a1;
     u16 temp_v0_4;
 
-    temp_v1 = player->unk_0BC;
+    temp_v1 = player->effect;
     var_f12 = arg1;
     temp_f2 = player->unk_094;
     if (!(temp_v1 & 0x80) && !(temp_v1 & 0x40) && ((temp_v1 << 0xE) >= 0) && (temp_v0 = player->statusEffects, ((temp_v0 << 9) >= 0)) && ((temp_v0 << 7) >= 0) && !(temp_v0 & 2) && !(temp_v0 & 4)) {
@@ -1021,35 +1021,35 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
                 break;
             }
             if (temp_f2 < var_f0) {
-                player->unk_0BC = temp_v1 & 0xFFDFFFFF;
+                player->effect = temp_v1 & 0xFFDFFFFF;
                 player_speed(player);
                 return;
             }
             if (player->unk_000 & 0x800) {
                 if (temp_f2 < var_f12) {
-                    player->unk_0BC = temp_v1 & 0xFFDFFFFF;
+                    player->effect = temp_v1 & 0xFFDFFFFF;
                     player_speed(player);
                     return;
                 }
-                player->unk_0BC = temp_v1 & 0xFFDFFFFF;
+                player->effect = temp_v1 & 0xFFDFFFFF;
                 func_80031F48(player, 1.0f);
                 return;
             }
             if ((*(&D_801631E0 + temp_t5) == (u16) 1) && (*(&D_80163330 + temp_t5) != (u16) 1)) {
                 temp_v0_3 = arg0 * 4;
                 if (func_800088D8(var_f12, arg0, *(&D_80164392 + temp_v0_3), *(&D_8016440A + temp_v0_3), player) == 1) {
-                    player->unk_0BC |= 0x200000;
+                    player->effect |= 0x200000;
                     player_speed(player);
                     return;
                 }
-                player->unk_0BC &= 0xFFDFFFFF;
+                player->effect &= 0xFFDFFFFF;
                 func_80031F48(player, 1.0f);
                 return;
             }
             temp_v0_4 = *(&D_80163350 + temp_t5);
             switch (temp_v0_4) {                    /* switch 1; irregular */
             case 1:                                 /* switch 1 */
-                player->unk_0BC = temp_v1 & 0xFFDFFFFF;
+                player->effect = temp_v1 & 0xFFDFFFFF;
                 sp34 = temp_f2;
                 sp1C = temp_t5;
                 sp28 = 1;
@@ -1058,7 +1058,7 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
                 var_f12 = arg1;
                 break;
             case 3:                                 /* switch 1 */
-                player->unk_0BC = temp_v1 | 0x200000;
+                player->effect = temp_v1 | 0x200000;
                 sp34 = temp_f2;
                 sp1C = temp_t5;
                 sp28 = 1;
@@ -1088,15 +1088,15 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
                         return;
                     }
                     if (func_800088D8(var_f12, arg0, *(&D_80164392 + temp_v0_5), *(&D_8016440A + temp_v0_5), player) == 1) {
-                        player->unk_0BC |= 0x200000;
+                        player->effect |= 0x200000;
                         player_speed(player);
                         return;
                     }
-                    player->unk_0BC &= 0xFFDFFFFF;
+                    player->effect &= 0xFFDFFFFF;
                     func_80031F48(player, 1.0f);
                     return;
                 }
-                player->unk_0BC &= 0xFFDFFFFF;
+                player->effect &= 0xFFDFFFFF;
                 if (var_f12 > 1.0f) {
                     func_80031F48(player, 2.0f);
                     return;
@@ -1502,7 +1502,7 @@ void func_8000929C(s32 playerId, Player *player) {
         var_t0 = 0;
         if (temp_v0 == 0x000B) {
             D_801634EC = 0;
-            if ((player->unk_0BC & 0x200) != 0) {
+            if ((player->effect & 0x200) != 0) {
                 D_801634EC = 1;
             }
             if (gIsMirrorMode != 0) {
@@ -1612,7 +1612,7 @@ void func_800097E0(void) {
     func_8000EF20();
     D_8016337C++;
 
-    if (gCurrentCourseId == 20) {
+    if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
         for (i = 0; i < 7; i++) {
             func_8000DF8C(i);
         }
@@ -1660,14 +1660,14 @@ void func_800098FC(u8 arg0, Player *player) {
 
     temp_v1 = arg0 * 2;
     temp_a2 = temp_v1 + &D_80163398;
-    if ((*temp_a2 >= 0xB) && ((temp_v0 = player->unk_0BC, ((temp_v0 & 0x80) != 0)) || ((temp_v0 & 0x40) != 0) || (temp_v0 & 0x20000))) {
+    if ((*temp_a2 >= 0xB) && ((temp_v0 = player->effect, ((temp_v0 & 0x80) != 0)) || ((temp_v0 & 0x40) != 0) || (temp_v0 & 0x20000))) {
         sp1C = temp_v1;
         sp18 = temp_a2;
         func_800C92CC(arg0, 0x2900800A, temp_a2, player);
         *temp_a2 = 0;
     }
     temp_a2_2 = temp_v1 + &D_801633B0;
-    if ((*temp_a2_2 >= 0xB) && ((temp_v0_2 = player->statusEffects, ((temp_v0_2 << 9) < 0)) || ((temp_v0_2 << 7) < 0) || ((temp_v0_2 & 2) != 0) || ((temp_v0_2 & 4) != 0) || (player->unk_0BC & 0x04000000))) {
+    if ((*temp_a2_2 >= 0xB) && ((temp_v0_2 = player->statusEffects, ((temp_v0_2 << 9) < 0)) || ((temp_v0_2 << 7) < 0) || ((temp_v0_2 & 2) != 0) || ((temp_v0_2 & 4) != 0) || (player->effect & 0x04000000))) {
         sp18 = temp_a2_2;
         func_800C92CC(arg0, 0x2900800B, temp_a2_2, player);
         *temp_a2_2 = 0;
@@ -1964,7 +1964,7 @@ void func_80009B60(s32 playerId) {
                 break;
             }
             if (sp40->unk_000 & 0x800) {
-                sp40->unk_0BC &= 0xFFBFFFFF;
+                sp40->effect &= 0xFFBFFFFF;
                 sp40->unk_044 &= 0xFFFE;
             }
             func_8000929C(playerId, sp40);
@@ -1993,7 +1993,7 @@ void func_80009B60(s32 playerId) {
                 }
                 temp_a1 = sp34 + &D_801631E0;
                 *temp_a1 = 0;
-                if ((sp40->unk_0BC & 0x1000) && (gCurrentCourseId != 0x0014)) {
+                if ((sp40->effect & 0x1000) && (gCurrentCourseId != 0x0014)) {
                     *temp_a1 = 1;
                 }
                 temp_v0_6 = gCurrentCourseId;
@@ -2048,7 +2048,7 @@ block_63:
                 }
                 if (var_a0 == 1) {
                     *(&D_801630E8 + sp34) = 0;
-                    sp40->unk_0BC &= ~0x10;
+                    sp40->effect &= ~0x10;
                     if ((D_80163378 & 1) != sp30) {
                         func_8003680C(sp40, 0);
                         func_80008424(playerId, *(&D_80163210 + sp38), sp40);
@@ -2075,7 +2075,7 @@ block_63:
                     func_800131DC(playerId);
                     func_8000D3B8(playerId);
                     func_8000D438(playerId, D_801630E0);
-                    temp_v0_10 = sp40->unk_0BC;
+                    temp_v0_10 = sp40->effect;
                     temp_f0 = D_80162FA0.unk0 - sp40->pos[0];
                     var_t0_2 = var_t0;
                     temp_f2 = D_80162FA0.unk8 - sp40->pos[2];
@@ -2104,7 +2104,7 @@ block_63:
                 sp2C = temp_t8;
                 var_v0 = *temp_t8;
                 if ((var_v0 == (s16) 1U) || (var_v0 == -1)) {
-                    sp40->unk_0BC |= 0x10;
+                    sp40->effect |= 0x10;
                     var_v0 = (s16) *sp2C;
                 }
                 if (var_v0 != 0) {
@@ -2137,13 +2137,13 @@ block_63:
                     case -1:                        /* switch 2 */
                         if (var_v1 >= 6) {
                             *sp2C = 0;
-                            sp40->unk_0BC &= ~0x10;
+                            sp40->effect &= ~0x10;
                         }
                         break;
                     case 1:                         /* switch 2 */
                         if (var_v1 < -5) {
                             *sp2C = 0;
-                            sp40->unk_0BC &= ~0x10;
+                            sp40->effect &= ~0x10;
                         }
                         break;
                     }
@@ -2244,9 +2244,9 @@ block_63:
                 }
                 if ((*(&D_801632E8 + sp34) == 2) && ((temp_f0_4 = *temp_t0_2, (temp_f0_4 > 0.9f)) || (temp_f0_4 < -0.9f))) {
                     *sp2C = 0;
-                    sp40->unk_0BC &= ~0x10;
+                    sp40->effect &= ~0x10;
                 }
-                temp_v0_18 = sp40->unk_0BC;
+                temp_v0_18 = sp40->effect;
                 if (temp_v0_18 & 2) {
                     temp_v0_19 = (s16) *sp2C;
                     var_a1_2 = -0x0035;
@@ -2273,7 +2273,7 @@ block_63:
                 sp20 = temp_t0_2;
                 func_8003680C((bitwise Player *) 182.0f, (s16) sp40, (Player *) var_a1_2, var_a2, sp40);
                 *var_v0_2 = var_a1_2;
-                if (((bitwise s32) *sp28 == 1) || (temp_v0_20 = (s16) *sp2C, (temp_v0_20 == 1)) || (temp_v0_20 == -1) || (sp40->unk_0BC & 0x1000000C)) {
+                if (((bitwise s32) *sp28 == 1) || (temp_v0_20 = (s16) *sp2C, (temp_v0_20 == 1)) || (temp_v0_20 == -1) || (sp40->effect & 0x1000000C)) {
                     sp20 = temp_t0_2;
                     var_v1_3 = sp38 + &D_80163028;
                     *var_v1_3 = *segmented_to_virtual_dupe_2((gCurrentCourseId * 0x10) + (gCCSelection * 4) + &D_0D009418);
@@ -2296,7 +2296,7 @@ block_63:
                     *var_v1_3 = 0x40555555;
                 }
                 D_8016320C = *var_v1_3;
-                sp40->unk_0BC &= 0xFFDFFFFF;
+                sp40->effect &= 0xFFDFFFFF;
                 *(&D_80163210 + sp38) = D_8016320C;
                 func_800131DC(playerId);
                 func_80008424(playerId, D_8016320C, sp40);
@@ -2373,7 +2373,7 @@ void func_8000B140(s32 playerId) {
     u16 temp_v0_2;
 
     temp_v1 = &gPlayers[playerId];
-    temp_a1 = temp_v1->unk_0BC;
+    temp_a1 = temp_v1->effect;
     if (((temp_a1 & 0x10) == 0) && (temp_t5 = playerId * 2, temp_v0 = *(&D_801630E8 + temp_t5), sp5C = temp_t5, (temp_v0 != 1)) && (temp_v0 != -1) && (temp_t8 = &D_80163068[playerId], sp54 = temp_t8, sp58 = playerId * 4, temp_f0 = *temp_t8, !(temp_f0 < -1.0f)) && !(temp_f0 > 1.0f) && (temp_v0_2 = temp_v1->characterId, (temp_v0_2 != 5)) && (temp_v0_2 != 7) && (temp_v0_2 != 4) && ((temp_a1 & 0x200) == 0)) {
         var_t1 = (s16) gNearestWaypointByPlayerId[playerId];
         var_a1 = &sp9C;
@@ -3649,7 +3649,7 @@ void func_8000DF8C(s32 arg0) {
                     temp_f12 = var_f24 - gPlayerFour->pos[2];
                     if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12)) < 25.0f) {
                         sp7E = 4;
-                        gPlayerFour->statusEffects |= 0x400000;
+                        gPlayerFour->statusEffects |= REVERSE_EFFECT;
                         gPlayerFour->unk_000 &= ~0x2000;
                         var_s1 = 0;
                         sp4C = 4;
@@ -3662,7 +3662,7 @@ void func_8000DF8C(s32 arg0) {
                     var_v0 = gPlayers;
                     do {
                         var_a0 += 1;
-                        if (!(var_v0->unk_0BC & 0x80000000)) {
+                        if (!(var_v0->effect & 0x80000000)) {
                             temp_f0_2 = var_f22 - var_v0->pos[0];
                             temp_f2_2 = var_f20 - var_v0->pos[1];
                             temp_f12_2 = var_f24 - var_v0->pos[2];
@@ -3670,9 +3670,9 @@ void func_8000DF8C(s32 arg0) {
                                 sp7E = 4;
                                 var_s1 = 0;
                                 if (gCurrentCourseId == 5) {
-                                    var_v0->statusEffects |= 0x01000000;
+                                    var_v0->statusEffects |= HIT_BY_ITEM_EFFECT;
                                 } else {
-                                    var_v0->statusEffects |= 0x400000;
+                                    var_v0->statusEffects |= REVERSE_EFFECT;
                                 }
                                 var_v1 = D_8018EDF3;
                             }
@@ -5421,7 +5421,7 @@ void func_80011B14(s32 playerId, Player *player) {
         case 2:
             sp1C = temp_v1;
             func_8002AA50(player, temp_a2, temp_a3);
-            player->unk_0BC &= ~0x10;
+            player->effect &= ~0x10;
             *(&D_801630E8 + temp_v1) = 0;
             return;
         case 3:
@@ -5449,7 +5449,7 @@ void func_80011B14(s32 playerId, Player *player) {
             *(&D_801633F8 + temp_v1) = 1;
             *(&D_801631E0 + temp_v1) = 0;
             temp_v0 = &gPlayers[playerId];
-            temp_v0->unk_0BC &= ~0x1000;
+            temp_v0->effect &= ~0x1000;
             return;
         case 10:
             *(&D_801633F8 + temp_v1) = 0;
@@ -5570,7 +5570,7 @@ void func_80011EC0(s32 arg0, Player *player, s32 arg2, s32 arg3) {
                 if ((temp_f0 > -0.8) && (temp_f0 < 0.5)) {
                     sp1C = temp_a2;
                     func_8002AA50(player, temp_a2, arg2);
-                    player->unk_0BC |= 0x10;
+                    player->effect |= 0x10;
                     *temp_a2 = 1;
                     return;
                 }
@@ -5584,7 +5584,7 @@ void func_80011EC0(s32 arg0, Player *player, s32 arg2, s32 arg3) {
                 if ((temp_f0_2 > -0.5) && (temp_f0_2 < 0.8)) {
                     sp1C = temp_a2;
                     func_8002AA50(player, temp_a2, arg2);
-                    player->unk_0BC |= 0x10;
+                    player->effect |= 0x10;
                     *temp_a2 = -1;
                     return;
                 }
@@ -5973,7 +5973,7 @@ void func_80012DC0(s32 playerId, Player *player) {
     s32 passengerCarIndex;
 
     if (D_801631E0[playerId] != 1) {
-        if (!(player->unk_0BC & 0x01000000)) {
+        if (!(player->effect & 0x01000000)) {
             playerPosX = player->pos[0];
             playerPosZ = player->pos[2];
             for (trainIndex = 0; trainIndex < NUM_TRAINS; trainIndex++) {
@@ -5983,12 +5983,12 @@ void func_80012DC0(s32 playerId, Player *player) {
                 if ((x_dist > -100.0) && (x_dist < 100.0)) {
                     if ((z_dist > -100.0) && (z_dist < 100.0)) {
                         if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                            player->statusEffects |= 0x400000;
+                            player->statusEffects |= REVERSE_EFFECT;
                         }
                         trainCar = &sTrains[trainIndex].tender;
                         if (trainCar->isActive == 1) {
                             if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                                player->statusEffects |= 0x400000;
+                                player->statusEffects |= REVERSE_EFFECT;
                             }
                         }
                     }
@@ -6002,7 +6002,7 @@ void func_80012DC0(s32 playerId, Player *player) {
                         if ((x_dist > -100.0) && (x_dist < 100.0)) {
                             if ((z_dist > -100.0) && (z_dist < 100.0)) {
                                 if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                                    player->statusEffects |= 0x400000;
+                                    player->statusEffects |= REVERSE_EFFECT;
                                 }
                             }
                         }
@@ -6260,7 +6260,7 @@ void func_80013854(Player *player) {
     f32 playerZ;
     f32 playerY;
 
-    if (!((player->unk_0BC & 0x01000000)) && (!(player->unk_0BC & 0x02000000))) {
+    if (!((player->effect & 0x01000000)) && (!(player->effect & 0x02000000))) {
         playerX = player->pos[0];
         playerY = player->pos[1];
         playerZ = player->pos[2];
@@ -6495,7 +6495,7 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
 
     temp_s7 = playerId * 2;
     var_s0 = vehicle;
-    if (((*(&D_801631E0 + temp_s7) != 1) || ((temp_v0 = player->unk_000, ((temp_v0 & 0x4000) != 0)) && !(temp_v0 & 0x1000))) && ((player->unk_0BC << 7) >= 0)) {
+    if (((*(&D_801631E0 + temp_s7) != 1) || ((temp_v0 = player->unk_000, ((temp_v0 & 0x4000) != 0)) && !(temp_v0 & 0x1000))) && ((player->effect << 7) >= 0)) {
         spC4 = player->pos[0];
         var_fp = 0;
         spC0 = player->pos[1];
@@ -6512,7 +6512,7 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
                     if ((temp_f0 > -20.0) && (temp_f0 < 20.0)) {
                         temp_f0_2 = (f64) temp_f24;
                         if ((temp_f0_2 > -100.0) && (temp_f0_2 < 100.0) && (func_80006018(temp_f12, temp_f14, var_s0->velocity[0], var_s0->velocity[2], arg3, arg4, spC4, spBC) == (s32) 1U)) {
-                            player->statusEffects |= 0x400000;
+                            player->statusEffects |= REVERSE_EFFECT;
                         }
                     }
                 }
@@ -7115,7 +7115,7 @@ void func_80015390(Camera *camera, UNUSED Player *player, UNUSED s32 arg2) {
     } else {
         var_a2 = 0xA0 + (temp_s1->unk_078 / 16);
     }
-    if (!((temp_s1->unk_0BC & 0x80) || (temp_s1->unk_0BC & 0x40))) {
+    if (!((temp_s1->effect & 0x80) || (temp_s1->effect & 0x40))) {
         func_800224F0(&camera->unk_2C, temp_s1->unk_02C[1], var_a2);
     }
     func_8001D794(temp_s1, camera, sp64, &sp84, &sp80, &sp7C, camera->unk_2C);
@@ -9521,7 +9521,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8001A220.s")
 #endif
 
 s32 func_8001A310(s32 arg0, s32 arg1) {
-    if ((gCurrentCourseId == 2) && (arg1 != 0) && (arg0 >= 0xE7) && (arg0 < 0x1C2)) {
+    if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) && (arg1 != 0) && (arg0 >= 0xE7) && (arg0 < 0x1C2)) {
         arg1 = 0;
     }
     return arg1;
@@ -9586,7 +9586,7 @@ void func_8001A450(s32 playerId, s32 arg1, s32 arg2) {
     s16 temp_v0;
     s16 temp_v1;
 
-    if (!(*(&gPlayers->unk_0BC + (playerId * 0xDD8)) & 0x1000000C) && ((temp_a2 = (arg1 * 2) + &D_80164680, temp_v1 = *temp_a2, sp18 = temp_a2, sp24 = (s32) temp_v1, temp_v0 = func_8001A310(gNearestWaypointByCameraId[arg1], (s32) (temp_v1 + 1) % 10, temp_a2, playerId), (temp_v0 != temp_v1)) || (arg2 != playerId))) {
+    if (!(*(&gPlayers->effect + (playerId * 0xDD8)) & 0x1000000C) && ((temp_a2 = (arg1 * 2) + &D_80164680, temp_v1 = *temp_a2, sp18 = temp_a2, sp24 = (s32) temp_v1, temp_v0 = func_8001A310(gNearestWaypointByCameraId[arg1], (s32) (temp_v1 + 1) % 10, temp_a2, playerId), (temp_v0 != temp_v1)) || (arg2 != playerId))) {
         *temp_a2 = temp_v0;
         func_80019890(arg2, arg1, temp_a2, playerId);
     }
@@ -10309,7 +10309,7 @@ block_146:
             temp_s0->laps += 1;
             break;
         case 26:                                    /* switch 1 */
-            if (!(sp2C->unk_0BC & 0x200)) {
+            if (!(sp2C->effect & 0x200)) {
                 temp_s0->unk0 = 0;
             }
             temp_s0->timer = 0;
@@ -10321,7 +10321,7 @@ block_146:
             temp_s0->laps += 1;
             break;
         case 28:                                    /* switch 1 */
-            if (!(sp2C->unk_0BC & 0x80000000)) {
+            if (!(sp2C->effect & 0x80000000)) {
                 temp_s0->unk0 = 0;
             }
             temp_s0->timer = 0;
@@ -10364,7 +10364,7 @@ block_146:
         if (temp_s0->timer < 0x2710) {
             temp_s0->timer += 1;
         }
-        if (sp2C->unk_0BC & 0x80002200) {
+        if (sp2C->effect & 0x80002200) {
             temp_s0->timer = 0;
         }
     }
@@ -10514,12 +10514,12 @@ loop_8:
                         D_80163480 = 0;
                     }
                 } else if (D_8016347E == 0) {
-                    if ((temp_s0->unk_0BC & 0x01000000) == 0) {
+                    if ((temp_s0->effect & 0x01000000) == 0) {
                         temp_s0->unk_000 = temp_v1 | 0x2000;
                     }
                     D_8016347E = 1;
                     D_80163484 = 0;
-                } else if ((temp_s0->unk_0BC & 0x01000000) == 0) {
+                } else if ((temp_s0->effect & 0x01000000) == 0) {
                     temp_s0->unk_000 = temp_v1 | 0x2000;
                 }
             }

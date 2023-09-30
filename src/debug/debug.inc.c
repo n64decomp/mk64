@@ -69,8 +69,8 @@ variableWatchAttributes gMainVariableWatchList[] = {
 	},
 	{
 		"Accel Offset C4: ",
-		&gPlayers[0].slopAccel,
-		sizeof(gPlayerOne->slopAccel),
+		&gPlayers[0].slopeAccel,
+		sizeof(gPlayerOne->slopeAccel),
 		DISPLAY_SIGNED_NUMBER,
 		0, 0
 	},

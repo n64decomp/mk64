@@ -295,10 +295,10 @@ typedef struct {
     /* 0x00B4 */ u16 unk_0B4;
     /* 0x00B6 */ u16 unk_0B6;
     /* 0x00B8 */ f32 unk_0B8;
-    /* 0x00BC */ u32 unk_0BC;
+    /* 0x00BC */ u32 effect;
     /* 0x00C0 */ s16 unk_0C0;
     /* 0x00C2 */ s16 unk_0C2;
-    /* 0x00C4 */ s16 slopAccel;
+    /* 0x00C4 */ s16 slopeAccel;
     /* 0x00C6 */ s16 unk_0C6;
     /* 0x00C8 */ s16 unk_0C8;
     /* 0x00CA */ s16 unk_0CA;
@@ -338,7 +338,7 @@ typedef struct {
     /* 0x021C */ f32 unk_21C;
     /* 0x0220 */ s16 nearestWaypointId; // ??
     /* 0x0222 */ s16 unk_222;
-    /* 0x0224 */ f32 unk_224;
+    /* 0x0224 */ f32 size;
     /* 0x0228 */ s16 unk_228;
     /* 0x022A */ s16 unk_22A;
     /* 0x022C */ f32 unk_22C;

@@ -431,7 +431,7 @@ void func_800729EC(s32 arg0) {
     D_8018D2BC = 1;
     D_8018D2A4 = 1;
 
-    if (gCurrentCourseId != 4) {
+    if (gCurrentCourseId != COURSE_YOSHI_VALLEY) {
         for (i = 0; i < D_8018EDF3; i++) {
                 D_8018CA70[i].unk_81 = temp_v1;
         }
@@ -1348,7 +1348,7 @@ void func_80074924(s32 objectIndex) {
     temp_s0->sizeScaling = 0.15f;
     temp_v0 = gCurrentCourseId;
     switch (temp_v0) {                              /* irregular */
-    case 0:
+    case COURSE_MARIO_RACEWAY:
         sp2C = random_int(0x00C8U);
         sp28 = random_int(D_80165748);
         sp24 = random_int(0x0096U);
@@ -1357,7 +1357,7 @@ void func_80074924(s32 objectIndex) {
         temp_s0->unk_010[1] = (f32) (D_80165720 + sp28);
         temp_s0->unk_010[2] = (f32) (((f64) D_80165728 + 200.0) - (f64) sp24);
         break;
-    case 7:
+    case COURSE_ROYAL_RACEWAY:
         sp2C = random_int(0x0168U);
         sp28 = random_int(D_80165748);
         sp24 = random_int(0x00B4U);
@@ -1366,7 +1366,7 @@ void func_80074924(s32 objectIndex) {
         temp_s0->unk_010[1] = (f32) (D_80165720 + sp28);
         temp_s0->unk_010[2] = (f32) (((f64) D_80165728 + 200.0) - (f64) sp24);
         break;
-    case 8:
+    case COURSE_LUIGI_RACEWAY:
         sp2C = random_int(0x012CU);
         sp28 = random_int(D_80165748);
         sp24 = random_int(0x0096U);
@@ -2980,40 +2980,40 @@ void func_80078C70(s32 arg0) {
         D_8018D1E8 = 1.7578125 / D_8018D200;
         D_8018D218 = 0xA0;
         switch (gCurrentCourseId) {                          /* switch 2 */
-            case 0:                                     /* switch 2 */
+            case COURSE_MARIO_RACEWAY:                                     /* switch 2 */
                 func_800789AC(sp1C, camera, D_800E6A38);
                 break;
-            case 4:                                     /* switch 2 */
+            case COURSE_YOSHI_VALLEY:                                     /* switch 2 */
                 func_800789AC(sp1C, camera, D_800E6AA8);
                 break;
-            case 5:                                     /* switch 2 */
+            case COURSE_FRAPPE_SNOWLAND:                                     /* switch 2 */
                 func_80078170(sp1C, camera);
                 break;
-            case 6:                                     /* switch 2 */
+            case COURSE_KOOPA_BEACH:                                     /* switch 2 */
                 func_800789AC(sp1C, camera, D_800E6B00);
                 break;
-            case 7:                                     /* switch 2 */
+            case COURSE_ROYAL_RACEWAY:                                     /* switch 2 */
                 func_800789AC(sp1C, camera, D_800E6B38);
                 break;
-            case 8:                                     /* switch 2 */
+            case COURSE_LUIGI_RACEWAY:                                     /* switch 2 */
                 func_800789AC(sp1C, camera, D_800E6A38);
                 break;
-            case 9:                                     /* switch 2 */
+            case COURSE_MOO_MOO_FARM:                                     /* switch 2 */
                 func_800789AC(sp1C, camera, D_800E6AA8);
                 break;
-            case 10:                                    /* switch 2 */
+            case COURSE_TOADS_TURNPIKE:                                    /* switch 2 */
                 func_80078A44(sp1C, camera, D_800E6C80);
                 break;
-            case 11:                                    /* switch 2 */
+            case COURSE_KALAMARI_DESERT:                                    /* switch 2 */
                 func_800789AC(sp1C, camera, D_800E6C10);
                 break;
-            case 12:                                    /* switch 2 */
+            case COURSE_SHERBET_LAND:                                    /* switch 2 */
                 func_800789AC(sp1C, camera, D_800E6BA8);
                 break;
-            case 13:                                    /* switch 2 */
+            case COURSE_RAINBOW_ROAD:                                    /* switch 2 */
                 func_80078A44(sp1C, camera, D_800E6C80);
                 break;
-            case 14:                                    /* switch 2 */
+            case COURSE_WARIO_STADIUM:                                    /* switch 2 */
                 func_80078A44(sp1C, camera, D_800E6DE0);
                 break;
         }
@@ -3091,13 +3091,13 @@ void func_800791F0(s32 objectIndex, s32 playerId) {
 
     if ((D_80165C18[objectIndex].unk_0D8 != 3) && (D_80165C18[objectIndex].unk_0D8 != 7)) {
         func_800722CC(objectIndex, 1);
-        if (gCurrentCourseId == 0x000C) {
+        if (gCurrentCourseId == COURSE_SHERBET_LAND) {
             temp_v1->unk_0CA &= 0xFFEF;
         }
     } else {
         // ?????
     }
-    if (gCurrentCourseId == 0x000C) {
+    if (gCurrentCourseId == COURSE_SHERBET_LAND) {
         func_800722CC(objectIndex, 0x00000010);
         temp_v1->unk_0CA &= 0xFFDF;
     }
@@ -3272,7 +3272,7 @@ void func_80079860(s32 playerId) {
         (
             ((func_802ABDF4(player->unk_110.unk3A) != 0) && (player->unk_110.unk3C[2] <= 3.0f)) ||
             (player->unk_0CA & 1) ||
-            ((player->unk_0F8 == 0x00FD) && !(player->unk_0BC & 8))
+            ((player->unk_0F8 == 0x00FD) && !(player->effect & 8))
         )
         ) {
         func_80090778(player);
@@ -3608,7 +3608,7 @@ void func_8007A4D4(s32 objectIndex, s32 playerId) {
     }
     switch (D_80165C18[objectIndex].unk_0D6) {                              /* switch 1; irregular */
         case 1:                                         /* switch 1 */
-            if ((D_80165C18[objectIndex].unk_0A6 >= 3) && (!(sp2C->unk_0BC & 0x400000))) {
+            if ((D_80165C18[objectIndex].unk_0A6 >= 3) && (!(sp2C->effect & 0x400000))) {
                 func_80086F10(objectIndex, 6, D_800E69F4);
                 D_80165C18[objectIndex].unk_0D6 = 2;
                 D_80165C18[objectIndex].unk_04C = 0x00000050;
@@ -3655,7 +3655,7 @@ void func_8007A88C(s32 playerId) {
     objectIndex = D_80183DB8[playerId];
     player = &gPlayerOne[playerId];
 
-    if ((D_80165C18[objectIndex].unk_0A6 == 0) && (player->unk_0BC & 0x400000)) {
+    if ((D_80165C18[objectIndex].unk_0A6 == 0) && (player->effect & 0x400000)) {
         func_800790E4(playerId);
     }
 }
@@ -6377,9 +6377,9 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
     if (func_8007223C(objectIndex, 0x00000200) != 0) {
         if (!(temp_s0->statusEffects & 0x100)) {
             temp_f0 = func_80088F54(objectIndex, temp_s0);
-            if ((temp_f0 <= 9.0) && !(temp_s0->unk_0BC & 0x04000000) && (func_80088D18(objectIndex, temp_s0) != 0)) {
+            if ((temp_f0 <= 9.0) && !(temp_s0->effect & 0x04000000) && (func_80088D18(objectIndex, temp_s0) != 0)) {
                 if ((temp_s0->unk_000 & 0x8000) && !(temp_s0->unk_000 & 0x100)) {
-                    if (!(temp_s0->unk_0BC & 0x200)) {
+                    if (!(temp_s0->effect & 0x200)) {
                         func_80089474(objectIndex, playerId, 1.4f, 1.1f, 0x1900A04CU);
                     } else if (func_80072354(objectIndex, 0x00000040) != 0) {
                         if (temp_s0->unk_000 & 0x1000) {
@@ -6570,7 +6570,7 @@ void func_80081210(void) {
         player->unk_046 &= ~0x0006;
         for (var_s2_3 = 0; var_s2_3 < D_80165750; var_s2_3++) {
             var_s2 = D_80183EA0[var_s2_3];
-            if (!(player->unk_0BC & 0x80000000)) {
+            if (!(player->effect & 0x80000000)) {
                 func_80080B28(var_s2, var_s4);
             }
             if (func_8007223C(var_s2, 0x00020000) != 0) {
@@ -6800,14 +6800,14 @@ void func_80081D34(s32 objectIndex) {
     var_s1 = gPlayerOne;
     var_s4 = camera1;
     for (var_s2 = 0; var_s2 < D_8018D158; var_s2++, var_s1++, var_s4++) {
-        if ((func_8007223C(objectIndex, 0x00000200) != 0) && !(var_s1->unk_0BC & 0x80000000) && (func_80088DA4(objectIndex, var_s1) != 0)) {
+        if ((func_8007223C(objectIndex, 0x00000200) != 0) && !(var_s1->effect & 0x80000000) && (func_80088DA4(objectIndex, var_s1) != 0)) {
             if ((var_s1->unk_000 & 0x8000) && !(var_s1->unk_000 & 0x100)) {
                 var_s5 = 1;
                 temp_s0 = &D_80165C18[objectIndex];
                 if (func_8007223C(objectIndex, 0x04000000) != 0) {
                     func_80072180();
                 }
-                if (var_s1->unk_0BC & 0x200) {
+                if (var_s1->effect & 0x200) {
                     func_800C9060(var_s2, 0x1900A046U);
                 } else {
                     var_s1->statusEffects |= 2;

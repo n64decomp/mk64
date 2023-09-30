@@ -1115,29 +1115,29 @@ void func_8005A14C(s32 playerId) {
     objectIndex = D_8018CE10[playerId].objectIndex;
     lapCount = gLapCountByPlayerId[playerId];
     if (player->unk_000 & 0x8000) {
-        if (player->unk_0BC & 0x204C0) {
+        if (player->effect & 0x204C0) {
             D_80165C18[objectIndex].unk_0BE[2] += 0x1000;
         } else {
             if (D_80165C18[objectIndex].unk_0BE[2] != 0) {
                 D_80165C18[objectIndex].unk_0BE[2] += 0x1000;
             }
         }
-        if (player->unk_0BC & 0x40000000) {
+        if (player->effect & LIGHTNING_EFFECT) {
             f32_step_towards(&D_80165C18[objectIndex].sizeScaling, 0.3f, 0.02f);
         } else {
             f32_step_towards(&D_80165C18[objectIndex].sizeScaling, 0.6f, 0.02f);
         }
-        if (player->unk_0BC & 0x04000000) {
+        if (player->effect & 0x04000000) {
             u16_step_up_towards(&D_80165C18[objectIndex].unk_0BE[0], 0x0C00U, 0x0100U);
         } else {
             u16_step_down_towards(&D_80165C18[objectIndex].unk_0BE[0], 0, 0x00000100);
         }
-        if (player->unk_0BC & 0x03000000) {
+        if (player->effect & 0x03000000) {
             func_80087D24(objectIndex, 6.0f, 1.5f, 0.0f);
         } else {
             f32_step_towards(&D_80165C18[objectIndex].unk_028[1], 0.0f, 1.0f);
         }
-        if ((player->unk_000 & 0x100) || (player->unk_0BC & 0x80000000)) {
+        if ((player->unk_000 & 0x100) || (player->effect & 0x80000000)) {
             D_80165C18[objectIndex].unk_0A0 = 0x0050;
         } else {
             D_80165C18[objectIndex].unk_0A0 = 0x00FF;
@@ -1244,7 +1244,7 @@ void func_8005A3C0(void) {
 }
 
 void func_8005A71C(void) {
-    if (gCurrentCourseId == 2) {
+    if (gCurrentCourseId == COURSE_BOWSER_CASTLE) {
         func_80081210();
     }
 }
@@ -2762,46 +2762,46 @@ void func_8005DAF4(Player *player, s16 arg1, s32 arg2, s32 arg3) {
             if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
-                if ((gCurrentCourseId == 1) || (gCurrentCourseId == 7)) {
+                if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x000B) {
+                if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 9) {
+                if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x000E) {
+                if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 4) {
-                    func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
+                if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 10, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x0012) {
-                    func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
+                if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 11, 0, 0x0080);
                 }
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
         } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
             func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
             func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
-            if ((gCurrentCourseId == 1) || (gCurrentCourseId == 7)) {
+            if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
                 func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
             }
-            if (gCurrentCourseId == 0x000B) {
+            if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
                 func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
             }
-            if (gCurrentCourseId == 9) {
+            if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
                 func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
             }
-            if (gCurrentCourseId == 0x000E) {
+            if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
                 func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
             }
-            if (gCurrentCourseId == 4) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
+            if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+                func_8005DAD8(&player->unk_258[10 + arg1], 10, 0, 0x0080);
             }
-            if (gCurrentCourseId == 0x0012) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
+            if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+                func_8005DAD8(&player->unk_258[10 + arg1], 11, 0, 0x0080);
             }
             player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
         }
@@ -3000,44 +3000,44 @@ void func_8005ED48(Player *player, s16 arg1, s32 arg2, s32 arg3) {
         if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
             func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_t2, var_t3);
             func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            if ((gCurrentCourseId == 1) || (gCurrentCourseId == 7)) {
+            if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
                 func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
             }
-            if (gCurrentCourseId == 0x000B) {
+            if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
                 func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
             }
-            if (gCurrentCourseId == 9) {
+            if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
                 func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
             }
-            if (gCurrentCourseId == 0x000E) {
+            if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
                 func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
             }
-            if (gCurrentCourseId == 4) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
+            if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+                func_8005DAD8(&player->unk_258[10 + arg1], 10, 0, 0x0080);
             }
-            if (gCurrentCourseId == 0x0012) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
+            if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+                func_8005DAD8(&player->unk_258[10 + arg1], 11, 0, 0x0080);
             }
             player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
         } else if (player->unk_258[10 + arg2].unk_01E > 0) {
             func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_t2, var_t3);
             func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            if ((gCurrentCourseId == 1) || (gCurrentCourseId == 7)) {
+            if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
                 func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
             }
-            if (gCurrentCourseId == 0x000B) {
+            if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
                 func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
             }
-            if (gCurrentCourseId == 9) {
+            if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
                 func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
             }
-            if (gCurrentCourseId == 0x000E) {
+            if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
                 func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
             }
-            if (gCurrentCourseId == 4) {
+            if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
                 func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
             }
-            if (gCurrentCourseId == 0x0012) {
+            if (gCurrentCourseId == COURSE_DK_JUNGLE) {
                 func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
             }
             player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
@@ -3160,7 +3160,7 @@ void func_8005F90C(Player *player, s16 arg1, s32 arg2, s32 arg3) {
     f32 var_f12;
 
     var_t1 = 0;
-    if ((player->unk_0BC & 0x80) == 0x80) {
+    if ((player->effect & 0x80) == 0x80) {
         var_f0 = player->pos[0];
         var_f2 = player->pos[1] - player->boundingBoxSize;
         var_f12 = player->pos[2];
@@ -3363,7 +3363,7 @@ void func_80060504(Player *player, s16 arg1, s32 arg2, s32 arg3) {
     player->unk_258[arg1].unk_024 = 0.0f;
     if ((player->unk_044 & 0x20) == 0x20) {
         player->unk_258[arg1].unk_040 = 0;
-        if ((player->unk_0BC & 0x2000) == 0x2000) {
+        if ((player->effect & 0x2000) == 0x2000) {
             func_8005D800(&player->unk_258[arg1], 0x00FFFF00, 0x0080);
             player->unk_258[arg1].unk_038 = 1;
         } else {
@@ -3372,7 +3372,7 @@ void func_80060504(Player *player, s16 arg1, s32 arg2, s32 arg3) {
         }
     } else {
         player->unk_258[arg1].unk_040 = 1;
-        if ((player->unk_0BC & 0x2000) == 0x2000) {
+        if ((player->effect & 0x2000) == 0x2000) {
             func_8005D800(&player->unk_258[arg1], 0x00FFFF00, 0x0080);
             player->unk_258[arg1].unk_038 = 1;
         } else {
@@ -3405,13 +3405,13 @@ void func_800608E0(Player *player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8
         var_f0 = 0.0f;
     }
     sp4C = (D_801652A0[arg3] - player->pos[1]) - 3.0f;
-    if ((player->unk_0DE & 1) && (gCurrentCourseId != 6)) {
+    if ((player->unk_0DE & 1) && (gCurrentCourseId != COURSE_KOOPA_BEACH)) {
         var_f0 = 2.5f;
         sp4C = (f32) ((f64) (D_801652A0[arg3] - player->pos[1]) + 0.1);
     }
     func_8005D794(player, &player->unk_258[arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
     func_8005D7D8(&player->unk_258[arg1], 3, var_f0);
-    if ((gCurrentCourseId == 2) || (gCurrentCourseId == 0x0013)) {
+    if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) || (gCurrentCourseId == COURSE_BIG_DONUT)) {
         func_8005D800(&player->unk_258[arg1], 0, 0x00AF);
     } else {
         func_8005D800(&player->unk_258[arg1], 0x00FFFFFF, 0x00CF);
@@ -3423,7 +3423,7 @@ void func_800608E0(Player *player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8
 }
 
 void func_80060B14(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
-    if ((gCurrentCourseId != 0x0010) && (gCurrentCourseId != 0x000D)) {
+    if ((gCurrentCourseId != COURSE_SKYSCRAPER) && (gCurrentCourseId != COURSE_RAINBOW_ROAD)) {
         if ((arg1 == 0) && ((player->unk_258[arg2].unk_01E > 0) || (player->unk_258[arg2].unk_01C == 0))) {
             func_800608E0(player, arg1, arg2, arg3, arg4);
         } else if (player->unk_258[arg2].unk_01E > 0) {
@@ -3596,7 +3596,7 @@ void func_80061754(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3, U
     sp48 = random_int(2U);
     func_8005D794(player, &player->unk_258[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
     func_8005D7D8(&player->unk_258[0x1E + arg1], 6, 1.0f);
-    if ((player->unk_0BC & 0x02000000) || ((player->unk_0BC) & 0x01000000) || ((player->unk_0BC) & 0x400) || ((player->unk_0BC) & 0x80000000)) {
+    if ((player->effect & 0x02000000) || ((player->effect) & 0x01000000) || ((player->effect) & 0x400) || ((player->effect) & 0x80000000)) {
         func_8005D800(&player->unk_258[0x1E + arg1], 0x00FFFFFF, 0x00A0);
         player->unk_258[0x1E + arg1].unk_038 -= temp_s1;
         player->unk_258[0x1E + arg1].unk_03A -= temp_s1;
@@ -4014,7 +4014,7 @@ void func_80062C74(Player *player, s16 arg1, s32 arg2, s32 arg3) {
     } else {
         var_f6 = -((player->unk_098 / 6000.0f) + 0.1);
     }
-    if (((player->unk_0BC & 0x2000) == 0x2000) && (player->unk_258[arg1].unk_01E >= 6)) {
+    if (((player->effect & 0x2000) == 0x2000) && (player->unk_258[arg1].unk_01E >= 6)) {
         player->unk_258[arg1].unk_00C = player->unk_258[arg1].unk_00C + 0.06;
     }
     player->unk_258[arg1].unk_010++;
@@ -4122,7 +4122,7 @@ void func_80063408(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     ++player->unk_258[10 + arg1].unk_01E;
     player->unk_258[10 + arg1].unk_000[1] += 1.0f;
 
-    if (((player->unk_0BC & 0x80) != 0) || ((player->unk_0BC & 0x40) != 0)) {
+    if (((player->effect & 0x80) != 0) || ((player->effect & 0x40) != 0)) {
         player->unk_258[10 + arg1].unk_01C = 0;
         player->unk_258[10 + arg1].unk_01E = 0;
     }
@@ -4149,7 +4149,7 @@ void func_800635D4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     f32 sp3C;
 
     if (player->unk_258[10 + arg1].unk_010 == 1) {
-        if ((player->unk_0BC & 0x40000000)) {
+        if ((player->effect & LIGHTNING_EFFECT)) {
             func_80062B18(&sp44, &sp40, &sp3C, -2.0f, 0.0f, (-player->unk_258[10 + arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 16, -player->unk_258[10 + arg1].unk_020, 2 * -player->unk_206);
             player->unk_258[10 + arg1].unk_000[0] = player->boundingBoxCorners[2].cornerPos[0] + sp44;
             player->unk_258[10 + arg1].unk_000[2] = player->boundingBoxCorners[2].cornerPos[2] + sp3C;
@@ -4157,7 +4157,7 @@ void func_800635D4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
             player->unk_258[10 + arg1].unk_000[2] = player->boundingBoxCorners[2].cornerPos[2] + ((-player->unk_258[10 + arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 16) * coss(player->unk_258[10 + arg1].unk_020);
             player->unk_258[10 + arg1].unk_000[0] = player->boundingBoxCorners[2].cornerPos[0] + ((-player->unk_258[10 + arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 16) * sins(player->unk_258[10 + arg1].unk_020);
         }
-    } else if ((player->unk_0BC & 0x40000000)) {
+    } else if ((player->effect & LIGHTNING_EFFECT)) {
         func_80062B18(&sp44, &sp40, &sp3C, 2.0f, 0.0f,  (-player->unk_258[10 + arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 16, - player->unk_258[10 + arg1].unk_020,  2 * -player->unk_206);
         player->unk_258[10 + arg1].unk_000[0] = player->boundingBoxCorners[3].cornerPos[0] + sp44;
         player->unk_258[10 + arg1].unk_000[2] = player->boundingBoxCorners[3].cornerPos[2] + sp3C;
@@ -4168,7 +4168,7 @@ void func_800635D4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 
     ++player->unk_258[10 + arg1].unk_01E;
     player->unk_258[10 + arg1].unk_000[1] += 0.2;
-    if (((player->unk_0BC & 0x80) != 0) || ((player->unk_0BC & 0x40) != 0)) {
+    if (((player->effect & 0x80) != 0) || ((player->effect & 0x40) != 0)) {
         player->unk_258[10 + arg1].unk_01C = 0;
         player->unk_258[10 + arg1].unk_01E = 0;
     }
@@ -4601,13 +4601,13 @@ void func_800650FC(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_000[2] = (f32) player->pos[2];
     player->unk_258[20 + arg3].unk_000[0] = (f32) player->pos[0];
     player->unk_258[20 + arg3].unk_000[1] = (f32) (player->pos[1] + 4.0f);
-    if ((player->unk_0BC & 0x80) == 0x80) {
+    if ((player->effect & 0x80) == 0x80) {
         player->unk_258[20 + arg3].unk_020 += 4732;
     } else {
          player->unk_258[20 + arg3].unk_020 -= 4732;
     }
 
-    if (((player->unk_0BC & 0x80) != 0x80) && ((player->unk_0BC & 0x40) != 0x40)) {
+    if (((player->effect & 0x80) != 0x80) && ((player->effect & 0x40) != 0x40)) {
         player->unk_258[20 + arg3].unk_01C = 0;
         player->unk_258[20 + arg3].unk_01E = 0;
         player->unk_258[20 + arg3].unk_012 = 0;
@@ -4666,7 +4666,7 @@ void func_8006538C(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         spAC[0] = 0;
         spAC[1] = player->unk_048[arg3];
         spAC[2] = 0;
-        if ((player->unk_0BC & 0x200) && (((s32) gCourseTimer - D_8018D930[arg1]) < 9)) {
+        if ((player->effect & 0x200) && (((s32) gCourseTimer - D_8018D930[arg1]) < 9)) {
             primRed   = (primColors[1] >> 0x10) & 0xFF;
             primGreen = (primColors[1] >> 0x08) & 0xFF;
             primBlue  = (primColors[1] >> 0x00) & 0xFF;
@@ -4674,7 +4674,7 @@ void func_8006538C(Player *player, s8 arg1, s16 arg2, s8 arg3) {
             envGreen  = ( envColors[1] >> 0x08) & 0xFF;
             envBlue   = ( envColors[1] >> 0x00) & 0xFF;
             primAlpha = player->unk_258[arg2].unk_03E;
-            func_800652D4(spB4, spAC, ((player->unk_258[arg2].unk_00C * player->unk_224) * 1.4));
+            func_800652D4(spB4, spAC, ((player->unk_258[arg2].unk_00C * player->size) * 1.4));
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
             gDPLoadTextureBlock(gDisplayListHead++, D_0D02BC58[player->unk_258[arg2].unk_010], G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
@@ -4688,7 +4688,7 @@ void func_8006538C(Player *player, s8 arg1, s16 arg2, s8 arg3) {
             envGreen  = ( envColors[player->unk_258[arg2].unk_038] >> 0x08) & 0xFF;
             envBlue   = ( envColors[player->unk_258[arg2].unk_038] >> 0x00) & 0xFF;
             primAlpha = player->unk_258[arg2].unk_03E;
-            func_800652D4(spB4, spAC, player->unk_258[arg2].unk_00C * player->unk_224);
+            func_800652D4(spB4, spAC, player->unk_258[arg2].unk_00C * player->size);
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
             gDPLoadTextureBlock(gDisplayListHead++, D_0D02BC58[player->unk_258[arg2].unk_010], G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
@@ -4717,7 +4717,7 @@ void func_800658A0(Player *player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         sp4C[0] = 0;
         sp4C[1] = player->unk_048[arg3];
         sp4C[2] = 0;
-        func_800652D4(sp54, sp4C, player->unk_258[arg2].unk_00C * player->unk_224);
+        func_800652D4(sp54, sp4C, player->unk_258[arg2].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         func_8004B35C(red, green, blue, alpha);
@@ -4761,7 +4761,7 @@ void func_80065AB0(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         spAC[0] = 0;
         spAC[1] = player->unk_048[arg3];
         spAC[2] = 0;
-        func_800652D4(spB4, spAC, player->unk_258[10 + arg2].unk_00C * player->unk_224);
+        func_800652D4(spB4, spAC, player->unk_258[10 + arg2].unk_00C * player->size);
         if (var_s0 == 0) {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
             gDPLoadTextureBlock(gDisplayListHead++, D_800E4770[var_s0], G_IM_FMT_I, G_IM_SIZ_8b, 16, 16, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -4879,7 +4879,7 @@ void func_80065F0C(Player *player, s32 arg1, s16 arg2, s8 arg3) {
         spD8 = 0;
         spD6 = player->unk_048[arg3];
         sp44 = temp_v0;
-        func_800652D4(&spDC, &spD4, temp_v0->unk534 * player->unk_224);
+        func_800652D4(&spDC, &spD4, temp_v0->unk534 * player->size);
         if ((s32) sp44->unk53C != 8) {
             temp_a1 = sp44->unk560;
             temp_a0 = sp44->unk562;
@@ -5050,7 +5050,7 @@ void func_800664E0(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         sp4C[0] = 0;
         sp4C[1] = player->unk_048[arg3];
         sp4C[2] = 0;
-        func_800652D4(sp54, sp4C, player->unk_258[10 + arg2].unk_00C * player->unk_224);
+        func_800652D4(sp54, sp4C, player->unk_258[10 + arg2].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5079,7 +5079,7 @@ void func_80066714(Player *player, s32 arg1, s16 arg2, s8 arg3) {
         sp54[0] = 0;
         sp54[1] = player->unk_048[arg3];
         sp54[2] = 0;
-        func_800652D4(sp5C, sp54, player->unk_258[10 + arg2].unk_00C * player->unk_224);
+        func_800652D4(sp5C, sp54, player->unk_258[10 + arg2].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008C90);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
         gDPLoadTextureBlock(gDisplayListHead++, D_0D000200, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5110,7 +5110,7 @@ void func_80066998(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         sp4C[0] = 0x4000;
         sp4C[1] = player->unk_048[arg3];
         sp4C[2] = 0;
-        func_800652D4(sp54, sp4C, player->unk_258[arg2].unk_00C * player->unk_224);
+        func_800652D4(sp54, sp4C, player->unk_258[arg2].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         func_8004B35C(red, green, blue, alpha);
@@ -5139,7 +5139,7 @@ void func_80066BAC(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         }
         spD4[1] = player->unk_048[arg3];
         spD4[2] = 0;
-        func_800652D4(spDC, spD4, player->unk_258[arg2].unk_00C * player->unk_224);
+        func_800652D4(spDC, spD4, player->unk_258[arg2].unk_00C * player->size);
         if (player->unk_258[arg2].unk_038 == 0) {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
@@ -5185,14 +5185,14 @@ void func_80067280(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         sp74[2] = 0;
         if (player->unk_258[30 + arg2].unk_010 == 1) {
             sp74[1] = player->unk_048[arg3] - 0x2000;
-            func_800652D4(sp7C, sp74, player->unk_258[30 + arg2].unk_00C * player->unk_224);
+            func_800652D4(sp7C, sp74, player->unk_258[30 + arg2].unk_00C * player->size);
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
             gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B35C(red, green, blue, alpha);
             gSPDisplayList(gDisplayListHead++, D_0D008E70);
         } else {
             sp74[1] = player->unk_048[arg3] + 0x2000;
-            func_800652D4(sp7C, sp74, player->unk_258[30 + arg2].unk_00C * player->unk_224);
+            func_800652D4(sp7C, sp74, player->unk_258[30 + arg2].unk_00C * player->size);
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
             gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B35C(red, green, blue, alpha & 0xFFFFFFFF); // huh?
@@ -5216,7 +5216,7 @@ void func_80067604(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         sp84[0] = 0;
         sp84[1] = player->unk_048[arg3];
         sp84[2] = 0;
-        func_800652D4(sp8C, sp84, player->unk_258[30 + arg2].unk_00C * player->unk_224);
+        func_800652D4(sp8C, sp84, player->unk_258[30 + arg2].unk_00C * player->size);
         if (player->unk_258[30 + arg2].unk_010 == 1) {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
             gDPLoadTextureBlock(gDisplayListHead++, D_0D02AC58, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5256,7 +5256,7 @@ void func_80067964(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         sp94[0] = 0;
         sp94[1] = player->unk_258[20 + arg4].unk_020;
         sp94[2] = 0;
-        func_800652D4(sp9C, sp94, player->unk_224 * arg2);
+        func_800652D4(sp9C, sp94, player->size * arg2);
         gSPDisplayList(gDisplayListHead++, D_0D008C90);
         gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
         gDPLoadTLUT_pal256(gDisplayListHead++, D_800E52D0);
@@ -5288,7 +5288,7 @@ void func_80067D3C(Player *player, s8 arg1, u8 *texture, s8 arg3, f32 arg4, s32 
         sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->unk_02C[1] + player->unk_0C0)) * arg4);
         sp7C[1] = player->pos[1] + player->boundingBoxSize - sp54[player->characterId] - 2.0f;
         sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->unk_02C[1] + player->unk_0C0)) * arg4);
-        func_800652D4(sp7C, sp74, player->unk_258[20 + arg3].unk_00C * player->unk_224);
+        func_800652D4(sp7C, sp74, player->unk_258[20 + arg3].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
@@ -5315,7 +5315,7 @@ void func_8006801C(Player *player, s8 arg1, u8 *texture, s8 arg3, f32 arg4, s32 
         sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->unk_02C[1] + player->unk_0C0)) * arg4);
         sp7C[1] = player->pos[1] + player->boundingBoxSize - sp54[player->characterId] - 2.0f;
         sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->unk_02C[1] + player->unk_0C0)) * arg4);
-        func_800652D4(sp7C, sp74, player->unk_258[20 + arg3].unk_00C * player->unk_224 * 0.8);
+        func_800652D4(sp7C, sp74, player->unk_258[20 + arg3].unk_00C * player->size * 0.8);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
@@ -5340,7 +5340,7 @@ void func_80068310(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         sp94[0] = 0;
         sp94[1] = player->unk_048[arg3];
         sp94[2] = 0;
-        func_800652D4(sp9C, sp94, player->unk_258[20 + arg4].unk_00C * player->unk_224);
+        func_800652D4(sp9C, sp94, player->unk_258[20 + arg4].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008C90);
         gDPLoadTLUT_pal256(gDisplayListHead++, D_800E52D0);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -5366,7 +5366,7 @@ void func_80068724(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         sp7C[0] = 0;
         sp7C[1] = player->unk_048[arg3];
         sp7C[2] = 0;
-        func_800652D4(sp84, sp7C, player->unk_258[20 + arg4].unk_00C * player->unk_224);
+        func_800652D4(sp84, sp7C, player->unk_258[20 + arg4].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
@@ -5391,7 +5391,7 @@ void func_80068AA4(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         sp5C[0] = 0;
         sp5C[1] = player->unk_048[arg3];
         sp5C[2] = 0;
-        func_800652D4(sp64, sp5C, player->unk_258[20 + arg4].unk_00C * player->unk_224);
+        func_800652D4(sp64, sp5C, player->unk_258[20 + arg4].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D4A0, G_IM_FMT_IA, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5417,7 +5417,7 @@ void func_80068DA0(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
         sp94[0] = 0;
         sp94[1] = player->unk_048[arg3];
         sp94[2] = 0;
-        func_800652D4(sp9C, sp94, player->unk_258[20 + arg4].unk_00C * player->unk_224);
+        func_800652D4(sp9C, sp94, player->unk_258[20 + arg4].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008C90);
         gDPLoadTLUT_pal256(gDisplayListHead++, D_800E52D0);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -5445,7 +5445,7 @@ void func_800691B8(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         sp54[1] = player->unk_048[arg3];
         player->unk_258[30 + arg2].unk_03A += 0x1C71;
         sp54[2] = player->unk_258[30 + arg2].unk_03A;
-        func_800652D4(sp5C, sp54, player->unk_224 * 0.5);
+        func_800652D4(sp5C, sp54, player->size * 0.5);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D488, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5484,7 +5484,7 @@ void func_80069444(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         sp6C[0] = 0;
         sp6C[1] = player->unk_048[arg3];
         sp6C[2] = 0;
-        func_800652D4(sp74, sp6C, player->unk_224 * 1.5);
+        func_800652D4(sp74, sp6C, player->size * 1.5);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         // `test` MUST be a u16
@@ -5511,7 +5511,7 @@ void func_800696CC(Player *player, s8 arg1, s16 arg2, s8 arg3, f32 arg4) {
         sp54[0] = 0;
         sp54[1] = player->unk_048[arg3];
         sp54[2] = 0;
-        func_800652D4(sp5C, sp54, player->unk_224 * arg4);
+        func_800652D4(sp5C, sp54, player->size * arg4);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D488, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5536,7 +5536,7 @@ void func_80069938(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         sp54[0] = 0;
         sp54[1] = player->unk_048[arg3];
         sp54[2] = player->unk_258[30 + arg2].unk_038;
-        func_800652D4(sp5C, sp54, player->unk_258[30 + arg2].unk_00C * player->unk_224);
+        func_800652D4(sp5C, sp54, player->unk_258[30 + arg2].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D488, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5567,7 +5567,7 @@ void func_80069BA8(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         sp4C[0] = 0;
         sp4C[1] = player->unk_048[arg3];
         sp4C[2] = 0;
-        func_800652D4(sp54, sp4C, player->unk_258[30 + arg2].unk_00C * player->unk_224);
+        func_800652D4(sp54, sp4C, player->unk_258[30 + arg2].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D48C, G_IM_FMT_IA, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         func_8004B35C(red, green, blue, alpha);
@@ -5588,7 +5588,7 @@ void func_80069DB8(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         sp54[0] = 0;
         sp54[1] = player->unk_048[arg3];
         sp54[2] = 0;
-        func_800652D4(sp5C, sp54, player->unk_258[30 + arg2].unk_00C * player->unk_224);
+        func_800652D4(sp5C, sp54, player->unk_258[30 + arg2].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
         gDPLoadTextureBlock(gDisplayListHead++, D_8018D49C, G_IM_FMT_IA, G_IM_SIZ_16b, 16, 16, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5611,7 +5611,7 @@ void func_8006A01C(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         sp4C[0] = 0;
         sp4C[1] = player->unk_048[arg3];
         sp4C[2] = 0;
-        func_800652D4(sp54, sp4C, player->unk_258[10 + arg2].unk_00C * player->unk_224);
+        func_800652D4(sp54, sp4C, player->unk_258[10 + arg2].unk_00C * player->size);
 
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
@@ -5641,7 +5641,7 @@ void func_8006A280(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         sp54[0] = 0;
         sp54[1] = player->unk_048[arg3];
         sp54[2] = 0;
-        func_800652D4(sp5C, sp54, player->unk_258[arg2].unk_00C * player->unk_224);
+        func_800652D4(sp5C, sp54, player->unk_258[arg2].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
         gDPLoadTextureBlock_4b(gDisplayListHead++, *D_800E47A0[player->unk_258[arg2].unk_01E], G_IM_FMT_I, 64, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -6303,16 +6303,16 @@ void func_8006C6AC(Player *player, s16 arg1, s8 arg2, s8 arg3) {
         if (player->unk_0DE & 1) {
             // func_80060BCC(player, arg1, sp28, (s32) arg2, /* extra? */ (s32) arg3);
             func_80060BCC(player, arg1, sp28, (s32) arg2);
-        } else if (!(player->unk_0BC & 8) && !(player->unk_0BC & 2)) {
-            if (((player->unk_0BC & 0x10) == 0x10) && ((player->unk_000 & 0x4000) == 0x4000)) {
+        } else if (!(player->effect & 8) && !(player->effect & 2)) {
+            if (((player->effect & 0x10) == 0x10) && ((player->unk_000 & 0x4000) == 0x4000)) {
                 func_8005DA30(player, arg1, sp28, arg2, (s8) (s32) arg3);
             } else if (((f64) (D_801652A0[arg2] - player->boundingBoxCorners[3].cornerGroundY) >= 3.5) || ((f64) (D_801652A0[arg2] - player->boundingBoxCorners[2].cornerGroundY) >= 3.5)) {
                 // func_8005EA94(player, arg1, sp28, arg2, /* extra? */ (s32) arg3);
                 func_8005EA94(player, arg1, sp28, arg2);
-            } else if (((player->unk_0BC & 0x80) == 0x80) || ((player->unk_0BC & 0x40) == 0x40)) {
+            } else if (((player->effect & 0x80) == 0x80) || ((player->effect & 0x40) == 0x40)) {
                 // func_8005F90C(player, arg1, sp28, (s32) arg2, /* extra? */ (s32) arg3);
                 func_8005F90C(player, arg1, sp28, (s32) arg2);
-            } else if (((player->unk_0BC & 0x4000) && !(player->unk_000 & 0x2000)) || (player->unk_0BC & 0x800) || (player->unk_0BC & 0x20) || (player->unk_044 & 0x4000)) {
+            } else if (((player->effect & 0x4000) && !(player->unk_000 & 0x2000)) || (player->effect & 0x800) || (player->effect & 0x20) || (player->unk_044 & 0x4000)) {
                 // func_8005ED48(player, arg1, sp28, (s32) arg2, /* extra? */ (s32) arg3);
                 func_8005ED48(player, arg1, sp28, (s32) arg2);
             } else {
@@ -6388,7 +6388,7 @@ void func_8006C9B8(Player *player, s16 arg1, s8 arg2, s8 arg3) {
             player->unk_044 &= ~0x0100;
             return;
         }
-        if (((((player->unk_0CA & 0x1000) == 0x1000) || ((player->unk_0E0 < 2) && (player->unk_0BC & 0x01000000))) || ((player->unk_0E0 < 2) && (player->unk_0BC & 0x02000000))) || (player->unk_0BC & 0x400)) {
+        if (((((player->unk_0CA & 0x1000) == 0x1000) || ((player->unk_0E0 < 2) && (player->effect & 0x01000000))) || ((player->unk_0E0 < 2) && (player->effect & 0x02000000))) || (player->effect & 0x400)) {
             func_8006199C(player, arg1, sp28, arg2, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
@@ -6400,7 +6400,7 @@ void func_8006C9B8(Player *player, s16 arg1, s8 arg2, s8 arg3) {
             player->unk_044 &= ~0x0100;
             return;
         }
-        if ((player->unk_0BC & 0x200) && ((((s32) gCourseTimer) - D_8018D930[arg2]) < 9)) {
+        if ((player->effect & 0x200) && ((((s32) gCourseTimer) - D_8018D930[arg2]) < 9)) {
             func_800615AC(player, arg1, sp28, arg2);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
@@ -6417,11 +6417,11 @@ void func_8006C9B8(Player *player, s16 arg1, s8 arg2, s8 arg3) {
             player->unk_044 &= ~0x0100;
             return;
         }
-        if ((player->unk_0BC & 0x2000) && (player->unk_000 & 0x4000)) {
+        if ((player->effect & 0x2000) && (player->unk_000 & 0x4000)) {
             func_800621BC(player, arg1, sp28, arg2);
             return;
         }
-        if (((player->unk_0BC & 0x200000) || (player->unk_0BC & 0x100000)) && ((player->unk_000 & 0x4000) == 0x4000)) {
+        if (((player->effect & 0x200000) || (player->effect & 0x100000)) && ((player->unk_000 & 0x4000) == 0x4000)) {
             func_80061EF4(player, arg1, sp28, arg2);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
@@ -6478,7 +6478,7 @@ void func_8006CEC0(Player *arg0, s16 arg1, s8 arg2, s8 arg3) {
         if ((arg0->unk_044 & 0x200) && (arg0->unk_000 & 0x4000))  {
             func_80061224(arg0, arg1, sp20, arg2, arg3);
             return;
-        } else if (((arg0->unk_0BC & 0x40000000) == 0x40000000) && (arg0->unk_0B0 < 0x32))  {
+        } else if (((arg0->effect & 0x40000000) == 0x40000000) && (arg0->unk_0B0 < 0x32))  {
             func_80061094(arg0, arg1, sp20, arg2, arg3);
             return;
         } else if ((arg0->unk_000 & 0x4000) == 0x4000)  { 
@@ -6492,9 +6492,9 @@ void func_8006CEC0(Player *arg0, s16 arg1, s8 arg2, s8 arg3) {
         }
         switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            if (((arg0->unk_0BC & 0x04000000) != 0x04000000)
-                && ((arg0->unk_0BC & 0x400) != 0x400)
-                && ((arg0->unk_0BC & 0x01000000) != 0x01000000))  {
+            if (((arg0->effect & 0x04000000) != 0x04000000)
+                && ((arg0->effect & 0x400) != 0x400)
+                && ((arg0->effect & 0x01000000) != 0x01000000))  {
                 if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100))  {
                     //func_80060504(arg0, arg1, sp20, arg2, arg3);
                     func_80060504(arg0, sp20, arg2, arg3);
@@ -6507,9 +6507,9 @@ void func_8006CEC0(Player *arg0, s16 arg1, s8 arg2, s8 arg3) {
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             if (((arg0->unk_000 & 0x4000) != 0)
-                && ((arg0->unk_0BC & 0x04000000) != 0x04000000)
-                && ((arg0->unk_0BC & 0x400) != 0x400)
-                && ((arg0->unk_0BC & 0x01000000) != 0x01000000)) {
+                && ((arg0->effect & 0x04000000) != 0x04000000)
+                && ((arg0->effect & 0x400) != 0x400)
+                && ((arg0->effect & 0x01000000) != 0x01000000)) {
                 if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100))  {
                     //func_80060504(arg0, arg1, sp20, arg2, arg3);
                     func_80060504(arg0, sp20, arg2, arg3);
@@ -6901,7 +6901,7 @@ void func_8006E420(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E5AC(Player* player, s8 arg1, s8 arg2) {
     if ((player->unk_000 & 0x8000) == 0x8000) {
-        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
+        if ((player->effect & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006D474(player, arg1, arg2);
             }
@@ -6914,7 +6914,7 @@ void func_8006E5AC(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E634(Player* player, s8 arg1, s8 arg2) {
     if ((player->unk_000 & 0x8000) == 0x8000) {
-        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
+        if ((player->effect & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006D474(player, arg1, arg2);
             }
@@ -6927,7 +6927,7 @@ void func_8006E634(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E6BC(Player* player, s8 arg1, s8 arg2) {
     if ((player->unk_000 & 0x8000) == 0x8000) {
-        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
+        if ((player->effect & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006D474(player, arg1, arg2);
             }
@@ -6940,7 +6940,7 @@ void func_8006E6BC(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E744(Player* player, s8 arg1, s8 arg2) {
     if ((player->unk_000 & 0x8000) == 0x8000) {
-        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
+        if ((player->effect & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006D474(player, arg1, arg2);
             }
@@ -6953,7 +6953,7 @@ void func_8006E744(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E7CC(Player* player, s8 arg1, s8 arg2) {
     if ((player->unk_000 & 0x8000) == 0x8000) {
-        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
+        if ((player->effect & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006DD3C(player, arg1, arg2);
             }
@@ -6965,7 +6965,7 @@ void func_8006E7CC(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E848(Player* player, s8 arg1, s8 arg2) {
     if ((player->unk_000 & 0x8000) == 0x8000) {
-        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
+        if ((player->effect & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006DD3C(player, arg1, arg2);
             }
@@ -6977,7 +6977,7 @@ void func_8006E848(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E8C4(Player* player, s8 arg1, s8 arg2) {
     if ((player->unk_000 & 0x8000) == 0x8000) {
-        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
+        if ((player->effect & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006DD3C(player, arg1, arg2);
             }
@@ -6989,7 +6989,7 @@ void func_8006E8C4(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E940(Player* player, s8 arg1, s8 arg2) {
     if ((player->unk_000 & 0x8000) == 0x8000) {
-        if ((player->unk_0BC & 0x80000000) == 0x80000000) {
+        if ((player->effect & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006DD3C(player, arg1, arg2);
             }

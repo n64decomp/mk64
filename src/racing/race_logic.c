@@ -1153,25 +1153,25 @@ void func_802903D8(Player *playerOne, Player *playerTwo) {
             func_800C9060((playerTwo - gPlayerOne), 0x19008001U);
             return;
         } else {
-            playerTwo->statusEffects |= 0x400000;
+            playerTwo->statusEffects |= REVERSE_EFFECT;
             func_8008FC1C(playerOne);
             func_800C9060((playerTwo - gPlayerOne), 0x19008001U);
         }
     } else if (playerTwo->unk_000 & PLAYER_UNKNOWN_0x40) {
-        playerOne->statusEffects |= 0x400000;
+        playerOne->statusEffects |= REVERSE_EFFECT;
         func_8008FC1C(playerTwo);
         func_800C9060(playerOne - gPlayerOne, 0x19008001U);
         return;
     }
-    if (playerOne->unk_0BC & 0x200) {
-        if (!(playerTwo->unk_0BC & 0x200)) {
-            playerTwo->statusEffects |= 0x01000000;
+    if (playerOne->effect & 0x200) {
+        if (!(playerTwo->effect & 0x200)) {
+            playerTwo->statusEffects |= HIT_BY_ITEM_EFFECT;
         }
-    } else if (playerTwo->unk_0BC & 0x200) {
-        playerOne->statusEffects |= 0x01000000;
+    } else if (playerTwo->effect & 0x200) {
+        playerOne->statusEffects |= HIT_BY_ITEM_EFFECT;
     } else {
-        playerOne->unk_0BC |= 0x8000;
-        playerTwo->unk_0BC |= 0x8000;
+        playerOne->effect |= 0x8000;
+        playerTwo->effect |= 0x8000;
     }
     temp_f0_2 = sqrtf((sp54[0] * sp54[0]) + (sp54[1] * sp54[1]) + (sp54[2] * sp54[2]));
     sp60[0] /= temp_f0;
@@ -1190,7 +1190,7 @@ void func_802903D8(Player *playerOne, Player *playerTwo) {
         temp_f16 = ((sp60[0] * sp54[0]) + (sp60[1] * sp54[1]) + (sp60[2] * sp54[2])) / temp_f0_2;
     }
     temp_f0_2 = temp_f0_2 * temp_f16 * 0.85;
-    if ((playerOne->unk_0BC & 0x200) != 0x200) {
+    if ((playerOne->effect & 0x200) != 0x200) {
         temp_f2 = (temp_f0_2 * sp20) / sp24;
         playerOne->unk_034[0] += sp60[0] * temp_f2;
         playerOne->unk_034[1] += sp60[1] * temp_f2;
@@ -1199,7 +1199,7 @@ void func_802903D8(Player *playerOne, Player *playerTwo) {
         playerOne->pos[1] -= sp60[1] * sp74 * 0.5f;
         playerOne->pos[2] -= sp60[2] * sp74 * 0.5f;
     }
-    if ((playerTwo->unk_0BC & 0x200) != 0x200) {
+    if ((playerTwo->effect & 0x200) != 0x200) {
         temp_f2 = (temp_f0_2 * sp24) / sp20;
         playerTwo->unk_034[0] -= sp60[0] * temp_f2;
         playerTwo->unk_034[1] -= sp60[1] * temp_f2;
@@ -1227,17 +1227,17 @@ void func_802909F0(void) {
         ply = &gPlayers[i];
 
         if ((ply->unk_000 & PLAYER_EXISTS) &&
-          (!(ply->unk_0BC & 0x80000000)) &&
+          (!(ply->effect & 0x80000000)) &&
           (!(ply->unk_000 & PLAYER_INVISIBLE_OR_BOMB)) &&
-          (!(ply->unk_0BC & 0x4000000))) {
+          (!(ply->effect & 0x4000000))) {
 
             for (k = i + 1; k < 8; k++) {
                 ply2 = &gPlayers[k];
 
                 if ((ply2->unk_000 & PLAYER_EXISTS) &&
-                    (!(ply2->unk_0BC & 0x80000000)) &&
+                    (!(ply2->effect & 0x80000000)) &&
                     (!(ply2->unk_000 & PLAYER_INVISIBLE_OR_BOMB)) &&
-                    (!(ply2->unk_0BC & 0x4000000))) {
+                    (!(ply2->effect & 0x4000000))) {
 
                     func_802903D8(ply, ply2);
                 }

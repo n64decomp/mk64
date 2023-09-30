@@ -76,22 +76,22 @@ glabel D_80164B08
 glabel D_80164B0C
 .skip 4
 
-glabel D_80164B10
+glabel gPlayerRedEffect
 .skip 16
 
-glabel D_80164B20
+glabel gPlayerGreenEffect
 .skip 16
 
-glabel D_80164B30
+glabel gPlayerBlueEffect
 .skip 16
 
-glabel D_80164B40
+glabel gPlayerCyanEffect
 .skip 16
 
-glabel D_80164B50
+glabel gPlayerMagentaEffect
 .skip 16
 
-glabel D_80164B60
+glabel gPlayerYellowEffect
 .skip 32
 
 glabel D_80164B80

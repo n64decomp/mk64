@@ -81,7 +81,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_0FA = 0;
     player->unk_002 = 0;
 
-    player->unk_0BC = 0;
+    player->effect = 0;
     player->unk_0C0 = 0;
     player->unk_07C = 0;
     player->unk_07A = 0;
@@ -109,7 +109,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
 
 
     player->unk_206 = 0;
-    player->slopAccel = 0;
+    player->slopeAccel = 0;
     player->unk_D98 = 0;
     player->unk_D9A = 0;
     player->unk_DA4 = 0;
@@ -153,7 +153,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_240 = 0;
     player->unk_256 = 0;
 
-    player->unk_224 = 1.0f;
+    player->size = 1.0f;
     player->unk_DAC = 1.0f;
 
     player->unk_064[0] = 0.0f;
@@ -1059,7 +1059,7 @@ void func_8003D080(void) {
             case SCREEN_MODE_1P:
                 switch (gModeSelection) {
                     case GRAND_PRIX:
-                        if (gCurrentCourseId == 10) {
+                        if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
                             camera_init(0.0f, player->pos[1], D_8016524C, player->unk_02C[1], 8, 0);
                         } else {
                             camera_init((D_80165210[7] + D_80165210[6]) / 2, player->pos[1], D_8016524C, player->unk_02C[1], 8, 0);

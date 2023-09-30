@@ -302,4 +302,13 @@
  */
 #define MAX_TIME 0x927C0
 
+/**
+ * @brief effect of player's
+ * 
+ */
+#define HIT_ROTATING_EFFECT 0x4000 // hitting a rotating object
+#define HIT_BY_ITEM_EFFECT 0x1000000 // being hit by an item
+#define REVERSE_EFFECT 0x400000 // being in the wrong direction
+#define LIGHTNING_EFFECT 0x40000000 // being hit by lightning
+
 #endif // DEFINES_H

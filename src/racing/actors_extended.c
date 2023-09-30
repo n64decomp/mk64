@@ -1012,7 +1012,7 @@ void func_802B2EBC(Player *player) {
     for (index = 0; index < 8; index++) {
         otherPlayer = &gPlayers[index];
         if (player != otherPlayer) {
-            otherPlayer->statusEffects |= 0x4000;
+            otherPlayer->statusEffects |= HIT_ROTATING_EFFECT;
         }
     }
 }
@@ -1420,7 +1420,7 @@ void func_802B3E7C(struct ShellActor *shell, Player *player) {
     shell->velocity[1] = -2.0f;
     shell->velocity[2] = z_velocity;
 
-    if (player->unk_0BC & 0x80000000) {
+    if (player->effect & 0x80000000) {
         func_8029FDC8((struct Actor *) shell);
     } else {
         func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], newPosition[0], newPosition[1], newPosition[2]);

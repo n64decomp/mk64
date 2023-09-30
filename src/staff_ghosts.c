@@ -179,7 +179,6 @@ void func_800052A4(void) {
 
 void func_80005310(void) {
 
-    // if time trials
     if (gModeSelection == TIME_TRIALS) {
 
         set_staff_ghost();

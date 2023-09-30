@@ -530,10 +530,10 @@ void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
             fruit->velocity[0] = 0.0f;
             fruit->velocity[1] = 2.3f;
             fruit->velocity[2] = 0.0f;
-            if ((player->unk_0BC & 0x200) != 0) {
+            if ((player->effect & 0x200) != 0) {
                 func_800C9060(player - gPlayerOne, 0x1900A052U);
             } else {
-                player->unk_0BC |= 0x8000;
+                player->effect |= 0x8000;
                 player->pos[0]     -= temp_f2  * 4.0f;
                 player->pos[2]     -= temp_f14 * 4.0f;
                 player->unk_034[0] -= temp_f2  * 0.7f;
@@ -809,7 +809,7 @@ void func_80298AC0(Player *player) {
         sp64[1] = data->pos[1];
         sp64[2] = data->pos[2];
         if (func_8029EEB8(player, sp64, 5.0f, 40.0f, 0.8f) == 1) {
-            if ((player->unk_0BC & 0x200) != 0) {
+            if ((player->effect & 0x200) != 0) {
                 func_800C98B8(player->pos, player->unk_034, 0x19018010);
                 func_800C90F4((u8) (player - gPlayerOne), (player->characterId * 0x10) + 0x2900800D);
                 data->someId |= 0x400;
@@ -2627,7 +2627,7 @@ s32 func_8029EEB8(Player *player, Vec3f pos, f32 arg2, f32 arg3, f32 arg4) {
     sp28 = temp_f0_3 - arg2;
     temp_f16 = player->unk_034[0];
     temp_f18 = player->unk_034[2];
-    if (player->unk_0BC & 0x200) {
+    if (player->effect & 0x200) {
         return 1;
     }
     if (temp_f0_3 < 0.1f) {
@@ -2640,7 +2640,7 @@ s32 func_8029EEB8(Player *player, Vec3f pos, f32 arg2, f32 arg3, f32 arg4) {
         player->pos[0] += (temp_f16 / temp_f0_4) * arg2;
         player->pos[2] += (temp_f18 / temp_f0_4) * arg2;
     } else {
-        player->unk_0BC |= 0x8000;
+        player->effect |= 0x8000;
         temp_f20 /= temp_f0_3;
         temp_f14 /= temp_f0_3;
         temp_f0_5 = sqrtf((temp_f16 * temp_f16) + (temp_f18 * temp_f18));
@@ -2665,7 +2665,7 @@ s32 func_8029EEB8(Player *player, Vec3f pos, f32 arg2, f32 arg3, f32 arg4) {
 s32 func_8029F1F8(Player *player, struct Actor *marioRacewaySign) {
     if (func_8029EEB8(player, marioRacewaySign->pos, 7.0f, 200.0f, 0.8f) == 1) {
         if ((player->unk_000 & 0x4000) != 0) {
-            if ((player->unk_0BC & 0x200) != 0) {
+            if ((player->effect & 0x200) != 0) {
                 marioRacewaySign->flags |= 0x400;
                 func_800C98B8(player->pos, player->unk_034, 0x19018010U);
                 func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
@@ -2681,7 +2681,7 @@ s32 func_8029F1F8(Player *player, struct Actor *marioRacewaySign) {
 s32 func_8029F2FC(Player *player, struct PiranhaPlant *plant) {
     if (func_8029EEB8(player, plant->pos, plant->boundingBoxSize, plant->boundingBoxSize, 2.5f) == 1) {
         if ((player->unk_000 & 0x4000) != 0) {
-            if ((player->unk_0BC & 0x200) != 0) {
+            if ((player->effect & 0x200) != 0) {
                 plant->flags |= 0x400;
                 func_800C98B8(player->pos, player->unk_034, 0x1901A24AU);
                 func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
@@ -2732,7 +2732,7 @@ s32 func_8029F408(Player *player, struct YoshiValleyEgg *egg) {
         return 0;
     }
     if ((player->unk_000 & 0x4000) != 0) {
-        if ((player->unk_0BC & 0x200) != 0) {
+        if ((player->effect & 0x200) != 0) {
             egg->flags |= 0x400;
             egg->pathCenter[1] = 8.0f;
             func_800C98B8(player->pos, player->unk_034, 0x19018010);
@@ -2797,7 +2797,7 @@ s32 func_8029F69C(Player *player, struct Actor *actor) {
     sp48 = player->unk_034[0];
     sp44 = player->unk_034[2];
     if (player->unk_000 & 0x4000) {
-        if (player->unk_0BC & 0x200) {
+        if (player->effect & 0x200) {
             actor->flags |= 0x400;
             func_800C98B8(player->pos, player->unk_034, 0x19018010U);
             func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
@@ -2807,13 +2807,13 @@ s32 func_8029F69C(Player *player, struct Actor *actor) {
             func_800C9060(player - gPlayerOne, 0x19007018U);
         }
     }
-    if (!(player->unk_0BC & 0x200)) {
-        player->unk_0BC |= 0x8000;
+    if (!(player->effect & 0x200)) {
+        player->effect |= 0x8000;
     }
     sp20[0] = actor->pos[0];
     sp20[1] = actor->pos[1];
     sp20[2] = actor->pos[2];
-    if (((gCurrentCourseId == 0) || (gCurrentCourseId == 4) || (gCurrentCourseId == 7) || (gCurrentCourseId == 8)) && (player->unk_094 > 1.0f)) {
+    if (((gCurrentCourseId == COURSE_MARIO_RACEWAY) || (gCurrentCourseId == COURSE_YOSHI_VALLEY) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY) || (gCurrentCourseId == COURSE_LUIGI_RACEWAY)) && (player->unk_094 > 1.0f)) {
         func_80077AB0(sp20, 0);
     }
     if (xz_dist < 0.1f) {
@@ -3149,12 +3149,12 @@ void func_802A0450(Player *player, struct Actor *actor) {
     temp_lo = player - gPlayerOne;
     switch (actor->type) {
     case ACTOR_YOSHI_VALLEY_EGG:
-        if (!(player->unk_0BC & 0x80000000) && !(player->unk_000 & 0x100)) {
+        if (!(player->effect & 0x80000000) && !(player->unk_000 & 0x100)) {
             func_8029F408(player, (struct YoshiValleyEgg *) actor);
         }
         break;
     case ACTOR_BANANA:
-        if (player->unk_0BC & 0x800008C0) { break; }
+        if (player->effect & 0x800008C0) { break; }
         if (player->statusEffects & 1) { break; }
         temp_v1 = actor->rot[0];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
@@ -3176,7 +3176,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
         func_8029FDC8(actor);
         break;
     case ACTOR_GREEN_SHELL:
-        if (player->unk_0BC & 0x80000400) { break; }
+        if (player->effect & 0x80000400) { break; }
         if (player->statusEffects & 4) { break; }
         temp_v1 = actor->rot[2];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
@@ -3192,7 +3192,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
         if (player->statusEffects & 2) { break; }
         temp_v1 = actor->rot[2];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        if (!(player->unk_0BC & 0x80000000)) {
+        if (!(player->effect & 0x80000000)) {
             player->statusEffects |= 2;
             func_800C98B8(player->pos, player->unk_034, 0x19018010U);
         }
@@ -3206,11 +3206,11 @@ void func_802A0450(Player *player, struct Actor *actor) {
         break;
     case ACTOR_RED_SHELL:
         temp_v1 = actor->rot[2];
-        if (player->unk_0BC & 0x01000000) { break; }
+        if (player->effect & 0x01000000) { break; }
         if (player->statusEffects & 2) { break; }
         temp_v1 = actor->rot[2];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        if (!(player->unk_0BC & 0x80000000)) {
+        if (!(player->effect & 0x80000000)) {
             player->statusEffects |= 2;
             func_800C98B8(player->pos, player->unk_034, 0x19018010U);
         }
@@ -3221,12 +3221,12 @@ void func_802A0450(Player *player, struct Actor *actor) {
         func_8029FDC8(actor);
         break;
     case ACTOR_PIRANHA_PLANT:
-        if (!(player->unk_0BC & 0x80000000)) {
+        if (!(player->effect & 0x80000000)) {
             func_8029F2FC(player, (struct PiranhaPlant *) actor);
         }
         break;
     case ACTOR_MARIO_RACEWAY_SIGN:
-        if (!(player->unk_0BC & 0x80000000)) {
+        if (!(player->effect & 0x80000000)) {
             func_8029F1F8(player, actor);
         }
         break;
@@ -3242,18 +3242,18 @@ void func_802A0450(Player *player, struct Actor *actor) {
     case 31:
     case 32:
     case 33:
-        if (!(player->unk_0BC & 0x80000000)) {
+        if (!(player->effect & 0x80000000)) {
             func_8029F69C(player, actor);
         }
         break;
     case ACTOR_FALLING_ROCK:
-        if (!(player->unk_0BC & 0x80000000) && !(player->unk_000 & 0x100)) {
+        if (!(player->effect & 0x80000000) && !(player->unk_000 & 0x100)) {
             if (func_8029FB80(player, actor) == 1) {
                 func_800C98B8(actor->pos, actor->velocity, SOUND_ACTION_EXPLOSION);
                 if ((gModeSelection == TIME_TRIALS) && !(player->unk_000 & 0x1000)) {
                     D_80162DF8 = 1;
                 }
-                if (player->unk_0BC & 0x200) {
+                if (player->effect & 0x200) {
                     actor->velocity[1] = 10.0f;
                 } else {
                     func_8008DABC(player, player - gPlayerOne);
@@ -3263,10 +3263,10 @@ void func_802A0450(Player *player, struct Actor *actor) {
         break;
     case ACTOR_FAKE_ITEM_BOX:
         temp_v1 = actor->velocity[0];
-        if (player->unk_0BC & 0x80000000) { break; }
+        if (player->effect & 0x80000000) { break; }
         temp_v1 = actor->velocity[0];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-            player->statusEffects |= 0x400000;
+            player->statusEffects |= REVERSE_EFFECT;
             owner = &gPlayers[temp_v1];
             if (owner->unk_000 & 0x4000) {
                 if (actor->flags & 0xF) {
@@ -3327,12 +3327,12 @@ void evaluate_player_collision(void) {
     for (i = 0; i < 8; i++) {
         phi_s1 = &gPlayers[i];
 
-        if (((phi_s1->unk_000 & 0x8000) != 0) && ((phi_s1->unk_0BC & 0x4000000) == 0)) {
+        if (((phi_s1->unk_000 & 0x8000) != 0) && ((phi_s1->effect & 0x4000000) == 0)) {
             func_802977E4(phi_s1);
                 for (j = 0; j < ACTOR_LIST_SIZE; j++) {
                     temp_a1 = &gActorList[j];
 
-                    if ((phi_s1->unk_0BC & 0x4000000) == 0) {
+                    if ((phi_s1->effect & 0x4000000) == 0) {
                        // temp_v0 = temp_a1->unk2;
                         if (((temp_a1->flags & 0x8000) != 0) && ((temp_a1->flags & 0x4000) != 0)) {
                             func_802A0450(phi_s1, temp_a1);

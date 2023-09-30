@@ -2160,7 +2160,7 @@ Gfx D_0D008C90[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx D_0D008CD8[] = {
+Gfx gSettingRenderCharacter[] = {
     gsDPPipeSync(),
     gsDPSetAlphaCompare(G_AC_NONE),
     gsSPClearGeometryMode(G_LIGHTING),

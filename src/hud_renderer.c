@@ -3427,7 +3427,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
     } else {
         gDPLoadTLUT_pal256(gDisplayListHead++, gPortraitTLUTs[characterId]);
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
-        if (player->unk_0BC & 0x200) {
+        if (player->effect & 0x200) {
             func_8004B614((s32) D_801656C0, (s32) D_801656D0, (s32) D_801656E0, 0x00000080, 0x00000080, 0x00000080, (s32) D_80165C18[objectIndex].unk_0A0);
         } else {
             func_8004B2BC((s32) D_80165C18[objectIndex].unk_0A0);

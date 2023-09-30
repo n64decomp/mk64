@@ -330,7 +330,7 @@ void func_8001CCEC(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
                 move_f32_towards(&D_80164AA0[index], 10, 0.02f);
             break;
             default:
-                if (gCurrentCourseId == 4) {
+                if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
                     move_f32_towards(&D_80164A90[index], 50, 0.04f);
                     move_f32_towards(&D_80164AA0[index], 35, 0.04f);
                 } else {
@@ -352,7 +352,7 @@ void func_8001CCEC(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     arg2[0] = camera->lookAt[0];
     arg2[1] = camera->lookAt[1];
     arg2[2] = camera->lookAt[2];
-    if ((player->unk_0BC & 0x01000000) == 0x01000000) {
+    if ((player->effect & 0x01000000) == 0x01000000) {
         sp84[2] /= 3.0f;
     }
     func_802B6540(sp9C, 0, 1, 0, arg7);
@@ -365,7 +365,7 @@ void func_8001CCEC(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     arg2[0] += (x - camera->lookAt[0]) * D_80164A78[index];
     arg2[2] += ((z - camera->lookAt[2]) * D_80164A78[index]);
 
-    if ((((player->unk_094 / 18) * 216) <= 5.0f) && ((player->unk_0BC & 2) == 2)) {
+    if ((((player->unk_094 / 18) * 216) <= 5.0f) && ((player->effect & 2) == 2)) {
         arg2[1] += ((y - camera->lookAt[1]) * 0.02);
     } else {
         arg2[1] += ((y - camera->lookAt[1]) * 0.5);
@@ -373,7 +373,7 @@ void func_8001CCEC(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     mtxf_translate_vec3f_mat3(sp90, sp9C);
     x = player->pos[0] + sp90[0];
     z = player->pos[2] + sp90[2];
-    if ((player->unk_0BC & 0x01000000) != 0x01000000) {
+    if ((player->effect & 0x01000000) != 0x01000000) {
         var_f0 = player->pos[1] + sp90[1];
         // permute
         y = var_f0;
@@ -384,7 +384,7 @@ void func_8001CCEC(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     *arg3 = camera->pos[0] + ((x - camera->pos[0]) * D_80164A78[index]);
     *arg5 = camera->pos[2] + ((z - camera->pos[2]) * D_80164A78[index]);
 
-    if ((((player->unk_094 / 18) * 216) <= 5.0f) && ((player->unk_0BC & 2) == 2)) {
+    if ((((player->unk_094 / 18) * 216) <= 5.0f) && ((player->effect & 2) == 2)) {
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.01));
     } else {
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.15));
@@ -569,7 +569,7 @@ void func_8001D944(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     arg2[0] = camera->lookAt[0];
     arg2[1] = camera->lookAt[1];
     arg2[2] = camera->lookAt[2];
-    if ((player->unk_0BC & 0x01000000) == 0x01000000) {
+    if ((player->effect & 0x01000000) == 0x01000000) {
         sp84[2] /= 3.0f;
     }
     func_802B6540(sp9C, 0, 1, 0, arg7);
@@ -582,7 +582,7 @@ void func_8001D944(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     arg2[0] += (x - camera->lookAt[0]) * D_80164A78[index];
     arg2[2] += ((z - camera->lookAt[2]) * D_80164A78[index]);
 
-    if ((((player->unk_094 / 18) * 216) <= 5.0f) && ((player->unk_0BC & 2) == 2)) {
+    if ((((player->unk_094 / 18) * 216) <= 5.0f) && ((player->effect & 2) == 2)) {
         arg2[1] += ((y - camera->lookAt[1]) * 0.02);
     } else {
         arg2[1] += ((y - camera->lookAt[1]) * 0.5);
@@ -590,7 +590,7 @@ void func_8001D944(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     mtxf_translate_vec3f_mat3(sp90, sp9C);
     x = player->pos[0] + sp90[0];
     z = player->pos[2] + sp90[2];
-    if ((player->unk_0BC & 0x01000000) != 0x01000000) {
+    if ((player->effect & 0x01000000) != 0x01000000) {
         var_f0 = player->pos[1] + sp90[1];
         // permute
         y = var_f0;
@@ -601,7 +601,7 @@ void func_8001D944(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     *arg3 = camera->pos[0] + ((x - camera->pos[0]) * D_80164A78[index]);
     *arg5 = camera->pos[2] + ((z - camera->pos[2]) * D_80164A78[index]);
 
-    if ((((player->unk_094 / 18) * 216) <= 5.0f) && ((player->unk_0BC & 2) == 2)) {
+    if ((((player->unk_094 / 18) * 216) <= 5.0f) && ((player->effect & 2) == 2)) {
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.01));
     } else {
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.15));
@@ -691,21 +691,21 @@ void func_8001E45C(Camera *camera, Player *player, s8 arg2) {
     UNUSED s16 pad6;
     s16 temp;
 
-    if ((player->unk_0BC & 0x10) == 0x10) {
+    if ((player->effect & 0x10) == 0x10) {
         var_a3 = 100;
         if (player->unk_078 == 0) {
             camera->unk_B0 = 0;
         } else {
             if (player->unk_078 < 0) {
                 var_a3 = 0xA5 - (player->unk_078 / 2);
-                if ((player->unk_0BC & 0x20000000) == 0x20000000) {
+                if ((player->effect & 0x20000000) == 0x20000000) {
                     move_s16_towards(&camera->unk_B0, -0x0B60, 0.1f);
                 } else {
                     move_s16_towards(&camera->unk_B0, -0x0888, 0.1f);
                 }
             } else {
                 var_a3 = (player->unk_078 / 2) + 0xA5;
-                if ((player->unk_0BC & 0x20000000) == 0x20000000) {
+                if ((player->effect & 0x20000000) == 0x20000000) {
                     move_s16_towards(&camera->unk_B0, 0x0B60, 0.1f);
                 } else {
                     move_s16_towards(&camera->unk_B0, 0x0888, 0.1f);
@@ -716,7 +716,7 @@ void func_8001E45C(Camera *camera, Player *player, s8 arg2) {
         move_s16_towards(&camera->unk_B0, 0, 0.05f);
         var_a3 = ((s16) camera->unk_2C / 182) - ((s16) player->unk_02C[1] / 182);
         if (player->unk_078 == 0) {
-            if ((player->unk_0BC & 0x20) == 0x20) {
+            if ((player->effect & 0x20) == 0x20) {
                 var_a3 = 0x02D8;
             } else {
                 var_a3 = 0x01F4;
@@ -733,10 +733,10 @@ void func_8001E45C(Camera *camera, Player *player, s8 arg2) {
             var_a3 = (player->unk_078 / 2) + 0xA5;
         }
     }
-    if (((player->unk_0BC & 0x80) == 0x80) || ((player->unk_0BC & 0x40) == 0x40) ||
-    ((player->unk_0BC & 0x4000) == 0x4000) || ((player->unk_0BC & 0x80000) == 0x80000) ||
-    ((player->unk_0BC & 0x800000) == 0x800000) || (((player->unk_0BC & 0x20) == 0x20) && (player->unk_078 != 0)) ||
-    (player->unk_110.unk3C[0] <= 0.0f) || (player->unk_110.unk3C[1] <= 0.0f) || ((player->unk_0BC & 0x20000) == 0x20000)) {
+    if (((player->effect & 0x80) == 0x80) || ((player->effect & 0x40) == 0x40) ||
+    ((player->effect & 0x4000) == 0x4000) || ((player->effect & 0x80000) == 0x80000) ||
+    ((player->effect & 0x800000) == 0x800000) || (((player->effect & 0x20) == 0x20) && (player->unk_078 != 0)) ||
+    (player->unk_110.unk3C[0] <= 0.0f) || (player->unk_110.unk3C[1] <= 0.0f) || ((player->effect & 0x20000) == 0x20000)) {
         func_8001CCEC(player, camera, sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     } else {
         func_800224F0(&camera->unk_2C, (s16) (player->unk_02C[1] + camera->unk_B0), var_a3);
@@ -812,16 +812,14 @@ void func_8001EA0C(Camera *camera, Player *player, s8 arg2) {
     UNUSED s16 pad6;
     s16 temp;
 
-    //temp_v0 = player->unk_0BC;
-    if ((player->unk_0BC & 0x10) == 0x10) {
-        //temp_v1 = player->unk_078;
+    if ((player->effect & 0x10) == 0x10) {
         var_a3 = 100;
         if (player->unk_078 == 0) {
             camera->unk_B0 = 0;
         } else {
             if (player->unk_078 < 0) {
                 var_a3 = 0xA5 - (player->unk_078 / 2);
-                if ((player->unk_0BC & 0x20000000) == 0x20000000) {
+                if ((player->effect & 0x20000000) == 0x20000000) {
                     //sp4E = temp_a3;
                     move_s16_towards(&camera->unk_B0, -0x0B60, 0.1f);
                 } else {
@@ -830,7 +828,7 @@ void func_8001EA0C(Camera *camera, Player *player, s8 arg2) {
                 }
             } else {
                 var_a3 = (player->unk_078 / 2) + 0xA5;
-                if ((player->unk_0BC & 0x20000000) == 0x20000000) {
+                if ((player->effect & 0x20000000) == 0x20000000) {
                     //sp4E = temp_a3_2;
                     move_s16_towards(&camera->unk_B0, 0x0B60, 0.1f);
                 } else {
@@ -845,7 +843,7 @@ void func_8001EA0C(Camera *camera, Player *player, s8 arg2) {
         //temp_v1_2 = player->unk_078;
         var_a3 = ((s16) camera->unk_2C / 182) - ((s16) player->unk_02C[1] / 182);
         if (player->unk_078 == 0) {
-            if ((player->unk_0BC & 0x20) == 0x20) {
+            if ((player->effect & 0x20) == 0x20) {
                 var_a3 = 0x02D8;
             } else {
                 var_a3 = 0x01F4;
@@ -862,10 +860,10 @@ void func_8001EA0C(Camera *camera, Player *player, s8 arg2) {
             var_a3 = (player->unk_078 / 2) + 0xA5;
         }
     }
-    if (((player->unk_0BC & 0x80) == 0x80) || ((player->unk_0BC & 0x40) == 0x40) ||
-    ((player->unk_0BC & 0x4000) == 0x4000) || ((player->unk_0BC & 0x80000) == 0x80000) ||
-    ((player->unk_0BC & 0x800000) == 0x800000) || (((player->unk_0BC & 0x20) == 0x20) && (player->unk_078 != 0)) ||
-    (player->unk_110.unk3C[0] <= 0.0f) || (player->unk_110.unk3C[1] <= 0.0f) || ((player->unk_0BC & 0x20000) == 0x20000)) {
+    if (((player->effect & 0x80) == 0x80) || ((player->effect & 0x40) == 0x40) ||
+    ((player->effect & 0x4000) == 0x4000) || ((player->effect & 0x80000) == 0x80000) ||
+    ((player->effect & 0x800000) == 0x800000) || (((player->effect & 0x20) == 0x20) && (player->unk_078 != 0)) ||
+    (player->unk_110.unk3C[0] <= 0.0f) || (player->unk_110.unk3C[1] <= 0.0f) || ((player->effect & 0x20000) == 0x20000)) {
         func_8001D944(player, camera, sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     } else {
         func_800224F0(&camera->unk_2C, (s16) (player->unk_02C[1] + camera->unk_B0), var_a3);
@@ -1017,16 +1015,16 @@ void func_8001F394(Player *player, f32 *arg1) {
         if (player->statusEffects & 0x40000) {
             D_80164A08[playerIndex] = 1;
         }
-        if ((player->unk_0BC & 0x2000) == 0x2000) {
+        if ((player->effect & 0x2000) == 0x2000) {
             D_80164A08[playerIndex] = 2;
         }
-        if ((player->unk_0BC & 0x100000) == 0x100000) {
+        if ((player->effect & 0x100000) == 0x100000) {
             D_80164A08[playerIndex] = 3;
         }
         if ((player->statusEffects & 0x100) == 0x100) {
             D_80164A08[playerIndex] = 4;
         }
-        if (((player->unk_0BC & 0x80) == 0x80) || ((player->unk_0BC & 0x40) == 0x40)) {
+        if (((player->effect & 0x80) == 0x80) || ((player->effect & 0x40) == 0x40)) {
             D_80164A08[playerIndex] = 5;
         }
         D_80164498[playerIndex] = 0.0f;
@@ -1045,7 +1043,7 @@ void func_8001F394(Player *player, f32 *arg1) {
         }
         break;
     case 2:
-        if ((player->unk_0BC & 0x2000) == 0x2000) {
+        if ((player->effect & 0x2000) == 0x2000) {
             if (player->boostTimer != 0) {
                 move_f32_towards(&D_80164498[playerIndex], 8.0f, 0.2f);
             }
@@ -1059,7 +1057,7 @@ void func_8001F394(Player *player, f32 *arg1) {
         }
         break;
     case 3:
-        if (((player->unk_0BC & 0x100000) == 0x100000) && ((player->unk_0BC & 8) == 8)) {
+        if (((player->effect & 0x100000) == 0x100000) && ((player->effect & 8) == 8)) {
             move_f32_towards(&D_80164498[playerIndex], 20.0f, 0.1f);
         } else {
             if (D_80164498[playerIndex] > 1.0f) {
@@ -1083,7 +1081,7 @@ void func_8001F394(Player *player, f32 *arg1) {
         }
         break;
     case 5:
-        if (((player->unk_0BC & 0x80) == 0x80) || ((player->unk_0BC & 0x40) == 0x40)) {
+        if (((player->effect & 0x80) == 0x80) || ((player->effect & 0x40) == 0x40)) {
             move_f32_towards(&D_80164498[playerIndex], 18.0f, 0.2f);
         } else {
             if (D_80164498[playerIndex] > 1.0f) {

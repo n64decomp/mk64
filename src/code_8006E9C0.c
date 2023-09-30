@@ -1122,13 +1122,13 @@ void func_8007055C(void) {
     s32 var_s4;
 
     switch (gCurrentCourseId) {
-    case 0:
+    case COURSE_MARIO_RACEWAY:
         func_80070328(&D_800E6C10);
         break;
-    case 4:
+    case COURSE_YOSHI_VALLEY:
         func_80070328(&D_800E6AA8);
         break;
-    case 5:
+    case COURSE_FRAPPE_SNOWLAND:
         if (D_8018EDF3 == 1) {
             var_s4 = 0x32;
         } else {
