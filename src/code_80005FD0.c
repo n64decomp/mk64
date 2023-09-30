@@ -456,7 +456,7 @@ s32 func_800061DC(Vec3f arg0, f32 arg1, s32 arg2) {
     if (!gDemoMode) {
         var_a0 = gPlayerOne;
         for(var_a1 = 0; var_a1 < D_8018EDF3; var_a1++, var_a0++) {
-            if (((var_a0->unk_000 & 0x4000) != 0) && ((var_a0->unk_000 & 0x1000) == 0)) {
+            if (((var_a0->bonusEffect & 0x4000) != 0) && ((var_a0->bonusEffect & 0x1000) == 0)) {
                 temp_f12 = var_a0->pos[0];
                 temp_f14 = var_a0->pos[2];
                 if (((temp_f12 - arg1) < temp_f0) && (temp_f0 < (temp_f12 + arg1)) && ((temp_f14 - arg1) < temp_f2) && (temp_f2 < (temp_f14 + arg1))) {
@@ -567,11 +567,11 @@ void set_places(void) {
     }
 
     for (var_t3 = 0; var_t3 < var_t4 - 1; var_t3++) {
-        if ((gPlayers[gGPCurrentRacePlayerIdByRank[var_t3]].unk_000 & 0x800)) continue;
+        if ((gPlayers[gGPCurrentRacePlayerIdByRank[var_t3]].bonusEffect & 0x800)) continue;
 
         for (var_t1_3 = var_t3 + 1; var_t1_3 < var_t4; var_t1_3++) {
             if (gCourseCompletionPercentByRank[var_t3] < gCourseCompletionPercentByRank[var_t1_3]) {
-                if (!(gPlayers[gGPCurrentRacePlayerIdByRank[var_t1_3]].unk_000 & 0x800)) {
+                if (!(gPlayers[gGPCurrentRacePlayerIdByRank[var_t1_3]].bonusEffect & 0x800)) {
                     temp_s2 = sp80[var_t3];
                     sp80[var_t3] = sp80[var_t1_3];
                     sp80[var_t1_3] = temp_s2;
@@ -694,7 +694,7 @@ void func_800074D4(void) {
     var_v0 = 0;
     for (var_a3 = 0; var_a3 < this_loops_upper_bound_is_brough_to_you_by_the_number_eight; var_a3++) {
         var_a0_2 = &gPlayers[var_a3];
-        if (var_a0_2->unk_000 & 0x800) {
+        if (var_a0_2->bonusEffect & 0x800) {
             sp68[var_v0] = var_a3;
             gCourseCompletionPercentByRank[var_v0] = -gTimePlayerLastTouchedFinishLine[var_a3];
             var_v0++;
@@ -704,7 +704,7 @@ void func_800074D4(void) {
     temp_t1 = var_v0;
     for (var_a3 = 0; var_a3 < this_loops_upper_bound_is_brough_to_you_by_the_number_eight; var_a3++) {
         var_a0_2 = &gPlayers[var_a3];
-        if (!(var_a0_2->unk_000 & 0x800)) {
+        if (!(var_a0_2->bonusEffect & 0x800)) {
             sp68[var_v0] = var_a3;
             gCourseCompletionPercentByRank[var_v0] = gCourseCompletionPercentByPlayerId[var_a3];
             var_v0++;
@@ -994,7 +994,7 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
     temp_v1 = player->effect;
     var_f12 = arg1;
     temp_f2 = player->unk_094;
-    if (!(temp_v1 & 0x80) && !(temp_v1 & 0x40) && ((temp_v1 << 0xE) >= 0) && (temp_v0 = player->statusEffects, ((temp_v0 << 9) >= 0)) && ((temp_v0 << 7) >= 0) && !(temp_v0 & 2) && !(temp_v0 & 4)) {
+    if (!(temp_v1 & 0x80) && !(temp_v1 & 0x40) && ((temp_v1 << 0xE) >= 0) && (temp_v0 = player->hitEffects, ((temp_v0 << 9) >= 0)) && ((temp_v0 << 7) >= 0) && !(temp_v0 & 2) && !(temp_v0 & 4)) {
         if (gCurrentCourseId == 0x0014) {
             func_80007FA4(var_f12, player, temp_f2, player);
             return;
@@ -1025,7 +1025,7 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
                 player_speed(player);
                 return;
             }
-            if (player->unk_000 & 0x800) {
+            if (player->bonusEffect & 0x800) {
                 if (temp_f2 < var_f12) {
                     player->effect = temp_v1 & 0xFFDFFFFF;
                     player_speed(player);
@@ -1205,7 +1205,7 @@ s32 func_800088D8(s32 arg0, s16 arg1, s16 arg2) {
         return 1;
     }
     temp_t1 = &gPlayers[arg0];
-    if ((temp_t1->unk_000 & 0x4000) != 0) {
+    if ((temp_t1->bonusEffect & 0x4000) != 0) {
         return 1;
     }
     temp_t2 = var_a1 * 8;
@@ -1566,7 +1566,7 @@ block_25:
                     func_80008F38(playerId);
                     func_80011AE4(playerId);
                     *(&D_801642DE + (playerId * 0x10)) = 0;
-                    if ((D_8016348C == 0) && ((player->unk_000 & 0x800) == 0)) {
+                    if ((D_8016348C == 0) && ((player->bonusEffect & 0x800) == 0)) {
                         sp30 = var_a3;
                         sp34 = var_t0;
                         temp_f0_3 = func_80009258(playerId, sp38, sp44, (u16 *) var_a3);
@@ -1587,10 +1587,10 @@ block_25:
         }
     }
     *(&D_80163450 + (playerId * 4)) = sp44;
-    if ((gCurrentCourseId == 4) && (D_801630E2 == 1) && ((func_80009000(playerId), temp_v0_4 = player->unk_000, ((temp_v0_4 & 0x4000) == 0)) || ((temp_v0_4 & 0x1000) != 0))) {
+    if ((gCurrentCourseId == 4) && (D_801630E2 == 1) && ((func_80009000(playerId), temp_v0_4 = player->bonusEffect, ((temp_v0_4 & 0x4000) == 0)) || ((temp_v0_4 & 0x1000) != 0))) {
         func_800090F0(playerId, player);
     }
-    temp_v0_5 = player->unk_000;
+    temp_v0_5 = player->bonusEffect;
     if (((temp_v0_5 & 0x4000) != 0) && ((temp_v0_5 & 0x1000) == 0)) {
         func_800065D0(playerId, player, &D_80163448);
         if ((gModeSelection == GRAND_PRIX) && (D_8018EDF3 == 2) && (playerId == 0)) {
@@ -1667,7 +1667,7 @@ void func_800098FC(u8 arg0, Player *player) {
         *temp_a2 = 0;
     }
     temp_a2_2 = temp_v1 + &D_801633B0;
-    if ((*temp_a2_2 >= 0xB) && ((temp_v0_2 = player->statusEffects, ((temp_v0_2 << 9) < 0)) || ((temp_v0_2 << 7) < 0) || ((temp_v0_2 & 2) != 0) || ((temp_v0_2 & 4) != 0) || (player->effect & 0x04000000))) {
+    if ((*temp_a2_2 >= 0xB) && ((temp_v0_2 = player->hitEffects, ((temp_v0_2 << 9) < 0)) || ((temp_v0_2 << 7) < 0) || ((temp_v0_2 & 2) != 0) || ((temp_v0_2 & 4) != 0) || (player->effect & 0x04000000))) {
         sp18 = temp_a2_2;
         func_800C92CC(arg0, 0x2900800B, temp_a2_2, player);
         *temp_a2_2 = 0;
@@ -1917,7 +1917,7 @@ void func_80009B60(s32 playerId) {
         }
         temp_v1 = &gPlayers[playerId];
         temp_a2 = playerId * 2;
-        if (!(temp_v1->unk_000 & 0x8000)) {
+        if (!(temp_v1->bonusEffect & 0x8000)) {
             D_80164450[playerId] = -0x00000014;
             gCourseCompletionPercentByPlayerId[playerId] = -1000.0f;
             gLapCompletionPercentByPlayerId[playerId] = -1000.0f;
@@ -1963,7 +1963,7 @@ void func_80009B60(s32 playerId) {
                 func_80014CC0(playerId, sp40);
                 break;
             }
-            if (sp40->unk_000 & 0x800) {
+            if (sp40->bonusEffect & 0x800) {
                 sp40->effect &= 0xFFBFFFFF;
                 sp40->unk_044 &= 0xFFFE;
             }
@@ -1971,7 +1971,7 @@ void func_80009B60(s32 playerId) {
             if ((gCurrentCourseId != 0x0014) && ((*(&D_80163240 + sp34) == 1) || (playerId == 0))) {
                 set_places();
             }
-            if (sp40->unk_000 & 0x1000) {
+            if (sp40->bonusEffect & 0x1000) {
                 if ((D_801630E2 == 1) && (gCurrentCourseId != 0x0014)) {
                     func_80011E38(playerId);
                 }
@@ -1997,7 +1997,7 @@ void func_80009B60(s32 playerId) {
                     *temp_a1 = 1;
                 }
                 temp_v0_6 = gCurrentCourseId;
-                if ((D_801646CC == 1) || (sp40->unk_000 & 0x800) || (temp_v0_6 == 0x0014)) {
+                if ((D_801646CC == 1) || (sp40->bonusEffect & 0x800) || (temp_v0_6 == 0x0014)) {
                     if (temp_v0_6 != 0x000A) {
                         *(&D_801634FC + (playerId * 0x10)) = 0.0f;
                     }
@@ -2399,7 +2399,7 @@ void func_8000B140(s32 playerId) {
 loop_15:
         if (var_t0 != playerId) {
             temp_v0_4 = &gPlayers[var_t0];
-            if ((temp_v0_4->unk_000 & 0x8000) != 0) {
+            if ((temp_v0_4->bonusEffect & 0x8000) != 0) {
                 temp_f2 = ((temp_v1->unk_094 / 18.0f) * 216.0f) - 5.0f;
                 temp_v1_2 = (s16) gNearestWaypointByPlayerId[var_t0];
                 temp_f0_2 = (temp_v0_4->unk_094 / 18.0f) * 216.0f;
@@ -2575,7 +2575,7 @@ void func_8000B95C(s32 playerId, u16 wayPointIndex, s32 pathIndex) {
     UNUSED Vec3f pad;
     D_80163068[playerId] = 0.0f;
     if ((s32) D_800DCA4C[gCurrentCourseId] >= 0) {
-        if ((gPlayers[playerId].unk_000 & 0x8000) != 0) {
+        if ((gPlayers[playerId].bonusEffect & 0x8000) != 0) {
             D_80163068[playerId] = func_8000B874(gPlayers[playerId].pos[0], gPlayers[playerId].pos[2], wayPointIndex, pathIndex);
         }
     }
@@ -2968,7 +2968,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 wayPointIndex, Player *playe
     struct TrackWayPoint *temp_v1_4;
     u16 temp_v0;
 
-    temp_v0 = player->unk_000;
+    temp_v0 = player->bonusEffect;
     var_f24 = posZ;
     var_f20 = posX;
     var_f22 = posY;
@@ -3649,8 +3649,8 @@ void func_8000DF8C(s32 arg0) {
                     temp_f12 = var_f24 - gPlayerFour->pos[2];
                     if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12)) < 25.0f) {
                         sp7E = 4;
-                        gPlayerFour->statusEffects |= REVERSE_EFFECT;
-                        gPlayerFour->unk_000 &= ~0x2000;
+                        gPlayerFour->hitEffects |= REVERSE_EFFECT;
+                        gPlayerFour->bonusEffect &= ~0x2000;
                         var_s1 = 0;
                         sp4C = 4;
                     }
@@ -3670,9 +3670,9 @@ void func_8000DF8C(s32 arg0) {
                                 sp7E = 4;
                                 var_s1 = 0;
                                 if (gCurrentCourseId == 5) {
-                                    var_v0->statusEffects |= HIT_BY_ITEM_EFFECT;
+                                    var_v0->hitEffects |= HIT_BY_ITEM_EFFECT;
                                 } else {
-                                    var_v0->statusEffects |= REVERSE_EFFECT;
+                                    var_v0->hitEffects |= REVERSE_EFFECT;
                                 }
                                 var_v1 = D_8018EDF3;
                             }
@@ -4679,7 +4679,7 @@ void func_8000F628(void) {
             do {
                 if (var_s2_3->unk0 == 1) {
                     temp_s1 = &gPlayers[var_s0_4];
-                    temp_s1->statusEffects |= 0x02000000;
+                    temp_s1->hitEffects |= 0x02000000;
                 }
                 if (var_s2_3->unk2 == 1) {
                     temp_s1_2 = &gPlayers[var_s0_4];
@@ -5677,7 +5677,7 @@ void func_80012220(VehicleStuff *vehicle) {
     vehicle->velocity[2] = vehicle->position[2] - origZPos;
 }
 
-void func_800122D8(void) {
+void init_course_vehicule(void) {
     s16 trainCarYRot;
     UNUSED Vec3f pad;
     TrainCarStuff *tempLocomotive;
@@ -5983,12 +5983,12 @@ void func_80012DC0(s32 playerId, Player *player) {
                 if ((x_dist > -100.0) && (x_dist < 100.0)) {
                     if ((z_dist > -100.0) && (z_dist < 100.0)) {
                         if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                            player->statusEffects |= REVERSE_EFFECT;
+                            player->hitEffects |= REVERSE_EFFECT;
                         }
                         trainCar = &sTrains[trainIndex].tender;
                         if (trainCar->isActive == 1) {
                             if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                                player->statusEffects |= REVERSE_EFFECT;
+                                player->hitEffects |= REVERSE_EFFECT;
                             }
                         }
                     }
@@ -6002,7 +6002,7 @@ void func_80012DC0(s32 playerId, Player *player) {
                         if ((x_dist > -100.0) && (x_dist < 100.0)) {
                             if ((z_dist > -100.0) && (z_dist < 100.0)) {
                                 if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                                    player->statusEffects |= REVERSE_EFFECT;
+                                    player->hitEffects |= REVERSE_EFFECT;
                                 }
                             }
                         }
@@ -6273,7 +6273,7 @@ void func_80013854(Player *player) {
                 if ((x_diff > -300.0) && (x_diff < 300.0)) {
                     if ((z_diff > -300.0) && (z_diff < 300.0)) {
                         if ((func_80006018(tempPaddleWheelBoat->position[0], tempPaddleWheelBoat->position[2], tempPaddleWheelBoat->velocity[0], tempPaddleWheelBoat->velocity[2], 200.0f, 60.0f, playerX, playerZ) == 1) && (y_diff < 60.0)) {
-                            player->statusEffects |= 0x80000;
+                            player->hitEffects |= 0x80000;
                         }
                     }
                 }
@@ -6495,7 +6495,7 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
 
     temp_s7 = playerId * 2;
     var_s0 = vehicle;
-    if (((*(&D_801631E0 + temp_s7) != 1) || ((temp_v0 = player->unk_000, ((temp_v0 & 0x4000) != 0)) && !(temp_v0 & 0x1000))) && ((player->effect << 7) >= 0)) {
+    if (((*(&D_801631E0 + temp_s7) != 1) || ((temp_v0 = player->bonusEffect, ((temp_v0 & 0x4000) != 0)) && !(temp_v0 & 0x1000))) && ((player->effect << 7) >= 0)) {
         spC4 = player->pos[0];
         var_fp = 0;
         spC0 = player->pos[1];
@@ -6512,11 +6512,11 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
                     if ((temp_f0 > -20.0) && (temp_f0 < 20.0)) {
                         temp_f0_2 = (f64) temp_f24;
                         if ((temp_f0_2 > -100.0) && (temp_f0_2 < 100.0) && (func_80006018(temp_f12, temp_f14, var_s0->velocity[0], var_s0->velocity[2], arg3, arg4, spC4, spBC) == (s32) 1U)) {
-                            player->statusEffects |= REVERSE_EFFECT;
+                            player->hitEffects |= REVERSE_EFFECT;
                         }
                     }
                 }
-                temp_v0_2 = player->unk_000;
+                temp_v0_2 = player->bonusEffect;
                 if ((temp_v0_2 & 0x4000) && !(temp_v0_2 & 0x1000)) {
                     temp_s2 = 1 << playerId;
                     if ((temp_f20 > -300.0) && (temp_f20 < 300.0) && (temp_f0_3 = (f64) temp_f22, (temp_f0_3 > -20.0)) && (temp_f0_3 < 20.0) && (temp_f0_4 = (f64) temp_f24, (temp_f0_4 > -300.0)) && (temp_f0_4 < 300.0)) {
@@ -9946,14 +9946,14 @@ void func_8001AC10(s32 playerId) {
 
     temp_t9 = &gPlayerOne[playerId];
     sp2C = temp_t9;
-    if ((gModeSelection != (s32) 1) && (D_801646CC != (u16) 1) && !(temp_t9->unk_000 & 0x800)) {
+    if ((gModeSelection != (s32) 1) && (D_801646CC != (u16) 1) && !(temp_t9->bonusEffect & 0x800)) {
         temp_s0 = (playerId * 0x10) + &D_801642D8;
         temp_a1 = temp_s0->unk0;
         switch (temp_a1) {                          /* switch 1 */
         case 0:                                     /* switch 1 */
             temp_s0->ffff = -1;
             if ((((playerId * 0x14) + 0x64) < D_80164450[playerId]) && (temp_s0->timer >= 0x259) && (temp_s0->laps < 3) && (temp_v1 = gLapCountByPlayerId[playerId], ((temp_v1 < 3) != 0))) {
-                func_8001AB74(playerId, temp_s0, func_8007AF78((s32) (s16) temp_v1, gGPCurrentRaceRankByPlayerId[playerId].unk2));
+                func_8001AB74(playerId, temp_s0, gen_random_item_cpu((s32) (s16) temp_v1, gGPCurrentRaceRankByPlayerId[playerId].unk2));
             } else {
                 func_8001ABE0(playerId, (s32) temp_s0);
             }
@@ -9983,7 +9983,7 @@ void func_8001AC10(s32 playerId) {
                 temp_s0->ffff = func_802B2D70(sp2C);
                 temp_v1_3 = temp_s0->ffff;
                 if ((temp_v1_3 >= 0) && (temp_v1_3 < 0x64)) {
-                    sp2C->statusEffects |= 0x40000;
+                    sp2C->hitEffects |= 0x40000;
                     temp_s0->unk0 = 2;
                     temp_s0->timer = 0;
                     temp_s0->laps += 1;
@@ -9999,7 +9999,7 @@ void func_8001AC10(s32 playerId) {
             if (!(temp_a3->flags & 0x8000) || (temp_a3->type != 6) || (temp_a3->state != 0) || (playerId != temp_a3->rot[0])) {
                 temp_s0->unk0 = 0;
                 temp_s0->timer = 0;
-                sp2C->statusEffects &= 0xFFFBFFFF;
+                sp2C->hitEffects &= 0xFFFBFFFF;
             } else if (temp_s0->unkE < temp_s0->timer) {
                 temp_s0->unk0 = 3;
             }
@@ -10020,7 +10020,7 @@ void func_8001AC10(s32 playerId) {
                     temp_a3_2->pos[1] = func_802AE1C0(sp2C->pos[0], (f32) ((f64) sp2C->pos[1] + 30.0), sp2C->pos[2]) + (temp_a3_2->boundingBoxSize + 1.0f);
                 }
             }
-            sp2C->statusEffects &= 0xFFFBFFFF;
+            sp2C->hitEffects &= 0xFFFBFFFF;
             temp_s0->timer = 0;
             temp_s0->unk0 = 0;
             break;
@@ -10030,7 +10030,7 @@ void func_8001AC10(s32 playerId) {
             if ((temp_v1_4 >= 0) && (temp_v1_4 < 0x64)) {
                 temp_a3_3 = &gActorList[temp_v1_4];
                 temp_a3_3->state = 4;
-                sp2C->statusEffects |= 0x40000;
+                sp2C->hitEffects |= 0x40000;
                 temp_s0->unk0 = 0x0023;
                 temp_s0->timer = 0;
                 temp_s0->laps += 1;
@@ -10052,7 +10052,7 @@ void func_8001AC10(s32 playerId) {
             if (!(temp_a3_4->flags & 0x8000) || (temp_a3_4->type != 6) || (temp_a3_4->state != 4) || (playerId != temp_a3_4->rot[0])) {
                 temp_s0->timer = 0;
                 temp_s0->unk0 = 0;
-                sp2C->statusEffects &= 0xFFFBFFFF;
+                sp2C->hitEffects &= 0xFFFBFFFF;
             } else {
                 temp_a3_4->pos[0] += temp_a3_4->velocity[0];
                 temp_a3_4->velocity[1] = (f32) ((f64) temp_a3_4->velocity[1] - 0.4);
@@ -10077,7 +10077,7 @@ void func_8001AC10(s32 playerId) {
                 sp28 = temp_a3_5;
                 temp_a3_5->pos[1] = func_802AE1C0(temp_a3_5->pos[0], (f32) ((f64) temp_a3_5->pos[1] + 30.0), temp_a3_5->pos[2]) + (temp_a3_5->boundingBoxSize + 1.0f);
             }
-            sp2C->statusEffects &= 0xFFFBFFFF;
+            sp2C->hitEffects &= 0xFFFBFFFF;
             temp_s0->timer = 0;
             temp_s0->unk0 = 0;
             break;
@@ -10303,7 +10303,7 @@ block_146:
             }
             break;
         case 25:                                    /* switch 1 */
-            sp2C->statusEffects |= 0x2000;
+            sp2C->hitEffects |= 0x2000;
             temp_s0->timer = 0;
             temp_s0->unk0 = 0x001A;
             temp_s0->laps += 1;
@@ -10315,7 +10315,7 @@ block_146:
             temp_s0->timer = 0;
             break;
         case 27:                                    /* switch 1 */
-            sp2C->statusEffects |= 0x800;
+            sp2C->hitEffects |= 0x800;
             temp_s0->timer = 0;
             temp_s0->unk0 = 0x001C;
             temp_s0->laps += 1;
@@ -10327,21 +10327,21 @@ block_146:
             temp_s0->timer = 0;
             break;
         case 29:                                    /* switch 1 */
-            sp2C->statusEffects |= 0x200;
+            sp2C->hitEffects |= 0x200;
             temp_s0->timer = 0;
             temp_s0->unk0 = 0;
             temp_s0->laps += 1;
             break;
         case 30:                                    /* switch 1 */
             if (temp_s0->timer >= 0x3D) {
-                sp2C->statusEffects |= 0x200;
+                sp2C->hitEffects |= 0x200;
                 temp_s0->timer = 0;
                 temp_s0->unk0 = 0x001D;
             }
             break;
         case 31:                                    /* switch 1 */
             if (temp_s0->timer >= 0x3D) {
-                sp2C->statusEffects |= 0x200;
+                sp2C->hitEffects |= 0x200;
                 temp_s0->timer = 0;
                 temp_s0->unk0 = 0x001E;
             }
@@ -10353,7 +10353,7 @@ block_146:
             break;
         case 33:                                    /* switch 1 */
             if (((s16) temp_s0->timer % 60) == 0) {
-                sp2C->statusEffects |= 0x200;
+                sp2C->hitEffects |= 0x200;
                 if (temp_s0->unkE < temp_s0->timer) {
                     temp_s0->timer = 0;
                     temp_s0->unk0 = 0;
@@ -10392,7 +10392,7 @@ void func_8001BE78(void) {
     func_8000F628();
     for (i = 0; i < 4; i++) {
         temp_s1 = &gPlayerOne[i];
-        temp_s1->unk_000 &= 0xDFFF;
+        temp_s1->bonusEffect &= 0xDFFF;
         gPathIndexByPlayerId[i] = i;
         D_801634F8[i].unkC = 0.0f;
         D_801634F8[i].unk4 = 0.0f;
@@ -10497,7 +10497,7 @@ loop_8:
     if ((var_s1 != 3) || (D_8016347C != 0)) {
         temp_s0 = &gPlayerOne[var_s1];
         func_80009B60(var_s1);
-        temp_v1 = temp_s0->unk_000;
+        temp_v1 = temp_s0->bonusEffect;
         temp_v0 = var_s1 * 4;
         if ((temp_v1 & 0x2000) == 0) {
             temp_f0 = *(&D_80163418 + temp_v0) - temp_s0->pos[0];
@@ -10505,22 +10505,22 @@ loop_8:
             if ((f64) ((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 1.0) {
                 if (var_s1 != 3) {
                     if (D_8016347C == 0) {
-                        temp_s0->unk_000 = temp_v1 | 0x2000;
+                        temp_s0->bonusEffect = temp_v1 | 0x2000;
                     } else {
-                        temp_s0->unk_000 = temp_v1 & 0xDFFF;
+                        temp_s0->bonusEffect = temp_v1 & 0xDFFF;
                     }
-                    if (((gPlayerOne->unk_000 & 0x2000) != 0) && ((gPlayerTwo->unk_000 & 0x2000) != 0) && ((gPlayerThree->unk_000 & 0x2000) != 0)) {
+                    if (((gPlayerOne->bonusEffect & 0x2000) != 0) && ((gPlayerTwo->bonusEffect & 0x2000) != 0) && ((gPlayerThree->bonusEffect & 0x2000) != 0)) {
                         D_8016347C = 1;
                         D_80163480 = 0;
                     }
                 } else if (D_8016347E == 0) {
                     if ((temp_s0->effect & 0x01000000) == 0) {
-                        temp_s0->unk_000 = temp_v1 | 0x2000;
+                        temp_s0->bonusEffect = temp_v1 | 0x2000;
                     }
                     D_8016347E = 1;
                     D_80163484 = 0;
                 } else if ((temp_s0->effect & 0x01000000) == 0) {
-                    temp_s0->unk_000 = temp_v1 | 0x2000;
+                    temp_s0->bonusEffect = temp_v1 | 0x2000;
                 }
             }
         }

@@ -908,7 +908,7 @@ void func_8001EE98(Player *player, Camera *camera, s8 index) {
     switch (gModeSelection) {
         case GRAND_PRIX:
 
-            if (((player->unk_000 & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1)) { D_80152300[cameraIndex] = 3;
+            if (((player->bonusEffect & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1)) { D_80152300[cameraIndex] = 3;
             //             -->                 -->        Scroll right        -->      bit more     -->     ^ Required for matching
             } else if (gIsGamePaused == 1) {
                 func_8001A0A4(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
@@ -937,7 +937,7 @@ void func_8001EE98(Player *player, Camera *camera, s8 index) {
             }
             break;
         case TIME_TRIALS:
-            if (((gPlayerOne->unk_000 & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1)) {
+            if (((gPlayerOne->bonusEffect & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1)) {
                 D_80152300[0] = 3;
                 D_80152300[1] = 3;
                 D_80152300[2] = 3;
@@ -952,7 +952,7 @@ void func_8001EE98(Player *player, Camera *camera, s8 index) {
             }
             break;
         case VERSUS:
-            if (((player->unk_000 & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1) || (D_8015F894 == 2)) {
+            if (((player->bonusEffect & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1) || (D_8015F894 == 2)) {
                 D_80152300[cameraIndex] = 3;
             } else {
                 if (gIsGamePaused == 1) {
@@ -1012,7 +1012,7 @@ void func_8001F394(Player *player, f32 *arg1) {
     }
 
     if (D_80164A08[playerIndex] == 0) {
-        if (player->statusEffects & 0x40000) {
+        if (player->hitEffects & 0x40000) {
             D_80164A08[playerIndex] = 1;
         }
         if ((player->effect & 0x2000) == 0x2000) {
@@ -1021,7 +1021,7 @@ void func_8001F394(Player *player, f32 *arg1) {
         if ((player->effect & 0x100000) == 0x100000) {
             D_80164A08[playerIndex] = 3;
         }
-        if ((player->statusEffects & 0x100) == 0x100) {
+        if ((player->hitEffects & 0x100) == 0x100) {
             D_80164A08[playerIndex] = 4;
         }
         if (((player->effect & 0x80) == 0x80) || ((player->effect & 0x40) == 0x40)) {
@@ -1031,7 +1031,7 @@ void func_8001F394(Player *player, f32 *arg1) {
     }
     switch (D_80164A08[playerIndex]) {
     case 1:
-        if (player->statusEffects & 0x40000) {
+        if (player->hitEffects & 0x40000) {
             move_f32_towards(&D_80164498[playerIndex], 20.0f, 0.2f);
         } else {
             if (D_80164498[playerIndex] > 1.0f) {
@@ -1069,7 +1069,7 @@ void func_8001F394(Player *player, f32 *arg1) {
         }
         break;
     case 4:
-        if ((player->statusEffects & 0x100) == 0x100) {
+        if ((player->hitEffects & 0x100) == 0x100) {
             move_f32_towards(&D_80164498[playerIndex], 25.0f, 1.0f);
         } else {
             if (D_80164498[playerIndex] > 1.0f) {
@@ -1126,10 +1126,10 @@ void func_8001F87C(s32 cameraId) {
     s32 id = cameraId;
 
     if(gPlayerOne){}
-    if (gActiveScreenMode == 0) {
+    if (gActiveScreenMode == SCREEN_MODE_1P) {
         if (gModeSelection == 0) {
             for (playerIndex = 0; playerIndex < 8; playerIndex++) {
-                if ((gPlayerOne[playerIndex].unk_000 & 0x200) || (gPlayerOne[playerIndex].unk_000 & 0x80)) break;
+                if ((gPlayerOne[playerIndex].bonusEffect & 0x200) || (gPlayerOne[playerIndex].bonusEffect & 0x80)) break;
                 if (playerIndex == 7) {
                     D_80164A2C += 1;
                 }

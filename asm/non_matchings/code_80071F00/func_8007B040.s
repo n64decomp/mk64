@@ -20,7 +20,7 @@ glabel func_8007B040
 /* 07BC88 8007B088 00A22821 */  addu  $a1, $a1, $v0
 /* 07BC8C 8007B08C 00822021 */  addu  $a0, $a0, $v0
 /* 07BC90 8007B090 84844392 */  lh    $a0, %lo(D_80164392)($a0) # 0x4392($a0)
-/* 07BC94 8007B094 0C01EBD0 */  jal   func_8007AF40
+/* 07BC94 8007B094 0C01EBD0 */  jal   gen_random_item_human
 /* 07BC98 8007B098 84A543BA */   lh    $a1, %lo(D_801643BA)($a1) # 0x43ba($a1)
 /* 07BC9C 8007B09C 10000006 */  b     .L8007B0B8
 /* 07BCA0 8007B0A0 00401825 */   move  $v1, $v0

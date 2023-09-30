@@ -99,7 +99,7 @@ void func_802B0570(struct BananaActor *banana) {
 
     func_802B0464(banana->youngerIndex);
     func_802B04E8(banana, banana->elderIndex);
-    if ((gPlayers[banana->playerId].unk_000 & 0x4000) != 0) {
+    if ((gPlayers[banana->playerId].bonusEffect & 0x4000) != 0) {
         func_800C9060(banana->playerId, 0x19019053);
     }
     banana->flags = -0x8000;
@@ -292,8 +292,8 @@ void update_actor_banana_bunch(struct BananaBunchParent *banana_bunch) {
         }
         if (someCount == 0) {
             destroy_actor((struct Actor *) banana_bunch);
-            owner->statusEffects &= ~0x40000;
-        } else if ((owner->unk_000 & 0x4000) != 0) {
+            owner->hitEffects &= ~0x40000;
+        } else if ((owner->bonusEffect & 0x4000) != 0) {
             controller = &gControllers[banana_bunch->playerId];
             if ((controller->buttonPressed & Z_TRIG) != 0) {
                 controller->buttonPressed &= ~Z_TRIG;
@@ -311,22 +311,22 @@ void update_actor_banana_bunch(struct BananaBunchParent *banana_bunch) {
     }
 }
 
-s32 func_802B0E14(s16 arg0) {
-    struct ShellActor *temp;
+bool is_shell_exist(s16 arg0) {
+    struct ShellActor *actor;
     if (arg0 < 0) {
-        return 0;
+        return FALSE;
     }
-    temp = (struct ShellActor*) &gActorList[arg0];
-    if (temp->type == ACTOR_GREEN_SHELL) {
-        if (temp->state == TRIPLE_GREEN_SHELL) {
-            return 1;
+    actor = (struct ShellActor*) &gActorList[arg0];
+    if (actor->type == ACTOR_GREEN_SHELL) {
+        if (actor->state == TRIPLE_GREEN_SHELL) {
+            return TRUE;
         }
-        return 0;
+        return FALSE;
     }
-    if (temp->state == TRIPLE_RED_SHELL) {
-        return 1;
+    if (actor->state == TRIPLE_RED_SHELL) {
+        return TRUE;
     }
-    return 0;
+    return FALSE;
 }
 
 void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
@@ -336,7 +336,7 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
     struct ShellActor *shell;
     Vec3f someVelocity;
     UNUSED s32 pad3;
-    s16 someCount;
+    s16 shellCount;
     u16 someRotAngle;
     Player *player;
 
@@ -345,47 +345,47 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
     parent->rotAngle += parent->rotVelocity;
     someRotAngle = parent->rotAngle;
     switch (parent->state) {
-    case 0:
-        if (func_802B19EC(parent, &gPlayers[playerId], shellType, 0U) != -1) {
+    case SPAWN_FIRST_SHELL:
+        if (init_triple_shell(parent, &gPlayers[playerId], shellType, 0U) != -1) {
             func_800C9060(playerId, 0x19008012);
             parent->shellsAvailable += 1;
         }
-        parent->state = 1;
+        parent->state = SPAWN_SECOND_SHELL;
         break;
-    case 1:
+    case SPAWN_SECOND_SHELL:
         if (parent->rotVelocity > 0) {
             if (someRotAngle >= 0xD556) {
-                if (func_802B19EC(parent, &gPlayers[playerId], shellType, 1U) != -1) {
+                if (init_triple_shell(parent, &gPlayers[playerId], shellType, 1U) != -1) {
                     func_800C9060(playerId, 0x19008012);
                     parent->shellsAvailable += 1;
                 }
-                parent->state = 2;
+                parent->state = SPAWN_SECOND_SHELL;
             }
         } else {
             if (someRotAngle < 0x2AAA) {
-                if (func_802B19EC(parent, &gPlayers[playerId], shellType, 1U) != -1) {
+                if (init_triple_shell(parent, &gPlayers[playerId], shellType, 1U) != -1) {
                     func_800C9060(playerId, 0x19008012);
                     parent->shellsAvailable += 1;
                 }
-                parent->state = 2;
+                parent->state = SPAWN_SECOND_SHELL;
             }
         }
         break;
-    case 2:
+    case SPAWN_THIRD_SHELL:
         if (parent->rotVelocity > 0) {
             if ((someRotAngle >= 0x2AAB) && (someRotAngle < 0x31C7)) {
-                if (func_802B19EC(parent, &gPlayers[playerId], shellType, 2U) != -1) {
+                if (init_triple_shell(parent, &gPlayers[playerId], shellType, 2U) != -1) {
                     func_800C9060(playerId, 0x19008012);
                     parent->shellsAvailable += 1;
                 }
-                parent->state = 3;
+                parent->state = SPAWN_THIRD_SHELL;
             }
         } else if ((someRotAngle < 0xD555) && (someRotAngle >= 0xCE39)) {
-            if (func_802B19EC(parent, &gPlayers[playerId], shellType, 2U) != -1) {
+            if (init_triple_shell(parent, &gPlayers[playerId], shellType, 2U) != -1) {
                 func_800C9060(playerId, 0x19008012);
                 parent->shellsAvailable += 1;
             }
-            parent->state = 3;
+            parent->state = SPAWN_THIRD_SHELL;
         }
         break;
     case 3:
@@ -398,23 +398,23 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
         shell->flags |= 0x4000;
         break;
     case 4:
-        someCount = 0;
-        if (func_802B0E14(parent->shellIndices[0]) == 1) {
-            someCount = 1;
+        shellCount = 0;
+        if (is_shell_exist(parent->shellIndices[0]) == 1) {
+            shellCount = 1;
         } else {
             parent->shellIndices[0] = -1.0f;
         }
-        if (func_802B0E14(parent->shellIndices[1]) == 1) {
-            someCount++;
+        if (is_shell_exist(parent->shellIndices[1]) == 1) {
+            shellCount++;
         } else {
             parent->shellIndices[1] = -1.0f;
         }
-        if (func_802B0E14(parent->shellIndices[2]) == 1) {
-            someCount++;
+        if (is_shell_exist(parent->shellIndices[2]) == 1) {
+            shellCount++;
         } else {
             parent->shellIndices[2] = -1.0f;
         }
-        if (someCount == 0) {
+        if (shellCount == 0) {
             destroy_actor((struct Actor *) parent);
             break;
         }
@@ -520,7 +520,7 @@ s32 func_802B17F4(Player *player) {
     bananaBunch = (struct BananaBunchParent *) &gActorList[actorIndex];
     bananaBunch->state = 0;
     bananaBunch->playerId = player - gPlayerOne;
-    player->statusEffects |= 0x40000;
+    player->hitEffects |= 0x40000;
     return actorIndex;
 }
 
@@ -547,7 +547,7 @@ s32 func_802B18E4(Player *player, s16 tripleShellType) {
 }
 
 // This function could reasonably be called "spawn_shell_for_triple_shell" or similar
-s32 func_802B19EC(TripleShellParent *parent, Player *player, s16 shellType, u16 shellId) {
+s32 init_triple_shell(TripleShellParent *parent, Player *player, s16 shellType, u16 shellId) {
     Vec3f startingVelocity = {0.0f, 0.0f, 0.0f};
     Vec3s startingRot      = {0, 0, 0};
     Vec3f startingPos;
@@ -706,7 +706,7 @@ void update_actor_banana(struct BananaActor *banana) {
         }
         func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
         func_802B4E30((struct Actor *) banana);
-        if ((player->unk_000 & 0x4000) != 0) {
+        if ((player->bonusEffect & 0x4000) != 0) {
             if (gDemoMode) {
                 controller = gControllerOne;
             } else {
@@ -716,7 +716,7 @@ void update_actor_banana(struct BananaActor *banana) {
                 controller->buttonDepressed &= ~Z_TRIG;
                 banana->state = 1;
                 banana->unk_04 = 0x00B4;
-                player->statusEffects &= ~0x40000;
+                player->hitEffects &= ~0x40000;
                 func_800C9060(player - gPlayerOne, 0x19008012U);
                 pad3 = controller->rawStickY;
                 if ((pad3 > 30.0f) && (controller->rawStickX < 10) && (controller->rawStickX >= -9)) {
@@ -915,7 +915,7 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
             tempBanana->youngerIndex = actorIndex;
             break;
         }
-        if ((player->unk_000 & 0x4000) != 0) {
+        if ((player->bonusEffect & 0x4000) != 0) {
             func_800C9060(player - gPlayerOne, 0x19008012);
         }
     }
@@ -950,7 +950,7 @@ s32 func_802B2C40(Player *player) {
     itemBox = (struct FakeItemBox*)&gActorList[actorIndex];
     itemBox->playerId = (player - gPlayerOne);
     itemBox->state = 0;
-    player->statusEffects |= 0x40000;
+    player->hitEffects |= 0x40000;
     return actorIndex;
 }
 
@@ -990,7 +990,7 @@ s32 func_802B2D70(Player *player) {
     banana->playerId = playerId;
     banana->state = HELD_BANANA;
     banana->unk_04 = 0x0014;
-    player->statusEffects |= 0x40000;
+    player->hitEffects |= 0x40000;
     return actorIndex;
 }
 
@@ -1004,7 +1004,7 @@ void func_802B2EBC(Player *player) {
     Player *otherPlayer;
 
     func_8009E5BC();
-    if ((player->unk_000 & 0x4000) != 0) {
+    if ((player->bonusEffect & 0x4000) != 0) {
         // Play sound.
         func_800CAB4C(player - gPlayerOne);
     }
@@ -1012,7 +1012,7 @@ void func_802B2EBC(Player *player) {
     for (index = 0; index < 8; index++) {
         otherPlayer = &gPlayers[index];
         if (player != otherPlayer) {
-            otherPlayer->statusEffects |= HIT_ROTATING_EFFECT;
+            otherPlayer->hitEffects |= HIT_ROTATING_EFFECT;
         }
     }
 }
@@ -1038,22 +1038,22 @@ void func_802B2FA0(Player *player) {
         func_802B17F4(player);
         break;
     case ITEM_MUSHROOM:
-        player->statusEffects |= 0x200;
+        player->hitEffects |= 0x200;
         break;
     case ITEM_DOUBLE_MUSHROOM:
-        player->statusEffects |= 0x200;
+        player->hitEffects |= 0x200;
         break;
     case ITEM_TRIPLE_MUSHROOM:
-        player->statusEffects |= 0x200;
+        player->hitEffects |= 0x200;
         break;
     case ITEM_SUPER_MUSHROOM:
-        player->statusEffects |= 0x200;
+        player->hitEffects |= 0x200;
         break;
     case ITEM_BOO:
-        player->statusEffects |= 0x800;
+        player->hitEffects |= 0x800;
         break;
     case ITEM_STAR:
-        player->statusEffects |= 0x2000;
+        player->hitEffects |= 0x2000;
         break;
     case ITEM_THUNDERBOLT:
         func_802B2EBC(player);
@@ -1081,7 +1081,7 @@ void func_802B30EC(void) {
     for (player = &gPlayers[0], loopController = &gControllers[0], target = &gControllers[4]; loopController != target; player++, loopController++) {
         controller = loopController;
         if (func_800910E4(player) == 0) {
-            if((player->unk_000 & 0x100) != 0){
+            if((player->bonusEffect & GHOST_EFFECT) != 0){
                 if ((player - gPlayerTwo) == 0) {
                     controller = gControllerSix;
                 } else if((player - gPlayerThree) == 0) {
@@ -1093,7 +1093,7 @@ void func_802B30EC(void) {
                 }
             }
 
-            if (((player->unk_000 & 0x4000) != 0) && (player->unk_010 != ITEM_NONE) && ((player->unk_000 & 0x2000) == 0)) {
+            if (((player->bonusEffect & 0x4000) != 0) && (player->unk_010 != ITEM_NONE) && ((player->bonusEffect & DOESNT_START_EFFECT) == 0)) {
                 if ((controller->buttonPressed & Z_TRIG) != 0) {
                     controller->buttonPressed &= ~Z_TRIG;
                     func_802B2FA0(player);
@@ -1147,7 +1147,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
         } else {
             shell->pos[1] = pad2;
         }
-        if ((player->unk_000 & 0x4000) != 0) {
+        if ((player->bonusEffect & 0x4000) != 0) {
             controller = &gControllers[shell->playerId];
             if ((controller->buttonDepressed & 0x2000) != 0) {
                 controller->buttonDepressed &= ~0x2000;
@@ -1442,7 +1442,7 @@ s16 func_802B3FD0(Player *owner, struct ShellActor *shell) {
 
     for (playerIndex = 0; playerIndex < 4; playerIndex++) {
         player = &gPlayers[playerIndex];
-        if ((player->unk_000 & 0x8000) == 0) {continue;}
+        if ((player->bonusEffect & 0x8000) == 0) {continue;}
         if (player == owner) {continue; }
         if (gPlayerBalloonCount[playerIndex] < 0) { continue; }
             // func_802B51E8 is not quite a 3D distance function, it doubles (rather than squares) the Z difference of the positions
@@ -1528,7 +1528,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             shell->pos[1] = pad7;
         }
 
-        if ((player->unk_000 & 0x4000) != 0) {
+        if ((player->bonusEffect & 0x4000) != 0) {
             if (gDemoMode) {
                 controller = gControllerOne;
             } else {

@@ -230,7 +230,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
     render_set_position(matrix, 0);
     switch (gCurrentCourseId) {
         case COURSE_BOWSER_CASTLE:
-            if (gActiveScreenMode != 0) { return; }
+            if (gActiveScreenMode != SCREEN_MODE_1P) { return; }
             if (pathCounter < 6) { return; }
             if (pathCounter > 9) { return; }
             if (pathCounter == 9) {

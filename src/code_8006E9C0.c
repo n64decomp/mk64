@@ -222,7 +222,7 @@ void func_8006EE7C(s32 objectIndex) {
 
     temp_v0 = &D_80165C18[objectIndex];
     temp_v0->unk_0A4 = 0;
-    temp_v0->unk_0D2 = temp_v0->unk_0A4;
+    temp_v0->itemDisplay = temp_v0->unk_0A4;
     temp_v0->tlutList = (s32 *) gTLUTItemWindowNone;
     temp_v0->activeTLUT = (s32 *) gTLUTItemWindowNone;
     temp_v0->textureList = gTextureItemWindowNone;

@@ -3121,10 +3121,10 @@ void func_800C70A8(u8 playerId) {
         if (((gPlayers[playerId].unk_094 < 0.5f) || ((gPlayers[playerId].effect & 8) == 8)) && (D_800E9E74[playerId] != 0x0000001C)) {
             D_800E9E74[playerId] = 0;
         }
-        if ((((gPlayers[playerId].effect & 0x4000) == 0x4000) && ((gPlayers[playerId].unk_000 & 0x2000) != 0x2000)) || ((gPlayers[playerId].effect & 0x800) == 0x800) || ((gPlayers[playerId].effect & 0x80) == 0x80) || ((gPlayers[playerId].effect & 0x40) == 0x40) || ((gPlayers[playerId].unk_044 & 0x4000) == 0x4000)) {
+        if ((((gPlayers[playerId].effect & 0x4000) == 0x4000) && ((gPlayers[playerId].bonusEffect & 0x2000) != 0x2000)) || ((gPlayers[playerId].effect & 0x800) == 0x800) || ((gPlayers[playerId].effect & 0x80) == 0x80) || ((gPlayers[playerId].effect & 0x40) == 0x40) || ((gPlayers[playerId].unk_044 & 0x4000) == 0x4000)) {
             D_800E9E74[playerId] = 0x00000012;
         }
-        if ((((gPlayers[playerId].effect & 0x20) == 0x20) && ((gPlayers[playerId].unk_000 & 0x2000) != 0x2000)) || ((gPlayers[playerId].effect & 0x800) == 0x800)) {
+        if ((((gPlayers[playerId].effect & 0x20) == 0x20) && ((gPlayers[playerId].bonusEffect & 0x2000) != 0x2000)) || ((gPlayers[playerId].effect & 0x800) == 0x800)) {
             D_800E9E74[playerId] = 0x00000013;
         }
         if (gPlayers[playerId].unk_20C != 0.0f) {

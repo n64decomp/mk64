@@ -245,13 +245,13 @@ struct UnkPlayerInner {
 };
 
 typedef struct {
-    /* 0x0000 */ u16 unk_000; // playerType?
+    /* 0x0000 */ u16 bonusEffect; // playerType?
     /* 0x0002 */ u16 unk_002;
     /* 0x0004 */ s16 currentRank;
     /* 0x0006 */ u16 unk_006;
     /* 0x0008 */ s16 lapCount;
     /* 0x000A */ char unk_00A[0x2];
-    /* 0x000C */ s32 statusEffects; // Bitflag.
+    /* 0x000C */ s32 hitEffects; // Bitflag.
     /* 0x0010 */ s16 unk_010;
     /* 0x0012 */ s16 unk_012;
     /* 0x0014 */ Vec3f pos;

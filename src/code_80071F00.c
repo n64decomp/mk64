@@ -184,14 +184,14 @@ void func_80072120(s32 *arg0, s32 arg1) {
 
 void func_80072180(void) {
     if (gModeSelection == TIME_TRIALS) {
-        if (((gPlayerOne->unk_000 & PLAYER_EXISTS) != 0) &&
-        ((gPlayerOne->unk_000 & (PLAYER_INVISIBLE_OR_BOMB | PLAYER_CPU)) == 0)) {
+        if (((gPlayerOne->bonusEffect & PLAYER_EXISTS) != 0) &&
+        ((gPlayerOne->bonusEffect & (PLAYER_INVISIBLE_OR_BOMB | PLAYER_CPU)) == 0)) {
             D_80162DF8 = 1;
         }
     }
 }
 
-void func_800721C0(s32 arg0, s32 arg1) {
+void set_obj_index_flag_unk_054(s32 arg0, s32 arg1) {
     D_80165C18[arg0].unk_054 |= arg1;
 }
 
@@ -203,15 +203,15 @@ UNUSED void func_80072214(s32 arg0, s32 arg1) {
     D_80165C18[arg0].unk_054 ^= arg1;
 }
 
-s32 func_8007223C(s32 arg0, s32 arg1) {
-    s32 phi_v1 = 0;
+bool is_obj_index_flag_unk_054_active(s32 arg0, s32 arg1) {
+    s32 phi_v1 = FALSE;
     if ((D_80165C18[arg0].unk_054 & arg1) != 0) {
-        phi_v1 = 1;
+        phi_v1 = TRUE;
     }
     return phi_v1;
 }
 
-s32 func_80072270(s32 arg0, s32 arg1) {
+s32 is_obj_index_flag_unk_054_unactive(s32 arg0, s32 arg1) {
     s32 phi_v1 = 0;
     if ((D_80165C18[arg0].unk_054 & arg1) == 0) {
         phi_v1 = 1;
@@ -259,7 +259,7 @@ void func_800723A4(s32 arg0, s32 arg1) {
     D_80165C18[arg0].unk_0CF = 0;
     func_80072388(arg0, 0);
     D_80165C18[arg0].unk_0D8 = arg1;
-    D_80165C18[arg0].unk_0A6 = 1;
+    D_80165C18[arg0].itemDisplayState = 1;
 }
 
 UNUSED void func_80072408(s32 arg0) {
@@ -267,7 +267,7 @@ UNUSED void func_80072408(s32 arg0) {
 }
 
 void func_80072428(s32 arg0) {
-    D_80165C18[arg0].unk_0A6 = 0;
+    D_80165C18[arg0].itemDisplayState = 0;
     D_80165C18[arg0].unk_0D8 = 0;
     func_80072388(arg0, 0);
     D_80165C18[arg0].unk_054 = 0;
@@ -279,7 +279,7 @@ void func_80072428(s32 arg0) {
 void func_80072488(s32 arg0) {
     func_80072388(arg0,  0);
     func_800721E8(arg0, 0x2000);
-    D_80165C18[arg0].unk_0A6++;
+    D_80165C18[arg0].itemDisplayState++;
 }
 
 void func_800724DC(s32 arg0) {
@@ -301,17 +301,17 @@ void func_80072568(s32 arg0, s32 arg1) {
     func_800721E8(arg0, 0x2000);
     func_800721E8(arg0, 8);
     func_80072488(arg0);
-    func_800724F8(arg0, D_80165C18[arg0].unk_0A6);
-    D_80165C18[arg0].unk_0A6 = arg1;
+    func_800724F8(arg0, D_80165C18[arg0].itemDisplayState);
+    D_80165C18[arg0].itemDisplayState = arg1;
 }
 
 void func_800725E8(s32 arg0, s32 arg1, s32 arg2) {
     func_80072388(arg0, 0);
     func_800721E8(arg0, 0x2000);
     func_800721E8(arg0, 8);
-    D_80165C18[arg0].unk_0A6 = arg2;
-    func_800724F8(arg0, D_80165C18[arg0].unk_0A6);
-    D_80165C18[arg0].unk_0A6 =  arg1;
+    D_80165C18[arg0].itemDisplayState = arg2;
+    func_800724F8(arg0, D_80165C18[arg0].itemDisplayState);
+    D_80165C18[arg0].itemDisplayState =  arg1;
 }
 
 s16 func_80072530(s32); // extern
@@ -320,18 +320,18 @@ void func_8007266C(s32 arg0) {
     func_80072388(arg0, 0);
     func_800721E8(arg0, 0x2000);
     func_800721E8(arg0, 8);
-    D_80165C18[arg0].unk_0A6 = func_80072530(arg0);
+    D_80165C18[arg0].itemDisplayState = func_80072530(arg0);
 }
 
 void func_800726CC(s32 arg0, s32 arg1) {
     func_80072388(arg0, 0);
     func_800721E8(arg0, 0x2000);
-    D_80165C18[arg0].unk_0A6 = arg1;
+    D_80165C18[arg0].itemDisplayState = arg1;
 }
 
 UNUSED void func_8007271C(s32 arg0, s32 arg1) {
     if (D_80165C18[arg0].unk_0CB == 0) {
-        D_80165C18[arg0].unk_0A6 = arg1;
+        D_80165C18[arg0].itemDisplayState = arg1;
     }
 }
 
@@ -400,13 +400,13 @@ UNUSED s32 func_800728B0(s32 arg0, s32 arg1, s32 arg2) {
 
 void func_80072950(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     if (arg1 == arg2) {
-        D_80165C18[arg0].unk_0A6 = arg3;
+        D_80165C18[arg0].itemDisplayState = arg3;
     }
 }
 
 UNUSED void func_80072974(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     if (arg1 != arg2) {
-        D_80165C18[arg0].unk_0A6 = arg3;
+        D_80165C18[arg0].itemDisplayState = arg3;
     }
 }
 
@@ -440,7 +440,7 @@ void func_800729EC(s32 arg0) {
 }
 
 UNUSED void func_80072A78(s32 arg0, s32 arg1) {
-    D_80165C18[arg0].unk_0D2 = arg1;
+    D_80165C18[arg0].itemDisplay = arg1;
     func_80072488(arg0);
 }
 
@@ -451,7 +451,7 @@ s32 func_80072AAC(s32 arg0, s32 arg1, s32 arg2) {
     if (D_80165C18[arg0].unk_0CB == 0) {
 
         func_80072388(arg0, 1);
-        D_80165C18[arg0].unk_0D2 = arg1;
+        D_80165C18[arg0].itemDisplay = arg1;
         D_80165C18[arg0].unk_050 = arg2;
     }
 
@@ -471,8 +471,8 @@ s32 func_80072B48(s32 arg0, s32 arg1) {
     phi_v1 = 0;
     if (D_80165C18[arg0].unk_0CB == 0) {
         func_80072388(arg0, 1);
-        func_800721C0(arg0, 0x80000);
-        D_80165C18[arg0].unk_0D2 = D_8018D140;
+        set_obj_index_flag_unk_054(arg0, 0x80000);
+        D_80165C18[arg0].itemDisplay = D_8018D140;
         D_80165C18[arg0].unk_050 = arg1;
     }
 
@@ -488,12 +488,12 @@ s32 func_80072B48(s32 arg0, s32 arg1) {
 }
 
 void func_80072C00(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    if (func_80072270(arg0, 0x2000) != 0) {
+    if (is_obj_index_flag_unk_054_unactive(arg0, 0x2000) != 0) {
         D_80165C18[arg0].unk_050 = arg2;
-        D_80165C18[arg0].unk_0D2 = arg1;
+        D_80165C18[arg0].itemDisplay = arg1;
         D_80165C18[arg0].unk_0D4 = 1;
         D_80165C18[arg0].unk_0CC = arg3;
-        func_800721C0(arg0, 0x2000);
+        set_obj_index_flag_unk_054(arg0, 0x2000);
     } else {
         D_80165C18[arg0].unk_050--;
         if (D_80165C18[arg0].unk_050 < 0) {
@@ -502,7 +502,7 @@ void func_80072C00(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
             if ((D_80165C18[arg0].unk_0D4 & 1) != 0) {
                 func_800721E8(arg0, 0x80000);
             } else {
-                func_800721C0(arg0, 0x80000);
+                set_obj_index_flag_unk_054(arg0, 0x80000);
             }
 
             if (D_80165C18[arg0].unk_0D4 < 0) {
@@ -522,12 +522,12 @@ void func_80072C00(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 }
 
 void func_80072D3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
-    if (func_80072270(arg0, 0x2000) != 0) {
+    if (is_obj_index_flag_unk_054_unactive(arg0, 0x2000) != 0) {
         D_80165C18[arg0].unk_050 = arg3;
-        D_80165C18[arg0].unk_0D2 = arg1;
+        D_80165C18[arg0].itemDisplay = arg1;
         D_80165C18[arg0].unk_0D4 = 1;
         D_80165C18[arg0].unk_0CC = arg4;
-        func_800721C0(arg0, 0x2000);
+        set_obj_index_flag_unk_054(arg0, 0x2000);
         return;
     }
 
@@ -536,9 +536,9 @@ void func_80072D3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
         D_80165C18[arg0].unk_050 = arg3;
         D_80165C18[arg0].unk_0D4--;
         if ((D_80165C18[arg0].unk_0D4 & 1) != 0) {
-            D_80165C18[arg0].unk_0D2 = arg1;
+            D_80165C18[arg0].itemDisplay = arg1;
         } else {
-            D_80165C18[arg0].unk_0D2 = arg2;
+            D_80165C18[arg0].itemDisplay = arg2;
         }
         
         if (D_80165C18[arg0].unk_0D4 < 0) {
@@ -559,30 +559,30 @@ s32 func_80072E54(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
     s32 sp24;
 
     sp24 = 0;
-    if (func_80072270(arg0, 0x2000) != 0) {
-        D_80165C18[arg0].unk_0D2 = arg1;
+    if (is_obj_index_flag_unk_054_unactive(arg0, 0x2000) != 0) {
+        D_80165C18[arg0].itemDisplay = arg1;
         D_80165C18[arg0].unk_050 = arg4;
         D_80165C18[arg0].unk_0CC = arg5;
         func_80072388(arg0, 1);
-        func_800721C0(arg0, 0x2000);
+        set_obj_index_flag_unk_054(arg0, 0x2000);
     } else {
         D_80165C18[arg0].unk_050--;
         if (D_80165C18[arg0].unk_050 <= 0) {
             D_80165C18[arg0].unk_050 = arg4;
-            D_80165C18[arg0].unk_0D2 += arg3;
-            if (arg2 < D_80165C18[arg0].unk_0D2) {
+            D_80165C18[arg0].itemDisplay += arg3;
+            if (arg2 < D_80165C18[arg0].itemDisplay) {
 
                 if (D_80165C18[arg0].unk_0CC > 0) {
                     D_80165C18[arg0].unk_0CC--;
                 }
                 if (D_80165C18[arg0].unk_0CC == 0) {
-                    D_80165C18[arg0].unk_0D2 = arg2;
+                    D_80165C18[arg0].itemDisplay = arg2;
                     func_800721E8(arg0, 0x2000);
                     func_80072388(arg0, 0);
                     func_80072488(arg0);
                     sp24 = 1;
                 } else {
-                    D_80165C18[arg0].unk_0D2 = arg1;
+                    D_80165C18[arg0].itemDisplay = arg1;
                 }
             }
         }
@@ -594,29 +594,29 @@ s32 func_80072F88(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
     s32 sp24;
 
     sp24 = 0;
-    if (func_80072270(arg0, 0x2000) != 0) {
-        D_80165C18[arg0].unk_0D2 = arg1;
+    if (is_obj_index_flag_unk_054_unactive(arg0, 0x2000) != 0) {
+        D_80165C18[arg0].itemDisplay = arg1;
         D_80165C18[arg0].unk_050 = arg4;
         D_80165C18[arg0].unk_0CC = arg5;
         func_80072388(arg0, 1);
-        func_800721C0(arg0, 0x2000);
+        set_obj_index_flag_unk_054(arg0, 0x2000);
     } else {
         D_80165C18[arg0].unk_050--;
         if (D_80165C18[arg0].unk_050 <= 0) {
             D_80165C18[arg0].unk_050 = arg4;
-            D_80165C18[arg0].unk_0D2 -= arg3;
-            if (D_80165C18[arg0].unk_0D2 < arg2) {
+            D_80165C18[arg0].itemDisplay -= arg3;
+            if (D_80165C18[arg0].itemDisplay < arg2) {
                 if (D_80165C18[arg0].unk_0CC > 0) {
                     D_80165C18[arg0].unk_0CC--;
                 }
                 if (D_80165C18[arg0].unk_0CC == 0) {
-                    D_80165C18[arg0].unk_0D2 = arg2;
+                    D_80165C18[arg0].itemDisplay = arg2;
                     func_800721E8(arg0, 0x2000);
                     func_80072388(arg0, 0);
                     func_80072488(arg0);
                     sp24 = 1;
                 } else {
-                    D_80165C18[arg0].unk_0D2 = arg1;
+                    D_80165C18[arg0].itemDisplay = arg1;
                 }
             }
         }
@@ -628,27 +628,27 @@ s32 func_800730BC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
     s32 sp24;
 
     sp24 = 0;
-    if (func_80072270(arg0 ,0x2000) != 0) {
-        D_80165C18[arg0].unk_0D2 = arg1;
+    if (is_obj_index_flag_unk_054_unactive(arg0 ,0x2000) != 0) {
+        D_80165C18[arg0].itemDisplay = arg1;
         D_80165C18[arg0].unk_050 = arg4;
         D_80165C18[arg0].unk_0CC = arg5;
         func_80072388(arg0, 1);
-        func_800721C0(arg0, 0x2000);
+        set_obj_index_flag_unk_054(arg0, 0x2000);
         func_800721E8(arg0, 0x4000);
     } else {
         D_80165C18[arg0].unk_050--;
         if (D_80165C18[arg0].unk_050 <= 0) {
             D_80165C18[arg0].unk_050 = arg4;
-            if (func_80072270(arg0, 0x4000) != 0) {
-                D_80165C18[arg0].unk_0D2 += arg3;
-                if (D_80165C18[arg0].unk_0D2 >= arg2) {
-                    D_80165C18[arg0].unk_0D2 = arg2;
-                    func_800721C0(arg0, 0x4000);
+            if (is_obj_index_flag_unk_054_unactive(arg0, 0x4000) != 0) {
+                D_80165C18[arg0].itemDisplay += arg3;
+                if (D_80165C18[arg0].itemDisplay >= arg2) {
+                    D_80165C18[arg0].itemDisplay = arg2;
+                    set_obj_index_flag_unk_054(arg0, 0x4000);
                 }
             } else {
-                D_80165C18[arg0].unk_0D2 -= arg3;
-                if (arg1 >= D_80165C18[arg0].unk_0D2) {
-                    D_80165C18[arg0].unk_0D2 = arg1;
+                D_80165C18[arg0].itemDisplay -= arg3;
+                if (arg1 >= D_80165C18[arg0].itemDisplay) {
+                    D_80165C18[arg0].itemDisplay = arg1;
                     if (D_80165C18[arg0].unk_0CC > 0) {
                         D_80165C18[arg0].unk_0CC--;
                     }
@@ -661,7 +661,7 @@ s32 func_800730BC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
                         sp24 = 1;
                     } else {
                         func_800721E8(arg0, 0x4000);
-                        func_800721C0(arg0, 0x80);
+                        set_obj_index_flag_unk_054(arg0, 0x80);
                     }
                 }
             }
@@ -674,27 +674,27 @@ s32 func_8007326C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
     s32 sp24;
 
     sp24 = 0;
-    if (func_80072270(arg0, 0x2000) != 0) {
-        D_80165C18[arg0].unk_0D2 = arg1;
+    if (is_obj_index_flag_unk_054_unactive(arg0, 0x2000) != 0) {
+        D_80165C18[arg0].itemDisplay = arg1;
         D_80165C18[arg0].unk_050 = arg4;
         D_80165C18[arg0].unk_0CC = arg5;
         func_80072388(arg0, 1);
-        func_800721C0(arg0, 0x2000);
+        set_obj_index_flag_unk_054(arg0, 0x2000);
         func_800721E8(arg0, 0x4000);
     } else {
         D_80165C18[arg0].unk_050--;
         if (D_80165C18[arg0].unk_050 <= 0) {
             D_80165C18[arg0].unk_050 = arg4;
-            if (func_80072270(arg0, 0x4000) != 0) {
-                D_80165C18[arg0].unk_0D2 -= arg3;
-                if (arg2 >= D_80165C18[arg0].unk_0D2) {
-                    D_80165C18[arg0].unk_0D2 = arg2;
-                    func_800721C0(arg0, 0x4000);
+            if (is_obj_index_flag_unk_054_unactive(arg0, 0x4000) != 0) {
+                D_80165C18[arg0].itemDisplay -= arg3;
+                if (arg2 >= D_80165C18[arg0].itemDisplay) {
+                    D_80165C18[arg0].itemDisplay = arg2;
+                    set_obj_index_flag_unk_054(arg0, 0x4000);
                 }
             } else {
-                D_80165C18[arg0].unk_0D2 += arg3;
-                if (D_80165C18[arg0].unk_0D2 >= arg1) {
-                    D_80165C18[arg0].unk_0D2 = arg1;
+                D_80165C18[arg0].itemDisplay += arg3;
+                if (D_80165C18[arg0].itemDisplay >= arg1) {
+                    D_80165C18[arg0].itemDisplay = arg1;
                     if (D_80165C18[arg0].unk_0CC > 0) {
                         D_80165C18[arg0].unk_0CC--;
                     }
@@ -717,7 +717,7 @@ void func_80073404(s32 arg0, u8 arg1, u8 arg2, Vtx *arg3) {
   D_80165C18[arg0].unk_074 = arg3;
   D_80165C18[arg0].textureWidth = arg1;
   D_80165C18[arg0].textureHeight = arg2;
-  D_80165C18[arg0].unk_0D2 = 0;
+  D_80165C18[arg0].itemDisplay = 0;
   D_80165C18[arg0].unk_0D3 = -1;
   D_80165C18[arg0].unk_054 = 0;
 }
@@ -727,7 +727,7 @@ void func_80073444(s32 arg0, u8 *texture, u8* arg2, u8 arg3, u16 arg4) {
     D_80165C18[arg0].textureList = arg2;
     D_80165C18[arg0].textureWidth = arg3;
     D_80165C18[arg0].textureHeight = arg4;
-    D_80165C18[arg0].unk_0D2 = 0;
+    D_80165C18[arg0].itemDisplay = 0;
     D_80165C18[arg0].unk_0D3 = -1;
     D_80165C18[arg0].unk_054 = 0;
 }
@@ -738,7 +738,7 @@ UNUSED void func_8007348C(s32 arg0, u8 *arg1, u8 arg2, u8 arg3, Vtx *arg4) {
     D_80165C18[arg0].textureWidth = arg2;
     D_80165C18[arg0].textureHeight = arg3;
     D_80165C18[arg0].unk_074 = arg4;
-    D_80165C18[arg0].unk_0D2 = 0;
+    D_80165C18[arg0].itemDisplay = 0;
     D_80165C18[arg0].unk_0D3 = -1;
     D_80165C18[arg0].unk_054 = 0;
 }
@@ -748,20 +748,20 @@ UNUSED void func_800734D4() {
 
 void func_800734DC(s32 arg0) {
     // I have no idea why this typecast works
-    D_80165C18[arg0].activeTLUT = (u32*)D_80165C18[arg0].tlutList + (D_80165C18[arg0].unk_0D2 << 7);
+    D_80165C18[arg0].activeTLUT = (u32*)D_80165C18[arg0].tlutList + (D_80165C18[arg0].itemDisplay << 7);
     D_80165C18[arg0].activeTexture = D_80165C18[arg0].textureList;
 }
 
 void func_80073514(s32 arg0) {
     D_80165C18[arg0].activeTLUT = D_80165C18[arg0].tlutList;
-    D_80165C18[arg0].activeTexture = D_80165C18[arg0].textureList + (D_80165C18[arg0].textureWidth * D_80165C18[arg0].textureHeight * D_80165C18[arg0].unk_0D2);
+    D_80165C18[arg0].activeTexture = D_80165C18[arg0].textureList + (D_80165C18[arg0].textureWidth * D_80165C18[arg0].textureHeight * D_80165C18[arg0].itemDisplay);
 }
 
 UNUSED void func_80073568() {
 }
 
 UNUSED void func_80073570(s32 objectIndex) {
-    s16 *test = &D_80165C18[objectIndex].unk_0A6;
+    s16 *test = &D_80165C18[objectIndex].itemDisplayState;
 
     D_8018D1EC++;
     if (D_8018D1EC == 5) {
@@ -808,9 +808,9 @@ s32 func_8007375C(s32 objectIndex, s32 arg1) {
     s32 sp24;
 
     sp24 = 0;
-    if (func_80072270(objectIndex, 0x00008000) != 0) {
+    if (is_obj_index_flag_unk_054_unactive(objectIndex, 0x00008000) != 0) {
         D_80165C18[objectIndex].unk_04C = arg1;
-        func_800721C0(objectIndex, 0x00008000);
+        set_obj_index_flag_unk_054(objectIndex, 0x00008000);
     }
     D_80165C18[objectIndex].unk_04C--;
     if (D_80165C18[objectIndex].unk_04C < 0) {
@@ -1267,10 +1267,10 @@ u8 *func_80074790(s32 arg0, u8 *arg1) {
 
 void func_800747F0(s32 objectIndex, u8 *arg1) {
     u8 *sp24;
-    if (D_80165C18[objectIndex].unk_0D2 != D_80165C18[objectIndex].unk_0D3) {
-        sp24 = D_80165C18[objectIndex].textureList + (D_80165C18[objectIndex].textureWidth * D_80165C18[objectIndex].textureHeight * D_80165C18[objectIndex].unk_0D2);
+    if (D_80165C18[objectIndex].itemDisplay != D_80165C18[objectIndex].unk_0D3) {
+        sp24 = D_80165C18[objectIndex].textureList + (D_80165C18[objectIndex].textureWidth * D_80165C18[objectIndex].textureHeight * D_80165C18[objectIndex].itemDisplay);
         func_80074574(sp24, (void *) func_80074790(objectIndex, arg1), D_80165C18[objectIndex].textureWidth, D_80165C18[objectIndex].textureHeight);
-        D_80165C18[objectIndex].unk_0D3 = D_80165C18[objectIndex].unk_0D2;
+        D_80165C18[objectIndex].unk_0D3 = D_80165C18[objectIndex].itemDisplay;
         func_80074478(objectIndex);
     }
 }
@@ -1412,7 +1412,7 @@ void func_80074D94(s32 arg0) {
 }
 
 void func_80074E28(s32 arg0) {
-    switch (D_80165C18[arg0].unk_0A6) {
+    switch (D_80165C18[arg0].itemDisplayState) {
     case 1:
         func_80074924(arg0);
         break;
@@ -1443,10 +1443,10 @@ void func_80074EE8(void) {
         objectIndex = D_8018C630[someIndex];
         if (objectIndex != -1) {
             object = &D_80165C18[objectIndex];
-            if (object->unk_0A6 != 0) {
+            if (object->itemDisplayState != 0) {
                 func_80074E28(objectIndex);
                 func_80074D94(objectIndex);
-                if (object->unk_0A6 == 0) {
+                if (object->itemDisplayState == 0) {
                     func_80072100(&D_8018C630[someIndex]);
                 }
                 someCount += 1;
@@ -1459,7 +1459,7 @@ void func_80074EE8(void) {
 }
 
 void func_80074FD8(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {                              /* irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                              /* irregular */
     case 0:
         break;
     case 1:
@@ -1546,9 +1546,9 @@ void func_8007542C(s32 arg0) {
         var_v0 = var_s3[var_s2];
         if (var_v0 != -1) {
             temp_s0 = &D_80165C18[var_v0];
-            if (temp_s0->unk_0A6 != 0) {
+            if (temp_s0->itemDisplayState != 0) {
                 func_80074FD8(var_v0);
-                if (temp_s0->unk_0A6 == 0) {
+                if (temp_s0->itemDisplayState == 0) {
                     func_80072100(&var_s3[var_s2]);
                 }
             }
@@ -1603,7 +1603,7 @@ void func_80075698(s32 arg0) {
 }
 
 void func_80075714(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
     case 1:
         func_80075698(objectIndex);
         break;
@@ -1656,9 +1656,9 @@ void func_80075838(void) {
             temp_a0 = *var_s1;
             if (temp_a0 != -1) {
                 temp_s0 = &D_80165C18[temp_a0];
-                if (temp_s0->unk_0A6 != 0) {
+                if (temp_s0->itemDisplayState != 0) {
                     func_80075714(temp_a0);
-                    if (temp_s0->unk_0A6 == 0) {
+                    if (temp_s0->itemDisplayState == 0) {
                         func_80072100(var_s1);
                     }
                     var_s2 += 1;
@@ -1677,9 +1677,9 @@ void func_80075838(void) {
             temp_a0_2 = *var_s1_2;
             if (temp_a0_2 != -1) {
                 temp_s0_2 = &D_80165C18[temp_a0_2];
-                if (temp_s0_2->unk_0A6 != 0) {
+                if (temp_s0_2->itemDisplayState != 0) {
                     func_80075714(temp_a0_2);
-                    if (temp_s0_2->unk_0A6 == 0) {
+                    if (temp_s0_2->itemDisplayState == 0) {
                         func_80072100(var_s1_2);
                     }
                     var_s2_2 += 1;
@@ -1743,7 +1743,7 @@ void func_80075B08(s32 arg0) {
 }
 
 void func_80075B84(s32 arg0) {
-    switch (D_80165C18[arg0].unk_0A6) {
+    switch (D_80165C18[arg0].itemDisplayState) {
     case 1:
         func_80075B08(arg0);
         break;
@@ -1796,9 +1796,9 @@ void func_80075CA8(void) {
             temp_a0 = *var_s1;
             if (temp_a0 != -1) {
                 temp_s0 = &D_80165C18[temp_a0];
-                if (temp_s0->unk_0A6 != 0) {
+                if (temp_s0->itemDisplayState != 0) {
                     func_80075B84(temp_a0);
-                    if (temp_s0->unk_0A6 == 0) {
+                    if (temp_s0->itemDisplayState == 0) {
                         func_80072100(var_s1);
                     }
                     var_s2 += 1;
@@ -1817,9 +1817,9 @@ void func_80075CA8(void) {
             temp_a0_2 = *var_s1_2;
             if (temp_a0_2 != -1) {
                 temp_s0_2 = &D_80165C18[temp_a0_2];
-                if (temp_s0_2->unk_0A6 != 0) {
+                if (temp_s0_2->itemDisplayState != 0) {
                     func_80075B84(temp_a0_2);
-                    if (temp_s0_2->unk_0A6 == 0) {
+                    if (temp_s0_2->itemDisplayState == 0) {
                         func_80072100(var_s1_2);
                     }
                     var_s2_2 += 1;
@@ -1890,7 +1890,7 @@ void func_8007601C(s32 arg0) {
 
     if (D_80165C18[arg0].unk_04C == 0) {
         func_8008A6DC(arg0, 300.0f);
-        if ((func_8007223C(arg0, 0x40000) != 0) && (func_80072354(arg0, 1) != 0)) {
+        if ((is_obj_index_flag_unk_054_active(arg0, 0x40000) != 0) && (func_80072354(arg0, 1) != 0)) {
             func_800722A4(arg0, 1);
             func_80075F98(D_80165C18[arg0].pos, (u16) D_80165C18[arg0].unk_0BE[1], 1.0f);
             func_800C9D80(D_80165C18[arg0].pos, D_80165C18[arg0].unk_038, 0x5102800A);
@@ -1975,7 +1975,7 @@ void func_800763CC(s32 objectIndex) {
 
     if(objectIndex){}
     temp_s0 = &D_80165C18[objectIndex];
-    switch (temp_s0->unk_0A6) {
+    switch (temp_s0->itemDisplayState) {
     case 1:
         func_8007634C(objectIndex);
         break;
@@ -2049,7 +2049,7 @@ void func_8007661C(void) {
     }
     if (D_80165C18[objectIndex].unk_04C == 0) {
         func_8008A6DC(objectIndex, 750.0f);
-        if ((func_8007223C(objectIndex, 0x00040000) != 0) && (func_80072354(objectIndex, 1) != 0)) {
+        if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) && (func_80072354(objectIndex, 1) != 0)) {
             func_800722A4(objectIndex, 1);
             func_800762DC(D_80165C18[objectIndex].pos, 1.0f);
             func_800C9D80(D_80165C18[objectIndex].pos, D_80165C18[objectIndex].unk_038, 0x51038009U);
@@ -2148,7 +2148,7 @@ void func_800769D8(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
     temp_s0 = &D_80165C18[objectIndex];
-    switch (temp_s0->unk_0A6) {
+    switch (temp_s0->itemDisplayState) {
         case 0:
             break;
         case 1:
@@ -2207,7 +2207,7 @@ void func_80076B84(void) {
         objectIndex = D_8018C1B0[someIndex];
         if (objectIndex != -1) {
             object = &D_80165C18[objectIndex];
-            if (object->unk_0A6 != 0) {
+            if (object->itemDisplayState != 0) {
                 if ((object->unk_0D5 == 4) || (object->unk_0D5 == 5)) {
                     func_800763CC(objectIndex);
                     func_80076538(objectIndex);
@@ -2215,7 +2215,7 @@ void func_80076B84(void) {
                     func_800769D8(objectIndex);
                     func_80076AEC(objectIndex);
                 }
-                if (object->unk_0A6 == 0) {
+                if (object->itemDisplayState == 0) {
                     func_80072100(&D_8018C1B0[someIndex]);
                 }
             }
@@ -2256,7 +2256,7 @@ void func_80076DC4(s32 objectIndex) {
 }
 
 void func_80076E14(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
         case 1:
             func_80076DC4(objectIndex);
             break;
@@ -2290,10 +2290,10 @@ void func_80076F2C(void) {
         flameIndex = D_8018C870[someIndex];
         if (flameIndex != -1) {
             object = &D_80165C18[flameIndex];
-            if (object->unk_0A6 != 0) {
+            if (object->itemDisplayState != 0) {
                 func_80076E14(flameIndex);
                 func_80076ED8(flameIndex);
-                if (object->unk_0A6 == 0) {
+                if (object->itemDisplayState == 0) {
                     func_80072100(&D_8018C870[someIndex]);
                 }
             }
@@ -2399,7 +2399,7 @@ void func_80077450(s32 objectIndex) {
     s16 sp3A;
     s16 sp38;
 
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
         case 0:
             break;
         case 1:
@@ -2448,10 +2448,10 @@ void func_80077640(void) {
         objectIndex = D_8018C630[someIndex];
         if (objectIndex != -1) {
             object = &D_80165C18[objectIndex];
-            if (object->unk_0A6 != 0) {
+            if (object->itemDisplayState != 0) {
                 func_80077450(objectIndex);
                 func_80077584(objectIndex);
-                if (object->unk_0A6 == 0) {
+                if (object->itemDisplayState == 0) {
                     func_80072100(&D_8018C630[someIndex]);
                 }
             }
@@ -2528,7 +2528,7 @@ void func_80077B3C(s32 objectIndex) {
     struct_80165C18_entry *temp_v1;
     temp_v1 = &D_80165C18[objectIndex];
 
-    switch (temp_v1->unk_0A6) {
+    switch (temp_v1->itemDisplayState) {
         case 0:
             break;
         case 1:
@@ -2570,10 +2570,10 @@ void func_80077C9C(void) {
         leafIndex = D_8018C970[someIndex];
         if (leafIndex != -1) {
             object = &D_80165C18[leafIndex];
-            if (object->unk_0A6 != 0) {
+            if (object->itemDisplayState != 0) {
                 func_80077B3C(leafIndex);
                 func_80077BCC(leafIndex);
-                if (object->unk_0A6 == 0) {
+                if (object->itemDisplayState == 0) {
                     func_80072100(&D_8018C970[someIndex]);
                 }
             }
@@ -2601,7 +2601,7 @@ loop_3:
             D_8018D17C = 0;
         }
         temp_a0 = *((arg0 * 4) + &D_8018CC80 + (D_8018D17C * 4));
-        if (D_80165C18[temp_a0].unk_0A6 == 0) {
+        if (D_80165C18[temp_a0].itemDisplayState == 0) {
             func_800723A4(temp_a0, 1);
             return;
         }
@@ -2627,7 +2627,7 @@ void func_80077E20(s32 objectIndex) {
     temp_v0->textureHeight = 0x10;
     temp_v0->textureWidth = temp_v0->textureHeight;
     temp_v0->sizeScaling = 0.15f;
-    func_800721C0(objectIndex, 0x00000010);
+    set_obj_index_flag_unk_054(objectIndex, 0x00000010);
     func_80086EF0(objectIndex);
     temp_v0->unk_0A0 = 0x00FF;
     temp_v0->unk_0D5 = 0;
@@ -2646,7 +2646,7 @@ void func_80077EB8(s32 objectIndex, u16 arg1, Camera *camera) {
     temp_v0 = camera->rot[1] - arg1;
     if ((temp_v0 >= D_8018D210) || (D_8018D208 >= temp_v0)) {
         D_80165C18[objectIndex].unk_028[0] = D_8018D218 + (D_8018D1E8 * (f32) temp_v0);
-        func_800721C0(objectIndex, 0x00000010);
+        set_obj_index_flag_unk_054(objectIndex, 0x00000010);
         return;
     }
     func_800721E8(objectIndex, 0x00000010);
@@ -2685,7 +2685,7 @@ void func_80077F64(s32 objectIndex, Camera *camera) {
 }
 
 void func_800780CC(s32 objectIndex, Camera *camera) {
-    switch (D_80165C18[objectIndex].unk_0A6) {                              /* irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                              /* irregular */
     case 1:
         func_80077E20(objectIndex);
         return;
@@ -2710,7 +2710,7 @@ void func_80078170(s32 arg0, Camera *arg1) {
     func_80077D5C(arg0);
     for (i = 0; i < D_8018D1F0; i++) {
         objectIndex = D_8018CC80[arg0 + i];
-        if (D_80165C18[objectIndex].unk_0A6 != 0) {
+        if (D_80165C18[objectIndex].itemDisplayState != 0) {
             func_800780CC(objectIndex, arg1);
         }
     }
@@ -2784,7 +2784,7 @@ void func_80078288(s32 objectIndex) {
 }
 
 void func_800786EC(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {                              /* irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                              /* irregular */
     case 0:
         break;
     case 1:
@@ -2810,7 +2810,7 @@ void func_80078790(void) {
         if (D_8018D174 >= NUM_SNOWFLAKES) {
             D_8018D174 = 0;
         }
-        if (D_80165C18[D_8018C1B0[D_8018D174]].unk_0A6 == 0) {
+        if (D_80165C18[D_8018C1B0[D_8018D174]].itemDisplayState == 0) {
             func_800723A4(D_8018C1B0[D_8018D174], 1);
             break;
         }
@@ -2831,7 +2831,7 @@ void func_80078838(void) {
     }
     for (someIndex = 0; someIndex < NUM_SNOWFLAKES; someIndex++) {
         snowflakeIndex = D_8018C1B0[someIndex];
-        if (D_80165C18[snowflakeIndex].unk_0A6 != 0) {
+        if (D_80165C18[snowflakeIndex].itemDisplayState != 0) {
             func_800786EC(snowflakeIndex);
         }
     }
@@ -2848,7 +2848,7 @@ void func_800788F8(s32 objectIndex, u16 rot, Camera *camera) {
     temp_v0 = camera->rot[1] + rot;
     if ((temp_v0 >= D_8018D210) && (D_8018D208 >= temp_v0)) {
         D_80165C18[objectIndex].unk_09C = (D_8018D218 + (D_8018D1E8 * temp_v0));
-        func_800721C0(objectIndex, 0x00000010);
+        set_obj_index_flag_unk_054(objectIndex, 0x00000010);
         return;
     }
     func_800721E8(objectIndex, 0x00000010);
@@ -3060,7 +3060,7 @@ void func_800790E4(s32 arg0) {
 
 void func_80079114(s32 objectIndex, s32 arg1, s32 arg2) {
     s32 a;
-    if (D_80165C18[objectIndex].unk_0A6 >= 2) {
+    if (D_80165C18[objectIndex].itemDisplayState >= 2) {
         if ((u8)D_80165C18[objectIndex].unk_0D8 == 1) {
             if (arg1 == 0) {
                 func_80074894(objectIndex, D_8018C028);
@@ -3129,7 +3129,7 @@ extern u16 D_800E67B8[][4]; // static
 
 void func_80079380(s32 objectIndex, s32 arg1) {
     UNUSED s32 pad;
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
         case 0:
             break;
         case 1:
@@ -3142,7 +3142,7 @@ void func_80079380(s32 objectIndex, s32 arg1) {
             }
             break;
         case 3:
-            func_800721C0(objectIndex, 0x00000010);
+            set_obj_index_flag_unk_054(objectIndex, 0x00000010);
             func_80086F10(objectIndex, 1, D_800E67B8);
             func_80072488(objectIndex);
             break;
@@ -3228,14 +3228,14 @@ void func_8007963C(s32 objectIndex, s32 playerIndex) {
 }
 
 void func_80079700(s32 objectIndex, s32 playerIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
         case 0:
             break;
         case 1:
             func_8007963C(objectIndex, playerIndex);
             break;
         case 2:
-            func_800721C0(objectIndex, 0x00000010);
+            set_obj_index_flag_unk_054(objectIndex, 0x00000010);
             func_80072488(objectIndex);
             break;
         case 3:
@@ -3332,14 +3332,14 @@ void func_80079A5C(s32 objectIndex, UNUSED Player *player) {
 void func_80079B40(s32 objectIndex, s32 playerId) {
     Player *player = &gPlayerOne[playerId];
 
-    switch (D_80165C18[objectIndex].unk_0A6) {                              /* switch 1; irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                              /* switch 1; irregular */
         case 0:                                         /* switch 1 */
             break;
         case 1:                                         /* switch 1 */
             func_800799A8(objectIndex, playerId);
             break;
         case 2:                                         /* switch 1 */
-            func_800721C0(objectIndex, 0x00000010);
+            set_obj_index_flag_unk_054(objectIndex, 0x00000010);
             func_800736E0(objectIndex);
             func_80072488(objectIndex);
             break;
@@ -3377,7 +3377,7 @@ void func_80079B40(s32 objectIndex, s32 playerId) {
             func_80073720(objectIndex);
             break;
     }
-    if (D_80165C18[objectIndex].unk_0A6 >= 2) {
+    if (D_80165C18[objectIndex].itemDisplayState >= 2) {
         func_8007993C(objectIndex, player);
     }
     func_80079A5C(objectIndex, player);
@@ -3388,14 +3388,14 @@ void func_80079D44(s32 objectIndex, s32 playerId) {
     Player *temp_s1;
 
     temp_s1 = &gPlayerOne[playerId];
-    switch (D_80165C18[objectIndex].unk_0A6) {                              /* switch 1; irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                              /* switch 1; irregular */
         case 0:                                         /* switch 1 */
             break;
         case 1:                                         /* switch 1 */
             func_800799A8(objectIndex, playerId);
             break;
         case 2:                                         /* switch 1 */
-            func_800721C0(objectIndex, 0x00000010);
+            set_obj_index_flag_unk_054(objectIndex, 0x00000010);
             func_800736E0(objectIndex);
             temp_s1->unk_0CA |= 0x80;
             func_80072488(objectIndex);
@@ -3456,7 +3456,7 @@ void func_80079D44(s32 objectIndex, s32 playerId) {
             break;
     }
 
-    if (D_80165C18[objectIndex].unk_0A6 >= 2) {
+    if (D_80165C18[objectIndex].itemDisplayState >= 2) {
         func_8007993C(objectIndex, temp_s1);
     }
     func_80079A5C(objectIndex, temp_s1);
@@ -3483,14 +3483,14 @@ void func_8007A060(s32 objectIndex, s32 playerIndex) {
 }
 
 void func_8007A124(s32 objectIndex, s32 playerIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
         case 0:
             break;
         case 1:
             func_8007A060(objectIndex, playerIndex);
             break;
         case 2:
-            func_800721C0(objectIndex, 0x00000010);
+            set_obj_index_flag_unk_054(objectIndex, 0x00000010);
             func_80072488(objectIndex);
             break;
         case 3:
@@ -3533,14 +3533,14 @@ void func_8007A228(s32 objectIndex, s32 playerIndex) {
 }
 
 void func_8007A2EC(s32 objectIndex, s32 playerIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
         case 0:
             break;
         case 1:
             func_8007A228(objectIndex, playerIndex);
             break;
         case 2:
-            func_800721C0(objectIndex, 0x00000010);
+            set_obj_index_flag_unk_054(objectIndex, 0x00000010);
             func_80072488(objectIndex);
             break;
         case 3:
@@ -3588,14 +3588,14 @@ extern u16 D_800E69F4[][4]; // static?
 void func_8007A4D4(s32 objectIndex, s32 playerId) {
     Player *sp2C = &gPlayerOne[playerId];
 
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
         case 0:
             break;
         case 1:
             func_8007A3F0(objectIndex, playerId);
             break;
         case 2:
-            func_800721C0(objectIndex, 0x00000010);
+            set_obj_index_flag_unk_054(objectIndex, 0x00000010);
             D_80165C18[objectIndex].unk_0D6 = 1;
             func_80072488(objectIndex);
             break;
@@ -3608,7 +3608,7 @@ void func_8007A4D4(s32 objectIndex, s32 playerId) {
     }
     switch (D_80165C18[objectIndex].unk_0D6) {                              /* switch 1; irregular */
         case 1:                                         /* switch 1 */
-            if ((D_80165C18[objectIndex].unk_0A6 >= 3) && (!(sp2C->effect & 0x400000))) {
+            if ((D_80165C18[objectIndex].itemDisplayState >= 3) && (!(sp2C->effect & 0x400000))) {
                 func_80086F10(objectIndex, 6, D_800E69F4);
                 D_80165C18[objectIndex].unk_0D6 = 2;
                 D_80165C18[objectIndex].unk_04C = 0x00000050;
@@ -3655,7 +3655,7 @@ void func_8007A88C(s32 playerId) {
     objectIndex = D_80183DB8[playerId];
     player = &gPlayerOne[playerId];
 
-    if ((D_80165C18[objectIndex].unk_0A6 == 0) && (player->effect & 0x400000)) {
+    if ((D_80165C18[objectIndex].itemDisplayState == 0) && (player->effect & 0x400000)) {
         func_800790E4(playerId);
     }
 }
@@ -3792,7 +3792,7 @@ extern u8 gControllerRandom;
 extern s32 gRaceFrameCounter;
 
 // todo: Cleanup this function to use array access and struct if possible.
-u8 gen_random_item(s16 arg0, s16 arg1)
+u8 gen_random_item(s16 rank, s16 isCpu)
 {
     u16 rand = random_int(100);
     u8 *curve;
@@ -3813,36 +3813,36 @@ u8 gen_random_item(s16 arg0, s16 arg1)
                 curve = segmented_to_virtual((void *) gVersus4PlayerItemCurve);
                 break;
         }
-        randomItem = *((arg0 * 100) + curve + sRandomItemIndex);
+        randomItem = *((rank * 100) + curve + sRandomItemIndex);
 
     } else if (gModeSelection == BATTLE) {
         curve = segmented_to_virtual((void *) gBattleItemCurve);
         randomItem = curve[sRandomItemIndex];
     } else { // GP Mode
-        if (arg1 == 0) {
+        if (isCpu == 0) {
             curve = segmented_to_virtual((void *) gGrandPrixHumanItemCurve);
         }
         else {
             curve = segmented_to_virtual((void *) gGrandPrixCPUItemCurve);
         }
-        randomItem =  *((arg0 * 100) + curve + sRandomItemIndex);
+        randomItem =  *((rank * 100) + curve + sRandomItemIndex);
     }
     return randomItem;
 }
 
-u8 func_8007AF40(UNUSED s16 arg0, s16 arg1) {
-    return gen_random_item(arg1, 0);
+u8 gen_random_item_human(UNUSED s16 arg0, s16 rank) {
+    return gen_random_item(rank, FALSE);
 }
 
-u8 func_8007AF78(UNUSED s32 arg0, s16 arg1) {
-    return gen_random_item(arg1, 1);
+u8 gen_random_item_cpu(UNUSED s32 arg0, s16 rank) {
+    return gen_random_item(rank, TRUE);
 }
 
 s16 func_8007AFB0(s32 objectIndex, s32 arg1) {
     UNUSED s32 pad[3];
     s16 randomItem;
 
-    randomItem = func_8007AF40(gLapCountByPlayerId[arg1], gGPCurrentRaceRankByPlayerId[arg1]);
+    randomItem = gen_random_item_human(gLapCountByPlayerId[arg1], gGPCurrentRaceRankByPlayerId[arg1]);
     
     if (D_8018CA70[arg1].itemOverride != 0) {
         randomItem = (s16) D_8018CA70[arg1].itemOverride;
@@ -3875,14 +3875,14 @@ s32 func_8007B040(s32 objectIndex, s32 playerId) {
     var_t3 = 0;
     if (gModeSelection == GRAND_PRIX) {
         if (random_int(0x0064U) < 0x51) {
-            var_v1 = func_8007AF40(gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]);
+            var_v1 = gen_random_item_human(gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]);
         } else {
             var_v1 = 0;
             func_800C9060(playerId, 0x1900A058U);
         }
         var_t3 = 1;
         D_80165C18[objectIndex].unk_0A2 = var_v1;
-        D_80165C18[objectIndex].unk_0D2 = var_v1;
+        D_80165C18[objectIndex].itemDisplay = var_v1;
     } else {
         for (var_v1_2 = 0; var_v1_2 < gPlayerCountSelection1; var_v1_2++) {
             temp_a0 = gItemWindowObjectByPlayerId[var_v1_2];
@@ -3900,7 +3900,7 @@ s32 func_8007B040(s32 objectIndex, s32 playerId) {
             D_80165C18[objectIndex].unk_0D1 = temp_v1;
             temp_a1 = sp40[var_v1];
             D_80165C18[objectIndex].unk_0A2 = temp_a1;
-            D_80165C18[objectIndex].unk_0D2 = temp_a1;
+            D_80165C18[objectIndex].itemDisplay = temp_a1;
             temp_a0 = gItemWindowObjectByPlayerId[temp_v1];
             sp38 = &gPlayerOne[temp_v1];
             func_800722A4(temp_a0, 1);
@@ -3931,7 +3931,7 @@ void func_8007B254(s32 objectIndex, u8 arg1) {
 
     func_80072428(objectIndex);
     temp_v0 = &D_80165C18[objectIndex];
-    temp_v0->unk_0A6 = 2;
+    temp_v0->itemDisplayState = 2;
     temp_v0->unk_0A4 = 0;
     temp_v0->tlutList = (u8 *) gTLUTItemWindowNone;
     temp_v0->textureList = gTextureItemWindowNone;
@@ -3948,7 +3948,7 @@ void func_8007B254(s32 objectIndex, u8 arg1) {
         temp_v0->unk_0A4 = 0x000E;
         temp_v1 = temp_v0->unkA5;
         temp_v0->unk_0D6 = 2;
-        temp_v0->unk_0D2 = temp_v1;
+        temp_v0->itemDisplay = temp_v1;
         temp_v0->unk_0A2 = (s16) temp_v1;
         D_8018CAB8 = 0;
         D_80165888 = 0;
@@ -4001,20 +4001,20 @@ void func_8007B34C(s32 playerId) {
     }
     temp_t0 = &D_80165C18[temp_s0];
     sp2C = temp_t0;
-    temp_t6 = (u16) temp_t0->unk_0A6;
+    temp_t6 = (u16) temp_t0->itemDisplayState;
     switch (temp_t6) {
     case 1:
         func_8007B254(temp_s0, playerId);
         break;
     case 2:
-        if (gActiveScreenMode == 0) {
+        if (gActiveScreenMode == SCREEN_MODE_1P) {
             temp_v1 = &D_8018CA70[playerId];
             sp28 = temp_v1;
             s16_step_up_towards(&temp_v1->slideItemBoxY, 0x0040, 4);
             if (temp_v1->slideItemBoxY == 0x0040) {
                 func_80072488(temp_s0);
             }
-        } else if (gActiveScreenMode == 3) {
+        } else if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
             if ((playerId == 0) || (playerId == 2)) {
                 temp_v1_2 = &D_8018CA70[playerId];
                 sp28 = temp_v1_2;
@@ -4049,7 +4049,7 @@ void func_8007B34C(s32 playerId) {
         func_80072E54(temp_s0, 1, 4, 1, 0x00000010, 1);
         break;
     case 6:
-        sp2C->unk_0D2 = func_8007AFB0(temp_s0, playerId);
+        sp2C->itemDisplay = func_8007AFB0(temp_s0, playerId);
         sp2C->unk_04C = 8;
         sp2C->unk_0D6 = 2;
         func_80072488(temp_s0);
@@ -4063,18 +4063,18 @@ void func_8007B34C(s32 playerId) {
     case 9:
         func_800722CC(temp_s0, 4);
         func_80073600(temp_s0);
-        sp2C->unk_0D2 = 0;
+        sp2C->itemDisplay = 0;
         func_80072488(temp_s0);
         break;
     case 10:
         func_8007278C(temp_s0, 0x00000014);
         break;
     case 11:
-        if (gActiveScreenMode == 0) {
+        if (gActiveScreenMode == SCREEN_MODE_1P) {
             if (s16_step_down_towards(&D_8018CA70[playerId].slideItemBoxY, 0, 4) != 0) {
                 func_80072488(temp_s0);
             }
-        } else if (gActiveScreenMode == 3) {
+        } else if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
             if ((playerId == 0) || (playerId == 2)) {
                 temp_v1_5 = &D_8018CA70[playerId];
                 sp28 = temp_v1_5;
@@ -4189,7 +4189,7 @@ void func_8007B34C(s32 playerId) {
             }
         }
     }
-    temp_v0_5 = sp2C->unk_0D2;
+    temp_v0_5 = sp2C->itemDisplay;
     sp2C->activeTLUT = gItemWindowTLUTs[temp_v0_5];
     sp2C->activeTexture = gItemWindowTextures[temp_v0_5];
     sp38->unk_010 = sp2C->unk_0A4;
@@ -4207,10 +4207,10 @@ void func_8007BBBC(s32 objectIndex) {
     struct_80165C18_entry *temp_s1;
 
     temp_s1 = &D_80165C18[objectIndex];
-    switch (temp_s1->unk_0A6) {                              /* irregular */
+    switch (temp_s1->itemDisplayState) {                              /* irregular */
     case 1:
         func_800735BC(objectIndex, d_course_banshee_boardwalk_dl_cheep_cheep, 2.0f);
-        func_800721C0(objectIndex, 0x00000010);
+        set_obj_index_flag_unk_054(objectIndex, 0x00000010);
         temp_s1->unk_0D5 = 0;
         break;
     case 2:
@@ -4239,7 +4239,7 @@ void func_8007BD04(s32 playerId) {
     s32 objectIndex;
 
     objectIndex = D_80183F28[0];
-    if (D_80165C18[objectIndex].unk_0A6 == 0) {
+    if (D_80165C18[objectIndex].itemDisplayState == 0) {
         if (((s32) gNearestWaypointByPlayerId[playerId] >= 0xA0) && ((s32) gNearestWaypointByPlayerId[playerId] < 0xAB)) {
             func_8008B7D4(objectIndex, D_8018D01C * -1650.0, -200.0f, -1650.0f);
             func_800723A4(objectIndex, 1);
@@ -4275,13 +4275,13 @@ void func_8007BEC8(s32 objectIndex) {
     struct_80165C18_entry *temp_v0;
 
     temp_v0 = &D_80165C18[objectIndex];
-    switch (temp_v0->unk_0A6) {
+    switch (temp_v0->itemDisplayState) {
     case 1:
         func_8007BDE0(objectIndex);
         break;
     case 2:
         if (func_8007278C(objectIndex, 0x0000003C) != 0) {
-            func_800721C0(objectIndex, 0x00000010);
+            set_obj_index_flag_unk_054(objectIndex, 0x00000010);
             func_80086E70(objectIndex);
         }
         break;
@@ -4385,7 +4385,7 @@ void func_8007C280(void) {
         D_801658BC = 0;
         func_800723A4(objectIndex, 0);
     }
-    if (D_80165C18[objectIndex].unk_0A6 != 0) {
+    if (D_80165C18[objectIndex].itemDisplayState != 0) {
         func_8007BEC8(objectIndex);
         func_8007BFB0(objectIndex);
     }
@@ -4427,13 +4427,13 @@ void func_8007C360(s32 objectIndex, Camera *camera) {
         sp20 = temp_a2;
         sp1C = temp_t2;
         func_800721E8(objectIndex, 0x00000080);
-        temp_a2->unk_0D2 = (s8) sp1C;
+        temp_a2->itemDisplay = (s8) sp1C;
         return;
     }
     sp20 = temp_a2;
     sp1C = temp_t2;
-    func_800721C0(objectIndex, 0x00000080);
-    temp_a2->unk_0D2 = 0x24 - temp_t2;
+    set_obj_index_flag_unk_054(objectIndex, 0x00000080);
+    temp_a2->itemDisplay = 0x24 - temp_t2;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007C360.s")
@@ -4474,13 +4474,13 @@ void func_8007C4A4(s32 objectIndex) {
         sp20 = temp_v1;
         sp1C = temp_t0;
         func_800721E8(objectIndex, 0x00000080);
-        temp_v1->unk_0D2 = (s8) sp1C;
+        temp_v1->itemDisplay = (s8) sp1C;
         return;
     }
     sp20 = temp_v1;
     sp1C = temp_t0;
-    func_800721C0(objectIndex, 0x00000080);
-    temp_v1->unk_0D2 = 0x24 - temp_t0;
+    set_obj_index_flag_unk_054(objectIndex, 0x00000080);
+    temp_v1->itemDisplay = 0x24 - temp_t0;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007C4A4.s")
@@ -4502,7 +4502,7 @@ void func_8007C5B4(s32 objectIndex) {
     temp_s0->pos[0] = 0.0f;
     temp_s0->pos[1] = 0.0f;
     temp_s0->pos[2] = 0.0f;
-    func_800721C0(objectIndex, 0x00000020);
+    set_obj_index_flag_unk_054(objectIndex, 0x00000020);
     func_80072488(objectIndex);
     temp_s0->unk_0A0 = 0;
     func_80073844(objectIndex);
@@ -4510,20 +4510,20 @@ void func_8007C5B4(s32 objectIndex) {
     temp_s0->unk_034 = 1.0f;
     func_80073FD4(objectIndex);
     func_80086EF0(objectIndex);
-    func_800721C0(objectIndex, 0x00000800);
+    set_obj_index_flag_unk_054(objectIndex, 0x00000800);
     temp_s0->unk_0B2[0] = 0;
     temp_s0->unk_0B2[2] = 0x8000;
 }
 
 void func_8007C684(s32 objectIndex) {
-    switch(D_80165C18[objectIndex].unk_0A6) {
+    switch(D_80165C18[objectIndex].itemDisplayState) {
     case 0:
         break;
     case 1:
         func_8007C5B4(objectIndex);
         break;
     }
-    if (D_80165C18[objectIndex].unk_0A6 >= 2) {
+    if (D_80165C18[objectIndex].itemDisplayState >= 2) {
         switch (D_80165C18[objectIndex].unk_0DC) {
         case 0:
             break;
@@ -4756,7 +4756,7 @@ void func_8007CC00(void) {
     for (someIndex = 0; someIndex < NUM_BOOS; someIndex++) {
         objectIndex = D_8018BFA8[someIndex];
         object = &D_80165C18[objectIndex];
-        if (object->unk_0A6 != 0) {
+        if (object->itemDisplayState != 0) {
             func_8007C684(objectIndex);
             func_8008B78C(objectIndex);
             player = &gPlayerOne[object->unk_0D1];
@@ -4766,7 +4766,7 @@ void func_8007CC00(void) {
             object->pos[1] = 6.5 + player->unk_074 + object->unk_010[1] + object->unk_028[1];
             object->pos[2] = player->pos[2] + (sins(temp_t4) * (object->unk_010[0] + object->unk_028[0])) + (coss(temp_t4) * (object->unk_010[2] + object->unk_028[2]));
             func_8007C550(objectIndex);
-            if (func_8007223C(objectIndex, 0x00000080) != 0) {
+            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000080) != 0) {
                 object->unk_074 = D_800E44B0;
             } else {
                 object->unk_074 = D_800E4470;
@@ -4780,7 +4780,7 @@ void func_8007CE0C(s32 objectIndex) {
 
     func_80073444(objectIndex, d_course_banshee_boardwalk_boo_tlut, D_0F0D0E50, 0x30U, (u16) 0x00000028);
     temp_s0 = &D_80165C18[objectIndex];
-    temp_s0->unk_0D2 = 0x1C;
+    temp_s0->itemDisplay = 0x1C;
     temp_s0->pos[0] = 0.0f;
     temp_s0->pos[1] = 0.0f;
     temp_s0->pos[2] = 0.0f;
@@ -4797,7 +4797,7 @@ void func_8007CEDC(s32 objectIndex) {
     struct_80165C18_entry *temp_s0;
 
     temp_s0 = &D_80165C18[objectIndex];
-    switch (temp_s0->unk_0A6) {                              /* switch 1 */
+    switch (temp_s0->itemDisplayState) {                              /* switch 1 */
     case 0:                                         /* switch 1 */
         break;
     case 1:                                         /* switch 1 */
@@ -4815,7 +4815,7 @@ void func_8007CEDC(s32 objectIndex) {
     default:                                        /* switch 2 */
         break;
     }
-    if (temp_s0->unk_0A6 >= 2) {
+    if (temp_s0->itemDisplayState >= 2) {
         func_80072950(objectIndex, (s32) temp_s0->unk_0DC, 0, 4);
         func_80073514(objectIndex);
         switch (temp_s0->unk_0DC) {                          /* switch 2 */
@@ -4824,7 +4824,7 @@ void func_8007CEDC(s32 objectIndex) {
             break;
         case 2:                                     /* switch 2 */
             func_80073CB0(objectIndex, &temp_s0->unk_0A0, 0x00000050, 0x000000B4, 2, 0, -1);
-            if ((temp_s0->unk_0AE == 0) || (temp_s0->unk_0A6 == 3)) {
+            if ((temp_s0->unk_0AE == 0) || (temp_s0->itemDisplayState == 3)) {
                 temp_s0->unk_0DC += 1;
             }
             break;
@@ -4869,11 +4869,11 @@ void func_8007D070(void) {
 
     var_v0 = 0;
     if ((D_8016559C == 0) && (D_8018D2A4 != 0) && (*D_8018CF68 < 0x1D) && (*(&D_800E5DB4 + *D_8018CF68) == 1)) {
-        if (D_80165C18[D_8018C1D8].unk_0A6 != 0) {
+        if (D_80165C18[D_8018C1D8].itemDisplayState != 0) {
 loop_5:
             var_v0 += 1;
             if (var_v0 != 0x1E) {
-                if (D_80165C18[D_8018C1B0[var_v0].unk28].unk_0A6 != 0) {
+                if (D_80165C18[D_8018C1B0[var_v0].unk28].itemDisplayState != 0) {
                     goto loop_5;
                 }
             }
@@ -4881,7 +4881,7 @@ loop_5:
         temp_s1 = D_8018C1B0[var_v0].unk28;
         if (var_v0 != 0x1E) {
             temp_s0 = &D_80165C18[temp_s1];
-            if (temp_s0->unk_0A6 == 0) {
+            if (temp_s0->itemDisplayState == 0) {
                 func_800723A4(temp_s1, 1);
                 temp_s2 = random_int(0x012CU);
                 temp_s3 = (random_int(0x1000U) - 0x800) & 0xFFFF;
@@ -4903,14 +4903,14 @@ loop_5:
     do {
         temp_s1_2 = var_s2->unk28;
         temp_s0_2 = &D_80165C18[temp_s1_2];
-        if (temp_s0_2->unk_0A6 != 0) {
+        if (temp_s0_2->itemDisplayState != 0) {
             func_8007CEDC(temp_s1_2);
             func_8008B724(temp_s1_2);
             temp_s0_2->pos[0] = temp_s0_2->unk_028[0] + temp_s0_2->unk_010[0];
             temp_s0_2->pos[1] = temp_s0_2->unk_028[1] + (D_8018CF1C->unk_074 + temp_s0_2->unk_010[1]);
             temp_s0_2->pos[2] = temp_s0_2->unk_028[2] + temp_s0_2->unk_010[2];
             func_8007C420(temp_s1_2, D_8018CF1C, D_8018CF14);
-            if (func_8007223C(temp_s1_2, 0x00000080) != 0) {
+            if (is_obj_index_flag_unk_054_active(temp_s1_2, 0x00000080) != 0) {
                 temp_s0_2->unk_074 = &D_800E44B0;
             } else {
                 temp_s0_2->unk_074 = &D_800E4470;
@@ -4963,7 +4963,7 @@ void func_8007D6A8(s32 objectIndex, s32 arg1) {
     temp_v0->unk_0D5 = 0x0D;
     func_8007D360(objectIndex, arg1);
     temp_v0->sizeScaling = 0.1f;
-    func_800721C0(objectIndex, 0x00000200);
+    set_obj_index_flag_unk_054(objectIndex, 0x00000200);
     temp_v0->unk_0C8 = 3;
 }
 
@@ -5010,7 +5010,7 @@ void func_8007D8AC(s32 arg0) {
 }
 
 void func_8007D8D4(s32 objectIndex, s32 arg1) {
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
     case 1:
         func_8007D8AC(objectIndex);
         break;
@@ -5109,11 +5109,11 @@ void func_8007DB44(void) {
             temp_s0_2 = *var_s2;
             if (temp_s0_2 != -1) {
                 temp_s1_2 = &D_80165C18[temp_s0_2];
-                if (temp_s1_2->unk_0A6 != 0) {
+                if (temp_s1_2->itemDisplayState != 0) {
                     func_8007D8D4(temp_s0_2, 1);
                     func_8007DAF8(temp_s0_2, 1);
                     func_8007D794(temp_s0_2);
-                    if (temp_s1_2->unk_0A6 == 0) {
+                    if (temp_s1_2->itemDisplayState == 0) {
                         func_80072100(var_s2);
                     }
                     D_8018CFD8 += 1;
@@ -5138,11 +5138,11 @@ block_19:
         temp_s0_3 = *var_s2_2;
         if (temp_s0_3 != -1) {
             temp_s1_3 = &D_80165C18[temp_s0_3];
-            if (temp_s1_3->unk_0A6 != 0) {
+            if (temp_s1_3->itemDisplayState != 0) {
                 func_8007D8D4(temp_s0_3, 2);
                 func_8007DAF8(temp_s0_3, 2);
                 func_8007D794(temp_s0_3);
-                if (temp_s1_3->unk_0A6 == 0) {
+                if (temp_s1_3->itemDisplayState == 0) {
                     func_80072100(var_s2_2);
                 }
                 D_8018D010 += 1;
@@ -5180,7 +5180,7 @@ void func_8007DDC0(s32 objectIndex) {
             sp2C = 1150.0f;
         }
         func_8008A6DC(objectIndex, sp2C);
-        if ((func_8007223C(objectIndex, 0x00040000) != 0) && (func_80072354(objectIndex, 1) != 0)) {
+        if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) && (func_80072354(objectIndex, 1) != 0)) {
             func_800722A4(objectIndex, 1);
             func_800C9D80(temp_s0->pos, temp_s0->unk_038, 0x51028006U);
             func_800726CC(objectIndex, 3);
@@ -5230,7 +5230,7 @@ void func_8007E00C(s32 objectIndex) {
     u16 temp_v0;
 
     temp_s0 = &D_80165C18[objectIndex];
-    temp_t8 = (u16) temp_s0->unk_0A6;
+    temp_t8 = (u16) temp_s0->itemDisplayState;
     switch (temp_t8) {
     case 1:
         init_bb_trash_bin(objectIndex);
@@ -5326,7 +5326,7 @@ void func_8007E1F4(s32 objectIndex) {
             sp2C = 700.0f;
         }
         func_8008A6DC(objectIndex, sp2C);
-        if ((func_8007223C(objectIndex, 0x00040000) != 0) && (func_80072354(objectIndex, 1) != 0)) {
+        if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) && (func_80072354(objectIndex, 1) != 0)) {
             func_800722A4(objectIndex, 1);
             func_800C9D80(temp_s0->pos, temp_s0->unk_038, 0x51028006U);
             func_800726CC(objectIndex, 3);
@@ -5357,7 +5357,7 @@ void func_8007E358(s32 objectIndex) {
 
 void func_8007E3EC(s32 objectIndex) {
 
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
     case 1:
         func_8007E358(objectIndex);
         break;
@@ -5423,10 +5423,10 @@ s32 func_8007E59C(s32 objectIndex) {
 }
 
 void func_8007E63C(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {                              /* irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                              /* irregular */
     case 0x32:
         if (f32_step_up_towards(&D_80165C18[objectIndex].unk_028[1], D_80165C18[objectIndex].unk_01C[1] + 15.0, 1.5f) != 0) {
-            func_800721C0(objectIndex, 0x00000200);
+            set_obj_index_flag_unk_054(objectIndex, 0x00000200);
             func_800722A4(objectIndex, 1);
             func_800722CC(objectIndex, 2);
             func_80072488(objectIndex);
@@ -5435,16 +5435,16 @@ void func_8007E63C(s32 objectIndex) {
     case 0x33:
         if (f32_step_down_towards(&D_80165C18[objectIndex].unk_028[1], 0.0f, 2.0f) != 0) {
             if (D_80165C18[objectIndex].unk_028[1] >= 16.0f) {
-                D_80165C18[objectIndex].unk_0D2 = 0;
+                D_80165C18[objectIndex].itemDisplay = 0;
             } else if (D_80165C18[objectIndex].unk_028[1] >= 8.0f) {
-                D_80165C18[objectIndex].unk_0D2 = 1;
+                D_80165C18[objectIndex].itemDisplay = 1;
             } else {
-                D_80165C18[objectIndex].unk_0D2 = 2;
+                D_80165C18[objectIndex].itemDisplay = 2;
             }
             func_800722CC(objectIndex, 1);
-            if (func_8007223C(objectIndex, 0x00010000) != 0) {
+            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00010000) != 0) {
                 func_800722A4(objectIndex, 0x00000010);
-                if (func_8007223C(objectIndex, 0x00040000) != 0) {
+                if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
                     func_800722A4(objectIndex, 0x00000020);
                 }
             }
@@ -5463,9 +5463,9 @@ void func_8007E63C(s32 objectIndex) {
         break;
     case 0x36:
         if (D_80165C18[objectIndex].unk_028[1] >= 20.0f) {
-            D_80165C18[objectIndex].unk_0D2 = 0;
+            D_80165C18[objectIndex].itemDisplay = 0;
         } else if (D_80165C18[objectIndex].unk_028[1] >= 18.0f) {
-            D_80165C18[objectIndex].unk_0D2 = 1;
+            D_80165C18[objectIndex].itemDisplay = 1;
         }
         if (f32_step_up_towards(&D_80165C18[objectIndex].unk_028[1], D_80165C18[objectIndex].unk_01C[1], 0.5f) != 0) {
             func_800721E8(objectIndex, 0x00000200);
@@ -5485,9 +5485,9 @@ void func_8007E63C(s32 objectIndex) {
         break;
     case 0x67:
         if (f32_step_down_towards(&D_80165C18[objectIndex].unk_028[1], 0.0f, 1.5f) != 0) {
-            if (func_8007223C(objectIndex, 0x00020000) != 0) {
+            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00020000) != 0) {
                 func_800722A4(objectIndex, 0x00000010);
-                if (func_8007223C(objectIndex, 0x00040000) != 0) {
+                if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
                     func_800722A4(objectIndex, 0x00000020);
                 }
             }
@@ -5501,9 +5501,9 @@ void func_8007E63C(s32 objectIndex) {
         break;
     case 0x69:
         if (f32_step_down_towards(&D_80165C18[objectIndex].unk_028[1], 0.0f, 1.5f) != 0) {
-            if (func_8007223C(objectIndex, 0x00020000) != 0) {
+            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00020000) != 0) {
                 func_800722A4(objectIndex, 0x00000010);
-                if (func_8007223C(objectIndex, 0x00040000) != 0) {
+                if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
                     func_800722A4(objectIndex, 0x00000020);
                 }
             }
@@ -5518,15 +5518,15 @@ void func_8007E63C(s32 objectIndex) {
         break;
     case 0x6B:
         if (D_80165C18[objectIndex].unk_028[1] >= 22.0f) {
-            D_80165C18[objectIndex].unk_0D2 = 0;
+            D_80165C18[objectIndex].itemDisplay = 0;
         } else if (D_80165C18[objectIndex].unk_028[1] >= 20.0f) {
-            D_80165C18[objectIndex].unk_0D2 = 1;
+            D_80165C18[objectIndex].itemDisplay = 1;
         } else if (D_80165C18[objectIndex].unk_028[1] >= 18.0f) {
-            D_80165C18[objectIndex].unk_0D2 = 2;
+            D_80165C18[objectIndex].itemDisplay = 2;
         } else if (D_80165C18[objectIndex].unk_028[1] >= 16.0f) {
-            D_80165C18[objectIndex].unk_0D2 = 3;
+            D_80165C18[objectIndex].itemDisplay = 3;
         } else if (D_80165C18[objectIndex].unk_028[1] >= 14.0f) {
-            D_80165C18[objectIndex].unk_0D2 = 4;
+            D_80165C18[objectIndex].itemDisplay = 4;
         } else {
             func_800730BC(objectIndex, 3, 5, 1, 6, -1);
         }
@@ -5577,7 +5577,7 @@ void func_8007EC30(s32 objectIndex) {
     temp_s1->unk_0C8 = 0x000C;
     temp_s1->sizeScaling = 1.0f;
     temp_s1->unk_01C[1] = 30.0f;
-    func_800721C0(objectIndex, 0x05000220);
+    set_obj_index_flag_unk_054(objectIndex, 0x05000220);
     temp_s1->unk_0A4 = 0;
     temp_s1->unk_0DF = 6;
     func_800724DC(objectIndex);
@@ -5586,7 +5586,7 @@ void func_8007EC30(s32 objectIndex) {
 
 void func_8007ED6C(s32 objectIndex) {
     s32 stackPadding[4];
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
     case 0:
         break;
     case 1:
@@ -5620,7 +5620,7 @@ void func_8007EE5C(s32 objectIndex) {
     temp_s0->sizeScaling = 1.0f;
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s0->unk_0C8 = 0x000C;
-    func_800721C0(objectIndex, 0x04000220);
+    set_obj_index_flag_unk_054(objectIndex, 0x04000220);
     temp_s0->unk_0A4 = 0;
     temp_s0->unk_0DF = 6;
     func_80086E70(objectIndex);
@@ -5809,7 +5809,7 @@ void func_8007F544(s32 objectIndex) {
 
 void func_8007F5A8(s32 objectIndex) {
 
-    switch (D_80165C18[objectIndex].unk_0A6) {                              /* irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                              /* irregular */
     case 0:
         break;
     case 1:
@@ -5896,7 +5896,7 @@ void func_8007F8D8(void) {
         object = &D_80165C18[objectIndex];
         if (object->unk_0D5 == 3) {
             var_s0 = 0;
-            if ((object->unk_0A6 >= 2) && (func_80072354(objectIndex, 8) != 0)) {
+            if ((object->itemDisplayState >= 2) && (func_80072354(objectIndex, 8) != 0)) {
                 var_s0 = 1;
             }
             var_s4 *= var_s0;
@@ -5904,7 +5904,7 @@ void func_8007F8D8(void) {
     }
     if (var_s4 != 0) {
         for (var_s0 = 0; var_s0 < 4; var_s0++, player++){
-            if ((player->unk_000 & 0x8000) && !(player->unk_000 & 0x1000)) {
+            if ((player->bonusEffect & 0x8000) && !(player->bonusEffect & 0x1000)) {
                 if (func_8007F75C(var_s0) != 0) break;
             }
         }
@@ -5919,7 +5919,7 @@ void func_8007FA08(s32 objectIndex) {
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s0->unk_0C8 = 0x000C;
     temp_s0->sizeScaling = 1.0f;
-    func_800721C0(objectIndex, 0x04000220);
+    set_obj_index_flag_unk_054(objectIndex, 0x04000220);
     temp_s0->unk_0A4 = 0;
     temp_s0->unk_044 = 0.0f;
     temp_s0->unk_010[1] = 0.0f;
@@ -5992,7 +5992,7 @@ void func_8007FB48(s32 objectIndex) {
             var_a0 = temp_v1->unk_0B0;
             temp_v1->unk_0B2[1] = func_800417B4(temp_v1->unk_0B2[1], (temp_v1->unk_0BE[1] + 0x8000) & 0xFFFF);
             if (var_a0 == 0x0064) {
-                temp_v1->unk_0D2 = 1;
+                temp_v1->itemDisplay = 1;
                 var_a0 = temp_v1->unk_0B0;
             }
         }
@@ -6031,7 +6031,7 @@ block_20:
             sp18 = temp_v1;
             func_800722CC(objectIndex, 8);
             func_80086FD4(objectIndex);
-            temp_v1->unk_0D2 = 0;
+            temp_v1->itemDisplay = 0;
         }
         break;
     }
@@ -6076,7 +6076,7 @@ void func_8007FF5C(s32 objectIndex)
 }
 
 void func_8007FFC0(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {                              /* irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                              /* irregular */
         case 0:
             break;
         case 1:
@@ -6104,7 +6104,7 @@ void func_80080078(s32 objectIndex) {
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s0->unk_0C8 = 0x000C;
     temp_s0->sizeScaling = 1.0f;
-    func_800721C0(objectIndex, 0x04000220);
+    set_obj_index_flag_unk_054(objectIndex, 0x04000220);
     temp_s0->unk_0A4 = 2;
     temp_s0->unk_0DF = 8;
     func_8008B888(objectIndex, 0U, 0U, 0U);
@@ -6139,7 +6139,7 @@ void func_800801FC(s32 objectIndex) {
     struct_80165C18_entry *temp_v0;
 
     temp_v0 = &D_80165C18[objectIndex];
-    switch (temp_v0->unk_0A6) {
+    switch (temp_v0->itemDisplayState) {
     case 0:
         break;
     case 1:
@@ -6168,10 +6168,10 @@ void func_800802C0(s32 objectIndex) {
     temp_s0->unk_0D8 = 0;
     func_80073444(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
-    temp_s0->unk_0D2 = 0;
+    temp_s0->itemDisplay = 0;
     temp_s0->unk_0C8 = 0x000C;
     temp_s0->sizeScaling = 1.5f;
-    func_800721C0(objectIndex, 0x05000220);
+    set_obj_index_flag_unk_054(objectIndex, 0x05000220);
     temp_s0->unk_0A4 = 1;
     temp_s0->unk_0DF = 6;
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -6192,7 +6192,7 @@ void func_800802C0(s32 objectIndex) {
 }
 
 void func_80080408(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
     case 0:
         break;
     case 1:
@@ -6200,14 +6200,14 @@ void func_80080408(s32 objectIndex) {
         break;
     case 2:
         func_8008A6DC(objectIndex, 100.0f);
-        if (func_8007223C(objectIndex, 0x00040000) != 0) {
+        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
             func_800C98B8(D_80165C18[objectIndex].pos, D_80165C18[objectIndex].unk_038, 0x19018045U);
             func_80072488(objectIndex);
         }
         break;
     case 3:
         if (func_800730BC(objectIndex, 3, 5, 1, 6, 6) != 0) {
-            D_80165C18[objectIndex].unk_0D2 = 0;
+            D_80165C18[objectIndex].itemDisplay = 0;
         }
         break;
     case 4:
@@ -6227,9 +6227,9 @@ void func_80080524(s32 objectIndex) {
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s0->unk_0C8 = 0x000C;
-    temp_s0->unk_0D2 = 0;
+    temp_s0->itemDisplay = 0;
     temp_s0->sizeScaling = 1.0f;
-    func_800721C0(objectIndex, 0x04000220);
+    set_obj_index_flag_unk_054(objectIndex, 0x04000220);
     temp_s0->unk_0A4 = 0;
     temp_s0->unk_0DF = 0x0A;
     func_80086E70(objectIndex);
@@ -6318,7 +6318,7 @@ void func_800808CC(s32 arg0) {
     struct_80165C18_entry *temp_t0;
 
     temp_t0 = &D_80165C18[arg0];
-    var_v1 = temp_t0->unk_0A6;
+    var_v1 = temp_t0->itemDisplayState;
     switch (var_v1) {                               /* irregular */
     case 0:
         break;
@@ -6326,7 +6326,7 @@ void func_800808CC(s32 arg0) {
         sp20 = temp_t0;
         func_80080524(arg0);
 block_6:
-        var_v1 = temp_t0->unk_0A6;
+        var_v1 = temp_t0->itemDisplayState;
         break;
     case 2:
         sp20 = temp_t0;
@@ -6339,7 +6339,7 @@ block_6:
         func_8008085C(arg0);
         func_80073514(arg0);
         if (gGamestate != 9) {
-            if ((D_8018D40C == 0) && (temp_t0->unk_0A6 == 2)) {
+            if ((D_8018D40C == 0) && (temp_t0->itemDisplayState == 2)) {
                 func_800C98B8(temp_t0->pos, temp_t0->unk_038, 0x19036045U);
             }
         } else if ((gCutsceneShotTimer < 0xBF) && (((s16) gCutsceneShotTimer % 88) == 0x0000001E)) {
@@ -6374,15 +6374,15 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
     Player *temp_s0;
 
     temp_s0 = &gPlayerOne[playerId];
-    if (func_8007223C(objectIndex, 0x00000200) != 0) {
-        if (!(temp_s0->statusEffects & 0x100)) {
+    if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
+        if (!(temp_s0->hitEffects & 0x100)) {
             temp_f0 = func_80088F54(objectIndex, temp_s0);
             if ((temp_f0 <= 9.0) && !(temp_s0->effect & 0x04000000) && (func_80088D18(objectIndex, temp_s0) != 0)) {
-                if ((temp_s0->unk_000 & 0x8000) && !(temp_s0->unk_000 & 0x100)) {
+                if ((temp_s0->bonusEffect & 0x8000) && !(temp_s0->bonusEffect & 0x100)) {
                     if (!(temp_s0->effect & 0x200)) {
                         func_80089474(objectIndex, playerId, 1.4f, 1.1f, 0x1900A04CU);
                     } else if (func_80072354(objectIndex, 0x00000040) != 0) {
-                        if (temp_s0->unk_000 & 0x1000) {
+                        if (temp_s0->bonusEffect & 0x1000) {
                             func_800C98B8(temp_s0->pos, temp_s0->unk_034, 0x1901A24AU);
                         } else {
                             func_800C9060((u8) playerId, 0x1901A24AU);
@@ -6396,14 +6396,14 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
                     }
                 }
             } else if ((temp_f0 <= 17.5) && (func_80072320(objectIndex, 1) != 0) && (func_80088A58(objectIndex, temp_s0, (temp_s0->unk_094 * 0.5) + 7.0) != 0)) {
-                if ((temp_s0->unk_000 & 0x8000) && !(temp_s0->unk_000 & 0x100)) {
-                    if (func_8007223C(objectIndex, 0x04000000) != 0) {
+                if ((temp_s0->bonusEffect & 0x8000) && !(temp_s0->bonusEffect & 0x100)) {
+                    if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
                     }
                     func_800722A4(objectIndex, 2);
                     temp_s0->unk_040 = (s16) objectIndex;
                     temp_s0->unk_046 |= 2;
-                    temp_s0->statusEffects |= 0x100;
+                    temp_s0->hitEffects |= 0x100;
                     func_80088FF0(temp_s0);
                 }
             }
@@ -6420,7 +6420,7 @@ void func_80080DE4(s32 arg0) {
     player = gPlayerOne;
     for (var_v1 = 0; var_v1 < 8; var_v1++, player++) {
         if (arg0 == player->unk_040) {
-            player->statusEffects &= ~0x100;
+            player->hitEffects &= ~0x100;
             player->unk_040 = -1;
         }
     }
@@ -6500,7 +6500,7 @@ void func_80081080(s32 objectIndex) {
 }
 
 void func_800810F4(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {                              /* irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                              /* irregular */
     case 0:
         break;
     case 1:
@@ -6541,7 +6541,7 @@ void func_80081210(void) {
     func_8007F8D8();
     for (var_s4 = 0; var_s4 < D_80165750; var_s4++) {
         var_s2 = D_80183EA0[var_s4];
-        if (D_80165C18[var_s2].unk_0A6 != 0) {
+        if (D_80165C18[var_s2].itemDisplayState != 0) {
             switch (D_80165C18[var_s2].unk_0D5) {
             case 1:
                 func_8007ED6C(var_s2);
@@ -6573,10 +6573,10 @@ void func_80081210(void) {
             if (!(player->effect & 0x80000000)) {
                 func_80080B28(var_s2, var_s4);
             }
-            if (func_8007223C(var_s2, 0x00020000) != 0) {
+            if (is_obj_index_flag_unk_054_active(var_s2, 0x00020000) != 0) {
                 func_80080A14(var_s2, player);
             }
-            if (func_8007223C(var_s2, 0x00010000) != 0) {
+            if (is_obj_index_flag_unk_054_active(var_s2, 0x00010000) != 0) {
                 func_80080A4C(var_s2, var_s4);
             }
         }
@@ -6592,9 +6592,9 @@ void func_80081210(void) {
     for (var_s4 = 0; var_s4 < D_8018C3F0_SIZE; var_s4++) {
         var_s2 = D_8018C3F0[var_s4];
         if (var_s2 == -1) continue;
-        if (D_80165C18[var_s2].unk_0A6 == 0) continue;
+        if (D_80165C18[var_s2].itemDisplayState == 0) continue;
         func_800810F4(var_s2);
-        if (D_80165C18[var_s2].unk_0A6 != 0) continue;
+        if (D_80165C18[var_s2].itemDisplayState != 0) continue;
         func_80072100(&D_8018C3F0[var_s4]);
     }
 }
@@ -6616,7 +6616,7 @@ void func_8008153C(s32 objectIndex) {
         for (var_s1 = 0; var_s1 < D_8018C3F0_SIZE; var_s1++) {
             loopObjectIndex = D_8018C3F0[var_s1];
 
-            if (D_80165C18[loopObjectIndex].unk_0A6 != 0) continue;
+            if (D_80165C18[loopObjectIndex].itemDisplayState != 0) continue;
 
             func_800723A4(loopObjectIndex, 0);
             D_80165C18[loopObjectIndex].activeTLUT = d_course_moo_moo_farm_mole_dirt;
@@ -6636,7 +6636,7 @@ void func_8008153C(s32 objectIndex) {
 }
 
 void func_80081790(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {   
+    switch (D_80165C18[objectIndex].itemDisplayState) {   
     case 0:
         break;                           /* irregular */
     case 1:
@@ -6655,13 +6655,13 @@ void func_80081790(s32 objectIndex) {
 void func_80081848(s32 objectIndex) {
     func_80073444(objectIndex, d_course_moo_moo_farm_mole_tlut, d_course_moo_moo_farm_mole_frames, 0x20U, (u16) 0x00000040);
     D_80165C18[objectIndex].sizeScaling = 0.15f;
-    D_80165C18[objectIndex].unk_0D2 = 0;
+    D_80165C18[objectIndex].itemDisplay = 0;
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
     func_8008B888(objectIndex, 0U, 0U, 0U);
     func_8008B8BC(objectIndex, 0U, 0U, 0x8000U);
     D_80165C18[objectIndex].unk_0C8 = 6;
     D_80165C18[objectIndex].unk_038[1] = 4.0f;
-    func_800721C0(objectIndex, 0x04000000);
+    set_obj_index_flag_unk_054(objectIndex, 0x04000000);
     func_80072488(objectIndex);
 }
 
@@ -6728,7 +6728,7 @@ void func_80081AFC(s32 objectIndex, s32 arg1) {
     struct_80165C18_entry *temp_s0;
 
     temp_s0 = &D_80165C18[objectIndex];
-    temp_v1 = temp_s0->unk_0A6;
+    temp_v1 = temp_s0->itemDisplayState;
     switch (temp_v1) {                              /* irregular */
     case 0x1:
         func_80081848(objectIndex);
@@ -6738,7 +6738,7 @@ void func_80081AFC(s32 objectIndex, s32 arg1) {
         if (temp_v0 == 0) {
             func_80086EAC(objectIndex, 2, 1);
             func_80072488(objectIndex);
-            func_800721C0(objectIndex, 0x00000200);
+            set_obj_index_flag_unk_054(objectIndex, 0x00000200);
         } else {
             temp_s0->unk_04C = temp_v0 - 1;
         }
@@ -6781,7 +6781,7 @@ void func_80081AFC(s32 objectIndex, s32 arg1) {
         }
         break;
     }
-    if (temp_s0->unk_0A6 >= 2) {
+    if (temp_s0->itemDisplayState >= 2) {
         func_80073514(objectIndex);
     }
 }
@@ -6800,17 +6800,17 @@ void func_80081D34(s32 objectIndex) {
     var_s1 = gPlayerOne;
     var_s4 = camera1;
     for (var_s2 = 0; var_s2 < D_8018D158; var_s2++, var_s1++, var_s4++) {
-        if ((func_8007223C(objectIndex, 0x00000200) != 0) && !(var_s1->effect & 0x80000000) && (func_80088DA4(objectIndex, var_s1) != 0)) {
-            if ((var_s1->unk_000 & 0x8000) && !(var_s1->unk_000 & 0x100)) {
+        if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) && !(var_s1->effect & 0x80000000) && (func_80088DA4(objectIndex, var_s1) != 0)) {
+            if ((var_s1->bonusEffect & 0x8000) && !(var_s1->bonusEffect & 0x100)) {
                 var_s5 = 1;
                 temp_s0 = &D_80165C18[objectIndex];
-                if (func_8007223C(objectIndex, 0x04000000) != 0) {
+                if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                     func_80072180();
                 }
                 if (var_s1->effect & 0x200) {
                     func_800C9060(var_s2, 0x1900A046U);
                 } else {
-                    var_s1->statusEffects |= 2;
+                    var_s1->hitEffects |= 2;
                 }
                 temp_s0->unk_0BE[1] = var_s4->rot[1];
                 temp_s0->unk_038[1] = (var_s1->unk_094 / 2) + 3.0;
@@ -6907,7 +6907,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80081FF4.s")
 #endif
 
 void func_800821AC(s32 objectIndex, s32 arg1) {
-    if (D_80165C18[objectIndex].unk_0A6 != 0) {
+    if (D_80165C18[objectIndex].itemDisplayState != 0) {
         func_80081AFC(objectIndex, arg1);
         func_80081A88(objectIndex);
         func_80081D34(objectIndex);
@@ -6921,7 +6921,7 @@ void func_800821FC(void) {
 
     for (var_s1 = 0; var_s1 < D_8018D1C8; var_s1++) {
         var_s2 = D_80183EA0[var_s1];
-        if (D_80165C18[var_s2].unk_0A6 == 0) {
+        if (D_80165C18[var_s2].itemDisplayState == 0) {
             if (func_8008A8B0(8, 9) != 0) {
                 func_80081FF4(var_s2, 1);
             }
@@ -6932,7 +6932,7 @@ void func_800821FC(void) {
 
     for (var_s1 = 0; var_s1 < D_8018D1D0; var_s1++) {
         var_s2 = D_80183F28[var_s1];
-        if (D_80165C18[var_s2].unk_0A6 == 0) {
+        if (D_80165C18[var_s2].itemDisplayState == 0) {
             if (func_8008A8B0(0x0010, 0x0013) != 0) {
                 func_80081FF4(var_s2, 2);
             }
@@ -6943,7 +6943,7 @@ void func_800821FC(void) {
 
     for (var_s1 = 0; var_s1 < D_8018D1D8; var_s1++) {
         var_s2 = D_8018BFA8[var_s1];
-        if (D_80165C18[var_s2].unk_0A6 == 0) {
+        if (D_80165C18[var_s2].itemDisplayState == 0) {
             if (func_8008A8B0(0x0011, 0x0014) != 0) {
                 func_80081FF4(var_s2, 3);
             }
@@ -6954,7 +6954,7 @@ void func_800821FC(void) {
 
     for (var_s1 = 0; var_s1 < D_8018C3F0_SIZE; var_s1++) {
         var_s2 = D_8018C3F0[var_s1];
-        if (D_80165C18[var_s2].unk_0A6 != 0) {
+        if (D_80165C18[var_s2].itemDisplayState != 0) {
             func_80081790(var_s2);
         }
     }
@@ -7012,7 +7012,7 @@ void func_8008241C(s32 objectIndex, s32 arg1) {
     temp_s0->unk_034 = 1.0f;
     func_80086EF0(objectIndex);
     temp_s0->unk_080 = D_800E633C[arg1 % 4];
-    func_800721C0(objectIndex, 0x00000800);
+    set_obj_index_flag_unk_054(objectIndex, 0x00000800);
     func_80072488(objectIndex);
 }
 #else
@@ -7020,7 +7020,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8008241C.s")
 #endif
 
 void func_80082714(s32 objectIndex, s32 arg1) {
-    switch(D_80165C18[objectIndex].unk_0A6) {
+    switch(D_80165C18[objectIndex].itemDisplayState) {
     case 1:
         func_8008241C(objectIndex , arg1);
         break;
@@ -7070,7 +7070,7 @@ void func_80082870(void) {
     do {
         temp_s0 = *var_s4;
         temp_s1 = &D_80165C18[temp_s0];
-        if (temp_s1->unk_0A6 != 0) {
+        if (temp_s1->itemDisplayState != 0) {
             func_80082714(temp_s0, var_s3);
             func_8008275C(temp_s0);
             if (func_80072320(temp_s0, 2) != 0) {
@@ -7115,19 +7115,19 @@ void init_ktb_crab(s32 objectIndex) {
     func_80073444(objectIndex, d_course_koopa_troopa_beach_crab_tlut, d_course_koopa_troopa_beach_crab_frames, 0x40U, (u16) 0x00000040);
     object = &D_80165C18[objectIndex];
     object->sizeScaling = 0.15f;
-    object->unk_0D2 = 0;
+    object->itemDisplay = 0;
     func_80072488(objectIndex);
     object->unk_0C8 = 1;
-    func_800721C0(objectIndex, 0x04000420);
+    set_obj_index_flag_unk_054(objectIndex, 0x04000420);
     func_80086EAC(objectIndex, 0, 1);
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
     func_8008B8BC(objectIndex, 0U, 0U, 0x8000U);
     object->unk_034 = 1.5f;
-    func_800721C0(objectIndex, 0x00000200);
+    set_obj_index_flag_unk_054(objectIndex, 0x00000200);
 }
 
 void func_80082B34(s32 objectIndex, s32 unused) {
-    switch (D_80165C18[objectIndex].unk_0A6) {                               /* irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                               /* irregular */
     case 0:
         break;
     case 1:
@@ -7140,7 +7140,7 @@ void func_80082B34(s32 objectIndex, s32 unused) {
         func_80072E54(objectIndex, 4, 6, 1, 2, -1);
         break;
     }
-    if (D_80165C18[objectIndex].unk_0A6 >= 2) {
+    if (D_80165C18[objectIndex].itemDisplayState >= 2) {
         func_80073514(objectIndex);
     }
 }
@@ -7180,14 +7180,14 @@ void func_80082C30(s32 objectIndex) {
         break;
     }
     func_8008BF18(objectIndex);
-    if (func_8007223C(objectIndex, 0x00040000) != 0) {
+    if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
         func_80088538(objectIndex);
         D_80165C18[objectIndex].pos[1] = (f32) (D_80165C18[objectIndex].unk_044 + 2.5);
     }
 }
 
 void func_80082E18(s32 objectIndex) {
-    if (D_80165C18[objectIndex].unk_0A6 >= 2) {
+    if (D_80165C18[objectIndex].itemDisplayState >= 2) {
         func_80089F24(objectIndex);
     }
 }
@@ -7198,7 +7198,7 @@ void func_80082E5C(void) {
 
     for (var_s1 = 0; var_s1 < NUM_CRABS; var_s1++) {
         temp_s0 = D_80183EA0[var_s1];
-        if (D_80165C18[temp_s0].unk_0A6 != 0) {
+        if (D_80165C18[temp_s0].itemDisplayState != 0) {
             func_80082B34(temp_s0, var_s1);
             func_8008A6DC(temp_s0, 500.0f);
             func_80082C30(temp_s0);
@@ -7224,7 +7224,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80082F1C.s")
 #endif
 
 void func_80083018(s32 objectIndex, s32 arg1) {
-    switch(D_80165C18[objectIndex].unk_0A6) {
+    switch(D_80165C18[objectIndex].itemDisplayState) {
     case 1:
         func_80082F1C(objectIndex , arg1);
         break;
@@ -7244,7 +7244,7 @@ void func_80083080(void) {
 
     for (var_s1 = 0; var_s1 < NUM_YV_FLAG_POLES; var_s1++) {
         objectIndex = D_80183EA0[var_s1];
-        if (D_80165C18[objectIndex].unk_0A6 != 0) {
+        if (D_80165C18[objectIndex].itemDisplayState != 0) {
             func_80083018(objectIndex, var_s1);
             func_80083060(objectIndex);
         }
@@ -7260,13 +7260,13 @@ void func_8008311C(s32 objectIndex, s32 arg1) {
     temp_s0->activeTexture = d_course_yoshi_valley_hedgehog;
     temp_s0->unk_074 = D_0D0060B0;
     temp_s0->sizeScaling = 0.2f;
-    temp_s0->unk_0D2 = 0;
+    temp_s0->itemDisplay = 0;
     func_80072488(objectIndex);
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
     func_8008B8BC(objectIndex, 0U, 0U, 0x8000U);
     temp_s0->unk_034 = ((arg1 % 6) * 0.1) + 0.5;
     func_80086E70(objectIndex);
-    func_800721C0(objectIndex, 0x04000600);
+    set_obj_index_flag_unk_054(objectIndex, 0x04000600);
     temp_s0->unk_0C8 = 2;
 }
 
@@ -7294,8 +7294,8 @@ void func_80083248(s32 objectIndex) {
         break;
     }
     func_8008BF18(objectIndex);
-    if (func_8007223C(objectIndex, 0x00200000) != 0) {
-        if (func_8007223C(objectIndex, 0x00400000) != 0) {
+    if (is_obj_index_flag_unk_054_active(objectIndex, 0x00200000) != 0) {
+        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00400000) != 0) {
             func_8008861C(objectIndex);
         }
         D_80165C18[objectIndex].pos[1] = D_80165C18[objectIndex].unk_044 + 6.0;
@@ -7303,7 +7303,7 @@ void func_80083248(s32 objectIndex) {
 }
 
 void func_800833D0(s32 objectIndex, s32 arg1) {
-    switch (D_80165C18[objectIndex].unk_0A6) {                              /* irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                              /* irregular */
     case 0:
         break;
     case 1:
@@ -7313,7 +7313,7 @@ void func_800833D0(s32 objectIndex, s32 arg1) {
         func_80072D3C(objectIndex, 0, 1, 4, -1);
         break;
     }
-    if (D_80165C18[objectIndex].unk_0D2 == 0) {
+    if (D_80165C18[objectIndex].itemDisplay == 0) {
         D_80165C18[objectIndex].unk_074 = D_0D0060B0;
     } else {
         D_80165C18[objectIndex].unk_074 = D_0D006130;
@@ -7321,7 +7321,7 @@ void func_800833D0(s32 objectIndex, s32 arg1) {
 }
 
 void func_80083474(s32 objectIndex) {
-    if (D_80165C18[objectIndex].unk_0A6 >= 2) {
+    if (D_80165C18[objectIndex].itemDisplayState >= 2) {
         func_80089F24(objectIndex);
     }
 }
@@ -7373,7 +7373,7 @@ void func_800836F0(Vec3f arg0) {
 }
 
 void func_8008379C(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
     case 0:
         break;
     case 1:
@@ -7397,7 +7397,7 @@ void func_80083868(s32 objectIndex) {
     temp_s0 = &D_80165C18[objectIndex];
     temp_s0->unk_074 = D_0D0061B0;
     temp_s0->sizeScaling = 0.1f;
-    temp_s0->unk_0D2 = 0;
+    temp_s0->itemDisplay = 0;
     func_80072488(objectIndex);
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
     temp_s0->unk_0B2[0] = 0;
@@ -7406,7 +7406,7 @@ void func_80083868(s32 objectIndex) {
     temp_s0->unk_0A0 = random_int(0x2000U) - 0x1000;
     func_80086E70(objectIndex);
     temp_s0->unk_034 = 1.5f;
-    func_800721C0(objectIndex, 0x00000200);
+    set_obj_index_flag_unk_054(objectIndex, 0x00000200);
 }
 
 void func_80083948(s32 objectIndex) {
@@ -7442,14 +7442,14 @@ void func_80083948(s32 objectIndex) {
 }
 
 void func_80083A94(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
     case 0:
         break;
     case 1:
         func_80083868(objectIndex);
         break;
     }
-    if (D_80165C18[objectIndex].unk_0A6 >= 2) {
+    if (D_80165C18[objectIndex].itemDisplayState >= 2) {
         func_80073514(objectIndex);
     }
     func_80083948(objectIndex);
@@ -7459,7 +7459,7 @@ void func_80083B0C(s32 objectIndex) {
     func_80073444(objectIndex, d_course_frappe_snowland_snowman_tlut, d_course_frappe_snowland_snowman_body, 0x40U, (u16) 0x00000040);
     D_80165C18[objectIndex].unk_074 = D_0D0060B0;
     D_80165C18[objectIndex].sizeScaling = 0.1f;
-    D_80165C18[objectIndex].unk_0D2 = 0;
+    D_80165C18[objectIndex].itemDisplay = 0;
     func_80072488(objectIndex);
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
     D_80165C18[objectIndex].unk_0B2[0] = 0;
@@ -7467,7 +7467,7 @@ void func_80083B0C(s32 objectIndex) {
     D_80165C18[objectIndex].unk_0B2[2] = 0x8000;
     D_80165C18[objectIndex].unk_0C8 = 2;
     D_80165C18[objectIndex].unk_034 = 1.5f;
-    func_800721C0(objectIndex, 0x04000210);
+    set_obj_index_flag_unk_054(objectIndex, 0x04000210);
 }
 
 void func_80083BE4(s32 arg0) {
@@ -7478,7 +7478,7 @@ void func_80083C04(s32 objectIndex) {
     struct_80165C18_entry *temp_s1;
 
     temp_s1 = &D_80165C18[objectIndex];
-    switch (temp_s1->unk_0A6) {
+    switch (temp_s1->itemDisplayState) {
     case 0:
         break;
     case 1:
@@ -7494,7 +7494,7 @@ void func_80083C04(s32 objectIndex) {
         break;
     case 11:
         if (func_8007278C(objectIndex, 0x0000000A) != 0) {
-            func_800721C0(objectIndex, 0x00000010);
+            set_obj_index_flag_unk_054(objectIndex, 0x00000010);
             temp_s1->sizeScaling = 0.001f;
         }
         break;
@@ -7508,7 +7508,7 @@ void func_80083C04(s32 objectIndex) {
         func_800721E8(objectIndex, 0x00001000);
         break;
     }
-    if (temp_s1->unk_0A6 >= 2) {
+    if (temp_s1->itemDisplayState >= 2) {
         func_80073514(objectIndex);
     }
     func_80083BE4(objectIndex);
@@ -7526,9 +7526,9 @@ void func_80083D60(void) {
 
         if (temp_a0 == -1) continue;
 
-        if (D_80165C18[temp_a0].unk_0A6 == 0) continue;
+        if (D_80165C18[temp_a0].itemDisplayState == 0) continue;
         func_8008379C(temp_a0);
-        if (D_80165C18[temp_a0].unk_0A6 != 0) continue;
+        if (D_80165C18[temp_a0].itemDisplayState != 0) continue;
         func_80072100(&D_8018C3F0[var_s0]);
         if (var_s0) {} // ??
     }
@@ -7538,10 +7538,10 @@ void func_80083D60(void) {
         var_s3 = D_80183F28[var_s0];
         func_80083A94(var_s3);
         func_80083C04(var_s4);
-        if (func_80072270(var_s4, 0x00001000) != 0) {
+        if (is_obj_index_flag_unk_054_unactive(var_s4, 0x00001000) != 0) {
             temp_s1 = &D_80165C18[var_s4];
             if ((func_8008A8B0(temp_s1->unk_0D5 - 1, temp_s1->unk_0D5 + 1) != 0) && (func_80089B50(var_s4) != 0)) {
-                func_800721C0(var_s4, 0x00001000);
+                set_obj_index_flag_unk_054(var_s4, 0x00001000);
                 func_800721E8(var_s4, 0x00000010);
                 func_800726CC(var_s4, 0x0000000A);
                 func_8008701C(var_s3, 0x0000000A);
@@ -7555,7 +7555,7 @@ void func_80083D60(void) {
 }
 
 void func_80083F18(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
     case 0:
         break;
     case 1:
@@ -7621,9 +7621,9 @@ void func_800842C8(void) {
     for (var_s1 = 0; var_s1 < D_8018C3F0_SIZE; var_s1++) {
         var_s2 = D_8018C3F0[var_s1];
         if (var_s2 != -1) {
-            if (D_80165C18[var_s2].unk_0A6 != 0) {
+            if (D_80165C18[var_s2].itemDisplayState != 0) {
                 func_80083F18(var_s2);
-                if (D_80165C18[var_s2].unk_0A6 == 0) {
+                if (D_80165C18[var_s2].itemDisplayState == 0) {
                     func_80072100(&D_8018C3F0[var_s1]);
                 }
             }
@@ -7654,7 +7654,7 @@ void func_80084430(s32 objectIndex, s32 arg1) {
     temp_s0->unk_0DD = 1;
     func_80086EF0(objectIndex);
     temp_s0->unk_080 = *D_800E672C;
-    func_800721C0(objectIndex, 0x04000800);
+    set_obj_index_flag_unk_054(objectIndex, 0x04000800);
     temp_s0->unk_0A4 = func_80004EAC(&d_course_sherbet_land_unk_data11, 0);
     func_80072488(objectIndex);
 }
@@ -7663,7 +7663,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80084430.s")
 #endif
 
 void func_8008453C(s32 objectIndex, s32 arg1) {
-    switch (D_80165C18[objectIndex].unk_0A6) {                              /* irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                              /* irregular */
     case 0:
         break;
     case 1:
@@ -7687,7 +7687,7 @@ void func_800845C8(s32 objectIndex, s32 arg1) {
     temp_s0->unk_0C8 = 4;
     temp_s0->unk_09C = 2;
     temp_s0->unk_04C = random_int(0x012CU);
-    func_800721C0(objectIndex, 0x04000220);
+    set_obj_index_flag_unk_054(objectIndex, 0x04000220);
     if ((arg1 > 0) && (arg1 < 9)) {
         if ((arg1 == 1) || (arg1 == 2)) {
             func_8008B7D4(objectIndex, D_8018D01C * -2960.0, -80.0f, 1521.0f);
@@ -7784,7 +7784,7 @@ void func_80084B7C(s32 objectIndex, s32 arg1) {
     struct_80165C18_entry *temp_s0;
 
     temp_s0 = &D_80165C18[objectIndex];
-    switch (temp_s0->unk_0A6) {
+    switch (temp_s0->itemDisplayState) {
     case 0:
         break;
     case 1:
@@ -7848,7 +7848,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
             func_800722A4(objectIndex, 2);
             D_80165C18[objectIndex].unk_09C = 1;
             D_80165C18[objectIndex].unk_0D8 = 1;
-            D_80165C18[objectIndex].unk_0D2 = 0;
+            D_80165C18[objectIndex].itemDisplay = 0;
             D_80165C18[objectIndex].unk_0A4 = func_80004EAC(d_course_sherbet_land_unk_data11, D_80165C18[objectIndex].unk_0D8);
             func_800726CC(objectIndex, 3);
             func_80086FD4(objectIndex);
@@ -7888,7 +7888,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
         if (func_80087060(objectIndex, 0x0000000A) != 0) {
             func_800722A4(objectIndex, 2);
             D_80165C18[objectIndex].unk_0D8 = 2;
-            D_80165C18[objectIndex].unk_0D2 = 0;
+            D_80165C18[objectIndex].itemDisplay = 0;
             D_80165C18[objectIndex].unk_0A4 = func_80004EAC(d_course_sherbet_land_unk_data11, D_80165C18[objectIndex].unk_0D8);
             func_800726CC(objectIndex, 3);
             func_80086FD4(objectIndex);
@@ -7897,7 +7897,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
     case 6:
         if (func_80072354(objectIndex, 2) != 0) {
             D_80165C18[objectIndex].unk_0D8 = 0;
-            D_80165C18[objectIndex].unk_0D2 = 0;
+            D_80165C18[objectIndex].itemDisplay = 0;
             D_80165C18[objectIndex].unk_0A4 = func_80004EAC(d_course_sherbet_land_unk_data11, D_80165C18[objectIndex].unk_0D8);
             D_80165C18[objectIndex].unk_0C6 += 0x8000;
             func_800726CC(objectIndex, 2);
@@ -7977,7 +7977,7 @@ void func_80085214(void) {
 
     for (var_s1 = 0; var_s1 < 0xF; var_s1++) {
         temp_s0 = D_80183EA0[var_s1];
-        if (D_80165C18[temp_s0].unk_0A6 != 0) {
+        if (D_80165C18[temp_s0].itemDisplayState != 0) {
             if (var_s1 == 0) {
                 func_8008453C(temp_s0, var_s1);
             } else {
@@ -7992,7 +7992,7 @@ void func_80085214(void) {
         } else {
             func_80089820(temp_s0, 1.5f, 1.25f, 0x1900A046U);
         }
-        if ((func_8007223C(temp_s0, 0x02000000) != 0) && (func_80072354(temp_s0, 0x00000020) != 0)) {
+        if ((is_obj_index_flag_unk_054_active(temp_s0, 0x02000000) != 0) && (func_80072354(temp_s0, 0x00000020) != 0)) {
             func_800722A4(temp_s0, 0x00000060);
             func_800721E8(temp_s0, 0x02000000);
         }
@@ -8069,7 +8069,7 @@ void func_80085534(s32 objectIndex) {
 }
 
 void func_80085768(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {                              /* irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                              /* irregular */
     case 1:
         func_800853DC(objectIndex);
         break;
@@ -8083,11 +8083,11 @@ void func_800857C0(void) {
     s32 objectIndex;
 
     objectIndex = D_80183EA0[0];
-    if (D_80165C18[objectIndex].unk_0A6 != 0) {
+    if (D_80165C18[objectIndex].itemDisplayState != 0) {
         func_80085768(objectIndex);
         func_80085534(objectIndex);
         func_8008BF18(objectIndex);
-        if (D_80165C18[objectIndex].unk_0A6 >= 2) {
+        if (D_80165C18[objectIndex].itemDisplayState >= 2) {
             D_802BA05C->pos[0] = D_80165C18[objectIndex].pos[0];
             D_802BA05C->pos[1] = D_80165C18[objectIndex].pos[1] - 10.0;
             D_802BA05C->pos[2] = D_80165C18[objectIndex].pos[2];
@@ -8105,7 +8105,7 @@ void func_80085878(s32 objectIndex, s32 arg1) {
     temp_s0->unk_074 = d_rainbow_road_unk3;
     temp_s0->sizeScaling = 0.03f;
     temp_s0->unk_0C8 = 0x000A;
-    func_800721C0(objectIndex, 0x04000200);
+    set_obj_index_flag_unk_054(objectIndex, 0x04000200);
     temp_s0->unk_084[8] = (arg1 * 0x12C) + 0x1F4;
     func_8008B7D4(objectIndex, 0.0f, -15.0f, 0.0f);
     temp_v0 = &D_80164490[(u16)temp_s0->unk_084[8]];
@@ -8120,7 +8120,7 @@ void func_800859C8(s32 objectIndex, s32 arg1) {
     struct_80165C18_entry *temp_s0;
 
     temp_s0 = &D_80165C18[objectIndex];
-    switch (temp_s0->unk_0A6) {                              /* irregular */
+    switch (temp_s0->itemDisplayState) {                              /* irregular */
     case 0:
         break;
     case 1:
@@ -8144,7 +8144,7 @@ void func_80085AA8(void) {
     for (var_s4 = 0; var_s4 < 3; var_s4++) {
         temp_s2 = D_80183F28[var_s4];
         temp_s0 = &D_80165C18[temp_s2];
-        if (temp_s0->unk_0A6 != 0) {
+        if (temp_s0->itemDisplayState != 0) {
             func_800859C8(temp_s2, var_s4);
             vec3f_copy(temp_s0->unk_01C, temp_s0->unk_028);
             func_8000D940(temp_s0->unk_028, &temp_s0->unk_084[8], temp_s0->unk_034, temp_s0->unk_044, 0);
@@ -8169,7 +8169,7 @@ void func_80085C20(s32 objectIndex) {
 }
 
 void func_80085CA0(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
     case 1:
         func_80085C20(objectIndex);
         break;
@@ -8207,7 +8207,7 @@ void func_80085DB8(s32 objectIndex) {
 }
 
 void func_80085E38(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
     case 1:
         func_80085DB8(objectIndex);
         break;
@@ -8236,7 +8236,7 @@ void func_80085EF8(s32 objectIndex) {
 }
 
 void func_80085F74(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
     case 1:
         func_80085EF8(objectIndex);
         break;
@@ -8285,7 +8285,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80086074.s")
 #endif
 
 void func_80086110(s32 objectIndex, s32 arg1) {
-    switch (D_80165C18[objectIndex].unk_0A6) {
+    switch (D_80165C18[objectIndex].itemDisplayState) {
     case 1:
         func_80086074(objectIndex, arg1);
         break;
@@ -8317,9 +8317,9 @@ void func_800861E0(void) {
 
     for (var_s2 = 0; var_s2 < NUM_NEON_SIGNS; var_s2++) {
         temp_s0 = D_80183EA0[var_s2];
-        if (D_80165C18[temp_s0].unk_0A6 != 0) {
+        if (D_80165C18[temp_s0].itemDisplayState != 0) {
             func_80086158(temp_s0, var_s2);
-            if (D_80165C18[temp_s0].unk_0A6 >= 2) {
+            if (D_80165C18[temp_s0].itemDisplayState >= 2) {
                 func_800734DC(temp_s0);
                 func_8008BF18(temp_s0);
             }
@@ -8376,7 +8376,7 @@ void func_80086424(s32 objectIndex) {
 }
 
 void func_80086528(s32 objectIndex, s32 arg1) {
-    switch (D_80165C18[objectIndex].unk_0A6) {                              /* irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                              /* irregular */
     case 1:
         func_8008629C(objectIndex, arg1);
         break;
@@ -8424,7 +8424,7 @@ void func_80086604(void) {
     var_s2 = 0;
     do {
         temp_s0 = *var_s1_2;
-        if (D_80165C18[temp_s0].unk_0A6 != 0) {
+        if (D_80165C18[temp_s0].itemDisplayState != 0) {
             func_80086528(temp_s0, var_s2);
             func_80086424(temp_s0);
         }
@@ -8554,7 +8554,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80086940.s")
 #endif
 
 void func_80086C14(s32 objectIndex) {
-    switch (D_80165C18[objectIndex].unk_0A6) {                              /* irregular */
+    switch (D_80165C18[objectIndex].itemDisplayState) {                              /* irregular */
     case 1:
         func_80086700(objectIndex);
         break;

@@ -33,7 +33,7 @@ glabel func_8007C4A4
 .L8007C51C:
 /* 07D11C 8007C51C 24050080 */  li    $a1, 128
 /* 07D120 8007C520 AFA30020 */  sw    $v1, 0x20($sp)
-/* 07D124 8007C524 0C01C870 */  jal   func_800721C0
+/* 07D124 8007C524 0C01C870 */  jal   set_obj_index_flag_unk_054
 /* 07D128 8007C528 AFA6001C */   sw    $a2, 0x1c($sp)
 /* 07D12C 8007C52C 8FA6001C */  lw    $a2, 0x1c($sp)
 /* 07D130 8007C530 8FA30020 */  lw    $v1, 0x20($sp)

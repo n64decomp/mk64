@@ -96,7 +96,7 @@ glabel L8001ACAC
 /* 01B928 8001AD28 00032400 */  sll   $a0, $v1, 0x10
 /* 01B92C 8001AD2C 00046403 */  sra   $t4, $a0, 0x10
 /* 01B930 8001AD30 01802025 */  move  $a0, $t4
-/* 01B934 8001AD34 0C01EBDE */  jal   func_8007AF78
+/* 01B934 8001AD34 0C01EBDE */  jal   gen_random_item_cpu
 /* 01B938 8001AD38 85A50002 */   lh    $a1, 2($t5)
 /* 01B93C 8001AD3C 8FA40030 */  lw    $a0, 0x30($sp)
 /* 01B940 8001AD40 02002825 */  move  $a1, $s0

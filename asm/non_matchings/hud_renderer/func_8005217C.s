@@ -16,7 +16,7 @@ glabel func_8005217C
 /* 052DB4 800521B4 00E02025 */  move  $a0, $a3
 /* 052DB8 800521B8 24050010 */  li    $a1, 16
 /* 052DBC 800521BC AFA30018 */  sw    $v1, 0x18($sp)
-/* 052DC0 800521C0 0C01C88F */  jal   func_8007223C
+/* 052DC0 800521C0 0C01C88F */  jal   is_obj_index_flag_unk_054_active
 /* 052DC4 800521C4 AFA70050 */   sw    $a3, 0x50($sp)
 /* 052DC8 800521C8 8FA30018 */  lw    $v1, 0x18($sp)
 /* 052DCC 800521CC 10400076 */  beqz  $v0, .L800523A8

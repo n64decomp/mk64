@@ -44,7 +44,7 @@ typedef struct
     /* 0xA0 */ s16 unk_0A0;
     /* 0xA2 */ s16 unk_0A2;
     /* 0xA4 */ s16 unk_0A4;
-    /* 0xA6 */ s16 unk_0A6; // Usually a state tracker
+    /* 0xA6 */ s16 itemDisplayState; // Usually a state tracker
     /* 0xA8 */ s16 unk_0A8;
     /* 0xAA */ s16 unk_0AA;
     /* 0xAC */ s16 unk_0AC;
@@ -64,7 +64,7 @@ typedef struct
     /* 0xCF */ s8  unk_0CF;
     /* 0xD0 */ s8  unk_0D0;
     /* 0xD1 */ s8  unk_0D1;
-    /* 0xD2 */ s8  unk_0D2;
+    /* 0xD2 */ s8  itemDisplay;
     /* 0xD3 */ s8  unk_0D3;
     /* 0xD4 */ s8  unk_0D4;
     /* 0xD5 */ u8  unk_0D5;

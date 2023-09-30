@@ -169,7 +169,7 @@ glabel func_8007D070
 /* 07DEFC 8007D2FC 0C01F108 */  jal   func_8007C420
 /* 07DF00 8007D300 8CC6CF14 */   lw    $a2, %lo(D_8018CF14)($a2)
 /* 07DF04 8007D304 02202025 */  move  $a0, $s1
-/* 07DF08 8007D308 0C01C88F */  jal   func_8007223C
+/* 07DF08 8007D308 0C01C88F */  jal   is_obj_index_flag_unk_054_active
 /* 07DF0C 8007D30C 24050080 */   li    $a1, 128
 /* 07DF10 8007D310 50400004 */  beql  $v0, $zero, .L8007D324
 /* 07DF14 8007D314 AE150074 */   sw    $s5, 0x74($s0)

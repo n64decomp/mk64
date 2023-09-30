@@ -304,11 +304,26 @@
 
 /**
  * @brief effect of player's
- * 
+ * for hitEffect
  */
 #define HIT_ROTATING_EFFECT 0x4000 // hitting a rotating object
 #define HIT_BY_ITEM_EFFECT 0x1000000 // being hit by an item
 #define REVERSE_EFFECT 0x400000 // being in the wrong direction
 #define LIGHTNING_EFFECT 0x40000000 // being hit by lightning
+
+/**
+ * @brief effect of player's
+ * for bonusEffect
+ */
+#define GHOST_EFFECT 0x100 // being a ghost
+#define DOESNT_START_EFFECT 0x2000 // can't moving
+
+/**
+ * @brief shell state
+ * 
+ */
+#define SPAWN_FIRST_SHELL 0
+#define SPAWN_SECOND_SHELL 1
+#define SPAWN_THIRD_SHELL 2
 
 #endif // DEFINES_H
