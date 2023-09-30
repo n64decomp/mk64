@@ -27,6 +27,7 @@ struct unexpiredActors {
 
 /* Function Prototypes */
 
+void func_800132F4(void);
 s16  func_80005FD0(Vec3f, Vec3f);
 void func_800100F0(s32);
 void func_800120C8(void);
