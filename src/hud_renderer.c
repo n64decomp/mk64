@@ -4607,7 +4607,6 @@ void func_80053E6C(s32 arg0) {
     s32 var_s1;
     s32 thing;
 
-    // someone run the script to do the macro for these
     gSPDisplayList(gDisplayListHead++, D_0D007E98);
     gDPLoadTLUT_pal256(gDisplayListHead++, D_800E52D0);
     func_8004B614(0, 0, 0, 0, 0, 0, 0);
