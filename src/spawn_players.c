@@ -1150,14 +1150,14 @@ void func_8003D080(void) {
 
     switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            func_8003CD98(gPlayerOneCopy,   camera1, 0, 0); // sic
-            func_8003CD98(gPlayerTwo,   camera1, 1, 0);
-            func_8003CD98(gPlayerThree, camera1, 2, 0);
-            func_8003CD98(gPlayerFour,  camera1, 3, 0);
-            func_8003CD98(gPlayerFive,  camera1, 4, 0);
-            func_8003CD98(gPlayerSix,   camera1, 5, 0);
-            func_8003CD98(gPlayerSeven, camera1, 6, 0);
-            func_8003CD98(gPlayerEight, camera1, 7, 0);
+            func_8003CD98(gPlayerOneCopy, camera1, 0, 0); // sic
+            func_8003CD98(gPlayerTwo,     camera1, 1, 0);
+            func_8003CD98(gPlayerThree,   camera1, 2, 0);
+            func_8003CD98(gPlayerFour,    camera1, 3, 0);
+            func_8003CD98(gPlayerFive,    camera1, 4, 0);
+            func_8003CD98(gPlayerSix,     camera1, 5, 0);
+            func_8003CD98(gPlayerSeven,   camera1, 6, 0);
+            func_8003CD98(gPlayerEight,   camera1, 7, 0);
             break;
 
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:

@@ -1140,31 +1140,31 @@ void func_8007055C(void) {
         D_8018D1F8 += var_s0;
         D_8018D1F0 = var_s0;
         break;
-    case 6:
+    case COURSE_KOOPA_BEACH:
         func_80070328(D_800E6B00);
         break;
-    case 7:
+    case COURSE_ROYAL_RACEWAY:
         func_80070328(D_800E6B38);
         break;
-    case 8:
+    case COURSE_LUIGI_RACEWAY:
         func_80070328(D_800E6A38);
         break;
-    case 9:
+    case COURSE_MOO_MOO_FARM:
         func_80070328(D_800E6AA8);
         break;
-    case 10:
+    case COURSE_TOADS_TURNPIKE:
         func_800704A0(D_800E6C80);
         break;
-    case 11:
+    case COURSE_KALAMARI_DESERT:
         func_80070328(D_800E6C10);
         break;
-    case 12:
+    case COURSE_SHERBET_LAND:
         func_80070328(D_800E6BA8);
         break;
-    case 13:
+    case COURSE_RAINBOW_ROAD:
         func_800704A0(D_800E6C80);
         break;
-    case 14:
+    case COURSE_WARIO_STADIUM:
         func_800704A0(D_800E6DE0);
         break;
     }

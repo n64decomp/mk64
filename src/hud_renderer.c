@@ -765,7 +765,7 @@ void func_800465B8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *texture
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D0079E8);
 
-    func_8004B2BC(arg4);
+    set_transparency(arg4);
     func_80045E10(texture, arg6, arg7, arg8, argA);
 }
 
@@ -873,10 +873,10 @@ UNUSED void func_80046DF4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *
     func_800465B8(arg0, arg1, arg2, arg3, arg4, texture, D_0D0060B0, 64, 64, 64, 32);
 }
 
-void func_80046E60(u8 *tlut, u8 *texture, s32 arg2, s32 arg3) {
+void func_80046E60(u8 *tlut, u8 *texture, s32 width, s32 height) {
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
-    func_800452A4(texture, arg2, arg3);
+    func_800452A4(texture, width, height);
 }
 
 void func_80046F60(u8 *tlut, u8 *arg1, s32 arg2, s32 arg3, s32 arg4) {
@@ -989,28 +989,28 @@ UNUSED void func_80047B20(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *
 void func_80047B9C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *tlut, u8 *texture, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
-    func_8004B2BC(arg4);
+    set_transparency(arg4);
     func_80047068(tlut, texture, arg7, arg8, arg9, argA, argB);
 }
 
 UNUSED void func_80047C28(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *tlut, u8 *texture, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007DD8);
-    func_8004B2BC(arg4);
+    set_transparency(arg4);
     func_80047270(tlut, texture, arg7, arg8, arg9, argA, argB);
 }
 
 void func_80047CB4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *tlut, u8 *texture, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007E38);
-    func_8004B2BC(arg4);
+    set_transparency(arg4);
     func_80047068(tlut, texture, arg7, arg8, arg9, argA, argB);
 }
 
 UNUSED void func_80047D40(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *tlut, u8 *texture, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007E58);
-    func_8004B2BC(arg4);
+    set_transparency(arg4);
     func_80047270(tlut, texture, arg7, arg8, arg9, argA, argB);
 }
 
@@ -1071,49 +1071,49 @@ UNUSED void func_800481B4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *textu
 UNUSED void func_80048228(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
-    func_8004B2BC(arg3);
+    set_transparency(arg3);
     func_80047068(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_800482AC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007DD8);
-    func_8004B2BC(arg3);
+    set_transparency(arg3);
     func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 UNUSED void func_80048330(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E38);
-    func_8004B2BC(arg3);
+    set_transparency(arg3);
     func_80047068(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_800483B4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E58);
-    func_8004B2BC(arg3);
+    set_transparency(arg3);
     func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_80048438(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007DF8);
-    func_8004B2BC(arg3);
+    set_transparency(arg3);
     func_80047068(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_800484BC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E18);
-    func_8004B2BC(arg3);
+    set_transparency(arg3);
     func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_80048540(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E98);
-    func_8004B2BC(arg3);
+    set_transparency(arg3);
     func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
@@ -1123,7 +1123,7 @@ void func_800485C4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *te
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    func_8004B2BC(arg3);
+    set_transparency(arg3);
     func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
     
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
@@ -1641,7 +1641,7 @@ UNUSED void func_8004B254(s32 red, s32 green, s32 blue) {
     gDPSetPrimColor(gDisplayListHead++, 0, 0, red, green, blue, 0xFF);
 }
 
-void func_8004B2BC(s32 alpha) {
+void set_transparency(s32 alpha) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
 }
@@ -1703,15 +1703,15 @@ void func_8004B72C(s32 primRed, s32 primGreen, s32 primBlue, s32 envRed, s32 env
     gDPSetCombineLERP(gDisplayListHead++, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0);
 }
 
-void func_8004B7DC(s32 arg0, s32 arg1, s32 width, s32 height, s32 arg4, s32 arg5, s32 arg6) {
+void func_8004B7DC(s32 x, s32 y, s32 width, s32 height, s32 arg4, s32 arg5, s32 arg6) {
 
-    s32 xh = (((arg0 + width) - 1) << 2);
-    s32 yh = (((arg1 + height) - 1) << 2);
-    s32 xl = ((arg0 * 4));
-    s32 yl = arg1 * 4;
+    s32 xh = (((x + width) - 1) << 2);
+    s32 yh = (((y + height) - 1) << 2);
+    s32 xl = ((x * 4));
+    s32 yl = y * 4;
 
-    s32 xh2 = (((arg0 + width)) << 2);
-    s32 yh2 = ((arg1 + height) << 2);
+    s32 xh2 = (((x + width)) << 2);
+    s32 yh2 = ((y + height) << 2);
 
     if (arg6 == 0) {
         // todo: Update to F3DEX. Uses OLD definition for gspTextureRectangle.
@@ -1721,10 +1721,8 @@ void func_8004B7DC(s32 arg0, s32 arg1, s32 width, s32 height, s32 arg4, s32 arg5
     gSPTextureRectangle(gDisplayListHead++, xl, yl, xh2, yh2, G_TX_RENDERTILE, arg4 << 5, (arg5 << 5), 1 << 10, 1 << 10);
 }
 
-void func_8004B7DC(s32, s32, s32, s32, s32, s32, s32);
-
-void func_8004B950(s32 arg0, s32 arg1, s32 width, s32 height, s32 arg4) {
-    func_8004B7DC(arg0, arg1, width, height, 0, 0, arg4);
+void func_8004B950(s32 x, s32 y, s32 width, s32 height, s32 arg4) {
+    func_8004B7DC(x, y, width, height, 0, 0, arg4);
 }
 
 void func_8004B97C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
@@ -1750,8 +1748,6 @@ void func_8004B97C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
         func_8004B7DC(sp2C, var_a1, arg2 - var_v1, arg3 - var_v0, var_v1, var_v0, arg4);
     }
 }
-
-void func_8004B7DC(s32, s32, s32, s32, s32, s32, s32); // extern
 
 void func_8004BA08(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     UNUSED s32 pad[2];
@@ -1871,7 +1867,7 @@ void func_8004BB3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, f32 arg4) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_8004BB3C.s")
 #endif
 
-UNUSED void func_8004BD14(s32 arg0, s32 arg1, u32 width, u32 height, s32 alpha, u8 *texture1, u8 *texture2) {
+UNUSED void func_8004BD14(s32 x, s32 y, u32 width, u32 height, s32 alpha, u8 *texture1, u8 *texture2) {
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
     gSPDisplayList(gDisplayListHead++, D_0D008138);
     gDPSetTextureLOD(gDisplayListHead++, G_TL_TILE);
@@ -1879,7 +1875,7 @@ UNUSED void func_8004BD14(s32 arg0, s32 arg1, u32 width, u32 height, s32 alpha, 
     gDPSetCombineLERP(gDisplayListHead++, TEXEL1, TEXEL0, PRIMITIVE_ALPHA, TEXEL0, TEXEL1, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED);
     gDPLoadMultiTile(gDisplayListHead++, texture1,   0,   G_TX_RENDERTILE, G_IM_FMT_RGBA, G_IM_SIZ_16b, width, height, 0, 0, width - 1, height - 1, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gDPLoadMultiTile(gDisplayListHead++, texture2, 256, G_TX_RENDERTILE+1, G_IM_FMT_RGBA, G_IM_SIZ_16b, width, height, 0, 0, width - 1, height - 1, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    func_8004B950(arg0, arg1, width, height, 2);
+    func_8004B950(x, y, width, height, 2);
     gSPDisplayList(gDisplayListHead++, D_0D008120);
 }
 
@@ -2041,7 +2037,7 @@ UNUSED void func_8004C91C(s32 arg0, s32 arg1, u8 *texture, s32 arg3, s32 arg4, s
 
 void func_8004C9D8(s32 arg0, s32 arg1, s32 arg2, u8 *texture, s32 arg4, s32 arg5, UNUSED s32 arg6, s32 arg7) {
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
-    func_8004B2BC(arg2);
+    set_transparency(arg2);
     func_8004C268(arg0, arg1, texture, arg4, arg5, arg7, 1);
 }
 
@@ -2482,14 +2478,14 @@ void func_8004E240(s32 arg0, s32 arg1, u8 *tlut, u8 *texture, s32 arg4, s32 arg5
 
 void func_8004E2B8(s32 arg0, s32 arg1, s32 arg2, u8 *tlut, u8 *texture, s32 arg5, s32 arg6, s32 arg7) {
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
-    func_8004B2BC(arg2);
+    set_transparency(arg2);
     func_8004B05C(tlut);
     func_8004DF5C(arg0, arg1, texture, arg5, arg6, arg7);
 }
 
 void func_8004E338(s32 arg0, s32 arg1, u8 *tlut, u8 *texture, s32 arg4, s32 arg5) {
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
-    func_8004B2BC(D_8016589C);
+    set_transparency(D_8016589C);
     func_8004B05C(tlut);
     func_8004E06C(arg0, arg1, texture, arg4, arg5);
 }
@@ -2977,7 +2973,7 @@ void func_8004F8CC(s32 arg0, s32 arg1) {
 
 void func_8004F950(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
-    func_8004B2BC(arg2);
+    set_transparency(arg2);
     func_80043D50(D_0D00C558, 104, 16);
     func_8004F6D0(arg3);
     func_8004F8CC(arg0, arg1);
@@ -3065,7 +3061,7 @@ void func_8004FC78(s16 arg0, s16 arg1, s8 arg2) {
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
-void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
+void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 characterId, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
     if ((gCurrentCourseId == COURSE_YOSHI_VALLEY) && (arg3 < 3) && (arg8 == 0)) {
         func_80042330((s32) arg0, (s32) arg1, 0U, 1.0f);
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
@@ -3077,8 +3073,8 @@ void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 arg4, s32 arg5, s
         func_80042330(arg0, arg1, 0U, 1.0f);
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
         func_8004B35C(0x000000FF, 0x000000FF, 0x000000FF, arg5);
-        gDPLoadTLUT_pal256(gDisplayListHead++, gPortraitTLUTs[arg4]);
-        func_800452A4(gPortraitTextures[arg4], 0x00000020, 0x00000020);
+        gDPLoadTLUT_pal256(gDisplayListHead++, gPortraitTLUTs[characterId]);
+        func_800452A4(gPortraitTextures[characterId], 0x00000020, 0x00000020);
         if (arg7 != 0) {
             gSPDisplayList(gDisplayListHead++, D_0D0069F8);
         } else {
@@ -3430,7 +3426,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
         if (player->effect & 0x200) {
             func_8004B614((s32) D_801656C0, (s32) D_801656D0, (s32) D_801656E0, 0x00000080, 0x00000080, 0x00000080, (s32) D_80165C18[objectIndex].unk_0A0);
         } else {
-            func_8004B2BC((s32) D_80165C18[objectIndex].unk_0A0);
+            set_transparency((s32) D_80165C18[objectIndex].unk_0A0);
         }
         func_800452A4(gPortraitTextures[characterId], 0x00000020, 0x00000020);
         object = &D_80165C18[objectIndex];

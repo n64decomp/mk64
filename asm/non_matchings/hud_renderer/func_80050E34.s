@@ -244,7 +244,7 @@ glabel func_80050E34
 /* 051DE0 800511E0 25CE5C18 */  addiu $t6, %lo(D_80165C18) # addiu $t6, $t6, 0x5c18
 /* 051DE4 800511E4 032E8821 */  addu  $s1, $t9, $t6
 /* 051DE8 800511E8 862400A0 */  lh    $a0, 0xa0($s1)
-/* 051DEC 800511EC 0C012CAF */  jal   func_8004B2BC
+/* 051DEC 800511EC 0C012CAF */  jal   set_transparency
 /* 051DF0 800511F0 AFAA003C */   sw    $t2, 0x3c($sp)
 /* 051DF4 800511F4 8FAA003C */  lw    $t2, 0x3c($sp)
 .L800511F8:

@@ -191,7 +191,7 @@ void func_8004B138(s32, s32, s32, s32);
 void func_8004B180(s32, s32, s32, s32);
 void func_8004B1C8(s32, s32, s32, s32, s32, s32, s32);
 void func_8004B254(s32, s32, s32);
-void func_8004B2BC(s32);
+void set_transparency(s32);
 void func_8004B310(s32);
 void func_8004B35C(s32, s32, s32, s32);
 void func_8004B3C8(s32);
