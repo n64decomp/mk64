@@ -5791,7 +5791,6 @@ void func_80012780(TrainCarStuff *trainCar, s16 *arg1, u16 arg2) {
 extern s16 D_80162FCC;
 //extern s32 D_80163598
 extern s32 D_8016359C;
-//extern TrainStuff D_801635C4;
 
 // This is really Vec2s D_80163598[465] but that does not match.
 // Likely because this is a shared pointer between courses.
@@ -5883,8 +5882,6 @@ void func_80012A48(TrainCarStuff *trainCar, s16 arg1) {
 s32 func_800755FC(s32, Vec3f, f32);
 s16 func_800DBAC(Vec3f, Vec3s, f32);
 extern s16 D_80162FCC;
-extern Vec3f D_801635A4;
-extern Vec3s D_801635BC;
 
 
 void func_80012AC0(void) {
@@ -5912,7 +5909,7 @@ void func_80012AC0(void) {
         sTrains[i].locomotive.velocity[2] = sTrains[i].locomotive.position[2] - temp_f22;
 
         func_80012A48(&sTrains[i].locomotive, temp_v0);
-        
+
         if ((temp_s0 != sTrains[i].locomotive.wayPointIndex)
             && ((sTrains[i].locomotive.wayPointIndex == 0x00BE)
             || (sTrains[i].locomotive.wayPointIndex == 0x0140))) {

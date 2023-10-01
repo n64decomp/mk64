@@ -295,16 +295,16 @@ glabel D_8016359C
 .skip 4
 
 glabel sTrains
-.skip 4
+.skip 256
 
-glabel D_801635A4 # fake
-.skip 12
+#glabel D_801635A4 # fake trains->locomotive->position
+#.skip 12
 
-glabel D_801635B0 # also fake
-.skip 12
+#glabel D_801635B0 # also fake trains->locomotive->velocity
+#.skip 12
 
-glabel D_801635BC # likely also fake
-.skip 8
+#glabel D_801635BC # likely also fake trains->locomotive->wayPointIndex
+#.skip 8
 
-glabel D_801635C4 # likely probably also fake
-.skip 220
+#glabel D_801635C4 # likely probably also fake
+#.skip 220
