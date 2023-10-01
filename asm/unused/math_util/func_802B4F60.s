@@ -4,7 +4,7 @@ glabel func_802B4F60
 /* 11E578 802B4F68 AFA40070 */  sw    $a0, 0x70($sp)
 /* 11E57C 802B4F6C AFA60078 */  sw    $a2, 0x78($sp)
 /* 11E580 802B4F70 AFA7007C */  sw    $a3, 0x7c($sp)
-/* 11E584 802B4F74 0C0AD4B6 */  jal   vec3f_copy
+/* 11E584 802B4F74 0C0AD4B6 */  jal   vec3f_copy_return
 /* 11E588 802B4F78 27A4001C */   addiu $a0, $sp, 0x1c
 /* 11E58C 802B4F7C C7AC001C */  lwc1  $f12, 0x1c($sp)
 /* 11E590 802B4F80 C7A4003C */  lwc1  $f4, 0x3c($sp)
@@ -21,7 +21,7 @@ glabel func_802B4F60
 /* 11E5BC 802B4FAC C7AA006C */  lwc1  $f10, 0x6c($sp)
 /* 11E5C0 802B4FB0 46088180 */  add.s $f6, $f16, $f8
 /* 11E5C4 802B4FB4 46065080 */  add.s $f2, $f10, $f6
-/* 11E5C8 802B4FB8 0C0AD90D */  jal   func_802B6434
+/* 11E5C8 802B4FB8 0C0AD90D */  jal   mtxf_translate_vec3f_mat4
 /* 11E5CC 802B4FBC E7A2002C */   swc1  $f2, 0x2c($sp)
 /* 11E5D0 802B4FC0 C7A2002C */  lwc1  $f2, 0x2c($sp)
 /* 11E5D4 802B4FC4 44809000 */  mtc1  $zero, $f18

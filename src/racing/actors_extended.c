@@ -26,9 +26,9 @@ void func_802B0210(Collision *arg0, Collision *arg1) {
     arg1->unk3C[1] = arg0->unk3C[1];
     arg1->unk3C[2] = arg0->unk3C[2];
 
-    vec3f_copy(arg1->unk48, arg0->unk48);
-    vec3f_copy(arg1->unk54, arg0->unk54);
-    vec3f_copy(arg1->unk60, arg0->unk60);
+    vec3f_copy_return(arg1->unk48, arg0->unk48);
+    vec3f_copy_return(arg1->unk54, arg0->unk54);
+    vec3f_copy_return(arg1->unk60, arg0->unk60);
 }
 
 void func_802B02B4(struct ShellActor *shell, s32 shellType) {
@@ -557,7 +557,7 @@ s32 func_802B19EC(TripleShellParent *parent, Player *player, s16 shellType, u16 
     startingPos[0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = player->boundingBoxSize - 4.0f;
-    func_802B63B8(startingPos, player->unk_174);
+    mtxf_translate_vec3f_mat3(startingPos, player->unk_174);
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
@@ -603,7 +603,7 @@ s32 func_802B1C9C(Player *player) {
     startingPos[0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = player->boundingBoxSize - 4.0f;
-    func_802B63B8(startingPos, player->unk_174);
+    mtxf_translate_vec3f_mat3(startingPos, player->unk_174);
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
@@ -636,7 +636,7 @@ s32 func_802B1E48(Player *player) {
     startingPos[0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = player->boundingBoxSize - 4.0f;
-    func_802B63B8(startingPos, player->unk_174);
+    mtxf_translate_vec3f_mat3(startingPos, player->unk_174);
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
@@ -856,7 +856,7 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
     startingPos[0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = -(player->boundingBoxSize + 4.0f);
-    func_802B63B8(startingPos, player->unk_174);
+    mtxf_translate_vec3f_mat3(startingPos, player->unk_174);
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
@@ -933,7 +933,7 @@ s32 func_802B2C40(Player *player) {
     startingPos[0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = -(player->boundingBoxSize + 4.0f);
-    func_802B63B8(startingPos, player->unk_174);
+    mtxf_translate_vec3f_mat3(startingPos, player->unk_174);
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
@@ -972,7 +972,7 @@ s32 func_802B2D70(Player *player) {
     startingPos[0, 0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = -(player->boundingBoxSize + 4.0f);
-    func_802B63B8(startingPos, player->unk_174);
+    mtxf_translate_vec3f_mat3(startingPos, player->unk_174);
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
@@ -1136,7 +1136,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
         somePosVel[0] = 0.0f;
         somePosVel[1] = player->boundingBoxSize;
         somePosVel[2] = -(player->boundingBoxSize + shell->boundingBoxSize + 2.0f);
-        func_802B63B8(somePosVel, player->unk_174);
+        mtxf_translate_vec3f_mat3(somePosVel, player->unk_174);
         shell->pos[0] = player->pos[0] + somePosVel[0];
         pad2 = player->pos[1] - somePosVel[1];
         shell->pos[2] = player->pos[2] + somePosVel[2];
@@ -1216,7 +1216,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
             somePosVel[0] = sins(shell->rotAngle) * 6.0f;
             somePosVel[1] = shell->boundingBoxSize - player->boundingBoxSize;
             somePosVel[2] = coss(shell->rotAngle) * 6.0f;
-            func_802B63B8(somePosVel, player->unk_174);
+            mtxf_translate_vec3f_mat3(somePosVel, player->unk_174);
             shell->pos[0] = player->pos[0] + somePosVel[0];
             shell->pos[1] = player->pos[1] + somePosVel[1];
             shell->pos[2] = player->pos[2] + somePosVel[2];
@@ -1257,7 +1257,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
             somePosVel[0] = sins(shell->rotAngle) * 8.0f;
             somePosVel[1] = shell->boundingBoxSize - player->boundingBoxSize;
             somePosVel[2] = coss(shell->rotAngle) * 8.0f;
-            func_802B63B8(somePosVel, player->unk_174);
+            mtxf_translate_vec3f_mat3(somePosVel, player->unk_174);
             somePos2[0] = shell->pos[0];
             somePos2[1] = shell->pos[1];
             somePos2[2] = shell->pos[2];
@@ -1515,7 +1515,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
         somePosVel[0] = 0.0f;
         somePosVel[1] = player->boundingBoxSize;
         somePosVel[2] = -(player->boundingBoxSize + shell->boundingBoxSize + 2.0f);
-        func_802B63B8(somePosVel, player->unk_174);
+        mtxf_translate_vec3f_mat3(somePosVel, player->unk_174);
         shell->pos[0] = player->pos[0] + somePosVel[0];
         pad7          = player->pos[1] - somePosVel[1];
         shell->pos[2] = player->pos[2] + somePosVel[2];
@@ -1594,7 +1594,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             somePosVel[0] = sins(shell->rotAngle) * 8.0f;
             somePosVel[1] = shell->boundingBoxSize - player->boundingBoxSize;
             somePosVel[2] = coss(shell->rotAngle) * 8.0f;
-            func_802B63B8(somePosVel, player->unk_174);
+            mtxf_translate_vec3f_mat3(somePosVel, player->unk_174);
             shell->pos[0] = player->pos[0] + somePosVel[0];
             shell->pos[1] = player->pos[1] + somePosVel[1];
             shell->pos[2] = player->pos[2] + somePosVel[2];
@@ -1699,7 +1699,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             somePosVel[0] = sins(shell->rotAngle) * 8.0f;
             somePosVel[1] = shell->boundingBoxSize - player->boundingBoxSize;
             somePosVel[2] = coss(shell->rotAngle) * 8.0f;
-            func_802B63B8(somePosVel, player->unk_174);
+            mtxf_translate_vec3f_mat3(somePosVel, player->unk_174);
             origPos[0] = shell->pos[0];
             origPos[1] = shell->pos[1];
             origPos[2] = shell->pos[2];

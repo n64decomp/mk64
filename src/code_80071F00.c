@@ -27,6 +27,7 @@
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
 #include "courses/all_course_data.h"
+#include "menus.h"
 
 // TODO: unused?
 f32 D_800E43B0[] = { 
@@ -7038,7 +7039,7 @@ void func_8008275C(s32 objectIndex) {
         break;
     case 2:
         func_8008B78C(objectIndex);
-        func_80040EC4(D_80165C18[objectIndex].unk_01C, D_80165C18[objectIndex].pos);
+        vec3f_copy(D_80165C18[objectIndex].unk_01C, D_80165C18[objectIndex].pos);
         func_8000D940(D_80165C18[objectIndex].unk_010, &D_80165C18[objectIndex].unk_0C6, D_80165C18[objectIndex].unk_034, 0.0f, 0);
         D_80165C18[objectIndex].unk_028[0] *= 2.0;
         D_80165C18[objectIndex].unk_028[1] *= 2.5;
@@ -8145,7 +8146,7 @@ void func_80085AA8(void) {
         temp_s0 = &D_80165C18[temp_s2];
         if (temp_s0->unk_0A6 != 0) {
             func_800859C8(temp_s2, var_s4);
-            func_80040EC4(temp_s0->unk_01C, temp_s0->unk_028);
+            vec3f_copy(temp_s0->unk_01C, temp_s0->unk_028);
             func_8000D940(temp_s0->unk_028, &temp_s0->unk_084[8], temp_s0->unk_034, temp_s0->unk_044, 0);
             temp_s0->unk_0BE[1] = get_angle_between_points(temp_s0->unk_01C, temp_s0->unk_028);
             func_8008BF18(temp_s2);

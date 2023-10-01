@@ -14,6 +14,7 @@
 #include "audio/external.h"
 #include "courses/all_course_data.h"
 #include "main.h"
+#include "menus.h"
 
 void func_8006E9C0(void) {
 

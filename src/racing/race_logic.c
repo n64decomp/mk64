@@ -21,12 +21,12 @@
 #include "math_util_2.h"
 #include "code_8008C1D0.h"
 #include "math.h"
+#include "menus.h"
 
 #pragma intrinsic (sqrtf)
 
 extern s16 gPlayerBalloonCount[];
 extern s16 D_8016348C;
-extern s8 gCupCourseSelection;
 
 extern s32 gLapCountByPlayerId[];
 extern u16 D_802BA048;
@@ -34,9 +34,7 @@ extern u16 D_802BA048;
 extern u16 D_800DC5B4;
 extern u16 D_800DC5B0;
 extern u16 D_800DC5B8;
-extern s32 gMenuSelection;
 
-extern s8 D_8018EE08;
 extern s32 D_8018D2AC;
 extern s16 gCurrentCourseId;
 extern u32 D_800DC5AC;
