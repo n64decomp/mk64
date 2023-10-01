@@ -297,14 +297,14 @@ glabel D_8016359C
 glabel sTrains
 .skip 4
 
-glabel D_801635A4
+glabel D_801635A4 # fake
 .skip 12
 
-glabel D_801635B0
+glabel D_801635B0 # also fake
 .skip 12
 
-glabel D_801635BC
+glabel D_801635BC # likely also fake
 .skip 8
 
-glabel D_801635C4
+glabel D_801635C4 # likely probably also fake
 .skip 220
