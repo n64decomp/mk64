@@ -27,9 +27,9 @@ glabel func_8008241C
 /* 08301C 8008241C 000470C0 */  sll   $t6, $a0, 3
 /* 083020 80082420 27BDFFD8 */  addiu $sp, $sp, -0x28
 /* 083024 80082424 01C47023 */  subu  $t6, $t6, $a0
-/* 083028 80082428 3C0F8016 */  lui   $t7, %hi(D_80165C18) # $t7, 0x8016
+/* 083028 80082428 3C0F8016 */  lui   $t7, %hi(gObjectList) # $t7, 0x8016
 /* 08302C 8008242C AFB00014 */  sw    $s0, 0x14($sp)
-/* 083030 80082430 25EF5C18 */  addiu $t7, %lo(D_80165C18) # addiu $t7, $t7, 0x5c18
+/* 083030 80082430 25EF5C18 */  addiu $t7, %lo(gObjectList) # addiu $t7, $t7, 0x5c18
 /* 083034 80082434 000E7140 */  sll   $t6, $t6, 5
 /* 083038 80082438 01CF8021 */  addu  $s0, $t6, $t7
 /* 08303C 8008243C 3C180601 */  lui   $t8, %hi(d_course_koopa_troopa_beach_unk4) # $t8, 0x601

@@ -1,8 +1,8 @@
 glabel func_800563DC
 /* 056FDC 800563DC 0004C8C0 */  sll   $t9, $a0, 3
 /* 056FE0 800563E0 0324C823 */  subu  $t9, $t9, $a0
-/* 056FE4 800563E4 3C088016 */  lui   $t0, %hi(D_80165C18) # $t0, 0x8016
-/* 056FE8 800563E8 25085C18 */  addiu $t0, %lo(D_80165C18) # addiu $t0, $t0, 0x5c18
+/* 056FE4 800563E4 3C088016 */  lui   $t0, %hi(gObjectList) # $t0, 0x8016
+/* 056FE8 800563E8 25085C18 */  addiu $t0, %lo(gObjectList) # addiu $t0, $t0, 0x5c18
 /* 056FEC 800563EC 0019C940 */  sll   $t9, $t9, 5
 /* 056FF0 800563F0 03281021 */  addu  $v0, $t9, $t0
 /* 056FF4 800563F4 C4440008 */  lwc1  $f4, 8($v0)

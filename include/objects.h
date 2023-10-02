@@ -78,12 +78,12 @@ typedef struct
     /* 0xDD */ u8  unk_0DD;
     /* 0xDE */ s8  unk_0DE;
     /* 0xDF */ u8  unk_0DF;
-} struct_80165C18_entry; // size = 0xE0
+} Objects; // size = 0xE0
 
 // This is the object list
-extern struct_80165C18_entry D_80165C18[];
+extern Objects gObjectList[];
 
-// This are other lists of indices in D_80165C18.
+// This are other lists of indices in gObjectList.
 /**
  * Lakitu?
 **/
@@ -105,7 +105,7 @@ extern s32 D_8018D3C0;
 extern Collision D_8018C0B0[];
 
 /**
- * D_80183EA0, D_80183F28, D_8018BFA8, and D_8018C030 are all lists of indices in D_80165C18.
+ * D_80183EA0, D_80183F28, D_8018BFA8, and D_8018C030 are all lists of indices in gObjectList.
  * func_80070190 initializes them in such a way that the indicies in each list are not adjacent.
  * First D_80183EA0 gets an unused index, then D_80183F28, then D_8018BFA8, then D_8018C030, and then it loops.
  * 

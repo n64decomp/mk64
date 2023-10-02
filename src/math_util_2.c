@@ -800,9 +800,9 @@ void mtxf_set_matrix_scale_transl(Mat4 transformMatrix, Vec3f vec1, Vec3f vec2, 
  * @param arg1
  **/
 
-void mtxf_set_matrix_D_80165C18(s32 transformIndex, Mat4 transformMatrix) {
+void mtxf_set_matrix_gObjectList(s32 transformIndex, Mat4 transformMatrix) {
     f32 sinX;
-    struct_80165C18_entry *temp_s0 = &D_80165C18[transformIndex];
+    Objects *temp_s0 = &gObjectList[transformIndex];
     f32 sinY;
     f32 cosY;
     f32 sinZ;
@@ -980,10 +980,10 @@ void rsp_set_matrix_transl_rot_scale(Vec3f arg0,Vec3f arg1, f32 arg2) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
-void rsp_set_matrix_D_80165C18(s32 transformIndex) {
+void rsp_set_matrix_gObjectList(s32 transformIndex) {
     Mat4 matrix;
 
-    mtxf_set_matrix_D_80165C18(transformIndex, matrix);
+    mtxf_set_matrix_gObjectList(transformIndex, matrix);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);

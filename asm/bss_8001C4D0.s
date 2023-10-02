@@ -590,9 +590,9 @@ glabel D_80165A90
 .skip 392
 
 # object list begin
-# D_80165C18 should be of size 123,200 (0xE0 * 0x226)
+# gObjectList should be of size 123,200 (0xE0 * 0x226)
 # D_80165CBC, D_80165CBE, and D_80165CED are all fake variables
-glabel D_80165C18
+glabel gObjectList
 .skip 164
 
 glabel D_80165CBC

@@ -1587,9 +1587,9 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     Mat4 spE0;
     Mat4 spA0;
 
-    f32 temp_f0 = is_within_render_distance(camera->pos, actor->pos, camera->rot[1], 2500.0f, gCameraZoom[camera - camera1], 9000000.0f);
+    f32 distance = is_within_render_distance(camera->pos, actor->pos, camera->rot[1], 2500.0f, gCameraZoom[camera - camera1], 9000000.0f);
 
-    if (temp_f0 < 0.0f) { return; }
+    if (distance < 0.0f) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
@@ -1597,12 +1597,12 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     maxObjectsReached = render_set_position(sp120, 0) == 0;
     if (maxObjectsReached) { return; }
 
-    if (temp_f0 < 122500.0f) {
+    if (distance < 122500.0f) {
 
         gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1C0F0);
         gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1B978);
 
-    } else if (temp_f0 < 640000.0f) {
+    } else if (distance < 640000.0f) {
 
         gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D670);
         gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D160);
@@ -1610,7 +1610,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
         gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E910);
         gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E480);
     }
-    if (1440000.0f < temp_f0) { return; }
+    if (1440000.0f < distance) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);

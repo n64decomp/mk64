@@ -193,7 +193,7 @@ GLOBAL_ASM("asm/non_matchings/code_8006E9C0/func_8006EB10.s")
 #endif
 
 void func_8006ED60() {
-    bzero(D_80165C18, OBJECT_LIST_SIZE * sizeof(struct_80165C18_entry));
+    bzero(gObjectList, OBJECT_LIST_SIZE * sizeof(Objects));
     D_80183D5C = -1;
 }
 
@@ -218,9 +218,9 @@ void func_8006EE44(void) {
 
 // Some kind of initalization for the Item Window part of the HUD
 void func_8006EE7C(s32 objectIndex) {
-    struct_80165C18_entry *temp_v0;
+    Objects *temp_v0;
 
-    temp_v0 = &D_80165C18[objectIndex];
+    temp_v0 = &gObjectList[objectIndex];
     temp_v0->currentItem = ITEM_NONE;
     temp_v0->itemDisplay = temp_v0->currentItem;
     temp_v0->tlutList = (s32 *) gTLUTItemWindowNone;
@@ -1047,10 +1047,10 @@ void func_80070190(void) {
 }
 
 void func_80070250(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
-    struct_80165C18_entry *temp_v0;
+    Objects *temp_v0;
 
     func_800723A4(objectIndex, arg1);
-    temp_v0 = &D_80165C18[objectIndex];
+    temp_v0 = &gObjectList[objectIndex];
     temp_v0->unk_0D5 = arg2->id;
     temp_v0->currentItem = ITEM_NONE;
     temp_v0->unk_0BE[1] = arg2->pos[0];
@@ -1090,10 +1090,10 @@ void func_80070328(StarSpawn *arg0) {
  * unk_0A2 is an alpha value, used to make the star twinkle.
 **/
 void func_800703E0(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
-    struct_80165C18_entry *temp_v0;
+    Objects *temp_v0;
 
     func_800723A4(objectIndex, arg1);
-    temp_v0 = &D_80165C18[objectIndex];
+    temp_v0 = &gObjectList[objectIndex];
     temp_v0->unk_0D5 = arg2->id; // No idea, all 0's for stars
     temp_v0->currentItem = ITEM_BANANA;
     temp_v0->unk_0BE[1] = arg2->pos[0]; // No idea
@@ -1223,7 +1223,7 @@ static ? D_800E6360;                                /* unable to generate initia
 static ? D_800E641A;                                /* unable to generate initializer */
 
 void func_80070780(void) {
-    struct_80165C18_entry *sp4C;
+    Objects *sp4C;
     ? *sp48;
     ? *sp44;
     ? *var_s1_2;
@@ -1294,15 +1294,15 @@ void func_80070780(void) {
     s8 *var_s0_5;
     s8 *var_s0_6;
     s8 *var_s0_7;
-    struct_80165C18_entry *temp_v0;
-    struct_80165C18_entry *temp_v0_2;
-    struct_80165C18_entry *temp_v0_3;
-    struct_80165C18_entry *temp_v0_4;
-    struct_80165C18_entry *temp_v0_5;
-    struct_80165C18_entry *temp_v0_6;
-    struct_80165C18_entry *temp_v0_7;
-    struct_80165C18_entry *temp_v0_8;
-    struct_80165C18_entry *temp_v0_9;
+    Objects *temp_v0;
+    Objects *temp_v0_2;
+    Objects *temp_v0_3;
+    Objects *temp_v0_4;
+    Objects *temp_v0_5;
+    Objects *temp_v0_6;
+    Objects *temp_v0_7;
+    Objects *temp_v0_8;
+    Objects *temp_v0_9;
 
     switch ((u16) gCurrentCourseId) {
     case 0:
@@ -1352,7 +1352,7 @@ void func_80070780(void) {
                 temp_v1 = D_80165758 + var_s2;
                 var_s3_2 += 1;
                 temp_f6 = (f32) temp_v1->unk0;
-                temp_v0 = &D_80165C18[temp_s0];
+                temp_v0 = &gObjectList[temp_s0];
                 var_s2 += 8;
                 var_s1 += 4;
                 temp_v0->unk_010[0] = temp_f6 * D_8018D01C;
@@ -1365,7 +1365,7 @@ void func_80070780(void) {
         temp_s0_2 = *D_80183F28;
         func_800723A4(temp_s0_2, 0);
         var_s1_2 = &D_800E5728;
-        temp_v0_2 = &D_80165C18[temp_s0_2];
+        temp_v0_2 = &gObjectList[temp_s0_2];
         var_s2_2 = D_8018BFA8;
         temp_v0_2->pos[1] = 80.0f;
         temp_v0_2->pos[0] = (f32) ((f64) D_8018D01C * -68.0);
@@ -1374,7 +1374,7 @@ void func_80070780(void) {
             temp_s0_3 = *var_s2_2;
             func_800723A4(temp_s0_3, 0);
             temp_t9 = var_s3_2 & 1;
-            temp_v0_3 = &D_80165C18[temp_s0_3];
+            temp_v0_3 = &gObjectList[temp_s0_3];
             var_s3_2 += 1;
             var_s2_2 += 4;
             temp_v0_3->pos[1] = (f32) var_s1_2->unk2;
@@ -1396,7 +1396,7 @@ void func_80070780(void) {
         if (gGamestate != 9) {
             temp_s0_4 = D_80183EA0->unk0;
             func_80073444(temp_s0_4, &d_course_banshee_boardwalk_bat_tlut, &d_course_banshee_boardwalk_bat, 0x20U, (u16) 0x00000040);
-            temp_v0_4 = &D_80165C18[temp_s0_4];
+            temp_v0_4 = &gObjectList[temp_s0_4];
             temp_v0_4->unk_0B2[0] = 0;
             temp_v0_4->unk_0B2[1] = 0;
             temp_v0_4->unk_0B2[2] = 0x8000;
@@ -1420,7 +1420,7 @@ void func_80070780(void) {
                 sp44 = var_v1;
                 func_800723A4(temp_s0_5, 0);
                 temp_f0 = (f32) var_s1_4->unk0 * D_8018D01C;
-                temp_v0_5 = &D_80165C18[temp_s0_5];
+                temp_v0_5 = &gObjectList[temp_s0_5];
                 temp_v0_5->unk_010[0] = temp_f0;
                 temp_v0_5->pos[0] = temp_f0;
                 temp_f10 = var_s1_4->unk4;
@@ -1457,14 +1457,14 @@ void func_80070780(void) {
                 temp_s0_6 = *var_s2_4;
                 sp44 = var_v1_2;
                 func_800723A4(temp_s0_6, 0);
-                temp_v0_6 = &D_80165C18[temp_s0_6];
+                temp_v0_6 = &gObjectList[temp_s0_6];
                 temp_s0_7 = *var_s1_6;
                 temp_v0_6->unk_010[0] = (f32) var_v1_2->unk0 * D_8018D01C;
                 temp_v0_6->unk_010[2] = (f32) var_v1_2->unk4;
                 temp_v0_6->unk_010[1] = (f32) ((f64) var_v1_2->unk2 + 5.0 + 3.0);
                 func_800723A4(temp_s0_7, 0);
                 temp_t4 = var_v1_2->unk4;
-                temp_v0_7 = &D_80165C18[temp_s0_7];
+                temp_v0_7 = &gObjectList[temp_s0_7];
                 temp_f8 = (f64) var_v1_2->unk2;
                 temp_f4_2 = (f32) var_v1_2->unk0 * D_8018D01C;
                 temp_t5_2 = var_v1_2->unk6;
@@ -1488,7 +1488,7 @@ void func_80070780(void) {
                 sp48 = var_v1_3;
                 func_800723A4(temp_s0_8, 0);
                 temp_f6_2 = var_v1_3->unk4;
-                temp_v0_8 = &D_80165C18[temp_s0_8];
+                temp_v0_8 = &gObjectList[temp_s0_8];
                 temp_f8_2 = var_v1_3->unk6;
                 temp_f18 = (f32) var_v1_3->unk2;
                 temp_f0_4 = (f32) var_v1_3->unk0 * D_8018D01C;
@@ -1509,9 +1509,9 @@ void func_80070780(void) {
             func_800723A4(temp_s0_9, 0);
             var_s2_5 += 4;
             if ((u32) var_s2_5 < (u32) &D_80183F3C) {
-                D_80165C18[temp_s0_9].unk_0D5 = 0;
+                gObjectList[temp_s0_9].unk_0D5 = 0;
             } else {
-                D_80165C18[temp_s0_9].unk_0D5 = 1;
+                gObjectList[temp_s0_9].unk_0D5 = 1;
             }
         } while (var_s2_5 != &D_80183F50);
         return;
@@ -1613,7 +1613,7 @@ block_75:
                 find_unused_obj_index(var_s1_11);
                 temp_s0_10 = *var_s1_11;
                 func_800723A4(temp_s0_10, 0);
-                temp_v0_9 = &D_80165C18[temp_s0_10];
+                temp_v0_9 = &gObjectList[temp_s0_10];
                 sp4C = temp_v0_9;
                 temp_v0_9->pos[2] = (f32) var_s2_6->unk4;
                 temp_v0_9->pos[0] = (f32) var_s2_6->unk0 * D_8018D01C;

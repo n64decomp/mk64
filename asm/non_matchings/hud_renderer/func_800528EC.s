@@ -97,8 +97,8 @@ glabel func_800528EC
 /* 053668 80052A68 3C138019 */  lui   $s3, %hi(D_8018C3F0) # $s3, 0x8019
 /* 05366C 80052A6C 3C1E8019 */  lui   $fp, %hi(D_8018C5F0) # $fp, 0x8019
 /* 053670 80052A70 3C170400 */  lui   $s7, (0x04000C2F >> 16) # lui $s7, 0x400
-/* 053674 80052A74 3C158016 */  lui   $s5, %hi(D_80165C18) # $s5, 0x8016
-/* 053678 80052A78 26B55C18 */  addiu $s5, %lo(D_80165C18) # addiu $s5, $s5, 0x5c18
+/* 053674 80052A74 3C158016 */  lui   $s5, %hi(gObjectList) # $s5, 0x8016
+/* 053678 80052A78 26B55C18 */  addiu $s5, %lo(gObjectList) # addiu $s5, $s5, 0x5c18
 /* 05367C 80052A7C 36F70C2F */  ori   $s7, (0x04000C2F & 0xFFFF) # ori $s7, $s7, 0xc2f
 /* 053680 80052A80 27DEC5F0 */  addiu $fp, %lo(D_8018C5F0) # addiu $fp, $fp, -0x3a10
 /* 053684 80052A84 2673C3F0 */  addiu $s3, %lo(D_8018C3F0) # addiu $s3, $s3, -0x3c10
@@ -142,8 +142,8 @@ glabel func_800528EC
 /* 053714 80052B14 8E420000 */   lw    $v0, ($s2)
 .L80052B18:
 /* 053718 80052B18 3C170400 */  lui   $s7, (0x04000C2F >> 16) # lui $s7, 0x400
-/* 05371C 80052B1C 3C158016 */  lui   $s5, %hi(D_80165C18) # $s5, 0x8016
-/* 053720 80052B20 26B55C18 */  addiu $s5, %lo(D_80165C18) # addiu $s5, $s5, 0x5c18
+/* 05371C 80052B1C 3C158016 */  lui   $s5, %hi(gObjectList) # $s5, 0x8016
+/* 053720 80052B20 26B55C18 */  addiu $s5, %lo(gObjectList) # addiu $s5, $s5, 0x5c18
 /* 053724 80052B24 36F70C2F */  ori   $s7, (0x04000C2F & 0xFFFF) # ori $s7, $s7, 0xc2f
 /* 053728 80052B28 27DED120 */  addiu $fp, $fp, %lo(gMatrixHudCount) # -0x2ee0
 /* 05372C 80052B2C 241600E0 */  li    $s6, 224

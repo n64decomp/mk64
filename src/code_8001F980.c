@@ -1285,7 +1285,7 @@ void func_80024374(Player *player, s8 arg1, s8 arg2) {
 
     spCC[0] = player->pos[0] + ((spB0 * sins(spC0)) + (spAC * coss(spC0)));
     spCC[2] = player->pos[2] + ((spB0 * coss(spC0)) - (spAC * sins(spC0)));
-    spCC[1] = D_80165C18[D_80183EA0[arg1]].pos[1] + sp94[arg1];
+    spCC[1] = gObjectList[D_80183EA0[arg1]].pos[1] + sp94[arg1];
 
     mtxf_translate_rotate(sp118, spCC, spC4);
     mtxf_scale2(sp118, gCharacterSize[player->characterId] * player->size);

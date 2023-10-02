@@ -1,9 +1,9 @@
 glabel func_8007C360
 /* 07CF60 8007C360 000470C0 */  sll   $t6, $a0, 3
 /* 07CF64 8007C364 01C47023 */  subu  $t6, $t6, $a0
-/* 07CF68 8007C368 3C0F8016 */  lui   $t7, %hi(D_80165C18) # $t7, 0x8016
+/* 07CF68 8007C368 3C0F8016 */  lui   $t7, %hi(gObjectList) # $t7, 0x8016
 /* 07CF6C 8007C36C 27BDFFD8 */  addiu $sp, $sp, -0x28
-/* 07CF70 8007C370 25EF5C18 */  addiu $t7, %lo(D_80165C18) # addiu $t7, $t7, 0x5c18
+/* 07CF70 8007C370 25EF5C18 */  addiu $t7, %lo(gObjectList) # addiu $t7, $t7, 0x5c18
 /* 07CF74 8007C374 000E7140 */  sll   $t6, $t6, 5
 /* 07CF78 8007C378 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 07CF7C 8007C37C 01CF3021 */  addu  $a2, $t6, $t7

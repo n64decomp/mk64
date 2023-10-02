@@ -5,8 +5,8 @@ glabel func_8007B254
 /* 07BE60 8007B260 0C01C90A */  jal   func_80072428
 /* 07BE64 8007B264 AFA50024 */   sw    $a1, 0x24($sp)
 /* 07BE68 8007B268 8FA40020 */  lw    $a0, 0x20($sp)
-/* 07BE6C 8007B26C 3C0F8016 */  lui   $t7, %hi(D_80165C18) # $t7, 0x8016
-/* 07BE70 8007B270 25EF5C18 */  addiu $t7, %lo(D_80165C18) # addiu $t7, $t7, 0x5c18
+/* 07BE6C 8007B26C 3C0F8016 */  lui   $t7, %hi(gObjectList) # $t7, 0x8016
+/* 07BE70 8007B270 25EF5C18 */  addiu $t7, %lo(gObjectList) # addiu $t7, $t7, 0x5c18
 /* 07BE74 8007B274 000470C0 */  sll   $t6, $a0, 3
 /* 07BE78 8007B278 01C47023 */  subu  $t6, $t6, $a0
 /* 07BE7C 8007B27C 000E7140 */  sll   $t6, $t6, 5
