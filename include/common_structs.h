@@ -252,7 +252,7 @@ typedef struct {
     /* 0x0008 */ s16 lapCount;
     /* 0x000A */ char unk_00A[0x2];
     /* 0x000C */ s32 hitEffects; // Bitflag.
-    /* 0x0010 */ s16 unk_010;
+    /* 0x0010 */ s16 currentItemCopy; // no effect of what the player have it's sync
     /* 0x0012 */ s16 unk_012;
     /* 0x0014 */ Vec3f pos;
     /* 0x0020 */ f32 rotX;
@@ -260,7 +260,7 @@ typedef struct {
     /* 0x0028 */ f32 rotZ;
     /* 0x002C */ Vec3s unk_02C;
     /* 0x0032 */ char unk_032[0x2];
-    /* 0x0034 */ Vec3f unk_034;
+    /* 0x0034 */ Vec3f velocity;
     /* 0x0040 */ s16 unk_040;
     /* 0x0042 */ s16 unk_042;
     /* 0x0044 */ s16 unk_044;
@@ -323,7 +323,7 @@ typedef struct {
     /* 0x010E */ char unk_10E[0x2];
     /* 0x0110 */ Collision unk_110;
     /* 0x0150 */ Mat3 unk_150;
-    /* 0x0174 */ Mat3 unk_174;
+    /* 0x0174 */ Mat3 orientationMatrix;
     /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];
     /* 0x01F8 */ f32 unk_1F8;
     /* 0x01FC */ f32 unk_1FC;

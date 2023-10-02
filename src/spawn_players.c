@@ -73,9 +73,9 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_05C = 1.0f;
     player->unk_058 = 0.0f;
     player->unk_060 = 0.0f;
-    player->unk_034[0] = 0.0f;
-    player->unk_034[1] = 0.0f;
-    player->unk_034[2] = 0.0f;
+    player->velocity[0] = 0.0f;
+    player->velocity[1] = 0.0f;
+    player->velocity[2] = 0.0f;
     player->unk_02C[1] = arg5;
     player->unk_02C[2] = 0;
     player->unk_0FA = 0;
@@ -311,7 +311,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
         func_8006B7E4(player, playerIndex);
     }
     func_802B6540(player->unk_150, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
-    func_802B6540(player->unk_174, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
+    func_802B6540(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
 }
 
 void func_80039AE4(void) {

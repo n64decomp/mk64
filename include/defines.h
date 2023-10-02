@@ -306,6 +306,10 @@
  * @brief effect of player's
  * for hitEffect
  */
+#define BOOST_EFFECT 0x200 // being boosted by trigger a mushroom or star
+#define BOO_EFFECT 0x800 // being a boo
+#define STAR_EFFECT 0x2000 // being a star
+#define HOLD_BANANA_EFFECT 0x40000 // holding a banana
 #define HIT_ROTATING_EFFECT 0x4000 // hitting a rotating object
 #define HIT_BY_ITEM_EFFECT 0x1000000 // being hit by an item
 #define REVERSE_EFFECT 0x400000 // being in the wrong direction

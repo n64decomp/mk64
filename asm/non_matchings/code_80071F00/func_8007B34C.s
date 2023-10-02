@@ -464,7 +464,7 @@ glabel L8007B998
 /* 07C5B0 8007B9B0 8FAA002C */  lw    $t2, 0x2c($sp)
 /* 07C5B4 8007B9B4 54400006 */  bnel  $v0, $zero, .L8007B9D0
 /* 07C5B8 8007B9B8 2449FFFF */   addiu $t1, $v0, -1
-/* 07C5BC 8007B9BC 0C01EB27 */  jal   func_8007AC9C
+/* 07C5BC 8007B9BC 0C01EB27 */  jal   consume_item
 /* 07C5C0 8007B9C0 8FA40048 */   lw    $a0, 0x48($sp)
 /* 07C5C4 8007B9C4 10000004 */  b     .L8007B9D8
 /* 07C5C8 8007B9C8 8FAB002C */   lw    $t3, 0x2c($sp)

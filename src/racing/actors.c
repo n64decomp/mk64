@@ -536,8 +536,8 @@ void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
                 player->effect |= 0x8000;
                 player->pos[0]     -= temp_f2  * 4.0f;
                 player->pos[2]     -= temp_f14 * 4.0f;
-                player->unk_034[0] -= temp_f2  * 0.7f;
-                player->unk_034[2] -= temp_f14 * 0.7f;
+                player->velocity[0] -= temp_f2  * 0.7f;
+                player->velocity[2] -= temp_f14 * 0.7f;
                 func_800C9060(player - gPlayerOne, 0x19007018U);
                 if (gModeSelection != GRAND_PRIX) {
                     D_80162DF8 = 1;
@@ -810,7 +810,7 @@ void func_80298AC0(Player *player) {
         sp64[2] = data->pos[2];
         if (func_8029EEB8(player, sp64, 5.0f, 40.0f, 0.8f) == 1) {
             if ((player->effect & 0x200) != 0) {
-                func_800C98B8(player->pos, player->unk_034, 0x19018010);
+                func_800C98B8(player->pos, player->velocity, 0x19018010);
                 func_800C90F4((u8) (player - gPlayerOne), (player->characterId * 0x10) + 0x2900800D);
                 data->someId |= 0x400;
             }
@@ -2626,8 +2626,8 @@ s32 func_8029EEB8(Player *player, Vec3f pos, f32 arg2, f32 arg3, f32 arg4) {
     }
     temp_f0_3 = sqrtf(arg3);
     sp28 = temp_f0_3 - arg2;
-    temp_f16 = player->unk_034[0];
-    temp_f18 = player->unk_034[2];
+    temp_f16 = player->velocity[0];
+    temp_f18 = player->velocity[2];
     if (player->effect & 0x200) {
         return 1;
     }
@@ -2636,8 +2636,8 @@ s32 func_8029EEB8(Player *player, Vec3f pos, f32 arg2, f32 arg3, f32 arg4) {
         if (temp_f0_4 < 0.5f) {
             temp_f0_4 = 0.5f;
         }
-        player->unk_034[0] = 0;
-        player->unk_034[2] = 0;
+        player->velocity[0] = 0;
+        player->velocity[2] = 0;
         player->pos[0] += (temp_f16 / temp_f0_4) * arg2;
         player->pos[2] += (temp_f18 / temp_f0_4) * arg2;
     } else {
@@ -2649,14 +2649,14 @@ s32 func_8029EEB8(Player *player, Vec3f pos, f32 arg2, f32 arg3, f32 arg4) {
             temp_f0_6 = 1.2f;
             player->pos[0] = pos[0] - (temp_f20 * arg2 * temp_f0_6);
             player->pos[2] = pos[2] - (temp_f14 * arg2 * temp_f0_6);
-            player->unk_034[0] = 0.0f;
-            player->unk_034[2] = 0.0f;
+            player->velocity[0] = 0.0f;
+            player->velocity[2] = 0.0f;
             return 1;
         }
         temp_f2_2 = ((temp_f20 * temp_f16) + (temp_f14 * temp_f18)) / temp_f0_5;
         temp_f2_2 = temp_f0_5 * temp_f2_2 * arg4 * 1.3f;
-        player->unk_034[0] -= temp_f20 * temp_f2_2;
-        player->unk_034[2] -= temp_f14 * temp_f2_2;
+        player->velocity[0] -= temp_f20 * temp_f2_2;
+        player->velocity[2] -= temp_f14 * temp_f2_2;
         player->pos[0] += temp_f20 * sp28 * 0.5f;
         player->pos[2] += temp_f14 * sp28 * 0.5f;
     }
@@ -2668,7 +2668,7 @@ s32 func_8029F1F8(Player *player, struct Actor *marioRacewaySign) {
         if ((player->bonusEffect & 0x4000) != 0) {
             if ((player->effect & 0x200) != 0) {
                 marioRacewaySign->flags |= 0x400;
-                func_800C98B8(player->pos, player->unk_034, 0x19018010U);
+                func_800C98B8(player->pos, player->velocity, 0x19018010U);
                 func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
             } else if ((player->bonusEffect & GHOST_EFFECT) == 0) {
                 func_800C9060(player - gPlayerOne, 0x1900701AU);
@@ -2684,7 +2684,7 @@ s32 func_8029F2FC(Player *player, struct PiranhaPlant *plant) {
         if ((player->bonusEffect & 0x4000) != 0) {
             if ((player->effect & 0x200) != 0) {
                 plant->flags |= 0x400;
-                func_800C98B8(player->pos, player->unk_034, 0x1901A24AU);
+                func_800C98B8(player->pos, player->velocity, 0x1901A24AU);
                 func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
             } else if ((player->bonusEffect & GHOST_EFFECT) == 0) {
                 func_800C9060(player - gPlayerOne, 0x1900A052U);
@@ -2736,7 +2736,7 @@ s32 func_8029F408(Player *player, struct YoshiValleyEgg *egg) {
         if ((player->effect & 0x200) != 0) {
             egg->flags |= 0x400;
             egg->pathCenter[1] = 8.0f;
-            func_800C98B8(player->pos, player->unk_034, 0x19018010);
+            func_800C98B8(player->pos, player->velocity, 0x19018010);
             func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
         } else {
             func_8008DABC(player, player - gPlayerOne);
@@ -2795,12 +2795,12 @@ s32 func_8029F69C(Player *player, struct Actor *actor) {
     if (var_f16 < xz_dist) {
         return 0;
     }
-    sp48 = player->unk_034[0];
-    sp44 = player->unk_034[2];
+    sp48 = player->velocity[0];
+    sp44 = player->velocity[2];
     if (player->bonusEffect & 0x4000) {
         if (player->effect & 0x200) {
             actor->flags |= 0x400;
-            func_800C98B8(player->pos, player->unk_034, 0x19018010U);
+            func_800C98B8(player->pos, player->velocity, 0x19018010U);
             func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
             return 1;
         }
@@ -2820,8 +2820,8 @@ s32 func_8029F69C(Player *player, struct Actor *actor) {
     if (xz_dist < 0.1f) {
         sqrtf((sp48 * sp48) + (sp44 * sp44));
         if(xz_dist){}
-        player->unk_034[0] = 0;
-        player->unk_034[2] = 0;
+        player->velocity[0] = 0;
+        player->velocity[2] = 0;
         player->pos[0] = sp20[0] - (x_dist * var_f16 * 1.2f);
         player->pos[2] = sp20[2] - (z_dist * var_f16 * 1.2f);
     } else {
@@ -2831,14 +2831,14 @@ s32 func_8029F69C(Player *player, struct Actor *actor) {
         if (temp_f0_4 < 0.25f) {
             player->pos[0] = sp20[0] - (x_dist * var_f16 * 1.2f);
             player->pos[2] = sp20[2] - (z_dist * var_f16 * 1.2f);
-            player->unk_034[0] = 0;
-            player->unk_034[2] = 0;
+            player->velocity[0] = 0;
+            player->velocity[2] = 0;
             return 1;
         }
         temp_f12 = ((x_dist * sp48) + (z_dist * sp44)) / temp_f0_4;
         temp_f12 = temp_f0_4 * temp_f12 * 1.5f;
-        player->unk_034[0] -= x_dist * temp_f12;
-        player->unk_034[2] -= z_dist * temp_f12;
+        player->velocity[0] -= x_dist * temp_f12;
+        player->velocity[2] -= z_dist * temp_f12;
         temp_f2 = xz_dist - var_f16;
         player->pos[0] += x_dist * temp_f2 * 0.5f;
         player->pos[2] += z_dist * temp_f2 * 0.5f;
@@ -3182,7 +3182,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
         temp_v1 = actor->rot[2];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
         player->hitEffects |= 4;
-        func_800C98B8(player->pos, player->unk_034, 0x19018010U);
+        func_800C98B8(player->pos, player->velocity, 0x19018010U);
         owner = &gPlayers[temp_v1];
         if ((owner->bonusEffect & 0x4000) && (temp_lo != temp_v1)) {
             func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
@@ -3195,7 +3195,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
         if (!(player->effect & 0x80000000)) {
             player->hitEffects |= 2;
-            func_800C98B8(player->pos, player->unk_034, 0x19018010U);
+            func_800C98B8(player->pos, player->velocity, 0x19018010U);
         }
         owner = &gPlayers[temp_v1];
         if ((owner->bonusEffect & 0x4000) && (temp_lo != temp_v1)) {
@@ -3213,7 +3213,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
         if (!(player->effect & 0x80000000)) {
             player->hitEffects |= 2;
-            func_800C98B8(player->pos, player->unk_034, 0x19018010U);
+            func_800C98B8(player->pos, player->velocity, 0x19018010U);
         }
         owner = &gPlayers[temp_v1];
         if ((owner->bonusEffect & 0x4000) && (temp_lo != temp_v1)) {

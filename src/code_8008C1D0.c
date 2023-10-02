@@ -958,8 +958,8 @@ void func_8008E4A4(Player* player, s8 arg1) {
     player->unk_042 += 0xAAA;
     player->unk_08C = 0.0f;
     player->currentSpeed = 0.0f;
-    player->unk_034[0] = 0.0f;
-    player->unk_034[2] = 0.0f;
+    player->velocity[0] = 0.0f;
+    player->velocity[2] = 0.0f;
     player->effect &= ~0xC0;
 
     if ((player->effect & 8) != 8) {
@@ -1969,29 +1969,29 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
     }
 }
 
-s32 func_800910E4(Player *arg0) {
+s32 func_800910E4(Player *player) {
     s32 phi_v0 = 0;
-    if ((((((arg0->unk_0CA & 2) == 2) || ((arg0->unk_0CA & 8) == 8)) || ((arg0->bonusEffect & 0x40) != 0)) || ((arg0->bonusEffect & 0x800) != 0)) || ((arg0->bonusEffect & 0x8000) == 0)) {
+    if ((((((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) || ((player->bonusEffect & 0x40) != 0)) || ((player->bonusEffect & 0x800) != 0)) || ((player->bonusEffect & 0x8000) == 0)) {
         return 1;
     }
 
-    switch (arg0->unk_010) {
-    case 12:
-    case 13:
-    case 14:
-    case 15:
-        if ((arg0->effect & 8) != 0) {
+    switch (player->currentItemCopy) {
+    case ITEM_MUSHROOM:
+    case ITEM_DOUBLE_MUSHROOM:
+    case ITEM_TRIPLE_MUSHROOM:
+    case ITEM_SUPER_MUSHROOM:
+        if ((player->effect & 8) != 0) {
             return 1;
         }
         phi_v0 = 0x5F934EC4;
         goto func_800910E4_label;
-    case 10:
+    case ITEM_STAR:
         phi_v0 = 0xDF934EC4;
-    case 11:
+    case ITEM_BOO:
         phi_v0 = phi_v0 | 0xDF934EC4;
 func_800910E4_label:
     default:
-        if ((arg0->effect & phi_v0) != 0) {
+        if ((player->effect & phi_v0) != 0) {
             return 1;
         }
         return 0;

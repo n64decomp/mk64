@@ -1134,9 +1134,9 @@ void func_802903D8(Player *playerOne, Player *playerTwo) {
     sp60[1] = (playerOne->pos[1] - playerOne->boundingBoxSize) - (playerTwo->pos[1] - playerTwo->boundingBoxSize);
     sp60[2] =  playerOne->pos[2] - playerTwo->pos[2];
 
-    sp54[0] = playerTwo->unk_034[0] - playerOne->unk_034[0];
-    sp54[1] = playerTwo->unk_034[1] - playerOne->unk_034[1];
-    sp54[2] = playerTwo->unk_034[2] - playerOne->unk_034[2];
+    sp54[0] = playerTwo->velocity[0] - playerOne->velocity[0];
+    sp54[1] = playerTwo->velocity[1] - playerOne->velocity[1];
+    sp54[2] = playerTwo->velocity[2] - playerOne->velocity[2];
 
     temp_f0 = sqrtf((sp60[0] * sp60[0]) + (sp60[1] * sp60[1]) + (sp60[2] * sp60[2]));
 
@@ -1192,18 +1192,18 @@ void func_802903D8(Player *playerOne, Player *playerTwo) {
     temp_f0_2 = temp_f0_2 * temp_f16 * 0.85;
     if ((playerOne->effect & 0x200) != 0x200) {
         temp_f2 = (temp_f0_2 * sp20) / sp24;
-        playerOne->unk_034[0] += sp60[0] * temp_f2;
-        playerOne->unk_034[1] += sp60[1] * temp_f2;
-        playerOne->unk_034[2] += sp60[2] * temp_f2;
+        playerOne->velocity[0] += sp60[0] * temp_f2;
+        playerOne->velocity[1] += sp60[1] * temp_f2;
+        playerOne->velocity[2] += sp60[2] * temp_f2;
         playerOne->pos[0] -= sp60[0] * sp74 * 0.5f;
         playerOne->pos[1] -= sp60[1] * sp74 * 0.5f;
         playerOne->pos[2] -= sp60[2] * sp74 * 0.5f;
     }
     if ((playerTwo->effect & 0x200) != 0x200) {
         temp_f2 = (temp_f0_2 * sp24) / sp20;
-        playerTwo->unk_034[0] -= sp60[0] * temp_f2;
-        playerTwo->unk_034[1] -= sp60[1] * temp_f2;
-        playerTwo->unk_034[2] -= sp60[2] * temp_f2;
+        playerTwo->velocity[0] -= sp60[0] * temp_f2;
+        playerTwo->velocity[1] -= sp60[1] * temp_f2;
+        playerTwo->velocity[2] -= sp60[2] * temp_f2;
         playerTwo->pos[0] += sp60[0] * sp74 * 0.5f;
         playerTwo->pos[1] += sp60[1] * sp74 * 0.5f;
         playerTwo->pos[2] += sp60[2] * sp74 * 0.5f;

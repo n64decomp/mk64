@@ -506,13 +506,14 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
 }
 
 // This function could reasonably be called "spawn_banana_bunch" or similar
-s32 func_802B17F4(Player *player) {
+s32 use_banana_bunch_effect(Player *player) {
     Vec3f startingVelocity = {0.0f, 0.0f, 0.0f};
     Vec3s startingRot      = {0, 0, 0};
     Vec3f startingPos      = {0.0f, 0.0f, 0.0f};
     s16 actorIndex;
     struct BananaBunchParent *bananaBunch;
 
+    // this have a animation of spawning so see update_actor_banana_bunch
     actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_BANANA_BUNCH);
     if (actorIndex < 0) {
         return actorIndex;
@@ -520,18 +521,19 @@ s32 func_802B17F4(Player *player) {
     bananaBunch = (struct BananaBunchParent *) &gActorList[actorIndex];
     bananaBunch->state = 0;
     bananaBunch->playerId = player - gPlayerOne;
-    player->hitEffects |= 0x40000;
+    player->hitEffects |= HOLD_BANANA_EFFECT;
     return actorIndex;
 }
 
 // This function could reasonably be called "spawn_triple_shell" or similar
-s32 func_802B18E4(Player *player, s16 tripleShellType) {
+s32 use_triple_shell_effect(Player *player, s16 tripleShellType) {
     Vec3f startingVelocity = {0.0f, 0.0f, 0.0f};
     Vec3s startingRot      = {0, 0, 0};
     Vec3f startingPos      = {0.0f, 0.0f, 0.0f};
     s16 actorIndex;
     TripleShellParent *parent;
 
+    // this have a animation of spawning so see update_actor_triple_shell
     actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, tripleShellType);
     if (actorIndex < 0) {
         return actorIndex;
@@ -557,7 +559,7 @@ s32 init_triple_shell(TripleShellParent *parent, Player *player, s16 shellType, 
     startingPos[0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = player->boundingBoxSize - 4.0f;
-    mtxf_translate_vec3f_mat3(startingPos, player->unk_174);
+    mtxf_translate_vec3f_mat3(startingPos, player->orientationMatrix);
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
@@ -593,20 +595,27 @@ s32 init_triple_shell(TripleShellParent *parent, Player *player, s16 shellType, 
 }
 
 // This function could reasonably be called "spawn_green_shell" or similar
-s32 func_802B1C9C(Player *player) {
+s32 use_green_shell_effect(Player *player) {
     Vec3f startingVelocity = {0.0f, 0.0f, 0.0f};
     Vec3s startingRot      = {0, 0, 0};
     Vec3f startingPos;
     s16 actorIndex;
     struct ShellActor *shell;
 
+    // place behind player
     startingPos[0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = player->boundingBoxSize - 4.0f;
-    mtxf_translate_vec3f_mat3(startingPos, player->unk_174);
+
+    // rotate to match player orientation
+    mtxf_translate_vec3f_mat3(startingPos, player->orientationMatrix);
+    
+    // move to player position
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
+    
+    // spawn the shell
     actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_GREEN_SHELL);
     if (actorIndex < 0) {
         return actorIndex;
@@ -626,20 +635,27 @@ s32 func_802B1C9C(Player *player) {
 }
 
 // This function could reasonably be called "spawn_red_shell" or similar
-s32 func_802B1E48(Player *player) {
+s32 use_red_shell_effect(Player *player) {
     Vec3f startingVelocity = {0.0f, 0.0f, 0.0f};
     Vec3s startingRot      = {0, 0, 0};
     Vec3f startingPos;
     s16 actorIndex;
     struct ShellActor *shell;
 
+    // place behind player
     startingPos[0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = player->boundingBoxSize - 4.0f;
-    mtxf_translate_vec3f_mat3(startingPos, player->unk_174);
+
+    // rotate to match player orientation
+    mtxf_translate_vec3f_mat3(startingPos, player->orientationMatrix);
+
+    // move to player position
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
+
+    // spawn the shell
     actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_RED_SHELL);
     if (actorIndex < 0) {
         return actorIndex;
@@ -661,8 +677,8 @@ s32 func_802B1E48(Player *player) {
 // This function could reasonably be called "spawn_blue_shell"
 // Interestingly blue shells start their life as a red shell,
 // and then just change the type from red to blue shell
-void func_802B1FFC(Player *player) {
-    gActorList[func_802B1E48(player)].type = ACTOR_BLUE_SPINY_SHELL;
+void use_blue_shell_effect(Player *player) {
+    gActorList[use_red_shell_effect(player)].type = ACTOR_BLUE_SPINY_SHELL;
 }
 
 void update_actor_banana(struct BananaActor *banana) {
@@ -856,13 +872,13 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
     startingPos[0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = -(player->boundingBoxSize + 4.0f);
-    mtxf_translate_vec3f_mat3(startingPos, player->unk_174);
+    mtxf_translate_vec3f_mat3(startingPos, player->orientationMatrix);
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
-    startingVelocity[0] = player->unk_034[0];
-    startingVelocity[1] = player->unk_034[1];
-    startingVelocity[2] = player->unk_034[2];
+    startingVelocity[0] = player->velocity[0];
+    startingVelocity[1] = player->velocity[1];
+    startingVelocity[2] = player->velocity[2];
     startingRot[0] = 0;
     startingRot[1] = 0;
     startingRot[2] = 0;
@@ -922,7 +938,7 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
 }
 
 // This function could reasonably be called "spawn_fake_itembox" or similar
-s32 func_802B2C40(Player *player) {
+s32 use_fake_itembox_effect(Player *player) {
     struct FakeItemBox *itemBox;
     UNUSED s32 pad[5];
     s16 actorIndex;
@@ -930,32 +946,42 @@ s32 func_802B2C40(Player *player) {
     Vec3s startingRot;
     Vec3f startingPos;
 
+    // place behind player
     startingPos[0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = -(player->boundingBoxSize + 4.0f);
-    mtxf_translate_vec3f_mat3(startingPos, player->unk_174);
+
+    // rotate to match player orientation
+    mtxf_translate_vec3f_mat3(startingPos, player->orientationMatrix);
+
+    // move to player position
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
-    startingVelocity[0] = player->unk_034[0];
-    startingVelocity[1] = player->unk_034[1];
-    startingVelocity[2] = player->unk_034[2];
+
+    // set the itembox's velocity to the player's velocity
+    startingVelocity[0] = player->velocity[0];
+    startingVelocity[1] = player->velocity[1];
+    startingVelocity[2] = player->velocity[2];
+
     startingRot[0] = 0;
     startingRot[1] = 0;
     startingRot[2] = 0;
+
+    // spawn the itembox
     actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_FAKE_ITEM_BOX);
     if (actorIndex < 0) {
         return actorIndex;
     }
     itemBox = (struct FakeItemBox*)&gActorList[actorIndex];
     itemBox->playerId = (player - gPlayerOne);
-    itemBox->state = 0;
-    player->hitEffects |= 0x40000;
+    itemBox->state = HELD_FAKE_ITEM_BOX;
+    player->hitEffects |= HOLD_BANANA_EFFECT;
     return actorIndex;
 }
 
 // This function could reasonably be called "spawn_banana" or similar
-s32 func_802B2D70(Player *player) {
+s32 use_banana_effect(Player *player) {
     UNUSED s32 pad[6];
     u16 playerId;
     s16 actorIndex;
@@ -969,20 +995,28 @@ s32 func_802B2D70(Player *player) {
         return -1;
     }
     // Extremely weird fake match to fix a tiny stack difference
+    // place the banana in back of the player
     startingPos[0, 0] = 0.0f;
     startingPos[1] = -player->boundingBoxSize;
     startingPos[2] = -(player->boundingBoxSize + 4.0f);
-    mtxf_translate_vec3f_mat3(startingPos, player->unk_174);
+
+    // apply the player's orientation to the banana
+    mtxf_translate_vec3f_mat3(startingPos, player->orientationMatrix);
+
+    // add the player's position to the banana's position
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
-    startingVelocity[0] = player->unk_034[0];
-    startingVelocity[1] = player->unk_034[1];
-    startingVelocity[2] = player->unk_034[2];
+
+    // set the banana's velocity to the player's velocity
+    startingVelocity[0] = player->velocity[0];
+    startingVelocity[1] = player->velocity[1];
+    startingVelocity[2] = player->velocity[2];
     startingRot[0] = 0;
     startingRot[1] = 0;
     startingRot[2] = 0;
-    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_BANANA);
+
+    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_BANANA); // spawn banana
     if (actorIndex < 0) {
         return actorIndex;
     }
@@ -990,7 +1024,7 @@ s32 func_802B2D70(Player *player) {
     banana->playerId = playerId;
     banana->state = HELD_BANANA;
     banana->unk_04 = 0x0014;
-    player->hitEffects |= 0x40000;
+    player->hitEffects |= HOLD_BANANA_EFFECT;
     return actorIndex;
 }
 
@@ -999,7 +1033,7 @@ s32 func_802B2D70(Player *player) {
  * 
  * @param Activating player (not to be struck) 
  */
-void func_802B2EBC(Player *player) {
+void use_thunder_effect(Player *player) {
     s32 index;
     Player *otherPlayer;
 
@@ -1021,54 +1055,54 @@ void func_802B2EBC(Player *player) {
 void func_802B2FA0(Player *player) {
     s32 playerId = player - gPlayerOne;
 
-    switch (player->unk_010) {
+    switch (player->currentItemCopy) {
     case ITEM_GREEN_SHELL:
-        func_802B1C9C(player);
+        use_green_shell_effect(player);
         break;
     case ITEM_RED_SHELL:
-        func_802B1E48(player);
+        use_red_shell_effect(player);
         break;
     case ITEM_BLUE_SPINY_SHELL:
-        func_802B1FFC(player);
+        use_blue_shell_effect(player);
         break;
     case ITEM_BANANA:
-        func_802B2D70(player);
+        use_banana_effect(player);
         break;
     case ITEM_BANANA_BUNCH:
-        func_802B17F4(player);
+        use_banana_bunch_effect(player);
         break;
     case ITEM_MUSHROOM:
-        player->hitEffects |= 0x200;
+        player->hitEffects |= BOOST_EFFECT;
         break;
     case ITEM_DOUBLE_MUSHROOM:
-        player->hitEffects |= 0x200;
+        player->hitEffects |= BOOST_EFFECT;
         break;
     case ITEM_TRIPLE_MUSHROOM:
-        player->hitEffects |= 0x200;
+        player->hitEffects |= BOOST_EFFECT;
         break;
     case ITEM_SUPER_MUSHROOM:
-        player->hitEffects |= 0x200;
+        player->hitEffects |= BOOST_EFFECT;
         break;
     case ITEM_BOO:
-        player->hitEffects |= 0x800;
+        player->hitEffects |= BOO_EFFECT;
         break;
     case ITEM_STAR:
-        player->hitEffects |= 0x2000;
+        player->hitEffects |= STAR_EFFECT;
         break;
     case ITEM_THUNDERBOLT:
-        func_802B2EBC(player);
+        use_thunder_effect(player);
         break;
     case ITEM_FAKE_ITEM_BOX:
-        func_802B2C40(player);
+        use_fake_itembox_effect(player);
         break;
     case ITEM_TRIPLE_GREEN_SHELL:
-        func_802B18E4(player, ACTOR_TRIPLE_GREEN_SHELL);
+        use_triple_shell_effect(player, ACTOR_TRIPLE_GREEN_SHELL);
         break;
     case ITEM_TRIPLE_RED_SHELL:
-        func_802B18E4(player, ACTOR_TRIPLE_RED_SHELL);
+        use_triple_shell_effect(player, ACTOR_TRIPLE_RED_SHELL);
         break;
     }
-    func_8007AC9C(playerId);
+    consume_item(playerId);
 }
 
 // Check if a player is using an item?
@@ -1093,7 +1127,7 @@ void func_802B30EC(void) {
                 }
             }
 
-            if (((player->bonusEffect & 0x4000) != 0) && (player->unk_010 != ITEM_NONE) && ((player->bonusEffect & DOESNT_START_EFFECT) == 0)) {
+            if (((player->bonusEffect & 0x4000) != 0) && (player->currentItemCopy != ITEM_NONE) && ((player->bonusEffect & DOESNT_START_EFFECT) == 0)) {
                 if ((controller->buttonPressed & Z_TRIG) != 0) {
                     controller->buttonPressed &= ~Z_TRIG;
                     func_802B2FA0(player);
@@ -1136,7 +1170,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
         somePosVel[0] = 0.0f;
         somePosVel[1] = player->boundingBoxSize;
         somePosVel[2] = -(player->boundingBoxSize + shell->boundingBoxSize + 2.0f);
-        mtxf_translate_vec3f_mat3(somePosVel, player->unk_174);
+        mtxf_translate_vec3f_mat3(somePosVel, player->orientationMatrix);
         shell->pos[0] = player->pos[0] + somePosVel[0];
         pad2 = player->pos[1] - somePosVel[1];
         shell->pos[2] = player->pos[2] + somePosVel[2];
@@ -1216,7 +1250,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
             somePosVel[0] = sins(shell->rotAngle) * 6.0f;
             somePosVel[1] = shell->boundingBoxSize - player->boundingBoxSize;
             somePosVel[2] = coss(shell->rotAngle) * 6.0f;
-            mtxf_translate_vec3f_mat3(somePosVel, player->unk_174);
+            mtxf_translate_vec3f_mat3(somePosVel, player->orientationMatrix);
             shell->pos[0] = player->pos[0] + somePosVel[0];
             shell->pos[1] = player->pos[1] + somePosVel[1];
             shell->pos[2] = player->pos[2] + somePosVel[2];
@@ -1257,7 +1291,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
             somePosVel[0] = sins(shell->rotAngle) * 8.0f;
             somePosVel[1] = shell->boundingBoxSize - player->boundingBoxSize;
             somePosVel[2] = coss(shell->rotAngle) * 8.0f;
-            mtxf_translate_vec3f_mat3(somePosVel, player->unk_174);
+            mtxf_translate_vec3f_mat3(somePosVel, player->orientationMatrix);
             somePos2[0] = shell->pos[0];
             somePos2[1] = shell->pos[1];
             somePos2[2] = shell->pos[2];
@@ -1515,7 +1549,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
         somePosVel[0] = 0.0f;
         somePosVel[1] = player->boundingBoxSize;
         somePosVel[2] = -(player->boundingBoxSize + shell->boundingBoxSize + 2.0f);
-        mtxf_translate_vec3f_mat3(somePosVel, player->unk_174);
+        mtxf_translate_vec3f_mat3(somePosVel, player->orientationMatrix);
         shell->pos[0] = player->pos[0] + somePosVel[0];
         pad7          = player->pos[1] - somePosVel[1];
         shell->pos[2] = player->pos[2] + somePosVel[2];
@@ -1594,7 +1628,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             somePosVel[0] = sins(shell->rotAngle) * 8.0f;
             somePosVel[1] = shell->boundingBoxSize - player->boundingBoxSize;
             somePosVel[2] = coss(shell->rotAngle) * 8.0f;
-            mtxf_translate_vec3f_mat3(somePosVel, player->unk_174);
+            mtxf_translate_vec3f_mat3(somePosVel, player->orientationMatrix);
             shell->pos[0] = player->pos[0] + somePosVel[0];
             shell->pos[1] = player->pos[1] + somePosVel[1];
             shell->pos[2] = player->pos[2] + somePosVel[2];
@@ -1699,7 +1733,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             somePosVel[0] = sins(shell->rotAngle) * 8.0f;
             somePosVel[1] = shell->boundingBoxSize - player->boundingBoxSize;
             somePosVel[2] = coss(shell->rotAngle) * 8.0f;
-            mtxf_translate_vec3f_mat3(somePosVel, player->unk_174);
+            mtxf_translate_vec3f_mat3(somePosVel, player->orientationMatrix);
             origPos[0] = shell->pos[0];
             origPos[1] = shell->pos[1];
             origPos[2] = shell->pos[2];

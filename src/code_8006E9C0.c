@@ -221,8 +221,8 @@ void func_8006EE7C(s32 objectIndex) {
     struct_80165C18_entry *temp_v0;
 
     temp_v0 = &D_80165C18[objectIndex];
-    temp_v0->unk_0A4 = 0;
-    temp_v0->itemDisplay = temp_v0->unk_0A4;
+    temp_v0->currentItem = ITEM_NONE;
+    temp_v0->itemDisplay = temp_v0->currentItem;
     temp_v0->tlutList = (s32 *) gTLUTItemWindowNone;
     temp_v0->activeTLUT = (s32 *) gTLUTItemWindowNone;
     temp_v0->textureList = gTextureItemWindowNone;
@@ -1052,7 +1052,7 @@ void func_80070250(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
     func_800723A4(objectIndex, arg1);
     temp_v0 = &D_80165C18[objectIndex];
     temp_v0->unk_0D5 = arg2->id;
-    temp_v0->unk_0A4 = 0;
+    temp_v0->currentItem = ITEM_NONE;
     temp_v0->unk_0BE[1] = arg2->pos[0];
     temp_v0->unk_09E = arg2->pos[1];
     temp_v0->sizeScaling = (f32) arg2->pos[2] / 100.0;
@@ -1095,7 +1095,7 @@ void func_800703E0(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
     func_800723A4(objectIndex, arg1);
     temp_v0 = &D_80165C18[objectIndex];
     temp_v0->unk_0D5 = arg2->id; // No idea, all 0's for stars
-    temp_v0->unk_0A4 = 1;
+    temp_v0->currentItem = ITEM_BANANA;
     temp_v0->unk_0BE[1] = arg2->pos[0]; // No idea
     temp_v0->unk_09E = arg2->pos[1]; // screen Y position
     temp_v0->sizeScaling = (f32)arg2->pos[2] / 100.0; // some type of scaling on the texture

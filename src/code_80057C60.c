@@ -895,13 +895,13 @@ void func_8005995C(void) {
     Player *player = gPlayerOne;
     for (i = 0; i != 4; i++) {
         if ((D_80165890 != 0) && (player->bonusEffect & GHOST_EFFECT)) {
-            player->unk_010 = 12;
+            player->currentItemCopy = ITEM_MUSHROOM;
             
             D_8018CA70[i].unk_75 = 2;
         }
-        if ((player->bonusEffect & GHOST_EFFECT) && (player->unk_010 == 0)) {
+        if ((player->bonusEffect & GHOST_EFFECT) && (player->currentItemCopy == ITEM_NONE)) {
             if (D_8018CA70[i].unk_75) {
-                player->unk_010 = 12;
+                player->currentItemCopy = ITEM_MUSHROOM;
                 --D_8018CA70[i].unk_75;
             }
         }

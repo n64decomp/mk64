@@ -3765,7 +3765,7 @@ void func_800C92CC(u8 playerId, u32 soundBits) {
 
     if ((D_800EA108 == 0) && (D_800EA0F0 == 0) && ((s32) D_800EA1C0 < 2)) {
         for (var_s0 = 0; var_s0 < D_800EA1C0 + 1; var_s0++) {
-            temp_v0 = func_800C1C88(playerId, gPlayers[playerId].pos, gPlayers[playerId].unk_034, D_800EA1C8, (u8) var_s0, soundBits);
+            temp_v0 = func_800C1C88(playerId, gPlayers[playerId].pos, gPlayers[playerId].velocity, D_800EA1C8, (u8) var_s0, soundBits);
             if (temp_v0 != NULL) {
                 temp_v0->unk34 = 170.0f;
                 if (((gPlayers[playerId].effect & 0x40000000) == 0x40000000) && ((s32) D_800E9F2C[playerId] >= 0x1F)) {
@@ -3946,7 +3946,7 @@ void func_800C9A88(u8 playerId) {
             if (D_800EA1C0 < 2) {
                 for (var_s0 = 0; var_s0 < D_800EA1C0 + 1; var_s0++) {
                     soundBits = gPlayers[playerId].characterId + 0x31028000;
-                    temp_v0_6 = func_800C1C88(playerId, gPlayers[playerId].pos, gPlayers[playerId].unk_034, &gPlayers[playerId].unk_098, var_s0, soundBits);
+                    temp_v0_6 = func_800C1C88(playerId, gPlayers[playerId].pos, gPlayers[playerId].velocity, &gPlayers[playerId].unk_098, var_s0, soundBits);
                     if (temp_v0_6 != NULL) {
                         temp_v0_6->unk34 = 40.0f;
                         play_sound(soundBits, temp_v0_6->unk18, var_s0, &temp_v0_6->unk2C, &D_800EA06C[playerId].unk00[2], &D_800EA06C[playerId].unk0C);

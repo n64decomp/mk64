@@ -239,12 +239,12 @@ s32 func_80072320(s32 arg0, s32 arg1) {
     return phi_v1;
 }
 
-s32 func_80072354(s32 arg0, s32 arg1) {
-    s32 phi_v1 = 0;
+bool func_80072354(s32 arg0, s32 arg1) {
+    s32 b = FALSE;
     if ((D_80165C18[arg0].unk_058 & arg1) == 0) {
-        phi_v1 = 1;
+        b = TRUE;
     }
-    return phi_v1;
+    return b;
 }
 
 void func_80072388(s32 arg0, s32 arg1) {
@@ -419,7 +419,7 @@ void func_800729B4(s32 arg0, s32 arg1) {
 }
 
 void func_800729D0(s32 arg0, s32 arg1) {
-    D_80165C18[arg0].unk_0A4 = arg1;
+    D_80165C18[arg0].currentItem = arg1;
 }
 
 void func_800729EC(s32 arg0) {
@@ -777,11 +777,11 @@ void func_800735BC(s32 arg0, Gfx *arg1, f32 arg2) {
     func_80072488(arg0);
 }
 
-void func_80073600(s32 arg0) {
-    func_80072388(arg0, 0);
-    D_80165C18[arg0].unk_0D6 = 0;
-    D_80165C18[arg0].unk_04C = -1;
-    func_800721E8(arg0, 0x8000);
+void func_80073600(s32 objectIndex) {
+    func_80072388(objectIndex, 0);
+    D_80165C18[objectIndex].unk_0D6 = 0;
+    D_80165C18[objectIndex].unk_04C = -1;
+    func_800721E8(objectIndex, 0x8000);
 }
 
 void func_80073654(s32 arg0) {
@@ -1567,7 +1567,7 @@ void func_80075574(s32 objectIndex, Vec3f arg1, f32 arg2) {
     temp_v1->unk_010[1] = arg1[1];
     temp_v1->unk_010[2] = arg1[2];
     temp_v1->unk_038[1] = arg2;
-    temp_v1->unk_0A4 = random_int(0x0064U) + 0x1E;
+    temp_v1->currentItem = random_int(0x0064U) + 0x1E;
 }
 
 s32 func_800755FC(s32 arg0, Vec3f arg1, f32 arg2) {
@@ -1705,7 +1705,7 @@ void func_800759EC(s32 objectIndex, Vec3f arg1, f32 arg2) {
     temp_v0->unk_010[1] = arg1[1];
     temp_v0->unk_010[2] = arg1[2];
     temp_v0->unk_038[1] = arg2;
-    temp_v0->unk_0A4 = 0x00FF;
+    temp_v0->currentItem = 0x00FF;
     temp_v0->unk_0A2 = 0x0096;
 }
 
@@ -1850,7 +1850,7 @@ void func_80075E5C(s32 objectIndex, Vec3f arg1, u16 arg2, f32 arg3, s32 arg4) {
     temp_v0->unk_0BE[2] = 0;
     temp_v0->unk_034 = arg3 * 4.0;
     temp_v0->unk_0BE[1] = arg2;
-    temp_v0->unk_0A4 = 0x00FF;
+    temp_v0->currentItem = 0x00FF;
     temp_v0->unk_0A2 = 0x00FF;
     temp_v0->unk_048 = arg4 * 2;
 }
@@ -1894,8 +1894,8 @@ void func_8007601C(s32 arg0) {
             func_800722A4(arg0, 1);
             func_80075F98(D_80165C18[arg0].pos, (u16) D_80165C18[arg0].unk_0BE[1], 1.0f);
             func_800C9D80(D_80165C18[arg0].pos, D_80165C18[arg0].unk_038, 0x5102800A);
-            if (D_80165C18[arg0].unk_0A4 > 0) {
-                D_80165C18[arg0].unk_0A4--;
+            if (D_80165C18[arg0].currentItem > 0) {
+                D_80165C18[arg0].currentItem--;
                 D_80165C18[arg0].unk_04C = 0x5A;
             } else {
                 D_80165C18[arg0].unk_04C = 0x12C;
@@ -1906,7 +1906,7 @@ void func_8007601C(s32 arg0) {
     }
 
     if (func_8008A8B0(9, 0xB) == 0) {
-        D_80165C18[arg0].unk_0A4 = 2;
+        D_80165C18[arg0].currentItem = 2;
     }
 }
 
@@ -1934,7 +1934,7 @@ void func_80076194(s32 objectIndex, Vec3f arg1, f32 arg2, s32 arg3) {
     if (gIsMirrorMode != 0) {
         temp_v0->unk_0BE[1] += -0x4000;
     }
-    temp_v0->unk_0A4 = 0x00FF;
+    temp_v0->currentItem = 0x00FF;
     temp_v0->unk_0A2 = 0x00FF;
     temp_v0->unk_048 = arg3 * 2;
     temp_v0->unk_034 = arg2 * 8.0;
@@ -1987,11 +1987,11 @@ void func_800763CC(s32 objectIndex) {
     case 3:
         if (temp_s0->unk_0D5 == 4) {
             f32_step_towards(&temp_s0->sizeScaling, 4.0f, 0.1f);
-            s16_step_towards(&temp_s0->unk_0A4, 0, 0x0018);
+            s16_step_towards(&temp_s0->currentItem, 0, 0x0018);
             s16_step_towards(&temp_s0->unk_0A2, 0x0080, 0x000C);
         } else {
             f32_step_towards(&temp_s0->sizeScaling, 1.0f, 0.1f);
-            s16_step_towards(&temp_s0->unk_0A4, 0, 0x0018);
+            s16_step_towards(&temp_s0->currentItem, 0, 0x0018);
             s16_step_towards(&temp_s0->unk_0A2, 0x0080, 0x000C);
         }
         if ((temp_s0->unk_0AE >= 2) && (func_80073B00(objectIndex, &temp_s0->unk_0A0, 0x000000FF, 0x00000050, 0x00000020, 0, 0) != 0)) {
@@ -2053,8 +2053,8 @@ void func_8007661C(void) {
             func_800722A4(objectIndex, 1);
             func_800762DC(D_80165C18[objectIndex].pos, 1.0f);
             func_800C9D80(D_80165C18[objectIndex].pos, D_80165C18[objectIndex].unk_038, 0x51038009U);
-            if (D_80165C18[objectIndex].unk_0A4 > 0) {
-                D_80165C18[objectIndex].unk_0A4--;
+            if (D_80165C18[objectIndex].currentItem > 0) {
+                D_80165C18[objectIndex].currentItem--;
                 D_80165C18[objectIndex].unk_04C = 0x0000005A;
             } else {
                 D_80165C18[objectIndex].unk_04C = 0x0000012C;
@@ -2063,7 +2063,7 @@ void func_8007661C(void) {
         }
     }
     if (func_8008A8B0(4, 5) == 0) {
-        D_80165C18[objectIndex].unk_0A4 = 2;
+        D_80165C18[objectIndex].currentItem = 2;
     }
 }
 
@@ -2080,7 +2080,7 @@ void func_8007675C(s32 objectIndex, Vec3s arg1, s32 arg2) {
     temp_v0->unk_0BE[0] = 0x0C00;
     temp_v0->unk_0BE[1] = 0x2100;
     temp_v0->unk_0BE[2] = 0;
-    temp_v0->unk_0A4 = 0x00FF;
+    temp_v0->currentItem = 0x00FF;
     temp_v0->unk_0A2 = 0x00FF;
     temp_v0->unk_034 = 8.0f;
     temp_v0->unk_038[1] = 8.0f;
@@ -2161,7 +2161,7 @@ void func_800769D8(s32 objectIndex) {
             break;
         case 3:
             f32_step_towards(&temp_s0->sizeScaling, 2.0f, 0.05f);
-            s16_step_towards(&temp_s0->unk_0A4, 0, 0x0018);
+            s16_step_towards(&temp_s0->currentItem, 0, 0x0018);
             if ((temp_s0->unk_0AE >= 2) && (func_80073B00(objectIndex, &temp_s0->unk_0A0, 0x000000FF, 0x00000050, 0x00000020, 0, 0) != 0)) {
                 func_80072488(objectIndex);
             }
@@ -2233,7 +2233,7 @@ void func_80076C9C(s32 objectIndex, Vec3f arg1, s16 arg2) {
     temp_v0->textureList = D_0D02BC58;
     temp_v0->sizeScaling = 0.3f;
     func_8008B7D4(objectIndex, arg1[0], arg1[1], arg1[2]);
-    temp_v0->unk_0A4 = 0x00FF;
+    temp_v0->currentItem = 0x00FF;
     temp_v0->unk_034 = 0.0f;
     func_8008B8BC(objectIndex, 0U, 0U, 0U);
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -2316,7 +2316,7 @@ void func_80076FEC(s32 objectIndex, s32 flameIndex) {
     D_80165C18[objectIndex].unk_010[1] = (f32)(intptr_t)(*(&D_800E6788 + flameIndex * 3)[1]);
     D_80165C18[objectIndex].unk_010[2] = (f32)(intptr_t)(*(&D_800E6788 + flameIndex * 3)[2]);
     D_80165C18[objectIndex].unk_034 = 0;
-    D_80165C18[objectIndex].unk_0A4 = 255;
+    D_80165C18[objectIndex].currentItem = 255;
     D_80165C18[objectIndex].unk_0A2 = 255;
     D_80165C18[objectIndex].unk_0A0 = 255;
     func_8008B8BC(objectIndex, 0, 0, 0);
@@ -2631,7 +2631,7 @@ void func_80077E20(s32 objectIndex) {
     func_80086EF0(objectIndex);
     temp_v0->unk_0A0 = 0x00FF;
     temp_v0->unk_0D5 = 0;
-    temp_v0->unk_0A4 = 0;
+    temp_v0->currentItem = ITEM_NONE;
     func_80072488(objectIndex);
 }
 
@@ -3758,7 +3758,7 @@ void func_8007ABFC(s32 playerId, s32 arg1) {
     }
 }
 
-void func_8007AC9C(s32 playerId) {
+void consume_item(s32 playerId) {
     UNUSED s32 pad;
     Player *player;
     s32 objectIndex;
@@ -3767,22 +3767,22 @@ void func_8007AC9C(s32 playerId) {
     player = &gPlayerOne[playerId];
     objectIndex = gItemWindowObjectByPlayerId[playerId];
     itemWindow = &D_80165C18[objectIndex];
-    if (itemWindow->unk_0A4 == 0x000F) {
+    if (itemWindow->currentItem == ITEM_SUPER_MUSHROOM) {
         if (func_80072354(objectIndex, 2) != 0) {
             func_800722A4(objectIndex, 2);
-            itemWindow->unk_098 = 0x0258;
+            itemWindow->goldenMushroomTimer = 0x0258;
             func_800726CC(objectIndex, 0x00000032);
         }
-        if (itemWindow->unk_098 == 0) {
+        if (itemWindow->goldenMushroomTimer == 0) {
             func_800722CC(objectIndex, 2);
-            player->unk_010 = 0;
-            itemWindow->unk_0A4 = 0;
+            player->currentItemCopy = 0;
+            itemWindow->currentItem = 0;
             func_80072388(objectIndex, 0);
             func_800726CC(objectIndex, 9);
         }
     } else {
-        player->unk_010 = 0;
-        itemWindow->unk_0A4 = 0;
+        player->currentItemCopy = 0;
+        itemWindow->currentItem = 0;
         func_80072388(objectIndex, 0);
     }
 }
@@ -3887,9 +3887,9 @@ s32 func_8007B040(s32 objectIndex, s32 playerId) {
         for (var_v1_2 = 0; var_v1_2 < gPlayerCountSelection1; var_v1_2++) {
             temp_a0 = gItemWindowObjectByPlayerId[var_v1_2];
             if (var_v1_2 != playerId) {
-                if (D_80165C18[temp_a0].unk_0A4 != 0) {
+                if (D_80165C18[temp_a0].currentItem != 0) {
                     sp50[var_a3] = var_v1_2;
-                    sp40[var_a3] = D_80165C18[temp_a0].unk_0A4;
+                    sp40[var_a3] = D_80165C18[temp_a0].currentItem;
                     var_a3 += 1;
                 }
             }
@@ -3904,11 +3904,11 @@ s32 func_8007B040(s32 objectIndex, s32 playerId) {
             temp_a0 = gItemWindowObjectByPlayerId[temp_v1];
             sp38 = &gPlayerOne[temp_v1];
             func_800722A4(temp_a0, 1);
-            D_80165C18[temp_a0].unk_0A4 = 0;
-            sp38->unk_010 = 0;
+            D_80165C18[temp_a0].currentItem = 0;
+            sp38->currentItemCopy = 0;
             if (func_80072320(temp_a0, 2) != 0) {
                 func_800722CC(temp_a0, 2);
-                D_80165C18[temp_a0].unk_098 = 0;
+                D_80165C18[temp_a0].goldenMushroomTimer = 0;
             }
             var_t3 = 1;
         }
@@ -3932,20 +3932,20 @@ void func_8007B254(s32 objectIndex, u8 arg1) {
     func_80072428(objectIndex);
     temp_v0 = &D_80165C18[objectIndex];
     temp_v0->itemDisplayState = 2;
-    temp_v0->unk_0A4 = 0;
+    temp_v0->currentItem = ITEM_NONE;
     temp_v0->tlutList = (u8 *) gTLUTItemWindowNone;
     temp_v0->textureList = gTextureItemWindowNone;
     temp_v0->textureWidth = 0x28;
     temp_v0->textureHeight = 0x20;
     temp_v0->unk_04C = 0x00000032;
     temp_v0->unk_0D6 = 1;
-    temp_v0->unk_098 = 0;
+    temp_v0->goldenMushroomTimer = 0;
     sp18 = temp_v0;
     func_800722A4(objectIndex, 4);
     if (D_80165888 != 0) {
         sp18 = temp_v0;
         func_800726CC(objectIndex, 8);
-        temp_v0->unk_0A4 = 0x000E;
+        temp_v0->currentItem = ITEM_TRIPLE_MUSHROOM;
         temp_v1 = temp_v0->unkA5;
         temp_v0->unk_0D6 = 2;
         temp_v0->itemDisplay = temp_v1;
@@ -4136,11 +4136,11 @@ void func_8007B34C(s32 playerId) {
         break;
     }
     if (func_80072320(temp_s0, 2) != 0) {
-        temp_v0 = sp2C->unk_098;
+        temp_v0 = sp2C->goldenMushroomTimer;
         if (temp_v0 == 0) {
-            func_8007AC9C(playerId);
+            consume_item(playerId);
         } else {
-            sp2C->unk_098 = temp_v0 - 1;
+            sp2C->goldenMushroomTimer = temp_v0 - 1;
         }
     }
     temp_v0_2 = sp2C->unk_04C;
@@ -4161,7 +4161,7 @@ void func_8007B34C(s32 playerId) {
                 sp2C->unk_0D6 = 3;
                 break;
             case 3:                                 /* switch 1 */
-                if (sp2C->unk_0A4 == 0) {
+                if (sp2C->currentItem == ITEM_NONE) {
                     if (func_80072354(temp_s0, 1) != 0) {
                         temp_v0_4 = sp2C->unk_0A2;
                         if (temp_v0_4 == 0x000B) {
@@ -4192,7 +4192,7 @@ void func_8007B34C(s32 playerId) {
     temp_v0_5 = sp2C->itemDisplay;
     sp2C->activeTLUT = gItemWindowTLUTs[temp_v0_5];
     sp2C->activeTexture = gItemWindowTextures[temp_v0_5];
-    sp38->unk_010 = sp2C->unk_0A4;
+    sp38->currentItemCopy = sp2C->currentItem;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007B34C.s")
@@ -5184,8 +5184,8 @@ void func_8007DDC0(s32 objectIndex) {
             func_800722A4(objectIndex, 1);
             func_800C9D80(temp_s0->pos, temp_s0->unk_038, 0x51028006U);
             func_800726CC(objectIndex, 3);
-            if (temp_s0->unk_0A4 > 0) {
-                temp_s0->unk_0A4--;
+            if (temp_s0->currentItem > 0) {
+                temp_s0->currentItem--;
                 temp_s0->unk_04C = 0x00000168;
             } else {
                 temp_s0->unk_04C = 0x00000168;
@@ -5194,7 +5194,7 @@ void func_8007DDC0(s32 objectIndex) {
         }
     }
     if (func_8008A8B0(0x000F, 0x0012) == 0) {
-        temp_s0->unk_0A4 = 2;
+        temp_s0->currentItem = 2;
     }
 }
 
@@ -5214,7 +5214,7 @@ void init_bb_trash_bin(s32 objectIndex) {
     }
     D_80165C18[objectIndex].pos[1] = 45.0f;
     func_8008B8F0(objectIndex, 0.0f, 0.0f, 0.0f);
-    D_80165C18[objectIndex].unk_0A4 = 0;
+    D_80165C18[objectIndex].currentItem = ITEM_NONE;
     func_80072488(objectIndex);
 }
 
@@ -5330,8 +5330,8 @@ void func_8007E1F4(s32 objectIndex) {
             func_800722A4(objectIndex, 1);
             func_800C9D80(temp_s0->pos, temp_s0->unk_038, 0x51028006U);
             func_800726CC(objectIndex, 3);
-            if (temp_s0->unk_0A4 > 0) {
-                temp_s0->unk_0A4--;
+            if (temp_s0->currentItem > 0) {
+                temp_s0->currentItem--;
                 temp_s0->unk_04C = 0x00000168;
             } else {
                 temp_s0->unk_04C = 0x00000168;
@@ -5340,7 +5340,7 @@ void func_8007E1F4(s32 objectIndex) {
         }
     }
     if (func_8008A8B0(0x000F, 0x0013) == 0) {
-        temp_s0->unk_0A4 = 2;
+        temp_s0->currentItem = 2;
     }
 }
 
@@ -5349,7 +5349,7 @@ void func_8007E358(s32 objectIndex) {
     D_80165C18[objectIndex].pos[1] = 31.0f;
     D_80165C18[objectIndex].pos[2] = -217.0f;
     func_8008B8F0(objectIndex, 0.0f, 0.0f, 0.0f);
-    D_80165C18[objectIndex].unk_0A4 = 0;
+    D_80165C18[objectIndex].currentItem = ITEM_NONE;
     D_80165C18[objectIndex].unk_04C = 0;
     D_80165C18[objectIndex].unk_084[7] = 0;
     func_80072488(objectIndex);
@@ -5578,7 +5578,7 @@ void func_8007EC30(s32 objectIndex) {
     temp_s1->sizeScaling = 1.0f;
     temp_s1->unk_01C[1] = 30.0f;
     set_obj_index_flag_unk_054(objectIndex, 0x05000220);
-    temp_s1->unk_0A4 = 0;
+    temp_s1->currentItem = 0;
     temp_s1->unk_0DF = 6;
     func_800724DC(objectIndex);
     func_80072488(objectIndex);
@@ -5621,7 +5621,7 @@ void func_8007EE5C(s32 objectIndex) {
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s0->unk_0C8 = 0x000C;
     set_obj_index_flag_unk_054(objectIndex, 0x04000220);
-    temp_s0->unk_0A4 = 0;
+    temp_s0->currentItem = 0;
     temp_s0->unk_0DF = 6;
     func_80086E70(objectIndex);
     temp_s0->unk_044 = 0.0f;
@@ -5920,7 +5920,7 @@ void func_8007FA08(s32 objectIndex) {
     temp_s0->unk_0C8 = 0x000C;
     temp_s0->sizeScaling = 1.0f;
     set_obj_index_flag_unk_054(objectIndex, 0x04000220);
-    temp_s0->unk_0A4 = 0;
+    temp_s0->currentItem = 0;
     temp_s0->unk_044 = 0.0f;
     temp_s0->unk_010[1] = 0.0f;
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -6105,7 +6105,7 @@ void func_80080078(s32 objectIndex) {
     temp_s0->unk_0C8 = 0x000C;
     temp_s0->sizeScaling = 1.0f;
     set_obj_index_flag_unk_054(objectIndex, 0x04000220);
-    temp_s0->unk_0A4 = 2;
+    temp_s0->currentItem = 2;
     temp_s0->unk_0DF = 8;
     func_8008B888(objectIndex, 0U, 0U, 0U);
     temp_s0->unk_044 = 0.0f;
@@ -6172,7 +6172,7 @@ void func_800802C0(s32 objectIndex) {
     temp_s0->unk_0C8 = 0x000C;
     temp_s0->sizeScaling = 1.5f;
     set_obj_index_flag_unk_054(objectIndex, 0x05000220);
-    temp_s0->unk_0A4 = 1;
+    temp_s0->currentItem = 1;
     temp_s0->unk_0DF = 6;
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
     func_8008B888(objectIndex, 0U, 0U, 0U);
@@ -6230,7 +6230,7 @@ void func_80080524(s32 objectIndex) {
     temp_s0->itemDisplay = 0;
     temp_s0->sizeScaling = 1.0f;
     set_obj_index_flag_unk_054(objectIndex, 0x04000220);
-    temp_s0->unk_0A4 = 0;
+    temp_s0->currentItem = 0;
     temp_s0->unk_0DF = 0x0A;
     func_80086E70(objectIndex);
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -6383,7 +6383,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
                         func_80089474(objectIndex, playerId, 1.4f, 1.1f, 0x1900A04CU);
                     } else if (func_80072354(objectIndex, 0x00000040) != 0) {
                         if (temp_s0->bonusEffect & 0x1000) {
-                            func_800C98B8(temp_s0->pos, temp_s0->unk_034, 0x1901A24AU);
+                            func_800C98B8(temp_s0->pos, temp_s0->velocity, 0x1901A24AU);
                         } else {
                             func_800C9060((u8) playerId, 0x1901A24AU);
                         }
@@ -6777,7 +6777,7 @@ void func_80081AFC(s32 objectIndex, s32 arg1) {
                 sp2C = &D_8018D1B8;
                 break;
             }
-            *(sp2C + temp_s0->unk_0A4) = 0;
+            *(sp2C + temp_s0->currentItem) = 0;
         }
         break;
     }
@@ -6894,7 +6894,7 @@ loop_9:
             }
         } else {
             *temp_v0 = 1;
-            temp_a3->unk_0A4 = var_v1;
+            temp_a3->currentItem = var_v1;
         }
     }
     temp_v0_2 = (sp28 * 2) + (var_v1 * 6) + &D_800E6360;
@@ -7655,7 +7655,7 @@ void func_80084430(s32 objectIndex, s32 arg1) {
     func_80086EF0(objectIndex);
     temp_s0->unk_080 = *D_800E672C;
     set_obj_index_flag_unk_054(objectIndex, 0x04000800);
-    temp_s0->unk_0A4 = func_80004EAC(&d_course_sherbet_land_unk_data11, 0);
+    temp_s0->currentItem = func_80004EAC(&d_course_sherbet_land_unk_data11, 0);
     func_80072488(objectIndex);
 }
 #else
@@ -7672,7 +7672,7 @@ void func_8008453C(s32 objectIndex, s32 arg1) {
         }
         break;
     case 2:
-        func_80072E54(objectIndex, 0, D_80165C18[objectIndex].unk_0A4, 1, 0, -1);
+        func_80072E54(objectIndex, 0, D_80165C18[objectIndex].currentItem, 1, 0, -1);
         break;
     }
 }
@@ -7776,7 +7776,7 @@ void func_800845C8(s32 objectIndex, s32 arg1) {
     }
     func_80086EF0(objectIndex);
     temp_s0->unk_034 = 0.0f;
-    temp_s0->unk_0A4 = func_80004EAC(d_course_sherbet_land_unk_data11, 0);
+    temp_s0->currentItem = func_80004EAC(d_course_sherbet_land_unk_data11, 0);
     func_80072488(objectIndex);
 }
 
@@ -7791,7 +7791,7 @@ void func_80084B7C(s32 objectIndex, s32 arg1) {
         func_800845C8(objectIndex, arg1);
         break;
     case 2:
-        func_80072E54(objectIndex, 0, (s32) temp_s0->unk_0A4, (s32) temp_s0->unk_09C, 0, -1);
+        func_80072E54(objectIndex, 0, (s32) temp_s0->currentItem, (s32) temp_s0->unk_09C, 0, -1);
         if (func_80072354(objectIndex, 0x00000020) != 0) {
             if (temp_s0->unk_084[6] == 0) {
                 temp_s0->unk_084[6] = random_int(0x005AU) + 0x5A;
@@ -7802,7 +7802,7 @@ void func_80084B7C(s32 objectIndex, s32 arg1) {
         }
         break;
     case 3:
-        func_80072E54(objectIndex, 0, temp_s0->unk_0A4, 1, 0, 0);
+        func_80072E54(objectIndex, 0, temp_s0->currentItem, 1, 0, 0);
         break;
     case 4:
         func_800722CC(objectIndex, 2);
@@ -7849,7 +7849,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
             D_80165C18[objectIndex].unk_09C = 1;
             D_80165C18[objectIndex].unk_0D8 = 1;
             D_80165C18[objectIndex].itemDisplay = 0;
-            D_80165C18[objectIndex].unk_0A4 = func_80004EAC(d_course_sherbet_land_unk_data11, D_80165C18[objectIndex].unk_0D8);
+            D_80165C18[objectIndex].currentItem = func_80004EAC(d_course_sherbet_land_unk_data11, D_80165C18[objectIndex].unk_0D8);
             func_800726CC(objectIndex, 3);
             func_80086FD4(objectIndex);
             if (func_80072354(objectIndex, 0x00000020) != 0) {
@@ -7889,7 +7889,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
             func_800722A4(objectIndex, 2);
             D_80165C18[objectIndex].unk_0D8 = 2;
             D_80165C18[objectIndex].itemDisplay = 0;
-            D_80165C18[objectIndex].unk_0A4 = func_80004EAC(d_course_sherbet_land_unk_data11, D_80165C18[objectIndex].unk_0D8);
+            D_80165C18[objectIndex].currentItem = func_80004EAC(d_course_sherbet_land_unk_data11, D_80165C18[objectIndex].unk_0D8);
             func_800726CC(objectIndex, 3);
             func_80086FD4(objectIndex);
         }
@@ -7898,7 +7898,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
         if (func_80072354(objectIndex, 2) != 0) {
             D_80165C18[objectIndex].unk_0D8 = 0;
             D_80165C18[objectIndex].itemDisplay = 0;
-            D_80165C18[objectIndex].unk_0A4 = func_80004EAC(d_course_sherbet_land_unk_data11, D_80165C18[objectIndex].unk_0D8);
+            D_80165C18[objectIndex].currentItem = func_80004EAC(d_course_sherbet_land_unk_data11, D_80165C18[objectIndex].unk_0D8);
             D_80165C18[objectIndex].unk_0C6 += 0x8000;
             func_800726CC(objectIndex, 2);
             func_8008701C(objectIndex, 1);
@@ -8112,7 +8112,7 @@ void func_80085878(s32 objectIndex, s32 arg1) {
     func_8008B80C(objectIndex, temp_v0->wayPointX, temp_v0->wayPointY, temp_v0->wayPointZ);
     func_8008B888(objectIndex, 0U, 0U, 0U);
     temp_s0->unk_034 = 4.0f;
-    temp_s0->unk_0A4 = func_80004EAC(d_rainbow_road_unk3, 0);
+    temp_s0->currentItem = func_80004EAC(d_rainbow_road_unk3, 0);
     func_80072488(objectIndex);
 }
 
@@ -8127,7 +8127,7 @@ void func_800859C8(s32 objectIndex, s32 arg1) {
         func_80085878(objectIndex, arg1);
         break;
     case 2:
-        func_80072E54(objectIndex, 0, (s32) temp_s0->unk_0A4, 1, 0, -1);
+        func_80072E54(objectIndex, 0, (s32) temp_s0->currentItem, 1, 0, -1);
         break;
     }
     if (D_8018D40C == 0) {

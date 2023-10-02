@@ -1003,8 +1003,8 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
         if ((*(&D_801634D8 + temp_t5) == (s16) 1) && !(temp_v1 & 0x80000200)) {
             func_80031F48(player, 10.0f);
             if ((f64) player->currentSpeed == 0.0) {
-                player->unk_034[0] = 0.0f;
-                player->unk_034[2] = 0.0f;
+                player->velocity[0] = 0.0f;
+                player->velocity[2] = 0.0f;
             }
         } else {
             temp_v0_2 = gCCSelection;
@@ -9980,7 +9980,7 @@ void func_8001AC10(s32 playerId) {
                     break;
                 }
             } else if (temp_a1 == 1) {
-                temp_s0->ffff = func_802B2D70(sp2C);
+                temp_s0->ffff = use_banana_effect(sp2C);
                 temp_v1_3 = temp_s0->ffff;
                 if ((temp_v1_3 >= 0) && (temp_v1_3 < 0x64)) {
                     sp2C->hitEffects |= 0x40000;
@@ -10025,7 +10025,7 @@ void func_8001AC10(s32 playerId) {
             temp_s0->unk0 = 0;
             break;
         case 34:                                    /* switch 1 */
-            temp_s0->ffff = func_802B2D70(sp2C);
+            temp_s0->ffff = use_banana_effect(sp2C);
             temp_v1_4 = temp_s0->ffff;
             if ((temp_v1_4 >= 0) && (temp_v1_4 < 0x64)) {
                 temp_a3_3 = &gActorList[temp_v1_4];
@@ -10041,7 +10041,7 @@ void func_8001AC10(s32 playerId) {
                 temp_a3_3->velocity[2] = (f32) ((f64) ((f32) temp_v0_2->wayPointZ - sp2C->pos[2]) / 20.0);
                 temp_a3_3->pos[1] = sp2C->pos[1];
                 func_800C92CC(playerId & 0xFF, 0x29008009, temp_a2 * 2, temp_a3_3);
-                func_800C98B8(sp2C->pos, sp2C->unk_034, 0x19018014U);
+                func_800C98B8(sp2C->pos, sp2C->velocity, 0x19018014U);
             } else {
                 temp_s0->timer = 0;
                 temp_s0->unk0 = 0;
@@ -10083,7 +10083,7 @@ void func_8001AC10(s32 playerId) {
             break;
         case 4:                                     /* switch 1 */
             if ((s32) gNumActors < 0x50) {
-                temp_s0->ffff = func_802B1C9C(sp2C);
+                temp_s0->ffff = use_green_shell_effect(sp2C);
                 temp_v1_5 = temp_s0->ffff;
                 if ((temp_v1_5 >= 0) && (temp_v1_5 < 0x64)) {
                     temp_s0->unk0 = 5;
@@ -10121,7 +10121,7 @@ block_71:
             break;
         case 7:                                     /* switch 1 */
             if ((s32) gNumActors < 0x50) {
-                temp_s0->ffff = func_802B1E48(sp2C);
+                temp_s0->ffff = use_red_shell_effect(sp2C);
                 temp_v1_6 = temp_s0->ffff;
                 if ((temp_v1_6 >= 0) && (temp_v1_6 < 0x64)) {
                     temp_s0->unk0 = 8;
@@ -10159,7 +10159,7 @@ block_92:
             break;
         case 10:                                    /* switch 1 */
             if ((s32) gNumActors < 0x50) {
-                temp_s0->ffff = func_802B17F4(sp2C);
+                temp_s0->ffff = use_banana_bunch_effect(sp2C);
                 temp_v1_7 = temp_s0->ffff;
                 if ((temp_v1_7 >= 0) && (temp_v1_7 < 0x64)) {
                     temp_s0->unk0 = 0x000B;
@@ -10250,7 +10250,7 @@ block_146:
             }
             break;
         case 13:                                    /* switch 1 */
-            temp_s0->ffff = func_802B2C40(sp2C);
+            temp_s0->ffff = use_fake_itembox_effect(sp2C);
             temp_v1_9 = temp_s0->ffff;
             if ((temp_v1_9 >= 0) && (temp_v1_9 < 0x64)) {
                 temp_s0->unk0 = 0x000E;
@@ -10288,7 +10288,7 @@ block_146:
             temp_s0->unk0 = 0;
             break;
         case 22:                                    /* switch 1 */
-            func_802B2EBC(sp2C);
+            use_thunder_effect(sp2C);
             func_800CAC60(playerId & 0xFF);
             func_8009E5BC();
             temp_s0->timer = 0;

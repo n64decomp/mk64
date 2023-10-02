@@ -4383,7 +4383,7 @@ GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800534A4.s")
 
 void func_800534E8(s32 objectIndex) {
     // Why these don't just use `gSPSetLights1` calls...
-    switch (D_80165C18[objectIndex].unk_0A4) {
+    switch (D_80165C18[objectIndex].currentItem) { // hmm very strange 80165C18
     case 0:
         gSPLight(gDisplayListHead++, &D_800E4638.l[0], LIGHT_1);
         gSPLight(gDisplayListHead++, &D_800E4638.a, LIGHT_2);
@@ -4631,7 +4631,7 @@ void func_800540CC(s32 objectIndex, s32 cameraId) {
     camera = &camera1[cameraId];
     if (objectIndex != -1) {
         if ((D_80165C18[objectIndex].itemDisplayState >= 2) && (D_80165C18[objectIndex].unk_0D5 == 1) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
-            func_8004B1C8((s32) D_80165C18[objectIndex].unk_0A4, (s32) D_80165C18[objectIndex].unk_0A4, (s32) D_80165C18[objectIndex].unk_0A4, 0, 0, 0, (s32) D_80165C18[objectIndex].unk_0A0);
+            func_8004B1C8((s32) D_80165C18[objectIndex].currentItem, (s32) D_80165C18[objectIndex].currentItem, (s32) D_80165C18[objectIndex].currentItem, 0, 0, 0, (s32) D_80165C18[objectIndex].unk_0A0);
             D_80183E80[1] = func_800418AC(D_80165C18[objectIndex].pos[0], D_80165C18[objectIndex].pos[2], camera->pos);
             func_800431B0(D_80165C18[objectIndex].pos, D_80183E80, D_80165C18[objectIndex].sizeScaling, D_0D005AE0);
         }
@@ -4686,7 +4686,7 @@ void func_80054324(s32 objectIndex, s32 cameraId) {
     camera = &camera1[cameraId];
     if (objectIndex != -1) {
         if ((D_80165C18[objectIndex].itemDisplayState >= 2) && (D_80165C18[objectIndex].unk_0D5 == 6) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
-            func_8004B1C8((s32) D_80165C18[objectIndex].unk_0A4, (s32) D_80165C18[objectIndex].unk_0A4, (s32) D_80165C18[objectIndex].unk_0A4, D_80165C18[objectIndex].unk_0A2, D_80165C18[objectIndex].unk_0A2, D_80165C18[objectIndex].unk_0A2, (s32) D_80165C18[objectIndex].unk_0A0);
+            func_8004B1C8((s32) D_80165C18[objectIndex].currentItem, (s32) D_80165C18[objectIndex].currentItem, (s32) D_80165C18[objectIndex].currentItem, D_80165C18[objectIndex].unk_0A2, D_80165C18[objectIndex].unk_0A2, D_80165C18[objectIndex].unk_0A2, (s32) D_80165C18[objectIndex].unk_0A0);
             D_80183E80[1] = func_800418AC(D_80165C18[objectIndex].pos[0], D_80165C18[objectIndex].pos[2], camera->pos);
             func_800431B0(D_80165C18[objectIndex].pos, D_80183E80, D_80165C18[objectIndex].sizeScaling, D_0D005AE0);
         }
@@ -4743,9 +4743,9 @@ void func_8005457C(s32 objectIndex, s32 cameraId) {
     if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
         temp_s0 = &D_80165C18[objectIndex];
         if (temp_s0->unk_0D5 == 9) {
-            func_8004B72C(0x000000FF, (s32) temp_s0->unk_0A4, 0, (s32) temp_s0->unk_0A2, 0, 0, (s32) temp_s0->unk_0A0);
+            func_8004B72C(0x000000FF, (s32) temp_s0->currentItem, 0, (s32) temp_s0->unk_0A2, 0, 0, (s32) temp_s0->unk_0A0);
         } else {
-            func_8004B138(0x000000FF, (s32) temp_s0->unk_0A4, 0, (s32) temp_s0->unk_0A0);
+            func_8004B138(0x000000FF, (s32) temp_s0->currentItem, 0, (s32) temp_s0->unk_0A0);
         }
         D_80183E80[1] = func_800418AC(temp_s0->pos[0], temp_s0->pos[2], camera->pos);
         func_800431B0(temp_s0->pos, D_80183E80, temp_s0->sizeScaling, D_0D005AE0);

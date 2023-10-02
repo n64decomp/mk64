@@ -207,7 +207,7 @@ void func_8007A910(s32);
 void func_8007A948(s32);
 void func_8007AA44(s32);
 void func_8007ABFC(s32, s32);
-void func_8007AC9C(s32);
+void consume_item(s32);
 u8   gen_random_item(s16, s16);
 u8   gen_random_item_human(s16, s16);
 u8   gen_random_item_cpu(s32, s16);

@@ -807,8 +807,8 @@ UNUSED s32 func_80088F94(s32 objectIndex, Player *player, f32 arg2) {
 void func_80088FF0(Player *player) {
     player->unk_08C = 0.0f;
     player->currentSpeed = 0.0f;
-    player->unk_034[0] = 0.0f;
-    player->unk_034[2] = 0.0f;
+    player->velocity[0] = 0.0f;
+    player->velocity[2] = 0.0f;
 }
 
 UNUSED void func_8008900C(Player *player) {
@@ -897,15 +897,15 @@ f32 func_8008933C(Player *player, s32 objectIndex, f32 arg2, f32 arg3) {
         temp_v1->unk_18[6] = 4;
         something = (player->pos[0] - temp_v0->pos[0]) * temp_v0->unk_038[0];
         if (something >= 0.0f) {
-            temp_v1->unk_04[0] = (-player->unk_034[0] * arg2) + (temp_v0->unk_038[0] * arg3);
+            temp_v1->unk_04[0] = (-player->velocity[0] * arg2) + (temp_v0->unk_038[0] * arg3);
         } else {
-            temp_v1->unk_04[0] = -player->unk_034[0] * arg2;
+            temp_v1->unk_04[0] = -player->velocity[0] * arg2;
         }
         something = (player->pos[2] - temp_v0->pos[2]) * temp_v0->unk_038[2];
         if (something >= 0.0f) {
-            temp_v1->unk_04[2] = (-player->unk_034[2] * arg2) + (temp_v0->unk_038[2] * arg3);
+            temp_v1->unk_04[2] = (-player->velocity[2] * arg2) + (temp_v0->unk_038[2] * arg3);
         } else {
-            temp_v1->unk_04[2] = -player->unk_034[2] * arg2;
+            temp_v1->unk_04[2] = -player->velocity[2] * arg2;
         }
         var_f2 = (temp_v1->unk_04[0] * temp_v1->unk_04[0]) + (temp_v1->unk_04[2] * temp_v1->unk_04[2]);
     }
@@ -1331,7 +1331,7 @@ void func_8008A9B8(s32 objectIndex) {
     temp_v0 = &D_80165C18[objectIndex];
     temp_v0->unk_07C++;
     temp_v0->unk_09A = (s16) (0x2710 / (s16) (*temp_v0->unk_07C)[3]);
-    temp_v0->unk_098 = 0;
+    temp_v0->goldenMushroomTimer = 0;
     func_8008A920(objectIndex);
 }
 
@@ -1344,7 +1344,7 @@ void func_8008AA3C(s32 objectIndex) {
     temp_v1 = &temp_v0->unk_080[0][1];
     (&D_80165C18[objectIndex])->unk_07C = (s16 (*)[4]) temp_v1;
     (&D_80165C18[objectIndex])->unk_084[9] = 0;
-    (&D_80165C18[objectIndex])->unk_098 = 0;
+    (&D_80165C18[objectIndex])->goldenMushroomTimer = 0;
     (&D_80165C18[objectIndex])->unk_084[8] = temp_v1[-1];
     (&D_80165C18[objectIndex])->unk_028[0] = (f32) temp_v1[0];
     (&D_80165C18[objectIndex])->unk_028[1] = (f32) temp_v1[1];
@@ -1362,8 +1362,8 @@ void func_8008AB10(s32 objectIndex) {
     temp_v0->unk_028[0] += temp_v0->unk_038[0];
     temp_v0->unk_028[1] += temp_v0->unk_038[1];
     temp_v0->unk_028[2] += temp_v0->unk_038[2];
-    temp_v0->unk_098 += (u16)temp_v0->unk_09A;
-    if (temp_v0->unk_098 >= 0x2710) {
+    temp_v0->goldenMushroomTimer += (u16)temp_v0->unk_09A;
+    if (temp_v0->goldenMushroomTimer >= 0x2710) {
         temp_v0->unk_084[9] = (u16)temp_v0->unk_084[9] + 1;
         if (((u16)temp_v0->unk_084[9] + 1) == (u16) temp_v0->unk_084[8]) {
             temp_v0->unk_0AE += 1;
@@ -1563,7 +1563,7 @@ void func_8008B3E4(s32 objectIndex) {
     if (is_obj_index_flag_unk_054_unactive(objectIndex, 8) != 0) {
         temp_v0 = &D_80165C18[objectIndex];
         temp_v0->unk_084[9] = 0;
-        temp_v0->unk_098 = 0;
+        temp_v0->goldenMushroomTimer = 0;
         temp_v0->unk_07C = &D_80165C18[objectIndex].unk_080[0][1];
         // Huh????????? Negative array indexing is a near certain sign
         // that something has gone wrong on our end.
@@ -1573,7 +1573,7 @@ void func_8008B3E4(s32 objectIndex) {
 }
 
 void func_8008B44C(s32 arg0) {
-    D_80165C18[arg0].unk_098 = 0;
+    D_80165C18[arg0].goldenMushroomTimer = 0;
     D_80165C18[arg0].unk_07C++;
 }
 
@@ -1590,7 +1590,7 @@ void func_8008B478(s32 objectIndex, s32 arg1) {
         func_8008B1D4(objectIndex);
     }
 
-    sp34 = ((f32)D_80165C18[objectIndex].unk_098 / 10000.0);
+    sp34 = ((f32)D_80165C18[objectIndex].goldenMushroomTimer / 10000.0);
     func_8008B17C(objectIndex, sp34);
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x800) != 0) {
         func_8008AFE0(objectIndex, sp34);
@@ -1600,7 +1600,7 @@ void func_8008B478(s32 objectIndex, s32 arg1) {
     temp = D_80165C18[objectIndex].unk_07C[0][7];
 
     D_80165C18[objectIndex].unk_09A = 10000.0 / (((temp - var_f6) * sp34) + var_f6);
-    D_80165C18[objectIndex].unk_098 += D_80165C18[objectIndex].unk_09A;
+    D_80165C18[objectIndex].goldenMushroomTimer += D_80165C18[objectIndex].unk_09A;
 }
 
 void func_8008B620(s32 objectIndex) {
@@ -1609,7 +1609,7 @@ void func_8008B620(s32 objectIndex) {
 
     func_8008B478(objectIndex, 0);
     temp_v0 = &D_80165C18[objectIndex];
-    if (temp_v0->unk_098 >= 0x2710) {
+    if (temp_v0->goldenMushroomTimer >= 0x2710) {
         // Have to do it this way due to the u16 cast
         temp_v0->unk_084[9] = (u16) temp_v0->unk_084[9] + 1;
         if (((u16) temp_v0->unk_084[9] + 3) == (u16) temp_v0->unk_084[8]) {
@@ -1625,7 +1625,7 @@ void func_8008B6A4(s32 objectIndex) {
 
     func_8008B478(objectIndex, 1);
     temp_v0 = &D_80165C18[objectIndex];
-    if (temp_v0->unk_098 >= 0x2710) {
+    if (temp_v0->goldenMushroomTimer >= 0x2710) {
         // Have to do it this way due to the u16 cast
         temp_v0->unk_084[9] = (u16) temp_v0->unk_084[9] + 1;
         if ((u16)temp_v0->unk_084[9] == (u16)temp_v0->unk_084[8]) {
