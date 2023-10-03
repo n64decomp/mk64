@@ -154,7 +154,7 @@ void func_80020000(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         func_8001F9E4(player, camera, arg3);
         temp_v0 = 2 << (arg3 << 2);
         if (temp_v0 == (player->unk_002 & temp_v0)) {
-            if (!(player->type & PLAYER_STAGING)) {
+            if (!(player->type & PLAYER_START_SEQUENCE)) {
                 func_8002934C(player, camera, arg3, arg2);
             } else {
                 func_8002934C(player, camera, arg3, arg2);
@@ -1593,7 +1593,7 @@ void func_800267AC(Player *player, s8 arg1, s8 arg2) {
 void func_80026A48(Player *player, s8 arg1) {
     f32 temp_f0;
 
-    if (((player->effects & 0x4000) == 0x4000) && ((player->type & PLAYER_STAGING) == 0)) {
+    if (((player->effects & 0x4000) == 0x4000) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
         player->unk_240 += D_800DDE74[8];
         if (player->unk_240 >= 0x400) {
             player->unk_240 = 0;

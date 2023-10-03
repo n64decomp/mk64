@@ -1127,7 +1127,7 @@ void func_802B30EC(void) {
                 }
             }
 
-            if (((player->type & 0x4000) != 0) && (player->currentItemCopy != ITEM_NONE) && ((player->type & PLAYER_STAGING) == 0)) {
+            if (((player->type & 0x4000) != 0) && (player->currentItemCopy != ITEM_NONE) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
                 if ((controller->buttonPressed & Z_TRIG) != 0) {
                     controller->buttonPressed &= ~Z_TRIG;
                     func_802B2FA0(player);

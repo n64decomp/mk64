@@ -619,7 +619,7 @@ void func_80027EDC(Player *player, s8 playerId) {
 void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     u16 sp1E;
     
-    if (!(player->type & PLAYER_STAGING)) {
+    if (!(player->type & PLAYER_START_SEQUENCE)) {
         switch (gActiveScreenMode) {
             case SCREEN_MODE_1P:
                 sp1E = check_player_camera_collision(player, camera1, (f32) D_8016557C, 0.0f);
@@ -678,7 +678,7 @@ void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
 }
 
 void func_80028C44(Player *player, Camera *camera, s8 arg2, s8 arg3) { 
-    if ((player->type & PLAYER_STAGING) == 0) {
+    if ((player->type & PLAYER_START_SEQUENCE) == 0) {
         player->effects &= ~0x1000;
         if (((player->effects & 0x80) == 0x80) || 
             ((player->effects & 0x40) == 0x40) || 
@@ -700,7 +700,7 @@ void func_80028C44(Player *player, Camera *camera, s8 arg2, s8 arg3) {
 }
 
 void func_80028D3C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
-   if ((((player->type & PLAYER_STAGING) == 0)
+   if ((((player->type & PLAYER_START_SEQUENCE) == 0)
         && (D_800DC510 != 5))
         || (player->unk_0CA & 2) != 0
         || (player->unk_0CA & 8) != 0
@@ -730,7 +730,7 @@ void func_80028E70(Player *player, Camera *camera, s8 arg2, s8 arg3)  {
     if ((player->type & 0x8000) == 0x8000) {
         switch (gGamestate) {
             case ENDING_SEQUENCE:
-                if (!(player->type & PLAYER_STAGING)) {
+                if (!(player->type & PLAYER_START_SEQUENCE)) {
                     func_80038C6C(player, camera, arg3, arg2);
                 } else {
                     player->effects &= ~8;
@@ -3135,7 +3135,7 @@ f32 func_80030150(Player *player, s8 arg1) {
     if (var_f2 < 0.0f) {
         var_f2 = 0.0f;
     }
-    if (((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8) || ((player->type & PLAYER_STAGING) == PLAYER_STAGING)) {
+    if (((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8) || ((player->type & PLAYER_START_SEQUENCE) == PLAYER_START_SEQUENCE)) {
         return (1.0f - player->unk_104) * var_f2;
     }
     if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) || ((player->effects & 0x01000000) == 0x01000000) || ((player->effects & 0x02000000) == 0x02000000)) {
@@ -4739,7 +4739,7 @@ void func_800381AC(Player *player, struct Controller *controller, s8 arg2) {
     if (((player->type & 0x8000) == 0x8000) && 
         ((player->type & 0x4000) == 0x4000) && 
         ((player->type & 0x1000) != 0x1000)) {
-            if ((player->type & PLAYER_STAGING) != PLAYER_STAGING) {
+            if ((player->type & PLAYER_START_SEQUENCE) != PLAYER_START_SEQUENCE) {
                 if (((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) {
                     if (controller->button & A_BUTTON) {
                         func_80032D94(player);

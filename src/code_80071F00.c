@@ -3904,11 +3904,11 @@ s32 func_8007B040(s32 objectIndex, s32 playerId) {
             temp_a0 = gItemWindowObjectByPlayerId[temp_v1];
             sp38 = &gPlayerOne[temp_v1];
             func_800722A4(temp_a0, 1);
-            ((ItemWindowObjects) gObjectList[temp_a0]).currentItem = 0;
+            gObjectList[temp_a0].type = 0;
             sp38->currentItemCopy = 0;
             if (func_80072320(temp_a0, 2) != 0) {
                 func_800722CC(temp_a0, 2);
-                ((ItemWindowObjects) gObjectList[temp_a0]).goldenMushroomTimer = 0;
+                gObjectList[temp_a0].timer = 0;
             }
             var_t3 = 1;
         }

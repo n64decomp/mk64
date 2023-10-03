@@ -2068,7 +2068,7 @@ void func_80091298(Player *player, s8 arg1) {
                 player->unk_044 &= ~0x800;
                 player->kartGravity = gKartGravityTable[player->characterId];
                 player->unk_0D4[0] = 0;
-                player->type |= PLAYER_STAGING;
+                player->type |= PLAYER_START_SEQUENCE;
                 player->unk_094 = 0.0f;
                 player->unk_08C = 0.0f;
                 player->currentSpeed = 0.0f;
