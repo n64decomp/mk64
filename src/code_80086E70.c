@@ -15,50 +15,50 @@
 #include "variables.h"
 #include "main.h"
 
-void func_80086E70(s32 arg0) {
-    gObjectList[arg0].unk_0AE = 1;// * 0xE0)) = 1;
-    func_800721E8(arg0, 8);
+void func_80086E70(s32 objectIndex) {
+    gObjectList[objectIndex].unk_0AE = 1;// * 0xE0)) = 1;
+    func_800721E8(objectIndex, 8);
 }
 
-void func_80086EAC(s32 arg0, s32 arg1, s16 arg2) {
-    gObjectList[arg0].unk_0DD = arg1;
-    gObjectList[arg0].unk_0AE = arg2;
-    func_800721E8(arg0, 8);
+void func_80086EAC(s32 objectIndex, s32 arg1, s16 arg2) {
+    gObjectList[objectIndex].unk_0DD = arg1;
+    gObjectList[objectIndex].unk_0AE = arg2;
+    func_800721E8(objectIndex, 8);
 }
 
-void func_80086EF0(s32 arg0) {
-    func_80086E70(arg0);
+void func_80086EF0(s32 objectIndex) {
+    func_80086E70(objectIndex);
 }
 
-void func_80086F10(s32 arg0, s32 arg1, u16 arg2[][4]) {
-    func_80086E70(arg0);
-    gObjectList[arg0].unk_0DE = arg1;
-    gObjectList[arg0].unk_080 = (u16 *) arg2;
+void func_80086F10(s32 objectIndex, s32 arg1, u16 arg2[][4]) {
+    func_80086E70(objectIndex);
+    gObjectList[objectIndex].unk_0DE = arg1;
+    gObjectList[objectIndex].unk_080 = (u16 *) arg2;
 }
 
-void func_80086F60(s32 arg0) {
-    gObjectList[arg0].unk_0AE = 0;
-    gObjectList[arg0].unk_0DD = 0;
-    gObjectList[arg0].unk_0DE = 0;
-    func_800721E8(arg0, 8);
+void func_80086F60(s32 objectIndex) {
+    gObjectList[objectIndex].unk_0AE = 0;
+    gObjectList[objectIndex].unk_0DD = 0;
+    gObjectList[objectIndex].unk_0DE = 0;
+    func_800721E8(objectIndex, 8);
 }
 
-s32 func_80086FA4(s32 arg0) {
-    s32 ret = 0;
-    if (gObjectList[arg0].unk_0AE == 0) {
-        ret = 1;
+bool func_80086FA4(s32 objectIndex) {
+    bool ret = FALSE;
+    if (gObjectList[objectIndex].unk_0AE == 0) {
+        ret = TRUE;
     }
     return ret;
 }
 
-void func_80086FD4(s32 arg0) {
-    func_800721E8(arg0, 8);
-    gObjectList[arg0].unk_0AE += 1;
+void func_80086FD4(s32 objectIndex) {
+    func_800721E8(objectIndex, 8);
+    gObjectList[objectIndex].unk_0AE += 1;
 }
 
-void func_8008701C(s32 arg0, s32 arg1) {
-    func_800721E8(arg0, 8);
-    gObjectList[arg0].unk_0AE = arg1;
+void func_8008701C(s32 objectIndex, s32 arg1) {
+    func_800721E8(objectIndex, 8);
+    gObjectList[objectIndex].unk_0AE = arg1;
 }
 
 s32 func_80087060(s32 objectIndex, s32 arg1) {
@@ -1572,9 +1572,9 @@ void func_8008B3E4(s32 objectIndex) {
     }
 }
 
-void func_8008B44C(s32 arg0) {
-    gObjectList[arg0].goldenMushroomTimer = 0;
-    gObjectList[arg0].unk_07C++;
+void func_8008B44C(s32 objectIndex) {
+    gObjectList[objectIndex].goldenMushroomTimer = 0;
+    gObjectList[objectIndex].unk_07C++;
 }
 
 void func_8008B478(s32 objectIndex, s32 arg1) {
@@ -1659,42 +1659,42 @@ void func_8008B78C(s32 objectIndex) {
     }
 }
 
-void func_8008B7D4(s32 arg0, f32 arg1, f32 arg2, f32 arg3) {
-    gObjectList[arg0].unk_010[0] = arg1;
-    gObjectList[arg0].unk_010[1] = arg2;
-    gObjectList[arg0].unk_010[2] = arg3;
+void func_8008B7D4(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3) {
+    gObjectList[objectIndex].unk_010[0] = arg1;
+    gObjectList[objectIndex].unk_010[1] = arg2;
+    gObjectList[objectIndex].unk_010[2] = arg3;
 }
 
-void func_8008B80C(s32 arg0, f32 arg1, f32 arg2, f32 arg3) {
-    gObjectList[arg0].unk_028[0] = arg1;
-    gObjectList[arg0].unk_028[1] = arg2;
-    gObjectList[arg0].unk_028[2] = arg3;
+void func_8008B80C(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3) {
+    gObjectList[objectIndex].unk_028[0] = arg1;
+    gObjectList[objectIndex].unk_028[1] = arg2;
+    gObjectList[objectIndex].unk_028[2] = arg3;
 }
 
-void func_8008B844(s32 arg0) {
-    f32 temp_f0 = gObjectList[arg0].unk_010[0];
+void func_8008B844(s32 objectIndex) {
+    f32 temp_f0 = gObjectList[objectIndex].unk_010[0];
 
-    gObjectList[arg0].pos[0] = gObjectList[arg0].unk_028[0] + temp_f0;
-    gObjectList[arg0].pos[1] = gObjectList[arg0].unk_028[1] + temp_f0;
-    gObjectList[arg0].pos[2] = gObjectList[arg0].unk_028[2] + temp_f0;
+    gObjectList[objectIndex].pos[0] = gObjectList[objectIndex].unk_028[0] + temp_f0;
+    gObjectList[objectIndex].pos[1] = gObjectList[objectIndex].unk_028[1] + temp_f0;
+    gObjectList[objectIndex].pos[2] = gObjectList[objectIndex].unk_028[2] + temp_f0;
 }
 
-void func_8008B888(s32 arg0, u16 arg1, u16 arg2, u16 arg3) {
-    gObjectList[arg0].unk_0BE[0] = arg1;
-    gObjectList[arg0].unk_0BE[1] = arg2;
-    gObjectList[arg0].unk_0BE[2] = arg3;
+void func_8008B888(s32 objectIndex, u16 arg1, u16 arg2, u16 arg3) {
+    gObjectList[objectIndex].unk_0BE[0] = arg1;
+    gObjectList[objectIndex].unk_0BE[1] = arg2;
+    gObjectList[objectIndex].unk_0BE[2] = arg3;
 }
 
-void func_8008B8BC(s32 arg0, u16 arg1, u16 arg2, u16 arg3) {
-    gObjectList[arg0].unk_0B2[0] = arg1;
-    gObjectList[arg0].unk_0B2[1] = arg2;
-    gObjectList[arg0].unk_0B2[2] = arg3;
+void func_8008B8BC(s32 objectIndex, u16 arg1, u16 arg2, u16 arg3) {
+    gObjectList[objectIndex].unk_0B2[0] = arg1;
+    gObjectList[objectIndex].unk_0B2[1] = arg2;
+    gObjectList[objectIndex].unk_0B2[2] = arg3;
 }
 
-void func_8008B8F0(s32 arg0, f32 arg1, f32 arg2, f32 arg3) {
-    gObjectList[arg0].unk_038[0] = arg1;
-    gObjectList[arg0].unk_038[1] = arg2;
-    gObjectList[arg0].unk_038[2] = arg3;
+void func_8008B8F0(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3) {
+    gObjectList[objectIndex].unk_038[0] = arg1;
+    gObjectList[objectIndex].unk_038[1] = arg2;
+    gObjectList[objectIndex].unk_038[2] = arg3;
 }
 
 void func_8008B928(s32 objectIndex, s16 arg1, s16 arg2, s16 arg3, s16 arg4[][4]) {

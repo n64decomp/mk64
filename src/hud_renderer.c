@@ -3550,15 +3550,15 @@ void func_800517C8(void) {
 
 extern u8 D_8018D228;
 
-void func_800518F8(s32 arg0, s16 arg1, s16 arg2) {
+void func_800518F8(s32 objectIndex, s16 arg1, s16 arg2) {
     s32 pad[1];
-    if (gObjectList[arg0].unk_054 & 0x10) {
-        if (D_8018D228 != gObjectList[arg0].unk_0D5) {
-            D_8018D228 = gObjectList[arg0].unk_0D5;
-            func_80044DA0(gObjectList[arg0].activeTexture, gObjectList[arg0].textureWidth, gObjectList[arg0].textureHeight);
+    if (gObjectList[objectIndex].unk_054 & 0x10) {
+        if (D_8018D228 != gObjectList[objectIndex].unk_0D5) {
+            D_8018D228 = gObjectList[objectIndex].unk_0D5;
+            func_80044DA0(gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].textureWidth, gObjectList[objectIndex].textureHeight);
         }
-        func_80042330(arg1, arg2, 0U, gObjectList[arg0].sizeScaling);
-        gSPVertex(gDisplayListHead++, gObjectList[arg0].unk_074, 4, 0);
+        func_80042330(arg1, arg2, 0U, gObjectList[objectIndex].sizeScaling);
+        gSPVertex(gDisplayListHead++, gObjectList[objectIndex].unk_074, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D006940);
     }
 }
@@ -3569,13 +3569,13 @@ void func_800518F8(s32 arg0, s16 arg1, s16 arg2) {
 ? func_80044DA0(s32 *, u8, u8);                     /* extern */
 extern u8 D_8018D228;
 
-void func_800519D4(s32 arg0, s16 arg1, s16 arg2) {
+void func_800519D4(s32 objectIndex, s16 arg1, s16 arg2) {
     Gfx *temp_v0_2;
     Gfx *temp_v0_3;
     Objects *temp_s0;
     u8 temp_v0;
 
-    temp_s0 = &gObjectList[arg0];
+    temp_s0 = &gObjectList[objectIndex];
     if (temp_s0->unk_054 & 0x10) {
         temp_v0 = temp_s0->unk_0D5;
         if (D_8018D228 != temp_v0) {
@@ -3935,15 +3935,15 @@ void func_8005217C(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_8005217C.s")
 #endif
 
-void func_800523B8(s32 arg0, s32 arg1, u32 arg2) {
+void func_800523B8(s32 objectIndex, s32 arg1, u32 arg2) {
     UNUSED s32 pad[2];
     Objects *temp_v1;
     Camera *camera = &camera1[arg1];
 
-    temp_v1 = &gObjectList[arg0];
+    temp_v1 = &gObjectList[objectIndex];
     temp_v1->unk_0B2[1] = func_800418AC(temp_v1->pos[0], temp_v1->pos[2], camera->pos);
     func_800484BC(temp_v1->pos, temp_v1->unk_0B2, temp_v1->sizeScaling, temp_v1->unk_0A0, (u8 *) temp_v1->activeTLUT, temp_v1->activeTexture, temp_v1->unk_074, 0x00000030, 0x00000028, 0x00000030, 0x00000028);
-    if ((is_obj_index_flag_unk_054_active(arg0, 0x00000020) != 0) && (arg2 < 0x15F91U)) {
+    if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00000020) != 0) && (arg2 < 0x15F91U)) {
         func_8004A630(&D_8018C830, temp_v1->pos, 0.4f);
     }
 }
@@ -4301,25 +4301,25 @@ void func_80052F20(s32 cameraId) {
 
 void func_8005309C(s32 cameraId) {
     s32 var_s4;
-    s32 temp_s1;
+    s32 objectIndex;
     Camera *camera;
 
     camera = &camera1[cameraId];
     for (var_s4 = 0; var_s4 < 0x13; var_s4++) {
-        temp_s1 = D_80183EA0[var_s4];
-        if (gObjectList[temp_s1].itemDisplayState >= 2) {
-            func_8008A364(temp_s1, cameraId, 0x2AABU, 0x00000258);
-            if (is_obj_index_flag_unk_054_active(temp_s1, 0x00040000) != 0) {
-                D_80183E80[0] = (s16) gObjectList[temp_s1].unk_0B2[0];
-                D_80183E80[1] = func_800418AC(gObjectList[temp_s1].pos[0], gObjectList[temp_s1].pos[2], camera->pos);
-                D_80183E80[2] = (u16) gObjectList[temp_s1].unk_0B2[2];
-                if (is_obj_index_flag_unk_054_active(temp_s1, 0x00000010) != 0) {
-                    func_800480B4(gObjectList[temp_s1].pos, (u16 *) D_80183E80, gObjectList[temp_s1].sizeScaling, (u8 *) gObjectList[temp_s1].activeTLUT, gObjectList[temp_s1].activeTexture, gObjectList[temp_s1].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+        objectIndex = D_80183EA0[var_s4];
+        if (gObjectList[objectIndex].itemDisplayState >= 2) {
+            func_8008A364(objectIndex, cameraId, 0x2AABU, 0x00000258);
+            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+                D_80183E80[0] = (s16) gObjectList[objectIndex].unk_0B2[0];
+                D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+                D_80183E80[2] = (u16) gObjectList[objectIndex].unk_0B2[2];
+                if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000010) != 0) {
+                    func_800480B4(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
                 }
-                temp_s1 = D_80183F28[var_s4];
-                D_80183E80[0] = (s16) gObjectList[temp_s1].unk_0B2[0];
-                D_80183E80[2] = (u16) gObjectList[temp_s1].unk_0B2[2];
-                func_800480B4(gObjectList[temp_s1].pos, (u16 *) D_80183E80, gObjectList[temp_s1].sizeScaling, (u8 *) gObjectList[temp_s1].activeTLUT, gObjectList[temp_s1].activeTexture, gObjectList[temp_s1].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+                objectIndex = D_80183F28[var_s4];
+                D_80183E80[0] = (s16) gObjectList[objectIndex].unk_0B2[0];
+                D_80183E80[2] = (u16) gObjectList[objectIndex].unk_0B2[2];
+                func_800480B4(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
         }
     }
@@ -4601,7 +4601,7 @@ extern u8* D_8018D4C0;
 
 void func_80053E6C(s32 arg0) {
     s32 var_s1;
-    s32 thing;
+    s32 objectIndex;
 
     gSPDisplayList(gDisplayListHead++, D_0D007E98);
     gDPLoadTLUT_pal256(gDisplayListHead++, D_800E52D0);
@@ -4610,16 +4610,16 @@ void func_80053E6C(s32 arg0) {
     D_80183E80[1] = 0x8000;
     func_800452A4(D_8018D4BC, 0x40, 0x20);
     for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
-        thing = D_8018C630[var_s1];
-        if ((thing != -1) && (gObjectList[thing].itemDisplayState >= 2)) {
-            func_80053D74(thing, arg0, 0);
+        objectIndex = D_8018C630[var_s1];
+        if ((objectIndex != -1) && (gObjectList[objectIndex].itemDisplayState >= 2)) {
+            func_80053D74(objectIndex, arg0, 0);
         }
     }
     func_800452A4(D_8018D4C0, 0x40, 0x20);
     for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
-        thing = D_8018C630[var_s1];
-        if ((thing != -1) && (gObjectList[thing].itemDisplayState >= 2)) {
-            func_80053D74(thing, arg0, 4);
+        objectIndex = D_8018C630[var_s1];
+        if ((objectIndex != -1) && (gObjectList[objectIndex].itemDisplayState >= 2)) {
+            func_80053D74(objectIndex, arg0, 4);
         }
     }
 }
@@ -5530,7 +5530,7 @@ void func_80056FCC(s32 bombIndex) {
 
 void func_80057114(s32 cameraId) {
     Camera *temp_s7;
-    s32 temp_s0;
+    s32 objectIndex;
     s32 temp_s4;
     s32 var_s2;
     s32 state;
@@ -5542,13 +5542,13 @@ void func_80057114(s32 cameraId) {
     temp_s7 = &camera1[cameraId];
     if (cameraId == 0) {
         for (var_s2 = 0; var_s2 < NUM_BOMB_KARTS_VERSUS; var_s2++) {
-            temp_s0 = D_80183DD8[var_s2];
-            if (is_obj_index_flag_unk_054_active(temp_s0, 0x00200000) != 0) {
+            objectIndex = D_80183DD8[var_s2];
+            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00200000) != 0) {
                 D_80163DE8[var_s2].unk_4A = 0;
             } else if (gGamestate != 5) {
                 D_80163DE8[var_s2].unk_4A = 1;
             }
-            func_800721E8(temp_s0, 0x00200000);
+            func_800721E8(objectIndex, 0x00200000);
         }
     }
 
@@ -5557,17 +5557,17 @@ void func_80057114(s32 cameraId) {
         // huh???
         state = var_s1_2->state;
         if (var_s1_2->state != BOMB_STATE_INACTIVE) {
-            temp_s0 = D_80183DD8[var_s2];
-            gObjectList[temp_s0].pos[0] = var_s1_2->bombPos[0];
-            gObjectList[temp_s0].pos[1] = var_s1_2->bombPos[1];
-            gObjectList[temp_s0].pos[2] = var_s1_2->bombPos[2];
-            temp_s4 = func_8008A364(temp_s0, cameraId, 0x31C4U, 0x000001F4);
-            if (is_obj_index_flag_unk_054_active(temp_s0, 0x00040000) != 0) {
-                set_obj_index_flag_unk_054(temp_s0, 0x00200000);
+            objectIndex = D_80183DD8[var_s2];
+            gObjectList[objectIndex].pos[0] = var_s1_2->bombPos[0];
+            gObjectList[objectIndex].pos[1] = var_s1_2->bombPos[1];
+            gObjectList[objectIndex].pos[2] = var_s1_2->bombPos[2];
+            temp_s4 = func_8008A364(objectIndex, cameraId, 0x31C4U, 0x000001F4);
+            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+                set_obj_index_flag_unk_054(objectIndex, 0x00200000);
                 D_80183E80[0] = 0;
                 D_80183E80[1] = func_800418AC(var_s1_2->bombPos[0], var_s1_2->bombPos[2], temp_s7->pos);
                 D_80183E80[2] = 0x8000;
-                func_800563DC(temp_s0, cameraId, 0x000000FF);
+                func_800563DC(objectIndex, cameraId, 0x000000FF);
                 func_80056E24(var_s2, temp_s7->pos);
                 if (((u32) temp_s4 < 0x4E21U) && (state != BOMB_STATE_EXPLODED)) {
                     func_80056FCC(var_s2);

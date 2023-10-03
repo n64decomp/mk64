@@ -800,9 +800,9 @@ void mtxf_set_matrix_scale_transl(Mat4 transformMatrix, Vec3f vec1, Vec3f vec2, 
  * @param arg1
  **/
 
-void mtxf_set_matrix_gObjectList(s32 transformIndex, Mat4 transformMatrix) {
+void mtxf_set_matrix_gObjectList(s32 objectIndex, Mat4 transformMatrix) {
     f32 sinX;
-    Objects *temp_s0 = &gObjectList[transformIndex];
+    Objects *temp_s0 = &gObjectList[objectIndex];
     f32 sinY;
     f32 cosY;
     f32 sinZ;
