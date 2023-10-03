@@ -130,7 +130,7 @@ void func_80014D30(s32, s32);
 f32  func_80014EE4(f32 arg0, s32 arg1);
 
 void func_8001530C(void);
-void func_80015314(s32, s32, s32);
+void func_80015314(s32, f32, s32);
 void func_80015390(Camera*, Player*, s32);
 
 void func_8001968C(void);

@@ -2,14 +2,8 @@
 
 .section .bss
 
-glabel D_801636A0 # sTrains->someFlags
-.skip 16
-
-glabel D_801636B0 # sTrains[1] The second train
-.skip 252
-
-glabel D_801637AC # sTrains[1]->someMultiplier
-.skip 12
+glabel sTrains
+.skip 536
 
 glabel isCrossingTriggeredByIndex # Crossing activated boolean
 .skip 4

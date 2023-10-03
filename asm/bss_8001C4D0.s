@@ -783,7 +783,7 @@ glabel D_8018C3F0
 glabel D_8018C404
 .skip 140
 
-glabel D_8018C490
+glabel D_8018C490 # end of 8018C3F0
 .skip 352
 # end D_8018C3F0
 
