@@ -838,11 +838,11 @@ UNUSED void func_80046AD4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture) {
 }
 
 UNUSED void func_80046B38(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture) {
-    func_800464D0(arg0, arg1, arg2, arg3, texture, vtx_rectangle, 16, 16, 16, 16);
+    func_800464D0(arg0, arg1, arg2, arg3, texture, common_vtx_rectangle, 16, 16, 16, 16);
 }
 
 UNUSED void func_80046B9C(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture) {
-    func_80046808(arg0, arg1, arg2, texture, vtx_rectangle, 16, 16, 16, 16);
+    func_80046808(arg0, arg1, arg2, texture, common_vtx_rectangle, 16, 16, 16, 16);
 }
 
 UNUSED void func_80046BEC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture, Vtx *arg5) {
@@ -3423,7 +3423,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
     } else {
         gDPLoadTLUT_pal256(gDisplayListHead++, gPortraitTLUTs[characterId]);
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
-        if (player->effect & 0x200) {
+        if (player->effects & 0x200) {
             func_8004B614((s32) D_801656C0, (s32) D_801656D0, (s32) D_801656E0, 0x00000080, 0x00000080, 0x00000080, (s32) gObjectList[objectIndex].unk_0A0);
         } else {
             set_transparency((s32) gObjectList[objectIndex].unk_0A0);
@@ -4259,7 +4259,7 @@ void func_80052E30(s32 arg0) {
     D_80183E80->unk0 = 0;
     D_80183E80->unk2 = 0;
     D_80183E80->unk4 = 0;
-    if (gNbPlayers == 1) {
+    if (gPlayerCount == 1) {
         var_s0 = 0;
         if (gPlayerCountSelection1 > 0) {
             do {
@@ -4383,7 +4383,7 @@ GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800534A4.s")
 
 void func_800534E8(s32 objectIndex) {
     // Why these don't just use `gSPSetLights1` calls...
-    switch (gObjectList[objectIndex].currentItem) { // hmm very strange 80165C18
+    switch (gObjectList[objectIndex].type) { // hmm very strange 80165C18
     case 0:
         gSPLight(gDisplayListHead++, &D_800E4638.l[0], LIGHT_1);
         gSPLight(gDisplayListHead++, &D_800E4638.a, LIGHT_2);
@@ -4631,7 +4631,7 @@ void func_800540CC(s32 objectIndex, s32 cameraId) {
     camera = &camera1[cameraId];
     if (objectIndex != -1) {
         if ((gObjectList[objectIndex].itemDisplayState >= 2) && (gObjectList[objectIndex].unk_0D5 == 1) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
-            func_8004B1C8((s32) gObjectList[objectIndex].currentItem, (s32) gObjectList[objectIndex].currentItem, (s32) gObjectList[objectIndex].currentItem, 0, 0, 0, (s32) gObjectList[objectIndex].unk_0A0);
+            func_8004B1C8((s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, 0, 0, 0, (s32) gObjectList[objectIndex].unk_0A0);
             D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
             func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling, D_0D005AE0);
         }
@@ -4686,7 +4686,7 @@ void func_80054324(s32 objectIndex, s32 cameraId) {
     camera = &camera1[cameraId];
     if (objectIndex != -1) {
         if ((gObjectList[objectIndex].itemDisplayState >= 2) && (gObjectList[objectIndex].unk_0D5 == 6) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
-            func_8004B1C8((s32) gObjectList[objectIndex].currentItem, (s32) gObjectList[objectIndex].currentItem, (s32) gObjectList[objectIndex].currentItem, gObjectList[objectIndex].unk_0A2, gObjectList[objectIndex].unk_0A2, gObjectList[objectIndex].unk_0A2, (s32) gObjectList[objectIndex].unk_0A0);
+            func_8004B1C8((s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, gObjectList[objectIndex].unk_0A2, gObjectList[objectIndex].unk_0A2, gObjectList[objectIndex].unk_0A2, (s32) gObjectList[objectIndex].unk_0A0);
             D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
             func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling, D_0D005AE0);
         }
@@ -4743,9 +4743,9 @@ void func_8005457C(s32 objectIndex, s32 cameraId) {
     if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
         temp_s0 = &gObjectList[objectIndex];
         if (temp_s0->unk_0D5 == 9) {
-            func_8004B72C(0x000000FF, (s32) temp_s0->currentItem, 0, (s32) temp_s0->unk_0A2, 0, 0, (s32) temp_s0->unk_0A0);
+            func_8004B72C(0x000000FF, (s32) temp_s0->type, 0, (s32) temp_s0->unk_0A2, 0, 0, (s32) temp_s0->unk_0A0);
         } else {
-            func_8004B138(0x000000FF, (s32) temp_s0->currentItem, 0, (s32) temp_s0->unk_0A0);
+            func_8004B138(0x000000FF, (s32) temp_s0->type, 0, (s32) temp_s0->unk_0A0);
         }
         D_80183E80[1] = func_800418AC(temp_s0->pos[0], temp_s0->pos[2], camera->pos);
         func_800431B0(temp_s0->pos, D_80183E80, temp_s0->sizeScaling, D_0D005AE0);
@@ -5383,16 +5383,16 @@ void func_8005669C(s32 objectIndex, UNUSED s32 arg1, s32 arg2) {
     D_80183E40[1] = gObjectList[objectIndex].pos[1] - 2.0;
     D_80183E40[0] = gObjectList[objectIndex].pos[0] + 2.0;
     D_80183E40[2] = gObjectList[objectIndex].pos[2] + 2.0;
-    func_800431B0(D_80183E40, D_80183E80, 0.15f, vtx_rectangle);
+    func_800431B0(D_80183E40, D_80183E80, 0.15f, common_vtx_rectangle);
     D_80183E40[0] = gObjectList[objectIndex].pos[0] + 2.0;
     D_80183E40[2] = gObjectList[objectIndex].pos[2] - 2.0;
-    func_800431B0(D_80183E40, D_80183E80, 0.15f, vtx_rectangle);
+    func_800431B0(D_80183E40, D_80183E80, 0.15f, common_vtx_rectangle);
     D_80183E40[0] = gObjectList[objectIndex].pos[0] - 2.0;
     D_80183E40[2] = gObjectList[objectIndex].pos[2] - 2.0;
-    func_800431B0(D_80183E40, D_80183E80, 0.15f, vtx_rectangle);
+    func_800431B0(D_80183E40, D_80183E80, 0.15f, common_vtx_rectangle);
     D_80183E40[0] = gObjectList[objectIndex].pos[0] - 2.0;
     D_80183E40[2] = gObjectList[objectIndex].pos[2] + 2.0;
-    func_800431B0(D_80183E40, D_80183E80, 0.15f, vtx_rectangle);
+    func_800431B0(D_80183E40, D_80183E80, 0.15f, common_vtx_rectangle);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
@@ -5504,13 +5504,13 @@ void func_80056E24(s32 bombIndex, Vec3f arg1) {
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     func_80043D50(D_0D02AA58, 0x00000010, 0x00000010);
     D_80183E80[1] = func_800418AC(sp2C.wheel1Pos[0], sp2C.wheel1Pos[2], arg1);
-    func_800431B0(sp2C.wheel1Pos, D_80183E80, 0.15f, vtx_rectangle);
+    func_800431B0(sp2C.wheel1Pos, D_80183E80, 0.15f, common_vtx_rectangle);
     D_80183E80[1] = func_800418AC(sp2C.wheel2Pos[0], sp2C.wheel2Pos[2], arg1);
-    func_800431B0(sp2C.wheel2Pos, D_80183E80, 0.15f, vtx_rectangle);
+    func_800431B0(sp2C.wheel2Pos, D_80183E80, 0.15f, common_vtx_rectangle);
     D_80183E80[1] = func_800418AC(sp2C.wheel3Pos[0], sp2C.wheel3Pos[2], arg1);
-    func_800431B0(sp2C.wheel3Pos, D_80183E80, 0.15f, vtx_rectangle);
+    func_800431B0(sp2C.wheel3Pos, D_80183E80, 0.15f, common_vtx_rectangle);
     D_80183E80[1] = func_800418AC(sp2C.wheel4Pos[0], sp2C.wheel4Pos[2], arg1);
-    func_800431B0(sp2C.wheel4Pos, D_80183E80, 0.15f, vtx_rectangle);
+    func_800431B0(sp2C.wheel4Pos, D_80183E80, 0.15f, common_vtx_rectangle);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 

@@ -88,7 +88,7 @@ glabel func_8007DB44
 /* 07E88C 8007DC8C 863900A6 */  lh    $t9, 0xa6($s1)
 /* 07E890 8007DC90 57200004 */  bnel  $t9, $zero, .L8007DCA4
 /* 07E894 8007DC94 86690000 */   lh    $t1, ($s3)
-/* 07E898 8007DC98 0C01C840 */  jal   redirect_delete_object
+/* 07E898 8007DC98 0C01C840 */  jal   delete_object_wrapper
 /* 07E89C 8007DC9C 02402025 */   move  $a0, $s2
 /* 07E8A0 8007DCA0 86690000 */  lh    $t1, ($s3)
 .L8007DCA4:
@@ -141,7 +141,7 @@ glabel func_8007DB44
 /* 07E94C 8007DD4C 862900A6 */  lh    $t1, 0xa6($s1)
 /* 07E950 8007DD50 55200004 */  bnel  $t1, $zero, .L8007DD64
 /* 07E954 8007DD54 866A0000 */   lh    $t2, ($s3)
-/* 07E958 8007DD58 0C01C840 */  jal   redirect_delete_object
+/* 07E958 8007DD58 0C01C840 */  jal   delete_object_wrapper
 /* 07E95C 8007DD5C 02402025 */   move  $a0, $s2
 /* 07E960 8007DD60 866A0000 */  lh    $t2, ($s3)
 .L8007DD64:

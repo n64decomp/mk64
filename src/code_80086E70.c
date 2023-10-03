@@ -826,7 +826,7 @@ void func_80089020(s32 playerId, f32 *arg1) {
     } else {
         var_f2 = -*arg1;
     }
-    if (player->effect & 0xC0) {
+    if (player->effects & 0xC0) {
         if (gCurrentCourseId == COURSE_SHERBET_LAND) {
             if (var_f2 <= 0.5) {
                 var_f0 = 0.025f;
@@ -893,7 +893,7 @@ f32 func_8008933C(Player *player, s32 objectIndex, f32 arg2, f32 arg3) {
     if (temp_v1->unk_18[6] == 0) {
         temp_v0 = &gObjectList[objectIndex];
         player->unk_046 |= 2;
-        player->effect |= 0x8000;
+        player->effects |= 0x8000;
         temp_v1->unk_18[6] = 4;
         something = (player->pos[0] - temp_v0->pos[0]) * temp_v0->unk_038[0];
         if (something >= 0.0f) {
@@ -920,7 +920,7 @@ void func_80089474(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 arg4) 
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
         func_80072180();
     }
-    if ((func_8008933C(player, objectIndex, arg2, arg3) >= 4.0) && ((player->bonusEffect & 0x1000) != 0x1000)) {
+    if ((func_8008933C(player, objectIndex, arg2, arg3) >= 4.0) && ((player->type & 0x1000) != 0x1000)) {
         func_800C9060(playerId, arg4);
     }
 }
@@ -930,7 +930,7 @@ void func_80089538(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 arg4) 
     Player *player;
 
     player = &gPlayerOne[playerId];
-    if ((func_8008933C(player, objectIndex, arg2, arg3) >= 4.0) && ((player->bonusEffect & 0x1000) != 0x1000)) {
+    if ((func_8008933C(player, objectIndex, arg2, arg3) >= 4.0) && ((player->type & 0x1000) != 0x1000)) {
         func_800C9060((u8) playerId, arg4);
     }
 }
@@ -962,7 +962,7 @@ void func_800896D4(s32 objectIndex, f32 arg1, f32 arg2) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effect & 0x80000200) && (func_80088D18(objectIndex, player) != 0)) {
+            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effects & 0x80000200) && (func_80088D18(objectIndex, player) != 0)) {
                 func_8008933C(player, objectIndex, arg1, arg2 * 1.1);
                 if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                     func_80072180();
@@ -980,15 +980,15 @@ void func_80089820(s32 objectIndex, f32 arg1, f32 arg2, u32 arg3) {
     set_object_flag_unk_054_false(objectIndex, 0x02000000);
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effect & 0x80000000)) {
-                if ((player->bonusEffect & 0x8000) && !(player->bonusEffect & GHOST_EFFECT) && (func_80088D18(objectIndex, player) != 0)) {
-                    if (player->effect & 0x200) {
+            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effects & 0x80000000)) {
+                if ((player->type & 0x8000) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (func_80088D18(objectIndex, player) != 0)) {
+                    if (player->effects & 0x200) {
                         set_object_flag_unk_054_true(objectIndex, 0x02000000);
                     } else {
                         if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                             func_80072180();
                         }
-                        if ((func_8008933C(player, objectIndex, arg1, arg2 * 1.1) >= 4.0) && ((player->bonusEffect & 0x1000) != 0x1000)) {
+                        if ((func_8008933C(player, objectIndex, arg1, arg2 * 1.1) >= 4.0) && ((player->type & 0x1000) != 0x1000)) {
                             func_800C9060(var_s1, arg3);
                         }
                     }
@@ -1005,7 +1005,7 @@ void func_80089A04(s32 objectIndex, f32 arg1, f32 arg2) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effect & 0x80000200) && (func_80088DA4(objectIndex, player) != 0)) {
+            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effects & 0x80000200) && (func_80088DA4(objectIndex, player) != 0)) {
                 func_8008933C(player, objectIndex, arg1, arg2 * 1.1);
                 if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                     func_80072180();
@@ -1026,9 +1026,9 @@ s32 func_80089B50(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++, test++) {
-            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effect & 0x81000000) && (player->bonusEffect & 0x8000) && !(player->bonusEffect & GHOST_EFFECT) && (func_80088D18(objectIndex, player) != 0)) {
-                if (!(player->effect & 0x200)) {
-                    player->hitEffects |= REVERSE_EFFECT;
+            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effects & 0x81000000) && (player->type & 0x8000) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (func_80088D18(objectIndex, player) != 0)) {
+                if (!(player->effects & 0x200)) {
+                    player->statusEffects |= REVERSE_EFFECT;
                     if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
                     }
@@ -1051,10 +1051,10 @@ s32 func_80089CBC(s32 objectIndex, f32 arg1) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effect & 0x81000000)) {
-                if ((player->bonusEffect & 0x8000) && !(player->bonusEffect & 0x100) && (func_80088E98(objectIndex, player, arg1) != 0)) {
-                    if (!(player->effect & 0x200)) {
-                        player->hitEffects |= REVERSE_EFFECT;
+            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effects & 0x81000000)) {
+                if ((player->type & 0x8000) && !(player->type & 0x100) && (func_80088E98(objectIndex, player, arg1) != 0)) {
+                    if (!(player->effects & 0x200)) {
+                        player->statusEffects |= REVERSE_EFFECT;
                         if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                             func_80072180();
                         }
@@ -1076,11 +1076,11 @@ s32 func_80089E18(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effect & 0x800000C0) && (func_80088D18(objectIndex, player) != 0)) {
-                if (player->effect & 0x200) {
+            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effects & 0x800000C0) && (func_80088D18(objectIndex, player) != 0)) {
+                if (player->effects & 0x200) {
                     var_s6 = 1;
                 } else {
-                    player->hitEffects |= 1;
+                    player->statusEffects |= 1;
                 }
             }
         }
@@ -1097,13 +1097,13 @@ s32 func_80089F24(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effect & 0x800002C0)) {
-                if ((player->bonusEffect & 0x8000) && !(player->bonusEffect & GHOST_EFFECT) && (func_80088D18(objectIndex, player) != 0)) {
+            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effects & 0x800002C0)) {
+                if ((player->type & 0x8000) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (func_80088D18(objectIndex, player) != 0)) {
                     var_s7 = 1;
                     if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
                     }
-                    player->hitEffects |= 0x200000;
+                    player->statusEffects |= 0x200000;
                 }
             }
         }
@@ -1331,7 +1331,7 @@ void func_8008A9B8(s32 objectIndex) {
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->unk_07C++;
     temp_v0->unk_09A = (s16) (0x2710 / (s16) (*temp_v0->unk_07C)[3]);
-    temp_v0->goldenMushroomTimer = 0;
+    temp_v0->timer = 0;
     func_8008A920(objectIndex);
 }
 
@@ -1344,7 +1344,7 @@ void func_8008AA3C(s32 objectIndex) {
     temp_v1 = &temp_v0->unk_080[0][1];
     (&gObjectList[objectIndex])->unk_07C = (s16 (*)[4]) temp_v1;
     (&gObjectList[objectIndex])->unk_084[9] = 0;
-    (&gObjectList[objectIndex])->goldenMushroomTimer = 0;
+    (&gObjectList[objectIndex])->timer = 0;
     (&gObjectList[objectIndex])->unk_084[8] = temp_v1[-1];
     (&gObjectList[objectIndex])->unk_028[0] = (f32) temp_v1[0];
     (&gObjectList[objectIndex])->unk_028[1] = (f32) temp_v1[1];
@@ -1362,8 +1362,8 @@ void func_8008AB10(s32 objectIndex) {
     temp_v0->unk_028[0] += temp_v0->unk_038[0];
     temp_v0->unk_028[1] += temp_v0->unk_038[1];
     temp_v0->unk_028[2] += temp_v0->unk_038[2];
-    temp_v0->goldenMushroomTimer += (u16)temp_v0->unk_09A;
-    if (temp_v0->goldenMushroomTimer >= 0x2710) {
+    temp_v0->timer += (u16)temp_v0->unk_09A;
+    if (temp_v0->timer >= 0x2710) {
         temp_v0->unk_084[9] = (u16)temp_v0->unk_084[9] + 1;
         if (((u16)temp_v0->unk_084[9] + 1) == (u16) temp_v0->unk_084[8]) {
             temp_v0->unk_0AE += 1;
@@ -1563,7 +1563,7 @@ void func_8008B3E4(s32 objectIndex) {
     if (is_obj_index_flag_unk_054_unactive(objectIndex, 8) != 0) {
         temp_v0 = &gObjectList[objectIndex];
         temp_v0->unk_084[9] = 0;
-        temp_v0->goldenMushroomTimer = 0;
+        temp_v0->timer = 0;
         temp_v0->unk_07C = &gObjectList[objectIndex].unk_080[0][1];
         // Huh????????? Negative array indexing is a near certain sign
         // that something has gone wrong on our end.
@@ -1573,7 +1573,7 @@ void func_8008B3E4(s32 objectIndex) {
 }
 
 void func_8008B44C(s32 objectIndex) {
-    gObjectList[objectIndex].goldenMushroomTimer = 0;
+    gObjectList[objectIndex].timer = 0;
     gObjectList[objectIndex].unk_07C++;
 }
 
@@ -1590,7 +1590,7 @@ void func_8008B478(s32 objectIndex, s32 arg1) {
         func_8008B1D4(objectIndex);
     }
 
-    sp34 = ((f32)gObjectList[objectIndex].goldenMushroomTimer / 10000.0);
+    sp34 = ((f32)gObjectList[objectIndex].timer / 10000.0);
     func_8008B17C(objectIndex, sp34);
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x800) != 0) {
         func_8008AFE0(objectIndex, sp34);
@@ -1600,7 +1600,7 @@ void func_8008B478(s32 objectIndex, s32 arg1) {
     temp = gObjectList[objectIndex].unk_07C[0][7];
 
     gObjectList[objectIndex].unk_09A = 10000.0 / (((temp - var_f6) * sp34) + var_f6);
-    gObjectList[objectIndex].goldenMushroomTimer += gObjectList[objectIndex].unk_09A;
+    gObjectList[objectIndex].timer += gObjectList[objectIndex].unk_09A;
 }
 
 void func_8008B620(s32 objectIndex) {
@@ -1609,7 +1609,7 @@ void func_8008B620(s32 objectIndex) {
 
     func_8008B478(objectIndex, 0);
     temp_v0 = &gObjectList[objectIndex];
-    if (temp_v0->goldenMushroomTimer >= 0x2710) {
+    if (temp_v0->timer >= 0x2710) {
         // Have to do it this way due to the u16 cast
         temp_v0->unk_084[9] = (u16) temp_v0->unk_084[9] + 1;
         if (((u16) temp_v0->unk_084[9] + 3) == (u16) temp_v0->unk_084[8]) {
@@ -1625,7 +1625,7 @@ void func_8008B6A4(s32 objectIndex) {
 
     func_8008B478(objectIndex, 1);
     temp_v0 = &gObjectList[objectIndex];
-    if (temp_v0->goldenMushroomTimer >= 0x2710) {
+    if (temp_v0->timer >= 0x2710) {
         // Have to do it this way due to the u16 cast
         temp_v0->unk_084[9] = (u16) temp_v0->unk_084[9] + 1;
         if ((u16)temp_v0->unk_084[9] == (u16)temp_v0->unk_084[8]) {

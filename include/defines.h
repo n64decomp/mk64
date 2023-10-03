@@ -73,6 +73,7 @@
  * Racing terms:
  * Staging means aligning a racecar to the starting line.
  * Start sequence means waiting for the light to turn green.
+ * for type in Player struct
  */
 
 #define PLAYER_INACTIVE             0         // 0x0000
@@ -304,7 +305,7 @@
 
 /**
  * @brief effect of player's
- * for hitEffect
+ * for statusEffect
  */
 #define BOOST_EFFECT 0x200 // being boosted by trigger a mushroom or star
 #define BOO_EFFECT 0x800 // being a boo
@@ -315,12 +316,6 @@
 #define REVERSE_EFFECT 0x400000 // being in the wrong direction
 #define LIGHTNING_EFFECT 0x40000000 // being hit by lightning
 
-/**
- * @brief effect of player's
- * for bonusEffect
- */
-#define GHOST_EFFECT 0x100 // being a ghost
-#define DOESNT_START_EFFECT 0x2000 // can't moving
 
 /**
  * @brief shell state

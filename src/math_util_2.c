@@ -335,14 +335,14 @@ void func_80041480(s16 *arg0, s16 arg1, s16 arg2, s16 *arg3) {
     }
 }
 
-Vec3f *vec_set_xyz(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
+Vec3f *vec3f_set_xyz(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
     arg0[0] = arg1;
     arg0[1] = arg2;
     arg0[2] = arg3;
     return (Vec3f *) &arg0;
 }
 
-Vec3f *vec_normalize(Vec3f dest) {
+Vec3f *vec3f_normalize(Vec3f dest) {
     f32 invsqrt = 1.0f / sqrtf(dest[0] * dest[0] + dest[1] * dest[1] + dest[2] * dest[2]);
 
     dest[0] = dest[0] * invsqrt;
@@ -351,7 +351,7 @@ Vec3f *vec_normalize(Vec3f dest) {
     return (Vec3f *) &dest;
 }
 
-Vec3f *vec_cross_product(Vec3f dest, Vec3f arg1, Vec3f arg2) {
+Vec3f *vec3f_cross_product(Vec3f dest, Vec3f arg1, Vec3f arg2) {
 
     dest[0] = (arg1[1] * arg2[2]) - (arg2[1] * arg1[2]);
     dest[1] = (arg1[2] * arg2[0]) - (arg2[2] * arg1[0]);
@@ -468,7 +468,7 @@ void func_800419F8(void) {
     sp18[0] = 0.0f;
     sp18[1] = 0.0f;
     sp18[2] = 120.0f;
-    vec_rotate_x_y(vec, sp18, D_80165834);
+    vec3f_rotate_x_y(vec, sp18, D_80165834);
     D_80165840[0] = vec[0];
     D_80165840[1] = vec[1];
     D_80165840[2] = vec[2];
@@ -857,12 +857,12 @@ void set_transform_matrix(Mat4 dest, Vec3f orientationVector, Vec3f positionVect
     Vec3f sp38;
     Vec3f sp2C;
 
-    vec_set_xyz(sp44, sins(rotationAngle), 0.0f, coss(rotationAngle));
-    vec_normalize(orientationVector);
-    vec_cross_product(sp38, orientationVector, sp44);
-    vec_normalize(sp38);
-    vec_cross_product(sp2C, sp38, orientationVector);
-    vec_normalize(sp2C);
+    vec3f_set_xyz(sp44, sins(rotationAngle), 0.0f, coss(rotationAngle));
+    vec3f_normalize(orientationVector);
+    vec3f_cross_product(sp38, orientationVector, sp44);
+    vec3f_normalize(sp38);
+    vec3f_cross_product(sp2C, sp38, orientationVector);
+    vec3f_normalize(sp2C);
     dest[0][0] = sp38[0] * scaleFactor;
     dest[0][1] = sp38[1] * scaleFactor;
     dest[0][2] = sp38[2] * scaleFactor;
@@ -882,7 +882,7 @@ void set_transform_matrix(Mat4 dest, Vec3f orientationVector, Vec3f positionVect
 }
 
 // aplly to position a rotation and put in dest
-UNUSED void vec_rotate(Vec3f dest, Vec3f pos, Vec3s rot) {
+UNUSED void vec3f_rotate(Vec3f dest, Vec3f pos, Vec3s rot) {
     f32 sp74;
     f32 sp70;
     f32 sp6C;
@@ -921,7 +921,7 @@ UNUSED void vec_rotate(Vec3f dest, Vec3f pos, Vec3s rot) {
 }
 
 // apply to position a rotation x y only and put in dest
-void vec_rotate_x_y(Vec3f dest, Vec3f pos, Vec3s rot) {
+void vec3f_rotate_x_y(Vec3f dest, Vec3f pos, Vec3s rot) {
     f32 sp2C;
     f32 sp28;
     f32 sp24;
@@ -957,7 +957,7 @@ void rsp_set_matrix_transformation(Vec3f translate, Vec3su orientation, f32 scal
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
-UNUSED void rsp_set_matrix_diff_transl_scale(Vec3f pos1, Vec3f pos2, f32 scale) {
+UNUSED void rsp_set_matrix_diff_translation_scale(Vec3f pos1, Vec3f pos2, f32 scale) {
     Mat4 matrix;
 
     mtxf_set_matrix_scale_transl(matrix, pos1, pos2, scale);

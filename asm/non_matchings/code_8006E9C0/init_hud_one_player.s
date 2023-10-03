@@ -81,7 +81,7 @@ glabel init_hud_one_player
 /* 072164 80071564 A5000046 */  sh    $zero, 0x46($t0)
 /* 072168 80071568 A5000048 */  sh    $zero, 0x48($t0)
 /* 07216C 8007156C A518006A */  sh    $t8, 0x6a($t0)
-/* 072170 80071570 0C01BB9F */  jal   init_item_window_object
+/* 072170 80071570 0C01BB9F */  jal   init_item_window
 /* 072174 80071574 8C843E88 */   lw    $a0, %lo(gItemWindowObjectByPlayerId)($a0)
 /* 072178 80071578 3C01420C */  li    $at, 0x420C0000 # 35.000000
 /* 07217C 8007157C 44810000 */  mtc1  $at, $f0

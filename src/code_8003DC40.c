@@ -68,12 +68,12 @@ void func_8003E048(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
         func_80031F48(player, 4.0f);
         player->unk_DAC = 0.5f;
-        if ((player->effect & 0x2000) != 0) {
+        if ((player->effects & 0x2000) != 0) {
             func_8008D554(player);
             player->currentSpeed /= 2;
             player->unk_08C /= 2;
         }
-    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effect & 0x10000) == 0x10000)) {
+    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
         arg3[2] = (-(player->slopeAccel / 182) * 0x3C);
     } else {
@@ -96,12 +96,12 @@ void func_8003E37C(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
             func_80031F48(player, 5.0f);
         }
         player->unk_DAC = 0.5f;
-        if ((player->effect & 0x2000) != 0) {
+        if ((player->effects & 0x2000) != 0) {
             func_8008D554(player);
             player->currentSpeed /= 2;
             player->unk_08C /= 2;
         }
-    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effect & 0x10000) == 0x10000)) {
+    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
         arg3[2] = (-(player->slopeAccel / 182) * 0x32);
     } else {
@@ -122,7 +122,7 @@ void func_8003E6EC(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
         func_80031F48(player, 4.0f);
         func_8003DC40(player);
-    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effect & 0x10000) == 0x10000)) {
+    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
         arg3[2] = (-(player->slopeAccel / 182) * 0x3C);
     } else {
@@ -144,7 +144,7 @@ void func_8003E9EC(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         func_80031F48(player, 4.0f);
         func_8003DC40(player);
     } else {
-        if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effect & 0x10000) == 0x10000)) {
+        if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
             if ((player->boundingBoxCorners[2].surfaceType == 1) || (player->boundingBoxCorners[3].surfaceType == 1) || (player->boundingBoxCorners[1].surfaceType == 1) || (player->boundingBoxCorners[0].surfaceType == 1)) {
                 arg3[0] = ((player->unk_206 / 182) * 5);
             } else {
@@ -155,7 +155,7 @@ void func_8003E9EC(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
             arg3[0] = 0.0f;
             arg3[2] = (-(player->slopeAccel / 182) * 0x32);
         }
-        if ((player->effect & 0x10000) != 0) {
+        if ((player->effects & 0x10000) != 0) {
             arg3[0] = ((player->unk_206 / 182) * 0x78);
             arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
         }
@@ -174,7 +174,7 @@ void func_8003EE2C(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
         func_80031F48(player, 4.0f);
         func_8003DC40(player);
-    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effect & 0x10000) == 0x10000)) {
+    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
         arg3[2] = (-(player->slopeAccel / 182) * 0x3C);
     } else {
@@ -199,7 +199,7 @@ void func_8003F138(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         func_80031F48(player, 4.0f);
         player->unk_DAC = 0.5f;
         arg3[0] = 0;
-    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effect & 0x10000) == 0x10000)) {
+    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
         arg3[0] = ((player->unk_206 / 182) * 0x78);
         arg3[2] = (-(player->slopeAccel / 182) * 0x78);
         arg3[0] = 0;
@@ -250,7 +250,7 @@ void func_8003F46C(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
             func_8003E048(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
             break;
         }
-        if (player->effect & 0x10000) {
+        if (player->effects & 0x10000) {
             player->unk_DAC = 0.5f;
         }
     }
@@ -278,7 +278,7 @@ void func_8003F734(Player *player, Vec3f arg1, Vec3f arg2, f32 *arg3, f32 *arg4,
         *arg5 += arg1[1] * player->unk_110.unk3C[0] * 0.1;
         *arg6 += arg1[2] * player->unk_110.unk3C[0] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1, 0);
-        if ((!(player->effect & 0x10000)) && ((player->effect & 8) == 0)) {
+        if ((!(player->effects & 0x10000)) && ((player->effects & 8) == 0)) {
             arg2[1] *= -1e-05;
         }
     } else {
@@ -291,11 +291,11 @@ void func_8003F734(Player *player, Vec3f arg1, Vec3f arg2, f32 *arg3, f32 *arg4,
         }
         *arg6 += arg1[2] * player->unk_110.unk3C[0] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1.2f, 0);
-        if ((!(player->effect & 0x10000)) && ((player->effect & 8) == 0)) {
+        if ((!(player->effects & 0x10000)) && ((player->effects & 8) == 0)) {
             arg2[1] *= -1e-05;
         }
     }
-    player->effect &= ~0x10;
+    player->effects &= ~0x10;
     temp_f12 = player->unk_110.unk3C[0] * arg1[0];
     temp_f14 = player->unk_110.unk3C[0] * arg1[2];
     if (((temp_f12 >= 0) && (temp_f14 >= 0)) || ((temp_f12 < 0) && (temp_f14 >= 0))) {
@@ -332,7 +332,7 @@ void func_8003FBAC(Player *player, Vec3f arg1, Vec3f arg2, f32 *arg3, f32 *arg4,
         *arg5 += arg1[1] * player->unk_110.unk3C[1] * 0.1;
         *arg6 += arg1[2] * player->unk_110.unk3C[1] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1, 0);
-        if ((!(player->effect & 0x10000)) && ((player->effect & 8) == 0)) {
+        if ((!(player->effects & 0x10000)) && ((player->effects & 8) == 0)) {
             arg2[1] *= -1e-05;
         }
     } else {
@@ -345,11 +345,11 @@ void func_8003FBAC(Player *player, Vec3f arg1, Vec3f arg2, f32 *arg3, f32 *arg4,
         }
         *arg6 += arg1[2] * player->unk_110.unk3C[1] * 1;
         func_8002A5F4(arg1, *arg3, arg2, 1.2f, 0);
-        if ((!(player->effect & 0x10000)) && ((player->effect & 8) == 0)) {
+        if ((!(player->effects & 0x10000)) && ((player->effects & 8) == 0)) {
             arg2[1] *= -1e-05;
         }
     }
-    player->effect &= ~0x10;
+    player->effects &= ~0x10;
     temp_f12 = player->unk_110.unk3C[1] * arg1[0];
     temp_f14 = player->unk_110.unk3C[1] * arg1[2];
     if (((temp_f12 >= 0) && (temp_f14 >= 0)) || ((temp_f12 >= 0) && (temp_f14 < 0))) {

@@ -603,10 +603,10 @@ glabel L80071024
 /* 071C24 80071024 3C0C800E */  lui   $t4, %hi(gGamestate) # $t4, 0x800e
 /* 071C28 80071028 8D8CC50C */  lw    $t4, %lo(gGamestate)($t4)
 /* 071C2C 8007102C 24010009 */  li    $at, 9
-/* 071C30 80071030 3C028019 */  lui   $v0, %hi(gNbPlayers) # $v0, 0x8019
+/* 071C30 80071030 3C028019 */  lui   $v0, %hi(gPlayerCount) # $v0, 0x8019
 /* 071C34 80071034 118100F2 */  beq   $t4, $at, .L80071400
 /* 071C38 80071038 3C118018 */   lui   $s1, %hi(D_80183EA0) # $s1, 0x8018
-/* 071C3C 8007103C 8042EDF3 */  lb    $v0, %lo(gNbPlayers)($v0)
+/* 071C3C 8007103C 8042EDF3 */  lb    $v0, %lo(gPlayerCount)($v0)
 /* 071C40 80071040 24030001 */  li    $v1, 1
 /* 071C44 80071044 26313EA0 */  addiu $s1, %lo(D_80183EA0) # addiu $s1, $s1, 0x3ea0
 /* 071C48 80071048 10620006 */  beq   $v1, $v0, .L80071064

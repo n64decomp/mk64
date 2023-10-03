@@ -23,8 +23,8 @@ glabel func_8000F124
 /* 00FD74 8000F174 26313348 */  addiu $s1, %lo(D_80163348) # addiu $s1, $s1, 0x3348
 /* 00FD78 8000F178 15E0004A */  bnez  $t7, .L8000F2A4
 /* 00FD7C 8000F17C 00008025 */   move  $s0, $zero
-/* 00FD80 8000F180 3C128019 */  lui   $s2, %hi(gNbPlayers) # $s2, 0x8019
-/* 00FD84 8000F184 2652EDF3 */  addiu $s2, %lo(gNbPlayers) # addiu $s2, $s2, -0x120d
+/* 00FD80 8000F180 3C128019 */  lui   $s2, %hi(gPlayerCount) # $s2, 0x8019
+/* 00FD84 8000F184 2652EDF3 */  addiu $s2, %lo(gPlayerCount) # addiu $s2, $s2, -0x120d
 .L8000F188:
 /* 00FD88 8000F188 0C0ADF8D */  jal   random_int
 /* 00FD8C 8000F18C 24040008 */   li    $a0, 8

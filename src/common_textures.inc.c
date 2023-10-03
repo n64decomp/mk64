@@ -797,7 +797,7 @@ Vtx D_0D0054B0[] = {
     {{{    -6,      95,       0}, 0, {0, 12224}, {0xff, 0x80, 0x00, 0xff}}},
 };
 
-Vtx vtx_rectangle[] = {
+Vtx common_vtx_rectangle[] = {
     {{{    -8,      -8,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,      -8,       0}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,       7,       0}, 0, {960, 960}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1212,7 +1212,7 @@ Gfx D_0D006968[] = {
 };
 
 Gfx D_0D006980[] = {
-    gsSPVertex(vtx_rectangle, 4, 0),
+    gsSPVertex(common_vtx_rectangle, 4, 0),
     gsSPDisplayList(rectangle_display),
     gsSPEndDisplayList(),
 };
@@ -2142,7 +2142,7 @@ Vtx D_0D008C38[] = {
     {{{    -2,       2,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Gfx squarePlainRender[] = {
+Gfx common_square_plain_render[] = {
     gsSP1Triangle(0, 1, 2, 0),
     gsSP1Triangle(0, 2, 3, 0),
     gsSPEndDisplayList(),
@@ -2160,7 +2160,7 @@ Gfx D_0D008C90[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx gSettingRenderCharacter[] = {
+Gfx common_setting_render_character[] = {
     gsDPPipeSync(),
     gsDPSetAlphaCompare(G_AC_NONE),
     gsSPClearGeometryMode(G_LIGHTING),
@@ -2195,7 +2195,7 @@ Gfx D_0D008D58[] = {
 };
 
 Gfx D_0D008DA0[] = {
-    gsSPDisplayList(squarePlainRender),
+    gsSPDisplayList(common_square_plain_render),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
     gsSPEndDisplayList(),
 };

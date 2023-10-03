@@ -99,7 +99,7 @@ void func_802B0570(struct BananaActor *banana) {
 
     func_802B0464(banana->youngerIndex);
     func_802B04E8(banana, banana->elderIndex);
-    if ((gPlayers[banana->playerId].bonusEffect & 0x4000) != 0) {
+    if ((gPlayers[banana->playerId].type & 0x4000) != 0) {
         func_800C9060(banana->playerId, 0x19019053);
     }
     banana->flags = -0x8000;
@@ -292,8 +292,8 @@ void update_actor_banana_bunch(struct BananaBunchParent *banana_bunch) {
         }
         if (someCount == 0) {
             destroy_actor((struct Actor *) banana_bunch);
-            owner->hitEffects &= ~0x40000;
-        } else if ((owner->bonusEffect & 0x4000) != 0) {
+            owner->statusEffects &= ~0x40000;
+        } else if ((owner->type & 0x4000) != 0) {
             controller = &gControllers[banana_bunch->playerId];
             if ((controller->buttonPressed & Z_TRIG) != 0) {
                 controller->buttonPressed &= ~Z_TRIG;
@@ -506,7 +506,7 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
 }
 
 // This function could reasonably be called "spawn_banana_bunch" or similar
-s32 use_banana_bunch_effect(Player *player) {
+s32 use_banana_bunch_item(Player *player) {
     Vec3f startingVelocity = {0.0f, 0.0f, 0.0f};
     Vec3s startingRot      = {0, 0, 0};
     Vec3f startingPos      = {0.0f, 0.0f, 0.0f};
@@ -521,12 +521,12 @@ s32 use_banana_bunch_effect(Player *player) {
     bananaBunch = (struct BananaBunchParent *) &gActorList[actorIndex];
     bananaBunch->state = 0;
     bananaBunch->playerId = player - gPlayerOne;
-    player->hitEffects |= HOLD_BANANA_EFFECT;
+    player->statusEffects |= HOLD_BANANA_EFFECT;
     return actorIndex;
 }
 
 // This function could reasonably be called "spawn_triple_shell" or similar
-s32 use_triple_shell_effect(Player *player, s16 tripleShellType) {
+s32 use_triple_shell_item(Player *player, s16 tripleShellType) {
     Vec3f startingVelocity = {0.0f, 0.0f, 0.0f};
     Vec3s startingRot      = {0, 0, 0};
     Vec3f startingPos      = {0.0f, 0.0f, 0.0f};
@@ -595,7 +595,7 @@ s32 init_triple_shell(TripleShellParent *parent, Player *player, s16 shellType, 
 }
 
 // This function could reasonably be called "spawn_green_shell" or similar
-s32 use_green_shell_effect(Player *player) {
+s32 use_green_shell_item(Player *player) {
     Vec3f startingVelocity = {0.0f, 0.0f, 0.0f};
     Vec3s startingRot      = {0, 0, 0};
     Vec3f startingPos;
@@ -635,7 +635,7 @@ s32 use_green_shell_effect(Player *player) {
 }
 
 // This function could reasonably be called "spawn_red_shell" or similar
-s32 use_red_shell_effect(Player *player) {
+s32 use_red_shell_item(Player *player) {
     Vec3f startingVelocity = {0.0f, 0.0f, 0.0f};
     Vec3s startingRot      = {0, 0, 0};
     Vec3f startingPos;
@@ -677,8 +677,8 @@ s32 use_red_shell_effect(Player *player) {
 // This function could reasonably be called "spawn_blue_shell"
 // Interestingly blue shells start their life as a red shell,
 // and then just change the type from red to blue shell
-void use_blue_shell_effect(Player *player) {
-    gActorList[use_red_shell_effect(player)].type = ACTOR_BLUE_SPINY_SHELL;
+void use_blue_shell_item(Player *player) {
+    gActorList[use_red_shell_item(player)].type = ACTOR_BLUE_SPINY_SHELL;
 }
 
 void update_actor_banana(struct BananaActor *banana) {
@@ -722,7 +722,7 @@ void update_actor_banana(struct BananaActor *banana) {
         }
         func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
         func_802B4E30((struct Actor *) banana);
-        if ((player->bonusEffect & 0x4000) != 0) {
+        if ((player->type & 0x4000) != 0) {
             if (gDemoMode) {
                 controller = gControllerOne;
             } else {
@@ -732,7 +732,7 @@ void update_actor_banana(struct BananaActor *banana) {
                 controller->buttonDepressed &= ~Z_TRIG;
                 banana->state = 1;
                 banana->unk_04 = 0x00B4;
-                player->hitEffects &= ~0x40000;
+                player->statusEffects &= ~0x40000;
                 func_800C9060(player - gPlayerOne, 0x19008012U);
                 pad3 = controller->rawStickY;
                 if ((pad3 > 30.0f) && (controller->rawStickX < 10) && (controller->rawStickX >= -9)) {
@@ -931,14 +931,14 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
             tempBanana->youngerIndex = actorIndex;
             break;
         }
-        if ((player->bonusEffect & 0x4000) != 0) {
+        if ((player->type & 0x4000) != 0) {
             func_800C9060(player - gPlayerOne, 0x19008012);
         }
     }
 }
 
 // This function could reasonably be called "spawn_fake_itembox" or similar
-s32 use_fake_itembox_effect(Player *player) {
+s32 use_fake_itembox_item(Player *player) {
     struct FakeItemBox *itemBox;
     UNUSED s32 pad[5];
     s16 actorIndex;
@@ -976,12 +976,12 @@ s32 use_fake_itembox_effect(Player *player) {
     itemBox = (struct FakeItemBox*)&gActorList[actorIndex];
     itemBox->playerId = (player - gPlayerOne);
     itemBox->state = HELD_FAKE_ITEM_BOX;
-    player->hitEffects |= HOLD_BANANA_EFFECT;
+    player->statusEffects |= HOLD_BANANA_EFFECT;
     return actorIndex;
 }
 
 // This function could reasonably be called "spawn_banana" or similar
-s32 use_banana_effect(Player *player) {
+s32 use_banana_item(Player *player) {
     UNUSED s32 pad[6];
     u16 playerId;
     s16 actorIndex;
@@ -1024,7 +1024,7 @@ s32 use_banana_effect(Player *player) {
     banana->playerId = playerId;
     banana->state = HELD_BANANA;
     banana->unk_04 = 0x0014;
-    player->hitEffects |= HOLD_BANANA_EFFECT;
+    player->statusEffects |= HOLD_BANANA_EFFECT;
     return actorIndex;
 }
 
@@ -1033,12 +1033,12 @@ s32 use_banana_effect(Player *player) {
  * 
  * @param Activating player (not to be struck) 
  */
-void use_thunder_effect(Player *player) {
+void use_thunder_item(Player *player) {
     s32 index;
     Player *otherPlayer;
 
     func_8009E5BC();
-    if ((player->bonusEffect & 0x4000) != 0) {
+    if ((player->type & 0x4000) != 0) {
         // Play sound.
         func_800CAB4C(player - gPlayerOne);
     }
@@ -1046,7 +1046,7 @@ void use_thunder_effect(Player *player) {
     for (index = 0; index < 8; index++) {
         otherPlayer = &gPlayers[index];
         if (player != otherPlayer) {
-            otherPlayer->hitEffects |= HIT_ROTATING_EFFECT;
+            otherPlayer->statusEffects |= HIT_ROTATING_EFFECT;
         }
     }
 }
@@ -1057,49 +1057,49 @@ void func_802B2FA0(Player *player) {
 
     switch (player->currentItemCopy) {
     case ITEM_GREEN_SHELL:
-        use_green_shell_effect(player);
+        use_green_shell_item(player);
         break;
     case ITEM_RED_SHELL:
-        use_red_shell_effect(player);
+        use_red_shell_item(player);
         break;
     case ITEM_BLUE_SPINY_SHELL:
-        use_blue_shell_effect(player);
+        use_blue_shell_item(player);
         break;
     case ITEM_BANANA:
-        use_banana_effect(player);
+        use_banana_item(player);
         break;
     case ITEM_BANANA_BUNCH:
-        use_banana_bunch_effect(player);
+        use_banana_bunch_item(player);
         break;
     case ITEM_MUSHROOM:
-        player->hitEffects |= BOOST_EFFECT;
+        player->statusEffects |= BOOST_EFFECT;
         break;
     case ITEM_DOUBLE_MUSHROOM:
-        player->hitEffects |= BOOST_EFFECT;
+        player->statusEffects |= BOOST_EFFECT;
         break;
     case ITEM_TRIPLE_MUSHROOM:
-        player->hitEffects |= BOOST_EFFECT;
+        player->statusEffects |= BOOST_EFFECT;
         break;
     case ITEM_SUPER_MUSHROOM:
-        player->hitEffects |= BOOST_EFFECT;
+        player->statusEffects |= BOOST_EFFECT;
         break;
     case ITEM_BOO:
-        player->hitEffects |= BOO_EFFECT;
+        player->statusEffects |= BOO_EFFECT;
         break;
     case ITEM_STAR:
-        player->hitEffects |= STAR_EFFECT;
+        player->statusEffects |= STAR_EFFECT;
         break;
     case ITEM_THUNDERBOLT:
-        use_thunder_effect(player);
+        use_thunder_item(player);
         break;
     case ITEM_FAKE_ITEM_BOX:
-        use_fake_itembox_effect(player);
+        use_fake_itembox_item(player);
         break;
     case ITEM_TRIPLE_GREEN_SHELL:
-        use_triple_shell_effect(player, ACTOR_TRIPLE_GREEN_SHELL);
+        use_triple_shell_item(player, ACTOR_TRIPLE_GREEN_SHELL);
         break;
     case ITEM_TRIPLE_RED_SHELL:
-        use_triple_shell_effect(player, ACTOR_TRIPLE_RED_SHELL);
+        use_triple_shell_item(player, ACTOR_TRIPLE_RED_SHELL);
         break;
     }
     consume_item(playerId);
@@ -1115,7 +1115,7 @@ void func_802B30EC(void) {
     for (player = &gPlayers[0], loopController = &gControllers[0], target = &gControllers[4]; loopController != target; player++, loopController++) {
         controller = loopController;
         if (func_800910E4(player) == 0) {
-            if((player->bonusEffect & GHOST_EFFECT) != 0){
+            if((player->type & PLAYER_INVISIBLE_OR_BOMB) != 0){
                 if ((player - gPlayerTwo) == 0) {
                     controller = gControllerSix;
                 } else if((player - gPlayerThree) == 0) {
@@ -1127,7 +1127,7 @@ void func_802B30EC(void) {
                 }
             }
 
-            if (((player->bonusEffect & 0x4000) != 0) && (player->currentItemCopy != ITEM_NONE) && ((player->bonusEffect & DOESNT_START_EFFECT) == 0)) {
+            if (((player->type & 0x4000) != 0) && (player->currentItemCopy != ITEM_NONE) && ((player->type & PLAYER_STAGING) == 0)) {
                 if ((controller->buttonPressed & Z_TRIG) != 0) {
                     controller->buttonPressed &= ~Z_TRIG;
                     func_802B2FA0(player);
@@ -1181,7 +1181,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
         } else {
             shell->pos[1] = pad2;
         }
-        if ((player->bonusEffect & 0x4000) != 0) {
+        if ((player->type & 0x4000) != 0) {
             controller = &gControllers[shell->playerId];
             if ((controller->buttonDepressed & 0x2000) != 0) {
                 controller->buttonDepressed &= ~0x2000;
@@ -1454,7 +1454,7 @@ void func_802B3E7C(struct ShellActor *shell, Player *player) {
     shell->velocity[1] = -2.0f;
     shell->velocity[2] = z_velocity;
 
-    if (player->effect & 0x80000000) {
+    if (player->effects & 0x80000000) {
         func_8029FDC8((struct Actor *) shell);
     } else {
         func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], newPosition[0], newPosition[1], newPosition[2]);
@@ -1476,7 +1476,7 @@ s16 func_802B3FD0(Player *owner, struct ShellActor *shell) {
 
     for (playerIndex = 0; playerIndex < 4; playerIndex++) {
         player = &gPlayers[playerIndex];
-        if ((player->bonusEffect & 0x8000) == 0) {continue;}
+        if ((player->type & 0x8000) == 0) {continue;}
         if (player == owner) {continue; }
         if (gPlayerBalloonCount[playerIndex] < 0) { continue; }
             // func_802B51E8 is not quite a 3D distance function, it doubles (rather than squares) the Z difference of the positions
@@ -1562,7 +1562,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             shell->pos[1] = pad7;
         }
 
-        if ((player->bonusEffect & 0x4000) != 0) {
+        if ((player->type & 0x4000) != 0) {
             if (gDemoMode) {
                 controller = gControllerOne;
             } else {

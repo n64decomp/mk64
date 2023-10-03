@@ -57,7 +57,7 @@ void func_80024374(Player*, s8, s8);
 void player_render(Player*, s8, s8, s8);
 void ghost_render(Player*, s8, s8, s8);
 void func_80025DE8(Player*, s8, s8, s8);
-void player_mirror_render(Player*, s8, s8, s8);
+void player_ice_reflection_render(Player*, s8, s8, s8);
 void func_800267AC(Player*, s8, s8);
 void func_80026A48(Player*, s8);
 void func_80026B4C(Player*, s8, s8, s8);
@@ -88,7 +88,7 @@ extern s32 D_80164B80[];
 extern u8 *D_8018D474;
 extern s32 D_8018D930[];
 
-extern Gfx squarePlainRender[];
+extern Gfx common_square_plain_render[];
 extern Gfx D_0D008D58[];
 
 extern s32 D_800DDB58;

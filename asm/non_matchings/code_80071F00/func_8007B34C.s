@@ -507,7 +507,7 @@ glabel L8007B998
 /* 07C648 8007BA48 8FA8002C */   lw    $t0, 0x2c($sp)
 .L8007BA4C:
 /* 07C64C 8007BA4C 02002025 */  move  $a0, $s0
-/* 07C650 8007BA50 0C01CA74 */  jal   func_800729D0
+/* 07C650 8007BA50 0C01CA74 */  jal   set_type_object
 /* 07C654 8007BA54 870500A2 */   lh    $a1, 0xa2($t8)
 /* 07C658 8007BA58 8FA8002C */  lw    $t0, 0x2c($sp)
 /* 07C65C 8007BA5C 24190003 */  li    $t9, 3
@@ -554,7 +554,7 @@ glabel L8007B998
 /* 07C6F0 8007BAF0 244BFFFF */  addiu $t3, $v0, -1
 /* 07C6F4 8007BAF4 A5EB00A2 */  sh    $t3, 0xa2($t7)
 /* 07C6F8 8007BAF8 85E500A2 */  lh    $a1, 0xa2($t7)
-/* 07C6FC 8007BAFC 0C01CA74 */  jal   func_800729D0
+/* 07C6FC 8007BAFC 0C01CA74 */  jal   set_type_object
 /* 07C700 8007BB00 02002025 */   move  $a0, $s0
 /* 07C704 8007BB04 8FB8002C */  lw    $t8, 0x2c($sp)
 /* 07C708 8007BB08 240C0003 */  li    $t4, 3

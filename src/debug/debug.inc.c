@@ -27,8 +27,8 @@ variableWatchAttributes gMainVariableWatchList[] = {
 	},
 	{
 		"Player Type: ",
-		&gPlayers[0].bonusEffect,
-		sizeof(gPlayerOne->bonusEffect), 
+		&gPlayers[0].type,
+		sizeof(gPlayerOne->type), 
 		DISPLAY_HEXIDECIMAL_NUMBER,
 		0, 0
 	},

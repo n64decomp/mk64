@@ -103,15 +103,15 @@ void update_player_battle_status(void) {
 
     for (playerIndex = 0; playerIndex < 4; playerIndex++) {
         player = &gPlayers[playerIndex];
-        if (!(player->bonusEffect & PLAYER_EXISTS)) {
+        if (!(player->type & PLAYER_EXISTS)) {
             continue;
         }
-        if (player->bonusEffect & PLAYER_CINEMATIC_MODE) {
+        if (player->type & PLAYER_CINEMATIC_MODE) {
             continue;
         }
         // If player has no balloons left
         if (gPlayerBalloonCount[playerIndex] < 0) {
-            player->bonusEffect |= PLAYER_CINEMATIC_MODE;
+            player->type |= PLAYER_CINEMATIC_MODE;
             playersDead[deadCounter] = (s16) (player - gPlayerOne);
             deadCounter++;
             func_800CA118((u8) playerIndex); // play sad character sound?
@@ -136,7 +136,7 @@ void func_8028E298(void) {
 
     for (i = 0; i < 8; i++) {
 
-        if ((gPlayers[i].bonusEffect & PLAYER_CINEMATIC_MODE)) {
+        if ((gPlayers[i].type & PLAYER_CINEMATIC_MODE)) {
             continue;
         }
             temp_a2 = gPathIndexByPlayerId[i];
@@ -496,13 +496,13 @@ void start_race(void) {
 
     for (i = 0; i < 8; i++) {
 
-        if ((gPlayers[i].bonusEffect & PLAYER_EXISTS) == 0) {
+        if ((gPlayers[i].type & PLAYER_EXISTS) == 0) {
             continue;
         }
 
         // Sets player to human.
-        if (gPlayers[i].bonusEffect & PLAYER_START_SEQUENCE) {
-            gPlayers[i].bonusEffect ^= PLAYER_START_SEQUENCE;
+        if (gPlayers[i].type & PLAYER_START_SEQUENCE) {
+            gPlayers[i].type ^= PLAYER_START_SEQUENCE;
         }
     }
 
@@ -517,7 +517,7 @@ f32 func_8028EE8C(s32 arg0) {
 }
 
 void func_8028EEF0(s32 i) {
-    gPlayers[i].bonusEffect |= PLAYER_CINEMATIC_MODE;
+    gPlayers[i].type |= PLAYER_CINEMATIC_MODE;
 }
 
 void func_8028EF28(void) {
@@ -528,7 +528,7 @@ void func_8028EF28(void) {
     {
         Player *player = &gPlayers[i];
 
-        if ((gPlayers[i].bonusEffect & PLAYER_EXISTS) == 0) {
+        if ((gPlayers[i].type & PLAYER_EXISTS) == 0) {
             continue;
         }
 
@@ -537,12 +537,12 @@ void func_8028EF28(void) {
         } else if (gLapCountByPlayerId[i] > gPlayers[i].lapCount) {
             gPlayers[i].lapCount++;
 
-            if ((gPlayers[i].bonusEffect & PLAYER_HUMAN) != 0) {
+            if ((gPlayers[i].type & PLAYER_HUMAN) != 0) {
                 if (gPlayers[i].lapCount == 3) {
                     func_8028EEF0(i);
 
                     currentPosition = gPlayers[i].currentRank;
-                    gPlayers[i].bonusEffect |= PLAYER_CPU;
+                    gPlayers[i].type |= PLAYER_CPU;
 
                     if (currentPosition < 4) {
                         D_80150120 = 1;
@@ -557,7 +557,7 @@ void func_8028EF28(void) {
                     if (gModeSelection == GRAND_PRIX && gPlayerCountSelection1 == 2 && D_802BA048 == 0) {
                         D_802BA048 = 1;
                     }
-                    if ((gPlayers[i].bonusEffect & PLAYER_INVISIBLE_OR_BOMB) == 0) {
+                    if ((gPlayers[i].type & PLAYER_INVISIBLE_OR_BOMB) == 0) {
                         D_800DC510 = 4;
                     }
                     if (gModeSelection == TIME_TRIALS) {
@@ -580,8 +580,8 @@ void func_8028EF28(void) {
                                 }
                                 D_800DC510 = 5;
                                 i = gPlayerPositionLUT[1];
-                                gPlayers[i].hitEffects |= 0x200000;
-                                gPlayers[i].bonusEffect |= PLAYER_CPU;
+                                gPlayers[i].statusEffects |= 0x200000;
+                                gPlayers[i].type |= PLAYER_CPU;
                                 func_800CA118((u8)i);
                                 break;
                             case 3:
@@ -598,8 +598,8 @@ void func_8028EF28(void) {
                                     if (*(gNmiUnknown2 + i * 3 + 2) > 99) {
                                         *(gNmiUnknown2 + i * 3 + 2) = 99;
                                     }
-                                    gPlayers[i].hitEffects |= 0x200000;
-                                    gPlayers[i].bonusEffect |= PLAYER_CPU;
+                                    gPlayers[i].statusEffects |= 0x200000;
+                                    gPlayers[i].type |= PLAYER_CPU;
                                     func_800CA118((u8)i);
                                 }
                                 break;
@@ -613,8 +613,8 @@ void func_8028EF28(void) {
                                 if (currentPosition == 2) {
                                     D_800DC510 = 5;
                                     i = gPlayerPositionLUT[3];
-                                    gPlayers[i].hitEffects |= 0x200000;
-                                    gPlayers[i].bonusEffect |= PLAYER_CPU;
+                                    gPlayers[i].statusEffects |= 0x200000;
+                                    gPlayers[i].type |= PLAYER_CPU;
                                     func_800CA118((u8)i);
                                 }
                                 break;
@@ -623,7 +623,7 @@ void func_8028EF28(void) {
                     }
 
                 } else if (gPlayers[i].lapCount == 2) {
-                    if ((gPlayers[i].bonusEffect & 0x100) != 0) {
+                    if ((gPlayers[i].type & 0x100) != 0) {
                         return;
                     }
                     if ((D_802BA032 & 0x4000) == 0) {
@@ -655,9 +655,9 @@ void update_race_position_data(void) {
     s16 position;
 
     for (i = 0; i < 8; i++) {
-        if (((gPlayers[i].bonusEffect & PLAYER_EXISTS) != 0) &&
-            ((gPlayers[i].bonusEffect & PLAYER_CINEMATIC_MODE) == 0) &&
-            ((gPlayers[i].bonusEffect & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
+        if (((gPlayers[i].type & PLAYER_EXISTS) != 0) &&
+            ((gPlayers[i].type & PLAYER_CINEMATIC_MODE) == 0) &&
+            ((gPlayers[i].type & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
             position = gGPCurrentRaceRankByPlayerId[i];
             gPlayers[i].currentRank = position;
             gPlayerPositionLUT[position] = i;
@@ -810,8 +810,8 @@ void func_8028F970(void) {
         Player *player = &gPlayers[i];
         struct Controller *controller = &gControllers[i];
 
-        if (!(player->bonusEffect & PLAYER_HUMAN)) { continue; }
-        if (player->bonusEffect & PLAYER_CPU) { continue; }
+        if (!(player->type & PLAYER_HUMAN)) { continue; }
+        if (player->type & PLAYER_CPU) { continue; }
 
         if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
             if ((controller->buttonPressed & L_TRIG) && !(controller->button & R_TRIG)) {
@@ -834,13 +834,13 @@ void func_8028F970(void) {
             func_800C9F90(1);
             D_80162DF0 = 1;
             if (gModeSelection == TIME_TRIALS) {
-                if (gPlayerOne->bonusEffect & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
+                if (gPlayerOne->type & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
                     func_80005AE8(gPlayerOne);
                 }
-                if (gPlayerTwo->bonusEffect & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
+                if (gPlayerTwo->type & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
                     func_80005AE8(gPlayerTwo);
                 }
-                if (gPlayerThree->bonusEffect & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
+                if (gPlayerThree->type & (PLAYER_EXISTS | PLAYER_INVISIBLE_OR_BOMB)) {
                     func_80005AE8(gPlayerThree);
                 }
             }
@@ -939,10 +939,10 @@ void func_8028FCBC(void) {
                 func_8005C64C(&D_8018D2AC);
             }
             for (i = 0; i < 8; i++) {
-                if ((ply->bonusEffect & PLAYER_EXISTS) == 0) {
+                if ((ply->type & PLAYER_EXISTS) == 0) {
                     continue;
                 }
-                ply->bonusEffect |= PLAYER_START_SEQUENCE;
+                ply->type |= PLAYER_START_SEQUENCE;
                 ply++;
             }
             D_800DC5B8 = 1;
@@ -1013,7 +1013,7 @@ void func_8028FCBC(void) {
                             break;
                         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
                         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-                            if (((gPlayerOne->bonusEffect & PLAYER_CINEMATIC_MODE) != 0) && ((gPlayerTwo->bonusEffect & PLAYER_CINEMATIC_MODE) != 0)) {
+                            if (((gPlayerOne->type & PLAYER_CINEMATIC_MODE) != 0) && ((gPlayerTwo->type & PLAYER_CINEMATIC_MODE) != 0)) {
 
 
                                 if (gPlayerOne->currentRank < gPlayerTwo->currentRank) {
@@ -1146,32 +1146,32 @@ void func_802903D8(Player *playerOne, Player *playerTwo) {
     if (sp74 > 0) { return; }
 
 
-    if (playerOne->bonusEffect & PLAYER_UNKNOWN_0x40) {
-        if (playerTwo->bonusEffect & PLAYER_UNKNOWN_0x40) {
+    if (playerOne->type & PLAYER_UNKNOWN_0x40) {
+        if (playerTwo->type & PLAYER_UNKNOWN_0x40) {
             func_8008FC1C(playerOne);
             func_8008FC1C(playerTwo);
             func_800C9060((playerTwo - gPlayerOne), 0x19008001U);
             return;
         } else {
-            playerTwo->hitEffects |= REVERSE_EFFECT;
+            playerTwo->statusEffects |= REVERSE_EFFECT;
             func_8008FC1C(playerOne);
             func_800C9060((playerTwo - gPlayerOne), 0x19008001U);
         }
-    } else if (playerTwo->bonusEffect & PLAYER_UNKNOWN_0x40) {
-        playerOne->hitEffects |= REVERSE_EFFECT;
+    } else if (playerTwo->type & PLAYER_UNKNOWN_0x40) {
+        playerOne->statusEffects |= REVERSE_EFFECT;
         func_8008FC1C(playerTwo);
         func_800C9060(playerOne - gPlayerOne, 0x19008001U);
         return;
     }
-    if (playerOne->effect & 0x200) {
-        if (!(playerTwo->effect & 0x200)) {
-            playerTwo->hitEffects |= HIT_BY_ITEM_EFFECT;
+    if (playerOne->effects & 0x200) {
+        if (!(playerTwo->effects & 0x200)) {
+            playerTwo->statusEffects |= HIT_BY_ITEM_EFFECT;
         }
-    } else if (playerTwo->effect & 0x200) {
-        playerOne->hitEffects |= HIT_BY_ITEM_EFFECT;
+    } else if (playerTwo->effects & 0x200) {
+        playerOne->statusEffects |= HIT_BY_ITEM_EFFECT;
     } else {
-        playerOne->effect |= 0x8000;
-        playerTwo->effect |= 0x8000;
+        playerOne->effects |= 0x8000;
+        playerTwo->effects |= 0x8000;
     }
     temp_f0_2 = sqrtf((sp54[0] * sp54[0]) + (sp54[1] * sp54[1]) + (sp54[2] * sp54[2]));
     sp60[0] /= temp_f0;
@@ -1190,7 +1190,7 @@ void func_802903D8(Player *playerOne, Player *playerTwo) {
         temp_f16 = ((sp60[0] * sp54[0]) + (sp60[1] * sp54[1]) + (sp60[2] * sp54[2])) / temp_f0_2;
     }
     temp_f0_2 = temp_f0_2 * temp_f16 * 0.85;
-    if ((playerOne->effect & 0x200) != 0x200) {
+    if ((playerOne->effects & 0x200) != 0x200) {
         temp_f2 = (temp_f0_2 * sp20) / sp24;
         playerOne->velocity[0] += sp60[0] * temp_f2;
         playerOne->velocity[1] += sp60[1] * temp_f2;
@@ -1199,7 +1199,7 @@ void func_802903D8(Player *playerOne, Player *playerTwo) {
         playerOne->pos[1] -= sp60[1] * sp74 * 0.5f;
         playerOne->pos[2] -= sp60[2] * sp74 * 0.5f;
     }
-    if ((playerTwo->effect & 0x200) != 0x200) {
+    if ((playerTwo->effects & 0x200) != 0x200) {
         temp_f2 = (temp_f0_2 * sp24) / sp20;
         playerTwo->velocity[0] -= sp60[0] * temp_f2;
         playerTwo->velocity[1] -= sp60[1] * temp_f2;
@@ -1208,11 +1208,11 @@ void func_802903D8(Player *playerOne, Player *playerTwo) {
         playerTwo->pos[1] += sp60[1] * sp74 * 0.5f;
         playerTwo->pos[2] += sp60[2] * sp74 * 0.5f;
     }
-    if (playerOne->bonusEffect & PLAYER_HUMAN) {
+    if (playerOne->type & PLAYER_HUMAN) {
         func_800C9060((playerOne - gPlayerOne), 0x19008001U);
         return;
     }
-    if (playerTwo->bonusEffect & PLAYER_HUMAN) {
+    if (playerTwo->type & PLAYER_HUMAN) {
         func_800C9060((playerTwo - gPlayerOne), 0x19008001U);
     }
 }
@@ -1226,18 +1226,18 @@ void func_802909F0(void) {
     for (i = 0; i < 7; i++) {
         ply = &gPlayers[i];
 
-        if ((ply->bonusEffect & PLAYER_EXISTS) &&
-          (!(ply->effect & 0x80000000)) &&
-          (!(ply->bonusEffect & PLAYER_INVISIBLE_OR_BOMB)) &&
-          (!(ply->effect & 0x4000000))) {
+        if ((ply->type & PLAYER_EXISTS) &&
+          (!(ply->effects & 0x80000000)) &&
+          (!(ply->type & PLAYER_INVISIBLE_OR_BOMB)) &&
+          (!(ply->effects & 0x4000000))) {
 
             for (k = i + 1; k < 8; k++) {
                 ply2 = &gPlayers[k];
 
-                if ((ply2->bonusEffect & PLAYER_EXISTS) &&
-                    (!(ply2->effect & 0x80000000)) &&
-                    (!(ply2->bonusEffect & PLAYER_INVISIBLE_OR_BOMB)) &&
-                    (!(ply2->effect & 0x4000000))) {
+                if ((ply2->type & PLAYER_EXISTS) &&
+                    (!(ply2->effects & 0x80000000)) &&
+                    (!(ply2->type & PLAYER_INVISIBLE_OR_BOMB)) &&
+                    (!(ply2->effects & 0x4000000))) {
 
                     func_802903D8(ply, ply2);
                 }

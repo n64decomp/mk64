@@ -255,8 +255,8 @@ glabel func_800088D8
 .L80008C88:
 /* 009888 80008C88 5420FFF3 */  bnel  $at, $zero, .L80008C58
 /* 00988C 80008C8C 948F0000 */   lhu   $t7, ($a0)
-/* 009890 80008C90 3C098019 */  lui   $t1, %hi(gNbPlayers) # $t1, 0x8019
-/* 009894 80008C94 8129EDF3 */  lb    $t1, %lo(gNbPlayers)($t1)
+/* 009890 80008C90 3C098019 */  lui   $t1, %hi(gPlayerCount) # $t1, 0x8019
+/* 009894 80008C94 8129EDF3 */  lb    $t1, %lo(gPlayerCount)($t1)
 /* 009898 80008C98 3C188016 */  lui   $t8, %hi(gGPCurrentRaceRankByPlayerId)
 /* 00989C 80008C9C 00002025 */  move  $a0, $zero
 /* 0098A0 80008CA0 19200010 */  blez  $t1, .L80008CE4

@@ -230,7 +230,7 @@ void func_8000546C(void) {
     s16 phi_v0 = 0;
 
     if (D_80162DB0 >= 0x1000) {
-        gPlayerOne->bonusEffect = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_CPU;
+        gPlayerOne->type = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_CPU;
         return;
     }
 
@@ -460,8 +460,8 @@ void func_8000599C(void) {
 
 // sets player to AI? (unconfirmed)
 void func_80005AE8(Player *ply) {
-    if (((ply->bonusEffect & PLAYER_INVISIBLE_OR_BOMB) != 0) && (ply != gPlayerOne)) {
-        ply->bonusEffect = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_CPU;
+    if (((ply->type & PLAYER_INVISIBLE_OR_BOMB) != 0) && (ply != gPlayerOne)) {
+        ply->type = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_CPU;
     }
 }
 
@@ -506,7 +506,7 @@ void func_80005B18(void) {
                 D_80162D84 = D_80162D86;
                 D_80162DDC = 1;
             }
-            if ((gPlayerOne->bonusEffect & 0x800) == 0x800) {
+            if ((gPlayerOne->type & 0x800) == 0x800) {
                 func_80005AE8(gPlayerTwo);
                 func_80005AE8(gPlayerThree);
             } else {
@@ -521,7 +521,7 @@ void func_80005B18(void) {
                     if ((D_80162DD6 == 0) && (gLapCountByPlayerId[2] != 3)) {
                         func_8000561C();
                     }
-                    if (!(gPlayerOne->bonusEffect & 0x800)) {
+                    if (!(gPlayerOne->type & 0x800)) {
                         func_8000599C();
                     }
                 }
@@ -538,7 +538,7 @@ void func_80005E6C(void) {
         if ((D_80162DD6 == 0) && (D_80164398 != 3)) {
             func_8000561C(); //2
         }
-        if ((gPlayerOne->bonusEffect & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {
+        if ((gPlayerOne->type & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {
             func_8000546C(); //1
             return;
         }

@@ -53,7 +53,7 @@ glabel func_80075CA8
 /* 076964 80075D64 860A00A6 */  lh    $t2, 0xa6($s0)
 /* 076968 80075D68 55400004 */  bnel  $t2, $zero, .L80075D7C
 /* 07696C 80075D6C 26520001 */   addiu $s2, $s2, 1
-/* 076970 80075D70 0C01C840 */  jal   redirect_delete_object
+/* 076970 80075D70 0C01C840 */  jal   delete_object_wrapper
 /* 076974 80075D74 02202025 */   move  $a0, $s1
 /* 076978 80075D78 26520001 */  addiu $s2, $s2, 1
 .L80075D7C:
@@ -97,7 +97,7 @@ glabel func_80075CA8
 /* 076A00 80075E00 861800A6 */  lh    $t8, 0xa6($s0)
 /* 076A04 80075E04 57000004 */  bnel  $t8, $zero, .L80075E18
 /* 076A08 80075E08 26520001 */   addiu $s2, $s2, 1
-/* 076A0C 80075E0C 0C01C840 */  jal   redirect_delete_object
+/* 076A0C 80075E0C 0C01C840 */  jal   delete_object_wrapper
 /* 076A10 80075E10 02202025 */   move  $a0, $s1
 /* 076A14 80075E14 26520001 */  addiu $s2, $s2, 1
 .L80075E18:

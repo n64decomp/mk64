@@ -25,7 +25,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     f32 ret;
     s8 idx;
 
-    player->bonusEffect = PLAYER_INACTIVE;
+    player->type = PLAYER_INACTIVE;
     player->unk_08C = 0;
     player->characterId = characterId;
     player->unk_0B6 = 0;
@@ -81,7 +81,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_0FA = 0;
     player->unk_002 = 0;
 
-    player->effect = 0;
+    player->effects = 0;
     player->unk_0C0 = 0;
     player->unk_07C = 0;
     player->unk_07A = 0;
@@ -91,7 +91,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_090 = 0.0f;
     player->unk_094 = 0.0f;
     player->unk_074 = 0.0f;
-    player->bonusEffect = playerType;
+    player->type = playerType;
     player->unk_0CA = 0;
     player->unk_0DE = 0;
     player->unk_10C = 0;
@@ -104,7 +104,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_DAC = 0.0f;
     player->unk_044 = 0;
     player->unk_046 = 0;
-    player->hitEffects = 0;
+    player->statusEffects = 0;
     player->unk_0C6 = 0xFF;
 
 
@@ -1019,7 +1019,7 @@ void func_8003CD78(void) {
 }
 
 void func_8003CD98(Player *player, Camera *camera, s8 arg2, s8 arg3) {
-    if (player->bonusEffect & PLAYER_EXISTS) {
+    if (player->type & PLAYER_EXISTS) {
         if (arg3 == 0) {
             func_8002D268(player, camera, arg3, arg2);
         }

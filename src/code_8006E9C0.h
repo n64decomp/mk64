@@ -4,13 +4,13 @@
 #include "common_structs.h"
 #include "code_80071F00.h"
 
-void init_objectlist(void);
+void init_object_list(void);
 void func_8006EA5C(void);
 void func_8006EB10(void);
 void func_8006ED60(void);
 u8  *func_8006ED94(u8*, u8*, u32, u32);
 void func_8006EE44(void);
-void init_item_window_object(s32);
+void init_item_window(s32);
 void func_8006FA94(void);
 void func_80070148(void);
 void func_80070190(void);

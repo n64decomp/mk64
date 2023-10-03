@@ -16,7 +16,7 @@
 #include "main.h"
 #include "menus.h"
 
-void init_objectlist(void) {
+void init_object_list(void) {
 
     func_8006EA5C();
     func_8006FA94();
@@ -217,7 +217,7 @@ void func_8006EE44(void) {
 }
 
 // Some kind of initalization for the Item Window part of the HUD
-void init_item_window_object(s32 objectIndex) {
+void init_item_window(s32 objectIndex) {
     ItemWindowObjects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
@@ -565,7 +565,7 @@ block_26:
     if (gIsMirrorMode != 0) {
         D_8018D2E0 = D_8018D2B0 - D_8018D2E0;
     }
-    temp_v0 = gNbPlayers;
+    temp_v0 = gPlayerCount;
     if (temp_v0 == 4) {
         D_8018D2C0.unk0 = 0x00A0;
         D_8018D2D8.unk0 = 0x0078;
@@ -654,7 +654,7 @@ void func_8006F8CC(void) {
         D_801657F0 = 0;
         D_801657E8 = TRUE;
         D_80165800.unk0 = D_80165800.unk1;
-        temp_a0 = gNbPlayers;
+        temp_a0 = gPlayerCount;
         if (temp_a0 == FOUR_PLAYERS_SELECTED) {
             if (gModeSelection != BATTLE) {
                 D_801657E4 = 1;
@@ -828,7 +828,7 @@ void func_8006FA94(void) {
     D_80165658.unk8 = 0;
     D_80165658.unk4 = 0;
     D_80165658.unk0 = 0;
-    temp_ra = gNbPlayers;
+    temp_ra = gPlayerCount;
     D_801658BC = D_801658C6;
     switch (temp_ra) {                              /* irregular */
     case 1:
@@ -1047,7 +1047,7 @@ void func_80070190(void) {
 }
 
 void func_80070250(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
-    Objects *temp_v0;
+    ItemWindowObjects *temp_v0;
 
     func_800723A4(objectIndex, arg1);
     temp_v0 = &gObjectList[objectIndex];
@@ -1090,7 +1090,7 @@ void func_80070328(StarSpawn *arg0) {
  * unk_0A2 is an alpha value, used to make the star twinkle.
 **/
 void func_800703E0(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
-    Objects *temp_v0;
+    ItemWindowObjects *temp_v0;
 
     func_800723A4(objectIndex, arg1);
     temp_v0 = &gObjectList[objectIndex];
@@ -1100,7 +1100,7 @@ void func_800703E0(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
     temp_v0->unk_09E = arg2->pos[1]; // screen Y position
     temp_v0->sizeScaling = (f32)arg2->pos[2] / 100.0; // some type of scaling on the texture
     temp_v0->activeTexture = D_0D0293D8;
-    func_80073404(objectIndex, 0x10U, 0x10U, vtx_rectangle);
+    func_80073404(objectIndex, 0x10U, 0x10U, common_vtx_rectangle);
 }
 
 void func_800704A0(StarSpawn *arg0) {
@@ -1129,7 +1129,7 @@ void func_8007055C(void) {
         func_80070328(&D_800E6AA8);
         break;
     case COURSE_FRAPPE_SNOWLAND:
-        if (gNbPlayers == 1) {
+        if (gPlayerCount == 1) {
             var_s4 = 0x32;
         } else {
             var_s4 = 0x19; 
@@ -1173,7 +1173,7 @@ void func_8007055C(void) {
 
 void func_80070714(void) {
     D_80165730 = 1;
-    if (gNbPlayers == ONE_PLAYERS_SELECTED) {
+    if (gPlayerCount == ONE_PLAYERS_SELECTED) {
         D_80165738 = 0x64;
         D_80165740 = 0x3C;
         D_80165748 = 0x1E;
@@ -1556,7 +1556,7 @@ void func_80070780(void) {
     case 9:
         if (gGamestate != 9) {
             var_s1_8 = D_80183EA0;
-            if ((gNbPlayers == 1) || ((gNbPlayers == 2) && (gModeSelection == (s32) 2))) {
+            if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == (s32) 2))) {
                 switch (gCCSelection) {             /* switch 2; irregular */
                 case 0:                             /* switch 2 */
                     D_8018D1C8 = 4;
@@ -1771,7 +1771,7 @@ void init_hud_one_player(void) {
     D_8018CA70->slideItemBoxX = 0;
     D_8018CA70->slideItemBoxY = 0;
     D_8018CA70->stagingPosition = (s16) *gGPCurrentRaceRankByPlayerId;
-    init_item_window_object(gItemWindowObjectByPlayerId[0]);
+    init_item_window(gItemWindowObjectByPlayerId[0]);
     var_f0 = 35.0f;
     var_v0 = &D_8018D078;
     var_a3 = &D_8018D0A0;
@@ -1885,7 +1885,7 @@ void init_hud_two_player_vertical(void) {
     D_8018CA70[0].timerY = 0x10;
     D_8018CA70[0].lapX = 0x67;
     D_8018CA70[0].lapY = 0x28;
-    init_item_window_object(gItemWindowObjectByPlayerId[0]);
+    init_item_window(gItemWindowObjectByPlayerId[0]);
     D_8018CA70[1].itemBoxX = 0x43;
     D_8018CA70[1].itemBoxY = 0x32;
     D_8018CA70[1].slideItemBoxX = 0;
@@ -1900,7 +1900,7 @@ void init_hud_two_player_vertical(void) {
     D_8018CA70[1].timerY = 0x10;
     D_8018CA70[1].lapX = 0xF7;
     D_8018CA70[1].lapY = 0x28;
-    init_item_window_object(gItemWindowObjectByPlayerId[1]);
+    init_item_window(gItemWindowObjectByPlayerId[1]);
     D_8018CA70[1].rankScaling = 0.5f;
     D_8018CA70[0].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
     D_8018CA70[1].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
@@ -1972,8 +1972,8 @@ void init_hud_two_player_horizontal() {
     D_8018CA70[0].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
     D_8018CA70[1].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
     D_8018CA70[0].rankScaling = D_8018CA70[1].rankScaling;
-    init_item_window_object(gItemWindowObjectByPlayerId[0]);
-    init_item_window_object((gItemWindowObjectByPlayerId[1]));
+    init_item_window(gItemWindowObjectByPlayerId[0]);
+    init_item_window((gItemWindowObjectByPlayerId[1]));
     D_8018D3C4 = 0x1E;
     D_8018D3BC = 0x18;
     D_8018D3C0 = 0x28;
@@ -2087,15 +2087,15 @@ void init_hud_three_four_player(void) {
     D_8018CA70->unkEE = (s16) gGPCurrentRaceRankByPlayerId->unk4;
     D_8018CA70->unk172 = (s16) gGPCurrentRaceRankByPlayerId->unk8;
     D_8018CA70->unk1F6 = (s16) gGPCurrentRaceRankByPlayerId->unkC;
-    init_item_window_object(*gItemWindowObjectByPlayerId);
-    init_item_window_object(*(gItemWindowObjectByPlayerId + 4));
-    init_item_window_object(*(gItemWindowObjectByPlayerId + 8));
-    init_item_window_object(*(gItemWindowObjectByPlayerId + 0xC));
+    init_item_window(*gItemWindowObjectByPlayerId);
+    init_item_window(*(gItemWindowObjectByPlayerId + 4));
+    init_item_window(*(gItemWindowObjectByPlayerId + 8));
+    init_item_window(*(gItemWindowObjectByPlayerId + 0xC));
     D_8018CA70->unk18C = 1.5f;
     D_8018CA70->unk108 = (f32) D_8018CA70->unk18C;
     D_8018CA70->unk84 = (f32) D_8018CA70->unk18C;
     D_8018CA70->unknownScaling = D_8018CA70->unk18C;
-    D_8018D158 = (s32) gNbPlayers;
+    D_8018D158 = (s32) gPlayerCount;
     D_8018D3C4 = 0x00000014;
     D_8018D3BC = 0x00000010;
     D_8018D3C0 = 0x0000001E;

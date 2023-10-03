@@ -39,8 +39,8 @@ glabel L800ACF94
 /* 0ADBB0 800ACFB0 10000077 */  b     .L800AD190
 /* 0ADBB4 800ACFB4 AE190010 */   sw    $t9, 0x10($s0)
 glabel L800ACFB8
-/* 0ADBB8 800ACFB8 3C098019 */  lui   $t1, %hi(gNbPlayers) # $t1, 0x8019
-/* 0ADBBC 800ACFBC 812AEDF3 */  lb    $t2, %lo(gNbPlayers)($t1)
+/* 0ADBB8 800ACFB8 3C098019 */  lui   $t1, %hi(gPlayerCount) # $t1, 0x8019
+/* 0ADBBC 800ACFBC 812AEDF3 */  lb    $t2, %lo(gPlayerCount)($t1)
 /* 0ADBC0 800ACFC0 000660C0 */  sll   $t4, $a2, 3
 /* 0ADBC4 800ACFC4 3C0F800E */  lui   $t7, %hi(D_800E7300) # $t7, 0x800e
 /* 0ADBC8 800ACFC8 000A5940 */  sll   $t3, $t2, 5
