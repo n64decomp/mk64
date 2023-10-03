@@ -396,7 +396,7 @@ void func_800588F4(s32 arg0) {
             }
             if (gGamestate != CREDITS_SEQUENCE) {
 
-                if ((D_8018EDF3 == 1) || (D_8018EDF3 == 2)) {
+                if ((gNbPlayers == 1) || (gNbPlayers == 2)) {
                     func_80055380(arg0);
                 }
             } else {
@@ -870,7 +870,7 @@ void func_80059820(s32 playerId) {
     temp_v0->posZInt = (s32) D_8018CF1C->pos[2];
 }
 
-void func_800598D4(s32 arg0) {
+void shift_random_controller(s32 arg0) {
     struct Controller *controller = &gControllerOne[arg0];
 
     if ((controller->button & A_BUTTON) != 0) {
@@ -885,7 +885,7 @@ void func_800598D4(s32 arg0) {
 }
 
 void func_8005994C(void) {
-    D_8018D214 = 1;
+    D_8018D214 = TRUE;
 }
 
 extern s8 D_80165890;
@@ -910,11 +910,11 @@ void func_8005995C(void) {
     D_80165890 = 0;
 }
 
-void func_80059A88(s32 arg0) {
-    func_80059820(arg0);
+void func_80059A88(s32 playerId) {
+    func_80059820(playerId);
     if (!gDemoMode) {
-        func_8007A948(arg0);
-        func_8007BB9C(arg0);
+        func_8007A948(playerId);
+        func_8007BB9C(playerId);
     }
 }
 
@@ -985,8 +985,8 @@ void func_80059D00(void) {
     if (D_801657AE == 0) {
         switch (gScreenModeSelection) {  
         case SCREEN_MODE_1P:
-            func_800598D4(0);
-            if (D_8018D214 == 0) {
+            shift_random_controller(0);
+            if (D_8018D214 == FALSE) {
                 func_80059820(0);
                 func_8005B914();
                 if (!gDemoMode) {
@@ -1006,8 +1006,8 @@ void func_80059D00(void) {
             func_8005A74C();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-            func_800598D4(0);
-            func_800598D4(1);
+            shift_random_controller(0);
+            shift_random_controller(1);
             func_80059820(0);
             func_8005D0FC(0);
             if (!gDemoMode) {
@@ -1025,8 +1025,8 @@ void func_80059D00(void) {
             func_8005A74C();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-            func_800598D4(0);
-            func_800598D4(1);
+            shift_random_controller(0);
+            shift_random_controller(1);
             func_80059820(0);
             func_8005D0FC(0);
             if (!gDemoMode) {
@@ -1044,10 +1044,10 @@ void func_80059D00(void) {
             func_8005A74C();
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            func_800598D4(0);
-            func_800598D4(1);
-            func_800598D4(2);
-            func_800598D4(3);
+            shift_random_controller(0);
+            shift_random_controller(1);
+            shift_random_controller(2);
+            shift_random_controller(3);
             func_80059820(0);
             func_8005D0FC(0);
             if (!gDemoMode) {
@@ -1285,7 +1285,7 @@ void func_8005A74C(void) {
         if (gGamestate != CREDITS_SEQUENCE) {
             func_80082E5C();
         }
-        if ((D_8018EDF3 == 1) || (D_8018EDF3 == 2) || (gGamestate == CREDITS_SEQUENCE)) {
+        if ((gNbPlayers == 1) || (gNbPlayers == 2) || (gGamestate == CREDITS_SEQUENCE)) {
             func_80082870();
         }
         break;
@@ -2315,7 +2315,7 @@ extern s32 D_8018D1FC;
 extern s32 D_8018D204;
 extern s32 D_8018D20C;
 extern s32 D_8018D320;
-extern s8 D_8018EDF3;
+extern s8 gNbPlayers;
 extern f32 gCourseTimer;
 extern s16 gCurrentCourseId;
 extern s32 gModeSelection;
@@ -2411,7 +2411,7 @@ void func_8005CB60(s32 playerId, s32 arg1)
                 if (D_8018D20C == 0) {
                     func_80079054(playerId);
                     D_8018D20C = 1;
-                    if (D_8018EDF3 == 1) {
+                    if (gNbPlayers == 1) {
                         D_8018D1CC = 0x64;
                     }
                 }

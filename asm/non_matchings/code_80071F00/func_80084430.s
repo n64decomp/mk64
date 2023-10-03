@@ -63,7 +63,7 @@ glabel func_80084430
 /* 0850F8 800844F8 3C050400 */  lui   $a1, (0x04000800 >> 16) # lui $a1, 0x400
 /* 0850FC 800844FC 34A50800 */  ori   $a1, (0x04000800 & 0xFFFF) # ori $a1, $a1, 0x800
 /* 085100 80084500 02202025 */  move  $a0, $s1
-/* 085104 80084504 0C01C870 */  jal   set_obj_index_flag_unk_054
+/* 085104 80084504 0C01C870 */  jal   set_object_flag_unk_054_true
 /* 085108 80084508 AE0B0080 */   sw    $t3, 0x80($s0)
 /* 08510C 8008450C 3C040601 */  lui   $a0, %hi(d_course_sherbet_land_unk_data11) # $a0, 0x601
 /* 085110 80084510 24849AC8 */  addiu $a0, %lo(d_course_sherbet_land_unk_data11) # addiu $a0, $a0, -0x6538

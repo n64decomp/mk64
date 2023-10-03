@@ -10,13 +10,13 @@ glabel func_800132F4
 /* 013EF4 800132F4 3C058016 */  lui   $a1, %hi(D_801637C0) # $a1, 0x8016
 /* 013EF8 800132F8 3C01800F */  lui   $at, %hi(D_800ED128) # $at, 0x800f
 /* 013EFC 800132FC 3C0B8016 */  lui   $t3, %hi(D_801637EC) # $t3, 0x8016
-/* 013F00 80013300 3C0A8019 */  lui   $t2, %hi(D_8018EDF3) # $t2, 0x8019
+/* 013F00 80013300 3C0A8019 */  lui   $t2, %hi(gNbPlayers) # $t2, 0x8019
 /* 013F04 80013304 3C088016 */  lui   $t0, %hi(D_80162EB2) # $t0, 0x8016
 /* 013F08 80013308 3C078016 */  lui   $a3, %hi(D_80163598) # $a3, 0x8016
 /* 013F0C 8001330C 44800000 */  mtc1  $zero, $f0
 /* 013F10 80013310 24E73598 */  addiu $a3, %lo(D_80163598) # addiu $a3, $a3, 0x3598
 /* 013F14 80013314 25082EB2 */  addiu $t0, %lo(D_80162EB2) # addiu $t0, $t0, 0x2eb2
-/* 013F18 80013318 254AEDF3 */  addiu $t2, %lo(D_8018EDF3) # addiu $t2, $t2, -0x120d
+/* 013F18 80013318 254AEDF3 */  addiu $t2, %lo(gNbPlayers) # addiu $t2, $t2, -0x120d
 /* 013F1C 8001331C 256B37EC */  addiu $t3, %lo(D_801637EC) # addiu $t3, $t3, 0x37ec
 /* 013F20 80013320 C422D128 */  lwc1  $f2, %lo(D_800ED128)($at)
 /* 013F24 80013324 24A537C0 */  addiu $a1, %lo(D_801637C0) # addiu $a1, $a1, 0x37c0

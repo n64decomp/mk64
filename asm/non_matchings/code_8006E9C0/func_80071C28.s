@@ -1,4 +1,4 @@
-glabel func_80071C28
+glabel init_hud_three_four_player
 /* 072828 80071C28 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 07282C 80071C2C AFBF001C */  sw    $ra, 0x1c($sp)
 /* 072830 80071C30 3C048018 */  lui   $a0, %hi(D_80183DA0) # $a0, 0x8018
@@ -141,20 +141,20 @@ glabel func_80071C28
 /* 072A50 80071E50 A60E00EE */  sh    $t6, 0xee($s0)
 /* 072A54 80071E54 A60F0172 */  sh    $t7, 0x172($s0)
 /* 072A58 80071E58 A61801F6 */  sh    $t8, 0x1f6($s0)
-/* 072A5C 80071E5C 0C01BB9F */  jal   func_8006EE7C
+/* 072A5C 80071E5C 0C01BB9F */  jal   init_item_window_object
 /* 072A60 80071E60 8C843E88 */   lw    $a0, %lo(gItemWindowObjectByPlayerId)($a0)
 /* 072A64 80071E64 3C048018 */  lui   $a0, %hi(gItemWindowObjectByPlayerId + 4) # $a0, 0x8018
-/* 072A68 80071E68 0C01BB9F */  jal   func_8006EE7C
+/* 072A68 80071E68 0C01BB9F */  jal   init_item_window_object
 /* 072A6C 80071E6C 8C843E8C */   lw    $a0, %lo(gItemWindowObjectByPlayerId + 4)($a0)
 /* 072A70 80071E70 3C048018 */  lui   $a0, %hi(gItemWindowObjectByPlayerId + 8) # $a0, 0x8018
-/* 072A74 80071E74 0C01BB9F */  jal   func_8006EE7C
+/* 072A74 80071E74 0C01BB9F */  jal   init_item_window_object
 /* 072A78 80071E78 8C843E90 */   lw    $a0, %lo(gItemWindowObjectByPlayerId + 8)($a0)
 /* 072A7C 80071E7C 3C048018 */  lui   $a0, %hi(gItemWindowObjectByPlayerId + 12) # $a0, 0x8018
-/* 072A80 80071E80 0C01BB9F */  jal   func_8006EE7C
+/* 072A80 80071E80 0C01BB9F */  jal   init_item_window_object
 /* 072A84 80071E84 8C843E94 */   lw    $a0, %lo(gItemWindowObjectByPlayerId + 12)($a0)
 /* 072A88 80071E88 3C013FC0 */  li    $at, 0x3FC00000 # 1.500000
 /* 072A8C 80071E8C 44813000 */  mtc1  $at, $f6
-/* 072A90 80071E90 3C198019 */  lui   $t9, %hi(D_8018EDF3) # $t9, 0x8019
+/* 072A90 80071E90 3C198019 */  lui   $t9, %hi(gNbPlayers) # $t9, 0x8019
 /* 072A94 80071E94 3C018019 */  lui   $at, %hi(D_8018D158) # $at, 0x8019
 /* 072A98 80071E98 E606018C */  swc1  $f6, 0x18c($s0)
 /* 072A9C 80071E9C C600018C */  lwc1  $f0, 0x18c($s0)
@@ -163,7 +163,7 @@ glabel func_80071C28
 /* 072AA8 80071EA8 E6000108 */  swc1  $f0, 0x108($s0)
 /* 072AAC 80071EAC E6000084 */  swc1  $f0, 0x84($s0)
 /* 072AB0 80071EB0 E6000000 */  swc1  $f0, ($s0)
-/* 072AB4 80071EB4 8339EDF3 */  lb    $t9, %lo(D_8018EDF3)($t9)
+/* 072AB4 80071EB4 8339EDF3 */  lb    $t9, %lo(gNbPlayers)($t9)
 /* 072AB8 80071EB8 8FBF001C */  lw    $ra, 0x1c($sp)
 /* 072ABC 80071EBC 2418001E */  li    $t8, 30
 /* 072AC0 80071EC0 AC39D158 */  sw    $t9, %lo(D_8018D158)($at)

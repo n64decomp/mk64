@@ -718,8 +718,8 @@ glabel L8009FD90
 /* 0A0A94 8009FE94 1000028B */  b     .L800A08C4
 /* 0A0A98 8009FE98 AE020000 */   sw    $v0, ($s0)
 glabel L8009FE9C
-/* 0A0A9C 8009FE9C 3C028019 */  lui   $v0, %hi(D_8018EDF3) # $v0, 0x8019
-/* 0A0AA0 8009FEA0 8042EDF3 */  lb    $v0, %lo(D_8018EDF3)($v0)
+/* 0A0A9C 8009FE9C 3C028019 */  lui   $v0, %hi(gNbPlayers) # $v0, 0x8019
+/* 0A0AA0 8009FEA0 8042EDF3 */  lb    $v0, %lo(gNbPlayers)($v0)
 /* 0A0AA4 8009FEA4 3C03800F */  lui   $v1, %hi((D_800E86AC - 1)) # 0x800f
 /* 0A0AA8 8009FEA8 3C06800F */  lui   $a2, %hi((D_800E86B0 - 3)) # 0x800f
 /* 0A0AAC 8009FEAC 00621821 */  addu  $v1, $v1, $v0

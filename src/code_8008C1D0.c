@@ -316,7 +316,7 @@ void func_8008C73C(Player *player, s8 arg1) {
     }
 }
 
-void func_8008C8C4(Player* player, s8 arg1) {
+void func_8008C8C4(Player* player, s8 playerId) {
     player->effect &= ~0x80;
     player->effect &= ~0x40;
     player->unk_0A8 = 0;
@@ -325,17 +325,17 @@ void func_8008C8C4(Player* player, s8 arg1) {
     player->unk_0C0 = 0;
     player->effect &= ~0x800;
 
-    D_80165190[0][arg1] = 1;
-    D_80165190[1][arg1] = 1;
-    D_80165190[2][arg1] = 1;
-    D_80165190[3][arg1] = 1;
+    D_80165190[0][playerId] = 1;
+    D_80165190[1][playerId] = 1;
+    D_80165190[2][playerId] = 1;
+    D_80165190[3][playerId] = 1;
 
     player->unk_046 &= 0xFFBF;
 
-    if ((gIsPlayerTripleA[arg1] == TRUE) && ((player->bonusEffect & 0x4000) == 0x4000)) {
+    if ((gIsPlayerTripleA[playerId] == TRUE) && ((player->bonusEffect & 0x4000) == 0x4000)) {
         player->currentSpeed = (f32) (player->currentSpeed + 100.0f);
     }
-    if ((gModeSelection == VERSUS) && ((player->bonusEffect & 0x1000) == 0x1000) && (!gDemoMode) && ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[arg1] != 0)) {
+    if ((gModeSelection == VERSUS) && ((player->bonusEffect & 0x1000) == 0x1000) && (!gDemoMode) && ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[playerId] != 0)) {
         player->hitEffects = (s32) (player->hitEffects | REVERSE_EFFECT);
     }
 }

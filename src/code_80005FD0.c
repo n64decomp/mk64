@@ -446,7 +446,7 @@ s32 func_800061DC(Vec3f arg0, f32 arg1, s32 arg2) {
         var_v0 = 2;
         break;
     case SCREEN_MODE_3P_4P_SPLITSCREEN:
-        var_v0 = D_8018EDF3;
+        var_v0 = gNbPlayers;
         break;
     default:
         var_v0 = 1;
@@ -455,7 +455,7 @@ s32 func_800061DC(Vec3f arg0, f32 arg1, s32 arg2) {
     var_v1 = arg2;
     if (!gDemoMode) {
         var_a0 = gPlayerOne;
-        for(var_a1 = 0; var_a1 < D_8018EDF3; var_a1++, var_a0++) {
+        for(var_a1 = 0; var_a1 < gNbPlayers; var_a1++, var_a0++) {
             if (((var_a0->bonusEffect & 0x4000) != 0) && ((var_a0->bonusEffect & 0x1000) == 0)) {
                 temp_f12 = var_a0->pos[0];
                 temp_f14 = var_a0->pos[2];
@@ -535,7 +535,7 @@ void set_places(void) {
     s32 a_really_cool_variable_name;
     s32 stackPadding1;
     s32 var_t4;
-    s32 var_t3;
+    s32 playerId;
     s32 temp_a0;
     s32 var_t1_3;
 
@@ -548,72 +548,72 @@ void set_places(void) {
             var_t4 = 8;
             break;
         case VERSUS:
-            var_t4 = D_8018EDF3;
+            var_t4 = gNbPlayers;
             break;
     }
 
     if (D_8016348C == 0) {
-        for (var_t3 = 0; var_t3 < var_t4; var_t3++) {
-            temp_a0 = gGPCurrentRacePlayerIdByRank[var_t3];
-            sp80[var_t3] = temp_a0;
-            gCourseCompletionPercentByRank[var_t3] = gCourseCompletionPercentByPlayerId[temp_a0];
+        for (playerId = 0; playerId < var_t4; playerId++) {
+            temp_a0 = gGPCurrentRacePlayerIdByRank[playerId];
+            sp80[playerId] = temp_a0;
+            gCourseCompletionPercentByRank[playerId] = gCourseCompletionPercentByPlayerId[temp_a0];
         }
     } else {
-        for (var_t3 = 0; var_t3 < var_t4; var_t3++) {
-            temp_a0 = gGPCurrentRacePlayerIdByRank[var_t3];
-            sp80[var_t3] = temp_a0;
-            gCourseCompletionPercentByRank[var_t3] = -gTimePlayerLastTouchedFinishLine[temp_a0];
+        for (playerId = 0; playerId < var_t4; playerId++) {
+            temp_a0 = gGPCurrentRacePlayerIdByRank[playerId];
+            sp80[playerId] = temp_a0;
+            gCourseCompletionPercentByRank[playerId] = -gTimePlayerLastTouchedFinishLine[temp_a0];
         }
     }
 
-    for (var_t3 = 0; var_t3 < var_t4 - 1; var_t3++) {
-        if ((gPlayers[gGPCurrentRacePlayerIdByRank[var_t3]].bonusEffect & 0x800)) continue;
+    for (playerId = 0; playerId < var_t4 - 1; playerId++) {
+        if ((gPlayers[gGPCurrentRacePlayerIdByRank[playerId]].bonusEffect & 0x800)) continue;
 
-        for (var_t1_3 = var_t3 + 1; var_t1_3 < var_t4; var_t1_3++) {
-            if (gCourseCompletionPercentByRank[var_t3] < gCourseCompletionPercentByRank[var_t1_3]) {
+        for (var_t1_3 = playerId + 1; var_t1_3 < var_t4; var_t1_3++) {
+            if (gCourseCompletionPercentByRank[playerId] < gCourseCompletionPercentByRank[var_t1_3]) {
                 if (!(gPlayers[gGPCurrentRacePlayerIdByRank[var_t1_3]].bonusEffect & 0x800)) {
-                    temp_s2 = sp80[var_t3];
-                    sp80[var_t3] = sp80[var_t1_3];
+                    temp_s2 = sp80[playerId];
+                    sp80[playerId] = sp80[var_t1_3];
                     sp80[var_t1_3] = temp_s2;
-                    temp_f0 = gCourseCompletionPercentByRank[var_t3];
-                    gCourseCompletionPercentByRank[var_t3] = gCourseCompletionPercentByRank[var_t1_3];
+                    temp_f0 = gCourseCompletionPercentByRank[playerId];
+                    gCourseCompletionPercentByRank[playerId] = gCourseCompletionPercentByRank[var_t1_3];
                     gCourseCompletionPercentByRank[var_t1_3] = temp_f0;
                 }
             }
         }
     }
 
-    for (var_t3 = 0; var_t3 < 8; var_t3++) {
-        D_801643E0[var_t3] = gGPCurrentRaceRankByPlayerId[var_t3];
+    for (playerId = 0; playerId < 8; playerId++) {
+        D_801643E0[playerId] = gGPCurrentRaceRankByPlayerId[playerId];
     }
 
-    for (var_t3 = 0; var_t3 < var_t4; var_t3++) {
-        gGPCurrentRacePlayerIdByRank[var_t3] = sp80[var_t3];
-        gGPCurrentRaceRankByPlayerId[sp80[var_t3]] = var_t3;
+    for (playerId = 0; playerId < var_t4; playerId++) {
+        gGPCurrentRacePlayerIdByRank[playerId] = sp80[playerId];
+        gGPCurrentRaceRankByPlayerId[sp80[playerId]] = playerId;
     }
 
-    for (var_t3 = 0; var_t3 < var_t4; var_t3++) {
-        a_really_cool_variable_name = D_80164378[var_t3];
-        sp80[var_t3] = a_really_cool_variable_name;
-        gCourseCompletionPercentByRank[var_t3] = gCourseCompletionPercentByPlayerId[a_really_cool_variable_name];
+    for (playerId = 0; playerId < var_t4; playerId++) {
+        a_really_cool_variable_name = D_80164378[playerId];
+        sp80[playerId] = a_really_cool_variable_name;
+        gCourseCompletionPercentByRank[playerId] = gCourseCompletionPercentByPlayerId[a_really_cool_variable_name];
     }
 
-    for (var_t3 = 0; var_t3 < var_t4 - 1; var_t3++) {
-        for (var_t1_3 = var_t3 + 1; var_t1_3 < var_t4; var_t1_3++) {
-            if (gCourseCompletionPercentByRank[var_t3] < gCourseCompletionPercentByRank[var_t1_3]) {
-                temp_s2 = sp80[var_t3];
-                sp80[var_t3] = sp80[var_t1_3];
+    for (playerId = 0; playerId < var_t4 - 1; playerId++) {
+        for (var_t1_3 = playerId + 1; var_t1_3 < var_t4; var_t1_3++) {
+            if (gCourseCompletionPercentByRank[playerId] < gCourseCompletionPercentByRank[var_t1_3]) {
+                temp_s2 = sp80[playerId];
+                sp80[playerId] = sp80[var_t1_3];
                 sp80[var_t1_3] = temp_s2;
-                temp_f0 = gCourseCompletionPercentByRank[var_t3];
-                gCourseCompletionPercentByRank[var_t3] = gCourseCompletionPercentByRank[var_t1_3];
+                temp_f0 = gCourseCompletionPercentByRank[playerId];
+                gCourseCompletionPercentByRank[playerId] = gCourseCompletionPercentByRank[var_t1_3];
                 gCourseCompletionPercentByRank[var_t1_3] = temp_f0;
             }
         }
     }
 
-    for (var_t3 = 0; var_t3 < var_t4; var_t3++) {
-        D_80164408[sp80[var_t3]] = var_t3;
-        D_80164378[var_t3] = sp80[var_t3];
+    for (playerId = 0; playerId < var_t4; playerId++) {
+        D_80164408[sp80[playerId]] = playerId;
+        D_80164378[playerId] = sp80[playerId];
     }
 }
 
@@ -636,7 +636,7 @@ void func_800070F4(void) {
             var_a2 = 8;
             break;
         case VERSUS:
-            var_a2 = D_8018EDF3;
+            var_a2 = gNbPlayers;
             break;
     }
 
@@ -1122,7 +1122,7 @@ extern ? D_80164376;
 extern s16 D_80164386;
 extern ? D_801643BA;
 extern ? D_80164538;
-extern s8 D_8018EDF3;
+extern s8 gNbPlayers;
 static ? D_800DCAF4;                                /* unable to generate initializer */
 static ? D_800DCB34;                                /* unable to generate initializer */
 static ? *D_800DCBB4[0x15] = {
@@ -1267,7 +1267,7 @@ s32 func_800088D8(s32 arg0, s16 arg1, s16 arg2) {
             var_v0 += 1;
         }
     } while ((u32) var_a0_3 < (u32) &D_80163348);
-    temp_t1_2 = D_8018EDF3;
+    temp_t1_2 = gNbPlayers;
     var_a0_4 = 0;
     var_v1 = gGPCurrentRaceRankByPlayerId;
     if (temp_t1_2 > 0) {
@@ -1440,7 +1440,7 @@ extern ? D_801642DE;
 extern ? D_801643B0;
 extern s32 D_80164408;
 extern s32 D_8016440C;
-extern s8 D_8018EDF3;
+extern s8 gNbPlayers;
 s16 gCurrentCourseId;                               /* unable to generate initializer */
 
 void func_8000929C(s32 playerId, Player *player) {
@@ -1593,7 +1593,7 @@ block_25:
     temp_v0_5 = player->bonusEffect;
     if (((temp_v0_5 & 0x4000) != 0) && ((temp_v0_5 & 0x1000) == 0)) {
         func_800065D0(playerId, player, &D_80163448);
-        if ((gModeSelection == GRAND_PRIX) && (D_8018EDF3 == 2) && (playerId == 0)) {
+        if ((gModeSelection == GRAND_PRIX) && (gNbPlayers == 2) && (playerId == 0)) {
             if (D_80164408 < D_8016440C) {
                 D_80163478 = 0;
             } else {
@@ -1706,7 +1706,7 @@ void func_800099EC(s32 arg0, ? arg1) {
     temp_s7 = temp_t6 + &D_801633C8;
     sp40 = temp_t6;
     if (*temp_s7 >= 0x65) {
-        temp_a0 = D_8018EDF3;
+        temp_a0 = gNbPlayers;
         phi_s0 = 0;
         phi_a0 = temp_a0;
         if (temp_a0 > ZERO_PLAYERS_SELECTED) {
@@ -1718,7 +1718,7 @@ void func_800099EC(s32 arg0, ? arg1) {
                 if ((temp_v0 < temp_v1) && (temp_v0 == *(&D_801643E0 + phi_s1)) && (temp_v1 == *(&D_801643E0 + (arg0 * 4)))) {
                     func_800C92CC(arg0 & 0xFF, 0x2900800D);
                     *temp_s7 = 0;
-                    phi_a0 = D_8018EDF3;
+                    phi_a0 = gNbPlayers;
                 }
                 temp_s0 = phi_s0 + 1;
                 phi_s2 += 4;
@@ -2054,7 +2054,7 @@ block_63:
                         func_80008424(playerId, *(&D_80163210 + sp38), sp40);
                         return;
                     }
-                    temp_v0_9 = D_8018EDF3;
+                    temp_v0_9 = gNbPlayers;
                     if ((temp_v0_9 > 0) && (temp_v0_9 < 3) && (*(&D_80163330 + sp34) == 1) && ((s32) *(&D_8016334C + sp34) < *(gGPCurrentRaceRankByPlayerId + sp38))) {
                         var_t0 = sp38 + &D_80163210;
                         *var_t0 = 0x41055555;
@@ -3656,7 +3656,7 @@ void func_8000DF8C(s32 arg0) {
                     }
                 }
             } else {
-                var_v1 = D_8018EDF3;
+                var_v1 = gNbPlayers;
                 var_a0 = 0;
                 if (var_v1 > 0) {
                     var_v0 = gPlayers;
@@ -3674,7 +3674,7 @@ void func_8000DF8C(s32 arg0) {
                                 } else {
                                     var_v0->hitEffects |= REVERSE_EFFECT;
                                 }
-                                var_v1 = D_8018EDF3;
+                                var_v1 = gNbPlayers;
                             }
                         }
                         var_v0 += 0xDD8;
@@ -4043,7 +4043,7 @@ void func_8000F124(void) {
         if (gModeSelection == GRAND_PRIX) {
             do {
 loop_5:
-                temp_a2 = D_8018EDF3;
+                temp_a2 = gNbPlayers;
                 *phi_s1 = random_int(8);
                 phi_a1_2 = 0;
                 phi_a1_5 = 0;
@@ -6085,7 +6085,7 @@ extern s16 D_80162EB2;
 extern s16 D_801630FC;
 extern s32 D_80163598;
 extern ? D_801637EC;
-extern s8 D_8018EDF3;
+extern s8 gNbPlayers;
 
 void func_800132F4(void) {
     PaddleWheelBoatStuff *temp_a0;
@@ -6104,7 +6104,7 @@ void func_800132F4(void) {
         var_v1 += 0xB4;
         var_a1->actorIndex = -1;
         var_a1->position[2] = (f32) temp_a2->unk2;
-        if (D_8018EDF3 >= 3) {
+        if (gNbPlayers >= 3) {
             var_a1->isActive = 0;
         } else {
             var_a1->isActive = 1;
@@ -9712,7 +9712,7 @@ void func_8001A588(u16 *arg0, Camera *camera, Player *arg2, s8 arg3, s32 arg4) {
         }
         if ((gModeSelection != TIME_TRIALS) && (arg4 == 1) && ((temp_v0_5 = D_801646C8, (temp_v0_5 == 0x00000104)) || (temp_v0_5 == 0x00000105))) {
             var_v1 = 0;
-            if (D_8018EDF3 == 2) {
+            if (gNbPlayers == 2) {
                 func_8001A518((s32) var_s0, gGPCurrentRaceRankByPlayerId[var_s0], 1, arg4);
             } else {
                 sp44 = (s32) var_s0;

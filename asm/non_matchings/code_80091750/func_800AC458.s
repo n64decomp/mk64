@@ -270,10 +270,10 @@ glabel L800AC7CC
 /* 0AD414 800AC814 00002825 */  move  $a1, $zero
 /* 0AD418 800AC818 15A10053 */  bne   $t5, $at, .L800AC968
 /* 0AD41C 800AC81C 3C028019 */   lui   $v0, %hi(gCharacterIdByGPOverallRank) # $v0, 0x8019
-/* 0AD420 800AC820 3C038019 */  lui   $v1, %hi(D_8018EDF3) # $v1, 0x8019
+/* 0AD420 800AC820 3C038019 */  lui   $v1, %hi(gNbPlayers) # $v1, 0x8019
 /* 0AD424 800AC824 3C048016 */  lui   $a0, %hi(D_80164478) # $a0, 0x8016
 /* 0AD428 800AC828 24844478 */  addiu $a0, %lo(D_80164478) # addiu $a0, $a0, 0x4478
-/* 0AD42C 800AC82C 8063EDF3 */  lb    $v1, %lo(D_8018EDF3)($v1)
+/* 0AD42C 800AC82C 8063EDF3 */  lb    $v1, %lo(gNbPlayers)($v1)
 /* 0AD430 800AC830 2442D9D0 */  addiu $v0, %lo(gCharacterIdByGPOverallRank) # addiu $v0, $v0, -0x2630
 /* 0AD434 800AC834 24060008 */  li    $a2, 8
 .L800AC838:

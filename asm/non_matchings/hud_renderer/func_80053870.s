@@ -32,7 +32,7 @@ glabel func_80053870
 /* 0544E8 800538E8 8E110000 */  lw    $s1, ($s0)
 .L800538EC:
 /* 0544EC 800538EC 02602825 */  move  $a1, $s3
-/* 0544F0 800538F0 0C01C87A */  jal   func_800721E8
+/* 0544F0 800538F0 0C01C87A */  jal   set_object_flag_unk_054_false
 /* 0544F4 800538F4 02202025 */   move  $a0, $s1
 /* 0544F8 800538F8 02202025 */  move  $a0, $s1
 /* 0544FC 800538FC 0C01C8B3 */  jal   func_800722CC

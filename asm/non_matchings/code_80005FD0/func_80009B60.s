@@ -441,7 +441,7 @@ glabel func_80009B60
 /* 00AD5C 8000A15C AD4E00BC */  sw    $t6, 0xbc($t2)
 /* 00AD60 8000A160 8DEF3378 */  lw    $t7, %lo(D_80163378)($t7)
 /* 00AD64 8000A164 8FB80030 */  lw    $t8, 0x30($sp)
-/* 00AD68 8000A168 3C028019 */  lui   $v0, %hi(D_8018EDF3) # $v0, 0x8019
+/* 00AD68 8000A168 3C028019 */  lui   $v0, %hi(gNbPlayers) # $v0, 0x8019
 /* 00AD6C 8000A16C 31EC0001 */  andi  $t4, $t7, 1
 /* 00AD70 8000A170 1198000C */  beq   $t4, $t8, .L8000A1A4
 /* 00AD74 8000A174 01402025 */   move  $a0, $t2
@@ -457,7 +457,7 @@ glabel func_80009B60
 /* 00AD9C 8000A19C 100003E5 */  b     .L8000B134
 /* 00ADA0 8000A1A0 8FBF0014 */   lw    $ra, 0x14($sp)
 .L8000A1A4:
-/* 00ADA4 8000A1A4 8042EDF3 */  lb    $v0, %lo(D_8018EDF3)($v0)
+/* 00ADA4 8000A1A4 8042EDF3 */  lb    $v0, %lo(gNbPlayers)($v0)
 /* 00ADA8 8000A1A8 18400016 */  blez  $v0, .L8000A204
 /* 00ADAC 8000A1AC 28410003 */   slti  $at, $v0, 3
 /* 00ADB0 8000A1B0 10200014 */  beqz  $at, .L8000A204

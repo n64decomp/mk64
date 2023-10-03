@@ -68,8 +68,8 @@ glabel func_8006FA94
 /* 07079C 8006FB9C AC600008 */  sw    $zero, 8($v1)
 /* 0707A0 8006FBA0 AC600004 */  sw    $zero, 4($v1)
 /* 0707A4 8006FBA4 AC600000 */  sw    $zero, ($v1)
-/* 0707A8 8006FBA8 3C1F8019 */  lui   $ra, %hi(D_8018EDF3) # $ra, 0x8019
-/* 0707AC 8006FBAC 83FFEDF3 */  lb    $ra, %lo(D_8018EDF3)($ra)
+/* 0707A8 8006FBA8 3C1F8019 */  lui   $ra, %hi(gNbPlayers) # $ra, 0x8019
+/* 0707AC 8006FBAC 83FFEDF3 */  lb    $ra, %lo(gNbPlayers)($ra)
 /* 0707B0 8006FBB0 3C018016 */  lui   $at, %hi(D_801658BC) # $at, 0x8016
 /* 0707B4 8006FBB4 A02E58BC */  sb    $t6, %lo(D_801658BC)($at)
 /* 0707B8 8006FBB8 24010001 */  li    $at, 1

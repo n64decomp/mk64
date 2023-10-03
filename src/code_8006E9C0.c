@@ -16,23 +16,23 @@
 #include "main.h"
 #include "menus.h"
 
-void func_8006E9C0(void) {
+void init_objectlist(void) {
 
     func_8006EA5C();
     func_8006FA94();
 
     switch (gScreenModeSelection) {
         case SCREEN_MODE_1P:
-            func_80071428();
+            init_hud_one_player();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-            func_80071818();
+            init_hud_two_player_vertical();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-            func_80071A20();
+            init_hud_two_player_horizontal();
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            func_80071C28();
+            init_hud_three_four_player();
             break;
     }
     func_80070148();
@@ -217,8 +217,8 @@ void func_8006EE44(void) {
 }
 
 // Some kind of initalization for the Item Window part of the HUD
-void func_8006EE7C(s32 objectIndex) {
-    Objects *temp_v0;
+void init_item_window_object(s32 objectIndex) {
+    ItemWindowObjects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->currentItem = ITEM_NONE;
@@ -565,7 +565,7 @@ block_26:
     if (gIsMirrorMode != 0) {
         D_8018D2E0 = D_8018D2B0 - D_8018D2E0;
     }
-    temp_v0 = D_8018EDF3;
+    temp_v0 = gNbPlayers;
     if (temp_v0 == 4) {
         D_8018D2C0.unk0 = 0x00A0;
         D_8018D2D8.unk0 = 0x0078;
@@ -654,7 +654,7 @@ void func_8006F8CC(void) {
         D_801657F0 = 0;
         D_801657E8 = TRUE;
         D_80165800.unk0 = D_80165800.unk1;
-        temp_a0 = D_8018EDF3;
+        temp_a0 = gNbPlayers;
         if (temp_a0 == FOUR_PLAYERS_SELECTED) {
             if (gModeSelection != BATTLE) {
                 D_801657E4 = 1;
@@ -771,7 +771,7 @@ extern s32 D_8018D1F8;
 extern s32 D_8018D1FC;
 extern s32 D_8018D204;
 extern s32 D_8018D20C;
-extern s32 D_8018D214;
+extern bool D_8018D214;
 extern s32 D_8018D224;
 extern s8 D_8018D228;
 extern s32 D_8018D2A4;
@@ -828,7 +828,7 @@ void func_8006FA94(void) {
     D_80165658.unk8 = 0;
     D_80165658.unk4 = 0;
     D_80165658.unk0 = 0;
-    temp_ra = D_8018EDF3;
+    temp_ra = gNbPlayers;
     D_801658BC = D_801658C6;
     switch (temp_ra) {                              /* irregular */
     case 1:
@@ -941,9 +941,9 @@ void func_8006FA94(void) {
     D_8018D168 = 0;
     D_801656F0 = 0;
     D_801657B2 = 0;
-    D_801657D8 = D_801657B2;
-    D_8018D214 = (s32) D_801657D8;
-    D_801657B0 = (s8) D_8018D214;
+    D_801657D8 = D_801657B2; // put all to 0
+    D_8018D214 = (s32) D_801657D8; // put all to 0
+    D_801657B0 = (s8) D_8018D214; // put all to 0
     D_801657AE = D_801657B0;
     D_8018D20C = 0;
     D_8018D2F8 = 0;
@@ -1100,7 +1100,7 @@ void func_800703E0(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
     temp_v0->unk_09E = arg2->pos[1]; // screen Y position
     temp_v0->sizeScaling = (f32)arg2->pos[2] / 100.0; // some type of scaling on the texture
     temp_v0->activeTexture = D_0D0293D8;
-    func_80073404(objectIndex, 0x10U, 0x10U, D_0D005770);
+    func_80073404(objectIndex, 0x10U, 0x10U, vtx_rectangle);
 }
 
 void func_800704A0(StarSpawn *arg0) {
@@ -1129,7 +1129,7 @@ void func_8007055C(void) {
         func_80070328(&D_800E6AA8);
         break;
     case COURSE_FRAPPE_SNOWLAND:
-        if (D_8018EDF3 == 1) {
+        if (gNbPlayers == 1) {
             var_s4 = 0x32;
         } else {
             var_s4 = 0x19; 
@@ -1173,7 +1173,7 @@ void func_8007055C(void) {
 
 void func_80070714(void) {
     D_80165730 = 1;
-    if (D_8018EDF3 == ONE_PLAYERS_SELECTED) {
+    if (gNbPlayers == ONE_PLAYERS_SELECTED) {
         D_80165738 = 0x64;
         D_80165740 = 0x3C;
         D_80165748 = 0x1E;
@@ -1388,14 +1388,14 @@ void func_80070780(void) {
         } while (var_s3_2 < 4);
         var_s0_2 = D_8018C030;
         do {
-            func_80071F6C(var_s0_2);
+            delete_object(var_s0_2);
             var_s0_2 += 4;
         } while (var_s0_2 != D_8018C0B0);
         return;
     case 3:
         if (gGamestate != 9) {
             temp_s0_4 = D_80183EA0->unk0;
-            func_80073444(temp_s0_4, &d_course_banshee_boardwalk_bat_tlut, &d_course_banshee_boardwalk_bat, 0x20U, (u16) 0x00000040);
+            init_texture_object(temp_s0_4, &d_course_banshee_boardwalk_bat_tlut, &d_course_banshee_boardwalk_bat, 0x20U, (u16) 0x00000040);
             temp_v0_4 = &gObjectList[temp_s0_4];
             temp_v0_4->unk_0B2[0] = 0;
             temp_v0_4->unk_0B2[1] = 0;
@@ -1556,7 +1556,7 @@ void func_80070780(void) {
     case 9:
         if (gGamestate != 9) {
             var_s1_8 = D_80183EA0;
-            if ((D_8018EDF3 == 1) || ((D_8018EDF3 == 2) && (gModeSelection == (s32) 2))) {
+            if ((gNbPlayers == 1) || ((gNbPlayers == 2) && (gModeSelection == (s32) 2))) {
                 switch (gCCSelection) {             /* switch 2; irregular */
                 case 0:                             /* switch 2 */
                     D_8018D1C8 = 4;
@@ -1725,7 +1725,7 @@ extern s32 D_8018D3DC;
 extern s32 D_8018D3F0;
 extern s32 D_8018D3F4;
 
-void func_80071428(void) {
+void init_hud_one_player(void) {
     ? *var_a0;
     ? *var_a1;
     ? *var_a2;
@@ -1771,7 +1771,7 @@ void func_80071428(void) {
     D_8018CA70->slideItemBoxX = 0;
     D_8018CA70->slideItemBoxY = 0;
     D_8018CA70->stagingPosition = (s16) *gGPCurrentRaceRankByPlayerId;
-    func_8006EE7C(*gItemWindowObjectByPlayerId);
+    init_item_window_object(gItemWindowObjectByPlayerId[0]);
     var_f0 = 35.0f;
     var_v0 = &D_8018D078;
     var_a3 = &D_8018D0A0;
@@ -1852,21 +1852,20 @@ void func_80071428(void) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8006E9C0/func_80071428.s")
+GLOBAL_ASM("asm/non_matchings/code_8006E9C0/init_hud_one_player.s")
 #endif
 
-extern void func_8006EE7C(s32);                               /* extern */
 extern void func_80070190();                                  /* extern */
 extern void func_8007055C();                                  /* extern */
 extern void func_80070780();                                  /* extern */
 extern s32 D_80183DA0;
 extern s32 D_80183DBC;
 
-void func_80071818(void) {
+void init_hud_two_player_vertical(void) {
     find_unused_obj_index(&D_80183DA0);
     find_unused_obj_index(D_80183DB8);
     find_unused_obj_index(&D_80183DBC);
-    find_unused_obj_index(gItemWindowObjectByPlayerId);
+    find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
     func_80070190();
     func_8007055C();
@@ -1886,7 +1885,7 @@ void func_80071818(void) {
     D_8018CA70[0].timerY = 0x10;
     D_8018CA70[0].lapX = 0x67;
     D_8018CA70[0].lapY = 0x28;
-    func_8006EE7C(*gItemWindowObjectByPlayerId);
+    init_item_window_object(gItemWindowObjectByPlayerId[0]);
     D_8018CA70[1].itemBoxX = 0x43;
     D_8018CA70[1].itemBoxY = 0x32;
     D_8018CA70[1].slideItemBoxX = 0;
@@ -1901,7 +1900,7 @@ void func_80071818(void) {
     D_8018CA70[1].timerY = 0x10;
     D_8018CA70[1].lapX = 0xF7;
     D_8018CA70[1].lapY = 0x28;
-    func_8006EE7C((gItemWindowObjectByPlayerId[1]));
+    init_item_window_object(gItemWindowObjectByPlayerId[1]);
     D_8018CA70[1].rankScaling = 0.5f;
     D_8018CA70[0].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
     D_8018CA70[1].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
@@ -1925,11 +1924,11 @@ void func_80071818(void) {
 
 
 
-void func_80071A20() {
+void init_hud_two_player_horizontal() {
     find_unused_obj_index(&D_80183DA0);
     find_unused_obj_index(D_80183DB8);
     find_unused_obj_index(&D_80183DBC);
-    find_unused_obj_index(gItemWindowObjectByPlayerId);
+    find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
     func_80070190();
     func_8007055C();
@@ -1973,8 +1972,8 @@ void func_80071A20() {
     D_8018CA70[0].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
     D_8018CA70[1].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
     D_8018CA70[0].rankScaling = D_8018CA70[1].rankScaling;
-    func_8006EE7C(gItemWindowObjectByPlayerId[0]);
-    func_8006EE7C((gItemWindowObjectByPlayerId[1]));
+    init_item_window_object(gItemWindowObjectByPlayerId[0]);
+    init_item_window_object((gItemWindowObjectByPlayerId[1]));
     D_8018D3C4 = 0x1E;
     D_8018D3BC = 0x18;
     D_8018D3C0 = 0x28;
@@ -2006,7 +2005,7 @@ extern s32 D_8018D3BC;
 extern s32 D_8018D3C0;
 extern s32 D_8018D3C4;
 
-void func_80071C28(void) {
+void init_hud_three_four_player(void) {
     find_unused_obj_index(&D_80183DA0);
     find_unused_obj_index(D_80183DB8);
     find_unused_obj_index(&D_80183DBC);
@@ -2088,20 +2087,20 @@ void func_80071C28(void) {
     D_8018CA70->unkEE = (s16) gGPCurrentRaceRankByPlayerId->unk4;
     D_8018CA70->unk172 = (s16) gGPCurrentRaceRankByPlayerId->unk8;
     D_8018CA70->unk1F6 = (s16) gGPCurrentRaceRankByPlayerId->unkC;
-    func_8006EE7C(*gItemWindowObjectByPlayerId);
-    func_8006EE7C(*(gItemWindowObjectByPlayerId + 4));
-    func_8006EE7C(*(gItemWindowObjectByPlayerId + 8));
-    func_8006EE7C(*(gItemWindowObjectByPlayerId + 0xC));
+    init_item_window_object(*gItemWindowObjectByPlayerId);
+    init_item_window_object(*(gItemWindowObjectByPlayerId + 4));
+    init_item_window_object(*(gItemWindowObjectByPlayerId + 8));
+    init_item_window_object(*(gItemWindowObjectByPlayerId + 0xC));
     D_8018CA70->unk18C = 1.5f;
     D_8018CA70->unk108 = (f32) D_8018CA70->unk18C;
     D_8018CA70->unk84 = (f32) D_8018CA70->unk18C;
     D_8018CA70->unknownScaling = D_8018CA70->unk18C;
-    D_8018D158 = (s32) D_8018EDF3;
+    D_8018D158 = (s32) gNbPlayers;
     D_8018D3C4 = 0x00000014;
     D_8018D3BC = 0x00000010;
     D_8018D3C0 = 0x0000001E;
     D_801657A2 = 0x0888;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_8006E9C0/func_80071C28.s")
+GLOBAL_ASM("asm/non_matchings/code_8006E9C0/init_hud_three_four_player.s")
 #endif

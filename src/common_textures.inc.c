@@ -797,7 +797,7 @@ Vtx D_0D0054B0[] = {
     {{{    -6,      95,       0}, 0, {0, 12224}, {0xff, 0x80, 0x00, 0xff}}},
 };
 
-Vtx D_0D005770[] = {
+Vtx vtx_rectangle[] = {
     {{{    -8,      -8,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,      -8,       0}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     7,       7,       0}, 0, {960, 960}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1194,74 +1194,74 @@ Gfx D_0D006930[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx D_0D006940[] = {
+Gfx rectangle_display[] = {
     gsSP2Triangles(0, 2, 1, 0, 0, 3, 2, 0),
     gsSPEndDisplayList(),
 };
 
 Gfx D_0D006950[] = {
     gsSPVertex(D_0D005470, 4, 0),
-    gsSPDisplayList(D_0D006940),
+    gsSPDisplayList(rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_0D006968[] = {
     gsSPVertex(D_0D0054B0, 4, 0),
-    gsSPDisplayList(D_0D006940),
+    gsSPDisplayList(rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_0D006980[] = {
-    gsSPVertex(D_0D005770, 4, 0),
-    gsSPDisplayList(D_0D006940),
+    gsSPVertex(vtx_rectangle, 4, 0),
+    gsSPDisplayList(rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_0D006998[] = {
     gsSPVertex(D_0D0057B0, 4, 0),
-    gsSPDisplayList(D_0D006940),
+    gsSPDisplayList(rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_0D0069B0[] = {
     gsSPVertex(D_0D0057F0, 4, 0),
-    gsSPDisplayList(D_0D006940),
+    gsSPDisplayList(rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_0D0069C8[] = {
     gsSPVertex(D_0D005AA0, 4, 0),
-    gsSPDisplayList(D_0D006940),
+    gsSPDisplayList(rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_0D0069E0[] = {
     gsSPVertex(D_0D005AE0, 4, 0),
-    gsSPDisplayList(D_0D006940),
+    gsSPDisplayList(rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_0D0069F8[] = {
     gsSPVertex(D_0D005B20, 4, 0),
-    gsSPDisplayList(D_0D006940),
+    gsSPDisplayList(rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_0D006A10[] = {
     gsSPVertex(D_0D005B60, 4, 0),
-    gsSPDisplayList(D_0D006940),
+    gsSPDisplayList(rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_0D006A28[] = {
     gsSPVertex(D_0D0058E0, 4, 0),
-    gsSPDisplayList(D_0D006940),
+    gsSPDisplayList(rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_0D006A40[] = {
     gsSPVertex(D_0D005920, 4, 0),
-    gsSPDisplayList(D_0D006940),
+    gsSPDisplayList(rectangle_display),
     gsSPEndDisplayList(),
 };
 

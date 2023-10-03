@@ -44,8 +44,8 @@ glabel func_800519D4
 /* 052678 80051A78 ACA90000 */  sw    $t1, ($a1)
 /* 05267C 80051A7C AC4A0000 */  sw    $t2, ($v0)
 /* 052680 80051A80 8E0B0074 */  lw    $t3, 0x74($s0)
-/* 052684 80051A84 3C0E0D00 */  lui   $t6, %hi(D_0D006940) # $t6, 0xd00
-/* 052688 80051A88 25CE6940 */  addiu $t6, %lo(D_0D006940) # addiu $t6, $t6, 0x6940
+/* 052684 80051A84 3C0E0D00 */  lui   $t6, %hi(rectangle_display) # $t6, 0xd00
+/* 052688 80051A88 25CE6940 */  addiu $t6, %lo(rectangle_display) # addiu $t6, $t6, 0x6940
 /* 05268C 80051A8C AC4B0004 */  sw    $t3, 4($v0)
 /* 052690 80051A90 8CA20000 */  lw    $v0, ($a1)
 /* 052694 80051A94 3C0D0600 */  lui   $t5, 0x600

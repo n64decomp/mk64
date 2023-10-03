@@ -54,7 +54,7 @@ glabel L80081B80
 /* 08279C 80081B9C 0C01C922 */  jal   func_80072488
 /* 0827A0 80081BA0 02202025 */   move  $a0, $s1
 /* 0827A4 80081BA4 02202025 */  move  $a0, $s1
-/* 0827A8 80081BA8 0C01C870 */  jal   set_obj_index_flag_unk_054
+/* 0827A8 80081BA8 0C01C870 */  jal   set_object_flag_unk_054_true
 /* 0827AC 80081BAC 24050200 */   li    $a1, 512
 /* 0827B0 80081BB0 10000002 */  b     .L80081BBC
 /* 0827B4 80081BB4 00000000 */   nop   
@@ -122,7 +122,7 @@ glabel L80081C44
 /* 08288C 80081C8C 24050200 */  li    $a1, 512
 /* 082890 80081C90 5580001F */  bnel  $t4, $zero, .L80081D10
 /* 082894 80081C94 28610002 */   slti  $at, $v1, 2
-/* 082898 80081C98 0C01C87A */  jal   func_800721E8
+/* 082898 80081C98 0C01C87A */  jal   set_object_flag_unk_054_false
 /* 08289C 80081C9C AFA60034 */   sw    $a2, 0x34($sp)
 /* 0828A0 80081CA0 0C01C90A */  jal   func_80072428
 /* 0828A4 80081CA4 02202025 */   move  $a0, $s1

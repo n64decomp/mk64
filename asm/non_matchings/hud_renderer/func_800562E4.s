@@ -50,8 +50,8 @@ glabel func_800562E4
 /* 056FA4 800563A4 AC580000 */  sw    $t8, ($v0)
 /* 056FA8 800563A8 AC590004 */  sw    $t9, 4($v0)
 /* 056FAC 800563AC 8CA20000 */  lw    $v0, ($a1)
-/* 056FB0 800563B0 3C0C0D00 */  lui   $t4, %hi(D_0D006940) # $t4, 0xd00
-/* 056FB4 800563B4 258C6940 */  addiu $t4, %lo(D_0D006940) # addiu $t4, $t4, 0x6940
+/* 056FB0 800563B0 3C0C0D00 */  lui   $t4, %hi(rectangle_display) # $t4, 0xd00
+/* 056FB4 800563B4 258C6940 */  addiu $t4, %lo(rectangle_display) # addiu $t4, $t4, 0x6940
 /* 056FB8 800563B8 244A0008 */  addiu $t2, $v0, 8
 /* 056FBC 800563BC ACAA0000 */  sw    $t2, ($a1)
 /* 056FC0 800563C0 3C0B0600 */  lui   $t3, 0x600

@@ -222,7 +222,7 @@ glabel L80070848
 /* 071684 80070A84 2631C0B0 */  addiu $s1, %lo(D_8018C0B0) # addiu $s1, $s1, -0x3f50
 /* 071688 80070A88 2610C030 */  addiu $s0, %lo(D_8018C030) # addiu $s0, $s0, -0x3fd0
 .L80070A8C:
-/* 07168C 80070A8C 0C01C7DB */  jal   func_80071F6C
+/* 07168C 80070A8C 0C01C7DB */  jal   delete_object
 /* 071690 80070A90 02002025 */   move  $a0, $s0
 /* 071694 80070A94 26100004 */  addiu $s0, $s0, 4
 /* 071698 80070A98 1611FFFC */  bne   $s0, $s1, .L80070A8C
@@ -244,7 +244,7 @@ glabel L80070AA8
 /* 0716D4 80070AD4 24C67DB8 */  addiu $a2, %lo(d_course_banshee_boardwalk_bat) # addiu $a2, $a2, 0x7db8
 /* 0716D8 80070AD8 24A57BB8 */  addiu $a1, %lo(d_course_banshee_boardwalk_bat_tlut) # addiu $a1, $a1, 0x7bb8
 /* 0716DC 80070ADC 24070020 */  li    $a3, 32
-/* 0716E0 80070AE0 0C01CD11 */  jal   func_80073444
+/* 0716E0 80070AE0 0C01CD11 */  jal   init_texture_object
 /* 0716E4 80070AE4 02002025 */   move  $a0, $s0
 /* 0716E8 80070AE8 241600E0 */  li    $s6, 224
 /* 0716EC 80070AEC 02160019 */  multu $s0, $s6
@@ -603,10 +603,10 @@ glabel L80071024
 /* 071C24 80071024 3C0C800E */  lui   $t4, %hi(gGamestate) # $t4, 0x800e
 /* 071C28 80071028 8D8CC50C */  lw    $t4, %lo(gGamestate)($t4)
 /* 071C2C 8007102C 24010009 */  li    $at, 9
-/* 071C30 80071030 3C028019 */  lui   $v0, %hi(D_8018EDF3) # $v0, 0x8019
+/* 071C30 80071030 3C028019 */  lui   $v0, %hi(gNbPlayers) # $v0, 0x8019
 /* 071C34 80071034 118100F2 */  beq   $t4, $at, .L80071400
 /* 071C38 80071038 3C118018 */   lui   $s1, %hi(D_80183EA0) # $s1, 0x8018
-/* 071C3C 8007103C 8042EDF3 */  lb    $v0, %lo(D_8018EDF3)($v0)
+/* 071C3C 8007103C 8042EDF3 */  lb    $v0, %lo(gNbPlayers)($v0)
 /* 071C40 80071040 24030001 */  li    $v1, 1
 /* 071C44 80071044 26313EA0 */  addiu $s1, %lo(D_80183EA0) # addiu $s1, $s1, 0x3ea0
 /* 071C48 80071048 10620006 */  beq   $v1, $v0, .L80071064
