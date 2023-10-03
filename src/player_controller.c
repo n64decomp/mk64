@@ -3227,7 +3227,7 @@ void func_80030C34(Player *player) {
     if (player == gPlayerEight) {
         var_v0 = 7;
     }
-    if (gIsPlayerTripleA[var_v0] == FALSE) {
+    if (gIsPlayerTripleAButtonCombo[var_v0] == FALSE) {
         if (gPlayerIsThrottleActive[var_v0] == 1) {
             if ((D_80165420[var_v0] < 2) || (D_80165420[var_v0] >= 9)) {
                 D_80165440[var_v0] = 0;
@@ -3247,7 +3247,7 @@ void func_80030C34(Player *player) {
             D_80165400[var_v0] = 1;
         }
         if (D_80165440[var_v0] == 5) {
-            gIsPlayerTripleA[var_v0] = TRUE;
+            gIsPlayerTripleAButtonCombo[var_v0] = TRUE;
             D_80165480[var_v0] = 0x00000078;
             D_80165440[var_v0] = 0;
             D_80165420[var_v0] = 0;
@@ -3255,7 +3255,7 @@ void func_80030C34(Player *player) {
     } else {
         D_80165480[var_v0]--;
         if (D_80165480[var_v0] <= 0) {
-            gIsPlayerTripleA[var_v0] = FALSE;
+            gIsPlayerTripleAButtonCombo[var_v0] = FALSE;
         }
     }
 }
@@ -3287,7 +3287,7 @@ void func_80030E00(Player *player) {
     if (player == gPlayerEight) {
         var_v0 = 7;
     }
-    if (gIsPlayerTripleA[var_v0] == FALSE) {
+    if (gIsPlayerTripleAButtonCombo[var_v0] == FALSE) {
         if (gPlayerIsThrottleActive[var_v0] == 0) {
             if ((D_80165420[var_v0] < 2) || (D_80165420[var_v0] >= 9)) {
                 D_80165440[var_v0] = 0;
@@ -3307,7 +3307,7 @@ void func_80030E00(Player *player) {
             D_80165400[var_v0] = 1;
         }
         if (D_80165440[var_v0] == 5) {
-            gIsPlayerTripleA[var_v0] = TRUE;
+            gIsPlayerTripleAButtonCombo[var_v0] = TRUE;
             D_80165480[var_v0] = 0x00000078;
             D_80165440[var_v0] = 0;
             D_80165420[var_v0] = 0;
@@ -3315,7 +3315,7 @@ void func_80030E00(Player *player) {
     } else {
         D_80165480[var_v0]--;
         if (D_80165480[var_v0] <= 0) {
-            gIsPlayerTripleA[var_v0] = FALSE;
+            gIsPlayerTripleAButtonCombo[var_v0] = FALSE;
         }
     }
 }
@@ -3324,7 +3324,7 @@ void player_speed(Player *player) {
     s32 player_index;
 
     player_index = get_player_index_for_player(player);
-    if (gIsPlayerTripleA[player_index] == FALSE) {
+    if (gIsPlayerTripleAButtonCombo[player_index] == FALSE) {
         if ((0.0                     <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.1))) {
             player->currentSpeed += gKartAccelerationTables[player->characterId][0] + (0.05 * (player->slopeAccel / 182));
         }

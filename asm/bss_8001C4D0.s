@@ -175,7 +175,7 @@ glabel D_80165420
 glabel D_80165440
 .skip 32
 
-glabel gIsPlayerTripleA
+glabel gIsPlayerTripleAButtonCombo
 .skip 32
 
 glabel D_80165480

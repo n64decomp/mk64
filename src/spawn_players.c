@@ -218,7 +218,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
 
     D_80165420[idx] = 0;
     D_80165440[idx] = 0;
-    gIsPlayerTripleA[idx] = FALSE;
+    gIsPlayerTripleAButtonCombo[idx] = FALSE;
     D_80165480[idx] = 0;
     D_801654E0[idx] = 0;
     D_80165500[idx] = 0;

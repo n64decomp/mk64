@@ -139,7 +139,7 @@ extern s16 D_80165190[4][8];
 extern f32 D_80165280[];
 extern s32 D_80165420[];
 extern s32 D_80165440[];
-extern s32 gIsPlayerTripleA[];
+extern s32 gIsPlayerTripleAButtonCombo[];
 extern s32 D_80165480[];
 extern s8  D_801658BC;
 extern s32 D_8018D900[];

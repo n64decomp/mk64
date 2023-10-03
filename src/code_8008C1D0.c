@@ -303,7 +303,7 @@ void func_8008C73C(Player *player, s8 arg1) {
         D_80165190[3][arg1] = 1;
         D_80165280[arg1] = player->currentSpeed;
         D_80165480[arg1] = 0;
-        gIsPlayerTripleA[arg1] = FALSE;
+        gIsPlayerTripleAButtonCombo[arg1] = FALSE;
         D_80165440[arg1] = 0;
         D_80165420[arg1] = 0;
         D_8018D920[arg1] = 0;
@@ -332,7 +332,7 @@ void func_8008C8C4(Player* player, s8 playerId) {
 
     player->unk_046 &= 0xFFBF;
 
-    if ((gIsPlayerTripleA[playerId] == TRUE) && ((player->type & 0x4000) == 0x4000)) {
+    if ((gIsPlayerTripleAButtonCombo[playerId] == TRUE) && ((player->type & 0x4000) == 0x4000)) {
         player->currentSpeed = (f32) (player->currentSpeed + 100.0f);
     }
     if ((gModeSelection == VERSUS) && ((player->type & 0x1000) == 0x1000) && (!gDemoMode) && ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[playerId] != 0)) {
@@ -386,7 +386,7 @@ void func_8008C9EC(Player *player, s8 arg1) {
             }
         }
     }
-    if ((gIsPlayerTripleA[arg1] == TRUE) && ((player->type & 0x4000) == 0x4000)) {
+    if ((gIsPlayerTripleAButtonCombo[arg1] == TRUE) && ((player->type & 0x4000) == 0x4000)) {
         D_80165480[arg1] = 0x00000078;
         if (player->currentSpeed <= 90.0f) {
             player->currentSpeed = 90.0f;
@@ -977,7 +977,7 @@ void func_8008E4A4(Player* player, s8 arg1) {
         player->unk_042 = 0;
         player->type &= ~0x80;
 
-        if ((gIsPlayerTripleA[arg1] == TRUE) && ((player->type & 0x4000) == 0x4000)) {
+        if ((gIsPlayerTripleAButtonCombo[arg1] == TRUE) && ((player->type & 0x4000) == 0x4000)) {
             player->currentSpeed += 100.0f;
         }
         if (gModeSelection == BATTLE) {
@@ -1000,7 +1000,7 @@ void func_8008E4A4(Player* player, s8 arg1) {
                 if (gModeSelection == BATTLE) {
                     func_8006B8B4(player, arg1);
                 }
-                if ((gIsPlayerTripleA[arg1] == TRUE) && ((player->type & 0x4000) == 0x4000)) {
+                if ((gIsPlayerTripleAButtonCombo[arg1] == TRUE) && ((player->type & 0x4000) == 0x4000)) {
                     player->currentSpeed += 100.0f;
                 }
 
@@ -1047,7 +1047,7 @@ void func_8008E6C0(Player *player, s8 arg1)
     player->statusEffects &= ~0x00480000;
     player->unk_0B6 |= 0x40;
     D_80165480[arg1] = 0;
-    gIsPlayerTripleA[arg1] = FALSE;
+    gIsPlayerTripleAButtonCombo[arg1] = FALSE;
     D_80165440[arg1] = 0;
     D_80165420[arg1] = 0;
 }
@@ -1088,7 +1088,7 @@ void func_8008E8D8(Player *player, s8 arg1) {
         D_80165190[2][arg1] = 1;
         player->unk_042 = 0;
 
-        if ((gIsPlayerTripleA[arg1] == TRUE) && ((player->type & 0x4000) == 0x4000)) {
+        if ((gIsPlayerTripleAButtonCombo[arg1] == TRUE) && ((player->type & 0x4000) == 0x4000)) {
             player->currentSpeed += 100.0f;
         }
 
@@ -1108,7 +1108,7 @@ void func_8008E8D8(Player *player, s8 arg1) {
                 D_80165190[2][arg1] = 1;
                 D_80165190[3][arg1] = 1;
                 player->unk_042 = 0;
-                if ((gIsPlayerTripleA[arg1] == TRUE) && ((player->type & 0x4000) == 0x4000)) {
+                if ((gIsPlayerTripleAButtonCombo[arg1] == TRUE) && ((player->type & 0x4000) == 0x4000)) {
                     player->currentSpeed += 100.0f;
                 }
 
@@ -1147,7 +1147,7 @@ void func_8008EAE0(Player* player, s8 arg1) {
     player->statusEffects &= ~0x01000002;
 
     D_80165480[arg1] = 0;
-    gIsPlayerTripleA[arg1] = FALSE;
+    gIsPlayerTripleAButtonCombo[arg1] = FALSE;
     D_80165440[arg1] = 0;
     D_80165420[arg1] = 0;
 }
