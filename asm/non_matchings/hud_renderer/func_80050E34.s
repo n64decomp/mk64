@@ -117,7 +117,7 @@ glabel func_80050E34
 /* 051BEC 80050FEC AFAD00D4 */  sw    $t5, 0xd4($sp)
 /* 051BF0 80050FF0 2484DAD8 */  addiu $a0, %lo(gTexturePortraitQuestionMark) # addiu $a0, $a0, -0x2528
 /* 051BF4 80050FF4 24050020 */  li    $a1, 32
-/* 051BF8 80050FF8 0C0114A9 */  jal   func_800452A4
+/* 051BF8 80050FF8 0C0114A9 */  jal   rsp_load_texture
 /* 051BFC 80050FFC 24060020 */   li    $a2, 32
 /* 051C00 80051000 8FAD00D4 */  lw    $t5, 0xd4($sp)
 /* 051C04 80051004 3C0E8016 */  lui   $t6, %hi(gObjectList) # $t6, 0x8016
@@ -252,7 +252,7 @@ glabel func_80050E34
 /* 051DFC 800511FC 008A2021 */  addu  $a0, $a0, $t2
 /* 051E00 80051200 8C84459C */  lw    $a0, %lo(gPortraitTextures)($a0)
 /* 051E04 80051204 24050020 */  li    $a1, 32
-/* 051E08 80051208 0C0114A9 */  jal   func_800452A4
+/* 051E08 80051208 0C0114A9 */  jal   rsp_load_texture
 /* 051E0C 8005120C 24060020 */   li    $a2, 32
 /* 051E10 80051210 8FAF00D0 */  lw    $t7, 0xd0($sp)
 /* 051E14 80051214 8FB900C4 */  lw    $t9, 0xc4($sp)
@@ -347,7 +347,7 @@ glabel func_80050E34
 /* 051F70 80051370 2739A058 */  addiu $t9, %lo(gTextureHudTypeCRankTinyFont) # addiu $t9, $t9, -0x5fa8
 /* 051F74 80051374 000E7980 */  sll   $t7, $t6, 6
 /* 051F78 80051378 25F80040 */  addiu $t8, $t7, 0x40
-/* 051F7C 8005137C 0C0114A9 */  jal   func_800452A4
+/* 051F7C 8005137C 0C0114A9 */  jal   rsp_load_texture
 /* 051F80 80051380 03192021 */   addu  $a0, $t8, $t9
 /* 051F84 80051384 8FAE00B8 */  lw    $t6, 0xb8($sp)
 /* 051F88 80051388 8FA400D0 */  lw    $a0, 0xd0($sp)

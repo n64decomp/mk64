@@ -441,12 +441,12 @@ void func_800450C8(u8 *image, s32 width, s32 height) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800450C8.s")
 #endif
 
-void func_800452A4(u8 *texture, s32 width, s32 height) {
+void rsp_load_texture(u8 *texture, s32 width, s32 height) {
     gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_CI, G_IM_SIZ_8b, width, height, 0,
         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
 
-void func_8004544C(u8 *texture, s32 width, s32 height, s32 someMask) {
+void rsp_load_texture_mask(u8 *texture, s32 width, s32 height, s32 someMask) {
     gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_CI, G_IM_SIZ_8b, width, height, 0,
         G_TX_MIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_CLAMP, someMask, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
@@ -876,13 +876,13 @@ UNUSED void func_80046DF4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *
 void func_80046E60(u8 *tlut, u8 *texture, s32 width, s32 height) {
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
-    func_800452A4(texture, width, height);
+    rsp_load_texture(texture, width, height);
 }
 
 void func_80046F60(u8 *tlut, u8 *arg1, s32 arg2, s32 arg3, s32 arg4) {
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
-    func_8004544C(arg1, arg2, arg3, arg4);
+    rsp_load_texture_mask(arg1, arg2, arg3, arg4);
 }
 
 void func_80047068(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, s32 width, s32 height) {
@@ -892,7 +892,7 @@ void func_80047068(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, 
 
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
     for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
-        func_800452A4(img, width, height);
+        rsp_load_texture(img, width, height);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
         gSPDisplayList(gDisplayListHead++, rectangle_display);
         img += width * height;
@@ -901,14 +901,14 @@ void func_80047068(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, 
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void func_80047270(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, s32 width, s32 height) {
+void draw_rectangle_texture_overlap(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, s32 width, s32 height) {
     s32 heightIndex;
     s32 vertexIndex = 0;
     u8 *img = texture;
 
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
     for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
-        func_800452A4(img, width, height);
+        rsp_load_texture(img, width, height);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
         gSPDisplayList(gDisplayListHead++, rectangle_display);
         img += width * (height - 1);
@@ -924,7 +924,7 @@ void func_8004747C(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, 
 
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
     for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
-        func_8004544C(img, width, height, someMask);
+        rsp_load_texture_mask(img, width, height, someMask);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
         gSPDisplayList(gDisplayListHead++, rectangle_display);
         img += width * (height - 1);
@@ -941,7 +941,7 @@ void func_8004768C(u8 *tlut, u8 *texture, Vtx *arg2, s32 arg3, s32 width, s32 he
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
     for (heightIndex = 0; heightIndex < arg3 / height; heightIndex++) {
         // Something seems off about arguments here, but if it matches it matches
-        func_800452A4(img, height, width);
+        rsp_load_texture(img, height, width);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
         gSPDisplayList(gDisplayListHead++, rectangle_display);
         img += height * width;
@@ -956,16 +956,16 @@ void func_8004788C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture
     func_80047068(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
-void func_80047910(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042330(arg0, arg1, arg2, arg3);
+void func_80047910(s32 x, s32 y, u16 angle, f32 size, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+    func_80042330(x, y, angle, size);
     gSPDisplayList(gDisplayListHead++, D_0D007CD8);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_80047994(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007CF8);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_80047A18(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
@@ -977,7 +977,7 @@ void func_80047A18(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture
 void func_80047A9C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007D38);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 UNUSED void func_80047B20(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9) {
@@ -997,7 +997,7 @@ UNUSED void func_80047C28(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007DD8);
     set_transparency(arg4);
-    func_80047270(tlut, texture, arg7, arg8, arg9, argA, argB);
+    draw_rectangle_texture_overlap(tlut, texture, arg7, arg8, arg9, argA, argB);
 }
 
 void func_80047CB4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *tlut, u8 *texture, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
@@ -1011,7 +1011,7 @@ UNUSED void func_80047D40(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007E58);
     set_transparency(arg4);
-    func_80047270(tlut, texture, arg7, arg8, arg9, argA, argB);
+    draw_rectangle_texture_overlap(tlut, texture, arg7, arg8, arg9, argA, argB);
 }
 
 UNUSED void func_80047DCC(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
@@ -1023,7 +1023,7 @@ UNUSED void func_80047DCC(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *textu
 void func_80047E48(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007CD8);
-    func_80047270(tlut, texture, arg5, arg6, arg7, arg8, arg9);
+    draw_rectangle_texture_overlap(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 UNUSED void func_80047EC4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
@@ -1035,13 +1035,13 @@ UNUSED void func_80047EC4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *textu
 void func_80047F40(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D38);
-    func_80047270(tlut, texture, arg5, arg6, arg7, arg8, arg9);
+    draw_rectangle_texture_overlap(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 UNUSED void func_80047FBC(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D58);
-    func_80047270(tlut, texture, arg5, arg6, arg7, arg8, arg9);
+    draw_rectangle_texture_overlap(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 UNUSED void func_80048038(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
@@ -1053,7 +1053,7 @@ UNUSED void func_80048038(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *textu
 void func_800480B4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
-    func_80047270(tlut, texture, arg5, arg6, arg7, arg8, arg9);
+    draw_rectangle_texture_overlap(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 void func_80048130(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
@@ -1079,7 +1079,7 @@ void func_800482AC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *te
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007DD8);
     set_transparency(arg3);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 UNUSED void func_80048330(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
@@ -1093,7 +1093,7 @@ void func_800483B4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *te
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E58);
     set_transparency(arg3);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_80048438(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
@@ -1107,14 +1107,14 @@ void func_800484BC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *te
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E18);
     set_transparency(arg3);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_80048540(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E98);
     set_transparency(arg3);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_800485C4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
@@ -1124,7 +1124,7 @@ void func_800485C4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *te
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
     set_transparency(arg3);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
     
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
 }
@@ -2422,7 +2422,7 @@ void func_8004DF5C(s32 arg0, s32 arg1, u8 *texture, s32 width, s32 arg4, s32 hei
     s32 i;
     
     for (i = 0; i < arg4 / height; i++) {
-            func_800452A4(img, width, height);
+            rsp_load_texture(img, width, height);
             func_8004B97C(arg0 - (width / 2), var_s0, width, height, 1);
             img += width * height;
             var_s0 += height;
@@ -2458,7 +2458,7 @@ void func_8004E06C(s32 arg0, s32 arg1, u8 *texture, s32 arg3, s32 arg4) {
             temp_s0 = var_s1;
             temp_s6 = (u32) ((sins(temp_s0) * temp_f20) + (f32) (arg0 - var));
             sins(temp_s0);
-            func_800452A4(img, arg3, 1);
+            rsp_load_texture(img, arg3, 1);
             func_8004B97C(temp_s6, var_s4, arg3, 1, 1);
             var_s1 += temp_s7;
             img += arg3;
@@ -3067,14 +3067,14 @@ void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 characterId, s32 
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
         func_8004B35C(0x000000FF, 0x000000FF, 0x000000FF, D_8018D3E0);
         gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTPortraitBombKartAndQuestionMark);
-        func_800452A4(gTexturePortraitQuestionMark, 0x00000020, 0x00000020);
+        rsp_load_texture(gTexturePortraitQuestionMark, 0x00000020, 0x00000020);
         gSPDisplayList(gDisplayListHead++, D_0D0069E0);
     } else {
         func_80042330(arg0, arg1, 0U, 1.0f);
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
         func_8004B35C(0x000000FF, 0x000000FF, 0x000000FF, arg5);
         gDPLoadTLUT_pal256(gDisplayListHead++, gPortraitTLUTs[characterId]);
-        func_800452A4(gPortraitTextures[characterId], 0x00000020, 0x00000020);
+        rsp_load_texture(gPortraitTextures[characterId], 0x00000020, 0x00000020);
         if (arg7 != 0) {
             gSPDisplayList(gDisplayListHead++, D_0D0069F8);
         } else {
@@ -3091,7 +3091,7 @@ void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 characterId, s32 
         func_8004B35C(0x000000FF, 0x000000FF, 0x000000FF, arg5);
         gSPDisplayList(gDisplayListHead++, D_0D007CB8);
         gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTHudTypeCRankFont);
-        func_800452A4(gTextureHudTypeCRankFont[arg2], 0x00000010, 0x00000010);
+        rsp_load_texture(gTextureHudTypeCRankFont[arg2], 0x00000010, 0x00000010);
         if (arg7 != 0) {
             func_80042330((s32) (arg0 + 9.0f), (s32) (arg1 + 7.0f), 0U, 1.0f);
         } else {
@@ -3368,7 +3368,7 @@ void func_80050C68(void) {
             func_800507D8(var_s1, &sp88, &sp84);
             gSPDisplayList(gDisplayListHead++, D_0D007DB8);
             gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTPortraitBombKartAndQuestionMark);
-            func_800452A4(gTexturePortraitBombKart, 0x00000020, 0x00000020);
+            rsp_load_texture(gTexturePortraitBombKart, 0x00000020, 0x00000020);
             func_80042330(sp88 + 0x20, sp84 + 0x12, 0U, 0.6f);
             gSPDisplayList(gDisplayListHead++, D_0D0069E0);
         }
@@ -3413,7 +3413,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
     if ((gCurrentCourseId == COURSE_YOSHI_VALLEY) && (lapCount < 3)) {
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
         gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTPortraitBombKartAndQuestionMark);
-        func_800452A4(gTexturePortraitQuestionMark, 0x00000020, 0x00000020);
+        rsp_load_texture(gTexturePortraitQuestionMark, 0x00000020, 0x00000020);
         object = &gObjectList[objectIndex];
         object->pos[0] = object->unk_028[0] + ((f32) (spD0 + 0x20));
         object->pos[1] = object->unk_028[1] + ((f32) (spC4 + spCC));
@@ -3428,7 +3428,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
         } else {
             set_transparency((s32) gObjectList[objectIndex].unk_0A0);
         }
-        func_800452A4(gPortraitTextures[characterId], 0x00000020, 0x00000020);
+        rsp_load_texture(gPortraitTextures[characterId], 0x00000020, 0x00000020);
         object = &gObjectList[objectIndex];
         object->pos[0] = object->unk_028[0] + ((f32) (spD0 + 0x20));
         object->pos[1] = object->unk_028[1] + ((f32) (spC4 + spCC));
@@ -3440,7 +3440,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
             gSPDisplayList(gDisplayListHead++, D_0D0069E0);
         }
         gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTHudTypeCRankTinyFont);
-        func_800452A4(gTextureHudTypeCRankTinyFont[arg1 + 1], 8, 8);
+        rsp_load_texture(gTextureHudTypeCRankTinyFont[arg1 + 1], 8, 8);
         if (spB8 != 0) {
             func_80042330(spD0 + 0x26, (spC4 + spCC) + 4, 0U, 1.0f);
         } else {
@@ -4417,7 +4417,7 @@ void func_800536C8(s32 objectIndex) {
         gSPDisplayList(gDisplayListHead++, D_0D007828);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
         gDPLoadTLUT_pal256(gDisplayListHead++, d_course_bowsers_castle_thwomp_tlut);
-        func_8004544C(gObjectList[objectIndex].activeTexture, 0x00000010, 0x00000040, 4);
+        rsp_load_texture_mask(gObjectList[objectIndex].activeTexture, 0x00000010, 0x00000040, 4);
         gSPDisplayList(gDisplayListHead++, gObjectList[objectIndex].unk_070);
     }
 }
@@ -4608,14 +4608,14 @@ void func_80053E6C(s32 arg0) {
     func_8004B614(0, 0, 0, 0, 0, 0, 0);
     D_80183E80[0] = 0;
     D_80183E80[1] = 0x8000;
-    func_800452A4(D_8018D4BC, 0x40, 0x20);
+    rsp_load_texture(D_8018D4BC, 0x40, 0x20);
     for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
         objectIndex = D_8018C630[var_s1];
         if ((objectIndex != -1) && (gObjectList[objectIndex].itemDisplayState >= 2)) {
             func_80053D74(objectIndex, arg0, 0);
         }
     }
-    func_800452A4(D_8018D4C0, 0x40, 0x20);
+    rsp_load_texture(D_8018D4C0, 0x40, 0x20);
     for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
         objectIndex = D_8018C630[var_s1];
         if ((objectIndex != -1) && (gObjectList[objectIndex].itemDisplayState >= 2)) {
@@ -5351,7 +5351,7 @@ void func_800563DC(s32 objectIndex, s32 cameraId, s32 arg2) {
     temp_v0_2->words.w0 = 0x06000000;
     temp_v0_2->words.w1 = (u32) D_0D007E98;
     func_8004B310(arg2);
-    func_80047270(D_0D02A858, (temp_s0 << 0xA) + D_0D029858, D_0D005AE0, 0x00000020, 0x00000020, 0x00000020, 0x00000020);
+    draw_rectangle_texture_overlap(D_0D02A858, (temp_s0 << 0xA) + D_0D029858, D_0D005AE0, 0x00000020, 0x00000020, 0x00000020, 0x00000020);
     temp_v0_3 = gDisplayListHead;
     temp_s0_2 = D_8018D400;
     gDisplayListHead = temp_v0_3 + 8;

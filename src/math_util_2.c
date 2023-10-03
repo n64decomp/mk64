@@ -942,6 +942,13 @@ void vec_rotate_x_y(Vec3f dest, Vec3f pos, Vec3s rot) {
     dest[2] = ((sp2C * cosine1 * sine2) - (sp28 * sine1)) + (sp24 * cosine1 * cosine2);
 }
 
+/**
+ * @brief set the matrix to a transformation matrix
+ * 
+ * @param translate or position
+ * @param orientation 
+ * @param scale 
+ */
 void rsp_set_matrix_transformation(Vec3f translate, Vec3su orientation, f32 scale) {
     Mat4 matrix;
 

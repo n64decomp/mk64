@@ -3743,10 +3743,10 @@ void func_8007AA44(s32 playerId) {
     }
 }
 
-void func_8007ABFC(s32 playerId, s32 arg1) {
+void func_8007ABFC(s32 playerId, bool arg1) {
     s32 itemWindow;
 
-    if (D_8018CA70[playerId].raceCompleteBool == 0) {
+    if (D_8018CA70[playerId].raceCompleteBool == FALSE) {
         itemWindow = gItemWindowObjectByPlayerId[playerId];
         if (func_80072354(itemWindow, 4) != 0) {
             func_800723A4(itemWindow, 0);
