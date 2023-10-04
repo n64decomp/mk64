@@ -26,7 +26,7 @@ struct unexpiredActors {
 };
 
 /* Function Prototypes */
-
+void func_8000BA14(u16, f32, f32, s16);
 void func_80014BDC(void);
 void func_80014A88(void);
 void func_80014934(void);
@@ -175,7 +175,7 @@ extern struct unexpiredActors gUnexpiredActorsList[];
 extern s16 D_8016348C;
 extern s32 D_801643E0[];
 extern s32 D_80164408[];
-extern s16 D_80164670;
+extern s16 D_80164670[];
 extern s16 D_80164672;
 extern s16 D_80164674;
 extern s16 D_80164676;
