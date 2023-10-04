@@ -335,7 +335,7 @@ void func_8008C8C4(Player* player, s8 playerId) {
     if ((gIsPlayerTripleAButtonCombo[playerId] == TRUE) && ((player->type & 0x4000) == 0x4000)) {
         player->currentSpeed = (f32) (player->currentSpeed + 100.0f);
     }
-    if ((gModeSelection == VERSUS) && ((player->type & 0x1000) == 0x1000) && (!gDemoMode) && ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[playerId] != 0)) {
+    if ((gModeSelection == VERSUS) && ((player->type & PLAYER_CPU) == PLAYER_CPU) && (!gDemoMode) && ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[playerId] != 0)) {
         player->statusEffects = (s32) (player->statusEffects | REVERSE_EFFECT);
     }
 }
@@ -1028,7 +1028,7 @@ void func_8008E6C0(Player *player, s8 arg1)
     player->unk_0E0 = 0;
 
     if (((player->type & 0x4000) == 0x4000) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
-        if (((gModeSelection == VERSUS) && ((player->type & 0x1000) != 0)) && (!gDemoMode)) {
+        if (((gModeSelection == VERSUS) && ((player->type & PLAYER_CPU) != 0)) && (!gDemoMode)) {
             func_800CA24C(arg1);
         }
 
@@ -1036,7 +1036,7 @@ void func_8008E6C0(Player *player, s8 arg1)
         }
 
         func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008005);
-        if (((gModeSelection == VERSUS) && ((player->type & 0x1000) != 0)) && (!gDemoMode)) {
+        if (((gModeSelection == VERSUS) && ((player->type & PLAYER_CPU) != 0)) && (!gDemoMode)) {
             func_800CA24C(arg1);
         }
         func_800C9060(arg1, SOUND_ACTION_EXPLOSION);
@@ -1866,7 +1866,7 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
         }
         break;
     case 1:
-        if (((player->type & 0x4000) == 0x4000) && ((player->type & 0x1000) == 0)) {
+        if (((player->type & 0x4000) == 0x4000) && ((player->type & PLAYER_CPU) == 0)) {
             func_8009E088(arg1, 0xA);
         }
         if ((player->unk_0CA & 1) == 1) {
@@ -1898,7 +1898,7 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
         break;
     case 3:
         D_80165330[arg1] = 0;
-        if (((player->type & 0x4000) == 0x4000) && ((player->type & 0x1000) == 0)) {
+        if (((player->type & 0x4000) == 0x4000) && ((player->type & PLAYER_CPU) == 0)) {
             func_8009E020(arg1, 0x14);
         }
         func_80090178(player, arg1, sp44, sp38);
@@ -1971,7 +1971,7 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
 
 s32 func_800910E4(Player *player) {
     s32 phi_v0 = 0;
-    if ((((((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) || ((player->type & 0x40) != 0)) || ((player->type & 0x800) != 0)) || ((player->type & 0x8000) == 0)) {
+    if ((((((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) || ((player->type & 0x40) != 0)) || ((player->type & PLAYER_CINEMATIC_MODE) != 0)) || ((player->type & PLAYER_EXISTS) == 0)) {
         return 1;
     }
 

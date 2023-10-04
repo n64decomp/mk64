@@ -500,7 +500,7 @@ void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
     s32 nearestWaypoint;
 
     player = &gPlayers[fruit->targetPlayer];
-    if (((player->type & 0x1000) != 0) || (player->unk_110.unk34 == 0)) {
+    if (((player->type & PLAYER_CPU) != 0) || (player->unk_110.unk34 == 0)) {
         fruit->state = 0;
         return;
     }
@@ -2740,7 +2740,7 @@ s32 func_8029F408(Player *player, struct YoshiValleyEgg *egg) {
             func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
         } else {
             func_8008DABC(player, player - gPlayerOne);
-            if ((gModeSelection == TIME_TRIALS) && ((player->type & 0x1000) == 0)) {
+            if ((gModeSelection == TIME_TRIALS) && ((player->type & PLAYER_CPU) == 0)) {
                 D_80162DF8 = 1;
             }
         }
@@ -3251,7 +3251,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
         if (!(player->effects & 0x80000000) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
             if (func_8029FB80(player, actor) == 1) {
                 func_800C98B8(actor->pos, actor->velocity, SOUND_ACTION_EXPLOSION);
-                if ((gModeSelection == TIME_TRIALS) && !(player->type & 0x1000)) {
+                if ((gModeSelection == TIME_TRIALS) && !(player->type & PLAYER_CPU)) {
                     D_80162DF8 = 1;
                 }
                 if (player->effects & 0x200) {

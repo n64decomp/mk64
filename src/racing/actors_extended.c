@@ -1476,7 +1476,7 @@ s16 func_802B3FD0(Player *owner, struct ShellActor *shell) {
 
     for (playerIndex = 0; playerIndex < 4; playerIndex++) {
         player = &gPlayers[playerIndex];
-        if ((player->type & 0x8000) == 0) {continue;}
+        if ((player->type & PLAYER_EXISTS) == 0) {continue;}
         if (player == owner) {continue; }
         if (gPlayerBalloonCount[playerIndex] < 0) { continue; }
             // func_802B51E8 is not quite a 3D distance function, it doubles (rather than squares) the Z difference of the positions

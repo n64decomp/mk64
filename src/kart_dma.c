@@ -1688,32 +1688,78 @@ u8 *gKartPalettes[] = {
  * The player struct tracks the texture indices to load.
  *
  * @param player
- * @param arg1 Appears to be character index; 0-7.
+ * @param playerId Appears to be character index; 0-7.
  * @param arg2 Rom buffer index appears to always be 0-3. Sometimes subtracted by 2.
  * @param arg3 Second buffer index appears to always be 0-3.
  * @param arg4 First buffer index always zero.
  **/
-void func_80027040(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
+void load_texture_player(Player *player, s8 playerId, s8 arg2, s8 arg3, s8 arg4) {
     s32 temp = player->effects;
     if (((temp & 0x80) == 0x80) || ((temp & 0x40) == 0x40) || ((temp & 0x80000) == 0x80000) || ((temp & 0x800000) == 0x800000) || ((temp & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0)) {
-        if (player->unk_244[arg2] != 0) {
-            osInvalDCache(&D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
-            osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable1[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], &D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId], &gDmaMesgQueue);
+        if (player->frameSelector[arg2] != 0) {
+            osInvalDCache(&D_802DFB80[arg4][arg3][playerId], D_800DDEB0[player->characterId]);
+
+            osPiStartDma(
+                &gDmaIoMesg,
+                OS_MESG_PRI_NORMAL, OS_READ,
+                (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
+                    gKartTextureTable1[player->characterId][player->groupSelector[arg2]][player->frameSelector[arg2]]
+                )],
+                &D_802DFB80[arg4][arg3][playerId],
+                D_800DDEB0[player->characterId],
+                &gDmaMesgQueue
+            );
+
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         } else {
-            osInvalDCache(&D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
-            osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], &D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId], &gDmaMesgQueue);
+            osInvalDCache(&D_802DFB80[arg4][arg3][playerId], D_800DDEB0[player->characterId]);
+
+            osPiStartDma(
+                &gDmaIoMesg,
+                OS_MESG_PRI_NORMAL,
+                OS_READ,
+                (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
+                    gKartTextureTable0[player->characterId][player->groupSelector[arg2]][player->frameSelector[arg2]]
+                )],
+                &D_802DFB80[arg4][arg3][playerId],
+                D_800DDEB0[player->characterId],
+                &gDmaMesgQueue
+            );
+
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         }
     } else if (((temp & 0x400) == 0x400) || ((temp & 0x01000000) == 0x01000000) || ((temp & 0x02000000) == 0x02000000) || ((temp & 0x10000) == 0x10000)) {
-        osInvalDCache(&D_802DFB80[arg4][arg3][arg1], 0x780U);
+        osInvalDCache(&D_802DFB80[arg4][arg3][playerId], 0x780U);
         // I think there's something off with the "player->unk_0A8 >> 8"
         // I don't like that right-shift
-        osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTumbles[player->characterId][player->unk_0A8 >> 8])], &D_802DFB80[arg4][arg3][arg1], 0x900, &gDmaMesgQueue);
+        osPiStartDma(
+            &gDmaIoMesg,
+            OS_MESG_PRI_NORMAL,
+            OS_READ,
+            (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
+                gKartTextureTumbles[player->characterId][player->unk_0A8 >> 8]
+            )],
+            &D_802DFB80[arg4][arg3][playerId],
+            0x900,
+            &gDmaMesgQueue
+        );
+
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     } else {
-        osInvalDCache(&D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
-        osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], &D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId], &gDmaMesgQueue);
+        osInvalDCache(&D_802DFB80[arg4][arg3][playerId], D_800DDEB0[player->characterId]);
+
+        osPiStartDma(
+            &gDmaIoMesg,
+            OS_MESG_PRI_NORMAL,
+            OS_READ,
+            (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
+                gKartTextureTable0[player->characterId][player->groupSelector[arg2]][player->frameSelector[arg2]]
+            )],
+            &D_802DFB80[arg4][arg3][playerId],
+            D_800DDEB0[player->characterId],
+            &gDmaMesgQueue
+        );
+
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
 }
@@ -1723,12 +1769,34 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
 
     if (((temp & 0x80) == 0x80) || ((temp & 0x40) == 0x40) || ((temp & 0x80000) == 0x80000) || ((temp & 0x800000) == 0x800000) || ((temp & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0))
     {
-        if (player->unk_244[arg2] != 0) {
+        if (player->frameSelector[arg2] != 0) {
             osInvalDCache(&D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
-            osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable1[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], &D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId], &gDmaMesgQueue);
+
+            osPiStartDma(
+                &gDmaIoMesg,
+                OS_MESG_PRI_NORMAL,
+                OS_READ,
+                (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
+                    gKartTextureTable1[player->characterId][player->groupSelector[arg2]][player->frameSelector[arg2]]
+                )],
+                &D_802DFB80[arg4][arg3][arg1],
+                D_800DDEB0[player->characterId],
+                &gDmaMesgQueue
+            );
         } else {
             osInvalDCache(&D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
-            osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], &D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId], &gDmaMesgQueue);
+
+            osPiStartDma(
+                &gDmaIoMesg,
+                OS_MESG_PRI_NORMAL,
+                OS_READ,
+                (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
+                    gKartTextureTable0[player->characterId][player->groupSelector[arg2]][player->frameSelector[arg2]]
+                )],
+                &D_802DFB80[arg4][arg3][arg1],
+                D_800DDEB0[player->characterId],
+                &gDmaMesgQueue
+            );
         }
     } else if (((temp & 0x400) == 0x400) || ((temp & 0x01000000) == 0x01000000) ||
         ((temp & 0x02000000) == 0x02000000) || ((temp & 0x10000) == 0x10000))
@@ -1736,28 +1804,73 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
         osInvalDCache(&D_802DFB80[arg4][arg3][arg1], 0x780);
         // I think there's something off with the "player->unk_0A8 >> 8"
         // I don't like that right-shift
-        osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTumbles[player->characterId][player->unk_0A8 >> 8])], &D_802DFB80[arg4][arg3][arg1], 0x900, &gDmaMesgQueue);
+        osPiStartDma(
+            &gDmaIoMesg,
+            OS_MESG_PRI_NORMAL,
+            OS_READ,
+            (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
+                gKartTextureTumbles[player->characterId][player->unk_0A8 >> 8]
+            )],
+            &D_802DFB80[arg4][arg3][arg1],
+            0x900,
+            &gDmaMesgQueue
+        );
     } else {
         osInvalDCache(&D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
-        osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTable0[player->characterId][player->unk_24C[arg2]][player->unk_244[arg2]])], &D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId], &gDmaMesgQueue);
+
+        osPiStartDma(
+            &gDmaIoMesg,
+            OS_MESG_PRI_NORMAL,
+            OS_READ,
+            (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
+                gKartTextureTable0[player->characterId][player->groupSelector[arg2]][player->frameSelector[arg2]]
+            )],
+            &D_802DFB80[arg4][arg3][arg1],
+            D_800DDEB0[player->characterId],
+            &gDmaMesgQueue
+        );
     }
 }
 
-void func_80027A20(Player *player, s8 arg1, s8 arg2, s8 arg3) {
+void load_palettes_player(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     // Weird typecasting is being done here. We define D_802F1F80 as a 3-dimensional u32 array,
     // but its better to understand it as a 3-dimensional struct_D_802F1F80 array.
-    struct_D_802F1F80 *temp_s0 = (struct_D_802F1F80 *) &D_802F1F80[arg3][arg2][arg1 << 7];
+    struct_D_802F1F80 *temp_s0 = (struct_D_802F1F80 *) &D_802F1F80[arg3][arg2][playerId*0x80];
     switch(gActiveScreenMode) {
         case SCREEN_MODE_1P:
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             osInvalDCache(temp_s0, sizeof(struct_D_802F1F80));
-            osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartPalettes[player->characterId])], temp_s0, sizeof(struct_D_802F1F80), &gDmaMesgQueue);
+
+            osPiStartDma(
+                &gDmaIoMesg,
+                OS_MESG_PRI_NORMAL,
+                OS_READ,
+                (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
+                    gKartPalettes[player->characterId]
+                )],
+                temp_s0,
+                sizeof(struct_D_802F1F80),
+                &gDmaMesgQueue
+            );
+
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
             break;
-        case SCREEN_MODE_3P_4P_SPLITSCREEN:
+        case SCREEN_MODE_3P_4P_SPLITSCREEN: // do exact same thing then above
             osInvalDCache(temp_s0, sizeof(struct_D_802F1F80));
-            osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartPalettes[player->characterId])], temp_s0, sizeof(struct_D_802F1F80), &gDmaMesgQueue);
+
+            osPiStartDma(
+                &gDmaIoMesg,
+                OS_MESG_PRI_NORMAL,
+                OS_READ,
+                (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
+                    gKartPalettes[player->characterId]
+                )],
+                temp_s0,
+                sizeof(struct_D_802F1F80),
+                &gDmaMesgQueue
+            );
+
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
             break;
     }
@@ -1765,11 +1878,30 @@ void func_80027A20(Player *player, s8 arg1, s8 arg2, s8 arg3) {
 
 void func_80027BDC(UNUSED Player *player, s32 arg1, void *vAddr, u16 size) {
     osInvalDCache(vAddr, size);
-    osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(arg1)], vAddr, size, &gDmaMesgQueue);
+
+    osPiStartDma(
+        &gDmaIoMesg,
+        OS_MESG_PRI_NORMAL,
+        OS_READ,
+        (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(arg1)],
+        vAddr,
+        size,
+        &gDmaMesgQueue
+    );
+
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 }
 
 void func_80027C74(UNUSED Player *player, s32 arg1, void *vAddr, u16 size) {
     osInvalDCache(vAddr, size);
-    osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(arg1)], vAddr, size, &gDmaMesgQueue);
+
+    osPiStartDma(
+        &gDmaIoMesg,
+        OS_MESG_PRI_NORMAL,
+        OS_READ,
+        (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(arg1)],
+        vAddr,
+        size,
+        &gDmaMesgQueue
+    );
 }

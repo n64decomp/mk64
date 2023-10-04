@@ -1114,7 +1114,7 @@ void func_8005A14C(s32 playerId) {
     player = &gPlayerOne[playerId];
     objectIndex = D_8018CE10[playerId].objectIndex;
     lapCount = gLapCountByPlayerId[playerId];
-    if (player->type & 0x8000) {
+    if (player->type & PLAYER_EXISTS) {
         if (player->effects & 0x204C0) {
             gObjectList[objectIndex].unk_0BE[2] += 0x1000;
         } else {
@@ -5384,7 +5384,7 @@ void func_80068AA4(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
     Vec3f sp64;
     Vec3s sp5C;
 
-    if ((player->unk_258[20 + arg4].unk_01C == 1) && (player->unk_244[arg3] < 0xD)) {
+    if ((player->unk_258[20 + arg4].unk_01C == 1) && (player->frameSelector[arg3] < 0xD)) {
         sp64[1] = player->pos[1] - 3.0f;
         sp64[2] = player->pos[2] + ((-2.5 * player->unk_258[20 + arg4].unk_01E) * coss(player->unk_048[arg3]));
         sp64[0] = player->pos[0] + ((-2.5 * player->unk_258[20 + arg4].unk_01E) * sins(player->unk_048[arg3]));
@@ -5410,7 +5410,7 @@ void func_80068DA0(Player *player, s8 arg1, f32 arg2, s8 arg3, s8 arg4) {
     Vec3f sp9C;
     Vec3s sp94;
 
-    if ((player->unk_258[20 + arg4].unk_01C == 1) && ((s32) player->unk_244[arg3] < 0xD)) {
+    if ((player->unk_258[20 + arg4].unk_01C == 1) && ((s32) player->frameSelector[arg3] < 0xD)) {
         sp9C[1] = (player->pos[1] - 3.0f) + player->unk_258[20 + arg4].unk_000[1];
         sp9C[2] = player->pos[2] + (coss(player->unk_048[arg3]) * -10.0f);
         sp9C[0] = player->pos[0] + (sins(player->unk_048[arg3]) * -10.0f);
@@ -6879,7 +6879,7 @@ void func_8006E058(void) {
 void func_8006E420(Player* player, s8 arg1, s8 arg2) {
     s16 temp_s0;
 
-    if ((player->type & 0x8000) == 0x8000) {
+    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->type & 0x4000) == 0x4000) {
             func_8006D194(player, arg1, arg2);
         }
@@ -6900,7 +6900,7 @@ void func_8006E420(Player* player, s8 arg1, s8 arg2) {
 }
 
 void func_8006E5AC(Player* player, s8 arg1, s8 arg2) {
-    if ((player->type & 0x8000) == 0x8000) {
+    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006D474(player, arg1, arg2);
@@ -6913,7 +6913,7 @@ void func_8006E5AC(Player* player, s8 arg1, s8 arg2) {
 }
 
 void func_8006E634(Player* player, s8 arg1, s8 arg2) {
-    if ((player->type & 0x8000) == 0x8000) {
+    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006D474(player, arg1, arg2);
@@ -6926,7 +6926,7 @@ void func_8006E634(Player* player, s8 arg1, s8 arg2) {
 }
 
 void func_8006E6BC(Player* player, s8 arg1, s8 arg2) {
-    if ((player->type & 0x8000) == 0x8000) {
+    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006D474(player, arg1, arg2);
@@ -6939,7 +6939,7 @@ void func_8006E6BC(Player* player, s8 arg1, s8 arg2) {
 }
 
 void func_8006E744(Player* player, s8 arg1, s8 arg2) {
-    if ((player->type & 0x8000) == 0x8000) {
+    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006D474(player, arg1, arg2);
@@ -6952,7 +6952,7 @@ void func_8006E744(Player* player, s8 arg1, s8 arg2) {
 }
 
 void func_8006E7CC(Player* player, s8 arg1, s8 arg2) {
-    if ((player->type & 0x8000) == 0x8000) {
+    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006DD3C(player, arg1, arg2);
@@ -6964,7 +6964,7 @@ void func_8006E7CC(Player* player, s8 arg1, s8 arg2) {
 }
 
 void func_8006E848(Player* player, s8 arg1, s8 arg2) {
-    if ((player->type & 0x8000) == 0x8000) {
+    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006DD3C(player, arg1, arg2);
@@ -6976,7 +6976,7 @@ void func_8006E848(Player* player, s8 arg1, s8 arg2) {
 }
 
 void func_8006E8C4(Player* player, s8 arg1, s8 arg2) {
-    if ((player->type & 0x8000) == 0x8000) {
+    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006DD3C(player, arg1, arg2);
@@ -6988,7 +6988,7 @@ void func_8006E8C4(Player* player, s8 arg1, s8 arg2) {
 }
 
 void func_8006E940(Player* player, s8 arg1, s8 arg2) {
-    if ((player->type & 0x8000) == 0x8000) {
+    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & 0x80000000) == 0x80000000) {
             if (arg1 == arg2) {
                 func_8006DD3C(player, arg1, arg2);

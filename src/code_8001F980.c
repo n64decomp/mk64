@@ -139,7 +139,7 @@ u16 func_8001FD78(Player *player, f32 posX, UNUSED f32 arg2, f32 posZ) {
     return ret;
 }
 
-void func_80020000(Player *player, Camera *camera, s8 arg2, s8 arg3) {
+void func_80020000(Player *player, Camera *camera, s8 playerId, s8 arg3) {
     s32 stackPadding0;
     s32 stackPadding1;
     s32 stackPadding2;
@@ -150,14 +150,14 @@ void func_80020000(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     s32 temp_v0;
     s32 temp_v0_2;
 
-    if ((player->type & 0x8000) == 0x8000) {
+    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         func_8001F9E4(player, camera, arg3);
         temp_v0 = 2 << (arg3 << 2);
         if (temp_v0 == (player->unk_002 & temp_v0)) {
             if (!(player->type & PLAYER_START_SEQUENCE)) {
-                func_8002934C(player, camera, arg3, arg2);
+                func_8002934C(player, camera, arg3, playerId);
             } else {
-                func_8002934C(player, camera, arg3, arg2);
+                func_8002934C(player, camera, arg3, playerId);
                 player->slopeAccel = 0;
                 player->unk_206 = 0;
                 player->unk_050[arg3] = 0;
@@ -167,47 +167,47 @@ void func_80020000(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         temp_v0_2 = 1 << (arg3 << 2);
         if ((temp_v0 == (player->unk_002 & temp_v0)) && (temp_v0_2 == (player->unk_002 & temp_v0_2))) {
             if ((check_player_camera_collision(player, camera, D_80165570 + sp4C, D_80165572 + sp48) == 1) & 0xFFFF) {
-                D_80164AB0[D_800DDB58] = (s16) arg2;
+                D_80164AB0[D_800DDB58] = (s16) playerId;
                 D_80164AC0[D_800DDB58] = (s16) arg3;
                 D_80164AD0[D_800DDB58] = player;
                 D_800DDB58 += 1;
-                D_80165190[arg3][arg2] = 0;
-                D_801650D0[arg3][arg2] = player->unk_244[arg3];
-                D_80165110[arg3][arg2] = player->unk_24C[arg3];
-                D_80165150[arg3][arg2] = player->unk_0A8;
-                D_801651D0[arg3][arg2] += 1;
-                if (D_801651D0[arg3][arg2] == 2) {
-                    D_801651D0[arg3][arg2] = 0;
+                D_80165190[arg3][playerId] = 0;
+                D_801650D0[arg3][playerId] = player->frameSelector[arg3];
+                D_80165110[arg3][playerId] = player->groupSelector[arg3];
+                D_80165150[arg3][playerId] = player->unk_0A8;
+                D_801651D0[arg3][playerId] += 1;
+                if (D_801651D0[arg3][playerId] == 2) {
+                    D_801651D0[arg3][playerId] = 0;
                 }
             } else {
                 if ((check_player_camera_collision(player, camera, D_80165574 + sp4C, D_80165576) == 1) & 0xFFFF) {
-                    if ((sRenderingFramebuffer == D_800DDB50[arg2]) || ((D_801650D0[arg3][arg2] - player->unk_244[arg3]) > 0x13) || ((D_801650D0[arg3][arg2] - player->unk_244[arg3]) < -0x13) || (D_80165190[arg3][arg2] == (s16) 1U)) {
-                        D_80164AB0[D_800DDB58] = (s16) arg2;
+                    if ((sRenderingFramebuffer == D_800DDB50[playerId]) || ((D_801650D0[arg3][playerId] - player->frameSelector[arg3]) > 0x13) || ((D_801650D0[arg3][playerId] - player->frameSelector[arg3]) < -0x13) || (D_80165190[arg3][playerId] == (s16) 1U)) {
+                        D_80164AB0[D_800DDB58] = (s16) playerId;
                         D_80164AC0[D_800DDB58] = (s16) arg3;
                         D_80164AD0[D_800DDB58] = player;
                         D_800DDB58 += 1;
-                        D_801650D0[arg3][arg2] = player->unk_244[arg3];
-                        D_80165110[arg3][arg2] = player->unk_24C[arg3];
-                        D_80165150[arg3][arg2] = player->unk_0A8;
-                        D_80165190[arg3][arg2] = 0;
-                        D_801651D0[arg3][arg2] += 1;
-                        if (D_801651D0[arg3][arg2] == 2) {
-                            D_801651D0[arg3][arg2] = 0;
+                        D_801650D0[arg3][playerId] = player->frameSelector[arg3];
+                        D_80165110[arg3][playerId] = player->groupSelector[arg3];
+                        D_80165150[arg3][playerId] = player->unk_0A8;
+                        D_80165190[arg3][playerId] = 0;
+                        D_801651D0[arg3][playerId] += 1;
+                        if (D_801651D0[arg3][playerId] == 2) {
+                            D_801651D0[arg3][playerId] = 0;
                         }
                     }
                 } else {
-                    if (((D_801650D0[arg3][arg2] - player->unk_244[arg3]) > 0x13) || ((D_801650D0[arg3][arg2] - player->unk_244[arg3]) < -0x13) || (D_80165190[arg3][arg2] == (s16) 1U)) {
-                        D_80164AB0[D_800DDB58] = (s16) arg2;
+                    if (((D_801650D0[arg3][playerId] - player->frameSelector[arg3]) > 0x13) || ((D_801650D0[arg3][playerId] - player->frameSelector[arg3]) < -0x13) || (D_80165190[arg3][playerId] == (s16) 1U)) {
+                        D_80164AB0[D_800DDB58] = (s16) playerId;
                         D_80164AC0[D_800DDB58] = (s16) arg3;
                         D_80164AD0[D_800DDB58] = player;
                         D_800DDB58 += 1;
-                        D_801650D0[arg3][arg2] = (s16) player->unk_244[arg3];
-                        D_80165110[arg3][arg2] = player->unk_24C[arg3];
-                        D_80165150[arg3][arg2] = player->unk_0A8;
-                        D_80165190[arg3][arg2] = 0;
-                        D_801651D0[arg3][arg2] += 1;
-                        if (D_801651D0[arg3][arg2] == 2) {
-                            D_801651D0[arg3][arg2] = 0;
+                        D_801650D0[arg3][playerId] = (s16) player->frameSelector[arg3];
+                        D_80165110[arg3][playerId] = player->groupSelector[arg3];
+                        D_80165150[arg3][playerId] = player->unk_0A8;
+                        D_80165190[arg3][playerId] = 0;
+                        D_801651D0[arg3][playerId] += 1;
+                        if (D_801651D0[arg3][playerId] == 2) {
+                            D_801651D0[arg3][playerId] = 0;
                         }
                     }
                 }
@@ -1366,7 +1366,7 @@ void player_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
             sp154[2] = player->pos[2] + sp140;
         }
     }
-    D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1 << 7];
+    D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1*0x80];
     if ((arg2 == 0) || (arg2 == 1)) {
         D_80164B08 = &D_802BFB80[D_801651D0[arg2][arg1]][arg2][arg1].pixel_index_array[0];
         D_80164B0C = &D_802BFB80[D_801651D0[arg2][arg1]][arg2][arg1].pixel_index_array[0x7C0];
@@ -1462,7 +1462,7 @@ void ghost_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     spDC[1] = (player->pos[1] - player->boundingBoxSize) + (spCC - 2.0);
     spDC[0] = player->pos[0] + spD0;
     spDC[2] = player->pos[2] + spC8;
-    D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1 << 7];
+    D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1*0x80];
     if ((arg2 == 0) || (arg2 == 1)) {
         D_80164B08 = &D_802BFB80[D_801651D0[arg2][arg1]][arg2][arg1].pixel_index_array[0];
         D_80164B0C = &D_802BFB80[D_801651D0[arg2][arg1]][arg2][arg1].pixel_index_array[0x7C0];

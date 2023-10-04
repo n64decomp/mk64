@@ -920,7 +920,7 @@ void func_80089474(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 arg4) 
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
         func_80072180();
     }
-    if ((func_8008933C(player, objectIndex, arg2, arg3) >= 4.0) && ((player->type & 0x1000) != 0x1000)) {
+    if ((func_8008933C(player, objectIndex, arg2, arg3) >= 4.0) && ((player->type & PLAYER_CPU) != PLAYER_CPU)) {
         func_800C9060(playerId, arg4);
     }
 }
@@ -930,7 +930,7 @@ void func_80089538(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 arg4) 
     Player *player;
 
     player = &gPlayerOne[playerId];
-    if ((func_8008933C(player, objectIndex, arg2, arg3) >= 4.0) && ((player->type & 0x1000) != 0x1000)) {
+    if ((func_8008933C(player, objectIndex, arg2, arg3) >= 4.0) && ((player->type & PLAYER_CPU) != PLAYER_CPU)) {
         func_800C9060((u8) playerId, arg4);
     }
 }
@@ -981,14 +981,14 @@ void func_80089820(s32 objectIndex, f32 arg1, f32 arg2, u32 arg3) {
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
             if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effects & 0x80000000)) {
-                if ((player->type & 0x8000) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (func_80088D18(objectIndex, player) != 0)) {
+                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (func_80088D18(objectIndex, player) != 0)) {
                     if (player->effects & 0x200) {
                         set_object_flag_unk_054_true(objectIndex, 0x02000000);
                     } else {
                         if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                             func_80072180();
                         }
-                        if ((func_8008933C(player, objectIndex, arg1, arg2 * 1.1) >= 4.0) && ((player->type & 0x1000) != 0x1000)) {
+                        if ((func_8008933C(player, objectIndex, arg1, arg2 * 1.1) >= 4.0) && ((player->type & PLAYER_CPU) != PLAYER_CPU)) {
                             func_800C9060(var_s1, arg3);
                         }
                     }
@@ -1026,7 +1026,7 @@ s32 func_80089B50(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++, test++) {
-            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effects & 0x81000000) && (player->type & 0x8000) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (func_80088D18(objectIndex, player) != 0)) {
+            if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effects & 0x81000000) && (player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (func_80088D18(objectIndex, player) != 0)) {
                 if (!(player->effects & 0x200)) {
                     player->statusEffects |= REVERSE_EFFECT;
                     if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
@@ -1052,7 +1052,7 @@ s32 func_80089CBC(s32 objectIndex, f32 arg1) {
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
             if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effects & 0x81000000)) {
-                if ((player->type & 0x8000) && !(player->type & 0x100) && (func_80088E98(objectIndex, player, arg1) != 0)) {
+                if ((player->type & PLAYER_EXISTS) && !(player->type & 0x100) && (func_80088E98(objectIndex, player, arg1) != 0)) {
                     if (!(player->effects & 0x200)) {
                         player->statusEffects |= REVERSE_EFFECT;
                         if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
@@ -1098,7 +1098,7 @@ s32 func_80089F24(s32 objectIndex) {
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
             if ((gObjectList[objectIndex].itemDisplayState != 0) && !(player->effects & 0x800002C0)) {
-                if ((player->type & 0x8000) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (func_80088D18(objectIndex, player) != 0)) {
+                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (func_80088D18(objectIndex, player) != 0)) {
                     var_s7 = 1;
                     if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();

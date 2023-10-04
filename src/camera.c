@@ -226,7 +226,7 @@ void func_8001CA78(UNUSED Player *player, Camera *camera, Vec3f arg2, f32 *arg3,
     arg2[0] = camera->lookAt[0];
     arg2[1] = camera->lookAt[1];
     arg2[2] = camera->lookAt[2];
-    func_802B6540(sp74, 0, 1, 0, -0x00008000);
+    calculate_orientation_matrix(sp74, 0, 1, 0, -0x00008000);
     mtxf_translate_vec3f_mat3(sp5C, sp74);
     if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
         var_f14 = sp5C[0];
@@ -355,7 +355,7 @@ void func_8001CCEC(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     if ((player->effects & 0x01000000) == 0x01000000) {
         sp84[2] /= 3.0f;
     }
-    func_802B6540(sp9C, 0, 1, 0, arg7);
+    calculate_orientation_matrix(sp9C, 0, 1, 0, arg7);
     mtxf_translate_vec3f_mat3(sp84, sp9C);
 
     x = player->pos[0] + sp84[0];
@@ -423,7 +423,7 @@ void func_8001D53C(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     arg2[0] = camera->lookAt[0];
     arg2[1] = camera->lookAt[1];
     arg2[2] = camera->lookAt[2];
-    func_802B6540(sp74, 0.0f, 1.0f, 0.0f, arg6);
+    calculate_orientation_matrix(sp74, 0.0f, 1.0f, 0.0f, arg6);
     mtxf_translate_vec3f_mat3(sp5C, sp74);
     stackPadding0 = player->pos[0] + sp5C[0];
     stackPadding2 = player->pos[2] + sp5C[2];
@@ -466,7 +466,7 @@ void func_8001D794(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     arg2[1] = camera->lookAt[1];
     arg2[2] = camera->lookAt[2];
 
-    func_802B6540(sp6C, 0, 1, 0, arg6);
+    calculate_orientation_matrix(sp6C, 0, 1, 0, arg6);
     mtxf_translate_vec3f_mat3(sp54, sp6C);
 
     test1 = player->pos[0] + sp54[0];
@@ -572,7 +572,7 @@ void func_8001D944(Player *player, Camera *camera, Vec3f arg2, f32 *arg3, f32 *a
     if ((player->effects & 0x01000000) == 0x01000000) {
         sp84[2] /= 3.0f;
     }
-    func_802B6540(sp9C, 0, 1, 0, arg7);
+    calculate_orientation_matrix(sp9C, 0, 1, 0, arg7);
     mtxf_translate_vec3f_mat3(sp84, sp9C);
 
     x = player->pos[0] + sp84[0];

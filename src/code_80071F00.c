@@ -5904,7 +5904,7 @@ void func_8007F8D8(void) {
     }
     if (var_s4 != 0) {
         for (var_s0 = 0; var_s0 < 4; var_s0++, player++){
-            if ((player->type & 0x8000) && !(player->type & 0x1000)) {
+            if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_CPU)) {
                 if (func_8007F75C(var_s0) != 0) break;
             }
         }

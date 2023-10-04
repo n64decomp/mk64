@@ -450,7 +450,7 @@ void func_80027EDC(Player *player, s8 playerId) {
             }
             break;
         case COURSE_TOADS_TURNPIKE:
-            if ((player->type & 0x800) != 0x800) {
+            if ((player->type & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA288(playerId, 0x1e);
                 }
@@ -572,7 +572,7 @@ void func_80027EDC(Player *player, s8 playerId) {
             }
             break;
         case COURSE_TOADS_TURNPIKE:
-            if ((player->type & 0x800) != 0x800) {
+            if ((player->type & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {
                 if (D_80165300[playerId] != 1) {
                     func_800CA2E4(playerId, 0x1E);
                 }
@@ -664,7 +664,7 @@ void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         } else {
             control_cpu_movement(player, camera, arg3, arg2);
         }
-    } else if ((player->type & 0x200) == 0x200) {
+    } else if ((player->type & PLAYER_STAGING) == PLAYER_STAGING) {
         func_8002D028(player, arg2);
         func_8002F730(player, camera, arg3, arg2);
     } else if (player->type & 0x80) {
@@ -727,7 +727,7 @@ void func_80028D3C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
 }
 
 void func_80028E70(Player *player, Camera *camera, s8 arg2, s8 arg3)  {
-    if ((player->type & 0x8000) == 0x8000) {
+    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         switch (gGamestate) {
             case ENDING_SEQUENCE:
                 if (!(player->type & PLAYER_START_SEQUENCE)) {
@@ -809,35 +809,35 @@ void func_800291F8(void) {
 
 void func_80029200(Player *player, s8 arg1) {
     if ((s32) player->slopeAccel < -0x71B) {
-        player->unk_24C[arg1] = 0;
+        player->groupSelector[arg1] = 0;
     }
     if (((s32) player->slopeAccel < -0x4F9) && ((s32) player->slopeAccel >= -0x71B)) {
-        player->unk_24C[arg1] = 1;
+        player->groupSelector[arg1] = 1;
     }
     if ((player->slopeAccel < -0x221) && (player->slopeAccel >= -0x4F9)) {
-        player->unk_24C[arg1] = 2;
+        player->groupSelector[arg1] = 2;
     }
     if ((player->slopeAccel < -0x16B) && (player->slopeAccel >= -0x221)) {
-        player->unk_24C[arg1] = 3;
+        player->groupSelector[arg1] = 3;
     }
     if ((player->slopeAccel < 0x16C) && (player->slopeAccel >= -0x16B)) {
-        player->unk_24C[arg1] = 4;
+        player->groupSelector[arg1] = 4;
     }
     if ((player->slopeAccel >= 0x16C) && (player->slopeAccel < 0x222)) {
-        player->unk_24C[arg1] = 5;
+        player->groupSelector[arg1] = 5;
     }
     if ((player->slopeAccel >= 0x222) && (player->slopeAccel < 0x4FA)) {
-        player->unk_24C[arg1] = 6;
+        player->groupSelector[arg1] = 6;
     }
     if ((player->slopeAccel >= 0x4FA) && (player->slopeAccel < 0x71C)) {
-        player->unk_24C[arg1] = 7;
+        player->groupSelector[arg1] = 7;
     }
     if (player->slopeAccel >= 0x71C) {
-        player->unk_24C[arg1] = 8;
+        player->groupSelector[arg1] = 8;
     }
 }
 
-void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
+void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
     UNUSED s32 pad[2];
     f32 temp_f0;
     f32 temp_f2;
@@ -850,7 +850,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     u16 var_a0;
 
     player->unk_048[arg2] = atan2s(player->pos[0] - camera->pos[0], player->pos[2] - camera->pos[2]);
-    player->unk_244[arg2] = (u16) ( (((player->unk_048[arg2]) + player->unk_02C[1] + player->unk_0C0))) / 128;
+    player->frameSelector[arg2] = (u16) ( (((player->unk_048[arg2]) + player->unk_02C[1] + player->unk_0C0))) / 128;
 
     temp_f2 = (gCharacterSize[player->characterId] * 18.0f) * player->size;
     temp_f0 = player->unk_230 - player->unk_23C;
@@ -869,7 +869,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         player->unk_0D4[arg2] = (((func_802B7C40(temp_f0 / temp_f2)) * 0.9));
     }
     else {
-        if (((player->unk_244[arg2]) >= 0) && ((player->unk_244[arg2]) < 0x101)) {
+        if (((player->frameSelector[arg2]) >= 0) && ((player->frameSelector[arg2]) < 0x101)) {
             var_f0 = player->rotY - player->pos[1];
         } else {
             var_f0 = player->pos[1] - player->rotY;
@@ -883,7 +883,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     temp_a0 = ((player->unk_048[arg2] + player->unk_02C[1]) + player->unk_0C0);
     temp_a0 = (s16) player->unk_0D4[arg2] * sins((u16) temp_a0) + player->unk_0CC[arg2] * coss((u16) temp_a0);
     move_s16_towards(&player->unk_050[arg2], temp_a0, 0.5f);
-    var_a0 = player->unk_244[arg2];
+    var_a0 = player->frameSelector[arg2];
     player->unk_002 = player->unk_002 & (~(4 << (arg2 * 4)));
     if (var_a0 >= 0x101) {
         var_a0 = 0x201 - var_a0;
@@ -938,9 +938,9 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         }
         var_a0 /= var_a1;
     }
-    player->unk_244[arg2] = var_a0 + var_t0;
-    if ((player->unk_244[arg2]) >= 0x23) {
-        player->unk_244[arg2] = 0x22;
+    player->frameSelector[arg2] = var_a0 + var_t0;
+    if ((player->frameSelector[arg2]) >= 0x23) {
+        player->frameSelector[arg2] = 0x22;
     }
     if ((player->effects & 0x80)
         || (player->effects & 0x40)
@@ -949,18 +949,18 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         || (player->effects & 0x20000)
         || (player->unk_044 & 0x800)) {
         
-        if ((player->unk_244[arg2]) >= 0x14) {
-            player->unk_244[arg2] = 0;
+        if ((player->frameSelector[arg2]) >= 0x14) {
+            player->frameSelector[arg2] = 0;
         }
     }
-    if ((player->unk_24C[arg2]) >= 9) {
-        player->unk_24C[arg2] = 4;
+    if ((player->groupSelector[arg2]) >= 9) {
+        player->groupSelector[arg2] = 4;
     }
     if (((player->effects & 0x80000) == 0x80000)
         || ((player->effects & 0x800000) == 0x800000)
         ||  (player->unk_044 & 0x800)) {
 
-        player->unk_24C[arg2] = 4;
+        player->groupSelector[arg2] = 4;
     }
     if (((player->effects & 0x400) == 0x400)
         || ((player->effects & 0x01000000) == 0x01000000)
@@ -970,24 +970,24 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
         || (player->effects & 0x40)) {
         
         player->unk_002 |= 1 << (arg2 * 4);
-        D_80165190[arg2][arg3] = 1;
+        D_80165190[arg2][playerId] = 1;
         
         if ((player->effects & 0x80) || (player->effects & 0x40)) {
-            if ((player->unk_244[arg2] == D_801650D0[arg2][arg3])
-                && (player->unk_24C[arg2] == D_80165110[arg2][arg3])) {
+            if ((player->frameSelector[arg2] == D_801650D0[arg2][playerId])
+                && (player->groupSelector[arg2] == D_80165110[arg2][playerId])) {
                 player->unk_002 &= ~(1 << (arg2 * 4));
-                D_80165190[arg2][arg3] = 1;
+                D_80165190[arg2][playerId] = 1;
             }
-        } else if (((player->unk_0A8) >> 8) == D_80165150[arg2][arg3] >> 8) {
+        } else if (((player->unk_0A8) >> 8) == D_80165150[arg2][playerId] >> 8) {
             player->unk_002 &= ~(1 << (arg2 * 4));
         }
     } else {
         player->unk_002 |= 1 << (arg2 * 4);
-        if (((player->unk_244[arg2] == D_801650D0[arg2][arg3]) && (player->unk_24C[arg2] == D_80165110[arg2][arg3])) && ((D_80165190[arg2][arg3]) == 0)) {
+        if (((player->frameSelector[arg2] == D_801650D0[arg2][playerId]) && (player->groupSelector[arg2] == D_80165110[arg2][playerId])) && ((D_80165190[arg2][playerId]) == 0)) {
             player->unk_002 &= ~(1 << (arg2 * 4));
         }
     }
-    temp_a0_2 = D_801650D0[arg2][arg3] - player->unk_244[arg2];
+    temp_a0_2 = D_801650D0[arg2][playerId] - player->frameSelector[arg2];
     if ((temp_a0_2 >= 0x14) || (temp_a0_2 < (-0x13))) {
         player->unk_002 |= 1 << (arg2 * 4);
     }
@@ -1014,7 +1014,7 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
         var_f12 = 18.0f * (gCharacterSize[player->characterId] / 2);
     }
     
-    func_802B6540(sp5C, 0.0f, 1.0f, 0.0f, (player->unk_02C[1] + player->unk_0C0));
+    calculate_orientation_matrix(sp5C, 0.0f, 1.0f, 0.0f, (player->unk_02C[1] + player->unk_0C0));
     sp8C[0] = var_f12 - 3.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = var_f12 - 2.0f;
@@ -1722,7 +1722,7 @@ void func_8002BB9C(Player *player, f32 *arg1, f32 *arg2, UNUSED s8 arg3, UNUSED 
         return;        
     }
     
-    func_802B6540(sp64, 0, 1, 0, (s16) 0);
+    calculate_orientation_matrix(sp64, 0, 1, 0, (s16) 0);
     
     sp58[0] = *arg1;
     sp58[1] = 0;
@@ -1954,13 +1954,13 @@ void func_8002C4F8(Player *player, s8 arg1) {
     } else if ((player->effects & 8) != 8) {
         player->unk_0CA &= ~0x0100;
     }
-    if ((player->type & 0x1000) && ((func_802ABDF4(player->unk_110.unk3A) != 0) || (player->unk_0CA & 1))) {
+    if ((player->type & PLAYER_CPU) && ((func_802ABDF4(player->unk_110.unk3A) != 0) || (player->unk_0CA & 1))) {
         if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8) && !(player->effects & 0x1000)) {
             func_80090778(player);
             func_80090868(player);
         }
     }
-    if ((player->type & 0x1000) && (player->unk_0F8 == 0x00FD) && !(player->effects & 8)) {
+    if ((player->type & PLAYER_CPU) && (player->unk_0F8 == 0x00FD) && !(player->effects & 8)) {
         func_80090778(player);
         func_80090868(player);
     }
@@ -2196,7 +2196,7 @@ void func_8002D028(Player *player, s8 arg1) {
     }
 }
 
-void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
+void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
 {
     Vec3f sp184 = {0.0, 0.0, 1.0};
     Vec3f sp178 = {0.0, 0.0, 0.0};
@@ -2226,22 +2226,22 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
     s32 sp7C = 0;
     UNUSED s32 pad4[6];
 
-    func_80027EDC(player, arg3);
+    func_80027EDC(player, playerId);
     func_8002C11C(player);
     if ((player->type & 0x4000) == 0x4000) {
-        func_8002A79C(player, arg3);
+        func_8002A79C(player, playerId);
     }
-    func_8002B830(player, arg3, arg2);
+    func_8002B830(player, playerId, arg2);
     if (((player->type & 0x4000) == 0x4000) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
-        func_8002BF4C(player, arg3);
+        func_8002BF4C(player, playerId);
     }
-    func_8002CD48(player, arg3, arg2);
+    func_8002CD48(player, playerId, arg2);
     if (((player->effects & 0x20000000) == 0x20000000) && (player->unk_228 >= 0x64)) {
         sp7C = 2;
     }
     func_80037BB4(player, sp160);
     func_8002AB70(player);
-    func_8002FCA8(player, arg3);
+    func_8002FCA8(player, playerId);
     if (player->unk_044 & 1) {
         player->unk_064[0] *= -1.0f;
         player->unk_064[2] *= -1.0f;
@@ -2285,8 +2285,8 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
     mtxf_translate_vec3f_mat3(sp178, player->orientationMatrix);
     spB4 += sp178[0];
     spAC += sp178[2];
-    func_8002C7E4(player, arg3, arg2);
-    sp184[2] = func_80030150(player, arg3);
+    func_8002C7E4(player, playerId, arg2);
+    sp184[2] = func_80030150(player, playerId);
     mtxf_translate_vec3f_mat3(sp184, player->orientationMatrix);
     sp98[0] = player->velocity[0];
     sp98[1] = player->velocity[1];
@@ -2325,9 +2325,9 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
     player->rotX = player->pos[0];
     player->rotZ = player->pos[2];
     player->rotY = player->pos[1];
-    spFC = posX + player->velocity[0] + D_8018CE10[arg3].unk_04[0];
+    spFC = posX + player->velocity[0] + D_8018CE10[playerId].unk_04[0];
     spF8 = posY + player->velocity[1];
-    spF4 = posZ + player->velocity[2] + D_8018CE10[arg3].unk_04[2];
+    spF4 = posZ + player->velocity[2] + D_8018CE10[playerId].unk_04[2];
 
     if (((((player->unk_0CA & 2) != 2)
         && ((player->unk_0CA & 8) != 8))
@@ -2342,9 +2342,9 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
     player->unk_060 = 0.0f;
     player->unk_05C = 1.0f;
     if ((player->unk_044 & 1) != 1) {
-        func_802B6540(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
+        calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
     } else {
-        func_802B6540(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1] + 0x8000);
+        calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1] + 0x8000);
     }
     player->effects |= 8;
     player->unk_0C2 += 1;
@@ -2363,10 +2363,10 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
                 && ((player->effects & 0x100000) == 0x100000))  
                 && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) 
             
-                func_800C9060(arg3, 0x1900A60AU);
+                func_800C9060(playerId, 0x1900A60AU);
             else if (((player->type & 0x4000) == 0x4000) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB))
             {
-                func_800CADD0((u8) arg3, ((f32) player->unk_0C2) / 35.0f);
+                func_800CADD0((u8) playerId, ((f32) player->unk_0C2) / 35.0f);
             }
             if ((player->type & 0x4000) == 0x4000)
             {
@@ -2378,7 +2378,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
             player->unk_DB4.unk18 = 0;
             if (((player->type & 0x4000) == 0x4000) 
                 && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
-                func_800CADD0((u8) arg3, ((f32) player->unk_0C2) / 35.0f);
+                func_800CADD0((u8) playerId, ((f32) player->unk_0C2) / 35.0f);
             }
             if ((player->type & 0x4000) == 0x4000) {
                 player->unk_044 |= 0x100;
@@ -2389,10 +2389,10 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
             player->unk_DB4.unkC = 1.5f;
             if (((player->type & 0x4000) == 0x4000) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
                 if (((player->unk_0C2 < 0xB) && (player->unk_0C2 >= 4)) && (gCurrentCourseId == COURSE_BOWSER_CASTLE)) {
-                    func_800CADD0((u8) arg3, player->unk_0C2 / 14.0f);
+                    func_800CADD0((u8) playerId, player->unk_0C2 / 14.0f);
                 }
                 else {
-                    func_800CADD0((u8) arg3, player->unk_0C2 / 25.0f);
+                    func_800CADD0((u8) playerId, player->unk_0C2 / 25.0f);
                 }
             }
         }
@@ -2406,12 +2406,12 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
     temp_var = player->unk_110.unk3C[0];
     if (temp_var < 0.0f) {
         func_8003F734(player, sp8C, sp98, &temp_var, &spFC, &spF8, &spF4);
-        func_8002C954(player, arg3, sp98);
+        func_8002C954(player, playerId, sp98);
     }
     temp_var = player->unk_110.unk3C[1];
     if (temp_var < 0.0f) {
         func_8003FBAC(player, sp8C, sp98, &temp_var, &spFC, &spF8, &spF4);
-        func_8002C954(player, arg3, sp98);
+        func_8002C954(player, playerId, sp98);
     }
     temp_var = player->unk_110.unk3C[0];
     if (temp_var >= 0.0f) {
@@ -2429,10 +2429,10 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
     }
     if (((!(player->effects & 8)) && (func_802ABDB8(player->unk_110.unk3A) != 0)) && ((player->effects & 0x10000) != 0x10000)) {
         if ((!(player->unk_0CA & 2)) || (!(player->unk_0CA & 8))) {
-            func_8008F494(player, arg3);
+            func_8008F494(player, playerId);
         }
     } else if (((!(player->effects & 8)) && (func_802ABDB8(player->unk_110.unk3A) == 0)) && (player->effects & 0x10000)) {
-        func_8008F5A4(player, arg3);
+        func_8008F5A4(player, playerId);
     }
     player->unk_074 = func_802ABE30(spFC, spF8, spF4, player->unk_110.unk3A);
     if (((player->type & 0x4000) == 0x4000) && (((gActiveScreenMode == SCREEN_MODE_1P) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL)) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
@@ -2440,7 +2440,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
     } else {
         func_8002A194(player, spFC, spF8, spF4);
     }
-    func_8002AE38(player, arg3, posX, posZ, spFC, spF4);
+    func_8002AE38(player, playerId, posX, posZ, spFC, spF4);
 
     temp2 = (sp98[0] * sp98[0]) + (sp98[2] * sp98[2]);
     player->unk_22C = player->unk_094;
@@ -2448,8 +2448,8 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
 
     if ((player->unk_08C <= 0.0f) 
         && (player->unk_094 <= 0.08)
-        && (D_8018CE10[arg3].unk_04[0] == 0.0f)
-        && (D_8018CE10[arg3].unk_04[2] == 0.0f)) {
+        && (D_8018CE10[playerId].unk_04[0] == 0.0f)
+        && (D_8018CE10[playerId].unk_04[2] == 0.0f)) {
         sp98[0] = sp98[0] + (-1 * sp98[0]);
         sp98[2] = sp98[2] + (-1 * sp98[2]);
     } else {
@@ -2457,17 +2457,17 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
         player->pos[2] = spF4;
     }
     player->pos[1] = spF8;
-    if ((player->type & 0x4000) && (!(player->type & 0x1000))) {
-        func_8002BB9C(player, &spFC, &spF4, arg2, arg3, sp98);
+    if ((player->type & 0x4000) && (!(player->type & PLAYER_CPU))) {
+        func_8002BB9C(player, &spFC, &spF4, arg2, playerId, sp98);
     }
     player->unk_064[0] = sp178[0];
     player->unk_064[2] = sp178[2];
     player->velocity[0] = sp98[0];
     player->velocity[1] = sp98[1];
     player->velocity[2] = sp98[2];
-    D_80165070[arg3][0] = sp98[0];
-    D_80165070[arg3][1] = sp98[1];
-    D_80165070[arg3][2] = sp98[2];
+    D_80165070[playerId][0] = sp98[0];
+    D_80165070[playerId][1] = sp98[1];
+    D_80165070[playerId][2] = sp98[2];
     if ((player->type & 0x4000) == 0x4000) {
         if (gKartTopSpeedTable[player->characterId] < player->unk_094) {
             temp = gKartTopSpeedTable[player->characterId] / player->unk_094;
@@ -2489,7 +2489,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3)
     if (player->unk_110.unk3C[2] >= 500.0f) {
         player->unk_078 = (s16) (((s16) player->unk_078) / 2);
     }
-    func_8002C4F8(player, arg3);
+    func_8002C4F8(player, playerId);
 }
 
 void func_8002E4C4(Player *player) {
@@ -2556,10 +2556,10 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     }
     func_8002C7E4(player, arg3, arg2);
     if (sp46 == 1) {
-        func_802B6540(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, (s16) ((s32) player->unk_02C[1]));
-        func_802B6540(player->unk_150, player->unk_058, player->unk_05C, player->unk_060, (s16) ((s32) player->unk_0AE));
+        calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, (s16) ((s32) player->unk_02C[1]));
+        calculate_orientation_matrix(player->unk_150, player->unk_058, player->unk_05C, player->unk_060, (s16) ((s32) player->unk_0AE));
     } else {
-        func_802B6540(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, (s16) ((s32) player->unk_02C[1]));
+        calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, (s16) ((s32) player->unk_02C[1]));
     }
     spEC[2] = func_80030150(player, arg3);
     if (sp46 == 1) {
@@ -2795,7 +2795,7 @@ void control_cpu_movement(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg
     player->kartHopJerk = 0;
     player->kartHopAcceleration = 0;
     player->kartHopVelocity = 0;
-    func_802B6540(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
+    calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
     player->unk_0C2 = 0;
     player->effects &= ~2;
     player->effects &= ~8;
@@ -2882,7 +2882,7 @@ void func_8002F730(Player *player, UNUSED Camera *camera, UNUSED s8 arg2, s8 arg
     player->unk_058 = 0.0f;
     player->unk_05C = 1.0f;
     player->unk_060 = 0.0f;
-    func_802B6540(player->orientationMatrix, 0.0f, 1.0f, 0.0f, (s16) (s32) player->unk_02C[1]);
+    calculate_orientation_matrix(player->orientationMatrix, 0.0f, 1.0f, 0.0f, (s16) (s32) player->unk_02C[1]);
     player->effects &= ~8;
     sp78 = player->unk_110.unk3C[2];
     if (sp78 <= 0.0f) {
@@ -4606,7 +4606,7 @@ void func_80037BB4(Player *player, Vec3f arg1) {
             if (((player->effects & 0x20000000) != 0x20000000) || (player->unk_228 >= 0x64)) {
                 player->unk_02C[1] += player->unk_078;
             }
-            if (!(player->type & 0x1000)) {
+            if (!(player->type & PLAYER_CPU)) {
                 if (gModeSelection == BATTLE) {
                     func_800378E8(player, sp20, arg1);
                 } else {
@@ -4619,7 +4619,7 @@ void func_80037BB4(Player *player, Vec3f arg1) {
             if (((player->effects & 0x20000000) != 0x20000000) || (player->unk_228 >= 0x64)) {
                 player->unk_02C[1] += player->unk_078;
             }
-            if (!(player->type & 0x1000)) {
+            if (!(player->type & PLAYER_CPU)) {
                 if (gModeSelection == BATTLE) {
                     func_80037A4C(player, sp20, arg1);
                 } else {
@@ -4736,9 +4736,9 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
 }
 
 void func_800381AC(Player *player, struct Controller *controller, s8 arg2) {
-    if (((player->type & 0x8000) == 0x8000) && 
+    if (((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) && 
         ((player->type & 0x4000) == 0x4000) && 
-        ((player->type & 0x1000) != 0x1000)) {
+        ((player->type & PLAYER_CPU) != PLAYER_CPU)) {
             if ((player->type & PLAYER_START_SEQUENCE) != PLAYER_START_SEQUENCE) {
                 if (((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) {
                     if (controller->button & A_BUTTON) {
@@ -5021,7 +5021,7 @@ void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     player->unk_058 = 0;
     player->unk_060 = 0;
     player->unk_05C = 1.0f;
-    func_802B6540(player->orientationMatrix, 0, 1.0f, 0, player->unk_02C[1]);
+    calculate_orientation_matrix(player->orientationMatrix, 0, 1.0f, 0, player->unk_02C[1]);
     player->effects |= 8;
     player->unk_0C2 += 1;
     sp98 = player->unk_110.unk3C[2];

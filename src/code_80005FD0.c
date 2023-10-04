@@ -1025,7 +1025,7 @@ void func_80008424(s32 arg0, f32 arg1, Player *player) {
                 player_speed(player);
                 return;
             }
-            if (player->type & 0x800) {
+            if (player->type & PLAYER_CINEMATIC_MODE) {
                 if (temp_f2 < var_f12) {
                     player->effects = temp_v1 & 0xFFDFFFFF;
                     player_speed(player);
@@ -1566,7 +1566,7 @@ block_25:
                     func_80008F38(playerId);
                     func_80011AE4(playerId);
                     *(&D_801642DE + (playerId * 0x10)) = 0;
-                    if ((D_8016348C == 0) && ((player->type & 0x800) == 0)) {
+                    if ((D_8016348C == 0) && ((player->type & PLAYER_CINEMATIC_MODE) == 0)) {
                         sp30 = var_a3;
                         sp34 = var_t0;
                         temp_f0_3 = func_80009258(playerId, sp38, sp44, (u16 *) var_a3);

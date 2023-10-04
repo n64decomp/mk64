@@ -62,7 +62,7 @@ extern struct_D_802DFB80 D_802DFB80[][2][8];
 /**
  * SO
  * It would be nice to define D_802F1F80 as ```struct_D_802F1F80 D_802F1F80[2][4][8]```.
- * But due to some register allocation issues in func_80027A20 we have to define it in a different manner
+ * But due to some register allocation issues in load_palettes_player we have to define it in a different manner
  **/
 extern u32 D_802F1F80[][4][1024];
 
