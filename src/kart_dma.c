@@ -1744,9 +1744,12 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
 }
 
 void func_80027A20(Player *player, s8 arg1, s8 arg2, s8 arg3) {
-    // Weird typecasting is being done here. We define D_802F1F80 as a 3-dimensional u32 array,
-    // but its better to understand it as a 3-dimensional struct_D_802F1F80 array.
-    struct_D_802F1F80 *temp_s0 = (struct_D_802F1F80 *) &D_802F1F80[arg3][arg2][arg1 << 7];
+    // Properly define struct, see framebuffers.h comment for more information 
+#ifdef AVOID_UB
+    struct_D_802F1F80 *temp_s0 = &D_802F1F80[arg3][arg2][arg1].kart_palette;
+#else
+    struct_D_802F1F80 *temp_s0 = &D_802F1F80[arg3][arg2][arg1 * 0x100];
+#endif
     switch(gActiveScreenMode) {
         case SCREEN_MODE_1P:
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:

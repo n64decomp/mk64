@@ -130,8 +130,8 @@ extern u8 **gKartWarioWheels0[];
 extern u8 **gKartWarioWheels1[];
 
 
-extern u8 ***D_800DDE34[];
-extern u8 ***D_800DDE54[];
+extern u16 **D_800DDE34[];
+extern u16 **D_800DDE54[];
 
 
 // These all come the kart data stuff, they should end up in their own inc.c eventually
