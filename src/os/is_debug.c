@@ -5,7 +5,7 @@
 #include <PR/os.h>
 #include "hardware.h"
 
-// Note: This file was very quickly strewn together.
+// Note: This file was very quickly strewn together from oot.
 // Not great but it works.
 
 OSPiHandle* sISVHandle; // official name : is_Handle
