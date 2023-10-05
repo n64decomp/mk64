@@ -1744,9 +1744,9 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
 }
 
 void func_80027A20(Player *player, s8 arg1, s8 arg2, s8 arg3) {
-    // Properly define struct, see framebuffers.h comment for more information 
+    // Properly define struct, see framebuffers.h comment for more information
 #ifdef AVOID_UB
-    struct_D_802F1F80 *temp_s0 = &D_802F1F80[arg3][arg2][arg1].kart_palette;
+    struct_D_802F1F80 *temp_s0 = &D_802F1F80[arg3][arg2][arg1];
 #else
     struct_D_802F1F80 *temp_s0 = &D_802F1F80[arg3][arg2][arg1 * 0x100];
 #endif

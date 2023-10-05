@@ -1373,7 +1373,7 @@ void func_800248D0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
         }
     }
 #ifdef AVOID_UB
-    D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1].kart_palette;
+    D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1];
 #else
     D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1 * 0x100];
 #endif
@@ -1473,7 +1473,7 @@ void func_800256F4(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     spDC[0] = player->pos[0] + spD0;
     spDC[2] = player->pos[2] + spC8;
 #ifdef AVOID_UB
-    D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1].kart_palette;
+    D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1];
 #else
     D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1 * 0x100];
 #endif

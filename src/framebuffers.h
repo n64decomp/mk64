@@ -39,7 +39,7 @@ typedef struct {
  *   kart_palette appears to be the palette for all non-wheel elements of the kart (including the driver).
  *   wheel_palette then is the palette for the wheels
  *
- * kart_palette does not appear to be used 100% of the time, more testing is needed to figure out what's going on
+ * kart_palette is "used" in the sense that calling the struct variable directly uses it
  * wheel_palette changes as you drive around while kart_palette is constant
  *
  * The term "palette" appears to be synonymous with "texture lookup table (TLUT)",
