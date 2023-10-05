@@ -202,9 +202,12 @@ void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, 
     thread->queue = NULL;
     osCreateThread(thread, id, entry, arg, sp, pri);
 }
-
+void isPrintfInit(void);
 void main_func(void) {
     osInitialize();
+#ifdef DEBUG
+    isPrintfInit(); // init osSyncPrintf
+#endif
     create_thread(&gIdleThread, 1, &thread1_idle, NULL, gIdleThreadStack + ARRAY_COUNT(gIdleThreadStack), 100);
     osStartThread(&gIdleThread);
 }

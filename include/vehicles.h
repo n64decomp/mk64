@@ -3,10 +3,12 @@
 
 #include "common_structs.h"
 
-#define NUM_1P_PASSENGER_CARS     5
-#define NUM_2P_PASSENGER_CARS     2
-#define NUM_PASSENGER_CAR_ENTRIES 5
+#define NUM_1P_PASSENGER_CARS     4
+#define NUM_2P_PASSENGER_CARS     1
+#define NUM_PASSENGER_CAR_ENTRIES 5 // Max 16
+#define NUM_TENDERS               1
 #define NUM_TRAINS                2
+#define LOCOMOTIVE_ONLY           0
 
 #define NUM_PADDLE_WHEEL_BOATS 1
 

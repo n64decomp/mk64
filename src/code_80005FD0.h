@@ -25,7 +25,17 @@ struct unexpiredActors {
     s32 unk18;
 };
 
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Test;
+
+extern Test D_801634F8[];
+
 /* Function Prototypes */
+void func_80012190(void);
 void func_8000BA14(u16, f32, f32, s16);
 void func_80014BDC(void);
 void func_80014A88(void);
@@ -185,7 +195,7 @@ extern s16 D_8016467C;
 extern s16 D_8016467E;
 extern s16 D_801632B8[];
 extern s16 D_801632D0[];
-extern s16 D_801632E8[];
+extern u16 D_801632E8[];
 extern s16 D_801646CC;
 extern u16 D_80163E2A;
 extern Gfx D_0D0076F8[];

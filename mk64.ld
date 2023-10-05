@@ -76,9 +76,11 @@ SECTIONS
       BUILD_DIR/src/audio/external.o(.text);
       BUILD_DIR/src/audio/port_eu.o(.text);
       #if DEBUG
+         BUILD_DIR/src/os/osCartRomInit.o(.text);
          BUILD_DIR/src/debug/crash_screen_enhancement.o(.text);
          BUILD_DIR/src/debug/debug.o(.text);
          BUILD_DIR/src/os/sprintf.o(.text);
+      BUILD_DIR/src/os/is_debug.o(.text);
       #endif
       BUILD_DIR/src/os/osCreateThread.o(.text);
       BUILD_DIR/src/os/osInitialize.o(.text);
@@ -310,8 +312,10 @@ SECTIONS
       BUILD_DIR/src/code_800AF9B0.o(.bss);
       BUILD_DIR/src/menus.o(.bss);
       #if DEBUG
+         BUILD_DIR/src/os/osCartRomInit.o(.bss);
          BUILD_DIR/src/debug/crash_screen_enhancement.o(.bss);
          BUILD_DIR/src/debug/debug.o(.bss);
+         BUILD_DIR/src/os/is_debug.o(.bss);
          BUILD_DIR/src/os/sprintf.o(.bss);
       #endif
       BUILD_DIR/src/audio/external.o(.bss);
