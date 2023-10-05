@@ -172,8 +172,8 @@ void func_80020000(Player *player, Camera *camera, s8 playerId, s8 arg3) {
                 D_80164AD0[D_800DDB58] = player;
                 D_800DDB58 += 1;
                 D_80165190[arg3][playerId] = 0;
-                D_801650D0[arg3][playerId] = player->frameSelector[arg3];
-                D_80165110[arg3][playerId] = player->groupSelector[arg3];
+                D_801650D0[arg3][playerId] = player->animFrameSelector[arg3];
+                D_80165110[arg3][playerId] = player->animGroupSelector[arg3];
                 D_80165150[arg3][playerId] = player->unk_0A8;
                 D_801651D0[arg3][playerId] += 1;
                 if (D_801651D0[arg3][playerId] == 2) {
@@ -181,13 +181,13 @@ void func_80020000(Player *player, Camera *camera, s8 playerId, s8 arg3) {
                 }
             } else {
                 if ((check_player_camera_collision(player, camera, D_80165574 + sp4C, D_80165576) == 1) & 0xFFFF) {
-                    if ((sRenderingFramebuffer == D_800DDB50[playerId]) || ((D_801650D0[arg3][playerId] - player->frameSelector[arg3]) > 0x13) || ((D_801650D0[arg3][playerId] - player->frameSelector[arg3]) < -0x13) || (D_80165190[arg3][playerId] == (s16) 1U)) {
+                    if ((sRenderingFramebuffer == D_800DDB50[playerId]) || ((D_801650D0[arg3][playerId] - player->animFrameSelector[arg3]) > 0x13) || ((D_801650D0[arg3][playerId] - player->animFrameSelector[arg3]) < -0x13) || (D_80165190[arg3][playerId] == (s16) 1U)) {
                         D_80164AB0[D_800DDB58] = (s16) playerId;
                         D_80164AC0[D_800DDB58] = (s16) arg3;
                         D_80164AD0[D_800DDB58] = player;
                         D_800DDB58 += 1;
-                        D_801650D0[arg3][playerId] = player->frameSelector[arg3];
-                        D_80165110[arg3][playerId] = player->groupSelector[arg3];
+                        D_801650D0[arg3][playerId] = player->animFrameSelector[arg3];
+                        D_80165110[arg3][playerId] = player->animGroupSelector[arg3];
                         D_80165150[arg3][playerId] = player->unk_0A8;
                         D_80165190[arg3][playerId] = 0;
                         D_801651D0[arg3][playerId] += 1;
@@ -196,13 +196,13 @@ void func_80020000(Player *player, Camera *camera, s8 playerId, s8 arg3) {
                         }
                     }
                 } else {
-                    if (((D_801650D0[arg3][playerId] - player->frameSelector[arg3]) > 0x13) || ((D_801650D0[arg3][playerId] - player->frameSelector[arg3]) < -0x13) || (D_80165190[arg3][playerId] == (s16) 1U)) {
+                    if (((D_801650D0[arg3][playerId] - player->animFrameSelector[arg3]) > 0x13) || ((D_801650D0[arg3][playerId] - player->animFrameSelector[arg3]) < -0x13) || (D_80165190[arg3][playerId] == (s16) 1U)) {
                         D_80164AB0[D_800DDB58] = (s16) playerId;
                         D_80164AC0[D_800DDB58] = (s16) arg3;
                         D_80164AD0[D_800DDB58] = player;
                         D_800DDB58 += 1;
-                        D_801650D0[arg3][playerId] = (s16) player->frameSelector[arg3];
-                        D_80165110[arg3][playerId] = player->groupSelector[arg3];
+                        D_801650D0[arg3][playerId] = (s16) player->animFrameSelector[arg3];
+                        D_80165110[arg3][playerId] = player->animGroupSelector[arg3];
                         D_80165150[arg3][playerId] = player->unk_0A8;
                         D_80165190[arg3][playerId] = 0;
                         D_801651D0[arg3][playerId] += 1;
@@ -1366,7 +1366,7 @@ void player_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
             sp154[2] = player->pos[2] + sp140;
         }
     }
-    D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1*0x80];
+    D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1 * 0x80];
     if ((arg2 == 0) || (arg2 == 1)) {
         D_80164B08 = &D_802BFB80[D_801651D0[arg2][arg1]][arg2][arg1].pixel_index_array[0];
         D_80164B0C = &D_802BFB80[D_801651D0[arg2][arg1]][arg2][arg1].pixel_index_array[0x7C0];
@@ -1462,7 +1462,7 @@ void ghost_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     spDC[1] = (player->pos[1] - player->boundingBoxSize) + (spCC - 2.0);
     spDC[0] = player->pos[0] + spD0;
     spDC[2] = player->pos[2] + spC8;
-    D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1*0x80];
+    D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1 * 0x80];
     if ((arg2 == 0) || (arg2 == 1)) {
         D_80164B08 = &D_802BFB80[D_801651D0[arg2][arg1]][arg2][arg1].pixel_index_array[0];
         D_80164B0C = &D_802BFB80[D_801651D0[arg2][arg1]][arg2][arg1].pixel_index_array[0x7C0];

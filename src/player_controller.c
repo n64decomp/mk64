@@ -809,31 +809,31 @@ void func_800291F8(void) {
 
 void func_80029200(Player *player, s8 arg1) {
     if ((s32) player->slopeAccel < -0x71B) {
-        player->groupSelector[arg1] = 0;
+        player->animGroupSelector[arg1] = 0;
     }
     if (((s32) player->slopeAccel < -0x4F9) && ((s32) player->slopeAccel >= -0x71B)) {
-        player->groupSelector[arg1] = 1;
+        player->animGroupSelector[arg1] = 1;
     }
     if ((player->slopeAccel < -0x221) && (player->slopeAccel >= -0x4F9)) {
-        player->groupSelector[arg1] = 2;
+        player->animGroupSelector[arg1] = 2;
     }
     if ((player->slopeAccel < -0x16B) && (player->slopeAccel >= -0x221)) {
-        player->groupSelector[arg1] = 3;
+        player->animGroupSelector[arg1] = 3;
     }
     if ((player->slopeAccel < 0x16C) && (player->slopeAccel >= -0x16B)) {
-        player->groupSelector[arg1] = 4;
+        player->animGroupSelector[arg1] = 4;
     }
     if ((player->slopeAccel >= 0x16C) && (player->slopeAccel < 0x222)) {
-        player->groupSelector[arg1] = 5;
+        player->animGroupSelector[arg1] = 5;
     }
     if ((player->slopeAccel >= 0x222) && (player->slopeAccel < 0x4FA)) {
-        player->groupSelector[arg1] = 6;
+        player->animGroupSelector[arg1] = 6;
     }
     if ((player->slopeAccel >= 0x4FA) && (player->slopeAccel < 0x71C)) {
-        player->groupSelector[arg1] = 7;
+        player->animGroupSelector[arg1] = 7;
     }
     if (player->slopeAccel >= 0x71C) {
-        player->groupSelector[arg1] = 8;
+        player->animGroupSelector[arg1] = 8;
     }
 }
 
@@ -850,7 +850,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
     u16 var_a0;
 
     player->unk_048[arg2] = atan2s(player->pos[0] - camera->pos[0], player->pos[2] - camera->pos[2]);
-    player->frameSelector[arg2] = (u16) ( (((player->unk_048[arg2]) + player->unk_02C[1] + player->unk_0C0))) / 128;
+    player->animFrameSelector[arg2] = (u16) ( (((player->unk_048[arg2]) + player->unk_02C[1] + player->unk_0C0))) / 128;
 
     temp_f2 = (gCharacterSize[player->characterId] * 18.0f) * player->size;
     temp_f0 = player->unk_230 - player->unk_23C;
@@ -869,7 +869,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
         player->unk_0D4[arg2] = (((func_802B7C40(temp_f0 / temp_f2)) * 0.9));
     }
     else {
-        if (((player->frameSelector[arg2]) >= 0) && ((player->frameSelector[arg2]) < 0x101)) {
+        if (((player->animFrameSelector[arg2]) >= 0) && ((player->animFrameSelector[arg2]) < 0x101)) {
             var_f0 = player->rotY - player->pos[1];
         } else {
             var_f0 = player->pos[1] - player->rotY;
@@ -883,7 +883,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
     temp_a0 = ((player->unk_048[arg2] + player->unk_02C[1]) + player->unk_0C0);
     temp_a0 = (s16) player->unk_0D4[arg2] * sins((u16) temp_a0) + player->unk_0CC[arg2] * coss((u16) temp_a0);
     move_s16_towards(&player->unk_050[arg2], temp_a0, 0.5f);
-    var_a0 = player->frameSelector[arg2];
+    var_a0 = player->animFrameSelector[arg2];
     player->unk_002 = player->unk_002 & (~(4 << (arg2 * 4)));
     if (var_a0 >= 0x101) {
         var_a0 = 0x201 - var_a0;
@@ -938,9 +938,9 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
         }
         var_a0 /= var_a1;
     }
-    player->frameSelector[arg2] = var_a0 + var_t0;
-    if ((player->frameSelector[arg2]) >= 0x23) {
-        player->frameSelector[arg2] = 0x22;
+    player->animFrameSelector[arg2] = var_a0 + var_t0;
+    if ((player->animFrameSelector[arg2]) >= 0x23) {
+        player->animFrameSelector[arg2] = 0x22;
     }
     if ((player->effects & 0x80)
         || (player->effects & 0x40)
@@ -949,18 +949,18 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
         || (player->effects & 0x20000)
         || (player->unk_044 & 0x800)) {
         
-        if ((player->frameSelector[arg2]) >= 0x14) {
-            player->frameSelector[arg2] = 0;
+        if ((player->animFrameSelector[arg2]) >= 0x14) {
+            player->animFrameSelector[arg2] = 0;
         }
     }
-    if ((player->groupSelector[arg2]) >= 9) {
-        player->groupSelector[arg2] = 4;
+    if ((player->animGroupSelector[arg2]) >= 9) {
+        player->animGroupSelector[arg2] = 4;
     }
     if (((player->effects & 0x80000) == 0x80000)
         || ((player->effects & 0x800000) == 0x800000)
         ||  (player->unk_044 & 0x800)) {
 
-        player->groupSelector[arg2] = 4;
+        player->animGroupSelector[arg2] = 4;
     }
     if (((player->effects & 0x400) == 0x400)
         || ((player->effects & 0x01000000) == 0x01000000)
@@ -973,8 +973,8 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
         D_80165190[arg2][playerId] = 1;
         
         if ((player->effects & 0x80) || (player->effects & 0x40)) {
-            if ((player->frameSelector[arg2] == D_801650D0[arg2][playerId])
-                && (player->groupSelector[arg2] == D_80165110[arg2][playerId])) {
+            if ((player->animFrameSelector[arg2] == D_801650D0[arg2][playerId])
+                && (player->animGroupSelector[arg2] == D_80165110[arg2][playerId])) {
                 player->unk_002 &= ~(1 << (arg2 * 4));
                 D_80165190[arg2][playerId] = 1;
             }
@@ -983,11 +983,11 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
         }
     } else {
         player->unk_002 |= 1 << (arg2 * 4);
-        if (((player->frameSelector[arg2] == D_801650D0[arg2][playerId]) && (player->groupSelector[arg2] == D_80165110[arg2][playerId])) && ((D_80165190[arg2][playerId]) == 0)) {
+        if (((player->animFrameSelector[arg2] == D_801650D0[arg2][playerId]) && (player->animGroupSelector[arg2] == D_80165110[arg2][playerId])) && ((D_80165190[arg2][playerId]) == 0)) {
             player->unk_002 &= ~(1 << (arg2 * 4));
         }
     }
-    temp_a0_2 = D_801650D0[arg2][playerId] - player->frameSelector[arg2];
+    temp_a0_2 = D_801650D0[arg2][playerId] - player->animFrameSelector[arg2];
     if ((temp_a0_2 >= 0x14) || (temp_a0_2 < (-0x13))) {
         player->unk_002 |= 1 << (arg2 * 4);
     }

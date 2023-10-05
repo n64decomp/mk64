@@ -1688,22 +1688,22 @@ u8 *gKartPalettes[] = {
  * The player struct tracks the texture indices to load.
  *
  * @param player
- * @param playerId Appears to be character index; 0-7.
+ * @param playerId Player ID.
  * @param arg2 Rom buffer index appears to always be 0-3. Sometimes subtracted by 2.
  * @param arg3 Second buffer index appears to always be 0-3.
  * @param arg4 First buffer index always zero.
  **/
-void load_texture_player(Player *player, s8 playerId, s8 arg2, s8 arg3, s8 arg4) {
+void load_kart_texture(Player *player, s8 playerId, s8 arg2, s8 arg3, s8 arg4) {
     s32 temp = player->effects;
     if (((temp & 0x80) == 0x80) || ((temp & 0x40) == 0x40) || ((temp & 0x80000) == 0x80000) || ((temp & 0x800000) == 0x800000) || ((temp & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0)) {
-        if (player->frameSelector[arg2] != 0) {
+        if (player->animFrameSelector[arg2] != 0) {
             osInvalDCache(&D_802DFB80[arg4][arg3][playerId], D_800DDEB0[player->characterId]);
 
             osPiStartDma(
                 &gDmaIoMesg,
                 OS_MESG_PRI_NORMAL, OS_READ,
                 (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
-                    gKartTextureTable1[player->characterId][player->groupSelector[arg2]][player->frameSelector[arg2]]
+                    gKartTextureTable1[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]]
                 )],
                 &D_802DFB80[arg4][arg3][playerId],
                 D_800DDEB0[player->characterId],
@@ -1719,7 +1719,7 @@ void load_texture_player(Player *player, s8 playerId, s8 arg2, s8 arg3, s8 arg4)
                 OS_MESG_PRI_NORMAL,
                 OS_READ,
                 (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
-                    gKartTextureTable0[player->characterId][player->groupSelector[arg2]][player->frameSelector[arg2]]
+                    gKartTextureTable0[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]]
                 )],
                 &D_802DFB80[arg4][arg3][playerId],
                 D_800DDEB0[player->characterId],
@@ -1753,7 +1753,7 @@ void load_texture_player(Player *player, s8 playerId, s8 arg2, s8 arg3, s8 arg4)
             OS_MESG_PRI_NORMAL,
             OS_READ,
             (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
-                gKartTextureTable0[player->characterId][player->groupSelector[arg2]][player->frameSelector[arg2]]
+                gKartTextureTable0[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]]
             )],
             &D_802DFB80[arg4][arg3][playerId],
             D_800DDEB0[player->characterId],
@@ -1769,7 +1769,7 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
 
     if (((temp & 0x80) == 0x80) || ((temp & 0x40) == 0x40) || ((temp & 0x80000) == 0x80000) || ((temp & 0x800000) == 0x800000) || ((temp & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0))
     {
-        if (player->frameSelector[arg2] != 0) {
+        if (player->animFrameSelector[arg2] != 0) {
             osInvalDCache(&D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
 
             osPiStartDma(
@@ -1777,7 +1777,7 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
                 OS_MESG_PRI_NORMAL,
                 OS_READ,
                 (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
-                    gKartTextureTable1[player->characterId][player->groupSelector[arg2]][player->frameSelector[arg2]]
+                    gKartTextureTable1[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]]
                 )],
                 &D_802DFB80[arg4][arg3][arg1],
                 D_800DDEB0[player->characterId],
@@ -1791,7 +1791,7 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
                 OS_MESG_PRI_NORMAL,
                 OS_READ,
                 (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
-                    gKartTextureTable0[player->characterId][player->groupSelector[arg2]][player->frameSelector[arg2]]
+                    gKartTextureTable0[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]]
                 )],
                 &D_802DFB80[arg4][arg3][arg1],
                 D_800DDEB0[player->characterId],
@@ -1823,7 +1823,7 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
             OS_MESG_PRI_NORMAL,
             OS_READ,
             (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(
-                gKartTextureTable0[player->characterId][player->groupSelector[arg2]][player->frameSelector[arg2]]
+                gKartTextureTable0[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]]
             )],
             &D_802DFB80[arg4][arg3][arg1],
             D_800DDEB0[player->characterId],
@@ -1832,10 +1832,10 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
     }
 }
 
-void load_palettes_player(Player *player, s8 playerId, s8 arg2, s8 arg3) {
+void load_kart_palette(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     // Weird typecasting is being done here. We define D_802F1F80 as a 3-dimensional u32 array,
     // but its better to understand it as a 3-dimensional struct_D_802F1F80 array.
-    struct_D_802F1F80 *temp_s0 = (struct_D_802F1F80 *) &D_802F1F80[arg3][arg2][playerId*0x80];
+    struct_D_802F1F80 *temp_s0 = (struct_D_802F1F80 *) &D_802F1F80[arg3][arg2][playerId * 0x80];
     switch(gActiveScreenMode) {
         case SCREEN_MODE_1P:
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
@@ -1856,7 +1856,7 @@ void load_palettes_player(Player *player, s8 playerId, s8 arg2, s8 arg3) {
 
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
             break;
-        case SCREEN_MODE_3P_4P_SPLITSCREEN: // do exact same thing then above
+        case SCREEN_MODE_3P_4P_SPLITSCREEN: // Code identical to above
             osInvalDCache(temp_s0, sizeof(struct_D_802F1F80));
 
             osPiStartDma(

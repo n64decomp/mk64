@@ -1025,19 +1025,19 @@ void func_8003CD98(Player *player, Camera *camera, s8 playerId, s8 arg3) {
         }
         func_8002934C(player, camera, arg3, playerId);
         if ((arg3 == 0) || (arg3 == 1)) {
-            load_palettes_player(player, playerId, arg3, 0);
-            load_palettes_player(player, playerId, arg3, 1);
-            load_texture_player(player, playerId, arg3, arg3, 0);
+            load_kart_palette(player, playerId, arg3, 0);
+            load_kart_palette(player, playerId, arg3, 1);
+            load_kart_texture(player, playerId, arg3, arg3, 0);
             mio0decode((u8 *) &D_802DFB80[0][arg3][playerId], (u8 *) &D_802BFB80[0][arg3][playerId]);
         } else {
-            load_palettes_player(player, playerId, arg3, 0);
-            load_palettes_player(player, playerId, arg3, 1);
-            load_texture_player(player, (s8) (playerId + 4), arg3, (s8) (arg3 - 2), 0);
+            load_kart_palette(player, playerId, arg3, 0);
+            load_kart_palette(player, playerId, arg3, 1);
+            load_kart_texture(player, (s8) (playerId + 4), arg3, (s8) (arg3 - 2), 0);
             mio0decode((u8 *) &D_802DFB80[0][arg3 - 2][playerId + 4], (u8 *) &D_802BFB80[0][arg3 - 2][playerId + 4]);
         }
 
-        D_801650D0[arg3][playerId] = player->frameSelector[arg3];
-        D_80165110[arg3][playerId] = player->groupSelector[arg3];
+        D_801650D0[arg3][playerId] = player->animFrameSelector[arg3];
+        D_80165110[arg3][playerId] = player->animGroupSelector[arg3];
         D_80165150[arg3][playerId] = player->unk_0A8;
         D_801651D0[arg3][playerId] = 0;
         func_800267AC(player, playerId, arg3);
@@ -1209,7 +1209,7 @@ void func_8003DB5C(void) {
     camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 1);
 
     for (playerId = 0; playerId < 8; playerId++, player++) {
-        load_palettes_player(player, playerId, 1, 0);
-        load_palettes_player(player, playerId, 1, 1);
+        load_kart_palette(player, playerId, 1, 0);
+        load_kart_palette(player, playerId, 1, 1);
     }
 }
