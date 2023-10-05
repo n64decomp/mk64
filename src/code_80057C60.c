@@ -6728,7 +6728,7 @@ void func_8006DC54(Player* player, s8 arg1, s8 arg2) {
 
     bitwiseMask = 8 << (arg2 * 4);
     if (bitwiseMask == (player->unk_002 & bitwiseMask)) {
-        for (i = 0; i < 10; ++i) {
+        for (i = 0; i < 10; i++) {
             if (player->unk_258[i].unk_012 == 7) {
                 func_800658A0(player, arg1, i, arg2);
             }
