@@ -17,9 +17,7 @@ typedef unsigned int           u32;
 typedef signed long long int   s64;
 typedef unsigned long long int u64;
 
-#ifndef bool
 typedef signed int            bool;
-#endif
 typedef signed char          bool8;
 
 typedef volatile u8   vu8;
