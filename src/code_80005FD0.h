@@ -25,8 +25,23 @@ struct unexpiredActors {
     s32 unk18;
 };
 
-/* Function Prototypes */
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Test;
 
+extern Test D_801634F8[];
+
+/* Function Prototypes */
+void func_80012190(void);
+void func_8000BA14(u16, f32, f32, s16);
+void func_80014BDC(void);
+void func_80014A88(void);
+void func_80014934(void);
+void func_800147E0(void);
+void func_800132F4(void);
 s16  func_80005FD0(Vec3f, Vec3f);
 void func_800100F0(s32);
 void func_800120C8(void);
@@ -125,7 +140,7 @@ void func_80014D30(s32, s32);
 f32  func_80014EE4(f32 arg0, s32 arg1);
 
 void func_8001530C(void);
-void func_80015314(s32, s32, s32);
+void func_80015314(s32, f32, s32);
 void func_80015390(Camera*, Player*, s32);
 
 void func_8001968C(void);
@@ -170,7 +185,7 @@ extern struct unexpiredActors gUnexpiredActorsList[];
 extern s16 D_8016348C;
 extern s32 D_801643E0[];
 extern s32 D_80164408[];
-extern s16 D_80164670;
+extern s16 D_80164670[];
 extern s16 D_80164672;
 extern s16 D_80164674;
 extern s16 D_80164676;
@@ -180,7 +195,7 @@ extern s16 D_8016467C;
 extern s16 D_8016467E;
 extern s16 D_801632B8[];
 extern s16 D_801632D0[];
-extern s16 D_801632E8[];
+extern u16 D_801632E8[];
 extern s16 D_801646CC;
 extern u16 D_80163E2A;
 extern Gfx D_0D0076F8[];

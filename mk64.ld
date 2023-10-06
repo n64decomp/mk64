@@ -3,7 +3,7 @@
 
 OUTPUT_ARCH (mips)
 
-#include "include/segments.h"
+#include "include/hardcoded_segments.h"
 
 #define BEGIN_SEG(name, addr) \
     _##name##SegmentStart = ADDR(.name); \
@@ -37,7 +37,7 @@ SECTIONS
    BEGIN_SEG(main, SEG_MAIN) SUBALIGN(16)
    {
       BUILD_DIR/asm/entry.o(.text);
-      BUILD_DIR/src/main.o(.text);
+      BUILD_DIR/src/main.o(.text*);
       BUILD_DIR/src/code_800029B0.o(.text);
       BUILD_DIR/src/profiler.o(.text);
       BUILD_DIR/src/crash_screen.o(.text);
@@ -76,9 +76,11 @@ SECTIONS
       BUILD_DIR/src/audio/external.o(.text);
       BUILD_DIR/src/audio/port_eu.o(.text);
       #if DEBUG
+         BUILD_DIR/src/os/osCartRomInit.o(.text);
          BUILD_DIR/src/debug/crash_screen_enhancement.o(.text);
          BUILD_DIR/src/debug/debug.o(.text);
          BUILD_DIR/src/os/sprintf.o(.text);
+      BUILD_DIR/src/os/is_debug.o(.text);
       #endif
       BUILD_DIR/src/os/osCreateThread.o(.text);
       BUILD_DIR/src/os/osInitialize.o(.text);
@@ -198,7 +200,7 @@ SECTIONS
       BUILD_DIR/src/os/_Ldtob.o(.text);
       BUILD_DIR/src/os/ldiv.o(.text);
       BUILD_DIR/data/rsp.o(.text);
-      BUILD_DIR/src/main.o(.data);
+      BUILD_DIR/src/main.o(.data*);
       BUILD_DIR/data/data_0DD0A0.o(.data);
       BUILD_DIR/src/code_800029B0.o(.data);
       BUILD_DIR/src/profiler.o(.data);
@@ -250,7 +252,7 @@ SECTIONS
       BUILD_DIR/src/os/_Printf.o(.data);
       BUILD_DIR/src/os/osViData.o(.data);
       BUILD_DIR/src/os/_Litob.o(.data);
-      BUILD_DIR/src/main.o(.rodata);
+      BUILD_DIR/src/main.o(.rodata*);
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/src/code_80005FD0.jp.o(.rodata);
       BUILD_DIR/src/camera.o(.rodata);
@@ -295,7 +297,7 @@ SECTIONS
    END_SEG(main)
 
    BEGIN_NOLOAD(main) {
-      BUILD_DIR/src/main.o(.bss);
+      BUILD_DIR/src/main.o(.bss*);
       BUILD_DIR/src/code_800029B0.o(.bss);
       BUILD_DIR/src/profiler.o(.bss);
       BUILD_DIR/src/crash_screen.o(.bss);
@@ -310,8 +312,10 @@ SECTIONS
       BUILD_DIR/src/code_800AF9B0.o(.bss);
       BUILD_DIR/src/menus.o(.bss);
       #if DEBUG
+         BUILD_DIR/src/os/osCartRomInit.o(.bss);
          BUILD_DIR/src/debug/crash_screen_enhancement.o(.bss);
          BUILD_DIR/src/debug/debug.o(.bss);
+         BUILD_DIR/src/os/is_debug.o(.bss);
          BUILD_DIR/src/os/sprintf.o(.bss);
       #endif
       BUILD_DIR/src/audio/external.o(.bss);
@@ -335,42 +339,43 @@ SECTIONS
       BUILD_DIR/src/os/osLeoDiskInit.o(.bss);
    }
    END_NOLOAD(main)
+
    
    /* 0x8028DF00 0F7510-123640 [2C130] */
    BEGIN_SEG(racing, SEG_RACING)
    {
-      BUILD_DIR/src/racing/race_logic.o(.text);
-      BUILD_DIR/src/racing/render_courses.o(.text);
-      BUILD_DIR/src/racing/actors.o(.text);
+      BUILD_DIR/src/racing/race_logic.o(.text*);
+      BUILD_DIR/src/racing/render_courses.o(.text*);
+      BUILD_DIR/src/racing/actors.o(.text*);
       BUILD_DIR/src/racing/skybox_and_splitscreen.o(.text);
-      BUILD_DIR/src/racing/memory.o(.text);
-      BUILD_DIR/src/racing/collision.o(.text);
+      BUILD_DIR/src/racing/memory.o(.text*);
+      BUILD_DIR/src/racing/collision.o(.text*);
       BUILD_DIR/src/racing/actors_extended.o(.text);
-      BUILD_DIR/src/racing/math_util.o(.text);
-      BUILD_DIR/src/racing/race_logic.o(.data);
-      BUILD_DIR/src/racing/render_courses.o(.data);
-      BUILD_DIR/src/racing/actors.o(.data);
+      BUILD_DIR/src/racing/math_util.o(.text*);
+      BUILD_DIR/src/racing/race_logic.o(.data*);
+      BUILD_DIR/src/racing/render_courses.o(.data*);
+      BUILD_DIR/src/racing/actors.o(.data*);
       BUILD_DIR/src/racing/skybox_and_splitscreen.o(.data);
-      BUILD_DIR/src/racing/memory.o(.data);
+      BUILD_DIR/src/racing/memory.o(.data*);
       BUILD_DIR/courses/courseTable.inc.o(.data);
       BUILD_DIR/src/racing/actors_extended.o(.data);
-      BUILD_DIR/src/racing/math_util.o(.data);
-      BUILD_DIR/src/racing/race_logic.o(.rodata);
-      BUILD_DIR/src/racing/render_courses.o(.rodata);
-      BUILD_DIR/src/racing/actors.o(.rodata);
+      BUILD_DIR/src/racing/math_util.o(.data*);
+      BUILD_DIR/src/racing/race_logic.o(.rodata*);
+      BUILD_DIR/src/racing/render_courses.o(.rodata*);
+      BUILD_DIR/src/racing/actors.o(.rodata*);
       BUILD_DIR/src/racing/skybox_and_splitscreen.o(.rodata);
-      BUILD_DIR/src/racing/memory.o(.rodata);
-      BUILD_DIR/src/racing/collision.o(.rodata);
+      BUILD_DIR/src/racing/memory.o(.rodata*);
+      BUILD_DIR/src/racing/collision.o(.rodata*);
       BUILD_DIR/src/racing/actors_extended.o(.rodata);
-      BUILD_DIR/src/racing/math_util.o(.rodata);
+      BUILD_DIR/src/racing/math_util.o(.rodata*);
    }
    END_SEG(racing)
 
 	BEGIN_NOLOAD(racing)
    {
-      BUILD_DIR/src/racing/race_logic.o(.bss);
-      BUILD_DIR/src/racing/actors.o(.bss);
-      BUILD_DIR/src/racing/memory.o(.bss);
+      BUILD_DIR/src/racing/race_logic.o(.bss*);
+      BUILD_DIR/src/racing/actors.o(.bss*);
+      BUILD_DIR/src/racing/memory.o(.bss*);
       BUILD_DIR/src/framebuffers.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
       BUILD_DIR/src/audio/heap.o(.bss*);
