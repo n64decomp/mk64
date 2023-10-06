@@ -36,11 +36,11 @@ typedef struct {
  * This type could reasonably be called activeCharacterPalette or similar
  *
  * Appears to be a combination of 2 different palettes:
- *   kart_palette appears to be the palette for all non-wheel elements of the kart (including the driver).
- *   wheel_palette then is the palette for the wheels
- *
- * kart_palette is "used" in the sense that calling the struct variable directly uses it
- * wheel_palette changes as you drive around while kart_palette is constant
+ *   kart_palette contains the pallete for all non-wheel elements of the kart (including the driver).
+ *   wheel_palette contains the palette for the wheels.
+ * 
+ * kart palette sets a defined palette based on the character.
+ * while wheels pallete sets a dynamic palette as your drive around with the kart.
  *
  * The term "palette" appears to be synonymous with "texture lookup table (TLUT)",
  * at least as far as the N64 texture engine is concerned
