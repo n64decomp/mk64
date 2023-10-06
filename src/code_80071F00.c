@@ -259,7 +259,7 @@ void func_800723A4(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].unk_0CF = 0;
     set_object_unk_0CB(objectIndex, 0);
     gObjectList[objectIndex].unk_0D8 = arg1;
-    gObjectList[objectIndex].itemDisplayState = 1;
+    gObjectList[objectIndex].state = 1;
 }
 
 UNUSED void func_80072408(s32 objectIndex) {
@@ -267,7 +267,7 @@ UNUSED void func_80072408(s32 objectIndex) {
 }
 
 void func_80072428(s32 objectIndex) {
-    gObjectList[objectIndex].itemDisplayState = 0;
+    gObjectList[objectIndex].state = 0;
     gObjectList[objectIndex].unk_0D8 = 0;
     set_object_unk_0CB(objectIndex, 0);
     gObjectList[objectIndex].unk_054 = 0;
@@ -279,7 +279,7 @@ void func_80072428(s32 objectIndex) {
 void func_80072488(s32 objectIndex) {
     set_object_unk_0CB(objectIndex,  0);
     set_object_flag_unk_054_false(objectIndex, 0x2000);
-    gObjectList[objectIndex].itemDisplayState++;
+    gObjectList[objectIndex].state++;
 }
 
 void func_800724DC(s32 objectIndex) {
@@ -301,17 +301,17 @@ void func_80072568(s32 objectIndex, s32 arg1) {
     set_object_flag_unk_054_false(objectIndex, 0x2000);
     set_object_flag_unk_054_false(objectIndex, 8);
     func_80072488(objectIndex);
-    func_800724F8(objectIndex, gObjectList[objectIndex].itemDisplayState);
-    gObjectList[objectIndex].itemDisplayState = arg1;
+    func_800724F8(objectIndex, gObjectList[objectIndex].state);
+    gObjectList[objectIndex].state = arg1;
 }
 
 void func_800725E8(s32 objectIndex, s32 arg1, s32 arg2) {
     set_object_unk_0CB(objectIndex, 0);
     set_object_flag_unk_054_false(objectIndex, 0x2000);
     set_object_flag_unk_054_false(objectIndex, 8);
-    gObjectList[objectIndex].itemDisplayState = arg2;
-    func_800724F8(objectIndex, gObjectList[objectIndex].itemDisplayState);
-    gObjectList[objectIndex].itemDisplayState =  arg1;
+    gObjectList[objectIndex].state = arg2;
+    func_800724F8(objectIndex, gObjectList[objectIndex].state);
+    gObjectList[objectIndex].state =  arg1;
 }
 
 s16 func_80072530(s32); // extern
@@ -320,18 +320,18 @@ void func_8007266C(s32 objectIndex) {
     set_object_unk_0CB(objectIndex, 0);
     set_object_flag_unk_054_false(objectIndex, 0x2000);
     set_object_flag_unk_054_false(objectIndex, 8);
-    gObjectList[objectIndex].itemDisplayState = func_80072530(objectIndex);
+    gObjectList[objectIndex].state = func_80072530(objectIndex);
 }
 
 void func_800726CC(s32 objectIndex, s32 arg1) {
     set_object_unk_0CB(objectIndex, 0);
     set_object_flag_unk_054_false(objectIndex, 0x2000);
-    gObjectList[objectIndex].itemDisplayState = arg1;
+    gObjectList[objectIndex].state = arg1;
 }
 
 UNUSED void func_8007271C(s32 objectIndex, s32 arg1) {
     if (gObjectList[objectIndex].unk_0CB == 0) {
-        gObjectList[objectIndex].itemDisplayState = arg1;
+        gObjectList[objectIndex].state = arg1;
     }
 }
 
@@ -400,13 +400,13 @@ UNUSED s32 func_800728B0(s32 objectIndex, s32 arg1, s32 arg2) {
 
 void func_80072950(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3) {
     if (arg1 == arg2) {
-        gObjectList[objectIndex].itemDisplayState = arg3;
+        gObjectList[objectIndex].state = arg3;
     }
 }
 
 UNUSED void func_80072974(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3) {
     if (arg1 != arg2) {
-        gObjectList[objectIndex].itemDisplayState = arg3;
+        gObjectList[objectIndex].state = arg3;
     }
 }
 
@@ -761,7 +761,7 @@ UNUSED void func_80073568() {
 }
 
 UNUSED void func_80073570(s32 objectIndex) {
-    s16 *test = &gObjectList[objectIndex].itemDisplayState;
+    s16 *test = &gObjectList[objectIndex].state;
 
     D_8018D1EC++;
     if (D_8018D1EC == 5) {
@@ -1412,7 +1412,7 @@ void func_80074D94(s32 objectIndex) {
 }
 
 void func_80074E28(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
     case 1:
         func_80074924(objectIndex);
         break;
@@ -1443,10 +1443,10 @@ void func_80074EE8(void) {
         objectIndex = D_8018C630[someIndex];
         if (objectIndex != DELETED_OBJECT_ID) {
             object = &gObjectList[objectIndex];
-            if (object->itemDisplayState != 0) {
+            if (object->state != 0) {
                 func_80074E28(objectIndex);
                 func_80074D94(objectIndex);
-                if (object->itemDisplayState == 0) {
+                if (object->state == 0) {
                     delete_object_wrapper(&D_8018C630[someIndex]);
                 }
                 someCount += 1;
@@ -1459,7 +1459,7 @@ void func_80074EE8(void) {
 }
 
 void func_80074FD8(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {                              /* irregular */
+    switch (gObjectList[objectIndex].state) {                              /* irregular */
     case 0:
         break;
     case 1:
@@ -1546,9 +1546,9 @@ void func_8007542C(s32 arg0) {
         objectIndex = var_s3[var_s2];
         if (objectIndex != DELETED_OBJECT_ID) {
             temp_s0 = &gObjectList[objectIndex];
-            if (temp_s0->itemDisplayState != 0) {
+            if (temp_s0->state != 0) {
                 func_80074FD8(objectIndex);
-                if (temp_s0->itemDisplayState == 0) {
+                if (temp_s0->state == 0) {
                     delete_object_wrapper(&var_s3[var_s2]);
                 }
             }
@@ -1603,7 +1603,7 @@ void func_80075698(s32 objectIndex) {
 }
 
 void func_80075714(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
     case 1:
         func_80075698(objectIndex);
         break;
@@ -1646,9 +1646,9 @@ void func_80075838(void) {
             temp_a0 = D_8018C3F0[i];
             if (temp_a0 != -1) {
                 temp = &gObjectList[temp_a0];
-                if (temp->itemDisplayState != 0) {
+                if (temp->state != 0) {
                     func_80075714(temp_a0);
-                    if (temp->itemDisplayState == 0) {
+                    if (temp->state == 0) {
                         delete_object_wrapper(&D_8018C3F0[i]);
                     }
                     count += 1;
@@ -1665,9 +1665,9 @@ void func_80075838(void) {
             temp_a0 = D_8018C630[i];
             if (temp_a0 != -1) {
                 temp = &gObjectList[temp_a0];
-                if (temp->itemDisplayState != 0) {
+                if (temp->state != 0) {
                     func_80075714(temp_a0);
-                    if (temp->itemDisplayState == 0) {
+                    if (temp->state == 0) {
                         delete_object_wrapper(&D_8018C630[i]);
                     }
                     count += 1;
@@ -1727,7 +1727,7 @@ void func_80075B08(s32 objectIndex) {
 }
 
 void func_80075B84(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
     case 1:
         func_80075B08(objectIndex);
         break;
@@ -1772,9 +1772,9 @@ void func_80075CA8(void) {
             temp_a0 = D_8018C3F0[i];
             if (temp_a0 != -1) {
                 temp = &gObjectList[temp_a0];
-                if (temp->itemDisplayState != 0) {
+                if (temp->state != 0) {
                     func_80075B84(temp_a0);
-                    if (temp->itemDisplayState == 0) {
+                    if (temp->state == 0) {
                         delete_object_wrapper(&D_8018C3F0[i]);
                     }
                     count += 1;
@@ -1791,9 +1791,9 @@ void func_80075CA8(void) {
             temp_a0 = D_8018C630[i];
             if (temp_a0 != -1) {
                 temp = &gObjectList[temp_a0];
-                if (temp->itemDisplayState != 0) {
+                if (temp->state != 0) {
                     func_80075B84(temp_a0);
-                    if (temp->itemDisplayState == 0) {
+                    if (temp->state == 0) {
                         delete_object_wrapper(&D_8018C630[i]);
                     }
                     count += 1;
@@ -1945,7 +1945,7 @@ void func_800763CC(s32 objectIndex) {
 
     if(objectIndex){}
     temp_s0 = &gObjectList[objectIndex];
-    switch (temp_s0->itemDisplayState) {
+    switch (temp_s0->state) {
     case 1:
         func_8007634C(objectIndex);
         break;
@@ -2118,7 +2118,7 @@ void func_800769D8(s32 objectIndex) {
     Objects *temp_s0;
 
     temp_s0 = &gObjectList[objectIndex];
-    switch (temp_s0->itemDisplayState) {
+    switch (temp_s0->state) {
         case 0:
             break;
         case 1:
@@ -2177,7 +2177,7 @@ void func_80076B84(void) {
         objectIndex = D_8018C1B0[someIndex];
         if (objectIndex != DELETED_OBJECT_ID) {
             object = &gObjectList[objectIndex];
-            if (object->itemDisplayState != 0) {
+            if (object->state != 0) {
                 if ((object->unk_0D5 == 4) || (object->unk_0D5 == 5)) {
                     func_800763CC(objectIndex);
                     func_80076538(objectIndex);
@@ -2185,7 +2185,7 @@ void func_80076B84(void) {
                     func_800769D8(objectIndex);
                     func_80076AEC(objectIndex);
                 }
-                if (object->itemDisplayState == 0) {
+                if (object->state == 0) {
                     delete_object_wrapper(&D_8018C1B0[someIndex]);
                 }
             }
@@ -2226,7 +2226,7 @@ void func_80076DC4(s32 objectIndex) {
 }
 
 void func_80076E14(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
         case 1:
             func_80076DC4(objectIndex);
             break;
@@ -2260,10 +2260,10 @@ void func_80076F2C(void) {
         flameIndex = D_8018C870[someIndex];
         if (flameIndex != DELETED_OBJECT_ID) {
             object = &gObjectList[flameIndex];
-            if (object->itemDisplayState != 0) {
+            if (object->state != 0) {
                 func_80076E14(flameIndex);
                 func_80076ED8(flameIndex);
-                if (object->itemDisplayState == 0) {
+                if (object->state == 0) {
                     delete_object_wrapper(&D_8018C870[someIndex]);
                 }
             }
@@ -2369,7 +2369,7 @@ void func_80077450(s32 objectIndex) {
     s16 sp3A;
     s16 sp38;
 
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
         case 0:
             break;
         case 1:
@@ -2418,10 +2418,10 @@ void func_80077640(void) {
         objectIndex = D_8018C630[someIndex];
         if (objectIndex != DELETED_OBJECT_ID) {
             object = &gObjectList[objectIndex];
-            if (object->itemDisplayState != 0) {
+            if (object->state != 0) {
                 func_80077450(objectIndex);
                 func_80077584(objectIndex);
-                if (object->itemDisplayState == 0) {
+                if (object->state == 0) {
                     delete_object_wrapper(&D_8018C630[someIndex]);
                 }
             }
@@ -2498,7 +2498,7 @@ void func_80077B3C(s32 objectIndex) {
     Objects *temp_v1;
     temp_v1 = &gObjectList[objectIndex];
 
-    switch (temp_v1->itemDisplayState) {
+    switch (temp_v1->state) {
         case 0:
             break;
         case 1:
@@ -2540,10 +2540,10 @@ void func_80077C9C(void) {
         leafIndex = D_8018C970[someIndex];
         if (leafIndex != DELETED_OBJECT_ID) {
             object = &gObjectList[leafIndex];
-            if (object->itemDisplayState != 0) {
+            if (object->state != 0) {
                 func_80077B3C(leafIndex);
                 func_80077BCC(leafIndex);
-                if (object->itemDisplayState == 0) {
+                if (object->state == 0) {
                     delete_object_wrapper(&D_8018C970[someIndex]);
                 }
             }
@@ -2571,7 +2571,7 @@ loop_3:
             D_8018D17C = 0;
         }
         temp_a0 = *((arg0 * 4) + &D_8018CC80 + (D_8018D17C * 4));
-        if (gObjectList[temp_a0].itemDisplayState == 0) {
+        if (gObjectList[temp_a0].state == 0) {
             func_800723A4(temp_a0, 1);
             return;
         }
@@ -2655,7 +2655,7 @@ void func_80077F64(s32 objectIndex, Camera *camera) {
 }
 
 void func_800780CC(s32 objectIndex, Camera *camera) {
-    switch (gObjectList[objectIndex].itemDisplayState) {                              /* irregular */
+    switch (gObjectList[objectIndex].state) {                              /* irregular */
     case 1:
         func_80077E20(objectIndex);
         return;
@@ -2680,7 +2680,7 @@ void func_80078170(s32 arg0, Camera *arg1) {
     func_80077D5C(arg0);
     for (i = 0; i < D_8018D1F0; i++) {
         objectIndex = D_8018CC80[arg0 + i];
-        if (gObjectList[objectIndex].itemDisplayState != 0) {
+        if (gObjectList[objectIndex].state != 0) {
             func_800780CC(objectIndex, arg1);
         }
     }
@@ -2754,7 +2754,7 @@ void func_80078288(s32 objectIndex) {
 }
 
 void func_800786EC(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {                              /* irregular */
+    switch (gObjectList[objectIndex].state) {                              /* irregular */
     case 0:
         break;
     case 1:
@@ -2780,7 +2780,7 @@ void func_80078790(void) {
         if (D_8018D174 >= NUM_SNOWFLAKES) {
             D_8018D174 = 0;
         }
-        if (gObjectList[D_8018C1B0[D_8018D174]].itemDisplayState == 0) {
+        if (gObjectList[D_8018C1B0[D_8018D174]].state == 0) {
             func_800723A4(D_8018C1B0[D_8018D174], 1);
             break;
         }
@@ -2801,7 +2801,7 @@ void func_80078838(void) {
     }
     for (someIndex = 0; someIndex < NUM_SNOWFLAKES; someIndex++) {
         snowflakeIndex = D_8018C1B0[someIndex];
-        if (gObjectList[snowflakeIndex].itemDisplayState != 0) {
+        if (gObjectList[snowflakeIndex].state != 0) {
             func_800786EC(snowflakeIndex);
         }
     }
@@ -3030,7 +3030,7 @@ void func_800790E4(s32 playerId) {
 
 void func_80079114(s32 objectIndex, s32 arg1, s32 arg2) {
     s32 a;
-    if (gObjectList[objectIndex].itemDisplayState >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         if ((u8)gObjectList[objectIndex].unk_0D8 == 1) {
             if (arg1 == 0) {
                 func_80074894(objectIndex, D_8018C028);
@@ -3099,7 +3099,7 @@ extern u16 D_800E67B8[][4]; // static
 
 void func_80079380(s32 objectIndex, s32 arg1) {
     UNUSED s32 pad;
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
         case 0:
             break;
         case 1:
@@ -3198,7 +3198,7 @@ void func_8007963C(s32 objectIndex, s32 playerIndex) {
 }
 
 void func_80079700(s32 objectIndex, s32 playerIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
         case 0:
             break;
         case 1:
@@ -3302,7 +3302,7 @@ void func_80079A5C(s32 objectIndex, UNUSED Player *player) {
 void func_80079B40(s32 objectIndex, s32 playerId) {
     Player *player = &gPlayerOne[playerId];
 
-    switch (gObjectList[objectIndex].itemDisplayState) {                              /* switch 1; irregular */
+    switch (gObjectList[objectIndex].state) {                              /* switch 1; irregular */
         case 0:                                         /* switch 1 */
             break;
         case 1:                                         /* switch 1 */
@@ -3347,7 +3347,7 @@ void func_80079B40(s32 objectIndex, s32 playerId) {
             func_80073720(objectIndex);
             break;
     }
-    if (gObjectList[objectIndex].itemDisplayState >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         func_8007993C(objectIndex, player);
     }
     func_80079A5C(objectIndex, player);
@@ -3358,7 +3358,7 @@ void func_80079D44(s32 objectIndex, s32 playerId) {
     Player *temp_s1;
 
     temp_s1 = &gPlayerOne[playerId];
-    switch (gObjectList[objectIndex].itemDisplayState) {                              /* switch 1; irregular */
+    switch (gObjectList[objectIndex].state) {                              /* switch 1; irregular */
         case 0:                                         /* switch 1 */
             break;
         case 1:                                         /* switch 1 */
@@ -3426,7 +3426,7 @@ void func_80079D44(s32 objectIndex, s32 playerId) {
             break;
     }
 
-    if (gObjectList[objectIndex].itemDisplayState >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         func_8007993C(objectIndex, temp_s1);
     }
     func_80079A5C(objectIndex, temp_s1);
@@ -3453,7 +3453,7 @@ void func_8007A060(s32 objectIndex, s32 playerIndex) {
 }
 
 void func_8007A124(s32 objectIndex, s32 playerIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
         case 0:
             break;
         case 1:
@@ -3503,7 +3503,7 @@ void func_8007A228(s32 objectIndex, s32 playerIndex) {
 }
 
 void func_8007A2EC(s32 objectIndex, s32 playerIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
         case 0:
             break;
         case 1:
@@ -3558,7 +3558,7 @@ extern u16 D_800E69F4[][4]; // static?
 void func_8007A4D4(s32 objectIndex, s32 playerId) {
     Player *sp2C = &gPlayerOne[playerId];
 
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
         case 0:
             break;
         case 1:
@@ -3578,7 +3578,7 @@ void func_8007A4D4(s32 objectIndex, s32 playerId) {
     }
     switch (gObjectList[objectIndex].unk_0D6) {                              /* switch 1; irregular */
         case 1:                                         /* switch 1 */
-            if ((gObjectList[objectIndex].itemDisplayState >= 3) && (!(sp2C->effects & 0x400000))) {
+            if ((gObjectList[objectIndex].state >= 3) && (!(sp2C->effects & 0x400000))) {
                 func_80086F10(objectIndex, 6, D_800E69F4);
                 gObjectList[objectIndex].unk_0D6 = 2;
                 gObjectList[objectIndex].unk_04C = 0x00000050;
@@ -3625,7 +3625,7 @@ void func_8007A88C(s32 playerId) {
     objectIndex = D_80183DB8[playerId];
     player = &gPlayerOne[playerId];
 
-    if ((gObjectList[objectIndex].itemDisplayState == 0) && (player->effects & 0x400000)) {
+    if ((gObjectList[objectIndex].state == 0) && (player->effects & 0x400000)) {
         func_800790E4(playerId);
     }
 }
@@ -3971,7 +3971,7 @@ void func_8007B34C(s32 playerId) {
     }
     temp_t0 = &gObjectList[temp_s0];
     sp2C = temp_t0;
-    temp_t6 = (u16) temp_t0->itemDisplayState;
+    temp_t6 = (u16) temp_t0->state;
     switch (temp_t6) {
     case 1:
         func_8007B254(temp_s0, playerId);
@@ -4177,7 +4177,7 @@ void func_8007BBBC(s32 objectIndex) {
     Objects *temp_s1;
 
     temp_s1 = &gObjectList[objectIndex];
-    switch (temp_s1->itemDisplayState) {                              /* irregular */
+    switch (temp_s1->state) {                              /* irregular */
     case 1:
         func_800735BC(objectIndex, d_course_banshee_boardwalk_dl_cheep_cheep, 2.0f);
         set_object_flag_unk_054_true(objectIndex, 0x00000010);
@@ -4209,7 +4209,7 @@ void func_8007BD04(s32 playerId) {
     s32 objectIndex;
 
     objectIndex = D_80183F28[0];
-    if (gObjectList[objectIndex].itemDisplayState == 0) {
+    if (gObjectList[objectIndex].state == 0) {
         if (((s32) gNearestWaypointByPlayerId[playerId] >= 0xA0) && ((s32) gNearestWaypointByPlayerId[playerId] < 0xAB)) {
             func_8008B7D4(objectIndex, D_8018D01C * -1650.0, -200.0f, -1650.0f);
             func_800723A4(objectIndex, 1);
@@ -4245,7 +4245,7 @@ void func_8007BEC8(s32 objectIndex) {
     Objects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
-    switch (temp_v0->itemDisplayState) {
+    switch (temp_v0->state) {
     case 1:
         func_8007BDE0(objectIndex);
         break;
@@ -4355,7 +4355,7 @@ void func_8007C280(void) {
         D_801658BC = 0;
         func_800723A4(objectIndex, 0);
     }
-    if (gObjectList[objectIndex].itemDisplayState != 0) {
+    if (gObjectList[objectIndex].state != 0) {
         func_8007BEC8(objectIndex);
         func_8007BFB0(objectIndex);
     }
@@ -4486,14 +4486,14 @@ void func_8007C5B4(s32 objectIndex) {
 }
 
 void func_8007C684(s32 objectIndex) {
-    switch(gObjectList[objectIndex].itemDisplayState) {
+    switch(gObjectList[objectIndex].state) {
     case 0:
         break;
     case 1:
         func_8007C5B4(objectIndex);
         break;
     }
-    if (gObjectList[objectIndex].itemDisplayState >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         switch (gObjectList[objectIndex].unk_0DC) {
         case 0:
             break;
@@ -4726,7 +4726,7 @@ void func_8007CC00(void) {
     for (someIndex = 0; someIndex < NUM_BOOS; someIndex++) {
         objectIndex = D_8018BFA8[someIndex];
         object = &gObjectList[objectIndex];
-        if (object->itemDisplayState != 0) {
+        if (object->state != 0) {
             func_8007C684(objectIndex);
             func_8008B78C(objectIndex);
             player = &gPlayerOne[object->unk_0D1];
@@ -4767,7 +4767,7 @@ void func_8007CEDC(s32 objectIndex) {
     Objects *temp_s0;
 
     temp_s0 = &gObjectList[objectIndex];
-    switch (temp_s0->itemDisplayState) {                              /* switch 1 */
+    switch (temp_s0->state) {                              /* switch 1 */
     case 0:                                         /* switch 1 */
         break;
     case 1:                                         /* switch 1 */
@@ -4785,7 +4785,7 @@ void func_8007CEDC(s32 objectIndex) {
     default:                                        /* switch 2 */
         break;
     }
-    if (temp_s0->itemDisplayState >= 2) {
+    if (temp_s0->itemDisstateplayState >= 2) {
         func_80072950(objectIndex, (s32) temp_s0->unk_0DC, 0, 4);
         func_80073514(objectIndex);
         switch (temp_s0->unk_0DC) {                          /* switch 2 */
@@ -4794,7 +4794,7 @@ void func_8007CEDC(s32 objectIndex) {
             break;
         case 2:                                     /* switch 2 */
             func_80073CB0(objectIndex, &temp_s0->unk_0A0, 0x00000050, 0x000000B4, 2, 0, -1);
-            if ((temp_s0->unk_0AE == 0) || (temp_s0->itemDisplayState == 3)) {
+            if ((temp_s0->unk_0AE == 0) || (temp_s0->state == 3)) {
                 temp_s0->unk_0DC += 1;
             }
             break;
@@ -4839,11 +4839,11 @@ void func_8007D070(void) {
 
     var_v0 = 0;
     if ((D_8016559C == 0) && (D_8018D2A4 != 0) && (*D_8018CF68 < 0x1D) && (*(&D_800E5DB4 + *D_8018CF68) == 1)) {
-        if (gObjectList[D_8018C1D8].itemDisplayState != 0) {
+        if (gObjectList[D_8018C1D8].state != 0) {
 loop_5:
             var_v0 += 1;
             if (var_v0 != 0x1E) {
-                if (gObjectList[D_8018C1B0[var_v0].unk28].itemDisplayState != 0) {
+                if (gObjectList[D_8018C1B0[var_v0].unk28].state != 0) {
                     goto loop_5;
                 }
             }
@@ -4851,7 +4851,7 @@ loop_5:
         temp_s1 = D_8018C1B0[var_v0].unk28;
         if (var_v0 != 0x1E) {
             temp_s0 = &gObjectList[temp_s1];
-            if (temp_s0->itemDisplayState == 0) {
+            if (temp_s0->state == 0) {
                 func_800723A4(temp_s1, 1);
                 temp_s2 = random_int(0x012CU);
                 temp_s3 = (random_int(0x1000U) - 0x800) & 0xFFFF;
@@ -4873,7 +4873,7 @@ loop_5:
     do {
         temp_s1_2 = var_s2->unk28;
         temp_s0_2 = &gObjectList[temp_s1_2];
-        if (temp_s0_2->itemDisplayState != 0) {
+        if (temp_s0_2->state != 0) {
             func_8007CEDC(temp_s1_2);
             func_8008B724(temp_s1_2);
             temp_s0_2->pos[0] = temp_s0_2->unk_028[0] + temp_s0_2->unk_010[0];
@@ -4980,7 +4980,7 @@ void func_8007D8AC(s32 arg0) {
 }
 
 void func_8007D8D4(s32 objectIndex, s32 arg1) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
     case 1:
         func_8007D8AC(objectIndex);
         break;
@@ -5079,11 +5079,11 @@ void func_8007DB44(void) {
             temp_s0_2 = *var_s2;
             if (temp_s0_2 != -1) {
                 temp_s1_2 = &gObjectList[temp_s0_2];
-                if (temp_s1_2->itemDisplayState != 0) {
+                if (temp_s1_2->state != 0) {
                     func_8007D8D4(temp_s0_2, 1);
                     func_8007DAF8(temp_s0_2, 1);
                     func_8007D794(temp_s0_2);
-                    if (temp_s1_2->itemDisplayState == 0) {
+                    if (temp_s1_2->state == 0) {
                         delete_object_wrapper(var_s2);
                     }
                     D_8018CFD8 += 1;
@@ -5108,11 +5108,11 @@ block_19:
         temp_s0_3 = *var_s2_2;
         if (temp_s0_3 != -1) {
             temp_s1_3 = &gObjectList[temp_s0_3];
-            if (temp_s1_3->itemDisplayState != 0) {
+            if (temp_s1_3->state != 0) {
                 func_8007D8D4(temp_s0_3, 2);
                 func_8007DAF8(temp_s0_3, 2);
                 func_8007D794(temp_s0_3);
-                if (temp_s1_3->itemDisplayState == 0) {
+                if (temp_s1_3->state == 0) {
                     delete_object_wrapper(var_s2_2);
                 }
                 D_8018D010 += 1;
@@ -5200,7 +5200,7 @@ void func_8007E00C(s32 objectIndex) {
     u16 temp_v0;
 
     temp_s0 = &gObjectList[objectIndex];
-    temp_t8 = (u16) temp_s0->itemDisplayState;
+    temp_t8 = (u16) temp_s0->state;
     switch (temp_t8) {
     case 1:
         init_bb_trash_bin(objectIndex);
@@ -5327,7 +5327,7 @@ void func_8007E358(s32 objectIndex) {
 
 void func_8007E3EC(s32 objectIndex) {
 
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
     case 1:
         func_8007E358(objectIndex);
         break;
@@ -5393,7 +5393,7 @@ s32 func_8007E59C(s32 objectIndex) {
 }
 
 void func_8007E63C(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {                              /* irregular */
+    switch (gObjectList[objectIndex].state) {                              /* irregular */
     case 0x32:
         if (f32_step_up_towards(&gObjectList[objectIndex].unk_028[1], gObjectList[objectIndex].unk_01C[1] + 15.0, 1.5f) != 0) {
             set_object_flag_unk_054_true(objectIndex, 0x00000200);
@@ -5556,7 +5556,7 @@ void func_8007EC30(s32 objectIndex) {
 
 void func_8007ED6C(s32 objectIndex) {
     s32 stackPadding[4];
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
     case 0:
         break;
     case 1:
@@ -5779,7 +5779,7 @@ void func_8007F544(s32 objectIndex) {
 
 void func_8007F5A8(s32 objectIndex) {
 
-    switch (gObjectList[objectIndex].itemDisplayState) {                              /* irregular */
+    switch (gObjectList[objectIndex].state) {                              /* irregular */
     case 0:
         break;
     case 1:
@@ -5866,7 +5866,7 @@ void func_8007F8D8(void) {
         object = &gObjectList[objectIndex];
         if (object->unk_0D5 == 3) {
             var_s0 = 0;
-            if ((object->itemDisplayState >= 2) && (func_80072354(objectIndex, 8) != 0)) {
+            if ((object->state >= 2) && (func_80072354(objectIndex, 8) != 0)) {
                 var_s0 = 1;
             }
             var_s4 *= var_s0;
@@ -6046,7 +6046,7 @@ void func_8007FF5C(s32 objectIndex)
 }
 
 void func_8007FFC0(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {                              /* irregular */
+    switch (gObjectList[objectIndex].state) {                              /* irregular */
         case 0:
             break;
         case 1:
@@ -6109,7 +6109,7 @@ void func_800801FC(s32 objectIndex) {
     Objects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
-    switch (temp_v0->itemDisplayState) {
+    switch (temp_v0->state) {
     case 0:
         break;
     case 1:
@@ -6162,7 +6162,7 @@ void func_800802C0(s32 objectIndex) {
 }
 
 void func_80080408(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
     case 0:
         break;
     case 1:
@@ -6288,7 +6288,7 @@ void func_800808CC(s32 arg0) {
     Objects *temp_t0;
 
     temp_t0 = &gObjectList[arg0];
-    var_v1 = temp_t0->itemDisplayState;
+    var_v1 = temp_t0->state;
     switch (var_v1) {                               /* irregular */
     case 0:
         break;
@@ -6296,7 +6296,7 @@ void func_800808CC(s32 arg0) {
         sp20 = temp_t0;
         func_80080524(arg0);
 block_6:
-        var_v1 = temp_t0->itemDisplayState;
+        var_v1 = temp_t0->state;
         break;
     case 2:
         sp20 = temp_t0;
@@ -6309,7 +6309,7 @@ block_6:
         func_8008085C(arg0);
         func_80073514(arg0);
         if (gGamestate != 9) {
-            if ((D_8018D40C == 0) && (temp_t0->itemDisplayState == 2)) {
+            if ((D_8018D40C == 0) && (temp_t0->state == 2)) {
                 func_800C98B8(temp_t0->pos, temp_t0->unk_038, 0x19036045U);
             }
         } else if ((gCutsceneShotTimer < 0xBF) && (((s16) gCutsceneShotTimer % 88) == 0x0000001E)) {
@@ -6470,7 +6470,7 @@ void func_80081080(s32 objectIndex) {
 }
 
 void func_800810F4(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {                              /* irregular */
+    switch (gObjectList[objectIndex].state) {                              /* irregular */
     case 0:
         break;
     case 1:
@@ -6511,7 +6511,7 @@ void func_80081210(void) {
     func_8007F8D8();
     for (var_s4 = 0; var_s4 < D_80165750; var_s4++) {
         objectIndex = D_80183EA0[var_s4];
-        if (gObjectList[objectIndex].itemDisplayState != 0) {
+        if (gObjectList[objectIndex].state != 0) {
             switch (gObjectList[objectIndex].unk_0D5) {
             case 1:
                 func_8007ED6C(objectIndex);
@@ -6562,9 +6562,9 @@ void func_80081210(void) {
     for (var_s4 = 0; var_s4 < D_8018C3F0_SIZE; var_s4++) {
         objectIndex = D_8018C3F0[var_s4];
         if (objectIndex == DELETED_OBJECT_ID) continue;
-        if (gObjectList[objectIndex].itemDisplayState == 0) continue;
+        if (gObjectList[objectIndex].state == 0) continue;
         func_800810F4(objectIndex);
-        if (gObjectList[objectIndex].itemDisplayState != 0) continue;
+        if (gObjectList[objectIndex].state != 0) continue;
         delete_object_wrapper(&D_8018C3F0[var_s4]);
     }
 }
@@ -6586,7 +6586,7 @@ void func_8008153C(s32 objectIndex) {
         for (var_s1 = 0; var_s1 < D_8018C3F0_SIZE; var_s1++) {
             loopObjectIndex = D_8018C3F0[var_s1];
 
-            if (gObjectList[loopObjectIndex].itemDisplayState != 0) continue;
+            if (gObjectList[loopObjectIndex].state != 0) continue;
 
             func_800723A4(loopObjectIndex, 0);
             gObjectList[loopObjectIndex].activeTLUT = d_course_moo_moo_farm_mole_dirt;
@@ -6606,7 +6606,7 @@ void func_8008153C(s32 objectIndex) {
 }
 
 void func_80081790(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {   
+    switch (gObjectList[objectIndex].state) {   
     case 0:
         break;                           /* irregular */
     case 1:
@@ -6698,7 +6698,7 @@ void func_80081AFC(s32 objectIndex, s32 arg1) {
     Objects *temp_s0;
 
     temp_s0 = &gObjectList[objectIndex];
-    temp_v1 = temp_s0->itemDisplayState;
+    temp_v1 = temp_s0->state;
     switch (temp_v1) {                              /* irregular */
     case 0x1:
         func_80081848(objectIndex);
@@ -6751,7 +6751,7 @@ void func_80081AFC(s32 objectIndex, s32 arg1) {
         }
         break;
     }
-    if (temp_s0->itemDisplayState >= 2) {
+    if (temp_s0->state >= 2) {
         func_80073514(objectIndex);
     }
 }
@@ -6877,7 +6877,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80081FF4.s")
 #endif
 
 void func_800821AC(s32 objectIndex, s32 arg1) {
-    if (gObjectList[objectIndex].itemDisplayState != 0) {
+    if (gObjectList[objectIndex].state != 0) {
         func_80081AFC(objectIndex, arg1);
         func_80081A88(objectIndex);
         func_80081D34(objectIndex);
@@ -6891,7 +6891,7 @@ void func_800821FC(void) {
 
     for (var_s1 = 0; var_s1 < D_8018D1C8; var_s1++) {
         objectIndex = D_80183EA0[var_s1];
-        if (gObjectList[objectIndex].itemDisplayState == 0) {
+        if (gObjectList[objectIndex].state == 0) {
             if (func_8008A8B0(8, 9) != 0) {
                 func_80081FF4(objectIndex, 1);
             }
@@ -6902,7 +6902,7 @@ void func_800821FC(void) {
 
     for (var_s1 = 0; var_s1 < D_8018D1D0; var_s1++) {
         objectIndex = D_80183F28[var_s1];
-        if (gObjectList[objectIndex].itemDisplayState == 0) {
+        if (gObjectList[objectIndex].state == 0) {
             if (func_8008A8B0(0x0010, 0x0013) != 0) {
                 func_80081FF4(objectIndex, 2);
             }
@@ -6913,7 +6913,7 @@ void func_800821FC(void) {
 
     for (var_s1 = 0; var_s1 < D_8018D1D8; var_s1++) {
         objectIndex = D_8018BFA8[var_s1];
-        if (gObjectList[objectIndex].itemDisplayState == 0) {
+        if (gObjectList[objectIndex].state == 0) {
             if (func_8008A8B0(0x0011, 0x0014) != 0) {
                 func_80081FF4(objectIndex, 3);
             }
@@ -6924,7 +6924,7 @@ void func_800821FC(void) {
 
     for (var_s1 = 0; var_s1 < D_8018C3F0_SIZE; var_s1++) {
         objectIndex = D_8018C3F0[var_s1];
-        if (gObjectList[objectIndex].itemDisplayState != 0) {
+        if (gObjectList[objectIndex].state != 0) {
             func_80081790(objectIndex);
         }
     }
@@ -6990,7 +6990,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8008241C.s")
 #endif
 
 void func_80082714(s32 objectIndex, s32 arg1) {
-    switch(gObjectList[objectIndex].itemDisplayState) {
+    switch(gObjectList[objectIndex].state) {
     case 1:
         func_8008241C(objectIndex , arg1);
         break;
@@ -7040,7 +7040,7 @@ void func_80082870(void) {
     do {
         temp_s0 = *var_s4;
         temp_s1 = &gObjectList[temp_s0];
-        if (temp_s1->itemDisplayState != 0) {
+        if (temp_s1->state != 0) {
             func_80082714(temp_s0, var_s3);
             func_8008275C(temp_s0);
             if (func_80072320(temp_s0, 2) != 0) {
@@ -7097,7 +7097,7 @@ void init_ktb_crab(s32 objectIndex) {
 }
 
 void func_80082B34(s32 objectIndex, s32 unused) {
-    switch (gObjectList[objectIndex].itemDisplayState) {                               /* irregular */
+    switch (gObjectList[objectIndex].state) {                               /* irregular */
     case 0:
         break;
     case 1:
@@ -7110,7 +7110,7 @@ void func_80082B34(s32 objectIndex, s32 unused) {
         func_80072E54(objectIndex, 4, 6, 1, 2, -1);
         break;
     }
-    if (gObjectList[objectIndex].itemDisplayState >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         func_80073514(objectIndex);
     }
 }
@@ -7157,7 +7157,7 @@ void func_80082C30(s32 objectIndex) {
 }
 
 void func_80082E18(s32 objectIndex) {
-    if (gObjectList[objectIndex].itemDisplayState >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         func_80089F24(objectIndex);
     }
 }
@@ -7168,7 +7168,7 @@ void func_80082E5C(void) {
 
     for (var_s1 = 0; var_s1 < NUM_CRABS; var_s1++) {
         objectIndex = D_80183EA0[var_s1];
-        if (gObjectList[objectIndex].itemDisplayState != 0) {
+        if (gObjectList[objectIndex].state != 0) {
             func_80082B34(objectIndex, var_s1);
             func_8008A6DC(objectIndex, 500.0f);
             func_80082C30(objectIndex);
@@ -7194,7 +7194,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80082F1C.s")
 #endif
 
 void func_80083018(s32 objectIndex, s32 arg1) {
-    switch(gObjectList[objectIndex].itemDisplayState) {
+    switch(gObjectList[objectIndex].state) {
     case 1:
         func_80082F1C(objectIndex , arg1);
         break;
@@ -7214,7 +7214,7 @@ void func_80083080(void) {
 
     for (var_s1 = 0; var_s1 < NUM_YV_FLAG_POLES; var_s1++) {
         objectIndex = D_80183EA0[var_s1];
-        if (gObjectList[objectIndex].itemDisplayState != 0) {
+        if (gObjectList[objectIndex].state != 0) {
             func_80083018(objectIndex, var_s1);
             func_80083060(objectIndex);
         }
@@ -7273,7 +7273,7 @@ void func_80083248(s32 objectIndex) {
 }
 
 void func_800833D0(s32 objectIndex, s32 arg1) {
-    switch (gObjectList[objectIndex].itemDisplayState) {                              /* irregular */
+    switch (gObjectList[objectIndex].state) {                              /* irregular */
     case 0:
         break;
     case 1:
@@ -7291,7 +7291,7 @@ void func_800833D0(s32 objectIndex, s32 arg1) {
 }
 
 void func_80083474(s32 objectIndex) {
-    if (gObjectList[objectIndex].itemDisplayState >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         func_80089F24(objectIndex);
     }
 }
@@ -7343,7 +7343,7 @@ void func_800836F0(Vec3f arg0) {
 }
 
 void func_8008379C(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
     case 0:
         break;
     case 1:
@@ -7412,14 +7412,14 @@ void func_80083948(s32 objectIndex) {
 }
 
 void func_80083A94(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
     case 0:
         break;
     case 1:
         func_80083868(objectIndex);
         break;
     }
-    if (gObjectList[objectIndex].itemDisplayState >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         func_80073514(objectIndex);
     }
     func_80083948(objectIndex);
@@ -7448,7 +7448,7 @@ void func_80083C04(s32 objectIndex) {
     Objects *temp_s1;
 
     temp_s1 = &gObjectList[objectIndex];
-    switch (temp_s1->itemDisplayState) {
+    switch (temp_s1->state) {
     case 0:
         break;
     case 1:
@@ -7478,7 +7478,7 @@ void func_80083C04(s32 objectIndex) {
         set_object_flag_unk_054_false(objectIndex, 0x00001000);
         break;
     }
-    if (temp_s1->itemDisplayState >= 2) {
+    if (temp_s1->state >= 2) {
         func_80073514(objectIndex);
     }
     func_80083BE4(objectIndex);
@@ -7496,9 +7496,9 @@ void func_80083D60(void) {
 
         if (objectIndex == DELETED_OBJECT_ID) continue;
 
-        if (gObjectList[objectIndex].itemDisplayState == 0) continue;
+        if (gObjectList[objectIndex].state == 0) continue;
         func_8008379C(objectIndex);
-        if (gObjectList[objectIndex].itemDisplayState != 0) continue;
+        if (gObjectList[objectIndex].state != 0) continue;
         delete_object_wrapper(&D_8018C3F0[var_s0]);
         if (var_s0) {} // ??
     }
@@ -7525,7 +7525,7 @@ void func_80083D60(void) {
 }
 
 void func_80083F18(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
     case 0:
         break;
     case 1:
@@ -7591,9 +7591,9 @@ void func_800842C8(void) {
     for (playerId = 0; playerId < D_8018C3F0_SIZE; playerId++) {
         objectIndex = D_8018C3F0[playerId];
         if (objectIndex != DELETED_OBJECT_ID) {
-            if (gObjectList[objectIndex].itemDisplayState != 0) {
+            if (gObjectList[objectIndex].state != 0) {
                 func_80083F18(objectIndex);
-                if (gObjectList[objectIndex].itemDisplayState == 0) {
+                if (gObjectList[objectIndex].state == 0) {
                     delete_object_wrapper(&D_8018C3F0[playerId]);
                 }
             }
@@ -7633,7 +7633,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80084430.s")
 #endif
 
 void func_8008453C(s32 objectIndex, s32 arg1) {
-    switch (gObjectList[objectIndex].itemDisplayState) {                              /* irregular */
+    switch (gObjectList[objectIndex].state) {                              /* irregular */
     case 0:
         break;
     case 1:
@@ -7754,7 +7754,7 @@ void func_80084B7C(s32 objectIndex, s32 arg1) {
     Objects *temp_s0;
 
     temp_s0 = &gObjectList[objectIndex];
-    switch (temp_s0->itemDisplayState) {
+    switch (temp_s0->state) {
     case 0:
         break;
     case 1:
@@ -7947,7 +7947,7 @@ void func_80085214(void) {
 
     for (var_s1 = 0; var_s1 < 0xF; var_s1++) {
         objectIndex = D_80183EA0[var_s1];
-        if (gObjectList[objectIndex].itemDisplayState != 0) {
+        if (gObjectList[objectIndex].state != 0) {
             if (var_s1 == 0) {
                 func_8008453C(objectIndex, var_s1);
             } else {
@@ -8039,7 +8039,7 @@ void func_80085534(s32 objectIndex) {
 }
 
 void func_80085768(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {                              /* irregular */
+    switch (gObjectList[objectIndex].state) {                              /* irregular */
     case 1:
         func_800853DC(objectIndex);
         break;
@@ -8053,11 +8053,11 @@ void func_800857C0(void) {
     s32 objectIndex;
 
     objectIndex = D_80183EA0[0];
-    if (gObjectList[objectIndex].itemDisplayState != 0) {
+    if (gObjectList[objectIndex].state != 0) {
         func_80085768(objectIndex);
         func_80085534(objectIndex);
         func_8008BF18(objectIndex);
-        if (gObjectList[objectIndex].itemDisplayState >= 2) {
+        if (gObjectList[objectIndex].state >= 2) {
             D_802BA05C->pos[0] = gObjectList[objectIndex].pos[0];
             D_802BA05C->pos[1] = gObjectList[objectIndex].pos[1] - 10.0;
             D_802BA05C->pos[2] = gObjectList[objectIndex].pos[2];
@@ -8090,7 +8090,7 @@ void func_800859C8(s32 objectIndex, s32 arg1) {
     Objects *temp_s0;
 
     temp_s0 = &gObjectList[objectIndex];
-    switch (temp_s0->itemDisplayState) {                              /* irregular */
+    switch (temp_s0->state) {                              /* irregular */
     case 0:
         break;
     case 1:
@@ -8114,7 +8114,7 @@ void func_80085AA8(void) {
     for (var_s4 = 0; var_s4 < 3; var_s4++) {
         objectIndex = D_80183F28[var_s4];
         temp_s0 = &gObjectList[objectIndex];
-        if (temp_s0->itemDisplayState != 0) {
+        if (temp_s0->state != 0) {
             func_800859C8(objectIndex, var_s4);
             vec3f_copy(temp_s0->unk_01C, temp_s0->unk_028);
             func_8000D940(temp_s0->unk_028, &temp_s0->unk_084[8], temp_s0->unk_034, temp_s0->unk_044, 0);
@@ -8139,7 +8139,7 @@ void func_80085C20(s32 objectIndex) {
 }
 
 void func_80085CA0(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
     case 1:
         func_80085C20(objectIndex);
         break;
@@ -8177,7 +8177,7 @@ void func_80085DB8(s32 objectIndex) {
 }
 
 void func_80085E38(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
     case 1:
         func_80085DB8(objectIndex);
         break;
@@ -8206,7 +8206,7 @@ void func_80085EF8(s32 objectIndex) {
 }
 
 void func_80085F74(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
     case 1:
         func_80085EF8(objectIndex);
         break;
@@ -8255,7 +8255,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80086074.s")
 #endif
 
 void func_80086110(s32 objectIndex, s32 arg1) {
-    switch (gObjectList[objectIndex].itemDisplayState) {
+    switch (gObjectList[objectIndex].state) {
     case 1:
         func_80086074(objectIndex, arg1);
         break;
@@ -8287,9 +8287,9 @@ void func_800861E0(void) {
 
     for (var_s2 = 0; var_s2 < NUM_NEON_SIGNS; var_s2++) {
         objectIndex = D_80183EA0[var_s2];
-        if (gObjectList[objectIndex].itemDisplayState != 0) {
+        if (gObjectList[objectIndex].state != 0) {
             func_80086158(objectIndex, var_s2);
-            if (gObjectList[objectIndex].itemDisplayState >= 2) {
+            if (gObjectList[objectIndex].state >= 2) {
                 func_800734DC(objectIndex);
                 func_8008BF18(objectIndex);
             }
@@ -8346,7 +8346,7 @@ void func_80086424(s32 objectIndex) {
 }
 
 void func_80086528(s32 objectIndex, s32 arg1) {
-    switch (gObjectList[objectIndex].itemDisplayState) {                              /* irregular */
+    switch (gObjectList[objectIndex].state) {                              /* irregular */
     case 1:
         func_8008629C(objectIndex, arg1);
         break;
@@ -8394,7 +8394,7 @@ void func_80086604(void) {
     var_s2 = 0;
     do {
         temp_s0 = *var_s1_2;
-        if (gObjectList[temp_s0].itemDisplayState != 0) {
+        if (gObjectList[temp_s0].state != 0) {
             func_80086528(temp_s0, var_s2);
             func_80086424(temp_s0);
         }
@@ -8524,7 +8524,7 @@ GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80086940.s")
 #endif
 
 void func_80086C14(s32 objectIndex) {
-    switch (gObjectList[objectIndex].itemDisplayState) {                              /* irregular */
+    switch (gObjectList[objectIndex].state) {                              /* irregular */
     case 1:
         func_80086700(objectIndex);
         break;

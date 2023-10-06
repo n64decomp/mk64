@@ -2550,7 +2550,7 @@ void func_8004E638(s32 playerId) {
 
     objectIndex = gItemWindowObjectByPlayerId[playerId];
     temp_v1 = &gObjectList[objectIndex];
-    if (temp_v1->itemDisplayState >= 2) {
+    if (temp_v1->state >= 2) {
         temp_v0 = &D_8018CA70[playerId];
         func_8004E4CC(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, (u8 *) temp_v1->activeTLUT, temp_v1->activeTexture);
     }
@@ -2563,7 +2563,7 @@ void func_8004E6C4(s32 playerId) {
 
     objectIndex = gItemWindowObjectByPlayerId[playerId];
     temp_v1 = &gObjectList[objectIndex];
-    if (temp_v1->itemDisplayState >= 2) {
+    if (temp_v1->state >= 2) {
         temp_v0 = &D_8018CA70[playerId];
         func_80047910(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, 0U, temp_v0->unknownScaling, (u8 *) temp_v1->activeTLUT, (u8 *) temp_v1->activeTexture, D_0D005C30, 0x00000028, 0x00000020, 0x00000028, 0x00000020);
     }
@@ -3522,7 +3522,7 @@ void func_80051638(UNUSED s32 arg0) {
         leafIndex = D_8018C970[someIndex];
         if (leafIndex != -1) {
             object = &gObjectList[leafIndex];
-            if ((object->itemDisplayState >= 2) && (object->unk_0D5 == 7) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+            if ((object->state >= 2) && (object->unk_0D5 == 7) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 rsp_set_matrix_gObjectList(leafIndex);
                 gSPDisplayList(gDisplayListHead++, D_0D0069C8);
             }
@@ -3541,7 +3541,7 @@ void func_800517C8(void) {
     func_80044F34(D_0D0293D8, 0x10, 0x10);
     for (someIndex = 0; someIndex < NUM_SNOWFLAKES; someIndex++) {
         snowflakeIndex = D_8018C1B0[someIndex];
-        if (gObjectList[snowflakeIndex].itemDisplayState >= 2) {
+        if (gObjectList[snowflakeIndex].state >= 2) {
             rsp_set_matrix_gObjectList(snowflakeIndex);
             gSPDisplayList(gDisplayListHead++, D_0D006980);
         }
@@ -3855,7 +3855,7 @@ void func_8005217C(s32 arg0) {
 
     temp_a3 = *D_80183F28;
     temp_v1 = &gObjectList[temp_a3];
-    if (temp_v1->itemDisplayState >= 2) {
+    if (temp_v1->state >= 2) {
         sp18 = temp_v1;
         sp50 = temp_a3;
         if (is_obj_index_flag_unk_054_active(temp_a3, 0x00000010) != 0) {
@@ -3956,7 +3956,7 @@ void func_800524B4(s32 arg0) {
 
     for (someIndex = 0; someIndex < 10; someIndex++) {
         objectIndex = D_8018BFA8[someIndex];
-        if (gObjectList[objectIndex].itemDisplayState >= 2) {
+        if (gObjectList[objectIndex].state >= 2) {
             temp_s2 = func_8008A364(objectIndex, arg0, 0x4000U, 0x00000320);
             if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
                 func_800523B8(objectIndex, arg0, temp_s2);
@@ -3999,7 +3999,7 @@ void func_80052590(s32 cameraId) {
             temp_v0 = *var_s1;
             if (temp_v0 != -1) {
                 temp_s0_2 = &gObjectList[temp_v0];
-                if ((temp_s0_2->itemDisplayState >= 2) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+                if ((temp_s0_2->state >= 2) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                     D_80183E80.unk2 = func_800418AC(temp_s0_2->pos[0], temp_s0_2->pos[2], temp_s7->pos);
                     func_800431B0(temp_s0_2->pos, &D_80183E80, temp_s0_2->sizeScaling, D_0D0062B0);
                 }
@@ -4013,7 +4013,7 @@ void func_80052590(s32 cameraId) {
             temp_v0_2 = *var_s1_2;
             if (temp_v0_2 != -1) {
                 temp_s0_3 = &gObjectList[temp_v0_2];
-                if ((temp_s0_3->itemDisplayState >= 2) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+                if ((temp_s0_3->state >= 2) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                     D_80183E80.unk2 = func_800418AC(temp_s0_3->pos[0], temp_s0_3->pos[2], temp_s7->pos);
                     func_800431B0(temp_s0_3->pos, &D_80183E80, temp_s0_3->sizeScaling, D_0D0062B0);
                 }
@@ -4038,7 +4038,7 @@ void func_800527D8(s32 cameraId) {
     func_8008A364(objectIndex, cameraId, 0x5555U, 0x00000320);
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
         object = &gObjectList[objectIndex];
-        if (object->itemDisplayState >= 2) {
+        if (object->state >= 2) {
             func_80043220(object->pos, object->unk_0B2, object->sizeScaling, object->unk_070);
         }
     }
@@ -4127,7 +4127,7 @@ void func_800528EC(s32 arg0) {
             temp_v0_8 = *var_s3_2;
             if (temp_v0_8 != -1) {
                 temp_v1 = &gObjectList[temp_v0_8];
-                if (temp_v1->itemDisplayState > 0) {
+                if (temp_v1->state > 0) {
                     rsp_set_matrix_transformation(temp_v1->pos, &D_80183E80, temp_v1->sizeScaling);
                     temp_v0_9 = gDisplayListHead;
                     gDisplayListHead = temp_v0_9 + 8;
@@ -4146,7 +4146,7 @@ void func_800528EC(s32 arg0) {
             temp_v0_11 = *var_s3;
             if (temp_v0_11 != -1) {
                 temp_v1_2 = &gObjectList[temp_v0_11];
-                if ((temp_v1_2->itemDisplayState > 0) && (arg0 == temp_v1_2->unk_084[7]) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+                if ((temp_v1_2->state > 0) && (arg0 == temp_v1_2->unk_084[7]) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                     rsp_set_matrix_transformation(temp_v1_2->pos, &D_80183E80, temp_v1_2->sizeScaling);
                     temp_v0_12 = gDisplayListHead;
                     gDisplayListHead = temp_v0_12 + 8;
@@ -4287,7 +4287,7 @@ void func_80052F20(s32 cameraId) {
         objectIndex = D_8018C3F0[someIndex];
         if (objectIndex != -1) {
             temp_s1 = &gObjectList[objectIndex];
-            if (temp_s1->itemDisplayState > 0) {
+            if (temp_s1->state > 0) {
                 func_8008A364(objectIndex, cameraId, 0x2AABU, 0x000001F4);
                 if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
                     temp_s1->unk_0B2[1] = func_800418AC(temp_s1->pos[0], temp_s1->pos[2], sp44->pos);
@@ -4308,7 +4308,7 @@ void func_8005309C(s32 cameraId) {
     camera = &camera1[cameraId];
     for (var_s4 = 0; var_s4 < 0x13; var_s4++) {
         objectIndex = D_80183EA0[var_s4];
-        if (gObjectList[objectIndex].itemDisplayState >= 2) {
+        if (gObjectList[objectIndex].state >= 2) {
             func_8008A364(objectIndex, cameraId, 0x2AABU, 0x00000258);
             if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
                 D_80183E80[0] = (s16) gObjectList[objectIndex].unk_0B2[0];
@@ -4411,7 +4411,7 @@ void func_800534E8(s32 objectIndex) {
 }
 
 void func_800536C8(s32 objectIndex) {
-    if ((gObjectList[objectIndex].itemDisplayState >= 2) && (func_80072354(objectIndex, 0x00000040) != 0)) {
+    if ((gObjectList[objectIndex].state >= 2) && (func_80072354(objectIndex, 0x00000040) != 0)) {
         func_8004A7AC(objectIndex, 1.75f);
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0B2, gObjectList[objectIndex].sizeScaling);
         func_800534E8(objectIndex);
@@ -4530,7 +4530,7 @@ void func_80053870(s32 cameraId) {
         temp_s1_3 = *var_a3;
         if (temp_s1_3 != -1) {
             temp_s0 = &gObjectList[temp_s1_3];
-            if ((temp_s0->itemDisplayState > 0) && (temp_s0->unk_0D5 == 3) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+            if ((temp_s0->state > 0) && (temp_s0->unk_0D5 == 3) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 sp44 = var_a3;
                 rsp_set_matrix_transformation(temp_s0->pos, temp_s0->unk_0B2, temp_s0->sizeScaling);
                 temp_v0_10 = gDisplayListHead;
@@ -4570,7 +4570,7 @@ void func_80053870(s32 cameraId) {
         temp_s1_4 = *var_s3;
         if (temp_s1_4 != -1) {
             temp_s0_2 = &gObjectList[temp_s1_4];
-            if ((temp_s0_2->itemDisplayState >= 2) && (temp_s0_2->unk_0D5 == 2) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+            if ((temp_s0_2->state >= 2) && (temp_s0_2->unk_0D5 == 2) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 func_8004B138(0x000000FF, 0x000000FF, 0x000000FF, (s32) temp_s0_2->unk_0A0);
                 D_80183E80->unk2 = func_800418AC(temp_s0_2->pos[0], temp_s0_2->pos[2], sp84->pos);
                 func_800431B0(temp_s0_2->pos, D_80183E80, temp_s0_2->sizeScaling, D_0D005AE0);
@@ -4612,14 +4612,14 @@ void func_80053E6C(s32 arg0) {
     rsp_load_texture(D_8018D4BC, 0x40, 0x20);
     for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
         objectIndex = D_8018C630[var_s1];
-        if ((objectIndex != -1) && (gObjectList[objectIndex].itemDisplayState >= 2)) {
+        if ((objectIndex != -1) && (gObjectList[objectIndex].state >= 2)) {
             func_80053D74(objectIndex, arg0, 0);
         }
     }
     rsp_load_texture(D_8018D4C0, 0x40, 0x20);
     for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
         objectIndex = D_8018C630[var_s1];
-        if ((objectIndex != -1) && (gObjectList[objectIndex].itemDisplayState >= 2)) {
+        if ((objectIndex != -1) && (gObjectList[objectIndex].state >= 2)) {
             func_80053D74(objectIndex, arg0, 4);
         }
     }
@@ -4631,7 +4631,7 @@ void func_800540CC(s32 objectIndex, s32 cameraId) {
 
     camera = &camera1[cameraId];
     if (objectIndex != -1) {
-        if ((gObjectList[objectIndex].itemDisplayState >= 2) && (gObjectList[objectIndex].unk_0D5 == 1) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+        if ((gObjectList[objectIndex].state >= 2) && (gObjectList[objectIndex].unk_0D5 == 1) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
             func_8004B1C8((s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, 0, 0, 0, (s32) gObjectList[objectIndex].unk_0A0);
             D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
             func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling, D_0D005AE0);
@@ -4686,7 +4686,7 @@ void func_80054324(s32 objectIndex, s32 cameraId) {
 
     camera = &camera1[cameraId];
     if (objectIndex != -1) {
-        if ((gObjectList[objectIndex].itemDisplayState >= 2) && (gObjectList[objectIndex].unk_0D5 == 6) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+        if ((gObjectList[objectIndex].state >= 2) && (gObjectList[objectIndex].unk_0D5 == 6) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
             func_8004B1C8((s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, gObjectList[objectIndex].unk_0A2, gObjectList[objectIndex].unk_0A2, gObjectList[objectIndex].unk_0A2, (s32) gObjectList[objectIndex].unk_0A0);
             D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
             func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling, D_0D005AE0);
@@ -4752,7 +4752,7 @@ void func_80054664(s32 cameraId) {
     D_80183E80[2] = 0x8000;
     for (var_s0 = 0; var_s0 < D_8018C1B0_SIZE; var_s0++) {
         objectIndex = D_8018C1B0[var_s0];
-        if ((objectIndex != -1) && (gObjectList[objectIndex].itemDisplayState >= 3)) {
+        if ((objectIndex != -1) && (gObjectList[objectIndex].state >= 3)) {
             func_8005457C(objectIndex, cameraId);
         }
     }
@@ -4798,7 +4798,7 @@ void func_80054938(s32 cameraId) {
         objectIndex = D_8018C870[var_s0];
         if (objectIndex != -1) {
             object = &gObjectList[objectIndex];
-            if (object->itemDisplayState >= 2) {
+            if (object->state >= 2) {
                 if (object->unk_0D8 == 3) {
                     func_8008A364(objectIndex, cameraId, 0x4000U, 0x00000514);
                 } else {
@@ -4843,7 +4843,7 @@ void func_80054BE8(s32 cameraId) {
     var_s0 = D_8018C630;
     do {
         temp_a0 = *var_s0;
-        if ((temp_a0 != -1) && (gObjectList[temp_a0].itemDisplayState >= 2)) {
+        if ((temp_a0 != -1) && (gObjectList[temp_a0].state >= 2)) {
             func_80054AFC(temp_a0, temp_s5->pos);
         }
         var_s0 += 4;
@@ -4857,7 +4857,7 @@ void func_80054D00(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
-    if (gObjectList[objectIndex].itemDisplayState >= 3) {
+    if (gObjectList[objectIndex].state >= 3) {
         func_8008A364(objectIndex, cameraId, 0x2AABU, 0x0000012C);
         if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
             D_80183E80[0] = (s16) gObjectList[objectIndex].unk_0B2[0];
@@ -4869,7 +4869,7 @@ void func_80054D00(s32 objectIndex, s32 cameraId) {
 }
 
 void func_80054E10(s32 objectIndex) {
-    if (gObjectList[objectIndex].itemDisplayState > 0) {
+    if (gObjectList[objectIndex].state > 0) {
         if (is_obj_index_flag_unk_054_active(objectIndex, 0x00800000) != 0) {
             D_80183E50[0] = gObjectList[objectIndex].pos[0];
             D_80183E50[1] = gObjectList[objectIndex].unk_044 + 0.8;
@@ -4903,7 +4903,7 @@ void func_80054F04(s32 cameraId) {
     for (var_s2 = 0; var_s2 < D_8018C3F0_SIZE; var_s2++) {
         objectIndex = D_8018C3F0[var_s2];
         object = &gObjectList[objectIndex];
-        if (object->itemDisplayState > 0) {
+        if (object->state > 0) {
             func_8008A364(objectIndex, cameraId, 0x2AABU, 0x000000C8);
             if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 object->unk_0B2[1] = func_800418AC(object->pos[0], object->pos[2], sp44->pos);
@@ -4932,7 +4932,7 @@ void func_800550A4(s32 arg0) {
 }
 
 void func_80055164(s32 objectIndex) {
-    if (gObjectList[objectIndex].itemDisplayState >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         gSPDisplayList(gDisplayListHead++, D_0D0077A0);
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0BE, gObjectList[objectIndex].sizeScaling);
         if (gIsGamePaused == 0) {
@@ -4957,7 +4957,7 @@ void func_80055228(s32 cameraId) {
 }
 
 void func_800552BC(s32 objectIndex) {
-    if (gObjectList[objectIndex].itemDisplayState >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0BE, gObjectList[objectIndex].sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0077D0);
         if (gIsGamePaused == 0) {
@@ -4989,7 +4989,7 @@ void func_80055380(s32 arg0) {
 void func_80055458(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
-    if (gObjectList[objectIndex].itemDisplayState >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         camera = &camera1[cameraId];
         func_8004A6EC(objectIndex, 0.5f);
         gObjectList[objectIndex].unk_0B2[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
@@ -5013,7 +5013,7 @@ void func_80055528(s32 arg0) {
 void func_800555BC(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
-    if (gObjectList[objectIndex].itemDisplayState >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         camera = &camera1[cameraId];
         func_8004A870(objectIndex, 0.7f);
         gObjectList[objectIndex].unk_0B2[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
@@ -5055,7 +5055,7 @@ void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
     Objects *temp_s0;
 
     temp_s0 = &gObjectList[objectIndex];
-    if (temp_s0->itemDisplayState >= 2) {
+    if (temp_s0->state >= 2) {
         if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000020) != 0) {
             if (func_80072320(objectIndex, 4) != 0) {
                 if (arg2 >= arg1) {
@@ -5093,7 +5093,7 @@ void func_8005592C(s32 cameraId) {
     }
     for (var_s2 = 0; var_s2 < 15; var_s2++) {
         objectIndex = D_80183EA0[var_s2];
-        if (gObjectList[objectIndex].itemDisplayState >= 2) {
+        if (gObjectList[objectIndex].state >= 2) {
             if (gPlayerCountSelection1 == 1) {
                 var_s1 = 0x4000;
                 if (var_s2 == 0) {
@@ -5124,7 +5124,7 @@ void func_80055AB8(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
-    if (gObjectList[objectIndex].itemDisplayState >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         if (is_obj_index_flag_unk_054_active(objectIndex, 0x00100000) != 0) {
             D_80183E40[0] = gObjectList[objectIndex].pos[0];
             D_80183E40[1] = gObjectList[objectIndex].pos[1] + 16.0;
@@ -5160,7 +5160,7 @@ void func_80055CCC(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
-    if (gObjectList[objectIndex].itemDisplayState >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         func_8008A454(objectIndex, cameraId, 0x0000012C);
         test = gObjectList[objectIndex].pos[1] - gObjectList[objectIndex].unk_044;
         func_8004A6EC(objectIndex, (20.0 / test) + 0.5);
@@ -5198,7 +5198,7 @@ void func_80055EF4(s32 objectIndex, UNUSED s32 arg1) {
     Objects *object;
 
     object = &gObjectList[objectIndex];
-    if (object->itemDisplayState >= 2) {
+    if (object->state >= 2) {
         func_80043220(object->pos, object->unk_0BE, object->sizeScaling, object->unk_070);
     }
 }
@@ -5217,7 +5217,7 @@ void func_80055FA0(s32 objectIndex, UNUSED s32 arg1) {
     Objects *object;
 
     object = &gObjectList[objectIndex];
-    if (object->itemDisplayState >= 2) {
+    if (object->state >= 2) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         mtxf_set_matrix_transformation(someMatrix1,object->pos, object->unk_0BE, object->sizeScaling);
@@ -5246,7 +5246,7 @@ void func_80056188(s32 cameraId) {
         objectIndex = D_80183EA0[var_s2];
         if (D_8018E838[cameraId] == 0) {
             object = &gObjectList[objectIndex];
-            if ((object->itemDisplayState >= 2) && (is_obj_index_flag_unk_054_unactive(objectIndex, 0x00080000) != 0) && (func_8008A140(objectIndex, camera, 0x2AABU) != 0)) {
+            if ((object->state >= 2) && (is_obj_index_flag_unk_054_unactive(objectIndex, 0x00080000) != 0) && (func_8008A140(objectIndex, camera, 0x2AABU) != 0)) {
                 object->unk_0B2[1] = angle_between_object_camera(objectIndex, camera);
                 func_800480B4(object->pos, object->unk_0B2, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
@@ -5429,7 +5429,7 @@ void func_80056AC0(s32 cameraId) {
     for (payerId = 0; payerId < NUM_BOMB_KARTS_BATTLE; payerId++) {
         temp_s0 = D_80183DD8[payerId];
         temp_v1 = &gObjectList[temp_s0];
-        if (temp_v1->itemDisplayState != 0) {
+        if (temp_v1->state != 0) {
             temp_s1 = temp_v1->unk_0A0;
             temp_v0 = &gPlayerOne[payerId];
             temp_v1->pos[0] = temp_v0->pos[0];
