@@ -1730,8 +1730,7 @@ void load_kart_texture(Player *player, s8 playerId, s8 arg2, s8 arg3, s8 arg4) {
         }
     } else if (((temp & 0x400) == 0x400) || ((temp & 0x01000000) == 0x01000000) || ((temp & 0x02000000) == 0x02000000) || ((temp & 0x10000) == 0x10000)) {
         osInvalDCache(&D_802DFB80[arg4][arg3][playerId], 0x780U);
-        // I think there's something off with the "player->unk_0A8 >> 8"
-        // I don't like that right-shift
+        // player->unk_0A8 >> 8 converts an 8.8 fixed-point animation frame to a whole number.
         osPiStartDma(
             &gDmaIoMesg,
             OS_MESG_PRI_NORMAL,
@@ -1802,8 +1801,7 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
         ((temp & 0x02000000) == 0x02000000) || ((temp & 0x10000) == 0x10000))
     {
         osInvalDCache(&D_802DFB80[arg4][arg3][arg1], 0x780);
-        // I think there's something off with the "player->unk_0A8 >> 8"
-        // I don't like that right-shift
+        // player->unk_0A8 >> 8 converts an 8.8 fixed-point animation frame to a whole number.
         osPiStartDma(
             &gDmaIoMesg,
             OS_MESG_PRI_NORMAL,

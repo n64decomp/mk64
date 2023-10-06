@@ -62,8 +62,8 @@
 #include <macros.h>
 #include <mk64.h>
 #include <objects.h>
+#include <hardcoded_segments.h>
 #include <segments.h>
-#include <segment_symbols.h>
 #include <sounds.h>
 #include <trig_tables.h>
 #include <types.h>

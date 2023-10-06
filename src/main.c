@@ -3,15 +3,14 @@
 #include <PR/os.h>
 #include <macros.h>
 #include <functions.h>
-#include "types.h"
-#include "config.h"
+#include <types.h>
+#include <config.h>
 #include "profiler.h"
 #include "main.h"
 #include "racing/memory.h"
 #include "menus.h"
-#include "segments.h"
-#include "segment_symbols.h"
-#include "common_structs.h"
+#include <segments.h>
+#include <common_structs.h>
 #include <defines.h>
 #include "framebuffers.h"
 #include "camera.h"
@@ -203,9 +202,12 @@ void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, 
     thread->queue = NULL;
     osCreateThread(thread, id, entry, arg, sp, pri);
 }
-
+void isPrintfInit(void);
 void main_func(void) {
     osInitialize();
+#ifdef DEBUG
+    isPrintfInit(); // init osSyncPrintf
+#endif
     create_thread(&gIdleThread, 1, &thread1_idle, NULL, gIdleThreadStack + ARRAY_COUNT(gIdleThreadStack), 100);
     osStartThread(&gIdleThread);
 }
@@ -462,19 +464,19 @@ void display_and_vsync(void) {
 }
 
 void init_segment_ending_sequences(void) {
-    bzero((void *) SEG_ENDING_SEQUENCES, 0xDF00);
+    bzero((void *) SEG_ENDING_SEQUENCES, ENDING_SEQUENCE_SIZE);
     osWritebackDCacheAll();
     dma_copy((u8 *) SEG_ENDING_SEQUENCES, (u8 *) &_endingSequencesSegmentRomStart, ALIGN16((u32)&_endingSequencesSegmentRomEnd - (u32)&_endingSequencesSegmentRomStart));
-    osInvalICache((void *) SEG_ENDING_SEQUENCES, 0xDF00);
-    osInvalDCache((void *) SEG_ENDING_SEQUENCES, 0xDF00);
+    osInvalICache((void *) SEG_ENDING_SEQUENCES, ENDING_SEQUENCE_SIZE);
+    osInvalDCache((void *) SEG_ENDING_SEQUENCES, ENDING_SEQUENCE_SIZE);
 }
 
 void init_segment_racing(void) {
-    bzero((void *) SEG_RACING, 0x2C470);
+    bzero((void *) SEG_RACING, RACING_SEQUENCE_SIZE);
     osWritebackDCacheAll();
     dma_copy((u8 *) SEG_RACING, (u8 *) &_racingSegmentRomStart, ALIGN16((u32)&_racingSegmentRomEnd - (u32)&_racingSegmentRomStart));
-    osInvalICache((void *) SEG_RACING, 0x2C470);
-    osInvalDCache((void *) SEG_RACING, 0x2C470);
+    osInvalICache((void *) SEG_RACING, RACING_SEQUENCE_SIZE);
+    osInvalDCache((void *) SEG_RACING, RACING_SEQUENCE_SIZE);
 }
 
 void dma_copy(u8 *dest, u8 *romAddr, u32 size) {
@@ -498,40 +500,46 @@ void dma_copy(u8 *dest, u8 *romAddr, u32 size) {
  */
 void setup_game_memory(void) {
     UNUSED u32 pad[2];
-    u32 sp2C;
-    u32 sp40;
-    uintptr_t texture_seg;
-    u32 sp38;
+    ptrdiff_t commonCourseDataSize; // Compressed mio0 size
+    uintptr_t textureSegSize;
+    ptrdiff_t textureSegStart;
+    uintptr_t allocatedMemory;
     UNUSED s32 unknown_padding;
 
     init_segment_racing();
-    gHeapEndPtr = SEG_RACING;
+    gHeapEndPtr = (uintptr_t) SEG_RACING;
     set_segment_base_addr(0, (void *) SEG_START);
+    
     // Memory pool size of 0xAB630
-    // todo: is it possible to shift this value?
-#ifdef AVOID_UB
-    initialize_memory_pool((uintptr_t) &_mainSegNoloadEnd, (uintptr_t) (&_mainSegNoloadEnd[0] + 0xAB630));
-#else
-    initialize_memory_pool((uintptr_t) &_mainSegNoloadEnd, (uintptr_t) 0x80242F00);
-#endif
+    initialize_memory_pool((uintptr_t) &_mainSegNoloadEnd, (uintptr_t) MEMORY_POOL_END);
+
     func_80000BEC();
     osInvalDCache((void *) SEG_802BA370, 0x5810);
     osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_data_802BA370SegmentRomStart, (void *) SEG_802BA370, 0x5810, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     set_segment_base_addr(2, (void *) load_data((uintptr_t) &_data_segment2SegmentRomStart, (uintptr_t) &_data_segment2SegmentRomEnd));
-    sp2C = (u32)&_common_texturesSegmentRomEnd - (u32)&_common_texturesSegmentRomStart;
-    sp2C = ALIGN16(sp2C);
-    texture_seg = SEG_RACING-sp2C;
-    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_common_texturesSegmentRomStart, (void *) texture_seg, sp2C, &gDmaMesgQueue);
+    
+    commonCourseDataSize = (uintptr_t)&_common_texturesSegmentRomEnd - (uintptr_t)&_common_texturesSegmentRomStart;
+    commonCourseDataSize = ALIGN16(commonCourseDataSize);
+
+#ifdef AVOID_UB
+    textureSegStart = (ptrdiff_t) SEG_RACING[0] - commonCourseDataSize;
+#else
+    textureSegStart = SEG_RACING - commonCourseDataSize;
+#endif  
+    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_common_texturesSegmentRomStart, (void *) textureSegStart, commonCourseDataSize, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
-    sp40 = *(u32 *)(texture_seg + 4);
-    sp40 = ALIGN16(sp40);
-    sp38 = gNextFreeMemoryAddress;
-    mio0decode((u8 *) texture_seg, (u8 *) sp38);
-    set_segment_base_addr(0xD, (void *) sp38);
+    textureSegSize = *(uintptr_t *)(textureSegStart + 4);
+    textureSegSize = ALIGN16(textureSegSize);
+    allocatedMemory = gNextFreeMemoryAddress;
+    mio0decode((u8 *) textureSegStart, (u8 *) allocatedMemory);
+    set_segment_base_addr(0xD, (void *) allocatedMemory);
 
-    gNextFreeMemoryAddress += sp40;
+    gNextFreeMemoryAddress += textureSegSize;
+
+    // Common course data does not get reloaded when the race state resets.
+    // Therefore, only reset the memory ptr to after the common course data.
     gFreeMemoryResetAnchor = gNextFreeMemoryAddress;
 }
 

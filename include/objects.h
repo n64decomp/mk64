@@ -216,7 +216,7 @@ extern s32 D_80183F28[];
 extern s32 D_8018BFA8[];
 extern s32 D_8018C030[];
 
-#define D_8018C1B0_SIZE 0x80
+#define D_8018C1B0_SIZE 128
 #define NUM_MOLES 0x1F
 #define NUM_SNOWFLAKES 0x32
 /**
@@ -232,7 +232,7 @@ extern s32 D_80183E38;
 // Used for cycling through snowflakes in func_80078790
 extern s16 D_8018D174;
 
-#define D_8018C3F0_SIZE 0x80
+#define D_8018C3F0_SIZE 128
 /**
  * List of object list indices used for:
  *   Bats in Banshee's Boardwalk (but only 1 player mode?)
@@ -243,7 +243,7 @@ extern s32 D_80183E4C;
 // Controls number of come object type placed into D_8018C3F0 on Frappe Snowland. So, maybe snowmen/snowflakes?
 extern s32 D_8018D3BC;
 
-#define D_8018C630_SIZE 0x80
+#define D_8018C630_SIZE 128
 extern s32 D_8018C630[];
 // Next free spot in D_8018C630?
 extern s32 D_80183E5C;
