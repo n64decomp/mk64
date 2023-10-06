@@ -39,14 +39,14 @@ typedef struct {
  *   kart_palette contains the pallete for all non-wheel elements of the kart (including the driver).
  *   wheel_palette contains the palette for the wheels.
  * 
- * kart palette sets a defined palette based on the character.
- * while wheels pallete sets a dynamic palette as your drive around with the kart.
+ * kart palette sets a defined palette based on the character while
+ * wheels palette sets a dynamic palette as you drive around with the kart.
  *
  * The term "palette" appears to be synonymous with "texture lookup table (TLUT)",
  * at least as far as the N64 texture engine is concerned
  * According to http://ultra64.ca/files/documentation/online-manuals/man/app/te/us/tlf.html
  * palettes are techinally arrays of u32's, but I feel using a more meaningful data type
- * helps with understanding
+ * helps with understanding.
  */
 typedef struct {
     /* 0x000 */ RGBA5551  kart_palette[0xC0];
