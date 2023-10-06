@@ -1707,8 +1707,7 @@ void func_80027040(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
         }
     } else if (((temp & 0x400) == 0x400) || ((temp & 0x01000000) == 0x01000000) || ((temp & 0x02000000) == 0x02000000) || ((temp & 0x10000) == 0x10000)) {
         osInvalDCache(&D_802DFB80[arg4][arg3][arg1], 0x780U);
-        // I think there's something off with the "player->unk_0A8 >> 8"
-        // I don't like that right-shift
+        // player->unk_0A8 >> 8 converts an 8.8 fixed-point animation frame to a whole number.
         osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTumbles[player->characterId][player->unk_0A8 >> 8])], &D_802DFB80[arg4][arg3][arg1], 0x900, &gDmaMesgQueue);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     } else {
@@ -1734,8 +1733,7 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
         ((temp & 0x02000000) == 0x02000000) || ((temp & 0x10000) == 0x10000))
     {
         osInvalDCache(&D_802DFB80[arg4][arg3][arg1], 0x780);
-        // I think there's something off with the "player->unk_0A8 >> 8"
-        // I don't like that right-shift
+        // player->unk_0A8 >> 8 converts an 8.8 fixed-point animation frame to a whole number.
         osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(gKartTextureTumbles[player->characterId][player->unk_0A8 >> 8])], &D_802DFB80[arg4][arg3][arg1], 0x900, &gDmaMesgQueue);
     } else {
         osInvalDCache(&D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
@@ -1744,7 +1742,6 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
 }
 
 void func_80027A20(Player *player, s8 arg1, s8 arg2, s8 arg3) {
-    // Properly define struct, see framebuffers.h comment for more information
 #ifdef AVOID_UB
     struct_D_802F1F80 *temp_s0 = &D_802F1F80[arg3][arg2][arg1];
 #else

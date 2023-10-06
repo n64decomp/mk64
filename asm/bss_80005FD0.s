@@ -30,7 +30,7 @@ glabel D_80162F8C
 glabel D_80162FA0
 .skip 8
 
-glabel D_80162FA8
+glabel D_80162FA8 # fake var?
 .skip 8
 
 glabel D_80162FB0
@@ -293,18 +293,3 @@ glabel D_80163598
 
 glabel D_8016359C
 .skip 4
-
-glabel sTrains
-.skip 4
-
-glabel D_801635A4
-.skip 12
-
-glabel D_801635B0
-.skip 12
-
-glabel D_801635BC
-.skip 8
-
-glabel D_801635C4
-.skip 220

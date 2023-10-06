@@ -1354,9 +1354,9 @@ u8 *load_course(s32 courseId) {
     unknown1 = gCourseTable[courseId].unknown1;
 
     if ((gGamestate == ENDING_SEQUENCE) || (gGamestate == CREDITS_SEQUENCE)) {
-        gHeapEndPtr = SEG_ENDING_SEQUENCES;
+        gHeapEndPtr = (uintptr_t) SEG_ENDING_SEQUENCES;
     } else {
-        gHeapEndPtr = SEG_RACING;
+        gHeapEndPtr = (uintptr_t) SEG_RACING;
     }
     set_segment_base_addr(9, load_data((uintptr_t)offsetRomStart, (uintptr_t) offsetRomEnd));
 

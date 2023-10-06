@@ -3,10 +3,12 @@
 
 #include "common_structs.h"
 
-#define NUM_1P_PASSENGER_CARS     5
-#define NUM_2P_PASSENGER_CARS     2
-#define NUM_PASSENGER_CAR_ENTRIES 5
+#define NUM_1P_PASSENGER_CARS     4
+#define NUM_2P_PASSENGER_CARS     1
+#define NUM_PASSENGER_CAR_ENTRIES 5 // Max 16
+#define NUM_TENDERS               1
 #define NUM_TRAINS                2
+#define LOCOMOTIVE_ONLY           0
 
 #define NUM_PADDLE_WHEEL_BOATS 1
 
@@ -62,7 +64,7 @@ typedef struct {
 	/* 0x02 */ // s16 compilerPadding;
 	/* 0x04 */ Vec3f position;
 	/* 0x10 */ Vec3f velocity;
-	/* 0x1C */ s16 wayPointIndex;
+	/* 0x1C */ u16 wayPointIndex;
 	/* 0x1E */ s16 actorIndex;
 	/* 0x20 */ f32 someMultiplier; //
 	/* 0x24 */ f32 someMultiplierTheSequel; //

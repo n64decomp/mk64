@@ -140,13 +140,10 @@ u16 func_8001FD78(Player *player, f32 posX, UNUSED f32 arg2, f32 posZ) {
 }
 
 void func_80020000(Player *player, Camera *camera, s8 arg2, s8 arg3) {
-    s32 stackPadding0;
-    s32 stackPadding1;
-    s32 stackPadding2;
-    s32 stackPadding3;
+    s32 pad[4];
     s32 sp4C;
     s32 sp48;
-    s32 stackPadding4;
+    s32 pad2;
     s32 temp_v0;
     s32 temp_v0_2;
 
@@ -1315,25 +1312,9 @@ void func_80024374(Player *player, s8 arg1, s8 arg2) {
 }
 
 void func_800248D0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
-    s32 stackPadding00;
+    s32 pad;
     Mat4 sp1A4;
-    s32 stackPadding01;
-    s32 stackPadding02;
-    s32 stackPadding03;
-    s32 stackPadding04;
-    s32 stackPadding05;
-    s32 stackPadding06;
-    s32 stackPadding07;
-    s32 stackPadding08;
-    s32 stackPadding09;
-    s32 stackPadding10;
-    s32 stackPadding11;
-    s32 stackPadding12;
-    s32 stackPadding13;
-    s32 stackPadding14;
-    s32 stackPadding15;
-    s32 stackPadding16;
-    s32 stackPadding17;
+    s32 pad2[17];
     Vec3f sp154;
     Vec3s sp14C;
     f32 sp148;
@@ -1430,31 +1411,15 @@ void func_800248D0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
 }
 
 void func_800256F4(Player *player, s8 arg1, s8 arg2, s8 arg3) {
-    s32 stackPadding00;
+    s32 pad;
     Mat4 sp12C;
-    s32 stackPadding01;
-    s32 stackPadding02;
-    s32 stackPadding03;
-    s32 stackPadding04;
-    s32 stackPadding05;
-    s32 stackPadding06;
-    s32 stackPadding07;
-    s32 stackPadding08;
-    s32 stackPadding09;
-    s32 stackPadding10;
-    s32 stackPadding11;
-    s32 stackPadding12;
-    s32 stackPadding13;
-    s32 stackPadding14;
-    s32 stackPadding15;
-    s32 stackPadding16;
-    s32 stackPadding17;
+    s32 pad2[17];
     Vec3f spDC;
     Vec3s spD4;
     f32 spD0;
     f32 spCC;
     f32 spC8;
-    s32 stackPadding18;
+    s32 pad3;
     s16 spC2;
     s16 thing;
 
@@ -1567,8 +1532,7 @@ void func_800262E0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
 }
 
 void func_800267AC(Player *player, s8 arg1, s8 arg2) {
-    s32 stackPadding0;
-    s32 stackPadding1;
+    s32 pad[2];
     s32 temp_t1;
     s32 var_v1;
     OSMesg *sp34;
