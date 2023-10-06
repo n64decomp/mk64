@@ -16,4 +16,4 @@ void rmonPrintf(const char *fmt, ...) {
   va_end(args);
 }
 
-#endif
+#endif // DEBUG
