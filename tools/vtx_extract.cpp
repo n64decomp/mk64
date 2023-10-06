@@ -534,7 +534,13 @@ inline short bswap(short in) {
     return ((in & 0xFF) << 8) | ((in >> 8) & 0xFF);
 }
 
-// argv[1] -> path to baserom file
+/**
+ * Usage:
+ *   vtx_extract /path/to/baserom.us.z64
+ * 
+ * How to build:
+ *   make -C tools -f vtx_extract.mk
+ **/
 int main(int argc, char **argv) {
     int err;
     int num_tris;
