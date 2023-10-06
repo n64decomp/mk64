@@ -4785,7 +4785,7 @@ void func_8007CEDC(s32 objectIndex) {
     default:                                        /* switch 2 */
         break;
     }
-    if (temp_s0->itemDisstateplayState >= 2) {
+    if (temp_s0->state >= 2) {
         func_80072950(objectIndex, (s32) temp_s0->unk_0DC, 0, 4);
         func_80073514(objectIndex);
         switch (temp_s0->unk_0DC) {                          /* switch 2 */
