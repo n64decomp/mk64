@@ -109,4 +109,3 @@ u8 gBBTexture68D940[] = {
 u8 gBBTexture685AC0[] = {
 	#include "textures/standalone/texture_685AC0.ia16.inc.c"
 };
-
