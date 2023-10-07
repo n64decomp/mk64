@@ -111,7 +111,7 @@ void func_80011AB8(s32);
 void func_80011AE4(s32);
 
 void func_80012220(VehicleStuff*);
-void func_800122D8(void);
+void init_course_vehicles(void);
 void func_80012A48(TrainCarStuff*, s16);
 void func_80012AC0(void);
 void func_80012DC0(s32, Player*);

@@ -8,8 +8,8 @@ glabel D_800EF1BC
 glabel func_80082F1C
 /* 083B1C 80082F1C 000470C0 */  sll   $t6, $a0, 3
 /* 083B20 80082F20 01C47023 */  subu  $t6, $t6, $a0
-/* 083B24 80082F24 3C0F8016 */  lui   $t7, %hi(D_80165C18) # $t7, 0x8016
-/* 083B28 80082F28 25EF5C18 */  addiu $t7, %lo(D_80165C18) # addiu $t7, $t7, 0x5c18
+/* 083B24 80082F24 3C0F8016 */  lui   $t7, %hi(gObjectList) # $t7, 0x8016
+/* 083B28 80082F28 25EF5C18 */  addiu $t7, %lo(gObjectList) # addiu $t7, $t7, 0x5c18
 /* 083B2C 80082F2C 000E7140 */  sll   $t6, $t6, 5
 /* 083B30 80082F30 01CF1021 */  addu  $v0, $t6, $t7
 /* 083B34 80082F34 3C180601 */  lui   $t8, %hi(d_course_yoshi_valley_unk5) # $t8, 0x601

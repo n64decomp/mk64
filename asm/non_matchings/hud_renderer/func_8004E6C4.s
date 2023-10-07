@@ -3,8 +3,8 @@ glabel func_8004E6C4
 /* 04F2C8 8004E6C8 3C028018 */  lui   $v0, %hi(gItemWindowObjectByPlayerId) # 0x8018
 /* 04F2CC 8004E6CC 004F1021 */  addu  $v0, $v0, $t7
 /* 04F2D0 8004E6D0 8C423E88 */  lw    $v0, %lo(gItemWindowObjectByPlayerId)($v0) # 0x3e88($v0)
-/* 04F2D4 8004E6D4 3C198016 */  lui   $t9, %hi(D_80165C18) # $t9, 0x8016
-/* 04F2D8 8004E6D8 27395C18 */  addiu $t9, %lo(D_80165C18) # addiu $t9, $t9, 0x5c18
+/* 04F2D4 8004E6D4 3C198016 */  lui   $t9, %hi(gObjectList) # $t9, 0x8016
+/* 04F2D8 8004E6D8 27395C18 */  addiu $t9, %lo(gObjectList) # addiu $t9, $t9, 0x5c18
 /* 04F2DC 8004E6DC 0002C0C0 */  sll   $t8, $v0, 3
 /* 04F2E0 8004E6E0 0302C023 */  subu  $t8, $t8, $v0
 /* 04F2E4 8004E6E4 0018C140 */  sll   $t8, $t8, 5

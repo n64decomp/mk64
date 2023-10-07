@@ -36,8 +36,8 @@ void func_8004477C(u8*, s32, s32);
 void func_80044AB8(u8*, s32, s32);
 void func_80044BF8(u8*, s32, s32);
 
-void func_800452A4(u8*, s32, s32);
-void func_8004544C(u8*, s32, s32, s32);
+void rsp_load_texture(u8*, s32, s32);
+void rsp_load_texture_mask(u8*, s32, s32, s32);
 void func_80045614(u8*, s32, s32);
 void func_80045B2C(Vtx*);
 void func_80045B74(Vtx*);
@@ -78,7 +78,7 @@ void func_80046E60(u8*, u8*, s32, s32);
 void func_80046F60(u8*, u8*, s32, s32, s32);
 
 void func_80047068(u8*, u8*, Vtx*, s32, s32, s32, s32);
-void func_80047270(u8*, u8*, Vtx*, s32, s32, s32, s32);
+void draw_rectangle_texture_overlap(u8*, u8*, Vtx*, s32, s32, s32, s32);
 void func_8004747C(u8*, u8*, Vtx*, s32, s32, s32, s32, s32);
 void func_8004768C(u8*, u8*, Vtx*, s32, s32, s32);
 void func_8004788C(s32, s32, u16, f32, u8*, u8*, Vtx*, s32, s32, s32, s32);
@@ -191,7 +191,7 @@ void func_8004B138(s32, s32, s32, s32);
 void func_8004B180(s32, s32, s32, s32);
 void func_8004B1C8(s32, s32, s32, s32, s32, s32, s32);
 void func_8004B254(s32, s32, s32);
-void func_8004B2BC(s32);
+void set_transparency(s32);
 void func_8004B310(s32);
 void func_8004B35C(s32, s32, s32, s32);
 void func_8004B3C8(s32);

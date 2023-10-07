@@ -12,7 +12,8 @@ typedef struct {
     u8 records[6][3];
     // It's unknown what these bytes are used for
     // Byte 1 might be an indicator that there is a ghost available for that course
-    u8 unknownBytes[6];
+    u8 unknownBytes[5];
+    u8 checksum;
 } CourseTimeTrialRecords; // size = 0x18
 
 typedef struct {

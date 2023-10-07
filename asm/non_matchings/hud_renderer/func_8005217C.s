@@ -1,8 +1,8 @@
 glabel func_8005217C
 /* 052D7C 8005217C 3C078018 */  lui   $a3, %hi(D_80183F28) # $a3, 0x8018
 /* 052D80 80052180 8CE73F28 */  lw    $a3, %lo(D_80183F28)($a3)
-/* 052D84 80052184 3C0F8016 */  lui   $t7, %hi(D_80165C18) # $t7, 0x8016
-/* 052D88 80052188 25EF5C18 */  addiu $t7, %lo(D_80165C18) # addiu $t7, $t7, 0x5c18
+/* 052D84 80052184 3C0F8016 */  lui   $t7, %hi(gObjectList) # $t7, 0x8016
+/* 052D88 80052188 25EF5C18 */  addiu $t7, %lo(gObjectList) # addiu $t7, $t7, 0x5c18
 /* 052D8C 8005218C 000770C0 */  sll   $t6, $a3, 3
 /* 052D90 80052190 01C77023 */  subu  $t6, $t6, $a3
 /* 052D94 80052194 000E7140 */  sll   $t6, $t6, 5
@@ -16,7 +16,7 @@ glabel func_8005217C
 /* 052DB4 800521B4 00E02025 */  move  $a0, $a3
 /* 052DB8 800521B8 24050010 */  li    $a1, 16
 /* 052DBC 800521BC AFA30018 */  sw    $v1, 0x18($sp)
-/* 052DC0 800521C0 0C01C88F */  jal   func_8007223C
+/* 052DC0 800521C0 0C01C88F */  jal   is_obj_index_flag_unk_054_active
 /* 052DC4 800521C4 AFA70050 */   sw    $a3, 0x50($sp)
 /* 052DC8 800521C8 8FA30018 */  lw    $v1, 0x18($sp)
 /* 052DCC 800521CC 10400076 */  beqz  $v0, .L800523A8
@@ -24,7 +24,7 @@ glabel func_8005217C
 /* 052DD4 800521D4 24640004 */  addiu $a0, $v1, 4
 /* 052DD8 800521D8 246500BE */  addiu $a1, $v1, 0xbe
 /* 052DDC 800521DC 8C660000 */  lw    $a2, ($v1)
-/* 052DE0 800521E0 0C010B80 */  jal   func_80042E00
+/* 052DE0 800521E0 0C010B80 */  jal   rsp_set_matrix_transformation
 /* 052DE4 800521E4 AFA70050 */   sw    $a3, 0x50($sp)
 /* 052DE8 800521E8 0C014830 */  jal   func_800520C0
 /* 052DEC 800521EC 8FA40050 */   lw    $a0, 0x50($sp)

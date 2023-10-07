@@ -1,12 +1,12 @@
 glabel func_800A3A10
 /* 0A4610 800A3A10 27BDFFF8 */  addiu $sp, $sp, -8
 /* 0A4614 800A3A14 AFB00004 */  sw    $s0, 4($sp)
-/* 0A4618 800A3A18 3C108019 */  lui   $s0, %hi(D_8018EDF3) # $s0, 0x8019
+/* 0A4618 800A3A18 3C108019 */  lui   $s0, %hi(gPlayerCount) # $s0, 0x8019
 /* 0A461C 800A3A1C 3C0D8016 */  lui   $t5, %hi(D_80164478) # $t5, 0x8016
 /* 0A4620 800A3A20 3C0B8019 */  lui   $t3, %hi(gGPPointsByCharacterId) # $t3, 0x8019
 /* 0A4624 800A3A24 256BD9C8 */  addiu $t3, %lo(gGPPointsByCharacterId) # addiu $t3, $t3, -0x2638
 /* 0A4628 800A3A28 25AD4478 */  addiu $t5, %lo(D_80164478) # addiu $t5, $t5, 0x4478
-/* 0A462C 800A3A2C 2610EDF3 */  addiu $s0, %lo(D_8018EDF3) # addiu $s0, $s0, -0x120d
+/* 0A462C 800A3A2C 2610EDF3 */  addiu $s0, %lo(gPlayerCount) # addiu $s0, $s0, -0x120d
 /* 0A4630 800A3A30 00001025 */  move  $v0, $zero
 /* 0A4634 800A3A34 00801825 */  move  $v1, $a0
 /* 0A4638 800A3A38 240C0008 */  li    $t4, 8

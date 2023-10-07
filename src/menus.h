@@ -56,7 +56,7 @@ extern s8 gDebugMenuSelection;
 extern s8 gControllerPakMenuSelection;
 extern s8 D_8018EDF1;
 extern u8 gSoundMode;
-extern s8 D_8018EDF3;
+extern s8 gPlayerCount;
 extern s8 D_8018EDF4;
 extern s8 D_8018EDF5;
 extern s8 D_8018EDF6;

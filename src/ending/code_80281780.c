@@ -71,7 +71,7 @@ void func_802818BC(void) {
     s32 sp1C;
     s32 temp_v0_2;
 
-    if (D_8018EDF3 != TWO_PLAYERS_SELECTED) {
+    if (gPlayerCount != TWO_PLAYERS_SELECTED) {
         D_802874D8.unk1D = func_80281880(0);
         D_802874D8.unk1E = gCharacterSelections[0];
         return;
@@ -144,7 +144,7 @@ void load_ceremony_cutscene(void) {
     debug_switch_character_ceremony_cutscene();
     func_802818BC();
     func_8003D080();
-    func_8006E9C0();
+    init_object_list();
     func_8001C05C();
     balloons_and_fireworks_init();
     func_802816B8();

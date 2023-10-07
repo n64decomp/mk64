@@ -1,9 +1,9 @@
 glabel func_8007C360
 /* 07CF60 8007C360 000470C0 */  sll   $t6, $a0, 3
 /* 07CF64 8007C364 01C47023 */  subu  $t6, $t6, $a0
-/* 07CF68 8007C368 3C0F8016 */  lui   $t7, %hi(D_80165C18) # $t7, 0x8016
+/* 07CF68 8007C368 3C0F8016 */  lui   $t7, %hi(gObjectList) # $t7, 0x8016
 /* 07CF6C 8007C36C 27BDFFD8 */  addiu $sp, $sp, -0x28
-/* 07CF70 8007C370 25EF5C18 */  addiu $t7, %lo(D_80165C18) # addiu $t7, $t7, 0x5c18
+/* 07CF70 8007C370 25EF5C18 */  addiu $t7, %lo(gObjectList) # addiu $t7, $t7, 0x5c18
 /* 07CF74 8007C374 000E7140 */  sll   $t6, $t6, 5
 /* 07CF78 8007C378 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 07CF7C 8007C37C 01CF3021 */  addu  $a2, $t6, $t7
@@ -30,7 +30,7 @@ glabel func_8007C360
 /* 07CFCC 8007C3CC 01403825 */   move  $a3, $t2
 /* 07CFD0 8007C3D0 24050080 */  li    $a1, 128
 /* 07CFD4 8007C3D4 AFA60020 */  sw    $a2, 0x20($sp)
-/* 07CFD8 8007C3D8 0C01C87A */  jal   func_800721E8
+/* 07CFD8 8007C3D8 0C01C87A */  jal   set_object_flag_unk_054_false
 /* 07CFDC 8007C3DC AFAA001C */   sw    $t2, 0x1c($sp)
 /* 07CFE0 8007C3E0 8FA60020 */  lw    $a2, 0x20($sp)
 /* 07CFE4 8007C3E4 8FA7001C */  lw    $a3, 0x1c($sp)
@@ -38,7 +38,7 @@ glabel func_8007C360
 /* 07CFEC 8007C3EC A0C700D2 */   sb    $a3, 0xd2($a2)
 .L8007C3F0:
 /* 07CFF0 8007C3F0 AFA60020 */  sw    $a2, 0x20($sp)
-/* 07CFF4 8007C3F4 0C01C870 */  jal   func_800721C0
+/* 07CFF4 8007C3F4 0C01C870 */  jal   set_object_flag_unk_054_true
 /* 07CFF8 8007C3F8 AFA7001C */   sw    $a3, 0x1c($sp)
 /* 07CFFC 8007C3FC 8FA7001C */  lw    $a3, 0x1c($sp)
 /* 07D000 8007C400 8FA60020 */  lw    $a2, 0x20($sp)
