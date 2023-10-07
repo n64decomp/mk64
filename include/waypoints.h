@@ -2,10 +2,10 @@
 #define WAYPOINTS_H
 
 struct TrackWayPoint {
-    /* 0x00 */ s16 wayPointX;
-    /* 0x02 */ s16 wayPointY;
-    /* 0x04 */ s16 wayPointZ;
-    /* 0x06 */ u16 wayPointTrackSegment;
+    /* 0x00 */ s16 posX;
+    /* 0x02 */ s16 posY;
+    /* 0x04 */ s16 posZ;
+    /* 0x06 */ u16 trackSegment;
 }; // size = 0x08
 
 /**

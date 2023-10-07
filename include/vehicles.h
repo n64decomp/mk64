@@ -27,7 +27,7 @@ typedef struct {
 	/* 0x02 */ s16 compilerPadding;
 	/* 0x04 */ Vec3f position;
 	/* 0x10 */ Vec3f velocity;
-	/* 0x1C */ u16 wayPointIndex;
+	/* 0x1C */ u16 waypointIndex;
 	/* 0x1E */ s16 actorIndex;
 	/* 0x20 */ s32 unused; // Not read or written. Could be padding?
 } TrainCarStuff; // size = 0x24;
@@ -47,7 +47,7 @@ typedef struct {
 	/* 0x02 */ // s16 compilerPadding;
 	/* 0x04 */ Vec3f position; //
 	/* 0x10 */ Vec3f velocity; //
-	/* 0x1C */ s16 wayPointIndex; //
+	/* 0x1C */ s16 waypointIndex; //
 	/* 0x1E */ s16 actorIndex; //
 	/* 0x20 */ f32 someMultiplier; //
 	/* 0x24 */ s16 yRotation; // Only Y rotation is tracked in this struct
@@ -64,7 +64,7 @@ typedef struct {
 	/* 0x02 */ // s16 compilerPadding;
 	/* 0x04 */ Vec3f position;
 	/* 0x10 */ Vec3f velocity;
-	/* 0x1C */ u16 wayPointIndex;
+	/* 0x1C */ u16 waypointIndex;
 	/* 0x1E */ s16 actorIndex;
 	/* 0x20 */ f32 someMultiplier; //
 	/* 0x24 */ f32 someMultiplierTheSequel; //

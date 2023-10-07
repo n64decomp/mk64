@@ -8079,7 +8079,7 @@ void func_80085878(s32 objectIndex, s32 arg1) {
     temp_s0->unk_084[8] = (arg1 * 0x12C) + 0x1F4;
     func_8008B7D4(objectIndex, 0.0f, -15.0f, 0.0f);
     temp_v0 = &D_80164490[(u16)temp_s0->unk_084[8]];
-    func_8008B80C(objectIndex, temp_v0->wayPointX, temp_v0->wayPointY, temp_v0->wayPointZ);
+    func_8008B80C(objectIndex, temp_v0->posX, temp_v0->posY, temp_v0->posZ);
     func_8008B888(objectIndex, 0U, 0U, 0U);
     temp_s0->unk_034 = 4.0f;
     temp_s0->unk_0A4 = func_80004EAC(d_rainbow_road_unk3, 0);

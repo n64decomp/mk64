@@ -513,9 +513,9 @@ void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
         fruit->velocity[0] = 80.0f;
     case 1:
         nearestWaypoint = gNearestWaypointByPlayerId[(u16)(player - gPlayerOne)];
-        temp_f2  = player->pos[0] - D_80164490[nearestWaypoint].wayPointX;
-        temp_f16 = player->pos[1] - D_80164490[nearestWaypoint].wayPointY;
-        temp_f14 = player->pos[2] - D_80164490[nearestWaypoint].wayPointZ;
+        temp_f2  = player->pos[0] - D_80164490[nearestWaypoint].posX;
+        temp_f16 = player->pos[1] - D_80164490[nearestWaypoint].posY;
+        temp_f14 = player->pos[2] - D_80164490[nearestWaypoint].posZ;
         temp_f12 = fruit->velocity[0] / sqrtf((temp_f2 * temp_f2) + (temp_f16 * temp_f16) + (temp_f14 * temp_f14));
         temp_f2  *= temp_f12;
         temp_f16 *= temp_f12;

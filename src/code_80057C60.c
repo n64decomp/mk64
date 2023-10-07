@@ -2519,7 +2519,7 @@ void func_8005D1F4(s32 arg0)
         D_8018CA70[arg0].unk_74 = 0;
         for (var_a2 = 0; var_a2 < NUM_BOMB_KARTS_VERSUS; var_a2++) {
             if ((D_80163DE8[var_a2].state == BOMB_STATE_EXPLODED) || (D_80163DE8[var_a2].state == BOMB_STATE_INACTIVE)) continue;
-            bombWaypoint = D_80163DE8[var_a2].wayPointIndex;
+            bombWaypoint = D_80163DE8[var_a2].waypointIndex;
             waypointDiff = bombWaypoint - playerWaypoint;
             if ((waypointDiff < -5) || (waypointDiff > 0x1E)) continue;
             D_8018CA70[arg0].unk_74 = 1;
