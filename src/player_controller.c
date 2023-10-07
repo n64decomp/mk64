@@ -3901,9 +3901,8 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     UNUSED s32 pad3;
     s32 var_a0;
     f32 sp44[156] = {0.0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8};
-  //f32 sp44[156] = {0.0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8};
 
-    if (((((player->unk_0BC & 2) != 2) && ((((player->unk_0C0 / 182) <= 6) && ((player->unk_0C0 / 182) >= (-6))) || ((controller->button & 0x0010) != 0x0010))) || (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f)) || ((player->unk_0BC & 0x8000) == 0x8000))
+    if (((((player->unk_0BC & 2) != 2) && ((((player->unk_0C0 / 182) <= 6) && ((player->unk_0C0 / 182) >= (-6))) || ((controller->button & R_TRIG) != R_TRIG))) || (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f)) || ((player->unk_0BC & 0x8000) == 0x8000))
     {
         func_80036CB4(player);
     }
@@ -4259,9 +4258,6 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
         player->unk_078 *= 1.7;
     }
 }
-//#else
-//GLOBAL_ASM("asm/non_matchings/player_controller/func_80033AE0.s")
-//#endif
 
 void func_8003680C(Player *player, s16 arg1) {
     s32 sp304 = 0;
@@ -4652,7 +4648,7 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
                 ((player->unk_0BC & 8) != 8) && 
                 ((player->unk_0BC & 2) != 2) && 
                 ((player->unk_0BC & 0x10) != 0x10) && 
-                (controller->buttonPressed & 0x10)) {
+                (controller->buttonPressed & R_TRIG)) {
                     func_8002AA50(player);
                     if (((player->unk_000 & 0x4000) == 0x4000) && ((player->unk_000 & 0x100) != 0x100)) {
                         func_800C9060(arg2, 0x19008000);
@@ -4666,8 +4662,8 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
             player->unk_0BC &= ~1;
             if ((!(player->unk_0BC & 0x100000)) && (!(player->unk_0BC & 4))) {
                 if (((player->unk_094 / 18.0f) * 216.0f) <= 12.0f) {
-                    if (controller->button & 0x8000) {
-                        if (controller->button & 0x4000) {
+                    if (controller->button & A_BUTTON) {
+                        if (controller->button & B_BUTTON) {
                             player->unk_0BC |= 0x20;
                             if ((player->unk_0BC & 0x20) != 0x20) {
                                 player->unk_09C += 100.0f;
@@ -4676,13 +4672,13 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
                     }
                 }
                 if (((player->unk_0BC & 0x20) == 0x20) && 
-                    (((controller->button & 0x4000) == 0) || 
-                    (!(controller->button & 0x8000)))) {
+                    (((controller->button & B_BUTTON) == 0) || 
+                    (!(controller->button & A_BUTTON)))) {
                         player->unk_0BC &= ~0x20;
                 }
             }
             if ((player->unk_044 & 1) != 1) {
-                if (controller->button & 0x8000) {
+                if (controller->button & A_BUTTON) {
                     func_80030FC8(player);
                     func_80030E00(player);
                 } else {
@@ -4696,7 +4692,7 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
                     }
                     func_80030C34(player);
                 }
-                if (controller->button & 0x4000) {
+                if (controller->button & B_BUTTON) {
                     func_800323E4(player);
                     func_8003221C(player);
                 } else {
@@ -4707,13 +4703,13 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
             if ((!(player->unk_0BC & 0x100000)) && (!(player->unk_0BC & 4))) {
                 if (((func_800388B0(controller) < (-0x31)) && 
                     (((player->unk_094 / 18.0f) * 216.0f) <= 5.0f)) && 
-                    (controller->button & 0x4000)) {
+                    (controller->button & B_BUTTON)) {
                         player->unk_09C = 140.0f;
                         player->unk_044 |= 1;
                         player->unk_08C = (player->unk_09C * player->unk_09C) / 25.0f;
                         player->unk_20C = 0.0f;
                 }
-                if ((func_800388B0(controller) >= -0x1D) || (!(controller->button & 0x4000))) {
+                if ((func_800388B0(controller) >= -0x1D) || (!(controller->button & B_BUTTON))) {
                     if ((player->unk_044 & 1) == 1) {
                         player->unk_044 &= 0xFFFE;
                         player->unk_09C = 0.0f;
@@ -4722,7 +4718,7 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
             }
     } else {
         if ((player->unk_0BC & 0x4000) == 0x4000){
-            if (controller->button & 0x8000) {
+            if (controller->button & A_BUTTON) {
                 func_80030FC8(player);
             } else {
                 func_80031F48(player, 5.0f);
@@ -4732,7 +4728,7 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
             ((player->unk_0BC & 0x40) == 0x40)) || 
             ((player->unk_0BC & 0x01000000) == 0x01000000)) || 
             ((player->unk_0BC & 0x02000000) == 0x02000000)) {
-                if (controller->button & 0x8000) {
+                if (controller->button & A_BUTTON) {
                     func_80030E00(player);
                     func_800332E8(player, arg2);
                     return;
@@ -4749,7 +4745,7 @@ void func_800381AC(Player *player, struct Controller *controller, s8 arg2) {
         ((player->unk_000 & 0x1000) != 0x1000)) {
             if ((player->unk_000 & 0x2000) != 0x2000) {
                 if (((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) {
-                    if (controller->button & 0x8000) {
+                    if (controller->button & A_BUTTON) {
                         func_80032D94(player);
                     } else {
                         func_80033280(player, 5.0f);
@@ -4764,7 +4760,7 @@ void func_800381AC(Player *player, struct Controller *controller, s8 arg2) {
                         D_801652E0[arg2] = gRaceFrameCounter;
                     }
                 }
-                if (controller->button & 0x8000) {
+                if (controller->button & A_BUTTON) {
                     func_80032700(player);
                 } else {
                     func_80032CB0(player, 5.0f);

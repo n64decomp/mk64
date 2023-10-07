@@ -13703,14 +13703,14 @@ void func_800ADF48(struct_8018D9E0_entry *arg0) {
                         arg0->unk8 = 1;
                     }
                 }
-                if (controller->buttonPressed & 0x4000) {
+                if (controller->buttonPressed & B_BUTTON) {
                     if (arg0->unk4 != D_800F0B50[gModeSelection]) {
                         arg0->unk4 = D_800F0B50[gModeSelection];
                         play_sound2(0x49008002);
                         return;
                     }
                 }
-                if (controller->buttonPressed & 0x9000) {
+                if (controller->buttonPressed & (START_BUTTON | A_BUTTON)) {
                     if (arg0->unk4 == D_800F0B50[gModeSelection]) {
                         arg0->unk4 = 0;
                         gIsGamePaused = 0;

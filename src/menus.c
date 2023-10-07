@@ -1194,7 +1194,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 func_800CA330(0x19);
                 gDebugMenuSelection = DEBUG_MENU_EXITED;
 
-                if (controller->button & CONT_L) {
+                if (controller->button & L_TRIG) {
                     gDemoMode = DEMO_MODE_ACTIVE;
                 } else {
                     gDemoMode = DEMO_MODE_INACTIVE;
@@ -1214,7 +1214,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 gDebugMenuSelection = DEBUG_MENU_EXITED;
                 gDebugGotoScene = DEBUG_GOTO_CREDITS_SEQUENCE_CC_50;
                 play_sound2(SOUND_MENU_OK_CLICKED);
-            } else if (btnAndStick & CONT_R) {
+            } else if (btnAndStick & R_TRIG) {
                 gDebugMenuSelection = DEBUG_MENU_DISABLED;
                 play_sound2(SOUND_MENU_SELECT);
             }

@@ -1149,8 +1149,8 @@ void update_actor_green_shell(struct ShellActor *shell) {
         }
         if ((player->unk_000 & 0x4000) != 0) {
             controller = &gControllers[shell->playerId];
-            if ((controller->buttonDepressed & 0x2000) != 0) {
-                controller->buttonDepressed &= ~0x2000;
+            if ((controller->buttonDepressed & Z_TRIG) != 0) {
+                controller->buttonDepressed &= ~Z_TRIG;
                 if (controller->rawStickY < -0x2D) {
                     var_f2 = 8.0f;
                     if (player->unk_094 > 8.0f) {
@@ -1538,8 +1538,8 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             controller = gControllerOne;
         }
 
-        if ((controller->buttonDepressed & 0x2000) != 0) {
-            controller->buttonDepressed &= ~0x2000;
+        if ((controller->buttonDepressed & Z_TRIG) != 0) {
+            controller->buttonDepressed &= ~Z_TRIG;
             shell->state = RELEASED_SHELL;
             if (player->unk_0C0 > 0) {
                 shell->rotAngle = 0x78E3;
