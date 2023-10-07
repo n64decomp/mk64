@@ -376,8 +376,8 @@ Vtx *D_800DDBB4[] = {
 };
 
 f32 D_800DDBD4[] = {
-    0.75f, 0.75f, 0.75f, 0.75f,
-    0.75f, 0.75f, 0.75f, 0.75f
+    MARIO_SIZE, LUIGI_SIZE, YOSHI_SIZE, TOAD_SIZE,
+    DK_SIZE, WARIO_SIZE, PEACH_SIZE, BOWSER_SIZE
 };
 
 u8 **gKartMarioWheels0[] = {

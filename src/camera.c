@@ -671,7 +671,7 @@ void func_8001E0C4(Camera *camera, Player *player, s8 arg2) {
     camera->rot[0] = atan2s(sqrtf((temp_f12 * temp_f12) + (temp_f14 * temp_f14)), sp80);
     camera->rot[2] = 0;
 }
-
+void flycam(Camera *camera, Player *player, s8 index);
 // This function has a few stack variables.
 void func_8001E45C(Camera *camera, Player *player, s8 arg2) {
     UNUSED s32 pad[6];
@@ -812,9 +812,7 @@ void func_8001EA0C(Camera *camera, Player *player, s8 arg2) {
     UNUSED s16 pad6;
     s16 temp;
 
-    //temp_v0 = player->unk_0BC;
     if ((player->unk_0BC & 0x10) == 0x10) {
-        //temp_v1 = player->unk_078;
         var_a3 = 100;
         if (player->unk_078 == 0) {
             camera->unk_B0 = 0;
@@ -822,19 +820,15 @@ void func_8001EA0C(Camera *camera, Player *player, s8 arg2) {
             if (player->unk_078 < 0) {
                 var_a3 = 0xA5 - (player->unk_078 / 2);
                 if ((player->unk_0BC & 0x20000000) == 0x20000000) {
-                    //sp4E = temp_a3;
                     move_s16_towards(&camera->unk_B0, -0x0B60, 0.1f);
                 } else {
-                    //sp4E = temp_a3;
                     move_s16_towards(&camera->unk_B0, -0x0888, 0.1f);
                 }
             } else {
                 var_a3 = (player->unk_078 / 2) + 0xA5;
                 if ((player->unk_0BC & 0x20000000) == 0x20000000) {
-                    //sp4E = temp_a3_2;
                     move_s16_towards(&camera->unk_B0, 0x0B60, 0.1f);
                 } else {
-                    //sp4E = temp_a3_2;
                     move_s16_towards(&camera->unk_B0, 0x0888, 0.1f);
                 }
             }
@@ -842,7 +836,6 @@ void func_8001EA0C(Camera *camera, Player *player, s8 arg2) {
         }
     } else {
         move_s16_towards(&camera->unk_B0, 0, 0.05f);
-        //temp_v1_2 = player->unk_078;
         var_a3 = ((s16) camera->unk_2C / 182) - ((s16) player->unk_02C[1] / 182);
         if (player->unk_078 == 0) {
             if ((player->unk_0BC & 0x20) == 0x20) {
@@ -970,22 +963,27 @@ void func_8001EE98(Player *player, Camera *camera, s8 index) {
         switch (D_80152300[cameraIndex]) {
         case 3:
             func_8001A588(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
-            return;
+            break;
         case 1:
             if (((player->unk_0CA & 1) == 1) || ((player->unk_0CA & 2) == 2)) {
                 func_8001E8E8(camera, player, index);
-                return;
+                break;
             }
+#define FLYCAM
+#ifdef FLYCAM
+            flycam(camera, player, index);
+#else
             func_8001E45C(camera, player, index);
-            return;
+#endif
+            break;
         case 8:
             func_8001E0C4(camera, player, index);
             func_8001F87C(cameraIndex);
-            return;
+            break;
         case 9:
             if (((player->unk_0CA & 1) == 1) || ((player->unk_0CA & 2) == 2)) {
                 func_8001E8E8(camera, player, index);
-                return;
+                break;
             }
             func_8001EA0C(camera, player, index);
             break;

@@ -38,8 +38,8 @@
  * D-pad DOWN  = MARIO
  *  
 */
-#define DEBUG_MODE 0
-#define DEBUG_MENU 1
+#define DEBUG_MODE 1
+#define DEBUG_MENU 2
 #define HOLD_ALL_DPAD_AND_C_BUTTONS (U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
 
 /**
@@ -101,6 +101,16 @@
 #define PLAYER_TWO 1
 #define PLAYER_THREE 2
 #define PLAYER_FOUR 3
+
+
+#define MARIO_SIZE  0.75f
+#define LUIGI_SIZE  0.75f
+#define YOSHI_SIZE  0.75f
+#define TOAD_SIZE   0.75f
+#define DK_SIZE     0.75f
+#define WARIO_SIZE  0.75f
+#define PEACH_SIZE  0.75f
+#define BOWSER_SIZE 0.75f
 
 // 2P Game has Grand Prix, VS, and Battle as available game types
 #define MAX_NUM_MAIN_MENU_GAME_TYPES 3

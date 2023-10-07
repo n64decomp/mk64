@@ -621,16 +621,16 @@ void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     
     if (!(player->unk_000 & 0x2000)) {
         switch (gActiveScreenMode) {
-            case 0:
+            case SCREEN_MODE_1P:
                 sp1E = func_8001FB0C(player, camera1, (f32) D_8016557C, 0.0f);
                 break;
-            case 1:
-            case 2:
+            case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+            case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                 sp1E = func_8001FB0C(player, camera1, (f32) D_8016557C, 0.0f);
                 if (sp1E == 1) break;
                 sp1E = func_8001FB0C(player, camera2, (f32) D_8016557C, 0.0f);
                 break;
-            case 3:
+            case SCREEN_MODE_3P_4P_SPLITSCREEN:
                 sp1E = func_8001FB0C(player, camera1, (f32) D_8016557C, 0.0f); 
                 if (sp1E == 1) break;
                 sp1E = func_8001FB0C(player, camera2, (f32) D_8016557C, 0.0f);    
@@ -4954,15 +4954,11 @@ void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     f32 spEC;
     f32 spE8;
     f32 spE4;
-    //f32 spE0;
-    //f32 spD8;
     f32 posX;
     f32 posY;
     f32 posZ;
     f32 sqrt;
 
-    //f32 sp90;
-    //f32 sp8C;
     f32 divOptimize;
     UNUSED s32 pad2[10];
     f32 spA4;
