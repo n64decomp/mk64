@@ -3261,61 +3261,61 @@ void func_80030C34(Player *player) {
 }
 
 void func_80030E00(Player *player) {
-    s32 var_v0;
+    s32 playerIndex;
 
     if (player == gPlayerOne) {
-        var_v0 = 0;
+        playerIndex = 0;
     }
     if (player == gPlayerTwo) {
-        var_v0 = 1;
+        playerIndex = 1;
     }
     if (player == gPlayerThree) {
-        var_v0 = 2;
+        playerIndex = 2;
     }
     if (player == gPlayerFour) {
-        var_v0 = 3;
+        playerIndex = 3;
     }
     if (player == gPlayerFive) {
-        var_v0 = 4;
+        playerIndex = 4;
     }
     if (player == gPlayerSix) {
-        var_v0 = 5;
+        playerIndex = 5;
     }
     if (player == gPlayerSeven) {
-        var_v0 = 6;
+        playerIndex = 6;
     }
     if (player == gPlayerEight) {
-        var_v0 = 7;
+        playerIndex = 7;
     }
-    if (D_80165460[var_v0] == 0) {
-        if (gPlayerIsThrottleActive[var_v0] == 0) {
-            if ((D_80165420[var_v0] < 2) || (D_80165420[var_v0] >= 9)) {
-                D_80165440[var_v0] = 0;
+    if (D_80165460[playerIndex] == 0) {
+        if (gPlayerIsThrottleActive[playerIndex] == 0) {
+            if ((D_80165420[playerIndex] < 2) || (D_80165420[playerIndex] >= 9)) {
+                D_80165440[playerIndex] = 0;
             }
-            D_80165420[var_v0] = 0;
-            D_80165400[var_v0] = 0;
+            D_80165420[playerIndex] = 0;
+            D_80165400[playerIndex] = 0;
         }
-        gPlayerIsThrottleActive[var_v0] = 1;
-        D_80165420[var_v0]++;
-        if (D_80165420[var_v0] >= 9) {
-            D_80165420[var_v0] = 9;
+        gPlayerIsThrottleActive[playerIndex] = 1;
+        D_80165420[playerIndex]++;
+        if (D_80165420[playerIndex] >= 9) {
+            D_80165420[playerIndex] = 9;
         }
-        if ((D_80165420[var_v0] >= 2) && (D_80165420[var_v0] < 9)) {
-            if (D_80165400[var_v0] == 0) {
-                D_80165440[var_v0] += 1;
+        if ((D_80165420[playerIndex] >= 2) && (D_80165420[playerIndex] < 9)) {
+            if (D_80165400[playerIndex] == 0) {
+                D_80165440[playerIndex] += 1;
             }
-            D_80165400[var_v0] = 1;
+            D_80165400[playerIndex] = 1;
         }
-        if (D_80165440[var_v0] == 5) {
-            D_80165460[var_v0] = 1;
-            D_80165480[var_v0] = 0x00000078;
-            D_80165440[var_v0] = 0;
-            D_80165420[var_v0] = 0;
+        if (D_80165440[playerIndex] == 5) {
+            D_80165460[playerIndex] = 1;
+            D_80165480[playerIndex] = 0x00000078;
+            D_80165440[playerIndex] = 0;
+            D_80165420[playerIndex] = 0;
         }
     } else {
-        D_80165480[var_v0]--;
-        if (D_80165480[var_v0] <= 0) {
-            D_80165460[var_v0] = 0;
+        D_80165480[playerIndex]--;
+        if (D_80165480[playerIndex] <= 0) {
+            D_80165460[playerIndex] = 0;
         }
     }
 }
