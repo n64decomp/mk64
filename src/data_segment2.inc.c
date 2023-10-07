@@ -104,168 +104,168 @@ Gfx D_02007818[] = {
 Gfx D_02007838[] = {
     gsSPVertex(D_02007BB8, 2, 0),
     gsSPVertex(D_02007BD8, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007858[] = {
     gsSPVertex(D_02007BB8, 2, 0),
     gsSPVertex(D_02007BF8, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007878[] = {
     gsSPVertex(D_02007BB8, 2, 0),
     gsSPVertex(D_02007C18, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007898[] = {
     gsSPVertex(D_02007BB8, 2, 0),
     gsSPVertex(D_02007C38, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_020078B8[] = {
     gsSPVertex(D_02007BB8, 2, 0),
     gsSPVertex(D_02007C58, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_020078D8[] = {
     gsSPVertex(D_02007BB8, 2, 0),
     gsSPVertex(D_02007C78, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_020078F8[] = {
     gsSPVertex(D_02007BB8, 2, 0),
     gsSPVertex(D_02007C98, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007918[] = {
     gsSPVertex(D_02007BB8, 2, 0),
     gsSPVertex(D_02007CB8, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007938[] = {
     gsSPVertex(D_02007CD8, 2, 0),
     gsSPVertex(D_02007CF8, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007958[] = {
     gsSPVertex(D_02007CD8, 2, 0),
     gsSPVertex(D_02007D18, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007978[] = {
     gsSPVertex(D_02007CD8, 2, 0),
     gsSPVertex(D_02007D38, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007998[] = {
     gsSPVertex(D_02007CD8, 2, 0),
     gsSPVertex(D_02007D58, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_020079B8[] = {
     gsSPVertex(D_02007CD8, 2, 0),
     gsSPVertex(D_02007D78, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_020079D8[] = {
     gsSPVertex(D_02007CD8, 2, 0),
     gsSPVertex(D_02007D98, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_020079F8[] = {
     gsSPVertex(D_02007CD8, 2, 0),
     gsSPVertex(D_02007DB8, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007A18[] = {
     gsSPVertex(D_02007CD8, 2, 0),
     gsSPVertex(D_02007DD8, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007A38[] = {
     gsSPVertex(D_02007DF8, 2, 0),
     gsSPVertex(D_02007E18, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007A58[] = {
     gsSPVertex(D_02007DF8, 2, 0),
     gsSPVertex(D_02007E38, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007A78[] = {
     gsSPVertex(D_02007DF8, 2, 0),
     gsSPVertex(D_02007E58, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007A98[] = {
     gsSPVertex(D_02007DF8, 2, 0),
     gsSPVertex(D_02007E78, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007AB8[] = {
     gsSPVertex(D_02007DF8, 2, 0),
     gsSPVertex(D_02007E98, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007AD8[] = {
     gsSPVertex(D_02007DF8, 2, 0),
     gsSPVertex(D_02007EB8, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007AF8[] = {
     gsSPVertex(D_02007DF8, 2, 0),
     gsSPVertex(D_02007ED8, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007B18[] = {
     gsSPVertex(D_02007DF8, 2, 0),
     gsSPVertex(D_02007EF8, 2, 2),
-    gsSPDisplayList(rectangle_display),
+    gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 

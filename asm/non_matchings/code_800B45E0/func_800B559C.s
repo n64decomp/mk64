@@ -32,7 +32,7 @@ glabel func_800B559C
 /* 0B6210 800B5610 24140018 */  li    $s4, 24
 /* 0B6214 800B5614 24100003 */  li    $s0, 3
 .L800B5618:
-/* 0B6218 800B5618 0C02D21D */  jal   checksum_timetrial_records
+/* 0B6218 800B5618 0C02D21D */  jal   checksum_time_trial_records
 /* 0B621C 800B561C 02202025 */   move  $a0, $s1
 /* 0B6220 800B5620 06210003 */  bgez  $s1, .L800B5630
 /* 0B6224 800B5624 00114083 */   sra   $t0, $s1, 2

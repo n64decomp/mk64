@@ -676,11 +676,11 @@ void calculate_orientation_matrix(Mat3 dest, f32 arg1, f32 arg2, f32 arg3, s16 r
         matrix[1][1] = -1;
 
     } else {
-        a = (f32) -(360.0 - ((f64) (calculateVectorAngleXY(arg2) * 180.0f) / M_PI));
+        a = (f32) -(360.0 - ((f64) (calculate_vector_angle_xy(arg2) * 180.0f) / M_PI));
         b = -arg3 / sqrtf((arg1 * arg1) + (arg3 * arg3));
         c = 0;
         d = arg1 / sqrtf((arg1 * arg1) + (arg3 * arg3));
-        calculateRotationMatrix(matrix, a, b, c, d);
+        calculate_rotation_matrix(matrix, a, b, c, d);
 
     }
     dest[0][0] = (mtx_rot_y[0][0] * matrix[0][0]) + (mtx_rot_y[0][1] * matrix[1][0]) + (mtx_rot_y[0][2] * matrix[2][0]);
@@ -720,15 +720,15 @@ UNUSED void func_802B68F8(Mat3 matrix, f32 arg1, f32 arg2, f32 arg3) {
         }
         matrix[1][1] = -1.0f;
     } else {
-        a = (f32) -(360.0 - ((f64) (calculateVectorAngleXY(arg2) * 180.0f) / M_PI));
+        a = (f32) -(360.0 - ((f64) (calculate_vector_angle_xy(arg2) * 180.0f) / M_PI));
         b = -arg3 / sqrtf((arg1 * arg1) + (arg3 * arg3));
         c = 0;
         d = arg1 / sqrtf((arg1 * arg1) + (arg3 * arg3));
-        calculateRotationMatrix(matrix, a, b, c, d);
+        calculate_rotation_matrix(matrix, a, b, c, d);
     }
 }
 
-void calculateRotationMatrix(Mat3 destMatrix, s16 rotationAngle, f32 rotationX, f32 rotationY, f32 rotationZ) {
+void calculate_rotation_matrix(Mat3 destMatrix, s16 rotationAngle, f32 rotationX, f32 rotationY, f32 rotationZ) {
     f32 sinValue;
     f32 cossValue;
     f32 temp_f12;
@@ -1009,7 +1009,7 @@ s16 func_802B7CA8(f32 arg0) {
     return atan2s(arg0, sqrtf(1.0 - (arg0 * arg0)));
 }
 
-f32 calculateVectorAngleXY(f32 vectorX) {
+f32 calculate_vector_angle_xy(f32 vectorX) {
     return atan2f(sqrtf(1.0 - (vectorX * vectorX)), vectorX);
 }
 

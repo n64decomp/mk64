@@ -252,7 +252,7 @@ typedef struct {
     /* 0x0008 */ s16 lapCount;
     /* 0x000A */ char unk_00A[0x2];
     /* 0x000C */ s32 statusEffects; // Bitflag.
-    /* 0x0010 */ s16 currentItemCopy; // no effect of what the player have it's sync
+    /* 0x0010 */ s16 currentItemCopy; // Has no effect on what item the players has, It is just a synced copy
     /* 0x0012 */ s16 unk_012;
     /* 0x0014 */ Vec3f pos;
     /* 0x0020 */ f32 rotX;

@@ -73,7 +73,7 @@
  * Racing terms:
  * Staging means aligning a racecar to the starting line.
  * Start sequence means waiting for the light to turn green.
- * for type in Player struct
+ * Used in the Player struct's 'type' member: player->type
  */
 
 #define PLAYER_INACTIVE             0         // 0x0000

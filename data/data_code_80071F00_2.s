@@ -159,13 +159,13 @@ vertex    9,    0,   -9, 4032, 1984, 0xFF, 0xFF, 0xFF, 0xFF
 vertex   -9,    0,   -9,    0, 1984, 0xFF, 0xFF, 0xFF, 0xFF
 vertex   -9,    0,    0,    0,    0, 0xFF, 0xFF, 0xFF, 0xFF
 
-glabel balloonVertexPlane1 # compiler gen
+glabel gBalloonVertexPlane1 # compiler gen
 vertex    9,   18,   -6, 4032,    0, 0xFF, 0xFF, 0xFF, 0xFF
 vertex    9,    9,   -6, 4032, 1984, 0xFF, 0xFF, 0xFF, 0xFF
 vertex   -9,    9,   -6,    0, 1984, 0xFF, 0xFF, 0xFF, 0xFF
 vertex   -9,   18,   -6,    0,    0, 0xFF, 0xFF, 0xFF, 0xFF
 
-glabel baloonVertexPlane2 # compiler gen
+glabel gBalloonVertexPlane2 # compiler gen
 vertex    9,    9,   -6, 4032,    0, 0xFF, 0xFF, 0xFF, 0xFF
 vertex    9,    0,   -6, 4032, 1792, 0xFF, 0xFF, 0xFF, 0xFF
 vertex   -9,    0,   -6,    0, 1792, 0xFF, 0xFF, 0xFF, 0xFF

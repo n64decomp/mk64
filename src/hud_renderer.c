@@ -32,7 +32,7 @@
 void func_800431B0(Vec3f pos, Vec3su orientation, f32 scale, Vtx *vtx) {
     rsp_set_matrix_transformation(pos, orientation, scale);
     gSPVertex(gDisplayListHead++, vtx, 4, 0);
-    gSPDisplayList(gDisplayListHead++, rectangle_display);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
 
 void func_80043220(Vec3f pos, Vec3su orientation, f32 scale, Gfx *gfx) {
@@ -111,7 +111,7 @@ UNUSED void func_80043764(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
     gSPVertex(gDisplayListHead++, vtx, 4, 0);
-    gSPDisplayList(gDisplayListHead++, rectangle_display);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
 
 UNUSED void func_800437F8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 arg5) {
@@ -124,7 +124,7 @@ UNUSED void func_800437F8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 
     vtx[2].v.cn[3] = arg5;
     vtx[3].v.cn[3] = arg5;
     gSPVertex(gDisplayListHead++, vtx, 4, 0);
-    gSPDisplayList(gDisplayListHead++, rectangle_display);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
 
 UNUSED void func_800438C4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 arg5) {
@@ -134,7 +134,7 @@ UNUSED void func_800438C4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
     gDPSetRenderMode(gDisplayListHead++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gSPVertex(gDisplayListHead++, vtx, 4, 0);
-    gSPDisplayList(gDisplayListHead++, rectangle_display);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
 
 UNUSED void func_8004398C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 arg5) {
@@ -144,7 +144,7 @@ UNUSED void func_8004398C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
     gDPSetRenderMode(gDisplayListHead++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gSPVertex(gDisplayListHead++, vtx, 4, 0);
-    gSPDisplayList(gDisplayListHead++, rectangle_display);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
     
 s32 func_80043A54(s32 arg0) {
@@ -618,7 +618,7 @@ GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80045738.s")
 
 void func_80045B2C(Vtx *arg0) {
     gSPVertex(gDisplayListHead++, arg0, 4, 0);
-    gSPDisplayList(gDisplayListHead++, rectangle_display);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
 
 void func_80045B74(Vtx *arg0) {
@@ -630,7 +630,7 @@ UNUSED void func_80045BBC(Vec3f arg0, Vec3su arg1, f32 arg2, Vtx *arg3) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
     gSPVertex(gDisplayListHead++, arg3, 4, 0);
-    gSPDisplayList(gDisplayListHead++, rectangle_display);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
 
 UNUSED void func_80045C48(Vec3f arg0, Vec3su arg1, f32 arg2, Vtx *arg3) {
@@ -638,7 +638,7 @@ UNUSED void func_80045C48(Vec3f arg0, Vec3su arg1, f32 arg2, Vtx *arg3) {
     gSPDisplayList(gDisplayListHead++, D_0D0078D0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPVertex(gDisplayListHead++, arg3, 4, 0);
-    gSPDisplayList(gDisplayListHead++, rectangle_display);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
@@ -895,7 +895,7 @@ void func_80047068(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, 
     for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
         rsp_load_texture(img, width, height);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, rectangle_display);
+        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
         img += width * height;
         vertexIndex += 4;
     }
@@ -911,7 +911,7 @@ void draw_rectangle_texture_overlap(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32
     for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
         rsp_load_texture(img, width, height);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, rectangle_display);
+        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
         img += width * (height - 1);
         vertexIndex += 4;
     }
@@ -927,7 +927,7 @@ void func_8004747C(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, 
     for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
         rsp_load_texture_mask(img, width, height, someMask);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, rectangle_display);
+        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
         img += width * (height - 1);
         vertexIndex += 4;
     }
@@ -944,7 +944,7 @@ void func_8004768C(u8 *tlut, u8 *texture, Vtx *arg2, s32 arg3, s32 width, s32 he
         // Something seems off about arguments here, but if it matches it matches
         rsp_load_texture(img, height, width);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, rectangle_display);
+        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
         img += height * width;
         vertexIndex += 4;
     }
@@ -1232,7 +1232,7 @@ void func_80048F8C(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
         for (widthIndex = 0; widthIndex < arg2 / width; widthIndex++) {
             func_800441E0(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[vertexIndex], 4, 0);
-            gSPDisplayList(gDisplayListHead++, rectangle_display);
+            gSPDisplayList(gDisplayListHead++, common_rectangle_display);
             img += width * height * 2;
             vertexIndex += 4;
         }
@@ -1250,7 +1250,7 @@ void func_80049130(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
         for (widthIndex = 0; widthIndex < arg2 / width; widthIndex++) {
             func_80044388(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[vertexIndex], 4, 0);
-            gSPDisplayList(gDisplayListHead++, rectangle_display);
+            gSPDisplayList(gDisplayListHead++, common_rectangle_display);
             img += width * height * 2;
             vertexIndex += 4;
         }
@@ -1268,7 +1268,7 @@ void func_800492D4(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
         for (widthIndex = 0; widthIndex < arg2 / width; widthIndex++) {
             func_800444B0(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[vertexIndex], 4, 0);
-            gSPDisplayList(gDisplayListHead++, rectangle_display);
+            gSPDisplayList(gDisplayListHead++, common_rectangle_display);
             img += width * height;
             vertexIndex += 4;
         }
@@ -1286,7 +1286,7 @@ void func_80049478(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
         for (widthIndex = 0; widthIndex < arg2 / width; widthIndex++) {
             func_80044658(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[vertexIndex], 4, 0);
-            gSPDisplayList(gDisplayListHead++, rectangle_display);
+            gSPDisplayList(gDisplayListHead++, common_rectangle_display);
             img += width * height;
             vertexIndex += 4;
         }
@@ -1305,7 +1305,7 @@ void func_8004961C(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
 
             func_80044924(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[var_s2], 4, 0);
-            gSPDisplayList(gDisplayListHead++, rectangle_display);
+            gSPDisplayList(gDisplayListHead++, common_rectangle_display);
             img += (width * height) / 2;
             var_s2 += 4;
         }
@@ -1324,7 +1324,7 @@ void func_800497CC(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
         for (widthIndex = 0; widthIndex < arg2 / width; widthIndex++) {
             func_80044BF8(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[vertexIndex], 4, 0);
-            gSPDisplayList(gDisplayListHead++, rectangle_display);
+            gSPDisplayList(gDisplayListHead++, common_rectangle_display);
             img += width * height;
             vertexIndex += 4;
         }
@@ -1342,7 +1342,7 @@ void func_80049970(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
         for (j = 0; j < arg2 / width; j++) {
             func_80044DA0(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[var_s2], 4, 0);
-            gSPDisplayList(gDisplayListHead++, rectangle_display);
+            gSPDisplayList(gDisplayListHead++, common_rectangle_display);
             img += (width * height) / 2;
             var_s2 += 4;
         }
@@ -3560,7 +3560,7 @@ void func_800518F8(s32 objectIndex, s16 arg1, s16 arg2) {
         }
         func_80042330(arg1, arg2, 0U, gObjectList[objectIndex].sizeScaling);
         gSPVertex(gDisplayListHead++, gObjectList[objectIndex].vertex, 4, 0);
-        gSPDisplayList(gDisplayListHead++, rectangle_display);
+        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
     }
 }
 
@@ -3591,7 +3591,7 @@ void func_800519D4(s32 objectIndex, s16 arg1, s16 arg2) {
         temp_v0_2->words.w1 = (u32) temp_s0->vertex;
         temp_v0_3 = gDisplayListHead;
         gDisplayListHead = temp_v0_3 + 8;
-        temp_v0_3->words.w1 = (u32) rectangle_display;
+        temp_v0_3->words.w1 = (u32) common_rectangle_display;
         temp_v0_3->words.w0 = 0x06000000;
     }
 }
@@ -4592,7 +4592,7 @@ void func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 vertexIndex) {
         rsp_set_matrix_transformation(temp_v0->pos, (u16 *) D_80183E80, temp_v0->sizeScaling);
         func_8004B1C8((s32) temp_v0->unk_084[0], (s32) temp_v0->unk_084[1], (s32) temp_v0->unk_084[2], (s32) temp_v0->unk_084[3], (s32) temp_v0->unk_084[4], (s32) temp_v0->unk_084[5], (s32) temp_v0->unk_0A0);
         gSPVertex(gDisplayListHead++, &D_0D0060B0[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, rectangle_display);
+        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
     }
 }
 
@@ -4819,7 +4819,7 @@ void func_80054AFC(s32 objectIndex, Vec3f arg1) {
     func_8004B138((s32) gObjectList[objectIndex].unk_084[0], (s32) gObjectList[objectIndex].unk_084[1], (s32) gObjectList[objectIndex].unk_084[2], (s32) gObjectList[objectIndex].unk_0A0);
     rsp_set_matrix_transformation(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling);
     gSPVertex(gDisplayListHead++, D_0D005AE0, 4, 0);
-    gSPDisplayList(gDisplayListHead++, rectangle_display);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
 
 #ifdef MIPS_TO_C
@@ -5164,7 +5164,7 @@ void func_80055CCC(s32 objectIndex, s32 cameraId) {
         func_8008A454(objectIndex, cameraId, 0x0000012C);
         test = gObjectList[objectIndex].pos[1] - gObjectList[objectIndex].unk_044;
         func_8004A6EC(objectIndex, (20.0 / test) + 0.5);
-        if (is_obj_index_flag_unk_054_unactive(objectIndex, 0x00100000) != 0) {
+        if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x00100000) != 0) {
             func_80043328(gObjectList[objectIndex].pos, (u16 *) gObjectList[objectIndex].unk_0BE, gObjectList[objectIndex].sizeScaling, d_course_luigi_raceway_dl_F960);
             gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_F650);
         } else {
@@ -5246,7 +5246,7 @@ void func_80056188(s32 cameraId) {
         objectIndex = D_80183EA0[var_s2];
         if (D_8018E838[cameraId] == 0) {
             object = &gObjectList[objectIndex];
-            if ((object->state >= 2) && (is_obj_index_flag_unk_054_unactive(objectIndex, 0x00080000) != 0) && (func_8008A140(objectIndex, camera, 0x2AABU) != 0)) {
+            if ((object->state >= 2) && (is_obj_index_flag_unk_054_inactive(objectIndex, 0x00080000) != 0) && (func_8008A140(objectIndex, camera, 0x2AABU) != 0)) {
                 object->unk_0B2[1] = angle_between_object_camera(objectIndex, camera);
                 func_800480B4(object->pos, object->unk_0B2, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
@@ -5298,7 +5298,7 @@ void func_800562E4(s32 arg0, s32 arg1, s32 arg2) {
     temp_v0_3 = gDisplayListHead;
     gDisplayListHead = temp_v0_3 + 8;
     temp_v0_3->words.w0 = 0x06000000;
-    temp_v0_3->words.w1 = (u32) rectangle_display;
+    temp_v0_3->words.w1 = (u32) common_rectangle_display;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800562E4.s")

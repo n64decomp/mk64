@@ -31,7 +31,7 @@ void set_object_flag_unk_054_true(s32, s32);
 void set_object_flag_unk_054_false(s32, s32);
 void func_80072214(s32, s32);
 s32  is_obj_index_flag_unk_054_active(s32, s32);
-s32  is_obj_index_flag_unk_054_unactive(s32, s32);
+s32  is_obj_index_flag_unk_054_inactive(s32, s32);
 void func_800722A4(s32, s32);
 void func_800722CC(s32, s32);
 void func_800722F8(s32, s32);

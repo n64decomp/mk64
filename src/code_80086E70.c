@@ -65,7 +65,7 @@ s32 func_80087060(s32 objectIndex, s32 arg1) {
     s32 sp1C;
 
     sp1C = 0;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 8) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
         set_object_flag_unk_054_true(objectIndex, 8);
         gObjectList[objectIndex].unk_0B0 = arg1;
     }
@@ -81,7 +81,7 @@ s32 func_80087104(s32 objectIndex, u16 arg1) {
     s32 sp24;
 
     sp24 = 0;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 8) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
         set_object_flag_unk_054_true(objectIndex, 8);
         gObjectList[objectIndex].unk_0B0 = random_int(arg1);
     }
@@ -97,7 +97,7 @@ s32 func_800871AC(s32 objectIndex, s32 arg1) {
     s32 sp24;
 
     sp24 = 0;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 8) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
         set_object_flag_unk_054_true(objectIndex, 8);
         gObjectList[objectIndex].unk_0B0 = (s16) arg1;
     }
@@ -217,7 +217,7 @@ s32 func_8008789C(s32 objectIndex, s32 arg1) {
     s32 sp24;
 
     sp24 = 0;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 8) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
         set_object_flag_unk_054_true(objectIndex, 8);
         func_8008751C(objectIndex);
         gObjectList[objectIndex].unk_0B0 = arg1;
@@ -236,7 +236,7 @@ s32 func_80087954(s32 objectIndex, s32 arg1) {
     s32 sp24;
 
     sp24 = 0;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 8) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
         set_object_flag_unk_054_true(objectIndex, 8);
         func_80087620(objectIndex);
         gObjectList[objectIndex].unk_0B0 = arg1;
@@ -258,7 +258,7 @@ s32 func_80087A0C(s32 objectIndex, s16 arg1, s16 arg2, s16 arg3, s16 arg4) {
     s32 sp2C;
 
     sp2C = 0;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 8) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
         set_object_flag_unk_054_true(objectIndex, 8);
         temp_v0 = arg2 - arg1;
         temp_a0 = arg4 - arg3;
@@ -282,7 +282,7 @@ s32 func_80087B84(s32 objectIndex, f32 arg1, f32 arg2) {
     s32 sp24;
 
     sp24 = 0;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 8) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
         set_object_flag_unk_054_true(objectIndex, 8);
         gObjectList[objectIndex].unk_038[1] = -arg1;
     }
@@ -299,7 +299,7 @@ s32 func_80087C48(s32 objectIndex, f32 arg1, f32 arg2, s32 arg3) {
     s32 sp24;
 
     sp24 = 0;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 8) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
         set_object_flag_unk_054_true(objectIndex, 8);
         gObjectList[objectIndex].unk_038[1] = arg1;
         gObjectList[objectIndex].unk_0B0 = (s16) arg3;
@@ -320,7 +320,7 @@ s32 func_80087D24(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3) {
     s32 sp24;
 
     sp24 = 0;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 8) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
         set_object_flag_unk_054_true(objectIndex, 8);
         gObjectList[objectIndex].unk_038[1] = arg1;
     }
@@ -340,7 +340,7 @@ bool func_80087E08(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s32 
     UNUSED s32 pad;
 
     sp2C = FALSE;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 8) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
         set_object_flag_unk_054_true(objectIndex, 8);
         gObjectList[objectIndex].unk_028[2] = 0.0f;
         gObjectList[objectIndex].unk_028[1] = 0.0f;
@@ -368,7 +368,7 @@ UNUSED s32 func_80087F14(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3, s16 arg4
     UNUSED s32 stackPadding;
 
     sp2C = 0;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 8) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
         set_object_flag_unk_054_true(objectIndex, 8);
         gObjectList[objectIndex].unk_028[2] = 0.0f;
         gObjectList[objectIndex].unk_028[1] = 0.0f;
@@ -1560,7 +1560,7 @@ void func_8008B3E4(s32 objectIndex) {
     Vec4s *test;
     Objects *temp_v0;
 
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 8) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
         temp_v0 = &gObjectList[objectIndex];
         temp_v0->unk_084[9] = 0;
         temp_v0->timer = 0;

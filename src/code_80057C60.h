@@ -53,7 +53,7 @@ void func_80059780(void);
 void func_800597B8(void);
 void func_800597E8(void);
 void func_80059820(s32);
-void shift_random_controller(s32);
+void randomize_seed_from_controller(s32);
 void func_8005994C(void);
 void func_8005995C(void);
 void func_80059A88(s32);

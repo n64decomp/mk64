@@ -127,7 +127,7 @@ extern Vtx D_0D006730[];
 extern Vtx D_0D0068C0[];
 extern Vtx D_0D0068F0[];
 extern Gfx D_0D006930[];
-extern Gfx rectangle_display[];
+extern Gfx common_rectangle_display[];
 extern Gfx D_0D006950[];
 extern Gfx D_0D006968[];
 extern Gfx D_0D006980[];

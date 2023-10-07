@@ -211,7 +211,7 @@ bool is_obj_index_flag_unk_054_active(s32 objectIndex, s32 arg1) {
     return phi_v1;
 }
 
-s32 is_obj_index_flag_unk_054_unactive(s32 objectIndex, s32 arg1) {
+s32 is_obj_index_flag_unk_054_inactive(s32 objectIndex, s32 arg1) {
     s32 phi_v1 = 0;
     if ((gObjectList[objectIndex].unk_054 & arg1) == 0) {
         phi_v1 = 1;
@@ -488,7 +488,7 @@ s32 func_80072B48(s32 objectIndex, s32 arg1) {
 }
 
 void func_80072C00(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3) {
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 0x2000) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x2000) != 0) {
         gObjectList[objectIndex].unk_050 = arg2;
         gObjectList[objectIndex].itemDisplay = arg1;
         gObjectList[objectIndex].unk_0D4 = 1;
@@ -522,7 +522,7 @@ void func_80072C00(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3) {
 }
 
 void func_80072D3C(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 0x2000) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x2000) != 0) {
         gObjectList[objectIndex].unk_050 = arg3;
         gObjectList[objectIndex].itemDisplay = arg1;
         gObjectList[objectIndex].unk_0D4 = 1;
@@ -559,7 +559,7 @@ s32 func_80072E54(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 a
     s32 sp24;
 
     sp24 = 0;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 0x2000) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x2000) != 0) {
         gObjectList[objectIndex].itemDisplay = arg1;
         gObjectList[objectIndex].unk_050 = arg4;
         gObjectList[objectIndex].unk_0CC = arg5;
@@ -594,7 +594,7 @@ bool func_80072F88(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
     s32 sp24;
 
     sp24 = FALSE;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 0x2000) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x2000) != 0) {
         gObjectList[objectIndex].itemDisplay = arg1;
         gObjectList[objectIndex].unk_050 = arg4;
         gObjectList[objectIndex].unk_0CC = arg5;
@@ -628,7 +628,7 @@ bool func_800730BC(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
     s32 sp24;
 
     sp24 = FALSE;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex ,0x2000) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex ,0x2000) != 0) {
         gObjectList[objectIndex].itemDisplay = arg1;
         gObjectList[objectIndex].unk_050 = arg4;
         gObjectList[objectIndex].unk_0CC = arg5;
@@ -639,7 +639,7 @@ bool func_800730BC(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
         gObjectList[objectIndex].unk_050--;
         if (gObjectList[objectIndex].unk_050 <= 0) {
             gObjectList[objectIndex].unk_050 = arg4;
-            if (is_obj_index_flag_unk_054_unactive(objectIndex, 0x4000) != 0) {
+            if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x4000) != 0) {
                 gObjectList[objectIndex].itemDisplay += arg3;
                 if (gObjectList[objectIndex].itemDisplay >= arg2) {
                     gObjectList[objectIndex].itemDisplay = arg2;
@@ -674,7 +674,7 @@ s32 func_8007326C(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 a
     s32 sp24;
 
     sp24 = 0;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 0x2000) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x2000) != 0) {
         gObjectList[objectIndex].itemDisplay = arg1;
         gObjectList[objectIndex].unk_050 = arg4;
         gObjectList[objectIndex].unk_0CC = arg5;
@@ -685,7 +685,7 @@ s32 func_8007326C(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 a
         gObjectList[objectIndex].unk_050--;
         if (gObjectList[objectIndex].unk_050 <= 0) {
             gObjectList[objectIndex].unk_050 = arg4;
-            if (is_obj_index_flag_unk_054_unactive(objectIndex, 0x4000) != 0) {
+            if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x4000) != 0) {
                 gObjectList[objectIndex].itemDisplay -= arg3;
                 if (arg2 >= gObjectList[objectIndex].itemDisplay) {
                     gObjectList[objectIndex].itemDisplay = arg2;
@@ -808,7 +808,7 @@ bool func_8007375C(s32 objectIndex, s32 arg1) {
     s32 sp24;
 
     sp24 = FALSE;
-    if (is_obj_index_flag_unk_054_unactive(objectIndex, 0x00008000) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x00008000) != 0) {
         gObjectList[objectIndex].unk_04C = arg1;
         set_object_flag_unk_054_true(objectIndex, 0x00008000);
     }
@@ -7508,7 +7508,7 @@ void func_80083D60(void) {
         var_s3 = D_80183F28[var_s0];
         func_80083A94(var_s3);
         func_80083C04(var_s4);
-        if (is_obj_index_flag_unk_054_unactive(var_s4, 0x00001000) != 0) {
+        if (is_obj_index_flag_unk_054_inactive(var_s4, 0x00001000) != 0) {
             temp_s1 = &gObjectList[var_s4];
             if ((func_8008A8B0(temp_s1->unk_0D5 - 1, temp_s1->unk_0D5 + 1) != 0) && (func_80089B50(var_s4) != 0)) {
                 set_object_flag_unk_054_true(var_s4, 0x00001000);

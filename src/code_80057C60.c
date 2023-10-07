@@ -870,7 +870,7 @@ void func_80059820(s32 playerId) {
     temp_v0->posZInt = (s32) D_8018CF1C->pos[2];
 }
 
-void shift_random_controller(s32 arg0) {
+void randomize_seed_from_controller(s32 arg0) {
     struct Controller *controller = &gControllerOne[arg0];
 
     if ((controller->button & A_BUTTON) != 0) {
@@ -985,7 +985,7 @@ void func_80059D00(void) {
     if (D_801657AE == 0) {
         switch (gScreenModeSelection) {  
         case SCREEN_MODE_1P:
-            shift_random_controller(0);
+            randomize_seed_from_controller(0);
             if (D_8018D214 == FALSE) {
                 func_80059820(0);
                 func_8005B914();
@@ -1006,8 +1006,8 @@ void func_80059D00(void) {
             func_8005A74C();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-            shift_random_controller(0);
-            shift_random_controller(1);
+            randomize_seed_from_controller(0);
+            randomize_seed_from_controller(1);
             func_80059820(0);
             func_8005D0FC(0);
             if (!gDemoMode) {
@@ -1025,8 +1025,8 @@ void func_80059D00(void) {
             func_8005A74C();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-            shift_random_controller(0);
-            shift_random_controller(1);
+            randomize_seed_from_controller(0);
+            randomize_seed_from_controller(1);
             func_80059820(0);
             func_8005D0FC(0);
             if (!gDemoMode) {
@@ -1044,10 +1044,10 @@ void func_80059D00(void) {
             func_8005A74C();
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            shift_random_controller(0);
-            shift_random_controller(1);
-            shift_random_controller(2);
-            shift_random_controller(3);
+            randomize_seed_from_controller(0);
+            randomize_seed_from_controller(1);
+            randomize_seed_from_controller(2);
+            randomize_seed_from_controller(3);
             func_80059820(0);
             func_8005D0FC(0);
             if (!gDemoMode) {
@@ -5910,8 +5910,8 @@ extern ? D_8018D860;
 extern ? D_8018D890;
 static ? D_800E4934;                                /* unable to generate initializer */
 static ? D_800E4954;                                /* unable to generate initializer */
-static ? balloonVertexPlane1;                                /* unable to generate initializer */
-static ? baloonVertexPlane2;                                /* unable to generate initializer */
+static ? gBalloonVertexPlane1;                                /* unable to generate initializer */
+static ? gBalloonVertexPlane2;                                /* unable to generate initializer */
 static ? D_800E52D0;                                /* unable to generate initializer */
 
 void func_8006AFD0(Player *player, s16 arg1, s8 arg2, s8 arg3) {
@@ -6054,10 +6054,10 @@ void func_8006AFD0(Player *player, s16 arg1, s8 arg2, s8 arg3) {
     
     gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D4BC, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, balloonVertexPlane1, 4, 0);
+    gSPVertex(gDisplayListHead++, gBalloonVertexPlane1, 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C0 - 0x40, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, baloonVertexPlane2, 4, 0);
+    gSPVertex(gDisplayListHead++, gBalloonVertexPlane2, 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 0x0001, 0x0001, 0, G_TX_RENDERTILE, G_OFF);
     gMatrixEffectCount++;
@@ -6127,8 +6127,8 @@ void func_8006BA94(Player* player, s8 playerIndex, s8 arg2) {
 }
 
 // data/data_code_80071F00_2.s
-extern Vtx balloonVertexPlane1[];
-extern Vtx baloonVertexPlane2[];
+extern Vtx gBalloonVertexPlane1[];
+extern Vtx gBalloonVertexPlane2[];
 extern u8 D_800E52D0[];
 
 void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
@@ -6173,11 +6173,11 @@ void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     func_8004B614(primRed, primGreen, primBlue, envRed, envGreen, envBlue, 0x000000D8);
     gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D4BC, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, balloonVertexPlane1, 4, 0);
+    gSPVertex(gDisplayListHead++, gBalloonVertexPlane1, 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     // D_8018D4C0 is correct. But interestingly, IDO seems to set "-0x40" to a different register so the texture still looks fine.
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D4C0 - 0x40, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, baloonVertexPlane2, 4, 0);
+    gSPVertex(gDisplayListHead++, gBalloonVertexPlane2, 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
     gMatrixEffectCount += 1;

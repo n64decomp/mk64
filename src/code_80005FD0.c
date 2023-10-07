@@ -5645,7 +5645,7 @@ void func_80012220(VehicleStuff *vehicle) {
     vehicle->velocity[2] = vehicle->position[2] - origZPos;
 }
 
-void init_course_vehicule(void) {
+void init_course_vehicles(void) {
     s16 trainCarYRot;
     UNUSED Vec3f pad;
     TrainCarStuff *tempLocomotive;

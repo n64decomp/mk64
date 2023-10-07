@@ -505,7 +505,6 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
     }
 }
 
-// This function could reasonably be called "spawn_banana_bunch" or similar
 s32 use_banana_bunch_item(Player *player) {
     Vec3f startingVelocity = {0.0f, 0.0f, 0.0f};
     Vec3s startingRot      = {0, 0, 0};
@@ -525,7 +524,6 @@ s32 use_banana_bunch_item(Player *player) {
     return actorIndex;
 }
 
-// This function could reasonably be called "spawn_triple_shell" or similar
 s32 use_triple_shell_item(Player *player, s16 tripleShellType) {
     Vec3f startingVelocity = {0.0f, 0.0f, 0.0f};
     Vec3s startingRot      = {0, 0, 0};
@@ -548,7 +546,6 @@ s32 use_triple_shell_item(Player *player, s16 tripleShellType) {
     return actorIndex;
 }
 
-// This function could reasonably be called "spawn_shell_for_triple_shell" or similar
 s32 init_triple_shell(TripleShellParent *parent, Player *player, s16 shellType, u16 shellId) {
     Vec3f startingVelocity = {0.0f, 0.0f, 0.0f};
     Vec3s startingRot      = {0, 0, 0};
@@ -594,7 +591,6 @@ s32 init_triple_shell(TripleShellParent *parent, Player *player, s16 shellType, 
     return 1;
 }
 
-// This function could reasonably be called "spawn_green_shell" or similar
 s32 use_green_shell_item(Player *player) {
     Vec3f startingVelocity = {0.0f, 0.0f, 0.0f};
     Vec3s startingRot      = {0, 0, 0};
@@ -634,7 +630,6 @@ s32 use_green_shell_item(Player *player) {
     return actorIndex;
 }
 
-// This function could reasonably be called "spawn_red_shell" or similar
 s32 use_red_shell_item(Player *player) {
     Vec3f startingVelocity = {0.0f, 0.0f, 0.0f};
     Vec3s startingRot      = {0, 0, 0};
@@ -674,7 +669,6 @@ s32 use_red_shell_item(Player *player) {
     return actorIndex;
 }
 
-// This function could reasonably be called "spawn_blue_shell"
 // Interestingly blue shells start their life as a red shell,
 // and then just change the type from red to blue shell
 void use_blue_shell_item(Player *player) {
@@ -937,7 +931,6 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
     }
 }
 
-// This function could reasonably be called "spawn_fake_itembox" or similar
 s32 use_fake_itembox_item(Player *player) {
     struct FakeItemBox *itemBox;
     UNUSED s32 pad[5];
@@ -980,7 +973,6 @@ s32 use_fake_itembox_item(Player *player) {
     return actorIndex;
 }
 
-// This function could reasonably be called "spawn_banana" or similar
 s32 use_banana_item(Player *player) {
     UNUSED s32 pad[6];
     u16 playerId;

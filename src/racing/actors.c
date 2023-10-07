@@ -2378,7 +2378,7 @@ void func_8029E158(void) {
     init_red_shell_texture();
     destroy_all_actors();
     place_course_actors();
-    init_course_vehicule();
+    init_course_vehicles();
 }
 
 void func_8029E7DC(struct Actor *actor) {
