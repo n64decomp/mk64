@@ -631,7 +631,7 @@ void func_802B64C4(Vec3f arg0, s16 arg1) {
     arg0[2] = sp2C * temp1 + (temp_f0 * temp3);
 }
 
-void func_802B6540(Mat3 dest, f32 arg1, f32 arg2, f32 arg3, s16 arg4) {
+void calculate_orientation_matrix(Mat3 dest, f32 arg1, f32 arg2, f32 arg3, s16 rotationAngle) {
     Mat3 mtx_rot_y;
     Mat3 matrix;
     s32 i, j;
@@ -643,8 +643,8 @@ void func_802B6540(Mat3 dest, f32 arg1, f32 arg2, f32 arg3, s16 arg4) {
     f32 sinValue;
     f32 cossValue;
 
-    sinValue = sins(arg4);
-    cossValue = coss(arg4);
+    sinValue = sins(rotationAngle);
+    cossValue = coss(rotationAngle);
     mtx_rot_y[0][0] = cossValue;
     mtx_rot_y[2][1] = 0;
     mtx_rot_y[1][2] = 0;
@@ -676,11 +676,11 @@ void func_802B6540(Mat3 dest, f32 arg1, f32 arg2, f32 arg3, s16 arg4) {
         matrix[1][1] = -1;
 
     } else {
-        a = (f32) -(360.0 - ((f64) (func_802B7CE8(arg2) * 180.0f) / M_PI));
+        a = (f32) -(360.0 - ((f64) (calculate_vector_angle_xy(arg2) * 180.0f) / M_PI));
         b = -arg3 / sqrtf((arg1 * arg1) + (arg3 * arg3));
         c = 0;
         d = arg1 / sqrtf((arg1 * arg1) + (arg3 * arg3));
-        func_802B6A84(matrix, a, b, c, d);
+        calculate_rotation_matrix(matrix, a, b, c, d);
 
     }
     dest[0][0] = (mtx_rot_y[0][0] * matrix[0][0]) + (mtx_rot_y[0][1] * matrix[1][0]) + (mtx_rot_y[0][2] * matrix[2][0]);
@@ -697,7 +697,7 @@ void func_802B6540(Mat3 dest, f32 arg1, f32 arg2, f32 arg3, s16 arg4) {
 
 }
 
-// include in func_802B6540
+// include in calculate_orientation_matrix
 UNUSED void func_802B68F8(Mat3 matrix, f32 arg1, f32 arg2, f32 arg3) {
     s32 i, j;
     f32 a;
@@ -720,15 +720,15 @@ UNUSED void func_802B68F8(Mat3 matrix, f32 arg1, f32 arg2, f32 arg3) {
         }
         matrix[1][1] = -1.0f;
     } else {
-        a = (f32) -(360.0 - ((f64) (func_802B7CE8(arg2) * 180.0f) / M_PI));
+        a = (f32) -(360.0 - ((f64) (calculate_vector_angle_xy(arg2) * 180.0f) / M_PI));
         b = -arg3 / sqrtf((arg1 * arg1) + (arg3 * arg3));
         c = 0;
         d = arg1 / sqrtf((arg1 * arg1) + (arg3 * arg3));
-        func_802B6A84(matrix, a, b, c, d);
+        calculate_rotation_matrix(matrix, a, b, c, d);
     }
 }
 
-void func_802B6A84(Mat3 arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4) {
+void calculate_rotation_matrix(Mat3 destMatrix, s16 rotationAngle, f32 rotationX, f32 rotationY, f32 rotationZ) {
     f32 sinValue;
     f32 cossValue;
     f32 temp_f12;
@@ -737,29 +737,29 @@ void func_802B6A84(Mat3 arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4) {
     f32 temp;
     UNUSED s32 pad[2];
 
-    sinValue = sins((u16) arg1);
-    cossValue = coss((u16) arg1);
+    sinValue = sins((u16) rotationAngle);
+    cossValue = coss((u16) rotationAngle);
 
     temp_f12 = 1.0f - cossValue;
 
-    temp_f10 = (arg4 * arg2) * temp_f12;
-    temp_f2 = (arg3 * arg4) * temp_f12;
-    temp = ((arg2 * arg3) * temp_f12);
+    temp_f10 = (rotationZ * rotationX) * temp_f12;
+    temp_f2 = (rotationY * rotationZ) * temp_f12;
+    temp = ((rotationX * rotationY) * temp_f12);
 
-    temp_f12 = arg2 * arg2;
-    arg0[0][0] = ((1.0f - temp_f12) * cossValue) + temp_f12;
-    arg0[2][1] = temp_f2 - (arg2 * sinValue);
-    arg0[1][2] = temp_f2 + (arg2 * sinValue);
+    temp_f12 = rotationX * rotationX;
+    destMatrix[0][0] = ((1.0f - temp_f12) * cossValue) + temp_f12;
+    destMatrix[2][1] = temp_f2 - (rotationX * sinValue);
+    destMatrix[1][2] = temp_f2 + (rotationX * sinValue);
 
-    temp_f12 = arg3 * arg3;
-    arg0[1][1] = (((1.0f - temp_f12) * cossValue) + temp_f12);
-    arg0[2][0] = temp_f10 + (arg3 * sinValue);
-    arg0[0][2] = temp_f10 - (arg3 * sinValue);
+    temp_f12 = rotationY * rotationY;
+    destMatrix[1][1] = (((1.0f - temp_f12) * cossValue) + temp_f12);
+    destMatrix[2][0] = temp_f10 + (rotationY * sinValue);
+    destMatrix[0][2] = temp_f10 - (rotationY * sinValue);
 
-    temp_f12 = arg4 * arg4;
-    arg0[2][2] = (((1.0f - temp_f12) * cossValue) + temp_f12);
-    arg0[1][0] = temp - (arg4 * sinValue);
-    arg0[0][1] = temp + (arg4 * sinValue);
+    temp_f12 = rotationZ * rotationZ;
+    destMatrix[2][2] = (((1.0f - temp_f12) * cossValue) + temp_f12);
+    destMatrix[1][0] = temp - (rotationZ * sinValue);
+    destMatrix[0][1] = temp + (rotationZ * sinValue);
 }
 
 void func_802B6BC0(Mat4 arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4) {
@@ -950,7 +950,7 @@ u16 atan2s(f32 x, f32 y) {
     return ret;
 }
 
-f32 func_802B79B8(f32 arg0, f32 arg1) {
+f32 atan2f(f32 arg0, f32 arg1) {
     return atan2s(arg0, arg1);
 }
 
@@ -990,11 +990,11 @@ UNUSED f32 func_802B79F0(f32 arg0, f32 arg1) {
 }
 
 UNUSED u16 func_802B7B50(f32 arg0, f32 arg1) {
-    return ((func_802B79B8(arg0, arg1) * 32768.0f) / M_PI);
+    return ((atan2f(arg0, arg1) * 32768.0f) / M_PI);
 }
 
 UNUSED void func_802B7C18(f32 arg0) {
-    func_802B79B8(arg0, 1.0f);
+    atan2f(arg0, 1.0f);
 }
 
 s16 func_802B7C40(f32 arg0) {
@@ -1002,19 +1002,19 @@ s16 func_802B7C40(f32 arg0) {
 }
 
 UNUSED void func_802B7C6C(f32 arg0) {
-    func_802B79B8(arg0, sqrtf(1.0 - (arg0 * arg0)));
+    atan2f(arg0, sqrtf(1.0 - (arg0 * arg0)));
 }
 
 s16 func_802B7CA8(f32 arg0) {
     return atan2s(arg0, sqrtf(1.0 - (arg0 * arg0)));
 }
 
-f32 func_802B7CE8(f32 arg0) {
-    return func_802B79B8(sqrtf(1.0 - (arg0 * arg0)), arg0);
+f32 calculate_vector_angle_xy(f32 vectorX) {
+    return atan2f(sqrtf(1.0 - (vectorX * vectorX)), vectorX);
 }
 
 UNUSED s16 func_802B7D28(f32 arg0) {
-    return func_802B79B8(sqrtf(1.0 - (f64)(arg0 * arg0)), arg0) * 32768.0f / M_PI;
+    return atan2f(sqrtf(1.0 - (f64)(arg0 * arg0)), arg0) * 32768.0f / M_PI;
 }
 
 u16 random_u16(void) {

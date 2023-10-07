@@ -4,13 +4,13 @@
 #include "common_structs.h"
 #include "code_80071F00.h"
 
-void func_8006E9C0(void);
+void init_object_list(void);
 void func_8006EA5C(void);
 void func_8006EB10(void);
 void func_8006ED60(void);
 u8  *func_8006ED94(u8*, u8*, u32, u32);
 void func_8006EE44(void);
-void func_8006EE7C(s32);
+void init_item_window(s32);
 void func_8006FA94(void);
 void func_80070148(void);
 void func_80070190(void);
@@ -20,10 +20,10 @@ void func_800703E0(s32, s32, StarSpawn*);
 void func_800704A0(StarSpawn*);
 void func_8007055C(void);
 void func_80070714(void);
-void func_80071428(void);
-void func_80071818(void);
-void func_80071C28(void);
-void func_80071A20(void);
+void init_hud_one_player(void);
+void init_hud_two_player_vertical(void);
+void init_hud_three_four_player(void);
+void init_hud_two_player_horizontal(void);
 
 extern s16 D_800E5520[];
 extern s16 D_800E5548[];

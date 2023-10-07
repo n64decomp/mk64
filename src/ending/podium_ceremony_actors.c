@@ -223,7 +223,7 @@ Mat4 D_80287500;
 void func_80280A28(Vec3f arg0, Vec3s arg1, f32 arg2) {
     Mat4 mtx;
 
-    func_80021E10(mtx, arg0, arg1);
+    mtxf_translate_rotate(mtx, arg0, arg1);
     mtx[0][0] = D_80287500[0][0] * arg2;
     mtx[0][1] = D_80287500[1][0] * arg2;
     mtx[0][2] = D_80287500[2][0] * arg2;
@@ -233,7 +233,7 @@ void func_80280A28(Vec3f arg0, Vec3s arg1, f32 arg2) {
     mtx[2][0] = D_80287500[0][2] * arg2;
     mtx[2][1] = D_80287500[1][2] * arg2;
     mtx[2][2] = D_80287500[2][2] * arg2;
-    func_80022180(&gGfxPool->mtxEffect[gMatrixEffectCount], mtx);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], mtx);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 

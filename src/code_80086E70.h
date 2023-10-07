@@ -17,7 +17,7 @@ s32  func_80087104(s32, u16);
 s32  func_800871AC(s32, s32);
 void func_80087258(s32, s32, f32);
 s32  func_80087294(s32, Player*);
-s32  func_800872D8(s32, Camera*);
+s32  angle_between_object_camera(s32, Camera*);
 u16  func_80087324(s32);
 s32  func_80087368(s32);
 void func_800873A4(s32);

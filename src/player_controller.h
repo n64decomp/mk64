@@ -73,7 +73,7 @@ f32  func_80030150(Player*, s8);
 void func_80030A34(Player*);
 void func_80030C34(Player*);
 void func_80030E00(Player*);
-void func_80030FC8(Player*);
+void player_speed(Player*);
 void func_80031F48(Player*, f32);
 void func_80032050(Player*);
 void func_8003221C(Player*);

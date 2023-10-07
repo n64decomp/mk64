@@ -134,7 +134,7 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
         } else {
 
             switch(gCurrentCourseId) {
-                case 2:
+                case COURSE_BOWSER_CASTLE:
                         if ((temp_v0_3 >= 0x11) && (temp_v0_3 < 0x18)) {
                             temp_v1 = temp_v0_3;
                         } else if ((temp_v0_3 == 255) && (sp1E != 255)) {
@@ -145,7 +145,7 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
                             temp_v1 = arg1->pathCounter;
                         }
                     break;
-                case 1:
+                case COURSE_CHOCO_MOUNTAIN:
                     if ((temp_v0_3 >= 0xE) && (temp_v0_3 < 0x16)) {
                         temp_v1 = temp_v0_3;
                     } else if ((temp_v0_3 == 255) && (sp1E != 255)) {
@@ -230,7 +230,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
     render_set_position(matrix, 0);
     switch (gCurrentCourseId) {
         case COURSE_BOWSER_CASTLE:
-            if (gActiveScreenMode != 0) { return; }
+            if (gActiveScreenMode != SCREEN_MODE_1P) { return; }
             if (pathCounter < 6) { return; }
             if (pathCounter > 9) { return; }
             if (pathCounter == 9) {

@@ -10,7 +10,7 @@
 void func_80091440(s8 arg0) {
     if ((gPlayers[arg0].unk_044 & 0x800) == 0) {
         gPlayers[arg0].unk_044 |= 0x2400;
-        gPlayers[arg0].unk_000 &= ~0x2000;
+        gPlayers[arg0].type &= ~0x2000;
     }
 }
 

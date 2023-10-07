@@ -245,14 +245,14 @@ struct UnkPlayerInner {
 };
 
 typedef struct {
-    /* 0x0000 */ u16 unk_000; // playerType?
+    /* 0x0000 */ u16 type; // playerType?
     /* 0x0002 */ u16 unk_002;
     /* 0x0004 */ s16 currentRank;
     /* 0x0006 */ u16 unk_006;
     /* 0x0008 */ s16 lapCount;
     /* 0x000A */ char unk_00A[0x2];
     /* 0x000C */ s32 statusEffects; // Bitflag.
-    /* 0x0010 */ s16 unk_010;
+    /* 0x0010 */ s16 currentItemCopy; // Has no effect on what item the players has, It is just a synced copy
     /* 0x0012 */ s16 unk_012;
     /* 0x0014 */ Vec3f pos;
     /* 0x0020 */ f32 rotX;
@@ -260,7 +260,7 @@ typedef struct {
     /* 0x0028 */ f32 rotZ;
     /* 0x002C */ Vec3s unk_02C;
     /* 0x0032 */ char unk_032[0x2];
-    /* 0x0034 */ Vec3f unk_034;
+    /* 0x0034 */ Vec3f velocity;
     /* 0x0040 */ s16 unk_040;
     /* 0x0042 */ s16 unk_042;
     /* 0x0044 */ s16 unk_044;
@@ -283,7 +283,7 @@ typedef struct {
     /* 0x0090 */ f32 unk_090;
     /* 0x0094 */ f32 unk_094;
     /* 0x0098 */ f32 unk_098;
-    /* 0x009C */ f32 unk_09C;
+    /* 0x009C */ f32 currentSpeed;
     /* 0x00A0 */ f32 unk_0A0;
     /* 0x00A4 */ f32 unk_0A4;
     /* 0x00A8 */ s16 unk_0A8;
@@ -295,10 +295,10 @@ typedef struct {
     /* 0x00B4 */ u16 unk_0B4;
     /* 0x00B6 */ u16 unk_0B6;
     /* 0x00B8 */ f32 unk_0B8;
-    /* 0x00BC */ u32 unk_0BC;
+    /* 0x00BC */ u32 effects;
     /* 0x00C0 */ s16 unk_0C0;
     /* 0x00C2 */ s16 unk_0C2;
-    /* 0x00C4 */ s16 unk_0C4;
+    /* 0x00C4 */ s16 slopeAccel;
     /* 0x00C6 */ s16 unk_0C6;
     /* 0x00C8 */ s16 unk_0C8;
     /* 0x00CA */ s16 unk_0CA;
@@ -323,7 +323,7 @@ typedef struct {
     /* 0x010E */ char unk_10E[0x2];
     /* 0x0110 */ Collision unk_110;
     /* 0x0150 */ Mat3 unk_150;
-    /* 0x0174 */ Mat3 unk_174;
+    /* 0x0174 */ Mat3 orientationMatrix;
     /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];
     /* 0x01F8 */ f32 unk_1F8;
     /* 0x01FC */ f32 unk_1FC;
@@ -333,12 +333,12 @@ typedef struct {
     /* 0x0208 */ f32 unk_208;
     /* 0x020C */ f32 unk_20C;
     /* 0x0210 */ f32 unk_210;
-    /* 0x0214 */ f32 unk_214;
+    /* 0x0214 */ f32 topSpeed;
     /* 0x0218 */ f32 unk_218;
     /* 0x021C */ f32 unk_21C;
     /* 0x0220 */ s16 nearestWaypointId; // ??
     /* 0x0222 */ s16 unk_222;
-    /* 0x0224 */ f32 unk_224;
+    /* 0x0224 */ f32 size;
     /* 0x0228 */ s16 unk_228;
     /* 0x022A */ s16 unk_22A;
     /* 0x022C */ f32 unk_22C;
@@ -349,8 +349,8 @@ typedef struct {
     /* 0x023A */ s16 unk_23A;
     /* 0x023C */ f32 unk_23C;
     /* 0x0240 */ s32 unk_240;
-    /* 0x0244 */ u16 unk_244[4]; // [0] Active texture group
-    /* 0x024C */ u16 unk_24C[4];
+    /* 0x0244 */ u16 animFrameSelector[4]; // [0] Active texture group
+    /* 0x024C */ u16 animGroupSelector[4];
     /* 0x0254 */ u16 characterId;
     /* 0x0256 */ u16 unk_256;
     /* 0x0258 */ UnkPlayerStruct258 unk_258[40];

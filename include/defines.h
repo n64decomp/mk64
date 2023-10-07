@@ -73,6 +73,7 @@
  * Racing terms:
  * Staging means aligning a racecar to the starting line.
  * Start sequence means waiting for the light to turn green.
+ * Used in the Player struct's 'type' member: player->type
  */
 
 #define PLAYER_INACTIVE             0         // 0x0000
@@ -301,5 +302,29 @@
  * Max representable time, 100 minutes measured in centiseconds
  */
 #define MAX_TIME 0x927C0
+
+/**
+ * @brief effect of player's
+ * for statusEffect
+ */
+#define BOOST_EFFECT 0x200 // being boosted by trigger a mushroom or star
+#define BOO_EFFECT 0x800 // being a boo
+#define STAR_EFFECT 0x2000 // being a star
+#define HOLD_BANANA_EFFECT 0x40000 // holding a banana
+#define HIT_ROTATING_EFFECT 0x4000 // hitting a rotating object
+#define HIT_BY_ITEM_EFFECT 0x1000000 // being hit by an item
+#define REVERSE_EFFECT 0x400000 // being in the wrong direction
+#define LIGHTNING_EFFECT 0x40000000 // being hit by lightning
+
+
+/**
+ * @brief shell state
+ * 
+ */
+#define SPAWN_FIRST_SHELL 0
+#define SPAWN_SECOND_SHELL 1
+#define SPAWN_THIRD_SHELL 2
+
+#define GPACK_RGB888(r, g, b) (((r) << 16) | ((g) << 8) | (b))
 
 #endif // DEFINES_H

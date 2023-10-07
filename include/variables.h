@@ -75,7 +75,7 @@ extern s16  D_80165300[];
 extern s32  D_80165400[];
 extern s32  D_80165420[];
 extern s32  D_80165440[];
-extern s32  D_80165460[];
+extern bool  gIsPlayerTripleAButtonCombo[];
 extern s32  D_80165480[];
 extern s32  D_801654A0[];
 extern s32  D_801654C0[];
@@ -96,7 +96,7 @@ extern s16  D_8016557E;
 extern s16  D_80165580;
 extern s16  D_80165582;
 
-extern s8   D_801657E8;
+extern bool8   D_801657E8;
 
 extern s8   D_801658FE;
 

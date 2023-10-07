@@ -28,7 +28,7 @@ glabel func_800562E4
 /* 056F4C 8005634C 3C063E4C */  lui   $a2, (0x3E4CCCCD >> 16) # lui $a2, 0x3e4c
 /* 056F50 80056350 34C6CCCD */  ori   $a2, (0x3E4CCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 056F54 80056354 24A53E80 */  addiu $a1, %lo(D_80183E80) # addiu $a1, $a1, 0x3e80
-/* 056F58 80056358 0C010B80 */  jal   func_80042E00
+/* 056F58 80056358 0C010B80 */  jal   rsp_set_matrix_transformation
 /* 056F5C 8005635C 24843E40 */   addiu $a0, %lo(D_80183E40) # addiu $a0, $a0, 0x3e40
 /* 056F60 80056360 8FAC001C */  lw    $t4, 0x1c($sp)
 /* 056F64 80056364 3C0E0D03 */  lui   $t6, %hi(D_0D02AC58) # $t6, 0xd03
@@ -50,8 +50,8 @@ glabel func_800562E4
 /* 056FA4 800563A4 AC580000 */  sw    $t8, ($v0)
 /* 056FA8 800563A8 AC590004 */  sw    $t9, 4($v0)
 /* 056FAC 800563AC 8CA20000 */  lw    $v0, ($a1)
-/* 056FB0 800563B0 3C0C0D00 */  lui   $t4, %hi(D_0D006940) # $t4, 0xd00
-/* 056FB4 800563B4 258C6940 */  addiu $t4, %lo(D_0D006940) # addiu $t4, $t4, 0x6940
+/* 056FB0 800563B0 3C0C0D00 */  lui   $t4, %hi(common_rectangle_display) # $t4, 0xd00
+/* 056FB4 800563B4 258C6940 */  addiu $t4, %lo(common_rectangle_display) # addiu $t4, $t4, 0x6940
 /* 056FB8 800563B8 244A0008 */  addiu $t2, $v0, 8
 /* 056FBC 800563BC ACAA0000 */  sw    $t2, ($a1)
 /* 056FC0 800563C0 3C0B0600 */  lui   $t3, 0x600

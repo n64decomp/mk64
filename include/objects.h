@@ -32,19 +32,19 @@ typedef struct
     /* 0x68 */ u8 *tlutList; // I feel like this should actually be `u8 (*tlutList)[512]`, but that causes mismatches
     /* 0x6C */ u8 *textureList;
     /* 0x70 */ Gfx *unk_070;
-    /* 0x74 */ Vtx *unk_074; // For at least 1 object type this is meant to be a Vtx*. See func_800555BC
+    /* 0x74 */ Vtx *vertex;
     /* 0x78 */ s8  unk_078[0x04];
     /* 0x7C */ Vec4s *unk_07C;
     /* 0x80 */ Vec4s *unk_080; // unk_080[][4]?
     /* 0x84 */ s16 unk_084[0xA];
-    /* 0x98 */ u16 unk_098;
+    /* 0x98 */ u16 timer;
     /* 0x9A */ u16 unk_09A;
     /* 0x9C */ s16 unk_09C;
     /* 0x9E */ s16 unk_09E;
     /* 0xA0 */ s16 unk_0A0;
     /* 0xA2 */ s16 unk_0A2;
-    /* 0xA4 */ s16 unk_0A4;
-    /* 0xA6 */ s16 unk_0A6; // Usually a state tracker
+    /* 0xA4 */ s16 type;
+    /* 0xA6 */ s16 state;
     /* 0xA8 */ s16 unk_0A8;
     /* 0xAA */ s16 unk_0AA;
     /* 0xAC */ s16 unk_0AC;
@@ -64,7 +64,7 @@ typedef struct
     /* 0xCF */ s8  unk_0CF;
     /* 0xD0 */ s8  unk_0D0;
     /* 0xD1 */ s8  unk_0D1;
-    /* 0xD2 */ s8  unk_0D2;
+    /* 0xD2 */ s8  itemDisplay;
     /* 0xD3 */ s8  unk_0D3;
     /* 0xD4 */ s8  unk_0D4;
     /* 0xD5 */ u8  unk_0D5;
@@ -78,16 +78,92 @@ typedef struct
     /* 0xDD */ u8  unk_0DD;
     /* 0xDE */ s8  unk_0DE;
     /* 0xDF */ u8  unk_0DF;
-} struct_80165C18_entry; // size = 0xE0
+} Objects; // size = 0xE0
 
 // This is the object list
-extern struct_80165C18_entry D_80165C18[];
+extern Objects gObjectList[];
 
-// This are other lists of indices in D_80165C18.
+typedef struct
+{
+    /* 0x00 */ f32 sizeScaling;
+    /* 0x04 */ Vec3f pos;
+    /* 0x10 */ Vec3f unk_010;
+    /* 0x1C */ Vec3f unk_01C;
+    /* 0x28 */ Vec3f unk_028;
+    /* 0x34 */ f32 unk_034;
+    /* 0x38 */ Vec3f unk_038;
+    /* 0x44 */ f32 unk_044;
+    /* 0x48 */ s32 unk_048;
+    /* 0x4C */ s32 unk_04C;
+    /* 0x50 */ s32 unk_050;
+    /* 0x54 */ s32 unk_054;
+    /* 0x58 */ s32 unk_058;
+    /* 0x5C */ s32 unk_05C;
+    /* 0x60 */ u8 *activeTLUT;
+    /* 0x64 */ u8 *activeTexture;
+    /**
+     * "list" is something of a misnomer for the names here
+     * they can be pointers to just 1 tlut/texture, but it is common for one or the other
+     * to be a pointer to an array of tluts/textures.
+    **/
+    /* 0x68 */ u8 *tlutList; // I feel like this should actually be `u8 (*tlutList)[512]`, but that causes mismatches
+    /* 0x6C */ u8 *textureList;
+    /* 0x70 */ Gfx *unk_070;
+    /* 0x74 */ Vtx *vertex;
+    /* 0x78 */ s8  unk_078[0x04];
+    /* 0x7C */ Vec4s *unk_07C;
+    /* 0x80 */ Vec4s *unk_080; // unk_080[][4]?
+    /* 0x84 */ s16 unk_084[0xA];
+    /* 0x98 */ u16 goldenMushroomTimer;
+    /* 0x9A */ u16 unk_09A;
+    /* 0x9C */ s16 unk_09C;
+    /* 0x9E */ s16 unk_09E;
+    /* 0xA0 */ s16 unk_0A0;
+    /* 0xA2 */ s16 unk_0A2;
+    /* 0xA4 */ s16 currentItem;
+    /* 0xA6 */ s16 itemDisplayState; // Usually a state tracker
+    /* 0xA8 */ s16 unk_0A8;
+    /* 0xAA */ s16 unk_0AA;
+    /* 0xAC */ s16 unk_0AC;
+    /* 0xAE */ s16 unk_0AE;
+    /* 0xB0 */ s16 unk_0B0;
+    /* 0xB2 */ Vec3su unk_0B2; // rotation, I think
+    /* 0xB8 */ Vec3su unk_0B8;
+    /* 0xBE */ Vec3su unk_0BE;
+    /* 0xC4 */ u16 unk_0C4;
+    /* 0xC6 */ u16 unk_0C6;
+    /* 0xC8 */ u16 unk_0C8;
+    /* 0xCA */ s8  unk_0CA;
+    /* 0xCB */ s8  unk_0CB;
+    /* 0xCC */ s8  unk_0CC;
+    /* 0xCD */ s8  unk_0CD;
+    /* 0xCE */ s8  unk_0CE;
+    /* 0xCF */ s8  unk_0CF;
+    /* 0xD0 */ s8  unk_0D0;
+    /* 0xD1 */ s8  unk_0D1;
+    /* 0xD2 */ s8  itemDisplay;
+    /* 0xD3 */ s8  unk_0D3;
+    /* 0xD4 */ s8  unk_0D4;
+    /* 0xD5 */ u8  unk_0D5;
+    /* 0xD6 */ u8  unk_0D6;
+    /* 0xD7 */ u8  unk_0D7;
+    /* 0xD8 */ u8  unk_0D8;
+    /* 0xD9 */ u8  textureWidth;
+    /* 0xDA */ u8  textureHeight;
+    /* 0xDB */ u8  unk_0DB;
+    /* 0xDC */ u8  unk_0DC;
+    /* 0xDD */ u8  unk_0DD;
+    /* 0xDE */ s8  unk_0DE;
+    /* 0xDF */ u8  unk_0DF;
+} ItemWindowObjects; // size = 0xE0
+
+// This are other lists of indices in gObjectList.
 /**
  * Lakitu?
 **/
 extern s32 D_80183DB8[];
+
+#define DELETED_OBJECT_ID -1
 
 // Appears to be a list of object list indices for the Item Window part of the HUD
 extern s32 gItemWindowObjectByPlayerId[];
@@ -105,7 +181,7 @@ extern s32 D_8018D3C0;
 extern Collision D_8018C0B0[];
 
 /**
- * D_80183EA0, D_80183F28, D_8018BFA8, and D_8018C030 are all lists of indices in D_80165C18.
+ * D_80183EA0, D_80183F28, D_8018BFA8, and D_8018C030 are all lists of indices in gObjectList.
  * func_80070190 initializes them in such a way that the indicies in each list are not adjacent.
  * First D_80183EA0 gets an unused index, then D_80183F28, then D_8018BFA8, then D_8018C030, and then it loops.
  * 

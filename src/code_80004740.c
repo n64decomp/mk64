@@ -34,7 +34,7 @@ void func_80004740(Mtx *dest, Mat4 src) {
 #endif
 }
 
-void func_800048D8(Mat4 dest, Vec3f b, Vec3s c) {
+void mtxf_translate_rotate2(Mat4 dest, Vec3f b, Vec3s c) {
     register f32 sx = sins(c[0]);
     register f32 cx = coss(c[0]);
 
@@ -93,7 +93,7 @@ void func_80004A1C(animation_type_1 *arg0, s16 *arg1, animation_type_3_triplet a
         sp8C[someIndex] = arg1[arg2[someIndex].some_offset + some_offset];
     }
     
-    func_800048D8(sp4C, sp94, sp8C);
+    mtxf_translate_rotate2(sp4C, sp94, sp8C);
     func_80004740(&gGfxPool->mtxHud[gMatrixHudCount], sp4C);
     D_80162D7A += 1;
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);

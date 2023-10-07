@@ -34,7 +34,7 @@ glabel func_80007D04
 /* 008984 80007D84 3421FFFF */  ori   $at, (0xFFDFFFFF & 0xFFFF) # ori $at, $at, 0xffff
 /* 008988 80007D88 03216024 */  and   $t4, $t9, $at
 /* 00898C 80007D8C ACAC00BC */  sw    $t4, 0xbc($a1)
-/* 008990 80007D90 0C00C3F2 */  jal   func_80030FC8
+/* 008990 80007D90 0C00C3F2 */  jal   player_speed
 /* 008994 80007D94 AFA70030 */   sw    $a3, 0x30($sp)
 /* 008998 80007D98 8FA70030 */  lw    $a3, 0x30($sp)
 /* 00899C 80007D9C 3C018016 */  lui   $at, %hi(D_801634C0) # 0x8016
@@ -49,7 +49,7 @@ glabel func_80007D04
 /* 0089BC 80007DBC 00C02025 */  move  $a0, $a2
 /* 0089C0 80007DC0 01E1C025 */  or    $t8, $t7, $at
 /* 0089C4 80007DC4 ACD800BC */  sw    $t8, 0xbc($a2)
-/* 0089C8 80007DC8 0C00C3F2 */  jal   func_80030FC8
+/* 0089C8 80007DC8 0C00C3F2 */  jal   player_speed
 /* 0089CC 80007DCC AFA70030 */   sw    $a3, 0x30($sp)
 /* 0089D0 80007DD0 8FA70030 */  lw    $a3, 0x30($sp)
 /* 0089D4 80007DD4 3C018016 */  lui   $at, %hi(D_801634C0) # 0x8016
@@ -111,7 +111,7 @@ glabel func_80007D04
 /* 008A98 80007E98 00C02025 */  move  $a0, $a2
 /* 008A9C 80007E9C 0301C825 */  or    $t9, $t8, $at
 /* 008AA0 80007EA0 ACD900BC */  sw    $t9, 0xbc($a2)
-/* 008AA4 80007EA4 0C00C3F2 */  jal   func_80030FC8
+/* 008AA4 80007EA4 0C00C3F2 */  jal   player_speed
 /* 008AA8 80007EA8 AFA70030 */   sw    $a3, 0x30($sp)
 /* 008AAC 80007EAC 8FA70030 */  lw    $a3, 0x30($sp)
 /* 008AB0 80007EB0 3C018016 */  lui   $at, %hi(D_801634C0) # 0x8016
@@ -131,7 +131,7 @@ glabel func_80007D04
 /* 008AE4 80007EE4 0301C824 */  and   $t9, $t8, $at
 /* 008AE8 80007EE8 ACD900BC */  sw    $t9, 0xbc($a2)
 /* 008AEC 80007EEC AFA70030 */  sw    $a3, 0x30($sp)
-/* 008AF0 80007EF0 0C00C3F2 */  jal   func_80030FC8
+/* 008AF0 80007EF0 0C00C3F2 */  jal   player_speed
 /* 008AF4 80007EF4 00C02025 */   move  $a0, $a2
 /* 008AF8 80007EF8 8FA70030 */  lw    $a3, 0x30($sp)
 /* 008AFC 80007EFC 3C018016 */  lui   $at, %hi(D_801634C0) # 0x8016
@@ -153,7 +153,7 @@ glabel func_80007D04
 /* 008B38 80007F38 3421FFFF */  ori   $at, (0xFFDFFFFF & 0xFFFF) # ori $at, $at, 0xffff
 /* 008B3C 80007F3C 01C17824 */  and   $t7, $t6, $at
 /* 008B40 80007F40 ACCF00BC */  sw    $t7, 0xbc($a2)
-/* 008B44 80007F44 0C00C3F2 */  jal   func_80030FC8
+/* 008B44 80007F44 0C00C3F2 */  jal   player_speed
 /* 008B48 80007F48 AFA2001C */   sw    $v0, 0x1c($sp)
 /* 008B4C 80007F4C 8FA2001C */  lw    $v0, 0x1c($sp)
 /* 008B50 80007F50 3C018016 */  lui   $at, %hi(D_801634C0) # 0x8016
