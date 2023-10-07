@@ -978,7 +978,7 @@ void func_80022E84(Player *player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
 /**
  * Sets player shading/colour.
  */
-void changePlayerColorEffectRGB(UNUSED Player *player, s8 arg1, s32 arg2, f32 arg3) {
+void change_player_color_effect_rgb(UNUSED Player *player, s8 arg1, s32 arg2, f32 arg3) {
     gPlayerRedEffect[arg1] = (s16) ((f32)gPlayerRedEffect[arg1] - ((gPlayerRedEffect[arg1] - ((arg2 >> 16) & 0xFF)) * arg3));
 
     gPlayerGreenEffect[arg1] = (s16) ((f32)gPlayerGreenEffect[arg1] - ((gPlayerGreenEffect[arg1] - ((arg2 >> 8) & 0xFF)) * arg3));
@@ -986,7 +986,7 @@ void changePlayerColorEffectRGB(UNUSED Player *player, s8 arg1, s32 arg2, f32 ar
     gPlayerBlueEffect[arg1] = (s16) ((f32)gPlayerBlueEffect[arg1] - ((gPlayerBlueEffect[arg1] - (arg2 & 0xFF)) * arg3));
 }
 
-void changePlayerColorEffectCMY(UNUSED Player *player, s8 arg1, s32 arg2, f32 arg3) {
+void change_player_color_effect_cmy(UNUSED Player *player, s8 arg1, s32 arg2, f32 arg3) {
     move_u16_towards(&gPlayerCyanEffect[arg1], (arg2 >> 16) & 0xFF, arg3);
     move_u16_towards(&gPlayerMagentaEffect[arg1], (arg2 >> 8)  & 0xFF, arg3);
     move_u16_towards(&gPlayerYellowEffect[arg1], arg2 & 0xFF, arg3);
@@ -996,7 +996,7 @@ void changePlayerColorEffectCMY(UNUSED Player *player, s8 arg1, s32 arg2, f32 ar
  * Activates in the tunnel to shade the player a bit darker
  * Sort of an atmospheric effect.
  */
-bool isInTunnel(Player *player, s8 arg1) {
+bool is_under_a_light_in_course_luigi(Player *player, s8 arg1) {
     switch (gCurrentCourseId) {
         case COURSE_LUIGI_RACEWAY:
             if (((gNearestWaypointByPlayerId[arg1] >= 0x14F) && (gNearestWaypointByPlayerId[arg1] < 0x158)) 
@@ -1004,8 +1004,8 @@ bool isInTunnel(Player *player, s8 arg1) {
             || ((gNearestWaypointByPlayerId[arg1] >= 0x169) && (gNearestWaypointByPlayerId[arg1] < 0x170)) 
             || ((gNearestWaypointByPlayerId[arg1] >= 0x174) && (gNearestWaypointByPlayerId[arg1] < 0x17A)) 
             || ((gNearestWaypointByPlayerId[arg1] >= 0x17E) && (gNearestWaypointByPlayerId[arg1] < 0x184))) {
-                changePlayerColorEffectRGB(player, arg1, 0x1C0000, 0.3f);
-                changePlayerColorEffectCMY(player, arg1, 0xE0, 0.3f);
+                change_player_color_effect_rgb(player, arg1, GPACK_RGB888(0x1C, 0x00, 0x00), 0.3f);
+                change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
                 D_80164B80[arg1] = 0;
                 return TRUE;
             }
@@ -1022,22 +1022,22 @@ void func_800231D8(Player *player, s8 arg1) {
             if (((gNearestWaypointByPlayerId[arg1] >= 0x15) && (gNearestWaypointByPlayerId[arg1] < 0x2A))
             || ((gNearestWaypointByPlayerId[arg1] >= 0x14D) && (gNearestWaypointByPlayerId[arg1] < 0x15C))
             || ((gNearestWaypointByPlayerId[arg1] >= 0x1D1) && (gNearestWaypointByPlayerId[arg1] < 0x1E4))
-            || (player->unk_110.unk3C[2] >= 500.0f)) {
-                changePlayerColorEffectRGB(player, arg1, 0x340000, 0.3f);
-                changePlayerColorEffectCMY(player, arg1, 0x4040, 0.3f);
+            || (player->unk_110.unk3C[2] >= 500.0f)) { // over lava
+                change_player_color_effect_rgb(player, arg1, GPACK_RGB888(0x34, 0x00, 0x00), 0.3f);
+                change_player_color_effect_cmy(player, arg1, 0x004040, 0.3f);
                 D_80164B80[arg1] = 0;
             } else if (((gNearestWaypointByPlayerId[arg1] >= 0xF1) && (gNearestWaypointByPlayerId[arg1] < 0xF5))
                 || ((gNearestWaypointByPlayerId[arg1] >= 0xFB) && (gNearestWaypointByPlayerId[arg1] < 0xFF))
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x105) && (gNearestWaypointByPlayerId[arg1] < 0x109))
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x10F) && (gNearestWaypointByPlayerId[arg1] < 0x113))
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x145) && (gNearestWaypointByPlayerId[arg1] < 0x14A))
-                || ((gNearestWaypointByPlayerId[arg1] >= 0x15E) && (gNearestWaypointByPlayerId[arg1] < 0x163))) {
-                changePlayerColorEffectRGB(player, arg1, 0x1C0000, 0.3f);
-                changePlayerColorEffectCMY(player, arg1, 0xE0, 0.3f);
+                || ((gNearestWaypointByPlayerId[arg1] >= 0x15E) && (gNearestWaypointByPlayerId[arg1] < 0x163))) { // under a lamp
+                change_player_color_effect_rgb(player, arg1, 0x1C0000, 0.3f);
+                change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
                 D_80164B80[arg1] = 0;
-            } else {
-                changePlayerColorEffectRGB(player, arg1, 0, 0.3f);
-                changePlayerColorEffectCMY(player, arg1, 0, 0.3f);
+            } else { // normal color
+                change_player_color_effect_rgb(player, arg1, 0, 0.3f);
+                change_player_color_effect_cmy(player, arg1, 0, 0.3f);
                 D_80164B80[arg1] = 0;
             }
             break;
@@ -1059,19 +1059,19 @@ void func_800231D8(Player *player, s8 arg1) {
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x230) && (gNearestWaypointByPlayerId[arg1] < 0x23A))
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x24C) && (gNearestWaypointByPlayerId[arg1] < 0x256))
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x288) && (gNearestWaypointByPlayerId[arg1] < 0x269))
-                || ((gNearestWaypointByPlayerId[arg1] >= 0x274) && (gNearestWaypointByPlayerId[arg1] < 0x27E))) {
-                changePlayerColorEffectRGB(player, arg1, 0x1C0000, 0.3f);
-                changePlayerColorEffectCMY(player, arg1, 0xE0, 0.3f);
+                || ((gNearestWaypointByPlayerId[arg1] >= 0x274) && (gNearestWaypointByPlayerId[arg1] < 0x27E))) { // under a lamp
+                change_player_color_effect_rgb(player, arg1, 0x1C0000, 0.3f);
+                change_player_color_effect_cmy(player, arg1, 0x0000E0, 0.3f);
                 D_80164B80[arg1] = 0;
-            } else {
-                changePlayerColorEffectRGB(player, arg1, 0, 0.3f);
-                changePlayerColorEffectCMY(player, arg1, 0, 0.3f);
+            } else { // normal color
+                change_player_color_effect_rgb(player, arg1, 0, 0.3f);
+                change_player_color_effect_cmy(player, arg1, 0, 0.3f);
                 D_80164B80[arg1] = 0;
             }
             break;
-        default:
-            changePlayerColorEffectRGB(player, arg1, 0, 0.3f);
-            changePlayerColorEffectCMY(player, arg1, 0, 0.3f);
+        default: // normal color
+            change_player_color_effect_rgb(player, arg1, 0, 0.3f);
+            change_player_color_effect_cmy(player, arg1, 0, 0.3f);
             D_80164B80[arg1] = 0;
             break;
     }
@@ -1081,30 +1081,30 @@ void func_800235AC(Player *player, s8 arg1) {
     s32 temp;
 
     if (((player->type & 0x100) == 0x100) && (player == gPlayerThree)) {
-        changePlayerColorEffectRGB(player, arg1, 0x1C0000, 0.3f);
-        changePlayerColorEffectCMY(player, arg1, 0xE0, 0.3f);
+        change_player_color_effect_rgb(player, arg1, 0x1C0000, 0.3f);
+        change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
         D_80164B80[arg1] = 0;
         return;
     }
 
     if (((player->unk_0CA & 0x10) == 0x10) && ((player->unk_0CA & 4) == 4)) {
-        changePlayerColorEffectRGB(player, arg1, 0x646464, 0.5f);
-        changePlayerColorEffectCMY(player, arg1, 0xFF0000, 0.1f);
+        change_player_color_effect_rgb(player, arg1, 0x646464, 0.5f);
+        change_player_color_effect_cmy(player, arg1, 0xFF0000, 0.1f);
         return;
     }
     if ((player->unk_0CA & 4) == 4) {
-        changePlayerColorEffectRGB(player, arg1, 0, 1.0f);
-        changePlayerColorEffectCMY(player, arg1, 0, 1.0f);
+        change_player_color_effect_rgb(player, arg1, 0, 1.0f);
+        change_player_color_effect_cmy(player, arg1, 0, 1.0f);
         return;
     }
     if ((player->unk_0CA & 0x10) == 0x10) {
-        changePlayerColorEffectRGB(player, arg1, 0x646464, 0.5f);
-        changePlayerColorEffectCMY(player, arg1, 0xFF0000, 0.1f);
+        change_player_color_effect_rgb(player, arg1, 0x646464, 0.5f);
+        change_player_color_effect_cmy(player, arg1, 0xFF0000, 0.1f);
         return;
     }
     if ((player->unk_0CA & 0x20) == 0x20) {
-        changePlayerColorEffectRGB(player, arg1, 0, 0.1f);
-        changePlayerColorEffectCMY(player, arg1, 0, 0.1f);
+        change_player_color_effect_rgb(player, arg1, 0, 0.1f);
+        change_player_color_effect_cmy(player, arg1, 0, 0.1f);
         return;
     }
 
@@ -1114,16 +1114,16 @@ void func_800235AC(Player *player, s8 arg1) {
             D_80164B80[arg1] = 0;
         }
         if ((D_80164B80[arg1] >= 0) && (D_80164B80[arg1] < 0xB)) {
-            changePlayerColorEffectRGB(player, arg1, 0x808080, 0.8f);
-            changePlayerColorEffectCMY(player, arg1, 0, 0.8f);
+            change_player_color_effect_rgb(player, arg1, 0x808080, 0.8f);
+            change_player_color_effect_cmy(player, arg1, 0, 0.8f);
         }
         if ((D_80164B80[arg1] >= 0xB) && (D_80164B80[arg1] < 0x15)) {
-            changePlayerColorEffectRGB(player, arg1, 0x70, 0.8f);
-            changePlayerColorEffectCMY(player, arg1, 0, 0.8f);
+            change_player_color_effect_rgb(player, arg1, 0x70, 0.8f);
+            change_player_color_effect_cmy(player, arg1, 0, 0.8f);
         }
         if ((D_80164B80[arg1] >= 0x15) && (D_80164B80[arg1] < 0x1F)) {
-            changePlayerColorEffectRGB(player, arg1, 0x8F8F00, 0.8f);
-            changePlayerColorEffectCMY(player, arg1, 0, 0.8f);
+            change_player_color_effect_rgb(player, arg1, 0x8F8F00, 0.8f);
+            change_player_color_effect_cmy(player, arg1, 0, 0.8f);
         }
         return;
     }
@@ -1140,36 +1140,36 @@ void func_800235AC(Player *player, s8 arg1) {
                 D_80164B80[arg1] = 0;
             }
             if ((D_80164B80[arg1] >= 0) && (D_80164B80[arg1] <= 10)) {
-                changePlayerColorEffectRGB(player, arg1, 0x70, 0.8f);
-                changePlayerColorEffectCMY(player, arg1, 0, 0.8f);
+                change_player_color_effect_rgb(player, arg1, 0x70, 0.8f);
+                change_player_color_effect_cmy(player, arg1, 0, 0.8f);
             }
             if ((D_80164B80[arg1] >= 0xB) && (D_80164B80[arg1] <= 20)) {
-                changePlayerColorEffectRGB(player, arg1, 0x707000, 0.8f);
-                changePlayerColorEffectCMY(player, arg1, 0, 0.8f);
+                change_player_color_effect_rgb(player, arg1, 0x707000, 0.8f);
+                change_player_color_effect_cmy(player, arg1, 0, 0.8f);
             }
             if ((D_80164B80[arg1] >= 0x15) && (D_80164B80[arg1] <= 30)) {
-                changePlayerColorEffectRGB(player, arg1, 0x700000, 0.8f);
-                changePlayerColorEffectCMY(player, arg1, 0, 0.8f);
+                change_player_color_effect_rgb(player, arg1, 0x700000, 0.8f);
+                change_player_color_effect_cmy(player, arg1, 0, 0.8f);
             }
             if (D_80164B80[arg1] >= 0x1F) {
-                changePlayerColorEffectRGB(player, arg1, 0x7000, 0.8f);
-                changePlayerColorEffectCMY(player, arg1, 0, 0.8f);
+                change_player_color_effect_rgb(player, arg1, 0x7000, 0.8f);
+                change_player_color_effect_cmy(player, arg1, 0, 0.8f);
             }
             return;
         }
     }
-    if (isInTunnel(player, arg1) != 1) {
+    if (is_under_a_light_in_course_luigi(player, arg1) != TRUE) {
         if (((player->boundingBoxCorners[3].unk_14 & 1) == 1)
         || ((player->boundingBoxCorners[3].unk_14 & 2) == 2)
         || ((player->boundingBoxCorners[0].unk_14 & 3) == 3)) {
-            changePlayerColorEffectRGB(player, arg1, 0, 0.3f);
-            changePlayerColorEffectCMY(player, arg1, 0x6F6F6F, 0.3f);
+            change_player_color_effect_rgb(player, arg1, 0x000000, 0.3f);
+            change_player_color_effect_cmy(player, arg1, 0x6F6F6F, 0.3f);
             return;
         }
         func_800231D8(player, arg1);
         if ((player->unk_0CA & 0x1000) == 0x1000) {
-            changePlayerColorEffectRGB(player, arg1, 0, 0.3f);
-            changePlayerColorEffectCMY(player, arg1, 0xF0F0F0, 0.3f);
+            change_player_color_effect_rgb(player, arg1, 0, 0.3f);
+            change_player_color_effect_cmy(player, arg1, 0xF0F0F0, 0.3f);
         }
     }
 }

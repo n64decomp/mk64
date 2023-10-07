@@ -325,4 +325,6 @@
 #define SPAWN_SECOND_SHELL 1
 #define SPAWN_THIRD_SHELL 2
 
+#define GPACK_RGB888(r, g, b) (((r) << 16) | ((g) << 8) | (b))
+
 #endif // DEFINES_H
