@@ -996,14 +996,14 @@ void change_player_color_effect_cmy(UNUSED Player *player, s8 arg1, s32 arg2, f3
  * Activates in the tunnel to shade the player a bit darker
  * Sort of an atmospheric effect.
  */
-bool is_under_a_light_in_course_luigi(Player *player, s8 arg1) {
+bool is_player_under_light_luigi_raceway(Player *player, s8 arg1) {
     switch (gCurrentCourseId) {
         case COURSE_LUIGI_RACEWAY:
             if (((gNearestWaypointByPlayerId[arg1] >= 0x14F) && (gNearestWaypointByPlayerId[arg1] < 0x158)) 
             || ((gNearestWaypointByPlayerId[arg1] >= 0x15E) && (gNearestWaypointByPlayerId[arg1] < 0x164)) 
             || ((gNearestWaypointByPlayerId[arg1] >= 0x169) && (gNearestWaypointByPlayerId[arg1] < 0x170)) 
             || ((gNearestWaypointByPlayerId[arg1] >= 0x174) && (gNearestWaypointByPlayerId[arg1] < 0x17A)) 
-            || ((gNearestWaypointByPlayerId[arg1] >= 0x17E) && (gNearestWaypointByPlayerId[arg1] < 0x184))) {
+            || ((gNearestWaypointByPlayerId[arg1] >= 0x17E) && (gNearestWaypointByPlayerId[arg1] < 0x184))) { // under a light in the tunnel
                 change_player_color_effect_rgb(player, arg1, GPACK_RGB888(0x1C, 0x00, 0x00), 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
                 D_80164B80[arg1] = 0;
@@ -1158,7 +1158,7 @@ void func_800235AC(Player *player, s8 arg1) {
             return;
         }
     }
-    if (is_under_a_light_in_course_luigi(player, arg1) != TRUE) {
+    if (is_player_under_light_luigi_raceway(player, arg1) != TRUE) {
         if (((player->boundingBoxCorners[3].unk_14 & 1) == 1)
         || ((player->boundingBoxCorners[3].unk_14 & 2) == 2)
         || ((player->boundingBoxCorners[0].unk_14 & 3) == 3)) {
