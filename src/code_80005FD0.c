@@ -2553,8 +2553,8 @@ f32 func_8000B874(f32 posX, f32 posZ, u16 waypointIndex, s32 pathIndex) {
     f32 z2;
     f32 squaredDistance;
     f32 math;
-    struct TrackWayPoint *thing1;
-    struct TrackWayPoint *thing2;
+    TrackWaypoint *thing1;
+    TrackWaypoint *thing2;
 
     thing1 = &D_80164560[pathIndex][waypointIndex];
     thing2 = &D_80164570[pathIndex][waypointIndex];
@@ -2657,12 +2657,12 @@ void func_8000BBD8(s32 waypointIndex, f32 arg1, s16 pathIndex) {
     f32 temp_f8_2;
     s32 temp_t6;
     s32 temp_t8;
-    struct TrackWayPoint *temp_a1;
-    struct TrackWayPoint *temp_t0;
-    struct TrackWayPoint *temp_t0_2;
-    struct TrackWayPoint *temp_t1;
-    struct TrackWayPoint *temp_v0;
-    struct TrackWayPoint *temp_v0_2;
+    TrackWaypoint *temp_a1;
+    TrackWaypoint *temp_t0;
+    TrackWaypoint *temp_t0_2;
+    TrackWaypoint *temp_t1;
+    TrackWaypoint *temp_v0;
+    TrackWaypoint *temp_v0_2;
 
     temp_t6 = waypointIndex & 0xFFFF;
     temp_a1 = D_80164560[pathIndex];
@@ -2696,67 +2696,67 @@ s16 func_8000BD94(f32 posX, f32 posY, f32 posZ, s32 pathIndex) {
     f32 z_dist;
     f32 considerSquaredDistance;
     f32 minimumSquaredDistance;
-    s32 considerWayPointIndex;
-    s32 pathWayPointCount;
-    s16 nearestWayPointIndex;
-    struct TrackWayPoint *pathWayPoints;
-    struct TrackWayPoint *considerWayPoint;
+    s32 considerWaypointIndex;
+    s32 pathWaypointCount;
+    s16 nearestWaypointIndex;
+    TrackWaypoint *pathWaypoints;
+    TrackWaypoint *considerWaypoint;
 
-    pathWayPoints = D_80164550[pathIndex];
-    pathWayPointCount = gWaypointCountByPathIndex[pathIndex];
-    considerWayPoint = &pathWayPoints[0];
-    x_dist = (f32) considerWayPoint->posX - posX;
-    y_dist = (f32) considerWayPoint->posY - posY;
-    z_dist = (f32) considerWayPoint->posZ - posZ;
+    pathWaypoints = D_80164550[pathIndex];
+    pathWaypointCount = gWaypointCountByPathIndex[pathIndex];
+    considerWaypoint = &pathWaypoints[0];
+    x_dist = (f32) considerWaypoint->posX - posX;
+    y_dist = (f32) considerWaypoint->posY - posY;
+    z_dist = (f32) considerWaypoint->posZ - posZ;
     minimumSquaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
-    nearestWayPointIndex = 0;
-    for (considerWayPointIndex = 1; considerWayPointIndex < pathWayPointCount; considerWayPoint++, considerWayPointIndex++) {
-        x_dist = (f32) considerWayPoint->posX - posX;
-        y_dist = (f32) considerWayPoint->posY - posY;
-        z_dist = (f32) considerWayPoint->posZ - posZ;
+    nearestWaypointIndex = 0;
+    for (considerWaypointIndex = 1; considerWaypointIndex < pathWaypointCount; considerWaypoint++, considerWaypointIndex++) {
+        x_dist = (f32) considerWaypoint->posX - posX;
+        y_dist = (f32) considerWaypoint->posY - posY;
+        z_dist = (f32) considerWaypoint->posZ - posZ;
         considerSquaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
         if (considerSquaredDistance < minimumSquaredDistance) {
-            nearestWayPointIndex = considerWayPointIndex;
+            nearestWaypointIndex = considerWaypointIndex;
             minimumSquaredDistance = considerSquaredDistance;
         }
     }
-    return nearestWayPointIndex;
+    return nearestWaypointIndex;
 }
 
 s16 func_8000C0BC(f32 posX, f32 posY, f32 posZ, u16 trackSegment, s32 *pathIndex) {
-    struct TrackWayPoint *pathWayPoints;
-    struct TrackWayPoint *considerWayPoint;
+    TrackWaypoint *pathWaypoints;
+    TrackWaypoint *considerWaypoint;
     f32 x_dist;
     f32 y_dist;
     f32 z_dist;
     f32 considerSquaredDistance;
     f32 minimumSquaredDistance;
-    s32 considerWayPointIndex;
-    s32 pathWayPointCount;
+    s32 considerWaypointIndex;
+    s32 pathWaypointCount;
     s32 temp_t0;
     s32 var_a1;
     s32 var_t1;
     s32 considerPathIndex;
     s32 var_t4;
-    s16 nearestWayPointIndex;
+    s16 nearestWaypointIndex;
 
     minimumSquaredDistance = 1000000.0f;
     temp_t0 = *pathIndex;
-    nearestWayPointIndex = 0;
+    nearestWaypointIndex = 0;
     var_t1 = 0;
     var_a1 = 0;
-    pathWayPoints = D_80164550[temp_t0];
-    pathWayPointCount = gWaypointCountByPathIndex[temp_t0];
-    considerWayPoint = &pathWayPoints[0];
-    for (considerWayPointIndex = 0; considerWayPointIndex < pathWayPointCount; considerWayPointIndex++, considerWayPoint++) {
-        if ((considerWayPoint->trackSegment == trackSegment) || (gCurrentCourseId == COURSE_AWARD_CEREMONY)) {
+    pathWaypoints = D_80164550[temp_t0];
+    pathWaypointCount = gWaypointCountByPathIndex[temp_t0];
+    considerWaypoint = &pathWaypoints[0];
+    for (considerWaypointIndex = 0; considerWaypointIndex < pathWaypointCount; considerWaypointIndex++, considerWaypoint++) {
+        if ((considerWaypoint->trackSegment == trackSegment) || (gCurrentCourseId == COURSE_AWARD_CEREMONY)) {
             var_t1 = 1;
-            x_dist = (f32) considerWayPoint->posX - posX;
-            y_dist = (f32) considerWayPoint->posY - posY;
-            z_dist = (f32) considerWayPoint->posZ - posZ;
+            x_dist = (f32) considerWaypoint->posX - posX;
+            y_dist = (f32) considerWaypoint->posY - posY;
+            z_dist = (f32) considerWaypoint->posZ - posZ;
             considerSquaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
             if (considerSquaredDistance < minimumSquaredDistance) {
-                nearestWayPointIndex = considerWayPointIndex;
+                nearestWaypointIndex = considerWaypointIndex;
                 var_a1 = 1;
                 minimumSquaredDistance = considerSquaredDistance;
             }
@@ -2765,17 +2765,17 @@ s16 func_8000C0BC(f32 posX, f32 posY, f32 posZ, u16 trackSegment, s32 *pathIndex
     if (var_t1 == 0) {
         for (considerPathIndex = 0; considerPathIndex < 4; considerPathIndex++) {
             if ((considerPathIndex != temp_t0) && (D_80163368[considerPathIndex] >= 2)) {
-                pathWayPoints = D_80164550[considerPathIndex];
-                considerWayPoint = &pathWayPoints[0];
-                pathWayPointCount = gWaypointCountByPathIndex[considerPathIndex];
-                for (considerWayPointIndex = 0; considerWayPointIndex < pathWayPointCount; considerWayPointIndex++, considerWayPoint++) {
-                    if (considerWayPoint->trackSegment == trackSegment) {
-                        x_dist = (f32) considerWayPoint->posX - posX;
-                        y_dist = (f32) considerWayPoint->posY - posY;
-                        z_dist = (f32) considerWayPoint->posZ - posZ;
+                pathWaypoints = D_80164550[considerPathIndex];
+                considerWaypoint = &pathWaypoints[0];
+                pathWaypointCount = gWaypointCountByPathIndex[considerPathIndex];
+                for (considerWaypointIndex = 0; considerWaypointIndex < pathWaypointCount; considerWaypointIndex++, considerWaypoint++) {
+                    if (considerWaypoint->trackSegment == trackSegment) {
+                        x_dist = (f32) considerWaypoint->posX - posX;
+                        y_dist = (f32) considerWaypoint->posY - posY;
+                        z_dist = (f32) considerWaypoint->posZ - posZ;
                         considerSquaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
                         if (considerSquaredDistance < minimumSquaredDistance) {
-                            nearestWayPointIndex = considerWayPointIndex;
+                            nearestWaypointIndex = considerWaypointIndex;
                             var_t4 = considerPathIndex;
                             var_a1 = 2;
                             minimumSquaredDistance = considerSquaredDistance;
@@ -2786,21 +2786,21 @@ s16 func_8000C0BC(f32 posX, f32 posY, f32 posZ, u16 trackSegment, s32 *pathIndex
         }
     }
     if (var_a1 == 0) {
-        pathWayPoints = D_80164550[0];
-        pathWayPointCount = gWaypointCountByPathIndex[0];
-        considerWayPoint = &pathWayPoints[0];
-        x_dist = (f32) considerWayPoint->posX - posX;
-        y_dist = (f32) considerWayPoint->posY - posY;
-        z_dist = (f32) considerWayPoint->posZ - posZ;
+        pathWaypoints = D_80164550[0];
+        pathWaypointCount = gWaypointCountByPathIndex[0];
+        considerWaypoint = &pathWaypoints[0];
+        x_dist = (f32) considerWaypoint->posX - posX;
+        y_dist = (f32) considerWaypoint->posY - posY;
+        z_dist = (f32) considerWaypoint->posZ - posZ;
         minimumSquaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
-        nearestWayPointIndex = 0;
-        for (considerWayPointIndex = 1; considerWayPointIndex < pathWayPointCount; considerWayPoint++, considerWayPointIndex++) {
-            x_dist = (f32) considerWayPoint->posX - posX;
-            y_dist = (f32) considerWayPoint->posY - posY;
-            z_dist = (f32) considerWayPoint->posZ - posZ;
+        nearestWaypointIndex = 0;
+        for (considerWaypointIndex = 1; considerWaypointIndex < pathWaypointCount; considerWaypoint++, considerWaypointIndex++) {
+            x_dist = (f32) considerWaypoint->posX - posX;
+            y_dist = (f32) considerWaypoint->posY - posY;
+            z_dist = (f32) considerWaypoint->posZ - posZ;
             considerSquaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
             if (considerSquaredDistance < minimumSquaredDistance) {
-                nearestWayPointIndex = considerWayPointIndex;
+                nearestWaypointIndex = considerWaypointIndex;
                 var_t4 = 0;
                 var_a1 = 2;
                 minimumSquaredDistance = considerSquaredDistance;
@@ -2810,7 +2810,7 @@ s16 func_8000C0BC(f32 posX, f32 posY, f32 posZ, u16 trackSegment, s32 *pathIndex
     if (var_a1 == 2) {
         *pathIndex = var_t4;
     }
-    return nearestWayPointIndex;
+    return nearestWaypointIndex;
 }
 
 /**
@@ -2820,39 +2820,39 @@ s16 func_8000C0BC(f32 posX, f32 posY, f32 posZ, u16 trackSegment, s32 *pathIndex
  * Looks 3 waypoints behind and 6 waypoints ahead of waypointIndex
  **/
 s16 func_8000C884(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex, u16 trackSegment) {
-    s16 nearestWayPointIndex;
+    s16 nearestWaypointIndex;
     s16 searchIndex;
     s16 considerIndex;
-    s32 pathWayPointCount;
+    s32 pathWaypointCount;
     f32 x_dist;
     f32 y_dist;
     f32 z_dist;
     f32 minimumDistance;
     f32 squaredDistance;
-    struct TrackWayPoint *pathWayPoints;
-    struct TrackWayPoint *considerWayPoint;
+    TrackWaypoint *pathWaypoints;
+    TrackWaypoint *considerWaypoint;
 
-    nearestWayPointIndex = -1;
+    nearestWaypointIndex = -1;
     minimumDistance = 250000.0f;
-    pathWayPointCount = gWaypointCountByPathIndex[pathIndex];
-    pathWayPoints = D_80164550[pathIndex];
+    pathWaypointCount = gWaypointCountByPathIndex[pathIndex];
+    pathWaypoints = D_80164550[pathIndex];
     for(searchIndex = waypointIndex - 3; searchIndex < waypointIndex + 7; searchIndex++) {
         // Its possible for searchIndex to be less than 0 or greater than the number of waypoints in a given path
         // This is done to ensure we access D_80164550 at a valid index
-        considerIndex = (searchIndex + pathWayPointCount) % pathWayPointCount;
-        considerWayPoint = &pathWayPoints[considerIndex];
-        if (considerWayPoint->trackSegment == trackSegment) {
-            x_dist = considerWayPoint->posX - posX;
-            y_dist = considerWayPoint->posY - posY;
-            z_dist = considerWayPoint->posZ - posZ;
+        considerIndex = (searchIndex + pathWaypointCount) % pathWaypointCount;
+        considerWaypoint = &pathWaypoints[considerIndex];
+        if (considerWaypoint->trackSegment == trackSegment) {
+            x_dist = considerWaypoint->posX - posX;
+            y_dist = considerWaypoint->posY - posY;
+            z_dist = considerWaypoint->posZ - posZ;
             squaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
             if (squaredDistance < minimumDistance) {
                 minimumDistance = squaredDistance;
-                nearestWayPointIndex = considerIndex;
+                nearestWaypointIndex = considerIndex;
             }
         }
     }
-    return nearestWayPointIndex;
+    return nearestWaypointIndex;
 }
 
 /**
@@ -2861,52 +2861,52 @@ s16 func_8000C884(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex
  * Looks 3 waypoints behind and 6 waypoints ahead of waypointIndex
  **/
 s16 func_8000C9DC(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex) {
-    s16 nearestWayPointIndex;
+    s16 nearestWaypointIndex;
     s16 searchIndex;
     s16 considerIndex;
     s32 waypointFound;
-    s32 pathWayPointCount;
+    s32 pathWaypointCount;
     f32 x_dist;
     f32 y_dist;
     f32 z_dist;
     f32 minimumDistance;
     f32 squaredDistance;
-    struct TrackWayPoint *pathWayPoints;
-    struct TrackWayPoint *considerWayPoint;
+    TrackWaypoint *pathWaypoints;
+    TrackWaypoint *considerWaypoint;
 
     waypointFound = 0;
-    nearestWayPointIndex = -1;
+    nearestWaypointIndex = -1;
     minimumDistance = 160000.0f;
-    pathWayPointCount = gWaypointCountByPathIndex[pathIndex];
-    pathWayPoints = D_80164550[pathIndex];
+    pathWaypointCount = gWaypointCountByPathIndex[pathIndex];
+    pathWaypoints = D_80164550[pathIndex];
     for(searchIndex = waypointIndex - 3; searchIndex < waypointIndex + 7; searchIndex++) {
         // Its possible for searchIndex to be less than 0 or greater than the number of waypoints in a given path
         // This is done to ensure we access D_80164550 at a valid index
-        considerIndex = (searchIndex + pathWayPointCount) % pathWayPointCount;
-        considerWayPoint = &pathWayPoints[considerIndex];
-        x_dist = considerWayPoint->posX - posX;
-        y_dist = considerWayPoint->posY - posY;
-        z_dist = considerWayPoint->posZ - posZ;
+        considerIndex = (searchIndex + pathWaypointCount) % pathWaypointCount;
+        considerWaypoint = &pathWaypoints[considerIndex];
+        x_dist = considerWaypoint->posX - posX;
+        y_dist = considerWaypoint->posY - posY;
+        z_dist = considerWaypoint->posZ - posZ;
         squaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
         if (squaredDistance < minimumDistance) {
             minimumDistance = squaredDistance;
-            nearestWayPointIndex = considerIndex;
+            nearestWaypointIndex = considerIndex;
             waypointFound = 1;
         }
     }
     if (waypointFound == 0) {
         for(searchIndex = waypointIndex - 3; searchIndex < waypointIndex + 7; searchIndex++) {
-            considerIndex = ((searchIndex + pathWayPointCount) % pathWayPointCount);
-            considerWayPoint = &pathWayPoints[considerIndex];
+            considerIndex = ((searchIndex + pathWaypointCount) % pathWaypointCount);
+            considerWaypoint = &pathWaypoints[considerIndex];
             /**
-             * This fake match is done to stop the compiler from optimzing out considerWayPoint.
+             * This fake match is done to stop the compiler from optimzing out considerWaypoint.
              * Maybe if no waypoint was found some debugging info was printed out, but come
              * production time they removed the debug printing but not the loop?
              **/
-            if (considerWayPoint && considerWayPoint) {};
+            if (considerWaypoint && considerWaypoint) {};
         }
     }
-    return nearestWayPointIndex;
+    return nearestWaypointIndex;
 }
 
 void func_8000CBA4(UNUSED f32 posX, f32 posY, UNUSED f32 posZ, s16 *waypointIndex) {
@@ -2964,9 +2964,9 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
     s16 temp_v0_6;
     s16 temp_v0_7;
     s16 var_v0;
-    struct TrackWayPoint *temp_v1;
-    struct TrackWayPoint *temp_v1_3;
-    struct TrackWayPoint *temp_v1_4;
+    TrackWaypoint *temp_v1;
+    TrackWaypoint *temp_v1_3;
+    TrackWaypoint *temp_v1_4;
     u16 temp_v0;
 
     temp_v0 = player->unk_000;
@@ -3274,7 +3274,7 @@ void func_8000D6D0(Vec3f arg0, s16 *waypointIndex, f32 arg2, s32 arg3, s16 pathI
     f32 sp58;
     f32 sp54;
     f32 sp50;
-    struct TrackWayPoint *sp4C;
+    TrackWaypoint *sp4C;
     f32 sp48;
     f32 sp44;
     f32 sp40;
@@ -3370,7 +3370,7 @@ void func_8000D940(Vec3f arg0, s16 *arg1, f32 arg2, s32 arg3, s16 pathIndex) {
     s32 temp_a3;
     s32 temp_t2;
     s32 temp_v1;
-    struct TrackWayPoint *temp_v0_2;
+    TrackWaypoint *temp_v0_2;
     u16 temp_t0;
 
     sp54 = arg0->unk0;
@@ -3423,7 +3423,7 @@ extern s32 D_8016359C;
 #ifdef MIPS_TO_C
 //generated by m2c commit 3b40ab93768f52ac241c5ae84ef58ef6bc4cb1de
 s16 func_8000D100(f32, f32, f32, s16);              /* extern */
-extern TrackWayPoint *D_80163598;
+extern TrackWaypoint *D_80163598;
 
 
 s16 func_8000DBAC(Vec3f pos, s16 *waypointIndex, f32 speed) {
@@ -3497,7 +3497,7 @@ void func_8000DD78(void) {
     f32 startingZPos;
     f32 startingYPos;
     s32 var_s3;
-    struct TrackWayPoint *temp_v0;
+    TrackWaypoint *temp_v0;
     struct_D_80163DE8_entry *var_s0;
     BombKartSpawn *temp_s1;
 
@@ -3564,7 +3564,7 @@ s16 gCurrentCourseId;                               /* unable to generate initia
 void func_8000DF8C(s32 arg0) {
     f32 sp118;
     f32 sp114;
-    struct TrackWayPoint *sp110;
+    TrackWaypoint *sp110;
     f32 sp108;
     f32 spF8;
     f32 spF0;
@@ -3624,10 +3624,10 @@ void func_8000DF8C(s32 arg0) {
     s32 temp_t9_2;
     s32 var_a0;
     s8 var_v1;
-    struct TrackWayPoint *temp_v0_2;
-    struct TrackWayPoint *temp_v0_4;
-    struct TrackWayPoint *temp_v0_7;
-    struct TrackWayPoint *temp_v1_2;
+    TrackWaypoint *temp_v0_2;
+    TrackWaypoint *temp_v0_4;
+    TrackWaypoint *temp_v0_7;
+    TrackWaypoint *temp_v1_2;
     struct_D_80163DE8_entry *temp_s0;
     u16 temp_t4;
     u16 temp_t9;
@@ -4133,7 +4133,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000F124.s")
 #endif
 
 // Delete track waypoints
-void func_8000F2BC(struct TrackWayPoint *arg0, size_t size) {
+void func_8000F2BC(TrackWaypoint *arg0, size_t size) {
     bzero((void *) arg0, size << 3);
 }
 
@@ -4715,7 +4715,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000F628.s")
 #endif
 
 //                dest                        src                size   pathIndex
-u16 func_80011014(struct TrackWayPoint *, struct TrackWayPoint *, s32, s32); /* extern */
+u16 func_80011014(TrackWaypoint *, TrackWaypoint *, s32, s32); /* extern */
 
 extern uintptr_t gCoursePathTable[20][4];
 extern uintptr_t D_800DC8D0[20][4];
@@ -4727,9 +4727,9 @@ extern uintptr_t D_800DC8D0[20][4];
 // Each course can have 1-4 course paths.
 void func_800100F0(s32 pathIndex) {
 
-    struct TrackWayPoint *ptr;
-    struct TrackWayPoint *pathDest;
-    struct TrackWayPoint *path;
+    TrackWaypoint *ptr;
+    TrackWaypoint *pathDest;
+    TrackWaypoint *path;
     s32 var_v0;
     s32 sp24;
     s32 pad[2];
@@ -4783,10 +4783,10 @@ void func_80010218(s32 pathIndex) {
     f32 xz_dist;
     s32 temp_f16;
     s32 waypointIndex;
-    struct TrackWayPoint *waypoint;
-    struct TrackWayPoint *nextWayPoint;
-    struct TrackWayPoint *var_s1;
-    struct TrackWayPoint *var_s2;
+    TrackWaypoint *waypoint;
+    TrackWaypoint *nextWaypoint;
+    TrackWaypoint *var_s1;
+    TrackWaypoint *var_s2;
 
     if (((s32) D_800DCA4C[gCurrentCourseId]) >= 0) {
         waypointWidth = D_800DCA4C[gCurrentCourseId];
@@ -4798,10 +4798,10 @@ void func_80010218(s32 pathIndex) {
             y1 = waypoint->posY;
             z1 = waypoint->posZ;
             waypoint++;
-            nextWayPoint = &D_80164550[pathIndex][(waypointIndex + 1) % ((s32) gWaypointCountByPathIndex[pathIndex])];
-            x2 = nextWayPoint->posX;
-            y2 = nextWayPoint->posY;
-            z2 = nextWayPoint->posZ;
+            nextWaypoint = &D_80164550[pathIndex][(waypointIndex + 1) % ((s32) gWaypointCountByPathIndex[pathIndex])];
+            x2 = nextWaypoint->posX;
+            y2 = nextWaypoint->posY;
+            z2 = nextWaypoint->posZ;
             x_dist = x2 - x1;
             z_dist = z2 - z1;
             neg_x_dist = x1 - x2;
@@ -4822,7 +4822,7 @@ f32 func_80010480(s32 pathIndex, u16 waypointIndex) {
     f32 temp_f10_2;
     f32 temp_f8;
     UNUSED f32 stackPadding;
-    struct TrackWayPoint *pathWaypoints;
+    TrackWaypoint *pathWaypoints;
     f32 x1;
     f32 z1;
     f32 x2;
@@ -4832,9 +4832,9 @@ f32 func_80010480(s32 pathIndex, u16 waypointIndex) {
     f32 temp_f8_2;
     f32 temp_f10;
     s32 waypointCount;
-    struct TrackWayPoint *waypoint3;
-    struct TrackWayPoint *waypoint2;
-    struct TrackWayPoint *waypoint1;
+    TrackWaypoint *waypoint3;
+    TrackWaypoint *waypoint2;
+    TrackWaypoint *waypoint1;
     f32 root2;
     f32 root1;
 
@@ -4929,7 +4929,7 @@ s16 func_80010CB0(s32 pathIndex, s32 waypointIndex) {
     s16 ret;
     Vec3f sp30;
     Vec3f sp24;
-    struct TrackWayPoint *temp_v0;
+    TrackWaypoint *temp_v0;
 
     temp_v0 = &D_80164550[pathIndex][waypointIndex];
     sp30[0] = temp_v0->posX;
@@ -5016,7 +5016,7 @@ f32 func_80010FA0(f32 arg0, f32 arg1, f32 arg2, UNUSED s32 arg3) {
 //generated by m2c commit bece1d6db17040749f77dbbd090363cc6fb926f9
 s16 gCurrentCourseId;                               /* unable to generate initializer */
 
-s32 func_80011014(struct TrackWayPoint *arg0, struct TrackWayPoint *arg1, s32 arg2, s32 arg3) {
+s32 func_80011014(TrackWaypoint *arg0, TrackWaypoint *arg1, s32 arg2, s32 arg3) {
     f32 spE0;
     f32 spDC;
     f32 spD8;
@@ -5063,10 +5063,10 @@ s32 func_80011014(struct TrackWayPoint *arg0, struct TrackWayPoint *arg1, s32 ar
     s32 temp_a2;
     s32 var_s0;
     s32 var_s3;
-    struct TrackWayPoint *temp_a0;
-    struct TrackWayPoint *temp_v0;
-    struct TrackWayPoint *temp_v1;
-    struct TrackWayPoint *var_s1;
+    TrackWaypoint *temp_a0;
+    TrackWaypoint *temp_v0;
+    TrackWaypoint *temp_v1;
+    TrackWaypoint *var_s1;
 
     temp_f22 = (f32) arg1->posZ;
     var_f30 = 0.0f;
@@ -5190,7 +5190,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80011014.s")
 #endif
 
 // Returns number of waypoints processed.
-s32 process_path_data(struct TrackWayPoint *dest, struct TrackWayPoint *src) {
+s32 process_path_data(TrackWaypoint *dest, TrackWaypoint *src) {
     s16 temp_a0;
     s16 temp_a2;
     s16 temp_a3;
@@ -5605,7 +5605,7 @@ s32 func_8001168C(void *, void *, s32);
 void func_800120C8(void) {
     s32 i;
     s16 *temp;
-    struct TrackWayPoint *waypoint = (struct TrackWayPoint *) VIRTUAL_TO_PHYSICAL2(
+    TrackWaypoint *waypoint = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(
         gSegmentTable[SEGMENT_NUMBER2(d_course_kalimari_desert_track_unknown_waypoints)]
                     + SEGMENT_OFFSET(d_course_kalimari_desert_track_unknown_waypoints));
 
@@ -5621,10 +5621,10 @@ void func_800120C8(void) {
 }
 
 void func_80012190(void) {
-    struct TrackWayPoint *tree;
+    TrackWaypoint *tree;
     s32 i = 0;
 
-    tree = (struct TrackWayPoint *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(d_frappe_snowland_tree)] + (SEGMENT_OFFSET(d_frappe_snowland_tree)));
+    tree = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(d_frappe_snowland_tree)] + (SEGMENT_OFFSET(d_frappe_snowland_tree)));
 
     for (i = 0; ; i++) {
         if ((u16)tree[i].posX == 0x8000) {
@@ -6054,7 +6054,7 @@ extern s8 D_8018EDF3;
 void func_800132F4(void) {
     PaddleWheelBoatStuff *var_a1;
     s32 i;
-    struct TrackWayPoint *temp_a2;
+    TrackWaypoint *temp_a2;
     u16 temp;
     for (i = 0; i < 1; i++) {
         temp = i * 0xB4;
@@ -6248,9 +6248,9 @@ void func_80013854(Player *player) {
 extern s16 D_801631C8;
 extern s16 D_8016347A;
 
-void func_800139E4(f32 arg0, f32 arg1, s32 arg2, s32 arg3, VehicleStuff *vehicle, struct TrackWayPoint *waypointList) {
+void func_800139E4(f32 arg0, f32 arg1, s32 arg2, s32 arg3, VehicleStuff *vehicle, TrackWaypoint *waypointList) {
     VehicleStuff *veh;
-    struct TrackWayPoint *temp_v0;
+    TrackWaypoint *temp_v0;
     s32 i;
     u16 waypointOffset;
     s32 numWaypoints = gWaypointCountByPathIndex[0];
@@ -6748,11 +6748,11 @@ void func_80014D08(s32 playerId) {
 }
 
 void func_80014D30(s32 cameraId, s32 pathIndex) {
-    s16 cameraWayPoint;
-    struct TrackWayPoint *temp_v0;
+    s16 cameraWaypoint;
+    TrackWaypoint *temp_v0;
 
-    cameraWayPoint = gNearestWaypointByCameraId[cameraId];
-    temp_v0 = &D_80164550[pathIndex][cameraWayPoint];
+    cameraWaypoint = gNearestWaypointByCameraId[cameraId];
+    temp_v0 = &D_80164550[pathIndex][cameraWaypoint];
     func_802ADDC8(&cameras[cameraId].unk_54, 10.0f, (f32) temp_v0->posX, (f32) temp_v0->posY + 30.0f, (f32) temp_v0->posZ);
 }
 
@@ -7247,7 +7247,7 @@ void func_80015C94(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     s32 temp_hi;
     s32 var_f12;
     s32 var_s1;
-    struct TrackWayPoint *temp_v0_2;
+    TrackWaypoint *temp_v0_2;
     u16 *temp_t1_2;
     u16 *temp_t2;
     u16 temp_t1;
@@ -7466,7 +7466,7 @@ void func_80016494(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     s32 temp_a1;
     s32 temp_hi;
     s32 temp_ra;
-    struct TrackWayPoint *temp_v0_2;
+    TrackWaypoint *temp_v0_2;
     u16 *temp_t7;
     u16 temp_t3;
     u16 temp_v1_2;
@@ -7652,7 +7652,7 @@ void func_80016C3C(s32 arg0, s32 arg1, s32 cameraId) {
     s32 temp_t6_2;
     s32 temp_t8;
     s32 var_a3;
-    struct TrackWayPoint *temp_t7;
+    TrackWaypoint *temp_t7;
     u16 temp_s0;
 
     if (random_int(0x0064U) < 0x32) {
@@ -7751,7 +7751,7 @@ void func_80017054(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     s32 *sp44;
     s16 *sp40;
     f32 *sp3C;
-    struct TrackWayPoint **sp2C;
+    TrackWaypoint **sp2C;
     f32 *temp_a2;
     f32 *temp_t1;
     f32 temp_f0;
@@ -7781,9 +7781,9 @@ void func_80017054(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     s32 temp_t2;
     s32 temp_t6;
     s32 temp_v0;
-    struct TrackWayPoint **temp_t2_2;
-    struct TrackWayPoint *temp_t0_2;
-    struct TrackWayPoint *temp_t0_3;
+    TrackWaypoint **temp_t2_2;
+    TrackWaypoint *temp_t0_2;
+    TrackWaypoint *temp_t0_3;
 
     temp_t6 = cameraId * 4;
     temp_t1 = temp_t6 + &D_80164648;
@@ -7976,7 +7976,7 @@ void func_800178F4(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     s32 temp_hi_2;
     s32 temp_t3;
     s32 temp_t4;
-    struct TrackWayPoint *temp_v0_3;
+    TrackWaypoint *temp_v0_3;
     u16 temp_ra;
 
     temp_v0 = camera->playerId;
@@ -8170,7 +8170,7 @@ void func_800180F0(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     s32 temp_hi_2;
     s32 temp_t3;
     s32 temp_t5;
-    struct TrackWayPoint *temp_v0_3;
+    TrackWaypoint *temp_v0_3;
     u16 temp_ra;
     u16 temp_t4;
 
@@ -8374,7 +8374,7 @@ void func_800188F4(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     s32 temp_hi;
     s32 temp_t4;
     s32 var_ra;
-    struct TrackWayPoint *temp_v0;
+    TrackWaypoint *temp_v0;
     u16 *temp_t8;
     u16 *temp_t8_2;
     u16 temp_t2;
@@ -8590,7 +8590,7 @@ void func_8001933C(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     s32 temp_v1_2;
     s32 temp_v1_3;
     s32 var_v1;
-    struct TrackWayPoint *temp_v0;
+    TrackWaypoint *temp_v0;
     u16 temp_a1;
 
     temp_v1 = camera->playerId;
@@ -8652,7 +8652,7 @@ void func_8001968C(void) {
 }
 
 void func_8001969C(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
-    struct TrackWayPoint *waypoint;
+    TrackWaypoint *waypoint;
 
     gNearestWaypointByCameraId[cameraId] = gWaypointCountByPathIndex[0] - 18;
 
@@ -8680,7 +8680,7 @@ void func_80019760(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     f32 temp_f12;
     f32 temp_f14;
     s32 temp_v0;
-    struct TrackWayPoint *temp_v1;
+    TrackWaypoint *temp_v1;
 
     temp_v0 = cameraId * 4;
     camera->pos[0] = *(&D_801645F8 + temp_v0);
@@ -9514,7 +9514,7 @@ void func_8001AC10(s32 playerId) {
     struct Actor *temp_a3_7;
     struct Actor *temp_a3_8;
     struct Actor *temp_a3_9;
-    struct TrackWayPoint *temp_v0_2;
+    TrackWaypoint *temp_v0_2;
     struct struct_801642D8 *temp_s0;
     u16 temp_v0;
 
@@ -9951,7 +9951,7 @@ extern u16 D_80163410[]; // One per player?
 
 void func_8001BE78(void) {
     Player* temp_s1;
-    struct TrackWayPoint* temp_s0;
+    TrackWaypoint* temp_s0;
     s32 i;
 
     func_8000F628();

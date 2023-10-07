@@ -5777,7 +5777,7 @@ Gfx d_course_luigi_raceway_dl_A320[] =
 };
 
 // 0xA540
-struct TrackWayPoint d_course_luigi_raceway_unknown_waypoints[] = {
+TrackWaypoint d_course_luigi_raceway_unknown_waypoints[] = {
     {-139, 0, -202, 0},
     {-139, 0, -218, 0},
     {-139, 0, -297, 0},
@@ -5831,7 +5831,7 @@ struct TrackWayPoint d_course_luigi_raceway_unknown_waypoints[] = {
 };
 
 // 0xA6D0
-struct TrackWayPoint d_course_luigi_raceway_track_waypoints[] = {
+TrackWaypoint d_course_luigi_raceway_track_waypoints[] = {
     {-139, -50, -210, 1},
     {-139, -50, -230, 2},
     {-139, -50, -250, 2},

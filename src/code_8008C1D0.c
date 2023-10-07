@@ -1683,7 +1683,7 @@ void func_8008FF08(Player *player, s8 playerId) {
 
 void func_80090178(Player *player, s8 playerId, Vec3f arg2, Vec3f arg3) {
     u16 test;
-    struct TrackWayPoint *temp_v1;
+    TrackWaypoint *temp_v1;
     f32 spF8[4] = {   0.0f,    0.0f, -700.0f, 700.0f };
     f32 spE8[4] = { 700.0f, -700.0f,    0.0f,   0.0f };
     f32 spD8[4] = {   0.0f,    0.0f, -650.0f, 650.0f };
@@ -1825,7 +1825,7 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
     s32 stackPadding1;
     Vec3f sp44;
     Vec3f sp38;
-    struct TrackWayPoint *waypoint;
+    TrackWaypoint *waypoint;
     s32 stackPadding2;
     s32 stackPadding3;
 

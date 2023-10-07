@@ -1035,7 +1035,7 @@ Gfx d_course_rainbow_road_dl_1948[] =
     gsSPEndDisplayList(),
 };
 
-struct TrackWayPoint d_course_rainbow_road_unknown_waypoints[] = {
+TrackWaypoint d_course_rainbow_road_unknown_waypoints[] = {
     {6, 0, 3, 0},
     {6, 0, -25, 0},
     {0, 0, -514, 0},
@@ -1139,7 +1139,7 @@ struct TrackWayPoint d_course_rainbow_road_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_rainbow_road_track_waypoints[] = {
+TrackWaypoint d_course_rainbow_road_track_waypoints[] = {
     {6, 1510, -11, 1},
     {5, 1509, -31, 2},
     {5, 1509, -51, 2},

@@ -8066,7 +8066,7 @@ void func_800857C0(void) {
 }
 
 void func_80085878(s32 objectIndex, s32 arg1) {
-    struct TrackWayPoint *temp_v0;
+    TrackWaypoint *temp_v0;
     struct_80165C18_entry *temp_s0;
 
     temp_s0 = &D_80165C18[objectIndex];

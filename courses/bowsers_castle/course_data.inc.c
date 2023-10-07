@@ -2987,7 +2987,7 @@ Gfx d_course_bowsers_castle_dl_4EA8[] =
 };
 
 // 0x4F90
-struct TrackWayPoint d_course_bowsers_castle_unknown_waypoints[] = {
+TrackWaypoint d_course_bowsers_castle_unknown_waypoints[] = {
     {2, 0, -172, 0},
     {2, 0, -197, 0},
     {-2, 0, -691, 0},
@@ -3062,7 +3062,7 @@ struct TrackWayPoint d_course_bowsers_castle_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_bowsers_castle_track_waypoints[] = {
+TrackWaypoint d_course_bowsers_castle_track_waypoints[] = {
     {2, 0, -184, 1},
     {1, 0, -204, 2},
     {1, 0, -224, 2},

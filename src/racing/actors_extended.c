@@ -1288,7 +1288,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
 
 void func_802B3B44(struct ShellActor *shell) {
     u16 currentWaypoint;
-    u16 nextWayPoint;
+    u16 nextWaypoint;
     f32 temp_f0;
     f32 temp_f0_2;
     f32 temp_f0_3;
@@ -1313,10 +1313,10 @@ void func_802B3B44(struct ShellActor *shell) {
     temp_f2  = D_80164490[currentWaypoint].posX;
     temp_f12 = D_80164490[currentWaypoint].posY;
     temp_f28 = D_80164490[currentWaypoint].posZ;
-    nextWayPoint = currentWaypoint + 1;
+    nextWaypoint = currentWaypoint + 1;
 
-    if (nextWayPoint >= D_80164430) {
-        nextWayPoint -= D_80164430;
+    if (nextWaypoint >= D_80164430) {
+        nextWaypoint -= D_80164430;
     }
 
     temp_f20 = temp_f2  - shell->pos[0];
@@ -1324,9 +1324,9 @@ void func_802B3B44(struct ShellActor *shell) {
     temp_f24 = temp_f28 - shell->pos[2];
     temp_f0 = (temp_f20 * temp_f20) + (temp_f22 * temp_f22) + (temp_f24 * temp_f24);
     if (temp_f0 > 400.0f) {
-        temp_f18_3 = D_80164490[nextWayPoint].posX;
-        temp_f16_3 = D_80164490[nextWayPoint].posY;
-        temp_f26   = D_80164490[nextWayPoint].posZ;
+        temp_f18_3 = D_80164490[nextWaypoint].posX;
+        temp_f16_3 = D_80164490[nextWaypoint].posY;
+        temp_f26   = D_80164490[nextWaypoint].posZ;
 
         temp_f12_0 = temp_f18_3 - shell->pos[0];
         temp_f12_1 = temp_f16_3 - shell->pos[1];
@@ -1334,7 +1334,7 @@ void func_802B3B44(struct ShellActor *shell) {
 
         temp_f0_3 = (temp_f12_0 * temp_f12_0) + (temp_f12_1 * temp_f12_1) + (temp_f12_2 * temp_f12_2);
         if (temp_f0_3 < temp_f0) {
-            shell->pathIndex = nextWayPoint;
+            shell->pathIndex = nextWaypoint;
         } else {
             temp_f0_2 = sqrtf(temp_f0) * 4.0f;
             temp_f20 /= temp_f0_2;
@@ -1374,11 +1374,11 @@ void func_802B3B44(struct ShellActor *shell) {
             shell->pos[0] = temp_f2;
             shell->pos[1] = shell->boundingBoxSize + temp_f12;
             shell->pos[2] = temp_f28;
-            shell->pathIndex = nextWayPoint;
+            shell->pathIndex = nextWaypoint;
         } else {
-            temp_f18_3 = D_80164490[nextWayPoint].posX;
-            temp_f16_3 = D_80164490[nextWayPoint].posY;
-            temp_f26   = D_80164490[nextWayPoint].posZ;
+            temp_f18_3 = D_80164490[nextWaypoint].posX;
+            temp_f16_3 = D_80164490[nextWaypoint].posY;
+            temp_f26   = D_80164490[nextWaypoint].posZ;
 
             shell->pos[0] =  (temp_f2 + temp_f18_3)  * 0.5f;
             shell->pos[1] = ((temp_f12 + temp_f16_3) * 0.5f) + shell->boundingBoxSize;

@@ -214,7 +214,7 @@ void func_8001CA78(UNUSED Player *player, Camera *camera, Vec3f arg2, f32 *arg3,
     f32 temp_f18;
     f32 temp_f16;
     UNUSED s32 pad;
-    struct TrackWayPoint *temp_s2;
+    TrackWaypoint *temp_s2;
 
     temp_s2 = &D_80164550[0][gWaypointCountByPathIndex[0] - 10];
     sp68[0] = camera->unk_30[0];
