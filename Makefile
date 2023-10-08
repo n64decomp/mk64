@@ -347,9 +347,10 @@ MIO0TOOL              := $(TOOLS_DIR)/mio0
 N64CKSUM              := $(TOOLS_DIR)/n64cksum
 N64GRAPHICS           := $(TOOLS_DIR)/n64graphics
 DLPACKER              := $(TOOLS_DIR)/displaylist_packer
-BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
+BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
 ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
+MKSEG5DEFS            := $(PYTHON) $(TOOLS_DIR)/mkseg5defs.py
 EMULATOR               = mupen64plus
 EMU_FLAGS              = --noosd
 LOADER                 = loader64
@@ -499,6 +500,21 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 # Course Packed Displaylists Generation                                        #
 #==============================================================================#
 
+# There should be a way better to call the python script without changing the
+# rules of this file, ideally the script should be called before 
+# course_displaylists is compiled and course_offsets.inc.c is modified
+# Below this block there's an attempt that didn't work
+$(BUILD_DIR)/%/course_displaylists.inc.o: %/course_displaylists.inc.c %/course_offsets.inc.c
+	$(call print,Compiling Course Display list:,$<,$@)
+	$(MKSEG5DEFS) $*/course_offsets.inc.c $(BUILD_DIR)/$*/course_offsets.inc.h
+	@$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+	$(V)$(CC) -c $(CFLAGS) -o $@ $<
+
+#%/course_displaylists.inc.o: %/course_offsets.inc.h %/course_offsets.inc.o
+
+#%/course_offsets.inc.h: %/course_offsets.inc.c
+#	$(V)$(MKSEG5DEFS) $@ $(BUILD_DIR)/$<
+
 %/course_displaylists.inc.elf: %/course_displaylists.inc.o
 	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -o $@ $< --no-check-sections
 
@@ -509,8 +525,6 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 %/course_displaylists_packed.inc.bin: %/course_displaylists.inc.bin
 	@$(PRINT) "$(GREEN)Compressing Course Displaylists:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(DLPACKER) $< $@
-
-
 
 #==============================================================================#
 # Course Geography Generation                                                  #
