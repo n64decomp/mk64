@@ -78,6 +78,9 @@ u16 func_8001FB0C(Player *player, Camera *camera, f32 arg2, f32 arg3) {
     f32 sp44;
     s16 var_v0;
     u16 ret;
+#ifdef FLYCAM
+    return 1;
+#endif
 
     ret = 0;
     switch (gActiveScreenMode) {                              /* irregular */

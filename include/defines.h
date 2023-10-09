@@ -38,8 +38,8 @@
  * D-pad DOWN  = MARIO
  *  
 */
-#define DEBUG_MODE 1
-#define DEBUG_MENU 2
+#define DEBUG_MODE 0
+#define DEBUG_MENU 1
 #define HOLD_ALL_DPAD_AND_C_BUTTONS (U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
 
 /**

@@ -1605,10 +1605,10 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     } else if (temp_f0 < 640000.0f) {
 
         gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D670);
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D160);
+       gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D160);
     } else {
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E910);
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E480);
+       gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E910);
+       gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E480);
     }
     if (1440000.0f < temp_f0) { return; }
 
