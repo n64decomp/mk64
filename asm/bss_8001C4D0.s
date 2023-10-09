@@ -76,22 +76,22 @@ glabel D_80164B08
 glabel D_80164B0C
 .skip 4
 
-glabel D_80164B10
+glabel gPlayerRedEffect
 .skip 16
 
-glabel D_80164B20
+glabel gPlayerGreenEffect
 .skip 16
 
-glabel D_80164B30
+glabel gPlayerBlueEffect
 .skip 16
 
-glabel D_80164B40
+glabel gPlayerCyanEffect
 .skip 16
 
-glabel D_80164B50
+glabel gPlayerMagentaEffect
 .skip 16
 
-glabel D_80164B60
+glabel gPlayerYellowEffect
 .skip 32
 
 glabel D_80164B80
@@ -175,7 +175,7 @@ glabel D_80165420
 glabel D_80165440
 .skip 32
 
-glabel D_80165460
+glabel gIsPlayerTripleAButtonCombo
 .skip 32
 
 glabel D_80165480
@@ -590,9 +590,9 @@ glabel D_80165A90
 .skip 392
 
 # object list begin
-# D_80165C18 should be of size 123,200 (0xE0 * 0x226)
+# gObjectList should be of size 123,200 (0xE0 * 0x226)
 # D_80165CBC, D_80165CBE, and D_80165CED are all fake variables
-glabel D_80165C18
+glabel gObjectList
 .skip 164
 
 glabel D_80165CBC
@@ -1711,7 +1711,7 @@ glabel gNumD_8018E768Entries
 glabel D_8018E768
 .skip 64
 
-glabel D_8018E7A8
+glabel gCycleFlashMenu
 .skip 4
 
 glabel D_8018E7AC

@@ -30,7 +30,7 @@ glabel func_80086074
 /* 086CE4 800860E4 012A2821 */  addu  $a1, $t1, $t2
 /* 086CE8 800860E8 AFAD0010 */  sw    $t5, 0x10($sp)
 /* 086CEC 800860EC 8FA40020 */  lw    $a0, 0x20($sp)
-/* 086CF0 800860F0 0C01CD11 */  jal   func_80073444
+/* 086CF0 800860F0 0C01CD11 */  jal   init_texture_object
 /* 086CF4 800860F4 24070040 */   li    $a3, 64
 /* 086CF8 800860F8 0C0216ED */  jal   func_80085BB4
 /* 086CFC 800860FC 8FA40020 */   lw    $a0, 0x20($sp)

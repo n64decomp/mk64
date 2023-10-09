@@ -10,12 +10,12 @@ glabel func_80080078
 /* 080C98 80080098 AFAE0010 */  sw    $t6, 0x10($sp)
 /* 080C9C 8008009C 24C67138 */  addiu $a2, %lo(d_course_bowsers_castle_thwomp_faces) # addiu $a2, $a2, 0x7138
 /* 080CA0 800800A0 24A56F38 */  addiu $a1, %lo(d_course_bowsers_castle_thwomp_tlut) # addiu $a1, $a1, 0x6f38
-/* 080CA4 800800A4 0C01CD11 */  jal   func_80073444
+/* 080CA4 800800A4 0C01CD11 */  jal   init_texture_object
 /* 080CA8 800800A8 24070010 */   li    $a3, 16
 /* 080CAC 800800AC 001178C0 */  sll   $t7, $s1, 3
 /* 080CB0 800800B0 01F17823 */  subu  $t7, $t7, $s1
-/* 080CB4 800800B4 3C188016 */  lui   $t8, %hi(D_80165C18) # $t8, 0x8016
-/* 080CB8 800800B8 27185C18 */  addiu $t8, %lo(D_80165C18) # addiu $t8, $t8, 0x5c18
+/* 080CB4 800800B4 3C188016 */  lui   $t8, %hi(gObjectList) # $t8, 0x8016
+/* 080CB8 800800B8 27185C18 */  addiu $t8, %lo(gObjectList) # addiu $t8, $t8, 0x5c18
 /* 080CBC 800800BC 000F7940 */  sll   $t7, $t7, 5
 /* 080CC0 800800C0 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 080CC4 800800C4 44812000 */  mtc1  $at, $f4
@@ -28,7 +28,7 @@ glabel func_80080078
 /* 080CE0 800800E0 A60800C8 */  sh    $t0, 0xc8($s0)
 /* 080CE4 800800E4 34A50220 */  ori   $a1, (0x04000220 & 0xFFFF) # ori $a1, $a1, 0x220
 /* 080CE8 800800E8 02202025 */  move  $a0, $s1
-/* 080CEC 800800EC 0C01C870 */  jal   func_800721C0
+/* 080CEC 800800EC 0C01C870 */  jal   set_object_flag_unk_054_true
 /* 080CF0 800800F0 E6040000 */   swc1  $f4, ($s0)
 /* 080CF4 800800F4 24090002 */  li    $t1, 2
 /* 080CF8 800800F8 240A0008 */  li    $t2, 8

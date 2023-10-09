@@ -23,8 +23,8 @@ glabel func_80080E8C
 /* 081AB8 80080EB8 8FB90044 */  lw    $t9, 0x44($sp)
 /* 081ABC 80080EBC 01C70019 */  multu $t6, $a3
 /* 081AC0 80080EC0 8FA40048 */  lw    $a0, 0x48($sp)
-/* 081AC4 80080EC4 3C058016 */  lui   $a1, %hi(D_80165C18) # $a1, 0x8016
-/* 081AC8 80080EC8 24A55C18 */  addiu $a1, %lo(D_80165C18) # addiu $a1, $a1, 0x5c18
+/* 081AC4 80080EC4 3C058016 */  lui   $a1, %hi(gObjectList) # $a1, 0x8016
+/* 081AC8 80080EC8 24A55C18 */  addiu $a1, %lo(gObjectList) # addiu $a1, $a1, 0x5c18
 /* 081ACC 80080ECC 24180002 */  li    $t8, 2
 /* 081AD0 80080ED0 3C0B800E */  lui   $t3, %hi(D_800E594C) # $t3, 0x800e
 /* 081AD4 80080ED4 00044840 */  sll   $t1, $a0, 1

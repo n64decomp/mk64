@@ -77,7 +77,7 @@ glabel func_800A8564
 /* 0A9270 800A8670 AFAB0010 */  sw    $t3, 0x10($sp)
 /* 0A9274 800A8674 24E7001E */  addiu $a3, $a3, 0x1e
 /* 0A9278 800A8678 8C840298 */  lw    $a0, %lo(gDisplayListHead)($a0)
-/* 0A927C 800A867C 0C025668 */  jal   func_800959A0
+/* 0A927C 800A867C 0C025668 */  jal   draw_flash_select_case_slow
 /* 0A9280 800A8680 01032821 */   addu  $a1, $t0, $v1
 /* 0A9284 800A8684 3C018015 */  lui   $at, %hi(gDisplayListHead) # $at, 0x8015
 /* 0A9288 800A8688 10000013 */  b     .L800A86D8
@@ -97,7 +97,7 @@ glabel func_800A8564
 /* 0A92BC 800A86BC AFAC0010 */  sw    $t4, 0x10($sp)
 /* 0A92C0 800A86C0 24E7001E */  addiu $a3, $a3, 0x1e
 /* 0A92C4 800A86C4 8C840298 */  lw    $a0, %lo(gDisplayListHead)($a0)
-/* 0A92C8 800A86C8 0C026306 */  jal   func_80098C18
+/* 0A92C8 800A86C8 0C026306 */  jal   draw_box_fill
 /* 0A92CC 800A86CC 01032821 */   addu  $a1, $t0, $v1
 /* 0A92D0 800A86D0 3C018015 */  lui   $at, %hi(gDisplayListHead) # $at, 0x8015
 /* 0A92D4 800A86D4 AC220298 */  sw    $v0, %lo(gDisplayListHead)($at)

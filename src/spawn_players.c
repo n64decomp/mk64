@@ -25,7 +25,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     f32 ret;
     s8 idx;
 
-    player->unk_000 = PLAYER_INACTIVE;
+    player->type = PLAYER_INACTIVE;
     player->unk_08C = 0;
     player->characterId = characterId;
     player->unk_0B6 = 0;
@@ -39,7 +39,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
             player->unk_084 = D_800E2400[gCCSelection][player->characterId];
             player->unk_088 = D_800E24B4[gCCSelection][player->characterId];
             player->unk_210 = D_800E2568[gCCSelection][player->characterId];
-            player->unk_214 = D_800E261C[gCCSelection][player->characterId];
+            player->topSpeed = gTopSpeedTable[gCCSelection][player->characterId];
             break;
 
         // Uses 100CC values
@@ -47,14 +47,14 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
             player->unk_084 = D_800E2400[1][player->characterId];
             player->unk_088 = D_800E24B4[1][player->characterId];
             player->unk_210 = D_800E2568[1][player->characterId];
-            player->unk_214 = D_800E261C[1][player->characterId];
+            player->topSpeed = gTopSpeedTable[1][player->characterId];
             break;
 
         case BATTLE:
             player->unk_084 = D_800E2400[4][player->characterId];
             player->unk_088 = D_800E24B4[4][player->characterId];
             player->unk_210 = D_800E2568[4][player->characterId];
-            player->unk_214 = D_800E261C[4][player->characterId];
+            player->topSpeed = gTopSpeedTable[4][player->characterId];
             break;
     }
 
@@ -73,15 +73,15 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_05C = 1.0f;
     player->unk_058 = 0.0f;
     player->unk_060 = 0.0f;
-    player->unk_034[0] = 0.0f;
-    player->unk_034[1] = 0.0f;
-    player->unk_034[2] = 0.0f;
+    player->velocity[0] = 0.0f;
+    player->velocity[1] = 0.0f;
+    player->velocity[2] = 0.0f;
     player->unk_02C[1] = arg5;
     player->unk_02C[2] = 0;
     player->unk_0FA = 0;
     player->unk_002 = 0;
 
-    player->unk_0BC = 0;
+    player->effects = 0;
     player->unk_0C0 = 0;
     player->unk_07C = 0;
     player->unk_07A = 0;
@@ -91,7 +91,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_090 = 0.0f;
     player->unk_094 = 0.0f;
     player->unk_074 = 0.0f;
-    player->unk_000 = playerType;
+    player->type = playerType;
     player->unk_0CA = 0;
     player->unk_0DE = 0;
     player->unk_10C = 0;
@@ -99,7 +99,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_0E8 = 0.0f;
     player->unk_0A0 = 0.0f;
     player->unk_104 = 0.0f;
-    player->unk_09C = 0.0f;
+    player->currentSpeed = 0.0f;
     player->unk_20C = 0.0f;
     player->unk_DAC = 0.0f;
     player->unk_044 = 0;
@@ -109,7 +109,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
 
 
     player->unk_206 = 0;
-    player->unk_0C4 = 0;
+    player->slopeAccel = 0;
     player->unk_D98 = 0;
     player->unk_D9A = 0;
     player->unk_DA4 = 0;
@@ -153,7 +153,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_240 = 0;
     player->unk_256 = 0;
 
-    player->unk_224 = 1.0f;
+    player->size = 1.0f;
     player->unk_DAC = 1.0f;
 
     player->unk_064[0] = 0.0f;
@@ -175,7 +175,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_090 = 0.0f;
     player->unk_094 = 0.0f;
     player->unk_098 = 0.0f;
-    player->unk_09C = 0.0f;
+    player->currentSpeed = 0.0f;
     player->unk_0A0 = 0.0f;
     player->unk_0A4 = 0.0f;
     player->unk_0B8 = 0.0f;
@@ -218,7 +218,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
 
     D_80165420[idx] = 0;
     D_80165440[idx] = 0;
-    D_80165460[idx] = 0;
+    gIsPlayerTripleAButtonCombo[idx] = FALSE;
     D_80165480[idx] = 0;
     D_801654E0[idx] = 0;
     D_80165500[idx] = 0;
@@ -310,8 +310,8 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     if (gModeSelection == BATTLE) {
         func_8006B7E4(player, playerIndex);
     }
-    func_802B6540(player->unk_150, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
-    func_802B6540(player->unk_174, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
+    calculate_orientation_matrix(player->unk_150, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
+    calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
 }
 
 void func_80039AE4(void) {
@@ -1018,29 +1018,29 @@ void func_8003CD78(void) {
     func_8003BE30();
 }
 
-void func_8003CD98(Player *player, Camera *camera, s8 arg2, s8 arg3) {
-    if (player->unk_000 & PLAYER_EXISTS) {
+void func_8003CD98(Player *player, Camera *camera, s8 playerId, s8 arg3) {
+    if (player->type & PLAYER_EXISTS) {
         if (arg3 == 0) {
-            func_8002D268(player, camera, arg3, arg2);
+            func_8002D268(player, camera, arg3, playerId);
         }
-        func_8002934C(player, camera, arg3, arg2);
+        func_8002934C(player, camera, arg3, playerId);
         if ((arg3 == 0) || (arg3 == 1)) {
-            func_80027A20(player, arg2, arg3, 0);
-            func_80027A20(player, arg2, arg3, 1);
-            func_80027040(player, arg2, arg3, arg3, 0);
-            mio0decode((u8 *) &D_802DFB80[0][arg3][arg2], (u8 *) &D_802BFB80[0][arg3][arg2]);
+            load_kart_palette(player, playerId, arg3, 0);
+            load_kart_palette(player, playerId, arg3, 1);
+            load_kart_texture(player, playerId, arg3, arg3, 0);
+            mio0decode((u8 *) &D_802DFB80[0][arg3][playerId], (u8 *) &D_802BFB80[0][arg3][playerId]);
         } else {
-            func_80027A20(player, arg2, arg3, 0);
-            func_80027A20(player, arg2, arg3, 1);
-            func_80027040(player, (s8) (arg2 + 4), arg3, (s8) (arg3 - 2), 0);
-            mio0decode((u8 *) &D_802DFB80[0][arg3 - 2][arg2 + 4], (u8 *) &D_802BFB80[0][arg3 - 2][arg2 + 4]);
+            load_kart_palette(player, playerId, arg3, 0);
+            load_kart_palette(player, playerId, arg3, 1);
+            load_kart_texture(player, (s8) (playerId + 4), arg3, (s8) (arg3 - 2), 0);
+            mio0decode((u8 *) &D_802DFB80[0][arg3 - 2][playerId + 4], (u8 *) &D_802BFB80[0][arg3 - 2][playerId + 4]);
         }
 
-        D_801650D0[arg3][arg2] = player->unk_244[arg3];
-        D_80165110[arg3][arg2] = player->unk_24C[arg3];
-        D_80165150[arg3][arg2] = player->unk_0A8;
-        D_801651D0[arg3][arg2] = 0;
-        func_800267AC(player, arg2, arg3);
+        D_801650D0[arg3][playerId] = player->animFrameSelector[arg3];
+        D_80165110[arg3][playerId] = player->animGroupSelector[arg3];
+        D_80165150[arg3][playerId] = player->unk_0A8;
+        D_801651D0[arg3][playerId] = 0;
+        func_800267AC(player, playerId, arg3);
     }
 }
 
@@ -1059,7 +1059,7 @@ void func_8003D080(void) {
             case SCREEN_MODE_1P:
                 switch (gModeSelection) {
                     case GRAND_PRIX:
-                        if (gCurrentCourseId == 10) {
+                        if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
                             camera_init(0.0f, player->pos[1], D_8016524C, player->unk_02C[1], 8, 0);
                         } else {
                             camera_init((D_80165210[7] + D_80165210[6]) / 2, player->pos[1], D_8016524C, player->unk_02C[1], 8, 0);
@@ -1150,14 +1150,14 @@ void func_8003D080(void) {
 
     switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            func_8003CD98(gPlayerOneCopy,   camera1, 0, 0); // sic
-            func_8003CD98(gPlayerTwo,   camera1, 1, 0);
-            func_8003CD98(gPlayerThree, camera1, 2, 0);
-            func_8003CD98(gPlayerFour,  camera1, 3, 0);
-            func_8003CD98(gPlayerFive,  camera1, 4, 0);
-            func_8003CD98(gPlayerSix,   camera1, 5, 0);
-            func_8003CD98(gPlayerSeven, camera1, 6, 0);
-            func_8003CD98(gPlayerEight, camera1, 7, 0);
+            func_8003CD98(gPlayerOneCopy, camera1, 0, 0); // sic
+            func_8003CD98(gPlayerTwo,     camera1, 1, 0);
+            func_8003CD98(gPlayerThree,   camera1, 2, 0);
+            func_8003CD98(gPlayerFour,    camera1, 3, 0);
+            func_8003CD98(gPlayerFive,    camera1, 4, 0);
+            func_8003CD98(gPlayerSix,     camera1, 5, 0);
+            func_8003CD98(gPlayerSeven,   camera1, 6, 0);
+            func_8003CD98(gPlayerEight,   camera1, 7, 0);
             break;
 
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
@@ -1203,13 +1203,13 @@ void func_8003D080(void) {
 
 void func_8003DB5C(void) {
     Player *player = gPlayerOne;
-    s32 i;
+    s32 playerId;
 
     camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 0);
     camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 1);
 
-    for (i = 0; i < 8; i++, player++) {
-        func_80027A20(player, i, 1, 0);
-        func_80027A20(player, i, 1, 1);
+    for (playerId = 0; playerId < 8; playerId++, player++) {
+        load_kart_palette(player, playerId, 1, 0);
+        load_kart_palette(player, playerId, 1, 1);
     }
 }

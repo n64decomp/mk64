@@ -163,7 +163,7 @@ void setup_race(void) {
     struct Controller *controller;
     int i;
 
-    gPlayerCountSelection1 = D_8018EDF3;
+    gPlayerCountSelection1 = gPlayerCount;
     if (gGamestate != RACING) {
         gIsMirrorMode = 0;
     }
@@ -189,7 +189,7 @@ void setup_race(void) {
     func_802969F8();
     func_80005310();
     func_8003D080();
-    func_8006E9C0();
+    init_object_list();
     D_800DC510 = 0;
     gNumSpawnedShells = 0;
     D_800DC5B8 = 0;

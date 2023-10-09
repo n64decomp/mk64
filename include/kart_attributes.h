@@ -24,12 +24,12 @@ extern f32 D_800E2528[8];
 extern f32 D_800E2548[8];
 extern f32 *D_800E2568[5];
 
-extern f32 D_800E257C[8];
-extern f32 D_800E259C[8];
-extern f32 D_800E25BC[8];
-extern f32 D_800E25DC[8];
-extern f32 D_800E25FC[8];
-extern f32 *D_800E261C[5];
+extern f32 gTopSpeed50cc[8];
+extern f32 gTopSpeed100cc[8];
+extern f32 gTopSpeed150cc[8];
+extern f32 gTopSpeedExtra[8];
+extern f32 gTopSpeedBattle[8];
+extern f32 *gTopSpeedTable[5];
 
 extern f32 gKartFrictionTable[8];
 extern f32 gKartGravityTable[8];
@@ -119,7 +119,7 @@ extern f32 gKartHandlingTable[8];
 extern f32 gKartTable800E3650[8];
 extern f32 gKartTurnSpeedReductionTable0[8];
 extern f32 gKartTurnSpeedReductionTable1[8];
-extern f32 gKartTable800E36B0[8];
+extern f32 gKartTripleABoost[8];
 extern f32 gKartHopInitialVelocityTable[8];
 extern f32 gKartHopJerkTable[8];
 extern f32 D_800E3710[8];

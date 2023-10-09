@@ -27,8 +27,8 @@ variableWatchAttributes gMainVariableWatchList[] = {
 	},
 	{
 		"Player Type: ",
-		&gPlayers[0].unk_000,
-		sizeof(gPlayerOne->unk_000), 
+		&gPlayers[0].type,
+		sizeof(gPlayerOne->type), 
 		DISPLAY_HEXIDECIMAL_NUMBER,
 		0, 0
 	},
@@ -55,22 +55,22 @@ variableWatchAttributes gMainVariableWatchList[] = {
 	},
 	{
 		"Torque 9C: ",
-		&gPlayers[0].unk_09C,
-		sizeof(gPlayerOne->unk_09C),
+		&gPlayers[0].currentSpeed,
+		sizeof(gPlayerOne->currentSpeed),
 		DISPLAY_FLOAT_NUMBER,
 		0, 0
 	},
 	{
 		"Top Speed 214: ",
-		&gPlayers[0].unk_214,
-		sizeof(gPlayerOne->unk_214),
+		&gPlayers[0].topSpeed,
+		sizeof(gPlayerOne->topSpeed),
 		DISPLAY_FLOAT_NUMBER,
 		0, 0
 	},
 	{
 		"Accel Offset C4: ",
-		&gPlayers[0].unk_0C4,
-		sizeof(gPlayerOne->unk_0C4),
+		&gPlayers[0].slopeAccel,
+		sizeof(gPlayerOne->slopeAccel),
 		DISPLAY_SIGNED_NUMBER,
 		0, 0
 	},
