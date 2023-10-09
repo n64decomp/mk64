@@ -208,7 +208,7 @@ extern s32 gGamestate;
 #ifndef STRANGE_MAIN_HEADER_H
 extern s32 D_800DC510;
 #endif
-extern u16 D_800DC518;
+extern u16 creditsRenderMode;
 extern u16 gDemoMode;
 extern u16 gEnableDebugMode;
 extern s32 gGamestateNext;

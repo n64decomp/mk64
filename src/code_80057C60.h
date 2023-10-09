@@ -332,7 +332,7 @@ extern s32 D_8018D410;
 extern s32 gMatrixHudCount;
 extern s32 D_8018D170;
 extern s32 D_8018D178;
-extern s32 D_8018D188;
+extern s32 gIsHUDVisible;
 extern s32 D_8018D190;
 extern s32 D_8018D1A0;
 extern s32 D_8018D1B4;

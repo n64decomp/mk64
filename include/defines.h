@@ -180,7 +180,7 @@
 #define RACING_DUPLICATE 14
 
 /**
- * Options for gMenuSelectionFromQuit and gMenuSelectionFromEndingSequence
+ * Options for gGameState gMenuSelectionFromQuit and gMenuSelectionFromEndingSequence
 **/
 #define START_MENU_FROM_QUIT 0
 #define MAIN_MENU_FROM_QUIT 1

@@ -10675,7 +10675,7 @@ void func_800A7A4C(s32 arg0) {
         case 0x5:                               /* switch 8 */
             switch (var_s1->unk4) {                /* switch 9; irregular */
             case 0:                             /* switch 9 */
-                if (gControllerFive->button & 0x10) {
+                if (gControllerFive->button & R_TRIG) {
                     var_s1->unk4 = (s32) 1U;
                     play_sound2(0x4900801C);
                 } else {

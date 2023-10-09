@@ -68,6 +68,8 @@ void parse_course_displaylists(uintptr_t addr) {
     }
 }
 
+extern u32 isFlycam;
+
 void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     Player *player = arg1->player;
     Camera *camera = arg1->camera;
@@ -80,7 +82,6 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     s16 sp1E;
     s16 temp_v0_3;
     u16 rot;
-    s32 i;
     if (gIsMirrorMode) {
         rot = (u16) camera->rot[1];
         if (rot < 0x2000) {
@@ -113,87 +114,78 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     }
     arg1->playerDirection = var_a3;
 
-    // if (D_80152300[camera - camera1] == 1) {
-    //     sp1E = func_802ABD40(camera->unk_54.unk3A);
-    //     temp_v0_3 = func_802ABD40(player->unk_110.unk3A);
-    //     temp_v1 = sp1E - temp_v0_3;
-    //     if ((temp_v1 < 2) && (temp_v1 >= -1)) {
-    //         if (sp1E == 255) {
-    //             if (temp_v0_3 == 255) {
-    //                 temp_v1 = arg1->pathCounter;
-    //             } else if (player->unk_110.unk3C[2] > 30.0f) {
-    //                 temp_v1 = arg1->pathCounter;
-    //             } else { 
-    //                 temp_v1 = temp_v0_3;
-    //             }
-    //         } else if (camera->unk_54.unk3C[2] > 30.0f) {
-    //             temp_v1 = arg1->pathCounter;
-    //         } else { 
-    //             temp_v1 = sp1E;
-    //         }
-    //     } else {
+    if (D_80152300[camera - camera1] == 1) {
+        sp1E = func_802ABD40(camera->unk_54.unk3A);
+        temp_v0_3 = func_802ABD40(player->unk_110.unk3A);
+        temp_v1 = sp1E - temp_v0_3;
+        if ((temp_v1 < 2) && (temp_v1 >= -1)) {
+            if (sp1E == 255) {
+                if (temp_v0_3 == 255) {
+                    temp_v1 = arg1->pathCounter;
+                } else if (player->unk_110.unk3C[2] > 30.0f) {
+                    temp_v1 = arg1->pathCounter;
+                } else { 
+                    temp_v1 = temp_v0_3;
+                }
+            } else if (camera->unk_54.unk3C[2] > 30.0f) {
+                temp_v1 = arg1->pathCounter;
+            } else { 
+                temp_v1 = sp1E;
+            }
+        } else {
 
-    //         switch(gCurrentCourseId) {
-    //             case 2:
-    //                     if ((temp_v0_3 >= 0x11) && (temp_v0_3 < 0x18)) {
-    //                         temp_v1 = temp_v0_3;
-    //                     } else if ((temp_v0_3 == 255) && (sp1E != 255)) {
-    //                         temp_v1 = sp1E;
-    //                     } else if ((temp_v0_3 != 255) && (sp1E == 255)) {
-    //                         temp_v1 = temp_v0_3;
-    //                     } else {
-    //                         temp_v1 = arg1->pathCounter;
-    //                     }
-    //                 break;
-    //             case 1:
-    //                 if ((temp_v0_3 >= 0xE) && (temp_v0_3 < 0x16)) {
-    //                     temp_v1 = temp_v0_3;
-    //                 } else if ((temp_v0_3 == 255) && (sp1E != 255)) {
-    //                     temp_v1 = sp1E;
-    //                 } else if ((temp_v0_3 != 255) && (sp1E == 255)) {
-    //                     temp_v1 = temp_v0_3;
-    //                 } else {
-    //                     temp_v1 = arg1->pathCounter;
-    //                 }
-    //                 break;
-    //             default:
-    //                 if (temp_v0_3 == 255) {
-    //                     temp_v1 = arg1->pathCounter;
-    //                 } else if (player->unk_110.unk3C[2] > 30.0f) {
-    //                     temp_v1 = arg1->pathCounter;
-    //                 } else { 
-    //                     temp_v1 = temp_v0_3;
-    //                 }
-    //                 break;
-    //         }
-    //     }
-    // } else {
-    // }
-        // if (camera->unk_54.unk3C[2] > 30.0f) {
-        //     temp_v1 = arg1->pathCounter;
-        // } else if (temp_v1 == 255) { 
-        //     temp_v1 = arg1->pathCounter;
-        // }
+            switch(gCurrentCourseId) {
+                case 2:
+                        if ((temp_v0_3 >= 0x11) && (temp_v0_3 < 0x18)) {
+                            temp_v1 = temp_v0_3;
+                        } else if ((temp_v0_3 == 255) && (sp1E != 255)) {
+                            temp_v1 = sp1E;
+                        } else if ((temp_v0_3 != 255) && (sp1E == 255)) {
+                            temp_v1 = temp_v0_3;
+                        } else {
+                            temp_v1 = arg1->pathCounter;
+                        }
+                    break;
+                case 1:
+                    if ((temp_v0_3 >= 0xE) && (temp_v0_3 < 0x16)) {
+                        temp_v1 = temp_v0_3;
+                    } else if ((temp_v0_3 == 255) && (sp1E != 255)) {
+                        temp_v1 = sp1E;
+                    } else if ((temp_v0_3 != 255) && (sp1E == 255)) {
+                        temp_v1 = temp_v0_3;
+                    } else {
+                        temp_v1 = arg1->pathCounter;
+                    }
+                    break;
+                default:
+                    if (temp_v0_3 == 255) {
+                        temp_v1 = arg1->pathCounter;
+                    } else if (player->unk_110.unk3C[2] > 30.0f) {
+                        temp_v1 = arg1->pathCounter;
+                    } else { 
+                        temp_v1 = temp_v0_3;
+                    }
+                    break;
+            }
+        }
+    } else {
         temp_v1 = func_802ABD40(camera->unk_54.unk3A);
-    //temp_v1 = func_802ABD40(camera->pos[2]);
-    print("Camera: %d ", camera->unk_54.unk3A);
-    print("Return: %d ", func_802ABD40(camera->unk_54.unk3A));
+        if (camera->unk_54.unk3C[2] > 30.0f) {
+            temp_v1 = arg1->pathCounter;
+        } else if (temp_v1 == 255) { 
+            temp_v1 = arg1->pathCounter;
+        }
+    }
 
-    print("pathCounter: %d\n", arg1->pathCounter);
-
-   /// temp_v1 = func_802ABD40(camera->unk_54.unk3A);
-
-    // print("Render DL: %X\n", gfx);
-    // print("Render DL: %X\n", gfx[0]);
-    // print("Render DL: %X\n", gfx[1]);
-    // print("Render DL: %X\n", gfx[2]);
     arg1->pathCounter = temp_v1;
     temp_v1 = ((temp_v1 - 1) * 4) + var_a3;
-    print("final: %d\n", temp_v1);
-    print("total: %d", D_8015F588);
 
+    if (isFlycam) {
+        func_8029569C();
+        return;
+    }
+    
     gSPDisplayList(gDisplayListHead++, gfx[temp_v1]);
-
 }
 
 void func_80291198(void) {
@@ -1273,7 +1265,7 @@ void func_8029569C(void) {
 void func_80295A38(struct UnkStruct_800DC5EC *arg0) {
 
     func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
-    if (D_800DC518 != 0) {
+    if (creditsRenderMode) {
         func_8029569C();
         return;
     }

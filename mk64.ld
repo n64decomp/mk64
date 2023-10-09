@@ -230,6 +230,7 @@ SECTIONS
       BUILD_DIR/src/audio/load.o(.data);
       BUILD_DIR/src/audio/playback.o(.data);
       BUILD_DIR/src/audio/effects.o(.data);
+      BUILD_DIR/src/flycam.o(.data);
       #if DEBUG
          BUILD_DIR/src/debug/crash_screen_enhancement.o(.data);
          BUILD_DIR/src/debug/debug.o(.data);
@@ -313,6 +314,7 @@ SECTIONS
       BUILD_DIR/src/code_80091750.jp.o(.bss);
       BUILD_DIR/src/code_800AF9B0.o(.bss);
       BUILD_DIR/src/menus.o(.bss);
+      BUILD_DIR/src/flycam.o(.bss);
       #if DEBUG
          BUILD_DIR/src/os/osCartRomInit.o(.bss);
          BUILD_DIR/src/debug/crash_screen_enhancement.o(.bss);

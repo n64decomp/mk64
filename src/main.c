@@ -168,7 +168,7 @@ s32 gGamestate = 0xFFFF;
 // D_800DC510 is externed as an s32 in other files. D_800DC514 is only used in main.c, likely a developer mistake.
 u16 D_800DC510 = 0;
 u16 D_800DC514 = 0;
-u16 D_800DC518 = 0;
+u16 creditsRenderMode = 0; // Renders the whole track. Displays red if used in normal race mode.
 u16 gDemoMode = DEMO_MODE_INACTIVE;
 u16 gEnableDebugMode = DEBUG_MODE;
 s32 gGamestateNext = 7; // = COURSE_DATA_MENU?;
@@ -578,6 +578,7 @@ void race_logic_loop(void) {
             gTickSpeed = 2;
             staff_ghosts_loop();
             if (gIsGamePaused == 0) {
+                    func_8001EE98(gPlayerOneCopy, camera1, 0);
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E) {
                         gCourseTimer += 0.01666666; // 1 / 60
@@ -585,7 +586,6 @@ void race_logic_loop(void) {
                     func_802909F0();
                     evaluate_player_collision();
                     func_800382DC();
-                    func_8001EE98(gPlayerOneCopy, camera1, 0);
                     func_80028F70();
                     func_8028F474();
                     func_80059AC8();

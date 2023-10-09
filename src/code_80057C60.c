@@ -623,7 +623,7 @@ void func_80058F48(void) {
 void func_80058F78(void) {
     if (D_801657B0 == 0) {
         func_80041EF4();
-        if ((!gDemoMode) && (D_8018D188 != 0) && (D_801657D8 == 0)) {
+        if ((!gDemoMode) && (gIsHUDVisible != 0) && (D_801657D8 == 0)) {
             func_8004E638(0);
             if (D_801657E4 != 2) {
                 func_8004FA78(0);
@@ -700,7 +700,7 @@ void func_800591B4(void) {
         func_80057C60();
         gSPDisplayList(gDisplayListHead++, &D_0D0076F8);
 
-        if (D_8018D188 != 0) {
+        if (gIsHUDVisible != 0) {
             if (D_801657D8 == 0) {
                 if (D_801657F0 != 0) {
                     func_800514BC();
@@ -764,7 +764,7 @@ void func_800593F8(void) {
 }
 
 void func_80059488(s32 arg0) {
-    if ((gModeSelection != BATTLE) && (D_80165800[arg0] == 0) && (D_8018D188 != 0)) {
+    if ((gModeSelection != BATTLE) && (D_80165800[arg0] == 0) && (gIsHUDVisible != 0)) {
         func_8004FA78(arg0);
         func_8004E78C(arg0);
     }
@@ -796,7 +796,7 @@ extern s8 D_801657F8;
 
 void func_80059560(s32 arg0) {
     if (gModeSelection != BATTLE) {
-        if (D_801657F8 && D_8018D188) {
+        if (D_801657F8 && gIsHUDVisible) {
             func_8004CB60(D_8018CA70[arg0].lapX, D_8018CA70[arg0].lapY, D_0D00A958);
             func_8004FC78(D_8018CA70[arg0].lapX - 12, D_8018CA70[arg0].lapY + 4, D_8018CA70[arg0].alsoLapCount);
         }
@@ -1168,7 +1168,7 @@ void func_8006F824(s32);
 
 void func_8005A3C0(void) {
     s32 b = FALSE;
-    if ((gGamestate != 5) && (gGamestate != 9) && !D_8018D204) {
+    if ((gGamestate != ENDING_SEQUENCE) && (gGamestate != CREDITS_SEQUENCE) && !D_8018D204) {
         switch (gPlayerCountSelection1) {
         case 1:
             if (gControllerOne->buttonPressed & R_CBUTTONS) {
@@ -1336,7 +1336,7 @@ void func_8005A99C(void) {
             if (gPlayerCountSelection1 == 3) {
                 D_801657E8 = 1;
             }
-            D_8018D188 = (s32) 1;
+            gIsHUDVisible = (s32) 1;
             D_8018D170 = (s32) 1;
             D_8018D190 = (s32) 1;
             D_8018D204 = 0;

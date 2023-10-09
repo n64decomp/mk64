@@ -125,7 +125,7 @@ void load_credits(void) {
 
     gCurrentCourseId = gCreditsCourseId;
     D_800DC5B4 = 1;
-    D_800DC518 = 1;
+    creditsRenderMode = 1;
     func_802A4D18();
     func_802A74BC();
     camera->unk_B4 = 60.0f;

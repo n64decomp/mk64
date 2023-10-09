@@ -1209,7 +1209,7 @@ glabel D_8018D180
 glabel D_8018D184
 .skip 4
 
-glabel D_8018D188
+glabel gIsHUDVisible
 .skip 4
 
 glabel D_8018D18C
