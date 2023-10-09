@@ -497,23 +497,23 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 
 
 #==============================================================================#
-# Course Packed Displaylists Generation                                        #
+# Course Texture Address Generation                                            #
 #==============================================================================#
 
-# There should be a way better to call the python script without changing the
-# rules of this file, ideally the script should be called before 
-# course_displaylists is compiled and course_offsets.inc.c is modified
-# Below this block there's an attempt that didn't work
-$(BUILD_DIR)/%/course_displaylists.inc.o: %/course_displaylists.inc.c %/course_offsets.inc.c
-	$(call print,Compiling Course Display list:,$<,$@)
-	$(MKSEG5DEFS) $*/course_offsets.inc.c $(BUILD_DIR)/$*/course_offsets.inc.h
-	@$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-	$(V)$(CC) -c $(CFLAGS) -o $@ $<
+COURSE_OFFSET_FILES := $(foreach dir,$(COURSE_DIRS),$(dir)/course_offsets)
+COURSE_OFFSET_O_FILES := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_offsets.inc.o)
 
-#%/course_displaylists.inc.o: %/course_offsets.inc.h %/course_offsets.inc.o
+$(COURSE_OFFSET_FILES):
+	$(call print,Generating Course Texture Address:,$@.inc.c,$(BUILD_DIR)/$@.inc.h)
+	$(V)$(MKSEG5DEFS) $@.inc.c $(BUILD_DIR)/$@.inc.h
 
-#%/course_offsets.inc.h: %/course_offsets.inc.c
-#	$(V)$(MKSEG5DEFS) $@ $(BUILD_DIR)/$<
+$(COURSE_OFFSET_O_FILES): $(COURSE_OFFSET_FILES)
+
+
+
+#==============================================================================#
+# Course Packed Displaylists Generation                                        #
+#==============================================================================#
 
 %/course_displaylists.inc.elf: %/course_displaylists.inc.o
 	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -o $@ $< --no-check-sections
@@ -525,6 +525,8 @@ $(BUILD_DIR)/%/course_displaylists.inc.o: %/course_displaylists.inc.c %/course_o
 %/course_displaylists_packed.inc.bin: %/course_displaylists.inc.bin
 	@$(PRINT) "$(GREEN)Compressing Course Displaylists:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(DLPACKER) $< $@
+
+
 
 #==============================================================================#
 # Course Geography Generation                                                  #
