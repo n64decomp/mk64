@@ -671,7 +671,7 @@ void func_8001E0C4(Camera *camera, Player *player, s8 arg2) {
     camera->rot[0] = atan2s(sqrtf((temp_f12 * temp_f12) + (temp_f14 * temp_f14)), sp80);
     camera->rot[2] = 0;
 }
-void flycam(Camera *camera, Player *player, s8 index);
+
 // This function has a few stack variables.
 void func_8001E45C(Camera *camera, Player *player, s8 arg2) {
     UNUSED s32 pad[6];
@@ -832,7 +832,6 @@ void func_8001EA0C(Camera *camera, Player *player, s8 arg2) {
                     move_s16_towards(&camera->unk_B0, 0x0888, 0.1f);
                 }
             }
-            //var_a3 = sp4E;
         }
     } else {
         move_s16_towards(&camera->unk_B0, 0, 0.05f);
@@ -969,12 +968,7 @@ void func_8001EE98(Player *player, Camera *camera, s8 index) {
                 func_8001E8E8(camera, player, index);
                 break;
             }
-#define FLYCAM
-#ifdef FLYCAM
-            flycam(camera, player, index);
-#else
             func_8001E45C(camera, player, index);
-#endif
             break;
         case 8:
             func_8001E0C4(camera, player, index);

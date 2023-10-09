@@ -179,11 +179,6 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
 
     arg1->pathCounter = temp_v1;
     temp_v1 = ((temp_v1 - 1) * 4) + var_a3;
-
-    if (isFlycam) {
-        func_8029569C();
-        return;
-    }
     
     gSPDisplayList(gDisplayListHead++, gfx[temp_v1]);
 }

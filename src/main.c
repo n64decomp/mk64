@@ -578,7 +578,6 @@ void race_logic_loop(void) {
             gTickSpeed = 2;
             staff_ghosts_loop();
             if (gIsGamePaused == 0) {
-                    func_8001EE98(gPlayerOneCopy, camera1, 0);
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E) {
                         gCourseTimer += 0.01666666; // 1 / 60
@@ -586,6 +585,7 @@ void race_logic_loop(void) {
                     func_802909F0();
                     evaluate_player_collision();
                     func_800382DC();
+                    func_8001EE98(gPlayerOneCopy, camera1, 0);
                     func_80028F70();
                     func_8028F474();
                     func_80059AC8();
