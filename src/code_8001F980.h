@@ -49,7 +49,7 @@ void func_80022E84(Player*, s8, s8, s8);
 void change_player_color_effect_rgb(Player*, s8, s32, f32);
 void change_player_color_effect_cmy(Player*, s8, s32, f32);
 s32  is_player_under_light_luigi_raceway(Player*, s8);
-void func_800231D8(Player*, s8);
+void render_light_environment_on_player(Player*, s8);
 void func_800235AC(Player*, s8);
 void func_80023BF0(Player*, s8, s8, s8);
 void func_80023C84(Player*, s8, s8);

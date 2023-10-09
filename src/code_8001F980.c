@@ -21,14 +21,14 @@
 #include "common_textures.h"
 #include "skybox_and_splitscreen.h"
 
-s8 D_800DDB50[] = {
+s8 renderingFramebufferByPlayer[] = {
     0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x00, 0x02
 };
 
 s32 D_800DDB58 = 0;
 
 // Can't find anything that actually references these...
-void *D_800DDB5C[3] = {
+UNUSED void *D_800DDB5C[3] = {
     gFramebuffer0, gFramebuffer1, gFramebuffer2
 };
 
@@ -178,7 +178,7 @@ void func_80020000(Player *player, Camera *camera, s8 playerId, s8 arg3) {
                 }
             } else {
                 if ((check_player_camera_collision(player, camera, D_80165574 + sp4C, D_80165576) == 1) & 0xFFFF) {
-                    if ((sRenderingFramebuffer == D_800DDB50[playerId]) || ((D_801650D0[arg3][playerId] - player->animFrameSelector[arg3]) > 0x13) || ((D_801650D0[arg3][playerId] - player->animFrameSelector[arg3]) < -0x13) || (D_80165190[arg3][playerId] == (s16) 1U)) {
+                    if ((sRenderingFramebuffer == renderingFramebufferByPlayer[playerId]) || ((D_801650D0[arg3][playerId] - player->animFrameSelector[arg3]) > 0x13) || ((D_801650D0[arg3][playerId] - player->animFrameSelector[arg3]) < -0x13) || (D_80165190[arg3][playerId] == (s16) 1U)) {
                         D_80164AB0[D_800DDB58] = (s16) playerId;
                         D_80164AC0[D_800DDB58] = (s16) arg3;
                         D_80164AD0[D_800DDB58] = player;
@@ -305,12 +305,12 @@ void func_80020F1C(void) {
                D_802BFB80[D_801651D0[D_80164ABE[D_800DDB58]][D_80164AAE[D_800DDB58]]][D_80164ABE[D_800DDB58] - 2][D_80164AAE[D_800DDB58] + 4].pixel_index_array);
 }
 
-void func_80021244(Player *player, s8 arg1, s8 arg2) {
+void func_80021244(Player *player, s8 playerId, s8 arg2) {
 
     if (((player->type & PLAYER_EXISTS) == PLAYER_EXISTS)
     && ((player->type & 0x40) == 0)) {
         if ((player->unk_002 & 2 << (arg2 * 4)) == 2 << (arg2 * 4)) {
-            func_800267AC(player, arg1, arg2);
+            func_800267AC(player, playerId, arg2);
         }
     }
 }
@@ -978,12 +978,12 @@ void func_80022E84(Player *player, s8 arg1, UNUSED s8 arg2, s8 arg3) {
 /**
  * Sets player shading/colour.
  */
-void change_player_color_effect_rgb(UNUSED Player *player, s8 arg1, s32 arg2, f32 arg3) {
-    gPlayerRedEffect[arg1] = (s16) ((f32)gPlayerRedEffect[arg1] - ((gPlayerRedEffect[arg1] - ((arg2 >> 16) & 0xFF)) * arg3));
+void change_player_color_effect_rgb(UNUSED Player *player, s8 arg1, s32 arg2, f32 alpha) {
+    gPlayerRedEffect[arg1] = (s16) ((f32)gPlayerRedEffect[arg1] - ((gPlayerRedEffect[arg1] - ((arg2 >> 16) & 0xFF)) * alpha));
 
-    gPlayerGreenEffect[arg1] = (s16) ((f32)gPlayerGreenEffect[arg1] - ((gPlayerGreenEffect[arg1] - ((arg2 >> 8) & 0xFF)) * arg3));
+    gPlayerGreenEffect[arg1] = (s16) ((f32)gPlayerGreenEffect[arg1] - ((gPlayerGreenEffect[arg1] - ((arg2 >> 8) & 0xFF)) * alpha));
 
-    gPlayerBlueEffect[arg1] = (s16) ((f32)gPlayerBlueEffect[arg1] - ((gPlayerBlueEffect[arg1] - (arg2 & 0xFF)) * arg3));
+    gPlayerBlueEffect[arg1] = (s16) ((f32)gPlayerBlueEffect[arg1] - ((gPlayerBlueEffect[arg1] - (arg2 & 0xFF)) * alpha));
 }
 
 void change_player_color_effect_cmy(UNUSED Player *player, s8 arg1, s32 arg2, f32 arg3) {
@@ -1004,7 +1004,7 @@ bool is_player_under_light_luigi_raceway(Player *player, s8 arg1) {
             || ((gNearestWaypointByPlayerId[arg1] >= 0x169) && (gNearestWaypointByPlayerId[arg1] < 0x170)) 
             || ((gNearestWaypointByPlayerId[arg1] >= 0x174) && (gNearestWaypointByPlayerId[arg1] < 0x17A)) 
             || ((gNearestWaypointByPlayerId[arg1] >= 0x17E) && (gNearestWaypointByPlayerId[arg1] < 0x184))) { // under a light in the tunnel
-                change_player_color_effect_rgb(player, arg1, GPACK_RGB888(0x1C, 0x00, 0x00), 0.3f);
+                change_player_color_effect_rgb(player, arg1, LIGHT_COLOR, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
                 D_80164B80[arg1] = 0;
                 return TRUE;
@@ -1016,14 +1016,14 @@ bool is_player_under_light_luigi_raceway(Player *player, s8 arg1) {
     }
 }
 
-void func_800231D8(Player *player, s8 arg1) {
+void render_light_environment_on_player(Player *player, s8 arg1) {
     switch(gCurrentCourseId) {
         case COURSE_BOWSER_CASTLE:
             if (((gNearestWaypointByPlayerId[arg1] >= 0x15) && (gNearestWaypointByPlayerId[arg1] < 0x2A))
             || ((gNearestWaypointByPlayerId[arg1] >= 0x14D) && (gNearestWaypointByPlayerId[arg1] < 0x15C))
             || ((gNearestWaypointByPlayerId[arg1] >= 0x1D1) && (gNearestWaypointByPlayerId[arg1] < 0x1E4))
             || (player->unk_110.unk3C[2] >= 500.0f)) { // over lava
-                change_player_color_effect_rgb(player, arg1, GPACK_RGB888(0x34, 0x00, 0x00), 0.3f);
+                change_player_color_effect_rgb(player, arg1, LAVA_COLOR, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0x004040, 0.3f);
                 D_80164B80[arg1] = 0;
             } else if (((gNearestWaypointByPlayerId[arg1] >= 0xF1) && (gNearestWaypointByPlayerId[arg1] < 0xF5))
@@ -1032,11 +1032,11 @@ void func_800231D8(Player *player, s8 arg1) {
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x10F) && (gNearestWaypointByPlayerId[arg1] < 0x113))
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x145) && (gNearestWaypointByPlayerId[arg1] < 0x14A))
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x15E) && (gNearestWaypointByPlayerId[arg1] < 0x163))) { // under a lamp
-                change_player_color_effect_rgb(player, arg1, 0x1C0000, 0.3f);
+                change_player_color_effect_rgb(player, arg1, LIGHT_COLOR, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
                 D_80164B80[arg1] = 0;
             } else { // normal color
-                change_player_color_effect_rgb(player, arg1, 0, 0.3f);
+                change_player_color_effect_rgb(player, arg1, DARK_COLOR, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0, 0.3f);
                 D_80164B80[arg1] = 0;
             }
@@ -1060,17 +1060,17 @@ void func_800231D8(Player *player, s8 arg1) {
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x24C) && (gNearestWaypointByPlayerId[arg1] < 0x256))
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x288) && (gNearestWaypointByPlayerId[arg1] < 0x269))
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x274) && (gNearestWaypointByPlayerId[arg1] < 0x27E))) { // under a lamp
-                change_player_color_effect_rgb(player, arg1, 0x1C0000, 0.3f);
+                change_player_color_effect_rgb(player, arg1, LIGHT_COLOR, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0x0000E0, 0.3f);
                 D_80164B80[arg1] = 0;
-            } else { // normal color
-                change_player_color_effect_rgb(player, arg1, 0, 0.3f);
+            } else {
+                change_player_color_effect_rgb(player, arg1, DARK_COLOR, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0, 0.3f);
                 D_80164B80[arg1] = 0;
             }
             break;
-        default: // normal color
-            change_player_color_effect_rgb(player, arg1, 0, 0.3f);
+        default:
+            change_player_color_effect_rgb(player, arg1, DARK_COLOR, 0.3f);
             change_player_color_effect_cmy(player, arg1, 0, 0.3f);
             D_80164B80[arg1] = 0;
             break;
@@ -1081,7 +1081,7 @@ void func_800235AC(Player *player, s8 arg1) {
     s32 temp;
 
     if (((player->type & 0x100) == 0x100) && (player == gPlayerThree)) {
-        change_player_color_effect_rgb(player, arg1, 0x1C0000, 0.3f);
+        change_player_color_effect_rgb(player, arg1, LIGHT_COLOR, 0.3f);
         change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
         D_80164B80[arg1] = 0;
         return;
@@ -1093,7 +1093,7 @@ void func_800235AC(Player *player, s8 arg1) {
         return;
     }
     if ((player->unk_0CA & 4) == 4) {
-        change_player_color_effect_rgb(player, arg1, 0, 1.0f);
+        change_player_color_effect_rgb(player, arg1, DARK_COLOR, 1.0f);
         change_player_color_effect_cmy(player, arg1, 0, 1.0f);
         return;
     }
@@ -1103,7 +1103,7 @@ void func_800235AC(Player *player, s8 arg1) {
         return;
     }
     if ((player->unk_0CA & 0x20) == 0x20) {
-        change_player_color_effect_rgb(player, arg1, 0, 0.1f);
+        change_player_color_effect_rgb(player, arg1, DARK_COLOR, 0.1f);
         change_player_color_effect_cmy(player, arg1, 0, 0.1f);
         return;
     }
@@ -1162,13 +1162,13 @@ void func_800235AC(Player *player, s8 arg1) {
         if (((player->boundingBoxCorners[3].unk_14 & 1) == 1)
         || ((player->boundingBoxCorners[3].unk_14 & 2) == 2)
         || ((player->boundingBoxCorners[0].unk_14 & 3) == 3)) {
-            change_player_color_effect_rgb(player, arg1, 0x000000, 0.3f);
+            change_player_color_effect_rgb(player, arg1, DARK_COLOR, 0.3f);
             change_player_color_effect_cmy(player, arg1, 0x6F6F6F, 0.3f);
             return;
         }
-        func_800231D8(player, arg1);
+        render_light_environment_on_player(player, arg1);
         if ((player->unk_0CA & 0x1000) == 0x1000) {
-            change_player_color_effect_rgb(player, arg1, 0, 0.3f);
+            change_player_color_effect_rgb(player, arg1, DARK_COLOR, 0.3f);
             change_player_color_effect_cmy(player, arg1, 0xF0F0F0, 0.3f);
         }
     }
@@ -1305,7 +1305,7 @@ void func_80024374(Player *player, s8 arg1, s8 arg2) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void player_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
+void player_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     s32 pad;
     Mat4 sp1A4;
     s32 pad2[17];
@@ -1347,60 +1347,94 @@ void player_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
             sp154[2] = player->pos[2] + sp140;
         }
     }
-    D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1 * 0x80];
+    D_80164B04 = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x80];
     if ((arg2 == 0) || (arg2 == 1)) {
-        D_80164B08 = &D_802BFB80[D_801651D0[arg2][arg1]][arg2][arg1].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80[D_801651D0[arg2][arg1]][arg2][arg1].pixel_index_array[0x7C0];
+        D_80164B08 = &D_802BFB80[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
+        D_80164B0C = &D_802BFB80[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0x7C0];
     } else {
-        D_80164B08 = &D_802BFB80[D_801651D0[arg2][arg1]][arg2 - 1][arg1 - 4].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80[D_801651D0[arg2][arg1]][arg2 - 1][arg1 - 4].pixel_index_array[0x7C0];
+        D_80164B08 = &D_802BFB80[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0];
+        D_80164B0C = &D_802BFB80[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0x7C0];
     }
     mtxf_translate_rotate(sp1A4, sp154, sp14C);
     mtxf_scale2(sp1A4, gCharacterSize[player->characterId] * player->size);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxKart[arg1 + (arg2 * 8)], sp1A4);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxKart[playerId + (arg2 * 8)], sp1A4);
+
     if ((player->effects & 0x80000000) == 0x80000000) {
-        if (arg2 == arg1) {
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        if (arg2 == playerId) {
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             gSPDisplayList(gDisplayListHead++, common_setting_render_character);
             gDPLoadTLUT_pal256(gDisplayListHead++, D_80164B04);
             gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
-            func_8004B614(gPlayerRedEffect[arg1], gPlayerGreenEffect[arg1], gPlayerBlueEffect[arg1], gPlayerCyanEffect[arg1], gPlayerMagentaEffect[arg1], gPlayerYellowEffect[arg1], (s32) player->unk_0C6);
+            func_8004B614(
+                gPlayerRedEffect[playerId], 
+                gPlayerGreenEffect[playerId], 
+                gPlayerBlueEffect[playerId], 
+                gPlayerCyanEffect[playerId], 
+                gPlayerMagentaEffect[playerId], 
+                gPlayerYellowEffect[playerId], 
+                (s32) player->unk_0C6
+            );
             gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
         } else {
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             gSPDisplayList(gDisplayListHead++, common_setting_render_character);
             gDPLoadTLUT_pal256(gDisplayListHead++, D_80164B04);
             gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
-            func_8004B614(gPlayerRedEffect[arg1], gPlayerGreenEffect[arg1], gPlayerBlueEffect[arg1], gPlayerCyanEffect[arg1], gPlayerMagentaEffect[arg1], gPlayerYellowEffect[arg1], D_8018D970[arg1]);
+            func_8004B614(
+                gPlayerRedEffect[playerId], 
+                gPlayerGreenEffect[playerId], 
+                gPlayerBlueEffect[playerId], 
+                gPlayerCyanEffect[playerId], 
+                gPlayerMagentaEffect[playerId], 
+                gPlayerYellowEffect[playerId], 
+                D_8018D970[playerId]
+            );
             gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
         }
     } else if (((player->unk_0CA & 4) == 4) || (player->statusEffects & 0x08000000) || (player->statusEffects & 0x04000000)) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, common_setting_render_character);
         gDPLoadTLUT_pal256(gDisplayListHead++, D_80164B04);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
-        func_8004B614(gPlayerRedEffect[arg1], gPlayerGreenEffect[arg1], gPlayerBlueEffect[arg1], gPlayerCyanEffect[arg1], gPlayerMagentaEffect[arg1], gPlayerYellowEffect[arg1], (s32) player->unk_0C6);
+        func_8004B614(
+            gPlayerRedEffect[playerId], 
+            gPlayerGreenEffect[playerId], 
+            gPlayerBlueEffect[playerId], 
+            gPlayerCyanEffect[playerId], 
+            gPlayerMagentaEffect[playerId], 
+            gPlayerYellowEffect[playerId], 
+            (s32) player->unk_0C6
+        );
         gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, common_setting_render_character);
         gDPLoadTLUT_pal256(gDisplayListHead++, D_80164B04);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
-        func_8004B614(gPlayerRedEffect[arg1], gPlayerGreenEffect[arg1], gPlayerBlueEffect[arg1], gPlayerCyanEffect[arg1], gPlayerMagentaEffect[arg1], gPlayerYellowEffect[arg1], (s32) player->unk_0C6);
+        func_8004B614(
+            gPlayerRedEffect[playerId], 
+            gPlayerGreenEffect[playerId], 
+            gPlayerBlueEffect[playerId], 
+            gPlayerCyanEffect[playerId], 
+            gPlayerMagentaEffect[playerId], 
+            gPlayerYellowEffect[playerId], 
+            (s32) player->unk_0C6);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     }
+
     gDPLoadTextureBlock(gDisplayListHead++, D_80164B08, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, &D_800DDBB4[arg1][arg3], 4, 0);
+    gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
+    
     gDPLoadTextureBlock(gDisplayListHead++, D_80164B0C, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, &D_800DDBB4[arg1][arg3 + 4], 4, 0);
+    gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3 + 4], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
 }
 
-void ghost_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
+void ghost_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     s32 pad;
     Mat4 sp12C;
     s32 pad2[17];
@@ -1427,34 +1461,46 @@ void ghost_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     spDC[1] = (player->pos[1] - player->boundingBoxSize) + (spCC - 2.0);
     spDC[0] = player->pos[0] + spD0;
     spDC[2] = player->pos[2] + spC8;
-    D_80164B04 = &D_802F1F80[D_801651D0[arg2][arg1]][arg2][arg1 * 0x80];
+    D_80164B04 = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x80];
     if ((arg2 == 0) || (arg2 == 1)) {
-        D_80164B08 = &D_802BFB80[D_801651D0[arg2][arg1]][arg2][arg1].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80[D_801651D0[arg2][arg1]][arg2][arg1].pixel_index_array[0x7C0];
+        D_80164B08 = &D_802BFB80[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
+        D_80164B0C = &D_802BFB80[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0x7C0];
     } else {
-        D_80164B08 = &D_802BFB80[D_801651D0[arg2][arg1]][arg2 - 1][arg1 - 4].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80[D_801651D0[arg2][arg1]][arg2 - 1][arg1 - 4].pixel_index_array[0x7C0];
+        D_80164B08 = &D_802BFB80[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0];
+        D_80164B0C = &D_802BFB80[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0x7C0];
     }
+
     mtxf_translate_rotate(sp12C, spDC, spD4);
     mtxf_scale2(sp12C, gCharacterSize[player->characterId] * player->size);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxKart[arg1 + (arg2 * 8)], sp12C);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[arg1 + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxKart[playerId + (arg2 * 8)], sp12C);
+
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, common_setting_render_character);
     gDPLoadTLUT_pal256(gDisplayListHead++, D_80164B04);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
-    func_8004B614(gPlayerRedEffect[arg1], gPlayerGreenEffect[arg1], gPlayerBlueEffect[arg1], gPlayerCyanEffect[arg1], gPlayerMagentaEffect[arg1], gPlayerYellowEffect[arg1], spC2);
+    func_8004B614(
+        gPlayerRedEffect[playerId], 
+        gPlayerGreenEffect[playerId], 
+        gPlayerBlueEffect[playerId], 
+        gPlayerCyanEffect[playerId], 
+        gPlayerMagentaEffect[playerId], 
+        gPlayerYellowEffect[playerId], 
+        spC2
+    );
     gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
+    
     gDPLoadTextureBlock(gDisplayListHead++, D_80164B08, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, &D_800DDBB4[arg1][arg3], 4, 0);
+    gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
+    
     gDPLoadTextureBlock(gDisplayListHead++, D_80164B0C, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, &D_800DDBB4[arg1][arg3 + 4], 4, 0);
+    gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3 + 4], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
 }
 
-void func_80025DE8(Player *player, s8 arg1, s8 arg2, s8 arg3) {
+void func_80025DE8(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     Mat4 spA8;
     Vec3f sp9C;
     Vec3s sp94;
@@ -1465,25 +1511,37 @@ void func_80025DE8(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     sp94[0] = -0x00B6;
     sp94[1] = player->unk_048[arg2];
     sp94[2] = player->unk_050[arg2];
+
     mtxf_translate_rotate(spA8, sp9C, sp94);
     mtxf_scale2(spA8, gCharacterSize[player->characterId] * player->size);
     convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
+
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008D10);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
-    func_8004B614((s32) gPlayerRedEffect[arg1], (s32) gPlayerGreenEffect[arg1], (s32) gPlayerBlueEffect[arg1], (s32) gPlayerCyanEffect[arg1], (s32) gPlayerMagentaEffect[arg1], (s32) gPlayerYellowEffect[arg1], 0x00000040);
+    func_8004B614(
+        gPlayerRedEffect[playerId], 
+        gPlayerGreenEffect[playerId], 
+        gPlayerBlueEffect[playerId], 
+        gPlayerCyanEffect[playerId], 
+        gPlayerMagentaEffect[playerId], 
+        gPlayerYellowEffect[playerId], 
+        0x00000040
+    );
     gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
+
     gDPLoadTextureBlock(gDisplayListHead++, D_80164B08, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, &D_800DDBB4[arg1][arg3], 4, 0);
+    gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
+    
     gDPLoadTextureBlock(gDisplayListHead++, D_80164B0C, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, &D_800DDBB4[arg1][arg3 + 4], 4, 0);
+    gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3 + 4], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
     gMatrixEffectCount += 1;
 }
 
-void player_ice_reflection_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
+void player_ice_reflection_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     Mat4 spA8;
     Vec3f sp9C;
     Vec3s sp94;
@@ -1499,58 +1557,68 @@ void player_ice_reflection_render(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     } else {
         arg3 = 0;
     }
+
     mtxf_translate_rotate(spA8, sp9C, sp94);
     mtxf_scale2(spA8, gCharacterSize[player->characterId] * player->size);
     convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
+
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, common_setting_render_character);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
-    func_8004B614((s32) gPlayerRedEffect[arg1], (s32) gPlayerGreenEffect[arg1], (s32) gPlayerBlueEffect[arg1], (s32) gPlayerCyanEffect[arg1], (s32) gPlayerMagentaEffect[arg1], (s32) gPlayerYellowEffect[arg1], (s16) player->unk_0C6 / 2);
+    func_8004B614(
+        gPlayerRedEffect[playerId], 
+        gPlayerGreenEffect[playerId], 
+        gPlayerBlueEffect[playerId], 
+        gPlayerCyanEffect[playerId], 
+        gPlayerMagentaEffect[playerId], 
+        gPlayerYellowEffect[playerId], 
+        (s16) player->unk_0C6 / 2
+    );
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
     gDPLoadTextureBlock(gDisplayListHead++, D_80164B08, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, &D_800DDBB4[arg1][arg3], 4, 0);
+    gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gDPLoadTextureBlock(gDisplayListHead++, D_80164B0C, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    gSPVertex(gDisplayListHead++, &D_800DDBB4[arg1][arg3 + 4], 4, 0);
+    gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3 + 4], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
     gMatrixEffectCount += 1;
 }
 
-void func_800267AC(Player *player, s8 arg1, s8 arg2) {
+void func_800267AC(Player *player, s8 playerId, s8 arg2) {
     s32 pad[2];
     s32 temp_t1;
     s32 var_v1;
     OSMesg *sp34;
 
-    func_80026B4C(player, arg1, arg2, D_801651D0[arg2][arg1]);
+    func_80026B4C(player, playerId, arg2, D_801651D0[arg2][playerId]);
     if (!(player->unk_002 & (4 << (arg2 * 4)))) {
         var_v1 = 0;
     } else {
         var_v1 = 8;
     }
-    func_80023BF0(player, arg1, arg2, var_v1);
+    func_80023BF0(player, playerId, arg2, var_v1);
     temp_t1 = 8 << (arg2 * 4);
     if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->unk_110.unk3C[2] <= 50.0f) && (player->unk_0F8 != 9)) {
         if ((player->effects & 0x80000000) == 0x80000000) {
-            if (arg1 == arg2) {
-                func_80023C84(player, arg1, arg2);
+            if (playerId == arg2) {
+                func_80023C84(player, playerId, arg2);
             }
         } else {
-            func_80023C84(player, arg1, arg2);
+            func_80023C84(player, playerId, arg2);
         }
     }
     if ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB) {
-        player_render(player, arg1, arg2, var_v1);
+        player_render(player, playerId, arg2, var_v1);
     } else {
-        ghost_render(player, arg1, arg2, var_v1);
+        ghost_render(player, playerId, arg2, var_v1);
     }
     osRecvMesg(&gDmaMesgQueue, &sp34, OS_MESG_BLOCK);
     if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->unk_0F8 == 9) && ((player->unk_0CA & 1) != 1) && (player->unk_110.unk3C[2] <= 30.0f)) {
-        player_ice_reflection_render(player, arg1, arg2, var_v1);
+        player_ice_reflection_render(player, playerId, arg2, var_v1);
     }
     if (player->boostPower >= 2.0f) {
-        func_80025DE8(player, arg1, arg2, var_v1);
+        func_80025DE8(player, playerId, arg2, var_v1);
     }
 }
 
