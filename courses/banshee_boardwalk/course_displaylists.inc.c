@@ -1,8 +1,5 @@
 #include <ultra64.h>
 #include <macros.h>
-#include <PR/gbi.h>
-#include <actor_types.h>
-#include <course.h>
 
 #include <courses/banshee_boardwalk/course_displaylists.inc.h>
 #include <courses/banshee_boardwalk/course_offsets.inc.h>
