@@ -19,10 +19,10 @@ void func_8002088C(void);
 void func_80020BF4(void);
 void func_80020F1C(void);
 void try_render_player(Player*, s8, s8);
-void render_player_from_player_one(void);
-void render_player_from_player_two(void);
-void render_player_from_player_three(void);
-void render_player_from_player_four(void);
+void render_players_on_screen_one(void);
+void render_players_on_screen_two(void);
+void render_players_on_screen_three(void);
+void render_players_on_screen_four(void);
 void func_80021B0C(void);
 void func_80021C78(void);
 void func_80021D40(void);
@@ -52,8 +52,8 @@ s32  is_player_under_light_luigi_raceway(Player*, s8);
 void render_light_environment_on_player(Player*, s8);
 void func_800235AC(Player*, s8);
 void func_80023BF0(Player*, s8, s8, s8);
-void shadow_player_render(Player*, s8, s8);
-void shadow_player_render_credit(Player*, s8, s8);
+void render_player_shadow(Player*, s8, s8);
+void render_player_shadow_credits(Player*, s8, s8);
 void character_render(Player*, s8, s8, s8);
 void ghost_render(Player*, s8, s8, s8);
 void func_80025DE8(Player*, s8, s8, s8);
@@ -67,7 +67,7 @@ void func_80027024(s32, s32, s32);
 
 /* This is where I'd put my static data, if I had any */
 
-extern struct_D_802F1F80 *playerPalette;
+extern struct_D_802F1F80 *gPlayerPalette;
 extern u8 *D_80164B08;
 extern u8 *D_80164B0C;
 
@@ -91,7 +91,7 @@ extern s32 D_8018D930[];
 extern Gfx common_square_plain_render[];
 extern Gfx D_0D008D58[];
 
-extern s32 gNbPlayerRender;
+extern s32 gNumberPlayerRender;
 extern void *D_800DDB5C[];
 extern Vtx *D_800DDBB4[];
 extern f32 gCharacterSize[];

@@ -76,7 +76,7 @@ void func_80281D00(void) {
     mtxf_identity(matrix);
     render_set_position(matrix, 0);
     gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284F70));
-    render_player_from_player_one();
+    render_players_on_screen_one();
     gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284EE0));
     update_actors_loop();
     func_80058090(0);

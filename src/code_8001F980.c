@@ -25,7 +25,7 @@ s8 renderingFramebufferByPlayer[] = {
     0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x00, 0x02
 };
 
-s32 gNbPlayerRender = 0;
+s32 gNumberPlayerRender = 0;
 
 // Can't find anything that actually references these...
 UNUSED void *D_800DDB5C[3] = {
@@ -143,7 +143,7 @@ u16 func_8001FD78(Player *player, f32 posX, UNUSED f32 arg2, f32 posZ) {
     return ret;
 }
 
-void init_render_player(Player *player, Camera *camera, s8 playerId, s8 idPlyerRender) {
+void init_render_player(Player *player, Camera *camera, s8 playerId, s8 playerRenderId) {
     s32 pad[4];
     s32 sp4C;
     s32 sp48;
@@ -152,64 +152,64 @@ void init_render_player(Player *player, Camera *camera, s8 playerId, s8 idPlyerR
     s32 temp_v0_2;
 
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        func_8001F9E4(player, camera, idPlyerRender);
-        temp_v0 = 2 << (idPlyerRender << 2);
+        func_8001F9E4(player, camera, playerRenderId);
+        temp_v0 = 2 << (playerRenderId << 2);
         if (temp_v0 == (player->unk_002 & temp_v0)) {
             if (!(player->type & PLAYER_START_SEQUENCE)) {
-                func_8002934C(player, camera, idPlyerRender, playerId);
+                func_8002934C(player, camera, playerRenderId, playerId);
             } else {
-                func_8002934C(player, camera, idPlyerRender, playerId);
+                func_8002934C(player, camera, playerRenderId, playerId);
                 player->slopeAccel = 0;
                 player->unk_206 = 0;
-                player->unk_050[idPlyerRender] = 0;
+                player->unk_050[playerRenderId] = 0;
             }
         }
         func_8001F980(&sp4C, &sp48);
-        temp_v0_2 = 1 << (idPlyerRender << 2);
+        temp_v0_2 = 1 << (playerRenderId << 2);
         if ((temp_v0 == (player->unk_002 & temp_v0)) && (temp_v0_2 == (player->unk_002 & temp_v0_2))) {
             if ((check_player_camera_collision(player, camera, D_80165570 + sp4C, D_80165572 + sp48) == 1) & 0xFFFF) {
-                D_80164AB0[gNbPlayerRender] = (s16) playerId;
-                D_80164AC0[gNbPlayerRender] = (s16) idPlyerRender;
-                D_80164AD0[gNbPlayerRender] = player;
-                gNbPlayerRender += 1;
-                D_80165190[idPlyerRender][playerId] = 0;
-                D_801650D0[idPlyerRender][playerId] = player->animFrameSelector[idPlyerRender];
-                D_80165110[idPlyerRender][playerId] = player->animGroupSelector[idPlyerRender];
-                D_80165150[idPlyerRender][playerId] = player->unk_0A8;
-                D_801651D0[idPlyerRender][playerId] += 1;
-                if (D_801651D0[idPlyerRender][playerId] == 2) {
-                    D_801651D0[idPlyerRender][playerId] = 0;
+                D_80164AB0[gNumberPlayerRender] = (s16) playerId;
+                D_80164AC0[gNumberPlayerRender] = (s16) playerRenderId;
+                D_80164AD0[gNumberPlayerRender] = player;
+                gNumberPlayerRender += 1;
+                D_80165190[playerRenderId][playerId] = 0;
+                D_801650D0[playerRenderId][playerId] = player->animFrameSelector[playerRenderId];
+                D_80165110[playerRenderId][playerId] = player->animGroupSelector[playerRenderId];
+                D_80165150[playerRenderId][playerId] = player->unk_0A8;
+                D_801651D0[playerRenderId][playerId] += 1;
+                if (D_801651D0[playerRenderId][playerId] == 2) {
+                    D_801651D0[playerRenderId][playerId] = 0;
                 }
             } else {
                 if ((check_player_camera_collision(player, camera, D_80165574 + sp4C, D_80165576) == 1) & 0xFFFF) {
-                    if ((sRenderingFramebuffer == renderingFramebufferByPlayer[playerId]) || ((D_801650D0[idPlyerRender][playerId] - player->animFrameSelector[idPlyerRender]) > 0x13) || ((D_801650D0[idPlyerRender][playerId] - player->animFrameSelector[idPlyerRender]) < -0x13) || (D_80165190[idPlyerRender][playerId] == (s16) 1U)) {
-                        D_80164AB0[gNbPlayerRender] = (s16) playerId;
-                        D_80164AC0[gNbPlayerRender] = (s16) idPlyerRender;
-                        D_80164AD0[gNbPlayerRender] = player;
-                        gNbPlayerRender += 1;
-                        D_801650D0[idPlyerRender][playerId] = player->animFrameSelector[idPlyerRender];
-                        D_80165110[idPlyerRender][playerId] = player->animGroupSelector[idPlyerRender];
-                        D_80165150[idPlyerRender][playerId] = player->unk_0A8;
-                        D_80165190[idPlyerRender][playerId] = 0;
-                        D_801651D0[idPlyerRender][playerId] += 1;
-                        if (D_801651D0[idPlyerRender][playerId] == 2) {
-                            D_801651D0[idPlyerRender][playerId] = 0;
+                    if ((sRenderingFramebuffer == renderingFramebufferByPlayer[playerId]) || ((D_801650D0[playerRenderId][playerId] - player->animFrameSelector[playerRenderId]) > 0x13) || ((D_801650D0[playerRenderId][playerId] - player->animFrameSelector[playerRenderId]) < -0x13) || (D_80165190[playerRenderId][playerId] == (s16) 1U)) {
+                        D_80164AB0[gNumberPlayerRender] = (s16) playerId;
+                        D_80164AC0[gNumberPlayerRender] = (s16) playerRenderId;
+                        D_80164AD0[gNumberPlayerRender] = player;
+                        gNumberPlayerRender += 1;
+                        D_801650D0[playerRenderId][playerId] = player->animFrameSelector[playerRenderId];
+                        D_80165110[playerRenderId][playerId] = player->animGroupSelector[playerRenderId];
+                        D_80165150[playerRenderId][playerId] = player->unk_0A8;
+                        D_80165190[playerRenderId][playerId] = 0;
+                        D_801651D0[playerRenderId][playerId] += 1;
+                        if (D_801651D0[playerRenderId][playerId] == 2) {
+                            D_801651D0[playerRenderId][playerId] = 0;
                         }
                     }
                 } else {
                     if ((
-                        (D_801650D0[idPlyerRender][playerId] - player->animFrameSelector[idPlyerRender]) > 0x13) || ((D_801650D0[idPlyerRender][playerId] - player->animFrameSelector[idPlyerRender]) < -0x13) || (D_80165190[idPlyerRender][playerId] == (s16) 1U)) {
-                        D_80164AB0[gNbPlayerRender] = (s16) playerId;
-                        D_80164AC0[gNbPlayerRender] = (s16) idPlyerRender;
-                        D_80164AD0[gNbPlayerRender] = player;
-                        gNbPlayerRender += 1;
-                        D_801650D0[idPlyerRender][playerId] = (s16) player->animFrameSelector[idPlyerRender];
-                        D_80165110[idPlyerRender][playerId] = player->animGroupSelector[idPlyerRender];
-                        D_80165150[idPlyerRender][playerId] = player->unk_0A8;
-                        D_80165190[idPlyerRender][playerId] = 0;
-                        D_801651D0[idPlyerRender][playerId] += 1;
-                        if (D_801651D0[idPlyerRender][playerId] == 2) {
-                            D_801651D0[idPlyerRender][playerId] = 0;
+                        (D_801650D0[playerRenderId][playerId] - player->animFrameSelector[playerRenderId]) > 0x13) || ((D_801650D0[playerRenderId][playerId] - player->animFrameSelector[playerRenderId]) < -0x13) || (D_80165190[playerRenderId][playerId] == (s16) 1U)) {
+                        D_80164AB0[gNumberPlayerRender] = (s16) playerId;
+                        D_80164AC0[gNumberPlayerRender] = (s16) playerRenderId;
+                        D_80164AD0[gNumberPlayerRender] = player;
+                        gNumberPlayerRender += 1;
+                        D_801650D0[playerRenderId][playerId] = (s16) player->animFrameSelector[playerRenderId];
+                        D_80165110[playerRenderId][playerId] = player->animGroupSelector[playerRenderId];
+                        D_80165150[playerRenderId][playerId] = player->unk_0A8;
+                        D_80165190[playerRenderId][playerId] = 0;
+                        D_801651D0[playerRenderId][playerId] += 1;
+                        if (D_801651D0[playerRenderId][playerId] == 2) {
+                            D_801651D0[playerRenderId][playerId] = 0;
                         }
                     }
                 }
@@ -234,7 +234,7 @@ void func_80020524(void) {
     }
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
-    for (i = 1; i < gNbPlayerRender; i++) {
+    for (i = 1; i < gNumberPlayerRender; i++) {
 
             func_80027560(D_80164AD0[i], D_80164AB0[i], D_80164AC0[i], D_80164AC0[i], D_801651D0[D_80164AC0[i]][D_80164AB0[i]]);
 
@@ -243,8 +243,8 @@ void func_80020524(void) {
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
 
-    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gNbPlayerRender]][D_80164AAE[gNbPlayerRender]]][D_80164ABE[gNbPlayerRender]][D_80164AAE[gNbPlayerRender]].unk_00,
-               D_802BFB80[D_801651D0[D_80164ABE[gNbPlayerRender]][D_80164AAE[gNbPlayerRender]]][D_80164ABE[gNbPlayerRender]][D_80164AAE[gNbPlayerRender]].pixel_index_array);
+    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gNumberPlayerRender]][D_80164AAE[gNumberPlayerRender]]][D_80164ABE[gNumberPlayerRender]][D_80164AAE[gNumberPlayerRender]].unk_00,
+               D_802BFB80[D_801651D0[D_80164ABE[gNumberPlayerRender]][D_80164AAE[gNumberPlayerRender]]][D_80164ABE[gNumberPlayerRender]][D_80164AAE[gNumberPlayerRender]].pixel_index_array);
 }
 
 void func_8002088C(void) {
@@ -262,14 +262,14 @@ void func_8002088C(void) {
         func_8006E634(gPlayerEight, 7, 1);
     }
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-    for (var_s0 = 1; var_s0 < gNbPlayerRender; var_s0++) {
+    for (var_s0 = 1; var_s0 < gNumberPlayerRender; var_s0++) {
         func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0], D_80164AC0[var_s0], D_80164AC0[var_s0], D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
         mio0decode(D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].unk_00,
                    D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gNbPlayerRender]][D_80164AAE[gNbPlayerRender]]][D_80164ABE[gNbPlayerRender]][D_80164AAE[gNbPlayerRender]].unk_00,
-               D_802BFB80[D_801651D0[D_80164ABE[gNbPlayerRender]][D_80164AAE[gNbPlayerRender]]][D_80164ABE[gNbPlayerRender]][D_80164AAE[gNbPlayerRender]].pixel_index_array);
+    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gNumberPlayerRender]][D_80164AAE[gNumberPlayerRender]]][D_80164ABE[gNumberPlayerRender]][D_80164AAE[gNumberPlayerRender]].unk_00,
+               D_802BFB80[D_801651D0[D_80164ABE[gNumberPlayerRender]][D_80164AAE[gNumberPlayerRender]]][D_80164ABE[gNumberPlayerRender]][D_80164AAE[gNumberPlayerRender]].pixel_index_array);
 }
 
 void func_80020BF4(void) {
@@ -281,14 +281,14 @@ void func_80020BF4(void) {
     func_8006E6BC(gPlayerThree,   2, 2);
     func_8006E6BC(gPlayerFour,    3, 2);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-    for (var_s0 = 1; var_s0 < gNbPlayerRender; var_s0++) {
+    for (var_s0 = 1; var_s0 < gNumberPlayerRender; var_s0++) {
         func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0] + 4, D_80164AC0[var_s0], D_80164AC0[var_s0] - 2, D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
         mio0decode(D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].unk_00,
                    D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gNbPlayerRender]][D_80164AAE[gNbPlayerRender]]][D_80164ABE[gNbPlayerRender] - 2][D_80164AAE[gNbPlayerRender] + 4].unk_00,
-               D_802BFB80[D_801651D0[D_80164ABE[gNbPlayerRender]][D_80164AAE[gNbPlayerRender]]][D_80164ABE[gNbPlayerRender] - 2][D_80164AAE[gNbPlayerRender] + 4].pixel_index_array);
+    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gNumberPlayerRender]][D_80164AAE[gNumberPlayerRender]]][D_80164ABE[gNumberPlayerRender] - 2][D_80164AAE[gNumberPlayerRender] + 4].unk_00,
+               D_802BFB80[D_801651D0[D_80164ABE[gNumberPlayerRender]][D_80164AAE[gNumberPlayerRender]]][D_80164ABE[gNumberPlayerRender] - 2][D_80164AAE[gNumberPlayerRender] + 4].pixel_index_array);
 }
 
 void func_80020F1C(void) {
@@ -300,14 +300,14 @@ void func_80020F1C(void) {
     func_8006E744(gPlayerThree,   2, 3);
     func_8006E744(gPlayerFour,    3, 3);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-    for (var_s0 = 1; var_s0 < gNbPlayerRender; var_s0++) {
+    for (var_s0 = 1; var_s0 < gNumberPlayerRender; var_s0++) {
         func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0] + 4, D_80164AC0[var_s0], D_80164AC0[var_s0] - 2, D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
         mio0decode(D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].unk_00,
                    D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gNbPlayerRender]][D_80164AAE[gNbPlayerRender]]][D_80164ABE[gNbPlayerRender] - 2][D_80164AAE[gNbPlayerRender] + 4].unk_00,
-               D_802BFB80[D_801651D0[D_80164ABE[gNbPlayerRender]][D_80164AAE[gNbPlayerRender]]][D_80164ABE[gNbPlayerRender] - 2][D_80164AAE[gNbPlayerRender] + 4].pixel_index_array);
+    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gNumberPlayerRender]][D_80164AAE[gNumberPlayerRender]]][D_80164ABE[gNumberPlayerRender] - 2][D_80164AAE[gNumberPlayerRender] + 4].unk_00,
+               D_802BFB80[D_801651D0[D_80164ABE[gNumberPlayerRender]][D_80164AAE[gNumberPlayerRender]]][D_80164ABE[gNumberPlayerRender] - 2][D_80164AAE[gNumberPlayerRender] + 4].pixel_index_array);
 }
 
 void try_render_player(Player *player, s8 playerId, s8 arg2) {
@@ -320,7 +320,7 @@ void try_render_player(Player *player, s8 playerId, s8 arg2) {
     }
 }
 
-void render_player_from_player_one(void) {
+void render_players_on_screen_one(void) {
     UNUSED s32 pad;
     UNUSED char *sp3C[8] = {
         "S_MARIO", "S_LUIZI", "S_YOSSY", "S_KINOP",
@@ -331,7 +331,7 @@ void render_player_from_player_one(void) {
         "J_DONKY", "J_WARIO", "J_PEACH", "J_KUPPA",
     };
 
-    gNbPlayerRender = 0;
+    gNumberPlayerRender = 0;
     init_render_player(gPlayerOneCopy, camera1, 0U, 0U);
     init_render_player(gPlayerTwo, camera1, 1U, 0U);
     init_render_player(gPlayerThree, camera1, 2U, 0U);
@@ -352,7 +352,7 @@ void render_player_from_player_one(void) {
         try_render_player(gPlayerSeven, 6U, 0U);
         try_render_player(gPlayerEight, 7U, 0U);
     }
-    if (gNbPlayerRender != 0) {
+    if (gNumberPlayerRender != 0) {
         func_80020524();
     } else {
         func_8006E5AC(gPlayerOneCopy, 0, 0);
@@ -366,12 +366,12 @@ void render_player_from_player_one(void) {
             func_8006E5AC(gPlayerEight, 7, 0);
         }
     }
-    gNbPlayerRender = 0;
+    gNumberPlayerRender = 0;
 }
 
 // Hello, you've found the location of the bulk of the data section for this file
 // For reasons beyound human comprehension it MUST be placed somewhere below
-// render_player_from_player_one
+// render_players_on_screen_one
 
 s32 junk[] = {0, 0, 0};
 
@@ -499,8 +499,8 @@ s32 D_800DDE74[] = {
 
 s32 maybeCompilerPadding = 0;
 
-void render_player_from_player_two(void) {
-    gNbPlayerRender = 0;
+void render_players_on_screen_two(void) {
+    gNumberPlayerRender = 0;
     init_render_player(gPlayerOneCopy, camera2, 0, 1);
     init_render_player(gPlayerTwo, camera2, 1, 1);
     init_render_player(gPlayerThree, camera2, 2, 1);
@@ -521,7 +521,7 @@ void render_player_from_player_two(void) {
         try_render_player(gPlayerSeven, 6, 1);
         try_render_player(gPlayerEight, 7, 1);
     }
-    if (gNbPlayerRender != 0) {
+    if (gNumberPlayerRender != 0) {
         func_8002088C();
     } else {
         func_8006E634(gPlayerOneCopy, 0, 1);
@@ -535,11 +535,11 @@ void render_player_from_player_two(void) {
             func_8006E634(gPlayerEight, 7, 1);
         }
     }
-    gNbPlayerRender = 0;
+    gNumberPlayerRender = 0;
 }
 
-void render_player_from_player_three(void) {
-    gNbPlayerRender = 0;
+void render_players_on_screen_three(void) {
+    gNumberPlayerRender = 0;
     init_render_player(gPlayerOneCopy, camera3, 0, 2);
     init_render_player(gPlayerTwo, camera3, 1, 2);
     init_render_player(gPlayerThree, camera3, 2, 2);
@@ -548,7 +548,7 @@ void render_player_from_player_three(void) {
     try_render_player(gPlayerTwo, 1, 2);
     try_render_player(gPlayerThree, 2, 2);
     try_render_player(gPlayerFour, 3, 2);
-    if (gNbPlayerRender != 0) {
+    if (gNumberPlayerRender != 0) {
         func_80020BF4();
     } else {
         func_8006E6BC(gPlayerOneCopy, 0, 2);
@@ -556,11 +556,11 @@ void render_player_from_player_three(void) {
         func_8006E6BC(gPlayerThree, 2, 2);
         func_8006E6BC(gPlayerFour, 3, 2);
     }
-    gNbPlayerRender = 0;
+    gNumberPlayerRender = 0;
 }
 
-void render_player_from_player_four(void) {
-    gNbPlayerRender = 0;
+void render_players_on_screen_four(void) {
+    gNumberPlayerRender = 0;
     init_render_player(gPlayerOneCopy, camera4, 0, 3);
     init_render_player(gPlayerTwo, camera4, 1, 3);
     init_render_player(gPlayerThree, camera4, 2, 3);
@@ -569,7 +569,7 @@ void render_player_from_player_four(void) {
     try_render_player(gPlayerTwo, 1, 3);
     try_render_player(gPlayerThree, 2, 3);
     try_render_player(gPlayerFour, 3, 3);
-    if (gNbPlayerRender != 0) {
+    if (gNumberPlayerRender != 0) {
         func_80020F1C();
     } else {
         func_8006E744(gPlayerOneCopy, 0, 3);
@@ -577,7 +577,7 @@ void render_player_from_player_four(void) {
         func_8006E744(gPlayerThree, 2, 3);
         func_8006E744(gPlayerFour, 3, 3);
     }
-    gNbPlayerRender = 0;
+    gNumberPlayerRender = 0;
 }
 
 void func_80021B0C(void) {
@@ -593,16 +593,16 @@ void func_80021B0C(void) {
     }
     if (gGamestate == ENDING_SEQUENCE) {
         if (gPlayerOne->unk_044 & 0x2000) {
-            shadow_player_render_credit(gPlayerOne, 0, 0);
+            render_player_shadow_credits(gPlayerOne, 0, 0);
         }
         if (gPlayerTwo->unk_044 & 0x2000) {
-            shadow_player_render_credit(gPlayerTwo, 1, 0);
+            render_player_shadow_credits(gPlayerTwo, 1, 0);
         }
         if (gPlayerThree->unk_044 & 0x2000) {
-            shadow_player_render_credit(gPlayerThree, 2, 0);
+            render_player_shadow_credits(gPlayerThree, 2, 0);
         }
         if (gPlayerFour->unk_044 & 0x2000) {
-            shadow_player_render_credit(gPlayerFour, 3, 0);
+            render_player_shadow_credits(gPlayerFour, 3, 0);
         }
     }
 }
@@ -1010,7 +1010,7 @@ bool is_player_under_light_luigi_raceway(Player *player, s8 arg1) {
             || ((gNearestWaypointByPlayerId[arg1] >= 0x169) && (gNearestWaypointByPlayerId[arg1] < 0x170))
             || ((gNearestWaypointByPlayerId[arg1] >= 0x174) && (gNearestWaypointByPlayerId[arg1] < 0x17A))
             || ((gNearestWaypointByPlayerId[arg1] >= 0x17E) && (gNearestWaypointByPlayerId[arg1] < 0x184))) { // under a light in the tunnel
-                change_player_color_effect_rgb(player, arg1, LIGHT_COLOR, 0.3f);
+                change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
                 D_80164B80[arg1] = 0;
                 return TRUE;
@@ -1029,7 +1029,7 @@ void render_light_environment_on_player(Player *player, s8 arg1) {
             || ((gNearestWaypointByPlayerId[arg1] >= 0x14D) && (gNearestWaypointByPlayerId[arg1] < 0x15C))
             || ((gNearestWaypointByPlayerId[arg1] >= 0x1D1) && (gNearestWaypointByPlayerId[arg1] < 0x1E4))
             || (player->unk_110.unk3C[2] >= 500.0f)) { // over lava
-                change_player_color_effect_rgb(player, arg1, LAVA_COLOR, 0.3f);
+                change_player_color_effect_rgb(player, arg1, COLOR_LAVA, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0x004040, 0.3f);
                 D_80164B80[arg1] = 0;
             } else if (((gNearestWaypointByPlayerId[arg1] >= 0xF1) && (gNearestWaypointByPlayerId[arg1] < 0xF5))
@@ -1038,11 +1038,11 @@ void render_light_environment_on_player(Player *player, s8 arg1) {
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x10F) && (gNearestWaypointByPlayerId[arg1] < 0x113))
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x145) && (gNearestWaypointByPlayerId[arg1] < 0x14A))
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x15E) && (gNearestWaypointByPlayerId[arg1] < 0x163))) { // under a lamp
-                change_player_color_effect_rgb(player, arg1, LIGHT_COLOR, 0.3f);
+                change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
                 D_80164B80[arg1] = 0;
             } else { // normal color
-                change_player_color_effect_rgb(player, arg1, DARK_COLOR, 0.3f);
+                change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0, 0.3f);
                 D_80164B80[arg1] = 0;
             }
@@ -1066,17 +1066,17 @@ void render_light_environment_on_player(Player *player, s8 arg1) {
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x24C) && (gNearestWaypointByPlayerId[arg1] < 0x256))
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x288) && (gNearestWaypointByPlayerId[arg1] < 0x269))
                 || ((gNearestWaypointByPlayerId[arg1] >= 0x274) && (gNearestWaypointByPlayerId[arg1] < 0x27E))) { // under a lamp
-                change_player_color_effect_rgb(player, arg1, LIGHT_COLOR, 0.3f);
+                change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0x0000E0, 0.3f);
                 D_80164B80[arg1] = 0;
             } else {
-                change_player_color_effect_rgb(player, arg1, DARK_COLOR, 0.3f);
+                change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0, 0.3f);
                 D_80164B80[arg1] = 0;
             }
             break;
         default:
-            change_player_color_effect_rgb(player, arg1, DARK_COLOR, 0.3f);
+            change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 0.3f);
             change_player_color_effect_cmy(player, arg1, 0, 0.3f);
             D_80164B80[arg1] = 0;
             break;
@@ -1087,7 +1087,7 @@ void func_800235AC(Player *player, s8 arg1) {
     s32 temp;
 
     if (((player->type & 0x100) == 0x100) && (player == gPlayerThree)) {
-        change_player_color_effect_rgb(player, arg1, LIGHT_COLOR, 0.3f);
+        change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
         change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
         D_80164B80[arg1] = 0;
         return;
@@ -1099,7 +1099,7 @@ void func_800235AC(Player *player, s8 arg1) {
         return;
     }
     if ((player->unk_0CA & 4) == 4) {
-        change_player_color_effect_rgb(player, arg1, DARK_COLOR, 1.0f);
+        change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 1.0f);
         change_player_color_effect_cmy(player, arg1, 0, 1.0f);
         return;
     }
@@ -1109,7 +1109,7 @@ void func_800235AC(Player *player, s8 arg1) {
         return;
     }
     if ((player->unk_0CA & 0x20) == 0x20) {
-        change_player_color_effect_rgb(player, arg1, DARK_COLOR, 0.1f);
+        change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 0.1f);
         change_player_color_effect_cmy(player, arg1, 0, 0.1f);
         return;
     }
@@ -1168,13 +1168,13 @@ void func_800235AC(Player *player, s8 arg1) {
         if (((player->boundingBoxCorners[3].unk_14 & 1) == 1)
         || ((player->boundingBoxCorners[3].unk_14 & 2) == 2)
         || ((player->boundingBoxCorners[0].unk_14 & 3) == 3)) {
-            change_player_color_effect_rgb(player, arg1, DARK_COLOR, 0.3f);
+            change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 0.3f);
             change_player_color_effect_cmy(player, arg1, 0x6F6F6F, 0.3f);
             return;
         }
         render_light_environment_on_player(player, arg1);
         if ((player->unk_0CA & 0x1000) == 0x1000) {
-            change_player_color_effect_rgb(player, arg1, DARK_COLOR, 0.3f);
+            change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 0.3f);
             change_player_color_effect_cmy(player, arg1, 0xF0F0F0, 0.3f);
         }
     }
@@ -1191,7 +1191,7 @@ void func_80023BF0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
     }
 }
 
-void shadow_player_render(Player *player, s8 arg1, s8 arg2) {
+void render_player_shadow(Player *player, s8 arg1, s8 arg2) {
     Mat4 sp118;
     UNUSED Mat4 pad;
     Vec3f spCC;
@@ -1266,7 +1266,7 @@ void shadow_player_render(Player *player, s8 arg1, s8 arg2) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void shadow_player_render_credit(Player *player, s8 playerId, s8 arg2) {
+void render_player_shadow_credits(Player *player, s8 playerId, s8 arg2) {
     Mat4 sp118;
     UNUSED Mat4 pad;
     Vec3f spCC;
@@ -1361,9 +1361,9 @@ void character_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
         }
     }
 #ifdef AVOID_UB
-    playerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId];
+    gPlayerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId];
 #else
-    playerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
+    gPlayerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
 #endif
     if ((arg2 == 0) || (arg2 == 1)) {
         D_80164B08 = &D_802BFB80[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
@@ -1380,7 +1380,7 @@ void character_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
         if (arg2 == playerId) {
             gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             gSPDisplayList(gDisplayListHead++, common_setting_render_character);
-            gDPLoadTLUT_pal256(gDisplayListHead++, playerPalette);
+            gDPLoadTLUT_pal256(gDisplayListHead++, gPlayerPalette);
             gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
             func_8004B614(
                 gPlayerRedEffect[playerId],
@@ -1395,7 +1395,7 @@ void character_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
         } else {
             gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             gSPDisplayList(gDisplayListHead++, common_setting_render_character);
-            gDPLoadTLUT_pal256(gDisplayListHead++, playerPalette);
+            gDPLoadTLUT_pal256(gDisplayListHead++, gPlayerPalette);
             gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
             func_8004B614(
                 gPlayerRedEffect[playerId],
@@ -1411,7 +1411,7 @@ void character_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     } else if (((player->unk_0CA & 4) == 4) || (player->statusEffects & 0x08000000) || (player->statusEffects & 0x04000000)) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, common_setting_render_character);
-        gDPLoadTLUT_pal256(gDisplayListHead++, playerPalette);
+        gDPLoadTLUT_pal256(gDisplayListHead++, gPlayerPalette);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
         func_8004B614(
             gPlayerRedEffect[playerId],
@@ -1427,7 +1427,7 @@ void character_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     } else {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, common_setting_render_character);
-        gDPLoadTLUT_pal256(gDisplayListHead++, playerPalette);
+        gDPLoadTLUT_pal256(gDisplayListHead++, gPlayerPalette);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
         func_8004B614(
             gPlayerRedEffect[playerId],
@@ -1479,9 +1479,9 @@ void ghost_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     spDC[0] = player->pos[0] + spD0;
     spDC[2] = player->pos[2] + spC8;
 #ifdef AVOID_UB
-    playerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId];
+    gPlayerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId];
 #else
-    playerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
+    gPlayerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
 #endif
     if ((arg2 == 0) || (arg2 == 1)) {
         D_80164B08 = &D_802BFB80[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
@@ -1497,7 +1497,7 @@ void ghost_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, common_setting_render_character);
-    gDPLoadTLUT_pal256(gDisplayListHead++, playerPalette);
+    gDPLoadTLUT_pal256(gDisplayListHead++, gPlayerPalette);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
     func_8004B614(
         gPlayerRedEffect[playerId],
@@ -1623,10 +1623,10 @@ void player_render(Player *player, s8 playerId, s8 arg2) {
     if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->unk_110.unk3C[2] <= 50.0f) && (player->unk_0F8 != 9)) {
         if ((player->effects & 0x80000000) == 0x80000000) {
             if (playerId == arg2) {
-                shadow_player_render(player, playerId, arg2);
+                render_player_shadow(player, playerId, arg2);
             }
         } else {
-            shadow_player_render(player, playerId, arg2);
+            render_player_shadow(player, playerId, arg2);
         }
     }
     if ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB) {
