@@ -164,7 +164,7 @@ index 0000000..5569838
 +            player->type &= PLAYER_CPU;
 +        }
 +
-+        gIsHUDVisible = isFlycam;
++        gIsHUDVisible = !isFlycam;
 +
 +        if (isFlycam) {
 +
