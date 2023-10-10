@@ -5497,7 +5497,7 @@ void func_80011D48(s32 playerIndex, Player *player) {
     if (test >= (u16)*D_801632B0) {
         switch (*D_801632B0) {
         case 1:
-            player->unk_0BC &= ~0x10;
+            player->effects &= ~0x10;
             D_801630E8[playerIndex] = 0;
             D_801632E8[playerIndex] = 1;
             break;
