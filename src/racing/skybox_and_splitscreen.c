@@ -802,7 +802,7 @@ void func_802A59A4(void) {
     }
     render_course_actors(D_800DC5EC);
     func_80058090(0);
-    func_800212B4();
+    render_player_from_player_one();
     func_8029122C(D_800DC5EC, 0);
     func_80021B0C();
     func_802A2F34(D_800DC5EC);
@@ -851,7 +851,7 @@ void func_802A5CB4(void) {
     }
     render_course_actors(D_800DC5EC);
     func_80058090(1);
-    func_800212B4();
+    render_player_from_player_one();
     func_8029122C(D_800DC5EC, 0);
     func_80021B0C();
     func_802A2F34(D_800DC5EC);
@@ -898,7 +898,7 @@ void func_802A5FAC(void) {
     }
     render_course_actors(D_800DC5F0);
     func_80058090(2);
-    func_800215DC();
+    render_player_from_player_two();
     func_8029122C(D_800DC5F0, 1);
     func_80021C78();
     func_802A2F34(D_800DC5F0);
@@ -947,7 +947,7 @@ void func_802A62A4(void) {
     }
     render_course_actors(D_800DC5EC);
     func_80058090(3);
-    func_800212B4();
+    render_player_from_player_one();
     func_8029122C(D_800DC5EC, 0);
     func_80021B0C();
     func_802A2F34(D_800DC5EC);
@@ -996,7 +996,7 @@ void func_802A65B8(void) {
     }
     render_course_actors(D_800DC5F0);
     func_80058090(4);
-    func_800215DC();
+    render_player_from_player_two();
     func_8029122C(D_800DC5F0, 1);
     func_80021C78();
     func_802A2F34(D_800DC5F0);
@@ -1043,7 +1043,7 @@ void func_802A68CC(void) {
     }
     render_course_actors(D_800DC5EC);
     func_80058090(8);
-    func_800212B4();
+    render_player_from_player_one();
     func_8029122C(D_800DC5EC, 0);
     func_80021B0C();
     func_802A2F34(D_800DC5EC);
@@ -1090,7 +1090,7 @@ void func_802A6BB0(void) {
     }
     render_course_actors(D_800DC5F0);
     func_80058090(9);
-    func_800215DC();
+    render_player_from_player_two();
     func_8029122C(D_800DC5F0, 1);
     func_80021C78();
     func_802A2F34(D_800DC5F0);
@@ -1137,7 +1137,7 @@ void func_802A6E94(void) {
     }
     render_course_actors(D_800DC5F4);
     func_80058090(10);
-    func_8002186C();
+    render_player_from_player_three();
     func_8029122C(D_800DC5F4, 2);
     func_80021D40();
     func_802A2F34(D_800DC5F4);
@@ -1192,7 +1192,7 @@ void func_802A7178(void) {
     }
     render_course_actors(D_800DC5F8);
     func_80058090(11);
-    func_800219BC();
+    render_player_from_player_four();
     func_8029122C(D_800DC5F8, 3);
     func_80021DA8();
     func_802A2F34(D_800DC5F8);
