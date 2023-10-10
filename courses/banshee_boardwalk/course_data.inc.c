@@ -2652,7 +2652,7 @@ Gfx d_course_banshee_boardwalk_dl_4480[] =
 };
 
 // 0x4578 Spawn location
-struct TrackWayPoint d_course_banshee_boardwalk_unknown_waypoints[] = {
+TrackWaypoint d_course_banshee_boardwalk_unknown_waypoints[] = {
     {5, 0, -65, 0},
     {5, 0, -90, 0},
     {4, 0, -203, 0},
@@ -2734,7 +2734,7 @@ struct TrackWayPoint d_course_banshee_boardwalk_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_banshee_boardwalk_track_waypoints[] = {
+TrackWaypoint d_course_banshee_boardwalk_track_waypoints[] = {
     {5, 12, -77, 1},
     {4, 12, -97, 1},
     {4, 12, -117, 1},

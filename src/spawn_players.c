@@ -728,9 +728,9 @@ void func_8003C0F0(void) {
         case COURSE_WARIO_STADIUM:
         case COURSE_DK_JUNGLE:
             func_8000F2DC();
-            sp5E = (f32) D_80164550[0][0].wayPointX;
-            sp5C = (f32) D_80164550[0][0].wayPointZ;
-            sp5A = (f32) D_80164550[0][0].wayPointY;
+            sp5E = (f32) D_80164550[0][0].posX;
+            sp5C = (f32) D_80164550[0][0].posZ;
+            sp5A = (f32) D_80164550[0][0].posY;
             if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
                 sp5E = 0;
             }

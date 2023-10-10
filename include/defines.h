@@ -103,6 +103,16 @@
 #define PLAYER_THREE 2
 #define PLAYER_FOUR 3
 
+
+#define MARIO_SIZE  0.75f
+#define LUIGI_SIZE  0.75f
+#define YOSHI_SIZE  0.75f
+#define TOAD_SIZE   0.75f
+#define DK_SIZE     0.75f
+#define WARIO_SIZE  0.75f
+#define PEACH_SIZE  0.75f
+#define BOWSER_SIZE 0.75f
+
 // 2P Game has Grand Prix, VS, and Battle as available game types
 #define MAX_NUM_MAIN_MENU_GAME_TYPES 3
 
@@ -171,7 +181,7 @@
 #define RACING_DUPLICATE 14
 
 /**
- * Options for gMenuSelectionFromQuit and gMenuSelectionFromEndingSequence
+ * Options for gGameState gMenuSelectionFromQuit and gMenuSelectionFromEndingSequence
 **/
 #define START_MENU_FROM_QUIT 0
 #define MAIN_MENU_FROM_QUIT 1

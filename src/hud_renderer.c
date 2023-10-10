@@ -3234,7 +3234,7 @@ s32 func_80050644(u16 arg0, s32 *arg1, s32 *arg2) {
 }
 
 void func_800507D8(u16 bombIndex, s32 *arg1, s32 *arg2) {
-    s32 temp_v0 = D_80163DE8[bombIndex].wayPointIndex;
+    s32 temp_v0 = D_80163DE8[bombIndex].waypointIndex;
     s32 var_v1 = 0;
 
     if (temp_v0 != 0) {

@@ -758,7 +758,7 @@ extern s32 D_8018D178;
 extern s16 D_8018D17C;
 extern s32 D_8018D180;
 extern s16 D_8018D184;
-extern s32 D_8018D188;
+extern s32 gIsHUDVisible;
 extern s16 D_8018D18C;
 extern s32 D_8018D190;
 extern s32 D_8018D1A0;
@@ -809,7 +809,7 @@ void func_8006FA94(void) {
     osSetTime(/* u64+0x0 */ 0, /* u64+0x4 */ 0);
     D_8018D170 = 0;
     D_8018D190 = 0;
-    D_8018D188 = 0;
+    gIsHUDVisible = 0;
     D_8018D178 = 0;
     D_8018D1CC = 0;
     D_801657E2 = 0;

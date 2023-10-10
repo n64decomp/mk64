@@ -10679,7 +10679,7 @@ void func_800A7A4C(s32 arg0) {
         case 0x5:                               /* switch 8 */
             switch (var_s1->unk4) {                /* switch 9; irregular */
             case 0:                             /* switch 9 */
-                if (gControllerFive->button & 0x10) {
+                if (gControllerFive->button & R_TRIG) {
                     var_s1->unk4 = (s32) 1U;
                     play_sound2(0x4900801C);
                 } else {
@@ -13714,7 +13714,7 @@ void func_800ADF48(struct_8018D9E0_entry *arg0) {
                         return;
                     }
                 }
-                if (controller->buttonPressed & 0x9000) {
+                if (controller->buttonPressed & (START_BUTTON | A_BUTTON)) {
                     if (arg0->unk4 == D_800F0B50[gModeSelection]) {
                         arg0->unk4 = 0;
                         gIsGamePaused = 0;

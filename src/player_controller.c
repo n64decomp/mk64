@@ -3261,61 +3261,61 @@ void func_80030C34(Player *player) {
 }
 
 void func_80030E00(Player *player) {
-    s32 var_v0;
+    s32 playerIndex;
 
     if (player == gPlayerOne) {
-        var_v0 = 0;
+        playerIndex = 0;
     }
     if (player == gPlayerTwo) {
-        var_v0 = 1;
+        playerIndex = 1;
     }
     if (player == gPlayerThree) {
-        var_v0 = 2;
+        playerIndex = 2;
     }
     if (player == gPlayerFour) {
-        var_v0 = 3;
+        playerIndex = 3;
     }
     if (player == gPlayerFive) {
-        var_v0 = 4;
+        playerIndex = 4;
     }
     if (player == gPlayerSix) {
-        var_v0 = 5;
+        playerIndex = 5;
     }
     if (player == gPlayerSeven) {
-        var_v0 = 6;
+        playerIndex = 6;
     }
     if (player == gPlayerEight) {
-        var_v0 = 7;
+        playerIndex = 7;
     }
-    if (gIsPlayerTripleAButtonCombo[var_v0] == FALSE) {
-        if (gPlayerIsThrottleActive[var_v0] == 0) {
-            if ((D_80165420[var_v0] < 2) || (D_80165420[var_v0] >= 9)) {
-                D_80165440[var_v0] = 0;
+    if (gIsPlayerTripleAButtonCombo[playerIndex] == FALSE) {
+        if (gPlayerIsThrottleActive[playerIndex] == 0) {
+            if ((D_80165420[playerIndex] < 2) || (D_80165420[playerIndex] >= 9)) {
+                D_80165440[playerIndex] = 0;
             }
-            D_80165420[var_v0] = 0;
-            D_80165400[var_v0] = 0;
+            D_80165420[playerIndex] = 0;
+            D_80165400[playerIndex] = 0;
         }
-        gPlayerIsThrottleActive[var_v0] = 1;
-        D_80165420[var_v0]++;
-        if (D_80165420[var_v0] >= 9) {
-            D_80165420[var_v0] = 9;
+        gPlayerIsThrottleActive[playerIndex] = 1;
+        D_80165420[playerIndex]++;
+        if (D_80165420[playerIndex] >= 9) {
+            D_80165420[playerIndex] = 9;
         }
-        if ((D_80165420[var_v0] >= 2) && (D_80165420[var_v0] < 9)) {
-            if (D_80165400[var_v0] == 0) {
-                D_80165440[var_v0] += 1;
+        if ((D_80165420[playerIndex] >= 2) && (D_80165420[playerIndex] < 9)) {
+            if (D_80165400[playerIndex] == 0) {
+                D_80165440[playerIndex] += 1;
             }
-            D_80165400[var_v0] = 1;
+            D_80165400[playerIndex] = 1;
         }
-        if (D_80165440[var_v0] == 5) {
-            gIsPlayerTripleAButtonCombo[var_v0] = TRUE;
-            D_80165480[var_v0] = 0x00000078;
-            D_80165440[var_v0] = 0;
-            D_80165420[var_v0] = 0;
+        if (D_80165440[playerIndex] == 5) {
+            gIsPlayerTripleAButtonCombo[playerIndex] = TRUE;
+            D_80165480[playerIndex] = 0x00000078;
+            D_80165440[playerIndex] = 0;
+            D_80165420[playerIndex] = 0;
         }
     } else {
-        D_80165480[var_v0]--;
-        if (D_80165480[var_v0] <= 0) {
-            gIsPlayerTripleAButtonCombo[var_v0] = FALSE;
+        D_80165480[playerIndex]--;
+        if (D_80165480[playerIndex] <= 0) {
+            gIsPlayerTripleAButtonCombo[playerIndex] = FALSE;
         }
     }
 }
@@ -3893,9 +3893,8 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     UNUSED s32 pad3;
     s32 var_a0;
     f32 sp44[156] = {0.0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8};
-  //f32 sp44[156] = {0.0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8};
 
-    if (((((player->effects & 2) != 2) && ((((player->unk_0C0 / 182) <= 6) && ((player->unk_0C0 / 182) >= (-6))) || ((controller->button & 0x0010) != 0x0010))) || (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f)) || ((player->effects & 0x8000) == 0x8000))
+    if (((((player->effects & 2) != 2) && ((((player->unk_0C0 / 182) <= 6) && ((player->unk_0C0 / 182) >= (-6))) || ((controller->button & R_TRIG) != R_TRIG))) || (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f)) || ((player->effects & 0x8000) == 0x8000))
     {
         func_80036CB4(player);
     }
@@ -4251,9 +4250,6 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
         player->unk_078 *= 1.7;
     }
 }
-//#else
-//GLOBAL_ASM("asm/non_matchings/player_controller/func_80033AE0.s")
-//#endif
 
 void func_8003680C(Player *player, s16 arg1) {
     s32 sp304 = 0;
@@ -4644,7 +4640,7 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
                 ((player->effects & 8) != 8) && 
                 ((player->effects & 2) != 2) && 
                 ((player->effects & 0x10) != 0x10) && 
-                (controller->buttonPressed & 0x10)) {
+                (controller->buttonPressed & R_TRIG)) {
                     func_8002AA50(player);
                     if (((player->type & 0x4000) == 0x4000) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
                         func_800C9060(arg2, 0x19008000);
@@ -4950,15 +4946,11 @@ void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     f32 spEC;
     f32 spE8;
     f32 spE4;
-    //f32 spE0;
-    //f32 spD8;
     f32 posX;
     f32 posY;
     f32 posZ;
     f32 sqrt;
 
-    //f32 sp90;
-    //f32 sp8C;
     f32 divOptimize;
     UNUSED s32 pad2[10];
     f32 spA4;

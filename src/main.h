@@ -39,7 +39,7 @@
 #define MTX_EFFECT_POOL_SIZE_MAX MTX_EFFECT_POOL_SIZE + 100
 #endif
 
-#define GFX_POOL_SIZE 0x1D4C
+#define GFX_POOL_SIZE 7500
 
 struct GfxPool {
     /* 0x00000 */ Mtx mtxScreen; // Matrix for skybox and startup logo
@@ -208,7 +208,7 @@ extern s32 gGamestate;
 #ifndef STRANGE_MAIN_HEADER_H
 extern s32 D_800DC510;
 #endif
-extern u16 D_800DC518;
+extern u16 creditsRenderMode;
 extern u16 gDemoMode;
 extern u16 gEnableDebugMode;
 extern s32 gGamestateNext;

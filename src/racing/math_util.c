@@ -40,7 +40,10 @@ UNUSED void func_802B4FF0() {
 
 }
 
-// set the position, rotation and mode of where to render the next object and check number of object already render
+/**
+ * Inserts matrix into the rsp. Position, rotation and mode of where to render the next object and check number of object already render
+ * Note that gMatrixObjectCount gets reset at the beginning of the game loop. So no cleanup needs to be performed.
+*/
 s32 render_set_position(Mat4 arg0, s32 arg1) {
     if (gMatrixObjectCount >= MTX_OBJECT_POOL_SIZE) {
         return 0;
@@ -1092,8 +1095,18 @@ s32 is_visible_between_angle(u16 arg0, u16 arg1, u16 arg2) {
 }
 
 /**
- * Returns distance or -1.0f if exceeds render distance.
-*/
+ * Determines whether an object is within the render distance of a camera.
+ *
+ * @param cameraPos       The position of the camera in 3D space.
+ * @param objectPos       The position of the object in 3D space.
+ * @param orientationY    The orientation angle of the object around the Y-axis.
+ * @param minDistance     The minimum distance at which the object is considered within render distance.
+ * @param fov             The field of view (FOV) of the camera.
+ * @param maxDistance     The maximum render distance.
+ * @return                The distance between the camera and the object if it's within render distance,
+ *                        or -1.0f if it exceeds the render distance.
+ */
+
 f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY, f32 minDistance, f32 fov, f32 maxDistance) {
     u16 angleObject;
     UNUSED u16 pad;

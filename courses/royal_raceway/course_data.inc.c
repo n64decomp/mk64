@@ -6352,7 +6352,7 @@ Gfx d_course_royal_raceway_dl_B508[] =
 };
 
 // 0xB5B8
-struct TrackWayPoint d_course_royal_raceway_unknown_waypoints[] = {
+TrackWaypoint d_course_royal_raceway_unknown_waypoints[] = {
     {-63, 0, -321, 0},
     {-61, 0, -341, 0},
     {-60, 0, -591, 0},
@@ -6433,7 +6433,7 @@ struct TrackWayPoint d_course_royal_raceway_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_royal_raceway_track_waypoints[] = {
+TrackWaypoint d_course_royal_raceway_track_waypoints[] = {
     {-62, 0, -331, 1},
     {-61, 0, -350, 2},
     {-61, 0, -371, 2},
