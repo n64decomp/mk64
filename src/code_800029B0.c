@@ -202,18 +202,18 @@ void setup_race(void) {
     func_8029E158();
 
     if (gModeSelection != BATTLE) {
-        D_8015F8D0[1] = (f32) (D_80164490->wayPointY - 15);;
-        D_8015F8D0[2] = D_80164490->wayPointZ;
+        D_8015F8D0[1] = (f32) (D_80164490->posY - 15);;
+        D_8015F8D0[2] = D_80164490->posZ;
         if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
             D_8015F8D0[0] = (gIsMirrorMode != 0) ?
-                              D_80164490->wayPointX + 138.0f :
-                              D_80164490->wayPointX - 138.0f;
+                              D_80164490->posX + 138.0f :
+                              D_80164490->posX - 138.0f;
         } else if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
             D_8015F8D0[0] = (gIsMirrorMode != 0) ?
-                              D_80164490->wayPointX + 12.0f :
-                              D_80164490->wayPointX - 12.0f;
+                              D_80164490->posX + 12.0f :
+                              D_80164490->posX - 12.0f;
         } else {
-            D_8015F8D0[0] = D_80164490->wayPointX;
+            D_8015F8D0[0] = D_80164490->posX;
         }
     }
     if (!gDemoMode) {

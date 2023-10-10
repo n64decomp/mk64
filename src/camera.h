@@ -27,7 +27,7 @@ typedef struct {
     // This is expected to be a normalized vector, indicates what direction is "up" for the camera
     /* 0x18 */ Vec3f up;
     // I think these are the "nautical angles" between pos and lookAt
-    // rot[0] = pitch, rot[1] = yaw, rot[2] = roll?
+    // rot[0] = roll? Does nothing?, rot[1] = yaw, rot[2] = pitch
     /* 0x24 */ Vec3s rot;
     /* 0x2A */ u16 someBitFlags;
     /* 0x2C */ s16 unk_2C;

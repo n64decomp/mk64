@@ -68,9 +68,11 @@ void parse_course_displaylists(uintptr_t addr) {
     }
 }
 
+extern u32 isFlycam;
+
 void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
-    Player *temp_t1 = arg1->player;
-    Camera *temp_a2 = arg1->camera;
+    Player *player = arg1->player;
+    Camera *camera = arg1->camera;
     u32 segment = SEGMENT_NUMBER2(addr);
     u32 offset = SEGMENT_OFFSET(addr);
     // todo: Should be Gfx*
@@ -79,32 +81,31 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     s16 temp_v1;
     s16 sp1E;
     s16 temp_v0_3;
-    u16 temp_v0;
-    
+    u16 rot;
     if (gIsMirrorMode) {
-        temp_v0 = (u16) temp_a2->rot[1];
-        if (temp_v0 < 0x2000) {
+        rot = (u16) camera->rot[1];
+        if (rot < 0x2000) {
             var_a3 = 2;
-        } else if (temp_v0 < 0x6000) {
+        } else if (rot < 0x6000) {
             var_a3 = 3;
-        } else if (temp_v0 < 0xA000) {
+        } else if (rot < 0xA000) {
             var_a3 = 0;
-        } else if (temp_v0 < 0xE000) {
+        } else if (rot < 0xE000) {
             var_a3 = 1;
         } else {
             var_a3 = 2;
         }
     } else {
-        temp_v0 = (u16) temp_a2->rot[1];
-        if (temp_v0 < 0x2000) {
+        rot = (u16) camera->rot[1];
+        if (rot < 0x2000) {
             var_a3 = 2;
-        } else if (temp_v0 < 0x6000) {
+        } else if (rot < 0x6000) {
             var_a3 = 1;
         }
-        else if (temp_v0 < 0xA000) {
+        else if (rot < 0xA000) {
             var_a3 = 0;
         }
-        else if (temp_v0 < 0xE000) {
+        else if (rot < 0xE000) {
             var_a3 = 3;
         }
         else {
@@ -113,20 +114,20 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     }
     arg1->playerDirection = var_a3;
 
-    if (D_80152300[temp_a2 - camera1] == 1) {
-        sp1E = func_802ABD40(temp_a2->unk_54.unk3A);
-        temp_v0_3 = func_802ABD40(temp_t1->unk_110.unk3A);
+    if (D_80152300[camera - camera1] == 1) {
+        sp1E = func_802ABD40(camera->unk_54.unk3A);
+        temp_v0_3 = func_802ABD40(player->unk_110.unk3A);
         temp_v1 = sp1E - temp_v0_3;
         if ((temp_v1 < 2) && (temp_v1 >= -1)) {
             if (sp1E == 255) {
                 if (temp_v0_3 == 255) {
                     temp_v1 = arg1->pathCounter;
-                } else if (temp_t1->unk_110.unk3C[2] > 30.0f) {
+                } else if (player->unk_110.unk3C[2] > 30.0f) {
                     temp_v1 = arg1->pathCounter;
                 } else { 
                     temp_v1 = temp_v0_3;
                 }
-            } else if (temp_a2->unk_54.unk3C[2] > 30.0f) {
+            } else if (camera->unk_54.unk3C[2] > 30.0f) {
                 temp_v1 = arg1->pathCounter;
             } else { 
                 temp_v1 = sp1E;
@@ -159,7 +160,7 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
                 default:
                     if (temp_v0_3 == 255) {
                         temp_v1 = arg1->pathCounter;
-                    } else if (temp_t1->unk_110.unk3C[2] > 30.0f) {
+                    } else if (player->unk_110.unk3C[2] > 30.0f) {
                         temp_v1 = arg1->pathCounter;
                     } else { 
                         temp_v1 = temp_v0_3;
@@ -168,15 +169,17 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
             }
         }
     } else {
-        temp_v1 = func_802ABD40(temp_a2->unk_54.unk3A);
-        if (temp_a2->unk_54.unk3C[2] > 30.0f) {
+        temp_v1 = func_802ABD40(camera->unk_54.unk3A);
+        if (camera->unk_54.unk3C[2] > 30.0f) {
             temp_v1 = arg1->pathCounter;
         } else if (temp_v1 == 255) { 
             temp_v1 = arg1->pathCounter;
         }
     }
+
     arg1->pathCounter = temp_v1;
     temp_v1 = ((temp_v1 - 1) * 4) + var_a3;
+    
     gSPDisplayList(gDisplayListHead++, gfx[temp_v1]);
 }
 
@@ -1257,7 +1260,7 @@ void func_8029569C(void) {
 void func_80295A38(struct UnkStruct_800DC5EC *arg0) {
 
     func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
-    if (D_800DC518 != 0) {
+    if (creditsRenderMode) {
         func_8029569C();
         return;
     }

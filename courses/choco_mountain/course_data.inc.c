@@ -2583,7 +2583,7 @@ Gfx d_course_choco_mountain_dl_43C8[] =
     gsSPEndDisplayList(),
 };
 
-struct TrackWayPoint d_course_choco_mountain_unknown_waypoints[] = {
+TrackWaypoint d_course_choco_mountain_unknown_waypoints[] = {
     { -7, 0, -699, 0 },
     { -6, 0, -712, 0 },
     { 8, 0, -903, 0 },
@@ -2696,7 +2696,7 @@ struct TrackWayPoint d_course_choco_mountain_unknown_waypoints[] = {
     { -32768, 0, 0, 0 },
 };
 
-struct TrackWayPoint d_course_choco_mountain_track_waypoints[] = {
+TrackWaypoint d_course_choco_mountain_track_waypoints[] = {
     { -6, 40, -705, 1 },
     { -5, 39, -725, 1 },
     { -3, 37, -745, 1 },

@@ -13,7 +13,11 @@ u8 frameBufferPadding[22544];
 
 struct_D_802BFB80 D_802BFB80[2][2][8];
 struct_D_802DFB80 D_802DFB80[2][2][8];
-u32 D_802F1F80[2][4][1024];
+#ifdef AVOID_UB
+struct_D_802F1F80 D_802F1F80[2][4][8];
+#else
+u16 D_802F1F80[2][4][0x100 * 8];
+#endif
 
 u16 gZBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
 

@@ -7965,7 +7965,7 @@ Gfx d_course_moo_moo_farm_dl_EA18[] =
 };
 
 // 0xEC80
-struct TrackWayPoint d_course_moo_moo_farm_unknown_waypoints[] = {
+TrackWaypoint d_course_moo_moo_farm_unknown_waypoints[] = {
     {11, 0, 46, 0},
     {9, 0, 21, 0},
     {5, 0, -307, 0},
@@ -8013,7 +8013,7 @@ struct TrackWayPoint d_course_moo_moo_farm_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_moo_moo_farm_track_waypoints[] = {
+TrackWaypoint d_course_moo_moo_farm_track_waypoints[] = {
     {10, 18, 33, 1},
     {9, 17, 13, 2},
     {8, 17, -6, 2},
