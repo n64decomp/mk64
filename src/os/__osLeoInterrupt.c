@@ -154,16 +154,16 @@ s32 __osLeoInterrupt() {
 }
 
 static void __osLeoAbnormalResume(void) {
-	__OSTranxInfo *info;
-	u32 pistat;
-	info = &__osDiskHandle->transferInfo;
-	WAIT_ON_LEO_IO_BUSY(pistat);
-	IO_WRITE(LEO_BM_CTL, info->bmCtlShadow | LEO_BM_CTL_RESET);
-	WAIT_ON_LEO_IO_BUSY(pistat);
-	IO_WRITE(LEO_BM_CTL, info->bmCtlShadow);
-	__osLeoResume();
-	IO_WRITE(PI_STATUS_REG, PI_STATUS_CLR_INTR);
-	__OSGlobalIntMask |= OS_IM_PI;
+    __OSTranxInfo *info;
+    u32 pistat;
+    info = &__osDiskHandle->transferInfo;
+    WAIT_ON_LEO_IO_BUSY(pistat);
+    IO_WRITE(LEO_BM_CTL, info->bmCtlShadow | LEO_BM_CTL_RESET);
+    WAIT_ON_LEO_IO_BUSY(pistat);
+    IO_WRITE(LEO_BM_CTL, info->bmCtlShadow);
+    __osLeoResume();
+    IO_WRITE(PI_STATUS_REG, PI_STATUS_CLR_INTR);
+    __OSGlobalIntMask |= OS_IM_PI;
 }
 
 static void __osLeoResume(void) {

@@ -6,7 +6,6 @@
 /* Types */
 
 typedef struct {
-    //u32 errStatus;
     void *dramAddr;
     void *C2Addr;
     u32 sectorSize;
