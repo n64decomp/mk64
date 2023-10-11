@@ -12,9 +12,9 @@ glabel func_8006FA94
 /* 0706BC 8006FABC AC20D170 */  sw    $zero, %lo(D_8018D170)($at)
 /* 0706C0 8006FAC0 3C018019 */  lui   $at, %hi(D_8018D190) # $at, 0x8019
 /* 0706C4 8006FAC4 AC20D190 */  sw    $zero, %lo(D_8018D190)($at)
-/* 0706C8 8006FAC8 3C018019 */  lui   $at, %hi(D_8018D188) # $at, 0x8019
+/* 0706C8 8006FAC8 3C018019 */  lui   $at, %hi(gIsHUDVisible) # $at, 0x8019
 /* 0706CC 8006FACC 3C048019 */  lui   $a0, %hi(D_8018D178) # $a0, 0x8019
-/* 0706D0 8006FAD0 AC20D188 */  sw    $zero, %lo(D_8018D188)($at)
+/* 0706D0 8006FAD0 AC20D188 */  sw    $zero, %lo(gIsHUDVisible)($at)
 /* 0706D4 8006FAD4 2484D178 */  addiu $a0, %lo(D_8018D178) # addiu $a0, $a0, -0x2e88
 /* 0706D8 8006FAD8 AC800000 */  sw    $zero, ($a0)
 /* 0706DC 8006FADC 3C018019 */  lui   $at, %hi(D_8018D1CC) # $at, 0x8019

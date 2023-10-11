@@ -6766,7 +6766,7 @@ Gfx d_course_koopa_troopa_beach_dl_AD40[] =
 };
 
 // 0xADE0 path
-struct TrackWayPoint d_course_koopa_troopa_beach_unknown_waypoints0[] = {
+TrackWaypoint d_course_koopa_troopa_beach_unknown_waypoints0[] = {
     {-34, 0, 103, 0},
     {-34, 0, 60, 0},
     {-38, 0, -184, 0},
@@ -6831,7 +6831,7 @@ struct TrackWayPoint d_course_koopa_troopa_beach_unknown_waypoints0[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_koopa_troopa_beach_unknown_waypoints1[] = {
+TrackWaypoint d_course_koopa_troopa_beach_unknown_waypoints1[] = {
     {-27, 0, 101, 7},
     {-31, 0, 76, 7},
     {-27, 0, -187, 7},
@@ -6893,7 +6893,7 @@ struct TrackWayPoint d_course_koopa_troopa_beach_unknown_waypoints1[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_koopa_troopa_beach_track_waypoints0[] = {
+TrackWaypoint d_course_koopa_troopa_beach_track_waypoints0[] = {
     {-34, 1, 81, 1},
     {-34, 1, 61, 1},
     {-34, 1, 41, 1},
@@ -7505,7 +7505,7 @@ struct TrackWayPoint d_course_koopa_troopa_beach_track_waypoints0[] = {
     {-32768, -32768, -32768, 0},
 };
 
-struct TrackWayPoint d_course_koopa_troopa_beach_track_waypoints1[] = {
+TrackWaypoint d_course_koopa_troopa_beach_track_waypoints1[] = {
     {-29, 1, 88, 1},
     {-29, 1, 68, 1},
     {-29, 1, 48, 1},

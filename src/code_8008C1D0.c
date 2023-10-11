@@ -1683,7 +1683,7 @@ void func_8008FF08(Player *player, s8 playerId) {
 
 void func_80090178(Player *player, s8 playerId, Vec3f arg2, Vec3f arg3) {
     u16 test;
-    struct TrackWayPoint *temp_v1;
+    TrackWaypoint *temp_v1;
     f32 spF8[4] = {   0.0f,    0.0f, -700.0f, 700.0f };
     f32 spE8[4] = { 700.0f, -700.0f,    0.0f,   0.0f };
     f32 spD8[4] = {   0.0f,    0.0f, -650.0f, 650.0f };
@@ -1705,13 +1705,13 @@ void func_80090178(Player *player, s8 playerId, Vec3f arg2, Vec3f arg3) {
     case COURSE_YOSHI_VALLEY:
         test = player->nearestWaypointId;
         temp_v1 = &D_80164550[D_80165310[playerId]][test];
-        arg2[0] = temp_v1->wayPointX;
-        arg2[1] = temp_v1->wayPointY;
-        arg2[2] = temp_v1->wayPointZ;
+        arg2[0] = temp_v1->posX;
+        arg2[1] = temp_v1->posY;
+        arg2[2] = temp_v1->posZ;
         temp_v1 = &D_80164550[D_80165310[playerId]][(player->nearestWaypointId + 5) % (gWaypointCountByPathIndex[D_80165310[playerId]] + 1)];
-        arg3[0] = temp_v1->wayPointX;
-        arg3[1] = temp_v1->wayPointY;
-        arg3[2] = temp_v1->wayPointZ;
+        arg3[0] = temp_v1->posX;
+        arg3[1] = temp_v1->posY;
+        arg3[2] = temp_v1->posZ;
         break;
     case COURSE_BLOCK_FORT:
         arg2[0] = spF8[playerId];
@@ -1748,13 +1748,13 @@ void func_80090178(Player *player, s8 playerId, Vec3f arg2, Vec3f arg3) {
     default:
         test = player->nearestWaypointId;
         temp_v1 = &D_80164550[0][test];
-        arg2[0] = temp_v1->wayPointX;
-        arg2[1] = temp_v1->wayPointY;
-        arg2[2] = temp_v1->wayPointZ;
+        arg2[0] = temp_v1->posX;
+        arg2[1] = temp_v1->posY;
+        arg2[2] = temp_v1->posZ;
         temp_v1 = &D_80164550[0][(player->nearestWaypointId + 5) % (gWaypointCountByPathIndex[0] + 1)];
-        arg3[0] = temp_v1->wayPointX;
-        arg3[1] = temp_v1->wayPointY;
-        arg3[2] = temp_v1->wayPointZ;
+        arg3[0] = temp_v1->posX;
+        arg3[1] = temp_v1->posY;
+        arg3[2] = temp_v1->posZ;
         break;
     }
 }
@@ -1825,7 +1825,7 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
     s32 stackPadding1;
     Vec3f sp44;
     Vec3f sp38;
-    struct TrackWayPoint *wayPoint;
+    TrackWaypoint *waypoint;
     s32 stackPadding2;
     s32 stackPadding3;
 
@@ -1921,10 +1921,10 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
             player->pos[0] = player->pos[0] + sins(-player->unk_02C[1]) * -10.0f;
         }
         if (player->unk_0C8 == 0x00FC) {
-            wayPoint = D_80164550[0];
-            player->pos[0] = wayPoint->wayPointX;
-            player->pos[1] = wayPoint->wayPointY;
-            player->pos[2] = wayPoint->wayPointZ;
+            waypoint = D_80164550[0];
+            player->pos[0] = waypoint->posX;
+            player->pos[1] = waypoint->posY;
+            player->pos[2] = waypoint->posZ;
         }
         move_f32_towards(&player->pos[1], (player->unk_074 + player->boundingBoxSize) - 2.0f, 0.04f);
         player->unk_0C8++;

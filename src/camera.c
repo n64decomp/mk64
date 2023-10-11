@@ -214,7 +214,7 @@ void func_8001CA78(UNUSED Player *player, Camera *camera, Vec3f arg2, f32 *arg3,
     f32 temp_f18;
     f32 temp_f16;
     UNUSED s32 pad;
-    struct TrackWayPoint *temp_s2;
+    TrackWaypoint *temp_s2;
 
     temp_s2 = &D_80164550[0][gWaypointCountByPathIndex[0] - 10];
     sp68[0] = camera->unk_30[0];
@@ -231,10 +231,10 @@ void func_8001CA78(UNUSED Player *player, Camera *camera, Vec3f arg2, f32 *arg3,
     if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
         var_f14 = sp5C[0];
     } else {
-        var_f14 = sp5C[0] + temp_s2->wayPointX;
+        var_f14 = sp5C[0] + temp_s2->posX;
     }
     temp_f16 = sp5C[2] + D_8016524C;
-    temp_f18 = sp5C[1] + (temp_s2->wayPointY + D_80164A30);
+    temp_f18 = sp5C[1] + (temp_s2->posY + D_80164A30);
     arg2[0] += (var_f14 - camera->lookAt[0]) * 1;
     arg2[1] += (temp_f18 - camera->lookAt[1]) * 1;
     arg2[2] += (temp_f16 - camera->lookAt[2]) * 1;
@@ -242,10 +242,10 @@ void func_8001CA78(UNUSED Player *player, Camera *camera, Vec3f arg2, f32 *arg3,
     if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
         var_f14 = sp68[0];
     } else {
-        var_f14 = sp68[0] + temp_s2->wayPointX;
+        var_f14 = sp68[0] + temp_s2->posX;
     }
     temp_f16 = sp68[2] + D_8016524C;
-    temp_f18 = sp68[1] + (temp_s2->wayPointY + D_80164A30 + 6.0f);
+    temp_f18 = sp68[1] + (temp_s2->posY + D_80164A30 + 6.0f);
     move_f32_towards(&D_80164A30, 0, 0.02f);
     posX = camera->pos[0];
     *arg3 = ((var_f14 - posX) * 1) + posX;
@@ -819,28 +819,23 @@ void func_8001EA0C(Camera *camera, Player *player, s8 arg2) {
         } else {
             if (player->unk_078 < 0) {
                 var_a3 = 0xA5 - (player->unk_078 / 2);
+
                 if ((player->effects & 0x20000000) == 0x20000000) {
-                    //sp4E = temp_a3;
                     move_s16_towards(&camera->unk_B0, -0x0B60, 0.1f);
                 } else {
-                    //sp4E = temp_a3;
                     move_s16_towards(&camera->unk_B0, -0x0888, 0.1f);
                 }
             } else {
                 var_a3 = (player->unk_078 / 2) + 0xA5;
                 if ((player->effects & 0x20000000) == 0x20000000) {
-                    //sp4E = temp_a3_2;
                     move_s16_towards(&camera->unk_B0, 0x0B60, 0.1f);
                 } else {
-                    //sp4E = temp_a3_2;
                     move_s16_towards(&camera->unk_B0, 0x0888, 0.1f);
                 }
             }
-            //var_a3 = sp4E;
         }
     } else {
         move_s16_towards(&camera->unk_B0, 0, 0.05f);
-        //temp_v1_2 = player->unk_078;
         var_a3 = ((s16) camera->unk_2C / 182) - ((s16) player->unk_02C[1] / 182);
         if (player->unk_078 == 0) {
             if ((player->effects & 0x20) == 0x20) {
@@ -968,22 +963,22 @@ void func_8001EE98(Player *player, Camera *camera, s8 index) {
         switch (D_80152300[cameraIndex]) {
         case 3:
             func_8001A588(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
-            return;
+            break;
         case 1:
             if (((player->unk_0CA & 1) == 1) || ((player->unk_0CA & 2) == 2)) {
                 func_8001E8E8(camera, player, index);
-                return;
+                break;
             }
             func_8001E45C(camera, player, index);
-            return;
+            break;
         case 8:
             func_8001E0C4(camera, player, index);
             func_8001F87C(cameraIndex);
-            return;
+            break;
         case 9:
             if (((player->unk_0CA & 1) == 1) || ((player->unk_0CA & 2) == 2)) {
                 func_8001E8E8(camera, player, index);
-                return;
+                break;
             }
             func_8001EA0C(camera, player, index);
             break;

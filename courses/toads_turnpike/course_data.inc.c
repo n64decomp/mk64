@@ -2241,7 +2241,7 @@ Gfx d_course_toads_turnpike_dl_3AD8[] =
 };
 
 // 0x3B80
-struct TrackWayPoint d_course_toads_turnpike_unknown_waypoints[] = {
+TrackWaypoint d_course_toads_turnpike_unknown_waypoints[] = {
     {100, 0, 26, 0},
     {100, 0, 7, 0},
     {102, 0, -299, 0},
@@ -2298,7 +2298,7 @@ struct TrackWayPoint d_course_toads_turnpike_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_toads_turnpike_track_waypoints[] = {
+TrackWaypoint d_course_toads_turnpike_track_waypoints[] = {
     {100, 0, 16, 1},
     {100, 0, -3, 1},
     {100, 0, -23, 1},

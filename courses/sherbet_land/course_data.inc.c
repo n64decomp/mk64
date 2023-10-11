@@ -3017,7 +3017,7 @@ Gfx d_course_sherbet_land_dl_4B20[] =
 };
 
 // unk 0x4BF8
-struct TrackWayPoint d_course_sherbet_land_uknown_waypoints[] = {
+TrackWaypoint d_course_sherbet_land_uknown_waypoints[] = {
     {-10, 0, 10, 0},
     {-10, 0, -8, 0},
     {-18, 0, -213, 0},
@@ -3082,7 +3082,7 @@ struct TrackWayPoint d_course_sherbet_land_uknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_sherbet_land_track_waypoints[] = {
+TrackWaypoint d_course_sherbet_land_track_waypoints[] = {
     {-10, 0, 1, 1},
     {-10, 0, -19, 1},
     {-11, 0, -38, 1},

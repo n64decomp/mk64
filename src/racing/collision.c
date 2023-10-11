@@ -1988,7 +1988,7 @@ void set_vertex_colours(uintptr_t addr, u32 vertexCount, UNUSED s32 vert3, s8 al
 }
 
 /**
- * Recursive search for Veretices and set their colour values.
+ * Recursive search for vertices and set their colour values.
  */
 void find_vtx_and_set_colours(uintptr_t displayList, s8 alpha, u8 red, u8 green, u8 blue) {
     s32 segment = SEGMENT_NUMBER2(displayList);

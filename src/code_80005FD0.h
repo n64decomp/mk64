@@ -168,7 +168,7 @@ void func_8001C42C(void);
 // 0 or 1, only 1 when when in extra (mirror) mode
 extern s16 D_8016347A;
 
-// Suspected to be the "width" of each wayPoint. See data_0DD0A0_1.s
+// Suspected to be the "width" of each waypoint. See data_0DD0A0_1.s
 extern f32 D_800DCA4C[];
 
 // See bss_80005FD0.s

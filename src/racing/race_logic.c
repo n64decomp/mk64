@@ -926,7 +926,7 @@ void func_8028FCBC(void) {
             func_80002DAC();
             D_800DC510 = 1;
             D_80150118 = 3.0f;
-            D_800DC518 = 0;
+            creditsRenderMode = 0;
             D_802BA032 = 0;
             D_8015011E = 0;
             gCourseTimer = 0.0f;
