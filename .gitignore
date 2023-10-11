@@ -83,4 +83,4 @@ expected/*
 !/assets/**/*custom*/**/*.bin
 
 # Doxygen
-html/*
+docs/html/*
