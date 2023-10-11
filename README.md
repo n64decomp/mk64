@@ -106,6 +106,10 @@ Some menu textures are compressed using a format called tkmk00. A byte-matching 
 	|   └── trophy: ceremony cutscene podium and trophy textures
 	└── tools: build tools
 
+## Documentation
+
+[Doxygen](https://www.doxygen.nl/index.html) is used to generate documentation. To generate the documentation, run `doxygen Doxyfile` from the project root. The documentation will be generated in the `docs/html` folder.
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please discuss in the Discord.

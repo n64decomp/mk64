@@ -81,3 +81,6 @@ expected/*
 !/sound/**/*custom*/**/*.aiff
 !/assets/**/*custom*.bin
 !/assets/**/*custom*/**/*.bin
+
+# Doxygen
+html/*
