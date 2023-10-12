@@ -150,7 +150,7 @@ SECTIONS
       BUILD_DIR/asm/os/osMapTLBRdb.o(.text);
       BUILD_DIR/src/os/osPiRawReadIo.o(.text);
       BUILD_DIR/src/os/__osSetHWIntrRoutine.o(.text);
-      BUILD_DIR/asm/os/non_matchings/__osLeoInterrupt.o(.text);
+      BUILD_DIR/src/os/__osLeoInterrupt.o(.text);
       BUILD_DIR/src/os/osTimer.o(.text);
       BUILD_DIR/src/os/osGetThreadPri.o(.text);
       BUILD_DIR/src/os/__osViInit.o(.text);
