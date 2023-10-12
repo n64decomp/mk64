@@ -109,6 +109,7 @@ Some menu textures are compressed using a format called tkmk00. A byte-matching 
 ## Documentation
 
 [Doxygen](https://www.doxygen.nl/index.html) is used to generate documentation. To generate the documentation, run `doxygen Doxyfile` from the project root. The documentation will be generated in the `docs/html` folder.
+The documentation is also available online at [https://n64decomp.github.io/mk64/](https://n64decomp.github.io/mk64/).
 
 ## Contributing
 
