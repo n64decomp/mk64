@@ -5,9 +5,10 @@
 
 The decomp has altered its approach to calculating progress.
 Some of the values below are not correct and fixes are still a work-in-progress.
-This note will be removed when these values are corrected.
 The prior approach did not include os code in the total decompilable bytes
 due to prior technical restrictions which are now resolved.
+
+This note will be removed when these values are correct.
 ```
 
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=totalProgress)](https://ci.valandil.ca/job/mk64/job/master/)
