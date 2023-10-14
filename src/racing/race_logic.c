@@ -872,9 +872,6 @@ void func_8028F970(void) {
         }
     }
 }
-//#else
-//GLOBAL_ASM("asm/non_matchings/race_logic/func_8028F970.s")
-//#endif
 
 void func_8028FBD4(void) {
     gMenuSelectionFromQuit = START_MENU_FROM_QUIT;
