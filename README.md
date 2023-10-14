@@ -3,8 +3,12 @@
 ```diff
 - Note -
 
-Decomp progress has been re-calculated. Some of the values below are not correct and fixes are still a work-in-progress.
-When its believed that the values are correct this note will be removed.
+The decomp has altered its approach to calculating progress.
+Some of the values below are not correct and fixes are still a work-in-progress.
+The prior approach did not include os code in the total decompilable bytes
+due to prior technical restrictions which are now resolved.
+
+This note will be removed when these values are correct.
 ```
 
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=totalProgress)](https://ci.valandil.ca/job/mk64/job/master/)
