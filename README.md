@@ -1,9 +1,16 @@
 # Mario Kart 64
 
+```diff
+- Note -
+
+Decomp progress has been re-calculated. Some of the values below are not correct and fixes are still a work-in-progress.
+When its believed that the values are correct this note will be removed.
+```
+
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=totalProgress)](https://ci.valandil.ca/job/mk64/job/master/)
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=gameProgress)](https://ci.valandil.ca/job/mk64/job/master/)
-[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=bytesLeft)](https://ci.valandil.ca/job/mk64/job/master/)
 
+[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=bytesLeft)](https://ci.valandil.ca/job/mk64/job/master/)
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=m2c)](https://ci.valandil.ca/job/mk64/job/master/)
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=nonmatching)](https://ci.valandil.ca/job/mk64/job/master/)  
 
