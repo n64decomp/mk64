@@ -17,7 +17,7 @@ GREENSHELL_EXPORT_SENTINEL := $(GREENSHELL_DIR)/.export
 $(GREENSHELL_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(GREENSHELL_PALETTE)
 
-$(BUILD_DIR)/src/common_textures.inc.o: $(GREENSHELL_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.inc.o: $(GREENSHELL_PALETTE:%.png=%.inc.c)
 
 $(GREENSHELL_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16

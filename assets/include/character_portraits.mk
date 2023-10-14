@@ -31,8 +31,8 @@ $(PORTRAITS_DIR)/gTexturePortraitQuestionMark.png
 
 PORTRAIT_EXPORT_SENTINEL := $(PORTRAITS_DIR)/.export
 
-$(BUILD_DIR)/src/common_textures.inc.o: $(PORTRAIT_PNG:%.png=%.inc.c) $(PORTRAIT_PALETTES:%.png=%.inc.c)
-$(BUILD_DIR)/src/common_textures.inc.o: $(SPECIAL_PORTRAIT_PNG:%.png=%.inc.c) $(SPECIAL_PORTRAIT_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.inc.o: $(PORTRAIT_PNG:%.png=%.inc.c) $(PORTRAIT_PALETTES:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.inc.o: $(SPECIAL_PORTRAIT_PNG:%.png=%.inc.c) $(SPECIAL_PORTRAIT_PALETTE:%.png=%.inc.c)
 
 $(PORTRAIT_PNG:%.png=%.inc.c): $(PORTRAITS_DIR)/gTexturePortrait%.inc.c : $(PORTRAITS_DIR)/gTexturePortrait%.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(PORTRAITS_DIR)/gTLUTPortrait$*.png
