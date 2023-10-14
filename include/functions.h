@@ -8,7 +8,6 @@ void mio0decode(u8* arg0, u8* arg1);
 // Unused mio0decode function.
 void func_80040030(u8* arg0, u8* arg1);
 
-void func_8000F2DC(void);
 void func_8000F628(void);
 void func_8006B7E4(Player* player, s8 arg1);
 void func_8005D290(void);

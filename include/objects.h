@@ -158,6 +158,13 @@ typedef struct
 } ItemWindowObjects; // size = 0xE0
 
 // This are other lists of indices in gObjectList.
+
+/**
+ * Use unknown. An object is reserved and its index is saved to
+ * this variable, but it appears to go unreferenced
+ **/
+extern s32 D_80183DA0;
+
 /**
  * Lakitu?
 **/
