@@ -360,11 +360,18 @@ elif args.format == 'text':
     print(str(center_text(" # NON_MATCHING remaining: " + str(TotalNonMatchingFunctions) + " ", 67)))
     print(str(center_text(" # MIPS_TO_C remaining: " + str(TotalMipsToCFunctions) + " ", 67)))
     print(str(center_text(" Game Status ", 67, "-")))
-    print(str(center_text(check_table_cond(0, curCupCount, mkCups) + " - " + check_table_cond(1, curCupCount, mkCups), 67)))
-    print(str(center_text(check_table_cond(2, curCupCount, mkCups) + " - " + check_table_cond(3, curCupCount, mkCups), 67)))
-    print(str(center_text(" Lap Progress Bar and Race Status", 67, "-")))
-    print(str(move_character_from_bar(curLapProgress, 67, "O", "-")))
-    print(str(center_text("We are in " + str(get_string_from_table(curCupCount, mkCups)) + " racing at " +  str(get_string_from_table(curCourseCount, mkCourses)) + " (Lap " + str(curLapCount) + "/3)", 67)))
+
+    if TotalGlobalAsmFunctions > 0:
+        print(str(center_text(check_table_cond(0, curCupCount, mkCups) + " - " + check_table_cond(1, curCupCount, mkCups), 67)))
+        print(str(center_text(check_table_cond(2, curCupCount, mkCups) + " - " + check_table_cond(3, curCupCount, mkCups), 67)))
+        print(str(center_text(" Lap Progress Bar and Race Status", 67, "-")))
+        print(str(move_character_from_bar(curLapProgress, 67, "O", "-")))
+        print(str(center_text("We are in " + str(get_string_from_table(curCupCount, mkCups)) + " racing at " +  str(get_string_from_table(curCourseCount, mkCourses)) + " (Lap " + str(curLapCount) + "/3)", 67)))
+    else:
+        print(str(center_text("Mushroom Cup (V) - Flower Cup (V)", 67)))
+        print(str(center_text("Star Cup (V) - Special Cup (V))", 67)))
+        print(str(center_text("We finished All Cups! We won all 4 Gold Cups!", 67)))
+
     print(str(center_text("", 67, "=")))
 elif args.format == 'verbose':
     print("Total decompilable bytes remaining: "+str(remaining_size)+" out of "+str(total_code_size)+"\n")
