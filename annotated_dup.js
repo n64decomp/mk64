@@ -73,6 +73,7 @@ var annotated_dup =
     [ "Cutscene", "structCutscene.html", "structCutscene" ],
     [ "CutsceneSplinePoint", "structCutsceneSplinePoint.html", "structCutsceneSplinePoint" ],
     [ "D_80150158", "structD__80150158.html", "structD__80150158" ],
+    [ "D_801642D8_entry", "structD__801642D8__entry.html", "structD__801642D8__entry" ],
     [ "Drum", "structDrum.html", "structDrum" ],
     [ "du", "uniondu.html", "uniondu" ],
     [ "EuAudioCmd", "structEuAudioCmd.html", "structEuAudioCmd" ],

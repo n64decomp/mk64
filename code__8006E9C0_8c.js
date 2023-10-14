@@ -15,7 +15,7 @@ var code__8006E9C0_8c =
     [ "func_800704A0", "code__8006E9C0_8c.html#a077b9c8a1cdcf10353e8f23db63ec1d8", null ],
     [ "func_8007055C", "code__8006E9C0_8c.html#afef0314f6f435d008ed32c2aa1e2fed0", null ],
     [ "func_80070714", "code__8006E9C0_8c.html#a34850e00e534f9bea4ee89568c0484e8", null ],
-    [ "func_80070780", "code__8006E9C0_8c.html#a8383c4a54ac6cf8631797f715b74c5c5", null ],
+    [ "init_hud_three_four_player", "code__8006E9C0_8c.html#a36e7c29e21274b76d24f7c8864af5c3b", null ],
     [ "init_hud_two_player_horizontal", "code__8006E9C0_8c.html#ae0bbfee0194d6a21ab9c2133af28ae16", null ],
     [ "init_hud_two_player_vertical", "code__8006E9C0_8c.html#aa98fba14045af26e5c13a6a72442b8be", null ],
     [ "init_item_window", "code__8006E9C0_8c.html#a7fd371a62513a311ab8903e23511dc9b", null ],
@@ -32,7 +32,5 @@ var code__8006E9C0_8c =
     [ "D_80165820", "code__8006E9C0_8c.html#a731288f26c6ec9596eb8c110e8cf7adb", null ],
     [ "D_80165828", "code__8006E9C0_8c.html#adf1ffd151ffd4e3a6229b343e9ff9faa", null ],
     [ "D_80165832", "code__8006E9C0_8c.html#a036b6a4ab51ed1035d04d1fa6666bc9b", null ],
-    [ "D_80183DA0", "code__8006E9C0_8c.html#a896fcc9bfe490254df4d6b623ea1530f", null ],
-    [ "D_80183DBC", "code__8006E9C0_8c.html#a4b00bebf8acd48d06ed9067d94c75aff", null ],
     [ "gIsGamePaused", "code__8006E9C0_8c.html#a1e68adae3a31f0d078322717a6ff9d6b", null ]
 ];

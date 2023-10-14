@@ -20,6 +20,7 @@ var objects_8h =
     [ "D_80165730", "objects_8h.html#ab30af75a769f114cc77de43957f6006e", null ],
     [ "D_80165738", "objects_8h.html#aeee7035ffe75ebf0d6dbdb70cba2b095", null ],
     [ "D_80165750", "objects_8h.html#a2c5610e8b7027617a4517cc82ecd870c", null ],
+    [ "D_80183DA0", "objects_8h.html#a896fcc9bfe490254df4d6b623ea1530f", null ],
     [ "D_80183DB8", "objects_8h.html#ae4214f5a4ae0ad99a49c02f1264d3b8f", null ],
     [ "D_80183E38", "objects_8h.html#aaaf8d50f320511956464e916de0124fe", null ],
     [ "D_80183E4C", "objects_8h.html#adb139061acd5ae34d7548abd91f57ab5", null ],

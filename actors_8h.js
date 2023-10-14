@@ -206,7 +206,6 @@ var actors_8h =
     [ "D_802BA260", "actors_8h.html#a2b82e9faa990a4e08cec2b04ae1dd3fa", null ],
     [ "gCurrentCourseId", "actors_8h.html#a0b35aa576b8ad5250674993b72300f0d", null ],
     [ "gIsGamePaused", "actors_8h.html#a1e68adae3a31f0d078322717a6ff9d6b", null ],
-    [ "gNearestWaypointByPlayerId", "actors_8h.html#a3cfe22d5bc856fce5a405b08e3210381", null ],
     [ "gPlaceItemBoxes", "actors_8h.html#ac0df2946ab7b5a573fee32e7b7698864", null ],
     [ "gTexture671A88", "actors_8h.html#abbbbd87a0afc5e08e1ed9e56ab878168", null ],
     [ "gTexture6774D8", "actors_8h.html#ae48b4f383096c6575ea8a9da500c6c37", null ],

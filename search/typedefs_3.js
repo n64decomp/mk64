@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['cameraevent_26929',['CameraEvent',['../camera_8h.html#aa3bbd5cf3ba0ad8952c8985ed4bed22c',1,'camera.h']]],
-  ['cutsceneshot_26930',['CutsceneShot',['../camera_8h.html#a25230c5365692f85c8116f544fdce1cd',1,'camera.h']]]
+  ['cameraevent_26970',['CameraEvent',['../camera_8h.html#aa3bbd5cf3ba0ad8952c8985ed4bed22c',1,'camera.h']]],
+  ['cutsceneshot_26971',['CutsceneShot',['../camera_8h.html#a25230c5365692f85c8116f544fdce1cd',1,'camera.h']]]
 ];

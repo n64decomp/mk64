@@ -6,5 +6,5 @@ var structstruct__8018EE10__entry =
     [ "ghostDataSaved", "structstruct__8018EE10__entry.html#a0a9645649efc3acd85e411c1924b4cca", null ],
     [ "pad_43", "structstruct__8018EE10__entry.html#a4bf504da7a90c33704b09fed831d9559", null ],
     [ "unk_00", "structstruct__8018EE10__entry.html#a760c8d86719d2e8f36048a4d7186a43e", null ],
-    [ "unk_07", "structstruct__8018EE10__entry.html#a3ac2539324b604941ec4f72a66ee55ec", null ]
+    [ "unk_07", "structstruct__8018EE10__entry.html#a4e157565ff0fb251f6399760033c3349", null ]
 ];

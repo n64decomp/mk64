@@ -34,6 +34,7 @@ var code__800B45E0_8c =
     [ "func_800B5F30", "code__800B45E0_8c.html#aefd3604da4aa5ae9ed1eb8fd042ff5e9", null ],
     [ "func_800B6014", "code__800B45E0_8c.html#a3658658602b39923f3f7813725cf97e9", null ],
     [ "func_800B6088", "code__800B45E0_8c.html#a18608647766abf85298084fe685099cd", null ],
+    [ "func_800B6178", "code__800B45E0_8c.html#aa829ff803039fd887e521aeb35373699", null ],
     [ "func_800B6348", "code__800B45E0_8c.html#afbe37634f70c573574348db60eac3aab", null ],
     [ "func_800B639C", "code__800B45E0_8c.html#ad91a6d803924eb1d07dd9ccac9caa5fc", null ],
     [ "func_800B63F0", "code__800B45E0_8c.html#a6df5fe921361a46250cae09e700f54e2", null ],

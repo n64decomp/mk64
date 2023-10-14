@@ -5,6 +5,8 @@ var code__8006E9C0_8h =
     [ "func_8006ED60", "code__8006E9C0_8h.html#aa3b07067dcc280298e4e16c268801903", null ],
     [ "func_8006ED94", "code__8006E9C0_8h.html#a7b789d7b17a6c6a707e01b482196252a", null ],
     [ "func_8006EE44", "code__8006E9C0_8h.html#a7035aa35df03a6428e21a10f4472d68e", null ],
+    [ "func_8006EEE8", "code__8006E9C0_8h.html#aedce5312d1981131b06edd1d62e8f070", null ],
+    [ "func_8006F824", "code__8006E9C0_8h.html#a8461a418dd36b6e443d6962bccfb593a", null ],
     [ "func_8006FA94", "code__8006E9C0_8h.html#a0a15839e2884f0317e950c05b03e4f0b", null ],
     [ "func_80070148", "code__8006E9C0_8h.html#a7ce8b772e14372f2078703a39e676d2a", null ],
     [ "func_80070190", "code__8006E9C0_8h.html#a1047d0465079c92e24754191addf0a3f", null ],
@@ -14,6 +16,7 @@ var code__8006E9C0_8h =
     [ "func_800704A0", "code__8006E9C0_8h.html#a53a2374e765eda4d3397ffcc83cef446", null ],
     [ "func_8007055C", "code__8006E9C0_8h.html#afef0314f6f435d008ed32c2aa1e2fed0", null ],
     [ "func_80070714", "code__8006E9C0_8h.html#a34850e00e534f9bea4ee89568c0484e8", null ],
+    [ "func_80070780", "code__8006E9C0_8h.html#a8383c4a54ac6cf8631797f715b74c5c5", null ],
     [ "init_hud_one_player", "code__8006E9C0_8h.html#a9b35328c0ffddc0723de4730c5e41431", null ],
     [ "init_hud_three_four_player", "code__8006E9C0_8h.html#a36e7c29e21274b76d24f7c8864af5c3b", null ],
     [ "init_hud_two_player_horizontal", "code__8006E9C0_8h.html#ab7947f630a75f4852fe4e3ea4fc607aa", null ],
@@ -56,9 +59,10 @@ var code__8006E9C0_8h =
     [ "D_8018D1E0", "code__8006E9C0_8h.html#a39fda80d92831f41890d5a96e813a23e", null ],
     [ "D_8018D220", "code__8006E9C0_8h.html#ac24afba1be028c1c25f757208369d5ad", null ],
     [ "D_8018D240", "code__8006E9C0_8h.html#a3dbf27bb5d34cef326470464834bd54c", null ],
+    [ "D_8018D248", "code__8006E9C0_8h.html#a614242490065cfe56683b9038ca2df5f", null ],
     [ "D_8018D2B0", "code__8006E9C0_8h.html#a4df8d238f4be06899123a31962668d4e", null ],
     [ "D_8018D2B8", "code__8006E9C0_8h.html#a957a59f315f12f7ddc1369251a06a24d", null ],
     [ "D_8018D9B0", "code__8006E9C0_8h.html#abf03887be97837949fb9ec9204cac714", null ],
-    [ "gCourseOutlineTextures", "code__8006E9C0_8h.html#a3833bae85865c6f8a8bfe926963a00fe", null ],
+    [ "gCourseOutlineTextures", "code__8006E9C0_8h.html#a625d0ad27f8c5a2b2d0efd1899f76dae", null ],
     [ "gTextureLogoMarioKart64", "code__8006E9C0_8h.html#a4351224f8e8bc7384bf924103d67916e", null ]
 ];
