@@ -67,7 +67,7 @@ glabel D_80164AD0
 glabel gMatrixEffectCount
 .skip 20
 
-glabel D_80164B04
+glabel gPlayerPalette
 .skip 4
 
 glabel D_80164B08

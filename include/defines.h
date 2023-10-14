@@ -336,5 +336,8 @@
 #define SPAWN_THIRD_SHELL 2
 
 #define GPACK_RGB888(r, g, b) (((r) << 16) | ((g) << 8) | (b))
+#define COLOR_LIGHT GPACK_RGB888(0x1C, 0x00, 0x00)
+#define COLOR_LAVA  GPACK_RGB888(0x34, 0x00, 0x00)
+#define COLOR_BLACK  GPACK_RGB888(0, 0, 0)
 
 #endif // DEFINES_H

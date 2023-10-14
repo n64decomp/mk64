@@ -6361,14 +6361,14 @@ void func_80013D20(VehicleStuff *vehicle) {
     } else {
         var_a1 = func_8000D940(vehicle->position, &vehicle->waypointIndex, vehicle->someMultiplier, vehicle->someMultiplierTheSequel, 0);
     }
-    func_800224F0(&vehicle->rotation[1], var_a1, 100);
+    adjust_angle(&vehicle->rotation[1], var_a1, 100);
     temp_f0_3 = vehicle->position[0] - sp5C;
     temp_f2_2 = vehicle->position[2] - sp54;
     sp34[0] = vehicle->position[1];
     sp34[1] = 0.0f;
     sp34[2] = sqrtf((temp_f0_3 * temp_f0_3) + (temp_f2_2 * temp_f2_2));
     thing = get_angle_between_points(sp40, sp34);
-    func_800224F0(&vehicle->rotation[0], -thing, 100);
+    adjust_angle(&vehicle->rotation[0], -thing, 100);
     vehicle->velocity[0] = vehicle->position[0] - sp5C;
     vehicle->velocity[1] = vehicle->position[1] - sp58;
     vehicle->velocity[2] = vehicle->position[2] - sp54;
@@ -7010,7 +7010,7 @@ void func_80015390(Camera *camera, UNUSED Player *player, UNUSED s32 arg2) {
         var_a2 = 0xA0 + (temp_s1->unk_078 / 16);
     }
     if (!((temp_s1->effects & 0x80) || (temp_s1->effects & 0x40))) {
-        func_800224F0(&camera->unk_2C, temp_s1->unk_02C[1], var_a2);
+        adjust_angle(&camera->unk_2C, temp_s1->unk_02C[1], var_a2);
     }
     func_8001D794(temp_s1, camera, sp64, &sp84, &sp80, &sp7C, camera->unk_2C);
     func_802ADDC8(&camera->unk_54, 10.0f, sp84, sp80, sp7C);

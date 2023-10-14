@@ -634,7 +634,7 @@ void func_8001E0C4(Camera *camera, Player *player, s8 arg2) {
     } else {
         var_a2 = (player->unk_078 / 3) + 0x87;
     }
-    func_800224F0(&camera->unk_2C, player->unk_02C[1], var_a2);
+    adjust_angle(&camera->unk_2C, player->unk_02C[1], var_a2);
     func_8001CA78(player, camera, sp60, &sp74, &sp70, &sp6C, camera->unk_2C, arg2);
     camera->someBitFlags &= ~0x0004;
     temp_t7 = func_802ADDC8(&camera->unk_54, test, sp74, sp70, sp6C);
@@ -739,7 +739,7 @@ void func_8001E45C(Camera *camera, Player *player, s8 arg2) {
     (player->unk_110.unk3C[0] <= 0.0f) || (player->unk_110.unk3C[1] <= 0.0f) || ((player->effects & 0x20000) == 0x20000)) {
         func_8001CCEC(player, camera, sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     } else {
-        func_800224F0(&camera->unk_2C, (s16) (player->unk_02C[1] + camera->unk_B0), var_a3);
+        adjust_angle(&camera->unk_2C, (s16) (player->unk_02C[1] + camera->unk_B0), var_a3);
         func_8001CCEC(player, camera, sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     }
     temp = 3;
@@ -861,7 +861,7 @@ void func_8001EA0C(Camera *camera, Player *player, s8 arg2) {
     (player->unk_110.unk3C[0] <= 0.0f) || (player->unk_110.unk3C[1] <= 0.0f) || ((player->effects & 0x20000) == 0x20000)) {
         func_8001D944(player, camera, sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     } else {
-        func_800224F0(&camera->unk_2C, (s16) (player->unk_02C[1] + camera->unk_B0), var_a3);
+        adjust_angle(&camera->unk_2C, (s16) (player->unk_02C[1] + camera->unk_B0), var_a3);
         func_8001D944(player, camera, sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     }
     temp = 3;

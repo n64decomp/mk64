@@ -2177,7 +2177,7 @@ void func_8002D028(Player *player, s8 arg1) {
 
     temp_f18 = sqrtf((sp4C[0] - player->pos[0]) * (sp4C[0] - player->pos[0])+ (sp4C[2] - player->pos[2]) * (sp4C[2] - player->pos[2]));
     if (temp_f18 <= 8.0f) {
-        func_800224F0(&player->unk_02C[1], -0x8000, 0x016C);
+        adjust_angle(&player->unk_02C[1], -0x8000, 0x016C);
         if ((player->unk_02C[1] < (-0x7F41)) || (player->unk_02C[1] > 0x7F41)) {
             player->type &= ~0x0200;
         }
