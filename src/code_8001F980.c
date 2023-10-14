@@ -21,7 +21,7 @@
 #include "common_textures.h"
 #include "skybox_and_splitscreen.h"
 
-s8 renderingFramebufferByPlayer[] = {
+s8 gRenderingFramebufferByPlayer[] = {
     0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x00, 0x02
 };
 
@@ -182,7 +182,7 @@ void init_render_player(Player *player, Camera *camera, s8 playerId, s8 playerRe
                 }
             } else {
                 if ((check_player_camera_collision(player, camera, D_80165574 + sp4C, D_80165576) == 1) & 0xFFFF) {
-                    if ((sRenderingFramebuffer == renderingFramebufferByPlayer[playerId]) || ((D_801650D0[playerRenderId][playerId] - player->animFrameSelector[playerRenderId]) > 0x13) || ((D_801650D0[playerRenderId][playerId] - player->animFrameSelector[playerRenderId]) < -0x13) || (D_80165190[playerRenderId][playerId] == (s16) 1U)) {
+                    if ((sRenderingFramebuffer == gRenderingFramebufferByPlayer[playerId]) || ((D_801650D0[playerRenderId][playerId] - player->animFrameSelector[playerRenderId]) > 0x13) || ((D_801650D0[playerRenderId][playerId] - player->animFrameSelector[playerRenderId]) < -0x13) || (D_80165190[playerRenderId][playerId] == (s16) 1U)) {
                         D_80164AB0[gPlayersToRenderCount] = (s16) playerId;
                         D_80164AC0[gPlayersToRenderCount] = (s16) playerRenderId;
                         D_80164AD0[gPlayersToRenderCount] = player;
