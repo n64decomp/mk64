@@ -1,0 +1,28 @@
+var osint_8h =
+[
+    [ "__osAiDeviceBusy", "osint_8h.html#aa9e8840bd3019cfee79abcb10f96ae55", null ],
+    [ "__osDequeueThread", "osint_8h.html#a836d4fff66c3d0cf5eec17c4579df564", null ],
+    [ "__osDispatchThread", "osint_8h.html#a650b788ebd5efde9c8cbccc1ee832445", null ],
+    [ "__osDpDeviceBusy", "osint_8h.html#a945b5093c411b85a213643b26c860ff9", null ],
+    [ "__osEnqueueAndYield", "osint_8h.html#afe9c3abc4ca93d9fe18a87d9f108d5cb", null ],
+    [ "__osEnqueueThread", "osint_8h.html#ac9d6cfd19de5565e74f1d74a14e9092d", null ],
+    [ "__osInsertTimer", "osint_8h.html#ad952d60bddbd10431f0b5856b68d0fe2", null ],
+    [ "__osPopThread", "osint_8h.html#a82b6b8e6a4311b516950168ef4078e33", null ],
+    [ "__osProbeTLB", "osint_8h.html#a4f7c83166c9481713d4b56defd0888c7", null ],
+    [ "__osSetTimerIntr", "osint_8h.html#a2e6546384f8d57866a1afe6d5251b06b", null ],
+    [ "__osSpDeviceBusy", "osint_8h.html#ae7860f826ed77c96b9a22078399d4528", null ],
+    [ "__osTimerInterrupt", "osint_8h.html#a0edac8108eba6f1352c1ab8821052178", null ],
+    [ "__osTimerServicesInit", "osint_8h.html#a07051f81675397fec273eb91eb481503", null ],
+    [ "__osActiveQueue", "osint_8h.html#a31b577966e52be770c717b8bf5283124", null ],
+    [ "__osBaseCounter", "osint_8h.html#ae56f9e39bb4b420a9a2d02e6ca1fecfa", null ],
+    [ "__osBaseTimer", "osint_8h.html#ae8c5ed24d566f5a7127bef73c797f52a", null ],
+    [ "__osCurrentTime", "osint_8h.html#a4af0cb38d6a9bc36e9ee5dda55d7726e", null ],
+    [ "__osEventStateTab", "osint_8h.html#a840cedc4531a758ea5cb3cfc41d13d94", null ],
+    [ "__osFaultedThread", "osint_8h.html#a8386b3993eefde5c773083a70bc964c1", null ],
+    [ "__osRunningThread", "osint_8h.html#a4c57f3342a3bc2e836d06b78c85d70f0", null ],
+    [ "__osRunQueue", "osint_8h.html#a95bd5a78cf0d49f922eb22c02533774e", null ],
+    [ "__osTimerCounter", "osint_8h.html#af64f0f05509018ed3e29b4ac64108049", null ],
+    [ "__osTimerList", "osint_8h.html#a845415355645d4a89606df8b7e9cd0fc", null ],
+    [ "__osViIntrCount", "osint_8h.html#ad6294217bd70bb494aaebde0701f2865", null ],
+    [ "osViClock", "osint_8h.html#a359a7a14acda8314d35aaf1019425e18", null ]
+];

@@ -1,0 +1,27 @@
+var structCeremonyActor =
+[
+    [ "initParams", "structCeremonyActor.html#a277ad2eda07a8de516f07337576809dd", null ],
+    [ "isActive", "structCeremonyActor.html#a914b59d131ff77b2620ed88ed49a1838", null ],
+    [ "pos", "structCeremonyActor.html#a27dc934acc4ee0a396c40200ffcd44e2", null ],
+    [ "timer", "structCeremonyActor.html#aac46b3a4f542449246d1fcec1387ef36", null ],
+    [ "type", "structCeremonyActor.html#aadd1be8141690d86b30f9cd86bfa183b", null ],
+    [ "unk1C", "structCeremonyActor.html#ac8e3e69ab734292b6b89e2a56f01f120", null ],
+    [ "unk20", "structCeremonyActor.html#aab0852f920697a2877762ace65297194", null ],
+    [ "unk24", "structCeremonyActor.html#af30f1af1c022f6622cc73e2127a7e41e", null ],
+    [ "unk2C", "structCeremonyActor.html#acd58be9aeaa861a1f5de204dad6181be", null ],
+    [ "unk2E", "structCeremonyActor.html#a110b550dc583aeb02fd38123620c8674", null ],
+    [ "unk30", "structCeremonyActor.html#aa9bce90d85f495c25dbda30cbb1e33ca", null ],
+    [ "unk32", "structCeremonyActor.html#a7e5c8dba1d5745f8fdb28425cfbf86c0", null ],
+    [ "unk34", "structCeremonyActor.html#a29880f9182b999494a29b6a79a268cdb", null ],
+    [ "unk36", "structCeremonyActor.html#ae6bd0ed23f72c84a2448cb0f96761553", null ],
+    [ "unk38", "structCeremonyActor.html#aa070d6425710935e0df26514ac991c0c", null ],
+    [ "unk40", "structCeremonyActor.html#a86c9ff71293d7c786e38366ee82923fb", null ],
+    [ "unk44", "structCeremonyActor.html#a95401c826ee7781ad6f979d5fb2eaa44", null ],
+    [ "unk48", "structCeremonyActor.html#ad6592eaa8c4acbdd0b43d53304c03406", null ],
+    [ "unk6", "structCeremonyActor.html#a42af7e698199717ee309a86b47111385", null ],
+    [ "unk8", "structCeremonyActor.html#a69c20526dea2316424da2fd93f55ea74", null ],
+    [ "unk9", "structCeremonyActor.html#aa364a6682c5afeb9c1f14684068db588", null ],
+    [ "unkA", "structCeremonyActor.html#a13f7987d81c585bd2298c5bc6ea5c04e", null ],
+    [ "unkC", "structCeremonyActor.html#aa2f4470ee38cb390a32c098ad0d6ef99", null ],
+    [ "unkE", "structCeremonyActor.html#a47062d029901aad6a105fc69de8a8454", null ]
+];

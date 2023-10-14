@@ -1,0 +1,52 @@
+<map id="thread5_game_loop" name="thread5_game_loop">
+<area shape="rect" id="node1" title=" " alt="" coords="5,740,156,767"/>
+<area shape="rect" id="node2" href="$code__800029B0_8c.html#a0d59a21a5843b6b518a1b93920dc561e" title=" " alt="" coords="216,56,347,83"/>
+<area shape="rect" id="node3" href="$main_8c.html#a9b253735194a23ab701e8ab9cdc7b128" title=" " alt="" coords="219,816,343,843"/>
+<area shape="rect" id="node5" href="$main_8c.html#ab0ea8291cbf3e787fbd55baf553f25ab" title=" " alt="" coords="209,537,354,564"/>
+<area shape="rect" id="node10" href="$profiler_8c.html#ad822f08530dc02ebea867b58f6b2cf5b" title=" " alt="" coords="674,613,863,640"/>
+<area shape="rect" id="node12" href="$main_8c.html#a6ac5e1df596c8c0b12e3ffac501eaa4d" title=" " alt="" coords="426,715,606,741"/>
+<area shape="rect" id="node14" href="$external_8c.html#a031a8e5c8f0a01dfc92af34605af5690" title=" " alt="" coords="219,1323,343,1349"/>
+<area shape="rect" id="node19" href="$external_8c.html#a12c3e6c147828cc102e748904808ea4a" title=" " alt="" coords="219,1601,343,1628"/>
+<area shape="rect" id="node28" href="$main_8c.html#ae04143ce8113cdafa007c642eb620bc8" title=" " alt="" coords="204,1019,359,1045"/>
+<area shape="rect" id="node38" href="$main_8c.html#aec4c421bf39a43fbe12a236be2d75a4b" title=" " alt="" coords="222,107,341,133"/>
+<area shape="rect" id="node40" href="$osCreateMesgQueue_8c.html#aab783cab54141cb60618b45f534104b9" title=" " alt="" coords="690,107,847,133"/>
+<area shape="rect" id="node42" href="$main_8c.html#a5443032971be2eac69c7590d16e515b4" title=" " alt="" coords="218,309,345,336"/>
+<area shape="rect" id="node46" href="$main_8c.html#ab6de5c4a438055408ee2c63f8a86464a" title=" " alt="" coords="225,765,337,792"/>
+<area shape="rect" id="node47" href="$main_8c.html#a4a1b13bb2b383c7cc6fc4a1a34cdfff1" title=" " alt="" coords="207,1652,356,1679"/>
+<area shape="rect" id="node48" href="$main_8c.html#ad0625ed56ac663d3ec7ae8f1ba50c735" title=" " alt="" coords="209,1880,353,1907"/>
+<area shape="rect" id="node4" href="$memory_8c.html#ac3218ec03e916f72bffc829d420ba5f7" title="Stores the physical memory addr for segmented memory in gSegmentTable using the segment number as an ..." alt="" coords="426,816,606,843"/>
+<area shape="rect" id="node6" href="$crash__screen_8c.html#a904039e86b5ade46346d24fb1e274134" title=" " alt="" coords="407,512,625,539"/>
+<area shape="rect" id="node7" href="$main_8c.html#a6dfb2e914880b246ffe72d37f975d658" title=" " alt="" coords="449,613,583,640"/>
+<area shape="rect" id="node8" href="$code__80071F00_8h.html#a4283cbf896ea7ca31653640f6dd237af" title=" " alt="" coords="717,233,821,260"/>
+<area shape="rect" id="node9" href="$osViSwapBuffer_8c.html#ad9fbc8feed5d6cf557a051834e168950" title=" " alt="" coords="454,461,578,488"/>
+<area shape="rect" id="node11" href="$osGetTime_8c.html#ac9a040dcda7f29a608413f5a5c8963bf" title=" " alt="" coords="912,323,1005,349"/>
+<area shape="rect" id="node13" href="$main_8c.html#ac1eb673d52197b3566bdd06480dd5a7b" title=" " alt="" coords="673,715,864,741"/>
+<area shape="rect" id="node15" href="$external_8h.html#a8df97ee0af4a2ff4bee8fd13a42f4c83" title=" " alt="" coords="455,1424,577,1451"/>
+<area shape="rect" id="node16" href="$external_8h.html#a3014d45be3d9b1c0623c71e610b9374f" title=" " alt="" coords="455,1272,577,1299"/>
+<area shape="rect" id="node17" href="$external_8h.html#a487a5d1c0afc894718fd637b13485b2b" title=" " alt="" coords="455,1323,577,1349"/>
+<area shape="rect" id="node18" href="$external_8h.html#a2878083471b9adc452f8387e9377fe56" title=" " alt="" coords="454,1373,578,1400"/>
+<area shape="rect" id="node20" href="$external_8c.html#a9101650b9d48873724dacc81ddf1f359" title=" " alt="" coords="455,1627,577,1653"/>
+<area shape="rect" id="node21" href="$external_8h.html#a73cb324786be518f084e9e210b999770" title=" " alt="" coords="455,1677,577,1704"/>
+<area shape="rect" id="node22" href="$external_8c.html#a4a32f1b7f771a18da063fd2b47392a9d" title=" " alt="" coords="455,1728,577,1755"/>
+<area shape="rect" id="node23" href="$external_8h.html#a9f5d9ab040210ecd57c26391aa62ccab" title=" " alt="" coords="455,1779,577,1805"/>
+<area shape="rect" id="node24" href="$external_8c.html#a9509bffa6aa3d47d1550d3d5683b9361" title=" " alt="" coords="455,1829,577,1856"/>
+<area shape="rect" id="node25" href="$external_8c.html#a2b1be7122c397e0e6cbd0438a625b983" title=" " alt="" coords="455,1475,577,1501"/>
+<area shape="rect" id="node26" href="$external_8c.html#aebe0a7e33d0961a0ad7e4ba40a49a032" title=" " alt="" coords="453,1525,579,1552"/>
+<area shape="rect" id="node27" href="$external_8h.html#a01e0fb6ba3bfcf5f10f894ca7effbaea" title=" " alt="" coords="454,1576,578,1603"/>
+<area shape="rect" id="node29" href="$code__80280000_8c.html#aa28a69be4eda3b8667366c6c7b556024" title=" " alt="" coords="465,1069,567,1096"/>
+<area shape="rect" id="node30" href="$code__80091750_8c.html#ac51ad7c4cba535e4821a618a8cfe1e3e" title=" " alt="" coords="455,1171,577,1197"/>
+<area shape="rect" id="node31" href="$main_8c.html#a753fddc62059f70c07c0b83147998762" title=" " alt="" coords="411,1120,621,1147"/>
+<area shape="rect" id="node33" href="$main_8c.html#afcdb6706e90ae13e8b1442fc0f8847b9" title=" " alt="" coords="481,867,551,893"/>
+<area shape="rect" id="node34" href="$osViBlack_8c.html#a6446513d8cd19001210d458f11b12df4" title=" " alt="" coords="473,968,559,995"/>
+<area shape="rect" id="node35" href="$podium__ceremony__actors_8c.html#a7ea229c65f264670fc828b95e8321154" title=" " alt="" coords="427,1019,605,1045"/>
+<area shape="rect" id="node36" href="$main_8c.html#afff87ffcbfee4f1f37d443110aa7b52a" title=" " alt="" coords="455,917,577,944"/>
+<area shape="rect" id="node37" href="$menus_8c.html#a5fd6ba9b77c684f7c5e0f4732de81953" title=" " alt="" coords="457,1221,575,1248"/>
+<area shape="rect" id="node32" href="$main_8c.html#a8fa00601d510540676d7af3af095c569" title="TODO: Why did void* work for matching." alt="" coords="699,943,838,969"/>
+<area shape="rect" id="node39" href="$osContInit_8c.html#a3a0e3a0d795150ad033f213754773c34" title=" " alt="" coords="472,5,560,32"/>
+<area shape="rect" id="node41" href="$crash__screen_8c.html#a7b6487cfc60fe33c16e07b6d60ab275f" title=" " alt="" coords="451,56,581,83"/>
+<area shape="rect" id="node43" href="$osContStartReadData_8c.html#a1f254463b03eb972abbf6c693077f397" title=" " alt="" coords="439,360,593,387"/>
+<area shape="rect" id="node44" href="$osContStartReadData_8c.html#a2c8c7fe792f6dd17287c7132efa236db" title=" " alt="" coords="435,259,597,285"/>
+<area shape="rect" id="node45" href="$main_8c.html#acf938b165278cd36f3cb7cf6945d6917" title=" " alt="" coords="448,309,584,336"/>
+<area shape="rect" id="node49" href="$main_8c.html#a8ccd4f2ae1a9502071e1b43ab07a78d3" title=" " alt="" coords="455,1931,577,1957"/>
+<area shape="rect" id="node50" href="$main_8c.html#a1399390ccfb8062de2a77e48df769faf" title=" " alt="" coords="455,1880,577,1907"/>
+</map>

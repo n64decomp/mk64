@@ -1,0 +1,25 @@
+var structCamera =
+[
+    [ "lookAt", "structCamera.html#ae16ab2b8e885264666d7e7e20bb872a1", null ],
+    [ "playerId", "structCamera.html#a2970cfcff0b562c8033422defcc15a50", null ],
+    [ "pos", "structCamera.html#aaa7eaab22236f016fd933666bd90c741", null ],
+    [ "rot", "structCamera.html#a0eac7222597bb35c86f8ab71bb2f9d2f", null ],
+    [ "someBitFlags", "structCamera.html#acfaf2e76657f585308818aeb81e08c22", null ],
+    [ "unk_2C", "structCamera.html#ae7e6b48883a5943ec6a5fea35724b343", null ],
+    [ "unk_2E", "structCamera.html#a9ef6c05c079b57a4ebfcf0f2c28e1704", null ],
+    [ "unk_30", "structCamera.html#a31cf15c24e5c99b43400e165e2007269", null ],
+    [ "unk_3C", "structCamera.html#abcd135482fb218dfd8387c282bbe8074", null ],
+    [ "unk_48", "structCamera.html#af0659dfe9ec249eb88a1752aed444cfd", null ],
+    [ "unk_4C", "structCamera.html#a0c63280c0fed873e0de91e6838875960", null ],
+    [ "unk_50", "structCamera.html#a77d5fb9976392a938f9b37145a56b5f3", null ],
+    [ "unk_54", "structCamera.html#a85144d23d2ab9abadcf19ebb9572cc11", null ],
+    [ "unk_94", "structCamera.html#a0a744b9293131f7719e3beb956add5bc", null ],
+    [ "unk_A0", "structCamera.html#a88ed7d5dfdbf522ce88132d5aaf2279a", null ],
+    [ "unk_A4", "structCamera.html#aa746a36785af3a009ad44385e7613e89", null ],
+    [ "unk_A8", "structCamera.html#af3dd5e00525e8726e522e601dadfc0a4", null ],
+    [ "unk_AC", "structCamera.html#a61e38a801b8f416d689c81eae166c19e", null ],
+    [ "unk_B0", "structCamera.html#ae2b9d79428dd1f7c54beb7960e2f8df8", null ],
+    [ "unk_B2", "structCamera.html#aabd0fd674bc8669577184f6f815367b6", null ],
+    [ "unk_B4", "structCamera.html#aa41528fb3d92947fbd847bb427622383", null ],
+    [ "up", "structCamera.html#ace6326d21c5f4e8aad4314a99839bafd", null ]
+];

@@ -1,0 +1,26 @@
+var structSynthesisReverb =
+[
+    [ "bufSizePerChannel", "structSynthesisReverb.html#a5a0bc86224c7b45b92f4f7d95d36efbe", null ],
+    [ "curFrame", "structSynthesisReverb.html#a701bb7bbad9141b0664bbb19117e3d3c", null ],
+    [ "downsampleRate", "structSynthesisReverb.html#ab4cf4eefbf98776a131b84bf7bad71c4", null ],
+    [ "framesLeftToIgnore", "structSynthesisReverb.html#a6c9feb671e28868a8539aef606d6e1be", null ],
+    [ "items", "structSynthesisReverb.html#a0b9105040972d04171ddea3a369d14fb", null ],
+    [ "left", "structSynthesisReverb.html#a2352e4dda5d3276c505131850353caa8", null ],
+    [ "nextRingBufferPos", "structSynthesisReverb.html#af0c1e263c77e45751776b0fb21c78fec", null ],
+    [ "resampleFlags", "structSynthesisReverb.html#a13b37fc2117b3721934456caf9b0fcc0", null ],
+    [ "resampleRate", "structSynthesisReverb.html#a91a60bfb503bd59fce13f4b990f392d7", null ],
+    [ "resampleStateLeft", "structSynthesisReverb.html#a21a142dba6c0a8f3735e1ab5bb5cce7a", null ],
+    [ "resampleStateRight", "structSynthesisReverb.html#a70a22a0cdee2d03b6d06fbd2b3226563", null ],
+    [ "reverbGain", "structSynthesisReverb.html#a1b25d21952ec1fc371d3a00dd6802e5a", null ],
+    [ "right", "structSynthesisReverb.html#a5fe52018768c0e1e22713c3eabf89483", null ],
+    [ "ringBuffer", "structSynthesisReverb.html#a1263fee39eb05ec1a0b922e6d57fafab", null ],
+    [ "unk100", "structSynthesisReverb.html#a82c89d4f0c9540c0f0f9ea68ba6347d3", null ],
+    [ "unk104", "structSynthesisReverb.html#af5dddf0dc829753ac487ac160e90bb79", null ],
+    [ "unk24", "structSynthesisReverb.html#a54c2267cc8a0a5d27b436b5fa9139b9f", null ],
+    [ "unk28", "structSynthesisReverb.html#a0115da98d83c0acb5bf87a5f7adc69e1", null ],
+    [ "unkC", "structSynthesisReverb.html#a1b2d1ba08d5b8167132952dba7512fba", null ],
+    [ "unkF8", "structSynthesisReverb.html#a95c1a105fa35fdce091e5a21b51a551f", null ],
+    [ "unkFC", "structSynthesisReverb.html#aa46c28e4defb41adeab96a8bab877a6f", null ],
+    [ "useReverb", "structSynthesisReverb.html#a5b14756d9ad6c5588fdb97041605f43e", null ],
+    [ "windowSize", "structSynthesisReverb.html#ac33541fe1dc1f814a10cbc97b86b8d4d", null ]
+];

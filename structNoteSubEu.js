@@ -1,0 +1,25 @@
+var structNoteSubEu =
+[
+    [ "audioBankSound", "structNoteSubEu.html#a0ac4bf2c813a28afcaf8a427edac84f0", null ],
+    [ "bankId", "structNoteSubEu.html#a332e1ad1597add36d263523b5eb9b5a8", null ],
+    [ "bookOffset", "structNoteSubEu.html#a7c006e4ca4da48e9e1677e10cb604aa6", null ],
+    [ "enabled", "structNoteSubEu.html#ae37271bcb252efc531b2cc103a1cd60d", null ],
+    [ "envMixerNeedsInit", "structNoteSubEu.html#abfd03e66d327a80a154b21a8db0d5878", null ],
+    [ "finished", "structNoteSubEu.html#ad48b46b1ef1ad2592e3a7dfd124d1f30", null ],
+    [ "hasTwoAdpcmParts", "structNoteSubEu.html#a58f467ef63476a62cbfb6cd03abd6d99", null ],
+    [ "headsetPanLeft", "structNoteSubEu.html#a711a296ed21f16c8c208fd26d61c4c04", null ],
+    [ "headsetPanRight", "structNoteSubEu.html#a28eeffd5b920d54386ca52d93c2f2a18", null ],
+    [ "isSyntheticWave", "structNoteSubEu.html#a891e0905ad10eafcf3e3e4e2207fc840", null ],
+    [ "needsInit", "structNoteSubEu.html#afea5dec32c9dd20d9b47a8f75f5a0316", null ],
+    [ "resamplingRateFixedPoint", "structNoteSubEu.html#a8cb4d49223d02a9903f714c9e44c38f4", null ],
+    [ "reverbIndex", "structNoteSubEu.html#a6fc69c4ef54a586c244e0aacda534dca", null ],
+    [ "reverbVol", "structNoteSubEu.html#a3d8a690a7418abc301b01a504a7aca6f", null ],
+    [ "samples", "structNoteSubEu.html#a6b84d3c75a1da53b09cedce3188c14de", null ],
+    [ "sound", "structNoteSubEu.html#a90fe1c0dfff8aa278be2b65af0177f69", null ],
+    [ "stereoHeadsetEffects", "structNoteSubEu.html#af7e8d3f08f13dd24fb832d058d832d00", null ],
+    [ "stereoStrongLeft", "structNoteSubEu.html#adc9a8cd184bc35e52022017cbd873eb3", null ],
+    [ "stereoStrongRight", "structNoteSubEu.html#a572c93df00fce28175f1dd4243ccb1b7", null ],
+    [ "targetVolLeft", "structNoteSubEu.html#a5535a799059eccd597126a7cbf9e3481", null ],
+    [ "targetVolRight", "structNoteSubEu.html#ab0d257defe24dd445d63bc2da57eeda8", null ],
+    [ "usesHeadsetPanEffects", "structNoteSubEu.html#a348ed95a1f9f39ce69ce1ae82c696e8f", null ]
+];

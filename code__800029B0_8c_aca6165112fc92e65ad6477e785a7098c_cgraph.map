@@ -1,0 +1,52 @@
+<map id="setup_race" name="setup_race">
+<area shape="rect" id="node1" title=" " alt="" coords="5,1516,99,1543"/>
+<area shape="rect" id="node2" href="$staff__ghosts_8c.html#ad3fe55bff348a8b6cfc02f327bda8544" title=" " alt="" coords="148,132,269,159"/>
+<area shape="rect" id="node9" href="$spawn__players_8c.html#ac1a9412b931cfa517a2382c2fc605399" title=" " alt="" coords="147,385,270,412"/>
+<area shape="rect" id="node15" href="$code__80091750_8c.html#a11daab0c2cb2700179b2325d2c619769" title=" " alt="" coords="149,689,269,716"/>
+<area shape="rect" id="node22" href="$external_8c.html#aa02fab8bd5588ff8301d0f0f91e1cb1c" title=" " alt="" coords="147,933,270,960"/>
+<area shape="rect" id="node25" href="$external_8c.html#a12c3e6c147828cc102e748904808ea4a" title=" " alt="" coords="147,1187,271,1213"/>
+<area shape="rect" id="node34" href="$render__courses_8c.html#afa7a12f363eeadd8ea6926eaf62657ef" title=" " alt="" coords="147,1491,270,1517"/>
+<area shape="rect" id="node44" href="$render__courses_8c.html#a797b6e3f31cceb40f23f76cc7cd28582" title=" " alt="" coords="148,1541,269,1568"/>
+<area shape="rect" id="node45" href="$actors_8c.html#ad4c7671a474d355b39c737fdf54caffc" title=" " alt="" coords="148,1592,269,1619"/>
+<area shape="rect" id="node47" href="$code__80281780_8h.html#a1520a44a27c37f0b2554764974afb428" title=" " alt="" coords="147,1643,271,1669"/>
+<area shape="rect" id="node48" href="$skybox__and__splitscreen_8c.html#a3ccbc877132c17e7864318f295367fb7" title=" " alt="" coords="147,1693,271,1720"/>
+<area shape="rect" id="node49" href="$code__8006E9C0_8c.html#a5def87b038bc54365398158abfa0bbfb" title=" " alt="" coords="150,1744,267,1771"/>
+<area shape="rect" id="node50" href="$memory_8c.html#a001877166612ad862f3e161e8406a952" title="Loads &amp; DMAs course data. Vtx, textures, displaylists, etc." alt="" coords="159,1795,259,1821"/>
+<area shape="rect" id="node3" href="$staff__ghosts_8c.html#a1e6c535e2e2e430c9088d9a634788aba" title=" " alt="" coords="353,5,474,32"/>
+<area shape="rect" id="node4" href="$staff__ghosts_8c.html#aadf834e73dfafcf240157efbda08b28c" title=" " alt="" coords="352,56,475,83"/>
+<area shape="rect" id="node5" href="$staff__ghosts_8c.html#af117ae63ba55ebd8aa5c6b879178d697" title=" " alt="" coords="353,107,474,133"/>
+<area shape="rect" id="node6" href="$code__80091750_8c.html#aeaaf45d9941e43e3b6558dcbfa6d43b5" title=" " alt="" coords="353,157,474,184"/>
+<area shape="rect" id="node8" href="$staff__ghosts_8c.html#a80fa9da37c18f25041a3ec02cec5cd25" title=" " alt="" coords="353,208,474,235"/>
+<area shape="rect" id="node7" href="$code__800B45E0_8c.html#aefd3604da4aa5ae9ed1eb8fd042ff5e9" title=" " alt="" coords="556,335,679,361"/>
+<area shape="rect" id="node10" href="$camera_8c.html#a2699fb853dad47cc722031ca412a31ea" title=" " alt="" coords="364,259,463,285"/>
+<area shape="rect" id="node11" href="$spawn__players_8c.html#afb1c307e34d73d9c004936d2752c44ce" title=" " alt="" coords="352,309,475,336"/>
+<area shape="rect" id="node12" href="$spawn__players_8c.html#a400676f9bd53662b5636a7f191f947aa" title=" " alt="" coords="351,360,475,387"/>
+<area shape="rect" id="node13" href="$spawn__players_8c.html#a786871d4fec99acdd5a14b48c1c38a7c" title=" " alt="" coords="351,411,475,437"/>
+<area shape="rect" id="node14" href="$code__80057C60_8c.html#a07b43c07e7afcf3fcccf63622bb991e1" title=" " alt="" coords="352,461,475,488"/>
+<area shape="rect" id="node16" href="$code__80091750_8h.html#a7ebaf40e959e7475b365a1f44879faef" title=" " alt="" coords="333,563,493,589"/>
+<area shape="rect" id="node17" href="$code__80091750_8c.html#a43d067e97313b62650b013e0384a7c8d" title=" " alt="" coords="353,613,474,640"/>
+<area shape="rect" id="node18" href="$code__80091750_8c.html#a7a0cf091b9ff05148cef31479f41f941" title=" " alt="" coords="353,664,474,691"/>
+<area shape="rect" id="node19" href="$code__80091750_8c.html#ae938fb8c5b56456f2f0caf7dd552a51e" title=" " alt="" coords="352,715,475,741"/>
+<area shape="rect" id="node20" href="$code__80091750_8c.html#ae589fecc0d3c5ab633b900b91c33a2cd" title=" " alt="" coords="353,765,474,792"/>
+<area shape="rect" id="node21" href="$memory_8c.html#a28a622d0ac3e74408500387bceeb7b5e" title="Returns the address of the next available memory location and updates the memory pointer to reference..." alt="" coords="340,817,487,858"/>
+<area shape="rect" id="node23" href="$external_8c.html#ac48b7cbfcaa7737f892877ead85e4ba7" title=" " alt="" coords="352,883,475,909"/>
+<area shape="rect" id="node24" href="$external_8h.html#a1a703565eeef4feb50a7d0c346f24b2c" title=" " alt="" coords="352,933,475,960"/>
+<area shape="rect" id="node26" href="$external_8c.html#a9101650b9d48873724dacc81ddf1f359" title=" " alt="" coords="352,984,475,1011"/>
+<area shape="rect" id="node27" href="$external_8h.html#a73cb324786be518f084e9e210b999770" title=" " alt="" coords="352,1035,475,1061"/>
+<area shape="rect" id="node28" href="$external_8c.html#a4a32f1b7f771a18da063fd2b47392a9d" title=" " alt="" coords="352,1085,475,1112"/>
+<area shape="rect" id="node29" href="$external_8h.html#a9f5d9ab040210ecd57c26391aa62ccab" title=" " alt="" coords="352,1136,475,1163"/>
+<area shape="rect" id="node30" href="$external_8c.html#a9509bffa6aa3d47d1550d3d5683b9361" title=" " alt="" coords="352,1187,475,1213"/>
+<area shape="rect" id="node31" href="$external_8c.html#a2b1be7122c397e0e6cbd0438a625b983" title=" " alt="" coords="352,1237,475,1264"/>
+<area shape="rect" id="node32" href="$external_8c.html#aebe0a7e33d0961a0ad7e4ba40a49a032" title=" " alt="" coords="351,1288,476,1315"/>
+<area shape="rect" id="node33" href="$external_8h.html#a01e0fb6ba3bfcf5f10f894ca7effbaea" title=" " alt="" coords="351,1339,475,1365"/>
+<area shape="rect" id="node35" href="$collision_8c.html#a018be865ee771f721ef5b2d504831285" title=" " alt="" coords="320,1389,507,1416"/>
+<area shape="rect" id="node36" href="$render__courses_8c.html#ab02cdf6684f984a12e7388fe973bc89a" title=" " alt="" coords="352,1440,475,1467"/>
+<area shape="rect" id="node37" href="$render__courses_8c.html#a95e4ea5c2df6f334ba984f7383834ec7" title=" " alt="" coords="351,1491,475,1517"/>
+<area shape="rect" id="node38" href="$math__util_8c.html#aea3e7d8ddce5e03ee04274ca611c9922" title=" " alt="" coords="351,1541,476,1568"/>
+<area shape="rect" id="node39" href="$math__util_8c.html#aeedfb800465850c03caa0f3224c24dee" title=" " alt="" coords="351,1592,475,1619"/>
+<area shape="rect" id="node40" href="$collision_8c.html#a6275a3a99f8faf62b7c64d9aeca44c48" title=" " alt="" coords="345,1643,481,1669"/>
+<area shape="rect" id="node41" href="$render__courses_8c.html#aa4af1c42d08a2df94b3140023cf94b15" title=" " alt="" coords="319,1693,508,1720"/>
+<area shape="rect" id="node42" href="$collision_8c.html#aa13f1808c91cd97a2cf834f8167dc5db" title=" " alt="" coords="332,1745,495,1786"/>
+<area shape="rect" id="node43" href="$collision_8c.html#a4743302e3fe799bc9307a95799761aca" title=" " alt="" coords="332,1810,495,1851"/>
+<area shape="rect" id="node46" href="$actors_8c.html#a90bb1e98b1fc94450092f4fddff2a61b" title=" " alt="" coords="343,1876,484,1903"/>
+</map>

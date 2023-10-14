@@ -1,0 +1,52 @@
+<map id="thread3_video" name="thread3_video">
+<area shape="rect" id="node1" title=" " alt="" coords="5,514,120,540"/>
+<area shape="rect" id="node2" href="$main_8c.html#afb8d0b987e9455cf9afbd21bfccb378d" title=" " alt="" coords="194,1755,306,1782"/>
+<area shape="rect" id="node6" href="$main_8c.html#a47a548bbf988125912df970a7ec6aa64" title=" " alt="" coords="171,463,329,490"/>
+<area shape="rect" id="node10" href="$osStartThread_8c.html#a3b144e814933e16a2fbf2642ad098ed3" title=" " alt="" coords="897,868,1010,895"/>
+<area shape="rect" id="node14" href="$main_8c.html#ac787ae111abe00ee69fdd117c6917276" title=" " alt="" coords="172,184,328,211"/>
+<area shape="rect" id="node18" href="$main_8c.html#a720f132930eedc22c2c0163a3d2ffed8" title=" " alt="" coords="191,311,309,338"/>
+<area shape="rect" id="node21" href="$code__80071F00_8h.html#a4283cbf896ea7ca31653640f6dd237af" title=" " alt="" coords="693,868,797,895"/>
+<area shape="rect" id="node22" href="$main_8c.html#a8cd2befe9b7f9490d32bf787a7e8d44f" title=" " alt="" coords="168,716,332,743"/>
+<area shape="rect" id="node30" href="$main_8c.html#adf1f78d12be46a2a332bcc429e2280d0" title=" " alt="" coords="414,1274,569,1300"/>
+<area shape="rect" id="node34" href="$main_8c.html#af424460885c2b2b048e6972d3e1f96d0" title=" " alt="" coords="185,260,315,287"/>
+<area shape="rect" id="node35" href="$main_8c.html#adc4ddc4dba28c4eebe8a7c28e5559b11" title=" " alt="" coords="193,1096,307,1123"/>
+<area shape="rect" id="node41" href="$main_8c.html#a633ed517e458daeb768f5361895dcac9" title=" " alt="" coords="175,1552,325,1579"/>
+<area shape="rect" id="node3" href="$osCreateThread_8c.html#a215c9681dbf26ff00e8b240491f605fa" title=" " alt="" coords="891,1223,1016,1250"/>
+<area shape="rect" id="node4" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="1090,1007,1207,1034"/>
+<area shape="rect" id="node5" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="1089,1096,1208,1123"/>
+<area shape="rect" id="node7" href="$osSendMesg_8c.html#a413bd1b0a16c54dcc9e59c48b3d7f142" title=" " alt="" coords="693,716,797,743"/>
+<area shape="rect" id="node13" href="$profiler_8c.html#aeaf40013d69c152d0134b0cec1a6cb4c" title=" " alt="" coords="411,260,571,287"/>
+<area shape="rect" id="node8" href="$libultra__internal_8h.html#afe9c3abc4ca93d9fe18a87d9f108d5cb" title=" " alt="" coords="1067,716,1231,743"/>
+<area shape="rect" id="node9" href="$libultra__internal_8h.html#a82b6b8e6a4311b516950168ef4078e33" title=" " alt="" coords="1089,818,1209,844"/>
+<area shape="rect" id="node11" href="$libultra__internal_8h.html#a650b788ebd5efde9c8cbccc1ee832445" title=" " alt="" coords="1072,868,1225,895"/>
+<area shape="rect" id="node12" href="$libultra__internal_8h.html#ac9d6cfd19de5565e74f1d74a14e9092d" title=" " alt="" coords="1073,919,1225,946"/>
+<area shape="rect" id="node15" href="$osSpTaskYielded_8c.html#ab8f1191f687a4eb639b60c394e364ec2" title=" " alt="" coords="426,108,557,135"/>
+<area shape="rect" id="node16" href="$profiler_8c.html#aec1c4e42709135dc4359c7d062627ee5" title=" " alt="" coords="400,210,583,236"/>
+<area shape="rect" id="node17" href="$main_8c.html#aad8e1bffd4b596136b4b9ebbe974b696" title=" " alt="" coords="440,159,543,186"/>
+<area shape="rect" id="node19" href="$main_8c.html#a123ceafce0f6cff4173e8f09d6cffe78" title=" " alt="" coords="413,362,569,388"/>
+<area shape="rect" id="node20" href="$main_8c.html#a2ccc43c85eb5a79a5c0659a053576a75" title=" " alt="" coords="418,412,565,439"/>
+<area shape="rect" id="node23" href="$main_8c.html#a6fb28ef534379345bfd1413abc2c63c9" title=" " alt="" coords="430,615,553,642"/>
+<area shape="rect" id="node24" href="$main_8c.html#a0251c90fb83072f3510a39e2f1b3e980" title=" " alt="" coords="414,666,569,692"/>
+<area shape="rect" id="node25" href="$memory_8c.html#a7b4b2c10c6840908a0407cce70dfec1b" title="Sets the starting location for allocating memory and calculates pool size." alt="" coords="404,716,579,743"/>
+<area shape="rect" id="node26" href="$memory_8c.html#a70e565796a8d169eaab9bc3a81c23ad6" title="Allocate and DMA." alt="" coords="448,767,535,794"/>
+<area shape="rect" id="node27" href="$functions_8h.html#ae4722e596a88d66404ccaaf6ea181b41" title=" " alt="" coords="440,818,543,844"/>
+<area shape="rect" id="node28" href="$code__80071F00_8h.html#ae288a36d96a4db6977d95327e246ec12" title=" " alt="" coords="436,564,547,591"/>
+<area shape="rect" id="node29" href="$memory_8c.html#ac3218ec03e916f72bffc829d420ba5f7" title="Stores the physical memory addr for segmented memory in gSegmentTable using the segment number as an ..." alt="" coords="655,1058,835,1084"/>
+<area shape="rect" id="node31" href="$osCreateMesgQueue_8c.html#aab783cab54141cb60618b45f534104b9" title=" " alt="" coords="667,1350,824,1376"/>
+<area shape="rect" id="node32" href="$crash__screen_8c.html#a7b6487cfc60fe33c16e07b6d60ab275f" title=" " alt="" coords="888,1172,1019,1199"/>
+<area shape="rect" id="node33" href="$osViSetEvent_8c.html#a77e9140da93b81b60780d3862001999b" title=" " alt="" coords="899,1122,1007,1148"/>
+<area shape="rect" id="node36" href="$main_8c.html#a1057a490ba85ab32c800c0e3c9e85c78" title=" " alt="" coords="448,1172,535,1199"/>
+<area shape="rect" id="node37" href="$main_8c.html#aa136d9ba80ebfd484d7abc25534bfdc6" title=" " alt="" coords="380,1071,603,1098"/>
+<area shape="rect" id="node38" href="$main_8c.html#a065e21eae1e48d149df9ab4583ec7441" title=" " alt="" coords="406,919,577,946"/>
+<area shape="rect" id="node39" href="$profiler_8c.html#a9cd2d936f53503c507d4531e97ab7a5e" title=" " alt="" coords="397,1122,586,1148"/>
+<area shape="rect" id="node40" href="$main_8c.html#a4a1b13bb2b383c7cc6fc4a1a34cdfff1" title=" " alt="" coords="417,1375,566,1402"/>
+<area shape="rect" id="node42" href="$code__800029B0_8c.html#a0d59a21a5843b6b518a1b93920dc561e" title=" " alt="" coords="426,1578,557,1604"/>
+<area shape="rect" id="node43" href="$main_8c.html#a9b253735194a23ab701e8ab9cdc7b128" title=" " alt="" coords="429,1223,553,1250"/>
+<area shape="rect" id="node44" href="$main_8c.html#ab0ea8291cbf3e787fbd55baf553f25ab" title=" " alt="" coords="419,1426,564,1452"/>
+<area shape="rect" id="node45" href="$profiler_8c.html#ad822f08530dc02ebea867b58f6b2cf5b" title=" " alt="" coords="651,1476,840,1503"/>
+<area shape="rect" id="node46" href="$main_8c.html#a6ac5e1df596c8c0b12e3ffac501eaa4d" title=" " alt="" coords="401,1730,581,1756"/>
+<area shape="rect" id="node47" href="$external_8c.html#a031a8e5c8f0a01dfc92af34605af5690" title=" " alt="" coords="429,1780,553,1807"/>
+<area shape="rect" id="node48" href="$external_8c.html#a12c3e6c147828cc102e748904808ea4a" title=" " alt="" coords="429,1831,553,1858"/>
+<area shape="rect" id="node49" href="$main_8c.html#ae04143ce8113cdafa007c642eb620bc8" title=" " alt="" coords="414,1476,569,1503"/>
+<area shape="rect" id="node50" href="$main_8c.html#aec4c421bf39a43fbe12a236be2d75a4b" title=" " alt="" coords="432,1679,551,1706"/>
+</map>
