@@ -8,8 +8,6 @@ import re
 
 parser = argparse.ArgumentParser(description="Computes current progress throughout the whole project.")
 parser.add_argument("format", nargs="?", default="text", choices=["text", "verbose", "totalBadge", "gameBadge", "mainBadge", "endingBadge", "racingBadge", "audioBadge", "osBadge", "bytesToDecompile", "globalAsmFuncs", "m2cFuncs", "nonmatchingFuncs"])
-#parser.add_argument("-m", "--matching", dest='matching', action='store_true',
-#                    help="Output matching progress instead of decompilation progress")
 args = parser.parse_args()
 
 NON_MATCHING_PATTERN = r"#ifdef\s+NON_MATCHING.*?#pragma\s+GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\).*?#endif"
@@ -63,9 +61,7 @@ def GetCFunctions(files):
         matches = re.finditer(C_FUNCTION_PATERN_REGEX, source_code, re.MULTILINE)
 
         for match in matches:
-            #return_type = match.group(2)
             function_name = match.group(3)
-            #functions.append((return_type, function_name))
             functions.append((file, function_name))
 
     return functions
@@ -369,8 +365,8 @@ elif args.format == 'text':
         print(str(center_text("We are in " + str(get_string_from_table(curCupCount, mkCups)) + " racing at " +  str(get_string_from_table(curCourseCount, mkCourses)) + " (Lap " + str(curLapCount) + "/3)", 67)))
     else:
         print(str(center_text("Mushroom Cup (V) - Flower Cup (V)", 67)))
-        print(str(center_text("Star Cup (V) - Special Cup (V))", 67)))
-        print(str(center_text("We finished All Cups! We won all 4 Gold Cups!", 67)))
+        print(str(center_text("Star Cup (V) - Special Cup (V)", 67)))
+        print(str(center_text("We finished All Cups! We got all 4 Gold Cups!", 67)))
 
     print(str(center_text("", 67, "=")))
 elif args.format == 'verbose':
