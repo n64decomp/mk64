@@ -120,8 +120,6 @@ extern u16 D_802BA260; // Box Truck sub-type?
 
 // end of definition of actor.c variables
 
-extern u16 gNearestWaypointByPlayerId[];
-
 extern s16 gCurrentCourseId;
 extern u16 isCrossingTriggeredByIndex[];
 extern Lights1 D_800DC610[];
