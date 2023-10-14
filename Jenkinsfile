@@ -8,8 +8,7 @@ def audioProgBadge = addEmbeddableBadgeConfiguration(id: "audioProgress", subjec
 def osProgBadge = addEmbeddableBadgeConfiguration(id: "osProgress", subject: "Libultra Code Progress", color: "7d0000")
 
 def bytesToDecompile = addEmbeddableBadgeConfiguration(id: "bytesLeft", subject: "Remaining Decompilable Bytes", color: "7d0000")
-def globalAsmFuncs = addEmbeddableBadgeConfiguration(id: "globalasm", subject: "Remaining Functions", color: "7d0000")
-def m2cFuncs = addEmbeddableBadgeConfiguration(id: "m2c", subject: "Mips to C Functions", color: "7d0000")
+def m2cFuncs = addEmbeddableBadgeConfiguration(id: "m2c", subject: "Remaining Functions", color: "7d0000")
 def nonmatchingFuncs = addEmbeddableBadgeConfiguration(id: "nonmatching", subject: "Non Matching Functions", color: "7d0000")
 
 pipeline {
@@ -79,11 +78,6 @@ pipeline {
             script: "python3 progress.py bytesToDecompile",
             returnStdout: true).trim()
           bytesToDecompile.setStatus(progress)
-
-          progress = sh(
-            script: "python3 progress.py globalAsmFuncs",
-            returnStdout: true).trim()
-          globalAsmFuncs.setStatus(progress)
 
           progress = sh(
             script: "python3 progress.py m2cFuncs",

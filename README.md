@@ -4,9 +4,8 @@
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=gameProgress)](https://ci.valandil.ca/job/mk64/job/master/)
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=bytesLeft)](https://ci.valandil.ca/job/mk64/job/master/)
 
-[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=globalasm)](https://ci.valandil.ca/job/mk64/job/master/)
+[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=m2c)](https://ci.valandil.ca/job/mk64/job/master/)
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=nonmatching)](https://ci.valandil.ca/job/mk64/job/master/)  
-[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=m2c)](https://ci.valandil.ca/job/mk64/job/master/)  
 
 - [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=mainProgress)](https://ci.valandil.ca/job/mk64/job/master/)
 - [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=endingProgress)](https://ci.valandil.ca/job/mk64/job/master/)
@@ -83,8 +82,8 @@ Some menu textures are compressed using a format called tkmk00. A byte-matching 
 ## Project Structure
 	
 	mk64
-	├── asm: Handwritten Assembly code, rom header and boot
-	│   ├── non_matchings: ASM for non-matching sections
+	├── asm: Handwritten assembly code, rom header and boot
+	│   ├── non_matchings: Assembly for non-matching sections
 	│   └── os: Libultra handwritten assembly code
 	├── assets: Textures
 	├── courses: Course data, geography, display lists and staff ghosts
