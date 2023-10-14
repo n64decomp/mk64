@@ -7,14 +7,13 @@ import os
 import re
 
 parser = argparse.ArgumentParser(description="Computes current progress throughout the whole project.")
-parser.add_argument("format", nargs="?", default="text", choices=["text", "shield-json", "totalBadge", "gameBadge", "audioBadge", "bytesToDecompile", "m2cFuncs", "nonmatchingFuncs"])
-parser.add_argument("-m", "--matching", dest='matching', action='store_true',
-                    help="Output matching progress instead of decompilation progress")
+parser.add_argument("format", nargs="?", default="text", choices=["text", "verbose", "totalBadge", "gameBadge", "mainBadge", "endingBadge", "racingBadge", "audioBadge", "osBadge", "bytesToDecompile", "globalAsmFuncs", "m2cFuncs", "nonmatchingFuncs"])
 args = parser.parse_args()
 
 NON_MATCHING_PATTERN = r"#ifdef\s+NON_MATCHING.*?#pragma\s+GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\).*?#endif"
 MIPS_TO_C_FUNC_COUNT_PATTERN = r"#ifdef\s+MIPS_TO_C.*?GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\).*?#endif"
 NON_MATCHING_FUNC_COUNT_PATTERN = r"#ifdef\s+NON_MATCHING.*?GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\).*?#endif"
+GLOBAL_ASM_FUNC_COUNT_PATTERN = r"GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\)."
 
 def GetNonMatchingFunctions(files):
     functions = []
@@ -41,7 +40,31 @@ def CountNonMatchingFunctions(files):
             functions += re.findall(NON_MATCHING_FUNC_COUNT_PATTERN, f.read(), re.DOTALL)
 
     return functions
+def CountGlobalAsmFunctions(files):
+    functions = []
 
+    for file in files:
+        with open(file) as f:
+            functions += re.findall(GLOBAL_ASM_FUNC_COUNT_PATTERN, f.read(), re.DOTALL)
+
+    return functions
+
+C_FUNCTION_PATERN_REGEX = r'^(?<!static\s)(?:(\/[*][*!][*]*\n(?:[^/]*\n)+?\s*[*]\/\n)(?:\s*)*?)?(?:\s*UNUSED\s+)?([^\s]+)\s(?:\s|[*])*?([0-9A-Za-z_]+)\s*[(][^)]*[)]\s*{'
+
+def GetCFunctions(files):
+    functions = []
+
+    for file in files:
+        with open(file) as f:
+            source_code = f.read()
+
+        matches = re.finditer(C_FUNCTION_PATERN_REGEX, source_code, re.MULTILINE)
+
+        for match in matches:
+            function_name = match.group(3)
+            functions.append((file, function_name))
+
+    return functions
 
 def ReadAllLines(fileName):
     lineList = list()
@@ -52,7 +75,7 @@ def ReadAllLines(fileName):
 
 def GetFiles(path, ext):
     files = []
-    
+
     for r, d, f in os.walk(path):
         for file in f:
             if file.endswith(ext):
@@ -60,65 +83,67 @@ def GetFiles(path, ext):
 
     return files
 
-nonMatchingFunctions = GetNonMatchingFunctions(GetFiles("src", ".c")) if not args.matching else []
-TotalMipsToCFunctions = len(CountMipsToCFunctions(GetFiles("src", ".c")) if not args.matching else [])
-TotalNonMatchingFunctions = len(CountNonMatchingFunctions(GetFiles("src", ".c")) if not args.matching else [])
+def GetFilesBlackList(path, ext, blacklist=[]):
+    files = []
 
-mainSegFiles2 = [
-    "asm/non_matchings/code_80004740",
-    "asm/non_matchings/code_80005FD0",
-    "asm/non_matchings/code_8001F980",
-    "asm/non_matchings/player_controller",
-    "asm/non_matchings/hud_renderer",
-    "asm/non_matchings/code_80057C60",
-    "asm/non_matchings/code_8006E9C0",
-    "asm/non_matchings/code_80071F00",
-    "asm/non_matchings/code_80086E70",
-    "asm/non_matchings/code_8008C1D0",
-    "asm/non_matchings/code_80091750",
-    "asm/non_matchings/crash_screen",
-    "asm/non_matchings/menus",
-]
-seg2Files2 = [
+    for r, d, f in os.walk(path):
+        d[:] = [dir for dir in d if dir not in blacklist]
 
-]
-audioFiles2 = [
-    "asm/non_matchings/audio"
-]
+        for file in f:
+            if file.endswith(ext):
+                files.append(os.path.join(r, file))
+
+    return files
+
+def GetFilesWhiteList(path, ext, whitelist=[]):
+    files = []
+
+    for root, dirs, filenames in os.walk(path):
+        if root == path or any(subdir in root for subdir in whitelist):
+            for filename in filenames:
+                if filename.endswith(ext):
+                    files.append(os.path.join(root, filename))
+
+    return files
+
+gameExclusiveDirs=["audio", "os", "ending", "racing"]
+
+nonMatchingFunctions = GetNonMatchingFunctions(GetFiles("src", ".c"))
+TotalMipsToCFunctions = len(CountMipsToCFunctions(GetFiles("src", ".c")))
+TotalNonMatchingFunctions = len(CountNonMatchingFunctions(GetFiles("src", ".c")))
+TotalGlobalAsmFunctions = len(CountGlobalAsmFunctions(GetFiles("src", ".c")))
+TotalCFunctions = len(GetCFunctions(GetFilesWhiteList("src", ".c", gameExclusiveDirs)))
+
+TotalCFunctions -= TotalGlobalAsmFunctions + (TotalGlobalAsmFunctions - TotalNonMatchingFunctions - TotalMipsToCFunctions)
 
 def GetNonMatchingSize(path):
     size = 0
 
     if (path == "main"):
-        for file in mainSegFiles2: 
-            size += getData(file)
+        size += getDataBlackList("asm/non_matchings", gameExclusiveDirs)
 
-    elif (path == "seg2"):
-        for file in seg2Files2: 
-            size += getData(file)
+    elif (path == "racing"):
+        size += getData("asm/non_matchings/racing")
+
+    elif (path == "ending"):
+        size += getData("asm/non_matchings/ending")
 
     elif (path == "os"):
-            size = getData("asm/os/func_800CE720.s")
+        size += getData("asm/non_matchings/os")
 
     elif (path == "audio"):
-        for file in audioFiles2: 
-            size += getData(file)
+        size += getData("asm/non_matchings/audio")
 
-    else: size = getData("asm/non_matchings")
-
+    else: size = getData(path)
 
     return size
 
 def getData(path):
     size = 0
 
-
     asmFiles = GetFiles(path, ".s")
 
-
     for asmFilePath in asmFiles:
-    #if path == asmFilePath.startswith("audio"):
-    #    continue
         if asmFilePath not in nonMatchingFunctions:
             asmLines = ReadAllLines(asmFilePath)
 
@@ -128,59 +153,28 @@ def getData(path):
 
     return size
 
+def getDataBlackList(path, bl=[]):
+    size = 0
 
+    asmFiles = GetFilesBlackList(path, ".s", bl)
+
+    for asmFilePath in asmFiles:
+        if asmFilePath not in nonMatchingFunctions:
+            asmLines = ReadAllLines(asmFilePath)
+
+            for asmLine in asmLines:
+                if (asmLine.startswith("/*")):
+                    size += 4
+
+    return size
 
 mapFile = ReadAllLines("build/us/mk64.us.map")
 src = 0
-mainSeg = 0
-seg2 = 0
+segMain = 0
+segEnding = 0
+segRacing = 0
 audio = 0
 libultra = 0
-
-mainSegFiles = [
-    "build/us/src/code_800029B0",
-    "build/us/src/code_80004740",
-    "build/us/src/code_80005FD0",
-    "build/us/src/camera",
-    "build/us/src/code_8001F980",
-    "build/us/src/player_controller",
-    "build/us/src/hud_renderer",
-    "build/us/src/code_80057C60",
-    "build/us/src/code_8006E9C0",
-    "build/us/src/code_80071F00",
-    "build/us/src/code_80086E70",
-    "build/us/src/code_8008C1D0",
-    "build/us/src/code_80091750",
-    "build/us/src/code_800AF9B0",
-    "build/us/src/crash_screen",
-    "build/us/src/gbiMacro",
-    "build/us/src/kart_dma",
-    "build/us/src/main",
-    "build/us/src/math_util_2",
-    "build/us/src/profiler",
-    "build/us/src/spawn_players",
-    "build/us/src/staff_ghosts",
-]
-seg2Files = [
-    "build/us/src/racing/actors",
-    "build/us/src/racing/actors_extended",
-    "build/us/src/racing/math_util",
-    "build/us/src/racing/memory",
-    "build/us/src/racing/collision",
-    "build/us/src/racing/race_logic",
-    "build/us/src/racing/render_courses",
-    "build/us/src/racing/skybox_and_splitscreen",
-]
-segAudioFiles = [
-    "build/us/src/audio/effects",
-    "build/us/src/audio/external",
-    "build/us/src/audio/heap",
-    "build/us/src/audio/load",
-    "build/us/src/audio/playback",
-    "build/us/src/audio/port_eu",
-    "build/us/src/audio/seqplayer",
-    "build/us/src/audio/synthesis",
-]
 
 for line in mapFile:
     lineSplit =  list(filter(None, line.split(" ")))
@@ -193,121 +187,199 @@ for line in mapFile:
         if (section == ".text"):
             if (objFile.startswith("build/us/src")):
                 src += size
-            
-            if (objFile.startswith(tuple(mainSegFiles))):
-                mainSeg += size
 
-            if (objFile.startswith(tuple(seg2Files))):
-                seg2 += size
+            if (objFile.startswith("build/us/src") and objFile.count("/") == 3):
+                segMain += size
+
+            if (objFile.startswith("build/us/src/ending")):
+                segEnding += size
+
+            if (objFile.startswith("build/us/src/racing")):
+                segRacing += size
 
             if (objFile.startswith("build/us/src/os")):
                 libultra += size
 
-            if (objFile.startswith(tuple(segAudioFiles))):
+            if (objFile.startswith("build/us/src/audio")):
                 audio += size
 
 nonMatchingASM = GetNonMatchingSize("asm/non_matchings")
+
 nonMatchingMain = GetNonMatchingSize("main")
-nonMatchingSeg2 = GetNonMatchingSize("seg2")
+nonMatchingEnding = GetNonMatchingSize("ending")
+nonMatchingRacing = GetNonMatchingSize("racing")
 nonMatchingLibultra = GetNonMatchingSize("os")
-nonMatchingASMAudio = GetNonMatchingSize("audio")
+nonMatchingAudio = GetNonMatchingSize("audio")
 
-src -= nonMatchingASM
+game = segMain + segEnding + segRacing
 
-decompilable = src + audio + 448 # 448 = OS func_800CE720
-
-mainSeg += libultra
-mainSeg -= nonMatchingMain
-
-seg2 -= nonMatchingSeg2
-audio -= nonMatchingASMAudio
+segMain -= nonMatchingMain
+segEnding -= nonMatchingEnding
+segRacing -= nonMatchingRacing
+audio -= nonMatchingAudio
 libultra -= nonMatchingLibultra
 
+src -= nonMatchingASM
+game -= nonMatchingMain + nonMatchingEnding + nonMatchingRacing
 
-mainSeg_size = 831024
-seg2_size = 174224
-# Segment 3 size = 20032
-mk64Code_size = 1025280
-# handwritten is likely 4400 bytes which brings us to the grand total of 53248.
-# for now the total is just a guess. 544 being non_matching funcs.
-# osSyncPrintf and func_800CE720
-#libultra non_matching
-#osSyncPrintf     0x60   96
-#func_800CE720    0x1C0  448
-#guPerspectiveF   0x290 656
-#__osLeoInterrupt 0x880 2176
-#contramread      0x3B0 944
-#contramwrite     0x3B0 944
+decompilable = src
 
+seg_main_size = 744112
+seg_ending_size = 20032
+seg_racing_size = 174224
 
-#total 0x1490    5264
-
-libultra_size = 43584 + 5264 # 53248 - 2112 # total - handwritten
+libultra_size = 48848
 audio_size = 86912
-text_size = mk64Code_size - decompilable
 
-srcPct = 100 * src / mk64Code_size
+game_code_size = seg_main_size + seg_ending_size + seg_racing_size # 938368
+total_code_size = seg_main_size + seg_ending_size + seg_racing_size + libultra_size + audio_size # 1074128
+
+remaining_size = total_code_size - decompilable
+
+segMainPct = 100 * segMain / seg_main_size
+segEndingPct = 100 * segEnding / seg_ending_size
+segRacingPct = 100 * segRacing / seg_racing_size
+
 libultraPct = 100 * libultra / libultra_size
 audioPct = 100 * audio / audio_size
-mainSegPct = 100 * mainSeg / mainSeg_size
-seg2Pct = 100 * seg2 / seg2_size
 
-bytesPerHeartPiece = text_size // 80
+gamePct = 100 * game / game_code_size
+srcPct = 100 * src / total_code_size
 
-#if args.format == 'csv':
-#    version = 1
-#    git_object = git.Repo().head.object
-#    timestamp = str(git_object.committed_date)
-#    git_hash = git_object.hexsha
+def get_string_from_table(num, table):
+    if 0 <= num < len(table):
+        return table[num]
+    else:
+        return "Number out of range"
 
-#    csv_list = [str(version), timestamp, git_hash, 
-#        str(text_size), str(mk64Code_size), str(src), str(srcPct),
-#        str(audio), str(audio_size), str(audioPct), str(libultra),
-#        str(libultra_size), str(libultraPct), str(seg2), str(seg2_size),
-#        str(seg2Pct), str(seg3), str(seg3_size), str(seg3Pct),
-#        str(TotalNonMatchingFunctions), str(TotalMipsToCFunctions)]
+def find_closest_divisible(number, divisor):
+    closest_smaller = number - (number % divisor)
+    closest_larger = closest_smaller + divisor
 
-#    print(",".join(csv_list))
-if args.format == 'shield-json':
-    # https://shields.io/endpoint
-    print(json.dumps({
-        "schemaVersion": 1,
-        "label": "progress",
-        "message": f"{srcPct:.3g}%",
-        "color": 'yellow',
-    }))
-elif args.format  == 'totalBadge':
-    print(str(round(((mk64Code_size - text_size) / mk64Code_size) * 100, 2))+"%")
+    if abs(number - closest_smaller) < abs(number - closest_larger):
+        return closest_smaller
+    else:
+        return closest_larger
+
+def center_text(text, total_width, fill_character=" "):
+    empty_spaces = total_width - len(text)
+    left_padding = empty_spaces // 2
+    right_padding = empty_spaces - left_padding
+    centered_text = fill_character * left_padding + text + fill_character * right_padding
+    return centered_text
+
+def move_character_from_bar(position, total_length, charbase="0", charfill="1"):
+    if position < 0:
+        position = 0
+    elif position > total_length:
+        position = total_length
+
+    line = charfill * total_length
+    line = list(line)
+    line[position] = charbase
+
+    return "".join(line)
+
+def check_table_cond(cond, total, table):
+    if total > cond:
+        sym = " (V)"
+    elif total == cond:
+        sym = " (~)"
+    else:
+        sym = " (X)"
+
+    return str(table[cond]) + str(sym)
+
+mkCups = [
+    "Mushroom Cup",
+    "Flower Cup",
+    "Star Cup",
+    "Special Cup",
+]
+
+mkCourses = [
+    "Luigi Raceway",
+    "Moo Moo Farm",
+    "Koopa Troopa Beach",
+    "Kalimari Desert",
+    "Toad's Turnpike",
+    "Frappe Snowland",
+    "Choco Mountain",
+    "Mario Raceway",
+    "Wario Stadium",
+    "Sherbet Land",
+    "Royal Raceway",
+    "Bowser's Castle",
+    "D.K.'s Jungle Parkway",
+    "Yoshi Valley",
+    "Banshee Boardwalk",
+    "Rainbow Road",
+]
+
+if args.format  == 'totalBadge':
+    print(str(round(srcPct, 2))+"%")
 elif args.format == 'gameBadge':
-    print(str(round((((mk64Code_size - audio_size) - (text_size - audio)) / (mk64Code_size - audio_size)) * 100, 2))+"%")
+    print(str(round(gamePct, 2))+"%")
+elif args.format == 'mainBadge':
+    print(str(round(segMainPct, 2))+"%")
+elif args.format == 'endingBadge':
+    print(str(round(segEndingPct, 2))+"%")
+elif args.format == 'racingBadge':
+    print(str(round(segRacingPct, 2))+"%")
 elif args.format == 'audioBadge':
     print(str(round(audioPct, 2))+"%")
+elif args.format == 'osBadge':
+    print(str(round(libultraPct, 2))+"%")
 elif args.format == 'bytesToDecompile':
-    print(str(text_size)+" of "+str(mk64Code_size)+"\n")
+    print(str(remaining_size)+" of "+str(total_code_size)+"\n")
+elif args.format == 'globalAsmFuncs':
+    print(str(TotalGlobalAsmFunctions))
 elif args.format == 'm2cFuncs':
     print(str(TotalMipsToCFunctions))
 elif args.format == 'nonmatchingFuncs':
     print(str(TotalNonMatchingFunctions))
 elif args.format == 'text':
-    adjective = "decompiled" if not args.matching else "matched"
+    bytesPerTotalLaps = total_code_size // 47
+    srcDivNear = find_closest_divisible(src, 49)
+    lapTotalCounts = int(srcDivNear / bytesPerTotalLaps)
+    curLapProgress = int(((srcDivNear % bytesPerTotalLaps) * 66) / (bytesPerTotalLaps))
+    curLapCount = int((lapTotalCounts % 3) + 1)
+    curCourseCount = int(lapTotalCounts / 3)
+    curCupCount = int((lapTotalCounts / 12) % 12)
 
-    print("Total decompilable bytes remaining: "+str(text_size)+" out of "+str(mk64Code_size)+"\n")
-    print(str(TotalMipsToCFunctions)+" Mips to C functions and")
-    print(str(TotalNonMatchingFunctions)+" non-matching functions remain to decomp."+"\n")
-    print(str(src) + " bytes " + adjective + " in game code " + str(srcPct) + "%\n")
-    print(str(audio) + "/" + str(audio_size) + " bytes " + adjective + " in audio " + str(audioPct) + "%\n")
-    print(str(libultra) + "/" + str(libultra_size) + " bytes " + adjective + " in libultra " + str(libultraPct) + "%\n")
-    print(str(mainSeg) + "/" + str(mainSeg_size) + " bytes " + adjective + " in mainSeg " + str(mainSegPct) + "%\n")
-    print(str(seg2) + "/" + str(seg2_size) + " bytes " + adjective + " in seg2 " + str(seg2Pct) + "%\n")
-    print(str(20032) + "/" + str(20032) + "   bytes " + adjective + " in seg3 " + str(100.0) + "%\n")
-    print("------------------------------------\n")
+    print(str(center_text("", 67, "=")))
+    print(str(center_text(" All Cups (Decompilation) ", 67)))
+    print(str(center_text(" " + str(round(srcPct, 2))+"% Complete ", 67, "-")))
+    print(str(center_text(" # Decompiled functions: " + str(TotalCFunctions) + " ", 67)))
+    print(str(center_text(" # GLOBAL_ASM remaining: " + str(TotalGlobalAsmFunctions) + " ", 67)))
+    print(str(center_text(" # NON_MATCHING remaining: " + str(TotalNonMatchingFunctions) + " ", 67)))
+    print(str(center_text(" # MIPS_TO_C remaining: " + str(TotalMipsToCFunctions) + " ", 67)))
+    print(str(center_text(" Game Status ", 67, "-")))
 
-    heartPieces = int(src / bytesPerHeartPiece)
-    rupees = int(((src % bytesPerHeartPiece) * 100) / bytesPerHeartPiece)
-
-    if (rupees > 0):
-        print("You have " + str(heartPieces) + "/80 GP Wins and " + str(rupees) + " bronze cup(s).\n")
+    if TotalGlobalAsmFunctions > 0:
+        print(str(center_text(check_table_cond(0, curCupCount, mkCups) + " - " + check_table_cond(1, curCupCount, mkCups), 67)))
+        print(str(center_text(check_table_cond(2, curCupCount, mkCups) + " - " + check_table_cond(3, curCupCount, mkCups), 67)))
+        print(str(center_text(" Lap Progress Bar and Race Status", 67, "-")))
+        print(str(move_character_from_bar(curLapProgress, 67, "O", "-")))
+        print(str(center_text("We are in " + str(get_string_from_table(curCupCount, mkCups)) + " racing at " +  str(get_string_from_table(curCourseCount, mkCourses)) + " (Lap " + str(curLapCount) + "/3)", 67)))
     else:
-        print("You have " + str(heartPieces) + "/80 GP Wins.\n")
+        print(str(center_text("Mushroom Cup (V) - Flower Cup (V)", 67)))
+        print(str(center_text("Star Cup (V) - Special Cup (V)", 67)))
+        print(str(center_text("We finished All Cups! We got all 4 Gold Cups!", 67)))
+
+    print(str(center_text("", 67, "=")))
+elif args.format == 'verbose':
+    print("Total decompilable bytes remaining: "+str(remaining_size)+" out of "+str(total_code_size)+"\n")
+    print(str(src) + "/" + str(total_code_size) + " bytes " + "decompiled" + " in total code " + str(srcPct) + "%\n")
+    print(str(TotalCFunctions) + " decompiled functions - " +str(TotalGlobalAsmFunctions)+" GLOBAL_ASM functions remaining."+"\n")
+    print(str(TotalNonMatchingFunctions)+" NON_MATCHING functions - " + str(TotalMipsToCFunctions) + " MIPS_TO_C functions." +"\n")
+    print("------------------------------------\n")
+    print(str(segMain) + "/" + str(seg_main_size) + " bytes " + "decompiled" + " in segMain " + str(segMainPct) + "%\n")
+    print(str(segEnding) + "/" + str(seg_ending_size) + " bytes " + "decompiled" + " in segEnding " + str(segEndingPct) + "%\n")
+    print(str(segRacing) + "/" + str(seg_racing_size) + " bytes " + "decompiled" + " in segRacing " + str(segRacingPct) + "%\n")
+    print(str(game) + "/" + str(game_code_size) + " bytes " + "decompiled" + " in game code " + str(gamePct) + "%\n")
+    print("------------------------------------\n")
+    print(str(audio) + "/" + str(audio_size) + " bytes " + "decompiled" + " in audio " + str(audioPct) + "%\n")
+    print(str(libultra) + "/" + str(libultra_size) + " bytes " + "decompiled" + " in libultra " + str(libultraPct) + "%\n")
 else:
     print("Unknown format argument: " + args.format)

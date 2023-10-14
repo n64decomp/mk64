@@ -6,7 +6,7 @@ DEBUG_FONT_PNG := $(DEBUG_FONT_DIR)/gTextureDebugFont.png
 
 DEBUG_FONT_EXPORT_SENTINEL := $(DEBUG_FONT_DIR)/.export
 
-$(BUILD_DIR)/src/common_textures.inc.o: $(DEBUG_FONT_PNG:%.png=%.inc.c) $(DEBUG_FONT_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.inc.o: $(DEBUG_FONT_PNG:%.png=%.inc.c) $(DEBUG_FONT_PALETTE:%.png=%.inc.c)
 
 $(DEBUG_FONT_PNG:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci4 -c rgba16 -p $(DEBUG_FONT_PALETTE)

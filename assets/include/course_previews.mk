@@ -24,7 +24,7 @@ $(COURSE_PREVIEW_DIR)/gTextureCoursePreviewBigDonut.png
 
 COURSE_PREVIEW_EXPORT_SENTINEL := $(COURSE_PREVIEW_DIR)/.export
 
-$(BUILD_DIR)/src/textures.inc.o: $(COURSE_PREVIEW_PNG:%.png=%.mio0)
+$(BUILD_DIR)/src/data/textures.inc.o: $(COURSE_PREVIEW_PNG:%.png=%.mio0)
 
 $(COURSE_PREVIEW_PNG:%.png=%.mio0): %.mio0 : %.bin
 	$(MIO0TOOL) -c $< $@

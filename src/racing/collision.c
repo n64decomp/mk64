@@ -634,9 +634,8 @@ void func_802AC114(Vec3f pos1, f32 boundingBoxSize, Vec3f pos2, UNUSED f32 unk) 
     }
 }
 
-// m2c removed because no need to match.
 // UNUSED mk64_surface_map_ram *func_802AC22C(void *arg)
-GLOBAL_ASM("asm/unused/collision/func_802AC22C.s")
+GLOBAL_ASM("asm/non_matchings/racing/collision/func_802AC22C.s")
 
 s32 is_colliding_with_drivable_surface(Collision *collision, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 index, f32 posX, f32 posY, f32 posZ) {
     mk64_surface_map_ram *tile = &gSurfaceMap[index];

@@ -14,7 +14,7 @@ $(MINIMAP_ICONS_DIR)/gTextureMiniMapProgressDot.png
 
 MINIMAP_ICONS_EXPORT_SENTINEL := $(MINIMAP_ICONS_DIR)/.export
 
-$(BUILD_DIR)/src/common_textures.inc.o: $(MINIMAP_ICONS_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.inc.o: $(MINIMAP_ICONS_PNG:%.png=%.inc.c)
 
 $(MINIMAP_ICONS_PNG:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
