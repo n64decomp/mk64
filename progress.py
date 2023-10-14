@@ -338,7 +338,6 @@ elif args.format == 'm2cFuncs':
     print(str(TotalMipsToCFunctions))
 elif args.format == 'nonmatchingFuncs':
     print(str(TotalNonMatchingFunctions))
-    print(str(GetCFunctions(GetFilesWhiteList("src", ".c", gameExclusiveDirs))))
 elif args.format == 'text':
     bytesPerTotalLaps = total_code_size // 47
     srcDivNear = find_closest_divisible(src, 49)
