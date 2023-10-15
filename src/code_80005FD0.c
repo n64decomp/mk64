@@ -1556,7 +1556,7 @@ block_25:
                 func_80008F38(playerId);
                 func_80011AE4(playerId);
                 *(&D_801642DE + (playerId * 0x10)) = 0;
-                if ((D_8016348C == 0) && !(player->type & 0x800)) {
+                if ((D_8016348C == 0) && !(player->type & PLAYER_CINEMATIC_MODE)) {
                     sp30 = var_a3;
                     sp34 = var_t0;
                     temp_f0_2 = func_80009258(playerId, sp38, sp44, (u16 *) var_a3);
@@ -6244,7 +6244,7 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
                     if ((temp_f0 > -20.0) && (temp_f0 < 20.0)) {
                         temp_f0_2 = (f64) temp_f24;
                         if ((temp_f0_2 > -100.0) && (temp_f0_2 < 100.0) && (func_80006018(temp_f12, temp_f14, var_s0->velocity[0], var_s0->velocity[2], arg3, arg4, spC4, spBC) == (s32) 1U)) {
-                            player->statusEffects |= 0x400000;
+                            player->statusEffects |= REVERSE_EFFECT;
                         }
                     }
                 }
@@ -8846,7 +8846,7 @@ void func_8001AC10(s32 playerId) {
     struct BananaBunchParent *bananaBunchParent;
 
     player = &gPlayerOne[playerId];
-    if (((gModeSelection != ((s32) 1)) && (((u16) D_801646CC) != ((u16) 1))) && (!(player->type & 0x800))) {
+    if (((gModeSelection != ((s32) 1)) && (((u16) D_801646CC) != ((u16) 1))) && (!(player->type & PLAYER_CINEMATIC_MODE))) {
         temp_s0 = &D_801642D8[playerId];
         switch (temp_s0->unk_00) {
         case 0:
@@ -8882,7 +8882,7 @@ void func_8001AC10(s32 playerId) {
             } else if (temp_s0->unk_00 == 1) {
                 temp_s0->actorIndex = use_banana_item(player);
                 if ((temp_s0->actorIndex >= 0) && (temp_s0->actorIndex < 0x64)) {
-                    player->statusEffects |= 0x40000;
+                    player->statusEffects |= HOLD_BANANA_EFFECT;
                     temp_s0->unk_00 = 2;
                     temp_s0->unk_04 = 0;
                     temp_s0->unk_06 += 1;
@@ -8928,7 +8928,7 @@ void func_8001AC10(s32 playerId) {
             if ((temp_s0->actorIndex >= 0) && (temp_s0->actorIndex < 0x64)) {
                 banana = (struct BananaActor*)&gActorList[temp_s0->actorIndex];
                 banana->state = 4;
-                player->statusEffects |= 0x40000;
+                player->statusEffects |= HOLD_BANANA_EFFECT;
                 temp_s0->unk_00 = 0x0023;
                 temp_s0->unk_04 = 0;
                 temp_s0->unk_06 += 1;
@@ -9204,7 +9204,7 @@ void func_8001AC10(s32 playerId) {
             break;
 
         case 25:
-            player->statusEffects |= 0x2000;
+            player->statusEffects |= STAR_EFFECT;
             temp_s0->unk_00 = 0x001A;
             temp_s0->unk_04 = 0;
             temp_s0->unk_06 += 1;
@@ -9218,7 +9218,7 @@ void func_8001AC10(s32 playerId) {
             break;
 
         case 27:
-            player->statusEffects |= 0x800;
+            player->statusEffects |= BOO_EFFECT;
             temp_s0->unk_00 = 0x001C;
             temp_s0->unk_04 = 0;
             temp_s0->unk_06 += 1;
@@ -9232,7 +9232,7 @@ void func_8001AC10(s32 playerId) {
             break;
 
         case 29:
-            player->statusEffects |= 0x200;
+            player->statusEffects |= BOOST_EFFECT;
             temp_s0->unk_00 = 0;
             temp_s0->unk_04 = 0;
             temp_s0->unk_06 += 1;
@@ -9240,7 +9240,7 @@ void func_8001AC10(s32 playerId) {
 
         case 30:
             if (temp_s0->unk_04 >= 0x3D) {
-                player->statusEffects |= 0x200;
+                player->statusEffects |= BOOST_EFFECT;
                 temp_s0->unk_00 = 0x001D;
                 temp_s0->unk_04 = 0;
             }
@@ -9248,7 +9248,7 @@ void func_8001AC10(s32 playerId) {
 
         case 31:
             if (temp_s0->unk_04 >= 0x3D) {
-                player->statusEffects |= 0x200;
+                player->statusEffects |= BOOST_EFFECT;
                 temp_s0->unk_00 = 0x001E;
                 temp_s0->unk_04 = 0;
             }
@@ -9262,7 +9262,7 @@ void func_8001AC10(s32 playerId) {
 
         case 33:
             if ((((s16) temp_s0->unk_04) % 60) == 0) {
-                player->statusEffects |= 0x200;
+                player->statusEffects |= BOOST_EFFECT;
                 if (temp_s0->unk_0E < temp_s0->unk_04) {
                     temp_s0->unk_00 = 0;
                     temp_s0->unk_04 = 0;

@@ -2665,7 +2665,7 @@ s32 func_8029EEB8(Player *player, Vec3f pos, f32 arg2, f32 arg3, f32 arg4) {
 
 s32 func_8029F1F8(Player *player, struct Actor *marioRacewaySign) {
     if (func_8029EEB8(player, marioRacewaySign->pos, 7.0f, 200.0f, 0.8f) == 1) {
-        if ((player->type & 0x4000) != 0) {
+        if ((player->type & PLAYER_HUMAN) != 0) {
             if ((player->effects & 0x200) != 0) {
                 marioRacewaySign->flags |= 0x400;
                 func_800C98B8(player->pos, player->velocity, 0x19018010U);
@@ -2681,7 +2681,7 @@ s32 func_8029F1F8(Player *player, struct Actor *marioRacewaySign) {
 
 s32 func_8029F2FC(Player *player, struct PiranhaPlant *plant) {
     if (func_8029EEB8(player, plant->pos, plant->boundingBoxSize, plant->boundingBoxSize, 2.5f) == 1) {
-        if ((player->type & 0x4000) != 0) {
+        if ((player->type & PLAYER_HUMAN) != 0) {
             if ((player->effects & 0x200) != 0) {
                 plant->flags |= 0x400;
                 func_800C98B8(player->pos, player->velocity, 0x1901A24AU);
@@ -2732,7 +2732,7 @@ s32 func_8029F408(Player *player, struct YoshiValleyEgg *egg) {
     if (totalBox < xz_dist) {
         return 0;
     }
-    if ((player->type & 0x4000) != 0) {
+    if ((player->type & PLAYER_HUMAN) != 0) {
         if ((player->effects & 0x200) != 0) {
             egg->flags |= 0x400;
             egg->pathCenter[1] = 8.0f;
@@ -2797,7 +2797,7 @@ s32 func_8029F69C(Player *player, struct Actor *actor) {
     }
     sp48 = player->velocity[0];
     sp44 = player->velocity[2];
-    if (player->type & 0x4000) {
+    if (player->type & PLAYER_HUMAN) {
         if (player->effects & 0x200) {
             actor->flags |= 0x400;
             func_800C98B8(player->pos, player->velocity, 0x19018010U);
@@ -3294,7 +3294,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
             actor->state = 3;
             actor->flags = -0x8000;
             actor->unk_04 = 0;
-            if (player->type & 0x4000) {
+            if (player->type & PLAYER_HUMAN) {
                 func_8007ABFC(player - gPlayerOne, 7);
             }
         } else if (actor->state == 0) {
@@ -3307,7 +3307,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
             actor->state = 3;
             actor->flags = -0x8000;
             actor->unk_04 = 0;
-            if (player->type & 0x4000) {
+            if (player->type & PLAYER_HUMAN) {
                 func_8007ABFC(player - gPlayerOne, 0);
             }
         } else if (actor->state == 0) {

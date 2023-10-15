@@ -292,7 +292,7 @@ void update_actor_banana_bunch(struct BananaBunchParent *banana_bunch) {
         }
         if (someCount == 0) {
             destroy_actor((struct Actor *) banana_bunch);
-            owner->statusEffects &= ~0x40000;
+            owner->statusEffects &= ~HOLD_BANANA_EFFECT;
         } else if ((owner->type & 0x4000) != 0) {
             controller = &gControllers[banana_bunch->playerId];
             if ((controller->buttonPressed & Z_TRIG) != 0) {
@@ -716,7 +716,7 @@ void update_actor_banana(struct BananaActor *banana) {
         }
         func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
         func_802B4E30((struct Actor *) banana);
-        if ((player->type & 0x4000) != 0) {
+        if ((player->type & PLAYER_HUMAN) != 0) {
             if (gDemoMode) {
                 controller = gControllerOne;
             } else {
@@ -726,7 +726,7 @@ void update_actor_banana(struct BananaActor *banana) {
                 controller->buttonDepressed &= ~Z_TRIG;
                 banana->state = 1;
                 banana->unk_04 = 0x00B4;
-                player->statusEffects &= ~0x40000;
+                player->statusEffects &= ~HOLD_BANANA_EFFECT;
                 func_800C9060(player - gPlayerOne, 0x19008012U);
                 pad3 = controller->rawStickY;
                 if ((pad3 > 30.0f) && (controller->rawStickX < 10) && (controller->rawStickX >= -9)) {
@@ -925,7 +925,7 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
             tempBanana->youngerIndex = actorIndex;
             break;
         }
-        if ((player->type & 0x4000) != 0) {
+        if ((player->type & PLAYER_HUMAN) != 0) {
             func_800C9060(player - gPlayerOne, 0x19008012);
         }
     }
@@ -1030,7 +1030,7 @@ void use_thunder_item(Player *player) {
     Player *otherPlayer;
 
     func_8009E5BC();
-    if ((player->type & 0x4000) != 0) {
+    if ((player->type & PLAYER_HUMAN) != 0) {
         // Play sound.
         func_800CAB4C(player - gPlayerOne);
     }
@@ -1119,7 +1119,7 @@ void func_802B30EC(void) {
                 }
             }
 
-            if (((player->type & 0x4000) != 0) && (player->currentItemCopy != ITEM_NONE) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
+            if (((player->type & PLAYER_HUMAN) != 0) && (player->currentItemCopy != ITEM_NONE) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
                 if ((controller->buttonPressed & Z_TRIG) != 0) {
                     controller->buttonPressed &= ~Z_TRIG;
                     func_802B2FA0(player);
@@ -1173,7 +1173,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
         } else {
             shell->pos[1] = pad2;
         }
-        if ((player->type & 0x4000) != 0) {
+        if ((player->type & PLAYER_HUMAN) != 0) {
             controller = &gControllers[shell->playerId];
             if ((controller->buttonDepressed & Z_TRIG) != 0) {
                 controller->buttonDepressed &= ~Z_TRIG;
@@ -1554,7 +1554,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             shell->pos[1] = pad7;
         }
 
-        if ((player->type & 0x4000) != 0) {
+        if ((player->type & PLAYER_HUMAN) != 0) {
             if (gDemoMode) {
                 controller = gControllerOne;
             } else {
