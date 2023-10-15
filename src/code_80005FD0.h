@@ -67,7 +67,8 @@ s32  func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
 void func_80006114(Vec3f, Vec3f, s16);
 s32  func_800061DC(Vec3f, f32, s32);
 void set_places(void);
-
+void func_80010E6C(s32 pathIndex);
+void set_bomb_kart_spawn_positions(void);
 void func_800070F4(void);
 void func_800074D4(void);
 s32  func_80007BF8(u16, u16, u16, u16, u16);
@@ -104,7 +105,7 @@ f32  func_8000D3B8(s32);
 s16  func_8000D6D0(Vec3f, s16*, f32, f32, s16, s16);
 s16  func_8000D940(Vec3f, s16*, f32, f32, s16);
 s16  func_8000DBAC(Vec3f, s16*, f32);
-void func_8000DD78(void);
+void set_bomb_kart_spawn_positions(void);
 void func_8000DF8C(s32);
 
 s32  func_8000ED14(s32, s16);

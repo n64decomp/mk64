@@ -602,7 +602,7 @@ $(BUILD_DIR)/src/os/math/ll%.o:   OPT_FLAGS :=
 $(BUILD_DIR)/src/os/math/ll%.o:   MIPSISET := -mips3 -32
 $(BUILD_DIR)/src/os/ldiv.o:       OPT_FLAGS := -O2
 $(BUILD_DIR)/src/os/string.o:     OPT_FLAGS := -O2
-$(BUILD_DIR)/src/os/gu%.o:        OPT_FLAGS := -O3
+$(BUILD_DIR)/src/osgu%.o:        OPT_FLAGS := -O3
 $(BUILD_DIR)/src/os/al%.o:        OPT_FLAGS := -O3
 $(BUILD_DIR)/src/os/__osLeoInterrupt.o:        OPT_FLAGS := -O1
 $(BUILD_DIR)/src/os/_Printf.o:        OPT_FLAGS := -O3
@@ -615,6 +615,8 @@ ifeq ($(COMPILER),ido)
     $(BUILD_DIR)/src/audio/%.o:        OPT_FLAGS := -O2 -use_readwrite_const
     $(BUILD_DIR)/src/audio/port_eu.o:  OPT_FLAGS := -O2 -framepointer
     $(BUILD_DIR)/src/audio/external.o:  OPT_FLAGS := -O2 -framepointer
+# No tab here required
+$(BUILD_DIR)/src/code_8006E9C0.o:  OPT_FLAGS := -O2 -Wo,-loopunroll,0
 endif
 
 
