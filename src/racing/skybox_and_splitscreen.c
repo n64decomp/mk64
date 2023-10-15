@@ -771,16 +771,25 @@ void func_802A59A4(void) {
     Camera *camera = &cameras[0];
     UNUSED s32 pad[4];
     u16 perspNorm;
-    UNUSED s32 pad2[3];
+    UNUSED s32 pad2[2];
+    f32 sp9C;
     Mat4 matrix;
 
+    // Might D_80150288 be D_80150148
+#ifdef VERSION_EU
+    sp9C = D_80150288 * D_802B9CCC;
+#endif
     func_802A53A4();
     init_rdp();
     func_802A3730(D_800DC5EC);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+#ifdef VERSION_EU
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, D_80150150, D_8015014C, 1.0f);
+#else // us
     guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], D_80150148, D_80150150, D_8015014C, 1.0f);
+#endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 

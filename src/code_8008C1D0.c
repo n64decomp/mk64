@@ -1608,12 +1608,13 @@ void func_8008FEDC(Player* player, UNUSED s8 arg1) {
 }
 
 void func_8008FF08(Player *player, s8 playerId) {
-    if(player->nearestWaypointId){}
+    s16 waypoint;
     switch (gCurrentCourseId) {
     case COURSE_BOWSER_CASTLE:
-        if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x235) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x247)) {
+        waypoint = gNearestWaypointByPlayerId[playerId];
+        if ((waypoint >= 0x235) && (waypoint < 0x247)) {
             player->nearestWaypointId = 0x214;
-        } else if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x267) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x277)) {
+        } else if ((waypoint >= 0x267) && (waypoint < 0x277)) {
             player->nearestWaypointId = 0x25B;
         } else {
             player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
@@ -1623,7 +1624,8 @@ void func_8008FF08(Player *player, s8 playerId) {
         }
         break;
     case COURSE_BANSHEE_BOARDWALK:
-        if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x12C) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x13C)) {
+        waypoint = gNearestWaypointByPlayerId[playerId];
+        if ((waypoint >= 0x12C) && (waypoint < 0x13C)) {
             player->nearestWaypointId = 0x12CU;
         } else {
             player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
@@ -1637,7 +1639,13 @@ void func_8008FF08(Player *player, s8 playerId) {
         player->nearestWaypointId = D_80165320[playerId];
         break;
     case COURSE_FRAPPE_SNOWLAND:
-        if (((s16)gNearestWaypointByPlayerId[playerId] >= 0xF0) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x105)) {
+        waypoint = gNearestWaypointByPlayerId[playerId];
+#ifdef VERSION_EU
+        if (((waypoint >= 0xF0) && (waypoint < 0x11E)) || 
+            ((D_80165320[playerId] >= 0xF0) && (D_80165320[playerId] < 0x11E))) {
+#else  
+        if ((waypoint >= 0xF0) && (waypoint < 0x105)) {
+#endif
             player->nearestWaypointId = 0xF0U;
         } else {
             player->nearestWaypointId = D_80165320[playerId];
@@ -1647,7 +1655,8 @@ void func_8008FF08(Player *player, s8 playerId) {
         }
         break;
     case COURSE_ROYAL_RACEWAY:
-        if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x258) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x2A4)) {
+        waypoint = gNearestWaypointByPlayerId[playerId];
+        if ((waypoint >= 0x258) && (waypoint < 0x2A4)) {
             player->nearestWaypointId = 0x258U;
         } else {
             player->nearestWaypointId = D_80165320[playerId];
@@ -1657,7 +1666,8 @@ void func_8008FF08(Player *player, s8 playerId) {
         }
         break;
     case COURSE_DK_JUNGLE:
-        if (((s16)gNearestWaypointByPlayerId[playerId] >= 0xB9) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x119)) {
+        waypoint = gNearestWaypointByPlayerId[playerId];
+        if ((waypoint >= 0xB9) && (waypoint < 0x119)) {
             player->nearestWaypointId = 0xB9U;
         } else {
             player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];

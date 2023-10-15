@@ -315,6 +315,13 @@ s32 move_point_along_spline(Vec3f p, f32 *arg1, struct struct_80283430 spline[],
     if (spline[*splineSegment + 2].unk2 != 0) {
         secondSpeed = 1.0f / spline[*splineSegment + 2].unk2;
     }
+// eu_todo: What are these variables?
+#ifdef VERSION_EU
+    if (D_800DC59C == 9) {
+        firstSpeed *= D_80287478;
+        secondSpeed *= D_80287478;
+    }
+#endif
 
     progressChange = (((secondSpeed - firstSpeed)) * *progress + firstSpeed);
     if (1 <= (*progress += progressChange)) {
