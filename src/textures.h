@@ -3,6 +3,10 @@
 
 #include "PR/ultratypes.h"
 
+/**
+ * @brief struct for a texture use in menu mainly
+ * 
+ */
 typedef struct {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 unused1;
@@ -15,6 +19,10 @@ typedef struct {
     /* 0x12 */ s16 unused2;
 } MkTexture; // size = 0x14
 
+/**
+ * @brief struct for an animation
+ * 
+ */
 typedef struct {
     /* 0x00 */ MkTexture *mk64Texture; // This should be interpreted as a segmented address
     /* 0x04 */ s32 frame_length;
