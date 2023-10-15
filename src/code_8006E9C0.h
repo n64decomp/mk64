@@ -11,6 +11,8 @@ void func_8006ED60(void);
 u8  *func_8006ED94(u8*, u8*, u32, u32);
 void func_8006EE44(void);
 void init_item_window(s32);
+void func_8006EEE8(s32);
+void func_8006F824(s32);
 void func_8006FA94(void);
 void func_80070148(void);
 void func_80070190(void);
@@ -20,6 +22,7 @@ void func_800703E0(s32, s32, StarSpawn*);
 void func_800704A0(StarSpawn*);
 void func_8007055C(void);
 void func_80070714(void);
+void func_80070780();
 void init_hud_one_player(void);
 void init_hud_two_player_vertical(void);
 void init_hud_three_four_player(void);
@@ -27,7 +30,7 @@ void init_hud_two_player_horizontal(void);
 
 extern s16 D_800E5520[];
 extern s16 D_800E5548[];
-extern s32 gCourseOutlineTextures[0x14];
+extern u8 *gCourseOutlineTextures[0x14];
 
 extern s8 *gTextureLogoMarioKart64;
 extern s16 D_80165730;
@@ -42,6 +45,7 @@ extern intptr_t D_8018D9B0;
 extern u8 (*D_8018D220)[1024];
 
 extern s32 D_8018D240;
+extern u8 *D_8018D248[];
 extern s16 D_8018D2B0;
 extern s16 D_8018D2B8;
 extern s32 D_80183DA0;

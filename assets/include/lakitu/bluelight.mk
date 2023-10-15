@@ -17,7 +17,7 @@ BLUELIGHT_EXPORT_SENTINEL := $(BLUELIGHT_DIR)/.export
 $(BLUELIGHT_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(BLUELIGHT_PALETTE)
 
-$(BUILD_DIR)/src/common_textures.inc.o: $(BLUELIGHT_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.inc.o: $(BLUELIGHT_PALETTE:%.png=%.inc.c)
 
 $(BLUELIGHT_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16

@@ -210,11 +210,11 @@ SECTIONS
       BUILD_DIR/src/camera.o(.data);
       BUILD_DIR/src/code_8001F980.o(.data);
       BUILD_DIR/src/kart_dma.o(.data);
-      BUILD_DIR/src/kart_attributes.inc.o(.data);
+      BUILD_DIR/src/data/kart_attributes.inc.o(.data);
       BUILD_DIR/src/player_controller.o(.data);
       BUILD_DIR/src/spawn_players.o(.data);
       BUILD_DIR/src/code_80071F00.o(.data);
-      BUILD_DIR/src/data_800E45C0.o(.data);
+      BUILD_DIR/src/data/data_800E45C0.o(.data);
       BUILD_DIR/src/code_80057C60.o(.data);
       BUILD_DIR/data/data_code_80071F00_2.o(.data);
       BUILD_DIR/src/code_8008C1D0.o(.data);
@@ -223,7 +223,7 @@ SECTIONS
       BUILD_DIR/src/code_800AF9B0.o(.data);
       BUILD_DIR/src/menus.o(.data);
       BUILD_DIR/src/code_800B45E0.o(.data);
-      BUILD_DIR/src/data_800E8700.o(.data);
+      BUILD_DIR/src/data/data_800E8700.o(.data);
       BUILD_DIR/src/audio/synthesis.o(.data);
       BUILD_DIR/src/audio/heap.o(.data);
       BUILD_DIR/src/audio/load.o(.data);
@@ -376,7 +376,7 @@ SECTIONS
       BUILD_DIR/src/racing/race_logic.o(.bss*);
       BUILD_DIR/src/racing/actors.o(.bss*);
       BUILD_DIR/src/racing/memory.o(.bss*);
-      BUILD_DIR/src/framebuffers.o(.bss*);
+      BUILD_DIR/src/data/framebuffers.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
       BUILD_DIR/src/audio/heap.o(.bss*);
       BUILD_DIR/src/audio/load.o(.bss);
@@ -431,8 +431,8 @@ SECTIONS
    /* texture tables and DLs, set as segment 0x02 */
    BEGIN_SEG(data_segment2, 0x02000000)
    {
-      BUILD_DIR/src/textures.inc.o(.data);
-      BUILD_DIR/src/data_segment2.inc.o(.data);
+      BUILD_DIR/src/data/textures.inc.o(.data);
+      BUILD_DIR/src/data/data_segment2.inc.o(.data);
    }
    END_SEG(data_segment2)
 
@@ -440,7 +440,7 @@ SECTIONS
    /* common textures, decompressed and set as segment 0x0D */
    BEGIN_SEG(common_textures, 0x0D000000)
    {
-      BUILD_DIR/src/common_textures.inc.mio0.o(.data);
+      BUILD_DIR/src/data/common_textures.inc.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(common_textures)
@@ -473,7 +473,7 @@ SECTIONS
    /* 0x802BA370 724220-729A30 [0x5810] */
    BEGIN_SEG(data_802BA370, SEG_802BA370)
    {
-        BUILD_DIR/src/framebuffers.o(.data);
+        BUILD_DIR/src/data/framebuffers.o(.data);
         . = ALIGN(0x10);
    }
    END_SEG(data_802BA370)
@@ -505,7 +505,7 @@ SECTIONS
    END_SEG(data_821D10)
    BEGIN_SEG(data_825800, 0x06000000)
    {
-      BUILD_DIR/src/startup_logo.inc.mio0.o(.data);
+      BUILD_DIR/src/data/startup_logo.inc.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(data_825800)
@@ -542,34 +542,34 @@ SECTIONS
    COURSE_DATA_SEG(dks_jungle_parkway,course_dks_jungle_parkway_dl)
    COURSE_DATA_SEG(big_donut,course_big_donut_dl)
 
-   #define COURSE_OFFSETS_SEG(name, addr) \
-      BEGIN_SEG(name, addr) \
+   #define COURSE_OFFSETS_SEG(dir, name) \
+      BEGIN_SEG(name, 0x09000000) \
       { \
-         BUILD_DIR/src/name.o(.data); \
+         BUILD_DIR/courses/dir/course_offsets.inc.o(.data); \
          . = ALIGN(0x10); \
       } \
       END_SEG(name)
 
-   COURSE_OFFSETS_SEG(course_mario_raceway_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_choco_mountain_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_bowsers_castle_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_banshee_boardwalk_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_yoshi_valley_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_frappe_snowland_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_koopa_troopa_beach_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_royal_raceway_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_luigi_raceway_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_moo_moo_farm_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_toads_turnpike_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_kalimari_desert_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_sherbet_land_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_rainbow_road_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_wario_stadium_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_block_fort_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_skyscraper_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_double_deck_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_dks_jungle_parkway_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_big_donut_offsets, 0x09000000)
+   COURSE_OFFSETS_SEG(mario_raceway,course_mario_raceway_offsets)
+   COURSE_OFFSETS_SEG(choco_mountain,course_choco_mountain_offsets)
+   COURSE_OFFSETS_SEG(bowsers_castle,course_bowsers_castle_offsets)
+   COURSE_OFFSETS_SEG(banshee_boardwalk,course_banshee_boardwalk_offsets)
+   COURSE_OFFSETS_SEG(yoshi_valley,course_yoshi_valley_offsets)
+   COURSE_OFFSETS_SEG(frappe_snowland,course_frappe_snowland_offsets)
+   COURSE_OFFSETS_SEG(koopa_troopa_beach,course_koopa_troopa_beach_offsets)
+   COURSE_OFFSETS_SEG(royal_raceway,course_royal_raceway_offsets)
+   COURSE_OFFSETS_SEG(luigi_raceway,course_luigi_raceway_offsets)
+   COURSE_OFFSETS_SEG(moo_moo_farm,course_moo_moo_farm_offsets)
+   COURSE_OFFSETS_SEG(toads_turnpike,course_toads_turnpike_offsets)
+   COURSE_OFFSETS_SEG(kalimari_desert,course_kalimari_desert_offsets)
+   COURSE_OFFSETS_SEG(sherbet_land,course_sherbet_land_offsets)
+   COURSE_OFFSETS_SEG(rainbow_road,course_rainbow_road_offsets)
+   COURSE_OFFSETS_SEG(wario_stadium,course_wario_stadium_offsets)
+   COURSE_OFFSETS_SEG(block_fort,course_block_fort_offsets)
+   COURSE_OFFSETS_SEG(skyscraper,course_skyscraper_offsets)
+   COURSE_OFFSETS_SEG(double_deck,course_double_deck_offsets)
+   COURSE_OFFSETS_SEG(dks_jungle_parkway,course_dks_jungle_parkway_offsets)
+   COURSE_OFFSETS_SEG(big_donut,course_big_donut_offsets)
 
    /* Segment 0xF Course Geography (0x4 uncompressed) and Segment 0x7 Packed Displaylists */
    

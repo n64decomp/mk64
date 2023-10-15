@@ -33,7 +33,7 @@ UNUSED s32 func_802B4F60(UNUSED s32 arg0, Vec3f arg1, UNUSED s32 arg2, UNUSED f3
   return 1;
 }
 #else
-GLOBAL_ASM("asm/unused/math_util/func_802B4F60.s")
+GLOBAL_ASM("asm/non_matchings/racing/math_util/func_802B4F60.s")
 #endif
 
 UNUSED void func_802B4FF0() {
@@ -423,7 +423,7 @@ UNUSED void func_802B5B14(Vec3f arg0, Vec3s arg1) {
     arg0->unk8 = (f32) ((sp70 * sp40) + ((sp3C * sp68) + (sp40 * sp6C)));
 }
 #else
-GLOBAL_ASM("asm/unused/math_util/func_802B5B14.s")
+GLOBAL_ASM("asm/non_matchings/racing/math_util/func_802B5B14.s")
 #endif
 
 void func_802B5CAC(s16 arg0, s16 arg1, Vec3f arg2) {
@@ -1198,4 +1198,4 @@ UNUSED void func_802B8414(uintptr_t arg0, Mat4 arg1, s16 arg2, s16 arg3, s32 arg
 }
 
 // unused
-GLOBAL_ASM("asm/unused/math_util/func_802B8614.s")
+GLOBAL_ASM("asm/non_matchings/racing/math_util/func_802B8614.s")

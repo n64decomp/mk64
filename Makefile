@@ -205,8 +205,8 @@ DATA_DIR       := data
 INCLUDE_DIRS   := include
 
 # Directories containing source files
-SRC_DIRS       := src src/racing src/ending src/audio src/debug src/os src/os/math courses
-ASM_DIRS       := asm asm/audio asm/os asm/unused asm/os/non_matchings $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
+SRC_DIRS       := src src/data src/racing src/ending src/audio src/debug src/os src/os/math courses
+ASM_DIRS       := asm asm/os asm/unused $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
 
 
 # Directories containing course source and data files
@@ -242,9 +242,11 @@ DEP_FILES := $(O_FILES:.o=.d) $(BUILD_DIR)/$(LD_SCRIPT).d
 
 # Files with GLOBAL_ASM blocks
 GLOBAL_ASM_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/*.c)
+GLOBAL_ASM_OS_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/os/*.c)
 GLOBAL_ASM_AUDIO_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/audio/*.c)
 GLOBAL_ASM_RACING_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/racing/*.c)
 GLOBAL_ASM_O_FILES = $(foreach file,$(GLOBAL_ASM_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
+GLOBAL_ASM_OS_O_FILES = $(foreach file,$(GLOBAL_ASM_OS_FILES),$(BUILD_DIR)/$(file:.c=.o))
 GLOBAL_ASM_AUDIO_O_FILES = $(foreach file,$(GLOBAL_ASM_AUDIO_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
 GLOBAL_ASM_RACING_O_FILES = $(foreach file,$(GLOBAL_ASM_RACING_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
 
@@ -461,7 +463,7 @@ $(BUILD_DIR)/src/ending/ceremony_data.inc.o: src/ending/ceremony_data.inc.c
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
-$(BUILD_DIR)/src/startup_logo.inc.o: src/startup_logo.inc.c
+$(BUILD_DIR)/src/data/startup_logo.inc.o: src/data/startup_logo.inc.c
 	@$(PRINT) "$(GREEN)Compiling Startup Logo:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/startup_logo/reflection_map_gold.rgba16.inc.c -g textures/startup_logo/reflection_map_gold.rgba16.png -f rgba16 -s u8
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
@@ -487,7 +489,7 @@ $(TEXTURE_FILES_TLUT):
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8 -c $(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(TEXTURE_FILES_TLUT))), ,$(TEXTURE_FILES_TLUT)))) -p $(BUILD_DIR)/$@.tlut.inc.c
 
 # common textures
-$(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILES) $(TEXTURE_FILES_TLUT)
+$(BUILD_DIR)/src/data/common_textures.inc.o: src/data/common_textures.inc.c $(TEXTURE_FILES) $(TEXTURE_FILES_TLUT)
 	@$(PRINT) "$(GREEN)Compiling Common Textures:  $(BLUE)$@ $(NO_COL)\n"
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
@@ -584,6 +586,8 @@ $(EUC_JP_FILES:%.c=$(BUILD_DIR)/%.jp.o): CC := $(PYTHON) tools/asm_processor/bui
 
 $(GLOBAL_ASM_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
+$(GLOBAL_ASM_OS_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
+
 $(GLOBAL_ASM_AUDIO_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
 $(GLOBAL_ASM_RACING_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
@@ -633,13 +637,13 @@ $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o: $(BUILD_DIR)/src/ending/ceremo
 # Compile Startup Logo                                                         #
 #==============================================================================#
 
-$(BUILD_DIR)/src/startup_logo.inc.mio0.o: src/startup_logo.inc.c
+$(BUILD_DIR)/src/data/startup_logo.inc.mio0.o: src/data/startup_logo.inc.c
 	@$(PRINT) "$(GREEN)Compressing Startup Logo:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $(BUILD_DIR)/src/startup_logo.inc.elf.map -o $(BUILD_DIR)/src/startup_logo.inc.elf $(BUILD_DIR)/src/startup_logo.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/startup_logo.inc.elf $(BUILD_DIR)/src/startup_logo.inc.bin
-	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/startup_logo.inc.bin $(BUILD_DIR)/src/startup_logo.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n\n\n.balign 4\n\n\nglabel startup_logo\n\n.incbin \"build/us/src/startup_logo.inc.mio0\"\n\n.balign 16\n\nglabel data_825800_end\n" > build/us/src/startup_logo.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/startup_logo.inc.mio0.s
+	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $(BUILD_DIR)/src/data/startup_logo.inc.elf.map -o $(BUILD_DIR)/src/data/startup_logo.inc.elf $(BUILD_DIR)/src/data/startup_logo.inc.o --no-check-sections
+	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/data/startup_logo.inc.elf $(BUILD_DIR)/src/data/startup_logo.inc.bin
+	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/data/startup_logo.inc.bin $(BUILD_DIR)/src/data/startup_logo.inc.mio0
+	printf ".include \"macros.inc\"\n\n.data\n\n\n\n.balign 4\n\n\nglabel startup_logo\n\n.incbin \"build/us/src/data/startup_logo.inc.mio0\"\n\n.balign 16\n\nglabel data_825800_end\n" > build/us/src/data/startup_logo.inc.mio0.s
+	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o $(BUILD_DIR)/src/data/startup_logo.inc.mio0.s
 
 
 
@@ -647,7 +651,7 @@ $(BUILD_DIR)/src/startup_logo.inc.mio0.o: src/startup_logo.inc.c
 # Compile Common Textures                                                      #
 #==============================================================================#
 
-LDFLAGS += -R $(BUILD_DIR)/src/common_textures.inc.elf
+LDFLAGS += -R $(BUILD_DIR)/src/data/common_textures.inc.elf
 
 %/common_textures.inc.elf: %/common_textures.inc.o
 	$(V)$(LD) -t -e 0 -Ttext=0D000000 -Map $@.map -o $@ $< --no-check-sections
@@ -674,7 +678,7 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
-$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
+$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/data/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) $(LDFLAGS) -o $@
 

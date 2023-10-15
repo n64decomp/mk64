@@ -1,10 +1,15 @@
 def totalProgBadge = addEmbeddableBadgeConfiguration(id: "totalProgress", subject: "Total Progress", color: "7d0000")
-def gameCodeProgBadge = addEmbeddableBadgeConfiguration(id: "codeProgress", subject: "Game Code Progress", color: "7d0000")
+def gameCodeProgBadge = addEmbeddableBadgeConfiguration(id: "gameProgress", subject: "Game Code Progress", color: "7d0000")
+
+def mainProgBadge = addEmbeddableBadgeConfiguration(id: "mainProgress", subject: "Main Code Progress", color: "7d0000")
+def endingProgBadge = addEmbeddableBadgeConfiguration(id: "endingProgress", subject: "Ending Code Progress", color: "7d0000")
+def racingProgBadge = addEmbeddableBadgeConfiguration(id: "racingProgress", subject: "Racing Code Progress", color: "7d0000")
 def audioProgBadge = addEmbeddableBadgeConfiguration(id: "audioProgress", subject: "Audio Code Progress", color: "7d0000")
+def osProgBadge = addEmbeddableBadgeConfiguration(id: "osProgress", subject: "Libultra Code Progress", color: "7d0000")
 
 def bytesToDecompile = addEmbeddableBadgeConfiguration(id: "bytesLeft", subject: "Remaining Decompilable Bytes", color: "7d0000")
 def m2cFuncs = addEmbeddableBadgeConfiguration(id: "m2c", subject: "Remaining Functions", color: "7d0000")
-def nonmatchingFuncs = addEmbeddableBadgeConfiguration(id: "nonmatching", subject: "Non-matching Functions", color: "7d0000")
+def nonmatchingFuncs = addEmbeddableBadgeConfiguration(id: "nonmatching", subject: "Non Matching Functions", color: "7d0000")
 
 pipeline {
   agent any
@@ -38,27 +43,47 @@ pipeline {
             script: "python3 progress.py totalBadge",
             returnStdout: true).trim()
           totalProgBadge.setStatus(progress)
-          
+
           progress = sh(
             script: "python3 progress.py gameBadge",
             returnStdout: true).trim()
           gameCodeProgBadge.setStatus(progress)
-          
+
+          progress = sh(
+            script: "python3 progress.py mainBadge",
+            returnStdout: true).trim()
+          mainProgBadge.setStatus(progress)
+
+          progress = sh(
+            script: "python3 progress.py endingBadge",
+            returnStdout: true).trim()
+          endingProgBadge.setStatus(progress)
+
+          progress = sh(
+            script: "python3 progress.py racingBadge",
+            returnStdout: true).trim()
+          racingProgBadge.setStatus(progress)
+
           progress = sh(
             script: "python3 progress.py audioBadge",
             returnStdout: true).trim()
           audioProgBadge.setStatus(progress)
-          
+
+          progress = sh(
+            script: "python3 progress.py osBadge",
+            returnStdout: true).trim()
+          osProgBadge.setStatus(progress)
+
           progress = sh(
             script: "python3 progress.py bytesToDecompile",
             returnStdout: true).trim()
           bytesToDecompile.setStatus(progress)
-          
+
           progress = sh(
             script: "python3 progress.py m2cFuncs",
             returnStdout: true).trim()
           m2cFuncs.setStatus(progress)
-          
+
           progress = sh(
             script: "python3 progress.py nonmatchingFuncs",
             returnStdout: true).trim()
