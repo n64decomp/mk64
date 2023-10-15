@@ -3234,7 +3234,7 @@ s32 func_80050644(u16 arg0, s32 *arg1, s32 *arg2) {
 }
 
 void func_800507D8(u16 bombIndex, s32 *arg1, s32 *arg2) {
-    s32 temp_v0 = D_80163DE8[bombIndex].waypointIndex;
+    s32 temp_v0 = gBombKarts[bombIndex].waypointIndex;
     s32 var_v1 = 0;
 
     if (temp_v0 != 0) {
@@ -3365,7 +3365,7 @@ void func_80050C68(void) {
     s32 var_s1;
 
     for (var_s1 = 0; var_s1 < NUM_BOMB_KARTS_VERSUS; var_s1++) {
-        if ((D_80163DE8[var_s1].state != BOMB_STATE_EXPLODED) && (D_80163DE8[var_s1].state != BOMB_STATE_INACTIVE)) {
+        if ((gBombKarts[var_s1].state != BOMB_STATE_EXPLODED) && (gBombKarts[var_s1].state != BOMB_STATE_INACTIVE)) {
             func_800507D8(var_s1, &sp88, &sp84);
             gSPDisplayList(gDisplayListHead++, D_0D007DB8);
             gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTPortraitBombKartAndQuestionMark);
@@ -5453,13 +5453,13 @@ extern s32 D_8018D400;
 static ? D_800E471C;                                /* unable to generate initializer */
 
 void func_80056BF0(s32 bombIndex) {
-    struct_D_80163DE8_entry sp40;
+    BombKart sp40;
     Gfx *temp_v1;
     s32 temp_s0;
     s32 temp_v0;
     s32 temp_v0_2;
 
-    M2C_MEMCPY_ALIGNED(&sp40, &D_80163DE8[bombIndex], 0x54);
+    M2C_MEMCPY_ALIGNED(&sp40, &gBombKarts[bombIndex], 0x54);
     D_80183E40->unk0 = (bitwise f32) sp40;
     D_80183E40->unk4 = (f32) ((f64) sp40.bombPos[1] + 1.0);
     D_80183E40->unk8 = sp40.bombPos[2];
@@ -5486,7 +5486,7 @@ GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80056BF0.s")
 
 void func_80056E24(s32 bombIndex, Vec3f arg1) {
     s32 stackPadding[2];
-    struct_D_80163DE8_entry sp2C = D_80163DE8[bombIndex];
+    BombKart sp2C = gBombKarts[bombIndex];
 
     D_80183E80[0] = 0;
     D_80183E80[2] = 0x8000;
@@ -5505,9 +5505,9 @@ void func_80056E24(s32 bombIndex, Vec3f arg1) {
 
 void func_80056FCC(s32 bombIndex) {
     Mat4 sp30;
-    struct_D_80163DE8_entry *temp_v0;
+    BombKart *temp_v0;
 
-    temp_v0 = &D_80163DE8[bombIndex];
+    temp_v0 = &gBombKarts[bombIndex];
     D_80183E50[0] = temp_v0->bombPos[0];
     D_80183E50[1] = temp_v0->yPos + 1.0;
     D_80183E50[2] = temp_v0->bombPos[2];
@@ -5523,7 +5523,7 @@ void func_80057114(s32 cameraId) {
     s32 temp_s4;
     s32 var_s2;
     s32 state;
-    struct_D_80163DE8_entry *var_s1_2;
+    BombKart *var_s1_2;
 
     if (gGamestate == 5) {
         cameraId = 0;
@@ -5533,16 +5533,16 @@ void func_80057114(s32 cameraId) {
         for (var_s2 = 0; var_s2 < NUM_BOMB_KARTS_VERSUS; var_s2++) {
             objectIndex = D_80183DD8[var_s2];
             if (is_obj_index_flag_unk_054_active(objectIndex, 0x00200000) != 0) {
-                D_80163DE8[var_s2].unk_4A = 0;
+                gBombKarts[var_s2].unk_4A = 0;
             } else if (gGamestate != 5) {
-                D_80163DE8[var_s2].unk_4A = 1;
+                gBombKarts[var_s2].unk_4A = 1;
             }
             set_object_flag_unk_054_false(objectIndex, 0x00200000);
         }
     }
 
     for (var_s2 = 0; var_s2 < NUM_BOMB_KARTS_VERSUS; var_s2++) {
-        var_s1_2 = &D_80163DE8[var_s2];
+        var_s1_2 = &gBombKarts[var_s2];
         // huh???
         state = var_s1_2->state;
         if (var_s1_2->state != BOMB_STATE_INACTIVE) {
