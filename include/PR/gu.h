@@ -36,6 +36,17 @@ void guLookAt(Mtx *,
 		      f32,
 		      f32);
 
+void guLookAtF(f32[4][4],
+			   f32,
+			   f32,
+			   f32,
+			   f32,
+			   f32,
+			   f32,
+			   f32,
+			   f32,
+			   f32);
+
 /* Used only in Fast3DEX2 */
 void guLookAtReflect (Mtx *m, LookAt *l, float xEye, float yEye, float zEye,
                     float xAt,  float yAt,  float zAt,

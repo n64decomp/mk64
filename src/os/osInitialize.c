@@ -11,8 +11,7 @@ typedef struct {
     u32 instr03;
 } exceptionPreamble;
 
-extern u32 D_80194040; // maybe initialized?
-extern s32 __osLeoInterrupt;
+u32 D_80194040;
 
 u64 osClockRate = 62500000;
 u32 D_800EA5E8 = 0;

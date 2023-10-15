@@ -17,11 +17,11 @@ glabel func_80052E30
 /* 053A6C 80052E6C AFA40020 */  sw    $a0, 0x20($sp)
 /* 053A70 80052E70 ACD90000 */  sw    $t9, ($a2)
 /* 053A74 80052E74 3C090386 */  lui   $t1, (0x03860010 >> 16) # lui $t1, 0x386
-/* 053A78 80052E78 3C0A800E */  lui   $t2, %hi(D_800E4628) # $t2, 0x800e
+/* 053A78 80052E78 3C0A800E */  lui   $t2, %hi(D_800E4620 + 0x8) # $t2, 0x800e
 /* 053A7C 80052E7C A0AE0010 */  sb    $t6, 0x10($a1)
 /* 053A80 80052E80 A0AF0011 */  sb    $t7, 0x11($a1)
 /* 053A84 80052E84 A0B80012 */  sb    $t8, 0x12($a1)
-/* 053A88 80052E88 254A4628 */  addiu $t2, %lo(D_800E4628) # addiu $t2, $t2, 0x4628
+/* 053A88 80052E88 254A4628 */  addiu $t2, %lo(D_800E4620 + 0x8) # addiu $t2, $t2, 0x4628
 /* 053A8C 80052E8C 35290010 */  ori   $t1, (0x03860010 & 0xFFFF) # ori $t1, $t1, 0x10
 /* 053A90 80052E90 AC490000 */  sw    $t1, ($v0)
 /* 053A94 80052E94 AC4A0004 */  sw    $t2, 4($v0)
@@ -37,8 +37,8 @@ glabel func_80052E30
 /* 053ABC 80052EBC A5000000 */  sh    $zero, ($t0)
 /* 053AC0 80052EC0 A5000002 */  sh    $zero, 2($t0)
 /* 053AC4 80052EC4 A5000004 */  sh    $zero, 4($t0)
-/* 053AC8 80052EC8 3C0D8019 */  lui   $t5, %hi(D_8018EDF3) # $t5, 0x8019
-/* 053ACC 80052ECC 81ADEDF3 */  lb    $t5, %lo(D_8018EDF3)($t5)
+/* 053AC8 80052EC8 3C0D8019 */  lui   $t5, %hi(gPlayerCount) # $t5, 0x8019
+/* 053ACC 80052ECC 81ADEDF3 */  lb    $t5, %lo(gPlayerCount)($t5)
 /* 053AD0 80052ED0 3C11800E */  lui   $s1, %hi(gPlayerCountSelection1) # $s1, 0x800e
 /* 053AD4 80052ED4 24010001 */  li    $at, 1
 /* 053AD8 80052ED8 15A1000C */  bne   $t5, $at, .L80052F0C

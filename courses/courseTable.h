@@ -1,3 +1,6 @@
+#ifndef COURSE_TABLE_H
+#define COURSE_TABLE_H
+
 #include <ultra64.h>
 #include <macros.h>
 #include "types.h"
@@ -182,3 +185,5 @@ extern u8 _course_big_donut_offsetsSegmentRomStart[];
 extern u8 _course_big_donut_offsetsSegmentRomEnd[];
 extern u8 d_course_big_donut_packed[];
 extern u32 big_donut_textures[];
+
+#endif // COURSE_TABLE_H

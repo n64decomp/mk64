@@ -15,12 +15,19 @@
 #endif
 
 typedef struct {
+    f32 unk_0;
+    s16 unk_4;
+    s16 unk_6;
+    s16 unk_8;
+} UnkCameraInner;
+
+typedef struct {
     /* 0x00 */ Vec3f pos;
     /* 0x0C */ Vec3f lookAt;
     // This is expected to be a normalized vector, indicates what direction is "up" for the camera
     /* 0x18 */ Vec3f up;
     // I think these are the "nautical angles" between pos and lookAt
-    // rot[0] = pitch, rot[1] = yaw, rot[2] = roll?
+    // rot[0] = roll? Does nothing?, rot[1] = yaw, rot[2] = pitch
     /* 0x24 */ Vec3s rot;
     /* 0x2A */ u16 someBitFlags;
     /* 0x2C */ s16 unk_2C;
@@ -30,14 +37,10 @@ typedef struct {
     /* 0x48 */ s32 unk_48;
     /* 0x4C */ s32 unk_4C;
     /* 0x50 */ s32 unk_50;
-    /* 0x54 */ UnkActorInner unk_54;
+    /* 0x54 */ Collision unk_54;
     // When you hit a wall (or another driver) the camera's pos and lookAt bounce up and down. This is the velocity(?) of that bouncing
-    /* 0x94 */ f32 unk_94;
-    /* 0x98 */ s16 unk_98;
-    /* 0x9A */ s16 unk_9A;
+    /* 0x94 */ UnkCameraInner unk_94;
     // Timer for wall-hit bounce. Counts up instead of down
-    /* 0x9C */ s16 unk_9C;
-    /* 0x9E */ s16 pad_9E;
     /* 0xA0 */ f32 unk_A0;
     /* 0xA4 */ s32 unk_A4;
     /* 0xA8 */ s32 unk_A8;
@@ -53,21 +56,21 @@ typedef struct {
 typedef BAD_RETURN(s32) (*CameraEvent)(Camera *c);
 typedef CameraEvent CutsceneShot;
 
+void camera_init(f32, f32, f32, s16, u32, s32);
 void func_8001CA10(Camera*);
 void func_8001CA24(Player*, f32);
 void func_8001CA78(Player*, Camera*, Vec3f, f32*, f32*, f32*, s32, s32);
+void func_8001CCEC(Player*, Camera*, Vec3f, f32*, f32*, f32*, s32*, s16, s16);
 void func_8001D53C(Player*, Camera*, Vec3f, f32*, f32*, f32*, s16, s16);
 void func_8001D794(Player*, Camera*, Vec3f, f32*, f32*, f32*, s16);
+void func_8001D944(Player*, Camera*, Vec3f, f32*, f32*, f32*, s32*, s16, s16);
 void func_8001E0C4(Camera*, Player*, s8);
+void func_8001E45C(Camera*, Player*, s8);
 void func_8001E8E8(Camera*, Player*, s8);
-void func_8001F87C(s32);
+void func_8001EA0C(Camera*, Player*, s8);
 void func_8001EE98(Player*, Camera*, s8);
 void func_8001F394(Player*, f32*);
-
-extern s32 D_80164A2C;
-extern f32 D_80164A30;
-extern f32 D_80164A90[];
-extern f32 D_80164AA0[];
+void func_8001F87C(s32);
 
 extern f32 D_800DDB30[];
 
@@ -77,11 +80,16 @@ extern Camera *camera2;
 extern Camera *camera3;
 extern Camera *camera4;
 
-extern Player *gPlayerTwo;
-extern Player *gPlayerThree;
-extern Player *gPlayerFour;
+// end of camera.c variables
 
-// Actually define in main.c, probably need to add to main.h
-extern u16 D_80152300[];
+extern s8 D_80164A89;
+
+extern s32 D_80164A08[4];
+
+extern s32 D_80164A2C;
+extern f32 D_80164A30;
+extern f32 D_80164A90[];
+extern f32 D_80164AA0[];
+
 
 #endif

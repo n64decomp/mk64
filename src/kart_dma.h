@@ -6,9 +6,9 @@
 
 /* Function Prototypes */
 
-void func_80027040(Player*, s8, s8, s8, s8);
+void load_kart_texture(Player*, s8, s8, s8, s8);
 void func_80027560(Player*, s8, s8, s8, s8);
-void func_80027A20(Player*, s8, s8, s8);
+void load_kart_palette(Player*, s8, s8, s8);
 void func_80027BDC(Player*, s32, void*, u16);
 void func_80027C74(Player*, s32, void*, u16);
 
@@ -16,7 +16,165 @@ void func_80027C74(Player*, s32, void*, u16);
 
 extern u16 D_800DDEB0[];
 
-extern u8 _kart_texturesSegmentRomStart[];
+extern u8 *gKartMarioGroup0[];
+extern u8 *gKartMarioGroup1[];
+extern u8 *gKartMarioGroup2[];
+extern u8 *gKartMarioGroup3[];
+extern u8 *gKartMarioGroup4[];
+extern u8 *gKartMarioGroup5[];
+extern u8 *gKartMarioGroup6[];
+extern u8 *gKartMarioGroup7[];
+extern u8 *gKartMarioGroup8[];
+
+extern u8 *gKartMarioGroup9[];
+extern u8 *gKartMarioGroup10[];
+extern u8 *gKartMarioGroup11[];
+extern u8 *gKartMarioGroup12[];
+extern u8 *gKartMarioGroup13[];
+extern u8 *gKartMarioGroup14[];
+extern u8 *gKartMarioGroup15[];
+extern u8 *gKartMarioGroup16[];
+extern u8 *gKartMarioGroup17[];
+
+extern u8 *gKartToadGroup0[];
+extern u8 *gKartToadGroup1[];
+extern u8 *gKartToadGroup2[];
+extern u8 *gKartToadGroup3[];
+extern u8 *gKartToadGroup4[];
+extern u8 *gKartToadGroup5[];
+extern u8 *gKartToadGroup6[];
+extern u8 *gKartToadGroup7[];
+extern u8 *gKartToadGroup8[];
+
+extern u8 *gKartToadGroup9[];
+extern u8 *gKartToadGroup10[];
+extern u8 *gKartToadGroup11[];
+extern u8 *gKartToadGroup12[];
+extern u8 *gKartToadGroup13[];
+extern u8 *gKartToadGroup14[];
+extern u8 *gKartToadGroup15[];
+extern u8 *gKartToadGroup16[];
+extern u8 *gKartToadGroup17[];
+
+extern u8 *gKartLuigiGroup0[];
+extern u8 *gKartLuigiGroup1[];
+extern u8 *gKartLuigiGroup2[];
+extern u8 *gKartLuigiGroup3[];
+extern u8 *gKartLuigiGroup4[];
+extern u8 *gKartLuigiGroup5[];
+extern u8 *gKartLuigiGroup6[];
+extern u8 *gKartLuigiGroup7[];
+extern u8 *gKartLuigiGroup8[];
+
+extern u8 *gKartLuigiGroup9[];
+extern u8 *gKartLuigiGroup10[];
+extern u8 *gKartLuigiGroup11[];
+extern u8 *gKartLuigiGroup12[];
+extern u8 *gKartLuigiGroup13[];
+extern u8 *gKartLuigiGroup14[];
+extern u8 *gKartLuigiGroup15[];
+extern u8 *gKartLuigiGroup16[];
+extern u8 *gKartLuigiGroup17[];
+
+extern u8 *gKartYoshiGroup0[];
+extern u8 *gKartYoshiGroup1[];
+extern u8 *gKartYoshiGroup2[];
+extern u8 *gKartYoshiGroup3[];
+extern u8 *gKartYoshiGroup4[];
+extern u8 *gKartYoshiGroup5[];
+extern u8 *gKartYoshiGroup6[];
+extern u8 *gKartYoshiGroup7[];
+extern u8 *gKartYoshiGroup8[];
+
+extern u8 *gKartYoshiGroup9[];
+extern u8 *gKartYoshiGroup10[];
+extern u8 *gKartYoshiGroup11[];
+extern u8 *gKartYoshiGroup12[];
+extern u8 *gKartYoshiGroup13[];
+extern u8 *gKartYoshiGroup14[];
+extern u8 *gKartYoshiGroup15[];
+extern u8 *gKartYoshiGroup16[];
+extern u8 *gKartYoshiGroup17[];
+
+extern u8 *gKartDKGroup0[];
+extern u8 *gKartDKGroup1[];
+extern u8 *gKartDKGroup2[];
+extern u8 *gKartDKGroup3[];
+extern u8 *gKartDKGroup4[];
+extern u8 *gKartDKGroup5[];
+extern u8 *gKartDKGroup6[];
+extern u8 *gKartDKGroup7[];
+extern u8 *gKartDKGroup8[];
+
+extern u8 *gKartDKGroup9[];
+extern u8 *gKartDKGroup10[];
+extern u8 *gKartDKGroup11[];
+extern u8 *gKartDKGroup12[];
+extern u8 *gKartDKGroup13[];
+extern u8 *gKartDKGroup14[];
+extern u8 *gKartDKGroup15[];
+extern u8 *gKartDKGroup16[];
+extern u8 *gKartDKGroup17[];
+
+extern u8 *gKartBowserGroup0[];
+extern u8 *gKartBowserGroup1[];
+extern u8 *gKartBowserGroup2[];
+extern u8 *gKartBowserGroup3[];
+extern u8 *gKartBowserGroup4[];
+extern u8 *gKartBowserGroup5[];
+extern u8 *gKartBowserGroup6[];
+extern u8 *gKartBowserGroup7[];
+extern u8 *gKartBowserGroup8[];
+
+extern u8 *gKartBowserGroup9[];
+extern u8 *gKartBowserGroup10[];
+extern u8 *gKartBowserGroup11[];
+extern u8 *gKartBowserGroup12[];
+extern u8 *gKartBowserGroup13[];
+extern u8 *gKartBowserGroup14[];
+extern u8 *gKartBowserGroup15[];
+extern u8 *gKartBowserGroup16[];
+extern u8 *gKartBowserGroup17[];
+
+extern u8 *gKartPeachGroup0[];
+extern u8 *gKartPeachGroup1[];
+extern u8 *gKartPeachGroup2[];
+extern u8 *gKartPeachGroup3[];
+extern u8 *gKartPeachGroup4[];
+extern u8 *gKartPeachGroup5[];
+extern u8 *gKartPeachGroup6[];
+extern u8 *gKartPeachGroup7[];
+extern u8 *gKartPeachGroup8[];
+
+extern u8 *gKartPeachGroup9[];
+extern u8 *gKartPeachGroup10[];
+extern u8 *gKartPeachGroup11[];
+extern u8 *gKartPeachGroup12[];
+extern u8 *gKartPeachGroup13[];
+extern u8 *gKartPeachGroup14[];
+extern u8 *gKartPeachGroup15[];
+extern u8 *gKartPeachGroup16[];
+extern u8 *gKartPeachGroup17[];
+
+extern u8 *gKartWarioGroup0[];
+extern u8 *gKartWarioGroup1[];
+extern u8 *gKartWarioGroup2[];
+extern u8 *gKartWarioGroup3[];
+extern u8 *gKartWarioGroup4[];
+extern u8 *gKartWarioGroup5[];
+extern u8 *gKartWarioGroup6[];
+extern u8 *gKartWarioGroup7[];
+extern u8 *gKartWarioGroup8[];
+
+extern u8 *gKartWarioGroup9[];
+extern u8 *gKartWarioGroup10[];
+extern u8 *gKartWarioGroup11[];
+extern u8 *gKartWarioGroup12[];
+extern u8 *gKartWarioGroup13[];
+extern u8 *gKartWarioGroup14[];
+extern u8 *gKartWarioGroup15[];
+extern u8 *gKartWarioGroup16[];
+extern u8 *gKartWarioGroup17[];
 
 extern u8 **gKartMarioTable0[];
 extern u8 **gKartLuigiTable0[];
@@ -47,7 +205,6 @@ extern u8 gKartYoshiPalette[];
 extern u8 gKartDKPalette[];
 extern u8 gKartPeachPalette[];
 extern u8 gKartWarioPalette[];
-extern u8 *gKartPalettes[];
 
 extern u8 *gKartMarioTumble[];
 extern u8 *gKartLuigiTumble[];
@@ -57,167 +214,12 @@ extern u8 *gKartYoshiTumble[];
 extern u8 *gKartDKTumble[];
 extern u8 *gKartPeachTumble[];
 extern u8 *gKartWarioTumble[];
+
 extern u8 **gKartTextureTumbles[];
 
-extern u8 *gKartMarioGroup8[];
-extern u8 *gKartMarioGroup7[];
-extern u8 *gKartMarioGroup6[];
-extern u8 *gKartMarioGroup5[];
-extern u8 *gKartMarioGroup4[];
-extern u8 *gKartMarioGroup3[];
-extern u8 *gKartMarioGroup2[];
-extern u8 *gKartMarioGroup1[];
-extern u8 *gKartMarioGroup0[];
+extern u8 *gKartPalettes[];
 
-extern u8 *gKartLuigiGroup8[];
-extern u8 *gKartLuigiGroup7[];
-extern u8 *gKartLuigiGroup6[];
-extern u8 *gKartLuigiGroup5[];
-extern u8 *gKartLuigiGroup4[];
-extern u8 *gKartLuigiGroup3[];
-extern u8 *gKartLuigiGroup2[];
-extern u8 *gKartLuigiGroup1[];
-extern u8 *gKartLuigiGroup0[];
-
-extern u8 *gKartYoshiGroup8[];
-extern u8 *gKartYoshiGroup7[];
-extern u8 *gKartYoshiGroup6[];
-extern u8 *gKartYoshiGroup5[];
-extern u8 *gKartYoshiGroup4[];
-extern u8 *gKartYoshiGroup3[];
-extern u8 *gKartYoshiGroup2[];
-extern u8 *gKartYoshiGroup1[];
-extern u8 *gKartYoshiGroup0[];
-
-extern u8 *gKartToadGroup8[];
-extern u8 *gKartToadGroup7[];
-extern u8 *gKartToadGroup6[];
-extern u8 *gKartToadGroup5[];
-extern u8 *gKartToadGroup4[];
-extern u8 *gKartToadGroup3[];
-extern u8 *gKartToadGroup2[];
-extern u8 *gKartToadGroup1[];
-extern u8 *gKartToadGroup0[];
-
-extern u8 *gKartDKGroup8[];
-extern u8 *gKartDKGroup7[];
-extern u8 *gKartDKGroup6[];
-extern u8 *gKartDKGroup5[];
-extern u8 *gKartDKGroup4[];
-extern u8 *gKartDKGroup3[];
-extern u8 *gKartDKGroup2[];
-extern u8 *gKartDKGroup1[];
-extern u8 *gKartDKGroup0[];
-
-extern u8 *gKartWarioGroup8[];
-extern u8 *gKartWarioGroup7[];
-extern u8 *gKartWarioGroup6[];
-extern u8 *gKartWarioGroup5[];
-extern u8 *gKartWarioGroup4[];
-extern u8 *gKartWarioGroup3[];
-extern u8 *gKartWarioGroup2[];
-extern u8 *gKartWarioGroup1[];
-extern u8 *gKartWarioGroup0[];
-
-extern u8 *gKartPeachGroup8[];
-extern u8 *gKartPeachGroup7[];
-extern u8 *gKartPeachGroup6[];
-extern u8 *gKartPeachGroup5[];
-extern u8 *gKartPeachGroup4[];
-extern u8 *gKartPeachGroup3[];
-extern u8 *gKartPeachGroup2[];
-extern u8 *gKartPeachGroup1[];
-extern u8 *gKartPeachGroup0[];
-
-extern u8 *gKartBowserGroup8[];
-extern u8 *gKartBowserGroup7[];
-extern u8 *gKartBowserGroup6[];
-extern u8 *gKartBowserGroup5[];
-extern u8 *gKartBowserGroup4[];
-extern u8 *gKartBowserGroup3[];
-extern u8 *gKartBowserGroup2[];
-extern u8 *gKartBowserGroup1[];
-extern u8 *gKartBowserGroup0[];
-
-extern u8 *gKartMarioGroup17[];
-extern u8 *gKartMarioGroup16[];
-extern u8 *gKartMarioGroup15[];
-extern u8 *gKartMarioGroup14[];
-extern u8 *gKartMarioGroup13[];
-extern u8 *gKartMarioGroup12[];
-extern u8 *gKartMarioGroup11[];
-extern u8 *gKartMarioGroup10[];
-extern u8 *gKartMarioGroup9[];
-
-extern u8 *gKartLuigiGroup17[];
-extern u8 *gKartLuigiGroup16[];
-extern u8 *gKartLuigiGroup15[];
-extern u8 *gKartLuigiGroup14[];
-extern u8 *gKartLuigiGroup13[];
-extern u8 *gKartLuigiGroup12[];
-extern u8 *gKartLuigiGroup11[];
-extern u8 *gKartLuigiGroup10[];
-extern u8 *gKartLuigiGroup9[];
-
-extern u8 *gKartYoshiGroup17[];
-extern u8 *gKartYoshiGroup16[];
-extern u8 *gKartYoshiGroup15[];
-extern u8 *gKartYoshiGroup14[];
-extern u8 *gKartYoshiGroup13[];
-extern u8 *gKartYoshiGroup12[];
-extern u8 *gKartYoshiGroup11[];
-extern u8 *gKartYoshiGroup10[];
-extern u8 *gKartYoshiGroup9[];
-
-extern u8 *gKartToadGroup17[];
-extern u8 *gKartToadGroup16[];
-extern u8 *gKartToadGroup15[];
-extern u8 *gKartToadGroup14[];
-extern u8 *gKartToadGroup13[];
-extern u8 *gKartToadGroup12[];
-extern u8 *gKartToadGroup11[];
-extern u8 *gKartToadGroup10[];
-extern u8 *gKartToadGroup9[];
-
-extern u8 *gKartDKGroup17[];
-extern u8 *gKartDKGroup16[];
-extern u8 *gKartDKGroup15[];
-extern u8 *gKartDKGroup14[];
-extern u8 *gKartDKGroup13[];
-extern u8 *gKartDKGroup12[];
-extern u8 *gKartDKGroup11[];
-extern u8 *gKartDKGroup10[];
-extern u8 *gKartDKGroup9[];
-
-extern u8 *gKartWarioGroup17[];
-extern u8 *gKartWarioGroup16[];
-extern u8 *gKartWarioGroup15[];
-extern u8 *gKartWarioGroup14[];
-extern u8 *gKartWarioGroup13[];
-extern u8 *gKartWarioGroup12[];
-extern u8 *gKartWarioGroup11[];
-extern u8 *gKartWarioGroup10[];
-extern u8 *gKartWarioGroup9[];
-
-extern u8 *gKartPeachGroup17[];
-extern u8 *gKartPeachGroup16[];
-extern u8 *gKartPeachGroup15[];
-extern u8 *gKartPeachGroup14[];
-extern u8 *gKartPeachGroup13[];
-extern u8 *gKartPeachGroup12[];
-extern u8 *gKartPeachGroup11[];
-extern u8 *gKartPeachGroup10[];
-extern u8 *gKartPeachGroup9[];
-
-extern u8 *gKartBowserGroup17[];
-extern u8 *gKartBowserGroup16[];
-extern u8 *gKartBowserGroup15[];
-extern u8 *gKartBowserGroup14[];
-extern u8 *gKartBowserGroup13[];
-extern u8 *gKartBowserGroup12[];
-extern u8 *gKartBowserGroup11[];
-extern u8 *gKartBowserGroup10[];
-extern u8 *gKartBowserGroup9[];
+// end of kart_dma.h variables
 
 extern u8 gKartMarioPalette[];
 extern u8 gKartLuigiPalette[];
@@ -2803,5 +2805,7 @@ extern u8 gKartDK317[];
 extern u8 gKartDK318[];
 extern u8 gKartDK319[];
 extern u8 gKartDK320[];
+
+extern u8 _kart_texturesSegmentRomStart[];
 
 #endif

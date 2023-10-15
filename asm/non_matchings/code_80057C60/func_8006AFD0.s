@@ -17,6 +17,16 @@ glabel D_800EE858
 glabel D_800EE860
 .float 0.3
 
+.section .data
+
+glabel D_800E4934
+.word 0x00c80100, 0x00007001, 0x00107951, 0x00005970
+.word 0x00705500, 0x007a7e00, 0x00772c24, 0x00301458
+
+glabel D_800E4954
+.word 0x00dc0000, 0x00008c06, 0x00000051, 0x00000000
+.word 0x00000000, 0x00000000, 0x00000000, 0x00000000
+
 .section .text
 
 glabel func_8006AFD0
@@ -270,21 +280,21 @@ glabel func_8006AFD0
 /* 06BF90 8006B390 46044181 */  sub.s $f6, $f8, $f4
 /* 06BF94 8006B394 4600348D */  trunc.w.s $f18, $f6
 /* 06BF98 8006B398 440E9000 */  mfc1  $t6, $f18
-/* 06BF9C 8006B39C 0C008784 */  jal   func_80021E10
+/* 06BF9C 8006B39C 0C008784 */  jal   mtxf_translate_rotate
 /* 06BFA0 8006B3A0 A7AE0130 */   sh    $t6, 0x130($sp)
 /* 06BFA4 8006B3A4 27B00140 */  addiu $s0, $sp, 0x140
 /* 06BFA8 8006B3A8 4405A000 */  mfc1  $a1, $f20
-/* 06BFAC 8006B3AC 0C0087E1 */  jal   func_80021F84
+/* 06BFAC 8006B3AC 0C0087E1 */  jal   mtxf_scale2
 /* 06BFB0 8006B3B0 02002025 */   move  $a0, $s0
-/* 06BFB4 8006B3B4 3C198016 */  lui   $t9, %hi(D_80164AF0) # $t9, 0x8016
-/* 06BFB8 8006B3B8 87394AF0 */  lh    $t9, %lo(D_80164AF0)($t9)
+/* 06BFB4 8006B3B4 3C198016 */  lui   $t9, %hi(gMatrixEffectCount) # $t9, 0x8016
+/* 06BFB8 8006B3B8 87394AF0 */  lh    $t9, %lo(gMatrixEffectCount)($t9)
 /* 06BFBC 8006B3BC 3C0F8015 */  lui   $t7, %hi(gGfxPool) # $t7, 0x8015
 /* 06BFC0 8006B3C0 8DEFEF40 */  lw    $t7, %lo(gGfxPool)($t7)
 /* 06BFC4 8006B3C4 0019C180 */  sll   $t8, $t9, 6
 /* 06BFC8 8006B3C8 3401FAC0 */  li    $at, 64192
 /* 06BFCC 8006B3CC 01F82021 */  addu  $a0, $t7, $t8
 /* 06BFD0 8006B3D0 00812021 */  addu  $a0, $a0, $at
-/* 06BFD4 8006B3D4 0C008860 */  jal   func_80022180
+/* 06BFD4 8006B3D4 0C008860 */  jal   convert_to_fixed_point_matrix
 /* 06BFD8 8006B3D8 02002825 */   move  $a1, $s0
 /* 06BFDC 8006B3DC 3C038015 */  lui   $v1, %hi(gDisplayListHead) # $v1, 0x8015
 /* 06BFE0 8006B3E0 24630298 */  addiu $v1, %lo(gDisplayListHead) # addiu $v1, $v1, 0x298
@@ -293,9 +303,9 @@ glabel func_8006AFD0
 /* 06BFEC 8006B3EC 37390040 */  ori   $t9, (0x01020040 & 0xFFFF) # ori $t9, $t9, 0x40
 /* 06BFF0 8006B3F0 244E0008 */  addiu $t6, $v0, 8
 /* 06BFF4 8006B3F4 AC6E0000 */  sw    $t6, ($v1)
-/* 06BFF8 8006B3F8 3C188016 */  lui   $t8, %hi(D_80164AF0) # $t8, 0x8016
+/* 06BFF8 8006B3F8 3C188016 */  lui   $t8, %hi(gMatrixEffectCount) # $t8, 0x8016
 /* 06BFFC 8006B3FC AC590000 */  sw    $t9, ($v0)
-/* 06C000 8006B400 87184AF0 */  lh    $t8, %lo(D_80164AF0)($t8)
+/* 06C000 8006B400 87184AF0 */  lh    $t8, %lo(gMatrixEffectCount)($t8)
 /* 06C004 8006B404 3C0F8015 */  lui   $t7, %hi(gGfxPool) # $t7, 0x8015
 /* 06C008 8006B408 8DEFEF40 */  lw    $t7, %lo(gGfxPool)($t7)
 /* 06C00C 8006B40C 00187180 */  sll   $t6, $t8, 6
@@ -401,7 +411,7 @@ glabel func_8006AFD0
 /* 06C19C 8006B59C AC4F0004 */  sw    $t7, 4($v0)
 /* 06C1A0 8006B5A0 8C620000 */  lw    $v0, ($v1)
 /* 06C1A4 8006B5A4 3C19F550 */  lui   $t9, 0xf550
-/* 06C1A8 8006B5A8 3C1F0D01 */  lui   $ra, %hi(D_0D008C78) # $ra, 0xd01
+/* 06C1A8 8006B5A8 3C1F0D01 */  lui   $ra, %hi(common_square_plain_render) # $ra, 0xd01
 /* 06C1AC 8006B5AC 244E0008 */  addiu $t6, $v0, 8
 /* 06C1B0 8006B5B0 AC6E0000 */  sw    $t6, ($v1)
 /* 06C1B4 8006B5B4 AC580004 */  sw    $t8, 4($v0)
@@ -444,16 +454,16 @@ glabel func_8006AFD0
 /* 06C248 8006B648 AC580000 */  sw    $t8, ($v0)
 /* 06C24C 8006B64C AC4F0004 */  sw    $t7, 4($v0)
 /* 06C250 8006B650 8C620000 */  lw    $v0, ($v1)
-/* 06C254 8006B654 3C18800E */  lui   $t8, %hi(D_800E5250) # $t8, 0x800e
+/* 06C254 8006B654 3C18800E */  lui   $t8, %hi(gBalloonVertexPlane1) # $t8, 0x800e
 /* 06C258 8006B658 3C190400 */  lui   $t9, (0x0400103F >> 16) # lui $t9, 0x400
 /* 06C25C 8006B65C 244E0008 */  addiu $t6, $v0, 8
 /* 06C260 8006B660 AC6E0000 */  sw    $t6, ($v1)
 /* 06C264 8006B664 3739103F */  ori   $t9, (0x0400103F & 0xFFFF) # ori $t9, $t9, 0x103f
-/* 06C268 8006B668 27185250 */  addiu $t8, %lo(D_800E5250) # addiu $t8, $t8, 0x5250
+/* 06C268 8006B668 27185250 */  addiu $t8, %lo(gBalloonVertexPlane1) # addiu $t8, $t8, 0x5250
 /* 06C26C 8006B66C AC580004 */  sw    $t8, 4($v0)
 /* 06C270 8006B670 AC590000 */  sw    $t9, ($v0)
 /* 06C274 8006B674 8C620000 */  lw    $v0, ($v1)
-/* 06C278 8006B678 27FF8C78 */  addiu $ra, %lo(D_0D008C78) # addiu $ra, $ra, -0x7388
+/* 06C278 8006B678 27FF8C78 */  addiu $ra, %lo(common_square_plain_render) # addiu $ra, $ra, -0x7388
 /* 06C27C 8006B67C 3C19FD50 */  lui   $t9, 0xfd50
 /* 06C280 8006B680 244F0008 */  addiu $t7, $v0, 8
 /* 06C284 8006B684 AC6F0000 */  sw    $t7, ($v1)
@@ -513,12 +523,12 @@ glabel func_8006AFD0
 /* 06C35C 8006B75C AC580000 */  sw    $t8, ($v0)
 /* 06C360 8006B760 AC4F0004 */  sw    $t7, 4($v0)
 /* 06C364 8006B764 8C620000 */  lw    $v0, ($v1)
-/* 06C368 8006B768 3C18800E */  lui   $t8, %hi(D_800E5290) # $t8, 0x800e
+/* 06C368 8006B768 3C18800E */  lui   $t8, %hi(gBalloonVertexPlane2) # $t8, 0x800e
 /* 06C36C 8006B76C 3C190400 */  lui   $t9, (0x0400103F >> 16) # lui $t9, 0x400
 /* 06C370 8006B770 244E0008 */  addiu $t6, $v0, 8
 /* 06C374 8006B774 AC6E0000 */  sw    $t6, ($v1)
 /* 06C378 8006B778 3739103F */  ori   $t9, (0x0400103F & 0xFFFF) # ori $t9, $t9, 0x103f
-/* 06C37C 8006B77C 27185290 */  addiu $t8, %lo(D_800E5290) # addiu $t8, $t8, 0x5290
+/* 06C37C 8006B77C 27185290 */  addiu $t8, %lo(gBalloonVertexPlane2) # addiu $t8, $t8, 0x5290
 /* 06C380 8006B780 AC580004 */  sw    $t8, 4($v0)
 /* 06C384 8006B784 AC590000 */  sw    $t9, ($v0)
 /* 06C388 8006B788 8C620000 */  lw    $v0, ($v1)
@@ -534,8 +544,8 @@ glabel func_8006AFD0
 /* 06C3B0 8006B7B0 AC6E0000 */  sw    $t6, ($v1)
 /* 06C3B4 8006B7B4 AC580004 */  sw    $t8, 4($v0)
 /* 06C3B8 8006B7B8 AC590000 */  sw    $t9, ($v0)
-/* 06C3BC 8006B7BC 3C028016 */  lui   $v0, %hi(D_80164AF0) # $v0, 0x8016
-/* 06C3C0 8006B7C0 24424AF0 */  addiu $v0, %lo(D_80164AF0) # addiu $v0, $v0, 0x4af0
+/* 06C3BC 8006B7BC 3C028016 */  lui   $v0, %hi(gMatrixEffectCount) # $v0, 0x8016
+/* 06C3C0 8006B7C0 24424AF0 */  addiu $v0, %lo(gMatrixEffectCount) # addiu $v0, $v0, 0x4af0
 /* 06C3C4 8006B7C4 844F0000 */  lh    $t7, ($v0)
 /* 06C3C8 8006B7C8 8FBF0034 */  lw    $ra, 0x34($sp)
 /* 06C3CC 8006B7CC 8FB00030 */  lw    $s0, 0x30($sp)

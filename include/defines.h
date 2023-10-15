@@ -15,7 +15,7 @@
  * 
  * Toggle resource meters by holding R and tapping B. L must not be held.
  * 
- * Reset to start screen by holding A, B, R, and R.
+ * Reset to start screen by holding A, B, R, and L.
  * 
  * View player direction and currentPathPoint in a single player race during staging tap L while holding A and B.
  * Turn off this UI by tapping R while holding A and B.
@@ -62,11 +62,18 @@
 #define DEBUG_GOTO_CREDITS_SEQUENCE_CC_50 2
 #define DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA 3
 
+/**
+ * Jump to demo mode from the debug menu
+ * using L and A
+ */
+#define DEMO_MODE_ACTIVE 1
+#define DEMO_MODE_INACTIVE 0
 
 /**
  * Racing terms:
  * Staging means aligning a racecar to the starting line.
  * Start sequence means waiting for the light to turn green.
+ * Used in the Player struct's 'type' member: player->type
  */
 
 #define PLAYER_INACTIVE             0         // 0x0000
@@ -77,6 +84,7 @@
 #define PLAYER_CPU                  (1 << 12) // 0x1000
 #define PLAYER_HUMAN                (1 << 14) // 0x4000
 #define PLAYER_INVISIBLE_OR_BOMB    (1 <<  8) // 0x0100
+#define PLAYER_UNKNOWN_0x40            (1 <<  6) // 0x0040
 // unused?
 #define PLAYER_UNKNOWN              (1 << 10) // 0x0400
 
@@ -94,6 +102,16 @@
 #define PLAYER_TWO 1
 #define PLAYER_THREE 2
 #define PLAYER_FOUR 3
+
+
+#define MARIO_SIZE  0.75f
+#define LUIGI_SIZE  0.75f
+#define YOSHI_SIZE  0.75f
+#define TOAD_SIZE   0.75f
+#define DK_SIZE     0.75f
+#define WARIO_SIZE  0.75f
+#define PEACH_SIZE  0.75f
+#define BOWSER_SIZE 0.75f
 
 // 2P Game has Grand Prix, VS, and Battle as available game types
 #define MAX_NUM_MAIN_MENU_GAME_TYPES 3
@@ -163,7 +181,7 @@
 #define RACING_DUPLICATE 14
 
 /**
- * Options for gMenuSelectionFromQuit and gMenuSelectionFromEndingSequence
+ * Options for gGameState gMenuSelectionFromQuit and gMenuSelectionFromEndingSequence
 **/
 #define START_MENU_FROM_QUIT 0
 #define MAIN_MENU_FROM_QUIT 1
@@ -294,5 +312,32 @@
  * Max representable time, 100 minutes measured in centiseconds
  */
 #define MAX_TIME 0x927C0
+
+/**
+ * @brief effect of player's
+ * for statusEffect
+ */
+#define BOOST_EFFECT 0x200 // being boosted by trigger a mushroom or star
+#define BOO_EFFECT 0x800 // being a boo
+#define STAR_EFFECT 0x2000 // being a star
+#define HOLD_BANANA_EFFECT 0x40000 // holding a banana
+#define HIT_ROTATING_EFFECT 0x4000 // hitting a rotating object
+#define HIT_BY_ITEM_EFFECT 0x1000000 // being hit by an item
+#define REVERSE_EFFECT 0x400000 // being in the wrong direction
+#define LIGHTNING_EFFECT 0x40000000 // being hit by lightning
+
+
+/**
+ * @brief shell state
+ * 
+ */
+#define SPAWN_FIRST_SHELL 0
+#define SPAWN_SECOND_SHELL 1
+#define SPAWN_THIRD_SHELL 2
+
+#define GPACK_RGB888(r, g, b) (((r) << 16) | ((g) << 8) | (b))
+#define COLOR_LIGHT GPACK_RGB888(0x1C, 0x00, 0x00)
+#define COLOR_LAVA  GPACK_RGB888(0x34, 0x00, 0x00)
+#define COLOR_BLACK  GPACK_RGB888(0, 0, 0)
 
 #endif // DEFINES_H

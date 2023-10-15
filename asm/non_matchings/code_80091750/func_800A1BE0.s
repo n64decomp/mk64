@@ -1,3 +1,10 @@
+.section .late_rodata
+
+glabel D_800F1B54
+.float 0.6
+
+.section .text
+
 glabel func_800A1BE0
 /* 0A27E0 800A1BE0 27BDFF70 */  addiu $sp, $sp, -0x90
 /* 0A27E4 800A1BE4 AFB70044 */  sw    $s7, 0x44($sp)
@@ -6,13 +13,13 @@ glabel func_800A1BE0
 /* 0A27F0 800A1BF0 82E20000 */  lb    $v0, ($s7)
 /* 0A27F4 800A1BF4 AFB5003C */  sw    $s5, 0x3c($sp)
 /* 0A27F8 800A1BF8 AFB30034 */  sw    $s3, 0x34($sp)
-/* 0A27FC 800A1BFC 3C098019 */  lui   $t1, %hi(D_8018EB90) # $t1, 0x8019
+/* 0A27FC 800A1BFC 3C098019 */  lui   $t1, %hi(gSaveData) # $t1, 0x8019
 /* 0A2800 800A1C00 AFBE0048 */  sw    $fp, 0x48($sp)
 /* 0A2804 800A1C04 AFB60040 */  sw    $s6, 0x40($sp)
 /* 0A2808 800A1C08 AFB40038 */  sw    $s4, 0x38($sp)
 /* 0A280C 800A1C0C AFB00028 */  sw    $s0, 0x28($sp)
 /* 0A2810 800A1C10 F7B40020 */  sdc1  $f20, 0x20($sp)
-/* 0A2814 800A1C14 2529EB90 */  addiu $t1, %lo(D_8018EB90) # addiu $t1, $t1, -0x1470
+/* 0A2814 800A1C14 2529EB90 */  addiu $t1, %lo(gSaveData) # addiu $t1, $t1, -0x1470
 /* 0A2818 800A1C18 3C13800E */  lui   $s3, %hi(D_800E7834) # $s3, 0x800e
 /* 0A281C 800A1C1C 3C158015 */  lui   $s5, %hi(gDisplayListHead) # $s5, 0x8015
 /* 0A2820 800A1C20 AFBF004C */  sw    $ra, 0x4c($sp)

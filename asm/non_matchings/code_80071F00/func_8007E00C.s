@@ -10,9 +10,9 @@ glabel func_8007E00C
 /* 07EC0C 8007E00C 000470C0 */  sll   $t6, $a0, 3
 /* 07EC10 8007E010 27BDFFD0 */  addiu $sp, $sp, -0x30
 /* 07EC14 8007E014 01C47023 */  subu  $t6, $t6, $a0
-/* 07EC18 8007E018 3C0F8016 */  lui   $t7, %hi(D_80165C18) # $t7, 0x8016
+/* 07EC18 8007E018 3C0F8016 */  lui   $t7, %hi(gObjectList) # $t7, 0x8016
 /* 07EC1C 8007E01C AFB00028 */  sw    $s0, 0x28($sp)
-/* 07EC20 8007E020 25EF5C18 */  addiu $t7, %lo(D_80165C18) # addiu $t7, $t7, 0x5c18
+/* 07EC20 8007E020 25EF5C18 */  addiu $t7, %lo(gObjectList) # addiu $t7, $t7, 0x5c18
 /* 07EC24 8007E024 000E7140 */  sll   $t6, $t6, 5
 /* 07EC28 8007E028 01CF8021 */  addu  $s0, $t6, $t7
 /* 07EC2C 8007E02C 961800A6 */  lhu   $t8, 0xa6($s0)
@@ -27,7 +27,7 @@ glabel func_8007E00C
 /* 07EC50 8007E050 03000008 */  jr    $t8
 /* 07EC54 8007E054 00000000 */   nop   
 glabel L8007E058
-/* 07EC58 8007E058 0C01F7C8 */  jal   func_8007DF20
+/* 07EC58 8007E058 0C01F7C8 */  jal   init_bb_trash_bin
 /* 07EC5C 8007E05C 00C02025 */   move  $a0, $a2
 /* 07EC60 8007E060 1000004E */  b     .L8007E19C
 /* 07EC64 8007E064 8FBF002C */   lw    $ra, 0x2c($sp)

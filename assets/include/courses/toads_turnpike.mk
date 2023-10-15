@@ -38,7 +38,7 @@ $(TOADS_TURNPIKE_DIR)/gTextureToadsTurnpikeCarSideLod1.png
 
 TOADS_TURNPIKE_EXPORT_SENTINEL := $(TOADS_TURNPIKE_DIR)/.export
 
-$(BUILD_DIR)/courses/flower_cup/toads_turnpike/course_data.inc.o: $(TOADS_TURNPIKE_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/courses/toads_turnpike/course_data.inc.o: $(TOADS_TURNPIKE_PNG:%.png=%.inc.c)
 
 $(TOADS_TURNPIKE_PNG:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16

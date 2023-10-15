@@ -6,12 +6,12 @@ glabel func_80052590
 /* 0531A0 800525A0 AFBE0040 */  sw    $fp, 0x40($sp)
 /* 0531A4 800525A4 01C47023 */  subu  $t6, $t6, $a0
 /* 0531A8 800525A8 0002C0C0 */  sll   $t8, $v0, 3
-/* 0531AC 800525AC 3C1E8016 */  lui   $fp, %hi(D_80165C18) # $fp, 0x8016
+/* 0531AC 800525AC 3C1E8016 */  lui   $fp, %hi(gObjectList) # $fp, 0x8016
 /* 0531B0 800525B0 000E70C0 */  sll   $t6, $t6, 3
 /* 0531B4 800525B4 3C0F800E */  lui   $t7, %hi(camera1) # $t7, 0x800e
 /* 0531B8 800525B8 0302C023 */  subu  $t8, $t8, $v0
 /* 0531BC 800525BC 8DEFDB40 */  lw    $t7, %lo(camera1)($t7)
-/* 0531C0 800525C0 27DE5C18 */  addiu $fp, %lo(D_80165C18) # addiu $fp, $fp, 0x5c18
+/* 0531C0 800525C0 27DE5C18 */  addiu $fp, %lo(gObjectList) # addiu $fp, $fp, 0x5c18
 /* 0531C4 800525C4 AFB00020 */  sw    $s0, 0x20($sp)
 /* 0531C8 800525C8 01C47023 */  subu  $t6, $t6, $a0
 /* 0531CC 800525CC 0018C140 */  sll   $t8, $t8, 5
@@ -49,10 +49,10 @@ glabel func_80052590
 /* 05324C 8005264C 11600022 */  beqz  $t3, .L800526D8
 .L80052650:
 /* 053250 80052650 3C160D00 */   lui   $s6, %hi(D_0D0062B0) # $s6, 0xd00
-/* 053254 80052654 3C158019 */  lui   $s5, %hi(D_8018D120) # $s5, 0x8019
+/* 053254 80052654 3C158019 */  lui   $s5, %hi(gMatrixHudCount) # $s5, 0x8019
 /* 053258 80052658 3C138019 */  lui   $s3, %hi(D_8018C490) # $s3, 0x8019
 /* 05325C 8005265C 2673C490 */  addiu $s3, %lo(D_8018C490) # addiu $s3, $s3, -0x3b70
-/* 053260 80052660 26B5D120 */  addiu $s5, %lo(D_8018D120) # addiu $s5, $s5, -0x2ee0
+/* 053260 80052660 26B5D120 */  addiu $s5, %lo(gMatrixHudCount) # addiu $s5, $s5, -0x2ee0
 /* 053264 80052664 26D662B0 */  addiu $s6, %lo(D_0D0062B0) # addiu $s6, $s6, 0x62b0
 /* 053268 80052668 2414FFFF */  li    $s4, -1
 /* 05326C 8005266C 8E220000 */  lw    $v0, ($s1)
@@ -88,10 +88,10 @@ glabel func_80052590
 .L800526D8:
 /* 0532D8 800526D8 3C0F8019 */  lui   $t7, %hi(D_8018CFE8) # $t7, 0x8019
 /* 0532DC 800526DC 85EFCFE8 */  lh    $t7, %lo(D_8018CFE8)($t7)
-/* 0532E0 800526E0 3C158019 */  lui   $s5, %hi(D_8018D120) # $s5, 0x8019
+/* 0532E0 800526E0 3C158019 */  lui   $s5, %hi(gMatrixHudCount) # $s5, 0x8019
 /* 0532E4 800526E4 3C160D00 */  lui   $s6, %hi(D_0D0062B0) # $s6, 0xd00
 /* 0532E8 800526E8 26D662B0 */  addiu $s6, %lo(D_0D0062B0) # addiu $s6, $s6, 0x62b0
-/* 0532EC 800526EC 26B5D120 */  addiu $s5, %lo(D_8018D120) # addiu $s5, $s5, -0x2ee0
+/* 0532EC 800526EC 26B5D120 */  addiu $s5, %lo(gMatrixHudCount) # addiu $s5, $s5, -0x2ee0
 /* 0532F0 800526F0 15E00004 */  bnez  $t7, .L80052704
 /* 0532F4 800526F4 2414FFFF */   li    $s4, -1
 /* 0532F8 800526F8 3C188019 */  lui   $t8, %hi(D_8018D000) # $t8, 0x8019

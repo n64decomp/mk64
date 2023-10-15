@@ -20,7 +20,7 @@ glabel func_800B70EC
 /* 0B7D34 800B7134 AFA50044 */   sw    $a1, 0x44($sp)
 .L800B7138:
 /* 0B7D38 800B7138 2690FFFF */  addiu $s0, $s4, -1
-/* 0B7D3C 800B713C 0C03044E */  jal   func_800C1138
+/* 0B7D3C 800B713C 0C03044E */  jal   process_sequences
 /* 0B7D40 800B7140 02002025 */   move  $a0, $s0
 /* 0B7D44 800B7144 86AE000C */  lh    $t6, 0xc($s5)
 /* 0B7D48 800B7148 0C02DC0D */  jal   synthesis_load_note_subs_eu

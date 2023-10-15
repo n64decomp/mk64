@@ -36,9 +36,9 @@ glabel func_8000DF8C
 /* 00EB94 8000DF94 27BDFEE0 */  addiu $sp, $sp, -0x120
 /* 00EB98 8000DF98 000F7880 */  sll   $t7, $t7, 2
 /* 00EB9C 8000DF9C 01E47821 */  addu  $t7, $t7, $a0
-/* 00EBA0 8000DFA0 3C188016 */  lui   $t8, %hi(D_80163DE8) # $t8, 0x8016
+/* 00EBA0 8000DFA0 3C188016 */  lui   $t8, %hi(gBombKarts) # $t8, 0x8016
 /* 00EBA4 8000DFA4 AFB00034 */  sw    $s0, 0x34($sp)
-/* 00EBA8 8000DFA8 27183DE8 */  addiu $t8, %lo(D_80163DE8) # addiu $t8, $t8, 0x3de8
+/* 00EBA8 8000DFA8 27183DE8 */  addiu $t8, %lo(gBombKarts) # addiu $t8, $t8, 0x3de8
 /* 00EBAC 8000DFAC 000F7880 */  sll   $t7, $t7, 2
 /* 00EBB0 8000DFB0 01F88021 */  addu  $s0, $t7, $t8
 /* 00EBB4 8000DFB4 96190044 */  lhu   $t9, 0x44($s0)
@@ -123,8 +123,8 @@ glabel func_8000DF8C
 /* 00ECEC 8000E0EC 10000037 */  b     .L8000E1CC
 /* 00ECF0 8000E0F0 AFAF004C */   sw    $t7, 0x4c($sp)
 .L8000E0F4:
-/* 00ECF4 8000E0F4 3C038019 */  lui   $v1, %hi(D_8018EDF3) # $v1, 0x8019
-/* 00ECF8 8000E0F8 8063EDF3 */  lb    $v1, %lo(D_8018EDF3)($v1)
+/* 00ECF4 8000E0F4 3C038019 */  lui   $v1, %hi(gPlayerCount) # $v1, 0x8019
+/* 00ECF8 8000E0F8 8063EDF3 */  lb    $v1, %lo(gPlayerCount)($v1)
 /* 00ECFC 8000E0FC 00002025 */  move  $a0, $zero
 /* 00ED00 8000E100 3C0141C8 */  li    $at, 0x41C80000 # 25.000000
 /* 00ED04 8000E104 58600032 */  blezl $v1, .L8000E1D0
@@ -163,17 +163,17 @@ glabel func_8000DF8C
 /* 00ED84 8000E184 14EB0007 */  bne   $a3, $t3, .L8000E1A4
 /* 00ED88 8000E188 00008825 */   move  $s1, $zero
 /* 00ED8C 8000E18C 8C4C000C */  lw    $t4, 0xc($v0)
-/* 00ED90 8000E190 3C038019 */  lui   $v1, %hi(D_8018EDF3) # $v1, 0x8019
+/* 00ED90 8000E190 3C038019 */  lui   $v1, %hi(gPlayerCount) # $v1, 0x8019
 /* 00ED94 8000E194 01886825 */  or    $t5, $t4, $t0
 /* 00ED98 8000E198 AC4D000C */  sw    $t5, 0xc($v0)
 /* 00ED9C 8000E19C 10000006 */  b     .L8000E1B8
-/* 00EDA0 8000E1A0 8063EDF3 */   lb    $v1, %lo(D_8018EDF3)($v1)
+/* 00EDA0 8000E1A0 8063EDF3 */   lb    $v1, %lo(gPlayerCount)($v1)
 .L8000E1A4:
 /* 00EDA4 8000E1A4 8C4E000C */  lw    $t6, 0xc($v0)
-/* 00EDA8 8000E1A8 3C038019 */  lui   $v1, %hi(D_8018EDF3) # $v1, 0x8019
+/* 00EDA8 8000E1A8 3C038019 */  lui   $v1, %hi(gPlayerCount) # $v1, 0x8019
 /* 00EDAC 8000E1AC 01C57825 */  or    $t7, $t6, $a1
 /* 00EDB0 8000E1B0 AC4F000C */  sw    $t7, 0xc($v0)
-/* 00EDB4 8000E1B4 8063EDF3 */  lb    $v1, %lo(D_8018EDF3)($v1)
+/* 00EDB4 8000E1B4 8063EDF3 */  lb    $v1, %lo(gPlayerCount)($v1)
 .L8000E1B8:
 /* 00EDB8 8000E1B8 0083082A */  slt   $at, $a0, $v1
 .L8000E1BC:
@@ -343,7 +343,7 @@ glabel L8000E1F4
 /* 00F01C 8000E41C 00000000 */  nop
 /* 00F020 8000E420 468051A0 */  cvt.s.w $f6, $f10
 /* 00F024 8000E424 46083100 */  add.s $f4, $f6, $f8
-/* 00F028 8000E428 0C0AD489 */  jal   func_802B5224
+/* 00F028 8000E428 0C0AD489 */  jal   get_angle_between_points
 /* 00F02C 8000E42C E4A40008 */   swc1  $f4, 8($a1)
 /* 00F030 8000E430 3403FFFF */  li    $v1, 65535
 /* 00F034 8000E434 00430019 */  multu $v0, $v1
@@ -458,7 +458,7 @@ glabel L8000E45C
 /* 00F1E4 8000E5E4 00000000 */  nop
 /* 00F1E8 8000E5E8 468042A0 */  cvt.s.w $f10, $f8
 /* 00F1EC 8000E5EC 46065100 */  add.s $f4, $f10, $f6
-/* 00F1F0 8000E5F0 0C0AD489 */  jal   func_802B5224
+/* 00F1F0 8000E5F0 0C0AD489 */  jal   get_angle_between_points
 /* 00F1F4 8000E5F4 E4A40008 */   swc1  $f4, 8($a1)
 /* 00F1F8 8000E5F8 00027400 */  sll   $t6, $v0, 0x10
 /* 00F1FC 8000E5FC 01C27023 */  subu  $t6, $t6, $v0
@@ -583,7 +583,7 @@ glabel L8000E634
 /* 00F3B0 8000E7B0 44984000 */  mtc1  $t8, $f8
 /* 00F3B4 8000E7B4 00000000 */  nop
 /* 00F3B8 8000E7B8 468042A0 */  cvt.s.w $f10, $f8
-/* 00F3BC 8000E7BC 0C0AD489 */  jal   func_802B5224
+/* 00F3BC 8000E7BC 0C0AD489 */  jal   get_angle_between_points
 /* 00F3C0 8000E7C0 E4AA0008 */   swc1  $f10, 8($a1)
 /* 00F3C4 8000E7C4 00027C00 */  sll   $t7, $v0, 0x10
 /* 00F3C8 8000E7C8 01E27823 */  subu  $t7, $t7, $v0
@@ -608,7 +608,7 @@ glabel L8000E634
 /* 00F410 8000E810 E4A60000 */  swc1  $f6, ($a1)
 /* 00F414 8000E814 E4A40004 */  swc1  $f4, 4($a1)
 /* 00F418 8000E818 C428D020 */  lwc1  $f8, %lo(D_800ED020)($at)
-/* 00F41C 8000E81C 0C0AD489 */  jal   func_802B5224
+/* 00F41C 8000E81C 0C0AD489 */  jal   get_angle_between_points
 /* 00F420 8000E820 E4A80008 */   swc1  $f8, 8($a1)
 /* 00F424 8000E824 00025C00 */  sll   $t3, $v0, 0x10
 /* 00F428 8000E828 01625823 */  subu  $t3, $t3, $v0
@@ -767,7 +767,7 @@ glabel L8000E968
 /* 00F66C 8000EA6C 46083282 */  mul.s $f10, $f6, $f8
 /* 00F670 8000EA70 00C02025 */  move  $a0, $a2
 /* 00F674 8000EA74 460A2181 */  sub.s $f6, $f4, $f10
-/* 00F678 8000EA78 0C0AD489 */  jal   func_802B5224
+/* 00F678 8000EA78 0C0AD489 */  jal   get_angle_between_points
 /* 00F67C 8000EA7C 4606A500 */   add.s $f20, $f20, $f6
 /* 00F680 8000EA80 00026400 */  sll   $t4, $v0, 0x10
 /* 00F684 8000EA84 01826023 */  subu  $t4, $t4, $v0

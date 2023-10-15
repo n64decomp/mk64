@@ -1,6 +1,9 @@
 #include "libultra_internal.h"
 #include "libc/stdarg.h"
 
+// These funcs defined in is_debug.c
+#ifndef DEBUG
+
 char *osSyncPrintf(char *arg0, const char *arg1, size_t size) {
     // ifdef'd formatting code?
     return (1);
@@ -12,3 +15,5 @@ void rmonPrintf(const char *fmt, ...) {
   _Printf(osSyncPrintf, NULL, fmt, args);
   va_end(args);
 }
+
+#endif // DEBUG

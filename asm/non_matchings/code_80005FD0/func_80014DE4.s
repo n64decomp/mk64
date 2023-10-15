@@ -17,10 +17,10 @@ glabel func_80014DE4
 /* 015A20 80014E20 000448C0 */   sll   $t1, $a0, 3
 /* 015A24 80014E24 3C188019 */  lui   $t8, %hi(gCupCourseSelection) # $t8, 0x8019
 /* 015A28 80014E28 8318EE0B */  lb    $t8, %lo(gCupCourseSelection)($t8)
-/* 015A2C 80014E2C 3C19800E */  lui   $t9, %hi(D_800DC51C)
+/* 015A2C 80014E2C 3C19800E */  lui   $t9, %hi(gDemoMode)
 /* 015A30 80014E30 13000004 */  beqz  $t8, .L80014E44
 /* 015A34 80014E34 00000000 */   nop   
-/* 015A38 80014E38 9739C51C */  lhu   $t9, %lo(D_800DC51C)($t9)
+/* 015A38 80014E38 9739C51C */  lhu   $t9, %lo(gDemoMode)($t9)
 /* 015A3C 80014E3C 54F90004 */  bnel  $a3, $t9, .L80014E50
 /* 015A40 80014E40 84660000 */   lh    $a2, ($v1)
 .L80014E44:

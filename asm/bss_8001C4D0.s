@@ -64,10 +64,10 @@ glabel D_80164AC0
 glabel D_80164AD0
 .skip 32
 
-glabel D_80164AF0
+glabel gMatrixEffectCount
 .skip 20
 
-glabel D_80164B04
+glabel gPlayerPalette
 .skip 4
 
 glabel D_80164B08
@@ -76,22 +76,22 @@ glabel D_80164B08
 glabel D_80164B0C
 .skip 4
 
-glabel D_80164B10
+glabel gPlayerRedEffect
 .skip 16
 
-glabel D_80164B20
+glabel gPlayerGreenEffect
 .skip 16
 
-glabel D_80164B30
+glabel gPlayerBlueEffect
 .skip 16
 
-glabel D_80164B40
+glabel gPlayerCyanEffect
 .skip 16
 
-glabel D_80164B50
+glabel gPlayerMagentaEffect
 .skip 16
 
-glabel D_80164B60
+glabel gPlayerYellowEffect
 .skip 32
 
 glabel D_80164B80
@@ -175,7 +175,7 @@ glabel D_80165420
 glabel D_80165440
 .skip 32
 
-glabel D_80165460
+glabel gIsPlayerTripleAButtonCombo
 .skip 32
 
 glabel D_80165480
@@ -589,107 +589,21 @@ glabel D_80165908
 glabel D_80165A90
 .skip 392
 
-glabel D_80165C18
-.skip 8
-
-glabel D_80165C20
-.skip 8
-
-glabel D_80165C28
-.skip 4
-
-glabel D_80165C2C
-.skip 4
-
-glabel D_80165C30
-.skip 16
-
-glabel D_80165C40
-.skip 20
-
-glabel D_80165C54
-.skip 16
-
-glabel D_80165C64
-.skip 8
-
-glabel D_80165C6C
-.skip 4
-
-glabel D_80165C70
-.skip 36
-
-glabel D_80165C94
-.skip 32
-
-glabel D_80165CB4
-.skip 4
-
-glabel D_80165CB8
-.skip 2
-
-glabel D_80165CBA
-.skip 2
+# object list begin
+# gObjectList should be of size 123,200 (0xE0 * 0x226)
+# D_80165CBC, D_80165CBE, and D_80165CED are all fake variables
+glabel gObjectList
+.skip 164
 
 glabel D_80165CBC
 .skip 2
 
 glabel D_80165CBE
-.skip 8
-
-glabel D_80165CC6
-.skip 2
-
-glabel D_80165CC8
-.skip 16
-
-glabel D_80165CD8
-.skip 10
-
-glabel D_80165CE2
-.skip 1
-
-glabel D_80165CE3
-.skip 1
-
-glabel D_80165CE4
-.skip 1
-
-glabel D_80165CE5
-.skip 2
-
-glabel D_80165CE7
-.skip 3
-
-glabel D_80165CEA
-.skip 3
+.skip 47
 
 glabel D_80165CED
-.skip 1
-
-glabel D_80165CEE
-.skip 1
-
-glabel D_80165CEF
-.skip 1
-
-glabel D_80165CF0
-.skip 3
-
-glabel D_80165CF3
-.skip 1
-
-glabel D_80165CF4
-.skip 1
-
-glabel D_80165CF5
-.skip 205
-
-glabel D_80165DC2
-.skip 22
-
-glabel D_80165DD8
-.skip 122752
+.skip 122987
+# object list end
 
 glabel D_80183D58
 .skip 4
@@ -838,9 +752,12 @@ glabel D_8018C028
 glabel D_8018C030
 .skip 128
 
+# Array of (4) Collisions?
 glabel D_8018C0B0
 .skip 256
 
+# begin D_8018C1B0, should be 512 bytes big
+# D_8018C1D8 through D_8018C278 are fake variables
 glabel D_8018C1B0
 .skip 40
 
@@ -848,35 +765,34 @@ glabel D_8018C1D8
 .skip 80
 
 glabel D_8018C228
-.skip 4
-
-glabel D_8018C22C
-.skip 76
+.skip 80
 
 glabel D_8018C278
 .skip 312
+# end D_8018C1B0
 
+# Some Collision
 glabel D_8018C3B0
-.skip 4
+.skip 64
 
-glabel D_8018C3B4
-.skip 6
-
-glabel D_8018C3BA
-.skip 54
-
+# begin D_8018C3F0, should be 512 bytes big
+# D_8018C404 and D_8018C490 are fake variables
 glabel D_8018C3F0
 .skip 20
 
 glabel D_8018C404
 .skip 140
 
-glabel D_8018C490
+glabel D_8018C490 # end of 8018C3F0
 .skip 352
+# end D_8018C3F0
 
+# Maybe some unused Collision?
 glabel D_8018C5F0
 .skip 64
 
+# begin D_8018C630, should be 512 bytes big
+# D_8018C6A8 and D_8018C6B0 are fake variables
 glabel D_8018C630
 .skip 120
 
@@ -885,7 +801,9 @@ glabel D_8018C6A8
 
 glabel D_8018C6B0
 .skip 384
+# end D_8018C630
 
+# Some Collision
 glabel D_8018C830
 .skip 64
 
@@ -895,6 +813,9 @@ glabel D_8018C870
 glabel D_8018C970
 .skip 256
 
+# some hud related list begin
+# D_8018CA70 should be of size 528 (0x84 * 0x4)
+# D_8018CA74 through D_8018CC7D are all fake
 glabel D_8018CA70
 .skip 4
 
@@ -990,15 +911,13 @@ glabel D_8018CC6E
 
 glabel D_8018CC7D
 .skip 3
+# some hud related list end
 
 glabel D_8018CC80
 .skip 400
 
 glabel D_8018CE10
-.skip 20
-
-glabel D_8018CE24
-.skip 236
+.skip 256
 
 glabel D_8018CF10
 .skip 4
@@ -1251,7 +1170,7 @@ glabel D_8018D110
 glabel D_8018D114
 .skip 12
 
-glabel D_8018D120
+glabel gMatrixHudCount
 .skip 32
 
 glabel D_8018D140
@@ -1290,7 +1209,7 @@ glabel D_8018D180
 glabel D_8018D184
 .skip 4
 
-glabel D_8018D188
+glabel gIsHUDVisible
 .skip 4
 
 glabel D_8018D18C
@@ -1741,16 +1660,7 @@ glabel gGPPointsByCharacterId
 # List of character IDs indicating where each character
 # is in the Grand Prix standings
 glabel gCharacterIdByGPOverallRank
-.skip 1
-
-glabel D_8018D9D1
-.skip 1
-
-glabel D_8018D9D2
-.skip 1
-
-glabel D_8018D9D3
-.skip 5
+.skip 8
 
 glabel D_8018D9D8
 .skip 1
@@ -1761,6 +1671,8 @@ glabel D_8018D9D9
 glabel D_8018D9E0
 .skip 1280
 
+# The size of D_8018DEE0 should be
+# 384, D_8018DEE4 is fake
 glabel D_8018DEE0
 .skip 4
 
@@ -1776,6 +1688,8 @@ glabel D_8018E0E8
 glabel gD_8018E118TotalSize
 .skip 8
 
+# The size of D_8018E118 should be
+# 1600, D_8018E11C and D_8018E124 are fake
 glabel D_8018E118
 .skip 4
 
@@ -1797,7 +1711,7 @@ glabel gNumD_8018E768Entries
 glabel D_8018E768
 .skip 64
 
-glabel D_8018E7A8
+glabel gCycleFlashMenu
 .skip 4
 
 glabel D_8018E7AC

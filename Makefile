@@ -25,7 +25,9 @@ TARGET_N64 ?= 1
 COMPILER ?= ido
 $(eval $(call validate-option,COMPILER,ido gcc))
 
-
+# Add debug tools with 'make DEBUG=1' and modify the macros in include/debug.h
+# Run make clean first. Add '#define CRASH_SCREEN_ENHANCEMENT' to the top of main.c
+DEBUG ?= 0
 
 # VERSION - selects the version of the game to build
 #   us - builds the 1997 North American version
@@ -35,12 +37,17 @@ $(eval $(call validate-option,VERSION,us eu))
 
 ifeq      ($(VERSION),us)
   DEFINES += VERSION_US=1
-  GRUCODE   ?= f3d_old
+  GRUCODE   ?= f3dex_old
   VERSION_ASFLAGS := --defsym VERSION_US=1
 else ifeq ($(VERSION), eu)
   DEFINES += VERSION_EU=1 
-  GRUCODE   ?= f3d_old
+  GRUCODE   ?= f3dex_old
   VERSION_ASFLAGS := --defsym VERSION_EU=1
+endif
+
+ifeq ($(DEBUG),1)
+  DEFINES += DEBUG=1
+  COMPARE ?= 0
 endif
 
 TARGET := mk64.$(VERSION)
@@ -50,15 +57,18 @@ BASEROM := baserom.$(VERSION).z64
 
 
 # GRUCODE - selects which RSP microcode to use.
-#   f3d_old - default, version 0.95. An early version of f3d.
-#   f3dex2  - A newer, unsupported version
+#   f3dex_old - default, version 0.95. An early version of F3DEX.
+#   f3dex     - latest version of F3DEX, used on iQue and Lodgenet.
+#   f3dex2    - F3DEX2, currently unsupported.
 # Note that 3/4 player mode uses F3DLX
-$(eval $(call validate-option,GRUCODE,f3d_old f3dex2))
+$(eval $(call validate-option,GRUCODE,f3dex_old f3dex f3dex2))
 
-ifeq ($(GRUCODE), f3dex2) # Fast3DEX2
-  DEFINES += F3DEX_GBI_2 F3DEX_GBI_SHARED=1
-else
+ifeq ($(GRUCODE),f3dex_old) # Fast3DEX 0.95
   DEFINES += F3DEX_GBI=1 F3D_OLD=1
+else ifeq ($(GRUCODE),f3dex) # Fast3DEX 1.23
+  DEFINES += F3DEX_GBI=1 F3DEX_GBI_SHARED=1
+else ifeq ($(GRUCODE),f3dex2) # Fast3DEX2
+  DEFINES += F3DEX_GBI_2=1 F3DEX_GBI_SHARED=1
 endif
 
 
@@ -144,6 +154,7 @@ ifeq ($(filter clean distclean,$(MAKECMDGOALS)),)
 endif
 
 
+
 #==============================================================================#
 # Universal Dependencies                                                       #
 #==============================================================================#
@@ -177,6 +188,7 @@ ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
 endif
 
 
+
 #==============================================================================#
 # Target Executable and Sources                                                #
 #==============================================================================#
@@ -193,12 +205,12 @@ DATA_DIR       := data
 INCLUDE_DIRS   := include
 
 # Directories containing source files
-SRC_DIRS       := src src/audio src/os src/os/math courses
-ASM_DIRS       := asm asm/audio asm/os asm/os/non_matchings $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
+SRC_DIRS       := src src/data src/racing src/ending src/audio src/debug src/os src/os/math courses
+ASM_DIRS       := asm asm/os asm/unused $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
 
 
 # Directories containing course source and data files
-COURSE_DIRS := $(shell find courses -mindepth 2 -type d)
+COURSE_DIRS := $(shell find courses -mindepth 1 -type d)
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 
@@ -210,25 +222,33 @@ ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) inc
 MAKEFILE_SPLIT = Makefile.split
 include $(MAKEFILE_SPLIT)
 
-COURSE_ASM_FILES := $(wildcard courses/*/*/packed.s)
-
-C_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
-S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s)) $(COURSE_ASM_FILES)
+# These are files that need to be encoded into EUC-JP in order for the ROM to match
+# We filter them out from the regular C_FILES since we don't need nor want the
+# UTF-8 versions getting compiled
+EUC_JP_FILES := src/ending/credits.c src/code_80005FD0.c src/code_80091750.c
+C_FILES := $(filter-out $(EUC_JP_FILES),$(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c)))
+S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s))
 COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(wildcard $(dir)/*.inc.c))
 
 # Object files
-O_FILES := $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
-		   $(foreach file,$(COURSE_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
-           $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file:.s=.o)) \
+O_FILES := \
+  $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
+  $(foreach file,$(COURSE_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
+  $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file:.s=.o)) \
+  $(EUC_JP_FILES:%.c=$(BUILD_DIR)/%.jp.o)
 
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d) $(BUILD_DIR)/$(LD_SCRIPT).d
 
 # Files with GLOBAL_ASM blocks
 GLOBAL_ASM_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/*.c)
+GLOBAL_ASM_OS_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/os/*.c)
 GLOBAL_ASM_AUDIO_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/audio/*.c)
+GLOBAL_ASM_RACING_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/racing/*.c)
 GLOBAL_ASM_O_FILES = $(foreach file,$(GLOBAL_ASM_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
+GLOBAL_ASM_OS_O_FILES = $(foreach file,$(GLOBAL_ASM_OS_FILES),$(BUILD_DIR)/$(file:.c=.o))
 GLOBAL_ASM_AUDIO_O_FILES = $(foreach file,$(GLOBAL_ASM_AUDIO_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
+GLOBAL_ASM_RACING_O_FILES = $(foreach file,$(GLOBAL_ASM_RACING_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
 
 
 
@@ -271,7 +291,7 @@ ifeq ($(TARGET_N64),1)
   CC_CFLAGS := -fno-builtin
 endif
 
-INCLUDE_DIRS := include $(BUILD_DIR) $(BUILD_DIR)/include src .
+INCLUDE_DIRS := include $(BUILD_DIR) $(BUILD_DIR)/include src src/racing src/ending .
 ifeq ($(TARGET_N64),1)
   INCLUDE_DIRS += include/libc
 endif
@@ -319,6 +339,8 @@ endif
 # Prevent a crash with -sopt
 export LANG := C
 
+
+
 #==============================================================================#
 # Miscellaneous Tools                                                          #
 #==============================================================================#
@@ -327,8 +349,6 @@ MIO0TOOL              := $(TOOLS_DIR)/mio0
 N64CKSUM              := $(TOOLS_DIR)/n64cksum
 N64GRAPHICS           := $(TOOLS_DIR)/n64graphics
 DLPACKER              := $(TOOLS_DIR)/displaylist_packer
-DLSYMGEN              := $(PYTHON) $(TOOLS_DIR)/generate_segment_headers.py
-MODELSYMGEN           := $(PYTHON) $(TOOLS_DIR)/generate_vertice_count.py
 BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
 ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
@@ -431,7 +451,7 @@ $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
-$(BUILD_DIR)/src/trophy_model.inc.o: src/trophy_model.inc.c
+$(BUILD_DIR)/src/ending/ceremony_data.inc.o: src/ending/ceremony_data.inc.c
 	@$(PRINT) "$(GREEN)Compiling Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/reflection_map_brass.rgba16.inc.c -g textures/trophy/reflection_map_brass.rgba16.png -f rgba16 -s u8
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/reflection_map_silver.rgba16.inc.c -g textures/trophy/reflection_map_silver.rgba16.png -f rgba16 -s u8
@@ -443,7 +463,7 @@ $(BUILD_DIR)/src/trophy_model.inc.o: src/trophy_model.inc.c
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
-$(BUILD_DIR)/src/startup_logo.inc.o: src/startup_logo.inc.c
+$(BUILD_DIR)/src/data/startup_logo.inc.o: src/data/startup_logo.inc.c
 	@$(PRINT) "$(GREEN)Compiling Startup Logo:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/startup_logo/reflection_map_gold.rgba16.inc.c -g textures/startup_logo/reflection_map_gold.rgba16.png -f rgba16 -s u8
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
@@ -469,7 +489,7 @@ $(TEXTURE_FILES_TLUT):
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8 -c $(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(TEXTURE_FILES_TLUT))), ,$(TEXTURE_FILES_TLUT)))) -p $(BUILD_DIR)/$@.tlut.inc.c
 
 # common textures
-$(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILES) $(TEXTURE_FILES_TLUT)
+$(BUILD_DIR)/src/data/common_textures.inc.o: src/data/common_textures.inc.c $(TEXTURE_FILES) $(TEXTURE_FILES_TLUT)
 	@$(PRINT) "$(GREEN)Compiling Common Textures:  $(BLUE)$@ $(NO_COL)\n"
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
@@ -478,31 +498,41 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 
 
 #==============================================================================#
-# Course Packed Displaylists and Geography Generation                          #
+# Course Packed Displaylists Generation                                        #
 #==============================================================================#
 
-# todo: Fix DLSYMGEN & MODELSYMGEN scripts
+%/course_displaylists.inc.elf: %/course_displaylists.inc.o
+	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -o $@ $< --no-check-sections
 
-COURSE_MODEL_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/model.inc.mio0.o)
-COURSE_PACKED_DL := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/packed_dl.inc.bin)
+%/course_displaylists.inc.bin: %/course_displaylists.inc.elf
+	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-$(COURSE_PACKED_DL): %/packed_dl.inc.bin : %/packed.inc.o
-	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $(@D)/packed.inc.elf.map -o $(@D)/packed.inc.elf $(@D)/packed.inc.o --no-check-sections
-# Generate header for packed displaylists
-#   $(DLSYMGEN)
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/packed.inc.elf $(@D)/packed.inc.bin
-	$(DLPACKER) $(@D)/packed.inc.bin $(@D)/packed_dl.inc.bin
+# Displaylists are packed using a custom format 
+%/course_displaylists_packed.inc.bin: %/course_displaylists.inc.bin
+	@$(PRINT) "$(GREEN)Compressing Course Displaylists:  $(BLUE)$@ $(NO_COL)\n"
+	$(V)$(DLPACKER) $< $@
 
-# Elf the course data to include symbol addresses then convert to binary and compress to mio0. The mio0 file is converted to an object file so that the linker can link it.
-$(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c $(COURSE_PACKED_DL)
-	@$(PRINT) "$(GREEN)Compressing Course Geography and Packed Displaylists:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=0F000000 -Map $(@D)/model.inc.elf.map -o $(@D)/model.inc.elf $(@D)/model.inc.o --no-check-sections
-# Generate model vertice count header
-#	$(MODELSYMGEN)
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/model.inc.elf $(@D)/model.inc.bin
-	$(V)$(MIO0TOOL) -c $(@D)/model.inc.bin $(@D)/model.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/model.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/packed_dl.inc.bin\"\n\n.balign 0x10\n" > $(@D)/model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $@ $(@D)/model.inc.mio0.s
+
+
+#==============================================================================#
+# Course Geography Generation                                                  #
+#==============================================================================#
+
+COURSE_GEOGRAPHY_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_geography.inc.mio0.o)
+
+%/course_vertices.inc.elf: %/course_vertices.inc.o
+	$(V)$(LD) -t -e 0 -Ttext=0F000000 -Map $@.map -o $@ $< --no-check-sections
+
+%/course_vertices.inc.bin: %/course_vertices.inc.elf
+	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
+
+%/course_vertices.inc.mio0: %/course_vertices.inc.bin
+	@$(PRINT) "$(GREEN)Compressing Course Geography:  $(BLUE)$@ $(NO_COL)\n"
+	$(V)$(MIO0TOOL) -c $< $@
+
+# Course vertices and displaylists are included together due to no alignment between the two files.
+%/course_geography.inc.mio0.s: %/course_vertices.inc.mio0 %/course_displaylists_packed.inc.bin
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
 
 
 
@@ -510,38 +540,33 @@ $(COURSE_MODEL_TARGETS) : $(BUILD_DIR)/%/model.inc.mio0.o : %/model.inc.c $(COUR
 # Course Data Generation                                                       #
 #==============================================================================#
 
-COURSE_TEXTURE_FILES := $(foreach dir,textures/courses,$(subst .png, , $(wildcard $(dir)/*)))
-COURSE_TLUT := $(foreach dir,textures/courses/tlut,$(subst .png, , $(wildcard $(dir)/*)))
+COURSE_DATA_ELFS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.inc.elf)
+LDFLAGS += $(foreach elf,$(COURSE_DATA_ELFS),-R $(elf))
 
 COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.inc.mio0.o)
-COURSE_DATA_TARGETS_O := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.inc.o)
 
-$(COURSE_TEXTURE_FILES):
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8
+%/course_data.inc.elf: %/course_data.inc.o %/course_displaylists.inc.elf
+	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -R $*/course_displaylists.inc.elf -o $@ $< --no-check-sections
 
-$(COURSE_TLUT):
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8 -c $(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(COURSE_TLUT))), ,$(COURSE_TLUT)))) -p $(BUILD_DIR)/$@.tlut.inc.c
+%/course_data.inc.bin: %/course_data.inc.elf
+	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-$(COURSE_DATA_TARGETS_O): $(BUILD_DIR)/%/course_data.inc.o : %/course_data.inc.c $(COURSE_TEXTURE_FILES) $(COURSE_TLUT)
-	@$(PRINT) "$(GREEN)Compiling Course Data:  $(BLUE)$@ $(NO_COL)\n"
-	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) tools/set_o32abi_bit.py $@
-
-$(COURSE_DATA_TARGETS): $(BUILD_DIR)/%/course_data.inc.mio0.o: $(BUILD_DIR)/%/course_data.inc.o $(BUILD_DIR)/%/packed_dl.inc.bin
-# todo: Clean this up if possible. Not really worth the time though.
+%/course_data.inc.mio0: %/course_data.inc.bin
 	@$(PRINT) "$(GREEN)Compressing Course Data:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $(@D)/course_data.inc.elf.map -R $(@D)/packed.inc.elf -o $(@D)/course_data.inc.elf $(@D)/course_data.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(@D)/course_data.inc.elf $(@D)/course_data.inc.bin
-	$(V)$(MIO0TOOL) -c $(@D)/course_data.inc.bin $(@D)/course_data.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/course_data.inc.mio0\"\n\n" > $(@D)/course_data.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $@ $(@D)/course_data.inc.mio0.s
+	$(V)$(MIO0TOOL) -c $< $@
+
+%/course_data.inc.mio0.s: %/course_data.inc.mio0
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
 
 
 
 #==============================================================================#
 # Source Code Generation                                                       #
 #==============================================================================#
+
+$(BUILD_DIR)/%.jp.c: %.c
+	$(call print,Encoding:,$<,$@)
+	iconv -t EUC-JP -f UTF-8 $< -o $@
 
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
@@ -557,14 +582,15 @@ $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 $(BUILD_DIR)/%.o: %.s $(MIO0_FILES) $(RAW_TEXTURE_FILES)
 	$(AS) $(ASFLAGS) -o $@ $<
 
+$(EUC_JP_FILES:%.c=$(BUILD_DIR)/%.jp.o): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
+
 $(GLOBAL_ASM_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
+
+$(GLOBAL_ASM_OS_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
 $(GLOBAL_ASM_AUDIO_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
-$(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT) #repeat for other files
-	$(V)$(CPP) $(CPPFLAGS) $(DEF_INC_CFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
-
-
+$(GLOBAL_ASM_RACING_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
 #==============================================================================#
 # Libultra Definitions                                                         #
@@ -591,45 +617,68 @@ ifeq ($(COMPILER),ido)
     $(BUILD_DIR)/src/audio/external.o:  OPT_FLAGS := -O2 -framepointer
 endif
 
+
+
 #==============================================================================#
-# Compress Segmented Data                                                      #
+# Compile Trophy and Podium Models                                             #
 #==============================================================================#
 
-# trophy_model.inc.c
-$(BUILD_DIR)/src/trophy_model.inc.mio0.o: $(BUILD_DIR)/src/trophy_model.inc.o
+$(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o: $(BUILD_DIR)/src/ending/ceremony_data.inc.o
 	@$(PRINT) "$(GREEN)Compressing Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/src/trophy_model.inc.elf.map -o $(BUILD_DIR)/src/trophy_model.inc.elf $(BUILD_DIR)/src/trophy_model.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/trophy_model.inc.elf $(BUILD_DIR)/src/trophy_model.inc.bin
-	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/trophy_model.inc.bin $(BUILD_DIR)/src/trophy_model.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel trophy_model\n\n.incbin \"build/us/src/trophy_model.inc.mio0\"\n\n.balign 16\nglabel data_821D10_end\n" > build/us/src/trophy_model.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.s
+	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/src/ending/ceremony_data.inc.elf.map -o $(BUILD_DIR)/src/ending/ceremony_data.inc.elf $(BUILD_DIR)/src/ending/ceremony_data.inc.o --no-check-sections
+	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/ending/ceremony_data.inc.elf $(BUILD_DIR)/src/ending/ceremony_data.inc.bin
+	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/ending/ceremony_data.inc.bin $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0
+	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"build/us/src/ending/ceremony_data.inc.mio0\"\n\n.balign 16\nglabel data_821D10_end\n" > build/us/src/ending/ceremony_data.inc.mio0.s
+	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.s
 
-# startup_logo.inc.c
-$(BUILD_DIR)/src/startup_logo.inc.mio0.o: src/startup_logo.inc.c
+
+
+#==============================================================================#
+# Compile Startup Logo                                                         #
+#==============================================================================#
+
+$(BUILD_DIR)/src/data/startup_logo.inc.mio0.o: src/data/startup_logo.inc.c
 	@$(PRINT) "$(GREEN)Compressing Startup Logo:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $(BUILD_DIR)/src/startup_logo.inc.elf.map -o $(BUILD_DIR)/src/startup_logo.inc.elf $(BUILD_DIR)/src/startup_logo.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/startup_logo.inc.elf $(BUILD_DIR)/src/startup_logo.inc.bin
-	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/startup_logo.inc.bin $(BUILD_DIR)/src/startup_logo.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n\n\n.balign 4\n\n\nglabel startup_logo\n\n.incbin \"build/us/src/startup_logo.inc.mio0\"\n\n.balign 16\n\nglabel data_825800_end\n" > build/us/src/startup_logo.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/startup_logo.inc.mio0.s
+	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $(BUILD_DIR)/src/data/startup_logo.inc.elf.map -o $(BUILD_DIR)/src/data/startup_logo.inc.elf $(BUILD_DIR)/src/data/startup_logo.inc.o --no-check-sections
+	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/data/startup_logo.inc.elf $(BUILD_DIR)/src/data/startup_logo.inc.bin
+	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/data/startup_logo.inc.bin $(BUILD_DIR)/src/data/startup_logo.inc.mio0
+	printf ".include \"macros.inc\"\n\n.data\n\n\n\n.balign 4\n\n\nglabel startup_logo\n\n.incbin \"build/us/src/data/startup_logo.inc.mio0\"\n\n.balign 16\n\nglabel data_825800_end\n" > build/us/src/data/startup_logo.inc.mio0.s
+	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o $(BUILD_DIR)/src/data/startup_logo.inc.mio0.s
 
-# common_textures.inc.c
-$(BUILD_DIR)/src/common_textures.inc.mio0.o: $(BUILD_DIR)/src/common_textures.inc.o
+
+
+#==============================================================================#
+# Compile Common Textures                                                      #
+#==============================================================================#
+
+LDFLAGS += -R $(BUILD_DIR)/src/data/common_textures.inc.elf
+
+%/common_textures.inc.elf: %/common_textures.inc.o
+	$(V)$(LD) -t -e 0 -Ttext=0D000000 -Map $@.map -o $@ $< --no-check-sections
+
+%/common_textures.inc.bin: %/common_textures.inc.elf
+	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
+
+%/common_textures.inc.mio0: %/common_textures.inc.bin
 	@$(PRINT) "$(GREEN)Compressing Common Textures:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=0D000000 --unresolved-symbols=ignore-all -Map $(BUILD_DIR)/src/common_textures.inc.elf.map -o $(BUILD_DIR)/src/common_textures.inc.elf $(BUILD_DIR)/src/common_textures.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/common_textures.inc.elf $(BUILD_DIR)/src/common_textures.inc.bin
-	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/common_textures.inc.bin $(BUILD_DIR)/src/common_textures.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"src/common_textures.inc.mio0\"\n\n" > build/us/src/common_textures.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.s
+	$(V)$(MIO0TOOL) -c $< $@
 
-# todo: Make this work
+%/common_textures.inc.mio0.s: %/common_textures.inc.mio0
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
+
+
+
+#==============================================================================#
+# Finalize and Link                                                            #
+#==============================================================================#
+
 # Run linker script through the C preprocessor
-#$(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
-#	$(call print,Preprocessing linker script:,$<,$@)
-#	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
+$(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
+	$(call print,Preprocessing linker script:,$<,$@)
+	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
-$(ELF): $(COURSE_DATA_TARGETS) $(O_FILES) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/trophy_model.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_MODEL_TARGETS) undefined_syms.txt
+$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/data/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) $(LDFLAGS) -o $@
 

@@ -13,15 +13,15 @@ glabel func_80084430
 /* 085030 80084430 000470C0 */  sll   $t6, $a0, 3
 /* 085034 80084434 27BDFFE0 */  addiu $sp, $sp, -0x20
 /* 085038 80084438 01C47023 */  subu  $t6, $t6, $a0
-/* 08503C 8008443C 3C0F8016 */  lui   $t7, %hi(D_80165C18) # $t7, 0x8016
+/* 08503C 8008443C 3C0F8016 */  lui   $t7, %hi(gObjectList) # $t7, 0x8016
 /* 085040 80084440 AFB00014 */  sw    $s0, 0x14($sp)
-/* 085044 80084444 25EF5C18 */  addiu $t7, %lo(D_80165C18) # addiu $t7, $t7, 0x5c18
+/* 085044 80084444 25EF5C18 */  addiu $t7, %lo(gObjectList) # addiu $t7, $t7, 0x5c18
 /* 085048 80084448 000E7140 */  sll   $t6, $t6, 5
 /* 08504C 8008444C 01CF8021 */  addu  $s0, $t6, $t7
-/* 085050 80084450 3C180601 */  lui   $t8, %hi(D_06008EB0) # $t8, 0x601
-/* 085054 80084454 3C190601 */  lui   $t9, %hi(D_06009AC8) # $t9, 0x601
-/* 085058 80084458 27188EB0 */  addiu $t8, %lo(D_06008EB0) # addiu $t8, $t8, -0x7150
-/* 08505C 8008445C 27399AC8 */  addiu $t9, %lo(D_06009AC8) # addiu $t9, $t9, -0x6538
+/* 085050 80084450 3C180601 */  lui   $t8, %hi(d_course_sherbet_land_unk_data1) # $t8, 0x601
+/* 085054 80084454 3C190601 */  lui   $t9, %hi(d_course_sherbet_land_unk_data11) # $t9, 0x601
+/* 085058 80084458 27188EB0 */  addiu $t8, %lo(d_course_sherbet_land_unk_data1) # addiu $t8, $t8, -0x7150
+/* 08505C 8008445C 27399AC8 */  addiu $t9, %lo(d_course_sherbet_land_unk_data11) # addiu $t9, $t9, -0x6538
 /* 085060 80084460 A20000D8 */  sb    $zero, 0xd8($s0)
 /* 085064 80084464 AE180070 */  sw    $t8, 0x70($s0)
 /* 085068 80084468 AE190074 */  sw    $t9, 0x74($s0)
@@ -63,10 +63,10 @@ glabel func_80084430
 /* 0850F8 800844F8 3C050400 */  lui   $a1, (0x04000800 >> 16) # lui $a1, 0x400
 /* 0850FC 800844FC 34A50800 */  ori   $a1, (0x04000800 & 0xFFFF) # ori $a1, $a1, 0x800
 /* 085100 80084500 02202025 */  move  $a0, $s1
-/* 085104 80084504 0C01C870 */  jal   func_800721C0
+/* 085104 80084504 0C01C870 */  jal   set_object_flag_unk_054_true
 /* 085108 80084508 AE0B0080 */   sw    $t3, 0x80($s0)
-/* 08510C 8008450C 3C040601 */  lui   $a0, %hi(D_06009AC8) # $a0, 0x601
-/* 085110 80084510 24849AC8 */  addiu $a0, %lo(D_06009AC8) # addiu $a0, $a0, -0x6538
+/* 08510C 8008450C 3C040601 */  lui   $a0, %hi(d_course_sherbet_land_unk_data11) # $a0, 0x601
+/* 085110 80084510 24849AC8 */  addiu $a0, %lo(d_course_sherbet_land_unk_data11) # addiu $a0, $a0, -0x6538
 /* 085114 80084514 0C0013AB */  jal   func_80004EAC
 /* 085118 80084518 00002825 */   move  $a1, $zero
 /* 08511C 8008451C A60200A4 */  sh    $v0, 0xa4($s0)

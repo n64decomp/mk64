@@ -43,7 +43,7 @@ glabel func_800C4FE4
 /* 0C5C84 800C5084 014B6021 */  addu  $t4, $t2, $t3
 /* 0C5C88 800C5088 91910004 */  lbu   $s1, 4($t4)
 /* 0C5C8C 800C508C 00137100 */  sll   $t6, $s3, 4
-/* 0C5C90 800C5090 3C04803B */  lui   $a0, %hi(D_803B17D0) # 0x803b
+/* 0C5C90 800C5090 3C04803B */  lui   $a0, %hi(gSequencePlayers+0x2C0) # 0x803b
 /* 0C5C94 800C5094 12210063 */  beq   $s1, $at, .L800C5224
 /* 0C5C98 800C5098 01D37023 */   subu  $t6, $t6, $s3
 /* 0C5C9C 800C509C 00117880 */  sll   $t7, $s1, 2
@@ -60,7 +60,7 @@ glabel func_800C4FE4
 /* 0C5CC8 800C50C8 008D2021 */  addu  $a0, $a0, $t5
 /* 0C5CCC 800C50CC 24010002 */  li    $at, 2
 /* 0C5CD0 800C50D0 1441002D */  bne   $v0, $at, .L800C5188
-/* 0C5CD4 800C50D4 8C8417D0 */   lw    $a0, %lo(D_803B17D0)($a0) # 0x17d0($a0)
+/* 0C5CD4 800C50D4 8C8417D0 */   lw    $a0, %lo(gSequencePlayers+0x2C0)($a0) # 0x17d0($a0)
 /* 0C5CD8 800C50D8 8E080024 */  lw    $t0, 0x24($s0)
 /* 0C5CDC 800C50DC A206002C */  sb    $a2, 0x2c($s0)
 /* 0C5CE0 800C50E0 326400FF */  andi  $a0, $s3, 0xff

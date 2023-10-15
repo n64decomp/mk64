@@ -1,7 +1,17 @@
+.section .late_rodata
+
+glabel D_800F1F18
+.double 0.95
+
+glabel D_800F1F20
+.float 1.2
+
+.section .text
+
 glabel func_800A66A8
 /* 0A72A8 800A66A8 27BDFFD0 */  addiu $sp, $sp, -0x30
-/* 0A72AC 800A66AC 3C0F8016 */  lui   $t7, %hi(D_80164AF0) # $t7, 0x8016
-/* 0A72B0 800A66B0 85EF4AF0 */  lh    $t7, %lo(D_80164AF0)($t7)
+/* 0A72AC 800A66AC 3C0F8016 */  lui   $t7, %hi(gMatrixEffectCount) # $t7, 0x8016
+/* 0A72B0 800A66B0 85EF4AF0 */  lh    $t7, %lo(gMatrixEffectCount)($t7)
 /* 0A72B4 800A66B4 3C0E8015 */  lui   $t6, %hi(gGfxPool) # $t6, 0x8015
 /* 0A72B8 800A66B8 8DCEEF40 */  lw    $t6, %lo(gGfxPool)($t6)
 /* 0A72BC 800A66BC AFB10028 */  sw    $s1, 0x28($sp)
@@ -136,11 +146,11 @@ glabel func_800A66A8
 /* 0A74B8 800A68B8 24630298 */  addiu $v1, %lo(gDisplayListHead) # addiu $v1, $v1, 0x298
 /* 0A74BC 800A68BC 8C620000 */  lw    $v0, ($v1)
 /* 0A74C0 800A68C0 3C0F0102 */  lui   $t7, (0x01020040 >> 16) # lui $t7, 0x102
-/* 0A74C4 800A68C4 3C0A8016 */  lui   $t2, %hi(D_80164AF0) # $t2, 0x8016
+/* 0A74C4 800A68C4 3C0A8016 */  lui   $t2, %hi(gMatrixEffectCount) # $t2, 0x8016
 /* 0A74C8 800A68C8 244D0008 */  addiu $t5, $v0, 8
 /* 0A74CC 800A68CC AC6D0000 */  sw    $t5, ($v1)
 /* 0A74D0 800A68D0 35EF0040 */  ori   $t7, (0x01020040 & 0xFFFF) # ori $t7, $t7, 0x40
-/* 0A74D4 800A68D4 254A4AF0 */  addiu $t2, %lo(D_80164AF0) # addiu $t2, $t2, 0x4af0
+/* 0A74D4 800A68D4 254A4AF0 */  addiu $t2, %lo(gMatrixEffectCount) # addiu $t2, $t2, 0x4af0
 /* 0A74D8 800A68D8 AC4F0000 */  sw    $t7, ($v0)
 /* 0A74DC 800A68DC 85580000 */  lh    $t8, ($t2)
 /* 0A74E0 800A68E0 3C0E8015 */  lui   $t6, %hi(gGfxPool) # $t6, 0x8015

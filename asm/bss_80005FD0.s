@@ -1,22 +1,22 @@
 .include "macros.inc"
 
 .section .bss
-.skip 96
 
-glabel D_80162E70
-.skip 64
 
-glabel D_80162EB0
-.skip 2
+#glabel D_80162E70
+#.skip 64
 
-glabel D_80162EB2
-.skip 6
+#glabel D_80162EB0
+#.skip 2
 
-glabel D_80162EB8
-.skip 80
+#glabel D_80162EB2
+#.skip 6
 
-glabel D_80162F08
-.skip 8
+#glabel D_80162EB8
+#.skip 80
+
+#glabel D_80162F08 # fake ptr
+#.skip 8
 
 glabel D_80162F10
 .skip 64
@@ -30,7 +30,7 @@ glabel D_80162F8C
 glabel D_80162FA0
 .skip 8
 
-glabel D_80162FA8
+glabel D_80162FA8 # fake var?
 .skip 8
 
 glabel D_80162FB0
@@ -279,7 +279,7 @@ glabel D_801634F0
 glabel D_801634F4
 .skip 4
 
-glabel D_801634F8
+glabel D_801634F8 # array ptrs below may be fake
 .skip 4
 
 glabel D_801634FC
@@ -293,18 +293,3 @@ glabel D_80163598
 
 glabel D_8016359C
 .skip 4
-
-glabel D_801635A0
-.skip 4
-
-glabel D_801635A4
-.skip 12
-
-glabel D_801635B0
-.skip 12
-
-glabel D_801635BC
-.skip 8
-
-glabel D_801635C4
-.skip 220

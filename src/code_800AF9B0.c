@@ -123,7 +123,7 @@ void func_800AFC54(Vtx *arg0, s32 arg1, s32 arg2, s32 arg3, s16 arg4[3]) {
     arg4[2] = f18 * (f32)(1.0 / res) * 120.0f;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800AFC54.s")
+GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800AFC54.s")
 #endif
 
 void func_800AFE00(Vtx *arg0, s16 (*arg1)[3], s32 arg2, s32 arg3);
@@ -179,7 +179,7 @@ void func_800AFE00(Vtx *arg0, s16 (*arg1)[3], s32 arg2, s32 arg3) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800AFE00.s")
+GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800AFE00.s")
 #endif
 
 void func_800AFF58(Vtx *arg0) {
@@ -244,5 +244,5 @@ void func_800B0004(void) {
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B0004.s")
+GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800B0004.s")
 #endif

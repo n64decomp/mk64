@@ -67,8 +67,8 @@ glabel func_800088D8
 /* 0095C8 800089C8 000AC840 */  sll   $t9, $t2, 1
 /* 0095CC 800089CC 14C0008E */  bnez  $a2, .L80008C08
 /* 0095D0 800089D0 03193821 */   addu  $a3, $t8, $t9
-/* 0095D4 800089D4 3C0E800E */  lui   $t6, %hi(D_800DC51C)
-/* 0095D8 800089D8 95CEC51C */  lhu   $t6, %lo(D_800DC51C)($t6)
+/* 0095D4 800089D4 3C0E800E */  lui   $t6, %hi(gDemoMode)
+/* 0095D8 800089D8 95CEC51C */  lhu   $t6, %lo(gDemoMode)($t6)
 /* 0095DC 800089DC 3C048016 */  lui   $a0, %hi(D_80164450) # $a0, 0x8016
 /* 0095E0 800089E0 24844450 */  addiu $a0, %lo(D_80164450) # addiu $a0, $a0, 0x4450
 /* 0095E4 800089E4 146E003A */  bne   $v1, $t6, .L80008AD0
@@ -255,8 +255,8 @@ glabel func_800088D8
 .L80008C88:
 /* 009888 80008C88 5420FFF3 */  bnel  $at, $zero, .L80008C58
 /* 00988C 80008C8C 948F0000 */   lhu   $t7, ($a0)
-/* 009890 80008C90 3C098019 */  lui   $t1, %hi(D_8018EDF3) # $t1, 0x8019
-/* 009894 80008C94 8129EDF3 */  lb    $t1, %lo(D_8018EDF3)($t1)
+/* 009890 80008C90 3C098019 */  lui   $t1, %hi(gPlayerCount) # $t1, 0x8019
+/* 009894 80008C94 8129EDF3 */  lb    $t1, %lo(gPlayerCount)($t1)
 /* 009898 80008C98 3C188016 */  lui   $t8, %hi(gGPCurrentRaceRankByPlayerId)
 /* 00989C 80008C9C 00002025 */  move  $a0, $zero
 /* 0098A0 80008CA0 19200010 */  blez  $t1, .L80008CE4

@@ -7,6 +7,7 @@
 
 #include "code_80091750.h"
 #include "menus.h"
+#include "save_data.h"
 #include "staff_ghosts.h"
 
 /*** macros ***/
@@ -14,7 +15,7 @@
 #define PFS_GAME_CODE(c0, c1, c2, c3) ((u32)(((c0) << 24) | ((c1) << 16) | ((c2) << 8) | (c3)))
 // calculate an eeprom address based off of the ram address of the SaveData variable
 // very fragile!
-#define EEPROM_ADDR(ptr) (((uintptr_t)(ptr) - (uintptr_t)(&D_8018EB90)) / 8)
+#define EEPROM_ADDR(ptr) (((uintptr_t)(ptr) - (uintptr_t)(&gSaveData)) / 8)
 
 /*** data ***/
 u16 gCompanyCode = PFS_COMPANY_CODE('0', '1');
@@ -23,30 +24,28 @@ s8 gControllerPak1State = BAD;
 s8 sControllerPak2State = BAD;
 
 /*** rodata ***/
-// default time trial records?
+// default time trial records in little endian form
 const u8 D_800F2E60[4] = {0xc0, 0x27, 0x09, 0x00};
 // osPfsFindFile -> gGameName ("MARIOKART64" in nosFont)
 const u8 gGameName[] = {0x26, 0x1a, 0x2b, 0x22, 0x28, 0x24, 0x1a, 0x2b, 0x2d, 0x16, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00};
 // ext_name param to osPfsFindFile (four total bytes, but only one is setable)
 const u8 gExtCode[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
-/*** forward declarations ***/
-s32 func_800B58C4(s32 arg0);
-
 // new file start?
 void func_800B45E0(s32 arg0) {
-    CourseTimeTrialRecords* courseTimeTrialRecordsPtr = &D_8018EB90.allCourseTimeTrialRecords \
+    CourseTimeTrialRecords* courseTimeTrialRecordsPtr = &gSaveData.allCourseTimeTrialRecords \
                                                         .cupRecords[arg0 / 4] \
                                                         .courseRecords[arg0 % 4];
 
-    courseTimeTrialRecordsPtr->unknownBytes[5] = func_800B4874(arg0);
+    courseTimeTrialRecordsPtr->checksum = checksum_time_trial_records(arg0);
     osEepromLongWrite(&gSIEventMesgQueue, EEPROM_ADDR(courseTimeTrialRecordsPtr), (u8 *)courseTimeTrialRecordsPtr, sizeof(CourseTimeTrialRecords));
 }
 
 void write_save_data_grand_prix_points_and_sound_mode(void) {
-    D_8018ED16 = compute_save_data_checksum_1();
-    D_8018ED17 = compute_save_data_checksum_2();
-    osEepromLongWrite(&gSIEventMesgQueue, EEPROM_ADDR(&D_8018ED10), (u8 *)&D_8018ED10, 8);
+    Stuff *main = &gSaveData.main;
+    main->checksum[1] = compute_save_data_checksum_1();
+    main->checksum[2] = compute_save_data_checksum_2();
+    osEepromLongWrite(&gSIEventMesgQueue, EEPROM_ADDR(main), main, sizeof(Stuff));
 }
 
 void func_800B46D0(void) {
@@ -65,7 +64,7 @@ void func_800B4728(s32 arg0) {
     s32 i, j;
     CourseTimeTrialRecords* courseTimeTrialRecords;
 
-    courseTimeTrialRecords = &D_8018EB90.allCourseTimeTrialRecords \
+    courseTimeTrialRecords = &gSaveData.allCourseTimeTrialRecords \
                              .cupRecords[arg0 / 4] \
                              .courseRecords[arg0 % 4];
 
@@ -83,27 +82,28 @@ void func_800B4728(s32 arg0) {
     }
 
     courseTimeTrialRecords->unknownBytes[0] = 0;
-    courseTimeTrialRecords->unknownBytes[5] = func_800B4874(arg0);
+    courseTimeTrialRecords->checksum = checksum_time_trial_records(arg0);
     func_800B45E0(arg0);
 }
 
 void reset_save_data_grand_prix_points_and_sound_mode(void) {
-    D_8018ED10.grandPrixPointsMushroomCup = 0;
-    D_8018ED11 = 0;
-    D_8018ED12 = 0;
-    D_8018ED13 = 0;
-    gSaveDataSoundMode = SOUND_STEREO;
+    s32 cup_index;
+    Stuff *main = &gSaveData.main;
+    for (cup_index = 0; cup_index < 4; cup_index++) {
+        main->grandPrixPoints[cup_index] = 0;
+    }
+    main->soundMode = SOUND_STEREO;
     gSoundMode = SOUND_STEREO;
     func_800B44BC();
     write_save_data_grand_prix_points_and_sound_mode();
 }
 
-// checksum_timetrial_records
-u8 func_800B4874(s32 courseIdx) {
+// create a magic number based on the time trial records
+u8 checksum_time_trial_records(s32 courseIdx) {
     s32 j;
     s32 i;
     s32 ret;
-    u8 *records = D_8018EB90.allCourseTimeTrialRecords \
+    u8 *records = gSaveData.allCourseTimeTrialRecords \
                   .cupRecords[courseIdx / 4] \
                   .courseRecords[courseIdx % 4] \
                   .records[0];
@@ -120,26 +120,26 @@ u8 func_800B4874(s32 courseIdx) {
 
 
 u8 compute_save_data_checksum_1(void) {
-    u8 *raw = (void *)&D_8018ED10;
+    u8 *grandPrixPoints = &gSaveData.main.grandPrixPoints;
     s32 i;
     s32 crc = 0;
 
     for (i = 0; i < 5; i++) {
-        crc += ((raw[i] + 1) * (i + 1)) + i;
+        crc += ((grandPrixPoints[i] + 1) * (i + 1)) + i;
     }
 
     return crc % 0x100;
 }
 
 u8 compute_save_data_checksum_2(void) {
-    s32 tmp = D_8018ED16 + 90;
+    s32 tmp = gSaveData.main.checksum[1] + 90;
     return (tmp % 256);
 }
 
 void load_save_data(void) {
     s32 i;
 
-    osEepromLongRead(&gSIEventMesgQueue, EEPROM_ADDR(&D_8018EB90), (u8 *)&D_8018EB90, sizeof(SaveData));
+    osEepromLongRead(&gSIEventMesgQueue, EEPROM_ADDR(&gSaveData), (u8 *)&gSaveData, sizeof(SaveData));
     // 16: 4 cup records * 4 course records?
     for (i = 0; i < 16; i++) {
         func_800B4A9C(i);
@@ -147,41 +147,42 @@ void load_save_data(void) {
     
     validate_save_data();
 
-    gSoundMode = gSaveDataSoundMode;
+    gSoundMode = gSaveData.main.soundMode;
     if (gSoundMode >= NUM_SOUND_MODES) {
         gSoundMode = SOUND_MONO;
     }
 }
 
-#ifdef NON_MATCHING
-// nonmatching: off in the copy time trials loop
-// check integrity of time trial data?
 void func_800B4A9C(s32 course) {
+    OnlyBestTimeTrialRecords *test;
     CourseTimeTrialRecords *sp24;
     s32 i;
 
     if ((func_800B4EB4(0, course) & 0xFFFFF) < 0x927C0U) {
-        D_8018EB90.allCourseTimeTrialRecords
+        gSaveData.allCourseTimeTrialRecords
             .cupRecords[course / 4]
             .courseRecords[course % 4]
             .unknownBytes[0] = 1;
     }
-    sp24 = &D_8018EB90.allCourseTimeTrialRecords.cupRecords[course / 4].courseRecords[course % 4];
+    sp24 = &gSaveData.allCourseTimeTrialRecords.cupRecords[course / 4].courseRecords[course % 4];
     
     func_800B4FB0(course);
     if(sp24) {}
 
-    if (func_800B4874(course) != sp24->unknownBytes[5]) {
+    if (sp24->checksum != checksum_time_trial_records(course)) {
         func_800B4728(course);
         if (func_800B58C4(course) == 0) {
             s32 a3 = 0;
 
+            test = &gSaveData.onlyBestTimeTrialRecords[course / 8];
             for (i = 0; i < 3; i++) {
-                sp24->records[0][i] = D_8018EB90.onlyBestTimeTrialRecords[course / 8].bestThreelaps[course % 8][i];
-                sp24->records[5][i] = D_8018EB90.onlyBestTimeTrialRecords[course / 8].bestSinglelaps[course % 8][i];
+                sp24->records[TIME_TRIAL_3LAP_RECORD_1][i] = test->bestThreelaps[course % 8][i];
+                sp24->records[TIME_TRIAL_1LAP_RECORD][i] = test->bestSinglelaps[course % 8][i];
 
-                if ((D_8018EB90.onlyBestTimeTrialRecords[course / 8].bestThreelaps[course % 8][i] & 0xFF) == D_800F2E60[i]) {
-                    if ((D_8018EB90.onlyBestTimeTrialRecords[course / 8].bestSinglelaps[course % 8][i] & 0xFF) == D_800F2E60[i]) {
+                // This is checking (in a roundabout way) if the given record
+                // is the default value of 0x927C0
+                if (sp24->records[TIME_TRIAL_3LAP_RECORD_1][i] == D_800F2E60[i]) {
+                    if (sp24->records[TIME_TRIAL_1LAP_RECORD][i] == D_800F2E60[i]) {
                         a3 += 1;
                     }
                 }
@@ -201,39 +202,23 @@ void func_800B4A9C(s32 course) {
         func_800B559C(course);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B4A9C.s")
-#endif
 
 void validate_save_data(void) {
-    if (D_8018ED16 != (compute_save_data_checksum_1()) || (D_8018ED17 != compute_save_data_checksum_2())) {
+    s32 cup_index;
+    Stuff *main = &gSaveData.main;
+    Stuff *backup = &gSaveData.backup;
+    if (main->checksum[1] != (compute_save_data_checksum_1()) || (main->checksum[2] != compute_save_data_checksum_2())) {
         reset_save_data_grand_prix_points_and_sound_mode();
         
         if (validate_save_data_checksum_backup() == 0) {
-            D_8018ED10.grandPrixPointsMushroomCup = D_8018ED88.grandPrixPointsMushroomCup;
-            if ((D_8018ED16 && D_8018ED16) && D_8018ED16)
-            {
+            for (cup_index = 0; cup_index < 4; cup_index++) {
+                main->grandPrixPoints[cup_index] = backup->grandPrixPoints[cup_index];
             }
 
-            D_8018ED11 = D_8018ED89;
-            if ((D_8018ED16 && D_8018ED16) && D_8018ED16)
-            {
-            }
-
-            D_8018ED12 = D_8018ED8A;
-            if ((D_8018ED16 && D_8018ED16) && D_8018ED16)
-            {
-            }
-
-            D_8018ED13 = D_8018ED8B;
-            if ((D_8018ED16 && D_8018ED16) && D_8018ED16)
-            {
-            }
-
-            gSaveDataSoundMode = gSaveDataSoundModeBackup;
-            D_8018ED16 = compute_save_data_checksum_backup_1();
-            D_8018ED17 = compute_save_data_checksum_backup_2();
-            osEepromLongWrite(&gSIEventMesgQueue, EEPROM_ADDR(&D_8018ED10), (u8 *)&D_8018ED10, 8);
+            main->soundMode = backup->soundMode;
+            main->checksum[1] = compute_save_data_checksum_backup_1();
+            main->checksum[2] = compute_save_data_checksum_backup_2();
+            osEepromLongWrite(&gSIEventMesgQueue, EEPROM_ADDR(main), main, sizeof(Stuff));
         }
         update_save_data_backup();
         return;
@@ -271,7 +256,7 @@ u32 func_800B4DF4(u8 *arr) {
 // Get a time trial record, infer course index
 s32 func_800B4E24(s32 recordIndex) {
     return func_800B4DF4(
-        D_8018EB90.allCourseTimeTrialRecords \
+        gSaveData.allCourseTimeTrialRecords \
         .cupRecords[(((gCupSelection * 4) + gCupCourseSelection) / 4)] \
         .courseRecords[(((gCupSelection * 4) + gCupCourseSelection) % 4)] \
         .records[recordIndex]
@@ -281,7 +266,7 @@ s32 func_800B4E24(s32 recordIndex) {
 // Get a time trial record, but take the course index as an argument
 u32 func_800B4EB4(s32 recordIndex, s32 courseIndex) {
     return func_800B4DF4(
-        D_8018EB90.allCourseTimeTrialRecords \
+        gSaveData.allCourseTimeTrialRecords \
         .cupRecords[(courseIndex / 4)] \
         .courseRecords[(courseIndex % 4)] \
         .records[recordIndex]
@@ -291,7 +276,7 @@ u32 func_800B4EB4(s32 recordIndex, s32 courseIndex) {
 // Get Best Lap record of the inferred course index
 s32 func_800B4F2C(void) {
     return func_800B4DF4(
-        D_8018EB90.allCourseTimeTrialRecords \
+        gSaveData.allCourseTimeTrialRecords \
         .cupRecords[(((gCupSelection * 4) + gCupCourseSelection) / 4)] \
         .courseRecords[(((gCupSelection * 4) + gCupCourseSelection) % 4)] \
         .records[TIME_TRIAL_1LAP_RECORD]
@@ -301,67 +286,56 @@ s32 func_800B4F2C(void) {
 // Get the best single lap time record of the given course index
 s32 func_800B4FB0(s32 courseIndex) {
     return func_800B4DF4(
-        D_8018EB90.allCourseTimeTrialRecords \
+        gSaveData.allCourseTimeTrialRecords \
         .cupRecords[(courseIndex / 4)] \
         .courseRecords[(courseIndex % 4)] \
         .records[TIME_TRIAL_1LAP_RECORD]
     );
 }
 
-#ifdef NON_MATCHING
-// nonmatching: the loops
 s32 func_800B5020(u32 time, s32 charId) {
+    s32 stackPadding[3];
     s32 course; // sp30
+    s32 i;
+    s32 j;
     CourseTimeTrialRecords *tt;
-    s32 i, j;
 
     course = gCupSelection * 4 + gCupCourseSelection;
-    tt = &D_8018EB90.allCourseTimeTrialRecords
+    tt = &gSaveData.allCourseTimeTrialRecords
         .cupRecords[course / 4]
         .courseRecords[course % 4];
 
-    for (i = 0; i < 5; i++) {
-        // L800B50C4
+    i = 0;
+    for (; i < 5; i++) {
         if (time < (func_800B4DF4(tt->records[i]) & 0x000FFFFF)) {
             break;
         }
     }
-    // L800B50EC
+
+    // `time` is:
+    //     Not less than any records
+    //     Only less than the 1-lap record
+    //  Either way, we aren't going to update any records
     if (i >= 5) {
         return -1;
     }
-    // L800B50FC
-    if (i < 4) {
-        //s32 idx = -((4 - i) & 3);
 
-        for (j = 4; j > (4 - i); j--) {
-            tt->records[j][0] = tt->records[j - 1][0];
-            tt->records[j][1] = tt->records[j - 1][1];
-            tt->records[j][2] = tt->records[j - 1][2];
-        }
-        // L800B5154
-        for ( ; j != i; j--) {
-            tt->records[j][0] = tt->records[j - 1][0];
-            tt->records[j][1] = tt->records[j - 1][1];
-            tt->records[j][2] = tt->records[j - 1][2];
-        }
+    for (j = TIME_TRIAL_3LAP_RECORD_5; j > i; j--) {
+        tt->records[j][0] = tt->records[j - 1][0];
+        tt->records[j][1] = tt->records[j - 1][1];
+        tt->records[j][2] = tt->records[j - 1][2];
     }
-    // L800B51D0
+
     populate_time_trial_record(tt->records[i], time, charId);
     tt->unknownBytes[0] = 1;
     func_800B45E0(course);
 
     return i;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B5020.s")
-#endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 792017ad9d422c2467bd42686f383a5c41f41c75
-void populate_time_trial_record(u8 *, u32, s32, s32);  /* extern */
+//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Aug-23-2023
 extern ? D_8018CA74;
-s8 gCharacterSelections[4];                         /* unable to generate initializer; const */
 
 s32 func_800B5218(void) {
     s32 sp38;
@@ -369,70 +343,60 @@ s32 func_800B5218(void) {
     s32 sp24;
     u8 *sp20;
     struct_8018CA70_entry *sp18;
-    ? *temp_a1;
-    s32 temp_a0;
-    s32 temp_v0;
+    ? *var_a1;
     s32 temp_v1;
-    u32 temp_a1_2;
-    u8 *temp_v0_2;
-    ? *phi_a1;
-    struct_8018CA70_entry *phi_a2;
-    s32 phi_v0;
-    struct_8018CA70_entry *phi_a2_2;
-    s32 phi_a3;
-    s32 phi_v0_2;
-    s32 phi_a3_2;
+    s32 var_a3;
+    s32 var_v0;
+    s32 var_v0_2;
+    struct_8018CA70_entry *var_a2;
+    u32 temp_a0;
+    u32 temp_a1;
+    u8 *temp_v0;
 
     sp38 = (gCupSelection * 4) + gCupCourseSelection;
+    var_a3 = 1;
+    var_a2 = D_8018CA70;
+    var_a1 = &D_8018CA74;
+    var_v0_2 = 1;
     sp28 = (s32) *gCharacterSelections;
-    phi_a1 = &D_8018CA74;
-    phi_a2 = D_8018CA70;
-    phi_v0 = 1;
-    phi_a3_2 = 1;
     do {
-        temp_v1 = phi_a1->unk20;
-        temp_a0 = phi_a2->lap1Duration;
-        phi_a2_2 = phi_a2;
-        phi_a3 = phi_a3_2;
-        if (temp_v1 < temp_a0) {
-            phi_a2_2 = (phi_v0 * 4) + D_8018CA70;
-            phi_a3 = 1 << phi_v0;
+        temp_v1 = var_a1->unk20;
+        temp_a0 = var_a2->lapDurations[0];
+        if (temp_v1 < (s32) temp_a0) {
+            var_a3 = 1 << var_v0_2;
+            var_a2 = (var_v0_2 * 4) + D_8018CA70;
         } else if (temp_a0 == temp_v1) {
-            phi_a3 = phi_a3_2 | (1 << phi_v0);
+            var_a3 |= 1 << var_v0_2;
         }
-        temp_v0 = phi_v0 + 1;
-        temp_a1 = phi_a1 + 4;
-        phi_a1 = temp_a1;
-        phi_a2 = phi_a2_2;
-        phi_v0 = temp_v0;
-        phi_a3_2 = phi_a3;
-    } while (temp_v0 != 3);
-    sp18 = phi_a2_2;
-    sp24 = phi_a3;
-    temp_a1_2 = phi_a2_2->lap1Duration;
-    phi_v0_2 = 0;
-    if (temp_a1_2 < (u32) (func_800B4F2C(temp_a0, temp_a1, phi_a2_2, phi_a3) & 0xFFFFF)) {
-        temp_v0_2 = &D_8018EB90.allCourseTimeTrialRecords.cupRecords[sp38].courseRecords[sp38].records[0];
-        sp20 = temp_v0_2;
-        sp24 = phi_a3;
-        populate_time_trial_record(temp_v0_2 + 0xF, temp_a1_2, sp28, phi_a3);
-        temp_v0_2->unk12 = 1;
+        var_v0_2 += 1;
+        var_a1 += 4;
+    } while (var_v0_2 != 3);
+    sp18 = var_a2;
+    sp24 = var_a3;
+    temp_a1 = var_a2->lapDurations[0];
+    var_v0 = 0;
+    if (temp_a1 < (u32) (func_800B4F2C((s32) temp_a0, var_a1, var_a2, var_a3) & 0xFFFFF)) {
+        temp_v0 = &gSaveData.allCourseTimeTrialRecords.cupRecords[0].courseRecords[0].records[0][((sp38 / 4) * 0x60) + ((sp38 % 4) * 0x18)];
+        sp20 = temp_v0;
+        sp24 = var_a3;
+        populate_time_trial_record(temp_v0 + 0xF, temp_a1, sp28);
+        temp_v0->unk12 = 1;
         func_800B45E0(sp38);
-        phi_v0_2 = sp24;
+        var_v0 = sp24;
     }
-    return phi_v0_2;
+    return var_v0;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B5218.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B5218.s")
 #endif
 
 void func_800B536C(s32 arg0) {
-    u8* points;
+    u8 *points;
     u8 tmp;
     s32 tmp2;
 
     if (arg0 >= 0) {
-        points = &D_8018EB90.grandPrixPoints[gCCSelection];
+        points = &gSaveData.main.grandPrixPoints[gCCSelection];
         
         tmp = func_800B54EC(gCupSelection, *points);
         tmp2 = 3 - arg0;
@@ -454,7 +418,7 @@ void func_800B5404(s32 arg0, s32 arg1)
 
     if (arg0 >= 0) {
         temp2 = arg1 / 4;
-        points = &D_8018EB90.grandPrixPoints[arg1 % 4];
+        points = &gSaveData.main.grandPrixPoints[arg1 % 4];
         temp = func_800B54EC(temp2, *points);
 
         if ((arg0 < 3) && (temp < (temp_a0 = 3 - arg0))) {
@@ -468,7 +432,7 @@ void func_800B5404(s32 arg0, s32 arg1)
 
 // Get Grand Prix points for a given cup and CC mode
 u8 func_800B54C0(s32 cup, s32 cc_mode) {
-    return func_800B54EC(cup, D_8018ED10.grandPrixPointsArray[cc_mode]);
+    return func_800B54EC(cup, gSaveData.main.grandPrixPoints[cc_mode]);
 }
 
 // Get Grand Prix points scored for a given cup
@@ -497,7 +461,7 @@ u8 func_800B5508(s32 cup, s32 ccGrandPrixPoints, s32 points_scored) {
 // Check if all 4 cups have gold cups scored
 // for a given CC mode
 s32 func_800B5530(s32 cc_mode) {
-    if (D_8018ED10.grandPrixPointsArray[cc_mode] == 0xFF) {
+    if (gSaveData.main.grandPrixPoints[cc_mode] == 0xFF) {
         return 1;
     }
     return 0;
@@ -514,18 +478,16 @@ s32 func_800B557C(void) {
 }
 
 #ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-extern u8 D_800F2E60;
-
+//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Aug-23-2023
 void func_800B559C(s32 course) {
     CourseTimeTrialRecords *temp_a2;
+    OnlyBestTimeTrialRecords *temp_s2;
     OnlyBestTimeTrialRecords *temp_s2_2;
     s32 temp_s6;
     s32 var_s1;
     s32 var_v0;
     s32 var_v0_2;
     u8 *temp_a0;
-    u8 *temp_s2;
     u8 *var_a0;
     u8 temp_t3;
     u8 temp_t9;
@@ -535,12 +497,12 @@ void func_800B559C(s32 course) {
     temp_s6 = course / 8;
     var_s1 = temp_s6 * 8;
     if (var_s1 < (var_s1 + 8)) {
-        temp_s2 = &D_8018EB90.allCourseTimeTrialRecords.cupRecords[0].courseRecords[0].records[0][(temp_s6 * 0x38) + 0x188];
+        temp_s2 = &gSaveData.onlyBestTimeTrialRecords[temp_s6];
         do {
-            var_a0 = &D_800F2E60;
-            temp_a2 = &D_8018EB90.allCourseTimeTrialRecords.cupRecords[var_s1 / 4].courseRecords[var_s1 % 4];
+            var_a0 = D_800F2E60;
+            temp_a2 = &gSaveData.allCourseTimeTrialRecords.cupRecords[var_s1 / 4].courseRecords[var_s1 % 4];
             var_v0 = 0;
-            if (temp_a2->unknownBytes[5] != func_800B4874(var_s1)) {
+            if (temp_a2->checksum != checksum_time_trial_records(var_s1)) {
                 do {
                     temp_v1 = temp_s2 + ((var_s1 % 8) * 3) + var_v0;
                     var_v0 += 1;
@@ -563,66 +525,62 @@ void func_800B559C(s32 course) {
             var_s1 += 1;
         } while (var_s1 < ((temp_s6 * 8) + 8));
     }
-    temp_s2_2 = &D_8018EB90.onlyBestTimeTrialRecords[temp_s6];
+    temp_s2_2 = &gSaveData.onlyBestTimeTrialRecords[temp_s6];
     temp_s2_2->unknownBytes[6] = func_800B578C(temp_s6);
     temp_s2_2->unknownBytes[7] = func_800B5888(temp_s6);
-    osEepromLongWrite(&gSIEventMesgQueue, ((u32) (temp_s2_2 - &D_8018EB90) >> 3) & 0xFF, temp_s2_2->bestThreelaps[0], 0x00000038);
+    osEepromLongWrite(&gSIEventMesgQueue, ((u32) (temp_s2_2 - &gSaveData) >> 3) & 0xFF, temp_s2_2->bestThreelaps[0], 0x00000038);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B559C.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B559C.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern SaveData D_8018EB90;
-
+//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Aug-23-2023
 s32 func_800B578C(s32 arg0) {
-    s32 temp_a0;
+    OnlyBestTimeTrialRecords *var_a2;
+    OnlyBestTimeTrialRecords *var_t0;
     s32 temp_a1;
+    s32 temp_lo;
     s32 temp_v1;
-    u8 *temp_a2;
-    void *temp_a3;
-    s32 phi_a0;
-    s32 phi_v0;
-    s32 phi_v1;
-    void *phi_a3;
-    s32 phi_v1_2;
-    u8 *phi_t0;
-    u8 *phi_a2;
+    s32 var_a0;
+    s32 var_v0;
+    s32 var_v1;
+    u8 *var_a3;
+    u8 temp_t5;
+    u8 temp_t9;
 
-    temp_a2 = (arg0 * 0x38) + 0x188 + &D_8018EB90;
-    phi_v0 = 0;
-    phi_v1_2 = 0;
-    phi_t0 = temp_a2;
-    phi_a2 = temp_a2;
+    var_a2 = &gSaveData.onlyBestTimeTrialRecords[arg0];
+    var_v1 = 0;
+    var_t0 = var_a2;
+    var_v0 = 0;
     do {
-        temp_a1 = phi_v0 + 1;
-        phi_a0 = 1;
-        phi_v0 = temp_a1;
-        phi_v1 = phi_v1_2 + ((*phi_t0 + 1) * temp_a1);
-        phi_a3 = phi_a2 + 1;
-        phi_a2 += 0x11;
+        temp_a1 = var_v0 + 1;
+        var_a3 = &var_a2->bestThreelaps[0][1];
+        temp_lo = (var_t0->bestThreelaps[0][0] + 1) * temp_a1;
+        var_a2 += 0x11;
+        var_v0 = temp_a1;
+        var_a0 = 1;
+        var_v1 += temp_lo;
 loop_2:
-        temp_a3 = phi_a3 + 4;
-        temp_a0 = phi_a0 + 4;
-        temp_v1 = phi_v1 + ((phi_a3->unk0 + 1) * temp_a1) + phi_a0 + ((phi_a3->unk1 + 1) * temp_a1) + phi_a0 + 1 + ((temp_a3->unk-2 + 1) * temp_a1) + phi_a0 + 2 + ((temp_a3->unk-1 + 1) * temp_a1) + phi_a0 + 3;
-        phi_a0 = temp_a0;
-        phi_v1 = temp_v1;
-        phi_a3 = temp_a3;
-        phi_v1_2 = temp_v1;
-        if (temp_a0 != 0x11) {
+        temp_t5 = var_a3->unk0;
+        temp_t9 = var_a3->unk1;
+        var_a3 += 4;
+        temp_v1 = var_v1 + ((temp_t5 + 1) * temp_a1) + var_a0 + ((temp_t9 + 1) * temp_a1) + var_a0 + 1 + ((var_a3->unk-2 + 1) * temp_a1) + var_a0 + 2 + ((var_a3->unk-1 + 1) * temp_a1) + var_a0;
+        var_a0 += 4;
+        var_v1 = temp_v1 + 3;
+        if (var_a0 != 0x11) {
             goto loop_2;
         }
-        phi_t0 += 0x11;
+        var_t0 += 0x11;
     } while (temp_a1 != 3);
-    return (temp_v1 % 0x100) & 0xFF;
+    return (var_v1 % 256) & 0xFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B578C.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B578C.s")
 #endif
 
 s32 func_800B5888(s32 arg0) {
-    s32 tmp = ((*(&D_8018ED4E + (arg0 * sizeof(OnlyBestTimeTrialRecords))) + 90));
+    s32 tmp = gSaveData.onlyBestTimeTrialRecords[arg0].unknownBytes[6] + 90;
     return (tmp % 256) & 0xFF;
 }
 
@@ -633,7 +591,7 @@ s32 func_800B58C4(s32 arg0)
     UNUSED s32 pad2;
     UNUSED s32 pad3;
 
-    temp_v1 = &D_8018EB90.onlyBestTimeTrialRecords[arg0 / 8];
+    temp_v1 = &gSaveData.onlyBestTimeTrialRecords[arg0 / 8];
     if ((temp_v1->unknownBytes[6] != (func_800B578C(arg0 / 8) ^ 0)) || (temp_v1->unknownBytes[7] != (func_800B5888(arg0 / 8) ^ 0)))
     {
         return 1;
@@ -642,59 +600,40 @@ s32 func_800B58C4(s32 arg0)
     return 0;
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-s8 compute_save_data_checksum_backup_1(); // extern
-s8 compute_save_data_checksum_backup_2(); // extern
-extern SaveData D_8018EB90;
-extern union GrandPrixPointsUnion D_8018ED10;
-extern u8 D_8018ED11;
-extern u8 D_8018ED12;
-extern u8 D_8018ED13;
-extern u8 gSaveDataSoundMode;
-extern union GrandPrixPointsUnion D_8018ED88;
-extern u8 D_8018ED89;
-extern u8 D_8018ED8A;
-extern u8 D_8018ED8B;
-extern u8 gSaveDataSoundModeBackup;
-extern s8 D_8018ED8E;
-extern s8 D_8018ED8F;
-extern OSMesgQueue gSIEventMesgQueue;
-
 void update_save_data_backup(void) {
-    D_8018ED88.grandPrixPointsMushroomCup = D_8018ED10.grandPrixPointsMushroomCup;
-    D_8018ED89 = D_8018ED11;
-    D_8018ED8A = D_8018ED12;
-    D_8018ED8B = D_8018ED13;
-    gSaveDataSoundModeBackup = gSaveDataSoundMode;
-    D_8018ED8E = compute_save_data_checksum_backup_1();
-    D_8018ED8F = compute_save_data_checksum_backup_2();
-    osEepromLongWrite(&gSIEventMesgQueue, ((&D_8018ED88 - &D_8018EB90) >> 3) & 0xFF, &D_8018ED88, 8);
+    s32 cup_index;
+    Stuff *main = &gSaveData.main;
+    Stuff *backup = &gSaveData.backup;
+    for (cup_index = 0; cup_index < 4; cup_index++) {
+        backup->grandPrixPoints[cup_index] = main->grandPrixPoints[cup_index];
+    }
+    backup->soundMode = main->soundMode;
+    backup->checksum[1] = compute_save_data_checksum_backup_1();
+    backup->checksum[2] = compute_save_data_checksum_backup_2();
+    osEepromLongWrite(&gSIEventMesgQueue, EEPROM_ADDR(backup), backup, sizeof(Stuff));
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B5948.s")
-#endif
 
 u8 compute_save_data_checksum_backup_1(void) {
-    u8 *raw = (void *)&D_8018ED88;
+    u8 *backupGrandPrixPoints = gSaveData.backup.grandPrixPoints;
     s32 i;
     s32 crc = 0;
 
     for (i = 0; i < 5; i++) {
-        crc += ((raw[i] + 1) * (i + 1)) + i;
+        crc += ((backupGrandPrixPoints[i] + 1) * (i + 1)) + i;
     }
 
     return crc % 0x100;
 }
 
 u8 compute_save_data_checksum_backup_2(void) {
-    s32 tmp = D_8018ED8E + 90;
+    s32 tmp = gSaveData.backup.checksum[1] + 90;
     return (tmp % 256);
 }
 
 s32 validate_save_data_checksum_backup(void)
 {
-    if (D_8018ED8E != compute_save_data_checksum_backup_1() || D_8018ED8F != compute_save_data_checksum_backup_2()) {
+    u8 *backupChecksum = gSaveData.backup.checksum;
+    if (backupChecksum[1] != compute_save_data_checksum_backup_1() || backupChecksum[2] != compute_save_data_checksum_backup_2()) {
         return 1;
     }
 
@@ -878,124 +817,75 @@ s32 func_800B6088(s32 arg0) {
     return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_WRITE, arg0 * 0x80 /* 0x80 == sizeof(struct_8018EE10_entry) */, sizeof(struct_8018EE10_entry), (u8*) temp_v1);
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern s32 D_800DC714;
+#ifdef NON_MATCHING
 
-s32 func_800B60E8(s32 arg0) {
-    s32 temp_a2;
-    s32 temp_v0;
-    s32 temp_v1;
-    s32 phi_v0;
-    s32 phi_v1;
-    void *phi_a1;
+struct struct_D_800DC714
+{
+    u8 filler[0x100];
+};
 
-    temp_a2 = arg0 + 1;
-    phi_v0 = 0;
-    phi_v1 = 0;
-    phi_a1 = D_800DC714 + (arg0 << 8);
-    do {
-        temp_v0 = phi_v0 + 4;
-        temp_v1 = phi_v1 + ((phi_a1->unk0 * temp_a2) + phi_v0) + ((phi_a1->unk1 * temp_a2) + phi_v0) + 1 + ((phi_a1->unk2 * temp_a2) + phi_v0) + 2 + ((phi_a1->unk3 * temp_a2) + phi_v0) + 3;
-        phi_v0 = temp_v0;
-        phi_v1 = temp_v1;
-        phi_a1 += 4;
-    } while (temp_v0 != 0x100);
-    return temp_v1 & 0xFF;
+u8 func_800B60E8(s32 arg0)
+{
+    u8 *addr = *(s32 *)&D_800DC714 + (arg0 << 8);
+    s32 checksum = 0, i;
+
+    for (i = 0; i < sizeof(struct struct_D_800DC714); i++)
+    {   
+        checksum = i + ((arg0 + 1) * *addr++) + checksum;
+    }
+    return checksum; 
 }
+
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B60E8.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B60E8.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-11-2022
 s32 func_800B6178(s32 arg0) {
-    s32 temp_v0;
-    s32 var_s0_2;
     s32 var_v0;
-    s32 var_v1;
-    s8 temp_t0;
-    s8 temp_t1;
-    s8 temp_t3;
-    s8 temp_t4;
-    s8 temp_t5;
-    s8 temp_t9;
-    s8 var_s0;
-    s8 var_s0_3;
+    s32 var_s0;
     struct_8018EE10_entry *temp_s3;
-    struct_8018EE10_entry *var_s1;
-    struct_8018EE10_entry *var_s1_2;
-    struct_8018EE10_entry *var_s1_3;
-    u8 temp_v0_2;
 
-    if ((arg0 != 0) && (arg0 != 1)) {
-        return -1;
+    switch (arg0) {
+        case 0:
+        case 1:
+            break;
+        default:
+            return -1;
     }
     if (gGamestate == 4) {
         func_800051C4();
     }
     temp_s3 = &D_8018EE10[arg0];
     temp_s3->ghostDataSaved = 0;
-    temp_v0 = func_800B6088(arg0);
-    var_v1 = temp_v0;
-    if (temp_v0 != 0) {
+    var_v0 = func_800B6088(arg0);
+    if (var_v0 != 0) {
         temp_s3->ghostDataSaved = 0;
-        var_s0 = 0;
-        var_s1 = temp_s3;
-        do {
-            temp_t9 = var_s0 + 1;
-            temp_t0 = var_s0 + 2;
-            temp_t1 = var_s0 + 3;
-            var_s1->unk_07[0] = var_s0;
-            var_s0 += 4;
-            var_s1->unk_07[3] = temp_t1;
-            var_s1->unk_07[2] = temp_t0;
-            var_s1->unk_07[1] = temp_t9;
-            var_s1 += 4;
-        } while (var_s0 != 0x3C);
+        for (var_s0 = 0; var_s0 < 0x3C; var_s0++) {
+            temp_s3->unk_07[var_s0] = var_s0;
+        }
     } else {
         var_v0 = osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, 1U, (arg0 * 0x3C00) + 0x100, 0x00003C00, (u8 *) D_800DC714);
-        var_v1 = var_v0;
         if (var_v0 == 0) {
             temp_s3->ghostDataSaved = 1;
             if (gGamestate == 4) {
                 temp_s3->courseIndex = (gCupSelection * 4) + gCupCourseSelection;
             }
-            var_s0_2 = 0;
             temp_s3->unk_00 = D_80162DFC;
-            var_s1_2 = temp_s3;
             temp_s3->characterId = (u8) D_80162DE0;
-            do {
-                temp_v0_2 = func_800B60E8(var_s0_2);
-                var_s0_2 += 1;
-                var_s1_2 += 1;
-                var_s1_2->characterId = temp_v0_2;
-            } while (var_s0_2 != 0x0000003C);
+            for (var_s0 = 0; var_s0 < 0x3C; var_s0++) {
+                temp_s3->unk_07[var_s0] = func_800B60E8(var_s0);
+            }
             var_v0 = func_800B6088(arg0);
-            var_v1 = var_v0;
         }
         if (var_v0 != 0) {
             temp_s3->ghostDataSaved = 0;
-            var_s0_3 = 0;
-            var_s1_3 = temp_s3;
-            do {
-                temp_t3 = var_s0_3 + 1;
-                temp_t4 = var_s0_3 + 2;
-                temp_t5 = var_s0_3 + 3;
-                var_s1_3->unk_07[0] = var_s0_3;
-                var_s0_3 += 4;
-                var_s1_3->unk_07[3] = temp_t5;
-                var_s1_3->unk_07[2] = temp_t4;
-                var_s1_3->unk_07[1] = temp_t3;
-                var_s1_3 += 4;
-            } while (var_s0_3 != 0x3C);
+            for (var_s0 = 0; var_s0 < 0x3C; var_s0++) {
+                temp_s3->unk_07[var_s0] = var_s0;
+            }
         }
     }
-    return var_v1;
+    return var_v0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B6178.s")
-#endif
 
 s32 func_800B6348(s32 arg0) {
     if ((D_8018EE10[0].ghostDataSaved != 0) && (arg0 == D_8018EE10[0].courseIndex)) {
@@ -1077,7 +967,7 @@ s32 func_800B64EC(s32 arg0) {
             ++phi_s1;
             if ((++temp_s0) == 0x3C) {
                 func_8000522C();
-                D_80162DD4[0] = 0;
+                D_80162DD4 = 0;
                 D_80162DE0 = (s32) D_8018EE10[arg0].characterId;
                 D_80162DFC = D_8018EE10[arg0].unk_00;
                 break;
@@ -1089,46 +979,39 @@ s32 func_800B64EC(s32 arg0) {
     return temp_v0;
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-11-2022
+#ifdef NON_MATCHING
+// Matching decomp courstesy of Vetri, leaving it as this becasue I'm lazy
+// https://decomp.me/scratch/qrC3l
 s32 func_800B65F4(s32 arg0, s32 arg1) {
-    s32 sp34;
-    s32 temp_v0;
+    s32 stackPadding;
     s32 var_s0;
+    s32 temp_v0;
     struct_8018EE10_entry *temp_s3;
-    struct_8018EE10_entry *var_s1;
-    u8 temp_v0_2;
 
-    if ((arg0 != 0) && (arg0 != 1)) {
-        return -1;
+    switch (arg0) {
+        case 0:
+        case 1:
+            break;
+        default:
+            return -1;
     }
     temp_v0 = osPfsReadWriteFile(&gControllerPak2FileHandle, gControllerPak2FileNote, 0U, (arg0 * 0x3C00) + 0x100, 0x00003C00, (u8 *) D_800DC714);
-    sp34 = temp_v0;
     if (temp_v0 == 0) {
         temp_s3 = &D_8018D9C0[arg0];
-        var_s1 = temp_s3;
-        var_s0 = 0;
-loop_5:
-        temp_v0_2 = func_800B60E8(var_s0);
-        var_s0 += 1;
-        if ((u8) var_s1->unk_07[0] != temp_v0_2) {
-            temp_s3->ghostDataSaved = 0;
-            return -2;
+        for (var_s0 = 0; var_s0 < 0x3C; var_s0++) {
+            if (temp_s3->unk_07[var_s0] != func_800B60E8(var_s0)) {
+                temp_s3->ghostDataSaved = 0;
+                return -2;
+            }
         }
-        var_s1 += 1;
-        if (var_s0 == 0x0000003C) {
-            D_80162DE0 = (s32) temp_s3->characterId;
-            D_80162DFC = temp_s3->unk_00;
-            *(&D_8018EE10->courseIndex + (arg1 << 7)) = temp_s3->courseIndex;
-            goto block_9;
-        }
-        goto loop_5;
+        D_80162DE0 = temp_s3->characterId;
+        D_80162DFC = temp_s3->unk_00;
+        D_8018EE10[arg1].courseIndex = temp_s3->courseIndex;
     }
-block_9:
-    return sp34;
+    return temp_v0;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B65F4.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B65F4.s")
 #endif
 
 void func_800B6708(void) {
@@ -1162,7 +1045,7 @@ void func_800B6798(void) {
 }
 
 #ifdef MIPS_TO_C
-//generated by m2c commit 3b40ab93768f52ac241c5ae84ef58ef6bc4cb1de
+//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-08-2023
 u8 func_800B6828(s32 arg0) {
     s32 temp_a2;
     s32 temp_lo;
@@ -1193,37 +1076,33 @@ u8 func_800B6828(s32 arg0) {
     return var_v1 & 0xFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B6828.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B6828.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern s32 D_8018D9C0;
-
-s32 func_800B68F4(s32 arg0) {
+//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-08-2023
+u8 func_800B68F4(s32 arg0) {
     s32 temp_a1;
-    s32 temp_a2;
     s32 temp_a3;
+    s32 var_a1;
+    s32 var_a2;
+    struct_8018EE10_entry *temp_v1;
     void *temp_v0;
-    void *temp_v1;
-    s32 phi_a2;
-    s32 phi_a1;
 
     temp_a3 = arg0 + 1;
-    temp_v1 = (arg0 << 7) + D_8018D9C0;
-    phi_a2 = 3;
-    phi_a1 = (temp_v1->unk0 * temp_a3) + (temp_v1->unk1 * temp_a3) + 1 + (temp_v1->unk2 * temp_a3) + 2;
+    temp_v1 = &D_8018D9C0[arg0];
+    var_a2 = 3;
+    var_a1 = (temp_v1->unk0 * temp_a3) + (temp_v1->unk1 * temp_a3) + 1 + (temp_v1->unk2 * temp_a3) + 2;
     do {
-        temp_v0 = temp_v1 + phi_a2;
-        temp_a2 = phi_a2 + 4;
-        temp_a1 = phi_a1 + ((temp_v0->unk0 * temp_a3) + phi_a2) + ((temp_v0->unk1 * temp_a3) + phi_a2) + 1 + ((temp_v0->unk2 * temp_a3) + phi_a2) + 2 + ((temp_v0->unk3 * temp_a3) + phi_a2) + 3;
-        phi_a2 = temp_a2;
-        phi_a1 = temp_a1;
-    } while (temp_a2 != 0x43);
-    return temp_a1 & 0xFF;
+        temp_v0 = temp_v1 + var_a2;
+        temp_a1 = var_a1 + ((temp_v0->unk0 * temp_a3) + var_a2) + ((temp_v0->unk1 * temp_a3) + var_a2) + 1 + ((temp_v0->unk2 * temp_a3) + var_a2) + 2 + ((temp_v0->unk3 * temp_a3) + var_a2);
+        var_a2 += 4;
+        var_a1 = temp_a1 + 3;
+    } while (var_a2 != 0x43);
+    return var_a1 & 0xFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B68F4.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B68F4.s")
 #endif
 
 #ifdef NON_MATCHING
@@ -1247,7 +1126,7 @@ s32 func_800B69BC(s32 arg0) {
     return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_WRITE, offset, sizeof(struct_8018EE10_entry), (u8 *)plz);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menus/func_800B69BC.s")
+GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B69BC.s")
 #endif
 
 s32 func_800B6A68(void) {

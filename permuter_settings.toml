@@ -1,6 +1,8 @@
 # Optional configuration file for import.py. Put it in the root or in tools/
 # of the repo you are importing from.
 
+compiler_type = "ido"
+
 [decompme.compilers]
 "tools/ido5.3_recomp/cc" = "ido5.3"
 
@@ -19,3 +21,7 @@
 "a[A-Za-z]+" = "void"
 "_SHIFT[LR]" = "void"
 "ALIGN.*" = "int"
+"aClearBuffer" = "void"
+"aEnvSetup1" = "void"
+"aEnvSetup2" = "void"
+"aEnvMixer" = "void"

@@ -12,6 +12,12 @@ typedef s16 Vec4s[4];
 typedef f32 Mat3[3][3];
 typedef f32 Mat4[4][4];
 
+// might not be real, used by func_8002C954
+typedef struct
+{
+	f32 x, y, z;
+} Vec3fs;
+
 #define COURSE_NULL 0xFF
 
 typedef enum {
@@ -114,7 +120,7 @@ typedef struct {
     /* 0x24 */ Vec3f unk54;
     /* 0x30 */ Vec3f unk60;
     /* 0x3C */ f32 unk6C;
-} UnkActorInner;
+} Collision;
 
 typedef struct {
     /* 0x00 */ Vec3f unk_000;
@@ -175,9 +181,15 @@ typedef struct {
         //bit 4: 1 = out of bounds
         //bit 3: 1 = player tumbles upon contact (may fall right through)
     /* 0x02 */ u16 surfaceType;
-    /* 0x04 */ s16 vtx3[3]; //X, Y, Z of poly's third vertex
-    /* 0x0A */ s16 vtx2[3]; //X, Y, Z of poly's second vertex
-    /* 0x10 */ Vtx *vtxs[3]; //pointer to the 3 vertices of this poly
+    /* 0x04 */ s16 vtx31;
+               s16 vtx32;
+               s16 vtx33; //X, Y, Z of poly's third vertex
+               s16 vtx21;
+               s16 vtx22;
+    /* 0x0A */ s16 vtx23; //X, Y, Z of poly's second vertex
+    /* 0x10 */ Vtx *vtxPoly1; //pointer to the 3 vertices of this poly
+               Vtx *vtxPoly2;
+               Vtx *vtxPoly3;
         //unsure why this exists along with a copy of two of the vertices.
         //both are involved in hit detection.
     /* 0x1C */ f32 height;
@@ -202,7 +214,7 @@ typedef struct {
     // Close to being a copy of the top byte of the surface_map "flag" member
     /* 0x0D */ u8  surfaceFlags;
     // Don't know if "tile" is right the right term
-    // D_8015F580 is a pointer to an array of "tile" structs. This is an index to that array
+    // gSurfaceMap is a pointer to an array of "tile" structs. This is an index to that array
     /* 0x0E */ u16 surfaceMapIndex;
     // cornerPos places the corner "in the air" as it were, this member indicates the Y position of the corner's "on the ground" sibling
     // On flat ground this value should be cornerY - gKartBoundingBoxTable[characterId]
@@ -217,15 +229,30 @@ typedef struct {
 #define BACK_LEFT_TYRE   2
 #define BACK_RIGHT_TYRE  3
 
+struct UnkPlayerInner {
+    /* 0xDB4 */ s16 unk0;
+    /* 0xDB6 */ s16 unk2;
+    /* 0xDB8 */ f32 unk4;
+    /* 0xDBC */ f32 unk8;
+    /* 0xDC0 */ f32 unkC;
+    /* 0xDC4 */ f32 unk10;
+    /* 0xDC8 */ f32 unk14;
+    /* 0xDCC */ s16 unk18;
+    /* 0xDCE */ s16 unk1A;
+    /* 0xDD0 */ s16 unk1C;
+    /* 0xDD2 */ s16 unk1E;
+    /* 0xDD4 */ s16 unk20;
+};
+
 typedef struct {
-    /* 0x0000 */ u16 unk_000; // playerType?
+    /* 0x0000 */ u16 type; // playerType?
     /* 0x0002 */ u16 unk_002;
     /* 0x0004 */ s16 currentRank;
     /* 0x0006 */ u16 unk_006;
     /* 0x0008 */ s16 lapCount;
     /* 0x000A */ char unk_00A[0x2];
     /* 0x000C */ s32 statusEffects; // Bitflag.
-    /* 0x0010 */ s16 unk_010;
+    /* 0x0010 */ s16 currentItemCopy; // Has no effect on what item the players has, It is just a synced copy
     /* 0x0012 */ s16 unk_012;
     /* 0x0014 */ Vec3f pos;
     /* 0x0020 */ f32 rotX;
@@ -233,7 +260,7 @@ typedef struct {
     /* 0x0028 */ f32 rotZ;
     /* 0x002C */ Vec3s unk_02C;
     /* 0x0032 */ char unk_032[0x2];
-    /* 0x0034 */ Vec3f unk_034;
+    /* 0x0034 */ Vec3f velocity;
     /* 0x0040 */ s16 unk_040;
     /* 0x0042 */ s16 unk_042;
     /* 0x0044 */ s16 unk_044;
@@ -243,9 +270,7 @@ typedef struct {
     /* 0x0058 */ f32 unk_058;
     /* 0x005C */ f32 unk_05C;
     /* 0x0060 */ f32 unk_060;
-    /* 0x0064 */ f32 unk_064;
-    /* 0x0068 */ f32 unk_068;
-    /* 0x006C */ f32 unk_06C;
+    /* 0x0064 */ Vec3f unk_064;
     /* 0x0070 */ f32 boundingBoxSize;
     /* 0x0074 */ f32 unk_074;
     /* 0x0078 */ s16 unk_078;
@@ -258,7 +283,7 @@ typedef struct {
     /* 0x0090 */ f32 unk_090;
     /* 0x0094 */ f32 unk_094;
     /* 0x0098 */ f32 unk_098;
-    /* 0x009C */ f32 unk_09C;
+    /* 0x009C */ f32 currentSpeed;
     /* 0x00A0 */ f32 unk_0A0;
     /* 0x00A4 */ f32 unk_0A4;
     /* 0x00A8 */ s16 unk_0A8;
@@ -270,10 +295,10 @@ typedef struct {
     /* 0x00B4 */ u16 unk_0B4;
     /* 0x00B6 */ u16 unk_0B6;
     /* 0x00B8 */ f32 unk_0B8;
-    /* 0x00BC */ s32 unk_0BC;
+    /* 0x00BC */ u32 effects;
     /* 0x00C0 */ s16 unk_0C0;
     /* 0x00C2 */ s16 unk_0C2;
-    /* 0x00C4 */ s16 unk_0C4;
+    /* 0x00C4 */ s16 slopeAccel;
     /* 0x00C6 */ s16 unk_0C6;
     /* 0x00C8 */ s16 unk_0C8;
     /* 0x00CA */ s16 unk_0CA;
@@ -296,24 +321,24 @@ typedef struct {
     /* 0x0108 */ f32 unk_108;
     /* 0x010C */ s16 unk_10C;
     /* 0x010E */ char unk_10E[0x2];
-    /* 0x0110 */ UnkActorInner unk_110;
+    /* 0x0110 */ Collision unk_110;
     /* 0x0150 */ Mat3 unk_150;
-    /* 0x0174 */ Mat3 unk_174;
+    /* 0x0174 */ Mat3 orientationMatrix;
     /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];
     /* 0x01F8 */ f32 unk_1F8;
     /* 0x01FC */ f32 unk_1FC;
-    /* 0x0200 */ s32 unk_200;
+    /* 0x0200 */ u32 unk_200; // May be s32. but less casting required if u32
     /* 0x0204 */ s16 unk_204;
     /* 0x0206 */ s16 unk_206;
     /* 0x0208 */ f32 unk_208;
     /* 0x020C */ f32 unk_20C;
     /* 0x0210 */ f32 unk_210;
-    /* 0x0214 */ f32 unk_214;
+    /* 0x0214 */ f32 topSpeed;
     /* 0x0218 */ f32 unk_218;
     /* 0x021C */ f32 unk_21C;
     /* 0x0220 */ s16 nearestWaypointId; // ??
     /* 0x0222 */ s16 unk_222;
-    /* 0x0224 */ f32 unk_224;
+    /* 0x0224 */ f32 size;
     /* 0x0228 */ s16 unk_228;
     /* 0x022A */ s16 unk_22A;
     /* 0x022C */ f32 unk_22C;
@@ -324,10 +349,10 @@ typedef struct {
     /* 0x023A */ s16 unk_23A;
     /* 0x023C */ f32 unk_23C;
     /* 0x0240 */ s32 unk_240;
-    /* 0x0244 */ u16 unk_244[4]; // [0] Active texture group
-    /* 0x024C */ u16 unk_24C[4];
+    /* 0x0244 */ u16 animFrameSelector[4]; // [0] Active texture group
+    /* 0x024C */ u16 animGroupSelector[4];
     /* 0x0254 */ u16 characterId;
-    /* 0x0256 */ s16 unk_256;
+    /* 0x0256 */ u16 unk_256;
     /* 0x0258 */ UnkPlayerStruct258 unk_258[40];
     /* 0x0D98 */ s16 unk_D98;
     /* 0x0D9A */ s16 unk_D9A;
@@ -338,78 +363,19 @@ typedef struct {
     /* 0x0DA8 */ f32 unk_DA8;
     /* 0x0DAC */ f32 unk_DAC;
     /* 0x0DB0 */ f32 unk_DB0;
-    /* 0x0DB4 */ s16 unk_DB4;
-    /* 0x0DB6 */ s16 unk_DB6;
-    /* 0x0DB8 */ f32 unk_DB8;
-    /* 0x0DBC */ f32 unk_DBC;
-    /* 0x0DC0 */ f32 unk_DC0;
-    /* 0x0DC4 */ f32 unk_DC4;
-    /* 0x0DC8 */ f32 unk_DC8;
-    /* 0x0DCC */ s16 unk_DCC;
-    /* 0x0DCE */ s16 unk_DCE;
-    /* 0x0DD0 */ s16 unk_DD0;
-    /* 0x0DD2 */ s16 unk_DD2;
-    /* 0x0DD4 */ s16 unk_DD4;
+    /* 0x0DB4 */ struct UnkPlayerInner unk_DB4;
+    /* 0x0DB6 */ // s16 unk_DB6;
+    /* 0x0DB8 */ // f32 unk_DB8;
+    /* 0x0DBC */ //f32 unk_DBC;
+    /* 0x0DC0 */ // f32 unk_DC0;
+    /* 0x0DC4 */ // f32 unk_DC4;
+    /* 0x0DC8 */ // f32 unk_DC8;
+    /* 0x0DCC */ // s16 unk_DCC;
+    /* 0x0DCE */ // s16 unk_DCE;
+    /* 0x0DD0 */ // s16 unk_DD0;
+    /* 0x0DD2 */ // s16 unk_DD2;
+    /* 0x0DD4 */ // s16 unk_DD4;
 } Player; // size = 0xDD8
-
-typedef struct {
-    // 6 little endian 3-byte records.
-    // When converted to big endian the bottom 5 nibbles can be interpreted as the centisecond count for that record.
-    // The top nibble is the character ID of the charcter used to set that record
-    // The first 5 records are the top 5 3-lap records
-    // The 6th record is the best 1-lap record
-    u8 records[6][3];
-    // It's unknown what these bytes are used for
-    // Byte 1 might be an indicator that there is a ghost available for that course
-    u8 unknownBytes[6];
-} CourseTimeTrialRecords; // size = 0x18
-
-typedef struct {
-    // Each cup is made up of 4 courses
-    CourseTimeTrialRecords courseRecords[4];
-} CupTimeTrialRecords; // size = 0x60
-
-typedef struct {
-    // There are 4 cups total
-    CupTimeTrialRecords cupRecords[4];
-} AllCourseTimeTrialRecords; // size = 0x180
-
-typedef struct {
-    // Records 0 through 3 are for the first cup's courses
-    // Records 4 through 7 are for the second cup's courses
-    u8 bestThreelaps[8][3];
-    u8 bestSinglelaps[8][3];
-    // It's unknown what these bytes are used for
-    u8 unknownBytes[8];
-} OnlyBestTimeTrialRecords; // size = 0x38
-
-typedef struct {
-    AllCourseTimeTrialRecords allCourseTimeTrialRecords;
-    // GP Points scored for each CC mode
-    // 1st place is 3 points, 2nd is 2, etc.
-    // Lowest dibit is the Mushroom Cup, 2nd dibit is the Flower Cup, etc
-    u8 grandPrixPoints[4];
-    u8 soundMode;
-    // It's unknown what the first byte is used for
-    u8 checksum[3];
-    // For some reason there's 2 entries covering 4 cups
-    // Instead of 4 entries, one per cup. Or even just one big entry for all 4 cups
-    // Its also unknown why these are here when they're identical to the values found
-    // in allCourseTimeTrialRecords
-    OnlyBestTimeTrialRecords onlyBestTimeTrialRecords[2];
-    // If checksum[1] or checksum[2] does not match their expected value,
-    // the grandPrixPoints and soundMode are reset. Then if the backup data's
-    // checksums are valid, copy the backup data to the main data.
-    u8 grandPrixPointsBackup[4];
-    u8 soundModeBackup;
-    u8 checksumBackup[3];
-} SaveData; // size = 0x200
-
-typedef struct {
-    /* 0x00 */ char unk_00[0x1D];
-    /* 0x1D */ s8 unk_1D;
-    /* 0x1E */ s8 unk_1E;
-} struct_D_802874D8;
 
 typedef struct {
     s16 unk_00;
@@ -424,9 +390,7 @@ typedef struct {
 
 typedef struct {
     char unk_00[0x4];
-    f32 unk_04;
-    char unk_08[0x4];
-    f32 unk_0C;
+    Vec3f unk_04;
     char unk_10[0x4];
     s32 objectIndex;
     char unk_18[0x8];
@@ -439,7 +403,7 @@ typedef struct
     /* 0x04 */ u8  ghostDataSaved;
     /* 0x05 */ s8  courseIndex;
     /* 0x06 */ u8  characterId;
-    /* 0x07 */ s8  unk_07[0x3C];
+    /* 0x07 */ u8  unk_07[0x3C];
     /* 0x43 */ u8  pad_43[0x7F-0x43];
     /* 0x7F */ u8  checksum;
 } struct_8018EE10_entry; // size = 0x80
@@ -461,13 +425,23 @@ typedef struct {
     /* 0x0C */ u32 someTimer1;
     /* 0x10 */ u32 timeLastTouchedFinishLine; // Sum of time of all completed laps
     // Times at which each lap was completed
-    /* 0x14 */ u32 lap1CompletionTime;
-    /* 0x18 */ u32 lap2CompletionTime;
-    /* 0x1C */ u32 lap3CompletionTime;
+    union {
+        struct {
+            /* 0x14 */ u32 lap1CompletionTime;
+            /* 0x18 */ u32 lap2CompletionTime;
+            /* 0x1C */ u32 lap3CompletionTime;
+        };
+        u32 lapCompletionTimes[3];
+    };
     // Time each lap took to complete
-    /* 0x20 */ u32 lap1Duration;
-    /* 0x24 */ u32 lap2Duration;
-    /* 0x28 */ u32 lap3Duration;
+    union {
+        struct {
+            /* 0x20 */ u32 lap1Duration;
+            /* 0x24 */ u32 lap2Duration;
+            /* 0x28 */ u32 lap3Duration;
+        };
+        u32 lapDurations[3];
+    };
     // Integer parts of the player's X/Y/X coordinates
     /* 0x2C */ s32 posXInt;
     /* 0x30 */ s32 posYInt;
@@ -522,16 +496,16 @@ typedef struct {
     /* 0x77 */ s8 unk_77;
     // 0x78 to 0x7F appear to be some type of "state" trackers for the lap and timer text during a race start
     // When a race starts those texts (and their afterimages) slide in and "bounce" a bit. These states control the bouncing (somehow)
-    /* 0x78 */ s8 unk_78;
-    /* 0x79 */ s8 unk_79;
-    /* 0x7A */ s8 unk_7A;
-    /* 0x7B */ s8 unk_7B;
-    /* 0x7C */ s8 unk_7C;
-    /* 0x7D */ s8 unk_7D;
-    /* 0x7E */ s8 unk_7E;
-    /* 0x7F */ s8 unk_7F;
-    /* 0x80 */ s8 unk_80;
-    /* 0x81 */ s8 unk_81;
+    /* 0x78 */ u8 unk_78;
+    /* 0x79 */ u8 unk_79;
+    /* 0x7A */ u8 unk_7A;
+    /* 0x7B */ u8 unk_7B;
+    /* 0x7C */ u8 unk_7C;
+    /* 0x7D */ u8 unk_7D;
+    /* 0x7E */ u8 unk_7E;
+    /* 0x7F */ u8 unk_7F;
+    /* 0x80 */ u8 unk_80;
+    /* 0x81 */ u8 unk_81;
     /* 0x82 */ s8 unk_82;
     /* 0x83 */ s8 unk_83;
 } struct_8018CA70_entry; // size = 0x84

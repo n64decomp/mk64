@@ -3,7 +3,7 @@
 
 OUTPUT_ARCH (mips)
 
-#include "include/segments.h"
+#include "include/hardcoded_segments.h"
 
 #define BEGIN_SEG(name, addr) \
     _##name##SegmentStart = ADDR(.name); \
@@ -15,53 +15,13 @@ OUTPUT_ARCH (mips)
     _##name##SegmentRomEnd = __romPos + SIZEOF(.name); \
     __romPos += SIZEOF(.name);
 
-#define MIO0_SEG(name) \
-   BEGIN_SEG(name##_mio0, 0x0) \
-   { \
-      BUILD_DIR/bin/name.mio0.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name##_mio0)
-
-#define COURSE_DATA_SEG(dir, name) \
-   BEGIN_SEG(name##_mio0, 0x06000000) \
-   { \
-      BUILD_DIR/courses/dir/course_data.inc.mio0.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name##_mio0)
-
-#define COURSE_OFFSETS_SEG(name, addr) \
-   BEGIN_SEG(name, addr) \
-   { \
-      BUILD_DIR/src/name.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name)
-
-#define COURSE_VERT_SEG(dir, name) \
-   BEGIN_SEG(name, 0x0F000000) \
-   { \
-      BUILD_DIR/courses/dir/model.inc.mio0.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name)
-
-#define COURSE_PACKED_SEG(dir, name) \
-   BEGIN_SEG(name, 0x07000000) \
-   { \
-      BUILD_DIR/courses/dir/packed.inc.mio0.o(.data); \
-      . = ALIGN(0x10); \
-   } \
-   END_SEG(name)
-	
 #define BEGIN_NOLOAD(name) \
     _##name##SegNoloadStart = ADDR(.name.noload); \
     .name.noload (NOLOAD) :
 	
 #define END_NOLOAD(name) \
     _##name##SegNoloadEnd = ADDR(.name.noload) + SIZEOF(.name.noload);
-	
+
 SECTIONS
 {
    __romPos = 0;
@@ -77,18 +37,18 @@ SECTIONS
    BEGIN_SEG(main, SEG_MAIN) SUBALIGN(16)
    {
       BUILD_DIR/asm/entry.o(.text);
-      BUILD_DIR/src/main.o(.text);
+      BUILD_DIR/src/main.o(.text*);
       BUILD_DIR/src/code_800029B0.o(.text);
       BUILD_DIR/src/profiler.o(.text);
       BUILD_DIR/src/crash_screen.o(.text);
       BUILD_DIR/src/code_80004740.o(.text);
       BUILD_DIR/src/staff_ghosts.o(.text);
       BUILD_DIR/asm/unused_overflow_check.o(.text);
-      BUILD_DIR/src/code_80005FD0.o(.text);
+      BUILD_DIR/src/code_80005FD0.jp.o(.text);
       BUILD_DIR/src/camera.o(.text);
       BUILD_DIR/src/code_8001F980.o(.text);
       BUILD_DIR/src/kart_dma.o(.text);
-      BUILD_DIR/src/code_80027D00.o(.text);
+      BUILD_DIR/src/player_controller.o(.text);
       BUILD_DIR/src/spawn_players.o(.text);
       BUILD_DIR/src/code_8003DC40.o(.text);
       BUILD_DIR/asm/unused_mio0_decode.o(.text);
@@ -103,7 +63,7 @@ SECTIONS
       BUILD_DIR/src/code_80086E70.o(.text);
       BUILD_DIR/src/code_8008C1D0.o(.text);
       BUILD_DIR/src/code_80091440.o(.text);
-      BUILD_DIR/src/code_80091750.o(.text);
+      BUILD_DIR/src/code_80091750.jp.o(.text);
       BUILD_DIR/src/code_800AF9B0.o(.text);
       BUILD_DIR/src/menus.o(.text);
       BUILD_DIR/src/code_800B45E0.o(.text);
@@ -115,7 +75,13 @@ SECTIONS
       BUILD_DIR/src/audio/seqplayer.o(.text);
       BUILD_DIR/src/audio/external.o(.text);
       BUILD_DIR/src/audio/port_eu.o(.text);
-
+      #if DEBUG
+         BUILD_DIR/src/os/osCartRomInit.o(.text);
+         BUILD_DIR/src/debug/crash_screen_enhancement.o(.text);
+         BUILD_DIR/src/debug/debug.o(.text);
+         BUILD_DIR/src/os/sprintf.o(.text);
+      BUILD_DIR/src/os/is_debug.o(.text);
+      #endif
       BUILD_DIR/src/os/osCreateThread.o(.text);
       BUILD_DIR/src/os/osInitialize.o(.text);
       BUILD_DIR/src/os/osStartThread.o(.text);
@@ -184,7 +150,7 @@ SECTIONS
       BUILD_DIR/asm/os/osMapTLBRdb.o(.text);
       BUILD_DIR/src/os/osPiRawReadIo.o(.text);
       BUILD_DIR/src/os/__osSetHWIntrRoutine.o(.text);
-      BUILD_DIR/asm/os/non_matchings/__osLeoInterrupt.o(.text);
+      BUILD_DIR/src/os/__osLeoInterrupt.o(.text);
       BUILD_DIR/src/os/osTimer.o(.text);
       BUILD_DIR/src/os/osGetThreadPri.o(.text);
       BUILD_DIR/src/os/__osViInit.o(.text);
@@ -234,7 +200,7 @@ SECTIONS
       BUILD_DIR/src/os/_Ldtob.o(.text);
       BUILD_DIR/src/os/ldiv.o(.text);
       BUILD_DIR/data/rsp.o(.text);
-      BUILD_DIR/src/main.o(.data);
+      BUILD_DIR/src/main.o(.data*);
       BUILD_DIR/data/data_0DD0A0.o(.data);
       BUILD_DIR/src/code_800029B0.o(.data);
       BUILD_DIR/src/profiler.o(.data);
@@ -244,23 +210,33 @@ SECTIONS
       BUILD_DIR/src/camera.o(.data);
       BUILD_DIR/src/code_8001F980.o(.data);
       BUILD_DIR/src/kart_dma.o(.data);
-      BUILD_DIR/src/kart_attributes.inc.o(.data);
-      BUILD_DIR/src/code_80027D00.o(.data);
+      BUILD_DIR/src/data/kart_attributes.inc.o(.data);
+      BUILD_DIR/src/player_controller.o(.data);
       BUILD_DIR/src/spawn_players.o(.data);
-      BUILD_DIR/data/data_0DD0A0_2_0.o(.data);
+      BUILD_DIR/src/code_80071F00.o(.data);
+      BUILD_DIR/src/data/data_800E45C0.o(.data);
+      BUILD_DIR/src/code_80057C60.o(.data);
+      BUILD_DIR/data/data_code_80071F00_2.o(.data);
       BUILD_DIR/src/code_8008C1D0.o(.data);
       BUILD_DIR/src/code_80091440.o(.data);
-      BUILD_DIR/data/data_0DD0A0_2_1.o(.data);
+      BUILD_DIR/src/code_80091750.jp.o(.data);
       BUILD_DIR/src/code_800AF9B0.o(.data);
       BUILD_DIR/src/menus.o(.data);
       BUILD_DIR/src/code_800B45E0.o(.data);
-      BUILD_DIR/data/data_800E8700.o(.data);
+      BUILD_DIR/src/data/data_800E8700.o(.data);
       BUILD_DIR/src/audio/synthesis.o(.data);
       BUILD_DIR/src/audio/heap.o(.data);
       BUILD_DIR/src/audio/load.o(.data);
       BUILD_DIR/src/audio/playback.o(.data);
       BUILD_DIR/src/audio/effects.o(.data);
-      BUILD_DIR/data/data_0DD0A0_2_1_1.o(.rodata);
+      #if DEBUG
+         BUILD_DIR/src/debug/crash_screen_enhancement.o(.data);
+         BUILD_DIR/src/debug/debug.o(.data);
+         BUILD_DIR/src/os/sprintf.o(.data);
+      #endif
+      BUILD_DIR/data/data_0DD0A0_2_1_1.o(.data);
+      BUILD_DIR/src/audio/port_eu.o(.data);
+      BUILD_DIR/src/audio/audio_session_presets.o(.data);
       BUILD_DIR/src/os/osInitialize.o(.data*);
       BUILD_DIR/src/os/osCreateViManager.o(.data);
       BUILD_DIR/src/os/osViTable.o(.data);
@@ -276,12 +252,12 @@ SECTIONS
       BUILD_DIR/src/os/_Printf.o(.data);
       BUILD_DIR/src/os/osViData.o(.data);
       BUILD_DIR/src/os/_Litob.o(.data);
-      BUILD_DIR/src/main.o(.rodata);
+      BUILD_DIR/src/main.o(.rodata*);
       BUILD_DIR/src/code_800029B0.o(.rodata);
-      BUILD_DIR/src/code_80005FD0.o(.rodata);
+      BUILD_DIR/src/code_80005FD0.jp.o(.rodata);
       BUILD_DIR/src/camera.o(.rodata);
       BUILD_DIR/src/code_8001F980.o(.rodata);
-      BUILD_DIR/src/code_80027D00.o(.rodata);
+      BUILD_DIR/src/player_controller.o(.rodata);
       BUILD_DIR/src/spawn_players.o(.rodata);
       BUILD_DIR/src/code_8003DC40.o(.rodata);
       BUILD_DIR/src/hud_renderer.o(.rodata);
@@ -290,7 +266,7 @@ SECTIONS
       BUILD_DIR/src/code_80071F00.o(.rodata);
       BUILD_DIR/src/code_80086E70.o(.rodata);
       BUILD_DIR/src/code_8008C1D0.o(.rodata);
-      BUILD_DIR/data/rodata_code_80091750.o(.rodata);
+      BUILD_DIR/src/code_80091750.jp.o(.rodata);
       BUILD_DIR/src/code_800AF9B0.o(.rodata);
       BUILD_DIR/src/menus.o(.rodata);
       BUILD_DIR/src/code_800B45E0.o(.rodata);
@@ -301,6 +277,11 @@ SECTIONS
       BUILD_DIR/src/audio/seqplayer.o(.rodata);
       BUILD_DIR/src/audio/external.o(.rodata);
       BUILD_DIR/src/audio/port_eu.o(.rodata);
+      #if DEBUG
+         BUILD_DIR/src/debug/crash_screen_enhancement.o(.rodata);
+         BUILD_DIR/src/debug/debug.o(.rodata);
+         BUILD_DIR/src/os/sprintf.o(.rodata);
+      #endif
       BUILD_DIR/src/os/guRotateF.o(.rodata);
       BUILD_DIR/src/os/guPerspectiveF.o(.rodata);
       BUILD_DIR/asm/os/__osException.o(.rodata);
@@ -316,23 +297,31 @@ SECTIONS
    END_SEG(main)
 
    BEGIN_NOLOAD(main) {
-      BUILD_DIR/src/main.o(.bss);
+      BUILD_DIR/src/main.o(.bss*);
       BUILD_DIR/src/code_800029B0.o(.bss);
-      BUILD_DIR/asm/bss_800029B0.o(.bss);
-
       BUILD_DIR/src/profiler.o(.bss);
       BUILD_DIR/src/crash_screen.o(.bss);
       BUILD_DIR/src/code_80004740.o(.bss);
       BUILD_DIR/src/staff_ghosts.o(.bss);
+      BUILD_DIR/src/code_80005FD0.jp.o(.bss);
       BUILD_DIR/asm/bss_80005FD0.o(.bss);
       BUILD_DIR/asm/bss_MainSeg.o(.bss);
       BUILD_DIR/src/camera.o(.bss);
       BUILD_DIR/asm/bss_8001C4D0.o(.bss);
-      BUILD_DIR/src/code_80091750.o(.bss);
-      BUILD_DIR/asm/bss_8001C4D0_1.o(.bss);
+      BUILD_DIR/src/code_80091750.jp.o(.bss);
       BUILD_DIR/src/code_800AF9B0.o(.bss);
       BUILD_DIR/src/menus.o(.bss);
+      #if DEBUG
+         BUILD_DIR/src/os/osCartRomInit.o(.bss);
+         BUILD_DIR/src/debug/crash_screen_enhancement.o(.bss);
+         BUILD_DIR/src/debug/debug.o(.bss);
+         BUILD_DIR/src/os/is_debug.o(.bss);
+         BUILD_DIR/src/os/sprintf.o(.bss);
+      #endif
+      BUILD_DIR/src/audio/external.o(.bss);
       BUILD_DIR/asm/bss_main_audio.o(.bss);
+      BUILD_DIR/src/audio/port_eu.o(.bss);
+      BUILD_DIR/src/os/osInitialize.o(.bss);
       BUILD_DIR/src/os/osCreateViManager.o(.bss);
       BUILD_DIR/src/os/osCreatePiManager.o(.bss);
       BUILD_DIR/src/os/osSetEventMesg.o(.bss);
@@ -346,90 +335,94 @@ SECTIONS
       BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.bss);
       BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.bss);
       BUILD_DIR/src/os/osEepromWrite.o(.bss);
-      BUILD_DIR/asm/bss_after_ostimer.o(.bss);
+      BUILD_DIR/asm/os/__osException.o(.bss);
       BUILD_DIR/src/os/osLeoDiskInit.o(.bss);
-      BUILD_DIR/asm/bss_after_diskinit.o(.bss);
    }
    END_NOLOAD(main)
+
    
    /* 0x8028DF00 0F7510-123640 [2C130] */
-   BEGIN_SEG(code_8028DF00, SEG_8028DF00)
+   BEGIN_SEG(racing, SEG_RACING)
    {
-      BUILD_DIR/src/race_logic.o(.text);
-      BUILD_DIR/src/render_courses.o(.text);
-      BUILD_DIR/src/actors.o(.text);
-      BUILD_DIR/src/skybox_and_splitscreen.o(.text);
-      BUILD_DIR/src/memory.o(.text);
-      BUILD_DIR/src/code_802AAA70.o(.text);
-      BUILD_DIR/src/actors_extended.o(.text);
-      BUILD_DIR/src/math_util.o(.text);
-      BUILD_DIR/src/render_courses.o(.data);
-      BUILD_DIR/src/actors.o(.data);
-      BUILD_DIR/src/skybox_and_splitscreen.o(.data);
-      BUILD_DIR/src/memory.o(.data);
+      BUILD_DIR/src/racing/race_logic.o(.text*);
+      BUILD_DIR/src/racing/render_courses.o(.text*);
+      BUILD_DIR/src/racing/actors.o(.text*);
+      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.text);
+      BUILD_DIR/src/racing/memory.o(.text*);
+      BUILD_DIR/src/racing/collision.o(.text*);
+      BUILD_DIR/src/racing/actors_extended.o(.text);
+      BUILD_DIR/src/racing/math_util.o(.text*);
+      BUILD_DIR/src/racing/race_logic.o(.data*);
+      BUILD_DIR/src/racing/render_courses.o(.data*);
+      BUILD_DIR/src/racing/actors.o(.data*);
+      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.data);
+      BUILD_DIR/src/racing/memory.o(.data*);
       BUILD_DIR/courses/courseTable.inc.o(.data);
-      BUILD_DIR/src/actors_extended.o(.data);
-      BUILD_DIR/src/race_logic.o(.data);
-      BUILD_DIR/src/race_logic.o(.rodata);
-      BUILD_DIR/src/render_courses.o(.rodata);
-      BUILD_DIR/src/actors.o(.rodata);
-      BUILD_DIR/src/skybox_and_splitscreen.o(.rodata);
-      BUILD_DIR/src/memory.o(.rodata);
-      BUILD_DIR/src/code_802AAA70.o(.rodata);
-      BUILD_DIR/src/actors_extended.o(.rodata);
-      BUILD_DIR/src/math_util.o(.rodata);
+      BUILD_DIR/src/racing/actors_extended.o(.data);
+      BUILD_DIR/src/racing/math_util.o(.data*);
+      BUILD_DIR/src/racing/race_logic.o(.rodata*);
+      BUILD_DIR/src/racing/render_courses.o(.rodata*);
+      BUILD_DIR/src/racing/actors.o(.rodata*);
+      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.rodata);
+      BUILD_DIR/src/racing/memory.o(.rodata*);
+      BUILD_DIR/src/racing/collision.o(.rodata*);
+      BUILD_DIR/src/racing/actors_extended.o(.rodata);
+      BUILD_DIR/src/racing/math_util.o(.rodata*);
    }
-   END_SEG(code_8028DF00)
+   END_SEG(racing)
 
-	BEGIN_NOLOAD(code_8028DF00)
+	BEGIN_NOLOAD(racing)
    {
-      BUILD_DIR/src/race_logic.o(.bss);
-      BUILD_DIR/src/actors.o(.bss);
-      BUILD_DIR/src/memory.o(.bss);
-      BUILD_DIR/src/framebuffers.o(.bss*);
+      BUILD_DIR/src/racing/race_logic.o(.bss*);
+      BUILD_DIR/src/racing/actors.o(.bss*);
+      BUILD_DIR/src/racing/memory.o(.bss*);
+      BUILD_DIR/src/data/framebuffers.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
-      BUILD_DIR/asm/bss_audio.o(.bss*);
+      BUILD_DIR/src/audio/heap.o(.bss*);
+      BUILD_DIR/src/audio/load.o(.bss);
+      BUILD_DIR/src/audio/data.o(.bss);
       . = ALIGN(0x8);
-      BUILD_DIR/asm/bss_sptask_audio.o(.bss);
    }
-   END_NOLOAD(code_8028DF00)
+   END_NOLOAD(racing)
 
-   _code_8028DF00SegmentNoloadSize = SIZEOF(.code_8028DF00.noload) + 0x10;
+   _racingSegmentNoloadSize = SIZEOF(.racing.noload) + 0x10;
    
-   _code_8028DF00SegmentNoloadSizeHi = _code_8028DF00SegmentNoloadSize >> 16;
-   _code_8028DF00SegmentNoloadSizeLo = _code_8028DF00SegmentNoloadSize & 0xFFFF;
+   _racingSegmentNoloadSizeHi = _racingSegmentNoloadSize >> 16;
+   _racingSegmentNoloadSizeLo = _racingSegmentNoloadSize & 0xFFFF;
 
    /* 0x80280000 123640-12AAE0 [74A0] */
-   BEGIN_SEG(code_80280000, SEG_80280000)
+   BEGIN_SEG(endingSequences, SEG_ENDING_SEQUENCES)
    {
-      BUILD_DIR/src/code_80280000.o(.text);
-      BUILD_DIR/src/code_80280650.o(.text);
-      BUILD_DIR/src/camera_junk.o(.text);
-      BUILD_DIR/src/code_80281780.o(.text);
-      BUILD_DIR/src/code_80281C40.o(.text);
-      BUILD_DIR/src/ceremony_and_credits.o(.text);
-      BUILD_DIR/src/code_80280650.o(.data);
-      BUILD_DIR/data/data_credits_128480.o(.data);
-      BUILD_DIR/src/dl_unk_80284EE0.inc.o(.data);
-      BUILD_DIR/src/credits.o(.data);
-      BUILD_DIR/src/ceremony_and_credits.o(.data);
-      BUILD_DIR/src/code_80280650.o(.rodata);
-      BUILD_DIR/src/camera_junk.o(.rodata);
-      BUILD_DIR/src/credits.o(.rodata);
-      BUILD_DIR/src/ceremony_and_credits.o(.rodata);
+      BUILD_DIR/src/ending/code_80280000.o(.text);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.text);
+      BUILD_DIR/src/ending/camera_junk.o(.text);
+      BUILD_DIR/src/ending/code_80281780.o(.text);
+      BUILD_DIR/src/ending/code_80281C40.o(.text);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.text);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.data);
+      BUILD_DIR/src/ending/code_80281780.o(.data);
+      BUILD_DIR/src/ending/dl_unk_80284EE0.inc.o(.data);
+      BUILD_DIR/src/ending/credits.jp.o(.data);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.data);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.rodata);
+      BUILD_DIR/src/ending/camera_junk.o(.rodata);
+      BUILD_DIR/src/ending/credits.jp.o(.rodata);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.rodata);
    }
-   END_SEG(code_80280000)
+   END_SEG(endingSequences)
 
-   BEGIN_NOLOAD(code_80280000) {
-      BUILD_DIR/asm/bss_credits.o(.bss);
-      BUILD_DIR/src/ceremony_and_credits.o(.bss);
+   BEGIN_NOLOAD(endingSequences) {
+      BUILD_DIR/src/ending/code_80280000.o(.bss);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.bss);
+      BUILD_DIR/src/ending/code_80281C40.o(.bss);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.bss);
    }
-   END_NOLOAD(code_80280000)
+   END_NOLOAD(endingSequences)
 
-   _code_80280000SegmentNoloadSize = SIZEOF(.code_80280000.noload) + 0x10;
+   _endingSequencesSegmentNoloadSize = SIZEOF(.endingSequences.noload) + 0x10;
    
-   _code_80280000SegmentNoloadSizeHi = _code_80280000SegmentNoloadSize >> 16;
-   _code_80280000SegmentNoloadSizeLo = _code_80280000SegmentNoloadSize & 0xFFFF;
+   _endingSequencesSegmentNoloadSizeHi = _endingSequencesSegmentNoloadSize >> 16;
+   _endingSequencesSegmentNoloadSizeLo = _endingSequencesSegmentNoloadSize & 0xFFFF;
 
 
 
@@ -438,8 +431,8 @@ SECTIONS
    /* texture tables and DLs, set as segment 0x02 */
    BEGIN_SEG(data_segment2, 0x02000000)
    {
-      BUILD_DIR/src/textures.inc.o(.data);
-      BUILD_DIR/src/data_segment2.inc.o(.data);
+      BUILD_DIR/src/data/textures.inc.o(.data);
+      BUILD_DIR/src/data/data_segment2.inc.o(.data);
    }
    END_SEG(data_segment2)
 
@@ -447,7 +440,7 @@ SECTIONS
    /* common textures, decompressed and set as segment 0x0D */
    BEGIN_SEG(common_textures, 0x0D000000)
    {
-      BUILD_DIR/src/common_textures.inc.mio0.o(.data);
+      BUILD_DIR/src/data/common_textures.inc.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(common_textures)
@@ -480,7 +473,7 @@ SECTIONS
    /* 0x802BA370 724220-729A30 [0x5810] */
    BEGIN_SEG(data_802BA370, SEG_802BA370)
    {
-        BUILD_DIR/src/math_util.o(.data);
+        BUILD_DIR/src/data/framebuffers.o(.data);
         . = ALIGN(0x10);
    }
    END_SEG(data_802BA370)
@@ -506,13 +499,13 @@ SECTIONS
             0x828400 -> 0x8028DE30 (0xD0) */
    BEGIN_SEG(data_821D10, 0x0B000000)
    {
-      BUILD_DIR/src/trophy_model.inc.mio0.o(.data);
+      BUILD_DIR/src/ending/ceremony_data.inc.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(data_821D10)
    BEGIN_SEG(data_825800, 0x06000000)
    {
-      BUILD_DIR/src/startup_logo.inc.mio0.o(.data);
+      BUILD_DIR/src/data/startup_logo.inc.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(data_825800)
@@ -520,70 +513,94 @@ SECTIONS
 
    /* Segment Six Course Data (Displaylists, models, textures, course paths, etc.) */
 
-   COURSE_DATA_SEG(flower_cup/mario_raceway,course_mario_raceway_dl)
-   COURSE_DATA_SEG(flower_cup/choco_mountain,course_choco_mountain_dl)
-   COURSE_DATA_SEG(star_cup/bowsers_castle,course_bowsers_castle_dl)
-   COURSE_DATA_SEG(special_cup/banshee_boardwalk,course_banshee_boardwalk_dl)
-   COURSE_DATA_SEG(special_cup/yoshi_valley,course_yoshi_valley_dl)
-   COURSE_DATA_SEG(flower_cup/frappe_snowland,course_frappe_snowland_dl)
-   COURSE_DATA_SEG(mushroom_cup/koopa_troopa_beach,course_koopa_troopa_beach_dl)
-   COURSE_DATA_SEG(star_cup/royal_raceway,course_royal_raceway_dl)
-   COURSE_DATA_SEG(mushroom_cup/luigi_raceway,course_luigi_raceway_dl)
-   COURSE_DATA_SEG(mushroom_cup/moo_moo_farm,course_moo_moo_farm_dl)
-   COURSE_DATA_SEG(flower_cup/toads_turnpike,course_toads_turnpike_dl)
-   COURSE_DATA_SEG(mushroom_cup/kalimari_desert,course_kalimari_desert_dl)
-   COURSE_DATA_SEG(star_cup/sherbet_land,course_sherbet_land_dl)
-   COURSE_DATA_SEG(special_cup/rainbow_road,course_rainbow_road_dl)
-   COURSE_DATA_SEG(star_cup/wario_stadium,course_wario_stadium_dl)
-   COURSE_DATA_SEG(battle/block_fort,course_block_fort_dl)
-   COURSE_DATA_SEG(battle/skyscraper,course_skyscraper_dl)
-   COURSE_DATA_SEG(battle/double_deck,course_double_deck_dl)
-   COURSE_DATA_SEG(special_cup/dks_jungle_parkway,course_dks_jungle_parkway_dl)
-   COURSE_DATA_SEG(battle/big_donut,course_big_donut_dl)
+   #define COURSE_DATA_SEG(dir, name) \
+      BEGIN_SEG(name##_mio0, 0x06000000) \
+      { \
+         BUILD_DIR/courses/dir/course_data.inc.mio0.o(.data); \
+         . = ALIGN(0x10); \
+      } \
+      END_SEG(name##_mio0)
 
-   COURSE_OFFSETS_SEG(course_mario_raceway_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_choco_mountain_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_bowsers_castle_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_banshee_boardwalk_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_yoshi_valley_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_frappe_snowland_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_koopa_troopa_beach_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_royal_raceway_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_luigi_raceway_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_moo_moo_farm_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_toads_turnpike_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_kalimari_desert_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_sherbet_land_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_rainbow_road_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_wario_stadium_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_block_fort_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_skyscraper_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_double_deck_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_dks_jungle_parkway_offsets, 0x09000000)
-   COURSE_OFFSETS_SEG(course_big_donut_offsets, 0x09000000)
+   COURSE_DATA_SEG(mario_raceway,course_mario_raceway_dl)
+   COURSE_DATA_SEG(choco_mountain,course_choco_mountain_dl)
+   COURSE_DATA_SEG(bowsers_castle,course_bowsers_castle_dl)
+   COURSE_DATA_SEG(banshee_boardwalk,course_banshee_boardwalk_dl)
+   COURSE_DATA_SEG(yoshi_valley,course_yoshi_valley_dl)
+   COURSE_DATA_SEG(frappe_snowland,course_frappe_snowland_dl)
+   COURSE_DATA_SEG(koopa_troopa_beach,course_koopa_troopa_beach_dl)
+   COURSE_DATA_SEG(royal_raceway,course_royal_raceway_dl)
+   COURSE_DATA_SEG(luigi_raceway,course_luigi_raceway_dl)
+   COURSE_DATA_SEG(moo_moo_farm,course_moo_moo_farm_dl)
+   COURSE_DATA_SEG(toads_turnpike,course_toads_turnpike_dl)
+   COURSE_DATA_SEG(kalimari_desert,course_kalimari_desert_dl)
+   COURSE_DATA_SEG(sherbet_land,course_sherbet_land_dl)
+   COURSE_DATA_SEG(rainbow_road,course_rainbow_road_dl)
+   COURSE_DATA_SEG(wario_stadium,course_wario_stadium_dl)
+   COURSE_DATA_SEG(block_fort,course_block_fort_dl)
+   COURSE_DATA_SEG(skyscraper,course_skyscraper_dl)
+   COURSE_DATA_SEG(double_deck,course_double_deck_dl)
+   COURSE_DATA_SEG(dks_jungle_parkway,course_dks_jungle_parkway_dl)
+   COURSE_DATA_SEG(big_donut,course_big_donut_dl)
+
+   #define COURSE_OFFSETS_SEG(dir, name) \
+      BEGIN_SEG(name, 0x09000000) \
+      { \
+         BUILD_DIR/courses/dir/course_offsets.inc.o(.data); \
+         . = ALIGN(0x10); \
+      } \
+      END_SEG(name)
+
+   COURSE_OFFSETS_SEG(mario_raceway,course_mario_raceway_offsets)
+   COURSE_OFFSETS_SEG(choco_mountain,course_choco_mountain_offsets)
+   COURSE_OFFSETS_SEG(bowsers_castle,course_bowsers_castle_offsets)
+   COURSE_OFFSETS_SEG(banshee_boardwalk,course_banshee_boardwalk_offsets)
+   COURSE_OFFSETS_SEG(yoshi_valley,course_yoshi_valley_offsets)
+   COURSE_OFFSETS_SEG(frappe_snowland,course_frappe_snowland_offsets)
+   COURSE_OFFSETS_SEG(koopa_troopa_beach,course_koopa_troopa_beach_offsets)
+   COURSE_OFFSETS_SEG(royal_raceway,course_royal_raceway_offsets)
+   COURSE_OFFSETS_SEG(luigi_raceway,course_luigi_raceway_offsets)
+   COURSE_OFFSETS_SEG(moo_moo_farm,course_moo_moo_farm_offsets)
+   COURSE_OFFSETS_SEG(toads_turnpike,course_toads_turnpike_offsets)
+   COURSE_OFFSETS_SEG(kalimari_desert,course_kalimari_desert_offsets)
+   COURSE_OFFSETS_SEG(sherbet_land,course_sherbet_land_offsets)
+   COURSE_OFFSETS_SEG(rainbow_road,course_rainbow_road_offsets)
+   COURSE_OFFSETS_SEG(wario_stadium,course_wario_stadium_offsets)
+   COURSE_OFFSETS_SEG(block_fort,course_block_fort_offsets)
+   COURSE_OFFSETS_SEG(skyscraper,course_skyscraper_offsets)
+   COURSE_OFFSETS_SEG(double_deck,course_double_deck_offsets)
+   COURSE_OFFSETS_SEG(dks_jungle_parkway,course_dks_jungle_parkway_offsets)
+   COURSE_OFFSETS_SEG(big_donut,course_big_donut_offsets)
 
    /* Segment 0xF Course Geography (0x4 uncompressed) and Segment 0x7 Packed Displaylists */
    
-   COURSE_VERT_SEG(flower_cup/mario_raceway,mario_raceway_vertex)
-   COURSE_VERT_SEG(flower_cup/choco_mountain,choco_mountain_vertex)
-   COURSE_VERT_SEG(star_cup/bowsers_castle,bowsers_castle_vertex)
-   COURSE_VERT_SEG(special_cup/banshee_boardwalk,banshee_boardwalk_vertex)
-   COURSE_VERT_SEG(special_cup/yoshi_valley,yoshi_valley_vertex)
-   COURSE_VERT_SEG(flower_cup/frappe_snowland,frappe_snowland_vertex)
-   COURSE_VERT_SEG(mushroom_cup/koopa_troopa_beach,koopa_troopa_beach_vertex)
-   COURSE_VERT_SEG(star_cup/royal_raceway,royal_raceway_vertex)
-   COURSE_VERT_SEG(mushroom_cup/luigi_raceway,luigi_raceway_vertex)
-   COURSE_VERT_SEG(mushroom_cup/moo_moo_farm,moo_moo_farm_vertex)
-   COURSE_VERT_SEG(flower_cup/toads_turnpike,toads_turnpike_vertex)
-   COURSE_VERT_SEG(mushroom_cup/kalimari_desert,kalimari_desert_vertex)
-   COURSE_VERT_SEG(star_cup/sherbet_land,sherbet_land_vertex)
-   COURSE_VERT_SEG(special_cup/rainbow_road,rainbow_road_vertex)
-   COURSE_VERT_SEG(star_cup/wario_stadium,wario_stadium_vertex)
-   COURSE_VERT_SEG(battle/block_fort,block_fort_vertex)
-   COURSE_VERT_SEG(battle/skyscraper,skyscraper_vertex)
-   COURSE_VERT_SEG(battle/double_deck,double_deck_vertex)
-   COURSE_VERT_SEG(special_cup/dks_jungle_parkway,dks_jungle_parkway_vertex)
-   COURSE_VERT_SEG(battle/big_donut,big_donut_vertex)
+   #define COURSE_VERT_SEG(dir, name) \
+      BEGIN_SEG(name, 0x0F000000) \
+      { \
+         BUILD_DIR/courses/dir/course_geography.inc.mio0.o(.data); \
+         . = ALIGN(0x10); \
+      } \
+      END_SEG(name)
+
+   COURSE_VERT_SEG(mario_raceway,mario_raceway_vertex)
+   COURSE_VERT_SEG(choco_mountain,choco_mountain_vertex)
+   COURSE_VERT_SEG(bowsers_castle,bowsers_castle_vertex)
+   COURSE_VERT_SEG(banshee_boardwalk,banshee_boardwalk_vertex)
+   COURSE_VERT_SEG(yoshi_valley,yoshi_valley_vertex)
+   COURSE_VERT_SEG(frappe_snowland,frappe_snowland_vertex)
+   COURSE_VERT_SEG(koopa_troopa_beach,koopa_troopa_beach_vertex)
+   COURSE_VERT_SEG(royal_raceway,royal_raceway_vertex)
+   COURSE_VERT_SEG(luigi_raceway,luigi_raceway_vertex)
+   COURSE_VERT_SEG(moo_moo_farm,moo_moo_farm_vertex)
+   COURSE_VERT_SEG(toads_turnpike,toads_turnpike_vertex)
+   COURSE_VERT_SEG(kalimari_desert,kalimari_desert_vertex)
+   COURSE_VERT_SEG(sherbet_land,sherbet_land_vertex)
+   COURSE_VERT_SEG(rainbow_road,rainbow_road_vertex)
+   COURSE_VERT_SEG(wario_stadium,wario_stadium_vertex)
+   COURSE_VERT_SEG(block_fort,block_fort_vertex)
+   COURSE_VERT_SEG(skyscraper,skyscraper_vertex)
+   COURSE_VERT_SEG(double_deck,double_deck_vertex)
+   COURSE_VERT_SEG(dks_jungle_parkway,dks_jungle_parkway_vertex)
+   COURSE_VERT_SEG(big_donut,big_donut_vertex)
 
    BEGIN_SEG(audio_banks, 0x0)
    {

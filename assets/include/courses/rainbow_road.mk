@@ -54,15 +54,15 @@ $(RAINBOW_ROAD_DIR)/gTextureRainbowRoadChainChompEye.png
 
 RAINBOW_ROAD_EXPORT_SENTINEL := $(RAINBOW_ROAD_DIR)/.export
 
-$(BUILD_DIR)/courses/special_cup/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_MUSHROOM_PNG:%.png=%.inc.c)
-$(BUILD_DIR)/courses/special_cup/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_MARIO_PNG:%.png=%.inc.c)
-$(BUILD_DIR)/courses/special_cup/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_BOO_PNG:%.png=%.inc.c)
-$(BUILD_DIR)/courses/special_cup/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_CHARACTER_PNG:%.png=%.inc.c)
-$(BUILD_DIR)/courses/special_cup/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_MUSHROOM_PALETTES:%.png=%.inc.c)
-$(BUILD_DIR)/courses/special_cup/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_MARIO_PALETTES:%.png=%.inc.c)
-$(BUILD_DIR)/courses/special_cup/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_BOO_PALETTES:%.png=%.inc.c)
-$(BUILD_DIR)/courses/special_cup/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_CHARACTER_PALETTES:%.png=%.inc.c)
-$(BUILD_DIR)/courses/special_cup/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/courses/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_MUSHROOM_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/courses/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_MARIO_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/courses/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_BOO_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/courses/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_CHARACTER_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/courses/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_MUSHROOM_PALETTES:%.png=%.inc.c)
+$(BUILD_DIR)/courses/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_MARIO_PALETTES:%.png=%.inc.c)
+$(BUILD_DIR)/courses/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_BOO_PALETTES:%.png=%.inc.c)
+$(BUILD_DIR)/courses/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_CHARACTER_PALETTES:%.png=%.inc.c)
+$(BUILD_DIR)/courses/rainbow_road/course_data.inc.o: $(RAINBOW_ROAD_PNG:%.png=%.inc.c)
 
 $(RAINBOW_ROAD_MUSHROOM_PNG:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(RAINBOW_ROAD_DIR)/gTLUTRainbowRoadNeonMushroom4.png
