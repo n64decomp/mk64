@@ -4349,7 +4349,7 @@ MkTexture D_0200496C[2] = {
 
 /**
  * @brief MkTextures for Menu Without Item
- * 
+ *
  */
 MkTexture D_02004994[2] = {
     {1, 0, gTextureMenuWithoutItem, 64, 18, 0, 0, 0x0, 0},
@@ -4358,7 +4358,7 @@ MkTexture D_02004994[2] = {
 
 /**
  * @brief MkTextures for Menu With Item
- * 
+ *
  */
 MkTexture D_020049BC[2] = {
     {1, 0, gTextureMenuWithItem, 64, 18, 0, 0, 0x0, 0},
@@ -4367,7 +4367,7 @@ MkTexture D_020049BC[2] = {
 
 /**
  * @brief MkTextures for Menu Begin
- * 
+ *
  */
 MkTexture D_020049E4[2] = {
     {1, 0, gTextureMenuBegin, 64, 18, 0, 0, 0x0, 0},
@@ -4376,7 +4376,7 @@ MkTexture D_020049E4[2] = {
 
 /**
  * @brief MkTextures for Menu Ghost
- * 
+ *
  */
 MkTexture D_02004A0C[2] = {
     {1, 0, gTextureMenuGhost, 64, 18, 0, 0, 0x0, 0},
@@ -4385,7 +4385,7 @@ MkTexture D_02004A0C[2] = {
 
 /**
  * @brief MkTextures for Menu Data
- * 
+ *
  */
 MkTexture D_02004A34[2] = {
     {1, 0, gTextureMenuData, 64, 18, 0, 0, 0x0, 0},
@@ -4394,7 +4394,7 @@ MkTexture D_02004A34[2] = {
 
 /**
  * @brief MkTextures P1 Border ?
- * 
+ *
  */
 MkTexture D_02004A5C[3] = {
     {3, 0, gTexture7E56E4,       64, 64, 0, 0, 0x116c, 0},
@@ -4404,7 +4404,7 @@ MkTexture D_02004A5C[3] = {
 
 /**
  * @brief MkTextures P2 Border ?
- * 
+ *
  */
 MkTexture D_02004A98[3] = {
     {3, 0, gTexture7E56E4,      64, 64, 0, 0, 0x116c, 0},
@@ -4414,7 +4414,7 @@ MkTexture D_02004A98[3] = {
 
 /**
  * @brief MkTextures P3 Border ?
- * 
+ *
  */
 MkTexture D_02004AD4[3] = {
     {3, 0, gTexture7E56E4,         64, 64, 0, 0, 0x116c, 0},
@@ -4424,7 +4424,7 @@ MkTexture D_02004AD4[3] = {
 
 /**
  * @brief MkTextures P4 Border ?
- * 
+ *
  */
 MkTexture D_02004B10[3] = {
     {3, 0, gTexture7E56E4,        64, 64, 0, 0, 0x116c, 0},
@@ -4434,7 +4434,7 @@ MkTexture D_02004B10[3] = {
 
 /**
  * @brief MkTextures for Menu Player Select
- * 
+ *
  */
 MkTexture D_02004B4C[2] = {
     {0, 0, gTexturePlayerSelect, 220, 32, 51, 16, 0x0, 0},
@@ -4443,7 +4443,7 @@ MkTexture D_02004B4C[2] = {
 
 /**
  * @brief MkTextures for Menu OK
- * 
+ *
  */
 MkTexture D_02004B74[2] = {
     {1, 0, gTextureMenuOK, 31, 19, 264, 202, 0x0, 0},
@@ -4452,7 +4452,7 @@ MkTexture D_02004B74[2] = {
 
 /**
  * @brief MkTextures for Menu Select
- * 
+ *
  */
 MkTexture D_02004B9C[2] = {
     {0, 0, gTextureMapSelect, 190, 32, 65, 18, 0x0, 0},
@@ -4461,7 +4461,7 @@ MkTexture D_02004B9C[2] = {
 
 /**
  * @brief MkTextures for Menu Mushroom Cup
- * 
+ *
  */
 MkTexture D_02004BC4[2] = {
     {1, 0, gTextureMenuMushroomCup, 65, 40, 0, 0, 0x0, 0},
@@ -4470,7 +4470,7 @@ MkTexture D_02004BC4[2] = {
 
 /**
  * @brief MkTextures for Menu Flower Cup
- * 
+ *
  */
 MkTexture D_02004BEC[2] = {
     {1, 0, gTextureMenuFlowerCup, 65, 40, 0, 0, 0x0, 0},
@@ -4479,7 +4479,7 @@ MkTexture D_02004BEC[2] = {
 
 /**
  * @brief MkTextures for Menu Star Cup
- * 
+ *
  */
 MkTexture D_02004C14[2] = {
     {1, 0, gTextureMenuStarCup, 65, 40, 0, 0, 0x0, 0},
@@ -4488,7 +4488,7 @@ MkTexture D_02004C14[2] = {
 
 /**
  * @brief MkTextures for Menu Special Cup
- * 
+ *
  */
 MkTexture D_02004C3C[2] = {
     {1, 0, gTextureMenuSpecialCup, 65, 40, 0, 0, 0x0, 0},
@@ -4497,7 +4497,7 @@ MkTexture D_02004C3C[2] = {
 
 /**
  * @brief MkTextures for the course preview mario raceway
- * 
+ *
  */
 MkTexture D_02004C64[2] = {
     {0, 0, gTextureCoursePreviewMarioRaceway, 128, 78, 23, 112, 0x1e3d, 0},
@@ -4566,7 +4566,7 @@ MkTexture D_02004E1C[5] = {
 
 /**
  * @brief MkTextures Menu OK
- * 
+ *
  */
 MkTexture D_02004E80[2] = {
     {1, 0, gTextureMenuOK, 31, 19, 265, 208, 0x0, 0},
@@ -4575,7 +4575,7 @@ MkTexture D_02004E80[2] = {
 
 /**
  * @brief MkTextures title Mario Raceway
- * 
+ *
  */
 MkTexture D_02004EA8[2] = {
     {1, 0, gTextureTitleMarioRaceway, 140, 18, 0, 0, 0x0, 0},
@@ -4584,7 +4584,7 @@ MkTexture D_02004EA8[2] = {
 
 /**
  * @brief MkTextures title Choco Mountain
- * 
+ *
  */
 MkTexture D_02004ED0[2] = {
     {1, 0, gTextureTitleChocoMountain, 140, 18, 0, 0, 0x0, 0},
@@ -4593,7 +4593,7 @@ MkTexture D_02004ED0[2] = {
 
 /**
  * @brief  MkTextures title Bowser's Castle
- * 
+ *
  */
 MkTexture D_02004EF8[2] = {
     {1, 0, gTextureTitleBowsersCastle, 140, 18, 0, 0, 0x0, 0},
@@ -4602,7 +4602,7 @@ MkTexture D_02004EF8[2] = {
 
 /**
  * @brief MkTextures title Banshee Boardwalk
- * 
+ *
  */
 MkTexture D_02004F20[2] = {
     {1, 0, gTextureTitleBansheeBoardwalk, 140, 18, 0, 0, 0x0, 0},
@@ -4611,7 +4611,7 @@ MkTexture D_02004F20[2] = {
 
 /**
  * @brief MkTextures title Yoshi Valley
- * 
+ *
  */
 MkTexture D_02004F48[2] = {
     {1, 0, gTextureTitleYoshiValley, 140, 18, 0, 0, 0x0, 0},
@@ -4620,7 +4620,7 @@ MkTexture D_02004F48[2] = {
 
 /**
  * @brief MkTextures title Frappe Snowland
- * 
+ *
  */
 MkTexture D_02004F70[2] = {
     {1, 0, gTextureTitleFrappeSnowland, 140, 18, 0, 0, 0x0, 0},
@@ -4629,7 +4629,7 @@ MkTexture D_02004F70[2] = {
 
 /**
  * @brief  MkTextures title Koopa Troopa Beach
- * 
+ *
  */
 MkTexture D_02004F98[2] = {
     {1, 0, gTextureTitleKoopaTroopaBeach, 140, 18, 0, 0, 0x0, 0},
@@ -4638,7 +4638,7 @@ MkTexture D_02004F98[2] = {
 
 /**
  * @brief MkTextures title Royal Raceway
- * 
+ *
  */
 MkTexture D_02004FC0[2] = {
     {1, 0, gTextureTitleRoyalRaceway, 140, 18, 0, 0, 0x0, 0},
@@ -4647,7 +4647,7 @@ MkTexture D_02004FC0[2] = {
 
 /**
  * @brief MkTextures title Luigi Raceway
- * 
+ *
  */
 MkTexture D_02004FE8[2] = {
     {1, 0, gTextureTitleLuigiRaceway, 140, 18, 0, 0, 0x0, 0},
@@ -4656,7 +4656,7 @@ MkTexture D_02004FE8[2] = {
 
 /**
  * @brief MkTextures title Moo Moo Farm
- * 
+ *
  */
 MkTexture D_02005010[2] = {
     {1, 0, gTextureTitleMooMooFarm, 140, 18, 0, 0, 0x0, 0},
@@ -4665,7 +4665,7 @@ MkTexture D_02005010[2] = {
 
 /**
  * @brief MkTextures title Toad's Turnpike
- * 
+ *
  */
 MkTexture D_02005038[2] = {
     {1, 0, gTextureTitleToadsTurnpike, 140, 18, 0, 0, 0x0, 0},
@@ -4674,7 +4674,7 @@ MkTexture D_02005038[2] = {
 
 /**
  * @brief MkTextures title Kalimari Desert
- * 
+ *
  */
 MkTexture D_02005060[2] = {
     {1, 0, gTextureTitleKalimariDesert, 140, 18, 0, 0, 0x0, 0},
@@ -4683,7 +4683,7 @@ MkTexture D_02005060[2] = {
 
 /**
  * @brief MkTextures title Sherbet Land
- * 
+ *
  */
 MkTexture D_02005088[2] = {
     {1, 0, gTextureTitleSherbetLand, 140, 18, 0, 0, 0x0, 0},
@@ -4692,7 +4692,7 @@ MkTexture D_02005088[2] = {
 
 /**
  * @brief MkTextures title Rainbow Road
- * 
+ *
  */
 MkTexture D_020050B0[2] = {
     {1, 0, gTextureTitleRainbowRoad, 140, 18, 0, 0, 0x0, 0},
@@ -4701,7 +4701,7 @@ MkTexture D_020050B0[2] = {
 
 /**
  * @brief MkTextures title Wario Stadium
- * 
+ *
  */
 MkTexture D_020050D8[2] = {
     {1, 0, gTextureTitleWarioStadium, 140, 18, 0, 0, 0x0, 0},
@@ -4710,7 +4710,7 @@ MkTexture D_020050D8[2] = {
 
 /**
  * @brief MkTextures title Block Fort
- * 
+ *
  */
 MkTexture D_02005100[2] = {
     {1, 0, gTextureTitleBlockFort, 140, 18, 0, 0, 0x0, 0},
@@ -4719,7 +4719,7 @@ MkTexture D_02005100[2] = {
 
 /**
  * @brief MkTextures title Skyscraper
- * 
+ *
  */
 MkTexture D_02005128[2] = {
     {1, 0, gTextureTitleSkyscraper, 140, 18, 0, 0, 0x0, 0},
@@ -4728,7 +4728,7 @@ MkTexture D_02005128[2] = {
 
 /**
  * @brief MkTextures title Double Deck
- * 
+ *
  */
 MkTexture D_02005150[2] = {
     {1, 0, gTextureTitleDoubleDeck, 140, 18, 0, 0, 0x0, 0},
@@ -4737,7 +4737,7 @@ MkTexture D_02005150[2] = {
 
 /**
  * @brief MkTextures title DK's Jungle Parkway
- * 
+ *
  */
 MkTexture D_02005178[2] = {
     {1, 0, gTextureTitleDKsJungleParkway, 140, 18, 0, 0, 0x0, 0},
@@ -4746,7 +4746,7 @@ MkTexture D_02005178[2] = {
 
 /**
  * @brief MkTextures title Big Donut
- * 
+ *
  */
 MkTexture D_020051A0[2] = {
     {1, 0, gTextureTitleBigDonut, 140, 18, 0, 0, 0x0, 0},
@@ -4755,7 +4755,7 @@ MkTexture D_020051A0[2] = {
 
 /**
  * @brief MkTextures for Mario Face 00
- * 
+ *
  */
 MkTexture D_020051C8[2] = {
     {0, 0, gTextureMarioFace00, 64, 64, 0, 0, 0x0, 0},
@@ -4764,7 +4764,7 @@ MkTexture D_020051C8[2] = {
 
 /**
  * @brief MkTextures for Mario Face 01
- * 
+ *
  */
 MkTexture D_020051F0[2] = {
     {0, 0, gTextureMarioFace01, 64, 64, 0, 0, 0x0, 0},
@@ -4773,7 +4773,7 @@ MkTexture D_020051F0[2] = {
 
 /**
  * @brief MkTextures for Mario Face 02
- * 
+ *
  */
 MkTexture D_02005218[2] = {
     {0, 0, gTextureMarioFace02, 64, 64, 0, 0, 0x0, 0},
@@ -4782,7 +4782,7 @@ MkTexture D_02005218[2] = {
 
 /**
  * @brief MkTextures for Mario Face 03
- * 
+ *
  */
 MkTexture D_02005240[2] = {
     {0, 0, gTextureMarioFace03, 64, 64, 0, 0, 0x0, 0},
@@ -4791,7 +4791,7 @@ MkTexture D_02005240[2] = {
 
 /**
  * @brief MkTextures for Mario Face 04
- * 
+ *
  */
 MkTexture D_02005268[2] = {
     {0, 0, gTextureMarioFace04, 64, 64, 0, 0, 0x0, 0},
@@ -4800,7 +4800,7 @@ MkTexture D_02005268[2] = {
 
 /**
  * @brief MkTextures for Mario Face 05
- * 
+ *
  */
 MkTexture D_02005290[2] = {
     {0, 0, gTextureMarioFace05, 64, 64, 0, 0, 0x0, 0},
@@ -4809,7 +4809,7 @@ MkTexture D_02005290[2] = {
 
 /**
  * @brief MkTextures for Mario Face 06
- * 
+ *
  */
 MkTexture D_020052B8[2] = {
     {0, 0, gTextureMarioFace06, 64, 64, 0, 0, 0x0, 0},
@@ -4818,7 +4818,7 @@ MkTexture D_020052B8[2] = {
 
 /**
  * @brief MkTextures for Mario Face 07
- * 
+ *
  */
 MkTexture D_020052E0[2] = {
     {0, 0, gTextureMarioFace07, 64, 64, 0, 0, 0x0, 0},
@@ -4827,7 +4827,7 @@ MkTexture D_020052E0[2] = {
 
 /**
  * @brief MkTextures for Mario Face 08
- * 
+ *
  */
 MkTexture D_02005308[2] = {
     {0, 0, gTextureMarioFace08, 64, 64, 0, 0, 0x0, 0},
@@ -4836,7 +4836,7 @@ MkTexture D_02005308[2] = {
 
 /**
  * @brief MkTextures for Mario Face 09
- * 
+ *
  */
 MkTexture D_02005330[2] = {
     {0, 0, gTextureMarioFace09, 64, 64, 0, 0, 0x0, 0},
@@ -4845,7 +4845,7 @@ MkTexture D_02005330[2] = {
 
 /**
  * @brief MkTextures for Mario Face 10
- * 
+ *
  */
 MkTexture D_02005358[2] = {
     {0, 0, gTextureMarioFace10, 64, 64, 0, 0, 0x0, 0},
@@ -4854,7 +4854,7 @@ MkTexture D_02005358[2] = {
 
 /**
  * @brief MkTextures for Mario Face 11
- * 
+ *
  */
 MkTexture D_02005380[2] = {
     {0, 0, gTextureMarioFace11, 64, 64, 0, 0, 0x0, 0},
@@ -4863,7 +4863,7 @@ MkTexture D_02005380[2] = {
 
 /**
  * @brief MkTextures for Mario Face 12
- * 
+ *
  */
 MkTexture D_020053A8[2] = {
     {0, 0, gTextureMarioFace12, 64, 64, 0, 0, 0x0, 0},
@@ -4872,7 +4872,7 @@ MkTexture D_020053A8[2] = {
 
 /**
  * @brief MkTextures for Mario Face 13
- * 
+ *
  */
 MkTexture D_020053D0[2] = {
     {0, 0, gTextureMarioFace13, 64, 64, 0, 0, 0x0, 0},
@@ -4881,7 +4881,7 @@ MkTexture D_020053D0[2] = {
 
 /**
  * @brief MkTextures for Mario Face 14
- * 
+ *
  */
 MkTexture D_020053F8[2] = {
     {0, 0, gTextureMarioFace14, 64, 64, 0, 0, 0x0, 0},
@@ -4890,7 +4890,7 @@ MkTexture D_020053F8[2] = {
 
 /**
  * @brief MkTextures for Mario Face 15
- * 
+ *
  */
 MkTexture D_02005420[2] = {
     {0, 0, gTextureMarioFace15, 64, 64, 0, 0, 0x0, 0},
@@ -4899,7 +4899,7 @@ MkTexture D_02005420[2] = {
 
 /**
  * @brief MkTextures for Mario Face 16
- * 
+ *
  */
 MkTexture D_02005448[2] = {
     {0, 0, gTextureMarioFace16, 64, 64, 0, 0, 0x0, 0},
@@ -4908,7 +4908,7 @@ MkTexture D_02005448[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 00
- * 
+ *
  */
 MkTexture D_02005470[2] = {
     {0, 0, gTextureLuigiFace00, 64, 64, 0, 0, 0x0, 0},
@@ -4917,7 +4917,7 @@ MkTexture D_02005470[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 01
- * 
+ *
  */
 MkTexture D_02005498[2] = {
     {0, 0, gTextureLuigiFace01, 64, 64, 0, 0, 0x0, 0},
@@ -4926,7 +4926,7 @@ MkTexture D_02005498[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 02
- * 
+ *
  */
 MkTexture D_020054C0[2] = {
     {0, 0, gTextureLuigiFace02, 64, 64, 0, 0, 0x0, 0},
@@ -4935,7 +4935,7 @@ MkTexture D_020054C0[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 03
- * 
+ *
  */
 MkTexture D_020054E8[2] = {
     {0, 0, gTextureLuigiFace03, 64, 64, 0, 0, 0x0, 0},
@@ -4944,7 +4944,7 @@ MkTexture D_020054E8[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 04
- * 
+ *
  */
 MkTexture D_02005510[2] = {
     {0, 0, gTextureLuigiFace04, 64, 64, 0, 0, 0x0, 0},
@@ -4953,7 +4953,7 @@ MkTexture D_02005510[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 05
- * 
+ *
  */
 MkTexture D_02005538[2] = {
     {0, 0, gTextureLuigiFace05, 64, 64, 0, 0, 0x0, 0},
@@ -4962,7 +4962,7 @@ MkTexture D_02005538[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 06
- * 
+ *
  */
 MkTexture D_02005560[2] = {
     {0, 0, gTextureLuigiFace06, 64, 64, 0, 0, 0x0, 0},
@@ -4971,7 +4971,7 @@ MkTexture D_02005560[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 07
- * 
+ *
  */
 MkTexture D_02005588[2] = {
     {0, 0, gTextureLuigiFace07, 64, 64, 0, 0, 0x0, 0},
@@ -4980,7 +4980,7 @@ MkTexture D_02005588[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 08
- * 
+ *
  */
 MkTexture D_020055B0[2] = {
     {0, 0, gTextureLuigiFace08, 64, 64, 0, 0, 0x0, 0},
@@ -4989,7 +4989,7 @@ MkTexture D_020055B0[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 09
- * 
+ *
  */
 MkTexture D_020055D8[2] = {
     {0, 0, gTextureLuigiFace09, 64, 64, 0, 0, 0x0, 0},
@@ -4998,7 +4998,7 @@ MkTexture D_020055D8[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 10
- * 
+ *
  */
 MkTexture D_02005600[2] = {
     {0, 0, gTextureLuigiFace10, 64, 64, 0, 0, 0x0, 0},
@@ -5007,7 +5007,7 @@ MkTexture D_02005600[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 11
- * 
+ *
  */
 MkTexture D_02005628[2] = {
     {0, 0, gTextureLuigiFace11, 64, 64, 0, 0, 0x0, 0},
@@ -5016,7 +5016,7 @@ MkTexture D_02005628[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 12
- * 
+ *
  */
 MkTexture D_02005650[2] = {
     {0, 0, gTextureLuigiFace12, 64, 64, 0, 0, 0x0, 0},
@@ -5025,7 +5025,7 @@ MkTexture D_02005650[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 13
- * 
+ *
  */
 MkTexture D_02005678[2] = {
     {0, 0, gTextureLuigiFace13, 64, 64, 0, 0, 0x0, 0},
@@ -5034,7 +5034,7 @@ MkTexture D_02005678[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 14
- * 
+ *
  */
 MkTexture D_020056A0[2] = {
     {0, 0, gTextureLuigiFace14, 64, 64, 0, 0, 0x0, 0},
@@ -5043,7 +5043,7 @@ MkTexture D_020056A0[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 15
- * 
+ *
  */
 MkTexture D_020056C8[2] = {
     {0, 0, gTextureLuigiFace15, 64, 64, 0, 0, 0x0, 0},
@@ -5052,7 +5052,7 @@ MkTexture D_020056C8[2] = {
 
 /**
  * @brief MkTextures for Luigi Face 16
- * 
+ *
  */
 MkTexture D_020056F0[2] = {
     {0, 0, gTextureLuigiFace16, 64, 64, 0, 0, 0x0, 0},
@@ -5061,7 +5061,7 @@ MkTexture D_020056F0[2] = {
 
 /**
  * @brief MkTextures for Toad Face 00
- * 
+ *
  */
 MkTexture D_02005718[2] = {
     {0, 0, gTextureToadFace00, 64, 64, 0, 0, 0x0, 0},
@@ -5070,7 +5070,7 @@ MkTexture D_02005718[2] = {
 
 /**
  * @brief MkTextures for Toad Face 01
- * 
+ *
  */
 MkTexture D_02005740[2] = {
     {0, 0, gTextureToadFace01, 64, 64, 0, 0, 0x0, 0},
@@ -5079,7 +5079,7 @@ MkTexture D_02005740[2] = {
 
 /**
  * @brief MkTextures for Toad Face 02
- * 
+ *
  */
 MkTexture D_02005768[2] = {
     {0, 0, gTextureToadFace02, 64, 64, 0, 0, 0x0, 0},
@@ -5088,7 +5088,7 @@ MkTexture D_02005768[2] = {
 
 /**
  * @brief MkTextures for Toad Face 03
- * 
+ *
  */
 MkTexture D_02005790[2] = {
     {0, 0, gTextureToadFace03, 64, 64, 0, 0, 0x0, 0},
@@ -5097,7 +5097,7 @@ MkTexture D_02005790[2] = {
 
 /**
  * @brief MkTextures for Toad Face 04
- * 
+ *
  */
 MkTexture D_020057B8[2] = {
     {0, 0, gTextureToadFace04, 64, 64, 0, 0, 0x0, 0},
@@ -5106,7 +5106,7 @@ MkTexture D_020057B8[2] = {
 
 /**
  * @brief MkTextures for Toad Face 05
- * 
+ *
  */
 MkTexture D_020057E0[2] = {
     {0, 0, gTextureToadFace05, 64, 64, 0, 0, 0x0, 0},
@@ -5115,7 +5115,7 @@ MkTexture D_020057E0[2] = {
 
 /**
  * @brief MkTextures for Toad Face 06
- * 
+ *
  */
 MkTexture D_02005808[2] = {
     {0, 0, gTextureToadFace06, 64, 64, 0, 0, 0x0, 0},
@@ -5124,7 +5124,7 @@ MkTexture D_02005808[2] = {
 
 /**
  * @brief MkTextures for Toad Face 07
- * 
+ *
  */
 MkTexture D_02005830[2] = {
     {0, 0, gTextureToadFace07, 64, 64, 0, 0, 0x0, 0},
@@ -5133,7 +5133,7 @@ MkTexture D_02005830[2] = {
 
 /**
  * @brief MkTextures for Toad Face 08
- * 
+ *
  */
 MkTexture D_02005858[2] = {
     {0, 0, gTextureToadFace08, 64, 64, 0, 0, 0x0, 0},
@@ -5142,7 +5142,7 @@ MkTexture D_02005858[2] = {
 
 /**
  * @brief MkTextures for Toad Face 09
- * 
+ *
  */
 MkTexture D_02005880[2] = {
     {0, 0, gTextureToadFace09, 64, 64, 0, 0, 0x0, 0},
@@ -5151,7 +5151,7 @@ MkTexture D_02005880[2] = {
 
 /**
  * @brief MkTextures for Toad Face 10
- * 
+ *
  */
 MkTexture D_020058A8[2] = {
     {0, 0, gTextureToadFace10, 64, 64, 0, 0, 0x0, 0},
@@ -5160,7 +5160,7 @@ MkTexture D_020058A8[2] = {
 
 /**
  * @brief MkTextures for Toad Face 11
- * 
+ *
  */
 MkTexture D_020058D0[2] = {
     {0, 0, gTextureToadFace11, 64, 64, 0, 0, 0x0, 0},
@@ -5169,7 +5169,7 @@ MkTexture D_020058D0[2] = {
 
 /**
  * @brief MkTextures for Toad Face 12
- * 
+ *
  */
 MkTexture D_020058F8[2] = {
     {0, 0, gTextureToadFace12, 64, 64, 0, 0, 0x0, 0},
@@ -5178,7 +5178,7 @@ MkTexture D_020058F8[2] = {
 
 /**
  * @brief MkTextures for Toad Face 13
- * 
+ *
  */
 MkTexture D_02005920[2] = {
     {0, 0, gTextureToadFace13, 64, 64, 0, 0, 0x0, 0},
@@ -5187,7 +5187,7 @@ MkTexture D_02005920[2] = {
 
 /**
  * @brief MkTextures for Toad Face 14
- * 
+ *
  */
 MkTexture D_02005948[2] = {
     {0, 0, gTextureToadFace14, 64, 64, 0, 0, 0x0, 0},
@@ -5196,142 +5196,142 @@ MkTexture D_02005948[2] = {
 
 /**
  * @brief MkTextures for Toad Face 15
- * 
+ *
  */
 MkTexture D_02005970[2] = {
     {0, 0, gTextureToadFace15, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Toad Face 16
- * 
+ *
  */
 MkTexture D_02005998[2] = {
     {0, 0, gTextureToadFace16, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Peach Face 00
- * 
+ *
  */
 MkTexture D_020059C0[2] = {
     {0, 0, gTexturePeachFace00, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Peach Face 01
- * 
+ *
  */
 MkTexture D_020059E8[2] = {
     {0, 0, gTexturePeachFace01, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Peach Face 02
- * 
+ *
  */
 MkTexture D_02005A10[2] = {
     {0, 0, gTexturePeachFace02, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Peach Face 03
- * 
+ *
  */
 MkTexture D_02005A38[2] = {
     {0, 0, gTexturePeachFace03, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Peach Face 04
- * 
+ *
  */
 MkTexture D_02005A60[2] = {
     {0, 0, gTexturePeachFace04, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Peach Face 05
- * 
+ *
  */
 MkTexture D_02005A88[2] = {
     {0, 0, gTexturePeachFace05, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Peach Face 06
- * 
+ *
  */
 MkTexture D_02005AB0[2] = {
     {0, 0, gTexturePeachFace06, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Peach Face 07
- * 
+ *
  */
 MkTexture D_02005AD8[2] = {
     {0, 0, gTexturePeachFace07, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Peach Face 08
- * 
+ *
  */
 MkTexture D_02005B00[2] = {
     {0, 0, gTexturePeachFace08, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Peach Face 09
- * 
+ *
  */
 MkTexture D_02005B28[2] = {
     {0, 0, gTexturePeachFace09, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Peach Face 10
- * 
+ *
  */
 MkTexture D_02005B50[2] = {
     {0, 0, gTexturePeachFace10, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Peach Face 11
- * 
+ *
  */
 MkTexture D_02005B78[2] = {
     {0, 0, gTexturePeachFace11, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Peach Face 12
- * 
+ *
  */
 MkTexture D_02005BA0[2] = {
     {0, 0, gTexturePeachFace12, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Peach Face 13
- * 
+ *
  */
 MkTexture D_02005BC8[2] = {
     {0, 0, gTexturePeachFace13, 64, 64, 0, 0, 0x0, 0},
@@ -5340,7 +5340,7 @@ MkTexture D_02005BC8[2] = {
 
 /**
  * @brief MkTextures for Peach Face 14
- * 
+ *
  */
 MkTexture D_02005BF0[2] = {
     {0, 0, gTexturePeachFace14, 64, 64, 0, 0, 0x0, 0},
@@ -5349,7 +5349,7 @@ MkTexture D_02005BF0[2] = {
 
 /**
  * @brief MkTextures for Peach Face 15
- * 
+ *
  */
 MkTexture D_02005C18[2] = {
     {0, 0, gTexturePeachFace15, 64, 64, 0, 0, 0x0, 0},
@@ -5358,43 +5358,43 @@ MkTexture D_02005C18[2] = {
 
 /**
  * @brief MkTextures for Peach Face 16
- * 
+ *
  */
 MkTexture D_02005C40[2] = {
     {0, 0, gTexturePeachFace16, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Yoshi Face 00
- * 
+ *
  */
 MkTexture D_02005C68[2] = {
     {0, 0, gTextureYoshiFace00, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Yoshi Face 01
- * 
+ *
  */
 MkTexture D_02005C90[2] = {
     {0, 0, gTextureYoshiFace01, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Yoshi Face 02
- * 
+ *
  */
 MkTexture D_02005CB8[2] = {
     {0, 0, gTextureYoshiFace02, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Yoshi Face 03
- * 
+ *
  */
 
 MkTexture D_02005CE0[2] = {
@@ -5404,7 +5404,7 @@ MkTexture D_02005CE0[2] = {
 
 /**
  * @brief MkTextures for Yoshi Face 04
- * 
+ *
  */
 MkTexture D_02005D08[2] = {
     {0, 0, gTextureYoshiFace04, 64, 64, 0, 0, 0x0, 0},
@@ -5413,7 +5413,7 @@ MkTexture D_02005D08[2] = {
 
 /**
  * @brief MkTextures for Yoshi Face 05
- * 
+ *
  */
 MkTexture D_02005D30[2] = {
     {0, 0, gTextureYoshiFace05, 64, 64, 0, 0, 0x0, 0},
@@ -5422,7 +5422,7 @@ MkTexture D_02005D30[2] = {
 
 /**
  * @brief MkTextures for Yoshi Face 06
- * 
+ *
  */
 MkTexture D_02005D58[2] = {
     {0, 0, gTextureYoshiFace06, 64, 64, 0, 0, 0x0, 0},
@@ -5431,7 +5431,7 @@ MkTexture D_02005D58[2] = {
 
 /**
  * @brief MkTextures for Yoshi Face 07
- * 
+ *
  */
 MkTexture D_02005D80[2] = {
     {0, 0, gTextureYoshiFace07, 64, 64, 0, 0, 0x0, 0},
@@ -5440,7 +5440,7 @@ MkTexture D_02005D80[2] = {
 
 /**
  * @brief MkTextures for Yoshi Face 08
- * 
+ *
  */
 MkTexture D_02005DA8[2] = {
     {0, 0, gTextureYoshiFace08, 64, 64, 0, 0, 0x0, 0},
@@ -5449,7 +5449,7 @@ MkTexture D_02005DA8[2] = {
 
 /**
  * @brief MkTextures for Yoshi Face 09
- * 
+ *
  */
 MkTexture D_02005DD0[2] = {
     {0, 0, gTextureYoshiFace09, 64, 64, 0, 0, 0x0, 0},
@@ -5458,7 +5458,7 @@ MkTexture D_02005DD0[2] = {
 
 /**
  * @brief MkTextures for Yoshi Face 10
- * 
+ *
  */
 MkTexture D_02005DF8[2] = {
     {0, 0, gTextureYoshiFace10, 64, 64, 0, 0, 0x0, 0},
@@ -5467,7 +5467,7 @@ MkTexture D_02005DF8[2] = {
 
 /**
  * @brief MkTextures for Yoshi Face 11
- * 
+ *
  */
 MkTexture D_02005E20[2] = {
     {0, 0, gTextureYoshiFace11, 64, 64, 0, 0, 0x0, 0},
@@ -5476,43 +5476,43 @@ MkTexture D_02005E20[2] = {
 
 /**
  * @brief MkTextures for Yoshi Face 12
- * 
+ *
  */
 MkTexture D_02005E48[2] = {
     {0, 0, gTextureYoshiFace12, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Yoshi Face 13
- * 
+ *
  */
 MkTexture D_02005E70[2] = {
     {0, 0, gTextureYoshiFace13, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Yoshi Face 14
- * 
+ *
  */
 MkTexture D_02005E98[2] = {
     {0, 0, gTextureYoshiFace14, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Yoshi Face 15
- * 
+ *
  */
 MkTexture D_02005EC0[2] = {
     {0, 0, gTextureYoshiFace15, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Yoshi Face 16
- * 
+ *
  */
 MkTexture D_02005EE8[2] = {
     {0, 0, gTextureYoshiFace16, 64, 64, 0, 0, 0x0, 0},
@@ -5521,7 +5521,7 @@ MkTexture D_02005EE8[2] = {
 
 /**
  * @brief MkTextures for DK Face 00
- * 
+ *
  */
 MkTexture D_02005F10[2] = {
     {0, 0, gTextureDkFace00, 64, 64, 0, 0, 0x0, 0},
@@ -5530,7 +5530,7 @@ MkTexture D_02005F10[2] = {
 
 /**
  * @brief MkTextures for DK Face 01
- * 
+ *
  */
 MkTexture D_02005F38[2] = {
     {0, 0, gTextureDkFace01, 64, 64, 0, 0, 0x0, 0},
@@ -5539,7 +5539,7 @@ MkTexture D_02005F38[2] = {
 
 /**
  * @brief MkTextures for DK Face 02
- * 
+ *
  */
 MkTexture D_02005F60[2] = {
     {0, 0, gTextureDkFace02, 64, 64, 0, 0, 0x0, 0},
@@ -5548,7 +5548,7 @@ MkTexture D_02005F60[2] = {
 
 /**
  * @brief MkTextures for DK Face 03
- * 
+ *
  */
 MkTexture D_02005F88[2] = {
     {0, 0, gTextureDkFace03, 64, 64, 0, 0, 0x0, 0},
@@ -5557,7 +5557,7 @@ MkTexture D_02005F88[2] = {
 
 /**
  * @brief MkTextures for DK Face 04
- * 
+ *
  */
 MkTexture D_02005FB0[2] = {
     {0, 0, gTextureDkFace04, 64, 64, 0, 0, 0x0, 0},
@@ -5566,7 +5566,7 @@ MkTexture D_02005FB0[2] = {
 
 /**
  * @brief MkTextures for DK Face 05
- * 
+ *
  */
 MkTexture D_02005FD8[2] = {
     {0, 0, gTextureDkFace05, 64, 64, 0, 0, 0x0, 0},
@@ -5575,7 +5575,7 @@ MkTexture D_02005FD8[2] = {
 
 /**
  * @brief MkTextures for DK Face 06
- * 
+ *
  */
 MkTexture D_02006000[2] = {
     {0, 0, gTextureDkFace06, 64, 64, 0, 0, 0x0, 0},
@@ -5584,7 +5584,7 @@ MkTexture D_02006000[2] = {
 
 /**
  * @brief MkTextures for DK Face 07
- * 
+ *
  */
 MkTexture D_02006028[2] = {
     {0, 0, gTextureDkFace07, 64, 64, 0, 0, 0x0, 0},
@@ -5593,7 +5593,7 @@ MkTexture D_02006028[2] = {
 
 /**
  * @brief MkTextures for DK Face 08
- * 
+ *
  */
 MkTexture D_02006050[2] = {
     {0, 0, gTextureDkFace08, 64, 64, 0, 0, 0x0, 0},
@@ -5602,7 +5602,7 @@ MkTexture D_02006050[2] = {
 
 /**
  * @brief MkTextures for DK Face 09
- * 
+ *
  */
 MkTexture D_02006078[2] = {
     {0, 0, gTextureDkFace09, 64, 64, 0, 0, 0x0, 0},
@@ -5611,7 +5611,7 @@ MkTexture D_02006078[2] = {
 
 /**
  * @brief MkTextures for DK Face 10
- * 
+ *
  */
 MkTexture D_020060A0[2] = {
     {0, 0, gTextureDkFace10, 64, 64, 0, 0, 0x0, 0},
@@ -5620,52 +5620,52 @@ MkTexture D_020060A0[2] = {
 
 /**
  * @brief MkTextures for DK Face 11
- * 
+ *
  */
 MkTexture D_020060C8[2] = {
     {0, 0, gTextureDkFace11, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for DK Face 12
- * 
+ *
  */
 MkTexture D_020060F0[2] = {
     {0, 0, gTextureDkFace12, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for DK Face 13
- * 
+ *
  */
 MkTexture D_02006118[2] = {
     {0, 0, gTextureDkFace13, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for DK Face 14
- * 
+ *
  */
 MkTexture D_02006140[2] = {
     {0, 0, gTextureDkFace14, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for DK Face 15
- * 
+ *
  */
 MkTexture D_02006168[2] = {
     {0, 0, gTextureDkFace15, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for DK Face 16
- * 
+ *
  */
 MkTexture D_02006190[2] = {
     {0, 0, gTextureDkFace16, 64, 64, 0, 0, 0x0, 0},
@@ -5674,7 +5674,7 @@ MkTexture D_02006190[2] = {
 
 /**
  * @brief MkTextures for Wario Face 00
- * 
+ *
  */
 MkTexture D_020061B8[2] = {
     {0, 0, gTextureWarioFace00, 64, 64, 0, 0, 0x0, 0},
@@ -5683,7 +5683,7 @@ MkTexture D_020061B8[2] = {
 
 /**
  * @brief MkTextures for Wario Face 01
- * 
+ *
  */
 MkTexture D_020061E0[2] = {
     {0, 0, gTextureWarioFace01, 64, 64, 0, 0, 0x0, 0},
@@ -5692,7 +5692,7 @@ MkTexture D_020061E0[2] = {
 
 /**
  * @brief MkTextures for Wario Face 02
- * 
+ *
  */
 MkTexture D_02006208[2] = {
     {0, 0, gTextureWarioFace02, 64, 64, 0, 0, 0x0, 0},
@@ -5701,7 +5701,7 @@ MkTexture D_02006208[2] = {
 
 /**
  * @brief MkTextures for Wario Face 03
- * 
+ *
  */
 MkTexture D_02006230[2] = {
     {0, 0, gTextureWarioFace03, 64, 64, 0, 0, 0x0, 0},
@@ -5710,7 +5710,7 @@ MkTexture D_02006230[2] = {
 
 /**
  * @brief MkTextures for Wario Face 04
- * 
+ *
  */
 MkTexture D_02006258[2] = {
     {0, 0, gTextureWarioFace04, 64, 64, 0, 0, 0x0, 0},
@@ -5719,7 +5719,7 @@ MkTexture D_02006258[2] = {
 
 /**
  * @brief MkTextures for Wario Face 05
- * 
+ *
  */
 MkTexture D_02006280[2] = {
     {0, 0, gTextureWarioFace05, 64, 64, 0, 0, 0x0, 0},
@@ -5728,7 +5728,7 @@ MkTexture D_02006280[2] = {
 
 /**
  * @brief MkTextures for Wario Face 06
- * 
+ *
  */
 MkTexture D_020062A8[2] = {
     {0, 0, gTextureWarioFace06, 64, 64, 0, 0, 0x0, 0},
@@ -5737,7 +5737,7 @@ MkTexture D_020062A8[2] = {
 
 /**
  * @brief MkTextures for Wario Face 07
- * 
+ *
  */
 MkTexture D_020062D0[2] = {
     {0, 0, gTextureWarioFace07, 64, 64, 0, 0, 0x0, 0},
@@ -5746,7 +5746,7 @@ MkTexture D_020062D0[2] = {
 
 /**
  * @brief MkTextures for Wario Face 08
- * 
+ *
  */
 MkTexture D_020062F8[2] = {
     {0, 0, gTextureWarioFace08, 64, 64, 0, 0, 0x0, 0},
@@ -5755,7 +5755,7 @@ MkTexture D_020062F8[2] = {
 
 /**
  * @brief MkTextures for Wario Face 09
- * 
+ *
  */
 MkTexture D_02006320[2] = {
     {0, 0, gTextureWarioFace09, 64, 64, 0, 0, 0x0, 0},
@@ -5764,25 +5764,25 @@ MkTexture D_02006320[2] = {
 
 /**
  * @brief MkTextures for Wario Face 10
- * 
+ *
  */
 MkTexture D_02006348[2] = {
     {0, 0, gTextureWarioFace10, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Wario Face 11
- * 
+ *
  */
 MkTexture D_02006370[2] = {
     {0, 0, gTextureWarioFace11, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Wario Face 12
- * 
+ *
  */
 MkTexture D_02006398[2] = {
     {0, 0, gTextureWarioFace12, 64, 64, 0, 0, 0x0, 0},
@@ -5791,7 +5791,7 @@ MkTexture D_02006398[2] = {
 
 /**
  * @brief MkTextures for Wario Face 13
- * 
+ *
  */
 MkTexture D_020063C0[2] = {
     {0, 0, gTextureWarioFace13, 64, 64, 0, 0, 0x0, 0},
@@ -5800,25 +5800,25 @@ MkTexture D_020063C0[2] = {
 
 /**
  * @brief MkTextures for Wario Face 14
- * 
+ *
  */
 MkTexture D_020063E8[2] = {
     {0, 0, gTextureWarioFace14, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Wario Face 15
- * 
+ *
  */
 MkTexture D_02006410[2] = {
     {0, 0, gTextureWarioFace15, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Wario Face 16
- * 
+ *
  */
 MkTexture D_02006438[2] = {
     {0, 0, gTextureWarioFace16, 64, 64, 0, 0, 0x0, 0},
@@ -5827,7 +5827,7 @@ MkTexture D_02006438[2] = {
 
 /**
  * @brief MkTextures for Bowser Face 00
- * 
+ *
  */
 MkTexture D_02006460[2] = {
     {0, 0, gTextureBowserFace00, 64, 64, 0, 0, 0x0, 0},
@@ -5836,7 +5836,7 @@ MkTexture D_02006460[2] = {
 
 /**
  * @brief MkTextures for Bowser Face 01
- * 
+ *
  */
 MkTexture D_02006488[2] = {
     {0, 0, gTextureBowserFace01, 64, 64, 0, 0, 0x0, 0},
@@ -5845,70 +5845,70 @@ MkTexture D_02006488[2] = {
 
 /**
  * @brief MkTextures for Bowser Face 02
- * 
+ *
  */
 MkTexture D_020064B0[2] = {
     {0, 0, gTextureBowserFace02, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Bowser Face 03
- * 
+ *
  */
 MkTexture D_020064D8[2] = {
     {0, 0, gTextureBowserFace03, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Bowser Face 04
- * 
+ *
  */
 MkTexture D_02006500[2] = {
     {0, 0, gTextureBowserFace04, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Bowser Face 05
- * 
+ *
  */
 MkTexture D_02006528[2] = {
     {0, 0, gTextureBowserFace05, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Bowser Face 06
- * 
+ *
  */
 MkTexture D_02006550[2] = {
     {0, 0, gTextureBowserFace06, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Bowser Face 07
- * 
+ *
  */
 MkTexture D_02006578[2] = {
     {0, 0, gTextureBowserFace07, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Bowser Face 08
- * 
+ *
  */
 MkTexture D_020065A0[2] = {
     {0, 0, gTextureBowserFace08, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Bowser Face 09
- * 
+ *
  */
 MkTexture D_020065C8[2] = {
     {0, 0, gTextureBowserFace09, 64, 64, 0, 0, 0x0, 0},
@@ -5917,52 +5917,52 @@ MkTexture D_020065C8[2] = {
 
 /**
  * @brief MkTextures for Bowser Face 10
- * 
+ *
  */
 MkTexture D_020065F0[2] = {
     {0, 0, gTextureBowserFace10, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Bowser Face 11
- * 
+ *
  */
 MkTexture D_02006618[2] = {
     {0, 0, gTextureBowserFace11, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Bowser Face 12
- * 
+ *
  */
 MkTexture D_02006640[2] = {
     {0, 0, gTextureBowserFace12, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Bowser Face 13
- * 
+ *
  */
 MkTexture D_02006668[2] = {
     {0, 0, gTextureBowserFace13, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Bowser Face 14
- * 
+ *
  */
 MkTexture D_02006690[2] = {
     {0, 0, gTextureBowserFace14, 64, 64, 0, 0, 0x0, 0},
     {0, 0, NULL, 0, 0, 0, 0, 0, 0},
 };
 
-/** 
+/**
  * @brief MkTextures for Bowser Face 15
- * 
+ *
  */
 MkTexture D_020066B8[2] = {
     {0, 0, gTextureBowserFace15, 64, 64, 0, 0, 0x0, 0},
@@ -5971,7 +5971,7 @@ MkTexture D_020066B8[2] = {
 
 /**
  * @brief MkTextures for Bowser Face 16
- * 
+ *
  */
 MkTexture D_020066E0[2] = {
     {0, 0, gTextureBowserFace16, 64, 64, 0, 0, 0x0, 0},

@@ -5,7 +5,7 @@
 
 /**
  * @brief struct for a texture use in menu mainly
- * 
+ *
  */
 typedef struct {
     /* 0x00 */ s16 type;
@@ -21,7 +21,7 @@ typedef struct {
 
 /**
  * @brief struct for an animation
- * 
+ *
  */
 typedef struct {
     /* 0x00 */ MkTexture *mk64Texture; // This should be interpreted as a segmented address
