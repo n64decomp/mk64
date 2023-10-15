@@ -32,6 +32,11 @@ segments:
     type: code
     start: 0x40
     vram: 0xA4000040
+    subsegments:
+      - [0x40, asm, boot]
+      - [0xB70, i1, rspboot_font1, 13, 14]
+      - [0xB87, i1, rspboot_font2, 13, 14]
+      - [0xB9E, bin, rspboot_font]
   - name: main
     type: code
     bss_size: 0x18985C
@@ -197,6 +202,8 @@ segments:
       - [0xD9CD0, bin, lib/PR/f3dex/F3DEX]
       - [0xDB0B0, bin, lib/PR/f3dlx/F3DLX]
       - [0xDD0D0, data, data_main]
+      - [0xDD304, i1, crash_screen_font, 8, 136]
+      - [0xDD38C, bin, unkDD38C]
       - [0xEC358, rodata, rodata_main]
       - [0xF7650, bss, bss_main]
   - name: seg2
