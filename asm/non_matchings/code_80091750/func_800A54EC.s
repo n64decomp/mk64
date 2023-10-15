@@ -1,6 +1,6 @@
 glabel func_800A54EC
-/* 0A60EC 800A54EC 3C0B800E */  lui   $t3, %hi(D_800DC5FC) # $t3, 0x800e
-/* 0A60F0 800A54F0 256BC5FC */  addiu $t3, %lo(D_800DC5FC) # addiu $t3, $t3, -0x3a04
+/* 0A60EC 800A54EC 3C0B800E */  lui   $t3, %hi(gIsGamePaused) # $t3, 0x800e
+/* 0A60F0 800A54F0 256BC5FC */  addiu $t3, %lo(gIsGamePaused) # addiu $t3, $t3, -0x3a04
 /* 0A60F4 800A54F4 956E0000 */  lhu   $t6, ($t3)
 /* 0A60F8 800A54F8 27BDFFA8 */  addiu $sp, $sp, -0x58
 /* 0A60FC 800A54FC AFBF0024 */  sw    $ra, 0x24($sp)
@@ -22,10 +22,10 @@ glabel func_800A54EC
 /* 0A613C 800A553C 3421FFFF */  ori   $at, (0x1FFFFFFF & 0xFFFF) # ori $at, $at, 0xffff
 /* 0A6140 800A5540 27398880 */  addiu $t9, %lo(D_802B8880) # addiu $t9, $t9, -0x7780
 /* 0A6144 800A5544 3C180380 */  lui   $t8, (0x03800010 >> 16) # lui $t8, 0x380
-/* 0A6148 800A5548 3C098016 */  lui   $t1, %hi(D_80164AF0) # $t1, 0x8016
+/* 0A6148 800A5548 3C098016 */  lui   $t1, %hi(gMatrixEffectCount) # $t1, 0x8016
 /* 0A614C 800A554C 37180010 */  ori   $t8, (0x03800010 & 0xFFFF) # ori $t8, $t8, 0x10
 /* 0A6150 800A5550 03216024 */  and   $t4, $t9, $at
-/* 0A6154 800A5554 25294AF0 */  addiu $t1, %lo(D_80164AF0) # addiu $t1, $t1, 0x4af0
+/* 0A6154 800A5554 25294AF0 */  addiu $t1, %lo(gMatrixEffectCount) # addiu $t1, $t1, 0x4af0
 /* 0A6158 800A5558 AC6C0004 */  sw    $t4, 4($v1)
 /* 0A615C 800A555C AC780000 */  sw    $t8, ($v1)
 /* 0A6160 800A5560 852E0000 */  lh    $t6, ($t1)
@@ -59,10 +59,10 @@ glabel func_800A54EC
 /* 0A61D0 800A55D0 8FAA0040 */  lw    $t2, 0x40($sp)
 /* 0A61D4 800A55D4 24780008 */  addiu $t8, $v1, 8
 /* 0A61D8 800A55D8 8FA40048 */  lw    $a0, 0x48($sp)
-/* 0A61DC 800A55DC 3C098016 */  lui   $t1, %hi(D_80164AF0) # $t1, 0x8016
+/* 0A61DC 800A55DC 3C098016 */  lui   $t1, %hi(gMatrixEffectCount) # $t1, 0x8016
 /* 0A61E0 800A55E0 AD180000 */  sw    $t8, ($t0)
 /* 0A61E4 800A55E4 37390040 */  ori   $t9, (0x01030040 & 0xFFFF) # ori $t9, $t9, 0x40
-/* 0A61E8 800A55E8 25294AF0 */  addiu $t1, %lo(D_80164AF0) # addiu $t1, $t1, 0x4af0
+/* 0A61E8 800A55E8 25294AF0 */  addiu $t1, %lo(gMatrixEffectCount) # addiu $t1, $t1, 0x4af0
 /* 0A61EC 800A55EC AC790000 */  sw    $t9, ($v1)
 /* 0A61F0 800A55F0 852E0000 */  lh    $t6, ($t1)
 /* 0A61F4 800A55F4 3C0C8015 */  lui   $t4, %hi(gGfxPool) # $t4, 0x8015
@@ -76,8 +76,8 @@ glabel func_800A54EC
 /* 0A6214 800A5614 0301C824 */  and   $t9, $t8, $at
 /* 0A6218 800A5618 AC790004 */  sw    $t9, 4($v1)
 /* 0A621C 800A561C 852E0000 */  lh    $t6, ($t1)
-/* 0A6220 800A5620 3C0B800E */  lui   $t3, %hi(D_800DC5FC) # $t3, 0x800e
-/* 0A6224 800A5624 256BC5FC */  addiu $t3, %lo(D_800DC5FC) # addiu $t3, $t3, -0x3a04
+/* 0A6220 800A5620 3C0B800E */  lui   $t3, %hi(gIsGamePaused) # $t3, 0x800e
+/* 0A6224 800A5624 256BC5FC */  addiu $t3, %lo(gIsGamePaused) # addiu $t3, $t3, -0x3a04
 /* 0A6228 800A5628 25CC0001 */  addiu $t4, $t6, 1
 /* 0A622C 800A562C 11400018 */  beqz  $t2, .L800A5690
 /* 0A6230 800A5630 A52C0000 */   sh    $t4, ($t1)

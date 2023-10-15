@@ -31,9 +31,9 @@ glabel func_8007D070
 /* 07DCE4 8007D0E4 00000000 */   nop   
 /* 07DCE8 8007D0E8 8F39C1D8 */  lw    $t9, %lo(D_8018C1D8)($t9)
 /* 07DCEC 8007D0EC 241700E0 */  li    $s7, 224
-/* 07DCF0 8007D0F0 3C168016 */  lui   $s6, %hi(D_80165C18) # $s6, 0x8016
+/* 07DCF0 8007D0F0 3C168016 */  lui   $s6, %hi(gObjectList) # $s6, 0x8016
 /* 07DCF4 8007D0F4 03370019 */  multu $t9, $s7
-/* 07DCF8 8007D0F8 26D65C18 */  addiu $s6, %lo(D_80165C18) # addiu $s6, $s6, 0x5c18
+/* 07DCF8 8007D0F8 26D65C18 */  addiu $s6, %lo(gObjectList) # addiu $s6, $s6, 0x5c18
 /* 07DCFC 8007D0FC 3C048019 */  lui   $a0, %hi(D_8018C1B0) # $a0, 0x8019
 /* 07DD00 8007D100 2484C1B0 */  addiu $a0, %lo(D_8018C1B0) # addiu $a0, $a0, -0x3e50
 /* 07DD04 8007D104 2403001E */  li    $v1, 30
@@ -124,14 +124,14 @@ glabel func_8007D070
 /* 07DE50 8007D250 46062200 */  add.s $f8, $f4, $f6
 /* 07DE54 8007D254 E6080018 */  swc1  $f8, 0x18($s0)
 .L8007D258:
-/* 07DE58 8007D258 3C168016 */  lui   $s6, %hi(D_80165C18) # $s6, 0x8016
+/* 07DE58 8007D258 3C168016 */  lui   $s6, %hi(gObjectList) # $s6, 0x8016
 /* 07DE5C 8007D25C 3C1E8019 */  lui   $fp, %hi(D_8018CF1C) # $fp, 0x8019
 /* 07DE60 8007D260 3C128019 */  lui   $s2, %hi(D_8018C1B0) # $s2, 0x8019
 /* 07DE64 8007D264 3C15800E */  lui   $s5, %hi(D_800E4470) # $s5, 0x800e
 /* 07DE68 8007D268 3C148019 */  lui   $s4, %hi(D_8018C228) # $s4, 0x8019
 /* 07DE6C 8007D26C 3C13800E */  lui   $s3, %hi(D_800E44B0) # $s3, 0x800e
 /* 07DE70 8007D270 27DECF1C */  addiu $fp, %lo(D_8018CF1C) # addiu $fp, $fp, -0x30e4
-/* 07DE74 8007D274 26D65C18 */  addiu $s6, %lo(D_80165C18) # addiu $s6, $s6, 0x5c18
+/* 07DE74 8007D274 26D65C18 */  addiu $s6, %lo(gObjectList) # addiu $s6, $s6, 0x5c18
 /* 07DE78 8007D278 241700E0 */  li    $s7, 224
 /* 07DE7C 8007D27C 267344B0 */  addiu $s3, %lo(D_800E44B0) # addiu $s3, $s3, 0x44b0
 /* 07DE80 8007D280 2694C228 */  addiu $s4, %lo(D_8018C228) # addiu $s4, $s4, -0x3dd8
@@ -169,7 +169,7 @@ glabel func_8007D070
 /* 07DEFC 8007D2FC 0C01F108 */  jal   func_8007C420
 /* 07DF00 8007D300 8CC6CF14 */   lw    $a2, %lo(D_8018CF14)($a2)
 /* 07DF04 8007D304 02202025 */  move  $a0, $s1
-/* 07DF08 8007D308 0C01C88F */  jal   func_8007223C
+/* 07DF08 8007D308 0C01C88F */  jal   is_obj_index_flag_unk_054_active
 /* 07DF0C 8007D30C 24050080 */   li    $a1, 128
 /* 07DF10 8007D310 50400004 */  beql  $v0, $zero, .L8007D324
 /* 07DF14 8007D314 AE150074 */   sw    $s5, 0x74($s0)

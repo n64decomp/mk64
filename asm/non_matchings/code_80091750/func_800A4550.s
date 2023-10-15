@@ -1,3 +1,19 @@
+.section .rodata
+
+glabel D_800F0C4C
+.asciiz "'"
+
+.balign 4
+glabel D_800F0C50
+.asciiz "\""
+
+.section .late_rodata
+
+glabel D_800F1DC4
+.float 0.7
+
+.section .text
+
 glabel func_800A4550
 /* 0A5150 800A4550 27BDFFB8 */  addiu $sp, $sp, -0x48
 /* 0A5154 800A4554 28810003 */  slti  $at, $a0, 3

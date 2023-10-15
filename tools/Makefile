@@ -1,6 +1,17 @@
+# Makefile to build tools and recomp
+
+# Compilation flags
 CC := gcc
 CFLAGS := -I . -Wall -Wextra -Wno-unused-parameter -pedantic -std=c99 -O2 -s
+
+# Tools to compile
 PROGRAMS := mio0 n64graphics displaylist_packer n64cksum tkmk00 extract_data_for_mio
+
+
+
+#==============================================================================#
+# Source Files and Flags for Each Tool                                         #
+#==============================================================================#
 
 n64graphics_SOURCES := n64graphics.c utils.c
 n64graphics_CFLAGS  := -DN64GRAPHICS_STANDALONE
@@ -19,15 +30,26 @@ n64cksum_CFLAGS := -DN64CKSUM_STANDALONE
 
 extract_data_for_mio_SOURCES := extract_data_for_mio.c
 
+
+# Build tools and recomp
 all: $(PROGRAMS) subsystem
 
+# Build recomp
 subsystem:
 	$(MAKE) -C ido5.3_recomp
 
+# Remove generated files
 clean:
 	$(RM) $(PROGRAMS)
 	$(MAKE) -C ido5.3_recomp clean
 
+
+
+#==============================================================================#
+# Compile Tools                                                                #
+#==============================================================================#
+
+# Compile tools based on the foreach loop
 define COMPILE =
 $(1): $($1_SOURCES)
 	$(CC) $(CFLAGS) $($1_CFLAGS) $$^ -o $$@

@@ -10,14 +10,14 @@ glabel func_8007C7B4
 /* 07D3D4 8007C7D4 AFB60030 */  sw    $s6, 0x30($sp)
 /* 07D3D8 8007C7D8 01CF9821 */  addu  $s3, $t6, $t7
 /* 07D3DC 8007C7DC 3C12800E */  lui   $s2, %hi(D_800E5D9C) # $s2, 0x800e
-/* 07D3E0 8007C7E0 3C178016 */  lui   $s7, %hi(D_80165C18) # $s7, 0x8016
+/* 07D3E0 8007C7E0 3C178016 */  lui   $s7, %hi(gObjectList) # $s7, 0x8016
 /* 07D3E4 8007C7E4 00A0B025 */  move  $s6, $a1
 /* 07D3E8 8007C7E8 AFBF003C */  sw    $ra, 0x3c($sp)
 /* 07D3EC 8007C7EC AFB5002C */  sw    $s5, 0x2c($sp)
 /* 07D3F0 8007C7F0 AFB40028 */  sw    $s4, 0x28($sp)
 /* 07D3F4 8007C7F4 AFB1001C */  sw    $s1, 0x1c($sp)
 /* 07D3F8 8007C7F8 AFB00018 */  sw    $s0, 0x18($sp)
-/* 07D3FC 8007C7FC 26F75C18 */  addiu $s7, %lo(D_80165C18) # addiu $s7, $s7, 0x5c18
+/* 07D3FC 8007C7FC 26F75C18 */  addiu $s7, %lo(gObjectList) # addiu $s7, $s7, 0x5c18
 /* 07D400 8007C800 26525D9C */  addiu $s2, %lo(D_800E5D9C) # addiu $s2, $s2, 0x5d9c
 /* 07D404 8007C804 AFB30040 */  sw    $s3, 0x40($sp)
 /* 07D408 8007C808 241E00E0 */  li    $fp, 224

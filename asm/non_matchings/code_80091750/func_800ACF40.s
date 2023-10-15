@@ -1,12 +1,20 @@
+.section .late_rodata
+
+glabel jpt_800F2728
+.word L800ACF94, L800ACFB8, L800AD01C, L800AD128
+.word L800AD190
+
+.section .text
+
 glabel func_800ACF40
 /* 0ADB40 800ACF40 27BDFFC0 */  addiu $sp, $sp, -0x40
 /* 0ADB44 800ACF44 AFBF001C */  sw    $ra, 0x1c($sp)
 /* 0ADB48 800ACF48 AFB00018 */  sw    $s0, 0x18($sp)
 /* 0ADB4C 800ACF4C 8C820000 */  lw    $v0, ($a0)
-/* 0ADB50 800ACF50 3C0E800F */  lui   $t6, %hi(D_800E85F7) # 0x800f
+/* 0ADB50 800ACF50 3C0E800F */  lui   $t6, %hi(gCharacterSelections - 0xb1) # 0x800f
 /* 0ADB54 800ACF54 8C8F0004 */  lw    $t7, 4($a0)
 /* 0ADB58 800ACF58 01C27021 */  addu  $t6, $t6, $v0
-/* 0ADB5C 800ACF5C 81CE85F7 */  lb    $t6, %lo(D_800E85F7)($t6) # -0x7a09($t6)
+/* 0ADB5C 800ACF5C 81CE85F7 */  lb    $t6, %lo(gCharacterSelections - 0xb1)($t6) # -0x7a09($t6)
 /* 0ADB60 800ACF60 3C05800F */  lui   $a1, %hi(D_800EFD64) # 0x800f
 /* 0ADB64 800ACF64 2DE10005 */  sltiu $at, $t7, 5
 /* 0ADB68 800ACF68 00AE2821 */  addu  $a1, $a1, $t6
@@ -31,8 +39,8 @@ glabel L800ACF94
 /* 0ADBB0 800ACFB0 10000077 */  b     .L800AD190
 /* 0ADBB4 800ACFB4 AE190010 */   sw    $t9, 0x10($s0)
 glabel L800ACFB8
-/* 0ADBB8 800ACFB8 3C098019 */  lui   $t1, %hi(D_8018EDF3) # $t1, 0x8019
-/* 0ADBBC 800ACFBC 812AEDF3 */  lb    $t2, %lo(D_8018EDF3)($t1)
+/* 0ADBB8 800ACFB8 3C098019 */  lui   $t1, %hi(gPlayerCount) # $t1, 0x8019
+/* 0ADBBC 800ACFBC 812AEDF3 */  lb    $t2, %lo(gPlayerCount)($t1)
 /* 0ADBC0 800ACFC0 000660C0 */  sll   $t4, $a2, 3
 /* 0ADBC4 800ACFC4 3C0F800E */  lui   $t7, %hi(D_800E7300) # $t7, 0x800e
 /* 0ADBC8 800ACFC8 000A5940 */  sll   $t3, $t2, 5

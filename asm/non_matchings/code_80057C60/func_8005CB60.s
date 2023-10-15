@@ -245,8 +245,8 @@ glabel func_8005CB60
 /* 05DAF0 8005CEF0 8602003C */   lh    $v0, 0x3c($s0)
 /* 05DAF4 8005CEF4 0C01E415 */  jal   func_80079054
 /* 05DAF8 8005CEF8 00E02025 */   move  $a0, $a3
-/* 05DAFC 8005CEFC 3C0A8019 */  lui   $t2, %hi(D_8018EDF3) # $t2, 0x8019
-/* 05DB00 8005CF00 814AEDF3 */  lb    $t2, %lo(D_8018EDF3)($t2)
+/* 05DAFC 8005CEFC 3C0A8019 */  lui   $t2, %hi(gPlayerCount) # $t2, 0x8019
+/* 05DB00 8005CF00 814AEDF3 */  lb    $t2, %lo(gPlayerCount)($t2)
 /* 05DB04 8005CF04 24060001 */  li    $a2, 1
 /* 05DB08 8005CF08 3C018019 */  lui   $at, %hi(D_8018D20C) # $at, 0x8019
 /* 05DB0C 8005CF0C 14CA005D */  bne   $a2, $t2, .L8005D084

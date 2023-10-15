@@ -6,7 +6,7 @@
 #include <types.h>
 #include "config.h"
 
-
+#define GFX_GET_OPCODE(var) ((s32)((var) & 0xFF000000))
 
 // Pointer casting is technically UB, and avoiding it gets rid of endian issues
 // as well as a nice side effect.

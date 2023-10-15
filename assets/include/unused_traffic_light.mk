@@ -16,7 +16,7 @@ $(UNUSED_TRAFFIC_LIGHT_DIR)/gTextureUnusedTrafficLight10.png
 
 UNUSED_TRAFFIC_LIGHT_EXPORT_SENTINEL := $(UNUSED_TRAFFIC_LIGHT_DIR)/.export
 
-$(BUILD_DIR)/src/common_textures.inc.o: $(UNUSED_TRAFFIC_LIGHT_PNG:%.png=%.inc.c) $(UNUSED_TRAFFIC_LIGHT_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.inc.o: $(UNUSED_TRAFFIC_LIGHT_PNG:%.png=%.inc.c) $(UNUSED_TRAFFIC_LIGHT_PALETTE:%.png=%.inc.c)
 
 $(UNUSED_TRAFFIC_LIGHT_PNG:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(UNUSED_TRAFFIC_LIGHT_PALETTE)

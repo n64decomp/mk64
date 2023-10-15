@@ -1,8 +1,8 @@
 glabel func_800563DC
 /* 056FDC 800563DC 0004C8C0 */  sll   $t9, $a0, 3
 /* 056FE0 800563E0 0324C823 */  subu  $t9, $t9, $a0
-/* 056FE4 800563E4 3C088016 */  lui   $t0, %hi(D_80165C18) # $t0, 0x8016
-/* 056FE8 800563E8 25085C18 */  addiu $t0, %lo(D_80165C18) # addiu $t0, $t0, 0x5c18
+/* 056FE4 800563E4 3C088016 */  lui   $t0, %hi(gObjectList) # $t0, 0x8016
+/* 056FE8 800563E8 25085C18 */  addiu $t0, %lo(gObjectList) # addiu $t0, $t0, 0x5c18
 /* 056FEC 800563EC 0019C940 */  sll   $t9, $t9, 5
 /* 056FF0 800563F0 03281021 */  addu  $v0, $t9, $t0
 /* 056FF4 800563F4 C4440008 */  lwc1  $f4, 8($v0)
@@ -49,7 +49,7 @@ glabel func_800563DC
 /* 057098 80056498 A6290004 */  sh    $t1, 4($s1)
 /* 05709C 8005649C 34C6CCCD */  ori   $a2, (0x3E4CCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 0570A0 800564A0 02602025 */  move  $a0, $s3
-/* 0570A4 800564A4 0C010B80 */  jal   func_80042E00
+/* 0570A4 800564A4 0C010B80 */  jal   rsp_set_matrix_transformation
 /* 0570A8 800564A8 02202825 */   move  $a1, $s1
 /* 0570AC 800564AC 3C148015 */  lui   $s4, %hi(gDisplayListHead) # $s4, 0x8015
 /* 0570B0 800564B0 26940298 */  addiu $s4, %lo(gDisplayListHead) # addiu $s4, $s4, 0x298
@@ -77,7 +77,7 @@ glabel func_800563DC
 /* 057108 80056508 24C65AE0 */  addiu $a2, %lo(D_0D005AE0) # addiu $a2, $a2, 0x5ae0
 /* 05710C 8005650C 01AE2821 */  addu  $a1, $t5, $t6
 /* 057110 80056510 2484A858 */  addiu $a0, %lo(D_0D02A858) # addiu $a0, $a0, -0x57a8
-/* 057114 80056514 0C011C9C */  jal   func_80047270
+/* 057114 80056514 0C011C9C */  jal   draw_rectangle_texture_overlap
 /* 057118 80056518 24070020 */   li    $a3, 32
 /* 05711C 8005651C 8E820000 */  lw    $v0, ($s4)
 /* 057120 80056520 3C108019 */  lui   $s0, %hi(D_8018D400) # $s0, 0x8019

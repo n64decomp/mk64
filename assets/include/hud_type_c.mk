@@ -30,9 +30,9 @@ HUD_TYPE_C_PORTRAIT_BORDER_PNG := $(HUD_TYPE_C_DIR)/gTextureCharacterPortraitBor
 
 HUD_TYPE_C_EXPORT_SENTINEL := $(HUD_TYPE_C_DIR)/.export
 
-$(BUILD_DIR)/src/common_textures.inc.o: $(HUD_TYPE_C_FONT_PNG:%.png=%.inc.c) $(HUD_TYPE_C_FONT_PALETTE:%.png=%.inc.c)
-$(BUILD_DIR)/src/common_textures.inc.o: $(HUD_TYPE_C_TINY_FONT_PNG:%.png=%.inc.c) $(HUD_TYPE_C_TINY_FONT_PALETTE:%.png=%.inc.c)
-$(BUILD_DIR)/src/common_textures.inc.o: $(HUD_TYPE_C_PORTRAIT_BORDER_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.inc.o: $(HUD_TYPE_C_FONT_PNG:%.png=%.inc.c) $(HUD_TYPE_C_FONT_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.inc.o: $(HUD_TYPE_C_TINY_FONT_PNG:%.png=%.inc.c) $(HUD_TYPE_C_TINY_FONT_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.inc.o: $(HUD_TYPE_C_PORTRAIT_BORDER_PNG:%.png=%.inc.c)
 
 $(HUD_TYPE_C_FONT_PNG:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(HUD_TYPE_C_FONT_PALETTE)

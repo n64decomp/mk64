@@ -2,48 +2,6 @@
 
 .section .bss
 
-glabel D_8018EF10
-.skip 8
-
-glabel D_8018EF18
-.skip 192
-
-glabel D_8018EFD8
-.skip 3000
-
-glabel D_8018FB90
-.skip 1
-
-glabel D_8018FB91
-.skip 7
-
-glabel D_8018FB98
-.skip 16
-
-glabel D_8018FBA8
-.skip 48
-
-glabel D_8018FBD8
-.skip 48
-
-glabel D_8018FC08
-.skip 8
-
-glabel D_8018FC10
-.skip 16
-
-glabel sSoundRequests
-.skip 6144
-
-glabel sSoundBanks
-.skip 5760
-
-glabel sSoundBankUsedListBack
-.skip 8
-
-glabel sSoundBankFreeListFront
-.skip 8
-
 glabel sNumSoundsInBank
 .skip 8
 
@@ -53,7 +11,7 @@ glabel D_80192AB8
 glabel D_80192C38
 .skip 4
 
-glabel sSoundBankDisabled
+glabel sSoundBankDisabled # 0x80192C3C
 .skip 12
 
 glabel D_80192C48
@@ -73,33 +31,3 @@ glabel D_801930D0
 
 glabel D_80193318
 .skip 1192
-
-glabel D_801937C0
-.skip 24
-
-glabel D_801937D8
-.skip 24
-
-glabel D_801937F0
-.skip 24
-
-glabel D_80193808
-.skip 24
-
-glabel D_80193820
-.skip 2048
-
-glabel D_80194020
-.skip 8
-
-glabel D_80194028
-.skip 16
-
-glabel D_80194038
-.skip 4
-
-glabel D_8019403C
-.skip 4
-
-glabel D_80194040
-.skip 16

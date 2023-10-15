@@ -8,7 +8,7 @@ $(SHERBET_LAND_DIR)/gTexturePenguinEye.png
 
 SHERBET_LAND_EXPORT_SENTINEL := $(SHERBET_LAND_DIR)/.export
 
-$(BUILD_DIR)/courses/star_cup/sherbet_land/course_data.inc.o: $(SHERBET_LAND_ICE:%.png=%.inc.c) $(PENGUIN_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/courses/sherbet_land/course_data.inc.o: $(SHERBET_LAND_ICE:%.png=%.inc.c) $(PENGUIN_PNG:%.png=%.inc.c)
 
 $(SHERBET_LAND_ICE:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f ia16

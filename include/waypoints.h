@@ -1,12 +1,12 @@
 #ifndef WAYPOINTS_H
 #define WAYPOINTS_H
 
-struct TrackWayPoint {
-    /* 0x00 */ s16 wayPointX;
-    /* 0x02 */ s16 wayPointY;
-    /* 0x04 */ s16 wayPointZ;
-    /* 0x06 */ u16 wayPointTrackSegment;
-}; // size = 0x08
+typedef struct {
+    /* 0x00 */ s16 posX;
+    /* 0x02 */ s16 posY;
+    /* 0x04 */ s16 posZ;
+    /* 0x06 */ u16 trackSegment;
+} TrackWaypoint; // size = 0x08
 
 /**
  * These are per-path arrays that contain some information relating to waypoints
@@ -14,9 +14,9 @@ struct TrackWayPoint {
  * The arrays in D_80164560 and D_80164570 track some other X/Y/Z, but the track segment is always 0 (so, untracked/unused)
  * Its unclear how these arrays relate to each other
  **/
-extern struct TrackWayPoint *D_80164550[];
-extern struct TrackWayPoint *D_80164560[];
-extern struct TrackWayPoint *D_80164570[];
+extern TrackWaypoint *D_80164550[];
+extern TrackWaypoint *D_80164560[];
+extern TrackWaypoint *D_80164570[];
 
 /**
  * Don't know what exactly these are, but like D_80164550, D_80164560, and D_80164570
@@ -26,7 +26,7 @@ extern struct TrackWayPoint *D_80164570[];
 extern s16 *D_80164580[];
 // Based on func_80010DBC this may be angles between waypoints
 // D_80164590[i] = atan2(waypoint_i, waypoint_i+1)?
-extern u16 *D_80164590[];
+extern s16 *D_80164590[];
 // No idea. Adjacency list?
 extern s16 *D_801645A0[];
 
@@ -46,9 +46,9 @@ extern s16 D_80165320[];
 // Don't think this really belongs with waypoint stuff, but don't know where else to put it
 extern s16 D_80165330[];
 // Shadows values from D_80164560
-extern struct TrackWayPoint *D_801631D0;
+extern TrackWaypoint *D_801631D0;
 // Shadows values from D_80164570
-extern struct TrackWayPoint *D_801631D4;
+extern TrackWaypoint *D_801631D4;
 // Shadows values from D_80164580
 extern s16 *D_801631D8;
 // Shadows values from D_80164590
@@ -56,7 +56,7 @@ extern u16 *D_801631DC;
 // Shadowd values from gWaypointCountByPathIndex
 extern u16 D_80164430;
 // Shadows values from D_80164550
-extern struct TrackWayPoint *D_80164490;
+extern TrackWaypoint *D_80164490;
 // Shadows values from D_801645A0
 extern s16 *D_801645E0;
 

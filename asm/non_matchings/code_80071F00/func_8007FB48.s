@@ -15,8 +15,8 @@ glabel D_800EF080
 glabel func_8007FB48
 /* 080748 8007FB48 000478C0 */  sll   $t7, $a0, 3
 /* 08074C 8007FB4C 01E47823 */  subu  $t7, $t7, $a0
-/* 080750 8007FB50 3C188016 */  lui   $t8, %hi(D_80165C18) # $t8, 0x8016
-/* 080754 8007FB54 27185C18 */  addiu $t8, %lo(D_80165C18) # addiu $t8, $t8, 0x5c18
+/* 080750 8007FB50 3C188016 */  lui   $t8, %hi(gObjectList) # $t8, 0x8016
+/* 080754 8007FB54 27185C18 */  addiu $t8, %lo(gObjectList) # addiu $t8, $t8, 0x5c18
 /* 080758 8007FB58 000F7940 */  sll   $t7, $t7, 5
 /* 08075C 8007FB5C 01F81821 */  addu  $v1, $t7, $t8
 /* 080760 8007FB60 807900D1 */  lb    $t9, 0xd1($v1)

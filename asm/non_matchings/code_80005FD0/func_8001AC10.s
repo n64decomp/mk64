@@ -96,7 +96,7 @@ glabel L8001ACAC
 /* 01B928 8001AD28 00032400 */  sll   $a0, $v1, 0x10
 /* 01B92C 8001AD2C 00046403 */  sra   $t4, $a0, 0x10
 /* 01B930 8001AD30 01802025 */  move  $a0, $t4
-/* 01B934 8001AD34 0C01EBDE */  jal   func_8007AF78
+/* 01B934 8001AD34 0C01EBDE */  jal   gen_random_item_cpu
 /* 01B938 8001AD38 85A50002 */   lh    $a1, 2($t5)
 /* 01B93C 8001AD3C 8FA40030 */  lw    $a0, 0x30($sp)
 /* 01B940 8001AD40 02002825 */  move  $a1, $s0
@@ -201,7 +201,7 @@ glabel L8001AD64
 .L8001AEB4:
 /* 01BAB4 8001AEB4 1505001D */  bne   $t0, $a1, .L8001AF2C
 /* 01BAB8 8001AEB8 00000000 */   nop
-/* 01BABC 8001AEBC 0C0ACB5C */  jal   func_802B2D70
+/* 01BABC 8001AEBC 0C0ACB5C */  jal   use_banana_item
 /* 01BAC0 8001AEC0 8FA4002C */   lw    $a0, 0x2c($sp)
 /* 01BAC4 8001AEC4 A6020002 */  sh    $v0, 2($s0)
 /* 01BAC8 8001AEC8 86030002 */  lh    $v1, 2($s0)
@@ -351,7 +351,7 @@ glabel L8001AFD8
 /* 01BCE4 8001B0E4 10000353 */  b     .L8001BE34
 /* 01BCE8 8001B0E8 86020004 */   lh    $v0, 4($s0)
 glabel L8001B0EC
-/* 01BCEC 8001B0EC 0C0ACB5C */  jal   func_802B2D70
+/* 01BCEC 8001B0EC 0C0ACB5C */  jal   use_banana_item
 /* 01BCF0 8001B0F0 8FA4002C */   lw    $a0, 0x2c($sp)
 /* 01BCF4 8001B0F4 8FAA0030 */  lw    $t2, 0x30($sp)
 /* 01BCF8 8001B0F8 A6020002 */  sh    $v0, 2($s0)
@@ -608,7 +608,7 @@ glabel L8001B4AC
 /* 01C0B4 8001B4B4 29C10050 */  slti  $at, $t6, 0x50
 /* 01C0B8 8001B4B8 50200019 */  beql  $at, $zero, .L8001B520
 /* 01C0BC 8001B4BC A6000000 */   sh    $zero, ($s0)
-/* 01C0C0 8001B4C0 0C0AC727 */  jal   func_802B1C9C
+/* 01C0C0 8001B4C0 0C0AC727 */  jal   use_green_shell_item
 /* 01C0C4 8001B4C4 8FA4002C */   lw    $a0, 0x2c($sp)
 /* 01C0C8 8001B4C8 A6020002 */  sh    $v0, 2($s0)
 /* 01C0CC 8001B4CC 86030002 */  lh    $v1, 2($s0)
@@ -715,7 +715,7 @@ glabel L8001B630
 /* 01C238 8001B638 29610050 */  slti  $at, $t3, 0x50
 /* 01C23C 8001B63C 50200019 */  beql  $at, $zero, .L8001B6A4
 /* 01C240 8001B640 A6000000 */   sh    $zero, ($s0)
-/* 01C244 8001B644 0C0AC792 */  jal   func_802B1E48
+/* 01C244 8001B644 0C0AC792 */  jal   use_red_shell_item
 /* 01C248 8001B648 8FA4002C */   lw    $a0, 0x2c($sp)
 /* 01C24C 8001B64C A6020002 */  sh    $v0, 2($s0)
 /* 01C250 8001B650 86030002 */  lh    $v1, 2($s0)
@@ -824,7 +824,7 @@ glabel L8001B7BC
 /* 01C3C4 8001B7C4 29A10050 */  slti  $at, $t5, 0x50
 /* 01C3C8 8001B7C8 50200019 */  beql  $at, $zero, .L8001B830
 /* 01C3CC 8001B7CC A6000000 */   sh    $zero, ($s0)
-/* 01C3D0 8001B7D0 0C0AC5FD */  jal   func_802B17F4
+/* 01C3D0 8001B7D0 0C0AC5FD */  jal   use_banana_bunch_item
 /* 01C3D4 8001B7D4 8FA4002C */   lw    $a0, 0x2c($sp)
 /* 01C3D8 8001B7D8 A6020002 */  sh    $v0, 2($s0)
 /* 01C3DC 8001B7DC 86030002 */  lh    $v1, 2($s0)
@@ -1000,7 +1000,7 @@ glabel L8001B9D0
 /* 01C630 8001BA30 10000100 */  b     .L8001BE34
 /* 01C634 8001BA34 86020004 */   lh    $v0, 4($s0)
 glabel L8001BA38
-/* 01C638 8001BA38 0C0ACB10 */  jal   func_802B2C40
+/* 01C638 8001BA38 0C0ACB10 */  jal   use_fake_itembox_item
 /* 01C63C 8001BA3C 8FA4002C */   lw    $a0, 0x2c($sp)
 /* 01C640 8001BA40 A6020002 */  sh    $v0, 2($s0)
 /* 01C644 8001BA44 86030002 */  lh    $v1, 2($s0)
@@ -1134,7 +1134,7 @@ glabel L8001BB30
 /* 01C820 8001BC20 10000084 */  b     .L8001BE34
 /* 01C824 8001BC24 86020004 */   lh    $v0, 4($s0)
 glabel L8001BC28
-/* 01C828 8001BC28 0C0ACBAF */  jal   func_802B2EBC
+/* 01C828 8001BC28 0C0ACBAF */  jal   use_thunder_item
 /* 01C82C 8001BC2C 8FA4002C */   lw    $a0, 0x2c($sp)
 /* 01C830 8001BC30 8FAA0030 */  lw    $t2, 0x30($sp)
 /* 01C834 8001BC34 0C032B18 */  jal   func_800CAC60

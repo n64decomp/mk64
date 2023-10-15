@@ -3,6 +3,7 @@
 
 #include "types.h"
 #include "common_structs.h"
+#include "framebuffers.h"
 
 #define SOME_TEXTURE_POINTER_MATH 0x800
 
@@ -10,34 +11,34 @@
 
 void func_8001F980(s32*, s32*);
 void func_8001F9E4(Player*, Camera*, s8);
-u16  func_8001FB0C(Player*, Camera*, f32, f32);
+u16  check_player_camera_collision(Player*, Camera*, f32, f32);
 u16  func_8001FD78(Player*, f32, f32, f32);
-void func_80020000(Player*, Camera*, u8, u8);
-void func_8002088C();
-void func_80020F1C();
-void func_80020524();
-void func_80021244(Player*, s8, s8);
-void func_800212B4();
-void func_800215DC();
-void func_8002186C();
-void func_800219BC();
-void func_80021B0C();
-void func_80021C78();
-void func_80021D40();
-void func_80021DA8();
-void func_80021E10(Mat4, Vec3f, Vec3s);
+void init_render_player(Player*, Camera*, s8, s8);
+void func_80020524(void);
+void func_8002088C(void);
+void func_80020BF4(void);
+void func_80020F1C(void);
+void try_render_player(Player*, s8, s8);
+void render_players_on_screen_one(void);
+void render_players_on_screen_two(void);
+void render_players_on_screen_three(void);
+void render_players_on_screen_four(void);
+void func_80021B0C(void);
+void func_80021C78(void);
+void func_80021D40(void);
+void func_80021DA8(void);
+void mtxf_translate_rotate(Mat4, Vec3f, Vec3s);
 void func_80021F50(Mat4, Vec3f);
-void func_80021F84(Mat4, f32);
+void mtxf_scale2(Mat4, f32);
 void func_80021FF8(Mtx*, Mat4);
-void func_80022180(Mtx*, Mat4);
-s32  func_800224F0(s16*, s16, s16);
-void func_8002276C();
+void convert_to_fixed_point_matrix(Mtx*, Mat4);
+s32  adjust_angle(s16*, s16, s16);
 void move_s32_towards(s32*, s32, f32);
 void move_f32_towards(f32*, f32, f32);
 void move_s16_towards(s16*, s16, f32);
 void move_u16_towards(u16*, s16, f32);
-void func_80022744();
-void func_8002276C();
+void func_80022744(void);
+void func_8002276C(void);
 void func_80022A98(Player*, s8);
 void func_80022B50(Player*, s8);
 void func_80022BC4(Player*, s8);
@@ -45,22 +46,30 @@ void func_80022CA8(Player*, s8, s8, s8);
 void func_80022D60(Player*, s8, s8, s8);
 void func_80022DB4(Player*, s8);
 void func_80022E84(Player*, s8, s8, s8);
-void func_80022F14(Player*, s8, s32, f32);
-void func_80023038(Player*, s8, s32, f32);
-s32  func_800230E4(Player*, s8);
-void func_800231D8(Player*, s8);
+void change_player_color_effect_rgb(Player*, s8, s32, f32);
+void change_player_color_effect_cmy(Player*, s8, s32, f32);
+s32  is_player_under_light_luigi_raceway(Player*, s8);
+void render_light_environment_on_player(Player*, s8);
 void func_800235AC(Player*, s8);
 void func_80023BF0(Player*, s8, s8, s8);
-void func_80023C84(Player*, s8, s8);
-void func_80024374(Player*, s8, s8);
+void render_player_shadow(Player*, s8, s8);
+void render_player_shadow_credits(Player*, s8, s8);
+void kart_render(Player*, s8, s8, s8);
+void ghost_render(Player*, s8, s8, s8);
+void func_80025DE8(Player*, s8, s8, s8);
+void player_ice_reflection_render(Player*, s8, s8, s8);
+void player_render(Player*, s8, s8);
 void func_80026A48(Player*, s8);
+void func_80026B4C(Player*, s8, s8, s8);
 void func_80030A34(Player*);
-void func_8002701C();
+void func_8002701C(void);
 void func_80027024(s32, s32, s32);
 
 /* This is where I'd put my static data, if I had any */
 
-extern u16 D_8015F894;
+extern struct_D_802F1F80 *gPlayerPalette;
+extern u8 *D_80164B08;
+extern u8 *D_80164B0C;
 
 extern s32 D_80164A28;
 extern s16 D_80164AAE[];
@@ -68,25 +77,24 @@ extern s16 D_80164AB0[];
 extern s16 D_80164ABE[];
 extern s16 D_80164AC0[];
 extern Player *D_80164AD0[];
-extern u16 D_80164B10[];
-extern u16 D_80164B20[];
-extern u16 D_80164B30[];
-extern u16 D_80164B40[];
-extern u16 D_80164B50[];
-extern u16 D_80164B60[];
+extern u16 gPlayerRedEffect[];
+extern u16 gPlayerGreenEffect[];
+extern u16 gPlayerBlueEffect[];
+extern u16 gPlayerCyanEffect[];
+extern u16 gPlayerMagentaEffect[];
+extern u16 gPlayerYellowEffect[];
 extern s32 D_80164B80[];
 
 extern u8 *D_8018D474;
 extern s32 D_8018D930[];
 
-extern Gfx D_0D008C78[];
+extern Gfx common_square_plain_render[];
 extern Gfx D_0D008D58[];
 
-extern u16 D_800DC51C;
-extern s32 D_800DDB58;
+extern s32 gPlayersToRenderCount;
 extern void *D_800DDB5C[];
 extern Vtx *D_800DDBB4[];
-extern f32 D_800DDBD4[];
+extern f32 gCharacterSize[];
 extern s32 D_800DDE74[];
 extern Vtx D_800E51D0[];
 extern Vtx D_800E5210[];
@@ -122,8 +130,8 @@ extern u8 **gKartWarioWheels0[];
 extern u8 **gKartWarioWheels1[];
 
 
-extern u8 ***D_800DDE34[];
-extern u8 ***D_800DDE54[];
+extern u16 **D_800DDE34[];
+extern u16 **D_800DDE54[];
 
 
 // These all come the kart data stuff, they should end up in their own inc.c eventually

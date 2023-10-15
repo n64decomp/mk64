@@ -1,16 +1,16 @@
+#define STRANGE_MAIN_HEADER_H
 #include <ultra64.h>
 #include <PR/os.h>
 #include <macros.h>
 #include <functions.h>
-#include "types.h"
-#include "config.h"
+#include <types.h>
+#include <config.h>
 #include "profiler.h"
 #include "main.h"
-#include "memory.h"
+#include "racing/memory.h"
 #include "menus.h"
-#include "segments.h"
-#include "segment_symbols.h"
-#include "common_structs.h"
+#include <segments.h>
+#include <common_structs.h>
 #include <defines.h>
 #include "framebuffers.h"
 #include "camera.h"
@@ -23,16 +23,17 @@
 #include "audio/external.h"
 #include "code_800029B0.h"
 #include "code_80280000.h"
-#include "code_80280650.h"
+#include "podium_ceremony_actors.h"
 #include "code_80091750.h"
 #include "code_80057C60.h"
 #include "profiler.h"
-#include "code_80027D00.h"
+#include "player_controller.h"
 #include "code_8001F980.h"
 #include "render_courses.h"
 #include "actors.h"
 #include "staff_ghosts.h"
-#include <defines.h>
+#include <debug.h>
+#include "crash_screen.h"
 
 // Declarations (not in this file)
 void func_80091B78(void);
@@ -106,7 +107,7 @@ u8 gControllerBits;
 
 struct UnkStruct_8015F584 D_8014F110[1024];
 u16 gNumActors;
-u16 D_80150112;
+u16 gMatrixObjectCount;
 s32 gTickSpeed;
 f32 D_80150118;
 u16 wasSoftReset;
@@ -116,7 +117,7 @@ s32 D_80150120;
 s32 gMenuSelectionFromQuit;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
-f32 D_80150130[4];
+f32 gCameraZoom[4]; // look like to be the fov of each character
 //f32 D_80150134;
 //f32 D_80150138;
 //f32 D_8015013C;
@@ -133,7 +134,7 @@ Gfx *gDisplayListHead;
 struct SPTask *gGfxSPTask;
 s32 D_801502A0;
 s32 D_801502A4;
-u32 gPhysicalFramebuffers[3];
+u16 *gPhysicalFramebuffers[3];
 u32 D_801502B4;
 UNUSED u32 D_801502B8;
 UNUSED u32 D_801502BC;
@@ -164,10 +165,11 @@ OSMesg gPIMesgBuf[32];
 OSMesgQueue gPIMesgQueue;
 
 s32 gGamestate = 0xFFFF;
+// D_800DC510 is externed as an s32 in other files. D_800DC514 is only used in main.c, likely a developer mistake.
 u16 D_800DC510 = 0;
 u16 D_800DC514 = 0;
-u16 D_800DC518 = 0;
-u16 D_800DC51C = 0;
+u16 creditsRenderMode = 0; // Renders the whole track. Displays red if used in normal race mode.
+u16 gDemoMode = DEMO_MODE_INACTIVE;
 u16 gEnableDebugMode = DEBUG_MODE;
 s32 gGamestateNext = 7; // = COURSE_DATA_MENU?;
 UNUSED s32 D_800DC528 = 1;
@@ -200,12 +202,15 @@ void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, 
     thread->queue = NULL;
     osCreateThread(thread, id, entry, arg, sp, pri);
 }
-
+void isPrintfInit(void);
 void main_func(void) {
 #if defined(VERSION_EU)
     osTvType = TV_TYPE_PAL;
 #endif
     osInitialize();
+#ifdef DEBUG
+    isPrintfInit(); // init osSyncPrintf
+#endif
     create_thread(&gIdleThread, 1, &thread1_idle, NULL, gIdleThreadStack + ARRAY_COUNT(gIdleThreadStack), 100);
     osStartThread(&gIdleThread);
 }
@@ -266,10 +271,13 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->msgqueue = &gGfxVblankQueue;
     gGfxSPTask->msg = (OSMesg) 2;
     gGfxSPTask->task.t.type = M_GFXTASK;
-    gGfxSPTask->task.t.flags = (1 << 1);
+    gGfxSPTask->task.t.flags = OS_TASK_DP_WAIT;
     gGfxSPTask->task.t.ucode_boot = rspbootTextStart;
     gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspbootTextEnd - (u8 *) rspbootTextStart);
-    if (gGamestate != RACING || gPlayerCountSelection1 - 1 == 0) {
+    // The split-screen multiplayer racing state uses F3DLX which has a simple subpixel calculation.
+    // Singleplayer race mode and all other game states use F3DEX.
+    // http://n64devkit.square7.ch/n64man/ucode/gspF3DEX.htm
+    if (gGamestate != RACING || gPlayerCountSelection1 == 1) {
         gGfxSPTask->task.t.ucode = gspF3DEXTextStart;
         gGfxSPTask->task.t.ucode_data = gspF3DEXDataStart;
     } else {
@@ -277,7 +285,7 @@ void create_gfx_task_structure(void) {
         gGfxSPTask->task.t.ucode_data = gspF3DLXDataStart;
     }
     gGfxSPTask->task.t.flags = 0;
-    gGfxSPTask->task.t.flags = (1 << 1);
+    gGfxSPTask->task.t.flags = OS_TASK_DP_WAIT;
     gGfxSPTask->task.t.ucode_size = SP_UCODE_SIZE;
     gGfxSPTask->task.t.ucode_data_size = SP_UCODE_DATA_SIZE;
     gGfxSPTask->task.t.dram_stack = (u64 *) &gGfxSPTaskStack;
@@ -288,7 +296,7 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->task.t.data_size = (gDisplayListHead - gGfxPool->gfxPool) * sizeof(Gfx);
     func_8008C214();
     gGfxSPTask->task.t.yield_data_ptr = (u64 *) &gGfxSPTaskYieldBuffer;
-    gGfxSPTask->task.t.yield_data_size = 0xD00; /* Not equal to OS_YIELD_DATA_SIZE */
+    gGfxSPTask->task.t.yield_data_size = OS_YIELD_DATA_SIZE;
 }
 
 
@@ -303,7 +311,7 @@ void init_controllers(void) {
     }
 }
 
-void update_controller(s32 index) { 
+void update_controller(s32 index) {
     struct Controller *controller = &gControllers[index];
     u16 stick;
 
@@ -442,7 +450,6 @@ void config_gfx_pool(void) {
  * Yields to the VI framerate twice, locking the game at 30 FPS.
  * Selects the next framebuffer to be rendered and displayed.
  */
-void crash_screen_set_framebuffer(uintptr_t*);
 void display_and_vsync(void) {
     profiler_log_thread5_time(BEFORE_DISPLAY_LISTS);
     osRecvMesg(&gGfxVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
@@ -452,7 +459,8 @@ void display_and_vsync(void) {
     osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
     profiler_log_thread5_time(THREAD5_END);
     osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-    crash_screen_set_framebuffer((uintptr_t *) gPhysicalFramebuffers[sRenderedFramebuffer]);
+    crash_screen_set_framebuffer(gPhysicalFramebuffers[sRenderedFramebuffer]);
+
     if (++sRenderedFramebuffer == 3) {
         sRenderedFramebuffer = 0;
     }
@@ -462,20 +470,20 @@ void display_and_vsync(void) {
     gGlobalTimer++;
 }
 
-void init_seg_80280000(void) {
-    bzero((void *) SEG_80280000, 0xDF00);
+void init_segment_ending_sequences(void) {
+    bzero((void *) SEG_ENDING_SEQUENCES, ENDING_SEQUENCE_SIZE);
     osWritebackDCacheAll();
-    dma_copy((u8 *) SEG_80280000, (u8 *) &_code_80280000SegmentRomStart, ALIGN16((u32)&_code_80280000SegmentRomEnd - (u32)&_code_80280000SegmentRomStart));
-    osInvalICache((void *) SEG_80280000, 0xDF00);
-    osInvalDCache((void *) SEG_80280000, 0xDF00);
+    dma_copy((u8 *) SEG_ENDING_SEQUENCES, (u8 *) &_endingSequencesSegmentRomStart, ALIGN16((u32)&_endingSequencesSegmentRomEnd - (u32)&_endingSequencesSegmentRomStart));
+    osInvalICache((void *) SEG_ENDING_SEQUENCES, ENDING_SEQUENCE_SIZE);
+    osInvalDCache((void *) SEG_ENDING_SEQUENCES, ENDING_SEQUENCE_SIZE);
 }
 
-void init_seg_8028DF00(void) {
-    bzero((void *) SEG_8028DF00, 0x2C470);
+void init_segment_racing(void) {
+    bzero((void *) SEG_RACING, RACING_SEQUENCE_SIZE);
     osWritebackDCacheAll();
-    dma_copy((u8 *) SEG_8028DF00, (u8 *) &_code_8028DF00SegmentRomStart, ALIGN16((u32)&_code_8028DF00SegmentRomEnd - (u32)&_code_8028DF00SegmentRomStart));
-    osInvalICache((void *) SEG_8028DF00, 0x2C470);
-    osInvalDCache((void *) SEG_8028DF00, 0x2C470);
+    dma_copy((u8 *) SEG_RACING, (u8 *) &_racingSegmentRomStart, ALIGN16((u32)&_racingSegmentRomEnd - (u32)&_racingSegmentRomStart));
+    osInvalICache((void *) SEG_RACING, RACING_SEQUENCE_SIZE);
+    osInvalDCache((void *) SEG_RACING, RACING_SEQUENCE_SIZE);
 }
 
 void dma_copy(u8 *dest, u8 *romAddr, u32 size) {
@@ -499,40 +507,52 @@ void dma_copy(u8 *dest, u8 *romAddr, u32 size) {
  */
 void setup_game_memory(void) {
     UNUSED u32 pad[2];
-    u32 sp2C;
-    u32 sp40;
-    uintptr_t texture_seg;
-    u32 sp38;
+    ptrdiff_t commonCourseDataSize; // Compressed mio0 size
+    uintptr_t textureSegSize;
+    ptrdiff_t textureSegStart;
+    uintptr_t allocatedMemory;
     UNUSED s32 unknown_padding;
 
-    init_seg_8028DF00();
-    gHeapEndPtr = SEG_8028DF00;
+    init_segment_racing();
+    gHeapEndPtr = (uintptr_t) SEG_RACING;
     set_segment_base_addr(0, (void *) SEG_START);
-    initialize_memory_pool((uintptr_t) &D_801978D0, (uintptr_t) 0x80242F00);
+    
+    // Memory pool size of 0xAB630
+    initialize_memory_pool((uintptr_t) &_mainSegNoloadEnd, (uintptr_t) MEMORY_POOL_END);
+
     func_80000BEC();
     osInvalDCache((void *) SEG_802BA370, 0x5810);
     osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_data_802BA370SegmentRomStart, (void *) SEG_802BA370, 0x5810, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     set_segment_base_addr(2, (void *) load_data((uintptr_t) &_data_segment2SegmentRomStart, (uintptr_t) &_data_segment2SegmentRomEnd));
-    sp2C = (u32)&_common_texturesSegmentRomEnd - (u32)&_common_texturesSegmentRomStart;
-    sp2C = ALIGN16(sp2C);
-    texture_seg = SEG_8028DF00-sp2C;
-    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_common_texturesSegmentRomStart, (void *) texture_seg, sp2C, &gDmaMesgQueue);
+    
+    commonCourseDataSize = (uintptr_t)&_common_texturesSegmentRomEnd - (uintptr_t)&_common_texturesSegmentRomStart;
+    commonCourseDataSize = ALIGN16(commonCourseDataSize);
+
+#ifdef AVOID_UB
+    textureSegStart = (ptrdiff_t) SEG_RACING[0] - commonCourseDataSize;
+#else
+    textureSegStart = SEG_RACING - commonCourseDataSize;
+#endif  
+    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_common_texturesSegmentRomStart, (void *) textureSegStart, commonCourseDataSize, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
-    sp40 = *(u32 *)(texture_seg + 4);
-    sp40 = ALIGN16(sp40);
-    sp38 = gNextFreeMemoryAddress;
-    mio0decode((u8 *) texture_seg, (u8 *) sp38);
-    set_segment_base_addr(0xD, (void *) sp38);
+    textureSegSize = *(uintptr_t *)(textureSegStart + 4);
+    textureSegSize = ALIGN16(textureSegSize);
+    allocatedMemory = gNextFreeMemoryAddress;
+    mio0decode((u8 *) textureSegStart, (u8 *) allocatedMemory);
+    set_segment_base_addr(0xD, (void *) allocatedMemory);
 
-    gNextFreeMemoryAddress += sp40;
-    D_8015F734 = gNextFreeMemoryAddress;
+    gNextFreeMemoryAddress += textureSegSize;
+
+    // Common course data does not get reloaded when the race state resets.
+    // Therefore, only reset the memory ptr to after the common course data.
+    gFreeMemoryResetAnchor = gNextFreeMemoryAddress;
 }
 
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
 void game_init_clear_framebuffer(void) {
     gGamestateNext = 0; // = START_MENU_FROM_QUIT?
@@ -543,9 +563,9 @@ void race_logic_loop(void) {
     s16 i;
     u16 rotY;
 
-    D_80150112 = 0;
-    D_80164AF0 = 0;
-    if (D_800DC5FC != 0) {
+    gMatrixObjectCount = 0;
+    gMatrixEffectCount = 0;
+    if (gIsGamePaused != 0) {
         func_80290B14();
     }
     if (gIsInQuitToMenuTransition != 0) {
@@ -564,8 +584,7 @@ void race_logic_loop(void) {
         case SCREEN_MODE_1P:
             gTickSpeed = 2;
             staff_ghosts_loop();
-            if (D_800DC5FC == 0) {
-
+            if (gIsGamePaused == 0) {
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E) {
                         gCourseTimer += 0.01666666; // 1 / 60
@@ -577,7 +596,7 @@ void race_logic_loop(void) {
                     func_80028F70();
                     func_8028F474();
                     func_80059AC8();
-                    update_simple_objects();
+                    update_course_actors();
                     func_802966A0();
                     func_8028FCBC();
 
@@ -630,7 +649,7 @@ void race_logic_loop(void) {
             } else {
                 gTickSpeed = 2;
             }
-            if (D_800DC5FC == 0) {
+            if (gIsGamePaused == 0) {
                     for (i = 0; i < gTickSpeed; i++) {
                         if (D_8015011E != 0) {
                             gCourseTimer += 0.01666666;
@@ -644,7 +663,7 @@ void race_logic_loop(void) {
                         func_80029150();
                         func_8028F474();
                         func_80059AC8();
-                        update_simple_objects();
+                        update_course_actors();
                         func_802966A0();
                         func_8028FCBC();
                     }
@@ -676,7 +695,7 @@ void race_logic_loop(void) {
                 gTickSpeed = 2;
             }
 
-            if (D_800DC5FC == 0) {
+            if (gIsGamePaused == 0) {
                     for (i = 0; i < gTickSpeed; i++) {
                         if (D_8015011E != 0) {
                             gCourseTimer += 0.01666666;
@@ -690,7 +709,7 @@ void race_logic_loop(void) {
                         func_80029150();
                         func_8028F474();
                         func_80059AC8();
-                        update_simple_objects();
+                        update_course_actors();
                         func_802966A0();
                         func_8028FCBC();
                     }
@@ -744,7 +763,7 @@ void race_logic_loop(void) {
                         break;
                 }
             }
-            if (D_800DC5FC == 0) {
+            if (gIsGamePaused == 0) {
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E != 0) {
                         gCourseTimer += 0.01666666;
@@ -762,7 +781,7 @@ void race_logic_loop(void) {
                     func_800291F8();
                     func_8028F474();
                     func_80059AC8();
-                    update_simple_objects();
+                    update_course_actors();
                     func_802966A0();
                     func_8028FCBC();
                 }
@@ -822,6 +841,9 @@ void race_logic_loop(void) {
     func_802A4300();
     func_800591B4();
     func_80093E20();
+#if DVDL
+	display_dvdl();
+#endif
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
 }
@@ -834,12 +856,26 @@ void race_logic_loop(void) {
  * State 3) Process race related logic
  * State 4) Ending sequence
  * State 5) Credits
- * 
+ *
  * Note that the state doesn't flip-flop at random but is permanent
  * until the state changes (ie. Exit menus and start a race).
  */
 
 void game_state_handler(void) {
+#if DVDL
+	if ((gControllerOne->button & L_TRIG) &&
+		(gControllerOne->button & R_TRIG) &&
+		(gControllerOne->button & Z_TRIG) &&
+		(gControllerOne->button & A_BUTTON)) {
+			gGamestateNext = CREDITS_SEQUENCE;
+	} else if ((gControllerOne->button & L_TRIG) &&	
+		(gControllerOne->button & R_TRIG) &&
+		(gControllerOne->button & Z_TRIG) &&
+		(gControllerOne->button & B_BUTTON)) {
+			gGamestateNext = ENDING_SEQUENCE;
+	}
+#endif
+
     switch (gGamestate) {
         case 7:
             game_init_clear_framebuffer();
@@ -852,14 +888,16 @@ void game_state_handler(void) {
             osViBlack(0);
             update_menus();
             init_rcp();
-            // gGfxPool->mtxPool->m or gGfxPool?
-            func_80094A64((Mtx *) gGfxPool->mtxPool->m);
+            func_80094A64(gGfxPool);
+#if DVDL
+			display_dvdl();
+#endif
             break;
         case RACING:
             race_logic_loop();
             break;
         case ENDING_SEQUENCE:
-            ending_sequence_loop();
+            podium_ceremony_loop();
             break;
         case CREDITS_SEQUENCE:
             credits_loop();
@@ -974,7 +1012,7 @@ void handle_sp_complete(void) {
     struct SPTask *curSPTask = gActiveSPTask;
 
     gActiveSPTask = NULL;
-    
+
     if (curSPTask->state == SPTASK_STATE_INTERRUPTED) {
         // handle_vblank tried to start an audio task while there was already a
         // gfx task running, so it had to interrupt the gfx task. That interruption
@@ -1020,16 +1058,15 @@ void thread3_video(UNUSED void *arg0) {
     OSMesg msg;
     UNUSED s32 pad[4];
 
-    gPhysicalFramebuffers[0] = (u32) &gFramebuffer0;
-    gPhysicalFramebuffers[1] = (u32) &gFramebuffer1;
-    gPhysicalFramebuffers[2] = (u32) &gFramebuffer2;
+    gPhysicalFramebuffers[0] = (u16 *) &gFramebuffer0;
+    gPhysicalFramebuffers[1] = (u16 *) &gFramebuffer1;
+    gPhysicalFramebuffers[2] = (u16 *) &gFramebuffer2;
 
     // Clear framebuffer.
     framebuffer1 = (u64 *) &gFramebuffer1;
     for (i = 0; i < 19200; i++) {
         framebuffer1[i] = 0;
     }
-
     setup_mesg_queues();
     setup_game_memory();
 
@@ -1083,9 +1120,9 @@ void func_80002658(void) {
 }
 
 /**
- * Sets courseId to NULL if 
- * 
- * 
+ * Sets courseId to NULL if
+ *
+ *
  */
 void update_gamestate(void) {
     switch (gGamestate) {
@@ -1107,19 +1144,19 @@ void update_gamestate(void) {
             break;
         case RACING:
             // @bug Reloading this segment makes random_u16() deterministic for player spawn order.
-            // In laymens terms, random_u16() outputs the same value everytime.
-            init_seg_8028DF00();
+            // In laymens terms, random_u16() outputs the same value every time.
+            init_segment_racing();
             setup_race();
             break;
         case ENDING_SEQUENCE:
             gCurrentlyLoadedCourseId = COURSE_NULL;
-            init_seg_80280000();
+            init_segment_ending_sequences();
             load_ceremony_cutscene();
             break;
         case CREDITS_SEQUENCE:
             gCurrentlyLoadedCourseId = COURSE_NULL;
-            init_seg_8028DF00();
-            init_seg_80280000();
+            init_segment_racing();
+            init_segment_ending_sequences();
             load_credits();
             break;
         }
@@ -1132,6 +1169,7 @@ void thread5_game_loop(UNUSED void *arg) {
     if (!wasSoftReset) {
         clear_nmi_buffer();
     }
+
     set_vblank_handler(2, &gGameVblankHandler, &gGameVblankQueue, (OSMesg) OS_EVENT_SW2);
     // These variables track stats such as player wins.
     // In the event of a console reset, it remembers them.

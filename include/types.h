@@ -58,12 +58,12 @@ struct UnkStruct_800DC5EC {
     /* 0x2E */ s16 screenHeight;
     /* 0x30 */ s16 screenStartX;
     /* 0x32 */ s16 screenStartY;
-    s16 unk3C;
-    s16 playerDirection;
-    s16 pathCounter;
-    s16 unk42;
-    s32 pad2;
-};
+    /* 0x34 */ s16 unk3C;
+    /* 0x36 */ s16 playerDirection;
+    /* 0x38 */ s16 pathCounter;
+    /* 0x3A */ s16 unk42;
+    /* 0x3C */ s32 pad2;
+}; // size = 0x40
 
 // Camera path struct? Or something like that. For GP race won scene?
 struct UnkStruct_80287500 {

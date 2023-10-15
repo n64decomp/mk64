@@ -15,29 +15,34 @@
 #include "math_util_2.h"
 #include "objects.h"
 #include "variables.h"
+#include "waypoints.h"
+#include "bomb_kart.h"
 #include "common_textures.h"
 #include "code_8001F980.h"
+#include "code_80004740.h"
 #include "hud_renderer.h"
 #include "code_80071F00.h"
 #include "code_80091750.h"
-#include "code_802AAA70.h"
+#include "collision.h"
 #include "main.h"
 #include "code_80086E70.h"
+#include "courses/all_course_data.h"
+#include <vehicles.h>
 
-void func_800431B0(Vec3f arg0, Vec3su arg1, f32 arg2, Vtx *vtx) {
-    func_80042E00(arg0, arg1, arg2);
+void func_800431B0(Vec3f pos, Vec3su orientation, f32 scale, Vtx *vtx) {
+    rsp_set_matrix_transformation(pos, orientation, scale);
     gSPVertex(gDisplayListHead++, vtx, 4, 0);
-    gSPDisplayList(gDisplayListHead++, D_0D006940);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
 
-void func_80043220(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+void func_80043220(Vec3f pos, Vec3su orientation, f32 scale, Gfx *gfx) {
+    rsp_set_matrix_transformation(pos, orientation, scale);
     gSPDisplayList(gDisplayListHead++, &D_0D0077A0);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
 
-UNUSED void func_80043288(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+UNUSED void func_80043288(Vec3f pos, Vec3su orientation, f32 arg2, Gfx *gfx) {
+    rsp_set_matrix_transformation(pos, orientation, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0077A0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPDisplayList(gDisplayListHead++, gfx);
@@ -45,25 +50,25 @@ UNUSED void func_80043288(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
 }
 
 void func_80043328(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0077D0);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
 
 UNUSED void func_80043390(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0077F8);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
 
 UNUSED void func_800433F8(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007828);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
 
 UNUSED void func_80043460(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007828);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPDisplayList(gDisplayListHead++, gfx);
@@ -71,7 +76,7 @@ UNUSED void func_80043460(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
 }
 
 void func_80043500(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007850);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPDisplayList(gDisplayListHead++, gfx);
@@ -79,7 +84,7 @@ void func_80043500(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
 }
 
 void func_800435A0(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx, s32 arg4) {
-    func_80042F70(arg0, arg1, arg2);
+    rsp_set_matrix_transformation_inverted_x_y_orientation(arg0, arg1, arg2);
 
     gSPDisplayList(gDisplayListHead++, D_0D007878);
     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, 0xFF, 0xFF, arg4);
@@ -89,7 +94,7 @@ void func_800435A0(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx, s32 arg4) {
 }
 
 UNUSED void func_80043668(Vec3f arg0, Vec3su arg1, f32 arg2, Gfx *gfx) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
@@ -106,7 +111,7 @@ UNUSED void func_80043764(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
     gSPVertex(gDisplayListHead++, vtx, 4, 0);
-    gSPDisplayList(gDisplayListHead++, D_0D006940);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
 
 UNUSED void func_800437F8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 arg5) {
@@ -119,7 +124,7 @@ UNUSED void func_800437F8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 
     vtx[2].v.cn[3] = arg5;
     vtx[3].v.cn[3] = arg5;
     gSPVertex(gDisplayListHead++, vtx, 4, 0);
-    gSPDisplayList(gDisplayListHead++, D_0D006940);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
 
 UNUSED void func_800438C4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 arg5) {
@@ -129,7 +134,7 @@ UNUSED void func_800438C4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
     gDPSetRenderMode(gDisplayListHead++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gSPVertex(gDisplayListHead++, vtx, 4, 0);
-    gSPDisplayList(gDisplayListHead++, D_0D006940);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
 
 UNUSED void func_8004398C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 arg5) {
@@ -139,7 +144,7 @@ UNUSED void func_8004398C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
     gDPSetRenderMode(gDisplayListHead++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gSPVertex(gDisplayListHead++, vtx, 4, 0);
-    gSPDisplayList(gDisplayListHead++, D_0D006940);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
     
 s32 func_80043A54(s32 arg0) {
@@ -437,12 +442,12 @@ void func_800450C8(u8 *image, s32 width, s32 height) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800450C8.s")
 #endif
 
-void func_800452A4(u8 *texture, s32 width, s32 height) {
+void rsp_load_texture(u8 *texture, s32 width, s32 height) {
     gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_CI, G_IM_SIZ_8b, width, height, 0,
         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
 
-void func_8004544C(u8 *texture, s32 width, s32 height, s32 someMask) {
+void rsp_load_texture_mask(u8 *texture, s32 width, s32 height, s32 someMask) {
     gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_CI, G_IM_SIZ_8b, width, height, 0,
         G_TX_MIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_CLAMP, someMask, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 }
@@ -613,7 +618,7 @@ GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80045738.s")
 
 void func_80045B2C(Vtx *arg0) {
     gSPVertex(gDisplayListHead++, arg0, 4, 0);
-    gSPDisplayList(gDisplayListHead++, D_0D006940);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
 
 void func_80045B74(Vtx *arg0) {
@@ -622,18 +627,18 @@ void func_80045B74(Vtx *arg0) {
 }
 
 UNUSED void func_80045BBC(Vec3f arg0, Vec3su arg1, f32 arg2, Vtx *arg3) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0078A0);
     gSPVertex(gDisplayListHead++, arg3, 4, 0);
-    gSPDisplayList(gDisplayListHead++, D_0D006940);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
 
 UNUSED void func_80045C48(Vec3f arg0, Vec3su arg1, f32 arg2, Vtx *arg3) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0078D0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPVertex(gDisplayListHead++, arg3, 4, 0);
-    gSPDisplayList(gDisplayListHead++, D_0D006940);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
@@ -761,7 +766,7 @@ void func_800465B8(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *texture
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D0079E8);
 
-    func_8004B2BC(arg4);
+    set_transparency(arg4);
     func_80045E10(texture, arg6, arg7, arg8, argA);
 }
 
@@ -791,25 +796,25 @@ UNUSED void func_80046794(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture, V
 }
 
 void func_80046808(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007948);
     func_80045E10(texture, arg4, arg5, arg6, arg8);
 }
 
 UNUSED void func_80046874(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     func_80045E10(texture, arg4, arg5, arg6, arg8);
 }
 
 void func_800468E0(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     func_80045F18(texture, arg4, arg5, arg6, arg8, arg9);
 }
 
 UNUSED void func_80046954(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     func_80045E10(texture, arg4, arg5, arg6, arg8);
@@ -817,14 +822,14 @@ UNUSED void func_80046954(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *a
 }
 
 void func_80046A00(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007948);
     func_80043D50(texture, arg5, arg6);
     func_80045B74(arg4);
 }
 
 UNUSED void func_80046A68(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     func_800462A8(texture, arg4, arg5, arg6, arg8);
 }
@@ -834,11 +839,11 @@ UNUSED void func_80046AD4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture) {
 }
 
 UNUSED void func_80046B38(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture) {
-    func_800464D0(arg0, arg1, arg2, arg3, texture, D_0D005770, 16, 16, 16, 16);
+    func_800464D0(arg0, arg1, arg2, arg3, texture, common_vtx_rectangle, 16, 16, 16, 16);
 }
 
 UNUSED void func_80046B9C(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture) {
-    func_80046808(arg0, arg1, arg2, texture, D_0D005770, 16, 16, 16, 16);
+    func_80046808(arg0, arg1, arg2, texture, common_vtx_rectangle, 16, 16, 16, 16);
 }
 
 UNUSED void func_80046BEC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture, Vtx *arg5) {
@@ -854,11 +859,11 @@ UNUSED void func_80046C78(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture) {
 }
 
 UNUSED void func_80046CDC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture) {
-    func_800464D0(arg0, arg1, arg2, arg3, texture, D_0D005FB0, 64, 32, 64, 32);
+    func_800464D0(arg0, arg1, arg2, arg3, texture, &D_0D005FB0, 64, 32, 64, 32);
 }
 
 UNUSED void func_80046D40(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture) {
-    func_80046808(arg0, arg1, arg2, texture, D_0D005FB0, 64, 32, 64, 32);
+    func_80046808(arg0, arg1, arg2, texture, &D_0D005FB0, 64, 32, 64, 32);
 }
 
 UNUSED void func_80046D90(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture) {
@@ -869,16 +874,16 @@ UNUSED void func_80046DF4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *
     func_800465B8(arg0, arg1, arg2, arg3, arg4, texture, D_0D0060B0, 64, 64, 64, 32);
 }
 
-void func_80046E60(u8 *tlut, u8 *texture, s32 arg2, s32 arg3) {
+void func_80046E60(u8 *tlut, u8 *texture, s32 width, s32 height) {
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
-    func_800452A4(texture, arg2, arg3);
+    rsp_load_texture(texture, width, height);
 }
 
 void func_80046F60(u8 *tlut, u8 *arg1, s32 arg2, s32 arg3, s32 arg4) {
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
-    func_8004544C(arg1, arg2, arg3, arg4);
+    rsp_load_texture_mask(arg1, arg2, arg3, arg4);
 }
 
 void func_80047068(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, s32 width, s32 height) {
@@ -888,25 +893,25 @@ void func_80047068(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, 
 
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
     for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
-        func_800452A4(img, width, height);
+        rsp_load_texture(img, width, height);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, D_0D006940);
+        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
         img += width * height;
         vertexIndex += 4;
     }
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void func_80047270(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, s32 width, s32 height) {
+void draw_rectangle_texture_overlap(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, s32 width, s32 height) {
     s32 heightIndex;
     s32 vertexIndex = 0;
     u8 *img = texture;
 
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
     for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
-        func_800452A4(img, width, height);
+        rsp_load_texture(img, width, height);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, D_0D006940);
+        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
         img += width * (height - 1);
         vertexIndex += 4;
     }
@@ -920,9 +925,9 @@ void func_8004747C(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, 
 
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
     for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
-        func_8004544C(img, width, height, someMask);
+        rsp_load_texture_mask(img, width, height, someMask);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, D_0D006940);
+        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
         img += width * (height - 1);
         vertexIndex += 4;
     }
@@ -937,9 +942,9 @@ void func_8004768C(u8 *tlut, u8 *texture, Vtx *arg2, s32 arg3, s32 width, s32 he
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
     for (heightIndex = 0; heightIndex < arg3 / height; heightIndex++) {
         // Something seems off about arguments here, but if it matches it matches
-        func_800452A4(img, height, width);
+        rsp_load_texture(img, height, width);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, D_0D006940);
+        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
         img += height * width;
         vertexIndex += 4;
     }
@@ -952,16 +957,16 @@ void func_8004788C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture
     func_80047068(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
-void func_80047910(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042330(arg0, arg1, arg2, arg3);
+void func_80047910(s32 x, s32 y, u16 angle, f32 size, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
+    func_80042330(x, y, angle, size);
     gSPDisplayList(gDisplayListHead++, D_0D007CD8);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_80047994(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007CF8);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_80047A18(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
@@ -973,7 +978,7 @@ void func_80047A18(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture
 void func_80047A9C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007D38);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 UNUSED void func_80047B20(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9) {
@@ -985,142 +990,142 @@ UNUSED void func_80047B20(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *
 void func_80047B9C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *tlut, u8 *texture, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
-    func_8004B2BC(arg4);
+    set_transparency(arg4);
     func_80047068(tlut, texture, arg7, arg8, arg9, argA, argB);
 }
 
 UNUSED void func_80047C28(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *tlut, u8 *texture, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007DD8);
-    func_8004B2BC(arg4);
-    func_80047270(tlut, texture, arg7, arg8, arg9, argA, argB);
+    set_transparency(arg4);
+    draw_rectangle_texture_overlap(tlut, texture, arg7, arg8, arg9, argA, argB);
 }
 
 void func_80047CB4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *tlut, u8 *texture, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007E38);
-    func_8004B2BC(arg4);
+    set_transparency(arg4);
     func_80047068(tlut, texture, arg7, arg8, arg9, argA, argB);
 }
 
 UNUSED void func_80047D40(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *tlut, u8 *texture, Vtx *arg7, s32 arg8, s32 arg9, s32 argA, s32 argB) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007E58);
-    func_8004B2BC(arg4);
-    func_80047270(tlut, texture, arg7, arg8, arg9, argA, argB);
+    set_transparency(arg4);
+    draw_rectangle_texture_overlap(tlut, texture, arg7, arg8, arg9, argA, argB);
 }
 
 UNUSED void func_80047DCC(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007CB8);
     func_80047068(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 void func_80047E48(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007CD8);
-    func_80047270(tlut, texture, arg5, arg6, arg7, arg8, arg9);
+    draw_rectangle_texture_overlap(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 UNUSED void func_80047EC4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D18);
     func_80047068(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 void func_80047F40(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D38);
-    func_80047270(tlut, texture, arg5, arg6, arg7, arg8, arg9);
+    draw_rectangle_texture_overlap(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 UNUSED void func_80047FBC(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D58);
-    func_80047270(tlut, texture, arg5, arg6, arg7, arg8, arg9);
+    draw_rectangle_texture_overlap(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 UNUSED void func_80048038(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D98);
     func_80047068(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 void func_800480B4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
-    func_80047270(tlut, texture, arg5, arg6, arg7, arg8, arg9);
+    draw_rectangle_texture_overlap(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
 void func_80048130(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     func_8004747C(tlut, texture, arg5, arg6, arg7, arg8, arg9, argA);
 }
 
 UNUSED void func_800481B4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     func_8004768C(tlut, texture, arg5, arg6, arg7, arg8);
 }
 
 UNUSED void func_80048228(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
-    func_8004B2BC(arg3);
+    set_transparency(arg3);
     func_80047068(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_800482AC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007DD8);
-    func_8004B2BC(arg3);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    set_transparency(arg3);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 UNUSED void func_80048330(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E38);
-    func_8004B2BC(arg3);
+    set_transparency(arg3);
     func_80047068(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_800483B4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E58);
-    func_8004B2BC(arg3);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    set_transparency(arg3);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_80048438(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007DF8);
-    func_8004B2BC(arg3);
+    set_transparency(arg3);
     func_80047068(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_800484BC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E18);
-    func_8004B2BC(arg3);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    set_transparency(arg3);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_80048540(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E98);
-    func_8004B2BC(arg3);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    set_transparency(arg3);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
 }
 
 void func_800485C4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E98);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    func_8004B2BC(arg3);
-    func_80047270(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    set_transparency(arg3);
+    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
     
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
 }
@@ -1227,7 +1232,7 @@ void func_80048F8C(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
         for (widthIndex = 0; widthIndex < arg2 / width; widthIndex++) {
             func_800441E0(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[vertexIndex], 4, 0);
-            gSPDisplayList(gDisplayListHead++, D_0D006940);
+            gSPDisplayList(gDisplayListHead++, common_rectangle_display);
             img += width * height * 2;
             vertexIndex += 4;
         }
@@ -1245,7 +1250,7 @@ void func_80049130(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
         for (widthIndex = 0; widthIndex < arg2 / width; widthIndex++) {
             func_80044388(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[vertexIndex], 4, 0);
-            gSPDisplayList(gDisplayListHead++, D_0D006940);
+            gSPDisplayList(gDisplayListHead++, common_rectangle_display);
             img += width * height * 2;
             vertexIndex += 4;
         }
@@ -1263,7 +1268,7 @@ void func_800492D4(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
         for (widthIndex = 0; widthIndex < arg2 / width; widthIndex++) {
             func_800444B0(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[vertexIndex], 4, 0);
-            gSPDisplayList(gDisplayListHead++, D_0D006940);
+            gSPDisplayList(gDisplayListHead++, common_rectangle_display);
             img += width * height;
             vertexIndex += 4;
         }
@@ -1281,7 +1286,7 @@ void func_80049478(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
         for (widthIndex = 0; widthIndex < arg2 / width; widthIndex++) {
             func_80044658(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[vertexIndex], 4, 0);
-            gSPDisplayList(gDisplayListHead++, D_0D006940);
+            gSPDisplayList(gDisplayListHead++, common_rectangle_display);
             img += width * height;
             vertexIndex += 4;
         }
@@ -1300,7 +1305,7 @@ void func_8004961C(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
 
             func_80044924(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[var_s2], 4, 0);
-            gSPDisplayList(gDisplayListHead++, D_0D006940);
+            gSPDisplayList(gDisplayListHead++, common_rectangle_display);
             img += (width * height) / 2;
             var_s2 += 4;
         }
@@ -1319,7 +1324,7 @@ void func_800497CC(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
         for (widthIndex = 0; widthIndex < arg2 / width; widthIndex++) {
             func_80044BF8(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[vertexIndex], 4, 0);
-            gSPDisplayList(gDisplayListHead++, D_0D006940);
+            gSPDisplayList(gDisplayListHead++, common_rectangle_display);
             img += width * height;
             vertexIndex += 4;
         }
@@ -1337,7 +1342,7 @@ void func_80049970(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 he
         for (j = 0; j < arg2 / width; j++) {
             func_80044DA0(img, width, height);
             gSPVertex(gDisplayListHead++, &arg1[var_s2], 4, 0);
-            gSPDisplayList(gDisplayListHead++, D_0D006940);
+            gSPDisplayList(gDisplayListHead++, common_rectangle_display);
             img += (width * height) / 2;
             var_s2 += 4;
         }
@@ -1455,25 +1460,25 @@ void func_8004A384(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s
 }
 
 void func_8004A414(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
     func_800492D4(texture, arg4, arg5, arg6, arg7, arg8);
 }
 
 UNUSED void func_8004A488(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
     func_800492D4(texture, arg4, arg5, arg6, arg7, arg8);
 }
 
 UNUSED void func_8004A4FC(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007AC0);
     func_800492D4(texture, arg4, arg5, arg6, arg7, arg8);
 }
 
 UNUSED void func_8004A570(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007AE0);
     func_800492D4(texture, arg4, arg5, arg6, arg7, arg8);
 }
@@ -1482,69 +1487,68 @@ UNUSED void func_8004A5E4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *a
     func_8004A414(arg0, arg1, arg2, texture, arg4, 16, 16, 16, 16);
 }
 
-void func_8004A630(UnkActorInner *arg0, Vec3f arg1, f32 arg2) {
+void func_8004A630(Collision *arg0, Vec3f arg1, f32 arg2) {
     if (func_80041924(arg0, arg1) != 0) {
         D_80183E50[0] = arg1[0];
         D_80183E50[1] = func_802ABE30(arg1[0], 0.0f, arg1[2], arg0->unk3A) + 0.8;
         D_80183E50[2] = arg1[2];
-        func_80043050(D_80183E50, arg0->unk60, arg2);
+        rsp_set_matrix_transl_rot_scale(D_80183E50, arg0->unk60, arg2);
         gSPDisplayList(gDisplayListHead++, D_0D007B98);
     }
 }
 
-void func_8004A6EC(s32 objectIndex, f32 arg1) {
-    struct_80165C18_entry *temp_v0;
+void func_8004A6EC(s32 objectIndex, f32 scale) {
+    Objects *temp_v0;
 
-    if ((func_8007223C(objectIndex, 0x00000020) != 0) && (func_8007223C(objectIndex, 0x00800000) != 0)) {
-        temp_v0 = &D_80165C18[objectIndex];
-        D_80183E50[0] = temp_v0->unk_004[0];
+    if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00000020) != 0) && (is_obj_index_flag_unk_054_active(objectIndex, 0x00800000) != 0)) {
+        temp_v0 = &gObjectList[objectIndex];
+        D_80183E50[0] = temp_v0->pos[0];
         D_80183E50[1] = temp_v0->unk_044 + 0.8;
-        D_80183E50[2] = temp_v0->unk_004[2];
-        func_80042E00(D_80183E50, temp_v0->unk_0B8, arg1);
+        D_80183E50[2] = temp_v0->pos[2];
+        rsp_set_matrix_transformation(D_80183E50, temp_v0->unk_0B8, scale);
         gSPDisplayList(gDisplayListHead++, D_0D007B20);
     }
 }
 
 void func_8004A7AC(s32 objectIndex, f32 arg1) {
-    struct_80165C18_entry *temp_v0;
+    Objects *temp_v0;
 
-    if (func_8007223C(objectIndex, 0x00000020) != 0) {
-        temp_v0 = &D_80165C18[objectIndex];
-        D_80183E50[0] = temp_v0->unk_004[0];
+    if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000020) != 0) {
+        temp_v0 = &gObjectList[objectIndex];
+        D_80183E50[0] = temp_v0->pos[0];
         D_80183E50[1] = temp_v0->unk_044 + 0.8;
-        D_80183E50[2] = temp_v0->unk_004[2];
+        D_80183E50[2] = temp_v0->pos[2];
         D_80183E98[0] = 0x4000;
         D_80183E98[1] = 0;
         D_80183E98[2] = 0;
-        func_80042E00(D_80183E50, D_80183E98, arg1);
+        rsp_set_matrix_transformation(D_80183E50, D_80183E98, arg1);
         gSPDisplayList(gDisplayListHead++, D_0D007B20);
     }
 }
 
 void func_8004A870(s32 objectIndex, f32 arg1) {
     Mat4 sp30;
-    struct_80165C18_entry *temp_v0;
+    Objects *temp_v0;
 
-    if ((func_8007223C(objectIndex, 0x00000020) != 0) && (func_8007223C(objectIndex, 0x00800000) != 0)) {
-        temp_v0 = &D_80165C18[objectIndex];
-        D_80183E50[0] = temp_v0->unk_004[0];
+    if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00000020) != 0) && (is_obj_index_flag_unk_054_active(objectIndex, 0x00800000) != 0)) {
+        temp_v0 = &gObjectList[objectIndex];
+        D_80183E50[0] = temp_v0->pos[0];
         D_80183E50[1] = temp_v0->unk_044 + 0.8;
-        D_80183E50[2] = temp_v0->unk_004[2];
-        func_80042A20(sp30, temp_v0->unk_01C, D_80183E50, 0U, arg1);
-        func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], sp30);
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        D_8018D120++;
+        D_80183E50[2] = temp_v0->pos[2];
+        set_transform_matrix(sp30, temp_v0->unk_01C, D_80183E50, 0U, arg1);
+        convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, D_0D007B98);
     }
 }
 
 void func_8004A9B8(f32 arg0) {
-    func_80043050(D_80183E50, D_80183E70, arg0);
+    rsp_set_matrix_transl_rot_scale(D_80183E50, D_80183E70, arg0);
     gSPDisplayList(gDisplayListHead++, D_0D007C10);
 }
 
 UNUSED void func_8004AA10(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-    func_80042E00(arg0, arg1, arg2);
+    rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007AE0);
     func_8004B6C4(D_80165860, D_8016586C, D_80165878);
     func_800497CC(texture, arg4, arg5, arg6, arg7, arg8);
@@ -1638,7 +1642,7 @@ UNUSED void func_8004B254(s32 red, s32 green, s32 blue) {
     gDPSetPrimColor(gDisplayListHead++, 0, 0, red, green, blue, 0xFF);
 }
 
-void func_8004B2BC(s32 alpha) {
+void set_transparency(s32 alpha) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
 }
@@ -1700,15 +1704,15 @@ void func_8004B72C(s32 primRed, s32 primGreen, s32 primBlue, s32 envRed, s32 env
     gDPSetCombineLERP(gDisplayListHead++, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0);
 }
 
-void func_8004B7DC(s32 arg0, s32 arg1, s32 width, s32 height, s32 arg4, s32 arg5, s32 arg6) {
+void func_8004B7DC(s32 x, s32 y, s32 width, s32 height, s32 arg4, s32 arg5, s32 arg6) {
 
-    s32 xh = (((arg0 + width) - 1) << 2);
-    s32 yh = (((arg1 + height) - 1) << 2);
-    s32 xl = ((arg0 * 4));
-    s32 yl = arg1 * 4;
+    s32 xh = (((x + width) - 1) << 2);
+    s32 yh = (((y + height) - 1) << 2);
+    s32 xl = ((x * 4));
+    s32 yl = y * 4;
 
-    s32 xh2 = (((arg0 + width)) << 2);
-    s32 yh2 = ((arg1 + height) << 2);
+    s32 xh2 = (((x + width)) << 2);
+    s32 yh2 = ((y + height) << 2);
 
     if (arg6 == 0) {
         // todo: Update to F3DEX. Uses OLD definition for gspTextureRectangle.
@@ -1718,10 +1722,8 @@ void func_8004B7DC(s32 arg0, s32 arg1, s32 width, s32 height, s32 arg4, s32 arg5
     gSPTextureRectangle(gDisplayListHead++, xl, yl, xh2, yh2, G_TX_RENDERTILE, arg4 << 5, (arg5 << 5), 1 << 10, 1 << 10);
 }
 
-void func_8004B7DC(s32, s32, s32, s32, s32, s32, s32);
-
-void func_8004B950(s32 arg0, s32 arg1, s32 width, s32 height, s32 arg4) {
-    func_8004B7DC(arg0, arg1, width, height, 0, 0, arg4);
+void func_8004B950(s32 x, s32 y, s32 width, s32 height, s32 arg4) {
+    func_8004B7DC(x, y, width, height, 0, 0, arg4);
 }
 
 void func_8004B97C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
@@ -1747,8 +1749,6 @@ void func_8004B97C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
         func_8004B7DC(sp2C, var_a1, arg2 - var_v1, arg3 - var_v0, var_v1, var_v0, arg4);
     }
 }
-
-void func_8004B7DC(s32, s32, s32, s32, s32, s32, s32); // extern
 
 void func_8004BA08(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     UNUSED s32 pad[2];
@@ -1868,7 +1868,7 @@ void func_8004BB3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, f32 arg4) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_8004BB3C.s")
 #endif
 
-UNUSED void func_8004BD14(s32 arg0, s32 arg1, u32 width, u32 height, s32 alpha, u8 *texture1, u8 *texture2) {
+UNUSED void func_8004BD14(s32 x, s32 y, u32 width, u32 height, s32 alpha, u8 *texture1, u8 *texture2) {
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
     gSPDisplayList(gDisplayListHead++, D_0D008138);
     gDPSetTextureLOD(gDisplayListHead++, G_TL_TILE);
@@ -1876,7 +1876,7 @@ UNUSED void func_8004BD14(s32 arg0, s32 arg1, u32 width, u32 height, s32 alpha, 
     gDPSetCombineLERP(gDisplayListHead++, TEXEL1, TEXEL0, PRIMITIVE_ALPHA, TEXEL0, TEXEL1, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED);
     gDPLoadMultiTile(gDisplayListHead++, texture1,   0,   G_TX_RENDERTILE, G_IM_FMT_RGBA, G_IM_SIZ_16b, width, height, 0, 0, width - 1, height - 1, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gDPLoadMultiTile(gDisplayListHead++, texture2, 256, G_TX_RENDERTILE+1, G_IM_FMT_RGBA, G_IM_SIZ_16b, width, height, 0, 0, width - 1, height - 1, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    func_8004B950(arg0, arg1, width, height, 2);
+    func_8004B950(x, y, width, height, 2);
     gSPDisplayList(gDisplayListHead++, D_0D008120);
 }
 
@@ -2038,7 +2038,7 @@ UNUSED void func_8004C91C(s32 arg0, s32 arg1, u8 *texture, s32 arg3, s32 arg4, s
 
 void func_8004C9D8(s32 arg0, s32 arg1, s32 arg2, u8 *texture, s32 arg4, s32 arg5, UNUSED s32 arg6, s32 arg7) {
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
-    func_8004B2BC(arg2);
+    set_transparency(arg2);
     func_8004C268(arg0, arg1, texture, arg4, arg5, arg7, 1);
 }
 
@@ -2423,7 +2423,7 @@ void func_8004DF5C(s32 arg0, s32 arg1, u8 *texture, s32 width, s32 arg4, s32 hei
     s32 i;
     
     for (i = 0; i < arg4 / height; i++) {
-            func_800452A4(img, width, height);
+            rsp_load_texture(img, width, height);
             func_8004B97C(arg0 - (width / 2), var_s0, width, height, 1);
             img += width * height;
             var_s0 += height;
@@ -2459,7 +2459,7 @@ void func_8004E06C(s32 arg0, s32 arg1, u8 *texture, s32 arg3, s32 arg4) {
             temp_s0 = var_s1;
             temp_s6 = (u32) ((sins(temp_s0) * temp_f20) + (f32) (arg0 - var));
             sins(temp_s0);
-            func_800452A4(img, arg3, 1);
+            rsp_load_texture(img, arg3, 1);
             func_8004B97C(temp_s6, var_s4, arg3, 1, 1);
             var_s1 += temp_s7;
             img += arg3;
@@ -2479,14 +2479,14 @@ void func_8004E240(s32 arg0, s32 arg1, u8 *tlut, u8 *texture, s32 arg4, s32 arg5
 
 void func_8004E2B8(s32 arg0, s32 arg1, s32 arg2, u8 *tlut, u8 *texture, s32 arg5, s32 arg6, s32 arg7) {
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
-    func_8004B2BC(arg2);
+    set_transparency(arg2);
     func_8004B05C(tlut);
     func_8004DF5C(arg0, arg1, texture, arg5, arg6, arg7);
 }
 
 void func_8004E338(s32 arg0, s32 arg1, u8 *tlut, u8 *texture, s32 arg4, s32 arg5) {
     gSPDisplayList(gDisplayListHead++, D_0D007DB8);
-    func_8004B2BC(D_8016589C);
+    set_transparency(D_8016589C);
     func_8004B05C(tlut);
     func_8004E06C(arg0, arg1, texture, arg4, arg5);
 }
@@ -2545,42 +2545,34 @@ UNUSED void func_8004E604(s32 arg0, s32 arg1, u8 *tlut, u8 *texture) {
 
 void func_8004E638(s32 playerId) {
     s32 objectIndex;
-    struct_80165C18_entry *temp_v1;
+    Objects *temp_v1;
     struct_8018CA70_entry *temp_v0;
 
     objectIndex = gItemWindowObjectByPlayerId[playerId];
-    temp_v1 = &D_80165C18[objectIndex];
-    if (temp_v1->unk_0A6 >= 2) {
+    temp_v1 = &gObjectList[objectIndex];
+    if (temp_v1->state >= 2) {
         temp_v0 = &D_8018CA70[playerId];
-        func_8004E4CC(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, (u8 *) temp_v1->unk_060, temp_v1->unk_064);
+        func_8004E4CC(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, (u8 *) temp_v1->activeTLUT, temp_v1->activeTexture);
     }
 }
 
 void func_8004E6C4(s32 playerId) {
     s32 objectIndex;
-    struct_80165C18_entry *temp_v1;
+    Objects *temp_v1;
     struct_8018CA70_entry *temp_v0;
 
     objectIndex = gItemWindowObjectByPlayerId[playerId];
-    temp_v1 = &D_80165C18[objectIndex];
-    if (temp_v1->unk_0A6 >= 2) {
+    temp_v1 = &gObjectList[objectIndex];
+    if (temp_v1->state >= 2) {
         temp_v0 = &D_8018CA70[playerId];
-        func_80047910(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, 0U, temp_v0->unknownScaling, (u8 *) temp_v1->unk_060, (u8 *) temp_v1->unk_064, D_0D005C30, 0x00000028, 0x00000020, 0x00000028, 0x00000020);
+        func_80047910(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, 0U, temp_v0->unknownScaling, (u8 *) temp_v1->activeTLUT, (u8 *) temp_v1->activeTexture, D_0D005C30, 0x00000028, 0x00000020, 0x00000028, 0x00000020);
     }
 }
-
-#ifdef NEEDS_RODATA
-// Might actually be plain data? hard to say for sure
-// data_0DD0A0_2_0.s
-// s8 *D_800E4570[3];// = { (s32) D_0D00B158, (s32) D_0D00B558, (s32) D_0D00B958 };
 
 void func_8004E78C(s32 playerId) {
     func_8004CB60((s32) D_8018CA70[playerId].lapX, D_8018CA70[playerId].lapY + 3, (s32) D_0D00A958);
     func_8004CB90(D_8018CA70[playerId].lapX + 0x1C, (s32) D_8018CA70[playerId].lapY, D_800E4570[D_8018CA70[playerId].alsoLapCount]);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_8004E78C.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
@@ -2633,11 +2625,6 @@ void func_8004EB30(UNUSED s32 arg0) {
 
 }
 
-#ifdef NEEDS_RODATA
-// data/data_0DD0A0_2_0.s
-// Internals of the array are entries from common_textures.inc
-extern s8* D_800E4570[3];// = { (s32) D_0D00B158, (s32) D_0D00B558, (s32) D_0D00B958 };
-
 void func_8004EB38(s32 playerId) {
     struct_8018CA70_entry *temp_s0;
 
@@ -2659,9 +2646,6 @@ void func_8004EB38(s32 playerId) {
         func_8004C9D8(temp_s0->lapAfterImage2X + 0x1C, (s32) temp_s0->lapY, 0x00000050, D_800E4570[temp_s0->alsoLapCount], 0x00000020, 0x00000010, 0x00000020, 0x00000010);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_8004EB38.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
@@ -2802,7 +2786,7 @@ void func_8004F168(s32 arg0, s32 arg1, s32 arg2) {
 
     temp_v1 = &gPlayerOne[arg1];
     temp_t0 = arg0 * 2;
-    if (temp_v1->unk_000 & 0x8000) {
+    if (temp_v1->sizeScaling & 0x8000) {
         temp_a0 = ((*(&D_8018D2C0 + temp_t0) + D_8018D2F0) - ((s16) D_8018D2B0 / 2)) + D_8018D2E0 + (s16) (s32) (temp_v1->pos[0] * D_8018D2A0);
         temp_a1 = ((*(&D_8018D2D8 + temp_t0) + D_8018D2F8) - ((s16) D_8018D2B8 / 2)) + D_8018D2E8 + (s32) (temp_v1->pos[2] * D_8018D2A0);
         if (arg2 != 8) {
@@ -2894,7 +2878,7 @@ void func_8004F3E4(s32 arg0) {
             var_s0_4 = &gGPCurrentRacePlayerIdByRank[var_s1_3];
             do {
                 temp_a1_2 = *var_s0_4;
-                if (gPlayerOne[temp_a1_2].unk_000 & 0x1000) {
+                if (gPlayerOne[temp_a1_2].sizeScaling & 0x1000) {
                     func_8004F168(arg0, temp_a1_2, 8U);
                 }
                 var_s0_4 -= 2;
@@ -2906,7 +2890,7 @@ void func_8004F3E4(s32 arg0) {
             do {
                 temp_a1_3 = *var_s0_5;
                 temp_v0_3 = &gPlayerOne[temp_a1_3];
-                if ((temp_v0_3->unk_000 & 0x1000) != 0x1000) {
+                if ((temp_v0_3->sizeScaling & 0x1000) != 0x1000) {
                     func_8004F168(arg0, temp_a1_3, temp_v0_3->characterId);
                 }
                 var_s0_5 -= 2;
@@ -2990,7 +2974,7 @@ void func_8004F8CC(s32 arg0, s32 arg1) {
 
 void func_8004F950(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
-    func_8004B2BC(arg2);
+    set_transparency(arg2);
     func_80043D50(D_0D00C558, 104, 16);
     func_8004F6D0(arg3);
     func_8004F8CC(arg0, arg1);
@@ -3078,20 +3062,20 @@ void func_8004FC78(s16 arg0, s16 arg1, s8 arg2) {
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
-void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
+void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 characterId, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
     if ((gCurrentCourseId == COURSE_YOSHI_VALLEY) && (arg3 < 3) && (arg8 == 0)) {
         func_80042330((s32) arg0, (s32) arg1, 0U, 1.0f);
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
         func_8004B35C(0x000000FF, 0x000000FF, 0x000000FF, D_8018D3E0);
         gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTPortraitBombKartAndQuestionMark);
-        func_800452A4(gTexturePortraitQuestionMark, 0x00000020, 0x00000020);
+        rsp_load_texture(gTexturePortraitQuestionMark, 0x00000020, 0x00000020);
         gSPDisplayList(gDisplayListHead++, D_0D0069E0);
     } else {
         func_80042330(arg0, arg1, 0U, 1.0f);
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
         func_8004B35C(0x000000FF, 0x000000FF, 0x000000FF, arg5);
-        gDPLoadTLUT_pal256(gDisplayListHead++, gPortraitTLUTs[arg4]);
-        func_800452A4(gPortraitTextures[arg4], 0x00000020, 0x00000020);
+        gDPLoadTLUT_pal256(gDisplayListHead++, gPortraitTLUTs[characterId]);
+        rsp_load_texture(gPortraitTextures[characterId], 0x00000020, 0x00000020);
         if (arg7 != 0) {
             gSPDisplayList(gDisplayListHead++, D_0D0069F8);
         } else {
@@ -3108,7 +3092,7 @@ void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 arg4, s32 arg5, s
         func_8004B35C(0x000000FF, 0x000000FF, 0x000000FF, arg5);
         gSPDisplayList(gDisplayListHead++, D_0D007CB8);
         gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTHudTypeCRankFont);
-        func_800452A4(gTextureHudTypeCRankFont[arg2], 0x00000010, 0x00000010);
+        rsp_load_texture(gTextureHudTypeCRankFont[arg2], 0x00000010, 0x00000010);
         if (arg7 != 0) {
             func_80042330((s32) (arg0 + 9.0f), (s32) (arg1 + 7.0f), 0U, 1.0f);
         } else {
@@ -3119,14 +3103,11 @@ void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 arg4, s32 arg5, s
 }
 
 #ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-? func_8004FDB4(f32, f32, s32, s32, s16, s16, s32, s32, s32, s32, s32); /* extern */
+//generated by m2c commit b52d92c2340f6f4ba1aafb464188bb698752fbb0 on Jul-27-2023
 extern s8 D_801657E2;
 extern ? D_8018D028;
 extern f32 D_8018D050;
 extern ? D_8018D078;
-extern s32 D_8018D3E0;
-extern ? gGPCurrentRaceCharacterIdByRank;
 
 void func_80050320(void) {
     Gfx *temp_v1_3;
@@ -3160,12 +3141,12 @@ void func_80050320(void) {
                 if ((f64) *(&D_8018D078 + var_s1) < 0.0) {
                     var_a0 = 1;
                 }
-                temp_v1 = *((var_s0 * 2) + &gGPCurrentRaceCharacterIdByRank);
+                temp_v1 = gGPCurrentRaceCharacterIdByRank[var_s0];
                 temp_a1 = gLapCountByPlayerId[gGPCurrentRacePlayerIdByRank[var_s0]];
                 if (temp_v1 == gPlayerOne->characterId) {
-                    func_8004FDB4(*temp_t0, temp_f14, var_a0, temp_a1, var_s0, (s16) temp_a1, (s32) temp_v1, 0x000000FF, 1, var_a0, 0);
+                    func_8004FDB4(*temp_t0, temp_f14, var_s0, (s16) temp_a1, (s16) (s32) temp_v1, 0x000000FF, 1, var_a0, 0);
                 } else {
-                    func_8004FDB4(*temp_t0, temp_f14, var_a0, temp_a1, var_s0, (s16) temp_a1, (s32) temp_v1, D_8018D3E0, 0, var_a0, 0);
+                    func_8004FDB4(*temp_t0, temp_f14, var_s0, (s16) temp_a1, (s16) (s32) temp_v1, D_8018D3E0, 0, var_a0, 0);
                 }
             }
             var_s0 += 1;
@@ -3188,9 +3169,9 @@ void func_80050320(void) {
                 temp_a1_2 = gLapCountByPlayerId[temp_v0];
                 temp_v1_2 = (s16) gPlayerOne[temp_v0].characterId;
                 if (temp_v0 == 0) {
-                    func_8004FDB4(*temp_t0_2, temp_f14_2, var_a0_2, temp_a1_2, var_s0_2, (s16) temp_a1_2, (s32) temp_v1_2, 0x000000FF, 1, var_a0_2, 1);
+                    func_8004FDB4(*temp_t0_2, temp_f14_2, var_s0_2, (s16) temp_a1_2, (s16) (s32) temp_v1_2, 0x000000FF, 1, var_a0_2, 1);
                 } else {
-                    func_8004FDB4(*temp_t0_2, temp_f14_2, var_a0_2, temp_a1_2, var_s0_2, (s16) temp_a1_2, (s32) temp_v1_2, 0x000000FF, 0, var_a0_2, 1);
+                    func_8004FDB4(*temp_t0_2, temp_f14_2, var_s0_2, (s16) temp_a1_2, (s16) (s32) temp_v1_2, 0x000000FF, 0, var_a0_2, 1);
                 }
             }
             var_s0_2 += 1;
@@ -3252,41 +3233,27 @@ s32 func_80050644(u16 arg0, s32 *arg1, s32 *arg2) {
     return var_v0;
 }
 
-#ifdef MIPS_TO_C
-//generated by mips_to_c commit 3c3b0cede1a99430bfd3edf8d385802b94f91307
-extern u16 D_80163E2A;
-extern u16 D_80164430;
+void func_800507D8(u16 bombIndex, s32 *arg1, s32 *arg2) {
+    s32 temp_v0 = gBombKarts[bombIndex].waypointIndex;
+    s32 var_v1 = 0;
 
-void func_800507D8(s32 arg0, s32 *arg1, s32 *arg2) {
-    u16 temp_v0;
-    s32 phi_v1;
-
-    temp_v0 = *(&D_80163E2A + ((arg0 & 0xFFFF) * 0x54));
-    phi_v1 = 0;
     if (temp_v0 != 0) {
-        phi_v1 = (temp_v0 * 0x3A0) / D_80164430;
+        var_v1 = (s32) (temp_v0 * 0x3A0) / (s32) D_80164430;
     }
-    if (phi_v1 < 0x104) {
-        *arg1 = phi_v1;
+    if (var_v1 < 0x104) {
+        *arg1 = var_v1;
         *arg2 = 0;
-        return;
+    } else if (var_v1 < 0x1D0) {
+        *arg1 = 0x00000104;
+        *arg2 = var_v1 - 0x104;
+    } else if (var_v1 < 0x2D4) {
+        *arg1 = 0x2D4 - var_v1;
+        *arg2 = 0x000000CC;
+    } else {
+        *arg1 = 0;
+        *arg2 = 0x3A0 - var_v1;
     }
-    if (phi_v1 < 0x1D0) {
-        *arg1 = 0x104;
-        *arg2 = phi_v1 - 0x104;
-        return;
-    }
-    if (phi_v1 < 0x2D4) {
-        *arg1 = 0x2D4 - phi_v1;
-        *arg2 = 0xCC;
-        return;
-    }
-    *arg1 = 0;
-    *arg2 = 0x3A0 - phi_v1;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800507D8.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
@@ -3390,80 +3357,29 @@ block_20:
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800508C0.s")
 #endif
  
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-? func_800507D8(s32, s32 *, s32 *);                 /* extern */
-extern ? D_80163DE8;
-
 void func_80050C68(void) {
+    s32 stackPadding0;
     s32 sp88;
     s32 sp84;
-    ? *var_s2;
-    Gfx *temp_v0_2;
-    Gfx *temp_v0_3;
-    Gfx *temp_v0_4;
-    Gfx *temp_v0_5;
-    Gfx *temp_v0_6;
-    Gfx *temp_v0_7;
-    Gfx *temp_v0_8;
-    Gfx *temp_v0_9;
+    s32 stackPadding1;
     s32 var_s1;
-    u16 temp_v0;
 
-    var_s2 = &D_80163DE8;
-    var_s1 = 0;
-    do {
-        temp_v0 = var_s2->unk44;
-        if ((temp_v0 != 4) && (temp_v0 != 0)) {
-            func_800507D8(var_s1 & 0xFFFF, &sp88, &sp84);
-            temp_v0_2 = gDisplayListHead;
-            gDisplayListHead = temp_v0_2 + 8;
-            temp_v0_2->words.w1 = (u32) D_0D007DB8;
-            temp_v0_2->words.w0 = 0x06000000;
-            temp_v0_3 = gDisplayListHead;
-            gDisplayListHead = temp_v0_3 + 8;
-            temp_v0_3->words.w1 = (u32) gTLUTPortraitBombKartAndQuestionMark;
-            temp_v0_3->words.w0 = 0xFD100000;
-            temp_v0_4 = gDisplayListHead;
-            gDisplayListHead = temp_v0_4 + 8;
-            temp_v0_4->words.w1 = 0;
-            temp_v0_4->words.w0 = 0xE8000000;
-            temp_v0_5 = gDisplayListHead;
-            gDisplayListHead = temp_v0_5 + 8;
-            temp_v0_5->words.w1 = 0x07000000;
-            temp_v0_5->words.w0 = 0xF5000100;
-            temp_v0_6 = gDisplayListHead;
-            gDisplayListHead = temp_v0_6 + 8;
-            temp_v0_6->words.w1 = 0;
-            temp_v0_6->words.w0 = 0xE6000000;
-            temp_v0_7 = gDisplayListHead;
-            gDisplayListHead = temp_v0_7 + 8;
-            temp_v0_7->words.w1 = 0x073FC000;
-            temp_v0_7->words.w0 = 0xF0000000;
-            temp_v0_8 = gDisplayListHead;
-            gDisplayListHead = temp_v0_8 + 8;
-            temp_v0_8->words.w1 = 0;
-            temp_v0_8->words.w0 = 0xE7000000;
-            func_800452A4(gTexturePortraitBombKart, 0x00000020, 0x00000020);
+    for (var_s1 = 0; var_s1 < NUM_BOMB_KARTS_VERSUS; var_s1++) {
+        if ((gBombKarts[var_s1].state != BOMB_STATE_EXPLODED) && (gBombKarts[var_s1].state != BOMB_STATE_INACTIVE)) {
+            func_800507D8(var_s1, &sp88, &sp84);
+            gSPDisplayList(gDisplayListHead++, D_0D007DB8);
+            gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTPortraitBombKartAndQuestionMark);
+            rsp_load_texture(gTexturePortraitBombKart, 0x00000020, 0x00000020);
             func_80042330(sp88 + 0x20, sp84 + 0x12, 0U, 0.6f);
-            temp_v0_9 = gDisplayListHead;
-            gDisplayListHead = temp_v0_9 + 8;
-            temp_v0_9->words.w1 = (u32) D_0D0069E0;
-            temp_v0_9->words.w0 = 0x06000000;
+            gSPDisplayList(gDisplayListHead++, D_0D0069E0);
         }
-        var_s1 += 1;
-        var_s2 += 0x54;
-    } while (var_s1 != 7);
+    }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80050C68.s")
-#endif
 
 #ifdef NON_MATCHING
-extern struct_D_8018CE10 D_8018CE10[];
 
 // Something about the handling of the `player` variable is weird.
-// All commands are preset and correct, 2 of them are out of position
+// All commands are present and correct, 2 of them are out of position
 void func_80050E34(s32 playerId, s32 arg1) {
     s32 objectIndex;
     s32 spD0;
@@ -3474,7 +3390,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
     s32 characterId;
     s32 spB8;
     s32 temp_v0_2;
-    struct_80165C18_entry *object;
+    Objects *object;
     Player *player;
 
     player = &gPlayerOne[playerId];
@@ -3498,34 +3414,34 @@ void func_80050E34(s32 playerId, s32 arg1) {
     if ((gCurrentCourseId == COURSE_YOSHI_VALLEY) && (lapCount < 3)) {
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
         gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTPortraitBombKartAndQuestionMark);
-        func_800452A4(gTexturePortraitQuestionMark, 0x00000020, 0x00000020);
-        object = &D_80165C18[objectIndex];
-        object->unk_004[0] = object->unk_028[0] + ((f32) (spD0 + 0x20));
-        object->unk_004[1] = object->unk_028[1] + ((f32) (spC4 + spCC));
-        object->unk_004[2] = object->unk_028[2];
-        func_80042E00(object->unk_004, object->unk_0BE, object->unk_000);
+        rsp_load_texture(gTexturePortraitQuestionMark, 0x00000020, 0x00000020);
+        object = &gObjectList[objectIndex];
+        object->pos[0] = object->unk_028[0] + ((f32) (spD0 + 0x20));
+        object->pos[1] = object->unk_028[1] + ((f32) (spC4 + spCC));
+        object->pos[2] = object->unk_028[2];
+        rsp_set_matrix_transformation(object->pos, object->unk_0BE, object->sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0069E0);
     } else {
         gDPLoadTLUT_pal256(gDisplayListHead++, gPortraitTLUTs[characterId]);
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
-        if (player->unk_0BC & 0x200) {
-            func_8004B614((s32) D_801656C0, (s32) D_801656D0, (s32) D_801656E0, 0x00000080, 0x00000080, 0x00000080, (s32) D_80165C18[objectIndex].unk_0A0);
+        if (player->effects & 0x200) {
+            func_8004B614((s32) D_801656C0, (s32) D_801656D0, (s32) D_801656E0, 0x00000080, 0x00000080, 0x00000080, (s32) gObjectList[objectIndex].unk_0A0);
         } else {
-            func_8004B2BC((s32) D_80165C18[objectIndex].unk_0A0);
+            set_transparency((s32) gObjectList[objectIndex].unk_0A0);
         }
-        func_800452A4(gPortraitTextures[characterId], 0x00000020, 0x00000020);
-        object = &D_80165C18[objectIndex];
-        object->unk_004[0] = object->unk_028[0] + ((f32) (spD0 + 0x20));
-        object->unk_004[1] = object->unk_028[1] + ((f32) (spC4 + spCC));
-        object->unk_004[2] = object->unk_028[2];
-        func_80042E00(object->unk_004, object->unk_0BE, object->unk_000);
+        rsp_load_texture(gPortraitTextures[characterId], 0x00000020, 0x00000020);
+        object = &gObjectList[objectIndex];
+        object->pos[0] = object->unk_028[0] + ((f32) (spD0 + 0x20));
+        object->pos[1] = object->unk_028[1] + ((f32) (spC4 + spCC));
+        object->pos[2] = object->unk_028[2];
+        rsp_set_matrix_transformation(object->pos, object->unk_0BE, object->sizeScaling);
         if (spB8 != 0) {
             gSPDisplayList(gDisplayListHead++, D_0D0069F8);
         } else {
             gSPDisplayList(gDisplayListHead++, D_0D0069E0);
         }
         gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTHudTypeCRankTinyFont);
-        func_800452A4(gTextureHudTypeCRankTinyFont[arg1 + 1], 8, 8);
+        rsp_load_texture(gTextureHudTypeCRankTinyFont[arg1 + 1], 8, 8);
         if (spB8 != 0) {
             func_80042330(spD0 + 0x26, (spC4 + spCC) + 4, 0U, 1.0f);
         } else {
@@ -3536,7 +3452,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
             gSPDisplayList(gDisplayListHead++, D_0D007A40);
             func_8004B35C(D_8018D3E4, D_8018D3E8, D_8018D3EC, 0x000000FF);
             func_80044924(gTextureCharacterPortraitBorder, 0x00000020, 0x00000020);
-            func_80042E00(object->unk_004, object->unk_0BE, object->unk_000);
+            rsp_set_matrix_transformation(object->pos, object->unk_0BE, object->sizeScaling);
             gSPDisplayList(gDisplayListHead++, D_0D0069E0);
         }
     }
@@ -3572,7 +3488,7 @@ void func_800514BC(void) {
         var_s2 = &gGPCurrentRacePlayerIdByRank[var_s0];
         do {
             temp_a0 = *var_s2;
-            if ((gPlayerOne[temp_a0].unk_000 & 0x8000) && ((temp_a0 != 0) || (gPlayerCountSelection1 != 1))) {
+            if ((gPlayerOne[temp_a0].sizeScaling & 0x8000) && ((temp_a0 != 0) || (gPlayerCountSelection1 != 1))) {
                 func_80050E34(temp_a0, var_s0);
             }
             var_s1 += 1;
@@ -3597,7 +3513,7 @@ GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800514BC.s")
 void func_80051638(UNUSED s32 arg0) {
     s32 someIndex;
     s32 leafIndex;
-    struct_80165C18_entry *object;
+    Objects *object;
 
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
@@ -3605,9 +3521,9 @@ void func_80051638(UNUSED s32 arg0) {
     for(someIndex = 0; someIndex < D_8018C970_SIZE; someIndex++) {
         leafIndex = D_8018C970[someIndex];
         if (leafIndex != -1) {
-            object = &D_80165C18[leafIndex];
-            if ((object->unk_0A6 >= 2) && (object->unk_0D5 == 7) && (D_8018D120 < 0x2EF)) {
-                func_80043104(leafIndex);
+            object = &gObjectList[leafIndex];
+            if ((object->state >= 2) && (object->unk_0D5 == 7) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+                rsp_set_matrix_gObjectList(leafIndex);
                 gSPDisplayList(gDisplayListHead++, D_0D0069C8);
             }
         }
@@ -3625,77 +3541,57 @@ void func_800517C8(void) {
     func_80044F34(D_0D0293D8, 0x10, 0x10);
     for (someIndex = 0; someIndex < NUM_SNOWFLAKES; someIndex++) {
         snowflakeIndex = D_8018C1B0[someIndex];
-        if (D_80165C18[snowflakeIndex].unk_0A6 >= 2) {
-            func_80043104(snowflakeIndex);
+        if (gObjectList[snowflakeIndex].state >= 2) {
+            rsp_set_matrix_gObjectList(snowflakeIndex);
             gSPDisplayList(gDisplayListHead++, D_0D006980);
         }
     }
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-? func_80044DA0(s32 *, u8, u8);                     /* extern */
 extern u8 D_8018D228;
 
-void func_800518F8(s32 arg0, s16 arg1, s16 arg2) {
-    struct_80165C18_entry *sp18;
-    Gfx *temp_v0_2;
-    Gfx *temp_v0_3;
-    struct_80165C18_entry *temp_t0;
-    u8 temp_v0;
-
-    temp_t0 = &D_80165C18[arg0];
-    if (temp_t0->unk_054 & 0x10) {
-        temp_v0 = temp_t0->unk_0D5;
-        if (D_8018D228 != temp_v0) {
-            D_8018D228 = temp_v0;
-            sp18 = temp_t0;
-            func_80044DA0(temp_t0->unk_064, temp_t0->unk_0D9, temp_t0->unk_0DA);
+void func_800518F8(s32 objectIndex, s16 arg1, s16 arg2) {
+    s32 pad[1];
+    if (gObjectList[objectIndex].unk_054 & 0x10) {
+        if (D_8018D228 != gObjectList[objectIndex].unk_0D5) {
+            D_8018D228 = gObjectList[objectIndex].unk_0D5;
+            func_80044DA0(gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].textureWidth, gObjectList[objectIndex].textureHeight);
         }
-        sp18 = temp_t0;
-        func_80042330((s32) arg1, (s32) arg2, 0U, temp_t0->unk_000);
-        temp_v0_2 = gDisplayListHead;
-        gDisplayListHead = temp_v0_2 + 8;
-        temp_v0_2->words.w0 = 0x0400103F;
-        temp_v0_2->words.w1 = (u32) temp_t0->unk_074;
-        temp_v0_3 = gDisplayListHead;
-        gDisplayListHead = temp_v0_3 + 8;
-        temp_v0_3->words.w1 = (u32) D_0D006940;
-        temp_v0_3->words.w0 = 0x06000000;
+        func_80042330(arg1, arg2, 0U, gObjectList[objectIndex].sizeScaling);
+        gSPVertex(gDisplayListHead++, gObjectList[objectIndex].vertex, 4, 0);
+        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800518F8.s")
-#endif
+
 
 #ifdef MIPS_TO_C
 //generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
 ? func_80044DA0(s32 *, u8, u8);                     /* extern */
 extern u8 D_8018D228;
 
-void func_800519D4(s32 arg0, s16 arg1, s16 arg2) {
+void func_800519D4(s32 objectIndex, s16 arg1, s16 arg2) {
     Gfx *temp_v0_2;
     Gfx *temp_v0_3;
-    struct_80165C18_entry *temp_s0;
+    Objects *temp_s0;
     u8 temp_v0;
 
-    temp_s0 = &D_80165C18[arg0];
+    temp_s0 = &gObjectList[objectIndex];
     if (temp_s0->unk_054 & 0x10) {
         temp_v0 = temp_s0->unk_0D5;
         if (D_8018D228 != temp_v0) {
             D_8018D228 = temp_v0;
-            func_80044DA0(temp_s0->unk_064, temp_s0->unk_0D9, temp_s0->unk_0DA);
+            func_80044DA0(temp_s0->activeTexture, temp_s0->textureWidth, temp_s0->textureHeight);
         }
         func_8004B138(0x000000FF, 0x000000FF, 0x000000FF, (s32) temp_s0->unk_0A0);
-        func_80042330((s32) arg1, (s32) arg2, 0U, temp_s0->unk_000);
+        func_80042330((s32) arg1, (s32) arg2, 0U, temp_s0->sizeScaling);
         temp_v0_2 = gDisplayListHead;
         gDisplayListHead = temp_v0_2 + 8;
         temp_v0_2->words.w0 = 0x0400103F;
-        temp_v0_2->words.w1 = (u32) temp_s0->unk_074;
+        temp_v0_2->words.w1 = (u32) temp_s0->vertex;
         temp_v0_3 = gDisplayListHead;
         gDisplayListHead = temp_v0_3 + 8;
-        temp_v0_3->words.w1 = (u32) D_0D006940;
+        temp_v0_3->words.w1 = (u32) common_rectangle_display;
         temp_v0_3->words.w0 = 0x06000000;
     }
 }
@@ -3721,8 +3617,8 @@ void func_80051ABC(s16 arg0, s32 arg1) {
     s32 temp_a0_2;
     s32 var_s0;
     s32 var_s0_2;
-    struct_80165C18_entry *temp_v0;
-    struct_80165C18_entry *temp_v0_2;
+    Objects *temp_v0;
+    Objects *temp_v0_2;
 
     D_8018D228 = 0xFF;
     temp_v1 = gDisplayListHead;
@@ -3736,7 +3632,7 @@ void func_80051ABC(s16 arg0, s32 arg1) {
             var_s1 = (arg1 * 4) + &D_8018CC80;
             do {
                 temp_a0 = *var_s1;
-                temp_v0 = &D_80165C18[temp_a0];
+                temp_v0 = &gObjectList[temp_a0];
                 func_800519D4(temp_a0, temp_v0->unk_09C, (s16) (arg0 - temp_v0->unk_09E));
                 var_s0 += 1;
                 var_s1 += 4;
@@ -3749,7 +3645,7 @@ void func_80051ABC(s16 arg0, s32 arg1) {
             var_s1_2 = (arg1 * 4) + &D_8018CC80;
             do {
                 temp_a0_2 = *var_s1_2;
-                temp_v0_2 = &D_80165C18[temp_a0_2];
+                temp_v0_2 = &gObjectList[temp_a0_2];
                 func_800518F8(temp_a0_2, temp_v0_2->unk_09C, (s16) (arg0 - temp_v0_2->unk_09E));
                 var_s0_2 += 1;
                 var_s1_2 += 4;
@@ -3783,8 +3679,8 @@ void func_80051C60(s16 arg0, s32 arg1) {
     s32 temp_a0_2;
     s32 var_s0;
     s32 var_s0_2;
-    struct_80165C18_entry *temp_v0_2;
-    struct_80165C18_entry *temp_v0_3;
+    Objects *temp_v0_2;
+    Objects *temp_v0_3;
 
     if (D_801658FE == 0) {
         temp_v0 = gCurrentCourseId;
@@ -3814,7 +3710,7 @@ void func_80051C60(s16 arg0, s32 arg1) {
             var_s1 = (arg1 * 4) + &D_8018CC80;
             do {
                 temp_a0 = *var_s1;
-                temp_v0_2 = &D_80165C18[temp_a0];
+                temp_v0_2 = &gObjectList[temp_a0];
                 func_800519D4(temp_a0, temp_v0_2->unk_09C, (s16) ((s32) (var_s5 - temp_v0_2->unk_09E) / 2));
                 var_s0 += 1;
                 var_s1 += 4;
@@ -3827,7 +3723,7 @@ void func_80051C60(s16 arg0, s32 arg1) {
             var_s1_2 = (arg1 * 4) + &D_8018CC80;
             do {
                 temp_a0_2 = *var_s1_2;
-                temp_v0_3 = &D_80165C18[temp_a0_2];
+                temp_v0_3 = &gObjectList[temp_a0_2];
                 func_800518F8(temp_a0_2, temp_v0_3->unk_09C, (s16) ((s32) (var_s5 - temp_v0_3->unk_09E) / 2));
                 var_s0_2 += 1;
                 var_s1_2 += 4;
@@ -3937,10 +3833,10 @@ GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800520C0.s")
 #ifdef MIPS_TO_C
 //generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
 //? func_800520C0(s32);                               /* extern */
-extern Gfx D_06007650[];
-extern Gfx D_060078C0[];
-extern Gfx D_06007978[];
-extern Gfx D_06007B38[];
+extern Gfx d_course_banshee_boardwalk_dl_7650[];
+extern Gfx d_course_banshee_boardwalk_dl_78C0[];
+extern Gfx d_course_banshee_boardwalk_dl_7978[];
+extern Gfx d_course_banshee_boardwalk_dl_7B38[];
 //extern Gfx D_0D007828;
 extern Light D_800E45C0;                                /* unable to generate initializer */
 extern Light D_800E45C8;                                /* unable to generate initializer */
@@ -3953,33 +3849,33 @@ extern Light D_800E4610;                                /* unable to generate in
 
 void func_8005217C(s32 arg0) {
     s32 sp50;
-    struct_80165C18_entry *sp18;
+    Objects *sp18;
     s32 temp_a3;
-    struct_80165C18_entry *temp_v1;
+    Objects *temp_v1;
 
     temp_a3 = *D_80183F28;
-    temp_v1 = &D_80165C18[temp_a3];
-    if (temp_v1->unk_0A6 >= 2) {
+    temp_v1 = &gObjectList[temp_a3];
+    if (temp_v1->state >= 2) {
         sp18 = temp_v1;
         sp50 = temp_a3;
-        if (func_8007223C(temp_a3, 0x00000010) != 0) {
+        if (is_obj_index_flag_unk_054_active(temp_a3, 0x00000010) != 0) {
             sp50 = temp_a3;
-            func_80042E00(temp_v1->unk_004, (s16 *) temp_v1->unk_0BE, temp_v1->unk_000);
+            rsp_set_matrix_transformation(temp_v1->pos, (s16 *) temp_v1->unk_0BE, temp_v1->sizeScaling);
             func_800520C0(sp50);
 
             gSPDisplayList(gDisplayListHead++, D_0D007828);
-            gSPLight(gDisplayListHead++, &D_800E45C8, 1);
-            gSPLight(gDisplayListHead++, &D_800E45C0, 2);
-            gSPDisplayList(gDisplayListHead++, D_06007B38);
-            gSPLight(gDisplayListHead++, &D_800E45E0, 1);
-            gSPLight(gDisplayListHead++, &D_800E45D8, 2);
-            gSPDisplayList(gDisplayListHead++, D_06007978);
-            gSPLight(gDisplayListHead++, &D_800E45F8, 1);
-            gSPLight(gDisplayListHead++, &D_800E45F0, 2);
-            gSPDisplayList(gDisplayListHead++, D_060078C0);
-            gSPLight(gDisplayListHead++, &D_800E4610, 1);
-            gSPLight(gDisplayListHead++, &D_800E4608, 2);
-            gSPDisplayList(gDisplayListHead++, D_06007650);
+            gSPLight(gDisplayListHead++, &D_800E45C0.l[0], LIGHT_1);
+            gSPLight(gDisplayListHead++, &D_800E45C0.a, LIGHT_2);
+            gSPDisplayList(gDisplayListHead++, d_course_banshee_boardwalk_dl_7B38);
+            gSPLight(gDisplayListHead++, &D_800E45D8.l[0], LIGHT_1);
+            gSPLight(gDisplayListHead++, &D_800E45D8.a, LIGHT_2);
+            gSPDisplayList(gDisplayListHead++, d_course_banshee_boardwalk_dl_7978);
+            gSPLight(gDisplayListHead++, &D_800E45F0.l[0], LIGHT_1);
+            gSPLight(gDisplayListHead++, &D_800E45F0.a, LIGHT_2);
+            gSPDisplayList(gDisplayListHead++, d_course_banshee_boardwalk_dl_78C0);
+            gSPLight(gDisplayListHead++, &D_800E4608.l[0], LIGHT_1);
+            gSPLight(gDisplayListHead++, &D_800E4608.a, LIGHT_2);
+            gSPDisplayList(gDisplayListHead++, d_course_banshee_boardwalk_dl_7650);
 
             // temp_v0 = gDisplayListHead;
             // gDisplayListHead = temp_v0 + 8;
@@ -3995,7 +3891,7 @@ void func_8005217C(s32 arg0) {
             // temp_v0_3->words.w0 = 0x03880010;
             // temp_v0_4 = gDisplayListHead;
             // gDisplayListHead = temp_v0_4 + 8;
-            // temp_v0_4->words.w1 = (u32) &D_06007B38;
+            // temp_v0_4->words.w1 = (u32) &d_course_banshee_boardwalk_dl_7B38;
             // temp_v0_4->words.w0 = 0x06000000;
             // temp_v0_5 = gDisplayListHead;
             // gDisplayListHead = temp_v0_5 + 8;
@@ -4007,7 +3903,7 @@ void func_8005217C(s32 arg0) {
             // temp_v0_6->words.w0 = 0x03880010;
             // temp_v0_7 = gDisplayListHead;
             // gDisplayListHead = temp_v0_7 + 8;
-            // temp_v0_7->words.w1 = (u32) &D_06007978;
+            // temp_v0_7->words.w1 = (u32) &d_course_banshee_boardwalk_dl_7978;
             // temp_v0_7->words.w0 = 0x06000000;
             // temp_v0_8 = gDisplayListHead;
             // gDisplayListHead = temp_v0_8 + 8;
@@ -4019,7 +3915,7 @@ void func_8005217C(s32 arg0) {
             // temp_v0_9->words.w0 = 0x03880010;
             // temp_v0_10 = gDisplayListHead;
             // gDisplayListHead = temp_v0_10 + 8;
-            // temp_v0_10->words.w1 = (u32) &D_060078C0;
+            // temp_v0_10->words.w1 = (u32) &d_course_banshee_boardwalk_dl_78C0;
             // temp_v0_10->words.w0 = 0x06000000;
             // temp_v0_11 = gDisplayListHead;
             // gDisplayListHead = temp_v0_11 + 8;
@@ -4031,7 +3927,7 @@ void func_8005217C(s32 arg0) {
             // temp_v0_12->words.w0 = 0x03880010;
             // temp_v0_13 = gDisplayListHead;
             // gDisplayListHead = temp_v0_13 + 8;
-            // temp_v0_13->words.w1 = (u32) &D_06007650;
+            // temp_v0_13->words.w1 = (u32) &d_course_banshee_boardwalk_dl_7650;
             // temp_v0_13->words.w0 = 0x06000000;
         }
     }
@@ -4040,16 +3936,16 @@ void func_8005217C(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_8005217C.s")
 #endif
 
-void func_800523B8(s32 arg0, s32 arg1, u32 arg2) {
+void func_800523B8(s32 objectIndex, s32 arg1, u32 arg2) {
     UNUSED s32 pad[2];
-    struct_80165C18_entry *temp_v1;
+    Objects *temp_v1;
     Camera *camera = &camera1[arg1];
 
-    temp_v1 = &D_80165C18[arg0];
-    temp_v1->unk_0B2[1] = func_800418AC(temp_v1->unk_004[0], temp_v1->unk_004[2], camera->pos);
-    func_800484BC(temp_v1->unk_004, temp_v1->unk_0B2, temp_v1->unk_000, temp_v1->unk_0A0, (u8 *) temp_v1->unk_060, temp_v1->unk_064, temp_v1->unk_074, 0x00000030, 0x00000028, 0x00000030, 0x00000028);
-    if ((func_8007223C(arg0, 0x00000020) != 0) && (arg2 < 0x15F91U)) {
-        func_8004A630(&D_8018C830, temp_v1->unk_004, 0.4f);
+    temp_v1 = &gObjectList[objectIndex];
+    temp_v1->unk_0B2[1] = func_800418AC(temp_v1->pos[0], temp_v1->pos[2], camera->pos);
+    func_800484BC(temp_v1->pos, temp_v1->unk_0B2, temp_v1->sizeScaling, temp_v1->unk_0A0, (u8 *) temp_v1->activeTLUT, temp_v1->activeTexture, temp_v1->vertex, 0x00000030, 0x00000028, 0x00000030, 0x00000028);
+    if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00000020) != 0) && (arg2 < 0x15F91U)) {
+        func_8004A630(&D_8018C830, temp_v1->pos, 0.4f);
     }
 }
 
@@ -4060,9 +3956,9 @@ void func_800524B4(s32 arg0) {
 
     for (someIndex = 0; someIndex < 10; someIndex++) {
         objectIndex = D_8018BFA8[someIndex];
-        if (D_80165C18[objectIndex].unk_0A6 >= 2) {
+        if (gObjectList[objectIndex].state >= 2) {
             temp_s2 = func_8008A364(objectIndex, arg0, 0x4000U, 0x00000320);
-            if (func_8007223C(objectIndex, 0x00040000) != 0) {
+            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
                 func_800523B8(objectIndex, arg0, temp_s2);
             }
         }
@@ -4071,7 +3967,7 @@ void func_800524B4(s32 arg0) {
 
 #ifdef MIPS_TO_C
 //generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-extern s16 D_80183E80;
+extern Vec3su D_80183E80;
 extern s32 D_8018C3F0;
 extern ? D_8018C490;
 extern s32 D_8018C630;
@@ -4088,13 +3984,13 @@ void func_80052590(s32 cameraId) {
     s32 *var_s1_2;
     s32 temp_v0;
     s32 temp_v0_2;
-    struct_80165C18_entry *temp_s0;
-    struct_80165C18_entry *temp_s0_2;
-    struct_80165C18_entry *temp_s0_3;
+    Objects *temp_s0;
+    Objects *temp_s0_2;
+    Objects *temp_s0_3;
 
-    temp_s0 = &D_80165C18[*D_80183EA0];
+    temp_s0 = &gObjectList[*D_80183EA0];
     temp_s7 = &camera1[cameraId];
-    func_80046F60((s32) temp_s0->unk_060, (s32) temp_s0->unk_064, 0x00000020, 0x00000040, 5);
+    func_80046F60((s32) temp_s0->activeTLUT, (s32) temp_s0->activeTexture, 0x00000020, 0x00000040, 5);
     D_80183E80.unk0 = (s16) temp_s0->unk_0B2[0];
     D_80183E80.unk4 = (u16) temp_s0->unk_0B2[2];
     var_s1 = &D_8018C3F0;
@@ -4102,10 +3998,10 @@ void func_80052590(s32 cameraId) {
         do {
             temp_v0 = *var_s1;
             if (temp_v0 != -1) {
-                temp_s0_2 = &D_80165C18[temp_v0];
-                if ((temp_s0_2->unk_0A6 >= 2) && (D_8018D120 < 0x2EF)) {
-                    D_80183E80.unk2 = func_800418AC(temp_s0_2->unk_004[0], temp_s0_2->unk_004[2], temp_s7->pos);
-                    func_800431B0(temp_s0_2->unk_004, &D_80183E80, temp_s0_2->unk_000, D_0D0062B0);
+                temp_s0_2 = &gObjectList[temp_v0];
+                if ((temp_s0_2->state >= 2) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+                    D_80183E80.unk2 = func_800418AC(temp_s0_2->pos[0], temp_s0_2->pos[2], temp_s7->pos);
+                    func_800431B0(temp_s0_2->pos, &D_80183E80, temp_s0_2->sizeScaling, D_0D0062B0);
                 }
             }
             var_s1 += 4;
@@ -4116,10 +4012,10 @@ void func_80052590(s32 cameraId) {
         do {
             temp_v0_2 = *var_s1_2;
             if (temp_v0_2 != -1) {
-                temp_s0_3 = &D_80165C18[temp_v0_2];
-                if ((temp_s0_3->unk_0A6 >= 2) && (D_8018D120 < 0x2EF)) {
-                    D_80183E80.unk2 = func_800418AC(temp_s0_3->unk_004[0], temp_s0_3->unk_004[2], temp_s7->pos);
-                    func_800431B0(temp_s0_3->unk_004, &D_80183E80, temp_s0_3->unk_000, D_0D0062B0);
+                temp_s0_3 = &gObjectList[temp_v0_2];
+                if ((temp_s0_3->state >= 2) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+                    D_80183E80.unk2 = func_800418AC(temp_s0_3->pos[0], temp_s0_3->pos[2], temp_s7->pos);
+                    func_800431B0(temp_s0_3->pos, &D_80183E80, temp_s0_3->sizeScaling, D_0D0062B0);
                 }
             }
             var_s1_2 += 4;
@@ -4134,28 +4030,19 @@ void func_80052590(s32 cameraId) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80052590.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-extern s32 D_80183EA4;
+void func_800527D8(s32 cameraId) {
+    s32 objectIndex;
+    Objects *object;
 
-void func_800527D8(s32 arg0) {
-    s32 sp1C;
-    s32 temp_a0;
-    struct_80165C18_entry *temp_v0;
-
-    temp_a0 = D_80183EA4;
-    sp1C = temp_a0;
-    func_8008A364(temp_a0, arg0, 0x5555U, 0x00000320);
-    if (func_8007223C(temp_a0, 0x00040000) != 0) {
-        temp_v0 = &D_80165C18[sp1C];
-        if (temp_v0->unk_0A6 >= 2) {
-            func_80043220(temp_v0->unk_004, (s16 *) &temp_v0->unk_0B2, temp_v0->unk_000, (Gfx *) temp_v0->unk_070);
+    objectIndex = D_80183EA0[1];
+    func_8008A364(objectIndex, cameraId, 0x5555U, 0x00000320);
+    if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+        object = &gObjectList[objectIndex];
+        if (object->state >= 2) {
+            func_80043220(object->pos, object->unk_0B2, object->sizeScaling, object->unk_070);
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800527D8.s")
-#endif
 
 void func_8005285C(s32 arg0) {
     Player *temp_v0;
@@ -4178,7 +4065,6 @@ extern s16 D_80183E80;
 extern s32 D_8018C3F0;
 extern ? D_8018C5F0;
 static ? D_800E4620;                                /* unable to generate initializer */
-static ? D_800E4628;                                /* unable to generate initializer */
 
 void func_800528EC(s32 arg0) {
     Gfx *temp_v0;
@@ -4199,8 +4085,8 @@ void func_800528EC(s32 arg0) {
     s32 *var_s3_2;
     s32 temp_v0_11;
     s32 temp_v0_8;
-    struct_80165C18_entry *temp_v1;
-    struct_80165C18_entry *temp_v1_2;
+    Objects *temp_v1;
+    Objects *temp_v1_2;
 
     temp_v0 = gDisplayListHead;
     D_80183E80.unk0 = (s16) D_8016582C.unk0;
@@ -4215,11 +4101,11 @@ void func_800528EC(s32 arg0) {
     temp_v0_2->words.w0 = 0xBC000002;
     temp_v0_3 = gDisplayListHead;
     gDisplayListHead = temp_v0_3 + 8;
-    temp_v0_3->words.w1 = (u32) &D_800E4628;
+    temp_v0_3->words.w1 = (u32) &D_800E4620.l[0];
     temp_v0_3->words.w0 = 0x03860010;
     temp_v0_4 = gDisplayListHead;
     gDisplayListHead = temp_v0_4 + 8;
-    temp_v0_4->words.w1 = (u32) &D_800E4620;
+    temp_v0_4->words.w1 = (u32) &D_800E4620.a;
     temp_v0_4->words.w0 = 0x03880010;
     temp_v0_5 = gDisplayListHead;
     gDisplayListHead = temp_v0_5 + 8;
@@ -4240,9 +4126,9 @@ void func_800528EC(s32 arg0) {
         do {
             temp_v0_8 = *var_s3_2;
             if (temp_v0_8 != -1) {
-                temp_v1 = &D_80165C18[temp_v0_8];
-                if (temp_v1->unk_0A6 > 0) {
-                    func_80042E00(temp_v1->unk_004, &D_80183E80, temp_v1->unk_000);
+                temp_v1 = &gObjectList[temp_v0_8];
+                if (temp_v1->state > 0) {
+                    rsp_set_matrix_transformation(temp_v1->pos, &D_80183E80, temp_v1->sizeScaling);
                     temp_v0_9 = gDisplayListHead;
                     gDisplayListHead = temp_v0_9 + 8;
                     temp_v0_9->words.w1 = (u32) D_0D005BD0;
@@ -4259,9 +4145,9 @@ void func_800528EC(s32 arg0) {
         do {
             temp_v0_11 = *var_s3;
             if (temp_v0_11 != -1) {
-                temp_v1_2 = &D_80165C18[temp_v0_11];
-                if ((temp_v1_2->unk_0A6 > 0) && (arg0 == temp_v1_2->unk_084[7]) && (D_8018D120 < 0x2EF)) {
-                    func_80042E00(temp_v1_2->unk_004, &D_80183E80, temp_v1_2->unk_000);
+                temp_v1_2 = &gObjectList[temp_v0_11];
+                if ((temp_v1_2->state > 0) && (arg0 == temp_v1_2->unk_084[7]) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+                    rsp_set_matrix_transformation(temp_v1_2->pos, &D_80183E80, temp_v1_2->sizeScaling);
                     temp_v0_12 = gDisplayListHead;
                     gDisplayListHead = temp_v0_12 + 8;
                     temp_v0_12->words.w1 = (u32) D_0D005BD0;
@@ -4299,7 +4185,6 @@ GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800528EC.s")
 extern ? D_80165840;
 extern s32 D_80183DB8;
 static ? D_800E4620;                                /* unable to generate initializer */
-static ? D_800E4628;                                /* unable to generate initializer */
 
 void func_80052C60(s32 arg0) {
     Gfx *temp_v0;
@@ -4314,11 +4199,11 @@ void func_80052C60(s32 arg0) {
     D_800E4620.unk11 = (s8) D_80165840.unk1;
     D_800E4620.unk12 = (s8) D_80165840.unk2;
     temp_v0->words.w0 = 0x03860010;
-    temp_v0->words.w1 = (u32) &D_800E4628;
+    temp_v0->words.w1 = (u32) &D_800E4620.l[0];
     temp_v0_2 = gDisplayListHead;
     gDisplayListHead = temp_v0_2 + 8;
     temp_v0_2->words.w0 = 0x03880010;
-    temp_v0_2->words.w1 = (u32) &D_800E4620;
+    temp_v0_2->words.w1 = (u32) &D_800E4620.a;
     var_s1 = &D_80183DB8;
     var_s2 = 0;
     if (gPlayerCountSelection1 > 0) {
@@ -4355,7 +4240,6 @@ void func_80052D70(s32 playerId) {
 #ifdef MIPS_TO_C
 //generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-28-2022
 static ? D_800E4620;                                /* unable to generate initializer */
-static ? D_800E4628;                                /* unable to generate initializer */
 
 void func_80052E30(s32 arg0) {
     Gfx *temp_v0;
@@ -4368,15 +4252,15 @@ void func_80052E30(s32 arg0) {
     D_800E4620.unk11 = (s8) D_80165840->unk1;
     D_800E4620.unk12 = (s8) D_80165840->unk2;
     temp_v0->words.w0 = 0x03860010;
-    temp_v0->words.w1 = (u32) &D_800E4628;
+    temp_v0->words.w1 = (u32) &D_800E4620.l[0];
     temp_v0_2 = gDisplayListHead;
     gDisplayListHead = temp_v0_2 + 8;
     temp_v0_2->words.w0 = 0x03880010;
-    temp_v0_2->words.w1 = (u32) &D_800E4620;
+    temp_v0_2->words.w1 = (u32) &D_800E4620.a;
     D_80183E80->unk0 = 0;
     D_80183E80->unk2 = 0;
     D_80183E80->unk4 = 0;
-    if (D_8018EDF3 == 1) {
+    if (gPlayerCount == 1) {
         var_s0 = 0;
         if (gPlayerCountSelection1 > 0) {
             do {
@@ -4390,71 +4274,53 @@ void func_80052E30(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80052E30.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-28-2022
-extern ? d_course_frappe_snowland_snow_tlut;
-extern ? d_course_frappe_snowland_snow;
-extern ? D_8018C5F0;
-
-void func_80052F20(s32 arg0) {
+void func_80052F20(s32 cameraId) {
+    s32 stackPadding[2];
     Camera *sp44;
-    Gfx *temp_v1;
-    Gfx *temp_v1_2;
-    s32 *var_s2;
-    s32 temp_s0;
-    struct_80165C18_entry *temp_s1;
+    s32 someIndex;
+    s32 objectIndex;
+    Objects *temp_s1;
 
-    sp44 = &camera1[arg0];
-    func_80046E60((s32) &d_course_frappe_snowland_snow_tlut, (s32) &d_course_frappe_snowland_snow, 0x00000020, 0x00000020);
-    var_s2 = D_8018C3F0;
-    do {
-        temp_s0 = *var_s2;
-        if (temp_s0 != -1) {
-            temp_s1 = &D_80165C18[temp_s0];
-            if (temp_s1->unk_0A6 > 0) {
-                func_8008A364(temp_s0, arg0, 0x2AABU, 0x000001F4);
-                if (func_8007223C(temp_s0, 0x00040000) != 0) {
-                    temp_s1->unk_0B2[1] = func_800418AC(temp_s1->unk_004[0], temp_s1->unk_004[2], sp44->pos);
-                    func_80043104(temp_s0);
-                    temp_v1 = gDisplayListHead;
-                    gDisplayListHead = temp_v1 + 8;
-                    temp_v1->words.w1 = (u32) D_0D0069E0;
-                    temp_v1->words.w0 = 0x06000000;
+    sp44 = &camera1[cameraId];
+    func_80046E60(d_course_frappe_snowland_snow_tlut, d_course_frappe_snowland_snow, 0x00000020, 0x00000020);
+    for (someIndex = 0; someIndex < D_8018C3F0_SIZE; someIndex++) {
+        objectIndex = D_8018C3F0[someIndex];
+        if (objectIndex != -1) {
+            temp_s1 = &gObjectList[objectIndex];
+            if (temp_s1->state > 0) {
+                func_8008A364(objectIndex, cameraId, 0x2AABU, 0x000001F4);
+                if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+                    temp_s1->unk_0B2[1] = func_800418AC(temp_s1->pos[0], temp_s1->pos[2], sp44->pos);
+                    rsp_set_matrix_gObjectList(objectIndex);
+                    gSPDisplayList(gDisplayListHead++, D_0D0069E0);
                 }
             }
         }
-        var_s2 += 4;
-    } while (var_s2 != &D_8018C5F0);
-    temp_v1_2 = gDisplayListHead;
-    gDisplayListHead = temp_v1_2 + 8;
-    temp_v1_2->words.w0 = 0xBB000000;
-    temp_v1_2->words.w1 = 0x00010001;
+    }
+    gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80052F20.s")
-#endif
 
 void func_8005309C(s32 cameraId) {
     s32 var_s4;
-    s32 temp_s1;
+    s32 objectIndex;
     Camera *camera;
 
     camera = &camera1[cameraId];
     for (var_s4 = 0; var_s4 < 0x13; var_s4++) {
-        temp_s1 = D_80183EA0[var_s4];
-        if (D_80165C18[temp_s1].unk_0A6 >= 2) {
-            func_8008A364(temp_s1, cameraId, 0x2AABU, 0x00000258);
-            if (func_8007223C(temp_s1, 0x00040000) != 0) {
-                D_80183E80[0] = (s16) D_80165C18[temp_s1].unk_0B2[0];
-                D_80183E80[1] = func_800418AC(D_80165C18[temp_s1].unk_004[0], D_80165C18[temp_s1].unk_004[2], camera->pos);
-                D_80183E80[2] = (u16) D_80165C18[temp_s1].unk_0B2[2];
-                if (func_8007223C(temp_s1, 0x00000010) != 0) {
-                    func_800480B4(D_80165C18[temp_s1].unk_004, (u16 *) D_80183E80, D_80165C18[temp_s1].unk_000, (u8 *) D_80165C18[temp_s1].unk_060, D_80165C18[temp_s1].unk_064, D_80165C18[temp_s1].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+        objectIndex = D_80183EA0[var_s4];
+        if (gObjectList[objectIndex].state >= 2) {
+            func_8008A364(objectIndex, cameraId, 0x2AABU, 0x00000258);
+            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+                D_80183E80[0] = (s16) gObjectList[objectIndex].unk_0B2[0];
+                D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+                D_80183E80[2] = (u16) gObjectList[objectIndex].unk_0B2[2];
+                if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000010) != 0) {
+                    func_800480B4(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
                 }
-                temp_s1 = D_80183F28[var_s4];
-                D_80183E80[0] = (s16) D_80165C18[temp_s1].unk_0B2[0];
-                D_80183E80[2] = (u16) D_80165C18[temp_s1].unk_0B2[2];
-                func_800480B4(D_80165C18[temp_s1].unk_004, (u16 *) D_80183E80, D_80165C18[temp_s1].unk_000, (u8 *) D_80165C18[temp_s1].unk_060, D_80165C18[temp_s1].unk_064, D_80165C18[temp_s1].unk_074, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+                objectIndex = D_80183F28[var_s4];
+                D_80183E80[0] = (s16) gObjectList[objectIndex].unk_0B2[0];
+                D_80183E80[2] = (u16) gObjectList[objectIndex].unk_0B2[2];
+                func_800480B4(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
         }
     }
@@ -4465,61 +4331,41 @@ void func_8005327C(s32 arg0) {
     func_80052F20(arg0);
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-extern ? D_80183DB8;
-extern ? D_8018C0B0;
-extern void *D_8018CF14;
-
 void func_800532A4(s32 cameraId) {
-    s32 sp44;
-    Camera *temp_s1;
+    s32 stackPadding;
+    Camera *camera;
     f32 var_f0;
     f32 var_f2;
-    s32 temp_a0;
-    struct_80165C18_entry *temp_s0;
-    u8 temp_v0;
-    u8 temp_v0_2;
-    u8 temp_v1;
-    u8 temp_v1_2;
-    void *temp_v0_3;
+    s32 objectIndex;
+    Objects *object;
 
-    temp_a0 = *(&D_80183DB8 + (cameraId * 4));
-    sp44 = temp_a0;
-    temp_s1 = &camera1[cameraId];
-    if (func_8007223C(temp_a0, 0x00000010) != 0) {
-        temp_s0 = &D_80165C18[sp44];
-        temp_s0->unk_0B2 = 0;
-        temp_s0->unk_0B4 = func_800418AC(temp_s0->unk_004[0], temp_s0->unk_004[2], temp_s1->pos);
-        temp_s0->unk_0B6 = 0x8000;
-        if (func_80072354(sp44, 2) != 0) {
-            temp_v1 = temp_s0->unk_0DA;
-            temp_v0 = temp_s0->unk_0D9;
-            func_800480B4((s32) temp_s0->unk_004, (s32) &temp_s0->unk_0B2, temp_s0->unk_000, (s32) temp_s0->unk_060, (s32) temp_s0->unk_064, (Vtx *) temp_s0->unk_074, (s32) temp_v0, (s32) temp_v1, (s32) temp_v0, (s32) temp_v1 / 2);
+    objectIndex = D_80183DB8[cameraId];
+    camera = &camera1[cameraId];
+    if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000010) != 0) {
+        object = &gObjectList[objectIndex];
+        object->unk_0B2[0] = 0;
+        object->unk_0B2[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
+        object->unk_0B2[2] = 0x8000;
+        if (func_80072354(objectIndex, 2) != 0) {
+            func_800480B4(object->pos, object->unk_0B2, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, object->vertex, (s32) object->textureWidth, (s32) object->textureHeight, (s32) object->textureWidth, (s32) object->textureHeight / 2);
         } else {
-            temp_v1_2 = temp_s0->unk_0DA;
-            temp_v0_2 = temp_s0->unk_0D9;
-            func_800485C4((s32) temp_s0->unk_004, (s32) &temp_s0->unk_0B2, temp_s0->unk_000, (s32) temp_s0->unk_0A0, (s32) temp_s0->unk_060, (s32) temp_s0->unk_064, (Vtx *) temp_s0->unk_074, (s32) temp_v0_2, (s32) temp_v1_2, (s32) temp_v0_2, (s32) temp_v1_2 / 2);
+            func_800485C4(object->pos, object->unk_0B2, object->sizeScaling, (s32) object->unk_0A0, (u8 *) object->activeTLUT, object->activeTexture, object->vertex, (s32) object->textureWidth, (s32) object->textureHeight, (s32) object->textureWidth, (s32) object->textureHeight / 2);
         }
         if (gScreenModeSelection == 0) {
-            temp_v0_3 = D_8018CF14;
-            var_f0 = temp_s0->unk_004[0] - temp_v0_3->unk0;
-            var_f2 = temp_s0->unk_004[2] - temp_v0_3->unk8;
+            var_f0 = object->pos[0] - D_8018CF14->pos[0];
+            var_f2 = object->pos[2] - D_8018CF14->pos[2];
             if (var_f0 < 0.0f) {
                 var_f0 = -var_f0;
             }
             if (var_f2 < 0.0f) {
                 var_f2 = -var_f2;
             }
-            if ((f64) (var_f0 + var_f2) <= 200.0) {
-                func_8004A630((cameraId << 6) + &D_8018C0B0, temp_s0->unk_004, 0.35f);
+            if ((var_f0 + var_f2) <= 200.0) {
+                func_8004A630(&D_8018C0B0[cameraId], object->pos, 0.35f);
             }
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800532A4.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
@@ -4536,13 +4382,9 @@ void func_800534A4(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800534A4.s")
 #endif
 
-#ifdef NEEDS_RODATA
-// jpt_800EE068
-// I guess this also needs all those Light1's too, which are plain data (I think)
-
 void func_800534E8(s32 objectIndex) {
-    // I don't get why all of theses weren't just `gSPSetLights1` calls...
-    switch (D_80165C18[objectIndex].unk_0A4) {
+    // Why these don't just use `gSPSetLights1` calls...
+    switch (gObjectList[objectIndex].type) { // hmm very strange 80165C18
     case 0:
         gSPLight(gDisplayListHead++, &D_800E4638.l[0], LIGHT_1);
         gSPLight(gDisplayListHead++, &D_800E4638.a, LIGHT_2);
@@ -4567,37 +4409,26 @@ void func_800534E8(s32 objectIndex) {
         break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800534E8.s")
-#endif
 
 void func_800536C8(s32 objectIndex) {
-    if ((D_80165C18[objectIndex].unk_0A6 >= 2) && (func_80072354(objectIndex, 0x00000040) != 0)) {
+    if ((gObjectList[objectIndex].state >= 2) && (func_80072354(objectIndex, 0x00000040) != 0)) {
         func_8004A7AC(objectIndex, 1.75f);
-        func_80042E00(D_80165C18[objectIndex].unk_004, D_80165C18[objectIndex].unk_0B2, D_80165C18[objectIndex].unk_000);
+        rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0B2, gObjectList[objectIndex].sizeScaling);
         func_800534E8(objectIndex);
         gSPDisplayList(gDisplayListHead++, D_0D007828);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
-        gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTWhomp);
-        func_8004544C(D_80165C18[objectIndex].unk_064, 0x00000010, 0x00000040, 4);
-        gSPDisplayList(gDisplayListHead++, D_80165C18[objectIndex].unk_070);
+        gDPLoadTLUT_pal256(gDisplayListHead++, d_course_bowsers_castle_thwomp_tlut);
+        rsp_load_texture_mask(gObjectList[objectIndex].activeTexture, 0x00000010, 0x00000040, 4);
+        gSPDisplayList(gDisplayListHead++, gObjectList[objectIndex].unk_070);
     }
 }
 
 #ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
+//generated by m2c commit b52d92c2340f6f4ba1aafb464188bb698752fbb0 on Jul-27-2023
 ? func_800534A4(s32);                               /* extern */
-? func_800536C8(s32);                               /* extern */
-extern s8 d_course_bowsers_castle_thwomp_side;
-extern s16 D_80165750;
-extern s16 D_80183E80;
-extern s32 D_8018C3F0;
 extern ? D_8018C5F0;
-extern s32 D_8018C630;
-extern ? D_8018C830;
-extern s32 gGamestate;
-static ? D_800E4668;                                /* unable to generate initializer */
-static ? D_800E4670;                                /* unable to generate initializer */
+extern u8 d_course_bowsers_castle_thwomp_side;
+Lights1 D_800E4668;                                 /* unable to generate initializer */
 
 void func_80053870(s32 cameraId) {
     s32 sp94;
@@ -4627,8 +4458,8 @@ void func_80053870(s32 cameraId) {
     s32 temp_s1_3;
     s32 temp_s1_4;
     s32 var_s2;
-    struct_80165C18_entry *temp_s0;
-    struct_80165C18_entry *temp_s0_2;
+    Objects *temp_s0;
+    Objects *temp_s0_2;
     u8 temp_v0;
 
     sp84 = &camera1[cameraId];
@@ -4638,7 +4469,7 @@ void func_80053870(s32 cameraId) {
         if (D_80165750 > 0) {
             do {
                 temp_s1 = *var_s0;
-                func_800721E8(temp_s1, 0x00070000);
+                set_object_flag_unk_054_false(temp_s1, 0x00070000);
                 func_800722CC(temp_s1, 0x00000110);
                 var_s2 += 1;
                 var_s0 += 4;
@@ -4651,7 +4482,7 @@ void func_80053870(s32 cameraId) {
     if (D_80165750 > 0) {
         do {
             temp_s1_2 = *var_s0_2;
-            temp_v0 = D_80165C18[temp_s1_2].unk_0DF;
+            temp_v0 = gObjectList[temp_s1_2].unk_0DF;
             if (gGamestate != 9) {
                 temp_v0_2 = D_8018CF68[cameraId];
                 if ((temp_v0_2 >= (s16) (temp_v0 - 1)) && ((s16) (temp_v0 + 1) >= temp_v0_2) && (func_8008A140(temp_s1_2, sp84, 0x8000U) != 0)) {
@@ -4679,11 +4510,11 @@ void func_80053870(s32 cameraId) {
     temp_v0_5->words.w0 = 0xBC000002;
     temp_v0_6 = gDisplayListHead;
     gDisplayListHead = temp_v0_6 + 8;
-    temp_v0_6->words.w1 = (u32) &D_800E4670;
+    temp_v0_6->words.w1 = (u32) &D_800E4668.l[0];
     temp_v0_6->words.w0 = 0x03860010;
     temp_v0_7 = gDisplayListHead;
     gDisplayListHead = temp_v0_7 + 8;
-    temp_v0_7->words.w1 = (u32) &D_800E4668;
+    temp_v0_7->words.w1 = (u32) &D_800E4668.a;
     temp_v0_7->words.w0 = 0x03880010;
     temp_v0_8 = gDisplayListHead;
     gDisplayListHead = temp_v0_8 + 8;
@@ -4694,14 +4525,14 @@ void func_80053870(s32 cameraId) {
     temp_v0_9->words.w0 = 0xB7000000;
     temp_v0_9->words.w1 = 0x00020204;
     func_80043D50(&d_course_bowsers_castle_thwomp_side, 0x00000020, 0x00000020);
-    var_a3 = &D_8018C630;
+    var_a3 = D_8018C630;
     do {
         temp_s1_3 = *var_a3;
         if (temp_s1_3 != -1) {
-            temp_s0 = &D_80165C18[temp_s1_3];
-            if ((temp_s0->unk_0A6 > 0) && (temp_s0->unk_0D5 == 3) && (D_8018D120 < 0x2EF)) {
+            temp_s0 = &gObjectList[temp_s1_3];
+            if ((temp_s0->state > 0) && (temp_s0->unk_0D5 == 3) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 sp44 = var_a3;
-                func_80042E00(temp_s0->unk_004, (s16 *) &temp_s0->unk_0B2, temp_s0->unk_000);
+                rsp_set_matrix_transformation(temp_s0->pos, temp_s0->unk_0B2, temp_s0->sizeScaling);
                 temp_v0_10 = gDisplayListHead;
                 gDisplayListHead = temp_v0_10 + 8;
                 temp_v0_10->words.w0 = 0x04000C2F;
@@ -4732,17 +4563,17 @@ void func_80053870(s32 cameraId) {
     temp_v0_15->words.w1 = (u32) D_0D007AE0;
     func_800444B0(D_8018D490, 0x00000020, 0x00000020);
     func_8004B3C8(0);
-    D_80183E80.unk0 = 0;
-    D_80183E80.unk4 = 0x8000;
-    var_s3 = &D_8018C3F0;
+    D_80183E80->unk0 = 0;
+    D_80183E80->unk4 = 0x8000;
+    var_s3 = D_8018C3F0;
     do {
         temp_s1_4 = *var_s3;
         if (temp_s1_4 != -1) {
-            temp_s0_2 = &D_80165C18[temp_s1_4];
-            if ((temp_s0_2->unk_0A6 >= 2) && (temp_s0_2->unk_0D5 == 2) && (D_8018D120 < 0x2EF)) {
+            temp_s0_2 = &gObjectList[temp_s1_4];
+            if ((temp_s0_2->state >= 2) && (temp_s0_2->unk_0D5 == 2) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 func_8004B138(0x000000FF, 0x000000FF, 0x000000FF, (s32) temp_s0_2->unk_0A0);
-                D_80183E80.unk2 = func_800418AC(temp_s0_2->unk_004[0], temp_s0_2->unk_004[2], sp84->pos);
-                func_800431B0(temp_s0_2->unk_004, &D_80183E80, temp_s0_2->unk_000, D_0D005AE0);
+                D_80183E80->unk2 = func_800418AC(temp_s0_2->pos[0], temp_s0_2->pos[2], sp84->pos);
+                func_800431B0(temp_s0_2->pos, D_80183E80, temp_s0_2->sizeScaling, D_0D005AE0);
             }
         }
         var_s3 += 4;
@@ -4753,327 +4584,242 @@ GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80053870.s")
 #endif
 
 void func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 vertexIndex) {
-    struct_80165C18_entry *temp_v0;
+    Objects *temp_v0;
 
-    if (D_8018D120 < 0x2EF) {
-        temp_v0 = &D_80165C18[objectIndex];
+    if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
+        temp_v0 = &gObjectList[objectIndex];
         D_80183E80[2] = (s16) (temp_v0->unk_084[6] + 0x8000);
-        func_80042E00(temp_v0->unk_004, (u16 *) D_80183E80, temp_v0->unk_000);
+        rsp_set_matrix_transformation(temp_v0->pos, (u16 *) D_80183E80, temp_v0->sizeScaling);
         func_8004B1C8((s32) temp_v0->unk_084[0], (s32) temp_v0->unk_084[1], (s32) temp_v0->unk_084[2], (s32) temp_v0->unk_084[3], (s32) temp_v0->unk_084[4], (s32) temp_v0->unk_084[5], (s32) temp_v0->unk_0A0);
         gSPVertex(gDisplayListHead++, &D_0D0060B0[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, D_0D006940);
+        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-28-2022
-extern s8 *D_8018D4BC;
-extern s8 *D_8018D4C0;
-static ? D_800E52D0;                                /* unable to generate initializer */
+extern u8 D_800E52D0[];
+extern u8* D_8018D4BC;
+extern u8* D_8018D4C0;
 
 void func_80053E6C(s32 arg0) {
-    Gfx *temp_v0;
-    Gfx *temp_v0_2;
-    Gfx *temp_v0_3;
-    Gfx *temp_v0_4;
-    Gfx *temp_v0_5;
-    Gfx *temp_v0_6;
-    Gfx *temp_v0_7;
-    s32 *var_s0;
-    s32 *var_s0_2;
-    s32 temp_a0;
-    s32 temp_a0_2;
     s32 var_s1;
+    s32 objectIndex;
 
-    temp_v0 = gDisplayListHead;
-    gDisplayListHead = temp_v0 + 8;
-    temp_v0->words.w0 = 0x06000000;
-    temp_v0->words.w1 = (u32) D_0D007E98;
-    temp_v0_2 = gDisplayListHead;
-    gDisplayListHead = temp_v0_2 + 8;
-    temp_v0_2->words.w0 = 0xFD100000;
-    temp_v0_2->words.w1 = (u32) &D_800E52D0;
-    temp_v0_3 = gDisplayListHead;
-    gDisplayListHead = temp_v0_3 + 8;
-    temp_v0_3->words.w1 = 0;
-    temp_v0_3->words.w0 = 0xE8000000;
-    temp_v0_4 = gDisplayListHead;
-    gDisplayListHead = temp_v0_4 + 8;
-    temp_v0_4->words.w1 = 0x07000000;
-    temp_v0_4->words.w0 = 0xF5000100;
-    temp_v0_5 = gDisplayListHead;
-    gDisplayListHead = temp_v0_5 + 8;
-    temp_v0_5->words.w1 = 0;
-    temp_v0_5->words.w0 = 0xE6000000;
-    temp_v0_6 = gDisplayListHead;
-    gDisplayListHead = temp_v0_6 + 8;
-    temp_v0_6->words.w1 = 0x073FC000;
-    temp_v0_6->words.w0 = 0xF0000000;
-    temp_v0_7 = gDisplayListHead;
-    gDisplayListHead = temp_v0_7 + 8;
-    temp_v0_7->words.w1 = 0;
-    temp_v0_7->words.w0 = 0xE7000000;
+    gSPDisplayList(gDisplayListHead++, D_0D007E98);
+    gDPLoadTLUT_pal256(gDisplayListHead++, D_800E52D0);
     func_8004B614(0, 0, 0, 0, 0, 0, 0);
-    D_80183E80->unk0 = 0;
-    D_80183E80->unk2 = 0x8000;
-    func_800452A4(D_8018D4BC, 0x00000040, 0x00000020);
-    var_s0 = D_8018C630;
-    var_s1 = 0;
-    if (D_80165738 > 0) {
-        do {
-            temp_a0 = *var_s0;
-            if ((temp_a0 != -1) && (D_80165C18[temp_a0].unk_0A6 >= 2)) {
-                func_80053D74(temp_a0, arg0, 0);
-            }
-            var_s1 += 1;
-            var_s0 += 4;
-        } while (var_s1 < D_80165738);
-        var_s1 = 0;
+    D_80183E80[0] = 0;
+    D_80183E80[1] = 0x8000;
+    rsp_load_texture(D_8018D4BC, 0x40, 0x20);
+    for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
+        objectIndex = D_8018C630[var_s1];
+        if ((objectIndex != -1) && (gObjectList[objectIndex].state >= 2)) {
+            func_80053D74(objectIndex, arg0, 0);
+        }
     }
-    func_800452A4(D_8018D4C0, 0x00000040, 0x00000020);
-    var_s0_2 = D_8018C630;
-    if (D_80165738 > 0) {
-        do {
-            temp_a0_2 = *var_s0_2;
-            if ((temp_a0_2 != -1) && (D_80165C18[temp_a0_2].unk_0A6 >= 2)) {
-                func_80053D74(temp_a0_2, arg0, 4);
-            }
-            var_s1 += 1;
-            var_s0_2 += 4;
-        } while (var_s1 < D_80165738);
+    rsp_load_texture(D_8018D4C0, 0x40, 0x20);
+    for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
+        objectIndex = D_8018C630[var_s1];
+        if ((objectIndex != -1) && (gObjectList[objectIndex].state >= 2)) {
+            func_80053D74(objectIndex, arg0, 4);
+        }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80053E6C.s")
-#endif
+
 
 void func_800540CC(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
     if (objectIndex != -1) {
-        if ((D_80165C18[objectIndex].unk_0A6 >= 2) && (D_80165C18[objectIndex].unk_0D5 == 1) && (D_8018D120 < 0x2EF)) {
-            func_8004B1C8((s32) D_80165C18[objectIndex].unk_0A4, (s32) D_80165C18[objectIndex].unk_0A4, (s32) D_80165C18[objectIndex].unk_0A4, 0, 0, 0, (s32) D_80165C18[objectIndex].unk_0A0);
-            D_80183E80[1] = func_800418AC(D_80165C18[objectIndex].unk_004[0], D_80165C18[objectIndex].unk_004[2], camera->pos);
-            func_800431B0(D_80165C18[objectIndex].unk_004, D_80183E80, D_80165C18[objectIndex].unk_000, D_0D005AE0);
+        if ((gObjectList[objectIndex].state >= 2) && (gObjectList[objectIndex].unk_0D5 == 1) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+            func_8004B1C8((s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, 0, 0, 0, (s32) gObjectList[objectIndex].unk_0A0);
+            D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+            func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling, D_0D005AE0);
         }
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-28-2022
-extern f32 D_801635A4;
-extern s32 D_801636A0;
-extern f32 D_801636B0;
-extern s32 D_801637AC;
-extern ? D_8018C5F0;
-
+// Train smoke?
 void func_800541BC(s32 cameraId) {
-    Camera *sp3C;
-    Gfx *temp_v1;
-    s32 *var_s0;
-    s32 *var_s0_2;
+    s32 pad;
+    s32 j;
+    Camera *camera;
+    s32 i;
 
-    temp_v1 = gDisplayListHead;
-    sp3C = &camera1[cameraId];
-    gDisplayListHead = temp_v1 + 8;
-    temp_v1->words.w0 = 0x06000000;
-    temp_v1->words.w1 = (u32) D_0D007AE0;
-    func_8004477C(D_0D029458, 0x00000020, 0x00000020);
-    func_8004B72C(0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF);
-    D_80183E80->unk0 = 0;
-    D_80183E80->unk4 = 0x8000;
-    if ((D_801636A0 != 0) && (func_80041980(&D_801635A4, sp3C, 0x4000U) != 0)) {
-        var_s0 = D_8018C3F0;
-        do {
-            func_800540CC(*var_s0, cameraId);
-            var_s0 += 4;
-        } while (var_s0 != &D_8018C5F0);
+    camera = &camera1[cameraId];
+    gSPDisplayList(gDisplayListHead++, D_0D007AE0)
+    func_8004477C(D_0D029458, 32, 32);
+    func_8004B72C(255, 255, 255, 255, 255, 255, 255);
+    D_80183E80[0] = 0;
+    D_80183E80[2] = 0x8000;
+
+// Render smoke for any number of trains. Don't know enough about these variables yet.
+#ifdef AVOID_UB_WIP
+    for (j = 0; j < NUM_TRAINS; j++) {
+        if ((sTrains[j].someFlags != 0) && (func_80041980(&sTrains[j].locomotive.position, camera, 0x4000U) != 0)) {
+
+            for (i = 0; i < 128; i++) {
+                // Need to make a way to increase this array for each train.
+                func_800540CC(D_8018C3F0[i], cameraId);
+            }
+        }
     }
-    if ((D_801637AC != 0) && (func_80041980(&D_801636B0, sp3C, 0x4000U) != 0)) {
-        var_s0_2 = D_8018C630;
-        do {
-            func_800540CC(*var_s0_2, cameraId);
-            var_s0_2 += 4;
-        } while (var_s0_2 != &D_8018C830);
-    }
-}
 #else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800541BC.s")
+
+    if ((sTrains[0].someFlags != 0) && (func_80041980(&sTrains[0].locomotive.position, camera, 0x4000U) != 0)) {
+
+        for (i = 0; i < D_8018C3F0_SIZE; i++) {
+            func_800540CC(D_8018C3F0[i], cameraId);
+        }
+
+    }
+    if ((sTrains[1].someFlags != 0) && (func_80041980(&sTrains[1].locomotive.position, camera, 0x4000U) != 0)) {
+        for (i = 0; i < D_8018C630_SIZE; i++) {
+            func_800540CC(D_8018C630[i], cameraId);
+        }
+    }
 #endif
+}
 
 void func_80054324(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
     if (objectIndex != -1) {
-        if ((D_80165C18[objectIndex].unk_0A6 >= 2) && (D_80165C18[objectIndex].unk_0D5 == 6) && (D_8018D120 < 0x2EF)) {
-            func_8004B1C8((s32) D_80165C18[objectIndex].unk_0A4, (s32) D_80165C18[objectIndex].unk_0A4, (s32) D_80165C18[objectIndex].unk_0A4, D_80165C18[objectIndex].unk_0A2, D_80165C18[objectIndex].unk_0A2, D_80165C18[objectIndex].unk_0A2, (s32) D_80165C18[objectIndex].unk_0A0);
-            D_80183E80[1] = func_800418AC(D_80165C18[objectIndex].unk_004[0], D_80165C18[objectIndex].unk_004[2], camera->pos);
-            func_800431B0(D_80165C18[objectIndex].unk_004, D_80183E80, D_80165C18[objectIndex].unk_000, D_0D005AE0);
+        if ((gObjectList[objectIndex].state >= 2) && (gObjectList[objectIndex].unk_0D5 == 6) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+            func_8004B1C8((s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, gObjectList[objectIndex].unk_0A2, gObjectList[objectIndex].unk_0A2, gObjectList[objectIndex].unk_0A2, (s32) gObjectList[objectIndex].unk_0A0);
+            D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+            func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling, D_0D005AE0);
         }
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-28-2022
 extern f32 D_801637C4;
 extern s32 D_801637E8;
 extern f32 D_801637F0;
 extern s32 D_80163814;
-extern ? D_8018C5F0;
 
+// Likely smoke related.
 void func_80054414(s32 cameraId) {
-    Camera *sp3C;
-    Gfx *temp_v1;
-    s32 *var_s0;
-    s32 *var_s0_2;
+    s32 pad[2];
+    Camera *camera;
+    s32 i;
+ 
+    camera = &camera1[cameraId];
+    gSPDisplayList(gDisplayListHead++, D_0D007AE0);
 
-    temp_v1 = gDisplayListHead;
-    sp3C = &camera1[cameraId];
-    gDisplayListHead = temp_v1 + 8;
-    temp_v1->words.w0 = 0x06000000;
-    temp_v1->words.w1 = (u32) D_0D007AE0;
-    func_8004477C(D_0D029458, 0x00000020, 0x00000020);
-    func_8004B72C(0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF);
-    D_80183E80->unk0 = 0;
-    D_80183E80->unk4 = 0x8000;
-    if ((D_801637E8 != 0) && (func_80041980(&D_801637C4, sp3C, 0x4000U) != 0)) {
-        var_s0 = D_8018C3F0;
-        do {
-            func_80054324(*var_s0, cameraId);
-            var_s0 += 4;
-        } while (var_s0 != &D_8018C5F0);
+    func_8004477C(D_0D029458, 32, 32);
+    func_8004B72C(255, 255, 255, 255, 255, 255, 255);
+    D_80183E80[0] = 0;
+    D_80183E80[2] = 0x8000;
+    if ((D_801637E8 != 0) && (func_80041980(&D_801637C4, camera, 0x4000U) != 0)) {
+        for (i = 0; i < D_8018C3F0_SIZE; i++) {
+            func_80054324(D_8018C3F0[i], cameraId);
+        }
     }
-    if ((D_80163814 != 0) && (func_80041980(&D_801637F0, sp3C, 0x4000U) != 0)) {
-        var_s0_2 = D_8018C630;
-        do {
-            func_80054324(*var_s0_2, cameraId);
-            var_s0_2 += 4;
-        } while (var_s0_2 != &D_8018C830);
+    if ((D_80163814 != 0) && (func_80041980(&D_801637F0, camera, 0x4000U) != 0)) {
+        for (i = 0; i < D_8018C630_SIZE; i++) {
+            func_80054324(D_8018C630[i], cameraId);
+        }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80054414.s")
-#endif
 
 void func_8005457C(s32 objectIndex, s32 cameraId) {
     Camera *camera;
-    struct_80165C18_entry *temp_s0;
+    Objects *temp_s0;
 
     camera = &camera1[cameraId];
-    if (D_8018D120 < 0x2EF) {
-        temp_s0 = &D_80165C18[objectIndex];
+    if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
+        temp_s0 = &gObjectList[objectIndex];
         if (temp_s0->unk_0D5 == 9) {
-            func_8004B72C(0x000000FF, (s32) temp_s0->unk_0A4, 0, (s32) temp_s0->unk_0A2, 0, 0, (s32) temp_s0->unk_0A0);
+            func_8004B72C(255, (s32) temp_s0->type, 0, (s32) temp_s0->unk_0A2, 0, 0, (s32) temp_s0->unk_0A0);
         } else {
-            func_8004B138(0x000000FF, (s32) temp_s0->unk_0A4, 0, (s32) temp_s0->unk_0A0);
+            func_8004B138(255, (s32) temp_s0->type, 0, (s32) temp_s0->unk_0A0);
         }
-        D_80183E80[1] = func_800418AC(temp_s0->unk_004[0], temp_s0->unk_004[2], camera->pos);
-        func_800431B0(temp_s0->unk_004, D_80183E80, temp_s0->unk_000, D_0D005AE0);
+        D_80183E80[1] = func_800418AC(temp_s0->pos[0], temp_s0->pos[2], camera->pos);
+        func_800431B0(temp_s0->pos, D_80183E80, temp_s0->sizeScaling, D_0D005AE0);
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-28-2022
-void func_80054664(s32 arg0) {
-    Gfx *temp_v1;
-    s32 *var_s0;
-    s32 temp_a0;
+void func_80054664(s32 cameraId) {
+    s32 var_s0;
+    s32 objectIndex;
 
-    temp_v1 = gDisplayListHead;
-    gDisplayListHead = temp_v1 + 8;
-    temp_v1->words.w0 = 0x06000000;
-    temp_v1->words.w1 = (u32) D_0D007AE0;
-    func_8004477C((D_80165598 << 0xA) + D_0D02BC58, 0x00000020, 0x00000020);
+    gSPDisplayList(gDisplayListHead++, D_0D007AE0);
+    func_8004477C(D_0D02BC58[D_80165598], 0x00000020, 0x00000020);
     func_8004B414(0, 0, 0, 0x000000FF);
-    D_80183E80->unk0 = 0;
-    D_80183E80->unk4 = 0x8000;
-    var_s0 = D_8018C1B0;
-    do {
-        temp_a0 = *var_s0;
-        if ((temp_a0 != -1) && (D_80165C18[temp_a0].unk_0A6 >= 3)) {
-            func_8005457C(temp_a0, arg0);
+    D_80183E80[0] = 0;
+    D_80183E80[2] = 0x8000;
+    for (var_s0 = 0; var_s0 < D_8018C1B0_SIZE; var_s0++) {
+        objectIndex = D_8018C1B0[var_s0];
+        if ((objectIndex != -1) && (gObjectList[objectIndex].state >= 3)) {
+            func_8005457C(objectIndex, cameraId);
         }
-        var_s0 += 4;
-    } while (var_s0 != &D_8018C3B0);
+    }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80054664.s")
-#endif
 
 void func_8005477C(s32 objectIndex, u8 arg1, Vec3f arg2) {
-    if (D_8018D120 < 0x2EF) {
+    if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
         switch (arg1) {                          /* irregular */
         case 0:
-            func_8004B1C8(0x000000E6, 0x000000FF, 0x000000FF, 0, 0, 0x000000FF, (s32) D_80165C18[objectIndex].unk_0A0);
+            func_8004B1C8(0x000000E6, 0x000000FF, 0x000000FF, 0, 0, 0x000000FF, (s32) gObjectList[objectIndex].unk_0A0);
             break;
         case 1:
-            func_8004B1C8(0x000000FF, 0x000000FF, 0x00000096, 0x000000FF, 0, 0, (s32) D_80165C18[objectIndex].unk_0A0);
+            func_8004B1C8(0x000000FF, 0x000000FF, 0x00000096, 0x000000FF, 0, 0, (s32) gObjectList[objectIndex].unk_0A0);
             break;
         case 2:
-            func_8004B1C8(0x000000FF, 0x000000E6, 0x000000FF, 0x000000FF, 0, 0x00000096, (s32) D_80165C18[objectIndex].unk_0A0);
+            func_8004B1C8(0x000000FF, 0x000000E6, 0x000000FF, 0x000000FF, 0, 0x00000096, (s32) gObjectList[objectIndex].unk_0A0);
             break;
         case 3:
-            func_8004B1C8(0x000000FF, 0x000000FF, 0x0000001E, 0x000000FF, 0, 0, (s32) D_80165C18[objectIndex].unk_0A0);
+            func_8004B1C8(0x000000FF, 0x000000FF, 0x0000001E, 0x000000FF, 0, 0, (s32) gObjectList[objectIndex].unk_0A0);
             break;
         default:
             break;
         }
-        D_80183E80[1] = func_800418AC(D_80165C18[objectIndex].unk_004[0], D_80165C18[objectIndex].unk_004[2], arg2);
-        func_800431B0(D_80165C18[objectIndex].unk_004, D_80183E80, D_80165C18[objectIndex].unk_000, D_0D005AE0);
+        D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], arg2);
+        func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling, D_0D005AE0);
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-28-2022
 void func_80054938(s32 cameraId) {
+    s32 stackPadding[2];
     Camera *sp54;
-    Gfx *temp_v1;
-    s32 *var_s2;
-    s32 temp_s0;
-    struct_80165C18_entry *temp_s1;
+    s32 var_s0;
+    s32 objectIndex;
+    Objects *object;
 
-    temp_v1 = gDisplayListHead;
     sp54 = &camera1[cameraId];
-    gDisplayListHead = temp_v1 + 8;
-    temp_v1->words.w0 = 0x06000000;
-    temp_v1->words.w1 = (u32) D_0D007AE0;
-    func_8004477C((D_80165598 << 0xA) + D_0D02BC58, 0x00000020, 0x00000020);
-    func_8004B72C(0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF);
-    D_80183E80->unk0 = 0;
-    D_80183E80->unk4 = 0x8000;
-    var_s2 = D_8018C870;
-    do {
-        temp_s0 = *var_s2;
-        if (temp_s0 != -1) {
-            temp_s1 = &D_80165C18[temp_s0];
-            if (temp_s1->unk_0A6 >= 2) {
-                if ((u8) temp_s1->unk_0D8 == 3) {
-                    func_8008A364(temp_s0, cameraId, 0x4000U, 0x00000514);
+    gSPDisplayList(gDisplayListHead++, D_0D007AE0);
+    func_8004477C(D_0D02BC58[D_80165598], 32, 32);
+    func_8004B72C(255, 255, 255, 255, 255, 255, 255);
+    D_80183E80[0] = 0;
+    D_80183E80[2] = 0x8000;
+    for (var_s0 = 0; var_s0 < D_8018C870_SIZE; var_s0++) {
+        objectIndex = D_8018C870[var_s0];
+        if (objectIndex != -1) {
+            object = &gObjectList[objectIndex];
+            if (object->state >= 2) {
+                if (object->unk_0D8 == 3) {
+                    func_8008A364(objectIndex, cameraId, 0x4000U, 0x00000514);
                 } else {
-                    func_8008A364(temp_s0, cameraId, 0x4000U, 0x000001F4);
+                    func_8008A364(objectIndex, cameraId, 0x4000U, 0x000001F4);
                 }
-                if (func_8007223C(temp_s0, 0x00040000) != 0) {
-                    func_8005477C(temp_s0, (u8) temp_s1->unk_0D8, sp54->pos);
+                if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+                    func_8005477C(objectIndex, object->unk_0D8, sp54->pos);
                 }
             }
         }
-        var_s2 += 4;
-    } while (var_s2 != D_8018C970);
+    }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80054938.s")
-#endif
 
 void func_80054AFC(s32 objectIndex, Vec3f arg1) {
-    D_80183E80[0] = func_800418E8(D_80165C18[objectIndex].unk_004[2], D_80165C18[objectIndex].unk_004[1], arg1);
-    D_80183E80[1] = func_800418AC(D_80165C18[objectIndex].unk_004[0], D_80165C18[objectIndex].unk_004[2], arg1);
-    D_80183E80[2] = (u16) D_80165C18[objectIndex].unk_0B2[2];
-    func_8004B138((s32) D_80165C18[objectIndex].unk_084[0], (s32) D_80165C18[objectIndex].unk_084[1], (s32) D_80165C18[objectIndex].unk_084[2], (s32) D_80165C18[objectIndex].unk_0A0);
-    func_80042E00(D_80165C18[objectIndex].unk_004, (u16 *) D_80183E80, D_80165C18[objectIndex].unk_000);
+    D_80183E80[0] = func_800418E8(gObjectList[objectIndex].pos[2], gObjectList[objectIndex].pos[1], arg1);
+    D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], arg1);
+    D_80183E80[2] = (u16) gObjectList[objectIndex].unk_0B2[2];
+    func_8004B138((s32) gObjectList[objectIndex].unk_084[0], (s32) gObjectList[objectIndex].unk_084[1], (s32) gObjectList[objectIndex].unk_084[2], (s32) gObjectList[objectIndex].unk_0A0);
+    rsp_set_matrix_transformation(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling);
     gSPVertex(gDisplayListHead++, D_0D005AE0, 4, 0);
-    gSPDisplayList(gDisplayListHead++, D_0D006940);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
 
 #ifdef MIPS_TO_C
@@ -5097,7 +4843,7 @@ void func_80054BE8(s32 cameraId) {
     var_s0 = D_8018C630;
     do {
         temp_a0 = *var_s0;
-        if ((temp_a0 != -1) && (D_80165C18[temp_a0].unk_0A6 >= 2)) {
+        if ((temp_a0 != -1) && (gObjectList[temp_a0].state >= 2)) {
             func_80054AFC(temp_a0, temp_s5->pos);
         }
         var_s0 += 4;
@@ -5111,27 +4857,27 @@ void func_80054D00(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
-    if (D_80165C18[objectIndex].unk_0A6 >= 3) {
+    if (gObjectList[objectIndex].state >= 3) {
         func_8008A364(objectIndex, cameraId, 0x2AABU, 0x0000012C);
-        if (func_8007223C(objectIndex, 0x00040000) != 0) {
-            D_80183E80[0] = (s16) D_80165C18[objectIndex].unk_0B2[0];
-            D_80183E80[1] = func_800418AC(D_80165C18[objectIndex].unk_004[0], D_80165C18[objectIndex].unk_004[2], camera->pos);
-            D_80183E80[2] = (u16) D_80165C18[objectIndex].unk_0B2[2];
-            func_80048130(D_80165C18[objectIndex].unk_004, (u16 *) D_80183E80, D_80165C18[objectIndex].unk_000, (u8 *) D_80165C18[objectIndex].unk_060, D_80165C18[objectIndex].unk_064, D_0D0062B0, 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
+        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+            D_80183E80[0] = (s16) gObjectList[objectIndex].unk_0B2[0];
+            D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+            D_80183E80[2] = (u16) gObjectList[objectIndex].unk_0B2[2];
+            func_80048130(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, D_0D0062B0, 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
         }
     }
 }
 
 void func_80054E10(s32 objectIndex) {
-    if (D_80165C18[objectIndex].unk_0A6 > 0) {
-        if (func_8007223C(objectIndex, 0x00800000) != 0) {
-            D_80183E50[0] = D_80165C18[objectIndex].unk_004[0];
-            D_80183E50[1] = D_80165C18[objectIndex].unk_044 + 0.8;
-            D_80183E50[2] = D_80165C18[objectIndex].unk_004[2];
-            D_80183E70[0] = D_80165C18[objectIndex].unk_038[0];
-            D_80183E70[1] = D_80165C18[objectIndex].unk_038[1];
-            D_80183E70[2] = D_80165C18[objectIndex].unk_038[2];
-            func_8004A9B8(D_80165C18[objectIndex].unk_000);
+    if (gObjectList[objectIndex].state > 0) {
+        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00800000) != 0) {
+            D_80183E50[0] = gObjectList[objectIndex].pos[0];
+            D_80183E50[1] = gObjectList[objectIndex].unk_044 + 0.8;
+            D_80183E50[2] = gObjectList[objectIndex].pos[2];
+            D_80183E70[0] = gObjectList[objectIndex].unk_038[0];
+            D_80183E70[1] = gObjectList[objectIndex].unk_038[1];
+            D_80183E70[2] = gObjectList[objectIndex].unk_038[2];
+            func_8004A9B8(gObjectList[objectIndex].sizeScaling);
         }
     }
 }
@@ -5149,19 +4895,19 @@ void func_80054F04(s32 cameraId) {
     s32 var_s2;
     s32 objectIndex;
     Camera *sp44;
-    struct_80165C18_entry * object;
+    Objects * object;
 
     sp44 = &camera1[cameraId];
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
-    func_80043D50(D_06013670, 0x00000010, 0x00000010);
+    func_80043D50(d_course_moo_moo_farm_mole_dirt, 0x00000010, 0x00000010);
     for (var_s2 = 0; var_s2 < D_8018C3F0_SIZE; var_s2++) {
         objectIndex = D_8018C3F0[var_s2];
-        object = &D_80165C18[objectIndex];
-        if (object->unk_0A6 > 0) {
+        object = &gObjectList[objectIndex];
+        if (object->state > 0) {
             func_8008A364(objectIndex, cameraId, 0x2AABU, 0x000000C8);
-            if ((func_8007223C(objectIndex, 0x00040000) != 0) && (D_8018D120 < 0x2EF)) {
-                object->unk_0B2[1] = func_800418AC(object->unk_004[0], object->unk_004[2], sp44->pos);
-                func_80043104(objectIndex);
+            if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+                object->unk_0B2[1] = func_800418AC(object->pos[0], object->pos[2], sp44->pos);
+                rsp_set_matrix_gObjectList(objectIndex);
                 gSPDisplayList(gDisplayListHead++, D_0D006980);
             }
         }
@@ -5185,86 +4931,42 @@ void func_800550A4(s32 arg0) {
     func_80054F04(arg0);
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-s16 func_80004DFC(s32, s32, ?, s16);                /* extern */
-
 void func_80055164(s32 objectIndex) {
-    struct_80165C18_entry *sp18;
-    Gfx *temp_a3;
-    struct_80165C18_entry *temp_v1;
-
-    temp_v1 = &D_80165C18[objectIndex];
-    if (temp_v1->unk_0A6 >= 2) {
-        temp_a3 = gDisplayListHead;
-        gDisplayListHead = temp_a3 + 8;
-        temp_a3->words.w0 = 0x06000000;
-        temp_a3->words.w1 = (u32) D_0D0077A0;
-        sp18 = temp_v1;
-        func_80042E00(temp_v1->unk_004, (s16 *) temp_v1->unk_0BE, temp_v1->unk_000);
-        if (D_800DC5FC == 0) {
-            sp18 = temp_v1;
-            temp_v1->unk_0A2 = func_80004DFC(temp_v1->unk_070, temp_v1->unk_074, 0, temp_v1->unk_0A2);
-            return;
+    if (gObjectList[objectIndex].state >= 2) {
+        gSPDisplayList(gDisplayListHead++, D_0D0077A0);
+        rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0BE, gObjectList[objectIndex].sizeScaling);
+        if (gIsGamePaused == 0) {
+            gObjectList[objectIndex].unk_0A2 = func_80004DFC((animation_type_1 *) gObjectList[objectIndex].unk_070, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
+        } else {
+            func_80004DFC((animation_type_1 *) gObjectList[objectIndex].unk_070, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
         }
-        func_80004DFC(temp_v1->unk_070, temp_v1->unk_074, 0, temp_v1->unk_0A2);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80055164.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-? func_80055164(s32);                               /* extern */
-extern ? D_80183EB0;
-
-void func_80055228(s32 arg0) {
-    s32 *var_s1;
+void func_80055228(s32 cameraId) {
+    s32 var_s1;
     s32 temp_s0;
 
-    var_s1 = D_80183EA0;
-    do {
-        temp_s0 = *var_s1;
-        func_8008A364(temp_s0, arg0, 0x4000U, 0x000005DC);
-        if (func_8007223C(temp_s0, 0x00040000) != 0) {
+    for (var_s1 = 0; var_s1 < 4; var_s1++) {
+        temp_s0 = D_80183EA0[var_s1];
+        func_8008A364(temp_s0, cameraId, 0x4000U, 0x000005DC);
+        if (is_obj_index_flag_unk_054_active(temp_s0, 0x00040000) != 0) {
             func_80055164(temp_s0);
         }
-        var_s1 += 4;
-    } while (var_s1 != &D_80183EB0);
-}
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80055228.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-s16 func_80004DFC(s32, s32, ?, s16);                /* extern */
-
-void func_800552BC(s32 objectIndex) {
-    struct_80165C18_entry *sp18;
-    Gfx *temp_a0;
-    struct_80165C18_entry *temp_v1;
-
-    temp_v1 = &D_80165C18[objectIndex];
-    if (temp_v1->unk_0A6 >= 2) {
-        sp18 = temp_v1;
-        func_80042E00(temp_v1->unk_004, (s16 *) temp_v1->unk_0BE, temp_v1->unk_000);
-        temp_a0 = gDisplayListHead;
-        gDisplayListHead = temp_a0 + 8;
-        temp_a0->words.w0 = 0x06000000;
-        temp_a0->words.w1 = (u32) D_0D0077D0;
-        if (D_800DC5FC == 0) {
-            sp18 = temp_v1;
-            temp_v1->unk_0A2 = func_80004DFC(temp_v1->unk_070, temp_v1->unk_074, 0, temp_v1->unk_0A2);
-            return;
-        }
-        func_80004DFC(temp_v1->unk_070, temp_v1->unk_074, 0, temp_v1->unk_0A2);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800552BC.s")
-#endif
+
+void func_800552BC(s32 objectIndex) {
+    if (gObjectList[objectIndex].state >= 2) {
+        rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0BE, gObjectList[objectIndex].sizeScaling);
+        gSPDisplayList(gDisplayListHead++, D_0D0077D0);
+        if (gIsGamePaused == 0) {
+            gObjectList[objectIndex].unk_0A2 = func_80004DFC((animation_type_1 *) gObjectList[objectIndex].unk_070, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
+        } else {
+            func_80004DFC((animation_type_1 *) gObjectList[objectIndex].unk_070, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
+        }
+    }
+}
 
 extern s8 D_80165908;
 
@@ -5278,7 +4980,7 @@ void func_80055380(s32 arg0) {
             D_80165908 = 1;
             func_800722A4(var_s1, 2);
         }
-        if (func_8007223C(var_s1, 0x00040000) != 0) {
+        if (is_obj_index_flag_unk_054_active(var_s1, 0x00040000) != 0) {
             func_800552BC(var_s1);
         }
     }
@@ -5287,11 +4989,11 @@ void func_80055380(s32 arg0) {
 void func_80055458(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
-    if (D_80165C18[objectIndex].unk_0A6 >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         camera = &camera1[cameraId];
         func_8004A6EC(objectIndex, 0.5f);
-        D_80165C18[objectIndex].unk_0B2[1] = func_800418AC(D_80165C18[objectIndex].unk_004[0], D_80165C18[objectIndex].unk_004[2], camera->pos);
-        func_800480B4(D_80165C18[objectIndex].unk_004, D_80165C18[objectIndex].unk_0B2, D_80165C18[objectIndex].unk_000, (u8 *) D_80165C18[objectIndex].unk_060, D_80165C18[objectIndex].unk_064, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+        gObjectList[objectIndex].unk_0B2[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+        func_800480B4(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0B2, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
     }
 }
 
@@ -5302,7 +5004,7 @@ void func_80055528(s32 arg0) {
     for (someIndex = 0; someIndex < 10; someIndex++) {
         test = D_80183EA0[someIndex];
         func_8008A364(test, arg0, 0x2AABU, 0x00000320);
-        if (func_8007223C(test, 0x00040000) != 0) {
+        if (is_obj_index_flag_unk_054_active(test, 0x00040000) != 0) {
             func_80055458(test, arg0);
         }
     }
@@ -5311,11 +5013,11 @@ void func_80055528(s32 arg0) {
 void func_800555BC(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
-    if (D_80165C18[objectIndex].unk_0A6 >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         camera = &camera1[cameraId];
         func_8004A870(objectIndex, 0.7f);
-        D_80165C18[objectIndex].unk_0B2[1] = func_800418AC(D_80165C18[objectIndex].unk_004[0], D_80165C18[objectIndex].unk_004[2], camera->pos);
-        func_800480B4(D_80165C18[objectIndex].unk_004, D_80165C18[objectIndex].unk_0B2, D_80165C18[objectIndex].unk_000, (u8 *) D_80165C18[objectIndex].unk_060, D_80165C18[objectIndex].unk_064, (Vtx *) D_80165C18[objectIndex].unk_074, 64, 64, 64, 32);
+        gObjectList[objectIndex].unk_0B2[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+        func_800480B4(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0B2, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 64, 64, 64, 32);
     }
 }
 
@@ -5327,15 +5029,15 @@ void func_8005568C(s32 arg0) {
     for (someIndex = 0; someIndex < 15; someIndex++) {
         test = D_80183F28[someIndex];
         something = func_8008A364(test, arg0, 0x4000U, 0x000003E8);
-        if (func_8007223C(test, 0x00040000) != 0) {
-            func_800721C0(test, 0x00200000);
+        if (is_obj_index_flag_unk_054_active(test, 0x00040000) != 0) {
+            set_object_flag_unk_054_true(test, 0x00200000);
             if (something < 0x2711U) {
-                func_800721C0(test, 0x00000020);
+                set_object_flag_unk_054_true(test, 0x00000020);
             } else {
-                func_800721E8(test, 0x00000020);
+                set_object_flag_unk_054_false(test, 0x00000020);
             }
             if (something < 0x57E41U) {
-                func_800721C0(test, 0x00400000);
+                set_object_flag_unk_054_true(test, 0x00400000);
             }
             if (something < 0x52211U) {
                 func_800555BC(test, arg0);
@@ -5348,177 +5050,109 @@ UNUSED void func_800557AC() {
 
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-? func_80004DFC(s32, s32, u8, s8);                  /* extern */
-
 void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
-    f32 sp3C;
-    f32 sp38;
-    f32 sp34;
-    Gfx *sp20;
-    Gfx *temp_v1;
-    Gfx *temp_v1_2;
-    struct_80165C18_entry *temp_s0;
+    Vec3f sp34;
+    Objects *temp_s0;
 
-    temp_s0 = &D_80165C18[objectIndex];
-    if (temp_s0->unk_0A6 >= 2) {
-        if (func_8007223C(objectIndex, 0x00000020) != 0) {
+    temp_s0 = &gObjectList[objectIndex];
+    if (temp_s0->state >= 2) {
+        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000020) != 0) {
             if (func_80072320(objectIndex, 4) != 0) {
                 if (arg2 >= arg1) {
-                    sp34 = temp_s0->unk_004[0];
-                    sp3C = temp_s0->unk_004[2];
-                    sp38 = (f32) ((f64) temp_s0->unk_004[1] - 1.0);
-                    func_80042F70(&sp34, &temp_s0->unk_0B2, temp_s0->unk_000);
-                    temp_v1 = gDisplayListHead;
-                    gDisplayListHead = temp_v1 + 8;
-                    temp_v1->words.w0 = 0x06000000;
-                    temp_v1->words.w1 = (u32) D_0D0077D0;
-                    func_80004DFC(temp_s0->unk_070, temp_s0->unk_074, (u8) temp_s0->unk_0D8, temp_s0->unk_0D2);
+                    sp34[0] = temp_s0->pos[0];
+                    sp34[1] = temp_s0->pos[1] - 1.0;
+                    sp34[2] = temp_s0->pos[2];
+                    rsp_set_matrix_transformation_inverted_x_y_orientation(sp34, temp_s0->unk_0B2, temp_s0->sizeScaling);
+                    gSPDisplayList(gDisplayListHead++, D_0D0077D0);
+                    func_80004DFC((animation_type_1 *) temp_s0->unk_070, (animation_type_2 **) temp_s0->vertex, (s16) temp_s0->unk_0D8, (s16) temp_s0->itemDisplay);
                 }
             } else if (arg1 < 0x15F91U) {
                 func_8004A7AC(objectIndex, 1.5f);
             }
         }
-        sp20 = D_0D0077D0;
-        func_80042E00(temp_s0->unk_004, (s16 *) &temp_s0->unk_0B2, temp_s0->unk_000);
-        temp_v1_2 = gDisplayListHead;
-        gDisplayListHead = temp_v1_2 + 8;
-        temp_v1_2->words.w0 = 0x06000000;
-        temp_v1_2->words.w1 = (u32) sp20;
-        func_80004DFC(temp_s0->unk_070, temp_s0->unk_074, (u8) temp_s0->unk_0D8, temp_s0->unk_0D2);
+        rsp_set_matrix_transformation(temp_s0->pos, temp_s0->unk_0B2, temp_s0->sizeScaling);
+        gSPDisplayList(gDisplayListHead++, D_0D0077D0);
+        func_80004DFC((animation_type_1 *) temp_s0->unk_070, (animation_type_2 **) temp_s0->vertex, (s16) temp_s0->unk_0D8, (s16) temp_s0->itemDisplay);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800557B4.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-? func_800557B4(s32, u32, ?);                       /* extern */
-extern ? D_80183EDC;
-
-void func_8005592C(s32 arg0) {
-    ? var_s3;
-    s32 *var_s2;
-    s32 temp_s0;
-    s32 temp_v0;
+void func_8005592C(s32 cameraId) {
+    s32 var_s2;
+    s32 objectIndex;
+    s32 temp_s1;
     s32 var_a3;
-    s32 var_s1;
-    u32 temp_s1;
+    u16 var_s1;
+    u32 var_s3;
 
-    temp_v0 = gPlayerCountSelection1;
-    if (temp_v0 == 1) {
-        var_s3 = 0x3D090;
-    } else if (temp_v0 == 2) {
-        var_s3 = 0x27100;
+    if (gPlayerCountSelection1 == 1) {
+        var_s3 = 0x0003D090;
+    } else if (gPlayerCountSelection1 == 2) {
+        var_s3 = 0x00027100;
     } else {
-        var_s3 = 0x15F90;
+        var_s3 = 0x00015F90;
     }
-    var_s2 = D_80183EA0;
-    do {
-        temp_s0 = *var_s2;
-        if (D_80165C18[temp_s0].unk_0A6 >= 2) {
+    for (var_s2 = 0; var_s2 < 15; var_s2++) {
+        objectIndex = D_80183EA0[var_s2];
+        if (gObjectList[objectIndex].state >= 2) {
             if (gPlayerCountSelection1 == 1) {
                 var_s1 = 0x4000;
-                if (var_s2 == D_80183EA0) {
+                if (var_s2 == 0) {
                     var_a3 = 0x000005DC;
-                } else if (func_80072320(temp_s0, 8) != 0) {
+                } else if (func_80072320(objectIndex, 8) != 0) {
                     var_a3 = 0x00000320;
                 } else {
                     var_a3 = 0x000003E8;
                 }
             } else {
-                var_a3 = 0x00000258;
-                if (func_80072320(temp_s0, 8) != 0) {
+                if (func_80072320(objectIndex, 8) != 0) {
                     var_a3 = 0x000001F4;
                     var_s1 = 0x4000;
                 } else {
+                    var_a3 = 0x00000258;
                     var_s1 = 0x5555;
                 }
             }
-            temp_s1 = func_8008A364(temp_s0, arg0, var_s1 & 0xFFFF, var_a3);
-            if (func_8007223C(temp_s0, 0x00040000) != 0) {
-                func_800557B4(temp_s0, temp_s1, var_s3);
+            temp_s1 = func_8008A364(objectIndex, cameraId, var_s1, var_a3);
+            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+                func_800557B4(objectIndex, (u32) temp_s1, var_s3);
             }
         }
-        var_s2 += 4;
-    } while (var_s2 != &D_80183EDC);
-}
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_8005592C.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-? func_80004DFC(s32, s32, ?, s8);                   /* extern */
-extern ? d_course_rainbow_road_sphere;
-extern ? D_0D0062B0;
-extern ? D_0D0077D0;
-extern f32 D_80183E40;
-extern s16 D_80183E80;
-
-void func_80055AB8(s32 objectIndex, s32 cameraId) {
-    Camera *sp3C;
-    struct_80165C18_entry *sp34;
-    Camera *temp_a2;
-    Gfx *temp_t0;
-    f32 temp_f12;
-    f32 temp_f14;
-    struct_80165C18_entry *temp_v1;
-
-    temp_v1 = &D_80165C18[objectIndex];
-    temp_a2 = &camera1[cameraId];
-    if (temp_v1->unk_0A6 >= 2) {
-        sp34 = temp_v1;
-        sp3C = temp_a2;
-        if (func_8007223C(objectIndex, 0x00100000) != 0) {
-            temp_f12 = temp_v1->unk_004[0];
-            temp_f14 = temp_v1->unk_004[2];
-            D_80183E80.unk0 = 0;
-            D_80183E40.unk4 = (f32) ((f64) temp_v1->unk_004[1] + 16.0);
-            D_80183E40.unk0 = temp_f12;
-            D_80183E40.unk8 = temp_f14;
-            D_80183E80.unk2 = func_800418AC(temp_f12, temp_f14, temp_a2->pos);
-            D_80183E80.unk4 = 0x8000;
-            func_800468E0(&D_80183E40, &D_80183E80, 0.54f, (s32) &d_course_rainbow_road_sphere, (s32) &D_0D0062B0, 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
-            return;
-        }
-        sp34 = temp_v1;
-        func_80042E00(temp_v1->unk_004, (s16 *) temp_v1->unk_0BE, temp_v1->unk_000);
-        temp_t0 = gDisplayListHead;
-        gDisplayListHead = temp_t0 + 8;
-        temp_t0->words.w0 = 0x06000000;
-        temp_t0->words.w1 = (u32) &D_0D0077D0;
-        func_80004DFC(temp_v1->unk_070, temp_v1->unk_074, 0, temp_v1->unk_0D2);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80055AB8.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-? func_80055AB8(s32, s32);                          /* extern */
-extern ? D_80183F34;
+void func_80055AB8(s32 objectIndex, s32 cameraId) {
+    Camera *camera;
 
-void func_80055C38(s32 arg0) {
-    s32 *var_s1;
-    s32 temp_s0;
-
-    var_s1 = D_80183F28;
-    do {
-        temp_s0 = *var_s1;
-        func_8008A1D0(temp_s0, arg0, 0x000005DC, 0x000009C4);
-        if (func_8007223C(temp_s0, 0x00040000) != 0) {
-            func_80055AB8(temp_s0, arg0);
+    camera = &camera1[cameraId];
+    if (gObjectList[objectIndex].state >= 2) {
+        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00100000) != 0) {
+            D_80183E40[0] = gObjectList[objectIndex].pos[0];
+            D_80183E40[1] = gObjectList[objectIndex].pos[1] + 16.0;
+            D_80183E40[2] = gObjectList[objectIndex].pos[2];
+            D_80183E80[0] = 0;
+            D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+            D_80183E80[2] = 0x8000;
+            func_800468E0(D_80183E40, D_80183E80, 0.54f, d_course_rainbow_road_sphere, D_0D0062B0, 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
+        } else {
+            rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0BE, gObjectList[objectIndex].sizeScaling);
+            gSPDisplayList(gDisplayListHead++, D_0D0077D0);
+            func_80004DFC((animation_type_1 *) gObjectList[objectIndex].unk_070, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, (s16) gObjectList[objectIndex].itemDisplay);
         }
-        var_s1 += 4;
-    } while (var_s1 != &D_80183F34);
+    }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80055C38.s")
-#endif
+
+void func_80055C38(s32 cameraId) {
+    s32 var_s1;
+    s32 objectIndex;
+
+    for (var_s1 = 0; var_s1 < 3; var_s1++) {
+        objectIndex = D_80183F28[var_s1];
+        func_8008A1D0(objectIndex, cameraId, 0x000005DC, 0x000009C4);
+        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+            func_80055AB8(objectIndex, cameraId);
+        }
+    }
+}
 
 void func_80055CCC(s32 objectIndex, s32 cameraId) {
     UNUSED s32 pad;
@@ -5526,21 +5160,21 @@ void func_80055CCC(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
-    if (D_80165C18[objectIndex].unk_0A6 >= 2) {
+    if (gObjectList[objectIndex].state >= 2) {
         func_8008A454(objectIndex, cameraId, 0x0000012C);
-        test = D_80165C18[objectIndex].unk_004[1] - D_80165C18[objectIndex].unk_044;
+        test = gObjectList[objectIndex].pos[1] - gObjectList[objectIndex].unk_044;
         func_8004A6EC(objectIndex, (20.0 / test) + 0.5);
-        if (func_80072270(objectIndex, 0x00100000) != 0) {
-            func_80043328(D_80165C18[objectIndex].unk_004, (u16 *) D_80165C18[objectIndex].unk_0BE, D_80165C18[objectIndex].unk_000, D_0600F960);
-            gSPDisplayList(gDisplayListHead++, D_0600F650);
+        if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x00100000) != 0) {
+            func_80043328(gObjectList[objectIndex].pos, (u16 *) gObjectList[objectIndex].unk_0BE, gObjectList[objectIndex].sizeScaling, d_course_luigi_raceway_dl_F960);
+            gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_F650);
         } else {
-            D_80183E80[0] = (s16) D_80165C18[objectIndex].unk_0BE[0];
-            D_80183E80[1] = (s16) (func_800418AC(D_80165C18[objectIndex].unk_004[0], D_80165C18[objectIndex].unk_004[2], camera->pos) + 0x8000);
-            D_80183E80[2] = (u16) D_80165C18[objectIndex].unk_0BE[2];
-            func_80043328(D_80165C18[objectIndex].unk_004, D_80183E80, D_80165C18[objectIndex].unk_000, D_0600FBE0);
-            gSPDisplayList(gDisplayListHead++, D_0600FA20);
+            D_80183E80[0] = (s16) gObjectList[objectIndex].unk_0BE[0];
+            D_80183E80[1] = (s16) (func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos) + 0x8000);
+            D_80183E80[2] = (u16) gObjectList[objectIndex].unk_0BE[2];
+            func_80043328(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling, d_course_luigi_raceway_dl_FBE0);
+            gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_FA20);
             if (gPlayerCountSelection1 == 1) {
-                D_80165C18[objectIndex].unk_0BE[1] = 0;
+                gObjectList[objectIndex].unk_0BE[1] = 0;
             }
         }
     }
@@ -5551,21 +5185,21 @@ void func_80055E68(s32 arg0) {
     objectIndex = D_80183EA0[0];
     if (gGamestate != 9) {
         func_8008A1D0(objectIndex, arg0, 0x000005DC, 0x00000BB8);
-        if (func_8007223C(objectIndex, 0x00040000) != 0) {
+        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
             func_80055CCC(objectIndex, arg0);
         }
     } else {
-        func_800721E8(objectIndex, 0x00100000);
+        set_object_flag_unk_054_false(objectIndex, 0x00100000);
         func_80055CCC(objectIndex, arg0);
     }
 }
 
 void func_80055EF4(s32 objectIndex, UNUSED s32 arg1) {
-    struct_80165C18_entry *object;
+    Objects *object;
 
-    object = &D_80165C18[objectIndex];
-    if (object->unk_0A6 >= 2) {
-        func_80043220(object->unk_004, object->unk_0BE, object->unk_000, object->unk_070);
+    object = &gObjectList[objectIndex];
+    if (object->state >= 2) {
+        func_80043220(object->pos, object->unk_0BE, object->sizeScaling, object->unk_070);
     }
 }
 
@@ -5580,42 +5214,41 @@ void func_80055F48(s32 arg0) {
 void func_80055FA0(s32 objectIndex, UNUSED s32 arg1) {
     Mat4 someMatrix1;
     Mat4 someMatrix2;
-    struct_80165C18_entry *object;
+    Objects *object;
 
-    object = &D_80165C18[objectIndex];
-    if (object->unk_0A6 >= 2) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        func_800425D0(someMatrix1,object->unk_004, object->unk_0BE, object->unk_000);
-        func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], someMatrix1);
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-        D_8018D120++;
+    object = &gObjectList[objectIndex];
+    if (object->state >= 2) {
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        mtxf_set_matrix_transformation(someMatrix1,object->pos, object->unk_0BE, object->sizeScaling);
+        convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], someMatrix1);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, D_0D0077A0);
         gSPDisplayList(gDisplayListHead++, object->unk_070);
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[7]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(someMatrix2);
-        func_802B4FF8(someMatrix2, 0);
+        render_set_position(someMatrix2, 0);
     }
 }
 
 void func_80056160(s32 arg0) {
-    func_80055FA0(D_80183EAC, arg0);
+    func_80055FA0(D_80183EA0[3], arg0);
 }
 
 void func_80056188(s32 cameraId) {
     Camera *camera;
     s32 var_s2;
     s32 objectIndex;
-    struct_80165C18_entry *object;
+    Objects *object;
 
     camera = &camera1[cameraId];
     for (var_s2 =0; var_s2 < 10; var_s2++) {
         objectIndex = D_80183EA0[var_s2];
         if (D_8018E838[cameraId] == 0) {
-            object = &D_80165C18[objectIndex];
-            if ((object->unk_0A6 >= 2) && (func_80072270(objectIndex, 0x00080000) != 0) && (func_8008A140(objectIndex, camera, 0x2AABU) != 0)) {
-                object->unk_0B2[1] = func_800872D8(objectIndex, camera);
-                func_800480B4(object->unk_004, object->unk_0B2, object->unk_000, (u8 *) object->unk_060, object->unk_064, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+            object = &gObjectList[objectIndex];
+            if ((object->state >= 2) && (is_obj_index_flag_unk_054_inactive(objectIndex, 0x00080000) != 0) && (func_8008A140(objectIndex, camera, 0x2AABU) != 0)) {
+                object->unk_0B2[1] = angle_between_object_camera(objectIndex, camera);
+                func_800480B4(object->pos, object->unk_0B2, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
         }
     }
@@ -5656,7 +5289,7 @@ void func_800562E4(s32 arg0, s32 arg1, s32 arg2) {
     D_8016586C = temp_a1;
     D_80165878 = temp_a2;
     func_8004B138(temp_a0, temp_a1, temp_a2, arg2);
-    func_80042E00(&D_80183E40, &D_80183E80, 0.2f);
+    rsp_set_matrix_transformation(&D_80183E40, &D_80183E80, 0.2f);
     func_80044BF8((arg1 << 0xA) + D_0D02AC58, 0x00000020, 0x00000020);
     temp_v0_2 = gDisplayListHead;
     gDisplayListHead = temp_v0_2 + 8;
@@ -5665,7 +5298,7 @@ void func_800562E4(s32 arg0, s32 arg1, s32 arg2) {
     temp_v0_3 = gDisplayListHead;
     gDisplayListHead = temp_v0_3 + 8;
     temp_v0_3->words.w0 = 0x06000000;
-    temp_v0_3->words.w1 = (u32) D_0D006940;
+    temp_v0_3->words.w1 = (u32) common_rectangle_display;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_800562E4.s")
@@ -5689,25 +5322,25 @@ void func_800563DC(s32 objectIndex, s32 cameraId, s32 arg2) {
     s32 temp_s0_2;
     s32 temp_v0_4;
     s32 temp_v0_5;
-    struct_80165C18_entry *temp_v0;
+    Objects *temp_v0;
 
-    temp_v0 = &D_80165C18[objectIndex];
-    temp_f12 = temp_v0->unk_004[0];
-    temp_f14 = temp_v0->unk_004[2];
+    temp_v0 = &gObjectList[objectIndex];
+    temp_f12 = temp_v0->pos[0];
+    temp_f14 = temp_v0->pos[2];
     temp_s0 = D_801655CC & 3;
-    D_80183E40.unk4 = (f32) ((f64) temp_v0->unk_004[1] + 1.0);
+    D_80183E40.unk4 = (f32) ((f64) temp_v0->pos[1] + 1.0);
     D_80183E80.unk0 = 0;
     D_80183E40.unk0 = temp_f12;
     D_80183E40.unk8 = temp_f14;
     D_80183E80.unk2 = func_800418AC(temp_f12, temp_f14, camera1[cameraId].pos);
     D_80183E80.unk4 = 0x8000;
-    func_80042E00(&D_80183E40, &D_80183E80, 0.2f);
+    rsp_set_matrix_transformation(&D_80183E40, &D_80183E80, 0.2f);
     temp_v0_2 = gDisplayListHead;
     gDisplayListHead = temp_v0_2 + 8;
     temp_v0_2->words.w0 = 0x06000000;
     temp_v0_2->words.w1 = (u32) D_0D007E98;
     func_8004B310(arg2);
-    func_80047270(D_0D02A858, (temp_s0 << 0xA) + D_0D029858, D_0D005AE0, 0x00000020, 0x00000020, 0x00000020, 0x00000020);
+    draw_rectangle_texture_overlap(D_0D02A858, (temp_s0 << 0xA) + D_0D029858, D_0D005AE0, 0x00000020, 0x00000020, 0x00000020, 0x00000020);
     temp_v0_3 = gDisplayListHead;
     temp_s0_2 = D_8018D400;
     gDisplayListHead = temp_v0_3 + 8;
@@ -5736,19 +5369,19 @@ void func_8005669C(s32 objectIndex, UNUSED s32 arg1, s32 arg2) {
     gSPDisplayList(gDisplayListHead++, D_0D0079E8);
     func_8004B310(arg2);
     func_80043D50(D_0D02AA58, 0x00000010, 0x00000010);
-    D_80183E40[1] = D_80165C18[objectIndex].unk_004[1] - 2.0;
-    D_80183E40[0] = D_80165C18[objectIndex].unk_004[0] + 2.0;
-    D_80183E40[2] = D_80165C18[objectIndex].unk_004[2] + 2.0;
-    func_800431B0(D_80183E40, D_80183E80, 0.15f, D_0D005770);
-    D_80183E40[0] = D_80165C18[objectIndex].unk_004[0] + 2.0;
-    D_80183E40[2] = D_80165C18[objectIndex].unk_004[2] - 2.0;
-    func_800431B0(D_80183E40, D_80183E80, 0.15f, D_0D005770);
-    D_80183E40[0] = D_80165C18[objectIndex].unk_004[0] - 2.0;
-    D_80183E40[2] = D_80165C18[objectIndex].unk_004[2] - 2.0;
-    func_800431B0(D_80183E40, D_80183E80, 0.15f, D_0D005770);
-    D_80183E40[0] = D_80165C18[objectIndex].unk_004[0] - 2.0;
-    D_80183E40[2] = D_80165C18[objectIndex].unk_004[2] + 2.0;
-    func_800431B0(D_80183E40, D_80183E80, 0.15f, D_0D005770);
+    D_80183E40[1] = gObjectList[objectIndex].pos[1] - 2.0;
+    D_80183E40[0] = gObjectList[objectIndex].pos[0] + 2.0;
+    D_80183E40[2] = gObjectList[objectIndex].pos[2] + 2.0;
+    func_800431B0(D_80183E40, D_80183E80, 0.15f, common_vtx_rectangle);
+    D_80183E40[0] = gObjectList[objectIndex].pos[0] + 2.0;
+    D_80183E40[2] = gObjectList[objectIndex].pos[2] - 2.0;
+    func_800431B0(D_80183E40, D_80183E80, 0.15f, common_vtx_rectangle);
+    D_80183E40[0] = gObjectList[objectIndex].pos[0] - 2.0;
+    D_80183E40[2] = gObjectList[objectIndex].pos[2] - 2.0;
+    func_800431B0(D_80183E40, D_80183E80, 0.15f, common_vtx_rectangle);
+    D_80183E40[0] = gObjectList[objectIndex].pos[0] - 2.0;
+    D_80183E40[2] = gObjectList[objectIndex].pos[2] + 2.0;
+    func_800431B0(D_80183E40, D_80183E80, 0.15f, common_vtx_rectangle);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
@@ -5757,13 +5390,12 @@ void func_800568A0(s32 objectIndex, s32 playerId) {
     Player *player;
 
     player = &gPlayerOne[playerId];
-    D_80183E50[0] = D_80165C18[objectIndex].unk_004[0];
-    D_80183E50[1] = D_80165C18[objectIndex].unk_044 + 0.8;
-    D_80183E50[2] = D_80165C18[objectIndex].unk_004[2];
-    func_80042A20(sp30, player->unk_110.unk60, D_80183E50, 0U, 0.5f);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], sp30);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    D_8018D120++;
+    D_80183E50[0] = gObjectList[objectIndex].pos[0];
+    D_80183E50[1] = gObjectList[objectIndex].unk_044 + 0.8;
+    D_80183E50[2] = gObjectList[objectIndex].pos[2];
+    set_transform_matrix(sp30, player->unk_110.unk60, D_80183E50, 0U, 0.5f);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D007B98);
 }
 
@@ -5772,7 +5404,7 @@ void func_800569F4(s32 arg0) {
 
     objectIndex = D_80183DD8[arg0];
     func_800723A4(objectIndex, 0);
-    D_80165C18[objectIndex].unk_0A0 = 0;
+    gObjectList[objectIndex].unk_0A0 = 0;
 }
 
 void func_80056A40(s32 arg0, s32 arg1) {
@@ -5780,95 +5412,65 @@ void func_80056A40(s32 arg0, s32 arg1) {
 
     objectIndex = D_80183DD8[arg0];
     func_800723A4(objectIndex, 0);
-    D_80165C18[objectIndex].unk_0A0 = (s16) arg1;
+    gObjectList[objectIndex].unk_0A0 = (s16) arg1;
 }
 
 void func_80056A94(s32 arg0) {
     func_80072428(D_80183DD8[arg0]);
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-? func_800563DC(s32, s32, s16);                     /* extern */
-? func_8005669C(s32, s32, s16);                     /* extern */
-
-void func_80056AC0(s32 arg0) {
+void func_80056AC0(s32 cameraId) {
     Player *temp_v0;
-    s16 temp_s1;
-    s32 *var_s3;
+    s32 temp_s1;
     s32 temp_s0;
-    s32 var_s2;
-    struct_80165C18_entry *temp_v1;
+    s32 payerId;
+    Objects *temp_v1;
 
-    var_s3 = D_80183DD8;
-    var_s2 = 0;
-    do {
-        temp_s0 = *var_s3;
-        temp_v1 = &D_80165C18[temp_s0];
-        if (temp_v1->unk_0A6 != 0) {
+    for (payerId = 0; payerId < NUM_BOMB_KARTS_BATTLE; payerId++) {
+        temp_s0 = D_80183DD8[payerId];
+        temp_v1 = &gObjectList[temp_s0];
+        if (temp_v1->state != 0) {
             temp_s1 = temp_v1->unk_0A0;
-            temp_v0 = &gPlayerOne[var_s2];
-            temp_v1->unk_004[0] = temp_v0->pos[0];
-            temp_v1->unk_004[1] = (f32) ((f64) temp_v0->pos[1] - 2.0);
-            temp_v1->unk_004[2] = temp_v0->pos[2];
+            temp_v0 = &gPlayerOne[payerId];
+            temp_v1->pos[0] = temp_v0->pos[0];
+            temp_v1->pos[1] = temp_v0->pos[1] - 2.0;
+            temp_v1->pos[2] = temp_v0->pos[2];
             temp_v1->unk_044 = temp_v0->unk_074;
-            func_800563DC(temp_s0, arg0, temp_s1);
-            func_8005669C(temp_s0, arg0, temp_s1);
-            func_800568A0(temp_s0, arg0);
+            func_800563DC(temp_s0, cameraId, temp_s1);
+            func_8005669C(temp_s0, cameraId, temp_s1);
+            func_800568A0(temp_s0, cameraId);
         }
-        var_s2 += 1;
-        var_s3 += 4;
-    } while (var_s2 != 4);
+    }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80056AC0.s")
-#endif
 
 #ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
+//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Aug-17-2023
 ? func_800562E4(s32, s32, ?);                       /* extern */
-extern ? D_80163DE8;
 extern u32 D_801655CC;
-extern f32 D_80183E40;
 extern f32 D_80183E44;
-extern u16 D_80183E80;
 extern s16 D_80183E84;
 extern s32 D_8018D400;
 static ? D_800E471C;                                /* unable to generate initializer */
 
-void func_80056BF0(s32 arg0) {
-    f32 sp40;
+void func_80056BF0(s32 bombIndex) {
+    BombKart sp40;
     Gfx *temp_v1;
-    f32 *var_t6;
-    s32 *var_t9;
-    s32 temp_at;
     s32 temp_s0;
     s32 temp_v0;
     s32 temp_v0_2;
-    void *temp_t3;
 
-    var_t9 = (arg0 * 0x54) + &D_80163DE8;
-    temp_t3 = var_t9 + 0x54;
-    var_t6 = &sp40;
-    do {
-        temp_at = *var_t9;
-        var_t9 += 0xC;
-        var_t6 += 0xC;
-        var_t6->unk-C = temp_at;
-        var_t6->unk-8 = (s32) var_t9->unk-8;
-        var_t6->unk-4 = (s32) var_t9->unk-4;
-    } while (var_t9 != temp_t3);
-    D_80183E40.unk0 = sp40;
-    D_80183E40.unk4 = (f32) ((f64) sp44 + 1.0);
-    D_80183E40.unk8 = sp48;
-    func_800480B4(&D_80183E40, &D_80183E80, 0.25f, (s32) D_0D02A858, (s32) ((*(&D_800E471C + ((u32) D_801655CC % 6U)) << 0xA) + D_0D029858), D_0D005AE0, 0x00000020, 0x00000020, 0x00000020, 0x00000020);
+    M2C_MEMCPY_ALIGNED(&sp40, &gBombKarts[bombIndex], 0x54);
+    D_80183E40->unk0 = (bitwise f32) sp40;
+    D_80183E40->unk4 = (f32) ((f64) sp40.bombPos[1] + 1.0);
+    D_80183E40->unk8 = sp40.bombPos[2];
+    func_800480B4(D_80183E40, D_80183E80, 0.25f, (u8 *) D_0D02A858, (*(&D_800E471C + ((u32) D_801655CC % 6U)) << 0xA) + D_0D029858, D_0D005AE0, 0x00000020, 0x00000020, 0x00000020, 0x00000020);
     temp_v1 = gDisplayListHead;
     temp_s0 = D_8018D400;
     gDisplayListHead = temp_v1 + 8;
     temp_v1->words.w0 = 0x06000000;
     temp_v1->words.w1 = (u32) D_0D007B00;
     func_8004B414(0, 0, 0, 0x000000FF);
-    D_80183E44 = (f32) ((f64) sp44 + 5.0);
+    D_80183E44 = (f32) ((f64) sp40.bombPos[1] + 5.0);
     D_80183E84 = 0;
     func_800562E4(temp_s0 % 3, temp_s0 % 4, 0xFF);
     temp_v0 = temp_s0 + 1;
@@ -5882,180 +5484,87 @@ void func_80056BF0(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80056BF0.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-extern ? D_80163DE8;
-extern s16 D_80183E80;
+void func_80056E24(s32 bombIndex, Vec3f arg1) {
+    s32 stackPadding[2];
+    BombKart sp2C = gBombKarts[bombIndex];
 
-void func_80056E24(s32 arg0, f32 *arg1) {
-    f32 sp5C;
-    f32 sp50;
-    f32 sp44;
-    f32 sp38;
-    ? sp2C;
-    ? *var_t6;
-    Gfx *temp_v1;
-    Gfx *temp_v1_2;
-    s32 *var_t9;
-    s32 temp_at;
-    void *temp_t3;
-
-    var_t9 = (arg0 * 0x54) + &D_80163DE8;
-    temp_t3 = var_t9 + 0x54;
-    var_t6 = &sp2C;
-    do {
-        temp_at = *var_t9;
-        var_t9 += 0xC;
-        var_t6 += 0xC;
-        var_t6->unk-C = temp_at;
-        var_t6->unk-8 = (s32) var_t9->unk-8;
-        var_t6->unk-4 = (s32) var_t9->unk-4;
-    } while (var_t9 != temp_t3);
-    temp_v1 = gDisplayListHead;
-    D_80183E80.unk0 = 0;
-    D_80183E80.unk4 = 0x8000;
-    gDisplayListHead = temp_v1 + 8;
-    temp_v1->words.w0 = 0x06000000;
-    temp_v1->words.w1 = (u32) D_0D0079C8;
+    D_80183E80[0] = 0;
+    D_80183E80[2] = 0x8000;
+    gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     func_80043D50(D_0D02AA58, 0x00000010, 0x00000010);
-    D_80183E80.unk2 = func_800418AC(sp38, sp40, arg1);
-    func_800431B0(&sp38, &D_80183E80, 0.15f, D_0D005770);
-    D_80183E80.unk2 = func_800418AC(sp44, sp4C, arg1);
-    func_800431B0(&sp44, &D_80183E80, 0.15f, D_0D005770);
-    D_80183E80.unk2 = func_800418AC(sp50, sp58, arg1);
-    func_800431B0(&sp50, &D_80183E80, 0.15f, D_0D005770);
-    D_80183E80.unk2 = func_800418AC(sp5C, sp64, arg1);
-    func_800431B0(&sp5C, &D_80183E80, 0.15f, D_0D005770);
-    temp_v1_2 = gDisplayListHead;
-    gDisplayListHead = temp_v1_2 + 8;
-    temp_v1_2->words.w0 = 0xBB000000;
-    temp_v1_2->words.w1 = 0x00010001;
+    D_80183E80[1] = func_800418AC(sp2C.wheel1Pos[0], sp2C.wheel1Pos[2], arg1);
+    func_800431B0(sp2C.wheel1Pos, D_80183E80, 0.15f, common_vtx_rectangle);
+    D_80183E80[1] = func_800418AC(sp2C.wheel2Pos[0], sp2C.wheel2Pos[2], arg1);
+    func_800431B0(sp2C.wheel2Pos, D_80183E80, 0.15f, common_vtx_rectangle);
+    D_80183E80[1] = func_800418AC(sp2C.wheel3Pos[0], sp2C.wheel3Pos[2], arg1);
+    func_800431B0(sp2C.wheel3Pos, D_80183E80, 0.15f, common_vtx_rectangle);
+    D_80183E80[1] = func_800418AC(sp2C.wheel4Pos[0], sp2C.wheel4Pos[2], arg1);
+    func_800431B0(sp2C.wheel4Pos, D_80183E80, 0.15f, common_vtx_rectangle);
+    gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80056E24.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-extern Gfx D_0D007B98[];
-extern Vec3f D_80183E50;
+void func_80056FCC(s32 bombIndex) {
+    Mat4 sp30;
+    BombKart *temp_v0;
 
-struct UnkStruct_80163DE8 {
-    f32 unk0[61];
-    //f32 unk4[60];
-};
-extern struct_80165C18_entry D_80163DE8[];
-
-struct struct_80056FCC {
-    Vec3f u0;
-    Vec3f uC;
-    Vec3f u18;
-    Vec3f u24;
-    Vec3f u30;
-    s8 pad[140];
-};
-extern struct struct_80056FCC D_80164038[];
-
-void func_80056FCC(s32 arg0) {
-    Mat4 mtx;
-    struct struct_80056FCC *tmp = &D_80164038[arg0];
-    struct_80165C18_entry *tmp2 = &D_80163DE8[arg0];
-
-    //temp_v0 = D_80163DE8[arg0];
-    D_80183E50[0] = tmp2->unk_000 ;//  unk_004[0];
-    D_80183E50[1] =  tmp2->unk_050 + 1.0;
-    D_80183E50[2] =  tmp2->unk_000;
-    func_80042A20(mtx, tmp->u30, D_80183E50, 0U, 0.5f);
-    func_80022180(&gGfxPool->mtxPool[D_8018D120 + 0xB], mtx);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPool[D_8018D120 + 0xB]), G_MTX_LOAD | G_MTX_NOPUSH| G_MTX_MODELVIEW);
-    D_8018D120++;
+    temp_v0 = &gBombKarts[bombIndex];
+    D_80183E50[0] = temp_v0->bombPos[0];
+    D_80183E50[1] = temp_v0->yPos + 1.0;
+    D_80183E50[2] = temp_v0->bombPos[2];
+    set_transform_matrix(sp30, D_80164038[bombIndex].unk60, D_80183E50, 0U, 0.5f);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_LOAD | G_MTX_NOPUSH| G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D007B98);
-
-    // gDisplayListHead = temp_v0_2 + 8;
-    // temp_v0_2->words.w0 = 0x01020040;
-    // temp_v0_2->words.w1 = (s32) (&gGfxPool->mtxPool[D_8018D120] + 0x2C0) & 0x1FFFFFFF;
-    // temp_v0_3 = gDisplayListHead;
-    // D_8018D120 += 1;
-    // gDisplayListHead = temp_v0_3 + 8;
-    // temp_v0_3->words.w0 = 0x06000000;
-    // temp_v0_3->words.w1 = (u32) &D_0D007B98;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80056FCC.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-? func_800563DC(s32, s32, ?);                       /* extern */
-? func_80056E24(s32, Camera *);                     /* extern */
-? func_80056FCC(s32);                               /* extern */
-extern ? D_80163DE8;
-extern ? D_80183E80;
-extern s32 gGamestate;
 
 void func_80057114(s32 cameraId) {
-    ? *var_s1_2;
     Camera *temp_s7;
-    s32 *var_s1;
-    s32 temp_s0;
-    s32 temp_s0_2;
-    s32 var_fp;
+    s32 objectIndex;
+    s32 temp_s4;
     s32 var_s2;
-    s32 var_s2_2;
-    struct_80165C18_entry *temp_v0;
-    u16 temp_s5;
-    u32 temp_s4;
+    s32 state;
+    BombKart *var_s1_2;
 
-    var_fp = cameraId;
     if (gGamestate == 5) {
-        var_fp = 0;
+        cameraId = 0;
     }
-    temp_s7 = &camera1[var_fp];
-    if (var_fp == 0) {
-        var_s1 = D_80183DD8;
-        var_s2 = 0;
-        do {
-            temp_s0 = *var_s1;
-            if (func_8007223C(temp_s0, 0x00200000) != 0) {
-                (&D_80163DE8 + (var_s2 * 0x54))->unk4A = 0;
+    temp_s7 = &camera1[cameraId];
+    if (cameraId == 0) {
+        for (var_s2 = 0; var_s2 < NUM_BOMB_KARTS_VERSUS; var_s2++) {
+            objectIndex = D_80183DD8[var_s2];
+            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00200000) != 0) {
+                gBombKarts[var_s2].unk_4A = 0;
             } else if (gGamestate != 5) {
-                (&D_80163DE8 + (var_s2 * 0x54))->unk4A = 1;
+                gBombKarts[var_s2].unk_4A = 1;
             }
-            func_800721E8(temp_s0, 0x00200000);
-            var_s2 += 1;
-            var_s1 += 4;
-        } while (var_s2 != 7);
+            set_object_flag_unk_054_false(objectIndex, 0x00200000);
+        }
     }
-    var_s1_2 = &D_80163DE8;
-    var_s2_2 = 0;
-    do {
-        temp_s5 = var_s1_2->unk44;
-        if (temp_s5 != 0) {
-            temp_s0_2 = D_80183DD8[var_s2_2];
-            temp_v0 = &D_80165C18[temp_s0_2];
-            temp_v0->unk_004[0] = var_s1_2->unk0;
-            temp_v0->unk_004[1] = var_s1_2->unk4;
-            temp_v0->unk_004[2] = var_s1_2->unk8;
-            temp_s4 = func_8008A364(temp_s0_2, var_fp, 0x31C4U, 0x000001F4);
-            if (func_8007223C(temp_s0_2, 0x00040000) != 0) {
-                func_800721C0(temp_s0_2, 0x00200000);
-                D_80183E80.unk0 = 0;
-                D_80183E80.unk2 = func_800418AC(var_s1_2->unk0, var_s1_2->unk8, temp_s7->pos);
-                D_80183E80.unk4 = 0x8000;
-                func_800563DC(temp_s0_2, var_fp, 0xFF);
-                func_80056E24(var_s2_2, temp_s7);
-                if ((temp_s4 < 0x4E21U) && (temp_s5 != 4)) {
-                    func_80056FCC(var_s2_2);
+
+    for (var_s2 = 0; var_s2 < NUM_BOMB_KARTS_VERSUS; var_s2++) {
+        var_s1_2 = &gBombKarts[var_s2];
+        // huh???
+        state = var_s1_2->state;
+        if (var_s1_2->state != BOMB_STATE_INACTIVE) {
+            objectIndex = D_80183DD8[var_s2];
+            gObjectList[objectIndex].pos[0] = var_s1_2->bombPos[0];
+            gObjectList[objectIndex].pos[1] = var_s1_2->bombPos[1];
+            gObjectList[objectIndex].pos[2] = var_s1_2->bombPos[2];
+            temp_s4 = func_8008A364(objectIndex, cameraId, 0x31C4U, 0x000001F4);
+            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+                set_object_flag_unk_054_true(objectIndex, 0x00200000);
+                D_80183E80[0] = 0;
+                D_80183E80[1] = func_800418AC(var_s1_2->bombPos[0], var_s1_2->bombPos[2], temp_s7->pos);
+                D_80183E80[2] = 0x8000;
+                func_800563DC(objectIndex, cameraId, 0x000000FF);
+                func_80056E24(var_s2, temp_s7->pos);
+                if (((u32) temp_s4 < 0x4E21U) && (state != BOMB_STATE_EXPLODED)) {
+                    func_80056FCC(var_s2);
                 }
             }
         }
-        var_s2_2 += 1;
-        var_s1_2 += 0x54;
-    } while (var_s2_2 != 7);
+    }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80057114.s")
-#endif
 
 UNUSED void func_80057330(void) {
 
@@ -6198,11 +5707,11 @@ void func_80057778(void) {
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
-void debug_print_str2(s32 arg0, s32 arg1, char *arg2) {
-    debug_print_string(&arg0, &arg1, arg2);
+void debug_print_str2(s32 xPos, s32 yPos, char *str) {
+    debug_print_string(&xPos, &yPos, str);
 }
 
-void print_str_num(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
+void print_str_num(s32 arg0, s32 arg1, char *arg2, s32 arg3) {
     debug_print_string(&arg0, &arg1, arg2);
     debug_print_number(&arg0, &arg1, arg3, 10);
 }

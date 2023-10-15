@@ -9,7 +9,7 @@ def process_match(match):
     return f"d_course_big_donut_packed_dl_{hex(offset)[2:].upper()}"
 
 # Open the input file
-with open("courses/battle/big_donut/packed.inc.c", "r") as f:
+with open("courses/big_donut/packed.inc.c", "r") as f:
     # Read the file contents
     file_content = f.read()
 

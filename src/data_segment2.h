@@ -49,7 +49,7 @@ extern Gfx D_02008008[];
 extern Gfx D_02008030[];
 extern Gfx D_02008058[];
 extern Gfx D_060093F8[];
-extern Gfx D_0D006940[];
+extern Gfx common_rectangle_display[];
 
 extern Vtx D_02007BB8[];
 extern Vtx D_02007BD8[];

@@ -12,8 +12,8 @@ glabel func_8000F124
 /* 00FD48 8000F148 24420002 */  addiu $v0, $v0, 2
 /* 00FD4C 8000F14C 1443FFFE */  bne   $v0, $v1, .L8000F148
 /* 00FD50 8000F150 A440FFFE */   sh    $zero, -2($v0)
-/* 00FD54 8000F154 3C0E800E */  lui   $t6, %hi(D_800DC51C)
-/* 00FD58 8000F158 95CEC51C */  lhu   $t6, %lo(D_800DC51C)($t6)
+/* 00FD54 8000F154 3C0E800E */  lui   $t6, %hi(gDemoMode)
+/* 00FD58 8000F158 95CEC51C */  lhu   $t6, %lo(gDemoMode)($t6)
 /* 00FD5C 8000F15C 24010001 */  li    $at, 1
 /* 00FD60 8000F160 3C0F800E */  lui   $t7, %hi(gModeSelection)
 /* 00FD64 8000F164 51C10050 */  beql  $t6, $at, .L8000F2A8
@@ -23,8 +23,8 @@ glabel func_8000F124
 /* 00FD74 8000F174 26313348 */  addiu $s1, %lo(D_80163348) # addiu $s1, $s1, 0x3348
 /* 00FD78 8000F178 15E0004A */  bnez  $t7, .L8000F2A4
 /* 00FD7C 8000F17C 00008025 */   move  $s0, $zero
-/* 00FD80 8000F180 3C128019 */  lui   $s2, %hi(D_8018EDF3) # $s2, 0x8019
-/* 00FD84 8000F184 2652EDF3 */  addiu $s2, %lo(D_8018EDF3) # addiu $s2, $s2, -0x120d
+/* 00FD80 8000F180 3C128019 */  lui   $s2, %hi(gPlayerCount) # $s2, 0x8019
+/* 00FD84 8000F184 2652EDF3 */  addiu $s2, %lo(gPlayerCount) # addiu $s2, $s2, -0x120d
 .L8000F188:
 /* 00FD88 8000F188 0C0ADF8D */  jal   random_int
 /* 00FD8C 8000F18C 24040008 */   li    $a0, 8

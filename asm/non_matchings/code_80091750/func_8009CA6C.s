@@ -1,3 +1,12 @@
+.section .late_rodata
+
+glabel jpt_800F1078
+.word L8009CBD4, L8009CB6C, L8009CB7C, L8009CB8C
+.word L8009CB9C, L8009CBAC, L8009CBD4, L8009CBBC
+.word L8009CBCC
+
+.section .text
+
 glabel func_8009CA6C
 /* 09D66C 8009CA6C 27BDFFE8 */  addiu $sp, $sp, -0x18
 /* 09D670 8009CA70 24010004 */  li    $at, 4
@@ -48,8 +57,8 @@ glabel func_8009CA6C
 /* 09D720 8009CB20 AC6F0000 */  sw    $t7, ($v1)
 /* 09D724 8009CB24 10C10006 */  beq   $a2, $at, .L8009CB40
 /* 09D728 8009CB28 AC780004 */   sw    $t8, 4($v1)
-/* 09D72C 8009CB2C 3C19800E */  lui   $t9, %hi(D_800DC5FC) # $t9, 0x800e
-/* 09D730 8009CB30 9739C5FC */  lhu   $t9, %lo(D_800DC5FC)($t9)
+/* 09D72C 8009CB2C 3C19800E */  lui   $t9, %hi(gIsGamePaused) # $t9, 0x800e
+/* 09D730 8009CB30 9739C5FC */  lhu   $t9, %lo(gIsGamePaused)($t9)
 /* 09D734 8009CB34 13200002 */  beqz  $t9, .L8009CB40
 /* 09D738 8009CB38 00000000 */   nop   
 /* 09D73C 8009CB3C 24050001 */  li    $a1, 1
