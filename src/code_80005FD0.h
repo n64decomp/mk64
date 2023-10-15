@@ -119,6 +119,7 @@ void func_8000F0E0(void);
 void func_8000F124(void);
 void func_8000F2BC(TrackWaypoint*, size_t);
 void func_8000F2DC(void);
+void func_8000F628(void);
 
 void func_80010218(s32);
 f32  func_80010480(s32, u16);
@@ -166,6 +167,7 @@ void func_80014C78(void);
 void func_80014CC0(s32, Player*);
 void func_80014D08(s32);
 void func_80014D30(s32, s32);
+void func_80014DE4(s32);
 f32  func_80014EE4(f32, s32);
 
 void func_800151A4(Camera*, s32);
@@ -233,6 +235,7 @@ extern Collision D_80162E70;
 extern s16 D_80162EB0;
 extern s16 D_80162FCC;
 extern f32 D_80162FA0[];
+extern f32 gCourseCompletionPercentByRank[8];     // D_80162FD8
 
 extern s16 D_80164378[];
 extern s32 D_801643E0[];
@@ -241,6 +244,7 @@ extern s32 D_801643E0[];
 extern s32 D_80164408[];
 extern s32 D_8016448C;
 extern f32 D_80164498[];
+extern f32 gCourseCompletionPercentByPlayerId[8]; // D_801644D0
 extern f32 D_801645F8[];
 extern s32 D_80164608[];
 extern f32 D_80164618[];

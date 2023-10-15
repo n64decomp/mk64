@@ -16,6 +16,7 @@
 #include "render_courses.h"
 #include "staff_ghosts.h"
 #include "code_80005FD0.h"
+#include "code_8001F980.h"
 #include "podium_ceremony_actors.h"
 #include "main.h"
 #include "menus.h"
