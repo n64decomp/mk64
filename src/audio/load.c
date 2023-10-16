@@ -874,5 +874,9 @@ void audio_init() {
     gAudioLoadLock = 0x76557364;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/audio/load/audio_init.s")
+    #ifdef VERSION_EU
+    GLOBAL_ASM("asm/eu_nonmatchings/audio_init.s")
+    #else
+    GLOBAL_ASM("asm/non_matchings/audio/load/audio_init.s")
+    #endif
 #endif
