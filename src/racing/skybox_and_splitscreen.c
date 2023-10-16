@@ -836,13 +836,21 @@ void func_802A5CB4(void) {
     UNUSED s32 pad[2];
     u16 perspNorm;
     Mat4 matrix;
+    f32 sp9C;
 
     func_802A50EC();
+#ifdef VERSION_EU   //  D_802B9CD0?
+    sp9C = D_80150148 * D_802B9CCC;
+#endif
     init_rdp();
     func_802A3730(D_800DC5EC);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
+#ifdef VERSION_EU
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, D_80150150, D_8015014C, 1.0f);
+#else // us
     guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], D_80150148, D_80150150, D_8015014C, 1.0f);
+#endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
