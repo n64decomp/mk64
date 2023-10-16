@@ -33,12 +33,15 @@ struct Unk_8018FC20 sSoundRequests[0x100];
 struct Unk_80191420 sSoundBanks[SOUND_BANK_COUNT][20];
 u8 sSoundBankUsedListBack[SOUND_BANK_COUNT];
 u8 sSoundBankFreeListFront[SOUND_BANK_COUNT];
-extern u8 sNumSoundsInBank[SOUND_BANK_COUNT];
-
-
-extern u8 sSoundBankDisabled[];
-extern u8 D_801930D0[];
-extern u8 D_80192C38;
+u8 sNumSoundsInBank[SOUND_BANK_COUNT];
+struct_D_80192AB8_entry D_80192AB8[SOUND_BANK_COUNT][8];
+u8 D_80192C38;
+u8 sSoundBankDisabled[SOUND_BANK_COUNT];
+f32 D_80192C48[SOUND_BANK_COUNT][4];
+u8 D_80192CA8[3][10];
+u8 D_80192CC6[3];
+u32 D_80192CD0[256];
+struct_D_801930D0_entry D_801930D0[3];
 
 // Warning: D_801930D0 appears to be an array of struct.
 // D_80193318 has been treated as a fake pr in the assembly.
@@ -53,8 +56,8 @@ struct UnkStruct_80192C38 {
     u8 sSoundBankDisabled[16];
 };
 
-struct UnkStruct_80192C38 D_80192C38;
-//u8 D_80192C38;
+struct UnkStruct_80192C38 sSoundBankDisabled;
+//u8 sSoundBankDisabled;
 //s32 a;
 //u8 sSoundBankDisabled[15]; // 0x80192C3C
 
@@ -1599,8 +1602,8 @@ extern u16 D_800EA1C4;
 void func_800C40F0(u8 arg0) {
     D_800EA1C4 &= ((1 << (arg0)) ^ (u16) -1);
     if (!D_800EA1C4) {
-        D_801930D0[18] = 1;
-        D_801930D0[16] = 0x7F;
+        D_801930D0[0].some_innards[18] = 1;
+        D_801930D0[0].some_innards[16] = 0x7F;
     }
 }
 
@@ -4165,8 +4168,6 @@ void func_800CA59C(u8 playerId) {
         D_800EA10C[playerId] = 1;
     }
 }
-
-extern void func_800C3608(s32, s32);                          /* extern */
 
 void func_800CA730(u8 arg0) {
     if (D_800EA0EC[arg0] == 0) {

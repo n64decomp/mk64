@@ -124,6 +124,17 @@ struct Unk_800EA06C {
 	/* 0x0D */ // u8 compilerPadding0[3];
 };
 
+typedef struct {
+    /* 0x00 */ s32 unk_0;
+    /* 0x04 */ s32 unk_4;
+} struct_D_80192AB8_entry; // size = 0x8
+
+typedef struct {
+    // This will need lots of expanding/documenting
+    // Its 147 words of space being used
+    u8 some_innards[0x24C];
+} struct_D_801930D0_entry; // size = 0x24C
+
 void func_800C94A4(u8);
 void func_800CADD0(u8, f32);
 void func_800C13F0(void);
@@ -145,6 +156,7 @@ void func_800C3724(void);
 void func_800C3448(u32);
 void func_800C3478(void);
 u16  func_800C3508(s32);
+void func_800C3608(s32, s32);
 u8   func_800C357C(s32);
 void func_800C35E8(u8);
 void func_800C36C4(s32, u32, u8, s8);
@@ -261,12 +273,17 @@ extern struct Unk_80191420 sSoundBanks[SOUND_BANK_COUNT][20];
 extern u8 sSoundBankUsedListBack[SOUND_BANK_COUNT];
 extern u8 sSoundBankFreeListFront[SOUND_BANK_COUNT];
 extern u8 sNumSoundsInBank[SOUND_BANK_COUNT];
+extern struct_D_80192AB8_entry D_80192AB8[SOUND_BANK_COUNT][8];
+extern u8 D_80192C38;
+extern u8 sSoundBankDisabled[SOUND_BANK_COUNT];
+extern f32 D_80192C48[SOUND_BANK_COUNT][4];
+extern u8 D_80192CA8[3][10];
+extern u8  D_80192CC6[3];
+extern u32 D_80192CD0[256];
+extern struct_D_801930D0_entry D_801930D0[3];
 extern u8 sNumProcessedSoundRequests;
 extern u8 sSoundRequestCount;
 extern struct Unk_8018FC20 sSoundRequests[0x100];
-
-extern u8  D_80192CC6[];
-extern u32 D_80192CD0[];
 
 // Data entries
 extern u8  D_800E9DA0;

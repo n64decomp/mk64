@@ -100,7 +100,7 @@ void sound_alloc_pool_init(struct SoundAllocPool *pool, void *memAddr, u32 size)
 void persistent_pool_clear(struct PersistentPool *persistent);
 void temporary_pool_clear(struct TemporaryPool *temporary);
 void func_800B90E0(struct SoundAllocPool *pool);
-void func_800B90F0(s32);
+void sound_init_main_pools(s32);
 void func_800B914C(struct PoolSplit*);
 void seq_and_bank_pool_init(struct PoolSplit2 *a);
 void persistent_pools_init(struct PoolSplit *a);

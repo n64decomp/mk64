@@ -319,7 +319,6 @@ SECTIONS
          BUILD_DIR/src/os/sprintf.o(.bss);
       #endif
       BUILD_DIR/src/audio/external.o(.bss);
-      BUILD_DIR/asm/bss_main_audio.o(.bss);
       BUILD_DIR/src/audio/port_eu.o(.bss);
       BUILD_DIR/src/os/osInitialize.o(.bss);
       BUILD_DIR/src/os/osCreateViManager.o(.bss);

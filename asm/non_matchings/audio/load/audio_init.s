@@ -142,7 +142,7 @@ glabel audio_init
 /* 0BCEB0 800BC2B0 3C01803B */  lui   $at, %hi(gSampleDmaNumListItems) # $at, 0x803b
 /* 0BCEB4 800BC2B4 3C04800F */  lui   $a0, %hi(gAudioInitPoolSize) # $a0, 0x800f
 /* 0BCEB8 800BC2B8 AC206E58 */  sw    $zero, %lo(gSampleDmaNumListItems)($at)
-/* 0BCEBC 800BC2BC 0C02E43C */  jal   func_800B90F0
+/* 0BCEBC 800BC2BC 0C02E43C */  jal   sound_init_main_pools
 /* 0BCEC0 800BC2C0 8C84A5D4 */   lw    $a0, %lo(gAudioInitPoolSize)($a0)
 /* 0BCEC4 800BC2C4 3C06803B */  lui   $a2, %hi(gAiBuffers) # $a2, 0x803b
 /* 0BCEC8 800BC2C8 3C14803B */  lui   $s4, %hi(gAudioInitPool) # $s4, 0x803b
