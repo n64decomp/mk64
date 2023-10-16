@@ -195,7 +195,7 @@ endif
 
 BUILD_DIR_BASE := build
 # BUILD_DIR is location where all build artifacts are placed
-BUILD_DIR      := $(BUILD_DIR_BASE)/us
+BUILD_DIR      := $(BUILD_DIR_BASE)/$(VERSION)
 ROM            := $(BUILD_DIR)/$(TARGET).z64
 ELF            := $(BUILD_DIR)/$(TARGET).elf
 LD_SCRIPT      := mk64.ld
@@ -628,7 +628,7 @@ $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o: $(BUILD_DIR)/src/ending/ceremo
 	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/src/ending/ceremony_data.inc.elf.map -o $(BUILD_DIR)/src/ending/ceremony_data.inc.elf $(BUILD_DIR)/src/ending/ceremony_data.inc.o --no-check-sections
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/ending/ceremony_data.inc.elf $(BUILD_DIR)/src/ending/ceremony_data.inc.bin
 	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/ending/ceremony_data.inc.bin $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"build/us/src/ending/ceremony_data.inc.mio0\"\n\n.balign 16\nglabel data_821D10_end\n" > build/us/src/ending/ceremony_data.inc.mio0.s
+	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$(BUILD_DIR)/src/ending/ceremony_data.inc.mio0\"\n\n.balign 16\nglabel data_821D10_end\n" > $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.s
 
 
@@ -642,7 +642,7 @@ $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o: src/data/startup_logo.inc.c
 	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $(BUILD_DIR)/src/data/startup_logo.inc.elf.map -o $(BUILD_DIR)/src/data/startup_logo.inc.elf $(BUILD_DIR)/src/data/startup_logo.inc.o --no-check-sections
 	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/data/startup_logo.inc.elf $(BUILD_DIR)/src/data/startup_logo.inc.bin
 	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/data/startup_logo.inc.bin $(BUILD_DIR)/src/data/startup_logo.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n\n\n.balign 4\n\n\nglabel startup_logo\n\n.incbin \"build/us/src/data/startup_logo.inc.mio0\"\n\n.balign 16\n\nglabel data_825800_end\n" > build/us/src/data/startup_logo.inc.mio0.s
+	printf ".include \"macros.inc\"\n\n.data\n\n\n\n.balign 4\n\n\nglabel startup_logo\n\n.incbin \"$(BUILD_DIR)/src/data/startup_logo.inc.mio0\"\n\n.balign 16\n\nglabel data_825800_end\n" > $(BUILD_DIR)/src/data/startup_logo.inc.mio0.s
 	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o $(BUILD_DIR)/src/data/startup_logo.inc.mio0.s
 
 

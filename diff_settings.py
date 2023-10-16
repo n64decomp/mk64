@@ -4,9 +4,11 @@ def add_custom_arguments(parser):
     group = parser.add_mutually_exclusive_group(required=False)
     group.add_argument('-u', dest='lang', action='store_const', const='us',
             help="Set version to US.")
+    group.add_argument('-eu', dest='lang', action='store_const', const='eu',
+            help="Set version to EU.")
 
 def apply(config, args):
-    lang = args.lang or 'us'
+    lang = args.lang or 'eu'
     config['mapfile'] = f'build/{lang}/mk64.{lang}.map'
     config['myimg'] = f'build/{lang}/mk64.{lang}.z64'
     config['baseimg'] = f'baserom.{lang}.z64'

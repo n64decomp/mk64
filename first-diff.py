@@ -17,6 +17,14 @@ versionGroup.add_argument(
     const="us",
     dest="version",
 )
+versionGroup.add_argument(
+    "-e",
+    "--eu",
+    help="use European version",
+    action="store_const",
+    const="eu",
+    dest="version",
+)
 parser.add_argument(
     "-m", "--make", help="run make before finding difference(s)", action="store_true"
 )
