@@ -234,6 +234,7 @@ SECTIONS
          BUILD_DIR/src/debug/debug.o(.data);
          BUILD_DIR/src/os/sprintf.o(.data);
       #endif
+      BUILD_DIR/src/audio/seqplayer.o(.data);
       BUILD_DIR/data/data_0DD0A0_2_1_1.o(.data);
       BUILD_DIR/src/audio/port_eu.o(.data);
       BUILD_DIR/src/audio/audio_session_presets.o(.data);

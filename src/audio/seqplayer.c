@@ -10,6 +10,41 @@
 #include "audio/playback.h"
 #include "audio/external.h"
 
+/**
+ * Given that (almost) all of these are format strings, it is highly likely
+ * that they are meant to be used in some sort of printf variant. But I don't
+ * care to try and figure out which function gets which string(s)
+ * So I've place them all here instead.
+ * This means some printf stubs have been commented out to avoid duplication
+ * of some strings (i.e seqplayer_unused_string00)
+**/
+char seqplayer_unused_string00[] = "Audio:Track:Warning: No Free Notetrack\n";
+char seqplayer_unused_string01[] = "SUBTRACK DIM\n";
+char seqplayer_unused_string02[] = "Audio:Track: Warning :SUBTRACK had been stolen by other Group.\n";
+char seqplayer_unused_string03[] = "SEQID %d,BANKID %d\n";
+char seqplayer_unused_string04[] = "ERR:SUBTRACK %d NOT ALLOCATED\n";
+char seqplayer_unused_string05[] = "Error:Same List Add\n";
+char seqplayer_unused_string06[] = "Macro Level Over Error!\n";
+char seqplayer_unused_string07[] = "Macro Level Over Error!\n";
+char seqplayer_unused_string08[] = "WARNING: NPRG: cannot change %d\n";
+char seqplayer_unused_string09[] = "Audio:Track:NOTE:UNDEFINED NOTE COM. %x\n";
+char seqplayer_unused_string10[] = "Audio: Note:Velocity Error %d\n";
+char seqplayer_unused_string11[] = "Error: Subtrack no prg.\n";
+char seqplayer_unused_string12[] = "ERR %x\n";
+char seqplayer_unused_string13[] = "Error: Your assignchannel is stolen.\n";
+char seqplayer_unused_string14[] = "Audio:Track :Call Macro Level Over Error!\n";
+char seqplayer_unused_string15[] = "Audio:Track :Loops Macro Level Over Error!\n";
+char seqplayer_unused_string16[] = "SUB:ERR:BANK %d NOT CACHED.\n";
+char seqplayer_unused_string17[] = "SUB:ERR:BANK %d NOT CACHED.\n";
+char seqplayer_unused_string18[] = "Audio:Track: CTBLCALL Macro Level Over Error!\n";
+char seqplayer_unused_string19[] = "[%2x] \n";
+char seqplayer_unused_string20[] = "Err :Sub %x ,address %x:Undefined SubTrack Function %x";
+char seqplayer_unused_string21[] = "Disappear Sequence or Bank %d\n";
+char seqplayer_unused_string22[] = "Macro Level Over Error!\n";
+char seqplayer_unused_string23[] = "Macro Level Over Error!\n";
+char seqplayer_unused_string24[] = "Group:Undefine upper C0h command (%x)\n";
+char seqplayer_unused_string25[] = "Group:Undefined Command\n";
+
 // sequence_channel_init
 void sequence_channel_init(struct SequenceChannel *seqChannel) {
     s32 i;
@@ -145,7 +180,7 @@ void sequence_player_init_channels(struct SequencePlayer *seqPlayer, u16 channel
             }
             seqChannel = allocate_sequence_channel();
             if (IS_SEQUENCE_CHANNEL_VALID(seqChannel) == FALSE) {
-                eu_stubbed_printf_0("Audio:Track:Warning: No Free Notetrack\n");
+                //eu_stubbed_printf_0("Audio:Track:Warning: No Free Notetrack\n");
                 gAudioErrorFlags = i + 0x10000;
                 seqPlayer->channels[i] = seqChannel;
             } else {
@@ -165,7 +200,7 @@ void sequence_player_disable_channels(struct SequencePlayer *seqPlayer, u16 chan
     struct SequenceChannel *seqChannel;
     s32 i;
 
-    eu_stubbed_printf_0("SUBTRACK DIM\n");
+    //eu_stubbed_printf_0("SUBTRACK DIM\n");
     for (i = 0; i < CHANNELS_MAX; i++) {
         if (channelBits & 1) {
             seqChannel = seqPlayer->channels[i];
@@ -175,7 +210,7 @@ void sequence_player_disable_channels(struct SequencePlayer *seqPlayer, u16 chan
                     seqChannel->seqPlayer = NULL;
                 }
                 else {
-                    stubbed_printf("Audio:Track: Warning SUBTRACK PARENT CHANGED\n");
+                    //stubbed_printf("Audio:Track: Warning SUBTRACK PARENT CHANGED\n");
                 }
                 seqPlayer->channels[i] = &gSequenceChannelNone;
             }
@@ -188,8 +223,8 @@ void sequence_channel_enable(struct SequencePlayer *seqPlayer, u8 channelIndex, 
     struct SequenceChannel *seqChannel = seqPlayer->channels[channelIndex];
     s32 i;
     if (IS_SEQUENCE_CHANNEL_VALID(seqChannel) == FALSE) {
-        stubbed_printf("SEQID %d,BANKID %d\n", seqPlayer->seqId, seqPlayer->defaultBank[0]);
-        stubbed_printf("ERR:SUBTRACK %d NOT ALLOCATED\n", channelIndex);
+        //stubbed_printf("SEQID %d,BANKID %d\n", seqPlayer->seqId, seqPlayer->defaultBank[0]);
+        //stubbed_printf("ERR:SUBTRACK %d NOT ALLOCATED\n", channelIndex);
     } else {
         seqChannel->enabled = TRUE;
         seqChannel->finished = FALSE;
@@ -230,7 +265,7 @@ void sequence_player_disable(struct SequencePlayer *seqPlayer) {
 
 void audio_list_push_back(struct AudioListItem *list, struct AudioListItem *item) {
     if (item->prev != NULL) {
-        eu_stubbed_printf_0("Error:Same List Add\n");
+        //eu_stubbed_printf_0("Error:Same List Add\n");
     } else {
         list->prev->next = item;
         item->prev = list->prev;
@@ -1447,7 +1482,7 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
                         break;
 
                     default:
-                        eu_stubbed_printf_1("Group:Undefine upper C0h command (%x)\n", cmd);
+                        //eu_stubbed_printf_1("Group:Undefine upper C0h command (%x)\n", cmd);
                         break;
                 }
             } else {
@@ -1481,7 +1516,7 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
                         break;
 
                     default:
-                        eu_stubbed_printf_0("Group:Undefined Command\n");
+                        //eu_stubbed_printf_0("Group:Undefined Command\n");
                         break;
                 }
             }
