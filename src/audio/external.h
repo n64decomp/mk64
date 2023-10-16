@@ -313,7 +313,7 @@ extern f32 D_800E9F14[4];// = { 1.0f, 1.0f, 1.0f, 1.0f }; /* const */
 extern u8  D_800E9F24[8];// = { 0, 0, 0, 0, 0, 0, 0, 0 };
 extern u8  D_800E9F2C[8];// = { 0, 0, 0, 0, 0, 0, 0, 0 };
 extern f32 D_800E9F34[8];// = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f }; /* const */
-extern f32 D_800E9F54[4];// = { 1.0f, 1.0f, 1.0f, 1.0f }; /* const */
+extern f32 D_800E9F54[8];// = { 1.0f, 1.0f, 1.0f, 1.0f }; /* const */
 extern u8  D_800E9F74[4];
 extern u8  D_800E9F78[4];
 extern struct Unk_800E9F7C D_800E9F7C[4];
@@ -327,7 +327,7 @@ extern u8  D_800EA108;// = 0;
 extern u8  D_800EA10C[];
 extern f32 D_800EA110[4];// = { 0.0f, 0.0f, 0.0f, 0.0f };
 extern f32 D_800EA120[4];
-extern f32 D_800EA130[4];
+extern f32 D_800EA130[8];
 extern f32 D_800EA150;// = 1.4f;
 extern u8  D_800EA154[];
 extern u16 D_800EA15C;
@@ -344,7 +344,7 @@ extern u8 D_800EA1C0;// = 0;
 // Most similar to gGlobalSoundSource from SM64, but I don't know if its really
 // a sound source, its usage makes it look like a 0'd Vec3f for general usage
 extern Vec3f D_800EA1C8;// = {0.0f, 0.0f, 0.0f}
-extern Vec3f D_800EA1D4;
+extern f32 D_800EA1D4;
 extern u8 D_800EA1DC;// = 0;
 extern u8 D_800EA1E4;
 extern u8 D_800EA1E8;
