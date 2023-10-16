@@ -256,6 +256,9 @@ void func_800CB14C(void);
 void func_800CB2C4(void);
 void func_800CBC24(void);
 
+// This is some from other file, its definitely not part of audio's data/bss
+extern s8 D_801657E5;
+
 // Based on SM64, this should be part of data.c's BSS section. Somehow.
 extern s32 gAudioErrorFlags;
 
