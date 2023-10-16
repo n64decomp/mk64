@@ -172,6 +172,11 @@ D_0F0BD350 = 0x0F0BD350;
 D_0F0CCF50 = 0x0F0CCF50;
 D_0F0D0E50 = 0x0F0D0E50;
 
+/* EU */
+D_802B9CCC = 0x802B9CCC;
+D_800DC59C = 0x800DC59C;
+D_80287478 = 0x80287478;
+/* end */
 
 d_course_mario_raceway_vertex = 0x0F000000;
 d_course_moo_moo_farm_vertex = 0x0F000000;

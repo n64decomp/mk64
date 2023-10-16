@@ -767,6 +767,11 @@ void func_802A5760(void) {
     }
 }
 
+#ifdef VERSION_EU
+//extern f32 D_80150288;
+extern f32 D_802B9CCC;
+#endif
+
 void func_802A59A4(void) {
     Camera *camera = &cameras[0];
     UNUSED s32 pad[4];
@@ -777,7 +782,7 @@ void func_802A59A4(void) {
 
     // Might D_80150288 be D_80150148
 #ifdef VERSION_EU
-    sp9C = D_80150288 * D_802B9CCC;
+    sp9C = D_80150148 * D_802B9CCC;
 #endif
     func_802A53A4();
     init_rdp();

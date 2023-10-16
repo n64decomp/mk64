@@ -17,6 +17,7 @@ CPP_FLAGS = [
     "-undef",
     "-D__sgi",
     "-DVERSION_US",
+    "-DVERSION_EU",
     "-DTARGET_N64",
     "-D_LANGUAGE_C",
     "-DF3DEX_GBI",

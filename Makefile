@@ -172,7 +172,7 @@ ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
 # Make sure assets exist
   NOEXTRACT ?= 0
   ifeq ($(NOEXTRACT),0)
-    DUMMY != $(PYTHON) extract_assets.py $(VERSION) >&2 || echo FAIL
+    DUMMY != $(PYTHON) extract_assets.py us >&2 || echo FAIL
     ifeq ($(DUMMY),FAIL)
       $(error Failed to extract assets)
     endif
@@ -195,7 +195,7 @@ endif
 
 BUILD_DIR_BASE := build
 # BUILD_DIR is location where all build artifacts are placed
-BUILD_DIR      := $(BUILD_DIR_BASE)/$(VERSION)
+BUILD_DIR      := $(BUILD_DIR_BASE)/us
 ROM            := $(BUILD_DIR)/$(TARGET).z64
 ELF            := $(BUILD_DIR)/$(TARGET).elf
 LD_SCRIPT      := mk64.ld
