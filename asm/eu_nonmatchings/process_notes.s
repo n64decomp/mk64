@@ -1,7 +1,7 @@
 glabel func_800BCB64
 /* BD764 800BCB64 27BDFF90 */  addiu      $sp, $sp, -0x70
-/* BD768 800BCB68 3C03803B */  lui        $v1, %hi(D_803B70B0)
-/* BD76C 800BCB6C 8C6370B0 */  lw         $v1, %lo(D_803B70B0)($v1)
+/* BD768 800BCB68 3C03803B */  lui        $v1, %hi(gMaxSimultaneousNotes)
+/* BD76C 800BCB6C 8C6370B0 */  lw         $v1, %lo(gMaxSimultaneousNotes)($v1)
 /* BD770 800BCB70 AFBF0044 */  sw         $ra, 0x44($sp)
 /* BD774 800BCB74 AFB70040 */  sw         $s7, 0x40($sp)
 /* BD778 800BCB78 AFB6003C */  sw         $s6, 0x3C($sp)
@@ -19,8 +19,8 @@ glabel func_800BCB64
 /* BD7A8 800BCBA8 24160001 */  addiu      $s6, $zero, 0x1
 /* BD7AC 800BCBAC 2415FFFF */  addiu      $s5, $zero, -0x1
 .L800BCBB0:
-/* BD7B0 800BCBB0 3C0E803B */  lui        $t6, %hi(D_803B1508)
-/* BD7B4 800BCBB4 8DCE1508 */  lw         $t6, %lo(D_803B1508)($t6)
+/* BD7B0 800BCBB0 3C0E803B */  lui        $t6, %hi(gNotes)
+/* BD7B4 800BCBB4 8DCE1508 */  lw         $t6, %lo(gNotes)($t6)
 /* BD7B8 800BCBB8 028E8021 */  addu       $s0, $s4, $t6
 /* BD7BC 800BCBBC 8E0F0044 */  lw         $t7, 0x44($s0)
 /* BD7C0 800BCBC0 26110030 */  addiu      $s1, $s0, 0x30
@@ -69,8 +69,8 @@ glabel func_800BCB64
 /* BD860 800BCC60 0C02FAE1 */  jal        func_800BEB84
 /* BD864 800BCC64 00000000 */   nop
 /* BD868 800BCC68 A2370000 */  sb         $s7, 0x0($s1)
-/* BD86C 800BCC6C 3C03803B */  lui        $v1, %hi(D_803B70B0)
-/* BD870 800BCC70 8C6370B0 */  lw         $v1, %lo(D_803B70B0)($v1)
+/* BD86C 800BCC6C 3C03803B */  lui        $v1, %hi(gMaxSimultaneousNotes)
+/* BD870 800BCC70 8C6370B0 */  lw         $v1, %lo(gMaxSimultaneousNotes)($v1)
 /* BD874 800BCC74 00031080 */  sll        $v0, $v1, 2
 /* BD878 800BCC78 00431023 */  subu       $v0, $v0, $v1
 /* BD87C 800BCC7C 10000097 */  b          .L800BCEDC
@@ -234,8 +234,8 @@ glabel func_800BCB64
 /* BDAC0 800BCEC0 03084825 */  or         $t1, $t8, $t0
 /* BDAC4 800BCEC4 A2690001 */  sb         $t1, 0x1($s3)
 .L800BCEC8:
-/* BDAC8 800BCEC8 3C03803B */  lui        $v1, %hi(D_803B70B0)
-/* BDACC 800BCECC 8C6370B0 */  lw         $v1, %lo(D_803B70B0)($v1)
+/* BDAC8 800BCEC8 3C03803B */  lui        $v1, %hi(gMaxSimultaneousNotes)
+/* BDACC 800BCECC 8C6370B0 */  lw         $v1, %lo(gMaxSimultaneousNotes)($v1)
 /* BDAD0 800BCED0 00031080 */  sll        $v0, $v1, 2
 /* BDAD4 800BCED4 00431023 */  subu       $v0, $v0, $v1
 /* BDAD8 800BCED8 00021180 */  sll        $v0, $v0, 6
