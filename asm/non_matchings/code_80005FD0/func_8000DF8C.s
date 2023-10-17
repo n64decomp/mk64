@@ -36,9 +36,9 @@ glabel func_8000DF8C
 /* 00EB94 8000DF94 27BDFEE0 */  addiu $sp, $sp, -0x120
 /* 00EB98 8000DF98 000F7880 */  sll   $t7, $t7, 2
 /* 00EB9C 8000DF9C 01E47821 */  addu  $t7, $t7, $a0
-/* 00EBA0 8000DFA0 3C188016 */  lui   $t8, %hi(D_80163DE8) # $t8, 0x8016
+/* 00EBA0 8000DFA0 3C188016 */  lui   $t8, %hi(gBombKarts) # $t8, 0x8016
 /* 00EBA4 8000DFA4 AFB00034 */  sw    $s0, 0x34($sp)
-/* 00EBA8 8000DFA8 27183DE8 */  addiu $t8, %lo(D_80163DE8) # addiu $t8, $t8, 0x3de8
+/* 00EBA8 8000DFA8 27183DE8 */  addiu $t8, %lo(gBombKarts) # addiu $t8, $t8, 0x3de8
 /* 00EBAC 8000DFAC 000F7880 */  sll   $t7, $t7, 2
 /* 00EBB0 8000DFB0 01F88021 */  addu  $s0, $t7, $t8
 /* 00EBB4 8000DFB4 96190044 */  lhu   $t9, 0x44($s0)

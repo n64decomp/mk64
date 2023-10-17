@@ -3368,7 +3368,7 @@ void set_bomb_kart_spawn_positions(void) {
     f32 startingYPos;
     s32 var_s3;
     TrackWaypoint *temp_v0;
-    struct_D_80163DE8_entry *var_s0;
+    BombKart *var_s0;
     BombKartSpawn *temp_s1;
 
     for (var_s3 = 0; var_s3 < NUM_BOMB_KARTS_VERSUS; var_s3++) {
@@ -3392,29 +3392,29 @@ void set_bomb_kart_spawn_positions(void) {
             startingZPos = temp_v0->posZ;
             break;
         }
-        D_80163DE8[var_s3].bombPos[0] = startingXPos;
-        D_80163DE8[var_s3].bombPos[1] = startingYPos;
-        D_80163DE8[var_s3].bombPos[2] = startingZPos;
-        D_80163DE8[var_s3].wheel1Pos[0] = startingXPos;
-        D_80163DE8[var_s3].wheel1Pos[1] = startingYPos;
-        D_80163DE8[var_s3].wheel1Pos[2] = startingZPos;
-        D_80163DE8[var_s3].wheel2Pos[0] = startingXPos;
-        D_80163DE8[var_s3].wheel2Pos[1] = startingYPos;
-        D_80163DE8[var_s3].wheel2Pos[2] = startingZPos;
-        D_80163DE8[var_s3].wheel3Pos[0] = startingXPos;
-        D_80163DE8[var_s3].wheel3Pos[1] = startingYPos;
-        D_80163DE8[var_s3].wheel3Pos[2] = startingZPos;
-        D_80163DE8[var_s3].wheel4Pos[0] = startingXPos;
-        D_80163DE8[var_s3].wheel4Pos[1] = startingYPos;
-        D_80163DE8[var_s3].wheel4Pos[2] = startingZPos;
-        D_80163DE8[var_s3].waypointIndex = temp_s1->waypointIndex;
-        D_80163DE8[var_s3].unk_3C = temp_s1->unk_04;
-        D_80163DE8[var_s3].bounceTimer = 0;
-        D_80163DE8[var_s3].circleTimer = 0;
-        D_80163DE8[var_s3].state = temp_s1->startingState;
-        D_80163DE8[var_s3].unk_4A = 0;
-        D_80163DE8[var_s3].unk_4C = 1;
-        D_80163DE8[var_s3].yPos = startingYPos;
+        gBombKarts[var_s3].bombPos[0] = startingXPos;
+        gBombKarts[var_s3].bombPos[1] = startingYPos;
+        gBombKarts[var_s3].bombPos[2] = startingZPos;
+        gBombKarts[var_s3].wheel1Pos[0] = startingXPos;
+        gBombKarts[var_s3].wheel1Pos[1] = startingYPos;
+        gBombKarts[var_s3].wheel1Pos[2] = startingZPos;
+        gBombKarts[var_s3].wheel2Pos[0] = startingXPos;
+        gBombKarts[var_s3].wheel2Pos[1] = startingYPos;
+        gBombKarts[var_s3].wheel2Pos[2] = startingZPos;
+        gBombKarts[var_s3].wheel3Pos[0] = startingXPos;
+        gBombKarts[var_s3].wheel3Pos[1] = startingYPos;
+        gBombKarts[var_s3].wheel3Pos[2] = startingZPos;
+        gBombKarts[var_s3].wheel4Pos[0] = startingXPos;
+        gBombKarts[var_s3].wheel4Pos[1] = startingYPos;
+        gBombKarts[var_s3].wheel4Pos[2] = startingZPos;
+        gBombKarts[var_s3].waypointIndex = temp_s1->waypointIndex;
+        gBombKarts[var_s3].unk_3C = temp_s1->unk_04;
+        gBombKarts[var_s3].bounceTimer = 0;
+        gBombKarts[var_s3].circleTimer = 0;
+        gBombKarts[var_s3].state = temp_s1->startingState;
+        gBombKarts[var_s3].unk_4A = 0;
+        gBombKarts[var_s3].unk_4C = 1;
+        gBombKarts[var_s3].yPos = startingYPos;
         func_802ADDC8(&D_80164038[var_s3], 2.0f, startingXPos, startingYPos, startingZPos);
     }
 }
@@ -3498,7 +3498,7 @@ void func_8000DF8C(s32 arg0) {
     TrackWaypoint *temp_v0_4;
     TrackWaypoint *temp_v0_7;
     TrackWaypoint *temp_v1_2;
-    struct_D_80163DE8_entry *temp_s0;
+    BombKart *temp_s0;
     u16 temp_t4;
     u16 temp_t9;
     u16 temp_v0;
@@ -3507,7 +3507,7 @@ void func_8000DF8C(s32 arg0) {
     void *temp_v0_6;
     void *temp_v1;
 
-    temp_s0 = &D_80163DE8[arg0];
+    temp_s0 = &gBombKarts[arg0];
     temp_t9 = (u16) temp_s0->state;
     temp_t2 = temp_t9 & 0xFFFF;
     sp4C = temp_t2;
@@ -9419,7 +9419,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8001C14C.s")
 
 void func_8001C3C4(s32 arg0) {
     if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
-        if (D_80163DE8[0].waypointIndex >= 16) {
+        if (gBombKarts[0].waypointIndex >= 16) {
             func_80057114(3);
         }
     } else {
