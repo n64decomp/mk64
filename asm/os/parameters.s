@@ -2,9 +2,6 @@
 .global \sym
 .set \sym, \addr
 
-nop
-nop
-
 .endm
 
 .text

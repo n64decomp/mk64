@@ -69,6 +69,14 @@
 #define DEMO_MODE_ACTIVE 1
 #define DEMO_MODE_INACTIVE 0
 
+#ifdef VERSION_EU
+#define COURSE_TIMER_ITER 0.020041665999999999  // 1 / 50
+#else
+#define COURSE_TIMER_ITER 0.01666666  // 1 / 60
+#endif
+
+#define V_BlANK_TIMER_ITER 0.01666666
+
 /**
  * Racing terms:
  * Staging means aligning a racecar to the starting line.

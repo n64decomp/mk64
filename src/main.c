@@ -587,7 +587,7 @@ void race_logic_loop(void) {
             if (gIsGamePaused == 0) {
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E) {
-                        gCourseTimer += 0.01666666; // 1 / 60
+                        gCourseTimer += COURSE_TIMER_ITER;
                     }
                     func_802909F0();
                     evaluate_player_collision();
@@ -652,7 +652,7 @@ void race_logic_loop(void) {
             if (gIsGamePaused == 0) {
                     for (i = 0; i < gTickSpeed; i++) {
                         if (D_8015011E != 0) {
-                            gCourseTimer += 0.01666666;
+                            gCourseTimer += COURSE_TIMER_ITER;
                         }
                         func_802909F0();
                         evaluate_player_collision();
@@ -698,7 +698,7 @@ void race_logic_loop(void) {
             if (gIsGamePaused == 0) {
                     for (i = 0; i < gTickSpeed; i++) {
                         if (D_8015011E != 0) {
-                            gCourseTimer += 0.01666666;
+                            gCourseTimer += COURSE_TIMER_ITER;
                         }
                         func_802909F0();
                         evaluate_player_collision();
@@ -766,7 +766,7 @@ void race_logic_loop(void) {
             if (gIsGamePaused == 0) {
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E != 0) {
-                        gCourseTimer += 0.01666666;
+                        gCourseTimer += COURSE_TIMER_ITER;
                     }
                     func_802909F0();
                     evaluate_player_collision();
@@ -960,7 +960,7 @@ void start_gfx_sptask(void) {
 }
 
 void handle_vblank(void) {
-    gVBlankTimer += 0.01666666;
+    gVBlankTimer += V_BlANK_TIMER_ITER;
     sNumVBlanks++;
 
     receive_new_tasks();

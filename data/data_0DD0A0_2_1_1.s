@@ -26,6 +26,10 @@ glabel D_800E9AEC
 .asciiz "Error:Same List Add\n"
 .balign 4
 
+glabel EU_text
+.asciiz "Wait Time out!\n"
+.balign 4
+
 glabel D_800E9B04
 .asciiz "Macro Level Over Error!\n"
 .balign 4
@@ -401,6 +405,7 @@ glabel D_800EA244
 .asciiz "CALLED!! Na_ChangeSoundMode player %d\n"
 .balign 4
 
+
 .asciiz "CALLED!! Na_ChangeSoundMode spec   %d\n"
 .balign 4
 
@@ -419,4 +424,12 @@ glabel D_800EA244
 .balign 4
 
 .asciiz "SEQ FADE OUT TIME %d\n"
+.balign 4
+
+# EU TEXT STR
+.asciiz "************** SE Fadeout ***************"
+.balign 4
+
+# EU TEXT STR
+.asciiz "SE FADE OUT TIME %d\n"
 .balign 4

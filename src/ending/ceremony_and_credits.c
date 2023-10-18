@@ -1522,7 +1522,11 @@ void func_802847CC(struct CinematicCamera *camera) {
 
     cutscene_event((CameraEvent)func_80283CD0, camera, 0, 0);
     cutscene_event((CameraEvent)play_sound_welcome, camera, 8, 8);
+#ifdef VERSION_EU
+    cutscene_event((CameraEvent)func_80283C78, camera, 134, 134);
+#else
     cutscene_event((CameraEvent)func_80283C78, camera, 149, 149);
+#endif
     cutscene_event((CameraEvent)func_80282434, camera, 0, 0);
     switch (D_80286A04[D_800DC5E4].unk0) {
         case 1:
@@ -1543,9 +1547,11 @@ void func_802847CC(struct CinematicCamera *camera) {
             break;
     }
 
+#ifndef VERSION_EU
     if (gCCSelection == 3) {
         sp2C = D_80286B34[D_800DC5E4];
     }
+#endif
 
     if (gCutsceneShotTimer == sp2C) {    
         if (D_80286A04[D_800DC5E4].unk0 != 2) {

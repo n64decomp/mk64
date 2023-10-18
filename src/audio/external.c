@@ -1178,6 +1178,22 @@ u8 func_800C357C(s32 arg0) {
     return var_v1;
 }
 
+#ifdef VERSION_EU
+u8 func_800C357C_eu(s32 arg0, s32 arg1) {
+    u8 var_v1;
+    u8 i;
+
+    i = D_800EA1E8;
+    var_v1 = 1;
+    for(i = D_800EA1E8; i < (s32) D_800EA1E4; i++) {
+        if (arg0 == (D_80192CD0[i] & arg1)) {
+            var_v1 = 0;
+            i = D_800EA1E4;
+        }
+    }
+    return var_v1;
+}
+#endif
 
 void func_800C35E8(u8 arg0) {
     D_80192CC6[arg0] = 0;
@@ -1500,7 +1516,11 @@ void func_800C3724(void) {
     } while (temp_t7 < 3);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C3724.s")
+    #ifdef VERSION_EU
+    GLOBAL_ASM("asm/eu_nonmatchings/func_800C3724.s")
+    #else
+    GLOBAL_ASM("asm/non_matchings/audio/external/func_800C3724.s")
+    #endif
 #endif
 
 #ifdef MIPS_TO_C
@@ -2723,12 +2743,21 @@ void func_800C6108(u8 playerId) {
         D_800E9EB4[playerId] -= D_800E9DF4[playerId];
     }
     D_800E9EE4[playerId] = D_800E9EB4[playerId] - D_800E9EC4[playerId];
+#ifdef VERSION_EU
+    if ((D_800E9EE4[playerId] > 0.5f) || (D_800E9EE4[playerId] < -0.5f)) {
+#else
     if ((D_800E9EE4[playerId] > 0.5f) || (D_800E9EE4[playerId] < 0.5f)) {
+#endif
         D_800E9ED4[playerId] = D_800E9EE4[playerId] * 0.25f;
         D_800E9F7C[playerId].unk_0C = D_800E9EC4[playerId] + D_800E9ED4[playerId] + D_800E9F34[playerId];
     } else {
         D_800E9F7C[playerId].unk_0C = D_800E9EB4[playerId] + D_800E9F34[playerId];
     }
+#ifdef VERSION_EU
+    if (D_800E9F7C[playerId].unk_0C < 0.0f) {
+        D_800E9F7C[playerId].unk_0C = 0.0f;
+    }
+#endif
     if (D_800E9F7C[playerId].unk_0C > 4.0f) {
         D_800E9F7C[playerId].unk_0C = 4.0f;
     }
@@ -3484,7 +3513,11 @@ block_134:
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C76C0.s")
+    #ifdef VERSION_EU
+    GLOBAL_ASM("asm/eu_nonmatchings/func_800C76C0.s")
+    #else
+    GLOBAL_ASM("asm/non_matchings/audio/external/func_800C76C0.s")
+    #endif
 #endif
 
 void func_800C847C(u8 playerId) {
