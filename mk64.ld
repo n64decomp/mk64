@@ -28,7 +28,12 @@ SECTIONS
 
    BEGIN_SEG(boot, 0xA4000000)
    {
-      BUILD_DIR/asm/rom_header.o(.text);
+      #ifdef VERSION_EU
+         BUILD_DIR/asm/rom_header_eu.o(.text);
+      #else
+         BUILD_DIR/asm/rom_header.o(.text);
+      #endif
+      
       BUILD_DIR/asm/boot.o(.text);
    }
    END_SEG(boot)
@@ -622,11 +627,18 @@ SECTIONS
    END_SEG(audio_tables)
    BEGIN_SEG(sequences, 0x25FD00)
    {
+      #ifdef VERSION_EU
+      BUILD_DIR/data/sound_data/sequences_eu.o(.data);
+      #else
       BUILD_DIR/data/sound_data/sequences.o(.data);
+      #endif
    }
    END_SEG(sequences)
    BEGIN_SEG(instrument_sets, 0x282E80)
    {
+      #ifdef VERSION_EU
+         . += 0x20;
+      #endif
       BUILD_DIR/data/sound_data/instrument_sets.o(.data);
    }
    END_SEG(instrument_sets)

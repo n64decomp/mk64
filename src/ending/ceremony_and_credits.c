@@ -260,11 +260,6 @@ void func_80282700(f32 arg0, Vec3f arg1, f32 *arg2, f32 arg3[], f32 arg4[], f32 
   *arg2   = B[0] * arg3[3] + B[1] * arg4[3] + B[2] * arg5[3] + B[3] * arg6[3];
 }
 
-#ifdef VERSION_EU
-extern s32 D_800DC59C;
-extern f32 D_80287478;
-#endif
-
 /**
  * Computes the point that is `progress` percent of the way through segment `splineSegment` of `spline`,
  * and stores the result in `p`. `progress` and `splineSegment` are updated if `progress` becomes >= 1.0.
@@ -320,12 +315,11 @@ s32 move_point_along_spline(Vec3f p, f32 *arg1, struct struct_80283430 spline[],
     if (spline[*splineSegment + 2].unk2 != 0) {
         secondSpeed = 1.0f / spline[*splineSegment + 2].unk2;
     }
-// eu_todo: What are these variables?
+
 #ifdef VERSION_EU
-    // gGameState ? or gameMode?
-    if (D_800DC59C == 9) {
-        firstSpeed *= D_80287478;
-        secondSpeed *= D_80287478;
+    if (gGamestate == CREDITS_SEQUENCE) {
+        firstSpeed *= 1.14999997f;
+        secondSpeed *= 1.14999997f;
     }
 #endif
 
