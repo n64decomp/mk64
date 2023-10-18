@@ -260,7 +260,10 @@ if diffs == 0:
     exit()
 definite_shift = diffs > shift_cap
 if not definite_shift:
-    print(str(diffs) + " differing word(s).")
+    if (diffs > 1):
+        print(str(diffs) + " differing words.")
+    else:
+        print(str(diffs) + " differing word.")
 
 if diffs > 100:
     if len(found_instr_diff) > 0:
