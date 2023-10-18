@@ -34,6 +34,7 @@
 #include "staff_ghosts.h"
 #include <debug.h>
 #include "crash_screen.h"
+#include "data/gfx_output_buffer.h"
 
 // Declarations (not in this file)
 void func_80091B78(void);
@@ -291,7 +292,7 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->task.t.dram_stack = (u64 *) &gGfxSPTaskStack;
     gGfxSPTask->task.t.dram_stack_size = SP_DRAM_STACK_SIZE8;
     gGfxSPTask->task.t.output_buff = (u64 *) &gGfxSPTaskOutputBuffer;
-    gGfxSPTask->task.t.output_buff_size = (u64 *) &gGfxSPTaskOutputBufferSize;
+    gGfxSPTask->task.t.output_buff_size = (u64 *) ((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));;
     gGfxSPTask->task.t.data_ptr = (u64 *) gGfxPool->gfxPool;
     gGfxSPTask->task.t.data_size = (gDisplayListHead - gGfxPool->gfxPool) * sizeof(Gfx);
     func_8008C214();

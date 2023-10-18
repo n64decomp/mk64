@@ -33,7 +33,7 @@ SECTIONS
       #else
          BUILD_DIR/asm/rom_header.o(.text);
       #endif
-      
+
       BUILD_DIR/asm/boot.o(.text);
    }
    END_SEG(boot)
@@ -390,6 +390,8 @@ SECTIONS
       BUILD_DIR/src/racing/actors.o(.bss*);
       BUILD_DIR/src/racing/memory.o(.bss*);
       BUILD_DIR/src/data/framebuffers.o(.bss*);
+      . = ALIGN(0x200);
+      BUILD_DIR/src/data/gfx_output_buffer.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
       BUILD_DIR/src/audio/heap.o(.bss*);
       BUILD_DIR/src/audio/load.o(.bss);

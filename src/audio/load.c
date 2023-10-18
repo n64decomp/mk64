@@ -6,6 +6,7 @@
 #include "audio/internal.h"
 #include "audio/playback.h"
 #include "audio/synthesis.h"
+#include "data/gfx_output_buffer.h"
 
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
 
@@ -783,8 +784,8 @@ void audio_init() {
 
 #ifdef TARGET_N64
     // It seems boot.s doesn't clear the .bss area for audio, so do it here.
-    lim3 = ((uintptr_t) &D_803B71A0 - (uintptr_t) &gGfxSPTaskOutputBufferSize) / 8;
-    ptr64 = &gGfxSPTaskOutputBufferSize;
+    lim3 = ((uintptr_t) &D_803B71A0 - (uintptr_t) ((u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer))) ) / 8;
+    ptr64 = (u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));;
     for (k = lim3; k >= 0; k--) {
         *ptr64++ = 0;
     }

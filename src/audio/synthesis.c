@@ -32,11 +32,10 @@ u64 *synthesis_do_one_audio_update(s16 *aiBuf, s32 bufLen, u64 *cmd, s32 updateI
 u64 *synthesis_process_note(struct Note *note, struct NoteSubEu *noteSubEu, struct NoteSynthesisState *synthesisState, s16 *aiBuf, s32 bufLen, u64 *cmd);
 u64 *process_envelope(u64 *cmd, struct NoteSubEu *noteSubEu, struct NoteSynthesisState *synthesisState, s32 nSamples, u16 inBuf, s32 headsetPanSettings, u32 flags);
 
+//u64 gGfxSPTaskOutputBuffer[0x3F00];
+//u32 gGfxSPTaskOutputBufferSize;
+//u32 padding3[2];
 
-u64 gGfxSPTaskOutputBuffer[0x3F00];
-
-u32 gGfxSPTaskOutputBufferSize;
-u32 padding3[2];
 struct SynthesisReverb gSynthesisReverbs[4];
 u8 sAudioSynthesisPad[0x10];
 
