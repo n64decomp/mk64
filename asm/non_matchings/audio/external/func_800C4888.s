@@ -77,7 +77,7 @@ glabel func_800C4888
 .L800C4984:
 /* 0C5584 800C4984 55E00009 */  bnel  $t7, $zero, .L800C49AC
 /* 0C5588 800C4988 91580028 */   lbu   $t8, 0x28($t2)
-/* 0C558C 800C498C 0C0311CF */  jal   func_800C473C
+/* 0C558C 800C498C 0C0311CF */  jal   delete_sound_from_bank
 /* 0C5590 800C4990 326500FF */   andi  $a1, $s3, 0xff
 /* 0C5594 800C4994 3C1F8019 */  lui   $ra, %hi(sSoundBanks) # $ra, 0x8019
 /* 0C5598 800C4998 27FF1420 */  addiu $ra, %lo(sSoundBanks) # addiu $ra, $ra, 0x1420
@@ -241,7 +241,7 @@ glabel func_800C4888
 /* 0C57E4 800C4BE4 000FC900 */  sll   $t9, $t7, 4
 /* 0C57E8 800C4BE8 0723003D */  bgezl $t9, .L800C4CE0
 /* 0C57EC 800C4BEC 327000FF */   andi  $s0, $s3, 0xff
-/* 0C57F0 800C4BF0 0C0311CF */  jal   func_800C473C
+/* 0C57F0 800C4BF0 0C0311CF */  jal   delete_sound_from_bank
 /* 0C57F4 800C4BF4 326500FF */   andi  $a1, $s3, 0xff
 /* 0C57F8 800C4BF8 3C1F8019 */  lui   $ra, %hi(sSoundBanks) # $ra, 0x8019
 /* 0C57FC 800C4BFC 27FF1420 */  addiu $ra, %lo(sSoundBanks) # addiu $ra, $ra, 0x1420
@@ -404,7 +404,7 @@ glabel func_800C4888
 /* 0C5A2C 800C4E2C AFC60070 */  sw    $a2, 0x70($fp)
 /* 0C5A30 800C4E30 AFC80060 */  sw    $t0, 0x60($fp)
 /* 0C5A34 800C4E34 A3C900CE */  sb    $t1, 0xce($fp)
-/* 0C5A38 800C4E38 0C0311CF */  jal   func_800C473C
+/* 0C5A38 800C4E38 0C0311CF */  jal   delete_sound_from_bank
 /* 0C5A3C 800C4E3C A3CB00CC */   sb    $t3, 0xcc($fp)
 /* 0C5A40 800C4E40 3C1F8019 */  lui   $ra, %hi(sSoundBanks) # $ra, 0x8019
 /* 0C5A44 800C4E44 27FF1420 */  addiu $ra, %lo(sSoundBanks) # addiu $ra, $ra, 0x1420

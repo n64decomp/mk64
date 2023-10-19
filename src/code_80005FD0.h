@@ -211,6 +211,7 @@ void func_8001A3D8(s32, f32, s32);
 void func_8001A450(s32, s32, s32);
 void func_8001A518(s32, s32, s32);
 void func_8001A588(u16*, Camera*, Player*, s8, s32);
+void func_8001AAAC(s16, s16, s16);
 void func_8001AB00(void);
 void func_8001AB74(s32, s16*, s32);
 void func_8001ABE0(s32, D_801642D8_entry*);
