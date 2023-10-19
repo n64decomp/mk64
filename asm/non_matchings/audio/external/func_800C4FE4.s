@@ -118,7 +118,7 @@ glabel func_800C4FE4
 /* 0C5DA8 800C51A8 0C032EFA */  jal   func_800CBBE8
 /* 0C5DAC 800C51AC 00002825 */   move  $a1, $zero
 /* 0C5DB0 800C51B0 326400FF */  andi  $a0, $s3, 0xff
-/* 0C5DB4 800C51B4 0C0311CF */  jal   func_800C473C
+/* 0C5DB4 800C51B4 0C0311CF */  jal   delete_sound_from_bank
 /* 0C5DB8 800C51B8 322500FF */   andi  $a1, $s1, 0xff
 /* 0C5DBC 800C51BC 3C18800F */  lui   $t8, %hi(D_800EA1C0) # $t8, 0x800f
 /* 0C5DC0 800C51C0 9318A1C0 */  lbu   $t8, %lo(D_800EA1C0)($t8)

@@ -122,18 +122,71 @@ struct Unk_800EA06C {
 	/* 0x00 */ Vec3f unk00;
 	/* 0x0C */ u8 unk0C;
 	/* 0x0D */ // u8 compilerPadding0[3];
-};
+}; // size = 0x10
 
 typedef struct {
-    /* 0x00 */ s32 unk_0;
-    /* 0x04 */ s32 unk_4;
-} struct_D_80192AB8_entry; // size = 0x8
+	/* 0x00 */ f32 unk_00;
+	/* 0x04 */ u16 unk_04;
+    /* 0x06 */ // u16 compilerPadding;
+	/* 0x08 */ f32 unk_08;
+	/* 0x0C */ u16 unk_0C;
+    /* 0x0E */ // u16 compilerPadding;
+	/* 0x10 */ f32 unk_10;
+	/* 0x14 */ u16 unk_14;
+    /* 0x16 */ // u16 compilerPadding;
+	/* 0x18 */ f32 unk_18;
+	/* 0x1C */ u16 unk_1C;
+    /* 0x1E */ // u16 compilerPadding;
+} struct_D_801930D0_inner; // size = 0x20
 
 typedef struct {
     // This will need lots of expanding/documenting
     // Its 147 words of space being used
-    u8 some_innards[0x24C];
+    /* 0x000 */ f32 unk_000;
+    /* 0x004 */ f32 unk_004;
+    /* 0x008 */ f32 unk_008;
+    /* 0x00C */ u16 unk_00C;
+    /* 0x00E */ u8  unk_00E[3]; // Array size guessed
+    /* 0x011 */ u8  unk_011;
+    /* 0x012 */ u8  unk_012;
+    /* 0x013 */ u8  unk_013;
+    /* 0x014 */ s32 unk_014;
+    /* 0x018 */ u16 unk_018;
+    /* 0x01A */ u16 unk_01A;
+    /* 0x01C */ s32 unk_01C;
+    /* 0x020 */ s32 unk_020;
+    /* 0x024 */ s32 unk_024;
+    /* 0x028 */ u16 unk_028;
+    /* 0x02A */ u16 unk_02A;
+    /* 0x02C */ u32 unk_02C[5]; // Array size guessed
+    /* 0x040 */ u8  unk_040;
+    /* 0x041 */ u8  unk_041;
+    /* 0x042 */ u8  unk_042;
+    /* 0x043 */ u8  unk_043;
+    /* 0x044 */ struct_D_801930D0_inner unk_044[16];
+    /* 0x244 */ u16 unk_244;
+    /* 0x246 */ u16 unk_246;
+    /* 0x248 */ u16 unk_248;
+    /* 0x24A */ u16 unk_24A;
 } struct_D_801930D0_entry; // size = 0x24C
+
+// Not quite the same as the struct found in SM64,
+// not even sure that the struct or its members are even
+// correct in the MK64 context
+struct ChannelVolumeScaleFade {
+    /* 0x000 */ f32 current;
+    /* 0x004 */ f32 target;
+    /* 0x008 */ f32 velocity;
+    /* 0x00C */ u16 remainingFrames;
+    /* 0x00A */ // u16 compilerPadding;
+}; // size = 0x10
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    u8  unk8;
+    u8  unk9;
+} UnkStruct8018EF18; // size = 0xC
 
 void func_800C94A4(u8);
 void func_800CADD0(u8, f32);
@@ -141,47 +194,51 @@ void func_800C13F0(void);
 void func_800C13FC(OSMesg);
 f32  func_800C1480(u8, u8);
 s8   func_800C15D0(u8, u8, u8);
+s8   func_800C16E8(f32, f32, u8);
 f32  func_800C1934(u8, u8);
+void func_800C19D0(u8, u8, u8);
 struct Unk_8018EFD8 *func_800C1C88(u8, Vec3f, Vec3f, f32*, u8, u32);
 void func_800C1DA4(Camera*, Vec3s, struct Unk_8018EFD8*);
 void func_800C1E2C(Camera*, Vec3f, struct Unk_8018EFD8*);
 void func_800C1F8C(void);
 
 f32 *func_800C21E8(Vec3f, u32);
-void func_800C2274(s32);
+void func_800C2274(u8);
 void func_800C2474(void);
-void func_800C284C(u8, u8, u8, s32);
+void func_800C284C(u8, u8, u8, u16);
+void func_800C29B4(u8, u16);
 
 void func_800C3724(void);
 void func_800C3448(u32);
 void func_800C3478(void);
-u16  func_800C3508(s32);
-void func_800C3608(s32, s32);
+u16  func_800C3508(u8);
+void func_800C3608(u8, u8);
 u8   func_800C357C(s32);
 void func_800C35E8(u8);
-void func_800C36C4(s32, u32, u8, s8);
+void func_800C36C4(u8, u8, u8, u8);
 void func_800C3F70(void);
 
 void func_800C400C(void);
 void func_800C4084(u16);
+void func_800C40F0(u8);
 void play_sound(u32, f32*, u8, f32*, f32*, u8*);
 void func_800C41CC(u8, struct Unk_80191420*);
 void func_800C4398(void);
-void func_800C473C(u8, u8);
+void delete_sound_from_bank(u8, u8);
 void func_800C4888(u8);
 void func_800C4FE4(u8);
 
 void func_800C5278(u8);
 void func_800C5384(u8, f32*);
-void func_800C54B8(u8, s32);
+void func_800C54B8(u8, f32*);
 void func_800C550C(s32);
 void func_800C5578(Vec3f, u32);
 u8   func_800C56F0(u32);
 void func_800C5848(void);
-void func_800C58B8(u8, u8, u16);
+void fade_channel_volume_scale(u8, u8, u16);
 void func_800C5968(u8);
 void func_800C59C4(void);
-void func_800C5A3C(void);
+void sound_init(void);
 void func_800C5BD0(void);
 void func_800C5C40(void);
 void func_800C5CB8(void);
@@ -263,6 +320,7 @@ extern s8 D_801657E5;
 extern s32 gAudioErrorFlags;
 
 extern s8 D_8018EF10;
+extern UnkStruct8018EF18 D_8018EF18[16];
 extern struct Unk_8018EFD8 D_8018EFD8[];
 // These are indexes for D_8018EFD8, but their purpose is unknown
 extern u8 D_8018FB90;
@@ -271,15 +329,16 @@ extern Camera *D_8018FB98[4];
 extern Vec3f D_8018FBA8[4];
 extern Vec3f D_8018FBD8[4];
 extern u8 D_8018FC08;
+extern u16 D_8018FC10[4][2];
 
 extern struct Unk_80191420 sSoundBanks[SOUND_BANK_COUNT][20];
 extern u8 sSoundBankUsedListBack[SOUND_BANK_COUNT];
 extern u8 sSoundBankFreeListFront[SOUND_BANK_COUNT];
 extern u8 sNumSoundsInBank[SOUND_BANK_COUNT];
-extern struct_D_80192AB8_entry D_80192AB8[SOUND_BANK_COUNT][8];
+extern u8 D_80192AB8[SOUND_BANK_COUNT][8][8];
 extern u8 D_80192C38;
 extern u8 sSoundBankDisabled[SOUND_BANK_COUNT];
-extern f32 D_80192C48[SOUND_BANK_COUNT][4];
+extern struct ChannelVolumeScaleFade D_80192C48[SOUND_BANK_COUNT];
 extern u8 D_80192CA8[3][10];
 extern u8  D_80192CC6[3];
 extern u32 D_80192CD0[256];
@@ -290,6 +349,7 @@ extern struct Unk_8018FC20 sSoundRequests[0x100];
 
 // Data entries
 extern u8  D_800E9DA0;
+extern s32 D_800E9DB4[];
 extern f32 D_800E9DC4[4];// = { 1.0f, 1.0f, 1.0f, 1.0f };
 extern f32 D_800E9DD4[4];// = { 0.0f, 0.0f, 0.0f, 0.0f };
 extern f32 D_800E9DE4[4];// = { 0.0f, 0.0f, 0.0f, 0.0f };
@@ -340,7 +400,10 @@ extern f32 D_800EA178;
 extern f32 D_800EA17C;
 extern u16 D_800EA180;// = 0;                          /* const */
 extern u16 D_800EA184;
+extern u8 D_800EA188[][6];
+extern u8 D_800EA1A0[][6];
 extern u8 D_800EA1C0;// = 0;
+extern u16 D_800EA1C4;
 // Most similar to gGlobalSoundSource from SM64, but I don't know if its really
 // a sound source, its usage makes it look like a 0'd Vec3f for general usage
 extern Vec3f D_800EA1C8;// = {0.0f, 0.0f, 0.0f}
@@ -348,6 +411,9 @@ extern f32 D_800EA1D4;
 extern u8 D_800EA1DC;// = 0;
 extern u8 D_800EA1E4;
 extern u8 D_800EA1E8;
+extern u8 D_800EA1EC;
+extern u8 D_800EA1F0[];
+extern u8 D_800EA1F4[];
 extern u8 D_800EA244;
 
 extern s8 D_800EA16C;

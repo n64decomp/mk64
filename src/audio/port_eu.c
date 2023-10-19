@@ -264,7 +264,7 @@ void func_800CBB88(u32 arg0, f32 arg1) {
     func_800CBB48(arg0, (s32*) &arg1);
 }
 
-void func_800CBBB8(u32 arg0, s32 arg1) {
+void func_800CBBB8(u32 arg0, u32 arg1) {
     func_800CBB48(arg0, &arg1);
 }
 

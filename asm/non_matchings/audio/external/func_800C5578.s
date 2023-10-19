@@ -60,7 +60,7 @@ glabel func_800C5578
 .L800C565C:
 /* 0C625C 800C565C 10400003 */  beqz  $v0, .L800C566C
 /* 0C6260 800C5660 32C400FF */   andi  $a0, $s6, 0xff
-/* 0C6264 800C5664 0C0311CF */  jal   func_800C473C
+/* 0C6264 800C5664 0C0311CF */  jal   delete_sound_from_bank
 /* 0C6268 800C5668 322500FF */   andi  $a1, $s1, 0xff
 .L800C566C:
 /* 0C626C 800C566C 241100FF */  li    $s1, 255
