@@ -205,7 +205,7 @@ void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, 
 }
 void isPrintfInit(void);
 void main_func(void) {
-#if defined(VERSION_EU)
+#ifdef VERSION_EU
     osTvType = TV_TYPE_PAL;
 #endif
     osInitialize();
@@ -221,7 +221,7 @@ void main_func(void) {
  */
 void thread1_idle(void *arg) {
     osCreateViManager(OS_PRIORITY_VIMGR);
-#if defined(VERSION_EU)
+#ifdef VERSION_EU
     osViSetMode(&osViModeTable[OS_VI_PAL_LAN1]);
 #else // VERSION_US
     if (osTvType == TV_TYPE_NTSC) {

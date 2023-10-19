@@ -26,7 +26,7 @@ glabel D_800E9AEC
 .asciiz "Error:Same List Add\n"
 .balign 4
 
-.ifdef VERSION_EU
+.ifdef VERSION_EU_1_0
 glabel EU_text
 .asciiz "Wait Time out!\n"
 .balign 4

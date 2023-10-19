@@ -22,11 +22,10 @@ u8 D_800EA3A0[] = { 0, 0, 0, 0 };
 
 u8 D_800EA3A4[] = { 0, 0, 0, 0 };
 
-                                       // todo: EU ADDR. Remove comments when EU ok.
-OSMesgQueue *D_800EA3A8 = &D_801937C0; // 0x80193900
-OSMesgQueue *D_800EA3AC = &D_801937D8; // 0x80193918
-OSMesgQueue *D_800EA3B0 = &D_801937F0; // 0x80193930
-OSMesgQueue *D_800EA3B4 = &D_80193808; // 0x80193948
+OSMesgQueue *D_800EA3A8 = &D_801937C0;
+OSMesgQueue *D_800EA3AC = &D_801937D8;
+OSMesgQueue *D_800EA3B0 = &D_801937F0;
+OSMesgQueue *D_800EA3B4 = &D_80193808;
 
 char port_eu_unused_string0[] = "DAC:Lost 1 Frame.\n";
 char port_eu_unused_string1[] = "DMA: Request queue over.( %d )\n";

@@ -233,7 +233,7 @@ void process_notes(void) {
             }
 #endif
 
-#ifdef VERSION_EU
+#ifdef VERSION_EU_1_0
     // Just threw these in here. They are probably wrong place and variables.
     stubbed_printf("----------------------Double-Error CH: %x %f\n", &note, note->parentLayer->seqChannel);
     stubbed_printf("----------------------Double-Error NT: %x\n", &note);

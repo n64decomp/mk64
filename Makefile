@@ -33,13 +33,16 @@ DEBUG ?= 0
 #   us - builds the 1997 North American version
 #   eu - builds the 1997 1.1 PAL version
 VERSION ?= us
-$(eval $(call validate-option,VERSION,us eu))
+$(eval $(call validate-option,VERSION,us eu-1.0 eu-final))
 
 ifeq      ($(VERSION),us)
   DEFINES += VERSION_US=1
   GRUCODE   ?= f3dex_old
-else ifeq ($(VERSION),eu)
-  DEFINES += VERSION_EU=1 
+else ifeq ($(VERSION),eu-1.0)
+  DEFINES += VERSION_EU=1 VERSION_EU_1_0=1
+  GRUCODE   ?= f3dex_old
+else ifeq ($(VERSION),eu-final)
+  DEFINES += VERSION_EU=1 VERSION_EU_1_1=1
   GRUCODE   ?= f3dex_old
 endif
 

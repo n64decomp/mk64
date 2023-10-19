@@ -1,4 +1,3 @@
-.section .text
 glabel func_800C76C0
 /* 0C837C 800C777C 27BDFFC0 */  addiu $sp, $sp, -0x40
 /* 0C8380 800C7780 308E00FF */  andi  $t6, $a0, 0xff

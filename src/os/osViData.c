@@ -5,18 +5,18 @@ OSViMode osViModePalLan1 = {
     /*comRegs*/
     { /*ctrl*/ 12574,
       /*width*/ 320,
-#ifdef VERSION_US
-      /*burst*/ 67380026,
-#else
+#ifdef VERSION_EU
       /*burst*/ 72621626,
+#else
+      /*burst*/ 67380026,
 #endif
       /*vSync*/ 625,
-#ifdef VERSION_US
-      /*hSync*/ 1379433,
-      /*leap*/ 208604270,
-#else
+#ifdef VERSION_EU
       /*hSync*/ 1510505,
       /*leap*/ 208604269,
+#else
+      /*hSync*/ 1379433,
+      /*leap*/ 208604270,
 #endif
       /*hStart*/ 8389376,
       /*xScale*/ 512,
