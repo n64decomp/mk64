@@ -48,7 +48,7 @@ if (edges && edges.length) {
 <script type="text/javascript">
 var viewWidth = 755;
 var viewHeight = 897;
-var sectionId = 'dynsection-167';
+var sectionId = 'dynsection-169';
 </script>
 <script xlink:href="svgpan.js"/>
 <svg id="graph" class="graph">
@@ -82,7 +82,7 @@ var sectionId = 'dynsection-167';
 <!-- Node44 -->
 <g id="node41" class="node">
 <title>Node44</title>
-<g id="a_node41"><a xlink:href="camera_8c.html#ad15ffdd45f78ec43b70caa021fc1863e" target="_top" xlink:title=" ">
+<g id="a_node41"><a xlink:href="code__80005FD0_8h.html#ad15ffdd45f78ec43b70caa021fc1863e" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="140,-57.5 140,-76.5 232,-76.5 232,-57.5 140,-57.5"/>
 <text text-anchor="middle" x="186" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_80014DE4</text>
 </a>
@@ -742,7 +742,7 @@ var sectionId = 'dynsection-167';
 <!-- Node46 -->
 <g id="node43" class="node">
 <title>Node46</title>
-<g id="a_node43"><a xlink:href="functions_8h.html#a6006f1fea11442f6e37da377af9d55d2" target="_top" xlink:title=" ">
+<g id="a_node43"><a xlink:href="code__80005FD0_8h.html#a6006f1fea11442f6e37da377af9d55d2" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="297,-57.5 297,-76.5 388,-76.5 388,-57.5 297,-57.5"/>
 <text text-anchor="middle" x="342.5" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_8000F628</text>
 </a>

@@ -1,7 +1,6 @@
 var camera_8c =
 [
     [ "camera_init", "camera_8c.html#a2699fb853dad47cc722031ca412a31ea", null ],
-    [ "func_80014DE4", "camera_8c.html#ad15ffdd45f78ec43b70caa021fc1863e", null ],
     [ "func_8001CA10", "camera_8c.html#a850647b1c2f5f5e37f03d7d52d987663", null ],
     [ "func_8001CA24", "camera_8c.html#a2e08edbba430b5425bf6fa6c3b5d34b2", null ],
     [ "func_8001CA78", "camera_8c.html#adb508bad7e7abb808379aa8124ed4f4e", null ],

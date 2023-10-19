@@ -1,10 +1,5 @@
 var variables_8h =
 [
-    [ "D_0D0077A0", "variables_8h.html#aff9ce7a520a04389ab519b925b7f8923", null ],
-    [ "D_80162DD8", "variables_8h.html#a1a6ef299ab3b94fc793a3c13bdac9598", null ],
-    [ "D_80162DE0", "variables_8h.html#a909ba9a7cda091f75ea4d7e508e82c53", null ],
-    [ "D_80162DE4", "variables_8h.html#ab357d110a4905b09f8f712a25e9a0f0d", null ],
-    [ "D_80162DE8", "variables_8h.html#a6391b1c00d3b9e1d73c43ca096ca1997", null ],
     [ "D_80164510", "variables_8h.html#ad43ea11f2f55a17af04b0c0329ed86dd", null ],
     [ "D_80164A28", "variables_8h.html#a3a9f5f7350aba44f0115f0a4314483dd", null ],
     [ "D_80165020", "variables_8h.html#aae96f316b0ff3330334bd1ebc69ae49d", null ],
@@ -50,25 +45,14 @@ var variables_8h =
     [ "D_8018CA70", "variables_8h.html#a39b36a35402cd3b3822176f455e85b9f", null ],
     [ "D_8018CE10", "variables_8h.html#a6bcde9bc5f0b209f31f65df5ad0493ad", null ],
     [ "D_8018D900", "variables_8h.html#a10973deea03f96575de006aebdb53f04", null ],
-    [ "D_802B8880", "variables_8h.html#aa9561e7be092d9cd53decc5700218e26", null ],
     [ "gCharacterIdByGPOverallRank", "variables_8h.html#a2fce3748266c007098feb5991f854b6a", null ],
-    [ "gCourseCompletionPercentByPlayerId", "variables_8h.html#a7b124720911498c50ea214fda0a0dc1d", null ],
-    [ "gCourseCompletionPercentByRank", "variables_8h.html#a7401dafae02b8d37b61c8e791e3fe98e", null ],
-    [ "gCupNames", "variables_8h.html#a073ba661bd0287e1793a08725e0ddb73", null ],
     [ "gCurrentCourseId", "variables_8h.html#a0b35aa576b8ad5250674993b72300f0d", null ],
     [ "gGPCurrentRacePlayerIdByRank", "variables_8h.html#adf1a010814a163e8727e3737c3a81b35", null ],
     [ "gGPCurrentRaceRankByPlayerId", "variables_8h.html#add62d9cde764b79f75bdda1e23560b29", null ],
-    [ "gGPPointsByCharacterId", "variables_8h.html#ad2bf3fcd4b3b2a129ed5f6a806c5bacc", null ],
-    [ "gHumanPlayerCount", "variables_8h.html#ae69d035f5f231f55f532bafff91af4ca", null ],
-    [ "gIsGamePaused", "variables_8h.html#a1e68adae3a31f0d078322717a6ff9d6b", null ],
-    [ "gIsMirrorMode", "variables_8h.html#abf3ecec3eda7109a8cd4cfd8f6826330", null ],
     [ "gIsPlayerTripleAButtonCombo", "variables_8h.html#a7938ceec1384e33e20aee5fe4268f6dd", null ],
     [ "gLapCompletionPercentByPlayerId", "variables_8h.html#a0d9b5666ed0d24b5dd4f123ddee225dc", null ],
     [ "gLapCountByPlayerId", "variables_8h.html#a49a3a4c9b52ea6fdc196c0e9c743c0f8", null ],
     [ "gMatrixEffectCount", "variables_8h.html#abeefcb4eb9df7b90bbf608d19a9294dc", null ],
     [ "gMatrixHudCount", "variables_8h.html#aad9c206041d209aa55bc9a003fb0a21b", null ],
-    [ "gMenuSelection", "variables_8h.html#a6c59bf49fd855f9c1fa23898fb9d4df4", null ],
-    [ "gPerCupIndexByCourseId", "variables_8h.html#a2af80f0f12c3fd32d7887775ffe93292", null ],
-    [ "gPlayerIsThrottleActive", "variables_8h.html#a6cb6314ad80d4c4d23ab5d9f57387783", null ],
-    [ "gSoundModeNames", "variables_8h.html#a74933bddc6e45c2446ce6a4677e1de09", null ]
+    [ "gPlayerIsThrottleActive", "variables_8h.html#a6cb6314ad80d4c4d23ab5d9f57387783", null ]
 ];

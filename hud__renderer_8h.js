@@ -347,6 +347,7 @@ var hud__renderer_8h =
     [ "func_80055FA0", "hud__renderer_8h.html#a8f6abba2a8e810f7b1b86dac22379a6e", null ],
     [ "func_80056160", "hud__renderer_8h.html#a3b0137c07e771425a408c4e68410c624", null ],
     [ "func_80056188", "hud__renderer_8h.html#ae5b0a73624e3c1361f060d670e9f2ea0", null ],
+    [ "func_800562E4", "hud__renderer_8h.html#a1ae9f5e6d72b75ee592bff888eee31a6", null ],
     [ "func_800563DC", "hud__renderer_8h.html#ac875fe9f6c1c77f07a8595ddd30fda6b", null ],
     [ "func_8005669C", "hud__renderer_8h.html#adf42fb63f89537650184c7e557bbdf69", null ],
     [ "func_800568A0", "hud__renderer_8h.html#a7b7f4e21fa87baa88eb14cb58d899b25", null ],
@@ -394,6 +395,7 @@ var hud__renderer_8h =
     [ "D_800E4698", "hud__renderer_8h.html#a886ab4f1c17fdd6e69ac9900f67cab22", null ],
     [ "D_800E566A", "hud__renderer_8h.html#abae980d24cb0f9b545904f6412fa5d27", null ],
     [ "D_800E5670", "hud__renderer_8h.html#a3274a12ff6c61f1c1ae7ba260e5e7f24", null ],
+    [ "D_801655CC", "hud__renderer_8h.html#adff2e87a4355939fba6910b59cb7c94a", null ],
     [ "D_801656C0", "hud__renderer_8h.html#a626c0889a455339183c6e519fbbd122b", null ],
     [ "D_801656D0", "hud__renderer_8h.html#ab7fc49beb96281dffbe52fa49dd96732", null ],
     [ "D_801656E0", "hud__renderer_8h.html#acf3ecca9e63248d67fc00340f05ae411", null ],
@@ -414,6 +416,7 @@ var hud__renderer_8h =
     [ "D_8018D3E4", "hud__renderer_8h.html#a4a9b41f43c4d88370ad8eafc627a630a", null ],
     [ "D_8018D3E8", "hud__renderer_8h.html#af373ac1373efc72c6df1fd39bc7ba73f", null ],
     [ "D_8018D3EC", "hud__renderer_8h.html#adc1f1f7c2496563a3b1d28b5ae95ed89", null ],
+    [ "D_8018D400", "hud__renderer_8h.html#a4de49d29ae529a55cff9df5bf6926cdf", null ],
     [ "d_course_bowsers_castle_thwomp_tlut", "hud__renderer_8h.html#adc9789813be81d9c2143b07c8626b27e", null ],
     [ "gPortraitTextures", "hud__renderer_8h.html#a601231686d436717b1f26ad0303fe7e3", null ],
     [ "gPortraitTLUTs", "hud__renderer_8h.html#ac92acbe0f14e4a89e43337ce5095a4f4", null ]

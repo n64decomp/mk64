@@ -61,6 +61,8 @@ var code__800029B0_8h =
     [ "gFreeMemoryResetAnchor", "code__800029B0_8h.html#a40f34d625901521dc5667a667e65b50c", null ],
     [ "gFreeMemorySize", "code__800029B0_8h.html#aa689f8ec7df66b59f8922bc5df57d864", null ],
     [ "gHeapEndPtr", "code__800029B0_8h.html#ac4a7bb67a03ffa0f55fe202f0b5f2f76", null ],
+    [ "gIsGamePaused", "code__800029B0_8h.html#a1e68adae3a31f0d078322717a6ff9d6b", null ],
+    [ "gIsMirrorMode", "code__800029B0_8h.html#abf3ecec3eda7109a8cd4cfd8f6826330", null ],
     [ "gNextFreeMemoryAddress", "code__800029B0_8h.html#acd2abe1d3f00f9dee4d679d14074480e", null ],
     [ "gNmiUnknown1", "code__800029B0_8h.html#ad46f5cbdc056c4a5b9f5e6ef16dafb61", null ],
     [ "gNmiUnknown2", "code__800029B0_8h.html#a0672d4666c6da2bd972d9999291133bb", null ],

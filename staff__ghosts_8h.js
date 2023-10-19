@@ -23,6 +23,9 @@ var staff__ghosts_8h =
     [ "D_80162DD4", "staff__ghosts_8h.html#a93172e651a1b94810db55f621d051558", null ],
     [ "D_80162DD6", "staff__ghosts_8h.html#a26fc0e5f675f4602960709d90df9ac8f", null ],
     [ "D_80162DD8", "staff__ghosts_8h.html#a1a6ef299ab3b94fc793a3c13bdac9598", null ],
+    [ "D_80162DE0", "staff__ghosts_8h.html#a909ba9a7cda091f75ea4d7e508e82c53", null ],
+    [ "D_80162DE4", "staff__ghosts_8h.html#ab357d110a4905b09f8f712a25e9a0f0d", null ],
+    [ "D_80162DE8", "staff__ghosts_8h.html#a6391b1c00d3b9e1d73c43ca096ca1997", null ],
     [ "D_80162DF0", "staff__ghosts_8h.html#a765650c60bc8d34ec297e6ac6d152aa0", null ],
     [ "D_80162DF8", "staff__ghosts_8h.html#a992511932a32279879ff11219e11285e", null ],
     [ "D_80162E00", "staff__ghosts_8h.html#a0eb82092a448ee36c1e468dfa4765ce6", null ]

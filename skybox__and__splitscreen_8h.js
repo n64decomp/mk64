@@ -61,6 +61,7 @@ var skybox__and__splitscreen_8h =
     [ "D_800DC5F4", "skybox__and__splitscreen_8h.html#a85c8d6da17be420024713a4241b6182a", null ],
     [ "D_800DC5F8", "skybox__and__splitscreen_8h.html#a4546fe60321bf2e11a102fd020d724c7", null ],
     [ "D_8015F480", "skybox__and__splitscreen_8h.html#a6789f7ae9c8621923c4e50b8d3cf2cd8", null ],
+    [ "D_802B8880", "skybox__and__splitscreen_8h.html#aa9561e7be092d9cd53decc5700218e26", null ],
     [ "gIsInQuitToMenuTransition", "skybox__and__splitscreen_8h.html#a2e7d63dbfdabad69a70a95734822fe41", null ],
     [ "gQuitToMenuTransitionCounter", "skybox__and__splitscreen_8h.html#a5018fabd53fbeb5f453f5d76a8620c84", null ]
 ];

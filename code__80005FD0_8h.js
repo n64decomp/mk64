@@ -52,6 +52,7 @@ var code__80005FD0_8h =
     [ "func_8000F124", "code__80005FD0_8h.html#a7fc44af1268e58cc195aeab08726c3cd", null ],
     [ "func_8000F2BC", "code__80005FD0_8h.html#a1a07878fbc056c2a463157121e0ed372", null ],
     [ "func_8000F2DC", "code__80005FD0_8h.html#a1b88258c47677456a6de78bbce674c21", null ],
+    [ "func_8000F628", "code__80005FD0_8h.html#a6006f1fea11442f6e37da377af9d55d2", null ],
     [ "func_800100F0", "code__80005FD0_8h.html#a73cf3ac928fe335e2acbe5e0afcac412", null ],
     [ "func_80010218", "code__80005FD0_8h.html#aefc2c27cdc66f13de6a27a2a3dd7377f", null ],
     [ "func_80010480", "code__80005FD0_8h.html#afe760020960d5808c94f319abc682380", null ],
@@ -103,6 +104,7 @@ var code__80005FD0_8h =
     [ "func_80014CC0", "code__80005FD0_8h.html#a2cb5cbb6d08fd401e78dddf75723f013", null ],
     [ "func_80014D08", "code__80005FD0_8h.html#af9bb282600af5d68a722cd3536a02b1d", null ],
     [ "func_80014D30", "code__80005FD0_8h.html#a9efe6309d206bed4942bb6113645842d", null ],
+    [ "func_80014DE4", "code__80005FD0_8h.html#ad15ffdd45f78ec43b70caa021fc1863e", null ],
     [ "func_80014EE4", "code__80005FD0_8h.html#ac5cb24ec2bfb5b3c1f7f0daa5fafdf35", null ],
     [ "func_800151A4", "code__80005FD0_8h.html#ac7e9dc3e0fc442be0901640985b98453", null ],
     [ "func_8001530C", "code__80005FD0_8h.html#a4a69eef8a5718a6c5bbc83f8360f22b2", null ],
@@ -205,5 +207,7 @@ var code__80005FD0_8h =
     [ "D_80164688", "code__80005FD0_8h.html#a417e6e80559ab7a352caed388b95084e", null ],
     [ "D_801646C0", "code__80005FD0_8h.html#a90459aaa0dd57956079fe80ab4f81b8a", null ],
     [ "D_801646CC", "code__80005FD0_8h.html#afab6d7ceab11849c0f728e2a98120bd5", null ],
+    [ "gCourseCompletionPercentByPlayerId", "code__80005FD0_8h.html#a7b124720911498c50ea214fda0a0dc1d", null ],
+    [ "gCourseCompletionPercentByRank", "code__80005FD0_8h.html#a7401dafae02b8d37b61c8e791e3fe98e", null ],
     [ "gUnexpiredActorsList", "code__80005FD0_8h.html#a52b827315d66140beaa00ab43fc3bc73", null ]
 ];

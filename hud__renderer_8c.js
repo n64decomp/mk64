@@ -348,6 +348,7 @@ var hud__renderer_8c =
     [ "func_80056A40", "hud__renderer_8c.html#a48c37261398c106dd6b80a4c2ea27499", null ],
     [ "func_80056A94", "hud__renderer_8c.html#adc395724add957846b93b6b80afb0214", null ],
     [ "func_80056AC0", "hud__renderer_8c.html#af1f6deab6c7bbd15ca7ebf1802911c74", null ],
+    [ "func_80056BF0", "hud__renderer_8c.html#abefc70b83784d524432d3301a08cfb0d", null ],
     [ "func_80056E24", "hud__renderer_8c.html#a8aa62f17d0c7f54dc68e9aaa298f8715", null ],
     [ "func_80056FCC", "hud__renderer_8c.html#ad38e748954bfdc19d29272dbf4703c0e", null ],
     [ "func_80057114", "hud__renderer_8c.html#aab84e52f6b40a3b7521577dee959df58", null ],
