@@ -132,7 +132,8 @@
 "bin/course_dks_jungle_parkway_packed.bin": {"meta":{"size": "0x3424"}, "offsets":{"us":["0x960ACC","0x0"]}},
 "bin/course_big_donut_vertex.bin": {"meta":{"size": "0x2370"}, "offsets":{"us":["0x963EF0","0x0"]}},
 "bin/course_big_donut_packed.bin": {"meta":{"size": "0x7EC"}, "offsets":{"us":["0x965A74","0x0"]}},
-"bin/mk64.u.966260.bin": {"meta":{"size": "0x13840"}, "offsets":{"us":["0x966260","0x0"]}},
+"bin/audiobanks.us.bin": {"meta":{"size": "0x13840"}, "offsets":{"us":["0x966260","0x0"]}},
+"bin/audiobanks.eu.bin": {"meta":{"size": "0x13840"}, "offsets":{"eu":["0x966460","0x0"]}},
 "bin/mk64.u.979AA0.bin": {"meta":{"size": "0x24C4C0"}, "offsets":{"us":["0x979AA0","0x0"]}},
 
 "music/00_seq_00.m64":                    {"meta":{"size":"0x2830"}, "offsets": {"us":["0xBC6060", "0x0"]}},

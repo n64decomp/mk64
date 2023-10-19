@@ -772,7 +772,10 @@ void func_802A59A4(void) {
     UNUSED s32 pad[4];
     u16 perspNorm;
     UNUSED s32 pad2[2];
+#ifdef VERSION_EU
     f32 sp9C;
+#endif
+    UNUSED s32 pad3;
     Mat4 matrix;
 
     // Might D_80150288 be D_80150148
