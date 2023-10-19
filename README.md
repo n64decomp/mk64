@@ -4,9 +4,9 @@
 - Note -
 
 The decomp has altered its approach to calculating progress.
-The Game Code Progress value below is not correct.
-The prior calculations had a bug and did not include os code in the total decompilable bytes
-due to prior technical restrictions which are now resolved.
+
+The progress script is still a work-in-progress and the values below are subject to change.
+This notice will be removed when the changes are complete
 ```
 
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=totalProgress)](https://ci.valandil.ca/job/mk64/job/master/)
