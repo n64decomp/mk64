@@ -5066,7 +5066,7 @@ void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     D_80165070[arg3][1] = sp88[1];
     D_80165070[arg3][2] = sp88[2];
     
-    if ((player->type & 0x4000) == 0x4000) {
+    if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
         if (gKartTopSpeedTable[player->characterId] < player->unk_094) {
             divOptimize = gKartTopSpeedTable[player->characterId] / player->unk_094;
             player->velocity[0] *= divOptimize;

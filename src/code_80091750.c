@@ -23,6 +23,7 @@
 #include "math_util.h"
 #include "save_data.h"
 #include "podium_ceremony_actors.h"
+#include "skybox_and_splitscreen.h"
 // TODO: Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
@@ -349,7 +350,7 @@ const s16 gGlyphDisplayWidth[] = {
     0x000f, 0x000f, 0x000f, 0x000f,
 };
 
-char *D_800E7500[] = {
+char *gCupNames[] = {
     "mushroom cup",
     "flower cup",
     "star cup",
@@ -532,7 +533,7 @@ char *gDebugSoundModeNames[] = {
     "monaural",
 };
 
-char *gSoundModeNames[] = {
+char *gSoundModeNames[NUM_SOUND_MODES] = {
     "STEREO",
     "HEADPHONE",
     "",
@@ -8213,7 +8214,7 @@ block_58:
             return;
         case 0x96:                                  /* switch 6 */
             set_text_color(4);
-            func_800936B8(arg0->column, arg0->row, D_800E7500[D_800DC540], arg0->unk1C, arg0->unk24, 1.0f);
+            func_800936B8(arg0->column, arg0->row, gCupNames[D_800DC540], arg0->unk1C, arg0->unk24, 1.0f);
             return;
         case 0x97:                                  /* switch 6 */
             set_text_color(5);
@@ -9241,8 +9242,8 @@ void func_800A2EB8(struct_8018D9E0_entry *arg0) {
         func_800A32B4(0xBE - arg0->column, arg0->row + (0x10 * var_s2) + 0x5A, sp70[var_s2], var_s2);
     }
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-    temp_s0 = (s32) (((f32) (get_string_width(D_800E7500[gCupSelection]) + 8) * 0.6f) / 2);
-    draw_text((-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xF5, arg0->row + 0xE1, D_800E7500[D_800DC540], 0, 0.6f, 0.6f);
+    temp_s0 = (s32) (((f32) (get_string_width(gCupNames[gCupSelection]) + 8) * 0.6f) / 2);
+    draw_text((-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xF5, arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
     draw_text((temp_s0 - arg0->column) + 0xF5, arg0->row + 0xE1, D_800E76CC[D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
 }
 
@@ -9354,8 +9355,8 @@ void func_800A34A8(struct_8018D9E0_entry *arg0) {
             }
         }
         set_text_color(5);
-        temp_s0_3 = ((get_string_width(D_800E7500[gCupSelection]) + 8) * 0.6f) / 2;
-        draw_text((-(s32) (((get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xE6, arg0->row + 0xE1, D_800E7500[D_800DC540], 0, 0.6f, 0.6f);
+        temp_s0_3 = ((get_string_width(gCupNames[gCupSelection]) + 8) * 0.6f) / 2;
+        draw_text((-(s32) (((get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xE6, arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
         draw_text((temp_s0_3 - arg0->column) + 0xE6, arg0->row + 0xE1, D_800E76CC[D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
     }
 }
@@ -9861,10 +9862,10 @@ void func_800A5084(struct_8018D9E0_entry *arg0) {
     temp_t4 = temp_v0->screenHeight / 2;
     gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3, temp_t0 + temp_t4, 0, 0, 0, 140);
     temp_s3 = &D_800E85C0[gScreenModeSelection][gIsGamePaused - 1];
-    temp_s0 = ((get_string_width(D_800E7500[gCupSelection]) * one) + 10.0f) / 2;
+    temp_s0 = ((get_string_width(gCupNames[gCupSelection]) * one) + 10.0f) / 2;
     temp_s1 = ((get_string_width(D_800E76CC[gCCSelection])  * one) + 10.0f) / 2;
     set_text_color(TEXT_YELLOW);
-    draw_text(160 - temp_s1, temp_s3->row - 50, D_800E7500[gCupSelection], 0, 1.0f, 1.0f);
+    draw_text(160 - temp_s1, temp_s3->row - 50, gCupNames[gCupSelection], 0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
     draw_text(160 + temp_s0, temp_s3->row - 50, D_800E76CC[gCCSelection],  0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
@@ -10121,7 +10122,7 @@ void func_800A6034(struct_8018D9E0_entry *arg0) {
 
     if (D_801657E8 != TRUE) {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, arg0->unk1C);
-        text = D_800E7500[D_800DC540];
+        text = gCupNames[D_800DC540];
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
         func_80093754(arg0->column + 0x41, arg0->row + 0xA0, text, 0, 0.85f, 1.0f);
         text = D_800E7524[gCurrentCourseId];
@@ -10472,11 +10473,11 @@ void func_800A7258(struct_8018D9E0_entry *arg0) {
 // Podium scene, top line
 void func_800A72FC(struct_8018D9E0_entry *arg0) {
     UNUSED s32 pad;
-    s32 cupNameLength = (((f32) get_string_width(D_800E7500[gCupSelection]) * 1) + 10) / 2;
+    s32 cupNameLength = (((f32) get_string_width(gCupNames[gCupSelection]) * 1) + 10) / 2;
     s32 ccNameLength = (((f32) get_string_width(D_800E76CC[gCCSelection]) * 1) + 10) / 2;
 
     set_text_color(TEXT_YELLOW);
-    draw_text(arg0->column - ccNameLength, arg0->row, D_800E7500[gCupSelection], 0, 1, 1);
+    draw_text(arg0->column - ccNameLength, arg0->row, gCupNames[gCupSelection], 0, 1, 1);
     set_text_color(TEXT_YELLOW);
     draw_text(arg0->column + cupNameLength, arg0->row, D_800E76DC[gCCSelection], 0, 1, 1);
 }
@@ -12739,7 +12740,7 @@ void func_800ABCF4(struct_8018D9E0_entry *arg0) {
     case 0:
         arg0->column = 0;
         arg0->unk4 = 1;
-        arg0->unk20 = (get_string_width(D_800E7500[D_800DC540]) / 2) + 0xA0;
+        arg0->unk20 = (get_string_width(gCupNames[D_800DC540]) / 2) + 0xA0;
         /* fallthrough */
     case 1:
         func_800A9208(arg0, arg0->unk20);

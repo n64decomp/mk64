@@ -1,4 +1,5 @@
 #include <ultra64.h>
+#include "data_800E8700.h"
 
 Vtx D_800E8700[] = {
     {{{    8,    8,    0}, 0, {960,    0}, {0xFF, 0xFF, 0xFF, 0xFF}}},

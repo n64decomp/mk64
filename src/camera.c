@@ -29,7 +29,6 @@ Camera *camera4 = &cameras[3];
 // s32 D_80164A2C;
 // f32 D_8016524C; <- could maybe, maybe be part of spawn_players' bss stuff?
 
-void func_80014DE4(s32);
 extern f32 D_80164498[];
 extern s16 D_80164678[];
 extern f32 D_801649D8[]; // f32[4]

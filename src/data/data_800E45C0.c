@@ -1,4 +1,5 @@
 #include <ultra64.h>
+#include "data_800E45C0.h"
 
 // Lights
 Lights1 D_800E45C0 = gdSPDefLights1(
