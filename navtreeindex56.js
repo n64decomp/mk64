@@ -1,5 +1,13 @@
 var NAVTREEINDEX56 =
 {
+"new__func_8h.html#a28221427b7ad6c81f9a250105f26cb2a":[2,0,1,5,56,9],
+"new__func_8h.html#a3cdd6953634c48f7eaa8fbe448c3fe8f":[2,0,1,5,56,6],
+"new__func_8h.html#a6a17a13ff7dc07c2fff19f8463a2982a":[2,0,1,5,56,8],
+"new__func_8h.html#a838e2ae4ce51bdad5ba9667fa45bd26a":[2,0,1,5,56,3],
+"new__func_8h.html#aa304c3ab9c84c922fe603fdf543c2551":[2,0,1,5,56,7],
+"new__func_8h.html#ac45abfb3d95070ab49c1b0082f47b983":[2,0,1,5,56,1],
+"new__func_8h.html#ac8095e2ec1adbd7e74e655c578968a36":[2,0,1,5,56,0],
+"new__func_8h_source.html":[2,0,1,5,56],
 "objects_8h.html":[2,0,0,17],
 "objects_8h.html#a0785faf307ccd6f0da5b313ea323a44b":[2,0,0,17,5],
 "objects_8h.html#a08f398bdf3113fc76ac625a8b516c214":[2,0,0,17,3],
@@ -241,13 +249,5 @@ var NAVTREEINDEX56 =
 "osSendMesg_8c.html#a413bd1b0a16c54dcc9e59c48b3d7f142":[2,0,1,5,97,0],
 "osSetEventMesg_8c.html":[2,0,1,5,98],
 "osSetEventMesg_8c.html#a5babbb1725f699553d02e6b2ca01936e":[2,0,1,5,98,2],
-"osSetEventMesg_8c.html#a8fd8e31db6896b4c740fd4fd8faa921c":[2,0,1,5,98,3],
-"osSetEventMesg_8c.html#aec3aa513d38edb2ebbc86828fb7dcca5":[2,0,1,5,98,1],
-"osSetThreadPri_8c.html":[2,0,1,5,99],
-"osSetThreadPri_8c.html#a0ba3a1830df80ec8ddc33aec4ba85f2b":[2,0,1,5,99,0],
-"osSetTime_8c.html":[2,0,1,5,100],
-"osSetTime_8c.html#a0d98a2d307753fb3c3764940365ecb65":[2,0,1,5,100,0],
-"osSetTime_8c.html#a4af0cb38d6a9bc36e9ee5dda55d7726e":[2,0,1,5,100,1],
-"osSetTimer_8c.html":[2,0,1,5,101],
-"osSetTimer_8c.html#a845415355645d4a89606df8b7e9cd0fc":[2,0,1,5,101,2]
+"osSetEventMesg_8c.html#a8fd8e31db6896b4c740fd4fd8faa921c":[2,0,1,5,98,3]
 };

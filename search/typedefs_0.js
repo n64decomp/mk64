@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_5f_5foseventstate_26392',['__OSEventState',['../libultra__internal_8h.html#add2c870781ac2726008191dc5dd39976',1,'libultra_internal.h']]]
+  ['_5f_5foseventstate_26399',['__OSEventState',['../libultra__internal_8h.html#add2c870781ac2726008191dc5dd39976',1,'libultra_internal.h']]]
 ];

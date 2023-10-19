@@ -1,5 +1,13 @@
 var NAVTREEINDEX69 =
 {
+"structOSPiHandle__s.html#aaabcf396c11e60d0e33b77ca4a6ae9ff":[1,0,118,2],
+"structOSPiHandle__s.html#af4a31a26b48ce4ee7b8a03d95eddaf49":[1,0,118,4],
+"structOSPiInfo.html":[1,0,119],
+"structOSPiInfo.html#a6e8f93d6dddf41ce6f6d81fbf658aed2":[1,0,119,1],
+"structOSPiInfo.html#abb30c97b709ef0fd174b7f5fce8a5615":[1,0,119,0],
+"structOSPifRam.html":[1,0,117],
+"structOSPifRam.html#a5053c829fab8ca1d155b56ed14eb98b3":[1,0,117,1],
+"structOSPifRam.html#a7be825ca2019df6f807aed6bd0dda490":[1,0,117,0],
 "structOSThread__s.html":[1,0,120],
 "structOSThread__s.html#a41db0d5162d18a73d3cb122e8ce1be0d":[1,0,120,1],
 "structOSThread__s.html#a4c931c833828f00b429eae5780dc0f48":[1,0,120,5],
@@ -241,13 +249,5 @@ var NAVTREEINDEX69 =
 "structPlayer.html#a9589da3d13841a5e368a6777226f1326":[1,0,131,71],
 "structPlayer.html#a9aa94f75cd5b62075d6cd0524c9cd5e6":[1,0,131,107],
 "structPlayer.html#a9c333a0b1d2ef2238a7514de9a642bea":[1,0,131,20],
-"structPlayer.html#a9c901c73281dcc80cf5ff9b7eec8f3d1":[1,0,131,112],
-"structPlayer.html#a9d64977aa66399cfef9d4d7b0aa8c89e":[1,0,131,105],
-"structPlayer.html#a9df507c28783c74a597f319400ddea47":[1,0,131,103],
-"structPlayer.html#a9f4496ecf8717edfaf59a28ab6f726ab":[1,0,131,63],
-"structPlayer.html#a9f8512c8765dab3fdfa0d285acce5bee":[1,0,131,98],
-"structPlayer.html#aa2aea429bcc24178e3e4f6a0a599f49f":[1,0,131,43],
-"structPlayer.html#aa47478e0b0fb0bb673c1081d5840268f":[1,0,131,38],
-"structPlayer.html#aa77a79a8862283a08c255f07962e6e60":[1,0,131,66],
-"structPlayer.html#aa78cd789ec34c4c664e8b413a3ab4276":[1,0,131,106]
+"structPlayer.html#a9c901c73281dcc80cf5ff9b7eec8f3d1":[1,0,131,112]
 };
