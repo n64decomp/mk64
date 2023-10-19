@@ -28,12 +28,7 @@ SECTIONS
 
    BEGIN_SEG(boot, 0xA4000000)
    {
-      #ifdef VERSION_EU
-         BUILD_DIR/asm/rom_header_eu.o(.text);
-      #else
-         BUILD_DIR/asm/rom_header.o(.text);
-      #endif
-
+      BUILD_DIR/asm/rom_header.o(.text);
       BUILD_DIR/asm/boot.o(.text);
    }
    END_SEG(boot)

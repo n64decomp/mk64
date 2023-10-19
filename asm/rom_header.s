@@ -20,6 +20,11 @@
 .ascii "KT"                     /* Cartridge ID */
 
 /* Region */
-.ascii "E"                      /* NTSC-U */
+
+.ifdef VERSION_EU
+.ascii "P"                      /* PAL (Europe) */
+.else
+.ascii "E"                      /* NTSC-U (North America) */
+.endif
 
 .byte  0x00                     /* Version */
