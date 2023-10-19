@@ -103,7 +103,7 @@ glabel audio_init
 /* BCE44 800BC244 3C01803B */  lui        $at, %hi(gSampleDmaNumListItems)
 /* BCE48 800BC248 3C04800F */  lui        $a0, %hi(gAudioInitPoolSize)
 /* BCE4C 800BC24C AC206E58 */  sw         $zero, %lo(gSampleDmaNumListItems)($at)
-/* BCE50 800BC250 0C02E43C */  jal        audio_shut_down_and_reset_step
+/* BCE50 800BC250 0C02E43C */  jal        func_800B90F0
 /* BCE54 800BC254 8C84A714 */   lw        $a0, %lo(gAudioInitPoolSize)($a0)
 /* BCE58 800BC258 3C06803B */  lui        $a2, %hi(gAiBuffers)
 /* BCE5C 800BC25C 3C14803B */  lui        $s4, %hi(gAudioInitPool)
@@ -272,9 +272,9 @@ glabel audio_init
 /* BD0D8 800BC4D8 24050100 */   addiu     $a1, $zero, 0x100
 /* BD0DC 800BC4DC 3C03803B */  lui        $v1, %hi(gAlBankSets)
 /* BD0E0 800BC4E0 24637078 */  addiu      $v1, $v1, %lo(gAlBankSets)
-/* BD0E4 800BC4E4 3C0400BF */  lui        $a0, %hi(_instrument_setsSegmentRomStart)
+/* BD0E4 800BC4E4 3C0400BF */  lui        $a0, %hi(_instrument_setsSegmentRomStart+0x20)
 /* BD0E8 800BC4E8 AC620000 */  sw         $v0, 0x0($v1)
-/* BD0EC 800BC4EC 248493E0 */  addiu      $a0, $a0, %lo(_instrument_setsSegmentRomStart)
+/* BD0EC 800BC4EC 248493E0 */  addiu      $a0, $a0, %lo(_instrument_setsSegmentRomStart+0x20)
 /* BD0F0 800BC4F0 00402825 */  or         $a1, $v0, $zero
 /* BD0F4 800BC4F4 0C02EAA0 */  jal        audio_dma_copy_immediate
 /* BD0F8 800BC4F8 24060100 */   addiu     $a2, $zero, 0x100

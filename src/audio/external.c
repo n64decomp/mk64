@@ -703,7 +703,11 @@ void func_800C2474(void) {
     temp_a0_4->next = 0xFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C2474.s")
+    #ifdef VERSION_EU
+    GLOBAL_ASM("asm/eu_nonmatchings/func_800C2474.s")
+    #else
+    GLOBAL_ASM("asm/non_matchings/audio/external/func_800C2474.s")
+    #endif
 #endif
 
 #ifdef MIPS_TO_C
@@ -2960,12 +2964,22 @@ void func_800C683C(u8 arg0) {
     }
 }
 
+#ifdef VERSION_EU
+#define C70A8_INDEX 0
+#define C70A8_INDEX2 0
+#define C70A8_INDEX3 1
+#else
+#define C70A8_INDEX 1
+#define C70A8_INDEX2 2
+#define C70A8_INDEX3 3
+#endif
+
 void func_800C70A8(u8 playerId) {
     if (D_800EA0EC[playerId] == 0) {
         D_800E9E74[playerId] = 0;
         if ((D_800E9E54[playerId] > 3500.0f) || ((gPlayers[playerId].effects & 0x10) == 0x10)) {
             D_800E9E74[playerId] = 1;
-            switch (gPlayers[playerId].boundingBoxCorners[2].surfaceType) {                      /* switch 1 */
+            switch (gPlayers[playerId].boundingBoxCorners[C70A8_INDEX].surfaceType) {
             case 2:                                 /* switch 1 */
                 D_800E9E74[playerId] = 0x0000000D;
                 break;
@@ -2997,7 +3011,7 @@ void func_800C70A8(u8 playerId) {
         }
         if ((gPlayers[playerId].effects & 0x10) == 0x10) {
             D_800E9E74[playerId] = 2;
-            switch (gPlayers[playerId].boundingBoxCorners[2].surfaceType) {                      /* switch 2 */
+            switch (gPlayers[playerId].boundingBoxCorners[C70A8_INDEX2].surfaceType) {                      /* switch 2 */
             case 2:                                 /* switch 2 */
                 D_800E9E74[playerId] = 0x0000000D;
                 break;
@@ -3027,7 +3041,7 @@ void func_800C70A8(u8 playerId) {
                 break;
             }
         }
-        switch (gPlayers[playerId].boundingBoxCorners[2].surfaceType) {                          /* switch 3 */
+        switch (gPlayers[playerId].boundingBoxCorners[C70A8_INDEX2].surfaceType) {                          /* switch 3 */
         case 8:                                     /* switch 3 */
             if (D_800E9E74[playerId] == 6) {
                 D_800E9E74[playerId] = 4;
@@ -3087,7 +3101,7 @@ void func_800C70A8(u8 playerId) {
             D_800E9E74[playerId] = 0x0000001B;
             break;
         }
-        switch (gPlayers[playerId].boundingBoxCorners[3].surfaceType) {                          /* switch 4 */
+        switch (gPlayers[playerId].boundingBoxCorners[C70A8_INDEX3].surfaceType) {                          /* switch 4 */
         case 8:                                     /* switch 4 */
             if (D_800E9E74[playerId] == 5) {
                 D_800E9E74[playerId] = 4;

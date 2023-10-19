@@ -427,7 +427,7 @@ glabel D_800EA244
 .balign 4
 
 # EU TEXT STR
-.asciiz "************** SE Fadeout ***************"
+.asciiz "************** SE Fadeout ***************\n"
 .balign 4
 
 # EU TEXT STR

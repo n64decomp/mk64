@@ -9,7 +9,7 @@ u16 gRandomSeed16;
 
 u8 randomSeedPadding[216];
 
-u8 frameBufferPadding[22544];
+u8 frameBufferPadding[0x5750];
 
 struct_D_802BFB80 D_802BFB80[2][2][8];
 struct_D_802DFB80 D_802DFB80[2][2][8];

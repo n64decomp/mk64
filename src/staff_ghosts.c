@@ -95,14 +95,24 @@ void func_80004FF8(void) {
  * Activates staff ghost if time trial lap time is lower enough
  *
  */
+#ifdef VERSION_EU
+#define BLAH 10700
+#define BLAH2 19300
+#define BLAH3 13300
+#else
+#define BLAH 9000
+#define BLAH2 16000
+#define BLAH3 11200
+
+#endif
+
 void set_staff_ghost(void) {
     u32 temp_v0; // Appears to be player total lap time.
 
     switch(gCurrentCourseId) {
-
         case COURSE_MARIO_RACEWAY:
             temp_v0 = func_800B4E24(0) & 0xfffff;
-            if (temp_v0 <= 9000) {
+            if (temp_v0 <= BLAH) {
                 D_80162DD6 = 0;
                 D_80162DF4 = 0;
             } else {
@@ -114,7 +124,7 @@ void set_staff_ghost(void) {
             break;
         case COURSE_ROYAL_RACEWAY:
             temp_v0 = func_800B4E24(0) & 0xfffff;
-            if (temp_v0 <= 16000) {
+            if (temp_v0 <= BLAH2) {
                 D_80162DD6 = 0;
                 D_80162DF4 = 0;
             } else {
@@ -126,7 +136,7 @@ void set_staff_ghost(void) {
             break;
         case COURSE_LUIGI_RACEWAY:
             temp_v0 = func_800B4E24(0) & 0xfffff;
-            if (temp_v0 <= 11200) {
+            if (temp_v0 <= BLAH3) {
                 D_80162DD6 = 0;
                 D_80162DF4 = 0;
             } else {
