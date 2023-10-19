@@ -36,7 +36,6 @@ s16 code_80005FD0_pad[2];
 
 uintptr_t *D_80162EB8[20];
 
-
 // Strings, presented by google translate!
 // Note that these are EUC-JP encoded, see:
 // https://en.wikipedia.org/wiki/Extended_Unix_Code#EUC-JP
