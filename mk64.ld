@@ -390,7 +390,6 @@ SECTIONS
       BUILD_DIR/src/racing/actors.o(.bss*);
       BUILD_DIR/src/racing/memory.o(.bss*);
       BUILD_DIR/src/data/framebuffers.o(.bss*);
-      . = ALIGN(0x200);
       BUILD_DIR/src/data/gfx_output_buffer.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
       BUILD_DIR/src/audio/heap.o(.bss*);
@@ -639,7 +638,7 @@ SECTIONS
    BEGIN_SEG(instrument_sets, 0x282E80)
    {
       #ifdef VERSION_EU
-         . += 0x20;
+      . += 0x20;
       #endif
       BUILD_DIR/data/sound_data/instrument_sets.o(.data);
    }
