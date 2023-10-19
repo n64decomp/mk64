@@ -658,7 +658,7 @@ void func_8006FA94(void) {
         }
         break;
     case 2:
-        if (gScreenModeSelection == 1) {
+        if (gScreenModeSelection == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL) {
             if (gModeSelection == 0) {
                 D_8018D114 = 2;
                 D_8018D178 = 0x00000096;

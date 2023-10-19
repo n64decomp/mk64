@@ -313,7 +313,7 @@ void func_80020F1C(void) {
 void try_render_player(Player *player, s8 playerId, s8 arg2) {
 
     if (((player->type & PLAYER_EXISTS) == PLAYER_EXISTS)
-    && ((player->type & 0x40) == 0)) {
+    && ((player->type & PLAYER_UNKNOWN_0x40) == 0)) {
         if ((player->unk_002 & 2 << (arg2 * 4)) == 2 << (arg2 * 4)) {
             player_render(player, playerId, arg2);
         }
@@ -1086,7 +1086,7 @@ void render_light_environment_on_player(Player *player, s8 arg1) {
 void func_800235AC(Player *player, s8 arg1) {
     s32 temp;
 
-    if (((player->type & 0x100) == 0x100) && (player == gPlayerThree)) {
+    if (((player->type & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) && (player == gPlayerThree)) {
         change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
         change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
         D_80164B80[arg1] = 0;

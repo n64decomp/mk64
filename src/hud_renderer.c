@@ -3441,7 +3441,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
             func_80042330(spD0 + 0x1B, (spC4 + spCC) + 4, 0U, 1.0f);
         }
         gSPDisplayList(gDisplayListHead++, D_0D006950);
-        if ((player == gPlayerOne) && (gScreenModeSelection == 0)) {
+        if ((player == gPlayerOne) && (gScreenModeSelection == SCREEN_MODE_1P)) {
             gSPDisplayList(gDisplayListHead++, D_0D007A40);
             func_8004B35C(D_8018D3E4, D_8018D3E8, D_8018D3EC, 0x000000FF);
             func_80044924(gTextureCharacterPortraitBorder, 0x00000020, 0x00000020);
@@ -4344,7 +4344,7 @@ void func_800532A4(s32 cameraId) {
         } else {
             func_800485C4(object->pos, object->unk_0B2, object->sizeScaling, (s32) object->unk_0A0, (u8 *) object->activeTLUT, object->activeTexture, object->vertex, (s32) object->textureWidth, (s32) object->textureHeight, (s32) object->textureWidth, (s32) object->textureHeight / 2);
         }
-        if (gScreenModeSelection == 0) {
+        if (gScreenModeSelection == SCREEN_MODE_1P) {
             var_f0 = object->pos[0] - D_8018CF14->pos[0];
             var_f2 = object->pos[2] - D_8018CF14->pos[2];
             if (var_f0 < 0.0f) {

@@ -6098,7 +6098,7 @@ void func_8006C6AC(Player *player, s16 arg1, s8 arg2, s8 arg3) {
             // func_80060BCC(player, arg1, sp28, (s32) arg2, /* extra? */ (s32) arg3);
             func_80060BCC(player, arg1, sp28, (s32) arg2);
         } else if (!(player->effects & 8) && !(player->effects & 2)) {
-            if (((player->effects & 0x10) == 0x10) && ((player->type & 0x4000) == 0x4000)) {
+            if (((player->effects & 0x10) == 0x10) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                 func_8005DA30(player, arg1, sp28, arg2, (s8) (s32) arg3);
             } else if (((f64) (D_801652A0[arg2] - player->boundingBoxCorners[3].cornerGroundY) >= 3.5) || ((f64) (D_801652A0[arg2] - player->boundingBoxCorners[2].cornerGroundY) >= 3.5)) {
                 // func_8005EA94(player, arg1, sp28, arg2, /* extra? */ (s32) arg3);
@@ -6211,11 +6211,11 @@ void func_8006C9B8(Player *player, s16 arg1, s8 arg2, s8 arg3) {
             player->unk_044 &= ~0x0100;
             return;
         }
-        if ((player->effects & 0x2000) && (player->type & 0x4000)) {
+        if ((player->effects & 0x2000) && (player->type & PLAYER_HUMAN)) {
             func_800621BC(player, arg1, sp28, arg2);
             return;
         }
-        if (((player->effects & 0x200000) || (player->effects & 0x100000)) && ((player->type & 0x4000) == 0x4000)) {
+        if (((player->effects & 0x200000) || (player->effects & 0x100000)) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
             func_80061EF4(player, arg1, sp28, arg2);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
@@ -6659,14 +6659,14 @@ void func_8006E420(Player* player, s8 arg1, s8 arg2) {
     s16 temp_s0;
 
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        if ((player->type & 0x4000) == 0x4000) {
+        if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
             func_8006D194(player, arg1, arg2);
         }
    
         for (temp_s0 = 0; temp_s0 < 10; ++temp_s0)
         {
             func_8006CEC0(player, temp_s0, arg1, arg2);
-            if (((player->type & 0x4000) == 0x4000) || (gGamestate == ENDING_SEQUENCE)) {
+            if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) || (gGamestate == ENDING_SEQUENCE)) {
                 func_8006C9B8(player, temp_s0, arg1, arg2);
             }
             func_8006C6AC(player, temp_s0, arg1, arg2);

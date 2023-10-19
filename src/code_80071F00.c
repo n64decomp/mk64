@@ -6332,7 +6332,7 @@ void func_80080A4C(s32 objectIndex, s32 cameraPlayerId) {
     Camera *camera = &camera1[cameraPlayerId];
     Player *player = &gPlayerOne[cameraPlayerId];
 
-    if (gScreenModeSelection != 3) {
+    if (gScreenModeSelection != SCREEN_MODE_3P_4P_SPLITSCREEN) {
         if ((func_80072320(objectIndex, 0x00000010) != 0) && (func_80088A58(objectIndex, player, 500.0f) != 0)) {
             func_8001CA10(camera);
             func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_038, 0x1900800FU);
