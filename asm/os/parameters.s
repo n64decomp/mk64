@@ -4,13 +4,16 @@
 .global \sym
 .set \sym, \addr
 .endm
+
 .else
+
 .macro gsymbol sym addr
 .global \sym
 .set \sym, \addr
 nop
 nop
 .endm
+
 .endif
 
 .text

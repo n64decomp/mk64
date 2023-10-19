@@ -38,11 +38,9 @@ $(eval $(call validate-option,VERSION,us eu))
 ifeq      ($(VERSION),us)
   DEFINES += VERSION_US=1
   GRUCODE   ?= f3dex_old
-  VERSION_ASFLAGS := --defsym VERSION_US=1
 else ifeq ($(VERSION),eu)
   DEFINES += VERSION_EU=1 
   GRUCODE   ?= f3dex_old
-  VERSION_ASFLAGS := --defsym VERSION_EU=1
 endif
 
 ifeq ($(DEBUG),1)
@@ -321,7 +319,7 @@ else
   CFLAGS += $(HIDE_WARNINGS) -non_shared -Wab,-r4300_mul -Xcpluscomm -Xfullwarn -signed -32
 endif
 
-ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) --defsym F3DEX_GBI=1
+ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) $(foreach d,$(DEFINES),--defsym $(d))
 
 # Fills end of rom
 OBJCOPYFLAGS = --pad-to=0xC00000 --gap-fill=0xFF

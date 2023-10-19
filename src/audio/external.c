@@ -2969,9 +2969,9 @@ void func_800C683C(u8 arg0) {
 #define C70A8_INDEX2 2
 #define C70A8_INDEX3 3
 #else
-#define C70A8_INDEX 1
-#define C70A8_INDEX2 2
-#define C70A8_INDEX3 3
+#define C70A8_INDEX 0
+#define C70A8_INDEX2 0
+#define C70A8_INDEX3 1
 #endif
 
 void func_800C70A8(u8 playerId) {
