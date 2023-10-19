@@ -4,11 +4,9 @@
 - Note -
 
 The decomp has altered its approach to calculating progress.
-Some of the values below are not correct and fixes are still a work-in-progress.
-The prior approach did not include os code in the total decompilable bytes
+The Game Code Progress value below is not correct.
+The prior calculations had a bug and did not include os code in the total decompilable bytes
 due to prior technical restrictions which are now resolved.
-
-This note will be removed when these values are correct.
 ```
 
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=totalProgress)](https://ci.valandil.ca/job/mk64/job/master/)
@@ -24,22 +22,12 @@ This note will be removed when these values are correct.
 - [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=audioProgress)](https://ci.valandil.ca/job/mk64/job/master/)
 - [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=osProgress)](https://ci.valandil.ca/job/mk64/job/master/)
 
-This repo contains a work-in-progress decompilation of Mario Kart 64 (U) and an in-progress dissassembly of the European 1.0 version. The project pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information.
+This work-in-progress decompilation of Mario Kart 64 (U) and (E1.0) pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information.
 
-It builds the following ROM:
+It builds the following ROMs:
 
 * mk64.us.z64 `sha1: 579c48e211ae952530ffc8738709f078d5dd215e`
-
-And splits the following ROM:
-
 * mk64.eu.z64 `sha1: a729039453210b84f17019dda3f248d5888f7690`
-
-EU is in an experimental state that does not interact with the build system.
-Splitting requires [splat](https://github.com/ethteck/splat), using:
-```
-python3 tools/splat/split.py mk64.eu1.yaml
-```
-
 
 This repository does not contain assets. Compiling requires asset extraction from a prior copy of the game.
 
@@ -52,6 +40,13 @@ The build system has the following package requirements:
     libaudiofile
 
 To add submodules run `git submodule update --init --recursive` after cloning.
+
+## EU 1.0 Specific Steps
+EU 1.0 first requires asset extraction from US
+```
+make -j
+make -j VERSION=eu
+```
 
 #### Debian / Ubuntu
 ```
