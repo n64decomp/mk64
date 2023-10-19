@@ -12,7 +12,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="struct for an animation">
 <polygon fill="#bfbfbf" stroke="black" points="111.5,-0.5 111.5,-19.5 193.5,-19.5 193.5,-0.5 111.5,-0.5"/>
 <text text-anchor="middle" x="152.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">MkAnimation</text>
 </a>
@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="structMkTexture.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="structMkTexture.html" target="_top" xlink:title="struct for a texture use in menu mainly">
 <polygon fill="white" stroke="black" points="73.5,-67.5 73.5,-86.5 141.5,-86.5 141.5,-67.5 73.5,-67.5"/>
 <text text-anchor="middle" x="107.5" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">MkTexture</text>
 </a>

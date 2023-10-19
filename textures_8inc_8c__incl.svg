@@ -12,7 +12,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Texture data. start in ram 0x801978D0 look like link to code_80091750.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-168.5 0,-187.5 125,-187.5 125,-168.5 0,-168.5"/>
 <text text-anchor="middle" x="62.5" y="-175.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/data/textures.inc.c</text>
 </a>
