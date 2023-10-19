@@ -23,6 +23,7 @@
 #include "math_util.h"
 #include "save_data.h"
 #include "podium_ceremony_actors.h"
+#include "skybox_and_splitscreen.h"
 // TODO: Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
@@ -349,7 +350,7 @@ const s16 gGlyphDisplayWidth[] = {
     0x000f, 0x000f, 0x000f, 0x000f,
 };
 
-char *D_800E7500[] = {
+char *gCupNames[] = {
     "mushroom cup",
     "flower cup",
     "star cup",
@@ -532,7 +533,7 @@ char *gDebugSoundModeNames[] = {
     "monaural",
 };
 
-char *gSoundModeNames[] = {
+char *gSoundModeNames[NUM_SOUND_MODES] = {
     "STEREO",
     "HEADPHONE",
     "",
@@ -6588,7 +6589,7 @@ block_74:
                 switch (gNextDemoId) {              /* switch 4 */
                 case 0:                             /* switch 4 */
                     gCurrentCourseId = 0;
-                    gScreenModeSelection = 0;
+                    gScreenModeSelection = SCREEN_MODE_1P;
                     gPlayerCountSelection1 = (s32) 1;
                     gPlayerCount = 1;
                     gCharacterSelections->unk0 = 0;
@@ -6596,7 +6597,7 @@ block_74:
                     break;
                 case 1:                             /* switch 4 */
                     gCurrentCourseId = (s16) 1;
-                    gScreenModeSelection = (s32) 1;
+                    gScreenModeSelection = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
                     gPlayerCountSelection1 = 2;
                     gPlayerCount = (s8) 2;
                     gCharacterSelections->unk0 = (s8) 2;
@@ -6605,7 +6606,7 @@ block_74:
                     break;
                 case 2:                             /* switch 4 */
                     gCurrentCourseId = 0x000B;
-                    gScreenModeSelection = 0;
+                    gScreenModeSelection = SCREEN_MODE_1P;
                     gPlayerCountSelection1 = (s32) 1;
                     gPlayerCount = 1;
                     gCharacterSelections->unk0 = 1;
@@ -6613,7 +6614,7 @@ block_74:
                     break;
                 case 3:                             /* switch 4 */
                     gCurrentCourseId = 0x000E;
-                    gScreenModeSelection = 3;
+                    gScreenModeSelection = SCREEN_MODE_3P_4P_SPLITSCREEN;
                     gPlayerCountSelection1 = 3;
                     gPlayerCount = (s8) 3;
                     gCharacterSelections->unk0 = 5;
@@ -6623,7 +6624,7 @@ block_74:
                     break;
                 case 4:                             /* switch 4 */
                     gCurrentCourseId = 2;
-                    gScreenModeSelection = 0;
+                    gScreenModeSelection = SCREEN_MODE_1P;
                     gPlayerCountSelection1 = (s32) 1;
                     gPlayerCount = 1;
                     gCharacterSelections->unk0 = 7;
@@ -6631,7 +6632,7 @@ block_74:
                     break;
                 case 5:                             /* switch 4 */
                     gCurrentCourseId = 0x000C;
-                    gScreenModeSelection = 3;
+                    gScreenModeSelection = SCREEN_MODE_3P_4P_SPLITSCREEN;
                     gPlayerCountSelection1 = 4;
                     gPlayerCount = (s8) 4;
                     gCharacterSelections->unk0 = 0;
@@ -6699,7 +6700,7 @@ block_74:
             break;
         }
         func_8000F124();
-        if ((gScreenModeSelection == 3) && ((gModeSelection == 0) || (gModeSelection == 1))) {
+        if ((gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) && ((gModeSelection == 0) || (gModeSelection == 1))) {
             gModeSelection = 2;
         }
         if ((gCurrentCourseId != 0x000F) && (gCurrentCourseId != 0x0010) && (gCurrentCourseId != 0x0011) && (gCurrentCourseId != 0x0013)) {
@@ -6715,7 +6716,7 @@ block_74:
             gModeSelection = 3;
             if (gPlayerCountSelection1 == 1) {
                 gPlayerCount = (s8) 2;
-                gScreenModeSelection = 1;
+                gScreenModeSelection = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
                 gPlayerCountSelection1 = (s32) gPlayerCount;
             }
         }
@@ -8213,7 +8214,7 @@ block_58:
             return;
         case 0x96:                                  /* switch 6 */
             set_text_color(4);
-            func_800936B8(arg0->column, arg0->row, D_800E7500[D_800DC540], arg0->unk1C, arg0->unk24, 1.0f);
+            func_800936B8(arg0->column, arg0->row, gCupNames[D_800DC540], arg0->unk1C, arg0->unk24, 1.0f);
             return;
         case 0x97:                                  /* switch 6 */
             set_text_color(5);
@@ -9241,8 +9242,8 @@ void func_800A2EB8(struct_8018D9E0_entry *arg0) {
         func_800A32B4(0xBE - arg0->column, arg0->row + (0x10 * var_s2) + 0x5A, sp70[var_s2], var_s2);
     }
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-    temp_s0 = (s32) (((f32) (get_string_width(D_800E7500[gCupSelection]) + 8) * 0.6f) / 2);
-    draw_text((-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xF5, arg0->row + 0xE1, D_800E7500[D_800DC540], 0, 0.6f, 0.6f);
+    temp_s0 = (s32) (((f32) (get_string_width(gCupNames[gCupSelection]) + 8) * 0.6f) / 2);
+    draw_text((-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xF5, arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
     draw_text((temp_s0 - arg0->column) + 0xF5, arg0->row + 0xE1, D_800E76CC[D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
 }
 
@@ -9354,8 +9355,8 @@ void func_800A34A8(struct_8018D9E0_entry *arg0) {
             }
         }
         set_text_color(5);
-        temp_s0_3 = ((get_string_width(D_800E7500[gCupSelection]) + 8) * 0.6f) / 2;
-        draw_text((-(s32) (((get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xE6, arg0->row + 0xE1, D_800E7500[D_800DC540], 0, 0.6f, 0.6f);
+        temp_s0_3 = ((get_string_width(gCupNames[gCupSelection]) + 8) * 0.6f) / 2;
+        draw_text((-(s32) (((get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xE6, arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
         draw_text((temp_s0_3 - arg0->column) + 0xE6, arg0->row + 0xE1, D_800E76CC[D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
     }
 }
@@ -9861,10 +9862,10 @@ void func_800A5084(struct_8018D9E0_entry *arg0) {
     temp_t4 = temp_v0->screenHeight / 2;
     gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3, temp_t0 + temp_t4, 0, 0, 0, 140);
     temp_s3 = &D_800E85C0[gScreenModeSelection][gIsGamePaused - 1];
-    temp_s0 = ((get_string_width(D_800E7500[gCupSelection]) * one) + 10.0f) / 2;
+    temp_s0 = ((get_string_width(gCupNames[gCupSelection]) * one) + 10.0f) / 2;
     temp_s1 = ((get_string_width(D_800E76CC[gCCSelection])  * one) + 10.0f) / 2;
     set_text_color(TEXT_YELLOW);
-    draw_text(160 - temp_s1, temp_s3->row - 50, D_800E7500[gCupSelection], 0, 1.0f, 1.0f);
+    draw_text(160 - temp_s1, temp_s3->row - 50, gCupNames[gCupSelection], 0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
     draw_text(160 + temp_s0, temp_s3->row - 50, D_800E76CC[gCCSelection],  0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
@@ -10121,7 +10122,7 @@ void func_800A6034(struct_8018D9E0_entry *arg0) {
 
     if (D_801657E8 != TRUE) {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, arg0->unk1C);
-        text = D_800E7500[D_800DC540];
+        text = gCupNames[D_800DC540];
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
         func_80093754(arg0->column + 0x41, arg0->row + 0xA0, text, 0, 0.85f, 1.0f);
         text = D_800E7524[gCurrentCourseId];
@@ -10472,11 +10473,11 @@ void func_800A7258(struct_8018D9E0_entry *arg0) {
 // Podium scene, top line
 void func_800A72FC(struct_8018D9E0_entry *arg0) {
     UNUSED s32 pad;
-    s32 cupNameLength = (((f32) get_string_width(D_800E7500[gCupSelection]) * 1) + 10) / 2;
+    s32 cupNameLength = (((f32) get_string_width(gCupNames[gCupSelection]) * 1) + 10) / 2;
     s32 ccNameLength = (((f32) get_string_width(D_800E76CC[gCCSelection]) * 1) + 10) / 2;
 
     set_text_color(TEXT_YELLOW);
-    draw_text(arg0->column - ccNameLength, arg0->row, D_800E7500[gCupSelection], 0, 1, 1);
+    draw_text(arg0->column - ccNameLength, arg0->row, gCupNames[gCupSelection], 0, 1, 1);
     set_text_color(TEXT_YELLOW);
     draw_text(arg0->column + cupNameLength, arg0->row, D_800E76DC[gCCSelection], 0, 1, 1);
 }
@@ -10698,16 +10699,16 @@ void func_800A7A4C(s32 arg0) {
         case 0x10:                              /* switch 8 */
         case 0x11:                              /* switch 8 */
             switch (gMainMenuSelectionDepth) {  /* switch 5 */
-            case 1:                             /* switch 5 */
-            case 2:                             /* switch 5 */
-            case 3:                             /* switch 5 */
+            case OPTIONS_SELECTION:                             /* switch 5 */
+            case DATA_SELECTION:                             /* switch 5 */
+            case PLAYER_NUM_SELECTION:                             /* switch 5 */
                 func_800A9B9C(var_s1);
                 break;
-            case 4:                             /* switch 5 */
-            case 5:                             /* switch 5 */
-            case 6:                             /* switch 5 */
-            case 7:                             /* switch 5 */
-            case 8:                             /* switch 5 */
+            case GAME_MODE_SELECTION:                             /* switch 5 */
+            case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:                             /* switch 5 */
+            case CONFIRM_OK_SELECTION:                             /* switch 5 */
+            case CONFIRM_OK_SELECTION_FROM_BACK_OUT:                             /* switch 5 */
+            case TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT:                             /* switch 5 */
                 func_800A9C40(var_s1);
                 break;
             }
@@ -10721,16 +10722,16 @@ void func_800A7A4C(s32 arg0) {
         case 0xD:                               /* switch 8 */
         case 0xE:                               /* switch 8 */
             switch (gMainMenuSelectionDepth) {  /* switch 6 */
-            case 1:                             /* switch 6 */
-            case 2:                             /* switch 6 */
-            case 3:                             /* switch 6 */
+            case OPTIONS_SELECTION:                             /* switch 6 */
+            case DATA_SELECTION:                             /* switch 6 */
+            case PLAYER_NUM_SELECTION:                             /* switch 6 */
                 func_800A9B9C(var_s1);
                 break;
-            case 4:                             /* switch 6 */
-            case 5:                             /* switch 6 */
-            case 6:                             /* switch 6 */
-            case 7:                             /* switch 6 */
-            case 8:                             /* switch 6 */
+            case GAME_MODE_SELECTION:                             /* switch 6 */
+            case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:                             /* switch 6 */
+            case CONFIRM_OK_SELECTION:                             /* switch 6 */
+            case CONFIRM_OK_SELECTION_FROM_BACK_OUT:                             /* switch 6 */
+            case TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT:                             /* switch 6 */
                 func_800A9C40(var_s1);
                 break;
             }
@@ -11052,7 +11053,7 @@ void func_800A8270(s32 arg0, struct_8018D9E0_entry *arg1) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
         gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
         if ((arg0 + 1) == gPlayerCount) {
-            if ((gMainMenuSelectionDepth == 1) || (gMainMenuSelectionDepth == 2) || (gMainMenuSelectionDepth == 3)) {
+            if ((gMainMenuSelectionDepth == OPTIONS_SELECTION) || (gMainMenuSelectionDepth == DATA_SELECTION) || (gMainMenuSelectionDepth == PLAYER_NUM_SELECTION)) {
                 gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x35);
             } else {
                 gDisplayListHead = draw_box_fill(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x35, 0x000000FF, 0x000000F9, 0x000000DC, 0x000000FF);
@@ -11062,7 +11063,7 @@ void func_800A8270(s32 arg0, struct_8018D9E0_entry *arg1) {
         }
         for (var_s0 += 0x41, var_s2 = 0; var_s2 <= D_800F2B60[0][arg0]; var_s2++, var_s0 += 0x12) {
             if ((var_s2 == D_800E86AC[arg0]) && ((arg0 + 1) == gPlayerCount) && (gMainMenuSelectionDepth >= 4)) {
-                if (gMainMenuSelectionDepth == 4) {
+                if (gMainMenuSelectionDepth == GAME_MODE_SELECTION) {
                     gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x11);
                 } else {
                     gDisplayListHead = draw_box_fill(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x11, 0x000000FF, 0x000000F9, 0x000000DC, 0x000000FF);
@@ -11089,7 +11090,7 @@ void func_800A8564(struct_8018D9E0_entry *arg0) {
     switch (arg0->type) {                              /* irregular */
     case 0xF:
         var_a0 = D_0200487C;
-        if ((gMainMenuSelectionDepth == 6) || (gMainMenuSelectionDepth == 7)) {
+        if ((gMainMenuSelectionDepth == CONFIRM_OK_SELECTION) || (gMainMenuSelectionDepth == CONFIRM_OK_SELECTION_FROM_BACK_OUT)) {
             var_a1 = 1;
         }
         break;
@@ -11734,7 +11735,7 @@ void func_800A9C40(struct_8018D9E0_entry *arg0) {
         arg0->unk4 = 1;
     case 1:
         func_800AA280(arg0);
-        if ((gMainMenuSelectionDepth == 7) || (gMainMenuSelectionDepth == 8)) {
+        if ((gMainMenuSelectionDepth == CONFIRM_OK_SELECTION_FROM_BACK_OUT) || (gMainMenuSelectionDepth == TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT)) {
             arg0->unk1C = 0x00000020;
         } else {
             if (arg0->unk1C < 0x20) {
@@ -11767,7 +11768,7 @@ void func_800A9D5C(struct_8018D9E0_entry *arg0) {
 
     switch (arg0->unk4) {
     case 2:
-        if ((gMainMenuSelectionDepth == 7) || (gMainMenuSelectionDepth == 8)) {
+        if ((gMainMenuSelectionDepth == CONFIRM_OK_SELECTION_FROM_BACK_OUT) || (gMainMenuSelectionDepth == TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT)) {
             arg0->column = 0x00000080;
             arg0->row = 0x0000003E;
         } else {
@@ -12739,7 +12740,7 @@ void func_800ABCF4(struct_8018D9E0_entry *arg0) {
     case 0:
         arg0->column = 0;
         arg0->unk4 = 1;
-        arg0->unk20 = (get_string_width(D_800E7500[D_800DC540]) / 2) + 0xA0;
+        arg0->unk20 = (get_string_width(gCupNames[D_800DC540]) / 2) + 0xA0;
         /* fallthrough */
     case 1:
         func_800A9208(arg0, arg0->unk20);

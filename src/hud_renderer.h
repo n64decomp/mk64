@@ -375,6 +375,7 @@ void func_80055FA0(s32, s32);
 
 void func_80056160(s32);
 void func_80056188(s32);
+void func_800562E4(s32, s32, s32);
 void func_800563DC(s32, s32, s32);
 void func_800568A0(s32, s32);
 void func_8005669C(s32, s32, s32);
@@ -421,6 +422,7 @@ extern s32 D_8016586C;
 extern s32 D_80165878;
 extern s32 D_8016589C;
 extern u16 D_801656C0;
+extern s32 D_801655CC;
 extern u16 D_801656D0;
 extern u16 D_801656E0;
 
@@ -438,6 +440,8 @@ extern s32 D_8018D3E0; // some alpha
 extern s32 D_8018D3E4; // some red
 extern s32 D_8018D3E8; // some green
 extern s32 D_8018D3EC; // some blue
+
+extern s32 D_8018D400;
 
 extern struct UnkStruct_800DC5EC *D_800DC5F0;
 

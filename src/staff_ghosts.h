@@ -33,6 +33,9 @@ extern u16 D_80162DD4;
 extern u16 D_80162DD6;
 extern u16 D_80162DD8;
 extern s32 D_80162E00;
+extern s32 D_80162DE0;
+extern s32 D_80162DE4;
+extern s32 D_80162DE8;
 extern s32 D_80162DF0;
 extern s32 D_80162DF8;
 

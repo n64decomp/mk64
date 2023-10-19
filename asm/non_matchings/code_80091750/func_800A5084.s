@@ -55,9 +55,9 @@ glabel func_800A5084
 /* 0A5D50 800A5150 0018C940 */  sll   $t9, $t8, 5
 /* 0A5D54 800A5154 82580000 */  lb    $t8, ($s2)
 /* 0A5D58 800A5158 000B60C0 */  sll   $t4, $t3, 3
-/* 0A5D5C 800A515C 3C14800E */  lui   $s4, %hi(D_800E7500) # $s4, 0x800e
+/* 0A5D5C 800A515C 3C14800E */  lui   $s4, %hi(gCupNames) # $s4, 0x800e
 /* 0A5D60 800A5160 032C6821 */  addu  $t5, $t9, $t4
-/* 0A5D64 800A5164 26947500 */  addiu $s4, %lo(D_800E7500) # addiu $s4, $s4, 0x7500
+/* 0A5D64 800A5164 26947500 */  addiu $s4, %lo(gCupNames) # addiu $s4, $s4, 0x7500
 /* 0A5D68 800A5168 3C0F800F */  lui   $t7, %hi(D_800E85C0) # $t7, 0x800f
 /* 0A5D6C 800A516C 00185880 */  sll   $t3, $t8, 2
 /* 0A5D70 800A5170 25EF85C0 */  addiu $t7, %lo(D_800E85C0) # addiu $t7, $t7, -0x7a40
