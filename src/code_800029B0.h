@@ -17,6 +17,7 @@ extern struct UnkStruct_800DC5EC *D_800DC5EC;
 extern struct UnkStruct_800DC5EC *D_800DC5F0;
 extern struct UnkStruct_800DC5EC *D_800DC5F4;
 extern struct UnkStruct_800DC5EC *D_800DC5F8;
+extern u16  gIsGamePaused;
 
 extern mk64_surface_map_ram *gSurfaceMap;
 extern u16 *D_8015F584;
@@ -77,6 +78,8 @@ extern u8 *gNmiUnknown3;
 extern u8 *gNmiUnknown4;
 extern u8 *gNmiUnknown5;
 extern u8 *gNmiUnknown6;
+
+extern s32 gIsMirrorMode; // D_800DC604
 
 extern Vec3f D_8015F8D0;
 extern s32 D_8015F8DC;

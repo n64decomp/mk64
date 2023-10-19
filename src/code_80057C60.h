@@ -90,6 +90,7 @@ void func_8005D0FC(s32);
 void func_8005D18C(void);
 void func_8005D1F4(s32);
 
+void func_8005D290(void);
 void func_8005D6C0(Player*);
 void func_8005D794(Player*, UnkPlayerStruct258*, f32, f32, f32, s8, s8);
 s32  func_8005D7D8(UnkPlayerStruct258*, s8, f32);
@@ -166,11 +167,15 @@ void func_800651F4(Player*, s16, s8, s8);
 void func_800652D4(Vec3f, Vec3s, f32);
 void func_8006538C(Player*, s8, s16, s8);
 void func_800658A0(Player*, s8, s16, s8);
+void func_80065AB0(Player*, s8, s16, s8);
+void func_80065F0C(Player*, s8, s16, s8);
 
 void func_800664E0(Player*, s8, s16, s8);
 void func_80066998(Player*, s8, s16, s8);
+void func_80066BAC(Player*, s8, s16, s8);
 
 void func_80067280(Player*, s8, s16, s8);
+void func_80067604(Player*, s8, s16, s8);
 void func_80067964(Player*, s8, f32, s8, s8);
 void func_80067D3C(Player*, s8, u8*, s8, f32, s32);
 
@@ -189,10 +194,11 @@ void func_80069DB8(Player*, s8, s16, s8);
 
 void func_8006A01C(Player*, s8, s16, s8);
 void func_8006A280(Player*, s8, s16, s8);
-void func_8006A280(Player*, s8, s16, s8);
+void func_8006A50C(Player*, f32, f32, s8, s8, s16);
 void func_8006A7C0(Player*, f32, f32, s8, s8);
 void func_8006AFD0(Player*, s16, s8, s8);
 
+void func_8006B7E4(Player*, s8);
 void func_8006B87C(Player*, s8);
 void func_8006B8B4(Player*, s8);
 void func_8006B974(s32, s8, s8);
@@ -223,7 +229,11 @@ void func_8006E848(Player*, s8, s8);
 void func_8006E8C4(Player*, s8, s8);
 void func_8006E940(Player*, s8, s8);
 
-
+extern s16 D_800E4730[];
+extern u8 **D_800E4770[];
+extern u8 **D_800E47A0[];
+extern s32 D_800E47DC[];
+extern s32 D_800E480C[];
 
 extern s8 D_801657B2;
 extern s8 D_801657C8;
@@ -345,21 +355,5 @@ extern s32 D_8018D2A4;
 extern s32 D_8018D2BC;
 extern u8 *D_8018D480;
 extern u8 *D_8018D484;
-
-// data/data_800E8700.c
-extern Vtx D_800E8740[];
-extern Vtx D_800E8780[];
-extern Vtx D_800E87C0[];
-extern Vtx D_800E8800[];
-extern Vtx D_800E8840[];
-extern Vtx D_800E8880[];
-extern Vtx D_800E88C0[];
-extern Vtx D_800E8A00[];
-extern Vtx D_800E8A40[];
-extern Vtx D_800E8B00[];
-extern Vtx D_800E8B40[];
-extern Vtx D_800E8B80[];
-extern Vtx D_800E8BC0[];
-extern Vtx D_800E8900[][4];
 
 #endif
