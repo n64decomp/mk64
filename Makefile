@@ -39,7 +39,7 @@ ifeq      ($(VERSION),us)
   DEFINES += VERSION_US=1
   GRUCODE   ?= f3dex_old
   VERSION_ASFLAGS := --defsym VERSION_US=1
-else ifeq ($(VERSION), eu)
+else ifeq ($(VERSION),eu)
   DEFINES += VERSION_EU=1 
   GRUCODE   ?= f3dex_old
   VERSION_ASFLAGS := --defsym VERSION_EU=1

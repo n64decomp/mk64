@@ -5,6 +5,7 @@
 
 .section .data
 
+.ifdef VERSION_EU
 # music sequence table
 glabel music_sequence_table_header
 .hword 3, ((music_sequence_table_end - music_sequence_table) / 8) - 1 # this should be 30...
@@ -164,3 +165,4 @@ glabel seq_1D
 glabel seq_1D_end
 # Unknown region BE90D0-BE90E0 [10]
 .byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+.endif

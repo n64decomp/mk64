@@ -2964,10 +2964,10 @@ void func_800C683C(u8 arg0) {
     }
 }
 
-#ifdef VERSION_EU
-#define C70A8_INDEX 0
-#define C70A8_INDEX2 0
-#define C70A8_INDEX3 1
+#ifndef VERSION_EU
+#define C70A8_INDEX 2
+#define C70A8_INDEX2 2
+#define C70A8_INDEX3 3
 #else
 #define C70A8_INDEX 1
 #define C70A8_INDEX2 2

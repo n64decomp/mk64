@@ -94,11 +94,6 @@ SECTIONS
       BUILD_DIR/src/os/osInitialize.o(.text);
       BUILD_DIR/src/os/osStartThread.o(.text);
       BUILD_DIR/src/os/osCreateViManager.o(.text);
-      #ifdef VERSION_US
-         #ifndef VERSION_EU
-         . += 0x40;
-         #endif
-      #endif
       BUILD_DIR/asm/os/parameters.o(.text);
       BUILD_DIR/src/os/osViSetMode.o(.text);
       BUILD_DIR/src/os/osViBlack.o(.text);
