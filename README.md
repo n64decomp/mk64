@@ -48,6 +48,12 @@ make -j
 make -j VERSION=eu
 ```
 
+diff/first-diff commands
+```
+python3 first-diff.py --eu
+./diff <function> -eu
+```
+
 #### Debian / Ubuntu
 ```
 sudo apt install build-essential pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev libcapstone-dev
