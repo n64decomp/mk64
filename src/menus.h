@@ -75,7 +75,7 @@ extern s8 gCupCourseSelection;
 extern s8 D_8018EE0C;
 extern struct_8018EE10_entry D_8018EE10[];
 
-extern s32 gMenuSelection;
+extern s32 gMenuSelection; // D_800E86A0
 extern s32 D_800E86A4;
 extern s8 gCharacterSelections[];
 
