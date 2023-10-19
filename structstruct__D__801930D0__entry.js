@@ -1,4 +1,29 @@
 var structstruct__D__801930D0__entry =
 [
-    [ "some_innards", "structstruct__D__801930D0__entry.html#a1744a2ba30112bdfef4ff39e411156fa", null ]
+    [ "unk_000", "structstruct__D__801930D0__entry.html#a0eb19e39b56843d350f973de0a7e7a72", null ],
+    [ "unk_004", "structstruct__D__801930D0__entry.html#aa3246b3ccb4a557e38d422decda5dbc0", null ],
+    [ "unk_008", "structstruct__D__801930D0__entry.html#a0bb04d1c2ea8f53be6a28c9ec558001f", null ],
+    [ "unk_00C", "structstruct__D__801930D0__entry.html#a168365292af542719e6ff40c4645ee33", null ],
+    [ "unk_00E", "structstruct__D__801930D0__entry.html#a5cdb80b611b9c204d9041ef45d819059", null ],
+    [ "unk_011", "structstruct__D__801930D0__entry.html#a300736a789a273317d8e72b3e21777d2", null ],
+    [ "unk_012", "structstruct__D__801930D0__entry.html#a2b59dcf734003a54672ffafbc633a31d", null ],
+    [ "unk_013", "structstruct__D__801930D0__entry.html#a2d55892d56cf64ac1ee77c150dc9134b", null ],
+    [ "unk_014", "structstruct__D__801930D0__entry.html#ab55a5a2836153ecbf4a6f55eb21886f9", null ],
+    [ "unk_018", "structstruct__D__801930D0__entry.html#a07bce986960bec722de94521ea20c07e", null ],
+    [ "unk_01A", "structstruct__D__801930D0__entry.html#a7230413b1890caf8bff5e02932c6402a", null ],
+    [ "unk_01C", "structstruct__D__801930D0__entry.html#af92423e07364b79d09b81ed96d62e0b7", null ],
+    [ "unk_020", "structstruct__D__801930D0__entry.html#a1b99429a08ffcbbc7f808aea03e78119", null ],
+    [ "unk_024", "structstruct__D__801930D0__entry.html#ad347abb2fe5ab16852629615a3c23b42", null ],
+    [ "unk_028", "structstruct__D__801930D0__entry.html#aa3f458399c61f84618d5e4c9aec5647b", null ],
+    [ "unk_02A", "structstruct__D__801930D0__entry.html#a75ac55e95fdfc07faf0e69d3d376d279", null ],
+    [ "unk_02C", "structstruct__D__801930D0__entry.html#a6750e8d9afe960a825a38052f99ae0cf", null ],
+    [ "unk_040", "structstruct__D__801930D0__entry.html#a6dd67bacadab845849e35775cd3d679f", null ],
+    [ "unk_041", "structstruct__D__801930D0__entry.html#a0b2da380ca71cd1538f3c81b3490b963", null ],
+    [ "unk_042", "structstruct__D__801930D0__entry.html#a7e014ffe446fdaf67a92655d8bbc4551", null ],
+    [ "unk_043", "structstruct__D__801930D0__entry.html#af77dd02665823a920bd69de2c5322019", null ],
+    [ "unk_044", "structstruct__D__801930D0__entry.html#ae5d3908242acee9cbfe855a02272cf98", null ],
+    [ "unk_244", "structstruct__D__801930D0__entry.html#a234ca2e3dcac87e547cee3a024062e73", null ],
+    [ "unk_246", "structstruct__D__801930D0__entry.html#aea52a14084ad568510d497410f4c0326", null ],
+    [ "unk_248", "structstruct__D__801930D0__entry.html#ae6f27f25c523a3db59964e4d5497c315", null ],
+    [ "unk_24A", "structstruct__D__801930D0__entry.html#a10f14e8108cf2e5483803e79a1310ae1", null ]
 ];

@@ -946,48 +946,48 @@ var sectionId = 'dynsection-77';
 <path fill="none" stroke="midnightblue" d="M187.67,-237.73C197.1,-210.57 227.67,-133.14 281,-95.4 288.93,-89.8 298.25,-85.82 307.73,-83"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="308.8,-86.34 317.61,-80.47 307.06,-79.56 308.8,-86.34"/>
 </g>
-<!-- Node77 -->
+<!-- Node79 -->
 <g id="node48" class="node">
-<title>Node77</title>
+<title>Node79</title>
 <g id="a_node48"><a xlink:href="external_8c.html#a12c3e6c147828cc102e748904808ea4a" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="red" points="318,-28.9 318,-47.9 411,-47.9 411,-28.9 318,-28.9"/>
 <text text-anchor="middle" x="364.5" y="-35.9" font-family="Helvetica,sans-Serif" font-size="10.00">func_800CB2C4</text>
 </a>
 </g>
 </g>
-<!-- Node61&#45;&gt;Node77 -->
+<!-- Node61&#45;&gt;Node79 -->
 <g id="edge79" class="edge">
-<title>Node61&#45;&gt;Node77</title>
+<title>Node61&#45;&gt;Node79</title>
 <path fill="none" stroke="midnightblue" d="M188.85,-237.68C205.5,-200.65 265.01,-69.91 281,-57.4 288.9,-51.23 298.46,-46.99 308.22,-44.1"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="309.15,-47.48 317.99,-41.64 307.44,-40.69 309.15,-47.48"/>
 </g>
-<!-- Node138 -->
+<!-- Node140 -->
 <g id="node49" class="node">
-<title>Node138</title>
+<title>Node140</title>
 <g id="a_node49"><a xlink:href="main_8c.html#ae04143ce8113cdafa007c642eb620bc8" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="red" points="306.5,-294.9 306.5,-313.9 422.5,-313.9 422.5,-294.9 306.5,-294.9"/>
 <text text-anchor="middle" x="364.5" y="-301.9" font-family="Helvetica,sans-Serif" font-size="10.00">game_state_handler</text>
 </a>
 </g>
 </g>
-<!-- Node61&#45;&gt;Node138 -->
+<!-- Node61&#45;&gt;Node140 -->
 <g id="edge80" class="edge">
-<title>Node61&#45;&gt;Node138</title>
+<title>Node61&#45;&gt;Node140</title>
 <path fill="none" stroke="midnightblue" d="M211.43,-256.99C230.72,-263.76 257.37,-272.93 281,-280.4 293.46,-284.34 307.05,-288.4 319.54,-292.02"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="318.7,-295.43 329.27,-294.83 320.64,-288.7 318.7,-295.43"/>
 </g>
-<!-- Node1737 -->
+<!-- Node1738 -->
 <g id="node50" class="node">
-<title>Node1737</title>
+<title>Node1738</title>
 <g id="a_node50"><a xlink:href="main_8c.html#aec4c421bf39a43fbe12a236be2d75a4b" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="red" points="320,-142.9 320,-161.9 409,-161.9 409,-142.9 320,-142.9"/>
 <text text-anchor="middle" x="364.5" y="-149.9" font-family="Helvetica,sans-Serif" font-size="10.00">init_controllers</text>
 </a>
 </g>
 </g>
-<!-- Node61&#45;&gt;Node1737 -->
+<!-- Node61&#45;&gt;Node1738 -->
 <g id="edge81" class="edge">
-<title>Node61&#45;&gt;Node1737</title>
+<title>Node61&#45;&gt;Node1738</title>
 <path fill="none" stroke="midnightblue" d="M194.96,-237.74C211.85,-222.62 246.69,-193.35 281,-176.4 290.13,-171.9 300.25,-168.09 310.19,-164.92"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="311.46,-168.2 320.03,-161.97 309.45,-161.49 311.46,-168.2"/>
 </g>
@@ -1009,15 +1009,15 @@ var sectionId = 'dynsection-77';
 <path fill="none" stroke="midnightblue" d="M413.07,-332.82C438.5,-327.69 470,-321.34 496.77,-315.94"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="497.66,-319.33 506.78,-313.92 496.28,-312.47 497.66,-319.33"/>
 </g>
-<!-- Node1737&#45;&gt;Node51 -->
+<!-- Node1738&#45;&gt;Node51 -->
 <g id="edge82" class="edge">
-<title>Node1737&#45;&gt;Node51</title>
+<title>Node1738&#45;&gt;Node51</title>
 <path fill="none" stroke="midnightblue" d="M386.77,-162.07C405.45,-171.59 432.07,-187.84 448,-209.4 479.56,-252.15 457.36,-277.43 484,-323.4 497.48,-346.67 519.17,-368.74 534.83,-383.04"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="532.6,-385.75 542.4,-389.78 537.26,-380.52 532.6,-385.75"/>
 </g>
-<!-- Node1737&#45;&gt;Node52 -->
+<!-- Node1738&#45;&gt;Node52 -->
 <g id="edge83" class="edge">
-<title>Node1737&#45;&gt;Node52</title>
+<title>Node1738&#45;&gt;Node52</title>
 <path fill="none" stroke="midnightblue" d="M409.22,-161.54C468.71,-176.43 573.73,-211.97 626,-285.4 685.49,-368.98 597.87,-433.33 662,-513.4 662.95,-514.58 663.97,-515.69 665.07,-516.73"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="663.02,-519.56 673.16,-522.64 667.15,-513.91 663.02,-519.56"/>
 </g>
