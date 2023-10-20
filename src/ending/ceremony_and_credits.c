@@ -317,6 +317,13 @@ s32 move_point_along_spline(Vec3f p, f32 *arg1, struct struct_80283430 spline[],
         secondSpeed = 1.0f / spline[*splineSegment + 2].unk2;
     }
 
+#ifdef VERSION_EU
+    if (gGamestate == CREDITS_SEQUENCE) {
+        firstSpeed *= 1.14999997f;
+        secondSpeed *= 1.14999997f;
+    }
+#endif
+
     progressChange = (((secondSpeed - firstSpeed)) * *progress + firstSpeed);
     if (1 <= (*progress += progressChange)) {
         (*splineSegment)++;
@@ -1468,6 +1475,40 @@ struct struct_80286A10 {
     struct struct_80285D80 *unkC;
 };
 
+#ifdef VERSION_EU
+struct struct_80286A04 D_80286A04[] = {
+
+    { 0x01, 0x00, &D_80285D80[162], &D_80285D80[162], 0x0087 },
+	{ 0x00, 0x08, &D_80285D80[0],   &D_80285D80[4],   0x00D1 },
+    { 0x00, 0x09, &D_80285D80[8],   &D_80285D80[13],  0x00D1 },
+    { 0x00, 0x0B, &D_80285D80[26],  &D_80285D80[34],  0x00D1 },
+	{ 0x00, 0x05, &D_80285D80[18],  &D_80285D80[22],  0x00D1 },
+    { 0x00, 0x02, &D_80285D80[42],  &D_80285D80[48],  0x00D1 },
+    { 0x00, 0x0E, &D_80285D80[259], &D_80285D80[263], 0x00D1 },
+	{ 0x00, 0x0C, &D_80285D80[55],  &D_80285D80[59],  0x00D1 },
+    { 0x00, 0x07, &D_80285D80[63],  &D_80285D80[71],  0x00D1 },
+    { 0x00, 0x01, &D_80285D80[79],  &D_80285D80[92],  0x00D1 },
+	{ 0x00, 0x04, &D_80285D80[105], &D_80285D80[112], 0x00D2 },
+    { 0x00, 0x12, &D_80285D80[119], &D_80285D80[128], 0x00D2 },
+    { 0x00, 0x00, &D_80285D80[155], &D_80285D80[162], 0x00D2 },
+	{ 0x00, 0x06, &D_80285D80[169], &D_80285D80[176], 0x00D2 },
+    { 0x00, 0x0A, &D_80285D80[183], &D_80285D80[193], 0x00D2 },
+    { 0x00, 0x03, &D_80285D80[203], &D_80285D80[211], 0x00D2 },
+	{ 0x00, 0x0D, &D_80285D80[219], &D_80285D80[232], 0x00D2 },
+    { 0x01, 0x00, &D_80285D80[162], &D_80285D80[162], 0x00D2 },
+    { 0x02, 0x07, &D_80285D80[245], &D_80285D80[252], 0x00D2 },
+};
+
+u16 D_80286B34[] = {
+    0x0087, 0x00D5, 0x00D5, 0x00D5,
+    0x00D5, 0x00D5, 0x00D5, 0x00D5,
+    0x00D5, 0x00D5, 0x00D5, 0x00D5,
+    0x00D5, 0x00D5, 0x00D4, 0x00D4,
+    0x00D4, 0x00DB, 0x00D2, 0x0000,
+};
+
+#else
+
 // 0xC90 (80285D80 size) 3216 decimal.
 struct struct_80286A04 D_80286A04[] = {
 
@@ -1492,7 +1533,6 @@ struct struct_80286A04 D_80286A04[] = {
     { 0x02, 0x07, &D_80285D80[245], &D_80285D80[252], 0x00F0 },
 };
 
-
 u16 D_80286B34[] = {
     0x0096, 0x00F3, 0x00F3, 0x00F3,
     0x00F3, 0x00F3, 0x00F3, 0x00F3,
@@ -1500,6 +1540,8 @@ u16 D_80286B34[] = {
     0x00F3, 0x00F3, 0x00F2, 0x00F2,
     0x00F2, 0x00F9, 0x00F0, 0x0000,
 };
+#endif
+
 
 void func_802847CC(struct CinematicCamera *camera) {
     u16 sp2E;
@@ -1510,7 +1552,11 @@ void func_802847CC(struct CinematicCamera *camera) {
 
     cutscene_event((CameraEvent)func_80283CD0, camera, 0, 0);
     cutscene_event((CameraEvent)play_sound_welcome, camera, 8, 8);
+#ifdef VERSION_EU
+    cutscene_event((CameraEvent)func_80283C78, camera, 134, 134);
+#else
     cutscene_event((CameraEvent)func_80283C78, camera, 149, 149);
+#endif
     cutscene_event((CameraEvent)func_80282434, camera, 0, 0);
     switch (D_80286A04[D_800DC5E4].unk0) {
         case 1:
@@ -1531,9 +1577,11 @@ void func_802847CC(struct CinematicCamera *camera) {
             break;
     }
 
+#ifndef VERSION_EU
     if (gCCSelection == 3) {
         sp2C = D_80286B34[D_800DC5E4];
     }
+#endif
 
     if (gCutsceneShotTimer == sp2C) {    
         if (D_80286A04[D_800DC5E4].unk0 != 2) {

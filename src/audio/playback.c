@@ -232,6 +232,18 @@ void process_notes(void) {
                 continue;
             }
 #endif
+
+#ifdef VERSION_EU_1_0
+    // Just threw these in here. They are probably wrong place and variables.
+    stubbed_printf("----------------------Double-Error CH: %x %f\n", &note, note->parentLayer->seqChannel);
+    stubbed_printf("----------------------Double-Error NT: %x\n", &note);
+        if (note != playbackState->parentLayer->note && playbackState->priority != 1) {
+                playbackState->adsr.action |= ADSR_ACTION_RELEASE;
+                playbackState->adsr.fadeOutVel = gAudioBufferParameters.updatesPerFrameInv;
+                playbackState->priority = 1;
+                goto d;
+        }
+#endif
             if (!playbackState->parentLayer->enabled && playbackState->priority >= NOTE_PRIORITY_MIN) {
                 goto c;
             } else if (playbackState->parentLayer->seqChannel->seqPlayer == NULL) {

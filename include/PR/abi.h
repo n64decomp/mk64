@@ -42,7 +42,7 @@
 #define A_INTERLEAVE            13
 #define A_SETLOOP               15
 
-#if !(defined(VERSION_SH) || defined(VERSION_US))
+#if !(defined(VERSION_SH) || defined(VERSION_US) || defined(VERSION_EU))
 
 #define A_ENVMIXER              3
 #define A_LOADBUFF              4
@@ -642,7 +642,7 @@ typedef short ENVMIX_STATE[40];
         _a->words.w1 = (uintptr_t)(tr);                                 \
 }
 
-#if defined(VERSION_SH) || defined(VERSION_US)
+#if defined(VERSION_SH) || defined(VERSION_US) || defined (VERSION_EU)
 #undef aLoadBuffer
 #undef aSaveBuffer
 #undef aMix

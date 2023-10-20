@@ -34,6 +34,7 @@
 #include "staff_ghosts.h"
 #include <debug.h>
 #include "crash_screen.h"
+#include "data/gfx_output_buffer.h"
 
 // Declarations (not in this file)
 void func_80091B78(void);
@@ -204,6 +205,9 @@ void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, 
 }
 void isPrintfInit(void);
 void main_func(void) {
+#ifdef VERSION_EU
+    osTvType = TV_TYPE_PAL;
+#endif
     osInitialize();
 #ifdef DEBUG
     isPrintfInit(); // init osSyncPrintf
@@ -217,11 +221,15 @@ void main_func(void) {
  */
 void thread1_idle(void *arg) {
     osCreateViManager(OS_PRIORITY_VIMGR);
+#ifdef VERSION_EU
+    osViSetMode(&osViModeTable[OS_VI_PAL_LAN1]);
+#else // VERSION_US
     if (osTvType == TV_TYPE_NTSC) {
         osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);
     } else {
         osViSetMode(&osViModeTable[OS_VI_MPAL_LAN1]);
     }
+#endif
     osViBlack(TRUE);
     osViSetSpecialFeatures(OS_VI_GAMMA_OFF);
     osCreatePiManager(OS_PRIORITY_PIMGR, &gPIMesgQueue, gPIMesgBuf, ARRAY_COUNT(gPIMesgBuf));
@@ -232,7 +240,7 @@ void thread1_idle(void *arg) {
     osStartThread(&gVideoThread);
     osSetThreadPri(NULL, 0);
 
-    // halt
+    // Halt
     while (TRUE);
 }
 
@@ -284,7 +292,7 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->task.t.dram_stack = (u64 *) &gGfxSPTaskStack;
     gGfxSPTask->task.t.dram_stack_size = SP_DRAM_STACK_SIZE8;
     gGfxSPTask->task.t.output_buff = (u64 *) &gGfxSPTaskOutputBuffer;
-    gGfxSPTask->task.t.output_buff_size = (u64 *) &gGfxSPTaskOutputBufferSize;
+    gGfxSPTask->task.t.output_buff_size = (u64 *) ((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
     gGfxSPTask->task.t.data_ptr = (u64 *) gGfxPool->gfxPool;
     gGfxSPTask->task.t.data_size = (gDisplayListHead - gGfxPool->gfxPool) * sizeof(Gfx);
     func_8008C214();
@@ -580,7 +588,7 @@ void race_logic_loop(void) {
             if (gIsGamePaused == 0) {
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E) {
-                        gCourseTimer += 0.01666666; // 1 / 60
+                        gCourseTimer += COURSE_TIMER_ITER;
                     }
                     func_802909F0();
                     evaluate_player_collision();
@@ -645,7 +653,7 @@ void race_logic_loop(void) {
             if (gIsGamePaused == 0) {
                     for (i = 0; i < gTickSpeed; i++) {
                         if (D_8015011E != 0) {
-                            gCourseTimer += 0.01666666;
+                            gCourseTimer += COURSE_TIMER_ITER;
                         }
                         func_802909F0();
                         evaluate_player_collision();
@@ -691,7 +699,7 @@ void race_logic_loop(void) {
             if (gIsGamePaused == 0) {
                     for (i = 0; i < gTickSpeed; i++) {
                         if (D_8015011E != 0) {
-                            gCourseTimer += 0.01666666;
+                            gCourseTimer += COURSE_TIMER_ITER;
                         }
                         func_802909F0();
                         evaluate_player_collision();
@@ -759,7 +767,7 @@ void race_logic_loop(void) {
             if (gIsGamePaused == 0) {
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E != 0) {
-                        gCourseTimer += 0.01666666;
+                        gCourseTimer += COURSE_TIMER_ITER;
                     }
                     func_802909F0();
                     evaluate_player_collision();
@@ -953,7 +961,7 @@ void start_gfx_sptask(void) {
 }
 
 void handle_vblank(void) {
-    gVBlankTimer += 0.01666666;
+    gVBlankTimer += V_BlANK_TIMER_ITER;
     sNumVBlanks++;
 
     receive_new_tasks();

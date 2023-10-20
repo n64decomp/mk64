@@ -83,6 +83,9 @@ SECTIONS
       BUILD_DIR/src/os/is_debug.o(.text);
       #endif
       BUILD_DIR/src/os/osCreateThread.o(.text);
+      #ifdef VERSION_EU
+         . += 0x40;
+      #endif
       BUILD_DIR/src/os/osInitialize.o(.text);
       BUILD_DIR/src/os/osStartThread.o(.text);
       BUILD_DIR/src/os/osCreateViManager.o(.text);
@@ -377,6 +380,7 @@ SECTIONS
       BUILD_DIR/src/racing/actors.o(.bss*);
       BUILD_DIR/src/racing/memory.o(.bss*);
       BUILD_DIR/src/data/framebuffers.o(.bss*);
+      BUILD_DIR/src/data/gfx_output_buffer.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
       BUILD_DIR/src/audio/heap.o(.bss*);
       BUILD_DIR/src/audio/load.o(.bss);
@@ -614,11 +618,18 @@ SECTIONS
    END_SEG(audio_tables)
    BEGIN_SEG(sequences, 0x25FD00)
    {
+      #ifdef VERSION_EU
+      BUILD_DIR/data/sound_data/sequences_eu.o(.data);
+      #else
       BUILD_DIR/data/sound_data/sequences.o(.data);
+      #endif
    }
    END_SEG(sequences)
    BEGIN_SEG(instrument_sets, 0x282E80)
    {
+      #ifdef VERSION_EU
+      . += 0x20;
+      #endif
       BUILD_DIR/data/sound_data/instrument_sets.o(.data);
    }
    END_SEG(instrument_sets)

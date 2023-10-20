@@ -108,7 +108,7 @@ Acmd *func_800B86A0(Acmd *cmd, struct NoteSubEu *note, struct NoteSynthesisState
 Acmd *note_apply_headset_pan_effects(Acmd *acmd, struct NoteSubEu *noteSubEu, struct NoteSynthesisState *note, s32 bufLen, s32 flags, s32 leftRight);
 
 // These 2 are almost certainly misnamed and misplaced
-extern u64 gGfxSPTaskOutputBuffer[0x3F00];
+extern u64 gGfxSPTaskOutputBuffer[];
 extern u32 gGfxSPTaskOutputBufferSize;
 
 extern struct SynthesisReverb gSynthesisReverbs[4];
