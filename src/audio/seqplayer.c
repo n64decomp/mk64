@@ -24,6 +24,9 @@ char seqplayer_unused_string02[] = "Audio:Track: Warning :SUBTRACK had been stol
 char seqplayer_unused_string03[] = "SEQID %d,BANKID %d\n";
 char seqplayer_unused_string04[] = "ERR:SUBTRACK %d NOT ALLOCATED\n";
 char seqplayer_unused_string05[] = "Error:Same List Add\n";
+#ifdef VERSION_EU_1_0
+char seqplayer_unused_string_eu_01[] = "Wait Time out!\n";
+#endif
 char seqplayer_unused_string06[] = "Macro Level Over Error!\n";
 char seqplayer_unused_string07[] = "Macro Level Over Error!\n";
 char seqplayer_unused_string08[] = "WARNING: NPRG: cannot change %d\n";
