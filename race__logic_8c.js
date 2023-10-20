@@ -1,5 +1,6 @@
 var race__logic_8c =
 [
+    [ "D_802BA038_SIZE", "race__logic_8c.html#ad0abac1adccb2725a281a2db6286cd0d", null ],
     [ "func_8028DF00", "race__logic_8c.html#ae1563ce64a716f5d420505adc3e9b89d", null ],
     [ "func_8028DF38", "race__logic_8c.html#ad662382097107c855812aa65f2acbd49", null ],
     [ "func_8028E028", "race__logic_8c.html#a47f2e46e866e68495bc5792fb13f0d66", null ],

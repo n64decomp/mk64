@@ -1,5 +1,8 @@
 var staff__ghosts_8c =
 [
+    [ "BLAH", "staff__ghosts_8c.html#a9bd326daa05418a0ab296791b3ac9913", null ],
+    [ "BLAH2", "staff__ghosts_8c.html#a8b04ab36e0e9b016155c0661940395b9", null ],
+    [ "BLAH3", "staff__ghosts_8c.html#a7a9e6f2f324c84f772bb79bca4067e58", null ],
     [ "func_80004EF0", "staff__ghosts_8c.html#a1e6c535e2e2e430c9088d9a634788aba", null ],
     [ "func_80004FB0", "staff__ghosts_8c.html#aadf834e73dfafcf240157efbda08b28c", null ],
     [ "func_80004FF8", "staff__ghosts_8c.html#af117ae63ba55ebd8aa5c6b879178d697", null ],

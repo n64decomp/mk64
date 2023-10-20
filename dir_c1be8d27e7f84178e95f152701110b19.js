@@ -7,6 +7,8 @@ var dir_c1be8d27e7f84178e95f152701110b19 =
     [ "data_800E8700.h", "data__800E8700_8h.html", "data__800E8700_8h" ],
     [ "data_segment2.inc.c", "data__segment2_8inc_8c.html", "data__segment2_8inc_8c" ],
     [ "framebuffers.c", "framebuffers_8c.html", "framebuffers_8c" ],
+    [ "gfx_output_buffer.c", "gfx__output__buffer_8c.html", "gfx__output__buffer_8c" ],
+    [ "gfx_output_buffer.h", "gfx__output__buffer_8h.html", "gfx__output__buffer_8h" ],
     [ "kart_attributes.inc.c", "kart__attributes_8inc_8c.html", "kart__attributes_8inc_8c" ],
     [ "startup_logo.inc.c", "startup__logo_8inc_8c.html", "startup__logo_8inc_8c" ],
     [ "textures.inc.c", "textures_8inc_8c.html", "textures_8inc_8c" ]

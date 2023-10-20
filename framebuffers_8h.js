@@ -7,7 +7,6 @@ var framebuffers_8h =
     [ "D_802BFB80", "framebuffers_8h.html#a47575d0db8be21ce60afc2e8a9593776", null ],
     [ "D_802DFB80", "framebuffers_8h.html#acd8dafea3b9b8e034dd5f541578a9030", null ],
     [ "D_802F1F80", "framebuffers_8h.html#a88e023128d8de3bf9ed27ae703247441", null ],
-    [ "frameBufferPadding", "framebuffers_8h.html#a814f3b6c7ba81a46b39ce166f6f79c0f", null ],
     [ "gFramebuffer0", "framebuffers_8h.html#a9ad5316597b4d79b0e355b1194848d3d", null ],
     [ "gFramebuffer1", "framebuffers_8h.html#a5249b7a9cf7e5c7d6a23b907760b9b81", null ],
     [ "gFramebuffer2", "framebuffers_8h.html#a95aecdc8fb209e4ec86f831451880008", null ],

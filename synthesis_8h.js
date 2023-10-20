@@ -30,7 +30,7 @@ var synthesis_8h =
     [ "synthesis_load_reverb_samples", "synthesis_8h.html#acf9a79a0611760d9e1e63c8ecc761328", null ],
     [ "synthesis_resample_and_mix_reverb", "synthesis_8h.html#aac22b21b85da335c3943557600dc9d51", null ],
     [ "synthesis_save_reverb_ring_buffer", "synthesis_8h.html#a710eb0eccc0cf5ebc1877b6c7311cff8", null ],
-    [ "gGfxSPTaskOutputBuffer", "synthesis_8h.html#ad2d766d44877d5b140e0d0dbe0c7a21b", null ],
+    [ "gGfxSPTaskOutputBuffer", "synthesis_8h.html#a46ae4f8ebb457fce4caa008ac292b6f6", null ],
     [ "gGfxSPTaskOutputBufferSize", "synthesis_8h.html#a1d3d09175f95d66b361a83b7a94446f7", null ],
     [ "gSynthesisReverbs", "synthesis_8h.html#a46dbb82b200402601c2819f7deab8c04", null ]
 ];
