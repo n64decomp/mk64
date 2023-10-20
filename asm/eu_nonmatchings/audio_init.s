@@ -103,7 +103,7 @@ glabel audio_init
 /* BCE44 800BC244 3C01803B */  lui        $at, %hi(gSampleDmaNumListItems)
 /* BCE48 800BC248 3C04800F */  lui        $a0, %hi(gAudioInitPoolSize)
 /* BCE4C 800BC24C AC206E58 */  sw         $zero, %lo(gSampleDmaNumListItems)($at)
-/* BCE50 800BC250 0C02E43C */  jal        func_800B90F0
+/* BCE50 800BC250 0C02E43C */  jal        sound_init_main_pools
 /* BCE54 800BC254 8C84A714 */   lw        $a0, %lo(gAudioInitPoolSize)($a0)
 /* BCE58 800BC258 3C06803B */  lui        $a2, %hi(gAiBuffers)
 /* BCE5C 800BC25C 3C14803B */  lui        $s4, %hi(gAudioInitPool)

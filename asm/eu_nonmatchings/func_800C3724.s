@@ -447,9 +447,9 @@ glabel func_800C3724
 .L800C3DD4:
 /* 0C49D4 800C3DD4 01D57021 */  addu  $t6, $t6, $s5
 /* 0C49D8 800C3DD8 000E70C0 */  sll   $t6, $t6, 3
-/* 0C49DC 800C3DDC 3C19803B */  lui   $t9, 0x803b
+/* 0C49DC 800C3DDC 3C19803B */  lui   $t9, %hi(gSequencePlayers) # 0x803b
 /* 0C49E0 800C3DE0 032EC821 */  addu  $t9, $t9, $t6
-/* 0C49E4 800C3DE4 8F391510 */  lw    $t9, 0x1510($t9)
+/* 0C49E4 800C3DE4 8F391510 */  lw    $t9, %lo(gSequencePlayers)($t9) # 0x1510($t6)
 /* 0C49E8 800C3DE8 0019C7C2 */  srl   $t8, $t9, 0x1f
 /* 0C49EC 800C3DEC 57000074 */  bnezl $t8, .L800C3FC0
 /* 0C49F0 800C3DF0 26B50001 */   addiu $s5, $s5, 1
