@@ -616,6 +616,8 @@ ifeq ($(COMPILER),ido)
     $(BUILD_DIR)/src/audio/%.o:        OPT_FLAGS := -O2 -use_readwrite_const
     $(BUILD_DIR)/src/audio/port_eu.o:  OPT_FLAGS := -O2 -framepointer
     $(BUILD_DIR)/src/audio/external.o:  OPT_FLAGS := -O2 -framepointer
+# No tab here required
+$(BUILD_DIR)/src/code_8006E9C0.o:  OPT_FLAGS := -O2 -Wo,-loopunroll,0
 endif
 
 

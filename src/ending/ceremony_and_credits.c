@@ -11,6 +11,7 @@
 #include "variables.h"
 #include "math_util.h"
 #include "ceremony_and_credits.h"
+#include "code_800029B0.h"
 #include "code_80280000.h"
 #include "objects.h"
 #include "main.h"

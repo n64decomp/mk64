@@ -350,6 +350,7 @@ extern u8 *D_8018D9BC;
 
 extern s32 D_80165754;
 extern intptr_t D_8018D9B0;
+extern s8  gGPPointsByCharacterId[8];       // D_8018D9C8
 extern s8  D_8018D9D8;
 extern s8  D_8018D9D9;
 extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE]; // D_8018D9E0
@@ -412,12 +413,13 @@ extern RGBA16 D_800E74A8[];
 extern RGBA16 D_800E74D0[];
 extern RGBA16 D_800E74E8[];
 extern const s16 gGlyphDisplayWidth[];
-extern char *D_800E7500[];
+extern char *gCupNames[];
 extern char *D_800E7524[];
 extern char *D_800E7574[];
 extern char *D_800E75C4[];
 extern char *gDebugCourseNames[];
-extern const u8 gPerCupIndexByCourseId[];
+// Maps course IDs (as defined in the COURSES enum) to an index in a given cup's track order
+extern const u8 gPerCupIndexByCourseId[]; // D_800EFD50
 extern const s8 D_800EFD64[];
 extern u8 gCupSelectionByCourseId[];
 extern char *D_800E7678[];
@@ -427,7 +429,7 @@ extern char *D_800E76CC[];
 extern char *D_800E76DC[];
 extern char *gDebugScreenModeNames[];
 extern char *gDebugSoundModeNames[];
-extern char *gSoundModeNames[];
+extern char *gSoundModeNames[]; // D_800E7710
 extern char *D_800E7720[];
 extern char *D_800E7728[];
 extern char *D_800E7730;

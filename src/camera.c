@@ -29,7 +29,6 @@ Camera *camera4 = &cameras[3];
 // s32 D_80164A2C;
 // f32 D_8016524C; <- could maybe, maybe be part of spawn_players' bss stuff?
 
-void func_80014DE4(s32);
 extern f32 D_80164498[];
 extern s16 D_80164678[];
 extern f32 D_801649D8[]; // f32[4]
@@ -1007,7 +1006,7 @@ void func_8001F394(Player *player, f32 *arg1) {
     }
 
     if (D_80164A08[playerIndex] == 0) {
-        if (player->statusEffects & 0x40000) {
+        if (player->statusEffects & HOLD_BANANA_EFFECT) {
             D_80164A08[playerIndex] = 1;
         }
         if ((player->effects & 0x2000) == 0x2000) {
@@ -1026,7 +1025,7 @@ void func_8001F394(Player *player, f32 *arg1) {
     }
     switch (D_80164A08[playerIndex]) {
     case 1:
-        if (player->statusEffects & 0x40000) {
+        if (player->statusEffects & HOLD_BANANA_EFFECT) {
             move_f32_towards(&D_80164498[playerIndex], 20.0f, 0.2f);
         } else {
             if (D_80164498[playerIndex] > 1.0f) {
