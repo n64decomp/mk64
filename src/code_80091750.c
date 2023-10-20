@@ -13661,7 +13661,11 @@ void func_800AD2E8(struct_8018D9E0_entry *arg0) {
         break;
     }
 }
-
+#ifdef VERSION_EU
+#define FUNC_800ADF48DEF 70
+#else
+#define FUNC_800ADF48DEF 60
+#endif
 void func_800ADF48(struct_8018D9E0_entry *arg0) {
     s32 stackPadding;
     struct Controller *controller;
@@ -13724,7 +13728,7 @@ void func_800ADF48(struct_8018D9E0_entry *arg0) {
                     } else {
                         func_8009DFE0(30);
                         play_sound2(0x4900801B);
-                        func_800CA330(60);
+                        func_800CA330(FUNC_800ADF48DEF);
                         if (arg0->unk24 < 4.2) {
                             arg0->unk24 += 4.0;
                         }

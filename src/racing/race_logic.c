@@ -884,9 +884,15 @@ void func_8028FBD4(void) {
     D_802BA038 = 5;
 }
 
+#ifdef VERSION_EU
+#define D_802BA038_SIZE 1600
+#else
+#define D_802BA038_SIZE 1920
+#endif
+
 void func_8028FC34(void) {
     if (D_802BA038 < 0) {
-        D_802BA038 = 1920;
+        D_802BA038 = D_802BA038_SIZE;
         return;
     }
     D_802BA038--;

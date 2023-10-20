@@ -17,6 +17,22 @@ versionGroup.add_argument(
     const="us",
     dest="version",
 )
+versionGroup.add_argument(
+    "-e",
+    "--eu10",
+    help="use European (1.0) version",
+    action="store_const",
+    const="eu-1.0",
+    dest="version",
+)
+versionGroup.add_argument(
+    "-E",
+    "--eu11",
+    help="use European (1.1) version",
+    action="store_const",
+    const="eu-final",
+    dest="version",
+)
 parser.add_argument(
     "-m", "--make", help="run make before finding difference(s)", action="store_true"
 )
@@ -252,7 +268,10 @@ if diffs == 0:
     exit()
 definite_shift = diffs > shift_cap
 if not definite_shift:
-    print(str(diffs) + " differing word(s).")
+    if (diffs > 1):
+        print(str(diffs) + " differing words.")
+    else:
+        print(str(diffs) + " differing word.")
 
 if diffs > 100:
     if len(found_instr_diff) > 0:

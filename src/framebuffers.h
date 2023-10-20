@@ -55,7 +55,6 @@ typedef struct {
 
 extern u16 gRandomSeed16;
 extern u8 randomSeedPadding[216];
-extern u8 frameBufferPadding[22544];
 extern struct_D_802BFB80 D_802BFB80[][2][8];
 extern struct_D_802DFB80 D_802DFB80[][2][8];
 
