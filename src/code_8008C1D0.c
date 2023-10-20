@@ -1642,10 +1642,11 @@ void func_8008FF08(Player *player, s8 playerId) {
         waypoint = gNearestWaypointByPlayerId[playerId];
 #ifdef VERSION_EU
         if (((waypoint >= 0xF0) && (waypoint < 0x11E)) || 
-            ((D_80165320[playerId] >= 0xF0) && (D_80165320[playerId] < 0x11E))) {
+            ((D_80165320[playerId] >= 0xF0) && (D_80165320[playerId] < 0x11E)))
 #else  
-        if ((waypoint >= 0xF0) && (waypoint < 0x105)) {
+        if ((waypoint >= 0xF0) && (waypoint < 0x105))
 #endif
+        {
             player->nearestWaypointId = 0xF0U;
         } else {
             player->nearestWaypointId = D_80165320[playerId];

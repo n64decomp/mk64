@@ -27,4 +27,8 @@
 .ascii "E"                      /* NTSC-U (North America) */
 .endif
 
+.ifdef VERSION_EU_1_1
+.byte  0x01                     /* Version */
+.else
 .byte  0x00                     /* Version */
+.endif

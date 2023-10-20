@@ -240,6 +240,7 @@ void audio_list_push_back(struct AudioListItem *list, struct AudioListItem *item
         item->pool = list->pool;
     }
 }
+
 void *audio_list_pop_back(struct AudioListItem *list) {
     struct AudioListItem *item = list->prev;
     if (item == list) {
@@ -325,7 +326,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
     if (!layer->continuousNotes) {
         seq_channel_layer_note_decay(layer);
     }
-#ifdef VERSION_EU
+#ifdef VERSION_EU_1_0
     else {
         if ((layer->note != 0) && (layer == layer->note->wantedParentLayer)) {
             seq_channel_layer_note_decay(layer);

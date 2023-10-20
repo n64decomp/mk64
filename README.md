@@ -22,12 +22,15 @@ This notice will be removed when the changes are complete
 - [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=audioProgress)](https://ci.valandil.ca/job/mk64/job/master/)
 - [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=osProgress)](https://ci.valandil.ca/job/mk64/job/master/)
 
-This work-in-progress decompilation of Mario Kart 64 (U) and (E1.0) pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information.
+This work-in-progress decompilation of Mario Kart 64 (U), (E 1.0) and (E 1.1) pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information.
 
 It builds the following ROMs:
 
-* mk64.us.z64 `sha1: 579c48e211ae952530ffc8738709f078d5dd215e`
-* mk64.eu.z64 `sha1: a729039453210b84f17019dda3f248d5888f7690`
+| ROM Output     | Revision   | MD5 Checksum                             |
+|------------|----------------|------------------------------------------|
+| mk64.us.z64       | USA     | 579c48e211ae952530ffc8738709f078d5dd215e |
+| mk64.eu-1.0.z64   | EUR 1.0 | a729039453210b84f17019dda3f248d5888f7690 |
+| mk64.eu-final.z64 | EUR 1.1 | f6b5f519dd57ea59e9f013cc64816e9d273b2329 |
 
 This repository does not contain assets. Compiling requires asset extraction from a prior copy of the game.
 
@@ -41,11 +44,15 @@ The build system has the following package requirements:
 
 To add submodules run `git submodule update --init --recursive` after cloning.
 
-## EU 1.0 Specific Steps
-EU 1.0 first requires asset extraction from US
+## EU Specific Steps (All versions)
+Both EU builds first requires US to be built first:
 ```
 make -j
-make -j VERSION=eu
+```
+
+Now build either EU 1.0 `eu-1.0` or EU 1.1 `eu-final`
+```
+make -j VERSION=eu-final
 ```
 
 diff/first-diff commands

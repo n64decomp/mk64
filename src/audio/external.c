@@ -2748,10 +2748,11 @@ void func_800C6108(u8 playerId) {
     }
     D_800E9EE4[playerId] = D_800E9EB4[playerId] - D_800E9EC4[playerId];
 #ifdef VERSION_EU
-    if ((D_800E9EE4[playerId] > 0.5f) || (D_800E9EE4[playerId] < -0.5f)) {
+    if ((D_800E9EE4[playerId] > 0.5f) || (D_800E9EE4[playerId] < -0.5f))
 #else
-    if ((D_800E9EE4[playerId] > 0.5f) || (D_800E9EE4[playerId] < 0.5f)) {
+    if ((D_800E9EE4[playerId] > 0.5f) || (D_800E9EE4[playerId] < 0.5f))
 #endif
+    {
         D_800E9ED4[playerId] = D_800E9EE4[playerId] * 0.25f;
         D_800E9F7C[playerId].unk_0C = D_800E9EC4[playerId] + D_800E9ED4[playerId] + D_800E9F34[playerId];
     } else {
@@ -2964,14 +2965,14 @@ void func_800C683C(u8 arg0) {
     }
 }
 
-#ifndef VERSION_EU
-#define C70A8_INDEX 2
-#define C70A8_INDEX2 2
-#define C70A8_INDEX3 3
-#else
+#ifdef VERSION_EU
 #define C70A8_INDEX 0
 #define C70A8_INDEX2 0
 #define C70A8_INDEX3 1
+#else
+#define C70A8_INDEX 2
+#define C70A8_INDEX2 2
+#define C70A8_INDEX3 3
 #endif
 
 void func_800C70A8(u8 playerId) {
@@ -3527,8 +3528,10 @@ block_134:
     }
 }
 #else
-    #ifdef VERSION_EU
+    #if defined(VERSION_EU_1_0)
     GLOBAL_ASM("asm/eu_nonmatchings/func_800C76C0.s")
+    #elif defined(VERSION_EU_1_1)
+    GLOBAL_ASM("asm/eu_nonmatchings/func_800C76C0_v11.s")
     #else
     GLOBAL_ASM("asm/non_matchings/audio/external/func_800C76C0.s")
     #endif

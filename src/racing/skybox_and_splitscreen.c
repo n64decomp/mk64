@@ -778,19 +778,17 @@ void func_802A59A4(void) {
     UNUSED s32 pad3;
     Mat4 matrix;
 
-    // Might D_80150288 be D_80150148
 #ifdef VERSION_EU
     sp9C = D_80150148 * 1.2f;
 #endif
     func_802A53A4();
     init_rdp();
     func_802A3730(D_800DC5EC);
-
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 #ifdef VERSION_EU
     guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, D_80150150, D_8015014C, 1.0f);
-#else // us
+#else
     guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], D_80150148, D_80150150, D_8015014C, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
@@ -837,16 +835,15 @@ void func_802A5CB4(void) {
     f32 sp9C;
 
     func_802A50EC();
-#ifdef VERSION_EU   //  D_802B9CD0?
+#ifdef VERSION_EU
     sp9C = D_80150148 * 1.2f;
 #endif
     init_rdp();
     func_802A3730(D_800DC5EC);
-
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
     guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, D_80150150, D_8015014C, 1.0f);
-#else // us
+#else
     guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], D_80150148, D_80150150, D_8015014C, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
@@ -1009,7 +1006,6 @@ void func_802A65B8(void) {
 #endif
 
     func_802A52BC();
-
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
     init_rdp();
     func_802A3730(D_800DC5F0);

@@ -19,10 +19,18 @@ versionGroup.add_argument(
 )
 versionGroup.add_argument(
     "-e",
-    "--eu",
-    help="use European version",
+    "--eu10",
+    help="use European (1.0) version",
     action="store_const",
-    const="eu",
+    const="eu-1.0",
+    dest="version",
+)
+versionGroup.add_argument(
+    "-E",
+    "--eu11",
+    help="use European (1.1) version",
+    action="store_const",
+    const="eu-final",
     dest="version",
 )
 parser.add_argument(
