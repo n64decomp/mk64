@@ -263,8 +263,8 @@ $(BUILD_DIR)/$(OTHER_TEXTURES_DIR)/sign_luigis_0.rgba16.inc.c           \
 $(BUILD_DIR)/$(OTHER_TEXTURES_DIR)/sign_luigis_1.rgba16.inc.c           \
 $(BUILD_DIR)/$(OTHER_TEXTURES_DIR)/sign_mario_star_0.rgba16.inc.c       \
 $(BUILD_DIR)/$(OTHER_TEXTURES_DIR)/sign_mario_star_1.rgba16.inc.c       \
-$(BUILD_DIR)/$(OTHER_TEXTURES_DIR)/sign_nintendo_red_0.rgba16.inc.c     \
-$(BUILD_DIR)/$(OTHER_TEXTURES_DIR)/sign_nintendo_red_1.rgba16.inc.c     \
+$(BUILD_DIR)/$(OTHER_TEXTURES_DIR)/sign_nintendo_0.rgba16.inc.c         \
+$(BUILD_DIR)/$(OTHER_TEXTURES_DIR)/sign_nintendo_1.rgba16.inc.c         \
 $(BUILD_DIR)/$(OTHER_TEXTURES_DIR)/texture_6442D4.rgba16.inc.c          \
 $(BUILD_DIR)/$(OTHER_TEXTURES_DIR)/texture_64440C.rgba16.inc.c          \
 $(BUILD_DIR)/$(OTHER_TEXTURES_DIR)/texture_6446AC.rgba16.inc.c          \

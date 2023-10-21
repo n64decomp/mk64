@@ -58,6 +58,8 @@ $(COW_PNG:%.png=%.mio0) $(MOO_MOO_FARM_SIGN_PNG:%.png=%.mio0): %.mio0 : %.bin
 $(MOO_MOO_FARM_SIGN_PNG:%.png=%.bin): %.bin : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
+$(BUILD_DIR)/courses/moo_moo_farm/course_textures.linkonly.o: $(MOO_MOO_FARM_SIGN_PNG:%.png=%.inc.c)
+
 $(MOO_MOO_FARM_SIGN_PNG:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
