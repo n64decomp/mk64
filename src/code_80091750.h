@@ -109,6 +109,7 @@ void func_80093C90(void);
 void func_80093C98(s32);
 void func_80093E20(void);
 void func_80093E40(void);
+void func_80093E60(void);
 void func_80093F10(void);
 void func_800940EC(s32);
 void func_800942D0(void);
@@ -381,9 +382,6 @@ extern u8 _textures_0bSegmentRomStart[];
 
 extern s32 gCycleFlashMenu; // maybe?
 extern s8 D_8018E7B0;  // maybe?
-
-// This is tracking which credit "state" we're in, decides which credits are shown (and probably other stuff)
-extern u16 D_800DC5E4;
 
 extern Unk_D_800E70A0 D_800E70A0[];
 extern Unk_D_800E70A0 D_800E70E8[];

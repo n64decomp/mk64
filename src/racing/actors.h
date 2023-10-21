@@ -124,8 +124,6 @@ extern s16 gCurrentCourseId;
 extern u16 isCrossingTriggeredByIndex[];
 extern Lights1 D_800DC610[];
 
-extern s16 gPlaceItemBoxes;
-
 extern s8 D_0D004C68[];
 extern Gfx D_0D005338[];
 extern Gfx D_0D005368[];
@@ -239,9 +237,6 @@ extern u8 gTextureShrub[];
 
 extern s8 D_800DC628[];
 extern s8 D_800DC630[];
-extern u16 gIsGamePaused;
 extern s8 D_802B8864[];
-
-extern u16 D_800DC5BC;
 
 #endif // ACTORS_H

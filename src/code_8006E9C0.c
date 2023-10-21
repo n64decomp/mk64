@@ -3,6 +3,7 @@
 #include <memory.h>
 #include <defines.h>
 
+#include "code_800029B0.h"
 #include "code_8006E9C0.h"
 #include "code_80071F00.h"
 #include "objects.h"
@@ -463,7 +464,6 @@ block_26:
 GLOBAL_ASM("asm/non_matchings/code_8006E9C0/func_8006F008.s")
 #endif
 
-extern u16 gIsGamePaused;
 extern s8 D_801657E4;
 extern bool8 D_801657E6;
 extern bool8 D_801657E8;

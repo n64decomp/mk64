@@ -9,6 +9,7 @@
 #include "audio/data.h"
 #include <sounds.h>
 #include "port_eu.h"
+#include "code_800029B0.h"
 #include "code_80091750.h"
 
 s8 D_8018EF10;
