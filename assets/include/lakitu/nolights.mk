@@ -14,8 +14,10 @@ $(NOLIGHTS_DIR)/gTextureLakituNoLights8.png
 
 NOLIGHTS_EXPORT_SENTINEL := $(NOLIGHTS_DIR)/.export
 
-$(NOLIGHTS_FRAMES:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(NOLIGHTS_PALETTE)
+$(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(NOLIGHTS_FRAMES:%.png=%.bin)
+
+$(NOLIGHTS_FRAMES:%.png=%.bin): %.bin : %.png
+	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(NOLIGHTS_PALETTE)
 
 $(BUILD_DIR)/src/data/common_textures.inc.o: $(NOLIGHTS_PALETTE:%.png=%.inc.c)
 

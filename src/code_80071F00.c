@@ -28,7 +28,9 @@
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
 #include "courses/all_course_data.h"
+#include "src/ending/ceremony_data.inc.h"
 #include "menus.h"
+#include "data/other_textures.h"
 
 // TODO: unused?
 f32 D_800E43B0[] = { 
@@ -3075,7 +3077,6 @@ void func_800791F0(s32 objectIndex, s32 playerId) {
     func_800C9018(playerId, 0x0100FA28);
 }
 
-extern u8 *D_0F05EB50;
 extern s16 D_801656F0;
 extern s32 D_8018D168;
 extern s32 D_8018D180;
@@ -3085,7 +3086,7 @@ void func_800792D8(s32 objectIndex, s32 arg1) {
         D_801656F0 = 0;
         D_8018D168 = 0;
     }
-    init_texture_object(objectIndex, (u8 *) gTLUTLakituCountdown, (u8 *) &D_0F05EB50, 0x38U, (u16) 0x00000048);
+    init_texture_object(objectIndex, (u8 *) gTLUTLakituCountdown, gTextureLakituNoLights1, 0x38U, (u16) 0x00000048);
     gObjectList[objectIndex].vertex = D_0D005EB0;
     gObjectList[objectIndex].sizeScaling = 0.15f;
     set_object_flag_unk_054_false(objectIndex, 0x00000010);
@@ -3177,7 +3178,6 @@ void func_80079380(s32 objectIndex, s32 arg1) {
     }
 }
 
-extern u8 *D_0F07E350;
 //extern s32 D_8018C028;
 extern u16 D_800E6834[][4]; // static
 
@@ -3185,7 +3185,7 @@ void func_8007963C(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, gTLUTLakituCheckeredFlag, (u8 *) &D_0F07E350, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, gTLUTLakituCheckeredFlag, gTextureLakituCheckeredFlag01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
     temp_v0->vertex = D_0D006730;
@@ -3260,11 +3260,9 @@ void func_8007993C(s32 objectIndex, Player *player) {
     func_800722CC(objectIndex, 2);
 }
 
-extern u8 D_0F0CCF50;
-
 void func_800799A8(s32 objectIndex, s32 arg1) {
     func_800791F0(objectIndex, arg1);
-    init_texture_object(objectIndex, gTLUTLakituFishing, &D_0F0CCF50, 0x38U, (u16) 0x00000048);
+    init_texture_object(objectIndex, gTLUTLakituFishing, gTextureLakituFishing1, 0x38U, (u16) 0x00000048);
     gObjectList[objectIndex].vertex = D_0D005F30;
     gObjectList[objectIndex].sizeScaling = 0.15f;
     func_80086E70(objectIndex);
@@ -3433,14 +3431,13 @@ void func_80079D44(s32 objectIndex, s32 playerId) {
     func_80079A5C(objectIndex, temp_s1);
 }
 
-extern u8 *D_0F09DB50[];
 extern u16 D_800E694C[];
 
 void func_8007A060(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, gTLUTLakituSecondLap, (u8 *) D_0F09DB50, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, gTLUTLakituSecondLap, gTextureLakituSecondLap01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
     temp_v0->vertex = D_0D006730;
@@ -3484,13 +3481,11 @@ void func_8007A124(s32 objectIndex, s32 playerIndex) {
     }
 }
 
-extern u8 *D_0F0AD750;
-
 void func_8007A228(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, gTLUTLakituFinalLap, (u8 *)&D_0F0AD750, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, gTLUTLakituFinalLap, gTextureLakituFinalLap01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
     temp_v0->vertex = D_0D006730;
@@ -3534,13 +3529,12 @@ void func_8007A2EC(s32 objectIndex, s32 playerIndex) {
     }
 }
 
-extern u8 D_0F0BD350[];
 extern u16 D_800E69B0[][4]; // static?
 
 void func_8007A3F0(s32 objectIndex, s32 arg1) {
     f32 var = 5000.0f;
     func_800791F0(objectIndex, arg1);
-    init_texture_object(objectIndex, gTLUTLakituReverse, D_0F0BD350, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, gTLUTLakituReverse, gTextureLakituReverse01, 0x48U, (u16) 0x00000038);
     gObjectList[objectIndex].activeTexture = D_8018C028;
     gObjectList[objectIndex].vertex = D_0D006730;
     gObjectList[objectIndex].pos[2] = var;
@@ -4749,7 +4743,7 @@ void func_8007CC00(void) {
 void func_8007CE0C(s32 objectIndex) {
     Objects *temp_s0;
 
-    init_texture_object(objectIndex, d_course_banshee_boardwalk_boo_tlut, D_0F0D0E50, 0x30U, (u16) 0x00000028);
+    init_texture_object(objectIndex, d_course_banshee_boardwalk_boo_tlut, gTextureGhosts, 0x30U, (u16) 0x00000028);
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->itemDisplay = 0x1C;
     temp_s0->pos[0] = 0.0f;
@@ -8301,15 +8295,15 @@ void func_800861E0(void) {
 void func_8008629C(s32 objectIndex, s32 arg1) {
     switch (arg1) {                                 /* irregular */
     case 0:
-        gObjectList[objectIndex].unk_070 = D_0B0075F0;
+        gObjectList[objectIndex].unk_070 = podium_dl3;
         gObjectList[objectIndex].unk_04C = 0x00000038;
         break;
     case 1:
-        gObjectList[objectIndex].unk_070 = D_0B008040;
+        gObjectList[objectIndex].unk_070 = podium2_dl3;
         gObjectList[objectIndex].unk_04C = 0x0000002B;
         break;
     case 2:
-        gObjectList[objectIndex].unk_070 = D_0B008A90;
+        gObjectList[objectIndex].unk_070 = podium3_dl3;
         gObjectList[objectIndex].unk_04C = 0x0000001E;
         break;
     default:
@@ -8411,13 +8405,13 @@ void func_80086700(s32 objectIndex) {
     if (gCCSelection < CC_150) {
         switch (D_802874D8.unk1D) {                       /* switch 1; irregular */
         case 0:                                     /* switch 1 */
-            gObjectList[objectIndex].unk_070 = D_0B0069D8;
+            gObjectList[objectIndex].unk_070 = gold_trophy_dl10;
             break;
         case 1:                                     /* switch 1 */
-            gObjectList[objectIndex].unk_070 = D_0B006A78;
+            gObjectList[objectIndex].unk_070 = gold_trophy_dl12;
             break;
         case 2:                                     /* switch 1 */
-            gObjectList[objectIndex].unk_070 = D_0B006B18;
+            gObjectList[objectIndex].unk_070 = gold_trophy_dl14;
             break;
         default:                                    /* switch 1 */
             break;
@@ -8425,13 +8419,13 @@ void func_80086700(s32 objectIndex) {
     } else {
         switch (D_802874D8.unk1D) {                       /* irregular */
         case 0:
-            gObjectList[objectIndex].unk_070 = D_0B006A28;
+            gObjectList[objectIndex].unk_070 = gold_trophy_dl11;
             break;
         case 1:
-            gObjectList[objectIndex].unk_070 = D_0B006AC8;
+            gObjectList[objectIndex].unk_070 = gold_trophy_dl13;
             break;
         case 2:
-            gObjectList[objectIndex].unk_070 = D_0B006B68;
+            gObjectList[objectIndex].unk_070 = gold_trophy_dl15;
             break;
         default:
             break;

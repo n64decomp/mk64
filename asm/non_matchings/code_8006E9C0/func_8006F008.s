@@ -195,8 +195,8 @@ glabel L8006F1AC
 /* 06FDDC 8006F1DC 10000160 */  b     .L8006F760
 /* 06FDE0 8006F1E0 A42BD2E8 */   sh    $t3, %lo(D_8018D2E8)($at)
 glabel L8006F1E4
-/* 06FDE4 8006F1E4 3C040F0D */  lui   $a0, %hi(D_0F0D0E50) # $a0, 0xf0d
-/* 06FDE8 8006F1E8 24840E50 */  addiu $a0, %lo(D_0F0D0E50) # addiu $a0, $a0, 0xe50
+/* 06FDE4 8006F1E4 3C040F0D */  lui   $a0, %hi(gTextureGhosts) # $a0, 0xf0d
+/* 06FDE8 8006F1E8 24840E50 */  addiu $a0, %lo(gTextureGhosts) # addiu $a0, $a0, 0xe50
 /* 06FDEC 8006F1EC 24054CC2 */  li    $a1, 19650
 /* 06FDF0 8006F1F0 0C0AA13D */  jal   dma_textures
 /* 06FDF4 8006F1F4 3406D980 */   li    $a2, 55680

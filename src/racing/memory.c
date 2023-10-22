@@ -10,6 +10,7 @@
 #include "main.h"
 #include "code_800029B0.h"
 #include "math_util.h"
+#include "courses/courseTable.h"
 
 s32 sGfxSeekPosition;
 s32 sPackedSeekPosition;

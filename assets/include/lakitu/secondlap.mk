@@ -22,8 +22,10 @@ $(SECONDLAP_DIR)/gTextureLakituSecondLap16.png
 
 SECONDLAP_EXPORT_SENTINEL := $(SECONDLAP_DIR)/.export
 
-$(SECONDLAP_FRAMES:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(SECONDLAP_PALETTE)
+$(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(SECONDLAP_FRAMES:%.png=%.bin)
+
+$(SECONDLAP_FRAMES:%.png=%.bin): %.bin : %.png
+	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(SECONDLAP_PALETTE)
 
 $(BUILD_DIR)/src/data/common_textures.inc.o: $(SECONDLAP_PALETTE:%.png=%.inc.c)
 

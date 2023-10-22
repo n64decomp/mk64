@@ -14,8 +14,10 @@ $(BLUELIGHT_DIR)/gTextureLakituBlueLight8.png
 
 BLUELIGHT_EXPORT_SENTINEL := $(BLUELIGHT_DIR)/.export
 
-$(BLUELIGHT_FRAMES:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(BLUELIGHT_PALETTE)
+$(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(BLUELIGHT_FRAMES:%.png=%.bin)
+
+$(BLUELIGHT_FRAMES:%.png=%.bin): %.bin : %.png
+	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(BLUELIGHT_PALETTE)
 
 $(BUILD_DIR)/src/data/common_textures.inc.o: $(BLUELIGHT_PALETTE:%.png=%.inc.c)
 
