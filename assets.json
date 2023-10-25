@@ -59,14 +59,9 @@
 "bin/lib/PR/f3d/F3DEX_data.bin": {"meta":{"size": "0x800"}, "offsets": {"us":["0x0F4900", "0x0"]}},
 "bin/lib/PR/f3d/F3DLX_data.bin": {"meta":{"size": "0x800"}, "offsets": {"us":["0x0F5100", "0x0"]}},
 "bin/lib/PR/audio/aspMain_data.bin": {"meta":{"size": "0x300"}, "offsets": {"us":["0x0F5900", "0x0"]}},
-"bin/common_textures.bin": {"meta":{"size": "0x2D158"}, "offsets":{"us":["0x132B50","0x0"]}},
-"bin/mk64.u.128480.bin": {"meta":{"size": "0x2660"}, "offsets":{"us":["0x128480","0x0"]}},
-"bin/mk64.u.724220.bin": {"meta":{"size": "0x5810"}, "offsets":{"us":["0x724220","0x0"]}},
-"bin/data_825800.bin": {"meta":{"size": "0x9480"}, "offsets":{"us":["0x825800","0x0"]}},
-"textures/startup_logo/reflection_map_gold.rgba16.png": {"meta":{"dims":[32,32]}, "offsets":{"us":["0x825800", "0x8A48"]}},
 "bin/audiobanks.us.bin": {"meta":{"size": "0x13840"}, "offsets":{"us":["0x966260","0x0"],"eu-final":["0x966380","0x0"]}},
 "bin/audiobanks.eu.bin": {"meta":{"size": "0x13840"}, "offsets":{"eu-1.0":["0x966460","0x0"]}},
-"bin/mk64.u.979AA0.bin": {"meta":{"size": "0x24C4C0"}, "offsets":{"us":["0x979AA0","0x0"]}},
+"bin/audiotables.bin": {"meta":{"size": "0x24C4C0"}, "offsets":{"us":["0x979AA0","0x0"]}},
 
 "music/00_seq_00.m64":                    {"meta":{"size":"0x2830"}, "offsets": {"us":["0xBC6060", "0x0"]}},
 "music/01_title_screen.m64":              {"meta":{"size":"0x1B30"}, "offsets": {"us":["0xBC8890", "0x0"]}},
@@ -1070,7 +1065,5 @@
 "textures/gTextureGoldStripe.rgba16.png": {"meta":{"dims":[256,15], "alpha":"0x01"}, "offsets": {"us":["0x8202C0", "0x0"]}},
 "textures/gTextureWhiteStripe.rgba16.png": {"meta":{"dims":[256,10], "alpha":"0x01"}, "offsets": {"us":["0x8209C0", "0x0"]}},
 "textures/gTexturePinkBar.rgba16.png": {"meta":{"dims":[90,16], "alpha":"0x01"}, "offsets": {"us":["0x820AC0", "0x0"]}},
-"textures/gTextureGoldBar.rgba16.png": {"meta":{"dims":[256,40], "alpha":"0x01"}, "offsets": {"us":["0x820FC0", "0x0"]}},
-
-"textures/825800_08A48.rgba16.png": {"meta":{"dims":[32,32]}, "offsets": {"us":["0x825800", "0x08A48"]}}
+"textures/gTextureGoldBar.rgba16.png": {"meta":{"dims":[256,40], "alpha":"0x01"}, "offsets": {"us":["0x820FC0", "0x0"]}}
 }

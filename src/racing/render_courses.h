@@ -41,23 +41,11 @@ extern s32 D_8015F59C;
 extern s32 D_802B87C4;
 extern s32 D_802B87C8;
 extern s32 D_802B87CC;
-extern Gfx mario_raceway_dls[];
-extern Gfx choco_mountain_dls[];
 extern s32 D_802B87BC;
-extern Gfx bowsers_castle_dls[];
-extern Gfx banshee_boardwalk_dls[];
-extern Gfx royal_raceway_dls[];
-extern Gfx luigi_raceway_dls[];
 
 extern Lights1 D_800DC610[];
-extern Gfx moo_moo_farm_dls[];
 
 extern Lights1 D_800DC610[]; // Light data?
-extern u8 kalimari_desert_dls[];
-extern u8 sherbet_land_dls[];
-extern Gfx wario_stadium_dls[];
-
-extern Gfx D_090001D0[];
 
 extern u16 D_8015F58A;
 

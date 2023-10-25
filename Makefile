@@ -452,15 +452,6 @@ $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
-$(BUILD_DIR)/src/data/startup_logo.inc.o: src/data/startup_logo.inc.c
-	@$(PRINT) "$(GREEN)Compiling Startup Logo:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/startup_logo/reflection_map_gold.rgba16.inc.c -g textures/startup_logo/reflection_map_gold.rgba16.png -f rgba16 -s u8
-	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) tools/set_o32abi_bit.py $@
-
-
-
 #==============================================================================#
 # Common Textures Segment Generation                                           #
 #==============================================================================#
@@ -633,15 +624,20 @@ LDFLAGS += -R $(BUILD_DIR)/src/ending/ceremony_data.inc.elf
 # Compile Startup Logo                                                         #
 #==============================================================================#
 
-$(BUILD_DIR)/src/data/startup_logo.inc.mio0.o: src/data/startup_logo.inc.c
-	@$(PRINT) "$(GREEN)Compressing Startup Logo:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $(BUILD_DIR)/src/data/startup_logo.inc.elf.map -o $(BUILD_DIR)/src/data/startup_logo.inc.elf $(BUILD_DIR)/src/data/startup_logo.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/data/startup_logo.inc.elf $(BUILD_DIR)/src/data/startup_logo.inc.bin
-	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/data/startup_logo.inc.bin $(BUILD_DIR)/src/data/startup_logo.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n\n\n.balign 4\n\n\nglabel startup_logo\n\n.incbin \"$(BUILD_DIR)/src/data/startup_logo.inc.mio0\"\n\n.balign 16\n\nglabel data_825800_end\n" > $(BUILD_DIR)/src/data/startup_logo.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o $(BUILD_DIR)/src/data/startup_logo.inc.mio0.s
+LDFLAGS += -R $(BUILD_DIR)/src/data/startup_logo.inc.elf
 
+%/startup_logo.inc.elf: %/startup_logo.inc.o
+	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -o $@ $< --no-check-sections
 
+%/startup_logo.inc.bin: %/startup_logo.inc.elf
+	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
+
+%/startup_logo.inc.mio0: %/startup_logo.inc.bin
+	@$(PRINT) "$(GREEN)Compressing Startup Logo Model:  $(BLUE)$@ $(NO_COL)\n"
+	$(V)$(MIO0TOOL) -c $< $@
+
+%/startup_logo.inc.mio0.s: %/startup_logo.inc.mio0
+	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel data_825800_end\n" > $@
 
 #==============================================================================#
 # Compile Common Textures                                                      #

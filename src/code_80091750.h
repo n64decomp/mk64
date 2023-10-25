@@ -343,8 +343,6 @@ void func_800AF740(struct_8018D9E0_entry*);
 
 /* This is where I'd put my static data, if I had any */
 
-extern Gfx D_06009410[];
-
 extern s32  D_800DDB24;
 extern s16 D_80164478[];
 extern u8 *D_8018D9BC;

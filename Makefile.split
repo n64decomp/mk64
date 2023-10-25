@@ -1,48 +1,5 @@
-MUSIC_DIR = music
-
-OTHER_DATA_MIO0_NAMES := \
-	data_825800
-
-OTHER_DATA_MIO0_FILES := $(addprefix $(BUILD_DIR)/bin/,$(addsuffix .mio0,$(OTHER_DATA_MIO0_NAMES)))
-
 STANDALONE_TEXTURE_MIO0_FILES := $(addprefix $(BUILD_DIR)/,$(patsubst %.png,%.mio0,$(wildcard $(TEXTURES_DIR)/standalone/*.png)))
 
 RAW_TEXTURE_FILES := $(addprefix $(BUILD_DIR)/,$(patsubst %.png,%,$(wildcard $(TEXTURES_DIR)/raw/*.png)))
 
-MIO0_FILES := $(OTHER_DATA_MIO0_FILES) $(STANDALONE_TEXTURE_MIO0_FILES)
-
-MUSIC_FILES = \
-$(MUSIC_DIR)/seq_00.m64 \
-$(MUSIC_DIR)/seq_01.m64 \
-$(MUSIC_DIR)/seq_02.m64 \
-$(MUSIC_DIR)/seq_03.m64 \
-$(MUSIC_DIR)/seq_04.m64 \
-$(MUSIC_DIR)/seq_05.m64 \
-$(MUSIC_DIR)/seq_06.m64 \
-$(MUSIC_DIR)/seq_07.m64 \
-$(MUSIC_DIR)/seq_08.m64 \
-$(MUSIC_DIR)/seq_09.m64 \
-$(MUSIC_DIR)/seq_0A.m64 \
-$(MUSIC_DIR)/seq_0B.m64 \
-$(MUSIC_DIR)/seq_0C.m64 \
-$(MUSIC_DIR)/seq_0D.m64 \
-$(MUSIC_DIR)/seq_0E.m64 \
-$(MUSIC_DIR)/seq_0F.m64 \
-$(MUSIC_DIR)/seq_10.m64 \
-$(MUSIC_DIR)/seq_11.m64 \
-$(MUSIC_DIR)/seq_12.m64 \
-$(MUSIC_DIR)/seq_13.m64 \
-$(MUSIC_DIR)/seq_14.m64 \
-$(MUSIC_DIR)/seq_15.m64 \
-$(MUSIC_DIR)/seq_16.m64 \
-$(MUSIC_DIR)/seq_17.m64 \
-$(MUSIC_DIR)/seq_18.m64 \
-$(MUSIC_DIR)/seq_19.m64 \
-$(MUSIC_DIR)/seq_1A.m64 \
-$(MUSIC_DIR)/seq_1B.m64 \
-$(MUSIC_DIR)/seq_1C.m64 \
-$(MUSIC_DIR)/seq_1D.m64 \
-$(MUSIC_DIR)/seq_1E.m64 \
-$(MUSIC_DIR)/seq_1F.m64 \
-$(MUSIC_DIR)/seq_20.m64 \
-$(MUSIC_DIR)/seq_21.m64
+MIO0_FILES := $(STANDALONE_TEXTURE_MIO0_FILES)
