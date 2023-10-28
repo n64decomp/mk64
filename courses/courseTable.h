@@ -6,7 +6,7 @@
 #include "types.h"
 
 // dlRomStart, vertexRomStart, & vertexStart, are u8* because mio0 compressed.
-struct courseTable {
+struct CourseTable {
     u8 *dlRomStart;     // 0x00 ROM start for segment 6 DL data
     u8 *dlRomEnd;       // 0x04 ROM end for segment 6 DL data
     u8 *vertexRomStart; // 0x08 ROM start for segment 4 vertex data
@@ -22,7 +22,7 @@ struct courseTable {
     u16 padding;        // 0x2E
 };
 
-extern struct courseTable gCourseTable[];
+extern struct CourseTable gCourseTable[];
 
 // todo: These should probably be ptr's instead of array's?
 extern u8 _course_mario_raceway_dl_mio0SegmentRomStart[];

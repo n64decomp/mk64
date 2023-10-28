@@ -109,9 +109,4 @@ struct UnkStruct_800DDB68 {
     s32 *D_800ED620; s32 *D_800ED628; s32 *D_800ED630; s32 *D_800ED638;
 };
 
-typedef struct {
-    s8 ob[3];
-    s8 unk;
-} coursePath;
-
 #endif /* TYPES_H */
