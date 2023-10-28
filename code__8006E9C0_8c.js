@@ -59,6 +59,5 @@ var code__8006E9C0_8c =
     [ "D_8018D098", "code__8006E9C0_8c.html#a3e65d2ec7e466981e3f83a32271c5154", null ],
     [ "D_8018D0C0", "code__8006E9C0_8c.html#ac5be7cc895d82ace3e13e381954ec8b9", null ],
     [ "D_8018D0E8", "code__8006E9C0_8c.html#a3df148f045767547e2eebaee9e1cb95f", null ],
-    [ "D_8018D110", "code__8006E9C0_8c.html#a69c5451c9fa9946af25574639b0256b4", null ],
-    [ "gIsGamePaused", "code__8006E9C0_8c.html#a1e68adae3a31f0d078322717a6ff9d6b", null ]
+    [ "D_8018D110", "code__8006E9C0_8c.html#a69c5451c9fa9946af25574639b0256b4", null ]
 ];

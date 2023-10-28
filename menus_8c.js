@@ -16,7 +16,6 @@ var menus_8c =
     [ "rmonPrintf", "menus_8c.html#a19085a3486cdb488add643cb0e34d20a", null ],
     [ "splash_menu_act", "menus_8c.html#a15d9aecd0ca959638140706233257a37", null ],
     [ "update_menus", "menus_8c.html#a5fd6ba9b77c684f7c5e0f4732de81953", null ],
-    [ "D_800DC5AC", "menus_8c.html#ac2f454be03b1ded8e526e6f11ab36c35", null ],
     [ "D_800E86A4", "menus_8c.html#abb2ea38cf7a38ac58573450daaa644d9", null ],
     [ "D_800E86AC", "menus_8c.html#ae7617175787d21dcdc54ad7d62e3730a", null ],
     [ "D_800E86B0", "menus_8c.html#abca151f30fa8019c838735371e60a0b3", null ],

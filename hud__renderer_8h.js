@@ -387,7 +387,6 @@ var hud__renderer_8h =
     [ "rsp_load_texture", "hud__renderer_8h.html#ae93fb428bd6756747edd360e2ae6ebe0", null ],
     [ "rsp_load_texture_mask", "hud__renderer_8h.html#a9a5b5359584fc2693e8e4598ffd612ca", null ],
     [ "set_transparency", "hud__renderer_8h.html#af7ef58600088827f33dcc3735a0019d9", null ],
-    [ "D_800DC5F0", "hud__renderer_8h.html#ac8fc03bffd3bd1b0c911c16e6b50aa0d", null ],
     [ "D_800E4638", "hud__renderer_8h.html#a3f345583c824ed7331577a7a5d4c19fb", null ],
     [ "D_800E4650", "hud__renderer_8h.html#a1d6c39c47f776ac445d0c5582944ad28", null ],
     [ "D_800E4668", "hud__renderer_8h.html#a26d32cc240ff1ca0cc63834acd7e2968", null ],

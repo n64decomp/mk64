@@ -46,22 +46,5 @@ var skybox__and__splitscreen_8h =
     [ "select_framebuffer", "skybox__and__splitscreen_8h.html#ab481a35d4548245b2a89ab574f460a14", null ],
     [ "set_viewport", "skybox__and__splitscreen_8h.html#aa627a5166fe0e9f01475246065b6923c", null ],
     [ "set_viewport2", "skybox__and__splitscreen_8h.html#a3d19ba08f130a164d0ee2ec90e054301", null ],
-    [ "D_800DC5B0", "skybox__and__splitscreen_8h.html#a7914f7a6d254104880f6f1fb796b730d", null ],
-    [ "D_800DC5B4", "skybox__and__splitscreen_8h.html#ad393d4cd9c38becd86648e2a70b2234d", null ],
-    [ "D_800DC5B8", "skybox__and__splitscreen_8h.html#ae65c01caf2358f36210d0ce738f008ce", null ],
-    [ "D_800DC5BC", "skybox__and__splitscreen_8h.html#ae1d69f47eb12babcc67d422d60ecef97", null ],
-    [ "D_800DC5C8", "skybox__and__splitscreen_8h.html#aa19aec96681c9af6cc4c6bdd571e461b", null ],
-    [ "D_800DC5D0", "skybox__and__splitscreen_8h.html#a0142857d08ba4cbbb46ddee77f332223", null ],
-    [ "D_800DC5D4", "skybox__and__splitscreen_8h.html#a7a356e7e73668c2849d957d5967867a2", null ],
-    [ "D_800DC5D8", "skybox__and__splitscreen_8h.html#aba3dfeb368fa822afeed32c2f022ae7f", null ],
-    [ "D_800DC5DC", "skybox__and__splitscreen_8h.html#a188b28ab2734f1e99655a9dca81b8b22", null ],
-    [ "D_800DC5E0", "skybox__and__splitscreen_8h.html#aa1a6e0508ec8a70500cadc37fa04e871", null ],
-    [ "D_800DC5EC", "skybox__and__splitscreen_8h.html#acfbddb97f6db2b7542992152b38aa42d", null ],
-    [ "D_800DC5F0", "skybox__and__splitscreen_8h.html#ac8fc03bffd3bd1b0c911c16e6b50aa0d", null ],
-    [ "D_800DC5F4", "skybox__and__splitscreen_8h.html#a85c8d6da17be420024713a4241b6182a", null ],
-    [ "D_800DC5F8", "skybox__and__splitscreen_8h.html#a4546fe60321bf2e11a102fd020d724c7", null ],
-    [ "D_8015F480", "skybox__and__splitscreen_8h.html#a6789f7ae9c8621923c4e50b8d3cf2cd8", null ],
-    [ "D_802B8880", "skybox__and__splitscreen_8h.html#aa9561e7be092d9cd53decc5700218e26", null ],
-    [ "gIsInQuitToMenuTransition", "skybox__and__splitscreen_8h.html#a2e7d63dbfdabad69a70a95734822fe41", null ],
-    [ "gQuitToMenuTransitionCounter", "skybox__and__splitscreen_8h.html#a5018fabd53fbeb5f453f5d76a8620c84", null ]
+    [ "D_802B8880", "skybox__and__splitscreen_8h.html#aa9561e7be092d9cd53decc5700218e26", null ]
 ];

@@ -101,7 +101,6 @@ var ceremony__and__credits_8h =
     [ "vec3s_clear", "ceremony__and__credits_8h.html#ad429f770b9ea2a6d21dab8839924a2ed", null ],
     [ "vec3s_copy_dupe", "ceremony__and__credits_8h.html#a256ebb46259882750b0cb38893ba26ff", null ],
     [ "vec3s_set_dupe", "ceremony__and__credits_8h.html#aff58613578d9aaed654ff5c0d89eca50", null ],
-    [ "D_800DC5E4", "ceremony__and__credits_8h.html#a271406dc5e17638bc82408beb476a92b", null ],
     [ "D_80283FCC", "ceremony__and__credits_8h.html#a69c2507b42aa5cce73b7d0538580e1ee", null ],
     [ "D_80283FF4", "ceremony__and__credits_8h.html#af9538a294ee19b1604137c0aa6adfc56", null ],
     [ "D_802856B0", "ceremony__and__credits_8h.html#a90b71c3f885a7d2ca209c2d710d37255", null ],

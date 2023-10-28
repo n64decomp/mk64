@@ -46,7 +46,6 @@ var variables_8h =
     [ "D_8018CE10", "variables_8h.html#a6bcde9bc5f0b209f31f65df5ad0493ad", null ],
     [ "D_8018D900", "variables_8h.html#a10973deea03f96575de006aebdb53f04", null ],
     [ "gCharacterIdByGPOverallRank", "variables_8h.html#a2fce3748266c007098feb5991f854b6a", null ],
-    [ "gCurrentCourseId", "variables_8h.html#a0b35aa576b8ad5250674993b72300f0d", null ],
     [ "gGPCurrentRacePlayerIdByRank", "variables_8h.html#adf1a010814a163e8727e3737c3a81b35", null ],
     [ "gGPCurrentRaceRankByPlayerId", "variables_8h.html#add62d9cde764b79f75bdda1e23560b29", null ],
     [ "gIsPlayerTripleAButtonCombo", "variables_8h.html#a7938ceec1384e33e20aee5fe4268f6dd", null ],

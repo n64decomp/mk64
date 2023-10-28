@@ -34,11 +34,6 @@ var race__logic_8c =
     [ "start_race", "race__logic_8c.html#a1b2815c62b11e33e3c74d7fd65af5edc", null ],
     [ "update_player_battle_status", "race__logic_8c.html#a9c6f4eb059607fcd18e4df0dcaaeec5b", null ],
     [ "update_race_position_data", "race__logic_8c.html#a2ac76336684bc3948c759d35cf5435b2", null ],
-    [ "D_800DC5A8", "race__logic_8c.html#a9e4e9cb5139089fd7b12f4e6210e986d", null ],
-    [ "D_800DC5AC", "race__logic_8c.html#ac2f454be03b1ded8e526e6f11ab36c35", null ],
-    [ "D_800DC5B0", "race__logic_8c.html#a7914f7a6d254104880f6f1fb796b730d", null ],
-    [ "D_800DC5B4", "race__logic_8c.html#ad393d4cd9c38becd86648e2a70b2234d", null ],
-    [ "D_800DC5B8", "race__logic_8c.html#ae65c01caf2358f36210d0ce738f008ce", null ],
     [ "D_8016348C", "race__logic_8c.html#aac5e7f61ed2c0c4e066e6b1811ecdeb0", null ],
     [ "D_8018D2AC", "race__logic_8c.html#a239a83863aa89b7c9548bbd5d77545ac", null ],
     [ "D_802B91E0", "race__logic_8c.html#a39db368619432740cac5cb65c7fce128", null ],
@@ -49,10 +44,6 @@ var race__logic_8c =
     [ "D_802BA03C", "race__logic_8c.html#a9eda822eb897f015332a199f25aee562", null ],
     [ "D_802BA040", "race__logic_8c.html#ad550ae3a9bf88f8ee61f551cebb44912", null ],
     [ "D_802BA048", "race__logic_8c.html#aa064451699e55c64c16a2e0da8dbca71", null ],
-    [ "gCurrentCourseId", "race__logic_8c.html#a0b35aa576b8ad5250674993b72300f0d", null ],
-    [ "gIsInQuitToMenuTransition", "race__logic_8c.html#a2e7d63dbfdabad69a70a95734822fe41", null ],
     [ "gLapCountByPlayerId", "race__logic_8c.html#a678223a647ce27aa2f4934dc1c777374", null ],
-    [ "gPlayerBalloonCount", "race__logic_8c.html#a89ac412ce30c2e0e583d74258a887c8b", null ],
-    [ "gPlayerWinningIndex", "race__logic_8c.html#a8a6a0e5ed8709356fba948d0beeb6a95", null ],
-    [ "gQuitToMenuTransitionCounter", "race__logic_8c.html#a5018fabd53fbeb5f453f5d76a8620c84", null ]
+    [ "gPlayerBalloonCount", "race__logic_8c.html#a89ac412ce30c2e0e583d74258a887c8b", null ]
 ];
