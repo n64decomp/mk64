@@ -108,6 +108,7 @@ var defines_8h =
     [ "NUM_COURSES_PER_CUP", "defines_8h.html#aca4b20dee1c07fe89cf8f66378ee7783", null ],
     [ "NUM_CUPS", "defines_8h.html#a4e7c17065d0458d3a2c42fa7fc2a9604", null ],
     [ "NUM_DEMOS", "defines_8h.html#af5d5871523a9da426b2143e04ba9f45d", null ],
+    [ "NUM_PLAYERS", "defines_8h.html#a463bf7c3ac98d04e82a6c2e8c00484d4", null ],
     [ "NUM_SCREEN_MODES", "defines_8h.html#a26ddda3177948a34eaf3c4d953b92b6b", null ],
     [ "NUM_SOUND_MODES", "defines_8h.html#a6da0f30c4f52ef4b3f07f38bea0b9aa6", null ],
     [ "OK", "defines_8h.html#aba51915c87d64af47fb1cc59348961c9", null ],
