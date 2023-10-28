@@ -25,6 +25,7 @@
 #include "objects.h"
 #include "bomb_kart.h"
 #include "menus.h"
+#include "data/other_textures.h"
 
 
 // WARNING: this macro is undef'd at the end of this file
@@ -2529,48 +2530,6 @@ void func_8005D1F4(s32 arg0)
     }
 }
 
-// todo: Import?
-// Appears to be balloons
-extern u8 D_0F05D1E8[]; // unk
-extern u8 D_0F05D420[]; // unk
-extern u8 D_0F05D674[]; // unk
-extern u8 D_0F05DA50[]; // unk
-extern u8 D_0F05DDFC[]; // unk
-extern u8 D_0F05DFC0[]; // unk
-extern u8 D_0F05E19C[]; // balloon top?
-extern u8 D_0F05E3E0[]; // balloon bottom?
-
-
-extern u8 gTexture69B03C[];
-extern u8 gTexture69B140[];
-extern u8 gTexture69B378[];
-extern u8 gTexture69B960[];
-extern u8 gTexture69BA28[];
-extern u8 gTexture69C1E8[];
-extern u8 gTexture69C354[];
-extern u8 gTexture69C4E4[];
-extern u8 gTexture69C80C[];
-extern u8 gTexture69C9C4[];
-extern u8 gTexture69CB84[];
-extern u8 gTexture69CCEC[];
-extern u8 gTexture69CEB8[];
-extern u8 gTexture69D148[];
-extern u8 gTexture69D4E0[];
-extern u8 gTexture69D8FC[];
-extern u8 gTexture69DCB4[];
-extern u8 gTexture69DFA0[];
-extern u8 gTexture69E25C[];
-extern u8 gTexture69E518[];
-extern u8 gTexture69E7A8[];
-extern u8 gTexture69EA18[];
-extern u8 gTexture69EC54[];
-extern u8 gTexture69EE38[];
-extern u8 gTexture69EFE0[];
-extern u8 gTextureBoingExclamation[];
-extern u8 gTextureKartShadow[];
-extern u8 gTextureLightningBolt0[];
-extern u8 gTextureLightningBolt1[];
-
 // Appears to load GP Mode race staging balloons and kart shadows.
 void func_8005D290(void) {
     D_8018D488 = dma_textures(gTexture69C80C, 0x400, 0x400);
@@ -2584,16 +2543,16 @@ void func_8005D290(void) {
     D_8018D494 = dma_textures(gTexture69C4E4, 0x400, 0x400);
     D_8018D490 = D_8018D48C;
     D_8018D498 = dma_textures(gTexture69B378, 0x1000, 0x1000);
-    D_8018D4BC = dma_textures(D_0F05E19C, 0x800, 0x800);
-    D_8018D4C0 = dma_textures(D_0F05E3E0, 0x800, 0x800);
+    D_8018D4BC = dma_textures(gTextureBalloon1, 0x800, 0x800);
+    D_8018D4C0 = dma_textures(gTextureBalloon2, 0x800, 0x800);
     D_8018D49C = dma_textures(gTexture69C9C4, 0x200, 0x200);
     D_8018D4A0 = dma_textures(gTextureBoingExclamation, 0x800, 0x800);
-    D_8018D4A4 = dma_textures(D_0F05DDFC, 0x800, 0x800);
-    D_8018D4A8 = dma_textures(D_0F05DFC0, 0x800, 0x800);
-    D_8018D4AC = dma_textures(D_0F05D674, 0x800, 0x800);
-    D_8018D4B0 = dma_textures(D_0F05DA50, 0x800, 0x800);
-    D_8018D4B4 = dma_textures(D_0F05D1E8, 0x800, 0x800);
-    D_8018D4B8 = dma_textures(D_0F05D420, 0x800, 0x800);
+    D_8018D4A4 = dma_textures(gTextureOnomatopoeiaPoomp1, 0x800, 0x800);
+    D_8018D4A8 = dma_textures(gTextureOnomatopoeiaPoomp2, 0x800, 0x800);
+    D_8018D4AC = dma_textures(gTextureOnomatopoeiaWhrrrr1, 0x800, 0x800);
+    D_8018D4B0 = dma_textures(gTextureOnomatopoeiaWhrrrr2, 0x800, 0x800);
+    D_8018D4B4 = dma_textures(gTextureOnomatopoeiaCrash1, 0x800, 0x800);
+    D_8018D4B8 = dma_textures(gTextureOnomatopoeiaCrash2, 0x800, 0x800);
     D_8018D438 = dma_textures(gTexture69CB84, 0x800, 0x800);
     D_8018D43C = dma_textures(gTexture69CCEC, 0x800, 0x800);
     D_8018D440 = dma_textures(gTexture69CEB8, 0x800, 0x800);
