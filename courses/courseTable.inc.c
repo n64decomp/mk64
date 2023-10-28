@@ -5,7 +5,7 @@
 #include "all_course_model.h"
 #include "all_course_packed.h"
 
-struct courseTable gCourseTable[] = {{
+struct CourseTable gCourseTable[] = {{
 	_course_mario_raceway_dl_mio0SegmentRomStart, _course_mario_raceway_dl_mio0SegmentRomEnd,
         _mario_raceway_vertexSegmentRomStart, _mario_raceway_vertexSegmentRomEnd,
         _course_mario_raceway_offsetsSegmentRomStart, _course_mario_raceway_offsetsSegmentRomEnd,

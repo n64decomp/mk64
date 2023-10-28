@@ -204,7 +204,6 @@ SECTIONS
       BUILD_DIR/src/os/ldiv.o(.text);
       BUILD_DIR/data/rsp.o(.text);
       BUILD_DIR/src/main.o(.data*);
-      BUILD_DIR/data/data_0DD0A0.o(.data);
       BUILD_DIR/src/code_800029B0.o(.data);
       BUILD_DIR/src/profiler.o(.data);
       BUILD_DIR/src/crash_screen.o(.data);

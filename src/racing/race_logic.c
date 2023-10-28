@@ -31,15 +31,7 @@ extern s16 D_8016348C;
 extern s32 gLapCountByPlayerId[];
 extern u16 D_802BA048;
 
-extern u16 D_800DC5B4;
-extern u16 D_800DC5B0;
-extern u16 D_800DC5B8;
-
 extern s32 D_8018D2AC;
-extern s16 gCurrentCourseId;
-extern u32 D_800DC5AC;
-extern s32 gPlayerWinningIndex;
-extern u16 gIsInQuitToMenuTransition, gQuitToMenuTransitionCounter;
 extern s32 D_802B91E0;
 
 u16 D_802BA030;
@@ -794,8 +786,6 @@ void func_8028F914(void) {
     }
     func_8028F588();
 }
-
-extern u16 D_800DC5A8;
 
 void func_8028F970(void) {
     s32 i;

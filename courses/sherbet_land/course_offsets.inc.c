@@ -100,6 +100,9 @@ const Gfx *sherbet_land_dls[] = {
     d_course_sherbet_land_dl_25A0,
     d_course_sherbet_land_dl_2530,
     d_course_sherbet_land_dl_25F8,
+};
+
+const Gfx *sherbet_land_dls_2[] = {
     d_course_sherbet_land_dl_26D0,
     d_course_sherbet_land_dl_28A0,
     d_course_sherbet_land_dl_27F0,

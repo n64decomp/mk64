@@ -32,7 +32,6 @@ extern s16 D_800E5520[];
 extern s16 D_800E5548[];
 extern u8 *gCourseOutlineTextures[0x14];
 
-extern s8 *gTextureLogoMarioKart64;
 extern s16 D_80165730;
 extern s16 D_80165740;
 extern s16 D_80165748;

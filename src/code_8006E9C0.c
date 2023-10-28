@@ -3,6 +3,7 @@
 #include <memory.h>
 #include <defines.h>
 
+#include "code_800029B0.h"
 #include "code_8006E9C0.h"
 #include "code_80071F00.h"
 #include "objects.h"
@@ -15,6 +16,7 @@
 #include "courses/all_course_data.h"
 #include "main.h"
 #include "menus.h"
+#include "data/other_textures.h"
 
 void init_object_list(void) {
 
@@ -315,7 +317,7 @@ block_26:
         D_8018D2E8 = 0x0030;
         break;
     case 3:
-        D_80165880 = dma_textures(D_0F0D0E50, 0x00004CC2U, 0x0000D980U);
+        D_80165880 = dma_textures(gTextureGhosts, 0x00004CC2U, 0x0000D980U);
         D_8018D2A0 = 0.016f;
         D_8018D2C0.unk0 = 0x0106;
         D_8018D2E0 = 0x0037;
@@ -463,7 +465,6 @@ block_26:
 GLOBAL_ASM("asm/non_matchings/code_8006E9C0/func_8006F008.s")
 #endif
 
-extern u16 gIsGamePaused;
 extern s8 D_801657E4;
 extern bool8 D_801657E6;
 extern bool8 D_801657E8;
