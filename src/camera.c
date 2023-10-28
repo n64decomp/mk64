@@ -1122,7 +1122,7 @@ void func_8001F87C(s32 cameraId) {
     if(gPlayerOne){}
     if (gActiveScreenMode == SCREEN_MODE_1P) {
         if (gModeSelection == 0) {
-            for (playerIndex = 0; playerIndex < 8; playerIndex++) {
+            for (playerIndex = 0; playerIndex < NUM_PLAYERS; playerIndex++) {
                 if ((gPlayerOne[playerIndex].type & 0x200) || (gPlayerOne[playerIndex].type & 0x80)) break;
                 if (playerIndex == 7) {
                     D_80164A2C += 1;

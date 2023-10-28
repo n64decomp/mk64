@@ -9215,7 +9215,7 @@ void func_800A2EB8(struct_8018D9E0_entry *arg0) {
     s32 var_a0;
     s32 var_s2;
 
-    for (var_s2 = 0; var_s2 < 8; var_s2++) {
+    for (var_s2 = 0; var_s2 < NUM_PLAYERS; var_s2++) {
         sp70[var_s2] = gPlayers[gGPCurrentRacePlayerIdByRank[var_s2]].characterId;
     }
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
@@ -9329,7 +9329,7 @@ void func_800A34A8(struct_8018D9E0_entry *arg0) {
                 func_800A3ADC(arg0, arg0->column + var_v1 + 0x1C, ((rank * 0x10) - arg0->row) + 0x38, sp80[rank], rank, sp80);
             }
         }
-        for (rank = 4; rank < 8; rank++) {
+        for (rank = 4; rank < NUM_PLAYERS; rank++) {
             test = arg0->unk4;
             if ((test != 8) && (test != 9)) {
                 var_v0 = 0;

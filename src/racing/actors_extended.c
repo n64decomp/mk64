@@ -1035,7 +1035,7 @@ void use_thunder_item(Player *player) {
         func_800CAB4C(player - gPlayerOne);
     }
 
-    for (index = 0; index < 8; index++) {
+    for (index = 0; index < NUM_PLAYERS; index++) {
         otherPlayer = &gPlayers[index];
         if (player != otherPlayer) {
             otherPlayer->statusEffects |= HIT_ROTATING_EFFECT;
