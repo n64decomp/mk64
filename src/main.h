@@ -247,16 +247,6 @@ extern u8 _common_texturesSegmentRomEnd[];
 extern u8 _data_802BA370SegmentRomStart[];
 extern u32 *D_801978D0; // Segment? Keeps track of segmented addresses?
 
-extern s16 gCurrentlyLoadedCourseId;
-extern s16 gCurrentCourseId;
-
 extern s16 gMatrixEffectCount;
-extern u16 gIsGamePaused; // 1 if the game is paused and 0 if the game is not paused
-extern u16 gIsInQuitToMenuTransition;
-
-extern struct UnkStruct_800DC5EC *D_800DC5EC;
-
-extern u16 D_800DC5B0;
-extern s32 gPlayerWinningIndex;
 
 #endif

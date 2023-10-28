@@ -443,8 +443,6 @@ extern s32 D_8018D3EC; // some blue
 
 extern s32 D_8018D400;
 
-extern struct UnkStruct_800DC5EC *D_800DC5F0;
-
 // Probably aren't really part of this file, but don't have a better place to put them
 extern u8 *gPortraitTLUTs[];
 extern u8 *gPortraitTextures[];

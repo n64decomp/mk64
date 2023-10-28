@@ -9,6 +9,7 @@
 #include "code_800029B0.h"
 #include "actors.h"
 #include "audio/external.h"
+#include "code_800029B0.h"
 #include "code_80005FD0.h"
 #include "code_80091750.h"
 #include "code_800AF9B0.h"
@@ -18,7 +19,6 @@
 #include <sounds.h>
 
 /** Externs to be put into headers **/
-extern u32 D_800DC5AC; // data? from this file or another (main.c?)?
 extern void rmonPrintf(const char *, ...); // not in a libultra header?
 
 /** BSS **/

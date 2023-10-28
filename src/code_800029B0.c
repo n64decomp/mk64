@@ -23,19 +23,29 @@
 #include "courses/all_course_data.h"
 #include "menus.h"
 
-extern u16 D_800DC5A8;
-
 extern s32 D_802BA038;
 extern s16 D_802BA048;
 
-extern s16 gCurrentlyLoadedCourseId;
-
-extern struct ActorSpawnData d_course_moo_moo_farm_tree_spawn[];
-
-
+s16 gCurrentCourseId = 0;
+s16 gCurrentlyLoadedCourseId = 0xFF;
+u16 D_800DC5A8 = 0;
+s32 D_800DC5AC = 0;
+u16 D_800DC5B0 = 1;
+u16 D_800DC5B4 = 0;
+u16 D_800DC5B8 = 0;
+u16 D_800DC5BC = 0;
+u16 gIsInQuitToMenuTransition = 0;
+u16 gQuitToMenuTransitionCounter = 0;
+u16 D_800DC5C8 = 0;
+UNUSED u16 D_800DC5CC = 0;
+s32 D_800DC5D0 = 0;
+s32 D_800DC5D4 = 0;
+s32 D_800DC5D8 = 0;
+s32 D_800DC5DC = 64;
 
 s32 D_800DC5E0 = 32;
 
+// This is tracking which credit "state" we're in, decides which credits are shown (and probably other stuff)
 u16 D_800DC5E4 = 0;
 
 // TODO: gPlayerWinningIndex (D_800DC5E8) accessed as word, D_800DC5EB as u8
@@ -46,7 +56,18 @@ struct UnkStruct_800DC5EC *D_800DC5EC = &D_8015F480[0];
 struct UnkStruct_800DC5EC *D_800DC5F0 = &D_8015F480[1];
 struct UnkStruct_800DC5EC *D_800DC5F4 = &D_8015F480[2];
 struct UnkStruct_800DC5EC *D_800DC5F8 = &D_8015F480[3];
-u16 gIsGamePaused = 0;
+u16 gIsGamePaused = 0; // 1 if the game is paused and 0 if the game is not paused
+u8 *pAppNmiBuffer = (u8 *) &osAppNmiBuffer;
+
+s32 gIsMirrorMode = 0;
+f32 vtxStretchY =  1.0f;
+Lights1 D_800DC610[] = {
+    gdSPDefLights1(175, 175, 175, 255, 255, 255, 0, 0, 120),
+    gdSPDefLights1(115, 115, 115, 255, 255, 255, 0, 0, 120),
+};
+static s32 pad_800029B0 = 0x80000000;
+s16 gCreditsCourseId = COURSE_LUIGI_RACEWAY;
+s16 gPlaceItemBoxes = 1;
 
 // Technically a pointer to an array, but declaring it so creates regalloc issues.
 mk64_surface_map_ram *gSurfaceMap;
@@ -105,23 +126,12 @@ u16 D_8015F894;
 // Indexed by Player ID. Track time in seconds since player has last crossed the finish line
 f32 gTimePlayerLastTouchedFinishLine[8];
 
-u8 *pAppNmiBuffer = (u8 *) &osAppNmiBuffer;
 u8 *gNmiUnknown1;
 u8 *gNmiUnknown2;
 u8 *gNmiUnknown3;
 u8 *gNmiUnknown4;
 u8 *gNmiUnknown5;
 u8 *gNmiUnknown6;
-
-s32 gIsMirrorMode = 0;
-f32 vtxStretchY =  1.0f;
-Lights1 D_800DC610[] = {
-    gdSPDefLights1(175, 175, 175, 255, 255, 255, 0, 0, 120),
-    gdSPDefLights1(115, 115, 115, 255, 255, 255, 0, 0, 120),
-};
-static s32 pad_800029B0 = 0x80000000;
-s16 gCreditsCourseId = COURSE_LUIGI_RACEWAY;
-s16 gPlaceItemBoxes = 1;
 
 Vec3f D_8015F8D0;
 s32 D_8015F8DC;

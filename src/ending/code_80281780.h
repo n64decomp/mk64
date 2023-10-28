@@ -8,22 +8,6 @@ s32 func_80281880(s32 arg0);
 void func_802818BC(void);
 void load_ceremony_cutscene(void);
 
-extern void func_80093E60(void);
-
-extern void func_802816B8(void);
-
-extern void func_80295C6C(void);
-
-extern void func_802A4D18(void);
-
-extern s16 gCurrentCourseId;
-extern u16 D_800DC5B4;
-
-extern s32 gIsMirrorMode;
-extern u16 D_800DC5BC;
-extern u16 D_800DC5C8;
-extern struct UnkStruct_800DC5EC *D_800DC5EC;
-
 extern s32 D_80287554;
 extern f32 D_801647A4;
 

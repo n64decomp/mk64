@@ -8,6 +8,7 @@
 #include "variables.h"
 #include "memory.h"
 #include "camera.h"
+#include "camera_junk.h"
 #include "spawn_players.h"
 #include "skybox_and_splitscreen.h"
 #include "code_8006E9C0.h"
@@ -16,8 +17,10 @@
 #include "collision.h"
 #include "code_80281C40.h"
 #include "code_800029B0.h"
+#include "code_80091750.h"
 #include "main.h"
 #include "menus.h"
+#include "render_courses.h"
 
 u8 defaultCharacterIds[] = {
     1, 2, 3, 4, 5, 6, 7, 0
