@@ -5581,7 +5581,7 @@ void func_800133C4(void) {
     Vec3f sp78;
     s32 pad2;
     D_801630FC += 1;
-    for (i = 0; i < 1; i++) {
+    for (i = 0; i < NUM_PADDLE_WHEEL_BOATS; i++) {
         ferry = &gFerries[i];
         if (ferry->isActive == 1) {
             temp_f26 = ferry->position[0];
@@ -5601,8 +5601,8 @@ void func_800133C4(void) {
                 func_80006114(sp78, ferry->position, ferry->rotY);
                 func_80075A6C(i, sp78, 1.1f);
             }
-            if (random_int(0x0064U) == 0) {
-                if (random_int(2U) == 0) {
+            if (random_int(100) == 0) {
+                if (random_int(2) == 0) {
                     func_800C98B8(ferry->position, ferry->velocity, 0x19018047U);
                 } else {
                     func_800C98B8(ferry->position, ferry->velocity, 0x19018048U);
