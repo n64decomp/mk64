@@ -24,6 +24,7 @@
 #include "save_data.h"
 #include "podium_ceremony_actors.h"
 #include "skybox_and_splitscreen.h"
+#include "src/data/startup_logo.inc.h"
 // TODO: Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
@@ -2571,7 +2572,7 @@ void func_800942D0(void) {
             gSPMatrix(gDisplayListHead++, test++, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
             gDPSetEnvColor(gDisplayListHead++, 0x00, 0x00, 0x00, thing);
-            gSPDisplayList(gDisplayListHead++, D_06009410);
+            gSPDisplayList(gDisplayListHead++, startup_texture_dl4);
             gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
         }
     }

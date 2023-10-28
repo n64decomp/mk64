@@ -243,7 +243,6 @@ extern Gfx D_0D0076F8[];
 extern s8 D_801657E4;
 extern bool8 D_801657E6;
 extern s32 D_8018D2AC;
-extern u16 D_800DC5B8;
 extern bool8 D_801657F0;
 extern s8 D_80165800[2];
 extern s8 D_80165801;
@@ -292,13 +291,6 @@ extern u8 *D_8018D4C8;
 
 extern u16 gPlayerBalloonStatus[8][3]; // D_8018D5F0
 extern s16 gPlayerBalloonCount[];      // D_8018D8C0
-
-extern struct UnkStruct_800DC5EC *D_800DC5EC;
-extern struct UnkStruct_800DC5EC *D_800DC5F0;
-extern struct UnkStruct_800DC5EC *D_800DC5F4;
-extern struct UnkStruct_800DC5EC *D_800DC5F8;
-
-extern u16 gIsGamePaused;
 
 extern s32   D_80164394;
 extern s32   D_80164398;

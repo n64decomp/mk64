@@ -1,4 +1,4 @@
-#include <types.h>
+#include "src/ending/ceremony_data.inc.h"
 
 Vtx silver_trophy_model[] = {
 
@@ -259,7 +259,7 @@ Vtx silver_trophy_model[] = {
 
 };
 
-static Gfx silver_trophy_dl[] = {
+Gfx silver_trophy_dl[] = {
     gsSPVertex(&silver_trophy_model[52], 31, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSP2Triangles(1, 4, 5, 0, 1, 5, 2, 0),
@@ -290,7 +290,7 @@ static Gfx silver_trophy_dl[] = {
 
 };
 
-static Gfx silver_trophy_dl2[] = {
+Gfx silver_trophy_dl2[] = {
     gsSPVertex(&silver_trophy_model[83], 26, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSP2Triangles(4, 0, 3, 0, 4, 3, 5, 0),
@@ -319,7 +319,7 @@ static Gfx silver_trophy_dl2[] = {
     gsSPEndDisplayList(),
 };
 
-static Gfx silver_trophy_dl3[] = {
+Gfx silver_trophy_dl3[] = {
     gsSPVertex(&silver_trophy_model[109], 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSP2Triangles(1, 4, 5, 0, 1, 5, 2, 0),
@@ -350,7 +350,7 @@ static Gfx silver_trophy_dl3[] = {
 
 };
 
-static Gfx silver_trophy_dl4[] = {
+Gfx silver_trophy_dl4[] = {
 
     gsSPVertex(&silver_trophy_model[165], 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -410,7 +410,7 @@ static Gfx silver_trophy_dl4[] = {
 
 };
 
-static Gfx silver_trophy_dl5[] = {
+Gfx silver_trophy_dl5[] = {
 
     gsSPVertex(&silver_trophy_model[0], 22, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -438,7 +438,7 @@ static Gfx silver_trophy_dl5[] = {
 
 };
 
-static Gfx silver_trophy_dl6[] = {
+Gfx silver_trophy_dl6[] = {
 
     gsSPVertex(&silver_trophy_model[22], 30, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -465,7 +465,7 @@ static Gfx silver_trophy_dl6[] = {
 
 };
 
-static Vtx gold_trophy_model[] = {
+Vtx gold_trophy_model[] = {
 
     {{{     0,    -250,       0}, 0, {0, 0}, {0x2e, 0x00, 0x00, 0xff}}},
     {{{   -49,    -250,    -176}, 0, {0, 0}, {0x2e, 0x00, 0x00, 0xff}}},
@@ -1253,19 +1253,19 @@ static Vtx gold_trophy_model[] = {
 
 };
 
-static u8 reflection_map_brass[2048] = {
-    #include "textures/trophy/reflection_map_brass.rgba16.inc.c"
+u8 reflection_map_brass[2048] = {
+    #include "assets/ending_ceremony/gTextureReflectionMapBrass.inc.c"
 };
 
-static u8 reflection_map_silver[2048] = {
-    #include "textures/trophy/reflection_map_silver.rgba16.inc.c"
+u8 reflection_map_silver[2048] = {
+    #include "assets/ending_ceremony/gTextureReflectionMapSilver.inc.c"
 };
 
-static u8 reflection_map_gold[2048] = {
-    #include "textures/trophy/reflection_map_gold.rgba16.inc.c"
+u8 reflection_map_gold[2048] = {
+    #include "assets/ending_ceremony/gTextureReflectionMapGold.inc.c"
 };
 
-static Gfx gold_trophy_dl[] = {
+Gfx gold_trophy_dl[] = {
 
     gsSPVertex(&gold_trophy_model[0], 22, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 3, 4, 0),
@@ -1292,7 +1292,7 @@ static Gfx gold_trophy_dl[] = {
 
 };
 
-static Gfx gold_trophy_dl2[] = {
+Gfx gold_trophy_dl2[] = {
 
     gsSPVertex(&gold_trophy_model[22], 30, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -1320,7 +1320,7 @@ static Gfx gold_trophy_dl2[] = {
 };
 
 
-static Gfx gold_trophy_dl3[] = {
+Gfx gold_trophy_dl3[] = {
 
     gsSPVertex(&gold_trophy_model[263], 31, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
@@ -1398,7 +1398,7 @@ static Gfx gold_trophy_dl3[] = {
 
 
 };
-static Gfx gold_trophy_dl4[] = {
+Gfx gold_trophy_dl4[] = {
 
     gsSPVertex(&gold_trophy_model[381], 30, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -1424,7 +1424,7 @@ static Gfx gold_trophy_dl4[] = {
     gsSPEndDisplayList(),
 
 };
-static Gfx gold_trophy_dl5[] = {
+Gfx gold_trophy_dl5[] = {
 
     gsSPVertex(&gold_trophy_model[474], 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 2, 3, 4, 0),
@@ -1503,7 +1503,7 @@ static Gfx gold_trophy_dl5[] = {
 
 };
 
-static Gfx gold_trophy_dl6[] = {
+Gfx gold_trophy_dl6[] = {
 
     gsSPVertex(&gold_trophy_model[593], 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -1573,7 +1573,7 @@ static Gfx gold_trophy_dl6[] = {
 
 };
 
-static Gfx gold_trophy_dl7[] = {
+Gfx gold_trophy_dl7[] = {
 
     gsSPVertex(&gold_trophy_model[699], 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -1623,7 +1623,7 @@ static Gfx gold_trophy_dl7[] = {
 
 };
 
-static Gfx gold_trophy_dl8[] = {
+Gfx gold_trophy_dl8[] = {
 
     gsSPTexture(0x7c0, 0x7c0, 0, G_TX_RENDERTILE, G_ON),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
@@ -1647,7 +1647,7 @@ static Gfx gold_trophy_dl8[] = {
 
 };
 
-static Gfx gold_trophy_dl9[] = {
+Gfx gold_trophy_dl9[] = {
 
     gsSPTexture(0x7c0, 0x7c0, 0, G_TX_RENDERTILE, G_ON),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
@@ -1670,7 +1670,7 @@ static Gfx gold_trophy_dl9[] = {
 
 };
 
-static Gfx gold_trophy_dl10[] = {
+Gfx gold_trophy_dl10[] = {
 
     gsDPPipeSync(),
     gsDPLoadTextureBlock((u8 *) reflection_map_gold, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
@@ -1679,7 +1679,7 @@ static Gfx gold_trophy_dl10[] = {
 
 };
 
-static Gfx gold_trophy_dl11[] = {
+Gfx gold_trophy_dl11[] = {
 
     gsDPPipeSync(),
     gsDPLoadTextureBlock((u8 *) reflection_map_gold, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
@@ -1687,7 +1687,7 @@ static Gfx gold_trophy_dl11[] = {
     gsSPEndDisplayList(),
 };
 
-static Gfx gold_trophy_dl12[] = {
+Gfx gold_trophy_dl12[] = {
 
     gsDPPipeSync(),
     gsDPLoadTextureBlock((u8 *) reflection_map_silver, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
@@ -1696,7 +1696,7 @@ static Gfx gold_trophy_dl12[] = {
 
 };
 
-static Gfx gold_trophy_dl13[] = {
+Gfx gold_trophy_dl13[] = {
 
     gsDPPipeSync(),
     gsDPLoadTextureBlock((u8 *) reflection_map_silver, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
@@ -1705,7 +1705,7 @@ static Gfx gold_trophy_dl13[] = {
 
 };
 
-static Gfx gold_trophy_dl14[] = {
+Gfx gold_trophy_dl14[] = {
 
     gsDPPipeSync(),
     gsDPLoadTextureBlock((u8 *) reflection_map_brass, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
@@ -1714,7 +1714,7 @@ static Gfx gold_trophy_dl14[] = {
 
 };
 
-static Gfx gold_trophy_dl15[] = {
+Gfx gold_trophy_dl15[] = {
 
     gsDPPipeSync(),
     gsDPLoadTextureBlock((u8 *) reflection_map_brass, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
@@ -1723,16 +1723,16 @@ static Gfx gold_trophy_dl15[] = {
 
 };
 
-static Lights1 light1 = gdSPDefLights1 (
+Lights1 light1 = gdSPDefLights1 (
     255, 255, 255,
     255, 255, 255, 0, 0, 120
 );
 
-static u8 texture_podium1[] = {
-    #include "textures/trophy/podium1.rgba16.inc.c"
+u8 texture_podium1[] = {
+    #include "assets/ending_ceremony/gTexturePodium1.inc.c"
 };
 
-static Vtx tall_podium_model[] = {
+Vtx tall_podium_model[] = {
 
     {{{    -7,       0,      -7}, 0, {    0,    0}, {0xc8, 0xe3, 0xff, 0xff}}},
     {{{    -7,       8,      -7}, 0, {    0,    0}, {0xe3, 0xf6, 0xff, 0xff}}},
@@ -1757,7 +1757,7 @@ static Vtx tall_podium_model[] = {
 
 };
 
-static Gfx podium_dl[] = {
+Gfx podium_dl[] = {
 
     gsSPSetLights1(light1),
     gsDPPipeSync(),
@@ -1786,14 +1786,14 @@ static Gfx podium_dl[] = {
 
 };
 
-static Gfx podium_dl2[] = {
+Gfx podium_dl2[] = {
 
     gsSPDisplayList(podium_dl),
     gsSPEndDisplayList(),
 
 };
 
-static Gfx podium_dl3[] = {
+Gfx podium_dl3[] = {
 
     gsSPDisplayList(podium_dl2),
     gsSPEndDisplayList(),
@@ -1801,7 +1801,7 @@ static Gfx podium_dl3[] = {
 
 };
 
-static Vtx short_podium_model[] = {
+Vtx short_podium_model[] = {
 
     {{{    -7,       0,       7}, 0, {    0,    0}, {0xc8, 0xe3, 0xff, 0xff}}},
     {{{    -7,       6,       7}, 0, {    0,    0}, {0xe3, 0xf6, 0xff, 0xff}}},
@@ -1826,16 +1826,16 @@ static Vtx short_podium_model[] = {
 
 };
 
-static Lights1 light2 = gdSPDefLights1 (
+Lights1 light2 = gdSPDefLights1 (
     255, 255, 255,
     255, 255, 255, 0, 0, 120
 );
 
-static u8 texture_podium2[] = {
-    #include "textures/trophy/podium2.rgba16.inc.c"
+u8 texture_podium2[] = {
+    #include "assets/ending_ceremony/gTexturePodium2.inc.c"
 };
 
-static Gfx podium2_dl[] = {
+Gfx podium2_dl[] = {
 
     gsSPSetLights1(light2),
     gsDPPipeSync(),
@@ -1864,28 +1864,28 @@ static Gfx podium2_dl[] = {
 
 };
 
-static Gfx podium2_dl2[] = {
+Gfx podium2_dl2[] = {
     gsSPDisplayList(podium2_dl),
     gsSPEndDisplayList(),
 };
 
-static Gfx podium2_dl3[] = {
+Gfx podium2_dl3[] = {
     gsSPDisplayList(podium2_dl2),
     gsSPEndDisplayList(),
     gsSPEndDisplayList(),
 };
 
-static Lights1 light3 = gdSPDefLights1 (
+Lights1 light3 = gdSPDefLights1 (
     255, 255, 255,
     255, 255, 255, 0, 0, 120
 );
 
-static u8 texture_podium3[] = {
-    #include "textures/trophy/podium3.rgba16.inc.c"
+u8 texture_podium3[] = {
+    #include "assets/ending_ceremony/gTexturePodium3.inc.c"
 };
 
 // Todo: rename this to left_ or right_ instead of model2.
-static Vtx short_podium_model2[] = {
+Vtx short_podium_model2[] = {
 
     {{{    -7,       0,     -21}, 0, {    0,    0}, {0xc8, 0xe3, 0xff, 0xff}}},
     {{{    -7,       4,     -21}, 0, {    0,    0}, {0xe3, 0xf6, 0xff, 0xff}}},
@@ -1910,7 +1910,7 @@ static Vtx short_podium_model2[] = {
 
 };
 
-static Gfx podium3_dl[] = {
+Gfx podium3_dl[] = {
 
     gsSPSetLights1(light3),
     gsDPPipeSync(),
@@ -1939,14 +1939,14 @@ static Gfx podium3_dl[] = {
 
 };
 
-static Gfx podium3_dl2[] = {
+Gfx podium3_dl2[] = {
 
     gsSPDisplayList(podium3_dl),
     gsSPEndDisplayList(),
 
 };
 
-static Gfx podium3_dl3[] = {
+Gfx podium3_dl3[] = {
 
     gsSPDisplayList(podium3_dl2),
     gsSPEndDisplayList(),
@@ -1954,205 +1954,106 @@ static Gfx podium3_dl3[] = {
 
 };
 
-static coursePath ending_sequence[] = {
-
-    {{   244,     248,       0}, 0},
-    {{   254,     229,       0}, 0},
-    {{   244,     246,       0}, 0},
-    {{   254,     239,       0}, 0},
-    {{   244,     216,       0}, 0},
-    {{   255,     109,       0}, 0},
-    {{   244,     160,       0}, 0},
-    {{   255,     172,       0}, 0},
-    {{   244,      62,       0}, 0},
-    {{   255,     217,       0}, 0},
-    {{   243,     193,       0}, 0},
-    {{   255,     209,       0}, 0},
-    {{   243,     143,       0}, 0},
-    {{   255,     149,       0}, 0},
-    {{   243,     125,       0}, 0},
-    {{   255,      59,       0}, 0},
-    {{   243,     159,       0}, 0},
-    {{   254,     207,       0}, 0},
-    {{   243,     205,       0}, 0},
-    {{   254,     134,       0}, 0},
-    {{   243,     178,       0}, 0},
-    {{   254,      58,       0}, 0},
-    {{   243,     121,       0}, 0},
-    {{   254,      38,       0}, 0},
-    {{   243,      44,       0}, 0},
-    {{   254,      20,       0}, 0},
-    {{   242,     186,       0}, 0},
-    {{   254,       0,       0}, 0},
-    {{   242,      63,       0}, 0},
-    {{   253,     235,       0}, 0},
-    {{   242,      32,       0}, 0},
-    {{   253,     123,       0}, 0},
-    {{   242,      61,       0}, 0},
-    {{   252,     236,       0}, 0},
-    {{   242,     229,       0}, 0},
-    {{   252,     125,       0}, 0},
-    {{   243,     241,       0}, 0},
-    {{   252,      71,       0}, 0},
-    {{   244,     154,       0}, 0},
-    {{   252,     111,       0}, 0},
-    {{   244,     238,       0}, 0},
-    {{   252,     230,       0}, 0},
-    {{   244,     240,       0}, 0},
-    {{   253,     124,       0}, 0},
-    {{   244,     250,       0}, 0},
-    {{   254,       7,       0}, 0},
+TrackWaypoint ending_sequence[] = {
+    {  -2824, 0, -283, 0 },
+    {  -2826, 0, -273, 0 },
+    {  -2856, 0, -147, 0 },
+    {  -2912, 0,  -84, 0 },
+    {  -3010, 0,  -39, 0 },
+    {  -3135, 0,  -47, 0 },
+    {  -3185, 0, -107, 0 },
+    {  -3203, 0, -197, 0 },
+    {  -3169, 0, -305, 0 },
+    {  -3123, 0, -378, 0 },
+    {  -3150, 0, -454, 0 },
+    {  -3207, 0, -474, 0 },
+    {  -3284, 0, -492, 0 },
+    {  -3398, 0, -512, 0 },
+    {  -3521, 0, -533, 0 },
+    {  -3552, 0, -645, 0 },
+    {  -3523, 0, -788, 0 },
+    {  -3355, 0, -899, 0 },
+    {  -3087, 0, -953, 0 },
+    {  -2918, 0, -913, 0 },
+    {  -2834, 0, -794, 0 },
+    {  -2832, 0, -644, 0 },
+    {  -2822, 0, -505, 0 },
+    { -32768, 0,    0, 0 },
 };
 
-static s32 path_end[] = {0x80000000, 0};
-
-static coursePath ending_sequence2[] = {
-
-    {{   241,     159,       0}, 0},
-    {{   255,     235,       0}, 1},
-    {{   241,     170,       0}, 0},
-    {{   255,     226,       0}, 1},
-    {{   241,     228,       0}, 0},
-    {{   255,     206,       0}, 1},
-    {{   242,      44,       0}, 0},
-    {{   255,     215,       0}, 1},
-    {{   242,     115,       0}, 0},
-    {{   255,     241,       0}, 1},
-    {{   242,     197,       0}, 0},
-    {{   255,     224,       0}, 1},
-    {{   243,      54,       0}, 0},
-    {{   255,     152,       0}, 1},
-    {{   243,      86,       0}, 0},
-    {{   255,      63,       0}, 1},
-    {{   243,     109,       0}, 0},
-    {{   254,     230,       0}, 1},
-    {{   243,     151,       0}, 0},
-    {{   254,     179,       0}, 1},
-    {{   243,     177,       0}, 0},
-    {{   254,     114,       0}, 1},
-    {{   243,     169,       0}, 0},
-    {{   254,      68,       0}, 1},
-    {{   243,     119,       0}, 0},
-    {{   254,      50,       0}, 1},
-    {{   243,      42,       0}, 0},
-    {{   254,      36,       0}, 1},
-    {{   242,     179,       0}, 0},
-    {{   254,      13,       0}, 1},
-    {{   242,      53,       0}, 0},
-    {{   254,      21,       0}, 1},
-    {{   241,     163,       0}, 0},
-    {{   254,      29,       0}, 1},
-    {{   241,      35,       0}, 0},
-    {{   254,     121,       0}, 1},
-    {{   240,     158,       0}, 0},
-    {{   254,     233,       0}, 1},
-    {{   240,     131,       0}, 0},
-    {{   255,     149,       0}, 1},
-    {{   240,     156,       0}, 0},
-    {{     0,      38,       0}, 1},
-    {{   241,      43,       0}, 0},
-    {{     0,      72,       0}, 1},
-
+TrackWaypoint ending_sequence2[] = {
+    {  -3681, 0,  -21, 1 },
+    {  -3670, 0,  -30, 1 },
+    {  -3612, 0,  -50, 1 },
+    {  -3540, 0,  -41, 1 },
+    {  -3469, 0,  -15, 1 },
+    {  -3387, 0,  -32, 1 },
+    {  -3274, 0, -104, 1 },
+    {  -3242, 0, -193, 1 },
+    {  -3219, 0, -282, 1 },
+    {  -3177, 0, -333, 1 },
+    {  -3151, 0, -398, 1 },
+    {  -3159, 0, -444, 1 },
+    {  -3209, 0, -462, 1 },
+    {  -3286, 0, -476, 1 },
+    {  -3405, 0, -499, 1 },
+    {  -3531, 0, -491, 1 },
+    {  -3677, 0, -483, 1 },
+    {  -3805, 0, -391, 1 },
+    {  -3938, 0, -279, 1 },
+    {  -3965, 0, -107, 1 },
+    {  -3940, 0,   38, 1 },
+    {  -3797, 0,   72, 1 },
+    { -32768, 0,    0, 0 },
 };
 
-static s32 path_end2[] = {0x80000000, 0};
-
-static coursePath ending_sequence3[] = {
-
-    {{   241,     163,       0}, 0},
-    {{   252,       4,       0}, 4},
-    {{   241,     180,       0}, 0},
-    {{   252,       4,       0}, 4},
-    {{   242,      61,       0}, 0},
-    {{   252,      28,       0}, 4},
-    {{   242,     119,       0}, 0},
-    {{   252,      28,       0}, 4},
-    {{   242,     226,       0}, 0},
-    {{   252,       6,       0}, 4},
-    {{   243,      11,       0}, 0},
-    {{   252,       2,       0}, 4},
-    {{   243,      43,       0}, 0},
-    {{   252,       9,       0}, 4},
-    {{   243,     102,       0}, 0},
-    {{   252,      48,       0}, 4},
-    {{   243,     130,       0}, 0},
-    {{   252,      78,       0}, 4},
-    {{   243,     138,       0}, 0},
-    {{   252,     108,       0}, 4},
-    {{   243,     156,       0}, 0},
-    {{   252,     221,       0}, 4},
-    {{   243,     171,       0}, 0},
-    {{   253,      51,       0}, 4},
-    {{   243,     219,       0}, 0},
-    {{   253,     184,       0}, 4},
-    {{   243,     212,       0}, 0},
-    {{   253,     247,       0}, 4},
-    {{   243,     182,       0}, 0},
-    {{   254,      25,       0}, 4},
-    {{   243,     125,       0}, 0},
-    {{   254,      22,       0}, 4},
-    {{   243,      45,       0}, 0},
-    {{   254,      13,       0}, 4},
-    {{   242,     184,       0}, 0},
-    {{   253,     249,       0}, 4},
-    {{   242,      63,       0}, 0},
-    {{   253,     205,       0}, 4},
-    {{   241,     130,       0}, 0},
-    {{   253,     147,       0}, 4},
-    {{   241,      37,       0}, 0},
-    {{   252,     220,       0}, 4},
-    {{   241,      37,       0}, 0},
-    {{   252,      67,       0}, 4},
-    {{   241,      87,       0}, 0},
-    {{   252,      23,       0}, 4},
-
+TrackWaypoint ending_sequence3[] = {
+    {  -3677, 0, -1020, 4 },
+    {  -3660, 0, -1020, 4 },
+    {  -3523, 0,  -996, 4 },
+    {  -3465, 0,  -996, 4 },
+    {  -3358, 0, -1018, 4 },
+    {  -3317, 0, -1022, 4 },
+    {  -3285, 0, -1015, 4 },
+    {  -3226, 0,  -976, 4 },
+    {  -3198, 0,  -946, 4 },
+    {  -3190, 0,  -916, 4 },
+    {  -3172, 0,  -803, 4 },
+    {  -3157, 0,  -717, 4 },
+    {  -3109, 0,  -584, 4 },
+    {  -3116, 0,  -521, 4 },
+    {  -3146, 0,  -487, 4 },
+    {  -3203, 0,  -490, 4 },
+    {  -3283, 0,  -499, 4 },
+    {  -3400, 0,  -519, 4 },
+    {  -3521, 0,  -563, 4 },
+    {  -3710, 0,  -621, 4 },
+    {  -3803, 0,  -804, 4 },
+    {  -3803, 0,  -957, 4 },
+    {  -3753, 0, -1001, 4 },
+    { -32768, 0,     0, 0 },
 };
 
-static s32 path_end3[] = {0x80000000, 0};
-
-static coursePath ending_sequence4[] = {
-
-    {{   245,      49,     255}, 230},
-    {{   255,     193,       0}, 7},
-    {{   245,      36,     255}, 226},
-    {{   255,     178,       0}, 7},
-    {{   245,      10,       0}, 0},
-    {{   255,     115,       0}, 7},
-    {{   245,      25,       0}, 0},
-    {{   255,      63,       0}, 7},
-    {{   245,      34,       0}, 0},
-    {{   255,      27,       0}, 7},
-    {{   245,      52,       0}, 0},
-    {{   254,     227,       0}, 7},
-    {{   245,      86,       0}, 0},
-    {{   254,     180,       0}, 7},
-    {{   245,     156,       0}, 0},
-    {{   254,     162,       0}, 7},
-    {{   245,     225,       0}, 0},
-    {{   254,     143,       0}, 7},
-    {{   246,      33,       0}, 0},
-    {{   254,     138,       0}, 7},
-    {{   246,     110,       0}, 0},
-    {{   254,     150,       0}, 7},
-    {{   246,     149,       0}, 0},
-    {{   254,     168,       0}, 7},
-    {{   246,     217,       0}, 0},
-    {{   254,     203,       0}, 7},
-    {{   247,      24,       0}, 0},
-    {{   254,     243,       0}, 7},
-    {{   247,      45,       0}, 0},
-    {{   255,      41,       0}, 7},
-    {{   247,      27,       0}, 0},
-    {{   255,     104,       0}, 7},
-    {{   246,     191,       0}, 0},
-    {{   255,     177,       0}, 7},
-    {{   246,      42,       0}, 0},
-    {{   255,     228,       0}, 7},
-    {{   245,     146,       0}, 0},
-    {{   255,     232,       0}, 7},
-    {{   245,      67,       0}, 0},
-    {{   255,     218,       0}, 7},
-
+TrackWaypoint ending_sequence4[] = {
+    {  -2767, -26,  -63, 7 },
+    {  -2780, -30,  -78, 7 },
+    {  -2806,   0, -141, 7 },
+    {  -2791,   0, -193, 7 },
+    {  -2782,   0, -229, 7 },
+    {  -2764,   0, -285, 7 },
+    {  -2730,   0, -332, 7 },
+    {  -2660,   0, -350, 7 },
+    {  -2591,   0, -369, 7 },
+    {  -2527,   0, -374, 7 },
+    {  -2450,   0, -362, 7 },
+    {  -2411,   0, -344, 7 },
+    {  -2343,   0, -309, 7 },
+    {  -2280,   0, -269, 7 },
+    {  -2259,   0, -215, 7 },
+    {  -2277,   0, -152, 7 },
+    {  -2369,   0,  -79, 7 },
+    {  -2518,   0,  -28, 7 },
+    {  -2670,   0,  -24, 7 },
+    {  -2749,   0,  -38, 7 },
+    { -32768,   0,    0, 0 },
 };
-
-static s32 path_end4[] = {0x80000000, 0};

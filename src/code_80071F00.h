@@ -371,9 +371,6 @@ void func_80086D80(void);
 s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, uintptr_t devAddr, void *vAddr, size_t nbytes, OSMesgQueue *mq);
 s32 osRecvMesg(OSMesgQueue*, OSMesg*, s32);
 
-// from other_textures.s
-extern u8 D_0F0D0E50[]; // gTextureGhosts
-
 // Seemingly a pointer to Lakitu texture(s)
 extern u8 *D_8018C028;
 // Seemingly a list of textures for Lakitu
@@ -403,18 +400,6 @@ extern s32 D_8018D158;
 extern s32 D_8018D1EC;
 extern s32 D_8018D224;
 extern u8* D_8018D490;
-
-// Trophy DLs I think?
-// trophy_model.inc.c
-extern Gfx D_0B0069D8[];
-extern Gfx D_0B006A28[];
-extern Gfx D_0B006A78[];
-extern Gfx D_0B006AC8[];
-extern Gfx D_0B006B18[];
-extern Gfx D_0B006B68[];
-extern Gfx D_0B0075F0[];
-extern Gfx D_0B008040[];
-extern Gfx D_0B008A90[];
 
 // This is either 3 Vec3s as separate variables or an array of s16's or an array of vec3s.
 // The other entries appear to be unused.

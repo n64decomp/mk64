@@ -6,7 +6,6 @@
 #include "common_structs.h"
 
 extern s8    gCharacterIdByGPOverallRank[8];        // D_8018D9D0
-extern s16   gCurrentCourseId;                      // D_800DC5A0
 
 extern s16   gGPCurrentRacePlayerIdByRank[8]; // D_80164360
 

@@ -633,7 +633,7 @@ Gfx common_model_flat_banana[] = {
 // tlut size 8x29
 // todo: What is this?
 s8 D_0D004C68[] = {
-    #include "textures/common/132B50_04C68_tlut.rgba16.inc.c"
+    #include "assets/trees/gTLUTTreesImport.inc.c"
 };
 
 s8 gTLUTGreenShell[] = {
@@ -643,8 +643,6 @@ s8 gTLUTGreenShell[] = {
 s8 gTLUTBlueShell[] = {
     #include "assets/blueshell/gTLUTBlueShell.inc.c"
 };
-
-//s32 fileSplitPad[4] = { 0 };
 
 Vtx D_0D005238[] = {
     {{{     3,       6,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},

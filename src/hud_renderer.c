@@ -26,6 +26,7 @@
 #include "collision.h"
 #include "main.h"
 #include "code_80086E70.h"
+#include "code_800029B0.h"
 #include "src/data/data_800E45C0.h"
 #include "courses/all_course_data.h"
 #include <vehicles.h>

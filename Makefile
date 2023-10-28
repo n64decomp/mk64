@@ -215,7 +215,7 @@ COURSE_DIRS := $(shell find courses -mindepth 1 -type d)
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 
-ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) include $(ASM_DIRS) $(ALL_KARTS_DIRS) $(TEXTURES_DIR)/raw \
+ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) include $(ASM_DIRS) $(TEXTURES_DIR)/raw \
 	$(TEXTURES_DIR)/standalone $(TEXTURES_DIR)/startup_logo $(TEXTURES_DIR)/crash_screen $(TEXTURES_DIR)/trophy $(TEXTURES_DIR)/courses        \
 	$(TEXTURE_DIRS) $(TEXTURE_DIRS)/tlut $(BIN_DIR))
 
@@ -452,27 +452,6 @@ $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
-$(BUILD_DIR)/src/ending/ceremony_data.inc.o: src/ending/ceremony_data.inc.c
-	@$(PRINT) "$(GREEN)Compiling Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/reflection_map_brass.rgba16.inc.c -g textures/trophy/reflection_map_brass.rgba16.png -f rgba16 -s u8
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/reflection_map_silver.rgba16.inc.c -g textures/trophy/reflection_map_silver.rgba16.png -f rgba16 -s u8
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/reflection_map_gold.rgba16.inc.c -g textures/trophy/reflection_map_gold.rgba16.png -f rgba16 -s u8
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/podium1.rgba16.inc.c -g textures/trophy/podium1.rgba16.png -f rgba16 -s u8
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/podium2.rgba16.inc.c -g textures/trophy/podium2.rgba16.png -f rgba16 -s u8
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/podium3.rgba16.inc.c -g textures/trophy/podium3.rgba16.png -f rgba16 -s u8
-	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) tools/set_o32abi_bit.py $@
-
-$(BUILD_DIR)/src/data/startup_logo.inc.o: src/data/startup_logo.inc.c
-	@$(PRINT) "$(GREEN)Compiling Startup Logo:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/startup_logo/reflection_map_gold.rgba16.inc.c -g textures/startup_logo/reflection_map_gold.rgba16.png -f rgba16 -s u8
-	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) tools/set_o32abi_bit.py $@
-
-
-
 #==============================================================================#
 # Common Textures Segment Generation                                           #
 #==============================================================================#
@@ -626,29 +605,39 @@ endif
 # Compile Trophy and Podium Models                                             #
 #==============================================================================#
 
-$(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o: $(BUILD_DIR)/src/ending/ceremony_data.inc.o
+LDFLAGS += -R $(BUILD_DIR)/src/ending/ceremony_data.inc.elf
+
+%/ceremony_data.inc.elf: %/ceremony_data.inc.o
+	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $@.map -o $@ $< --no-check-sections
+
+%/ceremony_data.inc.bin: %/ceremony_data.inc.elf
+	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
+
+%/ceremony_data.inc.mio0: %/ceremony_data.inc.bin
 	@$(PRINT) "$(GREEN)Compressing Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/src/ending/ceremony_data.inc.elf.map -o $(BUILD_DIR)/src/ending/ceremony_data.inc.elf $(BUILD_DIR)/src/ending/ceremony_data.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/ending/ceremony_data.inc.elf $(BUILD_DIR)/src/ending/ceremony_data.inc.bin
-	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/ending/ceremony_data.inc.bin $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$(BUILD_DIR)/src/ending/ceremony_data.inc.mio0\"\n\n.balign 16\nglabel data_821D10_end\n" > $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.s
+	$(V)$(MIO0TOOL) -c $< $@
 
-
+%/ceremony_data.inc.mio0.s: %/ceremony_data.inc.mio0
+	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel data_821D10_end\n" > $@
 
 #==============================================================================#
 # Compile Startup Logo                                                         #
 #==============================================================================#
 
-$(BUILD_DIR)/src/data/startup_logo.inc.mio0.o: src/data/startup_logo.inc.c
-	@$(PRINT) "$(GREEN)Compressing Startup Logo:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $(BUILD_DIR)/src/data/startup_logo.inc.elf.map -o $(BUILD_DIR)/src/data/startup_logo.inc.elf $(BUILD_DIR)/src/data/startup_logo.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/data/startup_logo.inc.elf $(BUILD_DIR)/src/data/startup_logo.inc.bin
-	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/data/startup_logo.inc.bin $(BUILD_DIR)/src/data/startup_logo.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n\n\n.balign 4\n\n\nglabel startup_logo\n\n.incbin \"$(BUILD_DIR)/src/data/startup_logo.inc.mio0\"\n\n.balign 16\n\nglabel data_825800_end\n" > $(BUILD_DIR)/src/data/startup_logo.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o $(BUILD_DIR)/src/data/startup_logo.inc.mio0.s
+LDFLAGS += -R $(BUILD_DIR)/src/data/startup_logo.inc.elf
 
+%/startup_logo.inc.elf: %/startup_logo.inc.o
+	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -o $@ $< --no-check-sections
 
+%/startup_logo.inc.bin: %/startup_logo.inc.elf
+	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
+
+%/startup_logo.inc.mio0: %/startup_logo.inc.bin
+	@$(PRINT) "$(GREEN)Compressing Startup Logo Model:  $(BLUE)$@ $(NO_COL)\n"
+	$(V)$(MIO0TOOL) -c $< $@
+
+%/startup_logo.inc.mio0.s: %/startup_logo.inc.mio0
+	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel data_825800_end\n" > $@
 
 #==============================================================================#
 # Compile Common Textures                                                      #
@@ -681,7 +670,7 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
-$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/data/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
+$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/data/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) $(LDFLAGS) -o $@
 
