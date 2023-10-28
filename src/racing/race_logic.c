@@ -134,7 +134,7 @@ void func_8028E298(void) {
     s32 i;
     u16 temp_a2;
 
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < NUM_PLAYERS; i++) {
 
         if ((gPlayers[i].type & PLAYER_CINEMATIC_MODE)) {
             continue;
@@ -494,7 +494,7 @@ void start_race(void) {
         D_800DC510 = 3;
     }
 
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < NUM_PLAYERS; i++) {
 
         if ((gPlayers[i].type & PLAYER_EXISTS) == 0) {
             continue;
@@ -524,7 +524,7 @@ void func_8028EF28(void) {
     s16 currentPosition;
     s32 i;
 
-    for(i = 0; i < 8; i++)
+    for(i = 0; i < NUM_PLAYERS; i++)
     {
         Player *player = &gPlayers[i];
 
@@ -654,7 +654,7 @@ void update_race_position_data(void) {
     s16 i;
     s16 position;
 
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < NUM_PLAYERS; i++) {
         if (((gPlayers[i].type & PLAYER_EXISTS) != 0) &&
             ((gPlayers[i].type & PLAYER_CINEMATIC_MODE) == 0) &&
             ((gPlayers[i].type & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
@@ -673,7 +673,7 @@ void func_8028F474(void) {
         case 4:
         case 5:
         case 7:
-            for (i = 0; i < 8; i++) {
+            for (i = 0; i < NUM_PLAYERS; i++) {
                 func_80009B60(i);
             }
         case 1:
@@ -941,7 +941,7 @@ void func_8028FCBC(void) {
             if (gScreenModeSelection != SCREEN_MODE_1P) {
                 func_8005C64C(&D_8018D2AC);
             }
-            for (i = 0; i < 8; i++) {
+            for (i = 0; i < NUM_PLAYERS; i++) {
                 if ((ply->type & PLAYER_EXISTS) == 0) {
                     continue;
                 }
@@ -1234,7 +1234,7 @@ void func_802909F0(void) {
           (!(ply->type & PLAYER_INVISIBLE_OR_BOMB)) &&
           (!(ply->effects & 0x4000000))) {
 
-            for (k = i + 1; k < 8; k++) {
+            for (k = i + 1; k < NUM_PLAYERS; k++) {
                 ply2 = &gPlayers[k];
 
                 if ((ply2->type & PLAYER_EXISTS) &&

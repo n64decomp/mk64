@@ -108,6 +108,7 @@
 #define PLAYER_THREE 2
 #define PLAYER_FOUR 3
 
+#define NUM_PLAYERS 8
 
 #define MARIO_SIZE  0.75f
 #define LUIGI_SIZE  0.75f

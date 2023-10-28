@@ -894,7 +894,7 @@ extern s8 D_80165890;
 void func_8005995C(void) {
     s32 i;
     Player *player = gPlayerOne;
-    for (i = 0; i != 4; i++) {
+    for (i = 0; i < 4; i++) {
         if ((D_80165890 != 0) && (player->type & PLAYER_INVISIBLE_OR_BOMB)) {
             player->currentItemCopy = ITEM_MUSHROOM;
             
@@ -928,7 +928,7 @@ void func_80059AC8(void) {
     if (gIsGamePaused == 0) {
         func_8008C1D8(&D_80165678);
         gRaceFrameCounter++;
-        for (i = 0; i != 8; i++) {
+        for (i = 0; i < NUM_PLAYERS; i++) {
             D_8018CF68[i] = func_8008A890(&camera1[i]);
             func_800892E0(i);
         }
@@ -967,12 +967,12 @@ void func_80059C50(void) {
     s32 playerId;
 
     func_8005A3C0();
-    for (someIndex = 0; someIndex < 8; someIndex++) {
+    for (someIndex = 0; someIndex < NUM_PLAYERS; someIndex++) {
         playerId = gGPCurrentRacePlayerIdByRank[someIndex];
         // I hate this dumb pointer access here
         gGPCurrentRaceCharacterIdByRank[someIndex] = (gPlayerOne + playerId)->characterId;
     }
-    for (someIndex = 0; someIndex < 8; someIndex++) {
+    for (someIndex = 0; someIndex < NUM_PLAYERS; someIndex++) {
         D_8018CF98[someIndex] = gGPCurrentRaceRankByPlayerId[someIndex];
     }
 }
@@ -1158,7 +1158,7 @@ void func_8005A14C(s32 playerId) {
 
 void func_8005A380(void) {
     s32 temp_s0;
-    for (temp_s0 = 0; temp_s0 < 8; ++temp_s0) {
+    for (temp_s0 = 0; temp_s0 < NUM_PLAYERS; ++temp_s0) {
         func_8005A14C(temp_s0);
     }
 }
@@ -1803,7 +1803,7 @@ void func_8005B7A0(void) {
     s16_step_towards(&D_8018CAC2, 0xE4, 0x10);
     s16_step_towards(&D_8018CAC4, 0xE4, 0x10);
     s16_step_towards(&D_8018CAC6, 0xE4, 0x10);
-    for (var_s0 = 0; var_s0 != 8; var_s0++) {
+    for (var_s0 = 0; var_s0 < NUM_PLAYERS; var_s0++) {
         temp_s2 = &D_8018D028[var_s0];
         temp_s3 = &D_8018D0C8[var_s0];
         temp_s4 = &D_8018D078[var_s0];
@@ -1926,7 +1926,7 @@ void func_8005B914(void) {
         func_8005AA94(0xA);
         break;
     case 0x6E:
-        for (i = 0; i != 8; i += 4) {
+        for (i = 0; i < NUM_PLAYERS; i += 4) {
             D_8018D050[i] = -32.0f;
             D_8018D050[i + 1] = -32.0f;
             D_8018D050[i + 2] = -32.0f;
@@ -2013,7 +2013,7 @@ void func_8005B914(void) {
         func_8005AA94(0xA);
         break;
     case 0x7E:
-        for (i = 0; i != 8; i++) {
+        for (i = 0; i < NUM_PLAYERS; i++) {
             D_8018D078[i] = 0.0f;
         }
         func_8005AA4C();
@@ -2105,7 +2105,7 @@ void func_8005B914(void) {
         func_8005B7A0();
     }
     if ((D_8018D1CC != 0) && (D_8018D1CC >= 0x14) && (D_8018D1CC < 0x1E)) {
-        for (i = 0; i != 4; i++) {
+        for (i = 0; i < 4; i++) {
             f32_step_towards(&D_8018D028[i], D_8018D0C8[i], D_8018D078[i]);
             if (D_8018D028[i] == D_8018D0C8[i]) {
                 D_8018D078[i] = 0.0f;
@@ -2257,7 +2257,7 @@ void func_8005C980(void) {
     s32 var_v0;
     s32 sp0;
     s32 temp_v1;
-    for (var_v0 = 0; var_v0 < 8; var_v0++) {
+    for (var_v0 = 0; var_v0 < NUM_PLAYERS; var_v0++) {
         temp_v1 = gGPCurrentRaceRankByPlayerId[var_v0];
         if (D_80165590 == 0) {
             D_8018CF98[var_v0] = temp_v1;
@@ -2268,7 +2268,7 @@ void func_8005C980(void) {
         }
     }
 
-    for (var_v0 = 0; var_v0 < 8; var_v0++) {
+    for (var_v0 = 0; var_v0 < NUM_PLAYERS; var_v0++) {
         sp0 = gGPCurrentRacePlayerIdByRank[var_v0];
         D_8018CF50[var_v0] = sp0;
         if (D_80165590 == 0) {

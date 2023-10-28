@@ -6389,7 +6389,7 @@ void func_80080DE4(s32 arg0) {
     s32 var_v1;
 
     player = gPlayerOne;
-    for (var_v1 = 0; var_v1 < 8; var_v1++, player++) {
+    for (var_v1 = 0; var_v1 < NUM_PLAYERS; var_v1++, player++) {
         if (arg0 == player->unk_040) {
             player->statusEffects &= ~0x100;
             player->unk_040 = -1;
@@ -6536,7 +6536,7 @@ void func_80081210(void) {
         }
     }
     player = gPlayerOne;
-    for (var_s4 = 0; var_s4 < 8; var_s4++, player++) {
+    for (var_s4 = 0; var_s4 < NUM_PLAYERS; var_s4++, player++) {
         player->boundingBoxCorners[0].unk_14 &= ~3;
         player->unk_046 &= ~0x0006;
         for (var_s2_3 = 0; var_s2_3 < D_80165750; var_s2_3++) {

@@ -1812,7 +1812,7 @@ void func_8002BF4C(Player *player, s8 arg1) {
             player->effects &= 0xFFDFFFFF;
         }
     } else {
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < NUM_PLAYERS; i++) {
             playerBorrow = &players[i];
             if (((player != playerBorrow) && 
                 ((playerBorrow->type & 0x100) == 0) && 

@@ -3325,7 +3325,7 @@ void evaluate_player_collision(void) {
     s32 i, j;
     Player *phi_s1;
 
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < NUM_PLAYERS; i++) {
         phi_s1 = &gPlayers[i];
 
         if (((phi_s1->type & 0x8000) != 0) && ((phi_s1->effects & 0x4000000) == 0)) {
