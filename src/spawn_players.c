@@ -421,11 +421,11 @@ void func_80039DA4(void) {
     if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) ||
         (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < NUM_PLAYERS; i++) {
             D_80165270[i] = sp2C[i];
         }
     } else {
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < NUM_PLAYERS; i++) {
             D_80165270[i] = spC[gGPCurrentRaceRankByPlayerId[i]];
         }
     }
@@ -1210,7 +1210,7 @@ void func_8003DB5C(void) {
     camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 0);
     camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 1);
 
-    for (playerId = 0; playerId < 8; playerId++, player++) {
+    for (playerId = 0; playerId < NUM_PLAYERS; playerId++, player++) {
         load_kart_palette(player, playerId, 1, 0);
         load_kart_palette(player, playerId, 1, 1);
     }

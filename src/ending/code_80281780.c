@@ -62,7 +62,7 @@ void debug_switch_character_ceremony_cutscene(void) {
 
 s32 func_80281880(s32 arg0) {
     s32 i;
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < NUM_PLAYERS; i++) {
         if (gCharacterIdByGPOverallRank[i] == gCharacterSelections[arg0]) break;
     }
     return i;

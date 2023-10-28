@@ -247,7 +247,7 @@ extern UnkCommonTextureStruct0 D_0D009280[];
 extern UnkCommonTextureStruct0 D_0D0092C8[];
 extern UnkCommonTextureStruct0 D_0D009310[];
 extern UnkCommonTextureStruct0 D_0D0093C0[];
-extern f32 D_0D009418[];
+extern f32 D_0D009418[][4];
 extern f32 D_0D009568[];
 extern f32 D_0D0096B8[];
 extern f32 D_0D009808[];
