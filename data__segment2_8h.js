@@ -71,6 +71,5 @@ var data__segment2_8h =
     [ "D_02007FC8", "data__segment2_8h.html#af8fef95185284153ec2b293b5d80cd73", null ],
     [ "D_02008008", "data__segment2_8h.html#a7fea781316ea992f54d7246d5cf50b85", null ],
     [ "D_02008030", "data__segment2_8h.html#a4b18264964c22e6de41576f82e9992cc", null ],
-    [ "D_02008058", "data__segment2_8h.html#a0c2544e9bb9605b3cd34fdbb9aeedf50", null ],
-    [ "D_060093F8", "data__segment2_8h.html#ad6e97ee6f60c14a3e6bbc2f66d8982f1", null ]
+    [ "D_02008058", "data__segment2_8h.html#a0c2544e9bb9605b3cd34fdbb9aeedf50", null ]
 ];

@@ -66,8 +66,6 @@ var annotated_dup =
     [ "Collision", "structCollision.html", "structCollision" ],
     [ "Controller", "structController.html", "structController" ],
     [ "course_texture", "structcourse__texture.html", "structcourse__texture" ],
-    [ "coursePath", "structcoursePath.html", "structcoursePath" ],
-    [ "courseTable", "structcourseTable.html", "structcourseTable" ],
     [ "CourseTimeTrialRecords", "structCourseTimeTrialRecords.html", "structCourseTimeTrialRecords" ],
     [ "credits_data_1FA0", "structcredits__data__1FA0.html", "structcredits__data__1FA0" ],
     [ "CtlEntry", "structCtlEntry.html", "structCtlEntry" ],

@@ -63,6 +63,5 @@ var code__8006E9C0_8h =
     [ "D_8018D2B0", "code__8006E9C0_8h.html#a4df8d238f4be06899123a31962668d4e", null ],
     [ "D_8018D2B8", "code__8006E9C0_8h.html#a957a59f315f12f7ddc1369251a06a24d", null ],
     [ "D_8018D9B0", "code__8006E9C0_8h.html#abf03887be97837949fb9ec9204cac714", null ],
-    [ "gCourseOutlineTextures", "code__8006E9C0_8h.html#a625d0ad27f8c5a2b2d0efd1899f76dae", null ],
-    [ "gTextureLogoMarioKart64", "code__8006E9C0_8h.html#a4351224f8e8bc7384bf924103d67916e", null ]
+    [ "gCourseOutlineTextures", "code__8006E9C0_8h.html#a625d0ad27f8c5a2b2d0efd1899f76dae", null ]
 ];

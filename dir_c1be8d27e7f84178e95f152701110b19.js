@@ -11,5 +11,6 @@ var dir_c1be8d27e7f84178e95f152701110b19 =
     [ "gfx_output_buffer.h", "gfx__output__buffer_8h.html", "gfx__output__buffer_8h" ],
     [ "kart_attributes.inc.c", "kart__attributes_8inc_8c.html", "kart__attributes_8inc_8c" ],
     [ "startup_logo.inc.c", "startup__logo_8inc_8c.html", "startup__logo_8inc_8c" ],
+    [ "startup_logo.inc.h", "startup__logo_8inc_8h.html", "startup__logo_8inc_8h" ],
     [ "textures.inc.c", "textures_8inc_8c.html", "textures_8inc_8c" ]
 ];

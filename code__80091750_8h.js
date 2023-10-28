@@ -285,7 +285,6 @@ var code__80091750_8h =
     [ "_course_mario_raceway_dl_mio0SegmentRomStart", "code__80091750_8h.html#a08f699625e9956f54140ca4788b9dc53", null ],
     [ "_textures_0aSegmentRomStart", "code__80091750_8h.html#a712673e1d2ef98b39ae19e4a77029b92", null ],
     [ "_textures_0bSegmentRomStart", "code__80091750_8h.html#a8ed0f29662f321434fe35c68a50d6a5b", null ],
-    [ "D_06009410", "code__80091750_8h.html#a9a97e8ef8fd200a11524d73f9399518a", null ],
     [ "D_800DDB24", "code__80091750_8h.html#aa1225cbe034f8220381bf006bcb48ba1", null ],
     [ "D_800E70A0", "code__80091750_8h.html#a23c443145e1ff12d71d7998c6fec8625", null ],
     [ "D_800E70E8", "code__80091750_8h.html#aa7df10ba8ef3f35523f9983bf20679ec", null ],

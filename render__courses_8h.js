@@ -34,22 +34,11 @@ var render__courses_8h =
     [ "render_toads_turnpike", "render__courses_8h.html#a183596d3a0b920a879da8dadc3d76e9b", null ],
     [ "render_wario_stadium", "render__courses_8h.html#a4d65b7f6d9b0a9c70fc4eb74b97fd2c9", null ],
     [ "render_yoshi_valley", "render__courses_8h.html#a6ed3e1f6ece9fefa9232027590cc4e53", null ],
-    [ "banshee_boardwalk_dls", "render__courses_8h.html#a8cfa00fce230417c7ff783e7a70b78ac", null ],
-    [ "bowsers_castle_dls", "render__courses_8h.html#a5a905629721b756cc617b4dfd5f2e0fa", null ],
-    [ "choco_mountain_dls", "render__courses_8h.html#a13c1339b4ccc812d0542224cbef76b62", null ],
-    [ "D_090001D0", "render__courses_8h.html#abd1bd3a1411b1c99da083d57e867845a", null ],
     [ "D_800DC610", "render__courses_8h.html#a8005297cf5ecea6c6824222b894c8e8f", null ],
     [ "D_8015F58A", "render__courses_8h.html#af6fad54cb9fda0130e401801645a6df1", null ],
     [ "D_8015F59C", "render__courses_8h.html#a5dc8568a195491aeddd6112247e000b2", null ],
     [ "D_802B87BC", "render__courses_8h.html#a5ef23ec890f25eb018a19f03e7e931a3", null ],
     [ "D_802B87C4", "render__courses_8h.html#a2af444c495e48a500530fea69e682168", null ],
     [ "D_802B87C8", "render__courses_8h.html#afbb4dd9882a0ef44bce101c478e79de4", null ],
-    [ "D_802B87CC", "render__courses_8h.html#a96f37bd6129294cc3ff7d1998f3b8686", null ],
-    [ "kalimari_desert_dls", "render__courses_8h.html#ab6e4720fc8f4a2853617baa8fedd16a4", null ],
-    [ "luigi_raceway_dls", "render__courses_8h.html#ab681140348194b3f3c3960aea9c1d471", null ],
-    [ "mario_raceway_dls", "render__courses_8h.html#a24750adc61761165ce43328581f15631", null ],
-    [ "moo_moo_farm_dls", "render__courses_8h.html#a501a375d8ae11c7cf0c0ec98c2d5f06b", null ],
-    [ "royal_raceway_dls", "render__courses_8h.html#a11a3e5f289f12c5d51e35bfa2f5a9e86", null ],
-    [ "sherbet_land_dls", "render__courses_8h.html#a55423112e0a1e907ee44d44a0400f85f", null ],
-    [ "wario_stadium_dls", "render__courses_8h.html#a5080a0df29b4d69f3d57fda1429bdcca", null ]
+    [ "D_802B87CC", "render__courses_8h.html#a96f37bd6129294cc3ff7d1998f3b8686", null ]
 ];
