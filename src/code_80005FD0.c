@@ -5535,7 +5535,7 @@ void func_800132F4(void) {
     s32 i;
     TrackWaypoint *temp_a2;
     u16 temp;
-    for (i = 0; i < 1; i++) {
+    for (i = 0; i < NUM_PADDLE_WHEEL_BOATS; i++) {
         temp = i * 0xB4;
         var_a1 = &gFerries[i];
         temp_a2 = &D_80163598[temp];
