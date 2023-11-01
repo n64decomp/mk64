@@ -6,9 +6,9 @@
 .section .text, "ax"
 
 # 0x800D8F70 D9B70-D9C40
-glabel rspbootTextStart
+glabel rspF3DBootStart
 .incbin "bin/lib/PR/boot/F3D_boot.bin"
-glabel rspbootTextEnd
+glabel rspF3DBootEnd
 
 # 0x800D9040 D9C40-DB020
 glabel gspF3DEXTextStart
@@ -21,9 +21,9 @@ glabel gspF3DLXTextStart
 glabel gspF3DLXTextEnd
 
 # 0x800DB830 DC430-DD0A0
-glabel aspMainTextStart
+glabel rspAspMainStart
 .incbin "bin/lib/PR/audio/aspMain.bin"
-glabel aspMainTextEnd  
+glabel rspAspMainEnd  
 
 .section .data
 
@@ -35,9 +35,9 @@ glabel gspF3DEXDataEnd
 # 0x800F4500 F5100-F5900
 glabel gspF3DLXDataStart
 .incbin "bin/lib/PR/f3d/F3DLX_data.bin"
-glabel gspF3DLXDataEn
+glabel gspF3DLXDataEnd
 
 # 0x800F4D00 F5900-F5C00
-glabel aspMainDataStart
+glabel rspAspMainDataStart
 .incbin "bin/lib/PR/audio/aspMain_data.bin"
-glabel aspMainDataEnd 
+glabel rspAspMainDataEnd 

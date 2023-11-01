@@ -100,6 +100,7 @@ Acmd *synthesis_load_reverb_ring_buffer(Acmd*, u16, u16, s32, s32);
 Acmd *synthesis_save_reverb_ring_buffer(Acmd*, u16, u16, s32, s32);
 void func_800B6FB4(s32 updateIndexStart, s32 noteIndex);
 void synthesis_load_note_subs_eu(s32 updateIndex);
+void *func_800B70EC(Acmd*, s32*, s16*, s32);
 Acmd *synthesis_resample_and_mix_reverb(Acmd*, s32, s16, s16);
 Acmd *synthesis_load_reverb_samples(Acmd*, s16, s16);
 Acmd *load_wave_samples(Acmd *acmd, struct NoteSubEu *noteSubEu, struct NoteSynthesisState *synthesisState, s32 nSamplesToLoad);
