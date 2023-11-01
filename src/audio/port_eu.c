@@ -119,7 +119,7 @@ struct SPTask *create_next_audio_frame_task(void) {
     if (osRecvMesg(D_800EA3AC, &sp54, 0) != -1) {
         func_800CBCB0((u32) sp54);
     }
-    gAudioCmd = func_800B70EC((Acmd *) gAudioCmd, &writtenCmds, currAiBuffer, gAiBufferLengths[index]);
+    gAudioCmd = synthesis_execute((Acmd *) gAudioCmd, &writtenCmds, currAiBuffer, gAiBufferLengths[index]);
     gAudioRandom = osGetCount() * (gAudioRandom + gAudioFrameCount);
     gAudioRandom = gAudioRandom + gAiBuffers[index][gAudioFrameCount & 0xFF];
 

@@ -56,6 +56,7 @@
 
 #define A_ADDMIXER              4
 #define A_RESAMPLE_ZOH          6
+#define A_SEGMENT               7
 #define A_DMEMMOVE2             16
 #define A_DOWNSAMPLE_HALF       17
 #define A_ENVSETUP1             18
