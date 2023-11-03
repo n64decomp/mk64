@@ -16,6 +16,7 @@ var collision_8c =
     [ "func_802ABE30", "collision_8c.html#afa1243eb9b3a14bc92434a8a19c162be", null ],
     [ "func_802ABEAC", "collision_8c.html#a503b45bd1853c2a4915ce6122dfef91c", null ],
     [ "func_802AC114", "collision_8c.html#adc05946f207def7dc97f5ae0ff36c9ab", null ],
+    [ "func_802AC22C", "collision_8c.html#ab7c5dcfd639fdd01af6681cf3b05d7da", null ],
     [ "func_802AD950", "collision_8c.html#a0724869c38f177efa5357ac2205857d4", null ],
     [ "func_802ADDC8", "collision_8c.html#a365367628b7140a7a880beeecce9c305", null ],
     [ "func_802AE1C0", "collision_8c.html#a9a1bda13e8f2cefd24b255d6ff15252f", null ],

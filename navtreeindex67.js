@@ -1,5 +1,10 @@
 var NAVTREEINDEX67 =
 {
+"structAdsrEnvelope.html#a0cb5b8f0c8cd0c0133ef589e194dd9a1":[1,0,26,1],
+"structAdsrEnvelope.html#af71a7c7a9c830b73debec927e98a0389":[1,0,26,0],
+"structAdsrSettings.html":[1,0,27],
+"structAdsrSettings.html#a0ba2f394fb83fdd5875c58eee587c51c":[1,0,27,2],
+"structAdsrSettings.html#a6c161c86722b83a37a7a973a43c6ecfb":[1,0,27,0],
 "structAdsrSettings.html#adc9c0231e20ad7dae1590955a91a9e7c":[1,0,27,1],
 "structAdsrState.html":[1,0,28],
 "structAdsrState.html#a51b8a1b001b478e41184844fd48d238f":[1,0,28,6],
@@ -244,10 +249,5 @@ var NAVTREEINDEX67 =
 "structCutsceneSplinePoint.html#a56141a177956feb2bf2f1dcbf347dd2e":[1,0,71,0],
 "structCutsceneSplinePoint.html#a58d0f7ecc0595b19192b1d8397de22e0":[1,0,71,1],
 "structCutsceneSplinePoint.html#a6ac9bd7f67e1080b4154901b53b00e30":[1,0,71,2],
-"structD__80150158.html":[1,0,72],
-"structD__80150158.html#a89d74859e90572976c5094359e65f992":[1,0,72,2],
-"structD__80150158.html#a9a2b85ef05b849f1199d7a39e35c37c7":[1,0,72,0],
-"structD__80150158.html#ac538eb5518499f13c7a14e959ddfe07c":[1,0,72,1],
-"structD__80150158.html#ac8c6855d05a4b4e096b6608aaf816b5a":[1,0,72,3],
-"structD__801642D8__entry.html":[1,0,73]
+"structD__80150158.html":[1,0,72]
 };

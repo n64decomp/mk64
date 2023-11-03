@@ -1,5 +1,10 @@
 var NAVTREEINDEX66 =
 {
+"staff__ghosts_8c.html#abe9080fe89ad39e653602c180ae77fda":[2,0,1,60,13],
+"staff__ghosts_8c.html#abfb817bf14935f3dd66b28f56d6d0bdc":[2,0,1,60,45],
+"staff__ghosts_8c.html#ac84dbc61897272194bd76679a847bcc9":[2,0,1,60,40],
+"staff__ghosts_8c.html#aca045aca7c525aa3059653f24491f699":[2,0,1,60,35],
+"staff__ghosts_8c.html#ad3fe55bff348a8b6cfc02f327bda8544":[2,0,1,60,9],
 "staff__ghosts_8c.html#ad8218f7caff78da5adaa2ffe036d7b59":[2,0,1,60,10],
 "staff__ghosts_8c.html#ad9b538228a8f0987738ad0e8cd7f301a":[2,0,1,60,55],
 "staff__ghosts_8c.html#ae14bfd1d1545458b0391edcc1c6bb569":[2,0,1,60,39],
@@ -244,10 +249,5 @@ var NAVTREEINDEX66 =
 "structAdpcmLoop.html#a849ae149b9ac258b1a22e1ee2b7a4dca":[1,0,25,4],
 "structAdpcmLoop.html#aa15c86265abd40fe83080f165c34e29b":[1,0,25,0],
 "structAdpcmLoop.html#adbfe1f5075302f1f33395111596b562c":[1,0,25,1],
-"structAdsrEnvelope.html":[1,0,26],
-"structAdsrEnvelope.html#a0cb5b8f0c8cd0c0133ef589e194dd9a1":[1,0,26,1],
-"structAdsrEnvelope.html#af71a7c7a9c830b73debec927e98a0389":[1,0,26,0],
-"structAdsrSettings.html":[1,0,27],
-"structAdsrSettings.html#a0ba2f394fb83fdd5875c58eee587c51c":[1,0,27,2],
-"structAdsrSettings.html#a6c161c86722b83a37a7a973a43c6ecfb":[1,0,27,0]
+"structAdsrEnvelope.html":[1,0,26]
 };

@@ -1,5 +1,10 @@
 var NAVTREEINDEX74 =
 {
+"structmk64__Vtx.html#a1677c7ccb2a85e436a23311a3c100066":[1,0,96,1],
+"structmk64__Vtx.html#a4ad89e0474e76dce1276669fca8f255e":[1,0,96,2],
+"structmk64__Vtx.html#ae28f2def706a2077de05f412acc9b4c7":[1,0,96,0],
+"structmk64__Vtx__n.html":[1,0,97],
+"structmk64__Vtx__n.html#a12715b40602f46e3f2daa9e10d1706e0":[1,0,97,1],
 "structmk64__Vtx__n.html#a226e530be81e34cd65baaab5908a44aa":[1,0,97,2],
 "structmk64__Vtx__n.html#ac74388ea35b3f7ca5a96867c6b612b40":[1,0,97,0],
 "structmk64__surface__map__ram.html":[1,0,95],
@@ -244,10 +249,5 @@ var NAVTREEINDEX74 =
 "structstruct__D__802874D8.html#a376c647d46884be2cbf01f65bf30834e":[1,0,178,1],
 "structstruct__D__802874D8.html#a543aa34b6de446afd99b5adda183eb0a":[1,0,178,4],
 "structstruct__D__802874D8.html#a81915496d06fe4f254ed97b7aec7904e":[1,0,178,0],
-"structstruct__D__802874D8.html#a9971c5c574a48f613ca5f13e34a0c038":[1,0,178,3],
-"structstruct__D__802874D8.html#ab9413587ba6f6219734dfeefef3eeb6f":[1,0,178,6],
-"structstruct__D__802874D8.html#ac2d3e30b45493f725952c0bf917c68ef":[1,0,178,5],
-"structstruct__D__802874D8.html#aeccd16c824656980ec355e3685fe60d9":[1,0,178,2],
-"structstruct__D__802BFB80.html":[1,0,179],
-"structstruct__D__802BFB80.html#aa3e9140e75cc2f654fa7fae6988de8f3":[1,0,179,0]
+"structstruct__D__802874D8.html#a9971c5c574a48f613ca5f13e34a0c038":[1,0,178,3]
 };
