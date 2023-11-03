@@ -269,7 +269,7 @@ glabel D_80164648
 glabel D_80164658
 .skip 16
 
-glabel gNearestWaypointByCameraId
+glabel gNearestWaypointByCameraId # size 4
 .skip 8
 
 glabel D_80164670

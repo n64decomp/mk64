@@ -49,6 +49,14 @@ typedef struct {
 
 extern D_801642D8_entry D_801642D8[];
 
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+    u16 unk4;
+    u16 unk6;
+} UnkStruct_46D0;
+
+
 /* Function Prototypes */
 void func_80012190(void);
 void func_8000BA14(u16, f32, f32, s16);
@@ -128,12 +136,16 @@ void func_800107C4(s32);
 s16  func_80010CB0(s32, s32);
 void func_80010DBC(s32);
 void func_80010E6C(s32);
-f32  func_80010F40(f32, f32, f32, s32);
-f32  func_80010FA0(f32, f32, f32, s32);
+f32  func_80010F40(f32, f32, f32, s32, s32);
+f32  func_80010FA0(f32, f32, f32, s32, s32);
 
-u16 func_80011014(TrackWaypoint *, TrackWaypoint *, s32, s32);
+s32 func_80011014(TrackWaypoint *, TrackWaypoint *, s32, s32);
 s32  process_path_data(TrackWaypoint*, TrackWaypoint*);
-s32  func_8001168C(void*, void*, s32);
+typedef struct {
+    s16 x;
+    s16 z;
+} PathNoY;
+s32  func_8001168C(PathNoY*, TrackWaypoint*, s32);
 void func_80011A5C(void);
 void func_80011AB8(s32);
 void func_80011AE4(s32);
@@ -258,11 +270,7 @@ extern s16 D_80164672;
 extern s16 D_80164674;
 extern s16 D_80164676;
 extern s16 D_80164678[]; // Size 4? Is the three below this fake?
-extern s16 D_8016467A;
-extern s16 D_8016467C;
-extern s16 D_8016467E;
 extern s16 D_80164680[];
-extern s16 D_80164682;
 extern f32 D_80164688[];
 extern s16 D_801646C0[];
 extern s16 D_801646CC;

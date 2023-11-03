@@ -18,16 +18,16 @@
 
 f32 D_800DDB30[] = { 0.4f, 0.6f, 0.275f, 0.3f };
 
+// Future BSS section, replaces unknown amount of stuff in bss_8001C4D0.s
+// f32 D_80164A30;
+// s32 D_80164A2C;
+// f32 D_8016524C; <- could maybe, maybe be part of spawn_players' bss stuff?
+
 Camera cameras[4];
 Camera *camera1 = &cameras[0];
 Camera *camera2 = &cameras[1];
 Camera *camera3 = &cameras[2];
 Camera *camera4 = &cameras[3];
-
-// Future BSS section, replaces unknown amount of stuff in bss_8001C4D0.s
-// f32 D_80164A30;
-// s32 D_80164A2C;
-// f32 D_8016524C; <- could maybe, maybe be part of spawn_players' bss stuff?
 
 extern f32 D_80164498[];
 extern s16 D_80164678[];
