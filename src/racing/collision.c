@@ -634,8 +634,131 @@ void func_802AC114(Vec3f pos1, f32 boundingBoxSize, Vec3f pos2, UNUSED f32 unk) 
     }
 }
 
-// UNUSED mk64_surface_map_ram *func_802AC22C(void *arg)
-GLOBAL_ASM("asm/non_matchings/racing/collision/func_802AC22C.s")
+s32 func_802AC22C(KartBoundingBoxCorner *arg0) {
+    Collision spD0;
+    s32 stackPadding0;
+    s32 stackPadding1;
+    s32 stackPadding2;
+    s32 stackPadding3;
+    s32 stackPadding4;
+    s32 stackPadding5;
+    s32 stackPadding6;
+    s32 stackPadding7;
+    s32 stackPadding8;
+    s32 stackPadding9;
+    s32 stackPaddingA;
+    s32 stackPaddingB;
+    s32 temp1;
+    s32 temp2;
+    f32 temp_f22;
+    f32 temp_f24;
+    f32 temp_f26;
+    s16 temp_f4;
+    s16 temp_f6;
+    u16 var_s2;
+    u16 temp_v1;
+    u16 temp_s0;
+    s16 temp_v1_2;
+    u16 var_s1;
+
+    spD0.unk30 = 0;
+    spD0.unk32 = 0;
+    spD0.unk34 = 0;
+    spD0.unk3C[0] = 1000.0f;
+    spD0.unk3C[1] = 1000.0f;
+    spD0.unk3C[2] = 1000.0f;
+    temp_f22 = arg0->cornerPos[0];
+    temp_f24 = arg0->cornerPos[1];
+    temp_f26 = arg0->cornerPos[2];
+    switch (arg0->surfaceFlags) {                              /* irregular */
+    case 0x80:
+        if (func_802AB6C4(&spD0, 5.0f, temp_f22, temp_f24, temp_f26, (u16) (s32) arg0->surfaceMapIndex) == 1) {
+            arg0->cornerGroundY = func_802ABE30(temp_f22, temp_f24, temp_f26, arg0->surfaceMapIndex);
+            return 1;
+        }
+        break;
+    case 0x40:
+        if (func_802AAE4C(&spD0, 5.0f, temp_f22, temp_f24, temp_f26, (u16) (s32) arg0->surfaceMapIndex) == 1) {
+            arg0->cornerGroundY = func_802ABE30(temp_f22, temp_f24, temp_f26, arg0->surfaceMapIndex);
+            return 1;
+        }
+        break;
+    case 0x20:
+        if (func_802AB288(&spD0, 5.0f, temp_f22, temp_f24, temp_f26, (u16) (s32) arg0->surfaceMapIndex) == 1) {
+            arg0->cornerGroundY = func_802ABE30(temp_f22, temp_f24, temp_f26, arg0->surfaceMapIndex);
+            return 1;
+        }
+        break;
+    default:
+        break;
+    }
+    temp1 = D_8015F6E8 - D_8015F6EA;
+    temp2 = D_8015F6F0 - D_8015F6F2;
+    temp_f4 = (temp_f22 - D_8015F6EA) / (temp1 / 32);
+    temp_f6 = (temp_f26 - D_8015F6F2) / (temp2 / 32);
+    if (temp_f4 < 0) {
+        return 0;
+    }
+    if (temp_f6 < 0) {
+        return 0;
+    }
+    if (temp_f4 >= 0x20) {
+        return 0;
+    }
+    if (temp_f6 >= 0x20) {
+        return 0;
+    }
+
+    temp_v1_2 = (temp_f4 + temp_f6 * 32);
+    temp_v1 = D_8014F110[temp_v1_2].unk2;
+    if (temp_v1 == 0) {
+        return 0;
+    }
+    var_s1 = D_8014F110[temp_v1_2].unk0;
+    for (var_s2 = 0; var_s2 < temp_v1; var_s2++) {
+        temp_s0 = D_8015F584[var_s1];
+        if (gSurfaceMap[temp_s0].flags & 0x4000) {
+            if (temp_s0 != arg0->surfaceMapIndex) {
+                if (func_802AAE4C(&spD0, 5.0f, temp_f22, temp_f24, temp_f26, temp_s0) == 1) {
+                    arg0->cornerGroundY = func_802ABE30(temp_f22, temp_f24, temp_f26, temp_s0);
+                    arg0->surfaceType = gSurfaceMap[temp_s0].surfaceType;
+                    arg0->surfaceFlags = 0x40;
+                    arg0->surfaceMapIndex = temp_s0;
+                    if (gSurfaceMap[temp_s0].flags & 0x1000) {
+                        arg0->unk_14 = 1;
+                    } else {
+                        arg0->unk_14 = 0;
+                    }
+                    return 1;
+                }
+            }
+        } else if (gSurfaceMap[temp_s0].flags & 0x8000) {
+            if ((gSurfaceMap[temp_s0].height != 1.0f) && (temp_s0 != arg0->surfaceMapIndex)) {
+                if (func_802AB6C4(&spD0, 5.0f, temp_f22, temp_f24, temp_f26, temp_s0) == 1) {
+                    arg0->cornerGroundY = func_802ABE30(temp_f22, temp_f24, temp_f26, temp_s0);
+                    arg0->surfaceType = gSurfaceMap[temp_s0].surfaceType;
+                    arg0->surfaceFlags = 0x80;
+                    arg0->surfaceMapIndex = temp_s0;
+                    return 1;
+                }
+            }
+        } else if ((gSurfaceMap[temp_s0].rotation != 1.0f) && (temp_s0 != arg0->surfaceMapIndex)) {
+            if (func_802AB288(&spD0, 5.0f, temp_f22, temp_f24, temp_f26, temp_s0) == 1) {
+                arg0->cornerGroundY = func_802ABE30(temp_f22, temp_f24, temp_f26, temp_s0);
+                arg0->surfaceType = gSurfaceMap[temp_s0].surfaceType;
+                arg0->surfaceFlags = 0x20;
+                arg0->surfaceMapIndex = temp_s0;
+                return 1;
+            }
+        }
+        var_s1++;
+    }
+    arg0->cornerGroundY = temp_f24;
+    arg0->surfaceType = 0;
+    // Another function that has a return value but doesn't have an explicit return statement in one of its codepaths.
+    // The return value at this point will be whatever was last returned by func_802AAE4C/func_802AB6C4/func_802AB288
+    // depending on which (if any) if statements were entered on the loop's last cycle
+}
 
 s32 is_colliding_with_drivable_surface(Collision *collision, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 index, f32 posX, f32 posY, f32 posZ) {
     mk64_surface_map_ram *tile = &gSurfaceMap[index];
