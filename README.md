@@ -3,9 +3,7 @@ This work-in-progress decompilation of Mario Kart 64 pursues historical and educ
 
 This repository does not contain assets. Compiling requires asset extraction from a prior copy of the game.
 
-Currently it only supports these releases: US (us), EU 1.0 (eu-1.0) and EU 1.1 (eu-final).
-
-It builds the following ROMs:
+It supports and builds the following versions:
 
 | ROM Output        | Revision| SHA-1 Checksum                           |
 |-------------------|---------|------------------------------------------|

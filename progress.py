@@ -476,39 +476,39 @@ elif args.format == 'nonmatchingFuncs':
     print(str(TotalNonMatchingFunctions))
 # Shows decompilation progress output in a fancy way.
 elif args.format == 'text':
-    outputLenght = 67 # Horizontal lenght of the text in the terminal output
+    outputLength = 67 # Horizontal length of the text in the terminal output
     # "Magic" number is 48, which is 3 laps * 4 courses * 3 cups
     bytesPerTotalLaps = total_code_size // 47 # Total size // (Magic number - 1)
-    srcDivNear = find_closest_divisible(total, 49) # Correct division diving closest divisble and (Magic number + 1)
-    lapTotalCounts = int(srcDivNear / bytesPerTotalLaps) # Game progres count, sets were should be in a simulated game, can be between 0 - 47
-    curLapProgress = int(((srcDivNear % bytesPerTotalLaps) * (outputLenght - 1)) / (bytesPerTotalLaps)) # Progress of a lap depending of the output lenght
-    curLapCount = int((lapTotalCounts % 3) + 1) # Lap count, can be Between 1 - 3 (3 laps total)
+    srcDivNear = find_closest_divisible(total, 49) # Correct division by diving closest divisible with (Magic number + 1)
+    lapTotalCounts = int(srcDivNear / bytesPerTotalLaps) # Game progress count, sets where are we in a simulated game, can be between 0 - 47
+    curLapProgress = int(((srcDivNear % bytesPerTotalLaps) * (outputLength - 1)) / (bytesPerTotalLaps)) # Progress of a lap depending of the output length
+    curLapCount = int((lapTotalCounts % 3) + 1) # Lap count, can be between 1 - 3 (3 laps total)
     curCourseCount = int(lapTotalCounts / 3) # Course count, can be between 0 - 15 (16 courses total)
     curCupCount = int((lapTotalCounts / 12) % 12) # Cup count, can be between 0 - 3 (4 cups total)
 
     # Print current decompilation progress.
-    print(str(center_text((str(" Non Matching progress mode ") if args.nonmatching else str("")), outputLenght, "=")))
-    print(str(center_text(" All Cups (Decompilation) ", outputLenght)))
-    print(str(center_text(" " + str(round(totalPct, 2))+"% Complete ", outputLenght, "-")))
-    print(str(center_text(" # Decompiled functions: " + str(TotalCFunctions) + " ", outputLenght)))
-    print(str(center_text(" # GLOBAL_ASM remaining: " + str(TotalGlobalAsmFunctions) + " ", outputLenght)))
-    print(str(center_text(" # NON_MATCHING remaining: " + str(TotalNonMatchingFunctions) + " ", outputLenght)))
-    print(str(center_text(" # MIPS_TO_C remaining: " + str(TotalMipsToCFunctions) + " ", outputLenght)))
-    print(str(center_text(" Game Status ", outputLenght, "-")))
+    print(str(center_text((str(" Non Matching progress mode ") if args.nonmatching else str("")), outputLength, "=")))
+    print(str(center_text(" All Cups (Decompilation) ", outputLength)))
+    print(str(center_text(" " + str(round(totalPct, 2))+"% Complete ", outputLength, "-")))
+    print(str(center_text(" # Decompiled functions: " + str(TotalCFunctions) + " ", outputLength)))
+    print(str(center_text(" # GLOBAL_ASM remaining: " + str(TotalGlobalAsmFunctions) + " ", outputLength)))
+    print(str(center_text(" # NON_MATCHING remaining: " + str(TotalNonMatchingFunctions) + " ", outputLength)))
+    print(str(center_text(" # MIPS_TO_C remaining: " + str(TotalMipsToCFunctions) + " ", outputLength)))
+    print(str(center_text(" Game Status ", outputLength, "-")))
 
     # Simlautes an All Cups race, prints how much the player has been progressing.
     if TotalGlobalAsmFunctions > 0:
-        print(str(center_text(check_table_cond(0, curCupCount, mkCups) + " - " + check_table_cond(1, curCupCount, mkCups), outputLenght)))
-        print(str(center_text(check_table_cond(2, curCupCount, mkCups) + " - " + check_table_cond(3, curCupCount, mkCups), outputLenght)))
-        print(str(center_text(" Lap Progress Bar and Race Status ", outputLenght, "-")))
-        print(str(move_character_from_bar(curLapProgress, outputLenght, "O", "-")))
-        print(str(center_text("We are in " + str(get_string_from_table(curCupCount, mkCups)) + " racing at " +  str(get_string_from_table(curCourseCount, mkCourses)) + " (Lap " + str(curLapCount) + "/3)", outputLenght)))
+        print(str(center_text(check_table_cond(0, curCupCount, mkCups) + " - " + check_table_cond(1, curCupCount, mkCups), outputLength)))
+        print(str(center_text(check_table_cond(2, curCupCount, mkCups) + " - " + check_table_cond(3, curCupCount, mkCups), outputLength)))
+        print(str(center_text(" Lap Progress Bar and Race Status ", outputLength, "-")))
+        print(str(move_character_from_bar(curLapProgress, outputLength, "O", "-")))
+        print(str(center_text("We are in " + str(get_string_from_table(curCupCount, mkCups)) + " racing at " +  str(get_string_from_table(curCourseCount, mkCourses)) + " (Lap " + str(curLapCount) + "/3)", outputLength)))
     else:
-        print(str(center_text("Mushroom Cup (V) - Flower Cup (V)", outputLenght)))
-        print(str(center_text("Star Cup (V) - Special Cup (V)", outputLenght)))
-        print(str(center_text("We finished All Cups! We got all 4 Gold Cups!", outputLenght)))
+        print(str(center_text("Mushroom Cup (V) - Flower Cup (V)", outputLength)))
+        print(str(center_text("Star Cup (V) - Special Cup (V)", outputLength)))
+        print(str(center_text("We finished All Cups! We got all 4 Gold Cups!", outputLength)))
 
-    print(str(center_text((str(" Non Matching progress mode ") if args.nonmatching else str("")), outputLenght, "=")))
+    print(str(center_text((str(" Non Matching progress mode ") if args.nonmatching else str("")), outputLength, "=")))
 # Shows decompilation progress output in verbose mode.
 elif args.format == 'verbose':
     adjective = "decompiled" if args.nonmatching else "matched"
