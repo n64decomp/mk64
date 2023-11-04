@@ -915,14 +915,16 @@ typedef short ENVMIX_STATE[40];
  * The previous version of this function rounded up to the nearest
  * multiple of 16 bytes.
  */
-// #define aInterleave(pkt, o, l, r, c)                                    \
-// {                                                                       \
-//         Acmd *_a = (Acmd *)pkt;                                         \
-//                                                                         \
-//         _a->words.w0 = _SHIFTL(A_INTERLEAVE, 24, 8) |                   \
-//                     _SHIFTL((c) >> 4, 16, 8) | _SHIFTL(o, 0, 16);       \
-//         _a->words.w1 = _SHIFTL(l, 16, 16) | _SHIFTL(r, 0, 16);          \
-// }
+/*
+#define aInterleave(pkt, o, l, r, c)                                    \
+{                                                                       \
+        Acmd *_a = (Acmd *)pkt;                                         \
+                                                                        \
+        _a->words.w0 = _SHIFTL(A_INTERLEAVE, 24, 8) |                   \
+                    _SHIFTL((c) >> 4, 16, 8) | _SHIFTL(o, 0, 16);       \
+        _a->words.w1 = _SHIFTL(l, 16, 16) | _SHIFTL(r, 0, 16);          \
+}
+*/
 
 /*
  * Linear filter function.
