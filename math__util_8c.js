@@ -9,6 +9,7 @@ var math__util_8c =
     [ "calculate_rotation_matrix", "math__util_8c.html#ab9faf7f44e869c2270678250306a9546", null ],
     [ "calculate_vector_angle_xy", "math__util_8c.html#af524d0a35bc0c97564ca6c9cb6aae60f", null ],
     [ "coss", "math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f", null ],
+    [ "func_802B4F60", "math__util_8c.html#a9593fb456bacc9c69fda24d718e44969", null ],
     [ "func_802B4FF0", "math__util_8c.html#a67a2cdaf1527810cfceaae7a94fa20de", null ],
     [ "func_802B51E8", "math__util_8c.html#aa7f03785fe0e64d1fde8e9b02651cfd9", null ],
     [ "func_802B5258", "math__util_8c.html#a193420d088e83d9e4855c536fd4e2bf8", null ],

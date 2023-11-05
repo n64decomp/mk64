@@ -1,5 +1,7 @@
 var NAVTREEINDEX70 =
 {
+"structPaddleWheelBoat.html#a13855281c1459077beb9a4e7f8478a37":[1,0,125,0],
+"structPaddleWheelBoat.html#a1f0605c31f4b5daac9882f80c2637117":[1,0,125,5],
 "structPaddleWheelBoat.html#a2d7a35ed976dc26fb5925f0017c78d79":[1,0,125,9],
 "structPaddleWheelBoat.html#a4b167594716e305f92305e1b6c9e09a0":[1,0,125,7],
 "structPaddleWheelBoat.html#a500f0d5169fa8601aaba11cf13514b28":[1,0,125,10],
@@ -247,7 +249,5 @@ var NAVTREEINDEX70 =
 "structSeqOrBankEntry.html#a277046429254499bb6ff951c81714d93":[1,0,145,3],
 "structSeqOrBankEntry.html#a416bfb04131bc8f88f9ef60c3ab53d79":[1,0,145,0],
 "structSeqOrBankEntry.html#a970e3bb4e58a3a033742eaaed511b551":[1,0,145,2],
-"structSeqOrBankEntry.html#aca73d6b5641e6ef48b0cb165a83c1e22":[1,0,145,1],
-"structSequenceChannel.html":[1,0,146],
-"structSequenceChannel.html#a01f6754eb412ac217c3c251caad84035":[1,0,146,43]
+"structSeqOrBankEntry.html#aca73d6b5641e6ef48b0cb165a83c1e22":[1,0,145,1]
 };

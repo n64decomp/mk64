@@ -11,6 +11,7 @@ var math__util_8h =
     [ "calculate_vector_angle_xy", "math__util_8h.html#a1cc1da4ce5ea759c84c0421657c016c3", null ],
     [ "coss", "math__util_8h.html#a7273ac6683194fe1c0fd6047bcfa6eb3", null ],
     [ "fabs", "math__util_8h.html#a8fb5c0b9b43a108724b355136d29d2f9", null ],
+    [ "func_802B4F60", "math__util_8h.html#a80bcda98825c2196bcf2d7773d0c87e4", null ],
     [ "func_802B51E8", "math__util_8h.html#a70575ba46667d6f92359a412a06da8c5", null ],
     [ "func_802B5258", "math__util_8h.html#aaf43cc8f58adb897c2a997aa12cad88d", null ],
     [ "func_802B5564", "math__util_8h.html#abd1a0f950c852c8eb022bd4145f8289f", null ],

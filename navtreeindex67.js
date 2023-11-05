@@ -1,5 +1,7 @@
 var NAVTREEINDEX67 =
 {
+"structAdpcmLoop.html#adbfe1f5075302f1f33395111596b562c":[1,0,25,1],
+"structAdsrEnvelope.html":[1,0,26],
 "structAdsrEnvelope.html#a0cb5b8f0c8cd0c0133ef589e194dd9a1":[1,0,26,1],
 "structAdsrEnvelope.html#af71a7c7a9c830b73debec927e98a0389":[1,0,26,0],
 "structAdsrSettings.html":[1,0,27],
@@ -247,7 +249,5 @@ var NAVTREEINDEX67 =
 "structCutscene.html#ae1b25b8bf4f5b72ad672f766ae617145":[1,0,70,1],
 "structCutsceneSplinePoint.html":[1,0,71],
 "structCutsceneSplinePoint.html#a56141a177956feb2bf2f1dcbf347dd2e":[1,0,71,0],
-"structCutsceneSplinePoint.html#a58d0f7ecc0595b19192b1d8397de22e0":[1,0,71,1],
-"structCutsceneSplinePoint.html#a6ac9bd7f67e1080b4154901b53b00e30":[1,0,71,2],
-"structD__80150158.html":[1,0,72]
+"structCutsceneSplinePoint.html#a58d0f7ecc0595b19192b1d8397de22e0":[1,0,71,1]
 };

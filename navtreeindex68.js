@@ -1,5 +1,7 @@
 var NAVTREEINDEX68 =
 {
+"structCutsceneSplinePoint.html#a6ac9bd7f67e1080b4154901b53b00e30":[1,0,71,2],
+"structD__80150158.html":[1,0,72],
 "structD__80150158.html#a89d74859e90572976c5094359e65f992":[1,0,72,2],
 "structD__80150158.html#a9a2b85ef05b849f1199d7a39e35c37c7":[1,0,72,0],
 "structD__80150158.html#ac538eb5518499f13c7a14e959ddfe07c":[1,0,72,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX68 =
 "structNote.html#a962842df6352d781b95daa1d5ef52f77":[1,0,100,12],
 "structNote.html#a9951b24128dbb11640130bf5c04e4b34":[1,0,100,8],
 "structNote.html#aaa15be4fbf957b58ad50c760e971eeb5":[1,0,100,0],
-"structNote.html#ab876ff55ca7a84677ba76c12dedf9ec5":[1,0,100,6],
-"structNote.html#abd3501a8f180a2e242f25eac90f6f006":[1,0,100,7],
-"structNote.html#acb6498cf6c900ac099722a0b00525f7d":[1,0,100,4]
+"structNote.html#ab876ff55ca7a84677ba76c12dedf9ec5":[1,0,100,6]
 };

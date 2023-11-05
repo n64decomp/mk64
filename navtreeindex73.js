@@ -1,5 +1,7 @@
 var NAVTREEINDEX73 =
 {
+"structVehicleStuff.html#ab174cad75b6325f59a72da8934329c89":[1,0,239,3],
+"structVehicleStuff.html#abf63879b2d12bc756cc5d0e7f2509040":[1,0,239,10],
 "structVehicleStuff.html#adabbb0908d3cb32d925fa954c0834906":[1,0,239,6],
 "structVehicleStuff.html#ae8c2e2384b5c6c6ff8595468c5e41d3b":[1,0,239,4],
 "structVibratoState.html":[1,0,240],
@@ -247,7 +249,5 @@ var NAVTREEINDEX73 =
 "structldiv__t.html#a0f217ff62b8640aa945ec84d6d0bd000":[1,0,90,1],
 "structldiv__t.html#a73efd59c176304c327cb4214d0e5e5c9":[1,0,90,0],
 "structlldiv__t.html":[1,0,91],
-"structlldiv__t.html#a32d4596a917aa9b496c8a49178a0e3c6":[1,0,91,1],
-"structlldiv__t.html#ae4d4bccdf22f41e052073f5790c5ec37":[1,0,91,0],
-"structmk64__Vtx.html":[1,0,96]
+"structlldiv__t.html#a32d4596a917aa9b496c8a49178a0e3c6":[1,0,91,1]
 };
