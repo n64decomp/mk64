@@ -1,6 +1,5 @@
 var NAVTREEINDEX69 =
 {
-"structNote.html#abd3501a8f180a2e242f25eac90f6f006":[1,0,100,7],
 "structNote.html#acb6498cf6c900ac099722a0b00525f7d":[1,0,100,4],
 "structNote.html#acb65073283d073ca4db00521d34f0e45":[1,0,100,3],
 "structNote.html#ad0a972c83730f0ce9b1d9be225004cac":[1,0,100,11],
@@ -249,5 +248,6 @@ var NAVTREEINDEX69 =
 "structOnlyBestTimeTrialRecords.html#a893ecb20d3c6f02ba0e40428899c896c":[1,0,108,1],
 "structOnlyBestTimeTrialRecords.html#ae870e3959d821975470b9c07fd83cdc6":[1,0,108,2],
 "structPaddleWheelBoat.html":[1,0,125],
-"structPaddleWheelBoat.html#a04c8b0f00d8fa9d26e2190baacca43da":[1,0,125,2]
+"structPaddleWheelBoat.html#a04c8b0f00d8fa9d26e2190baacca43da":[1,0,125,2],
+"structPaddleWheelBoat.html#a13855281c1459077beb9a4e7f8478a37":[1,0,125,0]
 };

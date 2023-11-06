@@ -1,8 +1,7 @@
 var external_8c =
 [
-    [ "C70A8_INDEX", "external_8c.html#a81867f16e044e53baa6766cd8fcdb3b0", null ],
-    [ "C70A8_INDEX2", "external_8c.html#aa9b7984834909a2295a425f45e95ae79", null ],
-    [ "C70A8_INDEX3", "external_8c.html#ad2561ed45c63cb91b987bd3727720c3c", null ],
+    [ "AUDIO_LEFT_TYRE", "external_8c.html#a58d23d666321d5851d59dd07027a5bdf", null ],
+    [ "AUDIO_RIGHT_TYRE", "external_8c.html#a627582fcc9de130ccaf1dda2c1e34aa5", null ],
     [ "delete_sound_from_bank", "external_8c.html#ac0fb767de7e14a03f1bcfa53f0abd23b", null ],
     [ "fade_channel_volume_scale", "external_8c.html#a6f30b8a58790a4ee08f797faf98f24d6", null ],
     [ "func_800C13F0", "external_8c.html#a3e03b5fc0c689242a0a9ca2dea4e2f7e", null ],
