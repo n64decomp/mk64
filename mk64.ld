@@ -34,7 +34,7 @@ SECTIONS
    END_SEG(boot)
 
    /* 0x80000400 001000-0D9B70 [D8B70] */
-   BEGIN_SEG(main, SEG_MAIN) SUBALIGN(16)
+   BEGIN_SEG(main, SEG_MAIN) SUBALIGN(0x10)
    {
       BUILD_DIR/asm/entry.o(.text);
       BUILD_DIR/src/main.o(.text*);
@@ -450,7 +450,7 @@ SECTIONS
 
    /* 0x0F000000 145470-63E278 [4F8E08] */
    /* compressed kart textures and palettes */
-   BEGIN_SEG(kart_textures, 0x0F000000)
+   BEGIN_SEG(kart_textures, 0x0F000000) SUBALIGN(0x10)
    {
       BUILD_DIR/data/karts/luigi_kart.o(.data);
       BUILD_DIR/data/karts/mario_kart.o(.data);
@@ -461,7 +461,6 @@ SECTIONS
       BUILD_DIR/data/karts/donkeykong_kart.o(.data);
       BUILD_DIR/data/karts/bowser_kart.o(.data);
       BUILD_DIR/courses/staff_ghosts.inc.o(.data);
-      . = ALIGN(0x10);
    }
    END_SEG(kart_textures)
 
