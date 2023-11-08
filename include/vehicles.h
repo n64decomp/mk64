@@ -47,10 +47,10 @@ typedef struct {
 	/* 0x02 */ // s16 compilerPadding;
 	/* 0x04 */ Vec3f position; //
 	/* 0x10 */ Vec3f velocity; //
-	/* 0x1C */ s16 waypointIndex; //
+	/* 0x1C */ u16 waypointIndex; //
 	/* 0x1E */ s16 actorIndex; //
 	/* 0x20 */ f32 someMultiplier; //
-	/* 0x24 */ s16 yRotation; // Only Y rotation is tracked in this struct
+	/* 0x24 */ s16 rotY; // Only Y rotation is tracked in this struct
 	/* 0x26 */ // s16 compilerPadding2;
 	/**
 	 * Bit field that tracks whether a given human player is within a certain distance of the boat
@@ -83,7 +83,7 @@ typedef struct {
 extern TrainStuff sTrains[];
 
 // This is an array, maybe they intended to have multiple boats at some point in development?
-extern PaddleWheelBoatStuff D_801637C0[];
+extern PaddleWheelBoatStuff gFerries[];
 
 // Lists for different vehicles in Toad's Turnpike
 extern VehicleStuff gBoxTruckList[];

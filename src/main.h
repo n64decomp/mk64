@@ -231,12 +231,6 @@ extern f32 gCourseTimer;
 
 // end of definition of main.c variables
 
-extern u64 rspbootTextStart[], rspbootTextEnd[];
-extern u64 gspF3DEXTextStart[], gspF3DEXTextEnd[];
-extern u64 gspF3DLXTextStart[], gspF3DLXTextEnd[];
-extern u64 gspF3DEXDataStart[];
-extern u64 gspF3DLXDataStart[];
-
 extern u64 gGfxSPTaskOutputBuffer[];
 extern u32 gGfxSPTaskOutputBufferSize;
 

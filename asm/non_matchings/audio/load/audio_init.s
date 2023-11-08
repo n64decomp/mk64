@@ -110,8 +110,8 @@ glabel audio_init
 /* 0BCE30 800BC230 0044082B */  sltu  $at, $v0, $a0
 /* 0BCE34 800BC234 1420FFFD */  bnez  $at, .L800BC22C
 /* 0BCE38 800BC238 A443FFFE */   sh    $v1, -2($v0)
-/* 0BCE3C 800BC23C 3C18803B */  lui   $t8, %hi(gAudioUpdatesPerFrame) # $t8, 0x803b
-/* 0BCE40 800BC240 271870B8 */  addiu $t8, %lo(gAudioUpdatesPerFrame) # addiu $t8, $t8, 0x70b8
+/* 0BCE3C 800BC23C 3C18803B */  lui   $t8, %hi(gAudioFrameCount) # $t8, 0x803b
+/* 0BCE40 800BC240 271870B8 */  addiu $t8, %lo(gAudioFrameCount) # addiu $t8, $t8, 0x70b8
 /* 0BCE44 800BC244 AF000000 */  sw    $zero, ($t8)
 /* 0BCE48 800BC248 3C01803B */  lui   $at, %hi(gAudioTaskIndex) # $at, 0x803b
 /* 0BCE4C 800BC24C AC2070C0 */  sw    $zero, %lo(gAudioTaskIndex)($at)

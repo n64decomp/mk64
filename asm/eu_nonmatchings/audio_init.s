@@ -71,8 +71,8 @@ glabel audio_init
 /* BCDC4 800BC1C4 0044082B */  sltu       $at, $v0, $a0
 /* BCDC8 800BC1C8 1420FFFD */  bnez       $at, .L800BC1C0
 /* BCDCC 800BC1CC A443FFFE */   sh        $v1, -0x2($v0)
-/* BCDD0 800BC1D0 3C0F803B */  lui        $t7, %hi(gAudioUpdatesPerFrame)
-/* BCDD4 800BC1D4 25EF70B8 */  addiu      $t7, $t7, %lo(gAudioUpdatesPerFrame)
+/* BCDD0 800BC1D0 3C0F803B */  lui        $t7, %hi(gAudioFrameCount)
+/* BCDD4 800BC1D4 25EF70B8 */  addiu      $t7, $t7, %lo(gAudioFrameCount)
 /* BCDD8 800BC1D8 ADE00000 */  sw         $zero, 0x0($t7)
 /* BCDDC 800BC1DC 3C01803B */  lui        $at, %hi(gAudioTaskIndex)
 /* BCDE0 800BC1E0 AC2070C0 */  sw         $zero, %lo(gAudioTaskIndex)($at)

@@ -37,6 +37,7 @@ void sequence_channel_set_volume(struct SequenceChannel *seqChannel, u8 volume);
 void seq_channel_layer_process_script(struct SequenceChannelLayer *layer);
 void sequence_player_process_sequence(struct SequencePlayer*);
 void sequence_channel_process_script(struct SequenceChannel*);
+void process_sequences(s32);
 void init_sequence_player(u32 player);
 void init_sequence_players(void);
 
