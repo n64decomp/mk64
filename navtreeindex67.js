@@ -1,5 +1,12 @@
 var NAVTREEINDEX67 =
 {
+"structALWaveTable__s.html#acc769d06bf577d20eeb968567b0e905e":[1,0,44,2],
+"structALWaveTable__s.html#aebc02789aef2309a8a3d1dce0975b043":[1,0,44,5],
+"structALWaveTable__s.html#aef2c7c83689509bcdb65f9a508135712":[1,0,44,6],
+"structActor.html":[1,0,21],
+"structActor.html#a1a515077e28877484ea593456e07b0d6":[1,0,21,5],
+"structActor.html#a40d6b4340f478a137d04651cc68a7aac":[1,0,21,9],
+"structActor.html#a8fedca3871be05588e5263f4a184ad5d":[1,0,21,4],
 "structActor.html#aafc0746715101e8b4dd9afcd88a90ab9":[1,0,21,3],
 "structActor.html#abb823b9528b91c1bc292f8729803785a":[1,0,21,10],
 "structActor.html#acd34f66c2555a2b2dba239da10475057":[1,0,21,6],
@@ -242,12 +249,5 @@ var NAVTREEINDEX67 =
 "structCollision.html":[1,0,63],
 "structCollision.html#a0efc6bf3ed2c3d042e5b81dcd7679ed4":[1,0,63,1],
 "structCollision.html#a4b2dc607e86c5d93d6923c59cad702e9":[1,0,63,6],
-"structCollision.html#a7e2e601b4ea17e62338548b33e740fef":[1,0,63,0],
-"structCollision.html#a8670ba4685a8638c001516c5c35bcf15":[1,0,63,5],
-"structCollision.html#a8d0f128e51e27be430cabcd21d0b8410":[1,0,63,4],
-"structCollision.html#abbac7b426b00b3cfcd6037628163cc74":[1,0,63,8],
-"structCollision.html#ac99d52b4414ffb7b2c2a16ad4564075c":[1,0,63,3],
-"structCollision.html#ad3599679696383e04124e76cd5bc7215":[1,0,63,10],
-"structCollision.html#ada8217269198c57bb97a2b383ac0843d":[1,0,63,9],
-"structCollision.html#ae75d61b5d234a28a8c08dfb14e326013":[1,0,63,2]
+"structCollision.html#a7e2e601b4ea17e62338548b33e740fef":[1,0,63,0]
 };

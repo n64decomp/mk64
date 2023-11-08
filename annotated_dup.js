@@ -225,6 +225,7 @@ var annotated_dup =
     [ "UnkStruct_800DDB40", "structUnkStruct__800DDB40.html", "structUnkStruct__800DDB40" ],
     [ "UnkStruct_800DDB68", "structUnkStruct__800DDB68.html", "structUnkStruct__800DDB68" ],
     [ "UnkStruct_8015F584", "structUnkStruct__8015F584.html", "structUnkStruct__8015F584" ],
+    [ "UnkStruct_8018E7E8", "structUnkStruct__8018E7E8.html", "structUnkStruct__8018E7E8" ],
     [ "UnkStruct_80287500", "structUnkStruct__80287500.html", "structUnkStruct__80287500" ],
     [ "UnkStruct_802B53C8", "structUnkStruct__802B53C8.html", "structUnkStruct__802B53C8" ],
     [ "UnkStruct_802B8CD4", "structUnkStruct__802B8CD4.html", "structUnkStruct__802B8CD4" ],
