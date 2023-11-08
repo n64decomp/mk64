@@ -349,13 +349,13 @@ glabel D_80165740
 glabel D_80165748
 .skip 8
 
-glabel D_80165750
+glabel gNumActiveThwomps
 .skip 4
 
 glabel D_80165754
 .skip 4
 
-glabel D_80165758
+glabel gThowmpSpawnList
 .skip 8
 
 glabel D_80165760

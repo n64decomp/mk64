@@ -5,19 +5,12 @@
 #include "common_structs.h"
 #include "camera.h"
 
-#define NUM_YV_FLAG_POLES 4
-
 // This struct is used by a lot of different objects
 // Stars, clouds, exahust smoke (I think?)
 typedef struct {
     Vec3su pos;
     u16 id;
 } StarSpawn;
-
-typedef struct {
-    Vec3s pos;
-    u16 rot;
-} YVFlagPoleSpawn;
 
 void func_80077D5C(s32);
 s32  find_unused_obj_index(s32*);
@@ -153,6 +146,7 @@ void func_80076538(s32);
 void func_8007661C(void);
 void func_8007675C(s32, Vec3s, s32);
 s32  func_80076828(Vec3s, s32);
+void func_80076884(s32);
 void func_80076958(s32);
 void func_800769D8(s32);
 void func_80076AEC(s32);
@@ -379,8 +373,6 @@ extern u8 *D_8018C028;
 // I'm also not certain about its dimensions
 // I think the entires in this array are way over-sized
 extern u8 D_80183FA8[4][0x2000];
-
-extern YVFlagPoleSpawn D_800E5DF4[NUM_YV_FLAG_POLES];
 
 // Something related to the rotation(?) of ice in Sherbet Land
 extern u16 D_801657A2;
