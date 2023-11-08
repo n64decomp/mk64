@@ -1,10 +1,5 @@
 var NAVTREEINDEX70 =
 {
-"structObjects.html#a76bbc15df00fb421b671e89936ff9e3c":[1,0,109,10],
-"structObjects.html#a78c8b12bf99cab42af5dacc164e444e7":[1,0,109,21],
-"structObjects.html#a78dd3c2194768c1bfe821a8e9c80a4b7":[1,0,109,51],
-"structObjects.html#a78f98a19003f4366c5ea5ef184ae12f3":[1,0,109,35],
-"structObjects.html#a81472d1100b9d6425b6247035c84421e":[1,0,109,63],
 "structObjects.html#a892882996c6bfda1e714639252b7e506":[1,0,109,16],
 "structObjects.html#a923f1a87e62b151f1a3f2590dad2ddd8":[1,0,109,41],
 "structObjects.html#a93e1689183de92e1d2eddc1df688a48d":[1,0,109,47],
@@ -249,5 +244,10 @@ var NAVTREEINDEX70 =
 "structRailroadCrossing.html#abf434f92ec088485a5e5842f2878118e":[1,0,139,3],
 "structRailroadCrossing.html#ada3db7bde004fe66a5b0ff43eadc32dd":[1,0,139,6],
 "structRailroadCrossing.html#adb9d15641f3264973cacf57821f9eab9":[1,0,139,2],
-"structRailroadCrossing.html#ae8dffede0df7f0e6c6eef1e9c9a131d8":[1,0,139,4]
+"structRailroadCrossing.html#ae8dffede0df7f0e6c6eef1e9c9a131d8":[1,0,139,4],
+"structReverbBitsData.html":[1,0,141],
+"structReverbBitsData.html#a42316602952126aea4ef731d64cfbed5":[1,0,141,1],
+"structReverbBitsData.html#a4a5b15fa3204aaff61778baceaf0e2df":[1,0,141,4],
+"structReverbBitsData.html#a5585a368192d386cb043ea9b5aa59d8b":[1,0,141,3],
+"structReverbBitsData.html#a58cec041c8715194507a1bbbea43b39a":[1,0,141,2]
 };

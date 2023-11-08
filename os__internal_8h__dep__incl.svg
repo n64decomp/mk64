@@ -445,48 +445,48 @@ var sectionId = 'dynsection-0';
 <path fill="none" stroke="midnightblue" d="M2912.17,-112.05C2666.55,-91.58 2089.71,-141.34 1870.5,-76 1854.06,-71.1 1853.48,-62.22 1837.5,-56 1806.92,-44.1 1722.51,-28.88 1666.23,-19.54"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="2911.92,-115.54 2922.19,-112.94 2912.54,-108.57 2911.92,-115.54"/>
 </g>
-<!-- Node30 -->
+<!-- Node31 -->
 <g id="node27" class="node">
-<title>Node30</title>
+<title>Node31</title>
 <g id="a_node27"><a xlink:href="seqplayer_8c.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="1689,-0.5 1689,-19.5 1808,-19.5 1808,-0.5 1689,-0.5"/>
 <text text-anchor="middle" x="1748.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/seqplayer.c</text>
 </a>
 </g>
 </g>
-<!-- Node20&#45;&gt;Node30 -->
+<!-- Node20&#45;&gt;Node31 -->
 <g id="edge32" class="edge">
-<title>Node20&#45;&gt;Node30</title>
+<title>Node20&#45;&gt;Node31</title>
 <path fill="none" stroke="midnightblue" d="M2911.92,-112.01C2676.95,-91.93 2131.47,-122.61 1918.5,-76 1895.92,-71.06 1892.01,-64.45 1870.5,-56 1836.67,-42.72 1797.14,-28.34 1772.46,-19.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="2911.91,-115.53 2922.19,-112.94 2912.54,-108.56 2911.91,-115.53"/>
 </g>
-<!-- Node33 -->
+<!-- Node32 -->
 <g id="node28" class="node">
-<title>Node33</title>
+<title>Node32</title>
 <g id="a_node28"><a xlink:href="synthesis_8c.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="1826,-0.5 1826,-19.5 1945,-19.5 1945,-0.5 1826,-0.5"/>
 <text text-anchor="middle" x="1885.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/synthesis.c</text>
 </a>
 </g>
 </g>
-<!-- Node20&#45;&gt;Node33 -->
+<!-- Node20&#45;&gt;Node32 -->
 <g id="edge33" class="edge">
-<title>Node20&#45;&gt;Node33</title>
+<title>Node20&#45;&gt;Node32</title>
 <path fill="none" stroke="midnightblue" d="M2912.2,-112.15C2768.99,-102.59 2047.21,-117.32 1951.5,-76 1923.74,-64.02 1901.16,-34.58 1891.12,-19.79"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="2911.94,-115.64 2922.19,-112.95 2912.5,-108.66 2911.94,-115.64"/>
 </g>
-<!-- Node35 -->
+<!-- Node30 -->
 <g id="node29" class="node">
-<title>Node35</title>
+<title>Node30</title>
 <g id="a_node29"><a xlink:href="port__eu_8c.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="3490,-56.5 3490,-75.5 3599,-75.5 3599,-56.5 3490,-56.5"/>
 <text text-anchor="middle" x="3544.5" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/port_eu.c</text>
 </a>
 </g>
 </g>
-<!-- Node20&#45;&gt;Node35 -->
+<!-- Node20&#45;&gt;Node30 -->
 <g id="edge31" class="edge">
-<title>Node20&#45;&gt;Node35</title>
+<title>Node20&#45;&gt;Node30</title>
 <path fill="none" stroke="midnightblue" d="M3030.71,-116.76C3125.73,-109.73 3318.08,-94.59 3480.5,-76 3483.51,-75.66 3486.6,-75.28 3489.71,-74.89"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="3030.44,-113.27 3020.72,-117.5 3030.95,-120.25 3030.44,-113.27"/>
 </g>
@@ -823,15 +823,15 @@ var sectionId = 'dynsection-0';
 <path fill="none" stroke="midnightblue" d="M1950.41,-56.29C1882.72,-47.23 1773.68,-32.63 1679.5,-20 1676.59,-19.61 1673.61,-19.21 1670.6,-18.81"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1950.12,-59.78 1960.5,-57.64 1951.05,-52.84 1950.12,-59.78"/>
 </g>
-<!-- Node24&#45;&gt;Node30 -->
+<!-- Node24&#45;&gt;Node31 -->
 <g id="edge27" class="edge">
-<title>Node24&#45;&gt;Node30</title>
+<title>Node24&#45;&gt;Node31</title>
 <path fill="none" stroke="midnightblue" d="M1963.14,-54.41C1912.68,-44.2 1837.3,-28.96 1790.61,-19.52"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1962.7,-57.89 1973.19,-56.44 1964.09,-51.03 1962.7,-57.89"/>
 </g>
-<!-- Node24&#45;&gt;Node33 -->
+<!-- Node24&#45;&gt;Node32 -->
 <g id="edge28" class="edge">
-<title>Node24&#45;&gt;Node33</title>
+<title>Node24&#45;&gt;Node32</title>
 <path fill="none" stroke="midnightblue" d="M1985.41,-52.5C1961.04,-42.38 1927.36,-28.39 1906,-19.52"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1984.32,-55.84 1994.9,-56.44 1987.01,-49.38 1984.32,-55.84"/>
 </g>

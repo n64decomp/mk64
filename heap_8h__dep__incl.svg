@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 625;
+var viewWidth = 752;
 var viewHeight = 84;
 var sectionId = 'dynsection-1';
 </script>
@@ -54,13 +54,13 @@ var sectionId = 'dynsection-1';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>src/audio/heap.h</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-80 620.5,-80 620.5,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-80 747.5,-80 747.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="235.5,-56.5 235.5,-75.5 332.5,-75.5 332.5,-56.5 235.5,-56.5"/>
-<text text-anchor="middle" x="284" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/heap.h</text>
+<polygon fill="#bfbfbf" stroke="black" points="300.5,-56.5 300.5,-75.5 397.5,-75.5 397.5,-56.5 300.5,-56.5"/>
+<text text-anchor="middle" x="349" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/heap.h</text>
 </a>
 </g>
 </g>
@@ -76,8 +76,8 @@ var sectionId = 'dynsection-1';
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M236.59,-54.15C192,-43.95 126.15,-28.88 85.22,-19.52"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="236.08,-57.62 246.61,-56.44 237.64,-50.8 236.08,-57.62"/>
+<path fill="none" stroke="midnightblue" d="M291.39,-54.66C234.5,-44.46 148.55,-29.04 95.47,-19.52"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="290.84,-58.12 301.31,-56.44 292.08,-51.23 290.84,-58.12"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
@@ -91,8 +91,8 @@ var sectionId = 'dynsection-1';
 <!-- Node1&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node1&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M255.23,-52.37C232.19,-42.26 200.52,-28.35 180.4,-19.52"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="253.95,-55.63 264.51,-56.44 256.76,-49.22 253.95,-55.63"/>
+<path fill="none" stroke="midnightblue" d="M309.2,-53.57C273.73,-43.38 222.63,-28.7 190.65,-19.52"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="308.63,-57.05 319.21,-56.44 310.57,-50.32 308.63,-57.05"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
@@ -106,38 +106,53 @@ var sectionId = 'dynsection-1';
 <!-- Node1&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node1&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M284,-45.8C284,-36.91 284,-26.78 284,-19.75"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="280.5,-46.08 284,-56.08 287.5,-46.08 280.5,-46.08"/>
+<path fill="none" stroke="midnightblue" d="M330.73,-49.82C319.08,-40.15 304.4,-27.95 294.63,-19.83"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="328.63,-52.63 338.56,-56.32 333.1,-47.24 328.63,-52.63"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="seqplayer_8c.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="360.5,-0.5 360.5,-19.5 479.5,-19.5 479.5,-0.5 360.5,-0.5"/>
-<text text-anchor="middle" x="420" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/seqplayer.c</text>
+<g id="a_node5"><a xlink:href="port__eu_8c.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="360.5,-0.5 360.5,-19.5 469.5,-19.5 469.5,-0.5 360.5,-0.5"/>
+<text text-anchor="middle" x="415" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/port_eu.c</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node1&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M315.13,-52.64C340.66,-42.5 376.11,-28.43 398.55,-19.52"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="313.55,-49.5 305.55,-56.44 316.14,-56.01 313.55,-49.5"/>
+<path fill="none" stroke="midnightblue" d="M367.55,-49.82C379.38,-40.15 394.29,-27.95 404.2,-19.83"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="365.13,-47.28 359.6,-56.32 369.56,-52.7 365.13,-47.28"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="synthesis_8c.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="497.5,-0.5 497.5,-19.5 616.5,-19.5 616.5,-0.5 497.5,-0.5"/>
-<text text-anchor="middle" x="557" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/synthesis.c</text>
+<g id="a_node6"><a xlink:href="seqplayer_8c.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="487.5,-0.5 487.5,-19.5 606.5,-19.5 606.5,-0.5 487.5,-0.5"/>
+<text text-anchor="middle" x="547" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/seqplayer.c</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node1&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M337.22,-54.47C388.81,-44.27 466.1,-28.98 513.94,-19.52"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="336.39,-51.07 327.26,-56.44 337.75,-57.94 336.39,-51.07"/>
+<path fill="none" stroke="midnightblue" d="M390.44,-53.7C427.81,-43.51 481.94,-28.74 515.77,-19.52"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="389.1,-50.44 380.37,-56.44 390.94,-57.19 389.1,-50.44"/>
+</g>
+<!-- Node7 -->
+<g id="node7" class="node">
+<title>Node7</title>
+<g id="a_node7"><a xlink:href="synthesis_8c.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="624.5,-0.5 624.5,-19.5 743.5,-19.5 743.5,-0.5 624.5,-0.5"/>
+<text text-anchor="middle" x="684" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/synthesis.c</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node7 -->
+<g id="edge6" class="edge">
+<title>Node1&#45;&gt;Node7</title>
+<path fill="none" stroke="midnightblue" d="M407.91,-55.5C471.04,-45.33 570.35,-29.32 631.08,-19.53"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="407.03,-52.1 397.71,-57.15 408.14,-59.01 407.03,-52.1"/>
 </g>
 </g>
 </svg>

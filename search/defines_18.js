@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['yoshi_28702',['YOSHI',['../defines_8h.html#a6a404189274b097f2b1d7d6bde0d490d',1,'defines.h']]],
-  ['yoshi_5fsize_28703',['YOSHI_SIZE',['../defines_8h.html#a7c821aaafac23cd14652df9992dc2fb5',1,'defines.h']]]
+  ['yoshi_28699',['YOSHI',['../defines_8h.html#a6a404189274b097f2b1d7d6bde0d490d',1,'defines.h']]],
+  ['yoshi_5fsize_28700',['YOSHI_SIZE',['../defines_8h.html#a7c821aaafac23cd14652df9992dc2fb5',1,'defines.h']]]
 ];

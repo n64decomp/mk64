@@ -305,48 +305,48 @@ var sectionId = 'dynsection-1';
 <path fill="none" stroke="midnightblue" d="M1668.52,-254.62C2012.35,-252.33 3743.51,-239.32 3789.5,-210 3815.55,-193.39 3825.16,-154.44 3828.23,-137.1"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1668.49,-251.12 1658.51,-254.69 1668.54,-258.12 1668.49,-251.12"/>
 </g>
-<!-- Node19 -->
+<!-- Node20 -->
 <g id="node16" class="node">
-<title>Node19</title>
+<title>Node20</title>
 <g id="a_node16"><a xlink:href="seqplayer_8c.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="3906,-118 3906,-137 4025,-137 4025,-118 3906,-118"/>
 <text text-anchor="middle" x="3965.5" y="-125" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/seqplayer.c</text>
 </a>
 </g>
 </g>
-<!-- Node9&#45;&gt;Node19 -->
+<!-- Node9&#45;&gt;Node20 -->
 <g id="edge21" class="edge">
-<title>Node9&#45;&gt;Node19</title>
+<title>Node9&#45;&gt;Node20</title>
 <path fill="none" stroke="midnightblue" d="M1668.78,-254.58C2009.68,-252.08 3708.93,-238.24 3815.5,-210 3871.94,-195.04 3930.34,-154.84 3954.26,-137.11"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1668.6,-251.08 1658.62,-254.66 1668.65,-258.08 1668.6,-251.08"/>
 </g>
-<!-- Node22 -->
+<!-- Node21 -->
 <g id="node17" class="node">
-<title>Node22</title>
+<title>Node21</title>
 <g id="a_node17"><a xlink:href="synthesis_8c.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="3400,-118 3400,-137 3519,-137 3519,-118 3400,-118"/>
 <text text-anchor="middle" x="3459.5" y="-125" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/synthesis.c</text>
 </a>
 </g>
 </g>
-<!-- Node9&#45;&gt;Node22 -->
+<!-- Node9&#45;&gt;Node21 -->
 <g id="edge22" class="edge">
-<title>Node9&#45;&gt;Node22</title>
+<title>Node9&#45;&gt;Node21</title>
 <path fill="none" stroke="midnightblue" d="M1668.72,-254.62C1882.25,-252.99 2605.15,-244.9 2702.5,-210 2724,-202.29 2722.05,-186.87 2743.5,-179 2878.7,-129.42 3247.74,-161.86 3390.5,-143 3401.42,-141.56 3413.19,-139.34 3423.87,-137.06"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1668.62,-251.13 1658.65,-254.7 1668.67,-258.13 1668.62,-251.13"/>
 </g>
-<!-- Node24 -->
+<!-- Node19 -->
 <g id="node18" class="node">
-<title>Node24</title>
+<title>Node19</title>
 <g id="a_node18"><a xlink:href="port__eu_8c.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="652,-185 652,-204 761,-204 761,-185 652,-185"/>
 <text text-anchor="middle" x="706.5" y="-192" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/port_eu.c</text>
 </a>
 </g>
 </g>
-<!-- Node9&#45;&gt;Node24 -->
+<!-- Node9&#45;&gt;Node19 -->
 <g id="edge20" class="edge">
-<title>Node9&#45;&gt;Node24</title>
+<title>Node9&#45;&gt;Node19</title>
 <path fill="none" stroke="midnightblue" d="M1550.1,-254.91C1413,-254.03 1064.14,-247.89 775.5,-210 764.58,-208.57 752.81,-206.35 742.13,-204.08"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1550.36,-258.41 1560.38,-254.97 1550.4,-251.41 1550.36,-258.41"/>
 </g>
@@ -852,15 +852,15 @@ var sectionId = 'dynsection-1';
 <path fill="none" stroke="midnightblue" d="M3733.71,-179.96C3757.7,-167.07 3793.06,-148.07 3813.44,-137.13"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="3731.97,-176.92 3724.82,-184.73 3735.28,-183.08 3731.97,-176.92"/>
 </g>
-<!-- Node13&#45;&gt;Node19 -->
+<!-- Node13&#45;&gt;Node20 -->
 <g id="edge16" class="edge">
-<title>Node13&#45;&gt;Node19</title>
+<title>Node13&#45;&gt;Node20</title>
 <path fill="none" stroke="midnightblue" d="M3752.37,-182.4C3803.09,-169.58 3885.49,-148.74 3931.56,-137.08"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="3751.2,-179.09 3742.36,-184.94 3752.92,-185.88 3751.2,-179.09"/>
 </g>
-<!-- Node13&#45;&gt;Node22 -->
+<!-- Node13&#45;&gt;Node21 -->
 <g id="edge17" class="edge">
-<title>Node13&#45;&gt;Node22</title>
+<title>Node13&#45;&gt;Node21</title>
 <path fill="none" stroke="midnightblue" d="M3665.99,-182.4C3616.85,-169.58 3537.02,-148.74 3492.38,-137.08"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="3665.13,-185.8 3675.69,-184.94 3666.9,-179.02 3665.13,-185.8"/>
 </g>

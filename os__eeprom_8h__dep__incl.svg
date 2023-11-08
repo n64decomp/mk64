@@ -169,48 +169,48 @@ var sectionId = 'dynsection-1';
 <path fill="none" stroke="midnightblue" d="M2163,-254.57C1883.16,-252.38 704.76,-241.37 543.5,-210 504.85,-202.48 497.82,-191.56 460.5,-179 412.87,-162.97 356.85,-146.62 323.04,-137.03"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="2163.32,-258.07 2173.35,-254.65 2163.38,-251.07 2163.32,-258.07"/>
 </g>
-<!-- Node12 -->
+<!-- Node13 -->
 <g id="node9" class="node">
-<title>Node12</title>
+<title>Node13</title>
 <g id="a_node9"><a xlink:href="seqplayer_8c.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="369,-118 369,-137 488,-137 488,-118 369,-118"/>
 <text text-anchor="middle" x="428.5" y="-125" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/seqplayer.c</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node12 -->
+<!-- Node2&#45;&gt;Node13 -->
 <g id="edge14" class="edge">
-<title>Node2&#45;&gt;Node12</title>
+<title>Node2&#45;&gt;Node13</title>
 <path fill="none" stroke="midnightblue" d="M2163.13,-254.54C1892.95,-252.27 786.12,-241.14 634.5,-210 596.64,-202.22 491.24,-156.42 447.7,-137.09"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="2163.11,-258.04 2173.14,-254.62 2163.17,-251.04 2163.11,-258.04"/>
 </g>
-<!-- Node15 -->
+<!-- Node14 -->
 <g id="node10" class="node">
-<title>Node15</title>
+<title>Node14</title>
 <g id="a_node10"><a xlink:href="synthesis_8c.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="506,-118 506,-137 625,-137 625,-118 506,-118"/>
 <text text-anchor="middle" x="565.5" y="-125" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/synthesis.c</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node15 -->
+<!-- Node2&#45;&gt;Node14 -->
 <g id="edge15" class="edge">
-<title>Node2&#45;&gt;Node15</title>
+<title>Node2&#45;&gt;Node14</title>
 <path fill="none" stroke="midnightblue" d="M2163.21,-254.94C1900.62,-254.46 849.15,-250.02 707.5,-210 653.61,-194.77 598.57,-154.72 576.06,-137.07"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="2163.3,-258.44 2173.31,-254.96 2163.31,-251.44 2163.3,-258.44"/>
 </g>
-<!-- Node17 -->
+<!-- Node12 -->
 <g id="node11" class="node">
-<title>Node17</title>
+<title>Node12</title>
 <g id="a_node11"><a xlink:href="port__eu_8c.html" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="2850,-185 2850,-204 2959,-204 2959,-185 2850,-185"/>
 <text text-anchor="middle" x="2904.5" y="-192" font-family="Helvetica,sans-Serif" font-size="10.00">src/audio/port_eu.c</text>
 </a>
 </g>
 </g>
-<!-- Node2&#45;&gt;Node17 -->
+<!-- Node2&#45;&gt;Node12 -->
 <g id="edge13" class="edge">
-<title>Node2&#45;&gt;Node17</title>
+<title>Node2&#45;&gt;Node12</title>
 <path fill="none" stroke="midnightblue" d="M2281.92,-253.64C2392.44,-250.44 2636.92,-240.3 2840.5,-210 2850.53,-208.51 2861.32,-206.3 2871.13,-204.06"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="2281.54,-250.15 2271.64,-253.92 2281.74,-257.14 2281.54,-250.15"/>
 </g>
@@ -822,15 +822,15 @@ var sectionId = 'dynsection-1';
 <path fill="none" stroke="midnightblue" d="M373.73,-179.27C353.14,-166.4 323.51,-147.88 306.3,-137.13"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="372.14,-182.4 382.47,-184.73 375.85,-176.47 372.14,-182.4"/>
 </g>
-<!-- Node6&#45;&gt;Node12 -->
+<!-- Node6&#45;&gt;Node13 -->
 <g id="edge9" class="edge">
-<title>Node6&#45;&gt;Node12</title>
+<title>Node6&#45;&gt;Node13</title>
 <path fill="none" stroke="midnightblue" d="M405.28,-175.66C411.45,-163.13 419.44,-146.91 424.25,-137.13"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="402.09,-174.22 400.82,-184.73 408.37,-177.31 402.09,-174.22"/>
 </g>
-<!-- Node6&#45;&gt;Node15 -->
+<!-- Node6&#45;&gt;Node14 -->
 <g id="edge10" class="edge">
-<title>Node6&#45;&gt;Node15</title>
+<title>Node6&#45;&gt;Node14</title>
 <path fill="none" stroke="midnightblue" d="M428.3,-181.27C461.84,-168.37 513.82,-148.38 543.23,-137.06"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="427.02,-178.01 418.94,-184.87 429.53,-184.55 427.02,-178.01"/>
 </g>

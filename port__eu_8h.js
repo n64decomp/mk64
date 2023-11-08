@@ -1,5 +1,7 @@
 var port__eu_8h =
 [
+    [ "EXTRA_BUFFERED_AI_SAMPLES_TARGET", "port__eu_8h.html#a98914a86dd34c501b3d6c721a69d2988", null ],
+    [ "SAMPLES_TO_OVERPRODUCE", "port__eu_8h.html#a5702386a06367728136cb9711a81edcd", null ],
     [ "eu_process_audio_cmd", "port__eu_8h.html#aa44d4718ff663c0dac97aa3622e7bf5f", null ],
     [ "func_800CBA64", "port__eu_8h.html#a6dbf3f0d85107ed7b4f5d8e9e9130311", null ],
     [ "func_800CBAB4", "port__eu_8h.html#af4e3a3f93500d1e3d4fae08bf9c3b81e", null ],

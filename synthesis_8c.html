@@ -94,6 +94,7 @@ $(document).ready(function(){initNavTree('synthesis_8c.html',''); initResizable(
 <code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="synthesis_8h_source.html">audio/synthesis.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="heap_8h_source.html">audio/heap.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="data_8h_source.html">audio/data.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="load_8h_source.html">audio/load.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="internal_8h_source.html">audio/internal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="abi_8h_source.html">PR/abi.h</a>&quot;</code><br />
@@ -118,10 +119,6 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac178346e4f4f06138c8ac115224e829e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synthesis_8c.html#ac178346e4f4f06138c8ac115224e829e">synthesis_do_one_audio_update</a> (<a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> *aiBuf, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> bufLen, <a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a> *cmd, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> updateIndex)</td></tr>
-<tr class="separator:ac178346e4f4f06138c8ac115224e829e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e2f9ad96ffa24ea53064c6d6c65e357"><td class="memItemLeft" align="right" valign="top"><a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synthesis_8c.html#a4e2f9ad96ffa24ea53064c6d6c65e357">synthesis_process_note</a> (struct <a class="el" href="structNote.html">Note</a> *note, struct <a class="el" href="structNoteSubEu.html">NoteSubEu</a> *noteSubEu, struct <a class="el" href="structNoteSynthesisState.html">NoteSynthesisState</a> *synthesisState, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> *aiBuf, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> bufLen, <a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a> *cmd)</td></tr>
-<tr class="separator:a4e2f9ad96ffa24ea53064c6d6c65e357"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc2ad7d3a34c03f2df41e3d49eaba51d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synthesis_8c.html#afc2ad7d3a34c03f2df41e3d49eaba51d">process_envelope</a> (<a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a> *cmd, struct <a class="el" href="structNoteSubEu.html">NoteSubEu</a> *noteSubEu, struct <a class="el" href="structNoteSynthesisState.html">NoteSynthesisState</a> *synthesisState, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> nSamples, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> inBuf, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> headsetPanSettings, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> flags)</td></tr>
 <tr class="separator:afc2ad7d3a34c03f2df41e3d49eaba51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9964410947181858fecd99e63c47d6a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synthesis_8c.html#a9964410947181858fecd99e63c47d6a8">prepare_reverb_ring_buffer</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> chunkLen, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> updateIndex, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> reverbIndex)</td></tr>
@@ -134,10 +131,14 @@ Functions</h2></td></tr>
 <tr class="separator:a831c7a9542071eed3e68885bd89e505b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab469a6d9522ccd7bdcef898769a46a7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synthesis_8c.html#ab469a6d9522ccd7bdcef898769a46a7a">synthesis_load_note_subs_eu</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> updateIndex)</td></tr>
 <tr class="separator:ab469a6d9522ccd7bdcef898769a46a7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab10b9870ec62bc5640ab92d2d682bf93"><td class="memItemLeft" align="right" valign="top">Acmd *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synthesis_8c.html#ab10b9870ec62bc5640ab92d2d682bf93">synthesis_execute</a> (Acmd *acmd, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> *writtenCmds, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> *aiBuf, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> bufLen)</td></tr>
+<tr class="separator:ab10b9870ec62bc5640ab92d2d682bf93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ed18d7fc2ca360b8b079e7b3721bc4d"><td class="memItemLeft" align="right" valign="top">Acmd *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synthesis_8c.html#a5ed18d7fc2ca360b8b079e7b3721bc4d">synthesis_resample_and_mix_reverb</a> (Acmd *acmd, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> bufLen, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> reverbIndex, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> updateIndex)</td></tr>
 <tr class="separator:a5ed18d7fc2ca360b8b079e7b3721bc4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96f40199e7b60394ef4b6cad19c32f0d"><td class="memItemLeft" align="right" valign="top">Acmd *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synthesis_8c.html#a96f40199e7b60394ef4b6cad19c32f0d">synthesis_load_reverb_samples</a> (Acmd *acmd, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> reverbIndex, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> updateIndex)</td></tr>
-<tr class="separator:a96f40199e7b60394ef4b6cad19c32f0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a641dd3e75c1c650f8e7ce3ec8354981c"><td class="memItemLeft" align="right" valign="top">Acmd *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synthesis_8c.html#a641dd3e75c1c650f8e7ce3ec8354981c">synthesis_save_reverb_samples</a> (Acmd *acmd, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> reverbIndex, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> updateIndex)</td></tr>
+<tr class="separator:a641dd3e75c1c650f8e7ce3ec8354981c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69f24df2eda759ac4296a9981717c2d8"><td class="memItemLeft" align="right" valign="top">Acmd *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synthesis_8c.html#a69f24df2eda759ac4296a9981717c2d8">synthesis_do_one_audio_update</a> (<a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> *aiBuf, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> bufLen, Acmd *acmd, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> updateIndex)</td></tr>
+<tr class="separator:a69f24df2eda759ac4296a9981717c2d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8afc88738278c8dbe24a7f5c93a3f578"><td class="memItemLeft" align="right" valign="top">Acmd *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synthesis_8c.html#a8afc88738278c8dbe24a7f5c93a3f578">load_wave_samples</a> (Acmd *acmd, struct <a class="el" href="structNoteSubEu.html">NoteSubEu</a> *noteSubEu, struct <a class="el" href="structNoteSynthesisState.html">NoteSynthesisState</a> *synthesisState, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> nSamplesToLoad)</td></tr>
 <tr class="separator:a8afc88738278c8dbe24a7f5c93a3f578"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b41bca4c6ab6d5aaaf1eae247e82e0e"><td class="memItemLeft" align="right" valign="top">Acmd *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="synthesis_8c.html#a4b41bca4c6ab6d5aaaf1eae247e82e0e">final_resample</a> (Acmd *acmd, struct <a class="el" href="structNoteSynthesisState.html">NoteSynthesisState</a> *synthesisState, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> count, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> pitch, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> dmemIn, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> flags)</td></tr>
@@ -453,6 +454,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="synthesis_8c_a9964410947181858fecd99e63c47d6a8_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -514,14 +521,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ac178346e4f4f06138c8ac115224e829e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac178346e4f4f06138c8ac115224e829e">&#9670;&nbsp;</a></span>synthesis_do_one_audio_update()</h2>
+<a id="a69f24df2eda759ac4296a9981717c2d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69f24df2eda759ac4296a9981717c2d8">&#9670;&nbsp;</a></span>synthesis_do_one_audio_update()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a>* synthesis_do_one_audio_update </td>
+          <td class="memname">Acmd* synthesis_do_one_audio_update </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> *&#160;</td>
           <td class="paramname"><em>aiBuf</em>, </td>
@@ -535,8 +542,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a> *&#160;</td>
-          <td class="paramname"><em>cmd</em>, </td>
+          <td class="paramtype">Acmd *&#160;</td>
+          <td class="paramname"><em>acmd</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -551,6 +558,70 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="synthesis_8c_a69f24df2eda759ac4296a9981717c2d8_cgraph.svg" width="636" height="170"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="synthesis_8c_a69f24df2eda759ac4296a9981717c2d8_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ab10b9870ec62bc5640ab92d2d682bf93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab10b9870ec62bc5640ab92d2d682bf93">&#9670;&nbsp;</a></span>synthesis_execute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Acmd* synthesis_execute </td>
+          <td>(</td>
+          <td class="paramtype">Acmd *&#160;</td>
+          <td class="paramname"><em>acmd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> *&#160;</td>
+          <td class="paramname"><em>writtenCmds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> *&#160;</td>
+          <td class="paramname"><em>aiBuf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>bufLen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="synthesis_8c_ab10b9870ec62bc5640ab92d2d682bf93_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="synthesis_8c_ab10b9870ec62bc5640ab92d2d682bf93_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -569,6 +640,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="synthesis_8c_ab469a6d9522ccd7bdcef898769a46a7a_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -618,101 +695,9 @@ Variables</h2></td></tr>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="synthesis_8c_a6fa61d3030e3eca182e69771d925a9b6_icgraph.svg" width="379" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="synthesis_8c_a6fa61d3030e3eca182e69771d925a9b6_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
-
-</div>
-</div>
-<a id="a96f40199e7b60394ef4b6cad19c32f0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96f40199e7b60394ef4b6cad19c32f0d">&#9670;&nbsp;</a></span>synthesis_load_reverb_samples()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Acmd* synthesis_load_reverb_samples </td>
-          <td>(</td>
-          <td class="paramtype">Acmd *&#160;</td>
-          <td class="paramname"><em>acmd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td>
-          <td class="paramname"><em>reverbIndex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td>
-          <td class="paramname"><em>updateIndex</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="synthesis_8c_a96f40199e7b60394ef4b6cad19c32f0d_cgraph.svg" width="398" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
-</div>
-</div>
-<a id="a4e2f9ad96ffa24ea53064c6d6c65e357"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e2f9ad96ffa24ea53064c6d6c65e357">&#9670;&nbsp;</a></span>synthesis_process_note()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a>* synthesis_process_note </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structNote.html">Note</a> *&#160;</td>
-          <td class="paramname"><em>note</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structNoteSubEu.html">NoteSubEu</a> *&#160;</td>
-          <td class="paramname"><em>noteSubEu</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structNoteSynthesisState.html">NoteSynthesisState</a> *&#160;</td>
-          <td class="paramname"><em>synthesisState</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> *&#160;</td>
-          <td class="paramname"><em>aiBuf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
-          <td class="paramname"><em>bufLen</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a> *&#160;</td>
-          <td class="paramname"><em>cmd</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -757,6 +742,12 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="synthesis_8c_a5ed18d7fc2ca360b8b079e7b3721bc4d_cgraph.svg" width="379" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="synthesis_8c_a5ed18d7fc2ca360b8b079e7b3721bc4d_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -808,7 +799,53 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="synthesis_8c_ad8a5cadc84ba56f8bd61a5d07ee7cbbc_icgraph.svg" width="398" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="synthesis_8c_ad8a5cadc84ba56f8bd61a5d07ee7cbbc_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a641dd3e75c1c650f8e7ce3ec8354981c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a641dd3e75c1c650f8e7ce3ec8354981c">&#9670;&nbsp;</a></span>synthesis_save_reverb_samples()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Acmd* synthesis_save_reverb_samples </td>
+          <td>(</td>
+          <td class="paramtype">Acmd *&#160;</td>
+          <td class="paramname"><em>acmd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td>
+          <td class="paramname"><em>reverbIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td>
+          <td class="paramname"><em>updateIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="synthesis_8c_a641dd3e75c1c650f8e7ce3ec8354981c_cgraph.svg" width="400" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="synthesis_8c_a641dd3e75c1c650f8e7ce3ec8354981c_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 

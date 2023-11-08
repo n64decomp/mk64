@@ -1,5 +1,6 @@
 var port__eu_8c =
 [
+    [ "create_next_audio_frame_task", "port__eu_8c.html#aa136d9ba80ebfd484d7abc25534bfdc6", null ],
     [ "eu_process_audio_cmd", "port__eu_8c.html#af9631ae86d86a13a1cbdb83aec196fc3", null ],
     [ "func_800CBA64", "port__eu_8c.html#a6dbf3f0d85107ed7b4f5d8e9e9130311", null ],
     [ "func_800CBAB4", "port__eu_8c.html#af4e3a3f93500d1e3d4fae08bf9c3b81e", null ],

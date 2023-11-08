@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 803;
+var viewWidth = 1610;
 var viewHeight = 78;
 var sectionId = 'dynsection-7';
 </script>
@@ -54,13 +54,13 @@ var sectionId = 'dynsection-7';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>note_vibrato_init</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-73.5 799,-73.5 799,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-73.5 1606,-73.5 1606,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="696,-28 696,-47 795,-47 795,-28 696,-28"/>
-<text text-anchor="middle" x="745.5" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">note_vibrato_init</text>
+<polygon fill="#bfbfbf" stroke="black" points="1503,-28 1503,-47 1602,-47 1602,-28 1503,-28"/>
+<text text-anchor="middle" x="1552.5" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">note_vibrato_init</text>
 </a>
 </g>
 </g>
@@ -68,85 +68,175 @@ var sectionId = 'dynsection-7';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="playback_8c.html#a6072a70c0d32abbae03e563cf3f51c92" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="356.5,-50 356.5,-69 442.5,-69 442.5,-50 356.5,-50"/>
-<text text-anchor="middle" x="399.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">process_notes</text>
+<polygon fill="white" stroke="black" points="1163.5,-50 1163.5,-69 1249.5,-69 1249.5,-50 1163.5,-50"/>
+<text text-anchor="middle" x="1206.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">process_notes</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M685.65,-41.26C616.51,-45.69 503.52,-52.91 442.6,-56.81"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="686.19,-44.74 695.94,-40.61 685.74,-37.75 686.19,-44.74"/>
+<path fill="none" stroke="midnightblue" d="M1492.65,-41.26C1423.51,-45.69 1310.52,-52.91 1249.6,-56.81"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1493.19,-44.74 1502.94,-40.61 1492.74,-37.75 1493.19,-44.74"/>
 </g>
-<!-- Node4 -->
-<g id="node4" class="node">
-<title>Node4</title>
-<g id="a_node4"><a xlink:href="seqplayer_8c.html#aa502aaa2a2da31ea46aa1cd8b25ff668" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="510,-0.5 510,-30.5 660,-30.5 660,-0.5 510,-0.5"/>
-<text text-anchor="start" x="518" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">seq_channel_layer_process</text>
-<text text-anchor="middle" x="585" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_script</text>
+<!-- Node10 -->
+<g id="node10" class="node">
+<title>Node10</title>
+<g id="a_node10"><a xlink:href="seqplayer_8c.html#aa502aaa2a2da31ea46aa1cd8b25ff668" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1317,-0.5 1317,-30.5 1467,-30.5 1467,-0.5 1317,-0.5"/>
+<text text-anchor="start" x="1325" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">seq_channel_layer_process</text>
+<text text-anchor="middle" x="1392" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_script</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node4 -->
-<g id="edge3" class="edge">
-<title>Node1&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M685.66,-29.33C677.31,-28.17 668.63,-26.97 660.04,-25.78"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="685.27,-32.81 695.65,-30.72 686.23,-25.88 685.27,-32.81"/>
+<!-- Node1&#45;&gt;Node10 -->
+<g id="edge9" class="edge">
+<title>Node1&#45;&gt;Node10</title>
+<path fill="none" stroke="midnightblue" d="M1492.66,-29.33C1484.31,-28.17 1475.63,-26.97 1467.04,-25.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1492.27,-32.81 1502.65,-30.72 1493.23,-25.88 1492.27,-32.81"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="seqplayer_8c.html#ac346f9d8e5c5a7e6266c2529510b673d" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="0,-28 0,-47 111,-47 111,-28 0,-28"/>
-<text text-anchor="middle" x="55.5" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">process_sequences</text>
+<polygon fill="white" stroke="black" points="807,-28 807,-47 918,-47 918,-28 807,-28"/>
+<text text-anchor="middle" x="862.5" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">process_sequences</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M346.01,-56.12C282.37,-52.03 175.65,-45.16 111.09,-41.01"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="346.02,-59.63 356.22,-56.78 346.47,-52.65 346.02,-59.63"/>
+<path fill="none" stroke="midnightblue" d="M1153.01,-56.12C1089.37,-52.03 982.65,-45.16 918.09,-41.01"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1153.02,-59.63 1163.22,-56.78 1153.47,-52.65 1153.02,-59.63"/>
+</g>
+<!-- Node4 -->
+<g id="node4" class="node">
+<title>Node4</title>
+<g id="a_node4"><a xlink:href="synthesis_8c.html#ab10b9870ec62bc5640ab92d2d682bf93" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="664,-28 664,-47 771,-47 771,-28 664,-28"/>
+<text text-anchor="middle" x="717.5" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">synthesis_execute</text>
+</a>
+</g>
+</g>
+<!-- Node3&#45;&gt;Node4 -->
+<g id="edge3" class="edge">
+<title>Node3&#45;&gt;Node4</title>
+<path fill="none" stroke="midnightblue" d="M796.39,-37.5C787.92,-37.5 779.34,-37.5 771.11,-37.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="796.62,-41 806.62,-37.5 796.62,-34 796.62,-41"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="seqplayer_8c.html#aa8903a3fda21cf479983688b377deb37" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="325,-0.5 325,-30.5 474,-30.5 474,-0.5 325,-0.5"/>
-<text text-anchor="start" x="333" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">sequence_channel_process</text>
-<text text-anchor="middle" x="399.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_script</text>
+<g id="a_node5"><a xlink:href="port__eu_8c.html#aa136d9ba80ebfd484d7abc25534bfdc6" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="461,-28 461,-47 628,-47 628,-28 461,-28"/>
+<text text-anchor="middle" x="544.5" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">create_next_audio_frame_task</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node4&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M499.63,-15.5C491.17,-15.5 482.63,-15.5 474.29,-15.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="499.89,-19 509.89,-15.5 499.89,-12 499.89,-19"/>
+<path fill="none" stroke="midnightblue" d="M653.54,-37.5C645.29,-37.5 636.74,-37.5 628.22,-37.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="653.8,-41 663.8,-37.5 653.8,-34 653.8,-41"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="seqplayer_8c.html#a057e95b47ecbd1b645b1ef457f3854d9" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="147,-0.5 147,-30.5 289,-30.5 289,-0.5 147,-0.5"/>
-<text text-anchor="start" x="155" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">sequence_player_process</text>
-<text text-anchor="middle" x="218" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_sequence</text>
+<g id="a_node6"><a xlink:href="main_8c.html#adc4ddc4dba28c4eebe8a7c28e5559b11" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="339,-28 339,-47 425,-47 425,-28 339,-28"/>
+<text text-anchor="middle" x="382" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">thread4_audio</text>
 </a>
 </g>
 </g>
 <!-- Node5&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node5&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M314.93,-15.5C306.34,-15.5 297.66,-15.5 289.23,-15.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="314.97,-19 324.97,-15.5 314.97,-12 314.97,-19"/>
+<path fill="none" stroke="midnightblue" d="M450.86,-37.5C442.02,-37.5 433.39,-37.5 425.41,-37.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="450.9,-41 460.9,-37.5 450.9,-34 450.9,-41"/>
 </g>
-<!-- Node6&#45;&gt;Node3 -->
+<!-- Node7 -->
+<g id="node7" class="node">
+<title>Node7</title>
+<g id="a_node7"><a xlink:href="main_8c.html#a023b8f272e4efbd33f371e91ffff6b30" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="217,-28 217,-47 303,-47 303,-28 217,-28"/>
+<text text-anchor="middle" x="260" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">thread3_video</text>
+</a>
+</g>
+</g>
+<!-- Node6&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
-<title>Node6&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M136.61,-26.52C128.07,-27.69 119.54,-28.86 111.4,-29.97"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="137.17,-29.98 146.6,-25.15 136.22,-23.04 137.17,-29.98"/>
+<title>Node6&#45;&gt;Node7</title>
+<path fill="none" stroke="midnightblue" d="M328.55,-37.5C320.12,-37.5 311.49,-37.5 303.33,-37.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="328.69,-41 338.69,-37.5 328.69,-34 328.69,-41"/>
+</g>
+<!-- Node8 -->
+<g id="node8" class="node">
+<title>Node8</title>
+<g id="a_node8"><a xlink:href="main_8c.html#a1e35d2b842121e6aea373f09381616e5" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="104,-28 104,-47 181,-47 181,-28 104,-28"/>
+<text text-anchor="middle" x="142.5" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">thread1_idle</text>
+</a>
+</g>
+</g>
+<!-- Node7&#45;&gt;Node8 -->
+<g id="edge7" class="edge">
+<title>Node7&#45;&gt;Node8</title>
+<path fill="none" stroke="midnightblue" d="M206.9,-37.5C198.2,-37.5 189.33,-37.5 181.09,-37.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="206.98,-41 216.98,-37.5 206.98,-34 206.98,-41"/>
+</g>
+<!-- Node9 -->
+<g id="node9" class="node">
+<title>Node9</title>
+<g id="a_node9"><a xlink:href="main_8c.html#a4f87d43525fe95f60ea92bc8a3b70e62" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="0,-28 0,-47 68,-47 68,-28 0,-28"/>
+<text text-anchor="middle" x="34" y="-35" font-family="Helvetica,sans-Serif" font-size="10.00">main_func</text>
+</a>
+</g>
+</g>
+<!-- Node8&#45;&gt;Node9 -->
+<g id="edge8" class="edge">
+<title>Node8&#45;&gt;Node9</title>
+<path fill="none" stroke="midnightblue" d="M93.95,-37.5C85.29,-37.5 76.44,-37.5 68.31,-37.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="93.95,-41 103.95,-37.5 93.95,-34 93.95,-41"/>
+</g>
+<!-- Node11 -->
+<g id="node11" class="node">
+<title>Node11</title>
+<g id="a_node11"><a xlink:href="seqplayer_8c.html#aa8903a3fda21cf479983688b377deb37" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1132,-0.5 1132,-30.5 1281,-30.5 1281,-0.5 1132,-0.5"/>
+<text text-anchor="start" x="1140" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">sequence_channel_process</text>
+<text text-anchor="middle" x="1206.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_script</text>
+</a>
+</g>
+</g>
+<!-- Node10&#45;&gt;Node11 -->
+<g id="edge10" class="edge">
+<title>Node10&#45;&gt;Node11</title>
+<path fill="none" stroke="midnightblue" d="M1306.63,-15.5C1298.17,-15.5 1289.63,-15.5 1281.29,-15.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1306.89,-19 1316.89,-15.5 1306.89,-12 1306.89,-19"/>
+</g>
+<!-- Node12 -->
+<g id="node12" class="node">
+<title>Node12</title>
+<g id="a_node12"><a xlink:href="seqplayer_8c.html#a057e95b47ecbd1b645b1ef457f3854d9" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="954,-0.5 954,-30.5 1096,-30.5 1096,-0.5 954,-0.5"/>
+<text text-anchor="start" x="962" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">sequence_player_process</text>
+<text text-anchor="middle" x="1025" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_sequence</text>
+</a>
+</g>
+</g>
+<!-- Node11&#45;&gt;Node12 -->
+<g id="edge11" class="edge">
+<title>Node11&#45;&gt;Node12</title>
+<path fill="none" stroke="midnightblue" d="M1121.93,-15.5C1113.34,-15.5 1104.66,-15.5 1096.23,-15.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1121.97,-19 1131.97,-15.5 1121.97,-12 1121.97,-19"/>
+</g>
+<!-- Node12&#45;&gt;Node3 -->
+<g id="edge12" class="edge">
+<title>Node12&#45;&gt;Node3</title>
+<path fill="none" stroke="midnightblue" d="M943.61,-26.52C935.07,-27.69 926.54,-28.86 918.4,-29.97"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="944.17,-29.98 953.6,-25.15 943.22,-23.04 944.17,-29.98"/>
 </g>
 </g>
 </svg>
