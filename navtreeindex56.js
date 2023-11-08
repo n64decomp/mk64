@@ -1,5 +1,7 @@
 var NAVTREEINDEX56 =
 {
+"menus_8c.html#ad8f3d756dd2c78ab246fd2325b124b23":[2,0,1,52,25],
+"menus_8c.html#ad930fee36051ef36c0187d7ddcfca076":[2,0,1,52,20],
 "menus_8c.html#adb40cc7c09c11b2eb5807f963fb5eb8d":[2,0,1,52,50],
 "menus_8c.html#ae1f4404f1813c0907bc96c6a4988e992":[2,0,1,52,43],
 "menus_8c.html#ae7617175787d21dcdc54ad7d62e3730a":[2,0,1,52,17],
@@ -247,7 +249,5 @@ var NAVTREEINDEX56 =
 "osCreateViManager_8c.html#a07051f81675397fec273eb91eb481503":[2,0,1,5,68,2],
 "osCreateViManager_8c.html#a0b32162ed7cfeee6f51f2187052268e2":[2,0,1,5,68,3],
 "osCreateViManager_8c.html#a0edac8108eba6f1352c1ab8821052178":[2,0,1,5,68,1],
-"osCreateViManager_8c.html#a4af0cb38d6a9bc36e9ee5dda55d7726e":[2,0,1,5,68,6],
-"osCreateViManager_8c.html#a5a5c7be4b8e73cc7920c4f5d434b9146":[2,0,1,5,68,13],
-"osCreateViManager_8c.html#a8e99d26459b45bf7ef8206045cc4dd95":[2,0,1,5,68,4]
+"osCreateViManager_8c.html#a4af0cb38d6a9bc36e9ee5dda55d7726e":[2,0,1,5,68,6]
 };

@@ -1,5 +1,7 @@
 var NAVTREEINDEX33 =
 {
+"gbi_8h.html#ae632053229c9830d9d294d6e13ce03cd":[2,0,0,1,1,432],
+"gbi_8h.html#ae6718046df193cd95ac969eec7bea346":[2,0,0,1,1,188],
 "gbi_8h.html#ae6753c3c829460d22299b488e7c08423":[2,0,0,1,1,404],
 "gbi_8h.html#ae759d81ff205e7bb7cd36d82b2a8896f":[2,0,0,1,1,121],
 "gbi_8h.html#ae77bac17d92602acd6b1b0239d882714":[2,0,0,1,1,125],
@@ -47,14 +49,14 @@ var NAVTREEINDEX33 =
 "gfx__output__buffer_8h_source.html":[2,0,1,2,8],
 "global_8h.html":[2,0,0,11],
 "global_8h_source.html":[2,0,0,11],
-"globals.html":[2,1,0],
 "globals.html":[2,1,0,0],
+"globals.html":[2,1,0],
 "globals_a.html":[2,1,0,1],
 "globals_b.html":[2,1,0,2],
 "globals_c.html":[2,1,0,3],
 "globals_d.html":[2,1,0,4],
-"globals_defs.html":[2,1,6,0],
 "globals_defs.html":[2,1,6],
+"globals_defs.html":[2,1,6,0],
 "globals_defs_a.html":[2,1,6,1],
 "globals_defs_b.html":[2,1,6,2],
 "globals_defs_c.html":[2,1,6,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX33 =
 "gs2dex_8h.html#ae9cbe90e46c615e65b451718b5fffa71":[2,0,0,1,2,97],
 "gs2dex_8h.html#aecf68a1c409e2087ea1606fc28dedcd7":[2,0,0,1,2,17],
 "gs2dex_8h.html#aeee99dc89738153807d1796e14784272":[2,0,0,1,2,37],
-"gs2dex_8h.html#af5c4b2c346370c52e09c17be311b1395":[2,0,0,1,2,112],
-"gs2dex_8h.html#af73628a929d288ec2e959fd196539b2a":[2,0,0,1,2,60],
-"gs2dex_8h.html#afeaa07a8a695a19134687a85e2cb6c76":[2,0,0,1,2,64]
+"gs2dex_8h.html#af5c4b2c346370c52e09c17be311b1395":[2,0,0,1,2,112]
 };

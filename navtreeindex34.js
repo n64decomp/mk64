@@ -1,5 +1,7 @@
 var NAVTREEINDEX34 =
 {
+"gs2dex_8h.html#af73628a929d288ec2e959fd196539b2a":[2,0,0,1,2,60],
+"gs2dex_8h.html#afeaa07a8a695a19134687a85e2cb6c76":[2,0,0,1,2,64],
 "gs2dex_8h.html#aff157bbacf59504179617b73e10808d7":[2,0,0,1,2,95],
 "gs2dex_8h_source.html":[2,0,0,1,2],
 "guLookAtF_8c.html":[2,0,1,5,38],
@@ -247,7 +249,5 @@ var NAVTREEINDEX34 =
 "heap_8c.html#ae75f8023f5474352094e57334734cf6d":[2,0,1,1,7,56],
 "heap_8c.html#ae7d98377ebb40b5e2aba52f9628c21d9":[2,0,1,1,7,61],
 "heap_8c.html#ae8b7a3aad224c80e7d87654d866666ae":[2,0,1,1,7,9],
-"heap_8c.html#aeee449d728d74cff589ce63f9b5087a8":[2,0,1,1,7,33],
-"heap_8c.html#af16443e5359a9ac4ef6631424e137224":[2,0,1,1,7,46],
-"heap_8c.html#af42e078f70fa8da3fb944c1f8115acee":[2,0,1,1,7,16]
+"heap_8c.html#aeee449d728d74cff589ce63f9b5087a8":[2,0,1,1,7,33]
 };

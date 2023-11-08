@@ -19,9 +19,9 @@ var vehicles_8h =
     [ "NUM_TIME_TRIAL_SCHOOL_BUSES", "vehicles_8h.html#ad9c9b7eb822fcdb32e92b5878bca3fbc", null ],
     [ "NUM_TIME_TRIAL_TANKER_TRUCKS", "vehicles_8h.html#a3472ed8d832715a02fd1e6ebc8eaa684", null ],
     [ "NUM_TRAINS", "vehicles_8h.html#a3c220f6ce25154be954117d26d0e8937", null ],
-    [ "D_801637C0", "vehicles_8h.html#ae8c99156a0122cd58ccd8d2954168a52", null ],
     [ "gBoxTruckList", "vehicles_8h.html#ac85fa8465a4900385df692695bc47cd7", null ],
     [ "gCarList", "vehicles_8h.html#a9b5074d95dff86e0f463a4112c92fbd3", null ],
+    [ "gFerries", "vehicles_8h.html#addcb10530364906261cfa5b2255811db", null ],
     [ "gSchoolBusList", "vehicles_8h.html#a71aa7bba57e9949e3b3cd875f2574cae", null ],
     [ "gTankerTruckList", "vehicles_8h.html#a85a7ae4a72ab40a4ff366fb5b1c8f64e", null ],
     [ "sTrains", "vehicles_8h.html#afcf048fe0342b0b4eae43ff41e3e80b6", null ]

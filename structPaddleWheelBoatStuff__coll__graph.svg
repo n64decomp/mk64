@@ -52,9 +52,9 @@
 <polygon fill="#9a32cd" stroke="#9a32cd" points="110.35,-101.85 115.16,-111.3 117.29,-100.92 110.35,-101.85"/>
 <text text-anchor="middle" x="148.5" y="-85" font-family="Helvetica,sans-Serif" font-size="10.00"> actorIndex</text>
 <text text-anchor="middle" x="148.5" y="-74" font-family="Helvetica,sans-Serif" font-size="10.00">isActive</text>
-<text text-anchor="middle" x="148.5" y="-63" font-family="Helvetica,sans-Serif" font-size="10.00">someFlags</text>
-<text text-anchor="middle" x="148.5" y="-52" font-family="Helvetica,sans-Serif" font-size="10.00">waypointIndex</text>
-<text text-anchor="middle" x="148.5" y="-41" font-family="Helvetica,sans-Serif" font-size="10.00">yRotation</text>
+<text text-anchor="middle" x="148.5" y="-63" font-family="Helvetica,sans-Serif" font-size="10.00">rotY</text>
+<text text-anchor="middle" x="148.5" y="-52" font-family="Helvetica,sans-Serif" font-size="10.00">someFlags</text>
+<text text-anchor="middle" x="148.5" y="-41" font-family="Helvetica,sans-Serif" font-size="10.00">waypointIndex</text>
 </g>
 </g>
 </svg>
