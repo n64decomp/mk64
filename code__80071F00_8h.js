@@ -1,8 +1,6 @@
 var code__80071F00_8h =
 [
     [ "StarSpawn", "structStarSpawn.html", "structStarSpawn" ],
-    [ "YVFlagPoleSpawn", "structYVFlagPoleSpawn.html", "structYVFlagPoleSpawn" ],
-    [ "NUM_YV_FLAG_POLES", "code__80071F00_8h.html#abacb93f7d2283190e380097bca4ecc31", null ],
     [ "consume_item", "code__80071F00_8h.html#a3f8b0b897af9972a92301e3359645b3c", null ],
     [ "delete_object", "code__80071F00_8h.html#a33dd4978e13af2f128bb7d25124b243a", null ],
     [ "delete_object_wrapper", "code__80071F00_8h.html#a7d612e6f1fff04f8a9b51bc4cfabf710", null ],
@@ -129,6 +127,7 @@ var code__80071F00_8h =
     [ "func_8007661C", "code__80071F00_8h.html#a269298ce38d852af33c677ae12781528", null ],
     [ "func_8007675C", "code__80071F00_8h.html#a9bd545f3bcd1500afb955f602144903b", null ],
     [ "func_80076828", "code__80071F00_8h.html#a0b7e38b6c466673f2bf3949372ab5303", null ],
+    [ "func_80076884", "code__80071F00_8h.html#a31e312aa0f65df1ea3eb05fae10b57d3", null ],
     [ "func_80076958", "code__80071F00_8h.html#ad0d3c2b20572d1ceb6dcc713960b0dde", null ],
     [ "func_800769D8", "code__80071F00_8h.html#afabb0481352c06b74b8c3e3f14901569", null ],
     [ "func_80076AEC", "code__80071F00_8h.html#a6fe38bf73145ea999d831b872d4edf63", null ],
@@ -355,7 +354,6 @@ var code__80071F00_8h =
     [ "D_800E4470", "code__80071F00_8h.html#a21a5a51609024a58c4fd47880f70e978", null ],
     [ "D_800E44B0", "code__80071F00_8h.html#ab71d4818420244f3b738f502367018d6", null ],
     [ "D_800E4570", "code__80071F00_8h.html#a00d00abbaa8262b8f1bb7b610762bb4b", null ],
-    [ "D_800E5DF4", "code__80071F00_8h.html#a2a66aa614a26ec36e369cf9b7de35404", null ],
     [ "D_800E634C", "code__80071F00_8h.html#a6bc5ec8ac402279b049cb518d18cb0d4", null ],
     [ "D_80162DF8", "code__80071F00_8h.html#a992511932a32279879ff11219e11285e", null ],
     [ "D_80165598", "code__80071F00_8h.html#a70d3b025a76572ab16ac6b3e46194846", null ],

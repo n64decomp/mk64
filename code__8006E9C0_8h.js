@@ -16,7 +16,7 @@ var code__8006E9C0_8h =
     [ "func_800704A0", "code__8006E9C0_8h.html#a53a2374e765eda4d3397ffcc83cef446", null ],
     [ "func_8007055C", "code__8006E9C0_8h.html#afef0314f6f435d008ed32c2aa1e2fed0", null ],
     [ "func_80070714", "code__8006E9C0_8h.html#a34850e00e534f9bea4ee89568c0484e8", null ],
-    [ "func_80070780", "code__8006E9C0_8h.html#a8383c4a54ac6cf8631797f715b74c5c5", null ],
+    [ "func_80070780", "code__8006E9C0_8h.html#af74065379c405a1dda1c942665fe5f9e", null ],
     [ "init_hud_one_player", "code__8006E9C0_8h.html#a9b35328c0ffddc0723de4730c5e41431", null ],
     [ "init_hud_three_four_player", "code__8006E9C0_8h.html#a36e7c29e21274b76d24f7c8864af5c3b", null ],
     [ "init_hud_two_player_horizontal", "code__8006E9C0_8h.html#ab7947f630a75f4852fe4e3ea4fc607aa", null ],

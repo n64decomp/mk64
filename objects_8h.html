@@ -111,6 +111,16 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structItemWindowObjects.html">ItemWindowObjects</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structYVFlagPoleSpawn.html">YVFlagPoleSpawn</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCrabSpawn.html">CrabSpawn</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structThwompSpawn.html">ThwompSpawn</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSnowmanSpawn.html">SnowmanSpawn</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHegdehogSpawn.html">HegdehogSpawn</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
@@ -120,16 +130,42 @@ Macros</h2></td></tr>
 <tr class="separator:af63656ae6040e4380cf20939128e9efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5da8f460a22c441fb5bb00bd5b3bac2a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a5da8f460a22c441fb5bb00bd5b3bac2a">DELETED_OBJECT_ID</a>&#160;&#160;&#160;-1</td></tr>
 <tr class="separator:a5da8f460a22c441fb5bb00bd5b3bac2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abacb93f7d2283190e380097bca4ecc31"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#abacb93f7d2283190e380097bca4ecc31">NUM_YV_FLAG_POLES</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:abacb93f7d2283190e380097bca4ecc31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fc84057f528370516f290327a8921db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a8fc84057f528370516f290327a8921db">NUM_CRABS</a>&#160;&#160;&#160;0xA</td></tr>
 <tr class="separator:a8fc84057f528370516f290327a8921db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22c3e8bfaac0994aebe77e6b38dd3c8e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a22c3e8bfaac0994aebe77e6b38dd3c8e">NUM_NEON_SIGNS</a>&#160;&#160;&#160;0xA</td></tr>
+<tr class="memitem:ad9ac94150aaa659947a6cb01c8ea99b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#ad9ac94150aaa659947a6cb01c8ea99b3">NUM_THWOMPS_50CC</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:ad9ac94150aaa659947a6cb01c8ea99b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a751bba1e76e456eb8ca72a59dfc36c7e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a751bba1e76e456eb8ca72a59dfc36c7e">NUM_THWOMPS_100CC_EXTRA</a>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:a751bba1e76e456eb8ca72a59dfc36c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af46986167a8d9f76483e3a27c6fc9aa3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#af46986167a8d9f76483e3a27c6fc9aa3">NUM_THWOMPS_150CC</a>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:af46986167a8d9f76483e3a27c6fc9aa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22c3e8bfaac0994aebe77e6b38dd3c8e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a22c3e8bfaac0994aebe77e6b38dd3c8e">NUM_NEON_SIGNS</a>&#160;&#160;&#160;10</td></tr>
 <tr class="separator:a22c3e8bfaac0994aebe77e6b38dd3c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70dceb0ef3581e4120291b0f461514b4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a70dceb0ef3581e4120291b0f461514b4">NUM_CHAIN_CHOMPS</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a70dceb0ef3581e4120291b0f461514b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf2ab8b3d1d7cdb1f9a0555f2c6e32e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#aaf2ab8b3d1d7cdb1f9a0555f2c6e32e7">NUM_PENGUINS</a>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:aaf2ab8b3d1d7cdb1f9a0555f2c6e32e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ca058051e45a460ad3c6abac7a25705"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a2ca058051e45a460ad3c6abac7a25705">NUM_SEAGULLS</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:a2ca058051e45a460ad3c6abac7a25705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5302f0f886aa4ecee5fe0d86c797b547"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a5302f0f886aa4ecee5fe0d86c797b547">NUM_SNOWMEN</a>&#160;&#160;&#160;19</td></tr>
+<tr class="separator:a5302f0f886aa4ecee5fe0d86c797b547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d5c4952e2ffa6e33857c5ac66932a08"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a6d5c4952e2ffa6e33857c5ac66932a08">NUM_HEDGEHOGS</a>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:a6d5c4952e2ffa6e33857c5ac66932a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42e83298344ef6c360ac7e474a99a3e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a42e83298344ef6c360ac7e474a99a3e6">NUM_BOOS</a>&#160;&#160;&#160;0xA</td></tr>
 <tr class="separator:a42e83298344ef6c360ac7e474a99a3e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a852818136bb70a07418243802f1d6350"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a852818136bb70a07418243802f1d6350">NUM_FIRE_BREATHS</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a852818136bb70a07418243802f1d6350"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0f62d090151881d9108bbdd91d37a27"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#ab0f62d090151881d9108bbdd91d37a27">D_8018C1B0_SIZE</a>&#160;&#160;&#160;128</td></tr>
 <tr class="separator:ab0f62d090151881d9108bbdd91d37a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f8f160260b2bd174224c2a32f57d493"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a6f8f160260b2bd174224c2a32f57d493">NUM_MOLES</a>&#160;&#160;&#160;0x1F</td></tr>
-<tr class="separator:a6f8f160260b2bd174224c2a32f57d493"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affb63b51cadfeda4f6c5a6c114792ed8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#affb63b51cadfeda4f6c5a6c114792ed8">NUM_MAX_MOLES</a>&#160;&#160;&#160;0x1F</td></tr>
+<tr class="separator:affb63b51cadfeda4f6c5a6c114792ed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f986abb1d8725521d5be8ec3e077744"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a5f986abb1d8725521d5be8ec3e077744">NUM_GROUP1_MOLES</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:a5f986abb1d8725521d5be8ec3e077744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7a4e46a867a87b2d578fa048122b302"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#af7a4e46a867a87b2d578fa048122b302">NUM_GROUP2_MOLES</a>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:af7a4e46a867a87b2d578fa048122b302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4428cea5563122b80f6782f72da9373"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#af4428cea5563122b80f6782f72da9373">NUM_GROUP3_MOLES</a>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:af4428cea5563122b80f6782f72da9373"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae288ce9729bc52ae7a4d0eadc23120c5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#ae288ce9729bc52ae7a4d0eadc23120c5">NUM_SNOWFLAKES</a>&#160;&#160;&#160;0x32</td></tr>
 <tr class="separator:ae288ce9729bc52ae7a4d0eadc23120c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08f398bdf3113fc76ac625a8b516c214"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a08f398bdf3113fc76ac625a8b516c214">D_8018C3F0_SIZE</a>&#160;&#160;&#160;128</td></tr>
@@ -138,6 +174,8 @@ Macros</h2></td></tr>
 <tr class="separator:a3d4dbc173044d4e189b06260bb6aa3d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0785faf307ccd6f0da5b313ea323a44b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a0785faf307ccd6f0da5b313ea323a44b">D_8018C870_SIZE</a>&#160;&#160;&#160;0x40</td></tr>
 <tr class="separator:a0785faf307ccd6f0da5b313ea323a44b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa03ae475a84388a1d190944e65b6d9b0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#aa03ae475a84388a1d190944e65b6d9b0">NUM_TORCHES</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:aa03ae475a84388a1d190944e65b6d9b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae155bfb63d622e15a200034ed6170753"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#ae155bfb63d622e15a200034ed6170753">D_8018C970_SIZE</a>&#160;&#160;&#160;0x40</td></tr>
 <tr class="separator:ae155bfb63d622e15a200034ed6170753"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac183eb47e1ca0af8373e866dfcecc30b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#ac183eb47e1ca0af8373e866dfcecc30b">D_8018C970_SPAWN_SIZE</a>&#160;&#160;&#160;0x14</td></tr>
@@ -167,14 +205,48 @@ Variables</h2></td></tr>
 <tr class="separator:ae32282a2a40ab6568ca8a1f4f9fadbca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6207335a62ad3cf3b1ce26b6b6d91550"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCollision.html">Collision</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a6207335a62ad3cf3b1ce26b6b6d91550">D_8018C0B0</a> []</td></tr>
 <tr class="separator:a6207335a62ad3cf3b1ce26b6b6d91550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bcc98a1a419b3df54f68de5758a842f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structYVFlagPoleSpawn.html">YVFlagPoleSpawn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a9bcc98a1a419b3df54f68de5758a842f">D_800E5DF4</a> []</td></tr>
+<tr class="separator:a9bcc98a1a419b3df54f68de5758a842f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a958826ee660f3bf98395f725d2be65a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCrabSpawn.html">CrabSpawn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a958826ee660f3bf98395f725d2be65a3">gCrabSpawns</a> []</td></tr>
+<tr class="separator:a958826ee660f3bf98395f725d2be65a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea01a58b54d599d5a4ad1402f1290e1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="common__structs_8h.html#a5290523279339ea495248ab3a36cb46e">Vec3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#aea01a58b54d599d5a4ad1402f1290e1e">D_800E6734</a> []</td></tr>
+<tr class="separator:aea01a58b54d599d5a4ad1402f1290e1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf65d9c5ffd8e4297c54dd993877d8cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structThwompSpawn.html">ThwompSpawn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#aaf65d9c5ffd8e4297c54dd993877d8cf">gThomwpSpawns50CC</a> []</td></tr>
+<tr class="separator:aaf65d9c5ffd8e4297c54dd993877d8cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe4d0b9a4a99ad4cb6146bfea9e20dbe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structThwompSpawn.html">ThwompSpawn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#abe4d0b9a4a99ad4cb6146bfea9e20dbe">gThwompSpawns100CCExtra</a> []</td></tr>
+<tr class="separator:abe4d0b9a4a99ad4cb6146bfea9e20dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02bd29e49d2089bb6bd1bfe33e360584"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structThwompSpawn.html">ThwompSpawn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a02bd29e49d2089bb6bd1bfe33e360584">gThomwpSpawns150CC</a> []</td></tr>
+<tr class="separator:a02bd29e49d2089bb6bd1bfe33e360584"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a840ef2e5e6ba8d81138c0dd18c11cf21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structThwompSpawn.html">ThwompSpawn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a840ef2e5e6ba8d81138c0dd18c11cf21">gThowmpSpawnList</a></td></tr>
+<tr class="separator:a840ef2e5e6ba8d81138c0dd18c11cf21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4be1636daca7810733c7054182c11cad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a4be1636daca7810733c7054182c11cad">gNumActiveThwomps</a></td></tr>
+<tr class="separator:a4be1636daca7810733c7054182c11cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa775a901a4e1cf8e7161657bd7a9da7a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#aa775a901a4e1cf8e7161657bd7a9da7a">D_80183EA0</a> []</td></tr>
 <tr class="separator:aa775a901a4e1cf8e7161657bd7a9da7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac16f19677d99e6e4ade8d138179b712b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSnowmanSpawn.html">SnowmanSpawn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#ac16f19677d99e6e4ade8d138179b712b">gSnowmanSpawns</a> []</td></tr>
+<tr class="separator:ac16f19677d99e6e4ade8d138179b712b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbb9da3d64146c890d8fac87d2a93742"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structHegdehogSpawn.html">HegdehogSpawn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#acbb9da3d64146c890d8fac87d2a93742">gHedgehogSpawns</a> []</td></tr>
+<tr class="separator:acbb9da3d64146c890d8fac87d2a93742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac6618362ef0445bc1ddf0a971732a67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="common__structs_8h.html#a95eb48a2f3630571bea260858dd23e92">Vec3s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#aac6618362ef0445bc1ddf0a971732a67">gHedgehogPatrolPoints</a> []</td></tr>
+<tr class="separator:aac6618362ef0445bc1ddf0a971732a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71b306994a113bcc21d0dddacb802360"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a71b306994a113bcc21d0dddacb802360">D_80183F28</a> []</td></tr>
 <tr class="separator:a71b306994a113bcc21d0dddacb802360"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba59102ad1b7652d467637b70c10d905"><td class="memItemLeft" align="right" valign="top"><a class="el" href="common__structs_8h.html#a95eb48a2f3630571bea260858dd23e92">Vec3s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#aba59102ad1b7652d467637b70c10d905">gFireBreathsSpawns</a> []</td></tr>
+<tr class="separator:aba59102ad1b7652d467637b70c10d905"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade23c7d0c0071ee638149e34d851fa4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#ade23c7d0c0071ee638149e34d851fa4a">D_8018BFA8</a> []</td></tr>
 <tr class="separator:ade23c7d0c0071ee638149e34d851fa4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8632dbec81668aab171be6a7dd418d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#ac8632dbec81668aab171be6a7dd418d0">D_8018C030</a> []</td></tr>
 <tr class="separator:ac8632dbec81668aab171be6a7dd418d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ad37bcaf7f47f8616c16d9236b3de38"><td class="memItemLeft" align="right" valign="top"><a class="el" href="common__structs_8h.html#a95eb48a2f3630571bea260858dd23e92">Vec3s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a9ad37bcaf7f47f8616c16d9236b3de38">gMoleSpawns</a> []</td></tr>
+<tr class="separator:a9ad37bcaf7f47f8616c16d9236b3de38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d212af1fc0bfcb46286a0b13047a14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a65d212af1fc0bfcb46286a0b13047a14">D_8018D198</a> []</td></tr>
+<tr class="separator:a65d212af1fc0bfcb46286a0b13047a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98beb50068e856d053f757b951f9d659"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a98beb50068e856d053f757b951f9d659">D_8018D1A8</a> []</td></tr>
+<tr class="separator:a98beb50068e856d053f757b951f9d659"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e0adbad78db24264234c9fa6916b3ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a3e0adbad78db24264234c9fa6916b3ed">D_8018D1B8</a> []</td></tr>
+<tr class="separator:a3e0adbad78db24264234c9fa6916b3ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d108956ef1881b3be91ddec04adb46f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a9d108956ef1881b3be91ddec04adb46f">D_8018CF10</a></td></tr>
+<tr class="separator:a9d108956ef1881b3be91ddec04adb46f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4eaa281a1efb4760518ddb0f01b395ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a4eaa281a1efb4760518ddb0f01b395ec">D_8018C1B0</a> []</td></tr>
 <tr class="separator:a4eaa281a1efb4760518ddb0f01b395ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaaf8d50f320511956464e916de0124fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#aaaf8d50f320511956464e916de0124fe">D_80183E38</a></td></tr>
@@ -195,6 +267,8 @@ Variables</h2></td></tr>
 <tr class="separator:ab30af75a769f114cc77de43957f6006e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeee7035ffe75ebf0d6dbdb70cba2b095"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#aeee7035ffe75ebf0d6dbdb70cba2b095">D_80165738</a></td></tr>
 <tr class="separator:aeee7035ffe75ebf0d6dbdb70cba2b095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79576299626c8e78c3a95dd03abff115"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a79576299626c8e78c3a95dd03abff115">gTorchSpawns</a> [1]</td></tr>
+<tr class="separator:a79576299626c8e78c3a95dd03abff115"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad299a42ee2263acf94963a65ac4169f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#aad299a42ee2263acf94963a65ac4169f">D_8018C870</a> []</td></tr>
 <tr class="separator:aad299a42ee2263acf94963a65ac4169f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3aab530f1956ec60d006b6edab695a8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="objects_8h.html#a3aab530f1956ec60d006b6edab695a8b">D_80183E6C</a></td></tr>
@@ -341,6 +415,20 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a70dceb0ef3581e4120291b0f461514b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70dceb0ef3581e4120291b0f461514b4">&#9670;&nbsp;</a></span>NUM_CHAIN_CHOMPS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_CHAIN_CHOMPS&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a8fc84057f528370516f290327a8921db"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8fc84057f528370516f290327a8921db">&#9670;&nbsp;</a></span>NUM_CRABS</h2>
 
@@ -352,19 +440,87 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>D_80183EA0, D_80183F28, D_8018BFA8, and D_8018C030 are all lists of indices in gObjectList. func_80070190 initializes them in such a way that the indicies in each list are not adjacent. First D_80183EA0 gets an unused index, then D_80183F28, then D_8018BFA8, then D_8018C030, and then it loops.</p>
-<p>The objects found at the indices in each list appears to be course dependent </p>
 
 </div>
 </div>
-<a id="a6f8f160260b2bd174224c2a32f57d493"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f8f160260b2bd174224c2a32f57d493">&#9670;&nbsp;</a></span>NUM_MOLES</h2>
+<a id="a852818136bb70a07418243802f1d6350"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a852818136bb70a07418243802f1d6350">&#9670;&nbsp;</a></span>NUM_FIRE_BREATHS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NUM_MOLES&#160;&#160;&#160;0x1F</td>
+          <td class="memname">#define NUM_FIRE_BREATHS&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f986abb1d8725521d5be8ec3e077744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f986abb1d8725521d5be8ec3e077744">&#9670;&nbsp;</a></span>NUM_GROUP1_MOLES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_GROUP1_MOLES&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7a4e46a867a87b2d578fa048122b302"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7a4e46a867a87b2d578fa048122b302">&#9670;&nbsp;</a></span>NUM_GROUP2_MOLES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_GROUP2_MOLES&#160;&#160;&#160;11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af4428cea5563122b80f6782f72da9373"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4428cea5563122b80f6782f72da9373">&#9670;&nbsp;</a></span>NUM_GROUP3_MOLES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_GROUP3_MOLES&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6d5c4952e2ffa6e33857c5ac66932a08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d5c4952e2ffa6e33857c5ac66932a08">&#9670;&nbsp;</a></span>NUM_HEDGEHOGS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_HEDGEHOGS&#160;&#160;&#160;15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="affb63b51cadfeda4f6c5a6c114792ed8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affb63b51cadfeda4f6c5a6c114792ed8">&#9670;&nbsp;</a></span>NUM_MAX_MOLES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_MAX_MOLES&#160;&#160;&#160;0x1F</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -378,7 +534,35 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NUM_NEON_SIGNS&#160;&#160;&#160;0xA</td>
+          <td class="memname">#define NUM_NEON_SIGNS&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaf2ab8b3d1d7cdb1f9a0555f2c6e32e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf2ab8b3d1d7cdb1f9a0555f2c6e32e7">&#9670;&nbsp;</a></span>NUM_PENGUINS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_PENGUINS&#160;&#160;&#160;15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ca058051e45a460ad3c6abac7a25705"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ca058051e45a460ad3c6abac7a25705">&#9670;&nbsp;</a></span>NUM_SEAGULLS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_SEAGULLS&#160;&#160;&#160;10</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -396,6 +580,92 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5302f0f886aa4ecee5fe0d86c797b547"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5302f0f886aa4ecee5fe0d86c797b547">&#9670;&nbsp;</a></span>NUM_SNOWMEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_SNOWMEN&#160;&#160;&#160;19</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a751bba1e76e456eb8ca72a59dfc36c7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a751bba1e76e456eb8ca72a59dfc36c7e">&#9670;&nbsp;</a></span>NUM_THWOMPS_100CC_EXTRA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_THWOMPS_100CC_EXTRA&#160;&#160;&#160;11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af46986167a8d9f76483e3a27c6fc9aa3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af46986167a8d9f76483e3a27c6fc9aa3">&#9670;&nbsp;</a></span>NUM_THWOMPS_150CC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_THWOMPS_150CC&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad9ac94150aaa659947a6cb01c8ea99b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9ac94150aaa659947a6cb01c8ea99b3">&#9670;&nbsp;</a></span>NUM_THWOMPS_50CC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_THWOMPS_50CC&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa03ae475a84388a1d190944e65b6d9b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa03ae475a84388a1d190944e65b6d9b0">&#9670;&nbsp;</a></span>NUM_TORCHES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_TORCHES&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abacb93f7d2283190e380097bca4ecc31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abacb93f7d2283190e380097bca4ecc31">&#9670;&nbsp;</a></span>NUM_YV_FLAG_POLES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_YV_FLAG_POLES&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>D_80183EA0, D_80183F28, D_8018BFA8, and D_8018C030 are all lists of indices in gObjectList. func_80070190 initializes them in such a way that the indicies in each list are not adjacent. First D_80183EA0 gets an unused index, then D_80183F28, then D_8018BFA8, then D_8018C030, and then it loops.</p>
+<p>The objects found at the indices in each list appears to be course dependent </p>
 
 </div>
 </div>
@@ -428,6 +698,50 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a9bcc98a1a419b3df54f68de5758a842f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bcc98a1a419b3df54f68de5758a842f">&#9670;&nbsp;</a></span>D_800E5DF4</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structYVFlagPoleSpawn.html">YVFlagPoleSpawn</a> D_800E5DF4[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aea01a58b54d599d5a4ad1402f1290e1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea01a58b54d599d5a4ad1402f1290e1e">&#9670;&nbsp;</a></span>D_800E6734</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="common__structs_8h.html#a5290523279339ea495248ab3a36cb46e">Vec3f</a> D_800E6734[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab30af75a769f114cc77de43957f6006e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab30af75a769f114cc77de43957f6006e">&#9670;&nbsp;</a></span>D_80165730</h2>
 
@@ -669,7 +983,7 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Crabs in Koopa Troopa Beach Hot air balloon in Luigi Raceway? Neon signs in Rainbow Road? Thwomps in Bower's Castle? Penguins in Sherbet Land? Flag Poles in Yoshi Valley? </p>
+<p>Snowmen bodies in FrappeSnowland Crabs in Koopa Troopa Beach Hot air balloon in Luigi Raceway? Neon signs in Rainbow Road? Thwomps in Bower's Castle? Penguins in Sherbet Land? Flag Poles in Yoshi Valley? </p>
 
 </div>
 </div>
@@ -692,7 +1006,7 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Snowmen in Frappe Snowland Chain Chomps in RaindbowRoad? Trophy in award ceremony? Seagulls in Koopa Troopa Beach? </p>
+<p>Snowmen heads in Frappe Snowland Chain Chomps in RaindbowRoad? Trophy in award ceremony? Seagulls in Koopa Troopa Beach? Hedgehogs in Yoshi Valley? Spawn for big fire breath in Bowser's Castle </p>
 
 </div>
 </div>
@@ -715,7 +1029,7 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Boos in Banshee Boardwalk </p>
+<p>Boos in Banshee Boardwalk Spawners for the 4 small fire breaths inside Bowser's Castle </p>
 
 </div>
 </div>
@@ -898,6 +1212,28 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a9d108956ef1881b3be91ddec04adb46f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d108956ef1881b3be91ddec04adb46f">&#9670;&nbsp;</a></span>D_8018CF10</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> D_8018CF10</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a564a145db276a31d4a3a96708df47210"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a564a145db276a31d4a3a96708df47210">&#9670;&nbsp;</a></span>D_8018D174</h2>
 
@@ -909,6 +1245,72 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> D_8018D174</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a65d212af1fc0bfcb46286a0b13047a14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65d212af1fc0bfcb46286a0b13047a14">&#9670;&nbsp;</a></span>D_8018D198</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> D_8018D198[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a98beb50068e856d053f757b951f9d659"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98beb50068e856d053f757b951f9d659">&#9670;&nbsp;</a></span>D_8018D1A8</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> D_8018D1A8[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3e0adbad78db24264234c9fa6916b3ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e0adbad78db24264234c9fa6916b3ed">&#9670;&nbsp;</a></span>D_8018D1B8</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> D_8018D1B8[]</td>
         </tr>
       </table>
   </td>
@@ -1118,6 +1520,94 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a958826ee660f3bf98395f725d2be65a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a958826ee660f3bf98395f725d2be65a3">&#9670;&nbsp;</a></span>gCrabSpawns</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCrabSpawn.html">CrabSpawn</a> gCrabSpawns[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aba59102ad1b7652d467637b70c10d905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba59102ad1b7652d467637b70c10d905">&#9670;&nbsp;</a></span>gFireBreathsSpawns</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="common__structs_8h.html#a95eb48a2f3630571bea260858dd23e92">Vec3s</a> gFireBreathsSpawns[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aac6618362ef0445bc1ddf0a971732a67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac6618362ef0445bc1ddf0a971732a67">&#9670;&nbsp;</a></span>gHedgehogPatrolPoints</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="common__structs_8h.html#a95eb48a2f3630571bea260858dd23e92">Vec3s</a> gHedgehogPatrolPoints[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acbb9da3d64146c890d8fac87d2a93742"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbb9da3d64146c890d8fac87d2a93742">&#9670;&nbsp;</a></span>gHedgehogSpawns</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structHegdehogSpawn.html">HegdehogSpawn</a> gHedgehogSpawns[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a24d6df82af91314df14b4f1bec6c47c7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a24d6df82af91314df14b4f1bec6c47c7">&#9670;&nbsp;</a></span>gItemWindowObjectByPlayerId</h2>
 
@@ -1140,6 +1630,50 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a9ad37bcaf7f47f8616c16d9236b3de38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ad37bcaf7f47f8616c16d9236b3de38">&#9670;&nbsp;</a></span>gMoleSpawns</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="common__structs_8h.html#a95eb48a2f3630571bea260858dd23e92">Vec3s</a> gMoleSpawns[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4be1636daca7810733c7054182c11cad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4be1636daca7810733c7054182c11cad">&#9670;&nbsp;</a></span>gNumActiveThwomps</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> gNumActiveThwomps</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a7accd26715628c8933bf0b207bab83ca"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7accd26715628c8933bf0b207bab83ca">&#9670;&nbsp;</a></span>gObjectList</h2>
 
@@ -1151,6 +1685,138 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="structObjects.html">Objects</a> gObjectList[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac16f19677d99e6e4ade8d138179b712b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac16f19677d99e6e4ade8d138179b712b">&#9670;&nbsp;</a></span>gSnowmanSpawns</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structSnowmanSpawn.html">SnowmanSpawn</a> gSnowmanSpawns[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a02bd29e49d2089bb6bd1bfe33e360584"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02bd29e49d2089bb6bd1bfe33e360584">&#9670;&nbsp;</a></span>gThomwpSpawns150CC</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structThwompSpawn.html">ThwompSpawn</a> gThomwpSpawns150CC[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaf65d9c5ffd8e4297c54dd993877d8cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf65d9c5ffd8e4297c54dd993877d8cf">&#9670;&nbsp;</a></span>gThomwpSpawns50CC</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structThwompSpawn.html">ThwompSpawn</a> gThomwpSpawns50CC[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a840ef2e5e6ba8d81138c0dd18c11cf21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a840ef2e5e6ba8d81138c0dd18c11cf21">&#9670;&nbsp;</a></span>gThowmpSpawnList</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structThwompSpawn.html">ThwompSpawn</a>* gThowmpSpawnList</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abe4d0b9a4a99ad4cb6146bfea9e20dbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe4d0b9a4a99ad4cb6146bfea9e20dbe">&#9670;&nbsp;</a></span>gThwompSpawns100CCExtra</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structThwompSpawn.html">ThwompSpawn</a> gThwompSpawns100CCExtra[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a79576299626c8e78c3a95dd03abff115"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79576299626c8e78c3a95dd03abff115">&#9670;&nbsp;</a></span>gTorchSpawns</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> gTorchSpawns[1]</td>
         </tr>
       </table>
   </td>

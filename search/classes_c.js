@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['note_14418',['Note',['../structNote.html',1,'']]],
-  ['noteattributes_14419',['NoteAttributes',['../structNoteAttributes.html',1,'']]],
-  ['noteplaybackstate_14420',['NotePlaybackState',['../structNotePlaybackState.html',1,'']]],
-  ['notepool_14421',['NotePool',['../structNotePool.html',1,'']]],
-  ['notesubeu_14422',['NoteSubEu',['../structNoteSubEu.html',1,'']]],
-  ['notesynthesisbuffers_14423',['NoteSynthesisBuffers',['../structNoteSynthesisBuffers.html',1,'']]],
-  ['notesynthesisstate_14424',['NoteSynthesisState',['../structNoteSynthesisState.html',1,'']]]
+  ['m64scriptstate_14450',['M64ScriptState',['../structM64ScriptState.html',1,'']]],
+  ['mainpoolblock_14451',['MainPoolBlock',['../structMainPoolBlock.html',1,'']]],
+  ['mainpoolstate_14452',['MainPoolState',['../structMainPoolState.html',1,'']]],
+  ['mk64_5fsurface_5fmap_5fram_14453',['mk64_surface_map_ram',['../structmk64__surface__map__ram.html',1,'']]],
+  ['mk64_5fvtx_14454',['mk64_Vtx',['../structmk64__Vtx.html',1,'']]],
+  ['mk64_5fvtx_5fn_14455',['mk64_Vtx_n',['../structmk64__Vtx__n.html',1,'']]],
+  ['mkanimation_14456',['MkAnimation',['../structMkAnimation.html',1,'']]],
+  ['mktexture_14457',['MkTexture',['../structMkTexture.html',1,'']]]
 ];
