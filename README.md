@@ -89,6 +89,24 @@ brew install python3 capstone coreutils make pkg-config tehzz/n64-dev/mips64-elf
 
 When building, use `gmake` to ensure that homebrew `make` is used instead of the old, macOS system `make`.
 
+#### Docker
+
+Build the Docker image:
+```
+docker build -t mk64 .
+```
+
+When building and using other tools, append the following in front of every command you run:
+```bash
+docker run --rm -v ${PWD}:/mk64 mk64
+```
+
+For example:
+```bash
+docker run --rm -v ${PWD}:/mk64 mk64 make -C tools
+docker run --rm -v ${PWD}:/mk64 mk64 make
+```
+
 ## Building
 
 Place a US version of Mario Kart 64 called `baserom.us.z64` into the project folder for asset extraction.
