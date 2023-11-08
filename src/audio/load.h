@@ -81,7 +81,7 @@ extern s32 gMaxAudioCmds;
 extern s32 gMaxSimultaneousNotes;
 extern s16 gTempoInternalToExternal;
 extern s8 gAudioLibSoundMode;
-extern s32 gAudioUpdatesPerFrame;
+extern volatile s32 gAudioFrameCount;
 extern s32 gCurrAudioFrameDmaCount;
 
 #endif // AUDIO_LOAD_H

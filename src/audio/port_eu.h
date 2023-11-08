@@ -3,6 +3,9 @@
 
 #include "audio/internal.h"
 
+#define SAMPLES_TO_OVERPRODUCE 0x10
+#define EXTRA_BUFFERED_AI_SAMPLES_TARGET 0x40
+
 void eu_process_audio_cmd(struct EuAudioCmd*);
 void seq_player_fade_to_zero_volume(s32 arg0, s32 fadeOutTime);
 void func_800CBA64(s32 playerIndex, s32 fadeInTime);

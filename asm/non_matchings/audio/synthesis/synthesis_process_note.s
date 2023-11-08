@@ -1,4 +1,4 @@
-glabel func_800B7C30
+glabel synthesis_process_note
 /* 0B8830 800B7C30 27BDFEC0 */  addiu $sp, $sp, -0x140
 /* 0B8834 800B7C34 3C18803B */  lui   $t8, %hi(gNotes) # $t8, 0x803b
 /* 0B8838 800B7C38 8F181508 */  lw    $t8, %lo(gNotes)($t8)
