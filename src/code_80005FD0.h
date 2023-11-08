@@ -244,13 +244,73 @@ extern s16 D_8016347A;
 // Suspected to be the "width" of each waypoint. See data_0DD0A0_1.s
 extern f32 D_800DCA4C[];
 
+struct _struct_D_800DD9D0_0x10 {
+    /* 0x00 */ u16 unk0;
+    /* 0x02 */ u16 unk2;
+    /* 0x04 */ u16 unk4;
+    /* 0x06 */ u16 unk6;
+    /* 0x08 */ u16 unk8;
+    /* 0x0A */ char padA[6];
+};  // size 0x10
+extern uintptr_t *D_80163598;
+
+extern uintptr_t gCoursePathTable[20][4];
+extern uintptr_t D_800DC8D0[20][4];
+// An array of 21 items. The final element is for podium ceremony.
+extern struct _struct_D_800DD9D0_0x10 D_800DD9D0[];
+extern s16 D_80162F10[];
+extern s16 D_80162F50[];
+extern s16 D_80162FF8[];
+extern s16 D_80163010[];
+extern f32 D_80163028[];
+extern s16 D_80163050[];
+extern f32 D_80163090[];
+extern u16 D_80163258[];
+extern u16 D_80163270[];
+extern s16 D_80163346[];
+extern s32 D_801630B8[];
+extern s16 D_801630E8[];
+extern s32 D_80163100[];
+extern s32 D_80163128[];
+extern s32 D_80163150[];
+extern f32 D_80163178[];
+extern f32 D_801631A0[];
+extern s32 D_801631CC;
+extern s16 D_801631F8[];
+extern f32 D_80163210[];
+extern s32 D_80163288[];
+extern u16 D_80163330[]; // static?
+extern u16 D_80163344[];
+extern u16 D_8016334C[];
+extern s16 D_80163350[];
+extern s32 D_80163378;
+extern s16 D_80163380[];
+extern s16 D_80163398[];
+extern s16 D_801633B0[];
+extern s16 D_801633C8[];
+extern s16 D_801633F8[];
+extern f32 D_80163450[];
+extern s16 D_801634C0[];
+extern s16 D_801634EC;
+extern s32 D_801634F0;
+extern s32 D_801634F4;
+extern s16 D_80164358;
+extern s16 D_8016435A;
+extern s16 D_8016435C;
+extern s16 D_80164538[];
+extern f32 D_80164698;
+extern f32 D_8016469C;
+extern f32 D_801646A0;
+extern f32 D_800DCAA0[];
+
+
 // See bss_80005FD0.s
 extern Collision D_80162E70;
 extern s16 D_80162EB0;
 extern s16 D_80162FCC;
 extern f32 D_80162FA0[];
 extern f32 gCourseCompletionPercentByRank[8];     // D_80162FD8
-
+extern u16 D_80163348[];
 extern s16 D_80164378[];
 extern s32 D_801643E0[];
 extern struct unexpiredActors gUnexpiredActorsList[];
