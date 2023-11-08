@@ -12,6 +12,8 @@ RUN apt-get update && \
 	wget \
         zlib1g-dev
 
-RUN mkdir /opt/assets
+RUN mkdir /mk64
+WORKDIR /mk64
 
-COPY roms/ /opt/assets
+CMD echo 'Usage: docker run -it --rm -v ${PWD}:/mk64 mk64 make\n'\
+         'See https://github.com/n64decomp/mk64/blob/master/README.md for more information'
