@@ -1,6 +1,7 @@
 #define STRANGE_MAIN_HEADER_H
 #include <ultra64.h>
 #include <PR/os.h>
+#include <PR/ucode.h>
 #include <macros.h>
 #include <functions.h>
 #include <types.h>
@@ -273,8 +274,8 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->msg = (OSMesg) 2;
     gGfxSPTask->task.t.type = M_GFXTASK;
     gGfxSPTask->task.t.flags = OS_TASK_DP_WAIT;
-    gGfxSPTask->task.t.ucode_boot = rspbootTextStart;
-    gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspbootTextEnd - (u8 *) rspbootTextStart);
+    gGfxSPTask->task.t.ucode_boot = rspF3DBootStart;
+    gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspF3DBootEnd - (u8 *) rspF3DBootStart);
     // The split-screen multiplayer racing state uses F3DLX which has a simple subpixel calculation.
     // Singleplayer race mode and all other game states use F3DEX.
     // http://n64devkit.square7.ch/n64man/ucode/gspF3DEX.htm

@@ -49,8 +49,9 @@ s32 gMaxAudioCmds;
 s32 gMaxSimultaneousNotes;
 s16 gTempoInternalToExternal;
 s8 gAudioLibSoundMode;
-s32 gAudioUpdatesPerFrame;
-s32 gCurrAudioFrameDmaCount; // file split around here?
+// If we take SM64 as gospel, these should be in data.c, but that doesn't match
+volatile s32 gAudioFrameCount;
+s32 gCurrAudioFrameDmaCount;
 
 
 /**
@@ -811,7 +812,7 @@ void audio_init() {
         gAiBufferLengths[i] = 0xa0;
     }
 
-    gAudioTaskIndex = gAudioUpdatesPerFrame = 0;
+    gAudioTaskIndex = gAudioFrameCount = 0;
     gCurrAiBufferIndex = 0;
     gAudioLibSoundMode = 0;
     gAudioTask = NULL;
